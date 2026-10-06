@@ -5550,19 +5550,21 @@
     "event:d031a764db670d3e288ddd0a": {
       "first_seen_kst": "2026-10-07T01:18:00+09:00",
       "lanes": {
-        "live": "2026-10-07T07:24:41+09:00"
+        "live": "2026-10-07T07:54:25+09:00"
       },
-      "last_seen_kst": "2026-10-07T07:24:41+09:00",
-      "link": "https://www.fnnews.com/news/202610070558200155",
-      "source": "파이낸셜뉴스",
-      "source_body_digest": "335c6844e1a4faf4dc494edbc512ec45003e7cba6b4da824e73fb3d1991b1be9",
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02614166645610624",
+      "source": "이데일리",
+      "source_body_digest": "e3dcc13afe080f4d76193d39d16541727048ad0aedafbe8dc3f66d0b85f56b68",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:873b6e113605627fc5d867baabbe2098ad7df760342acab0f03308dac08ceb43",
+      "source_fact_identity": "source_facts:v1:09fe64d7ad36b74e3b8eb3a3b98eca242b112b7bae5a09d74fb1594b6b5e197b",
       "source_fact_keys": [
-        "source_fact:v1:708dff548ff64917c69a272542b25dc46ebf08518c5311a6564a835eb727d2c7"
+        "source_fact:v1:1a8878887cb2badc30eacb5756316c2cb0d8d8ee6c3e8061bdddb8d853b0fc77",
+        "source_fact:v1:ae197bb55a8b17d0bf2b62a5311e4302dfed1e7b476c3cce2f082cf7f78982d6",
+        "source_fact:v1:c031cd7b41da0b52416a012931337d06a66ffa47130b6cad5df8a9fd411d1f25"
       ],
-      "source_published_kst": "2026-10-07T05:58+09:00",
-      "title": "[뉴욕마감]S&P500·나스닥 사상 최고…유가·국채금리 진정"
+      "source_published_kst": "2026-10-07T07:33+09:00",
+      "title": "[마켓무버]뉴욕증시, 금리 부담 완화에 일제 상승…AI·반도체가 랠리 주도"
     },
     "event:d03c5fd8ce0377d8a85c8fff": {
       "first_seen_kst": "2026-10-01T19:16:32+09:00",
@@ -6257,25 +6259,22 @@
     "event:e84d2fa0551bf1d5dcbf7b7e": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
       "lanes": {
-        "live": "2026-10-06T09:53:40+09:00"
+        "live": "2026-10-07T07:54:25+09:00"
       },
-      "last_seen_kst": "2026-10-06T09:53:40+09:00",
-      "link": "https://www.mt.co.kr/index.php/economy/2026/10/06/2026100609121896351",
-      "source": "머니투데이",
-      "source_body_digest": "634c6f45d3dd2f510ed53259b082994c1399d343f4e5c62dffeb9168b28c2ab2",
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.hankyung.com/article/202610066688i",
+      "source": "한국경제",
+      "source_body_digest": "b1a3a574724800d5b0c475c071ebce76cf3974a4ccd88b7887b17067b3487054",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:a7e885fd6ff7449011ffd8f69cc115bab8b36cff544bd9a0b5e5e19150d3f775",
+      "source_fact_identity": "source_facts:v1:5c2fc4b7904e12b51ec50d0899d3d766a8c53d73235bbed3e9b077119ea19e5f",
       "source_fact_keys": [
-        "source_fact:v1:3a4e1e073cb15ff0d8bb08323553366834b4d01d3e397aa672e930bd4ad59ea9",
-        "source_fact:v1:5adb2698db0d6030456df03e6556bba73dd843b0fba9cf35fdbeff44dd6aef49",
-        "source_fact:v1:6f28d028984fb5bee2521ba046712be80d2d03b12e6141a4620598f5c88ad909",
-        "source_fact:v1:b3285647eb87b4e63d280366f35ec128690ddeb3d609f38e4b791c12f5f81db1",
-        "source_fact:v1:c0c70773c8a723039e7f4621a4563dfb89851a67672a2c25a7973e0e0ff3fa0d",
-        "source_fact:v1:cbec46d3d4542c532812f8b24c4aa23b51e0af99af65c0fe393affe62286f7cc",
-        "source_fact:v1:ccba0c48e1530dc0978ed69c00eb721e27c90119c592e23b210b4077a631c91e"
+        "source_fact:v1:10f83cd3fef18bf4ac68f4e9d0d2887b75a9991de58da2303f048b68790c187b",
+        "source_fact:v1:4256b6f574f96a886b93a8355f3b0c819783cd6768bafff3fb9c504de8c9c27a",
+        "source_fact:v1:48afec54eb59c3a743996e45ff269dc2a31aa5312e7d618f2bba5e26c43e7eea",
+        "source_fact:v1:f849e30eec397426fe3ce76d4b43626822dc208d8b0e3425c3418962afed569b"
       ],
-      "source_published_kst": "2026-10-06T09:21+09:00",
-      "title": "CPTPP, 농산물 관세만의 문제 아니다…농가 지원·검역도 '시험대'"
+      "source_published_kst": "2026-10-06T22:37+09:00",
+      "title": "美 8월 무역적자 142조원…트럼프 관세 폭탄 이후 최대"
     },
     "event:e8a27057c9d36b60b5552a13": {
       "first_seen_kst": "2026-10-03T06:13:51+09:00",
@@ -11167,6 +11166,25 @@
       "source_published_kst": "2026-10-06T15:28+09:00",
       "title": "한솔케미칼, 대만에 340억원 규모 반도체 소재 기지 투자 승인"
     },
+    "fact:424507810ede1e6081df92a4": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02614166645610624",
+      "source": "이데일리",
+      "source_body_digest": "e3dcc13afe080f4d76193d39d16541727048ad0aedafbe8dc3f66d0b85f56b68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:09fe64d7ad36b74e3b8eb3a3b98eca242b112b7bae5a09d74fb1594b6b5e197b",
+      "source_fact_keys": [
+        "source_fact:v1:1a8878887cb2badc30eacb5756316c2cb0d8d8ee6c3e8061bdddb8d853b0fc77",
+        "source_fact:v1:ae197bb55a8b17d0bf2b62a5311e4302dfed1e7b476c3cce2f082cf7f78982d6",
+        "source_fact:v1:c031cd7b41da0b52416a012931337d06a66ffa47130b6cad5df8a9fd411d1f25"
+      ],
+      "source_published_kst": "2026-10-07T07:33+09:00",
+      "title": "[마켓무버]뉴욕증시, 금리 부담 완화에 일제 상승…AI·반도체가 랠리 주도"
+    },
     "fact:42494d706b0f65b75cc2ed03": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
@@ -12200,6 +12218,26 @@
       ],
       "source_published_kst": "2026-10-05T20:07+09:00",
       "title": "이카엑스 홀딩스, 플라이미 인수 완료..18억 위안 전액 현금"
+    },
+    "fact:561267a1395175ae65818132": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.hankyung.com/article/202610066688i",
+      "source": "한국경제",
+      "source_body_digest": "b1a3a574724800d5b0c475c071ebce76cf3974a4ccd88b7887b17067b3487054",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c2fc4b7904e12b51ec50d0899d3d766a8c53d73235bbed3e9b077119ea19e5f",
+      "source_fact_keys": [
+        "source_fact:v1:10f83cd3fef18bf4ac68f4e9d0d2887b75a9991de58da2303f048b68790c187b",
+        "source_fact:v1:4256b6f574f96a886b93a8355f3b0c819783cd6768bafff3fb9c504de8c9c27a",
+        "source_fact:v1:48afec54eb59c3a743996e45ff269dc2a31aa5312e7d618f2bba5e26c43e7eea",
+        "source_fact:v1:f849e30eec397426fe3ce76d4b43626822dc208d8b0e3425c3418962afed569b"
+      ],
+      "source_published_kst": "2026-10-06T22:37+09:00",
+      "title": "美 8월 무역적자 142조원…트럼프 관세 폭탄 이후 최대"
     },
     "fact:568cdc9a64080125401e4d75": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
@@ -13291,6 +13329,24 @@
       "source_published_kst": "2026-10-06T13:27+09:00",
       "title": "조선내화, 351억 규모 내화물 공급계약"
     },
+    "fact:6a9fb973fa7a27e14bfe82cb": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633027",
+      "source": "이투데이",
+      "source_body_digest": "9a3cf64e10d3be0066226c4e5f7dba71800f55d94c8163fabc65be89e108f9a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:46ae5ef178e5c0738f0c760861778b1bc0eedd0f867af86c664e2f4ad322a23a",
+      "source_fact_keys": [
+        "source_fact:v1:147c8d6cee65cef4c458887e36fad71a0af9d951b694b12d274a0ea0f2a2736a",
+        "source_fact:v1:fac9e2a16b28d67dbae7a6654d3112adeec1e7025796f7c257749eb4990f6219"
+      ],
+      "source_published_kst": "2026-10-06T18:28+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 공급 계약 체결⋯K배터리 핵심 도약"
+    },
     "fact:6b1c4e42c745bf0440d50916": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -13520,6 +13576,24 @@
       ],
       "source_published_kst": "2026-10-06T23:43+09:00",
       "title": "에이로봇, 방산혁신기업 선정…휴머노이드 군 시범운용 추진"
+    },
+    "fact:6d574115145a5cec65f19485": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.hankyung.com/article/2026100768447",
+      "source": "한국경제",
+      "source_body_digest": "2e1bd482f7b500e937594af667fdc876c7c8b3b0450176de1a62475f3a2ed41d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f33d5b43ea70b1ee7979f8cc1b3dce7d948b6e3f39cd3a578da8ace03418c99",
+      "source_fact_keys": [
+        "source_fact:v1:657c93f28773262ca6b75c9b5d8704230fb8b3a1d5d0e675da236103aba1666f",
+        "source_fact:v1:d5b1eb8a3cedd75b18e2d0c60031d1537e6363813138e67e599dbd73733a07ae"
+      ],
+      "source_published_kst": "2026-10-07T07:22+09:00",
+      "title": "트럼프 \"韓에 관세 낮추려면 대가 지불해야 한다고 했다\""
     },
     "fact:6d6a946dace48be5fb72425d": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
@@ -15395,6 +15469,27 @@
       "source_published_kst": "2026-10-06T09:00+09:00",
       "title": "자연과환경, 자회사 한림에코텍 흡수합병…OSCㆍ모듈러 사업 경쟁력 강화"
     },
+    "fact:8d95a84d4a0192e3ffc42a14": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170553",
+      "source": "매일경제",
+      "source_body_digest": "b0a9abac7e00b1964ab04a8fd87ba82f2be95633d2b1813807afc40b031a597b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd1ff57e9cf6a2d4af4ab24e41044aea1a3c9c0de07f1753125e6ee4615ed440",
+      "source_fact_keys": [
+        "source_fact:v1:2a5362f2b448e2b988811b5d53819c945fdf2e7dd74b7a6dc43604e655928788",
+        "source_fact:v1:7983f403692513fa8c869c26fd3174430607f96b417e2f211da33025864fb049",
+        "source_fact:v1:a17a488e9208c1f6db5b13dbad7b4af0733320219993ff5553bbda8028dfd2b7",
+        "source_fact:v1:c38efccaef148fd40cb6b044471cf506f90a533a20d25871f6e42419d8e001b9",
+        "source_fact:v1:f457ce3173758d5b6ff8f66efb064a5ece4484f7e38f7d19cef89a129e38cf76"
+      ],
+      "source_published_kst": "2026-10-07T07:44+09:00",
+      "title": "“효성중공업, 매출 이연으로 단기 실적 변동성 확대”"
+    },
     "fact:8dd203a0838ef3752eca2d33": {
       "first_seen_kst": "2026-10-06T22:37:02+09:00",
       "lanes": {
@@ -17123,6 +17218,23 @@
       "source_published_kst": "2026-10-07T01:33+09:00",
       "title": "휴네시온, 'AI 페스타 26' 참가…N2SF 전환·AI 보안 전략 공개"
     },
+    "fact:a7a8f4e2908897c8d6f008e2": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816490",
+      "source": "뉴시스",
+      "source_body_digest": "21778dd26a724bc366caa1a597751a8951cc24ca3e701bf12afe660410c8ae67",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee340bfd16f12258098f3016cbcd18b55bb35363c6736631c917e76594e9c897",
+      "source_fact_keys": [
+        "source_fact:v1:01f9119e7eb1278777e8b040aacf7a09b614b761b2de6830caec22c7a763ada6"
+      ],
+      "source_published_kst": "2026-10-07T07:48+09:00",
+      "title": "트럼프 \"이란 누가 이끄는지 모른다는 게 가장 큰 문제\""
+    },
     "fact:a82032f8be40e06d059fadd8": {
       "first_seen_kst": "2026-10-07T00:54:50+09:00",
       "lanes": {
@@ -18613,6 +18725,36 @@
       ],
       "source_published_kst": "2026-10-05T08:15+09:00",
       "title": "함안군, 택시 기본요금 5천500원→6천원 인상 추진 | 연합뉴스"
+    },
+    "fact:c70c14ca0a07c06f80c02729": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.mk.co.kr/news/world/12169879",
+      "source": "매일경제",
+      "source_body_digest": "6345d4bf529ac94969266095eea51b19ac482dc3ce8c1ea0258834a725b59b71",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9efa5338275ac3724b4bb4293c56c89766b08a87fb089a82306055497fc088ba",
+      "source_fact_keys": [
+        "source_fact:v1:1f4b2110487970a266d9632772a0428538f5a6f24c1023055b06460596a7d0c1",
+        "source_fact:v1:3cb52572220b26ae6da65c32fa816a62052c5a1ddfb4198e37b360969ae2fce2",
+        "source_fact:v1:3ccb2573dae28ca80e269db32e9d67800cea4743c2d3baee34853a01ed019a52",
+        "source_fact:v1:4836bf02bd3f69f5be14711216db9cb8601edd108ba4e5b97aee405089f1e329",
+        "source_fact:v1:57ca2840b8442b14360d2df58c6a03d793999f0b40bfe491e5969a4418d1d808",
+        "source_fact:v1:59e7c206c748188d4e87f0fa9e19f91c8ccc278cc89f8a05faa723958ef7a924",
+        "source_fact:v1:5b6e7d7cf2749260e3d84a9c0166788b0a6b452b2203476f8b7e08370c83a3a8",
+        "source_fact:v1:a5cdee8f5267448cdf3fcc5fb97bd146609a477d9b53565adafb43e881ced3b0",
+        "source_fact:v1:c93a71a014ab005cf9de28162b5e5309867de2ac9b5653ba9986935889b174c6",
+        "source_fact:v1:ce5f98af8d7487d02bc2b1683dea66d6460e57cf56327573a758710c1e621b23",
+        "source_fact:v1:cf9fbfa05d41b4c0843eb23284037ab7c90e485eb72a2899515d262a83c8c378",
+        "source_fact:v1:e97378fc039560d0b01aad57125cefe7df7652389261b5cc6aca0d0308cc10a6",
+        "source_fact:v1:ed97fa1c4756522678b3a62d0ddafa36add5ce7ca3c29dac6a01c24a49c0d76c",
+        "source_fact:v1:f24006028571242843f932fbd887c5210882e6aeda7e1414e226576878124839"
+      ],
+      "source_published_kst": "2026-10-07T06:22+09:00",
+      "title": "“러시아 숨통 틔워줬다”…우크라, 韓 ‘석유 공급’ 공개 저격"
     },
     "fact:c729fed399b32565b374ff33": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
@@ -29310,20 +29452,20 @@
     "link:3e69661e4c78bb9d4fa8f819": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
-        "live": "2026-10-06T20:24:46+09:00"
+        "live": "2026-10-07T07:54:25+09:00"
       },
-      "last_seen_kst": "2026-10-06T20:24:46+09:00",
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
       "link": "https://www.etoday.co.kr/news/view/2633027",
       "source": "이투데이",
-      "source_body_digest": "7bcad8c3063f8082c1cbf3ae81f4004dd6f4a26e680e57802b20267345290f90",
+      "source_body_digest": "9a3cf64e10d3be0066226c4e5f7dba71800f55d94c8163fabc65be89e108f9a9",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:05bb53160fe94fbd5cde5f5c04651c24ac9ca2347f0ebfa7f5ab46b8e928b491",
+      "source_fact_identity": "source_facts:v1:46ae5ef178e5c0738f0c760861778b1bc0eedd0f867af86c664e2f4ad322a23a",
       "source_fact_keys": [
         "source_fact:v1:147c8d6cee65cef4c458887e36fad71a0af9d951b694b12d274a0ea0f2a2736a",
-        "source_fact:v1:f2c9313afc63c1ecfc108fc3c8b378b2bfc02bf5d24429c63ef58aa2e7a02840"
+        "source_fact:v1:fac9e2a16b28d67dbae7a6654d3112adeec1e7025796f7c257749eb4990f6219"
       ],
       "source_published_kst": "2026-10-06T18:28+09:00",
-      "title": "포스코퓨처엠, 삼성SDI와 6조 원 규모 LFP 공급 계약 체결… K-배터리 핵심 도약"
+      "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 공급 계약 체결⋯K배터리 핵심 도약"
     },
     "link:3e80868991bc311c69ca5fbb": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
@@ -37024,6 +37166,23 @@
       "source_published_kst": "2026-10-06T07:40+09:00",
       "title": "엔비디아 이틀째 신고가…美국채금리 급등에도 나스닥 사상 최고[투자360]"
     },
+    "link:7d781a9adce596b87c5c9cc4": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816490",
+      "source": "뉴시스",
+      "source_body_digest": "21778dd26a724bc366caa1a597751a8951cc24ca3e701bf12afe660410c8ae67",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee340bfd16f12258098f3016cbcd18b55bb35363c6736631c917e76594e9c897",
+      "source_fact_keys": [
+        "source_fact:v1:01f9119e7eb1278777e8b040aacf7a09b614b761b2de6830caec22c7a763ada6"
+      ],
+      "source_published_kst": "2026-10-07T07:48+09:00",
+      "title": "트럼프 \"이란 누가 이끄는지 모른다는 게 가장 큰 문제\""
+    },
     "link:7dcb6b4d6338a1c515e66a71": {
       "first_seen_kst": "2026-09-25T14:18:58+09:00",
       "lanes": {
@@ -40428,6 +40587,36 @@
       "source_published_kst": "2026-10-06T07:42+09:00",
       "title": "[오늘의 증시]美금리 상승에도 나스닥 최고치…코스피 상승 출발 전망"
     },
+    "link:9d453e4ab7afcada24494f78": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.mk.co.kr/news/world/12169879",
+      "source": "매일경제",
+      "source_body_digest": "6345d4bf529ac94969266095eea51b19ac482dc3ce8c1ea0258834a725b59b71",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9efa5338275ac3724b4bb4293c56c89766b08a87fb089a82306055497fc088ba",
+      "source_fact_keys": [
+        "source_fact:v1:1f4b2110487970a266d9632772a0428538f5a6f24c1023055b06460596a7d0c1",
+        "source_fact:v1:3cb52572220b26ae6da65c32fa816a62052c5a1ddfb4198e37b360969ae2fce2",
+        "source_fact:v1:3ccb2573dae28ca80e269db32e9d67800cea4743c2d3baee34853a01ed019a52",
+        "source_fact:v1:4836bf02bd3f69f5be14711216db9cb8601edd108ba4e5b97aee405089f1e329",
+        "source_fact:v1:57ca2840b8442b14360d2df58c6a03d793999f0b40bfe491e5969a4418d1d808",
+        "source_fact:v1:59e7c206c748188d4e87f0fa9e19f91c8ccc278cc89f8a05faa723958ef7a924",
+        "source_fact:v1:5b6e7d7cf2749260e3d84a9c0166788b0a6b452b2203476f8b7e08370c83a3a8",
+        "source_fact:v1:a5cdee8f5267448cdf3fcc5fb97bd146609a477d9b53565adafb43e881ced3b0",
+        "source_fact:v1:c93a71a014ab005cf9de28162b5e5309867de2ac9b5653ba9986935889b174c6",
+        "source_fact:v1:ce5f98af8d7487d02bc2b1683dea66d6460e57cf56327573a758710c1e621b23",
+        "source_fact:v1:cf9fbfa05d41b4c0843eb23284037ab7c90e485eb72a2899515d262a83c8c378",
+        "source_fact:v1:e97378fc039560d0b01aad57125cefe7df7652389261b5cc6aca0d0308cc10a6",
+        "source_fact:v1:ed97fa1c4756522678b3a62d0ddafa36add5ce7ca3c29dac6a01c24a49c0d76c",
+        "source_fact:v1:f24006028571242843f932fbd887c5210882e6aeda7e1414e226576878124839"
+      ],
+      "source_published_kst": "2026-10-07T06:22+09:00",
+      "title": "“러시아 숨통 틔워줬다”…우크라, 韓 ‘석유 공급’ 공개 저격"
+    },
     "link:9d525d9c9a8c21b37875669c": {
       "first_seen_kst": "2026-09-22T06:33:14+09:00",
       "lanes": {
@@ -41808,6 +41997,26 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-05T22:34+09:00",
       "title": "[美특징주]할리데이비슨, 씨티 '매수' 상향에 상승"
+    },
+    "link:a8905ae7f448c38994a85a86": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.hankyung.com/article/202610066688i",
+      "source": "한국경제",
+      "source_body_digest": "b1a3a574724800d5b0c475c071ebce76cf3974a4ccd88b7887b17067b3487054",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c2fc4b7904e12b51ec50d0899d3d766a8c53d73235bbed3e9b077119ea19e5f",
+      "source_fact_keys": [
+        "source_fact:v1:10f83cd3fef18bf4ac68f4e9d0d2887b75a9991de58da2303f048b68790c187b",
+        "source_fact:v1:4256b6f574f96a886b93a8355f3b0c819783cd6768bafff3fb9c504de8c9c27a",
+        "source_fact:v1:48afec54eb59c3a743996e45ff269dc2a31aa5312e7d618f2bba5e26c43e7eea",
+        "source_fact:v1:f849e30eec397426fe3ce76d4b43626822dc208d8b0e3425c3418962afed569b"
+      ],
+      "source_published_kst": "2026-10-06T22:37+09:00",
+      "title": "美 8월 무역적자 142조원…트럼프 관세 폭탄 이후 최대"
     },
     "link:a8cef0ff475c58080ce12ac5": {
       "first_seen_kst": "2026-10-06T01:16:46+09:00",
@@ -45838,6 +46047,24 @@
       "link": "https://www.mt.co.kr/industry/2026/09/18/2026091808482884383",
       "source": "머니투데이",
       "title": "SK그룹 부회장 3인, SK하이닉스 합류…AI·반도체 힘 싣는다"
+    },
+    "link:cb32ad4dbc5c8318b98f06a0": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.hankyung.com/article/2026100768447",
+      "source": "한국경제",
+      "source_body_digest": "2e1bd482f7b500e937594af667fdc876c7c8b3b0450176de1a62475f3a2ed41d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f33d5b43ea70b1ee7979f8cc1b3dce7d948b6e3f39cd3a578da8ace03418c99",
+      "source_fact_keys": [
+        "source_fact:v1:657c93f28773262ca6b75c9b5d8704230fb8b3a1d5d0e675da236103aba1666f",
+        "source_fact:v1:d5b1eb8a3cedd75b18e2d0c60031d1537e6363813138e67e599dbd73733a07ae"
+      ],
+      "source_published_kst": "2026-10-07T07:22+09:00",
+      "title": "트럼프 \"韓에 관세 낮추려면 대가 지불해야 한다고 했다\""
     },
     "link:cb4871a2c1f5199d2d1c7e6a": {
       "first_seen_kst": "2026-10-02T15:05:30+09:00",
@@ -50255,6 +50482,27 @@
       "source": "매일경제",
       "title": "“참호 구축 지양해야”…이찬진, 은행지주 CEO 선임절차 정조준"
     },
+    "link:eee4ca32b9f0040348847aaa": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170553",
+      "source": "매일경제",
+      "source_body_digest": "b0a9abac7e00b1964ab04a8fd87ba82f2be95633d2b1813807afc40b031a597b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd1ff57e9cf6a2d4af4ab24e41044aea1a3c9c0de07f1753125e6ee4615ed440",
+      "source_fact_keys": [
+        "source_fact:v1:2a5362f2b448e2b988811b5d53819c945fdf2e7dd74b7a6dc43604e655928788",
+        "source_fact:v1:7983f403692513fa8c869c26fd3174430607f96b417e2f211da33025864fb049",
+        "source_fact:v1:a17a488e9208c1f6db5b13dbad7b4af0733320219993ff5553bbda8028dfd2b7",
+        "source_fact:v1:c38efccaef148fd40cb6b044471cf506f90a533a20d25871f6e42419d8e001b9",
+        "source_fact:v1:f457ce3173758d5b6ff8f66efb064a5ece4484f7e38f7d19cef89a129e38cf76"
+      ],
+      "source_published_kst": "2026-10-07T07:44+09:00",
+      "title": "“효성중공업, 매출 이연으로 단기 실적 변동성 확대”"
+    },
     "link:eef8f3a97d8d3b8f2bd11759": {
       "first_seen_kst": "2026-09-25T15:40:29+09:00",
       "lanes": {
@@ -51252,6 +51500,25 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T09:20+09:00",
       "title": "[특징주] LG전자, 북미향 AI데이터센터 냉각솔루션 계약에 장초반 급등 | 연합뉴스"
+    },
+    "link:f7c3c0c91d6b36fae86588cc": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02614166645610624",
+      "source": "이데일리",
+      "source_body_digest": "e3dcc13afe080f4d76193d39d16541727048ad0aedafbe8dc3f66d0b85f56b68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:09fe64d7ad36b74e3b8eb3a3b98eca242b112b7bae5a09d74fb1594b6b5e197b",
+      "source_fact_keys": [
+        "source_fact:v1:1a8878887cb2badc30eacb5756316c2cb0d8d8ee6c3e8061bdddb8d853b0fc77",
+        "source_fact:v1:ae197bb55a8b17d0bf2b62a5311e4302dfed1e7b476c3cce2f082cf7f78982d6",
+        "source_fact:v1:c031cd7b41da0b52416a012931337d06a66ffa47130b6cad5df8a9fd411d1f25"
+      ],
+      "source_published_kst": "2026-10-07T07:33+09:00",
+      "title": "[마켓무버]뉴욕증시, 금리 부담 완화에 일제 상승…AI·반도체가 랠리 주도"
     },
     "link:f7f4121ee81214e2e88c15d7": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
@@ -56684,6 +56951,24 @@
       "source_published_kst": "2026-10-06T11:41+09:00",
       "title": "삼성전기, 글로벌 기업과 MLCC 공급계약… 1년간 2856억원 규모"
     },
+    "original:27f94103256b9d36ad21facb": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.hankyung.com/article/2026100768447",
+      "source": "한국경제",
+      "source_body_digest": "2e1bd482f7b500e937594af667fdc876c7c8b3b0450176de1a62475f3a2ed41d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f33d5b43ea70b1ee7979f8cc1b3dce7d948b6e3f39cd3a578da8ace03418c99",
+      "source_fact_keys": [
+        "source_fact:v1:657c93f28773262ca6b75c9b5d8704230fb8b3a1d5d0e675da236103aba1666f",
+        "source_fact:v1:d5b1eb8a3cedd75b18e2d0c60031d1537e6363813138e67e599dbd73733a07ae"
+      ],
+      "source_published_kst": "2026-10-07T07:22+09:00",
+      "title": "트럼프 \"韓에 관세 낮추려면 대가 지불해야 한다고 했다\""
+    },
     "original:28049a0e245da7d04349902b": {
       "first_seen_kst": "2026-10-01T21:17:39+09:00",
       "lanes": {
@@ -59324,6 +59609,36 @@
       "source": "매일경제",
       "title": "해외 단일종목 레버리지 보관액 석달 새 81% 급감…“국감서 면밀히 살필 것”"
     },
+    "original:3d0e39a4de198be9e7976c41": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.mk.co.kr/news/world/12169879",
+      "source": "매일경제",
+      "source_body_digest": "6345d4bf529ac94969266095eea51b19ac482dc3ce8c1ea0258834a725b59b71",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9efa5338275ac3724b4bb4293c56c89766b08a87fb089a82306055497fc088ba",
+      "source_fact_keys": [
+        "source_fact:v1:1f4b2110487970a266d9632772a0428538f5a6f24c1023055b06460596a7d0c1",
+        "source_fact:v1:3cb52572220b26ae6da65c32fa816a62052c5a1ddfb4198e37b360969ae2fce2",
+        "source_fact:v1:3ccb2573dae28ca80e269db32e9d67800cea4743c2d3baee34853a01ed019a52",
+        "source_fact:v1:4836bf02bd3f69f5be14711216db9cb8601edd108ba4e5b97aee405089f1e329",
+        "source_fact:v1:57ca2840b8442b14360d2df58c6a03d793999f0b40bfe491e5969a4418d1d808",
+        "source_fact:v1:59e7c206c748188d4e87f0fa9e19f91c8ccc278cc89f8a05faa723958ef7a924",
+        "source_fact:v1:5b6e7d7cf2749260e3d84a9c0166788b0a6b452b2203476f8b7e08370c83a3a8",
+        "source_fact:v1:a5cdee8f5267448cdf3fcc5fb97bd146609a477d9b53565adafb43e881ced3b0",
+        "source_fact:v1:c93a71a014ab005cf9de28162b5e5309867de2ac9b5653ba9986935889b174c6",
+        "source_fact:v1:ce5f98af8d7487d02bc2b1683dea66d6460e57cf56327573a758710c1e621b23",
+        "source_fact:v1:cf9fbfa05d41b4c0843eb23284037ab7c90e485eb72a2899515d262a83c8c378",
+        "source_fact:v1:e97378fc039560d0b01aad57125cefe7df7652389261b5cc6aca0d0308cc10a6",
+        "source_fact:v1:ed97fa1c4756522678b3a62d0ddafa36add5ce7ca3c29dac6a01c24a49c0d76c",
+        "source_fact:v1:f24006028571242843f932fbd887c5210882e6aeda7e1414e226576878124839"
+      ],
+      "source_published_kst": "2026-10-07T06:22+09:00",
+      "title": "“러시아 숨통 틔워줬다”…우크라, 韓 ‘석유 공급’ 공개 저격"
+    },
     "original:3d25bc0f354c36cc492c7806": {
       "first_seen_kst": "2026-10-06T23:56:49+09:00",
       "lanes": {
@@ -61282,6 +61597,23 @@
       ],
       "source_published_kst": "2026-10-06T16:55+09:00",
       "title": "알테오젠, 국민성장펀드‧스카이레이크서 2000억원 투자 유치"
+    },
+    "original:4ba44b4008584a80feb10e66": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816490",
+      "source": "뉴시스",
+      "source_body_digest": "21778dd26a724bc366caa1a597751a8951cc24ca3e701bf12afe660410c8ae67",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee340bfd16f12258098f3016cbcd18b55bb35363c6736631c917e76594e9c897",
+      "source_fact_keys": [
+        "source_fact:v1:01f9119e7eb1278777e8b040aacf7a09b614b761b2de6830caec22c7a763ada6"
+      ],
+      "source_published_kst": "2026-10-07T07:48+09:00",
+      "title": "트럼프 \"이란 누가 이끄는지 모른다는 게 가장 큰 문제\""
     },
     "original:4bb6126cbd2c6d9988e024ad": {
       "first_seen_kst": "2026-10-03T12:48:39+09:00",
@@ -63518,6 +63850,25 @@
       "source": "연합뉴스",
       "title": "'국장'은 쉬어도 '미장'은 열린다…추석 전후 챙겨볼 ETF는 | 연합뉴스"
     },
+    "original:601a125d7a9f1458d1980ef8": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02614166645610624",
+      "source": "이데일리",
+      "source_body_digest": "e3dcc13afe080f4d76193d39d16541727048ad0aedafbe8dc3f66d0b85f56b68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:09fe64d7ad36b74e3b8eb3a3b98eca242b112b7bae5a09d74fb1594b6b5e197b",
+      "source_fact_keys": [
+        "source_fact:v1:1a8878887cb2badc30eacb5756316c2cb0d8d8ee6c3e8061bdddb8d853b0fc77",
+        "source_fact:v1:ae197bb55a8b17d0bf2b62a5311e4302dfed1e7b476c3cce2f082cf7f78982d6",
+        "source_fact:v1:c031cd7b41da0b52416a012931337d06a66ffa47130b6cad5df8a9fd411d1f25"
+      ],
+      "source_published_kst": "2026-10-07T07:33+09:00",
+      "title": "[마켓무버]뉴욕증시, 금리 부담 완화에 일제 상승…AI·반도체가 랠리 주도"
+    },
     "original:6061792702cc83ded726fb45": {
       "first_seen_kst": "2026-10-07T06:41:04+09:00",
       "lanes": {
@@ -63871,6 +64222,24 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-07T05:30+09:00",
       "title": "LG전자, AI 냉각사업 공략 가속…북미 대형 계약에 버지니아 공장 신설까지"
+    },
+    "original:62dbee9024b7272de2a2dc0b": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633027",
+      "source": "이투데이",
+      "source_body_digest": "9a3cf64e10d3be0066226c4e5f7dba71800f55d94c8163fabc65be89e108f9a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:46ae5ef178e5c0738f0c760861778b1bc0eedd0f867af86c664e2f4ad322a23a",
+      "source_fact_keys": [
+        "source_fact:v1:147c8d6cee65cef4c458887e36fad71a0af9d951b694b12d274a0ea0f2a2736a",
+        "source_fact:v1:fac9e2a16b28d67dbae7a6654d3112adeec1e7025796f7c257749eb4990f6219"
+      ],
+      "source_published_kst": "2026-10-06T18:28+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 공급 계약 체결⋯K배터리 핵심 도약"
     },
     "original:62f9c84b5ecf402f8f369e1d": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
@@ -74887,6 +75256,26 @@
       "source": "매일경제",
       "title": "구글 AI칩 우주로 쐈다…‘우주 데이터센터’ 첫 실험"
     },
+    "original:c49bcfdb6a034134af39e7d1": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.hankyung.com/article/202610066688i",
+      "source": "한국경제",
+      "source_body_digest": "b1a3a574724800d5b0c475c071ebce76cf3974a4ccd88b7887b17067b3487054",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c2fc4b7904e12b51ec50d0899d3d766a8c53d73235bbed3e9b077119ea19e5f",
+      "source_fact_keys": [
+        "source_fact:v1:10f83cd3fef18bf4ac68f4e9d0d2887b75a9991de58da2303f048b68790c187b",
+        "source_fact:v1:4256b6f574f96a886b93a8355f3b0c819783cd6768bafff3fb9c504de8c9c27a",
+        "source_fact:v1:48afec54eb59c3a743996e45ff269dc2a31aa5312e7d618f2bba5e26c43e7eea",
+        "source_fact:v1:f849e30eec397426fe3ce76d4b43626822dc208d8b0e3425c3418962afed569b"
+      ],
+      "source_published_kst": "2026-10-06T22:37+09:00",
+      "title": "美 8월 무역적자 142조원…트럼프 관세 폭탄 이후 최대"
+    },
     "original:c5005ab280a86061815d6700": {
       "first_seen_kst": "2026-10-03T12:04:07+09:00",
       "lanes": {
@@ -76224,6 +76613,27 @@
       "link": "https://www.mt.co.kr/world/2026/10/02/2026100215032423118",
       "source": "머니투데이",
       "title": "미국 내부서도 '알래스카 LNG' 의문…\"한국과 투자 합의 안 됐다\""
+    },
+    "original:d1ab33c2ce043c7bb8f16087": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170553",
+      "source": "매일경제",
+      "source_body_digest": "b0a9abac7e00b1964ab04a8fd87ba82f2be95633d2b1813807afc40b031a597b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd1ff57e9cf6a2d4af4ab24e41044aea1a3c9c0de07f1753125e6ee4615ed440",
+      "source_fact_keys": [
+        "source_fact:v1:2a5362f2b448e2b988811b5d53819c945fdf2e7dd74b7a6dc43604e655928788",
+        "source_fact:v1:7983f403692513fa8c869c26fd3174430607f96b417e2f211da33025864fb049",
+        "source_fact:v1:a17a488e9208c1f6db5b13dbad7b4af0733320219993ff5553bbda8028dfd2b7",
+        "source_fact:v1:c38efccaef148fd40cb6b044471cf506f90a533a20d25871f6e42419d8e001b9",
+        "source_fact:v1:f457ce3173758d5b6ff8f66efb064a5ece4484f7e38f7d19cef89a129e38cf76"
+      ],
+      "source_published_kst": "2026-10-07T07:44+09:00",
+      "title": "“효성중공업, 매출 이연으로 단기 실적 변동성 확대”"
     },
     "original:d1adaf6b9ef371c30ad9a76d": {
       "first_seen_kst": "2026-09-24T16:13:57+09:00",
@@ -82525,6 +82935,36 @@
       "source_published_kst": "2026-10-05T23:11+09:00",
       "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
     },
+    "source_fact:02d93169e16726abeff374c7": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.mk.co.kr/news/world/12169879",
+      "source": "매일경제",
+      "source_body_digest": "6345d4bf529ac94969266095eea51b19ac482dc3ce8c1ea0258834a725b59b71",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9efa5338275ac3724b4bb4293c56c89766b08a87fb089a82306055497fc088ba",
+      "source_fact_keys": [
+        "source_fact:v1:1f4b2110487970a266d9632772a0428538f5a6f24c1023055b06460596a7d0c1",
+        "source_fact:v1:3cb52572220b26ae6da65c32fa816a62052c5a1ddfb4198e37b360969ae2fce2",
+        "source_fact:v1:3ccb2573dae28ca80e269db32e9d67800cea4743c2d3baee34853a01ed019a52",
+        "source_fact:v1:4836bf02bd3f69f5be14711216db9cb8601edd108ba4e5b97aee405089f1e329",
+        "source_fact:v1:57ca2840b8442b14360d2df58c6a03d793999f0b40bfe491e5969a4418d1d808",
+        "source_fact:v1:59e7c206c748188d4e87f0fa9e19f91c8ccc278cc89f8a05faa723958ef7a924",
+        "source_fact:v1:5b6e7d7cf2749260e3d84a9c0166788b0a6b452b2203476f8b7e08370c83a3a8",
+        "source_fact:v1:a5cdee8f5267448cdf3fcc5fb97bd146609a477d9b53565adafb43e881ced3b0",
+        "source_fact:v1:c93a71a014ab005cf9de28162b5e5309867de2ac9b5653ba9986935889b174c6",
+        "source_fact:v1:ce5f98af8d7487d02bc2b1683dea66d6460e57cf56327573a758710c1e621b23",
+        "source_fact:v1:cf9fbfa05d41b4c0843eb23284037ab7c90e485eb72a2899515d262a83c8c378",
+        "source_fact:v1:e97378fc039560d0b01aad57125cefe7df7652389261b5cc6aca0d0308cc10a6",
+        "source_fact:v1:ed97fa1c4756522678b3a62d0ddafa36add5ce7ca3c29dac6a01c24a49c0d76c",
+        "source_fact:v1:f24006028571242843f932fbd887c5210882e6aeda7e1414e226576878124839"
+      ],
+      "source_published_kst": "2026-10-07T06:22+09:00",
+      "title": "“러시아 숨통 틔워줬다”…우크라, 韓 ‘석유 공급’ 공개 저격"
+    },
     "source_fact:02dbb3e2439c84a3148a599a": {
       "first_seen_kst": "2026-10-07T02:13:12+09:00",
       "lanes": {
@@ -84171,6 +84611,26 @@
       ],
       "source_published_kst": "2026-10-06T10:09+09:00",
       "title": "씨피시스템 \"글로벌 MLCC 제조사사 장비에 '로보킷' 채택\""
+    },
+    "source_fact:09853b076ffc53d6b4467b08": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.hankyung.com/article/202610066688i",
+      "source": "한국경제",
+      "source_body_digest": "b1a3a574724800d5b0c475c071ebce76cf3974a4ccd88b7887b17067b3487054",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c2fc4b7904e12b51ec50d0899d3d766a8c53d73235bbed3e9b077119ea19e5f",
+      "source_fact_keys": [
+        "source_fact:v1:10f83cd3fef18bf4ac68f4e9d0d2887b75a9991de58da2303f048b68790c187b",
+        "source_fact:v1:4256b6f574f96a886b93a8355f3b0c819783cd6768bafff3fb9c504de8c9c27a",
+        "source_fact:v1:48afec54eb59c3a743996e45ff269dc2a31aa5312e7d618f2bba5e26c43e7eea",
+        "source_fact:v1:f849e30eec397426fe3ce76d4b43626822dc208d8b0e3425c3418962afed569b"
+      ],
+      "source_published_kst": "2026-10-06T22:37+09:00",
+      "title": "美 8월 무역적자 142조원…트럼프 관세 폭탄 이후 최대"
     },
     "source_fact:098f39028b860188eb45f5f3": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
@@ -88553,6 +89013,36 @@
       "source_published_kst": "2026-10-06T14:52+09:00",
       "title": "IPARK현대산업개발, 2천812억원 규모 부산 연산13구역 수주 | 연합뉴스"
     },
+    "source_fact:1d1661acc35be8c78c530be9": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.mk.co.kr/news/world/12169879",
+      "source": "매일경제",
+      "source_body_digest": "6345d4bf529ac94969266095eea51b19ac482dc3ce8c1ea0258834a725b59b71",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9efa5338275ac3724b4bb4293c56c89766b08a87fb089a82306055497fc088ba",
+      "source_fact_keys": [
+        "source_fact:v1:1f4b2110487970a266d9632772a0428538f5a6f24c1023055b06460596a7d0c1",
+        "source_fact:v1:3cb52572220b26ae6da65c32fa816a62052c5a1ddfb4198e37b360969ae2fce2",
+        "source_fact:v1:3ccb2573dae28ca80e269db32e9d67800cea4743c2d3baee34853a01ed019a52",
+        "source_fact:v1:4836bf02bd3f69f5be14711216db9cb8601edd108ba4e5b97aee405089f1e329",
+        "source_fact:v1:57ca2840b8442b14360d2df58c6a03d793999f0b40bfe491e5969a4418d1d808",
+        "source_fact:v1:59e7c206c748188d4e87f0fa9e19f91c8ccc278cc89f8a05faa723958ef7a924",
+        "source_fact:v1:5b6e7d7cf2749260e3d84a9c0166788b0a6b452b2203476f8b7e08370c83a3a8",
+        "source_fact:v1:a5cdee8f5267448cdf3fcc5fb97bd146609a477d9b53565adafb43e881ced3b0",
+        "source_fact:v1:c93a71a014ab005cf9de28162b5e5309867de2ac9b5653ba9986935889b174c6",
+        "source_fact:v1:ce5f98af8d7487d02bc2b1683dea66d6460e57cf56327573a758710c1e621b23",
+        "source_fact:v1:cf9fbfa05d41b4c0843eb23284037ab7c90e485eb72a2899515d262a83c8c378",
+        "source_fact:v1:e97378fc039560d0b01aad57125cefe7df7652389261b5cc6aca0d0308cc10a6",
+        "source_fact:v1:ed97fa1c4756522678b3a62d0ddafa36add5ce7ca3c29dac6a01c24a49c0d76c",
+        "source_fact:v1:f24006028571242843f932fbd887c5210882e6aeda7e1414e226576878124839"
+      ],
+      "source_published_kst": "2026-10-07T06:22+09:00",
+      "title": "“러시아 숨통 틔워줬다”…우크라, 韓 ‘석유 공급’ 공개 저격"
+    },
     "source_fact:1d2ef2570b5b773f0ad13f3a": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
       "lanes": {
@@ -89287,6 +89777,36 @@
       ],
       "source_published_kst": "2026-10-07T06:25+09:00",
       "title": "국제유가, 후티 반격ㆍ중동 수출 증가 놓고 강보합⋯WTI 0.01%↑ [상보]"
+    },
+    "source_fact:1ff74353e825fbd3c8e562f7": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.mk.co.kr/news/world/12169879",
+      "source": "매일경제",
+      "source_body_digest": "6345d4bf529ac94969266095eea51b19ac482dc3ce8c1ea0258834a725b59b71",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9efa5338275ac3724b4bb4293c56c89766b08a87fb089a82306055497fc088ba",
+      "source_fact_keys": [
+        "source_fact:v1:1f4b2110487970a266d9632772a0428538f5a6f24c1023055b06460596a7d0c1",
+        "source_fact:v1:3cb52572220b26ae6da65c32fa816a62052c5a1ddfb4198e37b360969ae2fce2",
+        "source_fact:v1:3ccb2573dae28ca80e269db32e9d67800cea4743c2d3baee34853a01ed019a52",
+        "source_fact:v1:4836bf02bd3f69f5be14711216db9cb8601edd108ba4e5b97aee405089f1e329",
+        "source_fact:v1:57ca2840b8442b14360d2df58c6a03d793999f0b40bfe491e5969a4418d1d808",
+        "source_fact:v1:59e7c206c748188d4e87f0fa9e19f91c8ccc278cc89f8a05faa723958ef7a924",
+        "source_fact:v1:5b6e7d7cf2749260e3d84a9c0166788b0a6b452b2203476f8b7e08370c83a3a8",
+        "source_fact:v1:a5cdee8f5267448cdf3fcc5fb97bd146609a477d9b53565adafb43e881ced3b0",
+        "source_fact:v1:c93a71a014ab005cf9de28162b5e5309867de2ac9b5653ba9986935889b174c6",
+        "source_fact:v1:ce5f98af8d7487d02bc2b1683dea66d6460e57cf56327573a758710c1e621b23",
+        "source_fact:v1:cf9fbfa05d41b4c0843eb23284037ab7c90e485eb72a2899515d262a83c8c378",
+        "source_fact:v1:e97378fc039560d0b01aad57125cefe7df7652389261b5cc6aca0d0308cc10a6",
+        "source_fact:v1:ed97fa1c4756522678b3a62d0ddafa36add5ce7ca3c29dac6a01c24a49c0d76c",
+        "source_fact:v1:f24006028571242843f932fbd887c5210882e6aeda7e1414e226576878124839"
+      ],
+      "source_published_kst": "2026-10-07T06:22+09:00",
+      "title": "“러시아 숨통 틔워줬다”…우크라, 韓 ‘석유 공급’ 공개 저격"
     },
     "source_fact:1ffa094a2334ade5bf0691fc": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
@@ -93166,6 +93686,26 @@
       "source_published_kst": "2026-10-06T17:03+09:00",
       "title": "누리호 5차 발사 D-1…'K우주 밸류체인' 기술력 모였다"
     },
+    "source_fact:2eb92f3edd4faa8e49ba48f5": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.hankyung.com/article/202610066688i",
+      "source": "한국경제",
+      "source_body_digest": "b1a3a574724800d5b0c475c071ebce76cf3974a4ccd88b7887b17067b3487054",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c2fc4b7904e12b51ec50d0899d3d766a8c53d73235bbed3e9b077119ea19e5f",
+      "source_fact_keys": [
+        "source_fact:v1:10f83cd3fef18bf4ac68f4e9d0d2887b75a9991de58da2303f048b68790c187b",
+        "source_fact:v1:4256b6f574f96a886b93a8355f3b0c819783cd6768bafff3fb9c504de8c9c27a",
+        "source_fact:v1:48afec54eb59c3a743996e45ff269dc2a31aa5312e7d618f2bba5e26c43e7eea",
+        "source_fact:v1:f849e30eec397426fe3ce76d4b43626822dc208d8b0e3425c3418962afed569b"
+      ],
+      "source_published_kst": "2026-10-06T22:37+09:00",
+      "title": "美 8월 무역적자 142조원…트럼프 관세 폭탄 이후 최대"
+    },
     "source_fact:2ecff704b343b04a16833310": {
       "first_seen_kst": "2026-10-07T02:24:39+09:00",
       "lanes": {
@@ -95314,6 +95854,27 @@
       "source_published_kst": "2026-10-06T15:45+09:00",
       "title": "NH투자증권, 기업금융·투자수익 두 토끼…IMA로 잡는다"
     },
+    "source_fact:366fee3160e25f98fb1a42fa": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170553",
+      "source": "매일경제",
+      "source_body_digest": "b0a9abac7e00b1964ab04a8fd87ba82f2be95633d2b1813807afc40b031a597b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd1ff57e9cf6a2d4af4ab24e41044aea1a3c9c0de07f1753125e6ee4615ed440",
+      "source_fact_keys": [
+        "source_fact:v1:2a5362f2b448e2b988811b5d53819c945fdf2e7dd74b7a6dc43604e655928788",
+        "source_fact:v1:7983f403692513fa8c869c26fd3174430607f96b417e2f211da33025864fb049",
+        "source_fact:v1:a17a488e9208c1f6db5b13dbad7b4af0733320219993ff5553bbda8028dfd2b7",
+        "source_fact:v1:c38efccaef148fd40cb6b044471cf506f90a533a20d25871f6e42419d8e001b9",
+        "source_fact:v1:f457ce3173758d5b6ff8f66efb064a5ece4484f7e38f7d19cef89a129e38cf76"
+      ],
+      "source_published_kst": "2026-10-07T07:44+09:00",
+      "title": "“효성중공업, 매출 이연으로 단기 실적 변동성 확대”"
+    },
     "source_fact:36880bd023dad2554b204286": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
       "lanes": {
@@ -95879,6 +96440,26 @@
       ],
       "source_published_kst": "2026-10-06T13:35+09:00",
       "title": "조준희 KOSA 회장 \"AI 수요·공급기업 한자리에…실제 사업으로 연결\""
+    },
+    "source_fact:389c69d3fc9b86f9d85c7b12": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.hankyung.com/article/202610066688i",
+      "source": "한국경제",
+      "source_body_digest": "b1a3a574724800d5b0c475c071ebce76cf3974a4ccd88b7887b17067b3487054",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c2fc4b7904e12b51ec50d0899d3d766a8c53d73235bbed3e9b077119ea19e5f",
+      "source_fact_keys": [
+        "source_fact:v1:10f83cd3fef18bf4ac68f4e9d0d2887b75a9991de58da2303f048b68790c187b",
+        "source_fact:v1:4256b6f574f96a886b93a8355f3b0c819783cd6768bafff3fb9c504de8c9c27a",
+        "source_fact:v1:48afec54eb59c3a743996e45ff269dc2a31aa5312e7d618f2bba5e26c43e7eea",
+        "source_fact:v1:f849e30eec397426fe3ce76d4b43626822dc208d8b0e3425c3418962afed569b"
+      ],
+      "source_published_kst": "2026-10-06T22:37+09:00",
+      "title": "美 8월 무역적자 142조원…트럼프 관세 폭탄 이후 최대"
     },
     "source_fact:38c13a1895c54b6e8b0754ed": {
       "first_seen_kst": "2026-10-06T16:20:22+09:00",
@@ -97451,6 +98032,24 @@
       "source_published_kst": "2026-10-06T17:24+09:00",
       "title": "포스코퓨처엠, 삼성SDI에 LFP 양극재 6조원어치 공급"
     },
+    "source_fact:3fe67e32f34f69b8dc47fa56": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.hankyung.com/article/2026100768447",
+      "source": "한국경제",
+      "source_body_digest": "2e1bd482f7b500e937594af667fdc876c7c8b3b0450176de1a62475f3a2ed41d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f33d5b43ea70b1ee7979f8cc1b3dce7d948b6e3f39cd3a578da8ace03418c99",
+      "source_fact_keys": [
+        "source_fact:v1:657c93f28773262ca6b75c9b5d8704230fb8b3a1d5d0e675da236103aba1666f",
+        "source_fact:v1:d5b1eb8a3cedd75b18e2d0c60031d1537e6363813138e67e599dbd73733a07ae"
+      ],
+      "source_published_kst": "2026-10-07T07:22+09:00",
+      "title": "트럼프 \"韓에 관세 낮추려면 대가 지불해야 한다고 했다\""
+    },
     "source_fact:3ff31227a26ea3b9964ffbb3": {
       "first_seen_kst": "2026-10-07T07:39:19+09:00",
       "lanes": {
@@ -98414,6 +99013,27 @@
       "source_published_kst": "2026-10-06T17:45+09:00",
       "title": "삼성전기, MLCC 또 장기계약"
     },
+    "source_fact:4391882c16da4a919ef54c7b": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170553",
+      "source": "매일경제",
+      "source_body_digest": "b0a9abac7e00b1964ab04a8fd87ba82f2be95633d2b1813807afc40b031a597b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd1ff57e9cf6a2d4af4ab24e41044aea1a3c9c0de07f1753125e6ee4615ed440",
+      "source_fact_keys": [
+        "source_fact:v1:2a5362f2b448e2b988811b5d53819c945fdf2e7dd74b7a6dc43604e655928788",
+        "source_fact:v1:7983f403692513fa8c869c26fd3174430607f96b417e2f211da33025864fb049",
+        "source_fact:v1:a17a488e9208c1f6db5b13dbad7b4af0733320219993ff5553bbda8028dfd2b7",
+        "source_fact:v1:c38efccaef148fd40cb6b044471cf506f90a533a20d25871f6e42419d8e001b9",
+        "source_fact:v1:f457ce3173758d5b6ff8f66efb064a5ece4484f7e38f7d19cef89a129e38cf76"
+      ],
+      "source_published_kst": "2026-10-07T07:44+09:00",
+      "title": "“효성중공업, 매출 이연으로 단기 실적 변동성 확대”"
+    },
     "source_fact:43a882c1e5c9f6963faaaa41": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -98946,6 +99566,23 @@
       "source_published_kst": "2026-10-06T10:56+09:00",
       "title": "스타벅스 '블글라' 누적 3000만잔 돌파"
     },
+    "source_fact:46038af873ccb09157ab3d43": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816490",
+      "source": "뉴시스",
+      "source_body_digest": "21778dd26a724bc366caa1a597751a8951cc24ca3e701bf12afe660410c8ae67",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee340bfd16f12258098f3016cbcd18b55bb35363c6736631c917e76594e9c897",
+      "source_fact_keys": [
+        "source_fact:v1:01f9119e7eb1278777e8b040aacf7a09b614b761b2de6830caec22c7a763ada6"
+      ],
+      "source_published_kst": "2026-10-07T07:48+09:00",
+      "title": "트럼프 \"이란 누가 이끄는지 모른다는 게 가장 큰 문제\""
+    },
     "source_fact:4619c06e12d647704fb08896": {
       "first_seen_kst": "2026-10-05T23:37:00+09:00",
       "lanes": {
@@ -99009,6 +99646,24 @@
       ],
       "source_published_kst": "2026-10-06T23:31+09:00",
       "title": "우크라, '한국의 러 석유공급' 기사 인용해 韓 비판(종합) | 연합뉴스"
+    },
+    "source_fact:464e18ff2aa1d23ca5cd118b": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.hankyung.com/article/2026100768447",
+      "source": "한국경제",
+      "source_body_digest": "2e1bd482f7b500e937594af667fdc876c7c8b3b0450176de1a62475f3a2ed41d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f33d5b43ea70b1ee7979f8cc1b3dce7d948b6e3f39cd3a578da8ace03418c99",
+      "source_fact_keys": [
+        "source_fact:v1:657c93f28773262ca6b75c9b5d8704230fb8b3a1d5d0e675da236103aba1666f",
+        "source_fact:v1:d5b1eb8a3cedd75b18e2d0c60031d1537e6363813138e67e599dbd73733a07ae"
+      ],
+      "source_published_kst": "2026-10-07T07:22+09:00",
+      "title": "트럼프 \"韓에 관세 낮추려면 대가 지불해야 한다고 했다\""
     },
     "source_fact:467cc42b894e7e9e7910aa15": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
@@ -110128,6 +110783,36 @@
       "source_published_kst": "2026-10-06T11:27+09:00",
       "title": "스페이스X, AI 사업 기대감에 날아 올랐다"
     },
+    "source_fact:720f905ef5917708a0d29951": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.mk.co.kr/news/world/12169879",
+      "source": "매일경제",
+      "source_body_digest": "6345d4bf529ac94969266095eea51b19ac482dc3ce8c1ea0258834a725b59b71",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9efa5338275ac3724b4bb4293c56c89766b08a87fb089a82306055497fc088ba",
+      "source_fact_keys": [
+        "source_fact:v1:1f4b2110487970a266d9632772a0428538f5a6f24c1023055b06460596a7d0c1",
+        "source_fact:v1:3cb52572220b26ae6da65c32fa816a62052c5a1ddfb4198e37b360969ae2fce2",
+        "source_fact:v1:3ccb2573dae28ca80e269db32e9d67800cea4743c2d3baee34853a01ed019a52",
+        "source_fact:v1:4836bf02bd3f69f5be14711216db9cb8601edd108ba4e5b97aee405089f1e329",
+        "source_fact:v1:57ca2840b8442b14360d2df58c6a03d793999f0b40bfe491e5969a4418d1d808",
+        "source_fact:v1:59e7c206c748188d4e87f0fa9e19f91c8ccc278cc89f8a05faa723958ef7a924",
+        "source_fact:v1:5b6e7d7cf2749260e3d84a9c0166788b0a6b452b2203476f8b7e08370c83a3a8",
+        "source_fact:v1:a5cdee8f5267448cdf3fcc5fb97bd146609a477d9b53565adafb43e881ced3b0",
+        "source_fact:v1:c93a71a014ab005cf9de28162b5e5309867de2ac9b5653ba9986935889b174c6",
+        "source_fact:v1:ce5f98af8d7487d02bc2b1683dea66d6460e57cf56327573a758710c1e621b23",
+        "source_fact:v1:cf9fbfa05d41b4c0843eb23284037ab7c90e485eb72a2899515d262a83c8c378",
+        "source_fact:v1:e97378fc039560d0b01aad57125cefe7df7652389261b5cc6aca0d0308cc10a6",
+        "source_fact:v1:ed97fa1c4756522678b3a62d0ddafa36add5ce7ca3c29dac6a01c24a49c0d76c",
+        "source_fact:v1:f24006028571242843f932fbd887c5210882e6aeda7e1414e226576878124839"
+      ],
+      "source_published_kst": "2026-10-07T06:22+09:00",
+      "title": "“러시아 숨통 틔워줬다”…우크라, 韓 ‘석유 공급’ 공개 저격"
+    },
     "source_fact:721f459749f363255ccccf97": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
       "lanes": {
@@ -111000,32 +111685,55 @@
       "source_published_kst": "2026-10-05T12:55+09:00",
       "title": "예멘군, 미국·사우디 지원받아 친이란 후티에 총반격 돌입(종합) | 연합뉴스"
     },
+    "source_fact:754f576eec4fe004f7eb04a9": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.hankyung.com/article/202610066688i",
+      "source": "한국경제",
+      "source_body_digest": "b1a3a574724800d5b0c475c071ebce76cf3974a4ccd88b7887b17067b3487054",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c2fc4b7904e12b51ec50d0899d3d766a8c53d73235bbed3e9b077119ea19e5f",
+      "source_fact_keys": [
+        "source_fact:v1:10f83cd3fef18bf4ac68f4e9d0d2887b75a9991de58da2303f048b68790c187b",
+        "source_fact:v1:4256b6f574f96a886b93a8355f3b0c819783cd6768bafff3fb9c504de8c9c27a",
+        "source_fact:v1:48afec54eb59c3a743996e45ff269dc2a31aa5312e7d618f2bba5e26c43e7eea",
+        "source_fact:v1:f849e30eec397426fe3ce76d4b43626822dc208d8b0e3425c3418962afed569b"
+      ],
+      "source_published_kst": "2026-10-06T22:37+09:00",
+      "title": "美 8월 무역적자 142조원…트럼프 관세 폭탄 이후 최대"
+    },
     "source_fact:756fba67ddaaaa993b29015f": {
       "first_seen_kst": "2026-10-06T23:46:46+09:00",
       "lanes": {
-        "live": "2026-10-06T23:46:46+09:00"
+        "live": "2026-10-07T07:54:25+09:00"
       },
-      "last_seen_kst": "2026-10-06T23:46:46+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261006199951109",
-      "source": "연합뉴스",
-      "source_body_digest": "66927d5dfa06d5dd2a4d2de6bcbf3b08cd41c23381f4218f3f8cb9e5824dbbfa",
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.mk.co.kr/news/world/12169879",
+      "source": "매일경제",
+      "source_body_digest": "6345d4bf529ac94969266095eea51b19ac482dc3ce8c1ea0258834a725b59b71",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:03dffdb58aba38d5e14a4e258d0ce8b58b7640847f0110e126afb88a29103199",
+      "source_fact_identity": "source_facts:v1:9efa5338275ac3724b4bb4293c56c89766b08a87fb089a82306055497fc088ba",
       "source_fact_keys": [
-        "source_fact:v1:0b28f7bbc016b4707118a853c0b6d32928202d9dfe889520b844faec6e657e71",
-        "source_fact:v1:0bfaf04dd0178e70a597369fad26f41748af0cbb6f3098de32a34b6b8c4d635e",
-        "source_fact:v1:26e4043005bc0cd2f746b253786b4dc23deb5b37fd85516800a1b849531047a6",
+        "source_fact:v1:1f4b2110487970a266d9632772a0428538f5a6f24c1023055b06460596a7d0c1",
         "source_fact:v1:3cb52572220b26ae6da65c32fa816a62052c5a1ddfb4198e37b360969ae2fce2",
+        "source_fact:v1:3ccb2573dae28ca80e269db32e9d67800cea4743c2d3baee34853a01ed019a52",
         "source_fact:v1:4836bf02bd3f69f5be14711216db9cb8601edd108ba4e5b97aee405089f1e329",
-        "source_fact:v1:5848abfb7c1f10c550113cad28075c2f936ecf97ebe53382454eaa2408df2de4",
-        "source_fact:v1:7e484f08553123965396c069cebc127887d12d83eb3d1feb3719bdfdcff0f80a",
-        "source_fact:v1:8d53c65b5e7a8fab3b649410acde1058144d7f44d8fdb64f92aec9b254fd2b1a",
-        "source_fact:v1:cdee911877e6c89f10674dfe7130acbdcdc7444952b8b7d51c8a2ae3c134df7b",
+        "source_fact:v1:57ca2840b8442b14360d2df58c6a03d793999f0b40bfe491e5969a4418d1d808",
+        "source_fact:v1:59e7c206c748188d4e87f0fa9e19f91c8ccc278cc89f8a05faa723958ef7a924",
+        "source_fact:v1:5b6e7d7cf2749260e3d84a9c0166788b0a6b452b2203476f8b7e08370c83a3a8",
+        "source_fact:v1:a5cdee8f5267448cdf3fcc5fb97bd146609a477d9b53565adafb43e881ced3b0",
+        "source_fact:v1:c93a71a014ab005cf9de28162b5e5309867de2ac9b5653ba9986935889b174c6",
         "source_fact:v1:ce5f98af8d7487d02bc2b1683dea66d6460e57cf56327573a758710c1e621b23",
-        "source_fact:v1:ed97fa1c4756522678b3a62d0ddafa36add5ce7ca3c29dac6a01c24a49c0d76c"
+        "source_fact:v1:cf9fbfa05d41b4c0843eb23284037ab7c90e485eb72a2899515d262a83c8c378",
+        "source_fact:v1:e97378fc039560d0b01aad57125cefe7df7652389261b5cc6aca0d0308cc10a6",
+        "source_fact:v1:ed97fa1c4756522678b3a62d0ddafa36add5ce7ca3c29dac6a01c24a49c0d76c",
+        "source_fact:v1:f24006028571242843f932fbd887c5210882e6aeda7e1414e226576878124839"
       ],
-      "source_published_kst": "2026-10-06T23:31+09:00",
-      "title": "우크라, '한국의 러 석유공급' 기사 인용해 韓 비판(종합) | 연합뉴스"
+      "source_published_kst": "2026-10-07T06:22+09:00",
+      "title": "“러시아 숨통 틔워줬다”…우크라, 韓 ‘석유 공급’ 공개 저격"
     },
     "source_fact:7588e40cf646f8cec9dfa7f3": {
       "first_seen_kst": "2026-10-06T22:21:21+09:00",
@@ -112759,6 +113467,36 @@
       "source_published_kst": "2026-10-06T17:42+09:00",
       "title": "코스피, 외인 팔자에 또다시 7000선 밑으로…코스닥 3%↑"
     },
+    "source_fact:7bd57d4d170c45a1e62af0aa": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.mk.co.kr/news/world/12169879",
+      "source": "매일경제",
+      "source_body_digest": "6345d4bf529ac94969266095eea51b19ac482dc3ce8c1ea0258834a725b59b71",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9efa5338275ac3724b4bb4293c56c89766b08a87fb089a82306055497fc088ba",
+      "source_fact_keys": [
+        "source_fact:v1:1f4b2110487970a266d9632772a0428538f5a6f24c1023055b06460596a7d0c1",
+        "source_fact:v1:3cb52572220b26ae6da65c32fa816a62052c5a1ddfb4198e37b360969ae2fce2",
+        "source_fact:v1:3ccb2573dae28ca80e269db32e9d67800cea4743c2d3baee34853a01ed019a52",
+        "source_fact:v1:4836bf02bd3f69f5be14711216db9cb8601edd108ba4e5b97aee405089f1e329",
+        "source_fact:v1:57ca2840b8442b14360d2df58c6a03d793999f0b40bfe491e5969a4418d1d808",
+        "source_fact:v1:59e7c206c748188d4e87f0fa9e19f91c8ccc278cc89f8a05faa723958ef7a924",
+        "source_fact:v1:5b6e7d7cf2749260e3d84a9c0166788b0a6b452b2203476f8b7e08370c83a3a8",
+        "source_fact:v1:a5cdee8f5267448cdf3fcc5fb97bd146609a477d9b53565adafb43e881ced3b0",
+        "source_fact:v1:c93a71a014ab005cf9de28162b5e5309867de2ac9b5653ba9986935889b174c6",
+        "source_fact:v1:ce5f98af8d7487d02bc2b1683dea66d6460e57cf56327573a758710c1e621b23",
+        "source_fact:v1:cf9fbfa05d41b4c0843eb23284037ab7c90e485eb72a2899515d262a83c8c378",
+        "source_fact:v1:e97378fc039560d0b01aad57125cefe7df7652389261b5cc6aca0d0308cc10a6",
+        "source_fact:v1:ed97fa1c4756522678b3a62d0ddafa36add5ce7ca3c29dac6a01c24a49c0d76c",
+        "source_fact:v1:f24006028571242843f932fbd887c5210882e6aeda7e1414e226576878124839"
+      ],
+      "source_published_kst": "2026-10-07T06:22+09:00",
+      "title": "“러시아 숨통 틔워줬다”…우크라, 韓 ‘석유 공급’ 공개 저격"
+    },
     "source_fact:7be082036b951e9eee45a9ea": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -114336,6 +115074,25 @@
       "source_published_kst": "2026-10-06T17:18+09:00",
       "title": "국고채 금리, 대외금리 연동하며 혼조세…3년물 3.933%(종합) | 연합뉴스"
     },
+    "source_fact:8170155869e59ba27d0fb3c0": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02614166645610624",
+      "source": "이데일리",
+      "source_body_digest": "e3dcc13afe080f4d76193d39d16541727048ad0aedafbe8dc3f66d0b85f56b68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:09fe64d7ad36b74e3b8eb3a3b98eca242b112b7bae5a09d74fb1594b6b5e197b",
+      "source_fact_keys": [
+        "source_fact:v1:1a8878887cb2badc30eacb5756316c2cb0d8d8ee6c3e8061bdddb8d853b0fc77",
+        "source_fact:v1:ae197bb55a8b17d0bf2b62a5311e4302dfed1e7b476c3cce2f082cf7f78982d6",
+        "source_fact:v1:c031cd7b41da0b52416a012931337d06a66ffa47130b6cad5df8a9fd411d1f25"
+      ],
+      "source_published_kst": "2026-10-07T07:33+09:00",
+      "title": "[마켓무버]뉴욕증시, 금리 부담 완화에 일제 상승…AI·반도체가 랠리 주도"
+    },
     "source_fact:817e7b8281469189bce72c9a": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
       "lanes": {
@@ -115803,29 +116560,32 @@
     "source_fact:878b2dba854401360cafe7dc": {
       "first_seen_kst": "2026-10-06T23:46:46+09:00",
       "lanes": {
-        "live": "2026-10-06T23:46:46+09:00"
+        "live": "2026-10-07T07:54:25+09:00"
       },
-      "last_seen_kst": "2026-10-06T23:46:46+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261006199951109",
-      "source": "연합뉴스",
-      "source_body_digest": "66927d5dfa06d5dd2a4d2de6bcbf3b08cd41c23381f4218f3f8cb9e5824dbbfa",
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.mk.co.kr/news/world/12169879",
+      "source": "매일경제",
+      "source_body_digest": "6345d4bf529ac94969266095eea51b19ac482dc3ce8c1ea0258834a725b59b71",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:03dffdb58aba38d5e14a4e258d0ce8b58b7640847f0110e126afb88a29103199",
+      "source_fact_identity": "source_facts:v1:9efa5338275ac3724b4bb4293c56c89766b08a87fb089a82306055497fc088ba",
       "source_fact_keys": [
-        "source_fact:v1:0b28f7bbc016b4707118a853c0b6d32928202d9dfe889520b844faec6e657e71",
-        "source_fact:v1:0bfaf04dd0178e70a597369fad26f41748af0cbb6f3098de32a34b6b8c4d635e",
-        "source_fact:v1:26e4043005bc0cd2f746b253786b4dc23deb5b37fd85516800a1b849531047a6",
+        "source_fact:v1:1f4b2110487970a266d9632772a0428538f5a6f24c1023055b06460596a7d0c1",
         "source_fact:v1:3cb52572220b26ae6da65c32fa816a62052c5a1ddfb4198e37b360969ae2fce2",
+        "source_fact:v1:3ccb2573dae28ca80e269db32e9d67800cea4743c2d3baee34853a01ed019a52",
         "source_fact:v1:4836bf02bd3f69f5be14711216db9cb8601edd108ba4e5b97aee405089f1e329",
-        "source_fact:v1:5848abfb7c1f10c550113cad28075c2f936ecf97ebe53382454eaa2408df2de4",
-        "source_fact:v1:7e484f08553123965396c069cebc127887d12d83eb3d1feb3719bdfdcff0f80a",
-        "source_fact:v1:8d53c65b5e7a8fab3b649410acde1058144d7f44d8fdb64f92aec9b254fd2b1a",
-        "source_fact:v1:cdee911877e6c89f10674dfe7130acbdcdc7444952b8b7d51c8a2ae3c134df7b",
+        "source_fact:v1:57ca2840b8442b14360d2df58c6a03d793999f0b40bfe491e5969a4418d1d808",
+        "source_fact:v1:59e7c206c748188d4e87f0fa9e19f91c8ccc278cc89f8a05faa723958ef7a924",
+        "source_fact:v1:5b6e7d7cf2749260e3d84a9c0166788b0a6b452b2203476f8b7e08370c83a3a8",
+        "source_fact:v1:a5cdee8f5267448cdf3fcc5fb97bd146609a477d9b53565adafb43e881ced3b0",
+        "source_fact:v1:c93a71a014ab005cf9de28162b5e5309867de2ac9b5653ba9986935889b174c6",
         "source_fact:v1:ce5f98af8d7487d02bc2b1683dea66d6460e57cf56327573a758710c1e621b23",
-        "source_fact:v1:ed97fa1c4756522678b3a62d0ddafa36add5ce7ca3c29dac6a01c24a49c0d76c"
+        "source_fact:v1:cf9fbfa05d41b4c0843eb23284037ab7c90e485eb72a2899515d262a83c8c378",
+        "source_fact:v1:e97378fc039560d0b01aad57125cefe7df7652389261b5cc6aca0d0308cc10a6",
+        "source_fact:v1:ed97fa1c4756522678b3a62d0ddafa36add5ce7ca3c29dac6a01c24a49c0d76c",
+        "source_fact:v1:f24006028571242843f932fbd887c5210882e6aeda7e1414e226576878124839"
       ],
-      "source_published_kst": "2026-10-06T23:31+09:00",
-      "title": "우크라, '한국의 러 석유공급' 기사 인용해 韓 비판(종합) | 연합뉴스"
+      "source_published_kst": "2026-10-07T06:22+09:00",
+      "title": "“러시아 숨통 틔워줬다”…우크라, 韓 ‘석유 공급’ 공개 저격"
     },
     "source_fact:87a0587ade2d1b03adafebf7": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
@@ -116119,6 +116879,27 @@
       ],
       "source_published_kst": "2026-10-06T11:49+09:00",
       "title": "野, '호남 반도체' 공세...김정관 산업장관 \"기업이 먼저 서남권 투자 제안\""
+    },
+    "source_fact:88c7d84163440cfa6be16f99": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170553",
+      "source": "매일경제",
+      "source_body_digest": "b0a9abac7e00b1964ab04a8fd87ba82f2be95633d2b1813807afc40b031a597b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd1ff57e9cf6a2d4af4ab24e41044aea1a3c9c0de07f1753125e6ee4615ed440",
+      "source_fact_keys": [
+        "source_fact:v1:2a5362f2b448e2b988811b5d53819c945fdf2e7dd74b7a6dc43604e655928788",
+        "source_fact:v1:7983f403692513fa8c869c26fd3174430607f96b417e2f211da33025864fb049",
+        "source_fact:v1:a17a488e9208c1f6db5b13dbad7b4af0733320219993ff5553bbda8028dfd2b7",
+        "source_fact:v1:c38efccaef148fd40cb6b044471cf506f90a533a20d25871f6e42419d8e001b9",
+        "source_fact:v1:f457ce3173758d5b6ff8f66efb064a5ece4484f7e38f7d19cef89a129e38cf76"
+      ],
+      "source_published_kst": "2026-10-07T07:44+09:00",
+      "title": "“효성중공업, 매출 이연으로 단기 실적 변동성 확대”"
     },
     "source_fact:893e202d79673946794c3c63": {
       "first_seen_kst": "2026-10-06T16:30:27+09:00",
@@ -116804,29 +117585,32 @@
     "source_fact:8c504cb1aa500b9314382654": {
       "first_seen_kst": "2026-10-06T23:46:46+09:00",
       "lanes": {
-        "live": "2026-10-06T23:46:46+09:00"
+        "live": "2026-10-07T07:54:25+09:00"
       },
-      "last_seen_kst": "2026-10-06T23:46:46+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261006199951109",
-      "source": "연합뉴스",
-      "source_body_digest": "66927d5dfa06d5dd2a4d2de6bcbf3b08cd41c23381f4218f3f8cb9e5824dbbfa",
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.mk.co.kr/news/world/12169879",
+      "source": "매일경제",
+      "source_body_digest": "6345d4bf529ac94969266095eea51b19ac482dc3ce8c1ea0258834a725b59b71",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:03dffdb58aba38d5e14a4e258d0ce8b58b7640847f0110e126afb88a29103199",
+      "source_fact_identity": "source_facts:v1:9efa5338275ac3724b4bb4293c56c89766b08a87fb089a82306055497fc088ba",
       "source_fact_keys": [
-        "source_fact:v1:0b28f7bbc016b4707118a853c0b6d32928202d9dfe889520b844faec6e657e71",
-        "source_fact:v1:0bfaf04dd0178e70a597369fad26f41748af0cbb6f3098de32a34b6b8c4d635e",
-        "source_fact:v1:26e4043005bc0cd2f746b253786b4dc23deb5b37fd85516800a1b849531047a6",
+        "source_fact:v1:1f4b2110487970a266d9632772a0428538f5a6f24c1023055b06460596a7d0c1",
         "source_fact:v1:3cb52572220b26ae6da65c32fa816a62052c5a1ddfb4198e37b360969ae2fce2",
+        "source_fact:v1:3ccb2573dae28ca80e269db32e9d67800cea4743c2d3baee34853a01ed019a52",
         "source_fact:v1:4836bf02bd3f69f5be14711216db9cb8601edd108ba4e5b97aee405089f1e329",
-        "source_fact:v1:5848abfb7c1f10c550113cad28075c2f936ecf97ebe53382454eaa2408df2de4",
-        "source_fact:v1:7e484f08553123965396c069cebc127887d12d83eb3d1feb3719bdfdcff0f80a",
-        "source_fact:v1:8d53c65b5e7a8fab3b649410acde1058144d7f44d8fdb64f92aec9b254fd2b1a",
-        "source_fact:v1:cdee911877e6c89f10674dfe7130acbdcdc7444952b8b7d51c8a2ae3c134df7b",
+        "source_fact:v1:57ca2840b8442b14360d2df58c6a03d793999f0b40bfe491e5969a4418d1d808",
+        "source_fact:v1:59e7c206c748188d4e87f0fa9e19f91c8ccc278cc89f8a05faa723958ef7a924",
+        "source_fact:v1:5b6e7d7cf2749260e3d84a9c0166788b0a6b452b2203476f8b7e08370c83a3a8",
+        "source_fact:v1:a5cdee8f5267448cdf3fcc5fb97bd146609a477d9b53565adafb43e881ced3b0",
+        "source_fact:v1:c93a71a014ab005cf9de28162b5e5309867de2ac9b5653ba9986935889b174c6",
         "source_fact:v1:ce5f98af8d7487d02bc2b1683dea66d6460e57cf56327573a758710c1e621b23",
-        "source_fact:v1:ed97fa1c4756522678b3a62d0ddafa36add5ce7ca3c29dac6a01c24a49c0d76c"
+        "source_fact:v1:cf9fbfa05d41b4c0843eb23284037ab7c90e485eb72a2899515d262a83c8c378",
+        "source_fact:v1:e97378fc039560d0b01aad57125cefe7df7652389261b5cc6aca0d0308cc10a6",
+        "source_fact:v1:ed97fa1c4756522678b3a62d0ddafa36add5ce7ca3c29dac6a01c24a49c0d76c",
+        "source_fact:v1:f24006028571242843f932fbd887c5210882e6aeda7e1414e226576878124839"
       ],
-      "source_published_kst": "2026-10-06T23:31+09:00",
-      "title": "우크라, '한국의 러 석유공급' 기사 인용해 韓 비판(종합) | 연합뉴스"
+      "source_published_kst": "2026-10-07T06:22+09:00",
+      "title": "“러시아 숨통 틔워줬다”…우크라, 韓 ‘석유 공급’ 공개 저격"
     },
     "source_fact:8c551e3dc3840e2d7675c154": {
       "first_seen_kst": "2026-10-07T02:13:12+09:00",
@@ -122282,6 +123066,36 @@
       "source_published_kst": "2026-10-06T17:00+09:00",
       "title": "SK인텔릭스, '나무엑스' 中 위탁생산 추진…원가 경쟁력 확보 '승부수'"
     },
+    "source_fact:a16f7147910df3f671bdb70d": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.mk.co.kr/news/world/12169879",
+      "source": "매일경제",
+      "source_body_digest": "6345d4bf529ac94969266095eea51b19ac482dc3ce8c1ea0258834a725b59b71",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9efa5338275ac3724b4bb4293c56c89766b08a87fb089a82306055497fc088ba",
+      "source_fact_keys": [
+        "source_fact:v1:1f4b2110487970a266d9632772a0428538f5a6f24c1023055b06460596a7d0c1",
+        "source_fact:v1:3cb52572220b26ae6da65c32fa816a62052c5a1ddfb4198e37b360969ae2fce2",
+        "source_fact:v1:3ccb2573dae28ca80e269db32e9d67800cea4743c2d3baee34853a01ed019a52",
+        "source_fact:v1:4836bf02bd3f69f5be14711216db9cb8601edd108ba4e5b97aee405089f1e329",
+        "source_fact:v1:57ca2840b8442b14360d2df58c6a03d793999f0b40bfe491e5969a4418d1d808",
+        "source_fact:v1:59e7c206c748188d4e87f0fa9e19f91c8ccc278cc89f8a05faa723958ef7a924",
+        "source_fact:v1:5b6e7d7cf2749260e3d84a9c0166788b0a6b452b2203476f8b7e08370c83a3a8",
+        "source_fact:v1:a5cdee8f5267448cdf3fcc5fb97bd146609a477d9b53565adafb43e881ced3b0",
+        "source_fact:v1:c93a71a014ab005cf9de28162b5e5309867de2ac9b5653ba9986935889b174c6",
+        "source_fact:v1:ce5f98af8d7487d02bc2b1683dea66d6460e57cf56327573a758710c1e621b23",
+        "source_fact:v1:cf9fbfa05d41b4c0843eb23284037ab7c90e485eb72a2899515d262a83c8c378",
+        "source_fact:v1:e97378fc039560d0b01aad57125cefe7df7652389261b5cc6aca0d0308cc10a6",
+        "source_fact:v1:ed97fa1c4756522678b3a62d0ddafa36add5ce7ca3c29dac6a01c24a49c0d76c",
+        "source_fact:v1:f24006028571242843f932fbd887c5210882e6aeda7e1414e226576878124839"
+      ],
+      "source_published_kst": "2026-10-07T06:22+09:00",
+      "title": "“러시아 숨통 틔워줬다”…우크라, 韓 ‘석유 공급’ 공개 저격"
+    },
     "source_fact:a1af980c1fb4fe46b818cebe": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
       "lanes": {
@@ -124015,6 +124829,27 @@
       "source_published_kst": "2026-10-07T06:01+09:00",
       "title": "글로벌 공급기지 된 K-제약사들…잇단 수출계약"
     },
+    "source_fact:a9a3496ac6e7f41f8de06615": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170553",
+      "source": "매일경제",
+      "source_body_digest": "b0a9abac7e00b1964ab04a8fd87ba82f2be95633d2b1813807afc40b031a597b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd1ff57e9cf6a2d4af4ab24e41044aea1a3c9c0de07f1753125e6ee4615ed440",
+      "source_fact_keys": [
+        "source_fact:v1:2a5362f2b448e2b988811b5d53819c945fdf2e7dd74b7a6dc43604e655928788",
+        "source_fact:v1:7983f403692513fa8c869c26fd3174430607f96b417e2f211da33025864fb049",
+        "source_fact:v1:a17a488e9208c1f6db5b13dbad7b4af0733320219993ff5553bbda8028dfd2b7",
+        "source_fact:v1:c38efccaef148fd40cb6b044471cf506f90a533a20d25871f6e42419d8e001b9",
+        "source_fact:v1:f457ce3173758d5b6ff8f66efb064a5ece4484f7e38f7d19cef89a129e38cf76"
+      ],
+      "source_published_kst": "2026-10-07T07:44+09:00",
+      "title": "“효성중공업, 매출 이연으로 단기 실적 변동성 확대”"
+    },
     "source_fact:a9c4a73ce735088441e9df04": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
       "lanes": {
@@ -125117,6 +125952,27 @@
       "source_published_kst": "2026-10-06T10:33+09:00",
       "title": "브라질 대선 '우파' 보우소나루 약진에…증시 단숨에 사상 최고치"
     },
+    "source_fact:adf2fa5b0acd61c420a372ef": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170553",
+      "source": "매일경제",
+      "source_body_digest": "b0a9abac7e00b1964ab04a8fd87ba82f2be95633d2b1813807afc40b031a597b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd1ff57e9cf6a2d4af4ab24e41044aea1a3c9c0de07f1753125e6ee4615ed440",
+      "source_fact_keys": [
+        "source_fact:v1:2a5362f2b448e2b988811b5d53819c945fdf2e7dd74b7a6dc43604e655928788",
+        "source_fact:v1:7983f403692513fa8c869c26fd3174430607f96b417e2f211da33025864fb049",
+        "source_fact:v1:a17a488e9208c1f6db5b13dbad7b4af0733320219993ff5553bbda8028dfd2b7",
+        "source_fact:v1:c38efccaef148fd40cb6b044471cf506f90a533a20d25871f6e42419d8e001b9",
+        "source_fact:v1:f457ce3173758d5b6ff8f66efb064a5ece4484f7e38f7d19cef89a129e38cf76"
+      ],
+      "source_published_kst": "2026-10-07T07:44+09:00",
+      "title": "“효성중공업, 매출 이연으로 단기 실적 변동성 확대”"
+    },
     "source_fact:ae01568ea6ffd9fd25f22c0c": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
       "lanes": {
@@ -125587,6 +126443,36 @@
       ],
       "source_published_kst": "2026-10-07T05:22+09:00",
       "title": "국제유가 보합…중동 수출 증가·G7 비축유 방출에 공급 우려 완화"
+    },
+    "source_fact:b06062356adb9ac94aab9025": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.mk.co.kr/news/world/12169879",
+      "source": "매일경제",
+      "source_body_digest": "6345d4bf529ac94969266095eea51b19ac482dc3ce8c1ea0258834a725b59b71",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9efa5338275ac3724b4bb4293c56c89766b08a87fb089a82306055497fc088ba",
+      "source_fact_keys": [
+        "source_fact:v1:1f4b2110487970a266d9632772a0428538f5a6f24c1023055b06460596a7d0c1",
+        "source_fact:v1:3cb52572220b26ae6da65c32fa816a62052c5a1ddfb4198e37b360969ae2fce2",
+        "source_fact:v1:3ccb2573dae28ca80e269db32e9d67800cea4743c2d3baee34853a01ed019a52",
+        "source_fact:v1:4836bf02bd3f69f5be14711216db9cb8601edd108ba4e5b97aee405089f1e329",
+        "source_fact:v1:57ca2840b8442b14360d2df58c6a03d793999f0b40bfe491e5969a4418d1d808",
+        "source_fact:v1:59e7c206c748188d4e87f0fa9e19f91c8ccc278cc89f8a05faa723958ef7a924",
+        "source_fact:v1:5b6e7d7cf2749260e3d84a9c0166788b0a6b452b2203476f8b7e08370c83a3a8",
+        "source_fact:v1:a5cdee8f5267448cdf3fcc5fb97bd146609a477d9b53565adafb43e881ced3b0",
+        "source_fact:v1:c93a71a014ab005cf9de28162b5e5309867de2ac9b5653ba9986935889b174c6",
+        "source_fact:v1:ce5f98af8d7487d02bc2b1683dea66d6460e57cf56327573a758710c1e621b23",
+        "source_fact:v1:cf9fbfa05d41b4c0843eb23284037ab7c90e485eb72a2899515d262a83c8c378",
+        "source_fact:v1:e97378fc039560d0b01aad57125cefe7df7652389261b5cc6aca0d0308cc10a6",
+        "source_fact:v1:ed97fa1c4756522678b3a62d0ddafa36add5ce7ca3c29dac6a01c24a49c0d76c",
+        "source_fact:v1:f24006028571242843f932fbd887c5210882e6aeda7e1414e226576878124839"
+      ],
+      "source_published_kst": "2026-10-07T06:22+09:00",
+      "title": "“러시아 숨통 틔워줬다”…우크라, 韓 ‘석유 공급’ 공개 저격"
     },
     "source_fact:b060c3a608aca11c63850b68": {
       "first_seen_kst": "2026-10-07T05:13:11+09:00",
@@ -130209,6 +131095,36 @@
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "밸류파인더 “메타케어, 저용량 탈모치료제 출시 임박…헬스케어 플랫폼 확장”"
     },
+    "source_fact:c2a2e34c8dc8c76e4882e0a3": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.mk.co.kr/news/world/12169879",
+      "source": "매일경제",
+      "source_body_digest": "6345d4bf529ac94969266095eea51b19ac482dc3ce8c1ea0258834a725b59b71",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9efa5338275ac3724b4bb4293c56c89766b08a87fb089a82306055497fc088ba",
+      "source_fact_keys": [
+        "source_fact:v1:1f4b2110487970a266d9632772a0428538f5a6f24c1023055b06460596a7d0c1",
+        "source_fact:v1:3cb52572220b26ae6da65c32fa816a62052c5a1ddfb4198e37b360969ae2fce2",
+        "source_fact:v1:3ccb2573dae28ca80e269db32e9d67800cea4743c2d3baee34853a01ed019a52",
+        "source_fact:v1:4836bf02bd3f69f5be14711216db9cb8601edd108ba4e5b97aee405089f1e329",
+        "source_fact:v1:57ca2840b8442b14360d2df58c6a03d793999f0b40bfe491e5969a4418d1d808",
+        "source_fact:v1:59e7c206c748188d4e87f0fa9e19f91c8ccc278cc89f8a05faa723958ef7a924",
+        "source_fact:v1:5b6e7d7cf2749260e3d84a9c0166788b0a6b452b2203476f8b7e08370c83a3a8",
+        "source_fact:v1:a5cdee8f5267448cdf3fcc5fb97bd146609a477d9b53565adafb43e881ced3b0",
+        "source_fact:v1:c93a71a014ab005cf9de28162b5e5309867de2ac9b5653ba9986935889b174c6",
+        "source_fact:v1:ce5f98af8d7487d02bc2b1683dea66d6460e57cf56327573a758710c1e621b23",
+        "source_fact:v1:cf9fbfa05d41b4c0843eb23284037ab7c90e485eb72a2899515d262a83c8c378",
+        "source_fact:v1:e97378fc039560d0b01aad57125cefe7df7652389261b5cc6aca0d0308cc10a6",
+        "source_fact:v1:ed97fa1c4756522678b3a62d0ddafa36add5ce7ca3c29dac6a01c24a49c0d76c",
+        "source_fact:v1:f24006028571242843f932fbd887c5210882e6aeda7e1414e226576878124839"
+      ],
+      "source_published_kst": "2026-10-07T06:22+09:00",
+      "title": "“러시아 숨통 틔워줬다”…우크라, 韓 ‘석유 공급’ 공개 저격"
+    },
     "source_fact:c2c48154aab9d1735719fd76": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
       "lanes": {
@@ -130771,29 +131687,32 @@
     "source_fact:c48d6e7a6622b4a3b833191c": {
       "first_seen_kst": "2026-10-06T23:46:46+09:00",
       "lanes": {
-        "live": "2026-10-06T23:46:46+09:00"
+        "live": "2026-10-07T07:54:25+09:00"
       },
-      "last_seen_kst": "2026-10-06T23:46:46+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261006199951109",
-      "source": "연합뉴스",
-      "source_body_digest": "66927d5dfa06d5dd2a4d2de6bcbf3b08cd41c23381f4218f3f8cb9e5824dbbfa",
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.mk.co.kr/news/world/12169879",
+      "source": "매일경제",
+      "source_body_digest": "6345d4bf529ac94969266095eea51b19ac482dc3ce8c1ea0258834a725b59b71",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:03dffdb58aba38d5e14a4e258d0ce8b58b7640847f0110e126afb88a29103199",
+      "source_fact_identity": "source_facts:v1:9efa5338275ac3724b4bb4293c56c89766b08a87fb089a82306055497fc088ba",
       "source_fact_keys": [
-        "source_fact:v1:0b28f7bbc016b4707118a853c0b6d32928202d9dfe889520b844faec6e657e71",
-        "source_fact:v1:0bfaf04dd0178e70a597369fad26f41748af0cbb6f3098de32a34b6b8c4d635e",
-        "source_fact:v1:26e4043005bc0cd2f746b253786b4dc23deb5b37fd85516800a1b849531047a6",
+        "source_fact:v1:1f4b2110487970a266d9632772a0428538f5a6f24c1023055b06460596a7d0c1",
         "source_fact:v1:3cb52572220b26ae6da65c32fa816a62052c5a1ddfb4198e37b360969ae2fce2",
+        "source_fact:v1:3ccb2573dae28ca80e269db32e9d67800cea4743c2d3baee34853a01ed019a52",
         "source_fact:v1:4836bf02bd3f69f5be14711216db9cb8601edd108ba4e5b97aee405089f1e329",
-        "source_fact:v1:5848abfb7c1f10c550113cad28075c2f936ecf97ebe53382454eaa2408df2de4",
-        "source_fact:v1:7e484f08553123965396c069cebc127887d12d83eb3d1feb3719bdfdcff0f80a",
-        "source_fact:v1:8d53c65b5e7a8fab3b649410acde1058144d7f44d8fdb64f92aec9b254fd2b1a",
-        "source_fact:v1:cdee911877e6c89f10674dfe7130acbdcdc7444952b8b7d51c8a2ae3c134df7b",
+        "source_fact:v1:57ca2840b8442b14360d2df58c6a03d793999f0b40bfe491e5969a4418d1d808",
+        "source_fact:v1:59e7c206c748188d4e87f0fa9e19f91c8ccc278cc89f8a05faa723958ef7a924",
+        "source_fact:v1:5b6e7d7cf2749260e3d84a9c0166788b0a6b452b2203476f8b7e08370c83a3a8",
+        "source_fact:v1:a5cdee8f5267448cdf3fcc5fb97bd146609a477d9b53565adafb43e881ced3b0",
+        "source_fact:v1:c93a71a014ab005cf9de28162b5e5309867de2ac9b5653ba9986935889b174c6",
         "source_fact:v1:ce5f98af8d7487d02bc2b1683dea66d6460e57cf56327573a758710c1e621b23",
-        "source_fact:v1:ed97fa1c4756522678b3a62d0ddafa36add5ce7ca3c29dac6a01c24a49c0d76c"
+        "source_fact:v1:cf9fbfa05d41b4c0843eb23284037ab7c90e485eb72a2899515d262a83c8c378",
+        "source_fact:v1:e97378fc039560d0b01aad57125cefe7df7652389261b5cc6aca0d0308cc10a6",
+        "source_fact:v1:ed97fa1c4756522678b3a62d0ddafa36add5ce7ca3c29dac6a01c24a49c0d76c",
+        "source_fact:v1:f24006028571242843f932fbd887c5210882e6aeda7e1414e226576878124839"
       ],
-      "source_published_kst": "2026-10-06T23:31+09:00",
-      "title": "우크라, '한국의 러 석유공급' 기사 인용해 韓 비판(종합) | 연합뉴스"
+      "source_published_kst": "2026-10-07T06:22+09:00",
+      "title": "“러시아 숨통 틔워줬다”…우크라, 韓 ‘석유 공급’ 공개 저격"
     },
     "source_fact:c4cea5805fe9307cc2fde712": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
@@ -131328,20 +132247,20 @@
     "source_fact:c6a84edccf090ba71e7bcd98": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
-        "live": "2026-10-06T20:24:46+09:00"
+        "live": "2026-10-07T07:54:25+09:00"
       },
-      "last_seen_kst": "2026-10-06T20:24:46+09:00",
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
       "link": "https://www.etoday.co.kr/news/view/2633027",
       "source": "이투데이",
-      "source_body_digest": "7bcad8c3063f8082c1cbf3ae81f4004dd6f4a26e680e57802b20267345290f90",
+      "source_body_digest": "9a3cf64e10d3be0066226c4e5f7dba71800f55d94c8163fabc65be89e108f9a9",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:05bb53160fe94fbd5cde5f5c04651c24ac9ca2347f0ebfa7f5ab46b8e928b491",
+      "source_fact_identity": "source_facts:v1:46ae5ef178e5c0738f0c760861778b1bc0eedd0f867af86c664e2f4ad322a23a",
       "source_fact_keys": [
         "source_fact:v1:147c8d6cee65cef4c458887e36fad71a0af9d951b694b12d274a0ea0f2a2736a",
-        "source_fact:v1:f2c9313afc63c1ecfc108fc3c8b378b2bfc02bf5d24429c63ef58aa2e7a02840"
+        "source_fact:v1:fac9e2a16b28d67dbae7a6654d3112adeec1e7025796f7c257749eb4990f6219"
       ],
       "source_published_kst": "2026-10-06T18:28+09:00",
-      "title": "포스코퓨처엠, 삼성SDI와 6조 원 규모 LFP 공급 계약 체결… K-배터리 핵심 도약"
+      "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 공급 계약 체결⋯K배터리 핵심 도약"
     },
     "source_fact:c6b8f315e3f8198a38b20522": {
       "first_seen_kst": "2026-10-06T03:45:53+09:00",
@@ -131499,6 +132418,36 @@
       ],
       "source_published_kst": "2026-10-05T21:41+09:00",
       "title": "ESS 테크, NYSE 거래정지·상장폐지 개시..OTC서 GWHT 거래"
+    },
+    "source_fact:c773e7898ee7d743ede638c5": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.mk.co.kr/news/world/12169879",
+      "source": "매일경제",
+      "source_body_digest": "6345d4bf529ac94969266095eea51b19ac482dc3ce8c1ea0258834a725b59b71",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9efa5338275ac3724b4bb4293c56c89766b08a87fb089a82306055497fc088ba",
+      "source_fact_keys": [
+        "source_fact:v1:1f4b2110487970a266d9632772a0428538f5a6f24c1023055b06460596a7d0c1",
+        "source_fact:v1:3cb52572220b26ae6da65c32fa816a62052c5a1ddfb4198e37b360969ae2fce2",
+        "source_fact:v1:3ccb2573dae28ca80e269db32e9d67800cea4743c2d3baee34853a01ed019a52",
+        "source_fact:v1:4836bf02bd3f69f5be14711216db9cb8601edd108ba4e5b97aee405089f1e329",
+        "source_fact:v1:57ca2840b8442b14360d2df58c6a03d793999f0b40bfe491e5969a4418d1d808",
+        "source_fact:v1:59e7c206c748188d4e87f0fa9e19f91c8ccc278cc89f8a05faa723958ef7a924",
+        "source_fact:v1:5b6e7d7cf2749260e3d84a9c0166788b0a6b452b2203476f8b7e08370c83a3a8",
+        "source_fact:v1:a5cdee8f5267448cdf3fcc5fb97bd146609a477d9b53565adafb43e881ced3b0",
+        "source_fact:v1:c93a71a014ab005cf9de28162b5e5309867de2ac9b5653ba9986935889b174c6",
+        "source_fact:v1:ce5f98af8d7487d02bc2b1683dea66d6460e57cf56327573a758710c1e621b23",
+        "source_fact:v1:cf9fbfa05d41b4c0843eb23284037ab7c90e485eb72a2899515d262a83c8c378",
+        "source_fact:v1:e97378fc039560d0b01aad57125cefe7df7652389261b5cc6aca0d0308cc10a6",
+        "source_fact:v1:ed97fa1c4756522678b3a62d0ddafa36add5ce7ca3c29dac6a01c24a49c0d76c",
+        "source_fact:v1:f24006028571242843f932fbd887c5210882e6aeda7e1414e226576878124839"
+      ],
+      "source_published_kst": "2026-10-07T06:22+09:00",
+      "title": "“러시아 숨통 틔워줬다”…우크라, 韓 ‘석유 공급’ 공개 저격"
     },
     "source_fact:c783590bb9168b388cbcecdf": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
@@ -141643,6 +142592,36 @@
       "source_published_kst": "2026-10-06T11:00+09:00",
       "title": "규제합리화추진단 \"디스플레이 규제 개선…수입 간소화·AI 보안가이드 마련\""
     },
+    "source_fact:ed57f55e01b00d68cd9b4aa6": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.mk.co.kr/news/world/12169879",
+      "source": "매일경제",
+      "source_body_digest": "6345d4bf529ac94969266095eea51b19ac482dc3ce8c1ea0258834a725b59b71",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9efa5338275ac3724b4bb4293c56c89766b08a87fb089a82306055497fc088ba",
+      "source_fact_keys": [
+        "source_fact:v1:1f4b2110487970a266d9632772a0428538f5a6f24c1023055b06460596a7d0c1",
+        "source_fact:v1:3cb52572220b26ae6da65c32fa816a62052c5a1ddfb4198e37b360969ae2fce2",
+        "source_fact:v1:3ccb2573dae28ca80e269db32e9d67800cea4743c2d3baee34853a01ed019a52",
+        "source_fact:v1:4836bf02bd3f69f5be14711216db9cb8601edd108ba4e5b97aee405089f1e329",
+        "source_fact:v1:57ca2840b8442b14360d2df58c6a03d793999f0b40bfe491e5969a4418d1d808",
+        "source_fact:v1:59e7c206c748188d4e87f0fa9e19f91c8ccc278cc89f8a05faa723958ef7a924",
+        "source_fact:v1:5b6e7d7cf2749260e3d84a9c0166788b0a6b452b2203476f8b7e08370c83a3a8",
+        "source_fact:v1:a5cdee8f5267448cdf3fcc5fb97bd146609a477d9b53565adafb43e881ced3b0",
+        "source_fact:v1:c93a71a014ab005cf9de28162b5e5309867de2ac9b5653ba9986935889b174c6",
+        "source_fact:v1:ce5f98af8d7487d02bc2b1683dea66d6460e57cf56327573a758710c1e621b23",
+        "source_fact:v1:cf9fbfa05d41b4c0843eb23284037ab7c90e485eb72a2899515d262a83c8c378",
+        "source_fact:v1:e97378fc039560d0b01aad57125cefe7df7652389261b5cc6aca0d0308cc10a6",
+        "source_fact:v1:ed97fa1c4756522678b3a62d0ddafa36add5ce7ca3c29dac6a01c24a49c0d76c",
+        "source_fact:v1:f24006028571242843f932fbd887c5210882e6aeda7e1414e226576878124839"
+      ],
+      "source_published_kst": "2026-10-07T06:22+09:00",
+      "title": "“러시아 숨통 틔워줬다”…우크라, 韓 ‘석유 공급’ 공개 저격"
+    },
     "source_fact:ed64288b03f71df660c73017": {
       "first_seen_kst": "2026-10-07T06:41:04+09:00",
       "lanes": {
@@ -143329,6 +144308,25 @@
       "source_published_kst": "2026-10-06T03:54+09:00",
       "title": "[美특징주]웰스파고, 모건스탠리 ‘매수’ 상향에 주가 2%↑"
     },
+    "source_fact:f44ef306f0a09121e14e73e2": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02614166645610624",
+      "source": "이데일리",
+      "source_body_digest": "e3dcc13afe080f4d76193d39d16541727048ad0aedafbe8dc3f66d0b85f56b68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:09fe64d7ad36b74e3b8eb3a3b98eca242b112b7bae5a09d74fb1594b6b5e197b",
+      "source_fact_keys": [
+        "source_fact:v1:1a8878887cb2badc30eacb5756316c2cb0d8d8ee6c3e8061bdddb8d853b0fc77",
+        "source_fact:v1:ae197bb55a8b17d0bf2b62a5311e4302dfed1e7b476c3cce2f082cf7f78982d6",
+        "source_fact:v1:c031cd7b41da0b52416a012931337d06a66ffa47130b6cad5df8a9fd411d1f25"
+      ],
+      "source_published_kst": "2026-10-07T07:33+09:00",
+      "title": "[마켓무버]뉴욕증시, 금리 부담 완화에 일제 상승…AI·반도체가 랠리 주도"
+    },
     "source_fact:f45596abd8b187ee2e1ad929": {
       "first_seen_kst": "2026-10-07T07:39:19+09:00",
       "lanes": {
@@ -144130,6 +145128,25 @@
       "source_published_kst": "2026-10-06T18:02+09:00",
       "title": "포스코퓨처엠, 삼성SDI에 양극재 6조 공급"
     },
+    "source_fact:f7f57cb71a954ef994e2725e": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02614166645610624",
+      "source": "이데일리",
+      "source_body_digest": "e3dcc13afe080f4d76193d39d16541727048ad0aedafbe8dc3f66d0b85f56b68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:09fe64d7ad36b74e3b8eb3a3b98eca242b112b7bae5a09d74fb1594b6b5e197b",
+      "source_fact_keys": [
+        "source_fact:v1:1a8878887cb2badc30eacb5756316c2cb0d8d8ee6c3e8061bdddb8d853b0fc77",
+        "source_fact:v1:ae197bb55a8b17d0bf2b62a5311e4302dfed1e7b476c3cce2f082cf7f78982d6",
+        "source_fact:v1:c031cd7b41da0b52416a012931337d06a66ffa47130b6cad5df8a9fd411d1f25"
+      ],
+      "source_published_kst": "2026-10-07T07:33+09:00",
+      "title": "[마켓무버]뉴욕증시, 금리 부담 완화에 일제 상승…AI·반도체가 랠리 주도"
+    },
     "source_fact:f83a5d22097dd7a11a3a4c6d": {
       "first_seen_kst": "2026-10-07T06:41:04+09:00",
       "lanes": {
@@ -144869,6 +145886,24 @@
       ],
       "source_published_kst": "2026-10-05T10:42+09:00",
       "title": "삼성전자, 코스피 ‘구원투수’ 될까…7000선 안착 시험대[주간증시전망]"
+    },
+    "source_fact:fb8011f1bb65bfae903a147d": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633027",
+      "source": "이투데이",
+      "source_body_digest": "9a3cf64e10d3be0066226c4e5f7dba71800f55d94c8163fabc65be89e108f9a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:46ae5ef178e5c0738f0c760861778b1bc0eedd0f867af86c664e2f4ad322a23a",
+      "source_fact_keys": [
+        "source_fact:v1:147c8d6cee65cef4c458887e36fad71a0af9d951b694b12d274a0ea0f2a2736a",
+        "source_fact:v1:fac9e2a16b28d67dbae7a6654d3112adeec1e7025796f7c257749eb4990f6219"
+      ],
+      "source_published_kst": "2026-10-06T18:28+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 공급 계약 체결⋯K배터리 핵심 도약"
     },
     "source_fact:fb9e783de8a74bd4b9826398": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
@@ -150762,6 +151797,24 @@
       "source_published_kst": "2026-10-06T11:41+09:00",
       "title": "삼성전기, 글로벌 기업과 MLCC 공급계약… 1년간 2856억원 규모"
     },
+    "title:27f94103256b9d36ad21facb": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.hankyung.com/article/2026100768447",
+      "source": "한국경제",
+      "source_body_digest": "2e1bd482f7b500e937594af667fdc876c7c8b3b0450176de1a62475f3a2ed41d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f33d5b43ea70b1ee7979f8cc1b3dce7d948b6e3f39cd3a578da8ace03418c99",
+      "source_fact_keys": [
+        "source_fact:v1:657c93f28773262ca6b75c9b5d8704230fb8b3a1d5d0e675da236103aba1666f",
+        "source_fact:v1:d5b1eb8a3cedd75b18e2d0c60031d1537e6363813138e67e599dbd73733a07ae"
+      ],
+      "source_published_kst": "2026-10-07T07:22+09:00",
+      "title": "트럼프 \"韓에 관세 낮추려면 대가 지불해야 한다고 했다\""
+    },
     "title:28049a0e245da7d04349902b": {
       "first_seen_kst": "2026-10-01T21:17:39+09:00",
       "lanes": {
@@ -153413,6 +154466,36 @@
       "source": "매일경제",
       "title": "해외 단일종목 레버리지 보관액 석달 새 81% 급감…“국감서 면밀히 살필 것”"
     },
+    "title:3d0e39a4de198be9e7976c41": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.mk.co.kr/news/world/12169879",
+      "source": "매일경제",
+      "source_body_digest": "6345d4bf529ac94969266095eea51b19ac482dc3ce8c1ea0258834a725b59b71",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9efa5338275ac3724b4bb4293c56c89766b08a87fb089a82306055497fc088ba",
+      "source_fact_keys": [
+        "source_fact:v1:1f4b2110487970a266d9632772a0428538f5a6f24c1023055b06460596a7d0c1",
+        "source_fact:v1:3cb52572220b26ae6da65c32fa816a62052c5a1ddfb4198e37b360969ae2fce2",
+        "source_fact:v1:3ccb2573dae28ca80e269db32e9d67800cea4743c2d3baee34853a01ed019a52",
+        "source_fact:v1:4836bf02bd3f69f5be14711216db9cb8601edd108ba4e5b97aee405089f1e329",
+        "source_fact:v1:57ca2840b8442b14360d2df58c6a03d793999f0b40bfe491e5969a4418d1d808",
+        "source_fact:v1:59e7c206c748188d4e87f0fa9e19f91c8ccc278cc89f8a05faa723958ef7a924",
+        "source_fact:v1:5b6e7d7cf2749260e3d84a9c0166788b0a6b452b2203476f8b7e08370c83a3a8",
+        "source_fact:v1:a5cdee8f5267448cdf3fcc5fb97bd146609a477d9b53565adafb43e881ced3b0",
+        "source_fact:v1:c93a71a014ab005cf9de28162b5e5309867de2ac9b5653ba9986935889b174c6",
+        "source_fact:v1:ce5f98af8d7487d02bc2b1683dea66d6460e57cf56327573a758710c1e621b23",
+        "source_fact:v1:cf9fbfa05d41b4c0843eb23284037ab7c90e485eb72a2899515d262a83c8c378",
+        "source_fact:v1:e97378fc039560d0b01aad57125cefe7df7652389261b5cc6aca0d0308cc10a6",
+        "source_fact:v1:ed97fa1c4756522678b3a62d0ddafa36add5ce7ca3c29dac6a01c24a49c0d76c",
+        "source_fact:v1:f24006028571242843f932fbd887c5210882e6aeda7e1414e226576878124839"
+      ],
+      "source_published_kst": "2026-10-07T06:22+09:00",
+      "title": "“러시아 숨통 틔워줬다”…우크라, 韓 ‘석유 공급’ 공개 저격"
+    },
     "title:3d25bc0f354c36cc492c7806": {
       "first_seen_kst": "2026-10-06T23:56:49+09:00",
       "lanes": {
@@ -155396,6 +156479,23 @@
       ],
       "source_published_kst": "2026-10-06T16:55+09:00",
       "title": "알테오젠, 국민성장펀드‧스카이레이크서 2000억원 투자 유치"
+    },
+    "title:4ba44b4008584a80feb10e66": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816490",
+      "source": "뉴시스",
+      "source_body_digest": "21778dd26a724bc366caa1a597751a8951cc24ca3e701bf12afe660410c8ae67",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee340bfd16f12258098f3016cbcd18b55bb35363c6736631c917e76594e9c897",
+      "source_fact_keys": [
+        "source_fact:v1:01f9119e7eb1278777e8b040aacf7a09b614b761b2de6830caec22c7a763ada6"
+      ],
+      "source_published_kst": "2026-10-07T07:48+09:00",
+      "title": "트럼프 \"이란 누가 이끄는지 모른다는 게 가장 큰 문제\""
     },
     "title:4bb6126cbd2c6d9988e024ad": {
       "first_seen_kst": "2026-10-03T12:48:39+09:00",
@@ -157653,6 +158753,25 @@
       "source": "연합뉴스",
       "title": "'국장'은 쉬어도 '미장'은 열린다…추석 전후 챙겨볼 ETF는 | 연합뉴스"
     },
+    "title:601a125d7a9f1458d1980ef8": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02614166645610624",
+      "source": "이데일리",
+      "source_body_digest": "e3dcc13afe080f4d76193d39d16541727048ad0aedafbe8dc3f66d0b85f56b68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:09fe64d7ad36b74e3b8eb3a3b98eca242b112b7bae5a09d74fb1594b6b5e197b",
+      "source_fact_keys": [
+        "source_fact:v1:1a8878887cb2badc30eacb5756316c2cb0d8d8ee6c3e8061bdddb8d853b0fc77",
+        "source_fact:v1:ae197bb55a8b17d0bf2b62a5311e4302dfed1e7b476c3cce2f082cf7f78982d6",
+        "source_fact:v1:c031cd7b41da0b52416a012931337d06a66ffa47130b6cad5df8a9fd411d1f25"
+      ],
+      "source_published_kst": "2026-10-07T07:33+09:00",
+      "title": "[마켓무버]뉴욕증시, 금리 부담 완화에 일제 상승…AI·반도체가 랠리 주도"
+    },
     "title:6061792702cc83ded726fb45": {
       "first_seen_kst": "2026-10-07T06:41:04+09:00",
       "lanes": {
@@ -158006,6 +159125,24 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-07T05:30+09:00",
       "title": "LG전자, AI 냉각사업 공략 가속…북미 대형 계약에 버지니아 공장 신설까지"
+    },
+    "title:62dbee9024b7272de2a2dc0b": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633027",
+      "source": "이투데이",
+      "source_body_digest": "9a3cf64e10d3be0066226c4e5f7dba71800f55d94c8163fabc65be89e108f9a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:46ae5ef178e5c0738f0c760861778b1bc0eedd0f867af86c664e2f4ad322a23a",
+      "source_fact_keys": [
+        "source_fact:v1:147c8d6cee65cef4c458887e36fad71a0af9d951b694b12d274a0ea0f2a2736a",
+        "source_fact:v1:fac9e2a16b28d67dbae7a6654d3112adeec1e7025796f7c257749eb4990f6219"
+      ],
+      "source_published_kst": "2026-10-06T18:28+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 공급 계약 체결⋯K배터리 핵심 도약"
     },
     "title:62f9c84b5ecf402f8f369e1d": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
@@ -169344,6 +170481,26 @@
       "source": "매일경제",
       "title": "구글 AI칩 우주로 쐈다…‘우주 데이터센터’ 첫 실험"
     },
+    "title:c49bcfdb6a034134af39e7d1": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://www.hankyung.com/article/202610066688i",
+      "source": "한국경제",
+      "source_body_digest": "b1a3a574724800d5b0c475c071ebce76cf3974a4ccd88b7887b17067b3487054",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c2fc4b7904e12b51ec50d0899d3d766a8c53d73235bbed3e9b077119ea19e5f",
+      "source_fact_keys": [
+        "source_fact:v1:10f83cd3fef18bf4ac68f4e9d0d2887b75a9991de58da2303f048b68790c187b",
+        "source_fact:v1:4256b6f574f96a886b93a8355f3b0c819783cd6768bafff3fb9c504de8c9c27a",
+        "source_fact:v1:48afec54eb59c3a743996e45ff269dc2a31aa5312e7d618f2bba5e26c43e7eea",
+        "source_fact:v1:f849e30eec397426fe3ce76d4b43626822dc208d8b0e3425c3418962afed569b"
+      ],
+      "source_published_kst": "2026-10-06T22:37+09:00",
+      "title": "美 8월 무역적자 142조원…트럼프 관세 폭탄 이후 최대"
+    },
     "title:c5005ab280a86061815d6700": {
       "first_seen_kst": "2026-10-03T12:04:07+09:00",
       "lanes": {
@@ -170692,6 +171849,27 @@
       "link": "https://www.mt.co.kr/world/2026/10/02/2026100215032423118",
       "source": "머니투데이",
       "title": "미국 내부서도 '알래스카 LNG' 의문…\"한국과 투자 합의 안 됐다\""
+    },
+    "title:d1ab33c2ce043c7bb8f16087": {
+      "first_seen_kst": "2026-10-07T07:54:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:54:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:54:25+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170553",
+      "source": "매일경제",
+      "source_body_digest": "b0a9abac7e00b1964ab04a8fd87ba82f2be95633d2b1813807afc40b031a597b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd1ff57e9cf6a2d4af4ab24e41044aea1a3c9c0de07f1753125e6ee4615ed440",
+      "source_fact_keys": [
+        "source_fact:v1:2a5362f2b448e2b988811b5d53819c945fdf2e7dd74b7a6dc43604e655928788",
+        "source_fact:v1:7983f403692513fa8c869c26fd3174430607f96b417e2f211da33025864fb049",
+        "source_fact:v1:a17a488e9208c1f6db5b13dbad7b4af0733320219993ff5553bbda8028dfd2b7",
+        "source_fact:v1:c38efccaef148fd40cb6b044471cf506f90a533a20d25871f6e42419d8e001b9",
+        "source_fact:v1:f457ce3173758d5b6ff8f66efb064a5ece4484f7e38f7d19cef89a129e38cf76"
+      ],
+      "source_published_kst": "2026-10-07T07:44+09:00",
+      "title": "“효성중공업, 매출 이연으로 단기 실적 변동성 확대”"
     },
     "title:d1adaf6b9ef371c30ad9a76d": {
       "first_seen_kst": "2026-09-24T16:13:57+09:00",
@@ -176298,5 +177476,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-07T07:39:19+09:00"
+  "updated_at_kst": "2026-10-07T07:54:25+09:00"
 }
