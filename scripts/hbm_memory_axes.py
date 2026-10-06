@@ -1195,27 +1195,32 @@ def parse_glass_substrate_records(item, body):
                 as_of=asof, scope=scope))
 
         if entity == 'jntc' and re.search(r'12\s*시간|12\s*hours?|720\s*분|분\s*단위|cycle\s*time|공정\s*시간', text, re.I):
-            before_minutes = 720 if re.search(r'12\s*시간|12\s*hours?', text, re.I) else None
+            cycle_sentences = [
+                x for x in re.split(r'[.!?。]\s*', text)
+                if re.search(r'12\s*시간|12\s*hours?|720\s*분|분\s*단위|cycle\s*time|공정\s*시간', x, re.I)
+            ]
+            cycle_text = ' '.join(cycle_sentences) or text
+            before_minutes = 720 if re.search(r'12\s*시간|12\s*hours?', cycle_text, re.I) else None
             after_minutes = None
             after_class = None
             m_after = re.search(
                 r'(?:단축|shorten|reduce|현재|개선)[^0-9]{0,60}([0-9]+(?:\.[0-9]+)?)\s*(?:분|minutes?)',
-                text, re.I)
+                cycle_text, re.I)
             if not m_after:
                 m_after = re.search(
                     r'([0-9]+(?:\.[0-9]+)?)\s*(?:분|minutes?)[^.]{0,60}?(?:단축|shorten|reduce|소요|걸리)',
-                    text, re.I)
+                    cycle_text, re.I)
             if m_after:
                 after_minutes = float(m_after.group(1))
                 after_class = 'exact_minutes'
-            elif re.search(r'분\s*단위|minute[- ]?scale|within\s+minutes', text, re.I):
+            elif re.search(r'분\s*단위|minute[- ]?scale|within\s+minutes', cycle_text, re.I):
                 after_class = 'minute_scale'
             process_name = 'unverified_core_process'
-            if re.search(r'metalliz|plating|도금|금속화', text, re.I):
+            if re.search(r'metalliz|plating|도금|금속화', cycle_text, re.I):
                 process_name = 'metallization'
-            elif re.search(r'etch|식각', text, re.I):
+            elif re.search(r'etch|식각', cycle_text, re.I):
                 process_name = 'etching'
-            elif re.search(r'laser|레이저|홀\s*가공|via\s*drill', text, re.I):
+            elif re.search(r'laser|레이저|홀\s*가공|via\s*drill', cycle_text, re.I):
                 process_name = 'via_formation'
             rows.append(make_record(
                 'glass_process_cycle_time', ['jntc','current'],
