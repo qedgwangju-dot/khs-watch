@@ -157,6 +157,19 @@ class GlassSubstrateWatchTests(unittest.TestCase):
         self.assertIsNone(rec["value"]["after_minutes_exact"])
         self.assertEqual(rec["value"]["process_name"], "unverified_core_process")
 
+    def test_jntc_gimcheon_capex_keeps_output_unknown(self):
+        item = {"title":"JNTC Gimcheon glass substrate investment","description":"","source":"연합뉴스",
+                "published_at_kst":"2026-10-06T10:00:00+09:00",
+                "direct_link":"https://www.yna.co.kr/amp/view/AKR20260921036200053"}
+        body = "제이앤티씨는 김천 TGV 유리기판 공장에 3,470억원을 투자한다. 2027년 하반기 착공해 2~3개 생산라인을 구축하고 2028년 중반 초기 물량에 대응한 뒤 10개 이상 라인으로 확대한다."
+        rows = w.parse_glass_substrate_records(item, body)
+        rec = next(x for x in rows if x["axis"] == "glass_capex")
+        self.assertEqual(rec["value"]["investment_krw"], 347000000000)
+        self.assertEqual(rec["value"]["line_count_min_initial"], 2)
+        self.assertEqual(rec["value"]["line_count_max_initial"], 3)
+        self.assertEqual(rec["value"]["line_count_mass_ramp_min"], 10)
+        self.assertIsNone(rec["value"]["capacity_panels_per_month"])
+
     def test_yield_crossing_90_alerts(self):
         old = {"axis":"glass_panel_yield","value":{"yield_pct":88.0}}
         new = {"axis":"glass_panel_yield","value":{"yield_pct":92.0}}
