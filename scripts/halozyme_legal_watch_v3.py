@@ -3,12 +3,28 @@ from __future__ import annotations
 import html
 import json
 import re
+import time
 import urllib.parse
 import xml.etree.ElementTree as ET
 
 import halozyme_legal_watch_v2 as base
 
 SEARCH_HTTP_TIMEOUT = 7
+SEARCH_HTTP_ATTEMPTS = 2
+SEARCH_RETRY_BACKOFF_SECONDS = 0.5
+
+
+def _fetch_search_xml(url: str) -> ET.Element:
+    last_exc: Exception | None = None
+    for attempt in range(1, SEARCH_HTTP_ATTEMPTS + 1):
+        try:
+            return ET.fromstring(base.fetch(url, timeout=SEARCH_HTTP_TIMEOUT))
+        except Exception as exc:
+            last_exc = exc
+            if attempt < SEARCH_HTTP_ATTEMPTS:
+                time.sleep(SEARCH_RETRY_BACKOFF_SECONDS * attempt)
+    assert last_exc is not None
+    raise last_exc
 
 # 미국 공식/영문 검색뿐 아니라 국내 보도가 먼저 뜨는 경우도 잡는다.
 base.SEARCHES.extend([
@@ -36,7 +52,7 @@ def rss(query: str, engine: str) -> list[dict]:
     failures: list[str] = []
     for label, url in urls:
         try:
-            root = ET.fromstring(base.fetch(url, timeout=SEARCH_HTTP_TIMEOUT))
+            root = _fetch_search_xml(url)
         except Exception as exc:
             failures.append(f"{label}:{type(exc).__name__}")
             continue
