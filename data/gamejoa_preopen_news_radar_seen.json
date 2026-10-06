@@ -725,6 +725,31 @@
       "source": "이투데이",
       "title": "이형일 “10월 국고채 발행 5조원 축소…필요시 추가 축소 검토”"
     },
+    "event:208c67c4fd2df474a3089743": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.dt.co.kr/article/12087644",
+      "source": "디지털타임스",
+      "source_body_digest": "e9cae02336c6b47d20d5d5d5f1d9e0b5669e8862f86604850d616bbd9597b664",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1680a2bf612acd8343e3d3b0d66f61232ec8237ad0bcecf13e1d4e125ad4b0c7",
+      "source_fact_keys": [
+        "source_fact:v1:03eaae4b7774e2a18290e54260cc2a8b470b9c9fd3cdaa673ee40c54a6a359c8",
+        "source_fact:v1:090482ad9c6b57c928d139c4bdfcc923bde047049a7ff9a27fe20c1e09e6ea91",
+        "source_fact:v1:5ac39d6c1b153a517e02e4a08052efc01b585a231d995b30c4e5cda12ff44e23",
+        "source_fact:v1:5e8752f729e4608b96ac800d8fa9b2fbc48933441811493adef078cac40cbbbf",
+        "source_fact:v1:62994281c829ea4f874cf15e5b2a8a27e175d581f2fffd099be6379b80685a4c",
+        "source_fact:v1:abc6ee668949269c29cb68948a3f81637abeed0b6721391b56fe503b15bbb470",
+        "source_fact:v1:bec7df6afe44f37974259bbcd8a2f77da4d0db1de09cb157c247854925241309",
+        "source_fact:v1:bf5bb004c15eb72d86f39b946550e11245795052dc8eafc2e8be9d3a175967ad",
+        "source_fact:v1:efbc7b99e121b36ead72c84d4cc40c114d156d29994aa18451efd43de8695ed9"
+      ],
+      "source_published_kst": "2026-10-06T15:06+09:00",
+      "title": "엠키스코어, AI Festa 26서 검증된 AI Factory 역량 공개… 대규모 구축부터 AI 활용까지"
+    },
     "event:20ea6a355abd5ea4b028332f": {
       "first_seen_kst": "2026-10-05T17:09:18+09:00",
       "lanes": {
@@ -1669,53 +1694,22 @@
     "event:4af0ec859cb52ac4537c1713": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
       "lanes": {
-        "live": "2026-10-06T17:01:47+09:00"
+        "live": "2026-10-06T17:14:48+09:00"
       },
-      "last_seen_kst": "2026-10-06T17:01:47+09:00",
-      "link": "https://www.asiae.co.kr/article/2026100116045944997",
-      "source": "아시아경제",
-      "source_body_digest": "43084a3b63ecbe54c70b4077796bac3785ebc954520364bf12c6873164f33afb",
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006061100009",
+      "source": "연합뉴스",
+      "source_body_digest": "afd1a4a96ae1f8c00fdefa60b8ba05488d1e0f080b8600a2414e165dbf782449",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:61f25156894309b0af74dacdde634243dc73e193b4cf1d232290e83df1882821",
+      "source_fact_identity": "source_facts:v1:d26425acfb988bb96d5cf837282cbd0ad809336e563b1cae2667a2a8b2fae1c0",
       "source_fact_keys": [
-        "source_fact:v1:0008b659fd748fc6e1bc48facf339dd6d620609ee7eb85b9e4bb08acc5f42416",
-        "source_fact:v1:01fba38d220f8fad1d9ccc16f59066c13fa0c6c32920a4827c55ba0adbf72004",
-        "source_fact:v1:026c1b8753c05bedfaf9926b8ed9d8a948be8714e921f1155d90a3ec977fe4a3",
-        "source_fact:v1:136f32cafde7778a427a57fd7de9643a86d00837bca6c27913b89a0725ab8a26",
-        "source_fact:v1:164fe17947691f03181d8e7cfd18487b39fc648d203bd852f7b3fea28666c41b",
-        "source_fact:v1:1b856fcdddb7242c78f8a3d5afed6b4297f2c8f4eba2b617afa056ff03709e64",
-        "source_fact:v1:345f3cd05515786854c8f8d89e512c976c9e059fd3bd5f9060e060ca3b8e6ed9",
-        "source_fact:v1:3d65d5ff6e53145e3f859e5f3431bf07cca5bcf1aa80777cf9b62b08d42bbc24",
-        "source_fact:v1:4076ae229934c4e68946d549604b09d8de9ff9eca2f957a3a56fdf29cbc70ca8",
-        "source_fact:v1:456948481ee84db9cf56f196b81bf8d7793adbf0bbca4f56cc4ec9079ce7c9fb",
-        "source_fact:v1:58728f69a304a6a7298581f1a6eec263cbe91f50322485379e3e7a02ccd3e058",
-        "source_fact:v1:64cad16c905a891bc1e091259f35477521e517226c1de1fbe730f5c120def168",
-        "source_fact:v1:6765a8e3d251590250bc77c5af1f58b3d3d2f6c268ad4523496dda1a9a9760d9",
-        "source_fact:v1:7290bd32ec99f880bd182e2c181ff05825610a9cae46698842a066f27e5a3d89",
-        "source_fact:v1:7bcfdc085e533de842da8a7a01bb46d3e510e802699db0994f0edf2a66301b1a",
-        "source_fact:v1:7f2cd07049ba7412a2b8a771fd1e2f7cac32840d87bcf59534f53433bd76eb29",
-        "source_fact:v1:8d6c515ba76eae197822dd0b3f75d3ff8d11a1e8156ec0fe77d59ec15eacaa24",
-        "source_fact:v1:8db8ed8a1abd093b3e665991424097f3694753cacd6dcce609585edfd5287ffa",
-        "source_fact:v1:8e0b6dd8c0fb4f893dfca38c9edc039cd47dca9be4696bd45c2ea4cb0b78ccbd",
-        "source_fact:v1:9b91add369009584f99829fe43df57363dfd8b4e1f561ed9ddeb70f4b2f36601",
-        "source_fact:v1:9d39bcc8d1e2ca1f4907197d7f893e94b7a8a2fbba0b51d5241708bb4beb7a39",
-        "source_fact:v1:9e2749b013d7a65fd48e9d6c7187e94e5a804952a57913a040db5504adb197eb",
-        "source_fact:v1:b06054126b4bea942d2547bb9fc75208cc56f31eb1272008a20cf3ea379ba091",
-        "source_fact:v1:b1c1f5037b1b68d0f1447d22131de0d9d5a902e078a1ed9c7aea556942355e55",
-        "source_fact:v1:b8312b1bc6eae2ff76d1ef1d5c4b10db6573a126cfe16dcf868329455042cdc8",
-        "source_fact:v1:bd95afc0a7d2141cf798735c510a5d048e8e37ce2b16510a8e8106d195c59d43",
-        "source_fact:v1:beff72ea1955ed807ee937326d0b1ad8187fc76e468a191dfb28292c69d60d72",
-        "source_fact:v1:c13f24aeaa8ffef27f1412aa8dfc698bfed14ca070397c83fa8267a43efda112",
-        "source_fact:v1:c674da7a2693d8dd003a7e34ddc793b4555310224f36dd89b83429990e1c4e7c",
-        "source_fact:v1:d0b25828bbbc318caa445e5eced4599f7ded964fb66b8ae9459487d8a49dbd87",
-        "source_fact:v1:d8683936508560a2f1c708f790b1d69afdcb81553e4ec1211c7c42ca3b27c45d",
-        "source_fact:v1:dd8afd1430f085af6bf9dc8e80cd54cbe13e2d689de5d430c1f7064c89d47d0f",
-        "source_fact:v1:e90fd614e9980c2da285c2c1c36dd995e66c2e19de9ab7281b2248746b45d626",
-        "source_fact:v1:f86240c42e171ff7d977b819c9c34e77fe04e4805ddee8863074a6a7ba369fc5",
-        "source_fact:v1:fec17bfcd3b86d1d419769588eec9610c686dc6c46e068dd1994b0d37e077957"
+        "source_fact:v1:4e5e403b079f97ac867191ddb45903dec059281f71b11c7382a2b95485c2187c",
+        "source_fact:v1:7202e9dc58d3242080197be6db21b8176fae15fcf25dbccd053be160dd53c152",
+        "source_fact:v1:a034e235fdbd247601ac1d7713e3bb514c93b0cfc5ca5bba9d8909b9767c1c75",
+        "source_fact:v1:e885ac59bc235bb652c8c49dc0cd8557cb5370b9c1238b955f306ca88b672244"
       ],
-      "source_published_kst": "2026-10-06T08:18+09:00",
-      "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
+      "source_published_kst": "2026-10-06T10:24+09:00",
+      "title": "슈나이더, 미 소프트웨어 업체 20조원에 인수 | 연합뉴스"
     },
     "event:4b6c66ca03796acb2d14c1b0": {
       "first_seen_kst": "2026-10-01T11:18:10+09:00",
@@ -1946,6 +1940,31 @@
       "link": "https://mobile.newsis.com/view/NISX20260928_0003804820",
       "source": "뉴시스",
       "title": "삼성전기, 환율 하락에도 실적 기대감↑…AI 서버 부품이 견인"
+    },
+    "event:58346ede9229ab9542f09d45": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894430",
+      "source": "헤럴드경제",
+      "source_body_digest": "9ce97b8e14f9ca8532c151b22c975bcdb635965f48742bc92899cccc1994152a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a17e2917a3afacbbfb2c87b6f79ab714e179f24a3666b6967777176ec564729",
+      "source_fact_keys": [
+        "source_fact:v1:05b8f6fed42a36ad77847f5227d05078db31fd0adb0c308fd0db1b6942257704",
+        "source_fact:v1:2e5f93cf38fac02956df0525b8b0ed3127f076c9d95a94ad73ecbd372202a937",
+        "source_fact:v1:33206f6e1444a9f6db94497c51d6689095ad0ac3aa0cd155adc07dd4e49f2ac4",
+        "source_fact:v1:6ff07906b2bf0b011360d5c44b7a6241a12e817a7a5029f1c110fc958ec1aacd",
+        "source_fact:v1:726eddd6c6b9512768db137f4a152ad67f4dfeb675695dfadf4f88e38588f252",
+        "source_fact:v1:80f39e454d88c5786b23d211f86548dbcf139d0c7c219dda14b195524b957f1e",
+        "source_fact:v1:aa586f7429d9cbc1a51052cd4fbcce2b26037a8f5169765e573a5890cbbd7cdd",
+        "source_fact:v1:bfd9112624b6f9b0749ca22b1589a43121d146a836f2aaa51b5426ae87c5b9ae",
+        "source_fact:v1:c6b622ceab9e3954754e27a59895e01e9c9bbd70f7b256ccdb248958186d3388"
+      ],
+      "source_published_kst": "2026-10-06T15:22+09:00",
+      "title": "“中 AI 굴기 또 온다”…문샷, 기업가치 68조원 찍고 홍콩 상장 추진"
     },
     "event:5945d59c3e6c028f9c16b943": {
       "first_seen_kst": "2026-09-29T10:32:56+09:00",
@@ -2279,21 +2298,22 @@
     "event:6926adee1d70facd68aecdd5": {
       "first_seen_kst": "2026-10-06T06:44:01+09:00",
       "lanes": {
-        "live": "2026-10-06T15:55:43+09:00"
+        "live": "2026-10-06T17:14:48+09:00"
       },
-      "last_seen_kst": "2026-10-06T15:55:43+09:00",
-      "link": "https://www.hankyung.com/article/2026100645236",
-      "source": "한국경제",
-      "source_body_digest": "9c4734ff876199e8ee221a7f1382ce9d3e2cfec3eb902d49ba5ed8d2723ab562",
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.fnnews.com/news/202610061408017246",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "4ba6df9887743d8fe07061c6a4bbff80713423d0dc4fc6e168dcea6ad258d76a",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:8611120808fa7b22d97bf01f2ff95bf9f101cb7f3f96ac5556a71d7ec1d1f6a9",
+      "source_fact_identity": "source_facts:v1:8bab19db86e13a4a25fb4b86ab525e8baa1e9b68b8fd609c6ae6946365d0b900",
       "source_fact_keys": [
-        "source_fact:v1:1c9a8b95eed56356e13b5f66cd6eef496a763e424bb5d5b7c2e28459075a4a6b",
-        "source_fact:v1:35a98959586fb4acb387c834344b1a863db6228b377f210895208d5f4d50676e",
-        "source_fact:v1:4ddb0459505504b7ef3c9a8cc93ec709a0309e6212debc945ab5534a51b434db"
+        "source_fact:v1:05ac69144ec1313a6291abb612fc3275da82100e415f382f83a950c15c287c79",
+        "source_fact:v1:0819e4a0d3bca5352088e45919e1c29858bbb818896d7ecac93d5b174a1a5af7",
+        "source_fact:v1:77f8d5fe16c61c427bb89ffa91e7a3fd46665b2a0db9353913953a5771802f3d",
+        "source_fact:v1:fc7fe3e65e5e037323016e6a3ff944572b5b9effde6dd685afae9580bd54a2f5"
       ],
-      "source_published_kst": "2026-10-06T09:32+09:00",
-      "title": "LG전자, 美 AI 데이터센터 냉각 솔루션 공급 계약에 '급등'"
+      "source_published_kst": "2026-10-06T15:19+09:00",
+      "title": "삼성전자 덜고 하이닉스 담는 ETF…8일 반도체주 수급 분기점"
     },
     "event:6994ec3ec51f16c535c2ebd5": {
       "first_seen_kst": "2026-09-28T15:47:59+09:00",
@@ -8928,6 +8948,31 @@
       "source_published_kst": "2026-10-05T20:07+09:00",
       "title": "이카엑스 홀딩스, 플라이미 인수 완료..18억 위안 전액 현금"
     },
+    "fact:568cdc9a64080125401e4d75": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894430",
+      "source": "헤럴드경제",
+      "source_body_digest": "9ce97b8e14f9ca8532c151b22c975bcdb635965f48742bc92899cccc1994152a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a17e2917a3afacbbfb2c87b6f79ab714e179f24a3666b6967777176ec564729",
+      "source_fact_keys": [
+        "source_fact:v1:05b8f6fed42a36ad77847f5227d05078db31fd0adb0c308fd0db1b6942257704",
+        "source_fact:v1:2e5f93cf38fac02956df0525b8b0ed3127f076c9d95a94ad73ecbd372202a937",
+        "source_fact:v1:33206f6e1444a9f6db94497c51d6689095ad0ac3aa0cd155adc07dd4e49f2ac4",
+        "source_fact:v1:6ff07906b2bf0b011360d5c44b7a6241a12e817a7a5029f1c110fc958ec1aacd",
+        "source_fact:v1:726eddd6c6b9512768db137f4a152ad67f4dfeb675695dfadf4f88e38588f252",
+        "source_fact:v1:80f39e454d88c5786b23d211f86548dbcf139d0c7c219dda14b195524b957f1e",
+        "source_fact:v1:aa586f7429d9cbc1a51052cd4fbcce2b26037a8f5169765e573a5890cbbd7cdd",
+        "source_fact:v1:bfd9112624b6f9b0749ca22b1589a43121d146a836f2aaa51b5426ae87c5b9ae",
+        "source_fact:v1:c6b622ceab9e3954754e27a59895e01e9c9bbd70f7b256ccdb248958186d3388"
+      ],
+      "source_published_kst": "2026-10-06T15:22+09:00",
+      "title": "“中 AI 굴기 또 온다”…문샷, 기업가치 68조원 찍고 홍콩 상장 추진"
+    },
     "fact:56921d5e11fb4bca35fdc1e9": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
       "lanes": {
@@ -12120,6 +12165,23 @@
       "source_published_kst": "2026-10-06T09:41+09:00",
       "title": "[美공시]테라울프, 증가하는 고객 수요에 대응해 머스키 데이터 캠퍼스의 발전 용량을 1GW로 확대"
     },
+    "fact:b84dc7b554529f5a534b3359": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815219",
+      "source": "뉴시스",
+      "source_body_digest": "24ac2d094897e366579ff2c313dd2803d28a944f4ecd2efe93ba3f151f109316",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:da4d6efdaf1ddbb689c38dacc55b395ecabc5fa0f485c761a75c03619302bcc4",
+      "source_fact_keys": [
+        "source_fact:v1:0a5a3877da3d50bde88574bb3c54c8400ccf830bff6817435294d71193ac9638"
+      ],
+      "source_published_kst": "2026-10-06T11:33+09:00",
+      "title": "'연산역 수자인 센트리오' 10월 공급…일반분양 139가구"
+    },
     "fact:b9ec6c51cb70081a9a596be6": {
       "first_seen_kst": "2026-10-05T23:05:12+09:00",
       "lanes": {
@@ -13051,6 +13113,26 @@
       "source_published_kst": "2026-10-06T06:25+09:00",
       "title": "국제유가, 중동 원유 수출 증가ㆍG7 재고 방출에 하락⋯WTI 1.84%↓ [상보]"
     },
+    "fact:d781e4d4062e764dff27527f": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.fnnews.com/news/202610061408017246",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "4ba6df9887743d8fe07061c6a4bbff80713423d0dc4fc6e168dcea6ad258d76a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8bab19db86e13a4a25fb4b86ab525e8baa1e9b68b8fd609c6ae6946365d0b900",
+      "source_fact_keys": [
+        "source_fact:v1:05ac69144ec1313a6291abb612fc3275da82100e415f382f83a950c15c287c79",
+        "source_fact:v1:0819e4a0d3bca5352088e45919e1c29858bbb818896d7ecac93d5b174a1a5af7",
+        "source_fact:v1:77f8d5fe16c61c427bb89ffa91e7a3fd46665b2a0db9353913953a5771802f3d",
+        "source_fact:v1:fc7fe3e65e5e037323016e6a3ff944572b5b9effde6dd685afae9580bd54a2f5"
+      ],
+      "source_published_kst": "2026-10-06T15:19+09:00",
+      "title": "삼성전자 덜고 하이닉스 담는 ETF…8일 반도체주 수급 분기점"
+    },
     "fact:d7b0df917265718882e81fa5": {
       "first_seen_kst": "2026-10-06T07:30:15+09:00",
       "lanes": {
@@ -13911,6 +13993,26 @@
       "source_published_kst": "2026-10-06T09:58+09:00",
       "title": "에버스핀, 전북대에 에버세이프 웹 공급…AI 활용 매크로·스크래핑 등 공격 방어"
     },
+    "fact:f3357eb28d372148b9c1985f": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006061100009",
+      "source": "연합뉴스",
+      "source_body_digest": "afd1a4a96ae1f8c00fdefa60b8ba05488d1e0f080b8600a2414e165dbf782449",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d26425acfb988bb96d5cf837282cbd0ad809336e563b1cae2667a2a8b2fae1c0",
+      "source_fact_keys": [
+        "source_fact:v1:4e5e403b079f97ac867191ddb45903dec059281f71b11c7382a2b95485c2187c",
+        "source_fact:v1:7202e9dc58d3242080197be6db21b8176fae15fcf25dbccd053be160dd53c152",
+        "source_fact:v1:a034e235fdbd247601ac1d7713e3bb514c93b0cfc5ca5bba9d8909b9767c1c75",
+        "source_fact:v1:e885ac59bc235bb652c8c49dc0cd8557cb5370b9c1238b955f306ca88b672244"
+      ],
+      "source_published_kst": "2026-10-06T10:24+09:00",
+      "title": "슈나이더, 미 소프트웨어 업체 20조원에 인수 | 연합뉴스"
+    },
     "fact:f3dae6b1432c3faa419c1a41": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
       "lanes": {
@@ -13934,6 +14036,31 @@
       ],
       "source_published_kst": "2026-10-06T11:09+09:00",
       "title": "재정부담에 재협상까지…고금리에 상업용 부동산 비상"
+    },
+    "fact:f4263d0030e1c94deb72a786": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.dt.co.kr/article/12087644",
+      "source": "디지털타임스",
+      "source_body_digest": "e9cae02336c6b47d20d5d5d5f1d9e0b5669e8862f86604850d616bbd9597b664",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1680a2bf612acd8343e3d3b0d66f61232ec8237ad0bcecf13e1d4e125ad4b0c7",
+      "source_fact_keys": [
+        "source_fact:v1:03eaae4b7774e2a18290e54260cc2a8b470b9c9fd3cdaa673ee40c54a6a359c8",
+        "source_fact:v1:090482ad9c6b57c928d139c4bdfcc923bde047049a7ff9a27fe20c1e09e6ea91",
+        "source_fact:v1:5ac39d6c1b153a517e02e4a08052efc01b585a231d995b30c4e5cda12ff44e23",
+        "source_fact:v1:5e8752f729e4608b96ac800d8fa9b2fbc48933441811493adef078cac40cbbbf",
+        "source_fact:v1:62994281c829ea4f874cf15e5b2a8a27e175d581f2fffd099be6379b80685a4c",
+        "source_fact:v1:abc6ee668949269c29cb68948a3f81637abeed0b6721391b56fe503b15bbb470",
+        "source_fact:v1:bec7df6afe44f37974259bbcd8a2f77da4d0db1de09cb157c247854925241309",
+        "source_fact:v1:bf5bb004c15eb72d86f39b946550e11245795052dc8eafc2e8be9d3a175967ad",
+        "source_fact:v1:efbc7b99e121b36ead72c84d4cc40c114d156d29994aa18451efd43de8695ed9"
+      ],
+      "source_published_kst": "2026-10-06T15:06+09:00",
+      "title": "엠키스코어, AI Festa 26서 검증된 AI Factory 역량 공개… 대규모 구축부터 AI 활용까지"
     },
     "fact:f5941e8f9802f45e66242eaa": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -13988,6 +14115,31 @@
       ],
       "source_published_kst": "2026-10-06T08:25+09:00",
       "title": "NH투자證, “LS일렉트릭, 3분기 영업익 106%↑⋯북미 수혜”"
+    },
+    "fact:f7415e4e83c1b892bbec086e": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815782",
+      "source": "뉴시스",
+      "source_body_digest": "6ff90e395adb2d2a64417454d158f411caea353496dd51ee88f57063d6eb5fb3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ccd3d02955f28ecf0b6080f9de22594c9f76cee1ceca1e1f1ac7ff075e24eac",
+      "source_fact_keys": [
+        "source_fact:v1:1c97a6dc92ab42d92f89fd489bb4c88f7f290cb0f833023f0c822aea42f399c9",
+        "source_fact:v1:2267e4e20c3427ca4198555df88b4afca474d7f03357e406846432a8d6ec2fa1",
+        "source_fact:v1:2d95aa96b43fcc72bb7147a3927fd58fae4c8e01eb9ce02b2dcbff7595729e60",
+        "source_fact:v1:327abcfad3cc8c78f78c4be040273cb757b713a7631750141fec5624e1a6ac28",
+        "source_fact:v1:4b866ce1add3ad7294367abfd710b579a13eb1741a940575f0a4efe6fbee5425",
+        "source_fact:v1:9780f93e4e2cf27de17ed793627d30628417443646fba17866ed76fc9df93bfc",
+        "source_fact:v1:b2e5cc6c6a18d52284b021a367cc8380991c02e27d4cbb9ab1dc8a74bb2d86b6",
+        "source_fact:v1:c0fa3b8c68625569402bf015cfc94859b71739dc7e40b4bdb8d45b022925539d",
+        "source_fact:v1:e50256049c9e689c3b626acae3277b5eddd75cf911e49ef60682bccd8750f2b6"
+      ],
+      "source_published_kst": "2026-10-06T15:02+09:00",
+      "title": "전남광주시, '장성 데이터센터' 첫 출자…48억 지분투자"
     },
     "fact:f74b99d02e58c25cbb94e912": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
@@ -17662,6 +17814,31 @@
       "source": "이데일리",
       "title": "[속보]뉴욕증시, 장기금리 급등에 이틀째 약세…30년물 24년來 최고"
     },
+    "link:288d4eea0b8726d83cf59139": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815782",
+      "source": "뉴시스",
+      "source_body_digest": "6ff90e395adb2d2a64417454d158f411caea353496dd51ee88f57063d6eb5fb3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ccd3d02955f28ecf0b6080f9de22594c9f76cee1ceca1e1f1ac7ff075e24eac",
+      "source_fact_keys": [
+        "source_fact:v1:1c97a6dc92ab42d92f89fd489bb4c88f7f290cb0f833023f0c822aea42f399c9",
+        "source_fact:v1:2267e4e20c3427ca4198555df88b4afca474d7f03357e406846432a8d6ec2fa1",
+        "source_fact:v1:2d95aa96b43fcc72bb7147a3927fd58fae4c8e01eb9ce02b2dcbff7595729e60",
+        "source_fact:v1:327abcfad3cc8c78f78c4be040273cb757b713a7631750141fec5624e1a6ac28",
+        "source_fact:v1:4b866ce1add3ad7294367abfd710b579a13eb1741a940575f0a4efe6fbee5425",
+        "source_fact:v1:9780f93e4e2cf27de17ed793627d30628417443646fba17866ed76fc9df93bfc",
+        "source_fact:v1:b2e5cc6c6a18d52284b021a367cc8380991c02e27d4cbb9ab1dc8a74bb2d86b6",
+        "source_fact:v1:c0fa3b8c68625569402bf015cfc94859b71739dc7e40b4bdb8d45b022925539d",
+        "source_fact:v1:e50256049c9e689c3b626acae3277b5eddd75cf911e49ef60682bccd8750f2b6"
+      ],
+      "source_published_kst": "2026-10-06T15:02+09:00",
+      "title": "전남광주시, '장성 데이터센터' 첫 출자…48억 지분투자"
+    },
     "link:28cbdd4f3622dc220a37d19e": {
       "first_seen_kst": "2026-10-03T03:43:38+09:00",
       "lanes": {
@@ -18963,6 +19140,31 @@
       "source": "뉴시스",
       "title": "버스파업에 놀란 서울시, 2030년 자율주행버스 500대 도입"
     },
+    "link:369910ba5966a4fcd386acbc": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.dt.co.kr/article/12087644",
+      "source": "디지털타임스",
+      "source_body_digest": "e9cae02336c6b47d20d5d5d5f1d9e0b5669e8862f86604850d616bbd9597b664",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1680a2bf612acd8343e3d3b0d66f61232ec8237ad0bcecf13e1d4e125ad4b0c7",
+      "source_fact_keys": [
+        "source_fact:v1:03eaae4b7774e2a18290e54260cc2a8b470b9c9fd3cdaa673ee40c54a6a359c8",
+        "source_fact:v1:090482ad9c6b57c928d139c4bdfcc923bde047049a7ff9a27fe20c1e09e6ea91",
+        "source_fact:v1:5ac39d6c1b153a517e02e4a08052efc01b585a231d995b30c4e5cda12ff44e23",
+        "source_fact:v1:5e8752f729e4608b96ac800d8fa9b2fbc48933441811493adef078cac40cbbbf",
+        "source_fact:v1:62994281c829ea4f874cf15e5b2a8a27e175d581f2fffd099be6379b80685a4c",
+        "source_fact:v1:abc6ee668949269c29cb68948a3f81637abeed0b6721391b56fe503b15bbb470",
+        "source_fact:v1:bec7df6afe44f37974259bbcd8a2f77da4d0db1de09cb157c247854925241309",
+        "source_fact:v1:bf5bb004c15eb72d86f39b946550e11245795052dc8eafc2e8be9d3a175967ad",
+        "source_fact:v1:efbc7b99e121b36ead72c84d4cc40c114d156d29994aa18451efd43de8695ed9"
+      ],
+      "source_published_kst": "2026-10-06T15:06+09:00",
+      "title": "엠키스코어, AI Festa 26서 검증된 AI Factory 역량 공개… 대규모 구축부터 AI 활용까지"
+    },
     "link:36a371ccc76e0919d61483a9": {
       "first_seen_kst": "2026-10-04T00:00:47+09:00",
       "lanes": {
@@ -19834,6 +20036,21 @@
       "link": "https://www.mk.co.kr/news/stock/12165573",
       "source": "매일경제",
       "title": "주가 빠진 오리온, 지금이 기회?…“배당 4%대·저점 매수 유효”"
+    },
+    "link:3f04b5b129b0d77e710002a3": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894416",
+      "source": "헤럴드경제",
+      "source_body_digest": "d50fe5b65d1bf511e73a49efae04e986c1395661438e545cb9f811eaccf6f63e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T15:16+09:00",
+      "title": "MSDI, 구미에 미사일 개발·생산 거점 추진…2029년까지 7000억 규모"
     },
     "link:3f3343aa37f3546a2c83e543": {
       "first_seen_kst": "2026-10-02T11:29:29+09:00",
@@ -24025,6 +24242,23 @@
       "source_published_kst": "2026-10-05T11:16+09:00",
       "title": "딥시크·화웨이, AI 칩 SW 맞손…\"엔비디아 의존 낮춰\""
     },
+    "link:6c68bdf4bfcd27776f220f39": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815219",
+      "source": "뉴시스",
+      "source_body_digest": "24ac2d094897e366579ff2c313dd2803d28a944f4ecd2efe93ba3f151f109316",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:da4d6efdaf1ddbb689c38dacc55b395ecabc5fa0f485c761a75c03619302bcc4",
+      "source_fact_keys": [
+        "source_fact:v1:0a5a3877da3d50bde88574bb3c54c8400ccf830bff6817435294d71193ac9638"
+      ],
+      "source_published_kst": "2026-10-06T11:33+09:00",
+      "title": "'연산역 수자인 센트리오' 10월 공급…일반분양 139가구"
+    },
     "link:6c6edb30d4332f19477ca2e5": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
       "lanes": {
@@ -25560,6 +25794,26 @@
       "link": "https://www.yna.co.kr/view/AKR20261002144200008",
       "source": "연합뉴스",
       "title": "국고채, 당국의지·美금리 하락에 강세…3년물 3%대로(종합) | 연합뉴스"
+    },
+    "link:7c1b728a5d07cee7e8d33b34": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.fnnews.com/news/202610061408017246",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "4ba6df9887743d8fe07061c6a4bbff80713423d0dc4fc6e168dcea6ad258d76a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8bab19db86e13a4a25fb4b86ab525e8baa1e9b68b8fd609c6ae6946365d0b900",
+      "source_fact_keys": [
+        "source_fact:v1:05ac69144ec1313a6291abb612fc3275da82100e415f382f83a950c15c287c79",
+        "source_fact:v1:0819e4a0d3bca5352088e45919e1c29858bbb818896d7ecac93d5b174a1a5af7",
+        "source_fact:v1:77f8d5fe16c61c427bb89ffa91e7a3fd46665b2a0db9353913953a5771802f3d",
+        "source_fact:v1:fc7fe3e65e5e037323016e6a3ff944572b5b9effde6dd685afae9580bd54a2f5"
+      ],
+      "source_published_kst": "2026-10-06T15:19+09:00",
+      "title": "삼성전자 덜고 하이닉스 담는 ETF…8일 반도체주 수급 분기점"
     },
     "link:7c47c1e079aa50c9dc0e276d": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
@@ -31528,6 +31782,26 @@
       "source_published_kst": "2026-10-04T06:20+09:00",
       "title": "3분기 약달러에 ETF 상승률 1∼3위 모두 '달러 곱버스' 차지 | 연합뉴스"
     },
+    "link:be9e639a6c15873c33add193": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006061100009",
+      "source": "연합뉴스",
+      "source_body_digest": "afd1a4a96ae1f8c00fdefa60b8ba05488d1e0f080b8600a2414e165dbf782449",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d26425acfb988bb96d5cf837282cbd0ad809336e563b1cae2667a2a8b2fae1c0",
+      "source_fact_keys": [
+        "source_fact:v1:4e5e403b079f97ac867191ddb45903dec059281f71b11c7382a2b95485c2187c",
+        "source_fact:v1:7202e9dc58d3242080197be6db21b8176fae15fcf25dbccd053be160dd53c152",
+        "source_fact:v1:a034e235fdbd247601ac1d7713e3bb514c93b0cfc5ca5bba9d8909b9767c1c75",
+        "source_fact:v1:e885ac59bc235bb652c8c49dc0cd8557cb5370b9c1238b955f306ca88b672244"
+      ],
+      "source_published_kst": "2026-10-06T10:24+09:00",
+      "title": "슈나이더, 미 소프트웨어 업체 20조원에 인수 | 연합뉴스"
+    },
     "link:beb2f0b14dcb5e6af59c4fa0": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
       "lanes": {
@@ -32547,6 +32821,31 @@
       ],
       "source_published_kst": "2026-10-05T11:00+09:00",
       "title": "반려견 피부염 연구 활용…'항염증 엑소좀' 생산기술 개발"
+    },
+    "link:c891a9814d5e0919c525feae": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894430",
+      "source": "헤럴드경제",
+      "source_body_digest": "9ce97b8e14f9ca8532c151b22c975bcdb635965f48742bc92899cccc1994152a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a17e2917a3afacbbfb2c87b6f79ab714e179f24a3666b6967777176ec564729",
+      "source_fact_keys": [
+        "source_fact:v1:05b8f6fed42a36ad77847f5227d05078db31fd0adb0c308fd0db1b6942257704",
+        "source_fact:v1:2e5f93cf38fac02956df0525b8b0ed3127f076c9d95a94ad73ecbd372202a937",
+        "source_fact:v1:33206f6e1444a9f6db94497c51d6689095ad0ac3aa0cd155adc07dd4e49f2ac4",
+        "source_fact:v1:6ff07906b2bf0b011360d5c44b7a6241a12e817a7a5029f1c110fc958ec1aacd",
+        "source_fact:v1:726eddd6c6b9512768db137f4a152ad67f4dfeb675695dfadf4f88e38588f252",
+        "source_fact:v1:80f39e454d88c5786b23d211f86548dbcf139d0c7c219dda14b195524b957f1e",
+        "source_fact:v1:aa586f7429d9cbc1a51052cd4fbcce2b26037a8f5169765e573a5890cbbd7cdd",
+        "source_fact:v1:bfd9112624b6f9b0749ca22b1589a43121d146a836f2aaa51b5426ae87c5b9ae",
+        "source_fact:v1:c6b622ceab9e3954754e27a59895e01e9c9bbd70f7b256ccdb248958186d3388"
+      ],
+      "source_published_kst": "2026-10-06T15:22+09:00",
+      "title": "“中 AI 굴기 또 온다”…문샷, 기업가치 68조원 찍고 홍콩 상장 추진"
     },
     "link:c89275743bcdc840f46ac37c": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
@@ -38769,6 +39068,31 @@
       "source": "뉴시스",
       "title": "코오롱티슈진 노문종 대표 사임…\"일신상 사유\""
     },
+    "original:0f7fb729ee340130873e7e43": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.dt.co.kr/article/12087644",
+      "source": "디지털타임스",
+      "source_body_digest": "e9cae02336c6b47d20d5d5d5f1d9e0b5669e8862f86604850d616bbd9597b664",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1680a2bf612acd8343e3d3b0d66f61232ec8237ad0bcecf13e1d4e125ad4b0c7",
+      "source_fact_keys": [
+        "source_fact:v1:03eaae4b7774e2a18290e54260cc2a8b470b9c9fd3cdaa673ee40c54a6a359c8",
+        "source_fact:v1:090482ad9c6b57c928d139c4bdfcc923bde047049a7ff9a27fe20c1e09e6ea91",
+        "source_fact:v1:5ac39d6c1b153a517e02e4a08052efc01b585a231d995b30c4e5cda12ff44e23",
+        "source_fact:v1:5e8752f729e4608b96ac800d8fa9b2fbc48933441811493adef078cac40cbbbf",
+        "source_fact:v1:62994281c829ea4f874cf15e5b2a8a27e175d581f2fffd099be6379b80685a4c",
+        "source_fact:v1:abc6ee668949269c29cb68948a3f81637abeed0b6721391b56fe503b15bbb470",
+        "source_fact:v1:bec7df6afe44f37974259bbcd8a2f77da4d0db1de09cb157c247854925241309",
+        "source_fact:v1:bf5bb004c15eb72d86f39b946550e11245795052dc8eafc2e8be9d3a175967ad",
+        "source_fact:v1:efbc7b99e121b36ead72c84d4cc40c114d156d29994aa18451efd43de8695ed9"
+      ],
+      "source_published_kst": "2026-10-06T15:06+09:00",
+      "title": "엠키스코어, AI Festa 26서 검증된 AI Factory 역량 공개… 대규모 구축부터 AI 활용까지"
+    },
     "original:0f868b4ab8d77c9db9deebd6": {
       "first_seen_kst": "2026-10-02T18:02:38+09:00",
       "lanes": {
@@ -43967,6 +44291,23 @@
       "source": "뉴시스",
       "title": "방탄소년단, 오늘 美 MTV VMA '올해의 노래' 받을까"
     },
+    "original:48dae2f0da66bc318036979f": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815219",
+      "source": "뉴시스",
+      "source_body_digest": "24ac2d094897e366579ff2c313dd2803d28a944f4ecd2efe93ba3f151f109316",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:da4d6efdaf1ddbb689c38dacc55b395ecabc5fa0f485c761a75c03619302bcc4",
+      "source_fact_keys": [
+        "source_fact:v1:0a5a3877da3d50bde88574bb3c54c8400ccf830bff6817435294d71193ac9638"
+      ],
+      "source_published_kst": "2026-10-06T11:33+09:00",
+      "title": "'연산역 수자인 센트리오' 10월 공급…일반분양 139가구"
+    },
     "original:48e10170c3608d5fa79b7bc0": {
       "first_seen_kst": "2026-10-05T14:04:17+09:00",
       "lanes": {
@@ -44453,6 +44794,21 @@
       ],
       "source_published_kst": "2026-10-06T14:48+09:00",
       "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
+    },
+    "original:4e4deb55206f56f357b45fdf": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894416",
+      "source": "헤럴드경제",
+      "source_body_digest": "d50fe5b65d1bf511e73a49efae04e986c1395661438e545cb9f811eaccf6f63e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T15:16+09:00",
+      "title": "MSDI, 구미에 미사일 개발·생산 거점 추진…2029년까지 7000억 규모"
     },
     "original:4e792d2bfd7018600c8cc349": {
       "first_seen_kst": "2026-10-05T23:21:26+09:00",
@@ -45951,6 +46307,31 @@
       "link": "https://www.mk.co.kr/news/stock/12155822",
       "source": "매일경제",
       "title": "니온크 테크놀로지스, 경영진 63만 달러 자사주 매입…NEO100 임상 성공 확신"
+    },
+    "original:6152ee75a1a058d481df5a29": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815782",
+      "source": "뉴시스",
+      "source_body_digest": "6ff90e395adb2d2a64417454d158f411caea353496dd51ee88f57063d6eb5fb3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ccd3d02955f28ecf0b6080f9de22594c9f76cee1ceca1e1f1ac7ff075e24eac",
+      "source_fact_keys": [
+        "source_fact:v1:1c97a6dc92ab42d92f89fd489bb4c88f7f290cb0f833023f0c822aea42f399c9",
+        "source_fact:v1:2267e4e20c3427ca4198555df88b4afca474d7f03357e406846432a8d6ec2fa1",
+        "source_fact:v1:2d95aa96b43fcc72bb7147a3927fd58fae4c8e01eb9ce02b2dcbff7595729e60",
+        "source_fact:v1:327abcfad3cc8c78f78c4be040273cb757b713a7631750141fec5624e1a6ac28",
+        "source_fact:v1:4b866ce1add3ad7294367abfd710b579a13eb1741a940575f0a4efe6fbee5425",
+        "source_fact:v1:9780f93e4e2cf27de17ed793627d30628417443646fba17866ed76fc9df93bfc",
+        "source_fact:v1:b2e5cc6c6a18d52284b021a367cc8380991c02e27d4cbb9ab1dc8a74bb2d86b6",
+        "source_fact:v1:c0fa3b8c68625569402bf015cfc94859b71739dc7e40b4bdb8d45b022925539d",
+        "source_fact:v1:e50256049c9e689c3b626acae3277b5eddd75cf911e49ef60682bccd8750f2b6"
+      ],
+      "source_published_kst": "2026-10-06T15:02+09:00",
+      "title": "전남광주시, '장성 데이터센터' 첫 출자…48억 지분투자"
     },
     "original:61650230c4c69a0d0dac04b7": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
@@ -47707,6 +48088,26 @@
       ],
       "source_published_kst": "2026-10-06T06:15+09:00",
       "title": "[AI프리즘] '3대 메가프로젝트' 피지컬AI…전체 AI 예산 5%도 안돼"
+    },
+    "original:7377aae93fb782c63d2ad000": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.fnnews.com/news/202610061408017246",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "4ba6df9887743d8fe07061c6a4bbff80713423d0dc4fc6e168dcea6ad258d76a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8bab19db86e13a4a25fb4b86ab525e8baa1e9b68b8fd609c6ae6946365d0b900",
+      "source_fact_keys": [
+        "source_fact:v1:05ac69144ec1313a6291abb612fc3275da82100e415f382f83a950c15c287c79",
+        "source_fact:v1:0819e4a0d3bca5352088e45919e1c29858bbb818896d7ecac93d5b174a1a5af7",
+        "source_fact:v1:77f8d5fe16c61c427bb89ffa91e7a3fd46665b2a0db9353913953a5771802f3d",
+        "source_fact:v1:fc7fe3e65e5e037323016e6a3ff944572b5b9effde6dd685afae9580bd54a2f5"
+      ],
+      "source_published_kst": "2026-10-06T15:19+09:00",
+      "title": "삼성전자 덜고 하이닉스 담는 ETF…8일 반도체주 수급 분기점"
     },
     "original:738d47bda2bc87efe4d59a0a": {
       "first_seen_kst": "2026-10-02T02:33:30+09:00",
@@ -54977,6 +55378,31 @@
       "source_published_kst": "2026-10-05T21:00+09:00",
       "title": "알보테크, FDA 심랜디 미국 생산설비 추가 승인에 공급능력 2배 확대 기대"
     },
+    "original:cb78e50bc248e879b57834d7": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894430",
+      "source": "헤럴드경제",
+      "source_body_digest": "9ce97b8e14f9ca8532c151b22c975bcdb635965f48742bc92899cccc1994152a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a17e2917a3afacbbfb2c87b6f79ab714e179f24a3666b6967777176ec564729",
+      "source_fact_keys": [
+        "source_fact:v1:05b8f6fed42a36ad77847f5227d05078db31fd0adb0c308fd0db1b6942257704",
+        "source_fact:v1:2e5f93cf38fac02956df0525b8b0ed3127f076c9d95a94ad73ecbd372202a937",
+        "source_fact:v1:33206f6e1444a9f6db94497c51d6689095ad0ac3aa0cd155adc07dd4e49f2ac4",
+        "source_fact:v1:6ff07906b2bf0b011360d5c44b7a6241a12e817a7a5029f1c110fc958ec1aacd",
+        "source_fact:v1:726eddd6c6b9512768db137f4a152ad67f4dfeb675695dfadf4f88e38588f252",
+        "source_fact:v1:80f39e454d88c5786b23d211f86548dbcf139d0c7c219dda14b195524b957f1e",
+        "source_fact:v1:aa586f7429d9cbc1a51052cd4fbcce2b26037a8f5169765e573a5890cbbd7cdd",
+        "source_fact:v1:bfd9112624b6f9b0749ca22b1589a43121d146a836f2aaa51b5426ae87c5b9ae",
+        "source_fact:v1:c6b622ceab9e3954754e27a59895e01e9c9bbd70f7b256ccdb248958186d3388"
+      ],
+      "source_published_kst": "2026-10-06T15:22+09:00",
+      "title": "“中 AI 굴기 또 온다”…문샷, 기업가치 68조원 찍고 홍콩 상장 추진"
+    },
     "original:cb8663142e6e4babfb311976": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -59184,6 +59610,26 @@
       "source_published_kst": "2026-10-06T05:43+09:00",
       "title": "美 부통령 \"알래스카 LNG 사업 투자, 한국과 세부사항 조율해야\""
     },
+    "original:fa96e8767693d02a31e36453": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006061100009",
+      "source": "연합뉴스",
+      "source_body_digest": "afd1a4a96ae1f8c00fdefa60b8ba05488d1e0f080b8600a2414e165dbf782449",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d26425acfb988bb96d5cf837282cbd0ad809336e563b1cae2667a2a8b2fae1c0",
+      "source_fact_keys": [
+        "source_fact:v1:4e5e403b079f97ac867191ddb45903dec059281f71b11c7382a2b95485c2187c",
+        "source_fact:v1:7202e9dc58d3242080197be6db21b8176fae15fcf25dbccd053be160dd53c152",
+        "source_fact:v1:a034e235fdbd247601ac1d7713e3bb514c93b0cfc5ca5bba9d8909b9767c1c75",
+        "source_fact:v1:e885ac59bc235bb652c8c49dc0cd8557cb5370b9c1238b955f306ca88b672244"
+      ],
+      "source_published_kst": "2026-10-06T10:24+09:00",
+      "title": "슈나이더, 미 소프트웨어 업체 20조원에 인수 | 연합뉴스"
+    },
     "original:fae515231126d515383fb973": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -62291,6 +62737,31 @@
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
     },
+    "source_fact:108f40b1b4685d12fd03e0de": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894430",
+      "source": "헤럴드경제",
+      "source_body_digest": "9ce97b8e14f9ca8532c151b22c975bcdb635965f48742bc92899cccc1994152a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a17e2917a3afacbbfb2c87b6f79ab714e179f24a3666b6967777176ec564729",
+      "source_fact_keys": [
+        "source_fact:v1:05b8f6fed42a36ad77847f5227d05078db31fd0adb0c308fd0db1b6942257704",
+        "source_fact:v1:2e5f93cf38fac02956df0525b8b0ed3127f076c9d95a94ad73ecbd372202a937",
+        "source_fact:v1:33206f6e1444a9f6db94497c51d6689095ad0ac3aa0cd155adc07dd4e49f2ac4",
+        "source_fact:v1:6ff07906b2bf0b011360d5c44b7a6241a12e817a7a5029f1c110fc958ec1aacd",
+        "source_fact:v1:726eddd6c6b9512768db137f4a152ad67f4dfeb675695dfadf4f88e38588f252",
+        "source_fact:v1:80f39e454d88c5786b23d211f86548dbcf139d0c7c219dda14b195524b957f1e",
+        "source_fact:v1:aa586f7429d9cbc1a51052cd4fbcce2b26037a8f5169765e573a5890cbbd7cdd",
+        "source_fact:v1:bfd9112624b6f9b0749ca22b1589a43121d146a836f2aaa51b5426ae87c5b9ae",
+        "source_fact:v1:c6b622ceab9e3954754e27a59895e01e9c9bbd70f7b256ccdb248958186d3388"
+      ],
+      "source_published_kst": "2026-10-06T15:22+09:00",
+      "title": "“中 AI 굴기 또 온다”…문샷, 기업가치 68조원 찍고 홍콩 상장 추진"
+    },
     "source_fact:10b6d240f3d5c9d9523f8749": {
       "first_seen_kst": "2026-10-05T23:37:00+09:00",
       "lanes": {
@@ -63639,6 +64110,31 @@
       ],
       "source_published_kst": "2026-10-05T15:21+09:00",
       "title": "“영끌했는데 매달 이자 어쩌죠”...치솟는 주담대 금리- 매경ECONOMY"
+    },
+    "source_fact:1badefcf865de0f1011a1b26": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894430",
+      "source": "헤럴드경제",
+      "source_body_digest": "9ce97b8e14f9ca8532c151b22c975bcdb635965f48742bc92899cccc1994152a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a17e2917a3afacbbfb2c87b6f79ab714e179f24a3666b6967777176ec564729",
+      "source_fact_keys": [
+        "source_fact:v1:05b8f6fed42a36ad77847f5227d05078db31fd0adb0c308fd0db1b6942257704",
+        "source_fact:v1:2e5f93cf38fac02956df0525b8b0ed3127f076c9d95a94ad73ecbd372202a937",
+        "source_fact:v1:33206f6e1444a9f6db94497c51d6689095ad0ac3aa0cd155adc07dd4e49f2ac4",
+        "source_fact:v1:6ff07906b2bf0b011360d5c44b7a6241a12e817a7a5029f1c110fc958ec1aacd",
+        "source_fact:v1:726eddd6c6b9512768db137f4a152ad67f4dfeb675695dfadf4f88e38588f252",
+        "source_fact:v1:80f39e454d88c5786b23d211f86548dbcf139d0c7c219dda14b195524b957f1e",
+        "source_fact:v1:aa586f7429d9cbc1a51052cd4fbcce2b26037a8f5169765e573a5890cbbd7cdd",
+        "source_fact:v1:bfd9112624b6f9b0749ca22b1589a43121d146a836f2aaa51b5426ae87c5b9ae",
+        "source_fact:v1:c6b622ceab9e3954754e27a59895e01e9c9bbd70f7b256ccdb248958186d3388"
+      ],
+      "source_published_kst": "2026-10-06T15:22+09:00",
+      "title": "“中 AI 굴기 또 온다”…문샷, 기업가치 68조원 찍고 홍콩 상장 추진"
     },
     "source_fact:1bb213c493f2d0105f3d19f9": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
@@ -65606,6 +66102,26 @@
       ],
       "source_published_kst": "2026-10-06T10:57+09:00",
       "title": "오텍캐리어, AI 데이터센터용 CDU 제품 라인업 강화"
+    },
+    "source_fact:27f4f9794d67f9ea6efe6caf": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.fnnews.com/news/202610061408017246",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "4ba6df9887743d8fe07061c6a4bbff80713423d0dc4fc6e168dcea6ad258d76a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8bab19db86e13a4a25fb4b86ab525e8baa1e9b68b8fd609c6ae6946365d0b900",
+      "source_fact_keys": [
+        "source_fact:v1:05ac69144ec1313a6291abb612fc3275da82100e415f382f83a950c15c287c79",
+        "source_fact:v1:0819e4a0d3bca5352088e45919e1c29858bbb818896d7ecac93d5b174a1a5af7",
+        "source_fact:v1:77f8d5fe16c61c427bb89ffa91e7a3fd46665b2a0db9353913953a5771802f3d",
+        "source_fact:v1:fc7fe3e65e5e037323016e6a3ff944572b5b9effde6dd685afae9580bd54a2f5"
+      ],
+      "source_published_kst": "2026-10-06T15:19+09:00",
+      "title": "삼성전자 덜고 하이닉스 담는 ETF…8일 반도체주 수급 분기점"
     },
     "source_fact:27f7172fff229a8309a11fe2": {
       "first_seen_kst": "2026-10-06T10:41:31+09:00",
@@ -67964,6 +68480,31 @@
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
     },
+    "source_fact:372dd6f067fc96c787dd5674": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815782",
+      "source": "뉴시스",
+      "source_body_digest": "6ff90e395adb2d2a64417454d158f411caea353496dd51ee88f57063d6eb5fb3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ccd3d02955f28ecf0b6080f9de22594c9f76cee1ceca1e1f1ac7ff075e24eac",
+      "source_fact_keys": [
+        "source_fact:v1:1c97a6dc92ab42d92f89fd489bb4c88f7f290cb0f833023f0c822aea42f399c9",
+        "source_fact:v1:2267e4e20c3427ca4198555df88b4afca474d7f03357e406846432a8d6ec2fa1",
+        "source_fact:v1:2d95aa96b43fcc72bb7147a3927fd58fae4c8e01eb9ce02b2dcbff7595729e60",
+        "source_fact:v1:327abcfad3cc8c78f78c4be040273cb757b713a7631750141fec5624e1a6ac28",
+        "source_fact:v1:4b866ce1add3ad7294367abfd710b579a13eb1741a940575f0a4efe6fbee5425",
+        "source_fact:v1:9780f93e4e2cf27de17ed793627d30628417443646fba17866ed76fc9df93bfc",
+        "source_fact:v1:b2e5cc6c6a18d52284b021a367cc8380991c02e27d4cbb9ab1dc8a74bb2d86b6",
+        "source_fact:v1:c0fa3b8c68625569402bf015cfc94859b71739dc7e40b4bdb8d45b022925539d",
+        "source_fact:v1:e50256049c9e689c3b626acae3277b5eddd75cf911e49ef60682bccd8750f2b6"
+      ],
+      "source_published_kst": "2026-10-06T15:02+09:00",
+      "title": "전남광주시, '장성 데이터센터' 첫 출자…48억 지분투자"
+    },
     "source_fact:376a5e4dc02c752c34ba089a": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
       "lanes": {
@@ -68478,6 +69019,26 @@
       "source_published_kst": "2026-10-05T19:04+09:00",
       "title": "니우 테크놀러지스, 3분기 판매 54만대..전년비 15% 증가·해외 3배 확대"
     },
+    "source_fact:3b01bfed156d73fcfd31ccf5": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006061100009",
+      "source": "연합뉴스",
+      "source_body_digest": "afd1a4a96ae1f8c00fdefa60b8ba05488d1e0f080b8600a2414e165dbf782449",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d26425acfb988bb96d5cf837282cbd0ad809336e563b1cae2667a2a8b2fae1c0",
+      "source_fact_keys": [
+        "source_fact:v1:4e5e403b079f97ac867191ddb45903dec059281f71b11c7382a2b95485c2187c",
+        "source_fact:v1:7202e9dc58d3242080197be6db21b8176fae15fcf25dbccd053be160dd53c152",
+        "source_fact:v1:a034e235fdbd247601ac1d7713e3bb514c93b0cfc5ca5bba9d8909b9767c1c75",
+        "source_fact:v1:e885ac59bc235bb652c8c49dc0cd8557cb5370b9c1238b955f306ca88b672244"
+      ],
+      "source_published_kst": "2026-10-06T10:24+09:00",
+      "title": "슈나이더, 미 소프트웨어 업체 20조원에 인수 | 연합뉴스"
+    },
     "source_fact:3b03651f82924bd642bea895": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
       "lanes": {
@@ -68968,6 +69529,31 @@
       ],
       "source_published_kst": "2026-10-05T05:01+09:00",
       "title": "국회 정무위 6일 국감 돌입…금융권 해킹에 5대 은행장 줄소환되나"
+    },
+    "source_fact:3ec2404af8c29aaaa874176c": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894430",
+      "source": "헤럴드경제",
+      "source_body_digest": "9ce97b8e14f9ca8532c151b22c975bcdb635965f48742bc92899cccc1994152a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a17e2917a3afacbbfb2c87b6f79ab714e179f24a3666b6967777176ec564729",
+      "source_fact_keys": [
+        "source_fact:v1:05b8f6fed42a36ad77847f5227d05078db31fd0adb0c308fd0db1b6942257704",
+        "source_fact:v1:2e5f93cf38fac02956df0525b8b0ed3127f076c9d95a94ad73ecbd372202a937",
+        "source_fact:v1:33206f6e1444a9f6db94497c51d6689095ad0ac3aa0cd155adc07dd4e49f2ac4",
+        "source_fact:v1:6ff07906b2bf0b011360d5c44b7a6241a12e817a7a5029f1c110fc958ec1aacd",
+        "source_fact:v1:726eddd6c6b9512768db137f4a152ad67f4dfeb675695dfadf4f88e38588f252",
+        "source_fact:v1:80f39e454d88c5786b23d211f86548dbcf139d0c7c219dda14b195524b957f1e",
+        "source_fact:v1:aa586f7429d9cbc1a51052cd4fbcce2b26037a8f5169765e573a5890cbbd7cdd",
+        "source_fact:v1:bfd9112624b6f9b0749ca22b1589a43121d146a836f2aaa51b5426ae87c5b9ae",
+        "source_fact:v1:c6b622ceab9e3954754e27a59895e01e9c9bbd70f7b256ccdb248958186d3388"
+      ],
+      "source_published_kst": "2026-10-06T15:22+09:00",
+      "title": "“中 AI 굴기 또 온다”…문샷, 기업가치 68조원 찍고 홍콩 상장 추진"
     },
     "source_fact:3ed355efbc54d847364b05f3": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
@@ -70563,6 +71149,26 @@
       "source_published_kst": "2026-10-06T14:06+09:00",
       "title": "미 국방부, 앤트로픽 AI 사용 중단…블랙리스트 지정 8개월만 | 연합뉴스"
     },
+    "source_fact:4901829ab1901814245522b7": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006061100009",
+      "source": "연합뉴스",
+      "source_body_digest": "afd1a4a96ae1f8c00fdefa60b8ba05488d1e0f080b8600a2414e165dbf782449",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d26425acfb988bb96d5cf837282cbd0ad809336e563b1cae2667a2a8b2fae1c0",
+      "source_fact_keys": [
+        "source_fact:v1:4e5e403b079f97ac867191ddb45903dec059281f71b11c7382a2b95485c2187c",
+        "source_fact:v1:7202e9dc58d3242080197be6db21b8176fae15fcf25dbccd053be160dd53c152",
+        "source_fact:v1:a034e235fdbd247601ac1d7713e3bb514c93b0cfc5ca5bba9d8909b9767c1c75",
+        "source_fact:v1:e885ac59bc235bb652c8c49dc0cd8557cb5370b9c1238b955f306ca88b672244"
+      ],
+      "source_published_kst": "2026-10-06T10:24+09:00",
+      "title": "슈나이더, 미 소프트웨어 업체 20조원에 인수 | 연합뉴스"
+    },
     "source_fact:4901a339ed7c68126ea21c12": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -70717,6 +71323,26 @@
       "source_published_kst": "2026-10-05T21:46+09:00",
       "title": "재규어 헬스, 특별 주식배당..우선주 1주 보통주 5주 전환"
     },
+    "source_fact:49d577a3423d655335af62ef": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.fnnews.com/news/202610061408017246",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "4ba6df9887743d8fe07061c6a4bbff80713423d0dc4fc6e168dcea6ad258d76a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8bab19db86e13a4a25fb4b86ab525e8baa1e9b68b8fd609c6ae6946365d0b900",
+      "source_fact_keys": [
+        "source_fact:v1:05ac69144ec1313a6291abb612fc3275da82100e415f382f83a950c15c287c79",
+        "source_fact:v1:0819e4a0d3bca5352088e45919e1c29858bbb818896d7ecac93d5b174a1a5af7",
+        "source_fact:v1:77f8d5fe16c61c427bb89ffa91e7a3fd46665b2a0db9353913953a5771802f3d",
+        "source_fact:v1:fc7fe3e65e5e037323016e6a3ff944572b5b9effde6dd685afae9580bd54a2f5"
+      ],
+      "source_published_kst": "2026-10-06T15:19+09:00",
+      "title": "삼성전자 덜고 하이닉스 담는 ETF…8일 반도체주 수급 분기점"
+    },
     "source_fact:4a0f793738da597ec14bbb40": {
       "first_seen_kst": "2026-10-06T15:14:29+09:00",
       "lanes": {
@@ -70735,6 +71361,31 @@
       ],
       "source_published_kst": "2026-10-06T10:04+09:00",
       "title": "옵티팜, cGMP 시설 인수로 이종이식 사업화 속도"
+    },
+    "source_fact:4a2b18f54e483bd193d64b4a": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815782",
+      "source": "뉴시스",
+      "source_body_digest": "6ff90e395adb2d2a64417454d158f411caea353496dd51ee88f57063d6eb5fb3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ccd3d02955f28ecf0b6080f9de22594c9f76cee1ceca1e1f1ac7ff075e24eac",
+      "source_fact_keys": [
+        "source_fact:v1:1c97a6dc92ab42d92f89fd489bb4c88f7f290cb0f833023f0c822aea42f399c9",
+        "source_fact:v1:2267e4e20c3427ca4198555df88b4afca474d7f03357e406846432a8d6ec2fa1",
+        "source_fact:v1:2d95aa96b43fcc72bb7147a3927fd58fae4c8e01eb9ce02b2dcbff7595729e60",
+        "source_fact:v1:327abcfad3cc8c78f78c4be040273cb757b713a7631750141fec5624e1a6ac28",
+        "source_fact:v1:4b866ce1add3ad7294367abfd710b579a13eb1741a940575f0a4efe6fbee5425",
+        "source_fact:v1:9780f93e4e2cf27de17ed793627d30628417443646fba17866ed76fc9df93bfc",
+        "source_fact:v1:b2e5cc6c6a18d52284b021a367cc8380991c02e27d4cbb9ab1dc8a74bb2d86b6",
+        "source_fact:v1:c0fa3b8c68625569402bf015cfc94859b71739dc7e40b4bdb8d45b022925539d",
+        "source_fact:v1:e50256049c9e689c3b626acae3277b5eddd75cf911e49ef60682bccd8750f2b6"
+      ],
+      "source_published_kst": "2026-10-06T15:02+09:00",
+      "title": "전남광주시, '장성 데이터센터' 첫 출자…48억 지분투자"
     },
     "source_fact:4a479d78ac502a9dd8444660": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -71088,6 +71739,31 @@
       ],
       "source_published_kst": "2026-10-05T12:55+09:00",
       "title": "예멘군, 미국·사우디 지원받아 친이란 후티에 총반격 돌입(종합) | 연합뉴스"
+    },
+    "source_fact:4df2f9e10360ccfb281dec89": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.dt.co.kr/article/12087644",
+      "source": "디지털타임스",
+      "source_body_digest": "e9cae02336c6b47d20d5d5d5f1d9e0b5669e8862f86604850d616bbd9597b664",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1680a2bf612acd8343e3d3b0d66f61232ec8237ad0bcecf13e1d4e125ad4b0c7",
+      "source_fact_keys": [
+        "source_fact:v1:03eaae4b7774e2a18290e54260cc2a8b470b9c9fd3cdaa673ee40c54a6a359c8",
+        "source_fact:v1:090482ad9c6b57c928d139c4bdfcc923bde047049a7ff9a27fe20c1e09e6ea91",
+        "source_fact:v1:5ac39d6c1b153a517e02e4a08052efc01b585a231d995b30c4e5cda12ff44e23",
+        "source_fact:v1:5e8752f729e4608b96ac800d8fa9b2fbc48933441811493adef078cac40cbbbf",
+        "source_fact:v1:62994281c829ea4f874cf15e5b2a8a27e175d581f2fffd099be6379b80685a4c",
+        "source_fact:v1:abc6ee668949269c29cb68948a3f81637abeed0b6721391b56fe503b15bbb470",
+        "source_fact:v1:bec7df6afe44f37974259bbcd8a2f77da4d0db1de09cb157c247854925241309",
+        "source_fact:v1:bf5bb004c15eb72d86f39b946550e11245795052dc8eafc2e8be9d3a175967ad",
+        "source_fact:v1:efbc7b99e121b36ead72c84d4cc40c114d156d29994aa18451efd43de8695ed9"
+      ],
+      "source_published_kst": "2026-10-06T15:06+09:00",
+      "title": "엠키스코어, AI Festa 26서 검증된 AI Factory 역량 공개… 대규모 구축부터 AI 활용까지"
     },
     "source_fact:4e059295cd3af40331fb953e": {
       "first_seen_kst": "2026-10-06T16:20:22+09:00",
@@ -72623,6 +73299,31 @@
       "source_published_kst": "2026-10-05T18:17+09:00",
       "title": "'전고체 배터리' 기대감…한주새 ETF 12% 뛰어"
     },
+    "source_fact:581fe3995fb91ca2efcaba7f": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815782",
+      "source": "뉴시스",
+      "source_body_digest": "6ff90e395adb2d2a64417454d158f411caea353496dd51ee88f57063d6eb5fb3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ccd3d02955f28ecf0b6080f9de22594c9f76cee1ceca1e1f1ac7ff075e24eac",
+      "source_fact_keys": [
+        "source_fact:v1:1c97a6dc92ab42d92f89fd489bb4c88f7f290cb0f833023f0c822aea42f399c9",
+        "source_fact:v1:2267e4e20c3427ca4198555df88b4afca474d7f03357e406846432a8d6ec2fa1",
+        "source_fact:v1:2d95aa96b43fcc72bb7147a3927fd58fae4c8e01eb9ce02b2dcbff7595729e60",
+        "source_fact:v1:327abcfad3cc8c78f78c4be040273cb757b713a7631750141fec5624e1a6ac28",
+        "source_fact:v1:4b866ce1add3ad7294367abfd710b579a13eb1741a940575f0a4efe6fbee5425",
+        "source_fact:v1:9780f93e4e2cf27de17ed793627d30628417443646fba17866ed76fc9df93bfc",
+        "source_fact:v1:b2e5cc6c6a18d52284b021a367cc8380991c02e27d4cbb9ab1dc8a74bb2d86b6",
+        "source_fact:v1:c0fa3b8c68625569402bf015cfc94859b71739dc7e40b4bdb8d45b022925539d",
+        "source_fact:v1:e50256049c9e689c3b626acae3277b5eddd75cf911e49ef60682bccd8750f2b6"
+      ],
+      "source_published_kst": "2026-10-06T15:02+09:00",
+      "title": "전남광주시, '장성 데이터센터' 첫 출자…48억 지분투자"
+    },
     "source_fact:58294f14d2e51d5b55f94e04": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
       "lanes": {
@@ -72699,6 +73400,31 @@
       ],
       "source_published_kst": "2026-10-06T05:30+09:00",
       "title": "車 부품 보던 AI, 로봇 관절 '가상검증' 나선다"
+    },
+    "source_fact:5865131ebceb30c597e01bc2": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.dt.co.kr/article/12087644",
+      "source": "디지털타임스",
+      "source_body_digest": "e9cae02336c6b47d20d5d5d5f1d9e0b5669e8862f86604850d616bbd9597b664",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1680a2bf612acd8343e3d3b0d66f61232ec8237ad0bcecf13e1d4e125ad4b0c7",
+      "source_fact_keys": [
+        "source_fact:v1:03eaae4b7774e2a18290e54260cc2a8b470b9c9fd3cdaa673ee40c54a6a359c8",
+        "source_fact:v1:090482ad9c6b57c928d139c4bdfcc923bde047049a7ff9a27fe20c1e09e6ea91",
+        "source_fact:v1:5ac39d6c1b153a517e02e4a08052efc01b585a231d995b30c4e5cda12ff44e23",
+        "source_fact:v1:5e8752f729e4608b96ac800d8fa9b2fbc48933441811493adef078cac40cbbbf",
+        "source_fact:v1:62994281c829ea4f874cf15e5b2a8a27e175d581f2fffd099be6379b80685a4c",
+        "source_fact:v1:abc6ee668949269c29cb68948a3f81637abeed0b6721391b56fe503b15bbb470",
+        "source_fact:v1:bec7df6afe44f37974259bbcd8a2f77da4d0db1de09cb157c247854925241309",
+        "source_fact:v1:bf5bb004c15eb72d86f39b946550e11245795052dc8eafc2e8be9d3a175967ad",
+        "source_fact:v1:efbc7b99e121b36ead72c84d4cc40c114d156d29994aa18451efd43de8695ed9"
+      ],
+      "source_published_kst": "2026-10-06T15:06+09:00",
+      "title": "엠키스코어, AI Festa 26서 검증된 AI Factory 역량 공개… 대규모 구축부터 AI 활용까지"
     },
     "source_fact:589011f09eb1fcb1dbc42db2": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -73018,6 +73744,31 @@
       ],
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
+    },
+    "source_fact:5a199056d95c56a230ae149d": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815782",
+      "source": "뉴시스",
+      "source_body_digest": "6ff90e395adb2d2a64417454d158f411caea353496dd51ee88f57063d6eb5fb3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ccd3d02955f28ecf0b6080f9de22594c9f76cee1ceca1e1f1ac7ff075e24eac",
+      "source_fact_keys": [
+        "source_fact:v1:1c97a6dc92ab42d92f89fd489bb4c88f7f290cb0f833023f0c822aea42f399c9",
+        "source_fact:v1:2267e4e20c3427ca4198555df88b4afca474d7f03357e406846432a8d6ec2fa1",
+        "source_fact:v1:2d95aa96b43fcc72bb7147a3927fd58fae4c8e01eb9ce02b2dcbff7595729e60",
+        "source_fact:v1:327abcfad3cc8c78f78c4be040273cb757b713a7631750141fec5624e1a6ac28",
+        "source_fact:v1:4b866ce1add3ad7294367abfd710b579a13eb1741a940575f0a4efe6fbee5425",
+        "source_fact:v1:9780f93e4e2cf27de17ed793627d30628417443646fba17866ed76fc9df93bfc",
+        "source_fact:v1:b2e5cc6c6a18d52284b021a367cc8380991c02e27d4cbb9ab1dc8a74bb2d86b6",
+        "source_fact:v1:c0fa3b8c68625569402bf015cfc94859b71739dc7e40b4bdb8d45b022925539d",
+        "source_fact:v1:e50256049c9e689c3b626acae3277b5eddd75cf911e49ef60682bccd8750f2b6"
+      ],
+      "source_published_kst": "2026-10-06T15:02+09:00",
+      "title": "전남광주시, '장성 데이터센터' 첫 출자…48억 지분투자"
     },
     "source_fact:5a4a4f8a871cb1823b7e7a22": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
@@ -74842,6 +75593,31 @@
       "source_published_kst": "2026-10-06T06:40+09:00",
       "title": "“중동 원유수출 증가·G7 비축유 방출 약속“ 국제유가 1.8%↓"
     },
+    "source_fact:67330f47e3cc6c9df0bfd2c4": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894430",
+      "source": "헤럴드경제",
+      "source_body_digest": "9ce97b8e14f9ca8532c151b22c975bcdb635965f48742bc92899cccc1994152a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a17e2917a3afacbbfb2c87b6f79ab714e179f24a3666b6967777176ec564729",
+      "source_fact_keys": [
+        "source_fact:v1:05b8f6fed42a36ad77847f5227d05078db31fd0adb0c308fd0db1b6942257704",
+        "source_fact:v1:2e5f93cf38fac02956df0525b8b0ed3127f076c9d95a94ad73ecbd372202a937",
+        "source_fact:v1:33206f6e1444a9f6db94497c51d6689095ad0ac3aa0cd155adc07dd4e49f2ac4",
+        "source_fact:v1:6ff07906b2bf0b011360d5c44b7a6241a12e817a7a5029f1c110fc958ec1aacd",
+        "source_fact:v1:726eddd6c6b9512768db137f4a152ad67f4dfeb675695dfadf4f88e38588f252",
+        "source_fact:v1:80f39e454d88c5786b23d211f86548dbcf139d0c7c219dda14b195524b957f1e",
+        "source_fact:v1:aa586f7429d9cbc1a51052cd4fbcce2b26037a8f5169765e573a5890cbbd7cdd",
+        "source_fact:v1:bfd9112624b6f9b0749ca22b1589a43121d146a836f2aaa51b5426ae87c5b9ae",
+        "source_fact:v1:c6b622ceab9e3954754e27a59895e01e9c9bbd70f7b256ccdb248958186d3388"
+      ],
+      "source_published_kst": "2026-10-06T15:22+09:00",
+      "title": "“中 AI 굴기 또 온다”…문샷, 기업가치 68조원 찍고 홍콩 상장 추진"
+    },
     "source_fact:679d0c44eb85de31738de029": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -76194,6 +76970,31 @@
       ],
       "source_published_kst": "2026-10-05T11:25+09:00",
       "title": "사우디, 11월 아시아 공급용 원유가 대폭 인하 | 연합뉴스"
+    },
+    "source_fact:700d9149e27684527451fe94": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.dt.co.kr/article/12087644",
+      "source": "디지털타임스",
+      "source_body_digest": "e9cae02336c6b47d20d5d5d5f1d9e0b5669e8862f86604850d616bbd9597b664",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1680a2bf612acd8343e3d3b0d66f61232ec8237ad0bcecf13e1d4e125ad4b0c7",
+      "source_fact_keys": [
+        "source_fact:v1:03eaae4b7774e2a18290e54260cc2a8b470b9c9fd3cdaa673ee40c54a6a359c8",
+        "source_fact:v1:090482ad9c6b57c928d139c4bdfcc923bde047049a7ff9a27fe20c1e09e6ea91",
+        "source_fact:v1:5ac39d6c1b153a517e02e4a08052efc01b585a231d995b30c4e5cda12ff44e23",
+        "source_fact:v1:5e8752f729e4608b96ac800d8fa9b2fbc48933441811493adef078cac40cbbbf",
+        "source_fact:v1:62994281c829ea4f874cf15e5b2a8a27e175d581f2fffd099be6379b80685a4c",
+        "source_fact:v1:abc6ee668949269c29cb68948a3f81637abeed0b6721391b56fe503b15bbb470",
+        "source_fact:v1:bec7df6afe44f37974259bbcd8a2f77da4d0db1de09cb157c247854925241309",
+        "source_fact:v1:bf5bb004c15eb72d86f39b946550e11245795052dc8eafc2e8be9d3a175967ad",
+        "source_fact:v1:efbc7b99e121b36ead72c84d4cc40c114d156d29994aa18451efd43de8695ed9"
+      ],
+      "source_published_kst": "2026-10-06T15:06+09:00",
+      "title": "엠키스코어, AI Festa 26서 검증된 AI Factory 역량 공개… 대규모 구축부터 AI 활용까지"
     },
     "source_fact:700fb34eaad3bf6268056d82": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
@@ -77686,6 +78487,31 @@
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
     },
+    "source_fact:797c068f38a1b7df3275d4a4": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815782",
+      "source": "뉴시스",
+      "source_body_digest": "6ff90e395adb2d2a64417454d158f411caea353496dd51ee88f57063d6eb5fb3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ccd3d02955f28ecf0b6080f9de22594c9f76cee1ceca1e1f1ac7ff075e24eac",
+      "source_fact_keys": [
+        "source_fact:v1:1c97a6dc92ab42d92f89fd489bb4c88f7f290cb0f833023f0c822aea42f399c9",
+        "source_fact:v1:2267e4e20c3427ca4198555df88b4afca474d7f03357e406846432a8d6ec2fa1",
+        "source_fact:v1:2d95aa96b43fcc72bb7147a3927fd58fae4c8e01eb9ce02b2dcbff7595729e60",
+        "source_fact:v1:327abcfad3cc8c78f78c4be040273cb757b713a7631750141fec5624e1a6ac28",
+        "source_fact:v1:4b866ce1add3ad7294367abfd710b579a13eb1741a940575f0a4efe6fbee5425",
+        "source_fact:v1:9780f93e4e2cf27de17ed793627d30628417443646fba17866ed76fc9df93bfc",
+        "source_fact:v1:b2e5cc6c6a18d52284b021a367cc8380991c02e27d4cbb9ab1dc8a74bb2d86b6",
+        "source_fact:v1:c0fa3b8c68625569402bf015cfc94859b71739dc7e40b4bdb8d45b022925539d",
+        "source_fact:v1:e50256049c9e689c3b626acae3277b5eddd75cf911e49ef60682bccd8750f2b6"
+      ],
+      "source_published_kst": "2026-10-06T15:02+09:00",
+      "title": "전남광주시, '장성 데이터센터' 첫 출자…48억 지분투자"
+    },
     "source_fact:798c8a3578f28add74160be7": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -78338,6 +79164,31 @@
       ],
       "source_published_kst": "2026-10-05T19:24+09:00",
       "title": "[TODAY엔비디아]개장전 '상승'…월가, 신고가 경신에도 여전히 \"밸류 매력\""
+    },
+    "source_fact:7d156211859c7efccdba3a20": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894430",
+      "source": "헤럴드경제",
+      "source_body_digest": "9ce97b8e14f9ca8532c151b22c975bcdb635965f48742bc92899cccc1994152a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a17e2917a3afacbbfb2c87b6f79ab714e179f24a3666b6967777176ec564729",
+      "source_fact_keys": [
+        "source_fact:v1:05b8f6fed42a36ad77847f5227d05078db31fd0adb0c308fd0db1b6942257704",
+        "source_fact:v1:2e5f93cf38fac02956df0525b8b0ed3127f076c9d95a94ad73ecbd372202a937",
+        "source_fact:v1:33206f6e1444a9f6db94497c51d6689095ad0ac3aa0cd155adc07dd4e49f2ac4",
+        "source_fact:v1:6ff07906b2bf0b011360d5c44b7a6241a12e817a7a5029f1c110fc958ec1aacd",
+        "source_fact:v1:726eddd6c6b9512768db137f4a152ad67f4dfeb675695dfadf4f88e38588f252",
+        "source_fact:v1:80f39e454d88c5786b23d211f86548dbcf139d0c7c219dda14b195524b957f1e",
+        "source_fact:v1:aa586f7429d9cbc1a51052cd4fbcce2b26037a8f5169765e573a5890cbbd7cdd",
+        "source_fact:v1:bfd9112624b6f9b0749ca22b1589a43121d146a836f2aaa51b5426ae87c5b9ae",
+        "source_fact:v1:c6b622ceab9e3954754e27a59895e01e9c9bbd70f7b256ccdb248958186d3388"
+      ],
+      "source_published_kst": "2026-10-06T15:22+09:00",
+      "title": "“中 AI 굴기 또 온다”…문샷, 기업가치 68조원 찍고 홍콩 상장 추진"
     },
     "source_fact:7d2a74e5bb49edb50ba2f6b9": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -79620,6 +80471,26 @@
       "source_published_kst": "2026-10-05T08:08+09:00",
       "title": "한반도 감시부터 우주의약품 실험까지…K-우주영토 넓힌다[누리호 5차 下]"
     },
+    "source_fact:8552508f4176e5d99c1dbff4": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006061100009",
+      "source": "연합뉴스",
+      "source_body_digest": "afd1a4a96ae1f8c00fdefa60b8ba05488d1e0f080b8600a2414e165dbf782449",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d26425acfb988bb96d5cf837282cbd0ad809336e563b1cae2667a2a8b2fae1c0",
+      "source_fact_keys": [
+        "source_fact:v1:4e5e403b079f97ac867191ddb45903dec059281f71b11c7382a2b95485c2187c",
+        "source_fact:v1:7202e9dc58d3242080197be6db21b8176fae15fcf25dbccd053be160dd53c152",
+        "source_fact:v1:a034e235fdbd247601ac1d7713e3bb514c93b0cfc5ca5bba9d8909b9767c1c75",
+        "source_fact:v1:e885ac59bc235bb652c8c49dc0cd8557cb5370b9c1238b955f306ca88b672244"
+      ],
+      "source_published_kst": "2026-10-06T10:24+09:00",
+      "title": "슈나이더, 미 소프트웨어 업체 20조원에 인수 | 연합뉴스"
+    },
     "source_fact:856c1ecc80da3e5eca8b6db6": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -80118,6 +80989,31 @@
       ],
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
+    },
+    "source_fact:88a25e2545bea277d054ebd9": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815782",
+      "source": "뉴시스",
+      "source_body_digest": "6ff90e395adb2d2a64417454d158f411caea353496dd51ee88f57063d6eb5fb3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ccd3d02955f28ecf0b6080f9de22594c9f76cee1ceca1e1f1ac7ff075e24eac",
+      "source_fact_keys": [
+        "source_fact:v1:1c97a6dc92ab42d92f89fd489bb4c88f7f290cb0f833023f0c822aea42f399c9",
+        "source_fact:v1:2267e4e20c3427ca4198555df88b4afca474d7f03357e406846432a8d6ec2fa1",
+        "source_fact:v1:2d95aa96b43fcc72bb7147a3927fd58fae4c8e01eb9ce02b2dcbff7595729e60",
+        "source_fact:v1:327abcfad3cc8c78f78c4be040273cb757b713a7631750141fec5624e1a6ac28",
+        "source_fact:v1:4b866ce1add3ad7294367abfd710b579a13eb1741a940575f0a4efe6fbee5425",
+        "source_fact:v1:9780f93e4e2cf27de17ed793627d30628417443646fba17866ed76fc9df93bfc",
+        "source_fact:v1:b2e5cc6c6a18d52284b021a367cc8380991c02e27d4cbb9ab1dc8a74bb2d86b6",
+        "source_fact:v1:c0fa3b8c68625569402bf015cfc94859b71739dc7e40b4bdb8d45b022925539d",
+        "source_fact:v1:e50256049c9e689c3b626acae3277b5eddd75cf911e49ef60682bccd8750f2b6"
+      ],
+      "source_published_kst": "2026-10-06T15:02+09:00",
+      "title": "전남광주시, '장성 데이터센터' 첫 출자…48억 지분투자"
     },
     "source_fact:88b6d15a55f50cf35efc9134": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
@@ -81170,6 +82066,26 @@
       "source_published_kst": "2026-10-06T08:40+09:00",
       "title": "그록 주주들, 엔비디아 '우회 인수'에 소송…\"껍데기 회사 남겨\""
     },
+    "source_fact:9063409681a6d06c2c6d7fbe": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.fnnews.com/news/202610061408017246",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "4ba6df9887743d8fe07061c6a4bbff80713423d0dc4fc6e168dcea6ad258d76a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8bab19db86e13a4a25fb4b86ab525e8baa1e9b68b8fd609c6ae6946365d0b900",
+      "source_fact_keys": [
+        "source_fact:v1:05ac69144ec1313a6291abb612fc3275da82100e415f382f83a950c15c287c79",
+        "source_fact:v1:0819e4a0d3bca5352088e45919e1c29858bbb818896d7ecac93d5b174a1a5af7",
+        "source_fact:v1:77f8d5fe16c61c427bb89ffa91e7a3fd46665b2a0db9353913953a5771802f3d",
+        "source_fact:v1:fc7fe3e65e5e037323016e6a3ff944572b5b9effde6dd685afae9580bd54a2f5"
+      ],
+      "source_published_kst": "2026-10-06T15:19+09:00",
+      "title": "삼성전자 덜고 하이닉스 담는 ETF…8일 반도체주 수급 분기점"
+    },
     "source_fact:908b585ec018ea9f37ae5f90": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
       "lanes": {
@@ -81726,6 +82642,26 @@
       ],
       "source_published_kst": "2026-10-06T10:59+09:00",
       "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 공급"
+    },
+    "source_fact:9465a68e169fb4de6f8fcfc7": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.fnnews.com/news/202610061408017246",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "4ba6df9887743d8fe07061c6a4bbff80713423d0dc4fc6e168dcea6ad258d76a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8bab19db86e13a4a25fb4b86ab525e8baa1e9b68b8fd609c6ae6946365d0b900",
+      "source_fact_keys": [
+        "source_fact:v1:05ac69144ec1313a6291abb612fc3275da82100e415f382f83a950c15c287c79",
+        "source_fact:v1:0819e4a0d3bca5352088e45919e1c29858bbb818896d7ecac93d5b174a1a5af7",
+        "source_fact:v1:77f8d5fe16c61c427bb89ffa91e7a3fd46665b2a0db9353913953a5771802f3d",
+        "source_fact:v1:fc7fe3e65e5e037323016e6a3ff944572b5b9effde6dd685afae9580bd54a2f5"
+      ],
+      "source_published_kst": "2026-10-06T15:19+09:00",
+      "title": "삼성전자 덜고 하이닉스 담는 ETF…8일 반도체주 수급 분기점"
     },
     "source_fact:947247a7d10d041a8286ee90": {
       "first_seen_kst": "2026-10-05T23:05:12+09:00",
@@ -82785,6 +83721,31 @@
       ],
       "source_published_kst": "2026-10-05T23:08+09:00",
       "title": "JP모간 \"美 증시 최악의 상황 지났을 수도\"…단기 전망 낙관"
+    },
+    "source_fact:9b334e9200ed859b5fc18e0d": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894430",
+      "source": "헤럴드경제",
+      "source_body_digest": "9ce97b8e14f9ca8532c151b22c975bcdb635965f48742bc92899cccc1994152a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a17e2917a3afacbbfb2c87b6f79ab714e179f24a3666b6967777176ec564729",
+      "source_fact_keys": [
+        "source_fact:v1:05b8f6fed42a36ad77847f5227d05078db31fd0adb0c308fd0db1b6942257704",
+        "source_fact:v1:2e5f93cf38fac02956df0525b8b0ed3127f076c9d95a94ad73ecbd372202a937",
+        "source_fact:v1:33206f6e1444a9f6db94497c51d6689095ad0ac3aa0cd155adc07dd4e49f2ac4",
+        "source_fact:v1:6ff07906b2bf0b011360d5c44b7a6241a12e817a7a5029f1c110fc958ec1aacd",
+        "source_fact:v1:726eddd6c6b9512768db137f4a152ad67f4dfeb675695dfadf4f88e38588f252",
+        "source_fact:v1:80f39e454d88c5786b23d211f86548dbcf139d0c7c219dda14b195524b957f1e",
+        "source_fact:v1:aa586f7429d9cbc1a51052cd4fbcce2b26037a8f5169765e573a5890cbbd7cdd",
+        "source_fact:v1:bfd9112624b6f9b0749ca22b1589a43121d146a836f2aaa51b5426ae87c5b9ae",
+        "source_fact:v1:c6b622ceab9e3954754e27a59895e01e9c9bbd70f7b256ccdb248958186d3388"
+      ],
+      "source_published_kst": "2026-10-06T15:22+09:00",
+      "title": "“中 AI 굴기 또 온다”…문샷, 기업가치 68조원 찍고 홍콩 상장 추진"
     },
     "source_fact:9b5aa5c452037638200fd850": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
@@ -84403,6 +85364,26 @@
       "source_published_kst": "2026-10-06T04:40+09:00",
       "title": "가을 출하로 농산물 가격 안정세…고유가 부담은 여전"
     },
+    "source_fact:a700609d47e76c8dcbf10777": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006061100009",
+      "source": "연합뉴스",
+      "source_body_digest": "afd1a4a96ae1f8c00fdefa60b8ba05488d1e0f080b8600a2414e165dbf782449",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d26425acfb988bb96d5cf837282cbd0ad809336e563b1cae2667a2a8b2fae1c0",
+      "source_fact_keys": [
+        "source_fact:v1:4e5e403b079f97ac867191ddb45903dec059281f71b11c7382a2b95485c2187c",
+        "source_fact:v1:7202e9dc58d3242080197be6db21b8176fae15fcf25dbccd053be160dd53c152",
+        "source_fact:v1:a034e235fdbd247601ac1d7713e3bb514c93b0cfc5ca5bba9d8909b9767c1c75",
+        "source_fact:v1:e885ac59bc235bb652c8c49dc0cd8557cb5370b9c1238b955f306ca88b672244"
+      ],
+      "source_published_kst": "2026-10-06T10:24+09:00",
+      "title": "슈나이더, 미 소프트웨어 업체 20조원에 인수 | 연합뉴스"
+    },
     "source_fact:a714bfe7d8e79c2c5a5df1dc": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
@@ -84809,6 +85790,31 @@
       ],
       "source_published_kst": "2026-10-05T17:23+09:00",
       "title": "AI 해킹 확산에 'AI 방패' 꺼낸 금융당국…'망분리 완화' 해법 될 수 있나"
+    },
+    "source_fact:aa1110306527ba4ed2ea6cf1": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.dt.co.kr/article/12087644",
+      "source": "디지털타임스",
+      "source_body_digest": "e9cae02336c6b47d20d5d5d5f1d9e0b5669e8862f86604850d616bbd9597b664",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1680a2bf612acd8343e3d3b0d66f61232ec8237ad0bcecf13e1d4e125ad4b0c7",
+      "source_fact_keys": [
+        "source_fact:v1:03eaae4b7774e2a18290e54260cc2a8b470b9c9fd3cdaa673ee40c54a6a359c8",
+        "source_fact:v1:090482ad9c6b57c928d139c4bdfcc923bde047049a7ff9a27fe20c1e09e6ea91",
+        "source_fact:v1:5ac39d6c1b153a517e02e4a08052efc01b585a231d995b30c4e5cda12ff44e23",
+        "source_fact:v1:5e8752f729e4608b96ac800d8fa9b2fbc48933441811493adef078cac40cbbbf",
+        "source_fact:v1:62994281c829ea4f874cf15e5b2a8a27e175d581f2fffd099be6379b80685a4c",
+        "source_fact:v1:abc6ee668949269c29cb68948a3f81637abeed0b6721391b56fe503b15bbb470",
+        "source_fact:v1:bec7df6afe44f37974259bbcd8a2f77da4d0db1de09cb157c247854925241309",
+        "source_fact:v1:bf5bb004c15eb72d86f39b946550e11245795052dc8eafc2e8be9d3a175967ad",
+        "source_fact:v1:efbc7b99e121b36ead72c84d4cc40c114d156d29994aa18451efd43de8695ed9"
+      ],
+      "source_published_kst": "2026-10-06T15:06+09:00",
+      "title": "엠키스코어, AI Festa 26서 검증된 AI Factory 역량 공개… 대규모 구축부터 AI 활용까지"
     },
     "source_fact:aa12be83399ec55c5239cec3": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
@@ -85484,6 +86490,31 @@
       "source_published_kst": "2026-10-06T08:03+09:00",
       "title": "대신證, “삼성바이오로직스, 3분기 실적 선방⋯4분기엔 반등 전망”"
     },
+    "source_fact:ae7ac4d94b5064917bbd8cd9": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894430",
+      "source": "헤럴드경제",
+      "source_body_digest": "9ce97b8e14f9ca8532c151b22c975bcdb635965f48742bc92899cccc1994152a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a17e2917a3afacbbfb2c87b6f79ab714e179f24a3666b6967777176ec564729",
+      "source_fact_keys": [
+        "source_fact:v1:05b8f6fed42a36ad77847f5227d05078db31fd0adb0c308fd0db1b6942257704",
+        "source_fact:v1:2e5f93cf38fac02956df0525b8b0ed3127f076c9d95a94ad73ecbd372202a937",
+        "source_fact:v1:33206f6e1444a9f6db94497c51d6689095ad0ac3aa0cd155adc07dd4e49f2ac4",
+        "source_fact:v1:6ff07906b2bf0b011360d5c44b7a6241a12e817a7a5029f1c110fc958ec1aacd",
+        "source_fact:v1:726eddd6c6b9512768db137f4a152ad67f4dfeb675695dfadf4f88e38588f252",
+        "source_fact:v1:80f39e454d88c5786b23d211f86548dbcf139d0c7c219dda14b195524b957f1e",
+        "source_fact:v1:aa586f7429d9cbc1a51052cd4fbcce2b26037a8f5169765e573a5890cbbd7cdd",
+        "source_fact:v1:bfd9112624b6f9b0749ca22b1589a43121d146a836f2aaa51b5426ae87c5b9ae",
+        "source_fact:v1:c6b622ceab9e3954754e27a59895e01e9c9bbd70f7b256ccdb248958186d3388"
+      ],
+      "source_published_kst": "2026-10-06T15:22+09:00",
+      "title": "“中 AI 굴기 또 온다”…문샷, 기업가치 68조원 찍고 홍콩 상장 추진"
+    },
     "source_fact:aeb3893e0e0dc12efb5c9cb3": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
       "lanes": {
@@ -85641,6 +86672,31 @@
       "source_published_kst": "2026-10-06T14:55+09:00",
       "title": "대전시 아이들 밥상 챙긴다…학교급식 식품비 15% 인상"
     },
+    "source_fact:af71f6cf737a8bc6b0a6bcbb": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815782",
+      "source": "뉴시스",
+      "source_body_digest": "6ff90e395adb2d2a64417454d158f411caea353496dd51ee88f57063d6eb5fb3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ccd3d02955f28ecf0b6080f9de22594c9f76cee1ceca1e1f1ac7ff075e24eac",
+      "source_fact_keys": [
+        "source_fact:v1:1c97a6dc92ab42d92f89fd489bb4c88f7f290cb0f833023f0c822aea42f399c9",
+        "source_fact:v1:2267e4e20c3427ca4198555df88b4afca474d7f03357e406846432a8d6ec2fa1",
+        "source_fact:v1:2d95aa96b43fcc72bb7147a3927fd58fae4c8e01eb9ce02b2dcbff7595729e60",
+        "source_fact:v1:327abcfad3cc8c78f78c4be040273cb757b713a7631750141fec5624e1a6ac28",
+        "source_fact:v1:4b866ce1add3ad7294367abfd710b579a13eb1741a940575f0a4efe6fbee5425",
+        "source_fact:v1:9780f93e4e2cf27de17ed793627d30628417443646fba17866ed76fc9df93bfc",
+        "source_fact:v1:b2e5cc6c6a18d52284b021a367cc8380991c02e27d4cbb9ab1dc8a74bb2d86b6",
+        "source_fact:v1:c0fa3b8c68625569402bf015cfc94859b71739dc7e40b4bdb8d45b022925539d",
+        "source_fact:v1:e50256049c9e689c3b626acae3277b5eddd75cf911e49ef60682bccd8750f2b6"
+      ],
+      "source_published_kst": "2026-10-06T15:02+09:00",
+      "title": "전남광주시, '장성 데이터센터' 첫 출자…48억 지분투자"
+    },
     "source_fact:af77431cbd741c61d27eaca3": {
       "first_seen_kst": "2026-10-05T23:56:11+09:00",
       "lanes": {
@@ -85751,6 +86807,31 @@
       ],
       "source_published_kst": "2026-10-06T10:22+09:00",
       "title": "에코프로비엠, 삼성SDI와 '전고체' 개발 협력…상용화 목전"
+    },
+    "source_fact:b078b3bc63339714923abd32": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.dt.co.kr/article/12087644",
+      "source": "디지털타임스",
+      "source_body_digest": "e9cae02336c6b47d20d5d5d5f1d9e0b5669e8862f86604850d616bbd9597b664",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1680a2bf612acd8343e3d3b0d66f61232ec8237ad0bcecf13e1d4e125ad4b0c7",
+      "source_fact_keys": [
+        "source_fact:v1:03eaae4b7774e2a18290e54260cc2a8b470b9c9fd3cdaa673ee40c54a6a359c8",
+        "source_fact:v1:090482ad9c6b57c928d139c4bdfcc923bde047049a7ff9a27fe20c1e09e6ea91",
+        "source_fact:v1:5ac39d6c1b153a517e02e4a08052efc01b585a231d995b30c4e5cda12ff44e23",
+        "source_fact:v1:5e8752f729e4608b96ac800d8fa9b2fbc48933441811493adef078cac40cbbbf",
+        "source_fact:v1:62994281c829ea4f874cf15e5b2a8a27e175d581f2fffd099be6379b80685a4c",
+        "source_fact:v1:abc6ee668949269c29cb68948a3f81637abeed0b6721391b56fe503b15bbb470",
+        "source_fact:v1:bec7df6afe44f37974259bbcd8a2f77da4d0db1de09cb157c247854925241309",
+        "source_fact:v1:bf5bb004c15eb72d86f39b946550e11245795052dc8eafc2e8be9d3a175967ad",
+        "source_fact:v1:efbc7b99e121b36ead72c84d4cc40c114d156d29994aa18451efd43de8695ed9"
+      ],
+      "source_published_kst": "2026-10-06T15:06+09:00",
+      "title": "엠키스코어, AI Festa 26서 검증된 AI Factory 역량 공개… 대규모 구축부터 AI 활용까지"
     },
     "source_fact:b09fec03ab1bca2e3b226ae1": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
@@ -87394,6 +88475,31 @@
       ],
       "source_published_kst": "2026-10-06T10:00+09:00",
       "title": "LG전자, '유럽 첫 상용 SDV' 르노그룹 신차에 통합 콕핏 솔루션 공급"
+    },
+    "source_fact:ba50a6871c9bc417763b5a33": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815782",
+      "source": "뉴시스",
+      "source_body_digest": "6ff90e395adb2d2a64417454d158f411caea353496dd51ee88f57063d6eb5fb3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ccd3d02955f28ecf0b6080f9de22594c9f76cee1ceca1e1f1ac7ff075e24eac",
+      "source_fact_keys": [
+        "source_fact:v1:1c97a6dc92ab42d92f89fd489bb4c88f7f290cb0f833023f0c822aea42f399c9",
+        "source_fact:v1:2267e4e20c3427ca4198555df88b4afca474d7f03357e406846432a8d6ec2fa1",
+        "source_fact:v1:2d95aa96b43fcc72bb7147a3927fd58fae4c8e01eb9ce02b2dcbff7595729e60",
+        "source_fact:v1:327abcfad3cc8c78f78c4be040273cb757b713a7631750141fec5624e1a6ac28",
+        "source_fact:v1:4b866ce1add3ad7294367abfd710b579a13eb1741a940575f0a4efe6fbee5425",
+        "source_fact:v1:9780f93e4e2cf27de17ed793627d30628417443646fba17866ed76fc9df93bfc",
+        "source_fact:v1:b2e5cc6c6a18d52284b021a367cc8380991c02e27d4cbb9ab1dc8a74bb2d86b6",
+        "source_fact:v1:c0fa3b8c68625569402bf015cfc94859b71739dc7e40b4bdb8d45b022925539d",
+        "source_fact:v1:e50256049c9e689c3b626acae3277b5eddd75cf911e49ef60682bccd8750f2b6"
+      ],
+      "source_published_kst": "2026-10-06T15:02+09:00",
+      "title": "전남광주시, '장성 데이터센터' 첫 출자…48억 지분투자"
     },
     "source_fact:bad257c092aad740187994cd": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
@@ -90177,6 +91283,31 @@
       "source_published_kst": "2026-10-05T07:26+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가 | 연합뉴스"
     },
+    "source_fact:ce4fed3fb155ba01fd3f9fcb": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.dt.co.kr/article/12087644",
+      "source": "디지털타임스",
+      "source_body_digest": "e9cae02336c6b47d20d5d5d5f1d9e0b5669e8862f86604850d616bbd9597b664",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1680a2bf612acd8343e3d3b0d66f61232ec8237ad0bcecf13e1d4e125ad4b0c7",
+      "source_fact_keys": [
+        "source_fact:v1:03eaae4b7774e2a18290e54260cc2a8b470b9c9fd3cdaa673ee40c54a6a359c8",
+        "source_fact:v1:090482ad9c6b57c928d139c4bdfcc923bde047049a7ff9a27fe20c1e09e6ea91",
+        "source_fact:v1:5ac39d6c1b153a517e02e4a08052efc01b585a231d995b30c4e5cda12ff44e23",
+        "source_fact:v1:5e8752f729e4608b96ac800d8fa9b2fbc48933441811493adef078cac40cbbbf",
+        "source_fact:v1:62994281c829ea4f874cf15e5b2a8a27e175d581f2fffd099be6379b80685a4c",
+        "source_fact:v1:abc6ee668949269c29cb68948a3f81637abeed0b6721391b56fe503b15bbb470",
+        "source_fact:v1:bec7df6afe44f37974259bbcd8a2f77da4d0db1de09cb157c247854925241309",
+        "source_fact:v1:bf5bb004c15eb72d86f39b946550e11245795052dc8eafc2e8be9d3a175967ad",
+        "source_fact:v1:efbc7b99e121b36ead72c84d4cc40c114d156d29994aa18451efd43de8695ed9"
+      ],
+      "source_published_kst": "2026-10-06T15:06+09:00",
+      "title": "엠키스코어, AI Festa 26서 검증된 AI Factory 역량 공개… 대규모 구축부터 AI 활용까지"
+    },
     "source_fact:ce50a1f05eea87298901624c": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
@@ -90556,6 +91687,23 @@
       ],
       "source_published_kst": "2026-10-06T14:33+09:00",
       "title": "SK이노베이션, 윤활기유·배터리 성장 전망…\"올해 첫 연간 영업익 10조 노린다\""
+    },
+    "source_fact:d0e7c74a6b22dd99b1568cca": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815219",
+      "source": "뉴시스",
+      "source_body_digest": "24ac2d094897e366579ff2c313dd2803d28a944f4ecd2efe93ba3f151f109316",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:da4d6efdaf1ddbb689c38dacc55b395ecabc5fa0f485c761a75c03619302bcc4",
+      "source_fact_keys": [
+        "source_fact:v1:0a5a3877da3d50bde88574bb3c54c8400ccf830bff6817435294d71193ac9638"
+      ],
+      "source_published_kst": "2026-10-06T11:33+09:00",
+      "title": "'연산역 수자인 센트리오' 10월 공급…일반분양 139가구"
     },
     "source_fact:d0f07e07c867142a3d8e23c2": {
       "first_seen_kst": "2026-10-06T16:20:22+09:00",
@@ -92188,6 +93336,31 @@
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
     },
+    "source_fact:da0b987d3796b921c8a33aac": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894430",
+      "source": "헤럴드경제",
+      "source_body_digest": "9ce97b8e14f9ca8532c151b22c975bcdb635965f48742bc92899cccc1994152a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a17e2917a3afacbbfb2c87b6f79ab714e179f24a3666b6967777176ec564729",
+      "source_fact_keys": [
+        "source_fact:v1:05b8f6fed42a36ad77847f5227d05078db31fd0adb0c308fd0db1b6942257704",
+        "source_fact:v1:2e5f93cf38fac02956df0525b8b0ed3127f076c9d95a94ad73ecbd372202a937",
+        "source_fact:v1:33206f6e1444a9f6db94497c51d6689095ad0ac3aa0cd155adc07dd4e49f2ac4",
+        "source_fact:v1:6ff07906b2bf0b011360d5c44b7a6241a12e817a7a5029f1c110fc958ec1aacd",
+        "source_fact:v1:726eddd6c6b9512768db137f4a152ad67f4dfeb675695dfadf4f88e38588f252",
+        "source_fact:v1:80f39e454d88c5786b23d211f86548dbcf139d0c7c219dda14b195524b957f1e",
+        "source_fact:v1:aa586f7429d9cbc1a51052cd4fbcce2b26037a8f5169765e573a5890cbbd7cdd",
+        "source_fact:v1:bfd9112624b6f9b0749ca22b1589a43121d146a836f2aaa51b5426ae87c5b9ae",
+        "source_fact:v1:c6b622ceab9e3954754e27a59895e01e9c9bbd70f7b256ccdb248958186d3388"
+      ],
+      "source_published_kst": "2026-10-06T15:22+09:00",
+      "title": "“中 AI 굴기 또 온다”…문샷, 기업가치 68조원 찍고 홍콩 상장 추진"
+    },
     "source_fact:da19e04bf693db248eea09c5": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
       "lanes": {
@@ -93029,6 +94202,31 @@
       ],
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
+    },
+    "source_fact:dfeb44131e6b07c07044615d": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894430",
+      "source": "헤럴드경제",
+      "source_body_digest": "9ce97b8e14f9ca8532c151b22c975bcdb635965f48742bc92899cccc1994152a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a17e2917a3afacbbfb2c87b6f79ab714e179f24a3666b6967777176ec564729",
+      "source_fact_keys": [
+        "source_fact:v1:05b8f6fed42a36ad77847f5227d05078db31fd0adb0c308fd0db1b6942257704",
+        "source_fact:v1:2e5f93cf38fac02956df0525b8b0ed3127f076c9d95a94ad73ecbd372202a937",
+        "source_fact:v1:33206f6e1444a9f6db94497c51d6689095ad0ac3aa0cd155adc07dd4e49f2ac4",
+        "source_fact:v1:6ff07906b2bf0b011360d5c44b7a6241a12e817a7a5029f1c110fc958ec1aacd",
+        "source_fact:v1:726eddd6c6b9512768db137f4a152ad67f4dfeb675695dfadf4f88e38588f252",
+        "source_fact:v1:80f39e454d88c5786b23d211f86548dbcf139d0c7c219dda14b195524b957f1e",
+        "source_fact:v1:aa586f7429d9cbc1a51052cd4fbcce2b26037a8f5169765e573a5890cbbd7cdd",
+        "source_fact:v1:bfd9112624b6f9b0749ca22b1589a43121d146a836f2aaa51b5426ae87c5b9ae",
+        "source_fact:v1:c6b622ceab9e3954754e27a59895e01e9c9bbd70f7b256ccdb248958186d3388"
+      ],
+      "source_published_kst": "2026-10-06T15:22+09:00",
+      "title": "“中 AI 굴기 또 온다”…문샷, 기업가치 68조원 찍고 홍콩 상장 추진"
     },
     "source_fact:dff8beb44be29d83358d0f8b": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
@@ -94313,6 +95511,31 @@
       ],
       "source_published_kst": "2026-10-06T10:19+09:00",
       "title": "김정관 장관 “1600조 지방투자 본격화…2030년 AI팩토리 500개 구축”"
+    },
+    "source_fact:e81d2d855516296e26e7741f": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815782",
+      "source": "뉴시스",
+      "source_body_digest": "6ff90e395adb2d2a64417454d158f411caea353496dd51ee88f57063d6eb5fb3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ccd3d02955f28ecf0b6080f9de22594c9f76cee1ceca1e1f1ac7ff075e24eac",
+      "source_fact_keys": [
+        "source_fact:v1:1c97a6dc92ab42d92f89fd489bb4c88f7f290cb0f833023f0c822aea42f399c9",
+        "source_fact:v1:2267e4e20c3427ca4198555df88b4afca474d7f03357e406846432a8d6ec2fa1",
+        "source_fact:v1:2d95aa96b43fcc72bb7147a3927fd58fae4c8e01eb9ce02b2dcbff7595729e60",
+        "source_fact:v1:327abcfad3cc8c78f78c4be040273cb757b713a7631750141fec5624e1a6ac28",
+        "source_fact:v1:4b866ce1add3ad7294367abfd710b579a13eb1741a940575f0a4efe6fbee5425",
+        "source_fact:v1:9780f93e4e2cf27de17ed793627d30628417443646fba17866ed76fc9df93bfc",
+        "source_fact:v1:b2e5cc6c6a18d52284b021a367cc8380991c02e27d4cbb9ab1dc8a74bb2d86b6",
+        "source_fact:v1:c0fa3b8c68625569402bf015cfc94859b71739dc7e40b4bdb8d45b022925539d",
+        "source_fact:v1:e50256049c9e689c3b626acae3277b5eddd75cf911e49ef60682bccd8750f2b6"
+      ],
+      "source_published_kst": "2026-10-06T15:02+09:00",
+      "title": "전남광주시, '장성 데이터센터' 첫 출자…48억 지분투자"
     },
     "source_fact:e840aa96d1ef6ef8767bcc84": {
       "first_seen_kst": "2026-10-06T16:09:23+09:00",
@@ -96067,6 +97290,31 @@
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "외국인·명품 소비에 비용 절감까지…백화점 3사, 3분기 실적 ‘청신호’"
     },
+    "source_fact:f523adb73340759ad9828876": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.dt.co.kr/article/12087644",
+      "source": "디지털타임스",
+      "source_body_digest": "e9cae02336c6b47d20d5d5d5f1d9e0b5669e8862f86604850d616bbd9597b664",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1680a2bf612acd8343e3d3b0d66f61232ec8237ad0bcecf13e1d4e125ad4b0c7",
+      "source_fact_keys": [
+        "source_fact:v1:03eaae4b7774e2a18290e54260cc2a8b470b9c9fd3cdaa673ee40c54a6a359c8",
+        "source_fact:v1:090482ad9c6b57c928d139c4bdfcc923bde047049a7ff9a27fe20c1e09e6ea91",
+        "source_fact:v1:5ac39d6c1b153a517e02e4a08052efc01b585a231d995b30c4e5cda12ff44e23",
+        "source_fact:v1:5e8752f729e4608b96ac800d8fa9b2fbc48933441811493adef078cac40cbbbf",
+        "source_fact:v1:62994281c829ea4f874cf15e5b2a8a27e175d581f2fffd099be6379b80685a4c",
+        "source_fact:v1:abc6ee668949269c29cb68948a3f81637abeed0b6721391b56fe503b15bbb470",
+        "source_fact:v1:bec7df6afe44f37974259bbcd8a2f77da4d0db1de09cb157c247854925241309",
+        "source_fact:v1:bf5bb004c15eb72d86f39b946550e11245795052dc8eafc2e8be9d3a175967ad",
+        "source_fact:v1:efbc7b99e121b36ead72c84d4cc40c114d156d29994aa18451efd43de8695ed9"
+      ],
+      "source_published_kst": "2026-10-06T15:06+09:00",
+      "title": "엠키스코어, AI Festa 26서 검증된 AI Factory 역량 공개… 대규모 구축부터 AI 활용까지"
+    },
     "source_fact:f576233ea231f7ffcf838c9f": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
       "lanes": {
@@ -96448,6 +97696,31 @@
       ],
       "source_published_kst": "2026-10-06T11:36+09:00",
       "title": "신보·부산은행, K-콘텐츠 기업에 100억원 협약보증 공급"
+    },
+    "source_fact:f9ddb537bf5432a420d9c256": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.dt.co.kr/article/12087644",
+      "source": "디지털타임스",
+      "source_body_digest": "e9cae02336c6b47d20d5d5d5f1d9e0b5669e8862f86604850d616bbd9597b664",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1680a2bf612acd8343e3d3b0d66f61232ec8237ad0bcecf13e1d4e125ad4b0c7",
+      "source_fact_keys": [
+        "source_fact:v1:03eaae4b7774e2a18290e54260cc2a8b470b9c9fd3cdaa673ee40c54a6a359c8",
+        "source_fact:v1:090482ad9c6b57c928d139c4bdfcc923bde047049a7ff9a27fe20c1e09e6ea91",
+        "source_fact:v1:5ac39d6c1b153a517e02e4a08052efc01b585a231d995b30c4e5cda12ff44e23",
+        "source_fact:v1:5e8752f729e4608b96ac800d8fa9b2fbc48933441811493adef078cac40cbbbf",
+        "source_fact:v1:62994281c829ea4f874cf15e5b2a8a27e175d581f2fffd099be6379b80685a4c",
+        "source_fact:v1:abc6ee668949269c29cb68948a3f81637abeed0b6721391b56fe503b15bbb470",
+        "source_fact:v1:bec7df6afe44f37974259bbcd8a2f77da4d0db1de09cb157c247854925241309",
+        "source_fact:v1:bf5bb004c15eb72d86f39b946550e11245795052dc8eafc2e8be9d3a175967ad",
+        "source_fact:v1:efbc7b99e121b36ead72c84d4cc40c114d156d29994aa18451efd43de8695ed9"
+      ],
+      "source_published_kst": "2026-10-06T15:06+09:00",
+      "title": "엠키스코어, AI Festa 26서 검증된 AI Factory 역량 공개… 대규모 구축부터 AI 활용까지"
     },
     "source_fact:fa0de5e477c5a21c122e6b22": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
@@ -97296,6 +98569,31 @@
       ],
       "source_published_kst": "2026-10-04T23:56+09:00",
       "title": "OPEC+, 11월 원유 생산 목표 유지 합의"
+    },
+    "source_fact:fe61028cc1652eacbb8eaef0": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.dt.co.kr/article/12087644",
+      "source": "디지털타임스",
+      "source_body_digest": "e9cae02336c6b47d20d5d5d5f1d9e0b5669e8862f86604850d616bbd9597b664",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1680a2bf612acd8343e3d3b0d66f61232ec8237ad0bcecf13e1d4e125ad4b0c7",
+      "source_fact_keys": [
+        "source_fact:v1:03eaae4b7774e2a18290e54260cc2a8b470b9c9fd3cdaa673ee40c54a6a359c8",
+        "source_fact:v1:090482ad9c6b57c928d139c4bdfcc923bde047049a7ff9a27fe20c1e09e6ea91",
+        "source_fact:v1:5ac39d6c1b153a517e02e4a08052efc01b585a231d995b30c4e5cda12ff44e23",
+        "source_fact:v1:5e8752f729e4608b96ac800d8fa9b2fbc48933441811493adef078cac40cbbbf",
+        "source_fact:v1:62994281c829ea4f874cf15e5b2a8a27e175d581f2fffd099be6379b80685a4c",
+        "source_fact:v1:abc6ee668949269c29cb68948a3f81637abeed0b6721391b56fe503b15bbb470",
+        "source_fact:v1:bec7df6afe44f37974259bbcd8a2f77da4d0db1de09cb157c247854925241309",
+        "source_fact:v1:bf5bb004c15eb72d86f39b946550e11245795052dc8eafc2e8be9d3a175967ad",
+        "source_fact:v1:efbc7b99e121b36ead72c84d4cc40c114d156d29994aa18451efd43de8695ed9"
+      ],
+      "source_published_kst": "2026-10-06T15:06+09:00",
+      "title": "엠키스코어, AI Festa 26서 검증된 AI Factory 역량 공개… 대규모 구축부터 AI 활용까지"
     },
     "source_fact:fea91035a4f1aec633e739bf": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -99122,6 +100420,31 @@
       "link": "https://www.newsis.com/view/NISX20260918_0003796202",
       "source": "뉴시스",
       "title": "코오롱티슈진 노문종 대표 사임…\"일신상 사유\""
+    },
+    "title:0f7fb729ee340130873e7e43": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.dt.co.kr/article/12087644",
+      "source": "디지털타임스",
+      "source_body_digest": "e9cae02336c6b47d20d5d5d5f1d9e0b5669e8862f86604850d616bbd9597b664",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1680a2bf612acd8343e3d3b0d66f61232ec8237ad0bcecf13e1d4e125ad4b0c7",
+      "source_fact_keys": [
+        "source_fact:v1:03eaae4b7774e2a18290e54260cc2a8b470b9c9fd3cdaa673ee40c54a6a359c8",
+        "source_fact:v1:090482ad9c6b57c928d139c4bdfcc923bde047049a7ff9a27fe20c1e09e6ea91",
+        "source_fact:v1:5ac39d6c1b153a517e02e4a08052efc01b585a231d995b30c4e5cda12ff44e23",
+        "source_fact:v1:5e8752f729e4608b96ac800d8fa9b2fbc48933441811493adef078cac40cbbbf",
+        "source_fact:v1:62994281c829ea4f874cf15e5b2a8a27e175d581f2fffd099be6379b80685a4c",
+        "source_fact:v1:abc6ee668949269c29cb68948a3f81637abeed0b6721391b56fe503b15bbb470",
+        "source_fact:v1:bec7df6afe44f37974259bbcd8a2f77da4d0db1de09cb157c247854925241309",
+        "source_fact:v1:bf5bb004c15eb72d86f39b946550e11245795052dc8eafc2e8be9d3a175967ad",
+        "source_fact:v1:efbc7b99e121b36ead72c84d4cc40c114d156d29994aa18451efd43de8695ed9"
+      ],
+      "source_published_kst": "2026-10-06T15:06+09:00",
+      "title": "엠키스코어, AI Festa 26서 검증된 AI Factory 역량 공개… 대규모 구축부터 AI 활용까지"
     },
     "title:0f868b4ab8d77c9db9deebd6": {
       "first_seen_kst": "2026-10-02T18:02:38+09:00",
@@ -104342,6 +105665,23 @@
       "source": "뉴시스",
       "title": "방탄소년단, 오늘 美 MTV VMA '올해의 노래' 받을까"
     },
+    "title:48dae2f0da66bc318036979f": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815219",
+      "source": "뉴시스",
+      "source_body_digest": "24ac2d094897e366579ff2c313dd2803d28a944f4ecd2efe93ba3f151f109316",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:da4d6efdaf1ddbb689c38dacc55b395ecabc5fa0f485c761a75c03619302bcc4",
+      "source_fact_keys": [
+        "source_fact:v1:0a5a3877da3d50bde88574bb3c54c8400ccf830bff6817435294d71193ac9638"
+      ],
+      "source_published_kst": "2026-10-06T11:33+09:00",
+      "title": "'연산역 수자인 센트리오' 10월 공급…일반분양 139가구"
+    },
     "title:48e10170c3608d5fa79b7bc0": {
       "first_seen_kst": "2026-10-05T14:04:17+09:00",
       "lanes": {
@@ -104828,6 +106168,21 @@
       ],
       "source_published_kst": "2026-10-06T14:48+09:00",
       "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
+    },
+    "title:4e4deb55206f56f357b45fdf": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894416",
+      "source": "헤럴드경제",
+      "source_body_digest": "d50fe5b65d1bf511e73a49efae04e986c1395661438e545cb9f811eaccf6f63e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T15:16+09:00",
+      "title": "MSDI, 구미에 미사일 개발·생산 거점 추진…2029년까지 7000억 규모"
     },
     "title:4e792d2bfd7018600c8cc349": {
       "first_seen_kst": "2026-10-05T23:21:26+09:00",
@@ -106347,6 +107702,31 @@
       "link": "https://www.mk.co.kr/news/stock/12155822",
       "source": "매일경제",
       "title": "니온크 테크놀로지스, 경영진 63만 달러 자사주 매입…NEO100 임상 성공 확신"
+    },
+    "title:6152ee75a1a058d481df5a29": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815782",
+      "source": "뉴시스",
+      "source_body_digest": "6ff90e395adb2d2a64417454d158f411caea353496dd51ee88f57063d6eb5fb3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ccd3d02955f28ecf0b6080f9de22594c9f76cee1ceca1e1f1ac7ff075e24eac",
+      "source_fact_keys": [
+        "source_fact:v1:1c97a6dc92ab42d92f89fd489bb4c88f7f290cb0f833023f0c822aea42f399c9",
+        "source_fact:v1:2267e4e20c3427ca4198555df88b4afca474d7f03357e406846432a8d6ec2fa1",
+        "source_fact:v1:2d95aa96b43fcc72bb7147a3927fd58fae4c8e01eb9ce02b2dcbff7595729e60",
+        "source_fact:v1:327abcfad3cc8c78f78c4be040273cb757b713a7631750141fec5624e1a6ac28",
+        "source_fact:v1:4b866ce1add3ad7294367abfd710b579a13eb1741a940575f0a4efe6fbee5425",
+        "source_fact:v1:9780f93e4e2cf27de17ed793627d30628417443646fba17866ed76fc9df93bfc",
+        "source_fact:v1:b2e5cc6c6a18d52284b021a367cc8380991c02e27d4cbb9ab1dc8a74bb2d86b6",
+        "source_fact:v1:c0fa3b8c68625569402bf015cfc94859b71739dc7e40b4bdb8d45b022925539d",
+        "source_fact:v1:e50256049c9e689c3b626acae3277b5eddd75cf911e49ef60682bccd8750f2b6"
+      ],
+      "source_published_kst": "2026-10-06T15:02+09:00",
+      "title": "전남광주시, '장성 데이터센터' 첫 출자…48억 지분투자"
     },
     "title:61650230c4c69a0d0dac04b7": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
@@ -108113,6 +109493,26 @@
       ],
       "source_published_kst": "2026-10-06T06:15+09:00",
       "title": "[AI프리즘] '3대 메가프로젝트' 피지컬AI…전체 AI 예산 5%도 안돼"
+    },
+    "title:7377aae93fb782c63d2ad000": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.fnnews.com/news/202610061408017246",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "4ba6df9887743d8fe07061c6a4bbff80713423d0dc4fc6e168dcea6ad258d76a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8bab19db86e13a4a25fb4b86ab525e8baa1e9b68b8fd609c6ae6946365d0b900",
+      "source_fact_keys": [
+        "source_fact:v1:05ac69144ec1313a6291abb612fc3275da82100e415f382f83a950c15c287c79",
+        "source_fact:v1:0819e4a0d3bca5352088e45919e1c29858bbb818896d7ecac93d5b174a1a5af7",
+        "source_fact:v1:77f8d5fe16c61c427bb89ffa91e7a3fd46665b2a0db9353913953a5771802f3d",
+        "source_fact:v1:fc7fe3e65e5e037323016e6a3ff944572b5b9effde6dd685afae9580bd54a2f5"
+      ],
+      "source_published_kst": "2026-10-06T15:19+09:00",
+      "title": "삼성전자 덜고 하이닉스 담는 ETF…8일 반도체주 수급 분기점"
     },
     "title:738d47bda2bc87efe4d59a0a": {
       "first_seen_kst": "2026-10-02T02:33:30+09:00",
@@ -115503,6 +116903,31 @@
       "source_published_kst": "2026-10-05T21:00+09:00",
       "title": "알보테크, FDA 심랜디 미국 생산설비 추가 승인에 공급능력 2배 확대 기대"
     },
+    "title:cb78e50bc248e879b57834d7": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894430",
+      "source": "헤럴드경제",
+      "source_body_digest": "9ce97b8e14f9ca8532c151b22c975bcdb635965f48742bc92899cccc1994152a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a17e2917a3afacbbfb2c87b6f79ab714e179f24a3666b6967777176ec564729",
+      "source_fact_keys": [
+        "source_fact:v1:05b8f6fed42a36ad77847f5227d05078db31fd0adb0c308fd0db1b6942257704",
+        "source_fact:v1:2e5f93cf38fac02956df0525b8b0ed3127f076c9d95a94ad73ecbd372202a937",
+        "source_fact:v1:33206f6e1444a9f6db94497c51d6689095ad0ac3aa0cd155adc07dd4e49f2ac4",
+        "source_fact:v1:6ff07906b2bf0b011360d5c44b7a6241a12e817a7a5029f1c110fc958ec1aacd",
+        "source_fact:v1:726eddd6c6b9512768db137f4a152ad67f4dfeb675695dfadf4f88e38588f252",
+        "source_fact:v1:80f39e454d88c5786b23d211f86548dbcf139d0c7c219dda14b195524b957f1e",
+        "source_fact:v1:aa586f7429d9cbc1a51052cd4fbcce2b26037a8f5169765e573a5890cbbd7cdd",
+        "source_fact:v1:bfd9112624b6f9b0749ca22b1589a43121d146a836f2aaa51b5426ae87c5b9ae",
+        "source_fact:v1:c6b622ceab9e3954754e27a59895e01e9c9bbd70f7b256ccdb248958186d3388"
+      ],
+      "source_published_kst": "2026-10-06T15:22+09:00",
+      "title": "“中 AI 굴기 또 온다”…문샷, 기업가치 68조원 찍고 홍콩 상장 추진"
+    },
     "title:cb8663142e6e4babfb311976": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -119755,6 +121180,26 @@
       "source_published_kst": "2026-10-06T05:43+09:00",
       "title": "美 부통령 \"알래스카 LNG 사업 투자, 한국과 세부사항 조율해야\""
     },
+    "title:fa96e8767693d02a31e36453": {
+      "first_seen_kst": "2026-10-06T17:14:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:14:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:14:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006061100009",
+      "source": "연합뉴스",
+      "source_body_digest": "afd1a4a96ae1f8c00fdefa60b8ba05488d1e0f080b8600a2414e165dbf782449",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d26425acfb988bb96d5cf837282cbd0ad809336e563b1cae2667a2a8b2fae1c0",
+      "source_fact_keys": [
+        "source_fact:v1:4e5e403b079f97ac867191ddb45903dec059281f71b11c7382a2b95485c2187c",
+        "source_fact:v1:7202e9dc58d3242080197be6db21b8176fae15fcf25dbccd053be160dd53c152",
+        "source_fact:v1:a034e235fdbd247601ac1d7713e3bb514c93b0cfc5ca5bba9d8909b9767c1c75",
+        "source_fact:v1:e885ac59bc235bb652c8c49dc0cd8557cb5370b9c1238b955f306ca88b672244"
+      ],
+      "source_published_kst": "2026-10-06T10:24+09:00",
+      "title": "슈나이더, 미 소프트웨어 업체 20조원에 인수 | 연합뉴스"
+    },
     "title:fae515231126d515383fb973": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -120274,5 +121719,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T17:01:47+09:00"
+  "updated_at_kst": "2026-10-06T17:14:48+09:00"
 }
