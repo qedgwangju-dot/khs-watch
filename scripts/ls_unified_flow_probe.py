@@ -28,7 +28,7 @@ async def main():
         api.on_realtime.connect(on_realtime)
 
         # 통합 시장/업종/프로그램/종목 프로그램 후보 등록.
-        regs=[("UBT","001"),("UBM","001"),("UPM","001"),("UPH","005930")]
+        regs=[("UBT","U001"),("UBM","U001"),("UPM","01"),("UPH","U005930   ")]
         results=[]
         for tr,key in regs:
             try:
