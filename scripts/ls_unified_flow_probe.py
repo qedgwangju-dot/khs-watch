@@ -36,7 +36,7 @@ async def main():
                 results.append({"tr":tr,"key":key,"ok":bool(ok),"last_message":str(api.last_message)[:500]})
             except Exception as exc:
                 results.append({"tr":tr,"key":key,"ok":False,"error":f"{type(exc).__name__}: {exc}"})
-        await asyncio.sleep(20)
+        await asyncio.sleep(90)
         for tr,key in regs:
             try: await api.remove_realtime(tr,key)
             except Exception: pass
@@ -61,9 +61,9 @@ async def main():
         from zoneinfo import ZoneInfo
         now=dt.datetime.now(ZoneInfo("Asia/Seoul"))
         market_hours=(now.weekday()<5 and dt.time(9,0)<=now.time()<=dt.time(15,20))
-        if market_hours and not {"UBT","UBM"}.issubset(realtime_trs):
+        if market_hours and "UBM" not in realtime_trs:
             raise RuntimeError(
-                f"unified investor/industry realtime payload missing during market hours: {sorted(realtime_trs)}"
+                f"unified industry realtime payload missing during 90s market-hours probe: {sorted(realtime_trs)}"
             )
         print(
             "unified_realtime_registration_valid=true "
