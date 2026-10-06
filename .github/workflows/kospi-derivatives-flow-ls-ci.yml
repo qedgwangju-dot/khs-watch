@@ -1,6 +1,9 @@
 name: KOSPI Derivatives Flow CI
 
 on:
+  schedule:
+    - cron: "10 10 * * 1-5"
+      timezone: "Asia/Seoul"
   push:
     branches: [main]
     paths:
