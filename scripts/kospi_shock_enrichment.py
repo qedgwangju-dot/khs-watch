@@ -129,33 +129,48 @@ def get_token() -> str:
 
 def ls_post(token: str, path: str, tr: str, body: dict[str, Any]) -> dict[str, Any]:
     last_error = ""
-    for attempt in range(4):
+    for attempt in range(5):
         _pace(tr)
-        r = requests.post(
-            BASE + path,
-            headers={
-                "content-type": "application/json; charset=utf-8",
-                "authorization": "Bearer " + token,
-                "tr_cd": tr,
-                "tr_cont": "N",
-                "tr_cont_key": "",
-            },
-            data=json.dumps(body),
-            timeout=25,
-        )
+        try:
+            r = requests.post(
+                BASE + path,
+                headers={
+                    "content-type": "application/json; charset=utf-8",
+                    "authorization": "Bearer " + token,
+                    "tr_cd": tr,
+                    "tr_cont": "N",
+                    "tr_cont_key": "",
+                },
+                data=json.dumps(body),
+                timeout=25,
+            )
+        except requests.RequestException as exc:
+            last_error = f"{tr} transport error: {type(exc).__name__}: {exc}"
+            if attempt < 4:
+                time.sleep(min(8.0, 0.8 * (2 ** attempt)))
+                continue
+            raise RuntimeError(last_error) from exc
         text = r.text or ""
+        retryable_http = r.status_code in {429, 500, 502, 503, 504}
         if not r.ok:
             last_error = f"{tr} HTTP {r.status_code}: {text[:300]}"
-            if attempt < 3 and (r.status_code == 429 or "IGW00201" in text):
-                time.sleep(1.5 * (2 ** attempt))
+            if attempt < 4 and retryable_http:
+                time.sleep(min(8.0, 0.8 * (2 ** attempt)))
                 continue
             raise RuntimeError(last_error)
-        data = r.json()
+        try:
+            data = r.json()
+        except Exception as exc:
+            last_error = f"{tr} invalid JSON: {text[:200]}"
+            if attempt < 4:
+                time.sleep(min(8.0, 0.8 * (2 ** attempt)))
+                continue
+            raise RuntimeError(last_error) from exc
         code = str(data.get("rsp_cd") or "")
         if code and code not in {"00000", "0000"}:
             last_error = f"{tr} rejected {code}: {data.get('rsp_msg')}"
-            if attempt < 3 and code == "IGW00201":
-                time.sleep(1.5 * (2 ** attempt))
+            if attempt < 4 and code == "IGW00201":
+                time.sleep(min(8.0, 1.0 * (2 ** attempt)))
                 continue
             raise RuntimeError(last_error)
         return data
