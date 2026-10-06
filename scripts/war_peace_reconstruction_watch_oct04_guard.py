@@ -188,6 +188,81 @@ def _new_tanker_attack_variant(row):
     return any(x in t for x in ("another tanker", "additional tanker", "fourth tanker", "fifth tanker", "추가 유조선", "또 다른 유조선", "4번째 유조선", "5번째 유조선"))
 
 
+def _trump_la_sd_hypothetical(row):
+    """정치 연설의 가정적 수사를 실제 군사 신규 변화로 올리지 않는다."""
+    t = _text(row)
+    trump = any(x in t for x in ("trump", "트럼프"))
+    cities = (
+        any(x in t for x in ("los angeles", "로스앤젤레스", "la "))
+        and any(x in t for x in ("san diego", "샌디에이고"))
+    )
+    rhetoric = any(x in t for x in (
+        "let them take out los angeles", "let 'em take out los angeles",
+        "let them take out san diego", "let 'em take out san diego",
+        "small price to pay", "파괴될 수도 있다", "공격하도록 내버려",
+        "작은 대가", "작은 대가를 치를",
+    ))
+    concrete = any(x in t for x in (
+        "missile launched at los angeles", "missile launched at san diego",
+        "attack on los angeles", "attack on san diego",
+        "credible intelligence", "specific threat", "미사일 발사", "실제 공격",
+        "구체적 위협", "신뢰할 만한 정보",
+    ))
+    return trump and cities and rhetoric and not concrete
+
+
+def _mokha_counteroffensive_context(row):
+    """후티의 과거 목하 점령을 현재 사실로 재생산하지 않고 현재 반격을 잡는다."""
+    t = _text(row)
+    mokha = any(x in t for x in ("mokha", "mocha", "al-makha", "목하", "모카"))
+    houthi = any(x in t for x in ("houthi", "houthis", "후티"))
+    current = any(x in t for x in (
+        "counteroffensive", "counter-offensive", "reclaim", "recapture", "retake",
+        "expel", "free bab al-mandeb", "saudi-backed forces", "yemeni forces",
+        "탈환 공세", "탈환작전", "탈환 작전", "반격", "되찾", "축출",
+        "사우디 지원 예멘군", "예멘 정부군",
+    ))
+    return mokha and houthi and current
+
+
+def _stale_mokha_capture_only(row):
+    t = _text(row)
+    mokha = any(x in t for x in ("mokha", "mocha", "al-makha", "목하", "모카"))
+    houthi = any(x in t for x in ("houthi", "houthis", "후티"))
+    capture = any(x in t for x in (
+        "captured mokha", "seized mokha", "control of mokha", "took mokha",
+        "목하를 점령", "모카를 점령", "목하 장악", "모카 장악",
+    ))
+    old = any(x in t for x in (
+        "last month", "early september", "in september", "since september",
+        "지난달", "9월 초", "9월에", "9월부터",
+    ))
+    return mokha and houthi and capture and old and not _mokha_counteroffensive_context(row)
+
+
+def _tass_russian_strike_claim(row):
+    src = " ".join([str(row.get("source", "")), str(row.get("link", ""))]).lower()
+    t = _text(row)
+    tass = "tass" in src
+    exact = "2197955" in src
+    actors = any(x in t for x in ("russian troops", "russian forces", "russian defense ministry", "러시아군", "러시아 국방부"))
+    action = any(x in t for x in ("hit", "struck", "strike", "attacked", "destroyed", "타격", "공격"))
+    objects = any(x in t for x in ("poltava", "odessa", "odesa", "radar", "data center", "데이터센터", "레이더"))
+    return tass and (exact or (actors and action and objects))
+
+
+def _tass_largest_drone_attack(row):
+    src = " ".join([str(row.get("source", "")), str(row.get("link", ""))]).lower()
+    t = _text(row)
+    return "tass" in src and (
+        "2197959" in src
+        or (
+            any(x in t for x in ("largest drone attack", "biggest drone attack", "최대 규모의 드론 공격", "최대 규모 드론 공격"))
+            and any(x in t for x in ("2026", "tass calculation", "tass calculations", "tass 집계", "타스 집계"))
+        )
+    )
+
+
 def emergency_marks(row):
     marks = list(_orig_emergency_marks(row))
     if _aramco_fire_unattributed(row):
@@ -212,6 +287,12 @@ def marks(row):
         out.append("루코일종전협상연계상업거래")
     if _hormuz_tanker_attack(row):
         out.append("호르무즈유조선피격클러스터")
+    if _mokha_counteroffensive_context(row):
+        out.append("목하탈환공세")
+    if _tass_russian_strike_claim(row):
+        out.append("러시아국방부타격주장")
+    if _tass_largest_drone_attack(row):
+        out.append("TASS러시아최대드론공격집계")
     out = [m for m in out if not (_aramco_fire_unattributed(row) and m == "후티리야드미사일위협")]
     return sorted(set(out))
 
@@ -232,6 +313,12 @@ def korean_title(ms):
         return "종전 협상 과정에서 루코일 해외자산 매각 논의 — 휴전 진전과 별개의 상업거래"
     if "호르무즈유조선피격클러스터" in ms:
         return "호르무즈 유조선 피격 지속 — 미확인 발사체·선박 피해를 실제 해상안보 사건으로 추적"
+    if "목하탈환공세" in ms:
+        return "사우디 지원 예멘군, 후티가 장악했던 목하·바브엘만데브 일대 탈환 공세 — 후티의 9월 점령은 배경"
+    if "러시아국방부타격주장" in ms:
+        return "러시아 국방부, 폴타바·오데사 등에서 우크라이나군 레이더·데이터센터를 타격했다고 주장 — 독립 확인 전"
+    if "TASS러시아최대드론공격집계" in ms:
+        return "TASS 집계: 러시아가 2026년 최대 규모 드론 공격을 받았다고 보도 — 세부 피해·귀속은 추가 확인"
     return _orig_korean_title(ms)
 
 
@@ -252,6 +339,12 @@ def signals(ms):
         out.append("🟡 푸틴·미 특사 간 루코일 해외자산 매각 논의 — 종전회담과 같은 자리에서 논의됐지만 휴전 진전 자체는 아님")
     if "호르무즈유조선피격클러스터" in ms:
         out.append("🔴 UKMTO 기준 호르무즈·오만 인근 유조선의 미확인 발사체 피격이 반복 — 동일 사건 재인용과 실제 추가 피격을 분리")
+    if "목하탈환공세" in ms:
+        out.append("🔴 현재 변화는 사우디 지원 예멘군의 목하·바브엘만데브 탈환 공세 — 후티의 9월 목하 점령을 신규 속보로 재사용하지 않음")
+    if "러시아국방부타격주장" in ms:
+        out.append("🔴 러시아 국방부가 폴타바·오데사 등에서 레이더·데이터센터를 타격했다고 주장 — TASS 중계이며 독립 확인 전")
+    if "TASS러시아최대드론공격집계" in ms:
+        out.append("🔴 TASS 집계로 러시아의 2026년 최대 규모 드론 공격 보도 — 피해·발사 주체·규모는 독립 자료로 추가 확인")
 
     # 이 게이트에서 의미를 확정한 사건은 상위 모듈의 범용 신호를 덧붙이지 않는다.
     # 그래야 '공격 확대 예고'가 '실제 피격', '상업거래'가 '휴전 진전'으로 다시 오염되지 않는다.
@@ -259,6 +352,7 @@ def signals(ms):
         "후티리야드아람코공격주장", "리야드아람코화재원인미확정",
         "러정유시설보복공격확대예고", "러시아종전조건입장표명",
         "루코일종전협상연계상업거래", "호르무즈유조선피격클러스터",
+        "목하탈환공세", "러시아국방부타격주장", "TASS러시아최대드론공격집계",
     }
     if set(ms) & custom:
         return out
@@ -269,6 +363,8 @@ prev._signals = signals
 
 
 def score_item(row, now):
+    if _trump_la_sd_hypothetical(row) or _stale_mokha_capture_only(row):
+        return 0, []
     score, tags = _orig_score_item(row, now)
     ms = set(marks(row))
     tags = list(tags or [])
@@ -295,6 +391,24 @@ def score_item(row, now):
     if "호르무즈유조선피격클러스터" in ms:
         tags = [t for t in tags if t not in ("휴전·평화", "재건", "종전·협상")]
         tags += ["이란·호르무즈", "확전", "해상안보", "유조선피격"]
+        score = max(score, 100)
+    if "목하탈환공세" in ms:
+        row["title_ko"] = korean_title(ms)
+        row["signals_ko"] = []
+        tags = [t for t in tags if t not in ("휴전·평화", "재건", "종전·협상")]
+        tags += ["예멘·후티", "확전", "해상병목", "탈환공세"]
+        score = max(score, 100)
+    if "러시아국방부타격주장" in ms:
+        row["title_ko"] = korean_title(ms)
+        row["signals_ko"] = []
+        tags = [t for t in tags if t not in ("휴전·평화", "재건", "종전·협상")]
+        tags += ["우크라이나·러시아", "확전", "러시아측주장", "독립확인대기"]
+        score = max(score, 100)
+    if "TASS러시아최대드론공격집계" in ms:
+        row["title_ko"] = korean_title(ms)
+        row["signals_ko"] = []
+        tags = [t for t in tags if t not in ("휴전·평화", "재건", "종전·협상")]
+        tags += ["우크라이나·러시아", "확전", "TASS집계", "독립확인필요"]
         score = max(score, 100)
     if _kyiv_bridge_attack(row) or _kyiv_evacuation_strike_warning(row):
         tags = [t for t in tags if t not in ("휴전·평화", "재건", "종전·협상")]
@@ -359,6 +473,12 @@ def topic_label(row):
         return "우크라이나·러시아 · 종전협상 연계 상업거래"
     if "호르무즈유조선피격클러스터" in ms:
         return "이란·호르무즈 · 유조선 피격"
+    if "목하탈환공세" in ms:
+        return "예멘·후티·바브엘만데브 · 탈환 공세"
+    if "러시아국방부타격주장" in ms:
+        return "우크라이나·러시아 · 러시아 국방부 타격 주장"
+    if "TASS러시아최대드론공격집계" in ms:
+        return "우크라이나·러시아 · 대규모 드론 공격"
     return _orig_topic_label(row)
 
 
@@ -379,6 +499,8 @@ def final_color(row):
     }:
         return "yellow"
     if "호르무즈유조선피격클러스터" in ms:
+        return "red"
+    if ms & {"목하탈환공세", "러시아국방부타격주장", "TASS러시아최대드론공격집계"}:
         return "red"
     if _kyiv_bridge_attack(row) or _kyiv_evacuation_strike_warning(row):
         return "red"
@@ -524,6 +646,12 @@ def verify_alert(test_mode=False):
         issues.append("미래 공격 예고를 실제 피격으로 표시")
     if "🔴" in text and "종전 조건 재확인" in text:
         issues.append("종전 조건 입장표명을 실제 확전으로 표시")
+    if "후티가 전략항 목하를 점령" in text or "후티가 전략항 모카를 점령" in text:
+        issues.append("후티의 과거 목하 점령을 신규 현재 사건으로 재사용")
+    if ("로스앤젤레스" in text and "샌디에이고" in text and ("파괴될 수도" in text or "take out los angeles" in low)):
+        issues.append("트럼프의 가정적 정치 발언을 실제 군사 신규 변화로 표시")
+    if "tass.com/defense/2197955" in low and ("러시아 국방부" not in text or "주장" not in text):
+        issues.append("TASS 러시아 국방부 타격 주장을 독립 확인된 사실처럼 표시")
     if issues:
         raise RuntimeError("WAR_OCT04_QUALITY_GATE: " + " | ".join(issues))
 
