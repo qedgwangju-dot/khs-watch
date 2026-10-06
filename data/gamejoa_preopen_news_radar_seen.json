@@ -176,19 +176,32 @@
     "event:087c305bc315b7821cf02723": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
       "lanes": {
-        "live": "2026-10-06T23:46:46+09:00"
+        "live": "2026-10-06T23:46:46+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T23:46:46+09:00",
-      "link": "https://www.hankyung.com/article/202610066710i",
-      "source": "한국경제",
-      "source_body_digest": "751ac78f7152e557590c8954c2eeb2dae2922c4f75820773a0f15ce252707dff",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632557",
+      "source": "이투데이",
+      "source_body_digest": "8f83b7051b65ce3ef4835d27042760dc45b8dd72b72a533667b3412f04a751c0",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:938b84e7421a8d43e3fb3d841b2df1247a34cbf5aabe25977619c03cf122252e",
+      "source_fact_identity": "source_facts:v1:546e34c83620d85eeb0f986722104480209ac17a72182b5977caa42317dfb8f5",
       "source_fact_keys": [
-        "source_fact:v1:22ee89d5df966a9e94fb6a07c1ecec7f148f1204b45d004ef472f6c0cf66d719"
+        "source_fact:v1:0367853ff396b92edebf6a4c4c986b14dc61617f6f80684cf5165f90e134683a",
+        "source_fact:v1:1dcb4ae3054a4c8a3c4c70c32d80d8854095f7611d07bc5772352bf17b3f5d58",
+        "source_fact:v1:1fec9565621683a0429e04fbad200898c9bebf1637da1c1c85db8e7da823d0c6",
+        "source_fact:v1:21daacb94745cd3a004086f5d7146e8b2ee58edf85baee6882b4a8fea6174380",
+        "source_fact:v1:275ad5507d183c40fd1cf9f658423177b756b38d904a9d7eab7e7acf744ee4fe",
+        "source_fact:v1:3581918ffaef57c9d4558dfd524c8ffc5e1b8ba9603d69eea286fc2b234d7ffe",
+        "source_fact:v1:448e661214bd3cabb3e071c0d1e81325f92d3c0a3450b5e4a0e50a923c83c0c1",
+        "source_fact:v1:60cd5472aaa099f11c89b3127e180fd59b5f3cd9785737f052e664ef7b2138ec",
+        "source_fact:v1:69a6a46cd84429e798a3b7c3ffe9ad43c3d1023d82f592cf906f79ad4e343dac",
+        "source_fact:v1:6fd602ccc037334253f2f2eb6667955b9887ce75273c4dfbf789efdda629190b",
+        "source_fact:v1:92c623a74b1876f9d0397273a48f21182c11cb02e683178684533d4276cbb76a",
+        "source_fact:v1:963554e9b964e9f683e7360cf80bac6f195740614f3d0834b16a44dfd5f2783d",
+        "source_fact:v1:ceb1857f62092cce594028a594508ea33e0c28d335337538db40d452616e8961"
       ],
-      "source_published_kst": "2026-10-06T23:21+09:00",
-      "title": "유가·美 국채 내리자…S&P500·나스닥 사상 최고치 돌파"
+      "source_published_kst": "2026-10-06T08:15+09:00",
+      "title": "[오늘의 투자전략] 코스피, 금리ㆍ삼성전자 실적 주목⋯“반도체 이익 상향 재개 여부 관건”"
     },
     "event:09792c32cabb5ad7e6283b23": {
       "first_seen_kst": "2026-10-05T07:34:11+09:00",
@@ -1033,22 +1046,18 @@
     "event:28e538d8e978a0ccfdf6d9b3": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
       "lanes": {
-        "live": "2026-10-06T09:21:20+09:00"
+        "live": "2026-10-06T09:21:20+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T09:21:20+09:00",
-      "link": "https://zdnet.co.kr/view/?no=20261006082620",
-      "source": "지디넷코리아",
-      "source_body_digest": "31b059bcb8e065374a081d7e06940be37a2e3d23c996b8d043ac8d75817655f2",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://www.mk.co.kr/news/society/12169572",
+      "source": "매일경제",
+      "source_body_digest": "40fb21ffa5bafdf2a850c28ad5c1e4603a79bdd4cc47960157459a53ad24027b",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:0a7b19061c1ff858433ba7d6d6b4b295af809ccbe618b56ff5ecc22e755ebeaa",
-      "source_fact_keys": [
-        "source_fact:v1:36d5e2a027e6cbe64945b1533ab90a5a148ba24e34c88bf521cbc27f6c2e1165",
-        "source_fact:v1:5e94e0787319183ea324df196fdb1183053e7fbaa37b720acd01225bac27afa6",
-        "source_fact:v1:eef2433a63ab2c92d75e7594c3f5d0dd60a40417185ee16499b30f5a25b7cba0",
-        "source_fact:v1:f1f9b86a894d84f7a482b5d64cb6a8c4397132c9b97a159b03f9920c26da0085"
-      ],
-      "source_published_kst": "2026-10-06T08:45+09:00",
-      "title": "한미반도체, 삼성전기에 패키징 장비 공급…245억원 규모"
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T17:45+09:00",
+      "title": "한미반도체, 삼성서 첫 대형계약 따냈다"
     },
     "event:295f4ce8d340410d03fd3873": {
       "first_seen_kst": "2026-09-23T06:51:17+09:00",
@@ -3955,20 +3964,20 @@
       "event_alias_evidence_run_id": 37388895628,
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
-        "live": "2026-10-06T08:36:05+09:00"
+        "live": "2026-10-06T08:36:05+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T08:36:05+09:00",
-      "link": "https://www.newsis.com/view/NISX20261006_0003814774",
-      "source": "뉴시스",
-      "source_body_digest": "5f60fef5f9e9eefff4e7e81f6ce856d5991248d4c304d70397b28da558dba495",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02712566645610296",
+      "source": "이데일리",
+      "source_body_digest": "f6dd98df15abf7b5ef7ff15f454583517a6e832938e3c23482df21eef2c10c63",
       "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
-      "source_fact_identity": "source_facts:v1:fb22f50e155f49c8a7c5bd99659bb0a1f2f590ae4acacf60d944029b87439568",
+      "source_fact_identity": "source_facts:v1:cdb2d93ae6f07f8ad3f5aa7448f63b5579514b34afcb2ee5db546d8b56028ba5",
       "source_fact_keys": [
-        "source_fact:v1:7c9abe202e0358314bb95b4eb6d8db9ff5eec7e44a63d5d8583ff200807ab7dc",
-        "source_fact:v1:ea6ba86cbd046996fcbc2a937e093303a984c75473cedd05856b17307f954c93"
+        "source_fact:v1:9634916c2d79989a90239c979da44b48d602fc362e82e8a3687e605b70df9e15"
       ],
-      "source_published_kst": "2026-10-06T08:25+09:00",
-      "title": "한미반도체, 삼성전기와 245억 규모 공급계약"
+      "source_published_kst": "2026-10-06T09:07+09:00",
+      "title": "'MSVP 세계 1위' 한미반도체, 삼성전기 245억 장비 수주"
     },
     "event:997fe20d0b3cc7332160f6d2": {
       "first_seen_kst": "2026-10-01T16:57:16+09:00",
@@ -4371,21 +4380,21 @@
     "event:a89c3b7422e839c615213a10": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
-        "live": "2026-10-06T20:54:05+09:00"
+        "live": "2026-10-06T20:54:05+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T20:54:05+09:00",
-      "link": "https://it.chosun.com/news/articleView.html?idxno=2023092171493",
-      "source": "조선일보",
-      "source_body_digest": "e2fc13bc5eefa147ab97bcaae24312995ea8841d3c3a68e5c98a1cb09d325a2d",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://www.fnnews.com/news/202610061817365679",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "820c568ac5dd3d84611c44ae43a6ba7d300452a9dbe002123ebb2ae1875131ec",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:2f73914b25343667a8e9d018a94cc8c945b03b1a5b5b4def8cba7cdb87a60b1b",
+      "source_fact_identity": "source_facts:v1:8450db29bf57b4254eb5f95bd3ea8303b8df1c374c5cd86b15fb08c2e037aace",
       "source_fact_keys": [
-        "source_fact:v1:26dd4264cec439bfc87fb8021d6a656324c691417e16ca696ce8f4b2eddd28db",
-        "source_fact:v1:c70b034cd9f9cf2821b8db295535e36f05dc50cd2ce7d28c0404731b6cecaadd",
-        "source_fact:v1:fdd74f72e0949adcbb3b4fdcdd1501a24e00ec901b1459c4627e42ec28576d12"
+        "source_fact:v1:4f9e813378bd871a299f541380964be9f30f1861d1859199a5716505a7e8a7de",
+        "source_fact:v1:7fbde7f6c2174aa01f1186226698faccb625aab33018f42146ae7cafba989612"
       ],
-      "source_published_kst": "2026-10-06T16:41+09:00",
-      "title": "최수진 의원실 ‘삼성·SK하이닉스 출신 27명 CXMT 이직’ 주장 [국감2026]"
+      "source_published_kst": "2026-10-06T18:17+09:00",
+      "title": "한미반도체, 삼성전기서 첫 수주… MSVP 매출 탄력"
     },
     "event:a8b73dc588b357eb243b3506": {
       "first_seen_kst": "2026-10-02T19:50:17+09:00",
@@ -5377,6 +5386,38 @@
       "link": "https://magazine.hankyung.com/business/article/202610016560b",
       "source": "한국경제",
       "title": "“통신주 반등하나” 금리인상에도 기대감 고조"
+    },
+    "event:ce90b9c6c794e021e7e54bda": {
+      "first_seen_kst": "2026-10-07T06:41:04+09:00",
+      "lanes": {
+        "preopen": "2026-10-07T06:41:04+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/07/GE4DONLEGUZDIMTFMEYTEZBUMM/",
+      "source": "조선비즈",
+      "source_body_digest": "f929c09ea5114fd13281accfa89366405996e388628dcf67cabb5bd63849a13b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3ba9769757055d473ee636926f30d0418a3dea390f64f85c42c86c30928237b",
+      "source_fact_keys": [
+        "source_fact:v1:0c85f116b6006274bed5a355607743d92d076ca0a285a7c8f3424375bd75da7a",
+        "source_fact:v1:1f9dd35168abb0f12f7b77224fa8eda3bfcd805579c402801dc40add67597f7b",
+        "source_fact:v1:2544eddcf91b0d194efa2e91eeab8436b5cbadc6d33c15658d9eff637d6d399f",
+        "source_fact:v1:2d4543ac759626c24e707781b5d8e5c28c542d0390bd5d9e92c92092a01bc169",
+        "source_fact:v1:32deb5216f6bed6c94053cf0b592f3b97e0aec38fc66d9bd3d1a5be3d5afcd4f",
+        "source_fact:v1:6909ae3aad6d39d076b5a386bfbaacd31e321a39e71966a738fe22b74c313671",
+        "source_fact:v1:6dea3aec9383f7f91201d25b45e594ecdab5c6dd152844b16a457d84fc2b8df8",
+        "source_fact:v1:6ff828f522babcb6394d9c8e518aef6903d6af000c3fb880d065dabe44abd54d",
+        "source_fact:v1:77c072fd3ef1a80be8fb572727418f80ede8dcb5fa89a7c1dd1d25691ec6b00a",
+        "source_fact:v1:7a7e0864792b5d2e0443a037b4df8cdbf032d5330235370b8d2173d13d9e0db3",
+        "source_fact:v1:b2e12ec63df522b27749ab24de7a1f4bceb5ba2100bc43965604e52f4df1be8b",
+        "source_fact:v1:cf9765137527305a33a1cc228e32f12aae07350650816837592ea7810c932760",
+        "source_fact:v1:d25250ca08057aab0b8e3fc0ac08d5a7de7ae212e3d1318152d4b4d37653c7f4",
+        "source_fact:v1:d28923a400d331c43b425a487730fa35ace6c8b9602dd5a65b0f26f30f6d4395",
+        "source_fact:v1:da054bd137c0bf4c79abed2b20dc7b1a037e13bdce7ae712e40069bb9b696fb0",
+        "source_fact:v1:f9905f717946db22bf3357ed4a5e2bef2e08485cd1765155a682a53e9586f0fe"
+      ],
+      "source_published_kst": "2026-10-07T05:30+09:00",
+      "title": "“주가 일희일비할 것 없어, 반도체 공급난 지속은 명확한 사실”"
     },
     "event:ce9209e2218adca7bb85ac92": {
       "first_seen_kst": "2026-09-27T09:17:42+09:00",
@@ -8109,20 +8150,21 @@
     "fact:137619ae1f2b09901ac26b27": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
       "lanes": {
-        "live": "2026-10-06T09:42:55+09:00"
+        "live": "2026-10-06T09:42:55+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T09:42:55+09:00",
-      "link": "https://www.fnnews.com/news/202610060841477323",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://www.fnnews.com/news/202610061817365679",
       "source": "파이낸셜뉴스",
-      "source_body_digest": "c1714ef9430a16d5393b6231f4cf58fda1599ade8dc5cd5728273e1f3d23e6bc",
-      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
+      "source_body_digest": "820c568ac5dd3d84611c44ae43a6ba7d300452a9dbe002123ebb2ae1875131ec",
+      "source_event_identity": "",
       "source_fact_identity": "source_facts:v1:8450db29bf57b4254eb5f95bd3ea8303b8df1c374c5cd86b15fb08c2e037aace",
       "source_fact_keys": [
         "source_fact:v1:4f9e813378bd871a299f541380964be9f30f1861d1859199a5716505a7e8a7de",
         "source_fact:v1:7fbde7f6c2174aa01f1186226698faccb625aab33018f42146ae7cafba989612"
       ],
-      "source_published_kst": "2026-10-06T08:46+09:00",
-      "title": "한미반도체, 삼성 첫 거래·MSVP 수주 확대 '두 마리 토끼'"
+      "source_published_kst": "2026-10-06T18:17+09:00",
+      "title": "한미반도체, 삼성전기서 첫 수주… MSVP 매출 탄력"
     },
     "fact:141e69347ed926b17a0db065": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
@@ -10932,9 +10974,10 @@
     "fact:41d2c1a8886bad81aaf245c7": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
       "lanes": {
-        "live": "2026-10-06T17:47:23+09:00"
+        "live": "2026-10-06T17:47:23+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T17:47:23+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.etnews.com/20261006000363",
       "source": "전자신문",
       "source_body_digest": "999e3ecb97ce5d7a86e752cb4a2bcfd0efbadb9be36fc03a8220b4037b93d27d",
@@ -13484,9 +13527,10 @@
     "fact:707e9ca39ab26f5afcaedcc7": {
       "first_seen_kst": "2026-10-06T19:33:48+09:00",
       "lanes": {
-        "live": "2026-10-06T19:33:48+09:00"
+        "live": "2026-10-06T19:33:48+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.newsis.com/view/NISX20261006_0003816043",
       "source": "뉴시스",
       "source_body_digest": "0b52a071071e8f3e6f57c7df7e3d42d5dea13b198fdc76b124c1f1661848b01f",
@@ -15669,9 +15713,10 @@
     "fact:966011b743d64f4b5e941a87": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
-        "live": "2026-10-06T08:36:05+09:00"
+        "live": "2026-10-06T08:36:05+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T08:36:05+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.etoday.co.kr/news/view/2632557",
       "source": "이투데이",
       "source_body_digest": "8f83b7051b65ce3ef4835d27042760dc45b8dd72b72a533667b3412f04a751c0",
@@ -16012,13 +16057,14 @@
     "fact:9b9c98a2133ce9d86aecf190": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
       "lanes": {
-        "live": "2026-10-06T09:53:40+09:00"
+        "live": "2026-10-06T09:53:40+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T09:53:40+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02712566645610296&mediaCodeNo=257",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02712566645610296",
       "source": "이데일리",
       "source_body_digest": "f6dd98df15abf7b5ef7ff15f454583517a6e832938e3c23482df21eef2c10c63",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
       "source_fact_identity": "source_facts:v1:cdb2d93ae6f07f8ad3f5aa7448f63b5579514b34afcb2ee5db546d8b56028ba5",
       "source_fact_keys": [
         "source_fact:v1:9634916c2d79989a90239c979da44b48d602fc362e82e8a3687e605b70df9e15"
@@ -16186,6 +16232,38 @@
       ],
       "source_published_kst": "2026-10-06T10:44+09:00",
       "title": "유진투자증권, 연말 절세·자산관리 이벤트…최대 200만원 혜택"
+    },
+    "fact:9dce72856d52b637c4f444db": {
+      "first_seen_kst": "2026-10-07T06:41:04+09:00",
+      "lanes": {
+        "preopen": "2026-10-07T06:41:04+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/07/GE4DONLEGUZDIMTFMEYTEZBUMM/",
+      "source": "조선비즈",
+      "source_body_digest": "f929c09ea5114fd13281accfa89366405996e388628dcf67cabb5bd63849a13b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3ba9769757055d473ee636926f30d0418a3dea390f64f85c42c86c30928237b",
+      "source_fact_keys": [
+        "source_fact:v1:0c85f116b6006274bed5a355607743d92d076ca0a285a7c8f3424375bd75da7a",
+        "source_fact:v1:1f9dd35168abb0f12f7b77224fa8eda3bfcd805579c402801dc40add67597f7b",
+        "source_fact:v1:2544eddcf91b0d194efa2e91eeab8436b5cbadc6d33c15658d9eff637d6d399f",
+        "source_fact:v1:2d4543ac759626c24e707781b5d8e5c28c542d0390bd5d9e92c92092a01bc169",
+        "source_fact:v1:32deb5216f6bed6c94053cf0b592f3b97e0aec38fc66d9bd3d1a5be3d5afcd4f",
+        "source_fact:v1:6909ae3aad6d39d076b5a386bfbaacd31e321a39e71966a738fe22b74c313671",
+        "source_fact:v1:6dea3aec9383f7f91201d25b45e594ecdab5c6dd152844b16a457d84fc2b8df8",
+        "source_fact:v1:6ff828f522babcb6394d9c8e518aef6903d6af000c3fb880d065dabe44abd54d",
+        "source_fact:v1:77c072fd3ef1a80be8fb572727418f80ede8dcb5fa89a7c1dd1d25691ec6b00a",
+        "source_fact:v1:7a7e0864792b5d2e0443a037b4df8cdbf032d5330235370b8d2173d13d9e0db3",
+        "source_fact:v1:b2e12ec63df522b27749ab24de7a1f4bceb5ba2100bc43965604e52f4df1be8b",
+        "source_fact:v1:cf9765137527305a33a1cc228e32f12aae07350650816837592ea7810c932760",
+        "source_fact:v1:d25250ca08057aab0b8e3fc0ac08d5a7de7ae212e3d1318152d4b4d37653c7f4",
+        "source_fact:v1:d28923a400d331c43b425a487730fa35ace6c8b9602dd5a65b0f26f30f6d4395",
+        "source_fact:v1:da054bd137c0bf4c79abed2b20dc7b1a037e13bdce7ae712e40069bb9b696fb0",
+        "source_fact:v1:f9905f717946db22bf3357ed4a5e2bef2e08485cd1765155a682a53e9586f0fe"
+      ],
+      "source_published_kst": "2026-10-07T05:30+09:00",
+      "title": "“주가 일희일비할 것 없어, 반도체 공급난 지속은 명확한 사실”"
     },
     "fact:9dde05e847ce58d6622b40dc": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
@@ -26301,9 +26379,10 @@
     "link:2cdf1888ed8d19f9a51cb047": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
-        "live": "2026-10-06T08:36:05+09:00"
+        "live": "2026-10-06T08:36:05+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T08:36:05+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.etoday.co.kr/news/view/2632557",
       "source": "이투데이",
       "source_body_digest": "8f83b7051b65ce3ef4835d27042760dc45b8dd72b72a533667b3412f04a751c0",
@@ -35267,9 +35346,10 @@
     "link:77fbdcd5e8b1be457e00b45e": {
       "first_seen_kst": "2026-10-06T19:33:48+09:00",
       "lanes": {
-        "live": "2026-10-06T19:33:48+09:00"
+        "live": "2026-10-06T19:33:48+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.newsis.com/view/NISX20261006_0003816043",
       "source": "뉴시스",
       "source_body_digest": "0b52a071071e8f3e6f57c7df7e3d42d5dea13b198fdc76b124c1f1661848b01f",
@@ -37352,6 +37432,24 @@
       "source": "이데일리",
       "title": "‘수억원 기대’ 삼전 DS 특별성과급 기준 발표, 10월 초 연기"
     },
+    "link:8bb7e597320325b6f0c0e34e": {
+      "first_seen_kst": "2026-10-07T06:41:04+09:00",
+      "lanes": {
+        "preopen": "2026-10-07T06:41:04+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://www.fnnews.com/news/202610061817365679",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "820c568ac5dd3d84611c44ae43a6ba7d300452a9dbe002123ebb2ae1875131ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8450db29bf57b4254eb5f95bd3ea8303b8df1c374c5cd86b15fb08c2e037aace",
+      "source_fact_keys": [
+        "source_fact:v1:4f9e813378bd871a299f541380964be9f30f1861d1859199a5716505a7e8a7de",
+        "source_fact:v1:7fbde7f6c2174aa01f1186226698faccb625aab33018f42146ae7cafba989612"
+      ],
+      "source_published_kst": "2026-10-06T18:17+09:00",
+      "title": "한미반도체, 삼성전기서 첫 수주… MSVP 매출 탄력"
+    },
     "link:8bbdc67fc38de5ca15b31d9c": {
       "first_seen_kst": "2026-09-28T17:51:03+09:00",
       "lanes": {
@@ -38761,6 +38859,23 @@
       "link": "https://www.dailian.co.kr/news/view/1696975/KGM-9%EC%9B%948863%EB%8C%80-%ED%8C%90%EB%A7%A4%EC%88%98%EC%B6%9C-%EB%8A%98%EC%97%88%EC%A7%80-2026",
       "source": "데일리안",
       "title": "KGM, 9월 8863대 판매…수출 늘었지만 내수 부진에 전년比 16.7%↓"
+    },
+    "link:97e411e5ba95e1c3d5d3a215": {
+      "first_seen_kst": "2026-10-07T06:41:04+09:00",
+      "lanes": {
+        "preopen": "2026-10-07T06:41:04+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02712566645610296",
+      "source": "이데일리",
+      "source_body_digest": "f6dd98df15abf7b5ef7ff15f454583517a6e832938e3c23482df21eef2c10c63",
+      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
+      "source_fact_identity": "source_facts:v1:cdb2d93ae6f07f8ad3f5aa7448f63b5579514b34afcb2ee5db546d8b56028ba5",
+      "source_fact_keys": [
+        "source_fact:v1:9634916c2d79989a90239c979da44b48d602fc362e82e8a3687e605b70df9e15"
+      ],
+      "source_published_kst": "2026-10-06T09:07+09:00",
+      "title": "'MSVP 세계 1위' 한미반도체, 삼성전기 245억 장비 수주"
     },
     "link:97f4e589a2f61011d1c0a074": {
       "first_seen_kst": "2026-10-02T20:28:38+09:00",
@@ -40499,9 +40614,10 @@
     "link:a73e151f98870e7357f9b9c4": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
       "lanes": {
-        "live": "2026-10-06T17:47:23+09:00"
+        "live": "2026-10-06T17:47:23+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T17:47:23+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.etnews.com/20261006000363",
       "source": "전자신문",
       "source_body_digest": "999e3ecb97ce5d7a86e752cb4a2bcfd0efbadb9be36fc03a8220b4037b93d27d",
@@ -42432,6 +42548,21 @@
       "link": "https://www.mk.co.kr/news/stock/12164457",
       "source": "매일경제",
       "title": "특징주, RF머트리얼즈-광통신(광케이블/광섬유 등) 테마 상승세에 6.76% ↑"
+    },
+    "link:b779e321cfa959c05a9a79d8": {
+      "first_seen_kst": "2026-10-07T06:41:04+09:00",
+      "lanes": {
+        "preopen": "2026-10-07T06:41:04+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://www.mk.co.kr/news/society/12169572",
+      "source": "매일경제",
+      "source_body_digest": "40fb21ffa5bafdf2a850c28ad5c1e4603a79bdd4cc47960157459a53ad24027b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T17:45+09:00",
+      "title": "한미반도체, 삼성서 첫 대형계약 따냈다"
     },
     "link:b7ce1c6e4511729c2191de79": {
       "first_seen_kst": "2026-10-02T18:02:38+09:00",
@@ -46054,6 +46185,38 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T07:00+09:00",
       "title": "\"aT 인수 농산물 비축기지 6곳, 6년간 순손실 121억원\" | 연합뉴스"
+    },
+    "link:d61acf3b33a4275b39ebf932": {
+      "first_seen_kst": "2026-10-07T06:41:04+09:00",
+      "lanes": {
+        "preopen": "2026-10-07T06:41:04+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/07/GE4DONLEGUZDIMTFMEYTEZBUMM/",
+      "source": "조선비즈",
+      "source_body_digest": "f929c09ea5114fd13281accfa89366405996e388628dcf67cabb5bd63849a13b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3ba9769757055d473ee636926f30d0418a3dea390f64f85c42c86c30928237b",
+      "source_fact_keys": [
+        "source_fact:v1:0c85f116b6006274bed5a355607743d92d076ca0a285a7c8f3424375bd75da7a",
+        "source_fact:v1:1f9dd35168abb0f12f7b77224fa8eda3bfcd805579c402801dc40add67597f7b",
+        "source_fact:v1:2544eddcf91b0d194efa2e91eeab8436b5cbadc6d33c15658d9eff637d6d399f",
+        "source_fact:v1:2d4543ac759626c24e707781b5d8e5c28c542d0390bd5d9e92c92092a01bc169",
+        "source_fact:v1:32deb5216f6bed6c94053cf0b592f3b97e0aec38fc66d9bd3d1a5be3d5afcd4f",
+        "source_fact:v1:6909ae3aad6d39d076b5a386bfbaacd31e321a39e71966a738fe22b74c313671",
+        "source_fact:v1:6dea3aec9383f7f91201d25b45e594ecdab5c6dd152844b16a457d84fc2b8df8",
+        "source_fact:v1:6ff828f522babcb6394d9c8e518aef6903d6af000c3fb880d065dabe44abd54d",
+        "source_fact:v1:77c072fd3ef1a80be8fb572727418f80ede8dcb5fa89a7c1dd1d25691ec6b00a",
+        "source_fact:v1:7a7e0864792b5d2e0443a037b4df8cdbf032d5330235370b8d2173d13d9e0db3",
+        "source_fact:v1:b2e12ec63df522b27749ab24de7a1f4bceb5ba2100bc43965604e52f4df1be8b",
+        "source_fact:v1:cf9765137527305a33a1cc228e32f12aae07350650816837592ea7810c932760",
+        "source_fact:v1:d25250ca08057aab0b8e3fc0ac08d5a7de7ae212e3d1318152d4b4d37653c7f4",
+        "source_fact:v1:d28923a400d331c43b425a487730fa35ace6c8b9602dd5a65b0f26f30f6d4395",
+        "source_fact:v1:da054bd137c0bf4c79abed2b20dc7b1a037e13bdce7ae712e40069bb9b696fb0",
+        "source_fact:v1:f9905f717946db22bf3357ed4a5e2bef2e08485cd1765155a682a53e9586f0fe"
+      ],
+      "source_published_kst": "2026-10-07T05:30+09:00",
+      "title": "“주가 일희일비할 것 없어, 반도체 공급난 지속은 명확한 사실”"
     },
     "link:d6499c4d352a57c48ae5c469": {
       "first_seen_kst": "2026-09-18T21:48:27+09:00",
@@ -51513,6 +51676,38 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T08:01+09:00",
       "title": "워시는 침묵…美연준 인사들 발언에 시장 움직인 이유 | 연합뉴스"
+    },
+    "original:0556fb15c177911ae6a9a27e": {
+      "first_seen_kst": "2026-10-07T06:41:04+09:00",
+      "lanes": {
+        "preopen": "2026-10-07T06:41:04+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/07/GE4DONLEGUZDIMTFMEYTEZBUMM/",
+      "source": "조선비즈",
+      "source_body_digest": "f929c09ea5114fd13281accfa89366405996e388628dcf67cabb5bd63849a13b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3ba9769757055d473ee636926f30d0418a3dea390f64f85c42c86c30928237b",
+      "source_fact_keys": [
+        "source_fact:v1:0c85f116b6006274bed5a355607743d92d076ca0a285a7c8f3424375bd75da7a",
+        "source_fact:v1:1f9dd35168abb0f12f7b77224fa8eda3bfcd805579c402801dc40add67597f7b",
+        "source_fact:v1:2544eddcf91b0d194efa2e91eeab8436b5cbadc6d33c15658d9eff637d6d399f",
+        "source_fact:v1:2d4543ac759626c24e707781b5d8e5c28c542d0390bd5d9e92c92092a01bc169",
+        "source_fact:v1:32deb5216f6bed6c94053cf0b592f3b97e0aec38fc66d9bd3d1a5be3d5afcd4f",
+        "source_fact:v1:6909ae3aad6d39d076b5a386bfbaacd31e321a39e71966a738fe22b74c313671",
+        "source_fact:v1:6dea3aec9383f7f91201d25b45e594ecdab5c6dd152844b16a457d84fc2b8df8",
+        "source_fact:v1:6ff828f522babcb6394d9c8e518aef6903d6af000c3fb880d065dabe44abd54d",
+        "source_fact:v1:77c072fd3ef1a80be8fb572727418f80ede8dcb5fa89a7c1dd1d25691ec6b00a",
+        "source_fact:v1:7a7e0864792b5d2e0443a037b4df8cdbf032d5330235370b8d2173d13d9e0db3",
+        "source_fact:v1:b2e12ec63df522b27749ab24de7a1f4bceb5ba2100bc43965604e52f4df1be8b",
+        "source_fact:v1:cf9765137527305a33a1cc228e32f12aae07350650816837592ea7810c932760",
+        "source_fact:v1:d25250ca08057aab0b8e3fc0ac08d5a7de7ae212e3d1318152d4b4d37653c7f4",
+        "source_fact:v1:d28923a400d331c43b425a487730fa35ace6c8b9602dd5a65b0f26f30f6d4395",
+        "source_fact:v1:da054bd137c0bf4c79abed2b20dc7b1a037e13bdce7ae712e40069bb9b696fb0",
+        "source_fact:v1:f9905f717946db22bf3357ed4a5e2bef2e08485cd1765155a682a53e9586f0fe"
+      ],
+      "source_published_kst": "2026-10-07T05:30+09:00",
+      "title": "“주가 일희일비할 것 없어, 반도체 공급난 지속은 명확한 사실”"
     },
     "original:056280ed51443cd268fb6a36": {
       "first_seen_kst": "2026-10-04T12:12:39+09:00",
@@ -58512,9 +58707,10 @@
     "original:41dcca7f323fdc526dcb9021": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
-        "live": "2026-10-06T08:36:05+09:00"
+        "live": "2026-10-06T08:36:05+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T08:36:05+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.etoday.co.kr/news/view/2632557",
       "source": "이투데이",
       "source_body_digest": "8f83b7051b65ce3ef4835d27042760dc45b8dd72b72a533667b3412f04a751c0",
@@ -60410,6 +60606,21 @@
       "source_published_kst": "2026-10-06T19:04+09:00",
       "title": "이형일 “美 원전 선급금, 국내 절차·상업성 충족돼야 송금”"
     },
+    "original:527c90186b43603cff2b8ff8": {
+      "first_seen_kst": "2026-10-07T06:41:04+09:00",
+      "lanes": {
+        "preopen": "2026-10-07T06:41:04+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://www.mk.co.kr/news/society/12169572",
+      "source": "매일경제",
+      "source_body_digest": "40fb21ffa5bafdf2a850c28ad5c1e4603a79bdd4cc47960157459a53ad24027b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T17:45+09:00",
+      "title": "한미반도체, 삼성서 첫 대형계약 따냈다"
+    },
     "original:52974b271e12c1f5467bb8ee": {
       "first_seen_kst": "2026-10-03T01:03:39+09:00",
       "lanes": {
@@ -60747,9 +60958,10 @@
     "original:55cb21c0a429f184c051b461": {
       "first_seen_kst": "2026-10-06T19:33:48+09:00",
       "lanes": {
-        "live": "2026-10-06T19:33:48+09:00"
+        "live": "2026-10-06T19:33:48+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.newsis.com/view/NISX20261006_0003816043",
       "source": "뉴시스",
       "source_body_digest": "0b52a071071e8f3e6f57c7df7e3d42d5dea13b198fdc76b124c1f1661848b01f",
@@ -61909,6 +62121,24 @@
       "link": "https://www.yna.co.kr/view/AKR20260923167100008?input=1215m",
       "source": "연합뉴스",
       "title": "'국장'은 쉬어도 '미장'은 열린다…추석 전후 챙겨볼 ETF는 | 연합뉴스"
+    },
+    "original:6061792702cc83ded726fb45": {
+      "first_seen_kst": "2026-10-07T06:41:04+09:00",
+      "lanes": {
+        "preopen": "2026-10-07T06:41:04+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://www.fnnews.com/news/202610061817365679",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "820c568ac5dd3d84611c44ae43a6ba7d300452a9dbe002123ebb2ae1875131ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8450db29bf57b4254eb5f95bd3ea8303b8df1c374c5cd86b15fb08c2e037aace",
+      "source_fact_keys": [
+        "source_fact:v1:4f9e813378bd871a299f541380964be9f30f1861d1859199a5716505a7e8a7de",
+        "source_fact:v1:7fbde7f6c2174aa01f1186226698faccb625aab33018f42146ae7cafba989612"
+      ],
+      "source_published_kst": "2026-10-06T18:17+09:00",
+      "title": "한미반도체, 삼성전기서 첫 수주… MSVP 매출 탄력"
     },
     "original:6065c296b7b781de0623958c": {
       "first_seen_kst": "2026-10-06T12:10:48+09:00",
@@ -75323,9 +75553,10 @@
     "original:d771b55b31250caf69ee6d2b": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
       "lanes": {
-        "live": "2026-10-06T17:47:23+09:00"
+        "live": "2026-10-06T17:47:23+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T17:47:23+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.etnews.com/20261006000363",
       "source": "전자신문",
       "source_body_digest": "999e3ecb97ce5d7a86e752cb4a2bcfd0efbadb9be36fc03a8220b4037b93d27d",
@@ -77215,13 +77446,14 @@
     "original:e7d2bbef90d34fc9a2ac0112": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
       "lanes": {
-        "live": "2026-10-06T09:53:40+09:00"
+        "live": "2026-10-06T09:53:40+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T09:53:40+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02712566645610296&mediaCodeNo=257",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02712566645610296",
       "source": "이데일리",
       "source_body_digest": "f6dd98df15abf7b5ef7ff15f454583517a6e832938e3c23482df21eef2c10c63",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
       "source_fact_identity": "source_facts:v1:cdb2d93ae6f07f8ad3f5aa7448f63b5579514b34afcb2ee5db546d8b56028ba5",
       "source_fact_keys": [
         "source_fact:v1:9634916c2d79989a90239c979da44b48d602fc362e82e8a3687e605b70df9e15"
@@ -80590,6 +80822,38 @@
       ],
       "source_published_kst": "2026-10-06T18:00+09:00",
       "title": "\"美 투자 ETF 사고 미국 가자\"…한투운용, 美대표지수 ETF 매수 이벤트"
+    },
+    "source_fact:030c0a2a90fa6a0f366c103c": {
+      "first_seen_kst": "2026-10-07T06:41:04+09:00",
+      "lanes": {
+        "preopen": "2026-10-07T06:41:04+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/07/GE4DONLEGUZDIMTFMEYTEZBUMM/",
+      "source": "조선비즈",
+      "source_body_digest": "f929c09ea5114fd13281accfa89366405996e388628dcf67cabb5bd63849a13b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3ba9769757055d473ee636926f30d0418a3dea390f64f85c42c86c30928237b",
+      "source_fact_keys": [
+        "source_fact:v1:0c85f116b6006274bed5a355607743d92d076ca0a285a7c8f3424375bd75da7a",
+        "source_fact:v1:1f9dd35168abb0f12f7b77224fa8eda3bfcd805579c402801dc40add67597f7b",
+        "source_fact:v1:2544eddcf91b0d194efa2e91eeab8436b5cbadc6d33c15658d9eff637d6d399f",
+        "source_fact:v1:2d4543ac759626c24e707781b5d8e5c28c542d0390bd5d9e92c92092a01bc169",
+        "source_fact:v1:32deb5216f6bed6c94053cf0b592f3b97e0aec38fc66d9bd3d1a5be3d5afcd4f",
+        "source_fact:v1:6909ae3aad6d39d076b5a386bfbaacd31e321a39e71966a738fe22b74c313671",
+        "source_fact:v1:6dea3aec9383f7f91201d25b45e594ecdab5c6dd152844b16a457d84fc2b8df8",
+        "source_fact:v1:6ff828f522babcb6394d9c8e518aef6903d6af000c3fb880d065dabe44abd54d",
+        "source_fact:v1:77c072fd3ef1a80be8fb572727418f80ede8dcb5fa89a7c1dd1d25691ec6b00a",
+        "source_fact:v1:7a7e0864792b5d2e0443a037b4df8cdbf032d5330235370b8d2173d13d9e0db3",
+        "source_fact:v1:b2e12ec63df522b27749ab24de7a1f4bceb5ba2100bc43965604e52f4df1be8b",
+        "source_fact:v1:cf9765137527305a33a1cc228e32f12aae07350650816837592ea7810c932760",
+        "source_fact:v1:d25250ca08057aab0b8e3fc0ac08d5a7de7ae212e3d1318152d4b4d37653c7f4",
+        "source_fact:v1:d28923a400d331c43b425a487730fa35ace6c8b9602dd5a65b0f26f30f6d4395",
+        "source_fact:v1:da054bd137c0bf4c79abed2b20dc7b1a037e13bdce7ae712e40069bb9b696fb0",
+        "source_fact:v1:f9905f717946db22bf3357ed4a5e2bef2e08485cd1765155a682a53e9586f0fe"
+      ],
+      "source_published_kst": "2026-10-07T05:30+09:00",
+      "title": "“주가 일희일비할 것 없어, 반도체 공급난 지속은 명확한 사실”"
     },
     "source_fact:0323220767bca9e935d6e129": {
       "first_seen_kst": "2026-10-06T02:00:06+09:00",
@@ -84416,6 +84680,38 @@
       "source_published_kst": "2026-10-05T10:35+09:00",
       "title": "삼성바이오·SK바이오팜·한미약품, 아태 바이오 ‘10대 거래’ 선정"
     },
+    "source_fact:13f18ccbe3fe23d667b3980b": {
+      "first_seen_kst": "2026-10-07T06:41:04+09:00",
+      "lanes": {
+        "preopen": "2026-10-07T06:41:04+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/07/GE4DONLEGUZDIMTFMEYTEZBUMM/",
+      "source": "조선비즈",
+      "source_body_digest": "f929c09ea5114fd13281accfa89366405996e388628dcf67cabb5bd63849a13b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3ba9769757055d473ee636926f30d0418a3dea390f64f85c42c86c30928237b",
+      "source_fact_keys": [
+        "source_fact:v1:0c85f116b6006274bed5a355607743d92d076ca0a285a7c8f3424375bd75da7a",
+        "source_fact:v1:1f9dd35168abb0f12f7b77224fa8eda3bfcd805579c402801dc40add67597f7b",
+        "source_fact:v1:2544eddcf91b0d194efa2e91eeab8436b5cbadc6d33c15658d9eff637d6d399f",
+        "source_fact:v1:2d4543ac759626c24e707781b5d8e5c28c542d0390bd5d9e92c92092a01bc169",
+        "source_fact:v1:32deb5216f6bed6c94053cf0b592f3b97e0aec38fc66d9bd3d1a5be3d5afcd4f",
+        "source_fact:v1:6909ae3aad6d39d076b5a386bfbaacd31e321a39e71966a738fe22b74c313671",
+        "source_fact:v1:6dea3aec9383f7f91201d25b45e594ecdab5c6dd152844b16a457d84fc2b8df8",
+        "source_fact:v1:6ff828f522babcb6394d9c8e518aef6903d6af000c3fb880d065dabe44abd54d",
+        "source_fact:v1:77c072fd3ef1a80be8fb572727418f80ede8dcb5fa89a7c1dd1d25691ec6b00a",
+        "source_fact:v1:7a7e0864792b5d2e0443a037b4df8cdbf032d5330235370b8d2173d13d9e0db3",
+        "source_fact:v1:b2e12ec63df522b27749ab24de7a1f4bceb5ba2100bc43965604e52f4df1be8b",
+        "source_fact:v1:cf9765137527305a33a1cc228e32f12aae07350650816837592ea7810c932760",
+        "source_fact:v1:d25250ca08057aab0b8e3fc0ac08d5a7de7ae212e3d1318152d4b4d37653c7f4",
+        "source_fact:v1:d28923a400d331c43b425a487730fa35ace6c8b9602dd5a65b0f26f30f6d4395",
+        "source_fact:v1:da054bd137c0bf4c79abed2b20dc7b1a037e13bdce7ae712e40069bb9b696fb0",
+        "source_fact:v1:f9905f717946db22bf3357ed4a5e2bef2e08485cd1765155a682a53e9586f0fe"
+      ],
+      "source_published_kst": "2026-10-07T05:30+09:00",
+      "title": "“주가 일희일비할 것 없어, 반도체 공급난 지속은 명확한 사실”"
+    },
     "source_fact:140e250be85c1933e763b60d": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
       "lanes": {
@@ -84522,6 +84818,38 @@
       ],
       "source_published_kst": "2026-10-05T17:46+09:00",
       "title": "원화 강세의 그늘…상장사 영업익 전망 '뒷걸음질'"
+    },
+    "source_fact:1472e870e4c6a386eb1c43b1": {
+      "first_seen_kst": "2026-10-07T06:41:04+09:00",
+      "lanes": {
+        "preopen": "2026-10-07T06:41:04+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/07/GE4DONLEGUZDIMTFMEYTEZBUMM/",
+      "source": "조선비즈",
+      "source_body_digest": "f929c09ea5114fd13281accfa89366405996e388628dcf67cabb5bd63849a13b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3ba9769757055d473ee636926f30d0418a3dea390f64f85c42c86c30928237b",
+      "source_fact_keys": [
+        "source_fact:v1:0c85f116b6006274bed5a355607743d92d076ca0a285a7c8f3424375bd75da7a",
+        "source_fact:v1:1f9dd35168abb0f12f7b77224fa8eda3bfcd805579c402801dc40add67597f7b",
+        "source_fact:v1:2544eddcf91b0d194efa2e91eeab8436b5cbadc6d33c15658d9eff637d6d399f",
+        "source_fact:v1:2d4543ac759626c24e707781b5d8e5c28c542d0390bd5d9e92c92092a01bc169",
+        "source_fact:v1:32deb5216f6bed6c94053cf0b592f3b97e0aec38fc66d9bd3d1a5be3d5afcd4f",
+        "source_fact:v1:6909ae3aad6d39d076b5a386bfbaacd31e321a39e71966a738fe22b74c313671",
+        "source_fact:v1:6dea3aec9383f7f91201d25b45e594ecdab5c6dd152844b16a457d84fc2b8df8",
+        "source_fact:v1:6ff828f522babcb6394d9c8e518aef6903d6af000c3fb880d065dabe44abd54d",
+        "source_fact:v1:77c072fd3ef1a80be8fb572727418f80ede8dcb5fa89a7c1dd1d25691ec6b00a",
+        "source_fact:v1:7a7e0864792b5d2e0443a037b4df8cdbf032d5330235370b8d2173d13d9e0db3",
+        "source_fact:v1:b2e12ec63df522b27749ab24de7a1f4bceb5ba2100bc43965604e52f4df1be8b",
+        "source_fact:v1:cf9765137527305a33a1cc228e32f12aae07350650816837592ea7810c932760",
+        "source_fact:v1:d25250ca08057aab0b8e3fc0ac08d5a7de7ae212e3d1318152d4b4d37653c7f4",
+        "source_fact:v1:d28923a400d331c43b425a487730fa35ace6c8b9602dd5a65b0f26f30f6d4395",
+        "source_fact:v1:da054bd137c0bf4c79abed2b20dc7b1a037e13bdce7ae712e40069bb9b696fb0",
+        "source_fact:v1:f9905f717946db22bf3357ed4a5e2bef2e08485cd1765155a682a53e9586f0fe"
+      ],
+      "source_published_kst": "2026-10-07T05:30+09:00",
+      "title": "“주가 일희일비할 것 없어, 반도체 공급난 지속은 명확한 사실”"
     },
     "source_fact:147a986d6d7cf21f5eca8e24": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -85524,6 +85852,38 @@
       ],
       "source_published_kst": "2026-10-07T06:01+09:00",
       "title": "글로벌 공급기지 된 K-제약사들…잇단 수출계약"
+    },
+    "source_fact:1a6468a4bee28874025771c7": {
+      "first_seen_kst": "2026-10-07T06:41:04+09:00",
+      "lanes": {
+        "preopen": "2026-10-07T06:41:04+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/07/GE4DONLEGUZDIMTFMEYTEZBUMM/",
+      "source": "조선비즈",
+      "source_body_digest": "f929c09ea5114fd13281accfa89366405996e388628dcf67cabb5bd63849a13b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3ba9769757055d473ee636926f30d0418a3dea390f64f85c42c86c30928237b",
+      "source_fact_keys": [
+        "source_fact:v1:0c85f116b6006274bed5a355607743d92d076ca0a285a7c8f3424375bd75da7a",
+        "source_fact:v1:1f9dd35168abb0f12f7b77224fa8eda3bfcd805579c402801dc40add67597f7b",
+        "source_fact:v1:2544eddcf91b0d194efa2e91eeab8436b5cbadc6d33c15658d9eff637d6d399f",
+        "source_fact:v1:2d4543ac759626c24e707781b5d8e5c28c542d0390bd5d9e92c92092a01bc169",
+        "source_fact:v1:32deb5216f6bed6c94053cf0b592f3b97e0aec38fc66d9bd3d1a5be3d5afcd4f",
+        "source_fact:v1:6909ae3aad6d39d076b5a386bfbaacd31e321a39e71966a738fe22b74c313671",
+        "source_fact:v1:6dea3aec9383f7f91201d25b45e594ecdab5c6dd152844b16a457d84fc2b8df8",
+        "source_fact:v1:6ff828f522babcb6394d9c8e518aef6903d6af000c3fb880d065dabe44abd54d",
+        "source_fact:v1:77c072fd3ef1a80be8fb572727418f80ede8dcb5fa89a7c1dd1d25691ec6b00a",
+        "source_fact:v1:7a7e0864792b5d2e0443a037b4df8cdbf032d5330235370b8d2173d13d9e0db3",
+        "source_fact:v1:b2e12ec63df522b27749ab24de7a1f4bceb5ba2100bc43965604e52f4df1be8b",
+        "source_fact:v1:cf9765137527305a33a1cc228e32f12aae07350650816837592ea7810c932760",
+        "source_fact:v1:d25250ca08057aab0b8e3fc0ac08d5a7de7ae212e3d1318152d4b4d37653c7f4",
+        "source_fact:v1:d28923a400d331c43b425a487730fa35ace6c8b9602dd5a65b0f26f30f6d4395",
+        "source_fact:v1:da054bd137c0bf4c79abed2b20dc7b1a037e13bdce7ae712e40069bb9b696fb0",
+        "source_fact:v1:f9905f717946db22bf3357ed4a5e2bef2e08485cd1765155a682a53e9586f0fe"
+      ],
+      "source_published_kst": "2026-10-07T05:30+09:00",
+      "title": "“주가 일희일비할 것 없어, 반도체 공급난 지속은 명확한 사실”"
     },
     "source_fact:1a7ab4663f70b3eda77d90c6": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
@@ -87290,6 +87650,38 @@
       "source_published_kst": "2026-10-06T13:31+09:00",
       "title": "한미반도체, 삼성전기에 244억원 규모 'MSVP' 반도체 장비 공급"
     },
+    "source_fact:21578943cf4914c55380fbde": {
+      "first_seen_kst": "2026-10-07T06:41:04+09:00",
+      "lanes": {
+        "preopen": "2026-10-07T06:41:04+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/07/GE4DONLEGUZDIMTFMEYTEZBUMM/",
+      "source": "조선비즈",
+      "source_body_digest": "f929c09ea5114fd13281accfa89366405996e388628dcf67cabb5bd63849a13b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3ba9769757055d473ee636926f30d0418a3dea390f64f85c42c86c30928237b",
+      "source_fact_keys": [
+        "source_fact:v1:0c85f116b6006274bed5a355607743d92d076ca0a285a7c8f3424375bd75da7a",
+        "source_fact:v1:1f9dd35168abb0f12f7b77224fa8eda3bfcd805579c402801dc40add67597f7b",
+        "source_fact:v1:2544eddcf91b0d194efa2e91eeab8436b5cbadc6d33c15658d9eff637d6d399f",
+        "source_fact:v1:2d4543ac759626c24e707781b5d8e5c28c542d0390bd5d9e92c92092a01bc169",
+        "source_fact:v1:32deb5216f6bed6c94053cf0b592f3b97e0aec38fc66d9bd3d1a5be3d5afcd4f",
+        "source_fact:v1:6909ae3aad6d39d076b5a386bfbaacd31e321a39e71966a738fe22b74c313671",
+        "source_fact:v1:6dea3aec9383f7f91201d25b45e594ecdab5c6dd152844b16a457d84fc2b8df8",
+        "source_fact:v1:6ff828f522babcb6394d9c8e518aef6903d6af000c3fb880d065dabe44abd54d",
+        "source_fact:v1:77c072fd3ef1a80be8fb572727418f80ede8dcb5fa89a7c1dd1d25691ec6b00a",
+        "source_fact:v1:7a7e0864792b5d2e0443a037b4df8cdbf032d5330235370b8d2173d13d9e0db3",
+        "source_fact:v1:b2e12ec63df522b27749ab24de7a1f4bceb5ba2100bc43965604e52f4df1be8b",
+        "source_fact:v1:cf9765137527305a33a1cc228e32f12aae07350650816837592ea7810c932760",
+        "source_fact:v1:d25250ca08057aab0b8e3fc0ac08d5a7de7ae212e3d1318152d4b4d37653c7f4",
+        "source_fact:v1:d28923a400d331c43b425a487730fa35ace6c8b9602dd5a65b0f26f30f6d4395",
+        "source_fact:v1:da054bd137c0bf4c79abed2b20dc7b1a037e13bdce7ae712e40069bb9b696fb0",
+        "source_fact:v1:f9905f717946db22bf3357ed4a5e2bef2e08485cd1765155a682a53e9586f0fe"
+      ],
+      "source_published_kst": "2026-10-07T05:30+09:00",
+      "title": "“주가 일희일비할 것 없어, 반도체 공급난 지속은 명확한 사실”"
+    },
     "source_fact:215a161f355ed6d1ae32c0e9": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
       "lanes": {
@@ -87863,6 +88255,38 @@
       "source_published_kst": "2026-10-06T17:25+09:00",
       "title": "노조, 공정거래법 적용 제외?…교섭 부담 던다지만 他노조 일감 보호는 ‘과제’"
     },
+    "source_fact:23df7d7e5425cfd513d26f35": {
+      "first_seen_kst": "2026-10-07T06:41:04+09:00",
+      "lanes": {
+        "preopen": "2026-10-07T06:41:04+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/07/GE4DONLEGUZDIMTFMEYTEZBUMM/",
+      "source": "조선비즈",
+      "source_body_digest": "f929c09ea5114fd13281accfa89366405996e388628dcf67cabb5bd63849a13b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3ba9769757055d473ee636926f30d0418a3dea390f64f85c42c86c30928237b",
+      "source_fact_keys": [
+        "source_fact:v1:0c85f116b6006274bed5a355607743d92d076ca0a285a7c8f3424375bd75da7a",
+        "source_fact:v1:1f9dd35168abb0f12f7b77224fa8eda3bfcd805579c402801dc40add67597f7b",
+        "source_fact:v1:2544eddcf91b0d194efa2e91eeab8436b5cbadc6d33c15658d9eff637d6d399f",
+        "source_fact:v1:2d4543ac759626c24e707781b5d8e5c28c542d0390bd5d9e92c92092a01bc169",
+        "source_fact:v1:32deb5216f6bed6c94053cf0b592f3b97e0aec38fc66d9bd3d1a5be3d5afcd4f",
+        "source_fact:v1:6909ae3aad6d39d076b5a386bfbaacd31e321a39e71966a738fe22b74c313671",
+        "source_fact:v1:6dea3aec9383f7f91201d25b45e594ecdab5c6dd152844b16a457d84fc2b8df8",
+        "source_fact:v1:6ff828f522babcb6394d9c8e518aef6903d6af000c3fb880d065dabe44abd54d",
+        "source_fact:v1:77c072fd3ef1a80be8fb572727418f80ede8dcb5fa89a7c1dd1d25691ec6b00a",
+        "source_fact:v1:7a7e0864792b5d2e0443a037b4df8cdbf032d5330235370b8d2173d13d9e0db3",
+        "source_fact:v1:b2e12ec63df522b27749ab24de7a1f4bceb5ba2100bc43965604e52f4df1be8b",
+        "source_fact:v1:cf9765137527305a33a1cc228e32f12aae07350650816837592ea7810c932760",
+        "source_fact:v1:d25250ca08057aab0b8e3fc0ac08d5a7de7ae212e3d1318152d4b4d37653c7f4",
+        "source_fact:v1:d28923a400d331c43b425a487730fa35ace6c8b9602dd5a65b0f26f30f6d4395",
+        "source_fact:v1:da054bd137c0bf4c79abed2b20dc7b1a037e13bdce7ae712e40069bb9b696fb0",
+        "source_fact:v1:f9905f717946db22bf3357ed4a5e2bef2e08485cd1765155a682a53e9586f0fe"
+      ],
+      "source_published_kst": "2026-10-07T05:30+09:00",
+      "title": "“주가 일희일비할 것 없어, 반도체 공급난 지속은 명확한 사실”"
+    },
     "source_fact:23ecc331bd0a762ad6db6a81": {
       "first_seen_kst": "2026-10-07T03:30:59+09:00",
       "lanes": {
@@ -87975,6 +88399,38 @@
       ],
       "source_published_kst": "2026-10-06T21:38+09:00",
       "title": "이형일 \"대미투자 MOU '45영업일 후', 우리에 유리해 수정 요구 안 해\"(종합)"
+    },
+    "source_fact:246cbaa461ec21cfda90222b": {
+      "first_seen_kst": "2026-10-07T06:41:04+09:00",
+      "lanes": {
+        "preopen": "2026-10-07T06:41:04+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/07/GE4DONLEGUZDIMTFMEYTEZBUMM/",
+      "source": "조선비즈",
+      "source_body_digest": "f929c09ea5114fd13281accfa89366405996e388628dcf67cabb5bd63849a13b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3ba9769757055d473ee636926f30d0418a3dea390f64f85c42c86c30928237b",
+      "source_fact_keys": [
+        "source_fact:v1:0c85f116b6006274bed5a355607743d92d076ca0a285a7c8f3424375bd75da7a",
+        "source_fact:v1:1f9dd35168abb0f12f7b77224fa8eda3bfcd805579c402801dc40add67597f7b",
+        "source_fact:v1:2544eddcf91b0d194efa2e91eeab8436b5cbadc6d33c15658d9eff637d6d399f",
+        "source_fact:v1:2d4543ac759626c24e707781b5d8e5c28c542d0390bd5d9e92c92092a01bc169",
+        "source_fact:v1:32deb5216f6bed6c94053cf0b592f3b97e0aec38fc66d9bd3d1a5be3d5afcd4f",
+        "source_fact:v1:6909ae3aad6d39d076b5a386bfbaacd31e321a39e71966a738fe22b74c313671",
+        "source_fact:v1:6dea3aec9383f7f91201d25b45e594ecdab5c6dd152844b16a457d84fc2b8df8",
+        "source_fact:v1:6ff828f522babcb6394d9c8e518aef6903d6af000c3fb880d065dabe44abd54d",
+        "source_fact:v1:77c072fd3ef1a80be8fb572727418f80ede8dcb5fa89a7c1dd1d25691ec6b00a",
+        "source_fact:v1:7a7e0864792b5d2e0443a037b4df8cdbf032d5330235370b8d2173d13d9e0db3",
+        "source_fact:v1:b2e12ec63df522b27749ab24de7a1f4bceb5ba2100bc43965604e52f4df1be8b",
+        "source_fact:v1:cf9765137527305a33a1cc228e32f12aae07350650816837592ea7810c932760",
+        "source_fact:v1:d25250ca08057aab0b8e3fc0ac08d5a7de7ae212e3d1318152d4b4d37653c7f4",
+        "source_fact:v1:d28923a400d331c43b425a487730fa35ace6c8b9602dd5a65b0f26f30f6d4395",
+        "source_fact:v1:da054bd137c0bf4c79abed2b20dc7b1a037e13bdce7ae712e40069bb9b696fb0",
+        "source_fact:v1:f9905f717946db22bf3357ed4a5e2bef2e08485cd1765155a682a53e9586f0fe"
+      ],
+      "source_published_kst": "2026-10-07T05:30+09:00",
+      "title": "“주가 일희일비할 것 없어, 반도체 공급난 지속은 명확한 사실”"
     },
     "source_fact:247229ab2f0341bde4f1980b": {
       "first_seen_kst": "2026-10-07T03:30:59+09:00",
@@ -90364,6 +90820,38 @@
       "source_published_kst": "2026-10-06T15:42+09:00",
       "title": "디지털 자본시장 새판 4개월 앞으로…국감서 활성화 정책 검증"
     },
+    "source_fact:2e9c31119b1c1738d49e1f4e": {
+      "first_seen_kst": "2026-10-07T06:41:04+09:00",
+      "lanes": {
+        "preopen": "2026-10-07T06:41:04+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/07/GE4DONLEGUZDIMTFMEYTEZBUMM/",
+      "source": "조선비즈",
+      "source_body_digest": "f929c09ea5114fd13281accfa89366405996e388628dcf67cabb5bd63849a13b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3ba9769757055d473ee636926f30d0418a3dea390f64f85c42c86c30928237b",
+      "source_fact_keys": [
+        "source_fact:v1:0c85f116b6006274bed5a355607743d92d076ca0a285a7c8f3424375bd75da7a",
+        "source_fact:v1:1f9dd35168abb0f12f7b77224fa8eda3bfcd805579c402801dc40add67597f7b",
+        "source_fact:v1:2544eddcf91b0d194efa2e91eeab8436b5cbadc6d33c15658d9eff637d6d399f",
+        "source_fact:v1:2d4543ac759626c24e707781b5d8e5c28c542d0390bd5d9e92c92092a01bc169",
+        "source_fact:v1:32deb5216f6bed6c94053cf0b592f3b97e0aec38fc66d9bd3d1a5be3d5afcd4f",
+        "source_fact:v1:6909ae3aad6d39d076b5a386bfbaacd31e321a39e71966a738fe22b74c313671",
+        "source_fact:v1:6dea3aec9383f7f91201d25b45e594ecdab5c6dd152844b16a457d84fc2b8df8",
+        "source_fact:v1:6ff828f522babcb6394d9c8e518aef6903d6af000c3fb880d065dabe44abd54d",
+        "source_fact:v1:77c072fd3ef1a80be8fb572727418f80ede8dcb5fa89a7c1dd1d25691ec6b00a",
+        "source_fact:v1:7a7e0864792b5d2e0443a037b4df8cdbf032d5330235370b8d2173d13d9e0db3",
+        "source_fact:v1:b2e12ec63df522b27749ab24de7a1f4bceb5ba2100bc43965604e52f4df1be8b",
+        "source_fact:v1:cf9765137527305a33a1cc228e32f12aae07350650816837592ea7810c932760",
+        "source_fact:v1:d25250ca08057aab0b8e3fc0ac08d5a7de7ae212e3d1318152d4b4d37653c7f4",
+        "source_fact:v1:d28923a400d331c43b425a487730fa35ace6c8b9602dd5a65b0f26f30f6d4395",
+        "source_fact:v1:da054bd137c0bf4c79abed2b20dc7b1a037e13bdce7ae712e40069bb9b696fb0",
+        "source_fact:v1:f9905f717946db22bf3357ed4a5e2bef2e08485cd1765155a682a53e9586f0fe"
+      ],
+      "source_published_kst": "2026-10-07T05:30+09:00",
+      "title": "“주가 일희일비할 것 없어, 반도체 공급난 지속은 명확한 사실”"
+    },
     "source_fact:2e9d91efdc4882c556d94228": {
       "first_seen_kst": "2026-10-06T22:08:07+09:00",
       "lanes": {
@@ -90992,9 +91480,10 @@
     "source_fact:30f09a1f16bce401c79068c5": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
       "lanes": {
-        "live": "2026-10-06T17:47:23+09:00"
+        "live": "2026-10-06T17:47:23+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T17:47:23+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.etnews.com/20261006000363",
       "source": "전자신문",
       "source_body_digest": "999e3ecb97ce5d7a86e752cb4a2bcfd0efbadb9be36fc03a8220b4037b93d27d",
@@ -91825,9 +92314,10 @@
     "source_fact:340ebefd2e3f3e8ad727e2b6": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
-        "live": "2026-10-06T08:36:05+09:00"
+        "live": "2026-10-06T08:36:05+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T08:36:05+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.etoday.co.kr/news/view/2632557",
       "source": "이투데이",
       "source_body_digest": "8f83b7051b65ce3ef4835d27042760dc45b8dd72b72a533667b3412f04a751c0",
@@ -96330,6 +96820,38 @@
       "source_published_kst": "2026-10-06T15:08+09:00",
       "title": "[단독] 후티 반군 공격 속에서도···네이버 자율주행 로봇 ‘이상무’"
     },
+    "source_fact:47901691acdc9004d24c789d": {
+      "first_seen_kst": "2026-10-07T06:41:04+09:00",
+      "lanes": {
+        "preopen": "2026-10-07T06:41:04+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/07/GE4DONLEGUZDIMTFMEYTEZBUMM/",
+      "source": "조선비즈",
+      "source_body_digest": "f929c09ea5114fd13281accfa89366405996e388628dcf67cabb5bd63849a13b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3ba9769757055d473ee636926f30d0418a3dea390f64f85c42c86c30928237b",
+      "source_fact_keys": [
+        "source_fact:v1:0c85f116b6006274bed5a355607743d92d076ca0a285a7c8f3424375bd75da7a",
+        "source_fact:v1:1f9dd35168abb0f12f7b77224fa8eda3bfcd805579c402801dc40add67597f7b",
+        "source_fact:v1:2544eddcf91b0d194efa2e91eeab8436b5cbadc6d33c15658d9eff637d6d399f",
+        "source_fact:v1:2d4543ac759626c24e707781b5d8e5c28c542d0390bd5d9e92c92092a01bc169",
+        "source_fact:v1:32deb5216f6bed6c94053cf0b592f3b97e0aec38fc66d9bd3d1a5be3d5afcd4f",
+        "source_fact:v1:6909ae3aad6d39d076b5a386bfbaacd31e321a39e71966a738fe22b74c313671",
+        "source_fact:v1:6dea3aec9383f7f91201d25b45e594ecdab5c6dd152844b16a457d84fc2b8df8",
+        "source_fact:v1:6ff828f522babcb6394d9c8e518aef6903d6af000c3fb880d065dabe44abd54d",
+        "source_fact:v1:77c072fd3ef1a80be8fb572727418f80ede8dcb5fa89a7c1dd1d25691ec6b00a",
+        "source_fact:v1:7a7e0864792b5d2e0443a037b4df8cdbf032d5330235370b8d2173d13d9e0db3",
+        "source_fact:v1:b2e12ec63df522b27749ab24de7a1f4bceb5ba2100bc43965604e52f4df1be8b",
+        "source_fact:v1:cf9765137527305a33a1cc228e32f12aae07350650816837592ea7810c932760",
+        "source_fact:v1:d25250ca08057aab0b8e3fc0ac08d5a7de7ae212e3d1318152d4b4d37653c7f4",
+        "source_fact:v1:d28923a400d331c43b425a487730fa35ace6c8b9602dd5a65b0f26f30f6d4395",
+        "source_fact:v1:da054bd137c0bf4c79abed2b20dc7b1a037e13bdce7ae712e40069bb9b696fb0",
+        "source_fact:v1:f9905f717946db22bf3357ed4a5e2bef2e08485cd1765155a682a53e9586f0fe"
+      ],
+      "source_published_kst": "2026-10-07T05:30+09:00",
+      "title": "“주가 일희일비할 것 없어, 반도체 공급난 지속은 명확한 사실”"
+    },
     "source_fact:47a577cc80cfdfa78931cea6": {
       "first_seen_kst": "2026-10-06T07:30:15+09:00",
       "lanes": {
@@ -97806,9 +98328,10 @@
     "source_fact:4db64c98713100c386a36a7b": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
       "lanes": {
-        "live": "2026-10-06T17:47:23+09:00"
+        "live": "2026-10-06T17:47:23+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T17:47:23+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.etnews.com/20261006000363",
       "source": "전자신문",
       "source_body_digest": "999e3ecb97ce5d7a86e752cb4a2bcfd0efbadb9be36fc03a8220b4037b93d27d",
@@ -98715,9 +99238,10 @@
     "source_fact:514021c69528a8352731f29d": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
-        "live": "2026-10-06T08:36:05+09:00"
+        "live": "2026-10-06T08:36:05+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T08:36:05+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.etoday.co.kr/news/view/2632557",
       "source": "이투데이",
       "source_body_digest": "8f83b7051b65ce3ef4835d27042760dc45b8dd72b72a533667b3412f04a751c0",
@@ -101991,6 +102515,38 @@
       "source_published_kst": "2026-10-06T10:00+09:00",
       "title": "LG전자, 유럽 첫 상용 SDV에 통합 콕핏 솔루션 공급"
     },
+    "source_fact:5d0b90706a54954f92b54fa4": {
+      "first_seen_kst": "2026-10-07T06:41:04+09:00",
+      "lanes": {
+        "preopen": "2026-10-07T06:41:04+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/07/GE4DONLEGUZDIMTFMEYTEZBUMM/",
+      "source": "조선비즈",
+      "source_body_digest": "f929c09ea5114fd13281accfa89366405996e388628dcf67cabb5bd63849a13b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3ba9769757055d473ee636926f30d0418a3dea390f64f85c42c86c30928237b",
+      "source_fact_keys": [
+        "source_fact:v1:0c85f116b6006274bed5a355607743d92d076ca0a285a7c8f3424375bd75da7a",
+        "source_fact:v1:1f9dd35168abb0f12f7b77224fa8eda3bfcd805579c402801dc40add67597f7b",
+        "source_fact:v1:2544eddcf91b0d194efa2e91eeab8436b5cbadc6d33c15658d9eff637d6d399f",
+        "source_fact:v1:2d4543ac759626c24e707781b5d8e5c28c542d0390bd5d9e92c92092a01bc169",
+        "source_fact:v1:32deb5216f6bed6c94053cf0b592f3b97e0aec38fc66d9bd3d1a5be3d5afcd4f",
+        "source_fact:v1:6909ae3aad6d39d076b5a386bfbaacd31e321a39e71966a738fe22b74c313671",
+        "source_fact:v1:6dea3aec9383f7f91201d25b45e594ecdab5c6dd152844b16a457d84fc2b8df8",
+        "source_fact:v1:6ff828f522babcb6394d9c8e518aef6903d6af000c3fb880d065dabe44abd54d",
+        "source_fact:v1:77c072fd3ef1a80be8fb572727418f80ede8dcb5fa89a7c1dd1d25691ec6b00a",
+        "source_fact:v1:7a7e0864792b5d2e0443a037b4df8cdbf032d5330235370b8d2173d13d9e0db3",
+        "source_fact:v1:b2e12ec63df522b27749ab24de7a1f4bceb5ba2100bc43965604e52f4df1be8b",
+        "source_fact:v1:cf9765137527305a33a1cc228e32f12aae07350650816837592ea7810c932760",
+        "source_fact:v1:d25250ca08057aab0b8e3fc0ac08d5a7de7ae212e3d1318152d4b4d37653c7f4",
+        "source_fact:v1:d28923a400d331c43b425a487730fa35ace6c8b9602dd5a65b0f26f30f6d4395",
+        "source_fact:v1:da054bd137c0bf4c79abed2b20dc7b1a037e13bdce7ae712e40069bb9b696fb0",
+        "source_fact:v1:f9905f717946db22bf3357ed4a5e2bef2e08485cd1765155a682a53e9586f0fe"
+      ],
+      "source_published_kst": "2026-10-07T05:30+09:00",
+      "title": "“주가 일희일비할 것 없어, 반도체 공급난 지속은 명확한 사실”"
+    },
     "source_fact:5d10cf44ba6bd0b384801e19": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
       "lanes": {
@@ -102075,20 +102631,21 @@
     "source_fact:5d7b52d296e3aa101fbf651b": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
       "lanes": {
-        "live": "2026-10-06T09:42:55+09:00"
+        "live": "2026-10-06T09:42:55+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T09:42:55+09:00",
-      "link": "https://www.fnnews.com/news/202610060841477323",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://www.fnnews.com/news/202610061817365679",
       "source": "파이낸셜뉴스",
-      "source_body_digest": "c1714ef9430a16d5393b6231f4cf58fda1599ade8dc5cd5728273e1f3d23e6bc",
-      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
+      "source_body_digest": "820c568ac5dd3d84611c44ae43a6ba7d300452a9dbe002123ebb2ae1875131ec",
+      "source_event_identity": "",
       "source_fact_identity": "source_facts:v1:8450db29bf57b4254eb5f95bd3ea8303b8df1c374c5cd86b15fb08c2e037aace",
       "source_fact_keys": [
         "source_fact:v1:4f9e813378bd871a299f541380964be9f30f1861d1859199a5716505a7e8a7de",
         "source_fact:v1:7fbde7f6c2174aa01f1186226698faccb625aab33018f42146ae7cafba989612"
       ],
-      "source_published_kst": "2026-10-06T08:46+09:00",
-      "title": "한미반도체, 삼성 첫 거래·MSVP 수주 확대 '두 마리 토끼'"
+      "source_published_kst": "2026-10-06T18:17+09:00",
+      "title": "한미반도체, 삼성전기서 첫 수주… MSVP 매출 탄력"
     },
     "source_fact:5d98301f97b4c683b9c03d32": {
       "first_seen_kst": "2026-10-07T00:54:50+09:00",
@@ -102177,6 +102734,38 @@
       ],
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
+    },
+    "source_fact:5dfd8341bbd32b1aa483bc93": {
+      "first_seen_kst": "2026-10-07T06:41:04+09:00",
+      "lanes": {
+        "preopen": "2026-10-07T06:41:04+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/07/GE4DONLEGUZDIMTFMEYTEZBUMM/",
+      "source": "조선비즈",
+      "source_body_digest": "f929c09ea5114fd13281accfa89366405996e388628dcf67cabb5bd63849a13b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3ba9769757055d473ee636926f30d0418a3dea390f64f85c42c86c30928237b",
+      "source_fact_keys": [
+        "source_fact:v1:0c85f116b6006274bed5a355607743d92d076ca0a285a7c8f3424375bd75da7a",
+        "source_fact:v1:1f9dd35168abb0f12f7b77224fa8eda3bfcd805579c402801dc40add67597f7b",
+        "source_fact:v1:2544eddcf91b0d194efa2e91eeab8436b5cbadc6d33c15658d9eff637d6d399f",
+        "source_fact:v1:2d4543ac759626c24e707781b5d8e5c28c542d0390bd5d9e92c92092a01bc169",
+        "source_fact:v1:32deb5216f6bed6c94053cf0b592f3b97e0aec38fc66d9bd3d1a5be3d5afcd4f",
+        "source_fact:v1:6909ae3aad6d39d076b5a386bfbaacd31e321a39e71966a738fe22b74c313671",
+        "source_fact:v1:6dea3aec9383f7f91201d25b45e594ecdab5c6dd152844b16a457d84fc2b8df8",
+        "source_fact:v1:6ff828f522babcb6394d9c8e518aef6903d6af000c3fb880d065dabe44abd54d",
+        "source_fact:v1:77c072fd3ef1a80be8fb572727418f80ede8dcb5fa89a7c1dd1d25691ec6b00a",
+        "source_fact:v1:7a7e0864792b5d2e0443a037b4df8cdbf032d5330235370b8d2173d13d9e0db3",
+        "source_fact:v1:b2e12ec63df522b27749ab24de7a1f4bceb5ba2100bc43965604e52f4df1be8b",
+        "source_fact:v1:cf9765137527305a33a1cc228e32f12aae07350650816837592ea7810c932760",
+        "source_fact:v1:d25250ca08057aab0b8e3fc0ac08d5a7de7ae212e3d1318152d4b4d37653c7f4",
+        "source_fact:v1:d28923a400d331c43b425a487730fa35ace6c8b9602dd5a65b0f26f30f6d4395",
+        "source_fact:v1:da054bd137c0bf4c79abed2b20dc7b1a037e13bdce7ae712e40069bb9b696fb0",
+        "source_fact:v1:f9905f717946db22bf3357ed4a5e2bef2e08485cd1765155a682a53e9586f0fe"
+      ],
+      "source_published_kst": "2026-10-07T05:30+09:00",
+      "title": "“주가 일희일비할 것 없어, 반도체 공급난 지속은 명확한 사실”"
     },
     "source_fact:5e05e39bcec924fd822d3555": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
@@ -105741,13 +106330,14 @@
     "source_fact:6e1edea37decbeeafbeb2bcb": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
       "lanes": {
-        "live": "2026-10-06T09:53:40+09:00"
+        "live": "2026-10-06T09:53:40+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T09:53:40+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02712566645610296&mediaCodeNo=257",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02712566645610296",
       "source": "이데일리",
       "source_body_digest": "f6dd98df15abf7b5ef7ff15f454583517a6e832938e3c23482df21eef2c10c63",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
       "source_fact_identity": "source_facts:v1:cdb2d93ae6f07f8ad3f5aa7448f63b5579514b34afcb2ee5db546d8b56028ba5",
       "source_fact_keys": [
         "source_fact:v1:9634916c2d79989a90239c979da44b48d602fc362e82e8a3687e605b70df9e15"
@@ -105839,6 +106429,38 @@
       ],
       "source_published_kst": "2026-10-06T10:33+09:00",
       "title": "브라질 대선 '우파' 보우소나루 약진에…증시 단숨에 사상 최고치"
+    },
+    "source_fact:6eb1d113b0909c09eb7624d1": {
+      "first_seen_kst": "2026-10-07T06:41:04+09:00",
+      "lanes": {
+        "preopen": "2026-10-07T06:41:04+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/07/GE4DONLEGUZDIMTFMEYTEZBUMM/",
+      "source": "조선비즈",
+      "source_body_digest": "f929c09ea5114fd13281accfa89366405996e388628dcf67cabb5bd63849a13b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3ba9769757055d473ee636926f30d0418a3dea390f64f85c42c86c30928237b",
+      "source_fact_keys": [
+        "source_fact:v1:0c85f116b6006274bed5a355607743d92d076ca0a285a7c8f3424375bd75da7a",
+        "source_fact:v1:1f9dd35168abb0f12f7b77224fa8eda3bfcd805579c402801dc40add67597f7b",
+        "source_fact:v1:2544eddcf91b0d194efa2e91eeab8436b5cbadc6d33c15658d9eff637d6d399f",
+        "source_fact:v1:2d4543ac759626c24e707781b5d8e5c28c542d0390bd5d9e92c92092a01bc169",
+        "source_fact:v1:32deb5216f6bed6c94053cf0b592f3b97e0aec38fc66d9bd3d1a5be3d5afcd4f",
+        "source_fact:v1:6909ae3aad6d39d076b5a386bfbaacd31e321a39e71966a738fe22b74c313671",
+        "source_fact:v1:6dea3aec9383f7f91201d25b45e594ecdab5c6dd152844b16a457d84fc2b8df8",
+        "source_fact:v1:6ff828f522babcb6394d9c8e518aef6903d6af000c3fb880d065dabe44abd54d",
+        "source_fact:v1:77c072fd3ef1a80be8fb572727418f80ede8dcb5fa89a7c1dd1d25691ec6b00a",
+        "source_fact:v1:7a7e0864792b5d2e0443a037b4df8cdbf032d5330235370b8d2173d13d9e0db3",
+        "source_fact:v1:b2e12ec63df522b27749ab24de7a1f4bceb5ba2100bc43965604e52f4df1be8b",
+        "source_fact:v1:cf9765137527305a33a1cc228e32f12aae07350650816837592ea7810c932760",
+        "source_fact:v1:d25250ca08057aab0b8e3fc0ac08d5a7de7ae212e3d1318152d4b4d37653c7f4",
+        "source_fact:v1:d28923a400d331c43b425a487730fa35ace6c8b9602dd5a65b0f26f30f6d4395",
+        "source_fact:v1:da054bd137c0bf4c79abed2b20dc7b1a037e13bdce7ae712e40069bb9b696fb0",
+        "source_fact:v1:f9905f717946db22bf3357ed4a5e2bef2e08485cd1765155a682a53e9586f0fe"
+      ],
+      "source_published_kst": "2026-10-07T05:30+09:00",
+      "title": "“주가 일희일비할 것 없어, 반도체 공급난 지속은 명확한 사실”"
     },
     "source_fact:6ec20602775073291199002e": {
       "first_seen_kst": "2026-10-06T10:41:31+09:00",
@@ -108251,9 +108873,10 @@
     "source_fact:782de8993e298572c4e17907": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
-        "live": "2026-10-06T08:36:05+09:00"
+        "live": "2026-10-06T08:36:05+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T08:36:05+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.etoday.co.kr/news/view/2632557",
       "source": "이투데이",
       "source_body_digest": "8f83b7051b65ce3ef4835d27042760dc45b8dd72b72a533667b3412f04a751c0",
@@ -109417,9 +110040,10 @@
     "source_fact:7cf95f844fe47a82b1032dbc": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
-        "live": "2026-10-06T08:36:05+09:00"
+        "live": "2026-10-06T08:36:05+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T08:36:05+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.etoday.co.kr/news/view/2632557",
       "source": "이투데이",
       "source_body_digest": "8f83b7051b65ce3ef4835d27042760dc45b8dd72b72a533667b3412f04a751c0",
@@ -111468,9 +112092,10 @@
     "source_fact:8529d02f8cc04e2509419eb2": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
-        "live": "2026-10-06T08:36:05+09:00"
+        "live": "2026-10-06T08:36:05+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T08:36:05+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.etoday.co.kr/news/view/2632557",
       "source": "이투데이",
       "source_body_digest": "8f83b7051b65ce3ef4835d27042760dc45b8dd72b72a533667b3412f04a751c0",
@@ -113672,9 +114297,10 @@
     "source_fact:8ea96ef54176a8a47ace6d9f": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
       "lanes": {
-        "live": "2026-10-06T17:47:23+09:00"
+        "live": "2026-10-06T17:47:23+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T17:47:23+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.etnews.com/20261006000363",
       "source": "전자신문",
       "source_body_digest": "999e3ecb97ce5d7a86e752cb4a2bcfd0efbadb9be36fc03a8220b4037b93d27d",
@@ -113842,9 +114468,10 @@
     "source_fact:8efe15698e9f8d29cc57e4ff": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
       "lanes": {
-        "live": "2026-10-06T17:47:23+09:00"
+        "live": "2026-10-06T17:47:23+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T17:47:23+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.etnews.com/20261006000363",
       "source": "전자신문",
       "source_body_digest": "999e3ecb97ce5d7a86e752cb4a2bcfd0efbadb9be36fc03a8220b4037b93d27d",
@@ -114138,9 +114765,10 @@
     "source_fact:9031972c00832c7a0af0b87c": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
       "lanes": {
-        "live": "2026-10-06T17:47:23+09:00"
+        "live": "2026-10-06T17:47:23+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T17:47:23+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.etnews.com/20261006000363",
       "source": "전자신문",
       "source_body_digest": "999e3ecb97ce5d7a86e752cb4a2bcfd0efbadb9be36fc03a8220b4037b93d27d",
@@ -115210,12 +115838,45 @@
       "source_published_kst": "2026-10-05T19:04+09:00",
       "title": "니우 테크놀러지스, 3분기 판매 54만대..전년비 15% 증가·해외 3배 확대"
     },
+    "source_fact:953c6d935a848c047dbfadaa": {
+      "first_seen_kst": "2026-10-07T06:41:04+09:00",
+      "lanes": {
+        "preopen": "2026-10-07T06:41:04+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/07/GE4DONLEGUZDIMTFMEYTEZBUMM/",
+      "source": "조선비즈",
+      "source_body_digest": "f929c09ea5114fd13281accfa89366405996e388628dcf67cabb5bd63849a13b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3ba9769757055d473ee636926f30d0418a3dea390f64f85c42c86c30928237b",
+      "source_fact_keys": [
+        "source_fact:v1:0c85f116b6006274bed5a355607743d92d076ca0a285a7c8f3424375bd75da7a",
+        "source_fact:v1:1f9dd35168abb0f12f7b77224fa8eda3bfcd805579c402801dc40add67597f7b",
+        "source_fact:v1:2544eddcf91b0d194efa2e91eeab8436b5cbadc6d33c15658d9eff637d6d399f",
+        "source_fact:v1:2d4543ac759626c24e707781b5d8e5c28c542d0390bd5d9e92c92092a01bc169",
+        "source_fact:v1:32deb5216f6bed6c94053cf0b592f3b97e0aec38fc66d9bd3d1a5be3d5afcd4f",
+        "source_fact:v1:6909ae3aad6d39d076b5a386bfbaacd31e321a39e71966a738fe22b74c313671",
+        "source_fact:v1:6dea3aec9383f7f91201d25b45e594ecdab5c6dd152844b16a457d84fc2b8df8",
+        "source_fact:v1:6ff828f522babcb6394d9c8e518aef6903d6af000c3fb880d065dabe44abd54d",
+        "source_fact:v1:77c072fd3ef1a80be8fb572727418f80ede8dcb5fa89a7c1dd1d25691ec6b00a",
+        "source_fact:v1:7a7e0864792b5d2e0443a037b4df8cdbf032d5330235370b8d2173d13d9e0db3",
+        "source_fact:v1:b2e12ec63df522b27749ab24de7a1f4bceb5ba2100bc43965604e52f4df1be8b",
+        "source_fact:v1:cf9765137527305a33a1cc228e32f12aae07350650816837592ea7810c932760",
+        "source_fact:v1:d25250ca08057aab0b8e3fc0ac08d5a7de7ae212e3d1318152d4b4d37653c7f4",
+        "source_fact:v1:d28923a400d331c43b425a487730fa35ace6c8b9602dd5a65b0f26f30f6d4395",
+        "source_fact:v1:da054bd137c0bf4c79abed2b20dc7b1a037e13bdce7ae712e40069bb9b696fb0",
+        "source_fact:v1:f9905f717946db22bf3357ed4a5e2bef2e08485cd1765155a682a53e9586f0fe"
+      ],
+      "source_published_kst": "2026-10-07T05:30+09:00",
+      "title": "“주가 일희일비할 것 없어, 반도체 공급난 지속은 명확한 사실”"
+    },
     "source_fact:9542b5ce249dd7bb0528c379": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
-        "live": "2026-10-06T08:36:05+09:00"
+        "live": "2026-10-06T08:36:05+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T08:36:05+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.etoday.co.kr/news/view/2632557",
       "source": "이투데이",
       "source_body_digest": "8f83b7051b65ce3ef4835d27042760dc45b8dd72b72a533667b3412f04a751c0",
@@ -116872,6 +117533,38 @@
       "source_published_kst": "2026-10-06T15:22+09:00",
       "title": "“中 AI 굴기 또 온다”…문샷, 기업가치 68조원 찍고 홍콩 상장 추진"
     },
+    "source_fact:9b5561469e60b87e8a739a1e": {
+      "first_seen_kst": "2026-10-07T06:41:04+09:00",
+      "lanes": {
+        "preopen": "2026-10-07T06:41:04+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/07/GE4DONLEGUZDIMTFMEYTEZBUMM/",
+      "source": "조선비즈",
+      "source_body_digest": "f929c09ea5114fd13281accfa89366405996e388628dcf67cabb5bd63849a13b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3ba9769757055d473ee636926f30d0418a3dea390f64f85c42c86c30928237b",
+      "source_fact_keys": [
+        "source_fact:v1:0c85f116b6006274bed5a355607743d92d076ca0a285a7c8f3424375bd75da7a",
+        "source_fact:v1:1f9dd35168abb0f12f7b77224fa8eda3bfcd805579c402801dc40add67597f7b",
+        "source_fact:v1:2544eddcf91b0d194efa2e91eeab8436b5cbadc6d33c15658d9eff637d6d399f",
+        "source_fact:v1:2d4543ac759626c24e707781b5d8e5c28c542d0390bd5d9e92c92092a01bc169",
+        "source_fact:v1:32deb5216f6bed6c94053cf0b592f3b97e0aec38fc66d9bd3d1a5be3d5afcd4f",
+        "source_fact:v1:6909ae3aad6d39d076b5a386bfbaacd31e321a39e71966a738fe22b74c313671",
+        "source_fact:v1:6dea3aec9383f7f91201d25b45e594ecdab5c6dd152844b16a457d84fc2b8df8",
+        "source_fact:v1:6ff828f522babcb6394d9c8e518aef6903d6af000c3fb880d065dabe44abd54d",
+        "source_fact:v1:77c072fd3ef1a80be8fb572727418f80ede8dcb5fa89a7c1dd1d25691ec6b00a",
+        "source_fact:v1:7a7e0864792b5d2e0443a037b4df8cdbf032d5330235370b8d2173d13d9e0db3",
+        "source_fact:v1:b2e12ec63df522b27749ab24de7a1f4bceb5ba2100bc43965604e52f4df1be8b",
+        "source_fact:v1:cf9765137527305a33a1cc228e32f12aae07350650816837592ea7810c932760",
+        "source_fact:v1:d25250ca08057aab0b8e3fc0ac08d5a7de7ae212e3d1318152d4b4d37653c7f4",
+        "source_fact:v1:d28923a400d331c43b425a487730fa35ace6c8b9602dd5a65b0f26f30f6d4395",
+        "source_fact:v1:da054bd137c0bf4c79abed2b20dc7b1a037e13bdce7ae712e40069bb9b696fb0",
+        "source_fact:v1:f9905f717946db22bf3357ed4a5e2bef2e08485cd1765155a682a53e9586f0fe"
+      ],
+      "source_published_kst": "2026-10-07T05:30+09:00",
+      "title": "“주가 일희일비할 것 없어, 반도체 공급난 지속은 명확한 사실”"
+    },
     "source_fact:9b5aa5c452037638200fd850": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
       "lanes": {
@@ -117563,9 +118256,10 @@
     "source_fact:9e7d072c530f6f79b9cf91cf": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
-        "live": "2026-10-06T08:36:05+09:00"
+        "live": "2026-10-06T08:36:05+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T08:36:05+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.etoday.co.kr/news/view/2632557",
       "source": "이투데이",
       "source_body_digest": "8f83b7051b65ce3ef4835d27042760dc45b8dd72b72a533667b3412f04a751c0",
@@ -118028,9 +118722,10 @@
     "source_fact:a08b9e1362e8794a287f27f4": {
       "first_seen_kst": "2026-10-06T19:33:48+09:00",
       "lanes": {
-        "live": "2026-10-06T19:33:48+09:00"
+        "live": "2026-10-06T19:33:48+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.newsis.com/view/NISX20261006_0003816043",
       "source": "뉴시스",
       "source_body_digest": "0b52a071071e8f3e6f57c7df7e3d42d5dea13b198fdc76b124c1f1661848b01f",
@@ -119732,20 +120427,21 @@
     "source_fact:a847cd66bf4f63f8b6dc1dde": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
       "lanes": {
-        "live": "2026-10-06T09:42:55+09:00"
+        "live": "2026-10-06T09:42:55+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T09:42:55+09:00",
-      "link": "https://www.fnnews.com/news/202610060841477323",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://www.fnnews.com/news/202610061817365679",
       "source": "파이낸셜뉴스",
-      "source_body_digest": "c1714ef9430a16d5393b6231f4cf58fda1599ade8dc5cd5728273e1f3d23e6bc",
-      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
+      "source_body_digest": "820c568ac5dd3d84611c44ae43a6ba7d300452a9dbe002123ebb2ae1875131ec",
+      "source_event_identity": "",
       "source_fact_identity": "source_facts:v1:8450db29bf57b4254eb5f95bd3ea8303b8df1c374c5cd86b15fb08c2e037aace",
       "source_fact_keys": [
         "source_fact:v1:4f9e813378bd871a299f541380964be9f30f1861d1859199a5716505a7e8a7de",
         "source_fact:v1:7fbde7f6c2174aa01f1186226698faccb625aab33018f42146ae7cafba989612"
       ],
-      "source_published_kst": "2026-10-06T08:46+09:00",
-      "title": "한미반도체, 삼성 첫 거래·MSVP 수주 확대 '두 마리 토끼'"
+      "source_published_kst": "2026-10-06T18:17+09:00",
+      "title": "한미반도체, 삼성전기서 첫 수주… MSVP 매출 탄력"
     },
     "source_fact:a89e859fdbfade7a0eea29db": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
@@ -122051,9 +122747,10 @@
     "source_fact:b220e3ecf943f7fa991fd78c": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
-        "live": "2026-10-06T08:36:05+09:00"
+        "live": "2026-10-06T08:36:05+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T08:36:05+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.etoday.co.kr/news/view/2632557",
       "source": "이투데이",
       "source_body_digest": "8f83b7051b65ce3ef4835d27042760dc45b8dd72b72a533667b3412f04a751c0",
@@ -122884,9 +123581,10 @@
     "source_fact:b511c256e9daa39b554c88b0": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
       "lanes": {
-        "live": "2026-10-06T17:47:23+09:00"
+        "live": "2026-10-06T17:47:23+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T17:47:23+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.etnews.com/20261006000363",
       "source": "전자신문",
       "source_body_digest": "999e3ecb97ce5d7a86e752cb4a2bcfd0efbadb9be36fc03a8220b4037b93d27d",
@@ -125133,9 +125831,10 @@
     "source_fact:bee9c8ea4bfd25db7b1891f3": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
-        "live": "2026-10-06T08:36:05+09:00"
+        "live": "2026-10-06T08:36:05+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T08:36:05+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.etoday.co.kr/news/view/2632557",
       "source": "이투데이",
       "source_body_digest": "8f83b7051b65ce3ef4835d27042760dc45b8dd72b72a533667b3412f04a751c0",
@@ -132105,9 +132804,10 @@
     "source_fact:da872bea5ad7b82f15dce153": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
-        "live": "2026-10-06T08:36:05+09:00"
+        "live": "2026-10-06T08:36:05+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T08:36:05+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.etoday.co.kr/news/view/2632557",
       "source": "이투데이",
       "source_body_digest": "8f83b7051b65ce3ef4835d27042760dc45b8dd72b72a533667b3412f04a751c0",
@@ -136408,9 +137108,10 @@
     "source_fact:eb5dcee94958aa669709d351": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
-        "live": "2026-10-06T08:36:05+09:00"
+        "live": "2026-10-06T08:36:05+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T08:36:05+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.etoday.co.kr/news/view/2632557",
       "source": "이투데이",
       "source_body_digest": "8f83b7051b65ce3ef4835d27042760dc45b8dd72b72a533667b3412f04a751c0",
@@ -137035,6 +137736,38 @@
       "source_published_kst": "2026-10-06T11:00+09:00",
       "title": "규제합리화추진단 \"디스플레이 규제 개선…수입 간소화·AI 보안가이드 마련\""
     },
+    "source_fact:ed64288b03f71df660c73017": {
+      "first_seen_kst": "2026-10-07T06:41:04+09:00",
+      "lanes": {
+        "preopen": "2026-10-07T06:41:04+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/07/GE4DONLEGUZDIMTFMEYTEZBUMM/",
+      "source": "조선비즈",
+      "source_body_digest": "f929c09ea5114fd13281accfa89366405996e388628dcf67cabb5bd63849a13b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3ba9769757055d473ee636926f30d0418a3dea390f64f85c42c86c30928237b",
+      "source_fact_keys": [
+        "source_fact:v1:0c85f116b6006274bed5a355607743d92d076ca0a285a7c8f3424375bd75da7a",
+        "source_fact:v1:1f9dd35168abb0f12f7b77224fa8eda3bfcd805579c402801dc40add67597f7b",
+        "source_fact:v1:2544eddcf91b0d194efa2e91eeab8436b5cbadc6d33c15658d9eff637d6d399f",
+        "source_fact:v1:2d4543ac759626c24e707781b5d8e5c28c542d0390bd5d9e92c92092a01bc169",
+        "source_fact:v1:32deb5216f6bed6c94053cf0b592f3b97e0aec38fc66d9bd3d1a5be3d5afcd4f",
+        "source_fact:v1:6909ae3aad6d39d076b5a386bfbaacd31e321a39e71966a738fe22b74c313671",
+        "source_fact:v1:6dea3aec9383f7f91201d25b45e594ecdab5c6dd152844b16a457d84fc2b8df8",
+        "source_fact:v1:6ff828f522babcb6394d9c8e518aef6903d6af000c3fb880d065dabe44abd54d",
+        "source_fact:v1:77c072fd3ef1a80be8fb572727418f80ede8dcb5fa89a7c1dd1d25691ec6b00a",
+        "source_fact:v1:7a7e0864792b5d2e0443a037b4df8cdbf032d5330235370b8d2173d13d9e0db3",
+        "source_fact:v1:b2e12ec63df522b27749ab24de7a1f4bceb5ba2100bc43965604e52f4df1be8b",
+        "source_fact:v1:cf9765137527305a33a1cc228e32f12aae07350650816837592ea7810c932760",
+        "source_fact:v1:d25250ca08057aab0b8e3fc0ac08d5a7de7ae212e3d1318152d4b4d37653c7f4",
+        "source_fact:v1:d28923a400d331c43b425a487730fa35ace6c8b9602dd5a65b0f26f30f6d4395",
+        "source_fact:v1:da054bd137c0bf4c79abed2b20dc7b1a037e13bdce7ae712e40069bb9b696fb0",
+        "source_fact:v1:f9905f717946db22bf3357ed4a5e2bef2e08485cd1765155a682a53e9586f0fe"
+      ],
+      "source_published_kst": "2026-10-07T05:30+09:00",
+      "title": "“주가 일희일비할 것 없어, 반도체 공급난 지속은 명확한 사실”"
+    },
     "source_fact:ed6c91fce142c1425385d5a6": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
       "lanes": {
@@ -137439,9 +138172,10 @@
     "source_fact:eee8413763498efcf9af7465": {
       "first_seen_kst": "2026-10-06T19:33:48+09:00",
       "lanes": {
-        "live": "2026-10-06T19:33:48+09:00"
+        "live": "2026-10-06T19:33:48+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.newsis.com/view/NISX20261006_0003816043",
       "source": "뉴시스",
       "source_body_digest": "0b52a071071e8f3e6f57c7df7e3d42d5dea13b198fdc76b124c1f1661848b01f",
@@ -138904,9 +139638,10 @@
     "source_fact:f5ab35bb7dda00d53cbc3e54": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
-        "live": "2026-10-06T08:36:05+09:00"
+        "live": "2026-10-06T08:36:05+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T08:36:05+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.etoday.co.kr/news/view/2632557",
       "source": "이투데이",
       "source_body_digest": "8f83b7051b65ce3ef4835d27042760dc45b8dd72b72a533667b3412f04a751c0",
@@ -139373,6 +140108,38 @@
       "source_published_kst": "2026-10-06T18:02+09:00",
       "title": "포스코퓨처엠, 삼성SDI에 양극재 6조 공급"
     },
+    "source_fact:f83a5d22097dd7a11a3a4c6d": {
+      "first_seen_kst": "2026-10-07T06:41:04+09:00",
+      "lanes": {
+        "preopen": "2026-10-07T06:41:04+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/07/GE4DONLEGUZDIMTFMEYTEZBUMM/",
+      "source": "조선비즈",
+      "source_body_digest": "f929c09ea5114fd13281accfa89366405996e388628dcf67cabb5bd63849a13b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3ba9769757055d473ee636926f30d0418a3dea390f64f85c42c86c30928237b",
+      "source_fact_keys": [
+        "source_fact:v1:0c85f116b6006274bed5a355607743d92d076ca0a285a7c8f3424375bd75da7a",
+        "source_fact:v1:1f9dd35168abb0f12f7b77224fa8eda3bfcd805579c402801dc40add67597f7b",
+        "source_fact:v1:2544eddcf91b0d194efa2e91eeab8436b5cbadc6d33c15658d9eff637d6d399f",
+        "source_fact:v1:2d4543ac759626c24e707781b5d8e5c28c542d0390bd5d9e92c92092a01bc169",
+        "source_fact:v1:32deb5216f6bed6c94053cf0b592f3b97e0aec38fc66d9bd3d1a5be3d5afcd4f",
+        "source_fact:v1:6909ae3aad6d39d076b5a386bfbaacd31e321a39e71966a738fe22b74c313671",
+        "source_fact:v1:6dea3aec9383f7f91201d25b45e594ecdab5c6dd152844b16a457d84fc2b8df8",
+        "source_fact:v1:6ff828f522babcb6394d9c8e518aef6903d6af000c3fb880d065dabe44abd54d",
+        "source_fact:v1:77c072fd3ef1a80be8fb572727418f80ede8dcb5fa89a7c1dd1d25691ec6b00a",
+        "source_fact:v1:7a7e0864792b5d2e0443a037b4df8cdbf032d5330235370b8d2173d13d9e0db3",
+        "source_fact:v1:b2e12ec63df522b27749ab24de7a1f4bceb5ba2100bc43965604e52f4df1be8b",
+        "source_fact:v1:cf9765137527305a33a1cc228e32f12aae07350650816837592ea7810c932760",
+        "source_fact:v1:d25250ca08057aab0b8e3fc0ac08d5a7de7ae212e3d1318152d4b4d37653c7f4",
+        "source_fact:v1:d28923a400d331c43b425a487730fa35ace6c8b9602dd5a65b0f26f30f6d4395",
+        "source_fact:v1:da054bd137c0bf4c79abed2b20dc7b1a037e13bdce7ae712e40069bb9b696fb0",
+        "source_fact:v1:f9905f717946db22bf3357ed4a5e2bef2e08485cd1765155a682a53e9586f0fe"
+      ],
+      "source_published_kst": "2026-10-07T05:30+09:00",
+      "title": "“주가 일희일비할 것 없어, 반도체 공급난 지속은 명확한 사실”"
+    },
     "source_fact:f85254f9dcf08a6a2b2e44b9": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -139834,9 +140601,10 @@
     "source_fact:fae50f7dd324a419496b2527": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
       "lanes": {
-        "live": "2026-10-06T17:47:23+09:00"
+        "live": "2026-10-06T17:47:23+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T17:47:23+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.etnews.com/20261006000363",
       "source": "전자신문",
       "source_body_digest": "999e3ecb97ce5d7a86e752cb4a2bcfd0efbadb9be36fc03a8220b4037b93d27d",
@@ -139933,9 +140701,10 @@
     "source_fact:fb0b680bf6fbb48a04badce8": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
-        "live": "2026-10-06T08:36:05+09:00"
+        "live": "2026-10-06T08:36:05+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T08:36:05+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.etoday.co.kr/news/view/2632557",
       "source": "이투데이",
       "source_body_digest": "8f83b7051b65ce3ef4835d27042760dc45b8dd72b72a533667b3412f04a751c0",
@@ -142051,6 +142820,38 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T08:01+09:00",
       "title": "워시는 침묵…美연준 인사들 발언에 시장 움직인 이유 | 연합뉴스"
+    },
+    "title:0556fb15c177911ae6a9a27e": {
+      "first_seen_kst": "2026-10-07T06:41:04+09:00",
+      "lanes": {
+        "preopen": "2026-10-07T06:41:04+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/07/GE4DONLEGUZDIMTFMEYTEZBUMM/",
+      "source": "조선비즈",
+      "source_body_digest": "f929c09ea5114fd13281accfa89366405996e388628dcf67cabb5bd63849a13b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3ba9769757055d473ee636926f30d0418a3dea390f64f85c42c86c30928237b",
+      "source_fact_keys": [
+        "source_fact:v1:0c85f116b6006274bed5a355607743d92d076ca0a285a7c8f3424375bd75da7a",
+        "source_fact:v1:1f9dd35168abb0f12f7b77224fa8eda3bfcd805579c402801dc40add67597f7b",
+        "source_fact:v1:2544eddcf91b0d194efa2e91eeab8436b5cbadc6d33c15658d9eff637d6d399f",
+        "source_fact:v1:2d4543ac759626c24e707781b5d8e5c28c542d0390bd5d9e92c92092a01bc169",
+        "source_fact:v1:32deb5216f6bed6c94053cf0b592f3b97e0aec38fc66d9bd3d1a5be3d5afcd4f",
+        "source_fact:v1:6909ae3aad6d39d076b5a386bfbaacd31e321a39e71966a738fe22b74c313671",
+        "source_fact:v1:6dea3aec9383f7f91201d25b45e594ecdab5c6dd152844b16a457d84fc2b8df8",
+        "source_fact:v1:6ff828f522babcb6394d9c8e518aef6903d6af000c3fb880d065dabe44abd54d",
+        "source_fact:v1:77c072fd3ef1a80be8fb572727418f80ede8dcb5fa89a7c1dd1d25691ec6b00a",
+        "source_fact:v1:7a7e0864792b5d2e0443a037b4df8cdbf032d5330235370b8d2173d13d9e0db3",
+        "source_fact:v1:b2e12ec63df522b27749ab24de7a1f4bceb5ba2100bc43965604e52f4df1be8b",
+        "source_fact:v1:cf9765137527305a33a1cc228e32f12aae07350650816837592ea7810c932760",
+        "source_fact:v1:d25250ca08057aab0b8e3fc0ac08d5a7de7ae212e3d1318152d4b4d37653c7f4",
+        "source_fact:v1:d28923a400d331c43b425a487730fa35ace6c8b9602dd5a65b0f26f30f6d4395",
+        "source_fact:v1:da054bd137c0bf4c79abed2b20dc7b1a037e13bdce7ae712e40069bb9b696fb0",
+        "source_fact:v1:f9905f717946db22bf3357ed4a5e2bef2e08485cd1765155a682a53e9586f0fe"
+      ],
+      "source_published_kst": "2026-10-07T05:30+09:00",
+      "title": "“주가 일희일비할 것 없어, 반도체 공급난 지속은 명확한 사실”"
     },
     "title:056280ed51443cd268fb6a36": {
       "first_seen_kst": "2026-10-04T12:12:39+09:00",
@@ -149104,9 +149905,10 @@
     "title:41dcca7f323fdc526dcb9021": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
-        "live": "2026-10-06T08:36:05+09:00"
+        "live": "2026-10-06T08:36:05+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T08:36:05+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.etoday.co.kr/news/view/2632557",
       "source": "이투데이",
       "source_body_digest": "8f83b7051b65ce3ef4835d27042760dc45b8dd72b72a533667b3412f04a751c0",
@@ -151002,6 +151804,21 @@
       "source_published_kst": "2026-10-06T19:04+09:00",
       "title": "이형일 “美 원전 선급금, 국내 절차·상업성 충족돼야 송금”"
     },
+    "title:527c90186b43603cff2b8ff8": {
+      "first_seen_kst": "2026-10-07T06:41:04+09:00",
+      "lanes": {
+        "preopen": "2026-10-07T06:41:04+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://www.mk.co.kr/news/society/12169572",
+      "source": "매일경제",
+      "source_body_digest": "40fb21ffa5bafdf2a850c28ad5c1e4603a79bdd4cc47960157459a53ad24027b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T17:45+09:00",
+      "title": "한미반도체, 삼성서 첫 대형계약 따냈다"
+    },
     "title:52974b271e12c1f5467bb8ee": {
       "first_seen_kst": "2026-10-03T01:03:39+09:00",
       "lanes": {
@@ -151360,9 +152177,10 @@
     "title:55cb21c0a429f184c051b461": {
       "first_seen_kst": "2026-10-06T19:33:48+09:00",
       "lanes": {
-        "live": "2026-10-06T19:33:48+09:00"
+        "live": "2026-10-06T19:33:48+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.newsis.com/view/NISX20261006_0003816043",
       "source": "뉴시스",
       "source_body_digest": "0b52a071071e8f3e6f57c7df7e3d42d5dea13b198fdc76b124c1f1661848b01f",
@@ -152522,6 +153340,24 @@
       "link": "https://www.yna.co.kr/view/AKR20260923167100008?input=1215m",
       "source": "연합뉴스",
       "title": "'국장'은 쉬어도 '미장'은 열린다…추석 전후 챙겨볼 ETF는 | 연합뉴스"
+    },
+    "title:6061792702cc83ded726fb45": {
+      "first_seen_kst": "2026-10-07T06:41:04+09:00",
+      "lanes": {
+        "preopen": "2026-10-07T06:41:04+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://www.fnnews.com/news/202610061817365679",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "820c568ac5dd3d84611c44ae43a6ba7d300452a9dbe002123ebb2ae1875131ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8450db29bf57b4254eb5f95bd3ea8303b8df1c374c5cd86b15fb08c2e037aace",
+      "source_fact_keys": [
+        "source_fact:v1:4f9e813378bd871a299f541380964be9f30f1861d1859199a5716505a7e8a7de",
+        "source_fact:v1:7fbde7f6c2174aa01f1186226698faccb625aab33018f42146ae7cafba989612"
+      ],
+      "source_published_kst": "2026-10-06T18:17+09:00",
+      "title": "한미반도체, 삼성전기서 첫 수주… MSVP 매출 탄력"
     },
     "title:6065c296b7b781de0623958c": {
       "first_seen_kst": "2026-10-06T12:10:48+09:00",
@@ -166249,9 +167085,10 @@
     "title:d771b55b31250caf69ee6d2b": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
       "lanes": {
-        "live": "2026-10-06T17:47:23+09:00"
+        "live": "2026-10-06T17:47:23+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T17:47:23+09:00",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
       "link": "https://www.etnews.com/20261006000363",
       "source": "전자신문",
       "source_body_digest": "999e3ecb97ce5d7a86e752cb4a2bcfd0efbadb9be36fc03a8220b4037b93d27d",
@@ -168203,13 +169040,14 @@
     "title:e7d2bbef90d34fc9a2ac0112": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
       "lanes": {
-        "live": "2026-10-06T09:53:40+09:00"
+        "live": "2026-10-06T09:53:40+09:00",
+        "preopen": "2026-10-07T06:41:04+09:00"
       },
-      "last_seen_kst": "2026-10-06T09:53:40+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02712566645610296&mediaCodeNo=257",
+      "last_seen_kst": "2026-10-07T06:41:04+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02712566645610296",
       "source": "이데일리",
       "source_body_digest": "f6dd98df15abf7b5ef7ff15f454583517a6e832938e3c23482df21eef2c10c63",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
       "source_fact_identity": "source_facts:v1:cdb2d93ae6f07f8ad3f5aa7448f63b5579514b34afcb2ee5db546d8b56028ba5",
       "source_fact_keys": [
         "source_fact:v1:9634916c2d79989a90239c979da44b48d602fc362e82e8a3687e605b70df9e15"
@@ -170837,5 +171675,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-07T06:28:41+09:00"
+  "updated_at_kst": "2026-10-07T06:41:04+09:00"
 }
