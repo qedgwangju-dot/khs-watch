@@ -20,6 +20,7 @@ from khs_compact_text import concise_text
 import gamejoa_news_coverage_extension as coverage
 import gamejoa_article_detail_queue as detail_queue
 import gamejoa_market_materiality as market_materiality
+import khs_policy_telegram_formatter as policy_formatter
 
 
 telegram = contract.telegram
