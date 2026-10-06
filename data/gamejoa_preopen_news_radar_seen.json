@@ -1856,20 +1856,30 @@
     "event:513feb3bff03a74f9c842b5f": {
       "first_seen_kst": "2026-10-06T10:04:04+09:00",
       "lanes": {
-        "live": "2026-10-06T20:24:46+09:00"
+        "live": "2026-10-06T21:17:11+09:00"
       },
-      "last_seen_kst": "2026-10-06T20:24:46+09:00",
-      "link": "https://www.hankyung.com/article/202610066124i",
-      "source": "한국경제",
-      "source_body_digest": "a9fab852e2b51d56187af35013680d50d1479be66ce08e10757fdade699ec00c",
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169573",
+      "source": "매일경제",
+      "source_body_digest": "7e23daf0972179c1390afa204fc15c645258204c6ac9deca1ae5b5242625a508",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:705a463f2f0d770eaeccd0d8afa27efcbd4da1a9c33fcd686f436cef21500c43",
+      "source_fact_identity": "source_facts:v1:cfd461ab9a752214094e1d5148b2b2e0d7dee261e6075a54ad008900fb2570ad",
       "source_fact_keys": [
-        "source_fact:v1:649930babc87723d07eebae2e8f59246282355d15f19e5e02650ffd6366fa42e",
-        "source_fact:v1:d581edf355d9234a0acf8b6a9175ac38543b30c607276a063daa77b0ade044bd"
+        "source_fact:v1:322f8b6d04eec270b0aa773c93b9f477d04477e411c3ca29c9b45f23d3f3f252",
+        "source_fact:v1:3943a4071b79d9b21236aa422c47f80d19de40d75642b5b70730731fc949e3bd",
+        "source_fact:v1:42375401a91c0ffa032337732f87e99443e039e3c01dfc8de71040d618fe8151",
+        "source_fact:v1:577097fbe8732a3df92b4fb428015ba49c80b95f36cb2fb838ac5300a3e22881",
+        "source_fact:v1:58a859a0bb0bc82014bd454c718405586ae60438f48df896ead133d8a3c66b3c",
+        "source_fact:v1:5f7de242b37452bdb619070b7306fdfc0b8cee58e11bbf6e16cf125cdbf3ea7b",
+        "source_fact:v1:99b67cb3c6550b5e018f775464ff97b84eaf7d0253fac5c374583ff2f017d8a4",
+        "source_fact:v1:b76a6cfeb311618829d9466525afd2311c73306718dcb0ee0cdec7545121cf84",
+        "source_fact:v1:c32714a5d32b29c822e8d8308f835c7731bca6c1d24d13be6544c97739cb87b6",
+        "source_fact:v1:dcc49b05b65259eba95b16f3eb6a2b2a46b4b83c74bb89188454e4dff3c2a569",
+        "source_fact:v1:ea28d24aba11ad514de06cf528bec9db3216bc54fcbf9535a6c7fbcf63ae6a23",
+        "source_fact:v1:f9ca51b6a4184a2a6815361439f1dd81956a3061b7a93b083d06009af818e11e"
       ],
-      "source_published_kst": "2026-10-06T17:03+09:00",
-      "title": "삼성전기, 일주일만 MLCC 2900억 공급계약…올 수주 3.9조원"
+      "source_published_kst": "2026-10-06T17:45+09:00",
+      "title": "삼성전기, MLCC 또 장기계약"
     },
     "event:515a30f540946889aaa693c1": {
       "first_seen_kst": "2026-10-01T21:43:03+09:00",
@@ -7148,6 +7158,23 @@
       "source_published_kst": "2026-10-06T06:15+09:00",
       "title": "[AI프리즘] '3대 메가프로젝트' 피지컬AI…전체 AI 예산 5%도 안돼"
     },
+    "fact:1330121658742de8f0b58eaa": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170482",
+      "source": "매일경제",
+      "source_body_digest": "f8ef35fc69cbd79e0e270a2a2d0931114270084c8ccc0ffbe194d19860c8f153",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a6b50f1abc9ec2a3606a3d8cfaec76eb45809083cab32ca3027a842699c5edfb",
+      "source_fact_keys": [
+        "source_fact:v1:53f17ffb5730275b6da31d3058268ae2977ec9e7ea28ad86ab893bcdc956984f"
+      ],
+      "source_published_kst": "2026-10-06T20:10+09:00",
+      "title": "콘스텔레이션, 구글과 10억 달러 이상 원전 전력 계약 임박 소식에 강세"
+    },
     "fact:137619ae1f2b09901ac26b27": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
       "lanes": {
@@ -7925,6 +7952,23 @@
       ],
       "source_published_kst": "2026-10-06T09:49+09:00",
       "title": "싸이버로지텍, 부산 신항 5부두 AI 항만 안전관제 본격 가동"
+    },
+    "fact:23fc41296af6a252aca93433": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170440",
+      "source": "매일경제",
+      "source_body_digest": "645a53276a29bfd97bbcd1a0b5a88961e0b25ae86565d1b32302f0b4cb19cffc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:28c8362941d00b8a1e201e89d46ec5ce85ae55b540b9900299e27806efbe96d8",
+      "source_fact_keys": [
+        "source_fact:v1:543c9e6e04a4d304942e5ae7a3c6944349478314784de5f3d00b6920f39c2abf"
+      ],
+      "source_published_kst": "2026-10-06T17:34+09:00",
+      "title": "기업 DB, 계열사에만 제공…조사協, 한국평가데이터 공정위 신고"
     },
     "fact:24625ea27b657398be808831": {
       "first_seen_kst": "2026-10-06T20:54:05+09:00",
@@ -14011,6 +14055,34 @@
       "source_published_kst": "2026-10-06T11:33+09:00",
       "title": "'연산역 수자인 센트리오' 10월 공급…일반분양 139가구"
     },
+    "fact:b99be9c8717e0453c9b03aa6": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169573",
+      "source": "매일경제",
+      "source_body_digest": "7e23daf0972179c1390afa204fc15c645258204c6ac9deca1ae5b5242625a508",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cfd461ab9a752214094e1d5148b2b2e0d7dee261e6075a54ad008900fb2570ad",
+      "source_fact_keys": [
+        "source_fact:v1:322f8b6d04eec270b0aa773c93b9f477d04477e411c3ca29c9b45f23d3f3f252",
+        "source_fact:v1:3943a4071b79d9b21236aa422c47f80d19de40d75642b5b70730731fc949e3bd",
+        "source_fact:v1:42375401a91c0ffa032337732f87e99443e039e3c01dfc8de71040d618fe8151",
+        "source_fact:v1:577097fbe8732a3df92b4fb428015ba49c80b95f36cb2fb838ac5300a3e22881",
+        "source_fact:v1:58a859a0bb0bc82014bd454c718405586ae60438f48df896ead133d8a3c66b3c",
+        "source_fact:v1:5f7de242b37452bdb619070b7306fdfc0b8cee58e11bbf6e16cf125cdbf3ea7b",
+        "source_fact:v1:99b67cb3c6550b5e018f775464ff97b84eaf7d0253fac5c374583ff2f017d8a4",
+        "source_fact:v1:b76a6cfeb311618829d9466525afd2311c73306718dcb0ee0cdec7545121cf84",
+        "source_fact:v1:c32714a5d32b29c822e8d8308f835c7731bca6c1d24d13be6544c97739cb87b6",
+        "source_fact:v1:dcc49b05b65259eba95b16f3eb6a2b2a46b4b83c74bb89188454e4dff3c2a569",
+        "source_fact:v1:ea28d24aba11ad514de06cf528bec9db3216bc54fcbf9535a6c7fbcf63ae6a23",
+        "source_fact:v1:f9ca51b6a4184a2a6815361439f1dd81956a3061b7a93b083d06009af818e11e"
+      ],
+      "source_published_kst": "2026-10-06T17:45+09:00",
+      "title": "삼성전기, MLCC 또 장기계약"
+    },
     "fact:b9ec6c51cb70081a9a596be6": {
       "first_seen_kst": "2026-10-05T23:05:12+09:00",
       "lanes": {
@@ -14066,6 +14138,25 @@
       ],
       "source_published_kst": "2026-10-06T09:57+09:00",
       "title": "네이버 소비자 분쟁 피해구제율 83.6%…“분류체계 세분화 필요\""
+    },
+    "fact:bd3c43dd7b2b8613b6d86d62": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.mt.co.kr/living/2026/10/06/2026100618330229805",
+      "source": "머니투데이",
+      "source_body_digest": "0c92a839fd9ea4d1a738c488295fff9a9b1254e97af55491dfe2956d7dcefd9b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f633a823d158d3a1dee3b76ce668996dd555b06ba19b744f193361bc50d7ea37",
+      "source_fact_keys": [
+        "source_fact:v1:823ec51beda1c92541f8ab218d1f7fde6db555001c407db08ceccf64525b9658",
+        "source_fact:v1:b3e71080d81b96c553db15209c8703e19e2851cd3a680fe942e5a2bc450fdc0e",
+        "source_fact:v1:eee5e70e46aea654e297735420acc5923b70ddb8ce4f1980df146b0e8ad11de1"
+      ],
+      "source_published_kst": "2026-10-06T18:35+09:00",
+      "title": "오텍캐리어, 글로벌 캐리어와 협력...\"대용량 냉각수 라인업 확대\""
     },
     "fact:bd56f101b64848b55f457505": {
       "first_seen_kst": "2026-10-06T15:03:09+09:00",
@@ -15865,6 +15956,26 @@
       "source_published_kst": "2026-10-06T11:04+09:00",
       "title": "\"트럼프가 돈 준다고? 안 믿어\"…지지율 역대 최저, 히스패닉도 이탈"
     },
+    "fact:e9000be516af0d9bd5180acb": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.hankyung.com/article/2026100663521",
+      "source": "한국경제",
+      "source_body_digest": "bc69564d3f15bb5c22b1524030304ee2c931aa6f18a456b30d0cfd027e6b6942",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f5e6ccddd41a8952a88118fa689c8d1720ea07c3db1a9d0bf681b5fd26a4af32",
+      "source_fact_keys": [
+        "source_fact:v1:042cb7c715317eb3c9484778b72f74b1b3ac02855319698a0b50f7caf084d5e1",
+        "source_fact:v1:2b25766192fad4605885b49ccb93026c4de54b1401a7cd6a487b8931d58ca4c4",
+        "source_fact:v1:a2a7fc59f9b06e62d3145ed46a835a8a692e682031908bc4feb8ec1e948ae78d",
+        "source_fact:v1:da8b60edf81bd86935b65add4956135e8ecf77fcfeb76f179a90140ddce11015"
+      ],
+      "source_published_kst": "2026-10-06T18:38+09:00",
+      "title": "부산 스타트업 '데이터스피라' 伊 명품 돌체앤가바나 뚫었다"
+    },
     "fact:e9689b6fcf6f67c7d13a7d4d": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
       "lanes": {
@@ -16081,6 +16192,25 @@
       ],
       "source_published_kst": "2026-10-05T21:09+09:00",
       "title": "플렉스, 액시엄 20억달러 우선주 유치..가치 375억달러"
+    },
+    "fact:eea86da2f6094e9bf231933f": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.hankyung.com/article/2026100662751",
+      "source": "한국경제",
+      "source_body_digest": "ba913447ec5849f014348dcbfb578f4dd3a14e123396b1e8b589138006e36666",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ded7b2624d1d714c53172d90c56f8f6a1de4721e2eb2c37b85adbf9a5aed2700",
+      "source_fact_keys": [
+        "source_fact:v1:0fc2f43a598a84d1b7512834bdd6c9cc2fbe8dc31bb95ffa8a741f2ad1dc20f9",
+        "source_fact:v1:774f5d1fc6af42294746dfc0c4980ae1873c6635bf10b9c7ddcf6b7aef9137c6",
+        "source_fact:v1:c005653bcb7c8905d7eb0c74b0e4b5b8a7c3e22aad07cb68b7de2a855f8996a8"
+      ],
+      "source_published_kst": "2026-10-06T17:57+09:00",
+      "title": "대학가 주택 '공공기숙사'로…LH, 서울대와 200가구 공급"
     },
     "fact:efac362e596d4797183e2802": {
       "first_seen_kst": "2026-10-06T17:24:43+09:00",
@@ -17071,6 +17201,26 @@
       "source_published_kst": "2026-10-06T08:37+09:00",
       "title": "한미반도체, 삼성전기서 245억 규모 장비 수주…\"삼성그룹 환영\" | 연합뉴스"
     },
+    "link:02fa917169a1c751e828bd30": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.hankyung.com/article/2026100663521",
+      "source": "한국경제",
+      "source_body_digest": "bc69564d3f15bb5c22b1524030304ee2c931aa6f18a456b30d0cfd027e6b6942",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f5e6ccddd41a8952a88118fa689c8d1720ea07c3db1a9d0bf681b5fd26a4af32",
+      "source_fact_keys": [
+        "source_fact:v1:042cb7c715317eb3c9484778b72f74b1b3ac02855319698a0b50f7caf084d5e1",
+        "source_fact:v1:2b25766192fad4605885b49ccb93026c4de54b1401a7cd6a487b8931d58ca4c4",
+        "source_fact:v1:a2a7fc59f9b06e62d3145ed46a835a8a692e682031908bc4feb8ec1e948ae78d",
+        "source_fact:v1:da8b60edf81bd86935b65add4956135e8ecf77fcfeb76f179a90140ddce11015"
+      ],
+      "source_published_kst": "2026-10-06T18:38+09:00",
+      "title": "부산 스타트업 '데이터스피라' 伊 명품 돌체앤가바나 뚫었다"
+    },
     "link:031dbb2fb3e4c8ed17047cec": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
       "lanes": {
@@ -17693,6 +17843,25 @@
       "link": "https://www.mk.co.kr/news/economy/12163511",
       "source": "매일경제",
       "title": "미 국채금리 5% 훌쩍...韓 반도체 호황 꺾이나- 매경ECONOMY"
+    },
+    "link:0ac23f2327b91efcf50d2725": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.mt.co.kr/living/2026/10/06/2026100618330229805",
+      "source": "머니투데이",
+      "source_body_digest": "0c92a839fd9ea4d1a738c488295fff9a9b1254e97af55491dfe2956d7dcefd9b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f633a823d158d3a1dee3b76ce668996dd555b06ba19b744f193361bc50d7ea37",
+      "source_fact_keys": [
+        "source_fact:v1:823ec51beda1c92541f8ab218d1f7fde6db555001c407db08ceccf64525b9658",
+        "source_fact:v1:b3e71080d81b96c553db15209c8703e19e2851cd3a680fe942e5a2bc450fdc0e",
+        "source_fact:v1:eee5e70e46aea654e297735420acc5923b70ddb8ce4f1980df146b0e8ad11de1"
+      ],
+      "source_published_kst": "2026-10-06T18:35+09:00",
+      "title": "오텍캐리어, 글로벌 캐리어와 협력...\"대용량 냉각수 라인업 확대\""
     },
     "link:0acf4bf3553d20c74624a261": {
       "first_seen_kst": "2026-09-26T11:28:46+09:00",
@@ -20271,6 +20440,21 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T12:42+09:00",
       "title": "영국, 동예루살렘 영사관 폐쇄시 이스라엘 외교관 맞추방 경고"
+    },
+    "link:258c9cd1f00f6270bca731ea": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/06/2026100619352199698",
+      "source": "머니투데이",
+      "source_body_digest": "0a001c434ae002e6b87dcd418e69daef3c116a1154f711ccf29b512a1cf72967",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T19:46+09:00",
+      "title": "美, 물가 상승·소비심리 한파에도 가계 지출 1년새 6.1%↑"
     },
     "link:25b524a2a73ef83fb37198b1": {
       "first_seen_kst": "2026-10-02T12:58:52+09:00",
@@ -24162,6 +24346,23 @@
       "source_published_kst": "2026-10-05T13:50+09:00",
       "title": "올리브영 비수도권 매출 증가 | 연합뉴스"
     },
+    "link:4a10b6e67ff50652294157ef": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170440",
+      "source": "매일경제",
+      "source_body_digest": "645a53276a29bfd97bbcd1a0b5a88961e0b25ae86565d1b32302f0b4cb19cffc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:28c8362941d00b8a1e201e89d46ec5ce85ae55b540b9900299e27806efbe96d8",
+      "source_fact_keys": [
+        "source_fact:v1:543c9e6e04a4d304942e5ae7a3c6944349478314784de5f3d00b6920f39c2abf"
+      ],
+      "source_published_kst": "2026-10-06T17:34+09:00",
+      "title": "기업 DB, 계열사에만 제공…조사協, 한국평가데이터 공정위 신고"
+    },
     "link:4a366f8d05f62a0247275783": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
@@ -26318,6 +26519,23 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-05T22:26+09:00",
       "title": "하프니아, 신주 3549만주 발행·등록..3억 달러 증자 마무리"
+    },
+    "link:5f472761abf6ebea4d104f30": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170482",
+      "source": "매일경제",
+      "source_body_digest": "f8ef35fc69cbd79e0e270a2a2d0931114270084c8ccc0ffbe194d19860c8f153",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a6b50f1abc9ec2a3606a3d8cfaec76eb45809083cab32ca3027a842699c5edfb",
+      "source_fact_keys": [
+        "source_fact:v1:53f17ffb5730275b6da31d3058268ae2977ec9e7ea28ad86ab893bcdc956984f"
+      ],
+      "source_published_kst": "2026-10-06T20:10+09:00",
+      "title": "콘스텔레이션, 구글과 10억 달러 이상 원전 전력 계약 임박 소식에 강세"
     },
     "link:5f48c56abdb7f30cd315e20a": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
@@ -28758,6 +28976,34 @@
       "link": "https://www.dt.co.kr/article/12087016",
       "source": "디지털타임스",
       "title": "이에이트, 다컴시스템 지분 35% 인수…“AIDC 사업 진출”"
+    },
+    "link:76e2bb05fedca5ca65adebde": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169573",
+      "source": "매일경제",
+      "source_body_digest": "7e23daf0972179c1390afa204fc15c645258204c6ac9deca1ae5b5242625a508",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cfd461ab9a752214094e1d5148b2b2e0d7dee261e6075a54ad008900fb2570ad",
+      "source_fact_keys": [
+        "source_fact:v1:322f8b6d04eec270b0aa773c93b9f477d04477e411c3ca29c9b45f23d3f3f252",
+        "source_fact:v1:3943a4071b79d9b21236aa422c47f80d19de40d75642b5b70730731fc949e3bd",
+        "source_fact:v1:42375401a91c0ffa032337732f87e99443e039e3c01dfc8de71040d618fe8151",
+        "source_fact:v1:577097fbe8732a3df92b4fb428015ba49c80b95f36cb2fb838ac5300a3e22881",
+        "source_fact:v1:58a859a0bb0bc82014bd454c718405586ae60438f48df896ead133d8a3c66b3c",
+        "source_fact:v1:5f7de242b37452bdb619070b7306fdfc0b8cee58e11bbf6e16cf125cdbf3ea7b",
+        "source_fact:v1:99b67cb3c6550b5e018f775464ff97b84eaf7d0253fac5c374583ff2f017d8a4",
+        "source_fact:v1:b76a6cfeb311618829d9466525afd2311c73306718dcb0ee0cdec7545121cf84",
+        "source_fact:v1:c32714a5d32b29c822e8d8308f835c7731bca6c1d24d13be6544c97739cb87b6",
+        "source_fact:v1:dcc49b05b65259eba95b16f3eb6a2b2a46b4b83c74bb89188454e4dff3c2a569",
+        "source_fact:v1:ea28d24aba11ad514de06cf528bec9db3216bc54fcbf9535a6c7fbcf63ae6a23",
+        "source_fact:v1:f9ca51b6a4184a2a6815361439f1dd81956a3061b7a93b083d06009af818e11e"
+      ],
+      "source_published_kst": "2026-10-06T17:45+09:00",
+      "title": "삼성전기, MLCC 또 장기계약"
     },
     "link:76e4ae4cdcf3d76faac0bbc7": {
       "first_seen_kst": "2026-10-05T12:29:58+09:00",
@@ -33588,6 +33834,25 @@
       ],
       "source_published_kst": "2026-10-06T13:56+09:00",
       "title": "삼천리자전거, 44억 규모 자사주 소각 결정"
+    },
+    "link:a85facce8f57f3322813b4e9": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.hankyung.com/article/2026100662751",
+      "source": "한국경제",
+      "source_body_digest": "ba913447ec5849f014348dcbfb578f4dd3a14e123396b1e8b589138006e36666",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ded7b2624d1d714c53172d90c56f8f6a1de4721e2eb2c37b85adbf9a5aed2700",
+      "source_fact_keys": [
+        "source_fact:v1:0fc2f43a598a84d1b7512834bdd6c9cc2fbe8dc31bb95ffa8a741f2ad1dc20f9",
+        "source_fact:v1:774f5d1fc6af42294746dfc0c4980ae1873c6635bf10b9c7ddcf6b7aef9137c6",
+        "source_fact:v1:c005653bcb7c8905d7eb0c74b0e4b5b8a7c3e22aad07cb68b7de2a855f8996a8"
+      ],
+      "source_published_kst": "2026-10-06T17:57+09:00",
+      "title": "대학가 주택 '공공기숙사'로…LH, 서울대와 200가구 공급"
     },
     "link:a8722095ac2aa09858f337d7": {
       "first_seen_kst": "2026-09-21T06:34:54+09:00",
@@ -48338,6 +48603,21 @@
       "source_published_kst": "2026-10-04T09:00+09:00",
       "title": "2년간 결손 난 회사 주식으로 상속세 물납 신청…法 “거부 적법”"
     },
+    "original:3ab9f0e900f959259f4b488d": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/06/2026100619352199698",
+      "source": "머니투데이",
+      "source_body_digest": "0a001c434ae002e6b87dcd418e69daef3c116a1154f711ccf29b512a1cf72967",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T19:46+09:00",
+      "title": "美, 물가 상승·소비심리 한파에도 가계 지출 1년새 6.1%↑"
+    },
     "original:3aceabeaa913d0a66128097d": {
       "first_seen_kst": "2026-10-02T18:51:02+09:00",
       "lanes": {
@@ -51461,6 +51741,34 @@
       "source_published_kst": "2026-10-06T08:33+09:00",
       "title": "“광고·커머스 매출 성장 둔화, AI 비용 증가”…대신증권, NAVER 목표가↓"
     },
+    "original:595c9d64473ee5c713ca2dca": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169573",
+      "source": "매일경제",
+      "source_body_digest": "7e23daf0972179c1390afa204fc15c645258204c6ac9deca1ae5b5242625a508",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cfd461ab9a752214094e1d5148b2b2e0d7dee261e6075a54ad008900fb2570ad",
+      "source_fact_keys": [
+        "source_fact:v1:322f8b6d04eec270b0aa773c93b9f477d04477e411c3ca29c9b45f23d3f3f252",
+        "source_fact:v1:3943a4071b79d9b21236aa422c47f80d19de40d75642b5b70730731fc949e3bd",
+        "source_fact:v1:42375401a91c0ffa032337732f87e99443e039e3c01dfc8de71040d618fe8151",
+        "source_fact:v1:577097fbe8732a3df92b4fb428015ba49c80b95f36cb2fb838ac5300a3e22881",
+        "source_fact:v1:58a859a0bb0bc82014bd454c718405586ae60438f48df896ead133d8a3c66b3c",
+        "source_fact:v1:5f7de242b37452bdb619070b7306fdfc0b8cee58e11bbf6e16cf125cdbf3ea7b",
+        "source_fact:v1:99b67cb3c6550b5e018f775464ff97b84eaf7d0253fac5c374583ff2f017d8a4",
+        "source_fact:v1:b76a6cfeb311618829d9466525afd2311c73306718dcb0ee0cdec7545121cf84",
+        "source_fact:v1:c32714a5d32b29c822e8d8308f835c7731bca6c1d24d13be6544c97739cb87b6",
+        "source_fact:v1:dcc49b05b65259eba95b16f3eb6a2b2a46b4b83c74bb89188454e4dff3c2a569",
+        "source_fact:v1:ea28d24aba11ad514de06cf528bec9db3216bc54fcbf9535a6c7fbcf63ae6a23",
+        "source_fact:v1:f9ca51b6a4184a2a6815361439f1dd81956a3061b7a93b083d06009af818e11e"
+      ],
+      "source_published_kst": "2026-10-06T17:45+09:00",
+      "title": "삼성전기, MLCC 또 장기계약"
+    },
     "original:59619bd9e8a5dba2ba0e4195": {
       "first_seen_kst": "2026-10-05T06:25:21+09:00",
       "lanes": {
@@ -52056,6 +52364,23 @@
       "source_published_kst": "2026-10-05T10:02+09:00",
       "title": "[챗집피티]'312가구' 여의도 목화, 래미안 품고 사업성 키운 비결은"
     },
+    "original:5fceb0318b48292356837123": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170440",
+      "source": "매일경제",
+      "source_body_digest": "645a53276a29bfd97bbcd1a0b5a88961e0b25ae86565d1b32302f0b4cb19cffc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:28c8362941d00b8a1e201e89d46ec5ce85ae55b540b9900299e27806efbe96d8",
+      "source_fact_keys": [
+        "source_fact:v1:543c9e6e04a4d304942e5ae7a3c6944349478314784de5f3d00b6920f39c2abf"
+      ],
+      "source_published_kst": "2026-10-06T17:34+09:00",
+      "title": "기업 DB, 계열사에만 제공…조사協, 한국평가데이터 공정위 신고"
+    },
     "original:5fe4b7cb445547f6b1228927": {
       "first_seen_kst": "2026-10-05T01:05:10+09:00",
       "lanes": {
@@ -52578,6 +52903,25 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T11:30+09:00",
       "title": "AMRO, 올해 한국 성장률 3.3%로 상향…7월 이어 또 높였다"
+    },
+    "original:67230f64b9cff7529829585d": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.mt.co.kr/living/2026/10/06/2026100618330229805",
+      "source": "머니투데이",
+      "source_body_digest": "0c92a839fd9ea4d1a738c488295fff9a9b1254e97af55491dfe2956d7dcefd9b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f633a823d158d3a1dee3b76ce668996dd555b06ba19b744f193361bc50d7ea37",
+      "source_fact_keys": [
+        "source_fact:v1:823ec51beda1c92541f8ab218d1f7fde6db555001c407db08ceccf64525b9658",
+        "source_fact:v1:b3e71080d81b96c553db15209c8703e19e2851cd3a680fe942e5a2bc450fdc0e",
+        "source_fact:v1:eee5e70e46aea654e297735420acc5923b70ddb8ce4f1980df146b0e8ad11de1"
+      ],
+      "source_published_kst": "2026-10-06T18:35+09:00",
+      "title": "오텍캐리어, 글로벌 캐리어와 협력...\"대용량 냉각수 라인업 확대\""
     },
     "original:6742f0629a95b0d748e3bf81": {
       "first_seen_kst": "2026-09-18T21:26:25+09:00",
@@ -54169,6 +54513,23 @@
       "link": "https://www.yna.co.kr/view/AKR20260916005500072",
       "source": "연합뉴스",
       "title": "사우디 공급 차질 우려 심화…국제유가 5월 19일 이후 최고 | 연합뉴스"
+    },
+    "original:7472e144f03af422a5578317": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170482",
+      "source": "매일경제",
+      "source_body_digest": "f8ef35fc69cbd79e0e270a2a2d0931114270084c8ccc0ffbe194d19860c8f153",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a6b50f1abc9ec2a3606a3d8cfaec76eb45809083cab32ca3027a842699c5edfb",
+      "source_fact_keys": [
+        "source_fact:v1:53f17ffb5730275b6da31d3058268ae2977ec9e7ea28ad86ab893bcdc956984f"
+      ],
+      "source_published_kst": "2026-10-06T20:10+09:00",
+      "title": "콘스텔레이션, 구글과 10억 달러 이상 원전 전력 계약 임박 소식에 강세"
     },
     "original:74753bff72a4a03226cef334": {
       "first_seen_kst": "2026-09-30T16:46:52+09:00",
@@ -59659,6 +60020,26 @@
       "source": "연합뉴스",
       "title": "9월 농산물 가격 전년 동월 대비 4% 하락…축산물은 3.7% 상승 | 연합뉴스"
     },
+    "original:aff822eac2b0a25322928622": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.hankyung.com/article/2026100663521",
+      "source": "한국경제",
+      "source_body_digest": "bc69564d3f15bb5c22b1524030304ee2c931aa6f18a456b30d0cfd027e6b6942",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f5e6ccddd41a8952a88118fa689c8d1720ea07c3db1a9d0bf681b5fd26a4af32",
+      "source_fact_keys": [
+        "source_fact:v1:042cb7c715317eb3c9484778b72f74b1b3ac02855319698a0b50f7caf084d5e1",
+        "source_fact:v1:2b25766192fad4605885b49ccb93026c4de54b1401a7cd6a487b8931d58ca4c4",
+        "source_fact:v1:a2a7fc59f9b06e62d3145ed46a835a8a692e682031908bc4feb8ec1e948ae78d",
+        "source_fact:v1:da8b60edf81bd86935b65add4956135e8ecf77fcfeb76f179a90140ddce11015"
+      ],
+      "source_published_kst": "2026-10-06T18:38+09:00",
+      "title": "부산 스타트업 '데이터스피라' 伊 명품 돌체앤가바나 뚫었다"
+    },
     "original:affe6938716453b910bdcc3c": {
       "first_seen_kst": "2026-09-19T20:13:35+09:00",
       "lanes": {
@@ -61997,6 +62378,25 @@
       "link": "https://www.mk.co.kr/news/stock/12164151",
       "source": "매일경제",
       "title": "카맥스, 2분기 EPS 81% 급증..자사주 매입 재개"
+    },
+    "original:c974e9632ce1cebefca0aebc": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.hankyung.com/article/2026100662751",
+      "source": "한국경제",
+      "source_body_digest": "ba913447ec5849f014348dcbfb578f4dd3a14e123396b1e8b589138006e36666",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ded7b2624d1d714c53172d90c56f8f6a1de4721e2eb2c37b85adbf9a5aed2700",
+      "source_fact_keys": [
+        "source_fact:v1:0fc2f43a598a84d1b7512834bdd6c9cc2fbe8dc31bb95ffa8a741f2ad1dc20f9",
+        "source_fact:v1:774f5d1fc6af42294746dfc0c4980ae1873c6635bf10b9c7ddcf6b7aef9137c6",
+        "source_fact:v1:c005653bcb7c8905d7eb0c74b0e4b5b8a7c3e22aad07cb68b7de2a855f8996a8"
+      ],
+      "source_published_kst": "2026-10-06T17:57+09:00",
+      "title": "대학가 주택 '공공기숙사'로…LH, 서울대와 200가구 공급"
     },
     "original:c98d2b10728adf7da3d36ad9": {
       "first_seen_kst": "2026-09-20T18:25:16+09:00",
@@ -72808,6 +73208,34 @@
       "source_published_kst": "2026-10-06T05:00+09:00",
       "title": "납품단가 다음은 ‘데이터’⋯AI 시대 대기업·中企 ‘新 갑을관계’ 탄생하나 [AI 신계급사회]"
     },
+    "source_fact:1ecf7f21de7325032a5b60e2": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169573",
+      "source": "매일경제",
+      "source_body_digest": "7e23daf0972179c1390afa204fc15c645258204c6ac9deca1ae5b5242625a508",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cfd461ab9a752214094e1d5148b2b2e0d7dee261e6075a54ad008900fb2570ad",
+      "source_fact_keys": [
+        "source_fact:v1:322f8b6d04eec270b0aa773c93b9f477d04477e411c3ca29c9b45f23d3f3f252",
+        "source_fact:v1:3943a4071b79d9b21236aa422c47f80d19de40d75642b5b70730731fc949e3bd",
+        "source_fact:v1:42375401a91c0ffa032337732f87e99443e039e3c01dfc8de71040d618fe8151",
+        "source_fact:v1:577097fbe8732a3df92b4fb428015ba49c80b95f36cb2fb838ac5300a3e22881",
+        "source_fact:v1:58a859a0bb0bc82014bd454c718405586ae60438f48df896ead133d8a3c66b3c",
+        "source_fact:v1:5f7de242b37452bdb619070b7306fdfc0b8cee58e11bbf6e16cf125cdbf3ea7b",
+        "source_fact:v1:99b67cb3c6550b5e018f775464ff97b84eaf7d0253fac5c374583ff2f017d8a4",
+        "source_fact:v1:b76a6cfeb311618829d9466525afd2311c73306718dcb0ee0cdec7545121cf84",
+        "source_fact:v1:c32714a5d32b29c822e8d8308f835c7731bca6c1d24d13be6544c97739cb87b6",
+        "source_fact:v1:dcc49b05b65259eba95b16f3eb6a2b2a46b4b83c74bb89188454e4dff3c2a569",
+        "source_fact:v1:ea28d24aba11ad514de06cf528bec9db3216bc54fcbf9535a6c7fbcf63ae6a23",
+        "source_fact:v1:f9ca51b6a4184a2a6815361439f1dd81956a3061b7a93b083d06009af818e11e"
+      ],
+      "source_published_kst": "2026-10-06T17:45+09:00",
+      "title": "삼성전기, MLCC 또 장기계약"
+    },
     "source_fact:1f03c2a8abe125b6ca470ae2": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
       "lanes": {
@@ -75396,6 +75824,34 @@
       "source_published_kst": "2026-10-06T07:42+09:00",
       "title": "[오늘의 증시]美금리 상승에도 나스닥 최고치…코스피 상승 출발 전망"
     },
+    "source_fact:2c970ccebf173819edbae4b1": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169573",
+      "source": "매일경제",
+      "source_body_digest": "7e23daf0972179c1390afa204fc15c645258204c6ac9deca1ae5b5242625a508",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cfd461ab9a752214094e1d5148b2b2e0d7dee261e6075a54ad008900fb2570ad",
+      "source_fact_keys": [
+        "source_fact:v1:322f8b6d04eec270b0aa773c93b9f477d04477e411c3ca29c9b45f23d3f3f252",
+        "source_fact:v1:3943a4071b79d9b21236aa422c47f80d19de40d75642b5b70730731fc949e3bd",
+        "source_fact:v1:42375401a91c0ffa032337732f87e99443e039e3c01dfc8de71040d618fe8151",
+        "source_fact:v1:577097fbe8732a3df92b4fb428015ba49c80b95f36cb2fb838ac5300a3e22881",
+        "source_fact:v1:58a859a0bb0bc82014bd454c718405586ae60438f48df896ead133d8a3c66b3c",
+        "source_fact:v1:5f7de242b37452bdb619070b7306fdfc0b8cee58e11bbf6e16cf125cdbf3ea7b",
+        "source_fact:v1:99b67cb3c6550b5e018f775464ff97b84eaf7d0253fac5c374583ff2f017d8a4",
+        "source_fact:v1:b76a6cfeb311618829d9466525afd2311c73306718dcb0ee0cdec7545121cf84",
+        "source_fact:v1:c32714a5d32b29c822e8d8308f835c7731bca6c1d24d13be6544c97739cb87b6",
+        "source_fact:v1:dcc49b05b65259eba95b16f3eb6a2b2a46b4b83c74bb89188454e4dff3c2a569",
+        "source_fact:v1:ea28d24aba11ad514de06cf528bec9db3216bc54fcbf9535a6c7fbcf63ae6a23",
+        "source_fact:v1:f9ca51b6a4184a2a6815361439f1dd81956a3061b7a93b083d06009af818e11e"
+      ],
+      "source_published_kst": "2026-10-06T17:45+09:00",
+      "title": "삼성전기, MLCC 또 장기계약"
+    },
     "source_fact:2cab51eb5a6188fcdee9665f": {
       "first_seen_kst": "2026-10-06T02:31:07+09:00",
       "lanes": {
@@ -77275,6 +77731,26 @@
       "source_published_kst": "2026-10-06T06:25+09:00",
       "title": "국제유가, 중동 원유 수출 증가ㆍG7 재고 방출에 하락⋯WTI 1.84%↓ [상보]"
     },
+    "source_fact:36e6e6904d61686c21bd4b0b": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.hankyung.com/article/2026100663521",
+      "source": "한국경제",
+      "source_body_digest": "bc69564d3f15bb5c22b1524030304ee2c931aa6f18a456b30d0cfd027e6b6942",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f5e6ccddd41a8952a88118fa689c8d1720ea07c3db1a9d0bf681b5fd26a4af32",
+      "source_fact_keys": [
+        "source_fact:v1:042cb7c715317eb3c9484778b72f74b1b3ac02855319698a0b50f7caf084d5e1",
+        "source_fact:v1:2b25766192fad4605885b49ccb93026c4de54b1401a7cd6a487b8931d58ca4c4",
+        "source_fact:v1:a2a7fc59f9b06e62d3145ed46a835a8a692e682031908bc4feb8ec1e948ae78d",
+        "source_fact:v1:da8b60edf81bd86935b65add4956135e8ecf77fcfeb76f179a90140ddce11015"
+      ],
+      "source_published_kst": "2026-10-06T18:38+09:00",
+      "title": "부산 스타트업 '데이터스피라' 伊 명품 돌체앤가바나 뚫었다"
+    },
     "source_fact:36f02e3570e104e44c30d804": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -77788,6 +78264,25 @@
       ],
       "source_published_kst": "2026-10-06T12:08+09:00",
       "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
+    },
+    "source_fact:3982c40dd17a3d6bde3827e2": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.hankyung.com/article/2026100662751",
+      "source": "한국경제",
+      "source_body_digest": "ba913447ec5849f014348dcbfb578f4dd3a14e123396b1e8b589138006e36666",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ded7b2624d1d714c53172d90c56f8f6a1de4721e2eb2c37b85adbf9a5aed2700",
+      "source_fact_keys": [
+        "source_fact:v1:0fc2f43a598a84d1b7512834bdd6c9cc2fbe8dc31bb95ffa8a741f2ad1dc20f9",
+        "source_fact:v1:774f5d1fc6af42294746dfc0c4980ae1873c6635bf10b9c7ddcf6b7aef9137c6",
+        "source_fact:v1:c005653bcb7c8905d7eb0c74b0e4b5b8a7c3e22aad07cb68b7de2a855f8996a8"
+      ],
+      "source_published_kst": "2026-10-06T17:57+09:00",
+      "title": "대학가 주택 '공공기숙사'로…LH, 서울대와 200가구 공급"
     },
     "source_fact:39ce94835ccf03ebbead7b42": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
@@ -78798,6 +79293,34 @@
       "source_published_kst": "2026-10-06T17:24+09:00",
       "title": "포스코퓨처엠, 삼성SDI에 LFP 양극재 6조원어치 공급"
     },
+    "source_fact:3ff37681ce471dab01ce325e": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169573",
+      "source": "매일경제",
+      "source_body_digest": "7e23daf0972179c1390afa204fc15c645258204c6ac9deca1ae5b5242625a508",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cfd461ab9a752214094e1d5148b2b2e0d7dee261e6075a54ad008900fb2570ad",
+      "source_fact_keys": [
+        "source_fact:v1:322f8b6d04eec270b0aa773c93b9f477d04477e411c3ca29c9b45f23d3f3f252",
+        "source_fact:v1:3943a4071b79d9b21236aa422c47f80d19de40d75642b5b70730731fc949e3bd",
+        "source_fact:v1:42375401a91c0ffa032337732f87e99443e039e3c01dfc8de71040d618fe8151",
+        "source_fact:v1:577097fbe8732a3df92b4fb428015ba49c80b95f36cb2fb838ac5300a3e22881",
+        "source_fact:v1:58a859a0bb0bc82014bd454c718405586ae60438f48df896ead133d8a3c66b3c",
+        "source_fact:v1:5f7de242b37452bdb619070b7306fdfc0b8cee58e11bbf6e16cf125cdbf3ea7b",
+        "source_fact:v1:99b67cb3c6550b5e018f775464ff97b84eaf7d0253fac5c374583ff2f017d8a4",
+        "source_fact:v1:b76a6cfeb311618829d9466525afd2311c73306718dcb0ee0cdec7545121cf84",
+        "source_fact:v1:c32714a5d32b29c822e8d8308f835c7731bca6c1d24d13be6544c97739cb87b6",
+        "source_fact:v1:dcc49b05b65259eba95b16f3eb6a2b2a46b4b83c74bb89188454e4dff3c2a569",
+        "source_fact:v1:ea28d24aba11ad514de06cf528bec9db3216bc54fcbf9535a6c7fbcf63ae6a23",
+        "source_fact:v1:f9ca51b6a4184a2a6815361439f1dd81956a3061b7a93b083d06009af818e11e"
+      ],
+      "source_published_kst": "2026-10-06T17:45+09:00",
+      "title": "삼성전기, MLCC 또 장기계약"
+    },
     "source_fact:3ff5e728eeef71c089ace522": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
       "lanes": {
@@ -79464,6 +79987,34 @@
       ],
       "source_published_kst": "2026-10-06T14:14+09:00",
       "title": "경상수지 흑자 너무 많아도 문제? IMF 내년 한국에 ‘과잉 평가’ 전망 [머니뭐니]"
+    },
+    "source_fact:4387f5597856cb928ffe70cc": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169573",
+      "source": "매일경제",
+      "source_body_digest": "7e23daf0972179c1390afa204fc15c645258204c6ac9deca1ae5b5242625a508",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cfd461ab9a752214094e1d5148b2b2e0d7dee261e6075a54ad008900fb2570ad",
+      "source_fact_keys": [
+        "source_fact:v1:322f8b6d04eec270b0aa773c93b9f477d04477e411c3ca29c9b45f23d3f3f252",
+        "source_fact:v1:3943a4071b79d9b21236aa422c47f80d19de40d75642b5b70730731fc949e3bd",
+        "source_fact:v1:42375401a91c0ffa032337732f87e99443e039e3c01dfc8de71040d618fe8151",
+        "source_fact:v1:577097fbe8732a3df92b4fb428015ba49c80b95f36cb2fb838ac5300a3e22881",
+        "source_fact:v1:58a859a0bb0bc82014bd454c718405586ae60438f48df896ead133d8a3c66b3c",
+        "source_fact:v1:5f7de242b37452bdb619070b7306fdfc0b8cee58e11bbf6e16cf125cdbf3ea7b",
+        "source_fact:v1:99b67cb3c6550b5e018f775464ff97b84eaf7d0253fac5c374583ff2f017d8a4",
+        "source_fact:v1:b76a6cfeb311618829d9466525afd2311c73306718dcb0ee0cdec7545121cf84",
+        "source_fact:v1:c32714a5d32b29c822e8d8308f835c7731bca6c1d24d13be6544c97739cb87b6",
+        "source_fact:v1:dcc49b05b65259eba95b16f3eb6a2b2a46b4b83c74bb89188454e4dff3c2a569",
+        "source_fact:v1:ea28d24aba11ad514de06cf528bec9db3216bc54fcbf9535a6c7fbcf63ae6a23",
+        "source_fact:v1:f9ca51b6a4184a2a6815361439f1dd81956a3061b7a93b083d06009af818e11e"
+      ],
+      "source_published_kst": "2026-10-06T17:45+09:00",
+      "title": "삼성전기, MLCC 또 장기계약"
     },
     "source_fact:43a882c1e5c9f6963faaaa41": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
@@ -80693,6 +81244,34 @@
       "source_published_kst": "2026-10-06T08:41+09:00",
       "title": "AI 데이터센터 늘자 전력 수요도 급증…ETF 투자처도 '전력 인프라'로"
     },
+    "source_fact:49656ecc24504531e17dc7e1": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169573",
+      "source": "매일경제",
+      "source_body_digest": "7e23daf0972179c1390afa204fc15c645258204c6ac9deca1ae5b5242625a508",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cfd461ab9a752214094e1d5148b2b2e0d7dee261e6075a54ad008900fb2570ad",
+      "source_fact_keys": [
+        "source_fact:v1:322f8b6d04eec270b0aa773c93b9f477d04477e411c3ca29c9b45f23d3f3f252",
+        "source_fact:v1:3943a4071b79d9b21236aa422c47f80d19de40d75642b5b70730731fc949e3bd",
+        "source_fact:v1:42375401a91c0ffa032337732f87e99443e039e3c01dfc8de71040d618fe8151",
+        "source_fact:v1:577097fbe8732a3df92b4fb428015ba49c80b95f36cb2fb838ac5300a3e22881",
+        "source_fact:v1:58a859a0bb0bc82014bd454c718405586ae60438f48df896ead133d8a3c66b3c",
+        "source_fact:v1:5f7de242b37452bdb619070b7306fdfc0b8cee58e11bbf6e16cf125cdbf3ea7b",
+        "source_fact:v1:99b67cb3c6550b5e018f775464ff97b84eaf7d0253fac5c374583ff2f017d8a4",
+        "source_fact:v1:b76a6cfeb311618829d9466525afd2311c73306718dcb0ee0cdec7545121cf84",
+        "source_fact:v1:c32714a5d32b29c822e8d8308f835c7731bca6c1d24d13be6544c97739cb87b6",
+        "source_fact:v1:dcc49b05b65259eba95b16f3eb6a2b2a46b4b83c74bb89188454e4dff3c2a569",
+        "source_fact:v1:ea28d24aba11ad514de06cf528bec9db3216bc54fcbf9535a6c7fbcf63ae6a23",
+        "source_fact:v1:f9ca51b6a4184a2a6815361439f1dd81956a3061b7a93b083d06009af818e11e"
+      ],
+      "source_published_kst": "2026-10-06T17:45+09:00",
+      "title": "삼성전기, MLCC 또 장기계약"
+    },
     "source_fact:499c763e8cbd5a77610624ed": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
       "lanes": {
@@ -81232,6 +81811,23 @@
       ],
       "source_published_kst": "2026-10-06T05:43+09:00",
       "title": "美 부통령 \"알래스카 LNG 사업 투자, 한국과 세부사항 조율해야\""
+    },
+    "source_fact:4cfa632100fdc57f2e663b8d": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170440",
+      "source": "매일경제",
+      "source_body_digest": "645a53276a29bfd97bbcd1a0b5a88961e0b25ae86565d1b32302f0b4cb19cffc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:28c8362941d00b8a1e201e89d46ec5ce85ae55b540b9900299e27806efbe96d8",
+      "source_fact_keys": [
+        "source_fact:v1:543c9e6e04a4d304942e5ae7a3c6944349478314784de5f3d00b6920f39c2abf"
+      ],
+      "source_published_kst": "2026-10-06T17:34+09:00",
+      "title": "기업 DB, 계열사에만 제공…조사協, 한국평가데이터 공정위 신고"
     },
     "source_fact:4d45a05ac4a815641728397d": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
@@ -84152,6 +84748,25 @@
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
     },
+    "source_fact:5ac4d551a0f86cf9b852403e": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.mt.co.kr/living/2026/10/06/2026100618330229805",
+      "source": "머니투데이",
+      "source_body_digest": "0c92a839fd9ea4d1a738c488295fff9a9b1254e97af55491dfe2956d7dcefd9b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f633a823d158d3a1dee3b76ce668996dd555b06ba19b744f193361bc50d7ea37",
+      "source_fact_keys": [
+        "source_fact:v1:823ec51beda1c92541f8ab218d1f7fde6db555001c407db08ceccf64525b9658",
+        "source_fact:v1:b3e71080d81b96c553db15209c8703e19e2851cd3a680fe942e5a2bc450fdc0e",
+        "source_fact:v1:eee5e70e46aea654e297735420acc5923b70ddb8ce4f1980df146b0e8ad11de1"
+      ],
+      "source_published_kst": "2026-10-06T18:35+09:00",
+      "title": "오텍캐리어, 글로벌 캐리어와 협력...\"대용량 냉각수 라인업 확대\""
+    },
     "source_fact:5ad7a94b31860ceadbf3a54c": {
       "first_seen_kst": "2026-10-06T20:54:05+09:00",
       "lanes": {
@@ -86379,6 +86994,26 @@
       "source_published_kst": "2026-10-06T06:40+09:00",
       "title": "“중동 원유수출 증가·G7 비축유 방출 약속“ 국제유가 1.8%↓"
     },
+    "source_fact:6716fdf0f6409c9fdff68d0d": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.hankyung.com/article/2026100663521",
+      "source": "한국경제",
+      "source_body_digest": "bc69564d3f15bb5c22b1524030304ee2c931aa6f18a456b30d0cfd027e6b6942",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f5e6ccddd41a8952a88118fa689c8d1720ea07c3db1a9d0bf681b5fd26a4af32",
+      "source_fact_keys": [
+        "source_fact:v1:042cb7c715317eb3c9484778b72f74b1b3ac02855319698a0b50f7caf084d5e1",
+        "source_fact:v1:2b25766192fad4605885b49ccb93026c4de54b1401a7cd6a487b8931d58ca4c4",
+        "source_fact:v1:a2a7fc59f9b06e62d3145ed46a835a8a692e682031908bc4feb8ec1e948ae78d",
+        "source_fact:v1:da8b60edf81bd86935b65add4956135e8ecf77fcfeb76f179a90140ddce11015"
+      ],
+      "source_published_kst": "2026-10-06T18:38+09:00",
+      "title": "부산 스타트업 '데이터스피라' 伊 명품 돌체앤가바나 뚫었다"
+    },
     "source_fact:67330f47e3cc6c9df0bfd2c4": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
       "lanes": {
@@ -87447,6 +88082,25 @@
       ],
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "반도체 소부장 랠리 … ETF 출시도 잇따라"
+    },
+    "source_fact:6cb28128734a396188053c14": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.hankyung.com/article/2026100662751",
+      "source": "한국경제",
+      "source_body_digest": "ba913447ec5849f014348dcbfb578f4dd3a14e123396b1e8b589138006e36666",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ded7b2624d1d714c53172d90c56f8f6a1de4721e2eb2c37b85adbf9a5aed2700",
+      "source_fact_keys": [
+        "source_fact:v1:0fc2f43a598a84d1b7512834bdd6c9cc2fbe8dc31bb95ffa8a741f2ad1dc20f9",
+        "source_fact:v1:774f5d1fc6af42294746dfc0c4980ae1873c6635bf10b9c7ddcf6b7aef9137c6",
+        "source_fact:v1:c005653bcb7c8905d7eb0c74b0e4b5b8a7c3e22aad07cb68b7de2a855f8996a8"
+      ],
+      "source_published_kst": "2026-10-06T17:57+09:00",
+      "title": "대학가 주택 '공공기숙사'로…LH, 서울대와 200가구 공급"
     },
     "source_fact:6d0db97ab65528d993f3bef8": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
@@ -90959,6 +91613,34 @@
       "source_published_kst": "2026-10-05T17:00+09:00",
       "title": "[주간수급리포트] 외국인, 삼전닉스 7.5조 던졌다⋯‘자사주+개인’이 방어"
     },
+    "source_fact:7d950f9e199184588a16f2dc": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169573",
+      "source": "매일경제",
+      "source_body_digest": "7e23daf0972179c1390afa204fc15c645258204c6ac9deca1ae5b5242625a508",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cfd461ab9a752214094e1d5148b2b2e0d7dee261e6075a54ad008900fb2570ad",
+      "source_fact_keys": [
+        "source_fact:v1:322f8b6d04eec270b0aa773c93b9f477d04477e411c3ca29c9b45f23d3f3f252",
+        "source_fact:v1:3943a4071b79d9b21236aa422c47f80d19de40d75642b5b70730731fc949e3bd",
+        "source_fact:v1:42375401a91c0ffa032337732f87e99443e039e3c01dfc8de71040d618fe8151",
+        "source_fact:v1:577097fbe8732a3df92b4fb428015ba49c80b95f36cb2fb838ac5300a3e22881",
+        "source_fact:v1:58a859a0bb0bc82014bd454c718405586ae60438f48df896ead133d8a3c66b3c",
+        "source_fact:v1:5f7de242b37452bdb619070b7306fdfc0b8cee58e11bbf6e16cf125cdbf3ea7b",
+        "source_fact:v1:99b67cb3c6550b5e018f775464ff97b84eaf7d0253fac5c374583ff2f017d8a4",
+        "source_fact:v1:b76a6cfeb311618829d9466525afd2311c73306718dcb0ee0cdec7545121cf84",
+        "source_fact:v1:c32714a5d32b29c822e8d8308f835c7731bca6c1d24d13be6544c97739cb87b6",
+        "source_fact:v1:dcc49b05b65259eba95b16f3eb6a2b2a46b4b83c74bb89188454e4dff3c2a569",
+        "source_fact:v1:ea28d24aba11ad514de06cf528bec9db3216bc54fcbf9535a6c7fbcf63ae6a23",
+        "source_fact:v1:f9ca51b6a4184a2a6815361439f1dd81956a3061b7a93b083d06009af818e11e"
+      ],
+      "source_published_kst": "2026-10-06T17:45+09:00",
+      "title": "삼성전기, MLCC 또 장기계약"
+    },
     "source_fact:7d9b67b3d0c5752d6a601347": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
       "lanes": {
@@ -92887,6 +93569,23 @@
       ],
       "source_published_kst": "2026-10-05T20:25+09:00",
       "title": "피티씨, 슈나이더에 피인수..주당 205달러·프리미엄 42%"
+    },
+    "source_fact:86a89730331a13163dffb508": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170482",
+      "source": "매일경제",
+      "source_body_digest": "f8ef35fc69cbd79e0e270a2a2d0931114270084c8ccc0ffbe194d19860c8f153",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a6b50f1abc9ec2a3606a3d8cfaec76eb45809083cab32ca3027a842699c5edfb",
+      "source_fact_keys": [
+        "source_fact:v1:53f17ffb5730275b6da31d3058268ae2977ec9e7ea28ad86ab893bcdc956984f"
+      ],
+      "source_published_kst": "2026-10-06T20:10+09:00",
+      "title": "콘스텔레이션, 구글과 10억 달러 이상 원전 전력 계약 임박 소식에 강세"
     },
     "source_fact:86cb311db73e23fa85378834": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
@@ -96008,6 +96707,34 @@
       "source_published_kst": "2026-10-06T09:53+09:00",
       "title": "예멘 후티군 사우디 전역 미사일 무인기공격.. 사우디 군은 홍해 승리 주장"
     },
+    "source_fact:973f688f0a323c8a085bc433": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169573",
+      "source": "매일경제",
+      "source_body_digest": "7e23daf0972179c1390afa204fc15c645258204c6ac9deca1ae5b5242625a508",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cfd461ab9a752214094e1d5148b2b2e0d7dee261e6075a54ad008900fb2570ad",
+      "source_fact_keys": [
+        "source_fact:v1:322f8b6d04eec270b0aa773c93b9f477d04477e411c3ca29c9b45f23d3f3f252",
+        "source_fact:v1:3943a4071b79d9b21236aa422c47f80d19de40d75642b5b70730731fc949e3bd",
+        "source_fact:v1:42375401a91c0ffa032337732f87e99443e039e3c01dfc8de71040d618fe8151",
+        "source_fact:v1:577097fbe8732a3df92b4fb428015ba49c80b95f36cb2fb838ac5300a3e22881",
+        "source_fact:v1:58a859a0bb0bc82014bd454c718405586ae60438f48df896ead133d8a3c66b3c",
+        "source_fact:v1:5f7de242b37452bdb619070b7306fdfc0b8cee58e11bbf6e16cf125cdbf3ea7b",
+        "source_fact:v1:99b67cb3c6550b5e018f775464ff97b84eaf7d0253fac5c374583ff2f017d8a4",
+        "source_fact:v1:b76a6cfeb311618829d9466525afd2311c73306718dcb0ee0cdec7545121cf84",
+        "source_fact:v1:c32714a5d32b29c822e8d8308f835c7731bca6c1d24d13be6544c97739cb87b6",
+        "source_fact:v1:dcc49b05b65259eba95b16f3eb6a2b2a46b4b83c74bb89188454e4dff3c2a569",
+        "source_fact:v1:ea28d24aba11ad514de06cf528bec9db3216bc54fcbf9535a6c7fbcf63ae6a23",
+        "source_fact:v1:f9ca51b6a4184a2a6815361439f1dd81956a3061b7a93b083d06009af818e11e"
+      ],
+      "source_published_kst": "2026-10-06T17:45+09:00",
+      "title": "삼성전기, MLCC 또 장기계약"
+    },
     "source_fact:97504e165b6fb7823fde00cc": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
       "lanes": {
@@ -96764,6 +97491,25 @@
       ],
       "source_published_kst": "2026-10-06T16:09+09:00",
       "title": "롯데백화점 외국인 매출 1조 돌파…신세계·현대도 '목전'(종합)"
+    },
+    "source_fact:9ac796c7de7f70a22263ddc8": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.hankyung.com/article/2026100662751",
+      "source": "한국경제",
+      "source_body_digest": "ba913447ec5849f014348dcbfb578f4dd3a14e123396b1e8b589138006e36666",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ded7b2624d1d714c53172d90c56f8f6a1de4721e2eb2c37b85adbf9a5aed2700",
+      "source_fact_keys": [
+        "source_fact:v1:0fc2f43a598a84d1b7512834bdd6c9cc2fbe8dc31bb95ffa8a741f2ad1dc20f9",
+        "source_fact:v1:774f5d1fc6af42294746dfc0c4980ae1873c6635bf10b9c7ddcf6b7aef9137c6",
+        "source_fact:v1:c005653bcb7c8905d7eb0c74b0e4b5b8a7c3e22aad07cb68b7de2a855f8996a8"
+      ],
+      "source_published_kst": "2026-10-06T17:57+09:00",
+      "title": "대학가 주택 '공공기숙사'로…LH, 서울대와 200가구 공급"
     },
     "source_fact:9b2bd2303ad0ddaa5390cca3": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
@@ -98441,6 +99187,34 @@
       ],
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "데이터센터 반대여론에도 美건설 계속…2027년 90GW 전망"
+    },
+    "source_fact:a38cb64c7985f7b21e5c5e4f": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169573",
+      "source": "매일경제",
+      "source_body_digest": "7e23daf0972179c1390afa204fc15c645258204c6ac9deca1ae5b5242625a508",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cfd461ab9a752214094e1d5148b2b2e0d7dee261e6075a54ad008900fb2570ad",
+      "source_fact_keys": [
+        "source_fact:v1:322f8b6d04eec270b0aa773c93b9f477d04477e411c3ca29c9b45f23d3f3f252",
+        "source_fact:v1:3943a4071b79d9b21236aa422c47f80d19de40d75642b5b70730731fc949e3bd",
+        "source_fact:v1:42375401a91c0ffa032337732f87e99443e039e3c01dfc8de71040d618fe8151",
+        "source_fact:v1:577097fbe8732a3df92b4fb428015ba49c80b95f36cb2fb838ac5300a3e22881",
+        "source_fact:v1:58a859a0bb0bc82014bd454c718405586ae60438f48df896ead133d8a3c66b3c",
+        "source_fact:v1:5f7de242b37452bdb619070b7306fdfc0b8cee58e11bbf6e16cf125cdbf3ea7b",
+        "source_fact:v1:99b67cb3c6550b5e018f775464ff97b84eaf7d0253fac5c374583ff2f017d8a4",
+        "source_fact:v1:b76a6cfeb311618829d9466525afd2311c73306718dcb0ee0cdec7545121cf84",
+        "source_fact:v1:c32714a5d32b29c822e8d8308f835c7731bca6c1d24d13be6544c97739cb87b6",
+        "source_fact:v1:dcc49b05b65259eba95b16f3eb6a2b2a46b4b83c74bb89188454e4dff3c2a569",
+        "source_fact:v1:ea28d24aba11ad514de06cf528bec9db3216bc54fcbf9535a6c7fbcf63ae6a23",
+        "source_fact:v1:f9ca51b6a4184a2a6815361439f1dd81956a3061b7a93b083d06009af818e11e"
+      ],
+      "source_published_kst": "2026-10-06T17:45+09:00",
+      "title": "삼성전기, MLCC 또 장기계약"
     },
     "source_fact:a3b168ed05c1a71ae715ba5e": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
@@ -100971,6 +101745,25 @@
       ],
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
+    },
+    "source_fact:b1f11768f87b89bd9285817f": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.mt.co.kr/living/2026/10/06/2026100618330229805",
+      "source": "머니투데이",
+      "source_body_digest": "0c92a839fd9ea4d1a738c488295fff9a9b1254e97af55491dfe2956d7dcefd9b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f633a823d158d3a1dee3b76ce668996dd555b06ba19b744f193361bc50d7ea37",
+      "source_fact_keys": [
+        "source_fact:v1:823ec51beda1c92541f8ab218d1f7fde6db555001c407db08ceccf64525b9658",
+        "source_fact:v1:b3e71080d81b96c553db15209c8703e19e2851cd3a680fe942e5a2bc450fdc0e",
+        "source_fact:v1:eee5e70e46aea654e297735420acc5923b70ddb8ce4f1980df146b0e8ad11de1"
+      ],
+      "source_published_kst": "2026-10-06T18:35+09:00",
+      "title": "오텍캐리어, 글로벌 캐리어와 협력...\"대용량 냉각수 라인업 확대\""
     },
     "source_fact:b1ff52478f08ba3b0ebb147f": {
       "first_seen_kst": "2026-10-06T03:45:53+09:00",
@@ -103580,6 +104373,26 @@
       "source_published_kst": "2026-10-05T21:21+09:00",
       "title": "C.H. 로빈슨, RXO 58억 달러 인수 합의…3억 달러 시너지 목표"
     },
+    "source_fact:bf9dfb63386aa81f92c3c9b1": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.hankyung.com/article/2026100663521",
+      "source": "한국경제",
+      "source_body_digest": "bc69564d3f15bb5c22b1524030304ee2c931aa6f18a456b30d0cfd027e6b6942",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f5e6ccddd41a8952a88118fa689c8d1720ea07c3db1a9d0bf681b5fd26a4af32",
+      "source_fact_keys": [
+        "source_fact:v1:042cb7c715317eb3c9484778b72f74b1b3ac02855319698a0b50f7caf084d5e1",
+        "source_fact:v1:2b25766192fad4605885b49ccb93026c4de54b1401a7cd6a487b8931d58ca4c4",
+        "source_fact:v1:a2a7fc59f9b06e62d3145ed46a835a8a692e682031908bc4feb8ec1e948ae78d",
+        "source_fact:v1:da8b60edf81bd86935b65add4956135e8ecf77fcfeb76f179a90140ddce11015"
+      ],
+      "source_published_kst": "2026-10-06T18:38+09:00",
+      "title": "부산 스타트업 '데이터스피라' 伊 명품 돌체앤가바나 뚫었다"
+    },
     "source_fact:bffca875101bbb30435a743b": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
       "lanes": {
@@ -103671,6 +104484,34 @@
       ],
       "source_published_kst": "2026-10-06T11:09+09:00",
       "title": "폭염·AI에 日 전력난 비상… 노후 화력발전 수명연장 검토 | 연합뉴스"
+    },
+    "source_fact:c03ea9a1c47980914ed21a10": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169573",
+      "source": "매일경제",
+      "source_body_digest": "7e23daf0972179c1390afa204fc15c645258204c6ac9deca1ae5b5242625a508",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cfd461ab9a752214094e1d5148b2b2e0d7dee261e6075a54ad008900fb2570ad",
+      "source_fact_keys": [
+        "source_fact:v1:322f8b6d04eec270b0aa773c93b9f477d04477e411c3ca29c9b45f23d3f3f252",
+        "source_fact:v1:3943a4071b79d9b21236aa422c47f80d19de40d75642b5b70730731fc949e3bd",
+        "source_fact:v1:42375401a91c0ffa032337732f87e99443e039e3c01dfc8de71040d618fe8151",
+        "source_fact:v1:577097fbe8732a3df92b4fb428015ba49c80b95f36cb2fb838ac5300a3e22881",
+        "source_fact:v1:58a859a0bb0bc82014bd454c718405586ae60438f48df896ead133d8a3c66b3c",
+        "source_fact:v1:5f7de242b37452bdb619070b7306fdfc0b8cee58e11bbf6e16cf125cdbf3ea7b",
+        "source_fact:v1:99b67cb3c6550b5e018f775464ff97b84eaf7d0253fac5c374583ff2f017d8a4",
+        "source_fact:v1:b76a6cfeb311618829d9466525afd2311c73306718dcb0ee0cdec7545121cf84",
+        "source_fact:v1:c32714a5d32b29c822e8d8308f835c7731bca6c1d24d13be6544c97739cb87b6",
+        "source_fact:v1:dcc49b05b65259eba95b16f3eb6a2b2a46b4b83c74bb89188454e4dff3c2a569",
+        "source_fact:v1:ea28d24aba11ad514de06cf528bec9db3216bc54fcbf9535a6c7fbcf63ae6a23",
+        "source_fact:v1:f9ca51b6a4184a2a6815361439f1dd81956a3061b7a93b083d06009af818e11e"
+      ],
+      "source_published_kst": "2026-10-06T17:45+09:00",
+      "title": "삼성전기, MLCC 또 장기계약"
     },
     "source_fact:c08201de2a1e763edbeb1894": {
       "first_seen_kst": "2026-10-06T15:14:29+09:00",
@@ -105957,6 +106798,34 @@
       "source_published_kst": "2026-10-06T11:04+09:00",
       "title": "\"트럼프가 돈 준다고? 안 믿어\"…지지율 역대 최저, 히스패닉도 이탈"
     },
+    "source_fact:ccb416dd2185cf2a5fc0e8ca": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169573",
+      "source": "매일경제",
+      "source_body_digest": "7e23daf0972179c1390afa204fc15c645258204c6ac9deca1ae5b5242625a508",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cfd461ab9a752214094e1d5148b2b2e0d7dee261e6075a54ad008900fb2570ad",
+      "source_fact_keys": [
+        "source_fact:v1:322f8b6d04eec270b0aa773c93b9f477d04477e411c3ca29c9b45f23d3f3f252",
+        "source_fact:v1:3943a4071b79d9b21236aa422c47f80d19de40d75642b5b70730731fc949e3bd",
+        "source_fact:v1:42375401a91c0ffa032337732f87e99443e039e3c01dfc8de71040d618fe8151",
+        "source_fact:v1:577097fbe8732a3df92b4fb428015ba49c80b95f36cb2fb838ac5300a3e22881",
+        "source_fact:v1:58a859a0bb0bc82014bd454c718405586ae60438f48df896ead133d8a3c66b3c",
+        "source_fact:v1:5f7de242b37452bdb619070b7306fdfc0b8cee58e11bbf6e16cf125cdbf3ea7b",
+        "source_fact:v1:99b67cb3c6550b5e018f775464ff97b84eaf7d0253fac5c374583ff2f017d8a4",
+        "source_fact:v1:b76a6cfeb311618829d9466525afd2311c73306718dcb0ee0cdec7545121cf84",
+        "source_fact:v1:c32714a5d32b29c822e8d8308f835c7731bca6c1d24d13be6544c97739cb87b6",
+        "source_fact:v1:dcc49b05b65259eba95b16f3eb6a2b2a46b4b83c74bb89188454e4dff3c2a569",
+        "source_fact:v1:ea28d24aba11ad514de06cf528bec9db3216bc54fcbf9535a6c7fbcf63ae6a23",
+        "source_fact:v1:f9ca51b6a4184a2a6815361439f1dd81956a3061b7a93b083d06009af818e11e"
+      ],
+      "source_published_kst": "2026-10-06T17:45+09:00",
+      "title": "삼성전기, MLCC 또 장기계약"
+    },
     "source_fact:ccb65fc8c93d692152272843": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -107375,6 +108244,34 @@
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
     },
+    "source_fact:d3614be93ab4a7ea75db77e7": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169573",
+      "source": "매일경제",
+      "source_body_digest": "7e23daf0972179c1390afa204fc15c645258204c6ac9deca1ae5b5242625a508",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cfd461ab9a752214094e1d5148b2b2e0d7dee261e6075a54ad008900fb2570ad",
+      "source_fact_keys": [
+        "source_fact:v1:322f8b6d04eec270b0aa773c93b9f477d04477e411c3ca29c9b45f23d3f3f252",
+        "source_fact:v1:3943a4071b79d9b21236aa422c47f80d19de40d75642b5b70730731fc949e3bd",
+        "source_fact:v1:42375401a91c0ffa032337732f87e99443e039e3c01dfc8de71040d618fe8151",
+        "source_fact:v1:577097fbe8732a3df92b4fb428015ba49c80b95f36cb2fb838ac5300a3e22881",
+        "source_fact:v1:58a859a0bb0bc82014bd454c718405586ae60438f48df896ead133d8a3c66b3c",
+        "source_fact:v1:5f7de242b37452bdb619070b7306fdfc0b8cee58e11bbf6e16cf125cdbf3ea7b",
+        "source_fact:v1:99b67cb3c6550b5e018f775464ff97b84eaf7d0253fac5c374583ff2f017d8a4",
+        "source_fact:v1:b76a6cfeb311618829d9466525afd2311c73306718dcb0ee0cdec7545121cf84",
+        "source_fact:v1:c32714a5d32b29c822e8d8308f835c7731bca6c1d24d13be6544c97739cb87b6",
+        "source_fact:v1:dcc49b05b65259eba95b16f3eb6a2b2a46b4b83c74bb89188454e4dff3c2a569",
+        "source_fact:v1:ea28d24aba11ad514de06cf528bec9db3216bc54fcbf9535a6c7fbcf63ae6a23",
+        "source_fact:v1:f9ca51b6a4184a2a6815361439f1dd81956a3061b7a93b083d06009af818e11e"
+      ],
+      "source_published_kst": "2026-10-06T17:45+09:00",
+      "title": "삼성전기, MLCC 또 장기계약"
+    },
     "source_fact:d36258145ce84f7a38d02dd4": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -107755,6 +108652,25 @@
       ],
       "source_published_kst": "2026-10-05T17:23+09:00",
       "title": "AI 해킹 확산에 'AI 방패' 꺼낸 금융당국…'망분리 완화' 해법 될 수 있나"
+    },
+    "source_fact:d5bf7235a4102bee26617954": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.mt.co.kr/living/2026/10/06/2026100618330229805",
+      "source": "머니투데이",
+      "source_body_digest": "0c92a839fd9ea4d1a738c488295fff9a9b1254e97af55491dfe2956d7dcefd9b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f633a823d158d3a1dee3b76ce668996dd555b06ba19b744f193361bc50d7ea37",
+      "source_fact_keys": [
+        "source_fact:v1:823ec51beda1c92541f8ab218d1f7fde6db555001c407db08ceccf64525b9658",
+        "source_fact:v1:b3e71080d81b96c553db15209c8703e19e2851cd3a680fe942e5a2bc450fdc0e",
+        "source_fact:v1:eee5e70e46aea654e297735420acc5923b70ddb8ce4f1980df146b0e8ad11de1"
+      ],
+      "source_published_kst": "2026-10-06T18:35+09:00",
+      "title": "오텍캐리어, 글로벌 캐리어와 협력...\"대용량 냉각수 라인업 확대\""
     },
     "source_fact:d5fc4cb1818be7eb0fcefc01": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
@@ -110406,6 +111322,34 @@
       ],
       "source_published_kst": "2026-10-06T11:25+09:00",
       "title": "[속보]삼성전기, 2900억 규모 AI 서버용 MLCC 공급계약 체결"
+    },
+    "source_fact:e2212463951d9d25eef3aa9d": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169573",
+      "source": "매일경제",
+      "source_body_digest": "7e23daf0972179c1390afa204fc15c645258204c6ac9deca1ae5b5242625a508",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cfd461ab9a752214094e1d5148b2b2e0d7dee261e6075a54ad008900fb2570ad",
+      "source_fact_keys": [
+        "source_fact:v1:322f8b6d04eec270b0aa773c93b9f477d04477e411c3ca29c9b45f23d3f3f252",
+        "source_fact:v1:3943a4071b79d9b21236aa422c47f80d19de40d75642b5b70730731fc949e3bd",
+        "source_fact:v1:42375401a91c0ffa032337732f87e99443e039e3c01dfc8de71040d618fe8151",
+        "source_fact:v1:577097fbe8732a3df92b4fb428015ba49c80b95f36cb2fb838ac5300a3e22881",
+        "source_fact:v1:58a859a0bb0bc82014bd454c718405586ae60438f48df896ead133d8a3c66b3c",
+        "source_fact:v1:5f7de242b37452bdb619070b7306fdfc0b8cee58e11bbf6e16cf125cdbf3ea7b",
+        "source_fact:v1:99b67cb3c6550b5e018f775464ff97b84eaf7d0253fac5c374583ff2f017d8a4",
+        "source_fact:v1:b76a6cfeb311618829d9466525afd2311c73306718dcb0ee0cdec7545121cf84",
+        "source_fact:v1:c32714a5d32b29c822e8d8308f835c7731bca6c1d24d13be6544c97739cb87b6",
+        "source_fact:v1:dcc49b05b65259eba95b16f3eb6a2b2a46b4b83c74bb89188454e4dff3c2a569",
+        "source_fact:v1:ea28d24aba11ad514de06cf528bec9db3216bc54fcbf9535a6c7fbcf63ae6a23",
+        "source_fact:v1:f9ca51b6a4184a2a6815361439f1dd81956a3061b7a93b083d06009af818e11e"
+      ],
+      "source_published_kst": "2026-10-06T17:45+09:00",
+      "title": "삼성전기, MLCC 또 장기계약"
     },
     "source_fact:e2253718b53086f538da7e32": {
       "first_seen_kst": "2026-10-06T19:10:36+09:00",
@@ -113060,6 +114004,26 @@
       ],
       "source_published_kst": "2026-10-06T17:17+09:00",
       "title": "테라뷰, 11억 규모 반도체 검사장비 공급계약"
+    },
+    "source_fact:ef04a7981683840c017f10f9": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.hankyung.com/article/2026100663521",
+      "source": "한국경제",
+      "source_body_digest": "bc69564d3f15bb5c22b1524030304ee2c931aa6f18a456b30d0cfd027e6b6942",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f5e6ccddd41a8952a88118fa689c8d1720ea07c3db1a9d0bf681b5fd26a4af32",
+      "source_fact_keys": [
+        "source_fact:v1:042cb7c715317eb3c9484778b72f74b1b3ac02855319698a0b50f7caf084d5e1",
+        "source_fact:v1:2b25766192fad4605885b49ccb93026c4de54b1401a7cd6a487b8931d58ca4c4",
+        "source_fact:v1:a2a7fc59f9b06e62d3145ed46a835a8a692e682031908bc4feb8ec1e948ae78d",
+        "source_fact:v1:da8b60edf81bd86935b65add4956135e8ecf77fcfeb76f179a90140ddce11015"
+      ],
+      "source_published_kst": "2026-10-06T18:38+09:00",
+      "title": "부산 스타트업 '데이터스피라' 伊 명품 돌체앤가바나 뚫었다"
     },
     "source_fact:ef402e514c69b758444f8164": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
@@ -122173,6 +123137,21 @@
       "source_published_kst": "2026-10-04T09:00+09:00",
       "title": "2년간 결손 난 회사 주식으로 상속세 물납 신청…法 “거부 적법”"
     },
+    "title:3ab9f0e900f959259f4b488d": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/06/2026100619352199698",
+      "source": "머니투데이",
+      "source_body_digest": "0a001c434ae002e6b87dcd418e69daef3c116a1154f711ccf29b512a1cf72967",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T19:46+09:00",
+      "title": "美, 물가 상승·소비심리 한파에도 가계 지출 1년새 6.1%↑"
+    },
     "title:3aceabeaa913d0a66128097d": {
       "first_seen_kst": "2026-10-02T18:51:02+09:00",
       "lanes": {
@@ -125342,6 +126321,34 @@
       "source_published_kst": "2026-10-06T08:33+09:00",
       "title": "“광고·커머스 매출 성장 둔화, AI 비용 증가”…대신증권, NAVER 목표가↓"
     },
+    "title:595c9d64473ee5c713ca2dca": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169573",
+      "source": "매일경제",
+      "source_body_digest": "7e23daf0972179c1390afa204fc15c645258204c6ac9deca1ae5b5242625a508",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cfd461ab9a752214094e1d5148b2b2e0d7dee261e6075a54ad008900fb2570ad",
+      "source_fact_keys": [
+        "source_fact:v1:322f8b6d04eec270b0aa773c93b9f477d04477e411c3ca29c9b45f23d3f3f252",
+        "source_fact:v1:3943a4071b79d9b21236aa422c47f80d19de40d75642b5b70730731fc949e3bd",
+        "source_fact:v1:42375401a91c0ffa032337732f87e99443e039e3c01dfc8de71040d618fe8151",
+        "source_fact:v1:577097fbe8732a3df92b4fb428015ba49c80b95f36cb2fb838ac5300a3e22881",
+        "source_fact:v1:58a859a0bb0bc82014bd454c718405586ae60438f48df896ead133d8a3c66b3c",
+        "source_fact:v1:5f7de242b37452bdb619070b7306fdfc0b8cee58e11bbf6e16cf125cdbf3ea7b",
+        "source_fact:v1:99b67cb3c6550b5e018f775464ff97b84eaf7d0253fac5c374583ff2f017d8a4",
+        "source_fact:v1:b76a6cfeb311618829d9466525afd2311c73306718dcb0ee0cdec7545121cf84",
+        "source_fact:v1:c32714a5d32b29c822e8d8308f835c7731bca6c1d24d13be6544c97739cb87b6",
+        "source_fact:v1:dcc49b05b65259eba95b16f3eb6a2b2a46b4b83c74bb89188454e4dff3c2a569",
+        "source_fact:v1:ea28d24aba11ad514de06cf528bec9db3216bc54fcbf9535a6c7fbcf63ae6a23",
+        "source_fact:v1:f9ca51b6a4184a2a6815361439f1dd81956a3061b7a93b083d06009af818e11e"
+      ],
+      "source_published_kst": "2026-10-06T17:45+09:00",
+      "title": "삼성전기, MLCC 또 장기계약"
+    },
     "title:59619bd9e8a5dba2ba0e4195": {
       "first_seen_kst": "2026-10-05T06:25:21+09:00",
       "lanes": {
@@ -125937,6 +126944,23 @@
       "source_published_kst": "2026-10-05T10:02+09:00",
       "title": "[챗집피티]'312가구' 여의도 목화, 래미안 품고 사업성 키운 비결은"
     },
+    "title:5fceb0318b48292356837123": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170440",
+      "source": "매일경제",
+      "source_body_digest": "645a53276a29bfd97bbcd1a0b5a88961e0b25ae86565d1b32302f0b4cb19cffc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:28c8362941d00b8a1e201e89d46ec5ce85ae55b540b9900299e27806efbe96d8",
+      "source_fact_keys": [
+        "source_fact:v1:543c9e6e04a4d304942e5ae7a3c6944349478314784de5f3d00b6920f39c2abf"
+      ],
+      "source_published_kst": "2026-10-06T17:34+09:00",
+      "title": "기업 DB, 계열사에만 제공…조사協, 한국평가데이터 공정위 신고"
+    },
     "title:5fe4b7cb445547f6b1228927": {
       "first_seen_kst": "2026-10-05T01:05:10+09:00",
       "lanes": {
@@ -126459,6 +127483,25 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T11:30+09:00",
       "title": "AMRO, 올해 한국 성장률 3.3%로 상향…7월 이어 또 높였다"
+    },
+    "title:67230f64b9cff7529829585d": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.mt.co.kr/living/2026/10/06/2026100618330229805",
+      "source": "머니투데이",
+      "source_body_digest": "0c92a839fd9ea4d1a738c488295fff9a9b1254e97af55491dfe2956d7dcefd9b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f633a823d158d3a1dee3b76ce668996dd555b06ba19b744f193361bc50d7ea37",
+      "source_fact_keys": [
+        "source_fact:v1:823ec51beda1c92541f8ab218d1f7fde6db555001c407db08ceccf64525b9658",
+        "source_fact:v1:b3e71080d81b96c553db15209c8703e19e2851cd3a680fe942e5a2bc450fdc0e",
+        "source_fact:v1:eee5e70e46aea654e297735420acc5923b70ddb8ce4f1980df146b0e8ad11de1"
+      ],
+      "source_published_kst": "2026-10-06T18:35+09:00",
+      "title": "오텍캐리어, 글로벌 캐리어와 협력...\"대용량 냉각수 라인업 확대\""
     },
     "title:6742f0629a95b0d748e3bf81": {
       "first_seen_kst": "2026-09-18T21:26:25+09:00",
@@ -128071,6 +129114,23 @@
       "link": "https://www.yna.co.kr/view/AKR20260916005500072",
       "source": "연합뉴스",
       "title": "사우디 공급 차질 우려 심화…국제유가 5월 19일 이후 최고 | 연합뉴스"
+    },
+    "title:7472e144f03af422a5578317": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170482",
+      "source": "매일경제",
+      "source_body_digest": "f8ef35fc69cbd79e0e270a2a2d0931114270084c8ccc0ffbe194d19860c8f153",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a6b50f1abc9ec2a3606a3d8cfaec76eb45809083cab32ca3027a842699c5edfb",
+      "source_fact_keys": [
+        "source_fact:v1:53f17ffb5730275b6da31d3058268ae2977ec9e7ea28ad86ab893bcdc956984f"
+      ],
+      "source_published_kst": "2026-10-06T20:10+09:00",
+      "title": "콘스텔레이션, 구글과 10억 달러 이상 원전 전력 계약 임박 소식에 강세"
     },
     "title:74753bff72a4a03226cef334": {
       "first_seen_kst": "2026-09-30T16:46:52+09:00",
@@ -133691,6 +134751,26 @@
       "source": "연합뉴스",
       "title": "9월 농산물 가격 전년 동월 대비 4% 하락…축산물은 3.7% 상승 | 연합뉴스"
     },
+    "title:aff822eac2b0a25322928622": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.hankyung.com/article/2026100663521",
+      "source": "한국경제",
+      "source_body_digest": "bc69564d3f15bb5c22b1524030304ee2c931aa6f18a456b30d0cfd027e6b6942",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f5e6ccddd41a8952a88118fa689c8d1720ea07c3db1a9d0bf681b5fd26a4af32",
+      "source_fact_keys": [
+        "source_fact:v1:042cb7c715317eb3c9484778b72f74b1b3ac02855319698a0b50f7caf084d5e1",
+        "source_fact:v1:2b25766192fad4605885b49ccb93026c4de54b1401a7cd6a487b8931d58ca4c4",
+        "source_fact:v1:a2a7fc59f9b06e62d3145ed46a835a8a692e682031908bc4feb8ec1e948ae78d",
+        "source_fact:v1:da8b60edf81bd86935b65add4956135e8ecf77fcfeb76f179a90140ddce11015"
+      ],
+      "source_published_kst": "2026-10-06T18:38+09:00",
+      "title": "부산 스타트업 '데이터스피라' 伊 명품 돌체앤가바나 뚫었다"
+    },
     "title:affe6938716453b910bdcc3c": {
       "first_seen_kst": "2026-09-19T20:13:35+09:00",
       "lanes": {
@@ -136039,6 +137119,25 @@
       "link": "https://www.mk.co.kr/news/stock/12164151",
       "source": "매일경제",
       "title": "카맥스, 2분기 EPS 81% 급증..자사주 매입 재개"
+    },
+    "title:c974e9632ce1cebefca0aebc": {
+      "first_seen_kst": "2026-10-06T21:17:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:17:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:17:11+09:00",
+      "link": "https://www.hankyung.com/article/2026100662751",
+      "source": "한국경제",
+      "source_body_digest": "ba913447ec5849f014348dcbfb578f4dd3a14e123396b1e8b589138006e36666",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ded7b2624d1d714c53172d90c56f8f6a1de4721e2eb2c37b85adbf9a5aed2700",
+      "source_fact_keys": [
+        "source_fact:v1:0fc2f43a598a84d1b7512834bdd6c9cc2fbe8dc31bb95ffa8a741f2ad1dc20f9",
+        "source_fact:v1:774f5d1fc6af42294746dfc0c4980ae1873c6635bf10b9c7ddcf6b7aef9137c6",
+        "source_fact:v1:c005653bcb7c8905d7eb0c74b0e4b5b8a7c3e22aad07cb68b7de2a855f8996a8"
+      ],
+      "source_published_kst": "2026-10-06T17:57+09:00",
+      "title": "대학가 주택 '공공기숙사'로…LH, 서울대와 200가구 공급"
     },
     "title:c98d2b10728adf7da3d36ad9": {
       "first_seen_kst": "2026-09-20T18:25:16+09:00",
@@ -141549,5 +142648,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T21:05:27+09:00"
+  "updated_at_kst": "2026-10-06T21:17:11+09:00"
 }
