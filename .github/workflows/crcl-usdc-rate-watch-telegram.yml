@@ -98,6 +98,16 @@ jobs:
           label, explanation, score = fmt.discount_view(lag)
           assert score == -1, (label, explanation, score)
           assert "TBX" in explanation and "금리 상승" in explanation, explanation
+
+          direct_label, direct_text, direct_score = fmt.direct_earnings(state)
+          assert direct_label == "판정 보류" and direct_score == 0, (direct_label, direct_text, direct_score)
+          assert "기준일 차이" in direct_text, direct_text
+          proxy_label, proxy_text, proxy_score = fmt.proxy_rates(state)
+          assert proxy_label == "판정 보류" and proxy_score == 0, (proxy_label, proxy_text, proxy_score)
+          assert "기준일이 달라" in proxy_text, proxy_text
+          assert "<b>판정 · 소폭 불리</b>" in rendered
+          assert "이익 프록시 +0.54%" not in rendered
+          print("crcl_date_alignment_guard_valid=true")
           print("compact_crcl_alert_layout_valid=true")
           print(rendered)
           PY
