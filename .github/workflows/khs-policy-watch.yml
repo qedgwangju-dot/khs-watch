@@ -81,6 +81,7 @@ jobs:
           python -m py_compile scripts/gamejoa_preopen_news_radar_full_compact_runner.py
           PYTHONPATH=. python tests/test_polysilicon_policy_guard.py
           python scripts/verify_khs_policy_delivery_contract.py
+          python scripts/verify_gamejoa_delivery_contract.py
           python scripts/verify_khs_policy_readability.py --write-previews
           python -m py_compile scripts/khs_nuclear_policy_watch.py
           PYTHONPATH=. python - <<'PY'
