@@ -2,7 +2,7 @@
 import datetime as dt
 from zoneinfo import ZoneInfo
 
-from kospi_shock_enrichment import _nearest_row, _theme_keywords, select_etfs, _display_name, _is_actionable_theme, _is_real_industry
+from kospi_shock_enrichment import _nearest_row, _theme_keywords, select_etfs, _display_name, _is_actionable_theme, _is_real_industry, direct_industry_interval
 
 KST = ZoneInfo("Asia/Seoul")
 
@@ -67,3 +67,27 @@ master2 = [
 assert not __import__("re").fullmatch(r"\d{6}", master2[0]["shcode"])
 assert __import__("re").fullmatch(r"\d{6}", master2[1]["shcode"])
 print("etf_code_validation_regression=true")
+
+
+# 통합 UBM 업종 투자자 수급은 사건 시작/저점의 30초 이내 기준점만 사용한다.
+import json, tempfile
+from pathlib import Path
+base_ts = dt.datetime(2026, 10, 6, 9, 42, 56, tzinfo=KST).timestamp()
+low_ts = dt.datetime(2026, 10, 6, 9, 57, 0, tzinfo=KST).timestamp()
+records = [
+    {"ts": base_ts-10, "upcode":"013", "industry":"전 기 전 자", "investor":"기관", "msval":1000},
+    {"ts": low_ts-4, "upcode":"013", "industry":"전 기 전 자", "investor":"기관", "msval":600},
+    {"ts": base_ts-8, "upcode":"018", "industry":"운 수 장 비", "investor":"기관", "msval":500},
+    {"ts": low_ts-3, "upcode":"018", "industry":"운 수 장 비", "investor":"기관", "msval":450},
+    {"ts": base_ts-90, "upcode":"005", "industry":"화 학", "investor":"기관", "msval":100},
+    {"ts": low_ts-2, "upcode":"005", "industry":"화 학", "investor":"기관", "msval":-100},
+]
+with tempfile.TemporaryDirectory() as td:
+    p=Path(td)/"ubm.jsonl"
+    p.write_text("\n".join(json.dumps(x, ensure_ascii=False) for x in records)+"\n", encoding="utf-8")
+    direct=direct_industry_interval(base_ts, low_ts, "기관", p, 30.0)
+    assert direct["available"], direct
+    assert direct["rows"][0]["name"] == "전기전자", direct
+    assert direct["rows"][0]["delta"] == -400, direct
+    assert all(x["code"] != "005" for x in direct["rows"]), direct
+print("direct_industry_ubm_regression=true")
