@@ -149,23 +149,54 @@ jobs:
 
       - name: Commit bio watch states
         if: always()
+        shell: bash
         run: |
+          set -euo pipefail
+          files=(
+            data/qlex_sc_conversion_watch_state.json
+            data/qlex_wac_ir_watch_state.json
+            data/intismeran_qlex_watch_state.json
+            data/jemperli_altb4_watch_state.json
+            data/enhertu_altb4_watch_state.json
+            data/halozyme_ptab_watch_state.json
+            data/bio_watch_heartbeat.json
+            data/optogenetics_translation_watch_state.json
+          )
+          tmpdir=$(mktemp -d)
+          for file in "${files[@]}"; do
+            if [ -f "$file" ]; then
+              mkdir -p "$tmpdir/$(dirname "$file")"
+              cp "$file" "$tmpdir/$file"
+            fi
+          done
+
           git config user.name "bio-watch[bot]"
           git config user.email "bio-watch[bot]@users.noreply.github.com"
-          git add data/qlex_sc_conversion_watch_state.json data/qlex_wac_ir_watch_state.json data/intismeran_qlex_watch_state.json data/jemperli_altb4_watch_state.json data/enhertu_altb4_watch_state.json data/halozyme_ptab_watch_state.json data/bio_watch_heartbeat.json data/optogenetics_translation_watch_state.json 2>/dev/null || true
-          if git diff --cached --quiet; then
-            echo "Bio watcher states unchanged"
-          else
-            git commit -m "Update bio partner product watch states"
-            for attempt in 1 2 3; do
-              if git pull --rebase origin main && git push; then
-                exit 0
+
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            for file in "${files[@]}"; do
+              if [ -f "$tmpdir/$file" ]; then
+                mkdir -p "$(dirname "$file")"
+                cp "$tmpdir/$file" "$file"
               fi
-              git rebase --abort 2>/dev/null || true
-              sleep $((attempt * 3))
             done
-            exit 1
-          fi
+            git add "${files[@]}" 2>/dev/null || true
+            if git diff --cached --quiet; then
+              echo "Bio watcher states unchanged"
+              exit 0
+            fi
+            git commit -m "Update bio partner product watch states"
+            if git push origin HEAD:main; then
+              echo "Bio watcher states persisted"
+              exit 0
+            fi
+            echo "Bio state push raced with another update; retrying on latest main (attempt $attempt)"
+            sleep $((attempt * 3))
+          done
+          echo "Failed to persist bio watcher states after retries" >&2
+          exit 1
 
       - name: Upload bio verification artifacts
         if: always()
