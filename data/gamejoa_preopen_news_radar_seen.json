@@ -1837,20 +1837,20 @@
     "event:513feb3bff03a74f9c842b5f": {
       "first_seen_kst": "2026-10-06T10:04:04+09:00",
       "lanes": {
-        "live": "2026-10-06T17:47:23+09:00"
+        "live": "2026-10-06T19:33:48+09:00"
       },
-      "last_seen_kst": "2026-10-06T17:47:23+09:00",
-      "link": "https://www.etnews.com/20261006000218",
-      "source": "전자신문",
-      "source_body_digest": "7bff59fa2c334290a7f71069af447b4292cfb942a4d50d9d3b32667d13659443",
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://biz.chosun.com/it-science/ict/2026/10/06/MBZT3TF6RFDVVITGBC47GGESXI/",
+      "source": "조선비즈",
+      "source_body_digest": "6c202b4adca067e88d90fba3302a96e34c4f40cbd710f4096b077912fb3a7b8d",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:dc28b9286d71ca538d05e563f592cbf0c45cad1432db8c30f16b5cede2bcfd2b",
+      "source_fact_identity": "source_facts:v1:e1f9cc74dc47da69a17b6af9341b0f6cb8527f5173a5921adff0f010a4d08b71",
       "source_fact_keys": [
-        "source_fact:v1:ec3a0a86ba08b756fc2c7a5e16f91d1c8df45048587d765219cd42db81fbf4a8",
-        "source_fact:v1:fdd1495634c7e8119353b4d5068bdc18449c2c12847379c5d2652df2c9dd156d"
+        "source_fact:v1:39bd84ac49ddd0b49d0b3ad4099d985ccd8d09cad3ec06f1a351cc050bc25f2b",
+        "source_fact:v1:d9be8974a97cd22db0ebb5fab58eb545dd8f5962d6f34408990f2e059c590c25"
       ],
-      "source_published_kst": "2026-10-06T15:14+09:00",
-      "title": "삼성전기, 2900억원 AI 서버용 MLCC 공급 계약…“AI 부품 '4조 클럽' 달성”"
+      "source_published_kst": "2026-10-06T11:41+09:00",
+      "title": "삼성전기, 글로벌 기업과 MLCC 공급계약… 1년간 2856억원 규모"
     },
     "event:515a30f540946889aaa693c1": {
       "first_seen_kst": "2026-10-01T21:43:03+09:00",
@@ -4948,6 +4948,21 @@
       "link": "https://www.fnnews.com/news/202609271406480422",
       "source": "파이낸셜뉴스",
       "title": "삼전닉스 55조 자사주 매입 막바지…코스피 빈자리 누가 메우나"
+    },
+    "event:cd76e11bac991cb373f92cf0": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816128",
+      "source": "뉴시스",
+      "source_body_digest": "9622e69043b08a4cbb292d82b1273256cc7639327bd8cc5ac1a899ae30cbd7fb",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T18:34+09:00",
+      "title": "김성환 \"호남 반도체 팹 9기면 14GW 필요…전력망 계획 원점 점검\"(종합)"
     },
     "event:cdc0fa7264abeeb8fadf9737": {
       "first_seen_kst": "2026-10-03T19:18:32+09:00",
@@ -8228,6 +8243,32 @@
       "source_published_kst": "2026-10-06T07:35+09:00",
       "title": "다올투자證 \"아모레퍼시픽, 마케팅비 선집행에 3분기 주춤…미주·국내 성장 지속\""
     },
+    "fact:3230c119ec1184bb9ca6ffe6": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006159751008",
+      "source": "연합뉴스",
+      "source_body_digest": "306fe4bc6e663fdef0e1a38cd9efcae6af74172f4cea944ba223e0535beb41cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f801f0d346c706f3efe672a2cd23fdecf30bfd6b6822cd7378ad38d350849bcd",
+      "source_fact_keys": [
+        "source_fact:v1:2cbb4113ef66a3b36983d3bb6b7f96b4b1c5ea8284023ccfaca76eb94127f061",
+        "source_fact:v1:544420bb9b2d066886b9ec454921d680ae3f18ce69731bb20d784e56780c5c11",
+        "source_fact:v1:56eea5a902d4cd147fb4c1e74790e09c290aa9017e389eee5005d37e61e429cd",
+        "source_fact:v1:6e52316c51bcb1e9ec96dd4a80240ffef76403f7a3c590f11fbef3b805965dc5",
+        "source_fact:v1:7b24ba782085a352f4710be9507e99a125fc62efa0478c229883d70cc2e2c551",
+        "source_fact:v1:969c00df8c68827f9f595e73128310261a1b97e3da7a019b7bf913dcf4aeb235",
+        "source_fact:v1:af32eb2c076b4f526a66e95827a99db9a35d8c679fad0f4d830c2cd61c03d9f2",
+        "source_fact:v1:b81022ffa30f932384c3e8644d2ddbbb7bbc6a0d78aba32890afe8e346e7f562",
+        "source_fact:v1:dd0b80289df5ae32ebc72018c8cd1f41e641182a4d6eaba4f0d6d35511316e0a",
+        "source_fact:v1:e7f71478ca4a2de981a91932bad16a71ea2dfd033a9160c0fe0b21a715991070"
+      ],
+      "source_published_kst": "2026-10-06T17:18+09:00",
+      "title": "국고채 금리, 대외금리 연동하며 혼조세…3년물 3.933%(종합) | 연합뉴스"
+    },
     "fact:32490cd4d4fbcdc10fc24797": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
       "lanes": {
@@ -10590,6 +10631,24 @@
       "source_published_kst": "2026-10-06T05:30+09:00",
       "title": "車 부품 보던 AI, 로봇 관절 '가상검증' 나선다"
     },
+    "fact:707e9ca39ab26f5afcaedcc7": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816043",
+      "source": "뉴시스",
+      "source_body_digest": "0b52a071071e8f3e6f57c7df7e3d42d5dea13b198fdc76b124c1f1661848b01f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ddaf5eaea70c2ad328ccc246c99b3888fb131c8043cac358a32cf6759f1af8c4",
+      "source_fact_keys": [
+        "source_fact:v1:3e8b5dc4eff611b7639742b114352e54b3fa21c7450ee984183e9e93dfb495ee",
+        "source_fact:v1:ae20efb4b3f1afbfdfee2de0ba55eacf91104b02c593f75f9264bb59ca261cbb"
+      ],
+      "source_published_kst": "2026-10-06T17:17+09:00",
+      "title": "테라뷰, 11억 규모 반도체 검사장비 공급계약"
+    },
     "fact:70f1d06e378c8c4b69715632": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
       "lanes": {
@@ -11970,6 +12029,25 @@
       "source_published_kst": "2026-10-05T19:19+09:00",
       "title": "프랑스 채무에 유로화 17개월만에 최저치 급락…살까 말까"
     },
+    "fact:9645d52b2630c0f55fb97864": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632712",
+      "source": "이투데이",
+      "source_body_digest": "ac23da943a9ac24053c1fe835f170e27f847aebaae61cc14cf9f89230080e2f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0ff2e87a82cdc92ddc6be4e26c2c16c4daee4eeede1b67294b69e1b046b2c662",
+      "source_fact_keys": [
+        "source_fact:v1:0c681282f825f79a9122e7e64cf402731adc773672eb882a86b29c8393cb825b",
+        "source_fact:v1:1062e92e8e5afdc8fa316094396c28e19ebf84f160a64d85af07d4aecb70a6ef",
+        "source_fact:v1:5016df782ad2f1c800b634756984a2bd1a49169c6f57a02160696e374e131aa9"
+      ],
+      "source_published_kst": "2026-10-06T17:25+09:00",
+      "title": "노조, 공정거래법 적용 제외?…교섭 부담 던다지만 他노조 일감 보호는 ‘과제’"
+    },
     "fact:965fe36f6d9075511c059356": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
       "lanes": {
@@ -12021,6 +12099,25 @@
       ],
       "source_published_kst": "2026-10-06T08:15+09:00",
       "title": "[오늘의 투자전략] 코스피, 금리ㆍ삼성전자 실적 주목⋯“반도체 이익 상향 재개 여부 관건”"
+    },
+    "fact:969dd5447f7608a52e1d31de": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169526",
+      "source": "매일경제",
+      "source_body_digest": "f0d222ae2690ffdc055f2e6c5434bc1405f6f66228aee427dad76da58a96dc0c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cf6b8794b47efdc398189ecbc80f860eb0e219eb8ef4c713c24caab591d7e72e",
+      "source_fact_keys": [
+        "source_fact:v1:2fc935c752e231a4a799e07c3a656d8eb2c1c67a94d9a45180440336f3509413",
+        "source_fact:v1:422bf92929fbed5036f675cd00d404cdc66ba07c5a42831783c8267a0b6e6dbb",
+        "source_fact:v1:d3eeaacb1cc845810960f9899988e2ae617715505f074aa8f270b783a9c398dd"
+      ],
+      "source_published_kst": "2026-10-06T17:38+09:00",
+      "title": "\"中국경절 연휴 특수\"… 외국인 매출 두배로"
     },
     "fact:96d34239d03dbbd9a955c1aa": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
@@ -15628,6 +15725,24 @@
       "source_published_kst": "2026-10-06T01:21+09:00",
       "title": "美 9월 서비스업 확장세 둔화… 가격지수 4년여 만에 최고"
     },
+    "fact:fb26b8698774aa41f85aab01": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://biz.chosun.com/it-science/ict/2026/10/06/MBZT3TF6RFDVVITGBC47GGESXI/",
+      "source": "조선비즈",
+      "source_body_digest": "6c202b4adca067e88d90fba3302a96e34c4f40cbd710f4096b077912fb3a7b8d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e1f9cc74dc47da69a17b6af9341b0f6cb8527f5173a5921adff0f010a4d08b71",
+      "source_fact_keys": [
+        "source_fact:v1:39bd84ac49ddd0b49d0b3ad4099d985ccd8d09cad3ec06f1a351cc050bc25f2b",
+        "source_fact:v1:d9be8974a97cd22db0ebb5fab58eb545dd8f5962d6f34408990f2e059c590c25"
+      ],
+      "source_published_kst": "2026-10-06T11:41+09:00",
+      "title": "삼성전기, 글로벌 기업과 MLCC 공급계약… 1년간 2856억원 규모"
+    },
     "fact:fb7067bdc4bf98e0e7e2f64a": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -16382,6 +16497,21 @@
       "link": "https://www.newsis.com/view/NISX20261001_0003811439",
       "source": "뉴시스",
       "title": "\"로봇 한 대에 메모리 수백 GB\"…삼전·닉스, 로봇서 새 시장 바라본다"
+    },
+    "link:0768cd14005a818e5a48da6a": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.hankyung.com/article/2026100646381",
+      "source": "한국경제",
+      "source_body_digest": "4d89d95bf6c54c691807b4ffc79b28bc16a86552185bd8919afe2af329a1cea7",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T16:06+09:00",
+      "title": "신한은행, 산업현장 찾아 기업 맞춤형 금융 솔루션 제공"
     },
     "link:076e462123bcf02e2d052b5e": {
       "first_seen_kst": "2026-10-01T23:53:17+09:00",
@@ -21621,6 +21751,32 @@
       "link": "https://www.yna.co.kr/view/AKR20260928015700009",
       "source": "연합뉴스",
       "title": "美재무 \"연준, 열린 마음 가져야…그린스펀은 경기 달리게 뒀다\" | 연합뉴스"
+    },
+    "link:3dea9e4064d41d4413eac37b": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006159751008",
+      "source": "연합뉴스",
+      "source_body_digest": "306fe4bc6e663fdef0e1a38cd9efcae6af74172f4cea944ba223e0535beb41cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f801f0d346c706f3efe672a2cd23fdecf30bfd6b6822cd7378ad38d350849bcd",
+      "source_fact_keys": [
+        "source_fact:v1:2cbb4113ef66a3b36983d3bb6b7f96b4b1c5ea8284023ccfaca76eb94127f061",
+        "source_fact:v1:544420bb9b2d066886b9ec454921d680ae3f18ce69731bb20d784e56780c5c11",
+        "source_fact:v1:56eea5a902d4cd147fb4c1e74790e09c290aa9017e389eee5005d37e61e429cd",
+        "source_fact:v1:6e52316c51bcb1e9ec96dd4a80240ffef76403f7a3c590f11fbef3b805965dc5",
+        "source_fact:v1:7b24ba782085a352f4710be9507e99a125fc62efa0478c229883d70cc2e2c551",
+        "source_fact:v1:969c00df8c68827f9f595e73128310261a1b97e3da7a019b7bf913dcf4aeb235",
+        "source_fact:v1:af32eb2c076b4f526a66e95827a99db9a35d8c679fad0f4d830c2cd61c03d9f2",
+        "source_fact:v1:b81022ffa30f932384c3e8644d2ddbbb7bbc6a0d78aba32890afe8e346e7f562",
+        "source_fact:v1:dd0b80289df5ae32ebc72018c8cd1f41e641182a4d6eaba4f0d6d35511316e0a",
+        "source_fact:v1:e7f71478ca4a2de981a91932bad16a71ea2dfd033a9160c0fe0b21a715991070"
+      ],
+      "source_published_kst": "2026-10-06T17:18+09:00",
+      "title": "국고채 금리, 대외금리 연동하며 혼조세…3년물 3.933%(종합) | 연합뉴스"
     },
     "link:3dff3435fb3ec2f1ec455f57": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
@@ -27383,6 +27539,24 @@
       "source": "이데일리",
       "title": "네이버 노조 \"본사도 통합교섭 나서라\"…지노위에 시정신청"
     },
+    "link:77fbdcd5e8b1be457e00b45e": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816043",
+      "source": "뉴시스",
+      "source_body_digest": "0b52a071071e8f3e6f57c7df7e3d42d5dea13b198fdc76b124c1f1661848b01f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ddaf5eaea70c2ad328ccc246c99b3888fb131c8043cac358a32cf6759f1af8c4",
+      "source_fact_keys": [
+        "source_fact:v1:3e8b5dc4eff611b7639742b114352e54b3fa21c7450ee984183e9e93dfb495ee",
+        "source_fact:v1:ae20efb4b3f1afbfdfee2de0ba55eacf91104b02c593f75f9264bb59ca261cbb"
+      ],
+      "source_published_kst": "2026-10-06T17:17+09:00",
+      "title": "테라뷰, 11억 규모 반도체 검사장비 공급계약"
+    },
     "link:7804c564ef84f1726bee6cab": {
       "first_seen_kst": "2026-10-01T21:38:16+09:00",
       "lanes": {
@@ -31755,6 +31929,25 @@
       "source": "이데일리",
       "title": "ETF 성장세 주춤하자 다시 ‘쩐의 전쟁’…보수 0%대 승부수"
     },
+    "link:a6633175af390740303e6d9f": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632712",
+      "source": "이투데이",
+      "source_body_digest": "ac23da943a9ac24053c1fe835f170e27f847aebaae61cc14cf9f89230080e2f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0ff2e87a82cdc92ddc6be4e26c2c16c4daee4eeede1b67294b69e1b046b2c662",
+      "source_fact_keys": [
+        "source_fact:v1:0c681282f825f79a9122e7e64cf402731adc773672eb882a86b29c8393cb825b",
+        "source_fact:v1:1062e92e8e5afdc8fa316094396c28e19ebf84f160a64d85af07d4aecb70a6ef",
+        "source_fact:v1:5016df782ad2f1c800b634756984a2bd1a49169c6f57a02160696e374e131aa9"
+      ],
+      "source_published_kst": "2026-10-06T17:25+09:00",
+      "title": "노조, 공정거래법 적용 제외?…교섭 부담 던다지만 他노조 일감 보호는 ‘과제’"
+    },
     "link:a683468a1c4e727f0846dc0f": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
       "lanes": {
@@ -32683,6 +32876,21 @@
       "link": "https://www.mt.co.kr/stock/2026/09/21/2026092116320153854",
       "source": "머니투데이",
       "title": "ETF 쏠림의 그늘…'자투리 펀드' 올해만 50개 늘었다"
+    },
+    "link:b05153bb0b7ea35d9f82b2bf": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816128",
+      "source": "뉴시스",
+      "source_body_digest": "9622e69043b08a4cbb292d82b1273256cc7639327bd8cc5ac1a899ae30cbd7fb",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T18:34+09:00",
+      "title": "김성환 \"호남 반도체 팹 9기면 14GW 필요…전력망 계획 원점 점검\"(종합)"
     },
     "link:b0868a06d6ac510624e33381": {
       "first_seen_kst": "2026-09-18T13:11:00+09:00",
@@ -37791,6 +37999,25 @@
       "source": "이투데이",
       "title": "씨티, 원·달러 환율 장기 전망 1250원으로 하향…“대미투자 영향 제한적”"
     },
+    "link:e4be9e2b10f7cda8bd99e813": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169526",
+      "source": "매일경제",
+      "source_body_digest": "f0d222ae2690ffdc055f2e6c5434bc1405f6f66228aee427dad76da58a96dc0c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cf6b8794b47efdc398189ecbc80f860eb0e219eb8ef4c713c24caab591d7e72e",
+      "source_fact_keys": [
+        "source_fact:v1:2fc935c752e231a4a799e07c3a656d8eb2c1c67a94d9a45180440336f3509413",
+        "source_fact:v1:422bf92929fbed5036f675cd00d404cdc66ba07c5a42831783c8267a0b6e6dbb",
+        "source_fact:v1:d3eeaacb1cc845810960f9899988e2ae617715505f074aa8f270b783a9c398dd"
+      ],
+      "source_published_kst": "2026-10-06T17:38+09:00",
+      "title": "\"中국경절 연휴 특수\"… 외국인 매출 두배로"
+    },
     "link:e4cef80be0da6a676279dd3f": {
       "first_seen_kst": "2026-10-05T11:24:20+09:00",
       "lanes": {
@@ -38040,6 +38267,24 @@
       ],
       "source_published_kst": "2026-10-05T22:51+09:00",
       "title": "[美특징주]PTC, 슈나이더 일렉트릭 피인수 소식에 주가 '급등'"
+    },
+    "link:e6a89de982f0c869b3af5e5f": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://biz.chosun.com/it-science/ict/2026/10/06/MBZT3TF6RFDVVITGBC47GGESXI/",
+      "source": "조선비즈",
+      "source_body_digest": "6c202b4adca067e88d90fba3302a96e34c4f40cbd710f4096b077912fb3a7b8d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e1f9cc74dc47da69a17b6af9341b0f6cb8527f5173a5921adff0f010a4d08b71",
+      "source_fact_keys": [
+        "source_fact:v1:39bd84ac49ddd0b49d0b3ad4099d985ccd8d09cad3ec06f1a351cc050bc25f2b",
+        "source_fact:v1:d9be8974a97cd22db0ebb5fab58eb545dd8f5962d6f34408990f2e059c590c25"
+      ],
+      "source_published_kst": "2026-10-06T11:41+09:00",
+      "title": "삼성전기, 글로벌 기업과 MLCC 공급계약… 1년간 2856억원 규모"
     },
     "link:e6c995da2db3ef572f28d0bb": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
@@ -43778,6 +44023,21 @@
       "source": "뉴시스",
       "title": "젤렌스키 \"中, 러시아판 스타링크 개발 지원\"…트럼프에 제재 요청"
     },
+    "original:23f19ef16862f5732ec01baf": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816128",
+      "source": "뉴시스",
+      "source_body_digest": "9622e69043b08a4cbb292d82b1273256cc7639327bd8cc5ac1a899ae30cbd7fb",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T18:34+09:00",
+      "title": "김성환 \"호남 반도체 팹 9기면 14GW 필요…전력망 계획 원점 점검\"(종합)"
+    },
     "original:23f7c7ab78e8a6352c8f1ea8": {
       "first_seen_kst": "2026-10-01T21:17:39+09:00",
       "lanes": {
@@ -44151,6 +44411,24 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=01295606645583072",
       "source": "이데일리",
       "title": "[美특징주]그랩홀딩스, CEO 1040만주 자사주 매입…주가 10%↑"
+    },
+    "original:27c073923658f51a8236992c": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://biz.chosun.com/it-science/ict/2026/10/06/MBZT3TF6RFDVVITGBC47GGESXI/",
+      "source": "조선비즈",
+      "source_body_digest": "6c202b4adca067e88d90fba3302a96e34c4f40cbd710f4096b077912fb3a7b8d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e1f9cc74dc47da69a17b6af9341b0f6cb8527f5173a5921adff0f010a4d08b71",
+      "source_fact_keys": [
+        "source_fact:v1:39bd84ac49ddd0b49d0b3ad4099d985ccd8d09cad3ec06f1a351cc050bc25f2b",
+        "source_fact:v1:d9be8974a97cd22db0ebb5fab58eb545dd8f5962d6f34408990f2e059c590c25"
+      ],
+      "source_published_kst": "2026-10-06T11:41+09:00",
+      "title": "삼성전기, 글로벌 기업과 MLCC 공급계약… 1년간 2856억원 규모"
     },
     "original:28049a0e245da7d04349902b": {
       "first_seen_kst": "2026-10-01T21:17:39+09:00",
@@ -45204,6 +45482,25 @@
       "source_event_identity": "",
       "title": "현대차그룹, 美 3분기 판매 포드에 1195대 차…첫 추월 문턱서 멈췄다"
     },
+    "original:32f5d5293728213ef72d4c24": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632712",
+      "source": "이투데이",
+      "source_body_digest": "ac23da943a9ac24053c1fe835f170e27f847aebaae61cc14cf9f89230080e2f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0ff2e87a82cdc92ddc6be4e26c2c16c4daee4eeede1b67294b69e1b046b2c662",
+      "source_fact_keys": [
+        "source_fact:v1:0c681282f825f79a9122e7e64cf402731adc773672eb882a86b29c8393cb825b",
+        "source_fact:v1:1062e92e8e5afdc8fa316094396c28e19ebf84f160a64d85af07d4aecb70a6ef",
+        "source_fact:v1:5016df782ad2f1c800b634756984a2bd1a49169c6f57a02160696e374e131aa9"
+      ],
+      "source_published_kst": "2026-10-06T17:25+09:00",
+      "title": "노조, 공정거래법 적용 제외?…교섭 부담 던다지만 他노조 일감 보호는 ‘과제’"
+    },
     "original:32f74496e2c42e64ee4688b9": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
       "lanes": {
@@ -45298,6 +45595,25 @@
       "link": "https://www.fnnews.com/news/202609230919540789",
       "source": "파이낸셜뉴스",
       "title": "수익률·개인 매수·연금 활용까지…한투운용, 추석 ETF 4종 제안"
+    },
+    "original:346416c2c517260b8fe24cbd": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169526",
+      "source": "매일경제",
+      "source_body_digest": "f0d222ae2690ffdc055f2e6c5434bc1405f6f66228aee427dad76da58a96dc0c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cf6b8794b47efdc398189ecbc80f860eb0e219eb8ef4c713c24caab591d7e72e",
+      "source_fact_keys": [
+        "source_fact:v1:2fc935c752e231a4a799e07c3a656d8eb2c1c67a94d9a45180440336f3509413",
+        "source_fact:v1:422bf92929fbed5036f675cd00d404cdc66ba07c5a42831783c8267a0b6e6dbb",
+        "source_fact:v1:d3eeaacb1cc845810960f9899988e2ae617715505f074aa8f270b783a9c398dd"
+      ],
+      "source_published_kst": "2026-10-06T17:38+09:00",
+      "title": "\"中국경절 연휴 특수\"… 외국인 매출 두배로"
     },
     "original:346e87e4c073e768065d2ea2": {
       "first_seen_kst": "2026-10-04T15:04:58+09:00",
@@ -48565,6 +48881,24 @@
       "link": "https://www.fnnews.com/news/202610020410167846",
       "source": "파이낸셜뉴스",
       "title": "美·英·佛 장기금리 동반 급등…글로벌 국채 투매 심화"
+    },
+    "original:55cb21c0a429f184c051b461": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816043",
+      "source": "뉴시스",
+      "source_body_digest": "0b52a071071e8f3e6f57c7df7e3d42d5dea13b198fdc76b124c1f1661848b01f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ddaf5eaea70c2ad328ccc246c99b3888fb131c8043cac358a32cf6759f1af8c4",
+      "source_fact_keys": [
+        "source_fact:v1:3e8b5dc4eff611b7639742b114352e54b3fa21c7450ee984183e9e93dfb495ee",
+        "source_fact:v1:ae20efb4b3f1afbfdfee2de0ba55eacf91104b02c593f75f9264bb59ca261cbb"
+      ],
+      "source_published_kst": "2026-10-06T17:17+09:00",
+      "title": "테라뷰, 11억 규모 반도체 검사장비 공급계약"
     },
     "original:55cf49726bbe9695e86ef88b": {
       "first_seen_kst": "2026-10-05T14:51:16+09:00",
@@ -62663,6 +62997,32 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "지식재산처, 상표 분류도 '속도전'…하역용 협동로봇 등 72개 신규 명칭 발굴"
     },
+    "original:ec6bc9f552077d8c176cdeaf": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006159751008",
+      "source": "연합뉴스",
+      "source_body_digest": "306fe4bc6e663fdef0e1a38cd9efcae6af74172f4cea944ba223e0535beb41cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f801f0d346c706f3efe672a2cd23fdecf30bfd6b6822cd7378ad38d350849bcd",
+      "source_fact_keys": [
+        "source_fact:v1:2cbb4113ef66a3b36983d3bb6b7f96b4b1c5ea8284023ccfaca76eb94127f061",
+        "source_fact:v1:544420bb9b2d066886b9ec454921d680ae3f18ce69731bb20d784e56780c5c11",
+        "source_fact:v1:56eea5a902d4cd147fb4c1e74790e09c290aa9017e389eee5005d37e61e429cd",
+        "source_fact:v1:6e52316c51bcb1e9ec96dd4a80240ffef76403f7a3c590f11fbef3b805965dc5",
+        "source_fact:v1:7b24ba782085a352f4710be9507e99a125fc62efa0478c229883d70cc2e2c551",
+        "source_fact:v1:969c00df8c68827f9f595e73128310261a1b97e3da7a019b7bf913dcf4aeb235",
+        "source_fact:v1:af32eb2c076b4f526a66e95827a99db9a35d8c679fad0f4d830c2cd61c03d9f2",
+        "source_fact:v1:b81022ffa30f932384c3e8644d2ddbbb7bbc6a0d78aba32890afe8e346e7f562",
+        "source_fact:v1:dd0b80289df5ae32ebc72018c8cd1f41e641182a4d6eaba4f0d6d35511316e0a",
+        "source_fact:v1:e7f71478ca4a2de981a91932bad16a71ea2dfd033a9160c0fe0b21a715991070"
+      ],
+      "source_published_kst": "2026-10-06T17:18+09:00",
+      "title": "국고채 금리, 대외금리 연동하며 혼조세…3년물 3.933%(종합) | 연합뉴스"
+    },
     "original:ecf1a1e8cfe79a17688ae1e5": {
       "first_seen_kst": "2026-10-03T21:43:46+09:00",
       "lanes": {
@@ -64113,6 +64473,21 @@
       "source": "파이낸셜뉴스",
       "title": "아리바이오홀딩스 성수현 부회장, 5억원 규모 장내매수 \"합병 철회 후 책임경영 의지\""
     },
+    "original:fe25c2631ce3c25f167535d7": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.hankyung.com/article/2026100646381",
+      "source": "한국경제",
+      "source_body_digest": "4d89d95bf6c54c691807b4ffc79b28bc16a86552185bd8919afe2af329a1cea7",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T16:06+09:00",
+      "title": "신한은행, 산업현장 찾아 기업 맞춤형 금융 솔루션 제공"
+    },
     "original:fe664370359ce5ebe81c01f1": {
       "first_seen_kst": "2026-10-02T14:00:40+09:00",
       "lanes": {
@@ -65424,6 +65799,32 @@
       ],
       "source_published_kst": "2026-10-06T13:44+09:00",
       "title": "완성차 불황에 '군용차'로 눈 돌린다…기아·포드·GM·르노 방산 공략"
+    },
+    "source_fact:0658f883270c7a1f772a5ded": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006159751008",
+      "source": "연합뉴스",
+      "source_body_digest": "306fe4bc6e663fdef0e1a38cd9efcae6af74172f4cea944ba223e0535beb41cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f801f0d346c706f3efe672a2cd23fdecf30bfd6b6822cd7378ad38d350849bcd",
+      "source_fact_keys": [
+        "source_fact:v1:2cbb4113ef66a3b36983d3bb6b7f96b4b1c5ea8284023ccfaca76eb94127f061",
+        "source_fact:v1:544420bb9b2d066886b9ec454921d680ae3f18ce69731bb20d784e56780c5c11",
+        "source_fact:v1:56eea5a902d4cd147fb4c1e74790e09c290aa9017e389eee5005d37e61e429cd",
+        "source_fact:v1:6e52316c51bcb1e9ec96dd4a80240ffef76403f7a3c590f11fbef3b805965dc5",
+        "source_fact:v1:7b24ba782085a352f4710be9507e99a125fc62efa0478c229883d70cc2e2c551",
+        "source_fact:v1:969c00df8c68827f9f595e73128310261a1b97e3da7a019b7bf913dcf4aeb235",
+        "source_fact:v1:af32eb2c076b4f526a66e95827a99db9a35d8c679fad0f4d830c2cd61c03d9f2",
+        "source_fact:v1:b81022ffa30f932384c3e8644d2ddbbb7bbc6a0d78aba32890afe8e346e7f562",
+        "source_fact:v1:dd0b80289df5ae32ebc72018c8cd1f41e641182a4d6eaba4f0d6d35511316e0a",
+        "source_fact:v1:e7f71478ca4a2de981a91932bad16a71ea2dfd033a9160c0fe0b21a715991070"
+      ],
+      "source_published_kst": "2026-10-06T17:18+09:00",
+      "title": "국고채 금리, 대외금리 연동하며 혼조세…3년물 3.933%(종합) | 연합뉴스"
     },
     "source_fact:065970d8f231f37464d7c099": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
@@ -66973,6 +67374,32 @@
       "source_published_kst": "2026-10-05T17:54+09:00",
       "title": "24년來 최고 금리도 AI 기세 못막아…나스닥 사상 최고[월스트리트in]"
     },
+    "source_fact:0f72b200584828a93b957e25": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006159751008",
+      "source": "연합뉴스",
+      "source_body_digest": "306fe4bc6e663fdef0e1a38cd9efcae6af74172f4cea944ba223e0535beb41cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f801f0d346c706f3efe672a2cd23fdecf30bfd6b6822cd7378ad38d350849bcd",
+      "source_fact_keys": [
+        "source_fact:v1:2cbb4113ef66a3b36983d3bb6b7f96b4b1c5ea8284023ccfaca76eb94127f061",
+        "source_fact:v1:544420bb9b2d066886b9ec454921d680ae3f18ce69731bb20d784e56780c5c11",
+        "source_fact:v1:56eea5a902d4cd147fb4c1e74790e09c290aa9017e389eee5005d37e61e429cd",
+        "source_fact:v1:6e52316c51bcb1e9ec96dd4a80240ffef76403f7a3c590f11fbef3b805965dc5",
+        "source_fact:v1:7b24ba782085a352f4710be9507e99a125fc62efa0478c229883d70cc2e2c551",
+        "source_fact:v1:969c00df8c68827f9f595e73128310261a1b97e3da7a019b7bf913dcf4aeb235",
+        "source_fact:v1:af32eb2c076b4f526a66e95827a99db9a35d8c679fad0f4d830c2cd61c03d9f2",
+        "source_fact:v1:b81022ffa30f932384c3e8644d2ddbbb7bbc6a0d78aba32890afe8e346e7f562",
+        "source_fact:v1:dd0b80289df5ae32ebc72018c8cd1f41e641182a4d6eaba4f0d6d35511316e0a",
+        "source_fact:v1:e7f71478ca4a2de981a91932bad16a71ea2dfd033a9160c0fe0b21a715991070"
+      ],
+      "source_published_kst": "2026-10-06T17:18+09:00",
+      "title": "국고채 금리, 대외금리 연동하며 혼조세…3년물 3.933%(종합) | 연합뉴스"
+    },
     "source_fact:0f96bf87bf2c3f7a4d4339c8": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
       "lanes": {
@@ -68210,6 +68637,32 @@
       ],
       "source_published_kst": "2026-10-06T16:00+09:00",
       "title": "롯데백화점, 업계 사상 첫 외국인 매출 1조 돌파…\"상징적 성과\""
+    },
+    "source_fact:16ceb92c0891720fcade605d": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006159751008",
+      "source": "연합뉴스",
+      "source_body_digest": "306fe4bc6e663fdef0e1a38cd9efcae6af74172f4cea944ba223e0535beb41cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f801f0d346c706f3efe672a2cd23fdecf30bfd6b6822cd7378ad38d350849bcd",
+      "source_fact_keys": [
+        "source_fact:v1:2cbb4113ef66a3b36983d3bb6b7f96b4b1c5ea8284023ccfaca76eb94127f061",
+        "source_fact:v1:544420bb9b2d066886b9ec454921d680ae3f18ce69731bb20d784e56780c5c11",
+        "source_fact:v1:56eea5a902d4cd147fb4c1e74790e09c290aa9017e389eee5005d37e61e429cd",
+        "source_fact:v1:6e52316c51bcb1e9ec96dd4a80240ffef76403f7a3c590f11fbef3b805965dc5",
+        "source_fact:v1:7b24ba782085a352f4710be9507e99a125fc62efa0478c229883d70cc2e2c551",
+        "source_fact:v1:969c00df8c68827f9f595e73128310261a1b97e3da7a019b7bf913dcf4aeb235",
+        "source_fact:v1:af32eb2c076b4f526a66e95827a99db9a35d8c679fad0f4d830c2cd61c03d9f2",
+        "source_fact:v1:b81022ffa30f932384c3e8644d2ddbbb7bbc6a0d78aba32890afe8e346e7f562",
+        "source_fact:v1:dd0b80289df5ae32ebc72018c8cd1f41e641182a4d6eaba4f0d6d35511316e0a",
+        "source_fact:v1:e7f71478ca4a2de981a91932bad16a71ea2dfd033a9160c0fe0b21a715991070"
+      ],
+      "source_published_kst": "2026-10-06T17:18+09:00",
+      "title": "국고채 금리, 대외금리 연동하며 혼조세…3년물 3.933%(종합) | 연합뉴스"
     },
     "source_fact:17200814257079d16747caa8": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -70257,6 +70710,25 @@
       "source_published_kst": "2026-10-05T13:09+09:00",
       "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
     },
+    "source_fact:23d375812d3d7e0199bff396": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632712",
+      "source": "이투데이",
+      "source_body_digest": "ac23da943a9ac24053c1fe835f170e27f847aebaae61cc14cf9f89230080e2f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0ff2e87a82cdc92ddc6be4e26c2c16c4daee4eeede1b67294b69e1b046b2c662",
+      "source_fact_keys": [
+        "source_fact:v1:0c681282f825f79a9122e7e64cf402731adc773672eb882a86b29c8393cb825b",
+        "source_fact:v1:1062e92e8e5afdc8fa316094396c28e19ebf84f160a64d85af07d4aecb70a6ef",
+        "source_fact:v1:5016df782ad2f1c800b634756984a2bd1a49169c6f57a02160696e374e131aa9"
+      ],
+      "source_published_kst": "2026-10-06T17:25+09:00",
+      "title": "노조, 공정거래법 적용 제외?…교섭 부담 던다지만 他노조 일감 보호는 ‘과제’"
+    },
     "source_fact:24366dc521f8bdaeaf02f08d": {
       "first_seen_kst": "2026-10-06T03:45:53+09:00",
       "lanes": {
@@ -71706,6 +72178,25 @@
       ],
       "source_published_kst": "2026-10-06T02:28+09:00",
       "title": "아람코 CEO \"세계 석유 공급 이미 압박…비축 최대 2년\""
+    },
+    "source_fact:2cd8ae9bc2607eca9dc9c918": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632712",
+      "source": "이투데이",
+      "source_body_digest": "ac23da943a9ac24053c1fe835f170e27f847aebaae61cc14cf9f89230080e2f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0ff2e87a82cdc92ddc6be4e26c2c16c4daee4eeede1b67294b69e1b046b2c662",
+      "source_fact_keys": [
+        "source_fact:v1:0c681282f825f79a9122e7e64cf402731adc773672eb882a86b29c8393cb825b",
+        "source_fact:v1:1062e92e8e5afdc8fa316094396c28e19ebf84f160a64d85af07d4aecb70a6ef",
+        "source_fact:v1:5016df782ad2f1c800b634756984a2bd1a49169c6f57a02160696e374e131aa9"
+      ],
+      "source_published_kst": "2026-10-06T17:25+09:00",
+      "title": "노조, 공정거래법 적용 제외?…교섭 부담 던다지만 他노조 일감 보호는 ‘과제’"
     },
     "source_fact:2d49911c10d7fecfd4165796": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
@@ -76945,6 +77436,24 @@
       "source_published_kst": "2026-10-06T06:27+09:00",
       "title": "뉴욕 증시, 국채 금리 급등에도 나스닥 사상 최고치"
     },
+    "source_fact:4ab6c0f3259195f5874fe633": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://biz.chosun.com/it-science/ict/2026/10/06/MBZT3TF6RFDVVITGBC47GGESXI/",
+      "source": "조선비즈",
+      "source_body_digest": "6c202b4adca067e88d90fba3302a96e34c4f40cbd710f4096b077912fb3a7b8d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e1f9cc74dc47da69a17b6af9341b0f6cb8527f5173a5921adff0f010a4d08b71",
+      "source_fact_keys": [
+        "source_fact:v1:39bd84ac49ddd0b49d0b3ad4099d985ccd8d09cad3ec06f1a351cc050bc25f2b",
+        "source_fact:v1:d9be8974a97cd22db0ebb5fab58eb545dd8f5962d6f34408990f2e059c590c25"
+      ],
+      "source_published_kst": "2026-10-06T11:41+09:00",
+      "title": "삼성전기, 글로벌 기업과 MLCC 공급계약… 1년간 2856억원 규모"
+    },
     "source_fact:4ae6ea37c7952c735664b148": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -77282,6 +77791,32 @@
       ],
       "source_published_kst": "2026-10-06T15:28+09:00",
       "title": "한솔케미칼, 대만에 340억원 규모 반도체 소재 기지 투자 승인"
+    },
+    "source_fact:4de72a6ff21f3a330934569d": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006159751008",
+      "source": "연합뉴스",
+      "source_body_digest": "306fe4bc6e663fdef0e1a38cd9efcae6af74172f4cea944ba223e0535beb41cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f801f0d346c706f3efe672a2cd23fdecf30bfd6b6822cd7378ad38d350849bcd",
+      "source_fact_keys": [
+        "source_fact:v1:2cbb4113ef66a3b36983d3bb6b7f96b4b1c5ea8284023ccfaca76eb94127f061",
+        "source_fact:v1:544420bb9b2d066886b9ec454921d680ae3f18ce69731bb20d784e56780c5c11",
+        "source_fact:v1:56eea5a902d4cd147fb4c1e74790e09c290aa9017e389eee5005d37e61e429cd",
+        "source_fact:v1:6e52316c51bcb1e9ec96dd4a80240ffef76403f7a3c590f11fbef3b805965dc5",
+        "source_fact:v1:7b24ba782085a352f4710be9507e99a125fc62efa0478c229883d70cc2e2c551",
+        "source_fact:v1:969c00df8c68827f9f595e73128310261a1b97e3da7a019b7bf913dcf4aeb235",
+        "source_fact:v1:af32eb2c076b4f526a66e95827a99db9a35d8c679fad0f4d830c2cd61c03d9f2",
+        "source_fact:v1:b81022ffa30f932384c3e8644d2ddbbb7bbc6a0d78aba32890afe8e346e7f562",
+        "source_fact:v1:dd0b80289df5ae32ebc72018c8cd1f41e641182a4d6eaba4f0d6d35511316e0a",
+        "source_fact:v1:e7f71478ca4a2de981a91932bad16a71ea2dfd033a9160c0fe0b21a715991070"
+      ],
+      "source_published_kst": "2026-10-06T17:18+09:00",
+      "title": "국고채 금리, 대외금리 연동하며 혼조세…3년물 3.933%(종합) | 연합뉴스"
     },
     "source_fact:4dec6f2f2bf9093a81a5b010": {
       "first_seen_kst": "2026-10-06T01:16:46+09:00",
@@ -83295,6 +83830,25 @@
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
     },
+    "source_fact:6f45ac469d760259154fe047": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169526",
+      "source": "매일경제",
+      "source_body_digest": "f0d222ae2690ffdc055f2e6c5434bc1405f6f66228aee427dad76da58a96dc0c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cf6b8794b47efdc398189ecbc80f860eb0e219eb8ef4c713c24caab591d7e72e",
+      "source_fact_keys": [
+        "source_fact:v1:2fc935c752e231a4a799e07c3a656d8eb2c1c67a94d9a45180440336f3509413",
+        "source_fact:v1:422bf92929fbed5036f675cd00d404cdc66ba07c5a42831783c8267a0b6e6dbb",
+        "source_fact:v1:d3eeaacb1cc845810960f9899988e2ae617715505f074aa8f270b783a9c398dd"
+      ],
+      "source_published_kst": "2026-10-06T17:38+09:00",
+      "title": "\"中국경절 연휴 특수\"… 외국인 매출 두배로"
+    },
     "source_fact:6f4a572629f829919850b55b": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
       "lanes": {
@@ -84932,6 +85486,32 @@
       ],
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
+    },
+    "source_fact:76cd047b00a04ccd1b3faeb3": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006159751008",
+      "source": "연합뉴스",
+      "source_body_digest": "306fe4bc6e663fdef0e1a38cd9efcae6af74172f4cea944ba223e0535beb41cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f801f0d346c706f3efe672a2cd23fdecf30bfd6b6822cd7378ad38d350849bcd",
+      "source_fact_keys": [
+        "source_fact:v1:2cbb4113ef66a3b36983d3bb6b7f96b4b1c5ea8284023ccfaca76eb94127f061",
+        "source_fact:v1:544420bb9b2d066886b9ec454921d680ae3f18ce69731bb20d784e56780c5c11",
+        "source_fact:v1:56eea5a902d4cd147fb4c1e74790e09c290aa9017e389eee5005d37e61e429cd",
+        "source_fact:v1:6e52316c51bcb1e9ec96dd4a80240ffef76403f7a3c590f11fbef3b805965dc5",
+        "source_fact:v1:7b24ba782085a352f4710be9507e99a125fc62efa0478c229883d70cc2e2c551",
+        "source_fact:v1:969c00df8c68827f9f595e73128310261a1b97e3da7a019b7bf913dcf4aeb235",
+        "source_fact:v1:af32eb2c076b4f526a66e95827a99db9a35d8c679fad0f4d830c2cd61c03d9f2",
+        "source_fact:v1:b81022ffa30f932384c3e8644d2ddbbb7bbc6a0d78aba32890afe8e346e7f562",
+        "source_fact:v1:dd0b80289df5ae32ebc72018c8cd1f41e641182a4d6eaba4f0d6d35511316e0a",
+        "source_fact:v1:e7f71478ca4a2de981a91932bad16a71ea2dfd033a9160c0fe0b21a715991070"
+      ],
+      "source_published_kst": "2026-10-06T17:18+09:00",
+      "title": "국고채 금리, 대외금리 연동하며 혼조세…3년물 3.933%(종합) | 연합뉴스"
     },
     "source_fact:76cfc8cc56abffa3961dd565": {
       "first_seen_kst": "2026-10-06T19:10:36+09:00",
@@ -86986,6 +87566,32 @@
       ],
       "source_published_kst": "2026-10-06T15:10+09:00",
       "title": "파운드리發 반도체값 도미노 인상 예고…TSMC, 내년 파운드리 단가 10% 올린다"
+    },
+    "source_fact:81491f39b067d3dfacd11f90": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006159751008",
+      "source": "연합뉴스",
+      "source_body_digest": "306fe4bc6e663fdef0e1a38cd9efcae6af74172f4cea944ba223e0535beb41cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f801f0d346c706f3efe672a2cd23fdecf30bfd6b6822cd7378ad38d350849bcd",
+      "source_fact_keys": [
+        "source_fact:v1:2cbb4113ef66a3b36983d3bb6b7f96b4b1c5ea8284023ccfaca76eb94127f061",
+        "source_fact:v1:544420bb9b2d066886b9ec454921d680ae3f18ce69731bb20d784e56780c5c11",
+        "source_fact:v1:56eea5a902d4cd147fb4c1e74790e09c290aa9017e389eee5005d37e61e429cd",
+        "source_fact:v1:6e52316c51bcb1e9ec96dd4a80240ffef76403f7a3c590f11fbef3b805965dc5",
+        "source_fact:v1:7b24ba782085a352f4710be9507e99a125fc62efa0478c229883d70cc2e2c551",
+        "source_fact:v1:969c00df8c68827f9f595e73128310261a1b97e3da7a019b7bf913dcf4aeb235",
+        "source_fact:v1:af32eb2c076b4f526a66e95827a99db9a35d8c679fad0f4d830c2cd61c03d9f2",
+        "source_fact:v1:b81022ffa30f932384c3e8644d2ddbbb7bbc6a0d78aba32890afe8e346e7f562",
+        "source_fact:v1:dd0b80289df5ae32ebc72018c8cd1f41e641182a4d6eaba4f0d6d35511316e0a",
+        "source_fact:v1:e7f71478ca4a2de981a91932bad16a71ea2dfd033a9160c0fe0b21a715991070"
+      ],
+      "source_published_kst": "2026-10-06T17:18+09:00",
+      "title": "국고채 금리, 대외금리 연동하며 혼조세…3년물 3.933%(종합) | 연합뉴스"
     },
     "source_fact:817e7b8281469189bce72c9a": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
@@ -89328,6 +89934,25 @@
       "source_published_kst": "2026-10-06T15:28+09:00",
       "title": "한솔케미칼, 대만에 340억원 규모 반도체 소재 기지 투자 승인"
     },
+    "source_fact:8f2f069c36d3c203909f8bed": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169526",
+      "source": "매일경제",
+      "source_body_digest": "f0d222ae2690ffdc055f2e6c5434bc1405f6f66228aee427dad76da58a96dc0c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cf6b8794b47efdc398189ecbc80f860eb0e219eb8ef4c713c24caab591d7e72e",
+      "source_fact_keys": [
+        "source_fact:v1:2fc935c752e231a4a799e07c3a656d8eb2c1c67a94d9a45180440336f3509413",
+        "source_fact:v1:422bf92929fbed5036f675cd00d404cdc66ba07c5a42831783c8267a0b6e6dbb",
+        "source_fact:v1:d3eeaacb1cc845810960f9899988e2ae617715505f074aa8f270b783a9c398dd"
+      ],
+      "source_published_kst": "2026-10-06T17:38+09:00",
+      "title": "\"中국경절 연휴 특수\"… 외국인 매출 두배로"
+    },
     "source_fact:8f432253e3965967923854f3": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
       "lanes": {
@@ -90452,6 +91077,32 @@
       ],
       "source_published_kst": "2026-10-06T10:22+09:00",
       "title": "에코프로비엠, 삼성SDI와 '전고체' 개발 협력…상용화 목전"
+    },
+    "source_fact:95bcce50bacd959b455db6ee": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006159751008",
+      "source": "연합뉴스",
+      "source_body_digest": "306fe4bc6e663fdef0e1a38cd9efcae6af74172f4cea944ba223e0535beb41cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f801f0d346c706f3efe672a2cd23fdecf30bfd6b6822cd7378ad38d350849bcd",
+      "source_fact_keys": [
+        "source_fact:v1:2cbb4113ef66a3b36983d3bb6b7f96b4b1c5ea8284023ccfaca76eb94127f061",
+        "source_fact:v1:544420bb9b2d066886b9ec454921d680ae3f18ce69731bb20d784e56780c5c11",
+        "source_fact:v1:56eea5a902d4cd147fb4c1e74790e09c290aa9017e389eee5005d37e61e429cd",
+        "source_fact:v1:6e52316c51bcb1e9ec96dd4a80240ffef76403f7a3c590f11fbef3b805965dc5",
+        "source_fact:v1:7b24ba782085a352f4710be9507e99a125fc62efa0478c229883d70cc2e2c551",
+        "source_fact:v1:969c00df8c68827f9f595e73128310261a1b97e3da7a019b7bf913dcf4aeb235",
+        "source_fact:v1:af32eb2c076b4f526a66e95827a99db9a35d8c679fad0f4d830c2cd61c03d9f2",
+        "source_fact:v1:b81022ffa30f932384c3e8644d2ddbbb7bbc6a0d78aba32890afe8e346e7f562",
+        "source_fact:v1:dd0b80289df5ae32ebc72018c8cd1f41e641182a4d6eaba4f0d6d35511316e0a",
+        "source_fact:v1:e7f71478ca4a2de981a91932bad16a71ea2dfd033a9160c0fe0b21a715991070"
+      ],
+      "source_published_kst": "2026-10-06T17:18+09:00",
+      "title": "국고채 금리, 대외금리 연동하며 혼조세…3년물 3.933%(종합) | 연합뉴스"
     },
     "source_fact:960b84e54fc29bb7972e8350": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
@@ -92460,6 +93111,24 @@
       "source_published_kst": "2026-10-05T08:08+09:00",
       "title": "한반도 감시부터 우주의약품 실험까지…K-우주영토 넓힌다[누리호 5차 下]"
     },
+    "source_fact:a08b9e1362e8794a287f27f4": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816043",
+      "source": "뉴시스",
+      "source_body_digest": "0b52a071071e8f3e6f57c7df7e3d42d5dea13b198fdc76b124c1f1661848b01f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ddaf5eaea70c2ad328ccc246c99b3888fb131c8043cac358a32cf6759f1af8c4",
+      "source_fact_keys": [
+        "source_fact:v1:3e8b5dc4eff611b7639742b114352e54b3fa21c7450ee984183e9e93dfb495ee",
+        "source_fact:v1:ae20efb4b3f1afbfdfee2de0ba55eacf91104b02c593f75f9264bb59ca261cbb"
+      ],
+      "source_published_kst": "2026-10-06T17:17+09:00",
+      "title": "테라뷰, 11억 규모 반도체 검사장비 공급계약"
+    },
     "source_fact:a094d2a92625ea2eedb6e8a4": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
@@ -92598,6 +93267,25 @@
       ],
       "source_published_kst": "2026-10-06T00:51+09:00",
       "title": "美고용 식었는데 서비스 물가 더 뛰었다…연준 딜레마"
+    },
+    "source_fact:a11d433db5a65a980d3fa8ba": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169526",
+      "source": "매일경제",
+      "source_body_digest": "f0d222ae2690ffdc055f2e6c5434bc1405f6f66228aee427dad76da58a96dc0c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cf6b8794b47efdc398189ecbc80f860eb0e219eb8ef4c713c24caab591d7e72e",
+      "source_fact_keys": [
+        "source_fact:v1:2fc935c752e231a4a799e07c3a656d8eb2c1c67a94d9a45180440336f3509413",
+        "source_fact:v1:422bf92929fbed5036f675cd00d404cdc66ba07c5a42831783c8267a0b6e6dbb",
+        "source_fact:v1:d3eeaacb1cc845810960f9899988e2ae617715505f074aa8f270b783a9c398dd"
+      ],
+      "source_published_kst": "2026-10-06T17:38+09:00",
+      "title": "\"中국경절 연휴 특수\"… 외국인 매출 두배로"
     },
     "source_fact:a154b415c98114c1ea11611b": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
@@ -95228,6 +95916,32 @@
       ],
       "source_published_kst": "2026-10-05T05:18+09:00",
       "title": "“국산 AI반도체, 실험실 넘어 전력현장으로”…K-Perf 첫 적용"
+    },
+    "source_fact:b133ccb058cc59b7fb23a3da": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006159751008",
+      "source": "연합뉴스",
+      "source_body_digest": "306fe4bc6e663fdef0e1a38cd9efcae6af74172f4cea944ba223e0535beb41cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f801f0d346c706f3efe672a2cd23fdecf30bfd6b6822cd7378ad38d350849bcd",
+      "source_fact_keys": [
+        "source_fact:v1:2cbb4113ef66a3b36983d3bb6b7f96b4b1c5ea8284023ccfaca76eb94127f061",
+        "source_fact:v1:544420bb9b2d066886b9ec454921d680ae3f18ce69731bb20d784e56780c5c11",
+        "source_fact:v1:56eea5a902d4cd147fb4c1e74790e09c290aa9017e389eee5005d37e61e429cd",
+        "source_fact:v1:6e52316c51bcb1e9ec96dd4a80240ffef76403f7a3c590f11fbef3b805965dc5",
+        "source_fact:v1:7b24ba782085a352f4710be9507e99a125fc62efa0478c229883d70cc2e2c551",
+        "source_fact:v1:969c00df8c68827f9f595e73128310261a1b97e3da7a019b7bf913dcf4aeb235",
+        "source_fact:v1:af32eb2c076b4f526a66e95827a99db9a35d8c679fad0f4d830c2cd61c03d9f2",
+        "source_fact:v1:b81022ffa30f932384c3e8644d2ddbbb7bbc6a0d78aba32890afe8e346e7f562",
+        "source_fact:v1:dd0b80289df5ae32ebc72018c8cd1f41e641182a4d6eaba4f0d6d35511316e0a",
+        "source_fact:v1:e7f71478ca4a2de981a91932bad16a71ea2dfd033a9160c0fe0b21a715991070"
+      ],
+      "source_published_kst": "2026-10-06T17:18+09:00",
+      "title": "국고채 금리, 대외금리 연동하며 혼조세…3년물 3.933%(종합) | 연합뉴스"
     },
     "source_fact:b13d872f05a8401e47861e20": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
@@ -101766,6 +102480,25 @@
       "source_published_kst": "2026-10-05T15:17+09:00",
       "title": "자사주 '버팀목' 빠지는 삼성전자… 100조원대 영업익으로 극복할까?"
     },
+    "source_fact:d710b42832011acfab2ced5e": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632712",
+      "source": "이투데이",
+      "source_body_digest": "ac23da943a9ac24053c1fe835f170e27f847aebaae61cc14cf9f89230080e2f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0ff2e87a82cdc92ddc6be4e26c2c16c4daee4eeede1b67294b69e1b046b2c662",
+      "source_fact_keys": [
+        "source_fact:v1:0c681282f825f79a9122e7e64cf402731adc773672eb882a86b29c8393cb825b",
+        "source_fact:v1:1062e92e8e5afdc8fa316094396c28e19ebf84f160a64d85af07d4aecb70a6ef",
+        "source_fact:v1:5016df782ad2f1c800b634756984a2bd1a49169c6f57a02160696e374e131aa9"
+      ],
+      "source_published_kst": "2026-10-06T17:25+09:00",
+      "title": "노조, 공정거래법 적용 제외?…교섭 부담 던다지만 他노조 일감 보호는 ‘과제’"
+    },
     "source_fact:d72eaae4aeceae33df45d5e1": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
       "lanes": {
@@ -102774,6 +103507,32 @@
       ],
       "source_published_kst": "2026-10-06T13:15+09:00",
       "title": "트럼프, 면세 경유 도로 차량에 사용 허용⋯농촌 표심 잡기 안간힘"
+    },
+    "source_fact:dcee6af1bcf3c512b7ef6ea6": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006159751008",
+      "source": "연합뉴스",
+      "source_body_digest": "306fe4bc6e663fdef0e1a38cd9efcae6af74172f4cea944ba223e0535beb41cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f801f0d346c706f3efe672a2cd23fdecf30bfd6b6822cd7378ad38d350849bcd",
+      "source_fact_keys": [
+        "source_fact:v1:2cbb4113ef66a3b36983d3bb6b7f96b4b1c5ea8284023ccfaca76eb94127f061",
+        "source_fact:v1:544420bb9b2d066886b9ec454921d680ae3f18ce69731bb20d784e56780c5c11",
+        "source_fact:v1:56eea5a902d4cd147fb4c1e74790e09c290aa9017e389eee5005d37e61e429cd",
+        "source_fact:v1:6e52316c51bcb1e9ec96dd4a80240ffef76403f7a3c590f11fbef3b805965dc5",
+        "source_fact:v1:7b24ba782085a352f4710be9507e99a125fc62efa0478c229883d70cc2e2c551",
+        "source_fact:v1:969c00df8c68827f9f595e73128310261a1b97e3da7a019b7bf913dcf4aeb235",
+        "source_fact:v1:af32eb2c076b4f526a66e95827a99db9a35d8c679fad0f4d830c2cd61c03d9f2",
+        "source_fact:v1:b81022ffa30f932384c3e8644d2ddbbb7bbc6a0d78aba32890afe8e346e7f562",
+        "source_fact:v1:dd0b80289df5ae32ebc72018c8cd1f41e641182a4d6eaba4f0d6d35511316e0a",
+        "source_fact:v1:e7f71478ca4a2de981a91932bad16a71ea2dfd033a9160c0fe0b21a715991070"
+      ],
+      "source_published_kst": "2026-10-06T17:18+09:00",
+      "title": "국고채 금리, 대외금리 연동하며 혼조세…3년물 3.933%(종합) | 연합뉴스"
     },
     "source_fact:dd55e7c34fc1cbac7d9e04db": {
       "first_seen_kst": "2026-10-06T03:45:53+09:00",
@@ -105114,6 +105873,24 @@
       "source_published_kst": "2026-10-06T06:10+09:00",
       "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
     },
+    "source_fact:e932c2d5e5102ece163be9d4": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://biz.chosun.com/it-science/ict/2026/10/06/MBZT3TF6RFDVVITGBC47GGESXI/",
+      "source": "조선비즈",
+      "source_body_digest": "6c202b4adca067e88d90fba3302a96e34c4f40cbd710f4096b077912fb3a7b8d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e1f9cc74dc47da69a17b6af9341b0f6cb8527f5173a5921adff0f010a4d08b71",
+      "source_fact_keys": [
+        "source_fact:v1:39bd84ac49ddd0b49d0b3ad4099d985ccd8d09cad3ec06f1a351cc050bc25f2b",
+        "source_fact:v1:d9be8974a97cd22db0ebb5fab58eb545dd8f5962d6f34408990f2e059c590c25"
+      ],
+      "source_published_kst": "2026-10-06T11:41+09:00",
+      "title": "삼성전기, 글로벌 기업과 MLCC 공급계약… 1년간 2856억원 규모"
+    },
     "source_fact:e98c0f4202cf299eda9489d7": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
@@ -106119,6 +106896,24 @@
       "source_published_kst": "2026-10-06T05:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
     },
+    "source_fact:eee8413763498efcf9af7465": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816043",
+      "source": "뉴시스",
+      "source_body_digest": "0b52a071071e8f3e6f57c7df7e3d42d5dea13b198fdc76b124c1f1661848b01f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ddaf5eaea70c2ad328ccc246c99b3888fb131c8043cac358a32cf6759f1af8c4",
+      "source_fact_keys": [
+        "source_fact:v1:3e8b5dc4eff611b7639742b114352e54b3fa21c7450ee984183e9e93dfb495ee",
+        "source_fact:v1:ae20efb4b3f1afbfdfee2de0ba55eacf91104b02c593f75f9264bb59ca261cbb"
+      ],
+      "source_published_kst": "2026-10-06T17:17+09:00",
+      "title": "테라뷰, 11억 규모 반도체 검사장비 공급계약"
+    },
     "source_fact:ef402e514c69b758444f8164": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
       "lanes": {
@@ -106904,6 +107699,32 @@
       ],
       "source_published_kst": "2026-10-05T17:44+09:00",
       "title": "환율 하락에 영업이익 늘어도 순이익 뚝…외화 자산 평가손익에 영향"
+    },
+    "source_fact:f4a268b9750e2c290ecde374": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006159751008",
+      "source": "연합뉴스",
+      "source_body_digest": "306fe4bc6e663fdef0e1a38cd9efcae6af74172f4cea944ba223e0535beb41cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f801f0d346c706f3efe672a2cd23fdecf30bfd6b6822cd7378ad38d350849bcd",
+      "source_fact_keys": [
+        "source_fact:v1:2cbb4113ef66a3b36983d3bb6b7f96b4b1c5ea8284023ccfaca76eb94127f061",
+        "source_fact:v1:544420bb9b2d066886b9ec454921d680ae3f18ce69731bb20d784e56780c5c11",
+        "source_fact:v1:56eea5a902d4cd147fb4c1e74790e09c290aa9017e389eee5005d37e61e429cd",
+        "source_fact:v1:6e52316c51bcb1e9ec96dd4a80240ffef76403f7a3c590f11fbef3b805965dc5",
+        "source_fact:v1:7b24ba782085a352f4710be9507e99a125fc62efa0478c229883d70cc2e2c551",
+        "source_fact:v1:969c00df8c68827f9f595e73128310261a1b97e3da7a019b7bf913dcf4aeb235",
+        "source_fact:v1:af32eb2c076b4f526a66e95827a99db9a35d8c679fad0f4d830c2cd61c03d9f2",
+        "source_fact:v1:b81022ffa30f932384c3e8644d2ddbbb7bbc6a0d78aba32890afe8e346e7f562",
+        "source_fact:v1:dd0b80289df5ae32ebc72018c8cd1f41e641182a4d6eaba4f0d6d35511316e0a",
+        "source_fact:v1:e7f71478ca4a2de981a91932bad16a71ea2dfd033a9160c0fe0b21a715991070"
+      ],
+      "source_published_kst": "2026-10-06T17:18+09:00",
+      "title": "국고채 금리, 대외금리 연동하며 혼조세…3년물 3.933%(종합) | 연합뉴스"
     },
     "source_fact:f4ac6334b0b5c9fe99c1ef1b": {
       "first_seen_kst": "2026-10-06T17:59:23+09:00",
@@ -112372,6 +113193,21 @@
       "source": "뉴시스",
       "title": "젤렌스키 \"中, 러시아판 스타링크 개발 지원\"…트럼프에 제재 요청"
     },
+    "title:23f19ef16862f5732ec01baf": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816128",
+      "source": "뉴시스",
+      "source_body_digest": "9622e69043b08a4cbb292d82b1273256cc7639327bd8cc5ac1a899ae30cbd7fb",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T18:34+09:00",
+      "title": "김성환 \"호남 반도체 팹 9기면 14GW 필요…전력망 계획 원점 점검\"(종합)"
+    },
     "title:23f7c7ab78e8a6352c8f1ea8": {
       "first_seen_kst": "2026-10-01T21:17:39+09:00",
       "lanes": {
@@ -112745,6 +113581,24 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=01295606645583072",
       "source": "이데일리",
       "title": "[美특징주]그랩홀딩스, CEO 1040만주 자사주 매입…주가 10%↑"
+    },
+    "title:27c073923658f51a8236992c": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://biz.chosun.com/it-science/ict/2026/10/06/MBZT3TF6RFDVVITGBC47GGESXI/",
+      "source": "조선비즈",
+      "source_body_digest": "6c202b4adca067e88d90fba3302a96e34c4f40cbd710f4096b077912fb3a7b8d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e1f9cc74dc47da69a17b6af9341b0f6cb8527f5173a5921adff0f010a4d08b71",
+      "source_fact_keys": [
+        "source_fact:v1:39bd84ac49ddd0b49d0b3ad4099d985ccd8d09cad3ec06f1a351cc050bc25f2b",
+        "source_fact:v1:d9be8974a97cd22db0ebb5fab58eb545dd8f5962d6f34408990f2e059c590c25"
+      ],
+      "source_published_kst": "2026-10-06T11:41+09:00",
+      "title": "삼성전기, 글로벌 기업과 MLCC 공급계약… 1년간 2856억원 규모"
     },
     "title:28049a0e245da7d04349902b": {
       "first_seen_kst": "2026-10-01T21:17:39+09:00",
@@ -113798,6 +114652,25 @@
       "source_event_identity": "",
       "title": "현대차그룹, 美 3분기 판매 포드에 1195대 차…첫 추월 문턱서 멈췄다"
     },
+    "title:32f5d5293728213ef72d4c24": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632712",
+      "source": "이투데이",
+      "source_body_digest": "ac23da943a9ac24053c1fe835f170e27f847aebaae61cc14cf9f89230080e2f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0ff2e87a82cdc92ddc6be4e26c2c16c4daee4eeede1b67294b69e1b046b2c662",
+      "source_fact_keys": [
+        "source_fact:v1:0c681282f825f79a9122e7e64cf402731adc773672eb882a86b29c8393cb825b",
+        "source_fact:v1:1062e92e8e5afdc8fa316094396c28e19ebf84f160a64d85af07d4aecb70a6ef",
+        "source_fact:v1:5016df782ad2f1c800b634756984a2bd1a49169c6f57a02160696e374e131aa9"
+      ],
+      "source_published_kst": "2026-10-06T17:25+09:00",
+      "title": "노조, 공정거래법 적용 제외?…교섭 부담 던다지만 他노조 일감 보호는 ‘과제’"
+    },
     "title:32f74496e2c42e64ee4688b9": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
       "lanes": {
@@ -113892,6 +114765,25 @@
       "link": "https://www.fnnews.com/news/202609230919540789",
       "source": "파이낸셜뉴스",
       "title": "수익률·개인 매수·연금 활용까지…한투운용, 추석 ETF 4종 제안"
+    },
+    "title:346416c2c517260b8fe24cbd": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169526",
+      "source": "매일경제",
+      "source_body_digest": "f0d222ae2690ffdc055f2e6c5434bc1405f6f66228aee427dad76da58a96dc0c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cf6b8794b47efdc398189ecbc80f860eb0e219eb8ef4c713c24caab591d7e72e",
+      "source_fact_keys": [
+        "source_fact:v1:2fc935c752e231a4a799e07c3a656d8eb2c1c67a94d9a45180440336f3509413",
+        "source_fact:v1:422bf92929fbed5036f675cd00d404cdc66ba07c5a42831783c8267a0b6e6dbb",
+        "source_fact:v1:d3eeaacb1cc845810960f9899988e2ae617715505f074aa8f270b783a9c398dd"
+      ],
+      "source_published_kst": "2026-10-06T17:38+09:00",
+      "title": "\"中국경절 연휴 특수\"… 외국인 매출 두배로"
     },
     "title:346e87e4c073e768065d2ea2": {
       "first_seen_kst": "2026-10-04T15:04:58+09:00",
@@ -115123,6 +116015,21 @@
       ],
       "source_published_kst": "2026-10-06T08:48+09:00",
       "title": "현대글로비스, SMR 추진 車운반선 상용화 시동…\"美 물류사와 항로 공동 검토\""
+    },
+    "title:40e9923b1c0eedbe545eeae2": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816128",
+      "source": "뉴시스",
+      "source_body_digest": "9622e69043b08a4cbb292d82b1273256cc7639327bd8cc5ac1a899ae30cbd7fb",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T18:34+09:00",
+      "title": "김성환 \"호남 반도체 팹 9기면 14GW 필요…전력망 계획 원점 점검\"(종합)"
     },
     "title:40ff97bff8ea07dcf83d93e1": {
       "first_seen_kst": "2026-10-02T14:00:40+09:00",
@@ -117201,6 +118108,24 @@
       ],
       "source_published_kst": "2026-10-06T14:13+09:00",
       "title": "이형일 \"텍사스 발전소에 24억弗 송금…상업적 합리성 충족\"(종합)"
+    },
+    "title:55cb21c0a429f184c051b461": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816043",
+      "source": "뉴시스",
+      "source_body_digest": "0b52a071071e8f3e6f57c7df7e3d42d5dea13b198fdc76b124c1f1661848b01f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ddaf5eaea70c2ad328ccc246c99b3888fb131c8043cac358a32cf6759f1af8c4",
+      "source_fact_keys": [
+        "source_fact:v1:3e8b5dc4eff611b7639742b114352e54b3fa21c7450ee984183e9e93dfb495ee",
+        "source_fact:v1:ae20efb4b3f1afbfdfee2de0ba55eacf91104b02c593f75f9264bb59ca261cbb"
+      ],
+      "source_published_kst": "2026-10-06T17:17+09:00",
+      "title": "테라뷰, 11억 규모 반도체 검사장비 공급계약"
     },
     "title:55cf49726bbe9695e86ef88b": {
       "first_seen_kst": "2026-10-05T14:51:16+09:00",
@@ -131532,6 +132457,32 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "지식재산처, 상표 분류도 '속도전'…하역용 협동로봇 등 72개 신규 명칭 발굴"
     },
+    "title:ec6bc9f552077d8c176cdeaf": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006159751008",
+      "source": "연합뉴스",
+      "source_body_digest": "306fe4bc6e663fdef0e1a38cd9efcae6af74172f4cea944ba223e0535beb41cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f801f0d346c706f3efe672a2cd23fdecf30bfd6b6822cd7378ad38d350849bcd",
+      "source_fact_keys": [
+        "source_fact:v1:2cbb4113ef66a3b36983d3bb6b7f96b4b1c5ea8284023ccfaca76eb94127f061",
+        "source_fact:v1:544420bb9b2d066886b9ec454921d680ae3f18ce69731bb20d784e56780c5c11",
+        "source_fact:v1:56eea5a902d4cd147fb4c1e74790e09c290aa9017e389eee5005d37e61e429cd",
+        "source_fact:v1:6e52316c51bcb1e9ec96dd4a80240ffef76403f7a3c590f11fbef3b805965dc5",
+        "source_fact:v1:7b24ba782085a352f4710be9507e99a125fc62efa0478c229883d70cc2e2c551",
+        "source_fact:v1:969c00df8c68827f9f595e73128310261a1b97e3da7a019b7bf913dcf4aeb235",
+        "source_fact:v1:af32eb2c076b4f526a66e95827a99db9a35d8c679fad0f4d830c2cd61c03d9f2",
+        "source_fact:v1:b81022ffa30f932384c3e8644d2ddbbb7bbc6a0d78aba32890afe8e346e7f562",
+        "source_fact:v1:dd0b80289df5ae32ebc72018c8cd1f41e641182a4d6eaba4f0d6d35511316e0a",
+        "source_fact:v1:e7f71478ca4a2de981a91932bad16a71ea2dfd033a9160c0fe0b21a715991070"
+      ],
+      "source_published_kst": "2026-10-06T17:18+09:00",
+      "title": "국고채 금리, 대외금리 연동하며 혼조세…3년물 3.933%(종합) | 연합뉴스"
+    },
     "title:ecf1a1e8cfe79a17688ae1e5": {
       "first_seen_kst": "2026-10-03T21:43:46+09:00",
       "lanes": {
@@ -132993,6 +133944,21 @@
       "source": "파이낸셜뉴스",
       "title": "아리바이오홀딩스 성수현 부회장, 5억원 규모 장내매수 \"합병 철회 후 책임경영 의지\""
     },
+    "title:fe25c2631ce3c25f167535d7": {
+      "first_seen_kst": "2026-10-06T19:33:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:33:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:33:48+09:00",
+      "link": "https://www.hankyung.com/article/2026100646381",
+      "source": "한국경제",
+      "source_body_digest": "4d89d95bf6c54c691807b4ffc79b28bc16a86552185bd8919afe2af329a1cea7",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T16:06+09:00",
+      "title": "신한은행, 산업현장 찾아 기업 맞춤형 금융 솔루션 제공"
+    },
     "title:fe664370359ce5ebe81c01f1": {
       "first_seen_kst": "2026-10-02T14:00:40+09:00",
       "lanes": {
@@ -133159,5 +134125,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T19:21:45+09:00"
+  "updated_at_kst": "2026-10-06T19:33:48+09:00"
 }
