@@ -11,6 +11,7 @@ on:
       - "scripts/guard_pjm_baseline_source.py"
       - "scripts/us_data_center_time_to_power_watch.py"
       - "scripts/guard_us_time_to_power_metrics_source.py"
+      - "scripts/patch_google_constellation_official_ppa.py"
       - "scripts/clean_us_time_to_power_alert_html.py"
       - "scripts/us_data_center_generation_buildout_watch.py"
       - "scripts/us_data_center_cancellation_risk_watch.py"
@@ -169,6 +170,7 @@ jobs:
       - name: Check US data center time-to-power execution
         run: |
           python scripts/guard_us_time_to_power_metrics_source.py
+          python scripts/patch_google_constellation_official_ppa.py
           python scripts/us_data_center_time_to_power_watch.py
 
       - name: Improve US time-to-power Telegram readability
@@ -186,8 +188,8 @@ jobs:
           path = Path("out/us_data_center_generation_buildout_pending_state.json")
           data = json.loads(path.read_text(encoding="utf-8"))
           bundle = data.get("hyperscaler_nuclear_ppa") or {}
-          if int(bundle.get("version") or 0) < 5:
-              raise SystemExit("hyperscaler nuclear PPA state version < 5")
+          if int(bundle.get("version") or 0) < 6:
+              raise SystemExit("hyperscaler nuclear PPA state version < 6")
 
           states = bundle.get("states") or {}
           google = states.get("google_constellation") or {}
@@ -205,23 +207,30 @@ jobs:
           if google.get("stage") == "reported_near_deal" and google.get("official"):
               raise SystemExit("Google-Constellation media near-deal incorrectly marked official")
 
-          # Reuters now confirms the deal was signed, but no Google/Constellation
-          # first-party release has been verified yet.  Keep this as signed_reported.
-          if google.get("stage") == "signed_reported":
-              if google.get("official"):
-                  raise SystemExit("Reuters-signed state incorrectly promoted to official")
-              if float(google.get("total_supply_mw") or 0) != 3590.0:
-                  raise SystemExit(f"Google total supply MW regression: {google}")
-              if float(google.get("nuclear_supply_mw") or 0) != 890.0:
-                  raise SystemExit(f"Google nuclear uprate MW regression: {google}")
-              if float(google.get("other_pjm_supply_mw") or 0) != 2700.0:
-                  raise SystemExit(f"Google PJM non-nuclear supply MW regression: {google}")
-              if int(google.get("nuclear_unit_count") or 0) != 11:
-                  raise SystemExit(f"Google nuclear unit-count regression: {google}")
-              if float(google.get("nuclear_upgrade_investment_floor_usd_b") or 0) != 4.3:
-                  raise SystemExit(f"Google nuclear-upgrade investment regression: {google}")
-              if google.get("asset_mode") != "existing_uprate":
-                  raise SystemExit(f"Google asset-mode regression: {google}")
+          # Oct. 6 Google/Constellation first-party release supersedes the
+          # earlier Bloomberg/Reuters negotiation-only state.
+          if google.get("stage") != "signed_official" or not google.get("official"):
+              raise SystemExit(f"Google-Constellation must be official signed: {google}")
+          if float(google.get("ppa_mw") or 0) != 890.0:
+              raise SystemExit(f"Google nuclear PPA MW regression: {google}")
+          if int(google.get("years") or 0) != 20:
+              raise SystemExit(f"Google nuclear PPA term regression: {google}")
+          if float(google.get("total_supply_mw") or 0) != 3590.0:
+              raise SystemExit(f"Google total supply MW regression: {google}")
+          if float(google.get("nuclear_supply_mw") or 0) != 890.0:
+              raise SystemExit(f"Google nuclear uprate MW regression: {google}")
+          if float(google.get("other_pjm_supply_mw") or 0) != 2700.0:
+              raise SystemExit(f"Google PJM other-supply MW regression: {google}")
+          if int(google.get("other_pjm_years") or 0) != 15:
+              raise SystemExit(f"Google PJM other-supply term regression: {google}")
+          if int(google.get("nuclear_unit_count") or 0) != 11:
+              raise SystemExit(f"Google nuclear unit-count regression: {google}")
+          if float(google.get("nuclear_upgrade_investment_floor_usd_b") or 0) != 4.3:
+              raise SystemExit(f"Google nuclear-upgrade investment regression: {google}")
+          if int(google.get("first_uprate_year") or 0) != 2028:
+              raise SystemExit(f"Google first uprate year regression: {google}")
+          if google.get("asset_mode") != "existing_uprate":
+              raise SystemExit(f"Google asset-mode regression: {google}")
 
           prov = google.get("provenance") or {}
           if google.get("amount_floor_usd_b") == 1.0 and prov.get("amount_floor_usd_b") not in {"media", "prior_media"}:
