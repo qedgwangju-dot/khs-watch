@@ -166,8 +166,10 @@ def plan_stage(title: str) -> str:
         return "일정 변경"
     if "호남" in lower and "반도체" in lower and any(x in lower for x in ("14gw", "6.3gw", "65만", "전력망 계획")):
         return "장관 국감 발언"
-    if any(x in lower for x in ("최종 확정", "확정", "의결", "정부안", "최종안")):
+    if any(x in lower for x in ("최종 확정", "최종안", "의결")):
         return "확정·의결"
+    if "정부안" in lower and any(x in lower for x in ("발표", "공개", "확정")):
+        return "정부안 공개"
     if any(x in lower for x in ("공청회", "정책토론회", "토론회", "총괄위원회", "분과회의")):
         return "수립·공론화"
     if any(x in lower for x in ("전망", "잠정안", "실무안", "시나리오")):
@@ -185,8 +187,10 @@ def classify(title: str) -> tuple[str, int]:
         return "전기본 수립 일정", 6
     if "전기본" in lower and any(x in lower for x in ("위원 명단", "위원 공개", "전문위원", "위원 비공개")):
         return "전기본 운영·거버넌스", 1
-    if any(x in lower for x in ("최종 확정", "확정", "의결", "정부안", "최종안")):
+    if any(x in lower for x in ("최종 확정", "최종안", "의결")):
         return "전기본 확정·의결", 7
+    if "정부안" in lower and any(x in lower for x in ("발표", "공개", "확정")):
+        return "전기본 정부안", 6
     if any(x in lower for x in ("원전", "원자력")):
         return "원전·전원믹스", 6
     if any(x in lower for x in ("전력망 혁신대책", "계통관리변전소", "접속권", "비증설", "유연접속")):
@@ -394,6 +398,8 @@ def meaning(category: str) -> str:
         return "반도체·데이터센터 부하와 송전·변전·용수 인프라의 실제 투자 규모·우선순위를 바꿈"
     if category == "전기본 수립 일정":
         return "정부안·공청회·국회 보고·최종 확정의 정책 시간표를 직접 늦추거나 앞당김"
+    if category == "전기본 정부안":
+        return "토론·잠정 논의가 정부 공식 초안으로 올라와 전원·전력망 숫자의 확정 가능성을 높임"
     if category == "전기본 운영·거버넌스":
         return "위원 명단 공방 자체는 전원 숫자·투자 물량·정책 시간표를 바꾸지 않으면 투자 알림 대상 아님"
     if category == "전기본 수립 절차":
@@ -404,6 +410,8 @@ def meaning(category: str) -> str:
 def next_checkpoint(stage: str, category: str) -> str:
     if stage == "확정·의결":
         return "확정 계획의 세부 전원별 GW·준공연도·송변전·ESS 집행계획과 실제 발주"
+    if stage == "정부안 공개":
+        return "공청회·국회 보고 후 숫자가 유지·수정되는지와 최종 확정 시점"
     if stage == "수립·공론화":
         return "토론회·공청회 의견이 정부안 숫자와 일정에 실제 반영되는지"
     if stage == "전망·잠정안":
