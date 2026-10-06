@@ -105,6 +105,10 @@ def blackrock_usdxx() -> dict:
         r"(\d{1,2}-[A-Za-z]{3}-20\d{2})\s*\$\s*([\d,]+(?:\.\d+)?)",
         re.I,
     )
+    nav_pat = re.compile(
+        r"NAV\s+as\s+of\s+(\d{1,2}-[A-Za-z]{3}-20\d{2})\s*\$\s*1\.00",
+        re.I,
+    )
 
     for url in (BLACKROCK_USDXX_URL, BLACKROCK_USDXX_ALT_URL):
         try:
@@ -135,24 +139,32 @@ def blackrock_usdxx() -> dict:
                 (dt.datetime.strptime(d, date_fmt).date(), float(v))
                 for d, v in one_pat.findall(text)
             ]
+            nav_dates = [
+                dt.datetime.strptime(d, date_fmt).date()
+                for d in nav_pat.findall(text)
+            ]
             if not sec_matches or not seven_matches:
                 raise RuntimeError("7-day SEC / 7-day yield pair could not be parsed")
+            if not nav_dates:
+                raise RuntimeError("visible USDXX NAV as-of date could not be parsed")
+            visible_nav_date = max(nav_dates)
 
             candidates = []
             for sec_date, sec_value in sec_matches:
                 same_day = [(d, v) for d, v in seven_matches if d == sec_date]
                 for _, seven_value in same_day:
                     gap = abs(sec_value - seven_value)
-                    if gap <= 0.05:
+                    if gap <= 0.05 and sec_date == visible_nav_date:
                         candidates.append((sec_date, sec_value, seven_value, gap))
             if not candidates:
                 raise RuntimeError(
-                    f"7-day SEC yield failed 7-day-yield cross-check: sec={sec_matches} seven={seven_matches}"
+                    "7-day SEC yield failed visible-NAV/date cross-check: "
+                    f"nav={visible_nav_date} sec={sec_matches} seven={seven_matches}"
                 )
 
-            # Prefer the newest date, then the closest SEC-vs-7day pair.
-            candidates.sort(key=lambda x: (x[0], -x[3]))
-            d, sec_yield, seven_yield, gap = candidates[-1]
+            # Accept only the yield pair bound to the product's visible NAV date.
+            candidates.sort(key=lambda x: x[3])
+            d, sec_yield, seven_yield, gap = candidates[0]
 
             one_day = None
             for od, ov in sorted(one_matches, key=lambda x: x[0]):
@@ -186,6 +198,7 @@ def blackrock_usdxx() -> dict:
                 "yield_7d": seven_yield,
                 "yield_1d": one_day,
                 "yield_crosscheck_gap_bp": round(gap * 100, 1),
+                "visible_nav_date": visible_nav_date.isoformat(),
                 "fund_size_usd_m": size,
                 "fund_size_date": size_date.isoformat() if size_date else None,
                 "source_url": url,
