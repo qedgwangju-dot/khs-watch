@@ -30,17 +30,27 @@ RAY_NEWS = "https://raytherapeutics.com/category/press-release/"
 RAY_FEED = "https://raytherapeutics.com/feed/"
 RAY_GOOGLE_QUERY = '"Ray Therapeutics" (RTx-015 OR RTx-021 OR optogenetic) (FDA OR EMA OR RMAT OR PRIME OR trial OR phase OR dosing OR data OR results OR financing OR partnership)'
 GENSIGHT_NEWS = "https://www.gensight-biologics.com/subject/gs030/"
+RESTORE_VISION_NEWS = "https://restore-vis.com/en/news/2026/"
+AUGELUX_NEWS = "https://www.augeluxtherapeutics.com/en/news/"
+JRCT_RV001 = "https://jrct.mhlw.go.jp/en-latest-detail/jRCT2033240611"
 
 TRIALS = {
     "NCT06460844": {"company": "Ray Therapeutics", "program": "RTx-015"},
-    "NCT06162585": {"company": "Nanoscope Therapeutics", "program": "MOGENRY/MCO-010"},
-    "NCT04945772": {"company": "Nanoscope Therapeutics", "program": "MOGENRY/MCO-010"},
+    "NCT07439887": {"company": "Ray Therapeutics", "program": "RTx-021/AURORA"},
+    "NCT06162585": {"company": "Nanoscope Therapeutics", "program": "MOGENRY/MCO-010 장기추적"},
+    "NCT04945772": {"company": "Nanoscope Therapeutics", "program": "MOGENRY/MCO-010 RESTORE"},
+    "NCT05417126": {"company": "Nanoscope Therapeutics", "program": "MOGENRY/MCO-010 STARLIGHT"},
     "NCT03326336": {"company": "GenSight Biologics", "program": "GS030"},
+    "NCT04278131": {"company": "Bionic Sight", "program": "BS01"},
+    "NCT06292650": {"company": "Augelux Therapeutics", "program": "ZM-02/MOON"},
+    "NCT07282457": {"company": "Augelux Therapeutics", "program": "ZM-02/PRISM"},
 }
 
 COMPANY_SOURCES = [
     ("Nanoscope Therapeutics", NANOSCOPE_NEWS, ("mogenry", "mco-010", "sonpiretigene", "optogen")),
     ("GenSight Biologics", GENSIGHT_NEWS, ("gs030", "optogen")),
+    ("Restore Vision", RESTORE_VISION_NEWS, ("rv-001", "optogen", "chimeric rhodopsin")),
+    ("Augelux Therapeutics", AUGELUX_NEWS, ("zm-02", "optogen", "moon", "prism")),
 ]
 
 ACTION_TERMS = (
@@ -49,6 +59,8 @@ ACTION_TERMS = (
     "phase 1", "phase 2", "phase 3", "phase 2/3", "clinical trial", "trial", "dosing", "dosed",
     "patient", "topline", "data", "results", "endpoint", "manufacturing", "commercial",
     "launch", "partnership", "license", "licensing", "financing", "series b", "series c",
+    "first patient", "first-in-human", "interim", "52-week", "52 week", "ind clearance", "ind cleared",
+    "orphan drug", "grant", "cgmp", "commercial supply", "priority review", "late-stage", "late stage",
 )
 
 RETINAL_TERMS = (
@@ -120,6 +132,10 @@ def classify_press(title: str) -> tuple[str, str]:
     low = title.lower()
     if ("fda" in low and "bla" in low and ("accept" in low or "file" in low)):
         return "FDA 허가심사", "FDA가 생물의약품 허가신청(BLA)을 접수·심사 단계로 전환"
+    if "ind" in low and ("clear" in low or "cleared" in low):
+        return "IND 임상허가", "규제기관이 임상시험계획(IND)을 허용해 인간 임상 진입이 가능해짐"
+    if "first patient" in low or "first-in-human" in low or "first in human" in low:
+        return "첫 환자 투여", "최초 인간 투여 또는 첫 환자 투여로 임상 실행 단계 진입"
     if "pdufa" in low:
         return "FDA 심사기한", "FDA 심사기한(PDUFA) 또는 심사 일정 변화"
     if ("fda" in low and ("approval" in low or "approved" in low)):
@@ -142,12 +158,12 @@ def classify_press(title: str) -> tuple[str, str]:
         return "1상 임상", "1상 진입·첫 환자 투여 또는 초기 결과"
     if any(x in low for x in ("topline", "endpoint", "results", "data")):
         return "임상 데이터", "유효성·안전성 임상 데이터 공개"
-    if any(x in low for x in ("manufacturing", "commercial", "launch")):
-        return "상용화 준비", "제조·상용화·출시 준비 단계 변화"
+    if any(x in low for x in ("manufacturing", "commercial", "launch", "cgmp", "commercial supply")):
+        return "상용화 준비", "제조·cGMP·상용공급·출시 준비 단계 변화"
     if any(x in low for x in ("partnership", "license", "licensing")):
         return "사업협력", "기술이전·라이선스·사업협력 변화"
-    if any(x in low for x in ("financing", "series b", "series c")):
-        return "개발자금", "임상·상용화를 위한 신규 자금조달"
+    if any(x in low for x in ("financing", "series b", "series c", "grant")):
+        return "개발자금", "임상·제조·상용화를 위한 신규 자금조달·지원금"
     return "광유전학 임상", "광유전학 임상·규제 단계 변화"
 
 
@@ -308,6 +324,45 @@ def trial_changes(old: dict, new: dict) -> list[str]:
     return changes
 
 
+def rv001_registry_snapshot() -> dict:
+    text = clean(re.sub(r"<[^>]+>", " ", fetch_text(JRCT_RV001)))
+    low = text.lower()
+    status = ""
+    for candidate in ("Recruiting", "Active, not recruiting", "Completed", "Suspended", "Terminated", "Withdrawn"):
+        if candidate.lower() in low:
+            status = candidate
+            break
+    sample = None
+    m = re.search(r"Target sample size\s*([0-9,]+)", text, re.I)
+    if m:
+        sample = int(m.group(1).replace(",", ""))
+    modified = ""
+    m = re.search(r"Last modified on\s*([A-Za-z]+\.?\s*[0-9]{1,2},?\s*[0-9]{4})", text, re.I)
+    if m:
+        modified = clean(m.group(1))
+    return {
+        "trial_id": "jRCT2033240611",
+        "company": "Restore Vision",
+        "program": "RV-001",
+        "status": status,
+        "target_sample_size": sample,
+        "last_modified": modified,
+    }
+
+
+def registry_changes(old: dict, new: dict) -> list[str]:
+    labels = {
+        "status": "모집·진행상태",
+        "target_sample_size": "목표 환자수",
+        "last_modified": "등록정보 수정일",
+    }
+    changes = []
+    for key, label in labels.items():
+        if key in old and old.get(key) != new.get(key):
+            changes.append(f"{label}: {old.get(key)} → {new.get(key)}")
+    return changes
+
+
 def discover_nonretinal_trials() -> list[dict]:
     url = "https://clinicaltrials.gov/api/v2/studies?" + urllib.parse.urlencode({
         "format": "json",
@@ -349,7 +404,7 @@ def validate_nobel() -> bool:
     return all(x in text for x in required)
 
 
-def render_alert(items: list[dict], trial_updates: list[dict], new_cns_trials: list[dict], now: dt.datetime) -> str:
+def render_alert(items: list[dict], trial_updates: list[dict], registry_updates: list[dict], new_cns_trials: list[dict], now: dt.datetime) -> str:
     lines = [
         "[바이오 감시] 광유전학 임상·허가 구조 변화",
         f"조회 시각: {now.strftime('%Y-%m-%d %H:%M')} 한국시간",
@@ -378,6 +433,16 @@ def render_alert(items: list[dict], trial_updates: list[dict], new_cns_trials: l
             f"- 원문: https://clinicaltrials.gov/study/{item['nct']}",
         ]
         idx += 1
+    for item in registry_updates:
+        lines += [
+            "",
+            f"{idx}. Restore Vision · RV-001 · {item['trial_id']}",
+            "- 단계: 일본 jRCT 공식 임상등록 변경",
+            f"- 변화: {' / '.join(item['changes'])}",
+            "- 확인 수준: 일본 임상연구등제출·공개시스템(jRCT) 공식 등록",
+            f"- 원문: {JRCT_RV001}",
+        ]
+        idx += 1
     for item in new_cns_trials:
         lines += [
             "",
@@ -393,8 +458,9 @@ def render_alert(items: list[dict], trial_updates: list[dict], new_cns_trials: l
         "",
         "투자 해석",
         "- 망막 광유전학: MOGENRY 허가결정·RTx-015 후기임상 전환이 가장 가까운 상용화 검증 신호입니다.",
-        "- 뇌·BCI: 아직 노벨상 수상 자체를 임상 상용화로 승격하지 않습니다. 비망막 인간 임상 등록·IND·환자투여가 생길 때 별도 핵심 알림으로 올립니다.",
-        "- 연구장비: Bruker/Inscopix 같은 연구도구는 직접 임상·상용화 매출과 분리하며, 단순 노벨상 테마 뉴스에는 알림하지 않습니다.",
+        "- 뇌·BCI: 아직 인간 치료의 중심은 전기식 BCI·DBS이며, 일반 BCI 뉴스를 광유전학 수혜로 묶지 않습니다. 비망막 인간 광유전학 임상 등록·IND·첫 환자투여가 생길 때만 별도 핵심 알림으로 올립니다.",
+        "- 시각복원: MOGENRY·RTx-015/021·GS030·BS01·ZM-02·RV-001은 opsin·표적세포·보조광학장치 의존성이 서로 달라 한 묶음으로 보지 않습니다.",
+        "- 연구장비: Bruker/Inscopix·레이저·광섬유 같은 연구도구는 직접 임상·상용화 매출과 분리하며, 단순 노벨상 테마 뉴스에는 알림하지 않습니다.",
     ]
     return "\n".join(lines).strip() + "\n"
 
@@ -420,6 +486,7 @@ def main() -> int:
     initialized = bool(old.get("initialized"))
     old_seen = set(old.get("seen_event_keys") or [])
     old_trials = old.get("trial_snapshots") or {}
+    old_rv001 = old.get("rv001_registry_snapshot") or {}
     old_cns = set(old.get("cns_trial_ids") or [])
 
     errors: list[str] = []
@@ -470,6 +537,18 @@ def main() -> int:
         except Exception as exc:
             errors.append(f"{nct}: {type(exc).__name__}")
 
+    rv001_snapshot: dict = {}
+    rv001_updates: list[dict] = []
+    try:
+        rv001_snapshot = rv001_registry_snapshot()
+        successful += 1
+        if initialized and old_rv001:
+            changes = registry_changes(old_rv001, rv001_snapshot)
+            if changes:
+                rv001_updates.append({"trial_id": "jRCT2033240611", "changes": changes})
+    except Exception as exc:
+        errors.append(f"jRCT RV-001: {type(exc).__name__}")
+
     cns_trials: list[dict] = []
     try:
         cns_trials = discover_nonretinal_trials()
@@ -477,10 +556,12 @@ def main() -> int:
     except Exception as exc:
         errors.append(f"ClinicalTrials optogenetics discovery: {type(exc).__name__}")
 
-    if successful < 6 or not nobel_ok:
+    expected_sources = 1 + len(COMPANY_SOURCES) + 1 + len(TRIALS) + 1 + 1
+    minimum_successful = max(8, (expected_sources * 2 + 2) // 3)
+    if successful < minimum_successful or not nobel_ok:
         STATUS.write_text(
             "# 광유전학 임상·허가 감시 상태\n\n"
-            f"- 공식 소스 정상 조회: {successful}/9\n"
+            f"- 공식 소스 정상 조회: {successful}/{expected_sources} · 최소 통과 {minimum_successful}\n"
             f"- 노벨상 공식 검증: {'성공' if nobel_ok else '실패'}\n"
             "- 상태 기준선: 갱신하지 않음\n"
             "- Telegram: 송출하지 않음\n"
@@ -495,20 +576,22 @@ def main() -> int:
     new_cns = [x for x in cns_trials if x["nct"] not in old_cns] if initialized else []
 
     source_version = int(old.get("source_version") or 0)
-    if initialized and source_version < 4:
+    if initialized and source_version < 5:
         # Source coverage expanded after the first baseline. Do not replay
-        # historical GS030/Nanoscope/Ray items as if they were new events.
+        # historical GS030/Nanoscope/Ray/Restore Vision/Augelux items as new events.
         new_items = []
+        rv001_updates = []
 
     pending = {
         "initialized": True,
         "version": 1,
-        "source_version": 4,
+        "source_version": 5,
         "ray_official_index_verified": ray_official_index_ok,
         "last_checked_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
         "nobel_2026_verified": nobel_ok,
         "seen_event_keys": current_keys,
         "trial_snapshots": snapshots,
+        "rv001_registry_snapshot": rv001_snapshot,
         "cns_trial_ids": cns_ids,
         "relevant_press_events": len(events),
         "source_errors": errors,
@@ -519,24 +602,25 @@ def main() -> int:
     save_json(PENDING, pending)
 
     now = dt.datetime.now(KST)
-    if initialized and (new_items or trial_updates or new_cns):
-        ALERT.write_text(render_alert(new_items[:8], trial_updates[:8], new_cns[:4], now), encoding="utf-8")
+    if initialized and (new_items or trial_updates or rv001_updates or new_cns):
+        ALERT.write_text(render_alert(new_items[:8], trial_updates[:8], rv001_updates[:4], new_cns[:4], now), encoding="utf-8")
 
     STATUS.write_text(
         "# 광유전학 임상·허가 감시 상태\n\n"
         f"- 노벨상 공식 검증: **{'성공' if nobel_ok else '실패'}**\n"
-        f"- 공식 소스 정상 조회: **{successful}/9**\n"
+        f"- 공식 소스 정상 조회: **{successful}/{expected_sources}** · 최소 통과 **{minimum_successful}**\n"
         f"- 공식 기업 이벤트 기준선: **{len(events)}건**\n"
-        f"- 추적 임상: **{len(snapshots)}건**\n"
+        f"- 추적 ClinicalTrials.gov 임상: **{len(snapshots)}건**\n"
+        f"- 일본 jRCT RV-001 등록: **{'확인' if rv001_snapshot else '확인 실패'}**\n"
         f"- 비망막 중추신경계 광유전학 임상: **{len(cns_trials)}건**\n"
-        f"- 신규 알림: **{len(new_items) + len(trial_updates) + len(new_cns)}건**\n"
+        f"- 신규 알림: **{len(new_items) + len(trial_updates) + len(rv001_updates) + len(new_cns)}건**\n"
         f"- 오류: **{len(errors)}건**\n",
         encoding="utf-8",
     )
 
     print(
         f"optogenetics_watch initialized_before={initialized} press={len(events)} "
-        f"trial_updates={len(trial_updates)} cns_new={len(new_cns)} "
+        f"trial_updates={len(trial_updates)} rv001_updates={len(rv001_updates)} cns_new={len(new_cns)} "
         f"alert={int(ALERT.exists())} errors={len(errors)}"
     )
     if errors:
