@@ -260,14 +260,38 @@ baseline_new = '''    "incremental_gas_bcf_day": 4.0,
     "gs_global_prior_growth_pct": 117.0,
     "gs_btm_gas_capacity_2030_gw": 30.0,
     "gs_btm_power_delivery_2030_gw": 20.0,
+    "ms_public_need_2026_2028_gw": 68.0,
+    "ms_public_covered_2026_2028_gw": 30.0,
+    "ms_public_shortfall_2026_2028_gw": 38.0,
+    "ms_public_grid_wait_low_years": 5.0,
+    "ms_public_grid_wait_high_years": 7.0,
+    "ms_large_turbine_booking_low_year": 2031.0,
+    "ms_large_turbine_booking_high_year": 2032.0,
+    "ms_small_engine_booking_low_year": 2029.0,
+    "ms_small_engine_booking_high_year": 2030.0,
+    "ms_onsite_contract_low_years": 15.0,
+    "ms_onsite_contract_high_years": 20.0,
+    "ms_ess_us_2025_gwh": 57.0,
+    "ms_ess_us_2030_gwh": 279.0,
+    "ms_ess_dc_2030_gwh": 169.0,
+    "gs_us_capacity_2026_prior_gw": 59.0,
+    "gs_us_capacity_2026_latest_gw": 64.0,
+    "gs_us_capacity_2027_prior_gw": 95.0,
+    "gs_us_capacity_2027_latest_gw": 90.0,
+    "gs_us_demand_increase_2026_gw": 12.0,
+    "gs_us_demand_increase_2027_gw": 17.0,
+    "gs_us_demand_growth_2026_pct": 38.0,
+    "gs_us_demand_growth_2027_pct": 38.0,
 }'''
 if baseline_old not in t:
     raise SystemExit("generation capex baseline insertion point not found")
 t = t.replace(baseline_old, baseline_new, 1)
 
-trusted_old = '''    "bloombergtax.com", "advisorperspectives.com",
+trusted_old = '''    "bloombergtax.com", "advisorperspectives.com", "morganstanley.com", "goldmansachs.com",
+    "hamiltonlane.com",
 )'''
-trusted_new = '''    "bloombergtax.com", "advisorperspectives.com", "pwc.com",
+trusted_new = '''    "bloombergtax.com", "advisorperspectives.com", "morganstanley.com", "goldmansachs.com",
+    "hamiltonlane.com", "pwc.com",
     "hyosung.com", "hd-hyundaielectric.com", "hyundai-elec.co.kr", "ls-electric.com",
 )'''
 if trusted_old not in t:
@@ -275,8 +299,14 @@ if trusted_old not in t:
 t = t.replace(trusted_old, trusted_new, 1)
 
 query_old = '''    'data center transformer backlog gas turbine orders power electronics IEA',
+    'Morgan Stanley data center onsite power distributed generation fuel cell BESS forecast United States',
+    'Morgan Stanley data center ESS 279 GWh 169 GWh forecast',
+    'Goldman Sachs US data center capacity 2027 GW forecast community opposition',
 )'''
 query_new = '''    'data center transformer backlog gas turbine orders power electronics IEA',
+    'Morgan Stanley data center onsite power distributed generation fuel cell BESS forecast United States',
+    'Morgan Stanley data center ESS 279 GWh 169 GWh forecast',
+    'Goldman Sachs US data center capacity 2027 GW forecast community opposition',
     'PwC data centre capex ICT equipment 4 6 years 2050',
     'Hyosung Heavy Industries AI data center transformer order United States',
     'HD Hyundai Electric data center transformer switchgear order North America',
@@ -286,9 +316,11 @@ if query_old not in t:
     raise SystemExit("generation capex query insertion point not found")
 t = t.replace(query_old, query_new, 1)
 
-source_old = '''        ("advisorperspectives", "Bloomberg"),
+source_old = '''        ("advisorperspectives", "Bloomberg"), ("morganstanley", "Morgan Stanley"),
+        ("goldmansachs", "Goldman Sachs"), ("hamiltonlane", "Hamilton Lane"),
     ):'''
-source_new = '''        ("advisorperspectives", "Bloomberg"), ("pwc", "PwC"),
+source_new = '''        ("advisorperspectives", "Bloomberg"), ("morganstanley", "Morgan Stanley"),
+        ("goldmansachs", "Goldman Sachs"), ("hamiltonlane", "Hamilton Lane"), ("pwc", "PwC"),
         ("hyosung", "효성중공업"), ("hyundai", "HD현대일렉트릭"), ("ls-electric", "LS ELECTRIC"),
     ):'''
 if source_old not in t:
@@ -483,9 +515,17 @@ t = t.replace(func_anchor, "\n" + pwc_func + func_anchor, 1)
 
 meaning_old = '''    if "ge vernova" in low and any(k in low for k in ("gas turbine", "slot", "data center", "data centre")):
         return True
+    research_house = any(k in low for k in ("morgan stanley", "goldman sachs", "모건스탠리", "골드만삭스"))
+    research_revision = any(k in low for k in ("forecast", "outlook", "projection", "estimate", "전망", "추정", "revised", "raised", "lowered"))
+    if research_house and research_revision and any(k in low for k in ("data center", "data centre", "데이터센터")) and scale >= 500:
+        return True
     if not any(k in low for k in ("data center", "data centre", "hyperscaler", "ai campus", "ai factory")):
 '''
 meaning_new = '''    if "ge vernova" in low and any(k in low for k in ("gas turbine", "slot", "data center", "data centre")):
+        return True
+    research_house = any(k in low for k in ("morgan stanley", "goldman sachs", "모건스탠리", "골드만삭스"))
+    research_revision = any(k in low for k in ("forecast", "outlook", "projection", "estimate", "전망", "추정", "revised", "raised", "lowered"))
+    if research_house and research_revision and any(k in low for k in ("data center", "data centre", "데이터센터")) and scale >= 500:
         return True
     if "pwc" in low and any(k in low for k in ("data center", "data centre")) and any(k in low for k in ("capex", "ict", "2050", "investment")):
         return True
@@ -546,6 +586,26 @@ msg_new = '''    cm = pwc_metrics
 
     msg += ["", "<b>⚡ Morgan Stanley·Goldman Sachs 전력 병목 기준선</b>"]
     msg.append(
+        f"• <b>Goldman Sachs 2026~2027 미국 용량</b> │ 2026 {b['gs_us_capacity_2026_prior_gw']:g}→<b>{b['gs_us_capacity_2026_latest_gw']:g}GW</b> "
+        f"· 2027 {b['gs_us_capacity_2027_prior_gw']:g}→<b>{b['gs_us_capacity_2027_latest_gw']:g}GW</b> "
+        f"│ 전력수요 증가 +{b['gs_us_demand_increase_2026_gw']:g}GW / +{b['gs_us_demand_increase_2027_gw']:g}GW"
+    )
+    msg.append(
+        f"• <b>Morgan Stanley 공개 기준</b> │ 2026~2028 필요 <b>{b['ms_public_need_2026_2028_gw']:g}GW</b> "
+        f"· 건설중+계약 계통 약 {b['ms_public_covered_2026_2028_gw']:g}GW "
+        f"· 부족 약 <b>{b['ms_public_shortfall_2026_2028_gw']:g}GW</b> "
+        f"│ 계통접속 {b['ms_public_grid_wait_low_years']:g}~{b['ms_public_grid_wait_high_years']:g}년"
+    )
+    msg.append(
+        f"• <b>Morgan Stanley 장비·계약 시간표</b> │ 대형 가스터빈 계약 논의 {int(b['ms_large_turbine_booking_low_year'])}~{int(b['ms_large_turbine_booking_high_year'])}년 "
+        f"· 소형 엔진 예약 {int(b['ms_small_engine_booking_low_year'])}~{int(b['ms_small_engine_booking_high_year'])}년 "
+        f"· 현장전원 계약 {b['ms_onsite_contract_low_years']:g}~{b['ms_onsite_contract_high_years']:g}년"
+    )
+    msg.append(
+        f"• <b>Morgan Stanley ESS</b> │ 미국 연간 설치 2025 {b['ms_ess_us_2025_gwh']:g}→2030 <b>{b['ms_ess_us_2030_gwh']:g}GWh</b> "
+        f"· 데이터센터 <b>{b['ms_ess_dc_2030_gwh']:g}GWh</b> │ Morgan Stanley 전망을 인용한 2차 공개자료 기준"
+    )
+    msg.append(
         f"• <b>Morgan Stanley 2026~2028 신규 필요</b> │ <b>{b['ms_new_power_need_2026_2028_gw']:g}GW</b>"
         f" = 건설 중 {b['ms_under_construction_gw']:g}GW + 가용 전력망 {b['ms_available_grid_gw']:g}GW"
         f" + 초기 부족 <b>{b['ms_initial_shortfall_gw']:g}GW</b>"
@@ -594,6 +654,9 @@ status_new = '''    f"- 대형 전력변압기 최대 조달기간: **{power_met
     f"- Morgan Stanley 대체전원 반영 후 2028 부족: **{BASELINE['ms_residual_shortfall_gw']}GW**\n"
     f"- Goldman Sachs 2030 미국 데이터센터 전력: **{BASELINE['gs_us_2030_power_gw']}GW**\n"
     f"- Goldman Sachs 2025~2030 글로벌 전력수요 증가: **+{BASELINE['gs_global_growth_2025_2030_pct']}%**\n"
+    f"- Goldman Sachs 2027 미국 데이터센터 용량 최신: **{BASELINE['gs_us_capacity_2027_latest_gw']}GW**\n"
+    f"- Morgan Stanley 공개 2026~2028 부족: **{BASELINE['ms_public_shortfall_2026_2028_gw']}GW**\n"
+    f"- Morgan Stanley 2030 ESS / 데이터센터: **{BASELINE['ms_ess_us_2030_gwh']}GWh / {BASELINE['ms_ess_dc_2030_gwh']}GWh**\n"
     f"- 신규 의미자료: **{len(new_items)}건**\n"
 '''
 if status_old in t:
@@ -1928,7 +1991,7 @@ for marker in (
     if marker not in t:
         raise SystemExit(f"generation nuclear-PPA guard insertion failed: {marker}")
 
-t = t.replace("FORMAT_VERSION = 5", "FORMAT_VERSION = 7", 1)
+t = t.replace("FORMAT_VERSION = 5", "FORMAT_VERSION = 8", 1)
 g.write_text(t, encoding="utf-8")
 print("US generation watcher recurring-capex + power-gap + global-grid + Bloom supplier guard inserted")
 
