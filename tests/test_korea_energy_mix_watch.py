@@ -14,6 +14,7 @@ from scripts.korea_energy_mix_watch import (
     event_level,
     korean_date,
     display_title,
+    plan_stage,
     parse_rss,
     render,
     topic_match,
@@ -476,3 +477,53 @@ def test_duplicate_publisher_suffix_is_removed():
 def test_google_news_decoder_import_is_available():
     from googlenewsdecoder import gnewsdecoder
     assert callable(gnewsdecoder)
+
+
+def test_government_draft_is_not_final_plan():
+    assert plan_stage("12차 전기본 정부안 공개") == "정부안 공개"
+    assert classify("12차 전기본 정부안 공개")[0] == "전기본 정부안"
+    assert plan_stage("12차 전기본 최종안 의결") == "확정·의결"
+
+
+def test_datacenter_overestimate_has_stable_material_key():
+    row = {
+        "title": '데이터센터 전력수요 급증 전망에 기후장관 "과잉된 면 있어"',
+        "publisher": "연합뉴스",
+        "official": False,
+        "published": "Tue, 06 Oct 2026 08:10:00 GMT",
+        "plan_stage": "전망·잠정안",
+    }
+    assert semantic_event_key(row) == "12th-plan|demand|datacenter-overestimate"
+    assert semantic_event_level(row) == 1
+
+
+def test_generic_power_plan_political_commentary_is_suppressed():
+    row = {
+        "title": "12차 전기본 놓고 여야 책임 공방 격화",
+        "publisher": "테스트뉴스",
+        "official": False,
+        "published": "Tue, 06 Oct 2026 08:30:00 GMT",
+        "plan_stage": "전기본 관련",
+    }
+    assert semantic_event_key(row).startswith("12th-plan|fact|")
+    assert semantic_event_level(row) == 0
+
+
+def test_datacenter_body_interpretation_surfaces_realization_gap():
+    body = """
+    제12차 전력수급기본계획 수요전망소위는 2040년 최대 전력수요를 158.4~165.0GW로 전망했다.
+    AI 데이터센터 최대 전력수요는 4.0GW에서 11.9GW로 7.9GW 늘었다.
+    전력계통영향평가를 통과한 데이터센터 96건 가운데 실제 전기를 받는 곳은 4곳이며 56건은 전기 사용 신청조차 하지 않았다.
+    데이터센터 전력사용효율 PUE는 1.64를 가정했지만 실측 평균은 1.60, 세계 평균은 1.58이라는 지적이 나왔다.
+    김성환 장관은 데이터센터 수요 전망에 과잉된 측면이 있다며 불확실성을 반영해 다시 보겠다고 답했다.
+    """
+    result = energy_runner.interpret_article_body(
+        {"title": '데이터센터 전력수요 급증 전망에 기후장관 "과잉된 면 있어"', "category": "전력수요 전망"},
+        body,
+        "",
+    )
+    assert "158.4~165.0GW" in result
+    assert "4.0GW → 11.9GW" in result
+    assert "96건" in result and "4곳" in result
+    assert "56건" in result
+    assert "PUE" in result
