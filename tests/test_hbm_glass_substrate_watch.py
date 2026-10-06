@@ -170,6 +170,21 @@ class GlassSubstrateWatchTests(unittest.TestCase):
         self.assertEqual(rec["value"]["line_count_mass_ramp_min"], 10)
         self.assertIsNone(rec["value"]["capacity_panels_per_month"])
 
+    def test_jntc_current_ramp_metrics_parse(self):
+        item = {"title":"JNTC glass substrate ramp","description":"","source":"디일렉",
+                "published_at_kst":"2026-10-06T10:00:00+09:00",
+                "direct_link":"https://thelec.kr/news/articleView.html?idxno=63298"}
+        body = "제이앤티씨 TGV 유리기판 파일럿 라인 1개는 월 1만~1만2000개 생산능력이다. 현재 27곳과 NDA를 맺었고 최종 수요기업은 7곳, 유상 샘플 고객도 7곳이다. 2027년 2mm 제품 양산 공급을 시작한다."
+        rows = w.parse_glass_substrate_records(item, body)
+        rec = next(x for x in rows if x["axis"] == "glass_hvm_stage")
+        v = rec["value"]
+        self.assertEqual(v["pilot_line_count"], 1)
+        self.assertEqual(v["pilot_capacity_units_per_month_min"], 10000)
+        self.assertEqual(v["pilot_capacity_units_per_month_max"], 12000)
+        self.assertEqual(v["nda_customer_count"], 27)
+        self.assertEqual(v["end_customer_count"], 7)
+        self.assertEqual(v["paid_sample_customer_count"], 7)
+
     def test_yield_crossing_90_alerts(self):
         old = {"axis":"glass_panel_yield","value":{"yield_pct":88.0}}
         new = {"axis":"glass_panel_yield","value":{"yield_pct":92.0}}
