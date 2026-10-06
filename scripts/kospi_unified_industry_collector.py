@@ -175,7 +175,7 @@ async def main(out_path: Path, until: dt.time, test_seconds: int | None = None) 
 
         fp.flush()
         fp.close()
-        market_hours = dt.datetime.now(KST).weekday() < 5 and dt.time(9, 0) <= dt.datetime.now(KST).time() <= dt.time(15, 20)
+        market_hours = dt.datetime.now(KST).weekday() < 5 and dt.time(9, 0) <= dt.datetime.now(KST).time() <= dt.time(15, 32)
         print(f"ubm_collector_finished=true records={written} market_hours={str(market_hours).lower()}", flush=True)
         if test_seconds is not None and market_hours and written <= 0:
             raise RuntimeError("UBM collector received no investor-industry payload during market hours")
@@ -195,7 +195,7 @@ async def main(out_path: Path, until: dt.time, test_seconds: int | None = None) 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="out/kospi_industry_flow.jsonl")
-    ap.add_argument("--until", default="15:20")
+    ap.add_argument("--until", default="15:32")
     ap.add_argument("--test-seconds", type=int)
     args = ap.parse_args()
     raise SystemExit(
