@@ -181,6 +181,30 @@ jobs:
           python -m py_compile scripts/ls_unified_flow_probe.py
           python scripts/ls_unified_flow_probe.py
 
+      - name: Verify live unified industry collector
+        run: |
+          rm -f out/kospi_industry_flow_ci.jsonl
+          python scripts/kospi_unified_industry_collector.py --test-seconds 20 --out out/kospi_industry_flow_ci.jsonl
+          python - <<'PY'
+          import json, pathlib
+          p=pathlib.Path("out/kospi_industry_flow_ci.jsonl")
+          rows=[]
+          if p.exists():
+              for line in p.read_text(encoding="utf-8").splitlines():
+                  line=line.strip()
+                  if line:
+                      rows.append(json.loads(line))
+          assert rows, "No UBM collector records"
+          investors={str(x.get("investor") or "") for x in rows}
+          industries={str(x.get("upcode") or "") for x in rows}
+          assert investors & {"개인","외국인","기관"}, investors
+          assert industries, industries
+          print("unified_industry_collector_valid=true",
+                "records=",len(rows),
+                "investors=",sorted(investors),
+                "industries=",len(industries))
+          PY
+
       - name: Upload test artifacts
         if: always()
         uses: actions/upload-artifact@v4
@@ -192,5 +216,6 @@ jobs:
             out/ls_unified_flow_probe.json
             out/kospi_shock_enrichment_probe.json
             out/kospi_shock_enrichment_latest.json
+            out/kospi_industry_flow_ci.jsonl
           if-no-files-found: ignore
           retention-days: 7
