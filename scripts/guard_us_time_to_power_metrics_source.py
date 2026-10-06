@@ -905,6 +905,10 @@ nuclear_ppa_extension = r'''
 PPA_STATE_VERSION = 2
 PPA_MAX_AGE_DAYS = 14
 PPA_CONSTELLATION_NEWSROOM = "https://www.constellationenergy.com/news/"
+PPA_GOOGLE_OFFICIAL_INDEXES = (
+    "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/",
+    "https://blog.google/company-news/outreach-and-initiatives/sustainability/",
+)
 PPA_REUTERS_GOOGLE_CONSTELLATION = "https://www.reuters.com/legal/litigation/google-constellation-near-deal-nuclear-power-bloomberg-news-reports-2026-10-06/"
 PPA_AMAZON_CONSTELLATION = "https://www.constellationenergy.com/news/2026/09/constellation-and-amazon-announce-20-year-power-purchase-agreement-at-calvert-cliffs.html"
 
@@ -1213,6 +1217,45 @@ def _ppa_collect_rows():
                 rows.append(state)
     except Exception as exc:
         errors.append(f"Constellation newsroom: {type(exc).__name__}")
+
+    # Google is the buyer, so inspect its own infrastructure/sustainability
+    # publication indexes directly as well.  This avoids depending on Google
+    # News indexing latency for the official signing step.
+    for index_url in PPA_GOOGLE_OFFICIAL_INDEXES:
+        try:
+            soup = BeautifulSoup(fetch(index_url, 25).text, "html.parser")
+            candidates = []
+            for node in soup.find_all("a", href=True):
+                label = normalize(node.get_text(" "))
+                href = urllib.parse.urljoin(index_url, node.get("href") or "")
+                domain = _ppa_domain(href)
+                if not (domain == "blog.google" or domain.endswith(".blog.google")):
+                    continue
+                low = f"{label} {href}".lower()
+                if not any(term in low for term in ("nuclear", "constellation", "power", "energy")):
+                    continue
+                candidates.append((label, href))
+            seen_google = set()
+            for label, href in candidates[:30]:
+                if href in seen_google:
+                    continue
+                seen_google.add(href)
+                try:
+                    body = normalize(BeautifulSoup(fetch(href, 25).text, "html.parser").get_text(" "))
+                except Exception:
+                    body = label
+                blob = f"{label} {body[:12000]}"
+                state = _ppa_extract_state(
+                    blob,
+                    "Google",
+                    "https://blog.google",
+                    href,
+                    dt.datetime.now(dt.timezone.utc).date().isoformat(),
+                )
+                if state:
+                    rows.append(state)
+        except Exception as exc:
+            errors.append(f"Google official index: {type(exc).__name__}")
 
     # Deduplicate by semantic event+stage+terms, not URL/headline.
     dedup = {}
