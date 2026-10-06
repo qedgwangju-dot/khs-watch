@@ -59,6 +59,16 @@ def fmt_clock(ts: float | None) -> str:
     return dt.datetime.fromtimestamp(ts, KST).strftime("%H:%M:%S")
 
 
+def ko_subject(name: str | None) -> str:
+    text = str(name or "").strip()
+    if not text:
+        return text
+    last = ord(text[-1])
+    if 0xAC00 <= last <= 0xD7A3:
+        return text + ("이" if (last - 0xAC00) % 28 else "가")
+    return text + "가"
+
+
 def market_clock_epoch(value: Any, fallback_ts: float | None = None) -> float | None:
     digits = "".join(ch for ch in str(value or "") if ch.isdigit())
     if len(digits) < 4:
@@ -629,7 +639,7 @@ class Watch:
                 verdict = f"{spot_leader}: 현물·선물 모두 최다 매도 — 주도 후보지만 프로그램 동조는 약함"
                 confidence = "중간"
         elif spot_leader and fut_leader and spot_leader != fut_leader:
-            verdict = f"현물은 {spot_leader}, 선물은 {fut_leader}가 최다 매도 — 주체 분산, 단일 주도자 확정 보류"
+            verdict = f"현물은 {spot_leader}, 선물은 {ko_subject(fut_leader)} 최다 매도 — 주체 분산, 단일 주도자 확정 보류"
             confidence = "낮음" if not pgm_neg else "중간"
         elif fut_leader and pgm_neg:
             verdict = f"{fut_leader} 선물 최다 매도와 프로그램 매도가 동반 — 파생발 하락 전이 가능성 확인"
@@ -747,9 +757,8 @@ class Watch:
     async def _run_enrichment(self, ep: dict[str, Any], att: dict[str, Any]) -> None:
         async with self.enrichment_sem:
             try:
-                leader = str(att.get("spot_leader") or "") if att.get("available") else ""
                 text, detail = await asyncio.to_thread(
-                    build_enrichment, self.token, ep, leader or None
+                    build_enrichment, self.token, ep, att
                 )
                 msg_id = await asyncio.to_thread(telegram_send, text)
                 self.enrichment_msg_ids.append(msg_id)
