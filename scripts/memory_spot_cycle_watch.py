@@ -245,7 +245,7 @@ GOLDMAN_STRUCTURAL_MEMORY_BASELINE = {
     "source_rank": 2,
 }
 
-YMTC_NAND_DURATION_TRACK_VERSION = 1
+YMTC_NAND_DURATION_TRACK_VERSION = 2
 YMTC_NAND_DURATION_BASELINE = {
     "shortage_scope": "global memory (YMTC 익명 직원 발언; NAND 전용 공식 전망으로 해석 금지)",
     "shortage_through_year": 2029,
@@ -272,7 +272,7 @@ YMTC_NAND_DURATION_BASELINE = {
     "counterpoint_url": "https://counterpointresearch.com/default.htm/insights/server-led-essds-hit-48-percent-of-nand-shipments",
     "trendforce_url": "https://www.trendforce.com/presscenter/news/20260721-13148.html",
     "as_of": "2026-10-06",
-    "source_rank": 2,
+    "source_rank": 3,
 }
 
 TREND_PINNED_PRESS_URLS = [
@@ -1630,9 +1630,11 @@ def _ymtc_nand_source_rank(item: dict) -> int:
     source = str(item.get("source") or "").lower()
     link = str(item.get("link") or "")
     host = urllib.parse.urlparse(link).netloc.lower()
-    if "counterpointresearch.com" in host or "trendforce.com" in host:
-        return 3
     if "ymtc.com" in host:
+        return 4
+    if "thewirechina.com" in host:
+        return 3
+    if "counterpointresearch.com" in host or "trendforce.com" in host:
         return 3
     trusted_hosts = (
         "thewirechina.com", "tweaktown.com", "xenospectrum.com",
@@ -1695,7 +1697,8 @@ def _extract_ymtc_nand_duration(item: dict) -> dict | None:
         )) or any(k in text for k in ("익명", "내부 관계자", "직원"))
         if "thewirechina.com" in host or any(k in low for k in ("the wire china", "wire china")):
             anonymous = True
-        obs["anonymous_employee_source"] = anonymous
+        if anonymous:
+            obs["anonymous_employee_source"] = True
         obs["shortage_official_guidance"] = bool("ymtc.com" in host and not anonymous)
         if "nand shortage" in low or "nand flash shortage" in low or "낸드 공급" in text:
             obs["shortage_scope"] = "NAND Flash"
@@ -1751,6 +1754,33 @@ def _extract_ymtc_nand_duration(item: dict) -> dict | None:
         "source_rank": rank,
     })
     return obs
+
+
+def _merge_ymtc_nand_state(old: dict, obs: dict) -> dict:
+    merged = dict(old or {})
+    old_rank = int(merged.get("source_rank") or 0)
+    new_rank = int(obs.get("source_rank") or 0)
+    metadata = {"source", "source_url", "as_of", "source_rank"}
+
+    for key, value in obs.items():
+        if value in (None, ""):
+            continue
+        if key in metadata:
+            if new_rank > old_rank or obs.get("shortage_official_guidance") is True:
+                merged[key] = value
+            continue
+        if key == "anonymous_employee_source":
+            # A sparse republisher cannot negate the original anonymous sourcing.
+            if value is True:
+                merged[key] = True
+            elif obs.get("shortage_official_guidance") is True:
+                merged[key] = False
+            continue
+        merged[key] = value
+
+    if obs.get("shortage_official_guidance") is True:
+        merged["anonymous_employee_source"] = False
+    return merged
 
 
 def _ymtc_nand_duration_changes(old: dict, new: dict) -> list[str]:
@@ -2702,7 +2732,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
 
     ymtc_nand_state = dict(state.get("ymtc_nand_duration") or {})
     if int(state.get("ymtc_nand_duration_track_version") or 0) < YMTC_NAND_DURATION_TRACK_VERSION:
-        ymtc_nand_state = _merge_typed_state(YMTC_NAND_DURATION_BASELINE, ymtc_nand_state)
+        ymtc_nand_state = _merge_ymtc_nand_state(YMTC_NAND_DURATION_BASELINE, ymtc_nand_state)
         state["ymtc_nand_duration_track_version"] = YMTC_NAND_DURATION_TRACK_VERSION
     ymtc_nand_alert_pending = bool(state.get("ymtc_nand_duration_alert_pending"))
 
@@ -2831,7 +2861,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         obs = _extract_ymtc_nand_duration(item)
         if not obs:
             continue
-        merged = _merge_typed_state(ymtc_nand_state, obs)
+        merged = _merge_ymtc_nand_state(ymtc_nand_state, obs)
         changes = _ymtc_nand_duration_changes(ymtc_nand_state, merged)
         ymtc_nand_state = merged
         if changes:
