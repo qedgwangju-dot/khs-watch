@@ -67,6 +67,56 @@ BASELINE = {
     ],
 }
 
+# Structural ABF capacity baseline added from the user's 2026-10-06 follow-up.
+# Keep physical/official facts separate from broker forecasts.  The 2021 and 2028
+# shortage percentages are not treated as a like-for-like consensus series.
+ABF_AREA_STRUCTURE_BASELINE = {
+    "version": 1,
+    "primary_capacity_metric": "substrate_area_x_buildup_layers_and_SAP_process_load",
+    "official": {
+        # Ajinomoto business briefing / integrated report: PC=1 area index and 6 ABF layers;
+        # HPC=3.5 area index and 18 ABF layers, consuming more than 10x ABF in total.
+        "ajinomoto_pc_substrate_area_index": 1.0,
+        "ajinomoto_hpc_substrate_area_index": 3.5,
+        "ajinomoto_pc_abf_layers": 6,
+        "ajinomoto_hpc_abf_layers": 18,
+        "ajinomoto_hpc_abf_use_multiple_min": 10.0,
+        "ajinomoto_source": "https://www.ajinomoto.co.jp/company/en/ir/event/business_briefing/main/01113/teaserItems1/01/linkList/00/link/3_ICT_E.pdf",
+        # Ibiden officially states that larger, multilayer substrates increase SAP load and
+        # can create a shortage of SAP capacity for cutting-edge products.
+        "ibiden_area_multilayer_increases_sap_load": True,
+        "ibiden_cutting_edge_sap_shortage_risk_confirmed": True,
+        "ibiden_source": "https://www.ibiden.com/ir/items/en_QA_FY2025Q3.pdf",
+    },
+    "historical_benchmark": {
+        "year": 2021,
+        "abf_shortfall_pct_min": 25.0,
+        "source_kind": "DigiTimes industry-source estimate; historical benchmark, not company guidance",
+        "source": "https://www.digitimes.com/news/a20210303PD200.html",
+    },
+    "research_forecast": {
+        # Public summaries of Goldman Sachs' Taiwan ABF research.  Keep source-specific.
+        "issuer": "Goldman Sachs",
+        "abf_shortfall_2027_pct": 34.0,
+        "abf_shortfall_2028_pct": 51.0,
+        "source_kind": "broker estimate relayed by public securities/research summaries; not industry consensus",
+        "source": "https://www.skis.com.tw/Report/industry/20260930.html",
+        # Meritz estimate for next-generation AI accelerator substrate area.
+        "feynman_2028_area_vs_2026_min_multiple": 3.0,
+        "feynman_2028_area_vs_2026_max_multiple": 5.0,
+        "feynman_source_kind": "Meritz Securities estimate relayed by public news; not NVIDIA official specification",
+        "feynman_source": "https://www2.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=01987686645550600",
+    },
+    "comparison_guard": {
+        "numerical_2028_minus_2021_pct_points": 26.0,
+        "like_for_like_comparison_confirmed": False,
+        "note": (
+            "Goldman 2028 51% estimate is numerically above the 2021 ≥25% historical estimate, "
+            "but source, product mix and model scope differ. Never phrase this as a universal/consensus fact."
+        ),
+    },
+}
+
 SEARCHES = [
     ("google", 'site:ibiden.com 2026 CPU customer IC package substrate SAP capacity Gama Ono pricing'),
     ("google", 'site:ibiden.com 2026 Intel AMD NVIDIA package substrate customer sales'),
@@ -77,14 +127,19 @@ SEARCHES = [
     ("google", 'Ibiden NVIDIA CPU substrate shipment ABF 2026'),
     ("google", 'Unimicron ABF price increase server CPU 2026'),
     ("google", 'ABF substrate price increase server CPU Ibiden Unimicron 2026'),
+    ("google", '"Goldman Sachs" ABF substrate 2028 51% 34% supply gap'),
+    ("google", '"ABF substrate" Feynman 2028 area 3 5 times 2026'),
+    ("google", '"ABF substrate" 2021 25% shortage 2028 supply gap'),
+    ("google", 'site:ajinomoto.com OR site:ajinomoto.co.jp ABF substrate area 3.5 18 layers 10 times HPC'),
 ]
 
 OFFICIAL_DOMAINS = (
-    "ibiden.com", "unimicron.com", "samsungsem.com",
+    "ibiden.com", "unimicron.com", "samsungsem.com", "ajinomoto.com", "ajinomoto.co.jp",
 )
 TRUSTED_DOMAINS = (
     "reuters.com", "hankyung.com", "mt.co.kr", "biz.chosun.com", "sedaily.com",
     "etnews.com", "digitimes.com", "nikkei.com", "asia.nikkei.com", "pcbshop.org",
+    "skis.com.tw", "edaily.co.kr", "newspim.com",
 )
 
 def fetch(url: str, timeout: int = 20) -> bytes:
@@ -334,12 +389,36 @@ def parse_research_update(text: str, url: str) -> dict:
         if margin:
             out["unimicron_margin_pct"] = float(margin.group(1))
 
+    # Source-specific ABF shortage model.  Do not collapse this into an industry consensus number.
+    if "goldman" in low and any(k in low for k in ("shortfall", "undersupply", "supply gap", "supply-demand gap", "공급 부족", "供給缺口")):
+        for year, key in ((2027, "goldman_abf_shortfall_2027_pct"), (2028, "goldman_abf_shortfall_2028_pct")):
+            patterns = (
+                rf"{year}[^.%]{{0,90}}?(\d{{1,2}}(?:\.\d+)?)\s*%[^.]*?(?:shortfall|undersupply|gap|공급 부족|供給缺口)",
+                rf"(?:shortfall|undersupply|gap|공급 부족|供給缺口)[^.]*?{year}[^0-9%]{{0,60}}?(\d{{1,2}}(?:\.\d+)?)\s*%",
+                rf"{year}\s*(?:년|年)?[^0-9%]{{0,40}}?(\d{{1,2}}(?:\.\d+)?)\s*%",
+            )
+            for pat in patterns:
+                m = re.search(pat, text, re.I)
+                if m:
+                    value = float(m.group(1))
+                    if 5 <= value <= 80:
+                        out[key] = value
+                        break
+
+    if "feynman" in low and "2028" in low and any(k in low for k in ("area", "substrate", "면적", "기판")):
+        m = re.search(r"(?:3\s*(?:to|[-–~])\s*5|3\s*~\s*5)\s*(?:x|times|배)", text, re.I)
+        if m:
+            out["feynman_2028_area_vs_2026_min_multiple"] = 3.0
+            out["feynman_2028_area_vs_2026_max_multiple"] = 5.0
+
     return out if len(out) > 1 else {}
 
 def material_events(previous: dict, updates: list[dict]) -> list[dict]:
     official = previous.get("official") or {}
     research = previous.get("research") or {}
     facts = previous.get("facts") or {}
+    area = previous.get("area_structure") or {}
+    area_research = area.get("research_forecast") or {}
     events: list[dict] = []
 
     for item in updates:
@@ -397,6 +476,23 @@ def material_events(previous: dict, updates: list[dict]) -> list[dict]:
             if "unimicron_abf_price_change_pct" in u and abs(float(u["unimicron_abf_price_change_pct"])) >= 10:
                 events.append({"type": "price", "key": "Unimicron ABF(리서치)", "value": float(u["unimicron_abf_price_change_pct"]), "url": item["url"]})
 
+            for key in ("goldman_abf_shortfall_2027_pct", "goldman_abf_shortfall_2028_pct"):
+                if key in u:
+                    before = area_research.get(key.replace("goldman_", ""))
+                    # Stored baseline keys omit the 'goldman_' prefix.
+                    if before is None:
+                        before = area_research.get(key)
+                    after = float(u[key])
+                    if before is not None and abs(after - float(before)) >= 5.0:
+                        events.append({"type": "supply_gap_forecast", "key": key, "before": float(before), "after": after, "url": item["url"]})
+            if "feynman_2028_area_vs_2026_min_multiple" in u and "feynman_2028_area_vs_2026_max_multiple" in u:
+                before_min = area_research.get("feynman_2028_area_vs_2026_min_multiple")
+                before_max = area_research.get("feynman_2028_area_vs_2026_max_multiple")
+                after_min = float(u["feynman_2028_area_vs_2026_min_multiple"])
+                after_max = float(u["feynman_2028_area_vs_2026_max_multiple"])
+                if before_min is not None and before_max is not None and (abs(after_min-float(before_min)) >= 0.5 or abs(after_max-float(before_max)) >= 0.5):
+                    events.append({"type": "area_forecast", "key": "feynman_2028_area_vs_2026", "before": [float(before_min), float(before_max)], "after": [after_min, after_max], "url": item["url"]})
+
     return events
 
 def merge_state(previous: dict, updates: list[dict], events: list[dict]) -> dict:
@@ -404,6 +500,7 @@ def merge_state(previous: dict, updates: list[dict], events: list[dict]) -> dict
     latest.setdefault("official", {})
     latest.setdefault("research", {})
     latest.setdefault("facts", {})
+    latest.setdefault("area_structure", copy.deepcopy(ABF_AREA_STRUCTURE_BASELINE))
     latest.setdefault("seen_urls", [])
 
     for item in updates:
@@ -446,6 +543,15 @@ def merge_state(previous: dict, updates: list[dict], events: list[dict]) -> dict
                 latest["research"]["unimicron_abf_price_change_pct"] = u["unimicron_abf_price_change_pct"]
             if "unimicron_margin_pct" in u:
                 latest["research"]["unimicron_margin_pct"] = u["unimicron_margin_pct"]
+            ar = latest.setdefault("area_structure", copy.deepcopy(ABF_AREA_STRUCTURE_BASELINE)).setdefault("research_forecast", {})
+            if "goldman_abf_shortfall_2027_pct" in u:
+                ar["abf_shortfall_2027_pct"] = u["goldman_abf_shortfall_2027_pct"]
+            if "goldman_abf_shortfall_2028_pct" in u:
+                ar["abf_shortfall_2028_pct"] = u["goldman_abf_shortfall_2028_pct"]
+            if "feynman_2028_area_vs_2026_min_multiple" in u:
+                ar["feynman_2028_area_vs_2026_min_multiple"] = u["feynman_2028_area_vs_2026_min_multiple"]
+            if "feynman_2028_area_vs_2026_max_multiple" in u:
+                ar["feynman_2028_area_vs_2026_max_multiple"] = u["feynman_2028_area_vs_2026_max_multiple"]
 
     latest["seen_urls"] = sorted(set(latest["seen_urls"]) | {i["url"] for i in updates if i.get("url")})[-250:]
     return latest
@@ -478,6 +584,11 @@ def build_alert(events: list[dict], state: dict) -> str:
     off = state.get("official") or {}
     res = state.get("research") or {}
     facts = state.get("facts") or {}
+    area = state.get("area_structure") or ABF_AREA_STRUCTURE_BASELINE
+    area_off = area.get("official") or {}
+    area_hist = area.get("historical_benchmark") or {}
+    area_res = area.get("research_forecast") or {}
+    area_guard = area.get("comparison_guard") or {}
     rate, rate_date = jpy_krw_rate()
 
     lines = [
@@ -517,6 +628,12 @@ def build_alert(events: list[dict], state: dict) -> str:
             lines.append(f"• <b>가격 변화:</b> {html.escape(str(ev['key']))} {float(ev['value']):+.1f}%")
         elif t == "customer_sales":
             lines.append(f"• <b>Ibiden 고객매출:</b> {html.escape(str(ev['key']))} {jpy_bn_text(ev['before'], rate)} → {jpy_bn_text(ev['after'], rate)}")
+        elif t == "area_structure_baseline":
+            lines.append("• <b>기판 병목 기준 업그레이드:</b> 완제품 개수보다 기판 면적×층수·SAP 공정부하를 우선 추적합니다.")
+        elif t == "supply_gap_forecast":
+            lines.append(f"• <b>ABF 공급부족 전망 변경:</b> {html.escape(str(ev['key']))} {ev['before']:.0f}% → {ev['after']:.0f}% <i>(리서치 추정)</i>")
+        elif t == "area_forecast":
+            lines.append(f"• <b>2028 기판 면적 전망 변경:</b> {ev['before'][0]:.1f}~{ev['before'][1]:.1f}배 → {ev['after'][0]:.1f}~{ev['after'][1]:.1f}배 <i>(리서치 추정)</i>")
         if ev.get("url"):
             lines.append(f'  <a href="{html.escape(ev["url"], quote=True)}">원문</a>')
 
@@ -531,12 +648,16 @@ def build_alert(events: list[dict], state: dict) -> str:
         f"• Gama 투자: {jpy_bn_text(float(off.get('ibiden_gama_capex_jpy_bn') or 0), rate)} / FY{int(off.get('ibiden_gama_mass_production_start_fy') or 0)}부터 순차 양산",
         f"• SAP 생산능력: FY2024 상반기말=1.0 대비 FY2027말 {float(off.get('ibiden_sap_capacity_fy2027_multiple_min') or 0):.1f}배 이상",
         f"• ASIC: FY2026 전자사업 매출의 {float(off.get('ibiden_asic_share_fy2026_floor_pct') or 0):.0f}% 초과 예상",
+        f"• 면적 기준 공식 물리량: Ajinomoto HPC 기판 면적지수 {float(area_off.get('ajinomoto_hpc_substrate_area_index') or 0):.1f}배(PC=1.0), ABF 층수 {int(area_off.get('ajinomoto_pc_abf_layers') or 0)}→{int(area_off.get('ajinomoto_hpc_abf_layers') or 0)}층, 총 ABF 사용량 10배+.",
+        f"• 2021 역사 기준: ABF 공급부족 ≥{float(area_hist.get('abf_shortfall_pct_min') or 0):.0f}% <i>(DigiTimes 업계 추정)</i> / Goldman 2028 전망 {float(area_res.get('abf_shortfall_2028_pct') or 0):.0f}% <i>(리서치 추정·동일 범위 직접비교 금지)</i>.",
         f"• FY2025 공개 주요고객 매출: Intel {jpy_bn_text(float((off.get('ibiden_customer_sales_fy2024_jpy_bn') or {}).get('Intel') or 0), rate)} / "
         f"AMD {jpy_bn_text(float((off.get('ibiden_customer_sales_fy2024_jpy_bn') or {}).get('AMD') or 0), rate)} / "
         f"NVIDIA {jpy_bn_text(float((off.get('ibiden_customer_sales_fy2024_jpy_bn') or {}).get('NVIDIA') or 0), rate)}",
         "",
         "<b>2단계 미래 재평가 요인 발굴</b>",
         f"• Macquarie 추정 기준선: Intel향 ABF 약 {float(res.get('macquarie_intel_abf_share_pct') or 0):.0f}% / AMD향 약 {float(res.get('macquarie_amd_abf_share_pct') or 0):.0f}% / NVIDIA CPU용 기판 출하 시작. 공식 확인 전 추정으로 유지합니다.",
+        f"• 2028 Goldman 공급부족 전망: {float(area_res.get('abf_shortfall_2028_pct') or 0):.0f}%로 2021 ≥{float(area_hist.get('abf_shortfall_pct_min') or 0):.0f}%보다 수치상 크지만, 제품군·분모·모델이 달라 ‘2021보다 확정적으로 더 부족’이라는 보편적 사실로 승격하지 않습니다.",
+        f"• Meritz 추정: 2028 Feynman 등 차세대 AI 가속기 기판 면적이 2026 대비 {float(area_res.get('feynman_2028_area_vs_2026_min_multiple') or 0):.0f}~{float(area_res.get('feynman_2028_area_vs_2026_max_multiple') or 0):.0f}배. NVIDIA 공식 기판 면적 사양으로 취급하지 않습니다.",
         "• 공식 재평가 조건: NVIDIA CPU용 양산 확인, Intel·AMD 고객 비중 공식 공개, SAP 증설 상향, 가격 인상·마진 개선의 회사자료 확인.",
         "",
         "<b>관련 기업 지도</b>",
@@ -561,13 +682,15 @@ def build_alert(events: list[dict], state: dict) -> str:
         "• NVIDIA CPU용 기판 양산·출하가 공식 확인되면 즉시 알림.",
         "• ABF 가격 ±5% 이상 공식 변화, 신뢰 리서치 ±10% 이상 변화.",
         "• Ibiden SAP 생산능력·설비투자 ±10%, Gama 양산시점 변경, 주요 고객매출 ±10% 이상.",
+        "• 2027·2028 ABF 공급부족 전망이 동일 리서치 기준 ±5%p 이상 변경하면 출처별로 알림.",
+        "• 기판 면적·층수·SAP 공정부하의 공식 로드맵이 변경되거나 Feynman 면적 추정이 ±0.5배 이상 바뀌면 알림.",
         "• 동일 Muse 기사·주가 급등·목표주가만 반복되면 알리지 않습니다.",
         "",
         "<b>결론</b>",
         "• CPU 수요가 실제 ABF 공급사의 가격·가동률·고객매출·마진으로 전환되는지 확인하는 수익화 게이트입니다.",
         "",
         "<b>핵심 한 줄 요약</b>",
-        "• 현재 공식 기준은 Ibiden AI서버 기판 수요>생산능력, FY26~28 5,000억엔 투자, FY2027 SAP 2배+이며, Macquarie의 Intel 30%·AMD 15%·NVIDIA CPU 출하는 추정으로 분리해 공식 확인과 실제 가격·마진 전환만 강한 알림으로 승격합니다.",
+        "• 현재 공식 기준은 Ibiden AI서버 기판 수요>생산능력, FY26~28 5,000억엔 투자, FY2027 SAP 2배+이며, 기판 개수보다 면적×층수·SAP 부하를 우선 추적합니다. 2028 51%는 Goldman 추정치로만 유지하고 2021 ≥25%와 범위가 달라 단순 확정 비교하지 않습니다.",
     ]
     if rate is not None:
         lines.append(f"• 환율 기준: 1엔={rate:.4f}원, {html.escape(rate_date or '최신 확인값')}")
@@ -622,7 +745,12 @@ def main() -> None:
 
     updates = discover(now, seen_urls)
     events = material_events(previous, updates)
+    structure_upgrade = int((previous.get("area_structure") or {}).get("version") or 0) < int(ABF_AREA_STRUCTURE_BASELINE["version"])
+    if structure_upgrade:
+        events.insert(0, {"type": "area_structure_baseline", "key": "area_structure_v1", "url": ABF_AREA_STRUCTURE_BASELINE["official"]["ajinomoto_source"]})
     latest = merge_state(previous, updates, events)
+    if structure_upgrade:
+        latest["area_structure"] = copy.deepcopy(ABF_AREA_STRUCTURE_BASELINE)
     latest["last_checked_at_kst"] = now.isoformat(timespec="seconds")
     latest["candidate_count"] = len(updates)
     latest["event_count"] = len(events)
