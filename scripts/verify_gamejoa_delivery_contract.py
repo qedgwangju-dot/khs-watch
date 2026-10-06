@@ -441,6 +441,39 @@ def main() -> int:
         if marker not in policy_report:
             errors.append(f"KHS policy timeline missing marker: {marker}")
 
+    dpa_base_a = {
+        "news": "미국, DPA 제303조로 전력망 핵심장비 국내 생산 확대",
+        "source_title": "Presidential Determination Pursuant to Section 303 on Grid Infrastructure",
+        "source_body": "Defense Production Act Section 303 grid infrastructure transformers transmission lines substations.",
+        "published": "2026-04-20T00:00:00-04:00",
+        "link": "https://www.whitehouse.gov/presidential-actions/example-grid-dpa/",
+    }
+    dpa_base_b = {
+        **dpa_base_a,
+        "news": "전력망 공급망, DPA Section 303 지원 대상으로 지정",
+        "source_title": "Grid Infrastructure Equipment and Supply Chain Capacity under the Defense Production Act",
+        "link": "https://www.federalregister.gov/documents/example-grid-dpa",
+    }
+    dpa_exec_a = {
+        "news": "DOE, Alaska Beluga-Healy 송전사업 DPA 후속 자금",
+        "source_title": "Alaska Railbelt Transmission Project to Receive Defense Production Act Funding",
+        "source_body": "Defense Production Act funding for the Beluga-Healy Transmission Project in the Alaska Railbelt grid.",
+        "published": "2026-10-05T00:00:00-04:00",
+        "link": "https://www.energy.gov/articles/example-beluga-healy",
+    }
+    dpa_exec_b = {
+        **dpa_exec_a,
+        "news": "미 에너지부 전력국, Beluga Healy Alaska Railbelt 송전 프로젝트 후속",
+        "source_title": "Beluga Healy transmission DPA funding update",
+        "link": "https://www.energy.gov/gdo/example-beluga-healy",
+    }
+    if compact.alert_dedup_key(dpa_base_a) != compact.alert_dedup_key(dpa_base_b):
+        errors.append("DPA Section 303 base event was not deduplicated across sources")
+    if compact.alert_dedup_key(dpa_exec_a) != compact.alert_dedup_key(dpa_exec_b):
+        errors.append("DPA Beluga-Healy execution event was not deduplicated across sources")
+    if compact.alert_dedup_key(dpa_base_a) == compact.alert_dedup_key(dpa_exec_a):
+        errors.append("DPA legal baseline and Beluga-Healy execution stage were incorrectly collapsed")
+
 
     seen_merge = importlib.import_module("merge_gamejoa_preopen_news_radar_seen")
     merged_seen = seen_merge.merge_states(
