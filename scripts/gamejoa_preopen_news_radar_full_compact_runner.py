@@ -2590,6 +2590,27 @@ def reported_issuer_announcement_fact(title: str, body: str) -> str:
 def source_headline_event_fact(title: str, body: str) -> str:
     """Bind a compact observation to its source actor, population and period."""
     focus = market_materiality.focus_kind(title)
+    mou = market_materiality.industrial_development_mou_observation(title, body)
+    if mou:
+        fact = clean_article_summary_text(mou['source_excerpt'])
+        goal = next((row for row in market_materiality.source_sentences(market_materiality.source_reported_body(body))
+                     if re.search(r"(?:20\d{2}년|내년).{0,35}(?:양산|상용화).{0,15}목표", row)), '')
+        if goal and len(fact + ' ' + goal) <= GAMEJOA_CORE_MAX_CHARS:
+            fact += ' ' + clean_article_summary_text(goal)
+        return fact if core_sentence_is_complete(fact) else ''
+    construction = market_materiality.construction_order_observation(title, body)
+    if construction:
+        fact = (f"{construction['issuer']}이 {construction['customer']}의 {construction['project']}를 수주했다. "
+                f"총 공사비는 {construction['total_budget']}, 회사 지분은 {construction['issuer_share']}%이며 "
+                f"공사기간은 착공 후 {construction['months']}개월이다.")
+        return fact if core_sentence_is_complete(fact) else ''
+    participation = market_materiality.national_research_participation_observation(title, body)
+    if participation:
+        fact = (f"{participation['issuer']}{korean_topic_particle(participation['issuer'])} 국가 피지컬AI 사업의 "
+                f"공동연구기관으로 참여해 {participation['role']}을 총괄한다고 {participation['day']}일 밝혔다. "
+                f"{participation['until_year']}년까지 사업 전체 예산은 {participation['total_budget']}(국비 {participation['government_support']}), "
+                f"참여 세부과제 예산은 약 {participation['subproject_budget']}이다.")
+        return fact if core_sentence_is_complete(fact) else ''
     backlog = market_materiality.broker_backlog_mix_observation(title, body)
     if backlog:
         fact = (f"{backlog['broker']}{korean_topic_particle(backlog['broker'])} {backlog['day']}일 "

@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 85
+VERSION = 86
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -1328,10 +1328,13 @@ def marketing_contract_observation(title: str, body: str) -> dict[str, str]:
 
 def research_program_award_observation(title: str, body: str) -> dict[str, str]:
     """Keep consortium project costs and public support separate from issuer sales."""
-    if focus_kind(title) != "research_award":
+    if (focus_kind(title) != "research_award"
+            and (not re.search(r"국책|협동로봇|피지컬\s*AI|용접", title, re.I)
+                 or re.search(r"특징주|주가|실적|목표가", title))):
         return {}
     rows = source_sentences(source_reported_body(body))
-    statement = next((row for row in rows if focus_matches(title, row) and not PAST_ACTION.search(row)), "")
+    statement = next((row for row in rows if re.search(r"국책과제\s*\d+건.{0,20}(?:수주|선정)", row)
+                      and re.search(r"\d{1,2}일\s*밝혔다", row) and not PAST_ACTION.search(row)), "")
     issuer = re.search(r"([A-Za-z0-9가-힣&·.-]{2,30})(?:\([^)]*\))?(?:은|는)\s", statement)
     count = re.search(r"국책과제\s*(\d+)건", statement)
     day = re.search(r"(?<!\d)(\d{1,2})일\s*밝혔다", statement)
@@ -1345,6 +1348,63 @@ def research_program_award_observation(title: str, body: str) -> dict[str, str]:
     return {"issuer": issuer.group(1), "count": count.group(1), "day": day.group(1),
             "tasks": tasks.group(1) + "·" + tasks.group(2), "total_budget": total.group("amount"),
             "government_support": grant.group("amount"), "source_excerpt": statement}
+
+
+def industrial_development_mou_observation(title: str, body: str) -> dict[str, str]:
+    """Require a dated signed development MOU, not general partnership hopes."""
+    if not re.search(r"협력|상용화|공동\s*개발|전고체", title):
+        return {}
+    rows = source_sentences(source_reported_body(body))
+    for row in rows:
+        if PAST_ACTION.search(row) or BACKGROUND.search(row):
+            continue
+        match = re.search(
+            r"(?P<issuer>[A-Za-z0-9가-힣&·.-]{2,30})(?:은|는)\s*"
+            r"(?P<partner>[A-Za-z0-9가-힣&·.-]{2,30})(?:와|과)\s*"
+            r"(?P<purpose>[^.!?]{2,70}?(?:개발|연구개발))\s*(?:협력을\s*)?(?:을\s*)?위한\s*"
+            r"업무협약\(MOU\)을\s*체결했다고\s*(?P<day>\d{1,2})일\s*밝혔다", row,
+        )
+        if match and match['issuer'] in title:
+            return {**match.groupdict(), 'source_excerpt': row, 'stage': 'signed_development_mou'}
+    return {}
+
+
+def construction_order_observation(title: str, body: str) -> dict[str, str]:
+    if not re.search(r"수주", title):
+        return {}
+    source = source_reported_body(body)
+    match = re.search(
+        r"(?P<issuer>[A-Za-z0-9가-힣&·.-]{2,30})(?:이|가)\s*"
+        r"(?P<customer>[A-Za-z0-9가-힣&·.-]{2,30})에서\s*발주한\s*"
+        r"(?P<project>[^.!?]{2,70}?(?:건설공사|건설\s*공사))\s*수주에\s*성공했다", source,
+    )
+    if not match or match['issuer'] not in title:
+        return {}
+    issuer = re.escape(match['issuer'])
+    budget = re.search(rf"총\s*공사비는\s*(?P<amount>{SOURCE_MONEY})\s*중\s*{issuer}\s*지분은\s*(?P<share>\d+(?:\.\d+)?)%", source)
+    period = re.search(r"공사기간은\s*착공일로부터\s*(?P<months>\d+)개월", source)
+    if not (budget and period):
+        return {}
+    return {**match.groupdict(), 'total_budget': budget['amount'], 'issuer_share': budget['share'],
+            'months': period['months'], 'source_excerpt': match.group(0)}
+
+
+def national_research_participation_observation(title: str, body: str) -> dict[str, str]:
+    if not re.search(r"사업\s*참여|연구개발.{0,20}참여", title):
+        return {}
+    source = source_reported_body(body)
+    announcement = re.search(r"(?P<issuer>[A-Za-z0-9가-힣&·.-]{2,30})(?:은|는)\s*[^.!?]{2,160}?"
+                             r"공동연구(?:개발)?기관으로\s*참여(?:한다고|해[^.!?]{0,65}?총괄한다고)\s*(?P<day>\d{1,2})일\s*밝혔다", source)
+    budget = re.search(rf"(?P<year>20\d{{2}})년까지\s*국비\s*(?P<grant>{SOURCE_MONEY})을\s*포함해\s*총\s*(?P<total>{SOURCE_MONEY})", source)
+    if not budget:
+        budget = re.search(rf"(?P<year>20\d{{2}})년까지\s*사업\s*전체\s*예산은\s*(?P<total>{SOURCE_MONEY})\(국비\s*(?P<grant>{SOURCE_MONEY})\)", source)
+    subproject = re.search(rf"(?:세부과제\s*연구개발비는|참여\s*세부과제\s*예산은)\s*약\s*(?P<budget>{SOURCE_MONEY})", source)
+    role = re.search(r"(?P<role>제조\s*범용\s*AI\s*프레임워크\s*\d+종\s*개발)을\s*총괄한다", source)
+    if not (announcement and budget and subproject and role and announcement['issuer'] in title):
+        return {}
+    return {**announcement.groupdict(), 'until_year': budget['year'], 'government_support': budget['grant'],
+            'total_budget': budget['total'], 'subproject_budget': subproject['budget'], 'role': role['role'],
+            'source_excerpt': announcement.group(0)}
 
 
 def order_expansion_target_observation(title: str, body: str) -> dict[str, str]:
@@ -1497,6 +1557,18 @@ def source_event_identity(alert: dict) -> str:
         return breadth
     title = str(alert.get("source_title") or alert.get("original_news") or alert.get("news") or "")
     body = str(alert.get("source_body") or "") if alert.get("body_verified") else ""
+    published = str(alert.get("published") or "")
+    if re.match(r"20\d{2}-\d{2}-\d{2}", published):
+        for event, terms in (
+            ('industrial_development_mou', industrial_development_mou_observation(title, body)),
+            ('research_award', research_program_award_observation(title, body)),
+        ):
+            if terms:
+                terms = {key: canonical_source_fact(value) for key, value in terms.items() if key != 'source_excerpt'}
+                terms['disclosure_date'] = published[:8] + terms['day'].zfill(2)
+                terms['explicit_revision'] = bool(re.search(r"(?:협약|과제|예산|지원금).{0,10}(?:변경|정정|철회)|추가\s*(?:협약|과제)", title))
+                digest = hashlib.sha256(json.dumps(terms, ensure_ascii=False, sort_keys=True).encode('utf-8')).hexdigest()
+                return f'source_event:v2:{event}:{digest}'
     for event, terms in (("commercial_order", commercial_order_terms(title, body, str(alert.get("published") or ""))),
                          ("commercial_delivery", commercial_delivery_terms(title, body, str(alert.get("published") or ""))),
                          ("intraday_equity", intraday_equity_event_terms(alert)),
@@ -2060,6 +2132,12 @@ def equity_publication_assessment(title: str, evidence: list[dict], *, body: str
     ):
         return {'eligible': False, 'reason': 'annual_crypto_adoption_survey_without_equity_catalyst'}
     source_rows = source_sentences(source_reported_body(body))
+    if (re.search(r"임상결과|임상\s*결과", title) and re.search(r"기대|고무적|잠재력", title)
+            and re.search(r"최근[^.!?]{0,45}인터뷰", body)
+            and re.search(r"지난\s*\d{1,2}일[^.!?]{0,90}(?:학회|EADV)[^.!?]{0,60}임상\s*결과를\s*발표", body)
+            and not re.search(r"신규\s*임상.{0,15}(?:승인|개시)|새\s*임상.{0,15}(?:승인|개시)|"
+                              r"추가\s*(?:임상\s*결과|데이터).{0,15}(?:공개|발표)|(?:계약|허가).{0,15}(?:체결|승인)", lead)):
+        return {'eligible': False, 'reason': 'clinical_interview_reinterprets_prior_conference_results'}
     new_policy_terms = any(
         not PAST_ACTION.search(row) and not re.search(r"\d{1,2}월\s*발표(?:된|한)|기존\s*계획|종전\s*계획", row)
         and (FORMAL_POLICY_EXECUTION.search(row)
@@ -2480,6 +2558,18 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
     routine = bool(ROUTINE_HEADLINE.search(title) and not HARD_HEADLINE.search(title))
     soft = bool(SOFT_HEADLINE.search(title) and not HARD_HEADLINE.search(title))
     matches = []
+    participation = national_research_participation_observation(title, body)
+    if participation:
+        matches.append((3, 80, 0, ['earnings', 'timeline'], {
+            'kind': 'public_research_participation', 'stage': 'selected_participant',
+            'source_excerpt': participation['source_excerpt'],
+        }))
+    development_mou = industrial_development_mou_observation(title, body)
+    if development_mou:
+        matches.append((3, 80, 0, ['earnings', 'timeline'], {
+            'kind': 'industrial_development_mou', 'stage': 'signed_development_mou',
+            'source_excerpt': development_mou['source_excerpt'],
+        }))
     if focus_kind(title) == 'backlog_mix':
         for sentence in sentences:
             if focus_matches(title, sentence):

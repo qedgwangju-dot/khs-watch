@@ -55,6 +55,8 @@ POSTDEPLOY_SCOPE_FIXTURE = json.loads((ROOT / "data/gamejoa_postdeploy_market_sc
 POSTDEPLOY_SCOPE_CASES = {case["id"]: case for case in POSTDEPLOY_SCOPE_FIXTURE["cases"]}
 FINAL_SCOPE_FIXTURE = json.loads((ROOT / "data/gamejoa_final_scope_fixtures_20261006.json").read_text(encoding="utf-8"))
 FINAL_SCOPE_CASES = {case["id"]: case for case in FINAL_SCOPE_FIXTURE["cases"]}
+PROGRAM_SCOPE_FIXTURE = json.loads((ROOT / "data/gamejoa_program_scope_fixtures_20261006.json").read_text(encoding="utf-8"))
+PROGRAM_SCOPE_CASES = {case["id"]: case for case in PROGRAM_SCOPE_FIXTURE["cases"]}
 LIVE_NOW = NOW.replace(hour=19)
 CONTRACT_BODY = "AMD는 삼성전자와 2027년 데이터센터용 인공지능(AI) 반도체 공동개발을 위한 100억원 규모의 공급 계약을 체결했다고 밝혔다."
 ADDITIONAL_FACT = " AMD는 해당 공급 계약을 위한 반도체 설비투자 예산 500억원을 확정했다고 공시했다."
@@ -96,6 +98,82 @@ def replay():
 
 
 class IncrementalNewsTests(unittest.TestCase):
+    def program_scope_alert(self, key):
+        case = PROGRAM_SCOPE_CASES[key]
+        return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],
+                'telegram_core_fact': case['old_core']}
+
+    def test_version85_whole_receipt_keeps_five_distinct_source_events(self):
+        now = NOW.replace(day=6, hour=13)
+        selected_all = []
+        for case in PROGRAM_SCOPE_CASES.values():
+            with self.subTest(case=case['id']), patch.object(radar.base, 'kst_now', return_value=now):
+                self.assertEqual(hashlib.sha256(case['body'].encode()).hexdigest(), case['full_body_sha256'])
+                item = classify(case, now)
+                selected = radar.quality_display_alerts([item], 30) if item else []
+                self.assertEqual(bool(selected), case['expected_keep'])
+                if selected:
+                    self.assertFalse(radar.source_core_fact_errors(selected[0]))
+                    self.assertTrue(radar.core_sentence_is_complete(selected[0]['telegram_core_fact']))
+                selected_all.extend(selected)
+        with patch.object(radar.base, 'kst_now', return_value=now):
+            self.assertEqual(len(radar.quality_display_alerts(selected_all, 30)), 5)
+
+    def test_signed_materials_development_mou_is_one_event_not_future_customer_order(self):
+        first = self.program_scope_alert('battery_development_mou_edaily')
+        second = self.program_scope_alert('battery_development_mou_zdnet')
+        identity = materiality.source_event_identity(first)
+        self.assertTrue(identity.startswith('source_event:v2:industrial_development_mou:'))
+        self.assertEqual(identity, materiality.source_event_identity(second))
+        for body in (second['source_body'].replace('삼성SDI', '다른고객'),
+                     second['source_body'].replace('전고체 배터리용 소재개발', '전력 반도체개발'),
+                     second['source_body'].replace('6일 밝혔다', '7일 밝혔다'),
+                     second['source_body'].replace('체결했다고', '체결할 예정이라고')):
+            self.assertNotEqual(identity, materiality.source_event_identity({**second, 'source_body': body}))
+        for item in (first, second):
+            core = radar.verified_alert_core(item, item['source_title'])
+            for value in ('에코프로비엠', '삼성SDI', '전고체', '업무협약(MOU)', '체결했다고 6일 밝혔다'):
+                self.assertIn(value, core)
+            self.assertFalse(radar.source_core_fact_errors({**item, 'telegram_core_fact': core}))
+            self.assertTrue(radar.source_core_fact_errors(item))
+            self.assertNotIn('양산 완료', core)
+
+    def test_research_award_title_variants_keep_budget_and_receipt_identity(self):
+        item = self.program_scope_alert('research_award_reprint_different_headline')
+        old = self.postdeploy_scope_alert('national_research_award_two_budgets')
+        self.assertEqual(materiality.source_event_identity(item), materiality.source_event_identity(old))
+        self.assertTrue(materiality.source_event_identity(item).startswith('source_event:v2:research_award:'))
+        core = radar.verified_alert_core(item, item['source_title'])
+        for value in ('차세대 협동로봇', '지능형 용접 솔루션', '2건', '989억원', '681억원'):
+            self.assertIn(value, core)
+        self.assertTrue(radar.source_core_fact_errors(item))
+        self.assertNotEqual(materiality.source_event_identity(item), materiality.source_event_identity({
+            **item, 'source_body': item['source_body'].replace('989억원', '1089억원')}))
+
+    def test_construction_core_separates_project_total_issuer_share_and_duration(self):
+        item = self.program_scope_alert('construction_total_not_company_share')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for value in ('국가철도공단', '제9공구', '총 공사비', '8065억원', '회사 지분', '45%', '60개월'):
+            self.assertIn(value, core)
+        self.assertFalse(radar.source_core_fact_errors({**item, 'telegram_core_fact': core}))
+        self.assertTrue(radar.source_core_fact_errors(item))
+        self.assertTrue(radar.source_core_fact_errors({**item, 'telegram_core_fact': core.replace('45%', '100%')}))
+
+    def test_national_program_core_preserves_parent_grant_and_subproject_boundaries(self):
+        item = self.program_scope_alert('national_program_and_subproject_budgets')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for value in ('원프레딕트', '공동연구기관', '6종 개발', '2030년', '전체 예산', '7368억원', '국비 5150억원', '세부과제 예산', '720억원'):
+            self.assertIn(value, core)
+        self.assertFalse(radar.source_core_fact_errors({**item, 'telegram_core_fact': core}))
+        self.assertTrue(radar.source_core_fact_errors(item))
+        self.assertTrue(radar.source_core_fact_errors({**item, 'telegram_core_fact': core.replace('국비 5150억원', '회사 수주 5150억원')}))
+
+    def test_prior_clinical_conference_interview_does_not_block_new_results(self):
+        case = PROGRAM_SCOPE_CASES['old_clinical_results_interview']
+        self.assertFalse(eligible(case['title'], case['body']))
+        self.assertTrue(eligible('바이오기업, APB-R3 임상 2상 결과 발표',
+                                 '바이오기업은 6일 환자 70명이 참여한 APB-R3 임상 2상 결과를 발표했다. 12주차 증상 점수는 55% 감소해 위약군 22%를 웃돌았다.'))
+
     def final_scope_alert(self, key):
         case = FINAL_SCOPE_CASES[key]
         return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],

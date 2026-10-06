@@ -349,6 +349,19 @@ Every defect or requested change must follow this sequence:
 - Broker backlog summaries retain the broker, issuer, observation period,
   business, backlog amount and regional share. Peer margin estimates do not
   replace the issuer's current backlog or become reported company earnings.
+- Signed development MOUs compare source parties, development purpose,
+  disclosure day and revision terms. They are not commercial orders or
+  completed production. Different purposes, parties and dates stay distinct.
+- R&D-award headline variants retain the same project identity only when the
+  issuer, tasks, count, total budget, government share and disclosure date
+  agree. An operational-development headline is not a new award by itself.
+- Construction summaries retain the client, work package, total project cost,
+  issuer's share and duration. National R&D participation retains the whole
+  program, public share, subproject budget, participant role and end year;
+  none of these budgets becomes the participant's standalone revenue.
+- Interviews reinterpreting previously announced clinical results do not
+  become fresh trial releases. Newly released results, approvals, licensing
+  contracts and actual trial-stage changes remain eligible.
 - Public compute allocation summaries name the data provider and original
   application round, requested/allocated units and denominator. Different
   application rounds are not combined and an advocate's request for increased
