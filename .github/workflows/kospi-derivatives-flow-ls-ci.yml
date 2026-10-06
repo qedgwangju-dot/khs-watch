@@ -22,6 +22,7 @@ on:
       - "scripts/kospi_rapid_fallback_watch.py"
       - "scripts/ls_unified_flow_probe.py"
       - "scripts/kospi_unified_industry_collector.py"
+      - "scripts/krx_session_calendar.py"
   workflow_dispatch:
 
 permissions:
@@ -54,17 +55,37 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: python -m pip install --disable-pip-version-check --quiet requests ebest
+        run: python -m pip install --disable-pip-version-check --quiet requests ebest exchange_calendars
 
       - name: Compile
         run: |
-          python -m py_compile             scripts/kospi_shock_episode_watch.py             scripts/kospi_shock_enrichment.py             scripts/kospi_unified_industry_collector.py             scripts/test_kospi_shock_episode.py             scripts/test_kospi_shock_enrichment.py             scripts/kospi_flow_attribution_ls.py             scripts/test_kospi_flow_attribution_strict.py             scripts/kospi_rapid_fallback_watch.py
+          python -m py_compile             scripts/kospi_shock_episode_watch.py             scripts/kospi_shock_enrichment.py             scripts/kospi_unified_industry_collector.py             scripts/krx_session_calendar.py             scripts/test_kospi_shock_episode.py             scripts/test_kospi_shock_enrichment.py             scripts/kospi_flow_attribution_ls.py             scripts/test_kospi_flow_attribution_strict.py             scripts/kospi_rapid_fallback_watch.py
 
       - name: Run regression tests
         run: |
           python scripts/test_kospi_shock_episode.py
           python scripts/test_kospi_shock_enrichment.py
           python scripts/test_kospi_flow_attribution_strict.py
+
+      - name: Verify XKRX session calendar
+        run: |
+          PYTHONPATH=scripts python - <<'PY'
+          import datetime as dt
+          from krx_session_calendar import session_bounds, is_session_day
+
+          assert not is_session_day(dt.date(2026,10,5)), "Chuseok holiday must be closed"
+          assert is_session_day(dt.date(2026,10,6)), "2026-10-06 must be an XKRX session"
+          assert not is_session_day(dt.date(2026,5,1)), "Labor Day must be closed"
+          assert not is_session_day(dt.date(2026,12,31)), "year-end closure must be closed"
+          bounds=session_bounds(dt.date(2026,1,2))
+          assert bounds is not None, "2026 first trading day missing"
+          open_dt, close_dt=bounds
+          assert (open_dt.hour,open_dt.minute)==(10,0), open_dt
+          assert (close_dt.hour,close_dt.minute)==(15,30), close_dt
+          print("xkrx_session_calendar_valid=true",
+                "2026-01-02-open=",open_dt.isoformat(),
+                "close=",close_dt.isoformat())
+          PY
 
       - name: Verify production workflow structure
         run: |
@@ -98,6 +119,10 @@ jobs:
           assert "UBM feed stale >120s during market hours" in collector, "UBM stale-feed restart guard missing"
           assert 'now.time() < dt.time(15, 20)' in collector, "UBM stale guard must stop before closing auction"
           assert "continuous_market_hours" in collector, "UBM closing-auction test semantics missing"
+          assert "session_state" in collector, "UBM collector does not use XKRX session calendar"
+          watcher=Path("scripts/kospi_shock_episode_watch.py").read_text(encoding="utf-8")
+          assert "session_state" in watcher and "XKRX non-session day" in watcher, "KOSPI watcher does not use XKRX session calendar"
+          assert "exchange_calendars" in s, "production XKRX calendar dependency missing"
           assert '"ts": received_ts' in collector, "UBM event alignment must use payload receive time"
           assert '"source_ts": source_ts' in collector, "UBM source time must be preserved separately"
           assert "received_ts - prev_received < 5.0" in collector, "UBM duplicate-burst suppression missing"
@@ -150,9 +175,16 @@ jobs:
 
           now=dt.datetime.now(ZoneInfo("Asia/Seoul"))
           scheduled=os.environ.get("EVENT_NAME")=="schedule"
+          import sys
+          sys.path.insert(0,"scripts")
+          from krx_session_calendar import session_state
+          session=session_state(now)
           should_be_live=bool(
-              scheduled and now.weekday()<5
-              and dt.time(9,0)<=now.time()<=dt.time(15,32)
+              scheduled
+              and session["is_session"]
+              and session["open"] is not None
+              and session["close"] is not None
+              and session["open"] <= now <= session["close"]+dt.timedelta(minutes=2)
           )
           if should_be_live:
               assert production_jobs, (
@@ -252,7 +284,16 @@ jobs:
           import datetime as dt, json, pathlib
           from zoneinfo import ZoneInfo
           now=dt.datetime.now(ZoneInfo("Asia/Seoul"))
-          market_hours=(now.weekday()<5 and dt.time(9,0)<=now.time()<=dt.time(15,20))
+          import sys
+          sys.path.insert(0,"scripts")
+          from krx_session_calendar import session_state
+          session=session_state(now)
+          market_hours=bool(
+              session["is_session"]
+              and session["open"] is not None
+              and session["continuous_end"] is not None
+              and session["open"] <= now < session["continuous_end"]
+          )
           p=pathlib.Path("out/kospi_industry_flow_ci.jsonl")
           rows=[]
           if p.exists():
@@ -328,7 +369,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install dependencies
-        run: python -m pip install --disable-pip-version-check --quiet requests
+        run: python -m pip install --disable-pip-version-check --quiet requests exchange_calendars
       - name: Create production-format handoff
         run: |
           mkdir -p out
@@ -382,7 +423,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install dependencies
-        run: python -m pip install --disable-pip-version-check --quiet requests
+        run: python -m pip install --disable-pip-version-check --quiet requests exchange_calendars
       - name: Verify production-format handoff after artifact transfer
         run: |
           PYTHONPATH=scripts python - <<'PY'
