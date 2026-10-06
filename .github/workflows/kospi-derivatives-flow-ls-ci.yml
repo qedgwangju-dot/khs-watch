@@ -89,6 +89,8 @@ jobs:
           assert "dt.time(15,32)" in s, "KOSPI gate does not cover closing auction"
           collector=Path("scripts/kospi_unified_industry_collector.py").read_text(encoding="utf-8")
           assert "UBM feed stale >120s during market hours" in collector, "UBM stale-feed restart guard missing"
+          assert 'now.time() < dt.time(15, 20)' in collector, "UBM stale guard must stop before closing auction"
+          assert "continuous_market_hours" in collector, "UBM closing-auction test semantics missing"
           enrichment=Path("scripts/kospi_shock_enrichment.py").read_text(encoding="utf-8")
           assert "requests.RequestException" in enrichment and "transport error" in enrichment, "enrichment LS transport retry missing"
           print("production_workflow_structure_valid=true")
