@@ -238,4 +238,68 @@ try:
 except RuntimeError as e:
     check("oct04-quality-gate-aramco", "아람코" in str(e))
 
+
+# 11) 10/6 실운영 오판 재발 방지: 목하 과거 점령/현재 탈환공세, TASS 귀속, 트럼프 가정 발언.
+mokha_counter = row(
+    "Saudi-backed forces launch fight to free Bab al-Mandeb from Houthis",
+    source="파이낸셜뉴스 · WSJ 재인용",
+    description=(
+        "Saudi-backed Yemeni forces launched a counteroffensive to reclaim Mokha. "
+        "The offensive follows Houthi control of Mokha last month."
+    ),
+    link="https://www.fnnews.com/news/202610060901269464",
+)
+check("oct06-mokha-current-counteroffensive", mod._mokha_counteroffensive_context(mokha_counter))
+s, tags = mod.score_item(mokha_counter, dt.datetime.now(mod.watch.KST))
+check("oct06-mokha-current-not-stale-capture", s >= 100 and "탈환공세" in tags and "후티의 9월 점령은 배경" in mokha_counter["title_ko"])
+
+mokha_stale = row(
+    "Houthis captured strategic port of Mokha",
+    source="재인용",
+    description="Houthis captured Mokha last month in early September.",
+)
+s, tags = mod.score_item(mokha_stale, dt.datetime.now(mod.watch.KST))
+check("oct06-mokha-stale-capture-suppressed", mod._stale_mokha_capture_only(mokha_stale) and s == 0 and tags == [])
+
+tass_claim = row(
+    "Russian forces hit enemy radars and data centers in Poltava, Odessa regions",
+    source="TASS",
+    description="The Russian Defense Ministry said its forces struck the targets during the military operation.",
+    link="https://tass.com/defense/2197955",
+)
+s, tags = mod.score_item(tass_claim, dt.datetime.now(mod.watch.KST))
+check("oct06-tass-russian-claim-detected", mod._tass_russian_strike_claim(tass_claim))
+check("oct06-tass-russian-claim-attributed", s >= 100 and "러시아측주장" in tags and "독립 확인 전" in tass_claim["title_ko"])
+
+tass_drone = row(
+    "Russia faces largest drone attack of 2026 — TASS calculations",
+    source="TASS",
+    link="https://tass.com/politics/2197959",
+)
+s, tags = mod.score_item(tass_drone, dt.datetime.now(mod.watch.KST))
+check("oct06-tass-drone-calculation-attributed", mod._tass_largest_drone_attack(tass_drone) and s >= 100 and "TASS 집계" in tass_drone["title_ko"])
+
+trump_rhetoric = row(
+    "Trump says let them take out Los Angeles, let them take out San Diego",
+    source="TASS",
+    description="Trump called it a small price to pay while discussing the Iran war and fuel prices.",
+    link="https://tass.com/world/2197905",
+)
+s, tags = mod.score_item(trump_rhetoric, dt.datetime.now(mod.watch.KST))
+check("oct06-trump-la-sd-rhetoric-suppressed", mod._trump_la_sd_hypothetical(trump_rhetoric) and s == 0 and tags == [])
+
+bad_oct06 = """<b>전쟁·종전·재건 웹감시</b>
+🔴 <b>공격·확전</b>
+[속보] <b>1. 예멘·후티·바브엘만데브</b>
+후티가 전략항 목하를 점령 — 바브엘만데브 접근 통제력이 한 단계 상승
+[신규] <b>2. 이란·호르무즈</b>
+트럼프 &quot;이란 전쟁으로 로스앤젤레스·샌디에이고 파괴될 수도 있다&quot;
+"""
+mod.watch.ALERT.write_text(bad_oct06, encoding="utf-8")
+try:
+    mod.verify_alert(False)
+    raise AssertionError("oct06-quality-gate-live-misclassifications")
+except RuntimeError as e:
+    check("oct06-quality-gate-live-misclassifications", "목하" in str(e) and "가정적 정치 발언" in str(e))
+
 print("WAR_PEACE_OCT04_REGRESSION_OK")
