@@ -1737,6 +1737,16 @@ if "steel-river-arkansas" in str(_false_talen.get("url") or ""):
     _ppa_states.pop("google_talen", None)
     print("hyperscaler_nuclear_ppa_false_google_talen_state_removed=true")
 
+# Backfill newly separated schema fields from verified baselines without
+# downgrading a more advanced live stage.  In particular, keep Amazon's
+# official 1,790 MW whole-plant capacity distinct from the 690 MW PPA and
+# 190 MW uprate even when the repository still carries the older v4 shape.
+for _baseline_key, _baseline_state in PPA_BASELINES.items():
+    _ppa_states[_baseline_key] = _ppa_merge(
+        _ppa_states.get(_baseline_key),
+        _baseline_state,
+    )
+
 _ppa_rows, _ppa_errors = _ppa_collect_rows()
 _ppa_best = {}
 for _ppa_key, _ppa_state in _ppa_rows:
