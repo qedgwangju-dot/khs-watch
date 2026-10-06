@@ -49,9 +49,7 @@ permissions:
   actions: write
 
 concurrency:
-  # 코드검증(push)과 실시간 감시(schedule/dispatch)가 서로 취소하지 않게 분리한다.
-  # schedule과 manual dispatch는 runtime 그룹에서 여전히 중복 실행을 차단한다.
-  group: khs-policy-watch-${{ github.event_name == 'push' && 'validation' || 'runtime' }}
+  group: khs-policy-watch
   cancel-in-progress: true
 
 jobs:
@@ -102,15 +100,7 @@ jobs:
           print("nuclear_regression_tests=passed")
           PY
 
-      - name: Ensure active policy schedule and trigger one live verification
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh api -X PUT "/repos/${GITHUB_REPOSITORY}/actions/workflows/khs-policy-watch.yml/enable"
-          gh workflow run khs-policy-watch.yml --ref main -f telegram_test=false -f telegram_dry_run=false
-          echo "khs_policy_live_verification_dispatch=created"
-
-      # A code push verifies the active runtime once; recurring monitoring remains schedule-owned.
+      # A maintenance push must not restart a user-paused watch or send alerts.
 
   watch:
     if: github.event_name != 'push'
