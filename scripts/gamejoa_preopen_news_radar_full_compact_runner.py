@@ -11242,8 +11242,10 @@ def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
     if fx_source:
         source_text = f"{source_text} · 환율: {fx_source}"
 
+    timeline_lines = policy_formatter.presidential_action_timeline_lines(alert)
     lines += [
         f"- 핵심: {safe(core)}",
+        *[safe(line) for line in timeline_lines],
         f"- 출처: {source_text}",
         "",
     ]
