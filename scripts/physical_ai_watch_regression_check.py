@@ -2014,4 +2014,65 @@ phys_mem_rumor = make(
 g, s, c, k = classify(phys_mem_rumor)
 assert s < 11, ("unverified physical-AI memory rumor must stay silent", g, s, c)
 
+# 42) Morgan Stanley Humanoid 100 / long-run research benchmark lane.
+# The 2025 1bn-unit / $5tn market, $40tn labor-pool TAM, ~$200k NPV and
+# Brain/Body/Integrator mapping are established baselines. Reposts stay silent.
+ms_humanoid_baseline_repost = make(
+    "Morgan Stanley: Humanoid 100 and autonomous industrial revolution",
+    (
+        "Morgan Stanley says nearly 1 billion humanoids could be in use by 2050 and the humanoid "
+        "market could reach $5 trillion. The global labor market TAM is about $40 trillion based on "
+        "nearly 4 billion workers at about $10,000 annual wages. A humanoid leased at $5/hour replacing "
+        "two $25/hour workers supports about $200,000 NPV. The Humanoid 100 maps Brain, Body and Integrators."
+    ),
+    "X repost",
+)
+g, s, c, k = classify(ms_humanoid_baseline_repost)
+assert g == "ms_humanoid_research", (g, s, c)
+assert c.endswith("2025 장기전망·Humanoid 100 기준선"), c
+assert s < 11, ("known Morgan Stanley long-run thesis must stay silent", s, c)
+
+ms_h100_involvement_baseline = make(
+    "Morgan Stanley Humanoid 100 involvement split",
+    (
+        "Morgan Stanley Research says 52% of Humanoid 100 companies are currently involved in humanoids, "
+        "while 48% are competitors or companies with material potential to become involved."
+    ),
+    "Morgan Stanley Research",
+)
+g, s, c, k = classify(ms_h100_involvement_baseline)
+assert g == "ms_humanoid_research", (g, s, c)
+assert c.endswith("2025 장기전망·Humanoid 100 기준선"), c
+assert s < 11, ("52/48 Humanoid 100 involvement split is baseline", s, c)
+
+ms_unverified_revision = make(
+    "Morgan Stanley reportedly raises humanoid 2050 forecast",
+    "A social post says Morgan Stanley updated its 2050 humanoid forecast from 1 billion to 1.2 billion units.",
+    "X repost",
+)
+g, s, c, k = classify(ms_unverified_revision)
+assert g == "ms_humanoid_research", (g, s, c)
+assert c.endswith("2050 보급·시장·경제성 전망 수정"), c
+assert s < 11, ("secondary-only Morgan Stanley revision must not alert", s, c)
+
+ms_official_revision = make(
+    "Morgan Stanley updates humanoid 2050 outlook",
+    "Morgan Stanley Research revised its 2050 humanoid installed-base forecast from 1 billion to 1.2 billion units.",
+    "Morgan Stanley Research",
+)
+g, s, c, k = classify(ms_official_revision)
+assert g == "ms_humanoid_research", (g, s, c)
+assert c.endswith("2050 보급·시장·경제성 전망 수정"), c
+assert s >= 11, s
+
+ms_h100_revision = make(
+    "Morgan Stanley updates Humanoid 100 list",
+    "Morgan Stanley Research released an updated Humanoid 100 list and added Samsung Electro-Mechanics to Body components.",
+    "Morgan Stanley Research",
+)
+g, s, c, k = classify(ms_h100_revision)
+assert g == "ms_humanoid_research", (g, s, c)
+assert c.endswith("Humanoid 100 구성·역할 개정"), c
+assert s >= 11, s
+
 print("Physical-AI watcher regression guards: PASS")
