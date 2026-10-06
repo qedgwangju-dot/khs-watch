@@ -1504,7 +1504,15 @@ def comparison(old, new):
             pct = (float(bv)/float(av)-1)*100
             if abs(pct) >= 10:
                 reasons.append(f"김천 TGV 설비투자 {float(av)/1e8:,.0f}→{float(bv)/1e8:,.0f}억원 ({pct:+.1f}%)")
-        for field, label in (('line_count','생산라인 수'),('start_year','투자 시작'),('end_year','투자 종료'),('employees','고용'),('site_area_pyeong','부지')):
+        for field, label in (
+            ('line_count_min_initial','초기 라인 수 하단'),
+            ('line_count_max_initial','초기 라인 수 상단'),
+            ('line_count_mass_ramp_min','대량양산 라인 수 하단'),
+            ('start_year','투자 시작'),('end_year','투자 종료'),
+            ('groundbreaking_period','착공 시점'),
+            ('initial_customer_commercialization_period','고객 초기 상용화 시점'),
+            ('employees','고용'),('site_area_pyeong','부지')
+        ):
             av, bv = a.get(field), b.get(field)
             if av is not None and bv is not None and av != bv:
                 reasons.append(f"{label} {av}→{bv}")
@@ -1546,6 +1554,39 @@ def comparison(old, new):
             reasons.append(f"신규 금속 충진 공정 {a.get('new_metal_fill_stage') or '미확인'}→{b.get('new_metal_fill_stage')}")
         if a.get('new_metal_fill_sample_delivered') != b.get('new_metal_fill_sample_delivered') and b.get('new_metal_fill_sample_delivered') is not None:
             reasons.append('신규 금속 충진 샘플 고객 전달' if b.get('new_metal_fill_sample_delivered') else '신규 금속 충진 샘플 미전달 확인')
+        for field, label in (
+            ('pilot_line_count','파일럿 라인 수'),
+            ('pilot_capacity_units_per_month_min','파일럿 월 생산능력 하단'),
+            ('pilot_capacity_units_per_month_max','파일럿 월 생산능력 상단'),
+            ('nda_customer_count','NDA 고객 수'),
+            ('end_customer_count','최종 수요기업 수'),
+            ('paid_sample_customer_count','유상 샘플 고객 수'),
+            ('initial_line_count_min','김천 초기 라인 수 하단'),
+            ('initial_line_count_max','김천 초기 라인 수 상단'),
+            ('mass_ramp_line_count_min','대량양산 라인 수 하단'),
+        ):
+            av, bv = a.get(field), b.get(field)
+            if av is not None and bv is not None and av != bv:
+                reasons.append(f"{label} {av}→{bv}")
+            elif av is None and bv is not None:
+                reasons.append(f"{label} {bv} 신규 확인")
+        for field, label in (
+            ('gimcheon_groundbreaking_period','김천 착공 시점'),
+            ('initial_customer_commercialization_period','고객 초기 상용화 시점'),
+        ):
+            av, bv = a.get(field), b.get(field)
+            if av != bv and bv:
+                reasons.append(f"{label} {av or '미확인'}→{bv}")
+        for field, label in (
+            ('embedding_preliminary_evaluation_passed','Embedding 예비평가 통과'),
+            ('embedding_reliability_evaluation_ongoing','Embedding 신뢰성 평가 진행'),
+            ('non_embedding_supplier_selection_ongoing','Non-Embedding 공급사 선정 진행'),
+        ):
+            if a.get(field) != b.get(field) and b.get(field) is True:
+                reasons.append(label)
+        av, bv = a.get('non_embedding_poc_target_year'), b.get('non_embedding_poc_target_year')
+        if av != bv and bv:
+            reasons.append(f"Non-Embedding PoC 목표 {av or '미확인'}→{bv}년")
         return reasons
     if new['axis'] == 'foundry_loss_outlook':
         reasons = []
