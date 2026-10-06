@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-06T15:38:16+09:00",
+  "updated_at_kst": "2026-10-06T15:43:54+09:00",
   "buyback": {
     "sha256": "3e691d164254d161d0d814e87c0eb3b88203e8985bb2f046aff70278f43ae5d4",
     "bytes": 14234,
@@ -69,7 +69,8 @@
     "five_day_compare_valid": true,
     "five_day_change_usd_m": -1297.5,
     "five_day_change_pct": -91.5,
-    "five_day_direction": "순자금흐름 악화"
+    "five_day_direction": "순자금흐름 악화",
+    "provisional_history": []
   },
   "sources": {
     "treasury_buyback_xml": "https://home.treasury.gov/system/files/221/Tentative-Buyback-Schedule.xml",
