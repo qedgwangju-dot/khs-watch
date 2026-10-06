@@ -1976,25 +1976,19 @@
     "event:58346ede9229ab9542f09d45": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
       "lanes": {
-        "live": "2026-10-06T18:46:35+09:00"
+        "live": "2026-10-06T20:37:39+09:00"
       },
-      "last_seen_kst": "2026-10-06T18:46:35+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261006130700009",
-      "source": "연합뉴스",
-      "source_body_digest": "6ece9de4b4b43b9a1a826d12f8c5f5319851dd4cd89b0592fe0cd9e11dd0390c",
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100617392946034",
+      "source": "머니투데이",
+      "source_body_digest": "949dd9c515600d448d78cac6749b4981d6325d9c498f98f5ff54bcb2f4723d87",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:515d3b58ad3e59a02c69cadb2e5f67f16360cd71d95a0af6129027bca70806ae",
+      "source_fact_identity": "source_facts:v1:8fab75271b26b030aa85a02ebb5f2693fddb025ed7deb580e4987450d03b0116",
       "source_fact_keys": [
-        "source_fact:v1:0b4d863c0a3edda644e0f675e0b3ae81046eaf07b3f24df8ecaac46766fad0db",
-        "source_fact:v1:1a7c062cbe7338a0452eb78d6081324b06634818c380a85f78e1af2042752537",
-        "source_fact:v1:272339fde78935a18bbc05a7f7bcf860719d0b41c8375736c92798f91fd8bc83",
-        "source_fact:v1:3987774bf9261c886ff92582c52ab69c368a14616631d0092bdd30894c046614",
-        "source_fact:v1:4551f3296a1d6115aa55a95ebd12ee91232716d1cb6c74edda91d7c53fd95cc4",
-        "source_fact:v1:4dde7ddfb7f036d0bc4c42e4415ae1dff0c6ff55ad8dfab1d6a1327dd28b8dbd",
-        "source_fact:v1:9a4f208e2d6ff6f289a687fd1af4fee68c3e94a17573c91a6c11567a311962f9"
+        "source_fact:v1:437b074f581b02324f87c3c64ffa93301d5c6000aec0ddedac818cba1ff30545"
       ],
-      "source_published_kst": "2026-10-06T15:11+09:00",
-      "title": "\"중국 문샷, 내년 1분기 홍콩 상장 추진\" | 연합뉴스"
+      "source_published_kst": "2026-10-06T17:56+09:00",
+      "title": "월가, 앤트로픽 81.5조원 대출 신디케이션 착수…반도체 금융 최대 규모"
     },
     "event:5945d59c3e6c028f9c16b943": {
       "first_seen_kst": "2026-09-29T10:32:56+09:00",
@@ -10997,6 +10991,23 @@
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "C.H.로빈슨, RXO 58억달러 인수 합의 후 재무 부담·주식 희석 우려 부각"
     },
+    "fact:74aacad73deb91b155dbc31e": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100617392946034",
+      "source": "머니투데이",
+      "source_body_digest": "949dd9c515600d448d78cac6749b4981d6325d9c498f98f5ff54bcb2f4723d87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8fab75271b26b030aa85a02ebb5f2693fddb025ed7deb580e4987450d03b0116",
+      "source_fact_keys": [
+        "source_fact:v1:437b074f581b02324f87c3c64ffa93301d5c6000aec0ddedac818cba1ff30545"
+      ],
+      "source_published_kst": "2026-10-06T17:56+09:00",
+      "title": "월가, 앤트로픽 81.5조원 대출 신디케이션 착수…반도체 금융 최대 규모"
+    },
     "fact:768d952ecd76eea2028822ff": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
       "lanes": {
@@ -11353,6 +11364,25 @@
       ],
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
+    },
+    "fact:82267ba3d927a05143ceaf28": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.etnews.com/20261006000060",
+      "source": "전자신문",
+      "source_body_digest": "e31ffd6e678de05fb34ae2804bcfcc31a8855e2f2f480c69ff673e57fceab43d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fa37e3892a41a8ae0c8d199997da68b23305186b84ec9b1e8f792cc293ea2162",
+      "source_fact_keys": [
+        "source_fact:v1:2b711383ac976240eef9e99aca8416336a2e90ffc0f8058b459068f930813bd3",
+        "source_fact:v1:3217a81cfd333241d0e5cf59fe3defa5accf158ede0481af290000f672a55e65",
+        "source_fact:v1:3f80bc2f7d4ac68acef713f42b5f7e8279463f804fa501de2e987de449d1f29d"
+      ],
+      "source_published_kst": "2026-10-06T17:00+09:00",
+      "title": "SK인텔릭스, '나무엑스' 中 위탁생산 추진…원가 경쟁력 확보 '승부수'"
     },
     "fact:8285254795c56e137177681b": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
@@ -14039,6 +14069,24 @@
       "source_published_kst": "2026-10-05T16:20+09:00",
       "title": "日라피더스, 도시바 등 17개사와 반도체 설계 동맹"
     },
+    "fact:c2dccece1c2aa6dd49420dc9": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.etnews.com/20261006000414",
+      "source": "전자신문",
+      "source_body_digest": "a70381ff0b5ac0685b96c7c5baf59dd17635091890aba2d9cecd55ad351ea5d7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:04a11dcde456a53764f6095982f2cbd83f9d48c94f254a7a5c0c8366b9a7b938",
+      "source_fact_keys": [
+        "source_fact:v1:c07f2206bc8de270bb05f90c4b44fb5f284de9f60381b0395e01d05dbd69fc43",
+        "source_fact:v1:ce6bf6fbc891575b3b011e531057db91c59265c47d0b45b066dcd5e2eb839b18"
+      ],
+      "source_published_kst": "2026-10-06T18:32+09:00",
+      "title": "알테오젠, 바이오로직스 흡수합병…연구·판매 전주기 '통합'"
+    },
     "fact:c2e9b14a623bc0f0c59c45fd": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
       "lanes": {
@@ -14448,6 +14496,25 @@
       ],
       "source_published_kst": "2026-10-05T21:54+09:00",
       "title": "비트마인 이머전 테크놀로, ETH 602만개 보유..총자산 174억 달러"
+    },
+    "fact:cdadc96653f2aca54c655034": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170455",
+      "source": "매일경제",
+      "source_body_digest": "12c73f3fd61ad068d56b2dd450ff1862fcfd644fb37d6b700ced746731d3a18e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22ec35537fbfe21364d18ddc24c5936c98eae8412c6313ba3d0b38956d4357d1",
+      "source_fact_keys": [
+        "source_fact:v1:84c8cbd7c3fe44e0e9a86449f3601ac00e9d2be4b92e5a430b392eb3949434ee",
+        "source_fact:v1:e4dd2906f39ee9f08cfe9746f49373e0229c0ea2ffc0648aad6022773f0e6eb0",
+        "source_fact:v1:f000901bdfdf241d6a9f72513c73c0f63b2e5054f579addf067e1fe1a11b8fae"
+      ],
+      "source_published_kst": "2026-10-06T17:51+09:00",
+      "title": "알테오젠, 알테오젠바이오로직스 합병 결정"
     },
     "fact:cdc1e8bfb66eeb50e2846c2e": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -14928,6 +14995,26 @@
       "source_published_kst": "2026-10-05T22:07+09:00",
       "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
     },
+    "fact:d9e679ff2fbcd0d490119caf": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.mk.co.kr/news/society/12169538",
+      "source": "매일경제",
+      "source_body_digest": "1a5ab1fc7a53b4ad22a9c9b64156df9357f6616907c2863b5dbad58b4db52d70",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ea36b50722a4768dff7d6d6a303b2aa57c803ef64fa745a2b9ff0f9a596e77c1",
+      "source_fact_keys": [
+        "source_fact:v1:280fa3509c62dffca52fb60fe853331927e861eb7af7ad0b4714b2dc86b31d34",
+        "source_fact:v1:3e206b771d6b2c57591ef4752b441ffe9f4884d2151df42960c0b6e0d1f69b68",
+        "source_fact:v1:4d22f4d6ae36fedcb8ee008c15cb714d27dbad7899e5b1798f19196e56db0f4e",
+        "source_fact:v1:8cd6203f4e64cdf90db081259d1ceefc22eb97224011c74707cc279b960f2e8d"
+      ],
+      "source_published_kst": "2026-10-06T17:40+09:00",
+      "title": "亞 최대 동해 AI데이터센터 연내 착공"
+    },
     "fact:da7845615ed994fabacb7137": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
       "lanes": {
@@ -15067,6 +15154,27 @@
       ],
       "source_published_kst": "2026-10-06T13:31+09:00",
       "title": "한미반도체, 삼성전기에 244억원 규모 'MSVP' 반도체 장비 공급"
+    },
+    "fact:dd643114d83cb3446ba19093": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.etnews.com/20261006000408",
+      "source": "전자신문",
+      "source_body_digest": "b269be0c256ef4fa066174dd79e5322aaede3cd9346780158b9bef1a94a7a707",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f4a5d3bcf57778a19d9da7a29a9f2f23566a50e66e161f557a49b90af0d94a0",
+      "source_fact_keys": [
+        "source_fact:v1:20700632ae0aea44629fd20bdb40335416676fed69d6045c4fe46ea38b02ef31",
+        "source_fact:v1:3fde38c702628e9aa4d099dba8974ce63fd91cd8106168fe8ec89a8b1ece09b8",
+        "source_fact:v1:4470fc5b5c2bb89b4deee5d60b0b01da2528369ebc3404e809eb584b9588c238",
+        "source_fact:v1:64692214514754d8399096ff13a3dc2ee8277520dd8569241a045c174bfff627",
+        "source_fact:v1:b3bda5955d83f7400633e9ab4b0eaac39136f822f2d0c15af6a76ee896817b62"
+      ],
+      "source_published_kst": "2026-10-06T17:35+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 LFP 6조원 규모 공급계약 체결"
     },
     "fact:de881272177a3dca4c67b8a1": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
@@ -17262,6 +17370,24 @@
       "source_published_kst": "2026-10-05T12:01+09:00",
       "title": "지재처, 메가프로젝트 분야 신규 상품명 72개 추가한다"
     },
+    "link:0a77d6398b386ff57e15e766": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.etnews.com/20261006000414",
+      "source": "전자신문",
+      "source_body_digest": "a70381ff0b5ac0685b96c7c5baf59dd17635091890aba2d9cecd55ad351ea5d7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:04a11dcde456a53764f6095982f2cbd83f9d48c94f254a7a5c0c8366b9a7b938",
+      "source_fact_keys": [
+        "source_fact:v1:c07f2206bc8de270bb05f90c4b44fb5f284de9f60381b0395e01d05dbd69fc43",
+        "source_fact:v1:ce6bf6fbc891575b3b011e531057db91c59265c47d0b45b066dcd5e2eb839b18"
+      ],
+      "source_published_kst": "2026-10-06T18:32+09:00",
+      "title": "알테오젠, 바이오로직스 흡수합병…연구·판매 전주기 '통합'"
+    },
     "link:0aace60d56ed02baa3823a4a": {
       "first_seen_kst": "2026-10-01T05:56:02+09:00",
       "lanes": {
@@ -18039,6 +18165,25 @@
       "link": "https://www.fnnews.com/news/202609281120470344",
       "source": "파이낸셜뉴스",
       "title": "낸드 플래시 호황에 불 붙은 투자유치…韓中日 상장·증설 '총력전'"
+    },
+    "link:123b892bd9e0fb1930188cd3": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170455",
+      "source": "매일경제",
+      "source_body_digest": "12c73f3fd61ad068d56b2dd450ff1862fcfd644fb37d6b700ced746731d3a18e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22ec35537fbfe21364d18ddc24c5936c98eae8412c6313ba3d0b38956d4357d1",
+      "source_fact_keys": [
+        "source_fact:v1:84c8cbd7c3fe44e0e9a86449f3601ac00e9d2be4b92e5a430b392eb3949434ee",
+        "source_fact:v1:e4dd2906f39ee9f08cfe9746f49373e0229c0ea2ffc0648aad6022773f0e6eb0",
+        "source_fact:v1:f000901bdfdf241d6a9f72513c73c0f63b2e5054f579addf067e1fe1a11b8fae"
+      ],
+      "source_published_kst": "2026-10-06T17:51+09:00",
+      "title": "알테오젠, 알테오젠바이오로직스 합병 결정"
     },
     "link:1245f20b6c47b867319c4dcd": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
@@ -21660,6 +21805,27 @@
       "source_published_kst": "2026-10-06T07:45+09:00",
       "title": "\"지금이 매수 기회\" 화장품株 급락했는데, 수출 29% 급증"
     },
+    "link:37fdb5003ea51e311e662595": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.etnews.com/20261006000408",
+      "source": "전자신문",
+      "source_body_digest": "b269be0c256ef4fa066174dd79e5322aaede3cd9346780158b9bef1a94a7a707",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f4a5d3bcf57778a19d9da7a29a9f2f23566a50e66e161f557a49b90af0d94a0",
+      "source_fact_keys": [
+        "source_fact:v1:20700632ae0aea44629fd20bdb40335416676fed69d6045c4fe46ea38b02ef31",
+        "source_fact:v1:3fde38c702628e9aa4d099dba8974ce63fd91cd8106168fe8ec89a8b1ece09b8",
+        "source_fact:v1:4470fc5b5c2bb89b4deee5d60b0b01da2528369ebc3404e809eb584b9588c238",
+        "source_fact:v1:64692214514754d8399096ff13a3dc2ee8277520dd8569241a045c174bfff627",
+        "source_fact:v1:b3bda5955d83f7400633e9ab4b0eaac39136f822f2d0c15af6a76ee896817b62"
+      ],
+      "source_published_kst": "2026-10-06T17:35+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 LFP 6조원 규모 공급계약 체결"
+    },
     "link:381266537efb97c8a54f45b7": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -24281,6 +24447,25 @@
       "source": "연합뉴스",
       "title": "美고용 부진에 금리인상 우려 완화…나스닥 1.2%↑ | 연합뉴스"
     },
+    "link:5097aaac93f05ff86ac9c344": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.etnews.com/20261006000060",
+      "source": "전자신문",
+      "source_body_digest": "e31ffd6e678de05fb34ae2804bcfcc31a8855e2f2f480c69ff673e57fceab43d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fa37e3892a41a8ae0c8d199997da68b23305186b84ec9b1e8f792cc293ea2162",
+      "source_fact_keys": [
+        "source_fact:v1:2b711383ac976240eef9e99aca8416336a2e90ffc0f8058b459068f930813bd3",
+        "source_fact:v1:3217a81cfd333241d0e5cf59fe3defa5accf158ede0481af290000f672a55e65",
+        "source_fact:v1:3f80bc2f7d4ac68acef713f42b5f7e8279463f804fa501de2e987de449d1f29d"
+      ],
+      "source_published_kst": "2026-10-06T17:00+09:00",
+      "title": "SK인텔릭스, '나무엑스' 中 위탁생산 추진…원가 경쟁력 확보 '승부수'"
+    },
     "link:509c1341a632a2ad98fa61f5": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
@@ -24449,6 +24634,23 @@
       ],
       "source_published_kst": "2026-10-06T17:03+09:00",
       "title": "삼성전기, 일주일만 MLCC 2900억 공급계약…올 수주 3.9조원"
+    },
+    "link:51e4e05080faa366d43a71c4": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100617392946034",
+      "source": "머니투데이",
+      "source_body_digest": "949dd9c515600d448d78cac6749b4981d6325d9c498f98f5ff54bcb2f4723d87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8fab75271b26b030aa85a02ebb5f2693fddb025ed7deb580e4987450d03b0116",
+      "source_fact_keys": [
+        "source_fact:v1:437b074f581b02324f87c3c64ffa93301d5c6000aec0ddedac818cba1ff30545"
+      ],
+      "source_published_kst": "2026-10-06T17:56+09:00",
+      "title": "월가, 앤트로픽 81.5조원 대출 신디케이션 착수…반도체 금융 최대 규모"
     },
     "link:51ebe736ac19de426840285a": {
       "first_seen_kst": "2026-10-02T06:58:16+09:00",
@@ -32499,6 +32701,21 @@
       "source": "머니투데이",
       "title": "한국투자증권, 4000억 규모 SK 주식 취득…PRS 계약 방식"
     },
+    "link:a46ae0a717be11b0a43efd67": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05024966645610296",
+      "source": "이데일리",
+      "source_body_digest": "93f0275fd239fc49c368c582736e2bfa88d970dbea25fee39288b3cb416a9935",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T17:54+09:00",
+      "title": "알테오젠, 알테오젠바이오로직스 흡수합병 추진…\"개발·상업화 역량 통합\""
+    },
     "link:a480a71ebe8cbd3a43e22c71": {
       "first_seen_kst": "2026-10-06T17:24:43+09:00",
       "lanes": {
@@ -33136,6 +33353,26 @@
       ],
       "source_published_kst": "2026-10-06T05:00+09:00",
       "title": "납품단가 다음은 ‘데이터’⋯AI 시대 대기업·中企 ‘新 갑을관계’ 탄생하나 [AI 신계급사회]"
+    },
+    "link:aaad517bee8f37f5c1ed9de7": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.mk.co.kr/news/society/12169538",
+      "source": "매일경제",
+      "source_body_digest": "1a5ab1fc7a53b4ad22a9c9b64156df9357f6616907c2863b5dbad58b4db52d70",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ea36b50722a4768dff7d6d6a303b2aa57c803ef64fa745a2b9ff0f9a596e77c1",
+      "source_fact_keys": [
+        "source_fact:v1:280fa3509c62dffca52fb60fe853331927e861eb7af7ad0b4714b2dc86b31d34",
+        "source_fact:v1:3e206b771d6b2c57591ef4752b441ffe9f4884d2151df42960c0b6e0d1f69b68",
+        "source_fact:v1:4d22f4d6ae36fedcb8ee008c15cb714d27dbad7899e5b1798f19196e56db0f4e",
+        "source_fact:v1:8cd6203f4e64cdf90db081259d1ceefc22eb97224011c74707cc279b960f2e8d"
+      ],
+      "source_published_kst": "2026-10-06T17:40+09:00",
+      "title": "亞 최대 동해 AI데이터센터 연내 착공"
     },
     "link:aad7196a7885a2a31e466909": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
@@ -46132,6 +46369,23 @@
       "source_event_identity": "",
       "title": "액소젠, 바이오서킷 인수 완료에도 통합 부담 부각"
     },
+    "original:2cb6489856ccb2f8405dbc16": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100617392946034",
+      "source": "머니투데이",
+      "source_body_digest": "949dd9c515600d448d78cac6749b4981d6325d9c498f98f5ff54bcb2f4723d87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8fab75271b26b030aa85a02ebb5f2693fddb025ed7deb580e4987450d03b0116",
+      "source_fact_keys": [
+        "source_fact:v1:437b074f581b02324f87c3c64ffa93301d5c6000aec0ddedac818cba1ff30545"
+      ],
+      "source_published_kst": "2026-10-06T17:56+09:00",
+      "title": "월가, 앤트로픽 81.5조원 대출 신디케이션 착수…반도체 금융 최대 규모"
+    },
     "original:2ce2383dc3ef9d07cf173c7e": {
       "first_seen_kst": "2026-10-03T07:28:32+09:00",
       "lanes": {
@@ -47136,6 +47390,27 @@
       "link": "https://www.mt.co.kr/economy/2026/10/01/2026100117284948675",
       "source": "머니투데이",
       "title": "1년간 3명 이상 산재사망시 영업이익 5% 과징금…반복되면 '사업등록 취소'도"
+    },
+    "original:37ac1e6cd155f6ba24508136": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.etnews.com/20261006000408",
+      "source": "전자신문",
+      "source_body_digest": "b269be0c256ef4fa066174dd79e5322aaede3cd9346780158b9bef1a94a7a707",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f4a5d3bcf57778a19d9da7a29a9f2f23566a50e66e161f557a49b90af0d94a0",
+      "source_fact_keys": [
+        "source_fact:v1:20700632ae0aea44629fd20bdb40335416676fed69d6045c4fe46ea38b02ef31",
+        "source_fact:v1:3fde38c702628e9aa4d099dba8974ce63fd91cd8106168fe8ec89a8b1ece09b8",
+        "source_fact:v1:4470fc5b5c2bb89b4deee5d60b0b01da2528369ebc3404e809eb584b9588c238",
+        "source_fact:v1:64692214514754d8399096ff13a3dc2ee8277520dd8569241a045c174bfff627",
+        "source_fact:v1:b3bda5955d83f7400633e9ab4b0eaac39136f822f2d0c15af6a76ee896817b62"
+      ],
+      "source_published_kst": "2026-10-06T17:35+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 LFP 6조원 규모 공급계약 체결"
     },
     "original:37dd3fa958ce10a405024be7": {
       "first_seen_kst": "2026-10-02T17:34:05+09:00",
@@ -57446,6 +57721,24 @@
       "source": "전자신문",
       "title": "솔루엠, ESL·전력 사업 확대…수주 매출 전환 본격화"
     },
+    "original:a298cdc13f376f48098ba3a1": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.etnews.com/20261006000414",
+      "source": "전자신문",
+      "source_body_digest": "a70381ff0b5ac0685b96c7c5baf59dd17635091890aba2d9cecd55ad351ea5d7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:04a11dcde456a53764f6095982f2cbd83f9d48c94f254a7a5c0c8366b9a7b938",
+      "source_fact_keys": [
+        "source_fact:v1:c07f2206bc8de270bb05f90c4b44fb5f284de9f60381b0395e01d05dbd69fc43",
+        "source_fact:v1:ce6bf6fbc891575b3b011e531057db91c59265c47d0b45b066dcd5e2eb839b18"
+      ],
+      "source_published_kst": "2026-10-06T18:32+09:00",
+      "title": "알테오젠, 바이오로직스 흡수합병…연구·판매 전주기 '통합'"
+    },
     "original:a29f1af11098eaed97138557": {
       "first_seen_kst": "2026-10-03T12:26:15+09:00",
       "lanes": {
@@ -59912,6 +60205,26 @@
       "source": "뉴시스",
       "title": "이성훈 LH 사장 \"공급 시차 불가피…지금은 대출 규제 필요\""
     },
+    "original:bd11de145d733adb701abf2c": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.mk.co.kr/news/society/12169538",
+      "source": "매일경제",
+      "source_body_digest": "1a5ab1fc7a53b4ad22a9c9b64156df9357f6616907c2863b5dbad58b4db52d70",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ea36b50722a4768dff7d6d6a303b2aa57c803ef64fa745a2b9ff0f9a596e77c1",
+      "source_fact_keys": [
+        "source_fact:v1:280fa3509c62dffca52fb60fe853331927e861eb7af7ad0b4714b2dc86b31d34",
+        "source_fact:v1:3e206b771d6b2c57591ef4752b441ffe9f4884d2151df42960c0b6e0d1f69b68",
+        "source_fact:v1:4d22f4d6ae36fedcb8ee008c15cb714d27dbad7899e5b1798f19196e56db0f4e",
+        "source_fact:v1:8cd6203f4e64cdf90db081259d1ceefc22eb97224011c74707cc279b960f2e8d"
+      ],
+      "source_published_kst": "2026-10-06T17:40+09:00",
+      "title": "亞 최대 동해 AI데이터센터 연내 착공"
+    },
     "original:bd34160fe9a52bcabba764a5": {
       "first_seen_kst": "2026-09-27T19:02:46+09:00",
       "lanes": {
@@ -59994,6 +60307,25 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T16:49+09:00",
       "title": "일본 라피더스, 도시바 등 17곳과 반도체 설계 협력"
+    },
+    "original:be1ddecd53643bf752e4393a": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.etnews.com/20261006000060",
+      "source": "전자신문",
+      "source_body_digest": "e31ffd6e678de05fb34ae2804bcfcc31a8855e2f2f480c69ff673e57fceab43d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fa37e3892a41a8ae0c8d199997da68b23305186b84ec9b1e8f792cc293ea2162",
+      "source_fact_keys": [
+        "source_fact:v1:2b711383ac976240eef9e99aca8416336a2e90ffc0f8058b459068f930813bd3",
+        "source_fact:v1:3217a81cfd333241d0e5cf59fe3defa5accf158ede0481af290000f672a55e65",
+        "source_fact:v1:3f80bc2f7d4ac68acef713f42b5f7e8279463f804fa501de2e987de449d1f29d"
+      ],
+      "source_published_kst": "2026-10-06T17:00+09:00",
+      "title": "SK인텔릭스, '나무엑스' 中 위탁생산 추진…원가 경쟁력 확보 '승부수'"
     },
     "original:be29411f5800df6f11cb8e5e": {
       "first_seen_kst": "2026-09-18T12:25:16+09:00",
@@ -60445,6 +60777,25 @@
       "link": "https://www.etnews.com/20261002000071",
       "source": "전자신문",
       "title": "외국인 매출 22배 뛴 CJ올리브영…글로벌 뉴스룸 개설"
+    },
+    "original:c41f3784ffb3df8cc688b645": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170455",
+      "source": "매일경제",
+      "source_body_digest": "12c73f3fd61ad068d56b2dd450ff1862fcfd644fb37d6b700ced746731d3a18e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22ec35537fbfe21364d18ddc24c5936c98eae8412c6313ba3d0b38956d4357d1",
+      "source_fact_keys": [
+        "source_fact:v1:84c8cbd7c3fe44e0e9a86449f3601ac00e9d2be4b92e5a430b392eb3949434ee",
+        "source_fact:v1:e4dd2906f39ee9f08cfe9746f49373e0229c0ea2ffc0648aad6022773f0e6eb0",
+        "source_fact:v1:f000901bdfdf241d6a9f72513c73c0f63b2e5054f579addf067e1fe1a11b8fae"
+      ],
+      "source_published_kst": "2026-10-06T17:51+09:00",
+      "title": "알테오젠, 알테오젠바이오로직스 합병 결정"
     },
     "original:c4216950cfc88d6102d399f6": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
@@ -65868,6 +66219,21 @@
       ],
       "source_published_kst": "2026-10-05T14:28+09:00",
       "title": "폭스바겐 ‘판매왕’에서 모빌리티 창업가로…차봇, 해외로 영토 확장"
+    },
+    "original:fc1da1a8829afda533dcef81": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05024966645610296",
+      "source": "이데일리",
+      "source_body_digest": "93f0275fd239fc49c368c582736e2bfa88d970dbea25fee39288b3cb416a9935",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T17:54+09:00",
+      "title": "알테오젠, 알테오젠바이오로직스 흡수합병 추진…\"개발·상업화 역량 통합\""
     },
     "original:fc42f96377ffac8d6b1d3b26": {
       "first_seen_kst": "2026-10-02T15:40:35+09:00",
@@ -73858,6 +74224,24 @@
       "source_published_kst": "2026-10-06T15:07+09:00",
       "title": "[2026 국감] 호남 반도체 놓고 여야 격돌…김성환 기후부 장관 “전력·용수 공급 가능”"
     },
+    "source_fact:2b3715dd2c91cdb636bf37da": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.etnews.com/20261006000414",
+      "source": "전자신문",
+      "source_body_digest": "a70381ff0b5ac0685b96c7c5baf59dd17635091890aba2d9cecd55ad351ea5d7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:04a11dcde456a53764f6095982f2cbd83f9d48c94f254a7a5c0c8366b9a7b938",
+      "source_fact_keys": [
+        "source_fact:v1:c07f2206bc8de270bb05f90c4b44fb5f284de9f60381b0395e01d05dbd69fc43",
+        "source_fact:v1:ce6bf6fbc891575b3b011e531057db91c59265c47d0b45b066dcd5e2eb839b18"
+      ],
+      "source_published_kst": "2026-10-06T18:32+09:00",
+      "title": "알테오젠, 바이오로직스 흡수합병…연구·판매 전주기 '통합'"
+    },
     "source_fact:2b3bc2153c18e259349c35ac": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
       "lanes": {
@@ -77780,6 +78164,24 @@
       "source_published_kst": "2026-10-06T11:49+09:00",
       "title": "제주항공, 中 하늘길 누적 탑승객 528만명…LCC ‘1위’"
     },
+    "source_fact:41b206040c98a778c7c32f40": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.etnews.com/20261006000414",
+      "source": "전자신문",
+      "source_body_digest": "a70381ff0b5ac0685b96c7c5baf59dd17635091890aba2d9cecd55ad351ea5d7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:04a11dcde456a53764f6095982f2cbd83f9d48c94f254a7a5c0c8366b9a7b938",
+      "source_fact_keys": [
+        "source_fact:v1:c07f2206bc8de270bb05f90c4b44fb5f284de9f60381b0395e01d05dbd69fc43",
+        "source_fact:v1:ce6bf6fbc891575b3b011e531057db91c59265c47d0b45b066dcd5e2eb839b18"
+      ],
+      "source_published_kst": "2026-10-06T18:32+09:00",
+      "title": "알테오젠, 바이오로직스 흡수합병…연구·판매 전주기 '통합'"
+    },
     "source_fact:41baed0732cfa75a69eeda86": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
       "lanes": {
@@ -81391,6 +81793,25 @@
       "source_published_kst": "2026-10-06T16:08+09:00",
       "title": "LG엔솔, 11개 분기 만에 매출 8조 복귀하나…북미 ESS가 견인"
     },
+    "source_fact:54bfae38ddba11125890cdbb": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170455",
+      "source": "매일경제",
+      "source_body_digest": "12c73f3fd61ad068d56b2dd450ff1862fcfd644fb37d6b700ced746731d3a18e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22ec35537fbfe21364d18ddc24c5936c98eae8412c6313ba3d0b38956d4357d1",
+      "source_fact_keys": [
+        "source_fact:v1:84c8cbd7c3fe44e0e9a86449f3601ac00e9d2be4b92e5a430b392eb3949434ee",
+        "source_fact:v1:e4dd2906f39ee9f08cfe9746f49373e0229c0ea2ffc0648aad6022773f0e6eb0",
+        "source_fact:v1:f000901bdfdf241d6a9f72513c73c0f63b2e5054f579addf067e1fe1a11b8fae"
+      ],
+      "source_published_kst": "2026-10-06T17:51+09:00",
+      "title": "알테오젠, 알테오젠바이오로직스 합병 결정"
+    },
     "source_fact:54ce2df11dcd2bbb901a5408": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
       "lanes": {
@@ -83403,6 +83824,27 @@
       "source_published_kst": "2026-10-06T06:40+09:00",
       "title": "“중동 원유수출 증가·G7 비축유 방출 약속“ 국제유가 1.8%↓"
     },
+    "source_fact:5e801aee354630fa290ab837": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.etnews.com/20261006000408",
+      "source": "전자신문",
+      "source_body_digest": "b269be0c256ef4fa066174dd79e5322aaede3cd9346780158b9bef1a94a7a707",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f4a5d3bcf57778a19d9da7a29a9f2f23566a50e66e161f557a49b90af0d94a0",
+      "source_fact_keys": [
+        "source_fact:v1:20700632ae0aea44629fd20bdb40335416676fed69d6045c4fe46ea38b02ef31",
+        "source_fact:v1:3fde38c702628e9aa4d099dba8974ce63fd91cd8106168fe8ec89a8b1ece09b8",
+        "source_fact:v1:4470fc5b5c2bb89b4deee5d60b0b01da2528369ebc3404e809eb584b9588c238",
+        "source_fact:v1:64692214514754d8399096ff13a3dc2ee8277520dd8569241a045c174bfff627",
+        "source_fact:v1:b3bda5955d83f7400633e9ab4b0eaac39136f822f2d0c15af6a76ee896817b62"
+      ],
+      "source_published_kst": "2026-10-06T17:35+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 LFP 6조원 규모 공급계약 체결"
+    },
     "source_fact:5e813251e5e58c95f0ad9dda": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
       "lanes": {
@@ -84605,6 +85047,25 @@
       ],
       "source_published_kst": "2026-10-06T14:48+09:00",
       "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
+    },
+    "source_fact:6639211f75de9b0af826d046": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.etnews.com/20261006000060",
+      "source": "전자신문",
+      "source_body_digest": "e31ffd6e678de05fb34ae2804bcfcc31a8855e2f2f480c69ff673e57fceab43d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fa37e3892a41a8ae0c8d199997da68b23305186b84ec9b1e8f792cc293ea2162",
+      "source_fact_keys": [
+        "source_fact:v1:2b711383ac976240eef9e99aca8416336a2e90ffc0f8058b459068f930813bd3",
+        "source_fact:v1:3217a81cfd333241d0e5cf59fe3defa5accf158ede0481af290000f672a55e65",
+        "source_fact:v1:3f80bc2f7d4ac68acef713f42b5f7e8279463f804fa501de2e987de449d1f29d"
+      ],
+      "source_published_kst": "2026-10-06T17:00+09:00",
+      "title": "SK인텔릭스, '나무엑스' 中 위탁생산 추진…원가 경쟁력 확보 '승부수'"
     },
     "source_fact:663b982d7ed717d5a4f1b16d": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
@@ -90999,22 +91460,23 @@
     "source_fact:85c33fea4687314e7245a9fb": {
       "first_seen_kst": "2026-10-06T19:46:03+09:00",
       "lanes": {
-        "live": "2026-10-06T19:46:03+09:00"
+        "live": "2026-10-06T20:37:39+09:00"
       },
-      "last_seen_kst": "2026-10-06T19:46:03+09:00",
-      "link": "https://www.newsis.com/view/NISX20261006_0003816169",
-      "source": "뉴시스",
-      "source_body_digest": "f2d53cd23d95bcaa8583455cf72cf6df5c302515bfd1d9ec922f71cf752cad4b",
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.etnews.com/20261006000408",
+      "source": "전자신문",
+      "source_body_digest": "b269be0c256ef4fa066174dd79e5322aaede3cd9346780158b9bef1a94a7a707",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:d6c330c0e856e62af039850c5c22bc1cbf7d145a5f1bebef6fbc892073c8a74f",
+      "source_fact_identity": "source_facts:v1:3f4a5d3bcf57778a19d9da7a29a9f2f23566a50e66e161f557a49b90af0d94a0",
       "source_fact_keys": [
+        "source_fact:v1:20700632ae0aea44629fd20bdb40335416676fed69d6045c4fe46ea38b02ef31",
         "source_fact:v1:3fde38c702628e9aa4d099dba8974ce63fd91cd8106168fe8ec89a8b1ece09b8",
-        "source_fact:v1:4f282e6fc85f2b7be2c69685002896b6aaf4cd42150fdd7b80694a9bf68dcbc5",
-        "source_fact:v1:734550f1d450192f667f14b66cfa5fac26003eb2e3245dd0d2aa2b889794de03",
-        "source_fact:v1:86dda6431a51dee59825151f60a11948786316502bebd3ec92f6771c4929cb72"
+        "source_fact:v1:4470fc5b5c2bb89b4deee5d60b0b01da2528369ebc3404e809eb584b9588c238",
+        "source_fact:v1:64692214514754d8399096ff13a3dc2ee8277520dd8569241a045c174bfff627",
+        "source_fact:v1:b3bda5955d83f7400633e9ab4b0eaac39136f822f2d0c15af6a76ee896817b62"
       ],
-      "source_published_kst": "2026-10-06T17:40+09:00",
-      "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 양극재 공급 계약…\"배터리 동맹 강화\""
+      "source_published_kst": "2026-10-06T17:35+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 LFP 6조원 규모 공급계약 체결"
     },
     "source_fact:85d6dad647c07e28005f4472": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -93459,6 +93921,23 @@
       "source_published_kst": "2026-10-05T21:34+09:00",
       "title": "北지뢰에 '대북 사이버 독자제재' 내부 검토…외교부·통일부 이견"
     },
+    "source_fact:9304e62512ef3d57e74abed3": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100617392946034",
+      "source": "머니투데이",
+      "source_body_digest": "949dd9c515600d448d78cac6749b4981d6325d9c498f98f5ff54bcb2f4723d87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8fab75271b26b030aa85a02ebb5f2693fddb025ed7deb580e4987450d03b0116",
+      "source_fact_keys": [
+        "source_fact:v1:437b074f581b02324f87c3c64ffa93301d5c6000aec0ddedac818cba1ff30545"
+      ],
+      "source_published_kst": "2026-10-06T17:56+09:00",
+      "title": "월가, 앤트로픽 81.5조원 대출 신디케이션 착수…반도체 금융 최대 규모"
+    },
     "source_fact:931b24d19605855cdc648696": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
@@ -95817,6 +96296,26 @@
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "제이엘케이 \"2대 주주 KB운용 지분 5.09→6.56% 확대\""
     },
+    "source_fact:9f78c074a734aacf851c911b": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.mk.co.kr/news/society/12169538",
+      "source": "매일경제",
+      "source_body_digest": "1a5ab1fc7a53b4ad22a9c9b64156df9357f6616907c2863b5dbad58b4db52d70",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ea36b50722a4768dff7d6d6a303b2aa57c803ef64fa745a2b9ff0f9a596e77c1",
+      "source_fact_keys": [
+        "source_fact:v1:280fa3509c62dffca52fb60fe853331927e861eb7af7ad0b4714b2dc86b31d34",
+        "source_fact:v1:3e206b771d6b2c57591ef4752b441ffe9f4884d2151df42960c0b6e0d1f69b68",
+        "source_fact:v1:4d22f4d6ae36fedcb8ee008c15cb714d27dbad7899e5b1798f19196e56db0f4e",
+        "source_fact:v1:8cd6203f4e64cdf90db081259d1ceefc22eb97224011c74707cc279b960f2e8d"
+      ],
+      "source_published_kst": "2026-10-06T17:40+09:00",
+      "title": "亞 최대 동해 AI데이터센터 연내 착공"
+    },
     "source_fact:9fe5d53995daa31c0d25d2b5": {
       "first_seen_kst": "2026-10-06T16:30:27+09:00",
       "lanes": {
@@ -96255,6 +96754,25 @@
       ],
       "source_published_kst": "2026-10-06T06:37+09:00",
       "title": "호르무즈 당장 열려도 끝 아냐…아람코 CEO \"석유 재고 회복에 2년\""
+    },
+    "source_fact:a167e1407bbf1accee6ea695": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.etnews.com/20261006000060",
+      "source": "전자신문",
+      "source_body_digest": "e31ffd6e678de05fb34ae2804bcfcc31a8855e2f2f480c69ff673e57fceab43d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fa37e3892a41a8ae0c8d199997da68b23305186b84ec9b1e8f792cc293ea2162",
+      "source_fact_keys": [
+        "source_fact:v1:2b711383ac976240eef9e99aca8416336a2e90ffc0f8058b459068f930813bd3",
+        "source_fact:v1:3217a81cfd333241d0e5cf59fe3defa5accf158ede0481af290000f672a55e65",
+        "source_fact:v1:3f80bc2f7d4ac68acef713f42b5f7e8279463f804fa501de2e987de449d1f29d"
+      ],
+      "source_published_kst": "2026-10-06T17:00+09:00",
+      "title": "SK인텔릭스, '나무엑스' 中 위탁생산 추진…원가 경쟁력 확보 '승부수'"
     },
     "source_fact:a1af980c1fb4fe46b818cebe": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
@@ -101552,6 +102070,26 @@
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "데이터센터 반대여론에도 美건설 계속…2027년 90GW 전망"
     },
+    "source_fact:bea18873f2d8d26f4cb1dfb6": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.mk.co.kr/news/society/12169538",
+      "source": "매일경제",
+      "source_body_digest": "1a5ab1fc7a53b4ad22a9c9b64156df9357f6616907c2863b5dbad58b4db52d70",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ea36b50722a4768dff7d6d6a303b2aa57c803ef64fa745a2b9ff0f9a596e77c1",
+      "source_fact_keys": [
+        "source_fact:v1:280fa3509c62dffca52fb60fe853331927e861eb7af7ad0b4714b2dc86b31d34",
+        "source_fact:v1:3e206b771d6b2c57591ef4752b441ffe9f4884d2151df42960c0b6e0d1f69b68",
+        "source_fact:v1:4d22f4d6ae36fedcb8ee008c15cb714d27dbad7899e5b1798f19196e56db0f4e",
+        "source_fact:v1:8cd6203f4e64cdf90db081259d1ceefc22eb97224011c74707cc279b960f2e8d"
+      ],
+      "source_published_kst": "2026-10-06T17:40+09:00",
+      "title": "亞 최대 동해 AI데이터센터 연내 착공"
+    },
     "source_fact:bea83d690740ba8a90415cc3": {
       "first_seen_kst": "2026-10-06T17:24:43+09:00",
       "lanes": {
@@ -102654,6 +103192,25 @@
       ],
       "source_published_kst": "2026-10-05T11:25+09:00",
       "title": "사우디, 11월 아시아 공급용 원유가 대폭 인하 | 연합뉴스"
+    },
+    "source_fact:c4e5fadb831068cba5504840": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.etnews.com/20261006000060",
+      "source": "전자신문",
+      "source_body_digest": "e31ffd6e678de05fb34ae2804bcfcc31a8855e2f2f480c69ff673e57fceab43d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fa37e3892a41a8ae0c8d199997da68b23305186b84ec9b1e8f792cc293ea2162",
+      "source_fact_keys": [
+        "source_fact:v1:2b711383ac976240eef9e99aca8416336a2e90ffc0f8058b459068f930813bd3",
+        "source_fact:v1:3217a81cfd333241d0e5cf59fe3defa5accf158ede0481af290000f672a55e65",
+        "source_fact:v1:3f80bc2f7d4ac68acef713f42b5f7e8279463f804fa501de2e987de449d1f29d"
+      ],
+      "source_published_kst": "2026-10-06T17:00+09:00",
+      "title": "SK인텔릭스, '나무엑스' 中 위탁생산 추진…원가 경쟁력 확보 '승부수'"
     },
     "source_fact:c4f3ff4b852be4edef9171ac": {
       "first_seen_kst": "2026-10-05T22:57:49+09:00",
@@ -104297,6 +104854,25 @@
       "source_published_kst": "2026-10-05T07:26+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가 | 연합뉴스"
     },
+    "source_fact:ce414fbaf72f2ee624c8cb15": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170455",
+      "source": "매일경제",
+      "source_body_digest": "12c73f3fd61ad068d56b2dd450ff1862fcfd644fb37d6b700ced746731d3a18e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22ec35537fbfe21364d18ddc24c5936c98eae8412c6313ba3d0b38956d4357d1",
+      "source_fact_keys": [
+        "source_fact:v1:84c8cbd7c3fe44e0e9a86449f3601ac00e9d2be4b92e5a430b392eb3949434ee",
+        "source_fact:v1:e4dd2906f39ee9f08cfe9746f49373e0229c0ea2ffc0648aad6022773f0e6eb0",
+        "source_fact:v1:f000901bdfdf241d6a9f72513c73c0f63b2e5054f579addf067e1fe1a11b8fae"
+      ],
+      "source_published_kst": "2026-10-06T17:51+09:00",
+      "title": "알테오젠, 알테오젠바이오로직스 합병 결정"
+    },
     "source_fact:ce4fed3fb155ba01fd3f9fcb": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
       "lanes": {
@@ -104364,6 +104940,27 @@
       ],
       "source_published_kst": "2026-10-06T12:17+09:00",
       "title": "이형일 \"대미 원전 100억달러, 상업적 합리성 검증돼야 송금\"[2026국감]"
+    },
+    "source_fact:ceadec4a7120d8fdd73ac8ce": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.etnews.com/20261006000408",
+      "source": "전자신문",
+      "source_body_digest": "b269be0c256ef4fa066174dd79e5322aaede3cd9346780158b9bef1a94a7a707",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f4a5d3bcf57778a19d9da7a29a9f2f23566a50e66e161f557a49b90af0d94a0",
+      "source_fact_keys": [
+        "source_fact:v1:20700632ae0aea44629fd20bdb40335416676fed69d6045c4fe46ea38b02ef31",
+        "source_fact:v1:3fde38c702628e9aa4d099dba8974ce63fd91cd8106168fe8ec89a8b1ece09b8",
+        "source_fact:v1:4470fc5b5c2bb89b4deee5d60b0b01da2528369ebc3404e809eb584b9588c238",
+        "source_fact:v1:64692214514754d8399096ff13a3dc2ee8277520dd8569241a045c174bfff627",
+        "source_fact:v1:b3bda5955d83f7400633e9ab4b0eaac39136f822f2d0c15af6a76ee896817b62"
+      ],
+      "source_published_kst": "2026-10-06T17:35+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 LFP 6조원 규모 공급계약 체결"
     },
     "source_fact:ceb11bf2d1500bfc2c6caf7c": {
       "first_seen_kst": "2026-10-05T22:57:49+09:00",
@@ -105301,6 +105898,25 @@
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
     },
+    "source_fact:d34df4c89ef4963159b24744": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170455",
+      "source": "매일경제",
+      "source_body_digest": "12c73f3fd61ad068d56b2dd450ff1862fcfd644fb37d6b700ced746731d3a18e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22ec35537fbfe21364d18ddc24c5936c98eae8412c6313ba3d0b38956d4357d1",
+      "source_fact_keys": [
+        "source_fact:v1:84c8cbd7c3fe44e0e9a86449f3601ac00e9d2be4b92e5a430b392eb3949434ee",
+        "source_fact:v1:e4dd2906f39ee9f08cfe9746f49373e0229c0ea2ffc0648aad6022773f0e6eb0",
+        "source_fact:v1:f000901bdfdf241d6a9f72513c73c0f63b2e5054f579addf067e1fe1a11b8fae"
+      ],
+      "source_published_kst": "2026-10-06T17:51+09:00",
+      "title": "알테오젠, 알테오젠바이오로직스 합병 결정"
+    },
     "source_fact:d35d89a4b2b7bb9540299391": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
       "lanes": {
@@ -105662,6 +106278,27 @@
       ],
       "source_published_kst": "2026-10-06T15:11+09:00",
       "title": "\"중국 문샷, 내년 1분기 홍콩 상장 추진\" | 연합뉴스"
+    },
+    "source_fact:d591f3f165eb013b14605728": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.etnews.com/20261006000408",
+      "source": "전자신문",
+      "source_body_digest": "b269be0c256ef4fa066174dd79e5322aaede3cd9346780158b9bef1a94a7a707",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f4a5d3bcf57778a19d9da7a29a9f2f23566a50e66e161f557a49b90af0d94a0",
+      "source_fact_keys": [
+        "source_fact:v1:20700632ae0aea44629fd20bdb40335416676fed69d6045c4fe46ea38b02ef31",
+        "source_fact:v1:3fde38c702628e9aa4d099dba8974ce63fd91cd8106168fe8ec89a8b1ece09b8",
+        "source_fact:v1:4470fc5b5c2bb89b4deee5d60b0b01da2528369ebc3404e809eb584b9588c238",
+        "source_fact:v1:64692214514754d8399096ff13a3dc2ee8277520dd8569241a045c174bfff627",
+        "source_fact:v1:b3bda5955d83f7400633e9ab4b0eaac39136f822f2d0c15af6a76ee896817b62"
+      ],
+      "source_published_kst": "2026-10-06T17:35+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 LFP 6조원 규모 공급계약 체결"
     },
     "source_fact:d5a317931980d45cbe279cba": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
@@ -108109,6 +108746,26 @@
       "source_published_kst": "2026-10-06T14:48+09:00",
       "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
     },
+    "source_fact:e15561233290551a1566a362": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.mk.co.kr/news/society/12169538",
+      "source": "매일경제",
+      "source_body_digest": "1a5ab1fc7a53b4ad22a9c9b64156df9357f6616907c2863b5dbad58b4db52d70",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ea36b50722a4768dff7d6d6a303b2aa57c803ef64fa745a2b9ff0f9a596e77c1",
+      "source_fact_keys": [
+        "source_fact:v1:280fa3509c62dffca52fb60fe853331927e861eb7af7ad0b4714b2dc86b31d34",
+        "source_fact:v1:3e206b771d6b2c57591ef4752b441ffe9f4884d2151df42960c0b6e0d1f69b68",
+        "source_fact:v1:4d22f4d6ae36fedcb8ee008c15cb714d27dbad7899e5b1798f19196e56db0f4e",
+        "source_fact:v1:8cd6203f4e64cdf90db081259d1ceefc22eb97224011c74707cc279b960f2e8d"
+      ],
+      "source_published_kst": "2026-10-06T17:40+09:00",
+      "title": "亞 최대 동해 AI데이터센터 연내 착공"
+    },
     "source_fact:e17cc59d5f09911375ad5dcd": {
       "first_seen_kst": "2026-10-06T03:45:53+09:00",
       "lanes": {
@@ -109265,6 +109922,27 @@
       ],
       "source_published_kst": "2026-10-06T10:23+09:00",
       "title": "1∼8월 글로벌 전기차 5.9% 증가…현대차그룹은 두 자릿수 성장"
+    },
+    "source_fact:e768f5cbafdefcc087a60044": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.etnews.com/20261006000408",
+      "source": "전자신문",
+      "source_body_digest": "b269be0c256ef4fa066174dd79e5322aaede3cd9346780158b9bef1a94a7a707",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f4a5d3bcf57778a19d9da7a29a9f2f23566a50e66e161f557a49b90af0d94a0",
+      "source_fact_keys": [
+        "source_fact:v1:20700632ae0aea44629fd20bdb40335416676fed69d6045c4fe46ea38b02ef31",
+        "source_fact:v1:3fde38c702628e9aa4d099dba8974ce63fd91cd8106168fe8ec89a8b1ece09b8",
+        "source_fact:v1:4470fc5b5c2bb89b4deee5d60b0b01da2528369ebc3404e809eb584b9588c238",
+        "source_fact:v1:64692214514754d8399096ff13a3dc2ee8277520dd8569241a045c174bfff627",
+        "source_fact:v1:b3bda5955d83f7400633e9ab4b0eaac39136f822f2d0c15af6a76ee896817b62"
+      ],
+      "source_published_kst": "2026-10-06T17:35+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 LFP 6조원 규모 공급계약 체결"
     },
     "source_fact:e76e7f6e442854a72897feeb": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -112099,6 +112777,26 @@
       ],
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
+    },
+    "source_fact:f7211f1d858d0d3e533b9f24": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.mk.co.kr/news/society/12169538",
+      "source": "매일경제",
+      "source_body_digest": "1a5ab1fc7a53b4ad22a9c9b64156df9357f6616907c2863b5dbad58b4db52d70",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ea36b50722a4768dff7d6d6a303b2aa57c803ef64fa745a2b9ff0f9a596e77c1",
+      "source_fact_keys": [
+        "source_fact:v1:280fa3509c62dffca52fb60fe853331927e861eb7af7ad0b4714b2dc86b31d34",
+        "source_fact:v1:3e206b771d6b2c57591ef4752b441ffe9f4884d2151df42960c0b6e0d1f69b68",
+        "source_fact:v1:4d22f4d6ae36fedcb8ee008c15cb714d27dbad7899e5b1798f19196e56db0f4e",
+        "source_fact:v1:8cd6203f4e64cdf90db081259d1ceefc22eb97224011c74707cc279b960f2e8d"
+      ],
+      "source_published_kst": "2026-10-06T17:40+09:00",
+      "title": "亞 최대 동해 AI데이터센터 연내 착공"
     },
     "source_fact:f73093c9ba954166ff402e05": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
@@ -118337,6 +119035,23 @@
       "source_event_identity": "",
       "title": "액소젠, 바이오서킷 인수 완료에도 통합 부담 부각"
     },
+    "title:2cb6489856ccb2f8405dbc16": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100617392946034",
+      "source": "머니투데이",
+      "source_body_digest": "949dd9c515600d448d78cac6749b4981d6325d9c498f98f5ff54bcb2f4723d87",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8fab75271b26b030aa85a02ebb5f2693fddb025ed7deb580e4987450d03b0116",
+      "source_fact_keys": [
+        "source_fact:v1:437b074f581b02324f87c3c64ffa93301d5c6000aec0ddedac818cba1ff30545"
+      ],
+      "source_published_kst": "2026-10-06T17:56+09:00",
+      "title": "월가, 앤트로픽 81.5조원 대출 신디케이션 착수…반도체 금융 최대 규모"
+    },
     "title:2ce2383dc3ef9d07cf173c7e": {
       "first_seen_kst": "2026-10-03T07:28:32+09:00",
       "lanes": {
@@ -119363,6 +120078,27 @@
       "link": "https://www.mt.co.kr/economy/2026/10/01/2026100117284948675",
       "source": "머니투데이",
       "title": "1년간 3명 이상 산재사망시 영업이익 5% 과징금…반복되면 '사업등록 취소'도"
+    },
+    "title:37ac1e6cd155f6ba24508136": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.etnews.com/20261006000408",
+      "source": "전자신문",
+      "source_body_digest": "b269be0c256ef4fa066174dd79e5322aaede3cd9346780158b9bef1a94a7a707",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f4a5d3bcf57778a19d9da7a29a9f2f23566a50e66e161f557a49b90af0d94a0",
+      "source_fact_keys": [
+        "source_fact:v1:20700632ae0aea44629fd20bdb40335416676fed69d6045c4fe46ea38b02ef31",
+        "source_fact:v1:3fde38c702628e9aa4d099dba8974ce63fd91cd8106168fe8ec89a8b1ece09b8",
+        "source_fact:v1:4470fc5b5c2bb89b4deee5d60b0b01da2528369ebc3404e809eb584b9588c238",
+        "source_fact:v1:64692214514754d8399096ff13a3dc2ee8277520dd8569241a045c174bfff627",
+        "source_fact:v1:b3bda5955d83f7400633e9ab4b0eaac39136f822f2d0c15af6a76ee896817b62"
+      ],
+      "source_published_kst": "2026-10-06T17:35+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 LFP 6조원 규모 공급계약 체결"
     },
     "title:37dd3fa958ce10a405024be7": {
       "first_seen_kst": "2026-10-02T17:34:05+09:00",
@@ -129812,6 +130548,24 @@
       "source": "전자신문",
       "title": "솔루엠, ESL·전력 사업 확대…수주 매출 전환 본격화"
     },
+    "title:a298cdc13f376f48098ba3a1": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.etnews.com/20261006000414",
+      "source": "전자신문",
+      "source_body_digest": "a70381ff0b5ac0685b96c7c5baf59dd17635091890aba2d9cecd55ad351ea5d7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:04a11dcde456a53764f6095982f2cbd83f9d48c94f254a7a5c0c8366b9a7b938",
+      "source_fact_keys": [
+        "source_fact:v1:c07f2206bc8de270bb05f90c4b44fb5f284de9f60381b0395e01d05dbd69fc43",
+        "source_fact:v1:ce6bf6fbc891575b3b011e531057db91c59265c47d0b45b066dcd5e2eb839b18"
+      ],
+      "source_published_kst": "2026-10-06T18:32+09:00",
+      "title": "알테오젠, 바이오로직스 흡수합병…연구·판매 전주기 '통합'"
+    },
     "title:a29f1af11098eaed97138557": {
       "first_seen_kst": "2026-10-03T12:26:15+09:00",
       "lanes": {
@@ -132335,6 +133089,26 @@
       "source": "뉴시스",
       "title": "이성훈 LH 사장 \"공급 시차 불가피…지금은 대출 규제 필요\""
     },
+    "title:bd11de145d733adb701abf2c": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.mk.co.kr/news/society/12169538",
+      "source": "매일경제",
+      "source_body_digest": "1a5ab1fc7a53b4ad22a9c9b64156df9357f6616907c2863b5dbad58b4db52d70",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ea36b50722a4768dff7d6d6a303b2aa57c803ef64fa745a2b9ff0f9a596e77c1",
+      "source_fact_keys": [
+        "source_fact:v1:280fa3509c62dffca52fb60fe853331927e861eb7af7ad0b4714b2dc86b31d34",
+        "source_fact:v1:3e206b771d6b2c57591ef4752b441ffe9f4884d2151df42960c0b6e0d1f69b68",
+        "source_fact:v1:4d22f4d6ae36fedcb8ee008c15cb714d27dbad7899e5b1798f19196e56db0f4e",
+        "source_fact:v1:8cd6203f4e64cdf90db081259d1ceefc22eb97224011c74707cc279b960f2e8d"
+      ],
+      "source_published_kst": "2026-10-06T17:40+09:00",
+      "title": "亞 최대 동해 AI데이터센터 연내 착공"
+    },
     "title:bd34160fe9a52bcabba764a5": {
       "first_seen_kst": "2026-09-27T19:02:46+09:00",
       "lanes": {
@@ -132417,6 +133191,25 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T16:49+09:00",
       "title": "일본 라피더스, 도시바 등 17곳과 반도체 설계 협력"
+    },
+    "title:be1ddecd53643bf752e4393a": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.etnews.com/20261006000060",
+      "source": "전자신문",
+      "source_body_digest": "e31ffd6e678de05fb34ae2804bcfcc31a8855e2f2f480c69ff673e57fceab43d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fa37e3892a41a8ae0c8d199997da68b23305186b84ec9b1e8f792cc293ea2162",
+      "source_fact_keys": [
+        "source_fact:v1:2b711383ac976240eef9e99aca8416336a2e90ffc0f8058b459068f930813bd3",
+        "source_fact:v1:3217a81cfd333241d0e5cf59fe3defa5accf158ede0481af290000f672a55e65",
+        "source_fact:v1:3f80bc2f7d4ac68acef713f42b5f7e8279463f804fa501de2e987de449d1f29d"
+      ],
+      "source_published_kst": "2026-10-06T17:00+09:00",
+      "title": "SK인텔릭스, '나무엑스' 中 위탁생산 추진…원가 경쟁력 확보 '승부수'"
     },
     "title:be29411f5800df6f11cb8e5e": {
       "first_seen_kst": "2026-09-18T12:25:16+09:00",
@@ -132868,6 +133661,25 @@
       "link": "https://www.etnews.com/20261002000071",
       "source": "전자신문",
       "title": "외국인 매출 22배 뛴 CJ올리브영…글로벌 뉴스룸 개설"
+    },
+    "title:c41f3784ffb3df8cc688b645": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170455",
+      "source": "매일경제",
+      "source_body_digest": "12c73f3fd61ad068d56b2dd450ff1862fcfd644fb37d6b700ced746731d3a18e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22ec35537fbfe21364d18ddc24c5936c98eae8412c6313ba3d0b38956d4357d1",
+      "source_fact_keys": [
+        "source_fact:v1:84c8cbd7c3fe44e0e9a86449f3601ac00e9d2be4b92e5a430b392eb3949434ee",
+        "source_fact:v1:e4dd2906f39ee9f08cfe9746f49373e0229c0ea2ffc0648aad6022773f0e6eb0",
+        "source_fact:v1:f000901bdfdf241d6a9f72513c73c0f63b2e5054f579addf067e1fe1a11b8fae"
+      ],
+      "source_published_kst": "2026-10-06T17:51+09:00",
+      "title": "알테오젠, 알테오젠바이오로직스 합병 결정"
     },
     "title:c4216950cfc88d6102d399f6": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
@@ -138364,6 +139176,21 @@
       "source_published_kst": "2026-10-05T14:28+09:00",
       "title": "폭스바겐 ‘판매왕’에서 모빌리티 창업가로…차봇, 해외로 영토 확장"
     },
+    "title:fc1da1a8829afda533dcef81": {
+      "first_seen_kst": "2026-10-06T20:37:39+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:37:39+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:37:39+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05024966645610296",
+      "source": "이데일리",
+      "source_body_digest": "93f0275fd239fc49c368c582736e2bfa88d970dbea25fee39288b3cb416a9935",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T17:54+09:00",
+      "title": "알테오젠, 알테오젠바이오로직스 흡수합병 추진…\"개발·상업화 역량 통합\""
+    },
     "title:fc258f7df3b09fcb24cd7e5c": {
       "first_seen_kst": "2026-10-04T00:26:19+09:00",
       "lanes": {
@@ -138742,5 +139569,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T20:24:46+09:00"
+  "updated_at_kst": "2026-10-06T20:37:39+09:00"
 }
