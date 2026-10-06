@@ -1232,20 +1232,22 @@
     "event:357501917a7f635b2fa6a147": {
       "first_seen_kst": "2026-10-06T02:31:07+09:00",
       "lanes": {
-        "live": "2026-10-06T12:35:44+09:00",
+        "live": "2026-10-06T17:35:32+09:00",
         "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-06T12:35:44+09:00",
-      "link": "https://www.hankyung.com/article/202610065016i",
-      "source": "한국경제",
-      "source_body_digest": "3977dd101bc1caee96f349b253489808cb1f95f9e67bd7193357bc320d0104dd",
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814764",
+      "source": "뉴시스",
+      "source_body_digest": "5d606c567289d3e337c00bb0ff1319e571480ef7ed4d31fc9f87f438a6a9b44f",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:f1dd1eda031c05dc6c0cdff66335dd23f80e3e5b2df5bf8a551dbca812003988",
+      "source_fact_identity": "source_facts:v1:70cf6393673fec9f0fe4970d2e05d1fbb4539df908ed4383582af5a49f14ed54",
       "source_fact_keys": [
-        "source_fact:v1:af31e5dfdc77027ae98632f457484cc9919ffd7b59833cc73618afffb59cc95f"
+        "source_fact:v1:5789507f8956a3c398b812c082e3694eb6ea8458357215929c71371b31c16244",
+        "source_fact:v1:69e45acd6d850dba9b7d9953b155d3b9638d9af4d90cd8daf5d00be7f6868af3",
+        "source_fact:v1:f86b04bd94651e9de0852b6b1c6af548739328a8d77aa71a79c7292ebdf3e13a"
       ],
-      "source_published_kst": "2026-10-06T11:00+09:00",
-      "title": "'한국형 인큐텔' 도입 탄력…與 오세희, '新안보 혁신기업 특별법' 발의"
+      "source_published_kst": "2026-10-06T09:53+09:00",
+      "title": "예멘 후티군 사우디 전역 미사일 무인기공격.. 사우디 군은 홍해 승리 주장"
     },
     "event:35c61e03fc529e43f46f2a91": {
       "first_seen_kst": "2026-10-02T12:31:36+09:00",
@@ -1938,27 +1940,24 @@
     "event:58346ede9229ab9542f09d45": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
       "lanes": {
-        "live": "2026-10-06T17:14:48+09:00"
+        "live": "2026-10-06T17:35:32+09:00"
       },
-      "last_seen_kst": "2026-10-06T17:14:48+09:00",
-      "link": "https://biz.heraldcorp.com/article/10894430",
-      "source": "헤럴드경제",
-      "source_body_digest": "9ce97b8e14f9ca8532c151b22c975bcdb635965f48742bc92899cccc1994152a",
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170309",
+      "source": "매일경제",
+      "source_body_digest": "231a139842f2bb1bd997f07956ee874e4f31f2791a744e6f3d9d6b531c9d5eab",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:8a17e2917a3afacbbfb2c87b6f79ab714e179f24a3666b6967777176ec564729",
+      "source_fact_identity": "source_facts:v1:8a4d28035ad99e7faa19de1a8628173fac031b7499bdfaf35f31967cdb55fc15",
       "source_fact_keys": [
-        "source_fact:v1:05b8f6fed42a36ad77847f5227d05078db31fd0adb0c308fd0db1b6942257704",
-        "source_fact:v1:2e5f93cf38fac02956df0525b8b0ed3127f076c9d95a94ad73ecbd372202a937",
-        "source_fact:v1:33206f6e1444a9f6db94497c51d6689095ad0ac3aa0cd155adc07dd4e49f2ac4",
-        "source_fact:v1:6ff07906b2bf0b011360d5c44b7a6241a12e817a7a5029f1c110fc958ec1aacd",
-        "source_fact:v1:726eddd6c6b9512768db137f4a152ad67f4dfeb675695dfadf4f88e38588f252",
-        "source_fact:v1:80f39e454d88c5786b23d211f86548dbcf139d0c7c219dda14b195524b957f1e",
-        "source_fact:v1:aa586f7429d9cbc1a51052cd4fbcce2b26037a8f5169765e573a5890cbbd7cdd",
-        "source_fact:v1:bfd9112624b6f9b0749ca22b1589a43121d146a836f2aaa51b5426ae87c5b9ae",
-        "source_fact:v1:c6b622ceab9e3954754e27a59895e01e9c9bbd70f7b256ccdb248958186d3388"
+        "source_fact:v1:1a7c062cbe7338a0452eb78d6081324b06634818c380a85f78e1af2042752537",
+        "source_fact:v1:272339fde78935a18bbc05a7f7bcf860719d0b41c8375736c92798f91fd8bc83",
+        "source_fact:v1:3987774bf9261c886ff92582c52ab69c368a14616631d0092bdd30894c046614",
+        "source_fact:v1:4551f3296a1d6115aa55a95ebd12ee91232716d1cb6c74edda91d7c53fd95cc4",
+        "source_fact:v1:4dde7ddfb7f036d0bc4c42e4415ae1dff0c6ff55ad8dfab1d6a1327dd28b8dbd",
+        "source_fact:v1:9a4f208e2d6ff6f289a687fd1af4fee68c3e94a17573c91a6c11567a311962f9"
       ],
-      "source_published_kst": "2026-10-06T15:22+09:00",
-      "title": "“中 AI 굴기 또 온다”…문샷, 기업가치 68조원 찍고 홍콩 상장 추진"
+      "source_published_kst": "2026-10-06T15:11+09:00",
+      "title": "\"중국 문샷, 내년 1분기 홍콩 상장 추진\""
     },
     "event:5945d59c3e6c028f9c16b943": {
       "first_seen_kst": "2026-09-29T10:32:56+09:00",
@@ -7854,6 +7853,23 @@
       "source_published_kst": "2026-10-06T11:01+09:00",
       "title": "자동차 화면용 강화유리 수입승인 없앤다…디스플레이 규제 개선"
     },
+    "fact:31c60dc05bfbb7f37ea8cd1f": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815841",
+      "source": "뉴시스",
+      "source_body_digest": "4b9c260f7e114ebea9b4044f23e7050d22a8e830e130a087c0e3516bd15e3f41",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:54341020f58c73b7f7a76a380a264cd105f1ae34bd3aff3abb09584f081c8b66",
+      "source_fact_keys": [
+        "source_fact:v1:62616584695cf5ea3763da8f4f547be21836c0af3b03dbe02d7fb26bede0f41d"
+      ],
+      "source_published_kst": "2026-10-06T15:32+09:00",
+      "title": "빙판·모래판 스타들, 의성 알리는 홍보대사 됐다"
+    },
     "fact:321505a3dd3646769996176d": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
       "lanes": {
@@ -10611,6 +10627,28 @@
       "source_published_kst": "2026-10-05T22:50+09:00",
       "title": "유나이티드 마이크로일렉, 18억 달러 해외CB 가격 확정..표면금리 0%"
     },
+    "fact:89150a99a4dd083aadeb8296": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170309",
+      "source": "매일경제",
+      "source_body_digest": "231a139842f2bb1bd997f07956ee874e4f31f2791a744e6f3d9d6b531c9d5eab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a4d28035ad99e7faa19de1a8628173fac031b7499bdfaf35f31967cdb55fc15",
+      "source_fact_keys": [
+        "source_fact:v1:1a7c062cbe7338a0452eb78d6081324b06634818c380a85f78e1af2042752537",
+        "source_fact:v1:272339fde78935a18bbc05a7f7bcf860719d0b41c8375736c92798f91fd8bc83",
+        "source_fact:v1:3987774bf9261c886ff92582c52ab69c368a14616631d0092bdd30894c046614",
+        "source_fact:v1:4551f3296a1d6115aa55a95ebd12ee91232716d1cb6c74edda91d7c53fd95cc4",
+        "source_fact:v1:4dde7ddfb7f036d0bc4c42e4415ae1dff0c6ff55ad8dfab1d6a1327dd28b8dbd",
+        "source_fact:v1:9a4f208e2d6ff6f289a687fd1af4fee68c3e94a17573c91a6c11567a311962f9"
+      ],
+      "source_published_kst": "2026-10-06T15:11+09:00",
+      "title": "\"중국 문샷, 내년 1분기 홍콩 상장 추진\""
+    },
     "fact:896ec45e107cbec8e0182d21": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
       "lanes": {
@@ -11032,6 +11070,34 @@
       ],
       "source_published_kst": "2026-10-06T08:00+09:00",
       "title": "큐리옥스바이오시스템즈, 글로벌 '톱5' CRO가 찍었다 ... 첫 주문부터 7억 수주"
+    },
+    "fact:9492e05a5b86e68f6efd4506": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815275",
+      "source": "뉴시스",
+      "source_body_digest": "364d4ef6d6b51375f8ab42cf770fd08ac0ee929b29a8d25e5a5bd5f930058f62",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:714fd558607328d8eb73949a0ecfe9f1f531addc5f64eb0c6d0e6d8fd5348ed3",
+      "source_fact_keys": [
+        "source_fact:v1:23aff97f7ac1e0733180039fc6a8abe8231af33a1407e2e9a7621e29be27d1be",
+        "source_fact:v1:374a3bb2526d49cca2c3a6dca106e7584bc849d2b4c028f973d5fe55148b7aac",
+        "source_fact:v1:4a4d95a4123be236db511aa279e7bf60fa6a7de25dfeab7ea25f9d24d4878cff",
+        "source_fact:v1:674cc7e8bffa068c6f1c291fccb7e68b88150c50ee5cf794b7255ca440a586d4",
+        "source_fact:v1:67c9001490300e5789bc7d9a70c43cebf137af47a29ae7efb24be78dd4e02589",
+        "source_fact:v1:800b90e45870a6cc799e77432cd1611812055d0b96ab9a383182860a443fe794",
+        "source_fact:v1:a674bc725745711dde701b35fda14735ff4bc966357bb89e6db2368ab63ac358",
+        "source_fact:v1:afc478060f8d846bce51886b09acfcb88efe6d043940b58a069c40b4dc58a5bb",
+        "source_fact:v1:c77ac932372ad7923d52ab9540ee011de5233d7b73f365b99f6c0b09333342c2",
+        "source_fact:v1:ea98278b4ad3b7bbb8621352408135e6483220b55423b065881fd668e2793652",
+        "source_fact:v1:fba47ffc6a83bbd1fe943dbdf0f3dcad4a4382dcab18ff6ef7e7f03092f5c801",
+        "source_fact:v1:fdca020f029a8701b2352ef988c44ea1e1160f56cba140c655774f89094db10b"
+      ],
+      "source_published_kst": "2026-10-06T15:34+09:00",
+      "title": "\"세계 3위 車시장서 월 최대 판매\" 현대차, 푸네공장 앞세워 '인도 공략' 속도"
     },
     "fact:9559582a29f135cc6a1cea8d": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
@@ -12242,6 +12308,25 @@
       "source_published_kst": "2026-10-05T11:00+09:00",
       "title": "반려견 피부염 연구 활용…'항염증 엑소좀' 생산기술 개발"
     },
+    "fact:b6037916b29674f583c6e1c1": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814764",
+      "source": "뉴시스",
+      "source_body_digest": "5d606c567289d3e337c00bb0ff1319e571480ef7ed4d31fc9f87f438a6a9b44f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:70cf6393673fec9f0fe4970d2e05d1fbb4539df908ed4383582af5a49f14ed54",
+      "source_fact_keys": [
+        "source_fact:v1:5789507f8956a3c398b812c082e3694eb6ea8458357215929c71371b31c16244",
+        "source_fact:v1:69e45acd6d850dba9b7d9953b155d3b9638d9af4d90cd8daf5d00be7f6868af3",
+        "source_fact:v1:f86b04bd94651e9de0852b6b1c6af548739328a8d77aa71a79c7292ebdf3e13a"
+      ],
+      "source_published_kst": "2026-10-06T09:53+09:00",
+      "title": "예멘 후티군 사우디 전역 미사일 무인기공격.. 사우디 군은 홍해 승리 주장"
+    },
     "fact:b76c4b9377d1e155202af472": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
       "lanes": {
@@ -12703,6 +12788,23 @@
       ],
       "source_published_kst": "2026-10-05T08:15+09:00",
       "title": "함안군, 택시 기본요금 5천500원→6천원 인상 추진 | 연합뉴스"
+    },
+    "fact:c729fed399b32565b374ff33": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610065836b",
+      "source": "한국경제",
+      "source_body_digest": "1e829a5ce9104de27f60a5be43990303f7b29f02ead0ea2ae794e6bbbefb5b53",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:624b800e2787e22dca5a43efbf96e61e4913d7a8d0b164a24d78fcaf2ec7c82b",
+      "source_fact_keys": [
+        "source_fact:v1:6b916655831cd41d82412a986c384e7aed409a75e9eb18792e73fb8873dd246e"
+      ],
+      "source_published_kst": "2026-10-06T15:25+09:00",
+      "title": "유류세 5년 인하…“온실가스 400만t 감축 기회 놓쳤다”"
     },
     "fact:c830770ed4b7f6b699d0bcfd": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -13817,6 +13919,29 @@
       ],
       "source_published_kst": "2026-10-06T06:40+09:00",
       "title": "“중동 원유수출 증가·G7 비축유 방출 약속“ 국제유가 1.8%↓"
+    },
+    "fact:eb0cfb29208218ac1af0d82a": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815838",
+      "source": "뉴시스",
+      "source_body_digest": "8d5a42f62f579b7165be262dbb2b9eb2dff1024f698986f273ecc2f878e4eb8b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5f2ad3508f4e1511bef7d30d13dce2e57cc573ec050f5af602deb6352173c62",
+      "source_fact_keys": [
+        "source_fact:v1:22d3eb90a08b0c909729a71d1624eec5a6a84c2bdbc968546d66beea0c33f013",
+        "source_fact:v1:2948a764b96f2659f2e833fadf6fff54204005995725bbde8598dc57485b6ca8",
+        "source_fact:v1:59fb7ba8954c9626de1507092c1cb457ea98347d296f9dbb8e4c59c6d18d9f25",
+        "source_fact:v1:6ba08ee70565e6775f10b1616d44b1f2dbe77c4393f8e50120cecf971a662e6f",
+        "source_fact:v1:8b0e28d88ddd97c8857a06c4ae40ed8038a41a2f3fdfc9bc3d7486ec93a5ad96",
+        "source_fact:v1:a125c5a3e179b5490ef900b42c67e5c244d8d42766830a216be2186cc551e397",
+        "source_fact:v1:c8ab7dd0c88ea97461015599929f934fedbb7957336aa2c407e7bd2910987c31"
+      ],
+      "source_published_kst": "2026-10-06T17:22+09:00",
+      "title": "김성환 \"호남 반도체 팹 9개 되면 전력 약 14GW 필요\""
     },
     "fact:eb2724262af3cb1d922612b6": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -15266,6 +15391,23 @@
       "link": "https://www.newsis.com/view/NISX20261003_0003813494",
       "source": "뉴시스",
       "title": "북극해 녹고 중동 항로 흔들리자…북극항로 운항 사상 최대"
+    },
+    "link:0924f18fbf20798e24b7088d": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815841",
+      "source": "뉴시스",
+      "source_body_digest": "4b9c260f7e114ebea9b4044f23e7050d22a8e830e130a087c0e3516bd15e3f41",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:54341020f58c73b7f7a76a380a264cd105f1ae34bd3aff3abb09584f081c8b66",
+      "source_fact_keys": [
+        "source_fact:v1:62616584695cf5ea3763da8f4f547be21836c0af3b03dbe02d7fb26bede0f41d"
+      ],
+      "source_published_kst": "2026-10-06T15:32+09:00",
+      "title": "빙판·모래판 스타들, 의성 알리는 홍보대사 됐다"
     },
     "link:0945f709a6a5ebeb9c6b8f98": {
       "first_seen_kst": "2026-10-03T12:26:15+09:00",
@@ -23862,6 +24004,34 @@
       "source": "헤럴드경제",
       "title": "뉴욕증시, 상승 출발… 테슬라·인텔 등 기술주 강세"
     },
+    "link:65c8a95037c4702eff4ac809": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815275",
+      "source": "뉴시스",
+      "source_body_digest": "364d4ef6d6b51375f8ab42cf770fd08ac0ee929b29a8d25e5a5bd5f930058f62",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:714fd558607328d8eb73949a0ecfe9f1f531addc5f64eb0c6d0e6d8fd5348ed3",
+      "source_fact_keys": [
+        "source_fact:v1:23aff97f7ac1e0733180039fc6a8abe8231af33a1407e2e9a7621e29be27d1be",
+        "source_fact:v1:374a3bb2526d49cca2c3a6dca106e7584bc849d2b4c028f973d5fe55148b7aac",
+        "source_fact:v1:4a4d95a4123be236db511aa279e7bf60fa6a7de25dfeab7ea25f9d24d4878cff",
+        "source_fact:v1:674cc7e8bffa068c6f1c291fccb7e68b88150c50ee5cf794b7255ca440a586d4",
+        "source_fact:v1:67c9001490300e5789bc7d9a70c43cebf137af47a29ae7efb24be78dd4e02589",
+        "source_fact:v1:800b90e45870a6cc799e77432cd1611812055d0b96ab9a383182860a443fe794",
+        "source_fact:v1:a674bc725745711dde701b35fda14735ff4bc966357bb89e6db2368ab63ac358",
+        "source_fact:v1:afc478060f8d846bce51886b09acfcb88efe6d043940b58a069c40b4dc58a5bb",
+        "source_fact:v1:c77ac932372ad7923d52ab9540ee011de5233d7b73f365b99f6c0b09333342c2",
+        "source_fact:v1:ea98278b4ad3b7bbb8621352408135e6483220b55423b065881fd668e2793652",
+        "source_fact:v1:fba47ffc6a83bbd1fe943dbdf0f3dcad4a4382dcab18ff6ef7e7f03092f5c801",
+        "source_fact:v1:fdca020f029a8701b2352ef988c44ea1e1160f56cba140c655774f89094db10b"
+      ],
+      "source_published_kst": "2026-10-06T15:34+09:00",
+      "title": "\"세계 3위 車시장서 월 최대 판매\" 현대차, 푸네공장 앞세워 '인도 공략' 속도"
+    },
     "link:65d07ff2ae690e4f88023de4": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
       "lanes": {
@@ -26702,6 +26872,29 @@
       "link": "https://www.mt.co.kr/industry/2026/09/27/2026092709223941129",
       "source": "머니투데이",
       "title": "LG전자, AI 데이터센터 냉각솔루션 엔비디아 공식 파트너로"
+    },
+    "link:84ebf9ff966ff260268baabe": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815838",
+      "source": "뉴시스",
+      "source_body_digest": "8d5a42f62f579b7165be262dbb2b9eb2dff1024f698986f273ecc2f878e4eb8b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5f2ad3508f4e1511bef7d30d13dce2e57cc573ec050f5af602deb6352173c62",
+      "source_fact_keys": [
+        "source_fact:v1:22d3eb90a08b0c909729a71d1624eec5a6a84c2bdbc968546d66beea0c33f013",
+        "source_fact:v1:2948a764b96f2659f2e833fadf6fff54204005995725bbde8598dc57485b6ca8",
+        "source_fact:v1:59fb7ba8954c9626de1507092c1cb457ea98347d296f9dbb8e4c59c6d18d9f25",
+        "source_fact:v1:6ba08ee70565e6775f10b1616d44b1f2dbe77c4393f8e50120cecf971a662e6f",
+        "source_fact:v1:8b0e28d88ddd97c8857a06c4ae40ed8038a41a2f3fdfc9bc3d7486ec93a5ad96",
+        "source_fact:v1:a125c5a3e179b5490ef900b42c67e5c244d8d42766830a216be2186cc551e397",
+        "source_fact:v1:c8ab7dd0c88ea97461015599929f934fedbb7957336aa2c407e7bd2910987c31"
+      ],
+      "source_published_kst": "2026-10-06T17:22+09:00",
+      "title": "김성환 \"호남 반도체 팹 9개 되면 전력 약 14GW 필요\""
     },
     "link:850a7d4f9886dd55e5b34935": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -30304,6 +30497,23 @@
       "source": "머니투데이",
       "title": "美 금리 인상에 환율 1380원대…\"추세적 반등은 아냐\""
     },
+    "link:ab59fe349cf094793917f858": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610065836b",
+      "source": "한국경제",
+      "source_body_digest": "1e829a5ce9104de27f60a5be43990303f7b29f02ead0ea2ae794e6bbbefb5b53",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:624b800e2787e22dca5a43efbf96e61e4913d7a8d0b164a24d78fcaf2ec7c82b",
+      "source_fact_keys": [
+        "source_fact:v1:6b916655831cd41d82412a986c384e7aed409a75e9eb18792e73fb8873dd246e"
+      ],
+      "source_published_kst": "2026-10-06T15:25+09:00",
+      "title": "유류세 5년 인하…“온실가스 400만t 감축 기회 놓쳤다”"
+    },
     "link:ab7c0ff66d364f3a50a1fdf9": {
       "first_seen_kst": "2026-10-06T15:03:09+09:00",
       "lanes": {
@@ -33321,6 +33531,28 @@
       "source": "뉴시스",
       "title": "\"어? 렌즈 속 날개가 움직이네\"…'찍는 맛' 살린 아이폰18 프로 맥스"
     },
+    "link:cc7dddf6097580e5deb93e98": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170309",
+      "source": "매일경제",
+      "source_body_digest": "231a139842f2bb1bd997f07956ee874e4f31f2791a744e6f3d9d6b531c9d5eab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a4d28035ad99e7faa19de1a8628173fac031b7499bdfaf35f31967cdb55fc15",
+      "source_fact_keys": [
+        "source_fact:v1:1a7c062cbe7338a0452eb78d6081324b06634818c380a85f78e1af2042752537",
+        "source_fact:v1:272339fde78935a18bbc05a7f7bcf860719d0b41c8375736c92798f91fd8bc83",
+        "source_fact:v1:3987774bf9261c886ff92582c52ab69c368a14616631d0092bdd30894c046614",
+        "source_fact:v1:4551f3296a1d6115aa55a95ebd12ee91232716d1cb6c74edda91d7c53fd95cc4",
+        "source_fact:v1:4dde7ddfb7f036d0bc4c42e4415ae1dff0c6ff55ad8dfab1d6a1327dd28b8dbd",
+        "source_fact:v1:9a4f208e2d6ff6f289a687fd1af4fee68c3e94a17573c91a6c11567a311962f9"
+      ],
+      "source_published_kst": "2026-10-06T15:11+09:00",
+      "title": "\"중국 문샷, 내년 1분기 홍콩 상장 추진\""
+    },
     "link:ccef8d57c04d86df6d82534c": {
       "first_seen_kst": "2026-10-06T10:41:31+09:00",
       "lanes": {
@@ -34754,6 +34986,21 @@
       "link": "https://www.etnews.com/20261001000133",
       "source": "전자신문",
       "title": "슈퍼마이크로 'Vera Rubin NVL72' 출하 개시…디에스앤지, 국내 공급 준비 본격화"
+    },
+    "link:dbd3af2906063cae92ac31a4": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006136400061",
+      "source": "연합뉴스",
+      "source_body_digest": "2a0061b8f894184dbb30cfb618ecae36a2b6a0254848d1f04018232c93e9bcc2",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T15:30+09:00",
+      "title": "이현재 하남시장 \"2030년까지 10조원 투자 유치\" | 연합뉴스"
     },
     "link:dbeb89de670649614c287305": {
       "first_seen_kst": "2026-10-02T09:01:13+09:00",
@@ -36272,6 +36519,25 @@
       ],
       "source_published_kst": "2026-10-06T07:48+09:00",
       "title": "본사 곳간 찰 때 점주는 울었다…프랜차이즈 매출 양극화 심화"
+    },
+    "link:ecd905f523da543e0d3671f5": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814764",
+      "source": "뉴시스",
+      "source_body_digest": "5d606c567289d3e337c00bb0ff1319e571480ef7ed4d31fc9f87f438a6a9b44f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:70cf6393673fec9f0fe4970d2e05d1fbb4539df908ed4383582af5a49f14ed54",
+      "source_fact_keys": [
+        "source_fact:v1:5789507f8956a3c398b812c082e3694eb6ea8458357215929c71371b31c16244",
+        "source_fact:v1:69e45acd6d850dba9b7d9953b155d3b9638d9af4d90cd8daf5d00be7f6868af3",
+        "source_fact:v1:f86b04bd94651e9de0852b6b1c6af548739328a8d77aa71a79c7292ebdf3e13a"
+      ],
+      "source_published_kst": "2026-10-06T09:53+09:00",
+      "title": "예멘 후티군 사우디 전역 미사일 무인기공격.. 사우디 군은 홍해 승리 주장"
     },
     "link:ecfb3b826666e3a576fce80f": {
       "first_seen_kst": "2026-10-01T16:14:13+09:00",
@@ -40571,6 +40837,34 @@
       "source": "전자신문",
       "title": "[AINEX 2026] 이경한 서울대 교수 “피지컬 AI 승부처는 로봇 아닌 네트워크 시스템”"
     },
+    "original:1ec56b3aca5e08dafa0f259a": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815275",
+      "source": "뉴시스",
+      "source_body_digest": "364d4ef6d6b51375f8ab42cf770fd08ac0ee929b29a8d25e5a5bd5f930058f62",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:714fd558607328d8eb73949a0ecfe9f1f531addc5f64eb0c6d0e6d8fd5348ed3",
+      "source_fact_keys": [
+        "source_fact:v1:23aff97f7ac1e0733180039fc6a8abe8231af33a1407e2e9a7621e29be27d1be",
+        "source_fact:v1:374a3bb2526d49cca2c3a6dca106e7584bc849d2b4c028f973d5fe55148b7aac",
+        "source_fact:v1:4a4d95a4123be236db511aa279e7bf60fa6a7de25dfeab7ea25f9d24d4878cff",
+        "source_fact:v1:674cc7e8bffa068c6f1c291fccb7e68b88150c50ee5cf794b7255ca440a586d4",
+        "source_fact:v1:67c9001490300e5789bc7d9a70c43cebf137af47a29ae7efb24be78dd4e02589",
+        "source_fact:v1:800b90e45870a6cc799e77432cd1611812055d0b96ab9a383182860a443fe794",
+        "source_fact:v1:a674bc725745711dde701b35fda14735ff4bc966357bb89e6db2368ab63ac358",
+        "source_fact:v1:afc478060f8d846bce51886b09acfcb88efe6d043940b58a069c40b4dc58a5bb",
+        "source_fact:v1:c77ac932372ad7923d52ab9540ee011de5233d7b73f365b99f6c0b09333342c2",
+        "source_fact:v1:ea98278b4ad3b7bbb8621352408135e6483220b55423b065881fd668e2793652",
+        "source_fact:v1:fba47ffc6a83bbd1fe943dbdf0f3dcad4a4382dcab18ff6ef7e7f03092f5c801",
+        "source_fact:v1:fdca020f029a8701b2352ef988c44ea1e1160f56cba140c655774f89094db10b"
+      ],
+      "source_published_kst": "2026-10-06T15:34+09:00",
+      "title": "\"세계 3위 車시장서 월 최대 판매\" 현대차, 푸네공장 앞세워 '인도 공략' 속도"
+    },
     "original:1ef2d6a32f5508c02ec4cfa9": {
       "first_seen_kst": "2026-10-01T21:12:25+09:00",
       "lanes": {
@@ -43896,6 +44190,21 @@
       "link": "https://www.yna.co.kr/view/AKR20260918078100030",
       "source": "연합뉴스",
       "title": "한섬, 2028년까지 매년 100억원 자사주 매입·소각 | 연합뉴스"
+    },
+    "original:421ddd6807672b84b7ed1928": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006136400061",
+      "source": "연합뉴스",
+      "source_body_digest": "2a0061b8f894184dbb30cfb618ecae36a2b6a0254848d1f04018232c93e9bcc2",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T15:30+09:00",
+      "title": "이현재 하남시장 \"2030년까지 10조원 투자 유치\" | 연합뉴스"
     },
     "original:42207c0a6c842d828a374066": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
@@ -49134,6 +49443,25 @@
       "source": "연합뉴스",
       "title": "\"10주만 사줘\"…다올증권, AI-증권계좌 연결 서비스 출시 | 연합뉴스"
     },
+    "original:7c670079c735e674746e698c": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814764",
+      "source": "뉴시스",
+      "source_body_digest": "5d606c567289d3e337c00bb0ff1319e571480ef7ed4d31fc9f87f438a6a9b44f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:70cf6393673fec9f0fe4970d2e05d1fbb4539df908ed4383582af5a49f14ed54",
+      "source_fact_keys": [
+        "source_fact:v1:5789507f8956a3c398b812c082e3694eb6ea8458357215929c71371b31c16244",
+        "source_fact:v1:69e45acd6d850dba9b7d9953b155d3b9638d9af4d90cd8daf5d00be7f6868af3",
+        "source_fact:v1:f86b04bd94651e9de0852b6b1c6af548739328a8d77aa71a79c7292ebdf3e13a"
+      ],
+      "source_published_kst": "2026-10-06T09:53+09:00",
+      "title": "예멘 후티군 사우디 전역 미사일 무인기공격.. 사우디 군은 홍해 승리 주장"
+    },
     "original:7c867791cf77cc5b3a04d601": {
       "first_seen_kst": "2026-10-06T01:51:09+09:00",
       "lanes": {
@@ -49279,6 +49607,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T11:19+09:00",
       "title": "LGU+, 구독 플랫폼 '유독'에 해외 AI 서비스 순차 확대"
+    },
+    "original:7dcfd6ec36668c12b45b5373": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610065836b",
+      "source": "한국경제",
+      "source_body_digest": "1e829a5ce9104de27f60a5be43990303f7b29f02ead0ea2ae794e6bbbefb5b53",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:624b800e2787e22dca5a43efbf96e61e4913d7a8d0b164a24d78fcaf2ec7c82b",
+      "source_fact_keys": [
+        "source_fact:v1:6b916655831cd41d82412a986c384e7aed409a75e9eb18792e73fb8873dd246e"
+      ],
+      "source_published_kst": "2026-10-06T15:25+09:00",
+      "title": "유류세 5년 인하…“온실가스 400만t 감축 기회 놓쳤다”"
     },
     "original:7df766796137bc5eba6604cd": {
       "first_seen_kst": "2026-10-05T20:38:34+09:00",
@@ -50022,6 +50367,29 @@
       "link": "https://www.etnews.com/20260918000098",
       "source": "전자신문",
       "title": "[테크 차이나] 교수를 기업 기술책임자로 보낸다…중국 '과학기술 부사장' 실험"
+    },
+    "original:8847672516aee4859c40e97c": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815838",
+      "source": "뉴시스",
+      "source_body_digest": "8d5a42f62f579b7165be262dbb2b9eb2dff1024f698986f273ecc2f878e4eb8b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5f2ad3508f4e1511bef7d30d13dce2e57cc573ec050f5af602deb6352173c62",
+      "source_fact_keys": [
+        "source_fact:v1:22d3eb90a08b0c909729a71d1624eec5a6a84c2bdbc968546d66beea0c33f013",
+        "source_fact:v1:2948a764b96f2659f2e833fadf6fff54204005995725bbde8598dc57485b6ca8",
+        "source_fact:v1:59fb7ba8954c9626de1507092c1cb457ea98347d296f9dbb8e4c59c6d18d9f25",
+        "source_fact:v1:6ba08ee70565e6775f10b1616d44b1f2dbe77c4393f8e50120cecf971a662e6f",
+        "source_fact:v1:8b0e28d88ddd97c8857a06c4ae40ed8038a41a2f3fdfc9bc3d7486ec93a5ad96",
+        "source_fact:v1:a125c5a3e179b5490ef900b42c67e5c244d8d42766830a216be2186cc551e397",
+        "source_fact:v1:c8ab7dd0c88ea97461015599929f934fedbb7957336aa2c407e7bd2910987c31"
+      ],
+      "source_published_kst": "2026-10-06T17:22+09:00",
+      "title": "김성환 \"호남 반도체 팹 9개 되면 전력 약 14GW 필요\""
     },
     "original:886716729aa97531a6c576fb": {
       "first_seen_kst": "2026-10-02T17:34:05+09:00",
@@ -52324,6 +52692,23 @@
       "link": "https://www.yna.co.kr/view/AKR20260930194151072",
       "source": "연합뉴스",
       "title": "美 8월 PCE 물가 3.4%↑…전망 밑돌며 10월 금리인상 부담 완화(종합) | 연합뉴스"
+    },
+    "original:9ff725b5ae262b019188207a": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815841",
+      "source": "뉴시스",
+      "source_body_digest": "4b9c260f7e114ebea9b4044f23e7050d22a8e830e130a087c0e3516bd15e3f41",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:54341020f58c73b7f7a76a380a264cd105f1ae34bd3aff3abb09584f081c8b66",
+      "source_fact_keys": [
+        "source_fact:v1:62616584695cf5ea3763da8f4f547be21836c0af3b03dbe02d7fb26bede0f41d"
+      ],
+      "source_published_kst": "2026-10-06T15:32+09:00",
+      "title": "빙판·모래판 스타들, 의성 알리는 홍보대사 됐다"
     },
     "original:a0a770aa5d7b6bd3e8096fa8": {
       "first_seen_kst": "2026-10-02T23:58:50+09:00",
@@ -58666,6 +59051,28 @@
       "source": "조선비즈",
       "title": "한국벤처투자, 아모레퍼시픽홀딩스와 화장품 기업 육성 맞손"
     },
+    "original:e8e0c106c375fe350dc5866a": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170309",
+      "source": "매일경제",
+      "source_body_digest": "231a139842f2bb1bd997f07956ee874e4f31f2791a744e6f3d9d6b531c9d5eab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a4d28035ad99e7faa19de1a8628173fac031b7499bdfaf35f31967cdb55fc15",
+      "source_fact_keys": [
+        "source_fact:v1:1a7c062cbe7338a0452eb78d6081324b06634818c380a85f78e1af2042752537",
+        "source_fact:v1:272339fde78935a18bbc05a7f7bcf860719d0b41c8375736c92798f91fd8bc83",
+        "source_fact:v1:3987774bf9261c886ff92582c52ab69c368a14616631d0092bdd30894c046614",
+        "source_fact:v1:4551f3296a1d6115aa55a95ebd12ee91232716d1cb6c74edda91d7c53fd95cc4",
+        "source_fact:v1:4dde7ddfb7f036d0bc4c42e4415ae1dff0c6ff55ad8dfab1d6a1327dd28b8dbd",
+        "source_fact:v1:9a4f208e2d6ff6f289a687fd1af4fee68c3e94a17573c91a6c11567a311962f9"
+      ],
+      "source_published_kst": "2026-10-06T15:11+09:00",
+      "title": "\"중국 문샷, 내년 1분기 홍콩 상장 추진\""
+    },
     "original:e8f45ad22440f71296ad1c26": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
       "lanes": {
@@ -61590,6 +61997,23 @@
       "source_published_kst": "2026-10-05T21:05+09:00",
       "title": "SS 이노베이션스 인터내셔, 2분기 매출 1390만 달러 39%↑·영업적자 전환"
     },
+    "source_fact:067785a8c3f7e7e4f44c3906": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610065836b",
+      "source": "한국경제",
+      "source_body_digest": "1e829a5ce9104de27f60a5be43990303f7b29f02ead0ea2ae794e6bbbefb5b53",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:624b800e2787e22dca5a43efbf96e61e4913d7a8d0b164a24d78fcaf2ec7c82b",
+      "source_fact_keys": [
+        "source_fact:v1:6b916655831cd41d82412a986c384e7aed409a75e9eb18792e73fb8873dd246e"
+      ],
+      "source_published_kst": "2026-10-06T15:25+09:00",
+      "title": "유류세 5년 인하…“온실가스 400만t 감축 기회 놓쳤다”"
+    },
     "source_fact:06b7620e042aec29bad2e654": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
       "lanes": {
@@ -63570,6 +63994,29 @@
       ],
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "외국인·명품 소비에 비용 절감까지…백화점 3사, 3분기 실적 ‘청신호’"
+    },
+    "source_fact:1327ee7960a4782f20731a38": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815838",
+      "source": "뉴시스",
+      "source_body_digest": "8d5a42f62f579b7165be262dbb2b9eb2dff1024f698986f273ecc2f878e4eb8b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5f2ad3508f4e1511bef7d30d13dce2e57cc573ec050f5af602deb6352173c62",
+      "source_fact_keys": [
+        "source_fact:v1:22d3eb90a08b0c909729a71d1624eec5a6a84c2bdbc968546d66beea0c33f013",
+        "source_fact:v1:2948a764b96f2659f2e833fadf6fff54204005995725bbde8598dc57485b6ca8",
+        "source_fact:v1:59fb7ba8954c9626de1507092c1cb457ea98347d296f9dbb8e4c59c6d18d9f25",
+        "source_fact:v1:6ba08ee70565e6775f10b1616d44b1f2dbe77c4393f8e50120cecf971a662e6f",
+        "source_fact:v1:8b0e28d88ddd97c8857a06c4ae40ed8038a41a2f3fdfc9bc3d7486ec93a5ad96",
+        "source_fact:v1:a125c5a3e179b5490ef900b42c67e5c244d8d42766830a216be2186cc551e397",
+        "source_fact:v1:c8ab7dd0c88ea97461015599929f934fedbb7957336aa2c407e7bd2910987c31"
+      ],
+      "source_published_kst": "2026-10-06T17:22+09:00",
+      "title": "김성환 \"호남 반도체 팹 9개 되면 전력 약 14GW 필요\""
     },
     "source_fact:133e9cb9a8a1f205ae4ce682": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -68695,6 +69142,29 @@
       "source_published_kst": "2026-10-06T15:10+09:00",
       "title": "파운드리發 반도체값 도미노 인상 예고…TSMC, 내년 파운드리 단가 10% 올린다"
     },
+    "source_fact:35dfbe20aa6dd465bb36592c": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815838",
+      "source": "뉴시스",
+      "source_body_digest": "8d5a42f62f579b7165be262dbb2b9eb2dff1024f698986f273ecc2f878e4eb8b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5f2ad3508f4e1511bef7d30d13dce2e57cc573ec050f5af602deb6352173c62",
+      "source_fact_keys": [
+        "source_fact:v1:22d3eb90a08b0c909729a71d1624eec5a6a84c2bdbc968546d66beea0c33f013",
+        "source_fact:v1:2948a764b96f2659f2e833fadf6fff54204005995725bbde8598dc57485b6ca8",
+        "source_fact:v1:59fb7ba8954c9626de1507092c1cb457ea98347d296f9dbb8e4c59c6d18d9f25",
+        "source_fact:v1:6ba08ee70565e6775f10b1616d44b1f2dbe77c4393f8e50120cecf971a662e6f",
+        "source_fact:v1:8b0e28d88ddd97c8857a06c4ae40ed8038a41a2f3fdfc9bc3d7486ec93a5ad96",
+        "source_fact:v1:a125c5a3e179b5490ef900b42c67e5c244d8d42766830a216be2186cc551e397",
+        "source_fact:v1:c8ab7dd0c88ea97461015599929f934fedbb7957336aa2c407e7bd2910987c31"
+      ],
+      "source_published_kst": "2026-10-06T17:22+09:00",
+      "title": "김성환 \"호남 반도체 팹 9개 되면 전력 약 14GW 필요\""
+    },
     "source_fact:36126b9a96d5bd42e7252ef3": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
       "lanes": {
@@ -69180,6 +69650,28 @@
       ],
       "source_published_kst": "2026-10-06T14:11+09:00",
       "title": "장기임대 늘리겠다는데⋯기업형 임대는 여전히 ‘사업성 벽’"
+    },
+    "source_fact:38c26b857aff57666e72e95e": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170309",
+      "source": "매일경제",
+      "source_body_digest": "231a139842f2bb1bd997f07956ee874e4f31f2791a744e6f3d9d6b531c9d5eab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a4d28035ad99e7faa19de1a8628173fac031b7499bdfaf35f31967cdb55fc15",
+      "source_fact_keys": [
+        "source_fact:v1:1a7c062cbe7338a0452eb78d6081324b06634818c380a85f78e1af2042752537",
+        "source_fact:v1:272339fde78935a18bbc05a7f7bcf860719d0b41c8375736c92798f91fd8bc83",
+        "source_fact:v1:3987774bf9261c886ff92582c52ab69c368a14616631d0092bdd30894c046614",
+        "source_fact:v1:4551f3296a1d6115aa55a95ebd12ee91232716d1cb6c74edda91d7c53fd95cc4",
+        "source_fact:v1:4dde7ddfb7f036d0bc4c42e4415ae1dff0c6ff55ad8dfab1d6a1327dd28b8dbd",
+        "source_fact:v1:9a4f208e2d6ff6f289a687fd1af4fee68c3e94a17573c91a6c11567a311962f9"
+      ],
+      "source_published_kst": "2026-10-06T15:11+09:00",
+      "title": "\"중국 문샷, 내년 1분기 홍콩 상장 추진\""
     },
     "source_fact:38d284f6cc76ab76c45b7a95": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -70248,6 +70740,29 @@
       ],
       "source_published_kst": "2026-10-06T01:21+09:00",
       "title": "페라리, 자사주 2600만 유로 매입..3차 한도 41% 소진"
+    },
+    "source_fact:40a6eedec63bb2d4c6d8abef": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815838",
+      "source": "뉴시스",
+      "source_body_digest": "8d5a42f62f579b7165be262dbb2b9eb2dff1024f698986f273ecc2f878e4eb8b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5f2ad3508f4e1511bef7d30d13dce2e57cc573ec050f5af602deb6352173c62",
+      "source_fact_keys": [
+        "source_fact:v1:22d3eb90a08b0c909729a71d1624eec5a6a84c2bdbc968546d66beea0c33f013",
+        "source_fact:v1:2948a764b96f2659f2e833fadf6fff54204005995725bbde8598dc57485b6ca8",
+        "source_fact:v1:59fb7ba8954c9626de1507092c1cb457ea98347d296f9dbb8e4c59c6d18d9f25",
+        "source_fact:v1:6ba08ee70565e6775f10b1616d44b1f2dbe77c4393f8e50120cecf971a662e6f",
+        "source_fact:v1:8b0e28d88ddd97c8857a06c4ae40ed8038a41a2f3fdfc9bc3d7486ec93a5ad96",
+        "source_fact:v1:a125c5a3e179b5490ef900b42c67e5c244d8d42766830a216be2186cc551e397",
+        "source_fact:v1:c8ab7dd0c88ea97461015599929f934fedbb7957336aa2c407e7bd2910987c31"
+      ],
+      "source_published_kst": "2026-10-06T17:22+09:00",
+      "title": "김성환 \"호남 반도체 팹 9개 되면 전력 약 14GW 필요\""
     },
     "source_fact:40ef0773a97118286e63703e": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
@@ -71836,6 +72351,29 @@
       "source_published_kst": "2026-10-06T15:19+09:00",
       "title": "삼성전자 덜고 하이닉스 담는 ETF…8일 반도체주 수급 분기점"
     },
+    "source_fact:49dca27c0a0d4628789418ca": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815838",
+      "source": "뉴시스",
+      "source_body_digest": "8d5a42f62f579b7165be262dbb2b9eb2dff1024f698986f273ecc2f878e4eb8b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5f2ad3508f4e1511bef7d30d13dce2e57cc573ec050f5af602deb6352173c62",
+      "source_fact_keys": [
+        "source_fact:v1:22d3eb90a08b0c909729a71d1624eec5a6a84c2bdbc968546d66beea0c33f013",
+        "source_fact:v1:2948a764b96f2659f2e833fadf6fff54204005995725bbde8598dc57485b6ca8",
+        "source_fact:v1:59fb7ba8954c9626de1507092c1cb457ea98347d296f9dbb8e4c59c6d18d9f25",
+        "source_fact:v1:6ba08ee70565e6775f10b1616d44b1f2dbe77c4393f8e50120cecf971a662e6f",
+        "source_fact:v1:8b0e28d88ddd97c8857a06c4ae40ed8038a41a2f3fdfc9bc3d7486ec93a5ad96",
+        "source_fact:v1:a125c5a3e179b5490ef900b42c67e5c244d8d42766830a216be2186cc551e397",
+        "source_fact:v1:c8ab7dd0c88ea97461015599929f934fedbb7957336aa2c407e7bd2910987c31"
+      ],
+      "source_published_kst": "2026-10-06T17:22+09:00",
+      "title": "김성환 \"호남 반도체 팹 9개 되면 전력 약 14GW 필요\""
+    },
     "source_fact:4a0f793738da597ec14bbb40": {
       "first_seen_kst": "2026-10-06T15:14:29+09:00",
       "lanes": {
@@ -72035,6 +72573,34 @@
       "source_published_kst": "2026-10-05T11:20+09:00",
       "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
     },
+    "source_fact:4b2927b14eaf4dec35f3df67": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815275",
+      "source": "뉴시스",
+      "source_body_digest": "364d4ef6d6b51375f8ab42cf770fd08ac0ee929b29a8d25e5a5bd5f930058f62",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:714fd558607328d8eb73949a0ecfe9f1f531addc5f64eb0c6d0e6d8fd5348ed3",
+      "source_fact_keys": [
+        "source_fact:v1:23aff97f7ac1e0733180039fc6a8abe8231af33a1407e2e9a7621e29be27d1be",
+        "source_fact:v1:374a3bb2526d49cca2c3a6dca106e7584bc849d2b4c028f973d5fe55148b7aac",
+        "source_fact:v1:4a4d95a4123be236db511aa279e7bf60fa6a7de25dfeab7ea25f9d24d4878cff",
+        "source_fact:v1:674cc7e8bffa068c6f1c291fccb7e68b88150c50ee5cf794b7255ca440a586d4",
+        "source_fact:v1:67c9001490300e5789bc7d9a70c43cebf137af47a29ae7efb24be78dd4e02589",
+        "source_fact:v1:800b90e45870a6cc799e77432cd1611812055d0b96ab9a383182860a443fe794",
+        "source_fact:v1:a674bc725745711dde701b35fda14735ff4bc966357bb89e6db2368ab63ac358",
+        "source_fact:v1:afc478060f8d846bce51886b09acfcb88efe6d043940b58a069c40b4dc58a5bb",
+        "source_fact:v1:c77ac932372ad7923d52ab9540ee011de5233d7b73f365b99f6c0b09333342c2",
+        "source_fact:v1:ea98278b4ad3b7bbb8621352408135e6483220b55423b065881fd668e2793652",
+        "source_fact:v1:fba47ffc6a83bbd1fe943dbdf0f3dcad4a4382dcab18ff6ef7e7f03092f5c801",
+        "source_fact:v1:fdca020f029a8701b2352ef988c44ea1e1160f56cba140c655774f89094db10b"
+      ],
+      "source_published_kst": "2026-10-06T15:34+09:00",
+      "title": "\"세계 3위 車시장서 월 최대 판매\" 현대차, 푸네공장 앞세워 '인도 공략' 속도"
+    },
     "source_fact:4b31396fc52fab592a39d6bb": {
       "first_seen_kst": "2026-10-06T17:24:43+09:00",
       "lanes": {
@@ -72105,6 +72671,23 @@
       ],
       "source_published_kst": "2026-10-05T11:25+09:00",
       "title": "사우디, 11월 아시아 공급용 원유가 대폭 인하 | 연합뉴스"
+    },
+    "source_fact:4bbf0c2e05a5c76862d499ee": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815841",
+      "source": "뉴시스",
+      "source_body_digest": "4b9c260f7e114ebea9b4044f23e7050d22a8e830e130a087c0e3516bd15e3f41",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:54341020f58c73b7f7a76a380a264cd105f1ae34bd3aff3abb09584f081c8b66",
+      "source_fact_keys": [
+        "source_fact:v1:62616584695cf5ea3763da8f4f547be21836c0af3b03dbe02d7fb26bede0f41d"
+      ],
+      "source_published_kst": "2026-10-06T15:32+09:00",
+      "title": "빙판·모래판 스타들, 의성 알리는 홍보대사 됐다"
     },
     "source_fact:4c16ce9737ff51ee00f41088": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
@@ -72338,6 +72921,34 @@
       "source_published_kst": "2026-10-06T04:36+09:00",
       "title": "美10년물 국채금리 장중 5.34% 돌파…24년 만에 최고"
     },
+    "source_fact:4e155ab5339f0dd3bb90908e": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815275",
+      "source": "뉴시스",
+      "source_body_digest": "364d4ef6d6b51375f8ab42cf770fd08ac0ee929b29a8d25e5a5bd5f930058f62",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:714fd558607328d8eb73949a0ecfe9f1f531addc5f64eb0c6d0e6d8fd5348ed3",
+      "source_fact_keys": [
+        "source_fact:v1:23aff97f7ac1e0733180039fc6a8abe8231af33a1407e2e9a7621e29be27d1be",
+        "source_fact:v1:374a3bb2526d49cca2c3a6dca106e7584bc849d2b4c028f973d5fe55148b7aac",
+        "source_fact:v1:4a4d95a4123be236db511aa279e7bf60fa6a7de25dfeab7ea25f9d24d4878cff",
+        "source_fact:v1:674cc7e8bffa068c6f1c291fccb7e68b88150c50ee5cf794b7255ca440a586d4",
+        "source_fact:v1:67c9001490300e5789bc7d9a70c43cebf137af47a29ae7efb24be78dd4e02589",
+        "source_fact:v1:800b90e45870a6cc799e77432cd1611812055d0b96ab9a383182860a443fe794",
+        "source_fact:v1:a674bc725745711dde701b35fda14735ff4bc966357bb89e6db2368ab63ac358",
+        "source_fact:v1:afc478060f8d846bce51886b09acfcb88efe6d043940b58a069c40b4dc58a5bb",
+        "source_fact:v1:c77ac932372ad7923d52ab9540ee011de5233d7b73f365b99f6c0b09333342c2",
+        "source_fact:v1:ea98278b4ad3b7bbb8621352408135e6483220b55423b065881fd668e2793652",
+        "source_fact:v1:fba47ffc6a83bbd1fe943dbdf0f3dcad4a4382dcab18ff6ef7e7f03092f5c801",
+        "source_fact:v1:fdca020f029a8701b2352ef988c44ea1e1160f56cba140c655774f89094db10b"
+      ],
+      "source_published_kst": "2026-10-06T15:34+09:00",
+      "title": "\"세계 3위 車시장서 월 최대 판매\" 현대차, 푸네공장 앞세워 '인도 공략' 속도"
+    },
     "source_fact:4e26ef99c9565c3f747bb60b": {
       "first_seen_kst": "2026-10-06T00:18:21+09:00",
       "lanes": {
@@ -72546,6 +73157,28 @@
       ],
       "source_published_kst": "2026-10-05T18:21+09:00",
       "title": "솔리다임 美상장… \"SK하닉 가치 재평가\" vs \"주주 피해\" [어떻게 생각하십니까]"
+    },
+    "source_fact:4edd0a81381743fbf70b941a": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170309",
+      "source": "매일경제",
+      "source_body_digest": "231a139842f2bb1bd997f07956ee874e4f31f2791a744e6f3d9d6b531c9d5eab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a4d28035ad99e7faa19de1a8628173fac031b7499bdfaf35f31967cdb55fc15",
+      "source_fact_keys": [
+        "source_fact:v1:1a7c062cbe7338a0452eb78d6081324b06634818c380a85f78e1af2042752537",
+        "source_fact:v1:272339fde78935a18bbc05a7f7bcf860719d0b41c8375736c92798f91fd8bc83",
+        "source_fact:v1:3987774bf9261c886ff92582c52ab69c368a14616631d0092bdd30894c046614",
+        "source_fact:v1:4551f3296a1d6115aa55a95ebd12ee91232716d1cb6c74edda91d7c53fd95cc4",
+        "source_fact:v1:4dde7ddfb7f036d0bc4c42e4415ae1dff0c6ff55ad8dfab1d6a1327dd28b8dbd",
+        "source_fact:v1:9a4f208e2d6ff6f289a687fd1af4fee68c3e94a17573c91a6c11567a311962f9"
+      ],
+      "source_published_kst": "2026-10-06T15:11+09:00",
+      "title": "\"중국 문샷, 내년 1분기 홍콩 상장 추진\""
     },
     "source_fact:4ef8c74c284dcf1a79a83977": {
       "first_seen_kst": "2026-10-06T17:24:43+09:00",
@@ -73813,6 +74446,34 @@
       ],
       "source_published_kst": "2026-10-05T17:23+09:00",
       "title": "AI 해킹 확산에 'AI 방패' 꺼낸 금융당국…'망분리 완화' 해법 될 수 있나"
+    },
+    "source_fact:57fe7ce4a5a7129613e52ba5": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815275",
+      "source": "뉴시스",
+      "source_body_digest": "364d4ef6d6b51375f8ab42cf770fd08ac0ee929b29a8d25e5a5bd5f930058f62",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:714fd558607328d8eb73949a0ecfe9f1f531addc5f64eb0c6d0e6d8fd5348ed3",
+      "source_fact_keys": [
+        "source_fact:v1:23aff97f7ac1e0733180039fc6a8abe8231af33a1407e2e9a7621e29be27d1be",
+        "source_fact:v1:374a3bb2526d49cca2c3a6dca106e7584bc849d2b4c028f973d5fe55148b7aac",
+        "source_fact:v1:4a4d95a4123be236db511aa279e7bf60fa6a7de25dfeab7ea25f9d24d4878cff",
+        "source_fact:v1:674cc7e8bffa068c6f1c291fccb7e68b88150c50ee5cf794b7255ca440a586d4",
+        "source_fact:v1:67c9001490300e5789bc7d9a70c43cebf137af47a29ae7efb24be78dd4e02589",
+        "source_fact:v1:800b90e45870a6cc799e77432cd1611812055d0b96ab9a383182860a443fe794",
+        "source_fact:v1:a674bc725745711dde701b35fda14735ff4bc966357bb89e6db2368ab63ac358",
+        "source_fact:v1:afc478060f8d846bce51886b09acfcb88efe6d043940b58a069c40b4dc58a5bb",
+        "source_fact:v1:c77ac932372ad7923d52ab9540ee011de5233d7b73f365b99f6c0b09333342c2",
+        "source_fact:v1:ea98278b4ad3b7bbb8621352408135e6483220b55423b065881fd668e2793652",
+        "source_fact:v1:fba47ffc6a83bbd1fe943dbdf0f3dcad4a4382dcab18ff6ef7e7f03092f5c801",
+        "source_fact:v1:fdca020f029a8701b2352ef988c44ea1e1160f56cba140c655774f89094db10b"
+      ],
+      "source_published_kst": "2026-10-06T15:34+09:00",
+      "title": "\"세계 3위 車시장서 월 최대 판매\" 현대차, 푸네공장 앞세워 '인도 공략' 속도"
     },
     "source_fact:5805f6ba3c8d0f31782fb52c": {
       "first_seen_kst": "2026-10-06T16:30:27+09:00",
@@ -75553,6 +76214,34 @@
       "source_published_kst": "2026-10-06T07:07+09:00",
       "title": "스페이스X 주가 급등에 머스크 다시 조만장자 [마켓핫]"
     },
+    "source_fact:622164fb69cc304b2fb5cb8e": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815275",
+      "source": "뉴시스",
+      "source_body_digest": "364d4ef6d6b51375f8ab42cf770fd08ac0ee929b29a8d25e5a5bd5f930058f62",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:714fd558607328d8eb73949a0ecfe9f1f531addc5f64eb0c6d0e6d8fd5348ed3",
+      "source_fact_keys": [
+        "source_fact:v1:23aff97f7ac1e0733180039fc6a8abe8231af33a1407e2e9a7621e29be27d1be",
+        "source_fact:v1:374a3bb2526d49cca2c3a6dca106e7584bc849d2b4c028f973d5fe55148b7aac",
+        "source_fact:v1:4a4d95a4123be236db511aa279e7bf60fa6a7de25dfeab7ea25f9d24d4878cff",
+        "source_fact:v1:674cc7e8bffa068c6f1c291fccb7e68b88150c50ee5cf794b7255ca440a586d4",
+        "source_fact:v1:67c9001490300e5789bc7d9a70c43cebf137af47a29ae7efb24be78dd4e02589",
+        "source_fact:v1:800b90e45870a6cc799e77432cd1611812055d0b96ab9a383182860a443fe794",
+        "source_fact:v1:a674bc725745711dde701b35fda14735ff4bc966357bb89e6db2368ab63ac358",
+        "source_fact:v1:afc478060f8d846bce51886b09acfcb88efe6d043940b58a069c40b4dc58a5bb",
+        "source_fact:v1:c77ac932372ad7923d52ab9540ee011de5233d7b73f365b99f6c0b09333342c2",
+        "source_fact:v1:ea98278b4ad3b7bbb8621352408135e6483220b55423b065881fd668e2793652",
+        "source_fact:v1:fba47ffc6a83bbd1fe943dbdf0f3dcad4a4382dcab18ff6ef7e7f03092f5c801",
+        "source_fact:v1:fdca020f029a8701b2352ef988c44ea1e1160f56cba140c655774f89094db10b"
+      ],
+      "source_published_kst": "2026-10-06T15:34+09:00",
+      "title": "\"세계 3위 車시장서 월 최대 판매\" 현대차, 푸네공장 앞세워 '인도 공략' 속도"
+    },
     "source_fact:6248e730851067c78e4809ea": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
       "lanes": {
@@ -75939,6 +76628,28 @@
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
     },
+    "source_fact:64ded78170812ba84a80aedd": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170309",
+      "source": "매일경제",
+      "source_body_digest": "231a139842f2bb1bd997f07956ee874e4f31f2791a744e6f3d9d6b531c9d5eab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a4d28035ad99e7faa19de1a8628173fac031b7499bdfaf35f31967cdb55fc15",
+      "source_fact_keys": [
+        "source_fact:v1:1a7c062cbe7338a0452eb78d6081324b06634818c380a85f78e1af2042752537",
+        "source_fact:v1:272339fde78935a18bbc05a7f7bcf860719d0b41c8375736c92798f91fd8bc83",
+        "source_fact:v1:3987774bf9261c886ff92582c52ab69c368a14616631d0092bdd30894c046614",
+        "source_fact:v1:4551f3296a1d6115aa55a95ebd12ee91232716d1cb6c74edda91d7c53fd95cc4",
+        "source_fact:v1:4dde7ddfb7f036d0bc4c42e4415ae1dff0c6ff55ad8dfab1d6a1327dd28b8dbd",
+        "source_fact:v1:9a4f208e2d6ff6f289a687fd1af4fee68c3e94a17573c91a6c11567a311962f9"
+      ],
+      "source_published_kst": "2026-10-06T15:11+09:00",
+      "title": "\"중국 문샷, 내년 1분기 홍콩 상장 추진\""
+    },
     "source_fact:65177694dd8470e009a7c8af": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
       "lanes": {
@@ -76046,6 +76757,25 @@
       ],
       "source_published_kst": "2026-10-06T14:48+09:00",
       "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
+    },
+    "source_fact:663b982d7ed717d5a4f1b16d": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814764",
+      "source": "뉴시스",
+      "source_body_digest": "5d606c567289d3e337c00bb0ff1319e571480ef7ed4d31fc9f87f438a6a9b44f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:70cf6393673fec9f0fe4970d2e05d1fbb4539df908ed4383582af5a49f14ed54",
+      "source_fact_keys": [
+        "source_fact:v1:5789507f8956a3c398b812c082e3694eb6ea8458357215929c71371b31c16244",
+        "source_fact:v1:69e45acd6d850dba9b7d9953b155d3b9638d9af4d90cd8daf5d00be7f6868af3",
+        "source_fact:v1:f86b04bd94651e9de0852b6b1c6af548739328a8d77aa71a79c7292ebdf3e13a"
+      ],
+      "source_published_kst": "2026-10-06T09:53+09:00",
+      "title": "예멘 후티군 사우디 전역 미사일 무인기공격.. 사우디 군은 홍해 승리 주장"
     },
     "source_fact:665d55aaca459c962f621284": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
@@ -77252,6 +77982,25 @@
       "source_published_kst": "2026-10-05T09:00+09:00",
       "title": "순창군, 대학생 생활비 지원사업 전개…10월6~23일 접수"
     },
+    "source_fact:6de956e84a1a94fa6461ac9d": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814764",
+      "source": "뉴시스",
+      "source_body_digest": "5d606c567289d3e337c00bb0ff1319e571480ef7ed4d31fc9f87f438a6a9b44f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:70cf6393673fec9f0fe4970d2e05d1fbb4539df908ed4383582af5a49f14ed54",
+      "source_fact_keys": [
+        "source_fact:v1:5789507f8956a3c398b812c082e3694eb6ea8458357215929c71371b31c16244",
+        "source_fact:v1:69e45acd6d850dba9b7d9953b155d3b9638d9af4d90cd8daf5d00be7f6868af3",
+        "source_fact:v1:f86b04bd94651e9de0852b6b1c6af548739328a8d77aa71a79c7292ebdf3e13a"
+      ],
+      "source_published_kst": "2026-10-06T09:53+09:00",
+      "title": "예멘 후티군 사우디 전역 미사일 무인기공격.. 사우디 군은 홍해 승리 주장"
+    },
     "source_fact:6df443b457005ffb85d69654": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
       "lanes": {
@@ -77810,6 +78559,34 @@
       ],
       "source_published_kst": "2026-10-06T10:44+09:00",
       "title": "엑시나, 포트래이와 CXL 기반 바이오 데이터 인프라 구축 '맞손'"
+    },
+    "source_fact:7136f283eec92274961207a3": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815275",
+      "source": "뉴시스",
+      "source_body_digest": "364d4ef6d6b51375f8ab42cf770fd08ac0ee929b29a8d25e5a5bd5f930058f62",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:714fd558607328d8eb73949a0ecfe9f1f531addc5f64eb0c6d0e6d8fd5348ed3",
+      "source_fact_keys": [
+        "source_fact:v1:23aff97f7ac1e0733180039fc6a8abe8231af33a1407e2e9a7621e29be27d1be",
+        "source_fact:v1:374a3bb2526d49cca2c3a6dca106e7584bc849d2b4c028f973d5fe55148b7aac",
+        "source_fact:v1:4a4d95a4123be236db511aa279e7bf60fa6a7de25dfeab7ea25f9d24d4878cff",
+        "source_fact:v1:674cc7e8bffa068c6f1c291fccb7e68b88150c50ee5cf794b7255ca440a586d4",
+        "source_fact:v1:67c9001490300e5789bc7d9a70c43cebf137af47a29ae7efb24be78dd4e02589",
+        "source_fact:v1:800b90e45870a6cc799e77432cd1611812055d0b96ab9a383182860a443fe794",
+        "source_fact:v1:a674bc725745711dde701b35fda14735ff4bc966357bb89e6db2368ab63ac358",
+        "source_fact:v1:afc478060f8d846bce51886b09acfcb88efe6d043940b58a069c40b4dc58a5bb",
+        "source_fact:v1:c77ac932372ad7923d52ab9540ee011de5233d7b73f365b99f6c0b09333342c2",
+        "source_fact:v1:ea98278b4ad3b7bbb8621352408135e6483220b55423b065881fd668e2793652",
+        "source_fact:v1:fba47ffc6a83bbd1fe943dbdf0f3dcad4a4382dcab18ff6ef7e7f03092f5c801",
+        "source_fact:v1:fdca020f029a8701b2352ef988c44ea1e1160f56cba140c655774f89094db10b"
+      ],
+      "source_published_kst": "2026-10-06T15:34+09:00",
+      "title": "\"세계 3위 車시장서 월 최대 판매\" 현대차, 푸네공장 앞세워 '인도 공략' 속도"
     },
     "source_fact:714604805898407311bd5a31": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
@@ -78640,6 +79417,34 @@
       ],
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "AI株 숨고르기 반사익…美바이오 ETF 순풍"
+    },
+    "source_fact:75e04319e1eb9047ea0bfb9a": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815275",
+      "source": "뉴시스",
+      "source_body_digest": "364d4ef6d6b51375f8ab42cf770fd08ac0ee929b29a8d25e5a5bd5f930058f62",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:714fd558607328d8eb73949a0ecfe9f1f531addc5f64eb0c6d0e6d8fd5348ed3",
+      "source_fact_keys": [
+        "source_fact:v1:23aff97f7ac1e0733180039fc6a8abe8231af33a1407e2e9a7621e29be27d1be",
+        "source_fact:v1:374a3bb2526d49cca2c3a6dca106e7584bc849d2b4c028f973d5fe55148b7aac",
+        "source_fact:v1:4a4d95a4123be236db511aa279e7bf60fa6a7de25dfeab7ea25f9d24d4878cff",
+        "source_fact:v1:674cc7e8bffa068c6f1c291fccb7e68b88150c50ee5cf794b7255ca440a586d4",
+        "source_fact:v1:67c9001490300e5789bc7d9a70c43cebf137af47a29ae7efb24be78dd4e02589",
+        "source_fact:v1:800b90e45870a6cc799e77432cd1611812055d0b96ab9a383182860a443fe794",
+        "source_fact:v1:a674bc725745711dde701b35fda14735ff4bc966357bb89e6db2368ab63ac358",
+        "source_fact:v1:afc478060f8d846bce51886b09acfcb88efe6d043940b58a069c40b4dc58a5bb",
+        "source_fact:v1:c77ac932372ad7923d52ab9540ee011de5233d7b73f365b99f6c0b09333342c2",
+        "source_fact:v1:ea98278b4ad3b7bbb8621352408135e6483220b55423b065881fd668e2793652",
+        "source_fact:v1:fba47ffc6a83bbd1fe943dbdf0f3dcad4a4382dcab18ff6ef7e7f03092f5c801",
+        "source_fact:v1:fdca020f029a8701b2352ef988c44ea1e1160f56cba140c655774f89094db10b"
+      ],
+      "source_published_kst": "2026-10-06T15:34+09:00",
+      "title": "\"세계 3위 車시장서 월 최대 판매\" 현대차, 푸네공장 앞세워 '인도 공략' 속도"
     },
     "source_fact:75e34b797ee02ca8d0221568": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
@@ -80587,6 +81392,34 @@
       "source_published_kst": "2026-10-06T03:38+09:00",
       "title": "[美특징주]TSMC, 머스크 ‘테라팹’ 협력 논의 확인…주가 3%↑"
     },
+    "source_fact:8197d0a46f02b1daeb989b9c": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815275",
+      "source": "뉴시스",
+      "source_body_digest": "364d4ef6d6b51375f8ab42cf770fd08ac0ee929b29a8d25e5a5bd5f930058f62",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:714fd558607328d8eb73949a0ecfe9f1f531addc5f64eb0c6d0e6d8fd5348ed3",
+      "source_fact_keys": [
+        "source_fact:v1:23aff97f7ac1e0733180039fc6a8abe8231af33a1407e2e9a7621e29be27d1be",
+        "source_fact:v1:374a3bb2526d49cca2c3a6dca106e7584bc849d2b4c028f973d5fe55148b7aac",
+        "source_fact:v1:4a4d95a4123be236db511aa279e7bf60fa6a7de25dfeab7ea25f9d24d4878cff",
+        "source_fact:v1:674cc7e8bffa068c6f1c291fccb7e68b88150c50ee5cf794b7255ca440a586d4",
+        "source_fact:v1:67c9001490300e5789bc7d9a70c43cebf137af47a29ae7efb24be78dd4e02589",
+        "source_fact:v1:800b90e45870a6cc799e77432cd1611812055d0b96ab9a383182860a443fe794",
+        "source_fact:v1:a674bc725745711dde701b35fda14735ff4bc966357bb89e6db2368ab63ac358",
+        "source_fact:v1:afc478060f8d846bce51886b09acfcb88efe6d043940b58a069c40b4dc58a5bb",
+        "source_fact:v1:c77ac932372ad7923d52ab9540ee011de5233d7b73f365b99f6c0b09333342c2",
+        "source_fact:v1:ea98278b4ad3b7bbb8621352408135e6483220b55423b065881fd668e2793652",
+        "source_fact:v1:fba47ffc6a83bbd1fe943dbdf0f3dcad4a4382dcab18ff6ef7e7f03092f5c801",
+        "source_fact:v1:fdca020f029a8701b2352ef988c44ea1e1160f56cba140c655774f89094db10b"
+      ],
+      "source_published_kst": "2026-10-06T15:34+09:00",
+      "title": "\"세계 3위 車시장서 월 최대 판매\" 현대차, 푸네공장 앞세워 '인도 공략' 속도"
+    },
     "source_fact:81cb522c43110890b1db56e5": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
       "lanes": {
@@ -82199,6 +83032,34 @@
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
     },
+    "source_fact:8c9359b31e5f11ab9e872cf5": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815275",
+      "source": "뉴시스",
+      "source_body_digest": "364d4ef6d6b51375f8ab42cf770fd08ac0ee929b29a8d25e5a5bd5f930058f62",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:714fd558607328d8eb73949a0ecfe9f1f531addc5f64eb0c6d0e6d8fd5348ed3",
+      "source_fact_keys": [
+        "source_fact:v1:23aff97f7ac1e0733180039fc6a8abe8231af33a1407e2e9a7621e29be27d1be",
+        "source_fact:v1:374a3bb2526d49cca2c3a6dca106e7584bc849d2b4c028f973d5fe55148b7aac",
+        "source_fact:v1:4a4d95a4123be236db511aa279e7bf60fa6a7de25dfeab7ea25f9d24d4878cff",
+        "source_fact:v1:674cc7e8bffa068c6f1c291fccb7e68b88150c50ee5cf794b7255ca440a586d4",
+        "source_fact:v1:67c9001490300e5789bc7d9a70c43cebf137af47a29ae7efb24be78dd4e02589",
+        "source_fact:v1:800b90e45870a6cc799e77432cd1611812055d0b96ab9a383182860a443fe794",
+        "source_fact:v1:a674bc725745711dde701b35fda14735ff4bc966357bb89e6db2368ab63ac358",
+        "source_fact:v1:afc478060f8d846bce51886b09acfcb88efe6d043940b58a069c40b4dc58a5bb",
+        "source_fact:v1:c77ac932372ad7923d52ab9540ee011de5233d7b73f365b99f6c0b09333342c2",
+        "source_fact:v1:ea98278b4ad3b7bbb8621352408135e6483220b55423b065881fd668e2793652",
+        "source_fact:v1:fba47ffc6a83bbd1fe943dbdf0f3dcad4a4382dcab18ff6ef7e7f03092f5c801",
+        "source_fact:v1:fdca020f029a8701b2352ef988c44ea1e1160f56cba140c655774f89094db10b"
+      ],
+      "source_published_kst": "2026-10-06T15:34+09:00",
+      "title": "\"세계 3위 車시장서 월 최대 판매\" 현대차, 푸네공장 앞세워 '인도 공략' 속도"
+    },
     "source_fact:8c9b224b773a1f7369c65e0c": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -82429,6 +83290,28 @@
       ],
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
+    },
+    "source_fact:8e3876cfda8cc3634b0055c3": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170309",
+      "source": "매일경제",
+      "source_body_digest": "231a139842f2bb1bd997f07956ee874e4f31f2791a744e6f3d9d6b531c9d5eab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a4d28035ad99e7faa19de1a8628173fac031b7499bdfaf35f31967cdb55fc15",
+      "source_fact_keys": [
+        "source_fact:v1:1a7c062cbe7338a0452eb78d6081324b06634818c380a85f78e1af2042752537",
+        "source_fact:v1:272339fde78935a18bbc05a7f7bcf860719d0b41c8375736c92798f91fd8bc83",
+        "source_fact:v1:3987774bf9261c886ff92582c52ab69c368a14616631d0092bdd30894c046614",
+        "source_fact:v1:4551f3296a1d6115aa55a95ebd12ee91232716d1cb6c74edda91d7c53fd95cc4",
+        "source_fact:v1:4dde7ddfb7f036d0bc4c42e4415ae1dff0c6ff55ad8dfab1d6a1327dd28b8dbd",
+        "source_fact:v1:9a4f208e2d6ff6f289a687fd1af4fee68c3e94a17573c91a6c11567a311962f9"
+      ],
+      "source_published_kst": "2026-10-06T15:11+09:00",
+      "title": "\"중국 문샷, 내년 1분기 홍콩 상장 추진\""
     },
     "source_fact:8e871bcf805b104b4ce2fd13": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -83856,6 +84739,25 @@
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "외국인·명품 소비에 비용 절감까지…백화점 3사, 3분기 실적 ‘청신호’"
     },
+    "source_fact:97235569cd2cf96abdf4a915": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814764",
+      "source": "뉴시스",
+      "source_body_digest": "5d606c567289d3e337c00bb0ff1319e571480ef7ed4d31fc9f87f438a6a9b44f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:70cf6393673fec9f0fe4970d2e05d1fbb4539df908ed4383582af5a49f14ed54",
+      "source_fact_keys": [
+        "source_fact:v1:5789507f8956a3c398b812c082e3694eb6ea8458357215929c71371b31c16244",
+        "source_fact:v1:69e45acd6d850dba9b7d9953b155d3b9638d9af4d90cd8daf5d00be7f6868af3",
+        "source_fact:v1:f86b04bd94651e9de0852b6b1c6af548739328a8d77aa71a79c7292ebdf3e13a"
+      ],
+      "source_published_kst": "2026-10-06T09:53+09:00",
+      "title": "예멘 후티군 사우디 전역 미사일 무인기공격.. 사우디 군은 홍해 승리 주장"
+    },
     "source_fact:9755a19ade0538d552272e39": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -84407,6 +85309,34 @@
       ],
       "source_published_kst": "2026-10-05T21:05+09:00",
       "title": "SS 이노베이션스 인터내셔, 2분기 매출 1390만 달러 39%↑·영업적자 전환"
+    },
+    "source_fact:9ab689156afe59cc207d7f99": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815275",
+      "source": "뉴시스",
+      "source_body_digest": "364d4ef6d6b51375f8ab42cf770fd08ac0ee929b29a8d25e5a5bd5f930058f62",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:714fd558607328d8eb73949a0ecfe9f1f531addc5f64eb0c6d0e6d8fd5348ed3",
+      "source_fact_keys": [
+        "source_fact:v1:23aff97f7ac1e0733180039fc6a8abe8231af33a1407e2e9a7621e29be27d1be",
+        "source_fact:v1:374a3bb2526d49cca2c3a6dca106e7584bc849d2b4c028f973d5fe55148b7aac",
+        "source_fact:v1:4a4d95a4123be236db511aa279e7bf60fa6a7de25dfeab7ea25f9d24d4878cff",
+        "source_fact:v1:674cc7e8bffa068c6f1c291fccb7e68b88150c50ee5cf794b7255ca440a586d4",
+        "source_fact:v1:67c9001490300e5789bc7d9a70c43cebf137af47a29ae7efb24be78dd4e02589",
+        "source_fact:v1:800b90e45870a6cc799e77432cd1611812055d0b96ab9a383182860a443fe794",
+        "source_fact:v1:a674bc725745711dde701b35fda14735ff4bc966357bb89e6db2368ab63ac358",
+        "source_fact:v1:afc478060f8d846bce51886b09acfcb88efe6d043940b58a069c40b4dc58a5bb",
+        "source_fact:v1:c77ac932372ad7923d52ab9540ee011de5233d7b73f365b99f6c0b09333342c2",
+        "source_fact:v1:ea98278b4ad3b7bbb8621352408135e6483220b55423b065881fd668e2793652",
+        "source_fact:v1:fba47ffc6a83bbd1fe943dbdf0f3dcad4a4382dcab18ff6ef7e7f03092f5c801",
+        "source_fact:v1:fdca020f029a8701b2352ef988c44ea1e1160f56cba140c655774f89094db10b"
+      ],
+      "source_published_kst": "2026-10-06T15:34+09:00",
+      "title": "\"세계 3위 車시장서 월 최대 판매\" 현대차, 푸네공장 앞세워 '인도 공략' 속도"
     },
     "source_fact:9b2bd2303ad0ddaa5390cca3": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
@@ -87160,6 +88090,29 @@
       "source_published_kst": "2026-10-06T08:57+09:00",
       "title": "LH, 서울대에 기숙사형 전세임대 200가구 공급…전국 500가구 공모"
     },
+    "source_fact:acfb6a18b87e1502ad09eaa1": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815838",
+      "source": "뉴시스",
+      "source_body_digest": "8d5a42f62f579b7165be262dbb2b9eb2dff1024f698986f273ecc2f878e4eb8b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5f2ad3508f4e1511bef7d30d13dce2e57cc573ec050f5af602deb6352173c62",
+      "source_fact_keys": [
+        "source_fact:v1:22d3eb90a08b0c909729a71d1624eec5a6a84c2bdbc968546d66beea0c33f013",
+        "source_fact:v1:2948a764b96f2659f2e833fadf6fff54204005995725bbde8598dc57485b6ca8",
+        "source_fact:v1:59fb7ba8954c9626de1507092c1cb457ea98347d296f9dbb8e4c59c6d18d9f25",
+        "source_fact:v1:6ba08ee70565e6775f10b1616d44b1f2dbe77c4393f8e50120cecf971a662e6f",
+        "source_fact:v1:8b0e28d88ddd97c8857a06c4ae40ed8038a41a2f3fdfc9bc3d7486ec93a5ad96",
+        "source_fact:v1:a125c5a3e179b5490ef900b42c67e5c244d8d42766830a216be2186cc551e397",
+        "source_fact:v1:c8ab7dd0c88ea97461015599929f934fedbb7957336aa2c407e7bd2910987c31"
+      ],
+      "source_published_kst": "2026-10-06T17:22+09:00",
+      "title": "김성환 \"호남 반도체 팹 9개 되면 전력 약 14GW 필요\""
+    },
     "source_fact:ad048190f5c6a5df44bef30a": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
       "lanes": {
@@ -88520,6 +89473,28 @@
       ],
       "source_published_kst": "2026-10-06T05:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
+    },
+    "source_fact:b5144b976771bfb716b78010": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170309",
+      "source": "매일경제",
+      "source_body_digest": "231a139842f2bb1bd997f07956ee874e4f31f2791a744e6f3d9d6b531c9d5eab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a4d28035ad99e7faa19de1a8628173fac031b7499bdfaf35f31967cdb55fc15",
+      "source_fact_keys": [
+        "source_fact:v1:1a7c062cbe7338a0452eb78d6081324b06634818c380a85f78e1af2042752537",
+        "source_fact:v1:272339fde78935a18bbc05a7f7bcf860719d0b41c8375736c92798f91fd8bc83",
+        "source_fact:v1:3987774bf9261c886ff92582c52ab69c368a14616631d0092bdd30894c046614",
+        "source_fact:v1:4551f3296a1d6115aa55a95ebd12ee91232716d1cb6c74edda91d7c53fd95cc4",
+        "source_fact:v1:4dde7ddfb7f036d0bc4c42e4415ae1dff0c6ff55ad8dfab1d6a1327dd28b8dbd",
+        "source_fact:v1:9a4f208e2d6ff6f289a687fd1af4fee68c3e94a17573c91a6c11567a311962f9"
+      ],
+      "source_published_kst": "2026-10-06T15:11+09:00",
+      "title": "\"중국 문샷, 내년 1분기 홍콩 상장 추진\""
     },
     "source_fact:b5e794cfb8a1e2f112735fd5": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
@@ -92883,6 +93858,34 @@
       "source_published_kst": "2026-10-05T21:32+09:00",
       "title": "에볼루션 메탈스 앤 테크, 포항 희토류 자석공장 12월 17일 개장..연 1만t 확대 추진"
     },
+    "source_fact:d2e0b2dec413abb5db45ab01": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815275",
+      "source": "뉴시스",
+      "source_body_digest": "364d4ef6d6b51375f8ab42cf770fd08ac0ee929b29a8d25e5a5bd5f930058f62",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:714fd558607328d8eb73949a0ecfe9f1f531addc5f64eb0c6d0e6d8fd5348ed3",
+      "source_fact_keys": [
+        "source_fact:v1:23aff97f7ac1e0733180039fc6a8abe8231af33a1407e2e9a7621e29be27d1be",
+        "source_fact:v1:374a3bb2526d49cca2c3a6dca106e7584bc849d2b4c028f973d5fe55148b7aac",
+        "source_fact:v1:4a4d95a4123be236db511aa279e7bf60fa6a7de25dfeab7ea25f9d24d4878cff",
+        "source_fact:v1:674cc7e8bffa068c6f1c291fccb7e68b88150c50ee5cf794b7255ca440a586d4",
+        "source_fact:v1:67c9001490300e5789bc7d9a70c43cebf137af47a29ae7efb24be78dd4e02589",
+        "source_fact:v1:800b90e45870a6cc799e77432cd1611812055d0b96ab9a383182860a443fe794",
+        "source_fact:v1:a674bc725745711dde701b35fda14735ff4bc966357bb89e6db2368ab63ac358",
+        "source_fact:v1:afc478060f8d846bce51886b09acfcb88efe6d043940b58a069c40b4dc58a5bb",
+        "source_fact:v1:c77ac932372ad7923d52ab9540ee011de5233d7b73f365b99f6c0b09333342c2",
+        "source_fact:v1:ea98278b4ad3b7bbb8621352408135e6483220b55423b065881fd668e2793652",
+        "source_fact:v1:fba47ffc6a83bbd1fe943dbdf0f3dcad4a4382dcab18ff6ef7e7f03092f5c801",
+        "source_fact:v1:fdca020f029a8701b2352ef988c44ea1e1160f56cba140c655774f89094db10b"
+      ],
+      "source_published_kst": "2026-10-06T15:34+09:00",
+      "title": "\"세계 3위 車시장서 월 최대 판매\" 현대차, 푸네공장 앞세워 '인도 공략' 속도"
+    },
     "source_fact:d2eb6102760aa25cedbae9db": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -93275,6 +94278,28 @@
       ],
       "source_published_kst": "2026-10-05T19:02+09:00",
       "title": "세제·부동산·대미투자… 李정부 2년차 정책 검증 '경제 국감' [국정감사 핫이슈]"
+    },
+    "source_fact:d560a3066bd517a2cd002aa3": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170309",
+      "source": "매일경제",
+      "source_body_digest": "231a139842f2bb1bd997f07956ee874e4f31f2791a744e6f3d9d6b531c9d5eab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a4d28035ad99e7faa19de1a8628173fac031b7499bdfaf35f31967cdb55fc15",
+      "source_fact_keys": [
+        "source_fact:v1:1a7c062cbe7338a0452eb78d6081324b06634818c380a85f78e1af2042752537",
+        "source_fact:v1:272339fde78935a18bbc05a7f7bcf860719d0b41c8375736c92798f91fd8bc83",
+        "source_fact:v1:3987774bf9261c886ff92582c52ab69c368a14616631d0092bdd30894c046614",
+        "source_fact:v1:4551f3296a1d6115aa55a95ebd12ee91232716d1cb6c74edda91d7c53fd95cc4",
+        "source_fact:v1:4dde7ddfb7f036d0bc4c42e4415ae1dff0c6ff55ad8dfab1d6a1327dd28b8dbd",
+        "source_fact:v1:9a4f208e2d6ff6f289a687fd1af4fee68c3e94a17573c91a6c11567a311962f9"
+      ],
+      "source_published_kst": "2026-10-06T15:11+09:00",
+      "title": "\"중국 문샷, 내년 1분기 홍콩 상장 추진\""
     },
     "source_fact:d5b18690ca8e2a2817364b49": {
       "first_seen_kst": "2026-10-06T06:36:31+09:00",
@@ -96742,6 +97767,57 @@
       "source_published_kst": "2026-10-06T13:06+09:00",
       "title": "美 소비자신뢰지수 12년 최저인데 가계지출 6.1%↑…실질소비도 늘었다"
     },
+    "source_fact:ea1200b3314d106fd5c161e8": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815838",
+      "source": "뉴시스",
+      "source_body_digest": "8d5a42f62f579b7165be262dbb2b9eb2dff1024f698986f273ecc2f878e4eb8b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5f2ad3508f4e1511bef7d30d13dce2e57cc573ec050f5af602deb6352173c62",
+      "source_fact_keys": [
+        "source_fact:v1:22d3eb90a08b0c909729a71d1624eec5a6a84c2bdbc968546d66beea0c33f013",
+        "source_fact:v1:2948a764b96f2659f2e833fadf6fff54204005995725bbde8598dc57485b6ca8",
+        "source_fact:v1:59fb7ba8954c9626de1507092c1cb457ea98347d296f9dbb8e4c59c6d18d9f25",
+        "source_fact:v1:6ba08ee70565e6775f10b1616d44b1f2dbe77c4393f8e50120cecf971a662e6f",
+        "source_fact:v1:8b0e28d88ddd97c8857a06c4ae40ed8038a41a2f3fdfc9bc3d7486ec93a5ad96",
+        "source_fact:v1:a125c5a3e179b5490ef900b42c67e5c244d8d42766830a216be2186cc551e397",
+        "source_fact:v1:c8ab7dd0c88ea97461015599929f934fedbb7957336aa2c407e7bd2910987c31"
+      ],
+      "source_published_kst": "2026-10-06T17:22+09:00",
+      "title": "김성환 \"호남 반도체 팹 9개 되면 전력 약 14GW 필요\""
+    },
+    "source_fact:ea557869797a9c5911f2032b": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815275",
+      "source": "뉴시스",
+      "source_body_digest": "364d4ef6d6b51375f8ab42cf770fd08ac0ee929b29a8d25e5a5bd5f930058f62",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:714fd558607328d8eb73949a0ecfe9f1f531addc5f64eb0c6d0e6d8fd5348ed3",
+      "source_fact_keys": [
+        "source_fact:v1:23aff97f7ac1e0733180039fc6a8abe8231af33a1407e2e9a7621e29be27d1be",
+        "source_fact:v1:374a3bb2526d49cca2c3a6dca106e7584bc849d2b4c028f973d5fe55148b7aac",
+        "source_fact:v1:4a4d95a4123be236db511aa279e7bf60fa6a7de25dfeab7ea25f9d24d4878cff",
+        "source_fact:v1:674cc7e8bffa068c6f1c291fccb7e68b88150c50ee5cf794b7255ca440a586d4",
+        "source_fact:v1:67c9001490300e5789bc7d9a70c43cebf137af47a29ae7efb24be78dd4e02589",
+        "source_fact:v1:800b90e45870a6cc799e77432cd1611812055d0b96ab9a383182860a443fe794",
+        "source_fact:v1:a674bc725745711dde701b35fda14735ff4bc966357bb89e6db2368ab63ac358",
+        "source_fact:v1:afc478060f8d846bce51886b09acfcb88efe6d043940b58a069c40b4dc58a5bb",
+        "source_fact:v1:c77ac932372ad7923d52ab9540ee011de5233d7b73f365b99f6c0b09333342c2",
+        "source_fact:v1:ea98278b4ad3b7bbb8621352408135e6483220b55423b065881fd668e2793652",
+        "source_fact:v1:fba47ffc6a83bbd1fe943dbdf0f3dcad4a4382dcab18ff6ef7e7f03092f5c801",
+        "source_fact:v1:fdca020f029a8701b2352ef988c44ea1e1160f56cba140c655774f89094db10b"
+      ],
+      "source_published_kst": "2026-10-06T15:34+09:00",
+      "title": "\"세계 3위 車시장서 월 최대 판매\" 현대차, 푸네공장 앞세워 '인도 공략' 속도"
+    },
     "source_fact:eb0978ae83ebde68e3a38ca7": {
       "first_seen_kst": "2026-10-06T07:30:15+09:00",
       "lanes": {
@@ -97528,6 +98604,34 @@
       "source_published_kst": "2026-10-06T13:21+09:00",
       "title": "유럽 로봇 유니콘도 미국행…로브코, 현지 생산·시장 공략"
     },
+    "source_fact:ef84a246e44d25ed960df5c5": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815275",
+      "source": "뉴시스",
+      "source_body_digest": "364d4ef6d6b51375f8ab42cf770fd08ac0ee929b29a8d25e5a5bd5f930058f62",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:714fd558607328d8eb73949a0ecfe9f1f531addc5f64eb0c6d0e6d8fd5348ed3",
+      "source_fact_keys": [
+        "source_fact:v1:23aff97f7ac1e0733180039fc6a8abe8231af33a1407e2e9a7621e29be27d1be",
+        "source_fact:v1:374a3bb2526d49cca2c3a6dca106e7584bc849d2b4c028f973d5fe55148b7aac",
+        "source_fact:v1:4a4d95a4123be236db511aa279e7bf60fa6a7de25dfeab7ea25f9d24d4878cff",
+        "source_fact:v1:674cc7e8bffa068c6f1c291fccb7e68b88150c50ee5cf794b7255ca440a586d4",
+        "source_fact:v1:67c9001490300e5789bc7d9a70c43cebf137af47a29ae7efb24be78dd4e02589",
+        "source_fact:v1:800b90e45870a6cc799e77432cd1611812055d0b96ab9a383182860a443fe794",
+        "source_fact:v1:a674bc725745711dde701b35fda14735ff4bc966357bb89e6db2368ab63ac358",
+        "source_fact:v1:afc478060f8d846bce51886b09acfcb88efe6d043940b58a069c40b4dc58a5bb",
+        "source_fact:v1:c77ac932372ad7923d52ab9540ee011de5233d7b73f365b99f6c0b09333342c2",
+        "source_fact:v1:ea98278b4ad3b7bbb8621352408135e6483220b55423b065881fd668e2793652",
+        "source_fact:v1:fba47ffc6a83bbd1fe943dbdf0f3dcad4a4382dcab18ff6ef7e7f03092f5c801",
+        "source_fact:v1:fdca020f029a8701b2352ef988c44ea1e1160f56cba140c655774f89094db10b"
+      ],
+      "source_published_kst": "2026-10-06T15:34+09:00",
+      "title": "\"세계 3위 車시장서 월 최대 판매\" 현대차, 푸네공장 앞세워 '인도 공략' 속도"
+    },
     "source_fact:eff152405515d736c7aef055": {
       "first_seen_kst": "2026-10-06T10:41:31+09:00",
       "lanes": {
@@ -98062,6 +99166,29 @@
       ],
       "source_published_kst": "2026-10-05T15:17+09:00",
       "title": "자사주 '버팀목' 빠지는 삼성전자… 100조원대 영업익으로 극복할까?"
+    },
+    "source_fact:f3afe8d1e04ffdb1e1b92f9a": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815838",
+      "source": "뉴시스",
+      "source_body_digest": "8d5a42f62f579b7165be262dbb2b9eb2dff1024f698986f273ecc2f878e4eb8b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5f2ad3508f4e1511bef7d30d13dce2e57cc573ec050f5af602deb6352173c62",
+      "source_fact_keys": [
+        "source_fact:v1:22d3eb90a08b0c909729a71d1624eec5a6a84c2bdbc968546d66beea0c33f013",
+        "source_fact:v1:2948a764b96f2659f2e833fadf6fff54204005995725bbde8598dc57485b6ca8",
+        "source_fact:v1:59fb7ba8954c9626de1507092c1cb457ea98347d296f9dbb8e4c59c6d18d9f25",
+        "source_fact:v1:6ba08ee70565e6775f10b1616d44b1f2dbe77c4393f8e50120cecf971a662e6f",
+        "source_fact:v1:8b0e28d88ddd97c8857a06c4ae40ed8038a41a2f3fdfc9bc3d7486ec93a5ad96",
+        "source_fact:v1:a125c5a3e179b5490ef900b42c67e5c244d8d42766830a216be2186cc551e397",
+        "source_fact:v1:c8ab7dd0c88ea97461015599929f934fedbb7957336aa2c407e7bd2910987c31"
+      ],
+      "source_published_kst": "2026-10-06T17:22+09:00",
+      "title": "김성환 \"호남 반도체 팹 9개 되면 전력 약 14GW 필요\""
     },
     "source_fact:f3fd5984ab46e59252991e7d": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -102575,6 +103702,34 @@
       "source": "전자신문",
       "title": "[AINEX 2026] 이경한 서울대 교수 “피지컬 AI 승부처는 로봇 아닌 네트워크 시스템”"
     },
+    "title:1ec56b3aca5e08dafa0f259a": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815275",
+      "source": "뉴시스",
+      "source_body_digest": "364d4ef6d6b51375f8ab42cf770fd08ac0ee929b29a8d25e5a5bd5f930058f62",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:714fd558607328d8eb73949a0ecfe9f1f531addc5f64eb0c6d0e6d8fd5348ed3",
+      "source_fact_keys": [
+        "source_fact:v1:23aff97f7ac1e0733180039fc6a8abe8231af33a1407e2e9a7621e29be27d1be",
+        "source_fact:v1:374a3bb2526d49cca2c3a6dca106e7584bc849d2b4c028f973d5fe55148b7aac",
+        "source_fact:v1:4a4d95a4123be236db511aa279e7bf60fa6a7de25dfeab7ea25f9d24d4878cff",
+        "source_fact:v1:674cc7e8bffa068c6f1c291fccb7e68b88150c50ee5cf794b7255ca440a586d4",
+        "source_fact:v1:67c9001490300e5789bc7d9a70c43cebf137af47a29ae7efb24be78dd4e02589",
+        "source_fact:v1:800b90e45870a6cc799e77432cd1611812055d0b96ab9a383182860a443fe794",
+        "source_fact:v1:a674bc725745711dde701b35fda14735ff4bc966357bb89e6db2368ab63ac358",
+        "source_fact:v1:afc478060f8d846bce51886b09acfcb88efe6d043940b58a069c40b4dc58a5bb",
+        "source_fact:v1:c77ac932372ad7923d52ab9540ee011de5233d7b73f365b99f6c0b09333342c2",
+        "source_fact:v1:ea98278b4ad3b7bbb8621352408135e6483220b55423b065881fd668e2793652",
+        "source_fact:v1:fba47ffc6a83bbd1fe943dbdf0f3dcad4a4382dcab18ff6ef7e7f03092f5c801",
+        "source_fact:v1:fdca020f029a8701b2352ef988c44ea1e1160f56cba140c655774f89094db10b"
+      ],
+      "source_published_kst": "2026-10-06T15:34+09:00",
+      "title": "\"세계 3위 車시장서 월 최대 판매\" 현대차, 푸네공장 앞세워 '인도 공략' 속도"
+    },
     "title:1ef2d6a32f5508c02ec4cfa9": {
       "first_seen_kst": "2026-10-01T21:12:25+09:00",
       "lanes": {
@@ -105921,6 +107076,21 @@
       "link": "https://www.yna.co.kr/view/AKR20260918078100030",
       "source": "연합뉴스",
       "title": "한섬, 2028년까지 매년 100억원 자사주 매입·소각 | 연합뉴스"
+    },
+    "title:421ddd6807672b84b7ed1928": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006136400061",
+      "source": "연합뉴스",
+      "source_body_digest": "2a0061b8f894184dbb30cfb618ecae36a2b6a0254848d1f04018232c93e9bcc2",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T15:30+09:00",
+      "title": "이현재 하남시장 \"2030년까지 10조원 투자 유치\" | 연합뉴스"
     },
     "title:42207c0a6c842d828a374066": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
@@ -111201,6 +112371,25 @@
       "source": "연합뉴스",
       "title": "\"10주만 사줘\"…다올증권, AI-증권계좌 연결 서비스 출시 | 연합뉴스"
     },
+    "title:7c670079c735e674746e698c": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814764",
+      "source": "뉴시스",
+      "source_body_digest": "5d606c567289d3e337c00bb0ff1319e571480ef7ed4d31fc9f87f438a6a9b44f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:70cf6393673fec9f0fe4970d2e05d1fbb4539df908ed4383582af5a49f14ed54",
+      "source_fact_keys": [
+        "source_fact:v1:5789507f8956a3c398b812c082e3694eb6ea8458357215929c71371b31c16244",
+        "source_fact:v1:69e45acd6d850dba9b7d9953b155d3b9638d9af4d90cd8daf5d00be7f6868af3",
+        "source_fact:v1:f86b04bd94651e9de0852b6b1c6af548739328a8d77aa71a79c7292ebdf3e13a"
+      ],
+      "source_published_kst": "2026-10-06T09:53+09:00",
+      "title": "예멘 후티군 사우디 전역 미사일 무인기공격.. 사우디 군은 홍해 승리 주장"
+    },
     "title:7c867791cf77cc5b3a04d601": {
       "first_seen_kst": "2026-10-06T01:51:09+09:00",
       "lanes": {
@@ -111346,6 +112535,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T11:19+09:00",
       "title": "LGU+, 구독 플랫폼 '유독'에 해외 AI 서비스 순차 확대"
+    },
+    "title:7dcfd6ec36668c12b45b5373": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610065836b",
+      "source": "한국경제",
+      "source_body_digest": "1e829a5ce9104de27f60a5be43990303f7b29f02ead0ea2ae794e6bbbefb5b53",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:624b800e2787e22dca5a43efbf96e61e4913d7a8d0b164a24d78fcaf2ec7c82b",
+      "source_fact_keys": [
+        "source_fact:v1:6b916655831cd41d82412a986c384e7aed409a75e9eb18792e73fb8873dd246e"
+      ],
+      "source_published_kst": "2026-10-06T15:25+09:00",
+      "title": "유류세 5년 인하…“온실가스 400만t 감축 기회 놓쳤다”"
     },
     "title:7df766796137bc5eba6604cd": {
       "first_seen_kst": "2026-10-05T20:38:34+09:00",
@@ -112118,6 +113324,29 @@
       "link": "https://www.etnews.com/20260918000098",
       "source": "전자신문",
       "title": "[테크 차이나] 교수를 기업 기술책임자로 보낸다…중국 '과학기술 부사장' 실험"
+    },
+    "title:8847672516aee4859c40e97c": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815838",
+      "source": "뉴시스",
+      "source_body_digest": "8d5a42f62f579b7165be262dbb2b9eb2dff1024f698986f273ecc2f878e4eb8b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5f2ad3508f4e1511bef7d30d13dce2e57cc573ec050f5af602deb6352173c62",
+      "source_fact_keys": [
+        "source_fact:v1:22d3eb90a08b0c909729a71d1624eec5a6a84c2bdbc968546d66beea0c33f013",
+        "source_fact:v1:2948a764b96f2659f2e833fadf6fff54204005995725bbde8598dc57485b6ca8",
+        "source_fact:v1:59fb7ba8954c9626de1507092c1cb457ea98347d296f9dbb8e4c59c6d18d9f25",
+        "source_fact:v1:6ba08ee70565e6775f10b1616d44b1f2dbe77c4393f8e50120cecf971a662e6f",
+        "source_fact:v1:8b0e28d88ddd97c8857a06c4ae40ed8038a41a2f3fdfc9bc3d7486ec93a5ad96",
+        "source_fact:v1:a125c5a3e179b5490ef900b42c67e5c244d8d42766830a216be2186cc551e397",
+        "source_fact:v1:c8ab7dd0c88ea97461015599929f934fedbb7957336aa2c407e7bd2910987c31"
+      ],
+      "source_published_kst": "2026-10-06T17:22+09:00",
+      "title": "김성환 \"호남 반도체 팹 9개 되면 전력 약 14GW 필요\""
     },
     "title:886716729aa97531a6c576fb": {
       "first_seen_kst": "2026-10-02T17:34:05+09:00",
@@ -114431,6 +115660,23 @@
       "link": "https://www.yna.co.kr/view/AKR20260930194151072",
       "source": "연합뉴스",
       "title": "美 8월 PCE 물가 3.4%↑…전망 밑돌며 10월 금리인상 부담 완화(종합) | 연합뉴스"
+    },
+    "title:9ff725b5ae262b019188207a": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815841",
+      "source": "뉴시스",
+      "source_body_digest": "4b9c260f7e114ebea9b4044f23e7050d22a8e830e130a087c0e3516bd15e3f41",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:54341020f58c73b7f7a76a380a264cd105f1ae34bd3aff3abb09584f081c8b66",
+      "source_fact_keys": [
+        "source_fact:v1:62616584695cf5ea3763da8f4f547be21836c0af3b03dbe02d7fb26bede0f41d"
+      ],
+      "source_published_kst": "2026-10-06T15:32+09:00",
+      "title": "빙판·모래판 스타들, 의성 알리는 홍보대사 됐다"
     },
     "title:a0a770aa5d7b6bd3e8096fa8": {
       "first_seen_kst": "2026-10-02T23:58:50+09:00",
@@ -120877,6 +122123,28 @@
       "source": "조선비즈",
       "title": "한국벤처투자, 아모레퍼시픽홀딩스와 화장품 기업 육성 맞손"
     },
+    "title:e8e0c106c375fe350dc5866a": {
+      "first_seen_kst": "2026-10-06T17:35:32+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:35:32+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:35:32+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170309",
+      "source": "매일경제",
+      "source_body_digest": "231a139842f2bb1bd997f07956ee874e4f31f2791a744e6f3d9d6b531c9d5eab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a4d28035ad99e7faa19de1a8628173fac031b7499bdfaf35f31967cdb55fc15",
+      "source_fact_keys": [
+        "source_fact:v1:1a7c062cbe7338a0452eb78d6081324b06634818c380a85f78e1af2042752537",
+        "source_fact:v1:272339fde78935a18bbc05a7f7bcf860719d0b41c8375736c92798f91fd8bc83",
+        "source_fact:v1:3987774bf9261c886ff92582c52ab69c368a14616631d0092bdd30894c046614",
+        "source_fact:v1:4551f3296a1d6115aa55a95ebd12ee91232716d1cb6c74edda91d7c53fd95cc4",
+        "source_fact:v1:4dde7ddfb7f036d0bc4c42e4415ae1dff0c6ff55ad8dfab1d6a1327dd28b8dbd",
+        "source_fact:v1:9a4f208e2d6ff6f289a687fd1af4fee68c3e94a17573c91a6c11567a311962f9"
+      ],
+      "source_published_kst": "2026-10-06T15:11+09:00",
+      "title": "\"중국 문샷, 내년 1분기 홍콩 상장 추진\""
+    },
     "title:e8f45ad22440f71296ad1c26": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
       "lanes": {
@@ -122774,5 +124042,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T17:24:43+09:00"
+  "updated_at_kst": "2026-10-06T17:35:32+09:00"
 }
