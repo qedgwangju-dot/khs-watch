@@ -1810,6 +1810,21 @@
       "source": "뉴시스",
       "title": "강호동 농협회장, 美 현장 경영…농식품 수출·판로 확대 논의"
     },
+    "event:4eaef40f0c35a83e36ae3ebe": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815344",
+      "source": "뉴시스",
+      "source_body_digest": "87147b7018ead5e050ad808babd600bdb6699dfcf54709bfd4ec5a5686f03d4c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "LG전자, 오늘 3Q 성적표 발표…사상 첫 분기 매출 24조 돌파하나"
+    },
     "event:4eb4da03fdbff18d26141b50": {
       "event_alias_evidence_message_id": 2287,
       "event_alias_evidence_run_id": 37395127123,
@@ -1976,6 +1991,30 @@
       ],
       "source_published_kst": "2026-10-05T18:35+09:00",
       "title": "서학개미 '속도조절'… 반도체 팔고 초단기 국채 샀다"
+    },
+    "event:5554e14d54a8576761a66cf5": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632466",
+      "source": "이투데이",
+      "source_body_digest": "f10ac08097ae817a5de0834b610deb3b2dd5eda5e35027985a7668fc0a1a74cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1805edc7158dc0e32d6d4aede8871fb4e2a6a119732ffacd3b67e3efbb65d933",
+      "source_fact_keys": [
+        "source_fact:v1:244bf34904b958562ab9b10d0535676983f3d528ed738c4fe5ca014ca6c185ce",
+        "source_fact:v1:26a1303ad22f428d6a50427d4bffb09897e9ce125771d31c72722177bafa56cd",
+        "source_fact:v1:6ecbf8ee8a35855a499438613e44e9e93bf3373e27bc6b6f6fea4f4e9577cff3",
+        "source_fact:v1:71955df13940a5180c951983d0341b4d852e890c9ee4141f285abc37e5a13fe7",
+        "source_fact:v1:79748fb45d6f4a9d0f9215f2cdbbec6ed41b02ab0f2750303153af49032f177b",
+        "source_fact:v1:98d95ea500ff55af7f675a36c2fe3fa31cdfd0356660a2cc0ca6ce5c59657c01",
+        "source_fact:v1:c801f8d875c4c9fab2fbae0fde73f8a61e64c83f72979d1d1ebc8203fa02ede1",
+        "source_fact:v1:e547d40f84bdf740f95e6087d4494b15413f3958bad96d9159b11614a99b51e8"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "\"삼성 따라 미국 간다?\"…몸값 뛴 국내 OSAT, 테일러행은 ‘좁은 문’"
     },
     "event:5752f44e92ac107d74cdcfbe": {
       "first_seen_kst": "2026-09-18T14:19:18+09:00",
@@ -5464,6 +5503,30 @@
       "source_published_kst": "2026-10-07T03:50+09:00",
       "title": "美국채 금리 급등하자…핌코 \"투자매력 매우 높아졌다\""
     },
+    "event:d3f7bb7a19ba6c2f88d9f346": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632913",
+      "source": "이투데이",
+      "source_body_digest": "3584e8d16aa70624dc851cd4d6cf10c216442818344ad295751239c1241a9033",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:42aa80b938eba81baf35befd29035492a99eb12be4179b6aa713fe2097f77a17",
+      "source_fact_keys": [
+        "source_fact:v1:93e2046dd244160c8ef4cda85ec9229027e402c72662fd5bd53f8567cc143444",
+        "source_fact:v1:ab624149ce97a9360d51c79a57cdcc9e7757dc3266be20df44133a6b7dab1311",
+        "source_fact:v1:b3668d30731d033cef03603ba90b5740533ee95ee1d4070aad2edfc7a38c22fd",
+        "source_fact:v1:b3ad4b4a2470c9febba60cebd552a0ecb511f4315c489047cfde3adf5cbeb12e",
+        "source_fact:v1:df04c59a3cbf40a0c535d513ffec9716082163f188c2b9a1c0edc9284298da46",
+        "source_fact:v1:e5aab5be96ac23e32d53dbae93f03882decf74e2eef6d1dbfb272cc7d2d5c96f",
+        "source_fact:v1:eff506d2bc6ddbfeaf47a3d2e2c7a202945d6bda77d027e93ad45b6ed48ca4cf",
+        "source_fact:v1:f18d4bb579fff2225f4182505c6b712641e2a9e9b5f0df8d2101d8afeb8e94c2"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "테마 쪼개고 채권 섞고…ETF 신상품 설계 다변화 [ETF 지형도 변화]②"
+    },
     "event:d43896e2f11c4711cdda0b39": {
       "first_seen_kst": "2026-10-02T13:38:43+09:00",
       "lanes": {
@@ -6914,6 +6977,23 @@
       "source_published_kst": "2026-10-05T17:23+09:00",
       "title": "AI 해킹 확산에 'AI 방패' 꺼낸 금융당국…'망분리 완화' 해법 될 수 있나"
     },
+    "fact:06cd86e95a87b08df0855783": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006154800017",
+      "source": "연합뉴스",
+      "source_body_digest": "1a96abe146464f52a0708543af98cabd96ab8a440a614cbf2c93258f3ac595a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:77915c8ff4cc1380d03390975e5e8d9ea3d384a1516af9dcedd0ace0d5a42719",
+      "source_fact_keys": [
+        "source_fact:v1:5fe96330d2971e9ac87ab883c0c6081e0f95374d6cde1961a8aed5e8e897e412"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "[누리호 발사] 누리호 오늘 낮 우주로…위성 15기 싣고 비행 | 연합뉴스"
+    },
     "fact:06d87b1b53d6c1a5f7d7c6fd": {
       "first_seen_kst": "2026-10-06T10:04:04+09:00",
       "lanes": {
@@ -7665,6 +7745,25 @@
       ],
       "source_published_kst": "2026-10-05T18:21+09:00",
       "title": "솔리다임 美상장… \"SK하닉 가치 재평가\" vs \"주주 피해\" [어떻게 생각하십니까]"
+    },
+    "fact:0fc3c60f86990f8faffd9e65": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816135",
+      "source": "뉴시스",
+      "source_body_digest": "ae66a2c931db04421104003a9eb99c4015e9126ea8bc22dfea475b4a213b88a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d701613ed7c5de5760f473e87a434781af645676adebccbd6bda1c400b6b0c44",
+      "source_fact_keys": [
+        "source_fact:v1:ce097248809675e94c51b2c5b8dea8bff99dfa9c77a7ee0857131bab051a3a0d",
+        "source_fact:v1:e51c88c4c7fd48773383f9f537d4d92ae833e5b25a1c6af434bde9edafcc4b28",
+        "source_fact:v1:fefaac192e9669c4d3eb3bd794f67ad352dc82a71c31f2edddd35b06b9732053"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "오늘 '누리호 5차' 발사…한화·HD현대 등 300여개 민간 기업 뭉쳤다"
     },
     "fact:1001ee208cd423519b5ce424": {
       "first_seen_kst": "2026-10-05T19:54:04+09:00",
@@ -9638,6 +9737,30 @@
       "source_published_kst": "2026-10-06T08:55+09:00",
       "title": "현대글로비스, SMR 추진 자동차운반선 한미 항로 운항 검토 | 연합뉴스"
     },
+    "fact:3169aedb59f4481d5deae33f": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632466",
+      "source": "이투데이",
+      "source_body_digest": "f10ac08097ae817a5de0834b610deb3b2dd5eda5e35027985a7668fc0a1a74cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1805edc7158dc0e32d6d4aede8871fb4e2a6a119732ffacd3b67e3efbb65d933",
+      "source_fact_keys": [
+        "source_fact:v1:244bf34904b958562ab9b10d0535676983f3d528ed738c4fe5ca014ca6c185ce",
+        "source_fact:v1:26a1303ad22f428d6a50427d4bffb09897e9ce125771d31c72722177bafa56cd",
+        "source_fact:v1:6ecbf8ee8a35855a499438613e44e9e93bf3373e27bc6b6f6fea4f4e9577cff3",
+        "source_fact:v1:71955df13940a5180c951983d0341b4d852e890c9ee4141f285abc37e5a13fe7",
+        "source_fact:v1:79748fb45d6f4a9d0f9215f2cdbbec6ed41b02ab0f2750303153af49032f177b",
+        "source_fact:v1:98d95ea500ff55af7f675a36c2fe3fa31cdfd0356660a2cc0ca6ce5c59657c01",
+        "source_fact:v1:c801f8d875c4c9fab2fbae0fde73f8a61e64c83f72979d1d1ebc8203fa02ede1",
+        "source_fact:v1:e547d40f84bdf740f95e6087d4494b15413f3958bad96d9159b11614a99b51e8"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "\"삼성 따라 미국 간다?\"…몸값 뛴 국내 OSAT, 테일러행은 ‘좁은 문’"
+    },
     "fact:31aed3f69245b1d08e35c99f": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
       "lanes": {
@@ -10039,6 +10162,29 @@
       ],
       "source_published_kst": "2026-10-05T11:00+09:00",
       "title": "韓 비료, 브라질 진출 교두보…콩·옥수수 시장 겨냥"
+    },
+    "fact:361b2081354799f4915c32f7": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2630757",
+      "source": "이투데이",
+      "source_body_digest": "102418f2c07c8a0081c174a71b64123d7d8bb69bb7e7425d3fd2414f48e15ad5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cabe09f4dd6d217caf5cfdf0b4479d030162c003580d2c63528a92cdca247462",
+      "source_fact_keys": [
+        "source_fact:v1:10081417d6b99e2743251cb6f60f1149eed6deb7d857d15d2a0160c19d5cc558",
+        "source_fact:v1:2e829400824f873a6d1fc01b6dbe98c3fad84155e2a4a33e93ace78918e331b1",
+        "source_fact:v1:5c9869fe92c3740367b69ac1dc2ca6a879fa4f935abb9a3c13cdb52fa2f2e4ca",
+        "source_fact:v1:b7253826f6c3f298ded5fbdcc0bd96f49535e26549948a056f505d040052208b",
+        "source_fact:v1:b9130fff658fffcc9e6f1c7406920cdd4927c2dccd5c33faa1f3fb27bcbdd7f3",
+        "source_fact:v1:c0eefa7496c567294f2841db9eda72fb96835b2f30885965bb5ead45d32b3ae7",
+        "source_fact:v1:f501db29f10b0ebe5cad8638055cec1b213d7d1f8cb57c93036003efa8f436fe"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "헬스케어 제2의 먹거리…디지털 사업 키우는 제약사들"
     },
     "fact:3669df86f942074ed7b661f2": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
@@ -10785,6 +10931,23 @@
       ],
       "source_published_kst": "2026-10-06T17:29+09:00",
       "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 양극재 공급계약 | 연합뉴스"
+    },
+    "fact:455f3f1dd23c9b71ffd8a5a1": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169511",
+      "source": "매일경제",
+      "source_body_digest": "0a5facdbdf69c38f124b5756434345a91f64b3fc25f8295982f7848baf0118a0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c7ab3dd996378631c0e102cc29f0b81f2b0de097b85db144159568f9bf9aadf",
+      "source_fact_keys": [
+        "source_fact:v1:9c70d4f04fd66d6429e01dfa32b8f7bfdf7766abb67173cc8cdd30016f1a8706"
+      ],
+      "source_published_kst": "2026-10-06T17:33+09:00",
+      "title": "위성 15기 품고 우주로 … 촘촘히 촬영해 재난막고 안보에 활용"
     },
     "fact:46c001b758a14523fa412abe": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
@@ -18498,6 +18661,30 @@
       "source_published_kst": "2026-10-06T17:47+09:00",
       "title": "치킨업계 “산지 닭값 내려도 매입단가는 달라”…담합 조사에 비용 부담 강조"
     },
+    "fact:db2137aee5349266ba9981e4": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632913",
+      "source": "이투데이",
+      "source_body_digest": "3584e8d16aa70624dc851cd4d6cf10c216442818344ad295751239c1241a9033",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:42aa80b938eba81baf35befd29035492a99eb12be4179b6aa713fe2097f77a17",
+      "source_fact_keys": [
+        "source_fact:v1:93e2046dd244160c8ef4cda85ec9229027e402c72662fd5bd53f8567cc143444",
+        "source_fact:v1:ab624149ce97a9360d51c79a57cdcc9e7757dc3266be20df44133a6b7dab1311",
+        "source_fact:v1:b3668d30731d033cef03603ba90b5740533ee95ee1d4070aad2edfc7a38c22fd",
+        "source_fact:v1:b3ad4b4a2470c9febba60cebd552a0ecb511f4315c489047cfde3adf5cbeb12e",
+        "source_fact:v1:df04c59a3cbf40a0c535d513ffec9716082163f188c2b9a1c0edc9284298da46",
+        "source_fact:v1:e5aab5be96ac23e32d53dbae93f03882decf74e2eef6d1dbfb272cc7d2d5c96f",
+        "source_fact:v1:eff506d2bc6ddbfeaf47a3d2e2c7a202945d6bda77d027e93ad45b6ed48ca4cf",
+        "source_fact:v1:f18d4bb579fff2225f4182505c6b712641e2a9e9b5f0df8d2101d8afeb8e94c2"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "테마 쪼개고 채권 섞고…ETF 신상품 설계 다변화 [ETF 지형도 변화]②"
+    },
     "fact:dbeb5fd6614dbec10b54f316": {
       "first_seen_kst": "2026-10-05T20:31:34+09:00",
       "lanes": {
@@ -23229,6 +23416,29 @@
       "source_published_kst": "2026-10-06T17:03+09:00",
       "title": "파라다이스, 회사채 수요예측에 3.4배 몰려…2·3년물 온도차(종합) | 연합뉴스"
     },
+    "link:195605fdc6551d711622a84e": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2630757",
+      "source": "이투데이",
+      "source_body_digest": "102418f2c07c8a0081c174a71b64123d7d8bb69bb7e7425d3fd2414f48e15ad5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cabe09f4dd6d217caf5cfdf0b4479d030162c003580d2c63528a92cdca247462",
+      "source_fact_keys": [
+        "source_fact:v1:10081417d6b99e2743251cb6f60f1149eed6deb7d857d15d2a0160c19d5cc558",
+        "source_fact:v1:2e829400824f873a6d1fc01b6dbe98c3fad84155e2a4a33e93ace78918e331b1",
+        "source_fact:v1:5c9869fe92c3740367b69ac1dc2ca6a879fa4f935abb9a3c13cdb52fa2f2e4ca",
+        "source_fact:v1:b7253826f6c3f298ded5fbdcc0bd96f49535e26549948a056f505d040052208b",
+        "source_fact:v1:b9130fff658fffcc9e6f1c7406920cdd4927c2dccd5c33faa1f3fb27bcbdd7f3",
+        "source_fact:v1:c0eefa7496c567294f2841db9eda72fb96835b2f30885965bb5ead45d32b3ae7",
+        "source_fact:v1:f501db29f10b0ebe5cad8638055cec1b213d7d1f8cb57c93036003efa8f436fe"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "헬스케어 제2의 먹거리…디지털 사업 키우는 제약사들"
+    },
     "link:1959995cd490032db7d07437": {
       "first_seen_kst": "2026-10-06T23:19:02+09:00",
       "lanes": {
@@ -23623,6 +23833,30 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T14:10+09:00",
       "title": "고금리도 삼킨 AI 열풍⋯월가 랠리, 10년물 美국채 금리 6%가 ‘고비’"
+    },
+    "link:1d16cebc2865dd19f30bf0bb": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632466",
+      "source": "이투데이",
+      "source_body_digest": "f10ac08097ae817a5de0834b610deb3b2dd5eda5e35027985a7668fc0a1a74cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1805edc7158dc0e32d6d4aede8871fb4e2a6a119732ffacd3b67e3efbb65d933",
+      "source_fact_keys": [
+        "source_fact:v1:244bf34904b958562ab9b10d0535676983f3d528ed738c4fe5ca014ca6c185ce",
+        "source_fact:v1:26a1303ad22f428d6a50427d4bffb09897e9ce125771d31c72722177bafa56cd",
+        "source_fact:v1:6ecbf8ee8a35855a499438613e44e9e93bf3373e27bc6b6f6fea4f4e9577cff3",
+        "source_fact:v1:71955df13940a5180c951983d0341b4d852e890c9ee4141f285abc37e5a13fe7",
+        "source_fact:v1:79748fb45d6f4a9d0f9215f2cdbbec6ed41b02ab0f2750303153af49032f177b",
+        "source_fact:v1:98d95ea500ff55af7f675a36c2fe3fa31cdfd0356660a2cc0ca6ce5c59657c01",
+        "source_fact:v1:c801f8d875c4c9fab2fbae0fde73f8a61e64c83f72979d1d1ebc8203fa02ede1",
+        "source_fact:v1:e547d40f84bdf740f95e6087d4494b15413f3958bad96d9159b11614a99b51e8"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "\"삼성 따라 미국 간다?\"…몸값 뛴 국내 OSAT, 테일러행은 ‘좁은 문’"
     },
     "link:1d182986880d097f8b826570": {
       "first_seen_kst": "2026-10-06T21:40:57+09:00",
@@ -28220,6 +28454,30 @@
       "source_published_kst": "2026-10-06T10:58+09:00",
       "title": "AI 데이터센터 몰리자 전력·용수 부담…정책 재검토 나선 동남아"
     },
+    "link:43346b74c7fbf4716f695447": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632913",
+      "source": "이투데이",
+      "source_body_digest": "3584e8d16aa70624dc851cd4d6cf10c216442818344ad295751239c1241a9033",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:42aa80b938eba81baf35befd29035492a99eb12be4179b6aa713fe2097f77a17",
+      "source_fact_keys": [
+        "source_fact:v1:93e2046dd244160c8ef4cda85ec9229027e402c72662fd5bd53f8567cc143444",
+        "source_fact:v1:ab624149ce97a9360d51c79a57cdcc9e7757dc3266be20df44133a6b7dab1311",
+        "source_fact:v1:b3668d30731d033cef03603ba90b5740533ee95ee1d4070aad2edfc7a38c22fd",
+        "source_fact:v1:b3ad4b4a2470c9febba60cebd552a0ecb511f4315c489047cfde3adf5cbeb12e",
+        "source_fact:v1:df04c59a3cbf40a0c535d513ffec9716082163f188c2b9a1c0edc9284298da46",
+        "source_fact:v1:e5aab5be96ac23e32d53dbae93f03882decf74e2eef6d1dbfb272cc7d2d5c96f",
+        "source_fact:v1:eff506d2bc6ddbfeaf47a3d2e2c7a202945d6bda77d027e93ad45b6ed48ca4cf",
+        "source_fact:v1:f18d4bb579fff2225f4182505c6b712641e2a9e9b5f0df8d2101d8afeb8e94c2"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "테마 쪼개고 채권 섞고…ETF 신상품 설계 다변화 [ETF 지형도 변화]②"
+    },
     "link:43594381f033d3f16d7e4837": {
       "first_seen_kst": "2026-09-18T14:19:18+09:00",
       "lanes": {
@@ -30133,6 +30391,23 @@
       "link": "https://www.etnews.com/20261002000129",
       "source": "전자신문",
       "title": "[ET특징주] 국제유가 급등… 에쓰오일 등 정유株 강세"
+    },
+    "link:54cc5745eaaf3185b6b5475e": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169511",
+      "source": "매일경제",
+      "source_body_digest": "0a5facdbdf69c38f124b5756434345a91f64b3fc25f8295982f7848baf0118a0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c7ab3dd996378631c0e102cc29f0b81f2b0de097b85db144159568f9bf9aadf",
+      "source_fact_keys": [
+        "source_fact:v1:9c70d4f04fd66d6429e01dfa32b8f7bfdf7766abb67173cc8cdd30016f1a8706"
+      ],
+      "source_published_kst": "2026-10-06T17:33+09:00",
+      "title": "위성 15기 품고 우주로 … 촘촘히 촬영해 재난막고 안보에 활용"
     },
     "link:54e6c5b9f4262872d884c21d": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
@@ -34985,6 +35260,23 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-05T22:00+09:00",
       "title": "LG전자, 美 '에어 컨트롤 콘셉트'과 5GW AIDC 냉각솔루션 장기 공급계약"
+    },
+    "link:7c4ef002d04114c45e708d47": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006154800017",
+      "source": "연합뉴스",
+      "source_body_digest": "1a96abe146464f52a0708543af98cabd96ab8a440a614cbf2c93258f3ac595a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:77915c8ff4cc1380d03390975e5e8d9ea3d384a1516af9dcedd0ace0d5a42719",
+      "source_fact_keys": [
+        "source_fact:v1:5fe96330d2971e9ac87ab883c0c6081e0f95374d6cde1961a8aed5e8e897e412"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "[누리호 발사] 누리호 오늘 낮 우주로…위성 15기 싣고 비행 | 연합뉴스"
     },
     "link:7cac0b8c84f0cbbe4c019d12": {
       "first_seen_kst": "2026-10-06T22:37:02+09:00",
@@ -45681,6 +45973,21 @@
       "source_published_kst": "2026-10-06T08:10+09:00",
       "title": "현대차證 \"동국제강, 견조한 실적…목표가 1만3800원↑\""
     },
+    "link:dc60064c9c8ce197d3eafd16": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815344",
+      "source": "뉴시스",
+      "source_body_digest": "87147b7018ead5e050ad808babd600bdb6699dfcf54709bfd4ec5a5686f03d4c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "LG전자, 오늘 3Q 성적표 발표…사상 첫 분기 매출 24조 돌파하나"
+    },
     "link:dc7d47737357e4d1d29ffe7a": {
       "first_seen_kst": "2026-10-05T07:24:39+09:00",
       "lanes": {
@@ -48994,6 +49301,25 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=04359126645608984",
       "source": "이데일리",
       "title": "하이브랩, 프리IPO 1차 투자 유치…기업가치 1000억원"
+    },
+    "link:f955d1b262efe7351d98ccfb": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816135",
+      "source": "뉴시스",
+      "source_body_digest": "ae66a2c931db04421104003a9eb99c4015e9126ea8bc22dfea475b4a213b88a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d701613ed7c5de5760f473e87a434781af645676adebccbd6bda1c400b6b0c44",
+      "source_fact_keys": [
+        "source_fact:v1:ce097248809675e94c51b2c5b8dea8bff99dfa9c77a7ee0857131bab051a3a0d",
+        "source_fact:v1:e51c88c4c7fd48773383f9f537d4d92ae833e5b25a1c6af434bde9edafcc4b28",
+        "source_fact:v1:fefaac192e9669c4d3eb3bd794f67ad352dc82a71c31f2edddd35b06b9732053"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "오늘 '누리호 5차' 발사…한화·HD현대 등 300여개 민간 기업 뭉쳤다"
     },
     "link:f959c5cf72b7462b01caae7e": {
       "first_seen_kst": "2026-10-06T00:57:01+09:00",
@@ -57337,6 +57663,23 @@
       "source": "매일경제",
       "title": "주가 빠진 오리온, 지금이 기회?…“배당 4%대·저점 매수 유효”"
     },
+    "original:42c9436ee87a928a7d029035": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169511",
+      "source": "매일경제",
+      "source_body_digest": "0a5facdbdf69c38f124b5756434345a91f64b3fc25f8295982f7848baf0118a0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c7ab3dd996378631c0e102cc29f0b81f2b0de097b85db144159568f9bf9aadf",
+      "source_fact_keys": [
+        "source_fact:v1:9c70d4f04fd66d6429e01dfa32b8f7bfdf7766abb67173cc8cdd30016f1a8706"
+      ],
+      "source_published_kst": "2026-10-06T17:33+09:00",
+      "title": "위성 15기 품고 우주로 … 촘촘히 촬영해 재난막고 안보에 활용"
+    },
     "original:42d15a9c1b1443d00837dd2c": {
       "first_seen_kst": "2026-10-06T21:05:27+09:00",
       "lanes": {
@@ -58778,6 +59121,30 @@
       ],
       "source_published_kst": "2026-10-05T21:21+09:00",
       "title": "C.H. 로빈슨, RXO 58억 달러 인수 합의…3억 달러 시너지 목표"
+    },
+    "original:4ece24cad3f83d220df115fd": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632466",
+      "source": "이투데이",
+      "source_body_digest": "f10ac08097ae817a5de0834b610deb3b2dd5eda5e35027985a7668fc0a1a74cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1805edc7158dc0e32d6d4aede8871fb4e2a6a119732ffacd3b67e3efbb65d933",
+      "source_fact_keys": [
+        "source_fact:v1:244bf34904b958562ab9b10d0535676983f3d528ed738c4fe5ca014ca6c185ce",
+        "source_fact:v1:26a1303ad22f428d6a50427d4bffb09897e9ce125771d31c72722177bafa56cd",
+        "source_fact:v1:6ecbf8ee8a35855a499438613e44e9e93bf3373e27bc6b6f6fea4f4e9577cff3",
+        "source_fact:v1:71955df13940a5180c951983d0341b4d852e890c9ee4141f285abc37e5a13fe7",
+        "source_fact:v1:79748fb45d6f4a9d0f9215f2cdbbec6ed41b02ab0f2750303153af49032f177b",
+        "source_fact:v1:98d95ea500ff55af7f675a36c2fe3fa31cdfd0356660a2cc0ca6ce5c59657c01",
+        "source_fact:v1:c801f8d875c4c9fab2fbae0fde73f8a61e64c83f72979d1d1ebc8203fa02ede1",
+        "source_fact:v1:e547d40f84bdf740f95e6087d4494b15413f3958bad96d9159b11614a99b51e8"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "\"삼성 따라 미국 간다?\"…몸값 뛴 국내 OSAT, 테일러행은 ‘좁은 문’"
     },
     "original:4ed729438fdad0d41143202c": {
       "first_seen_kst": "2026-09-24T16:13:57+09:00",
@@ -62996,6 +63363,30 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T18:24+09:00",
       "title": "티에스모스트 등 3개사, 코스닥 상장예비심사 신청 | 연합뉴스"
+    },
+    "original:7535e4ea15ec1fec52363d26": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632913",
+      "source": "이투데이",
+      "source_body_digest": "3584e8d16aa70624dc851cd4d6cf10c216442818344ad295751239c1241a9033",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:42aa80b938eba81baf35befd29035492a99eb12be4179b6aa713fe2097f77a17",
+      "source_fact_keys": [
+        "source_fact:v1:93e2046dd244160c8ef4cda85ec9229027e402c72662fd5bd53f8567cc143444",
+        "source_fact:v1:ab624149ce97a9360d51c79a57cdcc9e7757dc3266be20df44133a6b7dab1311",
+        "source_fact:v1:b3668d30731d033cef03603ba90b5740533ee95ee1d4070aad2edfc7a38c22fd",
+        "source_fact:v1:b3ad4b4a2470c9febba60cebd552a0ecb511f4315c489047cfde3adf5cbeb12e",
+        "source_fact:v1:df04c59a3cbf40a0c535d513ffec9716082163f188c2b9a1c0edc9284298da46",
+        "source_fact:v1:e5aab5be96ac23e32d53dbae93f03882decf74e2eef6d1dbfb272cc7d2d5c96f",
+        "source_fact:v1:eff506d2bc6ddbfeaf47a3d2e2c7a202945d6bda77d027e93ad45b6ed48ca4cf",
+        "source_fact:v1:f18d4bb579fff2225f4182505c6b712641e2a9e9b5f0df8d2101d8afeb8e94c2"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "테마 쪼개고 채권 섞고…ETF 신상품 설계 다변화 [ETF 지형도 변화]②"
     },
     "original:7549558bcf1bc76d56fbe9ec": {
       "first_seen_kst": "2026-10-07T01:18:00+09:00",
@@ -70029,6 +70420,21 @@
       "source": "연합뉴스",
       "title": "당국, 정책금융 등 고정금리 확대 주력…금리인상기 위험 흡수 | 연합뉴스"
     },
+    "original:b7d8cdb93cdee19ae50df706": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815344",
+      "source": "뉴시스",
+      "source_body_digest": "87147b7018ead5e050ad808babd600bdb6699dfcf54709bfd4ec5a5686f03d4c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "LG전자, 오늘 3Q 성적표 발표…사상 첫 분기 매출 24조 돌파하나"
+    },
     "original:b80734d7e8ae31de0afef6eb": {
       "first_seen_kst": "2026-09-28T09:55:33+09:00",
       "lanes": {
@@ -72419,6 +72825,29 @@
       "source": "이데일리",
       "title": "\"내년·내후년 HBM 수급 더 빠듯\"…삼전닉스 200조 분기 영업익 시대"
     },
+    "original:cd0b6f77ba115aa5c2778dff": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2630757",
+      "source": "이투데이",
+      "source_body_digest": "102418f2c07c8a0081c174a71b64123d7d8bb69bb7e7425d3fd2414f48e15ad5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cabe09f4dd6d217caf5cfdf0b4479d030162c003580d2c63528a92cdca247462",
+      "source_fact_keys": [
+        "source_fact:v1:10081417d6b99e2743251cb6f60f1149eed6deb7d857d15d2a0160c19d5cc558",
+        "source_fact:v1:2e829400824f873a6d1fc01b6dbe98c3fad84155e2a4a33e93ace78918e331b1",
+        "source_fact:v1:5c9869fe92c3740367b69ac1dc2ca6a879fa4f935abb9a3c13cdb52fa2f2e4ca",
+        "source_fact:v1:b7253826f6c3f298ded5fbdcc0bd96f49535e26549948a056f505d040052208b",
+        "source_fact:v1:b9130fff658fffcc9e6f1c7406920cdd4927c2dccd5c33faa1f3fb27bcbdd7f3",
+        "source_fact:v1:c0eefa7496c567294f2841db9eda72fb96835b2f30885965bb5ead45d32b3ae7",
+        "source_fact:v1:f501db29f10b0ebe5cad8638055cec1b213d7d1f8cb57c93036003efa8f436fe"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "헬스케어 제2의 먹거리…디지털 사업 키우는 제약사들"
+    },
     "original:cd14ffae32f3a67f64e7e3b5": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
       "lanes": {
@@ -74098,6 +74527,23 @@
       "source_published_kst": "2026-10-05T05:47+09:00",
       "title": "단일 레버리지 20주 미만 단주, 시간외 종가매매로 '출구 마련'"
     },
+    "original:da19c25cf94417c4dc6a92f2": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006154800017",
+      "source": "연합뉴스",
+      "source_body_digest": "1a96abe146464f52a0708543af98cabd96ab8a440a614cbf2c93258f3ac595a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:77915c8ff4cc1380d03390975e5e8d9ea3d384a1516af9dcedd0ace0d5a42719",
+      "source_fact_keys": [
+        "source_fact:v1:5fe96330d2971e9ac87ab883c0c6081e0f95374d6cde1961a8aed5e8e897e412"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "[누리호 발사] 누리호 오늘 낮 우주로…위성 15기 싣고 비행 | 연합뉴스"
+    },
     "original:da22a5a52aea80a7775d2898": {
       "first_seen_kst": "2026-10-07T02:49:10+09:00",
       "lanes": {
@@ -75479,6 +75925,25 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003812266",
       "source": "뉴시스",
       "title": "\"안전한 환경조성 성과\"…한유원, 인증 3개 취득"
+    },
+    "original:e6d8c531de15852e8ff86388": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816135",
+      "source": "뉴시스",
+      "source_body_digest": "ae66a2c931db04421104003a9eb99c4015e9126ea8bc22dfea475b4a213b88a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d701613ed7c5de5760f473e87a434781af645676adebccbd6bda1c400b6b0c44",
+      "source_fact_keys": [
+        "source_fact:v1:ce097248809675e94c51b2c5b8dea8bff99dfa9c77a7ee0857131bab051a3a0d",
+        "source_fact:v1:e51c88c4c7fd48773383f9f537d4d92ae833e5b25a1c6af434bde9edafcc4b28",
+        "source_fact:v1:fefaac192e9669c4d3eb3bd794f67ad352dc82a71c31f2edddd35b06b9732053"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "오늘 '누리호 5차' 발사…한화·HD현대 등 300여개 민간 기업 뭉쳤다"
     },
     "original:e6ed0501b094ac91a11d387d": {
       "first_seen_kst": "2026-10-07T02:13:12+09:00",
@@ -78582,6 +79047,30 @@
       "source_published_kst": "2026-10-06T17:29+09:00",
       "title": "\"AI 병목 구간은 메모리\"… 삼전닉스 담는 새 글로벌ETF"
     },
+    "source_fact:021f9bef950fce25e9f58e8d": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632913",
+      "source": "이투데이",
+      "source_body_digest": "3584e8d16aa70624dc851cd4d6cf10c216442818344ad295751239c1241a9033",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:42aa80b938eba81baf35befd29035492a99eb12be4179b6aa713fe2097f77a17",
+      "source_fact_keys": [
+        "source_fact:v1:93e2046dd244160c8ef4cda85ec9229027e402c72662fd5bd53f8567cc143444",
+        "source_fact:v1:ab624149ce97a9360d51c79a57cdcc9e7757dc3266be20df44133a6b7dab1311",
+        "source_fact:v1:b3668d30731d033cef03603ba90b5740533ee95ee1d4070aad2edfc7a38c22fd",
+        "source_fact:v1:b3ad4b4a2470c9febba60cebd552a0ecb511f4315c489047cfde3adf5cbeb12e",
+        "source_fact:v1:df04c59a3cbf40a0c535d513ffec9716082163f188c2b9a1c0edc9284298da46",
+        "source_fact:v1:e5aab5be96ac23e32d53dbae93f03882decf74e2eef6d1dbfb272cc7d2d5c96f",
+        "source_fact:v1:eff506d2bc6ddbfeaf47a3d2e2c7a202945d6bda77d027e93ad45b6ed48ca4cf",
+        "source_fact:v1:f18d4bb579fff2225f4182505c6b712641e2a9e9b5f0df8d2101d8afeb8e94c2"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "테마 쪼개고 채권 섞고…ETF 신상품 설계 다변화 [ETF 지형도 변화]②"
+    },
     "source_fact:022a2ae909b53fe0a5810362": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
@@ -79466,6 +79955,30 @@
       ],
       "source_published_kst": "2026-10-06T13:24+09:00",
       "title": "통합항공사 뜨자 남은 10.58%…산은, 한진칼 지분 '엑시트 셈법' 관심집중 [fn마켓워치]"
+    },
+    "source_fact:06249968d8ebb1a5ca5cd73a": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632913",
+      "source": "이투데이",
+      "source_body_digest": "3584e8d16aa70624dc851cd4d6cf10c216442818344ad295751239c1241a9033",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:42aa80b938eba81baf35befd29035492a99eb12be4179b6aa713fe2097f77a17",
+      "source_fact_keys": [
+        "source_fact:v1:93e2046dd244160c8ef4cda85ec9229027e402c72662fd5bd53f8567cc143444",
+        "source_fact:v1:ab624149ce97a9360d51c79a57cdcc9e7757dc3266be20df44133a6b7dab1311",
+        "source_fact:v1:b3668d30731d033cef03603ba90b5740533ee95ee1d4070aad2edfc7a38c22fd",
+        "source_fact:v1:b3ad4b4a2470c9febba60cebd552a0ecb511f4315c489047cfde3adf5cbeb12e",
+        "source_fact:v1:df04c59a3cbf40a0c535d513ffec9716082163f188c2b9a1c0edc9284298da46",
+        "source_fact:v1:e5aab5be96ac23e32d53dbae93f03882decf74e2eef6d1dbfb272cc7d2d5c96f",
+        "source_fact:v1:eff506d2bc6ddbfeaf47a3d2e2c7a202945d6bda77d027e93ad45b6ed48ca4cf",
+        "source_fact:v1:f18d4bb579fff2225f4182505c6b712641e2a9e9b5f0df8d2101d8afeb8e94c2"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "테마 쪼개고 채권 섞고…ETF 신상품 설계 다변화 [ETF 지형도 변화]②"
     },
     "source_fact:065665788e9ca89d67295705": {
       "first_seen_kst": "2026-10-06T15:44:02+09:00",
@@ -83262,6 +83775,29 @@
       "source_published_kst": "2026-10-05T22:06+09:00",
       "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
     },
+    "source_fact:179b54822c4e52858a96d5c4": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2630757",
+      "source": "이투데이",
+      "source_body_digest": "102418f2c07c8a0081c174a71b64123d7d8bb69bb7e7425d3fd2414f48e15ad5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cabe09f4dd6d217caf5cfdf0b4479d030162c003580d2c63528a92cdca247462",
+      "source_fact_keys": [
+        "source_fact:v1:10081417d6b99e2743251cb6f60f1149eed6deb7d857d15d2a0160c19d5cc558",
+        "source_fact:v1:2e829400824f873a6d1fc01b6dbe98c3fad84155e2a4a33e93ace78918e331b1",
+        "source_fact:v1:5c9869fe92c3740367b69ac1dc2ca6a879fa4f935abb9a3c13cdb52fa2f2e4ca",
+        "source_fact:v1:b7253826f6c3f298ded5fbdcc0bd96f49535e26549948a056f505d040052208b",
+        "source_fact:v1:b9130fff658fffcc9e6f1c7406920cdd4927c2dccd5c33faa1f3fb27bcbdd7f3",
+        "source_fact:v1:c0eefa7496c567294f2841db9eda72fb96835b2f30885965bb5ead45d32b3ae7",
+        "source_fact:v1:f501db29f10b0ebe5cad8638055cec1b213d7d1f8cb57c93036003efa8f436fe"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "헬스케어 제2의 먹거리…디지털 사업 키우는 제약사들"
+    },
     "source_fact:179ea0b6289d8450782c15e3": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -83616,6 +84152,29 @@
       ],
       "source_published_kst": "2026-10-06T10:09+09:00",
       "title": "씨피시스템 \"글로벌 MLCC 제조사사 장비에 '로보킷' 채택\""
+    },
+    "source_fact:19c7657e6e80ac9df7a5d0ec": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2630757",
+      "source": "이투데이",
+      "source_body_digest": "102418f2c07c8a0081c174a71b64123d7d8bb69bb7e7425d3fd2414f48e15ad5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cabe09f4dd6d217caf5cfdf0b4479d030162c003580d2c63528a92cdca247462",
+      "source_fact_keys": [
+        "source_fact:v1:10081417d6b99e2743251cb6f60f1149eed6deb7d857d15d2a0160c19d5cc558",
+        "source_fact:v1:2e829400824f873a6d1fc01b6dbe98c3fad84155e2a4a33e93ace78918e331b1",
+        "source_fact:v1:5c9869fe92c3740367b69ac1dc2ca6a879fa4f935abb9a3c13cdb52fa2f2e4ca",
+        "source_fact:v1:b7253826f6c3f298ded5fbdcc0bd96f49535e26549948a056f505d040052208b",
+        "source_fact:v1:b9130fff658fffcc9e6f1c7406920cdd4927c2dccd5c33faa1f3fb27bcbdd7f3",
+        "source_fact:v1:c0eefa7496c567294f2841db9eda72fb96835b2f30885965bb5ead45d32b3ae7",
+        "source_fact:v1:f501db29f10b0ebe5cad8638055cec1b213d7d1f8cb57c93036003efa8f436fe"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "헬스케어 제2의 먹거리…디지털 사업 키우는 제약사들"
     },
     "source_fact:1a04fb6ee3102be41641d102": {
       "first_seen_kst": "2026-10-06T23:46:46+09:00",
@@ -87253,6 +87812,25 @@
       "source_published_kst": "2026-10-06T11:08+09:00",
       "title": "\"농지 특조법 특례 2∼3년 설정·농지법 개정 동시 추진 필요\" | 연합뉴스"
     },
+    "source_fact:29e9fb0ac085302fc5b8ddc1": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816135",
+      "source": "뉴시스",
+      "source_body_digest": "ae66a2c931db04421104003a9eb99c4015e9126ea8bc22dfea475b4a213b88a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d701613ed7c5de5760f473e87a434781af645676adebccbd6bda1c400b6b0c44",
+      "source_fact_keys": [
+        "source_fact:v1:ce097248809675e94c51b2c5b8dea8bff99dfa9c77a7ee0857131bab051a3a0d",
+        "source_fact:v1:e51c88c4c7fd48773383f9f537d4d92ae833e5b25a1c6af434bde9edafcc4b28",
+        "source_fact:v1:fefaac192e9669c4d3eb3bd794f67ad352dc82a71c31f2edddd35b06b9732053"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "오늘 '누리호 5차' 발사…한화·HD현대 등 300여개 민간 기업 뭉쳤다"
+    },
     "source_fact:2a02750a14612efc04d04d3b": {
       "first_seen_kst": "2026-10-06T15:14:29+09:00",
       "lanes": {
@@ -87810,6 +88388,30 @@
       "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "수도권은 집 부족…지방은 수요 부족해 공공주택 착공 연기 | 연합뉴스"
     },
+    "source_fact:2c63a4fa14c3b8beb33cb1ba": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632913",
+      "source": "이투데이",
+      "source_body_digest": "3584e8d16aa70624dc851cd4d6cf10c216442818344ad295751239c1241a9033",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:42aa80b938eba81baf35befd29035492a99eb12be4179b6aa713fe2097f77a17",
+      "source_fact_keys": [
+        "source_fact:v1:93e2046dd244160c8ef4cda85ec9229027e402c72662fd5bd53f8567cc143444",
+        "source_fact:v1:ab624149ce97a9360d51c79a57cdcc9e7757dc3266be20df44133a6b7dab1311",
+        "source_fact:v1:b3668d30731d033cef03603ba90b5740533ee95ee1d4070aad2edfc7a38c22fd",
+        "source_fact:v1:b3ad4b4a2470c9febba60cebd552a0ecb511f4315c489047cfde3adf5cbeb12e",
+        "source_fact:v1:df04c59a3cbf40a0c535d513ffec9716082163f188c2b9a1c0edc9284298da46",
+        "source_fact:v1:e5aab5be96ac23e32d53dbae93f03882decf74e2eef6d1dbfb272cc7d2d5c96f",
+        "source_fact:v1:eff506d2bc6ddbfeaf47a3d2e2c7a202945d6bda77d027e93ad45b6ed48ca4cf",
+        "source_fact:v1:f18d4bb579fff2225f4182505c6b712641e2a9e9b5f0df8d2101d8afeb8e94c2"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "테마 쪼개고 채권 섞고…ETF 신상품 설계 다변화 [ETF 지형도 변화]②"
+    },
     "source_fact:2c8cb62a296cddfaf27d8ecc": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
@@ -88204,6 +88806,29 @@
       ],
       "source_published_kst": "2026-10-06T14:58+09:00",
       "title": "김정관 \"HBM 기술우위 중요해…서남권 반도체 공장 빨리 지어야\""
+    },
+    "source_fact:2e9e78ef670490ccee9bb36a": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2630757",
+      "source": "이투데이",
+      "source_body_digest": "102418f2c07c8a0081c174a71b64123d7d8bb69bb7e7425d3fd2414f48e15ad5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cabe09f4dd6d217caf5cfdf0b4479d030162c003580d2c63528a92cdca247462",
+      "source_fact_keys": [
+        "source_fact:v1:10081417d6b99e2743251cb6f60f1149eed6deb7d857d15d2a0160c19d5cc558",
+        "source_fact:v1:2e829400824f873a6d1fc01b6dbe98c3fad84155e2a4a33e93ace78918e331b1",
+        "source_fact:v1:5c9869fe92c3740367b69ac1dc2ca6a879fa4f935abb9a3c13cdb52fa2f2e4ca",
+        "source_fact:v1:b7253826f6c3f298ded5fbdcc0bd96f49535e26549948a056f505d040052208b",
+        "source_fact:v1:b9130fff658fffcc9e6f1c7406920cdd4927c2dccd5c33faa1f3fb27bcbdd7f3",
+        "source_fact:v1:c0eefa7496c567294f2841db9eda72fb96835b2f30885965bb5ead45d32b3ae7",
+        "source_fact:v1:f501db29f10b0ebe5cad8638055cec1b213d7d1f8cb57c93036003efa8f436fe"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "헬스케어 제2의 먹거리…디지털 사업 키우는 제약사들"
     },
     "source_fact:2ea259dce890845454bfa5ab": {
       "first_seen_kst": "2026-10-06T22:08:07+09:00",
@@ -89506,6 +90131,30 @@
       "source_published_kst": "2026-10-05T21:02+09:00",
       "title": "레졸루트, FDA 3상 실패에도 BLA 사전회의 권고"
     },
+    "source_fact:3388f11aab2840e7c9748471": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632466",
+      "source": "이투데이",
+      "source_body_digest": "f10ac08097ae817a5de0834b610deb3b2dd5eda5e35027985a7668fc0a1a74cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1805edc7158dc0e32d6d4aede8871fb4e2a6a119732ffacd3b67e3efbb65d933",
+      "source_fact_keys": [
+        "source_fact:v1:244bf34904b958562ab9b10d0535676983f3d528ed738c4fe5ca014ca6c185ce",
+        "source_fact:v1:26a1303ad22f428d6a50427d4bffb09897e9ce125771d31c72722177bafa56cd",
+        "source_fact:v1:6ecbf8ee8a35855a499438613e44e9e93bf3373e27bc6b6f6fea4f4e9577cff3",
+        "source_fact:v1:71955df13940a5180c951983d0341b4d852e890c9ee4141f285abc37e5a13fe7",
+        "source_fact:v1:79748fb45d6f4a9d0f9215f2cdbbec6ed41b02ab0f2750303153af49032f177b",
+        "source_fact:v1:98d95ea500ff55af7f675a36c2fe3fa31cdfd0356660a2cc0ca6ce5c59657c01",
+        "source_fact:v1:c801f8d875c4c9fab2fbae0fde73f8a61e64c83f72979d1d1ebc8203fa02ede1",
+        "source_fact:v1:e547d40f84bdf740f95e6087d4494b15413f3958bad96d9159b11614a99b51e8"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "\"삼성 따라 미국 간다?\"…몸값 뛴 국내 OSAT, 테일러행은 ‘좁은 문’"
+    },
     "source_fact:33a86638b0ea86e02c976880": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
       "lanes": {
@@ -89581,6 +90230,30 @@
       ],
       "source_published_kst": "2026-10-06T12:08+09:00",
       "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
+    },
+    "source_fact:341e9ee2ab7de6f6eb66e888": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632913",
+      "source": "이투데이",
+      "source_body_digest": "3584e8d16aa70624dc851cd4d6cf10c216442818344ad295751239c1241a9033",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:42aa80b938eba81baf35befd29035492a99eb12be4179b6aa713fe2097f77a17",
+      "source_fact_keys": [
+        "source_fact:v1:93e2046dd244160c8ef4cda85ec9229027e402c72662fd5bd53f8567cc143444",
+        "source_fact:v1:ab624149ce97a9360d51c79a57cdcc9e7757dc3266be20df44133a6b7dab1311",
+        "source_fact:v1:b3668d30731d033cef03603ba90b5740533ee95ee1d4070aad2edfc7a38c22fd",
+        "source_fact:v1:b3ad4b4a2470c9febba60cebd552a0ecb511f4315c489047cfde3adf5cbeb12e",
+        "source_fact:v1:df04c59a3cbf40a0c535d513ffec9716082163f188c2b9a1c0edc9284298da46",
+        "source_fact:v1:e5aab5be96ac23e32d53dbae93f03882decf74e2eef6d1dbfb272cc7d2d5c96f",
+        "source_fact:v1:eff506d2bc6ddbfeaf47a3d2e2c7a202945d6bda77d027e93ad45b6ed48ca4cf",
+        "source_fact:v1:f18d4bb579fff2225f4182505c6b712641e2a9e9b5f0df8d2101d8afeb8e94c2"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "테마 쪼개고 채권 섞고…ETF 신상품 설계 다변화 [ETF 지형도 변화]②"
     },
     "source_fact:345dde260f76cda121a5df87": {
       "first_seen_kst": "2026-10-06T15:44:02+09:00",
@@ -90105,6 +90778,30 @@
       ],
       "source_published_kst": "2026-10-05T12:32+09:00",
       "title": "엔씨 '아이온2' 글로벌 정식 출시... 얼리액세스 동접 17만명"
+    },
+    "source_fact:36c427245afe5d2f00bedd00": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632913",
+      "source": "이투데이",
+      "source_body_digest": "3584e8d16aa70624dc851cd4d6cf10c216442818344ad295751239c1241a9033",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:42aa80b938eba81baf35befd29035492a99eb12be4179b6aa713fe2097f77a17",
+      "source_fact_keys": [
+        "source_fact:v1:93e2046dd244160c8ef4cda85ec9229027e402c72662fd5bd53f8567cc143444",
+        "source_fact:v1:ab624149ce97a9360d51c79a57cdcc9e7757dc3266be20df44133a6b7dab1311",
+        "source_fact:v1:b3668d30731d033cef03603ba90b5740533ee95ee1d4070aad2edfc7a38c22fd",
+        "source_fact:v1:b3ad4b4a2470c9febba60cebd552a0ecb511f4315c489047cfde3adf5cbeb12e",
+        "source_fact:v1:df04c59a3cbf40a0c535d513ffec9716082163f188c2b9a1c0edc9284298da46",
+        "source_fact:v1:e5aab5be96ac23e32d53dbae93f03882decf74e2eef6d1dbfb272cc7d2d5c96f",
+        "source_fact:v1:eff506d2bc6ddbfeaf47a3d2e2c7a202945d6bda77d027e93ad45b6ed48ca4cf",
+        "source_fact:v1:f18d4bb579fff2225f4182505c6b712641e2a9e9b5f0df8d2101d8afeb8e94c2"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "테마 쪼개고 채권 섞고…ETF 신상품 설계 다변화 [ETF 지형도 변화]②"
     },
     "source_fact:36c57678ea4d5fcc7939b7ce": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
@@ -96337,6 +97034,30 @@
       "source_published_kst": "2026-10-06T14:55+09:00",
       "title": "대전시 아이들 밥상 챙긴다…학교급식 식품비 15% 인상"
     },
+    "source_fact:5182efcbbe7c27dd3c2a3ac3": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632913",
+      "source": "이투데이",
+      "source_body_digest": "3584e8d16aa70624dc851cd4d6cf10c216442818344ad295751239c1241a9033",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:42aa80b938eba81baf35befd29035492a99eb12be4179b6aa713fe2097f77a17",
+      "source_fact_keys": [
+        "source_fact:v1:93e2046dd244160c8ef4cda85ec9229027e402c72662fd5bd53f8567cc143444",
+        "source_fact:v1:ab624149ce97a9360d51c79a57cdcc9e7757dc3266be20df44133a6b7dab1311",
+        "source_fact:v1:b3668d30731d033cef03603ba90b5740533ee95ee1d4070aad2edfc7a38c22fd",
+        "source_fact:v1:b3ad4b4a2470c9febba60cebd552a0ecb511f4315c489047cfde3adf5cbeb12e",
+        "source_fact:v1:df04c59a3cbf40a0c535d513ffec9716082163f188c2b9a1c0edc9284298da46",
+        "source_fact:v1:e5aab5be96ac23e32d53dbae93f03882decf74e2eef6d1dbfb272cc7d2d5c96f",
+        "source_fact:v1:eff506d2bc6ddbfeaf47a3d2e2c7a202945d6bda77d027e93ad45b6ed48ca4cf",
+        "source_fact:v1:f18d4bb579fff2225f4182505c6b712641e2a9e9b5f0df8d2101d8afeb8e94c2"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "테마 쪼개고 채권 섞고…ETF 신상품 설계 다변화 [ETF 지형도 변화]②"
+    },
     "source_fact:51ab4a00d5943d4098e9adfc": {
       "first_seen_kst": "2026-10-07T02:13:12+09:00",
       "lanes": {
@@ -96628,6 +97349,30 @@
       ],
       "source_published_kst": "2026-10-06T12:00+09:00",
       "title": "대한상의·감사원 사전컨설팅에 멈춘 공공주택 3936세대 ‘물꼬’"
+    },
+    "source_fact:52f6c2bb253ff3accffc58a4": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632913",
+      "source": "이투데이",
+      "source_body_digest": "3584e8d16aa70624dc851cd4d6cf10c216442818344ad295751239c1241a9033",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:42aa80b938eba81baf35befd29035492a99eb12be4179b6aa713fe2097f77a17",
+      "source_fact_keys": [
+        "source_fact:v1:93e2046dd244160c8ef4cda85ec9229027e402c72662fd5bd53f8567cc143444",
+        "source_fact:v1:ab624149ce97a9360d51c79a57cdcc9e7757dc3266be20df44133a6b7dab1311",
+        "source_fact:v1:b3668d30731d033cef03603ba90b5740533ee95ee1d4070aad2edfc7a38c22fd",
+        "source_fact:v1:b3ad4b4a2470c9febba60cebd552a0ecb511f4315c489047cfde3adf5cbeb12e",
+        "source_fact:v1:df04c59a3cbf40a0c535d513ffec9716082163f188c2b9a1c0edc9284298da46",
+        "source_fact:v1:e5aab5be96ac23e32d53dbae93f03882decf74e2eef6d1dbfb272cc7d2d5c96f",
+        "source_fact:v1:eff506d2bc6ddbfeaf47a3d2e2c7a202945d6bda77d027e93ad45b6ed48ca4cf",
+        "source_fact:v1:f18d4bb579fff2225f4182505c6b712641e2a9e9b5f0df8d2101d8afeb8e94c2"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "테마 쪼개고 채권 섞고…ETF 신상품 설계 다변화 [ETF 지형도 변화]②"
     },
     "source_fact:52f9070ca35217b9f28cf8cf": {
       "first_seen_kst": "2026-10-06T20:54:05+09:00",
@@ -98955,6 +99700,25 @@
       "source_published_kst": "2026-10-06T15:28+09:00",
       "title": "한 주에 10% 뛴 광통신 ETF…\"AI 데이터센터 전력난이 복병\""
     },
+    "source_fact:5c1f6a7b890642b1eba7d2ae": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816135",
+      "source": "뉴시스",
+      "source_body_digest": "ae66a2c931db04421104003a9eb99c4015e9126ea8bc22dfea475b4a213b88a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d701613ed7c5de5760f473e87a434781af645676adebccbd6bda1c400b6b0c44",
+      "source_fact_keys": [
+        "source_fact:v1:ce097248809675e94c51b2c5b8dea8bff99dfa9c77a7ee0857131bab051a3a0d",
+        "source_fact:v1:e51c88c4c7fd48773383f9f537d4d92ae833e5b25a1c6af434bde9edafcc4b28",
+        "source_fact:v1:fefaac192e9669c4d3eb3bd794f67ad352dc82a71c31f2edddd35b06b9732053"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "오늘 '누리호 5차' 발사…한화·HD현대 등 300여개 민간 기업 뭉쳤다"
+    },
     "source_fact:5c2b51c753c4961db32adbec": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -100146,6 +100910,30 @@
       "source_published_kst": "2026-10-06T01:21+09:00",
       "title": "美 9월 서비스업 확장세 둔화… 가격지수 4년여 만에 최고"
     },
+    "source_fact:60ec595ce34f7b2e7ea09058": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632466",
+      "source": "이투데이",
+      "source_body_digest": "f10ac08097ae817a5de0834b610deb3b2dd5eda5e35027985a7668fc0a1a74cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1805edc7158dc0e32d6d4aede8871fb4e2a6a119732ffacd3b67e3efbb65d933",
+      "source_fact_keys": [
+        "source_fact:v1:244bf34904b958562ab9b10d0535676983f3d528ed738c4fe5ca014ca6c185ce",
+        "source_fact:v1:26a1303ad22f428d6a50427d4bffb09897e9ce125771d31c72722177bafa56cd",
+        "source_fact:v1:6ecbf8ee8a35855a499438613e44e9e93bf3373e27bc6b6f6fea4f4e9577cff3",
+        "source_fact:v1:71955df13940a5180c951983d0341b4d852e890c9ee4141f285abc37e5a13fe7",
+        "source_fact:v1:79748fb45d6f4a9d0f9215f2cdbbec6ed41b02ab0f2750303153af49032f177b",
+        "source_fact:v1:98d95ea500ff55af7f675a36c2fe3fa31cdfd0356660a2cc0ca6ce5c59657c01",
+        "source_fact:v1:c801f8d875c4c9fab2fbae0fde73f8a61e64c83f72979d1d1ebc8203fa02ede1",
+        "source_fact:v1:e547d40f84bdf740f95e6087d4494b15413f3958bad96d9159b11614a99b51e8"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "\"삼성 따라 미국 간다?\"…몸값 뛴 국내 OSAT, 테일러행은 ‘좁은 문’"
+    },
     "source_fact:612e67a6244cad885abf8976": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -100316,6 +101104,25 @@
       ],
       "source_published_kst": "2026-10-06T15:34+09:00",
       "title": "\"세계 3위 車시장서 월 최대 판매\" 현대차, 푸네공장 앞세워 '인도 공략' 속도"
+    },
+    "source_fact:6237d08a0b83079d8587ff62": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816135",
+      "source": "뉴시스",
+      "source_body_digest": "ae66a2c931db04421104003a9eb99c4015e9126ea8bc22dfea475b4a213b88a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d701613ed7c5de5760f473e87a434781af645676adebccbd6bda1c400b6b0c44",
+      "source_fact_keys": [
+        "source_fact:v1:ce097248809675e94c51b2c5b8dea8bff99dfa9c77a7ee0857131bab051a3a0d",
+        "source_fact:v1:e51c88c4c7fd48773383f9f537d4d92ae833e5b25a1c6af434bde9edafcc4b28",
+        "source_fact:v1:fefaac192e9669c4d3eb3bd794f67ad352dc82a71c31f2edddd35b06b9732053"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "오늘 '누리호 5차' 발사…한화·HD현대 등 300여개 민간 기업 뭉쳤다"
     },
     "source_fact:6248e730851067c78e4809ea": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
@@ -103047,6 +103854,30 @@
       "source_published_kst": "2026-10-06T11:36+09:00",
       "title": "지역 일자리 창출·육아휴직 확산…경사노위 6대 과제 윤곽"
     },
+    "source_fact:6e5d3b6561beefc13ec64d2f": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632466",
+      "source": "이투데이",
+      "source_body_digest": "f10ac08097ae817a5de0834b610deb3b2dd5eda5e35027985a7668fc0a1a74cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1805edc7158dc0e32d6d4aede8871fb4e2a6a119732ffacd3b67e3efbb65d933",
+      "source_fact_keys": [
+        "source_fact:v1:244bf34904b958562ab9b10d0535676983f3d528ed738c4fe5ca014ca6c185ce",
+        "source_fact:v1:26a1303ad22f428d6a50427d4bffb09897e9ce125771d31c72722177bafa56cd",
+        "source_fact:v1:6ecbf8ee8a35855a499438613e44e9e93bf3373e27bc6b6f6fea4f4e9577cff3",
+        "source_fact:v1:71955df13940a5180c951983d0341b4d852e890c9ee4141f285abc37e5a13fe7",
+        "source_fact:v1:79748fb45d6f4a9d0f9215f2cdbbec6ed41b02ab0f2750303153af49032f177b",
+        "source_fact:v1:98d95ea500ff55af7f675a36c2fe3fa31cdfd0356660a2cc0ca6ce5c59657c01",
+        "source_fact:v1:c801f8d875c4c9fab2fbae0fde73f8a61e64c83f72979d1d1ebc8203fa02ede1",
+        "source_fact:v1:e547d40f84bdf740f95e6087d4494b15413f3958bad96d9159b11614a99b51e8"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "\"삼성 따라 미국 간다?\"…몸값 뛴 국내 OSAT, 테일러행은 ‘좁은 문’"
+    },
     "source_fact:6e77c23c03a7f65ee9090d7e": {
       "first_seen_kst": "2026-10-07T02:24:39+09:00",
       "lanes": {
@@ -103270,6 +104101,29 @@
       ],
       "source_published_kst": "2026-10-06T07:29+09:00",
       "title": "부산 청년기업, 국내 최초 디지털제품여권 상용화"
+    },
+    "source_fact:6fb9b7ea35500ebf6f43568a": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2630757",
+      "source": "이투데이",
+      "source_body_digest": "102418f2c07c8a0081c174a71b64123d7d8bb69bb7e7425d3fd2414f48e15ad5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cabe09f4dd6d217caf5cfdf0b4479d030162c003580d2c63528a92cdca247462",
+      "source_fact_keys": [
+        "source_fact:v1:10081417d6b99e2743251cb6f60f1149eed6deb7d857d15d2a0160c19d5cc558",
+        "source_fact:v1:2e829400824f873a6d1fc01b6dbe98c3fad84155e2a4a33e93ace78918e331b1",
+        "source_fact:v1:5c9869fe92c3740367b69ac1dc2ca6a879fa4f935abb9a3c13cdb52fa2f2e4ca",
+        "source_fact:v1:b7253826f6c3f298ded5fbdcc0bd96f49535e26549948a056f505d040052208b",
+        "source_fact:v1:b9130fff658fffcc9e6f1c7406920cdd4927c2dccd5c33faa1f3fb27bcbdd7f3",
+        "source_fact:v1:c0eefa7496c567294f2841db9eda72fb96835b2f30885965bb5ead45d32b3ae7",
+        "source_fact:v1:f501db29f10b0ebe5cad8638055cec1b213d7d1f8cb57c93036003efa8f436fe"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "헬스케어 제2의 먹거리…디지털 사업 키우는 제약사들"
     },
     "source_fact:6fba241373d124a76714bc2d": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
@@ -112318,6 +113172,54 @@
       "source_published_kst": "2026-10-06T17:18+09:00",
       "title": "국고채 금리, 대외금리 연동하며 혼조세…3년물 3.933%(종합) | 연합뉴스"
     },
+    "source_fact:95c8b3a20d5a0ff6ab4eb450": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632913",
+      "source": "이투데이",
+      "source_body_digest": "3584e8d16aa70624dc851cd4d6cf10c216442818344ad295751239c1241a9033",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:42aa80b938eba81baf35befd29035492a99eb12be4179b6aa713fe2097f77a17",
+      "source_fact_keys": [
+        "source_fact:v1:93e2046dd244160c8ef4cda85ec9229027e402c72662fd5bd53f8567cc143444",
+        "source_fact:v1:ab624149ce97a9360d51c79a57cdcc9e7757dc3266be20df44133a6b7dab1311",
+        "source_fact:v1:b3668d30731d033cef03603ba90b5740533ee95ee1d4070aad2edfc7a38c22fd",
+        "source_fact:v1:b3ad4b4a2470c9febba60cebd552a0ecb511f4315c489047cfde3adf5cbeb12e",
+        "source_fact:v1:df04c59a3cbf40a0c535d513ffec9716082163f188c2b9a1c0edc9284298da46",
+        "source_fact:v1:e5aab5be96ac23e32d53dbae93f03882decf74e2eef6d1dbfb272cc7d2d5c96f",
+        "source_fact:v1:eff506d2bc6ddbfeaf47a3d2e2c7a202945d6bda77d027e93ad45b6ed48ca4cf",
+        "source_fact:v1:f18d4bb579fff2225f4182505c6b712641e2a9e9b5f0df8d2101d8afeb8e94c2"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "테마 쪼개고 채권 섞고…ETF 신상품 설계 다변화 [ETF 지형도 변화]②"
+    },
+    "source_fact:95d1882c93fc817326ddde5c": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632466",
+      "source": "이투데이",
+      "source_body_digest": "f10ac08097ae817a5de0834b610deb3b2dd5eda5e35027985a7668fc0a1a74cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1805edc7158dc0e32d6d4aede8871fb4e2a6a119732ffacd3b67e3efbb65d933",
+      "source_fact_keys": [
+        "source_fact:v1:244bf34904b958562ab9b10d0535676983f3d528ed738c4fe5ca014ca6c185ce",
+        "source_fact:v1:26a1303ad22f428d6a50427d4bffb09897e9ce125771d31c72722177bafa56cd",
+        "source_fact:v1:6ecbf8ee8a35855a499438613e44e9e93bf3373e27bc6b6f6fea4f4e9577cff3",
+        "source_fact:v1:71955df13940a5180c951983d0341b4d852e890c9ee4141f285abc37e5a13fe7",
+        "source_fact:v1:79748fb45d6f4a9d0f9215f2cdbbec6ed41b02ab0f2750303153af49032f177b",
+        "source_fact:v1:98d95ea500ff55af7f675a36c2fe3fa31cdfd0356660a2cc0ca6ce5c59657c01",
+        "source_fact:v1:c801f8d875c4c9fab2fbae0fde73f8a61e64c83f72979d1d1ebc8203fa02ede1",
+        "source_fact:v1:e547d40f84bdf740f95e6087d4494b15413f3958bad96d9159b11614a99b51e8"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "\"삼성 따라 미국 간다?\"…몸값 뛴 국내 OSAT, 테일러행은 ‘좁은 문’"
+    },
     "source_fact:960b84e54fc29bb7972e8350": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
       "lanes": {
@@ -113268,6 +114170,29 @@
       ],
       "source_published_kst": "2026-10-06T16:23+09:00",
       "title": "LIG아큐버, 자회사 통해 전장 사업 외연 넓히나"
+    },
+    "source_fact:9934bdd18c2f9e0f862565df": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2630757",
+      "source": "이투데이",
+      "source_body_digest": "102418f2c07c8a0081c174a71b64123d7d8bb69bb7e7425d3fd2414f48e15ad5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cabe09f4dd6d217caf5cfdf0b4479d030162c003580d2c63528a92cdca247462",
+      "source_fact_keys": [
+        "source_fact:v1:10081417d6b99e2743251cb6f60f1149eed6deb7d857d15d2a0160c19d5cc558",
+        "source_fact:v1:2e829400824f873a6d1fc01b6dbe98c3fad84155e2a4a33e93ace78918e331b1",
+        "source_fact:v1:5c9869fe92c3740367b69ac1dc2ca6a879fa4f935abb9a3c13cdb52fa2f2e4ca",
+        "source_fact:v1:b7253826f6c3f298ded5fbdcc0bd96f49535e26549948a056f505d040052208b",
+        "source_fact:v1:b9130fff658fffcc9e6f1c7406920cdd4927c2dccd5c33faa1f3fb27bcbdd7f3",
+        "source_fact:v1:c0eefa7496c567294f2841db9eda72fb96835b2f30885965bb5ead45d32b3ae7",
+        "source_fact:v1:f501db29f10b0ebe5cad8638055cec1b213d7d1f8cb57c93036003efa8f436fe"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "헬스케어 제2의 먹거리…디지털 사업 키우는 제약사들"
     },
     "source_fact:994eb342a2809132b9a96aed": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
@@ -116584,6 +117509,30 @@
       "source_published_kst": "2026-10-06T11:36+09:00",
       "title": "신보·부산은행, K-콘텐츠 기업에 100억원 협약보증 공급"
     },
+    "source_fact:a8323b3284cdbca596cef5b0": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632466",
+      "source": "이투데이",
+      "source_body_digest": "f10ac08097ae817a5de0834b610deb3b2dd5eda5e35027985a7668fc0a1a74cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1805edc7158dc0e32d6d4aede8871fb4e2a6a119732ffacd3b67e3efbb65d933",
+      "source_fact_keys": [
+        "source_fact:v1:244bf34904b958562ab9b10d0535676983f3d528ed738c4fe5ca014ca6c185ce",
+        "source_fact:v1:26a1303ad22f428d6a50427d4bffb09897e9ce125771d31c72722177bafa56cd",
+        "source_fact:v1:6ecbf8ee8a35855a499438613e44e9e93bf3373e27bc6b6f6fea4f4e9577cff3",
+        "source_fact:v1:71955df13940a5180c951983d0341b4d852e890c9ee4141f285abc37e5a13fe7",
+        "source_fact:v1:79748fb45d6f4a9d0f9215f2cdbbec6ed41b02ab0f2750303153af49032f177b",
+        "source_fact:v1:98d95ea500ff55af7f675a36c2fe3fa31cdfd0356660a2cc0ca6ce5c59657c01",
+        "source_fact:v1:c801f8d875c4c9fab2fbae0fde73f8a61e64c83f72979d1d1ebc8203fa02ede1",
+        "source_fact:v1:e547d40f84bdf740f95e6087d4494b15413f3958bad96d9159b11614a99b51e8"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "\"삼성 따라 미국 간다?\"…몸값 뛴 국내 OSAT, 테일러행은 ‘좁은 문’"
+    },
     "source_fact:a8443956bf0777a4a89408fb": {
       "first_seen_kst": "2026-10-06T01:51:09+09:00",
       "lanes": {
@@ -118278,6 +119227,30 @@
       ],
       "source_published_kst": "2026-10-06T08:46+09:00",
       "title": "LIG가 찜한 부품사…“디와이씨, 방산 가치 주가에 안 담겼다”"
+    },
+    "source_fact:b060c3a608aca11c63850b68": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632466",
+      "source": "이투데이",
+      "source_body_digest": "f10ac08097ae817a5de0834b610deb3b2dd5eda5e35027985a7668fc0a1a74cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1805edc7158dc0e32d6d4aede8871fb4e2a6a119732ffacd3b67e3efbb65d933",
+      "source_fact_keys": [
+        "source_fact:v1:244bf34904b958562ab9b10d0535676983f3d528ed738c4fe5ca014ca6c185ce",
+        "source_fact:v1:26a1303ad22f428d6a50427d4bffb09897e9ce125771d31c72722177bafa56cd",
+        "source_fact:v1:6ecbf8ee8a35855a499438613e44e9e93bf3373e27bc6b6f6fea4f4e9577cff3",
+        "source_fact:v1:71955df13940a5180c951983d0341b4d852e890c9ee4141f285abc37e5a13fe7",
+        "source_fact:v1:79748fb45d6f4a9d0f9215f2cdbbec6ed41b02ab0f2750303153af49032f177b",
+        "source_fact:v1:98d95ea500ff55af7f675a36c2fe3fa31cdfd0356660a2cc0ca6ce5c59657c01",
+        "source_fact:v1:c801f8d875c4c9fab2fbae0fde73f8a61e64c83f72979d1d1ebc8203fa02ede1",
+        "source_fact:v1:e547d40f84bdf740f95e6087d4494b15413f3958bad96d9159b11614a99b51e8"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "\"삼성 따라 미국 간다?\"…몸값 뛴 국내 OSAT, 테일러행은 ‘좁은 문’"
     },
     "source_fact:b06858540fa72b463a372984": {
       "first_seen_kst": "2026-10-07T01:59:08+09:00",
@@ -122165,6 +123138,30 @@
       "source_published_kst": "2026-10-06T15:09+09:00",
       "title": "AI팩토리에 승부 건 엔비디아 \"생산성·수명·범용성이 수익 좌우\""
     },
+    "source_fact:c0c5f2bcaa5aa116a59267df": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632466",
+      "source": "이투데이",
+      "source_body_digest": "f10ac08097ae817a5de0834b610deb3b2dd5eda5e35027985a7668fc0a1a74cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1805edc7158dc0e32d6d4aede8871fb4e2a6a119732ffacd3b67e3efbb65d933",
+      "source_fact_keys": [
+        "source_fact:v1:244bf34904b958562ab9b10d0535676983f3d528ed738c4fe5ca014ca6c185ce",
+        "source_fact:v1:26a1303ad22f428d6a50427d4bffb09897e9ce125771d31c72722177bafa56cd",
+        "source_fact:v1:6ecbf8ee8a35855a499438613e44e9e93bf3373e27bc6b6f6fea4f4e9577cff3",
+        "source_fact:v1:71955df13940a5180c951983d0341b4d852e890c9ee4141f285abc37e5a13fe7",
+        "source_fact:v1:79748fb45d6f4a9d0f9215f2cdbbec6ed41b02ab0f2750303153af49032f177b",
+        "source_fact:v1:98d95ea500ff55af7f675a36c2fe3fa31cdfd0356660a2cc0ca6ce5c59657c01",
+        "source_fact:v1:c801f8d875c4c9fab2fbae0fde73f8a61e64c83f72979d1d1ebc8203fa02ede1",
+        "source_fact:v1:e547d40f84bdf740f95e6087d4494b15413f3958bad96d9159b11614a99b51e8"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "\"삼성 따라 미국 간다?\"…몸값 뛴 국내 OSAT, 테일러행은 ‘좁은 문’"
+    },
     "source_fact:c0d26384155975a05c1108f1": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
       "lanes": {
@@ -122886,6 +123883,29 @@
       ],
       "source_published_kst": "2026-10-05T09:39+09:00",
       "title": "“20좌 안 되면 못 파나”…단일종목 레버리지 ‘단주 출구’ 만든다"
+    },
+    "source_fact:c397aa9a39e3476d5b2e666d": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2630757",
+      "source": "이투데이",
+      "source_body_digest": "102418f2c07c8a0081c174a71b64123d7d8bb69bb7e7425d3fd2414f48e15ad5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cabe09f4dd6d217caf5cfdf0b4479d030162c003580d2c63528a92cdca247462",
+      "source_fact_keys": [
+        "source_fact:v1:10081417d6b99e2743251cb6f60f1149eed6deb7d857d15d2a0160c19d5cc558",
+        "source_fact:v1:2e829400824f873a6d1fc01b6dbe98c3fad84155e2a4a33e93ace78918e331b1",
+        "source_fact:v1:5c9869fe92c3740367b69ac1dc2ca6a879fa4f935abb9a3c13cdb52fa2f2e4ca",
+        "source_fact:v1:b7253826f6c3f298ded5fbdcc0bd96f49535e26549948a056f505d040052208b",
+        "source_fact:v1:b9130fff658fffcc9e6f1c7406920cdd4927c2dccd5c33faa1f3fb27bcbdd7f3",
+        "source_fact:v1:c0eefa7496c567294f2841db9eda72fb96835b2f30885965bb5ead45d32b3ae7",
+        "source_fact:v1:f501db29f10b0ebe5cad8638055cec1b213d7d1f8cb57c93036003efa8f436fe"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "헬스케어 제2의 먹거리…디지털 사업 키우는 제약사들"
     },
     "source_fact:c3c30a6dd2ff05b6d04634f4": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
@@ -124384,6 +125404,23 @@
       "source_published_kst": "2026-10-06T06:27+09:00",
       "title": "국제유가, 1%대 하락…중동 원유 수출 회복·G7 비축유 방출"
     },
+    "source_fact:c9b72e29624f95ea506a588d": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006154800017",
+      "source": "연합뉴스",
+      "source_body_digest": "1a96abe146464f52a0708543af98cabd96ab8a440a614cbf2c93258f3ac595a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:77915c8ff4cc1380d03390975e5e8d9ea3d384a1516af9dcedd0ace0d5a42719",
+      "source_fact_keys": [
+        "source_fact:v1:5fe96330d2971e9ac87ab883c0c6081e0f95374d6cde1961a8aed5e8e897e412"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "[누리호 발사] 누리호 오늘 낮 우주로…위성 15기 싣고 비행 | 연합뉴스"
+    },
     "source_fact:c9e1e832e90a01a86bfed8e2": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
       "lanes": {
@@ -124401,6 +125438,29 @@
       ],
       "source_published_kst": "2026-10-06T11:35+09:00",
       "title": "日 ‘신중’ 알래스카 LNG 프로젝트…밴스 부통령 “韓과 조율…결국 이뤄질 일” [대미투자]"
+    },
+    "source_fact:c9f0dd330ea868fd07aa9c54": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2630757",
+      "source": "이투데이",
+      "source_body_digest": "102418f2c07c8a0081c174a71b64123d7d8bb69bb7e7425d3fd2414f48e15ad5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cabe09f4dd6d217caf5cfdf0b4479d030162c003580d2c63528a92cdca247462",
+      "source_fact_keys": [
+        "source_fact:v1:10081417d6b99e2743251cb6f60f1149eed6deb7d857d15d2a0160c19d5cc558",
+        "source_fact:v1:2e829400824f873a6d1fc01b6dbe98c3fad84155e2a4a33e93ace78918e331b1",
+        "source_fact:v1:5c9869fe92c3740367b69ac1dc2ca6a879fa4f935abb9a3c13cdb52fa2f2e4ca",
+        "source_fact:v1:b7253826f6c3f298ded5fbdcc0bd96f49535e26549948a056f505d040052208b",
+        "source_fact:v1:b9130fff658fffcc9e6f1c7406920cdd4927c2dccd5c33faa1f3fb27bcbdd7f3",
+        "source_fact:v1:c0eefa7496c567294f2841db9eda72fb96835b2f30885965bb5ead45d32b3ae7",
+        "source_fact:v1:f501db29f10b0ebe5cad8638055cec1b213d7d1f8cb57c93036003efa8f436fe"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "헬스케어 제2의 먹거리…디지털 사업 키우는 제약사들"
     },
     "source_fact:ca0968644b9450e7e0217770": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -133303,6 +134363,23 @@
       "source_published_kst": "2026-10-06T15:52+09:00",
       "title": "국내 주식형 ETF 리밸런싱 8일 집중…\"삼전 비중축소 전망\""
     },
+    "source_fact:ed37e7f19d63dca22e49108f": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169511",
+      "source": "매일경제",
+      "source_body_digest": "0a5facdbdf69c38f124b5756434345a91f64b3fc25f8295982f7848baf0118a0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c7ab3dd996378631c0e102cc29f0b81f2b0de097b85db144159568f9bf9aadf",
+      "source_fact_keys": [
+        "source_fact:v1:9c70d4f04fd66d6429e01dfa32b8f7bfdf7766abb67173cc8cdd30016f1a8706"
+      ],
+      "source_published_kst": "2026-10-06T17:33+09:00",
+      "title": "위성 15기 품고 우주로 … 촘촘히 촬영해 재난막고 안보에 활용"
+    },
     "source_fact:ed3c804fbbfe180db5a46652": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
       "lanes": {
@@ -135714,6 +136791,30 @@
       ],
       "source_published_kst": "2026-10-06T17:14+09:00",
       "title": "알테오젠, 국민성장펀드 등 2천억원 규모 투자 유치(종합) | 연합뉴스"
+    },
+    "source_fact:f89c4c8c8ba6c099ab8cc5a0": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632466",
+      "source": "이투데이",
+      "source_body_digest": "f10ac08097ae817a5de0834b610deb3b2dd5eda5e35027985a7668fc0a1a74cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1805edc7158dc0e32d6d4aede8871fb4e2a6a119732ffacd3b67e3efbb65d933",
+      "source_fact_keys": [
+        "source_fact:v1:244bf34904b958562ab9b10d0535676983f3d528ed738c4fe5ca014ca6c185ce",
+        "source_fact:v1:26a1303ad22f428d6a50427d4bffb09897e9ce125771d31c72722177bafa56cd",
+        "source_fact:v1:6ecbf8ee8a35855a499438613e44e9e93bf3373e27bc6b6f6fea4f4e9577cff3",
+        "source_fact:v1:71955df13940a5180c951983d0341b4d852e890c9ee4141f285abc37e5a13fe7",
+        "source_fact:v1:79748fb45d6f4a9d0f9215f2cdbbec6ed41b02ab0f2750303153af49032f177b",
+        "source_fact:v1:98d95ea500ff55af7f675a36c2fe3fa31cdfd0356660a2cc0ca6ce5c59657c01",
+        "source_fact:v1:c801f8d875c4c9fab2fbae0fde73f8a61e64c83f72979d1d1ebc8203fa02ede1",
+        "source_fact:v1:e547d40f84bdf740f95e6087d4494b15413f3958bad96d9159b11614a99b51e8"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "\"삼성 따라 미국 간다?\"…몸값 뛴 국내 OSAT, 테일러행은 ‘좁은 문’"
     },
     "source_fact:f8b1acf1c057bba51ebd749d": {
       "first_seen_kst": "2026-10-07T04:29:18+09:00",
@@ -145319,6 +146420,23 @@
       "source": "매일경제",
       "title": "주가 빠진 오리온, 지금이 기회?…“배당 4%대·저점 매수 유효”"
     },
+    "title:42c9436ee87a928a7d029035": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169511",
+      "source": "매일경제",
+      "source_body_digest": "0a5facdbdf69c38f124b5756434345a91f64b3fc25f8295982f7848baf0118a0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c7ab3dd996378631c0e102cc29f0b81f2b0de097b85db144159568f9bf9aadf",
+      "source_fact_keys": [
+        "source_fact:v1:9c70d4f04fd66d6429e01dfa32b8f7bfdf7766abb67173cc8cdd30016f1a8706"
+      ],
+      "source_published_kst": "2026-10-06T17:33+09:00",
+      "title": "위성 15기 품고 우주로 … 촘촘히 촬영해 재난막고 안보에 활용"
+    },
     "title:42d15a9c1b1443d00837dd2c": {
       "first_seen_kst": "2026-10-06T21:05:27+09:00",
       "lanes": {
@@ -146760,6 +147878,30 @@
       ],
       "source_published_kst": "2026-10-05T21:21+09:00",
       "title": "C.H. 로빈슨, RXO 58억 달러 인수 합의…3억 달러 시너지 목표"
+    },
+    "title:4ece24cad3f83d220df115fd": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632466",
+      "source": "이투데이",
+      "source_body_digest": "f10ac08097ae817a5de0834b610deb3b2dd5eda5e35027985a7668fc0a1a74cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1805edc7158dc0e32d6d4aede8871fb4e2a6a119732ffacd3b67e3efbb65d933",
+      "source_fact_keys": [
+        "source_fact:v1:244bf34904b958562ab9b10d0535676983f3d528ed738c4fe5ca014ca6c185ce",
+        "source_fact:v1:26a1303ad22f428d6a50427d4bffb09897e9ce125771d31c72722177bafa56cd",
+        "source_fact:v1:6ecbf8ee8a35855a499438613e44e9e93bf3373e27bc6b6f6fea4f4e9577cff3",
+        "source_fact:v1:71955df13940a5180c951983d0341b4d852e890c9ee4141f285abc37e5a13fe7",
+        "source_fact:v1:79748fb45d6f4a9d0f9215f2cdbbec6ed41b02ab0f2750303153af49032f177b",
+        "source_fact:v1:98d95ea500ff55af7f675a36c2fe3fa31cdfd0356660a2cc0ca6ce5c59657c01",
+        "source_fact:v1:c801f8d875c4c9fab2fbae0fde73f8a61e64c83f72979d1d1ebc8203fa02ede1",
+        "source_fact:v1:e547d40f84bdf740f95e6087d4494b15413f3958bad96d9159b11614a99b51e8"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "\"삼성 따라 미국 간다?\"…몸값 뛴 국내 OSAT, 테일러행은 ‘좁은 문’"
     },
     "title:4ed729438fdad0d41143202c": {
       "first_seen_kst": "2026-09-24T16:13:57+09:00",
@@ -151020,6 +152162,30 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T18:24+09:00",
       "title": "티에스모스트 등 3개사, 코스닥 상장예비심사 신청 | 연합뉴스"
+    },
+    "title:7535e4ea15ec1fec52363d26": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632913",
+      "source": "이투데이",
+      "source_body_digest": "3584e8d16aa70624dc851cd4d6cf10c216442818344ad295751239c1241a9033",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:42aa80b938eba81baf35befd29035492a99eb12be4179b6aa713fe2097f77a17",
+      "source_fact_keys": [
+        "source_fact:v1:93e2046dd244160c8ef4cda85ec9229027e402c72662fd5bd53f8567cc143444",
+        "source_fact:v1:ab624149ce97a9360d51c79a57cdcc9e7757dc3266be20df44133a6b7dab1311",
+        "source_fact:v1:b3668d30731d033cef03603ba90b5740533ee95ee1d4070aad2edfc7a38c22fd",
+        "source_fact:v1:b3ad4b4a2470c9febba60cebd552a0ecb511f4315c489047cfde3adf5cbeb12e",
+        "source_fact:v1:df04c59a3cbf40a0c535d513ffec9716082163f188c2b9a1c0edc9284298da46",
+        "source_fact:v1:e5aab5be96ac23e32d53dbae93f03882decf74e2eef6d1dbfb272cc7d2d5c96f",
+        "source_fact:v1:eff506d2bc6ddbfeaf47a3d2e2c7a202945d6bda77d027e93ad45b6ed48ca4cf",
+        "source_fact:v1:f18d4bb579fff2225f4182505c6b712641e2a9e9b5f0df8d2101d8afeb8e94c2"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "테마 쪼개고 채권 섞고…ETF 신상품 설계 다변화 [ETF 지형도 변화]②"
     },
     "title:7540221a649ae5c157b0871a": {
       "first_seen_kst": "2026-10-06T18:16:47+09:00",
@@ -158285,6 +159451,21 @@
       "source": "연합뉴스",
       "title": "당국, 정책금융 등 고정금리 확대 주력…금리인상기 위험 흡수 | 연합뉴스"
     },
+    "title:b7d8cdb93cdee19ae50df706": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815344",
+      "source": "뉴시스",
+      "source_body_digest": "87147b7018ead5e050ad808babd600bdb6699dfcf54709bfd4ec5a5686f03d4c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "LG전자, 오늘 3Q 성적표 발표…사상 첫 분기 매출 24조 돌파하나"
+    },
     "title:b80734d7e8ae31de0afef6eb": {
       "first_seen_kst": "2026-09-28T09:55:33+09:00",
       "lanes": {
@@ -160696,6 +161877,29 @@
       "source": "이데일리",
       "title": "\"내년·내후년 HBM 수급 더 빠듯\"…삼전닉스 200조 분기 영업익 시대"
     },
+    "title:cd0b6f77ba115aa5c2778dff": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2630757",
+      "source": "이투데이",
+      "source_body_digest": "102418f2c07c8a0081c174a71b64123d7d8bb69bb7e7425d3fd2414f48e15ad5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cabe09f4dd6d217caf5cfdf0b4479d030162c003580d2c63528a92cdca247462",
+      "source_fact_keys": [
+        "source_fact:v1:10081417d6b99e2743251cb6f60f1149eed6deb7d857d15d2a0160c19d5cc558",
+        "source_fact:v1:2e829400824f873a6d1fc01b6dbe98c3fad84155e2a4a33e93ace78918e331b1",
+        "source_fact:v1:5c9869fe92c3740367b69ac1dc2ca6a879fa4f935abb9a3c13cdb52fa2f2e4ca",
+        "source_fact:v1:b7253826f6c3f298ded5fbdcc0bd96f49535e26549948a056f505d040052208b",
+        "source_fact:v1:b9130fff658fffcc9e6f1c7406920cdd4927c2dccd5c33faa1f3fb27bcbdd7f3",
+        "source_fact:v1:c0eefa7496c567294f2841db9eda72fb96835b2f30885965bb5ead45d32b3ae7",
+        "source_fact:v1:f501db29f10b0ebe5cad8638055cec1b213d7d1f8cb57c93036003efa8f436fe"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "헬스케어 제2의 먹거리…디지털 사업 키우는 제약사들"
+    },
     "title:cd14ffae32f3a67f64e7e3b5": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
       "lanes": {
@@ -162385,6 +163589,23 @@
       "source_published_kst": "2026-10-05T05:47+09:00",
       "title": "단일 레버리지 20주 미만 단주, 시간외 종가매매로 '출구 마련'"
     },
+    "title:da19c25cf94417c4dc6a92f2": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006154800017",
+      "source": "연합뉴스",
+      "source_body_digest": "1a96abe146464f52a0708543af98cabd96ab8a440a614cbf2c93258f3ac595a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:77915c8ff4cc1380d03390975e5e8d9ea3d384a1516af9dcedd0ace0d5a42719",
+      "source_fact_keys": [
+        "source_fact:v1:5fe96330d2971e9ac87ab883c0c6081e0f95374d6cde1961a8aed5e8e897e412"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "[누리호 발사] 누리호 오늘 낮 우주로…위성 15기 싣고 비행 | 연합뉴스"
+    },
     "title:da22a5a52aea80a7775d2898": {
       "first_seen_kst": "2026-10-07T02:49:10+09:00",
       "lanes": {
@@ -163818,6 +165039,25 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003812266",
       "source": "뉴시스",
       "title": "\"안전한 환경조성 성과\"…한유원, 인증 3개 취득"
+    },
+    "title:e6d8c531de15852e8ff86388": {
+      "first_seen_kst": "2026-10-07T05:13:11+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:13:11+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:13:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816135",
+      "source": "뉴시스",
+      "source_body_digest": "ae66a2c931db04421104003a9eb99c4015e9126ea8bc22dfea475b4a213b88a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d701613ed7c5de5760f473e87a434781af645676adebccbd6bda1c400b6b0c44",
+      "source_fact_keys": [
+        "source_fact:v1:ce097248809675e94c51b2c5b8dea8bff99dfa9c77a7ee0857131bab051a3a0d",
+        "source_fact:v1:e51c88c4c7fd48773383f9f537d4d92ae833e5b25a1c6af434bde9edafcc4b28",
+        "source_fact:v1:fefaac192e9669c4d3eb3bd794f67ad352dc82a71c31f2edddd35b06b9732053"
+      ],
+      "source_published_kst": "2026-10-07T05:00+09:00",
+      "title": "오늘 '누리호 5차' 발사…한화·HD현대 등 300여개 민간 기업 뭉쳤다"
     },
     "title:e6ed0501b094ac91a11d387d": {
       "first_seen_kst": "2026-10-07T02:13:12+09:00",
@@ -166481,5 +167721,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-07T04:49:54+09:00"
+  "updated_at_kst": "2026-10-07T05:13:11+09:00"
 }
