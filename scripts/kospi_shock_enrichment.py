@@ -1003,10 +1003,10 @@ def build_enrichment(
     else:
         lines.append("• 연결 ETF의 구간 가격 확인 불가")
 
-    lines += ["", "<b>지수 하락기여 후보</b>"]
+    lines += ["", "<b>시가총액 기준 하락압력 후보</b>"]
     if cap_proxy:
         proxy_names = " → ".join(html.escape(x["name"]) for x in cap_proxy[:3])
-        lines.append(f"• 시가총액×구간수익률 근사: <b>{proxy_names}</b>")
+        lines.append(f"• 시가총액×구간수익률 단순 근사: <b>{proxy_names}</b>")
     else:
         lines.append("• 근사 기여도 계산 불가")
 
@@ -1019,7 +1019,7 @@ def build_enrichment(
         "• LS 프로그램 원값은 단위를 임의로 억원 환산하지 않습니다.",
         "• 특정 업종·테마의 외국인 직접 순매도액으로 바꿔 쓰지 않습니다.",
         "• ETF는 2차시장 가격과 PDF 겹침을 보여주며, ETF 자금 유출로 단정하지 않습니다.",
-        "• 지수 하락기여 후보는 시가총액×구간수익률 근사치이며 KOSPI 유동시가총액 가중치로 계산한 정확한 지수 포인트 기여도가 아닙니다.",
+        "• 시가총액 기준 하락압력 후보는 단순 근사치입니다. KOSPI 유동시가총액 가중치로 계산한 정확한 지수 포인트 기여도로 표현하지 않습니다.",
     ]
     text = "\n".join(lines)
     if len(text) > 3900:
