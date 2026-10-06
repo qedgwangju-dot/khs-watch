@@ -64,7 +64,8 @@ jobs:
           from pathlib import Path
           p=Path(".github/workflows/kospi-derivatives-flow-ls-realtime.yml")
           s=p.read_text(encoding="utf-8")
-          assert r"\${{" not in s, "escaped GitHub expression found"
+          bad = "\\" + "$" + "{{"
+          assert bad not in s, "escaped GitHub expression found"
           assert "morning:" in s and "afternoon:" in s, "split jobs missing"
           assert "--handoff-out out/kospi_shock_handoff.json" in s, "morning handoff missing"
           assert "--handoff-in out/kospi_shock_handoff.json" in s, "afternoon handoff missing"
