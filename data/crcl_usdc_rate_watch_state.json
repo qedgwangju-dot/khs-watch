@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-06T03:27:44+09:00",
+  "updated_at_kst": "2026-10-06T09:49:14+09:00",
   "circle": {
     "date": "2026-09-24",
     "circulation_usd_b": 75.2,
@@ -10,10 +10,10 @@
     }
   },
   "usdxx": {
-    "date": "2026-10-02",
-    "sec_yield_7d": 3.83,
-    "yield_7d": 3.83,
-    "yield_1d": 3.82,
+    "date": "2026-10-05",
+    "sec_yield_7d": 3.82,
+    "yield_7d": 3.82,
+    "yield_1d": null,
     "yield_crosscheck_gap_bp": 0.0,
     "fund_size_usd_m": 62467.4,
     "fund_size_date": "2026-10-02",
@@ -22,10 +22,10 @@
     "ticker": "USDXX",
     "cusip": "09261A870",
     "_previous_distinct": {
-      "date": "2026-10-01",
-      "sec_yield_7d": 3.84,
+      "date": "2026-10-02",
+      "sec_yield_7d": 3.83,
       "fund_size_usd_m": 62467.4,
-      "fund_size_date": "2026-10-01"
+      "fund_size_date": "2026-10-02"
     }
   },
   "sofr": {
@@ -38,14 +38,14 @@
     "source_url": "https://fred.stlouisfed.org/series/SOFR"
   },
   "treasury": {
-    "date": "2026-10-02",
-    "three_month": 4.19,
-    "ten_year": 5.28,
-    "prev_date": "2026-10-01",
-    "prev_three_month": 4.17,
-    "prev_ten_year": 5.24,
-    "daily_3m_bp": 2.0,
-    "daily_10y_bp": 4.0,
+    "date": "2026-10-05",
+    "three_month": 4.22,
+    "ten_year": 5.31,
+    "prev_date": "2026-10-02",
+    "prev_three_month": 4.19,
+    "prev_ten_year": 5.28,
+    "daily_3m_bp": 3.0,
+    "daily_10y_bp": 3.0,
     "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
   },
   "crcl": {
@@ -65,12 +65,15 @@
   "fx": {
     "rate": 1359.6,
     "date": "2026-10-02",
-    "requested_date": "2026-10-02",
+    "requested_date": "2026-10-05",
     "source": "한국은행 ECOS 원/미국달러(매매기준율)",
     "source_url": "https://ecos.bok.or.kr/",
     "official": true,
     "crosscheck": "Yahoo Finance 교차검증 접근 불가"
   },
-  "crcl_last_alerted_close_date": "2026-10-02",
-  "errors": []
+  "crcl_last_alerted_close_date": "2026-10-05",
+  "errors": [
+    "crcl: source date regressed 2026-10-02 < 2026-10-05; previous snapshot kept",
+    "tbx: source date regressed 2026-10-02 < 2026-10-05; previous snapshot kept"
+  ]
 }
