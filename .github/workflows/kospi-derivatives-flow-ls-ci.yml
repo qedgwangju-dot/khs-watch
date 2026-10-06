@@ -58,6 +58,21 @@ jobs:
           python scripts/test_kospi_shock_enrichment.py
           python scripts/test_kospi_flow_attribution_strict.py
 
+      - name: Verify production workflow structure
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path(".github/workflows/kospi-derivatives-flow-ls-realtime.yml")
+          s=p.read_text(encoding="utf-8")
+          assert r"\${{" not in s, "escaped GitHub expression found"
+          assert "morning:" in s and "afternoon:" in s, "split jobs missing"
+          assert "--handoff-out out/kospi_shock_handoff.json" in s, "morning handoff missing"
+          assert "--handoff-in out/kospi_shock_handoff.json" in s, "afternoon handoff missing"
+          assert "timeout-minutes: 430" not in s, "GitHub-hosted 6h limit unsafe timeout remains"
+          assert "actions/download-artifact@v4" in s, "handoff artifact download missing"
+          print("production_workflow_structure_valid=true")
+          PY
+
       - name: Verify production leader election API
         env:
           GH_TOKEN: ${{ github.token }}
