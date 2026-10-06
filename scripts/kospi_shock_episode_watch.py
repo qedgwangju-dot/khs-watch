@@ -779,15 +779,30 @@ class Watch:
                   "• " + " · ".join([link(KOSPI_URL,"KOSPI"), link(NEWS_URL,"급락 뉴스"), link(LS_URL,"LS OpenAPI")])]
         return "\n".join(lines)
 
-    def build_end(self, ep: dict[str, Any], end_ts: float, end_price: float) -> str:
+    def build_end(
+        self,
+        ep: dict[str, Any],
+        end_ts: float,
+        end_price: float,
+        session_close: bool = False,
+    ) -> str:
         att = self.attribution(float(ep["start_ts"]), float(ep["low_ts"]))
         drop = pct(float(ep["start_price"]), float(ep["low_price"])) or 0.0
         rebound = pct(float(ep["low_price"]), end_price) or 0.0
-        lines = ["🟢 <b>코스피 급락 사건구간 종료·복원 확인</b>", f"<code>{dt.datetime.now(KST):%Y-%m-%d %H:%M:%S} KST</code>", "",
+        title = (
+            "🟣 <b>코스피 급락 사건구간 장마감 확정</b>"
+            if session_close else
+            "🟢 <b>코스피 급락 사건구간 종료·복원 확인</b>"
+        )
+        lines = [title, f"<code>{dt.datetime.now(KST):%Y-%m-%d %H:%M:%S} KST</code>", "",
                  "<b>확정된 급락 구간</b>",
                  f"• <b>{fmt_clock(ep['start_ts'])} → {fmt_clock(ep['low_ts'])}</b> · {fmt_duration(float(ep['low_ts'])-float(ep['start_ts']))}",
                  f"• KOSPI <b>{float(ep['start_price']):,.2f}</b> → <b>{float(ep['low_price']):,.2f}</b> · <b>{drop:+.2f}%</b>",
-                 f"• 저점 이후 현재 <b>{end_price:,.2f}</b> · 반등 <b>{rebound:+.2f}%</b>", "",
+                 (
+                     f"• 저점 이후 장마감 <b>{end_price:,.2f}</b> · 반등 <b>{rebound:+.2f}%</b>"
+                     if session_close else
+                     f"• 저점 이후 현재 <b>{end_price:,.2f}</b> · 반등 <b>{rebound:+.2f}%</b>"
+                 ), "",
                  "<b>저점까지 실제 매도주체</b>"]
         if att.get("available"):
             s, f, p = att["spot"], att["futures"], att["program"]
@@ -804,6 +819,8 @@ class Watch:
                       f"• 최종 판정: <b>{html.escape(str(att.get('verdict')))}</b> · 확신도 {html.escape(str(att.get('confidence')))}"]
         else:
             lines += [f"• 가격 구간만 확정 — {html.escape(str(att.get('reason') or '수급 스냅샷 부족'))}"]
+        if session_close:
+            lines += ["", "• <b>장 마감으로 사건 추적을 종료합니다. 복원 여부는 확정하지 않습니다.</b>"]
         lines += ["", "• 현물·프로그램은 <b>통합 기준</b>, KOSPI200 선물은 파생시장 기준",
                   "• " + " · ".join([link(KOSPI_URL,"KOSPI"), link(NEWS_URL,"관련 뉴스")])]
         return "\n".join(lines)
@@ -1057,8 +1074,14 @@ class Watch:
 
             await self.evaluate()
 
-            # production 장중 생존검사: REST 가격과 수급 모두 최근 데이터여야 한다.
-            if test_seconds is None and dt.time(9, 2) <= now.time() < until and time.time() - started >= 60:
+            # production 장중 생존검사: 현물 정규시장 종료 직후에는
+            # 마지막 종가 데이터가 더 이상 움직이지 않으므로 15:31부터 stale 검사를 멈춘다.
+            if (
+                test_seconds is None
+                and dt.time(9, 2) <= now.time() < dt.time(15, 31)
+                and now.time() < until
+                and time.time() - started >= 60
+            ):
                 now_ts = time.time()
                 if self.last_idx_tick_ts is None or now_ts - self.last_idx_tick_ts > 90:
                     raise RuntimeError(f"KOSPI REST price stale >90s; last_error={last_poll_error}")
@@ -1068,6 +1091,22 @@ class Watch:
                     raise RuntimeError("LS spot/futures/program flow snapshot stale >180s")
 
             await asyncio.sleep(0.6)
+
+        if test_seconds is None and self.episode is not None and self.idx:
+            ep = self.episode
+            end_ts, end_price = self.idx[-1]
+            final_att = self.attribution(float(ep["start_ts"]), float(ep["low_ts"]))
+            msg_id = await asyncio.to_thread(
+                telegram_send,
+                self.build_end(ep, end_ts, end_price, session_close=True),
+            )
+            self.msg_ids.append(msg_id)
+            self._record_delivery("close", msg_id, ep, end_ts)
+            ep_copy = json.loads(json.dumps(ep))
+            task = asyncio.create_task(self._run_enrichment(ep_copy, final_att))
+            self.enrichment_tasks.add(task)
+            task.add_done_callback(self.enrichment_tasks.discard)
+            self.episode = None
 
         if self.flow_task:
             try:
@@ -1153,7 +1192,7 @@ def parse_hhmm(s: str) -> dt.time:
 
 def main() -> int:
     ap = argparse.ArgumentParser(); ap.add_argument("--test", action="store_true"); ap.add_argument("--test-seconds", type=int, default=12)
-    ap.add_argument("--synthetic-test", action="store_true"); ap.add_argument("--until", default="15:25")
+    ap.add_argument("--synthetic-test", action="store_true"); ap.add_argument("--until", default="15:32")
     ap.add_argument("--handoff-in"); ap.add_argument("--handoff-out")
     args = ap.parse_args()
     if args.synthetic_test: return synthetic_test()
