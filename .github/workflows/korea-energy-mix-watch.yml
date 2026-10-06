@@ -49,6 +49,18 @@ jobs:
           python -m compileall -q scripts/korea_energy_mix_watch.py scripts/korea_energy_mix_watch_runner.py
           pytest -q tests/test_korea_energy_mix_watch.py
 
+      - name: Google News 원문 URL 해제 일회성 점검
+        if: github.event_name == 'push'
+        run: |
+          python - <<'PY'
+          from scripts.korea_energy_mix_watch_runner import resolve_article_url
+          url = "https://news.google.com/rss/articles/CBMieEFVX3lxTE9WRDZacW91SG1rTWlNaFU2aDQ4ZDRSbDhISXdPblRnR1JWZXk1VXdvTmZDUHNXM3JCODlwbWE4QjJmbjdMNVFTeWw2b2JUOUJWbTkxNURyTHpKclNLWXlGNWNaZ2FJUU0taTBSUEhIM0lqcXBJYnRGQw?oc=5"
+          resolved = resolve_article_url(url)
+          print(f"google_news_smoke_resolved={resolved}")
+          if not resolved.startswith("http") or "news.google.com" in resolved:
+              raise SystemExit("Google News 원문 URL 해제 실패")
+          PY
+
       - name: 전기본·전원믹스 확인
         id: energy
         if: github.event_name != 'push'
