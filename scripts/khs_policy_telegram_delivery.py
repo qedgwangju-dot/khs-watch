@@ -46,6 +46,37 @@ def deliver_policy_parts(
     effective_digest = _semantic_delivery_digest(
         parts, digest=digest, route=route, title=title
     )
+    if not force:
+        parent = sent_state.get(effective_digest, {})
+        try:
+            parent_sent_at = dt.datetime.fromisoformat(
+                str(parent.get("sent_at_utc", "")).replace("Z", "+00:00")
+            )
+            parent_recent = (
+                dt.timedelta(0)
+                <= now_utc - parent_sent_at
+                < dt.timedelta(hours=dedupe_hours)
+            )
+        except (TypeError, ValueError):
+            parent_recent = False
+        parent_ids = parent.get("message_ids") or (
+            [parent.get("message_id")] if parent.get("message_id") is not None else []
+        )
+        parent_ids = [
+            int(value)
+            for value in parent_ids
+            if isinstance(value, int) and not isinstance(value, bool) and value > 0
+        ]
+        if parent_recent and parent_ids:
+            checkpoint({
+                "status": "deduped",
+                "route": route,
+                "digest": effective_digest,
+                "confirmed_message_ids": parent_ids,
+                "new_message_ids": [],
+            })
+            return {"confirmed_message_ids": parent_ids, "new_message_ids": []}
+
     confirmed_ids: list[int] = []
     new_ids: list[int] = []
     stamp = now_utc.isoformat().replace("+00:00", "Z")
@@ -69,7 +100,7 @@ def deliver_policy_parts(
         new_ids.append(message_id)
         sent_state[part_key] = {
             "sent_at_utc": stamp, "route": route, "title": title,
-            "parent_digest": digest, "part_index": index, "part_count": len(parts),
+            "parent_digest": effective_digest, "part_index": index, "part_count": len(parts),
             "message_id": message_id,
         }
         # Persist the acknowledgment before sending the next part.
