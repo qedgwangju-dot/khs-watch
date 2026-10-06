@@ -408,7 +408,6 @@ on_peace = row(
         "선원 12명이 부상했고 이 중 11명은 인도인으로, 오만으로 이송돼 치료를 받았다."
     ),
 )
-on_peace["published"] = "Tue, 06 Oct 2026 20:07:00 +0000"
 s, tags = mod.score_item(on_peace, dt.datetime.now(mod.watch.KST))
 check("oct07-on-peace-specific-detected", mod._hormuz_on_peace_attack(on_peace))
 check("oct07-on-peace-red", mod.final_color(on_peace) == "red" and "선원12명부상" in tags)
@@ -421,7 +420,6 @@ iran_unknown = row(
     source="Walter Bloomberg",
     description="Multiple explosions were heard in Sirik, Qeshm and Minab; no hostile projectile or airstrike was officially confirmed.",
 )
-iran_unknown["published"] = "Tue, 06 Oct 2026 17:24:00 +0000"
 s, tags = mod.score_item(iran_unknown, dt.datetime.now(mod.watch.KST))
 check("oct07-iran-south-unattributed-detected", mod._iran_south_unattributed_explosions(iran_unknown))
 check("oct07-iran-south-unattributed-yellow", mod.final_color(iran_unknown) == "yellow" and "확전" not in tags and "원인미확정" in tags)
