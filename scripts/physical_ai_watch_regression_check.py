@@ -2195,4 +2195,61 @@ panasonic_unverified_integrated_platform = make(
 g, s, c, k = classify(panasonic_unverified_integrated_platform)
 assert s < 11, ("unverified integrated-platform claim must stay silent", g, s, c)
 
+# 42) NVIDIA/Foxconn GB300 live-factory robot KPI lane.
+# These are task success rates, not overall GB300 manufacturing yield.
+foxconn_gb300_kpi = make(
+    "NVIDIA robots clear 95% assembly success on GB300 NVL72",
+    (
+        "NVIDIA and Foxconn reported live production results at the Houston factory for GB300 NVL72 tester-tray assembly. "
+        "Robots exceeded 95% success on busbar assembly and reached 90-95% on multi-connector insertion. "
+        "The busbar cycle time is about 160 seconds versus a 124-second target, and both tasks target 99.5% success."
+    ),
+    "Tech Times",
+)
+g, s, c, k = classify(foxconn_gb300_kpi)
+assert g == "nvidia_robotics_exec", (g, s, c)
+assert c.endswith("폭스콘 GB300 실제 조립 KPI 첫 정량화"), c
+assert s >= 11, s
+
+foxconn_gb300_kpi_rewrite = make(
+    "Nvidia, Hon Hai use robots to improve GB300 assembly success rates",
+    (
+        "NVIDIA and Hon Hai said robots assembling the GB300 NVL72 tester tray achieved more than 95% success "
+        "for busbar assembly and 90 to 95 percent for connector insertion, with a 124-second busbar target "
+        "and 99.5% target success."
+    ),
+    "Focus Taiwan",
+)
+g2, s2, c2, k2 = classify(foxconn_gb300_kpi_rewrite)
+assert g2 == "nvidia_robotics_exec", (g2, s2, c2)
+assert c2.endswith("폭스콘 GB300 실제 조립 KPI 첫 정량화"), c2
+assert s2 >= 11, s2
+assert k2 == k, ("same GB300 factory KPI must dedupe across publishers", k, k2)
+
+foxconn_gb300_unverified = make(
+    "NVIDIA Foxconn GB300 robot yield rumor",
+    (
+        "An unnamed blog claims NVIDIA and Foxconn GB300 NVL72 robot assembly reached 97% success "
+        "and a 140 second cycle time at a factory."
+    ),
+    "Unknown Blog",
+)
+g3, s3, c3, k3 = classify(foxconn_gb300_unverified)
+assert g3 == "nvidia_robotics_exec", (g3, s3, c3)
+assert s3 < 11, ("unverified factory KPI rumor must stay silent", s3, c3)
+
+foxconn_gb300_target_hit = make(
+    "NVIDIA Foxconn GB300 robots reach manufacturing targets",
+    (
+        "NVIDIA and Foxconn confirmed that GB300 NVL72 tester-tray robots achieved 99.5% task success "
+        "and reduced busbar cycle time to 124 seconds or less in Houston production."
+    ),
+    "NVIDIA",
+)
+g4, s4, c4, k4 = classify(foxconn_gb300_target_hit)
+assert g4 == "nvidia_robotics_exec", (g4, s4, c4)
+assert c4.endswith("폭스콘 GB300 로봇 조립 99.5%·사이클타임 목표 달성"), c4
+assert s4 >= 11, s4
+assert k4 != k, "future target achievement must be a new event, not deduped to the initial KPI"
+
 print("Physical-AI watcher regression guards: PASS")
