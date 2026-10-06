@@ -62,7 +62,7 @@ class AbfCpuMonetizationParseTests(unittest.TestCase):
         self.assertEqual(parsed["goldman_abf_shortfall_2028_pct"], 51.0)
 
     def test_feynman_area_parser_requires_research_scope(self):
-        text = "Feynman 2028 substrate area is estimated at 3-5 times the 2026 level."
+        text = "Feynman 2028 ABF substrate area is estimated at 3-5 times the 2026 level."
         parsed = w.parse_research_update(text, "https://www.edaily.co.kr/example")
         self.assertEqual(parsed["feynman_2028_area_vs_2026_min_multiple"], 3.0)
         self.assertEqual(parsed["feynman_2028_area_vs_2026_max_multiple"], 5.0)
