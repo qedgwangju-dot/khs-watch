@@ -28,6 +28,14 @@ jobs:
       run_production: ${{ steps.elect.outputs.run_production }}
       run_morning: ${{ steps.elect.outputs.run_morning }}
     steps:
+      - name: Checkout calendar helper
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install calendar dependency
+        run: python -m pip install --disable-pip-version-check --quiet exchange_calendars
       - name: Elect single production workflow
         id: elect
         env:
@@ -36,8 +44,10 @@ jobs:
           CURRENT_RUN_ID: ${{ github.run_id }}
         run: |
           python - <<'PY'
-          import datetime as dt, json, os, urllib.request
+          import datetime as dt, json, os, sys, urllib.request
           from zoneinfo import ZoneInfo
+          sys.path.insert(0, "scripts")
+          from krx_session_calendar import session_state
 
           repo=os.environ["REPOSITORY"]
           current=int(os.environ["CURRENT_RUN_ID"])
@@ -48,7 +58,14 @@ jobs:
               "X-GitHub-Api-Version":"2022-11-28",
           }
           now=dt.datetime.now(ZoneInfo("Asia/Seoul"))
-          eligible=(now.weekday()<5 and dt.time(8,15)<=now.time()<=dt.time(15,32))
+          session=session_state(now)
+          eligible=bool(
+              session["is_session"]
+              and session["open"] is not None
+              and session["close"] is not None
+              and session["open"]-dt.timedelta(minutes=45) <= now
+              and now <= session["close"]+dt.timedelta(minutes=2)
+          )
           should_run=False
           active=[]
           healthy=[]
@@ -92,7 +109,7 @@ jobs:
               fp.write(f"run_production={'1' if should_run else '0'}\n")
               fp.write(f"run_morning={'1' if run_morning else '0'}\n")
           print(
-              f"kospi_gate_eligible={eligible} should_run={should_run} "
+              f"kospi_gate_session={session['is_session']} eligible={eligible} should_run={should_run} "
               f"run_morning={run_morning} healthy={healthy} startup={startup} "
               f"unknown={unknown} active={[(x[1],x[2]) for x in active]}"
           )
@@ -196,6 +213,7 @@ jobs:
             out/kospi_shock_delivery_log.jsonl
             out/kospi_shock_enrichment_latest.json
             out/kospi_industry_flow.jsonl
+            out/krx_market_closed.flag
           if-no-files-found: ignore
           retention-days: 14
 
@@ -299,5 +317,6 @@ jobs:
             out/kospi_shock_enrichment_latest.json
             out/kospi_shock_handoff.json
             out/kospi_industry_flow.jsonl
+            out/krx_market_closed.flag
           if-no-files-found: ignore
           retention-days: 14
