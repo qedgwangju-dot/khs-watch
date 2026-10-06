@@ -1,19 +1,23 @@
 {
   "initialized": true,
   "version": 1,
-  "source_version": 4,
+  "source_version": 5,
   "ray_official_index_verified": true,
-  "last_checked_kst": "2026-10-06T19:54:49+09:00",
+  "last_checked_kst": "2026-10-06T22:04:28+09:00",
   "nobel_2026_verified": true,
   "seen_event_keys": [
     "d3e43c74900cbe45ced82930",
     "b1cc89521f331c60687c52a6",
     "04e42a53cc7c2d6238d6b466",
     "5cd11afbac5793bf83427fb4",
+    "3de48d588d966736624346ad",
     "c86d41ca8fb34c35eec7ea49",
     "518319b133f8374c9c1ae187",
     "c5a24b19156b204bb494d543",
-    "00ed4a9deda349c6d10d12e3"
+    "00ed4a9deda349c6d10d12e3",
+    "89edfd25162fb70a90bc15ef",
+    "3b9006d3c6cdc45c8b4799ae",
+    "a168e38fecc4618002c9078e"
   ],
   "trial_snapshots": {
     "NCT06460844": {
@@ -32,6 +36,23 @@
         "Choroideremia"
       ],
       "locations": 4
+    },
+    "NCT07439887": {
+      "brief_title": "Phase 1/2 Open-Label Dose-Escalation Study to Evaluate Safety of a Single Intravitreal Injection of RTx-021 in Patients With Stargardt Disease",
+      "overall_status": "RECRUITING",
+      "phases": [
+        "PHASE1",
+        "PHASE2"
+      ],
+      "enrollment": 18,
+      "start_date": "2026-01-28",
+      "primary_completion": "2030-12-01",
+      "study_completion": "2030-12-01",
+      "last_update": "2026-04-15",
+      "conditions": [
+        "Stargardt Disease"
+      ],
+      "locations": 3
     },
     "NCT06162585": {
       "brief_title": "Non-Interventional Long Term Follow-up Study of Participants Previously Enrolled in the RESTORE Study",
@@ -75,6 +96,22 @@
       ],
       "locations": 6
     },
+    "NCT05417126": {
+      "brief_title": "Safety and Effects of a Single Intravitreal Injection of vMCO-010 Optogenetic Therapy in Subjects With Stargardt Disease",
+      "overall_status": "COMPLETED",
+      "phases": [
+        "PHASE2"
+      ],
+      "enrollment": 6,
+      "start_date": "2022-07-05",
+      "primary_completion": "2023-08-02",
+      "study_completion": "2023-09-28",
+      "last_update": "2023-11-09",
+      "conditions": [
+        "Stargardt Disease"
+      ],
+      "locations": 2
+    },
     "NCT03326336": {
       "brief_title": "Dose-escalation Study to Evaluate the Safety and Tolerability of GS030 in Subjects With Retinitis Pigmentosa",
       "overall_status": "ACTIVE_NOT_RECRUITING",
@@ -91,9 +128,67 @@
         "Non-syndromic Retinitis Pigmentosa"
       ],
       "locations": 3
+    },
+    "NCT04278131": {
+      "brief_title": "BS01 in Patients With Retinitis Pigmentosa",
+      "overall_status": "RECRUITING",
+      "phases": [
+        "PHASE1",
+        "PHASE2"
+      ],
+      "enrollment": 20,
+      "start_date": "2020-02-06",
+      "primary_completion": "2026-12-30",
+      "study_completion": "2029-12-30",
+      "last_update": "2026-01-23",
+      "conditions": [
+        "Retinitis Pigmentosa"
+      ],
+      "locations": 1
+    },
+    "NCT06292650": {
+      "brief_title": "Safety and Efficacy Study of Novel Gene Therapy ZM-02 for Retinitis Pigmentosa Patients",
+      "overall_status": "RECRUITING",
+      "phases": [
+        "EARLY_PHASE1"
+      ],
+      "enrollment": 12,
+      "start_date": "2024-02-25",
+      "primary_completion": "2027-12-25",
+      "study_completion": "2028-12-25",
+      "last_update": "2026-03-31",
+      "conditions": [
+        "Retinitis Pigmentosa"
+      ],
+      "locations": 1
+    },
+    "NCT07282457": {
+      "brief_title": "Prospective, Randomized, Sham-controlled, Dose-finding I/II Trial of Safety and Efficacy of Modified Optogenetic Gene Therapy (ZM-02 Injection)",
+      "overall_status": "NOT_YET_RECRUITING",
+      "phases": [
+        "PHASE1",
+        "PHASE2"
+      ],
+      "enrollment": 21,
+      "start_date": "2026-06-25",
+      "primary_completion": "2029-12-25",
+      "study_completion": "2031-12-25",
+      "last_update": "2026-04-13",
+      "conditions": [
+        "Retinitis Pigmentosa (RP)"
+      ],
+      "locations": 0
     }
   },
+  "rv001_registry_snapshot": {
+    "trial_id": "jRCT2033240611",
+    "company": "Restore Vision",
+    "program": "RV-001",
+    "status": "Recruiting",
+    "target_sample_size": 45,
+    "last_modified": "June. 05, 2026"
+  },
   "cns_trial_ids": [],
-  "relevant_press_events": 8,
+  "relevant_press_events": 12,
   "source_errors": []
 }
