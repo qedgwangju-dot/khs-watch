@@ -102,42 +102,49 @@
   ],
   "last_fx_krw_per_usd": 1342.774629,
   "fx_source": "ER-API",
-  "fx_checked_utc": "2026-10-06T11:15:47+00:00",
-  "updated_at_utc": "2026-10-06T11:16:07+00:00",
+  "fx_checked_utc": "2026-10-06T12:12:35+00:00",
+  "updated_at_utc": "2026-10-06T12:12:56+00:00",
   "hyperscaler_nuclear_ppa": {
-    "version": 5,
+    "version": 6,
     "states": {
       "google_constellation": {
         "buyer": "Google",
         "seller": "Constellation",
-        "stage": "signed_reported",
-        "official": false,
+        "stage": "signed_official",
+        "official": true,
         "amount_floor_usd_b": 1.0,
         "provenance": {
-          "stage": "media",
+          "stage": "official",
           "amount_floor_usd_b": "prior_media",
-          "asset_mode": "media",
-          "total_supply_mw": "media",
-          "nuclear_supply_mw": "media",
-          "other_pjm_supply_mw": "media",
-          "uprate_mw": "media",
-          "nuclear_unit_count": "media",
-          "nuclear_upgrade_investment_floor_usd_b": "media"
+          "asset_mode": "official",
+          "total_supply_mw": "official",
+          "nuclear_supply_mw": "official",
+          "other_pjm_supply_mw": "official",
+          "uprate_mw": "official",
+          "nuclear_unit_count": "official",
+          "nuclear_upgrade_investment_floor_usd_b": "official",
+          "ppa_mw": "official",
+          "years": "official",
+          "other_pjm_years": "official",
+          "first_uprate_year": "official",
+          "plant": "official"
         },
-        "ppa_mw": null,
+        "ppa_mw": 890.0,
         "uprate_mw": 890.0,
-        "years": null,
-        "plant": null,
-        "source": "Reuters",
-        "url": "https://www.reuters.com/business/energy/google-enters-massive-36-gw-power-deal-with-constellation-energy-2026-10-06/",
+        "years": 20,
+        "plant": "Constellation PJM nuclear fleet · 11 units in Illinois, Pennsylvania, New Jersey",
+        "source": "Google·Constellation 공식",
+        "url": "https://www.googlecloudpresscorner.com/2026-10-06-Google-and-Constellation-Announce-Landmark-Agreement-to-Bring-890-MW-of-New-Nuclear-Capacity-to-PJM-Grid-as-Part-of-Long-Term-Power-Deal",
         "published": "2026-10-06",
-        "note": "체결 보도 · 총 3,590MW 중 원전 증설 890MW, PJM 기타 공급 2,700MW · 11개 원전 호기 업그레이드에 43억달러 초과 투자",
+        "note": "20년 원전 PPA 890MW · 11개 기존 원전 호기 출력증강 · Constellation 신규투자 43억달러 초과 · 별도 PJM 2,700MW 15년 공급계약 · 첫 출력증강 2028년 예상",
         "asset_mode": "existing_uprate",
         "total_supply_mw": 3590.0,
         "nuclear_supply_mw": 890.0,
         "other_pjm_supply_mw": 2700.0,
         "nuclear_unit_count": 11,
-        "nuclear_upgrade_investment_floor_usd_b": 4.3
+        "nuclear_upgrade_investment_floor_usd_b": 4.3,
+        "other_pjm_years": 15,
+        "first_uprate_year": 2028
       },
       "amazon_constellation_calvert_cliffs": {
         "buyer": "Amazon",
@@ -171,7 +178,7 @@
     "source_errors": [
       "Constellation IR newsroom: ReadTimeout"
     ],
-    "last_checked_utc": "2026-10-06T11:16:34+00:00",
+    "last_checked_utc": "2026-10-06T12:13:24+00:00",
     "alert_change_count": 0
   }
 }
