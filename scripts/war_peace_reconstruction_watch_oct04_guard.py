@@ -363,6 +363,12 @@ prev._signals = signals
 
 
 def score_item(row, now):
+    # 송출 직전 품질게이트(3시간)와 후보 선별 기준을 동일하게 맞춘다.
+    # 3시간을 넘긴 기사를 후보로 뽑았다가 매 실행마다 전체 작업을 실패시키는 경로를 차단한다.
+    age = watch.age_minutes(row, now)
+    fresh_limit = int(getattr(prev, "FRESH_NEWS_MAX_MINUTES", 3 * 60))
+    if age is not None and age > fresh_limit:
+        return 0, []
     if _trump_la_sd_hypothetical(row) or _stale_mokha_capture_only(row):
         return 0, []
     score, tags = _orig_score_item(row, now)
