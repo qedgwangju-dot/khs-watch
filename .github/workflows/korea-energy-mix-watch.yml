@@ -51,7 +51,7 @@ jobs:
 
       - name: 전기본·전원믹스 확인
         id: energy
-        if: github.event_name != 'push'
+        if: github.event_name != 'push' || contains(github.event.head_commit.message, '[energy-live-test]')
         env:
           FORCE_INPUT: ${{ inputs.force_notify || false }}
         shell: bash
