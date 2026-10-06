@@ -26,8 +26,8 @@ from typing import Iterable
 from zoneinfo import ZoneInfo
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-STATE_PATH = ROOT / "data" / "space_launch_bottleneck_watch_state.json"
-PENDING_STATE_PATH = ROOT / "out" / "space_launch_bottleneck_watch_pending_state.json"
+STATE_PATH = ROOT / "data" / "space_launch_bottleneck_dedicated_state.json"
+PENDING_STATE_PATH = ROOT / "out" / "space_launch_bottleneck_dedicated_pending_state.json"
 ALERT_PATH = ROOT / "out" / "space_launch_bottleneck_watch_telegram.txt"
 STATUS_PATH = ROOT / "out" / "space_launch_bottleneck_watch_status.md"
 
