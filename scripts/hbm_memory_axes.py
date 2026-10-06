@@ -1219,13 +1219,14 @@ def parse_glass_substrate_records(item, body):
                 after_class = 'exact_minutes'
             elif re.search(r'분\s*단위|minute[- ]?scale|within\s+minutes', cycle_text, re.I):
                 after_class = 'minute_scale'
-            process_name = 'unverified_core_process'
+            process_hits = []
             if re.search(r'metalliz|plating|도금|금속화', cycle_text, re.I):
-                process_name = 'metallization'
-            elif re.search(r'etch|식각', cycle_text, re.I):
-                process_name = 'etching'
-            elif re.search(r'laser|레이저|홀\s*가공|via\s*drill', cycle_text, re.I):
-                process_name = 'via_formation'
+                process_hits.append('metallization')
+            if re.search(r'etch|식각', cycle_text, re.I):
+                process_hits.append('etching')
+            if re.search(r'laser|레이저|홀\s*가공|via\s*drill', cycle_text, re.I):
+                process_hits.append('via_formation')
+            process_name = process_hits[0] if len(set(process_hits)) == 1 else 'unverified_core_process'
             rows.append(make_record(
                 'glass_process_cycle_time', ['jntc','current'],
                 {'process_name':process_name, 'before_minutes':before_minutes,
