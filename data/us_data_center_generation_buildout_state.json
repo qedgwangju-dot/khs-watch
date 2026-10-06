@@ -1,6 +1,6 @@
 {
   "initialized": true,
-  "format_version": 7,
+  "format_version": 8,
   "baseline": {
     "need_generation_gw": 45.0,
     "gas_min_gw": 30.0,
@@ -43,7 +43,29 @@
     "gs_global_growth_2025_2030_pct": 170.0,
     "gs_global_prior_growth_pct": 117.0,
     "gs_btm_gas_capacity_2030_gw": 30.0,
-    "gs_btm_power_delivery_2030_gw": 20.0
+    "gs_btm_power_delivery_2030_gw": 20.0,
+    "ms_public_need_2026_2028_gw": 68.0,
+    "ms_public_covered_2026_2028_gw": 30.0,
+    "ms_public_shortfall_2026_2028_gw": 38.0,
+    "ms_public_grid_wait_low_years": 5.0,
+    "ms_public_grid_wait_high_years": 7.0,
+    "ms_large_turbine_booking_low_year": 2031.0,
+    "ms_large_turbine_booking_high_year": 2032.0,
+    "ms_small_engine_booking_low_year": 2029.0,
+    "ms_small_engine_booking_high_year": 2030.0,
+    "ms_onsite_contract_low_years": 15.0,
+    "ms_onsite_contract_high_years": 20.0,
+    "ms_ess_us_2025_gwh": 57.0,
+    "ms_ess_us_2030_gwh": 279.0,
+    "ms_ess_dc_2030_gwh": 169.0,
+    "gs_us_capacity_2026_prior_gw": 59.0,
+    "gs_us_capacity_2026_latest_gw": 64.0,
+    "gs_us_capacity_2027_prior_gw": 95.0,
+    "gs_us_capacity_2027_latest_gw": 90.0,
+    "gs_us_demand_increase_2026_gw": 12.0,
+    "gs_us_demand_increase_2027_gw": 17.0,
+    "gs_us_demand_growth_2026_pct": 38.0,
+    "gs_us_demand_growth_2027_pct": 38.0
   },
   "gev_metrics": {
     "gas_contract_slot_gw": 116.0,
@@ -102,8 +124,8 @@
   ],
   "last_fx_krw_per_usd": 1342.774629,
   "fx_source": "ER-API",
-  "fx_checked_utc": "2026-10-06T12:16:17+00:00",
-  "updated_at_utc": "2026-10-06T12:16:36+00:00",
+  "fx_checked_utc": "2026-10-06T12:29:58+00:00",
+  "updated_at_utc": "2026-10-06T12:30:17+00:00",
   "hyperscaler_nuclear_ppa": {
     "version": 7,
     "states": {
@@ -178,8 +200,8 @@
     "source_errors": [
       "Constellation IR newsroom: ReadTimeout"
     ],
-    "last_checked_utc": "2026-10-06T12:17:03+00:00",
-    "alert_change_count": 1,
+    "last_checked_utc": "2026-10-06T12:30:44+00:00",
+    "alert_change_count": 0,
     "google_constellation_official_ack": true
   }
 }
