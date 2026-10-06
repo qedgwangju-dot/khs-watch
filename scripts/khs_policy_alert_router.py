@@ -794,6 +794,12 @@ def source_entries(alert: dict) -> list[dict]:
             "link": alert.get("link") or "",
             "published_kst": alert.get("published_kst") or "",
             "original_title": alert.get("original_title") or alert.get("title") or "",
+            "document_type": alert.get("document_type") or "",
+            "presidential_document_type": alert.get("presidential_document_type") or "",
+            "document_number": alert.get("document_number") or "",
+            "executive_order_number": alert.get("executive_order_number") or "",
+            "signing_date": alert.get("signing_date") or "",
+            "publication_date": alert.get("publication_date") or "",
         })
     deduped: list[dict] = []
     seen: set[tuple[str, str]] = set()
