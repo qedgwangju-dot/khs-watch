@@ -17,6 +17,11 @@ def base_stage2():
         "job_exists": True,
         "stablecoin_bd_scope": True,
         "executive_default_feature_confirmation": False,
+        "smart_contract_wallet_patent_confirmed": False,
+        "wallet_patent_publication": "",
+        "wallet_patent_publication_date": "",
+        "wallet_patent_priority_date": "",
+        "wallet_patent_direct_stablecoin_link": False,
         "stablecoin_partner": "",
         "pilot_or_launch": False,
         "explicit_reversal_confirmed": False,
@@ -33,6 +38,9 @@ def official(**kwargs):
         "article_confirmed": True,
         "kbw_executive_primary_confirmed": False,
         "kbw_executive_crosscheck_confirmed": False,
+        "wallet_patent_us_confirmed": False,
+        "wallet_patent_family_confirmed": False,
+        "wallet_patent_news_confirmed": False,
         "explicit_reversal_confirmed": False,
         "errors": [],
     }
@@ -151,6 +159,71 @@ def assert_kbw_tether_panel_does_not_create_tether_partner():
     assert current["stage"] == 2, current
 
 
+def assert_wallet_patent_alerts_once_without_stage_promotion():
+    prev = base_stage2()
+    current = topic_state(
+        official(
+            wallet_patent_us_confirmed=True,
+            wallet_patent_family_confirmed=True,
+            wallet_patent_news_confirmed=True,
+        ),
+        candidate(
+            "삼성전자 스마트계약 가상자산 지갑 미국 특허 공개",
+            "US20260212355A1 스마트계약 지갑 기능 관련 특허. Samsung Wallet 또는 stablecoin 제품 적용은 별도 확인 필요.",
+        ),
+        prev,
+    )
+    changed, changes = state_changed(prev, current)
+    assert current["smart_contract_wallet_patent_confirmed"] is True, current
+    assert current["wallet_patent_publication"] == "US20260212355A1", current
+    assert current["wallet_patent_direct_stablecoin_link"] is False, current
+    assert current["stage"] == 2, current
+    assert current["stablecoin_partner"] == "", current
+    assert current["pilot_or_launch"] is False, current
+    assert changed, changes
+    assert any("R&D 인프라 강화" in x for x in changes), changes
+
+    changed_again, changes_again = state_changed(current, current)
+    assert not changed_again, changes_again
+
+
+def assert_single_patent_source_does_not_confirm_milestone():
+    prev = base_stage2()
+    current = topic_state(
+        official(
+            wallet_patent_us_confirmed=True,
+            wallet_patent_family_confirmed=False,
+            wallet_patent_news_confirmed=True,
+        ),
+        [],
+        prev,
+    )
+    changed, changes = state_changed(prev, current)
+    assert current["smart_contract_wallet_patent_confirmed"] is False, current
+    assert current["stage"] == 2, current
+    assert not changed, changes
+
+
+def assert_patent_never_implies_stablecoin_partner_or_launch():
+    prev = base_stage2()
+    current = topic_state(
+        official(
+            wallet_patent_us_confirmed=True,
+            wallet_patent_family_confirmed=True,
+        ),
+        candidate(
+            "Samsung smart contract wallet patent",
+            "The patent covers cryptocurrency wallet functions and recovery. No named stablecoin issuer, chain, payment network, pilot, or launch.",
+        ),
+        prev,
+    )
+    assert current["smart_contract_wallet_patent_confirmed"] is True, current
+    assert current["wallet_patent_direct_stablecoin_link"] is False, current
+    assert current["stablecoin_partner"] == "", current
+    assert current["pilot_or_launch"] is False, current
+    assert current["stage"] == 2, current
+
+
 def assert_explicit_partner_promotes_once():
     prev = base_stage2()
     current = topic_state(
@@ -204,6 +277,9 @@ def main():
         assert_generic_visa_galaxy_card_launch_does_not_promote,
         assert_kbw_executive_confirmation_alerts_once_without_promotion,
         assert_kbw_tether_panel_does_not_create_tether_partner,
+        assert_wallet_patent_alerts_once_without_stage_promotion,
+        assert_single_patent_source_does_not_confirm_milestone,
+        assert_patent_never_implies_stablecoin_partner_or_launch,
         assert_explicit_partner_promotes_once,
         assert_explicit_pilot_promotes_once,
         assert_explicit_reversal_alerts,
