@@ -212,6 +212,11 @@ ROBOT_COMPUTE_TAPEOUT = re.compile(
     r'prototype\s+silicon|시제품\s*칩|초도\s*실리콘|테이프아웃|샘플\s*(?:공급|출하|검증)',
     re.I,
 )
+ROBOT_COMPUTE_EXECUTED = re.compile(
+    r'completed|achieved|started|began|shipped|delivered|provided|produced|received|'
+    r'완료|성공|개시|시작|공급|출하|제공|수령|돌입',
+    re.I,
+)
 ROBOT_COMPUTE_LAUNCH = re.compile(
     r'launch|launched|introduc|unveil|released|general\s+availability|출시|공개|'
     r'정식\s*발표|양산형\s*제품',
@@ -314,7 +319,7 @@ def _robot_compute_stage(text: str, source: str = '') -> str:
         return 'robot_oem_design_win'
     if ROBOT_COMPUTE_PRODUCTION.search(text):
         return 'mass_production_or_shipment'
-    if ROBOT_COMPUTE_TAPEOUT.search(text):
+    if ROBOT_COMPUTE_TAPEOUT.search(text) and ROBOT_COMPUTE_EXECUTED.search(text):
         return 'tapeout_or_sample'
     if ROBOT_COMPUTE_PROGRAM.search(text) and ROBOT_COMPUTE_LAUNCH.search(text):
         return 'silicon_launch'
