@@ -901,8 +901,8 @@ if vinatech_links_old in t:
 # current Google-Constellation item is installed as a verified media baseline
 # (near deal, not signed); future alerts require a stage/term change.
 nuclear_ppa_extension = r'''
-# HYPERSCALER_NUCLEAR_PPA_EXTENSION_V4
-PPA_STATE_VERSION = 4
+# HYPERSCALER_NUCLEAR_PPA_EXTENSION_V5
+PPA_STATE_VERSION = 5
 PPA_MAX_AGE_DAYS = 14
 PPA_CONSTELLATION_NEWSROOM = "https://www.constellationenergy.com/news/"
 PPA_CONSTELLATION_IR_NEWSROOM = "https://investors.constellationenergy.com/news-releases"
@@ -1399,7 +1399,7 @@ def _ppa_collect_rows():
             "asset_mode": "existing_uprate",
             "provenance": {
                 "stage": "media",
-                "amount_floor_usd_b": "media",
+                "amount_floor_usd_b": "prior_media",
                 "nuclear_upgrade_investment_floor_usd_b": "media",
                 "total_supply_mw": "media",
                 "nuclear_supply_mw": "media",
@@ -1431,7 +1431,9 @@ def _ppa_collect_rows():
             links.append((label, href))
         for label, href in links[:12]:
             try:
-                body = normalize(BeautifulSoup(fetch(href, 25).text, "html.parser").get_text(" "))
+                page = BeautifulSoup(fetch(href, 25).text, "html.parser")
+                content = page.find("article") or page.find("main") or page
+                body = normalize(content.get_text(" "))
             except Exception:
                 body = label
             blob = f"{label} {body[:12000]}"
@@ -1457,7 +1459,9 @@ def _ppa_collect_rows():
             links.append((label, href))
         for label, href in links[:20]:
             try:
-                body = normalize(BeautifulSoup(fetch(href, 25).text, "html.parser").get_text(" "))
+                page = BeautifulSoup(fetch(href, 25).text, "html.parser")
+                content = page.find("article") or page.find("main") or page
+                body = normalize(content.get_text(" "))
             except Exception:
                 body = label
             state = _ppa_extract_state(
@@ -1495,7 +1499,9 @@ def _ppa_collect_rows():
                     continue
                 seen_google.add(href)
                 try:
-                    body = normalize(BeautifulSoup(fetch(href, 25).text, "html.parser").get_text(" "))
+                    page = BeautifulSoup(fetch(href, 25).text, "html.parser")
+                    content = page.find("article") or page.find("main") or page
+                    body = normalize(content.get_text(" "))
                 except Exception:
                     body = label
                 blob = f"{label} {body[:12000]}"
@@ -1722,6 +1728,15 @@ _ppa_first_install = not bool(_ppa_old_bundle)
 _ppa_states = json.loads(json.dumps(
     (_ppa_old_bundle.get("states") or PPA_BASELINES) if _ppa_old_bundle else PPA_BASELINES
 ))
+
+# V4 briefly allowed full Google page chrome to create an unrelated
+# google_talen candidate from the Steel River solar/storage article. It was
+# never an alert, but remove it from semantic state so it can never become one.
+_false_talen = _ppa_states.get("google_talen") or {}
+if "steel-river-arkansas" in str(_false_talen.get("url") or ""):
+    _ppa_states.pop("google_talen", None)
+    print("hyperscaler_nuclear_ppa_false_google_talen_state_removed=true")
+
 _ppa_rows, _ppa_errors = _ppa_collect_rows()
 _ppa_best = {}
 for _ppa_key, _ppa_state in _ppa_rows:
@@ -1753,7 +1768,7 @@ with STATUS.open("a", encoding="utf-8") as _ppa_status_file:
     _ppa_status_file.write(
         "\n## 빅테크 원전 PPA\n\n"
         f"- Google–Constellation: **{PPA_STAGE_LABELS.get(str(_google_state.get('stage') or ''), _google_state.get('stage') or '미확인')}**\n"
-        f"- Google–Constellation 금액: **{(('공식 ' if (_google_state.get('provenance') or {}).get('amount_floor_usd_b') == 'official' else '보도 ') + '최소 ' + str(_google_state.get('amount_floor_usd_b')) + '십억달러') if _google_state.get('amount_floor_usd_b') is not None else '미공개'}**\n"
+        f"- Google–Constellation 금액: **{(('공식 ' if (_google_state.get('provenance') or {}).get('amount_floor_usd_b') == 'official' else ('이전 협상보도 ' if (_google_state.get('provenance') or {}).get('amount_floor_usd_b') == 'prior_media' else '보도 ')) + '최소 ' + str(_google_state.get('amount_floor_usd_b')) + '십억달러' + (' · 최종 계약가 미공개' if (_google_state.get('provenance') or {}).get('amount_floor_usd_b') == 'prior_media' else '')) if _google_state.get('amount_floor_usd_b') is not None else '미공개'}**\n"
         f"- Google–Constellation MW·대상 원전: **{str(_google_state.get('ppa_mw')) + 'MW' if _google_state.get('ppa_mw') is not None else '미공개'} / {_google_state.get('plant') or '미공개'}**\n"
         f"- Google–Constellation 자산유형: **{_google_state.get('asset_mode') or 'unknown'}**\n"
         f"- 의미 있는 상태변화: **{len(_ppa_changes)}건**\n"
@@ -1769,10 +1784,16 @@ if _ppa_changes:
         provenance = dict(_now.get("provenance") or {})
         amount = _now.get("amount_floor_usd_b")
         if amount is not None:
-            amount_scope = "공식" if provenance.get("amount_floor_usd_b") == "official" else "보도"
+            amount_prov = provenance.get("amount_floor_usd_b")
+            amount_scope = (
+                "공식"
+                if amount_prov == "official"
+                else ("이전 협상보도 기준" if amount_prov == "prior_media" else "보도")
+            )
+            suffix = " · 최종 계약가 미공개" if amount_prov == "prior_media" else ""
             lines.append(
                 f"• <b>금액</b> │ {amount_scope} 최소 {float(amount):g}십억달러"
-                f"({h(krw_from_usd_b(float(amount), fx))})"
+                f"({h(krw_from_usd_b(float(amount), fx))}){suffix}"
             )
         else:
             lines.append("• <b>금액</b> │ 공식·신뢰자료상 미공개")
@@ -1887,7 +1908,7 @@ print(
 if "HYPERSCALER_NUCLEAR_PPA_EXTENSION_V1" not in t:
     t += "\n" + nuclear_ppa_extension + "\n"
 for marker in (
-    "HYPERSCALER_NUCLEAR_PPA_EXTENSION_V4",
+    "HYPERSCALER_NUCLEAR_PPA_EXTENSION_V5",
     '"google_constellation"',
     '"amazon_constellation_calvert_cliffs"',
     "reported_near_deal",
