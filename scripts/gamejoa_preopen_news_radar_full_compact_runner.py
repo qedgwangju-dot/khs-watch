@@ -2593,6 +2593,48 @@ def source_headline_event_fact(title: str, body: str) -> str:
     focus = market_materiality.focus_kind(title)
     source = market_materiality.source_reported_body(body)
     rows = market_materiality.source_sentences(source)
+    consensus = market_materiality.annual_earnings_consensus_observation(title, source)
+    if consensus:
+        fact = (f"{consensus['provider']}가 최근 {consensus['window']}개월간 집계한 {consensus['issuer']}의 "
+                f"{consensus['period']} 영업이익 전망치 평균은 {consensus['amount'].strip()}이다.")
+        if consensus['quarter']:
+            direction = '증가' if consensus['quarter_direction'] in {'급증', '증가'} else '감소'
+            fact += (f" {consensus['quarter']}분기 전망은 {consensus['quarter_amount'].strip()}으로 "
+                     f"전년비 {consensus['quarter_growth']}% {direction}할 전망이다.")
+        return fact if len(fact) <= GAMEJOA_CORE_MAX_CHARS and core_sentence_is_complete(fact) else ''
+    decree = market_materiality.enacted_financial_decree_observation(title, source)
+    if decree:
+        fact = (f"{decree['day']}일 국무회의에서 {decree['law']} 개정안이 의결됐다. "
+                f"{decree['beneficiary']}의 부실채권 매입을 허용하며 {decree['effective_day']}일부터 시행된다.")
+        if decree['operation_month']:
+            fact += f" 매입 업무는 출자·금융위 의결 등을 거쳐 {decree['operation_month']}월 이후 시작할 예정이다."
+        return fact if len(fact) <= GAMEJOA_CORE_MAX_CHARS and core_sentence_is_complete(fact) else ''
+    if re.search(r'글로벌\s*전기차', title):
+        volume = re.search(r'(?P<provider>[A-Za-z가-힣]+리서치)에\s*따르면\s*'
+                           r'(?P<period>\d{1,2}[∼~\-]\d{1,2}월)\s*글로벌\s*전기차\(플러그인하이브리드\s*포함\)\s*'
+                           r'인도량은\s*전년\s*동기\s*대비\s*(?P<growth>\d+(?:\.\d+)?)%\s*'
+                           r'(?P<direction>증가|감소)한\s*(?P<units>\d[\d,.천백십만]*대)로\s*집계됐다', source)
+        group = re.search(r'(?P<group>[A-Za-z가-힣]+차그룹)은\s*(?P<growth>\d+(?:\.\d+)?)%\s*'
+                          r'(?P<direction>증가|감소)한\s*(?P<units>\d[\d,.천백십만]*대)로\s*점유율을\s*'
+                          r'종전\s*(?P<old_share>\d+(?:\.\d+)?)%에서\s*(?P<share>\d+(?:\.\d+)?)%로', source)
+        if volume:
+            fact = (f"{volume['provider']}에 따르면 {volume['period']} 글로벌 전기차(플러그인하이브리드 포함) "
+                    f"인도량은 {volume['units']}로 전년비 {volume['growth']}% {volume['direction']}했다.")
+            if group and group['group'] in title:
+                share_direction = '높아졌다' if float(group['share']) > float(group['old_share']) else '낮아졌다'
+                fact += (f" {group['group']}은 {group['units']}로 {group['growth']}% {group['direction']}했으며 "
+                         f"점유율은 {group['old_share']}%에서 {group['share']}%로 {share_direction}.")
+            return fact if len(fact) <= GAMEJOA_CORE_MAX_CHARS and core_sentence_is_complete(fact) else ''
+    if re.search(r'재개발|정비사업|구역\s*수주', title):
+        order = next((match for row in rows
+                      if (match := re.search(r'(?P<issuer>[A-Za-z0-9가-힣&·.-]+)(?:은|는|이|가)\s*공사비\s*'
+                                             r'(?P<amount>\d[\d,.\s조억만천백십]*원)\s*규모의\s*'
+                                             r'(?P<project>[^.!?]{3,70}사업)을\s*수주했다', row))), None)
+        cumulative = re.search(r'올해\s*도시정비사업\s*누적\s*수주액은\s*(\d[\d,.\s조억만천백십]*원)으로\s*늘었다', source)
+        if order and order['issuer'] in title and cumulative:
+            fact = (f"{order['issuer']}{korean_topic_particle(order['issuer'])} {order['project']}을 수주했다. "
+                    f"공사비는 {order['amount'].strip()}이며 올해 도시정비사업 누적 수주액은 {cumulative[1].strip()}이다.")
+            return fact if len(fact) <= GAMEJOA_CORE_MAX_CHARS and core_sentence_is_complete(fact) else ''
     sales = market_materiality.cumulative_foreign_sales_observation(title, source)
     if sales:
         fact = (f"{sales['issuer']}은 {sales['day']}일 {sales['period']} 누적 외국인 고객 매출이 "

@@ -492,3 +492,18 @@ Every defect or requested change must follow this sequence:
   and announcement date. Verified aliases only upgrade existing successful
   receipts; missing bodies, changed terms and absent receipts are never inferred.
   Short cancellation disclosures retain the sourced scheduled execution date.
+- Incidental clinical-approval words in a police roundup do not establish an
+  actual clinical milestone. Unrecognised technical headlines need their market
+  topic in the reported lead; UI chrome and reporter biographies are not that
+  lead. Actual trial suspensions, approvals and new policy commitments remain
+  separate positive cases. Cleaning summary input never changes body receipts.
+- Governance demands about a previously disclosed trade do not republish it as
+  a new insider transaction. Keep changed disclosed transaction or voting terms,
+  not a demand to explain intent. Logistics information-sharing stoppages do not
+  establish physical throughput disruptions without actual shipment, clearance,
+  production, cost or new trade-rule evidence.
+- Annual earnings consensus retains provider, aggregation window, issuer,
+  forecast period and amounts. Aspirational headlines do not become actual
+  earnings. Vehicle volumes keep global population and included vehicle types
+  distinct from an issuer's growth and market share. Enacted bad-asset decrees
+  keep effective dates separate from conditional later operational starts.

@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 92
+VERSION = 93
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -21,7 +21,7 @@ ENERGY_SUBJECT = (
 )
 EARLY_SIGNAL = re.compile(
     r"검토|추진|협상|논의|가능성|예정|계획|컨센서스|전망치|추정치|consensus|전망(?!치|을|보다)|예상(?!치|을|보다)|관측|소식통|제안|의견수렴|입법예고|"
-    r"건의|요청|요구|제시|모색|촉구|해야|권고|제언|우려|필요|목표|보인다|나서야|시급|밑돌\s*듯|합의\s*(?:안\s*(?:됐|되)|하지\s*않)|미합의|consider|propos|draft|talks|negotiat|forecast|sources say|reportedly|\b(?:may|could|should|target|aim|expected)\b", re.I,
+    r"건의|요청|요구|제시|모색|촉구|해야|권고|제언|우려|필요|목표|노린다|정조준|기대감|보인다|나서야|시급|밑돌\s*듯|합의\s*(?:안\s*(?:됐|되)|하지\s*않)|미합의|consider|propos|draft|talks|negotiat|forecast|sources say|reportedly|\b(?:may|could|should|target|aim|expected)\b", re.I,
 )
 HEADLINE_EARLY = re.compile(
     r"검토|협상|논의|가능성|관측|소식통|제안|제언|권고|해야|바꿔야|줄여야|늘려야|우려|전망$|예상$|"
@@ -987,8 +987,55 @@ def source_reported_body(body: str) -> str:
     if nonempty and re.fullmatch(r"(?:💡\s*)?AI\s*분석", lines[nonempty[0]].strip(), re.I):
         # This publisher layout has one summary paragraph followed by the report.
         start = nonempty[2] if len(nonempty) > 2 else len(lines)
-        return "\n".join(lines[start:])
-    return "\n".join(lines)
+        lines = lines[start:]
+    reported = []
+    for line in lines:
+        if re.match(r'^(?:ⓒ|©|[가-힣]{2,6}\s+(?:[^\s]+\s+)?기자\s+\S+@)', line):
+            break
+        if re.fullmatch(r'(?:사회|경제|산업|한경\s*PREMIUM9|AI를 넘어서는 성공투자|구독하기|AI 추천 뉴스|'
+                        r'팝업 닫기|기사 스크랩|댓글|기사 공유|공유|글자크기 조절|글자크기|프린트|'
+                        r'기자 구독하기|구글 검색 선호 출처로 추가|구글에서 선호하는 매체로 추가|'
+                        r'Google 검색에서 한국경제 기사를 더 자주 볼 수 있습니다\.|작게|크게|좋아요|싫어요|후속기사 원해요)', line):
+            continue
+        if re.fullmatch(r'(?:입력|수정|등록)\s*20\d{2}[.\-]\d{2}[.\-]\d{2}\s+\d{2}:\d{2}(?::\d{2})?', line):
+            continue
+        reported.append(line)
+    return "\n".join(reported)
+
+
+def annual_earnings_consensus_observation(title: str, body: str) -> dict[str, str]:
+    """Bind an annual estimate to its named provider, issuer and forecast basis."""
+    if focus_kind(title) != 'earnings' or not re.search(r'연간|올해|올\s*해', title):
+        return {}
+    source = source_reported_body(body)
+    annual = re.search(r'(?P<provider>에프앤가이드|FnGuide)가\s*최근\s*(?P<window>\d+)개월간\s*집계한\s*'
+                       r'(?P<issuer>[A-Za-z0-9가-힣&·㈜.-]+)의\s*(?P<period>올해|20\d{2}년)\s*'
+                       r'영업이익\s*컨센서스는\s*(?P<amount>\d[\d,.\s조억만천백십]*원)으로\s*나타났다', source, re.I)
+    if not annual or annual['issuer'] not in title:
+        return {}
+    quarter = re.search(rf"{re.escape(annual['issuer'])}의\s*올해\s*(?P<quarter>[1-4])분기\s*영업이익\s*"
+                        r'컨센서스\(증권사\s*전망치\s*평균\)는\s*(?P<amount>\d[\d,.\s조억만천백십]*원)으로\s*집계됐다\.\s*'
+                        r'이는\s*지난해\s*[1-4]분기보다\s*(?P<growth>\d+(?:\.\d+)?)%\s*(?P<direction>급증|증가|감소)', source)
+    return {**annual.groupdict(), 'source_excerpt': annual[0], 'stage': 'early_signal',
+            'quarter': quarter['quarter'] if quarter else '', 'quarter_amount': quarter['amount'] if quarter else '',
+            'quarter_growth': quarter['growth'] if quarter else '', 'quarter_direction': quarter['direction'] if quarter else ''}
+
+
+def enacted_financial_decree_observation(title: str, body: str) -> dict[str, str]:
+    """Keep an enacted bad-asset rule separate from later conditional operations."""
+    if not re.search(r'부실채권|부실자산', title):
+        return {}
+    source = source_reported_body(body)
+    announcement = re.search(r'(?P<authority>[가-힣]+위원회)는\s*(?P<day>\d{1,2})일\s*국무회의에서\s*'
+                             r'이런\s*내용의\s*(?P<law>[가-힣]+법\s*시행령)\s*개정안이\s*의결됐다고\s*밝혔다', source)
+    actor = re.search(r'개정안에\s*따라\s*(?P<beneficiary>[가-힣\s]+자산관리회사)는\s*조합', source)
+    effective = re.search(r'개정\s*시행령은\s*오는\s*(?P<effective_day>\d{1,2})일부터\s*시행된다', source)
+    operation = re.search(r'신협중앙회\s*출자\s*및\s*금융위\s*의결\s*절차\s*등을\s*거쳐\s*'
+                          r'오는\s*(?P<operation_month>\d{1,2})월\s*이후\s*본격적인\s*부실채권\s*매입\s*업무를\s*개시할\s*예정', source)
+    if not (announcement and actor and effective):
+        return {}
+    return {**announcement.groupdict(), **actor.groupdict(), **effective.groupdict(),
+            'source_excerpt': announcement[0], 'operation_month': operation['operation_month'] if operation else ''}
 
 
 @lru_cache(maxsize=256)
@@ -2265,6 +2312,13 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
     """Do not promote service descriptions or event support into transactions."""
     if COMPANY_PROFILE.search(sentence) or ACCOUNTING_NOTE.search(sentence):
         return False
+    if kind == 'technology_or_clinical_stage' and re.search(r'청탁|고발장|수사\s*중|판결문|협박|범죄\s*혐의|bribery|criminal investigation', sentence, re.I):
+        return bool(re.search(r'(?:임상|시험|품목|판매|생산).{0,25}(?:중단했다|중단됐|취소했다|취소됐|허가를\s*취소|승인을\s*철회)|'
+                              r'(?:clinical|trial|production).{0,25}(?:halted|suspended|approval revoked)', sentence, re.I))
+    if kind == 'physical_supply_or_capacity' and re.search(r'(?:물류|항만|화물).{0,20}(?:정보|데이터).{0,30}(?:협력|공유|플랫폼|네트워크)', sentence):
+        if not re.search(r'(?:운항|하역|통관|선적|배송|생산|물동량|화물량|운송료).{0,25}(?:중단|차질|감소|지연|증가|인상)|'
+                         r'(?:수출|수입).{0,20}(?:금지|제한)|새로운\s*(?:규제|제재)', sentence):
+            return False
     if PAST_ACTION.search(sentence) and re.search(r'보도를\s*공유|점검해\s*보겠다|당시.{0,30}(?:언급|발언)', sentence):
         return False
     if kind == 'earnings_or_guidance' and re.search(r'목표\s*매출.{0,25}%\s*초과\s*달성', sentence):
@@ -2555,6 +2609,26 @@ def equity_publication_assessment(title: str, evidence: list[dict], *, body: str
     ):
         return {'eligible': False, 'reason': 'annual_crypto_adoption_survey_without_equity_catalyst'}
     source_rows = source_sentences(source_reported_body(body))
+    reported_lead = ' '.join([row for row in source_rows if len(row) >= 15
+                             and re.search(r'[.!?。]$', row)
+                             and canonical_source_fact(row) != canonical_source_fact(title)][:2])
+    infrastructure_headline = ('physical_supply_or_capacity' in kinds and re.search(
+        r'인프라\s*(?:지출|투자|구축|확장)\s*(?:계획|전략)|(?:지출|투자|구축|확장)\s*계획.{0,15}인프라', title))
+    if (not focus_kind(title) and not infrastructure_headline
+            and kinds <= {'technology_or_clinical_stage', 'physical_supply_or_capacity', 'customer_discussions'} and not any(
+        subject.search(title) or subject.search(reported_lead[:400])
+        for kind, _axes, subject, _action in COMPILED_RULES if kind in kinds
+    )):
+        return {'eligible': False, 'reason': 'secondary_body_topic_not_headline_or_reported_lead_event'}
+    governance_appeal = (re.search(r'밝혀야|해명해야|설명해야|공개해야|회피\s*목적|회피하기', title)
+                        and re.search(r'포럼|협회|시민단체|논평|성명', reported_lead))
+    changed_governance_terms = any(not PAST_ACTION.search(row) and re.search(
+        r'(?:의결권|매각\s*계약|지분\s*거래|주식\s*거래|거래\s*구조|배당|합병).{0,60}'
+        r'(?:변경했다고|변경했다|취소했다고|취소했다|정정\s*공시|공시를\s*정정|새로\s*공시|새\s*계약을\s*체결)|'
+        r'(?:규정|법안|시행령).{0,30}(?:발의했다|개정했다|의결했다|시행한다)', row)
+        for row in source_rows)
+    if governance_appeal and not changed_governance_terms:
+        return {'eligible': False, 'reason': 'governance_comment_rehash_without_new_transaction_or_rule_terms'}
     service_publicity = (re.search(r'앱|애플리케이션|모바일\s*서비스', title)
                          and re.search(r'예약|주문|메뉴|쇼핑|식음료|여객\s*편의', lead))
     profile_publicity = (re.search(r'브랜드|기념품|소비자|판로|보폭|접점', lead)
@@ -3048,6 +3122,16 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
     routine = bool(ROUTINE_HEADLINE.search(title) and not HARD_HEADLINE.search(title))
     soft = bool(SOFT_HEADLINE.search(title) and not HARD_HEADLINE.search(title))
     matches = []
+    consensus = annual_earnings_consensus_observation(title, body)
+    if consensus:
+        matches.append((3, 90, 0, ['earnings'], {
+            'kind': 'earnings_or_guidance', 'stage': 'early_signal', 'source_excerpt': consensus['source_excerpt'],
+        }))
+    decree = enacted_financial_decree_observation(title, body)
+    if decree:
+        matches.append((3, 90, 0, ['earnings', 'timeline'], {
+            'kind': 'policy_scope_or_stage', 'stage': 'reported_change', 'source_excerpt': decree['source_excerpt'],
+        }))
     marine = marine_delivery_observation(title, body)
     if marine:
         matches.append((3, 85, 0, ['earnings', 'timeline'], {
@@ -3192,6 +3276,8 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
             continue
         for kind, axes, subject, action in COMPILED_RULES:
             if not subject.search(sentence) or not action.search(sentence):
+                continue
+            if consensus and kind == 'earnings_or_guidance' and not re.search(r'컨센서스|전망치|추정치', sentence):
                 continue
             policy_focus = focus_kind(title)
             if policy_focus == 'macro_model_assessment' and kind != 'macro_model_assessment':

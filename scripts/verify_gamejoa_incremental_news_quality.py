@@ -71,6 +71,8 @@ HEADLINE_TERMS_FIXTURE = json.loads((ROOT / 'data/gamejoa_headline_terms_fixture
 HEADLINE_TERMS_CASES = {case['id']: case for case in HEADLINE_TERMS_FIXTURE['cases']}
 CONSUMER_SCOPE_FIXTURE = json.loads((ROOT / 'data/gamejoa_consumer_scope_fixtures_20261006.json').read_text(encoding='utf-8'))
 CONSUMER_SCOPE_CASES = {case['id']: case for case in CONSUMER_SCOPE_FIXTURE['cases']}
+PRIMARY_EVENT_FIXTURE = json.loads((ROOT / 'data/gamejoa_primary_event_scope_fixtures_20261006.json').read_text(encoding='utf-8'))
+PRIMARY_EVENT_CASES = {case['id']: case for case in PRIMARY_EVENT_FIXTURE['cases']}
 LIVE_NOW = NOW.replace(hour=19)
 CONTRACT_BODY = "AMD는 삼성전자와 2027년 데이터센터용 인공지능(AI) 반도체 공동개발을 위한 100억원 규모의 공급 계약을 체결했다고 밝혔다."
 ADDITIONAL_FACT = " AMD는 해당 공급 계약을 위한 반도체 설비투자 예산 500억원을 확정했다고 공시했다."
@@ -112,6 +114,118 @@ def replay():
 
 
 class IncrementalNewsTests(unittest.TestCase):
+    def primary_event_alert(self, key):
+        case = PRIMARY_EVENT_CASES[key]
+        return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],
+                'telegram_core_fact': case['old_core']}
+
+    def test_version92_all_seven_whole_bodies_replay_primary_events(self):
+        now = NOW.replace(day=6, hour=17)
+        for case in PRIMARY_EVENT_CASES.values():
+            with self.subTest(case=case['id']), patch.object(radar.base, 'kst_now', return_value=now):
+                self.assertEqual(hashlib.sha256(case['body'].encode()).hexdigest(), case['full_body_sha256'])
+                candidate = classify(case, now)
+                selected = radar.quality_display_alerts([candidate], 30) if candidate else []
+                self.assertEqual(bool(selected), case['expected_keep'])
+                if selected:
+                    self.assertFalse(radar.source_core_fact_errors(selected[0]))
+
+    def test_police_roundup_cannot_become_a_clinical_approval(self):
+        item = self.primary_event_alert('police_roundup_incidental_clinical')
+        self.assertFalse(eligible(item['news'], item['source_body']))
+        for old, new in (('고범석', '다른경찰청장'), ('신약', '반도체')):
+            self.assertFalse(eligible(item['news'].replace(old, new), item['source_body'].replace(old, new)))
+
+    def test_clinical_bribery_is_not_an_approval_but_trial_suspension_is_an_event(self):
+        self.assertFalse(materiality.evidence_is_new_event('technology_or_clinical_stage',
+                          '경찰은 신약 임상시험 승인 청탁 의혹과 관련해 고발장 5건을 접수해 수사 중이라고 밝혔다.'))
+        self.assertTrue(materiality.evidence_is_new_event('technology_or_clinical_stage',
+                         '제약사는 수사 중인 신약의 임상시험을 중단했다고 공시했다.'))
+        self.assertTrue(eligible('제약기업, 신약 임상 3상 승인', '식약처는 제약기업의 신약 임상 3상을 승인했다고 6일 발표했다.'))
+
+    def test_unrecognised_headline_requires_its_market_topic_in_reported_lead(self):
+        title = '기업대표 "이번 행사 정말 뜻깊다"'
+        body = '기업대표는 지역 문화행사에 참여했다고 밝혔다.\n시민들은 축하 공연을 관람했다.\n기업대표는 신약 임상시험 승인 소식도 언급했다.'
+        self.assertFalse(eligible(title, body))
+        self.assertTrue(eligible('기업대표 "사업 전환 본격화"',
+                                 '기업대표는 반도체 생산설비 1000억원 투자를 확정했다고 6일 공시했다.'))
+
+    def test_governance_comment_is_not_a_new_insider_trade(self):
+        item = self.primary_event_alert('governance_comment_on_old_trade')
+        self.assertFalse(eligible(item['news'], item['source_body']))
+        self.assertTrue(eligible('최태원 회장, SK 주식 9440억원 매각 공시',
+                                 'SK는 6일 최태원 회장이 SK 주식 9440억원어치를 매각한다고 공시했다.'))
+
+    def test_governance_comment_keeps_actual_changed_trade_terms(self):
+        item = self.primary_event_alert('governance_comment_on_old_trade')
+        changed = 'SK는 6일 매각 계약의 의결권 조건을 변경했다고 공시했다.\n' + item['source_body']
+        self.assertTrue(eligible(item['news'], changed))
+
+    def test_logistics_information_sharing_is_not_physical_throughput(self):
+        item = self.primary_event_alert('historical_logistics_data_network')
+        self.assertFalse(eligible(item['news'], item['source_body']))
+        self.assertFalse(materiality.evidence_is_new_event('physical_supply_or_capacity',
+                          '한중일 물류 정보 공유 협력도 2년 넘게 멈춘 것으로 나타났다.'))
+        self.assertTrue(eligible('물류 항만 중단, 수출 선적 차질',
+                                 '항만청은 6일 물류 항만의 하역 작업이 중단돼 수출 선적이 지연됐다고 밝혔다.'))
+
+    def test_logistics_data_outage_with_real_shipping_disruption_remains_eligible(self):
+        self.assertTrue(materiality.evidence_is_new_event('physical_supply_or_capacity',
+                         '물류 데이터 플랫폼이 중단돼 통관과 선적에 차질이 발생했다고 항만청이 밝혔다.'))
+        self.assertTrue(eligible('정부, 중국 물류 데이터 플랫폼 수입 금지',
+                                 '정부는 6일 중국 물류 데이터 플랫폼의 수입을 금지하는 규제를 발표했다.'))
+
+    def test_annual_consensus_summary_preserves_source_forecast_and_current_numbers(self):
+        item = self.primary_event_alert('annual_earnings_consensus')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('에프앤가이드', '최근 1개월', 'SK이노베이션', '올해', '전망치 평균', '10조851억원', '3분기', '2조187억원', '252%'):
+            self.assertIn(term, core)
+        self.assertFalse(radar.source_core_fact_errors({**item, 'telegram_core_fact': core}))
+        self.assertTrue(radar.source_core_fact_errors(item))
+        audit = materiality.assess(item['source_title'], item['source_body'])
+        self.assertEqual(audit['evidence'][0]['stage'], 'early_signal')
+
+    def test_annual_consensus_values_are_source_derived_not_fixed(self):
+        item = self.primary_event_alert('annual_earnings_consensus')
+        title = item['source_title'].replace('SK이노베이션', 'OTHER에너지')
+        body = item['source_body'].replace('SK이노베이션', 'OTHER에너지').replace('10조851억원', '11조900억원').replace('2조187억원', '3조500억원')
+        core = radar.source_headline_event_fact(title, body)
+        for term in ('OTHER에너지', '11조900억원', '3조500억원'):
+            self.assertIn(term, core)
+        self.assertFalse(materiality.annual_earnings_consensus_observation(title, body.replace('컨센서스', '목표')))
+
+    def test_global_ev_core_preserves_population_period_volume_and_issuer_share(self):
+        item = self.primary_event_alert('global_ev_volume')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('SNE리서치', '1∼8월', '플러그인하이브리드 포함', '1천372만5천대', '5.9%', '현대차그룹', '49만9천대', '20.4%', '3.2%', '3.6%'):
+            self.assertIn(term, core)
+        self.assertFalse(radar.source_core_fact_errors({**item, 'telegram_core_fact': core}))
+
+    def test_enacted_credit_decree_is_separate_from_conditional_operating_start(self):
+        item = self.primary_event_alert('credit_union_decree')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('6일', '국무회의', '신용협동조합법 시행령', '의결됐다', '부실채권 매입', '22일부터', '출자·금융위 의결', '11월 이후', '예정이다'):
+            self.assertIn(term, core)
+        self.assertFalse(radar.source_core_fact_errors({**item, 'telegram_core_fact': core}))
+        self.assertTrue(radar.source_core_fact_errors(item))
+        self.assertFalse(materiality.enacted_financial_decree_observation(item['news'], item['source_body'].replace('의결됐다고', '검토한다고')))
+
+    def test_construction_order_summary_keeps_amount_and_current_cumulative_orders(self):
+        item = self.primary_event_alert('construction_order')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('2812억원', '부산 연산13구역', '수주했다', '올해', '누적 수주액', '1조7666억원'):
+            self.assertIn(term, core)
+        self.assertFalse(radar.source_core_fact_errors({**item, 'telegram_core_fact': core}))
+
+    def test_ui_cleaning_does_not_change_successful_body_receipts(self):
+        item = self.primary_event_alert('police_roundup_incidental_clinical')
+        old_digest = materiality.verified_source_body_digest(item)
+        report = materiality.source_reported_body(item['source_body'])
+        for term in ('AI 추천 뉴스', '기사 스크랩', '글자크기 조절', '자동차를 숫자와 현장에서'):
+            self.assertNotIn(term, report)
+        self.assertIn('고발장 5건', report)
+        self.assertEqual(old_digest, materiality.verified_source_body_digest(item))
+
     def consumer_scope_alert(self, key):
         case = CONSUMER_SCOPE_CASES[key]
         return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],
