@@ -362,3 +362,45 @@ jobs:
           assert 901 in w.msg_ids, w.msg_ids
           print("handoff_artifact_transfer_valid=true")
           PY
+
+
+  daily_failure_alert:
+    needs: [test, handoff_producer, handoff_consumer]
+    if: always() && github.event_name == 'schedule' && (needs.test.result != 'success' || needs.handoff_producer.result != 'success' || needs.handoff_consumer.result != 'success')
+    runs-on: ubuntu-latest
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900008879_bot"
+      TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID }}
+    steps:
+      - name: Send KOSPI validation failure alert
+        run: |
+          python - <<'PY'
+          import json, os, urllib.parse, urllib.request
+          token=(os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id=(os.getenv("TELEGRAM_CHAT_ID") or "").strip()
+          expected=(os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token or not chat_id:
+              raise RuntimeError("Telegram secrets missing")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe",timeout=20) as r:
+              ident=json.loads(r.read().decode("utf-8"))
+          actual=str((ident.get("result") or {}).get("username") or "")
+          if not ident.get("ok") or actual.lower()!=expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
+          text=(
+              "🚨 코스피 급락 감시 일일 실전검증 실패\n"
+              "통합 수급·업종·종목·ETF·상태 인계 중 하나 이상이 검증을 통과하지 못했습니다. "
+              "실전 알림 정확성 보호를 위해 GitHub Actions 로그 확인이 필요합니다."
+          )
+          payload=urllib.parse.urlencode({
+              "chat_id":chat_id,
+              "text":text,
+              "disable_web_page_preview":"true",
+          }).encode("utf-8")
+          req=urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage",data=payload,method="POST")
+          with urllib.request.urlopen(req,timeout=30) as r:
+              out=json.loads(r.read().decode("utf-8"))
+          if not out.get("ok"):
+              raise RuntimeError(f"Telegram rejected validation failure alert: {out}")
+          print(f"validation_failure_alert_sent=true message_id={out['result'].get('message_id')}")
+          PY
