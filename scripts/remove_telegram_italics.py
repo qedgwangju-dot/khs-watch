@@ -111,6 +111,21 @@ def main() -> None:
         suppressed += 1
         migration_suppressed.add(gen_alert.name)
 
+    # Hyperscaler nuclear-PPA monitoring is installed from an already-known,
+    # cross-checked baseline. Persist that baseline once without manufacturing
+    # a Telegram alert. Otherwise the generic silent-state freeze below would
+    # discard it on every run and the watcher could never advance beyond
+    # first_install=True.
+    gen_ppa_pending = gen_pending.get("hyperscaler_nuclear_ppa") or {}
+    gen_ppa_confirmed = gen_confirmed.get("hyperscaler_nuclear_ppa") or {}
+    if (
+        not gen_ppa_confirmed
+        and int(gen_ppa_pending.get("version") or 0) >= 2
+        and int(gen_ppa_pending.get("alert_change_count") or 0) == 0
+    ):
+        migration_suppressed.add(gen_alert.name)
+        print("hyperscaler_nuclear_ppa_baseline_persist_once=true")
+
     # The workflow's save step copies pending state unconditionally. When there
     # is no Telegram alert, replace that pending state with the last confirmed
     # repository state so silent checks cannot advance dedupe/baseline state.
