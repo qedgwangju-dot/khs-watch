@@ -188,8 +188,8 @@ jobs:
           path = Path("out/us_data_center_generation_buildout_pending_state.json")
           data = json.loads(path.read_text(encoding="utf-8"))
           bundle = data.get("hyperscaler_nuclear_ppa") or {}
-          if int(bundle.get("version") or 0) < 6:
-              raise SystemExit("hyperscaler nuclear PPA state version < 6")
+          if int(bundle.get("version") or 0) < 7:
+              raise SystemExit("hyperscaler nuclear PPA state version < 7")
 
           states = bundle.get("states") or {}
           google = states.get("google_constellation") or {}
