@@ -30,6 +30,28 @@ _orig_final_color = prev._final_item_color
 _orig_verdict = guard._verdict
 _orig_semantic_fix = prev._semantic_output_fix
 _orig_verify_alert = runner.verify_alert
+_orig_translate_ko = watch.translate_ko
+
+
+def translate_ko(title):
+    """출처 귀속이 의미의 일부인 제목은 번역 단계에서 귀속 문구를 보존한다."""
+    raw = str(title or "")
+    low = raw.lower()
+    if (
+        ("tass calculations" in low or "tass calculation" in low)
+        and "drone" in low and "2026" in low
+    ):
+        return "TASS 집계: 러시아가 2026년 최대 규모급 드론 공격을 받았다고 보도 — 세부 규모·피해는 독립 확인 필요"
+    if (
+        "russian" in low and ("poltava" in low or "odessa" in low or "odesa" in low)
+        and ("radar" in low or "data center" in low)
+        and any(x in low for x in ("hit", "strike", "struck", "attacked"))
+    ):
+        return "TASS: 러시아 국방부는 폴타바·오데사 등에서 우크라이나군 레이더·데이터센터를 타격했다고 주장 — 독립 확인 전"
+    return _orig_translate_ko(raw)
+
+
+watch.translate_ko = translate_ko
 
 
 def _title(row):
@@ -658,6 +680,10 @@ def verify_alert(test_mode=False):
         issues.append("트럼프의 가정적 정치 발언을 실제 군사 신규 변화로 표시")
     if "tass.com/defense/2197955" in low and ("러시아 국방부" not in text or "주장" not in text):
         issues.append("TASS 러시아 국방부 타격 주장을 독립 확인된 사실처럼 표시")
+    if "tass.com/defense/2197955" in low and "독립 확인 전" not in text:
+        issues.append("TASS 러시아 국방부 타격 주장에 독립확인 상태 누락")
+    if "tass.com/politics/2197959" in low and ("TASS 집계" not in text or "독립 확인" not in text):
+        issues.append("TASS 드론 규모 집계를 확정 사실처럼 표시")
     if issues:
         raise RuntimeError("WAR_OCT04_QUALITY_GATE: " + " | ".join(issues))
 
