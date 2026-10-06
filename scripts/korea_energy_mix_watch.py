@@ -377,6 +377,43 @@ def save_state(seen_ids: set[str], seen_events: dict[str, int]) -> None:
     )
 
 
+def select_notify_rows(
+    rows: list[dict[str, Any]],
+    seen_ids: set[str],
+    seen_events: dict[str, int],
+) -> tuple[list[dict[str, Any]], set[str], dict[str, int]]:
+    """Apply the same event-state gate used by the live watcher.
+
+    Important: event_key/event_level are globals on purpose. The active runner
+    replaces them with semantic versions before main(), so this helper is also
+    covered by the exact production classification path.
+    """
+    next_ids = set(seen_ids)
+    next_events = dict(seen_events)
+    notify: list[dict[str, Any]] = []
+
+    for row in rows:
+        key = str(row["event_key"])
+        members = list(row.get("members", []))
+        legacy_level = max(
+            (event_level(member) for member in members if str(member.get("id")) in next_ids),
+            default=0,
+        )
+        previous_level = max(int(next_events.get(key, 0)), legacy_level)
+        current_level = event_level(row)
+
+        if current_level > previous_level:
+            notify.append(row)
+
+        next_events[key] = max(previous_level, current_level)
+        for member in members:
+            member_id = str(member.get("id", ""))
+            if member_id:
+                next_ids.add(member_id)
+
+    return notify, next_ids, next_events
+
+
 def set_output(name: str, value: str) -> None:
     path = os.getenv("GITHUB_OUTPUT")
     if not path:
@@ -578,27 +615,10 @@ def main(argv: list[str] | None = None) -> int:
         set_output("source_complete", "false")
         return 0
 
-    notify: list[dict[str, Any]] = []
-    for row in rows:
-        key = str(row["event_key"])
-        members = list(row.get("members", []))
-        legacy_level = max(
-            (event_level(member) for member in members if str(member.get("id")) in seen_ids),
-            default=0,
-        )
-        previous_level = max(int(seen_events.get(key, 0)), legacy_level)
-        current_level = event_level(row)
-
-        # 같은 이벤트는 새 언론사 기사/GUID만 추가된 경우 재전송하지 않는다.
-        # 공식자료 등장 또는 최종 확정 단계로 승격될 때만 다시 알린다.
-        if current_level > previous_level:
-            notify.append(row)
-
-        seen_events[key] = max(previous_level, current_level)
-        for member in members:
-            member_id = str(member.get("id", ""))
-            if member_id:
-                seen_ids.add(member_id)
+    # 기사 수가 아니라 정책 사건의 상태 레벨 변화만 알림한다.
+    # active runner가 event_key/event_level을 semantic 버전으로 교체하므로
+    # 이 함수가 실제 Telegram 발송 직전 최종 게이트다.
+    notify, seen_ids, seen_events = select_notify_rows(rows, seen_ids, seen_events)
 
     if args.force_notify:
         notify = rows[:3]
