@@ -22,7 +22,7 @@ STATUS_PATH = OUT_DIR / "crypto_liquidity_watch_status.md"
 TREASURY_BUYBACK_XML = "https://home.treasury.gov/system/files/221/Tentative-Buyback-Schedule.xml"
 TREASURY_BUYBACK_PAGE = "https://www.treasurydirect.gov/auctions/announcements-data-results/buy-backs/"
 TREASURY_RATES_URL = "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_yield_curve"
-FARSIDE_BTC_ETF_URL = "https://farside.co.uk/bitcoin-etf-flow-all-data/"
+FARSIDE_BTC_ETF_URL = "https://farside.co.uk/btc/"
 
 UA = "Mozilla/5.0 (compatible; khs-watch/1.0; +https://github.com/qedgwangju-dot/khs-watch)"
 KST = ZoneInfo("Asia/Seoul")
