@@ -377,6 +377,8 @@ def main() -> int:
     sys.path.insert(0, str(ROOT / "scripts"))
     production = importlib.import_module(PRODUCTION_RUNNER)
     compact = importlib.import_module(LOCKED_TELEGRAM_MODULE)
+    policy_watch = importlib.import_module("khs_policy_watch")
+    policy_router = importlib.import_module("khs_policy_alert_router")
     runtime_delivery = importlib.import_module("verify_gamejoa_delivery_result")
     timeline_alert = {
         "news": "미국 전력망 DPA 후속 집행",
@@ -422,6 +424,23 @@ def main() -> int:
     timeline_block_errors = compact.compact_alert_block_errors(timeline_block)
     if timeline_block_errors:
         errors.append(f"GAMEJOA presidential timeline block failed: {timeline_block_errors}")
+
+    policy_watch._self_test_doe_grid_dpa_event_model()
+    policy_report = policy_router.render_policy_report(
+        [timeline_alert],
+        dt.datetime(2026, 10, 6, 18, 0, tzinfo=dt.timezone(dt.timedelta(hours=9))),
+    )
+    for marker in (
+        "- 타임라인:",
+        "2025년 1월 20일",
+        "2026년 3월 13일",
+        "Executive Order 14391",
+        "2026년 4월 20일",
+        "2026년 10월 5일",
+    ):
+        if marker not in policy_report:
+            errors.append(f"KHS policy timeline missing marker: {marker}")
+
 
     seen_merge = importlib.import_module("merge_gamejoa_preopen_news_radar_seen")
     merged_seen = seen_merge.merge_states(
