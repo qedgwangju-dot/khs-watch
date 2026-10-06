@@ -1231,6 +1231,23 @@
       "source": "이데일리",
       "title": "실적 시즌 '환율'에 울고 웃고…3분기 전망치 희비 갈렸다"
     },
+    "event:39883696a1f61e5e4cc36995": {
+      "event_alias_evidence_message_id": 2294,
+      "event_alias_evidence_run_id": 37407308832,
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12169015",
+      "source": "매일경제",
+      "source_body_digest": "2d818707ce945c0a714cb6f0af982b417c382445d2234ac815a621fc1c44b36b",
+      "source_event_identity": "source_event:v2:construction_order:bb5fcd8ec1268587191bde48a56afabe7bc021f8f7254cc5c34b06bb1f00672f",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T10:23+09:00",
+      "title": "“고성~거제 24.6km 연결”…쌍용건설, 8000억 규모 남부내륙철도 9공구 수주"
+    },
     "event:39c3f765d046429882ffa6b0": {
       "first_seen_kst": "2026-10-01T19:16:32+09:00",
       "lanes": {
@@ -2084,6 +2101,30 @@
       "source": "전자신문",
       "title": "'가전 특별시' 광주, 삼성 투자로 공조·반도체까지 산업지도 넓힌다"
     },
+    "event:68566094dba58bbb0bcb0929": {
+      "event_alias_evidence_message_id": 2296,
+      "event_alias_evidence_run_id": 37411705470,
+      "first_seen_kst": "2026-10-06T13:07:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:07:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:07:20+09:00",
+      "link": "https://www.etnews.com/20261006000142",
+      "source": "전자신문",
+      "source_body_digest": "0bcbaf88be3606924f3927ec020d1f7948d3cd1e1466e5772ef7ee92913583a6",
+      "source_event_identity": "source_event:v2:industrial_product_milestone:e694d4adb6448490a6947ab91ce0174a00111a0104f88f85519e76ec53bcec2f",
+      "source_fact_identity": "source_facts:v1:c7cfe1fbc93f2a4a8df7905f6cfb5170da29f8eaf18a7f90777a168273f7c204",
+      "source_fact_keys": [
+        "source_fact:v1:1ac843d9d126d6819f3bfb8bf3c50c491b346e44c82b8629183bdd26d6b775b6",
+        "source_fact:v1:356b74ff6e4806635fc8e1fdfaf646f552701ba215738dbd172a8144abc8dd27",
+        "source_fact:v1:4048c6d2bfc896e6e0b99d217ea0bbd2333e6f9eea5d1c94d37c5bce48487755",
+        "source_fact:v1:60f5c47ee2a462443c2f4b36510ff456acdc09f83e477730e0b194b4270df186",
+        "source_fact:v1:67bef8e1019ba2110df1c609df07ab96c0837d721ca5698c79199c3f2c85942e",
+        "source_fact:v1:b89c59cf9c0b8f0821be999a6f3ac28fbf2ee1b535a3a380f79ab59f3f820ef6"
+      ],
+      "source_published_kst": "2026-10-06T10:57+09:00",
+      "title": "오텍캐리어, AI 데이터센터용 CDU 제품 라인업 강화"
+    },
     "event:68b3ff1292ddc5b8b6a0c1b5": {
       "first_seen_kst": "2026-10-02T07:53:13+09:00",
       "lanes": {
@@ -2719,6 +2760,23 @@
       "link": "https://www.edaily.co.kr/news/read?newsId=01777766645585368",
       "source": "이데일리",
       "title": "[속보]뉴욕증시, 장기금리 급등에 이틀째 약세…30년물 24년來 최고"
+    },
+    "event:7e3fbb8cd304a004176216ae": {
+      "event_alias_evidence_message_id": 2295,
+      "event_alias_evidence_run_id": 37409273145,
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006064200001",
+      "source": "연합뉴스",
+      "source_body_digest": "27a6625a05ec5b5cc28260e35844c55f81cd7cd7092a92080b02a4bf713cbc7d",
+      "source_event_identity": "source_event:v2:regulatory_package:c6b3b6d4eeea8d16c894d94f5e4eafb59a58861fecaed2b3591b2883e439afdc",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T11:00+09:00",
+      "title": "디스플레이 산업 규제 개선…수입 간소화·AI가이드 마련 | 연합뉴스"
     },
     "event:808bb9eccb6846cba014ea8d": {
       "first_seen_kst": "2026-09-18T11:26:24+09:00",
@@ -6541,6 +6599,27 @@
       "source_published_kst": "2026-10-06T08:25+09:00",
       "title": "\"LG전자, AI 데이터센터 냉각·로보틱스 사업 기대…목표가↑\"-메리츠"
     },
+    "fact:1991a9a0e4a93598ca56f9f7": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815152",
+      "source": "뉴시스",
+      "source_body_digest": "26fbc8c678ed98374aceddf52dbf64a62241bab402724ce154566cdafaeb9f59",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a5c0761421de673c4e1d024087982db56e80d19edb71b43d87307ca778e05a28",
+      "source_fact_keys": [
+        "source_fact:v1:2a7aa9aca6478b75ef7419b620b34839a1ee7805df9ddadc15c702375ca44de5",
+        "source_fact:v1:4b82380b0b6bff0d2c5d23f64e4eff23af6be2e86e82c43fd983f62808fff161",
+        "source_fact:v1:5426c5a01375adbe7b07c733c457b54dba0b0ac07a2627ee3056fa315db17242",
+        "source_fact:v1:65f195e5669989f87518d68fa48da5ea35534748a92a5e54b51c641d8dd06e4f",
+        "source_fact:v1:9fa984bb0175ee6466fd750272f802713d5409981d550768d472c474d02d591b"
+      ],
+      "source_published_kst": "2026-10-06T11:08+09:00",
+      "title": "현대차그룹, 1~8월 글로벌 전기차 판매 20%↑…\"亞·유럽서 지속 성장\""
+    },
     "fact:1a010d9063177441bbe83b37": {
       "first_seen_kst": "2026-10-06T00:57:01+09:00",
       "lanes": {
@@ -7052,6 +7131,27 @@
       "source_published_kst": "2026-10-06T08:55+09:00",
       "title": "현대글로비스, SMR 추진 자동차운반선 한미 항로 운항 검토 | 연합뉴스"
     },
+    "fact:31aed3f69245b1d08e35c99f": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632674",
+      "source": "이투데이",
+      "source_body_digest": "7616bba332cae85aa67f4071ab98251f3e02487d53563af5bfecd93be6d35424",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e10a38f7064a9ae34409d75e7b98d72ca326fa795a5afb33dd422695de658d3c",
+      "source_fact_keys": [
+        "source_fact:v1:4074b5db6e9e35076f8c4a817f97dd7f63568a0ecd02124cf5b59ac818e627e6",
+        "source_fact:v1:971cc3a06f1c14b38a6b0fe6960b5aaf6696ac1ce94a68fd4ae6873cc606057e",
+        "source_fact:v1:dac3614048237d80ffb9f589549052e378497ca1375af8ae77fb8bf975b43858",
+        "source_fact:v1:ef38c1e32453bcaefa139e55b4d60d63092a3f007baa6c7bb2b7d2a4219a3a72",
+        "source_fact:v1:ef616a4915c76ef033a11bb7678c5a5cebf6a2bd28b6b139a34015d86b34cf16"
+      ],
+      "source_published_kst": "2026-10-06T11:01+09:00",
+      "title": "자동차 화면용 강화유리 수입승인 없앤다…디스플레이 규제 개선"
+    },
     "fact:321505a3dd3646769996176d": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
       "lanes": {
@@ -7106,6 +7206,23 @@
       ],
       "source_published_kst": "2026-10-06T06:34+09:00",
       "title": "밴스 “알래스카 LNG, 韓과 세부 협의 남아”⋯트럼프 ‘투자 확정’과 온도차"
+    },
+    "fact:32cbc92fd28274666d66b925": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815297",
+      "source": "뉴시스",
+      "source_body_digest": "7e78054ba5210a572235296341845a0ebbc73746007b1fdb7a042eb30f89b59e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c3369941273743cfe655837c416143643981afdda176e9bfd464a5066f8d790b",
+      "source_fact_keys": [
+        "source_fact:v1:92dd023bfedc5ca9237416ab25867fb8c468c5f67a914dbb077e6a167453ed8f"
+      ],
+      "source_published_kst": "2026-10-06T11:39+09:00",
+      "title": "\"방산 중기 육성\"…투자전문회사 설립법안 발의"
     },
     "fact:332177a7a90d69f976303739": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
@@ -7482,7 +7599,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815158",
       "source": "뉴시스",
       "source_body_digest": "5c83ba8748f82106dfe34a4c7b3f3416a944680001648bc8be2ac4dda66cd9da",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:regulatory_package:c6b3b6d4eeea8d16c894d94f5e4eafb59a58861fecaed2b3591b2883e439afdc",
       "source_fact_identity": "source_facts:v1:62739ec6a5c657c309b1666ccf34d24d7c2f590b3436b623f31318723ce750e6",
       "source_fact_keys": [
         "source_fact:v1:30c9ecac69f79cb95fbe3fb69810412f2493b6506463778225c9f14c4c66dec1",
@@ -9153,7 +9270,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261006078100003",
       "source": "연합뉴스",
       "source_body_digest": "7504830f2e7e7f3d111e9e90f59af3e8d3ffe0cd86bd19e591230b6907ed6ab0",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:construction_order:bb5fcd8ec1268587191bde48a56afabe7bc021f8f7254cc5c34b06bb1f00672f",
       "source_fact_identity": "source_facts:v1:91d9fa6891fedbff5582a78e581acf912bc5f8ba5a4baada745d1782fdd134f7",
       "source_fact_keys": [
         "source_fact:v1:5da1b394f5d4631048b02e742318b9f8917e49d7bc11a19f0495ad83a06c1b48",
@@ -9276,6 +9393,23 @@
       ],
       "source_published_kst": "2026-10-05T22:50+09:00",
       "title": "유나이티드 마이크로일렉, 18억 달러 해외CB 가격 확정..표면금리 0%"
+    },
+    "fact:896ec45e107cbec8e0182d21": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006073900030",
+      "source": "연합뉴스",
+      "source_body_digest": "11fbbda18787939e6e72271fd81365bf01b2273d6bbce7245ce088205cec81ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eed2983af23004e5f29d4008cefc07adb64977a48e11d1db1f03eddb8f8e3eec",
+      "source_fact_keys": [
+        "source_fact:v1:cda4db4419fc1d829f472be7d0fc55b248b3dfbb6ebd7a7a44abbe19f345bfb4"
+      ],
+      "source_published_kst": "2026-10-06T11:08+09:00",
+      "title": "\"농지 특조법 특례 2∼3년 설정·농지법 개정 동시 추진 필요\" | 연합뉴스"
     },
     "fact:89ba12aefe424a95407f5735": {
       "first_seen_kst": "2026-10-05T19:37:20+09:00",
@@ -9679,7 +9813,7 @@
       "link": "https://www.etnews.com/20261006000142",
       "source": "전자신문",
       "source_body_digest": "0bcbaf88be3606924f3927ec020d1f7948d3cd1e1466e5772ef7ee92913583a6",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_product_milestone:e694d4adb6448490a6947ab91ce0174a00111a0104f88f85519e76ec53bcec2f",
       "source_fact_identity": "source_facts:v1:c7cfe1fbc93f2a4a8df7905f6cfb5170da29f8eaf18a7f90777a168273f7c204",
       "source_fact_keys": [
         "source_fact:v1:1ac843d9d126d6819f3bfb8bf3c50c491b346e44c82b8629183bdd26d6b775b6",
@@ -10167,6 +10301,29 @@
       "source_published_kst": "2026-10-05T21:54+09:00",
       "title": "비트마인 이머전 테크놀로, ETH 602만개 보유..총자산 174억 달러"
     },
+    "fact:ab5ec416306d4638b0ede09f": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894020",
+      "source": "헤럴드경제",
+      "source_body_digest": "eb9dd11ea466d43daa5a8720d502985ae761a5d935b72bb7f9812098e16a5915",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6aebd2201689c854fce6f075d214389ff9d46c9bbc9245830b3a425e0e5472d3",
+      "source_fact_keys": [
+        "source_fact:v1:11714957b3812faae2c0ce6da6bab2b2398433dcfab8fd684e48d553dd427dd9",
+        "source_fact:v1:15c37e547df88cf4a9b6faa6350baead074c4ec888b2c09b82deeadb0ec133eb",
+        "source_fact:v1:350aa0f4c154e18ea39019becd2c70b0280dabf621afe898d93b35d8e9703cb7",
+        "source_fact:v1:384a6159b0a46a3ddcee7a5a30fbd79fac57f76eb9c821482af439aa914ac3ff",
+        "source_fact:v1:3a520bc83bf7dc22c47db63235288a473607de468224034e0738ce096809f2ee",
+        "source_fact:v1:7583dcf75619b0dc6d74330fc3cb5f835dcd75876dfd003599c3fd8cbff07de7",
+        "source_fact:v1:e845a8836cd87fc690eedf4fd1eaf32ce34029c54a1d64071a4d028c5e89427c"
+      ],
+      "source_published_kst": "2026-10-06T11:12+09:00",
+      "title": "LG전자, 5GW 북미 냉각 설루션 장기 계약"
+    },
     "fact:ab6b290df542c1176f4d4468": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
       "lanes": {
@@ -10482,6 +10639,23 @@
       ],
       "source_published_kst": "2026-10-05T09:00+09:00",
       "title": "충북 지방의회 의정비 인상 '갑론을박'…현실화 vs 과욕 | 연합뉴스"
+    },
+    "fact:bfe28e3822d2fc71f87ce996": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632751",
+      "source": "이투데이",
+      "source_body_digest": "752040a34cdbfc09b9b9e04b514b4ae988bcedb086214d3ed2550b231ca15831",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3aa3c34170cfe2a2df8494ef635c31d7a040a06af3a104e893ef3b1c144829c9",
+      "source_fact_keys": [
+        "source_fact:v1:5136b36b96f032b0e9ad15ed95bd47d041d65e81e5cb5df8884848b107959ede"
+      ],
+      "source_published_kst": "2026-10-06T11:11+09:00",
+      "title": "컨테이너 일일이 안 묶어도 된다…HD현대, 세계 첫 ‘래싱프리 컨테이너선’ 인도"
     },
     "fact:bfec0857302adc0ca29bc9d6": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -11696,6 +11870,30 @@
       ],
       "source_published_kst": "2026-10-05T23:41+09:00",
       "title": "[美특징주]메타, 상승…\"뮤즈 2030년까지 전체 매출의 최대 8% 도달 가능\""
+    },
+    "fact:f3dae6b1432c3faa419c1a41": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03266886645610296&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "f33854315ae2db4af250e37be5282bd4f58ff368e2ea0149087aab77b3785a47",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba889e0571caf33a9e48502efdb9a5db2e7c9eb41df0d9509f0a23d52cce78b",
+      "source_fact_keys": [
+        "source_fact:v1:10b6f5fd99db4bc57a124e13c06428f0949adc23b2c8d3561ccd2000ef53e01a",
+        "source_fact:v1:1ae488f4b5e4816ec3672f4d997af4e3b1eb4c1d5bc1009fac5c13f1026dd5d6",
+        "source_fact:v1:34f04bd08322b72e57ffff6bec06257bc33f24689bc595bc223096ad1c16b65a",
+        "source_fact:v1:5970a18716b81d335f8230c39afc28a5d9eda6ee9240c8c14a78487560a623e9",
+        "source_fact:v1:9a31ddf32c179083acd4e788f576d6c00dc51ca46370df70891b129a674c5071",
+        "source_fact:v1:df247875a6d0cc3546166cc3176c6c97697f3391636ea2afa47a0bfce998c1a9",
+        "source_fact:v1:e047a4cca267202c8725bfe42f7a5c3556fb136ad64dadb4b62eb5c33846884f",
+        "source_fact:v1:fa166b03953fc2d98714647ad3e482ba2ebdb48feb7b35f96d52327264eb4221"
+      ],
+      "source_published_kst": "2026-10-06T11:09+09:00",
+      "title": "재정부담에 재협상까지…고금리에 상업용 부동산 비상"
     },
     "fact:f5941e8f9802f45e66242eaa": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -16779,6 +16977,30 @@
       "source": "머니투데이",
       "title": "하드·소프트웨어 경쟁력 통했다… K배터리 유일 'DSX 레디'"
     },
+    "link:3c1a45105f5e544f7934ddbc": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03266886645610296&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "f33854315ae2db4af250e37be5282bd4f58ff368e2ea0149087aab77b3785a47",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba889e0571caf33a9e48502efdb9a5db2e7c9eb41df0d9509f0a23d52cce78b",
+      "source_fact_keys": [
+        "source_fact:v1:10b6f5fd99db4bc57a124e13c06428f0949adc23b2c8d3561ccd2000ef53e01a",
+        "source_fact:v1:1ae488f4b5e4816ec3672f4d997af4e3b1eb4c1d5bc1009fac5c13f1026dd5d6",
+        "source_fact:v1:34f04bd08322b72e57ffff6bec06257bc33f24689bc595bc223096ad1c16b65a",
+        "source_fact:v1:5970a18716b81d335f8230c39afc28a5d9eda6ee9240c8c14a78487560a623e9",
+        "source_fact:v1:9a31ddf32c179083acd4e788f576d6c00dc51ca46370df70891b129a674c5071",
+        "source_fact:v1:df247875a6d0cc3546166cc3176c6c97697f3391636ea2afa47a0bfce998c1a9",
+        "source_fact:v1:e047a4cca267202c8725bfe42f7a5c3556fb136ad64dadb4b62eb5c33846884f",
+        "source_fact:v1:fa166b03953fc2d98714647ad3e482ba2ebdb48feb7b35f96d52327264eb4221"
+      ],
+      "source_published_kst": "2026-10-06T11:09+09:00",
+      "title": "재정부담에 재협상까지…고금리에 상업용 부동산 비상"
+    },
     "link:3c25fcca88c5ebe40764a90f": {
       "first_seen_kst": "2026-10-01T20:25:35+09:00",
       "lanes": {
@@ -17329,6 +17551,30 @@
       "source": "이데일리",
       "title": "日 31년 만의 최고금리에도 엔화 약세…원·달러 1380원대 중반으로"
     },
+    "link:439051e2fa9696749e8057d7": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03266886645610296&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "f33854315ae2db4af250e37be5282bd4f58ff368e2ea0149087aab77b3785a47",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba889e0571caf33a9e48502efdb9a5db2e7c9eb41df0d9509f0a23d52cce78b",
+      "source_fact_keys": [
+        "source_fact:v1:10b6f5fd99db4bc57a124e13c06428f0949adc23b2c8d3561ccd2000ef53e01a",
+        "source_fact:v1:1ae488f4b5e4816ec3672f4d997af4e3b1eb4c1d5bc1009fac5c13f1026dd5d6",
+        "source_fact:v1:34f04bd08322b72e57ffff6bec06257bc33f24689bc595bc223096ad1c16b65a",
+        "source_fact:v1:5970a18716b81d335f8230c39afc28a5d9eda6ee9240c8c14a78487560a623e9",
+        "source_fact:v1:9a31ddf32c179083acd4e788f576d6c00dc51ca46370df70891b129a674c5071",
+        "source_fact:v1:df247875a6d0cc3546166cc3176c6c97697f3391636ea2afa47a0bfce998c1a9",
+        "source_fact:v1:e047a4cca267202c8725bfe42f7a5c3556fb136ad64dadb4b62eb5c33846884f",
+        "source_fact:v1:fa166b03953fc2d98714647ad3e482ba2ebdb48feb7b35f96d52327264eb4221"
+      ],
+      "source_published_kst": "2026-10-06T11:09+09:00",
+      "title": "재정부담에 재협상까지…고금리에 상업용 부동산 비상"
+    },
     "link:43a54b24827847e45a7cffbb": {
       "first_seen_kst": "2026-10-03T08:59:09+09:00",
       "lanes": {
@@ -17410,7 +17656,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815158",
       "source": "뉴시스",
       "source_body_digest": "5c83ba8748f82106dfe34a4c7b3f3416a944680001648bc8be2ac4dda66cd9da",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:regulatory_package:c6b3b6d4eeea8d16c894d94f5e4eafb59a58861fecaed2b3591b2883e439afdc",
       "source_fact_identity": "source_facts:v1:62739ec6a5c657c309b1666ccf34d24d7c2f590b3436b623f31318723ce750e6",
       "source_fact_keys": [
         "source_fact:v1:30c9ecac69f79cb95fbe3fb69810412f2493b6506463778225c9f14c4c66dec1",
@@ -20195,7 +20441,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261006078100003",
       "source": "연합뉴스",
       "source_body_digest": "7504830f2e7e7f3d111e9e90f59af3e8d3ffe0cd86bd19e591230b6907ed6ab0",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:construction_order:bb5fcd8ec1268587191bde48a56afabe7bc021f8f7254cc5c34b06bb1f00672f",
       "source_fact_identity": "source_facts:v1:91d9fa6891fedbff5582a78e581acf912bc5f8ba5a4baada745d1782fdd134f7",
       "source_fact_keys": [
         "source_fact:v1:5da1b394f5d4631048b02e742318b9f8917e49d7bc11a19f0495ad83a06c1b48",
@@ -21613,7 +21859,7 @@
       "link": "https://www.mk.co.kr/news/realestate/12169015",
       "source": "매일경제",
       "source_body_digest": "2d818707ce945c0a714cb6f0af982b417c382445d2234ac815a621fc1c44b36b",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:construction_order:bb5fcd8ec1268587191bde48a56afabe7bc021f8f7254cc5c34b06bb1f00672f",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T10:23+09:00",
@@ -22798,6 +23044,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T06:00+09:00",
       "title": "4대 금융그룹, 3분기도 호실적…'역대급 연간 순이익' 예고"
+    },
+    "link:85946b1f826e7c5774efa27c": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815297",
+      "source": "뉴시스",
+      "source_body_digest": "7e78054ba5210a572235296341845a0ebbc73746007b1fdb7a042eb30f89b59e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c3369941273743cfe655837c416143643981afdda176e9bfd464a5066f8d790b",
+      "source_fact_keys": [
+        "source_fact:v1:92dd023bfedc5ca9237416ab25867fb8c468c5f67a914dbb077e6a167453ed8f"
+      ],
+      "source_published_kst": "2026-10-06T11:39+09:00",
+      "title": "\"방산 중기 육성\"…투자전문회사 설립법안 발의"
     },
     "link:859c9e55bfca4d2f97989328": {
       "first_seen_kst": "2026-10-01T21:12:25+09:00",
@@ -24040,6 +24303,23 @@
       ],
       "source_published_kst": "2026-10-05T13:09+09:00",
       "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
+    },
+    "link:94a281c182413ae8c7c91948": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632751",
+      "source": "이투데이",
+      "source_body_digest": "752040a34cdbfc09b9b9e04b514b4ae988bcedb086214d3ed2550b231ca15831",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3aa3c34170cfe2a2df8494ef635c31d7a040a06af3a104e893ef3b1c144829c9",
+      "source_fact_keys": [
+        "source_fact:v1:5136b36b96f032b0e9ad15ed95bd47d041d65e81e5cb5df8884848b107959ede"
+      ],
+      "source_published_kst": "2026-10-06T11:11+09:00",
+      "title": "컨테이너 일일이 안 묶어도 된다…HD현대, 세계 첫 ‘래싱프리 컨테이너선’ 인도"
     },
     "link:94a88b9e151b65bc43d6bdc8": {
       "first_seen_kst": "2026-09-18T14:19:18+09:00",
@@ -26245,6 +26525,29 @@
       "source": "이데일리",
       "title": "“AI가 후보물질 만들면 프로티나가 검증”…신약개발 병목 ‘웨트랩’ 정조준[인베스트 바이오]"
     },
+    "link:add2d1d39b35247d84dd1ae4": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894020",
+      "source": "헤럴드경제",
+      "source_body_digest": "eb9dd11ea466d43daa5a8720d502985ae761a5d935b72bb7f9812098e16a5915",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6aebd2201689c854fce6f075d214389ff9d46c9bbc9245830b3a425e0e5472d3",
+      "source_fact_keys": [
+        "source_fact:v1:11714957b3812faae2c0ce6da6bab2b2398433dcfab8fd684e48d553dd427dd9",
+        "source_fact:v1:15c37e547df88cf4a9b6faa6350baead074c4ec888b2c09b82deeadb0ec133eb",
+        "source_fact:v1:350aa0f4c154e18ea39019becd2c70b0280dabf621afe898d93b35d8e9703cb7",
+        "source_fact:v1:384a6159b0a46a3ddcee7a5a30fbd79fac57f76eb9c821482af439aa914ac3ff",
+        "source_fact:v1:3a520bc83bf7dc22c47db63235288a473607de468224034e0738ce096809f2ee",
+        "source_fact:v1:7583dcf75619b0dc6d74330fc3cb5f835dcd75876dfd003599c3fd8cbff07de7",
+        "source_fact:v1:e845a8836cd87fc690eedf4fd1eaf32ce34029c54a1d64071a4d028c5e89427c"
+      ],
+      "source_published_kst": "2026-10-06T11:12+09:00",
+      "title": "LG전자, 5GW 북미 냉각 설루션 장기 계약"
+    },
     "link:ae159f45c249902c9c44dc16": {
       "first_seen_kst": "2026-10-04T11:57:24+09:00",
       "lanes": {
@@ -27442,6 +27745,27 @@
       "source_published_kst": "2026-10-05T21:34+09:00",
       "title": "北지뢰에 '대북 사이버 독자제재' 내부 검토…외교부·통일부 이견"
     },
+    "link:bcf48075fa872b468fd01aa2": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632674",
+      "source": "이투데이",
+      "source_body_digest": "7616bba332cae85aa67f4071ab98251f3e02487d53563af5bfecd93be6d35424",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e10a38f7064a9ae34409d75e7b98d72ca326fa795a5afb33dd422695de658d3c",
+      "source_fact_keys": [
+        "source_fact:v1:4074b5db6e9e35076f8c4a817f97dd7f63568a0ecd02124cf5b59ac818e627e6",
+        "source_fact:v1:971cc3a06f1c14b38a6b0fe6960b5aaf6696ac1ce94a68fd4ae6873cc606057e",
+        "source_fact:v1:dac3614048237d80ffb9f589549052e378497ca1375af8ae77fb8bf975b43858",
+        "source_fact:v1:ef38c1e32453bcaefa139e55b4d60d63092a3f007baa6c7bb2b7d2a4219a3a72",
+        "source_fact:v1:ef616a4915c76ef033a11bb7678c5a5cebf6a2bd28b6b139a34015d86b34cf16"
+      ],
+      "source_published_kst": "2026-10-06T11:01+09:00",
+      "title": "자동차 화면용 강화유리 수입승인 없앤다…디스플레이 규제 개선"
+    },
     "link:bd035af434be14c40fb8b41e": {
       "first_seen_kst": "2026-10-02T15:05:30+09:00",
       "lanes": {
@@ -27791,6 +28115,23 @@
       "link": "https://www.mk.co.kr/news/business/12164742",
       "source": "매일경제",
       "title": "HBM 수요·장기계약…NH證 “SK하닉 340만원 간다” [오늘, 이 종목]- 매경ECONOMY"
+    },
+    "link:c150fe9ffbb6f2ff63d60509": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006073900030",
+      "source": "연합뉴스",
+      "source_body_digest": "11fbbda18787939e6e72271fd81365bf01b2273d6bbce7245ce088205cec81ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eed2983af23004e5f29d4008cefc07adb64977a48e11d1db1f03eddb8f8e3eec",
+      "source_fact_keys": [
+        "source_fact:v1:cda4db4419fc1d829f472be7d0fc55b248b3dfbb6ebd7a7a44abbe19f345bfb4"
+      ],
+      "source_published_kst": "2026-10-06T11:08+09:00",
+      "title": "\"농지 특조법 특례 2∼3년 설정·농지법 개정 동시 추진 필요\" | 연합뉴스"
     },
     "link:c168e3c62ad0c70ae66cafb1": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
@@ -29250,7 +29591,7 @@
       "link": "https://www.etnews.com/20261006000142",
       "source": "전자신문",
       "source_body_digest": "0bcbaf88be3606924f3927ec020d1f7948d3cd1e1466e5772ef7ee92913583a6",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_product_milestone:e694d4adb6448490a6947ab91ce0174a00111a0104f88f85519e76ec53bcec2f",
       "source_fact_identity": "source_facts:v1:c7cfe1fbc93f2a4a8df7905f6cfb5170da29f8eaf18a7f90777a168273f7c204",
       "source_fact_keys": [
         "source_fact:v1:1ac843d9d126d6819f3bfb8bf3c50c491b346e44c82b8629183bdd26d6b775b6",
@@ -29262,6 +29603,27 @@
       ],
       "source_published_kst": "2026-10-06T10:57+09:00",
       "title": "오텍캐리어, AI 데이터센터용 CDU 제품 라인업 강화"
+    },
+    "link:d3889a19bb005b7ae68bcecf": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815152",
+      "source": "뉴시스",
+      "source_body_digest": "26fbc8c678ed98374aceddf52dbf64a62241bab402724ce154566cdafaeb9f59",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a5c0761421de673c4e1d024087982db56e80d19edb71b43d87307ca778e05a28",
+      "source_fact_keys": [
+        "source_fact:v1:2a7aa9aca6478b75ef7419b620b34839a1ee7805df9ddadc15c702375ca44de5",
+        "source_fact:v1:4b82380b0b6bff0d2c5d23f64e4eff23af6be2e86e82c43fd983f62808fff161",
+        "source_fact:v1:5426c5a01375adbe7b07c733c457b54dba0b0ac07a2627ee3056fa315db17242",
+        "source_fact:v1:65f195e5669989f87518d68fa48da5ea35534748a92a5e54b51c641d8dd06e4f",
+        "source_fact:v1:9fa984bb0175ee6466fd750272f802713d5409981d550768d472c474d02d591b"
+      ],
+      "source_published_kst": "2026-10-06T11:08+09:00",
+      "title": "현대차그룹, 1~8월 글로벌 전기차 판매 20%↑…\"亞·유럽서 지속 성장\""
     },
     "link:d38c4b0ebcc9da92fd90f93a": {
       "first_seen_kst": "2026-10-01T17:14:46+09:00",
@@ -32408,7 +32770,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261006064200001",
       "source": "연합뉴스",
       "source_body_digest": "27a6625a05ec5b5cc28260e35844c55f81cd7cd7092a92080b02a4bf713cbc7d",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:regulatory_package:c6b3b6d4eeea8d16c894d94f5e4eafb59a58861fecaed2b3591b2883e439afdc",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T11:00+09:00",
@@ -33702,6 +34064,30 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "[일문일답] 독파모 끝까지 간다…\"프론티어 AI 사업 별도 추진\""
+    },
+    "original:09bf68afdfa27958ffae98e0": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03266886645610296&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "f33854315ae2db4af250e37be5282bd4f58ff368e2ea0149087aab77b3785a47",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba889e0571caf33a9e48502efdb9a5db2e7c9eb41df0d9509f0a23d52cce78b",
+      "source_fact_keys": [
+        "source_fact:v1:10b6f5fd99db4bc57a124e13c06428f0949adc23b2c8d3561ccd2000ef53e01a",
+        "source_fact:v1:1ae488f4b5e4816ec3672f4d997af4e3b1eb4c1d5bc1009fac5c13f1026dd5d6",
+        "source_fact:v1:34f04bd08322b72e57ffff6bec06257bc33f24689bc595bc223096ad1c16b65a",
+        "source_fact:v1:5970a18716b81d335f8230c39afc28a5d9eda6ee9240c8c14a78487560a623e9",
+        "source_fact:v1:9a31ddf32c179083acd4e788f576d6c00dc51ca46370df70891b129a674c5071",
+        "source_fact:v1:df247875a6d0cc3546166cc3176c6c97697f3391636ea2afa47a0bfce998c1a9",
+        "source_fact:v1:e047a4cca267202c8725bfe42f7a5c3556fb136ad64dadb4b62eb5c33846884f",
+        "source_fact:v1:fa166b03953fc2d98714647ad3e482ba2ebdb48feb7b35f96d52327264eb4221"
+      ],
+      "source_published_kst": "2026-10-06T11:09+09:00",
+      "title": "재정부담에 재협상까지…고금리에 상업용 부동산 비상"
     },
     "original:09e438ac601fd63169062851": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
@@ -35550,6 +35936,23 @@
       "source": "연합뉴스",
       "title": "트럼프 \"알래스카 LNG 韓투자\" 대못…공식문서엔 조건부 | 연합뉴스"
     },
+    "original:23c857c44f3ed94bec7a88ae": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815297",
+      "source": "뉴시스",
+      "source_body_digest": "7e78054ba5210a572235296341845a0ebbc73746007b1fdb7a042eb30f89b59e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c3369941273743cfe655837c416143643981afdda176e9bfd464a5066f8d790b",
+      "source_fact_keys": [
+        "source_fact:v1:92dd023bfedc5ca9237416ab25867fb8c468c5f67a914dbb077e6a167453ed8f"
+      ],
+      "source_published_kst": "2026-10-06T11:39+09:00",
+      "title": "\"방산 중기 육성\"…투자전문회사 설립법안 발의"
+    },
     "original:23cba83ffa10aa18a14409b1": {
       "first_seen_kst": "2026-10-05T04:42:26+09:00",
       "lanes": {
@@ -35810,7 +36213,7 @@
       "link": "https://www.etnews.com/20261006000142",
       "source": "전자신문",
       "source_body_digest": "0bcbaf88be3606924f3927ec020d1f7948d3cd1e1466e5772ef7ee92913583a6",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_product_milestone:e694d4adb6448490a6947ab91ce0174a00111a0104f88f85519e76ec53bcec2f",
       "source_fact_identity": "source_facts:v1:c7cfe1fbc93f2a4a8df7905f6cfb5170da29f8eaf18a7f90777a168273f7c204",
       "source_fact_keys": [
         "source_fact:v1:1ac843d9d126d6819f3bfb8bf3c50c491b346e44c82b8629183bdd26d6b775b6",
@@ -36172,6 +36575,27 @@
       "link": "https://zdnet.co.kr/view/?no=20261001155205",
       "source": "지디넷코리아",
       "title": "에코프로, 최상운·김장우 공동 대표 체제로"
+    },
+    "original:2af108bf2127d45a14f7552c": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632674",
+      "source": "이투데이",
+      "source_body_digest": "7616bba332cae85aa67f4071ab98251f3e02487d53563af5bfecd93be6d35424",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e10a38f7064a9ae34409d75e7b98d72ca326fa795a5afb33dd422695de658d3c",
+      "source_fact_keys": [
+        "source_fact:v1:4074b5db6e9e35076f8c4a817f97dd7f63568a0ecd02124cf5b59ac818e627e6",
+        "source_fact:v1:971cc3a06f1c14b38a6b0fe6960b5aaf6696ac1ce94a68fd4ae6873cc606057e",
+        "source_fact:v1:dac3614048237d80ffb9f589549052e378497ca1375af8ae77fb8bf975b43858",
+        "source_fact:v1:ef38c1e32453bcaefa139e55b4d60d63092a3f007baa6c7bb2b7d2a4219a3a72",
+        "source_fact:v1:ef616a4915c76ef033a11bb7678c5a5cebf6a2bd28b6b139a34015d86b34cf16"
+      ],
+      "source_published_kst": "2026-10-06T11:01+09:00",
+      "title": "자동차 화면용 강화유리 수입승인 없앤다…디스플레이 규제 개선"
     },
     "original:2b08a03c3ceae6f42d9de947": {
       "first_seen_kst": "2026-10-03T05:48:31+09:00",
@@ -39642,7 +40066,7 @@
       "link": "https://www.mk.co.kr/news/realestate/12169015",
       "source": "매일경제",
       "source_body_digest": "2d818707ce945c0a714cb6f0af982b417c382445d2234ac815a621fc1c44b36b",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:construction_order:bb5fcd8ec1268587191bde48a56afabe7bc021f8f7254cc5c34b06bb1f00672f",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T10:23+09:00",
@@ -40300,6 +40724,27 @@
       "link": "https://www.etnews.com/20261001000338",
       "source": "전자신문",
       "title": "KEA “대미 투자 합의 환영…사업 협력 확대해야”"
+    },
+    "original:5e6cfd261dbae0563b87f146": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815152",
+      "source": "뉴시스",
+      "source_body_digest": "26fbc8c678ed98374aceddf52dbf64a62241bab402724ce154566cdafaeb9f59",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a5c0761421de673c4e1d024087982db56e80d19edb71b43d87307ca778e05a28",
+      "source_fact_keys": [
+        "source_fact:v1:2a7aa9aca6478b75ef7419b620b34839a1ee7805df9ddadc15c702375ca44de5",
+        "source_fact:v1:4b82380b0b6bff0d2c5d23f64e4eff23af6be2e86e82c43fd983f62808fff161",
+        "source_fact:v1:5426c5a01375adbe7b07c733c457b54dba0b0ac07a2627ee3056fa315db17242",
+        "source_fact:v1:65f195e5669989f87518d68fa48da5ea35534748a92a5e54b51c641d8dd06e4f",
+        "source_fact:v1:9fa984bb0175ee6466fd750272f802713d5409981d550768d472c474d02d591b"
+      ],
+      "source_published_kst": "2026-10-06T11:08+09:00",
+      "title": "현대차그룹, 1~8월 글로벌 전기차 판매 20%↑…\"亞·유럽서 지속 성장\""
     },
     "original:5e9c0a2b8354c15ff06f0382": {
       "first_seen_kst": "2026-09-19T15:20:13+09:00",
@@ -41404,6 +41849,23 @@
       ],
       "source_published_kst": "2026-10-06T02:28+09:00",
       "title": "아람코 CEO \"세계 석유 공급 이미 압박…비축 최대 2년\""
+    },
+    "original:6bb771b2e77696739d631651": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006073900030",
+      "source": "연합뉴스",
+      "source_body_digest": "11fbbda18787939e6e72271fd81365bf01b2273d6bbce7245ce088205cec81ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eed2983af23004e5f29d4008cefc07adb64977a48e11d1db1f03eddb8f8e3eec",
+      "source_fact_keys": [
+        "source_fact:v1:cda4db4419fc1d829f472be7d0fc55b248b3dfbb6ebd7a7a44abbe19f345bfb4"
+      ],
+      "source_published_kst": "2026-10-06T11:08+09:00",
+      "title": "\"농지 특조법 특례 2∼3년 설정·농지법 개정 동시 추진 필요\" | 연합뉴스"
     },
     "original:6bef4d724494d44ed45c6eee": {
       "first_seen_kst": "2026-09-27T07:38:21+09:00",
@@ -43877,7 +44339,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261006064200001",
       "source": "연합뉴스",
       "source_body_digest": "27a6625a05ec5b5cc28260e35844c55f81cd7cd7092a92080b02a4bf713cbc7d",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:regulatory_package:c6b3b6d4eeea8d16c894d94f5e4eafb59a58861fecaed2b3591b2883e439afdc",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T11:00+09:00",
@@ -44778,7 +45240,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815158",
       "source": "뉴시스",
       "source_body_digest": "5c83ba8748f82106dfe34a4c7b3f3416a944680001648bc8be2ac4dda66cd9da",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:regulatory_package:c6b3b6d4eeea8d16c894d94f5e4eafb59a58861fecaed2b3591b2883e439afdc",
       "source_fact_identity": "source_facts:v1:62739ec6a5c657c309b1666ccf34d24d7c2f590b3436b623f31318723ce750e6",
       "source_fact_keys": [
         "source_fact:v1:30c9ecac69f79cb95fbe3fb69810412f2493b6506463778225c9f14c4c66dec1",
@@ -46138,6 +46600,29 @@
       "source": "파이낸셜뉴스",
       "title": "비트와이즈 창업자 \"가상자산 ETF 성숙…다음 무대는 온체인 금융\"[인터뷰]"
     },
+    "original:a709910d3538664043d56b1f": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894020",
+      "source": "헤럴드경제",
+      "source_body_digest": "eb9dd11ea466d43daa5a8720d502985ae761a5d935b72bb7f9812098e16a5915",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6aebd2201689c854fce6f075d214389ff9d46c9bbc9245830b3a425e0e5472d3",
+      "source_fact_keys": [
+        "source_fact:v1:11714957b3812faae2c0ce6da6bab2b2398433dcfab8fd684e48d553dd427dd9",
+        "source_fact:v1:15c37e547df88cf4a9b6faa6350baead074c4ec888b2c09b82deeadb0ec133eb",
+        "source_fact:v1:350aa0f4c154e18ea39019becd2c70b0280dabf621afe898d93b35d8e9703cb7",
+        "source_fact:v1:384a6159b0a46a3ddcee7a5a30fbd79fac57f76eb9c821482af439aa914ac3ff",
+        "source_fact:v1:3a520bc83bf7dc22c47db63235288a473607de468224034e0738ce096809f2ee",
+        "source_fact:v1:7583dcf75619b0dc6d74330fc3cb5f835dcd75876dfd003599c3fd8cbff07de7",
+        "source_fact:v1:e845a8836cd87fc690eedf4fd1eaf32ce34029c54a1d64071a4d028c5e89427c"
+      ],
+      "source_published_kst": "2026-10-06T11:12+09:00",
+      "title": "LG전자, 5GW 북미 냉각 설루션 장기 계약"
+    },
     "original:a7578c1858fb1315d5bdcb30": {
       "first_seen_kst": "2026-10-03T21:50:02+09:00",
       "lanes": {
@@ -46669,6 +47154,23 @@
       "link": "https://www.etnews.com/20260930000074",
       "source": "전자신문",
       "title": "HL그룹, 구글 웨이모 뚫었다…전자 브레이크 시스템 첫 공급"
+    },
+    "original:adce632a1bd08f1eb916598f": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632751",
+      "source": "이투데이",
+      "source_body_digest": "752040a34cdbfc09b9b9e04b514b4ae988bcedb086214d3ed2550b231ca15831",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3aa3c34170cfe2a2df8494ef635c31d7a040a06af3a104e893ef3b1c144829c9",
+      "source_fact_keys": [
+        "source_fact:v1:5136b36b96f032b0e9ad15ed95bd47d041d65e81e5cb5df8884848b107959ede"
+      ],
+      "source_published_kst": "2026-10-06T11:11+09:00",
+      "title": "컨테이너 일일이 안 묶어도 된다…HD현대, 세계 첫 ‘래싱프리 컨테이너선’ 인도"
     },
     "original:ae1807de7f88c024125552c3": {
       "first_seen_kst": "2026-10-05T22:49:24+09:00",
@@ -48630,7 +49132,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261006078100003",
       "source": "연합뉴스",
       "source_body_digest": "7504830f2e7e7f3d111e9e90f59af3e8d3ffe0cd86bd19e591230b6907ed6ab0",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:construction_order:bb5fcd8ec1268587191bde48a56afabe7bc021f8f7254cc5c34b06bb1f00672f",
       "source_fact_identity": "source_facts:v1:91d9fa6891fedbff5582a78e581acf912bc5f8ba5a4baada745d1782fdd134f7",
       "source_fact_keys": [
         "source_fact:v1:5da1b394f5d4631048b02e742318b9f8917e49d7bc11a19f0495ad83a06c1b48",
@@ -54185,6 +54687,29 @@
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
+    "source_fact:096dcd147db55e2ea1d96f5f": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894020",
+      "source": "헤럴드경제",
+      "source_body_digest": "eb9dd11ea466d43daa5a8720d502985ae761a5d935b72bb7f9812098e16a5915",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6aebd2201689c854fce6f075d214389ff9d46c9bbc9245830b3a425e0e5472d3",
+      "source_fact_keys": [
+        "source_fact:v1:11714957b3812faae2c0ce6da6bab2b2398433dcfab8fd684e48d553dd427dd9",
+        "source_fact:v1:15c37e547df88cf4a9b6faa6350baead074c4ec888b2c09b82deeadb0ec133eb",
+        "source_fact:v1:350aa0f4c154e18ea39019becd2c70b0280dabf621afe898d93b35d8e9703cb7",
+        "source_fact:v1:384a6159b0a46a3ddcee7a5a30fbd79fac57f76eb9c821482af439aa914ac3ff",
+        "source_fact:v1:3a520bc83bf7dc22c47db63235288a473607de468224034e0738ce096809f2ee",
+        "source_fact:v1:7583dcf75619b0dc6d74330fc3cb5f835dcd75876dfd003599c3fd8cbff07de7",
+        "source_fact:v1:e845a8836cd87fc690eedf4fd1eaf32ce34029c54a1d64071a4d028c5e89427c"
+      ],
+      "source_published_kst": "2026-10-06T11:12+09:00",
+      "title": "LG전자, 5GW 북미 냉각 설루션 장기 계약"
+    },
     "source_fact:0977cd22d4444834deb2cb77": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
       "lanes": {
@@ -55471,7 +55996,7 @@
       "link": "https://www.etnews.com/20261006000142",
       "source": "전자신문",
       "source_body_digest": "0bcbaf88be3606924f3927ec020d1f7948d3cd1e1466e5772ef7ee92913583a6",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_product_milestone:e694d4adb6448490a6947ab91ce0174a00111a0104f88f85519e76ec53bcec2f",
       "source_fact_identity": "source_facts:v1:c7cfe1fbc93f2a4a8df7905f6cfb5170da29f8eaf18a7f90777a168273f7c204",
       "source_fact_keys": [
         "source_fact:v1:1ac843d9d126d6819f3bfb8bf3c50c491b346e44c82b8629183bdd26d6b775b6",
@@ -55928,7 +56453,7 @@
       "link": "https://www.etnews.com/20261006000142",
       "source": "전자신문",
       "source_body_digest": "0bcbaf88be3606924f3927ec020d1f7948d3cd1e1466e5772ef7ee92913583a6",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_product_milestone:e694d4adb6448490a6947ab91ce0174a00111a0104f88f85519e76ec53bcec2f",
       "source_fact_identity": "source_facts:v1:c7cfe1fbc93f2a4a8df7905f6cfb5170da29f8eaf18a7f90777a168273f7c204",
       "source_fact_keys": [
         "source_fact:v1:1ac843d9d126d6819f3bfb8bf3c50c491b346e44c82b8629183bdd26d6b775b6",
@@ -55991,6 +56516,29 @@
       ],
       "source_published_kst": "2026-10-06T10:09+09:00",
       "title": "씨피시스템 \"글로벌 MLCC 제조사사 장비에 '로보킷' 채택\""
+    },
+    "source_fact:1a7ab4663f70b3eda77d90c6": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894020",
+      "source": "헤럴드경제",
+      "source_body_digest": "eb9dd11ea466d43daa5a8720d502985ae761a5d935b72bb7f9812098e16a5915",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6aebd2201689c854fce6f075d214389ff9d46c9bbc9245830b3a425e0e5472d3",
+      "source_fact_keys": [
+        "source_fact:v1:11714957b3812faae2c0ce6da6bab2b2398433dcfab8fd684e48d553dd427dd9",
+        "source_fact:v1:15c37e547df88cf4a9b6faa6350baead074c4ec888b2c09b82deeadb0ec133eb",
+        "source_fact:v1:350aa0f4c154e18ea39019becd2c70b0280dabf621afe898d93b35d8e9703cb7",
+        "source_fact:v1:384a6159b0a46a3ddcee7a5a30fbd79fac57f76eb9c821482af439aa914ac3ff",
+        "source_fact:v1:3a520bc83bf7dc22c47db63235288a473607de468224034e0738ce096809f2ee",
+        "source_fact:v1:7583dcf75619b0dc6d74330fc3cb5f835dcd75876dfd003599c3fd8cbff07de7",
+        "source_fact:v1:e845a8836cd87fc690eedf4fd1eaf32ce34029c54a1d64071a4d028c5e89427c"
+      ],
+      "source_published_kst": "2026-10-06T11:12+09:00",
+      "title": "LG전자, 5GW 북미 냉각 설루션 장기 계약"
     },
     "source_fact:1ad6bf994e516da250a16b84": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -57030,6 +57578,30 @@
       "source_published_kst": "2026-10-05T05:18+09:00",
       "title": "“국산 AI반도체, 실험실 넘어 전력현장으로”…K-Perf 첫 적용"
     },
+    "source_fact:2323ca6312d46eb09d8e8fb5": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03266886645610296&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "f33854315ae2db4af250e37be5282bd4f58ff368e2ea0149087aab77b3785a47",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba889e0571caf33a9e48502efdb9a5db2e7c9eb41df0d9509f0a23d52cce78b",
+      "source_fact_keys": [
+        "source_fact:v1:10b6f5fd99db4bc57a124e13c06428f0949adc23b2c8d3561ccd2000ef53e01a",
+        "source_fact:v1:1ae488f4b5e4816ec3672f4d997af4e3b1eb4c1d5bc1009fac5c13f1026dd5d6",
+        "source_fact:v1:34f04bd08322b72e57ffff6bec06257bc33f24689bc595bc223096ad1c16b65a",
+        "source_fact:v1:5970a18716b81d335f8230c39afc28a5d9eda6ee9240c8c14a78487560a623e9",
+        "source_fact:v1:9a31ddf32c179083acd4e788f576d6c00dc51ca46370df70891b129a674c5071",
+        "source_fact:v1:df247875a6d0cc3546166cc3176c6c97697f3391636ea2afa47a0bfce998c1a9",
+        "source_fact:v1:e047a4cca267202c8725bfe42f7a5c3556fb136ad64dadb4b62eb5c33846884f",
+        "source_fact:v1:fa166b03953fc2d98714647ad3e482ba2ebdb48feb7b35f96d52327264eb4221"
+      ],
+      "source_published_kst": "2026-10-06T11:09+09:00",
+      "title": "재정부담에 재협상까지…고금리에 상업용 부동산 비상"
+    },
     "source_fact:2346ec43fd4d6b937b1c938d": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
       "lanes": {
@@ -57622,7 +58194,7 @@
       "link": "https://www.etnews.com/20261006000142",
       "source": "전자신문",
       "source_body_digest": "0bcbaf88be3606924f3927ec020d1f7948d3cd1e1466e5772ef7ee92913583a6",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_product_milestone:e694d4adb6448490a6947ab91ce0174a00111a0104f88f85519e76ec53bcec2f",
       "source_fact_identity": "source_facts:v1:c7cfe1fbc93f2a4a8df7905f6cfb5170da29f8eaf18a7f90777a168273f7c204",
       "source_fact_keys": [
         "source_fact:v1:1ac843d9d126d6819f3bfb8bf3c50c491b346e44c82b8629183bdd26d6b775b6",
@@ -57836,6 +58408,23 @@
       ],
       "source_published_kst": "2026-10-06T10:19+09:00",
       "title": "김정관 장관 “1600조 지방투자 본격화…2030년 AI팩토리 500개 구축”"
+    },
+    "source_fact:29d09ee1c65ff13161ce0b4c": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006073900030",
+      "source": "연합뉴스",
+      "source_body_digest": "11fbbda18787939e6e72271fd81365bf01b2273d6bbce7245ce088205cec81ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eed2983af23004e5f29d4008cefc07adb64977a48e11d1db1f03eddb8f8e3eec",
+      "source_fact_keys": [
+        "source_fact:v1:cda4db4419fc1d829f472be7d0fc55b248b3dfbb6ebd7a7a44abbe19f345bfb4"
+      ],
+      "source_published_kst": "2026-10-06T11:08+09:00",
+      "title": "\"농지 특조법 특례 2∼3년 설정·농지법 개정 동시 추진 필요\" | 연합뉴스"
     },
     "source_fact:2a443456256be123e0f4d510": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
@@ -58474,6 +59063,30 @@
       ],
       "source_published_kst": "2026-10-05T18:03+09:00",
       "title": "'빚의 제국 빛을 잃다' 보도 인상적 … 고금리 위험요인 더 짚어달라"
+    },
+    "source_fact:301803866d982edc8b6f3290": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03266886645610296&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "f33854315ae2db4af250e37be5282bd4f58ff368e2ea0149087aab77b3785a47",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba889e0571caf33a9e48502efdb9a5db2e7c9eb41df0d9509f0a23d52cce78b",
+      "source_fact_keys": [
+        "source_fact:v1:10b6f5fd99db4bc57a124e13c06428f0949adc23b2c8d3561ccd2000ef53e01a",
+        "source_fact:v1:1ae488f4b5e4816ec3672f4d997af4e3b1eb4c1d5bc1009fac5c13f1026dd5d6",
+        "source_fact:v1:34f04bd08322b72e57ffff6bec06257bc33f24689bc595bc223096ad1c16b65a",
+        "source_fact:v1:5970a18716b81d335f8230c39afc28a5d9eda6ee9240c8c14a78487560a623e9",
+        "source_fact:v1:9a31ddf32c179083acd4e788f576d6c00dc51ca46370df70891b129a674c5071",
+        "source_fact:v1:df247875a6d0cc3546166cc3176c6c97697f3391636ea2afa47a0bfce998c1a9",
+        "source_fact:v1:e047a4cca267202c8725bfe42f7a5c3556fb136ad64dadb4b62eb5c33846884f",
+        "source_fact:v1:fa166b03953fc2d98714647ad3e482ba2ebdb48feb7b35f96d52327264eb4221"
+      ],
+      "source_published_kst": "2026-10-06T11:09+09:00",
+      "title": "재정부담에 재협상까지…고금리에 상업용 부동산 비상"
     },
     "source_fact:305db8dccf4d868636c6ebab": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
@@ -59570,6 +60183,27 @@
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "외국인·명품 소비에 비용 절감까지…백화점 3사, 3분기 실적 ‘청신호’"
     },
+    "source_fact:3a4be3182a5e7b6cc0824aca": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632674",
+      "source": "이투데이",
+      "source_body_digest": "7616bba332cae85aa67f4071ab98251f3e02487d53563af5bfecd93be6d35424",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e10a38f7064a9ae34409d75e7b98d72ca326fa795a5afb33dd422695de658d3c",
+      "source_fact_keys": [
+        "source_fact:v1:4074b5db6e9e35076f8c4a817f97dd7f63568a0ecd02124cf5b59ac818e627e6",
+        "source_fact:v1:971cc3a06f1c14b38a6b0fe6960b5aaf6696ac1ce94a68fd4ae6873cc606057e",
+        "source_fact:v1:dac3614048237d80ffb9f589549052e378497ca1375af8ae77fb8bf975b43858",
+        "source_fact:v1:ef38c1e32453bcaefa139e55b4d60d63092a3f007baa6c7bb2b7d2a4219a3a72",
+        "source_fact:v1:ef616a4915c76ef033a11bb7678c5a5cebf6a2bd28b6b139a34015d86b34cf16"
+      ],
+      "source_published_kst": "2026-10-06T11:01+09:00",
+      "title": "자동차 화면용 강화유리 수입승인 없앤다…디스플레이 규제 개선"
+    },
     "source_fact:3af4b997b3016cf79316d5a9": {
       "first_seen_kst": "2026-10-05T19:37:20+09:00",
       "lanes": {
@@ -59912,6 +60546,30 @@
       ],
       "source_published_kst": "2026-10-05T22:37+09:00",
       "title": "농식품부 고위공직자 모친 농지 '미경작'…\"전수조사, 현실 못담아\""
+    },
+    "source_fact:3e3154007b5519c4f9344944": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03266886645610296&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "f33854315ae2db4af250e37be5282bd4f58ff368e2ea0149087aab77b3785a47",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba889e0571caf33a9e48502efdb9a5db2e7c9eb41df0d9509f0a23d52cce78b",
+      "source_fact_keys": [
+        "source_fact:v1:10b6f5fd99db4bc57a124e13c06428f0949adc23b2c8d3561ccd2000ef53e01a",
+        "source_fact:v1:1ae488f4b5e4816ec3672f4d997af4e3b1eb4c1d5bc1009fac5c13f1026dd5d6",
+        "source_fact:v1:34f04bd08322b72e57ffff6bec06257bc33f24689bc595bc223096ad1c16b65a",
+        "source_fact:v1:5970a18716b81d335f8230c39afc28a5d9eda6ee9240c8c14a78487560a623e9",
+        "source_fact:v1:9a31ddf32c179083acd4e788f576d6c00dc51ca46370df70891b129a674c5071",
+        "source_fact:v1:df247875a6d0cc3546166cc3176c6c97697f3391636ea2afa47a0bfce998c1a9",
+        "source_fact:v1:e047a4cca267202c8725bfe42f7a5c3556fb136ad64dadb4b62eb5c33846884f",
+        "source_fact:v1:fa166b03953fc2d98714647ad3e482ba2ebdb48feb7b35f96d52327264eb4221"
+      ],
+      "source_published_kst": "2026-10-06T11:09+09:00",
+      "title": "재정부담에 재협상까지…고금리에 상업용 부동산 비상"
     },
     "source_fact:3e6fe7f32a50b57e34e4cdbc": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
@@ -62334,6 +62992,30 @@
       "source_published_kst": "2026-10-06T08:37+09:00",
       "title": "한미반도체, 삼성전기서 245억 규모 장비 수주…\"삼성그룹 환영\" | 연합뉴스"
     },
+    "source_fact:5324df7e6a82bcc7125dfefe": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03266886645610296&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "f33854315ae2db4af250e37be5282bd4f58ff368e2ea0149087aab77b3785a47",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba889e0571caf33a9e48502efdb9a5db2e7c9eb41df0d9509f0a23d52cce78b",
+      "source_fact_keys": [
+        "source_fact:v1:10b6f5fd99db4bc57a124e13c06428f0949adc23b2c8d3561ccd2000ef53e01a",
+        "source_fact:v1:1ae488f4b5e4816ec3672f4d997af4e3b1eb4c1d5bc1009fac5c13f1026dd5d6",
+        "source_fact:v1:34f04bd08322b72e57ffff6bec06257bc33f24689bc595bc223096ad1c16b65a",
+        "source_fact:v1:5970a18716b81d335f8230c39afc28a5d9eda6ee9240c8c14a78487560a623e9",
+        "source_fact:v1:9a31ddf32c179083acd4e788f576d6c00dc51ca46370df70891b129a674c5071",
+        "source_fact:v1:df247875a6d0cc3546166cc3176c6c97697f3391636ea2afa47a0bfce998c1a9",
+        "source_fact:v1:e047a4cca267202c8725bfe42f7a5c3556fb136ad64dadb4b62eb5c33846884f",
+        "source_fact:v1:fa166b03953fc2d98714647ad3e482ba2ebdb48feb7b35f96d52327264eb4221"
+      ],
+      "source_published_kst": "2026-10-06T11:09+09:00",
+      "title": "재정부담에 재협상까지…고금리에 상업용 부동산 비상"
+    },
     "source_fact:53368acf9af07debe7f63a71": {
       "first_seen_kst": "2026-10-06T12:10:48+09:00",
       "lanes": {
@@ -62722,7 +63404,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261006078100003",
       "source": "연합뉴스",
       "source_body_digest": "7504830f2e7e7f3d111e9e90f59af3e8d3ffe0cd86bd19e591230b6907ed6ab0",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:construction_order:bb5fcd8ec1268587191bde48a56afabe7bc021f8f7254cc5c34b06bb1f00672f",
       "source_fact_identity": "source_facts:v1:91d9fa6891fedbff5582a78e581acf912bc5f8ba5a4baada745d1782fdd134f7",
       "source_fact_keys": [
         "source_fact:v1:5da1b394f5d4631048b02e742318b9f8917e49d7bc11a19f0495ad83a06c1b48",
@@ -62825,6 +63507,29 @@
       ],
       "source_published_kst": "2026-10-05T18:17+09:00",
       "title": "'전고체 배터리' 기대감…한주새 ETF 12% 뛰어"
+    },
+    "source_fact:58294f14d2e51d5b55f94e04": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894020",
+      "source": "헤럴드경제",
+      "source_body_digest": "eb9dd11ea466d43daa5a8720d502985ae761a5d935b72bb7f9812098e16a5915",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6aebd2201689c854fce6f075d214389ff9d46c9bbc9245830b3a425e0e5472d3",
+      "source_fact_keys": [
+        "source_fact:v1:11714957b3812faae2c0ce6da6bab2b2398433dcfab8fd684e48d553dd427dd9",
+        "source_fact:v1:15c37e547df88cf4a9b6faa6350baead074c4ec888b2c09b82deeadb0ec133eb",
+        "source_fact:v1:350aa0f4c154e18ea39019becd2c70b0280dabf621afe898d93b35d8e9703cb7",
+        "source_fact:v1:384a6159b0a46a3ddcee7a5a30fbd79fac57f76eb9c821482af439aa914ac3ff",
+        "source_fact:v1:3a520bc83bf7dc22c47db63235288a473607de468224034e0738ce096809f2ee",
+        "source_fact:v1:7583dcf75619b0dc6d74330fc3cb5f835dcd75876dfd003599c3fd8cbff07de7",
+        "source_fact:v1:e845a8836cd87fc690eedf4fd1eaf32ce34029c54a1d64071a4d028c5e89427c"
+      ],
+      "source_published_kst": "2026-10-06T11:12+09:00",
+      "title": "LG전자, 5GW 북미 냉각 설루션 장기 계약"
     },
     "source_fact:58554a1d7f372e197ccd23c9": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
@@ -65540,7 +66245,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815158",
       "source": "뉴시스",
       "source_body_digest": "5c83ba8748f82106dfe34a4c7b3f3416a944680001648bc8be2ac4dda66cd9da",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:regulatory_package:c6b3b6d4eeea8d16c894d94f5e4eafb59a58861fecaed2b3591b2883e439afdc",
       "source_fact_identity": "source_facts:v1:62739ec6a5c657c309b1666ccf34d24d7c2f590b3436b623f31318723ce750e6",
       "source_fact_keys": [
         "source_fact:v1:30c9ecac69f79cb95fbe3fb69810412f2493b6506463778225c9f14c4c66dec1",
@@ -65641,7 +66346,7 @@
       "link": "https://www.etnews.com/20261006000142",
       "source": "전자신문",
       "source_body_digest": "0bcbaf88be3606924f3927ec020d1f7948d3cd1e1466e5772ef7ee92913583a6",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_product_milestone:e694d4adb6448490a6947ab91ce0174a00111a0104f88f85519e76ec53bcec2f",
       "source_fact_identity": "source_facts:v1:c7cfe1fbc93f2a4a8df7905f6cfb5170da29f8eaf18a7f90777a168273f7c204",
       "source_fact_keys": [
         "source_fact:v1:1ac843d9d126d6819f3bfb8bf3c50c491b346e44c82b8629183bdd26d6b775b6",
@@ -66092,6 +66797,29 @@
       "source_published_kst": "2026-10-05T06:17+09:00",
       "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
     },
+    "source_fact:730912750e74ab3f3272810d": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894020",
+      "source": "헤럴드경제",
+      "source_body_digest": "eb9dd11ea466d43daa5a8720d502985ae761a5d935b72bb7f9812098e16a5915",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6aebd2201689c854fce6f075d214389ff9d46c9bbc9245830b3a425e0e5472d3",
+      "source_fact_keys": [
+        "source_fact:v1:11714957b3812faae2c0ce6da6bab2b2398433dcfab8fd684e48d553dd427dd9",
+        "source_fact:v1:15c37e547df88cf4a9b6faa6350baead074c4ec888b2c09b82deeadb0ec133eb",
+        "source_fact:v1:350aa0f4c154e18ea39019becd2c70b0280dabf621afe898d93b35d8e9703cb7",
+        "source_fact:v1:384a6159b0a46a3ddcee7a5a30fbd79fac57f76eb9c821482af439aa914ac3ff",
+        "source_fact:v1:3a520bc83bf7dc22c47db63235288a473607de468224034e0738ce096809f2ee",
+        "source_fact:v1:7583dcf75619b0dc6d74330fc3cb5f835dcd75876dfd003599c3fd8cbff07de7",
+        "source_fact:v1:e845a8836cd87fc690eedf4fd1eaf32ce34029c54a1d64071a4d028c5e89427c"
+      ],
+      "source_published_kst": "2026-10-06T11:12+09:00",
+      "title": "LG전자, 5GW 북미 냉각 설루션 장기 계약"
+    },
     "source_fact:7316770c9f6421f87bcb09ed": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
       "lanes": {
@@ -66387,6 +67115,29 @@
       "source_published_kst": "2026-10-06T01:21+09:00",
       "title": "페라리, 자사주 2600만 유로 매입..3차 한도 41% 소진"
     },
+    "source_fact:74b4dec0d0577e7c226b327c": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894020",
+      "source": "헤럴드경제",
+      "source_body_digest": "eb9dd11ea466d43daa5a8720d502985ae761a5d935b72bb7f9812098e16a5915",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6aebd2201689c854fce6f075d214389ff9d46c9bbc9245830b3a425e0e5472d3",
+      "source_fact_keys": [
+        "source_fact:v1:11714957b3812faae2c0ce6da6bab2b2398433dcfab8fd684e48d553dd427dd9",
+        "source_fact:v1:15c37e547df88cf4a9b6faa6350baead074c4ec888b2c09b82deeadb0ec133eb",
+        "source_fact:v1:350aa0f4c154e18ea39019becd2c70b0280dabf621afe898d93b35d8e9703cb7",
+        "source_fact:v1:384a6159b0a46a3ddcee7a5a30fbd79fac57f76eb9c821482af439aa914ac3ff",
+        "source_fact:v1:3a520bc83bf7dc22c47db63235288a473607de468224034e0738ce096809f2ee",
+        "source_fact:v1:7583dcf75619b0dc6d74330fc3cb5f835dcd75876dfd003599c3fd8cbff07de7",
+        "source_fact:v1:e845a8836cd87fc690eedf4fd1eaf32ce34029c54a1d64071a4d028c5e89427c"
+      ],
+      "source_published_kst": "2026-10-06T11:12+09:00",
+      "title": "LG전자, 5GW 북미 냉각 설루션 장기 계약"
+    },
     "source_fact:74bbabdcc444726d8cbf65bf": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -66629,7 +67380,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815158",
       "source": "뉴시스",
       "source_body_digest": "5c83ba8748f82106dfe34a4c7b3f3416a944680001648bc8be2ac4dda66cd9da",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:regulatory_package:c6b3b6d4eeea8d16c894d94f5e4eafb59a58861fecaed2b3591b2883e439afdc",
       "source_fact_identity": "source_facts:v1:62739ec6a5c657c309b1666ccf34d24d7c2f590b3436b623f31318723ce750e6",
       "source_fact_keys": [
         "source_fact:v1:30c9ecac69f79cb95fbe3fb69810412f2493b6506463778225c9f14c4c66dec1",
@@ -67228,6 +67979,27 @@
       ],
       "source_published_kst": "2026-10-06T07:07+09:00",
       "title": "스페이스X 주가 급등에 머스크 다시 조만장자 [마켓핫]"
+    },
+    "source_fact:7cb4b21ecf48c32b876f847f": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815152",
+      "source": "뉴시스",
+      "source_body_digest": "26fbc8c678ed98374aceddf52dbf64a62241bab402724ce154566cdafaeb9f59",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a5c0761421de673c4e1d024087982db56e80d19edb71b43d87307ca778e05a28",
+      "source_fact_keys": [
+        "source_fact:v1:2a7aa9aca6478b75ef7419b620b34839a1ee7805df9ddadc15c702375ca44de5",
+        "source_fact:v1:4b82380b0b6bff0d2c5d23f64e4eff23af6be2e86e82c43fd983f62808fff161",
+        "source_fact:v1:5426c5a01375adbe7b07c733c457b54dba0b0ac07a2627ee3056fa315db17242",
+        "source_fact:v1:65f195e5669989f87518d68fa48da5ea35534748a92a5e54b51c641d8dd06e4f",
+        "source_fact:v1:9fa984bb0175ee6466fd750272f802713d5409981d550768d472c474d02d591b"
+      ],
+      "source_published_kst": "2026-10-06T11:08+09:00",
+      "title": "현대차그룹, 1~8월 글로벌 전기차 판매 20%↑…\"亞·유럽서 지속 성장\""
     },
     "source_fact:7cf95f844fe47a82b1032dbc": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
@@ -68191,6 +68963,23 @@
       "source_published_kst": "2026-10-06T06:10+09:00",
       "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
     },
+    "source_fact:84bbf1dc1cd171c0cbbac869": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632751",
+      "source": "이투데이",
+      "source_body_digest": "752040a34cdbfc09b9b9e04b514b4ae988bcedb086214d3ed2550b231ca15831",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3aa3c34170cfe2a2df8494ef635c31d7a040a06af3a104e893ef3b1c144829c9",
+      "source_fact_keys": [
+        "source_fact:v1:5136b36b96f032b0e9ad15ed95bd47d041d65e81e5cb5df8884848b107959ede"
+      ],
+      "source_published_kst": "2026-10-06T11:11+09:00",
+      "title": "컨테이너 일일이 안 묶어도 된다…HD현대, 세계 첫 ‘래싱프리 컨테이너선’ 인도"
+    },
     "source_fact:84cb41af8ea390df4f18d934": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -68943,29 +69732,25 @@
     "source_fact:8b96c74abdc781b5acff1e73": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
       "lanes": {
-        "live": "2026-10-05T22:12:53+09:00"
+        "live": "2026-10-06T13:41:31+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:12:53+09:00",
-      "link": "https://www.newsis.com/view/NISX20261005_0003814461",
-      "source": "뉴시스",
-      "source_body_digest": "9894ace8a2926ee4307cbc52c23b9b9d884e8200b829797113c7ad2d3ce1b85f",
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894020",
+      "source": "헤럴드경제",
+      "source_body_digest": "eb9dd11ea466d43daa5a8720d502985ae761a5d935b72bb7f9812098e16a5915",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:d8046200015e1678c3bee7fe2f44d6a5dfee29b91011d508d009217af9711cfb",
+      "source_fact_identity": "source_facts:v1:6aebd2201689c854fce6f075d214389ff9d46c9bbc9245830b3a425e0e5472d3",
       "source_fact_keys": [
-        "source_fact:v1:1f09b799a8510a7f4a6f4407788a0e05df507969ccc9f6facf9f5839eee36e4a",
-        "source_fact:v1:308619407897c2ef1cc3549751ee78ac3a8826428da814e7886322054c1c07ec",
+        "source_fact:v1:11714957b3812faae2c0ce6da6bab2b2398433dcfab8fd684e48d553dd427dd9",
+        "source_fact:v1:15c37e547df88cf4a9b6faa6350baead074c4ec888b2c09b82deeadb0ec133eb",
+        "source_fact:v1:350aa0f4c154e18ea39019becd2c70b0280dabf621afe898d93b35d8e9703cb7",
+        "source_fact:v1:384a6159b0a46a3ddcee7a5a30fbd79fac57f76eb9c821482af439aa914ac3ff",
         "source_fact:v1:3a520bc83bf7dc22c47db63235288a473607de468224034e0738ce096809f2ee",
-        "source_fact:v1:4bf0b95ccb48660e1cbd6f122fd79275c0a0506e352b403591e3dab8b5f45096",
-        "source_fact:v1:761b10675bdc6d8f74b032ff3a1ad25e537060a3f16442e89df90bc5ff86201b",
-        "source_fact:v1:928e3ae34b1f371e62e59fb57640acb892abd3af706d53c6e5f8591d96bb6d85",
-        "source_fact:v1:9c3a2c2e5a22630e9b61e02cdf1a676088b6117fa25d9df4cbe0c1c22e56eeb7",
-        "source_fact:v1:a3f05db631d45eb325bb27852c52fe7ce4cc79ba4c69687600ccec1caefd95b8",
-        "source_fact:v1:a644c523cd2eb13b7cb3f830d6ff201c9f45173dcdddeb684425c82839539007",
-        "source_fact:v1:dbba7fbebe18382370b5f00ce32c3d8620f61d166066e490fbb56cb526b79322",
-        "source_fact:v1:f9957dce89d4d12149c39aaf60585bba9533847ec97cd1a2587f6641d33f7b8a"
+        "source_fact:v1:7583dcf75619b0dc6d74330fc3cb5f835dcd75876dfd003599c3fd8cbff07de7",
+        "source_fact:v1:e845a8836cd87fc690eedf4fd1eaf32ce34029c54a1d64071a4d028c5e89427c"
       ],
-      "source_published_kst": "2026-10-05T22:05+09:00",
-      "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
+      "source_published_kst": "2026-10-06T11:12+09:00",
+      "title": "LG전자, 5GW 북미 냉각 설루션 장기 계약"
     },
     "source_fact:8bc4efa03764b074d5a3b107": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -69487,6 +70272,27 @@
       ],
       "source_published_kst": "2026-10-06T08:07+09:00",
       "title": "[증시키워드] 삼전 실적 대기…HLB 신약 모멘텀에 관심도↑"
+    },
+    "source_fact:91a873e0ff616bacb94dc308": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632674",
+      "source": "이투데이",
+      "source_body_digest": "7616bba332cae85aa67f4071ab98251f3e02487d53563af5bfecd93be6d35424",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e10a38f7064a9ae34409d75e7b98d72ca326fa795a5afb33dd422695de658d3c",
+      "source_fact_keys": [
+        "source_fact:v1:4074b5db6e9e35076f8c4a817f97dd7f63568a0ecd02124cf5b59ac818e627e6",
+        "source_fact:v1:971cc3a06f1c14b38a6b0fe6960b5aaf6696ac1ce94a68fd4ae6873cc606057e",
+        "source_fact:v1:dac3614048237d80ffb9f589549052e378497ca1375af8ae77fb8bf975b43858",
+        "source_fact:v1:ef38c1e32453bcaefa139e55b4d60d63092a3f007baa6c7bb2b7d2a4219a3a72",
+        "source_fact:v1:ef616a4915c76ef033a11bb7678c5a5cebf6a2bd28b6b139a34015d86b34cf16"
+      ],
+      "source_published_kst": "2026-10-06T11:01+09:00",
+      "title": "자동차 화면용 강화유리 수입승인 없앤다…디스플레이 규제 개선"
     },
     "source_fact:91c289d717f6adf8b4fa563d": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
@@ -70206,6 +71012,27 @@
       "source_published_kst": "2026-10-06T08:07+09:00",
       "title": "[증시키워드] 삼전 실적 대기…HLB 신약 모멘텀에 관심도↑"
     },
+    "source_fact:9782687e5c26564815307700": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815152",
+      "source": "뉴시스",
+      "source_body_digest": "26fbc8c678ed98374aceddf52dbf64a62241bab402724ce154566cdafaeb9f59",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a5c0761421de673c4e1d024087982db56e80d19edb71b43d87307ca778e05a28",
+      "source_fact_keys": [
+        "source_fact:v1:2a7aa9aca6478b75ef7419b620b34839a1ee7805df9ddadc15c702375ca44de5",
+        "source_fact:v1:4b82380b0b6bff0d2c5d23f64e4eff23af6be2e86e82c43fd983f62808fff161",
+        "source_fact:v1:5426c5a01375adbe7b07c733c457b54dba0b0ac07a2627ee3056fa315db17242",
+        "source_fact:v1:65f195e5669989f87518d68fa48da5ea35534748a92a5e54b51c641d8dd06e4f",
+        "source_fact:v1:9fa984bb0175ee6466fd750272f802713d5409981d550768d472c474d02d591b"
+      ],
+      "source_published_kst": "2026-10-06T11:08+09:00",
+      "title": "현대차그룹, 1~8월 글로벌 전기차 판매 20%↑…\"亞·유럽서 지속 성장\""
+    },
     "source_fact:97b4f11080169fab72f51c00": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
@@ -70711,6 +71538,27 @@
       ],
       "source_published_kst": "2026-10-05T08:05+09:00",
       "title": "씨이앤에스, ‘AI 서버 폭발적 발열’ 미스트 정밀 분사로 잡는다"
+    },
+    "source_fact:9c39ae9ad69ce172c4c21565": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632674",
+      "source": "이투데이",
+      "source_body_digest": "7616bba332cae85aa67f4071ab98251f3e02487d53563af5bfecd93be6d35424",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e10a38f7064a9ae34409d75e7b98d72ca326fa795a5afb33dd422695de658d3c",
+      "source_fact_keys": [
+        "source_fact:v1:4074b5db6e9e35076f8c4a817f97dd7f63568a0ecd02124cf5b59ac818e627e6",
+        "source_fact:v1:971cc3a06f1c14b38a6b0fe6960b5aaf6696ac1ce94a68fd4ae6873cc606057e",
+        "source_fact:v1:dac3614048237d80ffb9f589549052e378497ca1375af8ae77fb8bf975b43858",
+        "source_fact:v1:ef38c1e32453bcaefa139e55b4d60d63092a3f007baa6c7bb2b7d2a4219a3a72",
+        "source_fact:v1:ef616a4915c76ef033a11bb7678c5a5cebf6a2bd28b6b139a34015d86b34cf16"
+      ],
+      "source_published_kst": "2026-10-06T11:01+09:00",
+      "title": "자동차 화면용 강화유리 수입승인 없앤다…디스플레이 규제 개선"
     },
     "source_fact:9cb532c6639fadaa952521e0": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
@@ -71243,7 +72091,7 @@
       "link": "https://www.etnews.com/20261006000142",
       "source": "전자신문",
       "source_body_digest": "0bcbaf88be3606924f3927ec020d1f7948d3cd1e1466e5772ef7ee92913583a6",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_product_milestone:e694d4adb6448490a6947ab91ce0174a00111a0104f88f85519e76ec53bcec2f",
       "source_fact_identity": "source_facts:v1:c7cfe1fbc93f2a4a8df7905f6cfb5170da29f8eaf18a7f90777a168273f7c204",
       "source_fact_keys": [
         "source_fact:v1:1ac843d9d126d6819f3bfb8bf3c50c491b346e44c82b8629183bdd26d6b775b6",
@@ -72452,6 +73300,30 @@
       "source_published_kst": "2026-10-05T22:27+09:00",
       "title": "듀오스 테크놀러지스 그룹, GPU 자회사 매각..4290만 달러 수취·부채 해소"
     },
+    "source_fact:ac646b2e0a1192ca249bba16": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03266886645610296&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "f33854315ae2db4af250e37be5282bd4f58ff368e2ea0149087aab77b3785a47",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba889e0571caf33a9e48502efdb9a5db2e7c9eb41df0d9509f0a23d52cce78b",
+      "source_fact_keys": [
+        "source_fact:v1:10b6f5fd99db4bc57a124e13c06428f0949adc23b2c8d3561ccd2000ef53e01a",
+        "source_fact:v1:1ae488f4b5e4816ec3672f4d997af4e3b1eb4c1d5bc1009fac5c13f1026dd5d6",
+        "source_fact:v1:34f04bd08322b72e57ffff6bec06257bc33f24689bc595bc223096ad1c16b65a",
+        "source_fact:v1:5970a18716b81d335f8230c39afc28a5d9eda6ee9240c8c14a78487560a623e9",
+        "source_fact:v1:9a31ddf32c179083acd4e788f576d6c00dc51ca46370df70891b129a674c5071",
+        "source_fact:v1:df247875a6d0cc3546166cc3176c6c97697f3391636ea2afa47a0bfce998c1a9",
+        "source_fact:v1:e047a4cca267202c8725bfe42f7a5c3556fb136ad64dadb4b62eb5c33846884f",
+        "source_fact:v1:fa166b03953fc2d98714647ad3e482ba2ebdb48feb7b35f96d52327264eb4221"
+      ],
+      "source_published_kst": "2026-10-06T11:09+09:00",
+      "title": "재정부담에 재협상까지…고금리에 상업용 부동산 비상"
+    },
     "source_fact:ac81b037fb13da4d76bce350": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
@@ -72603,7 +73475,7 @@
       "link": "https://www.etnews.com/20261006000142",
       "source": "전자신문",
       "source_body_digest": "0bcbaf88be3606924f3927ec020d1f7948d3cd1e1466e5772ef7ee92913583a6",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_product_milestone:e694d4adb6448490a6947ab91ce0174a00111a0104f88f85519e76ec53bcec2f",
       "source_fact_identity": "source_facts:v1:c7cfe1fbc93f2a4a8df7905f6cfb5170da29f8eaf18a7f90777a168273f7c204",
       "source_fact_keys": [
         "source_fact:v1:1ac843d9d126d6819f3bfb8bf3c50c491b346e44c82b8629183bdd26d6b775b6",
@@ -74651,6 +75523,30 @@
       "source_published_kst": "2026-10-05T17:23+09:00",
       "title": "AI 해킹 확산에 'AI 방패' 꺼낸 금융당국…'망분리 완화' 해법 될 수 있나"
     },
+    "source_fact:c1914d5f82a4f9ac3e48b0d1": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03266886645610296&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "f33854315ae2db4af250e37be5282bd4f58ff368e2ea0149087aab77b3785a47",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba889e0571caf33a9e48502efdb9a5db2e7c9eb41df0d9509f0a23d52cce78b",
+      "source_fact_keys": [
+        "source_fact:v1:10b6f5fd99db4bc57a124e13c06428f0949adc23b2c8d3561ccd2000ef53e01a",
+        "source_fact:v1:1ae488f4b5e4816ec3672f4d997af4e3b1eb4c1d5bc1009fac5c13f1026dd5d6",
+        "source_fact:v1:34f04bd08322b72e57ffff6bec06257bc33f24689bc595bc223096ad1c16b65a",
+        "source_fact:v1:5970a18716b81d335f8230c39afc28a5d9eda6ee9240c8c14a78487560a623e9",
+        "source_fact:v1:9a31ddf32c179083acd4e788f576d6c00dc51ca46370df70891b129a674c5071",
+        "source_fact:v1:df247875a6d0cc3546166cc3176c6c97697f3391636ea2afa47a0bfce998c1a9",
+        "source_fact:v1:e047a4cca267202c8725bfe42f7a5c3556fb136ad64dadb4b62eb5c33846884f",
+        "source_fact:v1:fa166b03953fc2d98714647ad3e482ba2ebdb48feb7b35f96d52327264eb4221"
+      ],
+      "source_published_kst": "2026-10-06T11:09+09:00",
+      "title": "재정부담에 재협상까지…고금리에 상업용 부동산 비상"
+    },
     "source_fact:c1e7f56181b16e7577869d9c": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
       "lanes": {
@@ -74762,7 +75658,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815158",
       "source": "뉴시스",
       "source_body_digest": "5c83ba8748f82106dfe34a4c7b3f3416a944680001648bc8be2ac4dda66cd9da",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:regulatory_package:c6b3b6d4eeea8d16c894d94f5e4eafb59a58861fecaed2b3591b2883e439afdc",
       "source_fact_identity": "source_facts:v1:62739ec6a5c657c309b1666ccf34d24d7c2f590b3436b623f31318723ce750e6",
       "source_fact_keys": [
         "source_fact:v1:30c9ecac69f79cb95fbe3fb69810412f2493b6506463778225c9f14c4c66dec1",
@@ -74916,6 +75812,23 @@
       ],
       "source_published_kst": "2026-10-06T04:02+09:00",
       "title": "美부통령 \"韓 알래스카 투자 이뤄질것…세부협상은 남아\""
+    },
+    "source_fact:c3ff09c8325a6b7b0493e2c7": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815297",
+      "source": "뉴시스",
+      "source_body_digest": "7e78054ba5210a572235296341845a0ebbc73746007b1fdb7a042eb30f89b59e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c3369941273743cfe655837c416143643981afdda176e9bfd464a5066f8d790b",
+      "source_fact_keys": [
+        "source_fact:v1:92dd023bfedc5ca9237416ab25867fb8c468c5f67a914dbb077e6a167453ed8f"
+      ],
+      "source_published_kst": "2026-10-06T11:39+09:00",
+      "title": "\"방산 중기 육성\"…투자전문회사 설립법안 발의"
     },
     "source_fact:c41352b4651ed7878d329518": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
@@ -75320,6 +76233,27 @@
       ],
       "source_published_kst": "2026-10-05T21:41+09:00",
       "title": "ESS 테크, NYSE 거래정지·상장폐지 개시..OTC서 GWHT 거래"
+    },
+    "source_fact:c783590bb9168b388cbcecdf": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815152",
+      "source": "뉴시스",
+      "source_body_digest": "26fbc8c678ed98374aceddf52dbf64a62241bab402724ce154566cdafaeb9f59",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a5c0761421de673c4e1d024087982db56e80d19edb71b43d87307ca778e05a28",
+      "source_fact_keys": [
+        "source_fact:v1:2a7aa9aca6478b75ef7419b620b34839a1ee7805df9ddadc15c702375ca44de5",
+        "source_fact:v1:4b82380b0b6bff0d2c5d23f64e4eff23af6be2e86e82c43fd983f62808fff161",
+        "source_fact:v1:5426c5a01375adbe7b07c733c457b54dba0b0ac07a2627ee3056fa315db17242",
+        "source_fact:v1:65f195e5669989f87518d68fa48da5ea35534748a92a5e54b51c641d8dd06e4f",
+        "source_fact:v1:9fa984bb0175ee6466fd750272f802713d5409981d550768d472c474d02d591b"
+      ],
+      "source_published_kst": "2026-10-06T11:08+09:00",
+      "title": "현대차그룹, 1~8월 글로벌 전기차 판매 20%↑…\"亞·유럽서 지속 성장\""
     },
     "source_fact:c787103e7de4d0a8b78cce6a": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
@@ -75944,7 +76878,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261006078100003",
       "source": "연합뉴스",
       "source_body_digest": "7504830f2e7e7f3d111e9e90f59af3e8d3ffe0cd86bd19e591230b6907ed6ab0",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:construction_order:bb5fcd8ec1268587191bde48a56afabe7bc021f8f7254cc5c34b06bb1f00672f",
       "source_fact_identity": "source_facts:v1:91d9fa6891fedbff5582a78e581acf912bc5f8ba5a4baada745d1782fdd134f7",
       "source_fact_keys": [
         "source_fact:v1:5da1b394f5d4631048b02e742318b9f8917e49d7bc11a19f0495ad83a06c1b48",
@@ -76085,7 +77019,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815158",
       "source": "뉴시스",
       "source_body_digest": "5c83ba8748f82106dfe34a4c7b3f3416a944680001648bc8be2ac4dda66cd9da",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:regulatory_package:c6b3b6d4eeea8d16c894d94f5e4eafb59a58861fecaed2b3591b2883e439afdc",
       "source_fact_identity": "source_facts:v1:62739ec6a5c657c309b1666ccf34d24d7c2f590b3436b623f31318723ce750e6",
       "source_fact_keys": [
         "source_fact:v1:30c9ecac69f79cb95fbe3fb69810412f2493b6506463778225c9f14c4c66dec1",
@@ -76336,6 +77270,30 @@
       "source_published_kst": "2026-10-05T22:23+09:00",
       "title": "시놉시스, 10억달러 자사주 ASR 체결..173만5천주 우선 인도"
     },
+    "source_fact:d1bbf6fd383b4a6c3ebf0e00": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03266886645610296&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "f33854315ae2db4af250e37be5282bd4f58ff368e2ea0149087aab77b3785a47",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba889e0571caf33a9e48502efdb9a5db2e7c9eb41df0d9509f0a23d52cce78b",
+      "source_fact_keys": [
+        "source_fact:v1:10b6f5fd99db4bc57a124e13c06428f0949adc23b2c8d3561ccd2000ef53e01a",
+        "source_fact:v1:1ae488f4b5e4816ec3672f4d997af4e3b1eb4c1d5bc1009fac5c13f1026dd5d6",
+        "source_fact:v1:34f04bd08322b72e57ffff6bec06257bc33f24689bc595bc223096ad1c16b65a",
+        "source_fact:v1:5970a18716b81d335f8230c39afc28a5d9eda6ee9240c8c14a78487560a623e9",
+        "source_fact:v1:9a31ddf32c179083acd4e788f576d6c00dc51ca46370df70891b129a674c5071",
+        "source_fact:v1:df247875a6d0cc3546166cc3176c6c97697f3391636ea2afa47a0bfce998c1a9",
+        "source_fact:v1:e047a4cca267202c8725bfe42f7a5c3556fb136ad64dadb4b62eb5c33846884f",
+        "source_fact:v1:fa166b03953fc2d98714647ad3e482ba2ebdb48feb7b35f96d52327264eb4221"
+      ],
+      "source_published_kst": "2026-10-06T11:09+09:00",
+      "title": "재정부담에 재협상까지…고금리에 상업용 부동산 비상"
+    },
     "source_fact:d1e1826fd601740f616af2d1": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
       "lanes": {
@@ -76461,6 +77419,27 @@
       ],
       "source_published_kst": "2026-10-05T17:54+09:00",
       "title": "24년來 최고 금리도 AI 기세 못막아…나스닥 사상 최고[월스트리트in]"
+    },
+    "source_fact:d32d28a767e20d2181edaede": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632674",
+      "source": "이투데이",
+      "source_body_digest": "7616bba332cae85aa67f4071ab98251f3e02487d53563af5bfecd93be6d35424",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e10a38f7064a9ae34409d75e7b98d72ca326fa795a5afb33dd422695de658d3c",
+      "source_fact_keys": [
+        "source_fact:v1:4074b5db6e9e35076f8c4a817f97dd7f63568a0ecd02124cf5b59ac818e627e6",
+        "source_fact:v1:971cc3a06f1c14b38a6b0fe6960b5aaf6696ac1ce94a68fd4ae6873cc606057e",
+        "source_fact:v1:dac3614048237d80ffb9f589549052e378497ca1375af8ae77fb8bf975b43858",
+        "source_fact:v1:ef38c1e32453bcaefa139e55b4d60d63092a3f007baa6c7bb2b7d2a4219a3a72",
+        "source_fact:v1:ef616a4915c76ef033a11bb7678c5a5cebf6a2bd28b6b139a34015d86b34cf16"
+      ],
+      "source_published_kst": "2026-10-06T11:01+09:00",
+      "title": "자동차 화면용 강화유리 수입승인 없앤다…디스플레이 규제 개선"
     },
     "source_fact:d33808e605fe81dea5db8f49": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -77207,6 +78186,27 @@
       "source_published_kst": "2026-10-06T08:50+09:00",
       "title": "외식 프랜차이즈, 가맹점 매출 줄 때 본사 매출은 늘었다"
     },
+    "source_fact:d81c6ef9a95dbb3546db7650": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815152",
+      "source": "뉴시스",
+      "source_body_digest": "26fbc8c678ed98374aceddf52dbf64a62241bab402724ce154566cdafaeb9f59",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a5c0761421de673c4e1d024087982db56e80d19edb71b43d87307ca778e05a28",
+      "source_fact_keys": [
+        "source_fact:v1:2a7aa9aca6478b75ef7419b620b34839a1ee7805df9ddadc15c702375ca44de5",
+        "source_fact:v1:4b82380b0b6bff0d2c5d23f64e4eff23af6be2e86e82c43fd983f62808fff161",
+        "source_fact:v1:5426c5a01375adbe7b07c733c457b54dba0b0ac07a2627ee3056fa315db17242",
+        "source_fact:v1:65f195e5669989f87518d68fa48da5ea35534748a92a5e54b51c641d8dd06e4f",
+        "source_fact:v1:9fa984bb0175ee6466fd750272f802713d5409981d550768d472c474d02d591b"
+      ],
+      "source_published_kst": "2026-10-06T11:08+09:00",
+      "title": "현대차그룹, 1~8월 글로벌 전기차 판매 20%↑…\"亞·유럽서 지속 성장\""
+    },
     "source_fact:d8647a36cd26de362e3902c8": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
       "lanes": {
@@ -77559,6 +78559,27 @@
       ],
       "source_published_kst": "2026-10-05T18:21+09:00",
       "title": "솔리다임 美상장… \"SK하닉 가치 재평가\" vs \"주주 피해\" [어떻게 생각하십니까]"
+    },
+    "source_fact:dc6857ad1b734c76597f4bcb": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632674",
+      "source": "이투데이",
+      "source_body_digest": "7616bba332cae85aa67f4071ab98251f3e02487d53563af5bfecd93be6d35424",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e10a38f7064a9ae34409d75e7b98d72ca326fa795a5afb33dd422695de658d3c",
+      "source_fact_keys": [
+        "source_fact:v1:4074b5db6e9e35076f8c4a817f97dd7f63568a0ecd02124cf5b59ac818e627e6",
+        "source_fact:v1:971cc3a06f1c14b38a6b0fe6960b5aaf6696ac1ce94a68fd4ae6873cc606057e",
+        "source_fact:v1:dac3614048237d80ffb9f589549052e378497ca1375af8ae77fb8bf975b43858",
+        "source_fact:v1:ef38c1e32453bcaefa139e55b4d60d63092a3f007baa6c7bb2b7d2a4219a3a72",
+        "source_fact:v1:ef616a4915c76ef033a11bb7678c5a5cebf6a2bd28b6b139a34015d86b34cf16"
+      ],
+      "source_published_kst": "2026-10-06T11:01+09:00",
+      "title": "자동차 화면용 강화유리 수입승인 없앤다…디스플레이 규제 개선"
     },
     "source_fact:dc7dfb88e4aa009358a81100": {
       "first_seen_kst": "2026-10-06T10:04:04+09:00",
@@ -78622,7 +79643,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815158",
       "source": "뉴시스",
       "source_body_digest": "5c83ba8748f82106dfe34a4c7b3f3416a944680001648bc8be2ac4dda66cd9da",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:regulatory_package:c6b3b6d4eeea8d16c894d94f5e4eafb59a58861fecaed2b3591b2883e439afdc",
       "source_fact_identity": "source_facts:v1:62739ec6a5c657c309b1666ccf34d24d7c2f590b3436b623f31318723ce750e6",
       "source_fact_keys": [
         "source_fact:v1:30c9ecac69f79cb95fbe3fb69810412f2493b6506463778225c9f14c4c66dec1",
@@ -79139,6 +80160,27 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "외환보유액, 넉 달 만에 감소…대미투자 자산위탁 영향"
     },
+    "source_fact:e9b5545003f4e7bafa5eb26c": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815152",
+      "source": "뉴시스",
+      "source_body_digest": "26fbc8c678ed98374aceddf52dbf64a62241bab402724ce154566cdafaeb9f59",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a5c0761421de673c4e1d024087982db56e80d19edb71b43d87307ca778e05a28",
+      "source_fact_keys": [
+        "source_fact:v1:2a7aa9aca6478b75ef7419b620b34839a1ee7805df9ddadc15c702375ca44de5",
+        "source_fact:v1:4b82380b0b6bff0d2c5d23f64e4eff23af6be2e86e82c43fd983f62808fff161",
+        "source_fact:v1:5426c5a01375adbe7b07c733c457b54dba0b0ac07a2627ee3056fa315db17242",
+        "source_fact:v1:65f195e5669989f87518d68fa48da5ea35534748a92a5e54b51c641d8dd06e4f",
+        "source_fact:v1:9fa984bb0175ee6466fd750272f802713d5409981d550768d472c474d02d591b"
+      ],
+      "source_published_kst": "2026-10-06T11:08+09:00",
+      "title": "현대차그룹, 1~8월 글로벌 전기차 판매 20%↑…\"亞·유럽서 지속 성장\""
+    },
     "source_fact:e9bafb39ebcb1f087cac263a": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
       "lanes": {
@@ -79383,6 +80425,29 @@
       "source_published_kst": "2026-10-05T06:17+09:00",
       "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
     },
+    "source_fact:ec18b2603af55ec3dcfd0ef8": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894020",
+      "source": "헤럴드경제",
+      "source_body_digest": "eb9dd11ea466d43daa5a8720d502985ae761a5d935b72bb7f9812098e16a5915",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6aebd2201689c854fce6f075d214389ff9d46c9bbc9245830b3a425e0e5472d3",
+      "source_fact_keys": [
+        "source_fact:v1:11714957b3812faae2c0ce6da6bab2b2398433dcfab8fd684e48d553dd427dd9",
+        "source_fact:v1:15c37e547df88cf4a9b6faa6350baead074c4ec888b2c09b82deeadb0ec133eb",
+        "source_fact:v1:350aa0f4c154e18ea39019becd2c70b0280dabf621afe898d93b35d8e9703cb7",
+        "source_fact:v1:384a6159b0a46a3ddcee7a5a30fbd79fac57f76eb9c821482af439aa914ac3ff",
+        "source_fact:v1:3a520bc83bf7dc22c47db63235288a473607de468224034e0738ce096809f2ee",
+        "source_fact:v1:7583dcf75619b0dc6d74330fc3cb5f835dcd75876dfd003599c3fd8cbff07de7",
+        "source_fact:v1:e845a8836cd87fc690eedf4fd1eaf32ce34029c54a1d64071a4d028c5e89427c"
+      ],
+      "source_published_kst": "2026-10-06T11:12+09:00",
+      "title": "LG전자, 5GW 북미 냉각 설루션 장기 계약"
+    },
     "source_fact:ec5a11e656b407ba6c1bdcc3": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
       "lanes": {
@@ -79503,6 +80568,30 @@
       "source_published_kst": "2026-10-06T03:32+09:00",
       "title": "[美특징주]마이크로소프트, 멜리우스 ‘매수’ 상향에 2%↑…AI 보안 경쟁력 주목"
     },
+    "source_fact:ec9e9e3099514bbb836b8192": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03266886645610296&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "f33854315ae2db4af250e37be5282bd4f58ff368e2ea0149087aab77b3785a47",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba889e0571caf33a9e48502efdb9a5db2e7c9eb41df0d9509f0a23d52cce78b",
+      "source_fact_keys": [
+        "source_fact:v1:10b6f5fd99db4bc57a124e13c06428f0949adc23b2c8d3561ccd2000ef53e01a",
+        "source_fact:v1:1ae488f4b5e4816ec3672f4d997af4e3b1eb4c1d5bc1009fac5c13f1026dd5d6",
+        "source_fact:v1:34f04bd08322b72e57ffff6bec06257bc33f24689bc595bc223096ad1c16b65a",
+        "source_fact:v1:5970a18716b81d335f8230c39afc28a5d9eda6ee9240c8c14a78487560a623e9",
+        "source_fact:v1:9a31ddf32c179083acd4e788f576d6c00dc51ca46370df70891b129a674c5071",
+        "source_fact:v1:df247875a6d0cc3546166cc3176c6c97697f3391636ea2afa47a0bfce998c1a9",
+        "source_fact:v1:e047a4cca267202c8725bfe42f7a5c3556fb136ad64dadb4b62eb5c33846884f",
+        "source_fact:v1:fa166b03953fc2d98714647ad3e482ba2ebdb48feb7b35f96d52327264eb4221"
+      ],
+      "source_published_kst": "2026-10-06T11:09+09:00",
+      "title": "재정부담에 재협상까지…고금리에 상업용 부동산 비상"
+    },
     "source_fact:ecd68d0bc978e1ccd8d21e7f": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -79547,7 +80636,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815158",
       "source": "뉴시스",
       "source_body_digest": "5c83ba8748f82106dfe34a4c7b3f3416a944680001648bc8be2ac4dda66cd9da",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:regulatory_package:c6b3b6d4eeea8d16c894d94f5e4eafb59a58861fecaed2b3591b2883e439afdc",
       "source_fact_identity": "source_facts:v1:62739ec6a5c657c309b1666ccf34d24d7c2f590b3436b623f31318723ce750e6",
       "source_fact_keys": [
         "source_fact:v1:30c9ecac69f79cb95fbe3fb69810412f2493b6506463778225c9f14c4c66dec1",
@@ -82607,6 +83696,30 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "[일문일답] 독파모 끝까지 간다…\"프론티어 AI 사업 별도 추진\""
     },
+    "title:09bf68afdfa27958ffae98e0": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03266886645610296&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "f33854315ae2db4af250e37be5282bd4f58ff368e2ea0149087aab77b3785a47",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba889e0571caf33a9e48502efdb9a5db2e7c9eb41df0d9509f0a23d52cce78b",
+      "source_fact_keys": [
+        "source_fact:v1:10b6f5fd99db4bc57a124e13c06428f0949adc23b2c8d3561ccd2000ef53e01a",
+        "source_fact:v1:1ae488f4b5e4816ec3672f4d997af4e3b1eb4c1d5bc1009fac5c13f1026dd5d6",
+        "source_fact:v1:34f04bd08322b72e57ffff6bec06257bc33f24689bc595bc223096ad1c16b65a",
+        "source_fact:v1:5970a18716b81d335f8230c39afc28a5d9eda6ee9240c8c14a78487560a623e9",
+        "source_fact:v1:9a31ddf32c179083acd4e788f576d6c00dc51ca46370df70891b129a674c5071",
+        "source_fact:v1:df247875a6d0cc3546166cc3176c6c97697f3391636ea2afa47a0bfce998c1a9",
+        "source_fact:v1:e047a4cca267202c8725bfe42f7a5c3556fb136ad64dadb4b62eb5c33846884f",
+        "source_fact:v1:fa166b03953fc2d98714647ad3e482ba2ebdb48feb7b35f96d52327264eb4221"
+      ],
+      "source_published_kst": "2026-10-06T11:09+09:00",
+      "title": "재정부담에 재협상까지…고금리에 상업용 부동산 비상"
+    },
     "title:09e438ac601fd63169062851": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
       "lanes": {
@@ -84454,6 +85567,23 @@
       "source": "연합뉴스",
       "title": "트럼프 \"알래스카 LNG 韓투자\" 대못…공식문서엔 조건부 | 연합뉴스"
     },
+    "title:23c857c44f3ed94bec7a88ae": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815297",
+      "source": "뉴시스",
+      "source_body_digest": "7e78054ba5210a572235296341845a0ebbc73746007b1fdb7a042eb30f89b59e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c3369941273743cfe655837c416143643981afdda176e9bfd464a5066f8d790b",
+      "source_fact_keys": [
+        "source_fact:v1:92dd023bfedc5ca9237416ab25867fb8c468c5f67a914dbb077e6a167453ed8f"
+      ],
+      "source_published_kst": "2026-10-06T11:39+09:00",
+      "title": "\"방산 중기 육성\"…투자전문회사 설립법안 발의"
+    },
     "title:23cba83ffa10aa18a14409b1": {
       "first_seen_kst": "2026-10-05T04:42:26+09:00",
       "lanes": {
@@ -84714,7 +85844,7 @@
       "link": "https://www.etnews.com/20261006000142",
       "source": "전자신문",
       "source_body_digest": "0bcbaf88be3606924f3927ec020d1f7948d3cd1e1466e5772ef7ee92913583a6",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_product_milestone:e694d4adb6448490a6947ab91ce0174a00111a0104f88f85519e76ec53bcec2f",
       "source_fact_identity": "source_facts:v1:c7cfe1fbc93f2a4a8df7905f6cfb5170da29f8eaf18a7f90777a168273f7c204",
       "source_fact_keys": [
         "source_fact:v1:1ac843d9d126d6819f3bfb8bf3c50c491b346e44c82b8629183bdd26d6b775b6",
@@ -85076,6 +86206,27 @@
       "link": "https://zdnet.co.kr/view/?no=20261001155205",
       "source": "지디넷코리아",
       "title": "에코프로, 최상운·김장우 공동 대표 체제로"
+    },
+    "title:2af108bf2127d45a14f7552c": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632674",
+      "source": "이투데이",
+      "source_body_digest": "7616bba332cae85aa67f4071ab98251f3e02487d53563af5bfecd93be6d35424",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e10a38f7064a9ae34409d75e7b98d72ca326fa795a5afb33dd422695de658d3c",
+      "source_fact_keys": [
+        "source_fact:v1:4074b5db6e9e35076f8c4a817f97dd7f63568a0ecd02124cf5b59ac818e627e6",
+        "source_fact:v1:971cc3a06f1c14b38a6b0fe6960b5aaf6696ac1ce94a68fd4ae6873cc606057e",
+        "source_fact:v1:dac3614048237d80ffb9f589549052e378497ca1375af8ae77fb8bf975b43858",
+        "source_fact:v1:ef38c1e32453bcaefa139e55b4d60d63092a3f007baa6c7bb2b7d2a4219a3a72",
+        "source_fact:v1:ef616a4915c76ef033a11bb7678c5a5cebf6a2bd28b6b139a34015d86b34cf16"
+      ],
+      "source_published_kst": "2026-10-06T11:01+09:00",
+      "title": "자동차 화면용 강화유리 수입승인 없앤다…디스플레이 규제 개선"
     },
     "title:2b08a03c3ceae6f42d9de947": {
       "first_seen_kst": "2026-10-03T05:48:31+09:00",
@@ -88567,7 +89718,7 @@
       "link": "https://www.mk.co.kr/news/realestate/12169015",
       "source": "매일경제",
       "source_body_digest": "2d818707ce945c0a714cb6f0af982b417c382445d2234ac815a621fc1c44b36b",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:construction_order:bb5fcd8ec1268587191bde48a56afabe7bc021f8f7254cc5c34b06bb1f00672f",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T10:23+09:00",
@@ -89225,6 +90376,27 @@
       "link": "https://www.etnews.com/20261001000338",
       "source": "전자신문",
       "title": "KEA “대미 투자 합의 환영…사업 협력 확대해야”"
+    },
+    "title:5e6cfd261dbae0563b87f146": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815152",
+      "source": "뉴시스",
+      "source_body_digest": "26fbc8c678ed98374aceddf52dbf64a62241bab402724ce154566cdafaeb9f59",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a5c0761421de673c4e1d024087982db56e80d19edb71b43d87307ca778e05a28",
+      "source_fact_keys": [
+        "source_fact:v1:2a7aa9aca6478b75ef7419b620b34839a1ee7805df9ddadc15c702375ca44de5",
+        "source_fact:v1:4b82380b0b6bff0d2c5d23f64e4eff23af6be2e86e82c43fd983f62808fff161",
+        "source_fact:v1:5426c5a01375adbe7b07c733c457b54dba0b0ac07a2627ee3056fa315db17242",
+        "source_fact:v1:65f195e5669989f87518d68fa48da5ea35534748a92a5e54b51c641d8dd06e4f",
+        "source_fact:v1:9fa984bb0175ee6466fd750272f802713d5409981d550768d472c474d02d591b"
+      ],
+      "source_published_kst": "2026-10-06T11:08+09:00",
+      "title": "현대차그룹, 1~8월 글로벌 전기차 판매 20%↑…\"亞·유럽서 지속 성장\""
     },
     "title:5e9c0a2b8354c15ff06f0382": {
       "first_seen_kst": "2026-09-19T15:20:13+09:00",
@@ -90339,6 +91511,23 @@
       ],
       "source_published_kst": "2026-10-06T02:28+09:00",
       "title": "아람코 CEO \"세계 석유 공급 이미 압박…비축 최대 2년\""
+    },
+    "title:6bb771b2e77696739d631651": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006073900030",
+      "source": "연합뉴스",
+      "source_body_digest": "11fbbda18787939e6e72271fd81365bf01b2273d6bbce7245ce088205cec81ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eed2983af23004e5f29d4008cefc07adb64977a48e11d1db1f03eddb8f8e3eec",
+      "source_fact_keys": [
+        "source_fact:v1:cda4db4419fc1d829f472be7d0fc55b248b3dfbb6ebd7a7a44abbe19f345bfb4"
+      ],
+      "source_published_kst": "2026-10-06T11:08+09:00",
+      "title": "\"농지 특조법 특례 2∼3년 설정·농지법 개정 동시 추진 필요\" | 연합뉴스"
     },
     "title:6bef4d724494d44ed45c6eee": {
       "first_seen_kst": "2026-09-27T07:38:21+09:00",
@@ -92852,7 +94041,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261006064200001",
       "source": "연합뉴스",
       "source_body_digest": "27a6625a05ec5b5cc28260e35844c55f81cd7cd7092a92080b02a4bf713cbc7d",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:regulatory_package:c6b3b6d4eeea8d16c894d94f5e4eafb59a58861fecaed2b3591b2883e439afdc",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T11:00+09:00",
@@ -93764,7 +94953,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815158",
       "source": "뉴시스",
       "source_body_digest": "5c83ba8748f82106dfe34a4c7b3f3416a944680001648bc8be2ac4dda66cd9da",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:regulatory_package:c6b3b6d4eeea8d16c894d94f5e4eafb59a58861fecaed2b3591b2883e439afdc",
       "source_fact_identity": "source_facts:v1:62739ec6a5c657c309b1666ccf34d24d7c2f590b3436b623f31318723ce750e6",
       "source_fact_keys": [
         "source_fact:v1:30c9ecac69f79cb95fbe3fb69810412f2493b6506463778225c9f14c4c66dec1",
@@ -95160,6 +96349,29 @@
       "source": "파이낸셜뉴스",
       "title": "비트와이즈 창업자 \"가상자산 ETF 성숙…다음 무대는 온체인 금융\"[인터뷰]"
     },
+    "title:a709910d3538664043d56b1f": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894020",
+      "source": "헤럴드경제",
+      "source_body_digest": "eb9dd11ea466d43daa5a8720d502985ae761a5d935b72bb7f9812098e16a5915",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6aebd2201689c854fce6f075d214389ff9d46c9bbc9245830b3a425e0e5472d3",
+      "source_fact_keys": [
+        "source_fact:v1:11714957b3812faae2c0ce6da6bab2b2398433dcfab8fd684e48d553dd427dd9",
+        "source_fact:v1:15c37e547df88cf4a9b6faa6350baead074c4ec888b2c09b82deeadb0ec133eb",
+        "source_fact:v1:350aa0f4c154e18ea39019becd2c70b0280dabf621afe898d93b35d8e9703cb7",
+        "source_fact:v1:384a6159b0a46a3ddcee7a5a30fbd79fac57f76eb9c821482af439aa914ac3ff",
+        "source_fact:v1:3a520bc83bf7dc22c47db63235288a473607de468224034e0738ce096809f2ee",
+        "source_fact:v1:7583dcf75619b0dc6d74330fc3cb5f835dcd75876dfd003599c3fd8cbff07de7",
+        "source_fact:v1:e845a8836cd87fc690eedf4fd1eaf32ce34029c54a1d64071a4d028c5e89427c"
+      ],
+      "source_published_kst": "2026-10-06T11:12+09:00",
+      "title": "LG전자, 5GW 북미 냉각 설루션 장기 계약"
+    },
     "title:a7578c1858fb1315d5bdcb30": {
       "first_seen_kst": "2026-10-03T21:50:02+09:00",
       "lanes": {
@@ -95702,6 +96914,23 @@
       "source": "뉴시스",
       "source_event_identity": "",
       "title": "중남미 7개 대선 모두 우파 승리…룰라·보우소나루 아들 4일 격돌(종합)"
+    },
+    "title:adce632a1bd08f1eb916598f": {
+      "first_seen_kst": "2026-10-06T13:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T13:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T13:41:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632751",
+      "source": "이투데이",
+      "source_body_digest": "752040a34cdbfc09b9b9e04b514b4ae988bcedb086214d3ed2550b231ca15831",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3aa3c34170cfe2a2df8494ef635c31d7a040a06af3a104e893ef3b1c144829c9",
+      "source_fact_keys": [
+        "source_fact:v1:5136b36b96f032b0e9ad15ed95bd47d041d65e81e5cb5df8884848b107959ede"
+      ],
+      "source_published_kst": "2026-10-06T11:11+09:00",
+      "title": "컨테이너 일일이 안 묶어도 된다…HD현대, 세계 첫 ‘래싱프리 컨테이너선’ 인도"
     },
     "title:ae1807de7f88c024125552c3": {
       "first_seen_kst": "2026-10-05T22:49:24+09:00",
@@ -97673,7 +98902,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261006078100003",
       "source": "연합뉴스",
       "source_body_digest": "7504830f2e7e7f3d111e9e90f59af3e8d3ffe0cd86bd19e591230b6907ed6ab0",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:construction_order:bb5fcd8ec1268587191bde48a56afabe7bc021f8f7254cc5c34b06bb1f00672f",
       "source_fact_identity": "source_facts:v1:91d9fa6891fedbff5582a78e581acf912bc5f8ba5a4baada745d1782fdd134f7",
       "source_fact_keys": [
         "source_fact:v1:5da1b394f5d4631048b02e742318b9f8917e49d7bc11a19f0495ad83a06c1b48",
@@ -102124,5 +103353,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T13:07:20+09:00"
+  "updated_at_kst": "2026-10-06T13:41:31+09:00"
 }
