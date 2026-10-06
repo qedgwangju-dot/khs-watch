@@ -436,6 +436,76 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         self.assertTrue(w._is_goldman_structural_memory_item(item))
         self.assertIsNone(w._extract_goldman_structural_memory(item))
 
+    def test_ymtc_duration_baseline_preserves_anonymous_scope_and_counterpoint_metrics(self):
+        b = w.YMTC_NAND_DURATION_BASELINE
+        self.assertEqual(b["shortage_through_year"], 2029)
+        self.assertFalse(b["shortage_official_guidance"])
+        self.assertTrue(b["anonymous_employee_source"])
+        self.assertEqual(b["q2_2026_nand_shipment_share_pct"], 14.0)
+        self.assertEqual(b["q2_2026_nand_shipment_rank"], 3)
+        self.assertEqual(b["q2_2026_essd_bit_share_pct"], 48.0)
+        self.assertIn("global memory", b["shortage_scope"])
+
+    def test_ymtc_anonymous_three_year_shortage_is_not_promoted_to_official_guidance(self):
+        item = {
+            "title": "China's YMTC raises chip prices as it braces for three more years of memory shortages",
+            "description": (
+                "A company employee who spoke to The Wire China on condition of anonymity said "
+                "the global memory shortage could last another three years, roughly until late 2029. "
+                "YMTC has raised prices and moved production capacity toward higher-margin products."
+            ),
+            "source": "TweakTown",
+            "link": "https://www.tweaktown.com/news/113914/example.html",
+            "published_kst": "2026-10-06T10:00:00+09:00",
+        }
+        obs = w._extract_ymtc_nand_duration(item)
+        self.assertIsNotNone(obs)
+        self.assertEqual(obs["shortage_through_year"], 2029)
+        self.assertFalse(obs["shortage_official_guidance"])
+        self.assertTrue(obs["anonymous_employee_source"])
+        self.assertTrue(obs["price_increase_reported"])
+        self.assertTrue(obs["capacity_shift_high_margin_reported"])
+        self.assertIn("global memory", obs["shortage_scope"])
+
+    def test_ymtc_counterpoint_q2_metrics_extract_from_official_source(self):
+        item = {
+            "title": "Server-Led eSSDs Hit 48% of NAND Shipments; YMTC Enters Global Top Three",
+            "description": (
+                "In Q2 2026 YMTC climbed to third place with a 14% shipment share. "
+                "Enterprise SSDs reached 48% of total NAND bits shipped, up from 26% a year earlier. "
+                "Consumer products faced a supply shortage."
+            ),
+            "source": "Counterpoint Research",
+            "link": "https://counterpointresearch.com/default.htm/insights/server-led-essds-hit-48-percent-of-nand-shipments",
+            "published_kst": "2026-08-12T09:00:00+09:00",
+        }
+        obs = w._extract_ymtc_nand_duration(item)
+        self.assertIsNotNone(obs)
+        self.assertEqual(obs["q2_2026_nand_shipment_share_pct"], 14.0)
+        self.assertEqual(obs["q2_2026_nand_shipment_rank"], 3)
+        self.assertEqual(obs["q2_2026_essd_bit_share_pct"], 48.0)
+        self.assertEqual(obs["q2_2025_essd_bit_share_pct"], 26.0)
+        self.assertTrue(obs["consumer_nand_supply_short"])
+        self.assertEqual(obs["source_rank"], 3)
+
+    def test_ymtc_duration_alerts_if_end_year_or_officiality_changes(self):
+        old = dict(w.YMTC_NAND_DURATION_BASELINE)
+        moved = dict(old, shortage_through_year=2030)
+        self.assertTrue(any("2029→2030" in x for x in w._ymtc_nand_duration_changes(old, moved)))
+        official = dict(old, shortage_official_guidance=True)
+        self.assertTrue(any("익명·보도→공식" in x for x in w._ymtc_nand_duration_changes(old, official)))
+
+    def test_ymtc_untrusted_repost_is_not_promoted(self):
+        item = {
+            "title": "YMTC NAND shortage may last until 2029",
+            "description": "YMTC raises prices and expects shortages for three more years.",
+            "source": "Random Blog",
+            "link": "https://example.com/ymtc",
+            "published_kst": "2026-10-06T10:00:00+09:00",
+        }
+        self.assertTrue(w._is_ymtc_nand_duration_item(item))
+        self.assertIsNone(w._extract_ymtc_nand_duration(item))
+
     def test_dgx_spark_official_64gb_state_extracts_capacity_price_and_cluster_limits(self):
         item = {
             "title": "NVIDIA DGX Spark 64GB Gives Developers More Ways to Build and Scale Local AI",
