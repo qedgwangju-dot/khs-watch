@@ -1696,22 +1696,24 @@
     "event:513feb3bff03a74f9c842b5f": {
       "first_seen_kst": "2026-10-06T10:04:04+09:00",
       "lanes": {
-        "live": "2026-10-06T15:14:29+09:00"
+        "live": "2026-10-06T15:31:24+09:00"
       },
-      "last_seen_kst": "2026-10-06T15:14:29+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=03325926645610296",
-      "source": "이데일리",
-      "source_body_digest": "b7c81d9d8b8b7d37e8915c9ae0f8791f076bcadac9bab1360b0f9a374dd54462",
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632760",
+      "source": "이투데이",
+      "source_body_digest": "0f72408564ca332dee0c8289eb5ec2f83635ba704594d2afd8b7a71de8f07ba4",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:cd6db58925c01e75c86b27e7c7325260475fc47892602b8a697bad1aed30b30b",
+      "source_fact_identity": "source_facts:v1:e01a7740052556a055722a7d1ac2033ff047e7983291300f6201e03f608384c5",
       "source_fact_keys": [
-        "source_fact:v1:1227e0dd787018f276d7e0c3098d42a0152a7c614e3033ae3482a9d5ac864f38",
-        "source_fact:v1:432042fef44b2c51bd88fc64118c87519a15feb8e8416ba751e607a451e321ae",
-        "source_fact:v1:74384091542655eea45519d0dbd84d5bc8199717da39077ca0aef4e4df4ef48f",
-        "source_fact:v1:8f836113d5f749c08e6fd12907e33a98961061aeeaa2eadafefa572346bca8a4"
+        "source_fact:v1:171bbdb6a1c1b07a970175825f138b0c175373d2c2dc9f7a32ba8758f80a24a5",
+        "source_fact:v1:87066a5d523af93ed40bbe4c90ac6740cabab50947849a45f2d6ce0e365ec8da",
+        "source_fact:v1:91489cd25ea8309997dcb9e8dcb914cf8742debcd5f19e8719dda0299e70fa5c",
+        "source_fact:v1:a36990c61ca6ee596f5f86071d1aa244b64e67f33909abff4683dc1ffe664c75",
+        "source_fact:v1:e952f84882aafbc9880222e3d6cb2b73bb7e543fb6cf1922aa76f3958ec08faf",
+        "source_fact:v1:fbf9162f9cd0fd0f1e7c085cab4d57bbbc6a4b5a7d81c15c9c204417eb68b179"
       ],
-      "source_published_kst": "2026-10-06T11:25+09:00",
-      "title": "[속보]삼성전기, 2900억 규모 AI 서버용 MLCC 공급계약 체결"
+      "source_published_kst": "2026-10-06T11:23+09:00",
+      "title": "삼성전기, 반년도 안 돼 컴포넌트 연매출 75% 채웠다⋯AI부품 수주 ‘4조 클럽’"
     },
     "event:515a30f540946889aaa693c1": {
       "first_seen_kst": "2026-10-01T21:43:03+09:00",
@@ -5916,6 +5918,23 @@
       "source_published_kst": "2026-10-05T13:09+09:00",
       "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
     },
+    "fact:085b8f297808688c94707375": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632784",
+      "source": "이투데이",
+      "source_body_digest": "cbaad0e01054730e9589e20d6f57daf7af25d259cbebe5d628d5731d657732cf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:318fc5d287e296db9a0395ad5051951ccb5e5cf51c8f72e0d8d59df7a0eaa40a",
+      "source_fact_keys": [
+        "source_fact:v1:5130e0c7e4dd0a83dadb1fecd1eaff702ca6a5638927fe3978b7a977564a3b52"
+      ],
+      "source_published_kst": "2026-10-06T13:15+09:00",
+      "title": "트럼프, 면세 경유 도로 차량에 사용 허용⋯농촌 표심 잡기 안간힘"
+    },
     "fact:08d90ad3e4e8fd92cae52e08": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -8625,6 +8644,26 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"AI 진화속도 예상 밖\"…정부, 독파모 지원 유지·프론티어 전략 재정비"
     },
+    "fact:5d21fb9b070cfebb94a724b6": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.etnews.com/20261006000211",
+      "source": "전자신문",
+      "source_body_digest": "169360966d847765b5bb5d868493eac386b5ab61be6417b3bfe388ea2050fd09",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cc753d069a049f6ecf6ad50b392506890fecbb036ae13140d647084d60260746",
+      "source_fact_keys": [
+        "source_fact:v1:4b4e623c549c8d0fbf398f2586a4ad41b3f9598d0b3c38912c569ebda8f4fc1f",
+        "source_fact:v1:94058caaa384cbc946bcd0e7d0c55cfee6edc27a40985673e6db57f8ec8a0f47",
+        "source_fact:v1:ae2ec79ca543b73481f4e4a3c2d89bffc2cd5642b1a2324a432d8f706a0be30a",
+        "source_fact:v1:b702a4df5c5f66e8415a658376a612251edb584df06f787efbf3790ee5309172"
+      ],
+      "source_published_kst": "2026-10-06T13:28+09:00",
+      "title": "세계 반도체 매출, 1조 달러 넘어섰다…18개월 연속 성장"
+    },
     "fact:5d84b03a904581d1ef0ae4d6": {
       "first_seen_kst": "2026-10-06T01:51:09+09:00",
       "lanes": {
@@ -8922,6 +8961,23 @@
       ],
       "source_published_kst": "2026-10-05T08:05+09:00",
       "title": "씨이앤에스, ‘AI 서버 폭발적 발열’ 미스트 정밀 분사로 잡는다"
+    },
+    "fact:6a961b80aa6b810489c1671d": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815527",
+      "source": "뉴시스",
+      "source_body_digest": "579a41d9f7f0ecd3eaf1e0a0b35d6b84cd23e98e4fb23dcf04e77f08f701e2dc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:093ba9d39b5c05d7a0474cb940da633f8182d7e562bfa075239a2cb5ffda435e",
+      "source_fact_keys": [
+        "source_fact:v1:da5eaa8176024592261760b4de689d0ca45d7a4874c785f96bd860b6eb79a039"
+      ],
+      "source_published_kst": "2026-10-06T13:27+09:00",
+      "title": "조선내화, 351억 규모 내화물 공급계약"
     },
     "fact:6b1c4e42c745bf0440d50916": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -11246,6 +11302,28 @@
       "source_published_kst": "2026-10-05T21:50+09:00",
       "title": "크리티컬메탈스, 유러피언리튬 조건부 주식 지급의무 소멸 합의에 투자자 주목"
     },
+    "fact:ba4d034cfa08450e32f9610a": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632760",
+      "source": "이투데이",
+      "source_body_digest": "0f72408564ca332dee0c8289eb5ec2f83635ba704594d2afd8b7a71de8f07ba4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e01a7740052556a055722a7d1ac2033ff047e7983291300f6201e03f608384c5",
+      "source_fact_keys": [
+        "source_fact:v1:171bbdb6a1c1b07a970175825f138b0c175373d2c2dc9f7a32ba8758f80a24a5",
+        "source_fact:v1:87066a5d523af93ed40bbe4c90ac6740cabab50947849a45f2d6ce0e365ec8da",
+        "source_fact:v1:91489cd25ea8309997dcb9e8dcb914cf8742debcd5f19e8719dda0299e70fa5c",
+        "source_fact:v1:a36990c61ca6ee596f5f86071d1aa244b64e67f33909abff4683dc1ffe664c75",
+        "source_fact:v1:e952f84882aafbc9880222e3d6cb2b73bb7e543fb6cf1922aa76f3958ec08faf",
+        "source_fact:v1:fbf9162f9cd0fd0f1e7c085cab4d57bbbc6a4b5a7d81c15c9c204417eb68b179"
+      ],
+      "source_published_kst": "2026-10-06T11:23+09:00",
+      "title": "삼성전기, 반년도 안 돼 컴포넌트 연매출 75% 채웠다⋯AI부품 수주 ‘4조 클럽’"
+    },
     "fact:bd56f101b64848b55f457505": {
       "first_seen_kst": "2026-10-06T15:03:09+09:00",
       "lanes": {
@@ -12100,6 +12178,27 @@
       "source_published_kst": "2026-10-05T22:07+09:00",
       "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
     },
+    "fact:da7845615ed994fabacb7137": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815529",
+      "source": "뉴시스",
+      "source_body_digest": "8ed42d40dc2213ac79eb25c39efbafa3c42afc09645a7add02104eef1236cbb2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fb484e93a953a55868b0e8f1273998d12489acacf10f18b9ff13aee2a644c87",
+      "source_fact_keys": [
+        "source_fact:v1:06e8a44acdefc319726045c326c8c10f46906c267abbbab82762dd33e434a3b5",
+        "source_fact:v1:1fbf124d484f32c1dbed0356ad72d0c39dfd98a4384bf5cb7f056ba049aa1b9d",
+        "source_fact:v1:63a72598a6ec01445e269194108d619ce84a6c228ba8385205695ff11f725d63",
+        "source_fact:v1:c67de98aaf9bba6df6aa32fa66a53ef32920bd5c8ab445384486d9ddc52f3e33",
+        "source_fact:v1:f29587e39ff8dbe3b3ffc30a89c12385b36d7a91d2ef9d059933701ceb97b00d"
+      ],
+      "source_published_kst": "2026-10-06T14:13+09:00",
+      "title": "이형일 \"텍사스 발전소에 24억弗 송금…상업적 합리성 충족\"(종합)"
+    },
     "fact:dbeb5fd6614dbec10b54f316": {
       "first_seen_kst": "2026-10-05T20:31:34+09:00",
       "lanes": {
@@ -12818,6 +12917,25 @@
       ],
       "source_published_kst": "2026-10-05T17:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
+    },
+    "fact:f7b5bb0f06be890bcb369a4c": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.mt.co.kr/policy/2026/10/06/2026100612571041033",
+      "source": "머니투데이",
+      "source_body_digest": "41d9125ec81a321a7c89f6101136e4210933e819db1950827ebd89f269ab4a73",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d9ca6d430996b187a3a0c272e657eb15dc83bdda54b29f48b19889db4364fefc",
+      "source_fact_keys": [
+        "source_fact:v1:1a6445c93baebe69a6221330b924d132d022dde5d8ba67062512d071e8244d53",
+        "source_fact:v1:6b7dc9a7c1fdcb2207a7448db71d5d2cb405481f11459b83e32d800093ae74cf",
+        "source_fact:v1:78bd3600679e18e15a70d41325bbf64af4a0a6469226aade565f5e4058bc71da"
+      ],
+      "source_published_kst": "2026-10-06T13:10+09:00",
+      "title": "서남권 반도체 팹은 제2 반도체 생산거점…풍부한 에너지 활용해야"
     },
     "fact:f8df8800607b337a96c2c905": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
@@ -16623,6 +16741,26 @@
       "source": "이데일리",
       "title": "호텔인데 매출 7%가 김치?…조선호텔, 연 540억 '김치 잭팟'"
     },
+    "link:2b7a258ef83589b15817d0ac": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.etnews.com/20261006000211",
+      "source": "전자신문",
+      "source_body_digest": "169360966d847765b5bb5d868493eac386b5ab61be6417b3bfe388ea2050fd09",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cc753d069a049f6ecf6ad50b392506890fecbb036ae13140d647084d60260746",
+      "source_fact_keys": [
+        "source_fact:v1:4b4e623c549c8d0fbf398f2586a4ad41b3f9598d0b3c38912c569ebda8f4fc1f",
+        "source_fact:v1:94058caaa384cbc946bcd0e7d0c55cfee6edc27a40985673e6db57f8ec8a0f47",
+        "source_fact:v1:ae2ec79ca543b73481f4e4a3c2d89bffc2cd5642b1a2324a432d8f706a0be30a",
+        "source_fact:v1:b702a4df5c5f66e8415a658376a612251edb584df06f787efbf3790ee5309172"
+      ],
+      "source_published_kst": "2026-10-06T13:28+09:00",
+      "title": "세계 반도체 매출, 1조 달러 넘어섰다…18개월 연속 성장"
+    },
     "link:2bdbb5594ec1fafd1f408856": {
       "first_seen_kst": "2026-10-04T00:19:00+09:00",
       "lanes": {
@@ -17922,6 +18060,21 @@
       "link": "https://www.yna.co.kr/view/AKR20260921139200003",
       "source": "연합뉴스",
       "title": "LS일렉트릭-SB글로벌, 전남 동부권 AIDC 전력인프라 공동개발 | 연합뉴스"
+    },
+    "link:3becc4d00c7019c007160e2d": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.etnews.com/20261006000199",
+      "source": "전자신문",
+      "source_body_digest": "d1000689f998305d8219d14590da45632660ebe70fd9e22b940e3bcb415af15a",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T13:16+09:00",
+      "title": "롯데백화점, 외국인 매출 1兆 돌파…업계 최초"
     },
     "link:3bfe61b82788c824742d99d8": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
@@ -22844,6 +22997,25 @@
       "source_published_kst": "2026-10-06T05:00+09:00",
       "title": "유통·식품 수장 줄줄이 국감장…쿠팡·배민·홈플러스 정조준하나"
     },
+    "link:742c787430c3dda7d501f795": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.mt.co.kr/policy/2026/10/06/2026100612571041033",
+      "source": "머니투데이",
+      "source_body_digest": "41d9125ec81a321a7c89f6101136e4210933e819db1950827ebd89f269ab4a73",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d9ca6d430996b187a3a0c272e657eb15dc83bdda54b29f48b19889db4364fefc",
+      "source_fact_keys": [
+        "source_fact:v1:1a6445c93baebe69a6221330b924d132d022dde5d8ba67062512d071e8244d53",
+        "source_fact:v1:6b7dc9a7c1fdcb2207a7448db71d5d2cb405481f11459b83e32d800093ae74cf",
+        "source_fact:v1:78bd3600679e18e15a70d41325bbf64af4a0a6469226aade565f5e4058bc71da"
+      ],
+      "source_published_kst": "2026-10-06T13:10+09:00",
+      "title": "서남권 반도체 팹은 제2 반도체 생산거점…풍부한 에너지 활용해야"
+    },
     "link:7495263893005a81f0fff1af": {
       "first_seen_kst": "2026-09-19T20:13:35+09:00",
       "lanes": {
@@ -26580,6 +26752,23 @@
       "source_published_kst": "2026-10-05T10:30+09:00",
       "title": "토스, CJ대한통운과 MOU…프론트 설치 가맹점서 택배 접수까지"
     },
+    "link:9e5f9792e52a28672b7d637e": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815527",
+      "source": "뉴시스",
+      "source_body_digest": "579a41d9f7f0ecd3eaf1e0a0b35d6b84cd23e98e4fb23dcf04e77f08f701e2dc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:093ba9d39b5c05d7a0474cb940da633f8182d7e562bfa075239a2cb5ffda435e",
+      "source_fact_keys": [
+        "source_fact:v1:da5eaa8176024592261760b4de689d0ca45d7a4874c785f96bd860b6eb79a039"
+      ],
+      "source_published_kst": "2026-10-06T13:27+09:00",
+      "title": "조선내화, 351억 규모 내화물 공급계약"
+    },
     "link:9e645fc9a36253746f74b777": {
       "first_seen_kst": "2026-10-02T22:34:40+09:00",
       "lanes": {
@@ -27880,6 +28069,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T16:44+09:00",
       "title": "리사 수 AMD 회장 7개월 만에 방한…7일 용산서 '게이머데이'"
+    },
+    "link:acbb2e6fb8c64ad9b3721f63": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632784",
+      "source": "이투데이",
+      "source_body_digest": "cbaad0e01054730e9589e20d6f57daf7af25d259cbebe5d628d5731d657732cf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:318fc5d287e296db9a0395ad5051951ccb5e5cf51c8f72e0d8d59df7a0eaa40a",
+      "source_fact_keys": [
+        "source_fact:v1:5130e0c7e4dd0a83dadb1fecd1eaff702ca6a5638927fe3978b7a977564a3b52"
+      ],
+      "source_published_kst": "2026-10-06T13:15+09:00",
+      "title": "트럼프, 면세 경유 도로 차량에 사용 허용⋯농촌 표심 잡기 안간힘"
     },
     "link:ad1cefa9817b321948509e1d": {
       "first_seen_kst": "2026-10-04T09:36:30+09:00",
@@ -33672,6 +33878,28 @@
       "source_published_kst": "2026-10-04T09:00+09:00",
       "title": "2년간 결손 난 회사 주식으로 상속세 물납 신청…法 “거부 적법”"
     },
+    "link:f1993291f621ea3af4b7cee6": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632760",
+      "source": "이투데이",
+      "source_body_digest": "0f72408564ca332dee0c8289eb5ec2f83635ba704594d2afd8b7a71de8f07ba4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e01a7740052556a055722a7d1ac2033ff047e7983291300f6201e03f608384c5",
+      "source_fact_keys": [
+        "source_fact:v1:171bbdb6a1c1b07a970175825f138b0c175373d2c2dc9f7a32ba8758f80a24a5",
+        "source_fact:v1:87066a5d523af93ed40bbe4c90ac6740cabab50947849a45f2d6ce0e365ec8da",
+        "source_fact:v1:91489cd25ea8309997dcb9e8dcb914cf8742debcd5f19e8719dda0299e70fa5c",
+        "source_fact:v1:a36990c61ca6ee596f5f86071d1aa244b64e67f33909abff4683dc1ffe664c75",
+        "source_fact:v1:e952f84882aafbc9880222e3d6cb2b73bb7e543fb6cf1922aa76f3958ec08faf",
+        "source_fact:v1:fbf9162f9cd0fd0f1e7c085cab4d57bbbc6a4b5a7d81c15c9c204417eb68b179"
+      ],
+      "source_published_kst": "2026-10-06T11:23+09:00",
+      "title": "삼성전기, 반년도 안 돼 컴포넌트 연매출 75% 채웠다⋯AI부품 수주 ‘4조 클럽’"
+    },
     "link:f19b6848b1acb4ad75eb14fa": {
       "first_seen_kst": "2026-10-02T11:10:58+09:00",
       "lanes": {
@@ -34866,6 +35094,27 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T15:39+09:00",
       "title": "가상자산 업계도 금융권 해킹 확산에 '촉각'…보안태세 재정비"
+    },
+    "link:ff659bd300975934072d54f8": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815529",
+      "source": "뉴시스",
+      "source_body_digest": "8ed42d40dc2213ac79eb25c39efbafa3c42afc09645a7add02104eef1236cbb2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fb484e93a953a55868b0e8f1273998d12489acacf10f18b9ff13aee2a644c87",
+      "source_fact_keys": [
+        "source_fact:v1:06e8a44acdefc319726045c326c8c10f46906c267abbbab82762dd33e434a3b5",
+        "source_fact:v1:1fbf124d484f32c1dbed0356ad72d0c39dfd98a4384bf5cb7f056ba049aa1b9d",
+        "source_fact:v1:63a72598a6ec01445e269194108d619ce84a6c228ba8385205695ff11f725d63",
+        "source_fact:v1:c67de98aaf9bba6df6aa32fa66a53ef32920bd5c8ab445384486d9ddc52f3e33",
+        "source_fact:v1:f29587e39ff8dbe3b3ffc30a89c12385b36d7a91d2ef9d059933701ceb97b00d"
+      ],
+      "source_published_kst": "2026-10-06T14:13+09:00",
+      "title": "이형일 \"텍사스 발전소에 24억弗 송금…상업적 합리성 충족\"(종합)"
     },
     "link:ff6e2bb3974c7eac349c004f": {
       "first_seen_kst": "2026-10-04T07:14:36+09:00",
@@ -36512,6 +36761,21 @@
       "source": "뉴시스",
       "source_event_identity": "",
       "title": "러 드론, 키이우 남부교 이틀새 4번 타격…차량'지하철 통행 끊겼다"
+    },
+    "original:1470ae0ea379f715a1ced8c7": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.etnews.com/20261006000199",
+      "source": "전자신문",
+      "source_body_digest": "d1000689f998305d8219d14590da45632660ebe70fd9e22b940e3bcb415af15a",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T13:16+09:00",
+      "title": "롯데백화점, 외국인 매출 1兆 돌파…업계 최초"
     },
     "original:1492b005303baef48b8538a1": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
@@ -38751,6 +39015,23 @@
       ],
       "source_published_kst": "2026-10-05T22:37+09:00",
       "title": "농식품부 고위공직자 모친 농지 '미경작'…\"전수조사, 현실 못담아\""
+    },
+    "original:2f85b3ed93eb922ea1782c35": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632784",
+      "source": "이투데이",
+      "source_body_digest": "cbaad0e01054730e9589e20d6f57daf7af25d259cbebe5d628d5731d657732cf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:318fc5d287e296db9a0395ad5051951ccb5e5cf51c8f72e0d8d59df7a0eaa40a",
+      "source_fact_keys": [
+        "source_fact:v1:5130e0c7e4dd0a83dadb1fecd1eaff702ca6a5638927fe3978b7a977564a3b52"
+      ],
+      "source_published_kst": "2026-10-06T13:15+09:00",
+      "title": "트럼프, 면세 경유 도로 차량에 사용 허용⋯농촌 표심 잡기 안간힘"
     },
     "original:2f9cd80f9c7bdfad921dedaa": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
@@ -44038,6 +44319,23 @@
       "source_event_identity": "",
       "title": "19년간 못판 상업용지…LH 미매각 토지 규모 21.9조원 기록"
     },
+    "original:6df2503e90b81e9f1d942edf": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815527",
+      "source": "뉴시스",
+      "source_body_digest": "579a41d9f7f0ecd3eaf1e0a0b35d6b84cd23e98e4fb23dcf04e77f08f701e2dc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:093ba9d39b5c05d7a0474cb940da633f8182d7e562bfa075239a2cb5ffda435e",
+      "source_fact_keys": [
+        "source_fact:v1:da5eaa8176024592261760b4de689d0ca45d7a4874c785f96bd860b6eb79a039"
+      ],
+      "source_published_kst": "2026-10-06T13:27+09:00",
+      "title": "조선내화, 351억 규모 내화물 공급계약"
+    },
     "original:6df6d43dbd8398553fe957ea": {
       "first_seen_kst": "2026-10-02T13:38:43+09:00",
       "lanes": {
@@ -45842,6 +46140,28 @@
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "\"일주일새 12% 올랐다\"…전고체 ETF 뛰는데 뭉칫돈 향한 곳은"
     },
+    "original:83cd7d8acf548290087b6521": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632760",
+      "source": "이투데이",
+      "source_body_digest": "0f72408564ca332dee0c8289eb5ec2f83635ba704594d2afd8b7a71de8f07ba4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e01a7740052556a055722a7d1ac2033ff047e7983291300f6201e03f608384c5",
+      "source_fact_keys": [
+        "source_fact:v1:171bbdb6a1c1b07a970175825f138b0c175373d2c2dc9f7a32ba8758f80a24a5",
+        "source_fact:v1:87066a5d523af93ed40bbe4c90ac6740cabab50947849a45f2d6ce0e365ec8da",
+        "source_fact:v1:91489cd25ea8309997dcb9e8dcb914cf8742debcd5f19e8719dda0299e70fa5c",
+        "source_fact:v1:a36990c61ca6ee596f5f86071d1aa244b64e67f33909abff4683dc1ffe664c75",
+        "source_fact:v1:e952f84882aafbc9880222e3d6cb2b73bb7e543fb6cf1922aa76f3958ec08faf",
+        "source_fact:v1:fbf9162f9cd0fd0f1e7c085cab4d57bbbc6a4b5a7d81c15c9c204417eb68b179"
+      ],
+      "source_published_kst": "2026-10-06T11:23+09:00",
+      "title": "삼성전기, 반년도 안 돼 컴포넌트 연매출 75% 채웠다⋯AI부품 수주 ‘4조 클럽’"
+    },
     "original:83d2f03f5826b34168905f1b": {
       "first_seen_kst": "2026-09-30T06:14:07+09:00",
       "lanes": {
@@ -47264,6 +47584,27 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03247206645583400",
       "source": "이데일리",
       "title": "美장기금리 어디까지 오를까…'기간 프리미엄'에 달렸다"
+    },
+    "original:91c1791f39433c7e8c6d9d89": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815529",
+      "source": "뉴시스",
+      "source_body_digest": "8ed42d40dc2213ac79eb25c39efbafa3c42afc09645a7add02104eef1236cbb2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fb484e93a953a55868b0e8f1273998d12489acacf10f18b9ff13aee2a644c87",
+      "source_fact_keys": [
+        "source_fact:v1:06e8a44acdefc319726045c326c8c10f46906c267abbbab82762dd33e434a3b5",
+        "source_fact:v1:1fbf124d484f32c1dbed0356ad72d0c39dfd98a4384bf5cb7f056ba049aa1b9d",
+        "source_fact:v1:63a72598a6ec01445e269194108d619ce84a6c228ba8385205695ff11f725d63",
+        "source_fact:v1:c67de98aaf9bba6df6aa32fa66a53ef32920bd5c8ab445384486d9ddc52f3e33",
+        "source_fact:v1:f29587e39ff8dbe3b3ffc30a89c12385b36d7a91d2ef9d059933701ceb97b00d"
+      ],
+      "source_published_kst": "2026-10-06T14:13+09:00",
+      "title": "이형일 \"텍사스 발전소에 24억弗 송금…상업적 합리성 충족\"(종합)"
     },
     "original:91d1eeafa36b03a27c67a2a8": {
       "first_seen_kst": "2026-10-05T20:31:34+09:00",
@@ -49553,6 +49894,26 @@
       "link": "https://www.newsis.com/view/NISX20260919_0003796786",
       "source": "뉴시스",
       "title": "日, 연휴 앞두고 환율 '레이트 체크'…엔화 약세 견제"
+    },
+    "original:b0001df99d4f5ddbb6b91be2": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.etnews.com/20261006000211",
+      "source": "전자신문",
+      "source_body_digest": "169360966d847765b5bb5d868493eac386b5ab61be6417b3bfe388ea2050fd09",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cc753d069a049f6ecf6ad50b392506890fecbb036ae13140d647084d60260746",
+      "source_fact_keys": [
+        "source_fact:v1:4b4e623c549c8d0fbf398f2586a4ad41b3f9598d0b3c38912c569ebda8f4fc1f",
+        "source_fact:v1:94058caaa384cbc946bcd0e7d0c55cfee6edc27a40985673e6db57f8ec8a0f47",
+        "source_fact:v1:ae2ec79ca543b73481f4e4a3c2d89bffc2cd5642b1a2324a432d8f706a0be30a",
+        "source_fact:v1:b702a4df5c5f66e8415a658376a612251edb584df06f787efbf3790ee5309172"
+      ],
+      "source_published_kst": "2026-10-06T13:28+09:00",
+      "title": "세계 반도체 매출, 1조 달러 넘어섰다…18개월 연속 성장"
     },
     "original:b07821602aa1e2546aaa2c75": {
       "first_seen_kst": "2026-10-05T14:04:17+09:00",
@@ -53728,6 +54089,25 @@
       "source": "파이낸셜뉴스",
       "title": "AI 특수에 삼성전자 HBM4 매출 비중 내년 2배 증가-KB證"
     },
+    "original:e38f51b9b80603c6214c0612": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.mt.co.kr/policy/2026/10/06/2026100612571041033",
+      "source": "머니투데이",
+      "source_body_digest": "41d9125ec81a321a7c89f6101136e4210933e819db1950827ebd89f269ab4a73",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d9ca6d430996b187a3a0c272e657eb15dc83bdda54b29f48b19889db4364fefc",
+      "source_fact_keys": [
+        "source_fact:v1:1a6445c93baebe69a6221330b924d132d022dde5d8ba67062512d071e8244d53",
+        "source_fact:v1:6b7dc9a7c1fdcb2207a7448db71d5d2cb405481f11459b83e32d800093ae74cf",
+        "source_fact:v1:78bd3600679e18e15a70d41325bbf64af4a0a6469226aade565f5e4058bc71da"
+      ],
+      "source_published_kst": "2026-10-06T13:10+09:00",
+      "title": "서남권 반도체 팹은 제2 반도체 생산거점…풍부한 에너지 활용해야"
+    },
     "original:e39719d7381d596864b80fb4": {
       "first_seen_kst": "2026-10-04T07:39:13+09:00",
       "lanes": {
@@ -56671,6 +57051,26 @@
       "source_published_kst": "2026-10-06T09:00+09:00",
       "title": "한미반도체, 삼성전기서 245억 장비 수주…곽동신 “삼성그룹 환영”"
     },
+    "source_fact:053da96651b193b13f051f80": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.etnews.com/20261006000211",
+      "source": "전자신문",
+      "source_body_digest": "169360966d847765b5bb5d868493eac386b5ab61be6417b3bfe388ea2050fd09",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cc753d069a049f6ecf6ad50b392506890fecbb036ae13140d647084d60260746",
+      "source_fact_keys": [
+        "source_fact:v1:4b4e623c549c8d0fbf398f2586a4ad41b3f9598d0b3c38912c569ebda8f4fc1f",
+        "source_fact:v1:94058caaa384cbc946bcd0e7d0c55cfee6edc27a40985673e6db57f8ec8a0f47",
+        "source_fact:v1:ae2ec79ca543b73481f4e4a3c2d89bffc2cd5642b1a2324a432d8f706a0be30a",
+        "source_fact:v1:b702a4df5c5f66e8415a658376a612251edb584df06f787efbf3790ee5309172"
+      ],
+      "source_published_kst": "2026-10-06T13:28+09:00",
+      "title": "세계 반도체 매출, 1조 달러 넘어섰다…18개월 연속 성장"
+    },
     "source_fact:057c6e05e104977391991e11": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
       "lanes": {
@@ -57391,6 +57791,26 @@
       ],
       "source_published_kst": "2026-10-06T09:54+09:00",
       "title": "올해 청약 경쟁률 작년 절반으로 '뚝'…서울·3기신도시는 100대1"
+    },
+    "source_fact:0992474c1ddb98e0064a6c8d": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.etnews.com/20261006000211",
+      "source": "전자신문",
+      "source_body_digest": "169360966d847765b5bb5d868493eac386b5ab61be6417b3bfe388ea2050fd09",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cc753d069a049f6ecf6ad50b392506890fecbb036ae13140d647084d60260746",
+      "source_fact_keys": [
+        "source_fact:v1:4b4e623c549c8d0fbf398f2586a4ad41b3f9598d0b3c38912c569ebda8f4fc1f",
+        "source_fact:v1:94058caaa384cbc946bcd0e7d0c55cfee6edc27a40985673e6db57f8ec8a0f47",
+        "source_fact:v1:ae2ec79ca543b73481f4e4a3c2d89bffc2cd5642b1a2324a432d8f706a0be30a",
+        "source_fact:v1:b702a4df5c5f66e8415a658376a612251edb584df06f787efbf3790ee5309172"
+      ],
+      "source_published_kst": "2026-10-06T13:28+09:00",
+      "title": "세계 반도체 매출, 1조 달러 넘어섰다…18개월 연속 성장"
     },
     "source_fact:09935133430f20c18e7f7243": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -58845,6 +59265,28 @@
       "source_published_kst": "2026-10-05T20:58+09:00",
       "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
     },
+    "source_fact:1539de291aa6d2d79161a984": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632760",
+      "source": "이투데이",
+      "source_body_digest": "0f72408564ca332dee0c8289eb5ec2f83635ba704594d2afd8b7a71de8f07ba4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e01a7740052556a055722a7d1ac2033ff047e7983291300f6201e03f608384c5",
+      "source_fact_keys": [
+        "source_fact:v1:171bbdb6a1c1b07a970175825f138b0c175373d2c2dc9f7a32ba8758f80a24a5",
+        "source_fact:v1:87066a5d523af93ed40bbe4c90ac6740cabab50947849a45f2d6ce0e365ec8da",
+        "source_fact:v1:91489cd25ea8309997dcb9e8dcb914cf8742debcd5f19e8719dda0299e70fa5c",
+        "source_fact:v1:a36990c61ca6ee596f5f86071d1aa244b64e67f33909abff4683dc1ffe664c75",
+        "source_fact:v1:e952f84882aafbc9880222e3d6cb2b73bb7e543fb6cf1922aa76f3958ec08faf",
+        "source_fact:v1:fbf9162f9cd0fd0f1e7c085cab4d57bbbc6a4b5a7d81c15c9c204417eb68b179"
+      ],
+      "source_published_kst": "2026-10-06T11:23+09:00",
+      "title": "삼성전기, 반년도 안 돼 컴포넌트 연매출 75% 채웠다⋯AI부품 수주 ‘4조 클럽’"
+    },
     "source_fact:158f62adb810a98b2ccc9fc9": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
       "lanes": {
@@ -59327,6 +59769,27 @@
       ],
       "source_published_kst": "2026-10-06T11:12+09:00",
       "title": "LG전자, 5GW 북미 냉각 설루션 장기 계약"
+    },
+    "source_fact:1abc8c42b2fb35a7352cb07e": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815529",
+      "source": "뉴시스",
+      "source_body_digest": "8ed42d40dc2213ac79eb25c39efbafa3c42afc09645a7add02104eef1236cbb2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fb484e93a953a55868b0e8f1273998d12489acacf10f18b9ff13aee2a644c87",
+      "source_fact_keys": [
+        "source_fact:v1:06e8a44acdefc319726045c326c8c10f46906c267abbbab82762dd33e434a3b5",
+        "source_fact:v1:1fbf124d484f32c1dbed0356ad72d0c39dfd98a4384bf5cb7f056ba049aa1b9d",
+        "source_fact:v1:63a72598a6ec01445e269194108d619ce84a6c228ba8385205695ff11f725d63",
+        "source_fact:v1:c67de98aaf9bba6df6aa32fa66a53ef32920bd5c8ab445384486d9ddc52f3e33",
+        "source_fact:v1:f29587e39ff8dbe3b3ffc30a89c12385b36d7a91d2ef9d059933701ceb97b00d"
+      ],
+      "source_published_kst": "2026-10-06T14:13+09:00",
+      "title": "이형일 \"텍사스 발전소에 24억弗 송금…상업적 합리성 충족\"(종합)"
     },
     "source_fact:1ad42b1a58f371f81cbe8e59": {
       "first_seen_kst": "2026-10-06T15:14:29+09:00",
@@ -62007,6 +62470,27 @@
       "source_published_kst": "2026-10-06T11:09+09:00",
       "title": "폭염·AI에 日 전력난 비상… 노후 화력발전 수명연장 검토 | 연합뉴스"
     },
+    "source_fact:2ee74be49de2fe4372dea99f": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815529",
+      "source": "뉴시스",
+      "source_body_digest": "8ed42d40dc2213ac79eb25c39efbafa3c42afc09645a7add02104eef1236cbb2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fb484e93a953a55868b0e8f1273998d12489acacf10f18b9ff13aee2a644c87",
+      "source_fact_keys": [
+        "source_fact:v1:06e8a44acdefc319726045c326c8c10f46906c267abbbab82762dd33e434a3b5",
+        "source_fact:v1:1fbf124d484f32c1dbed0356ad72d0c39dfd98a4384bf5cb7f056ba049aa1b9d",
+        "source_fact:v1:63a72598a6ec01445e269194108d619ce84a6c228ba8385205695ff11f725d63",
+        "source_fact:v1:c67de98aaf9bba6df6aa32fa66a53ef32920bd5c8ab445384486d9ddc52f3e33",
+        "source_fact:v1:f29587e39ff8dbe3b3ffc30a89c12385b36d7a91d2ef9d059933701ceb97b00d"
+      ],
+      "source_published_kst": "2026-10-06T14:13+09:00",
+      "title": "이형일 \"텍사스 발전소에 24억弗 송금…상업적 합리성 충족\"(종합)"
+    },
     "source_fact:2f1ccf96d52dd3e529406194": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -62618,6 +63102,28 @@
       ],
       "source_published_kst": "2026-10-05T17:44+09:00",
       "title": "환율 하락에 영업이익 늘어도 순이익 뚝…외화 자산 평가손익에 영향"
+    },
+    "source_fact:33099dcad9db5c9b8477828e": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632760",
+      "source": "이투데이",
+      "source_body_digest": "0f72408564ca332dee0c8289eb5ec2f83635ba704594d2afd8b7a71de8f07ba4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e01a7740052556a055722a7d1ac2033ff047e7983291300f6201e03f608384c5",
+      "source_fact_keys": [
+        "source_fact:v1:171bbdb6a1c1b07a970175825f138b0c175373d2c2dc9f7a32ba8758f80a24a5",
+        "source_fact:v1:87066a5d523af93ed40bbe4c90ac6740cabab50947849a45f2d6ce0e365ec8da",
+        "source_fact:v1:91489cd25ea8309997dcb9e8dcb914cf8742debcd5f19e8719dda0299e70fa5c",
+        "source_fact:v1:a36990c61ca6ee596f5f86071d1aa244b64e67f33909abff4683dc1ffe664c75",
+        "source_fact:v1:e952f84882aafbc9880222e3d6cb2b73bb7e543fb6cf1922aa76f3958ec08faf",
+        "source_fact:v1:fbf9162f9cd0fd0f1e7c085cab4d57bbbc6a4b5a7d81c15c9c204417eb68b179"
+      ],
+      "source_published_kst": "2026-10-06T11:23+09:00",
+      "title": "삼성전기, 반년도 안 돼 컴포넌트 연매출 75% 채웠다⋯AI부품 수주 ‘4조 클럽’"
     },
     "source_fact:3332ecbfcdde81e8f35a76f3": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
@@ -65526,6 +66032,28 @@
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
     },
+    "source_fact:48955aadb52a0e45287124a4": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632760",
+      "source": "이투데이",
+      "source_body_digest": "0f72408564ca332dee0c8289eb5ec2f83635ba704594d2afd8b7a71de8f07ba4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e01a7740052556a055722a7d1ac2033ff047e7983291300f6201e03f608384c5",
+      "source_fact_keys": [
+        "source_fact:v1:171bbdb6a1c1b07a970175825f138b0c175373d2c2dc9f7a32ba8758f80a24a5",
+        "source_fact:v1:87066a5d523af93ed40bbe4c90ac6740cabab50947849a45f2d6ce0e365ec8da",
+        "source_fact:v1:91489cd25ea8309997dcb9e8dcb914cf8742debcd5f19e8719dda0299e70fa5c",
+        "source_fact:v1:a36990c61ca6ee596f5f86071d1aa244b64e67f33909abff4683dc1ffe664c75",
+        "source_fact:v1:e952f84882aafbc9880222e3d6cb2b73bb7e543fb6cf1922aa76f3958ec08faf",
+        "source_fact:v1:fbf9162f9cd0fd0f1e7c085cab4d57bbbc6a4b5a7d81c15c9c204417eb68b179"
+      ],
+      "source_published_kst": "2026-10-06T11:23+09:00",
+      "title": "삼성전기, 반년도 안 돼 컴포넌트 연매출 75% 채웠다⋯AI부품 수주 ‘4조 클럽’"
+    },
     "source_fact:4901a339ed7c68126ea21c12": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -66351,6 +66879,25 @@
       ],
       "source_published_kst": "2026-10-06T10:16+09:00",
       "title": "엠플러스, 유럽 배터리 기업에 각형 장비 공급…방산·항공우주로 고객군 확대"
+    },
+    "source_fact:509d40fbf7f97baebe4ee881": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.mt.co.kr/policy/2026/10/06/2026100612571041033",
+      "source": "머니투데이",
+      "source_body_digest": "41d9125ec81a321a7c89f6101136e4210933e819db1950827ebd89f269ab4a73",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d9ca6d430996b187a3a0c272e657eb15dc83bdda54b29f48b19889db4364fefc",
+      "source_fact_keys": [
+        "source_fact:v1:1a6445c93baebe69a6221330b924d132d022dde5d8ba67062512d071e8244d53",
+        "source_fact:v1:6b7dc9a7c1fdcb2207a7448db71d5d2cb405481f11459b83e32d800093ae74cf",
+        "source_fact:v1:78bd3600679e18e15a70d41325bbf64af4a0a6469226aade565f5e4058bc71da"
+      ],
+      "source_published_kst": "2026-10-06T13:10+09:00",
+      "title": "서남권 반도체 팹은 제2 반도체 생산거점…풍부한 에너지 활용해야"
     },
     "source_fact:50acc156a3438b7b2d3d8656": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
@@ -67942,6 +68489,27 @@
       "source_published_kst": "2026-10-06T08:03+09:00",
       "title": "대신證, “삼성바이오로직스, 3분기 실적 선방⋯4분기엔 반등 전망”"
     },
+    "source_fact:5c6ec42fa1e5d18d717ba211": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815529",
+      "source": "뉴시스",
+      "source_body_digest": "8ed42d40dc2213ac79eb25c39efbafa3c42afc09645a7add02104eef1236cbb2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fb484e93a953a55868b0e8f1273998d12489acacf10f18b9ff13aee2a644c87",
+      "source_fact_keys": [
+        "source_fact:v1:06e8a44acdefc319726045c326c8c10f46906c267abbbab82762dd33e434a3b5",
+        "source_fact:v1:1fbf124d484f32c1dbed0356ad72d0c39dfd98a4384bf5cb7f056ba049aa1b9d",
+        "source_fact:v1:63a72598a6ec01445e269194108d619ce84a6c228ba8385205695ff11f725d63",
+        "source_fact:v1:c67de98aaf9bba6df6aa32fa66a53ef32920bd5c8ab445384486d9ddc52f3e33",
+        "source_fact:v1:f29587e39ff8dbe3b3ffc30a89c12385b36d7a91d2ef9d059933701ceb97b00d"
+      ],
+      "source_published_kst": "2026-10-06T14:13+09:00",
+      "title": "이형일 \"텍사스 발전소에 24억弗 송금…상업적 합리성 충족\"(종합)"
+    },
     "source_fact:5c73766015099eb73d0780e4": {
       "first_seen_kst": "2026-10-05T19:54:04+09:00",
       "lanes": {
@@ -68777,6 +69345,26 @@
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "외국인·명품 소비에 비용 절감까지…백화점 3사, 3분기 실적 ‘청신호’"
     },
+    "source_fact:630c98786d09a6e6b62c1df0": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.etnews.com/20261006000211",
+      "source": "전자신문",
+      "source_body_digest": "169360966d847765b5bb5d868493eac386b5ab61be6417b3bfe388ea2050fd09",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cc753d069a049f6ecf6ad50b392506890fecbb036ae13140d647084d60260746",
+      "source_fact_keys": [
+        "source_fact:v1:4b4e623c549c8d0fbf398f2586a4ad41b3f9598d0b3c38912c569ebda8f4fc1f",
+        "source_fact:v1:94058caaa384cbc946bcd0e7d0c55cfee6edc27a40985673e6db57f8ec8a0f47",
+        "source_fact:v1:ae2ec79ca543b73481f4e4a3c2d89bffc2cd5642b1a2324a432d8f706a0be30a",
+        "source_fact:v1:b702a4df5c5f66e8415a658376a612251edb584df06f787efbf3790ee5309172"
+      ],
+      "source_published_kst": "2026-10-06T13:28+09:00",
+      "title": "세계 반도체 매출, 1조 달러 넘어섰다…18개월 연속 성장"
+    },
     "source_fact:633d876314d1ac1278a57b82": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -69455,6 +70043,28 @@
       ],
       "source_published_kst": "2026-10-06T07:04+09:00",
       "title": "\"AI가 돈 될까 고민은 시대착오…반도체 상승장 2028년까지 간다\""
+    },
+    "source_fact:69845ad38495c3a64e54e82d": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632760",
+      "source": "이투데이",
+      "source_body_digest": "0f72408564ca332dee0c8289eb5ec2f83635ba704594d2afd8b7a71de8f07ba4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e01a7740052556a055722a7d1ac2033ff047e7983291300f6201e03f608384c5",
+      "source_fact_keys": [
+        "source_fact:v1:171bbdb6a1c1b07a970175825f138b0c175373d2c2dc9f7a32ba8758f80a24a5",
+        "source_fact:v1:87066a5d523af93ed40bbe4c90ac6740cabab50947849a45f2d6ce0e365ec8da",
+        "source_fact:v1:91489cd25ea8309997dcb9e8dcb914cf8742debcd5f19e8719dda0299e70fa5c",
+        "source_fact:v1:a36990c61ca6ee596f5f86071d1aa244b64e67f33909abff4683dc1ffe664c75",
+        "source_fact:v1:e952f84882aafbc9880222e3d6cb2b73bb7e543fb6cf1922aa76f3958ec08faf",
+        "source_fact:v1:fbf9162f9cd0fd0f1e7c085cab4d57bbbc6a4b5a7d81c15c9c204417eb68b179"
+      ],
+      "source_published_kst": "2026-10-06T11:23+09:00",
+      "title": "삼성전기, 반년도 안 돼 컴포넌트 연매출 75% 채웠다⋯AI부품 수주 ‘4조 클럽’"
     },
     "source_fact:698529b9c97d9d18306499a4": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -70211,6 +70821,27 @@
       ],
       "source_published_kst": "2026-10-06T06:31+09:00",
       "title": "GKL, 해외서 고객 접촉 논란…\"현지법·중국 형법 저촉 소지\" | 연합뉴스"
+    },
+    "source_fact:6f7d09af9f3c52ef9e6c8754": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815529",
+      "source": "뉴시스",
+      "source_body_digest": "8ed42d40dc2213ac79eb25c39efbafa3c42afc09645a7add02104eef1236cbb2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fb484e93a953a55868b0e8f1273998d12489acacf10f18b9ff13aee2a644c87",
+      "source_fact_keys": [
+        "source_fact:v1:06e8a44acdefc319726045c326c8c10f46906c267abbbab82762dd33e434a3b5",
+        "source_fact:v1:1fbf124d484f32c1dbed0356ad72d0c39dfd98a4384bf5cb7f056ba049aa1b9d",
+        "source_fact:v1:63a72598a6ec01445e269194108d619ce84a6c228ba8385205695ff11f725d63",
+        "source_fact:v1:c67de98aaf9bba6df6aa32fa66a53ef32920bd5c8ab445384486d9ddc52f3e33",
+        "source_fact:v1:f29587e39ff8dbe3b3ffc30a89c12385b36d7a91d2ef9d059933701ceb97b00d"
+      ],
+      "source_published_kst": "2026-10-06T14:13+09:00",
+      "title": "이형일 \"텍사스 발전소에 24억弗 송금…상업적 합리성 충족\"(종합)"
     },
     "source_fact:6fa0b3735250e5a4f1a1fb6b": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
@@ -72325,6 +72956,25 @@
       "source_published_kst": "2026-10-05T12:57+09:00",
       "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
     },
+    "source_fact:7e3b3dbc9540b122a673069d": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.mt.co.kr/policy/2026/10/06/2026100612571041033",
+      "source": "머니투데이",
+      "source_body_digest": "41d9125ec81a321a7c89f6101136e4210933e819db1950827ebd89f269ab4a73",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d9ca6d430996b187a3a0c272e657eb15dc83bdda54b29f48b19889db4364fefc",
+      "source_fact_keys": [
+        "source_fact:v1:1a6445c93baebe69a6221330b924d132d022dde5d8ba67062512d071e8244d53",
+        "source_fact:v1:6b7dc9a7c1fdcb2207a7448db71d5d2cb405481f11459b83e32d800093ae74cf",
+        "source_fact:v1:78bd3600679e18e15a70d41325bbf64af4a0a6469226aade565f5e4058bc71da"
+      ],
+      "source_published_kst": "2026-10-06T13:10+09:00",
+      "title": "서남권 반도체 팹은 제2 반도체 생산거점…풍부한 에너지 활용해야"
+    },
     "source_fact:7e54f3fa4b282d5f2dda29e6": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
       "lanes": {
@@ -72761,6 +73411,23 @@
       ],
       "source_published_kst": "2026-10-06T03:38+09:00",
       "title": "[美특징주]TSMC, 머스크 ‘테라팹’ 협력 논의 확인…주가 3%↑"
+    },
+    "source_fact:81cb522c43110890b1db56e5": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815527",
+      "source": "뉴시스",
+      "source_body_digest": "579a41d9f7f0ecd3eaf1e0a0b35d6b84cd23e98e4fb23dcf04e77f08f701e2dc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:093ba9d39b5c05d7a0474cb940da633f8182d7e562bfa075239a2cb5ffda435e",
+      "source_fact_keys": [
+        "source_fact:v1:da5eaa8176024592261760b4de689d0ca45d7a4874c785f96bd860b6eb79a039"
+      ],
+      "source_published_kst": "2026-10-06T13:27+09:00",
+      "title": "조선내화, 351억 규모 내화물 공급계약"
     },
     "source_fact:81f2568c854462b48c31cc43": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -74397,6 +75064,25 @@
       "source_published_kst": "2026-10-06T03:38+09:00",
       "title": "[美특징주]TSMC, 머스크 ‘테라팹’ 협력 논의 확인…주가 3%↑"
     },
+    "source_fact:8ef109f8462811efc9477ef6": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.mt.co.kr/policy/2026/10/06/2026100612571041033",
+      "source": "머니투데이",
+      "source_body_digest": "41d9125ec81a321a7c89f6101136e4210933e819db1950827ebd89f269ab4a73",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d9ca6d430996b187a3a0c272e657eb15dc83bdda54b29f48b19889db4364fefc",
+      "source_fact_keys": [
+        "source_fact:v1:1a6445c93baebe69a6221330b924d132d022dde5d8ba67062512d071e8244d53",
+        "source_fact:v1:6b7dc9a7c1fdcb2207a7448db71d5d2cb405481f11459b83e32d800093ae74cf",
+        "source_fact:v1:78bd3600679e18e15a70d41325bbf64af4a0a6469226aade565f5e4058bc71da"
+      ],
+      "source_published_kst": "2026-10-06T13:10+09:00",
+      "title": "서남권 반도체 팹은 제2 반도체 생산거점…풍부한 에너지 활용해야"
+    },
     "source_fact:8f432253e3965967923854f3": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
       "lanes": {
@@ -75530,6 +76216,28 @@
       ],
       "source_published_kst": "2026-10-06T11:30+09:00",
       "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
+    },
+    "source_fact:97ad767ad8c63cfab6ccff0c": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632760",
+      "source": "이투데이",
+      "source_body_digest": "0f72408564ca332dee0c8289eb5ec2f83635ba704594d2afd8b7a71de8f07ba4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e01a7740052556a055722a7d1ac2033ff047e7983291300f6201e03f608384c5",
+      "source_fact_keys": [
+        "source_fact:v1:171bbdb6a1c1b07a970175825f138b0c175373d2c2dc9f7a32ba8758f80a24a5",
+        "source_fact:v1:87066a5d523af93ed40bbe4c90ac6740cabab50947849a45f2d6ce0e365ec8da",
+        "source_fact:v1:91489cd25ea8309997dcb9e8dcb914cf8742debcd5f19e8719dda0299e70fa5c",
+        "source_fact:v1:a36990c61ca6ee596f5f86071d1aa244b64e67f33909abff4683dc1ffe664c75",
+        "source_fact:v1:e952f84882aafbc9880222e3d6cb2b73bb7e543fb6cf1922aa76f3958ec08faf",
+        "source_fact:v1:fbf9162f9cd0fd0f1e7c085cab4d57bbbc6a4b5a7d81c15c9c204417eb68b179"
+      ],
+      "source_published_kst": "2026-10-06T11:23+09:00",
+      "title": "삼성전기, 반년도 안 돼 컴포넌트 연매출 75% 채웠다⋯AI부품 수주 ‘4조 클럽’"
     },
     "source_fact:97b4f11080169fab72f51c00": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
@@ -79463,6 +80171,28 @@
       "source_published_kst": "2026-10-06T12:16+09:00",
       "title": "기후부, '에너지 대전환' 속도…2030년 재생e 100GW·석탄발전 2040년 퇴출"
     },
+    "source_fact:b7208c4755763850445255bf": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632760",
+      "source": "이투데이",
+      "source_body_digest": "0f72408564ca332dee0c8289eb5ec2f83635ba704594d2afd8b7a71de8f07ba4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e01a7740052556a055722a7d1ac2033ff047e7983291300f6201e03f608384c5",
+      "source_fact_keys": [
+        "source_fact:v1:171bbdb6a1c1b07a970175825f138b0c175373d2c2dc9f7a32ba8758f80a24a5",
+        "source_fact:v1:87066a5d523af93ed40bbe4c90ac6740cabab50947849a45f2d6ce0e365ec8da",
+        "source_fact:v1:91489cd25ea8309997dcb9e8dcb914cf8742debcd5f19e8719dda0299e70fa5c",
+        "source_fact:v1:a36990c61ca6ee596f5f86071d1aa244b64e67f33909abff4683dc1ffe664c75",
+        "source_fact:v1:e952f84882aafbc9880222e3d6cb2b73bb7e543fb6cf1922aa76f3958ec08faf",
+        "source_fact:v1:fbf9162f9cd0fd0f1e7c085cab4d57bbbc6a4b5a7d81c15c9c204417eb68b179"
+      ],
+      "source_published_kst": "2026-10-06T11:23+09:00",
+      "title": "삼성전기, 반년도 안 돼 컴포넌트 연매출 75% 채웠다⋯AI부품 수주 ‘4조 클럽’"
+    },
     "source_fact:b758ab160962833be09f3372": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
       "lanes": {
@@ -82497,6 +83227,27 @@
       "source_published_kst": "2026-10-05T22:51+09:00",
       "title": "[美특징주]PTC, 슈나이더 일렉트릭 피인수 소식에 주가 '급등'"
     },
+    "source_fact:cf66f1c30aeacf5a1b72d1af": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815529",
+      "source": "뉴시스",
+      "source_body_digest": "8ed42d40dc2213ac79eb25c39efbafa3c42afc09645a7add02104eef1236cbb2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fb484e93a953a55868b0e8f1273998d12489acacf10f18b9ff13aee2a644c87",
+      "source_fact_keys": [
+        "source_fact:v1:06e8a44acdefc319726045c326c8c10f46906c267abbbab82762dd33e434a3b5",
+        "source_fact:v1:1fbf124d484f32c1dbed0356ad72d0c39dfd98a4384bf5cb7f056ba049aa1b9d",
+        "source_fact:v1:63a72598a6ec01445e269194108d619ce84a6c228ba8385205695ff11f725d63",
+        "source_fact:v1:c67de98aaf9bba6df6aa32fa66a53ef32920bd5c8ab445384486d9ddc52f3e33",
+        "source_fact:v1:f29587e39ff8dbe3b3ffc30a89c12385b36d7a91d2ef9d059933701ceb97b00d"
+      ],
+      "source_published_kst": "2026-10-06T14:13+09:00",
+      "title": "이형일 \"텍사스 발전소에 24억弗 송금…상업적 합리성 충족\"(종합)"
+    },
     "source_fact:cf9074b1490ff26fdaa2544e": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -84308,6 +85059,23 @@
       "source_published_kst": "2026-10-06T09:10+09:00",
       "title": "강남구, 급식 조리로봇 고도화…\"뜨거운 튀김기름 자동배출\" | 연합뉴스"
     },
+    "source_fact:dcd9d9aea7b0f9083d57b5c3": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632784",
+      "source": "이투데이",
+      "source_body_digest": "cbaad0e01054730e9589e20d6f57daf7af25d259cbebe5d628d5731d657732cf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:318fc5d287e296db9a0395ad5051951ccb5e5cf51c8f72e0d8d59df7a0eaa40a",
+      "source_fact_keys": [
+        "source_fact:v1:5130e0c7e4dd0a83dadb1fecd1eaff702ca6a5638927fe3978b7a977564a3b52"
+      ],
+      "source_published_kst": "2026-10-06T13:15+09:00",
+      "title": "트럼프, 면세 경유 도로 차량에 사용 허용⋯농촌 표심 잡기 안간힘"
+    },
     "source_fact:dd55e7c34fc1cbac7d9e04db": {
       "first_seen_kst": "2026-10-06T03:45:53+09:00",
       "lanes": {
@@ -84878,6 +85646,26 @@
       ],
       "source_published_kst": "2026-10-05T10:42+09:00",
       "title": "삼성전자, 코스피 ‘구원투수’ 될까…7000선 안착 시험대[주간증시전망]"
+    },
+    "source_fact:e0cd580a9a269aed5a5a1a23": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.etnews.com/20261006000211",
+      "source": "전자신문",
+      "source_body_digest": "169360966d847765b5bb5d868493eac386b5ab61be6417b3bfe388ea2050fd09",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cc753d069a049f6ecf6ad50b392506890fecbb036ae13140d647084d60260746",
+      "source_fact_keys": [
+        "source_fact:v1:4b4e623c549c8d0fbf398f2586a4ad41b3f9598d0b3c38912c569ebda8f4fc1f",
+        "source_fact:v1:94058caaa384cbc946bcd0e7d0c55cfee6edc27a40985673e6db57f8ec8a0f47",
+        "source_fact:v1:ae2ec79ca543b73481f4e4a3c2d89bffc2cd5642b1a2324a432d8f706a0be30a",
+        "source_fact:v1:b702a4df5c5f66e8415a658376a612251edb584df06f787efbf3790ee5309172"
+      ],
+      "source_published_kst": "2026-10-06T13:28+09:00",
+      "title": "세계 반도체 매출, 1조 달러 넘어섰다…18개월 연속 성장"
     },
     "source_fact:e0d273f58a4b92f97b8861ed": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
@@ -90509,6 +91297,21 @@
       "source_event_identity": "",
       "title": "러 드론, 키이우 남부교 이틀새 4번 타격…차량'지하철 통행 끊겼다"
     },
+    "title:1470ae0ea379f715a1ced8c7": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.etnews.com/20261006000199",
+      "source": "전자신문",
+      "source_body_digest": "d1000689f998305d8219d14590da45632660ebe70fd9e22b940e3bcb415af15a",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T13:16+09:00",
+      "title": "롯데백화점, 외국인 매출 1兆 돌파…업계 최초"
+    },
     "title:1492b005303baef48b8538a1": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
       "lanes": {
@@ -92747,6 +93550,23 @@
       ],
       "source_published_kst": "2026-10-05T22:37+09:00",
       "title": "농식품부 고위공직자 모친 농지 '미경작'…\"전수조사, 현실 못담아\""
+    },
+    "title:2f85b3ed93eb922ea1782c35": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632784",
+      "source": "이투데이",
+      "source_body_digest": "cbaad0e01054730e9589e20d6f57daf7af25d259cbebe5d628d5731d657732cf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:318fc5d287e296db9a0395ad5051951ccb5e5cf51c8f72e0d8d59df7a0eaa40a",
+      "source_fact_keys": [
+        "source_fact:v1:5130e0c7e4dd0a83dadb1fecd1eaff702ca6a5638927fe3978b7a977564a3b52"
+      ],
+      "source_published_kst": "2026-10-06T13:15+09:00",
+      "title": "트럼프, 면세 경유 도로 차량에 사용 허용⋯농촌 표심 잡기 안간힘"
     },
     "title:2f9cd80f9c7bdfad921dedaa": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
@@ -96112,6 +96932,27 @@
       "source": "파이낸셜뉴스",
       "title": "美·英·佛 장기금리 동반 급등…글로벌 국채 투매 심화"
     },
+    "title:55af1b5b4cbaa667faab58b9": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815529",
+      "source": "뉴시스",
+      "source_body_digest": "8ed42d40dc2213ac79eb25c39efbafa3c42afc09645a7add02104eef1236cbb2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fb484e93a953a55868b0e8f1273998d12489acacf10f18b9ff13aee2a644c87",
+      "source_fact_keys": [
+        "source_fact:v1:06e8a44acdefc319726045c326c8c10f46906c267abbbab82762dd33e434a3b5",
+        "source_fact:v1:1fbf124d484f32c1dbed0356ad72d0c39dfd98a4384bf5cb7f056ba049aa1b9d",
+        "source_fact:v1:63a72598a6ec01445e269194108d619ce84a6c228ba8385205695ff11f725d63",
+        "source_fact:v1:c67de98aaf9bba6df6aa32fa66a53ef32920bd5c8ab445384486d9ddc52f3e33",
+        "source_fact:v1:f29587e39ff8dbe3b3ffc30a89c12385b36d7a91d2ef9d059933701ceb97b00d"
+      ],
+      "source_published_kst": "2026-10-06T14:13+09:00",
+      "title": "이형일 \"텍사스 발전소에 24억弗 송금…상업적 합리성 충족\"(종합)"
+    },
     "title:55cf49726bbe9695e86ef88b": {
       "first_seen_kst": "2026-10-05T14:51:16+09:00",
       "lanes": {
@@ -98065,6 +98906,23 @@
       "source_event_identity": "",
       "title": "19년간 못판 상업용지…LH 미매각 토지 규모 21.9조원 기록"
     },
+    "title:6df2503e90b81e9f1d942edf": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815527",
+      "source": "뉴시스",
+      "source_body_digest": "579a41d9f7f0ecd3eaf1e0a0b35d6b84cd23e98e4fb23dcf04e77f08f701e2dc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:093ba9d39b5c05d7a0474cb940da633f8182d7e562bfa075239a2cb5ffda435e",
+      "source_fact_keys": [
+        "source_fact:v1:da5eaa8176024592261760b4de689d0ca45d7a4874c785f96bd860b6eb79a039"
+      ],
+      "source_published_kst": "2026-10-06T13:27+09:00",
+      "title": "조선내화, 351억 규모 내화물 공급계약"
+    },
     "title:6df6d43dbd8398553fe957ea": {
       "first_seen_kst": "2026-10-02T13:38:43+09:00",
       "lanes": {
@@ -99909,6 +100767,28 @@
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "\"일주일새 12% 올랐다\"…전고체 ETF 뛰는데 뭉칫돈 향한 곳은"
     },
+    "title:83cd7d8acf548290087b6521": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632760",
+      "source": "이투데이",
+      "source_body_digest": "0f72408564ca332dee0c8289eb5ec2f83635ba704594d2afd8b7a71de8f07ba4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e01a7740052556a055722a7d1ac2033ff047e7983291300f6201e03f608384c5",
+      "source_fact_keys": [
+        "source_fact:v1:171bbdb6a1c1b07a970175825f138b0c175373d2c2dc9f7a32ba8758f80a24a5",
+        "source_fact:v1:87066a5d523af93ed40bbe4c90ac6740cabab50947849a45f2d6ce0e365ec8da",
+        "source_fact:v1:91489cd25ea8309997dcb9e8dcb914cf8742debcd5f19e8719dda0299e70fa5c",
+        "source_fact:v1:a36990c61ca6ee596f5f86071d1aa244b64e67f33909abff4683dc1ffe664c75",
+        "source_fact:v1:e952f84882aafbc9880222e3d6cb2b73bb7e543fb6cf1922aa76f3958ec08faf",
+        "source_fact:v1:fbf9162f9cd0fd0f1e7c085cab4d57bbbc6a4b5a7d81c15c9c204417eb68b179"
+      ],
+      "source_published_kst": "2026-10-06T11:23+09:00",
+      "title": "삼성전기, 반년도 안 돼 컴포넌트 연매출 75% 채웠다⋯AI부품 수주 ‘4조 클럽’"
+    },
     "title:83d2f03f5826b34168905f1b": {
       "first_seen_kst": "2026-09-30T06:14:07+09:00",
       "lanes": {
@@ -101331,6 +102211,27 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03247206645583400",
       "source": "이데일리",
       "title": "美장기금리 어디까지 오를까…'기간 프리미엄'에 달렸다"
+    },
+    "title:91c1791f39433c7e8c6d9d89": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815529",
+      "source": "뉴시스",
+      "source_body_digest": "8ed42d40dc2213ac79eb25c39efbafa3c42afc09645a7add02104eef1236cbb2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fb484e93a953a55868b0e8f1273998d12489acacf10f18b9ff13aee2a644c87",
+      "source_fact_keys": [
+        "source_fact:v1:06e8a44acdefc319726045c326c8c10f46906c267abbbab82762dd33e434a3b5",
+        "source_fact:v1:1fbf124d484f32c1dbed0356ad72d0c39dfd98a4384bf5cb7f056ba049aa1b9d",
+        "source_fact:v1:63a72598a6ec01445e269194108d619ce84a6c228ba8385205695ff11f725d63",
+        "source_fact:v1:c67de98aaf9bba6df6aa32fa66a53ef32920bd5c8ab445384486d9ddc52f3e33",
+        "source_fact:v1:f29587e39ff8dbe3b3ffc30a89c12385b36d7a91d2ef9d059933701ceb97b00d"
+      ],
+      "source_published_kst": "2026-10-06T14:13+09:00",
+      "title": "이형일 \"텍사스 발전소에 24억弗 송금…상업적 합리성 충족\"(종합)"
     },
     "title:91d1eeafa36b03a27c67a2a8": {
       "first_seen_kst": "2026-10-05T20:31:34+09:00",
@@ -103678,6 +104579,26 @@
       "link": "https://www.newsis.com/view/NISX20260919_0003796786",
       "source": "뉴시스",
       "title": "日, 연휴 앞두고 환율 '레이트 체크'…엔화 약세 견제"
+    },
+    "title:b0001df99d4f5ddbb6b91be2": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.etnews.com/20261006000211",
+      "source": "전자신문",
+      "source_body_digest": "169360966d847765b5bb5d868493eac386b5ab61be6417b3bfe388ea2050fd09",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cc753d069a049f6ecf6ad50b392506890fecbb036ae13140d647084d60260746",
+      "source_fact_keys": [
+        "source_fact:v1:4b4e623c549c8d0fbf398f2586a4ad41b3f9598d0b3c38912c569ebda8f4fc1f",
+        "source_fact:v1:94058caaa384cbc946bcd0e7d0c55cfee6edc27a40985673e6db57f8ec8a0f47",
+        "source_fact:v1:ae2ec79ca543b73481f4e4a3c2d89bffc2cd5642b1a2324a432d8f706a0be30a",
+        "source_fact:v1:b702a4df5c5f66e8415a658376a612251edb584df06f787efbf3790ee5309172"
+      ],
+      "source_published_kst": "2026-10-06T13:28+09:00",
+      "title": "세계 반도체 매출, 1조 달러 넘어섰다…18개월 연속 성장"
     },
     "title:b07821602aa1e2546aaa2c75": {
       "first_seen_kst": "2026-10-05T14:04:17+09:00",
@@ -107910,6 +108831,25 @@
       "source": "파이낸셜뉴스",
       "title": "AI 특수에 삼성전자 HBM4 매출 비중 내년 2배 증가-KB證"
     },
+    "title:e38f51b9b80603c6214c0612": {
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.mt.co.kr/policy/2026/10/06/2026100612571041033",
+      "source": "머니투데이",
+      "source_body_digest": "41d9125ec81a321a7c89f6101136e4210933e819db1950827ebd89f269ab4a73",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d9ca6d430996b187a3a0c272e657eb15dc83bdda54b29f48b19889db4364fefc",
+      "source_fact_keys": [
+        "source_fact:v1:1a6445c93baebe69a6221330b924d132d022dde5d8ba67062512d071e8244d53",
+        "source_fact:v1:6b7dc9a7c1fdcb2207a7448db71d5d2cb405481f11459b83e32d800093ae74cf",
+        "source_fact:v1:78bd3600679e18e15a70d41325bbf64af4a0a6469226aade565f5e4058bc71da"
+      ],
+      "source_published_kst": "2026-10-06T13:10+09:00",
+      "title": "서남권 반도체 팹은 제2 반도체 생산거점…풍부한 에너지 활용해야"
+    },
     "title:e39719d7381d596864b80fb4": {
       "first_seen_kst": "2026-10-04T07:39:13+09:00",
       "lanes": {
@@ -110276,5 +111216,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T15:14:29+09:00"
+  "updated_at_kst": "2026-10-06T15:31:24+09:00"
 }
