@@ -46,6 +46,21 @@ RSS_SOURCES = (
         ),
     },
     {
+        "name": "전기본 국감 핵심 변화",
+        "official": False,
+        "url": (
+            "https://news.google.com/rss/search?q=%28"
+            "%22%ED%98%B8%EB%82%A8+%EB%B0%98%EB%8F%84%EC%B2%B4%22+OR+"
+            "%2212%EC%B0%A8+%EC%A0%84%EA%B8%B0%EB%B3%B8%22%29+%28"
+            "%2214GW%22+OR+%226.3GW%22+OR+%2265%EB%A7%8C%22+OR+"
+            "%22%EC%A0%84%EB%A0%A5%EB%A7%9D+%EA%B3%84%ED%9A%8D%22+OR+"
+            "%22%EC%A0%84%EA%B8%B0%EB%B3%B8+%EC%A7%80%EC%97%B0%22+OR+"
+            "%22%EC%9B%90%EC%A0%84+%EA%B3%B5%EB%A1%A0%ED%99%94%22+OR+"
+            "%222%7E3%EA%B0%9C%EC%9B%94%22%29+when%3A3d"
+            "&hl=ko&gl=KR&ceid=KR%3Ako"
+        ),
+    },
+    {
         "name": "전력망 혁신정책 공식",
         "official": True,
         "url": (
@@ -147,6 +162,10 @@ def topic_match(title: str) -> bool:
 
 def plan_stage(title: str) -> str:
     lower = norm(title).lower()
+    if "전기본" in lower and any(x in lower for x in ("지연", "늦", "연기", "미뤄", "순연")):
+        return "일정 변경"
+    if "호남" in lower and "반도체" in lower and any(x in lower for x in ("14gw", "6.3gw", "65만", "전력망 계획")):
+        return "장관 국감 발언"
     if any(x in lower for x in ("최종 확정", "확정", "의결", "정부안", "최종안")):
         return "확정·의결"
     if any(x in lower for x in ("공청회", "정책토론회", "토론회", "총괄위원회", "분과회의")):
@@ -160,6 +179,12 @@ def plan_stage(title: str) -> str:
 
 def classify(title: str) -> tuple[str, int]:
     lower = norm(title).lower()
+    if "호남" in lower and "반도체" in lower and any(x in lower for x in ("14gw", "6.3gw", "65만", "전력망 계획")):
+        return "전력수요·산단 인프라", 6
+    if "전기본" in lower and any(x in lower for x in ("지연", "늦", "연기", "미뤄", "순연")):
+        return "전기본 수립 일정", 6
+    if "전기본" in lower and any(x in lower for x in ("위원 명단", "위원 공개", "전문위원", "위원 비공개")):
+        return "전기본 운영·거버넌스", 1
     if any(x in lower for x in ("최종 확정", "확정", "의결", "정부안", "최종안")):
         return "전기본 확정·의결", 7
     if any(x in lower for x in ("원전", "원자력")):
@@ -290,13 +315,20 @@ def collapse_events(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
             members,
             key=lambda row: (
                 event_level(row),
-                source_score(row),
                 detail_score(row),
+                source_score(row),
                 str(row.get("published", "")),
             ),
         ).copy()
         best["event_key"] = key
         best["members"] = members
+        publishers = []
+        for member in members:
+            publisher = str(member.get("publisher", "")).strip()
+            if publisher and publisher not in publishers:
+                publishers.append(publisher)
+        best["evidence_publishers"] = publishers
+        best["evidence_count"] = len(publishers)
         collapsed.append(best)
 
     collapsed.sort(key=lambda x: (int(x["stage"]), str(x["published"])), reverse=True)
@@ -347,8 +379,12 @@ def meaning(category: str) -> str:
         return "기존 전력망의 접속권·수용량·ESS 활용과 실제 재생에너지 사업 진입 시점을 직접 바꿈"
     if category == "원전·전원믹스":
         return "신규 원전·계속운전·기저전원 투자와 장기 전력공급 시간표를 바꿈"
-    if category == "전력수요 전망":
-        return "발전·송전·변전·데이터센터 전원 인가에 필요한 총 설비투자 규모를 바꿈"
+    if category in {"전력수요 전망", "전력수요·산단 인프라"}:
+        return "반도체·데이터센터 부하와 송전·변전·용수 인프라의 실제 투자 규모·우선순위를 바꿈"
+    if category == "전기본 수립 일정":
+        return "정부안·공청회·국회 보고·최종 확정의 정책 시간표를 직접 늦추거나 앞당김"
+    if category == "전기본 운영·거버넌스":
+        return "위원 명단 공방 자체는 전원 숫자·투자 물량·정책 시간표를 바꾸지 않으면 투자 알림 대상 아님"
     if category == "전기본 수립 절차":
         return "향후 전원별 목표와 전력망 투자가 확정되기 전 정책 방향·일정이 바뀌는 단계"
     return "향후 발전원·전력망 투자 배분과 정책 시간표를 바꿈"
@@ -367,8 +403,10 @@ def next_checkpoint(stage: str, category: str) -> str:
         return "원별 GW·연도별 보급량·계통 접속·ESS·해상풍력 인허가"
     if category == "전력망·계통 수용력":
         return "호남 계통관리변전소 해제·접속권 회수 실적·ESS 발주·실제 추가 접속 MW"
-    if category == "전력수요 전망":
-        return "최대전력수요·설비예비율·데이터센터·반도체 부하 반영치"
+    if category in {"전력수요 전망", "전력수요·산단 인프라"}:
+        return "확정 팹 수·14GW 반영 여부·송전선로 설계·변전소·전원 인가·용수 공급계획"
+    if category == "전기본 수립 일정":
+        return "공론화 종료일·정부안 발표일·공청회·국회 보고·최종 확정일"
     return "정부안·공청회·국회 보고·최종 확정으로 단계가 올라가는지"
 
 
@@ -401,13 +439,33 @@ def renewable_220_detail(title: str) -> list[str]:
     ]
 
 
+def display_title(title: str, publisher: str) -> str:
+    value = norm(title)
+    pub = norm(publisher)
+    # RSS title may append the same publisher twice.
+    for _ in range(2):
+        suffix = f" - {pub}" if pub else ""
+        if suffix and value.endswith(suffix):
+            value = value[:-len(suffix)].strip()
+    return value
+
+
 def render(rows: list[dict[str, Any]]) -> str:
     lines = ["<b>한국 전기본·전원믹스 새 변화</b>"]
     for idx, row in enumerate(rows[:5], 1):
-        status = "공식자료" if row["official"] else "신뢰 보도"
-        title_raw = str(row["title"])
+        members = list(row.get("members", []))
+        publishers = list(row.get("evidence_publishers", []))
+        has_official = bool(row["official"]) or any(bool(member.get("official")) for member in members)
+        if has_official:
+            status = "공식자료 확인"
+        elif len(publishers) >= 2:
+            status = "복수 보도 교차확인"
+        else:
+            status = "신뢰 보도"
+        publisher_raw = str(row["publisher"])
+        title_raw = display_title(str(row["title"]), publisher_raw)
         title = html.escape(title_raw)
-        publisher = html.escape(str(row["publisher"]))
+        publisher = html.escape(publisher_raw)
         category_raw = str(row["category"])
         category = html.escape(category_raw)
         stage_raw = str(row.get("plan_stage") or plan_stage(title_raw))
@@ -433,6 +491,8 @@ def render(rows: list[dict[str, Any]]) -> str:
                 f"<b>출처</b>  {publisher}",
             ]
         )
+        if len(publishers) >= 2:
+            lines.append("<b>교차검증</b>  " + " · ".join(html.escape(x) for x in publishers[:4]))
         detail = renewable_220_detail(title_raw)
         if detail:
             lines.extend(["", *detail])
