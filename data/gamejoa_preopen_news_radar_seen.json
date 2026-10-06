@@ -534,22 +534,23 @@
     "event:1ced2ff2ebc3ffb6232ac788": {
       "first_seen_kst": "2026-10-05T10:24:46+09:00",
       "lanes": {
-        "live": "2026-10-05T23:46:36+09:00"
+        "live": "2026-10-06T09:21:20+09:00"
       },
-      "last_seen_kst": "2026-10-05T23:46:36+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1169811",
-      "source": "매일경제",
-      "source_body_digest": "e08b285692296e5bfa8dcc1b4b66715a9d1aff6a8746ed40d71e5950273e554d",
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/05/2026100516112469972",
+      "source": "머니투데이",
+      "source_body_digest": "db8f5eadb11e2d3b3e2646b7ff82bc782fd36253a4448dbb618f7db537b30139",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:20aa712f46eada214a8468f09e6be68cf83f905c7e47f49c540bb0933513c212",
+      "source_fact_identity": "source_facts:v1:22504cafd5d56cf20d0879309490e265a409f44469b4b3e763ba371f6e363566",
       "source_fact_keys": [
-        "source_fact:v1:11cadfc83e2814675645a68c8099b543ee83e47a27fa7992d8d6d45aacf9a60f",
-        "source_fact:v1:99562779d0cd77eb179773743945b6430b70bceef9a99da02889ff83ed6fc227",
-        "source_fact:v1:dfcc302bbded0b36edb940d1684c18ba8b5e37273ed43bbe931fee4e778d4383",
-        "source_fact:v1:f472f2774729f1ee7df2c926b471501ccc2969660ebe2ede2cf0c79e3cb37efd"
+        "source_fact:v1:042f3279d9e95da5f32f54228edd31c2aeaefd19d4d0daedbcc630c6f714002d",
+        "source_fact:v1:2de1b71363868c1272d98be6c40d55b85bbf10715bcc01478bf9eb8d929c406f",
+        "source_fact:v1:631db7c2519643dd197f3c1123d3d8877248d57f8d161325def03bcbfb00d7f8",
+        "source_fact:v1:6a6dbdbaa085b5ca71560ca308cc26b7435e6adf80062f898dd18cc92d55b495",
+        "source_fact:v1:900059894588c9f7cd5c51b95598c0e55fe25de94159a586cfe435331554a4e0"
       ],
-      "source_published_kst": "2026-10-05T21:36+09:00",
-      "title": "엑스 컴퓨트, 조지아 AI 클러스터 인수..고객계약 5년 연장"
+      "source_published_kst": "2026-10-05T22:07+09:00",
+      "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
     },
     "event:1d3a02c788288176f1db911e": {
       "first_seen_kst": "2026-09-30T10:30:58+09:00",
@@ -854,6 +855,26 @@
       "link": "https://mobile.newsis.com/view/NISX20260919_0003796413",
       "source": "뉴시스",
       "title": "뉴욕증시 혼조 마감…다우 0.2% 하락·나스닥 0.4% 상승"
+    },
+    "event:28e538d8e978a0ccfdf6d9b3": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006082620",
+      "source": "지디넷코리아",
+      "source_body_digest": "31b059bcb8e065374a081d7e06940be37a2e3d23c996b8d043ac8d75817655f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0a7b19061c1ff858433ba7d6d6b4b295af809ccbe618b56ff5ecc22e755ebeaa",
+      "source_fact_keys": [
+        "source_fact:v1:36d5e2a027e6cbe64945b1533ab90a5a148ba24e34c88bf521cbc27f6c2e1165",
+        "source_fact:v1:5e94e0787319183ea324df196fdb1183053e7fbaa37b720acd01225bac27afa6",
+        "source_fact:v1:eef2433a63ab2c92d75e7594c3f5d0dd60a40417185ee16499b30f5a25b7cba0",
+        "source_fact:v1:f1f9b86a894d84f7a482b5d64cb6a8c4397132c9b97a159b03f9920c26da0085"
+      ],
+      "source_published_kst": "2026-10-06T08:45+09:00",
+      "title": "한미반도체, 삼성전기에 패키징 장비 공급…245억원 규모"
     },
     "event:295f4ce8d340410d03fd3873": {
       "first_seen_kst": "2026-09-23T06:51:17+09:00",
@@ -6234,6 +6255,26 @@
       "source_published_kst": "2026-10-05T18:05+09:00",
       "title": "양산에 '선박 하이브리드 시스템' 실증센터"
     },
+    "fact:2af0f5d461a4781bec9564a7": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006082620",
+      "source": "지디넷코리아",
+      "source_body_digest": "31b059bcb8e065374a081d7e06940be37a2e3d23c996b8d043ac8d75817655f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0a7b19061c1ff858433ba7d6d6b4b295af809ccbe618b56ff5ecc22e755ebeaa",
+      "source_fact_keys": [
+        "source_fact:v1:36d5e2a027e6cbe64945b1533ab90a5a148ba24e34c88bf521cbc27f6c2e1165",
+        "source_fact:v1:5e94e0787319183ea324df196fdb1183053e7fbaa37b720acd01225bac27afa6",
+        "source_fact:v1:eef2433a63ab2c92d75e7594c3f5d0dd60a40417185ee16499b30f5a25b7cba0",
+        "source_fact:v1:f1f9b86a894d84f7a482b5d64cb6a8c4397132c9b97a159b03f9920c26da0085"
+      ],
+      "source_published_kst": "2026-10-06T08:45+09:00",
+      "title": "한미반도체, 삼성전기에 패키징 장비 공급…245억원 규모"
+    },
     "fact:2c4b962f6c64cc7b99f6e122": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -6390,6 +6431,25 @@
       ],
       "source_published_kst": "2026-10-06T00:12+09:00",
       "title": "\"AI 말고는 쳐다볼 게 없다\"…글로벌 투자 지도 바꾸는 '빅머니'"
+    },
+    "fact:30d5b6e6f8daabd16ad9f301": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006032600003",
+      "source": "연합뉴스",
+      "source_body_digest": "13d7b1cfdf0376087b8a012a057a008ac3212c87918b467ff6c71538c92d7b3b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c44505ed8aa30c8fb86851244b347e9d7bae5ad9f79e589bb6c2e2ff5d78765",
+      "source_fact_keys": [
+        "source_fact:v1:b19e84b197ed6196e11c47aca26e00126c9c0f2bf8593265d916b6640995181f",
+        "source_fact:v1:b32755eef30b5174440e0c74a8ed2e3a0ee6a21a9175f7b4416b0c8d6afddf72",
+        "source_fact:v1:d7e05a49263d1e31a7c5e2b90bc951a7484cb42f5bf041588d9ee7ff16227a07"
+      ],
+      "source_published_kst": "2026-10-06T08:55+09:00",
+      "title": "현대글로비스, SMR 추진 자동차운반선 한미 항로 운항 검토 | 연합뉴스"
     },
     "fact:321505a3dd3646769996176d": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
@@ -7996,6 +8056,24 @@
       "source_published_kst": "2026-10-05T14:48+09:00",
       "title": "예멘 정부군 \"후티 군사시설 1122곳 공격…1747명 사망\""
     },
+    "fact:815e4379ef9c1290d918f370": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02660086645610296",
+      "source": "이데일리",
+      "source_body_digest": "004e3bcf401c93fa242e51d713bbd403d003b4c4a36035f4029fc8a071b4a006",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c452492109e1afb3cd64fc56f45a0bb0960c935cd44e6a71d51123de7a16bc2",
+      "source_fact_keys": [
+        "source_fact:v1:b11be92478b493dba8456ac41d58455a8ddef8a734adfd446cf9ebfc762d3666",
+        "source_fact:v1:bf40511df706579b4cf1ab7ef9784d695796e702d249314d4a89efa56de46897"
+      ],
+      "source_published_kst": "2026-10-06T09:00+09:00",
+      "title": "넥스팟솔루션, ‘3無 프로젝트’ 통해 정품인증 스티커 MOQ 완전 폐지"
+    },
     "fact:8218ae27c4013d18b578eb2d": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
       "lanes": {
@@ -8263,6 +8341,24 @@
       ],
       "source_published_kst": "2026-10-05T23:08+09:00",
       "title": "JP모간 \"美 증시 최악의 상황 지났을 수도\"…단기 전망 낙관"
+    },
+    "fact:8d890f51983ca4f8722f430d": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632561",
+      "source": "이투데이",
+      "source_body_digest": "d1ff693e93dd1d7827fd69b4ef6b2d04cc6da2b49a3a411a09847a3431931cd4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b380308647127ae47f8b4f5db745a271e38c34c8ad9ce48fa45ab3e0a5a602e",
+      "source_fact_keys": [
+        "source_fact:v1:0930baa6cb604804208a7cd9ccd087ffcc567a2da46c1d6d74be64c0c9903748",
+        "source_fact:v1:b005a94f29719ad75d04285be976ba6ca952f8fceee90be43ba8e954508aed1d"
+      ],
+      "source_published_kst": "2026-10-06T09:00+09:00",
+      "title": "자연과환경, 자회사 한림에코텍 흡수합병…OSCㆍ모듈러 사업 경쟁력 강화"
     },
     "fact:8f6be8e4d786f9c623741804": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
@@ -9190,6 +9286,27 @@
       "source_published_kst": "2026-10-05T20:58+09:00",
       "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
     },
+    "fact:c031662536385f0a9af9c80f": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632599",
+      "source": "이투데이",
+      "source_body_digest": "a7afa3eb1d6b195fed5203d19de05dca34ea66b6da6ff39aa2b7634eb20be4e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c6bb370bf496c2425da588b98dec9be33408996aab19e86aad12d08880c39a64",
+      "source_fact_keys": [
+        "source_fact:v1:31ac9526675aead846d0e8d9f785a9322eeeb84f3fc577490145dcc17ac94922",
+        "source_fact:v1:44e0766cd6eb4730e2694f6b5839a605f0bbd1cce8185363d415c3d177feaf4d",
+        "source_fact:v1:538acb713969bd5cfc847842654f196f37fc8b20889d994127d691cbdcf0c891",
+        "source_fact:v1:8e765150628f450c5022655c4332dd28ed94eeb792aa6086ecd02a0dffe9b738",
+        "source_fact:v1:f0dd221132371a1f15ca0163f4c668e0ec96c18153fa0d28448919ed2bc3025a"
+      ],
+      "source_published_kst": "2026-10-06T08:57+09:00",
+      "title": "LH, 서울대에 기숙사형 전세임대 200가구 공급…전국 500가구 공모"
+    },
     "fact:c14cdbe8f99eebcdee16ff0d": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
@@ -9625,6 +9742,27 @@
       ],
       "source_published_kst": "2026-10-06T07:10+09:00",
       "title": "5만 가구 ‘한강2’ 연계 5호선 2034년 개통할까 [교통지옥 김포 ③]"
+    },
+    "fact:d94cfdb22fa30aa2b74f79cb": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/05/2026100516112469972",
+      "source": "머니투데이",
+      "source_body_digest": "db8f5eadb11e2d3b3e2646b7ff82bc782fd36253a4448dbb618f7db537b30139",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22504cafd5d56cf20d0879309490e265a409f44469b4b3e763ba371f6e363566",
+      "source_fact_keys": [
+        "source_fact:v1:042f3279d9e95da5f32f54228edd31c2aeaefd19d4d0daedbcc630c6f714002d",
+        "source_fact:v1:2de1b71363868c1272d98be6c40d55b85bbf10715bcc01478bf9eb8d929c406f",
+        "source_fact:v1:631db7c2519643dd197f3c1123d3d8877248d57f8d161325def03bcbfb00d7f8",
+        "source_fact:v1:6a6dbdbaa085b5ca71560ca308cc26b7435e6adf80062f898dd18cc92d55b495",
+        "source_fact:v1:900059894588c9f7cd5c51b95598c0e55fe25de94159a586cfe435331554a4e0"
+      ],
+      "source_published_kst": "2026-10-05T22:07+09:00",
+      "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
     },
     "fact:dbeb5fd6614dbec10b54f316": {
       "first_seen_kst": "2026-10-05T20:31:34+09:00",
@@ -10165,6 +10303,30 @@
       ],
       "source_published_kst": "2026-10-05T21:02+09:00",
       "title": "라디오팜 테라노스틱스, RAD101 2상 종료미팅 완료..3상 준비 착수"
+    },
+    "fact:fde654b9e599f1bfdd77c4e3": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02473126645610296",
+      "source": "이데일리",
+      "source_body_digest": "b0ab390102883e6cd38b48e420d04d057f5208be2c2fd91af38177ede30167e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2749f9bb85505a820ff70119d5b8cdccc9f746a684b7ca07684a22e69e7fc2f8",
+      "source_fact_keys": [
+        "source_fact:v1:06074629f0cc34c734563d9ceca5b9aed290faddbc7859fbaf6eff0a1025e897",
+        "source_fact:v1:11d4dc4931dceb1f087149cf69f210d56bfbdfadbb53cfb5d68c6813135eda4b",
+        "source_fact:v1:249e48c5de800f22e8dc14c08ead46d28b87da98ca9c8adee33b13d23cc7b974",
+        "source_fact:v1:679b61dd563fc81a726dd22b4478abe9986beacfad2596a5102c0d6326ad1cba",
+        "source_fact:v1:8a8a1abf6ec1034ffb35fd1239a0235fecad2e6b86ff304a41736ca0f41ca55b",
+        "source_fact:v1:95dea891188536658a2f2e2beb8c088c273c6d88c69a389b970116b1c8317007",
+        "source_fact:v1:dbebe27ed771df146e0f5bdfb7ee271c6d51c43aa36211830f3356a580c2edb0",
+        "source_fact:v1:f7c77c7f52618679b5747442d8833bad1f4de79b8f5c69b89b631a59d98469a8"
+      ],
+      "source_published_kst": "2026-10-06T07:45+09:00",
+      "title": "\"지금이 매수 기회\" 화장품株 급락했는데, 수출 29% 급증"
     },
     "fact:ff4d615e58fc5d7ecdadb822": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -11059,6 +11221,25 @@
       "link": "https://www.yna.co.kr/view/MYH20261003009900038",
       "source": "연합뉴스",
       "title": "[단독] \"국내 도입 신중\"…금감원 용역 경고 묵살됐나 | 연합뉴스"
+    },
+    "link:0cae18cf4f089f44e5c21434": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006032600003",
+      "source": "연합뉴스",
+      "source_body_digest": "13d7b1cfdf0376087b8a012a057a008ac3212c87918b467ff6c71538c92d7b3b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c44505ed8aa30c8fb86851244b347e9d7bae5ad9f79e589bb6c2e2ff5d78765",
+      "source_fact_keys": [
+        "source_fact:v1:b19e84b197ed6196e11c47aca26e00126c9c0f2bf8593265d916b6640995181f",
+        "source_fact:v1:b32755eef30b5174440e0c74a8ed2e3a0ee6a21a9175f7b4416b0c8d6afddf72",
+        "source_fact:v1:d7e05a49263d1e31a7c5e2b90bc951a7484cb42f5bf041588d9ee7ff16227a07"
+      ],
+      "source_published_kst": "2026-10-06T08:55+09:00",
+      "title": "현대글로비스, SMR 추진 자동차운반선 한미 항로 운항 검토 | 연합뉴스"
     },
     "link:0cc2ef07370ed1fa6e99def5": {
       "first_seen_kst": "2026-10-02T12:31:36+09:00",
@@ -12979,6 +13160,24 @@
       "source": "머니투데이",
       "title": "中·홍콩 휴장 속 日 증시 3% 급등…마이크론 실적호재[Asia마감]"
     },
+    "link:27ca60ccdb458b2026f2e217": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632561",
+      "source": "이투데이",
+      "source_body_digest": "d1ff693e93dd1d7827fd69b4ef6b2d04cc6da2b49a3a411a09847a3431931cd4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b380308647127ae47f8b4f5db745a271e38c34c8ad9ce48fa45ab3e0a5a602e",
+      "source_fact_keys": [
+        "source_fact:v1:0930baa6cb604804208a7cd9ccd087ffcc567a2da46c1d6d74be64c0c9903748",
+        "source_fact:v1:b005a94f29719ad75d04285be976ba6ca952f8fceee90be43ba8e954508aed1d"
+      ],
+      "source_published_kst": "2026-10-06T09:00+09:00",
+      "title": "자연과환경, 자회사 한림에코텍 흡수합병…OSCㆍ모듈러 사업 경쟁력 강화"
+    },
     "link:27cebe4c3565aa74c564ac87": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
       "lanes": {
@@ -13301,6 +13500,26 @@
       "source": "지디넷코리아",
       "source_event_identity": "",
       "title": "SK쉴더스, AWS '위협탐지 및 대응' 컴피턴시 국내 첫 획득"
+    },
+    "link:2ad5d778fe772244e03c3548": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006082620",
+      "source": "지디넷코리아",
+      "source_body_digest": "31b059bcb8e065374a081d7e06940be37a2e3d23c996b8d043ac8d75817655f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0a7b19061c1ff858433ba7d6d6b4b295af809ccbe618b56ff5ecc22e755ebeaa",
+      "source_fact_keys": [
+        "source_fact:v1:36d5e2a027e6cbe64945b1533ab90a5a148ba24e34c88bf521cbc27f6c2e1165",
+        "source_fact:v1:5e94e0787319183ea324df196fdb1183053e7fbaa37b720acd01225bac27afa6",
+        "source_fact:v1:eef2433a63ab2c92d75e7594c3f5d0dd60a40417185ee16499b30f5a25b7cba0",
+        "source_fact:v1:f1f9b86a894d84f7a482b5d64cb6a8c4397132c9b97a159b03f9920c26da0085"
+      ],
+      "source_published_kst": "2026-10-06T08:45+09:00",
+      "title": "한미반도체, 삼성전기에 패키징 장비 공급…245억원 규모"
     },
     "link:2adbc468cc01d251e2030ddc": {
       "first_seen_kst": "2026-10-01T21:12:25+09:00",
@@ -14186,6 +14405,30 @@
       "link": "https://www.mt.co.kr/world/2026/09/28/2026092817323368134",
       "source": "머니투데이",
       "title": "'엔비디아 들어온다' 소식에 中 반도체 하락…日도 약세[Asia마감]"
+    },
+    "link:37c4deebfb5a1f9016c53be4": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02473126645610296",
+      "source": "이데일리",
+      "source_body_digest": "b0ab390102883e6cd38b48e420d04d057f5208be2c2fd91af38177ede30167e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2749f9bb85505a820ff70119d5b8cdccc9f746a684b7ca07684a22e69e7fc2f8",
+      "source_fact_keys": [
+        "source_fact:v1:06074629f0cc34c734563d9ceca5b9aed290faddbc7859fbaf6eff0a1025e897",
+        "source_fact:v1:11d4dc4931dceb1f087149cf69f210d56bfbdfadbb53cfb5d68c6813135eda4b",
+        "source_fact:v1:249e48c5de800f22e8dc14c08ead46d28b87da98ca9c8adee33b13d23cc7b974",
+        "source_fact:v1:679b61dd563fc81a726dd22b4478abe9986beacfad2596a5102c0d6326ad1cba",
+        "source_fact:v1:8a8a1abf6ec1034ffb35fd1239a0235fecad2e6b86ff304a41736ca0f41ca55b",
+        "source_fact:v1:95dea891188536658a2f2e2beb8c088c273c6d88c69a389b970116b1c8317007",
+        "source_fact:v1:dbebe27ed771df146e0f5bdfb7ee271c6d51c43aa36211830f3356a580c2edb0",
+        "source_fact:v1:f7c77c7f52618679b5747442d8833bad1f4de79b8f5c69b89b631a59d98469a8"
+      ],
+      "source_published_kst": "2026-10-06T07:45+09:00",
+      "title": "\"지금이 매수 기회\" 화장품株 급락했는데, 수출 29% 급증"
     },
     "link:381266537efb97c8a54f45b7": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -16210,6 +16453,24 @@
       ],
       "source_published_kst": "2026-10-06T07:35+09:00",
       "title": "다올투자證 \"아모레퍼시픽, 마케팅비 선집행에 3분기 주춤…미주·국내 성장 지속\""
+    },
+    "link:510140a27a253060b93a4293": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02660086645610296",
+      "source": "이데일리",
+      "source_body_digest": "004e3bcf401c93fa242e51d713bbd403d003b4c4a36035f4029fc8a071b4a006",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c452492109e1afb3cd64fc56f45a0bb0960c935cd44e6a71d51123de7a16bc2",
+      "source_fact_keys": [
+        "source_fact:v1:b11be92478b493dba8456ac41d58455a8ddef8a734adfd446cf9ebfc762d3666",
+        "source_fact:v1:bf40511df706579b4cf1ab7ef9784d695796e702d249314d4a89efa56de46897"
+      ],
+      "source_published_kst": "2026-10-06T09:00+09:00",
+      "title": "넥스팟솔루션, ‘3無 프로젝트’ 통해 정품인증 스티커 MOQ 완전 폐지"
     },
     "link:51119bce5af472351a3dc5a3": {
       "first_seen_kst": "2026-10-04T15:45:24+09:00",
@@ -18816,6 +19077,27 @@
       "source_published_kst": "2026-10-04T12:15+09:00",
       "title": "AI 해킹 금융권 전방위 확산…당국, 금융사 CEO 긴급소집"
     },
+    "link:75610c394b598f4a7ea80c1e": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/05/2026100516112469972",
+      "source": "머니투데이",
+      "source_body_digest": "db8f5eadb11e2d3b3e2646b7ff82bc782fd36253a4448dbb618f7db537b30139",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22504cafd5d56cf20d0879309490e265a409f44469b4b3e763ba371f6e363566",
+      "source_fact_keys": [
+        "source_fact:v1:042f3279d9e95da5f32f54228edd31c2aeaefd19d4d0daedbcc630c6f714002d",
+        "source_fact:v1:2de1b71363868c1272d98be6c40d55b85bbf10715bcc01478bf9eb8d929c406f",
+        "source_fact:v1:631db7c2519643dd197f3c1123d3d8877248d57f8d161325def03bcbfb00d7f8",
+        "source_fact:v1:6a6dbdbaa085b5ca71560ca308cc26b7435e6adf80062f898dd18cc92d55b495",
+        "source_fact:v1:900059894588c9f7cd5c51b95598c0e55fe25de94159a586cfe435331554a4e0"
+      ],
+      "source_published_kst": "2026-10-05T22:07+09:00",
+      "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
+    },
     "link:758b655a86beeac879d08f06": {
       "first_seen_kst": "2026-09-28T05:32:59+09:00",
       "lanes": {
@@ -21138,6 +21420,27 @@
       "link": "https://www.mk.co.kr/news/business/12159064",
       "source": "매일경제",
       "title": "‘최윤범號’ 고려아연 美 제련소 사업 순항…환경영향 평가 통과"
+    },
+    "link:93099d13dc928fd3ffaebfcc": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632599",
+      "source": "이투데이",
+      "source_body_digest": "a7afa3eb1d6b195fed5203d19de05dca34ea66b6da6ff39aa2b7634eb20be4e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c6bb370bf496c2425da588b98dec9be33408996aab19e86aad12d08880c39a64",
+      "source_fact_keys": [
+        "source_fact:v1:31ac9526675aead846d0e8d9f785a9322eeeb84f3fc577490145dcc17ac94922",
+        "source_fact:v1:44e0766cd6eb4730e2694f6b5839a605f0bbd1cce8185363d415c3d177feaf4d",
+        "source_fact:v1:538acb713969bd5cfc847842654f196f37fc8b20889d994127d691cbdcf0c891",
+        "source_fact:v1:8e765150628f450c5022655c4332dd28ed94eeb792aa6086ecd02a0dffe9b738",
+        "source_fact:v1:f0dd221132371a1f15ca0163f4c668e0ec96c18153fa0d28448919ed2bc3025a"
+      ],
+      "source_published_kst": "2026-10-06T08:57+09:00",
+      "title": "LH, 서울대에 기숙사형 전세임대 200가구 공급…전국 500가구 공모"
     },
     "link:9313c38a1148487571a7a1d5": {
       "first_seen_kst": "2026-09-24T16:13:57+09:00",
@@ -30734,6 +31037,27 @@
       "source_published_kst": "2026-10-04T11:38+09:00",
       "title": "광주 도시철도 2호선 공사 지연 반복…시민 불편·예산 부담"
     },
+    "original:120872a9be5248f6cbbed4a6": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632599",
+      "source": "이투데이",
+      "source_body_digest": "a7afa3eb1d6b195fed5203d19de05dca34ea66b6da6ff39aa2b7634eb20be4e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c6bb370bf496c2425da588b98dec9be33408996aab19e86aad12d08880c39a64",
+      "source_fact_keys": [
+        "source_fact:v1:31ac9526675aead846d0e8d9f785a9322eeeb84f3fc577490145dcc17ac94922",
+        "source_fact:v1:44e0766cd6eb4730e2694f6b5839a605f0bbd1cce8185363d415c3d177feaf4d",
+        "source_fact:v1:538acb713969bd5cfc847842654f196f37fc8b20889d994127d691cbdcf0c891",
+        "source_fact:v1:8e765150628f450c5022655c4332dd28ed94eeb792aa6086ecd02a0dffe9b738",
+        "source_fact:v1:f0dd221132371a1f15ca0163f4c668e0ec96c18153fa0d28448919ed2bc3025a"
+      ],
+      "source_published_kst": "2026-10-06T08:57+09:00",
+      "title": "LH, 서울대에 기숙사형 전세임대 200가구 공급…전국 500가구 공모"
+    },
     "original:125aa2a12423265979af6012": {
       "first_seen_kst": "2026-10-05T17:30:42+09:00",
       "lanes": {
@@ -31004,6 +31328,25 @@
       ],
       "source_published_kst": "2026-10-05T23:40+09:00",
       "title": "美 서비스 물가 4년 만에 최고치…고용도 다시 확장세"
+    },
+    "original:15df0852ab0e435865839d4a": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006032600003",
+      "source": "연합뉴스",
+      "source_body_digest": "13d7b1cfdf0376087b8a012a057a008ac3212c87918b467ff6c71538c92d7b3b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c44505ed8aa30c8fb86851244b347e9d7bae5ad9f79e589bb6c2e2ff5d78765",
+      "source_fact_keys": [
+        "source_fact:v1:b19e84b197ed6196e11c47aca26e00126c9c0f2bf8593265d916b6640995181f",
+        "source_fact:v1:b32755eef30b5174440e0c74a8ed2e3a0ee6a21a9175f7b4416b0c8d6afddf72",
+        "source_fact:v1:d7e05a49263d1e31a7c5e2b90bc951a7484cb42f5bf041588d9ee7ff16227a07"
+      ],
+      "source_published_kst": "2026-10-06T08:55+09:00",
+      "title": "현대글로비스, SMR 추진 자동차운반선 한미 항로 운항 검토 | 연합뉴스"
     },
     "original:15e9e03ebfcbce1b5da3eeaf": {
       "first_seen_kst": "2026-09-21T20:40:44+09:00",
@@ -34542,6 +34885,24 @@
       "source_published_kst": "2026-10-05T06:05+09:00",
       "title": "“안 털린 은행이 없네, 내 정보 어디로”…정보유출에 흔들리는 금융권"
     },
+    "original:455f99fb4eb1c2355935c276": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632561",
+      "source": "이투데이",
+      "source_body_digest": "d1ff693e93dd1d7827fd69b4ef6b2d04cc6da2b49a3a411a09847a3431931cd4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b380308647127ae47f8b4f5db745a271e38c34c8ad9ce48fa45ab3e0a5a602e",
+      "source_fact_keys": [
+        "source_fact:v1:0930baa6cb604804208a7cd9ccd087ffcc567a2da46c1d6d74be64c0c9903748",
+        "source_fact:v1:b005a94f29719ad75d04285be976ba6ca952f8fceee90be43ba8e954508aed1d"
+      ],
+      "source_published_kst": "2026-10-06T09:00+09:00",
+      "title": "자연과환경, 자회사 한림에코텍 흡수합병…OSCㆍ모듈러 사업 경쟁력 강화"
+    },
     "original:456823dc0834bd9238e4b9aa": {
       "first_seen_kst": "2026-10-05T05:59:37+09:00",
       "lanes": {
@@ -37487,6 +37848,24 @@
       "source_published_kst": "2026-10-05T22:31+09:00",
       "title": "메틀렌: 일본 주요 화학 기업과 신규 갈륨 공급 계약 체결"
     },
+    "original:6eb2522608b1204992359a6b": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02660086645610296",
+      "source": "이데일리",
+      "source_body_digest": "004e3bcf401c93fa242e51d713bbd403d003b4c4a36035f4029fc8a071b4a006",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c452492109e1afb3cd64fc56f45a0bb0960c935cd44e6a71d51123de7a16bc2",
+      "source_fact_keys": [
+        "source_fact:v1:b11be92478b493dba8456ac41d58455a8ddef8a734adfd446cf9ebfc762d3666",
+        "source_fact:v1:bf40511df706579b4cf1ab7ef9784d695796e702d249314d4a89efa56de46897"
+      ],
+      "source_published_kst": "2026-10-06T09:00+09:00",
+      "title": "넥스팟솔루션, ‘3無 프로젝트’ 통해 정품인증 스티커 MOQ 완전 폐지"
+    },
     "original:6ed9967a31aed3dc1b63d586": {
       "first_seen_kst": "2026-10-01T21:43:03+09:00",
       "lanes": {
@@ -37674,20 +38053,20 @@
     "original:71b692d828b4c094a6311e99": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
       "lanes": {
-        "live": "2026-10-05T22:30:10+09:00"
+        "live": "2026-10-06T09:21:20+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:30:10+09:00",
-      "link": "https://www.mt.co.kr/index.php/industry/2026/10/05/2026100516112469972",
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/05/2026100516112469972",
       "source": "머니투데이",
-      "source_body_digest": "359c8e578a9af84fe906d14b240dd971a012927d4db5eb4320c26cb2bc74f014",
+      "source_body_digest": "db8f5eadb11e2d3b3e2646b7ff82bc782fd36253a4448dbb618f7db537b30139",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:3bbc4fd4e830efa9b4428cb33f71f7697e2bde9726364080f71d5a09e7580440",
+      "source_fact_identity": "source_facts:v1:22504cafd5d56cf20d0879309490e265a409f44469b4b3e763ba371f6e363566",
       "source_fact_keys": [
         "source_fact:v1:042f3279d9e95da5f32f54228edd31c2aeaefd19d4d0daedbcc630c6f714002d",
         "source_fact:v1:2de1b71363868c1272d98be6c40d55b85bbf10715bcc01478bf9eb8d929c406f",
         "source_fact:v1:631db7c2519643dd197f3c1123d3d8877248d57f8d161325def03bcbfb00d7f8",
         "source_fact:v1:6a6dbdbaa085b5ca71560ca308cc26b7435e6adf80062f898dd18cc92d55b495",
-        "source_fact:v1:8dce8c1770f4ead01453e48a9136d5ca21ab2ae2bedcba7aa093245618e0272a"
+        "source_fact:v1:900059894588c9f7cd5c51b95598c0e55fe25de94159a586cfe435331554a4e0"
       ],
       "source_published_kst": "2026-10-05T22:07+09:00",
       "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
@@ -39937,6 +40316,26 @@
       "source": "머니투데이",
       "title": "美 금리 인상에 환율 1380원대…\"추세적 반등은 아냐\""
     },
+    "original:8e5a50eb058fc6568e2be28a": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006082620",
+      "source": "지디넷코리아",
+      "source_body_digest": "31b059bcb8e065374a081d7e06940be37a2e3d23c996b8d043ac8d75817655f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0a7b19061c1ff858433ba7d6d6b4b295af809ccbe618b56ff5ecc22e755ebeaa",
+      "source_fact_keys": [
+        "source_fact:v1:36d5e2a027e6cbe64945b1533ab90a5a148ba24e34c88bf521cbc27f6c2e1165",
+        "source_fact:v1:5e94e0787319183ea324df196fdb1183053e7fbaa37b720acd01225bac27afa6",
+        "source_fact:v1:eef2433a63ab2c92d75e7594c3f5d0dd60a40417185ee16499b30f5a25b7cba0",
+        "source_fact:v1:f1f9b86a894d84f7a482b5d64cb6a8c4397132c9b97a159b03f9920c26da0085"
+      ],
+      "source_published_kst": "2026-10-06T08:45+09:00",
+      "title": "한미반도체, 삼성전기에 패키징 장비 공급…245억원 규모"
+    },
     "original:8e7d0a2b38ba4c03bd999914": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
       "lanes": {
@@ -41431,6 +41830,30 @@
       ],
       "source_published_kst": "2026-10-05T21:05+09:00",
       "title": "SS 이노베이션스 인터내셔, 2분기 매출 1390만 달러 39%↑·영업적자 전환"
+    },
+    "original:a44f76f46a11edbf229ab9bb": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02473126645610296",
+      "source": "이데일리",
+      "source_body_digest": "b0ab390102883e6cd38b48e420d04d057f5208be2c2fd91af38177ede30167e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2749f9bb85505a820ff70119d5b8cdccc9f746a684b7ca07684a22e69e7fc2f8",
+      "source_fact_keys": [
+        "source_fact:v1:06074629f0cc34c734563d9ceca5b9aed290faddbc7859fbaf6eff0a1025e897",
+        "source_fact:v1:11d4dc4931dceb1f087149cf69f210d56bfbdfadbb53cfb5d68c6813135eda4b",
+        "source_fact:v1:249e48c5de800f22e8dc14c08ead46d28b87da98ca9c8adee33b13d23cc7b974",
+        "source_fact:v1:679b61dd563fc81a726dd22b4478abe9986beacfad2596a5102c0d6326ad1cba",
+        "source_fact:v1:8a8a1abf6ec1034ffb35fd1239a0235fecad2e6b86ff304a41736ca0f41ca55b",
+        "source_fact:v1:95dea891188536658a2f2e2beb8c088c273c6d88c69a389b970116b1c8317007",
+        "source_fact:v1:dbebe27ed771df146e0f5bdfb7ee271c6d51c43aa36211830f3356a580c2edb0",
+        "source_fact:v1:f7c77c7f52618679b5747442d8833bad1f4de79b8f5c69b89b631a59d98469a8"
+      ],
+      "source_published_kst": "2026-10-06T07:45+09:00",
+      "title": "\"지금이 매수 기회\" 화장품株 급락했는데, 수출 29% 급증"
     },
     "original:a481c4c674bb5a5fdbf2a0d9": {
       "first_seen_kst": "2026-10-01T21:50:06+09:00",
@@ -48469,6 +48892,24 @@
       "source_published_kst": "2026-10-06T07:42+09:00",
       "title": "[오늘의 증시]美금리 상승에도 나스닥 최고치…코스피 상승 출발 전망"
     },
+    "source_fact:04109025d27a0f9dbb25877f": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02660086645610296",
+      "source": "이데일리",
+      "source_body_digest": "004e3bcf401c93fa242e51d713bbd403d003b4c4a36035f4029fc8a071b4a006",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c452492109e1afb3cd64fc56f45a0bb0960c935cd44e6a71d51123de7a16bc2",
+      "source_fact_keys": [
+        "source_fact:v1:b11be92478b493dba8456ac41d58455a8ddef8a734adfd446cf9ebfc762d3666",
+        "source_fact:v1:bf40511df706579b4cf1ab7ef9784d695796e702d249314d4a89efa56de46897"
+      ],
+      "source_published_kst": "2026-10-06T09:00+09:00",
+      "title": "넥스팟솔루션, ‘3無 프로젝트’ 통해 정품인증 스티커 MOQ 완전 폐지"
+    },
     "source_fact:04d3d9fd880435c004d4ea30": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
       "lanes": {
@@ -48511,6 +48952,27 @@
       ],
       "source_published_kst": "2026-10-05T21:09+09:00",
       "title": "플렉스, 액시엄 20억달러 우선주 유치..가치 375억달러"
+    },
+    "source_fact:057c6e05e104977391991e11": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632599",
+      "source": "이투데이",
+      "source_body_digest": "a7afa3eb1d6b195fed5203d19de05dca34ea66b6da6ff39aa2b7634eb20be4e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c6bb370bf496c2425da588b98dec9be33408996aab19e86aad12d08880c39a64",
+      "source_fact_keys": [
+        "source_fact:v1:31ac9526675aead846d0e8d9f785a9322eeeb84f3fc577490145dcc17ac94922",
+        "source_fact:v1:44e0766cd6eb4730e2694f6b5839a605f0bbd1cce8185363d415c3d177feaf4d",
+        "source_fact:v1:538acb713969bd5cfc847842654f196f37fc8b20889d994127d691cbdcf0c891",
+        "source_fact:v1:8e765150628f450c5022655c4332dd28ed94eeb792aa6086ecd02a0dffe9b738",
+        "source_fact:v1:f0dd221132371a1f15ca0163f4c668e0ec96c18153fa0d28448919ed2bc3025a"
+      ],
+      "source_published_kst": "2026-10-06T08:57+09:00",
+      "title": "LH, 서울대에 기숙사형 전세임대 200가구 공급…전국 500가구 공모"
     },
     "source_fact:058433f0b3ef20ee2d112bbf": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
@@ -48925,6 +49387,30 @@
       ],
       "source_published_kst": "2026-10-06T03:30+09:00",
       "title": "[美특징주]할리-데이비슨, 신제품·비용절감 기대에 월가 ‘매수’ 상향…주가 8%↑"
+    },
+    "source_fact:090f24bec1a7c6e0cf0ad85d": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02473126645610296",
+      "source": "이데일리",
+      "source_body_digest": "b0ab390102883e6cd38b48e420d04d057f5208be2c2fd91af38177ede30167e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2749f9bb85505a820ff70119d5b8cdccc9f746a684b7ca07684a22e69e7fc2f8",
+      "source_fact_keys": [
+        "source_fact:v1:06074629f0cc34c734563d9ceca5b9aed290faddbc7859fbaf6eff0a1025e897",
+        "source_fact:v1:11d4dc4931dceb1f087149cf69f210d56bfbdfadbb53cfb5d68c6813135eda4b",
+        "source_fact:v1:249e48c5de800f22e8dc14c08ead46d28b87da98ca9c8adee33b13d23cc7b974",
+        "source_fact:v1:679b61dd563fc81a726dd22b4478abe9986beacfad2596a5102c0d6326ad1cba",
+        "source_fact:v1:8a8a1abf6ec1034ffb35fd1239a0235fecad2e6b86ff304a41736ca0f41ca55b",
+        "source_fact:v1:95dea891188536658a2f2e2beb8c088c273c6d88c69a389b970116b1c8317007",
+        "source_fact:v1:dbebe27ed771df146e0f5bdfb7ee271c6d51c43aa36211830f3356a580c2edb0",
+        "source_fact:v1:f7c77c7f52618679b5747442d8833bad1f4de79b8f5c69b89b631a59d98469a8"
+      ],
+      "source_published_kst": "2026-10-06T07:45+09:00",
+      "title": "\"지금이 매수 기회\" 화장품株 급락했는데, 수출 29% 급증"
     },
     "source_fact:091d9c0ed69788f7cb66ac69": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -49564,20 +50050,20 @@
     "source_fact:10f976777949aaa962c347f1": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
       "lanes": {
-        "live": "2026-10-05T22:30:10+09:00"
+        "live": "2026-10-06T09:21:20+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:30:10+09:00",
-      "link": "https://www.mt.co.kr/index.php/industry/2026/10/05/2026100516112469972",
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/05/2026100516112469972",
       "source": "머니투데이",
-      "source_body_digest": "359c8e578a9af84fe906d14b240dd971a012927d4db5eb4320c26cb2bc74f014",
+      "source_body_digest": "db8f5eadb11e2d3b3e2646b7ff82bc782fd36253a4448dbb618f7db537b30139",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:3bbc4fd4e830efa9b4428cb33f71f7697e2bde9726364080f71d5a09e7580440",
+      "source_fact_identity": "source_facts:v1:22504cafd5d56cf20d0879309490e265a409f44469b4b3e763ba371f6e363566",
       "source_fact_keys": [
         "source_fact:v1:042f3279d9e95da5f32f54228edd31c2aeaefd19d4d0daedbcc630c6f714002d",
         "source_fact:v1:2de1b71363868c1272d98be6c40d55b85bbf10715bcc01478bf9eb8d929c406f",
         "source_fact:v1:631db7c2519643dd197f3c1123d3d8877248d57f8d161325def03bcbfb00d7f8",
         "source_fact:v1:6a6dbdbaa085b5ca71560ca308cc26b7435e6adf80062f898dd18cc92d55b495",
-        "source_fact:v1:8dce8c1770f4ead01453e48a9136d5ca21ab2ae2bedcba7aa093245618e0272a"
+        "source_fact:v1:900059894588c9f7cd5c51b95598c0e55fe25de94159a586cfe435331554a4e0"
       ],
       "source_published_kst": "2026-10-05T22:07+09:00",
       "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
@@ -50963,6 +51449,30 @@
       "source_published_kst": "2026-10-06T04:10+09:00",
       "title": "'AI 해킹 사태' 은행장 연임에 걸림돌 될까"
     },
+    "source_fact:20d8696939d97085ef3f3778": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02473126645610296",
+      "source": "이데일리",
+      "source_body_digest": "b0ab390102883e6cd38b48e420d04d057f5208be2c2fd91af38177ede30167e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2749f9bb85505a820ff70119d5b8cdccc9f746a684b7ca07684a22e69e7fc2f8",
+      "source_fact_keys": [
+        "source_fact:v1:06074629f0cc34c734563d9ceca5b9aed290faddbc7859fbaf6eff0a1025e897",
+        "source_fact:v1:11d4dc4931dceb1f087149cf69f210d56bfbdfadbb53cfb5d68c6813135eda4b",
+        "source_fact:v1:249e48c5de800f22e8dc14c08ead46d28b87da98ca9c8adee33b13d23cc7b974",
+        "source_fact:v1:679b61dd563fc81a726dd22b4478abe9986beacfad2596a5102c0d6326ad1cba",
+        "source_fact:v1:8a8a1abf6ec1034ffb35fd1239a0235fecad2e6b86ff304a41736ca0f41ca55b",
+        "source_fact:v1:95dea891188536658a2f2e2beb8c088c273c6d88c69a389b970116b1c8317007",
+        "source_fact:v1:dbebe27ed771df146e0f5bdfb7ee271c6d51c43aa36211830f3356a580c2edb0",
+        "source_fact:v1:f7c77c7f52618679b5747442d8833bad1f4de79b8f5c69b89b631a59d98469a8"
+      ],
+      "source_published_kst": "2026-10-06T07:45+09:00",
+      "title": "\"지금이 매수 기회\" 화장품株 급락했는데, 수출 29% 급증"
+    },
     "source_fact:20f47d64b8e51e9773fa4c54": {
       "first_seen_kst": "2026-10-06T01:41:59+09:00",
       "lanes": {
@@ -52121,6 +52631,30 @@
       "source_published_kst": "2026-10-05T22:45+09:00",
       "title": "[美특징주]PTC, 슈나이더일렉트릭에 피인수 소식에 급등"
     },
+    "source_fact:2e38789c0d28195a21ad1f9f": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02473126645610296",
+      "source": "이데일리",
+      "source_body_digest": "b0ab390102883e6cd38b48e420d04d057f5208be2c2fd91af38177ede30167e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2749f9bb85505a820ff70119d5b8cdccc9f746a684b7ca07684a22e69e7fc2f8",
+      "source_fact_keys": [
+        "source_fact:v1:06074629f0cc34c734563d9ceca5b9aed290faddbc7859fbaf6eff0a1025e897",
+        "source_fact:v1:11d4dc4931dceb1f087149cf69f210d56bfbdfadbb53cfb5d68c6813135eda4b",
+        "source_fact:v1:249e48c5de800f22e8dc14c08ead46d28b87da98ca9c8adee33b13d23cc7b974",
+        "source_fact:v1:679b61dd563fc81a726dd22b4478abe9986beacfad2596a5102c0d6326ad1cba",
+        "source_fact:v1:8a8a1abf6ec1034ffb35fd1239a0235fecad2e6b86ff304a41736ca0f41ca55b",
+        "source_fact:v1:95dea891188536658a2f2e2beb8c088c273c6d88c69a389b970116b1c8317007",
+        "source_fact:v1:dbebe27ed771df146e0f5bdfb7ee271c6d51c43aa36211830f3356a580c2edb0",
+        "source_fact:v1:f7c77c7f52618679b5747442d8833bad1f4de79b8f5c69b89b631a59d98469a8"
+      ],
+      "source_published_kst": "2026-10-06T07:45+09:00",
+      "title": "\"지금이 매수 기회\" 화장품株 급락했는데, 수출 29% 급증"
+    },
     "source_fact:2e38cf45fe99d83df81f0a6b": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
       "lanes": {
@@ -52663,6 +53197,27 @@
       ],
       "source_published_kst": "2026-10-05T21:02+09:00",
       "title": "레졸루트, FDA 3상 실패에도 BLA 사전회의 권고"
+    },
+    "source_fact:33a86638b0ea86e02c976880": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632599",
+      "source": "이투데이",
+      "source_body_digest": "a7afa3eb1d6b195fed5203d19de05dca34ea66b6da6ff39aa2b7634eb20be4e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c6bb370bf496c2425da588b98dec9be33408996aab19e86aad12d08880c39a64",
+      "source_fact_keys": [
+        "source_fact:v1:31ac9526675aead846d0e8d9f785a9322eeeb84f3fc577490145dcc17ac94922",
+        "source_fact:v1:44e0766cd6eb4730e2694f6b5839a605f0bbd1cce8185363d415c3d177feaf4d",
+        "source_fact:v1:538acb713969bd5cfc847842654f196f37fc8b20889d994127d691cbdcf0c891",
+        "source_fact:v1:8e765150628f450c5022655c4332dd28ed94eeb792aa6086ecd02a0dffe9b738",
+        "source_fact:v1:f0dd221132371a1f15ca0163f4c668e0ec96c18153fa0d28448919ed2bc3025a"
+      ],
+      "source_published_kst": "2026-10-06T08:57+09:00",
+      "title": "LH, 서울대에 기숙사형 전세임대 200가구 공급…전국 500가구 공모"
     },
     "source_fact:340ebefd2e3f3e8ad727e2b6": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
@@ -53487,6 +54042,26 @@
       ],
       "source_published_kst": "2026-10-05T22:37+09:00",
       "title": "농식품부 고위공직자 모친 농지 '미경작'…\"전수조사, 현실 못담아\""
+    },
+    "source_fact:3e6fe7f32a50b57e34e4cdbc": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006082620",
+      "source": "지디넷코리아",
+      "source_body_digest": "31b059bcb8e065374a081d7e06940be37a2e3d23c996b8d043ac8d75817655f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0a7b19061c1ff858433ba7d6d6b4b295af809ccbe618b56ff5ecc22e755ebeaa",
+      "source_fact_keys": [
+        "source_fact:v1:36d5e2a027e6cbe64945b1533ab90a5a148ba24e34c88bf521cbc27f6c2e1165",
+        "source_fact:v1:5e94e0787319183ea324df196fdb1183053e7fbaa37b720acd01225bac27afa6",
+        "source_fact:v1:eef2433a63ab2c92d75e7594c3f5d0dd60a40417185ee16499b30f5a25b7cba0",
+        "source_fact:v1:f1f9b86a894d84f7a482b5d64cb6a8c4397132c9b97a159b03f9920c26da0085"
+      ],
+      "source_published_kst": "2026-10-06T08:45+09:00",
+      "title": "한미반도체, 삼성전기에 패키징 장비 공급…245억원 규모"
     },
     "source_fact:3e750837c8ceb790cb22bc80": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
@@ -54586,6 +55161,26 @@
       "source_published_kst": "2026-10-06T00:10+09:00",
       "title": "\"숫자와 스토리 모두 찾아야\"…월가 트레이더·퀀트 우승자의 투자 전략"
     },
+    "source_fact:4807f47a309e1bc32d9b7a60": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006082620",
+      "source": "지디넷코리아",
+      "source_body_digest": "31b059bcb8e065374a081d7e06940be37a2e3d23c996b8d043ac8d75817655f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0a7b19061c1ff858433ba7d6d6b4b295af809ccbe618b56ff5ecc22e755ebeaa",
+      "source_fact_keys": [
+        "source_fact:v1:36d5e2a027e6cbe64945b1533ab90a5a148ba24e34c88bf521cbc27f6c2e1165",
+        "source_fact:v1:5e94e0787319183ea324df196fdb1183053e7fbaa37b720acd01225bac27afa6",
+        "source_fact:v1:eef2433a63ab2c92d75e7594c3f5d0dd60a40417185ee16499b30f5a25b7cba0",
+        "source_fact:v1:f1f9b86a894d84f7a482b5d64cb6a8c4397132c9b97a159b03f9920c26da0085"
+      ],
+      "source_published_kst": "2026-10-06T08:45+09:00",
+      "title": "한미반도체, 삼성전기에 패키징 장비 공급…245억원 규모"
+    },
     "source_fact:484ea7bd058825d1707f5cd8": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -54691,6 +55286,24 @@
       ],
       "source_published_kst": "2026-10-06T08:41+09:00",
       "title": "AI 데이터센터 늘자 전력 수요도 급증…ETF 투자처도 '전력 인프라'로"
+    },
+    "source_fact:499c763e8cbd5a77610624ed": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632561",
+      "source": "이투데이",
+      "source_body_digest": "d1ff693e93dd1d7827fd69b4ef6b2d04cc6da2b49a3a411a09847a3431931cd4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b380308647127ae47f8b4f5db745a271e38c34c8ad9ce48fa45ab3e0a5a602e",
+      "source_fact_keys": [
+        "source_fact:v1:0930baa6cb604804208a7cd9ccd087ffcc567a2da46c1d6d74be64c0c9903748",
+        "source_fact:v1:b005a94f29719ad75d04285be976ba6ca952f8fceee90be43ba8e954508aed1d"
+      ],
+      "source_published_kst": "2026-10-06T09:00+09:00",
+      "title": "자연과환경, 자회사 한림에코텍 흡수합병…OSCㆍ모듈러 사업 경쟁력 강화"
     },
     "source_fact:49d294f0acae4c429a6d066e": {
       "first_seen_kst": "2026-10-05T23:05:12+09:00",
@@ -56255,6 +56868,30 @@
       "source_published_kst": "2026-10-05T20:01+09:00",
       "title": "알렉토, 제넨텍에 AL050 기술이전..선급금 1억 달러"
     },
+    "source_fact:5b41e8169aaaec34fea466a1": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02473126645610296",
+      "source": "이데일리",
+      "source_body_digest": "b0ab390102883e6cd38b48e420d04d057f5208be2c2fd91af38177ede30167e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2749f9bb85505a820ff70119d5b8cdccc9f746a684b7ca07684a22e69e7fc2f8",
+      "source_fact_keys": [
+        "source_fact:v1:06074629f0cc34c734563d9ceca5b9aed290faddbc7859fbaf6eff0a1025e897",
+        "source_fact:v1:11d4dc4931dceb1f087149cf69f210d56bfbdfadbb53cfb5d68c6813135eda4b",
+        "source_fact:v1:249e48c5de800f22e8dc14c08ead46d28b87da98ca9c8adee33b13d23cc7b974",
+        "source_fact:v1:679b61dd563fc81a726dd22b4478abe9986beacfad2596a5102c0d6326ad1cba",
+        "source_fact:v1:8a8a1abf6ec1034ffb35fd1239a0235fecad2e6b86ff304a41736ca0f41ca55b",
+        "source_fact:v1:95dea891188536658a2f2e2beb8c088c273c6d88c69a389b970116b1c8317007",
+        "source_fact:v1:dbebe27ed771df146e0f5bdfb7ee271c6d51c43aa36211830f3356a580c2edb0",
+        "source_fact:v1:f7c77c7f52618679b5747442d8833bad1f4de79b8f5c69b89b631a59d98469a8"
+      ],
+      "source_published_kst": "2026-10-06T07:45+09:00",
+      "title": "\"지금이 매수 기회\" 화장품株 급락했는데, 수출 29% 급증"
+    },
     "source_fact:5b69661b14cd3bd923b8ef75": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -57299,6 +57936,26 @@
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "어드밴스드 드레니쥐 시스, 스톰트랩 5억3000만 달러 인수..4분기 완료 예정"
     },
+    "source_fact:68840e77515711ccb8e25497": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006082620",
+      "source": "지디넷코리아",
+      "source_body_digest": "31b059bcb8e065374a081d7e06940be37a2e3d23c996b8d043ac8d75817655f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0a7b19061c1ff858433ba7d6d6b4b295af809ccbe618b56ff5ecc22e755ebeaa",
+      "source_fact_keys": [
+        "source_fact:v1:36d5e2a027e6cbe64945b1533ab90a5a148ba24e34c88bf521cbc27f6c2e1165",
+        "source_fact:v1:5e94e0787319183ea324df196fdb1183053e7fbaa37b720acd01225bac27afa6",
+        "source_fact:v1:eef2433a63ab2c92d75e7594c3f5d0dd60a40417185ee16499b30f5a25b7cba0",
+        "source_fact:v1:f1f9b86a894d84f7a482b5d64cb6a8c4397132c9b97a159b03f9920c26da0085"
+      ],
+      "source_published_kst": "2026-10-06T08:45+09:00",
+      "title": "한미반도체, 삼성전기에 패키징 장비 공급…245억원 규모"
+    },
     "source_fact:68b156ac44751915c9e84361": {
       "first_seen_kst": "2026-10-06T01:41:59+09:00",
       "lanes": {
@@ -57572,6 +58229,25 @@
       ],
       "source_published_kst": "2026-10-05T22:27+09:00",
       "title": "듀오스 테크놀러지스 그룹, GPU 자회사 매각..4290만 달러 수취·부채 해소"
+    },
+    "source_fact:6c2897364c9ec5f4934da1b2": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006032600003",
+      "source": "연합뉴스",
+      "source_body_digest": "13d7b1cfdf0376087b8a012a057a008ac3212c87918b467ff6c71538c92d7b3b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c44505ed8aa30c8fb86851244b347e9d7bae5ad9f79e589bb6c2e2ff5d78765",
+      "source_fact_keys": [
+        "source_fact:v1:b19e84b197ed6196e11c47aca26e00126c9c0f2bf8593265d916b6640995181f",
+        "source_fact:v1:b32755eef30b5174440e0c74a8ed2e3a0ee6a21a9175f7b4416b0c8d6afddf72",
+        "source_fact:v1:d7e05a49263d1e31a7c5e2b90bc951a7484cb42f5bf041588d9ee7ff16227a07"
+      ],
+      "source_published_kst": "2026-10-06T08:55+09:00",
+      "title": "현대글로비스, SMR 추진 자동차운반선 한미 항로 운항 검토 | 연합뉴스"
     },
     "source_fact:6c6df5436c0162eb1fec32af": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
@@ -58140,20 +58816,20 @@
     "source_fact:72481fcac49762157f32090f": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
       "lanes": {
-        "live": "2026-10-05T22:30:10+09:00"
+        "live": "2026-10-06T09:21:20+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:30:10+09:00",
-      "link": "https://www.mt.co.kr/index.php/industry/2026/10/05/2026100516112469972",
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/05/2026100516112469972",
       "source": "머니투데이",
-      "source_body_digest": "359c8e578a9af84fe906d14b240dd971a012927d4db5eb4320c26cb2bc74f014",
+      "source_body_digest": "db8f5eadb11e2d3b3e2646b7ff82bc782fd36253a4448dbb618f7db537b30139",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:3bbc4fd4e830efa9b4428cb33f71f7697e2bde9726364080f71d5a09e7580440",
+      "source_fact_identity": "source_facts:v1:22504cafd5d56cf20d0879309490e265a409f44469b4b3e763ba371f6e363566",
       "source_fact_keys": [
         "source_fact:v1:042f3279d9e95da5f32f54228edd31c2aeaefd19d4d0daedbcc630c6f714002d",
         "source_fact:v1:2de1b71363868c1272d98be6c40d55b85bbf10715bcc01478bf9eb8d929c406f",
         "source_fact:v1:631db7c2519643dd197f3c1123d3d8877248d57f8d161325def03bcbfb00d7f8",
         "source_fact:v1:6a6dbdbaa085b5ca71560ca308cc26b7435e6adf80062f898dd18cc92d55b495",
-        "source_fact:v1:8dce8c1770f4ead01453e48a9136d5ca21ab2ae2bedcba7aa093245618e0272a"
+        "source_fact:v1:900059894588c9f7cd5c51b95598c0e55fe25de94159a586cfe435331554a4e0"
       ],
       "source_published_kst": "2026-10-05T22:07+09:00",
       "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
@@ -58801,6 +59477,30 @@
       ],
       "source_published_kst": "2026-10-05T16:01+09:00",
       "title": "이란 안보수장 “역사상 가장 어려운 시기”⋯경제 악화 이례적 시인"
+    },
+    "source_fact:793ad7f86fc3428b2ee22186": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02473126645610296",
+      "source": "이데일리",
+      "source_body_digest": "b0ab390102883e6cd38b48e420d04d057f5208be2c2fd91af38177ede30167e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2749f9bb85505a820ff70119d5b8cdccc9f746a684b7ca07684a22e69e7fc2f8",
+      "source_fact_keys": [
+        "source_fact:v1:06074629f0cc34c734563d9ceca5b9aed290faddbc7859fbaf6eff0a1025e897",
+        "source_fact:v1:11d4dc4931dceb1f087149cf69f210d56bfbdfadbb53cfb5d68c6813135eda4b",
+        "source_fact:v1:249e48c5de800f22e8dc14c08ead46d28b87da98ca9c8adee33b13d23cc7b974",
+        "source_fact:v1:679b61dd563fc81a726dd22b4478abe9986beacfad2596a5102c0d6326ad1cba",
+        "source_fact:v1:8a8a1abf6ec1034ffb35fd1239a0235fecad2e6b86ff304a41736ca0f41ca55b",
+        "source_fact:v1:95dea891188536658a2f2e2beb8c088c273c6d88c69a389b970116b1c8317007",
+        "source_fact:v1:dbebe27ed771df146e0f5bdfb7ee271c6d51c43aa36211830f3356a580c2edb0",
+        "source_fact:v1:f7c77c7f52618679b5747442d8833bad1f4de79b8f5c69b89b631a59d98469a8"
+      ],
+      "source_published_kst": "2026-10-06T07:45+09:00",
+      "title": "\"지금이 매수 기회\" 화장품株 급락했는데, 수출 29% 급증"
     },
     "source_fact:798c8a3578f28add74160be7": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -59992,6 +60692,27 @@
       ],
       "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
+    },
+    "source_fact:84374769276066ddd1ceaa73": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632599",
+      "source": "이투데이",
+      "source_body_digest": "a7afa3eb1d6b195fed5203d19de05dca34ea66b6da6ff39aa2b7634eb20be4e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c6bb370bf496c2425da588b98dec9be33408996aab19e86aad12d08880c39a64",
+      "source_fact_keys": [
+        "source_fact:v1:31ac9526675aead846d0e8d9f785a9322eeeb84f3fc577490145dcc17ac94922",
+        "source_fact:v1:44e0766cd6eb4730e2694f6b5839a605f0bbd1cce8185363d415c3d177feaf4d",
+        "source_fact:v1:538acb713969bd5cfc847842654f196f37fc8b20889d994127d691cbdcf0c891",
+        "source_fact:v1:8e765150628f450c5022655c4332dd28ed94eeb792aa6086ecd02a0dffe9b738",
+        "source_fact:v1:f0dd221132371a1f15ca0163f4c668e0ec96c18153fa0d28448919ed2bc3025a"
+      ],
+      "source_published_kst": "2026-10-06T08:57+09:00",
+      "title": "LH, 서울대에 기숙사형 전세임대 200가구 공급…전국 500가구 공모"
     },
     "source_fact:843ca9af477de2addc3b921b": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
@@ -62356,6 +63077,27 @@
       "source_published_kst": "2026-10-05T12:57+09:00",
       "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
     },
+    "source_fact:9f593f529a8257f913462b25": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632599",
+      "source": "이투데이",
+      "source_body_digest": "a7afa3eb1d6b195fed5203d19de05dca34ea66b6da6ff39aa2b7634eb20be4e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c6bb370bf496c2425da588b98dec9be33408996aab19e86aad12d08880c39a64",
+      "source_fact_keys": [
+        "source_fact:v1:31ac9526675aead846d0e8d9f785a9322eeeb84f3fc577490145dcc17ac94922",
+        "source_fact:v1:44e0766cd6eb4730e2694f6b5839a605f0bbd1cce8185363d415c3d177feaf4d",
+        "source_fact:v1:538acb713969bd5cfc847842654f196f37fc8b20889d994127d691cbdcf0c891",
+        "source_fact:v1:8e765150628f450c5022655c4332dd28ed94eeb792aa6086ecd02a0dffe9b738",
+        "source_fact:v1:f0dd221132371a1f15ca0163f4c668e0ec96c18153fa0d28448919ed2bc3025a"
+      ],
+      "source_published_kst": "2026-10-06T08:57+09:00",
+      "title": "LH, 서울대에 기숙사형 전세임대 200가구 공급…전국 500가구 공모"
+    },
     "source_fact:9f6eab862843bea6ce079ea2": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
       "lanes": {
@@ -62403,20 +63145,20 @@
     "source_fact:a01f9ce481e17f06363194b3": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
       "lanes": {
-        "live": "2026-10-05T22:30:10+09:00"
+        "live": "2026-10-06T09:21:20+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:30:10+09:00",
-      "link": "https://www.mt.co.kr/index.php/industry/2026/10/05/2026100516112469972",
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/05/2026100516112469972",
       "source": "머니투데이",
-      "source_body_digest": "359c8e578a9af84fe906d14b240dd971a012927d4db5eb4320c26cb2bc74f014",
+      "source_body_digest": "db8f5eadb11e2d3b3e2646b7ff82bc782fd36253a4448dbb618f7db537b30139",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:3bbc4fd4e830efa9b4428cb33f71f7697e2bde9726364080f71d5a09e7580440",
+      "source_fact_identity": "source_facts:v1:22504cafd5d56cf20d0879309490e265a409f44469b4b3e763ba371f6e363566",
       "source_fact_keys": [
         "source_fact:v1:042f3279d9e95da5f32f54228edd31c2aeaefd19d4d0daedbcc630c6f714002d",
         "source_fact:v1:2de1b71363868c1272d98be6c40d55b85bbf10715bcc01478bf9eb8d929c406f",
         "source_fact:v1:631db7c2519643dd197f3c1123d3d8877248d57f8d161325def03bcbfb00d7f8",
         "source_fact:v1:6a6dbdbaa085b5ca71560ca308cc26b7435e6adf80062f898dd18cc92d55b495",
-        "source_fact:v1:8dce8c1770f4ead01453e48a9136d5ca21ab2ae2bedcba7aa093245618e0272a"
+        "source_fact:v1:900059894588c9f7cd5c51b95598c0e55fe25de94159a586cfe435331554a4e0"
       ],
       "source_published_kst": "2026-10-05T22:07+09:00",
       "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
@@ -62954,6 +63696,30 @@
       "source_published_kst": "2026-10-06T02:28+09:00",
       "title": "아람코 CEO \"세계 석유 공급 이미 압박…비축 최대 2년\""
     },
+    "source_fact:a61cc5d73c68f0f4633de0fd": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02473126645610296",
+      "source": "이데일리",
+      "source_body_digest": "b0ab390102883e6cd38b48e420d04d057f5208be2c2fd91af38177ede30167e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2749f9bb85505a820ff70119d5b8cdccc9f746a684b7ca07684a22e69e7fc2f8",
+      "source_fact_keys": [
+        "source_fact:v1:06074629f0cc34c734563d9ceca5b9aed290faddbc7859fbaf6eff0a1025e897",
+        "source_fact:v1:11d4dc4931dceb1f087149cf69f210d56bfbdfadbb53cfb5d68c6813135eda4b",
+        "source_fact:v1:249e48c5de800f22e8dc14c08ead46d28b87da98ca9c8adee33b13d23cc7b974",
+        "source_fact:v1:679b61dd563fc81a726dd22b4478abe9986beacfad2596a5102c0d6326ad1cba",
+        "source_fact:v1:8a8a1abf6ec1034ffb35fd1239a0235fecad2e6b86ff304a41736ca0f41ca55b",
+        "source_fact:v1:95dea891188536658a2f2e2beb8c088c273c6d88c69a389b970116b1c8317007",
+        "source_fact:v1:dbebe27ed771df146e0f5bdfb7ee271c6d51c43aa36211830f3356a580c2edb0",
+        "source_fact:v1:f7c77c7f52618679b5747442d8833bad1f4de79b8f5c69b89b631a59d98469a8"
+      ],
+      "source_published_kst": "2026-10-06T07:45+09:00",
+      "title": "\"지금이 매수 기회\" 화장품株 급락했는데, 수출 29% 급증"
+    },
     "source_fact:a6246fdc73b46fdb0fd25c54": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -63139,6 +63905,25 @@
       ],
       "source_published_kst": "2026-10-06T06:27+09:00",
       "title": "국제유가, 1%대 하락…중동 원유 수출 회복·G7 비축유 방출"
+    },
+    "source_fact:a7fac65820fe6f559ad2f324": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006032600003",
+      "source": "연합뉴스",
+      "source_body_digest": "13d7b1cfdf0376087b8a012a057a008ac3212c87918b467ff6c71538c92d7b3b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c44505ed8aa30c8fb86851244b347e9d7bae5ad9f79e589bb6c2e2ff5d78765",
+      "source_fact_keys": [
+        "source_fact:v1:b19e84b197ed6196e11c47aca26e00126c9c0f2bf8593265d916b6640995181f",
+        "source_fact:v1:b32755eef30b5174440e0c74a8ed2e3a0ee6a21a9175f7b4416b0c8d6afddf72",
+        "source_fact:v1:d7e05a49263d1e31a7c5e2b90bc951a7484cb42f5bf041588d9ee7ff16227a07"
+      ],
+      "source_published_kst": "2026-10-06T08:55+09:00",
+      "title": "현대글로비스, SMR 추진 자동차운반선 한미 항로 운항 검토 | 연합뉴스"
     },
     "source_fact:a802ab09750838efd99f4761": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
@@ -63406,23 +64191,44 @@
       "source_published_kst": "2026-10-06T06:38+09:00",
       "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
     },
-    "source_fact:ab2b79d56ef4f1d90c69a544": {
-      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+    "source_fact:aab12bdc0edf8f6950ae0f29": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
       "lanes": {
-        "live": "2026-10-05T22:30:10+09:00"
+        "live": "2026-10-06T09:21:20+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:30:10+09:00",
-      "link": "https://www.mt.co.kr/index.php/industry/2026/10/05/2026100516112469972",
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/05/2026100516112469972",
       "source": "머니투데이",
-      "source_body_digest": "359c8e578a9af84fe906d14b240dd971a012927d4db5eb4320c26cb2bc74f014",
+      "source_body_digest": "db8f5eadb11e2d3b3e2646b7ff82bc782fd36253a4448dbb618f7db537b30139",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:3bbc4fd4e830efa9b4428cb33f71f7697e2bde9726364080f71d5a09e7580440",
+      "source_fact_identity": "source_facts:v1:22504cafd5d56cf20d0879309490e265a409f44469b4b3e763ba371f6e363566",
       "source_fact_keys": [
         "source_fact:v1:042f3279d9e95da5f32f54228edd31c2aeaefd19d4d0daedbcc630c6f714002d",
         "source_fact:v1:2de1b71363868c1272d98be6c40d55b85bbf10715bcc01478bf9eb8d929c406f",
         "source_fact:v1:631db7c2519643dd197f3c1123d3d8877248d57f8d161325def03bcbfb00d7f8",
         "source_fact:v1:6a6dbdbaa085b5ca71560ca308cc26b7435e6adf80062f898dd18cc92d55b495",
-        "source_fact:v1:8dce8c1770f4ead01453e48a9136d5ca21ab2ae2bedcba7aa093245618e0272a"
+        "source_fact:v1:900059894588c9f7cd5c51b95598c0e55fe25de94159a586cfe435331554a4e0"
+      ],
+      "source_published_kst": "2026-10-05T22:07+09:00",
+      "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
+    },
+    "source_fact:ab2b79d56ef4f1d90c69a544": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/05/2026100516112469972",
+      "source": "머니투데이",
+      "source_body_digest": "db8f5eadb11e2d3b3e2646b7ff82bc782fd36253a4448dbb618f7db537b30139",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22504cafd5d56cf20d0879309490e265a409f44469b4b3e763ba371f6e363566",
+      "source_fact_keys": [
+        "source_fact:v1:042f3279d9e95da5f32f54228edd31c2aeaefd19d4d0daedbcc630c6f714002d",
+        "source_fact:v1:2de1b71363868c1272d98be6c40d55b85bbf10715bcc01478bf9eb8d929c406f",
+        "source_fact:v1:631db7c2519643dd197f3c1123d3d8877248d57f8d161325def03bcbfb00d7f8",
+        "source_fact:v1:6a6dbdbaa085b5ca71560ca308cc26b7435e6adf80062f898dd18cc92d55b495",
+        "source_fact:v1:900059894588c9f7cd5c51b95598c0e55fe25de94159a586cfe435331554a4e0"
       ],
       "source_published_kst": "2026-10-05T22:07+09:00",
       "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
@@ -63654,6 +64460,27 @@
       ],
       "source_published_kst": "2026-10-05T03:42+09:00",
       "title": "\"호르무즈 해협서 또 유조선 피격\"…이달에만 최소 4차례 | 연합뉴스"
+    },
+    "source_fact:ace121188f8e3ef49139574d": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632599",
+      "source": "이투데이",
+      "source_body_digest": "a7afa3eb1d6b195fed5203d19de05dca34ea66b6da6ff39aa2b7634eb20be4e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c6bb370bf496c2425da588b98dec9be33408996aab19e86aad12d08880c39a64",
+      "source_fact_keys": [
+        "source_fact:v1:31ac9526675aead846d0e8d9f785a9322eeeb84f3fc577490145dcc17ac94922",
+        "source_fact:v1:44e0766cd6eb4730e2694f6b5839a605f0bbd1cce8185363d415c3d177feaf4d",
+        "source_fact:v1:538acb713969bd5cfc847842654f196f37fc8b20889d994127d691cbdcf0c891",
+        "source_fact:v1:8e765150628f450c5022655c4332dd28ed94eeb792aa6086ecd02a0dffe9b738",
+        "source_fact:v1:f0dd221132371a1f15ca0163f4c668e0ec96c18153fa0d28448919ed2bc3025a"
+      ],
+      "source_published_kst": "2026-10-06T08:57+09:00",
+      "title": "LH, 서울대에 기숙사형 전세임대 200가구 공급…전국 500가구 공모"
     },
     "source_fact:ad60dee9dd63e894a9412073": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -64178,6 +65005,25 @@
       "source_published_kst": "2026-10-05T05:01+09:00",
       "title": "국회 정무위 6일 국감 돌입…금융권 해킹에 5대 은행장 줄소환되나"
     },
+    "source_fact:b267f25f39d8d0568729fe84": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006032600003",
+      "source": "연합뉴스",
+      "source_body_digest": "13d7b1cfdf0376087b8a012a057a008ac3212c87918b467ff6c71538c92d7b3b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c44505ed8aa30c8fb86851244b347e9d7bae5ad9f79e589bb6c2e2ff5d78765",
+      "source_fact_keys": [
+        "source_fact:v1:b19e84b197ed6196e11c47aca26e00126c9c0f2bf8593265d916b6640995181f",
+        "source_fact:v1:b32755eef30b5174440e0c74a8ed2e3a0ee6a21a9175f7b4416b0c8d6afddf72",
+        "source_fact:v1:d7e05a49263d1e31a7c5e2b90bc951a7484cb42f5bf041588d9ee7ff16227a07"
+      ],
+      "source_published_kst": "2026-10-06T08:55+09:00",
+      "title": "현대글로비스, SMR 추진 자동차운반선 한미 항로 운항 검토 | 연합뉴스"
+    },
     "source_fact:b2c1b85ad905a0f65b4370f2": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
       "lanes": {
@@ -64447,6 +65293,24 @@
       ],
       "source_published_kst": "2026-10-05T13:25+09:00",
       "title": "'北 책임 추궁'과 '한반도 긴장 완화'…DMZ 지뢰사고 대응 딜레마"
+    },
+    "source_fact:b641a08c01357a1dedbe09bc": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02660086645610296",
+      "source": "이데일리",
+      "source_body_digest": "004e3bcf401c93fa242e51d713bbd403d003b4c4a36035f4029fc8a071b4a006",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c452492109e1afb3cd64fc56f45a0bb0960c935cd44e6a71d51123de7a16bc2",
+      "source_fact_keys": [
+        "source_fact:v1:b11be92478b493dba8456ac41d58455a8ddef8a734adfd446cf9ebfc762d3666",
+        "source_fact:v1:bf40511df706579b4cf1ab7ef9784d695796e702d249314d4a89efa56de46897"
+      ],
+      "source_published_kst": "2026-10-06T09:00+09:00",
+      "title": "넥스팟솔루션, ‘3無 프로젝트’ 통해 정품인증 스티커 MOQ 완전 폐지"
     },
     "source_fact:b7806fc1b34f7c1580ba0853": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -64727,6 +65591,24 @@
       "source_published_kst": "2026-10-06T01:21+09:00",
       "title": "페라리, 자사주 2600만 유로 매입..3차 한도 41% 소진"
     },
+    "source_fact:b99b8e70a66992280aa12f12": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632561",
+      "source": "이투데이",
+      "source_body_digest": "d1ff693e93dd1d7827fd69b4ef6b2d04cc6da2b49a3a411a09847a3431931cd4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b380308647127ae47f8b4f5db745a271e38c34c8ad9ce48fa45ab3e0a5a602e",
+      "source_fact_keys": [
+        "source_fact:v1:0930baa6cb604804208a7cd9ccd087ffcc567a2da46c1d6d74be64c0c9903748",
+        "source_fact:v1:b005a94f29719ad75d04285be976ba6ca952f8fceee90be43ba8e954508aed1d"
+      ],
+      "source_published_kst": "2026-10-06T09:00+09:00",
+      "title": "자연과환경, 자회사 한림에코텍 흡수합병…OSCㆍ모듈러 사업 경쟁력 강화"
+    },
     "source_fact:b9e4e20925b73bab1f1b875e": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
       "lanes": {
@@ -64773,6 +65655,30 @@
       ],
       "source_published_kst": "2026-10-06T08:29+09:00",
       "title": "다올증권 \"삼성바이오, 유상증자에 목표가↓…성장동력은 유효\" | 연합뉴스"
+    },
+    "source_fact:bb3027c9a01d08cfd6b53912": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02473126645610296",
+      "source": "이데일리",
+      "source_body_digest": "b0ab390102883e6cd38b48e420d04d057f5208be2c2fd91af38177ede30167e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2749f9bb85505a820ff70119d5b8cdccc9f746a684b7ca07684a22e69e7fc2f8",
+      "source_fact_keys": [
+        "source_fact:v1:06074629f0cc34c734563d9ceca5b9aed290faddbc7859fbaf6eff0a1025e897",
+        "source_fact:v1:11d4dc4931dceb1f087149cf69f210d56bfbdfadbb53cfb5d68c6813135eda4b",
+        "source_fact:v1:249e48c5de800f22e8dc14c08ead46d28b87da98ca9c8adee33b13d23cc7b974",
+        "source_fact:v1:679b61dd563fc81a726dd22b4478abe9986beacfad2596a5102c0d6326ad1cba",
+        "source_fact:v1:8a8a1abf6ec1034ffb35fd1239a0235fecad2e6b86ff304a41736ca0f41ca55b",
+        "source_fact:v1:95dea891188536658a2f2e2beb8c088c273c6d88c69a389b970116b1c8317007",
+        "source_fact:v1:dbebe27ed771df146e0f5bdfb7ee271c6d51c43aa36211830f3356a580c2edb0",
+        "source_fact:v1:f7c77c7f52618679b5747442d8833bad1f4de79b8f5c69b89b631a59d98469a8"
+      ],
+      "source_published_kst": "2026-10-06T07:45+09:00",
+      "title": "\"지금이 매수 기회\" 화장품株 급락했는데, 수출 29% 급증"
     },
     "source_fact:bb472372a84b50d9323ed8ed": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
@@ -66108,6 +67014,30 @@
       ],
       "source_published_kst": "2026-10-05T14:28+09:00",
       "title": "폭스바겐 ‘판매왕’에서 모빌리티 창업가로…차봇, 해외로 영토 확장"
+    },
+    "source_fact:cbfc0beb6e29344dc4b7e90b": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02473126645610296",
+      "source": "이데일리",
+      "source_body_digest": "b0ab390102883e6cd38b48e420d04d057f5208be2c2fd91af38177ede30167e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2749f9bb85505a820ff70119d5b8cdccc9f746a684b7ca07684a22e69e7fc2f8",
+      "source_fact_keys": [
+        "source_fact:v1:06074629f0cc34c734563d9ceca5b9aed290faddbc7859fbaf6eff0a1025e897",
+        "source_fact:v1:11d4dc4931dceb1f087149cf69f210d56bfbdfadbb53cfb5d68c6813135eda4b",
+        "source_fact:v1:249e48c5de800f22e8dc14c08ead46d28b87da98ca9c8adee33b13d23cc7b974",
+        "source_fact:v1:679b61dd563fc81a726dd22b4478abe9986beacfad2596a5102c0d6326ad1cba",
+        "source_fact:v1:8a8a1abf6ec1034ffb35fd1239a0235fecad2e6b86ff304a41736ca0f41ca55b",
+        "source_fact:v1:95dea891188536658a2f2e2beb8c088c273c6d88c69a389b970116b1c8317007",
+        "source_fact:v1:dbebe27ed771df146e0f5bdfb7ee271c6d51c43aa36211830f3356a580c2edb0",
+        "source_fact:v1:f7c77c7f52618679b5747442d8833bad1f4de79b8f5c69b89b631a59d98469a8"
+      ],
+      "source_published_kst": "2026-10-06T07:45+09:00",
+      "title": "\"지금이 매수 기회\" 화장품株 급락했는데, 수출 29% 급증"
     },
     "source_fact:cc3bdfe9afebb0501a4d0169": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -68240,6 +69170,26 @@
       ],
       "source_published_kst": "2026-10-06T08:41+09:00",
       "title": "현대건설, 압구정 2·3·5구역에 ‘스파 록시땅’ 도입"
+    },
+    "source_fact:e30d169461f46c5f6970666b": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006082620",
+      "source": "지디넷코리아",
+      "source_body_digest": "31b059bcb8e065374a081d7e06940be37a2e3d23c996b8d043ac8d75817655f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0a7b19061c1ff858433ba7d6d6b4b295af809ccbe618b56ff5ecc22e755ebeaa",
+      "source_fact_keys": [
+        "source_fact:v1:36d5e2a027e6cbe64945b1533ab90a5a148ba24e34c88bf521cbc27f6c2e1165",
+        "source_fact:v1:5e94e0787319183ea324df196fdb1183053e7fbaa37b720acd01225bac27afa6",
+        "source_fact:v1:eef2433a63ab2c92d75e7594c3f5d0dd60a40417185ee16499b30f5a25b7cba0",
+        "source_fact:v1:f1f9b86a894d84f7a482b5d64cb6a8c4397132c9b97a159b03f9920c26da0085"
+      ],
+      "source_published_kst": "2026-10-06T08:45+09:00",
+      "title": "한미반도체, 삼성전기에 패키징 장비 공급…245억원 규모"
     },
     "source_fact:e35eba7097bea2853ea69f50": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
@@ -72342,6 +73292,27 @@
       "source_published_kst": "2026-10-04T11:38+09:00",
       "title": "광주 도시철도 2호선 공사 지연 반복…시민 불편·예산 부담"
     },
+    "title:120872a9be5248f6cbbed4a6": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632599",
+      "source": "이투데이",
+      "source_body_digest": "a7afa3eb1d6b195fed5203d19de05dca34ea66b6da6ff39aa2b7634eb20be4e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c6bb370bf496c2425da588b98dec9be33408996aab19e86aad12d08880c39a64",
+      "source_fact_keys": [
+        "source_fact:v1:31ac9526675aead846d0e8d9f785a9322eeeb84f3fc577490145dcc17ac94922",
+        "source_fact:v1:44e0766cd6eb4730e2694f6b5839a605f0bbd1cce8185363d415c3d177feaf4d",
+        "source_fact:v1:538acb713969bd5cfc847842654f196f37fc8b20889d994127d691cbdcf0c891",
+        "source_fact:v1:8e765150628f450c5022655c4332dd28ed94eeb792aa6086ecd02a0dffe9b738",
+        "source_fact:v1:f0dd221132371a1f15ca0163f4c668e0ec96c18153fa0d28448919ed2bc3025a"
+      ],
+      "source_published_kst": "2026-10-06T08:57+09:00",
+      "title": "LH, 서울대에 기숙사형 전세임대 200가구 공급…전국 500가구 공모"
+    },
     "title:125aa2a12423265979af6012": {
       "first_seen_kst": "2026-10-05T17:30:42+09:00",
       "lanes": {
@@ -72612,6 +73583,25 @@
       ],
       "source_published_kst": "2026-10-05T23:40+09:00",
       "title": "美 서비스 물가 4년 만에 최고치…고용도 다시 확장세"
+    },
+    "title:15df0852ab0e435865839d4a": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006032600003",
+      "source": "연합뉴스",
+      "source_body_digest": "13d7b1cfdf0376087b8a012a057a008ac3212c87918b467ff6c71538c92d7b3b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c44505ed8aa30c8fb86851244b347e9d7bae5ad9f79e589bb6c2e2ff5d78765",
+      "source_fact_keys": [
+        "source_fact:v1:b19e84b197ed6196e11c47aca26e00126c9c0f2bf8593265d916b6640995181f",
+        "source_fact:v1:b32755eef30b5174440e0c74a8ed2e3a0ee6a21a9175f7b4416b0c8d6afddf72",
+        "source_fact:v1:d7e05a49263d1e31a7c5e2b90bc951a7484cb42f5bf041588d9ee7ff16227a07"
+      ],
+      "source_published_kst": "2026-10-06T08:55+09:00",
+      "title": "현대글로비스, SMR 추진 자동차운반선 한미 항로 운항 검토 | 연합뉴스"
     },
     "title:15e9e03ebfcbce1b5da3eeaf": {
       "first_seen_kst": "2026-09-21T20:40:44+09:00",
@@ -76171,6 +77161,24 @@
       "source_published_kst": "2026-10-05T06:05+09:00",
       "title": "“안 털린 은행이 없네, 내 정보 어디로”…정보유출에 흔들리는 금융권"
     },
+    "title:455f99fb4eb1c2355935c276": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632561",
+      "source": "이투데이",
+      "source_body_digest": "d1ff693e93dd1d7827fd69b4ef6b2d04cc6da2b49a3a411a09847a3431931cd4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b380308647127ae47f8b4f5db745a271e38c34c8ad9ce48fa45ab3e0a5a602e",
+      "source_fact_keys": [
+        "source_fact:v1:0930baa6cb604804208a7cd9ccd087ffcc567a2da46c1d6d74be64c0c9903748",
+        "source_fact:v1:b005a94f29719ad75d04285be976ba6ca952f8fceee90be43ba8e954508aed1d"
+      ],
+      "source_published_kst": "2026-10-06T09:00+09:00",
+      "title": "자연과환경, 자회사 한림에코텍 흡수합병…OSCㆍ모듈러 사업 경쟁력 강화"
+    },
     "title:456823dc0834bd9238e4b9aa": {
       "first_seen_kst": "2026-10-05T05:59:37+09:00",
       "lanes": {
@@ -79126,6 +80134,24 @@
       "source_published_kst": "2026-10-05T22:31+09:00",
       "title": "메틀렌: 일본 주요 화학 기업과 신규 갈륨 공급 계약 체결"
     },
+    "title:6eb2522608b1204992359a6b": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02660086645610296",
+      "source": "이데일리",
+      "source_body_digest": "004e3bcf401c93fa242e51d713bbd403d003b4c4a36035f4029fc8a071b4a006",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c452492109e1afb3cd64fc56f45a0bb0960c935cd44e6a71d51123de7a16bc2",
+      "source_fact_keys": [
+        "source_fact:v1:b11be92478b493dba8456ac41d58455a8ddef8a734adfd446cf9ebfc762d3666",
+        "source_fact:v1:bf40511df706579b4cf1ab7ef9784d695796e702d249314d4a89efa56de46897"
+      ],
+      "source_published_kst": "2026-10-06T09:00+09:00",
+      "title": "넥스팟솔루션, ‘3無 프로젝트’ 통해 정품인증 스티커 MOQ 완전 폐지"
+    },
     "title:6ed9967a31aed3dc1b63d586": {
       "first_seen_kst": "2026-10-01T21:43:03+09:00",
       "lanes": {
@@ -79313,20 +80339,20 @@
     "title:71b692d828b4c094a6311e99": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
       "lanes": {
-        "live": "2026-10-05T22:30:10+09:00"
+        "live": "2026-10-06T09:21:20+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:30:10+09:00",
-      "link": "https://www.mt.co.kr/index.php/industry/2026/10/05/2026100516112469972",
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/05/2026100516112469972",
       "source": "머니투데이",
-      "source_body_digest": "359c8e578a9af84fe906d14b240dd971a012927d4db5eb4320c26cb2bc74f014",
+      "source_body_digest": "db8f5eadb11e2d3b3e2646b7ff82bc782fd36253a4448dbb618f7db537b30139",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:3bbc4fd4e830efa9b4428cb33f71f7697e2bde9726364080f71d5a09e7580440",
+      "source_fact_identity": "source_facts:v1:22504cafd5d56cf20d0879309490e265a409f44469b4b3e763ba371f6e363566",
       "source_fact_keys": [
         "source_fact:v1:042f3279d9e95da5f32f54228edd31c2aeaefd19d4d0daedbcc630c6f714002d",
         "source_fact:v1:2de1b71363868c1272d98be6c40d55b85bbf10715bcc01478bf9eb8d929c406f",
         "source_fact:v1:631db7c2519643dd197f3c1123d3d8877248d57f8d161325def03bcbfb00d7f8",
         "source_fact:v1:6a6dbdbaa085b5ca71560ca308cc26b7435e6adf80062f898dd18cc92d55b495",
-        "source_fact:v1:8dce8c1770f4ead01453e48a9136d5ca21ab2ae2bedcba7aa093245618e0272a"
+        "source_fact:v1:900059894588c9f7cd5c51b95598c0e55fe25de94159a586cfe435331554a4e0"
       ],
       "source_published_kst": "2026-10-05T22:07+09:00",
       "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
@@ -81616,6 +82642,26 @@
       "source": "머니투데이",
       "title": "美 금리 인상에 환율 1380원대…\"추세적 반등은 아냐\""
     },
+    "title:8e5a50eb058fc6568e2be28a": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006082620",
+      "source": "지디넷코리아",
+      "source_body_digest": "31b059bcb8e065374a081d7e06940be37a2e3d23c996b8d043ac8d75817655f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0a7b19061c1ff858433ba7d6d6b4b295af809ccbe618b56ff5ecc22e755ebeaa",
+      "source_fact_keys": [
+        "source_fact:v1:36d5e2a027e6cbe64945b1533ab90a5a148ba24e34c88bf521cbc27f6c2e1165",
+        "source_fact:v1:5e94e0787319183ea324df196fdb1183053e7fbaa37b720acd01225bac27afa6",
+        "source_fact:v1:eef2433a63ab2c92d75e7594c3f5d0dd60a40417185ee16499b30f5a25b7cba0",
+        "source_fact:v1:f1f9b86a894d84f7a482b5d64cb6a8c4397132c9b97a159b03f9920c26da0085"
+      ],
+      "source_published_kst": "2026-10-06T08:45+09:00",
+      "title": "한미반도체, 삼성전기에 패키징 장비 공급…245억원 규모"
+    },
     "title:8e7d0a2b38ba4c03bd999914": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
       "lanes": {
@@ -83133,6 +84179,30 @@
       ],
       "source_published_kst": "2026-10-05T21:05+09:00",
       "title": "SS 이노베이션스 인터내셔, 2분기 매출 1390만 달러 39%↑·영업적자 전환"
+    },
+    "title:a44f76f46a11edbf229ab9bb": {
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02473126645610296",
+      "source": "이데일리",
+      "source_body_digest": "b0ab390102883e6cd38b48e420d04d057f5208be2c2fd91af38177ede30167e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2749f9bb85505a820ff70119d5b8cdccc9f746a684b7ca07684a22e69e7fc2f8",
+      "source_fact_keys": [
+        "source_fact:v1:06074629f0cc34c734563d9ceca5b9aed290faddbc7859fbaf6eff0a1025e897",
+        "source_fact:v1:11d4dc4931dceb1f087149cf69f210d56bfbdfadbb53cfb5d68c6813135eda4b",
+        "source_fact:v1:249e48c5de800f22e8dc14c08ead46d28b87da98ca9c8adee33b13d23cc7b974",
+        "source_fact:v1:679b61dd563fc81a726dd22b4478abe9986beacfad2596a5102c0d6326ad1cba",
+        "source_fact:v1:8a8a1abf6ec1034ffb35fd1239a0235fecad2e6b86ff304a41736ca0f41ca55b",
+        "source_fact:v1:95dea891188536658a2f2e2beb8c088c273c6d88c69a389b970116b1c8317007",
+        "source_fact:v1:dbebe27ed771df146e0f5bdfb7ee271c6d51c43aa36211830f3356a580c2edb0",
+        "source_fact:v1:f7c77c7f52618679b5747442d8833bad1f4de79b8f5c69b89b631a59d98469a8"
+      ],
+      "source_published_kst": "2026-10-06T07:45+09:00",
+      "title": "\"지금이 매수 기회\" 화장품株 급락했는데, 수출 29% 급증"
     },
     "title:a481c4c674bb5a5fdbf2a0d9": {
       "first_seen_kst": "2026-10-01T21:50:06+09:00",
@@ -89876,5 +90946,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T09:00:21+09:00"
+  "updated_at_kst": "2026-10-06T09:21:20+09:00"
 }
