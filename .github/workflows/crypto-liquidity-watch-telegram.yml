@@ -151,6 +151,44 @@ jobs:
               assert "다만" not in reason, reason
               assert "순유입 강도도 둔화" in reason, reason
               print("adverse_crypto_wording_valid=true")
+
+          revised = json.loads(json.dumps(live_state))
+          revised["btc_etf"].update({
+              "date": "2026-10-05",
+              "total_usd_m": -159.7,
+              "status": "partial",
+              "reported_funds": 8,
+              "missing_funds": 4,
+              "last5_usd_m": 50.4,
+              "last5_dates": ["2026-09-29", "2026-09-30", "2026-10-01", "2026-10-02", "2026-10-05"],
+              "prev5_usd_m": 1417.8,
+              "prev5_dates": ["2026-09-22", "2026-09-23", "2026-09-24", "2026-09-25", "2026-09-28"],
+              "five_day_change_usd_m": -1367.4,
+              "five_day_change_pct": -96.4,
+          })
+          revised_path = pathlib.Path("/tmp/crypto_liquidity_same_day_revision.json")
+          revised_path.write_text(json.dumps(revised, ensure_ascii=False), encoding="utf-8")
+          fmt.PENDING_STATE_PATH = revised_path
+          same_day_sample = """[크립토 유동성 변화 감지]
+          조회시각(KST): 2026-10-06T10:05:00+09:00
+
+          • BTC 현물 ETF 당일 합계 수정(잠정 집계): -85.2백만달러 → -159.7백만달러
+
+          미 국채 — 미 재무부 공식 수익률곡선 기준일 2026-10-05
+          원화 환산 기준: 1달러=1,359.60원 | 기준일 2026-10-02 | 한국은행 ECOS 원/미국달러(매매기준율) | 교차검증: 접근 불가 | 조회 2026-10-06T10:05:00+09:00
+          공식·데이터 원천:
+          • 원/달러 환율: <a href="https://ecos.bok.or.kr/">원문</a>
+          • 미 국채 금리: <a href="https://home.treasury.gov/">원문</a>
+          • BTC 현물 ETF: <a href="https://farside.co.uk/btc/">원문</a>
+          """
+          revised_rendered = fmt.format_alert(same_day_sample)
+          assert "<b>당일 합계 수정</b> · 잠정 집계" in revised_rendered
+          assert "-85.2백만달러" in revised_rendered and "-159.7백만달러" in revised_rendered
+          assert "잠정 8/12 반영" in revised_rendered
+          assert "최근5(잠정) 2026-09-29~2026-10-05" in revised_rendered
+          assert "+50.4백만달러" in revised_rendered
+          assert "순유입 강도 둔화" in revised_rendered
+          print("same_day_partial_revision_layout_valid=true")
           PY
 
       - name: Validate exact Telegram bot route without sending
