@@ -1638,6 +1638,29 @@
       "source": "매일경제",
       "title": "미 금리 인상에도 7000선 고지 회복한 국장…“변동성 줄고 기초체력 양호”"
     },
+    "event:42f88b55127fea19e17e905d": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645610624",
+      "source": "이데일리",
+      "source_body_digest": "53a17ed9346491167f49ed0a092898368ccc6a1da58a40e392a2acb7251efe17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c4a571f69157cc77be166588eb607d4ed38e2a259f25d6f8fbd4f8a6da4abd6",
+      "source_fact_keys": [
+        "source_fact:v1:00c0886dfd3d596911712af3e94f3a6b3e21f93ef25e2fcd8b2064f409433207",
+        "source_fact:v1:750a32042add84122aa54b76935488e541756749d631f1a35c74a4ab2138f859",
+        "source_fact:v1:8ceb28a5ec76b9271bda91efd6e6a5c3f5c5ddfaf42b8dc686bd7dd64133de96",
+        "source_fact:v1:91603f0530e1f7f965d67dc437c57e8f7b7b4e28ede0c62f6722807a76d8e749",
+        "source_fact:v1:a8b8cd36fe1d7f49316c5f98780dc6d8378899cdddfa2b80fa3059177b8b3c78",
+        "source_fact:v1:d620b5b7f882a8a7f22b0740564153b2c167ed0ec7447844f661f0300b113ae6",
+        "source_fact:v1:f2cb7ae097c1facf2513685537a4c4c330bdc2ddf40ee548d6f3f626cac1199f"
+      ],
+      "source_published_kst": "2026-10-07T07:38+09:00",
+      "title": "NAVER, 3분기 실적은 부진...AI팩토리·두나무 합병 주목-유진"
+    },
     "event:4395adcdf1699e5a3857f196": {
       "first_seen_kst": "2026-10-05T12:50:14+09:00",
       "lanes": {
@@ -2594,19 +2617,20 @@
     "event:695102b941e71506d24b4e08": {
       "first_seen_kst": "2026-10-07T04:49:54+09:00",
       "lanes": {
-        "live": "2026-10-07T07:39:19+09:00"
+        "live": "2026-10-07T08:36:47+09:00"
       },
-      "last_seen_kst": "2026-10-07T07:39:19+09:00",
-      "link": "https://www.newsis.com/view/NISX20261007_0003816466",
-      "source": "뉴시스",
-      "source_body_digest": "992308438fa610603ee9a1a843b617a6b0ea0973f50e4846342d0b812734d9af",
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/07/2026100707045428535",
+      "source": "머니투데이",
+      "source_body_digest": "bd0028d627646d51213964d33b2183b7278ab29d493480d7c7b7b4b64f5f41d1",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:292736dca5b8d6f68c0d11fa1b7da0f726b246b932d113b806e5066e03d732ce",
+      "source_fact_identity": "source_facts:v1:d7193646cb9c38a62d108049e754c13f494d4de4040ea4c6d8cd2b1530b63094",
       "source_fact_keys": [
-        "source_fact:v1:23d6aa2ba902fad95d992048a6963f11a9c27eb07ef4173f4308e91267add27b"
+        "source_fact:v1:4e745276373dc1c6ad455bf98ed5c6e3f108f74db2e82091b8185969870986ce",
+        "source_fact:v1:58a0e08e6bbf4e8ca6c0c31a4cc0e7318edf719321755af26208d1576999ecdc"
       ],
-      "source_published_kst": "2026-10-07T06:44+09:00",
-      "title": "호르무즈서 파나마 유조선 피격…인도 \"12명 부상\""
+      "source_published_kst": "2026-10-07T07:34+09:00",
+      "title": "\"한국, 관세 낮추려 대가 치렀다\"…트럼프, 대미 투자 성과 재차 부각"
     },
     "event:6994ec3ec51f16c535c2ebd5": {
       "first_seen_kst": "2026-09-28T15:47:59+09:00",
@@ -4486,6 +4510,24 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T07:52+09:00",
       "title": "\"누가 좀 사가세요\"…11조 규모 '엔비디아 칩' 파는 아마존"
+    },
+    "event:a6ba43054333cc97a61ee4ca": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02745366645610624&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "c5336bf8b9163b9236607ab5f039f0908e3c121aaa952226551d908d01ce4be7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:18ed91363a2546ebeed12c30e7c71c6a70295b1b425a43a2eafe9910828c1d0a",
+      "source_fact_keys": [
+        "source_fact:v1:5b8dcc10dd92cd5751fe8d12014028a84441bbff7cec9cd95c591921442f49b3",
+        "source_fact:v1:d2a9c85f489ce22f224e08d638f8313913f13cbde592dbdf91c384a237553965"
+      ],
+      "source_published_kst": "2026-10-07T08:06+09:00",
+      "title": "\"호르무즈 건너면 월 2억원\"…유조선 선장 '목숨값' 폭등"
     },
     "event:a7b45cbdb5eac421b1f35805": {
       "first_seen_kst": "2026-09-26T20:15:20+09:00",
@@ -9348,6 +9390,28 @@
       "source_published_kst": "2026-10-06T16:57+09:00",
       "title": "[BioS]알테오젠, 국민성장펀드 등 2000억 유치..\"新동력 확보\""
     },
+    "fact:237c85ad4320c3c7c5ee7601": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02735526645610624",
+      "source": "이데일리",
+      "source_body_digest": "8a825c57bfd3336f5bf04dcd045393e803cff92911e0ba371be159a2f9b6ccb0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25679ef75e64913d63c08d70c360945eb74388572b8ba50a78e0daaa72e74145",
+      "source_fact_keys": [
+        "source_fact:v1:1210f6002f9a81123a4d476eb90ef561b635be968835b266569156f5ceabcd04",
+        "source_fact:v1:220d8c62aa1668d296c29c1d5219f4ad1f5f0faf52f1aa2ad196416422d49200",
+        "source_fact:v1:35b3504e569ac55197d15bde7da93ec5258cb202efe8fa226a29539918237388",
+        "source_fact:v1:4dbfe172e8c90d5a10a9582b73014a823a2f6c47ca67d7e960a59687dca11d7e",
+        "source_fact:v1:809d45ba3d2c335e9a509d1f2a2c57392f8ec54a036b56beb54a11ff30507fd3",
+        "source_fact:v1:9fcf65736545646336c1436944381cd8d85acb82fbe11a127e618016047e0e31"
+      ],
+      "source_published_kst": "2026-10-07T08:04+09:00",
+      "title": "\"AI발 칩 부족 우려, 물가로 번질 수도\"…샌프란 연은 총재의 경고"
+    },
     "fact:23c35a578f669aa77f679980": {
       "first_seen_kst": "2026-10-06T14:52:12+09:00",
       "lanes": {
@@ -10189,6 +10253,25 @@
       ],
       "source_published_kst": "2026-10-06T20:29+09:00",
       "title": "[올댓차이나] 홍콩 증시, 뉴욕 증시 강세에 이틀째 상승 마감… H주 0.96%↑"
+    },
+    "fact:320d6e06543d2c3e274e6ffb": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02122166645610624",
+      "source": "이데일리",
+      "source_body_digest": "f0473394df02daa74bcd458b09bf0e7ca7f39a44591d5e8654f003a0601c1ebe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:984667cd2f9719259f9f07e5b25f2a7a4d4fc4a73c55e406e32feea2d76b9222",
+      "source_fact_keys": [
+        "source_fact:v1:6b1aad67928dfc2ff09b07b39b70ca50f6b59d2e7d1e2d5fc778ea57368439de",
+        "source_fact:v1:7703f144a82238712f7d69c700e6950b0793e7b87e4c45342a82f0ce7887a1c7",
+        "source_fact:v1:87d580febebb64980007743f6953f1bf59190481b74efee3b17e3a59d130a26f"
+      ],
+      "source_published_kst": "2026-10-07T05:56+09:00",
+      "title": "[TODAY애플]앱스토어 성장 2개 분기 연속 한 자릿수 초반…UBS ‘중립’"
     },
     "fact:321505a3dd3646769996176d": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
@@ -11733,6 +11816,29 @@
       ],
       "source_published_kst": "2026-10-06T13:35+09:00",
       "title": "조준희 KOSA 회장 \"AI 수요·공급기업 한자리에…실제 사업으로 연결\""
+    },
+    "fact:4c913ac6069f59ef7d941a27": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645610624",
+      "source": "이데일리",
+      "source_body_digest": "53a17ed9346491167f49ed0a092898368ccc6a1da58a40e392a2acb7251efe17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c4a571f69157cc77be166588eb607d4ed38e2a259f25d6f8fbd4f8a6da4abd6",
+      "source_fact_keys": [
+        "source_fact:v1:00c0886dfd3d596911712af3e94f3a6b3e21f93ef25e2fcd8b2064f409433207",
+        "source_fact:v1:750a32042add84122aa54b76935488e541756749d631f1a35c74a4ab2138f859",
+        "source_fact:v1:8ceb28a5ec76b9271bda91efd6e6a5c3f5c5ddfaf42b8dc686bd7dd64133de96",
+        "source_fact:v1:91603f0530e1f7f965d67dc437c57e8f7b7b4e28ede0c62f6722807a76d8e749",
+        "source_fact:v1:a8b8cd36fe1d7f49316c5f98780dc6d8378899cdddfa2b80fa3059177b8b3c78",
+        "source_fact:v1:d620b5b7f882a8a7f22b0740564153b2c167ed0ec7447844f661f0300b113ae6",
+        "source_fact:v1:f2cb7ae097c1facf2513685537a4c4c330bdc2ddf40ee548d6f3f626cac1199f"
+      ],
+      "source_published_kst": "2026-10-07T07:38+09:00",
+      "title": "NAVER, 3분기 실적은 부진...AI팩토리·두나무 합병 주목-유진"
     },
     "fact:4cbaae6970c4c5a19676fdcf": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
@@ -18131,6 +18237,23 @@
       "source_published_kst": "2026-10-05T11:00+09:00",
       "title": "반려견 피부염 연구 활용…'항염증 엑소좀' 생산기술 개발"
     },
+    "fact:b5f05daee62224b88203b235": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816568",
+      "source": "뉴시스",
+      "source_body_digest": "851b1a85f4d36e0ae0c75ba5ac9b8140d8b574d036198a5b9c9f41e3dc148e14",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:98e79c757008f841fd852963059287638c04cc13921623d40d260fe2fd86074a",
+      "source_fact_keys": [
+        "source_fact:v1:eb6abc8d0cd502e24cf6fcd88f38ca7aff6b2f9bdb4bd65987efe7c66c3ea67f"
+      ],
+      "source_published_kst": "2026-10-07T08:19+09:00",
+      "title": "브이원텍, 배터리 검사 양산장비 2대 수주"
+    },
     "fact:b6037916b29674f583c6e1c1": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
       "lanes": {
@@ -18449,6 +18572,24 @@
       ],
       "source_published_kst": "2026-10-05T16:00+09:00",
       "title": "[기획]한국재료연구원, AI·데이터로 '예측하고 설계하는' 소재 연구시대 연다"
+    },
+    "fact:bf2627a5b50c313ce9927c4e": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02745366645610624&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "c5336bf8b9163b9236607ab5f039f0908e3c121aaa952226551d908d01ce4be7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:18ed91363a2546ebeed12c30e7c71c6a70295b1b425a43a2eafe9910828c1d0a",
+      "source_fact_keys": [
+        "source_fact:v1:5b8dcc10dd92cd5751fe8d12014028a84441bbff7cec9cd95c591921442f49b3",
+        "source_fact:v1:d2a9c85f489ce22f224e08d638f8313913f13cbde592dbdf91c384a237553965"
+      ],
+      "source_published_kst": "2026-10-07T08:06+09:00",
+      "title": "\"호르무즈 건너면 월 2억원\"…유조선 선장 '목숨값' 폭등"
     },
     "fact:bf6f45a93d99bd9197e27d6e": {
       "first_seen_kst": "2026-10-05T23:37:00+09:00",
@@ -21125,6 +21266,24 @@
       "source_published_kst": "2026-10-05T21:09+09:00",
       "title": "플렉스, 액시엄 20억달러 우선주 유치..가치 375억달러"
     },
+    "fact:ee6e6cd0895e2a9204d949ed": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/07/2026100707045428535",
+      "source": "머니투데이",
+      "source_body_digest": "bd0028d627646d51213964d33b2183b7278ab29d493480d7c7b7b4b64f5f41d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7193646cb9c38a62d108049e754c13f494d4de4040ea4c6d8cd2b1530b63094",
+      "source_fact_keys": [
+        "source_fact:v1:4e745276373dc1c6ad455bf98ed5c6e3f108f74db2e82091b8185969870986ce",
+        "source_fact:v1:58a0e08e6bbf4e8ca6c0c31a4cc0e7318edf719321755af26208d1576999ecdc"
+      ],
+      "source_published_kst": "2026-10-07T07:34+09:00",
+      "title": "\"한국, 관세 낮추려 대가 치렀다\"…트럼프, 대미 투자 성과 재차 부각"
+    },
     "fact:eea86da2f6094e9bf231933f": {
       "first_seen_kst": "2026-10-06T21:17:11+09:00",
       "lanes": {
@@ -21784,6 +21943,25 @@
       ],
       "source_published_kst": "2026-10-06T11:41+09:00",
       "title": "삼성전기, 글로벌 기업과 MLCC 공급계약… 1년간 2856억원 규모"
+    },
+    "fact:fb55f2f3397cdb652ad56d91": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894891",
+      "source": "헤럴드경제",
+      "source_body_digest": "d3b01f4095cc52be9d337249bb8ab5a9c838b04875914f7f54036105baa24f82",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11cd3228b4190298d9b57276906869b8b07f103b2bbf061ad7545a262d85dde0",
+      "source_fact_keys": [
+        "source_fact:v1:6ad1a716f73399fd4a6a3cf25d6ed27ad867c6add4cc47e7c175f978c0f65e35",
+        "source_fact:v1:a1f71f19b52d8bc21c88b501e3ec39adfd61c0cc381f1175d2c5468e539d752a",
+        "source_fact:v1:cbdcd566837340418c590dd1b8765965c864133f959a55735b16dc75d707fcb1"
+      ],
+      "source_published_kst": "2026-10-07T08:00+09:00",
+      "title": "반도체가 끌어올린 한국 성장률 ‘눈높이’…해외 IB 전망 한달 새 3.3%→3.5%"
     },
     "fact:fb7067bdc4bf98e0e7e2f64a": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -25845,6 +26023,24 @@
       "source": "전자신문",
       "title": "통신3사 CEO “개인정보 보호가 기업 최우선 경영 가치”…개인정보위원장과 공동선언문 발표"
     },
+    "link:20f0969249aba7cfd89f1b14": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02745366645610624&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "c5336bf8b9163b9236607ab5f039f0908e3c121aaa952226551d908d01ce4be7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:18ed91363a2546ebeed12c30e7c71c6a70295b1b425a43a2eafe9910828c1d0a",
+      "source_fact_keys": [
+        "source_fact:v1:5b8dcc10dd92cd5751fe8d12014028a84441bbff7cec9cd95c591921442f49b3",
+        "source_fact:v1:d2a9c85f489ce22f224e08d638f8313913f13cbde592dbdf91c384a237553965"
+      ],
+      "source_published_kst": "2026-10-07T08:06+09:00",
+      "title": "\"호르무즈 건너면 월 2억원\"…유조선 선장 '목숨값' 폭등"
+    },
     "link:2128b1c022b1893cd39f9c23": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
       "lanes": {
@@ -26777,6 +26973,28 @@
       "source": "이데일리",
       "source_event_identity": "",
       "title": "모기 보이면 '레이저 발사'...中서 나온 134만원짜리 기계"
+    },
+    "link:28086a6dfaf560cc452ea77f": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02735526645610624",
+      "source": "이데일리",
+      "source_body_digest": "8a825c57bfd3336f5bf04dcd045393e803cff92911e0ba371be159a2f9b6ccb0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25679ef75e64913d63c08d70c360945eb74388572b8ba50a78e0daaa72e74145",
+      "source_fact_keys": [
+        "source_fact:v1:1210f6002f9a81123a4d476eb90ef561b635be968835b266569156f5ceabcd04",
+        "source_fact:v1:220d8c62aa1668d296c29c1d5219f4ad1f5f0faf52f1aa2ad196416422d49200",
+        "source_fact:v1:35b3504e569ac55197d15bde7da93ec5258cb202efe8fa226a29539918237388",
+        "source_fact:v1:4dbfe172e8c90d5a10a9582b73014a823a2f6c47ca67d7e960a59687dca11d7e",
+        "source_fact:v1:809d45ba3d2c335e9a509d1f2a2c57392f8ec54a036b56beb54a11ff30507fd3",
+        "source_fact:v1:9fcf65736545646336c1436944381cd8d85acb82fbe11a127e618016047e0e31"
+      ],
+      "source_published_kst": "2026-10-07T08:04+09:00",
+      "title": "\"AI발 칩 부족 우려, 물가로 번질 수도\"…샌프란 연은 총재의 경고"
     },
     "link:280c475484dc12b38714db7b": {
       "first_seen_kst": "2026-10-03T05:26:04+09:00",
@@ -27743,6 +27961,29 @@
       "link": "https://www.yna.co.kr/view/AKR20261001171200003",
       "source": "연합뉴스",
       "title": "한전 사장, 거제 수해지역·도서지역 전력공급 현장 점검 | 연합뉴스"
+    },
+    "link:2f3092cce920a407da32d684": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645610624",
+      "source": "이데일리",
+      "source_body_digest": "53a17ed9346491167f49ed0a092898368ccc6a1da58a40e392a2acb7251efe17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c4a571f69157cc77be166588eb607d4ed38e2a259f25d6f8fbd4f8a6da4abd6",
+      "source_fact_keys": [
+        "source_fact:v1:00c0886dfd3d596911712af3e94f3a6b3e21f93ef25e2fcd8b2064f409433207",
+        "source_fact:v1:750a32042add84122aa54b76935488e541756749d631f1a35c74a4ab2138f859",
+        "source_fact:v1:8ceb28a5ec76b9271bda91efd6e6a5c3f5c5ddfaf42b8dc686bd7dd64133de96",
+        "source_fact:v1:91603f0530e1f7f965d67dc437c57e8f7b7b4e28ede0c62f6722807a76d8e749",
+        "source_fact:v1:a8b8cd36fe1d7f49316c5f98780dc6d8378899cdddfa2b80fa3059177b8b3c78",
+        "source_fact:v1:d620b5b7f882a8a7f22b0740564153b2c167ed0ec7447844f661f0300b113ae6",
+        "source_fact:v1:f2cb7ae097c1facf2513685537a4c4c330bdc2ddf40ee548d6f3f626cac1199f"
+      ],
+      "source_published_kst": "2026-10-07T07:38+09:00",
+      "title": "NAVER, 3분기 실적은 부진...AI팩토리·두나무 합병 주목-유진"
     },
     "link:2f39f1f59cec6cfff7994267": {
       "first_seen_kst": "2026-10-02T15:29:23+09:00",
@@ -41129,6 +41370,23 @@
       "source_published_kst": "2026-10-06T08:42+09:00",
       "title": "SJG세종, 美 조지아주 신규 생산공장 구축…150억 투입"
     },
+    "link:9ebcadde62a791deb321ba61": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816568",
+      "source": "뉴시스",
+      "source_body_digest": "851b1a85f4d36e0ae0c75ba5ac9b8140d8b574d036198a5b9c9f41e3dc148e14",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:98e79c757008f841fd852963059287638c04cc13921623d40d260fe2fd86074a",
+      "source_fact_keys": [
+        "source_fact:v1:eb6abc8d0cd502e24cf6fcd88f38ca7aff6b2f9bdb4bd65987efe7c66c3ea67f"
+      ],
+      "source_published_kst": "2026-10-07T08:19+09:00",
+      "title": "브이원텍, 배터리 검사 양산장비 2대 수주"
+    },
     "link:9ee4867b3e6c495bebb39e8e": {
       "first_seen_kst": "2026-10-05T04:42:26+09:00",
       "lanes": {
@@ -41265,6 +41523,24 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=05471046645608656",
       "source": "이데일리",
       "title": "진석범 전 경기복지재단 대표, 사랑의열매 신임 사무총장 선임"
+    },
+    "link:a01d971537acfed6e9f4295e": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02745366645610624&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "c5336bf8b9163b9236607ab5f039f0908e3c121aaa952226551d908d01ce4be7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:18ed91363a2546ebeed12c30e7c71c6a70295b1b425a43a2eafe9910828c1d0a",
+      "source_fact_keys": [
+        "source_fact:v1:5b8dcc10dd92cd5751fe8d12014028a84441bbff7cec9cd95c591921442f49b3",
+        "source_fact:v1:d2a9c85f489ce22f224e08d638f8313913f13cbde592dbdf91c384a237553965"
+      ],
+      "source_published_kst": "2026-10-07T08:06+09:00",
+      "title": "\"호르무즈 건너면 월 2억원\"…유조선 선장 '목숨값' 폭등"
     },
     "link:a01fb94aac00cb5de07b922f": {
       "first_seen_kst": "2026-10-05T13:15:14+09:00",
@@ -48150,6 +48426,24 @@
       "source_published_kst": "2026-10-06T17:38+09:00",
       "title": "[미국 주식 돋보기] 데이터센터 전력 구원투수 '비코' 고공행진"
     },
+    "link:d8b9b6722c83fc0042b513cd": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/07/2026100707045428535",
+      "source": "머니투데이",
+      "source_body_digest": "bd0028d627646d51213964d33b2183b7278ab29d493480d7c7b7b4b64f5f41d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7193646cb9c38a62d108049e754c13f494d4de4040ea4c6d8cd2b1530b63094",
+      "source_fact_keys": [
+        "source_fact:v1:4e745276373dc1c6ad455bf98ed5c6e3f108f74db2e82091b8185969870986ce",
+        "source_fact:v1:58a0e08e6bbf4e8ca6c0c31a4cc0e7318edf719321755af26208d1576999ecdc"
+      ],
+      "source_published_kst": "2026-10-07T07:34+09:00",
+      "title": "\"한국, 관세 낮추려 대가 치렀다\"…트럼프, 대미 투자 성과 재차 부각"
+    },
     "link:d8bcf9c804b0e1a2ad03dac9": {
       "first_seen_kst": "2026-10-02T09:58:25+09:00",
       "lanes": {
@@ -51125,6 +51419,25 @@
       "source": "연합뉴스",
       "title": "\"국민연금, 인도 국채 투자 허가 절차 진행 중…협상 막바지\" | 연합뉴스"
     },
+    "link:f0fa3ed9698acbca72b7e29b": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894891",
+      "source": "헤럴드경제",
+      "source_body_digest": "d3b01f4095cc52be9d337249bb8ab5a9c838b04875914f7f54036105baa24f82",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11cd3228b4190298d9b57276906869b8b07f103b2bbf061ad7545a262d85dde0",
+      "source_fact_keys": [
+        "source_fact:v1:6ad1a716f73399fd4a6a3cf25d6ed27ad867c6add4cc47e7c175f978c0f65e35",
+        "source_fact:v1:a1f71f19b52d8bc21c88b501e3ec39adfd61c0cc381f1175d2c5468e539d752a",
+        "source_fact:v1:cbdcd566837340418c590dd1b8765965c864133f959a55735b16dc75d707fcb1"
+      ],
+      "source_published_kst": "2026-10-07T08:00+09:00",
+      "title": "반도체가 끌어올린 한국 성장률 ‘눈높이’…해외 IB 전망 한달 새 3.3%→3.5%"
+    },
     "link:f14ca550e4263b31c0649f2b": {
       "first_seen_kst": "2026-10-04T09:16:34+09:00",
       "lanes": {
@@ -52224,6 +52537,25 @@
       ],
       "source_published_kst": "2026-10-07T06:30+09:00",
       "title": "“세금 억울” 권리구제 요청한 사장님…국민신문고에 “국세청 직원에 감동”"
+    },
+    "link:fa01b806a8b0b2f819597cba": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02122166645610624",
+      "source": "이데일리",
+      "source_body_digest": "f0473394df02daa74bcd458b09bf0e7ca7f39a44591d5e8654f003a0601c1ebe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:984667cd2f9719259f9f07e5b25f2a7a4d4fc4a73c55e406e32feea2d76b9222",
+      "source_fact_keys": [
+        "source_fact:v1:6b1aad67928dfc2ff09b07b39b70ca50f6b59d2e7d1e2d5fc778ea57368439de",
+        "source_fact:v1:7703f144a82238712f7d69c700e6950b0793e7b87e4c45342a82f0ce7887a1c7",
+        "source_fact:v1:87d580febebb64980007743f6953f1bf59190481b74efee3b17e3a59d130a26f"
+      ],
+      "source_published_kst": "2026-10-07T05:56+09:00",
+      "title": "[TODAY애플]앱스토어 성장 2개 분기 연속 한 자릿수 초반…UBS ‘중립’"
     },
     "link:fa028724fbd16e4735e20d19": {
       "first_seen_kst": "2026-09-28T15:47:59+09:00",
@@ -54170,6 +54502,23 @@
       "link": "https://www.etoday.co.kr/news/view/2632044",
       "source": "이투데이",
       "title": "K-뷰티 스타트업 발굴·투자…한국벤처투자·아모레 맞손"
+    },
+    "original:0bf653f3c4ba163d3b790755": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816568",
+      "source": "뉴시스",
+      "source_body_digest": "851b1a85f4d36e0ae0c75ba5ac9b8140d8b574d036198a5b9c9f41e3dc148e14",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:98e79c757008f841fd852963059287638c04cc13921623d40d260fe2fd86074a",
+      "source_fact_keys": [
+        "source_fact:v1:eb6abc8d0cd502e24cf6fcd88f38ca7aff6b2f9bdb4bd65987efe7c66c3ea67f"
+      ],
+      "source_published_kst": "2026-10-07T08:19+09:00",
+      "title": "브이원텍, 배터리 검사 양산장비 2대 수주"
     },
     "original:0c5ada0de7aefc578a4d06d4": {
       "first_seen_kst": "2026-10-05T11:14:01+09:00",
@@ -58511,6 +58860,29 @@
       "source_published_kst": "2026-10-05T22:21+09:00",
       "title": "뉴로원 메디컬 테크놀러지, 4분기 잠정 제품매출 380만달러..38% 증가"
     },
+    "original:30c241516e9ce069f786fef5": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645610624",
+      "source": "이데일리",
+      "source_body_digest": "53a17ed9346491167f49ed0a092898368ccc6a1da58a40e392a2acb7251efe17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c4a571f69157cc77be166588eb607d4ed38e2a259f25d6f8fbd4f8a6da4abd6",
+      "source_fact_keys": [
+        "source_fact:v1:00c0886dfd3d596911712af3e94f3a6b3e21f93ef25e2fcd8b2064f409433207",
+        "source_fact:v1:750a32042add84122aa54b76935488e541756749d631f1a35c74a4ab2138f859",
+        "source_fact:v1:8ceb28a5ec76b9271bda91efd6e6a5c3f5c5ddfaf42b8dc686bd7dd64133de96",
+        "source_fact:v1:91603f0530e1f7f965d67dc437c57e8f7b7b4e28ede0c62f6722807a76d8e749",
+        "source_fact:v1:a8b8cd36fe1d7f49316c5f98780dc6d8378899cdddfa2b80fa3059177b8b3c78",
+        "source_fact:v1:d620b5b7f882a8a7f22b0740564153b2c167ed0ec7447844f661f0300b113ae6",
+        "source_fact:v1:f2cb7ae097c1facf2513685537a4c4c330bdc2ddf40ee548d6f3f626cac1199f"
+      ],
+      "source_published_kst": "2026-10-07T07:38+09:00",
+      "title": "NAVER, 3분기 실적은 부진...AI팩토리·두나무 합병 주목-유진"
+    },
     "original:30e5d112f50b7476124611fe": {
       "first_seen_kst": "2026-09-18T14:19:18+09:00",
       "lanes": {
@@ -60087,6 +60459,25 @@
       "link": "https://www.etoday.co.kr/news/view/2632036",
       "source": "이투데이",
       "title": "한국파마, 10억원 규모 자사주 취득…일부 소각·스톡옵션 활용"
+    },
+    "original:3d9c4ce4450ad25402661ab0": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894891",
+      "source": "헤럴드경제",
+      "source_body_digest": "d3b01f4095cc52be9d337249bb8ab5a9c838b04875914f7f54036105baa24f82",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11cd3228b4190298d9b57276906869b8b07f103b2bbf061ad7545a262d85dde0",
+      "source_fact_keys": [
+        "source_fact:v1:6ad1a716f73399fd4a6a3cf25d6ed27ad867c6add4cc47e7c175f978c0f65e35",
+        "source_fact:v1:a1f71f19b52d8bc21c88b501e3ec39adfd61c0cc381f1175d2c5468e539d752a",
+        "source_fact:v1:cbdcd566837340418c590dd1b8765965c864133f959a55735b16dc75d707fcb1"
+      ],
+      "source_published_kst": "2026-10-07T08:00+09:00",
+      "title": "반도체가 끌어올린 한국 성장률 ‘눈높이’…해외 IB 전망 한달 새 3.3%→3.5%"
     },
     "original:3dc0cc1d2e4e458033b9a8a6": {
       "first_seen_kst": "2026-09-21T21:50:35+09:00",
@@ -65516,6 +65907,24 @@
       "source": "매일경제",
       "title": "아처 에비에이션, 보잉 자회사 3곳 인수 반독점 심사 통과"
     },
+    "original:6ae8c5e1f7983ed7b555fd6e": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02745366645610624&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "c5336bf8b9163b9236607ab5f039f0908e3c121aaa952226551d908d01ce4be7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:18ed91363a2546ebeed12c30e7c71c6a70295b1b425a43a2eafe9910828c1d0a",
+      "source_fact_keys": [
+        "source_fact:v1:5b8dcc10dd92cd5751fe8d12014028a84441bbff7cec9cd95c591921442f49b3",
+        "source_fact:v1:d2a9c85f489ce22f224e08d638f8313913f13cbde592dbdf91c384a237553965"
+      ],
+      "source_published_kst": "2026-10-07T08:06+09:00",
+      "title": "\"호르무즈 건너면 월 2억원\"…유조선 선장 '목숨값' 폭등"
+    },
     "original:6af5e501160567769be67672": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
       "lanes": {
@@ -68585,6 +68994,24 @@
       "link": "https://www.yna.co.kr/view/AKR20261001176500002",
       "source": "연합뉴스",
       "title": "프락시스 CEO \"서울 모처에 디지털국가 대사관 짓겠다\" | 연합뉴스"
+    },
+    "original:8568ee646cb7b140b42e1a54": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/07/2026100707045428535",
+      "source": "머니투데이",
+      "source_body_digest": "bd0028d627646d51213964d33b2183b7278ab29d493480d7c7b7b4b64f5f41d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7193646cb9c38a62d108049e754c13f494d4de4040ea4c6d8cd2b1530b63094",
+      "source_fact_keys": [
+        "source_fact:v1:4e745276373dc1c6ad455bf98ed5c6e3f108f74db2e82091b8185969870986ce",
+        "source_fact:v1:58a0e08e6bbf4e8ca6c0c31a4cc0e7318edf719321755af26208d1576999ecdc"
+      ],
+      "source_published_kst": "2026-10-07T07:34+09:00",
+      "title": "\"한국, 관세 낮추려 대가 치렀다\"…트럼프, 대미 투자 성과 재차 부각"
     },
     "original:857cf56d324ff4f045f5a725": {
       "first_seen_kst": "2026-09-18T09:27:02+09:00",
@@ -77305,6 +77732,25 @@
       "source_published_kst": "2026-10-06T13:27+09:00",
       "title": "외국인 1.2조 매도에 코스피 7000선 하회…코스닥은 2%대 강세"
     },
+    "original:d292f8c302011f2c43c44e76": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02122166645610624",
+      "source": "이데일리",
+      "source_body_digest": "f0473394df02daa74bcd458b09bf0e7ca7f39a44591d5e8654f003a0601c1ebe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:984667cd2f9719259f9f07e5b25f2a7a4d4fc4a73c55e406e32feea2d76b9222",
+      "source_fact_keys": [
+        "source_fact:v1:6b1aad67928dfc2ff09b07b39b70ca50f6b59d2e7d1e2d5fc778ea57368439de",
+        "source_fact:v1:7703f144a82238712f7d69c700e6950b0793e7b87e4c45342a82f0ce7887a1c7",
+        "source_fact:v1:87d580febebb64980007743f6953f1bf59190481b74efee3b17e3a59d130a26f"
+      ],
+      "source_published_kst": "2026-10-07T05:56+09:00",
+      "title": "[TODAY애플]앱스토어 성장 2개 분기 연속 한 자릿수 초반…UBS ‘중립’"
+    },
     "original:d2a50421012225a1d33db9c2": {
       "first_seen_kst": "2026-10-05T07:03:44+09:00",
       "lanes": {
@@ -82531,6 +82977,28 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T16:06+09:00",
       "title": "신한은행, 산업현장 찾아 기업 맞춤형 금융 솔루션 제공"
+    },
+    "original:fe4171d0d2ebc2d56c190bed": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02735526645610624",
+      "source": "이데일리",
+      "source_body_digest": "8a825c57bfd3336f5bf04dcd045393e803cff92911e0ba371be159a2f9b6ccb0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25679ef75e64913d63c08d70c360945eb74388572b8ba50a78e0daaa72e74145",
+      "source_fact_keys": [
+        "source_fact:v1:1210f6002f9a81123a4d476eb90ef561b635be968835b266569156f5ceabcd04",
+        "source_fact:v1:220d8c62aa1668d296c29c1d5219f4ad1f5f0faf52f1aa2ad196416422d49200",
+        "source_fact:v1:35b3504e569ac55197d15bde7da93ec5258cb202efe8fa226a29539918237388",
+        "source_fact:v1:4dbfe172e8c90d5a10a9582b73014a823a2f6c47ca67d7e960a59687dca11d7e",
+        "source_fact:v1:809d45ba3d2c335e9a509d1f2a2c57392f8ec54a036b56beb54a11ff30507fd3",
+        "source_fact:v1:9fcf65736545646336c1436944381cd8d85acb82fbe11a127e618016047e0e31"
+      ],
+      "source_published_kst": "2026-10-07T08:04+09:00",
+      "title": "\"AI발 칩 부족 우려, 물가로 번질 수도\"…샌프란 연은 총재의 경고"
     },
     "original:fe664370359ce5ebe81c01f1": {
       "first_seen_kst": "2026-10-02T14:00:40+09:00",
@@ -88178,6 +88646,24 @@
       ],
       "source_published_kst": "2026-10-06T18:09+09:00",
       "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어(종합) | 연합뉴스"
+    },
+    "source_fact:164dfb227ae68be6c3fd3ff6": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02745366645610624&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "c5336bf8b9163b9236607ab5f039f0908e3c121aaa952226551d908d01ce4be7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:18ed91363a2546ebeed12c30e7c71c6a70295b1b425a43a2eafe9910828c1d0a",
+      "source_fact_keys": [
+        "source_fact:v1:5b8dcc10dd92cd5751fe8d12014028a84441bbff7cec9cd95c591921442f49b3",
+        "source_fact:v1:d2a9c85f489ce22f224e08d638f8313913f13cbde592dbdf91c384a237553965"
+      ],
+      "source_published_kst": "2026-10-07T08:06+09:00",
+      "title": "\"호르무즈 건너면 월 2억원\"…유조선 선장 '목숨값' 폭등"
     },
     "source_fact:166dfe51d340e5b33026def6": {
       "first_seen_kst": "2026-10-06T07:30:15+09:00",
@@ -94295,6 +94781,25 @@
       "source_published_kst": "2026-10-05T22:45+09:00",
       "title": "[美특징주]PTC, 슈나이더일렉트릭에 피인수 소식에 급등"
     },
+    "source_fact:2e26e58e4d0defdbc428219f": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894891",
+      "source": "헤럴드경제",
+      "source_body_digest": "d3b01f4095cc52be9d337249bb8ab5a9c838b04875914f7f54036105baa24f82",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11cd3228b4190298d9b57276906869b8b07f103b2bbf061ad7545a262d85dde0",
+      "source_fact_keys": [
+        "source_fact:v1:6ad1a716f73399fd4a6a3cf25d6ed27ad867c6add4cc47e7c175f978c0f65e35",
+        "source_fact:v1:a1f71f19b52d8bc21c88b501e3ec39adfd61c0cc381f1175d2c5468e539d752a",
+        "source_fact:v1:cbdcd566837340418c590dd1b8765965c864133f959a55735b16dc75d707fcb1"
+      ],
+      "source_published_kst": "2026-10-07T08:00+09:00",
+      "title": "반도체가 끌어올린 한국 성장률 ‘눈높이’…해외 IB 전망 한달 새 3.3%→3.5%"
+    },
     "source_fact:2e38789c0d28195a21ad1f9f": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
       "lanes": {
@@ -96746,6 +97251,28 @@
       "source_published_kst": "2026-10-05T12:32+09:00",
       "title": "엔씨 '아이온2' 글로벌 정식 출시... 얼리액세스 동접 17만명"
     },
+    "source_fact:36a0b9093007d4bc32a380c4": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02735526645610624",
+      "source": "이데일리",
+      "source_body_digest": "8a825c57bfd3336f5bf04dcd045393e803cff92911e0ba371be159a2f9b6ccb0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25679ef75e64913d63c08d70c360945eb74388572b8ba50a78e0daaa72e74145",
+      "source_fact_keys": [
+        "source_fact:v1:1210f6002f9a81123a4d476eb90ef561b635be968835b266569156f5ceabcd04",
+        "source_fact:v1:220d8c62aa1668d296c29c1d5219f4ad1f5f0faf52f1aa2ad196416422d49200",
+        "source_fact:v1:35b3504e569ac55197d15bde7da93ec5258cb202efe8fa226a29539918237388",
+        "source_fact:v1:4dbfe172e8c90d5a10a9582b73014a823a2f6c47ca67d7e960a59687dca11d7e",
+        "source_fact:v1:809d45ba3d2c335e9a509d1f2a2c57392f8ec54a036b56beb54a11ff30507fd3",
+        "source_fact:v1:9fcf65736545646336c1436944381cd8d85acb82fbe11a127e618016047e0e31"
+      ],
+      "source_published_kst": "2026-10-07T08:04+09:00",
+      "title": "\"AI발 칩 부족 우려, 물가로 번질 수도\"…샌프란 연은 총재의 경고"
+    },
     "source_fact:36c427245afe5d2f00bedd00": {
       "first_seen_kst": "2026-10-07T05:13:11+09:00",
       "lanes": {
@@ -97157,6 +97684,24 @@
       ],
       "source_published_kst": "2026-10-06T03:32+09:00",
       "title": "[美특징주]마이크로소프트, 멜리우스 ‘매수’ 상향에 2%↑…AI 보안 경쟁력 주목"
+    },
+    "source_fact:37c15589f409358d901a9100": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/07/2026100707045428535",
+      "source": "머니투데이",
+      "source_body_digest": "bd0028d627646d51213964d33b2183b7278ab29d493480d7c7b7b4b64f5f41d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7193646cb9c38a62d108049e754c13f494d4de4040ea4c6d8cd2b1530b63094",
+      "source_fact_keys": [
+        "source_fact:v1:4e745276373dc1c6ad455bf98ed5c6e3f108f74db2e82091b8185969870986ce",
+        "source_fact:v1:58a0e08e6bbf4e8ca6c0c31a4cc0e7318edf719321755af26208d1576999ecdc"
+      ],
+      "source_published_kst": "2026-10-07T07:34+09:00",
+      "title": "\"한국, 관세 낮추려 대가 치렀다\"…트럼프, 대미 투자 성과 재차 부각"
     },
     "source_fact:37d871a17c17f8ae26f738da": {
       "first_seen_kst": "2026-10-07T07:12:15+09:00",
@@ -103236,6 +103781,28 @@
       "source_published_kst": "2026-10-06T10:16+09:00",
       "title": "엠플러스, 유럽 배터리 기업에 각형 장비 공급…방산·항공우주로 고객군 확대"
     },
+    "source_fact:5096b263f06f26115d6f6a52": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02735526645610624",
+      "source": "이데일리",
+      "source_body_digest": "8a825c57bfd3336f5bf04dcd045393e803cff92911e0ba371be159a2f9b6ccb0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25679ef75e64913d63c08d70c360945eb74388572b8ba50a78e0daaa72e74145",
+      "source_fact_keys": [
+        "source_fact:v1:1210f6002f9a81123a4d476eb90ef561b635be968835b266569156f5ceabcd04",
+        "source_fact:v1:220d8c62aa1668d296c29c1d5219f4ad1f5f0faf52f1aa2ad196416422d49200",
+        "source_fact:v1:35b3504e569ac55197d15bde7da93ec5258cb202efe8fa226a29539918237388",
+        "source_fact:v1:4dbfe172e8c90d5a10a9582b73014a823a2f6c47ca67d7e960a59687dca11d7e",
+        "source_fact:v1:809d45ba3d2c335e9a509d1f2a2c57392f8ec54a036b56beb54a11ff30507fd3",
+        "source_fact:v1:9fcf65736545646336c1436944381cd8d85acb82fbe11a127e618016047e0e31"
+      ],
+      "source_published_kst": "2026-10-07T08:04+09:00",
+      "title": "\"AI발 칩 부족 우려, 물가로 번질 수도\"…샌프란 연은 총재의 경고"
+    },
     "source_fact:509d40fbf7f97baebe4ee881": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
       "lanes": {
@@ -107193,6 +107760,28 @@
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
     },
+    "source_fact:5dfc527cef5237deaf1f5495": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02735526645610624",
+      "source": "이데일리",
+      "source_body_digest": "8a825c57bfd3336f5bf04dcd045393e803cff92911e0ba371be159a2f9b6ccb0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25679ef75e64913d63c08d70c360945eb74388572b8ba50a78e0daaa72e74145",
+      "source_fact_keys": [
+        "source_fact:v1:1210f6002f9a81123a4d476eb90ef561b635be968835b266569156f5ceabcd04",
+        "source_fact:v1:220d8c62aa1668d296c29c1d5219f4ad1f5f0faf52f1aa2ad196416422d49200",
+        "source_fact:v1:35b3504e569ac55197d15bde7da93ec5258cb202efe8fa226a29539918237388",
+        "source_fact:v1:4dbfe172e8c90d5a10a9582b73014a823a2f6c47ca67d7e960a59687dca11d7e",
+        "source_fact:v1:809d45ba3d2c335e9a509d1f2a2c57392f8ec54a036b56beb54a11ff30507fd3",
+        "source_fact:v1:9fcf65736545646336c1436944381cd8d85acb82fbe11a127e618016047e0e31"
+      ],
+      "source_published_kst": "2026-10-07T08:04+09:00",
+      "title": "\"AI발 칩 부족 우려, 물가로 번질 수도\"…샌프란 연은 총재의 경고"
+    },
     "source_fact:5dfd8341bbd32b1aa483bc93": {
       "first_seen_kst": "2026-10-07T06:41:04+09:00",
       "lanes": {
@@ -107439,6 +108028,28 @@
       "source_published_kst": "2026-10-05T21:46+09:00",
       "title": "재규어 헬스, 특별 주식배당..우선주 1주 보통주 5주 전환"
     },
+    "source_fact:5f32249b547b2458869972a2": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02735526645610624",
+      "source": "이데일리",
+      "source_body_digest": "8a825c57bfd3336f5bf04dcd045393e803cff92911e0ba371be159a2f9b6ccb0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25679ef75e64913d63c08d70c360945eb74388572b8ba50a78e0daaa72e74145",
+      "source_fact_keys": [
+        "source_fact:v1:1210f6002f9a81123a4d476eb90ef561b635be968835b266569156f5ceabcd04",
+        "source_fact:v1:220d8c62aa1668d296c29c1d5219f4ad1f5f0faf52f1aa2ad196416422d49200",
+        "source_fact:v1:35b3504e569ac55197d15bde7da93ec5258cb202efe8fa226a29539918237388",
+        "source_fact:v1:4dbfe172e8c90d5a10a9582b73014a823a2f6c47ca67d7e960a59687dca11d7e",
+        "source_fact:v1:809d45ba3d2c335e9a509d1f2a2c57392f8ec54a036b56beb54a11ff30507fd3",
+        "source_fact:v1:9fcf65736545646336c1436944381cd8d85acb82fbe11a127e618016047e0e31"
+      ],
+      "source_published_kst": "2026-10-07T08:04+09:00",
+      "title": "\"AI발 칩 부족 우려, 물가로 번질 수도\"…샌프란 연은 총재의 경고"
+    },
     "source_fact:5f33ed37818b6af8afab8cca": {
       "first_seen_kst": "2026-10-06T00:57:01+09:00",
       "lanes": {
@@ -107615,6 +108226,29 @@
       ],
       "source_published_kst": "2026-10-07T01:15+09:00",
       "title": "캐나다 8월 무역흑자 4년만에 최대…관세 앞두고 대미수출 급증 | 연합뉴스"
+    },
+    "source_fact:5fa8b833df6c1a1b3469451b": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645610624",
+      "source": "이데일리",
+      "source_body_digest": "53a17ed9346491167f49ed0a092898368ccc6a1da58a40e392a2acb7251efe17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c4a571f69157cc77be166588eb607d4ed38e2a259f25d6f8fbd4f8a6da4abd6",
+      "source_fact_keys": [
+        "source_fact:v1:00c0886dfd3d596911712af3e94f3a6b3e21f93ef25e2fcd8b2064f409433207",
+        "source_fact:v1:750a32042add84122aa54b76935488e541756749d631f1a35c74a4ab2138f859",
+        "source_fact:v1:8ceb28a5ec76b9271bda91efd6e6a5c3f5c5ddfaf42b8dc686bd7dd64133de96",
+        "source_fact:v1:91603f0530e1f7f965d67dc437c57e8f7b7b4e28ede0c62f6722807a76d8e749",
+        "source_fact:v1:a8b8cd36fe1d7f49316c5f98780dc6d8378899cdddfa2b80fa3059177b8b3c78",
+        "source_fact:v1:d620b5b7f882a8a7f22b0740564153b2c167ed0ec7447844f661f0300b113ae6",
+        "source_fact:v1:f2cb7ae097c1facf2513685537a4c4c330bdc2ddf40ee548d6f3f626cac1199f"
+      ],
+      "source_published_kst": "2026-10-07T07:38+09:00",
+      "title": "NAVER, 3분기 실적은 부진...AI팩토리·두나무 합병 주목-유진"
     },
     "source_fact:5faee85bfeb9249f5283a58b": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
@@ -108824,6 +109458,23 @@
       ],
       "source_published_kst": "2026-10-06T06:10+09:00",
       "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
+    },
+    "source_fact:6522ff312cbd1f01f4938ea5": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816568",
+      "source": "뉴시스",
+      "source_body_digest": "851b1a85f4d36e0ae0c75ba5ac9b8140d8b574d036198a5b9c9f41e3dc148e14",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:98e79c757008f841fd852963059287638c04cc13921623d40d260fe2fd86074a",
+      "source_fact_keys": [
+        "source_fact:v1:eb6abc8d0cd502e24cf6fcd88f38ca7aff6b2f9bdb4bd65987efe7c66c3ea67f"
+      ],
+      "source_published_kst": "2026-10-07T08:19+09:00",
+      "title": "브이원텍, 배터리 검사 양산장비 2대 수주"
     },
     "source_fact:652a5ba789bb3eab961f08a0": {
       "first_seen_kst": "2026-10-06T23:56:49+09:00",
@@ -111023,6 +111674,25 @@
       "source_published_kst": "2026-10-06T09:07+09:00",
       "title": "'MSVP 세계 1위' 한미반도체, 삼성전기 245억 장비 수주"
     },
+    "source_fact:6e262ba0b05e27ececcf2c6c": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02122166645610624",
+      "source": "이데일리",
+      "source_body_digest": "f0473394df02daa74bcd458b09bf0e7ca7f39a44591d5e8654f003a0601c1ebe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:984667cd2f9719259f9f07e5b25f2a7a4d4fc4a73c55e406e32feea2d76b9222",
+      "source_fact_keys": [
+        "source_fact:v1:6b1aad67928dfc2ff09b07b39b70ca50f6b59d2e7d1e2d5fc778ea57368439de",
+        "source_fact:v1:7703f144a82238712f7d69c700e6950b0793e7b87e4c45342a82f0ce7887a1c7",
+        "source_fact:v1:87d580febebb64980007743f6953f1bf59190481b74efee3b17e3a59d130a26f"
+      ],
+      "source_published_kst": "2026-10-07T05:56+09:00",
+      "title": "[TODAY애플]앱스토어 성장 2개 분기 연속 한 자릿수 초반…UBS ‘중립’"
+    },
     "source_fact:6e32bad29eff890aa9f3a351": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -112775,6 +113445,25 @@
       ],
       "source_published_kst": "2026-10-06T11:22+09:00",
       "title": "\"2028년 전력 대란 온다\" 경고…잘나가던 삼전닉스 '빨간불'"
+    },
+    "source_fact:74a9b038063899384b44e108": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894891",
+      "source": "헤럴드경제",
+      "source_body_digest": "d3b01f4095cc52be9d337249bb8ab5a9c838b04875914f7f54036105baa24f82",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11cd3228b4190298d9b57276906869b8b07f103b2bbf061ad7545a262d85dde0",
+      "source_fact_keys": [
+        "source_fact:v1:6ad1a716f73399fd4a6a3cf25d6ed27ad867c6add4cc47e7c175f978c0f65e35",
+        "source_fact:v1:a1f71f19b52d8bc21c88b501e3ec39adfd61c0cc381f1175d2c5468e539d752a",
+        "source_fact:v1:cbdcd566837340418c590dd1b8765965c864133f959a55735b16dc75d707fcb1"
+      ],
+      "source_published_kst": "2026-10-07T08:00+09:00",
+      "title": "반도체가 끌어올린 한국 성장률 ‘눈높이’…해외 IB 전망 한달 새 3.3%→3.5%"
     },
     "source_fact:74ac28d9f9c249446e238231": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
@@ -118270,6 +118959,24 @@
       "source_published_kst": "2026-10-06T04:36+09:00",
       "title": "美10년물 국채금리 장중 5.34% 돌파…24년 만에 최고"
     },
+    "source_fact:89599a4d59f80320326f366e": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/07/2026100707045428535",
+      "source": "머니투데이",
+      "source_body_digest": "bd0028d627646d51213964d33b2183b7278ab29d493480d7c7b7b4b64f5f41d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7193646cb9c38a62d108049e754c13f494d4de4040ea4c6d8cd2b1530b63094",
+      "source_fact_keys": [
+        "source_fact:v1:4e745276373dc1c6ad455bf98ed5c6e3f108f74db2e82091b8185969870986ce",
+        "source_fact:v1:58a0e08e6bbf4e8ca6c0c31a4cc0e7318edf719321755af26208d1576999ecdc"
+      ],
+      "source_published_kst": "2026-10-07T07:34+09:00",
+      "title": "\"한국, 관세 낮추려 대가 치렀다\"…트럼프, 대미 투자 성과 재차 부각"
+    },
     "source_fact:89712f177ab2e179a14d9bd6": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
       "lanes": {
@@ -119122,6 +119829,28 @@
       "source_published_kst": "2026-10-05T20:01+09:00",
       "title": "알렉토, 제넨텍에 AL050 기술이전..선급금 1억 달러"
     },
+    "source_fact:8cc407ab002efe738e383327": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02735526645610624",
+      "source": "이데일리",
+      "source_body_digest": "8a825c57bfd3336f5bf04dcd045393e803cff92911e0ba371be159a2f9b6ccb0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25679ef75e64913d63c08d70c360945eb74388572b8ba50a78e0daaa72e74145",
+      "source_fact_keys": [
+        "source_fact:v1:1210f6002f9a81123a4d476eb90ef561b635be968835b266569156f5ceabcd04",
+        "source_fact:v1:220d8c62aa1668d296c29c1d5219f4ad1f5f0faf52f1aa2ad196416422d49200",
+        "source_fact:v1:35b3504e569ac55197d15bde7da93ec5258cb202efe8fa226a29539918237388",
+        "source_fact:v1:4dbfe172e8c90d5a10a9582b73014a823a2f6c47ca67d7e960a59687dca11d7e",
+        "source_fact:v1:809d45ba3d2c335e9a509d1f2a2c57392f8ec54a036b56beb54a11ff30507fd3",
+        "source_fact:v1:9fcf65736545646336c1436944381cd8d85acb82fbe11a127e618016047e0e31"
+      ],
+      "source_published_kst": "2026-10-07T08:04+09:00",
+      "title": "\"AI발 칩 부족 우려, 물가로 번질 수도\"…샌프란 연은 총재의 경고"
+    },
     "source_fact:8cd9b8fc9a380795fd78eb92": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
       "lanes": {
@@ -119885,6 +120614,29 @@
       ],
       "source_published_kst": "2026-10-05T11:25+09:00",
       "title": "사우디, 11월 아시아 공급용 원유가 대폭 인하 | 연합뉴스"
+    },
+    "source_fact:8f9c8bfa866896c9f89d44a6": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645610624",
+      "source": "이데일리",
+      "source_body_digest": "53a17ed9346491167f49ed0a092898368ccc6a1da58a40e392a2acb7251efe17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c4a571f69157cc77be166588eb607d4ed38e2a259f25d6f8fbd4f8a6da4abd6",
+      "source_fact_keys": [
+        "source_fact:v1:00c0886dfd3d596911712af3e94f3a6b3e21f93ef25e2fcd8b2064f409433207",
+        "source_fact:v1:750a32042add84122aa54b76935488e541756749d631f1a35c74a4ab2138f859",
+        "source_fact:v1:8ceb28a5ec76b9271bda91efd6e6a5c3f5c5ddfaf42b8dc686bd7dd64133de96",
+        "source_fact:v1:91603f0530e1f7f965d67dc437c57e8f7b7b4e28ede0c62f6722807a76d8e749",
+        "source_fact:v1:a8b8cd36fe1d7f49316c5f98780dc6d8378899cdddfa2b80fa3059177b8b3c78",
+        "source_fact:v1:d620b5b7f882a8a7f22b0740564153b2c167ed0ec7447844f661f0300b113ae6",
+        "source_fact:v1:f2cb7ae097c1facf2513685537a4c4c330bdc2ddf40ee548d6f3f626cac1199f"
+      ],
+      "source_published_kst": "2026-10-07T07:38+09:00",
+      "title": "NAVER, 3분기 실적은 부진...AI팩토리·두나무 합병 주목-유진"
     },
     "source_fact:8fb68ce7c8e7bdb410b3a43b": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
@@ -121006,6 +121758,29 @@
       ],
       "source_published_kst": "2026-10-05T23:40+09:00",
       "title": "美 서비스 물가 4년 만에 최고치…고용도 다시 확장세"
+    },
+    "source_fact:94252a0fa139126cfb2dca7b": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645610624",
+      "source": "이데일리",
+      "source_body_digest": "53a17ed9346491167f49ed0a092898368ccc6a1da58a40e392a2acb7251efe17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c4a571f69157cc77be166588eb607d4ed38e2a259f25d6f8fbd4f8a6da4abd6",
+      "source_fact_keys": [
+        "source_fact:v1:00c0886dfd3d596911712af3e94f3a6b3e21f93ef25e2fcd8b2064f409433207",
+        "source_fact:v1:750a32042add84122aa54b76935488e541756749d631f1a35c74a4ab2138f859",
+        "source_fact:v1:8ceb28a5ec76b9271bda91efd6e6a5c3f5c5ddfaf42b8dc686bd7dd64133de96",
+        "source_fact:v1:91603f0530e1f7f965d67dc437c57e8f7b7b4e28ede0c62f6722807a76d8e749",
+        "source_fact:v1:a8b8cd36fe1d7f49316c5f98780dc6d8378899cdddfa2b80fa3059177b8b3c78",
+        "source_fact:v1:d620b5b7f882a8a7f22b0740564153b2c167ed0ec7447844f661f0300b113ae6",
+        "source_fact:v1:f2cb7ae097c1facf2513685537a4c4c330bdc2ddf40ee548d6f3f626cac1199f"
+      ],
+      "source_published_kst": "2026-10-07T07:38+09:00",
+      "title": "NAVER, 3분기 실적은 부진...AI팩토리·두나무 합병 주목-유진"
     },
     "source_fact:945db066d1af819a02af56db": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
@@ -124803,6 +125578,24 @@
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
     },
+    "source_fact:a228cf42d7acdf9ba82349ce": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02745366645610624&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "c5336bf8b9163b9236607ab5f039f0908e3c121aaa952226551d908d01ce4be7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:18ed91363a2546ebeed12c30e7c71c6a70295b1b425a43a2eafe9910828c1d0a",
+      "source_fact_keys": [
+        "source_fact:v1:5b8dcc10dd92cd5751fe8d12014028a84441bbff7cec9cd95c591921442f49b3",
+        "source_fact:v1:d2a9c85f489ce22f224e08d638f8313913f13cbde592dbdf91c384a237553965"
+      ],
+      "source_published_kst": "2026-10-07T08:06+09:00",
+      "title": "\"호르무즈 건너면 월 2억원\"…유조선 선장 '목숨값' 폭등"
+    },
     "source_fact:a282606d880ce88c75862530": {
       "first_seen_kst": "2026-10-07T01:18:00+09:00",
       "lanes": {
@@ -124960,23 +125753,21 @@
     "source_fact:a34a96a059a58dc4276d5e03": {
       "first_seen_kst": "2026-10-06T16:30:27+09:00",
       "lanes": {
-        "live": "2026-10-06T16:30:27+09:00"
+        "live": "2026-10-07T08:36:47+09:00"
       },
-      "last_seen_kst": "2026-10-06T16:30:27+09:00",
-      "link": "https://biz.heraldcorp.com/article/10894289",
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894891",
       "source": "헤럴드경제",
-      "source_body_digest": "870313e41932023ee87fa3f6f68a3fdff15a23f3ece240b586569cd468e777b1",
+      "source_body_digest": "d3b01f4095cc52be9d337249bb8ab5a9c838b04875914f7f54036105baa24f82",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:0509cf70bf29e15e434161dbb0ee912e22d6508ee1fc558f973f71887251656e",
+      "source_fact_identity": "source_facts:v1:11cd3228b4190298d9b57276906869b8b07f103b2bbf061ad7545a262d85dde0",
       "source_fact_keys": [
-        "source_fact:v1:0a4203753defd524b09bad48c7f3595c006aaeb42eaa6ec5bafb76b2a2419bdc",
-        "source_fact:v1:2b09f7b8d2bfa437d33e5780d456551bc726cba0329a677d76475590e95fa6d7",
-        "source_fact:v1:48a5b9ffceed62a7e7c2b20513aecf63e548637dbc6f799de9265a6cddfc5be1",
         "source_fact:v1:6ad1a716f73399fd4a6a3cf25d6ed27ad867c6add4cc47e7c175f978c0f65e35",
-        "source_fact:v1:8134e64beded16c142aa8d98bf3bff085d168197581cb452aae0cd9c22046660"
+        "source_fact:v1:a1f71f19b52d8bc21c88b501e3ec39adfd61c0cc381f1175d2c5468e539d752a",
+        "source_fact:v1:cbdcd566837340418c590dd1b8765965c864133f959a55735b16dc75d707fcb1"
       ],
-      "source_published_kst": "2026-10-06T14:14+09:00",
-      "title": "경상수지 흑자 너무 많아도 문제? IMF 내년 한국에 ‘과잉 평가’ 전망 [머니뭐니]"
+      "source_published_kst": "2026-10-07T08:00+09:00",
+      "title": "반도체가 끌어올린 한국 성장률 ‘눈높이’…해외 IB 전망 한달 새 3.3%→3.5%"
     },
     "source_fact:a35018a5612e1f442e277495": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
@@ -126549,6 +127340,29 @@
       ],
       "source_published_kst": "2026-10-05T21:02+09:00",
       "title": "레졸루트, FDA 3상 실패에도 BLA 사전회의 권고"
+    },
+    "source_fact:aa42e11595f3be6f6d1ebc85": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645610624",
+      "source": "이데일리",
+      "source_body_digest": "53a17ed9346491167f49ed0a092898368ccc6a1da58a40e392a2acb7251efe17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c4a571f69157cc77be166588eb607d4ed38e2a259f25d6f8fbd4f8a6da4abd6",
+      "source_fact_keys": [
+        "source_fact:v1:00c0886dfd3d596911712af3e94f3a6b3e21f93ef25e2fcd8b2064f409433207",
+        "source_fact:v1:750a32042add84122aa54b76935488e541756749d631f1a35c74a4ab2138f859",
+        "source_fact:v1:8ceb28a5ec76b9271bda91efd6e6a5c3f5c5ddfaf42b8dc686bd7dd64133de96",
+        "source_fact:v1:91603f0530e1f7f965d67dc437c57e8f7b7b4e28ede0c62f6722807a76d8e749",
+        "source_fact:v1:a8b8cd36fe1d7f49316c5f98780dc6d8378899cdddfa2b80fa3059177b8b3c78",
+        "source_fact:v1:d620b5b7f882a8a7f22b0740564153b2c167ed0ec7447844f661f0300b113ae6",
+        "source_fact:v1:f2cb7ae097c1facf2513685537a4c4c330bdc2ddf40ee548d6f3f626cac1199f"
+      ],
+      "source_published_kst": "2026-10-07T07:38+09:00",
+      "title": "NAVER, 3분기 실적은 부진...AI팩토리·두나무 합병 주목-유진"
     },
     "source_fact:aa79dcaf5cace5c1b079ba51": {
       "first_seen_kst": "2026-10-06T01:51:09+09:00",
@@ -133900,6 +134714,29 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "[ETF업&다운]3분기 엇갈린 반도체…삼전닉스 빠지고 소부장 버텼다"
     },
+    "source_fact:c5f63a2bee0e55ec0b7ab467": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645610624",
+      "source": "이데일리",
+      "source_body_digest": "53a17ed9346491167f49ed0a092898368ccc6a1da58a40e392a2acb7251efe17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c4a571f69157cc77be166588eb607d4ed38e2a259f25d6f8fbd4f8a6da4abd6",
+      "source_fact_keys": [
+        "source_fact:v1:00c0886dfd3d596911712af3e94f3a6b3e21f93ef25e2fcd8b2064f409433207",
+        "source_fact:v1:750a32042add84122aa54b76935488e541756749d631f1a35c74a4ab2138f859",
+        "source_fact:v1:8ceb28a5ec76b9271bda91efd6e6a5c3f5c5ddfaf42b8dc686bd7dd64133de96",
+        "source_fact:v1:91603f0530e1f7f965d67dc437c57e8f7b7b4e28ede0c62f6722807a76d8e749",
+        "source_fact:v1:a8b8cd36fe1d7f49316c5f98780dc6d8378899cdddfa2b80fa3059177b8b3c78",
+        "source_fact:v1:d620b5b7f882a8a7f22b0740564153b2c167ed0ec7447844f661f0300b113ae6",
+        "source_fact:v1:f2cb7ae097c1facf2513685537a4c4c330bdc2ddf40ee548d6f3f626cac1199f"
+      ],
+      "source_published_kst": "2026-10-07T07:38+09:00",
+      "title": "NAVER, 3분기 실적은 부진...AI팩토리·두나무 합병 주목-유진"
+    },
     "source_fact:c614e79177d43f1cd4bee928": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
@@ -134792,6 +135629,28 @@
       ],
       "source_published_kst": "2026-10-06T09:10+09:00",
       "title": "호르무즈 셔틀운항 특수…\"1회 왕복 500억에 선원도 3400만원씩\""
+    },
+    "source_fact:c990bd542b81eec30504ee5b": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02735526645610624",
+      "source": "이데일리",
+      "source_body_digest": "8a825c57bfd3336f5bf04dcd045393e803cff92911e0ba371be159a2f9b6ccb0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25679ef75e64913d63c08d70c360945eb74388572b8ba50a78e0daaa72e74145",
+      "source_fact_keys": [
+        "source_fact:v1:1210f6002f9a81123a4d476eb90ef561b635be968835b266569156f5ceabcd04",
+        "source_fact:v1:220d8c62aa1668d296c29c1d5219f4ad1f5f0faf52f1aa2ad196416422d49200",
+        "source_fact:v1:35b3504e569ac55197d15bde7da93ec5258cb202efe8fa226a29539918237388",
+        "source_fact:v1:4dbfe172e8c90d5a10a9582b73014a823a2f6c47ca67d7e960a59687dca11d7e",
+        "source_fact:v1:809d45ba3d2c335e9a509d1f2a2c57392f8ec54a036b56beb54a11ff30507fd3",
+        "source_fact:v1:9fcf65736545646336c1436944381cd8d85acb82fbe11a127e618016047e0e31"
+      ],
+      "source_published_kst": "2026-10-07T08:04+09:00",
+      "title": "\"AI발 칩 부족 우려, 물가로 번질 수도\"…샌프란 연은 총재의 경고"
     },
     "source_fact:c9953c832fdef60fcf03c808": {
       "first_seen_kst": "2026-10-06T06:36:31+09:00",
@@ -135736,6 +136595,25 @@
       ],
       "source_published_kst": "2026-10-06T05:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
+    },
+    "source_fact:ce1ded78b531675b0a9c3970": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02122166645610624",
+      "source": "이데일리",
+      "source_body_digest": "f0473394df02daa74bcd458b09bf0e7ca7f39a44591d5e8654f003a0601c1ebe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:984667cd2f9719259f9f07e5b25f2a7a4d4fc4a73c55e406e32feea2d76b9222",
+      "source_fact_keys": [
+        "source_fact:v1:6b1aad67928dfc2ff09b07b39b70ca50f6b59d2e7d1e2d5fc778ea57368439de",
+        "source_fact:v1:7703f144a82238712f7d69c700e6950b0793e7b87e4c45342a82f0ce7887a1c7",
+        "source_fact:v1:87d580febebb64980007743f6953f1bf59190481b74efee3b17e3a59d130a26f"
+      ],
+      "source_published_kst": "2026-10-07T05:56+09:00",
+      "title": "[TODAY애플]앱스토어 성장 2개 분기 연속 한 자릿수 초반…UBS ‘중립’"
     },
     "source_fact:ce20b18524a2ce0bb975d0b8": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
@@ -138246,6 +139124,25 @@
       ],
       "source_published_kst": "2026-10-06T17:52+09:00",
       "title": "코스닥, 석달 만에 900 뚫었다…소부장·바이오·배터리주 강세"
+    },
+    "source_fact:d6cc98abca1a179ce15fd35d": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02122166645610624",
+      "source": "이데일리",
+      "source_body_digest": "f0473394df02daa74bcd458b09bf0e7ca7f39a44591d5e8654f003a0601c1ebe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:984667cd2f9719259f9f07e5b25f2a7a4d4fc4a73c55e406e32feea2d76b9222",
+      "source_fact_keys": [
+        "source_fact:v1:6b1aad67928dfc2ff09b07b39b70ca50f6b59d2e7d1e2d5fc778ea57368439de",
+        "source_fact:v1:7703f144a82238712f7d69c700e6950b0793e7b87e4c45342a82f0ce7887a1c7",
+        "source_fact:v1:87d580febebb64980007743f6953f1bf59190481b74efee3b17e3a59d130a26f"
+      ],
+      "source_published_kst": "2026-10-07T05:56+09:00",
+      "title": "[TODAY애플]앱스토어 성장 2개 분기 연속 한 자릿수 초반…UBS ‘중립’"
     },
     "source_fact:d6d5f5cfdb4540c82f15f87b": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -141018,6 +141915,29 @@
       ],
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "데이터센터 반대여론에도 美건설 계속…2027년 90GW 전망"
+    },
+    "source_fact:e0a9342f91c05b509d332205": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645610624",
+      "source": "이데일리",
+      "source_body_digest": "53a17ed9346491167f49ed0a092898368ccc6a1da58a40e392a2acb7251efe17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c4a571f69157cc77be166588eb607d4ed38e2a259f25d6f8fbd4f8a6da4abd6",
+      "source_fact_keys": [
+        "source_fact:v1:00c0886dfd3d596911712af3e94f3a6b3e21f93ef25e2fcd8b2064f409433207",
+        "source_fact:v1:750a32042add84122aa54b76935488e541756749d631f1a35c74a4ab2138f859",
+        "source_fact:v1:8ceb28a5ec76b9271bda91efd6e6a5c3f5c5ddfaf42b8dc686bd7dd64133de96",
+        "source_fact:v1:91603f0530e1f7f965d67dc437c57e8f7b7b4e28ede0c62f6722807a76d8e749",
+        "source_fact:v1:a8b8cd36fe1d7f49316c5f98780dc6d8378899cdddfa2b80fa3059177b8b3c78",
+        "source_fact:v1:d620b5b7f882a8a7f22b0740564153b2c167ed0ec7447844f661f0300b113ae6",
+        "source_fact:v1:f2cb7ae097c1facf2513685537a4c4c330bdc2ddf40ee548d6f3f626cac1199f"
+      ],
+      "source_published_kst": "2026-10-07T07:38+09:00",
+      "title": "NAVER, 3분기 실적은 부진...AI팩토리·두나무 합병 주목-유진"
     },
     "source_fact:e0b9d36e4e38409eb1a00dd4": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
@@ -145090,6 +146010,29 @@
       ],
       "source_published_kst": "2026-10-06T18:38+09:00",
       "title": "부산 스타트업 '데이터스피라' 伊 명품 돌체앤가바나 뚫었다"
+    },
+    "source_fact:ef08e2fb56e8ded8a26eafac": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645610624",
+      "source": "이데일리",
+      "source_body_digest": "53a17ed9346491167f49ed0a092898368ccc6a1da58a40e392a2acb7251efe17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c4a571f69157cc77be166588eb607d4ed38e2a259f25d6f8fbd4f8a6da4abd6",
+      "source_fact_keys": [
+        "source_fact:v1:00c0886dfd3d596911712af3e94f3a6b3e21f93ef25e2fcd8b2064f409433207",
+        "source_fact:v1:750a32042add84122aa54b76935488e541756749d631f1a35c74a4ab2138f859",
+        "source_fact:v1:8ceb28a5ec76b9271bda91efd6e6a5c3f5c5ddfaf42b8dc686bd7dd64133de96",
+        "source_fact:v1:91603f0530e1f7f965d67dc437c57e8f7b7b4e28ede0c62f6722807a76d8e749",
+        "source_fact:v1:a8b8cd36fe1d7f49316c5f98780dc6d8378899cdddfa2b80fa3059177b8b3c78",
+        "source_fact:v1:d620b5b7f882a8a7f22b0740564153b2c167ed0ec7447844f661f0300b113ae6",
+        "source_fact:v1:f2cb7ae097c1facf2513685537a4c4c330bdc2ddf40ee548d6f3f626cac1199f"
+      ],
+      "source_published_kst": "2026-10-07T07:38+09:00",
+      "title": "NAVER, 3분기 실적은 부진...AI팩토리·두나무 합병 주목-유진"
     },
     "source_fact:ef402e514c69b758444f8164": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
@@ -150632,6 +151575,23 @@
       "source": "이투데이",
       "title": "K-뷰티 스타트업 발굴·투자…한국벤처투자·아모레 맞손"
     },
+    "title:0bf653f3c4ba163d3b790755": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816568",
+      "source": "뉴시스",
+      "source_body_digest": "851b1a85f4d36e0ae0c75ba5ac9b8140d8b574d036198a5b9c9f41e3dc148e14",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:98e79c757008f841fd852963059287638c04cc13921623d40d260fe2fd86074a",
+      "source_fact_keys": [
+        "source_fact:v1:eb6abc8d0cd502e24cf6fcd88f38ca7aff6b2f9bdb4bd65987efe7c66c3ea67f"
+      ],
+      "source_published_kst": "2026-10-07T08:19+09:00",
+      "title": "브이원텍, 배터리 검사 양산장비 2대 수주"
+    },
     "title:0c5ada0de7aefc578a4d06d4": {
       "first_seen_kst": "2026-10-05T11:14:01+09:00",
       "lanes": {
@@ -154972,6 +155932,29 @@
       "source_published_kst": "2026-10-05T22:21+09:00",
       "title": "뉴로원 메디컬 테크놀러지, 4분기 잠정 제품매출 380만달러..38% 증가"
     },
+    "title:30c241516e9ce069f786fef5": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02637126645610624",
+      "source": "이데일리",
+      "source_body_digest": "53a17ed9346491167f49ed0a092898368ccc6a1da58a40e392a2acb7251efe17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c4a571f69157cc77be166588eb607d4ed38e2a259f25d6f8fbd4f8a6da4abd6",
+      "source_fact_keys": [
+        "source_fact:v1:00c0886dfd3d596911712af3e94f3a6b3e21f93ef25e2fcd8b2064f409433207",
+        "source_fact:v1:750a32042add84122aa54b76935488e541756749d631f1a35c74a4ab2138f859",
+        "source_fact:v1:8ceb28a5ec76b9271bda91efd6e6a5c3f5c5ddfaf42b8dc686bd7dd64133de96",
+        "source_fact:v1:91603f0530e1f7f965d67dc437c57e8f7b7b4e28ede0c62f6722807a76d8e749",
+        "source_fact:v1:a8b8cd36fe1d7f49316c5f98780dc6d8378899cdddfa2b80fa3059177b8b3c78",
+        "source_fact:v1:d620b5b7f882a8a7f22b0740564153b2c167ed0ec7447844f661f0300b113ae6",
+        "source_fact:v1:f2cb7ae097c1facf2513685537a4c4c330bdc2ddf40ee548d6f3f626cac1199f"
+      ],
+      "source_published_kst": "2026-10-07T07:38+09:00",
+      "title": "NAVER, 3분기 실적은 부진...AI팩토리·두나무 합병 주목-유진"
+    },
     "title:30e5d112f50b7476124611fe": {
       "first_seen_kst": "2026-09-18T14:19:18+09:00",
       "lanes": {
@@ -156559,6 +157542,25 @@
       "link": "https://www.etoday.co.kr/news/view/2632036",
       "source": "이투데이",
       "title": "한국파마, 10억원 규모 자사주 취득…일부 소각·스톡옵션 활용"
+    },
+    "title:3d9c4ce4450ad25402661ab0": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894891",
+      "source": "헤럴드경제",
+      "source_body_digest": "d3b01f4095cc52be9d337249bb8ab5a9c838b04875914f7f54036105baa24f82",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11cd3228b4190298d9b57276906869b8b07f103b2bbf061ad7545a262d85dde0",
+      "source_fact_keys": [
+        "source_fact:v1:6ad1a716f73399fd4a6a3cf25d6ed27ad867c6add4cc47e7c175f978c0f65e35",
+        "source_fact:v1:a1f71f19b52d8bc21c88b501e3ec39adfd61c0cc381f1175d2c5468e539d752a",
+        "source_fact:v1:cbdcd566837340418c590dd1b8765965c864133f959a55735b16dc75d707fcb1"
+      ],
+      "source_published_kst": "2026-10-07T08:00+09:00",
+      "title": "반도체가 끌어올린 한국 성장률 ‘눈높이’…해외 IB 전망 한달 새 3.3%→3.5%"
     },
     "title:3dc0cc1d2e4e458033b9a8a6": {
       "first_seen_kst": "2026-09-21T21:50:35+09:00",
@@ -162044,6 +163046,24 @@
       "source": "매일경제",
       "title": "아처 에비에이션, 보잉 자회사 3곳 인수 반독점 심사 통과"
     },
+    "title:6ae8c5e1f7983ed7b555fd6e": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02745366645610624&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "c5336bf8b9163b9236607ab5f039f0908e3c121aaa952226551d908d01ce4be7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:18ed91363a2546ebeed12c30e7c71c6a70295b1b425a43a2eafe9910828c1d0a",
+      "source_fact_keys": [
+        "source_fact:v1:5b8dcc10dd92cd5751fe8d12014028a84441bbff7cec9cd95c591921442f49b3",
+        "source_fact:v1:d2a9c85f489ce22f224e08d638f8313913f13cbde592dbdf91c384a237553965"
+      ],
+      "source_published_kst": "2026-10-07T08:06+09:00",
+      "title": "\"호르무즈 건너면 월 2억원\"…유조선 선장 '목숨값' 폭등"
+    },
     "title:6af5e501160567769be67672": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
       "lanes": {
@@ -165213,6 +166233,24 @@
       "link": "https://www.yna.co.kr/view/AKR20261001176500002",
       "source": "연합뉴스",
       "title": "프락시스 CEO \"서울 모처에 디지털국가 대사관 짓겠다\" | 연합뉴스"
+    },
+    "title:8568ee646cb7b140b42e1a54": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/07/2026100707045428535",
+      "source": "머니투데이",
+      "source_body_digest": "bd0028d627646d51213964d33b2183b7278ab29d493480d7c7b7b4b64f5f41d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7193646cb9c38a62d108049e754c13f494d4de4040ea4c6d8cd2b1530b63094",
+      "source_fact_keys": [
+        "source_fact:v1:4e745276373dc1c6ad455bf98ed5c6e3f108f74db2e82091b8185969870986ce",
+        "source_fact:v1:58a0e08e6bbf4e8ca6c0c31a4cc0e7318edf719321755af26208d1576999ecdc"
+      ],
+      "source_published_kst": "2026-10-07T07:34+09:00",
+      "title": "\"한국, 관세 낮추려 대가 치렀다\"…트럼프, 대미 투자 성과 재차 부각"
     },
     "title:857cf56d324ff4f045f5a725": {
       "first_seen_kst": "2026-09-18T09:27:02+09:00",
@@ -174156,6 +175194,25 @@
       "source_published_kst": "2026-10-06T13:27+09:00",
       "title": "외국인 1.2조 매도에 코스피 7000선 하회…코스닥은 2%대 강세"
     },
+    "title:d292f8c302011f2c43c44e76": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02122166645610624",
+      "source": "이데일리",
+      "source_body_digest": "f0473394df02daa74bcd458b09bf0e7ca7f39a44591d5e8654f003a0601c1ebe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:984667cd2f9719259f9f07e5b25f2a7a4d4fc4a73c55e406e32feea2d76b9222",
+      "source_fact_keys": [
+        "source_fact:v1:6b1aad67928dfc2ff09b07b39b70ca50f6b59d2e7d1e2d5fc778ea57368439de",
+        "source_fact:v1:7703f144a82238712f7d69c700e6950b0793e7b87e4c45342a82f0ce7887a1c7",
+        "source_fact:v1:87d580febebb64980007743f6953f1bf59190481b74efee3b17e3a59d130a26f"
+      ],
+      "source_published_kst": "2026-10-07T05:56+09:00",
+      "title": "[TODAY애플]앱스토어 성장 2개 분기 연속 한 자릿수 초반…UBS ‘중립’"
+    },
     "title:d2a50421012225a1d33db9c2": {
       "first_seen_kst": "2026-10-05T07:03:44+09:00",
       "lanes": {
@@ -179481,6 +180538,28 @@
       "source_published_kst": "2026-10-06T16:06+09:00",
       "title": "신한은행, 산업현장 찾아 기업 맞춤형 금융 솔루션 제공"
     },
+    "title:fe4171d0d2ebc2d56c190bed": {
+      "first_seen_kst": "2026-10-07T08:36:47+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:36:47+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:36:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02735526645610624",
+      "source": "이데일리",
+      "source_body_digest": "8a825c57bfd3336f5bf04dcd045393e803cff92911e0ba371be159a2f9b6ccb0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25679ef75e64913d63c08d70c360945eb74388572b8ba50a78e0daaa72e74145",
+      "source_fact_keys": [
+        "source_fact:v1:1210f6002f9a81123a4d476eb90ef561b635be968835b266569156f5ceabcd04",
+        "source_fact:v1:220d8c62aa1668d296c29c1d5219f4ad1f5f0faf52f1aa2ad196416422d49200",
+        "source_fact:v1:35b3504e569ac55197d15bde7da93ec5258cb202efe8fa226a29539918237388",
+        "source_fact:v1:4dbfe172e8c90d5a10a9582b73014a823a2f6c47ca67d7e960a59687dca11d7e",
+        "source_fact:v1:809d45ba3d2c335e9a509d1f2a2c57392f8ec54a036b56beb54a11ff30507fd3",
+        "source_fact:v1:9fcf65736545646336c1436944381cd8d85acb82fbe11a127e618016047e0e31"
+      ],
+      "source_published_kst": "2026-10-07T08:04+09:00",
+      "title": "\"AI발 칩 부족 우려, 물가로 번질 수도\"…샌프란 연은 총재의 경고"
+    },
     "title:fe664370359ce5ebe81c01f1": {
       "first_seen_kst": "2026-10-02T14:00:40+09:00",
       "lanes": {
@@ -179647,5 +180726,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-07T08:15:28+09:00"
+  "updated_at_kst": "2026-10-07T08:36:47+09:00"
 }
