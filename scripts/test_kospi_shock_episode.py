@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import time
 from collections import deque
-from kospi_shock_episode_watch import Watch, fmt_clock
+from kospi_shock_episode_watch import Watch, fmt_clock, ko_subject
 
 w = Watch.__new__(Watch)
 w.idx = deque(maxlen=30000)
@@ -123,3 +123,38 @@ assert att5["confidence"] == "중간", att5
 assert att5["program_quality"] is False, att5
 assert "외국인가" not in att5["verdict"], att5
 print("program_skew_regression=true")
+
+
+# 조사 표기 회귀: 외국인가/기관가 같은 오타를 만들지 않는다.
+assert ko_subject("외국인") == "외국인이"
+assert ko_subject("기관") == "기관이"
+assert ko_subject("코스피") == "코스피가"
+print("korean_subject_particle_regression=true")
+
+# 오전→오후 production 교대 시 사건 상태와 최근 수급 스냅샷을 잃지 않는다.
+import tempfile
+from pathlib import Path
+w6 = Watch("dummy", [], "dummy", True)
+now6 = time.time()
+w6.flows.append({
+    "ts": now6 - 20,
+    "현물": {"외국인": -1.0, "기관": -2.0, "개인": 3.0},
+    "선물": {"외국인": -4.0, "기관": 1.0, "개인": 3.0},
+    "프로그램": {"전체": -5.0, "차익": -1.0, "비차익": -4.0, "베이시스": 0.0, "sample_ts": now6 - 20},
+})
+w6.episode = {
+    "start_ts": now6 - 120,
+    "start_price": 7000.0,
+    "low_ts": now6 - 10,
+    "low_price": 6960.0,
+    "sent_drop": 0.57,
+    "alerted": True,
+}
+with tempfile.TemporaryDirectory() as td:
+    hp = Path(td) / "handoff.json"
+    w6.save_handoff(hp)
+    w7 = Watch("dummy", [], "dummy", True)
+    w7.load_handoff(hp)
+    assert len(w7.flows) == 1, len(w7.flows)
+    assert w7.episode and w7.episode["start_price"] == 7000.0, w7.episode
+print("handoff_regression=true")
