@@ -78,7 +78,7 @@ jobs:
           assert "collector_supervisor()" in s, "UBM collector supervisor missing"
           assert "kospi_watcher_restart" in s, "KOSPI watcher restart loop missing"
           assert "WATCH_FAILS" in s, "KOSPI watcher failure counter missing"
-          assert "timeout-minutes: 280" in s, "afternoon close coverage timeout missing"
+          assert "timeout-minutes: 359" in s, "afternoon close coverage timeout missing"
           print("production_workflow_structure_valid=true")
           PY
 
