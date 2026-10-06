@@ -429,6 +429,31 @@ def _interpret_renewable(body: str) -> list[str]:
     return lines
 
 
+def _interpret_datacenter_demand(body: str) -> list[str]:
+    lower = body.lower()
+    if not ("데이터센터" in lower and "전력" in lower and any(x in lower for x in ("11.9gw", "과잉", "과대", "불확실"))):
+        return []
+
+    lines = ["<b>원문이 말하는 핵심</b>"]
+    if "158.4" in lower and "165.0" in lower:
+        lines.append("• 제12차 전기본 수요전망소위의 2040년 최대전력 전망은 <b>158.4~165.0GW</b>")
+    if "4.0gw" in lower and "11.9gw" in lower:
+        lines.append("• AI 데이터센터 최대전력 가정은 <b>4.0GW → 11.9GW</b>로 4개월 만에 7.9GW 확대됐지만, 장관은 과잉 추계 가능성을 인정")
+    if "96건" in lower and "4곳" in lower:
+        lines.append("• 전력계통영향평가 통과 96건 중 실제 수전은 <b>4곳</b>에 그쳐 투자계획과 실제 전력사용 사이의 괴리가 큼")
+    if "56건" in lower:
+        lines.append("• 기사상 <b>56건은 전기사용 신청조차 하지 않은 상태</b>라 수요 전망의 실현 가능성을 다시 봐야 함")
+    if "1.64" in lower and "1.60" in lower:
+        lines.append("• 데이터센터 전력사용효율(PUE) 가정 1.64도 실측 평균 1.60·세계 평균 1.58보다 보수적이어서 수요 상향폭이 과대할 수 있다는 지적")
+    lines.extend([
+        "",
+        "<b>쉽게 풀면</b>",
+        "• ‘신청된 데이터센터 용량’을 실제 전력수요처럼 잡은 부분을 줄일 가능성이 생긴 것",
+        "• 다음 전기본 수요 재산정에서 AI 데이터센터 GW가 하향되면 발전원·송전망·변전소 필요량도 같이 조정될 수 있음",
+    ])
+    return lines
+
+
 def _interpret_honam_semiconductor_infra(body: str) -> list[str]:
     lower = body.lower()
     if not ("호남" in lower and "반도체" in lower and any(x in lower for x in ("14gw", "6.3gw", "65만", "팹 9기", "9개"))):
@@ -602,7 +627,8 @@ def interpret_article_body(row: dict[str, Any], body: str, error: str) -> str:
         return "\n".join(lines)
 
     specialized = (
-        _interpret_honam_semiconductor_infra(body)
+        _interpret_datacenter_demand(body)
+        or _interpret_honam_semiconductor_infra(body)
         or _interpret_grid_innovation(body)
         or _interpret_nuclear_deliberation(body)
         or _interpret_nuclear_coal_lng(body)
