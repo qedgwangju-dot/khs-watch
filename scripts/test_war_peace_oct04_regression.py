@@ -239,6 +239,26 @@ except RuntimeError as e:
     check("oct04-quality-gate-aramco", "아람코" in str(e))
 
 
+# 10-b) 송출 품질게이트와 동일하게 3시간 초과 뉴스는 후보 단계에서 제거.
+stale_181 = row(
+    "Saudi-backed forces recapture Mokha in counteroffensive",
+    source="경향신문",
+    description="Saudi-backed Yemeni forces recaptured Mokha from Houthis.",
+    minutes_ago=181,
+)
+s, tags = mod.score_item(stale_181, dt.datetime.now(mod.watch.KST))
+check("oct06-over-3h-candidate-suppressed", s == 0 and tags == [])
+
+fresh_179 = row(
+    "Saudi-backed forces recapture Mokha in counteroffensive",
+    source="경향신문",
+    description="Saudi-backed Yemeni forces recaptured Mokha from Houthis.",
+    minutes_ago=179,
+)
+s, tags = mod.score_item(fresh_179, dt.datetime.now(mod.watch.KST))
+check("oct06-under-3h-candidate-remains", s > 0)
+
+
 # 11) 10/6 실운영 오판 재발 방지: 목하 과거 점령/현재 탈환공세, TASS 귀속, 트럼프 가정 발언.
 mokha_counter = row(
     "Saudi-backed forces launch fight to free Bab al-Mandeb from Houthis",
