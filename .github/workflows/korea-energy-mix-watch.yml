@@ -42,7 +42,7 @@ jobs:
           python-version: "3.12"
 
       - name: 의존성 설치
-        run: pip install requests pytest beautifulsoup4 "googlenewsdecoder==0.1.7"
+        run: pip install requests pytest beautifulsoup4 "selectolax<1.0" "googlenewsdecoder==0.1.7"
 
       - name: 검사
         run: |
