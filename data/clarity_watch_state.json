@@ -2,14 +2,15 @@
   "initialized": true,
   "source_version": 2,
   "bill": "H.R. 3633 — Digital Asset Market Clarity Act",
-  "last_checked_kst": "2026-10-06T16:37:11+09:00",
-  "last_checked_et": "2026-10-06T03:37:11-04:00",
+  "last_checked_kst": "2026-10-07T00:15:09+09:00",
+  "last_checked_et": "2026-10-06T11:15:09-04:00",
   "seen_event_keys": [
     "014ece5622c668588a744a4fffa905e803f51a087ad35edaafd5a1ef049e8081",
     "06ee00dbb8854130493bb2e968b1cacab9ca367fe3cc63799c3a34b54881ae9c",
     "084ee027ab8ec15b4074b4fa1b60022844e2dc9f19a270999c1f2f23b0a34a53",
     "0c66c1ef94728a83e8ecbafaa4fdc5f038cba54010112b43462b09e826966d4c",
     "123448820a46616cab71fba5b47aca1af99beefe817950c3da16279e315cab10",
+    "12ea630733b7f27016a20d13cff1f62815227e2f1e50a42a4e612900b6f84703",
     "1697d0af9e995683356dd012404a4bce42bf606116a9a3e0434e09b4aa7e1f6f",
     "1a9898923f85d4233fb780b2ee1a3d06bdb9c23a6ef435b2330be9be048e7e8f",
     "1aa312ec29903f1d2a05bfdddfe6512aab1d14aedd812907f42f5d6bfab475cc",
@@ -91,13 +92,15 @@
     "fae400f86e5c7c7497de7708637dc5b3f87d05441c853b65e3742939ae233f84",
     "fe2906beaa0c20857bcf830328fd25f77105af8385b0204d7b2829adad3b2827"
   ],
-  "event_count": 51,
+  "event_count": 58,
   "source_errors": [
-    "CFTC Federal Register 제안규칙: Expecting value: line 1 column 1 (char 0)",
-    "CFTC Federal Register 최종규칙: Expecting value: line 1 column 1 (char 0)",
-    "SEC Federal Register 제안규칙: Expecting value: line 1 column 1 (char 0)",
-    "SEC Federal Register 최종규칙: Expecting value: line 1 column 1 (char 0)",
     "SEC SRO crypto orders https://www.sec.gov/taxonomy/term/193081: fetch failed: https://www.sec.gov/taxonomy/term/193081: HTTP Error 403: Forbidden",
     "SEC SRO crypto orders https://www.sec.gov/rules-regulations/self-regulatory-organization-rulemaking/national-securities-exchanges: fetch failed: https://www.sec.gov/rules-regulations/self-regulatory-organization-rulemaking/national-securities-exchanges: HTTP Error 403: Forbidden"
-  ]
+  ],
+  "last_successful_delivery_kst": "2026-10-07T00:15:33+09:00",
+  "telegram_message_ids": [
+    127
+  ],
+  "bot_username": "khs88790088790000_bot",
+  "telegram_format": "korean_html_v7_negotiation_gate"
 }
