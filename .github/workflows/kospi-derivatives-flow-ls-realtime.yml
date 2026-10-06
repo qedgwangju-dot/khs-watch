@@ -88,7 +88,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install dependencies
-        run: python -m pip install --disable-pip-version-check --quiet requests
+        run: python -m pip install --disable-pip-version-check --quiet requests ebest
       - name: Verify Telegram route
         run: |
           python - <<'PY'
@@ -105,10 +105,25 @@ jobs:
           PY
       - name: Run morning KOSPI watcher
         run: |
-          rm -f out/kospi_shock_episode_status.md out/kospi_shock_episode_raw.json out/kospi_shock_delivery_log.jsonl out/kospi_shock_enrichment_latest.json out/kospi_shock_handoff.json
-          python -m py_compile scripts/kospi_shock_episode_watch.py scripts/kospi_shock_enrichment.py
+          rm -f out/kospi_shock_episode_status.md out/kospi_shock_episode_raw.json out/kospi_shock_delivery_log.jsonl out/kospi_shock_enrichment_latest.json out/kospi_shock_handoff.json out/kospi_industry_flow.jsonl
+          python -m py_compile scripts/kospi_shock_episode_watch.py scripts/kospi_shock_enrichment.py scripts/kospi_unified_industry_collector.py
+          python scripts/kospi_unified_industry_collector.py --until 12:15 --out out/kospi_industry_flow.jsonl &
+          COLLECTOR_PID=$!
+          set +e
           python scripts/kospi_shock_episode_watch.py --until 12:15 --handoff-out out/kospi_shock_handoff.json
-          cat out/kospi_shock_episode_status.md >> "$GITHUB_STEP_SUMMARY"
+          WATCH_RC=$?
+          if kill -0 "$COLLECTOR_PID" 2>/dev/null; then
+            kill "$COLLECTOR_PID" 2>/dev/null || true
+          fi
+          wait "$COLLECTOR_PID" 2>/dev/null || true
+          set -e
+          if [ -s out/kospi_shock_episode_status.md ]; then
+            cat out/kospi_shock_episode_status.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ "$WATCH_RC" -ne 0 ]; then
+            exit "$WATCH_RC"
+          fi
+          test -s out/kospi_industry_flow.jsonl || { echo "Unified UBM industry flow file missing/empty"; exit 1; }
       - name: Upload morning handoff and verification
         if: always()
         uses: actions/upload-artifact@v4
@@ -120,6 +135,7 @@ jobs:
             out/kospi_shock_episode_raw.json
             out/kospi_shock_delivery_log.jsonl
             out/kospi_shock_enrichment_latest.json
+            out/kospi_industry_flow.jsonl
           if-no-files-found: ignore
           retention-days: 14
 
@@ -149,7 +165,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install dependencies
-        run: python -m pip install --disable-pip-version-check --quiet requests
+        run: python -m pip install --disable-pip-version-check --quiet requests ebest
       - name: Verify Telegram route
         run: |
           python - <<'PY'
@@ -167,9 +183,24 @@ jobs:
       - name: Run afternoon KOSPI watcher with handoff
         run: |
           rm -f out/kospi_shock_episode_status.md out/kospi_shock_episode_raw.json out/kospi_shock_enrichment_latest.json
-          python -m py_compile scripts/kospi_shock_episode_watch.py scripts/kospi_shock_enrichment.py
+          python -m py_compile scripts/kospi_shock_episode_watch.py scripts/kospi_shock_enrichment.py scripts/kospi_unified_industry_collector.py
+          python scripts/kospi_unified_industry_collector.py --until 15:20 --out out/kospi_industry_flow.jsonl &
+          COLLECTOR_PID=$!
+          set +e
           python scripts/kospi_shock_episode_watch.py --until 15:20 --handoff-in out/kospi_shock_handoff.json
-          cat out/kospi_shock_episode_status.md >> "$GITHUB_STEP_SUMMARY"
+          WATCH_RC=$?
+          if kill -0 "$COLLECTOR_PID" 2>/dev/null; then
+            kill "$COLLECTOR_PID" 2>/dev/null || true
+          fi
+          wait "$COLLECTOR_PID" 2>/dev/null || true
+          set -e
+          if [ -s out/kospi_shock_episode_status.md ]; then
+            cat out/kospi_shock_episode_status.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ "$WATCH_RC" -ne 0 ]; then
+            exit "$WATCH_RC"
+          fi
+          test -s out/kospi_industry_flow.jsonl || { echo "Unified UBM industry flow file missing/empty"; exit 1; }
       - name: Upload afternoon verification
         if: always()
         uses: actions/upload-artifact@v4
@@ -181,5 +212,6 @@ jobs:
             out/kospi_shock_delivery_log.jsonl
             out/kospi_shock_enrichment_latest.json
             out/kospi_shock_handoff.json
+            out/kospi_industry_flow.jsonl
           if-no-files-found: ignore
           retention-days: 14
