@@ -3985,6 +3985,28 @@
       "source_event_identity": "",
       "title": "美 9월 고용 2만9000명, 예상 3분의 1…10월 금리동결 확률 82.8%"
     },
+    "event:a481c371744b1519fc93160e": {
+      "event_alias_evidence_message_id": 2325,
+      "event_alias_evidence_run_id": 37450922530,
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816169",
+      "source": "뉴시스",
+      "source_body_digest": "f2d53cd23d95bcaa8583455cf72cf6df5c302515bfd1d9ec922f71cf752cad4b",
+      "source_event_identity": "source_event:v2:commercial_order:a2f9d5991488bb488cbbc077abc02fd717f63f5b426748df5d958bec1c835924",
+      "source_fact_identity": "source_facts:v1:d6c330c0e856e62af039850c5c22bc1cbf7d145a5f1bebef6fbc892073c8a74f",
+      "source_fact_keys": [
+        "source_fact:v1:3fde38c702628e9aa4d099dba8974ce63fd91cd8106168fe8ec89a8b1ece09b8",
+        "source_fact:v1:4f282e6fc85f2b7be2c69685002896b6aaf4cd42150fdd7b80694a9bf68dcbc5",
+        "source_fact:v1:734550f1d450192f667f14b66cfa5fac26003eb2e3245dd0d2aa2b889794de03",
+        "source_fact:v1:86dda6431a51dee59825151f60a11948786316502bebd3ec92f6771c4929cb72"
+      ],
+      "source_published_kst": "2026-10-06T17:40+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 양극재 공급 계약…\"배터리 동맹 강화\""
+    },
     "event:a5e70bed46ff1c59654808e5": {
       "first_seen_kst": "2026-09-24T10:55:51+09:00",
       "lanes": {
@@ -4388,6 +4410,29 @@
       "link": "https://www.mt.co.kr/stock/2026/10/02/2026100119092776648",
       "source": "머니투데이",
       "title": "삼전닉스 '자사주 방파제' 곧 사라진다...\"또 롤러코스피?\" 초긴장"
+    },
+    "event:b9ac872f5c038d878bd8062f": {
+      "event_alias_evidence_message_id": 2325,
+      "event_alias_evidence_run_id": 37450922530,
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816156",
+      "source": "뉴시스",
+      "source_body_digest": "364f8e31b6efd0c414b6fa1a87fc332a33ed8559ff22254eb0f7f3f2beea6d42",
+      "source_event_identity": "source_event:v2:site_development_mou:30ba6731d632a2bdbc8118afe4bebe8e6f857c49b88a9a236bffb255cb763d72",
+      "source_fact_identity": "source_facts:v1:90f335b4a305fc515a9a107d9d6202a26af8a9fc7d503e7ae5a9eea1c21348ef",
+      "source_fact_keys": [
+        "source_fact:v1:1a129a72b6e6be54f5d9b5a73acbd465541549e41e42b41e5984d7c773392c44",
+        "source_fact:v1:40c78b59b3ed8a5f626bba49440a09f0b07a5e7010ba602cab63080788b6fa55",
+        "source_fact:v1:c2b3191b5b8a60cb50491cfec59431527156b38abd1393fb2512a85e3d7fcb44",
+        "source_fact:v1:c9e6874e91095326ee76bbbdd04bdd6a59e4e8c73da7f8ea61f92cb2bff073d4",
+        "source_fact:v1:f7e5c406c15af3bea34555fa95a3e0156597e45a4823ff7931bce38c6b1a71df"
+      ],
+      "source_published_kst": "2026-10-06T17:33+09:00",
+      "title": "구미시·MSDI, 방위산업 맞손…\"미사일 방산 거점으로\""
     },
     "event:b9e3cc7a917a4dfd88553536": {
       "first_seen_kst": "2026-09-18T10:10:35+09:00",
