@@ -2168,19 +2168,21 @@
     "event:6926adee1d70facd68aecdd5": {
       "first_seen_kst": "2026-10-06T06:44:01+09:00",
       "lanes": {
-        "live": "2026-10-06T06:44:01+09:00"
+        "live": "2026-10-06T15:44:02+09:00"
       },
-      "last_seen_kst": "2026-10-06T06:44:01+09:00",
-      "link": "https://www.mt.co.kr/index.php/finance/2026/10/06/2026100519405035137",
-      "source": "머니투데이",
-      "source_body_digest": "9e2ff9acdc9192397cd9b12ba74dd211b2a0f46db3fcd788fbee8ef75049b2e1",
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://view.asiae.co.kr/article/2026100612171161589",
+      "source": "아시아경제",
+      "source_body_digest": "8c7132bdcd2cbf924158527dde03e31f20496f4fb9697a73692250a1bdcb6c49",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:83c9ffd16bbe9f0fde61c39606ae8cff4cabd0c49b9e88740950494fc8ec54ad",
+      "source_fact_identity": "source_facts:v1:bcf661174a258e48c9e5204100591c63559391a84688c7e3006bcab5a939f9ce",
       "source_fact_keys": [
-        "source_fact:v1:d4b835bce7cba6c1aca4551aa09b899c093ab2a5ac51a7a9e87bbd1dd5829cba"
+        "source_fact:v1:4d88426b2494729159c5463bc84cd948b6cf4e63d98288fe7d82bd2ee0525dff",
+        "source_fact:v1:5f0e14874ca2632d73e6db6072a8cb45c49e71c3d510d88a4800379b246b415b",
+        "source_fact:v1:ee00f14ad1d28a44b57f4cd178ac175d29fd3612e33608307bea27b5f00c9421"
       ],
-      "source_published_kst": "2026-10-06T04:10+09:00",
-      "title": "'AI 해킹 사태' 은행장 연임에 걸림돌 될까"
+      "source_published_kst": "2026-10-06T12:17+09:00",
+      "title": "이형일 \"대미 원전 100억달러, 상업적 합리성 검증돼야 송금\"[2026국감]"
     },
     "event:6994ec3ec51f16c535c2ebd5": {
       "first_seen_kst": "2026-09-28T15:47:59+09:00",
@@ -5918,6 +5920,25 @@
       "source_published_kst": "2026-10-05T13:09+09:00",
       "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
     },
+    "fact:0816682ccc099421ca3733c5": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://view.asiae.co.kr/article/2026100612171161589",
+      "source": "아시아경제",
+      "source_body_digest": "8c7132bdcd2cbf924158527dde03e31f20496f4fb9697a73692250a1bdcb6c49",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bcf661174a258e48c9e5204100591c63559391a84688c7e3006bcab5a939f9ce",
+      "source_fact_keys": [
+        "source_fact:v1:4d88426b2494729159c5463bc84cd948b6cf4e63d98288fe7d82bd2ee0525dff",
+        "source_fact:v1:5f0e14874ca2632d73e6db6072a8cb45c49e71c3d510d88a4800379b246b415b",
+        "source_fact:v1:ee00f14ad1d28a44b57f4cd178ac175d29fd3612e33608307bea27b5f00c9421"
+      ],
+      "source_published_kst": "2026-10-06T12:17+09:00",
+      "title": "이형일 \"대미 원전 100억달러, 상업적 합리성 검증돼야 송금\"[2026국감]"
+    },
     "fact:085b8f297808688c94707375": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
       "lanes": {
@@ -8169,6 +8190,29 @@
       "source_published_kst": "2026-10-06T11:02+09:00",
       "title": "메드팩토, 뼈질환 치료제 ‘MP2021’ 호주 임상 1상 승인"
     },
+    "fact:4c70e09fb52ad753975251bb": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006132247",
+      "source": "지디넷코리아",
+      "source_body_digest": "76982e96a02573820dfcb64b763ef73080155e7c342bf0313a5005c39c997606",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10187f637cc00c336b444dd8afefb6e6b14294fa35a1c40e3998ccae8fff1517",
+      "source_fact_keys": [
+        "source_fact:v1:3347c340fb9a961e3c2a9e27147644b95b9bd00ffcca9c3f37764b0abd872438",
+        "source_fact:v1:6e262ed36e61fb234aacf6e264050ef68eb60065914fead2438d4e77d7c6de41",
+        "source_fact:v1:7103f74f4647715777ddab0bfab5c61aa2442a64a735afb81d14af397e9d2bc2",
+        "source_fact:v1:ba5b8e34250c8458058a0032ea7d31b59da1f8861551467130e0f348d2051aec",
+        "source_fact:v1:cd1563a5e2b8149f89629283dfe1da042c78d53856f81387d66a29d2cafde3bb",
+        "source_fact:v1:cf4d43553be494971c31748ad91ed23e1adcf7010d615805cc0315210de00874",
+        "source_fact:v1:f2d06411983e294364627387b0057c416ef303d65b89d4c0e50d517c9bb6df1f"
+      ],
+      "source_published_kst": "2026-10-06T13:35+09:00",
+      "title": "조준희 KOSA 회장 \"AI 수요·공급기업 한자리에…실제 사업으로 연결\""
+    },
     "fact:4cbaae6970c4c5a19676fdcf": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
       "lanes": {
@@ -8899,6 +8943,23 @@
       ],
       "source_published_kst": "2026-10-06T00:10+09:00",
       "title": "\"숫자와 스토리 모두 찾아야\"…월가 트레이더·퀀트 우승자의 투자 전략"
+    },
+    "fact:68629726ff44f641036d2ab8": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632801",
+      "source": "이투데이",
+      "source_body_digest": "f0b411228e556b37e75498f5c0d334b7f949d1eb166bbfac91cd78a9c7ed27e5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8105515b5d2729ffcb9b2a9f59b19212971e601611996efb4986dbfdc01def71",
+      "source_fact_keys": [
+        "source_fact:v1:460364fc4aaa50e38544f7d83555b87b70463a1145429f00bad4fda5a1d32dd9"
+      ],
+      "source_published_kst": "2026-10-06T13:34+09:00",
+      "title": "봉화군, 2027년 교육경비 9억350만원 지원 의결"
     },
     "fact:69853f771fa85a133e9c304c": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
@@ -10447,6 +10508,24 @@
       "source_published_kst": "2026-10-05T21:20+09:00",
       "title": "디파이 디벨롭먼트, 3분기 주당 NAV 2배 이상 전망..SOL 보유 11%↑"
     },
+    "fact:9a08496138a5c99015cf7150": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632808",
+      "source": "이투데이",
+      "source_body_digest": "d24a0fd06791180166c1cfdf33ef684727c7efb791a6ec65ba4a2eed13022b3c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c715c7482c3e4fed2c7542fc02e7a57a988a39ac515125909093065ce11faf85",
+      "source_fact_keys": [
+        "source_fact:v1:1fdd787fc936fe328c8070cf3ff12bf3d701d194ff5e0486af34e12f373d2dff",
+        "source_fact:v1:6c802be2aeb67ed85bd27cb85379ee7aeea328674a702909a96dec007f76fdd9"
+      ],
+      "source_published_kst": "2026-10-06T13:40+09:00",
+      "title": "두산에너빌리티, 국산 가스터빈 美 첫 수출…스페이스XAI에 공급"
+    },
     "fact:9a13d80bc5cb7b777c50c57d": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -11904,6 +11983,28 @@
       "source_published_kst": "2026-10-06T10:19+09:00",
       "title": "김정관 장관 “1600조 지방투자 본격화…2030년 AI팩토리 500개 구축”"
     },
+    "fact:cfc3efe2b4db87a6131bdca8": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://www.news1.kr/industry/auto-industry/6310693",
+      "source": "뉴스1",
+      "source_body_digest": "ad89d34ece99b3f8ec8944626914cfc94a6af01deaf269ce51816baf2942f0dc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6bab132bc0260ea73646094ab393105e992600f60ebf10d861db9d8a1f9ebacd",
+      "source_fact_keys": [
+        "source_fact:v1:5f8b00d81e1522846e8d1a2f253f2f512f45a9e287c11ade7f888550def6d3bb",
+        "source_fact:v1:72428085350e0f26cd0a4afa9959a5b382e998baf13a56d1b6db011d95b55234",
+        "source_fact:v1:aa073f49911f3ebe3fa465ef761950e4c466750fe56a38d0818830dd53c91981",
+        "source_fact:v1:d067077ccc17a67795e265fe74a5ba02216d382b0e46685cf372f42a5b5538e3",
+        "source_fact:v1:e69d98ea91e8a546319da07948c5383ad80b75c944926ed54e4b52760788e37f",
+        "source_fact:v1:ec676d4ce59a1944a461d57e1183eef8d1a14e904d9535e61aa30b270f960d64"
+      ],
+      "source_published_kst": "2026-10-06T13:44+09:00",
+      "title": "완성차 불황에 '군용차'로 눈 돌린다…기아·포드·GM·르노 방산 공략"
+    },
     "fact:cfddbe874213914c3ce0d3b6": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -12396,6 +12497,24 @@
       "source_published_kst": "2026-10-06T09:17+09:00",
       "title": "\"라떼 한 잔도 더 맛있게\" 빽다방, 신메뉴 라인업 강화"
     },
+    "fact:e45d65b93114892e78e7be95": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006056500003",
+      "source": "연합뉴스",
+      "source_body_digest": "d2aaa14a97575820023893df28e17a74aef634c9d8e0f1e2d256a4f81c617cd3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2531b76834f66ed3f6dd6a3e9f4484094346bfa11a8e239722637b989adad288",
+      "source_fact_keys": [
+        "source_fact:v1:8a4fc6ef06bf21e7d60dc7ba8861fb18b2fb655dbf48a2836f6797a376275c03",
+        "source_fact:v1:a3dd40e682585032cbb64920404e2fe59c17969d68491971114bd61de69140f3"
+      ],
+      "source_published_kst": "2026-10-06T13:28+09:00",
+      "title": "전세사기 피해 보증금 3분의 1 회복 보장…지원금 산정기준 마련 | 연합뉴스"
+    },
     "fact:e53d2327261a87e60651a8eb": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
@@ -12819,6 +12938,25 @@
       ],
       "source_published_kst": "2026-10-06T11:42+09:00",
       "title": "대전급식비 전국 꼴찌수준…허태정 시장 \"15%까지 인상\""
+    },
+    "fact:f306f6a320e173f2c1e3a78f": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006095810",
+      "source": "지디넷코리아",
+      "source_body_digest": "de7503b898652a51200d9fa0e4d4de224af5f234256ea6899e8ac372047d3f01",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5216b21bfa1bc4c1d9cf8890012ae4a617caab84239c763d1f25e82f63a9a94",
+      "source_fact_keys": [
+        "source_fact:v1:0e52e1c793faeb171784fdf6df3f9e45206aa09b42a8110221fbbbb5eaa0930b",
+        "source_fact:v1:bc02b4ec2dd9a9a90b878b4b6585724982a680bf264a59cf1b61c622610b8705",
+        "source_fact:v1:bd247308acaaa2d1ff504b7d628b404ed7a8e87f310c517ec630f456ce2ee0d1"
+      ],
+      "source_published_kst": "2026-10-06T09:58+09:00",
+      "title": "에버스핀, 전북대에 에버세이프 웹 공급…AI 활용 매크로·스크래핑 등 공격 방어"
     },
     "fact:f3dae6b1432c3faa419c1a41": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
@@ -13461,6 +13599,24 @@
       ],
       "source_published_kst": "2026-10-06T10:00+09:00",
       "title": "LG전자, 유럽 첫 상용 SDV에 통합 콕핏 솔루션 공급"
+    },
+    "link:043ba6860b49f4a86d72a752": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006056500003",
+      "source": "연합뉴스",
+      "source_body_digest": "d2aaa14a97575820023893df28e17a74aef634c9d8e0f1e2d256a4f81c617cd3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2531b76834f66ed3f6dd6a3e9f4484094346bfa11a8e239722637b989adad288",
+      "source_fact_keys": [
+        "source_fact:v1:8a4fc6ef06bf21e7d60dc7ba8861fb18b2fb655dbf48a2836f6797a376275c03",
+        "source_fact:v1:a3dd40e682585032cbb64920404e2fe59c17969d68491971114bd61de69140f3"
+      ],
+      "source_published_kst": "2026-10-06T13:28+09:00",
+      "title": "전세사기 피해 보증금 3분의 1 회복 보장…지원금 산정기준 마련 | 연합뉴스"
     },
     "link:0480a813f28dbf534ca8c0d3": {
       "first_seen_kst": "2026-10-04T06:09:53+09:00",
@@ -17033,6 +17189,28 @@
       "source_published_kst": "2026-10-05T16:12+09:00",
       "title": "[단독] 美 블랙리스트 中기업에...‘안보’ 검토 없이 발전사업 허가"
     },
+    "link:2ee480a8c1fee8170777731b": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://www.news1.kr/industry/auto-industry/6310693",
+      "source": "뉴스1",
+      "source_body_digest": "ad89d34ece99b3f8ec8944626914cfc94a6af01deaf269ce51816baf2942f0dc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6bab132bc0260ea73646094ab393105e992600f60ebf10d861db9d8a1f9ebacd",
+      "source_fact_keys": [
+        "source_fact:v1:5f8b00d81e1522846e8d1a2f253f2f512f45a9e287c11ade7f888550def6d3bb",
+        "source_fact:v1:72428085350e0f26cd0a4afa9959a5b382e998baf13a56d1b6db011d95b55234",
+        "source_fact:v1:aa073f49911f3ebe3fa465ef761950e4c466750fe56a38d0818830dd53c91981",
+        "source_fact:v1:d067077ccc17a67795e265fe74a5ba02216d382b0e46685cf372f42a5b5538e3",
+        "source_fact:v1:e69d98ea91e8a546319da07948c5383ad80b75c944926ed54e4b52760788e37f",
+        "source_fact:v1:ec676d4ce59a1944a461d57e1183eef8d1a14e904d9535e61aa30b270f960d64"
+      ],
+      "source_published_kst": "2026-10-06T13:44+09:00",
+      "title": "완성차 불황에 '군용차'로 눈 돌린다…기아·포드·GM·르노 방산 공략"
+    },
     "link:2ef561e2d23f9e260e5ccd19": {
       "first_seen_kst": "2026-10-01T21:17:39+09:00",
       "lanes": {
@@ -18887,6 +19065,25 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003812388",
       "source": "뉴시스",
       "title": "국힘, CPTPP 대응전략 토론회…\"정부, 농업에 입힐 피해 분명히 밝혀야\""
+    },
+    "link:4520084f87756964ca4ac9bc": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006095810",
+      "source": "지디넷코리아",
+      "source_body_digest": "de7503b898652a51200d9fa0e4d4de224af5f234256ea6899e8ac372047d3f01",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5216b21bfa1bc4c1d9cf8890012ae4a617caab84239c763d1f25e82f63a9a94",
+      "source_fact_keys": [
+        "source_fact:v1:0e52e1c793faeb171784fdf6df3f9e45206aa09b42a8110221fbbbb5eaa0930b",
+        "source_fact:v1:bc02b4ec2dd9a9a90b878b4b6585724982a680bf264a59cf1b61c622610b8705",
+        "source_fact:v1:bd247308acaaa2d1ff504b7d628b404ed7a8e87f310c517ec630f456ce2ee0d1"
+      ],
+      "source_published_kst": "2026-10-06T09:58+09:00",
+      "title": "에버스핀, 전북대에 에버세이프 웹 공급…AI 활용 매크로·스크래핑 등 공격 방어"
     },
     "link:4552a32d741d0ca1473bcb12": {
       "first_seen_kst": "2026-10-02T12:43:56+09:00",
@@ -20908,6 +21105,29 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T07:00+09:00",
       "title": "[뉴욕증시-주간전망] '좀 말려봐'…고금리의 목에 누가 방울을 채울까 | 연합뉴스"
+    },
+    "link:5ba4de8436b2ae2a9004b549": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006132247",
+      "source": "지디넷코리아",
+      "source_body_digest": "76982e96a02573820dfcb64b763ef73080155e7c342bf0313a5005c39c997606",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10187f637cc00c336b444dd8afefb6e6b14294fa35a1c40e3998ccae8fff1517",
+      "source_fact_keys": [
+        "source_fact:v1:3347c340fb9a961e3c2a9e27147644b95b9bd00ffcca9c3f37764b0abd872438",
+        "source_fact:v1:6e262ed36e61fb234aacf6e264050ef68eb60065914fead2438d4e77d7c6de41",
+        "source_fact:v1:7103f74f4647715777ddab0bfab5c61aa2442a64a735afb81d14af397e9d2bc2",
+        "source_fact:v1:ba5b8e34250c8458058a0032ea7d31b59da1f8861551467130e0f348d2051aec",
+        "source_fact:v1:cd1563a5e2b8149f89629283dfe1da042c78d53856f81387d66a29d2cafde3bb",
+        "source_fact:v1:cf4d43553be494971c31748ad91ed23e1adcf7010d615805cc0315210de00874",
+        "source_fact:v1:f2d06411983e294364627387b0057c416ef303d65b89d4c0e50d517c9bb6df1f"
+      ],
+      "source_published_kst": "2026-10-06T13:35+09:00",
+      "title": "조준희 KOSA 회장 \"AI 수요·공급기업 한자리에…실제 사업으로 연결\""
     },
     "link:5bab4706b94f94151b46463e": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
@@ -27980,6 +28200,23 @@
       "source": "전자신문",
       "title": "한미반도체, AI 반도체 2.5D 패키징 장비 'FC 본더 75' 첫 출하"
     },
+    "link:abc4646a8cf56f804dadc590": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632801",
+      "source": "이투데이",
+      "source_body_digest": "f0b411228e556b37e75498f5c0d334b7f949d1eb166bbfac91cd78a9c7ed27e5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8105515b5d2729ffcb9b2a9f59b19212971e601611996efb4986dbfdc01def71",
+      "source_fact_keys": [
+        "source_fact:v1:460364fc4aaa50e38544f7d83555b87b70463a1145429f00bad4fda5a1d32dd9"
+      ],
+      "source_published_kst": "2026-10-06T13:34+09:00",
+      "title": "봉화군, 2027년 교육경비 9억350만원 지원 의결"
+    },
     "link:abcdc22b3982dc8063d12404": {
       "first_seen_kst": "2026-09-18T09:49:01+09:00",
       "lanes": {
@@ -29681,6 +29918,25 @@
       "link": "https://www.asiae.co.kr/article/2026091810125426598",
       "source": "아시아경제",
       "title": "화웨이, \"AI 속도 조절 아닌 가속\"‥엔비디아 도전장"
+    },
+    "link:bf8ece3d8e8cffa89f34b289": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://view.asiae.co.kr/article/2026100612171161589",
+      "source": "아시아경제",
+      "source_body_digest": "8c7132bdcd2cbf924158527dde03e31f20496f4fb9697a73692250a1bdcb6c49",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bcf661174a258e48c9e5204100591c63559391a84688c7e3006bcab5a939f9ce",
+      "source_fact_keys": [
+        "source_fact:v1:4d88426b2494729159c5463bc84cd948b6cf4e63d98288fe7d82bd2ee0525dff",
+        "source_fact:v1:5f0e14874ca2632d73e6db6072a8cb45c49e71c3d510d88a4800379b246b415b",
+        "source_fact:v1:ee00f14ad1d28a44b57f4cd178ac175d29fd3612e33608307bea27b5f00c9421"
+      ],
+      "source_published_kst": "2026-10-06T12:17+09:00",
+      "title": "이형일 \"대미 원전 100억달러, 상업적 합리성 검증돼야 송금\"[2026국감]"
     },
     "link:bf95b90ad41a5bb61cd973e7": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
@@ -33044,6 +33300,24 @@
       "link": "https://www.yna.co.kr/view/AKR20261002037151003",
       "source": "연합뉴스",
       "title": "통상본부장, G20서 USTR 대표 만나 15% 관세합의 존중 요청(종합) | 연합뉴스"
+    },
+    "link:e6f3b868820426fb1fc0a22a": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632808",
+      "source": "이투데이",
+      "source_body_digest": "d24a0fd06791180166c1cfdf33ef684727c7efb791a6ec65ba4a2eed13022b3c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c715c7482c3e4fed2c7542fc02e7a57a988a39ac515125909093065ce11faf85",
+      "source_fact_keys": [
+        "source_fact:v1:1fdd787fc936fe328c8070cf3ff12bf3d701d194ff5e0486af34e12f373d2dff",
+        "source_fact:v1:6c802be2aeb67ed85bd27cb85379ee7aeea328674a702909a96dec007f76fdd9"
+      ],
+      "source_published_kst": "2026-10-06T13:40+09:00",
+      "title": "두산에너빌리티, 국산 가스터빈 美 첫 수출…스페이스XAI에 공급"
     },
     "link:e71f89fa550f2fc0b21d02d6": {
       "first_seen_kst": "2026-10-05T07:24:39+09:00",
@@ -37807,6 +38081,23 @@
       "source_published_kst": "2026-10-06T12:08+09:00",
       "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
     },
+    "original:216e1ff66c8c7406e9d828da": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632801",
+      "source": "이투데이",
+      "source_body_digest": "f0b411228e556b37e75498f5c0d334b7f949d1eb166bbfac91cd78a9c7ed27e5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8105515b5d2729ffcb9b2a9f59b19212971e601611996efb4986dbfdc01def71",
+      "source_fact_keys": [
+        "source_fact:v1:460364fc4aaa50e38544f7d83555b87b70463a1145429f00bad4fda5a1d32dd9"
+      ],
+      "source_published_kst": "2026-10-06T13:34+09:00",
+      "title": "봉화군, 2027년 교육경비 9억350만원 지원 의결"
+    },
     "original:218a2dc6d064fae0e34ab2ae": {
       "first_seen_kst": "2026-09-29T09:48:13+09:00",
       "lanes": {
@@ -38710,6 +39001,28 @@
       "link": "https://www.yna.co.kr/view/AKR20260928125000001",
       "source": "연합뉴스",
       "title": "국회 재경위, 배민·구글코리아 대표 등 국감 증인 채택 | 연합뉴스"
+    },
+    "original:2b6cc49c075921c498c8706c": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://www.news1.kr/industry/auto-industry/6310693",
+      "source": "뉴스1",
+      "source_body_digest": "ad89d34ece99b3f8ec8944626914cfc94a6af01deaf269ce51816baf2942f0dc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6bab132bc0260ea73646094ab393105e992600f60ebf10d861db9d8a1f9ebacd",
+      "source_fact_keys": [
+        "source_fact:v1:5f8b00d81e1522846e8d1a2f253f2f512f45a9e287c11ade7f888550def6d3bb",
+        "source_fact:v1:72428085350e0f26cd0a4afa9959a5b382e998baf13a56d1b6db011d95b55234",
+        "source_fact:v1:aa073f49911f3ebe3fa465ef761950e4c466750fe56a38d0818830dd53c91981",
+        "source_fact:v1:d067077ccc17a67795e265fe74a5ba02216d382b0e46685cf372f42a5b5538e3",
+        "source_fact:v1:e69d98ea91e8a546319da07948c5383ad80b75c944926ed54e4b52760788e37f",
+        "source_fact:v1:ec676d4ce59a1944a461d57e1183eef8d1a14e904d9535e61aa30b270f960d64"
+      ],
+      "source_published_kst": "2026-10-06T13:44+09:00",
+      "title": "완성차 불황에 '군용차'로 눈 돌린다…기아·포드·GM·르노 방산 공략"
     },
     "original:2b85ba648de1c13a2d2f871d": {
       "first_seen_kst": "2026-10-03T22:33:30+09:00",
@@ -47447,6 +47760,25 @@
       "source_published_kst": "2026-10-06T14:42+09:00",
       "title": "中, 첫 해저 CO₂ 주입 플랫폼 건설…연 100만t 해저 저장"
     },
+    "original:90da42afb4a79eb1c646f309": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006095810",
+      "source": "지디넷코리아",
+      "source_body_digest": "de7503b898652a51200d9fa0e4d4de224af5f234256ea6899e8ac372047d3f01",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5216b21bfa1bc4c1d9cf8890012ae4a617caab84239c763d1f25e82f63a9a94",
+      "source_fact_keys": [
+        "source_fact:v1:0e52e1c793faeb171784fdf6df3f9e45206aa09b42a8110221fbbbb5eaa0930b",
+        "source_fact:v1:bc02b4ec2dd9a9a90b878b4b6585724982a680bf264a59cf1b61c622610b8705",
+        "source_fact:v1:bd247308acaaa2d1ff504b7d628b404ed7a8e87f310c517ec630f456ce2ee0d1"
+      ],
+      "source_published_kst": "2026-10-06T09:58+09:00",
+      "title": "에버스핀, 전북대에 에버세이프 웹 공급…AI 활용 매크로·스크래핑 등 공격 방어"
+    },
     "original:90f1c1a59cbc038aa3e18772": {
       "first_seen_kst": "2026-10-03T19:42:44+09:00",
       "lanes": {
@@ -47752,6 +48084,24 @@
       "link": "https://www.mk.co.kr/news/stock/12156851",
       "source": "매일경제",
       "title": "콜플랜트 홀딩스, 광컴퓨팅 기업 라이트솔버 인수..HPC 시장 진출"
+    },
+    "original:93ea893810d9b14331d98525": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632808",
+      "source": "이투데이",
+      "source_body_digest": "d24a0fd06791180166c1cfdf33ef684727c7efb791a6ec65ba4a2eed13022b3c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c715c7482c3e4fed2c7542fc02e7a57a988a39ac515125909093065ce11faf85",
+      "source_fact_keys": [
+        "source_fact:v1:1fdd787fc936fe328c8070cf3ff12bf3d701d194ff5e0486af34e12f373d2dff",
+        "source_fact:v1:6c802be2aeb67ed85bd27cb85379ee7aeea328674a702909a96dec007f76fdd9"
+      ],
+      "source_published_kst": "2026-10-06T13:40+09:00",
+      "title": "두산에너빌리티, 국산 가스터빈 美 첫 수출…스페이스XAI에 공급"
     },
     "original:93ed1d162d3581b01ff83055": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
@@ -54027,6 +54377,25 @@
       "source_event_identity": "",
       "title": "네비우스, 인퍼라이즈 인수로 AI 추론 스택 확장 나서"
     },
+    "original:e2d34c4c8bf9b4c3912e34fa": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://view.asiae.co.kr/article/2026100612171161589",
+      "source": "아시아경제",
+      "source_body_digest": "8c7132bdcd2cbf924158527dde03e31f20496f4fb9697a73692250a1bdcb6c49",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bcf661174a258e48c9e5204100591c63559391a84688c7e3006bcab5a939f9ce",
+      "source_fact_keys": [
+        "source_fact:v1:4d88426b2494729159c5463bc84cd948b6cf4e63d98288fe7d82bd2ee0525dff",
+        "source_fact:v1:5f0e14874ca2632d73e6db6072a8cb45c49e71c3d510d88a4800379b246b415b",
+        "source_fact:v1:ee00f14ad1d28a44b57f4cd178ac175d29fd3612e33608307bea27b5f00c9421"
+      ],
+      "source_published_kst": "2026-10-06T12:17+09:00",
+      "title": "이형일 \"대미 원전 100억달러, 상업적 합리성 검증돼야 송금\"[2026국감]"
+    },
     "original:e2e9f86f369f9df11b42db00": {
       "first_seen_kst": "2026-10-01T17:14:46+09:00",
       "lanes": {
@@ -56047,6 +56416,29 @@
       "source_published_kst": "2026-10-05T10:59+09:00",
       "title": "“국내서 접하기 힘든 해외 AI 한곳 에”…LG유플러스가 ‘유독’으로 들여온다"
     },
+    "original:fb637808ef357861b9a1d03e": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006132247",
+      "source": "지디넷코리아",
+      "source_body_digest": "76982e96a02573820dfcb64b763ef73080155e7c342bf0313a5005c39c997606",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10187f637cc00c336b444dd8afefb6e6b14294fa35a1c40e3998ccae8fff1517",
+      "source_fact_keys": [
+        "source_fact:v1:3347c340fb9a961e3c2a9e27147644b95b9bd00ffcca9c3f37764b0abd872438",
+        "source_fact:v1:6e262ed36e61fb234aacf6e264050ef68eb60065914fead2438d4e77d7c6de41",
+        "source_fact:v1:7103f74f4647715777ddab0bfab5c61aa2442a64a735afb81d14af397e9d2bc2",
+        "source_fact:v1:ba5b8e34250c8458058a0032ea7d31b59da1f8861551467130e0f348d2051aec",
+        "source_fact:v1:cd1563a5e2b8149f89629283dfe1da042c78d53856f81387d66a29d2cafde3bb",
+        "source_fact:v1:cf4d43553be494971c31748ad91ed23e1adcf7010d615805cc0315210de00874",
+        "source_fact:v1:f2d06411983e294364627387b0057c416ef303d65b89d4c0e50d517c9bb6df1f"
+      ],
+      "source_published_kst": "2026-10-06T13:35+09:00",
+      "title": "조준희 KOSA 회장 \"AI 수요·공급기업 한자리에…실제 사업으로 연결\""
+    },
     "original:fbbf971d130a4ccab5110196": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
       "lanes": {
@@ -56379,6 +56771,24 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-03T09:00+09:00",
       "title": "돼지는 적자 닭은 방어…원스식품 실적 바닥 통과하나"
+    },
+    "original:fef197a060c413cc77bb2cf6": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006056500003",
+      "source": "연합뉴스",
+      "source_body_digest": "d2aaa14a97575820023893df28e17a74aef634c9d8e0f1e2d256a4f81c617cd3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2531b76834f66ed3f6dd6a3e9f4484094346bfa11a8e239722637b989adad288",
+      "source_fact_keys": [
+        "source_fact:v1:8a4fc6ef06bf21e7d60dc7ba8861fb18b2fb655dbf48a2836f6797a376275c03",
+        "source_fact:v1:a3dd40e682585032cbb64920404e2fe59c17969d68491971114bd61de69140f3"
+      ],
+      "source_published_kst": "2026-10-06T13:28+09:00",
+      "title": "전세사기 피해 보증금 3분의 1 회복 보장…지원금 산정기준 마련 | 연합뉴스"
     },
     "original:ff016e5e8e08fa4b994f07d2": {
       "first_seen_kst": "2026-10-02T15:40:35+09:00",
@@ -56754,6 +57164,29 @@
       ],
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "외국인·명품 소비에 비용 절감까지…백화점 3사, 3분기 실적 ‘청신호’"
+    },
+    "source_fact:024bc9bb266bf4052cc0dad9": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006132247",
+      "source": "지디넷코리아",
+      "source_body_digest": "76982e96a02573820dfcb64b763ef73080155e7c342bf0313a5005c39c997606",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10187f637cc00c336b444dd8afefb6e6b14294fa35a1c40e3998ccae8fff1517",
+      "source_fact_keys": [
+        "source_fact:v1:3347c340fb9a961e3c2a9e27147644b95b9bd00ffcca9c3f37764b0abd872438",
+        "source_fact:v1:6e262ed36e61fb234aacf6e264050ef68eb60065914fead2438d4e77d7c6de41",
+        "source_fact:v1:7103f74f4647715777ddab0bfab5c61aa2442a64a735afb81d14af397e9d2bc2",
+        "source_fact:v1:ba5b8e34250c8458058a0032ea7d31b59da1f8861551467130e0f348d2051aec",
+        "source_fact:v1:cd1563a5e2b8149f89629283dfe1da042c78d53856f81387d66a29d2cafde3bb",
+        "source_fact:v1:cf4d43553be494971c31748ad91ed23e1adcf7010d615805cc0315210de00874",
+        "source_fact:v1:f2d06411983e294364627387b0057c416ef303d65b89d4c0e50d517c9bb6df1f"
+      ],
+      "source_published_kst": "2026-10-06T13:35+09:00",
+      "title": "조준희 KOSA 회장 \"AI 수요·공급기업 한자리에…실제 사업으로 연결\""
     },
     "source_fact:0253a4bd8201d4f86d67a7b0": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
@@ -57305,6 +57738,28 @@
       ],
       "source_published_kst": "2026-10-06T05:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
+    },
+    "source_fact:065665788e9ca89d67295705": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://www.news1.kr/industry/auto-industry/6310693",
+      "source": "뉴스1",
+      "source_body_digest": "ad89d34ece99b3f8ec8944626914cfc94a6af01deaf269ce51816baf2942f0dc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6bab132bc0260ea73646094ab393105e992600f60ebf10d861db9d8a1f9ebacd",
+      "source_fact_keys": [
+        "source_fact:v1:5f8b00d81e1522846e8d1a2f253f2f512f45a9e287c11ade7f888550def6d3bb",
+        "source_fact:v1:72428085350e0f26cd0a4afa9959a5b382e998baf13a56d1b6db011d95b55234",
+        "source_fact:v1:aa073f49911f3ebe3fa465ef761950e4c466750fe56a38d0818830dd53c91981",
+        "source_fact:v1:d067077ccc17a67795e265fe74a5ba02216d382b0e46685cf372f42a5b5538e3",
+        "source_fact:v1:e69d98ea91e8a546319da07948c5383ad80b75c944926ed54e4b52760788e37f",
+        "source_fact:v1:ec676d4ce59a1944a461d57e1183eef8d1a14e904d9535e61aa30b270f960d64"
+      ],
+      "source_published_kst": "2026-10-06T13:44+09:00",
+      "title": "완성차 불황에 '군용차'로 눈 돌린다…기아·포드·GM·르노 방산 공략"
     },
     "source_fact:065970d8f231f37464d7c099": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
@@ -60279,6 +60734,29 @@
       "source_published_kst": "2026-10-06T10:16+09:00",
       "title": "李부총리 \"민생경제 안정·양극화 완화 총력…주택공급 확대 최우선\"[국감]"
     },
+    "source_fact:1daeaab47d01405b06e2be0b": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006132247",
+      "source": "지디넷코리아",
+      "source_body_digest": "76982e96a02573820dfcb64b763ef73080155e7c342bf0313a5005c39c997606",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10187f637cc00c336b444dd8afefb6e6b14294fa35a1c40e3998ccae8fff1517",
+      "source_fact_keys": [
+        "source_fact:v1:3347c340fb9a961e3c2a9e27147644b95b9bd00ffcca9c3f37764b0abd872438",
+        "source_fact:v1:6e262ed36e61fb234aacf6e264050ef68eb60065914fead2438d4e77d7c6de41",
+        "source_fact:v1:7103f74f4647715777ddab0bfab5c61aa2442a64a735afb81d14af397e9d2bc2",
+        "source_fact:v1:ba5b8e34250c8458058a0032ea7d31b59da1f8861551467130e0f348d2051aec",
+        "source_fact:v1:cd1563a5e2b8149f89629283dfe1da042c78d53856f81387d66a29d2cafde3bb",
+        "source_fact:v1:cf4d43553be494971c31748ad91ed23e1adcf7010d615805cc0315210de00874",
+        "source_fact:v1:f2d06411983e294364627387b0057c416ef303d65b89d4c0e50d517c9bb6df1f"
+      ],
+      "source_published_kst": "2026-10-06T13:35+09:00",
+      "title": "조준희 KOSA 회장 \"AI 수요·공급기업 한자리에…실제 사업으로 연결\""
+    },
     "source_fact:1dd500ba05ecac61942c685b": {
       "first_seen_kst": "2026-10-05T20:04:01+09:00",
       "lanes": {
@@ -61732,6 +62210,25 @@
       ],
       "source_published_kst": "2026-10-06T05:00+09:00",
       "title": "납품단가 다음은 ‘데이터’⋯AI 시대 대기업·中企 ‘新 갑을관계’ 탄생하나 [AI 신계급사회]"
+    },
+    "source_fact:2888d4b836909edd8d020a43": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://view.asiae.co.kr/article/2026100612171161589",
+      "source": "아시아경제",
+      "source_body_digest": "8c7132bdcd2cbf924158527dde03e31f20496f4fb9697a73692250a1bdcb6c49",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bcf661174a258e48c9e5204100591c63559391a84688c7e3006bcab5a939f9ce",
+      "source_fact_keys": [
+        "source_fact:v1:4d88426b2494729159c5463bc84cd948b6cf4e63d98288fe7d82bd2ee0525dff",
+        "source_fact:v1:5f0e14874ca2632d73e6db6072a8cb45c49e71c3d510d88a4800379b246b415b",
+        "source_fact:v1:ee00f14ad1d28a44b57f4cd178ac175d29fd3612e33608307bea27b5f00c9421"
+      ],
+      "source_published_kst": "2026-10-06T12:17+09:00",
+      "title": "이형일 \"대미 원전 100억달러, 상업적 합리성 검증돼야 송금\"[2026국감]"
     },
     "source_fact:28a1fceab358ce184c32baa9": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
@@ -63306,6 +63803,25 @@
       "source_published_kst": "2026-10-06T12:08+09:00",
       "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
     },
+    "source_fact:345dde260f76cda121a5df87": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006095810",
+      "source": "지디넷코리아",
+      "source_body_digest": "de7503b898652a51200d9fa0e4d4de224af5f234256ea6899e8ac372047d3f01",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5216b21bfa1bc4c1d9cf8890012ae4a617caab84239c763d1f25e82f63a9a94",
+      "source_fact_keys": [
+        "source_fact:v1:0e52e1c793faeb171784fdf6df3f9e45206aa09b42a8110221fbbbb5eaa0930b",
+        "source_fact:v1:bc02b4ec2dd9a9a90b878b4b6585724982a680bf264a59cf1b61c622610b8705",
+        "source_fact:v1:bd247308acaaa2d1ff504b7d628b404ed7a8e87f310c517ec630f456ce2ee0d1"
+      ],
+      "source_published_kst": "2026-10-06T09:58+09:00",
+      "title": "에버스핀, 전북대에 에버세이프 웹 공급…AI 활용 매크로·스크래핑 등 공격 방어"
+    },
     "source_fact:34663ded0c373cfd27abb41d": {
       "first_seen_kst": "2026-10-05T23:05:12+09:00",
       "lanes": {
@@ -63952,6 +64468,29 @@
       ],
       "source_published_kst": "2026-10-06T12:29+09:00",
       "title": "권대영 \"레버리지 ETF 도입, 금융위가 최종 결정…투자자 손실 송구\""
+    },
+    "source_fact:38883bf3cdb56e53d6b4d177": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006132247",
+      "source": "지디넷코리아",
+      "source_body_digest": "76982e96a02573820dfcb64b763ef73080155e7c342bf0313a5005c39c997606",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10187f637cc00c336b444dd8afefb6e6b14294fa35a1c40e3998ccae8fff1517",
+      "source_fact_keys": [
+        "source_fact:v1:3347c340fb9a961e3c2a9e27147644b95b9bd00ffcca9c3f37764b0abd872438",
+        "source_fact:v1:6e262ed36e61fb234aacf6e264050ef68eb60065914fead2438d4e77d7c6de41",
+        "source_fact:v1:7103f74f4647715777ddab0bfab5c61aa2442a64a735afb81d14af397e9d2bc2",
+        "source_fact:v1:ba5b8e34250c8458058a0032ea7d31b59da1f8861551467130e0f348d2051aec",
+        "source_fact:v1:cd1563a5e2b8149f89629283dfe1da042c78d53856f81387d66a29d2cafde3bb",
+        "source_fact:v1:cf4d43553be494971c31748ad91ed23e1adcf7010d615805cc0315210de00874",
+        "source_fact:v1:f2d06411983e294364627387b0057c416ef303d65b89d4c0e50d517c9bb6df1f"
+      ],
+      "source_published_kst": "2026-10-06T13:35+09:00",
+      "title": "조준희 KOSA 회장 \"AI 수요·공급기업 한자리에…실제 사업으로 연결\""
     },
     "source_fact:38d284f6cc76ab76c45b7a95": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -67317,6 +67856,24 @@
       "source_published_kst": "2026-10-06T11:09+09:00",
       "title": "폭염·AI에 日 전력난 비상… 노후 화력발전 수명연장 검토 | 연합뉴스"
     },
+    "source_fact:53d7b5f447639e64c1425b2e": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006056500003",
+      "source": "연합뉴스",
+      "source_body_digest": "d2aaa14a97575820023893df28e17a74aef634c9d8e0f1e2d256a4f81c617cd3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2531b76834f66ed3f6dd6a3e9f4484094346bfa11a8e239722637b989adad288",
+      "source_fact_keys": [
+        "source_fact:v1:8a4fc6ef06bf21e7d60dc7ba8861fb18b2fb655dbf48a2836f6797a376275c03",
+        "source_fact:v1:a3dd40e682585032cbb64920404e2fe59c17969d68491971114bd61de69140f3"
+      ],
+      "source_published_kst": "2026-10-06T13:28+09:00",
+      "title": "전세사기 피해 보증금 3분의 1 회복 보장…지원금 산정기준 마련 | 연합뉴스"
+    },
     "source_fact:53dda3184dd0b5539c51f388": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
       "lanes": {
@@ -69150,6 +69707,28 @@
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "삼닉 레버리지 '20좌 미만' 출구 마련"
     },
+    "source_fact:617a3f8f1caa78c11ce5f70c": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://www.news1.kr/industry/auto-industry/6310693",
+      "source": "뉴스1",
+      "source_body_digest": "ad89d34ece99b3f8ec8944626914cfc94a6af01deaf269ce51816baf2942f0dc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6bab132bc0260ea73646094ab393105e992600f60ebf10d861db9d8a1f9ebacd",
+      "source_fact_keys": [
+        "source_fact:v1:5f8b00d81e1522846e8d1a2f253f2f512f45a9e287c11ade7f888550def6d3bb",
+        "source_fact:v1:72428085350e0f26cd0a4afa9959a5b382e998baf13a56d1b6db011d95b55234",
+        "source_fact:v1:aa073f49911f3ebe3fa465ef761950e4c466750fe56a38d0818830dd53c91981",
+        "source_fact:v1:d067077ccc17a67795e265fe74a5ba02216d382b0e46685cf372f42a5b5538e3",
+        "source_fact:v1:e69d98ea91e8a546319da07948c5383ad80b75c944926ed54e4b52760788e37f",
+        "source_fact:v1:ec676d4ce59a1944a461d57e1183eef8d1a14e904d9535e61aa30b270f960d64"
+      ],
+      "source_published_kst": "2026-10-06T13:44+09:00",
+      "title": "완성차 불황에 '군용차'로 눈 돌린다…기아·포드·GM·르노 방산 공략"
+    },
     "source_fact:61ac83ec4b0b4abbd7554865": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
@@ -70112,6 +70691,29 @@
       ],
       "source_published_kst": "2026-10-06T10:59+09:00",
       "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 공급"
+    },
+    "source_fact:69aa9e83c73e6cadf9df899e": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006132247",
+      "source": "지디넷코리아",
+      "source_body_digest": "76982e96a02573820dfcb64b763ef73080155e7c342bf0313a5005c39c997606",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10187f637cc00c336b444dd8afefb6e6b14294fa35a1c40e3998ccae8fff1517",
+      "source_fact_keys": [
+        "source_fact:v1:3347c340fb9a961e3c2a9e27147644b95b9bd00ffcca9c3f37764b0abd872438",
+        "source_fact:v1:6e262ed36e61fb234aacf6e264050ef68eb60065914fead2438d4e77d7c6de41",
+        "source_fact:v1:7103f74f4647715777ddab0bfab5c61aa2442a64a735afb81d14af397e9d2bc2",
+        "source_fact:v1:ba5b8e34250c8458058a0032ea7d31b59da1f8861551467130e0f348d2051aec",
+        "source_fact:v1:cd1563a5e2b8149f89629283dfe1da042c78d53856f81387d66a29d2cafde3bb",
+        "source_fact:v1:cf4d43553be494971c31748ad91ed23e1adcf7010d615805cc0315210de00874",
+        "source_fact:v1:f2d06411983e294364627387b0057c416ef303d65b89d4c0e50d517c9bb6df1f"
+      ],
+      "source_published_kst": "2026-10-06T13:35+09:00",
+      "title": "조준희 KOSA 회장 \"AI 수요·공급기업 한자리에…실제 사업으로 연결\""
     },
     "source_fact:69e88c8be7a4ad9ae3d321a6": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -71915,6 +72517,24 @@
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
     },
+    "source_fact:762b20728f2236d2ef36dcee": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632808",
+      "source": "이투데이",
+      "source_body_digest": "d24a0fd06791180166c1cfdf33ef684727c7efb791a6ec65ba4a2eed13022b3c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c715c7482c3e4fed2c7542fc02e7a57a988a39ac515125909093065ce11faf85",
+      "source_fact_keys": [
+        "source_fact:v1:1fdd787fc936fe328c8070cf3ff12bf3d701d194ff5e0486af34e12f373d2dff",
+        "source_fact:v1:6c802be2aeb67ed85bd27cb85379ee7aeea328674a702909a96dec007f76fdd9"
+      ],
+      "source_published_kst": "2026-10-06T13:40+09:00",
+      "title": "두산에너빌리티, 국산 가스터빈 美 첫 수출…스페이스XAI에 공급"
+    },
     "source_fact:76e427c0f3afa8ca652b0ec6": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
       "lanes": {
@@ -72505,6 +73125,28 @@
       ],
       "source_published_kst": "2026-10-05T21:20+09:00",
       "title": "이 대통령 \"부동산투기공화국 탈출 약속 반드시 지킬 것\"…하루에만 SNS 11건(종합2보)"
+    },
+    "source_fact:7b1b9b854c74f9def8817b09": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://www.news1.kr/industry/auto-industry/6310693",
+      "source": "뉴스1",
+      "source_body_digest": "ad89d34ece99b3f8ec8944626914cfc94a6af01deaf269ce51816baf2942f0dc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6bab132bc0260ea73646094ab393105e992600f60ebf10d861db9d8a1f9ebacd",
+      "source_fact_keys": [
+        "source_fact:v1:5f8b00d81e1522846e8d1a2f253f2f512f45a9e287c11ade7f888550def6d3bb",
+        "source_fact:v1:72428085350e0f26cd0a4afa9959a5b382e998baf13a56d1b6db011d95b55234",
+        "source_fact:v1:aa073f49911f3ebe3fa465ef761950e4c466750fe56a38d0818830dd53c91981",
+        "source_fact:v1:d067077ccc17a67795e265fe74a5ba02216d382b0e46685cf372f42a5b5538e3",
+        "source_fact:v1:e69d98ea91e8a546319da07948c5383ad80b75c944926ed54e4b52760788e37f",
+        "source_fact:v1:ec676d4ce59a1944a461d57e1183eef8d1a14e904d9535e61aa30b270f960d64"
+      ],
+      "source_published_kst": "2026-10-06T13:44+09:00",
+      "title": "완성차 불황에 '군용차'로 눈 돌린다…기아·포드·GM·르노 방산 공략"
     },
     "source_fact:7b37005bfdfd258814ed6662": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
@@ -74235,6 +74877,29 @@
       ],
       "source_published_kst": "2026-10-06T11:45+09:00",
       "title": "車 디스플레이 유리 수입 간소화…재생에너지 '다수 대 다수' PPA 허용"
+    },
+    "source_fact:8723d1dbbfea622968566121": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006132247",
+      "source": "지디넷코리아",
+      "source_body_digest": "76982e96a02573820dfcb64b763ef73080155e7c342bf0313a5005c39c997606",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10187f637cc00c336b444dd8afefb6e6b14294fa35a1c40e3998ccae8fff1517",
+      "source_fact_keys": [
+        "source_fact:v1:3347c340fb9a961e3c2a9e27147644b95b9bd00ffcca9c3f37764b0abd872438",
+        "source_fact:v1:6e262ed36e61fb234aacf6e264050ef68eb60065914fead2438d4e77d7c6de41",
+        "source_fact:v1:7103f74f4647715777ddab0bfab5c61aa2442a64a735afb81d14af397e9d2bc2",
+        "source_fact:v1:ba5b8e34250c8458058a0032ea7d31b59da1f8861551467130e0f348d2051aec",
+        "source_fact:v1:cd1563a5e2b8149f89629283dfe1da042c78d53856f81387d66a29d2cafde3bb",
+        "source_fact:v1:cf4d43553be494971c31748ad91ed23e1adcf7010d615805cc0315210de00874",
+        "source_fact:v1:f2d06411983e294364627387b0057c416ef303d65b89d4c0e50d517c9bb6df1f"
+      ],
+      "source_published_kst": "2026-10-06T13:35+09:00",
+      "title": "조준희 KOSA 회장 \"AI 수요·공급기업 한자리에…실제 사업으로 연결\""
     },
     "source_fact:874608288818910dc79b8356": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
@@ -76067,6 +76732,28 @@
       "source_published_kst": "2026-10-06T10:44+09:00",
       "title": "엑시나, 포트래이와 CXL 기반 바이오 데이터 인프라 구축 '맞손'"
     },
+    "source_fact:96a5b0e3a756c79e67569201": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://www.news1.kr/industry/auto-industry/6310693",
+      "source": "뉴스1",
+      "source_body_digest": "ad89d34ece99b3f8ec8944626914cfc94a6af01deaf269ce51816baf2942f0dc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6bab132bc0260ea73646094ab393105e992600f60ebf10d861db9d8a1f9ebacd",
+      "source_fact_keys": [
+        "source_fact:v1:5f8b00d81e1522846e8d1a2f253f2f512f45a9e287c11ade7f888550def6d3bb",
+        "source_fact:v1:72428085350e0f26cd0a4afa9959a5b382e998baf13a56d1b6db011d95b55234",
+        "source_fact:v1:aa073f49911f3ebe3fa465ef761950e4c466750fe56a38d0818830dd53c91981",
+        "source_fact:v1:d067077ccc17a67795e265fe74a5ba02216d382b0e46685cf372f42a5b5538e3",
+        "source_fact:v1:e69d98ea91e8a546319da07948c5383ad80b75c944926ed54e4b52760788e37f",
+        "source_fact:v1:ec676d4ce59a1944a461d57e1183eef8d1a14e904d9535e61aa30b270f960d64"
+      ],
+      "source_published_kst": "2026-10-06T13:44+09:00",
+      "title": "완성차 불황에 '군용차'로 눈 돌린다…기아·포드·GM·르노 방산 공략"
+    },
     "source_fact:96bcda0b0de8fddcaa241657": {
       "first_seen_kst": "2026-10-05T22:49:24+09:00",
       "lanes": {
@@ -76785,6 +77472,28 @@
       "source_published_kst": "2026-10-06T11:01+09:00",
       "title": "자동차 화면용 강화유리 수입승인 없앤다…디스플레이 규제 개선"
     },
+    "source_fact:9c655f5b590acdc56ea15c71": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://www.news1.kr/industry/auto-industry/6310693",
+      "source": "뉴스1",
+      "source_body_digest": "ad89d34ece99b3f8ec8944626914cfc94a6af01deaf269ce51816baf2942f0dc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6bab132bc0260ea73646094ab393105e992600f60ebf10d861db9d8a1f9ebacd",
+      "source_fact_keys": [
+        "source_fact:v1:5f8b00d81e1522846e8d1a2f253f2f512f45a9e287c11ade7f888550def6d3bb",
+        "source_fact:v1:72428085350e0f26cd0a4afa9959a5b382e998baf13a56d1b6db011d95b55234",
+        "source_fact:v1:aa073f49911f3ebe3fa465ef761950e4c466750fe56a38d0818830dd53c91981",
+        "source_fact:v1:d067077ccc17a67795e265fe74a5ba02216d382b0e46685cf372f42a5b5538e3",
+        "source_fact:v1:e69d98ea91e8a546319da07948c5383ad80b75c944926ed54e4b52760788e37f",
+        "source_fact:v1:ec676d4ce59a1944a461d57e1183eef8d1a14e904d9535e61aa30b270f960d64"
+      ],
+      "source_published_kst": "2026-10-06T13:44+09:00",
+      "title": "완성차 불황에 '군용차'로 눈 돌린다…기아·포드·GM·르노 방산 공략"
+    },
     "source_fact:9cb45f6383bb35560608e28e": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
       "lanes": {
@@ -76982,6 +77691,25 @@
       "source_published_kst": "2026-10-06T09:00+09:00",
       "title": "한미반도체, 삼성전기서 245억 장비 수주…곽동신 “삼성그룹 환영”"
     },
+    "source_fact:9e5377f5b0de4d6f2f6ef65a": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006095810",
+      "source": "지디넷코리아",
+      "source_body_digest": "de7503b898652a51200d9fa0e4d4de224af5f234256ea6899e8ac372047d3f01",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5216b21bfa1bc4c1d9cf8890012ae4a617caab84239c763d1f25e82f63a9a94",
+      "source_fact_keys": [
+        "source_fact:v1:0e52e1c793faeb171784fdf6df3f9e45206aa09b42a8110221fbbbb5eaa0930b",
+        "source_fact:v1:bc02b4ec2dd9a9a90b878b4b6585724982a680bf264a59cf1b61c622610b8705",
+        "source_fact:v1:bd247308acaaa2d1ff504b7d628b404ed7a8e87f310c517ec630f456ce2ee0d1"
+      ],
+      "source_published_kst": "2026-10-06T09:58+09:00",
+      "title": "에버스핀, 전북대에 에버세이프 웹 공급…AI 활용 매크로·스크래핑 등 공격 방어"
+    },
     "source_fact:9e6c9614545d6db1412073c4": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -77073,6 +77801,28 @@
       ],
       "source_published_kst": "2026-10-05T17:54+09:00",
       "title": "24년來 최고 금리도 AI 기세 못막아…나스닥 사상 최고[월스트리트in]"
+    },
+    "source_fact:9ec62a7342364de8e20fb646": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://www.news1.kr/industry/auto-industry/6310693",
+      "source": "뉴스1",
+      "source_body_digest": "ad89d34ece99b3f8ec8944626914cfc94a6af01deaf269ce51816baf2942f0dc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6bab132bc0260ea73646094ab393105e992600f60ebf10d861db9d8a1f9ebacd",
+      "source_fact_keys": [
+        "source_fact:v1:5f8b00d81e1522846e8d1a2f253f2f512f45a9e287c11ade7f888550def6d3bb",
+        "source_fact:v1:72428085350e0f26cd0a4afa9959a5b382e998baf13a56d1b6db011d95b55234",
+        "source_fact:v1:aa073f49911f3ebe3fa465ef761950e4c466750fe56a38d0818830dd53c91981",
+        "source_fact:v1:d067077ccc17a67795e265fe74a5ba02216d382b0e46685cf372f42a5b5538e3",
+        "source_fact:v1:e69d98ea91e8a546319da07948c5383ad80b75c944926ed54e4b52760788e37f",
+        "source_fact:v1:ec676d4ce59a1944a461d57e1183eef8d1a14e904d9535e61aa30b270f960d64"
+      ],
+      "source_published_kst": "2026-10-06T13:44+09:00",
+      "title": "완성차 불황에 '군용차'로 눈 돌린다…기아·포드·GM·르노 방산 공략"
     },
     "source_fact:9f4d0999833546afdeaa012a": {
       "first_seen_kst": "2026-10-05T19:54:04+09:00",
@@ -80261,6 +81011,24 @@
       "source_published_kst": "2026-10-06T09:41+09:00",
       "title": "[美공시]테라울프, 증가하는 고객 수요에 대응해 머스키 데이터 캠퍼스의 발전 용량을 1GW로 확대"
     },
+    "source_fact:b77c16115448f2177cb54334": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632808",
+      "source": "이투데이",
+      "source_body_digest": "d24a0fd06791180166c1cfdf33ef684727c7efb791a6ec65ba4a2eed13022b3c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c715c7482c3e4fed2c7542fc02e7a57a988a39ac515125909093065ce11faf85",
+      "source_fact_keys": [
+        "source_fact:v1:1fdd787fc936fe328c8070cf3ff12bf3d701d194ff5e0486af34e12f373d2dff",
+        "source_fact:v1:6c802be2aeb67ed85bd27cb85379ee7aeea328674a702909a96dec007f76fdd9"
+      ],
+      "source_published_kst": "2026-10-06T13:40+09:00",
+      "title": "두산에너빌리티, 국산 가스터빈 美 첫 수출…스페이스XAI에 공급"
+    },
     "source_fact:b7806fc1b34f7c1580ba0853": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -82296,6 +83064,25 @@
       "source_published_kst": "2026-10-05T08:15+09:00",
       "title": "함안군, 택시 기본요금 5천500원→6천원 인상 추진 | 연합뉴스"
     },
+    "source_fact:c6e3ce087b4962822579975f": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://view.asiae.co.kr/article/2026100612171161589",
+      "source": "아시아경제",
+      "source_body_digest": "8c7132bdcd2cbf924158527dde03e31f20496f4fb9697a73692250a1bdcb6c49",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bcf661174a258e48c9e5204100591c63559391a84688c7e3006bcab5a939f9ce",
+      "source_fact_keys": [
+        "source_fact:v1:4d88426b2494729159c5463bc84cd948b6cf4e63d98288fe7d82bd2ee0525dff",
+        "source_fact:v1:5f0e14874ca2632d73e6db6072a8cb45c49e71c3d510d88a4800379b246b415b",
+        "source_fact:v1:ee00f14ad1d28a44b57f4cd178ac175d29fd3612e33608307bea27b5f00c9421"
+      ],
+      "source_published_kst": "2026-10-06T12:17+09:00",
+      "title": "이형일 \"대미 원전 100억달러, 상업적 합리성 검증돼야 송금\"[2026국감]"
+    },
     "source_fact:c6f27ce99117b0834c96aa46": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -83002,6 +83789,23 @@
       "source_published_kst": "2026-10-06T06:04+09:00",
       "title": "[속보] 국제유가, 하락⋯WTI 1.84% ↓"
     },
+    "source_fact:cdc6e5dcfa0d86141ee00b0e": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632801",
+      "source": "이투데이",
+      "source_body_digest": "f0b411228e556b37e75498f5c0d334b7f949d1eb166bbfac91cd78a9c7ed27e5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8105515b5d2729ffcb9b2a9f59b19212971e601611996efb4986dbfdc01def71",
+      "source_fact_keys": [
+        "source_fact:v1:460364fc4aaa50e38544f7d83555b87b70463a1145429f00bad4fda5a1d32dd9"
+      ],
+      "source_published_kst": "2026-10-06T13:34+09:00",
+      "title": "봉화군, 2027년 교육경비 9억350만원 지원 의결"
+    },
     "source_fact:cdd4da2234c30253fe0845f4": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
       "lanes": {
@@ -83115,6 +83919,25 @@
       ],
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "산업부 국감 돌입…대미투자·호남 반도체·메가특구 '도마'"
+    },
+    "source_fact:ce5c0241e03248f40ed1b6b3": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://view.asiae.co.kr/article/2026100612171161589",
+      "source": "아시아경제",
+      "source_body_digest": "8c7132bdcd2cbf924158527dde03e31f20496f4fb9697a73692250a1bdcb6c49",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bcf661174a258e48c9e5204100591c63559391a84688c7e3006bcab5a939f9ce",
+      "source_fact_keys": [
+        "source_fact:v1:4d88426b2494729159c5463bc84cd948b6cf4e63d98288fe7d82bd2ee0525dff",
+        "source_fact:v1:5f0e14874ca2632d73e6db6072a8cb45c49e71c3d510d88a4800379b246b415b",
+        "source_fact:v1:ee00f14ad1d28a44b57f4cd178ac175d29fd3612e33608307bea27b5f00c9421"
+      ],
+      "source_published_kst": "2026-10-06T12:17+09:00",
+      "title": "이형일 \"대미 원전 100억달러, 상업적 합리성 검증돼야 송금\"[2026국감]"
     },
     "source_fact:ceb11bf2d1500bfc2c6caf7c": {
       "first_seen_kst": "2026-10-05T22:57:49+09:00",
@@ -84983,6 +85806,29 @@
       "source_published_kst": "2026-10-06T11:49+09:00",
       "title": "野, '호남 반도체' 공세...김정관 산업장관 \"기업이 먼저 서남권 투자 제안\""
     },
+    "source_fact:dc35b23ccaa6f63ed856767b": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006132247",
+      "source": "지디넷코리아",
+      "source_body_digest": "76982e96a02573820dfcb64b763ef73080155e7c342bf0313a5005c39c997606",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10187f637cc00c336b444dd8afefb6e6b14294fa35a1c40e3998ccae8fff1517",
+      "source_fact_keys": [
+        "source_fact:v1:3347c340fb9a961e3c2a9e27147644b95b9bd00ffcca9c3f37764b0abd872438",
+        "source_fact:v1:6e262ed36e61fb234aacf6e264050ef68eb60065914fead2438d4e77d7c6de41",
+        "source_fact:v1:7103f74f4647715777ddab0bfab5c61aa2442a64a735afb81d14af397e9d2bc2",
+        "source_fact:v1:ba5b8e34250c8458058a0032ea7d31b59da1f8861551467130e0f348d2051aec",
+        "source_fact:v1:cd1563a5e2b8149f89629283dfe1da042c78d53856f81387d66a29d2cafde3bb",
+        "source_fact:v1:cf4d43553be494971c31748ad91ed23e1adcf7010d615805cc0315210de00874",
+        "source_fact:v1:f2d06411983e294364627387b0057c416ef303d65b89d4c0e50d517c9bb6df1f"
+      ],
+      "source_published_kst": "2026-10-06T13:35+09:00",
+      "title": "조준희 KOSA 회장 \"AI 수요·공급기업 한자리에…실제 사업으로 연결\""
+    },
     "source_fact:dc6857ad1b734c76597f4bcb": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
       "lanes": {
@@ -85995,6 +86841,25 @@
       "source_published_kst": "2026-10-06T12:16+09:00",
       "title": "기후부, '에너지 대전환' 속도…2030년 재생e 100GW·석탄발전 2040년 퇴출"
     },
+    "source_fact:e309c4f7f575b554ecf04e51": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006095810",
+      "source": "지디넷코리아",
+      "source_body_digest": "de7503b898652a51200d9fa0e4d4de224af5f234256ea6899e8ac372047d3f01",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5216b21bfa1bc4c1d9cf8890012ae4a617caab84239c763d1f25e82f63a9a94",
+      "source_fact_keys": [
+        "source_fact:v1:0e52e1c793faeb171784fdf6df3f9e45206aa09b42a8110221fbbbb5eaa0930b",
+        "source_fact:v1:bc02b4ec2dd9a9a90b878b4b6585724982a680bf264a59cf1b61c622610b8705",
+        "source_fact:v1:bd247308acaaa2d1ff504b7d628b404ed7a8e87f310c517ec630f456ce2ee0d1"
+      ],
+      "source_published_kst": "2026-10-06T09:58+09:00",
+      "title": "에버스핀, 전북대에 에버세이프 웹 공급…AI 활용 매크로·스크래핑 등 공격 방어"
+    },
     "source_fact:e30d169461f46c5f6970666b": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
       "lanes": {
@@ -86233,6 +87098,24 @@
       ],
       "source_published_kst": "2026-10-05T22:06+09:00",
       "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
+    },
+    "source_fact:e50b14785d86cedb3161251b": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006056500003",
+      "source": "연합뉴스",
+      "source_body_digest": "d2aaa14a97575820023893df28e17a74aef634c9d8e0f1e2d256a4f81c617cd3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2531b76834f66ed3f6dd6a3e9f4484094346bfa11a8e239722637b989adad288",
+      "source_fact_keys": [
+        "source_fact:v1:8a4fc6ef06bf21e7d60dc7ba8861fb18b2fb655dbf48a2836f6797a376275c03",
+        "source_fact:v1:a3dd40e682585032cbb64920404e2fe59c17969d68491971114bd61de69140f3"
+      ],
+      "source_published_kst": "2026-10-06T13:28+09:00",
+      "title": "전세사기 피해 보증금 3분의 1 회복 보장…지원금 산정기준 마련 | 연합뉴스"
     },
     "source_fact:e5e311d9da97acbe0e83fa04": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
@@ -89105,6 +89988,29 @@
       ],
       "source_published_kst": "2026-10-05T22:06+09:00",
       "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
+    },
+    "source_fact:fcdd57087b9ac9122b4b3f1a": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006132247",
+      "source": "지디넷코리아",
+      "source_body_digest": "76982e96a02573820dfcb64b763ef73080155e7c342bf0313a5005c39c997606",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10187f637cc00c336b444dd8afefb6e6b14294fa35a1c40e3998ccae8fff1517",
+      "source_fact_keys": [
+        "source_fact:v1:3347c340fb9a961e3c2a9e27147644b95b9bd00ffcca9c3f37764b0abd872438",
+        "source_fact:v1:6e262ed36e61fb234aacf6e264050ef68eb60065914fead2438d4e77d7c6de41",
+        "source_fact:v1:7103f74f4647715777ddab0bfab5c61aa2442a64a735afb81d14af397e9d2bc2",
+        "source_fact:v1:ba5b8e34250c8458058a0032ea7d31b59da1f8861551467130e0f348d2051aec",
+        "source_fact:v1:cd1563a5e2b8149f89629283dfe1da042c78d53856f81387d66a29d2cafde3bb",
+        "source_fact:v1:cf4d43553be494971c31748ad91ed23e1adcf7010d615805cc0315210de00874",
+        "source_fact:v1:f2d06411983e294364627387b0057c416ef303d65b89d4c0e50d517c9bb6df1f"
+      ],
+      "source_published_kst": "2026-10-06T13:35+09:00",
+      "title": "조준희 KOSA 회장 \"AI 수요·공급기업 한자리에…실제 사업으로 연결\""
     },
     "source_fact:fcf64cd9e1937c6b529027be": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -92342,6 +93248,23 @@
       "source_published_kst": "2026-10-06T12:08+09:00",
       "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
     },
+    "title:216e1ff66c8c7406e9d828da": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632801",
+      "source": "이투데이",
+      "source_body_digest": "f0b411228e556b37e75498f5c0d334b7f949d1eb166bbfac91cd78a9c7ed27e5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8105515b5d2729ffcb9b2a9f59b19212971e601611996efb4986dbfdc01def71",
+      "source_fact_keys": [
+        "source_fact:v1:460364fc4aaa50e38544f7d83555b87b70463a1145429f00bad4fda5a1d32dd9"
+      ],
+      "source_published_kst": "2026-10-06T13:34+09:00",
+      "title": "봉화군, 2027년 교육경비 9억350만원 지원 의결"
+    },
     "title:218a2dc6d064fae0e34ab2ae": {
       "first_seen_kst": "2026-09-29T09:48:13+09:00",
       "lanes": {
@@ -93245,6 +94168,28 @@
       "link": "https://www.yna.co.kr/view/AKR20260928125000001",
       "source": "연합뉴스",
       "title": "국회 재경위, 배민·구글코리아 대표 등 국감 증인 채택 | 연합뉴스"
+    },
+    "title:2b6cc49c075921c498c8706c": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://www.news1.kr/industry/auto-industry/6310693",
+      "source": "뉴스1",
+      "source_body_digest": "ad89d34ece99b3f8ec8944626914cfc94a6af01deaf269ce51816baf2942f0dc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6bab132bc0260ea73646094ab393105e992600f60ebf10d861db9d8a1f9ebacd",
+      "source_fact_keys": [
+        "source_fact:v1:5f8b00d81e1522846e8d1a2f253f2f512f45a9e287c11ade7f888550def6d3bb",
+        "source_fact:v1:72428085350e0f26cd0a4afa9959a5b382e998baf13a56d1b6db011d95b55234",
+        "source_fact:v1:aa073f49911f3ebe3fa465ef761950e4c466750fe56a38d0818830dd53c91981",
+        "source_fact:v1:d067077ccc17a67795e265fe74a5ba02216d382b0e46685cf372f42a5b5538e3",
+        "source_fact:v1:e69d98ea91e8a546319da07948c5383ad80b75c944926ed54e4b52760788e37f",
+        "source_fact:v1:ec676d4ce59a1944a461d57e1183eef8d1a14e904d9535e61aa30b270f960d64"
+      ],
+      "source_published_kst": "2026-10-06T13:44+09:00",
+      "title": "완성차 불황에 '군용차'로 눈 돌린다…기아·포드·GM·르노 방산 공략"
     },
     "title:2b85ba648de1c13a2d2f871d": {
       "first_seen_kst": "2026-10-03T22:33:30+09:00",
@@ -102074,6 +103019,25 @@
       "source_published_kst": "2026-10-06T14:42+09:00",
       "title": "中, 첫 해저 CO₂ 주입 플랫폼 건설…연 100만t 해저 저장"
     },
+    "title:90da42afb4a79eb1c646f309": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006095810",
+      "source": "지디넷코리아",
+      "source_body_digest": "de7503b898652a51200d9fa0e4d4de224af5f234256ea6899e8ac372047d3f01",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5216b21bfa1bc4c1d9cf8890012ae4a617caab84239c763d1f25e82f63a9a94",
+      "source_fact_keys": [
+        "source_fact:v1:0e52e1c793faeb171784fdf6df3f9e45206aa09b42a8110221fbbbb5eaa0930b",
+        "source_fact:v1:bc02b4ec2dd9a9a90b878b4b6585724982a680bf264a59cf1b61c622610b8705",
+        "source_fact:v1:bd247308acaaa2d1ff504b7d628b404ed7a8e87f310c517ec630f456ce2ee0d1"
+      ],
+      "source_published_kst": "2026-10-06T09:58+09:00",
+      "title": "에버스핀, 전북대에 에버세이프 웹 공급…AI 활용 매크로·스크래핑 등 공격 방어"
+    },
     "title:90f1c1a59cbc038aa3e18772": {
       "first_seen_kst": "2026-10-03T19:42:44+09:00",
       "lanes": {
@@ -102390,6 +103354,24 @@
       "link": "https://www.mk.co.kr/news/stock/12156851",
       "source": "매일경제",
       "title": "콜플랜트 홀딩스, 광컴퓨팅 기업 라이트솔버 인수..HPC 시장 진출"
+    },
+    "title:93ea893810d9b14331d98525": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632808",
+      "source": "이투데이",
+      "source_body_digest": "d24a0fd06791180166c1cfdf33ef684727c7efb791a6ec65ba4a2eed13022b3c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c715c7482c3e4fed2c7542fc02e7a57a988a39ac515125909093065ce11faf85",
+      "source_fact_keys": [
+        "source_fact:v1:1fdd787fc936fe328c8070cf3ff12bf3d701d194ff5e0486af34e12f373d2dff",
+        "source_fact:v1:6c802be2aeb67ed85bd27cb85379ee7aeea328674a702909a96dec007f76fdd9"
+      ],
+      "source_published_kst": "2026-10-06T13:40+09:00",
+      "title": "두산에너빌리티, 국산 가스터빈 美 첫 수출…스페이스XAI에 공급"
     },
     "title:93ed1d162d3581b01ff83055": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
@@ -108769,6 +109751,25 @@
       "source_event_identity": "",
       "title": "네비우스, 인퍼라이즈 인수로 AI 추론 스택 확장 나서"
     },
+    "title:e2d34c4c8bf9b4c3912e34fa": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://view.asiae.co.kr/article/2026100612171161589",
+      "source": "아시아경제",
+      "source_body_digest": "8c7132bdcd2cbf924158527dde03e31f20496f4fb9697a73692250a1bdcb6c49",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bcf661174a258e48c9e5204100591c63559391a84688c7e3006bcab5a939f9ce",
+      "source_fact_keys": [
+        "source_fact:v1:4d88426b2494729159c5463bc84cd948b6cf4e63d98288fe7d82bd2ee0525dff",
+        "source_fact:v1:5f0e14874ca2632d73e6db6072a8cb45c49e71c3d510d88a4800379b246b415b",
+        "source_fact:v1:ee00f14ad1d28a44b57f4cd178ac175d29fd3612e33608307bea27b5f00c9421"
+      ],
+      "source_published_kst": "2026-10-06T12:17+09:00",
+      "title": "이형일 \"대미 원전 100억달러, 상업적 합리성 검증돼야 송금\"[2026국감]"
+    },
     "title:e2e9f86f369f9df11b42db00": {
       "first_seen_kst": "2026-10-01T17:14:46+09:00",
       "lanes": {
@@ -110799,6 +111800,29 @@
       "source_published_kst": "2026-10-05T10:59+09:00",
       "title": "“국내서 접하기 힘든 해외 AI 한곳 에”…LG유플러스가 ‘유독’으로 들여온다"
     },
+    "title:fb637808ef357861b9a1d03e": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006132247",
+      "source": "지디넷코리아",
+      "source_body_digest": "76982e96a02573820dfcb64b763ef73080155e7c342bf0313a5005c39c997606",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10187f637cc00c336b444dd8afefb6e6b14294fa35a1c40e3998ccae8fff1517",
+      "source_fact_keys": [
+        "source_fact:v1:3347c340fb9a961e3c2a9e27147644b95b9bd00ffcca9c3f37764b0abd872438",
+        "source_fact:v1:6e262ed36e61fb234aacf6e264050ef68eb60065914fead2438d4e77d7c6de41",
+        "source_fact:v1:7103f74f4647715777ddab0bfab5c61aa2442a64a735afb81d14af397e9d2bc2",
+        "source_fact:v1:ba5b8e34250c8458058a0032ea7d31b59da1f8861551467130e0f348d2051aec",
+        "source_fact:v1:cd1563a5e2b8149f89629283dfe1da042c78d53856f81387d66a29d2cafde3bb",
+        "source_fact:v1:cf4d43553be494971c31748ad91ed23e1adcf7010d615805cc0315210de00874",
+        "source_fact:v1:f2d06411983e294364627387b0057c416ef303d65b89d4c0e50d517c9bb6df1f"
+      ],
+      "source_published_kst": "2026-10-06T13:35+09:00",
+      "title": "조준희 KOSA 회장 \"AI 수요·공급기업 한자리에…실제 사업으로 연결\""
+    },
     "title:fbbf971d130a4ccab5110196": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
       "lanes": {
@@ -111143,6 +112167,24 @@
       "source_published_kst": "2026-10-03T09:00+09:00",
       "title": "돼지는 적자 닭은 방어…원스식품 실적 바닥 통과하나"
     },
+    "title:fef197a060c413cc77bb2cf6": {
+      "first_seen_kst": "2026-10-06T15:44:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:44:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:44:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006056500003",
+      "source": "연합뉴스",
+      "source_body_digest": "d2aaa14a97575820023893df28e17a74aef634c9d8e0f1e2d256a4f81c617cd3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2531b76834f66ed3f6dd6a3e9f4484094346bfa11a8e239722637b989adad288",
+      "source_fact_keys": [
+        "source_fact:v1:8a4fc6ef06bf21e7d60dc7ba8861fb18b2fb655dbf48a2836f6797a376275c03",
+        "source_fact:v1:a3dd40e682585032cbb64920404e2fe59c17969d68491971114bd61de69140f3"
+      ],
+      "source_published_kst": "2026-10-06T13:28+09:00",
+      "title": "전세사기 피해 보증금 3분의 1 회복 보장…지원금 산정기준 마련 | 연합뉴스"
+    },
     "title:ff016e5e8e08fa4b994f07d2": {
       "first_seen_kst": "2026-10-02T15:40:35+09:00",
       "lanes": {
@@ -111216,5 +112258,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T15:31:24+09:00"
+  "updated_at_kst": "2026-10-06T15:44:02+09:00"
 }
