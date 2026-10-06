@@ -296,6 +296,29 @@
       "source": "연합뉴스",
       "title": "[머니플로우] 금리 고공행진에 CD·채권 관련 ETF 인기 '쑥' | 연합뉴스"
     },
+    "event:1267db5b7f755d2c483683a9": {
+      "event_alias_evidence_message_id": 2289,
+      "event_alias_evidence_run_id": 37396976374,
+      "first_seen_kst": "2026-10-06T10:13:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T10:13:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T10:13:03+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632667",
+      "source": "이투데이",
+      "source_body_digest": "580167a09fc48620b267bf9a95777ef5d0acfa2baae3a8837c161a45bc78e345",
+      "source_event_identity": "source_event:v2:intraday_equity:6d6219f453f768479c864e374811c5e63451a90dc0d139320aff282bb85b0f7f",
+      "source_fact_identity": "source_facts:v1:658b77f2d8210df2a0b1833b003adddf184221a7820fea61c5f520fca958de55",
+      "source_fact_keys": [
+        "source_fact:v1:57daa4d75c737a0b1ea01ec1b3f26d4336cb4d1a4a3f91c5f95e0306a9165b09",
+        "source_fact:v1:7819477936aa3c44f9517a25e171a57405120da92c9dd874d4a394ebea0e1588",
+        "source_fact:v1:944d072f0d713571c86a52a253d2a43f0781cf6c375c5667193772c8e7d0bc2d",
+        "source_fact:v1:bf7ca2ec833df8aae0ea9363804f38cd64bf7233f3bc5070ff5ceed19e2f1f6b",
+        "source_fact:v1:f5ac8e17f509dfff3d2d11b782ab9e9e2f461eb30e1f5921683f728cba3fef71"
+      ],
+      "source_published_kst": "2026-10-06T09:44+09:00",
+      "title": "[특징주] LG전자 5%대 강세⋯북미 AI 데이터센터 냉각 솔루션 공급 호재"
+    },
     "event:127ddbcdb88c35c873324394": {
       "first_seen_kst": "2026-10-03T12:26:15+09:00",
       "lanes": {
@@ -4053,6 +4076,26 @@
       "source": "뉴시스",
       "title": "젤렌스키 \"中, 러시아판 스타링크 개발 지원\"…트럼프에 제재 요청"
     },
+    "event:bfa9dd8b1282e20277ebdc0e": {
+      "event_alias_evidence_message_id": 2291,
+      "event_alias_evidence_run_id": 37399956879,
+      "first_seen_kst": "2026-10-06T10:41:31+09:00",
+      "lanes": {
+        "live": "2026-10-06T10:41:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T10:41:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814860",
+      "source": "뉴시스",
+      "source_body_digest": "0b9f31576422927966dc2222215ba4ffbdf2d456aa5be62fb983f20f27238679",
+      "source_event_identity": "source_event:v2:commercial_delivery:953ee206c135c175fa78175d742512ff88363937ecfa2301ba75bbc046250521",
+      "source_fact_identity": "source_facts:v1:8e12baa452bb1d208cf2192fd25797d87dc9501cacc9d684327b44d6233277cc",
+      "source_fact_keys": [
+        "source_fact:v1:07c66c55370472b62cdbb55a3b5c8d94139860c687d7c56bd7da6f0f97e73329",
+        "source_fact:v1:890ea49e060799a7e101172901ae309c533efec0b0106718407a037c54126227"
+      ],
+      "source_published_kst": "2026-10-06T10:00+09:00",
+      "title": "LG전자, '유럽 첫 상용 SDV' 르노그룹 신차에 통합 콕핏 솔루션 공급"
+    },
     "event:bfca705d01534a6bb6d82b5e": {
       "first_seen_kst": "2026-10-03T06:13:51+09:00",
       "lanes": {
@@ -5831,7 +5874,7 @@
       "link": "https://biz.heraldcorp.com/article/10893661",
       "source": "헤럴드경제",
       "source_body_digest": "7993374e3ceba3e52bb0d38b99faee238dad5ca6ae6e33552c270549c1ff2f95",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
       "source_fact_identity": "source_facts:v1:3f3102fe15be1f42b52dc94f4ef42173201ccef8bb2f6d8fda3e36cfc4591bbc",
       "source_fact_keys": [
         "source_fact:v1:1b557628cf37b6a20e2fe89798aeb36796ca9f876c081b630366bfa3be1e5a8d",
@@ -6506,7 +6549,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003814860",
       "source": "뉴시스",
       "source_body_digest": "0b9f31576422927966dc2222215ba4ffbdf2d456aa5be62fb983f20f27238679",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_delivery:953ee206c135c175fa78175d742512ff88363937ecfa2301ba75bbc046250521",
       "source_fact_identity": "source_facts:v1:8e12baa452bb1d208cf2192fd25797d87dc9501cacc9d684327b44d6233277cc",
       "source_fact_keys": [
         "source_fact:v1:07c66c55370472b62cdbb55a3b5c8d94139860c687d7c56bd7da6f0f97e73329",
@@ -6594,7 +6637,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632667",
       "source": "이투데이",
       "source_body_digest": "580167a09fc48620b267bf9a95777ef5d0acfa2baae3a8837c161a45bc78e345",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:intraday_equity:6d6219f453f768479c864e374811c5e63451a90dc0d139320aff282bb85b0f7f",
       "source_fact_identity": "source_facts:v1:658b77f2d8210df2a0b1833b003adddf184221a7820fea61c5f520fca958de55",
       "source_fact_keys": [
         "source_fact:v1:57daa4d75c737a0b1ea01ec1b3f26d4336cb4d1a4a3f91c5f95e0306a9165b09",
@@ -7121,6 +7164,23 @@
       "source_published_kst": "2026-10-06T08:57+09:00",
       "title": "반려동물 조회 간편하게···쿠콘 현대해상 펫보험에 API 공급"
     },
+    "fact:3932036f67975d525f5e4d33": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006048300002",
+      "source": "연합뉴스",
+      "source_body_digest": "14b981b1878efa50ddf38dee2e8417c0dc811611ed7a3e709a7b25adbe648498",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9815b49261ced204b41b56620d4bb5159e21fe2ba39a90ffd18572da631a6a93",
+      "source_fact_keys": [
+        "source_fact:v1:1b6b102d362b3492e9a89cdac794ab1b0a5bd825ddf8e9a770e5f9cf70291da0"
+      ],
+      "source_published_kst": "2026-10-06T10:20+09:00",
+      "title": "\"韓 가상자산 경제 600조원대…동아시아 최대\" | 연합뉴스"
+    },
     "fact:39ab96b2ff0524ea256ed012": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
       "lanes": {
@@ -7263,7 +7323,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632589",
       "source": "이투데이",
       "source_body_digest": "719de3a8597293d6bf699ed5c1024d0609b61429d52ad752c0db3e6576d71416",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_delivery:953ee206c135c175fa78175d742512ff88363937ecfa2301ba75bbc046250521",
       "source_fact_identity": "source_facts:v1:2903811876f80530f8aa6d0d0c68daafa38c2a7f602c83d6bb718fcadc480fef",
       "source_fact_keys": [
         "source_fact:v1:1a61d4b9d5f07f4f75bd601e8ec67434bf61721a8ab33be9e7dab15f377fe5bc",
@@ -8161,6 +8221,24 @@
       ],
       "source_published_kst": "2026-10-05T20:25+09:00",
       "title": "피티씨, 슈나이더에 피인수..주당 205달러·프리미엄 42%"
+    },
+    "fact:6c243f898f3ace11aa725891": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006058200064",
+      "source": "연합뉴스",
+      "source_body_digest": "ed8114a88ada5160590489acfa292627d2b76fbe5520b6b8b2d7be5005dcd2bd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0ecdfa1c59aef99444ce3634cad9fa5354e96f88e3c48cc95310fd83c685bbfd",
+      "source_fact_keys": [
+        "source_fact:v1:b69a40ef2e8d7b6b656dc2460a1382b0c3bf63c66e3b261fef56ac6925c65b7f",
+        "source_fact:v1:dd8227da6d9fa150343f87bb3b949c69a17c2c2857fd4d89ab90232934418f07"
+      ],
+      "source_published_kst": "2026-10-06T10:12+09:00",
+      "title": "충주시, 주덕읍 일원 친환경 쌀 생산·유통 기반 확충 | 연합뉴스"
     },
     "fact:6d6a946dace48be5fb72425d": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
@@ -9525,6 +9603,28 @@
       "source_published_kst": "2026-10-05T09:13+09:00",
       "title": "\"국채 5%에도 주식이 낫다…반도체 대형주 쥐고 오래 기다려라\""
     },
+    "fact:a2d1c29d01679f21af8fadcd": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815111",
+      "source": "뉴시스",
+      "source_body_digest": "46ddc403abd7412309e5df54bd4ebefdfeb96215db7541a48c60f5ce8eb0f1e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9f46452eda3a2c107fd0995995d1d5eb56adcf0cdd23327685dc8a2ed8bca1e8",
+      "source_fact_keys": [
+        "source_fact:v1:2544b00671bb2158525144964577ae2c7acee20882e4be333591fd5c3f293f78",
+        "source_fact:v1:5333d739b1e9d57441494dc6534d76dc3eec82d48797175409f40acf419097f4",
+        "source_fact:v1:533a469555cc60c1258b562497cf82efbdf11aea3a98ab67ec5d94827723ea88",
+        "source_fact:v1:79a8f770bf71cc2621e45944d324f5d99f5795db7fa4e28f84313f59e4d2b344",
+        "source_fact:v1:8e00c053aad52f7a0a40a77f1844dd97def663ba5e8bb9490d316fc7b31246e3",
+        "source_fact:v1:c68e7a69f744d3047e4777c7838e7a303db6726be30f13e2b37c5879f31707ed"
+      ],
+      "source_published_kst": "2026-10-06T10:09+09:00",
+      "title": "씨피시스템 \"글로벌 MLCC 제조사사 장비에 '로보킷' 채택\""
+    },
     "fact:a327b98dabaf58b74c0fc915": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -10105,6 +10205,29 @@
       ],
       "source_published_kst": "2026-10-06T08:17+09:00",
       "title": "나스닥 사상 최고…비트코인 8만5000달러대[코인 모닝콜]"
+    },
+    "fact:c400c780101aa7e7c0f2b993": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632704",
+      "source": "이투데이",
+      "source_body_digest": "9258c1e08451ec4b0533834d62a19b01a833e0b9dd660d121fb86603ebb3cc1b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74f66eb8b242c435df2124235784757fc9e4eefae9cdaeffbed075e627c09b41",
+      "source_fact_keys": [
+        "source_fact:v1:019b03f28e609847ffe1b4929b33cde79e2d7554616c44bd3dddf4254a9a754e",
+        "source_fact:v1:19f5c0369d5092530a3409a12b03c8ce9de4fa7057c0c23ff652a093ad0fc8b4",
+        "source_fact:v1:39997102e5e6b93c416fa89a9ec8ff1dd69271fa211774bcd3c0f3cacc647ee0",
+        "source_fact:v1:3b5f09bab9002f51787d54b3abcf12c7668862a67504f0482ae11c78e485ceab",
+        "source_fact:v1:8ef8b3842a2860d9789ab7d4bfad53980bc9792dce13f74759dbb5ac7b1e2521",
+        "source_fact:v1:960fa3f2afdec2f6153c932cf2425630737f09a9c295b2a1a9755efa8dd0d3e3",
+        "source_fact:v1:da63b2493fe87d21e89fa2c6235bb60240c5c2d747e281f06993cb23f8afb459"
+      ],
+      "source_published_kst": "2026-10-06T10:16+09:00",
+      "title": "엠플러스, 유럽 배터리 기업에 각형 장비 공급…방산·항공우주로 고객군 확대"
     },
     "fact:c41f11729bf52ae2ba0a5c05": {
       "first_seen_kst": "2026-10-06T10:04:04+09:00",
@@ -10827,6 +10950,26 @@
       "source_published_kst": "2026-10-05T19:02+09:00",
       "title": "세제·부동산·대미투자… 李정부 2년차 정책 검증 '경제 국감' [국정감사 핫이슈]"
     },
+    "fact:e84991a0a1e373441ca71bff": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632676",
+      "source": "이투데이",
+      "source_body_digest": "2f0ba30cb10ae556d5474e159b6b3655753770c37e91e6adb7f23829e5e9a20e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:46aea2eb81a71af1397b96ec77b2ecf1c09a875062df988f8d564020b7d89ef6",
+      "source_fact_keys": [
+        "source_fact:v1:34ee015f52e3cc5d2b04648799d4f797ccd62c0e1a656a01d87b995554e8bf05",
+        "source_fact:v1:7f08e344477e201013bcfd30efc93a4501deefff1eb6b9267ecf295d22750d7c",
+        "source_fact:v1:9375c81dbbdd8ad58b1e00d015b0900bb0c0c806d75d7e5b830b45dad3a488a5",
+        "source_fact:v1:9df5e9a20650c355a41e73ab42e3e41b4eaf1a956e4e4ab31000e29e5a2d717c"
+      ],
+      "source_published_kst": "2026-10-06T10:16+09:00",
+      "title": "李부총리 \"민생경제 안정·양극화 완화 총력…주택공급 확대 최우선\"[국감]"
+    },
     "fact:e9689b6fcf6f67c7d13a7d4d": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
       "lanes": {
@@ -10973,6 +11116,23 @@
       ],
       "source_published_kst": "2026-10-05T21:09+09:00",
       "title": "플렉스, 액시엄 20억달러 우선주 유치..가치 375억달러"
+    },
+    "fact:f02adf45314ae6fef1645be3": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/06/2026100608521448232",
+      "source": "머니투데이",
+      "source_body_digest": "85567f3baaf0e878c4fb557f5d2447d405950e305b142aa225c8bd2d727a3578",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b82d19e750b5ec33e53aed858966be9e11d58de001c2f9714c2a90b8a1b59984",
+      "source_fact_keys": [
+        "source_fact:v1:9b576cae3d2ddf57a3d7fbd92de23e42fe092a9401018ff0c799e220bf84820a"
+      ],
+      "source_published_kst": "2026-10-06T10:01+09:00",
+      "title": "두산로보틱스, '한국형 피지컬 AI' 구현 나선다…국책과제 2건 수주"
     },
     "fact:f0b2b97b8ab390b891246267": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -11571,7 +11731,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632589",
       "source": "이투데이",
       "source_body_digest": "719de3a8597293d6bf699ed5c1024d0609b61429d52ad752c0db3e6576d71416",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_delivery:953ee206c135c175fa78175d742512ff88363937ecfa2301ba75bbc046250521",
       "source_fact_identity": "source_facts:v1:2903811876f80530f8aa6d0d0c68daafa38c2a7f602c83d6bb718fcadc480fef",
       "source_fact_keys": [
         "source_fact:v1:1a61d4b9d5f07f4f75bd601e8ec67434bf61721a8ab33be9e7dab15f377fe5bc",
@@ -14986,6 +15146,28 @@
       "source": "전자신문",
       "title": "시높시스, AI 에이전트 기반 '자율 엔지니어링' 본격화…설계·검증 전 과정 혁신"
     },
+    "link:2f9e75eeca8f2b320adf244f": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815111",
+      "source": "뉴시스",
+      "source_body_digest": "46ddc403abd7412309e5df54bd4ebefdfeb96215db7541a48c60f5ce8eb0f1e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9f46452eda3a2c107fd0995995d1d5eb56adcf0cdd23327685dc8a2ed8bca1e8",
+      "source_fact_keys": [
+        "source_fact:v1:2544b00671bb2158525144964577ae2c7acee20882e4be333591fd5c3f293f78",
+        "source_fact:v1:5333d739b1e9d57441494dc6534d76dc3eec82d48797175409f40acf419097f4",
+        "source_fact:v1:533a469555cc60c1258b562497cf82efbdf11aea3a98ab67ec5d94827723ea88",
+        "source_fact:v1:79a8f770bf71cc2621e45944d324f5d99f5795db7fa4e28f84313f59e4d2b344",
+        "source_fact:v1:8e00c053aad52f7a0a40a77f1844dd97def663ba5e8bb9490d316fc7b31246e3",
+        "source_fact:v1:c68e7a69f744d3047e4777c7838e7a303db6726be30f13e2b37c5879f31707ed"
+      ],
+      "source_published_kst": "2026-10-06T10:09+09:00",
+      "title": "씨피시스템 \"글로벌 MLCC 제조사사 장비에 '로보킷' 채택\""
+    },
     "link:2fe704e5a504f805fd1787d4": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -15962,6 +16144,26 @@
       "source": "연합뉴스",
       "title": "LS일렉트릭-SB글로벌, 전남 동부권 AIDC 전력인프라 공동개발 | 연합뉴스"
     },
+    "link:3bfe61b82788c824742d99d8": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632676",
+      "source": "이투데이",
+      "source_body_digest": "2f0ba30cb10ae556d5474e159b6b3655753770c37e91e6adb7f23829e5e9a20e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:46aea2eb81a71af1397b96ec77b2ecf1c09a875062df988f8d564020b7d89ef6",
+      "source_fact_keys": [
+        "source_fact:v1:34ee015f52e3cc5d2b04648799d4f797ccd62c0e1a656a01d87b995554e8bf05",
+        "source_fact:v1:7f08e344477e201013bcfd30efc93a4501deefff1eb6b9267ecf295d22750d7c",
+        "source_fact:v1:9375c81dbbdd8ad58b1e00d015b0900bb0c0c806d75d7e5b830b45dad3a488a5",
+        "source_fact:v1:9df5e9a20650c355a41e73ab42e3e41b4eaf1a956e4e4ab31000e29e5a2d717c"
+      ],
+      "source_published_kst": "2026-10-06T10:16+09:00",
+      "title": "李부총리 \"민생경제 안정·양극화 완화 총력…주택공급 확대 최우선\"[국감]"
+    },
     "link:3c03bab8b2d63c5d9755a4a0": {
       "first_seen_kst": "2026-10-02T11:10:58+09:00",
       "lanes": {
@@ -16375,7 +16577,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003814860",
       "source": "뉴시스",
       "source_body_digest": "0b9f31576422927966dc2222215ba4ffbdf2d456aa5be62fb983f20f27238679",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_delivery:953ee206c135c175fa78175d742512ff88363937ecfa2301ba75bbc046250521",
       "source_fact_identity": "source_facts:v1:8e12baa452bb1d208cf2192fd25797d87dc9501cacc9d684327b44d6233277cc",
       "source_fact_keys": [
         "source_fact:v1:07c66c55370472b62cdbb55a3b5c8d94139860c687d7c56bd7da6f0f97e73329",
@@ -18453,6 +18655,23 @@
       "source_published_kst": "2026-10-05T16:52+09:00",
       "title": "구미시, 원스톱 민원팀 성과…\"복합 민원 200여건 해결\""
     },
+    "link:5b088004f99b04783dedf9ab": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006048300002",
+      "source": "연합뉴스",
+      "source_body_digest": "14b981b1878efa50ddf38dee2e8417c0dc811611ed7a3e709a7b25adbe648498",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9815b49261ced204b41b56620d4bb5159e21fe2ba39a90ffd18572da631a6a93",
+      "source_fact_keys": [
+        "source_fact:v1:1b6b102d362b3492e9a89cdac794ab1b0a5bd825ddf8e9a770e5f9cf70291da0"
+      ],
+      "source_published_kst": "2026-10-06T10:20+09:00",
+      "title": "\"韓 가상자산 경제 600조원대…동아시아 최대\" | 연합뉴스"
+    },
     "link:5b76e76d423daa27f716447d": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -19136,6 +19355,24 @@
       "link": "https://www.asiae.co.kr/article/2026100120181302228",
       "source": "아시아경제",
       "title": "'고가 기념품 공금 구매' 의혹…농협중앙회장 비서 구속"
+    },
+    "link:645d3e0b8980ba2b9a1cace3": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006058200064",
+      "source": "연합뉴스",
+      "source_body_digest": "ed8114a88ada5160590489acfa292627d2b76fbe5520b6b8b2d7be5005dcd2bd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0ecdfa1c59aef99444ce3634cad9fa5354e96f88e3c48cc95310fd83c685bbfd",
+      "source_fact_keys": [
+        "source_fact:v1:b69a40ef2e8d7b6b656dc2460a1382b0c3bf63c66e3b261fef56ac6925c65b7f",
+        "source_fact:v1:dd8227da6d9fa150343f87bb3b949c69a17c2c2857fd4d89ab90232934418f07"
+      ],
+      "source_published_kst": "2026-10-06T10:12+09:00",
+      "title": "충주시, 주덕읍 일원 친환경 쌀 생산·유통 기반 확충 | 연합뉴스"
     },
     "link:645f30d44230806f9d299f2d": {
       "first_seen_kst": "2026-10-04T00:48:36+09:00",
@@ -24381,7 +24618,7 @@
       "link": "https://www.fnnews.com/news/202610060921574748",
       "source": "파이낸셜뉴스",
       "source_body_digest": "db44f25add10acfa08f40a178402a800bf2628ebd9a862992e0a6be661d11534",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:intraday_equity:6d6219f453f768479c864e374811c5e63451a90dc0d139320aff282bb85b0f7f",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T09:21+09:00",
@@ -25784,6 +26021,29 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T09:40+09:00",
       "title": "오뚜기 '닭한마리 칼국수', 판매 호조…롯데마트 서울역점 봉지라면 1위"
+    },
+    "link:b685c39cc1ac31b2c38c650f": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632704",
+      "source": "이투데이",
+      "source_body_digest": "9258c1e08451ec4b0533834d62a19b01a833e0b9dd660d121fb86603ebb3cc1b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74f66eb8b242c435df2124235784757fc9e4eefae9cdaeffbed075e627c09b41",
+      "source_fact_keys": [
+        "source_fact:v1:019b03f28e609847ffe1b4929b33cde79e2d7554616c44bd3dddf4254a9a754e",
+        "source_fact:v1:19f5c0369d5092530a3409a12b03c8ce9de4fa7057c0c23ff652a093ad0fc8b4",
+        "source_fact:v1:39997102e5e6b93c416fa89a9ec8ff1dd69271fa211774bcd3c0f3cacc647ee0",
+        "source_fact:v1:3b5f09bab9002f51787d54b3abcf12c7668862a67504f0482ae11c78e485ceab",
+        "source_fact:v1:8ef8b3842a2860d9789ab7d4bfad53980bc9792dce13f74759dbb5ac7b1e2521",
+        "source_fact:v1:960fa3f2afdec2f6153c932cf2425630737f09a9c295b2a1a9755efa8dd0d3e3",
+        "source_fact:v1:da63b2493fe87d21e89fa2c6235bb60240c5c2d747e281f06993cb23f8afb459"
+      ],
+      "source_published_kst": "2026-10-06T10:16+09:00",
+      "title": "엠플러스, 유럽 배터리 기업에 각형 장비 공급…방산·항공우주로 고객군 확대"
     },
     "link:b6c0d7ab9734d45d7766bcfc": {
       "first_seen_kst": "2026-09-29T16:50:36+09:00",
@@ -28166,7 +28426,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632667",
       "source": "이투데이",
       "source_body_digest": "580167a09fc48620b267bf9a95777ef5d0acfa2baae3a8837c161a45bc78e345",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:intraday_equity:6d6219f453f768479c864e374811c5e63451a90dc0d139320aff282bb85b0f7f",
       "source_fact_identity": "source_facts:v1:658b77f2d8210df2a0b1833b003adddf184221a7820fea61c5f520fca958de55",
       "source_fact_keys": [
         "source_fact:v1:57daa4d75c737a0b1ea01ec1b3f26d4336cb4d1a4a3f91c5f95e0306a9165b09",
@@ -29218,7 +29478,7 @@
       "link": "https://biz.heraldcorp.com/article/10893661",
       "source": "헤럴드경제",
       "source_body_digest": "7993374e3ceba3e52bb0d38b99faee238dad5ca6ae6e33552c270549c1ff2f95",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
       "source_fact_identity": "source_facts:v1:3f3102fe15be1f42b52dc94f4ef42173201ccef8bb2f6d8fda3e36cfc4591bbc",
       "source_fact_keys": [
         "source_fact:v1:1b557628cf37b6a20e2fe89798aeb36796ca9f876c081b630366bfa3be1e5a8d",
@@ -30588,6 +30848,23 @@
       "source": "이데일리",
       "title": "\"AI 거품론 정면돌파\" 엔비디아, 204조 자사주 베팅한 이유"
     },
+    "link:f3e4a7d801616bad227cbee4": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/06/2026100608521448232",
+      "source": "머니투데이",
+      "source_body_digest": "85567f3baaf0e878c4fb557f5d2447d405950e305b142aa225c8bd2d727a3578",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b82d19e750b5ec33e53aed858966be9e11d58de001c2f9714c2a90b8a1b59984",
+      "source_fact_keys": [
+        "source_fact:v1:9b576cae3d2ddf57a3d7fbd92de23e42fe092a9401018ff0c799e220bf84820a"
+      ],
+      "source_published_kst": "2026-10-06T10:01+09:00",
+      "title": "두산로보틱스, '한국형 피지컬 AI' 구현 나선다…국책과제 2건 수주"
+    },
     "link:f3ea4fb398e5bbe3b9e910bd": {
       "first_seen_kst": "2026-09-23T10:35:39+09:00",
       "lanes": {
@@ -31151,6 +31428,21 @@
       "link": "https://www.mt.co.kr/index.php/economy/2026/10/02/2026100119465178089",
       "source": "머니투데이",
       "title": "반도체가 半했다… 한국수출 사상 첫 1조달러 시대 눈앞"
+    },
+    "link:fc1ef0758763b4e118d9f24e": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632702",
+      "source": "이투데이",
+      "source_body_digest": "e70ba9857636e0be7335e491b224a82405925c25d46959756315fcaf4bb2518b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T10:13+09:00",
+      "title": "씨피시스템, 글로벌 MLCC 제조사 장비에 ‘로보킷’ 공급…공정 진입 본격화"
     },
     "link:fc2c727228084d541b05e80e": {
       "first_seen_kst": "2026-09-24T16:13:57+09:00",
@@ -31756,6 +32048,23 @@
       "source_published_kst": "2026-10-05T10:42+09:00",
       "title": "삼성전자, 코스피 ‘구원투수’ 될까…7000선 안착 시험대[주간증시전망]"
     },
+    "original:027d9372403cf264bfdf617a": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006048300002",
+      "source": "연합뉴스",
+      "source_body_digest": "14b981b1878efa50ddf38dee2e8417c0dc811611ed7a3e709a7b25adbe648498",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9815b49261ced204b41b56620d4bb5159e21fe2ba39a90ffd18572da631a6a93",
+      "source_fact_keys": [
+        "source_fact:v1:1b6b102d362b3492e9a89cdac794ab1b0a5bd825ddf8e9a770e5f9cf70291da0"
+      ],
+      "source_published_kst": "2026-10-06T10:20+09:00",
+      "title": "\"韓 가상자산 경제 600조원대…동아시아 최대\" | 연합뉴스"
+    },
     "original:02974d852455fad1adf42903": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -31905,6 +32214,23 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003812338",
       "source": "뉴시스",
       "title": "중동·러시아發 경유 공급난…美 수출금지 땐 '글로벌 대란' 우려"
+    },
+    "original:04d8ad1fbf9b16e32e90538b": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/06/2026100608521448232",
+      "source": "머니투데이",
+      "source_body_digest": "85567f3baaf0e878c4fb557f5d2447d405950e305b142aa225c8bd2d727a3578",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b82d19e750b5ec33e53aed858966be9e11d58de001c2f9714c2a90b8a1b59984",
+      "source_fact_keys": [
+        "source_fact:v1:9b576cae3d2ddf57a3d7fbd92de23e42fe092a9401018ff0c799e220bf84820a"
+      ],
+      "source_published_kst": "2026-10-06T10:01+09:00",
+      "title": "두산로보틱스, '한국형 피지컬 AI' 구현 나선다…국책과제 2건 수주"
     },
     "original:054cf01e789ed535c32012b6": {
       "first_seen_kst": "2026-10-04T08:29:55+09:00",
@@ -32264,6 +32590,21 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "[일문일답] 독파모 끝까지 간다…\"프론티어 AI 사업 별도 추진\""
+    },
+    "original:09e438ac601fd63169062851": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632702",
+      "source": "이투데이",
+      "source_body_digest": "e70ba9857636e0be7335e491b224a82405925c25d46959756315fcaf4bb2518b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T10:13+09:00",
+      "title": "씨피시스템, 글로벌 MLCC 제조사 장비에 ‘로보킷’ 공급…공정 진입 본격화"
     },
     "original:09f793226165bf6bae1ff97e": {
       "first_seen_kst": "2026-10-01T22:45:00+09:00",
@@ -35325,7 +35666,7 @@
       "link": "https://www.fnnews.com/news/202610060921574748",
       "source": "파이낸셜뉴스",
       "source_body_digest": "db44f25add10acfa08f40a178402a800bf2628ebd9a862992e0a6be661d11534",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:intraday_equity:6d6219f453f768479c864e374811c5e63451a90dc0d139320aff282bb85b0f7f",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T09:21+09:00",
@@ -36423,7 +36764,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003814860",
       "source": "뉴시스",
       "source_body_digest": "0b9f31576422927966dc2222215ba4ffbdf2d456aa5be62fb983f20f27238679",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_delivery:953ee206c135c175fa78175d742512ff88363937ecfa2301ba75bbc046250521",
       "source_fact_identity": "source_facts:v1:8e12baa452bb1d208cf2192fd25797d87dc9501cacc9d684327b44d6233277cc",
       "source_fact_keys": [
         "source_fact:v1:07c66c55370472b62cdbb55a3b5c8d94139860c687d7c56bd7da6f0f97e73329",
@@ -36600,6 +36941,29 @@
       "source": "연합뉴스",
       "title": "한섬, 2028년까지 매년 100억원 자사주 매입·소각 | 연합뉴스"
     },
+    "original:42207c0a6c842d828a374066": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632704",
+      "source": "이투데이",
+      "source_body_digest": "9258c1e08451ec4b0533834d62a19b01a833e0b9dd660d121fb86603ebb3cc1b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74f66eb8b242c435df2124235784757fc9e4eefae9cdaeffbed075e627c09b41",
+      "source_fact_keys": [
+        "source_fact:v1:019b03f28e609847ffe1b4929b33cde79e2d7554616c44bd3dddf4254a9a754e",
+        "source_fact:v1:19f5c0369d5092530a3409a12b03c8ce9de4fa7057c0c23ff652a093ad0fc8b4",
+        "source_fact:v1:39997102e5e6b93c416fa89a9ec8ff1dd69271fa211774bcd3c0f3cacc647ee0",
+        "source_fact:v1:3b5f09bab9002f51787d54b3abcf12c7668862a67504f0482ae11c78e485ceab",
+        "source_fact:v1:8ef8b3842a2860d9789ab7d4bfad53980bc9792dce13f74759dbb5ac7b1e2521",
+        "source_fact:v1:960fa3f2afdec2f6153c932cf2425630737f09a9c295b2a1a9755efa8dd0d3e3",
+        "source_fact:v1:da63b2493fe87d21e89fa2c6235bb60240c5c2d747e281f06993cb23f8afb459"
+      ],
+      "source_published_kst": "2026-10-06T10:16+09:00",
+      "title": "엠플러스, 유럽 배터리 기업에 각형 장비 공급…방산·항공우주로 고객군 확대"
+    },
     "original:4224573d96ec3a96a2eaba52": {
       "first_seen_kst": "2026-10-06T10:41:31+09:00",
       "lanes": {
@@ -36609,7 +36973,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632589",
       "source": "이투데이",
       "source_body_digest": "719de3a8597293d6bf699ed5c1024d0609b61429d52ad752c0db3e6576d71416",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_delivery:953ee206c135c175fa78175d742512ff88363937ecfa2301ba75bbc046250521",
       "source_fact_identity": "source_facts:v1:2903811876f80530f8aa6d0d0c68daafa38c2a7f602c83d6bb718fcadc480fef",
       "source_fact_keys": [
         "source_fact:v1:1a61d4b9d5f07f4f75bd601e8ec67434bf61721a8ab33be9e7dab15f377fe5bc",
@@ -37160,7 +37524,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632667",
       "source": "이투데이",
       "source_body_digest": "580167a09fc48620b267bf9a95777ef5d0acfa2baae3a8837c161a45bc78e345",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:intraday_equity:6d6219f453f768479c864e374811c5e63451a90dc0d139320aff282bb85b0f7f",
       "source_fact_identity": "source_facts:v1:658b77f2d8210df2a0b1833b003adddf184221a7820fea61c5f520fca958de55",
       "source_fact_keys": [
         "source_fact:v1:57daa4d75c737a0b1ea01ec1b3f26d4336cb4d1a4a3f91c5f95e0306a9165b09",
@@ -39573,7 +39937,7 @@
       "link": "https://biz.heraldcorp.com/article/10893661",
       "source": "헤럴드경제",
       "source_body_digest": "7993374e3ceba3e52bb0d38b99faee238dad5ca6ae6e33552c270549c1ff2f95",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
       "source_fact_identity": "source_facts:v1:3f3102fe15be1f42b52dc94f4ef42173201ccef8bb2f6d8fda3e36cfc4591bbc",
       "source_fact_keys": [
         "source_fact:v1:1b557628cf37b6a20e2fe89798aeb36796ca9f876c081b630366bfa3be1e5a8d",
@@ -46967,6 +47331,26 @@
       "source": "이데일리",
       "title": "9월 물가 상승률 둔화했지만…고유가에 연간 전망치 2.6% 웃돌까"
     },
+    "original:cc560401f7d9ebf7ec81d938": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632676",
+      "source": "이투데이",
+      "source_body_digest": "2f0ba30cb10ae556d5474e159b6b3655753770c37e91e6adb7f23829e5e9a20e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:46aea2eb81a71af1397b96ec77b2ecf1c09a875062df988f8d564020b7d89ef6",
+      "source_fact_keys": [
+        "source_fact:v1:34ee015f52e3cc5d2b04648799d4f797ccd62c0e1a656a01d87b995554e8bf05",
+        "source_fact:v1:7f08e344477e201013bcfd30efc93a4501deefff1eb6b9267ecf295d22750d7c",
+        "source_fact:v1:9375c81dbbdd8ad58b1e00d015b0900bb0c0c806d75d7e5b830b45dad3a488a5",
+        "source_fact:v1:9df5e9a20650c355a41e73ab42e3e41b4eaf1a956e4e4ab31000e29e5a2d717c"
+      ],
+      "source_published_kst": "2026-10-06T10:16+09:00",
+      "title": "李부총리 \"민생경제 안정·양극화 완화 총력…주택공급 확대 최우선\"[국감]"
+    },
     "original:ccaf11838df05f72b2284b17": {
       "first_seen_kst": "2026-10-03T08:04:27+09:00",
       "lanes": {
@@ -48412,6 +48796,24 @@
       "source": "이데일리",
       "title": "李 “레버리지 ETF 부족했다...도입 절차 아직 파악 못해”"
     },
+    "original:dc4f65a3615fb962a7f61782": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006058200064",
+      "source": "연합뉴스",
+      "source_body_digest": "ed8114a88ada5160590489acfa292627d2b76fbe5520b6b8b2d7be5005dcd2bd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0ecdfa1c59aef99444ce3634cad9fa5354e96f88e3c48cc95310fd83c685bbfd",
+      "source_fact_keys": [
+        "source_fact:v1:b69a40ef2e8d7b6b656dc2460a1382b0c3bf63c66e3b261fef56ac6925c65b7f",
+        "source_fact:v1:dd8227da6d9fa150343f87bb3b949c69a17c2c2857fd4d89ab90232934418f07"
+      ],
+      "source_published_kst": "2026-10-06T10:12+09:00",
+      "title": "충주시, 주덕읍 일원 친환경 쌀 생산·유통 기반 확충 | 연합뉴스"
+    },
     "original:dc780eb2939e4f7e95d11807": {
       "first_seen_kst": "2026-10-02T19:50:17+09:00",
       "lanes": {
@@ -49240,6 +49642,28 @@
       "link": "https://www.yna.co.kr/view/MYH20260926003300038",
       "source": "연합뉴스",
       "title": "뉴욕증시, 호르무즈 협상 기대·유가 하락에 상승 마감 | 연합뉴스"
+    },
+    "original:e7fb9ac3f7a51dfd8b577e51": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815111",
+      "source": "뉴시스",
+      "source_body_digest": "46ddc403abd7412309e5df54bd4ebefdfeb96215db7541a48c60f5ce8eb0f1e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9f46452eda3a2c107fd0995995d1d5eb56adcf0cdd23327685dc8a2ed8bca1e8",
+      "source_fact_keys": [
+        "source_fact:v1:2544b00671bb2158525144964577ae2c7acee20882e4be333591fd5c3f293f78",
+        "source_fact:v1:5333d739b1e9d57441494dc6534d76dc3eec82d48797175409f40acf419097f4",
+        "source_fact:v1:533a469555cc60c1258b562497cf82efbdf11aea3a98ab67ec5d94827723ea88",
+        "source_fact:v1:79a8f770bf71cc2621e45944d324f5d99f5795db7fa4e28f84313f59e4d2b344",
+        "source_fact:v1:8e00c053aad52f7a0a40a77f1844dd97def663ba5e8bb9490d316fc7b31246e3",
+        "source_fact:v1:c68e7a69f744d3047e4777c7838e7a303db6726be30f13e2b37c5879f31707ed"
+      ],
+      "source_published_kst": "2026-10-06T10:09+09:00",
+      "title": "씨피시스템 \"글로벌 MLCC 제조사사 장비에 '로보킷' 채택\""
     },
     "original:e7fca1b551d5d1ce8278de0f": {
       "first_seen_kst": "2026-09-22T09:27:58+09:00",
@@ -51581,7 +52005,7 @@
       "link": "https://biz.heraldcorp.com/article/10893661",
       "source": "헤럴드경제",
       "source_body_digest": "7993374e3ceba3e52bb0d38b99faee238dad5ca6ae6e33552c270549c1ff2f95",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
       "source_fact_identity": "source_facts:v1:3f3102fe15be1f42b52dc94f4ef42173201ccef8bb2f6d8fda3e36cfc4591bbc",
       "source_fact_keys": [
         "source_fact:v1:1b557628cf37b6a20e2fe89798aeb36796ca9f876c081b630366bfa3be1e5a8d",
@@ -52006,6 +52430,24 @@
       "source_published_kst": "2026-10-06T08:41+09:00",
       "title": "AI 데이터센터 늘자 전력 수요도 급증…ETF 투자처도 '전력 인프라'로"
     },
+    "source_fact:089adbd997e848a30fb585fd": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006058200064",
+      "source": "연합뉴스",
+      "source_body_digest": "ed8114a88ada5160590489acfa292627d2b76fbe5520b6b8b2d7be5005dcd2bd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0ecdfa1c59aef99444ce3634cad9fa5354e96f88e3c48cc95310fd83c685bbfd",
+      "source_fact_keys": [
+        "source_fact:v1:b69a40ef2e8d7b6b656dc2460a1382b0c3bf63c66e3b261fef56ac6925c65b7f",
+        "source_fact:v1:dd8227da6d9fa150343f87bb3b949c69a17c2c2857fd4d89ab90232934418f07"
+      ],
+      "source_published_kst": "2026-10-06T10:12+09:00",
+      "title": "충주시, 주덕읍 일원 친환경 쌀 생산·유통 기반 확충 | 연합뉴스"
+    },
     "source_fact:08b49354b95472d1449b36b0": {
       "first_seen_kst": "2026-10-06T01:41:59+09:00",
       "lanes": {
@@ -52165,6 +52607,28 @@
       ],
       "source_published_kst": "2026-10-06T04:36+09:00",
       "title": "美10년물 국채금리 장중 5.34% 돌파…24년 만에 최고"
+    },
+    "source_fact:0983319f642e2de024f6562d": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815111",
+      "source": "뉴시스",
+      "source_body_digest": "46ddc403abd7412309e5df54bd4ebefdfeb96215db7541a48c60f5ce8eb0f1e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9f46452eda3a2c107fd0995995d1d5eb56adcf0cdd23327685dc8a2ed8bca1e8",
+      "source_fact_keys": [
+        "source_fact:v1:2544b00671bb2158525144964577ae2c7acee20882e4be333591fd5c3f293f78",
+        "source_fact:v1:5333d739b1e9d57441494dc6534d76dc3eec82d48797175409f40acf419097f4",
+        "source_fact:v1:533a469555cc60c1258b562497cf82efbdf11aea3a98ab67ec5d94827723ea88",
+        "source_fact:v1:79a8f770bf71cc2621e45944d324f5d99f5795db7fa4e28f84313f59e4d2b344",
+        "source_fact:v1:8e00c053aad52f7a0a40a77f1844dd97def663ba5e8bb9490d316fc7b31246e3",
+        "source_fact:v1:c68e7a69f744d3047e4777c7838e7a303db6726be30f13e2b37c5879f31707ed"
+      ],
+      "source_published_kst": "2026-10-06T10:09+09:00",
+      "title": "씨피시스템 \"글로벌 MLCC 제조사사 장비에 '로보킷' 채택\""
     },
     "source_fact:098f39028b860188eb45f5f3": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
@@ -52452,7 +52916,7 @@
       "link": "https://biz.heraldcorp.com/article/10893661",
       "source": "헤럴드경제",
       "source_body_digest": "7993374e3ceba3e52bb0d38b99faee238dad5ca6ae6e33552c270549c1ff2f95",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
       "source_fact_identity": "source_facts:v1:3f3102fe15be1f42b52dc94f4ef42173201ccef8bb2f6d8fda3e36cfc4591bbc",
       "source_fact_keys": [
         "source_fact:v1:1b557628cf37b6a20e2fe89798aeb36796ca9f876c081b630366bfa3be1e5a8d",
@@ -53618,6 +54082,29 @@
       "source_published_kst": "2026-10-05T20:03+09:00",
       "title": "인스메드, CFO 10월 30일 사임…연간 매출 가이던스 유지"
     },
+    "source_fact:17a3ae122b3f1db40833bba1": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632704",
+      "source": "이투데이",
+      "source_body_digest": "9258c1e08451ec4b0533834d62a19b01a833e0b9dd660d121fb86603ebb3cc1b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74f66eb8b242c435df2124235784757fc9e4eefae9cdaeffbed075e627c09b41",
+      "source_fact_keys": [
+        "source_fact:v1:019b03f28e609847ffe1b4929b33cde79e2d7554616c44bd3dddf4254a9a754e",
+        "source_fact:v1:19f5c0369d5092530a3409a12b03c8ce9de4fa7057c0c23ff652a093ad0fc8b4",
+        "source_fact:v1:39997102e5e6b93c416fa89a9ec8ff1dd69271fa211774bcd3c0f3cacc647ee0",
+        "source_fact:v1:3b5f09bab9002f51787d54b3abcf12c7668862a67504f0482ae11c78e485ceab",
+        "source_fact:v1:8ef8b3842a2860d9789ab7d4bfad53980bc9792dce13f74759dbb5ac7b1e2521",
+        "source_fact:v1:960fa3f2afdec2f6153c932cf2425630737f09a9c295b2a1a9755efa8dd0d3e3",
+        "source_fact:v1:da63b2493fe87d21e89fa2c6235bb60240c5c2d747e281f06993cb23f8afb459"
+      ],
+      "source_published_kst": "2026-10-06T10:16+09:00",
+      "title": "엠플러스, 유럽 배터리 기업에 각형 장비 공급…방산·항공우주로 고객군 확대"
+    },
     "source_fact:17e91e4ced04ac1d22458b07": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
       "lanes": {
@@ -53705,6 +54192,28 @@
       ],
       "source_published_kst": "2026-10-05T05:18+09:00",
       "title": "“국산 AI반도체, 실험실 넘어 전력현장으로”…K-Perf 첫 적용"
+    },
+    "source_fact:19bcf8573466d04dd40b3296": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815111",
+      "source": "뉴시스",
+      "source_body_digest": "46ddc403abd7412309e5df54bd4ebefdfeb96215db7541a48c60f5ce8eb0f1e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9f46452eda3a2c107fd0995995d1d5eb56adcf0cdd23327685dc8a2ed8bca1e8",
+      "source_fact_keys": [
+        "source_fact:v1:2544b00671bb2158525144964577ae2c7acee20882e4be333591fd5c3f293f78",
+        "source_fact:v1:5333d739b1e9d57441494dc6534d76dc3eec82d48797175409f40acf419097f4",
+        "source_fact:v1:533a469555cc60c1258b562497cf82efbdf11aea3a98ab67ec5d94827723ea88",
+        "source_fact:v1:79a8f770bf71cc2621e45944d324f5d99f5795db7fa4e28f84313f59e4d2b344",
+        "source_fact:v1:8e00c053aad52f7a0a40a77f1844dd97def663ba5e8bb9490d316fc7b31246e3",
+        "source_fact:v1:c68e7a69f744d3047e4777c7838e7a303db6726be30f13e2b37c5879f31707ed"
+      ],
+      "source_published_kst": "2026-10-06T10:09+09:00",
+      "title": "씨피시스템 \"글로벌 MLCC 제조사사 장비에 '로보킷' 채택\""
     },
     "source_fact:1ad6bf994e516da250a16b84": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -54134,6 +54643,26 @@
       ],
       "source_published_kst": "2026-10-05T22:23+09:00",
       "title": "시놉시스, 10억달러 자사주 ASR 체결..173만5천주 우선 인도"
+    },
+    "source_fact:1d9b9915b882557f15e625ad": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632676",
+      "source": "이투데이",
+      "source_body_digest": "2f0ba30cb10ae556d5474e159b6b3655753770c37e91e6adb7f23829e5e9a20e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:46aea2eb81a71af1397b96ec77b2ecf1c09a875062df988f8d564020b7d89ef6",
+      "source_fact_keys": [
+        "source_fact:v1:34ee015f52e3cc5d2b04648799d4f797ccd62c0e1a656a01d87b995554e8bf05",
+        "source_fact:v1:7f08e344477e201013bcfd30efc93a4501deefff1eb6b9267ecf295d22750d7c",
+        "source_fact:v1:9375c81dbbdd8ad58b1e00d015b0900bb0c0c806d75d7e5b830b45dad3a488a5",
+        "source_fact:v1:9df5e9a20650c355a41e73ab42e3e41b4eaf1a956e4e4ab31000e29e5a2d717c"
+      ],
+      "source_published_kst": "2026-10-06T10:16+09:00",
+      "title": "李부총리 \"민생경제 안정·양극화 완화 총력…주택공급 확대 최우선\"[국감]"
     },
     "source_fact:1dd500ba05ecac61942c685b": {
       "first_seen_kst": "2026-10-05T20:04:01+09:00",
@@ -55496,7 +56025,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632589",
       "source": "이투데이",
       "source_body_digest": "719de3a8597293d6bf699ed5c1024d0609b61429d52ad752c0db3e6576d71416",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_delivery:953ee206c135c175fa78175d742512ff88363937ecfa2301ba75bbc046250521",
       "source_fact_identity": "source_facts:v1:2903811876f80530f8aa6d0d0c68daafa38c2a7f602c83d6bb718fcadc480fef",
       "source_fact_keys": [
         "source_fact:v1:1a61d4b9d5f07f4f75bd601e8ec67434bf61721a8ab33be9e7dab15f377fe5bc",
@@ -57010,6 +57539,23 @@
       "source_published_kst": "2026-10-06T08:57+09:00",
       "title": "반려동물 조회 간편하게···쿠콘 현대해상 펫보험에 API 공급"
     },
+    "source_fact:39e42176ac05f08f9aa5f18d": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/06/2026100608521448232",
+      "source": "머니투데이",
+      "source_body_digest": "85567f3baaf0e878c4fb557f5d2447d405950e305b142aa225c8bd2d727a3578",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b82d19e750b5ec33e53aed858966be9e11d58de001c2f9714c2a90b8a1b59984",
+      "source_fact_keys": [
+        "source_fact:v1:9b576cae3d2ddf57a3d7fbd92de23e42fe092a9401018ff0c799e220bf84820a"
+      ],
+      "source_published_kst": "2026-10-06T10:01+09:00",
+      "title": "두산로보틱스, '한국형 피지컬 AI' 구현 나선다…국책과제 2건 수주"
+    },
     "source_fact:3a2e5f5e1c06b6586910e5af": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
@@ -58145,7 +58691,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632589",
       "source": "이투데이",
       "source_body_digest": "719de3a8597293d6bf699ed5c1024d0609b61429d52ad752c0db3e6576d71416",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_delivery:953ee206c135c175fa78175d742512ff88363937ecfa2301ba75bbc046250521",
       "source_fact_identity": "source_facts:v1:2903811876f80530f8aa6d0d0c68daafa38c2a7f602c83d6bb718fcadc480fef",
       "source_fact_keys": [
         "source_fact:v1:1a61d4b9d5f07f4f75bd601e8ec67434bf61721a8ab33be9e7dab15f377fe5bc",
@@ -58164,7 +58710,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632667",
       "source": "이투데이",
       "source_body_digest": "580167a09fc48620b267bf9a95777ef5d0acfa2baae3a8837c161a45bc78e345",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:intraday_equity:6d6219f453f768479c864e374811c5e63451a90dc0d139320aff282bb85b0f7f",
       "source_fact_identity": "source_facts:v1:658b77f2d8210df2a0b1833b003adddf184221a7820fea61c5f520fca958de55",
       "source_fact_keys": [
         "source_fact:v1:57daa4d75c737a0b1ea01ec1b3f26d4336cb4d1a4a3f91c5f95e0306a9165b09",
@@ -58612,6 +59158,29 @@
       "source_published_kst": "2026-10-06T08:17+09:00",
       "title": "나스닥 사상 최고…비트코인 8만5000달러대[코인 모닝콜]"
     },
+    "source_fact:47e5761da17211ec9a73c497": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632704",
+      "source": "이투데이",
+      "source_body_digest": "9258c1e08451ec4b0533834d62a19b01a833e0b9dd660d121fb86603ebb3cc1b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74f66eb8b242c435df2124235784757fc9e4eefae9cdaeffbed075e627c09b41",
+      "source_fact_keys": [
+        "source_fact:v1:019b03f28e609847ffe1b4929b33cde79e2d7554616c44bd3dddf4254a9a754e",
+        "source_fact:v1:19f5c0369d5092530a3409a12b03c8ce9de4fa7057c0c23ff652a093ad0fc8b4",
+        "source_fact:v1:39997102e5e6b93c416fa89a9ec8ff1dd69271fa211774bcd3c0f3cacc647ee0",
+        "source_fact:v1:3b5f09bab9002f51787d54b3abcf12c7668862a67504f0482ae11c78e485ceab",
+        "source_fact:v1:8ef8b3842a2860d9789ab7d4bfad53980bc9792dce13f74759dbb5ac7b1e2521",
+        "source_fact:v1:960fa3f2afdec2f6153c932cf2425630737f09a9c295b2a1a9755efa8dd0d3e3",
+        "source_fact:v1:da63b2493fe87d21e89fa2c6235bb60240c5c2d747e281f06993cb23f8afb459"
+      ],
+      "source_published_kst": "2026-10-06T10:16+09:00",
+      "title": "엠플러스, 유럽 배터리 기업에 각형 장비 공급…방산·항공우주로 고객군 확대"
+    },
     "source_fact:47e90d356fb4c77a2047730b": {
       "first_seen_kst": "2026-10-06T00:11:03+09:00",
       "lanes": {
@@ -59030,6 +59599,24 @@
       "source_published_kst": "2026-10-06T05:43+09:00",
       "title": "美 부통령 \"알래스카 LNG 사업 투자, 한국과 세부사항 조율해야\""
     },
+    "source_fact:4d45a05ac4a815641728397d": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006058200064",
+      "source": "연합뉴스",
+      "source_body_digest": "ed8114a88ada5160590489acfa292627d2b76fbe5520b6b8b2d7be5005dcd2bd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0ecdfa1c59aef99444ce3634cad9fa5354e96f88e3c48cc95310fd83c685bbfd",
+      "source_fact_keys": [
+        "source_fact:v1:b69a40ef2e8d7b6b656dc2460a1382b0c3bf63c66e3b261fef56ac6925c65b7f",
+        "source_fact:v1:dd8227da6d9fa150343f87bb3b949c69a17c2c2857fd4d89ab90232934418f07"
+      ],
+      "source_published_kst": "2026-10-06T10:12+09:00",
+      "title": "충주시, 주덕읍 일원 친환경 쌀 생산·유통 기반 확충 | 연합뉴스"
+    },
     "source_fact:4d9c685c62375ee43221d954": {
       "first_seen_kst": "2026-10-06T07:30:15+09:00",
       "lanes": {
@@ -59253,6 +59840,23 @@
       "source_published_kst": "2026-10-05T09:55+09:00",
       "title": "日라피더스, 삼성·TSMC식 설계동맹 생태계 구축"
     },
+    "source_fact:4e8d44b622a4163464812b88": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006048300002",
+      "source": "연합뉴스",
+      "source_body_digest": "14b981b1878efa50ddf38dee2e8417c0dc811611ed7a3e709a7b25adbe648498",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9815b49261ced204b41b56620d4bb5159e21fe2ba39a90ffd18572da631a6a93",
+      "source_fact_keys": [
+        "source_fact:v1:1b6b102d362b3492e9a89cdac794ab1b0a5bd825ddf8e9a770e5f9cf70291da0"
+      ],
+      "source_published_kst": "2026-10-06T10:20+09:00",
+      "title": "\"韓 가상자산 경제 600조원대…동아시아 최대\" | 연합뉴스"
+    },
     "source_fact:4e9481b7dd365c26736fd226": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
       "lanes": {
@@ -59374,6 +59978,29 @@
       "source_published_kst": "2026-10-05T21:32+09:00",
       "title": "에볼루션 메탈스 앤 테크, 포항 희토류 자석공장 12월 17일 개장..연 1만t 확대 추진"
     },
+    "source_fact:5092fdc506dfbb6bd4c542e9": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632704",
+      "source": "이투데이",
+      "source_body_digest": "9258c1e08451ec4b0533834d62a19b01a833e0b9dd660d121fb86603ebb3cc1b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74f66eb8b242c435df2124235784757fc9e4eefae9cdaeffbed075e627c09b41",
+      "source_fact_keys": [
+        "source_fact:v1:019b03f28e609847ffe1b4929b33cde79e2d7554616c44bd3dddf4254a9a754e",
+        "source_fact:v1:19f5c0369d5092530a3409a12b03c8ce9de4fa7057c0c23ff652a093ad0fc8b4",
+        "source_fact:v1:39997102e5e6b93c416fa89a9ec8ff1dd69271fa211774bcd3c0f3cacc647ee0",
+        "source_fact:v1:3b5f09bab9002f51787d54b3abcf12c7668862a67504f0482ae11c78e485ceab",
+        "source_fact:v1:8ef8b3842a2860d9789ab7d4bfad53980bc9792dce13f74759dbb5ac7b1e2521",
+        "source_fact:v1:960fa3f2afdec2f6153c932cf2425630737f09a9c295b2a1a9755efa8dd0d3e3",
+        "source_fact:v1:da63b2493fe87d21e89fa2c6235bb60240c5c2d747e281f06993cb23f8afb459"
+      ],
+      "source_published_kst": "2026-10-06T10:16+09:00",
+      "title": "엠플러스, 유럽 배터리 기업에 각형 장비 공급…방산·항공우주로 고객군 확대"
+    },
     "source_fact:50acc156a3438b7b2d3d8656": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
       "lanes": {
@@ -59401,7 +60028,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632667",
       "source": "이투데이",
       "source_body_digest": "580167a09fc48620b267bf9a95777ef5d0acfa2baae3a8837c161a45bc78e345",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:intraday_equity:6d6219f453f768479c864e374811c5e63451a90dc0d139320aff282bb85b0f7f",
       "source_fact_identity": "source_facts:v1:658b77f2d8210df2a0b1833b003adddf184221a7820fea61c5f520fca958de55",
       "source_fact_keys": [
         "source_fact:v1:57daa4d75c737a0b1ea01ec1b3f26d4336cb4d1a4a3f91c5f95e0306a9165b09",
@@ -60144,6 +60771,29 @@
       ],
       "source_published_kst": "2026-10-05T20:58+09:00",
       "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
+    },
+    "source_fact:58af3317d6eaa2a2dd2e1d45": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632704",
+      "source": "이투데이",
+      "source_body_digest": "9258c1e08451ec4b0533834d62a19b01a833e0b9dd660d121fb86603ebb3cc1b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74f66eb8b242c435df2124235784757fc9e4eefae9cdaeffbed075e627c09b41",
+      "source_fact_keys": [
+        "source_fact:v1:019b03f28e609847ffe1b4929b33cde79e2d7554616c44bd3dddf4254a9a754e",
+        "source_fact:v1:19f5c0369d5092530a3409a12b03c8ce9de4fa7057c0c23ff652a093ad0fc8b4",
+        "source_fact:v1:39997102e5e6b93c416fa89a9ec8ff1dd69271fa211774bcd3c0f3cacc647ee0",
+        "source_fact:v1:3b5f09bab9002f51787d54b3abcf12c7668862a67504f0482ae11c78e485ceab",
+        "source_fact:v1:8ef8b3842a2860d9789ab7d4bfad53980bc9792dce13f74759dbb5ac7b1e2521",
+        "source_fact:v1:960fa3f2afdec2f6153c932cf2425630737f09a9c295b2a1a9755efa8dd0d3e3",
+        "source_fact:v1:da63b2493fe87d21e89fa2c6235bb60240c5c2d747e281f06993cb23f8afb459"
+      ],
+      "source_published_kst": "2026-10-06T10:16+09:00",
+      "title": "엠플러스, 유럽 배터리 기업에 각형 장비 공급…방산·항공우주로 고객군 확대"
     },
     "source_fact:58d3dc82dcfd0335f8149f40": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
@@ -60930,7 +61580,7 @@
       "link": "https://biz.heraldcorp.com/article/10893661",
       "source": "헤럴드경제",
       "source_body_digest": "7993374e3ceba3e52bb0d38b99faee238dad5ca6ae6e33552c270549c1ff2f95",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
       "source_fact_identity": "source_facts:v1:3f3102fe15be1f42b52dc94f4ef42173201ccef8bb2f6d8fda3e36cfc4591bbc",
       "source_fact_keys": [
         "source_fact:v1:1b557628cf37b6a20e2fe89798aeb36796ca9f876c081b630366bfa3be1e5a8d",
@@ -62290,6 +62940,26 @@
       "source_published_kst": "2026-10-06T09:41+09:00",
       "title": "[美공시]테라울프, 증가하는 고객 수요에 대응해 머스키 데이터 캠퍼스의 발전 용량을 1GW로 확대"
     },
+    "source_fact:6db3cad27f5eb7cfc82555e9": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632676",
+      "source": "이투데이",
+      "source_body_digest": "2f0ba30cb10ae556d5474e159b6b3655753770c37e91e6adb7f23829e5e9a20e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:46aea2eb81a71af1397b96ec77b2ecf1c09a875062df988f8d564020b7d89ef6",
+      "source_fact_keys": [
+        "source_fact:v1:34ee015f52e3cc5d2b04648799d4f797ccd62c0e1a656a01d87b995554e8bf05",
+        "source_fact:v1:7f08e344477e201013bcfd30efc93a4501deefff1eb6b9267ecf295d22750d7c",
+        "source_fact:v1:9375c81dbbdd8ad58b1e00d015b0900bb0c0c806d75d7e5b830b45dad3a488a5",
+        "source_fact:v1:9df5e9a20650c355a41e73ab42e3e41b4eaf1a956e4e4ab31000e29e5a2d717c"
+      ],
+      "source_published_kst": "2026-10-06T10:16+09:00",
+      "title": "李부총리 \"민생경제 안정·양극화 완화 총력…주택공급 확대 최우선\"[국감]"
+    },
     "source_fact:6db40075cb064ae276cf6ac9": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
       "lanes": {
@@ -62429,7 +63099,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003814860",
       "source": "뉴시스",
       "source_body_digest": "0b9f31576422927966dc2222215ba4ffbdf2d456aa5be62fb983f20f27238679",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_delivery:953ee206c135c175fa78175d742512ff88363937ecfa2301ba75bbc046250521",
       "source_fact_identity": "source_facts:v1:8e12baa452bb1d208cf2192fd25797d87dc9501cacc9d684327b44d6233277cc",
       "source_fact_keys": [
         "source_fact:v1:07c66c55370472b62cdbb55a3b5c8d94139860c687d7c56bd7da6f0f97e73329",
@@ -62619,6 +63289,29 @@
       ],
       "source_published_kst": "2026-10-06T09:09+09:00",
       "title": "스페이스X 우주 모멘텀에…센서뷰·스피어 장 초반 강세"
+    },
+    "source_fact:70d39034e10a4edf2351c2ff": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632704",
+      "source": "이투데이",
+      "source_body_digest": "9258c1e08451ec4b0533834d62a19b01a833e0b9dd660d121fb86603ebb3cc1b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74f66eb8b242c435df2124235784757fc9e4eefae9cdaeffbed075e627c09b41",
+      "source_fact_keys": [
+        "source_fact:v1:019b03f28e609847ffe1b4929b33cde79e2d7554616c44bd3dddf4254a9a754e",
+        "source_fact:v1:19f5c0369d5092530a3409a12b03c8ce9de4fa7057c0c23ff652a093ad0fc8b4",
+        "source_fact:v1:39997102e5e6b93c416fa89a9ec8ff1dd69271fa211774bcd3c0f3cacc647ee0",
+        "source_fact:v1:3b5f09bab9002f51787d54b3abcf12c7668862a67504f0482ae11c78e485ceab",
+        "source_fact:v1:8ef8b3842a2860d9789ab7d4bfad53980bc9792dce13f74759dbb5ac7b1e2521",
+        "source_fact:v1:960fa3f2afdec2f6153c932cf2425630737f09a9c295b2a1a9755efa8dd0d3e3",
+        "source_fact:v1:da63b2493fe87d21e89fa2c6235bb60240c5c2d747e281f06993cb23f8afb459"
+      ],
+      "source_published_kst": "2026-10-06T10:16+09:00",
+      "title": "엠플러스, 유럽 배터리 기업에 각형 장비 공급…방산·항공우주로 고객군 확대"
     },
     "source_fact:714604805898407311bd5a31": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
@@ -65231,6 +65924,29 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"관세 300%\"...벼랑 끝 트럼프, 한국 쥐어짜서 현금 지원 공약 '펑펑'"
     },
+    "source_fact:8665f512e59895923386fa35": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632704",
+      "source": "이투데이",
+      "source_body_digest": "9258c1e08451ec4b0533834d62a19b01a833e0b9dd660d121fb86603ebb3cc1b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74f66eb8b242c435df2124235784757fc9e4eefae9cdaeffbed075e627c09b41",
+      "source_fact_keys": [
+        "source_fact:v1:019b03f28e609847ffe1b4929b33cde79e2d7554616c44bd3dddf4254a9a754e",
+        "source_fact:v1:19f5c0369d5092530a3409a12b03c8ce9de4fa7057c0c23ff652a093ad0fc8b4",
+        "source_fact:v1:39997102e5e6b93c416fa89a9ec8ff1dd69271fa211774bcd3c0f3cacc647ee0",
+        "source_fact:v1:3b5f09bab9002f51787d54b3abcf12c7668862a67504f0482ae11c78e485ceab",
+        "source_fact:v1:8ef8b3842a2860d9789ab7d4bfad53980bc9792dce13f74759dbb5ac7b1e2521",
+        "source_fact:v1:960fa3f2afdec2f6153c932cf2425630737f09a9c295b2a1a9755efa8dd0d3e3",
+        "source_fact:v1:da63b2493fe87d21e89fa2c6235bb60240c5c2d747e281f06993cb23f8afb459"
+      ],
+      "source_published_kst": "2026-10-06T10:16+09:00",
+      "title": "엠플러스, 유럽 배터리 기업에 각형 장비 공급…방산·항공우주로 고객군 확대"
+    },
     "source_fact:868cc9b13672339281a056bb": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -65500,7 +66216,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632667",
       "source": "이투데이",
       "source_body_digest": "580167a09fc48620b267bf9a95777ef5d0acfa2baae3a8837c161a45bc78e345",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:intraday_equity:6d6219f453f768479c864e374811c5e63451a90dc0d139320aff282bb85b0f7f",
       "source_fact_identity": "source_facts:v1:658b77f2d8210df2a0b1833b003adddf184221a7820fea61c5f520fca958de55",
       "source_fact_keys": [
         "source_fact:v1:57daa4d75c737a0b1ea01ec1b3f26d4336cb4d1a4a3f91c5f95e0306a9165b09",
@@ -65963,6 +66679,29 @@
       ],
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "S&K폴리텍, 선진엔지니어링 합병 마무리"
+    },
+    "source_fact:90476267c3b197c9f7599663": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632704",
+      "source": "이투데이",
+      "source_body_digest": "9258c1e08451ec4b0533834d62a19b01a833e0b9dd660d121fb86603ebb3cc1b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74f66eb8b242c435df2124235784757fc9e4eefae9cdaeffbed075e627c09b41",
+      "source_fact_keys": [
+        "source_fact:v1:019b03f28e609847ffe1b4929b33cde79e2d7554616c44bd3dddf4254a9a754e",
+        "source_fact:v1:19f5c0369d5092530a3409a12b03c8ce9de4fa7057c0c23ff652a093ad0fc8b4",
+        "source_fact:v1:39997102e5e6b93c416fa89a9ec8ff1dd69271fa211774bcd3c0f3cacc647ee0",
+        "source_fact:v1:3b5f09bab9002f51787d54b3abcf12c7668862a67504f0482ae11c78e485ceab",
+        "source_fact:v1:8ef8b3842a2860d9789ab7d4bfad53980bc9792dce13f74759dbb5ac7b1e2521",
+        "source_fact:v1:960fa3f2afdec2f6153c932cf2425630737f09a9c295b2a1a9755efa8dd0d3e3",
+        "source_fact:v1:da63b2493fe87d21e89fa2c6235bb60240c5c2d747e281f06993cb23f8afb459"
+      ],
+      "source_published_kst": "2026-10-06T10:16+09:00",
+      "title": "엠플러스, 유럽 배터리 기업에 각형 장비 공급…방산·항공우주로 고객군 확대"
     },
     "source_fact:905bfcebcb7e66b41f47c1f4": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
@@ -67363,7 +68102,7 @@
       "link": "https://biz.heraldcorp.com/article/10893661",
       "source": "헤럴드경제",
       "source_body_digest": "7993374e3ceba3e52bb0d38b99faee238dad5ca6ae6e33552c270549c1ff2f95",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
       "source_fact_identity": "source_facts:v1:3f3102fe15be1f42b52dc94f4ef42173201ccef8bb2f6d8fda3e36cfc4591bbc",
       "source_fact_keys": [
         "source_fact:v1:1b557628cf37b6a20e2fe89798aeb36796ca9f876c081b630366bfa3be1e5a8d",
@@ -68768,6 +69507,28 @@
       "source_published_kst": "2026-10-06T08:29+09:00",
       "title": "다올증권 \"삼성바이오, 유상증자에 목표가↓…성장동력은 유효\" | 연합뉴스"
     },
+    "source_fact:abf215c34b0efe55dde7da51": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815111",
+      "source": "뉴시스",
+      "source_body_digest": "46ddc403abd7412309e5df54bd4ebefdfeb96215db7541a48c60f5ce8eb0f1e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9f46452eda3a2c107fd0995995d1d5eb56adcf0cdd23327685dc8a2ed8bca1e8",
+      "source_fact_keys": [
+        "source_fact:v1:2544b00671bb2158525144964577ae2c7acee20882e4be333591fd5c3f293f78",
+        "source_fact:v1:5333d739b1e9d57441494dc6534d76dc3eec82d48797175409f40acf419097f4",
+        "source_fact:v1:533a469555cc60c1258b562497cf82efbdf11aea3a98ab67ec5d94827723ea88",
+        "source_fact:v1:79a8f770bf71cc2621e45944d324f5d99f5795db7fa4e28f84313f59e4d2b344",
+        "source_fact:v1:8e00c053aad52f7a0a40a77f1844dd97def663ba5e8bb9490d316fc7b31246e3",
+        "source_fact:v1:c68e7a69f744d3047e4777c7838e7a303db6726be30f13e2b37c5879f31707ed"
+      ],
+      "source_published_kst": "2026-10-06T10:09+09:00",
+      "title": "씨피시스템 \"글로벌 MLCC 제조사사 장비에 '로보킷' 채택\""
+    },
     "source_fact:abf942a098423ae6812f6571": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -69167,6 +69928,28 @@
       ],
       "source_published_kst": "2026-10-05T12:57+09:00",
       "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
+    },
+    "source_fact:b09fec03ab1bca2e3b226ae1": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815111",
+      "source": "뉴시스",
+      "source_body_digest": "46ddc403abd7412309e5df54bd4ebefdfeb96215db7541a48c60f5ce8eb0f1e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9f46452eda3a2c107fd0995995d1d5eb56adcf0cdd23327685dc8a2ed8bca1e8",
+      "source_fact_keys": [
+        "source_fact:v1:2544b00671bb2158525144964577ae2c7acee20882e4be333591fd5c3f293f78",
+        "source_fact:v1:5333d739b1e9d57441494dc6534d76dc3eec82d48797175409f40acf419097f4",
+        "source_fact:v1:533a469555cc60c1258b562497cf82efbdf11aea3a98ab67ec5d94827723ea88",
+        "source_fact:v1:79a8f770bf71cc2621e45944d324f5d99f5795db7fa4e28f84313f59e4d2b344",
+        "source_fact:v1:8e00c053aad52f7a0a40a77f1844dd97def663ba5e8bb9490d316fc7b31246e3",
+        "source_fact:v1:c68e7a69f744d3047e4777c7838e7a303db6726be30f13e2b37c5879f31707ed"
+      ],
+      "source_published_kst": "2026-10-06T10:09+09:00",
+      "title": "씨피시스템 \"글로벌 MLCC 제조사사 장비에 '로보킷' 채택\""
     },
     "source_fact:b0b50962f90a8053ff039ba0": {
       "first_seen_kst": "2026-10-06T00:11:03+09:00",
@@ -70101,7 +70884,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632667",
       "source": "이투데이",
       "source_body_digest": "580167a09fc48620b267bf9a95777ef5d0acfa2baae3a8837c161a45bc78e345",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:intraday_equity:6d6219f453f768479c864e374811c5e63451a90dc0d139320aff282bb85b0f7f",
       "source_fact_identity": "source_facts:v1:658b77f2d8210df2a0b1833b003adddf184221a7820fea61c5f520fca958de55",
       "source_fact_keys": [
         "source_fact:v1:57daa4d75c737a0b1ea01ec1b3f26d4336cb4d1a4a3f91c5f95e0306a9165b09",
@@ -70301,7 +71084,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003814860",
       "source": "뉴시스",
       "source_body_digest": "0b9f31576422927966dc2222215ba4ffbdf2d456aa5be62fb983f20f27238679",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_delivery:953ee206c135c175fa78175d742512ff88363937ecfa2301ba75bbc046250521",
       "source_fact_identity": "source_facts:v1:8e12baa452bb1d208cf2192fd25797d87dc9501cacc9d684327b44d6233277cc",
       "source_fact_keys": [
         "source_fact:v1:07c66c55370472b62cdbb55a3b5c8d94139860c687d7c56bd7da6f0f97e73329",
@@ -71973,7 +72756,7 @@
       "link": "https://biz.heraldcorp.com/article/10893661",
       "source": "헤럴드경제",
       "source_body_digest": "7993374e3ceba3e52bb0d38b99faee238dad5ca6ae6e33552c270549c1ff2f95",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
       "source_fact_identity": "source_facts:v1:3f3102fe15be1f42b52dc94f4ef42173201ccef8bb2f6d8fda3e36cfc4591bbc",
       "source_fact_keys": [
         "source_fact:v1:1b557628cf37b6a20e2fe89798aeb36796ca9f876c081b630366bfa3be1e5a8d",
@@ -72398,7 +73181,7 @@
       "link": "https://biz.heraldcorp.com/article/10893661",
       "source": "헤럴드경제",
       "source_body_digest": "7993374e3ceba3e52bb0d38b99faee238dad5ca6ae6e33552c270549c1ff2f95",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
       "source_fact_identity": "source_facts:v1:3f3102fe15be1f42b52dc94f4ef42173201ccef8bb2f6d8fda3e36cfc4591bbc",
       "source_fact_keys": [
         "source_fact:v1:1b557628cf37b6a20e2fe89798aeb36796ca9f876c081b630366bfa3be1e5a8d",
@@ -73274,7 +74057,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632589",
       "source": "이투데이",
       "source_body_digest": "719de3a8597293d6bf699ed5c1024d0609b61429d52ad752c0db3e6576d71416",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_delivery:953ee206c135c175fa78175d742512ff88363937ecfa2301ba75bbc046250521",
       "source_fact_identity": "source_facts:v1:2903811876f80530f8aa6d0d0c68daafa38c2a7f602c83d6bb718fcadc480fef",
       "source_fact_keys": [
         "source_fact:v1:1a61d4b9d5f07f4f75bd601e8ec67434bf61721a8ab33be9e7dab15f377fe5bc",
@@ -74131,7 +74914,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632667",
       "source": "이투데이",
       "source_body_digest": "580167a09fc48620b267bf9a95777ef5d0acfa2baae3a8837c161a45bc78e345",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:intraday_equity:6d6219f453f768479c864e374811c5e63451a90dc0d139320aff282bb85b0f7f",
       "source_fact_identity": "source_facts:v1:658b77f2d8210df2a0b1833b003adddf184221a7820fea61c5f520fca958de55",
       "source_fact_keys": [
         "source_fact:v1:57daa4d75c737a0b1ea01ec1b3f26d4336cb4d1a4a3f91c5f95e0306a9165b09",
@@ -74372,6 +75155,46 @@
       ],
       "source_published_kst": "2026-10-06T08:45+09:00",
       "title": "한미반도체, 삼성전기에 패키징 장비 공급…245억원 규모"
+    },
+    "source_fact:e327f3abb556860a6484aaac": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632676",
+      "source": "이투데이",
+      "source_body_digest": "2f0ba30cb10ae556d5474e159b6b3655753770c37e91e6adb7f23829e5e9a20e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:46aea2eb81a71af1397b96ec77b2ecf1c09a875062df988f8d564020b7d89ef6",
+      "source_fact_keys": [
+        "source_fact:v1:34ee015f52e3cc5d2b04648799d4f797ccd62c0e1a656a01d87b995554e8bf05",
+        "source_fact:v1:7f08e344477e201013bcfd30efc93a4501deefff1eb6b9267ecf295d22750d7c",
+        "source_fact:v1:9375c81dbbdd8ad58b1e00d015b0900bb0c0c806d75d7e5b830b45dad3a488a5",
+        "source_fact:v1:9df5e9a20650c355a41e73ab42e3e41b4eaf1a956e4e4ab31000e29e5a2d717c"
+      ],
+      "source_published_kst": "2026-10-06T10:16+09:00",
+      "title": "李부총리 \"민생경제 안정·양극화 완화 총력…주택공급 확대 최우선\"[국감]"
+    },
+    "source_fact:e3361fc52c44ac48636c47de": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632676",
+      "source": "이투데이",
+      "source_body_digest": "2f0ba30cb10ae556d5474e159b6b3655753770c37e91e6adb7f23829e5e9a20e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:46aea2eb81a71af1397b96ec77b2ecf1c09a875062df988f8d564020b7d89ef6",
+      "source_fact_keys": [
+        "source_fact:v1:34ee015f52e3cc5d2b04648799d4f797ccd62c0e1a656a01d87b995554e8bf05",
+        "source_fact:v1:7f08e344477e201013bcfd30efc93a4501deefff1eb6b9267ecf295d22750d7c",
+        "source_fact:v1:9375c81dbbdd8ad58b1e00d015b0900bb0c0c806d75d7e5b830b45dad3a488a5",
+        "source_fact:v1:9df5e9a20650c355a41e73ab42e3e41b4eaf1a956e4e4ab31000e29e5a2d717c"
+      ],
+      "source_published_kst": "2026-10-06T10:16+09:00",
+      "title": "李부총리 \"민생경제 안정·양극화 완화 총력…주택공급 확대 최우선\"[국감]"
     },
     "source_fact:e35eba7097bea2853ea69f50": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
@@ -76615,6 +77438,28 @@
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
+    "source_fact:fb2d9400a76e36f3bbe6fa03": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815111",
+      "source": "뉴시스",
+      "source_body_digest": "46ddc403abd7412309e5df54bd4ebefdfeb96215db7541a48c60f5ce8eb0f1e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9f46452eda3a2c107fd0995995d1d5eb56adcf0cdd23327685dc8a2ed8bca1e8",
+      "source_fact_keys": [
+        "source_fact:v1:2544b00671bb2158525144964577ae2c7acee20882e4be333591fd5c3f293f78",
+        "source_fact:v1:5333d739b1e9d57441494dc6534d76dc3eec82d48797175409f40acf419097f4",
+        "source_fact:v1:533a469555cc60c1258b562497cf82efbdf11aea3a98ab67ec5d94827723ea88",
+        "source_fact:v1:79a8f770bf71cc2621e45944d324f5d99f5795db7fa4e28f84313f59e4d2b344",
+        "source_fact:v1:8e00c053aad52f7a0a40a77f1844dd97def663ba5e8bb9490d316fc7b31246e3",
+        "source_fact:v1:c68e7a69f744d3047e4777c7838e7a303db6726be30f13e2b37c5879f31707ed"
+      ],
+      "source_published_kst": "2026-10-06T10:09+09:00",
+      "title": "씨피시스템 \"글로벌 MLCC 제조사사 장비에 '로보킷' 채택\""
+    },
     "source_fact:fb4e94a977cde0c786c47889": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -76830,6 +77675,28 @@
       ],
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "LK삼양–다온아이앤씨, 드론용 초경량 EO·IR 모듈 개발 MOU"
+    },
+    "source_fact:fc939eabf7215e063c8b8996": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815111",
+      "source": "뉴시스",
+      "source_body_digest": "46ddc403abd7412309e5df54bd4ebefdfeb96215db7541a48c60f5ce8eb0f1e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9f46452eda3a2c107fd0995995d1d5eb56adcf0cdd23327685dc8a2ed8bca1e8",
+      "source_fact_keys": [
+        "source_fact:v1:2544b00671bb2158525144964577ae2c7acee20882e4be333591fd5c3f293f78",
+        "source_fact:v1:5333d739b1e9d57441494dc6534d76dc3eec82d48797175409f40acf419097f4",
+        "source_fact:v1:533a469555cc60c1258b562497cf82efbdf11aea3a98ab67ec5d94827723ea88",
+        "source_fact:v1:79a8f770bf71cc2621e45944d324f5d99f5795db7fa4e28f84313f59e4d2b344",
+        "source_fact:v1:8e00c053aad52f7a0a40a77f1844dd97def663ba5e8bb9490d316fc7b31246e3",
+        "source_fact:v1:c68e7a69f744d3047e4777c7838e7a303db6726be30f13e2b37c5879f31707ed"
+      ],
+      "source_published_kst": "2026-10-06T10:09+09:00",
+      "title": "씨피시스템 \"글로벌 MLCC 제조사사 장비에 '로보킷' 채택\""
     },
     "source_fact:fc9e38d4bb97740656ce1726": {
       "first_seen_kst": "2026-10-05T23:56:11+09:00",
@@ -77655,6 +78522,23 @@
       "source_published_kst": "2026-10-05T10:42+09:00",
       "title": "삼성전자, 코스피 ‘구원투수’ 될까…7000선 안착 시험대[주간증시전망]"
     },
+    "title:027d9372403cf264bfdf617a": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006048300002",
+      "source": "연합뉴스",
+      "source_body_digest": "14b981b1878efa50ddf38dee2e8417c0dc811611ed7a3e709a7b25adbe648498",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9815b49261ced204b41b56620d4bb5159e21fe2ba39a90ffd18572da631a6a93",
+      "source_fact_keys": [
+        "source_fact:v1:1b6b102d362b3492e9a89cdac794ab1b0a5bd825ddf8e9a770e5f9cf70291da0"
+      ],
+      "source_published_kst": "2026-10-06T10:20+09:00",
+      "title": "\"韓 가상자산 경제 600조원대…동아시아 최대\" | 연합뉴스"
+    },
     "title:02974d852455fad1adf42903": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -77804,6 +78688,23 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003812338",
       "source": "뉴시스",
       "title": "중동·러시아發 경유 공급난…美 수출금지 땐 '글로벌 대란' 우려"
+    },
+    "title:04d8ad1fbf9b16e32e90538b": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/06/2026100608521448232",
+      "source": "머니투데이",
+      "source_body_digest": "85567f3baaf0e878c4fb557f5d2447d405950e305b142aa225c8bd2d727a3578",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b82d19e750b5ec33e53aed858966be9e11d58de001c2f9714c2a90b8a1b59984",
+      "source_fact_keys": [
+        "source_fact:v1:9b576cae3d2ddf57a3d7fbd92de23e42fe092a9401018ff0c799e220bf84820a"
+      ],
+      "source_published_kst": "2026-10-06T10:01+09:00",
+      "title": "두산로보틱스, '한국형 피지컬 AI' 구현 나선다…국책과제 2건 수주"
     },
     "title:054cf01e789ed535c32012b6": {
       "first_seen_kst": "2026-10-04T08:29:55+09:00",
@@ -78163,6 +79064,21 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "[일문일답] 독파모 끝까지 간다…\"프론티어 AI 사업 별도 추진\""
+    },
+    "title:09e438ac601fd63169062851": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632702",
+      "source": "이투데이",
+      "source_body_digest": "e70ba9857636e0be7335e491b224a82405925c25d46959756315fcaf4bb2518b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T10:13+09:00",
+      "title": "씨피시스템, 글로벌 MLCC 제조사 장비에 ‘로보킷’ 공급…공정 진입 본격화"
     },
     "title:09f793226165bf6bae1ff97e": {
       "first_seen_kst": "2026-10-01T22:45:00+09:00",
@@ -81224,7 +82140,7 @@
       "link": "https://www.fnnews.com/news/202610060921574748",
       "source": "파이낸셜뉴스",
       "source_body_digest": "db44f25add10acfa08f40a178402a800bf2628ebd9a862992e0a6be661d11534",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:intraday_equity:6d6219f453f768479c864e374811c5e63451a90dc0d139320aff282bb85b0f7f",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T09:21+09:00",
@@ -82343,7 +83259,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003814860",
       "source": "뉴시스",
       "source_body_digest": "0b9f31576422927966dc2222215ba4ffbdf2d456aa5be62fb983f20f27238679",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_delivery:953ee206c135c175fa78175d742512ff88363937ecfa2301ba75bbc046250521",
       "source_fact_identity": "source_facts:v1:8e12baa452bb1d208cf2192fd25797d87dc9501cacc9d684327b44d6233277cc",
       "source_fact_keys": [
         "source_fact:v1:07c66c55370472b62cdbb55a3b5c8d94139860c687d7c56bd7da6f0f97e73329",
@@ -82520,6 +83436,29 @@
       "source": "연합뉴스",
       "title": "한섬, 2028년까지 매년 100억원 자사주 매입·소각 | 연합뉴스"
     },
+    "title:42207c0a6c842d828a374066": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632704",
+      "source": "이투데이",
+      "source_body_digest": "9258c1e08451ec4b0533834d62a19b01a833e0b9dd660d121fb86603ebb3cc1b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74f66eb8b242c435df2124235784757fc9e4eefae9cdaeffbed075e627c09b41",
+      "source_fact_keys": [
+        "source_fact:v1:019b03f28e609847ffe1b4929b33cde79e2d7554616c44bd3dddf4254a9a754e",
+        "source_fact:v1:19f5c0369d5092530a3409a12b03c8ce9de4fa7057c0c23ff652a093ad0fc8b4",
+        "source_fact:v1:39997102e5e6b93c416fa89a9ec8ff1dd69271fa211774bcd3c0f3cacc647ee0",
+        "source_fact:v1:3b5f09bab9002f51787d54b3abcf12c7668862a67504f0482ae11c78e485ceab",
+        "source_fact:v1:8ef8b3842a2860d9789ab7d4bfad53980bc9792dce13f74759dbb5ac7b1e2521",
+        "source_fact:v1:960fa3f2afdec2f6153c932cf2425630737f09a9c295b2a1a9755efa8dd0d3e3",
+        "source_fact:v1:da63b2493fe87d21e89fa2c6235bb60240c5c2d747e281f06993cb23f8afb459"
+      ],
+      "source_published_kst": "2026-10-06T10:16+09:00",
+      "title": "엠플러스, 유럽 배터리 기업에 각형 장비 공급…방산·항공우주로 고객군 확대"
+    },
     "title:4224573d96ec3a96a2eaba52": {
       "first_seen_kst": "2026-10-06T10:41:31+09:00",
       "lanes": {
@@ -82529,7 +83468,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632589",
       "source": "이투데이",
       "source_body_digest": "719de3a8597293d6bf699ed5c1024d0609b61429d52ad752c0db3e6576d71416",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_delivery:953ee206c135c175fa78175d742512ff88363937ecfa2301ba75bbc046250521",
       "source_fact_identity": "source_facts:v1:2903811876f80530f8aa6d0d0c68daafa38c2a7f602c83d6bb718fcadc480fef",
       "source_fact_keys": [
         "source_fact:v1:1a61d4b9d5f07f4f75bd601e8ec67434bf61721a8ab33be9e7dab15f377fe5bc",
@@ -83080,7 +84019,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632667",
       "source": "이투데이",
       "source_body_digest": "580167a09fc48620b267bf9a95777ef5d0acfa2baae3a8837c161a45bc78e345",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:intraday_equity:6d6219f453f768479c864e374811c5e63451a90dc0d139320aff282bb85b0f7f",
       "source_fact_identity": "source_facts:v1:658b77f2d8210df2a0b1833b003adddf184221a7820fea61c5f520fca958de55",
       "source_fact_keys": [
         "source_fact:v1:57daa4d75c737a0b1ea01ec1b3f26d4336cb4d1a4a3f91c5f95e0306a9165b09",
@@ -85503,7 +86442,7 @@
       "link": "https://biz.heraldcorp.com/article/10893661",
       "source": "헤럴드경제",
       "source_body_digest": "7993374e3ceba3e52bb0d38b99faee238dad5ca6ae6e33552c270549c1ff2f95",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
       "source_fact_identity": "source_facts:v1:3f3102fe15be1f42b52dc94f4ef42173201ccef8bb2f6d8fda3e36cfc4591bbc",
       "source_fact_keys": [
         "source_fact:v1:1b557628cf37b6a20e2fe89798aeb36796ca9f876c081b630366bfa3be1e5a8d",
@@ -93016,6 +93955,26 @@
       "source": "이데일리",
       "title": "9월 물가 상승률 둔화했지만…고유가에 연간 전망치 2.6% 웃돌까"
     },
+    "title:cc560401f7d9ebf7ec81d938": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632676",
+      "source": "이투데이",
+      "source_body_digest": "2f0ba30cb10ae556d5474e159b6b3655753770c37e91e6adb7f23829e5e9a20e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:46aea2eb81a71af1397b96ec77b2ecf1c09a875062df988f8d564020b7d89ef6",
+      "source_fact_keys": [
+        "source_fact:v1:34ee015f52e3cc5d2b04648799d4f797ccd62c0e1a656a01d87b995554e8bf05",
+        "source_fact:v1:7f08e344477e201013bcfd30efc93a4501deefff1eb6b9267ecf295d22750d7c",
+        "source_fact:v1:9375c81dbbdd8ad58b1e00d015b0900bb0c0c806d75d7e5b830b45dad3a488a5",
+        "source_fact:v1:9df5e9a20650c355a41e73ab42e3e41b4eaf1a956e4e4ab31000e29e5a2d717c"
+      ],
+      "source_published_kst": "2026-10-06T10:16+09:00",
+      "title": "李부총리 \"민생경제 안정·양극화 완화 총력…주택공급 확대 최우선\"[국감]"
+    },
     "title:ccaf11838df05f72b2284b17": {
       "first_seen_kst": "2026-10-03T08:04:27+09:00",
       "lanes": {
@@ -94471,6 +95430,24 @@
       "source": "이데일리",
       "title": "李 “레버리지 ETF 부족했다...도입 절차 아직 파악 못해”"
     },
+    "title:dc4f65a3615fb962a7f61782": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006058200064",
+      "source": "연합뉴스",
+      "source_body_digest": "ed8114a88ada5160590489acfa292627d2b76fbe5520b6b8b2d7be5005dcd2bd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0ecdfa1c59aef99444ce3634cad9fa5354e96f88e3c48cc95310fd83c685bbfd",
+      "source_fact_keys": [
+        "source_fact:v1:b69a40ef2e8d7b6b656dc2460a1382b0c3bf63c66e3b261fef56ac6925c65b7f",
+        "source_fact:v1:dd8227da6d9fa150343f87bb3b949c69a17c2c2857fd4d89ab90232934418f07"
+      ],
+      "source_published_kst": "2026-10-06T10:12+09:00",
+      "title": "충주시, 주덕읍 일원 친환경 쌀 생산·유통 기반 확충 | 연합뉴스"
+    },
     "title:dc780eb2939e4f7e95d11807": {
       "first_seen_kst": "2026-10-02T19:50:17+09:00",
       "lanes": {
@@ -95299,6 +96276,28 @@
       "link": "https://www.yna.co.kr/view/MYH20260926003300038",
       "source": "연합뉴스",
       "title": "뉴욕증시, 호르무즈 협상 기대·유가 하락에 상승 마감 | 연합뉴스"
+    },
+    "title:e7fb9ac3f7a51dfd8b577e51": {
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815111",
+      "source": "뉴시스",
+      "source_body_digest": "46ddc403abd7412309e5df54bd4ebefdfeb96215db7541a48c60f5ce8eb0f1e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9f46452eda3a2c107fd0995995d1d5eb56adcf0cdd23327685dc8a2ed8bca1e8",
+      "source_fact_keys": [
+        "source_fact:v1:2544b00671bb2158525144964577ae2c7acee20882e4be333591fd5c3f293f78",
+        "source_fact:v1:5333d739b1e9d57441494dc6534d76dc3eec82d48797175409f40acf419097f4",
+        "source_fact:v1:533a469555cc60c1258b562497cf82efbdf11aea3a98ab67ec5d94827723ea88",
+        "source_fact:v1:79a8f770bf71cc2621e45944d324f5d99f5795db7fa4e28f84313f59e4d2b344",
+        "source_fact:v1:8e00c053aad52f7a0a40a77f1844dd97def663ba5e8bb9490d316fc7b31246e3",
+        "source_fact:v1:c68e7a69f744d3047e4777c7838e7a303db6726be30f13e2b37c5879f31707ed"
+      ],
+      "source_published_kst": "2026-10-06T10:09+09:00",
+      "title": "씨피시스템 \"글로벌 MLCC 제조사사 장비에 '로보킷' 채택\""
     },
     "title:e7fca1b551d5d1ce8278de0f": {
       "first_seen_kst": "2026-09-22T09:27:58+09:00",
@@ -97122,5 +98121,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T10:41:31+09:00"
+  "updated_at_kst": "2026-10-06T11:20:44+09:00"
 }
