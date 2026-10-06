@@ -2,8 +2,8 @@
   "initialized": true,
   "version": 1,
   "source_version": 5,
-  "ray_official_index_verified": true,
-  "last_checked_kst": "2026-10-07T01:46:43+09:00",
+  "ray_official_index_verified": false,
+  "last_checked_kst": "2026-10-07T06:25:17+09:00",
   "nobel_2026_verified": true,
   "seen_event_keys": [
     "d3e43c74900cbe45ced82930",
@@ -190,5 +190,7 @@
   },
   "cns_trial_ids": [],
   "relevant_press_events": 12,
-  "source_errors": []
+  "source_errors": [
+    "Ray Therapeutics 공식도메인 색인: HTTPError"
+  ]
 }
