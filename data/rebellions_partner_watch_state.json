@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-08-24T21:32:19+09:00",
-  "last_checked_kst": "2026-10-06T12:18:44+09:00",
+  "last_checked_kst": "2026-10-06T19:45:08+09:00",
   "seen": {
     "74fd33cf93fb250c6b18ecd7": {
       "title": "리벨리온, 공공 CCTV 관제에 서버형 NPU 대규모 인프라 공급… 국산 AI 인프라 상용화로 기술 자립 가속",
@@ -2979,6 +2979,25 @@
       "url": "https://news.google.com/rss/articles/CBMiqgJBVV95cUxNcnJ3T000blJvNFJmV0Q0NlRZdFJ4ZnBkR05OazhjRlA4SWFFc2xsay0tWjFiX3A5VHVUZTk5X01sWHQ3U2FJVXNwcFRRNTN6cTRWc0o5M3Q4ZkVLdVRtZXVVM1JCSlBrRzlEWWg3UUJMR0h6aTVkMTZCVy05N1hfTlFiZmhKLXdjUFhUdnUyZ3picGZyZ0IzWlg3amFvMWlnUTk1LVpzQ0tFYUt1TDlZM3VFNENwejQ0QXQ2T1ctNmJ6X3BOb3R2bS14cnNPaG1GMzJzdWxST2QxQWYtX1BWS1N3ZGpEQmFfX3AwdFV1MDFJbmhyTWhhQU9TVmNEUW9GWF95anFSb29rQkx6U1FMX0s5NXdXTlZOU2tYbnEyMkVoYmdKTy1CVUF3?oc=5",
       "first_seen_kst": "2026-10-04T17:44:23+09:00",
       "suppressed_stale": true
+    },
+    "68b9564d46b47e5e2cc5ee27": {
+      "title": "비투엔, 리벨리온에 100억원 투자…글로벌 AI 실증 협력까지 \"시너지 확대\" - 네이트",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5VX3NjLWdaVVd3Q0p6alVGS0pIVmdVVGVBcC1IcEJHWnF3STFZSlN3SnVNbzc5VDQ2NXZycG9saGJGaVhHaXQxUEJlQmE4SFJjRUNB?oc=5",
+      "summary": "비투엔, 리벨리온에 100억원 투자…글로벌 AI 실증 협력까지 \"시너지 확대\" 네이트",
+      "event_signature": "b2en|general|general",
+      "material_stage": 2,
+      "first_seen_kst": "2026-10-06T19:45:08+09:00",
+      "suppressed_duplicate": "same_title"
+    },
+    "13f8ba1dcd75d507abbd969b": {
+      "title": "[Up&Down] 리벨리온 국산 NPU 상용화… 연내 코스닥 상장 추진 - 매일경제",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9NVW1GbnIxdUxfOWxsbXdoLXpIT0ZkcElNazZLVDhYNEM1UlhUS0pFZGpOX2hPampxMWFiYkdoUnBpMUFTVmp0OHYxNDhNOEN0VnlwSWx3?oc=5",
+      "direct_url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9NVW1GbnIxdUxfOWxsbXdoLXpIT0ZkcElNazZLVDhYNEM1UlhUS0pFZGpOX2hPampxMWFiYkdoUnBpMUFTVmp0OHYxNDhNOEN0VnlwSWx3?oc=5",
+      "summary": "[Up&Down] 리벨리온 국산 NPU 상용화… 연내 코스닥 상장 추진 매일경제",
+      "event_signature": null,
+      "material_stage": 4,
+      "first_seen_kst": "2026-10-06T19:45:08+09:00",
+      "alerted": true
     }
   }
 }
