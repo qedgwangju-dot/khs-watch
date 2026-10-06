@@ -3882,21 +3882,20 @@
     "event:9a1d11972183f1572a5a0950": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
       "lanes": {
-        "live": "2026-10-06T09:00:21+09:00"
+        "live": "2026-10-07T02:24:39+09:00"
       },
-      "last_seen_kst": "2026-10-06T09:00:21+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12168848",
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169606",
       "source": "매일경제",
-      "source_body_digest": "5bdf95ccf28cf4e852cc10d4d3650bd1234a0b14f8de485707a04946c02ccd79",
+      "source_body_digest": "8b9d8542aec8b2222a31e2c15675adb30323e19a617d7e30c7e0622a7eed1098",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:35201d47ba75606f3ed0d7d9790a38a5c1dec0dcc3c32eb62c25975718204af4",
+      "source_fact_identity": "source_facts:v1:6928e5b3ba3b6f4b3b452aeb2e8ec0c608247ad6786b2219ece120f730378667",
       "source_fact_keys": [
-        "source_fact:v1:0594f893b9ebdb209b9bb446ae3155c7ae607940a8b9aa8d4da666a0c64c6271",
-        "source_fact:v1:0a89425abf741b7cf99b352bf50603ec4c08d4e9e072622e054d268b7b7a3076",
-        "source_fact:v1:f73c882e46d498445b86f0161ba059dc437d79b7bbca9929864e7501fe8a492d"
+        "source_fact:v1:0c9ccaebae6ad23292ac1f46b613caa96722c9ed72ac89a94d70efe0cb561045",
+        "source_fact:v1:3cb4df6d0aba557773d6d25c648a9fd3c8dfe8aca7c4e1424b506a10fe20be55"
       ],
-      "source_published_kst": "2026-10-06T08:33+09:00",
-      "title": "“광고·커머스 매출 성장 둔화, AI 비용 증가”…대신증권, NAVER 목표가↓"
+      "source_published_kst": "2026-10-06T17:50+09:00",
+      "title": "고금리 덮치자 … 국민연금, 보험株 사고 증권株 팔아"
     },
     "event:9a85a5a23d0ac5ed0356556d": {
       "first_seen_kst": "2026-09-18T07:13:57+09:00",
@@ -4831,17 +4830,28 @@
     "event:c0e20fbd626af79e0397b342": {
       "first_seen_kst": "2026-10-06T22:08:07+09:00",
       "lanes": {
-        "live": "2026-10-06T22:08:07+09:00"
+        "live": "2026-10-07T02:24:39+09:00"
       },
-      "last_seen_kst": "2026-10-06T22:08:07+09:00",
-      "link": "https://www.newsis.com/view/NISX20261006_0003814828",
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816104",
       "source": "뉴시스",
-      "source_body_digest": "91fca16793203a1c2c926fb179ddaa5da771c21dd9a33d9ed10ad2ae3f52a308",
+      "source_body_digest": "d503e11536151ab7cd81bd0bab7c26a0d48a14276e8f6a963d3945a3d448c5f1",
       "source_event_identity": "",
-      "source_fact_identity": "",
-      "source_fact_keys": [],
-      "source_published_kst": "2026-10-06T17:40+09:00",
-      "title": "\"고금리 폭탄에 먼저 무너지나\"…프랑스에 커지는 경고음"
+      "source_fact_identity": "source_facts:v1:029966fac94ecda9b45aee4235582a30a328721d70dda8a6dd8d9d9dd3fbde6c",
+      "source_fact_keys": [
+        "source_fact:v1:05268578c8cea971168e7e6e38db7c7e5d9e15dc4985fc6ba4ea31829def4c45",
+        "source_fact:v1:440f61bcc2739382694f6dc703ba70afa360526d11b8fbdb3fab9801ab443e56",
+        "source_fact:v1:51241aab56db0784129fef6d7dcb1cb36c66f593c79c88ed70ed8b3e5539ec3a",
+        "source_fact:v1:5583e0491530e0f0c699e3636a6e12c28686e0054674415b5041c77d652b7fc8",
+        "source_fact:v1:604e37df764829119c1aa1aa75d41a436719eb41a52a6e27fbbdd6b6c1b4a05c",
+        "source_fact:v1:6bb6a56def2352977fb1e0df5bf06b23584888ed4c9f4d23574e5839f74f9a4f",
+        "source_fact:v1:703bc80d2c983ba362c3c329c73f427bc20560c5889610b3172080c9357cf538",
+        "source_fact:v1:720ea895d901e2c05a360b330c010799342bf831f0ad2b24bd10d1830764f0f3",
+        "source_fact:v1:96c3cc4863d704dc4812e5db8b583b5773db94ac146a1a89fc49126ed28c38f1",
+        "source_fact:v1:e8ec1ce74708e0e27e7733cc5dbf0b9f588dc18b11f2bd65eaf1d4a61aed43d9"
+      ],
+      "source_published_kst": "2026-10-06T17:12+09:00",
+      "title": "유로화 17개월 최저…프랑스 재정불안에 스페인 조기총선까지(종합)"
     },
     "event:c108c7b2a500c7ee7f4191a3": {
       "first_seen_kst": "2026-09-25T11:29:39+09:00",
@@ -6020,22 +6030,20 @@
     "event:ed5ed0d62394ba89a848cd55": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
       "lanes": {
-        "live": "2026-10-06T23:56:49+09:00"
+        "live": "2026-10-07T02:24:39+09:00"
       },
-      "last_seen_kst": "2026-10-06T23:56:49+09:00",
-      "link": "https://www.newsis.com/view/NISX20261006_0003816138",
-      "source": "뉴시스",
-      "source_body_digest": "1e8ba2c3f0376e29a01121261b5121f046cfcd8fd3a3ab3092ee8dc9be4d6e19",
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100609103743448",
+      "source": "머니투데이",
+      "source_body_digest": "a9eb379544a10c1a2ea703766cab1d54702a50d306e717df2115d1b0ff05deff",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:a33f73b7f930339a73b98619fd561a93b9ee6f6cd95727d1db90ad5d56755921",
+      "source_fact_identity": "source_facts:v1:87304fee0f23971af9d5f7d3a18464b1fb10559ea4d87fa75568598c7ba5b97e",
       "source_fact_keys": [
-        "source_fact:v1:69d0c652bebeda27f45ad5c6ee7f0947f5d746142dd0719f01498d19fa792544",
-        "source_fact:v1:7fe59eacebf02a4a4675dfc60f4fab83aeb7e68b0165a91e5a9d2ad3728d5162",
-        "source_fact:v1:9b43500aeceacc3eca3d734bec7e5b7d2202f200ca6096489796a5f30f59ceaf",
-        "source_fact:v1:ae05e0c6fbbbc754ba7ee65a0d15c901ec4301817afb813d7bd97a0b19081e16"
+        "source_fact:v1:5d068a616888827c20df6e10cdf5ca93b2281e4914693a50ffe857267841babc",
+        "source_fact:v1:c0903decdd524533932f5c9e48493cc3fcf846117cd0c1e953e488f13803b83c"
       ],
-      "source_published_kst": "2026-10-06T21:33+09:00",
-      "title": "그리스·이탈리아보다 비싸게 빚내는 프랑스…국채금리 5% 눈앞"
+      "source_published_kst": "2026-10-06T10:33+09:00",
+      "title": "브라질 대선 '우파' 보우소나루 약진에…증시 단숨에 사상 최고치"
     },
     "event:ee2445b0912c043ab1270e54": {
       "first_seen_kst": "2026-10-05T15:39:46+09:00",
@@ -11497,6 +11505,23 @@
       "source_published_kst": "2026-10-06T14:42+09:00",
       "title": "금융권 연쇄 해킹 공격 IP 28개로 확인…금감원 \"국가 특정·해석에 유의\"(종합)"
     },
+    "fact:5904ee94f79ad6b1d0c66533": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.etnews.com/20261006000208",
+      "source": "전자신문",
+      "source_body_digest": "a33be220e5a834422ea126d881d8e2f6f09eb97af9d023ce52112de0082746c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f75e899f8000b9443b23e78a6ef9eb768768f1d6d20f5c011da26005eb0d5bb1",
+      "source_fact_keys": [
+        "source_fact:v1:8a43ee070609374d5a3c2f1ba1ffa356f3fc11c6585f20b5c068b2575461dc4e"
+      ],
+      "source_published_kst": "2026-10-06T13:24+09:00",
+      "title": "두산로보틱스, 피지컬 AI 협동로봇 플랫폼 만든다…국책과제 2건 선정"
+    },
     "fact:591420e332684d22e2771c16": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -13457,6 +13482,24 @@
       "source_published_kst": "2026-10-06T17:00+09:00",
       "title": "SK인텔릭스, '나무엑스' 中 위탁생산 추진…원가 경쟁력 확보 '승부수'"
     },
+    "fact:825056d74e2383bf3e26179b": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100609103743448",
+      "source": "머니투데이",
+      "source_body_digest": "a9eb379544a10c1a2ea703766cab1d54702a50d306e717df2115d1b0ff05deff",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:87304fee0f23971af9d5f7d3a18464b1fb10559ea4d87fa75568598c7ba5b97e",
+      "source_fact_keys": [
+        "source_fact:v1:5d068a616888827c20df6e10cdf5ca93b2281e4914693a50ffe857267841babc",
+        "source_fact:v1:c0903decdd524533932f5c9e48493cc3fcf846117cd0c1e953e488f13803b83c"
+      ],
+      "source_published_kst": "2026-10-06T10:33+09:00",
+      "title": "브라질 대선 '우파' 보우소나루 약진에…증시 단숨에 사상 최고치"
+    },
     "fact:8285254795c56e137177681b": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
@@ -15282,6 +15325,32 @@
       "source_published_kst": "2026-10-06T10:09+09:00",
       "title": "씨피시스템 \"글로벌 MLCC 제조사사 장비에 '로보킷' 채택\""
     },
+    "fact:a2fd969a9a38a3bc417ce7d9": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816104",
+      "source": "뉴시스",
+      "source_body_digest": "d503e11536151ab7cd81bd0bab7c26a0d48a14276e8f6a963d3945a3d448c5f1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:029966fac94ecda9b45aee4235582a30a328721d70dda8a6dd8d9d9dd3fbde6c",
+      "source_fact_keys": [
+        "source_fact:v1:05268578c8cea971168e7e6e38db7c7e5d9e15dc4985fc6ba4ea31829def4c45",
+        "source_fact:v1:440f61bcc2739382694f6dc703ba70afa360526d11b8fbdb3fab9801ab443e56",
+        "source_fact:v1:51241aab56db0784129fef6d7dcb1cb36c66f593c79c88ed70ed8b3e5539ec3a",
+        "source_fact:v1:5583e0491530e0f0c699e3636a6e12c28686e0054674415b5041c77d652b7fc8",
+        "source_fact:v1:604e37df764829119c1aa1aa75d41a436719eb41a52a6e27fbbdd6b6c1b4a05c",
+        "source_fact:v1:6bb6a56def2352977fb1e0df5bf06b23584888ed4c9f4d23574e5839f74f9a4f",
+        "source_fact:v1:703bc80d2c983ba362c3c329c73f427bc20560c5889610b3172080c9357cf538",
+        "source_fact:v1:720ea895d901e2c05a360b330c010799342bf831f0ad2b24bd10d1830764f0f3",
+        "source_fact:v1:96c3cc4863d704dc4812e5db8b583b5773db94ac146a1a89fc49126ed28c38f1",
+        "source_fact:v1:e8ec1ce74708e0e27e7733cc5dbf0b9f588dc18b11f2bd65eaf1d4a61aed43d9"
+      ],
+      "source_published_kst": "2026-10-06T17:12+09:00",
+      "title": "유로화 17개월 최저…프랑스 재정불안에 스페인 조기총선까지(종합)"
+    },
     "fact:a3031d55b8f239fa4ed24975": {
       "first_seen_kst": "2026-10-06T23:29:45+09:00",
       "lanes": {
@@ -15495,6 +15564,23 @@
       ],
       "source_published_kst": "2026-10-06T05:00+09:00",
       "title": "서울에는 GPU, 지방에는 공장…AI가 벌리는 ‘산업 수도권 격차’ [AI 신계급사회]"
+    },
+    "fact:a721a136403a7f397cea328c": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.etnews.com/20261007000001",
+      "source": "전자신문",
+      "source_body_digest": "f83b13addefd536a3b8c419837d909517c10cfcff47c7885dcec7cd7ee4f8c8e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6058aa2e050f596ec8b19630320c4338ab6df4971648bf82ece73b9554f5f383",
+      "source_fact_keys": [
+        "source_fact:v1:04fe61326549a6f5150e0330f69e39661a2520b9bf66b856c064655c3bd6a160"
+      ],
+      "source_published_kst": "2026-10-07T01:33+09:00",
+      "title": "휴네시온, 'AI 페스타 26' 참가…N2SF 전환·AI 보안 전략 공개"
     },
     "fact:a82032f8be40e06d059fadd8": {
       "first_seen_kst": "2026-10-07T00:54:50+09:00",
@@ -15976,6 +16062,24 @@
       ],
       "source_published_kst": "2026-10-05T20:03+09:00",
       "title": "인스메드, CFO 10월 30일 사임…연간 매출 가이던스 유지"
+    },
+    "fact:b0c5d406a41efecf96ced1a9": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169606",
+      "source": "매일경제",
+      "source_body_digest": "8b9d8542aec8b2222a31e2c15675adb30323e19a617d7e30c7e0622a7eed1098",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6928e5b3ba3b6f4b3b452aeb2e8ec0c608247ad6786b2219ece120f730378667",
+      "source_fact_keys": [
+        "source_fact:v1:0c9ccaebae6ad23292ac1f46b613caa96722c9ed72ac89a94d70efe0cb561045",
+        "source_fact:v1:3cb4df6d0aba557773d6d25c648a9fd3c8dfe8aca7c4e1424b506a10fe20be55"
+      ],
+      "source_published_kst": "2026-10-06T17:50+09:00",
+      "title": "고금리 덮치자 … 국민연금, 보험株 사고 증권株 팔아"
     },
     "fact:b1787f1d01f6e5b04638bf8c": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -16907,6 +17011,24 @@
       ],
       "source_published_kst": "2026-10-06T15:25+09:00",
       "title": "유류세 5년 인하…“온실가스 400만t 감축 기회 놓쳤다”"
+    },
+    "fact:c7e16853380b11ddd7a27683": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.etnews.com/20261006000011",
+      "source": "전자신문",
+      "source_body_digest": "f4c702bf87f4b97a3cad259e0fcaba5fa13e34a09b8da79da3950ecc29369d39",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3a7a570b23c6f4c70b29ea02ca54cacd19a91e726ff8c1bafdbee3bb337f2ed7",
+      "source_fact_keys": [
+        "source_fact:v1:273fe30c7528c08467d26e6c3303dd8298ac5e9192723ebd67d0ee6c8464ca90",
+        "source_fact:v1:81971b6b3b6c531490c86cdba5da2d385d7b27e36ec7bf1cdf38d1116ec05608"
+      ],
+      "source_published_kst": "2026-10-06T08:56+09:00",
+      "title": "서상덕 S2W 대표, 韓-英 공급망 보안 협력 제안"
     },
     "fact:c830770ed4b7f6b699d0bcfd": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -21547,6 +21669,32 @@
       "source_published_kst": "2026-10-05T09:39+09:00",
       "title": "“20좌 안 되면 못 파나”…단일종목 레버리지 ‘단주 출구’ 만든다"
     },
+    "link:112dedd9a812085d4b419b87": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816104",
+      "source": "뉴시스",
+      "source_body_digest": "d503e11536151ab7cd81bd0bab7c26a0d48a14276e8f6a963d3945a3d448c5f1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:029966fac94ecda9b45aee4235582a30a328721d70dda8a6dd8d9d9dd3fbde6c",
+      "source_fact_keys": [
+        "source_fact:v1:05268578c8cea971168e7e6e38db7c7e5d9e15dc4985fc6ba4ea31829def4c45",
+        "source_fact:v1:440f61bcc2739382694f6dc703ba70afa360526d11b8fbdb3fab9801ab443e56",
+        "source_fact:v1:51241aab56db0784129fef6d7dcb1cb36c66f593c79c88ed70ed8b3e5539ec3a",
+        "source_fact:v1:5583e0491530e0f0c699e3636a6e12c28686e0054674415b5041c77d652b7fc8",
+        "source_fact:v1:604e37df764829119c1aa1aa75d41a436719eb41a52a6e27fbbdd6b6c1b4a05c",
+        "source_fact:v1:6bb6a56def2352977fb1e0df5bf06b23584888ed4c9f4d23574e5839f74f9a4f",
+        "source_fact:v1:703bc80d2c983ba362c3c329c73f427bc20560c5889610b3172080c9357cf538",
+        "source_fact:v1:720ea895d901e2c05a360b330c010799342bf831f0ad2b24bd10d1830764f0f3",
+        "source_fact:v1:96c3cc4863d704dc4812e5db8b583b5773db94ac146a1a89fc49126ed28c38f1",
+        "source_fact:v1:e8ec1ce74708e0e27e7733cc5dbf0b9f588dc18b11f2bd65eaf1d4a61aed43d9"
+      ],
+      "source_published_kst": "2026-10-06T17:12+09:00",
+      "title": "유로화 17개월 최저…프랑스 재정불안에 스페인 조기총선까지(종합)"
+    },
     "link:11901fad5640ae62a5058aff": {
       "first_seen_kst": "2026-10-02T02:18:41+09:00",
       "lanes": {
@@ -23917,6 +24065,24 @@
       "link": "https://www.newsis.com/view/NISX20261001_0003811613",
       "source": "뉴시스",
       "title": "영국, 러시아 제재 31건 발표…\"한국 사할린-2 LNG 수입은 제재 면제\""
+    },
+    "link:278bb5f4c726d3183c742258": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169606",
+      "source": "매일경제",
+      "source_body_digest": "8b9d8542aec8b2222a31e2c15675adb30323e19a617d7e30c7e0622a7eed1098",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6928e5b3ba3b6f4b3b452aeb2e8ec0c608247ad6786b2219ece120f730378667",
+      "source_fact_keys": [
+        "source_fact:v1:0c9ccaebae6ad23292ac1f46b613caa96722c9ed72ac89a94d70efe0cb561045",
+        "source_fact:v1:3cb4df6d0aba557773d6d25c648a9fd3c8dfe8aca7c4e1424b506a10fe20be55"
+      ],
+      "source_published_kst": "2026-10-06T17:50+09:00",
+      "title": "고금리 덮치자 … 국민연금, 보험株 사고 증권株 팔아"
     },
     "link:278d4d438ac8b6f2b2043321": {
       "first_seen_kst": "2026-10-03T16:58:04+09:00",
@@ -33369,6 +33535,21 @@
       "source": "이투데이",
       "title": "우크라 미사일·드론 공격 격화…외교부, 재외국민 안전대책 점검"
     },
+    "link:7826805c40b4f6da4436b922": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.etnews.com/20261006000392",
+      "source": "전자신문",
+      "source_body_digest": "4932e5327d3335849f462b35d62a043c404f35f9ce33d558519d52fcdbb8a4c1",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T16:40+09:00",
+      "title": "美 제재에도 특허 협력…화웨이, 퀄컴과 5G·AI·컴퓨팅 상호 사용"
+    },
     "link:7847c0800fc05c22d3de3a6e": {
       "first_seen_kst": "2026-10-03T19:02:18+09:00",
       "lanes": {
@@ -33955,6 +34136,24 @@
       "link": "https://www.newsis.com/view/NISX20260923_0003801723",
       "source": "뉴시스",
       "title": "\"주식 시장 조정 끝…10월 중순 반등해 2028년 초까지 상승\" 전문가의 근거는"
+    },
+    "link:7ccd1350b5ae3167a28d5867": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100609103743448",
+      "source": "머니투데이",
+      "source_body_digest": "a9eb379544a10c1a2ea703766cab1d54702a50d306e717df2115d1b0ff05deff",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:87304fee0f23971af9d5f7d3a18464b1fb10559ea4d87fa75568598c7ba5b97e",
+      "source_fact_keys": [
+        "source_fact:v1:5d068a616888827c20df6e10cdf5ca93b2281e4914693a50ffe857267841babc",
+        "source_fact:v1:c0903decdd524533932f5c9e48493cc3fcf846117cd0c1e953e488f13803b83c"
+      ],
+      "source_published_kst": "2026-10-06T10:33+09:00",
+      "title": "브라질 대선 '우파' 보우소나루 약진에…증시 단숨에 사상 최고치"
     },
     "link:7d080802ef4686885af69484": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
@@ -41419,6 +41618,23 @@
       "source_event_identity": "",
       "title": "스타벅스, 中신장 첫 진출…美의원·인권단체 \"즉각 매장 닫아라\""
     },
+    "link:c3423699c24842ecadd52735": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.etnews.com/20261007000001",
+      "source": "전자신문",
+      "source_body_digest": "f83b13addefd536a3b8c419837d909517c10cfcff47c7885dcec7cd7ee4f8c8e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6058aa2e050f596ec8b19630320c4338ab6df4971648bf82ece73b9554f5f383",
+      "source_fact_keys": [
+        "source_fact:v1:04fe61326549a6f5150e0330f69e39661a2520b9bf66b856c064655c3bd6a160"
+      ],
+      "source_published_kst": "2026-10-07T01:33+09:00",
+      "title": "휴네시온, 'AI 페스타 26' 참가…N2SF 전환·AI 보안 전략 공개"
+    },
     "link:c3996c039148d22dac1cb8a4": {
       "first_seen_kst": "2026-10-02T15:40:35+09:00",
       "lanes": {
@@ -42238,6 +42454,23 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003812266",
       "source": "뉴시스",
       "title": "\"안전한 환경조성 성과\"…한유원, 인증 3개 취득"
+    },
+    "link:ca79df90182e6c94d1cabf4d": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.etnews.com/20261006000208",
+      "source": "전자신문",
+      "source_body_digest": "a33be220e5a834422ea126d881d8e2f6f09eb97af9d023ce52112de0082746c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f75e899f8000b9443b23e78a6ef9eb768768f1d6d20f5c011da26005eb0d5bb1",
+      "source_fact_keys": [
+        "source_fact:v1:8a43ee070609374d5a3c2f1ba1ffa356f3fc11c6585f20b5c068b2575461dc4e"
+      ],
+      "source_published_kst": "2026-10-06T13:24+09:00",
+      "title": "두산로보틱스, 피지컬 AI 협동로봇 플랫폼 만든다…국책과제 2건 선정"
     },
     "link:ca8e1581b7a8ea4e6e700db2": {
       "first_seen_kst": "2026-10-04T19:34:44+09:00",
@@ -44812,6 +45045,24 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T17:02+09:00",
       "title": "“내놓기 무섭게 완판”…증권사가 원금보장 하는 ‘이 상품’에 돈 몰린다"
+    },
+    "link:e1e525f641395a8528c3fde0": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.etnews.com/20261006000011",
+      "source": "전자신문",
+      "source_body_digest": "f4c702bf87f4b97a3cad259e0fcaba5fa13e34a09b8da79da3950ecc29369d39",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3a7a570b23c6f4c70b29ea02ca54cacd19a91e726ff8c1bafdbee3bb337f2ed7",
+      "source_fact_keys": [
+        "source_fact:v1:273fe30c7528c08467d26e6c3303dd8298ac5e9192723ebd67d0ee6c8464ca90",
+        "source_fact:v1:81971b6b3b6c531490c86cdba5da2d385d7b27e36ec7bf1cdf38d1116ec05608"
+      ],
+      "source_published_kst": "2026-10-06T08:56+09:00",
+      "title": "서상덕 S2W 대표, 韓-英 공급망 보안 협력 제안"
     },
     "link:e1eefcf304f6004bad5c24ca": {
       "first_seen_kst": "2026-09-22T11:42:51+09:00",
@@ -53075,6 +53326,32 @@
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "[통합시 100일] ① 전남광주 320만 시민 삶 하나로…통합은 이제 시작 | 연합뉴스"
     },
+    "original:2c207387f364054f3d28c334": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816104",
+      "source": "뉴시스",
+      "source_body_digest": "d503e11536151ab7cd81bd0bab7c26a0d48a14276e8f6a963d3945a3d448c5f1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:029966fac94ecda9b45aee4235582a30a328721d70dda8a6dd8d9d9dd3fbde6c",
+      "source_fact_keys": [
+        "source_fact:v1:05268578c8cea971168e7e6e38db7c7e5d9e15dc4985fc6ba4ea31829def4c45",
+        "source_fact:v1:440f61bcc2739382694f6dc703ba70afa360526d11b8fbdb3fab9801ab443e56",
+        "source_fact:v1:51241aab56db0784129fef6d7dcb1cb36c66f593c79c88ed70ed8b3e5539ec3a",
+        "source_fact:v1:5583e0491530e0f0c699e3636a6e12c28686e0054674415b5041c77d652b7fc8",
+        "source_fact:v1:604e37df764829119c1aa1aa75d41a436719eb41a52a6e27fbbdd6b6c1b4a05c",
+        "source_fact:v1:6bb6a56def2352977fb1e0df5bf06b23584888ed4c9f4d23574e5839f74f9a4f",
+        "source_fact:v1:703bc80d2c983ba362c3c329c73f427bc20560c5889610b3172080c9357cf538",
+        "source_fact:v1:720ea895d901e2c05a360b330c010799342bf831f0ad2b24bd10d1830764f0f3",
+        "source_fact:v1:96c3cc4863d704dc4812e5db8b583b5773db94ac146a1a89fc49126ed28c38f1",
+        "source_fact:v1:e8ec1ce74708e0e27e7733cc5dbf0b9f588dc18b11f2bd65eaf1d4a61aed43d9"
+      ],
+      "source_published_kst": "2026-10-06T17:12+09:00",
+      "title": "유로화 17개월 최저…프랑스 재정불안에 스페인 조기총선까지(종합)"
+    },
     "original:2c73d84a7050f95040fbe697": {
       "first_seen_kst": "2026-10-02T13:15:57+09:00",
       "lanes": {
@@ -56900,6 +57177,23 @@
       "source_published_kst": "2026-10-05T21:02+09:00",
       "title": "라디오팜 테라노스틱스, RAD101 2상 종료미팅 완료..3상 준비 착수"
     },
+    "original:4cebaaf6abe846de5dcae602": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.etnews.com/20261006000208",
+      "source": "전자신문",
+      "source_body_digest": "a33be220e5a834422ea126d881d8e2f6f09eb97af9d023ce52112de0082746c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f75e899f8000b9443b23e78a6ef9eb768768f1d6d20f5c011da26005eb0d5bb1",
+      "source_fact_keys": [
+        "source_fact:v1:8a43ee070609374d5a3c2f1ba1ffa356f3fc11c6585f20b5c068b2575461dc4e"
+      ],
+      "source_published_kst": "2026-10-06T13:24+09:00",
+      "title": "두산로보틱스, 피지컬 AI 협동로봇 플랫폼 만든다…국책과제 2건 선정"
+    },
     "original:4d03f2779165f859b4df61f0": {
       "first_seen_kst": "2026-10-05T09:13:59+09:00",
       "lanes": {
@@ -60141,6 +60435,24 @@
       ],
       "source_published_kst": "2026-10-06T10:04+09:00",
       "title": "옵티팜, cGMP 시설 인수로 이종이식 사업화 속도"
+    },
+    "original:6d03aa9368377610cd29df82": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169606",
+      "source": "매일경제",
+      "source_body_digest": "8b9d8542aec8b2222a31e2c15675adb30323e19a617d7e30c7e0622a7eed1098",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6928e5b3ba3b6f4b3b452aeb2e8ec0c608247ad6786b2219ece120f730378667",
+      "source_fact_keys": [
+        "source_fact:v1:0c9ccaebae6ad23292ac1f46b613caa96722c9ed72ac89a94d70efe0cb561045",
+        "source_fact:v1:3cb4df6d0aba557773d6d25c648a9fd3c8dfe8aca7c4e1424b506a10fe20be55"
+      ],
+      "source_published_kst": "2026-10-06T17:50+09:00",
+      "title": "고금리 덮치자 … 국민연금, 보험株 사고 증권株 팔아"
     },
     "original:6d6c51e6fffe2b5a4326de96": {
       "first_seen_kst": "2026-09-27T12:02:47+09:00",
@@ -64539,6 +64851,21 @@
       "source_published_kst": "2026-10-06T17:42+09:00",
       "title": "코스피, 외인 팔자에 또다시 7000선 밑으로…코스닥 3%↑"
     },
+    "original:92627465b9a1990e48d62b5b": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.etnews.com/20261006000392",
+      "source": "전자신문",
+      "source_body_digest": "4932e5327d3335849f462b35d62a043c404f35f9ce33d558519d52fcdbb8a4c1",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T16:40+09:00",
+      "title": "美 제재에도 특허 협력…화웨이, 퀄컴과 5G·AI·컴퓨팅 상호 사용"
+    },
     "original:926cff67f24857ebd8507026": {
       "first_seen_kst": "2026-10-02T17:01:29+09:00",
       "lanes": {
@@ -67378,6 +67705,24 @@
       "source": "이투데이",
       "title": "메리츠증권 \"넷마블, 신작보다 기존작 수명 연장 집중…재정비 성과 주목\""
     },
+    "original:afb9b5b33f4af6836b3b7427": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.etnews.com/20261006000011",
+      "source": "전자신문",
+      "source_body_digest": "f4c702bf87f4b97a3cad259e0fcaba5fa13e34a09b8da79da3950ecc29369d39",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3a7a570b23c6f4c70b29ea02ca54cacd19a91e726ff8c1bafdbee3bb337f2ed7",
+      "source_fact_keys": [
+        "source_fact:v1:273fe30c7528c08467d26e6c3303dd8298ac5e9192723ebd67d0ee6c8464ca90",
+        "source_fact:v1:81971b6b3b6c531490c86cdba5da2d385d7b27e36ec7bf1cdf38d1116ec05608"
+      ],
+      "source_published_kst": "2026-10-06T08:56+09:00",
+      "title": "서상덕 S2W 대표, 韓-英 공급망 보안 협력 제안"
+    },
     "original:afbd47a3dbbe39f5b1fe86d3": {
       "first_seen_kst": "2026-10-07T00:54:50+09:00",
       "lanes": {
@@ -69086,6 +69431,24 @@
       "link": "https://zdnet.co.kr/view/?no=20261003083207",
       "source": "지디넷코리아",
       "title": "[소외된 SW ㊤] 예산안에서 사라진 SW...국가 경쟁력 우려"
+    },
+    "original:bf113a76b6db1de3efa8ad62": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100609103743448",
+      "source": "머니투데이",
+      "source_body_digest": "a9eb379544a10c1a2ea703766cab1d54702a50d306e717df2115d1b0ff05deff",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:87304fee0f23971af9d5f7d3a18464b1fb10559ea4d87fa75568598c7ba5b97e",
+      "source_fact_keys": [
+        "source_fact:v1:5d068a616888827c20df6e10cdf5ca93b2281e4914693a50ffe857267841babc",
+        "source_fact:v1:c0903decdd524533932f5c9e48493cc3fcf846117cd0c1e953e488f13803b83c"
+      ],
+      "source_published_kst": "2026-10-06T10:33+09:00",
+      "title": "브라질 대선 '우파' 보우소나루 약진에…증시 단숨에 사상 최고치"
     },
     "original:bf841d8b2b9f18df7f1eb275": {
       "first_seen_kst": "2026-10-06T14:52:12+09:00",
@@ -75494,6 +75857,23 @@
       ],
       "source_published_kst": "2026-10-06T13:35+09:00",
       "title": "조준희 KOSA 회장 \"AI 수요·공급기업 한자리에…실제 사업으로 연결\""
+    },
+    "original:fb8327004dea6888f47dc3f4": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.etnews.com/20261007000001",
+      "source": "전자신문",
+      "source_body_digest": "f83b13addefd536a3b8c419837d909517c10cfcff47c7885dcec7cd7ee4f8c8e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6058aa2e050f596ec8b19630320c4338ab6df4971648bf82ece73b9554f5f383",
+      "source_fact_keys": [
+        "source_fact:v1:04fe61326549a6f5150e0330f69e39661a2520b9bf66b856c064655c3bd6a160"
+      ],
+      "source_published_kst": "2026-10-07T01:33+09:00",
+      "title": "휴네시온, 'AI 페스타 26' 참가…N2SF 전환·AI 보안 전략 공개"
     },
     "original:fbbf971d130a4ccab5110196": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
@@ -84025,6 +84405,32 @@
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "대신證 \"삼성바이오, 3분기 실적 컨센서스 부합…4분기 성장폭 확대\""
     },
+    "source_fact:26d5756624183f585e9892ae": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816104",
+      "source": "뉴시스",
+      "source_body_digest": "d503e11536151ab7cd81bd0bab7c26a0d48a14276e8f6a963d3945a3d448c5f1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:029966fac94ecda9b45aee4235582a30a328721d70dda8a6dd8d9d9dd3fbde6c",
+      "source_fact_keys": [
+        "source_fact:v1:05268578c8cea971168e7e6e38db7c7e5d9e15dc4985fc6ba4ea31829def4c45",
+        "source_fact:v1:440f61bcc2739382694f6dc703ba70afa360526d11b8fbdb3fab9801ab443e56",
+        "source_fact:v1:51241aab56db0784129fef6d7dcb1cb36c66f593c79c88ed70ed8b3e5539ec3a",
+        "source_fact:v1:5583e0491530e0f0c699e3636a6e12c28686e0054674415b5041c77d652b7fc8",
+        "source_fact:v1:604e37df764829119c1aa1aa75d41a436719eb41a52a6e27fbbdd6b6c1b4a05c",
+        "source_fact:v1:6bb6a56def2352977fb1e0df5bf06b23584888ed4c9f4d23574e5839f74f9a4f",
+        "source_fact:v1:703bc80d2c983ba362c3c329c73f427bc20560c5889610b3172080c9357cf538",
+        "source_fact:v1:720ea895d901e2c05a360b330c010799342bf831f0ad2b24bd10d1830764f0f3",
+        "source_fact:v1:96c3cc4863d704dc4812e5db8b583b5773db94ac146a1a89fc49126ed28c38f1",
+        "source_fact:v1:e8ec1ce74708e0e27e7733cc5dbf0b9f588dc18b11f2bd65eaf1d4a61aed43d9"
+      ],
+      "source_published_kst": "2026-10-06T17:12+09:00",
+      "title": "유로화 17개월 최저…프랑스 재정불안에 스페인 조기총선까지(종합)"
+    },
     "source_fact:26db737403ef3e17a1ef47ef": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -85794,6 +86200,23 @@
       "source_published_kst": "2026-10-06T17:03+09:00",
       "title": "누리호 5차 발사 D-1…'K우주 밸류체인' 기술력 모였다"
     },
+    "source_fact:2ecff704b343b04a16833310": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.etnews.com/20261007000001",
+      "source": "전자신문",
+      "source_body_digest": "f83b13addefd536a3b8c419837d909517c10cfcff47c7885dcec7cd7ee4f8c8e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6058aa2e050f596ec8b19630320c4338ab6df4971648bf82ece73b9554f5f383",
+      "source_fact_keys": [
+        "source_fact:v1:04fe61326549a6f5150e0330f69e39661a2520b9bf66b856c064655c3bd6a160"
+      ],
+      "source_published_kst": "2026-10-07T01:33+09:00",
+      "title": "휴네시온, 'AI 페스타 26' 참가…N2SF 전환·AI 보안 전략 공개"
+    },
     "source_fact:2ed93765f8a0d0e637eca635": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
       "lanes": {
@@ -86069,6 +86492,24 @@
       ],
       "source_published_kst": "2026-10-05T18:03+09:00",
       "title": "'빚의 제국 빛을 잃다' 보도 인상적 … 고금리 위험요인 더 짚어달라"
+    },
+    "source_fact:2ffbd6512ddbd4c6a35051bf": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169606",
+      "source": "매일경제",
+      "source_body_digest": "8b9d8542aec8b2222a31e2c15675adb30323e19a617d7e30c7e0622a7eed1098",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6928e5b3ba3b6f4b3b452aeb2e8ec0c608247ad6786b2219ece120f730378667",
+      "source_fact_keys": [
+        "source_fact:v1:0c9ccaebae6ad23292ac1f46b613caa96722c9ed72ac89a94d70efe0cb561045",
+        "source_fact:v1:3cb4df6d0aba557773d6d25c648a9fd3c8dfe8aca7c4e1424b506a10fe20be55"
+      ],
+      "source_published_kst": "2026-10-06T17:50+09:00",
+      "title": "고금리 덮치자 … 국민연금, 보험株 사고 증권株 팔아"
     },
     "source_fact:3004d39bfd73f399c00e2f40": {
       "first_seen_kst": "2026-10-06T22:37:02+09:00",
@@ -88272,6 +88713,32 @@
       "source_published_kst": "2026-10-06T11:30+09:00",
       "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
     },
+    "source_fact:39e30269583c080795c9ddaa": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816104",
+      "source": "뉴시스",
+      "source_body_digest": "d503e11536151ab7cd81bd0bab7c26a0d48a14276e8f6a963d3945a3d448c5f1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:029966fac94ecda9b45aee4235582a30a328721d70dda8a6dd8d9d9dd3fbde6c",
+      "source_fact_keys": [
+        "source_fact:v1:05268578c8cea971168e7e6e38db7c7e5d9e15dc4985fc6ba4ea31829def4c45",
+        "source_fact:v1:440f61bcc2739382694f6dc703ba70afa360526d11b8fbdb3fab9801ab443e56",
+        "source_fact:v1:51241aab56db0784129fef6d7dcb1cb36c66f593c79c88ed70ed8b3e5539ec3a",
+        "source_fact:v1:5583e0491530e0f0c699e3636a6e12c28686e0054674415b5041c77d652b7fc8",
+        "source_fact:v1:604e37df764829119c1aa1aa75d41a436719eb41a52a6e27fbbdd6b6c1b4a05c",
+        "source_fact:v1:6bb6a56def2352977fb1e0df5bf06b23584888ed4c9f4d23574e5839f74f9a4f",
+        "source_fact:v1:703bc80d2c983ba362c3c329c73f427bc20560c5889610b3172080c9357cf538",
+        "source_fact:v1:720ea895d901e2c05a360b330c010799342bf831f0ad2b24bd10d1830764f0f3",
+        "source_fact:v1:96c3cc4863d704dc4812e5db8b583b5773db94ac146a1a89fc49126ed28c38f1",
+        "source_fact:v1:e8ec1ce74708e0e27e7733cc5dbf0b9f588dc18b11f2bd65eaf1d4a61aed43d9"
+      ],
+      "source_published_kst": "2026-10-06T17:12+09:00",
+      "title": "유로화 17개월 최저…프랑스 재정불안에 스페인 조기총선까지(종합)"
+    },
     "source_fact:39e42176ac05f08f9aa5f18d": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
       "lanes": {
@@ -88812,6 +89279,32 @@
       ],
       "source_published_kst": "2026-10-06T16:45+09:00",
       "title": "알테오젠, 2000억 투자 유치…연구부터 판매까지 한 회사로"
+    },
+    "source_fact:3c6f6ecae0f241398fa35a9b": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816104",
+      "source": "뉴시스",
+      "source_body_digest": "d503e11536151ab7cd81bd0bab7c26a0d48a14276e8f6a963d3945a3d448c5f1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:029966fac94ecda9b45aee4235582a30a328721d70dda8a6dd8d9d9dd3fbde6c",
+      "source_fact_keys": [
+        "source_fact:v1:05268578c8cea971168e7e6e38db7c7e5d9e15dc4985fc6ba4ea31829def4c45",
+        "source_fact:v1:440f61bcc2739382694f6dc703ba70afa360526d11b8fbdb3fab9801ab443e56",
+        "source_fact:v1:51241aab56db0784129fef6d7dcb1cb36c66f593c79c88ed70ed8b3e5539ec3a",
+        "source_fact:v1:5583e0491530e0f0c699e3636a6e12c28686e0054674415b5041c77d652b7fc8",
+        "source_fact:v1:604e37df764829119c1aa1aa75d41a436719eb41a52a6e27fbbdd6b6c1b4a05c",
+        "source_fact:v1:6bb6a56def2352977fb1e0df5bf06b23584888ed4c9f4d23574e5839f74f9a4f",
+        "source_fact:v1:703bc80d2c983ba362c3c329c73f427bc20560c5889610b3172080c9357cf538",
+        "source_fact:v1:720ea895d901e2c05a360b330c010799342bf831f0ad2b24bd10d1830764f0f3",
+        "source_fact:v1:96c3cc4863d704dc4812e5db8b583b5773db94ac146a1a89fc49126ed28c38f1",
+        "source_fact:v1:e8ec1ce74708e0e27e7733cc5dbf0b9f588dc18b11f2bd65eaf1d4a61aed43d9"
+      ],
+      "source_published_kst": "2026-10-06T17:12+09:00",
+      "title": "유로화 17개월 최저…프랑스 재정불안에 스페인 조기총선까지(종합)"
     },
     "source_fact:3c6f9439fb3c8dd4d57e78dd": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
@@ -92332,6 +92825,32 @@
       "source_published_kst": "2026-10-05T22:19+09:00",
       "title": "세노버스 에너지, 아사바스카오일 57억 캐나다달러 인수 합의"
     },
+    "source_fact:4c928bc7ab9a9b7922a02bdc": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816104",
+      "source": "뉴시스",
+      "source_body_digest": "d503e11536151ab7cd81bd0bab7c26a0d48a14276e8f6a963d3945a3d448c5f1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:029966fac94ecda9b45aee4235582a30a328721d70dda8a6dd8d9d9dd3fbde6c",
+      "source_fact_keys": [
+        "source_fact:v1:05268578c8cea971168e7e6e38db7c7e5d9e15dc4985fc6ba4ea31829def4c45",
+        "source_fact:v1:440f61bcc2739382694f6dc703ba70afa360526d11b8fbdb3fab9801ab443e56",
+        "source_fact:v1:51241aab56db0784129fef6d7dcb1cb36c66f593c79c88ed70ed8b3e5539ec3a",
+        "source_fact:v1:5583e0491530e0f0c699e3636a6e12c28686e0054674415b5041c77d652b7fc8",
+        "source_fact:v1:604e37df764829119c1aa1aa75d41a436719eb41a52a6e27fbbdd6b6c1b4a05c",
+        "source_fact:v1:6bb6a56def2352977fb1e0df5bf06b23584888ed4c9f4d23574e5839f74f9a4f",
+        "source_fact:v1:703bc80d2c983ba362c3c329c73f427bc20560c5889610b3172080c9357cf538",
+        "source_fact:v1:720ea895d901e2c05a360b330c010799342bf831f0ad2b24bd10d1830764f0f3",
+        "source_fact:v1:96c3cc4863d704dc4812e5db8b583b5773db94ac146a1a89fc49126ed28c38f1",
+        "source_fact:v1:e8ec1ce74708e0e27e7733cc5dbf0b9f588dc18b11f2bd65eaf1d4a61aed43d9"
+      ],
+      "source_published_kst": "2026-10-06T17:12+09:00",
+      "title": "유로화 17개월 최저…프랑스 재정불안에 스페인 조기총선까지(종합)"
+    },
     "source_fact:4ca7c401f0fb3c7a8c9293e6": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
@@ -95847,6 +96366,24 @@
       ],
       "source_published_kst": "2026-10-06T07:45+09:00",
       "title": "\"지금이 매수 기회\" 화장품株 급락했는데, 수출 29% 급증"
+    },
+    "source_fact:5b4e431ec894254ac67e8c27": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.etnews.com/20261006000011",
+      "source": "전자신문",
+      "source_body_digest": "f4c702bf87f4b97a3cad259e0fcaba5fa13e34a09b8da79da3950ecc29369d39",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3a7a570b23c6f4c70b29ea02ca54cacd19a91e726ff8c1bafdbee3bb337f2ed7",
+      "source_fact_keys": [
+        "source_fact:v1:273fe30c7528c08467d26e6c3303dd8298ac5e9192723ebd67d0ee6c8464ca90",
+        "source_fact:v1:81971b6b3b6c531490c86cdba5da2d385d7b27e36ec7bf1cdf38d1116ec05608"
+      ],
+      "source_published_kst": "2026-10-06T08:56+09:00",
+      "title": "서상덕 S2W 대표, 韓-英 공급망 보안 협력 제안"
     },
     "source_fact:5b69661b14cd3bd923b8ef75": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -99928,6 +100465,24 @@
       ],
       "source_published_kst": "2026-10-06T11:36+09:00",
       "title": "지역 일자리 창출·육아휴직 확산…경사노위 6대 과제 윤곽"
+    },
+    "source_fact:6e77c23c03a7f65ee9090d7e": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100609103743448",
+      "source": "머니투데이",
+      "source_body_digest": "a9eb379544a10c1a2ea703766cab1d54702a50d306e717df2115d1b0ff05deff",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:87304fee0f23971af9d5f7d3a18464b1fb10559ea4d87fa75568598c7ba5b97e",
+      "source_fact_keys": [
+        "source_fact:v1:5d068a616888827c20df6e10cdf5ca93b2281e4914693a50ffe857267841babc",
+        "source_fact:v1:c0903decdd524533932f5c9e48493cc3fcf846117cd0c1e953e488f13803b83c"
+      ],
+      "source_published_kst": "2026-10-06T10:33+09:00",
+      "title": "브라질 대선 '우파' 보우소나루 약진에…증시 단숨에 사상 최고치"
     },
     "source_fact:6ec20602775073291199002e": {
       "first_seen_kst": "2026-10-06T10:41:31+09:00",
@@ -105228,6 +105783,24 @@
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
     },
+    "source_fact:84e6fba9ee5b574d462a7091": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169606",
+      "source": "매일경제",
+      "source_body_digest": "8b9d8542aec8b2222a31e2c15675adb30323e19a617d7e30c7e0622a7eed1098",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6928e5b3ba3b6f4b3b452aeb2e8ec0c608247ad6786b2219ece120f730378667",
+      "source_fact_keys": [
+        "source_fact:v1:0c9ccaebae6ad23292ac1f46b613caa96722c9ed72ac89a94d70efe0cb561045",
+        "source_fact:v1:3cb4df6d0aba557773d6d25c648a9fd3c8dfe8aca7c4e1424b506a10fe20be55"
+      ],
+      "source_published_kst": "2026-10-06T17:50+09:00",
+      "title": "고금리 덮치자 … 국민연금, 보험株 사고 증권株 팔아"
+    },
     "source_fact:84e9e75cca4a174460eb04df": {
       "first_seen_kst": "2026-10-06T22:37:02+09:00",
       "lanes": {
@@ -110043,6 +110616,32 @@
       "source_published_kst": "2026-10-05T20:07+09:00",
       "title": "이카엑스 홀딩스, 플라이미 인수 완료..18억 위안 전액 현금"
     },
+    "source_fact:9a4e441598441b928da99fd8": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816104",
+      "source": "뉴시스",
+      "source_body_digest": "d503e11536151ab7cd81bd0bab7c26a0d48a14276e8f6a963d3945a3d448c5f1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:029966fac94ecda9b45aee4235582a30a328721d70dda8a6dd8d9d9dd3fbde6c",
+      "source_fact_keys": [
+        "source_fact:v1:05268578c8cea971168e7e6e38db7c7e5d9e15dc4985fc6ba4ea31829def4c45",
+        "source_fact:v1:440f61bcc2739382694f6dc703ba70afa360526d11b8fbdb3fab9801ab443e56",
+        "source_fact:v1:51241aab56db0784129fef6d7dcb1cb36c66f593c79c88ed70ed8b3e5539ec3a",
+        "source_fact:v1:5583e0491530e0f0c699e3636a6e12c28686e0054674415b5041c77d652b7fc8",
+        "source_fact:v1:604e37df764829119c1aa1aa75d41a436719eb41a52a6e27fbbdd6b6c1b4a05c",
+        "source_fact:v1:6bb6a56def2352977fb1e0df5bf06b23584888ed4c9f4d23574e5839f74f9a4f",
+        "source_fact:v1:703bc80d2c983ba362c3c329c73f427bc20560c5889610b3172080c9357cf538",
+        "source_fact:v1:720ea895d901e2c05a360b330c010799342bf831f0ad2b24bd10d1830764f0f3",
+        "source_fact:v1:96c3cc4863d704dc4812e5db8b583b5773db94ac146a1a89fc49126ed28c38f1",
+        "source_fact:v1:e8ec1ce74708e0e27e7733cc5dbf0b9f588dc18b11f2bd65eaf1d4a61aed43d9"
+      ],
+      "source_published_kst": "2026-10-06T17:12+09:00",
+      "title": "유로화 17개월 최저…프랑스 재정불안에 스페인 조기총선까지(종합)"
+    },
     "source_fact:9a649ceab4511ea0f77ddb7a": {
       "first_seen_kst": "2026-10-06T21:40:57+09:00",
       "lanes": {
@@ -114222,6 +114821,24 @@
       "source_published_kst": "2026-10-06T08:03+09:00",
       "title": "대신證, “삼성바이오로직스, 3분기 실적 선방⋯4분기엔 반등 전망”"
     },
+    "source_fact:ade1a6f61158864c4cfb3d4a": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100609103743448",
+      "source": "머니투데이",
+      "source_body_digest": "a9eb379544a10c1a2ea703766cab1d54702a50d306e717df2115d1b0ff05deff",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:87304fee0f23971af9d5f7d3a18464b1fb10559ea4d87fa75568598c7ba5b97e",
+      "source_fact_keys": [
+        "source_fact:v1:5d068a616888827c20df6e10cdf5ca93b2281e4914693a50ffe857267841babc",
+        "source_fact:v1:c0903decdd524533932f5c9e48493cc3fcf846117cd0c1e953e488f13803b83c"
+      ],
+      "source_published_kst": "2026-10-06T10:33+09:00",
+      "title": "브라질 대선 '우파' 보우소나루 약진에…증시 단숨에 사상 최고치"
+    },
     "source_fact:ae01568ea6ffd9fd25f22c0c": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
       "lanes": {
@@ -115010,6 +115627,32 @@
       ],
       "source_published_kst": "2026-10-06T15:59+09:00",
       "title": "자사주 매입 막바지·솔리다임 상장설 악재? 삼전닉스 1~3%대↓(종합) | 연합뉴스"
+    },
+    "source_fact:b1d3b079cdd9bfc5c92ee008": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816104",
+      "source": "뉴시스",
+      "source_body_digest": "d503e11536151ab7cd81bd0bab7c26a0d48a14276e8f6a963d3945a3d448c5f1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:029966fac94ecda9b45aee4235582a30a328721d70dda8a6dd8d9d9dd3fbde6c",
+      "source_fact_keys": [
+        "source_fact:v1:05268578c8cea971168e7e6e38db7c7e5d9e15dc4985fc6ba4ea31829def4c45",
+        "source_fact:v1:440f61bcc2739382694f6dc703ba70afa360526d11b8fbdb3fab9801ab443e56",
+        "source_fact:v1:51241aab56db0784129fef6d7dcb1cb36c66f593c79c88ed70ed8b3e5539ec3a",
+        "source_fact:v1:5583e0491530e0f0c699e3636a6e12c28686e0054674415b5041c77d652b7fc8",
+        "source_fact:v1:604e37df764829119c1aa1aa75d41a436719eb41a52a6e27fbbdd6b6c1b4a05c",
+        "source_fact:v1:6bb6a56def2352977fb1e0df5bf06b23584888ed4c9f4d23574e5839f74f9a4f",
+        "source_fact:v1:703bc80d2c983ba362c3c329c73f427bc20560c5889610b3172080c9357cf538",
+        "source_fact:v1:720ea895d901e2c05a360b330c010799342bf831f0ad2b24bd10d1830764f0f3",
+        "source_fact:v1:96c3cc4863d704dc4812e5db8b583b5773db94ac146a1a89fc49126ed28c38f1",
+        "source_fact:v1:e8ec1ce74708e0e27e7733cc5dbf0b9f588dc18b11f2bd65eaf1d4a61aed43d9"
+      ],
+      "source_published_kst": "2026-10-06T17:12+09:00",
+      "title": "유로화 17개월 최저…프랑스 재정불안에 스페인 조기총선까지(종합)"
     },
     "source_fact:b1df16b0485255c9d48ab7fa": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -117119,6 +117762,23 @@
       "source_published_kst": "2026-10-06T08:29+09:00",
       "title": "다올증권 \"삼성바이오, 유상증자에 목표가↓…성장동력은 유효\" | 연합뉴스"
     },
+    "source_fact:bae390c1fcc9efb5145eaa81": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.etnews.com/20261006000208",
+      "source": "전자신문",
+      "source_body_digest": "a33be220e5a834422ea126d881d8e2f6f09eb97af9d023ce52112de0082746c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f75e899f8000b9443b23e78a6ef9eb768768f1d6d20f5c011da26005eb0d5bb1",
+      "source_fact_keys": [
+        "source_fact:v1:8a43ee070609374d5a3c2f1ba1ffa356f3fc11c6585f20b5c068b2575461dc4e"
+      ],
+      "source_published_kst": "2026-10-06T13:24+09:00",
+      "title": "두산로보틱스, 피지컬 AI 협동로봇 플랫폼 만든다…국책과제 2건 선정"
+    },
     "source_fact:baee6d6a0c599d6d0a1312a1": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
       "lanes": {
@@ -117797,6 +118457,32 @@
       ],
       "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
+    },
+    "source_fact:bdfa77990957a5088cd4946b": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816104",
+      "source": "뉴시스",
+      "source_body_digest": "d503e11536151ab7cd81bd0bab7c26a0d48a14276e8f6a963d3945a3d448c5f1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:029966fac94ecda9b45aee4235582a30a328721d70dda8a6dd8d9d9dd3fbde6c",
+      "source_fact_keys": [
+        "source_fact:v1:05268578c8cea971168e7e6e38db7c7e5d9e15dc4985fc6ba4ea31829def4c45",
+        "source_fact:v1:440f61bcc2739382694f6dc703ba70afa360526d11b8fbdb3fab9801ab443e56",
+        "source_fact:v1:51241aab56db0784129fef6d7dcb1cb36c66f593c79c88ed70ed8b3e5539ec3a",
+        "source_fact:v1:5583e0491530e0f0c699e3636a6e12c28686e0054674415b5041c77d652b7fc8",
+        "source_fact:v1:604e37df764829119c1aa1aa75d41a436719eb41a52a6e27fbbdd6b6c1b4a05c",
+        "source_fact:v1:6bb6a56def2352977fb1e0df5bf06b23584888ed4c9f4d23574e5839f74f9a4f",
+        "source_fact:v1:703bc80d2c983ba362c3c329c73f427bc20560c5889610b3172080c9357cf538",
+        "source_fact:v1:720ea895d901e2c05a360b330c010799342bf831f0ad2b24bd10d1830764f0f3",
+        "source_fact:v1:96c3cc4863d704dc4812e5db8b583b5773db94ac146a1a89fc49126ed28c38f1",
+        "source_fact:v1:e8ec1ce74708e0e27e7733cc5dbf0b9f588dc18b11f2bd65eaf1d4a61aed43d9"
+      ],
+      "source_published_kst": "2026-10-06T17:12+09:00",
+      "title": "유로화 17개월 최저…프랑스 재정불안에 스페인 조기총선까지(종합)"
     },
     "source_fact:be185fb4c25596f405b2e6f3": {
       "first_seen_kst": "2026-10-06T00:18:21+09:00",
@@ -118706,6 +119392,32 @@
       ],
       "source_published_kst": "2026-10-06T11:00+09:00",
       "title": "규제합리화추진단 \"디스플레이 규제 개선…수입 간소화·AI 보안가이드 마련\""
+    },
+    "source_fact:c26feee148bc1f0fd24ee72f": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816104",
+      "source": "뉴시스",
+      "source_body_digest": "d503e11536151ab7cd81bd0bab7c26a0d48a14276e8f6a963d3945a3d448c5f1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:029966fac94ecda9b45aee4235582a30a328721d70dda8a6dd8d9d9dd3fbde6c",
+      "source_fact_keys": [
+        "source_fact:v1:05268578c8cea971168e7e6e38db7c7e5d9e15dc4985fc6ba4ea31829def4c45",
+        "source_fact:v1:440f61bcc2739382694f6dc703ba70afa360526d11b8fbdb3fab9801ab443e56",
+        "source_fact:v1:51241aab56db0784129fef6d7dcb1cb36c66f593c79c88ed70ed8b3e5539ec3a",
+        "source_fact:v1:5583e0491530e0f0c699e3636a6e12c28686e0054674415b5041c77d652b7fc8",
+        "source_fact:v1:604e37df764829119c1aa1aa75d41a436719eb41a52a6e27fbbdd6b6c1b4a05c",
+        "source_fact:v1:6bb6a56def2352977fb1e0df5bf06b23584888ed4c9f4d23574e5839f74f9a4f",
+        "source_fact:v1:703bc80d2c983ba362c3c329c73f427bc20560c5889610b3172080c9357cf538",
+        "source_fact:v1:720ea895d901e2c05a360b330c010799342bf831f0ad2b24bd10d1830764f0f3",
+        "source_fact:v1:96c3cc4863d704dc4812e5db8b583b5773db94ac146a1a89fc49126ed28c38f1",
+        "source_fact:v1:e8ec1ce74708e0e27e7733cc5dbf0b9f588dc18b11f2bd65eaf1d4a61aed43d9"
+      ],
+      "source_published_kst": "2026-10-06T17:12+09:00",
+      "title": "유로화 17개월 최저…프랑스 재정불안에 스페인 조기총선까지(종합)"
     },
     "source_fact:c29395a48d96cd7d36d2d476": {
       "first_seen_kst": "2026-10-07T01:18:00+09:00",
@@ -125737,6 +126449,32 @@
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
     },
+    "source_fact:dfd12d772724bbb72a77275b": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816104",
+      "source": "뉴시스",
+      "source_body_digest": "d503e11536151ab7cd81bd0bab7c26a0d48a14276e8f6a963d3945a3d448c5f1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:029966fac94ecda9b45aee4235582a30a328721d70dda8a6dd8d9d9dd3fbde6c",
+      "source_fact_keys": [
+        "source_fact:v1:05268578c8cea971168e7e6e38db7c7e5d9e15dc4985fc6ba4ea31829def4c45",
+        "source_fact:v1:440f61bcc2739382694f6dc703ba70afa360526d11b8fbdb3fab9801ab443e56",
+        "source_fact:v1:51241aab56db0784129fef6d7dcb1cb36c66f593c79c88ed70ed8b3e5539ec3a",
+        "source_fact:v1:5583e0491530e0f0c699e3636a6e12c28686e0054674415b5041c77d652b7fc8",
+        "source_fact:v1:604e37df764829119c1aa1aa75d41a436719eb41a52a6e27fbbdd6b6c1b4a05c",
+        "source_fact:v1:6bb6a56def2352977fb1e0df5bf06b23584888ed4c9f4d23574e5839f74f9a4f",
+        "source_fact:v1:703bc80d2c983ba362c3c329c73f427bc20560c5889610b3172080c9357cf538",
+        "source_fact:v1:720ea895d901e2c05a360b330c010799342bf831f0ad2b24bd10d1830764f0f3",
+        "source_fact:v1:96c3cc4863d704dc4812e5db8b583b5773db94ac146a1a89fc49126ed28c38f1",
+        "source_fact:v1:e8ec1ce74708e0e27e7733cc5dbf0b9f588dc18b11f2bd65eaf1d4a61aed43d9"
+      ],
+      "source_published_kst": "2026-10-06T17:12+09:00",
+      "title": "유로화 17개월 최저…프랑스 재정불안에 스페인 조기총선까지(종합)"
+    },
     "source_fact:dfeb44131e6b07c07044615d": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
       "lanes": {
@@ -127349,6 +128087,24 @@
       ],
       "source_published_kst": "2026-10-06T13:52+09:00",
       "title": "거래소 “코스닥 체질 개선 노력⋯법원 제동 건 ‘시총 미달 상폐’ 후속 조치 예정”"
+    },
+    "source_fact:e6954b7fcb812bbc4c6f7d28": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.etnews.com/20261006000011",
+      "source": "전자신문",
+      "source_body_digest": "f4c702bf87f4b97a3cad259e0fcaba5fa13e34a09b8da79da3950ecc29369d39",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3a7a570b23c6f4c70b29ea02ca54cacd19a91e726ff8c1bafdbee3bb337f2ed7",
+      "source_fact_keys": [
+        "source_fact:v1:273fe30c7528c08467d26e6c3303dd8298ac5e9192723ebd67d0ee6c8464ca90",
+        "source_fact:v1:81971b6b3b6c531490c86cdba5da2d385d7b27e36ec7bf1cdf38d1116ec05608"
+      ],
+      "source_published_kst": "2026-10-06T08:56+09:00",
+      "title": "서상덕 S2W 대표, 韓-英 공급망 보안 협력 제안"
     },
     "source_fact:e698b0cc572c99c9922821a3": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
@@ -132141,6 +132897,32 @@
       ],
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "LK삼양–다온아이앤씨, 드론용 초경량 EO·IR 모듈 개발 MOU"
+    },
+    "source_fact:fc8860b227bd40362f5f9bfe": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816104",
+      "source": "뉴시스",
+      "source_body_digest": "d503e11536151ab7cd81bd0bab7c26a0d48a14276e8f6a963d3945a3d448c5f1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:029966fac94ecda9b45aee4235582a30a328721d70dda8a6dd8d9d9dd3fbde6c",
+      "source_fact_keys": [
+        "source_fact:v1:05268578c8cea971168e7e6e38db7c7e5d9e15dc4985fc6ba4ea31829def4c45",
+        "source_fact:v1:440f61bcc2739382694f6dc703ba70afa360526d11b8fbdb3fab9801ab443e56",
+        "source_fact:v1:51241aab56db0784129fef6d7dcb1cb36c66f593c79c88ed70ed8b3e5539ec3a",
+        "source_fact:v1:5583e0491530e0f0c699e3636a6e12c28686e0054674415b5041c77d652b7fc8",
+        "source_fact:v1:604e37df764829119c1aa1aa75d41a436719eb41a52a6e27fbbdd6b6c1b4a05c",
+        "source_fact:v1:6bb6a56def2352977fb1e0df5bf06b23584888ed4c9f4d23574e5839f74f9a4f",
+        "source_fact:v1:703bc80d2c983ba362c3c329c73f427bc20560c5889610b3172080c9357cf538",
+        "source_fact:v1:720ea895d901e2c05a360b330c010799342bf831f0ad2b24bd10d1830764f0f3",
+        "source_fact:v1:96c3cc4863d704dc4812e5db8b583b5773db94ac146a1a89fc49126ed28c38f1",
+        "source_fact:v1:e8ec1ce74708e0e27e7733cc5dbf0b9f588dc18b11f2bd65eaf1d4a61aed43d9"
+      ],
+      "source_published_kst": "2026-10-06T17:12+09:00",
+      "title": "유로화 17개월 최저…프랑스 재정불안에 스페인 조기총선까지(종합)"
     },
     "source_fact:fc8dee51571cff45c7abc33e": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
@@ -137997,6 +138779,32 @@
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "[통합시 100일] ① 전남광주 320만 시민 삶 하나로…통합은 이제 시작 | 연합뉴스"
     },
+    "title:2c207387f364054f3d28c334": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816104",
+      "source": "뉴시스",
+      "source_body_digest": "d503e11536151ab7cd81bd0bab7c26a0d48a14276e8f6a963d3945a3d448c5f1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:029966fac94ecda9b45aee4235582a30a328721d70dda8a6dd8d9d9dd3fbde6c",
+      "source_fact_keys": [
+        "source_fact:v1:05268578c8cea971168e7e6e38db7c7e5d9e15dc4985fc6ba4ea31829def4c45",
+        "source_fact:v1:440f61bcc2739382694f6dc703ba70afa360526d11b8fbdb3fab9801ab443e56",
+        "source_fact:v1:51241aab56db0784129fef6d7dcb1cb36c66f593c79c88ed70ed8b3e5539ec3a",
+        "source_fact:v1:5583e0491530e0f0c699e3636a6e12c28686e0054674415b5041c77d652b7fc8",
+        "source_fact:v1:604e37df764829119c1aa1aa75d41a436719eb41a52a6e27fbbdd6b6c1b4a05c",
+        "source_fact:v1:6bb6a56def2352977fb1e0df5bf06b23584888ed4c9f4d23574e5839f74f9a4f",
+        "source_fact:v1:703bc80d2c983ba362c3c329c73f427bc20560c5889610b3172080c9357cf538",
+        "source_fact:v1:720ea895d901e2c05a360b330c010799342bf831f0ad2b24bd10d1830764f0f3",
+        "source_fact:v1:96c3cc4863d704dc4812e5db8b583b5773db94ac146a1a89fc49126ed28c38f1",
+        "source_fact:v1:e8ec1ce74708e0e27e7733cc5dbf0b9f588dc18b11f2bd65eaf1d4a61aed43d9"
+      ],
+      "source_published_kst": "2026-10-06T17:12+09:00",
+      "title": "유로화 17개월 최저…프랑스 재정불안에 스페인 조기총선까지(종합)"
+    },
     "title:2c73d84a7050f95040fbe697": {
       "first_seen_kst": "2026-10-02T13:15:57+09:00",
       "lanes": {
@@ -141858,6 +142666,23 @@
       "source_published_kst": "2026-10-05T21:02+09:00",
       "title": "라디오팜 테라노스틱스, RAD101 2상 종료미팅 완료..3상 준비 착수"
     },
+    "title:4cebaaf6abe846de5dcae602": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.etnews.com/20261006000208",
+      "source": "전자신문",
+      "source_body_digest": "a33be220e5a834422ea126d881d8e2f6f09eb97af9d023ce52112de0082746c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f75e899f8000b9443b23e78a6ef9eb768768f1d6d20f5c011da26005eb0d5bb1",
+      "source_fact_keys": [
+        "source_fact:v1:8a43ee070609374d5a3c2f1ba1ffa356f3fc11c6585f20b5c068b2575461dc4e"
+      ],
+      "source_published_kst": "2026-10-06T13:24+09:00",
+      "title": "두산로보틱스, 피지컬 AI 협동로봇 플랫폼 만든다…국책과제 2건 선정"
+    },
     "title:4d03f2779165f859b4df61f0": {
       "first_seen_kst": "2026-10-05T09:13:59+09:00",
       "lanes": {
@@ -145130,6 +145955,24 @@
       ],
       "source_published_kst": "2026-10-06T10:04+09:00",
       "title": "옵티팜, cGMP 시설 인수로 이종이식 사업화 속도"
+    },
+    "title:6d03aa9368377610cd29df82": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169606",
+      "source": "매일경제",
+      "source_body_digest": "8b9d8542aec8b2222a31e2c15675adb30323e19a617d7e30c7e0622a7eed1098",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6928e5b3ba3b6f4b3b452aeb2e8ec0c608247ad6786b2219ece120f730378667",
+      "source_fact_keys": [
+        "source_fact:v1:0c9ccaebae6ad23292ac1f46b613caa96722c9ed72ac89a94d70efe0cb561045",
+        "source_fact:v1:3cb4df6d0aba557773d6d25c648a9fd3c8dfe8aca7c4e1424b506a10fe20be55"
+      ],
+      "source_published_kst": "2026-10-06T17:50+09:00",
+      "title": "고금리 덮치자 … 국민연금, 보험株 사고 증권株 팔아"
     },
     "title:6d6c51e6fffe2b5a4326de96": {
       "first_seen_kst": "2026-09-27T12:02:47+09:00",
@@ -149662,6 +150505,21 @@
       "source_published_kst": "2026-10-06T17:42+09:00",
       "title": "코스피, 외인 팔자에 또다시 7000선 밑으로…코스닥 3%↑"
     },
+    "title:92627465b9a1990e48d62b5b": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.etnews.com/20261006000392",
+      "source": "전자신문",
+      "source_body_digest": "4932e5327d3335849f462b35d62a043c404f35f9ce33d558519d52fcdbb8a4c1",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T16:40+09:00",
+      "title": "美 제재에도 특허 협력…화웨이, 퀄컴과 5G·AI·컴퓨팅 상호 사용"
+    },
     "title:926cff67f24857ebd8507026": {
       "first_seen_kst": "2026-10-02T17:01:29+09:00",
       "lanes": {
@@ -152593,6 +153451,24 @@
       "source": "이투데이",
       "title": "메리츠증권 \"넷마블, 신작보다 기존작 수명 연장 집중…재정비 성과 주목\""
     },
+    "title:afb9b5b33f4af6836b3b7427": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.etnews.com/20261006000011",
+      "source": "전자신문",
+      "source_body_digest": "f4c702bf87f4b97a3cad259e0fcaba5fa13e34a09b8da79da3950ecc29369d39",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3a7a570b23c6f4c70b29ea02ca54cacd19a91e726ff8c1bafdbee3bb337f2ed7",
+      "source_fact_keys": [
+        "source_fact:v1:273fe30c7528c08467d26e6c3303dd8298ac5e9192723ebd67d0ee6c8464ca90",
+        "source_fact:v1:81971b6b3b6c531490c86cdba5da2d385d7b27e36ec7bf1cdf38d1116ec05608"
+      ],
+      "source_published_kst": "2026-10-06T08:56+09:00",
+      "title": "서상덕 S2W 대표, 韓-英 공급망 보안 협력 제안"
+    },
     "title:afbd47a3dbbe39f5b1fe86d3": {
       "first_seen_kst": "2026-10-07T00:54:50+09:00",
       "lanes": {
@@ -154328,6 +155204,24 @@
       "link": "https://zdnet.co.kr/view/?no=20261003083207",
       "source": "지디넷코리아",
       "title": "[소외된 SW ㊤] 예산안에서 사라진 SW...국가 경쟁력 우려"
+    },
+    "title:bf113a76b6db1de3efa8ad62": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100609103743448",
+      "source": "머니투데이",
+      "source_body_digest": "a9eb379544a10c1a2ea703766cab1d54702a50d306e717df2115d1b0ff05deff",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:87304fee0f23971af9d5f7d3a18464b1fb10559ea4d87fa75568598c7ba5b97e",
+      "source_fact_keys": [
+        "source_fact:v1:5d068a616888827c20df6e10cdf5ca93b2281e4914693a50ffe857267841babc",
+        "source_fact:v1:c0903decdd524533932f5c9e48493cc3fcf846117cd0c1e953e488f13803b83c"
+      ],
+      "source_published_kst": "2026-10-06T10:33+09:00",
+      "title": "브라질 대선 '우파' 보우소나루 약진에…증시 단숨에 사상 최고치"
     },
     "title:bf841d8b2b9f18df7f1eb275": {
       "first_seen_kst": "2026-10-06T14:52:12+09:00",
@@ -158662,6 +159556,32 @@
       "source_published_kst": "2026-10-04T16:40+09:00",
       "title": "대미투자, 지금은 '신중한 낙관' 유지할때"
     },
+    "title:e68759d867b5c1ec6f5aaad6": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816104",
+      "source": "뉴시스",
+      "source_body_digest": "d503e11536151ab7cd81bd0bab7c26a0d48a14276e8f6a963d3945a3d448c5f1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:029966fac94ecda9b45aee4235582a30a328721d70dda8a6dd8d9d9dd3fbde6c",
+      "source_fact_keys": [
+        "source_fact:v1:05268578c8cea971168e7e6e38db7c7e5d9e15dc4985fc6ba4ea31829def4c45",
+        "source_fact:v1:440f61bcc2739382694f6dc703ba70afa360526d11b8fbdb3fab9801ab443e56",
+        "source_fact:v1:51241aab56db0784129fef6d7dcb1cb36c66f593c79c88ed70ed8b3e5539ec3a",
+        "source_fact:v1:5583e0491530e0f0c699e3636a6e12c28686e0054674415b5041c77d652b7fc8",
+        "source_fact:v1:604e37df764829119c1aa1aa75d41a436719eb41a52a6e27fbbdd6b6c1b4a05c",
+        "source_fact:v1:6bb6a56def2352977fb1e0df5bf06b23584888ed4c9f4d23574e5839f74f9a4f",
+        "source_fact:v1:703bc80d2c983ba362c3c329c73f427bc20560c5889610b3172080c9357cf538",
+        "source_fact:v1:720ea895d901e2c05a360b330c010799342bf831f0ad2b24bd10d1830764f0f3",
+        "source_fact:v1:96c3cc4863d704dc4812e5db8b583b5773db94ac146a1a89fc49126ed28c38f1",
+        "source_fact:v1:e8ec1ce74708e0e27e7733cc5dbf0b9f588dc18b11f2bd65eaf1d4a61aed43d9"
+      ],
+      "source_published_kst": "2026-10-06T17:12+09:00",
+      "title": "유로화 17개월 최저…프랑스 재정불안에 스페인 조기총선까지(종합)"
+    },
     "title:e692451a85aafc1e351e931d": {
       "first_seen_kst": "2026-09-27T01:22:55+09:00",
       "lanes": {
@@ -160809,6 +161729,23 @@
       "source_published_kst": "2026-10-06T13:35+09:00",
       "title": "조준희 KOSA 회장 \"AI 수요·공급기업 한자리에…실제 사업으로 연결\""
     },
+    "title:fb8327004dea6888f47dc3f4": {
+      "first_seen_kst": "2026-10-07T02:24:39+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:24:39+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:24:39+09:00",
+      "link": "https://www.etnews.com/20261007000001",
+      "source": "전자신문",
+      "source_body_digest": "f83b13addefd536a3b8c419837d909517c10cfcff47c7885dcec7cd7ee4f8c8e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6058aa2e050f596ec8b19630320c4338ab6df4971648bf82ece73b9554f5f383",
+      "source_fact_keys": [
+        "source_fact:v1:04fe61326549a6f5150e0330f69e39661a2520b9bf66b856c064655c3bd6a160"
+      ],
+      "source_published_kst": "2026-10-07T01:33+09:00",
+      "title": "휴네시온, 'AI 페스타 26' 참가…N2SF 전환·AI 보안 전략 공개"
+    },
     "title:fbbf971d130a4ccab5110196": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
       "lanes": {
@@ -161291,5 +162228,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-07T02:13:12+09:00"
+  "updated_at_kst": "2026-10-07T02:24:39+09:00"
 }
