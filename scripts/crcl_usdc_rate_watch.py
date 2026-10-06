@@ -29,6 +29,7 @@ TREASURY_CURVE_URL = "https://home.treasury.gov/resource-center/data-chart-cente
 PROSHARES_TBX_URL = "https://www.proshares.com/our-etfs/leveraged-and-inverse/tbx"
 SEC_CRCL_Q2_URL = "https://www.sec.gov/Archives/edgar/data/1876042/000187604226000248/crcl-20260630.htm"
 YAHOO_CHART = "https://query1.finance.yahoo.com/v8/finance/chart/{symbol}"
+CHARTEXCHANGE_CRCL_URL = "https://chartexchange.com/symbol/nyse-crcl/historical/"
 
 UA = "Mozilla/5.0 (compatible; khs-watch/1.0; +https://github.com/qedgwangju-dot/khs-watch)"
 KST = ZoneInfo("Asia/Seoul")
@@ -321,6 +322,67 @@ def yahoo_daily(symbol: str) -> dict:
     return {"date": latest[0].isoformat(), "close": latest[1], "prev_date": prev[0].isoformat(), "prev_close": prev[1], "daily_pct": round(pct, 2)}
 
 
+def chartexchange_crcl_daily() -> dict:
+    req = urllib.request.Request(
+        CHARTEXCHANGE_CRCL_URL,
+        headers={
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/152 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,*/*;q=0.8",
+            "Accept-Language": "en-US,en;q=0.9",
+        },
+    )
+    with urllib.request.urlopen(req, timeout=35) as r:
+        soup = BeautifulSoup(r.read(), "html.parser")
+
+    rows: list[tuple[dt.date, float, float]] = []
+    for tr in soup.find_all("tr"):
+        cells = [" ".join(x.get_text(" ", strip=True).split()) for x in tr.find_all(["td", "th"])]
+        if len(cells) < 6 or not re.fullmatch(r"20\d{2}-\d{2}-\d{2}", cells[0]):
+            continue
+        try:
+            d = dt.date.fromisoformat(cells[0])
+            close = float(cells[4].replace("$", "").replace(",", ""))
+            daily_pct = float(cells[5].replace("%", "").replace("+", ""))
+        except Exception:
+            continue
+        rows.append((d, close, daily_pct))
+    if not rows:
+        raise RuntimeError("ChartExchange CRCL historical rows could not be parsed")
+    rows.sort(key=lambda x: x[0])
+    latest = rows[-1]
+    prev = rows[-2] if len(rows) >= 2 else latest
+    return {
+        "date": latest[0].isoformat(),
+        "close": latest[1],
+        "prev_date": prev[0].isoformat(),
+        "prev_close": prev[1],
+        "daily_pct": round(latest[2], 2),
+        "source": "ChartExchange historical",
+        "source_url": CHARTEXCHANGE_CRCL_URL,
+    }
+
+
+def verified_crcl_daily() -> dict:
+    cx = chartexchange_crcl_daily()
+    yahoo = yahoo_daily("CRCL")
+    if cx.get("date") != yahoo.get("date"):
+        raise RuntimeError(
+            f"CRCL close date mismatch: ChartExchange={cx.get('date')} Yahoo={yahoo.get('date')}"
+        )
+    cx_close = float(cx["close"])
+    yahoo_close = float(yahoo["close"])
+    gap_pct = abs(cx_close - yahoo_close) / cx_close * 100.0 if cx_close else 0.0
+    result = dict(cx)
+    result.update({
+        "crosscheck_source": "Yahoo Finance chart",
+        "crosscheck_close": yahoo_close,
+        "crosscheck_daily_pct": float(yahoo.get("daily_pct", 0.0) or 0.0),
+        "crosscheck_gap_pct": round(gap_pct, 3),
+        "crosscheck_status": "confirmed" if gap_pct <= 0.10 else "discrepant",
+    })
+    return result
+
+
 def fmt_money_b(b: float, fx: float) -> str:
     return f"{b:,.1f}십억달러 ({format_krw_from_usd_m(b * 1000.0, fx)})"
 
@@ -442,7 +504,7 @@ def main() -> None:
     usdxx = safe("usdxx", blackrock_usdxx, old.get("usdxx"))
     sofr = safe("sofr", nyfed_sofr, old.get("sofr"))
     treasury = safe("treasury", treasury_curve, old.get("treasury"))
-    crcl = safe("crcl", lambda: yahoo_daily("CRCL"), old.get("crcl"))
+    crcl = safe("crcl", verified_crcl_daily, old.get("crcl"))
     tbx = safe("tbx", lambda: yahoo_daily("TBX"), old.get("tbx"))
 
     circle = prevent_date_regression("circle", circle, old.get("circle") or {}, errors)
