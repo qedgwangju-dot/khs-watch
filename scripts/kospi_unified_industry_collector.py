@@ -14,6 +14,7 @@ from zoneinfo import ZoneInfo
 import ebest
 
 from kospi_shock_enrichment import _display_name, _is_real_industry
+from krx_session_calendar import session_state
 
 KST = ZoneInfo("Asia/Seoul")
 INVESTORS = {"0008": "개인", "0017": "외국인", "0018": "기관"}
@@ -80,6 +81,11 @@ async def main(out_path: Path, until: dt.time, test_seconds: int | None = None) 
     appsecret = (os.getenv("LS_OPENAPI_APP_SECRET") or "").strip()
     if not appkey or not appsecret:
         raise RuntimeError("LS OpenAPI secrets missing")
+
+    session = session_state(dt.datetime.now(KST))
+    if test_seconds is None and not session["is_session"]:
+        print("ubm_collector_market_closed=true reason=XKRX_non_session", flush=True)
+        return 0
 
     api = ebest.OpenApi()
     out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -180,9 +186,13 @@ async def main(out_path: Path, until: dt.time, test_seconds: int | None = None) 
                 break
             if test_seconds is None and now.time() >= until:
                 break
-            # 15:20~15:30은 종가 단일가 호가접수 구간이라 체결/수급 payload가
-            # 장중처럼 연속 발생하지 않을 수 있다. stale 재접속은 연속매매 구간만 적용한다.
-            live_window = now.weekday() < 5 and dt.time(9, 0) <= now.time() < dt.time(15, 20)
+            # XKRX 실제 연속매매 구간에서만 stale 재접속을 적용한다.
+            live_window = bool(
+                session["is_session"]
+                and session["open"] is not None
+                and session["continuous_end"] is not None
+                and session["open"] <= now < session["continuous_end"]
+            )
             if live_window and elapsed >= 90:
                 stale_for = None if last_payload_ts is None else time.time() - last_payload_ts
                 if last_payload_ts is None or (stale_for is not None and stale_for > 120):
@@ -195,9 +205,11 @@ async def main(out_path: Path, until: dt.time, test_seconds: int | None = None) 
         fp.flush()
         fp.close()
         now_done = dt.datetime.now(KST)
-        continuous_market_hours = (
-            now_done.weekday() < 5
-            and dt.time(9, 0) <= now_done.time() < dt.time(15, 20)
+        continuous_market_hours = bool(
+            session["is_session"]
+            and session["open"] is not None
+            and session["continuous_end"] is not None
+            and session["open"] <= now_done < session["continuous_end"]
         )
         print(
             f"ubm_collector_finished=true records={written} "
