@@ -87,14 +87,14 @@ def meaning(cat: str) -> str:
     raw = cat.split(' · ', 1)[-1]
     if raw in NEW_MEANING:
         return NEW_MEANING[raw]
-    return expanded._orig_meaning(cat)
+    return expanded.meaning(cat)
 
 
 def risk(cat: str) -> str:
     raw = cat.split(' · ', 1)[-1]
     if raw in NEW_RISK:
         return NEW_RISK[raw]
-    return expanded._orig_risk(cat)
+    return expanded.risk(cat)
 
 
 def score(item: dict) -> int:
