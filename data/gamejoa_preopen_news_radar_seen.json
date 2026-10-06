@@ -747,6 +747,26 @@
       "source": "연합뉴스",
       "title": "전통 제조업에서 반도체·AI로…전남광주 산업지도 다시 그린다 | 연합뉴스"
     },
+    "event:2175bc3ebb5ca21494375b5c": {
+      "event_alias_evidence_message_id": 2307,
+      "event_alias_evidence_run_id": 37427324961,
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815335",
+      "source": "뉴시스",
+      "source_body_digest": "9850f4485c603b6ded6d61b9193003e2dff6caca6a065f82dfc3e458806ccaad",
+      "source_event_identity": "source_event:v2:macro_model_report:5d4f03ef5af47b8140cea81c228066eb5a507ba74d2607d393efd01a8b336aa2",
+      "source_fact_identity": "source_facts:v1:e37b00ee8f8ad3f23fa8edb80e73b25e513f7138d67598664d27d8e4a755ae10",
+      "source_fact_keys": [
+        "source_fact:v1:8c72d850f9de282d2d5ec9fae20179837ceda885e733a30f8feed9508d219d27",
+        "source_fact:v1:ca237c6fc2085ca30440f6b366191fdcc6e0977c22e22ccfa1ccb0d1b22d1180"
+      ],
+      "source_published_kst": "2026-10-06T14:22+09:00",
+      "title": "한은 \"IMF 제도 개편, 한국 경상수지 평가에 불리\""
+    },
     "event:21a927bf430aa6586cf948b6": {
       "first_seen_kst": "2026-10-01T04:48:27+09:00",
       "lanes": {
@@ -1645,6 +1665,23 @@
       "link": "https://biz.heraldcorp.com/article/10892468",
       "source": "헤럴드경제",
       "title": "오건영 “금리 오르면 큰일? 이 생각 낭패…투자 포트폴리오 AI로 향해야” [헤럴드머니페스타2026]"
+    },
+    "event:4af0ec859cb52ac4537c1713": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170269",
+      "source": "매일경제",
+      "source_body_digest": "9a7e9b2b4f398140bc14b09839f5720299e2c46c56e6e1f24a99ea0c1b470f29",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:26ea94bddf35b9da3b78972097281d509bb0f4fa5b02d4af8d2a4b58881603c4",
+      "source_fact_keys": [
+        "source_fact:v1:4df2eabdb67b25a5cd5ba152c195ba1d8f0edfe1be654dcfd9eb9386329cf81e"
+      ],
+      "source_published_kst": "2026-10-06T14:09+09:00",
+      "title": "신협자산관리회사, 부실채권 매입 가능해진다…건전성 강화"
     },
     "event:4b6c66ca03796acb2d14c1b0": {
       "first_seen_kst": "2026-10-01T11:18:10+09:00",
@@ -3708,6 +3745,23 @@
       "source": "연합뉴스",
       "title": "D램은 중국에, HBM은 미국에…협공 당하는 K-메모리 | 연합뉴스"
     },
+    "event:a1c4c86757794cc8d10ed431": {
+      "event_alias_evidence_message_id": 2304,
+      "event_alias_evidence_run_id": 37423666041,
+      "first_seen_kst": "2026-10-06T15:31:24+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:31:24+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:31:24+09:00",
+      "link": "https://www.etnews.com/20261006000199",
+      "source": "전자신문",
+      "source_body_digest": "d1000689f998305d8219d14590da45632660ebe70fd9e22b940e3bcb415af15a",
+      "source_event_identity": "source_event:v2:cumulative_foreign_sales:057184f04c505811ce09d2a9a4922994248f84d0c3d7285574b2a557735c5c59",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T13:16+09:00",
+      "title": "롯데백화점, 외국인 매출 1兆 돌파…업계 최초"
+    },
     "event:a2cfc7b6b0a3bbbd0bed93bb": {
       "first_seen_kst": "2026-09-24T00:05:53+09:00",
       "lanes": {
@@ -5404,21 +5458,25 @@
     "event:ed5ed0d62394ba89a848cd55": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
       "lanes": {
-        "live": "2026-10-06T13:07:20+09:00"
+        "live": "2026-10-06T16:43:37+09:00"
       },
-      "last_seen_kst": "2026-10-06T13:07:20+09:00",
-      "link": "https://www.mt.co.kr/world/2026/10/06/2026100610292291404",
-      "source": "머니투데이",
-      "source_body_digest": "4c0a800c02f7c16efa62fdf36128eaaa33e20932b57b0f687428685d310fa39f",
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815536",
+      "source": "뉴시스",
+      "source_body_digest": "58ae985282585296c2f433ea0603135b0aac805e577cfb1bc48620c106953696",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:d1867ffaebcb21f19f42e3af1eca193094559b09b86871e7851f367b46e74a8d",
+      "source_fact_identity": "source_facts:v1:53e42975f21841952ba9537ac39b06edc53e2fe33ccd34978a455dc5297ed16e",
       "source_fact_keys": [
-        "source_fact:v1:077b6fbed2e9cb76b08c123f5ad7ca8adf596ad4d53b9e1e0d5e21dbcc858c29",
-        "source_fact:v1:48ba6355e4747bddcd29299d95386cb9068357a0768f2d7a2a414ed63d39db40",
-        "source_fact:v1:a13f96392b34ad641642894b337b33613953e8b8d341a6310d43e9ab774f5116"
+        "source_fact:v1:08df2be0b6372c7ca2a60819ec5fdf7b95ea2b24278263cde194ad2ac0578e9d",
+        "source_fact:v1:0e8be7da220aa6d99eecce9b279b4e3940e988e200ee2e6295c19382c36785a4",
+        "source_fact:v1:51a0dbba02d384baf4fe973f06e9d37b3063354481ae9768ce4b9532256d04fc",
+        "source_fact:v1:54d1b7adeb9b1e095333bcad9504f10c6fdf0b065c8bbb0c10c133809ff34bae",
+        "source_fact:v1:6d28c33be21d4b1a68321deb58f2898dfcda19fbc81d33fc74fb4a81e8776a1e",
+        "source_fact:v1:93ce9d8d741f36fcc1b3064dbb2706a98dec9ca99d8dce1cbf2aa6abdbd605de",
+        "source_fact:v1:dca19571a8e536b156d211d5e9a13a28e3c1b313217a1fc25a3432d4be918e35"
       ],
-      "source_published_kst": "2026-10-06T11:04+09:00",
-      "title": "\"트럼프가 돈 준다고? 안 믿어\"…지지율 역대 최저, 히스패닉도 이탈"
+      "source_published_kst": "2026-10-06T14:33+09:00",
+      "title": "SK이노베이션, 윤활기유·배터리 성장 전망…\"올해 첫 연간 영업익 10조 노린다\""
     },
     "event:ee2445b0912c043ab1270e54": {
       "first_seen_kst": "2026-10-05T15:39:46+09:00",
@@ -7128,6 +7186,23 @@
       "source_published_kst": "2026-10-05T23:00+09:00",
       "title": "뉴로센스, 최저호가 요건 회복과 청문 절차로 상장 유지 기대감 부각"
     },
+    "fact:22c8fff95777c645239e106a": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170269",
+      "source": "매일경제",
+      "source_body_digest": "9a7e9b2b4f398140bc14b09839f5720299e2c46c56e6e1f24a99ea0c1b470f29",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:26ea94bddf35b9da3b78972097281d509bb0f4fa5b02d4af8d2a4b58881603c4",
+      "source_fact_keys": [
+        "source_fact:v1:4df2eabdb67b25a5cd5ba152c195ba1d8f0edfe1be654dcfd9eb9386329cf81e"
+      ],
+      "source_published_kst": "2026-10-06T14:09+09:00",
+      "title": "신협자산관리회사, 부실채권 매입 가능해진다…건전성 강화"
+    },
     "fact:23c35a578f669aa77f679980": {
       "first_seen_kst": "2026-10-06T14:52:12+09:00",
       "lanes": {
@@ -7803,6 +7878,25 @@
       "source_published_kst": "2026-10-06T10:59+09:00",
       "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 공급"
     },
+    "fact:37bbfcafd80af7d65503125b": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632867",
+      "source": "이투데이",
+      "source_body_digest": "9c9acaea21666f4377679851f4e143f1f0c4fa3df4294709a6c101c98c7ebc76",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f31ef5583946778054625976b478eae21e28e567b5e2b2ef8a30861a574d9ea9",
+      "source_fact_keys": [
+        "source_fact:v1:4691a171c41ed32040a56115a5e6edcdc6aae18145359bcb8fbf190ec79d6cf5",
+        "source_fact:v1:b36d877c8cb621ba15dfe2a6c79872ca55e9909f6b7bafaff1933c0b0ac075a1",
+        "source_fact:v1:eb843a3a54bc2190d8b01a74eb69290b2121c13db545852b340247de78d0cc2c"
+      ],
+      "source_published_kst": "2026-10-06T14:46+09:00",
+      "title": "중국, ‘물류 데이터 일대일로’ 좌초⋯한중일 협력도 중단"
+    },
     "fact:37db517fa4219a41cccd8216": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
@@ -8149,6 +8243,29 @@
       ],
       "source_published_kst": "2026-10-06T11:44+09:00",
       "title": "직스테크놀로지·한신공영·정도, AI 기반 '데이터센터 스마트 건설' 맞손"
+    },
+    "fact:43a21f6ac0b5c6d74b9f7a30": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815536",
+      "source": "뉴시스",
+      "source_body_digest": "58ae985282585296c2f433ea0603135b0aac805e577cfb1bc48620c106953696",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53e42975f21841952ba9537ac39b06edc53e2fe33ccd34978a455dc5297ed16e",
+      "source_fact_keys": [
+        "source_fact:v1:08df2be0b6372c7ca2a60819ec5fdf7b95ea2b24278263cde194ad2ac0578e9d",
+        "source_fact:v1:0e8be7da220aa6d99eecce9b279b4e3940e988e200ee2e6295c19382c36785a4",
+        "source_fact:v1:51a0dbba02d384baf4fe973f06e9d37b3063354481ae9768ce4b9532256d04fc",
+        "source_fact:v1:54d1b7adeb9b1e095333bcad9504f10c6fdf0b065c8bbb0c10c133809ff34bae",
+        "source_fact:v1:6d28c33be21d4b1a68321deb58f2898dfcda19fbc81d33fc74fb4a81e8776a1e",
+        "source_fact:v1:93ce9d8d741f36fcc1b3064dbb2706a98dec9ca99d8dce1cbf2aa6abdbd605de",
+        "source_fact:v1:dca19571a8e536b156d211d5e9a13a28e3c1b313217a1fc25a3432d4be918e35"
+      ],
+      "source_published_kst": "2026-10-06T14:33+09:00",
+      "title": "SK이노베이션, 윤활기유·배터리 성장 전망…\"올해 첫 연간 영업익 10조 노린다\""
     },
     "fact:47669ed76421524e820b4576": {
       "first_seen_kst": "2026-10-06T14:52:12+09:00",
@@ -8917,6 +9034,23 @@
       ],
       "source_published_kst": "2026-10-06T12:19+09:00",
       "title": "이형일, 레버리지 ETF 논란에 \"투자자 손실 확대, 무겁게 생각\""
+    },
+    "fact:605d760fc945bdad77adfe58": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.hankyung.com/article/2026100653337",
+      "source": "한국경제",
+      "source_body_digest": "c8d7213deed8f0e0aa133fcb0b5e9fd642c8261bfc5dd1c0a7eb2035d041f000",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eab220aaa03934c4e55dac3c350f6750406baff1393d10d274a6eee5e40be009",
+      "source_fact_keys": [
+        "source_fact:v1:60e0564a3e82a5ad167d025e0b2eb60f7ef030678f6a4d19ce9053427bfd5908"
+      ],
+      "source_published_kst": "2026-10-06T12:09+09:00",
+      "title": "고범석 서울청장 \"암살자(들) 배우에 대한 범죄 혐의 확인시 엄정 대응\""
     },
     "fact:60bf4a03fd87a3e831973156": {
       "first_seen_kst": "2026-10-06T06:36:31+09:00",
@@ -10530,7 +10664,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815335",
       "source": "뉴시스",
       "source_body_digest": "9850f4485c603b6ded6d61b9193003e2dff6caca6a065f82dfc3e458806ccaad",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:macro_model_report:5d4f03ef5af47b8140cea81c228066eb5a507ba74d2607d393efd01a8b336aa2",
       "source_fact_identity": "source_facts:v1:e37b00ee8f8ad3f23fa8edb80e73b25e513f7138d67598664d27d8e4a755ae10",
       "source_fact_keys": [
         "source_fact:v1:8c72d850f9de282d2d5ec9fae20179837ceda885e733a30f8feed9508d219d27",
@@ -10933,6 +11067,27 @@
       ],
       "source_published_kst": "2026-10-06T07:34+09:00",
       "title": "KB증권 \"HPSP, 4분기부터 낸드 수혜 본격화…목표가 31%↑\""
+    },
+    "fact:9cef868f4b1381086df4e150": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.fnnews.com/news/202610061023428325",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "de43f7a6e60eeb02d486672f196ae94f90980792cf2dc2050554c0a611cfc602",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74b4e67c13dab597f75c0023b0c6a302848f18996e9f789182ca91832a9ad199",
+      "source_fact_keys": [
+        "source_fact:v1:5c3ccd66f4b57eae65315c9cf40fdef147a88e784b5d0772de2b0683ae54b99c",
+        "source_fact:v1:826e55ef9fc440571051381a1e7b776295f0469b360f057bf355c501c0ebaf0e",
+        "source_fact:v1:9d2922220c0d55c080b5f3b755e2bac87a1d689d4947f72cf2f928f429f9dbbd",
+        "source_fact:v1:b2b5099392a31a6c69633cd386a41533d32a94b5b9059f93fae8e03fee3c57ef",
+        "source_fact:v1:ee7eda6f3047acce2a29e2e5516807eb7473b7bf3ad4333b9aa6cf2e3fa8f2a9"
+      ],
+      "source_published_kst": "2026-10-06T10:23+09:00",
+      "title": "1∼8월 글로벌 전기차 5.9% 증가…현대차그룹은 두 자릿수 성장"
     },
     "fact:9d60928f4b4ccbe8977b7741": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
@@ -12248,6 +12403,24 @@
       "source_published_kst": "2026-10-05T13:29+09:00",
       "title": "JP모간, 10월 '콕' 집은 종목은…아멕스·써모피셔·리버티"
     },
+    "fact:cc697d8c5e6650dfb9172114": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610065580b",
+      "source": "한국경제",
+      "source_body_digest": "e0abcc08dce476a57d7d66bca83bdadaaec17246ffc116e87dd3cb7324ba266f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10309db4d80cb38973edc804decd880dc01c7de16f358c982e7403d05976249c",
+      "source_fact_keys": [
+        "source_fact:v1:694666a62cb731d5a3b6ceafb2aebbe08d9805a0cf5207487d05e5aa5274c09a",
+        "source_fact:v1:afe505a17601efd6c13db7f61a94592666d0fd7d6001f47f199a11faa0d5bcf4"
+      ],
+      "source_published_kst": "2026-10-06T14:16+09:00",
+      "title": "\"최태원 9440억 SK 지분 매각, 3%룰 회피 목적 아닌지 밝혀야\""
+    },
     "fact:cc77e07a5ff01f7faf7d00f0": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
       "lanes": {
@@ -13348,6 +13521,24 @@
       ],
       "source_published_kst": "2026-10-05T23:41+09:00",
       "title": "[美특징주]메타, 상승…\"뮤즈 2030년까지 전체 매출의 최대 8% 도달 가능\""
+    },
+    "fact:f1348d1362b3aa9f79dee455": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815661",
+      "source": "뉴시스",
+      "source_body_digest": "990cf7653b6c8437eb0b16705623ae573da2b9b4c42ec7626f113c41d340a0ba",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a9229f1b90c94f15a4436f76d2403335010fd570a7d69513e154daf710b55c07",
+      "source_fact_keys": [
+        "source_fact:v1:15bdf5fcca93d854bd32c3cd1a6f80808a8b94610dc93cb66dda0807cf4bed46",
+        "source_fact:v1:caa7db954bac9091d6f9c4ef175fc6b84972322924418898d5ae8f65a226aab7"
+      ],
+      "source_published_kst": "2026-10-06T14:33+09:00",
+      "title": "IPARK현대산업개발, 부산 연산13구역 수주…2812억원 규모"
     },
     "fact:f16f08caf302b06efb534192": {
       "first_seen_kst": "2026-10-06T14:52:12+09:00",
@@ -16601,6 +16792,24 @@
       "source_published_kst": "2026-10-05T08:09+09:00",
       "title": "경북도, 美 유타주정부·유타대학교와 AI·반도체산업 협력 협약체결"
     },
+    "link:241548d3c24e8efb51392a70": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610065580b",
+      "source": "한국경제",
+      "source_body_digest": "e0abcc08dce476a57d7d66bca83bdadaaec17246ffc116e87dd3cb7324ba266f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10309db4d80cb38973edc804decd880dc01c7de16f358c982e7403d05976249c",
+      "source_fact_keys": [
+        "source_fact:v1:694666a62cb731d5a3b6ceafb2aebbe08d9805a0cf5207487d05e5aa5274c09a",
+        "source_fact:v1:afe505a17601efd6c13db7f61a94592666d0fd7d6001f47f199a11faa0d5bcf4"
+      ],
+      "source_published_kst": "2026-10-06T14:16+09:00",
+      "title": "\"최태원 9440억 SK 지분 매각, 3%룰 회피 목적 아닌지 밝혀야\""
+    },
     "link:24576684e931e5f218725575": {
       "first_seen_kst": "2026-09-22T10:35:36+09:00",
       "lanes": {
@@ -16632,6 +16841,27 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T18:27+09:00",
       "title": "폭스바겐 이어 BMW까지…유럽차 '구조조정 칼바람'"
+    },
+    "link:2496326cbb7d257f165e55a0": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.fnnews.com/news/202610061023428325",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "de43f7a6e60eeb02d486672f196ae94f90980792cf2dc2050554c0a611cfc602",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74b4e67c13dab597f75c0023b0c6a302848f18996e9f789182ca91832a9ad199",
+      "source_fact_keys": [
+        "source_fact:v1:5c3ccd66f4b57eae65315c9cf40fdef147a88e784b5d0772de2b0683ae54b99c",
+        "source_fact:v1:826e55ef9fc440571051381a1e7b776295f0469b360f057bf355c501c0ebaf0e",
+        "source_fact:v1:9d2922220c0d55c080b5f3b755e2bac87a1d689d4947f72cf2f928f429f9dbbd",
+        "source_fact:v1:b2b5099392a31a6c69633cd386a41533d32a94b5b9059f93fae8e03fee3c57ef",
+        "source_fact:v1:ee7eda6f3047acce2a29e2e5516807eb7473b7bf3ad4333b9aa6cf2e3fa8f2a9"
+      ],
+      "source_published_kst": "2026-10-06T10:23+09:00",
+      "title": "1∼8월 글로벌 전기차 5.9% 증가…현대차그룹은 두 자릿수 성장"
     },
     "link:24ad174e5b61fdde4eea870c": {
       "first_seen_kst": "2026-10-01T22:33:20+09:00",
@@ -17936,6 +18166,24 @@
       "source_published_kst": "2026-10-06T09:54+09:00",
       "title": "제주항공, 중국 주요 도시 취항 기반 확대…\"노선 경쟁력 강화\" | 연합뉴스"
     },
+    "link:30adf57294e4d8b77e0babba": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815661",
+      "source": "뉴시스",
+      "source_body_digest": "990cf7653b6c8437eb0b16705623ae573da2b9b4c42ec7626f113c41d340a0ba",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a9229f1b90c94f15a4436f76d2403335010fd570a7d69513e154daf710b55c07",
+      "source_fact_keys": [
+        "source_fact:v1:15bdf5fcca93d854bd32c3cd1a6f80808a8b94610dc93cb66dda0807cf4bed46",
+        "source_fact:v1:caa7db954bac9091d6f9c4ef175fc6b84972322924418898d5ae8f65a226aab7"
+      ],
+      "source_published_kst": "2026-10-06T14:33+09:00",
+      "title": "IPARK현대산업개발, 부산 연산13구역 수주…2812억원 규모"
+    },
     "link:30b88f71e078a74f1193a3b7": {
       "first_seen_kst": "2026-10-01T19:16:32+09:00",
       "lanes": {
@@ -17988,6 +18236,25 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003812082",
       "source": "뉴시스",
       "title": "재경부, 세수추계 손본다…국감 반복 지적 5건 개선"
+    },
+    "link:316cc9bf3d1cbc7ebf904f31": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632867",
+      "source": "이투데이",
+      "source_body_digest": "9c9acaea21666f4377679851f4e143f1f0c4fa3df4294709a6c101c98c7ebc76",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f31ef5583946778054625976b478eae21e28e567b5e2b2ef8a30861a574d9ea9",
+      "source_fact_keys": [
+        "source_fact:v1:4691a171c41ed32040a56115a5e6edcdc6aae18145359bcb8fbf190ec79d6cf5",
+        "source_fact:v1:b36d877c8cb621ba15dfe2a6c79872ca55e9909f6b7bafaff1933c0b0ac075a1",
+        "source_fact:v1:eb843a3a54bc2190d8b01a74eb69290b2121c13db545852b340247de78d0cc2c"
+      ],
+      "source_published_kst": "2026-10-06T14:46+09:00",
+      "title": "중국, ‘물류 데이터 일대일로’ 좌초⋯한중일 협력도 중단"
     },
     "link:317adf393a7a5ee671f104db": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
@@ -18790,7 +19057,7 @@
       "link": "https://www.etnews.com/20261006000199",
       "source": "전자신문",
       "source_body_digest": "d1000689f998305d8219d14590da45632660ebe70fd9e22b940e3bcb415af15a",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:cumulative_foreign_sales:057184f04c505811ce09d2a9a4922994248f84d0c3d7285574b2a557735c5c59",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T13:16+09:00",
@@ -20109,7 +20376,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632749?trc=right_categori_news_estudio",
       "source": "이투데이",
       "source_body_digest": "f6e893b4f42f8d94b446c1e5cf620c24c7c6c18b79e080555eceef292e8ef9f5",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:macro_model_report:5d4f03ef5af47b8140cea81c228066eb5a507ba74d2607d393efd01a8b336aa2",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T12:00+09:00",
@@ -24001,6 +24268,29 @@
       "source_published_kst": "2026-10-05T22:07+09:00",
       "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
     },
+    "link:7561807e53453b9580873f43": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815536",
+      "source": "뉴시스",
+      "source_body_digest": "58ae985282585296c2f433ea0603135b0aac805e577cfb1bc48620c106953696",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53e42975f21841952ba9537ac39b06edc53e2fe33ccd34978a455dc5297ed16e",
+      "source_fact_keys": [
+        "source_fact:v1:08df2be0b6372c7ca2a60819ec5fdf7b95ea2b24278263cde194ad2ac0578e9d",
+        "source_fact:v1:0e8be7da220aa6d99eecce9b279b4e3940e988e200ee2e6295c19382c36785a4",
+        "source_fact:v1:51a0dbba02d384baf4fe973f06e9d37b3063354481ae9768ce4b9532256d04fc",
+        "source_fact:v1:54d1b7adeb9b1e095333bcad9504f10c6fdf0b065c8bbb0c10c133809ff34bae",
+        "source_fact:v1:6d28c33be21d4b1a68321deb58f2898dfcda19fbc81d33fc74fb4a81e8776a1e",
+        "source_fact:v1:93ce9d8d741f36fcc1b3064dbb2706a98dec9ca99d8dce1cbf2aa6abdbd605de",
+        "source_fact:v1:dca19571a8e536b156d211d5e9a13a28e3c1b313217a1fc25a3432d4be918e35"
+      ],
+      "source_published_kst": "2026-10-06T14:33+09:00",
+      "title": "SK이노베이션, 윤활기유·배터리 성장 전망…\"올해 첫 연간 영업익 10조 노린다\""
+    },
     "link:758b655a86beeac879d08f06": {
       "first_seen_kst": "2026-09-28T05:32:59+09:00",
       "lanes": {
@@ -25444,6 +25734,23 @@
       "source_published_kst": "2026-10-05T11:00+09:00",
       "title": "韓 비료, 브라질 진출 교두보…콩·옥수수 시장 겨냥"
     },
+    "link:84bc64056d0c99ffe2fc8451": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170269",
+      "source": "매일경제",
+      "source_body_digest": "9a7e9b2b4f398140bc14b09839f5720299e2c46c56e6e1f24a99ea0c1b470f29",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:26ea94bddf35b9da3b78972097281d509bb0f4fa5b02d4af8d2a4b58881603c4",
+      "source_fact_keys": [
+        "source_fact:v1:4df2eabdb67b25a5cd5ba152c195ba1d8f0edfe1be654dcfd9eb9386329cf81e"
+      ],
+      "source_published_kst": "2026-10-06T14:09+09:00",
+      "title": "신협자산관리회사, 부실채권 매입 가능해진다…건전성 강화"
+    },
     "link:84d0627d5bc8b0acc97f94fc": {
       "first_seen_kst": "2026-10-02T02:03:30+09:00",
       "lanes": {
@@ -26074,7 +26381,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815335",
       "source": "뉴시스",
       "source_body_digest": "9850f4485c603b6ded6d61b9193003e2dff6caca6a065f82dfc3e458806ccaad",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:macro_model_report:5d4f03ef5af47b8140cea81c228066eb5a507ba74d2607d393efd01a8b336aa2",
       "source_fact_identity": "source_facts:v1:e37b00ee8f8ad3f23fa8edb80e73b25e513f7138d67598664d27d8e4a755ae10",
       "source_fact_keys": [
         "source_fact:v1:8c72d850f9de282d2d5ec9fae20179837ceda885e733a30f8feed9508d219d27",
@@ -31731,6 +32038,23 @@
       "source_published_kst": "2026-10-05T11:00+09:00",
       "title": "반려견 피부염 연구 활용…'항염증 엑소좀' 생산기술 개발"
     },
+    "link:c89275743bcdc840f46ac37c": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.hankyung.com/article/2026100653337",
+      "source": "한국경제",
+      "source_body_digest": "c8d7213deed8f0e0aa133fcb0b5e9fd642c8261bfc5dd1c0a7eb2035d041f000",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eab220aaa03934c4e55dac3c350f6750406baff1393d10d274a6eee5e40be009",
+      "source_fact_keys": [
+        "source_fact:v1:60e0564a3e82a5ad167d025e0b2eb60f7ef030678f6a4d19ce9053427bfd5908"
+      ],
+      "source_published_kst": "2026-10-06T12:09+09:00",
+      "title": "고범석 서울청장 \"암살자(들) 배우에 대한 범죄 혐의 확인시 엄정 대응\""
+    },
     "link:c8b9dcd2850a2d6a5c6a6d91": {
       "first_seen_kst": "2026-09-20T01:03:05+09:00",
       "lanes": {
@@ -35029,7 +35353,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261006099400030",
       "source": "연합뉴스",
       "source_body_digest": "9229eead129202e3bf2dfe776f589b2d1eba7a261c71985fa21edd0bd48a4718",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:cumulative_foreign_sales:057184f04c505811ce09d2a9a4922994248f84d0c3d7285574b2a557735c5c59",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T13:19+09:00",
@@ -36600,7 +36924,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261006099400030",
       "source": "연합뉴스",
       "source_body_digest": "9229eead129202e3bf2dfe776f589b2d1eba7a261c71985fa21edd0bd48a4718",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:cumulative_foreign_sales:057184f04c505811ce09d2a9a4922994248f84d0c3d7285574b2a557735c5c59",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T13:19+09:00",
@@ -38059,6 +38383,27 @@
       "source_published_kst": "2026-10-06T09:32+09:00",
       "title": "LG전자, 美 AI 데이터센터 냉각 솔루션 공급 계약에 '급등'"
     },
+    "original:145255910c167871bb77d46d": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.fnnews.com/news/202610061023428325",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "de43f7a6e60eeb02d486672f196ae94f90980792cf2dc2050554c0a611cfc602",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74b4e67c13dab597f75c0023b0c6a302848f18996e9f789182ca91832a9ad199",
+      "source_fact_keys": [
+        "source_fact:v1:5c3ccd66f4b57eae65315c9cf40fdef147a88e784b5d0772de2b0683ae54b99c",
+        "source_fact:v1:826e55ef9fc440571051381a1e7b776295f0469b360f057bf355c501c0ebaf0e",
+        "source_fact:v1:9d2922220c0d55c080b5f3b755e2bac87a1d689d4947f72cf2f928f429f9dbbd",
+        "source_fact:v1:b2b5099392a31a6c69633cd386a41533d32a94b5b9059f93fae8e03fee3c57ef",
+        "source_fact:v1:ee7eda6f3047acce2a29e2e5516807eb7473b7bf3ad4333b9aa6cf2e3fa8f2a9"
+      ],
+      "source_published_kst": "2026-10-06T10:23+09:00",
+      "title": "1∼8월 글로벌 전기차 5.9% 증가…현대차그룹은 두 자릿수 성장"
+    },
     "original:1453cb8398713cd829f7d2f0": {
       "first_seen_kst": "2026-10-03T19:11:40+09:00",
       "lanes": {
@@ -38079,7 +38424,7 @@
       "link": "https://www.etnews.com/20261006000199",
       "source": "전자신문",
       "source_body_digest": "d1000689f998305d8219d14590da45632660ebe70fd9e22b940e3bcb415af15a",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:cumulative_foreign_sales:057184f04c505811ce09d2a9a4922994248f84d0c3d7285574b2a557735c5c59",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T13:16+09:00",
@@ -38424,6 +38769,23 @@
       "link": "https://www.edaily.co.kr/news/read?newsid=02817526645581432&parentid=03093046645581432&gubun=E",
       "source": "이데일리",
       "title": "“비트코인 ETF 19배 커진다”…금도 제친다는 월가 전망"
+    },
+    "original:17c765cbb1d9baa38895d361": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.hankyung.com/article/2026100653337",
+      "source": "한국경제",
+      "source_body_digest": "c8d7213deed8f0e0aa133fcb0b5e9fd642c8261bfc5dd1c0a7eb2035d041f000",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eab220aaa03934c4e55dac3c350f6750406baff1393d10d274a6eee5e40be009",
+      "source_fact_keys": [
+        "source_fact:v1:60e0564a3e82a5ad167d025e0b2eb60f7ef030678f6a4d19ce9053427bfd5908"
+      ],
+      "source_published_kst": "2026-10-06T12:09+09:00",
+      "title": "고범석 서울청장 \"암살자(들) 배우에 대한 범죄 혐의 확인시 엄정 대응\""
     },
     "original:17c8f330353361d796e624ee": {
       "first_seen_kst": "2026-10-05T12:29:58+09:00",
@@ -40046,6 +40408,29 @@
       ],
       "source_published_kst": "2026-10-06T11:01+09:00",
       "title": "자동차 화면용 강화유리 수입승인 없앤다…디스플레이 규제 개선"
+    },
+    "original:2afcb84164e1b9610918773c": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815536",
+      "source": "뉴시스",
+      "source_body_digest": "58ae985282585296c2f433ea0603135b0aac805e577cfb1bc48620c106953696",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53e42975f21841952ba9537ac39b06edc53e2fe33ccd34978a455dc5297ed16e",
+      "source_fact_keys": [
+        "source_fact:v1:08df2be0b6372c7ca2a60819ec5fdf7b95ea2b24278263cde194ad2ac0578e9d",
+        "source_fact:v1:0e8be7da220aa6d99eecce9b279b4e3940e988e200ee2e6295c19382c36785a4",
+        "source_fact:v1:51a0dbba02d384baf4fe973f06e9d37b3063354481ae9768ce4b9532256d04fc",
+        "source_fact:v1:54d1b7adeb9b1e095333bcad9504f10c6fdf0b065c8bbb0c10c133809ff34bae",
+        "source_fact:v1:6d28c33be21d4b1a68321deb58f2898dfcda19fbc81d33fc74fb4a81e8776a1e",
+        "source_fact:v1:93ce9d8d741f36fcc1b3064dbb2706a98dec9ca99d8dce1cbf2aa6abdbd605de",
+        "source_fact:v1:dca19571a8e536b156d211d5e9a13a28e3c1b313217a1fc25a3432d4be918e35"
+      ],
+      "source_published_kst": "2026-10-06T14:33+09:00",
+      "title": "SK이노베이션, 윤활기유·배터리 성장 전망…\"올해 첫 연간 영업익 10조 노린다\""
     },
     "original:2b08a03c3ceae6f42d9de947": {
       "first_seen_kst": "2026-10-03T05:48:31+09:00",
@@ -42403,6 +42788,25 @@
       "link": "https://www.hankyung.com/article/2026100161866",
       "source": "한국경제",
       "title": "예상 밑돈 PCE 물가에도 국채금리 고공행진하자 혼조 마감 [뉴욕증시 브리핑]"
+    },
+    "original:43e8a1813927f6b6fd348995": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632867",
+      "source": "이투데이",
+      "source_body_digest": "9c9acaea21666f4377679851f4e143f1f0c4fa3df4294709a6c101c98c7ebc76",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f31ef5583946778054625976b478eae21e28e567b5e2b2ef8a30861a574d9ea9",
+      "source_fact_keys": [
+        "source_fact:v1:4691a171c41ed32040a56115a5e6edcdc6aae18145359bcb8fbf190ec79d6cf5",
+        "source_fact:v1:b36d877c8cb621ba15dfe2a6c79872ca55e9909f6b7bafaff1933c0b0ac075a1",
+        "source_fact:v1:eb843a3a54bc2190d8b01a74eb69290b2121c13db545852b340247de78d0cc2c"
+      ],
+      "source_published_kst": "2026-10-06T14:46+09:00",
+      "title": "중국, ‘물류 데이터 일대일로’ 좌초⋯한중일 협력도 중단"
     },
     "original:44610a96d64b0b10d0385382": {
       "first_seen_kst": "2026-10-02T09:58:25+09:00",
@@ -45607,6 +46011,23 @@
       ],
       "source_published_kst": "2026-10-06T02:28+09:00",
       "title": "아람코 CEO \"세계 석유 공급 이미 압박…비축 최대 2년\""
+    },
+    "original:6bb5603ad3f752bc31315f52": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170269",
+      "source": "매일경제",
+      "source_body_digest": "9a7e9b2b4f398140bc14b09839f5720299e2c46c56e6e1f24a99ea0c1b470f29",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:26ea94bddf35b9da3b78972097281d509bb0f4fa5b02d4af8d2a4b58881603c4",
+      "source_fact_keys": [
+        "source_fact:v1:4df2eabdb67b25a5cd5ba152c195ba1d8f0edfe1be654dcfd9eb9386329cf81e"
+      ],
+      "source_published_kst": "2026-10-06T14:09+09:00",
+      "title": "신협자산관리회사, 부실채권 매입 가능해진다…건전성 강화"
     },
     "original:6bb771b2e77696739d631651": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
@@ -51619,6 +52040,24 @@
       "source": "이데일리",
       "title": "中 CXMT까지 참전…치킨게임 공포 엄습하는 낸드플래시"
     },
+    "original:b13a7575e27bd5cbc16db745": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815661",
+      "source": "뉴시스",
+      "source_body_digest": "990cf7653b6c8437eb0b16705623ae573da2b9b4c42ec7626f113c41d340a0ba",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a9229f1b90c94f15a4436f76d2403335010fd570a7d69513e154daf710b55c07",
+      "source_fact_keys": [
+        "source_fact:v1:15bdf5fcca93d854bd32c3cd1a6f80808a8b94610dc93cb66dda0807cf4bed46",
+        "source_fact:v1:caa7db954bac9091d6f9c4ef175fc6b84972322924418898d5ae8f65a226aab7"
+      ],
+      "source_published_kst": "2026-10-06T14:33+09:00",
+      "title": "IPARK현대산업개발, 부산 연산13구역 수주…2812억원 규모"
+    },
     "original:b14820b33198fbf81f31893b": {
       "first_seen_kst": "2026-10-03T21:43:46+09:00",
       "lanes": {
@@ -54983,7 +55422,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815335",
       "source": "뉴시스",
       "source_body_digest": "9850f4485c603b6ded6d61b9193003e2dff6caca6a065f82dfc3e458806ccaad",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:macro_model_report:5d4f03ef5af47b8140cea81c228066eb5a507ba74d2607d393efd01a8b336aa2",
       "source_fact_identity": "source_facts:v1:e37b00ee8f8ad3f23fa8edb80e73b25e513f7138d67598664d27d8e4a755ae10",
       "source_fact_keys": [
         "source_fact:v1:8c72d850f9de282d2d5ec9fae20179837ceda885e733a30f8feed9508d219d27",
@@ -55933,6 +56372,24 @@
       "source_published_kst": "2026-10-05T17:12+09:00",
       "title": "리사 수 AMD 회장, 7개월 만에 방한…7일 ‘게이머 데이’ 참석"
     },
+    "original:e426d55f9ee577e7cb7f6943": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610065580b",
+      "source": "한국경제",
+      "source_body_digest": "e0abcc08dce476a57d7d66bca83bdadaaec17246ffc116e87dd3cb7324ba266f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10309db4d80cb38973edc804decd880dc01c7de16f358c982e7403d05976249c",
+      "source_fact_keys": [
+        "source_fact:v1:694666a62cb731d5a3b6ceafb2aebbe08d9805a0cf5207487d05e5aa5274c09a",
+        "source_fact:v1:afe505a17601efd6c13db7f61a94592666d0fd7d6001f47f199a11faa0d5bcf4"
+      ],
+      "source_published_kst": "2026-10-06T14:16+09:00",
+      "title": "\"최태원 9440억 SK 지분 매각, 3%룰 회피 목적 아닌지 밝혀야\""
+    },
     "original:e45c2fb13540ed2ba8ebaee9": {
       "first_seen_kst": "2026-09-25T01:40:40+09:00",
       "lanes": {
@@ -56526,7 +56983,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632749?trc=right_categori_news_estudio",
       "source": "이투데이",
       "source_body_digest": "f6e893b4f42f8d94b446c1e5cf620c24c7c6c18b79e080555eceef292e8ef9f5",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:macro_model_report:5d4f03ef5af47b8140cea81c228066eb5a507ba74d2607d393efd01a8b336aa2",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T12:00+09:00",
@@ -59153,6 +59610,25 @@
       ],
       "source_published_kst": "2026-10-06T10:28+09:00",
       "title": "에이프릴바이오 “APB-R3 임상결과 매우 고무적…다음 임상서 효능 확대 기대”"
+    },
+    "source_fact:05feb4d7c21484ac2c0cdce4": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632867",
+      "source": "이투데이",
+      "source_body_digest": "9c9acaea21666f4377679851f4e143f1f0c4fa3df4294709a6c101c98c7ebc76",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f31ef5583946778054625976b478eae21e28e567b5e2b2ef8a30861a574d9ea9",
+      "source_fact_keys": [
+        "source_fact:v1:4691a171c41ed32040a56115a5e6edcdc6aae18145359bcb8fbf190ec79d6cf5",
+        "source_fact:v1:b36d877c8cb621ba15dfe2a6c79872ca55e9909f6b7bafaff1933c0b0ac075a1",
+        "source_fact:v1:eb843a3a54bc2190d8b01a74eb69290b2121c13db545852b340247de78d0cc2c"
+      ],
+      "source_published_kst": "2026-10-06T14:46+09:00",
+      "title": "중국, ‘물류 데이터 일대일로’ 좌초⋯한중일 협력도 중단"
     },
     "source_fact:060bbe26a6926a33fa38087b": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
@@ -66552,6 +67028,29 @@
       "source_published_kst": "2026-10-06T11:01+09:00",
       "title": "자동차 화면용 강화유리 수입승인 없앤다…디스플레이 규제 개선"
     },
+    "source_fact:3a8f2e20cd38931bd57b2fe3": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815536",
+      "source": "뉴시스",
+      "source_body_digest": "58ae985282585296c2f433ea0603135b0aac805e577cfb1bc48620c106953696",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53e42975f21841952ba9537ac39b06edc53e2fe33ccd34978a455dc5297ed16e",
+      "source_fact_keys": [
+        "source_fact:v1:08df2be0b6372c7ca2a60819ec5fdf7b95ea2b24278263cde194ad2ac0578e9d",
+        "source_fact:v1:0e8be7da220aa6d99eecce9b279b4e3940e988e200ee2e6295c19382c36785a4",
+        "source_fact:v1:51a0dbba02d384baf4fe973f06e9d37b3063354481ae9768ce4b9532256d04fc",
+        "source_fact:v1:54d1b7adeb9b1e095333bcad9504f10c6fdf0b065c8bbb0c10c133809ff34bae",
+        "source_fact:v1:6d28c33be21d4b1a68321deb58f2898dfcda19fbc81d33fc74fb4a81e8776a1e",
+        "source_fact:v1:93ce9d8d741f36fcc1b3064dbb2706a98dec9ca99d8dce1cbf2aa6abdbd605de",
+        "source_fact:v1:dca19571a8e536b156d211d5e9a13a28e3c1b313217a1fc25a3432d4be918e35"
+      ],
+      "source_published_kst": "2026-10-06T14:33+09:00",
+      "title": "SK이노베이션, 윤활기유·배터리 성장 전망…\"올해 첫 연간 영업익 10조 노린다\""
+    },
     "source_fact:3af4b997b3016cf79316d5a9": {
       "first_seen_kst": "2026-10-05T19:37:20+09:00",
       "lanes": {
@@ -68596,6 +69095,23 @@
       ],
       "source_published_kst": "2026-10-06T09:00+09:00",
       "title": "자연과환경, 자회사 한림에코텍 흡수합병…OSCㆍ모듈러 사업 경쟁력 강화"
+    },
+    "source_fact:499c787c682943708f2d7868": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170269",
+      "source": "매일경제",
+      "source_body_digest": "9a7e9b2b4f398140bc14b09839f5720299e2c46c56e6e1f24a99ea0c1b470f29",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:26ea94bddf35b9da3b78972097281d509bb0f4fa5b02d4af8d2a4b58881603c4",
+      "source_fact_keys": [
+        "source_fact:v1:4df2eabdb67b25a5cd5ba152c195ba1d8f0edfe1be654dcfd9eb9386329cf81e"
+      ],
+      "source_published_kst": "2026-10-06T14:09+09:00",
+      "title": "신협자산관리회사, 부실채권 매입 가능해진다…건전성 강화"
     },
     "source_fact:49d294f0acae4c429a6d066e": {
       "first_seen_kst": "2026-10-05T23:05:12+09:00",
@@ -71193,7 +71709,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815335",
       "source": "뉴시스",
       "source_body_digest": "9850f4485c603b6ded6d61b9193003e2dff6caca6a065f82dfc3e458806ccaad",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:macro_model_report:5d4f03ef5af47b8140cea81c228066eb5a507ba74d2607d393efd01a8b336aa2",
       "source_fact_identity": "source_facts:v1:e37b00ee8f8ad3f23fa8edb80e73b25e513f7138d67598664d27d8e4a755ae10",
       "source_fact_keys": [
         "source_fact:v1:8c72d850f9de282d2d5ec9fae20179837ceda885e733a30f8feed9508d219d27",
@@ -71862,6 +72378,27 @@
       ],
       "source_published_kst": "2026-10-06T07:07+09:00",
       "title": "스페이스X 주가 급등에 머스크 다시 조만장자 [마켓핫]"
+    },
+    "source_fact:6248e730851067c78e4809ea": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.fnnews.com/news/202610061023428325",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "de43f7a6e60eeb02d486672f196ae94f90980792cf2dc2050554c0a611cfc602",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74b4e67c13dab597f75c0023b0c6a302848f18996e9f789182ca91832a9ad199",
+      "source_fact_keys": [
+        "source_fact:v1:5c3ccd66f4b57eae65315c9cf40fdef147a88e784b5d0772de2b0683ae54b99c",
+        "source_fact:v1:826e55ef9fc440571051381a1e7b776295f0469b360f057bf355c501c0ebaf0e",
+        "source_fact:v1:9d2922220c0d55c080b5f3b755e2bac87a1d689d4947f72cf2f928f429f9dbbd",
+        "source_fact:v1:b2b5099392a31a6c69633cd386a41533d32a94b5b9059f93fae8e03fee3c57ef",
+        "source_fact:v1:ee7eda6f3047acce2a29e2e5516807eb7473b7bf3ad4333b9aa6cf2e3fa8f2a9"
+      ],
+      "source_published_kst": "2026-10-06T10:23+09:00",
+      "title": "1∼8월 글로벌 전기차 5.9% 증가…현대차그룹은 두 자릿수 성장"
     },
     "source_fact:6279654aec63fb9e200abf5c": {
       "first_seen_kst": "2026-10-06T12:10:48+09:00",
@@ -72899,6 +73436,29 @@
       "source_published_kst": "2026-10-05T18:21+09:00",
       "title": "솔리다임 美상장… \"SK하닉 가치 재평가\" vs \"주주 피해\" [어떻게 생각하십니까]"
     },
+    "source_fact:6a2ef146a75eaff71aaef0a3": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815536",
+      "source": "뉴시스",
+      "source_body_digest": "58ae985282585296c2f433ea0603135b0aac805e577cfb1bc48620c106953696",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53e42975f21841952ba9537ac39b06edc53e2fe33ccd34978a455dc5297ed16e",
+      "source_fact_keys": [
+        "source_fact:v1:08df2be0b6372c7ca2a60819ec5fdf7b95ea2b24278263cde194ad2ac0578e9d",
+        "source_fact:v1:0e8be7da220aa6d99eecce9b279b4e3940e988e200ee2e6295c19382c36785a4",
+        "source_fact:v1:51a0dbba02d384baf4fe973f06e9d37b3063354481ae9768ce4b9532256d04fc",
+        "source_fact:v1:54d1b7adeb9b1e095333bcad9504f10c6fdf0b065c8bbb0c10c133809ff34bae",
+        "source_fact:v1:6d28c33be21d4b1a68321deb58f2898dfcda19fbc81d33fc74fb4a81e8776a1e",
+        "source_fact:v1:93ce9d8d741f36fcc1b3064dbb2706a98dec9ca99d8dce1cbf2aa6abdbd605de",
+        "source_fact:v1:dca19571a8e536b156d211d5e9a13a28e3c1b313217a1fc25a3432d4be918e35"
+      ],
+      "source_published_kst": "2026-10-06T14:33+09:00",
+      "title": "SK이노베이션, 윤활기유·배터리 성장 전망…\"올해 첫 연간 영업익 10조 노린다\""
+    },
     "source_fact:6a31ebb4978c62079a8db620": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -73044,6 +73604,29 @@
       ],
       "source_published_kst": "2026-10-06T14:13+09:00",
       "title": "中 장악 태양광 시장에 美 '탠덤 패널' 승부수 | 연합뉴스"
+    },
+    "source_fact:6b39bd29d0e1a4fb5f9c012a": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815536",
+      "source": "뉴시스",
+      "source_body_digest": "58ae985282585296c2f433ea0603135b0aac805e577cfb1bc48620c106953696",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53e42975f21841952ba9537ac39b06edc53e2fe33ccd34978a455dc5297ed16e",
+      "source_fact_keys": [
+        "source_fact:v1:08df2be0b6372c7ca2a60819ec5fdf7b95ea2b24278263cde194ad2ac0578e9d",
+        "source_fact:v1:0e8be7da220aa6d99eecce9b279b4e3940e988e200ee2e6295c19382c36785a4",
+        "source_fact:v1:51a0dbba02d384baf4fe973f06e9d37b3063354481ae9768ce4b9532256d04fc",
+        "source_fact:v1:54d1b7adeb9b1e095333bcad9504f10c6fdf0b065c8bbb0c10c133809ff34bae",
+        "source_fact:v1:6d28c33be21d4b1a68321deb58f2898dfcda19fbc81d33fc74fb4a81e8776a1e",
+        "source_fact:v1:93ce9d8d741f36fcc1b3064dbb2706a98dec9ca99d8dce1cbf2aa6abdbd605de",
+        "source_fact:v1:dca19571a8e536b156d211d5e9a13a28e3c1b313217a1fc25a3432d4be918e35"
+      ],
+      "source_published_kst": "2026-10-06T14:33+09:00",
+      "title": "SK이노베이션, 윤활기유·배터리 성장 전망…\"올해 첫 연간 영업익 10조 노린다\""
     },
     "source_fact:6bb2678f9a8a054b86213f1d": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
@@ -74398,6 +74981,27 @@
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
     },
+    "source_fact:745d91868b582e231c6904d0": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.fnnews.com/news/202610061023428325",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "de43f7a6e60eeb02d486672f196ae94f90980792cf2dc2050554c0a611cfc602",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74b4e67c13dab597f75c0023b0c6a302848f18996e9f789182ca91832a9ad199",
+      "source_fact_keys": [
+        "source_fact:v1:5c3ccd66f4b57eae65315c9cf40fdef147a88e784b5d0772de2b0683ae54b99c",
+        "source_fact:v1:826e55ef9fc440571051381a1e7b776295f0469b360f057bf355c501c0ebaf0e",
+        "source_fact:v1:9d2922220c0d55c080b5f3b755e2bac87a1d689d4947f72cf2f928f429f9dbbd",
+        "source_fact:v1:b2b5099392a31a6c69633cd386a41533d32a94b5b9059f93fae8e03fee3c57ef",
+        "source_fact:v1:ee7eda6f3047acce2a29e2e5516807eb7473b7bf3ad4333b9aa6cf2e3fa8f2a9"
+      ],
+      "source_published_kst": "2026-10-06T10:23+09:00",
+      "title": "1∼8월 글로벌 전기차 5.9% 증가…현대차그룹은 두 자릿수 성장"
+    },
     "source_fact:747925712a1fd1b61cf89af3": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
       "lanes": {
@@ -74993,6 +75597,25 @@
       ],
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "AI株 숨고르기 반사익…美바이오 ETF 순풍"
+    },
+    "source_fact:799234df9de0b92709b626a6": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632867",
+      "source": "이투데이",
+      "source_body_digest": "9c9acaea21666f4377679851f4e143f1f0c4fa3df4294709a6c101c98c7ebc76",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f31ef5583946778054625976b478eae21e28e567b5e2b2ef8a30861a574d9ea9",
+      "source_fact_keys": [
+        "source_fact:v1:4691a171c41ed32040a56115a5e6edcdc6aae18145359bcb8fbf190ec79d6cf5",
+        "source_fact:v1:b36d877c8cb621ba15dfe2a6c79872ca55e9909f6b7bafaff1933c0b0ac075a1",
+        "source_fact:v1:eb843a3a54bc2190d8b01a74eb69290b2121c13db545852b340247de78d0cc2c"
+      ],
+      "source_published_kst": "2026-10-06T14:46+09:00",
+      "title": "중국, ‘물류 데이터 일대일로’ 좌초⋯한중일 협력도 중단"
     },
     "source_fact:79d82eea9daf79cb75dd1c17": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
@@ -75817,6 +76440,29 @@
       ],
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
+    },
+    "source_fact:7e8102089333fda383aaee25": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815536",
+      "source": "뉴시스",
+      "source_body_digest": "58ae985282585296c2f433ea0603135b0aac805e577cfb1bc48620c106953696",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53e42975f21841952ba9537ac39b06edc53e2fe33ccd34978a455dc5297ed16e",
+      "source_fact_keys": [
+        "source_fact:v1:08df2be0b6372c7ca2a60819ec5fdf7b95ea2b24278263cde194ad2ac0578e9d",
+        "source_fact:v1:0e8be7da220aa6d99eecce9b279b4e3940e988e200ee2e6295c19382c36785a4",
+        "source_fact:v1:51a0dbba02d384baf4fe973f06e9d37b3063354481ae9768ce4b9532256d04fc",
+        "source_fact:v1:54d1b7adeb9b1e095333bcad9504f10c6fdf0b065c8bbb0c10c133809ff34bae",
+        "source_fact:v1:6d28c33be21d4b1a68321deb58f2898dfcda19fbc81d33fc74fb4a81e8776a1e",
+        "source_fact:v1:93ce9d8d741f36fcc1b3064dbb2706a98dec9ca99d8dce1cbf2aa6abdbd605de",
+        "source_fact:v1:dca19571a8e536b156d211d5e9a13a28e3c1b313217a1fc25a3432d4be918e35"
+      ],
+      "source_published_kst": "2026-10-06T14:33+09:00",
+      "title": "SK이노베이션, 윤활기유·배터리 성장 전망…\"올해 첫 연간 영업익 10조 노린다\""
     },
     "source_fact:7e88849ce7a13ac6b2d02d8c": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
@@ -79752,6 +80398,24 @@
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "C.H.로빈슨, RXO 58억달러 인수 합의 후 재무 부담·주식 희석 우려 부각"
     },
+    "source_fact:9c134fbc80acb121a856d3a3": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815661",
+      "source": "뉴시스",
+      "source_body_digest": "990cf7653b6c8437eb0b16705623ae573da2b9b4c42ec7626f113c41d340a0ba",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a9229f1b90c94f15a4436f76d2403335010fd570a7d69513e154daf710b55c07",
+      "source_fact_keys": [
+        "source_fact:v1:15bdf5fcca93d854bd32c3cd1a6f80808a8b94610dc93cb66dda0807cf4bed46",
+        "source_fact:v1:caa7db954bac9091d6f9c4ef175fc6b84972322924418898d5ae8f65a226aab7"
+      ],
+      "source_published_kst": "2026-10-06T14:33+09:00",
+      "title": "IPARK현대산업개발, 부산 연산13구역 수주…2812억원 규모"
+    },
     "source_fact:9c2011f5165effe9e2d564f1": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
       "lanes": {
@@ -81102,6 +81766,24 @@
       "source_published_kst": "2026-10-06T11:47+09:00",
       "title": "재경부 국감, '대미투자' 여야 질타…野 \"사업성 미달시 국정조사 사안\""
     },
+    "source_fact:a647868e591f1d1767d95626": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610065580b",
+      "source": "한국경제",
+      "source_body_digest": "e0abcc08dce476a57d7d66bca83bdadaaec17246ffc116e87dd3cb7324ba266f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10309db4d80cb38973edc804decd880dc01c7de16f358c982e7403d05976249c",
+      "source_fact_keys": [
+        "source_fact:v1:694666a62cb731d5a3b6ceafb2aebbe08d9805a0cf5207487d05e5aa5274c09a",
+        "source_fact:v1:afe505a17601efd6c13db7f61a94592666d0fd7d6001f47f199a11faa0d5bcf4"
+      ],
+      "source_published_kst": "2026-10-06T14:16+09:00",
+      "title": "\"최태원 9440억 SK 지분 매각, 3%룰 회피 목적 아닌지 밝혀야\""
+    },
     "source_fact:a693a364a17b4fbc490bda1a": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -81687,6 +82369,27 @@
       ],
       "source_published_kst": "2026-10-05T22:07+09:00",
       "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
+    },
+    "source_fact:aaf413cdc2ae8d13e9ecd6ab": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.fnnews.com/news/202610061023428325",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "de43f7a6e60eeb02d486672f196ae94f90980792cf2dc2050554c0a611cfc602",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74b4e67c13dab597f75c0023b0c6a302848f18996e9f789182ca91832a9ad199",
+      "source_fact_keys": [
+        "source_fact:v1:5c3ccd66f4b57eae65315c9cf40fdef147a88e784b5d0772de2b0683ae54b99c",
+        "source_fact:v1:826e55ef9fc440571051381a1e7b776295f0469b360f057bf355c501c0ebaf0e",
+        "source_fact:v1:9d2922220c0d55c080b5f3b755e2bac87a1d689d4947f72cf2f928f429f9dbbd",
+        "source_fact:v1:b2b5099392a31a6c69633cd386a41533d32a94b5b9059f93fae8e03fee3c57ef",
+        "source_fact:v1:ee7eda6f3047acce2a29e2e5516807eb7473b7bf3ad4333b9aa6cf2e3fa8f2a9"
+      ],
+      "source_published_kst": "2026-10-06T10:23+09:00",
+      "title": "1∼8월 글로벌 전기차 5.9% 증가…현대차그룹은 두 자릿수 성장"
     },
     "source_fact:aaf7b0baf5706f267a49adf6": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
@@ -82531,6 +83234,27 @@
       ],
       "source_published_kst": "2026-10-06T06:38+09:00",
       "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
+    },
+    "source_fact:b0e20db098c1ecbc1f38a822": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.fnnews.com/news/202610061023428325",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "de43f7a6e60eeb02d486672f196ae94f90980792cf2dc2050554c0a611cfc602",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74b4e67c13dab597f75c0023b0c6a302848f18996e9f789182ca91832a9ad199",
+      "source_fact_keys": [
+        "source_fact:v1:5c3ccd66f4b57eae65315c9cf40fdef147a88e784b5d0772de2b0683ae54b99c",
+        "source_fact:v1:826e55ef9fc440571051381a1e7b776295f0469b360f057bf355c501c0ebaf0e",
+        "source_fact:v1:9d2922220c0d55c080b5f3b755e2bac87a1d689d4947f72cf2f928f429f9dbbd",
+        "source_fact:v1:b2b5099392a31a6c69633cd386a41533d32a94b5b9059f93fae8e03fee3c57ef",
+        "source_fact:v1:ee7eda6f3047acce2a29e2e5516807eb7473b7bf3ad4333b9aa6cf2e3fa8f2a9"
+      ],
+      "source_published_kst": "2026-10-06T10:23+09:00",
+      "title": "1∼8월 글로벌 전기차 5.9% 증가…현대차그룹은 두 자릿수 성장"
     },
     "source_fact:b0edf5f3c835dbc4c3079d32": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
@@ -83897,6 +84621,24 @@
       "source_published_kst": "2026-10-06T09:00+09:00",
       "title": "자연과환경, 자회사 한림에코텍 흡수합병…OSCㆍ모듈러 사업 경쟁력 강화"
     },
+    "source_fact:b9ca4e2a716cd3fe605ef5e4": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610065580b",
+      "source": "한국경제",
+      "source_body_digest": "e0abcc08dce476a57d7d66bca83bdadaaec17246ffc116e87dd3cb7324ba266f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10309db4d80cb38973edc804decd880dc01c7de16f358c982e7403d05976249c",
+      "source_fact_keys": [
+        "source_fact:v1:694666a62cb731d5a3b6ceafb2aebbe08d9805a0cf5207487d05e5aa5274c09a",
+        "source_fact:v1:afe505a17601efd6c13db7f61a94592666d0fd7d6001f47f199a11faa0d5bcf4"
+      ],
+      "source_published_kst": "2026-10-06T14:16+09:00",
+      "title": "\"최태원 9440억 SK 지분 매각, 3%룰 회피 목적 아닌지 밝혀야\""
+    },
     "source_fact:b9e4e20925b73bab1f1b875e": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
       "lanes": {
@@ -84599,6 +85341,29 @@
       "source_published_kst": "2026-10-05T21:21+09:00",
       "title": "C.H. 로빈슨, RXO 58억 달러 인수 합의…3억 달러 시너지 목표"
     },
+    "source_fact:bffca875101bbb30435a743b": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815536",
+      "source": "뉴시스",
+      "source_body_digest": "58ae985282585296c2f433ea0603135b0aac805e577cfb1bc48620c106953696",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53e42975f21841952ba9537ac39b06edc53e2fe33ccd34978a455dc5297ed16e",
+      "source_fact_keys": [
+        "source_fact:v1:08df2be0b6372c7ca2a60819ec5fdf7b95ea2b24278263cde194ad2ac0578e9d",
+        "source_fact:v1:0e8be7da220aa6d99eecce9b279b4e3940e988e200ee2e6295c19382c36785a4",
+        "source_fact:v1:51a0dbba02d384baf4fe973f06e9d37b3063354481ae9768ce4b9532256d04fc",
+        "source_fact:v1:54d1b7adeb9b1e095333bcad9504f10c6fdf0b065c8bbb0c10c133809ff34bae",
+        "source_fact:v1:6d28c33be21d4b1a68321deb58f2898dfcda19fbc81d33fc74fb4a81e8776a1e",
+        "source_fact:v1:93ce9d8d741f36fcc1b3064dbb2706a98dec9ca99d8dce1cbf2aa6abdbd605de",
+        "source_fact:v1:dca19571a8e536b156d211d5e9a13a28e3c1b313217a1fc25a3432d4be918e35"
+      ],
+      "source_published_kst": "2026-10-06T14:33+09:00",
+      "title": "SK이노베이션, 윤활기유·배터리 성장 전망…\"올해 첫 연간 영업익 10조 노린다\""
+    },
     "source_fact:c01de5fa34672858edb0957c": {
       "first_seen_kst": "2026-10-06T01:41:59+09:00",
       "lanes": {
@@ -84954,6 +85719,23 @@
       ],
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
+    },
+    "source_fact:c2c4d8d0fec1d34e7a42db89": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.hankyung.com/article/2026100653337",
+      "source": "한국경제",
+      "source_body_digest": "c8d7213deed8f0e0aa133fcb0b5e9fd642c8261bfc5dd1c0a7eb2035d041f000",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eab220aaa03934c4e55dac3c350f6750406baff1393d10d274a6eee5e40be009",
+      "source_fact_keys": [
+        "source_fact:v1:60e0564a3e82a5ad167d025e0b2eb60f7ef030678f6a4d19ce9053427bfd5908"
+      ],
+      "source_published_kst": "2026-10-06T12:09+09:00",
+      "title": "고범석 서울청장 \"암살자(들) 배우에 대한 범죄 혐의 확인시 엄정 대응\""
     },
     "source_fact:c2f20aa590907c97672dbcdb": {
       "first_seen_kst": "2026-10-06T12:10:48+09:00",
@@ -85729,6 +86511,29 @@
       ],
       "source_published_kst": "2026-10-06T11:22+09:00",
       "title": "\"2028년 전력 대란 온다\" 경고…잘나가던 삼전닉스 '빨간불'"
+    },
+    "source_fact:c8101524319d02079fc4666b": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815536",
+      "source": "뉴시스",
+      "source_body_digest": "58ae985282585296c2f433ea0603135b0aac805e577cfb1bc48620c106953696",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53e42975f21841952ba9537ac39b06edc53e2fe33ccd34978a455dc5297ed16e",
+      "source_fact_keys": [
+        "source_fact:v1:08df2be0b6372c7ca2a60819ec5fdf7b95ea2b24278263cde194ad2ac0578e9d",
+        "source_fact:v1:0e8be7da220aa6d99eecce9b279b4e3940e988e200ee2e6295c19382c36785a4",
+        "source_fact:v1:51a0dbba02d384baf4fe973f06e9d37b3063354481ae9768ce4b9532256d04fc",
+        "source_fact:v1:54d1b7adeb9b1e095333bcad9504f10c6fdf0b065c8bbb0c10c133809ff34bae",
+        "source_fact:v1:6d28c33be21d4b1a68321deb58f2898dfcda19fbc81d33fc74fb4a81e8776a1e",
+        "source_fact:v1:93ce9d8d741f36fcc1b3064dbb2706a98dec9ca99d8dce1cbf2aa6abdbd605de",
+        "source_fact:v1:dca19571a8e536b156d211d5e9a13a28e3c1b313217a1fc25a3432d4be918e35"
+      ],
+      "source_published_kst": "2026-10-06T14:33+09:00",
+      "title": "SK이노베이션, 윤활기유·배터리 성장 전망…\"올해 첫 연간 영업익 10조 노린다\""
     },
     "source_fact:c87998a485c55c623bc83d0e": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -86751,6 +87556,29 @@
       ],
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
+    },
+    "source_fact:d096c7a968095e4a25e4549f": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815536",
+      "source": "뉴시스",
+      "source_body_digest": "58ae985282585296c2f433ea0603135b0aac805e577cfb1bc48620c106953696",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53e42975f21841952ba9537ac39b06edc53e2fe33ccd34978a455dc5297ed16e",
+      "source_fact_keys": [
+        "source_fact:v1:08df2be0b6372c7ca2a60819ec5fdf7b95ea2b24278263cde194ad2ac0578e9d",
+        "source_fact:v1:0e8be7da220aa6d99eecce9b279b4e3940e988e200ee2e6295c19382c36785a4",
+        "source_fact:v1:51a0dbba02d384baf4fe973f06e9d37b3063354481ae9768ce4b9532256d04fc",
+        "source_fact:v1:54d1b7adeb9b1e095333bcad9504f10c6fdf0b065c8bbb0c10c133809ff34bae",
+        "source_fact:v1:6d28c33be21d4b1a68321deb58f2898dfcda19fbc81d33fc74fb4a81e8776a1e",
+        "source_fact:v1:93ce9d8d741f36fcc1b3064dbb2706a98dec9ca99d8dce1cbf2aa6abdbd605de",
+        "source_fact:v1:dca19571a8e536b156d211d5e9a13a28e3c1b313217a1fc25a3432d4be918e35"
+      ],
+      "source_published_kst": "2026-10-06T14:33+09:00",
+      "title": "SK이노베이션, 윤활기유·배터리 성장 전망…\"올해 첫 연간 영업익 10조 노린다\""
     },
     "source_fact:d0f07e07c867142a3d8e23c2": {
       "first_seen_kst": "2026-10-06T16:20:22+09:00",
@@ -87948,7 +88776,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815335",
       "source": "뉴시스",
       "source_body_digest": "9850f4485c603b6ded6d61b9193003e2dff6caca6a065f82dfc3e458806ccaad",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:macro_model_report:5d4f03ef5af47b8140cea81c228066eb5a507ba74d2607d393efd01a8b336aa2",
       "source_fact_identity": "source_facts:v1:e37b00ee8f8ad3f23fa8edb80e73b25e513f7138d67598664d27d8e4a755ae10",
       "source_fact_keys": [
         "source_fact:v1:8c72d850f9de282d2d5ec9fae20179837ceda885e733a30f8feed9508d219d27",
@@ -90128,6 +90956,27 @@
       "source_published_kst": "2026-10-05T09:45+09:00",
       "title": "LG유플러스, 해외 AI 서비스 ‘유독’에 들여온다…11월 첫 상품 출시"
     },
+    "source_fact:e759645e6a42f90b5c307e8f": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.fnnews.com/news/202610061023428325",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "de43f7a6e60eeb02d486672f196ae94f90980792cf2dc2050554c0a611cfc602",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74b4e67c13dab597f75c0023b0c6a302848f18996e9f789182ca91832a9ad199",
+      "source_fact_keys": [
+        "source_fact:v1:5c3ccd66f4b57eae65315c9cf40fdef147a88e784b5d0772de2b0683ae54b99c",
+        "source_fact:v1:826e55ef9fc440571051381a1e7b776295f0469b360f057bf355c501c0ebaf0e",
+        "source_fact:v1:9d2922220c0d55c080b5f3b755e2bac87a1d689d4947f72cf2f928f429f9dbbd",
+        "source_fact:v1:b2b5099392a31a6c69633cd386a41533d32a94b5b9059f93fae8e03fee3c57ef",
+        "source_fact:v1:ee7eda6f3047acce2a29e2e5516807eb7473b7bf3ad4333b9aa6cf2e3fa8f2a9"
+      ],
+      "source_published_kst": "2026-10-06T10:23+09:00",
+      "title": "1∼8월 글로벌 전기차 5.9% 증가…현대차그룹은 두 자릿수 성장"
+    },
     "source_fact:e76e7f6e442854a72897feeb": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -91343,6 +92192,25 @@
       ],
       "source_published_kst": "2026-10-06T08:17+09:00",
       "title": "나스닥 사상 최고…비트코인 8만5000달러대[코인 모닝콜]"
+    },
+    "source_fact:f03e9c199bc7ea396869de1d": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632867",
+      "source": "이투데이",
+      "source_body_digest": "9c9acaea21666f4377679851f4e143f1f0c4fa3df4294709a6c101c98c7ebc76",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f31ef5583946778054625976b478eae21e28e567b5e2b2ef8a30861a574d9ea9",
+      "source_fact_keys": [
+        "source_fact:v1:4691a171c41ed32040a56115a5e6edcdc6aae18145359bcb8fbf190ec79d6cf5",
+        "source_fact:v1:b36d877c8cb621ba15dfe2a6c79872ca55e9909f6b7bafaff1933c0b0ac075a1",
+        "source_fact:v1:eb843a3a54bc2190d8b01a74eb69290b2121c13db545852b340247de78d0cc2c"
+      ],
+      "source_published_kst": "2026-10-06T14:46+09:00",
+      "title": "중국, ‘물류 데이터 일대일로’ 좌초⋯한중일 협력도 중단"
     },
     "source_fact:f073e72340c0a08647d49b0a": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -93148,6 +94016,24 @@
       "source_published_kst": "2026-10-06T07:48+09:00",
       "title": "본사 곳간 찰 때 점주는 울었다…프랜차이즈 매출 양극화 심화"
     },
+    "source_fact:ff010b548e155bb9afe68f97": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815661",
+      "source": "뉴시스",
+      "source_body_digest": "990cf7653b6c8437eb0b16705623ae573da2b9b4c42ec7626f113c41d340a0ba",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a9229f1b90c94f15a4436f76d2403335010fd570a7d69513e154daf710b55c07",
+      "source_fact_keys": [
+        "source_fact:v1:15bdf5fcca93d854bd32c3cd1a6f80808a8b94610dc93cb66dda0807cf4bed46",
+        "source_fact:v1:caa7db954bac9091d6f9c4ef175fc6b84972322924418898d5ae8f65a226aab7"
+      ],
+      "source_published_kst": "2026-10-06T14:33+09:00",
+      "title": "IPARK현대산업개발, 부산 연산13구역 수주…2812억원 규모"
+    },
     "source_fact:ff09da0ba5a5315656899961": {
       "first_seen_kst": "2026-10-06T00:26:07+09:00",
       "lanes": {
@@ -93641,7 +94527,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261006099400030",
       "source": "연합뉴스",
       "source_body_digest": "9229eead129202e3bf2dfe776f589b2d1eba7a261c71985fa21edd0bd48a4718",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:cumulative_foreign_sales:057184f04c505811ce09d2a9a4922994248f84d0c3d7285574b2a557735c5c59",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T13:19+09:00",
@@ -95100,6 +95986,27 @@
       "source_published_kst": "2026-10-06T09:32+09:00",
       "title": "LG전자, 美 AI 데이터센터 냉각 솔루션 공급 계약에 '급등'"
     },
+    "title:145255910c167871bb77d46d": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.fnnews.com/news/202610061023428325",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "de43f7a6e60eeb02d486672f196ae94f90980792cf2dc2050554c0a611cfc602",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74b4e67c13dab597f75c0023b0c6a302848f18996e9f789182ca91832a9ad199",
+      "source_fact_keys": [
+        "source_fact:v1:5c3ccd66f4b57eae65315c9cf40fdef147a88e784b5d0772de2b0683ae54b99c",
+        "source_fact:v1:826e55ef9fc440571051381a1e7b776295f0469b360f057bf355c501c0ebaf0e",
+        "source_fact:v1:9d2922220c0d55c080b5f3b755e2bac87a1d689d4947f72cf2f928f429f9dbbd",
+        "source_fact:v1:b2b5099392a31a6c69633cd386a41533d32a94b5b9059f93fae8e03fee3c57ef",
+        "source_fact:v1:ee7eda6f3047acce2a29e2e5516807eb7473b7bf3ad4333b9aa6cf2e3fa8f2a9"
+      ],
+      "source_published_kst": "2026-10-06T10:23+09:00",
+      "title": "1∼8월 글로벌 전기차 5.9% 증가…현대차그룹은 두 자릿수 성장"
+    },
     "title:1453cb8398713cd829f7d2f0": {
       "first_seen_kst": "2026-10-03T19:11:40+09:00",
       "lanes": {
@@ -95120,7 +96027,7 @@
       "link": "https://www.etnews.com/20261006000199",
       "source": "전자신문",
       "source_body_digest": "d1000689f998305d8219d14590da45632660ebe70fd9e22b940e3bcb415af15a",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:cumulative_foreign_sales:057184f04c505811ce09d2a9a4922994248f84d0c3d7285574b2a557735c5c59",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T13:16+09:00",
@@ -95465,6 +96372,23 @@
       "link": "https://www.edaily.co.kr/news/read?newsid=02817526645581432&parentid=03093046645581432&gubun=E",
       "source": "이데일리",
       "title": "“비트코인 ETF 19배 커진다”…금도 제친다는 월가 전망"
+    },
+    "title:17c765cbb1d9baa38895d361": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.hankyung.com/article/2026100653337",
+      "source": "한국경제",
+      "source_body_digest": "c8d7213deed8f0e0aa133fcb0b5e9fd642c8261bfc5dd1c0a7eb2035d041f000",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eab220aaa03934c4e55dac3c350f6750406baff1393d10d274a6eee5e40be009",
+      "source_fact_keys": [
+        "source_fact:v1:60e0564a3e82a5ad167d025e0b2eb60f7ef030678f6a4d19ce9053427bfd5908"
+      ],
+      "source_published_kst": "2026-10-06T12:09+09:00",
+      "title": "고범석 서울청장 \"암살자(들) 배우에 대한 범죄 혐의 확인시 엄정 대응\""
     },
     "title:17c8f330353361d796e624ee": {
       "first_seen_kst": "2026-10-05T12:29:58+09:00",
@@ -97087,6 +98011,29 @@
       ],
       "source_published_kst": "2026-10-06T11:01+09:00",
       "title": "자동차 화면용 강화유리 수입승인 없앤다…디스플레이 규제 개선"
+    },
+    "title:2afcb84164e1b9610918773c": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815536",
+      "source": "뉴시스",
+      "source_body_digest": "58ae985282585296c2f433ea0603135b0aac805e577cfb1bc48620c106953696",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53e42975f21841952ba9537ac39b06edc53e2fe33ccd34978a455dc5297ed16e",
+      "source_fact_keys": [
+        "source_fact:v1:08df2be0b6372c7ca2a60819ec5fdf7b95ea2b24278263cde194ad2ac0578e9d",
+        "source_fact:v1:0e8be7da220aa6d99eecce9b279b4e3940e988e200ee2e6295c19382c36785a4",
+        "source_fact:v1:51a0dbba02d384baf4fe973f06e9d37b3063354481ae9768ce4b9532256d04fc",
+        "source_fact:v1:54d1b7adeb9b1e095333bcad9504f10c6fdf0b065c8bbb0c10c133809ff34bae",
+        "source_fact:v1:6d28c33be21d4b1a68321deb58f2898dfcda19fbc81d33fc74fb4a81e8776a1e",
+        "source_fact:v1:93ce9d8d741f36fcc1b3064dbb2706a98dec9ca99d8dce1cbf2aa6abdbd605de",
+        "source_fact:v1:dca19571a8e536b156d211d5e9a13a28e3c1b313217a1fc25a3432d4be918e35"
+      ],
+      "source_published_kst": "2026-10-06T14:33+09:00",
+      "title": "SK이노베이션, 윤활기유·배터리 성장 전망…\"올해 첫 연간 영업익 10조 노린다\""
     },
     "title:2b08a03c3ceae6f42d9de947": {
       "first_seen_kst": "2026-10-03T05:48:31+09:00",
@@ -99465,6 +100412,25 @@
       "link": "https://www.hankyung.com/article/2026100161866",
       "source": "한국경제",
       "title": "예상 밑돈 PCE 물가에도 국채금리 고공행진하자 혼조 마감 [뉴욕증시 브리핑]"
+    },
+    "title:43e8a1813927f6b6fd348995": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632867",
+      "source": "이투데이",
+      "source_body_digest": "9c9acaea21666f4377679851f4e143f1f0c4fa3df4294709a6c101c98c7ebc76",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f31ef5583946778054625976b478eae21e28e567b5e2b2ef8a30861a574d9ea9",
+      "source_fact_keys": [
+        "source_fact:v1:4691a171c41ed32040a56115a5e6edcdc6aae18145359bcb8fbf190ec79d6cf5",
+        "source_fact:v1:b36d877c8cb621ba15dfe2a6c79872ca55e9909f6b7bafaff1933c0b0ac075a1",
+        "source_fact:v1:eb843a3a54bc2190d8b01a74eb69290b2121c13db545852b340247de78d0cc2c"
+      ],
+      "source_published_kst": "2026-10-06T14:46+09:00",
+      "title": "중국, ‘물류 데이터 일대일로’ 좌초⋯한중일 협력도 중단"
     },
     "title:44610a96d64b0b10d0385382": {
       "first_seen_kst": "2026-10-02T09:58:25+09:00",
@@ -102700,6 +103666,23 @@
       ],
       "source_published_kst": "2026-10-06T02:28+09:00",
       "title": "아람코 CEO \"세계 석유 공급 이미 압박…비축 최대 2년\""
+    },
+    "title:6bb5603ad3f752bc31315f52": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170269",
+      "source": "매일경제",
+      "source_body_digest": "9a7e9b2b4f398140bc14b09839f5720299e2c46c56e6e1f24a99ea0c1b470f29",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:26ea94bddf35b9da3b78972097281d509bb0f4fa5b02d4af8d2a4b58881603c4",
+      "source_fact_keys": [
+        "source_fact:v1:4df2eabdb67b25a5cd5ba152c195ba1d8f0edfe1be654dcfd9eb9386329cf81e"
+      ],
+      "source_published_kst": "2026-10-06T14:09+09:00",
+      "title": "신협자산관리회사, 부실채권 매입 가능해진다…건전성 강화"
     },
     "title:6bb771b2e77696739d631651": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
@@ -108810,6 +109793,24 @@
       "source": "이데일리",
       "title": "中 CXMT까지 참전…치킨게임 공포 엄습하는 낸드플래시"
     },
+    "title:b13a7575e27bd5cbc16db745": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815661",
+      "source": "뉴시스",
+      "source_body_digest": "990cf7653b6c8437eb0b16705623ae573da2b9b4c42ec7626f113c41d340a0ba",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a9229f1b90c94f15a4436f76d2403335010fd570a7d69513e154daf710b55c07",
+      "source_fact_keys": [
+        "source_fact:v1:15bdf5fcca93d854bd32c3cd1a6f80808a8b94610dc93cb66dda0807cf4bed46",
+        "source_fact:v1:caa7db954bac9091d6f9c4ef175fc6b84972322924418898d5ae8f65a226aab7"
+      ],
+      "source_published_kst": "2026-10-06T14:33+09:00",
+      "title": "IPARK현대산업개발, 부산 연산13구역 수주…2812억원 규모"
+    },
     "title:b14820b33198fbf81f31893b": {
       "first_seen_kst": "2026-10-03T21:43:46+09:00",
       "lanes": {
@@ -112195,7 +113196,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815335",
       "source": "뉴시스",
       "source_body_digest": "9850f4485c603b6ded6d61b9193003e2dff6caca6a065f82dfc3e458806ccaad",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:macro_model_report:5d4f03ef5af47b8140cea81c228066eb5a507ba74d2607d393efd01a8b336aa2",
       "source_fact_identity": "source_facts:v1:e37b00ee8f8ad3f23fa8edb80e73b25e513f7138d67598664d27d8e4a755ae10",
       "source_fact_keys": [
         "source_fact:v1:8c72d850f9de282d2d5ec9fae20179837ceda885e733a30f8feed9508d219d27",
@@ -113181,6 +114182,24 @@
       "source_published_kst": "2026-10-05T17:12+09:00",
       "title": "리사 수 AMD 회장, 7개월 만에 방한…7일 ‘게이머 데이’ 참석"
     },
+    "title:e426d55f9ee577e7cb7f6943": {
+      "first_seen_kst": "2026-10-06T16:43:37+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:43:37+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:43:37+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610065580b",
+      "source": "한국경제",
+      "source_body_digest": "e0abcc08dce476a57d7d66bca83bdadaaec17246ffc116e87dd3cb7324ba266f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10309db4d80cb38973edc804decd880dc01c7de16f358c982e7403d05976249c",
+      "source_fact_keys": [
+        "source_fact:v1:694666a62cb731d5a3b6ceafb2aebbe08d9805a0cf5207487d05e5aa5274c09a",
+        "source_fact:v1:afe505a17601efd6c13db7f61a94592666d0fd7d6001f47f199a11faa0d5bcf4"
+      ],
+      "source_published_kst": "2026-10-06T14:16+09:00",
+      "title": "\"최태원 9440억 SK 지분 매각, 3%룰 회피 목적 아닌지 밝혀야\""
+    },
     "title:e45c2fb13540ed2ba8ebaee9": {
       "first_seen_kst": "2026-09-25T01:40:40+09:00",
       "lanes": {
@@ -113774,7 +114793,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632749?trc=right_categori_news_estudio",
       "source": "이투데이",
       "source_body_digest": "f6e893b4f42f8d94b446c1e5cf620c24c7c6c18b79e080555eceef292e8ef9f5",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:macro_model_report:5d4f03ef5af47b8140cea81c228066eb5a507ba74d2607d393efd01a8b336aa2",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T12:00+09:00",
@@ -115590,5 +116609,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T16:30:27+09:00"
+  "updated_at_kst": "2026-10-06T16:43:37+09:00"
 }
