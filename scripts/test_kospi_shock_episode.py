@@ -158,3 +158,24 @@ with tempfile.TemporaryDirectory() as td:
     assert len(w7.flows) == 1, len(w7.flows)
     assert w7.episode and w7.episode["start_price"] == 7000.0, w7.episode
 print("handoff_regression=true")
+
+
+# Regression: 전체 직접값과 차익+비차익 계산합계가 5% 넘게 벌어지면
+# 방향이 같아도 프로그램 품질을 높음으로 인정하지 않는다.
+w8 = Watch.__new__(Watch)
+w8.flows = deque([
+    {"ts": 1000.0,
+     "현물": {"외국인": 0.0, "기관": 0.0, "개인": 0.0},
+     "선물": {"외국인": 0.0, "기관": 0.0, "개인": 0.0},
+     "프로그램": {"전체": 0.0, "차익": 0.0, "비차익": 0.0, "베이시스": 0.0, "표본시차초": 3.0}},
+    {"ts": 2000.0,
+     "현물": {"외국인": -1000.0, "기관": 100.0, "개인": 100.0},
+     "선물": {"외국인": -1500.0, "기관": 200.0, "개인": 100.0},
+     "프로그램": {"전체": -1000.0, "차익": -100.0, "비차익": -400.0, "베이시스": -0.1, "표본시차초": 3.0}},
+], maxlen=2500)
+att8 = Watch.attribution(w8, 1000.0, 2000.0)
+assert att8["available"], att8
+assert att8["program_crosscheck_ratio_pct"] > 5.0, att8
+assert att8["program_quality"] is False, att8
+assert att8["confidence"] == "중간", att8
+print("program_crosscheck_ratio_regression=true")
