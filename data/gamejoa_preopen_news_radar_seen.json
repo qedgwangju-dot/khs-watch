@@ -1114,28 +1114,31 @@
     "event:349495665d4da7d0a3d9ac18": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
       "lanes": {
-        "live": "2026-10-06T09:53:40+09:00"
+        "live": "2026-10-06T15:03:09+09:00"
       },
-      "last_seen_kst": "2026-10-06T09:53:40+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12168863",
-      "source": "매일경제",
-      "source_body_digest": "c24146b48effd355f24e8a8e44b760ef6d333e1f4238449311d9f3a8ece71616",
-      "source_event_identity": "source_event:v2:conditional_index_outlook:de4f8409a7a2f8eb4507c683d9f40080e36f2ceaa8a3db3a19d7ac3d04b86c5a",
-      "source_fact_identity": "source_facts:v1:da69cfb2b7d41193d2174ced88d70a028af964ef3acd7219488ac62bc440cba3",
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815465",
+      "source": "뉴시스",
+      "source_body_digest": "2cc064c9a22cb2501bfbf3a4c8ce3749de26f323a948e1a7112dc8b84b97bce1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22e46750b22ded86b72bdebd116040aad118814a94ccf19e8061f9f26d167995",
       "source_fact_keys": [
-        "source_fact:v1:0575f638027fe1f15f05f371657ba4866585a168078bc42954cf484d9b334cb5",
-        "source_fact:v1:12380fe5308fa9d45861ce98bb177ce6eba6c7b6c097261fb49f7174a47f2987",
-        "source_fact:v1:261c0e1d35d1e9e678a6113a07e82422412dba369b17a68d0b29a7d11537c397",
-        "source_fact:v1:4d8472a0c7df4526b68d571b1aeaf93c28aedcde800e020111113f72b012c07f",
-        "source_fact:v1:57f5314895b076368a3e971adca97f6725c2a9b2e49ad3d3d7d6a57ef6b066e1",
-        "source_fact:v1:aebe085118f19710d15aaa7b6016590773c08094d97b07c624edf20aa07d405a",
-        "source_fact:v1:b1f9560f6148b4d4b8be54675dedb51830f22aeec4d5640b236ff724c6101cb1",
-        "source_fact:v1:cd557f3da54e0206eb466a29be58495095347484d7d5ea1ce110915a6ce7c55f",
-        "source_fact:v1:f6cf29dd7017bb103712f76bd49600a5874eed2b8df5d262ebb69c262806da2c",
-        "source_fact:v1:f947c42dbe421e0ad09c0304245d828295ce2e592343cab810a5c98eeeb3b441"
+        "source_fact:v1:0456ce25b04a9b49da2a3ffe094ea99fa13e88ea961aabe37477a8b911e9d9ec",
+        "source_fact:v1:0aed5e1673b6d6e3d4f332c48c0bf8527628c5a7ea7a45cf67e09f55d006cb87",
+        "source_fact:v1:0ea098bd869c41eb58426e9db59d65e29d98952f5db1122a2fe89cd0cc8b6ece",
+        "source_fact:v1:1bf8e099a3fb178d36e9eb66cfd986275c342841ed08a5dcc6fc540be0f23bb4",
+        "source_fact:v1:1c3066dacab41bf89444e1260ed95bec996c885b19d299da173f22492ba7b5db",
+        "source_fact:v1:4a0d9ae2b3e192cea15e215e87f314d3cac1a6b2823f4493f861a682a8d1ba43",
+        "source_fact:v1:56230a81f0806e1ea41d3edfff1b03cc3dd60e397cd437f5c70a4962c0aac672",
+        "source_fact:v1:a509fc0a540d47ca8da7b67163094d6ce12c9d886a657d6fb0fee8f1d33aaf57",
+        "source_fact:v1:b809345a93fd068ad406abde191990a4078e1510d553a44743d555349d203b54",
+        "source_fact:v1:c111caaeb7656cd1c0c1cd16efc2d8c7e4807272a5bfdc045f39bc3037deaba0",
+        "source_fact:v1:c593b22f650b795ec83e8952197feea53c07c490d30a6faccb362b5b4f4c839a",
+        "source_fact:v1:c62b0576430fa4d44e5910b21f18c0af8c85244d56c9c0c76b929a17e824638d",
+        "source_fact:v1:f80a19a5fdc595214c67387fa0dd6d50a8ffda35bd88b8107cc3b74a8063c597"
       ],
-      "source_published_kst": "2026-10-06T08:46+09:00",
-      "title": "“코스피, 7100만 찍으면 7700까지 간다”…장밋빛 전망 근거는? [오늘 나온 보고서]"
+      "source_published_kst": "2026-10-06T14:48+09:00",
+      "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
     },
     "event:3557a2ded6278f23bb2cc1a1": {
       "first_seen_kst": "2026-09-21T15:25:35+09:00",
@@ -4262,6 +4265,32 @@
       "source": "연합뉴스",
       "title": "고려아연 최윤범 \"5년간 제품 20여종에서 30여종으로 확대\" | 연합뉴스"
     },
+    "event:c0dbfc97ef978eba5cde2a2c": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
+      "source": "이데일리",
+      "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
+      "source_fact_keys": [
+        "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
+        "source_fact:v1:383db3349bae02188926d095ee0387b44c24b898908ce3ead25a0a79476bdf46",
+        "source_fact:v1:43badb2a14de67473830c113636851108bffbbc958685154d9c0b3532d1f6577",
+        "source_fact:v1:8b53d07e7d26d8f053e56e83f6410fefc9c89ab255e490e926da4fe664f1c4df",
+        "source_fact:v1:91e7ab32f23ff83fc4c39135356841d888e1a0eb1ee04399c7ea3ae797e61e86",
+        "source_fact:v1:9254cc531ea467924a89f8c6f84275e274330477510ec3542559e9863df242c9",
+        "source_fact:v1:94a7fc2cf4b2ddeacbb4e1ab8ce94313ac471e663a242c46dc1f4aec3f8be89f",
+        "source_fact:v1:b583d969d6ec37a1b173bf714713f0eab78479ca1cdc33c63258f5ddea9ebe38",
+        "source_fact:v1:e0eef8432ce228ebb4a06fe6c707538d91ec88583398ca3843c55136203db86f",
+        "source_fact:v1:f72691603d19837418e670433c214d912b8ea7c9d8a5c97d752780e5699bbd08"
+      ],
+      "source_published_kst": "2026-10-06T12:08+09:00",
+      "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
+    },
     "event:c108c7b2a500c7ee7f4191a3": {
       "first_seen_kst": "2026-09-25T11:29:39+09:00",
       "lanes": {
@@ -5704,6 +5733,32 @@
       ],
       "source_published_kst": "2026-10-05T05:01+09:00",
       "title": "국회 정무위 6일 국감 돌입…금융권 해킹에 5대 은행장 줄소환되나"
+    },
+    "fact:05679f437d49864c0999498a": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
+      "source": "이데일리",
+      "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
+      "source_fact_keys": [
+        "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
+        "source_fact:v1:383db3349bae02188926d095ee0387b44c24b898908ce3ead25a0a79476bdf46",
+        "source_fact:v1:43badb2a14de67473830c113636851108bffbbc958685154d9c0b3532d1f6577",
+        "source_fact:v1:8b53d07e7d26d8f053e56e83f6410fefc9c89ab255e490e926da4fe664f1c4df",
+        "source_fact:v1:91e7ab32f23ff83fc4c39135356841d888e1a0eb1ee04399c7ea3ae797e61e86",
+        "source_fact:v1:9254cc531ea467924a89f8c6f84275e274330477510ec3542559e9863df242c9",
+        "source_fact:v1:94a7fc2cf4b2ddeacbb4e1ab8ce94313ac471e663a242c46dc1f4aec3f8be89f",
+        "source_fact:v1:b583d969d6ec37a1b173bf714713f0eab78479ca1cdc33c63258f5ddea9ebe38",
+        "source_fact:v1:e0eef8432ce228ebb4a06fe6c707538d91ec88583398ca3843c55136203db86f",
+        "source_fact:v1:f72691603d19837418e670433c214d912b8ea7c9d8a5c97d752780e5699bbd08"
+      ],
+      "source_published_kst": "2026-10-06T12:08+09:00",
+      "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
     },
     "fact:0592711f0b204a9175ab3eb8": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
@@ -8556,6 +8611,23 @@
       "source_published_kst": "2026-10-06T08:41+09:00",
       "title": "현대건설, 압구정 2·3·5구역에 ‘스파 록시땅’ 도입"
     },
+    "fact:6000946641fa8dc2181c1653": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.mt.co.kr/index.php/economy/2026/10/06/2026100612152980692",
+      "source": "머니투데이",
+      "source_body_digest": "1bd8f0b4e0080c8067845f38ec0b58d03c4dae8e0ab8813b0cf4bdc7ff0a9462",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:63b272c7c39443bfaa3aebfdcbc9435918a62b9c2c08070d22639a075ba61b38",
+      "source_fact_keys": [
+        "source_fact:v1:635460e1e3fbd90da6e75ed1941c1133e83f37cf4664c671af9ec80465b77c9b"
+      ],
+      "source_published_kst": "2026-10-06T12:19+09:00",
+      "title": "이형일, 레버리지 ETF 논란에 \"투자자 손실 확대, 무겁게 생각\""
+    },
     "fact:60bf4a03fd87a3e831973156": {
       "first_seen_kst": "2026-10-06T06:36:31+09:00",
       "lanes": {
@@ -8744,6 +8816,23 @@
       "source_published_kst": "2026-10-06T07:07+09:00",
       "title": "스페이스X 주가 급등에 머스크 다시 조만장자 [마켓핫]"
     },
+    "fact:69bf1fb4afcd2eeb45396f8e": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.fnnews.com/news/202610061230207813",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "dab95e480a0e46d3d5ee2931fd2310e3ff6cb927c703994506f0b597a23b4063",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:49bde45f17476522b48d066b1ec735347210d168dea02c432a3c4bb2233f6e7b",
+      "source_fact_keys": [
+        "source_fact:v1:7fbdf561b8eaaee7da026c3ce3b2a4d91f934c845fa3587f6abc697f86d1bc01"
+      ],
+      "source_published_kst": "2026-10-06T12:40+09:00",
+      "title": "이형일 \"대미 원전 100억달러, 국내법 절차 완료 후 가능\""
+    },
     "fact:69c65f29af273648966d6a72": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
       "lanes": {
@@ -8823,6 +8912,25 @@
       ],
       "source_published_kst": "2026-10-05T21:20+09:00",
       "title": "이 대통령 \"부동산투기공화국 탈출 약속 반드시 지킬 것\"…하루에만 SNS 11건(종합2보)"
+    },
+    "fact:6ba51edb06eb8dadb001ab07": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.fnnews.com/news/202610061229489854",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "09258c1f71b72b65733c610fe86e7f409988750c1191e7072ebd148496253530",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bbeafdcda7c42d41deb24b520f1a6bbbdfce6ec9b018fd5dc9f462cdbecf10bf",
+      "source_fact_keys": [
+        "source_fact:v1:17be2bfcc5b06ebc002f7d11797c0f45ba1fda36366a99f14906ee17527070e9",
+        "source_fact:v1:46892a096fd3d1d592b9cd1f17cc3a461367d7a6e0513c541ff1980bfda77e47",
+        "source_fact:v1:9e3438fc9045694b625c8fca72c1d225e17058c9017d39606b57c5c0e82c81a9"
+      ],
+      "source_published_kst": "2026-10-06T12:29+09:00",
+      "title": "권대영 \"레버리지 ETF 도입, 금융위가 최종 결정…투자자 손실 송구\""
     },
     "fact:6c1a84a5e9e41ee7b4169f1c": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -10476,6 +10584,25 @@
       "source_published_kst": "2026-10-05T18:32+09:00",
       "title": "[단독] 개정 상법에 한전 '소송 리스크'"
     },
+    "fact:a4093b2aedeaa38bc12cae60": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.etnews.com/20261006000181",
+      "source": "전자신문",
+      "source_body_digest": "95c50a673940f0462634544cc96fa27c0b33f29bafbd3103efc93139514806f5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:44f109cfc79b58fd4dfe7b3719bf9af8c9a4dc332d8360049f8814c273879ae0",
+      "source_fact_keys": [
+        "source_fact:v1:1b2b6bbbd209653e7914c86e979dfca8403152edc139c6c8a765aa64d4a4a8a9",
+        "source_fact:v1:31886cc886ef814ec5d96979344a17cd35110847f95d4b779f090d1dcee0d50f",
+        "source_fact:v1:4c9f111628b8fc3294d8eeea907a7f3dad831a5264d65af0fece9b9ecf37268d"
+      ],
+      "source_published_kst": "2026-10-06T12:05+09:00",
+      "title": "[2026 국감]호남반도체 결정 주체, 자료 불일치…김정관 “확인하겠다”"
+    },
     "fact:a58ec64d626496e1ff50f582": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
       "lanes": {
@@ -10805,6 +10932,25 @@
       "source_published_kst": "2026-10-05T22:07+09:00",
       "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
     },
+    "fact:b00ecd6efe5b0c09dfdd5017": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.news1.kr/economy/trend/6311231",
+      "source": "뉴스1",
+      "source_body_digest": "3927c5759df584d20eee2982a0a6f0397e900f911ef1a3f0a93903123c702a2c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e94b0c7aa79494d56f9fef2d7dcf3b58c4d2d5bb9ee6032341b3b9d7ec577e60",
+      "source_fact_keys": [
+        "source_fact:v1:11498e05ee478ef2afa7315df2c43a16231e704fc5064af52b2244ba80d7217f",
+        "source_fact:v1:5f6ce6e8add716d68dfa34ac85a35b01de08077d90d811182e8908a0144d5b38",
+        "source_fact:v1:fda62735458909e66447bce528e0c7c245b41719ee3748fb936ee806fc9090f6"
+      ],
+      "source_published_kst": "2026-10-06T12:16+09:00",
+      "title": "기후부, '에너지 대전환' 속도…2030년 재생e 100GW·석탄발전 2040년 퇴출"
+    },
     "fact:b0597d06268f4d267eb39259": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -10952,6 +11098,35 @@
       ],
       "source_published_kst": "2026-10-05T21:50+09:00",
       "title": "크리티컬메탈스, 유러피언리튬 조건부 주식 지급의무 소멸 합의에 투자자 주목"
+    },
+    "fact:bd56f101b64848b55f457505": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815465",
+      "source": "뉴시스",
+      "source_body_digest": "2cc064c9a22cb2501bfbf3a4c8ce3749de26f323a948e1a7112dc8b84b97bce1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22e46750b22ded86b72bdebd116040aad118814a94ccf19e8061f9f26d167995",
+      "source_fact_keys": [
+        "source_fact:v1:0456ce25b04a9b49da2a3ffe094ea99fa13e88ea961aabe37477a8b911e9d9ec",
+        "source_fact:v1:0aed5e1673b6d6e3d4f332c48c0bf8527628c5a7ea7a45cf67e09f55d006cb87",
+        "source_fact:v1:0ea098bd869c41eb58426e9db59d65e29d98952f5db1122a2fe89cd0cc8b6ece",
+        "source_fact:v1:1bf8e099a3fb178d36e9eb66cfd986275c342841ed08a5dcc6fc540be0f23bb4",
+        "source_fact:v1:1c3066dacab41bf89444e1260ed95bec996c885b19d299da173f22492ba7b5db",
+        "source_fact:v1:4a0d9ae2b3e192cea15e215e87f314d3cac1a6b2823f4493f861a682a8d1ba43",
+        "source_fact:v1:56230a81f0806e1ea41d3edfff1b03cc3dd60e397cd437f5c70a4962c0aac672",
+        "source_fact:v1:a509fc0a540d47ca8da7b67163094d6ce12c9d886a657d6fb0fee8f1d33aaf57",
+        "source_fact:v1:b809345a93fd068ad406abde191990a4078e1510d553a44743d555349d203b54",
+        "source_fact:v1:c111caaeb7656cd1c0c1cd16efc2d8c7e4807272a5bfdc045f39bc3037deaba0",
+        "source_fact:v1:c593b22f650b795ec83e8952197feea53c07c490d30a6faccb362b5b4f4c839a",
+        "source_fact:v1:c62b0576430fa4d44e5910b21f18c0af8c85244d56c9c0c76b929a17e824638d",
+        "source_fact:v1:f80a19a5fdc595214c67387fa0dd6d50a8ffda35bd88b8107cc3b74a8063c597"
+      ],
+      "source_published_kst": "2026-10-06T14:48+09:00",
+      "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
     },
     "fact:bd9b681198164964f4727201": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
@@ -14658,6 +14833,23 @@
       "source": "연합뉴스",
       "title": "뉴딜펀드 만기청산 절반이 마이너스…재정 손실부담 139억 | 연합뉴스"
     },
+    "link:198c3009f1e2804515aa90b0": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.mt.co.kr/index.php/economy/2026/10/06/2026100612152980692",
+      "source": "머니투데이",
+      "source_body_digest": "1bd8f0b4e0080c8067845f38ec0b58d03c4dae8e0ab8813b0cf4bdc7ff0a9462",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:63b272c7c39443bfaa3aebfdcbc9435918a62b9c2c08070d22639a075ba61b38",
+      "source_fact_keys": [
+        "source_fact:v1:635460e1e3fbd90da6e75ed1941c1133e83f37cf4664c671af9ec80465b77c9b"
+      ],
+      "source_published_kst": "2026-10-06T12:19+09:00",
+      "title": "이형일, 레버리지 ETF 논란에 \"투자자 손실 확대, 무겁게 생각\""
+    },
     "link:199a7fccb0a2622e1f1bec83": {
       "first_seen_kst": "2026-09-23T09:05:43+09:00",
       "lanes": {
@@ -17908,6 +18100,25 @@
       "link": "https://www.newsis.com/view/NISX20260921_0003798105",
       "source": "뉴시스",
       "title": "金 한 돈 85만7000원…美 국채금리 상승에 부담"
+    },
+    "link:3f5a57d92d9c18c018fb1330": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.etnews.com/20261006000181",
+      "source": "전자신문",
+      "source_body_digest": "95c50a673940f0462634544cc96fa27c0b33f29bafbd3103efc93139514806f5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:44f109cfc79b58fd4dfe7b3719bf9af8c9a4dc332d8360049f8814c273879ae0",
+      "source_fact_keys": [
+        "source_fact:v1:1b2b6bbbd209653e7914c86e979dfca8403152edc139c6c8a765aa64d4a4a8a9",
+        "source_fact:v1:31886cc886ef814ec5d96979344a17cd35110847f95d4b779f090d1dcee0d50f",
+        "source_fact:v1:4c9f111628b8fc3294d8eeea907a7f3dad831a5264d65af0fece9b9ecf37268d"
+      ],
+      "source_published_kst": "2026-10-06T12:05+09:00",
+      "title": "[2026 국감]호남반도체 결정 주체, 자료 불일치…김정관 “확인하겠다”"
     },
     "link:3f5c28227ed03d08760418d9": {
       "first_seen_kst": "2026-09-27T06:53:26+09:00",
@@ -22952,6 +23163,32 @@
       "source_published_kst": "2026-10-06T09:55+09:00",
       "title": "어기구 \"5년간 2천억원 썼는데 연간 조류 정전 2배로\" | 연합뉴스"
     },
+    "link:796a2aab6b5d80e990d47db7": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
+      "source": "이데일리",
+      "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
+      "source_fact_keys": [
+        "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
+        "source_fact:v1:383db3349bae02188926d095ee0387b44c24b898908ce3ead25a0a79476bdf46",
+        "source_fact:v1:43badb2a14de67473830c113636851108bffbbc958685154d9c0b3532d1f6577",
+        "source_fact:v1:8b53d07e7d26d8f053e56e83f6410fefc9c89ab255e490e926da4fe664f1c4df",
+        "source_fact:v1:91e7ab32f23ff83fc4c39135356841d888e1a0eb1ee04399c7ea3ae797e61e86",
+        "source_fact:v1:9254cc531ea467924a89f8c6f84275e274330477510ec3542559e9863df242c9",
+        "source_fact:v1:94a7fc2cf4b2ddeacbb4e1ab8ce94313ac471e663a242c46dc1f4aec3f8be89f",
+        "source_fact:v1:b583d969d6ec37a1b173bf714713f0eab78479ca1cdc33c63258f5ddea9ebe38",
+        "source_fact:v1:e0eef8432ce228ebb4a06fe6c707538d91ec88583398ca3843c55136203db86f",
+        "source_fact:v1:f72691603d19837418e670433c214d912b8ea7c9d8a5c97d752780e5699bbd08"
+      ],
+      "source_published_kst": "2026-10-06T12:08+09:00",
+      "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
+    },
     "link:79c71b2fe821e43f2b765290": {
       "first_seen_kst": "2026-09-28T10:16:02+09:00",
       "lanes": {
@@ -23068,6 +23305,25 @@
       "link": "https://www.yna.co.kr/view/AKR20260923055500002",
       "source": "연합뉴스",
       "title": "NH농협은행 수신금리 인상…예·적금 기본금리 최대 0.25%p↑ | 연합뉴스"
+    },
+    "link:7acbae8dd73e185b2915dfa0": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.fnnews.com/news/202610061229489854",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "09258c1f71b72b65733c610fe86e7f409988750c1191e7072ebd148496253530",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bbeafdcda7c42d41deb24b520f1a6bbbdfce6ec9b018fd5dc9f462cdbecf10bf",
+      "source_fact_keys": [
+        "source_fact:v1:17be2bfcc5b06ebc002f7d11797c0f45ba1fda36366a99f14906ee17527070e9",
+        "source_fact:v1:46892a096fd3d1d592b9cd1f17cc3a461367d7a6e0513c541ff1980bfda77e47",
+        "source_fact:v1:9e3438fc9045694b625c8fca72c1d225e17058c9017d39606b57c5c0e82c81a9"
+      ],
+      "source_published_kst": "2026-10-06T12:29+09:00",
+      "title": "권대영 \"레버리지 ETF 도입, 금융위가 최종 결정…투자자 손실 송구\""
     },
     "link:7adf68c4f8444386062e2b40": {
       "first_seen_kst": "2026-10-02T06:53:18+09:00",
@@ -23493,6 +23749,23 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003812384",
       "source": "뉴시스",
       "title": "삼성중공업, LNG운반선 2척 수주…\"상선 수주 목표치 140% 돌파\""
+    },
+    "link:7f9d0a3c04d8bdbd344864c3": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.fnnews.com/news/202610061230207813",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "dab95e480a0e46d3d5ee2931fd2310e3ff6cb927c703994506f0b597a23b4063",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:49bde45f17476522b48d066b1ec735347210d168dea02c432a3c4bb2233f6e7b",
+      "source_fact_keys": [
+        "source_fact:v1:7fbdf561b8eaaee7da026c3ce3b2a4d91f934c845fa3587f6abc697f86d1bc01"
+      ],
+      "source_published_kst": "2026-10-06T12:40+09:00",
+      "title": "이형일 \"대미 원전 100억달러, 국내법 절차 완료 후 가능\""
     },
     "link:802a5a0572a2ef3655ccedfb": {
       "first_seen_kst": "2026-10-03T07:28:32+09:00",
@@ -27226,6 +27499,25 @@
       "link": "https://www.mt.co.kr/economy/2026/09/17/2026091716052429827",
       "source": "머니투데이",
       "title": "美 금리 인상에 환율 1380원대…\"추세적 반등은 아냐\""
+    },
+    "link:ab7c0ff66d364f3a50a1fdf9": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.news1.kr/economy/trend/6311231",
+      "source": "뉴스1",
+      "source_body_digest": "3927c5759df584d20eee2982a0a6f0397e900f911ef1a3f0a93903123c702a2c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e94b0c7aa79494d56f9fef2d7dcf3b58c4d2d5bb9ee6032341b3b9d7ec577e60",
+      "source_fact_keys": [
+        "source_fact:v1:11498e05ee478ef2afa7315df2c43a16231e704fc5064af52b2244ba80d7217f",
+        "source_fact:v1:5f6ce6e8add716d68dfa34ac85a35b01de08077d90d811182e8908a0144d5b38",
+        "source_fact:v1:fda62735458909e66447bce528e0c7c245b41719ee3748fb936ee806fc9090f6"
+      ],
+      "source_published_kst": "2026-10-06T12:16+09:00",
+      "title": "기후부, '에너지 대전환' 속도…2030년 재생e 100GW·석탄발전 2040년 퇴출"
     },
     "link:abac4ec809b182f8813e141f": {
       "first_seen_kst": "2026-09-23T06:33:00+09:00",
@@ -33688,6 +33980,35 @@
       "source_published_kst": "2026-10-05T11:25+09:00",
       "title": "사우디, 11월 아시아 공급용 원유가 대폭 인하 | 연합뉴스"
     },
+    "link:f80b3111a54c3890d4b53508": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815465",
+      "source": "뉴시스",
+      "source_body_digest": "2cc064c9a22cb2501bfbf3a4c8ce3749de26f323a948e1a7112dc8b84b97bce1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22e46750b22ded86b72bdebd116040aad118814a94ccf19e8061f9f26d167995",
+      "source_fact_keys": [
+        "source_fact:v1:0456ce25b04a9b49da2a3ffe094ea99fa13e88ea961aabe37477a8b911e9d9ec",
+        "source_fact:v1:0aed5e1673b6d6e3d4f332c48c0bf8527628c5a7ea7a45cf67e09f55d006cb87",
+        "source_fact:v1:0ea098bd869c41eb58426e9db59d65e29d98952f5db1122a2fe89cd0cc8b6ece",
+        "source_fact:v1:1bf8e099a3fb178d36e9eb66cfd986275c342841ed08a5dcc6fc540be0f23bb4",
+        "source_fact:v1:1c3066dacab41bf89444e1260ed95bec996c885b19d299da173f22492ba7b5db",
+        "source_fact:v1:4a0d9ae2b3e192cea15e215e87f314d3cac1a6b2823f4493f861a682a8d1ba43",
+        "source_fact:v1:56230a81f0806e1ea41d3edfff1b03cc3dd60e397cd437f5c70a4962c0aac672",
+        "source_fact:v1:a509fc0a540d47ca8da7b67163094d6ce12c9d886a657d6fb0fee8f1d33aaf57",
+        "source_fact:v1:b809345a93fd068ad406abde191990a4078e1510d553a44743d555349d203b54",
+        "source_fact:v1:c111caaeb7656cd1c0c1cd16efc2d8c7e4807272a5bfdc045f39bc3037deaba0",
+        "source_fact:v1:c593b22f650b795ec83e8952197feea53c07c490d30a6faccb362b5b4f4c839a",
+        "source_fact:v1:c62b0576430fa4d44e5910b21f18c0af8c85244d56c9c0c76b929a17e824638d",
+        "source_fact:v1:f80a19a5fdc595214c67387fa0dd6d50a8ffda35bd88b8107cc3b74a8063c597"
+      ],
+      "source_published_kst": "2026-10-06T14:48+09:00",
+      "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
+    },
     "link:f88144c304036c7b893e6afa": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
       "lanes": {
@@ -36913,6 +37234,32 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003813261",
       "source": "뉴시스",
       "title": "광양 성황동 한때 정전…아파트 단지 등 500여 가구 불편"
+    },
+    "original:2166e3c3cbb8c2888026d66d": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
+      "source": "이데일리",
+      "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
+      "source_fact_keys": [
+        "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
+        "source_fact:v1:383db3349bae02188926d095ee0387b44c24b898908ce3ead25a0a79476bdf46",
+        "source_fact:v1:43badb2a14de67473830c113636851108bffbbc958685154d9c0b3532d1f6577",
+        "source_fact:v1:8b53d07e7d26d8f053e56e83f6410fefc9c89ab255e490e926da4fe664f1c4df",
+        "source_fact:v1:91e7ab32f23ff83fc4c39135356841d888e1a0eb1ee04399c7ea3ae797e61e86",
+        "source_fact:v1:9254cc531ea467924a89f8c6f84275e274330477510ec3542559e9863df242c9",
+        "source_fact:v1:94a7fc2cf4b2ddeacbb4e1ab8ce94313ac471e663a242c46dc1f4aec3f8be89f",
+        "source_fact:v1:b583d969d6ec37a1b173bf714713f0eab78479ca1cdc33c63258f5ddea9ebe38",
+        "source_fact:v1:e0eef8432ce228ebb4a06fe6c707538d91ec88583398ca3843c55136203db86f",
+        "source_fact:v1:f72691603d19837418e670433c214d912b8ea7c9d8a5c97d752780e5699bbd08"
+      ],
+      "source_published_kst": "2026-10-06T12:08+09:00",
+      "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
     },
     "original:218a2dc6d064fae0e34ab2ae": {
       "first_seen_kst": "2026-09-29T09:48:13+09:00",
@@ -40965,6 +41312,35 @@
       "source_published_kst": "2026-10-05T13:29+09:00",
       "title": "JP모간, 10월 '콕' 집은 종목은…아멕스·써모피셔·리버티"
     },
+    "original:4e43bf01cb8aea0f9d740ea1": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815465",
+      "source": "뉴시스",
+      "source_body_digest": "2cc064c9a22cb2501bfbf3a4c8ce3749de26f323a948e1a7112dc8b84b97bce1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22e46750b22ded86b72bdebd116040aad118814a94ccf19e8061f9f26d167995",
+      "source_fact_keys": [
+        "source_fact:v1:0456ce25b04a9b49da2a3ffe094ea99fa13e88ea961aabe37477a8b911e9d9ec",
+        "source_fact:v1:0aed5e1673b6d6e3d4f332c48c0bf8527628c5a7ea7a45cf67e09f55d006cb87",
+        "source_fact:v1:0ea098bd869c41eb58426e9db59d65e29d98952f5db1122a2fe89cd0cc8b6ece",
+        "source_fact:v1:1bf8e099a3fb178d36e9eb66cfd986275c342841ed08a5dcc6fc540be0f23bb4",
+        "source_fact:v1:1c3066dacab41bf89444e1260ed95bec996c885b19d299da173f22492ba7b5db",
+        "source_fact:v1:4a0d9ae2b3e192cea15e215e87f314d3cac1a6b2823f4493f861a682a8d1ba43",
+        "source_fact:v1:56230a81f0806e1ea41d3edfff1b03cc3dd60e397cd437f5c70a4962c0aac672",
+        "source_fact:v1:a509fc0a540d47ca8da7b67163094d6ce12c9d886a657d6fb0fee8f1d33aaf57",
+        "source_fact:v1:b809345a93fd068ad406abde191990a4078e1510d553a44743d555349d203b54",
+        "source_fact:v1:c111caaeb7656cd1c0c1cd16efc2d8c7e4807272a5bfdc045f39bc3037deaba0",
+        "source_fact:v1:c593b22f650b795ec83e8952197feea53c07c490d30a6faccb362b5b4f4c839a",
+        "source_fact:v1:c62b0576430fa4d44e5910b21f18c0af8c85244d56c9c0c76b929a17e824638d",
+        "source_fact:v1:f80a19a5fdc595214c67387fa0dd6d50a8ffda35bd88b8107cc3b74a8063c597"
+      ],
+      "source_published_kst": "2026-10-06T14:48+09:00",
+      "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
+    },
     "original:4e792d2bfd7018600c8cc349": {
       "first_seen_kst": "2026-10-05T23:21:26+09:00",
       "lanes": {
@@ -41953,6 +42329,25 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T11:04+09:00",
       "title": "[단독] 지방 살리겠다며 15조 내걸고…지역활성화 펀드, 3년간 투자 1800억"
+    },
+    "original:5ca571aea986903f39495d8a": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.news1.kr/economy/trend/6311231",
+      "source": "뉴스1",
+      "source_body_digest": "3927c5759df584d20eee2982a0a6f0397e900f911ef1a3f0a93903123c702a2c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e94b0c7aa79494d56f9fef2d7dcf3b58c4d2d5bb9ee6032341b3b9d7ec577e60",
+      "source_fact_keys": [
+        "source_fact:v1:11498e05ee478ef2afa7315df2c43a16231e704fc5064af52b2244ba80d7217f",
+        "source_fact:v1:5f6ce6e8add716d68dfa34ac85a35b01de08077d90d811182e8908a0144d5b38",
+        "source_fact:v1:fda62735458909e66447bce528e0c7c245b41719ee3748fb936ee806fc9090f6"
+      ],
+      "source_published_kst": "2026-10-06T12:16+09:00",
+      "title": "기후부, '에너지 대전환' 속도…2030년 재생e 100GW·석탄발전 2040년 퇴출"
     },
     "original:5cc462e991340d78daff1f7f": {
       "first_seen_kst": "2026-10-01T20:00:14+09:00",
@@ -43554,6 +43949,25 @@
       "link": "https://www.yna.co.kr/view/AKR20261001200300071",
       "source": "연합뉴스",
       "title": "\"美국무, 협상 진전 없자 뉴욕 이란 대표단에 즉시 출국 요구\" | 연합뉴스"
+    },
+    "original:6fbeeed12fac48dc9c033ebc": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.etnews.com/20261006000181",
+      "source": "전자신문",
+      "source_body_digest": "95c50a673940f0462634544cc96fa27c0b33f29bafbd3103efc93139514806f5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:44f109cfc79b58fd4dfe7b3719bf9af8c9a4dc332d8360049f8814c273879ae0",
+      "source_fact_keys": [
+        "source_fact:v1:1b2b6bbbd209653e7914c86e979dfca8403152edc139c6c8a765aa64d4a4a8a9",
+        "source_fact:v1:31886cc886ef814ec5d96979344a17cd35110847f95d4b779f090d1dcee0d50f",
+        "source_fact:v1:4c9f111628b8fc3294d8eeea907a7f3dad831a5264d65af0fece9b9ecf37268d"
+      ],
+      "source_published_kst": "2026-10-06T12:05+09:00",
+      "title": "[2026 국감]호남반도체 결정 주체, 자료 불일치…김정관 “확인하겠다”"
     },
     "original:700c8e546d5ec5279611984b": {
       "first_seen_kst": "2026-10-05T12:09:30+09:00",
@@ -49116,6 +49530,25 @@
       "source_published_kst": "2026-10-03T18:47+09:00",
       "title": "“나 돌아갈래”…영국, ‘EU 재가입’ 국민 49% 찬성·반대 28.5%"
     },
+    "original:b499dd45c1a22bbbdf9062e8": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.fnnews.com/news/202610061229489854",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "09258c1f71b72b65733c610fe86e7f409988750c1191e7072ebd148496253530",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bbeafdcda7c42d41deb24b520f1a6bbbdfce6ec9b018fd5dc9f462cdbecf10bf",
+      "source_fact_keys": [
+        "source_fact:v1:17be2bfcc5b06ebc002f7d11797c0f45ba1fda36366a99f14906ee17527070e9",
+        "source_fact:v1:46892a096fd3d1d592b9cd1f17cc3a461367d7a6e0513c541ff1980bfda77e47",
+        "source_fact:v1:9e3438fc9045694b625c8fca72c1d225e17058c9017d39606b57c5c0e82c81a9"
+      ],
+      "source_published_kst": "2026-10-06T12:29+09:00",
+      "title": "권대영 \"레버리지 ETF 도입, 금융위가 최종 결정…투자자 손실 송구\""
+    },
     "original:b4a4953058acdc4cfc3eee2f": {
       "first_seen_kst": "2026-10-02T00:28:46+09:00",
       "lanes": {
@@ -51426,6 +51859,23 @@
       "source": "머니투데이",
       "title": "추석 '1900억' 쏟아도 들썩이는 물가…10월 3%대 복귀하나"
     },
+    "original:d347df021027806c524c70a0": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.fnnews.com/news/202610061230207813",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "dab95e480a0e46d3d5ee2931fd2310e3ff6cb927c703994506f0b597a23b4063",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:49bde45f17476522b48d066b1ec735347210d168dea02c432a3c4bb2233f6e7b",
+      "source_fact_keys": [
+        "source_fact:v1:7fbdf561b8eaaee7da026c3ce3b2a4d91f934c845fa3587f6abc697f86d1bc01"
+      ],
+      "source_published_kst": "2026-10-06T12:40+09:00",
+      "title": "이형일 \"대미 원전 100억달러, 국내법 절차 완료 후 가능\""
+    },
     "original:d3c14fae4ab385fbc43a4696": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
       "lanes": {
@@ -52990,6 +53440,23 @@
       "link": "https://www.yna.co.kr/view/AKR20260918147100003",
       "source": "연합뉴스",
       "title": "D램은 중국에, HBM은 미국에…협공 당하는 K-메모리 | 연합뉴스"
+    },
+    "original:e4d99af45d17c68ec553e45c": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.mt.co.kr/index.php/economy/2026/10/06/2026100612152980692",
+      "source": "머니투데이",
+      "source_body_digest": "1bd8f0b4e0080c8067845f38ec0b58d03c4dae8e0ab8813b0cf4bdc7ff0a9462",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:63b272c7c39443bfaa3aebfdcbc9435918a62b9c2c08070d22639a075ba61b38",
+      "source_fact_keys": [
+        "source_fact:v1:635460e1e3fbd90da6e75ed1941c1133e83f37cf4664c671af9ec80465b77c9b"
+      ],
+      "source_published_kst": "2026-10-06T12:19+09:00",
+      "title": "이형일, 레버리지 ETF 논란에 \"투자자 손실 확대, 무겁게 생각\""
     },
     "original:e50445214675cc700ae48c55": {
       "first_seen_kst": "2026-10-05T14:04:17+09:00",
@@ -55382,6 +55849,35 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어 | 연합뉴스"
     },
+    "source_fact:01cf8160565e1e07c8a80847": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815465",
+      "source": "뉴시스",
+      "source_body_digest": "2cc064c9a22cb2501bfbf3a4c8ce3749de26f323a948e1a7112dc8b84b97bce1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22e46750b22ded86b72bdebd116040aad118814a94ccf19e8061f9f26d167995",
+      "source_fact_keys": [
+        "source_fact:v1:0456ce25b04a9b49da2a3ffe094ea99fa13e88ea961aabe37477a8b911e9d9ec",
+        "source_fact:v1:0aed5e1673b6d6e3d4f332c48c0bf8527628c5a7ea7a45cf67e09f55d006cb87",
+        "source_fact:v1:0ea098bd869c41eb58426e9db59d65e29d98952f5db1122a2fe89cd0cc8b6ece",
+        "source_fact:v1:1bf8e099a3fb178d36e9eb66cfd986275c342841ed08a5dcc6fc540be0f23bb4",
+        "source_fact:v1:1c3066dacab41bf89444e1260ed95bec996c885b19d299da173f22492ba7b5db",
+        "source_fact:v1:4a0d9ae2b3e192cea15e215e87f314d3cac1a6b2823f4493f861a682a8d1ba43",
+        "source_fact:v1:56230a81f0806e1ea41d3edfff1b03cc3dd60e397cd437f5c70a4962c0aac672",
+        "source_fact:v1:a509fc0a540d47ca8da7b67163094d6ce12c9d886a657d6fb0fee8f1d33aaf57",
+        "source_fact:v1:b809345a93fd068ad406abde191990a4078e1510d553a44743d555349d203b54",
+        "source_fact:v1:c111caaeb7656cd1c0c1cd16efc2d8c7e4807272a5bfdc045f39bc3037deaba0",
+        "source_fact:v1:c593b22f650b795ec83e8952197feea53c07c490d30a6faccb362b5b4f4c839a",
+        "source_fact:v1:c62b0576430fa4d44e5910b21f18c0af8c85244d56c9c0c76b929a17e824638d",
+        "source_fact:v1:f80a19a5fdc595214c67387fa0dd6d50a8ffda35bd88b8107cc3b74a8063c597"
+      ],
+      "source_published_kst": "2026-10-06T14:48+09:00",
+      "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
+    },
     "source_fact:01d48911be74633c8ce98c13": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -57235,6 +57731,35 @@
       "source_published_kst": "2026-10-06T07:48+09:00",
       "title": "본사 곳간 찰 때 점주는 울었다…프랜차이즈 매출 양극화 심화"
     },
+    "source_fact:0fc8e9b261885b3416eda9ad": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815465",
+      "source": "뉴시스",
+      "source_body_digest": "2cc064c9a22cb2501bfbf3a4c8ce3749de26f323a948e1a7112dc8b84b97bce1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22e46750b22ded86b72bdebd116040aad118814a94ccf19e8061f9f26d167995",
+      "source_fact_keys": [
+        "source_fact:v1:0456ce25b04a9b49da2a3ffe094ea99fa13e88ea961aabe37477a8b911e9d9ec",
+        "source_fact:v1:0aed5e1673b6d6e3d4f332c48c0bf8527628c5a7ea7a45cf67e09f55d006cb87",
+        "source_fact:v1:0ea098bd869c41eb58426e9db59d65e29d98952f5db1122a2fe89cd0cc8b6ece",
+        "source_fact:v1:1bf8e099a3fb178d36e9eb66cfd986275c342841ed08a5dcc6fc540be0f23bb4",
+        "source_fact:v1:1c3066dacab41bf89444e1260ed95bec996c885b19d299da173f22492ba7b5db",
+        "source_fact:v1:4a0d9ae2b3e192cea15e215e87f314d3cac1a6b2823f4493f861a682a8d1ba43",
+        "source_fact:v1:56230a81f0806e1ea41d3edfff1b03cc3dd60e397cd437f5c70a4962c0aac672",
+        "source_fact:v1:a509fc0a540d47ca8da7b67163094d6ce12c9d886a657d6fb0fee8f1d33aaf57",
+        "source_fact:v1:b809345a93fd068ad406abde191990a4078e1510d553a44743d555349d203b54",
+        "source_fact:v1:c111caaeb7656cd1c0c1cd16efc2d8c7e4807272a5bfdc045f39bc3037deaba0",
+        "source_fact:v1:c593b22f650b795ec83e8952197feea53c07c490d30a6faccb362b5b4f4c839a",
+        "source_fact:v1:c62b0576430fa4d44e5910b21f18c0af8c85244d56c9c0c76b929a17e824638d",
+        "source_fact:v1:f80a19a5fdc595214c67387fa0dd6d50a8ffda35bd88b8107cc3b74a8063c597"
+      ],
+      "source_published_kst": "2026-10-06T14:48+09:00",
+      "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
+    },
     "source_fact:0fcb0023fdebee5e16415a91": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
       "lanes": {
@@ -57297,6 +57822,32 @@
       ],
       "source_published_kst": "2026-10-05T09:00+09:00",
       "title": "충북 지방의회 의정비 인상 '갑론을박'…현실화 vs 과욕 | 연합뉴스"
+    },
+    "source_fact:10c26644827b65f24c70d31f": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
+      "source": "이데일리",
+      "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
+      "source_fact_keys": [
+        "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
+        "source_fact:v1:383db3349bae02188926d095ee0387b44c24b898908ce3ead25a0a79476bdf46",
+        "source_fact:v1:43badb2a14de67473830c113636851108bffbbc958685154d9c0b3532d1f6577",
+        "source_fact:v1:8b53d07e7d26d8f053e56e83f6410fefc9c89ab255e490e926da4fe664f1c4df",
+        "source_fact:v1:91e7ab32f23ff83fc4c39135356841d888e1a0eb1ee04399c7ea3ae797e61e86",
+        "source_fact:v1:9254cc531ea467924a89f8c6f84275e274330477510ec3542559e9863df242c9",
+        "source_fact:v1:94a7fc2cf4b2ddeacbb4e1ab8ce94313ac471e663a242c46dc1f4aec3f8be89f",
+        "source_fact:v1:b583d969d6ec37a1b173bf714713f0eab78479ca1cdc33c63258f5ddea9ebe38",
+        "source_fact:v1:e0eef8432ce228ebb4a06fe6c707538d91ec88583398ca3843c55136203db86f",
+        "source_fact:v1:f72691603d19837418e670433c214d912b8ea7c9d8a5c97d752780e5699bbd08"
+      ],
+      "source_published_kst": "2026-10-06T12:08+09:00",
+      "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
     },
     "source_fact:10f976777949aaa962c347f1": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
@@ -58069,6 +58620,25 @@
       ],
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "AI株 숨고르기 반사익…美바이오 ETF 순풍"
+    },
+    "source_fact:175be7e2ec1e6c9658469ad8": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.etnews.com/20261006000181",
+      "source": "전자신문",
+      "source_body_digest": "95c50a673940f0462634544cc96fa27c0b33f29bafbd3103efc93139514806f5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:44f109cfc79b58fd4dfe7b3719bf9af8c9a4dc332d8360049f8814c273879ae0",
+      "source_fact_keys": [
+        "source_fact:v1:1b2b6bbbd209653e7914c86e979dfca8403152edc139c6c8a765aa64d4a4a8a9",
+        "source_fact:v1:31886cc886ef814ec5d96979344a17cd35110847f95d4b779f090d1dcee0d50f",
+        "source_fact:v1:4c9f111628b8fc3294d8eeea907a7f3dad831a5264d65af0fece9b9ecf37268d"
+      ],
+      "source_published_kst": "2026-10-06T12:05+09:00",
+      "title": "[2026 국감]호남반도체 결정 주체, 자료 불일치…김정관 “확인하겠다”"
     },
     "source_fact:1767eca38ceb232ffdc8f0fd": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
@@ -59169,6 +59739,35 @@
       "source_published_kst": "2026-10-06T04:10+09:00",
       "title": "'AI 해킹 사태' 은행장 연임에 걸림돌 될까"
     },
+    "source_fact:20c8e5ba8f84b28b175d956c": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815465",
+      "source": "뉴시스",
+      "source_body_digest": "2cc064c9a22cb2501bfbf3a4c8ce3749de26f323a948e1a7112dc8b84b97bce1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22e46750b22ded86b72bdebd116040aad118814a94ccf19e8061f9f26d167995",
+      "source_fact_keys": [
+        "source_fact:v1:0456ce25b04a9b49da2a3ffe094ea99fa13e88ea961aabe37477a8b911e9d9ec",
+        "source_fact:v1:0aed5e1673b6d6e3d4f332c48c0bf8527628c5a7ea7a45cf67e09f55d006cb87",
+        "source_fact:v1:0ea098bd869c41eb58426e9db59d65e29d98952f5db1122a2fe89cd0cc8b6ece",
+        "source_fact:v1:1bf8e099a3fb178d36e9eb66cfd986275c342841ed08a5dcc6fc540be0f23bb4",
+        "source_fact:v1:1c3066dacab41bf89444e1260ed95bec996c885b19d299da173f22492ba7b5db",
+        "source_fact:v1:4a0d9ae2b3e192cea15e215e87f314d3cac1a6b2823f4493f861a682a8d1ba43",
+        "source_fact:v1:56230a81f0806e1ea41d3edfff1b03cc3dd60e397cd437f5c70a4962c0aac672",
+        "source_fact:v1:a509fc0a540d47ca8da7b67163094d6ce12c9d886a657d6fb0fee8f1d33aaf57",
+        "source_fact:v1:b809345a93fd068ad406abde191990a4078e1510d553a44743d555349d203b54",
+        "source_fact:v1:c111caaeb7656cd1c0c1cd16efc2d8c7e4807272a5bfdc045f39bc3037deaba0",
+        "source_fact:v1:c593b22f650b795ec83e8952197feea53c07c490d30a6faccb362b5b4f4c839a",
+        "source_fact:v1:c62b0576430fa4d44e5910b21f18c0af8c85244d56c9c0c76b929a17e824638d",
+        "source_fact:v1:f80a19a5fdc595214c67387fa0dd6d50a8ffda35bd88b8107cc3b74a8063c597"
+      ],
+      "source_published_kst": "2026-10-06T14:48+09:00",
+      "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
+    },
     "source_fact:20d8696939d97085ef3f3778": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
       "lanes": {
@@ -59277,6 +59876,61 @@
       ],
       "source_published_kst": "2026-10-05T16:00+09:00",
       "title": "현대차 8세대 아반떼·BMW iX3, '초기 부진설' 실체는 '공급 시차'"
+    },
+    "source_fact:216144c694407aa89980397d": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815465",
+      "source": "뉴시스",
+      "source_body_digest": "2cc064c9a22cb2501bfbf3a4c8ce3749de26f323a948e1a7112dc8b84b97bce1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22e46750b22ded86b72bdebd116040aad118814a94ccf19e8061f9f26d167995",
+      "source_fact_keys": [
+        "source_fact:v1:0456ce25b04a9b49da2a3ffe094ea99fa13e88ea961aabe37477a8b911e9d9ec",
+        "source_fact:v1:0aed5e1673b6d6e3d4f332c48c0bf8527628c5a7ea7a45cf67e09f55d006cb87",
+        "source_fact:v1:0ea098bd869c41eb58426e9db59d65e29d98952f5db1122a2fe89cd0cc8b6ece",
+        "source_fact:v1:1bf8e099a3fb178d36e9eb66cfd986275c342841ed08a5dcc6fc540be0f23bb4",
+        "source_fact:v1:1c3066dacab41bf89444e1260ed95bec996c885b19d299da173f22492ba7b5db",
+        "source_fact:v1:4a0d9ae2b3e192cea15e215e87f314d3cac1a6b2823f4493f861a682a8d1ba43",
+        "source_fact:v1:56230a81f0806e1ea41d3edfff1b03cc3dd60e397cd437f5c70a4962c0aac672",
+        "source_fact:v1:a509fc0a540d47ca8da7b67163094d6ce12c9d886a657d6fb0fee8f1d33aaf57",
+        "source_fact:v1:b809345a93fd068ad406abde191990a4078e1510d553a44743d555349d203b54",
+        "source_fact:v1:c111caaeb7656cd1c0c1cd16efc2d8c7e4807272a5bfdc045f39bc3037deaba0",
+        "source_fact:v1:c593b22f650b795ec83e8952197feea53c07c490d30a6faccb362b5b4f4c839a",
+        "source_fact:v1:c62b0576430fa4d44e5910b21f18c0af8c85244d56c9c0c76b929a17e824638d",
+        "source_fact:v1:f80a19a5fdc595214c67387fa0dd6d50a8ffda35bd88b8107cc3b74a8063c597"
+      ],
+      "source_published_kst": "2026-10-06T14:48+09:00",
+      "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
+    },
+    "source_fact:2208f65a73a160eac7e7f62b": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
+      "source": "이데일리",
+      "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
+      "source_fact_keys": [
+        "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
+        "source_fact:v1:383db3349bae02188926d095ee0387b44c24b898908ce3ead25a0a79476bdf46",
+        "source_fact:v1:43badb2a14de67473830c113636851108bffbbc958685154d9c0b3532d1f6577",
+        "source_fact:v1:8b53d07e7d26d8f053e56e83f6410fefc9c89ab255e490e926da4fe664f1c4df",
+        "source_fact:v1:91e7ab32f23ff83fc4c39135356841d888e1a0eb1ee04399c7ea3ae797e61e86",
+        "source_fact:v1:9254cc531ea467924a89f8c6f84275e274330477510ec3542559e9863df242c9",
+        "source_fact:v1:94a7fc2cf4b2ddeacbb4e1ab8ce94313ac471e663a242c46dc1f4aec3f8be89f",
+        "source_fact:v1:b583d969d6ec37a1b173bf714713f0eab78479ca1cdc33c63258f5ddea9ebe38",
+        "source_fact:v1:e0eef8432ce228ebb4a06fe6c707538d91ec88583398ca3843c55136203db86f",
+        "source_fact:v1:f72691603d19837418e670433c214d912b8ea7c9d8a5c97d752780e5699bbd08"
+      ],
+      "source_published_kst": "2026-10-06T12:08+09:00",
+      "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
     },
     "source_fact:220b5592467dde2984519efb": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -59829,6 +60483,35 @@
       ],
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어 | 연합뉴스"
+    },
+    "source_fact:2625187a26a7b4ec87fbf79a": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815465",
+      "source": "뉴시스",
+      "source_body_digest": "2cc064c9a22cb2501bfbf3a4c8ce3749de26f323a948e1a7112dc8b84b97bce1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22e46750b22ded86b72bdebd116040aad118814a94ccf19e8061f9f26d167995",
+      "source_fact_keys": [
+        "source_fact:v1:0456ce25b04a9b49da2a3ffe094ea99fa13e88ea961aabe37477a8b911e9d9ec",
+        "source_fact:v1:0aed5e1673b6d6e3d4f332c48c0bf8527628c5a7ea7a45cf67e09f55d006cb87",
+        "source_fact:v1:0ea098bd869c41eb58426e9db59d65e29d98952f5db1122a2fe89cd0cc8b6ece",
+        "source_fact:v1:1bf8e099a3fb178d36e9eb66cfd986275c342841ed08a5dcc6fc540be0f23bb4",
+        "source_fact:v1:1c3066dacab41bf89444e1260ed95bec996c885b19d299da173f22492ba7b5db",
+        "source_fact:v1:4a0d9ae2b3e192cea15e215e87f314d3cac1a6b2823f4493f861a682a8d1ba43",
+        "source_fact:v1:56230a81f0806e1ea41d3edfff1b03cc3dd60e397cd437f5c70a4962c0aac672",
+        "source_fact:v1:a509fc0a540d47ca8da7b67163094d6ce12c9d886a657d6fb0fee8f1d33aaf57",
+        "source_fact:v1:b809345a93fd068ad406abde191990a4078e1510d553a44743d555349d203b54",
+        "source_fact:v1:c111caaeb7656cd1c0c1cd16efc2d8c7e4807272a5bfdc045f39bc3037deaba0",
+        "source_fact:v1:c593b22f650b795ec83e8952197feea53c07c490d30a6faccb362b5b4f4c839a",
+        "source_fact:v1:c62b0576430fa4d44e5910b21f18c0af8c85244d56c9c0c76b929a17e824638d",
+        "source_fact:v1:f80a19a5fdc595214c67387fa0dd6d50a8ffda35bd88b8107cc3b74a8063c597"
+      ],
+      "source_published_kst": "2026-10-06T14:48+09:00",
+      "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
     },
     "source_fact:26c1b392e88a19457cc6246e": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
@@ -61589,6 +62272,32 @@
       "source_published_kst": "2026-10-06T08:15+09:00",
       "title": "[오늘의 투자전략] 코스피, 금리ㆍ삼성전자 실적 주목⋯“반도체 이익 상향 재개 여부 관건”"
     },
+    "source_fact:341043e0b8b79d9aed53b3bc": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
+      "source": "이데일리",
+      "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
+      "source_fact_keys": [
+        "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
+        "source_fact:v1:383db3349bae02188926d095ee0387b44c24b898908ce3ead25a0a79476bdf46",
+        "source_fact:v1:43badb2a14de67473830c113636851108bffbbc958685154d9c0b3532d1f6577",
+        "source_fact:v1:8b53d07e7d26d8f053e56e83f6410fefc9c89ab255e490e926da4fe664f1c4df",
+        "source_fact:v1:91e7ab32f23ff83fc4c39135356841d888e1a0eb1ee04399c7ea3ae797e61e86",
+        "source_fact:v1:9254cc531ea467924a89f8c6f84275e274330477510ec3542559e9863df242c9",
+        "source_fact:v1:94a7fc2cf4b2ddeacbb4e1ab8ce94313ac471e663a242c46dc1f4aec3f8be89f",
+        "source_fact:v1:b583d969d6ec37a1b173bf714713f0eab78479ca1cdc33c63258f5ddea9ebe38",
+        "source_fact:v1:e0eef8432ce228ebb4a06fe6c707538d91ec88583398ca3843c55136203db86f",
+        "source_fact:v1:f72691603d19837418e670433c214d912b8ea7c9d8a5c97d752780e5699bbd08"
+      ],
+      "source_published_kst": "2026-10-06T12:08+09:00",
+      "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
+    },
     "source_fact:34663ded0c373cfd27abb41d": {
       "first_seen_kst": "2026-10-05T23:05:12+09:00",
       "lanes": {
@@ -61779,6 +62488,32 @@
       ],
       "source_published_kst": "2026-10-05T22:06+09:00",
       "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
+    },
+    "source_fact:354353402a7ceac57b6a90d8": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
+      "source": "이데일리",
+      "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
+      "source_fact_keys": [
+        "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
+        "source_fact:v1:383db3349bae02188926d095ee0387b44c24b898908ce3ead25a0a79476bdf46",
+        "source_fact:v1:43badb2a14de67473830c113636851108bffbbc958685154d9c0b3532d1f6577",
+        "source_fact:v1:8b53d07e7d26d8f053e56e83f6410fefc9c89ab255e490e926da4fe664f1c4df",
+        "source_fact:v1:91e7ab32f23ff83fc4c39135356841d888e1a0eb1ee04399c7ea3ae797e61e86",
+        "source_fact:v1:9254cc531ea467924a89f8c6f84275e274330477510ec3542559e9863df242c9",
+        "source_fact:v1:94a7fc2cf4b2ddeacbb4e1ab8ce94313ac471e663a242c46dc1f4aec3f8be89f",
+        "source_fact:v1:b583d969d6ec37a1b173bf714713f0eab78479ca1cdc33c63258f5ddea9ebe38",
+        "source_fact:v1:e0eef8432ce228ebb4a06fe6c707538d91ec88583398ca3843c55136203db86f",
+        "source_fact:v1:f72691603d19837418e670433c214d912b8ea7c9d8a5c97d752780e5699bbd08"
+      ],
+      "source_published_kst": "2026-10-06T12:08+09:00",
+      "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
     },
     "source_fact:3590310bf437e78b463cdeba": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -62019,6 +62754,25 @@
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
+    "source_fact:37234bfddddd31dd5defa03c": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.fnnews.com/news/202610061229489854",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "09258c1f71b72b65733c610fe86e7f409988750c1191e7072ebd148496253530",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bbeafdcda7c42d41deb24b520f1a6bbbdfce6ec9b018fd5dc9f462cdbecf10bf",
+      "source_fact_keys": [
+        "source_fact:v1:17be2bfcc5b06ebc002f7d11797c0f45ba1fda36366a99f14906ee17527070e9",
+        "source_fact:v1:46892a096fd3d1d592b9cd1f17cc3a461367d7a6e0513c541ff1980bfda77e47",
+        "source_fact:v1:9e3438fc9045694b625c8fca72c1d225e17058c9017d39606b57c5c0e82c81a9"
+      ],
+      "source_published_kst": "2026-10-06T12:29+09:00",
+      "title": "권대영 \"레버리지 ETF 도입, 금융위가 최종 결정…투자자 손실 송구\""
+    },
     "source_fact:3729a70273a9c17887c84b0b": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -62172,6 +62926,25 @@
       "source_published_kst": "2026-10-06T06:27+09:00",
       "title": "뉴욕 증시, 국채 금리 급등에도 나스닥 사상 최고치"
     },
+    "source_fact:3874136a3dc7b7aac3cb8350": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.fnnews.com/news/202610061229489854",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "09258c1f71b72b65733c610fe86e7f409988750c1191e7072ebd148496253530",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bbeafdcda7c42d41deb24b520f1a6bbbdfce6ec9b018fd5dc9f462cdbecf10bf",
+      "source_fact_keys": [
+        "source_fact:v1:17be2bfcc5b06ebc002f7d11797c0f45ba1fda36366a99f14906ee17527070e9",
+        "source_fact:v1:46892a096fd3d1d592b9cd1f17cc3a461367d7a6e0513c541ff1980bfda77e47",
+        "source_fact:v1:9e3438fc9045694b625c8fca72c1d225e17058c9017d39606b57c5c0e82c81a9"
+      ],
+      "source_published_kst": "2026-10-06T12:29+09:00",
+      "title": "권대영 \"레버리지 ETF 도입, 금융위가 최종 결정…투자자 손실 송구\""
+    },
     "source_fact:38d284f6cc76ab76c45b7a95": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
       "lanes": {
@@ -62237,6 +63010,32 @@
       ],
       "source_published_kst": "2026-10-06T08:57+09:00",
       "title": "반려동물 조회 간편하게···쿠콘 현대해상 펫보험에 API 공급"
+    },
+    "source_fact:392fb2e590f1e89fbae0ca8c": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
+      "source": "이데일리",
+      "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
+      "source_fact_keys": [
+        "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
+        "source_fact:v1:383db3349bae02188926d095ee0387b44c24b898908ce3ead25a0a79476bdf46",
+        "source_fact:v1:43badb2a14de67473830c113636851108bffbbc958685154d9c0b3532d1f6577",
+        "source_fact:v1:8b53d07e7d26d8f053e56e83f6410fefc9c89ab255e490e926da4fe664f1c4df",
+        "source_fact:v1:91e7ab32f23ff83fc4c39135356841d888e1a0eb1ee04399c7ea3ae797e61e86",
+        "source_fact:v1:9254cc531ea467924a89f8c6f84275e274330477510ec3542559e9863df242c9",
+        "source_fact:v1:94a7fc2cf4b2ddeacbb4e1ab8ce94313ac471e663a242c46dc1f4aec3f8be89f",
+        "source_fact:v1:b583d969d6ec37a1b173bf714713f0eab78479ca1cdc33c63258f5ddea9ebe38",
+        "source_fact:v1:e0eef8432ce228ebb4a06fe6c707538d91ec88583398ca3843c55136203db86f",
+        "source_fact:v1:f72691603d19837418e670433c214d912b8ea7c9d8a5c97d752780e5699bbd08"
+      ],
+      "source_published_kst": "2026-10-06T12:08+09:00",
+      "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
     },
     "source_fact:39ce94835ccf03ebbead7b42": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
@@ -67614,6 +68413,35 @@
       "source_published_kst": "2026-10-06T04:53+09:00",
       "title": "트럼프 \"휘발윳값 상승, 호르무즈 때문 아냐\"…우크라전쟁·야당 탓"
     },
+    "source_fact:6628a7a455edee40bcd94457": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815465",
+      "source": "뉴시스",
+      "source_body_digest": "2cc064c9a22cb2501bfbf3a4c8ce3749de26f323a948e1a7112dc8b84b97bce1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22e46750b22ded86b72bdebd116040aad118814a94ccf19e8061f9f26d167995",
+      "source_fact_keys": [
+        "source_fact:v1:0456ce25b04a9b49da2a3ffe094ea99fa13e88ea961aabe37477a8b911e9d9ec",
+        "source_fact:v1:0aed5e1673b6d6e3d4f332c48c0bf8527628c5a7ea7a45cf67e09f55d006cb87",
+        "source_fact:v1:0ea098bd869c41eb58426e9db59d65e29d98952f5db1122a2fe89cd0cc8b6ece",
+        "source_fact:v1:1bf8e099a3fb178d36e9eb66cfd986275c342841ed08a5dcc6fc540be0f23bb4",
+        "source_fact:v1:1c3066dacab41bf89444e1260ed95bec996c885b19d299da173f22492ba7b5db",
+        "source_fact:v1:4a0d9ae2b3e192cea15e215e87f314d3cac1a6b2823f4493f861a682a8d1ba43",
+        "source_fact:v1:56230a81f0806e1ea41d3edfff1b03cc3dd60e397cd437f5c70a4962c0aac672",
+        "source_fact:v1:a509fc0a540d47ca8da7b67163094d6ce12c9d886a657d6fb0fee8f1d33aaf57",
+        "source_fact:v1:b809345a93fd068ad406abde191990a4078e1510d553a44743d555349d203b54",
+        "source_fact:v1:c111caaeb7656cd1c0c1cd16efc2d8c7e4807272a5bfdc045f39bc3037deaba0",
+        "source_fact:v1:c593b22f650b795ec83e8952197feea53c07c490d30a6faccb362b5b4f4c839a",
+        "source_fact:v1:c62b0576430fa4d44e5910b21f18c0af8c85244d56c9c0c76b929a17e824638d",
+        "source_fact:v1:f80a19a5fdc595214c67387fa0dd6d50a8ffda35bd88b8107cc3b74a8063c597"
+      ],
+      "source_published_kst": "2026-10-06T14:48+09:00",
+      "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
+    },
     "source_fact:665d55aaca459c962f621284": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
       "lanes": {
@@ -68167,6 +68995,32 @@
       ],
       "source_published_kst": "2026-10-05T21:22+09:00",
       "title": "테라울프, 머스키 전력 1GW로 2배 확대..2단계 1년 앞당겨"
+    },
+    "source_fact:6ad796ed553763c7fd5ac065": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
+      "source": "이데일리",
+      "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
+      "source_fact_keys": [
+        "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
+        "source_fact:v1:383db3349bae02188926d095ee0387b44c24b898908ce3ead25a0a79476bdf46",
+        "source_fact:v1:43badb2a14de67473830c113636851108bffbbc958685154d9c0b3532d1f6577",
+        "source_fact:v1:8b53d07e7d26d8f053e56e83f6410fefc9c89ab255e490e926da4fe664f1c4df",
+        "source_fact:v1:91e7ab32f23ff83fc4c39135356841d888e1a0eb1ee04399c7ea3ae797e61e86",
+        "source_fact:v1:9254cc531ea467924a89f8c6f84275e274330477510ec3542559e9863df242c9",
+        "source_fact:v1:94a7fc2cf4b2ddeacbb4e1ab8ce94313ac471e663a242c46dc1f4aec3f8be89f",
+        "source_fact:v1:b583d969d6ec37a1b173bf714713f0eab78479ca1cdc33c63258f5ddea9ebe38",
+        "source_fact:v1:e0eef8432ce228ebb4a06fe6c707538d91ec88583398ca3843c55136203db86f",
+        "source_fact:v1:f72691603d19837418e670433c214d912b8ea7c9d8a5c97d752780e5699bbd08"
+      ],
+      "source_published_kst": "2026-10-06T12:08+09:00",
+      "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
     },
     "source_fact:6af975749066721a43d2cef2": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
@@ -72533,6 +73387,32 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "독파모, '프런티어 AI·산업 확산' 투트랙 재편…중국 넘는다"
     },
+    "source_fact:8c1dc89811f8d79f2219aa23": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
+      "source": "이데일리",
+      "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
+      "source_fact_keys": [
+        "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
+        "source_fact:v1:383db3349bae02188926d095ee0387b44c24b898908ce3ead25a0a79476bdf46",
+        "source_fact:v1:43badb2a14de67473830c113636851108bffbbc958685154d9c0b3532d1f6577",
+        "source_fact:v1:8b53d07e7d26d8f053e56e83f6410fefc9c89ab255e490e926da4fe664f1c4df",
+        "source_fact:v1:91e7ab32f23ff83fc4c39135356841d888e1a0eb1ee04399c7ea3ae797e61e86",
+        "source_fact:v1:9254cc531ea467924a89f8c6f84275e274330477510ec3542559e9863df242c9",
+        "source_fact:v1:94a7fc2cf4b2ddeacbb4e1ab8ce94313ac471e663a242c46dc1f4aec3f8be89f",
+        "source_fact:v1:b583d969d6ec37a1b173bf714713f0eab78479ca1cdc33c63258f5ddea9ebe38",
+        "source_fact:v1:e0eef8432ce228ebb4a06fe6c707538d91ec88583398ca3843c55136203db86f",
+        "source_fact:v1:f72691603d19837418e670433c214d912b8ea7c9d8a5c97d752780e5699bbd08"
+      ],
+      "source_published_kst": "2026-10-06T12:08+09:00",
+      "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
+    },
     "source_fact:8c9b224b773a1f7369c65e0c": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -73363,6 +74243,23 @@
       ],
       "source_published_kst": "2026-10-06T06:38+09:00",
       "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
+    },
+    "source_fact:93c4f182e734571fd40a06a0": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.mt.co.kr/index.php/economy/2026/10/06/2026100612152980692",
+      "source": "머니투데이",
+      "source_body_digest": "1bd8f0b4e0080c8067845f38ec0b58d03c4dae8e0ab8813b0cf4bdc7ff0a9462",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:63b272c7c39443bfaa3aebfdcbc9435918a62b9c2c08070d22639a075ba61b38",
+      "source_fact_keys": [
+        "source_fact:v1:635460e1e3fbd90da6e75ed1941c1133e83f37cf4664c671af9ec80465b77c9b"
+      ],
+      "source_published_kst": "2026-10-06T12:19+09:00",
+      "title": "이형일, 레버리지 ETF 논란에 \"투자자 손실 확대, 무겁게 생각\""
     },
     "source_fact:940f235d897aafb96fc62c92": {
       "first_seen_kst": "2026-10-06T00:03:48+09:00",
@@ -75697,6 +76594,25 @@
       "source_published_kst": "2026-10-06T11:04+09:00",
       "title": "\"트럼프가 돈 준다고? 안 믿어\"…지지율 역대 최저, 히스패닉도 이탈"
     },
+    "source_fact:a75a1ed72f727c5755854bb7": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.news1.kr/economy/trend/6311231",
+      "source": "뉴스1",
+      "source_body_digest": "3927c5759df584d20eee2982a0a6f0397e900f911ef1a3f0a93903123c702a2c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e94b0c7aa79494d56f9fef2d7dcf3b58c4d2d5bb9ee6032341b3b9d7ec577e60",
+      "source_fact_keys": [
+        "source_fact:v1:11498e05ee478ef2afa7315df2c43a16231e704fc5064af52b2244ba80d7217f",
+        "source_fact:v1:5f6ce6e8add716d68dfa34ac85a35b01de08077d90d811182e8908a0144d5b38",
+        "source_fact:v1:fda62735458909e66447bce528e0c7c245b41719ee3748fb936ee806fc9090f6"
+      ],
+      "source_published_kst": "2026-10-06T12:16+09:00",
+      "title": "기후부, '에너지 대전환' 속도…2030년 재생e 100GW·석탄발전 2040년 퇴출"
+    },
     "source_fact:a78181e73107e3e4ca7d525f": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
       "lanes": {
@@ -76384,6 +77300,35 @@
       "source_published_kst": "2026-10-05T05:47+09:00",
       "title": "단일 레버리지 20주 미만 단주, 시간외 종가매매로 '출구 마련' | 연합뉴스"
     },
+    "source_fact:ac1c080b256b9e7083b3b6d5": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815465",
+      "source": "뉴시스",
+      "source_body_digest": "2cc064c9a22cb2501bfbf3a4c8ce3749de26f323a948e1a7112dc8b84b97bce1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22e46750b22ded86b72bdebd116040aad118814a94ccf19e8061f9f26d167995",
+      "source_fact_keys": [
+        "source_fact:v1:0456ce25b04a9b49da2a3ffe094ea99fa13e88ea961aabe37477a8b911e9d9ec",
+        "source_fact:v1:0aed5e1673b6d6e3d4f332c48c0bf8527628c5a7ea7a45cf67e09f55d006cb87",
+        "source_fact:v1:0ea098bd869c41eb58426e9db59d65e29d98952f5db1122a2fe89cd0cc8b6ece",
+        "source_fact:v1:1bf8e099a3fb178d36e9eb66cfd986275c342841ed08a5dcc6fc540be0f23bb4",
+        "source_fact:v1:1c3066dacab41bf89444e1260ed95bec996c885b19d299da173f22492ba7b5db",
+        "source_fact:v1:4a0d9ae2b3e192cea15e215e87f314d3cac1a6b2823f4493f861a682a8d1ba43",
+        "source_fact:v1:56230a81f0806e1ea41d3edfff1b03cc3dd60e397cd437f5c70a4962c0aac672",
+        "source_fact:v1:a509fc0a540d47ca8da7b67163094d6ce12c9d886a657d6fb0fee8f1d33aaf57",
+        "source_fact:v1:b809345a93fd068ad406abde191990a4078e1510d553a44743d555349d203b54",
+        "source_fact:v1:c111caaeb7656cd1c0c1cd16efc2d8c7e4807272a5bfdc045f39bc3037deaba0",
+        "source_fact:v1:c593b22f650b795ec83e8952197feea53c07c490d30a6faccb362b5b4f4c839a",
+        "source_fact:v1:c62b0576430fa4d44e5910b21f18c0af8c85244d56c9c0c76b929a17e824638d",
+        "source_fact:v1:f80a19a5fdc595214c67387fa0dd6d50a8ffda35bd88b8107cc3b74a8063c597"
+      ],
+      "source_published_kst": "2026-10-06T14:48+09:00",
+      "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
+    },
     "source_fact:ac43c8e579c1f42786d71a00": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
@@ -76685,6 +77630,32 @@
       ],
       "source_published_kst": "2026-10-05T08:08+09:00",
       "title": "한반도 감시부터 우주의약품 실험까지…K-우주영토 넓힌다[누리호 5차 下]"
+    },
+    "source_fact:af5ff117a6a9657f60fc3324": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
+      "source": "이데일리",
+      "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
+      "source_fact_keys": [
+        "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
+        "source_fact:v1:383db3349bae02188926d095ee0387b44c24b898908ce3ead25a0a79476bdf46",
+        "source_fact:v1:43badb2a14de67473830c113636851108bffbbc958685154d9c0b3532d1f6577",
+        "source_fact:v1:8b53d07e7d26d8f053e56e83f6410fefc9c89ab255e490e926da4fe664f1c4df",
+        "source_fact:v1:91e7ab32f23ff83fc4c39135356841d888e1a0eb1ee04399c7ea3ae797e61e86",
+        "source_fact:v1:9254cc531ea467924a89f8c6f84275e274330477510ec3542559e9863df242c9",
+        "source_fact:v1:94a7fc2cf4b2ddeacbb4e1ab8ce94313ac471e663a242c46dc1f4aec3f8be89f",
+        "source_fact:v1:b583d969d6ec37a1b173bf714713f0eab78479ca1cdc33c63258f5ddea9ebe38",
+        "source_fact:v1:e0eef8432ce228ebb4a06fe6c707538d91ec88583398ca3843c55136203db86f",
+        "source_fact:v1:f72691603d19837418e670433c214d912b8ea7c9d8a5c97d752780e5699bbd08"
+      ],
+      "source_published_kst": "2026-10-06T12:08+09:00",
+      "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
     },
     "source_fact:af683856d25d705e1b787d24": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
@@ -77461,6 +78432,35 @@
       "source_published_kst": "2026-10-05T20:58+09:00",
       "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
     },
+    "source_fact:b427757be0be06d4e6574f4f": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815465",
+      "source": "뉴시스",
+      "source_body_digest": "2cc064c9a22cb2501bfbf3a4c8ce3749de26f323a948e1a7112dc8b84b97bce1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22e46750b22ded86b72bdebd116040aad118814a94ccf19e8061f9f26d167995",
+      "source_fact_keys": [
+        "source_fact:v1:0456ce25b04a9b49da2a3ffe094ea99fa13e88ea961aabe37477a8b911e9d9ec",
+        "source_fact:v1:0aed5e1673b6d6e3d4f332c48c0bf8527628c5a7ea7a45cf67e09f55d006cb87",
+        "source_fact:v1:0ea098bd869c41eb58426e9db59d65e29d98952f5db1122a2fe89cd0cc8b6ece",
+        "source_fact:v1:1bf8e099a3fb178d36e9eb66cfd986275c342841ed08a5dcc6fc540be0f23bb4",
+        "source_fact:v1:1c3066dacab41bf89444e1260ed95bec996c885b19d299da173f22492ba7b5db",
+        "source_fact:v1:4a0d9ae2b3e192cea15e215e87f314d3cac1a6b2823f4493f861a682a8d1ba43",
+        "source_fact:v1:56230a81f0806e1ea41d3edfff1b03cc3dd60e397cd437f5c70a4962c0aac672",
+        "source_fact:v1:a509fc0a540d47ca8da7b67163094d6ce12c9d886a657d6fb0fee8f1d33aaf57",
+        "source_fact:v1:b809345a93fd068ad406abde191990a4078e1510d553a44743d555349d203b54",
+        "source_fact:v1:c111caaeb7656cd1c0c1cd16efc2d8c7e4807272a5bfdc045f39bc3037deaba0",
+        "source_fact:v1:c593b22f650b795ec83e8952197feea53c07c490d30a6faccb362b5b4f4c839a",
+        "source_fact:v1:c62b0576430fa4d44e5910b21f18c0af8c85244d56c9c0c76b929a17e824638d",
+        "source_fact:v1:f80a19a5fdc595214c67387fa0dd6d50a8ffda35bd88b8107cc3b74a8063c597"
+      ],
+      "source_published_kst": "2026-10-06T14:48+09:00",
+      "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
+    },
     "source_fact:b4380363346743eb65c653ad": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -77665,6 +78665,25 @@
       ],
       "source_published_kst": "2026-10-06T10:19+09:00",
       "title": "김정관 장관 “1600조 지방투자 본격화…2030년 AI팩토리 500개 구축”"
+    },
+    "source_fact:b6d0d64cbde24d143d47e175": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.news1.kr/economy/trend/6311231",
+      "source": "뉴스1",
+      "source_body_digest": "3927c5759df584d20eee2982a0a6f0397e900f911ef1a3f0a93903123c702a2c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e94b0c7aa79494d56f9fef2d7dcf3b58c4d2d5bb9ee6032341b3b9d7ec577e60",
+      "source_fact_keys": [
+        "source_fact:v1:11498e05ee478ef2afa7315df2c43a16231e704fc5064af52b2244ba80d7217f",
+        "source_fact:v1:5f6ce6e8add716d68dfa34ac85a35b01de08077d90d811182e8908a0144d5b38",
+        "source_fact:v1:fda62735458909e66447bce528e0c7c245b41719ee3748fb936ee806fc9090f6"
+      ],
+      "source_published_kst": "2026-10-06T12:16+09:00",
+      "title": "기후부, '에너지 대전환' 속도…2030년 재생e 100GW·석탄발전 2040년 퇴출"
     },
     "source_fact:b758ab160962833be09f3372": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
@@ -79007,6 +80026,32 @@
       "source_published_kst": "2026-10-06T05:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
     },
+    "source_fact:c2136ac4ffb4d55e891a82d9": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
+      "source": "이데일리",
+      "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
+      "source_fact_keys": [
+        "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
+        "source_fact:v1:383db3349bae02188926d095ee0387b44c24b898908ce3ead25a0a79476bdf46",
+        "source_fact:v1:43badb2a14de67473830c113636851108bffbbc958685154d9c0b3532d1f6577",
+        "source_fact:v1:8b53d07e7d26d8f053e56e83f6410fefc9c89ab255e490e926da4fe664f1c4df",
+        "source_fact:v1:91e7ab32f23ff83fc4c39135356841d888e1a0eb1ee04399c7ea3ae797e61e86",
+        "source_fact:v1:9254cc531ea467924a89f8c6f84275e274330477510ec3542559e9863df242c9",
+        "source_fact:v1:94a7fc2cf4b2ddeacbb4e1ab8ce94313ac471e663a242c46dc1f4aec3f8be89f",
+        "source_fact:v1:b583d969d6ec37a1b173bf714713f0eab78479ca1cdc33c63258f5ddea9ebe38",
+        "source_fact:v1:e0eef8432ce228ebb4a06fe6c707538d91ec88583398ca3843c55136203db86f",
+        "source_fact:v1:f72691603d19837418e670433c214d912b8ea7c9d8a5c97d752780e5699bbd08"
+      ],
+      "source_published_kst": "2026-10-06T12:08+09:00",
+      "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
+    },
     "source_fact:c227b5b5ed8f99ebb85993fc": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -79250,6 +80295,25 @@
       "source_published_kst": "2026-10-06T11:39+09:00",
       "title": "\"방산 중기 육성\"…투자전문회사 설립법안 발의"
     },
+    "source_fact:c40f0af24bdcc125c3a28469": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.etnews.com/20261006000181",
+      "source": "전자신문",
+      "source_body_digest": "95c50a673940f0462634544cc96fa27c0b33f29bafbd3103efc93139514806f5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:44f109cfc79b58fd4dfe7b3719bf9af8c9a4dc332d8360049f8814c273879ae0",
+      "source_fact_keys": [
+        "source_fact:v1:1b2b6bbbd209653e7914c86e979dfca8403152edc139c6c8a765aa64d4a4a8a9",
+        "source_fact:v1:31886cc886ef814ec5d96979344a17cd35110847f95d4b779f090d1dcee0d50f",
+        "source_fact:v1:4c9f111628b8fc3294d8eeea907a7f3dad831a5264d65af0fece9b9ecf37268d"
+      ],
+      "source_published_kst": "2026-10-06T12:05+09:00",
+      "title": "[2026 국감]호남반도체 결정 주체, 자료 불일치…김정관 “확인하겠다”"
+    },
     "source_fact:c41352b4651ed7878d329518": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
       "lanes": {
@@ -79347,6 +80411,23 @@
       ],
       "source_published_kst": "2026-10-06T00:12+09:00",
       "title": "\"AI 말고는 쳐다볼 게 없다\"…글로벌 투자 지도 바꾸는 '빅머니'"
+    },
+    "source_fact:c48886ff783af761d88d24cf": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.fnnews.com/news/202610061230207813",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "dab95e480a0e46d3d5ee2931fd2310e3ff6cb927c703994506f0b597a23b4063",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:49bde45f17476522b48d066b1ec735347210d168dea02c432a3c4bb2233f6e7b",
+      "source_fact_keys": [
+        "source_fact:v1:7fbdf561b8eaaee7da026c3ce3b2a4d91f934c845fa3587f6abc697f86d1bc01"
+      ],
+      "source_published_kst": "2026-10-06T12:40+09:00",
+      "title": "이형일 \"대미 원전 100억달러, 국내법 절차 완료 후 가능\""
     },
     "source_fact:c4cea5805fe9307cc2fde712": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
@@ -80769,6 +81850,35 @@
       "source_published_kst": "2026-10-06T11:09+09:00",
       "title": "재정부담에 재협상까지…고금리에 상업용 부동산 비상"
     },
+    "source_fact:d1cfde93ca8c0bc946917ec3": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815465",
+      "source": "뉴시스",
+      "source_body_digest": "2cc064c9a22cb2501bfbf3a4c8ce3749de26f323a948e1a7112dc8b84b97bce1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22e46750b22ded86b72bdebd116040aad118814a94ccf19e8061f9f26d167995",
+      "source_fact_keys": [
+        "source_fact:v1:0456ce25b04a9b49da2a3ffe094ea99fa13e88ea961aabe37477a8b911e9d9ec",
+        "source_fact:v1:0aed5e1673b6d6e3d4f332c48c0bf8527628c5a7ea7a45cf67e09f55d006cb87",
+        "source_fact:v1:0ea098bd869c41eb58426e9db59d65e29d98952f5db1122a2fe89cd0cc8b6ece",
+        "source_fact:v1:1bf8e099a3fb178d36e9eb66cfd986275c342841ed08a5dcc6fc540be0f23bb4",
+        "source_fact:v1:1c3066dacab41bf89444e1260ed95bec996c885b19d299da173f22492ba7b5db",
+        "source_fact:v1:4a0d9ae2b3e192cea15e215e87f314d3cac1a6b2823f4493f861a682a8d1ba43",
+        "source_fact:v1:56230a81f0806e1ea41d3edfff1b03cc3dd60e397cd437f5c70a4962c0aac672",
+        "source_fact:v1:a509fc0a540d47ca8da7b67163094d6ce12c9d886a657d6fb0fee8f1d33aaf57",
+        "source_fact:v1:b809345a93fd068ad406abde191990a4078e1510d553a44743d555349d203b54",
+        "source_fact:v1:c111caaeb7656cd1c0c1cd16efc2d8c7e4807272a5bfdc045f39bc3037deaba0",
+        "source_fact:v1:c593b22f650b795ec83e8952197feea53c07c490d30a6faccb362b5b4f4c839a",
+        "source_fact:v1:c62b0576430fa4d44e5910b21f18c0af8c85244d56c9c0c76b929a17e824638d",
+        "source_fact:v1:f80a19a5fdc595214c67387fa0dd6d50a8ffda35bd88b8107cc3b74a8063c597"
+      ],
+      "source_published_kst": "2026-10-06T14:48+09:00",
+      "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
+    },
     "source_fact:d1e1826fd601740f616af2d1": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
       "lanes": {
@@ -81896,6 +83006,35 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "[단독]새일여성 97% 취업 전환…1년 뒤 고용유지율은 60% 그쳐"
     },
+    "source_fact:d9b1d7857a9f7a0b6ee2a9ae": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815465",
+      "source": "뉴시스",
+      "source_body_digest": "2cc064c9a22cb2501bfbf3a4c8ce3749de26f323a948e1a7112dc8b84b97bce1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22e46750b22ded86b72bdebd116040aad118814a94ccf19e8061f9f26d167995",
+      "source_fact_keys": [
+        "source_fact:v1:0456ce25b04a9b49da2a3ffe094ea99fa13e88ea961aabe37477a8b911e9d9ec",
+        "source_fact:v1:0aed5e1673b6d6e3d4f332c48c0bf8527628c5a7ea7a45cf67e09f55d006cb87",
+        "source_fact:v1:0ea098bd869c41eb58426e9db59d65e29d98952f5db1122a2fe89cd0cc8b6ece",
+        "source_fact:v1:1bf8e099a3fb178d36e9eb66cfd986275c342841ed08a5dcc6fc540be0f23bb4",
+        "source_fact:v1:1c3066dacab41bf89444e1260ed95bec996c885b19d299da173f22492ba7b5db",
+        "source_fact:v1:4a0d9ae2b3e192cea15e215e87f314d3cac1a6b2823f4493f861a682a8d1ba43",
+        "source_fact:v1:56230a81f0806e1ea41d3edfff1b03cc3dd60e397cd437f5c70a4962c0aac672",
+        "source_fact:v1:a509fc0a540d47ca8da7b67163094d6ce12c9d886a657d6fb0fee8f1d33aaf57",
+        "source_fact:v1:b809345a93fd068ad406abde191990a4078e1510d553a44743d555349d203b54",
+        "source_fact:v1:c111caaeb7656cd1c0c1cd16efc2d8c7e4807272a5bfdc045f39bc3037deaba0",
+        "source_fact:v1:c593b22f650b795ec83e8952197feea53c07c490d30a6faccb362b5b4f4c839a",
+        "source_fact:v1:c62b0576430fa4d44e5910b21f18c0af8c85244d56c9c0c76b929a17e824638d",
+        "source_fact:v1:f80a19a5fdc595214c67387fa0dd6d50a8ffda35bd88b8107cc3b74a8063c597"
+      ],
+      "source_published_kst": "2026-10-06T14:48+09:00",
+      "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
+    },
     "source_fact:d9b2d468c335fbbdd3ac1ce6": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
       "lanes": {
@@ -82820,6 +83959,35 @@
       "source_published_kst": "2026-10-06T09:44+09:00",
       "title": "[특징주] LG전자 5%대 강세⋯북미 AI 데이터센터 냉각 솔루션 공급 호재"
     },
+    "source_fact:e12eabd87e3d5de7799c10c1": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815465",
+      "source": "뉴시스",
+      "source_body_digest": "2cc064c9a22cb2501bfbf3a4c8ce3749de26f323a948e1a7112dc8b84b97bce1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22e46750b22ded86b72bdebd116040aad118814a94ccf19e8061f9f26d167995",
+      "source_fact_keys": [
+        "source_fact:v1:0456ce25b04a9b49da2a3ffe094ea99fa13e88ea961aabe37477a8b911e9d9ec",
+        "source_fact:v1:0aed5e1673b6d6e3d4f332c48c0bf8527628c5a7ea7a45cf67e09f55d006cb87",
+        "source_fact:v1:0ea098bd869c41eb58426e9db59d65e29d98952f5db1122a2fe89cd0cc8b6ece",
+        "source_fact:v1:1bf8e099a3fb178d36e9eb66cfd986275c342841ed08a5dcc6fc540be0f23bb4",
+        "source_fact:v1:1c3066dacab41bf89444e1260ed95bec996c885b19d299da173f22492ba7b5db",
+        "source_fact:v1:4a0d9ae2b3e192cea15e215e87f314d3cac1a6b2823f4493f861a682a8d1ba43",
+        "source_fact:v1:56230a81f0806e1ea41d3edfff1b03cc3dd60e397cd437f5c70a4962c0aac672",
+        "source_fact:v1:a509fc0a540d47ca8da7b67163094d6ce12c9d886a657d6fb0fee8f1d33aaf57",
+        "source_fact:v1:b809345a93fd068ad406abde191990a4078e1510d553a44743d555349d203b54",
+        "source_fact:v1:c111caaeb7656cd1c0c1cd16efc2d8c7e4807272a5bfdc045f39bc3037deaba0",
+        "source_fact:v1:c593b22f650b795ec83e8952197feea53c07c490d30a6faccb362b5b4f4c839a",
+        "source_fact:v1:c62b0576430fa4d44e5910b21f18c0af8c85244d56c9c0c76b929a17e824638d",
+        "source_fact:v1:f80a19a5fdc595214c67387fa0dd6d50a8ffda35bd88b8107cc3b74a8063c597"
+      ],
+      "source_published_kst": "2026-10-06T14:48+09:00",
+      "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
+    },
     "source_fact:e17cc59d5f09911375ad5dcd": {
       "first_seen_kst": "2026-10-06T03:45:53+09:00",
       "lanes": {
@@ -82893,6 +84061,35 @@
       ],
       "source_published_kst": "2026-10-05T21:54+09:00",
       "title": "비트마인 이머전 테크놀로, ETH 602만개 보유..총자산 174억 달러"
+    },
+    "source_fact:e1dd1d6dd01c320b65a20f8b": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815465",
+      "source": "뉴시스",
+      "source_body_digest": "2cc064c9a22cb2501bfbf3a4c8ce3749de26f323a948e1a7112dc8b84b97bce1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22e46750b22ded86b72bdebd116040aad118814a94ccf19e8061f9f26d167995",
+      "source_fact_keys": [
+        "source_fact:v1:0456ce25b04a9b49da2a3ffe094ea99fa13e88ea961aabe37477a8b911e9d9ec",
+        "source_fact:v1:0aed5e1673b6d6e3d4f332c48c0bf8527628c5a7ea7a45cf67e09f55d006cb87",
+        "source_fact:v1:0ea098bd869c41eb58426e9db59d65e29d98952f5db1122a2fe89cd0cc8b6ece",
+        "source_fact:v1:1bf8e099a3fb178d36e9eb66cfd986275c342841ed08a5dcc6fc540be0f23bb4",
+        "source_fact:v1:1c3066dacab41bf89444e1260ed95bec996c885b19d299da173f22492ba7b5db",
+        "source_fact:v1:4a0d9ae2b3e192cea15e215e87f314d3cac1a6b2823f4493f861a682a8d1ba43",
+        "source_fact:v1:56230a81f0806e1ea41d3edfff1b03cc3dd60e397cd437f5c70a4962c0aac672",
+        "source_fact:v1:a509fc0a540d47ca8da7b67163094d6ce12c9d886a657d6fb0fee8f1d33aaf57",
+        "source_fact:v1:b809345a93fd068ad406abde191990a4078e1510d553a44743d555349d203b54",
+        "source_fact:v1:c111caaeb7656cd1c0c1cd16efc2d8c7e4807272a5bfdc045f39bc3037deaba0",
+        "source_fact:v1:c593b22f650b795ec83e8952197feea53c07c490d30a6faccb362b5b4f4c839a",
+        "source_fact:v1:c62b0576430fa4d44e5910b21f18c0af8c85244d56c9c0c76b929a17e824638d",
+        "source_fact:v1:f80a19a5fdc595214c67387fa0dd6d50a8ffda35bd88b8107cc3b74a8063c597"
+      ],
+      "source_published_kst": "2026-10-06T14:48+09:00",
+      "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
     },
     "source_fact:e23ef94020ec9ccd227e1376": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
@@ -83029,6 +84226,25 @@
       ],
       "source_published_kst": "2026-10-06T08:41+09:00",
       "title": "현대건설, 압구정 2·3·5구역에 ‘스파 록시땅’ 도입"
+    },
+    "source_fact:e307517e51a88dc93353c065": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.news1.kr/economy/trend/6311231",
+      "source": "뉴스1",
+      "source_body_digest": "3927c5759df584d20eee2982a0a6f0397e900f911ef1a3f0a93903123c702a2c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e94b0c7aa79494d56f9fef2d7dcf3b58c4d2d5bb9ee6032341b3b9d7ec577e60",
+      "source_fact_keys": [
+        "source_fact:v1:11498e05ee478ef2afa7315df2c43a16231e704fc5064af52b2244ba80d7217f",
+        "source_fact:v1:5f6ce6e8add716d68dfa34ac85a35b01de08077d90d811182e8908a0144d5b38",
+        "source_fact:v1:fda62735458909e66447bce528e0c7c245b41719ee3748fb936ee806fc9090f6"
+      ],
+      "source_published_kst": "2026-10-06T12:16+09:00",
+      "title": "기후부, '에너지 대전환' 속도…2030년 재생e 100GW·석탄발전 2040년 퇴출"
     },
     "source_fact:e30d169461f46c5f6970666b": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
@@ -83173,6 +84389,25 @@
       ],
       "source_published_kst": "2026-10-05T18:21+09:00",
       "title": "솔리다임 美상장… \"SK하닉 가치 재평가\" vs \"주주 피해\" [어떻게 생각하십니까]"
+    },
+    "source_fact:e44fe7d68f6ca61d69d66832": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.fnnews.com/news/202610061229489854",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "09258c1f71b72b65733c610fe86e7f409988750c1191e7072ebd148496253530",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bbeafdcda7c42d41deb24b520f1a6bbbdfce6ec9b018fd5dc9f462cdbecf10bf",
+      "source_fact_keys": [
+        "source_fact:v1:17be2bfcc5b06ebc002f7d11797c0f45ba1fda36366a99f14906ee17527070e9",
+        "source_fact:v1:46892a096fd3d1d592b9cd1f17cc3a461367d7a6e0513c541ff1980bfda77e47",
+        "source_fact:v1:9e3438fc9045694b625c8fca72c1d225e17058c9017d39606b57c5c0e82c81a9"
+      ],
+      "source_published_kst": "2026-10-06T12:29+09:00",
+      "title": "권대영 \"레버리지 ETF 도입, 금융위가 최종 결정…투자자 손실 송구\""
     },
     "source_fact:e46e558b8945ed473c7ebd03": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
@@ -84117,6 +85352,25 @@
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
     },
+    "source_fact:ec6038b2907c5aaf72ef40eb": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.etnews.com/20261006000181",
+      "source": "전자신문",
+      "source_body_digest": "95c50a673940f0462634544cc96fa27c0b33f29bafbd3103efc93139514806f5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:44f109cfc79b58fd4dfe7b3719bf9af8c9a4dc332d8360049f8814c273879ae0",
+      "source_fact_keys": [
+        "source_fact:v1:1b2b6bbbd209653e7914c86e979dfca8403152edc139c6c8a765aa64d4a4a8a9",
+        "source_fact:v1:31886cc886ef814ec5d96979344a17cd35110847f95d4b779f090d1dcee0d50f",
+        "source_fact:v1:4c9f111628b8fc3294d8eeea907a7f3dad831a5264d65af0fece9b9ecf37268d"
+      ],
+      "source_published_kst": "2026-10-06T12:05+09:00",
+      "title": "[2026 국감]호남반도체 결정 주체, 자료 불일치…김정관 “확인하겠다”"
+    },
     "source_fact:ec610a565a8370771b55d482": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
       "lanes": {
@@ -84233,6 +85487,32 @@
       ],
       "source_published_kst": "2026-10-06T11:09+09:00",
       "title": "재정부담에 재협상까지…고금리에 상업용 부동산 비상"
+    },
+    "source_fact:ecc5cec14c7c2efb6dcf1005": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
+      "source": "이데일리",
+      "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
+      "source_fact_keys": [
+        "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
+        "source_fact:v1:383db3349bae02188926d095ee0387b44c24b898908ce3ead25a0a79476bdf46",
+        "source_fact:v1:43badb2a14de67473830c113636851108bffbbc958685154d9c0b3532d1f6577",
+        "source_fact:v1:8b53d07e7d26d8f053e56e83f6410fefc9c89ab255e490e926da4fe664f1c4df",
+        "source_fact:v1:91e7ab32f23ff83fc4c39135356841d888e1a0eb1ee04399c7ea3ae797e61e86",
+        "source_fact:v1:9254cc531ea467924a89f8c6f84275e274330477510ec3542559e9863df242c9",
+        "source_fact:v1:94a7fc2cf4b2ddeacbb4e1ab8ce94313ac471e663a242c46dc1f4aec3f8be89f",
+        "source_fact:v1:b583d969d6ec37a1b173bf714713f0eab78479ca1cdc33c63258f5ddea9ebe38",
+        "source_fact:v1:e0eef8432ce228ebb4a06fe6c707538d91ec88583398ca3843c55136203db86f",
+        "source_fact:v1:f72691603d19837418e670433c214d912b8ea7c9d8a5c97d752780e5699bbd08"
+      ],
+      "source_published_kst": "2026-10-06T12:08+09:00",
+      "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
     },
     "source_fact:ecd68d0bc978e1ccd8d21e7f": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -84370,6 +85650,35 @@
       ],
       "source_published_kst": "2026-10-06T09:55+09:00",
       "title": "어기구 \"5년간 2천억원 썼는데 연간 조류 정전 2배로\" | 연합뉴스"
+    },
+    "source_fact:eddc974e65dab2587e3634ab": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815465",
+      "source": "뉴시스",
+      "source_body_digest": "2cc064c9a22cb2501bfbf3a4c8ce3749de26f323a948e1a7112dc8b84b97bce1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22e46750b22ded86b72bdebd116040aad118814a94ccf19e8061f9f26d167995",
+      "source_fact_keys": [
+        "source_fact:v1:0456ce25b04a9b49da2a3ffe094ea99fa13e88ea961aabe37477a8b911e9d9ec",
+        "source_fact:v1:0aed5e1673b6d6e3d4f332c48c0bf8527628c5a7ea7a45cf67e09f55d006cb87",
+        "source_fact:v1:0ea098bd869c41eb58426e9db59d65e29d98952f5db1122a2fe89cd0cc8b6ece",
+        "source_fact:v1:1bf8e099a3fb178d36e9eb66cfd986275c342841ed08a5dcc6fc540be0f23bb4",
+        "source_fact:v1:1c3066dacab41bf89444e1260ed95bec996c885b19d299da173f22492ba7b5db",
+        "source_fact:v1:4a0d9ae2b3e192cea15e215e87f314d3cac1a6b2823f4493f861a682a8d1ba43",
+        "source_fact:v1:56230a81f0806e1ea41d3edfff1b03cc3dd60e397cd437f5c70a4962c0aac672",
+        "source_fact:v1:a509fc0a540d47ca8da7b67163094d6ce12c9d886a657d6fb0fee8f1d33aaf57",
+        "source_fact:v1:b809345a93fd068ad406abde191990a4078e1510d553a44743d555349d203b54",
+        "source_fact:v1:c111caaeb7656cd1c0c1cd16efc2d8c7e4807272a5bfdc045f39bc3037deaba0",
+        "source_fact:v1:c593b22f650b795ec83e8952197feea53c07c490d30a6faccb362b5b4f4c839a",
+        "source_fact:v1:c62b0576430fa4d44e5910b21f18c0af8c85244d56c9c0c76b929a17e824638d",
+        "source_fact:v1:f80a19a5fdc595214c67387fa0dd6d50a8ffda35bd88b8107cc3b74a8063c597"
+      ],
+      "source_published_kst": "2026-10-06T14:48+09:00",
+      "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
     },
     "source_fact:ee1bea9b415c409340d9e3cd": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
@@ -89243,6 +90552,32 @@
       "source": "뉴시스",
       "title": "광양 성황동 한때 정전…아파트 단지 등 500여 가구 불편"
     },
+    "title:2166e3c3cbb8c2888026d66d": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
+      "source": "이데일리",
+      "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
+      "source_fact_keys": [
+        "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
+        "source_fact:v1:383db3349bae02188926d095ee0387b44c24b898908ce3ead25a0a79476bdf46",
+        "source_fact:v1:43badb2a14de67473830c113636851108bffbbc958685154d9c0b3532d1f6577",
+        "source_fact:v1:8b53d07e7d26d8f053e56e83f6410fefc9c89ab255e490e926da4fe664f1c4df",
+        "source_fact:v1:91e7ab32f23ff83fc4c39135356841d888e1a0eb1ee04399c7ea3ae797e61e86",
+        "source_fact:v1:9254cc531ea467924a89f8c6f84275e274330477510ec3542559e9863df242c9",
+        "source_fact:v1:94a7fc2cf4b2ddeacbb4e1ab8ce94313ac471e663a242c46dc1f4aec3f8be89f",
+        "source_fact:v1:b583d969d6ec37a1b173bf714713f0eab78479ca1cdc33c63258f5ddea9ebe38",
+        "source_fact:v1:e0eef8432ce228ebb4a06fe6c707538d91ec88583398ca3843c55136203db86f",
+        "source_fact:v1:f72691603d19837418e670433c214d912b8ea7c9d8a5c97d752780e5699bbd08"
+      ],
+      "source_published_kst": "2026-10-06T12:08+09:00",
+      "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
+    },
     "title:218a2dc6d064fae0e34ab2ae": {
       "first_seen_kst": "2026-09-29T09:48:13+09:00",
       "lanes": {
@@ -93315,6 +94650,35 @@
       "source_published_kst": "2026-10-05T13:29+09:00",
       "title": "JP모간, 10월 '콕' 집은 종목은…아멕스·써모피셔·리버티"
     },
+    "title:4e43bf01cb8aea0f9d740ea1": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815465",
+      "source": "뉴시스",
+      "source_body_digest": "2cc064c9a22cb2501bfbf3a4c8ce3749de26f323a948e1a7112dc8b84b97bce1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22e46750b22ded86b72bdebd116040aad118814a94ccf19e8061f9f26d167995",
+      "source_fact_keys": [
+        "source_fact:v1:0456ce25b04a9b49da2a3ffe094ea99fa13e88ea961aabe37477a8b911e9d9ec",
+        "source_fact:v1:0aed5e1673b6d6e3d4f332c48c0bf8527628c5a7ea7a45cf67e09f55d006cb87",
+        "source_fact:v1:0ea098bd869c41eb58426e9db59d65e29d98952f5db1122a2fe89cd0cc8b6ece",
+        "source_fact:v1:1bf8e099a3fb178d36e9eb66cfd986275c342841ed08a5dcc6fc540be0f23bb4",
+        "source_fact:v1:1c3066dacab41bf89444e1260ed95bec996c885b19d299da173f22492ba7b5db",
+        "source_fact:v1:4a0d9ae2b3e192cea15e215e87f314d3cac1a6b2823f4493f861a682a8d1ba43",
+        "source_fact:v1:56230a81f0806e1ea41d3edfff1b03cc3dd60e397cd437f5c70a4962c0aac672",
+        "source_fact:v1:a509fc0a540d47ca8da7b67163094d6ce12c9d886a657d6fb0fee8f1d33aaf57",
+        "source_fact:v1:b809345a93fd068ad406abde191990a4078e1510d553a44743d555349d203b54",
+        "source_fact:v1:c111caaeb7656cd1c0c1cd16efc2d8c7e4807272a5bfdc045f39bc3037deaba0",
+        "source_fact:v1:c593b22f650b795ec83e8952197feea53c07c490d30a6faccb362b5b4f4c839a",
+        "source_fact:v1:c62b0576430fa4d44e5910b21f18c0af8c85244d56c9c0c76b929a17e824638d",
+        "source_fact:v1:f80a19a5fdc595214c67387fa0dd6d50a8ffda35bd88b8107cc3b74a8063c597"
+      ],
+      "source_published_kst": "2026-10-06T14:48+09:00",
+      "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
+    },
     "title:4e792d2bfd7018600c8cc349": {
       "first_seen_kst": "2026-10-05T23:21:26+09:00",
       "lanes": {
@@ -94303,6 +95667,25 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T11:04+09:00",
       "title": "[단독] 지방 살리겠다며 15조 내걸고…지역활성화 펀드, 3년간 투자 1800억"
+    },
+    "title:5ca571aea986903f39495d8a": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.news1.kr/economy/trend/6311231",
+      "source": "뉴스1",
+      "source_body_digest": "3927c5759df584d20eee2982a0a6f0397e900f911ef1a3f0a93903123c702a2c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e94b0c7aa79494d56f9fef2d7dcf3b58c4d2d5bb9ee6032341b3b9d7ec577e60",
+      "source_fact_keys": [
+        "source_fact:v1:11498e05ee478ef2afa7315df2c43a16231e704fc5064af52b2244ba80d7217f",
+        "source_fact:v1:5f6ce6e8add716d68dfa34ac85a35b01de08077d90d811182e8908a0144d5b38",
+        "source_fact:v1:fda62735458909e66447bce528e0c7c245b41719ee3748fb936ee806fc9090f6"
+      ],
+      "source_published_kst": "2026-10-06T12:16+09:00",
+      "title": "기후부, '에너지 대전환' 속도…2030년 재생e 100GW·석탄발전 2040년 퇴출"
     },
     "title:5cc462e991340d78daff1f7f": {
       "first_seen_kst": "2026-10-01T20:00:14+09:00",
@@ -95914,6 +97297,25 @@
       "link": "https://www.yna.co.kr/view/AKR20261001200300071",
       "source": "연합뉴스",
       "title": "\"美국무, 협상 진전 없자 뉴욕 이란 대표단에 즉시 출국 요구\" | 연합뉴스"
+    },
+    "title:6fbeeed12fac48dc9c033ebc": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.etnews.com/20261006000181",
+      "source": "전자신문",
+      "source_body_digest": "95c50a673940f0462634544cc96fa27c0b33f29bafbd3103efc93139514806f5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:44f109cfc79b58fd4dfe7b3719bf9af8c9a4dc332d8360049f8814c273879ae0",
+      "source_fact_keys": [
+        "source_fact:v1:1b2b6bbbd209653e7914c86e979dfca8403152edc139c6c8a765aa64d4a4a8a9",
+        "source_fact:v1:31886cc886ef814ec5d96979344a17cd35110847f95d4b779f090d1dcee0d50f",
+        "source_fact:v1:4c9f111628b8fc3294d8eeea907a7f3dad831a5264d65af0fece9b9ecf37268d"
+      ],
+      "source_published_kst": "2026-10-06T12:05+09:00",
+      "title": "[2026 국감]호남반도체 결정 주체, 자료 불일치…김정관 “확인하겠다”"
     },
     "title:700c8e546d5ec5279611984b": {
       "first_seen_kst": "2026-10-05T12:09:30+09:00",
@@ -101574,6 +102976,25 @@
       "source_published_kst": "2026-10-03T18:47+09:00",
       "title": "“나 돌아갈래”…영국, ‘EU 재가입’ 국민 49% 찬성·반대 28.5%"
     },
+    "title:b499dd45c1a22bbbdf9062e8": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.fnnews.com/news/202610061229489854",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "09258c1f71b72b65733c610fe86e7f409988750c1191e7072ebd148496253530",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bbeafdcda7c42d41deb24b520f1a6bbbdfce6ec9b018fd5dc9f462cdbecf10bf",
+      "source_fact_keys": [
+        "source_fact:v1:17be2bfcc5b06ebc002f7d11797c0f45ba1fda36366a99f14906ee17527070e9",
+        "source_fact:v1:46892a096fd3d1d592b9cd1f17cc3a461367d7a6e0513c541ff1980bfda77e47",
+        "source_fact:v1:9e3438fc9045694b625c8fca72c1d225e17058c9017d39606b57c5c0e82c81a9"
+      ],
+      "source_published_kst": "2026-10-06T12:29+09:00",
+      "title": "권대영 \"레버리지 ETF 도입, 금융위가 최종 결정…투자자 손실 송구\""
+    },
     "title:b4a4953058acdc4cfc3eee2f": {
       "first_seen_kst": "2026-10-02T00:28:46+09:00",
       "lanes": {
@@ -103905,6 +105326,23 @@
       "source": "머니투데이",
       "title": "추석 '1900억' 쏟아도 들썩이는 물가…10월 3%대 복귀하나"
     },
+    "title:d347df021027806c524c70a0": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.fnnews.com/news/202610061230207813",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "dab95e480a0e46d3d5ee2931fd2310e3ff6cb927c703994506f0b597a23b4063",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:49bde45f17476522b48d066b1ec735347210d168dea02c432a3c4bb2233f6e7b",
+      "source_fact_keys": [
+        "source_fact:v1:7fbdf561b8eaaee7da026c3ce3b2a4d91f934c845fa3587f6abc697f86d1bc01"
+      ],
+      "source_published_kst": "2026-10-06T12:40+09:00",
+      "title": "이형일 \"대미 원전 100억달러, 국내법 절차 완료 후 가능\""
+    },
     "title:d3c14fae4ab385fbc43a4696": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
       "lanes": {
@@ -105101,6 +106539,32 @@
       "source": "연합뉴스",
       "title": "[머니플로우] '국장'도 '미장'도 美대표지수 ETF 순매수 상위 | 연합뉴스"
     },
+    "title:dfa567196b6325c8c0b8bb24": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
+      "source": "이데일리",
+      "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
+      "source_fact_keys": [
+        "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
+        "source_fact:v1:383db3349bae02188926d095ee0387b44c24b898908ce3ead25a0a79476bdf46",
+        "source_fact:v1:43badb2a14de67473830c113636851108bffbbc958685154d9c0b3532d1f6577",
+        "source_fact:v1:8b53d07e7d26d8f053e56e83f6410fefc9c89ab255e490e926da4fe664f1c4df",
+        "source_fact:v1:91e7ab32f23ff83fc4c39135356841d888e1a0eb1ee04399c7ea3ae797e61e86",
+        "source_fact:v1:9254cc531ea467924a89f8c6f84275e274330477510ec3542559e9863df242c9",
+        "source_fact:v1:94a7fc2cf4b2ddeacbb4e1ab8ce94313ac471e663a242c46dc1f4aec3f8be89f",
+        "source_fact:v1:b583d969d6ec37a1b173bf714713f0eab78479ca1cdc33c63258f5ddea9ebe38",
+        "source_fact:v1:e0eef8432ce228ebb4a06fe6c707538d91ec88583398ca3843c55136203db86f",
+        "source_fact:v1:f72691603d19837418e670433c214d912b8ea7c9d8a5c97d752780e5699bbd08"
+      ],
+      "source_published_kst": "2026-10-06T12:08+09:00",
+      "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
+    },
     "title:dfcce54f25efd566adf27276": {
       "first_seen_kst": "2026-10-01T21:06:52+09:00",
       "lanes": {
@@ -105479,6 +106943,23 @@
       "link": "https://www.yna.co.kr/view/AKR20260918147100003",
       "source": "연합뉴스",
       "title": "D램은 중국에, HBM은 미국에…협공 당하는 K-메모리 | 연합뉴스"
+    },
+    "title:e4d99af45d17c68ec553e45c": {
+      "first_seen_kst": "2026-10-06T15:03:09+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:03:09+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:03:09+09:00",
+      "link": "https://www.mt.co.kr/index.php/economy/2026/10/06/2026100612152980692",
+      "source": "머니투데이",
+      "source_body_digest": "1bd8f0b4e0080c8067845f38ec0b58d03c4dae8e0ab8813b0cf4bdc7ff0a9462",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:63b272c7c39443bfaa3aebfdcbc9435918a62b9c2c08070d22639a075ba61b38",
+      "source_fact_keys": [
+        "source_fact:v1:635460e1e3fbd90da6e75ed1941c1133e83f37cf4664c671af9ec80465b77c9b"
+      ],
+      "source_published_kst": "2026-10-06T12:19+09:00",
+      "title": "이형일, 레버리지 ETF 논란에 \"투자자 손실 확대, 무겁게 생각\""
     },
     "title:e50445214675cc700ae48c55": {
       "first_seen_kst": "2026-10-05T14:04:17+09:00",
@@ -107699,5 +109180,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T14:52:12+09:00"
+  "updated_at_kst": "2026-10-06T15:03:09+09:00"
 }
