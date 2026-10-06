@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-10-06T21:53:03.740376+00:00",
+  "updated_at": "2026-10-06T23:29:09.638410+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -483,15 +483,17 @@
     "f47e47c13623f9390cf17e05fe51a2dcbabbc255de63942d0b7fd56b766b1e3a",
     "f5887b625374cf323b4b3788d1167bed7d63410a793b515a3521ea1c3e6642ed",
     "b881c8cc5350b266a11b129025e2e03b8dcfd99e06b3b8226e2bff4f21a26b7a",
-    "3683a8c82e2ddc594929ffa6fdf1590378e1a8704ad7d264408f79ebc9387da2"
+    "3683a8c82e2ddc594929ffa6fdf1590378e1a8704ad7d264408f79ebc9387da2",
+    "78c3de05c1b5f98caf7e48d1ad00ab2a32957da8779c9d76e8f9fdfe821b3870"
   ],
   "last_selected": [
-    "3683a8c82e2ddc594929ffa6fdf1590378e1a8704ad7d264408f79ebc9387da2"
+    "78c3de05c1b5f98caf7e48d1ad00ab2a32957da8779c9d76e8f9fdfe821b3870"
   ],
   "groups": [
     "ess_battery",
     "humanoid_supply_bottleneck",
     "lg_robotics",
+    "nvidia_robotics_exec",
     "robotis",
     "samhyun"
   ]
