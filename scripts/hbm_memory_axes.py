@@ -1196,6 +1196,24 @@ def parse_glass_substrate_records(item, body):
                 '제이앤티씨 TGV 유리기판 핵심공정 시간 단축',
                 as_of=asof, scope='cycle_time_exact_after_minutes_required_for_speedup_math'))
 
+        if entity == 'jntc' and re.search(r'김천|Gimcheon', text, re.I) and re.search(r'TGV|유리\s*기판|glass\s*substrate', text, re.I):
+            capex = 347_000_000_000 if re.search(r'3\s*,?470\s*억\s*원|3470\s*억\s*원', text, re.I) else None
+            line_count = 10 if re.search(r'(?:10\s*개[^.]{0,30}(?:생산라인|라인)|(?:생산라인|라인)[^0-9]{0,30}10\s*개)', text, re.I) else None
+            start_year = 2027 if re.search(r'2027', text) else None
+            end_year = 2030 if re.search(r'2030', text) else None
+            employees = 430 if re.search(r'430\s*(?:명|여명|people|employees?)', text, re.I) else None
+            area_pyeong = 30000 if re.search(r'3\s*만\s*평|30,?000\s*(?:평|pyeong)', text, re.I) else None
+            if any(x is not None for x in (capex, line_count, start_year, end_year, employees, area_pyeong)):
+                rows.append(make_record(
+                    'glass_capex', ['jntc','gimcheon'],
+                    {'investment_krw':capex, 'line_count':line_count,
+                     'start_year':start_year, 'end_year':end_year,
+                     'employees':employees, 'site_area_pyeong':area_pyeong,
+                     'capacity_panels_per_month':None, 'stage':'reported_investment'},
+                    'KRW,count,year', '2027-2030', item,
+                    '제이앤티씨 김천 TGV 유리기판 설비투자',
+                    as_of=asof, scope='capex_and_lines_not_physical_output_capacity'))
+
     return rows
 
 
