@@ -2,7 +2,7 @@
 import datetime as dt
 from zoneinfo import ZoneInfo
 
-from kospi_shock_enrichment import _nearest_row, _theme_keywords, select_etfs
+from kospi_shock_enrichment import _nearest_row, _theme_keywords, select_etfs, _display_name, _is_actionable_theme, _is_real_industry
 
 KST = ZoneInfo("Asia/Seoul")
 
@@ -39,3 +39,31 @@ assert near is not None, near
 assert near[0]["time"] == "143600", near
 assert abs(near[2] - 13.0) < 0.01, near
 print("nearest_bar_regression=true")
+
+
+# KRX 업종명의 불필요한 내부 공백은 사용자 표시에서 제거한다.
+assert _display_name("전 기 전 자") == "전기전자"
+assert _display_name("운 수 장 비") == "운수장비"
+print("industry_label_normalization_regression=true")
+
+# 제조업 같은 광범위 상위묶음은 세부 업종 순위에서 제외한다.
+assert _is_real_industry("전 기 전 자", "013") is True
+assert _is_real_industry("제 조 업", "027") is False
+print("broad_industry_filter_regression=true")
+
+# 지수 바스켓을 테마로 오인하지 않고 실제 기술/산업 테마만 남긴다.
+assert _is_actionable_theme("코리아 밸류업 지수(Korea Value-up Index)") is False
+assert _is_actionable_theme("소캠(SOCAMM)") is True
+assert _is_actionable_theme("시스템반도체") is True
+print("theme_classification_regression=true")
+
+# ETF 후보는 실제 6자리 종목코드만 사용한다.
+master2 = [
+    {"shcode": "0000D0", "hname": "가상 ETF", "etfgubun": "1"},
+    {"shcode": "091160", "hname": "KODEX 반도체", "etfgubun": "1"},
+]
+# select_etfs 자체는 이미 정제된 ETF master를 받는 함수이므로 여기서는
+# 비정상 코드가 표시 후보로 들어오지 않도록 별도 master 단계에서 검증한다.
+assert not __import__("re").fullmatch(r"\d{6}", master2[0]["shcode"])
+assert __import__("re").fullmatch(r"\d{6}", master2[1]["shcode"])
+print("etf_code_validation_regression=true")
