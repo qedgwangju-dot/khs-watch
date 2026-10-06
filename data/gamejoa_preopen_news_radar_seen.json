@@ -1132,21 +1132,20 @@
     "event:357501917a7f635b2fa6a147": {
       "first_seen_kst": "2026-10-06T02:31:07+09:00",
       "lanes": {
-        "live": "2026-10-06T10:31:08+09:00",
+        "live": "2026-10-06T12:35:44+09:00",
         "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-06T10:31:08+09:00",
-      "link": "https://www.newsis.com/view/NISX20261006_0003814871",
-      "source": "뉴시스",
-      "source_body_digest": "4dbf6fb074bc80d1f5cf7f8f153af5477cbe876741e4529d6f0664751612a8d0",
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.hankyung.com/article/202610065016i",
+      "source": "한국경제",
+      "source_body_digest": "3977dd101bc1caee96f349b253489808cb1f95f9e67bd7193357bc320d0104dd",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:56ad26c1f3d629fea787aa922a4726e65d0094695a9ae8050dc3d988c0111591",
+      "source_fact_identity": "source_facts:v1:f1dd1eda031c05dc6c0cdff66335dd23f80e3e5b2df5bf8a551dbca812003988",
       "source_fact_keys": [
-        "source_fact:v1:5e5e3547f824956f15f817ac1c5bab88527dae5f7e0f9e047113eab401453499",
-        "source_fact:v1:702c41f256e0c8e5025d56e2c7dd7629e8b20d8db9fe9930ddb0aba096fd82f1"
+        "source_fact:v1:af31e5dfdc77027ae98632f457484cc9919ffd7b59833cc73618afffb59cc95f"
       ],
-      "source_published_kst": "2026-10-06T10:22+09:00",
-      "title": "튀르키예·파키스탄 \"사우디에 군사력 신속 배치\"…'메카협정' 발동"
+      "source_published_kst": "2026-10-06T11:00+09:00",
+      "title": "'한국형 인큐텔' 도입 탄력…與 오세희, '新안보 혁신기업 특별법' 발의"
     },
     "event:35c61e03fc529e43f46f2a91": {
       "first_seen_kst": "2026-10-02T12:31:36+09:00",
@@ -2647,20 +2646,21 @@
     "event:7c6939491963b47e90e9bad7": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
       "lanes": {
-        "live": "2026-10-06T09:00:21+09:00"
+        "live": "2026-10-06T12:35:44+09:00"
       },
-      "last_seen_kst": "2026-10-06T09:00:21+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261006026000008",
-      "source": "연합뉴스",
-      "source_body_digest": "a2d9fde024816e515ac24eb13523f827617f932ab9ab9d73bb48483f53e5ebcd",
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.hankyung.com/article/202610064627i",
+      "source": "한국경제",
+      "source_body_digest": "7e747175e3d4f7b0dde9bb00ea84f79e49a990e3f6a26374c56e4f47ccc51cf2",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:6e3dcfd5249c8d7d83d94263249ae7db8262bc6c602da0ba46c55b0d3603f4ff",
+      "source_fact_identity": "source_facts:v1:29a6ff134e505776b61add3ebef1b03a1c41b94639459afa831f15e131651149",
       "source_fact_keys": [
-        "source_fact:v1:69e4722c27a0480fb165dc710467b95300e926a8e874b708a01b9017beecbcbe",
-        "source_fact:v1:f59da17516f2408de0d1ec7d46f75b4bb5c3d01afa3366edb75065f235175d1e"
+        "source_fact:v1:01bfe2f10e0fe7b32c86359ebd9f49dc357b74b2b831d51ff88dca0eb8fca039",
+        "source_fact:v1:3aa9e35f9a8c111d8d394e5894a15280644781bd4ab6e58a68ee92ac728a2c20",
+        "source_fact:v1:6ee0d38d5c47283c38ba2ff973281c063f9d60457c98978c543c9969ae47cf82"
       ],
-      "source_published_kst": "2026-10-06T08:29+09:00",
-      "title": "다올증권 \"삼성바이오, 유상증자에 목표가↓…성장동력은 유효\" | 연합뉴스"
+      "source_published_kst": "2026-10-06T09:29+09:00",
+      "title": "노벨티노빌리티, 美 바이오텍에 ADC 후보물질 NN3201 기술이전…총 7443억원"
     },
     "event:7c70eaa8c1320c52347eb0be": {
       "first_seen_kst": "2026-10-05T14:04:17+09:00",
@@ -3009,6 +3009,25 @@
       "link": "https://www.newsis.com/view/NISX20260919_0003796786",
       "source": "뉴시스",
       "title": "日, 연휴 앞두고 환율 '레이트 체크'…엔화 약세 견제"
+    },
+    "event:9128ba852afcf7c8d27a9970": {
+      "event_alias_evidence_message_id": 2294,
+      "event_alias_evidence_run_id": 37407308832,
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10893767",
+      "source": "헤럴드경제",
+      "source_body_digest": "41edde68a6c8ebdffad2c25f37e19012aee8740ffb8317f92a94610bba4fefa5",
+      "source_event_identity": "source_event:v2:research_award:dd0706e217c0395f7622e6a7a5b6a627bd8b073757d233b037e1489c9cc22e4b",
+      "source_fact_identity": "source_facts:v1:adabab1b36b70491543070ee746f75e40ed8e5772268dac7b3349cc085f07b39",
+      "source_fact_keys": [
+        "source_fact:v1:f14c6695e3e9aba53606d0fb538ae58ebef1cef1eeccfcb81f66c15c01739d89"
+      ],
+      "source_published_kst": "2026-10-06T09:43+09:00",
+      "title": "두산로보틱스, 국산 AI칩 기반 ‘피지컬 AI’ 개발…총 989억원 규모"
     },
     "event:9150657d1d1778905ebf1e11": {
       "first_seen_kst": "2026-09-23T16:19:42+09:00",
@@ -5144,6 +5163,23 @@
       "source": "연합뉴스",
       "title": "SK는 '넓은 부지'·삼성은 '속도전'…호남 반도체 투자의지 | 연합뉴스"
     },
+    "event:eac46fca5a262004f3e1f8ef": {
+      "event_alias_evidence_message_id": 2294,
+      "event_alias_evidence_run_id": 37407308832,
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03138966645610296",
+      "source": "이데일리",
+      "source_body_digest": "696f975fb05985d57420baf81a1f7eda2d1ce008cf9ed7670ef4bd3ac4fe0a4d",
+      "source_event_identity": "source_event:v2:industrial_development_mou:0cbfc1955a3402589c7698874d83168c25f3e6fdf698f00a8147221bcf665e37",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T10:42+09:00",
+      "title": "에코프로비엠-삼성SDI, 전고체 배터리 상용화 맞손…27년 양산 목표"
+    },
     "event:eae465da19d6225de060f65b": {
       "first_seen_kst": "2026-10-02T05:28:13+09:00",
       "lanes": {
@@ -6024,7 +6060,7 @@
       "link": "https://zdnet.co.kr/view/?no=20261006101304",
       "source": "지디넷코리아",
       "source_body_digest": "2fdd24875200c6508926ba40a34c7263e41037412e77cb3e5a9a6e521572b4ee",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_development_mou:0cbfc1955a3402589c7698874d83168c25f3e6fdf698f00a8147221bcf665e37",
       "source_fact_identity": "source_facts:v1:d0c7292f17139c6ebe640e3f80304087e043045e295a342a9eedfb85e2bdb60b",
       "source_fact_keys": [
         "source_fact:v1:29b2a628625d8a059344abe33a81672147921b23fcc4455b1a56347e7c05bec5",
@@ -6812,7 +6848,7 @@
       "link": "https://biz.heraldcorp.com/article/10893767",
       "source": "헤럴드경제",
       "source_body_digest": "41edde68a6c8ebdffad2c25f37e19012aee8740ffb8317f92a94610bba4fefa5",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:research_award:dd0706e217c0395f7622e6a7a5b6a627bd8b073757d233b037e1489c9cc22e4b",
       "source_fact_identity": "source_facts:v1:adabab1b36b70491543070ee746f75e40ed8e5772268dac7b3349cc085f07b39",
       "source_fact_keys": [
         "source_fact:v1:f14c6695e3e9aba53606d0fb538ae58ebef1cef1eeccfcb81f66c15c01739d89"
@@ -7183,6 +7219,33 @@
       ],
       "source_published_kst": "2026-10-05T21:46+09:00",
       "title": "재규어 헬스, 특별 주식배당..우선주 1주 보통주 5주 전환"
+    },
+    "fact:3772f39d3c16ec33ceb0ce12": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03217686645610296",
+      "source": "이데일리",
+      "source_body_digest": "7f2270d55e18ee68683e61b4e92e5359be26909e57f102ff79b3f5cb0754199c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9734e8224162b106f0aa5a4cb2c64b694d4ed3557694215942d43dc676248233",
+      "source_fact_keys": [
+        "source_fact:v1:2e3241e32dd0d2f0278c1ab97650e75e52b2a4e91ddc81c8997aad2c8f71a76f",
+        "source_fact:v1:453619fa4d99de4bf4fc3e696c1179471964d96f2ecdf00e4b72773f63838227",
+        "source_fact:v1:567fa6015687c51a94b16994382a287e6e7d2e348a4fb7e63f58988437681a8f",
+        "source_fact:v1:6206a05a7665e38e45ca6f62975fb5e07bb32d16ddd2c4166fb144aaca3ef245",
+        "source_fact:v1:8f6492fb10198a5097e936377461db2f64e758c83fb95265a19850e407c0010c",
+        "source_fact:v1:99bcbedafd20691d9e6b2b3c00fc368f563a5679d29276661ce657b112fc5734",
+        "source_fact:v1:9beb15f718ccebce632a6e68178433118810a3604972f159b572a912016f7dfc",
+        "source_fact:v1:a7358c8f913b6d17303a99a2d526b951ed5225ffbeeb74c8c3ce9250e5ca3787",
+        "source_fact:v1:cc17ab4ff904e718ba130085782333fee1952fc2c88dec3e37aa1a512fb627fb",
+        "source_fact:v1:dc9a9d08cdbef408a2e2618806b3d61d1753372fe3df8f14032ebd38d7cf1907",
+        "source_fact:v1:f3ce867021f9b75086e86ed004c324b252874d1f8806106da79c60a3175bce33"
+      ],
+      "source_published_kst": "2026-10-06T10:59+09:00",
+      "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 공급"
     },
     "fact:37db517fa4219a41cccd8216": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
@@ -7818,6 +7881,25 @@
       "source_published_kst": "2026-10-06T05:43+09:00",
       "title": "美 부통령 \"알래스카 LNG 사업 투자, 한국과 세부사항 조율해야\""
     },
+    "fact:5582fc970070bdfed0edeaaa": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.hankyung.com/article/202610064627i",
+      "source": "한국경제",
+      "source_body_digest": "7e747175e3d4f7b0dde9bb00ea84f79e49a990e3f6a26374c56e4f47ccc51cf2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29a6ff134e505776b61add3ebef1b03a1c41b94639459afa831f15e131651149",
+      "source_fact_keys": [
+        "source_fact:v1:01bfe2f10e0fe7b32c86359ebd9f49dc357b74b2b831d51ff88dca0eb8fca039",
+        "source_fact:v1:3aa9e35f9a8c111d8d394e5894a15280644781bd4ab6e58a68ee92ac728a2c20",
+        "source_fact:v1:6ee0d38d5c47283c38ba2ff973281c063f9d60457c98978c543c9969ae47cf82"
+      ],
+      "source_published_kst": "2026-10-06T09:29+09:00",
+      "title": "노벨티노빌리티, 美 바이오텍에 ADC 후보물질 NN3201 기술이전…총 7443억원"
+    },
     "fact:55c50bb7ff39d169933f4fd7": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -7837,6 +7919,23 @@
       ],
       "source_published_kst": "2026-10-05T20:07+09:00",
       "title": "이카엑스 홀딩스, 플라이미 인수 완료..18억 위안 전액 현금"
+    },
+    "fact:56921d5e11fb4bca35fdc1e9": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.hankyung.com/article/202610065016i",
+      "source": "한국경제",
+      "source_body_digest": "3977dd101bc1caee96f349b253489808cb1f95f9e67bd7193357bc320d0104dd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f1dd1eda031c05dc6c0cdff66335dd23f80e3e5b2df5bf8a551dbca812003988",
+      "source_fact_keys": [
+        "source_fact:v1:af31e5dfdc77027ae98632f457484cc9919ffd7b59833cc73618afffb59cc95f"
+      ],
+      "source_published_kst": "2026-10-06T11:00+09:00",
+      "title": "'한국형 인큐텔' 도입 탄력…與 오세희, '新안보 혁신기업 특별법' 발의"
     },
     "fact:56f9ba7b5617febe3d3a5db6": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -9157,6 +9256,26 @@
       ],
       "source_published_kst": "2026-10-06T09:00+09:00",
       "title": "자연과환경, 자회사 한림에코텍 흡수합병…OSCㆍ모듈러 사업 경쟁력 강화"
+    },
+    "fact:8e6ad71ed73978d0f60f7244": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.mk.co.kr/news/business/12168946",
+      "source": "매일경제",
+      "source_body_digest": "bc3268b28dd6b78d93b1f9671794f73c4d4ba0009094b28db04f15199b0185c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:33c779b4e7b4b4e6aa2b15823832c5ab300ff9cccdc2bb441c48b4a36f9319c0",
+      "source_fact_keys": [
+        "source_fact:v1:4b380246615a03f26c258f3bae829692f3e0ea80cca2b4470652db3f4ef0a44d",
+        "source_fact:v1:6b04ca2dc30da031090b81d242d093eaf87b04535f7feb58f960c0f5fdf8ce56",
+        "source_fact:v1:9b4378dcfdb8208fd4d47732df78a95756db975433517a8fb1b6b7f82f4cb0b3",
+        "source_fact:v1:a03c89f5a0a8f08377828810d9dc189c3f56d9ffeb2a14ff15e1eb0c48d697a2"
+      ],
+      "source_published_kst": "2026-10-06T10:00+09:00",
+      "title": "LG전자, 유럽 첫 상용 SDV에 통합 콕핏 솔루션 공급"
     },
     "fact:8f6be8e4d786f9c623741804": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
@@ -11187,6 +11306,27 @@
       "source_published_kst": "2026-10-06T10:16+09:00",
       "title": "李부총리 \"민생경제 안정·양극화 완화 총력…주택공급 확대 최우선\"[국감]"
     },
+    "fact:e85972f447a40f4187620f9a": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006103835",
+      "source": "지디넷코리아",
+      "source_body_digest": "9eecc7266e300ba4a6500b91cfaf7f3457b952840115160a89df5dd162af011f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a7b35c167ceeb2598a01d34100c13a64f6a3e76c270e1ceba049ae3cb5e5dcf4",
+      "source_fact_keys": [
+        "source_fact:v1:1969c25ca486931156d3218e4a74211c943cfcc6794636601958232abc6b367c",
+        "source_fact:v1:3858a6214562aa846e42b9f2612954879fc7bdfe96ffe0376c325fb8549c185f",
+        "source_fact:v1:81c7b0d458474de0f0b2e0fdbc64137377949e115c10a31a56c4e966a9777d58",
+        "source_fact:v1:956546c4594c7671f1807a848cd63fe58a1acd2740c5359253f1979646430c96",
+        "source_fact:v1:af4bb86c882cbff79cc620cf7375c160cf575637a2dbca81efd5518dcfa37400"
+      ],
+      "source_published_kst": "2026-10-06T10:44+09:00",
+      "title": "엑시나, 포트래이와 CXL 기반 바이오 데이터 인프라 구축 '맞손'"
+    },
     "fact:e9689b6fcf6f67c7d13a7d4d": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
       "lanes": {
@@ -11343,7 +11483,7 @@
       "link": "https://www.mt.co.kr/industry/2026/10/06/2026100608521448232",
       "source": "머니투데이",
       "source_body_digest": "85567f3baaf0e878c4fb557f5d2447d405950e305b142aa225c8bd2d727a3578",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:research_award:dd0706e217c0395f7622e6a7a5b6a627bd8b073757d233b037e1489c9cc22e4b",
       "source_fact_identity": "source_facts:v1:b82d19e750b5ec33e53aed858966be9e11d58de001c2f9714c2a90b8a1b59984",
       "source_fact_keys": [
         "source_fact:v1:9b576cae3d2ddf57a3d7fbd92de23e42fe092a9401018ff0c799e220bf84820a"
@@ -19376,6 +19516,23 @@
       "source": "머니투데이",
       "title": "내년부터 해외 개미도 직접 '한국 ETF' 투자…'역직구' 시장 커지나"
     },
+    "link:612866c0b4a185e0ed033409": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.hankyung.com/article/202610065016i",
+      "source": "한국경제",
+      "source_body_digest": "3977dd101bc1caee96f349b253489808cb1f95f9e67bd7193357bc320d0104dd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f1dd1eda031c05dc6c0cdff66335dd23f80e3e5b2df5bf8a551dbca812003988",
+      "source_fact_keys": [
+        "source_fact:v1:af31e5dfdc77027ae98632f457484cc9919ffd7b59833cc73618afffb59cc95f"
+      ],
+      "source_published_kst": "2026-10-06T11:00+09:00",
+      "title": "'한국형 인큐텔' 도입 탄력…與 오세희, '新안보 혁신기업 특별법' 발의"
+    },
     "link:613bb04144f6c3df3bcdfa06": {
       "first_seen_kst": "2026-10-04T12:12:39+09:00",
       "lanes": {
@@ -20523,6 +20680,26 @@
       "link": "https://www.etnews.com/20260920000084",
       "source": "전자신문",
       "title": "“어게인 9000? 내년 코스피 5200 밑돌 수도”…현금 늘리라는 경고 나왔다, 왜?"
+    },
+    "link:6d86e5ce63d9a6bb402b3fff": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.mk.co.kr/news/business/12168946",
+      "source": "매일경제",
+      "source_body_digest": "bc3268b28dd6b78d93b1f9671794f73c4d4ba0009094b28db04f15199b0185c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:33c779b4e7b4b4e6aa2b15823832c5ab300ff9cccdc2bb441c48b4a36f9319c0",
+      "source_fact_keys": [
+        "source_fact:v1:4b380246615a03f26c258f3bae829692f3e0ea80cca2b4470652db3f4ef0a44d",
+        "source_fact:v1:6b04ca2dc30da031090b81d242d093eaf87b04535f7feb58f960c0f5fdf8ce56",
+        "source_fact:v1:9b4378dcfdb8208fd4d47732df78a95756db975433517a8fb1b6b7f82f4cb0b3",
+        "source_fact:v1:a03c89f5a0a8f08377828810d9dc189c3f56d9ffeb2a14ff15e1eb0c48d697a2"
+      ],
+      "source_published_kst": "2026-10-06T10:00+09:00",
+      "title": "LG전자, 유럽 첫 상용 SDV에 통합 콕핏 솔루션 공급"
     },
     "link:6da1fb7b112b96557f86a85d": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
@@ -22730,6 +22907,33 @@
       "source_published_kst": "2026-10-05T07:00+09:00",
       "title": "[단독]코스닥 입성 3년도 안 돼 '부실징후' 11곳…절반은 거래정지"
     },
+    "link:8b005c0f10bbe2445e118749": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03217686645610296",
+      "source": "이데일리",
+      "source_body_digest": "7f2270d55e18ee68683e61b4e92e5359be26909e57f102ff79b3f5cb0754199c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9734e8224162b106f0aa5a4cb2c64b694d4ed3557694215942d43dc676248233",
+      "source_fact_keys": [
+        "source_fact:v1:2e3241e32dd0d2f0278c1ab97650e75e52b2a4e91ddc81c8997aad2c8f71a76f",
+        "source_fact:v1:453619fa4d99de4bf4fc3e696c1179471964d96f2ecdf00e4b72773f63838227",
+        "source_fact:v1:567fa6015687c51a94b16994382a287e6e7d2e348a4fb7e63f58988437681a8f",
+        "source_fact:v1:6206a05a7665e38e45ca6f62975fb5e07bb32d16ddd2c4166fb144aaca3ef245",
+        "source_fact:v1:8f6492fb10198a5097e936377461db2f64e758c83fb95265a19850e407c0010c",
+        "source_fact:v1:99bcbedafd20691d9e6b2b3c00fc368f563a5679d29276661ce657b112fc5734",
+        "source_fact:v1:9beb15f718ccebce632a6e68178433118810a3604972f159b572a912016f7dfc",
+        "source_fact:v1:a7358c8f913b6d17303a99a2d526b951ed5225ffbeeb74c8c3ce9250e5ca3787",
+        "source_fact:v1:cc17ab4ff904e718ba130085782333fee1952fc2c88dec3e37aa1a512fb627fb",
+        "source_fact:v1:dc9a9d08cdbef408a2e2618806b3d61d1753372fe3df8f14032ebd38d7cf1907",
+        "source_fact:v1:f3ce867021f9b75086e86ed004c324b252874d1f8806106da79c60a3175bce33"
+      ],
+      "source_published_kst": "2026-10-06T10:59+09:00",
+      "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 공급"
+    },
     "link:8b0e6089ff4866089db6383f": {
       "first_seen_kst": "2026-09-18T23:32:37+09:00",
       "lanes": {
@@ -23347,6 +23551,25 @@
       ],
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어 | 연합뉴스"
+    },
+    "link:929b1772ffc4b04bdf77f5c5": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.hankyung.com/article/202610064627i",
+      "source": "한국경제",
+      "source_body_digest": "7e747175e3d4f7b0dde9bb00ea84f79e49a990e3f6a26374c56e4f47ccc51cf2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29a6ff134e505776b61add3ebef1b03a1c41b94639459afa831f15e131651149",
+      "source_fact_keys": [
+        "source_fact:v1:01bfe2f10e0fe7b32c86359ebd9f49dc357b74b2b831d51ff88dca0eb8fca039",
+        "source_fact:v1:3aa9e35f9a8c111d8d394e5894a15280644781bd4ab6e58a68ee92ac728a2c20",
+        "source_fact:v1:6ee0d38d5c47283c38ba2ff973281c063f9d60457c98978c543c9969ae47cf82"
+      ],
+      "source_published_kst": "2026-10-06T09:29+09:00",
+      "title": "노벨티노빌리티, 美 바이오텍에 ADC 후보물질 NN3201 기술이전…총 7443억원"
     },
     "link:92a0c53e349cb39bcc1ca99f": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -24684,7 +24907,7 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03138966645610296",
       "source": "이데일리",
       "source_body_digest": "696f975fb05985d57420baf81a1f7eda2d1ce008cf9ed7670ef4bd3ac4fe0a4d",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_development_mou:0cbfc1955a3402589c7698874d83168c25f3e6fdf698f00a8147221bcf665e37",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T10:42+09:00",
@@ -25141,6 +25364,21 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03880246645582416",
       "source": "이데일리",
       "title": "ETF 성장세 주춤하자 다시 ‘쩐의 전쟁’…보수 0%대 승부수"
+    },
+    "link:a683468a1c4e727f0846dc0f": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006070200530",
+      "source": "연합뉴스",
+      "source_body_digest": "f288ff760ba4dbc8ec89aa8e2e0ff9dba8591f3b27672495550956d2cb28b7db",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T10:45+09:00",
+      "title": "기후장관 \"탈탄소 선도국 도약…재생에너지 100GW 조기 달성\" | 연합뉴스"
     },
     "link:a69a7953a156e237caca46ef": {
       "first_seen_kst": "2026-10-05T14:44:39+09:00",
@@ -27701,7 +27939,7 @@
       "link": "https://zdnet.co.kr/view/?no=20261006101304",
       "source": "지디넷코리아",
       "source_body_digest": "2fdd24875200c6508926ba40a34c7263e41037412e77cb3e5a9a6e521572b4ee",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_development_mou:0cbfc1955a3402589c7698874d83168c25f3e6fdf698f00a8147221bcf665e37",
       "source_fact_identity": "source_facts:v1:d0c7292f17139c6ebe640e3f80304087e043045e295a342a9eedfb85e2bdb60b",
       "source_fact_keys": [
         "source_fact:v1:29b2a628625d8a059344abe33a81672147921b23fcc4455b1a56347e7c05bec5",
@@ -30277,7 +30515,7 @@
       "link": "https://biz.heraldcorp.com/article/10893767",
       "source": "헤럴드경제",
       "source_body_digest": "41edde68a6c8ebdffad2c25f37e19012aee8740ffb8317f92a94610bba4fefa5",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:research_award:dd0706e217c0395f7622e6a7a5b6a627bd8b073757d233b037e1489c9cc22e4b",
       "source_fact_identity": "source_facts:v1:adabab1b36b70491543070ee746f75e40ed8e5772268dac7b3349cc085f07b39",
       "source_fact_keys": [
         "source_fact:v1:f14c6695e3e9aba53606d0fb538ae58ebef1cef1eeccfcb81f66c15c01739d89"
@@ -31353,7 +31591,7 @@
       "link": "https://www.mt.co.kr/industry/2026/10/06/2026100608521448232",
       "source": "머니투데이",
       "source_body_digest": "85567f3baaf0e878c4fb557f5d2447d405950e305b142aa225c8bd2d727a3578",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:research_award:dd0706e217c0395f7622e6a7a5b6a627bd8b073757d233b037e1489c9cc22e4b",
       "source_fact_identity": "source_facts:v1:b82d19e750b5ec33e53aed858966be9e11d58de001c2f9714c2a90b8a1b59984",
       "source_fact_keys": [
         "source_fact:v1:9b576cae3d2ddf57a3d7fbd92de23e42fe092a9401018ff0c799e220bf84820a"
@@ -31855,6 +32093,21 @@
       "source_published_kst": "2026-10-04T06:02+09:00",
       "title": "고양시, 스마트팜 활용 작물 품질 높인다"
     },
+    "link:fb270ae73c3a470fca39d568": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006064200001",
+      "source": "연합뉴스",
+      "source_body_digest": "27a6625a05ec5b5cc28260e35844c55f81cd7cd7092a92080b02a4bf713cbc7d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T11:00+09:00",
+      "title": "디스플레이 산업 규제 개선…수입 간소화·AI가이드 마련 | 연합뉴스"
+    },
     "link:fb81c3f63acb817881fd21cc": {
       "first_seen_kst": "2026-10-03T22:33:30+09:00",
       "lanes": {
@@ -32202,6 +32455,27 @@
       ],
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
+    "link:ff4934c6e14af77060e7eac4": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006103835",
+      "source": "지디넷코리아",
+      "source_body_digest": "9eecc7266e300ba4a6500b91cfaf7f3457b952840115160a89df5dd162af011f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a7b35c167ceeb2598a01d34100c13a64f6a3e76c270e1ceba049ae3cb5e5dcf4",
+      "source_fact_keys": [
+        "source_fact:v1:1969c25ca486931156d3218e4a74211c943cfcc6794636601958232abc6b367c",
+        "source_fact:v1:3858a6214562aa846e42b9f2612954879fc7bdfe96ffe0376c325fb8549c185f",
+        "source_fact:v1:81c7b0d458474de0f0b2e0fdbc64137377949e115c10a31a56c4e966a9777d58",
+        "source_fact:v1:956546c4594c7671f1807a848cd63fe58a1acd2740c5359253f1979646430c96",
+        "source_fact:v1:af4bb86c882cbff79cc620cf7375c160cf575637a2dbca81efd5518dcfa37400"
+      ],
+      "source_published_kst": "2026-10-06T10:44+09:00",
+      "title": "엑시나, 포트래이와 CXL 기반 바이오 데이터 인프라 구축 '맞손'"
     },
     "link:ff5af83c2922881d220018bb": {
       "first_seen_kst": "2026-10-04T15:45:24+09:00",
@@ -32720,7 +32994,7 @@
       "link": "https://www.mt.co.kr/industry/2026/10/06/2026100608521448232",
       "source": "머니투데이",
       "source_body_digest": "85567f3baaf0e878c4fb557f5d2447d405950e305b142aa225c8bd2d727a3578",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:research_award:dd0706e217c0395f7622e6a7a5b6a627bd8b073757d233b037e1489c9cc22e4b",
       "source_fact_identity": "source_facts:v1:b82d19e750b5ec33e53aed858966be9e11d58de001c2f9714c2a90b8a1b59984",
       "source_fact_keys": [
         "source_fact:v1:9b576cae3d2ddf57a3d7fbd92de23e42fe092a9401018ff0c799e220bf84820a"
@@ -34161,6 +34435,25 @@
       "source_published_kst": "2026-10-05T22:57+09:00",
       "title": "[美특징주]RXO, CH 로빈슨에 58억달러 피인수...주가 23%↑"
     },
+    "original:1982c5ea113a6a622e10d03f": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.hankyung.com/article/202610064627i",
+      "source": "한국경제",
+      "source_body_digest": "7e747175e3d4f7b0dde9bb00ea84f79e49a990e3f6a26374c56e4f47ccc51cf2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29a6ff134e505776b61add3ebef1b03a1c41b94639459afa831f15e131651149",
+      "source_fact_keys": [
+        "source_fact:v1:01bfe2f10e0fe7b32c86359ebd9f49dc357b74b2b831d51ff88dca0eb8fca039",
+        "source_fact:v1:3aa9e35f9a8c111d8d394e5894a15280644781bd4ab6e58a68ee92ac728a2c20",
+        "source_fact:v1:6ee0d38d5c47283c38ba2ff973281c063f9d60457c98978c543c9969ae47cf82"
+      ],
+      "source_published_kst": "2026-10-06T09:29+09:00",
+      "title": "노벨티노빌리티, 美 바이오텍에 ADC 후보물질 NN3201 기술이전…총 7443억원"
+    },
     "original:19ae6e191865e7ce220b1158": {
       "first_seen_kst": "2026-10-06T01:26:06+09:00",
       "lanes": {
@@ -34889,6 +35182,21 @@
       ],
       "source_published_kst": "2026-10-06T05:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
+    },
+    "original:235ca65f2d352d36a38b410b": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006070200530",
+      "source": "연합뉴스",
+      "source_body_digest": "f288ff760ba4dbc8ec89aa8e2e0ff9dba8591f3b27672495550956d2cb28b7db",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T10:45+09:00",
+      "title": "기후장관 \"탈탄소 선도국 도약…재생에너지 100GW 조기 달성\" | 연합뉴스"
     },
     "original:23a979d3ba80300e3e9b4398": {
       "first_seen_kst": "2026-10-01T21:12:25+09:00",
@@ -35911,6 +36219,23 @@
       "link": "https://www.mk.co.kr/news/business/12156227",
       "source": "매일경제",
       "title": "“경영진 4명, 자사주 4억원어치 매입”…KG모빌리티플랫폼, 책임경영 강화"
+    },
+    "original:315d6ed2d662fbe2b958f66c": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.hankyung.com/article/202610065016i",
+      "source": "한국경제",
+      "source_body_digest": "3977dd101bc1caee96f349b253489808cb1f95f9e67bd7193357bc320d0104dd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f1dd1eda031c05dc6c0cdff66335dd23f80e3e5b2df5bf8a551dbca812003988",
+      "source_fact_keys": [
+        "source_fact:v1:af31e5dfdc77027ae98632f457484cc9919ffd7b59833cc73618afffb59cc95f"
+      ],
+      "source_published_kst": "2026-10-06T11:00+09:00",
+      "title": "'한국형 인큐텔' 도입 탄력…與 오세희, '新안보 혁신기업 특별법' 발의"
     },
     "original:3196446f176a69f036cfd37b": {
       "first_seen_kst": "2026-09-21T17:35:34+09:00",
@@ -37481,18 +37806,19 @@
     "original:4224573d96ec3a96a2eaba52": {
       "first_seen_kst": "2026-10-06T10:41:31+09:00",
       "lanes": {
-        "live": "2026-10-06T10:41:31+09:00"
+        "live": "2026-10-06T12:35:44+09:00"
       },
-      "last_seen_kst": "2026-10-06T10:41:31+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2632589",
-      "source": "이투데이",
-      "source_body_digest": "719de3a8597293d6bf699ed5c1024d0609b61429d52ad752c0db3e6576d71416",
-      "source_event_identity": "source_event:v2:commercial_delivery:953ee206c135c175fa78175d742512ff88363937ecfa2301ba75bbc046250521",
-      "source_fact_identity": "source_facts:v1:2903811876f80530f8aa6d0d0c68daafa38c2a7f602c83d6bb718fcadc480fef",
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.mk.co.kr/news/business/12168946",
+      "source": "매일경제",
+      "source_body_digest": "bc3268b28dd6b78d93b1f9671794f73c4d4ba0009094b28db04f15199b0185c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:33c779b4e7b4b4e6aa2b15823832c5ab300ff9cccdc2bb441c48b4a36f9319c0",
       "source_fact_keys": [
-        "source_fact:v1:1a61d4b9d5f07f4f75bd601e8ec67434bf61721a8ab33be9e7dab15f377fe5bc",
-        "source_fact:v1:3ec65d2f8401194290a00c83111f7421b3c27147698ea59fe545ea8527403b7f",
-        "source_fact:v1:c700b286438560cfb3ce962e62fb5bf390a7f838e7ed5103eb70b2a8f5a431de"
+        "source_fact:v1:4b380246615a03f26c258f3bae829692f3e0ea80cca2b4470652db3f4ef0a44d",
+        "source_fact:v1:6b04ca2dc30da031090b81d242d093eaf87b04535f7feb58f960c0f5fdf8ce56",
+        "source_fact:v1:9b4378dcfdb8208fd4d47732df78a95756db975433517a8fb1b6b7f82f4cb0b3",
+        "source_fact:v1:a03c89f5a0a8f08377828810d9dc189c3f56d9ffeb2a14ff15e1eb0c48d697a2"
       ],
       "source_published_kst": "2026-10-06T10:00+09:00",
       "title": "LG전자, 유럽 첫 상용 SDV에 통합 콕핏 솔루션 공급"
@@ -38244,6 +38570,33 @@
       ],
       "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
+    },
+    "original:4a53bcd5860ad9284bdd5c20": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03217686645610296",
+      "source": "이데일리",
+      "source_body_digest": "7f2270d55e18ee68683e61b4e92e5359be26909e57f102ff79b3f5cb0754199c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9734e8224162b106f0aa5a4cb2c64b694d4ed3557694215942d43dc676248233",
+      "source_fact_keys": [
+        "source_fact:v1:2e3241e32dd0d2f0278c1ab97650e75e52b2a4e91ddc81c8997aad2c8f71a76f",
+        "source_fact:v1:453619fa4d99de4bf4fc3e696c1179471964d96f2ecdf00e4b72773f63838227",
+        "source_fact:v1:567fa6015687c51a94b16994382a287e6e7d2e348a4fb7e63f58988437681a8f",
+        "source_fact:v1:6206a05a7665e38e45ca6f62975fb5e07bb32d16ddd2c4166fb144aaca3ef245",
+        "source_fact:v1:8f6492fb10198a5097e936377461db2f64e758c83fb95265a19850e407c0010c",
+        "source_fact:v1:99bcbedafd20691d9e6b2b3c00fc368f563a5679d29276661ce657b112fc5734",
+        "source_fact:v1:9beb15f718ccebce632a6e68178433118810a3604972f159b572a912016f7dfc",
+        "source_fact:v1:a7358c8f913b6d17303a99a2d526b951ed5225ffbeeb74c8c3ce9250e5ca3787",
+        "source_fact:v1:cc17ab4ff904e718ba130085782333fee1952fc2c88dec3e37aa1a512fb627fb",
+        "source_fact:v1:dc9a9d08cdbef408a2e2618806b3d61d1753372fe3df8f14032ebd38d7cf1907",
+        "source_fact:v1:f3ce867021f9b75086e86ed004c324b252874d1f8806106da79c60a3175bce33"
+      ],
+      "source_published_kst": "2026-10-06T10:59+09:00",
+      "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 공급"
     },
     "original:4a7fb88e6bf21b8afb1da61c": {
       "first_seen_kst": "2026-10-04T15:04:58+09:00",
@@ -39578,7 +39931,7 @@
       "link": "https://biz.heraldcorp.com/article/10893767",
       "source": "헤럴드경제",
       "source_body_digest": "41edde68a6c8ebdffad2c25f37e19012aee8740ffb8317f92a94610bba4fefa5",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:research_award:dd0706e217c0395f7622e6a7a5b6a627bd8b073757d233b037e1489c9cc22e4b",
       "source_fact_identity": "source_facts:v1:adabab1b36b70491543070ee746f75e40ed8e5772268dac7b3349cc085f07b39",
       "source_fact_keys": [
         "source_fact:v1:f14c6695e3e9aba53606d0fb538ae58ebef1cef1eeccfcb81f66c15c01739d89"
@@ -39744,7 +40097,7 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03138966645610296",
       "source": "이데일리",
       "source_body_digest": "696f975fb05985d57420baf81a1f7eda2d1ce008cf9ed7670ef4bd3ac4fe0a4d",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_development_mou:0cbfc1955a3402589c7698874d83168c25f3e6fdf698f00a8147221bcf665e37",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T10:42+09:00",
@@ -43126,6 +43479,21 @@
       "source": "한국경제",
       "title": "건원엔지니어링, 목동4단지 재건축 CM 우선협상대상자 선정"
     },
+    "original:8b1a7fd0225b50388c09c11f": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006064200001",
+      "source": "연합뉴스",
+      "source_body_digest": "27a6625a05ec5b5cc28260e35844c55f81cd7cd7092a92080b02a4bf713cbc7d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T11:00+09:00",
+      "title": "디스플레이 산업 규제 개선…수입 간소화·AI가이드 마련 | 연합뉴스"
+    },
     "original:8b2d44fef0ead79821395e60": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
       "lanes": {
@@ -44130,7 +44498,7 @@
       "link": "https://zdnet.co.kr/view/?no=20261006101304",
       "source": "지디넷코리아",
       "source_body_digest": "2fdd24875200c6508926ba40a34c7263e41037412e77cb3e5a9a6e521572b4ee",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_development_mou:0cbfc1955a3402589c7698874d83168c25f3e6fdf698f00a8147221bcf665e37",
       "source_fact_identity": "source_facts:v1:d0c7292f17139c6ebe640e3f80304087e043045e295a342a9eedfb85e2bdb60b",
       "source_fact_keys": [
         "source_fact:v1:29b2a628625d8a059344abe33a81672147921b23fcc4455b1a56347e7c05bec5",
@@ -51836,6 +52204,27 @@
       "source_published_kst": "2026-10-05T10:59+09:00",
       "title": "“국내서 접하기 힘든 해외 AI 한곳 에”…LG유플러스가 ‘유독’으로 들여온다"
     },
+    "original:fbbf971d130a4ccab5110196": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006103835",
+      "source": "지디넷코리아",
+      "source_body_digest": "9eecc7266e300ba4a6500b91cfaf7f3457b952840115160a89df5dd162af011f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a7b35c167ceeb2598a01d34100c13a64f6a3e76c270e1ceba049ae3cb5e5dcf4",
+      "source_fact_keys": [
+        "source_fact:v1:1969c25ca486931156d3218e4a74211c943cfcc6794636601958232abc6b367c",
+        "source_fact:v1:3858a6214562aa846e42b9f2612954879fc7bdfe96ffe0376c325fb8549c185f",
+        "source_fact:v1:81c7b0d458474de0f0b2e0fdbc64137377949e115c10a31a56c4e966a9777d58",
+        "source_fact:v1:956546c4594c7671f1807a848cd63fe58a1acd2740c5359253f1979646430c96",
+        "source_fact:v1:af4bb86c882cbff79cc620cf7375c160cf575637a2dbca81efd5518dcfa37400"
+      ],
+      "source_published_kst": "2026-10-06T10:44+09:00",
+      "title": "엑시나, 포트래이와 CXL 기반 바이오 데이터 인프라 구축 '맞손'"
+    },
     "original:fbc01c0d91c82cdf3db93263": {
       "first_seen_kst": "2026-10-05T13:15:14+09:00",
       "lanes": {
@@ -52260,7 +52649,7 @@
       "link": "https://biz.heraldcorp.com/article/10893767",
       "source": "헤럴드경제",
       "source_body_digest": "41edde68a6c8ebdffad2c25f37e19012aee8740ffb8317f92a94610bba4fefa5",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:research_award:dd0706e217c0395f7622e6a7a5b6a627bd8b073757d233b037e1489c9cc22e4b",
       "source_fact_identity": "source_facts:v1:adabab1b36b70491543070ee746f75e40ed8e5772268dac7b3349cc085f07b39",
       "source_fact_keys": [
         "source_fact:v1:f14c6695e3e9aba53606d0fb538ae58ebef1cef1eeccfcb81f66c15c01739d89"
@@ -53736,6 +54125,26 @@
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "외국인·명품 소비에 비용 절감까지…백화점 3사, 3분기 실적 ‘청신호’"
     },
+    "source_fact:0bff0d38625f7c53b3811a58": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.mk.co.kr/news/business/12168946",
+      "source": "매일경제",
+      "source_body_digest": "bc3268b28dd6b78d93b1f9671794f73c4d4ba0009094b28db04f15199b0185c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:33c779b4e7b4b4e6aa2b15823832c5ab300ff9cccdc2bb441c48b4a36f9319c0",
+      "source_fact_keys": [
+        "source_fact:v1:4b380246615a03f26c258f3bae829692f3e0ea80cca2b4470652db3f4ef0a44d",
+        "source_fact:v1:6b04ca2dc30da031090b81d242d093eaf87b04535f7feb58f960c0f5fdf8ce56",
+        "source_fact:v1:9b4378dcfdb8208fd4d47732df78a95756db975433517a8fb1b6b7f82f4cb0b3",
+        "source_fact:v1:a03c89f5a0a8f08377828810d9dc189c3f56d9ffeb2a14ff15e1eb0c48d697a2"
+      ],
+      "source_published_kst": "2026-10-06T10:00+09:00",
+      "title": "LG전자, 유럽 첫 상용 SDV에 통합 콕핏 솔루션 공급"
+    },
     "source_fact:0c7cc374448d49ad50e98708": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
       "lanes": {
@@ -53861,6 +54270,25 @@
       ],
       "source_published_kst": "2026-10-06T11:36+09:00",
       "title": "지역 일자리 창출·육아휴직 확산…경사노위 6대 과제 윤곽"
+    },
+    "source_fact:0dac524920a639ee2e28f337": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.hankyung.com/article/202610064627i",
+      "source": "한국경제",
+      "source_body_digest": "7e747175e3d4f7b0dde9bb00ea84f79e49a990e3f6a26374c56e4f47ccc51cf2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29a6ff134e505776b61add3ebef1b03a1c41b94639459afa831f15e131651149",
+      "source_fact_keys": [
+        "source_fact:v1:01bfe2f10e0fe7b32c86359ebd9f49dc357b74b2b831d51ff88dca0eb8fca039",
+        "source_fact:v1:3aa9e35f9a8c111d8d394e5894a15280644781bd4ab6e58a68ee92ac728a2c20",
+        "source_fact:v1:6ee0d38d5c47283c38ba2ff973281c063f9d60457c98978c543c9969ae47cf82"
+      ],
+      "source_published_kst": "2026-10-06T09:29+09:00",
+      "title": "노벨티노빌리티, 美 바이오텍에 ADC 후보물질 NN3201 기술이전…총 7443억원"
     },
     "source_fact:0e4497a88145848d20300177": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -57081,6 +57509,33 @@
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
     },
+    "source_fact:2c1e4dfd919f0004facfbae7": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03217686645610296",
+      "source": "이데일리",
+      "source_body_digest": "7f2270d55e18ee68683e61b4e92e5359be26909e57f102ff79b3f5cb0754199c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9734e8224162b106f0aa5a4cb2c64b694d4ed3557694215942d43dc676248233",
+      "source_fact_keys": [
+        "source_fact:v1:2e3241e32dd0d2f0278c1ab97650e75e52b2a4e91ddc81c8997aad2c8f71a76f",
+        "source_fact:v1:453619fa4d99de4bf4fc3e696c1179471964d96f2ecdf00e4b72773f63838227",
+        "source_fact:v1:567fa6015687c51a94b16994382a287e6e7d2e348a4fb7e63f58988437681a8f",
+        "source_fact:v1:6206a05a7665e38e45ca6f62975fb5e07bb32d16ddd2c4166fb144aaca3ef245",
+        "source_fact:v1:8f6492fb10198a5097e936377461db2f64e758c83fb95265a19850e407c0010c",
+        "source_fact:v1:99bcbedafd20691d9e6b2b3c00fc368f563a5679d29276661ce657b112fc5734",
+        "source_fact:v1:9beb15f718ccebce632a6e68178433118810a3604972f159b572a912016f7dfc",
+        "source_fact:v1:a7358c8f913b6d17303a99a2d526b951ed5225ffbeeb74c8c3ce9250e5ca3787",
+        "source_fact:v1:cc17ab4ff904e718ba130085782333fee1952fc2c88dec3e37aa1a512fb627fb",
+        "source_fact:v1:dc9a9d08cdbef408a2e2618806b3d61d1753372fe3df8f14032ebd38d7cf1907",
+        "source_fact:v1:f3ce867021f9b75086e86ed004c324b252874d1f8806106da79c60a3175bce33"
+      ],
+      "source_published_kst": "2026-10-06T10:59+09:00",
+      "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 공급"
+    },
     "source_fact:2c469e4b7db40b1b2ccc0faf": {
       "first_seen_kst": "2026-10-06T07:30:15+09:00",
       "lanes": {
@@ -57169,6 +57624,33 @@
       ],
       "source_published_kst": "2026-10-06T02:28+09:00",
       "title": "아람코 CEO \"세계 석유 공급 이미 압박…비축 최대 2년\""
+    },
+    "source_fact:2d5fe84b01f192aba492d9e2": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03217686645610296",
+      "source": "이데일리",
+      "source_body_digest": "7f2270d55e18ee68683e61b4e92e5359be26909e57f102ff79b3f5cb0754199c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9734e8224162b106f0aa5a4cb2c64b694d4ed3557694215942d43dc676248233",
+      "source_fact_keys": [
+        "source_fact:v1:2e3241e32dd0d2f0278c1ab97650e75e52b2a4e91ddc81c8997aad2c8f71a76f",
+        "source_fact:v1:453619fa4d99de4bf4fc3e696c1179471964d96f2ecdf00e4b72773f63838227",
+        "source_fact:v1:567fa6015687c51a94b16994382a287e6e7d2e348a4fb7e63f58988437681a8f",
+        "source_fact:v1:6206a05a7665e38e45ca6f62975fb5e07bb32d16ddd2c4166fb144aaca3ef245",
+        "source_fact:v1:8f6492fb10198a5097e936377461db2f64e758c83fb95265a19850e407c0010c",
+        "source_fact:v1:99bcbedafd20691d9e6b2b3c00fc368f563a5679d29276661ce657b112fc5734",
+        "source_fact:v1:9beb15f718ccebce632a6e68178433118810a3604972f159b572a912016f7dfc",
+        "source_fact:v1:a7358c8f913b6d17303a99a2d526b951ed5225ffbeeb74c8c3ce9250e5ca3787",
+        "source_fact:v1:cc17ab4ff904e718ba130085782333fee1952fc2c88dec3e37aa1a512fb627fb",
+        "source_fact:v1:dc9a9d08cdbef408a2e2618806b3d61d1753372fe3df8f14032ebd38d7cf1907",
+        "source_fact:v1:f3ce867021f9b75086e86ed004c324b252874d1f8806106da79c60a3175bce33"
+      ],
+      "source_published_kst": "2026-10-06T10:59+09:00",
+      "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 공급"
     },
     "source_fact:2dd15e213fa7d14a7314aa9a": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
@@ -58438,7 +58920,7 @@
       "link": "https://www.mt.co.kr/industry/2026/10/06/2026100608521448232",
       "source": "머니투데이",
       "source_body_digest": "85567f3baaf0e878c4fb557f5d2447d405950e305b142aa225c8bd2d727a3578",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:research_award:dd0706e217c0395f7622e6a7a5b6a627bd8b073757d233b037e1489c9cc22e4b",
       "source_fact_identity": "source_facts:v1:b82d19e750b5ec33e53aed858966be9e11d58de001c2f9714c2a90b8a1b59984",
       "source_fact_keys": [
         "source_fact:v1:9b576cae3d2ddf57a3d7fbd92de23e42fe092a9401018ff0c799e220bf84820a"
@@ -58760,6 +59242,33 @@
       ],
       "source_published_kst": "2026-10-06T08:46+09:00",
       "title": "“코스피, 7100만 찍으면 7700까지 간다”…장밋빛 전망 근거는? [오늘 나온 보고서]"
+    },
+    "source_fact:3de24c0b41613838c8b3b8a4": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03217686645610296",
+      "source": "이데일리",
+      "source_body_digest": "7f2270d55e18ee68683e61b4e92e5359be26909e57f102ff79b3f5cb0754199c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9734e8224162b106f0aa5a4cb2c64b694d4ed3557694215942d43dc676248233",
+      "source_fact_keys": [
+        "source_fact:v1:2e3241e32dd0d2f0278c1ab97650e75e52b2a4e91ddc81c8997aad2c8f71a76f",
+        "source_fact:v1:453619fa4d99de4bf4fc3e696c1179471964d96f2ecdf00e4b72773f63838227",
+        "source_fact:v1:567fa6015687c51a94b16994382a287e6e7d2e348a4fb7e63f58988437681a8f",
+        "source_fact:v1:6206a05a7665e38e45ca6f62975fb5e07bb32d16ddd2c4166fb144aaca3ef245",
+        "source_fact:v1:8f6492fb10198a5097e936377461db2f64e758c83fb95265a19850e407c0010c",
+        "source_fact:v1:99bcbedafd20691d9e6b2b3c00fc368f563a5679d29276661ce657b112fc5734",
+        "source_fact:v1:9beb15f718ccebce632a6e68178433118810a3604972f159b572a912016f7dfc",
+        "source_fact:v1:a7358c8f913b6d17303a99a2d526b951ed5225ffbeeb74c8c3ce9250e5ca3787",
+        "source_fact:v1:cc17ab4ff904e718ba130085782333fee1952fc2c88dec3e37aa1a512fb627fb",
+        "source_fact:v1:dc9a9d08cdbef408a2e2618806b3d61d1753372fe3df8f14032ebd38d7cf1907",
+        "source_fact:v1:f3ce867021f9b75086e86ed004c324b252874d1f8806106da79c60a3175bce33"
+      ],
+      "source_published_kst": "2026-10-06T10:59+09:00",
+      "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 공급"
     },
     "source_fact:3e11f48d56b390a31413a947": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
@@ -61376,6 +61885,25 @@
       "source_published_kst": "2026-10-05T23:11+09:00",
       "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
     },
+    "source_fact:54ce2df11dcd2bbb901a5408": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.hankyung.com/article/202610064627i",
+      "source": "한국경제",
+      "source_body_digest": "7e747175e3d4f7b0dde9bb00ea84f79e49a990e3f6a26374c56e4f47ccc51cf2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29a6ff134e505776b61add3ebef1b03a1c41b94639459afa831f15e131651149",
+      "source_fact_keys": [
+        "source_fact:v1:01bfe2f10e0fe7b32c86359ebd9f49dc357b74b2b831d51ff88dca0eb8fca039",
+        "source_fact:v1:3aa9e35f9a8c111d8d394e5894a15280644781bd4ab6e58a68ee92ac728a2c20",
+        "source_fact:v1:6ee0d38d5c47283c38ba2ff973281c063f9d60457c98978c543c9969ae47cf82"
+      ],
+      "source_published_kst": "2026-10-06T09:29+09:00",
+      "title": "노벨티노빌리티, 美 바이오텍에 ADC 후보물질 NN3201 기술이전…총 7443억원"
+    },
     "source_fact:54d0513b021de2c7e57f7957": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -62393,6 +62921,26 @@
       "source_published_kst": "2026-10-05T13:09+09:00",
       "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
     },
+    "source_fact:5d015845574e301f3a41ba6e": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.mk.co.kr/news/business/12168946",
+      "source": "매일경제",
+      "source_body_digest": "bc3268b28dd6b78d93b1f9671794f73c4d4ba0009094b28db04f15199b0185c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:33c779b4e7b4b4e6aa2b15823832c5ab300ff9cccdc2bb441c48b4a36f9319c0",
+      "source_fact_keys": [
+        "source_fact:v1:4b380246615a03f26c258f3bae829692f3e0ea80cca2b4470652db3f4ef0a44d",
+        "source_fact:v1:6b04ca2dc30da031090b81d242d093eaf87b04535f7feb58f960c0f5fdf8ce56",
+        "source_fact:v1:9b4378dcfdb8208fd4d47732df78a95756db975433517a8fb1b6b7f82f4cb0b3",
+        "source_fact:v1:a03c89f5a0a8f08377828810d9dc189c3f56d9ffeb2a14ff15e1eb0c48d697a2"
+      ],
+      "source_published_kst": "2026-10-06T10:00+09:00",
+      "title": "LG전자, 유럽 첫 상용 SDV에 통합 콕핏 솔루션 공급"
+    },
     "source_fact:5d10cf44ba6bd0b384801e19": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
       "lanes": {
@@ -62911,7 +63459,7 @@
       "link": "https://zdnet.co.kr/view/?no=20261006101304",
       "source": "지디넷코리아",
       "source_body_digest": "2fdd24875200c6508926ba40a34c7263e41037412e77cb3e5a9a6e521572b4ee",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_development_mou:0cbfc1955a3402589c7698874d83168c25f3e6fdf698f00a8147221bcf665e37",
       "source_fact_identity": "source_facts:v1:d0c7292f17139c6ebe640e3f80304087e043045e295a342a9eedfb85e2bdb60b",
       "source_fact_keys": [
         "source_fact:v1:29b2a628625d8a059344abe33a81672147921b23fcc4455b1a56347e7c05bec5",
@@ -63182,7 +63730,7 @@
       "link": "https://zdnet.co.kr/view/?no=20261006101304",
       "source": "지디넷코리아",
       "source_body_digest": "2fdd24875200c6508926ba40a34c7263e41037412e77cb3e5a9a6e521572b4ee",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_development_mou:0cbfc1955a3402589c7698874d83168c25f3e6fdf698f00a8147221bcf665e37",
       "source_fact_identity": "source_facts:v1:d0c7292f17139c6ebe640e3f80304087e043045e295a342a9eedfb85e2bdb60b",
       "source_fact_keys": [
         "source_fact:v1:29b2a628625d8a059344abe33a81672147921b23fcc4455b1a56347e7c05bec5",
@@ -63490,6 +64038,26 @@
       "source_published_kst": "2026-10-06T08:03+09:00",
       "title": "대신證, “삼성바이오로직스, 3분기 실적 선방⋯4분기엔 반등 전망”"
     },
+    "source_fact:68328c0e5ce90cb5442cd044": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.mk.co.kr/news/business/12168946",
+      "source": "매일경제",
+      "source_body_digest": "bc3268b28dd6b78d93b1f9671794f73c4d4ba0009094b28db04f15199b0185c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:33c779b4e7b4b4e6aa2b15823832c5ab300ff9cccdc2bb441c48b4a36f9319c0",
+      "source_fact_keys": [
+        "source_fact:v1:4b380246615a03f26c258f3bae829692f3e0ea80cca2b4470652db3f4ef0a44d",
+        "source_fact:v1:6b04ca2dc30da031090b81d242d093eaf87b04535f7feb58f960c0f5fdf8ce56",
+        "source_fact:v1:9b4378dcfdb8208fd4d47732df78a95756db975433517a8fb1b6b7f82f4cb0b3",
+        "source_fact:v1:a03c89f5a0a8f08377828810d9dc189c3f56d9ffeb2a14ff15e1eb0c48d697a2"
+      ],
+      "source_published_kst": "2026-10-06T10:00+09:00",
+      "title": "LG전자, 유럽 첫 상용 SDV에 통합 콕핏 솔루션 공급"
+    },
     "source_fact:68526fe088313532b0db9049": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -63615,6 +64183,27 @@
       "source_published_kst": "2026-10-05T10:20+09:00",
       "title": "[반도체 라이징 스타]<6>엑시나, 스스로 계산하는 메모리로 AI 인프라 비용 낮춘다"
     },
+    "source_fact:696000bb55d9b548746f42e0": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006103835",
+      "source": "지디넷코리아",
+      "source_body_digest": "9eecc7266e300ba4a6500b91cfaf7f3457b952840115160a89df5dd162af011f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a7b35c167ceeb2598a01d34100c13a64f6a3e76c270e1ceba049ae3cb5e5dcf4",
+      "source_fact_keys": [
+        "source_fact:v1:1969c25ca486931156d3218e4a74211c943cfcc6794636601958232abc6b367c",
+        "source_fact:v1:3858a6214562aa846e42b9f2612954879fc7bdfe96ffe0376c325fb8549c185f",
+        "source_fact:v1:81c7b0d458474de0f0b2e0fdbc64137377949e115c10a31a56c4e966a9777d58",
+        "source_fact:v1:956546c4594c7671f1807a848cd63fe58a1acd2740c5359253f1979646430c96",
+        "source_fact:v1:af4bb86c882cbff79cc620cf7375c160cf575637a2dbca81efd5518dcfa37400"
+      ],
+      "source_published_kst": "2026-10-06T10:44+09:00",
+      "title": "엑시나, 포트래이와 CXL 기반 바이오 데이터 인프라 구축 '맞손'"
+    },
     "source_fact:696eb9a4f519d9b276823134": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
       "lanes": {
@@ -63653,6 +64242,33 @@
       ],
       "source_published_kst": "2026-10-05T18:35+09:00",
       "title": "서학개미 '속도조절'… 반도체 팔고 초단기 국채 샀다"
+    },
+    "source_fact:698f1d5412d7cb7561e8531b": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03217686645610296",
+      "source": "이데일리",
+      "source_body_digest": "7f2270d55e18ee68683e61b4e92e5359be26909e57f102ff79b3f5cb0754199c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9734e8224162b106f0aa5a4cb2c64b694d4ed3557694215942d43dc676248233",
+      "source_fact_keys": [
+        "source_fact:v1:2e3241e32dd0d2f0278c1ab97650e75e52b2a4e91ddc81c8997aad2c8f71a76f",
+        "source_fact:v1:453619fa4d99de4bf4fc3e696c1179471964d96f2ecdf00e4b72773f63838227",
+        "source_fact:v1:567fa6015687c51a94b16994382a287e6e7d2e348a4fb7e63f58988437681a8f",
+        "source_fact:v1:6206a05a7665e38e45ca6f62975fb5e07bb32d16ddd2c4166fb144aaca3ef245",
+        "source_fact:v1:8f6492fb10198a5097e936377461db2f64e758c83fb95265a19850e407c0010c",
+        "source_fact:v1:99bcbedafd20691d9e6b2b3c00fc368f563a5679d29276661ce657b112fc5734",
+        "source_fact:v1:9beb15f718ccebce632a6e68178433118810a3604972f159b572a912016f7dfc",
+        "source_fact:v1:a7358c8f913b6d17303a99a2d526b951ed5225ffbeeb74c8c3ce9250e5ca3787",
+        "source_fact:v1:cc17ab4ff904e718ba130085782333fee1952fc2c88dec3e37aa1a512fb627fb",
+        "source_fact:v1:dc9a9d08cdbef408a2e2618806b3d61d1753372fe3df8f14032ebd38d7cf1907",
+        "source_fact:v1:f3ce867021f9b75086e86ed004c324b252874d1f8806106da79c60a3175bce33"
+      ],
+      "source_published_kst": "2026-10-06T10:59+09:00",
+      "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 공급"
     },
     "source_fact:69e88c8be7a4ad9ae3d321a6": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -63789,7 +64405,7 @@
       "link": "https://zdnet.co.kr/view/?no=20261006101304",
       "source": "지디넷코리아",
       "source_body_digest": "2fdd24875200c6508926ba40a34c7263e41037412e77cb3e5a9a6e521572b4ee",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_development_mou:0cbfc1955a3402589c7698874d83168c25f3e6fdf698f00a8147221bcf665e37",
       "source_fact_identity": "source_facts:v1:d0c7292f17139c6ebe640e3f80304087e043045e295a342a9eedfb85e2bdb60b",
       "source_fact_keys": [
         "source_fact:v1:29b2a628625d8a059344abe33a81672147921b23fcc4455b1a56347e7c05bec5",
@@ -64216,6 +64832,27 @@
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
     },
+    "source_fact:6f705927f09e740fa9bc2d70": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006103835",
+      "source": "지디넷코리아",
+      "source_body_digest": "9eecc7266e300ba4a6500b91cfaf7f3457b952840115160a89df5dd162af011f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a7b35c167ceeb2598a01d34100c13a64f6a3e76c270e1ceba049ae3cb5e5dcf4",
+      "source_fact_keys": [
+        "source_fact:v1:1969c25ca486931156d3218e4a74211c943cfcc6794636601958232abc6b367c",
+        "source_fact:v1:3858a6214562aa846e42b9f2612954879fc7bdfe96ffe0376c325fb8549c185f",
+        "source_fact:v1:81c7b0d458474de0f0b2e0fdbc64137377949e115c10a31a56c4e966a9777d58",
+        "source_fact:v1:956546c4594c7671f1807a848cd63fe58a1acd2740c5359253f1979646430c96",
+        "source_fact:v1:af4bb86c882cbff79cc620cf7375c160cf575637a2dbca81efd5518dcfa37400"
+      ],
+      "source_published_kst": "2026-10-06T10:44+09:00",
+      "title": "엑시나, 포트래이와 CXL 기반 바이오 데이터 인프라 구축 '맞손'"
+    },
     "source_fact:6f7b8f9b7a258e7ad1ba2ed1": {
       "first_seen_kst": "2026-10-06T06:44:01+09:00",
       "lanes": {
@@ -64393,6 +65030,27 @@
       ],
       "source_published_kst": "2026-10-06T10:16+09:00",
       "title": "엠플러스, 유럽 배터리 기업에 각형 장비 공급…방산·항공우주로 고객군 확대"
+    },
+    "source_fact:712cf87bc90368a34032890b": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006103835",
+      "source": "지디넷코리아",
+      "source_body_digest": "9eecc7266e300ba4a6500b91cfaf7f3457b952840115160a89df5dd162af011f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a7b35c167ceeb2598a01d34100c13a64f6a3e76c270e1ceba049ae3cb5e5dcf4",
+      "source_fact_keys": [
+        "source_fact:v1:1969c25ca486931156d3218e4a74211c943cfcc6794636601958232abc6b367c",
+        "source_fact:v1:3858a6214562aa846e42b9f2612954879fc7bdfe96ffe0376c325fb8549c185f",
+        "source_fact:v1:81c7b0d458474de0f0b2e0fdbc64137377949e115c10a31a56c4e966a9777d58",
+        "source_fact:v1:956546c4594c7671f1807a848cd63fe58a1acd2740c5359253f1979646430c96",
+        "source_fact:v1:af4bb86c882cbff79cc620cf7375c160cf575637a2dbca81efd5518dcfa37400"
+      ],
+      "source_published_kst": "2026-10-06T10:44+09:00",
+      "title": "엑시나, 포트래이와 CXL 기반 바이오 데이터 인프라 구축 '맞손'"
     },
     "source_fact:714604805898407311bd5a31": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
@@ -64788,7 +65446,7 @@
       "link": "https://zdnet.co.kr/view/?no=20261006101304",
       "source": "지디넷코리아",
       "source_body_digest": "2fdd24875200c6508926ba40a34c7263e41037412e77cb3e5a9a6e521572b4ee",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_development_mou:0cbfc1955a3402589c7698874d83168c25f3e6fdf698f00a8147221bcf665e37",
       "source_fact_identity": "source_facts:v1:d0c7292f17139c6ebe640e3f80304087e043045e295a342a9eedfb85e2bdb60b",
       "source_fact_keys": [
         "source_fact:v1:29b2a628625d8a059344abe33a81672147921b23fcc4455b1a56347e7c05bec5",
@@ -65642,6 +66300,33 @@
       ],
       "source_published_kst": "2026-10-05T21:20+09:00",
       "title": "이 대통령 \"부동산투기공화국 탈출 약속 반드시 지킬 것\"…하루에만 SNS 11건(종합2보)"
+    },
+    "source_fact:7b37005bfdfd258814ed6662": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03217686645610296",
+      "source": "이데일리",
+      "source_body_digest": "7f2270d55e18ee68683e61b4e92e5359be26909e57f102ff79b3f5cb0754199c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9734e8224162b106f0aa5a4cb2c64b694d4ed3557694215942d43dc676248233",
+      "source_fact_keys": [
+        "source_fact:v1:2e3241e32dd0d2f0278c1ab97650e75e52b2a4e91ddc81c8997aad2c8f71a76f",
+        "source_fact:v1:453619fa4d99de4bf4fc3e696c1179471964d96f2ecdf00e4b72773f63838227",
+        "source_fact:v1:567fa6015687c51a94b16994382a287e6e7d2e348a4fb7e63f58988437681a8f",
+        "source_fact:v1:6206a05a7665e38e45ca6f62975fb5e07bb32d16ddd2c4166fb144aaca3ef245",
+        "source_fact:v1:8f6492fb10198a5097e936377461db2f64e758c83fb95265a19850e407c0010c",
+        "source_fact:v1:99bcbedafd20691d9e6b2b3c00fc368f563a5679d29276661ce657b112fc5734",
+        "source_fact:v1:9beb15f718ccebce632a6e68178433118810a3604972f159b572a912016f7dfc",
+        "source_fact:v1:a7358c8f913b6d17303a99a2d526b951ed5225ffbeeb74c8c3ce9250e5ca3787",
+        "source_fact:v1:cc17ab4ff904e718ba130085782333fee1952fc2c88dec3e37aa1a512fb627fb",
+        "source_fact:v1:dc9a9d08cdbef408a2e2618806b3d61d1753372fe3df8f14032ebd38d7cf1907",
+        "source_fact:v1:f3ce867021f9b75086e86ed004c324b252874d1f8806106da79c60a3175bce33"
+      ],
+      "source_published_kst": "2026-10-06T10:59+09:00",
+      "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 공급"
     },
     "source_fact:7be082036b951e9eee45a9ea": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -68019,6 +68704,33 @@
       "source_published_kst": "2026-10-06T08:07+09:00",
       "title": "[증시키워드] 삼전 실적 대기…HLB 신약 모멘텀에 관심도↑"
     },
+    "source_fact:91c289d717f6adf8b4fa563d": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03217686645610296",
+      "source": "이데일리",
+      "source_body_digest": "7f2270d55e18ee68683e61b4e92e5359be26909e57f102ff79b3f5cb0754199c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9734e8224162b106f0aa5a4cb2c64b694d4ed3557694215942d43dc676248233",
+      "source_fact_keys": [
+        "source_fact:v1:2e3241e32dd0d2f0278c1ab97650e75e52b2a4e91ddc81c8997aad2c8f71a76f",
+        "source_fact:v1:453619fa4d99de4bf4fc3e696c1179471964d96f2ecdf00e4b72773f63838227",
+        "source_fact:v1:567fa6015687c51a94b16994382a287e6e7d2e348a4fb7e63f58988437681a8f",
+        "source_fact:v1:6206a05a7665e38e45ca6f62975fb5e07bb32d16ddd2c4166fb144aaca3ef245",
+        "source_fact:v1:8f6492fb10198a5097e936377461db2f64e758c83fb95265a19850e407c0010c",
+        "source_fact:v1:99bcbedafd20691d9e6b2b3c00fc368f563a5679d29276661ce657b112fc5734",
+        "source_fact:v1:9beb15f718ccebce632a6e68178433118810a3604972f159b572a912016f7dfc",
+        "source_fact:v1:a7358c8f913b6d17303a99a2d526b951ed5225ffbeeb74c8c3ce9250e5ca3787",
+        "source_fact:v1:cc17ab4ff904e718ba130085782333fee1952fc2c88dec3e37aa1a512fb627fb",
+        "source_fact:v1:dc9a9d08cdbef408a2e2618806b3d61d1753372fe3df8f14032ebd38d7cf1907",
+        "source_fact:v1:f3ce867021f9b75086e86ed004c324b252874d1f8806106da79c60a3175bce33"
+      ],
+      "source_published_kst": "2026-10-06T10:59+09:00",
+      "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 공급"
+    },
     "source_fact:91dd0c2be48b58874a576a1f": {
       "first_seen_kst": "2026-10-05T23:05:12+09:00",
       "lanes": {
@@ -68217,6 +68929,33 @@
       "source_published_kst": "2026-10-05T23:40+09:00",
       "title": "美 서비스 물가 4년 만에 최고치…고용도 다시 확장세"
     },
+    "source_fact:945db066d1af819a02af56db": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03217686645610296",
+      "source": "이데일리",
+      "source_body_digest": "7f2270d55e18ee68683e61b4e92e5359be26909e57f102ff79b3f5cb0754199c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9734e8224162b106f0aa5a4cb2c64b694d4ed3557694215942d43dc676248233",
+      "source_fact_keys": [
+        "source_fact:v1:2e3241e32dd0d2f0278c1ab97650e75e52b2a4e91ddc81c8997aad2c8f71a76f",
+        "source_fact:v1:453619fa4d99de4bf4fc3e696c1179471964d96f2ecdf00e4b72773f63838227",
+        "source_fact:v1:567fa6015687c51a94b16994382a287e6e7d2e348a4fb7e63f58988437681a8f",
+        "source_fact:v1:6206a05a7665e38e45ca6f62975fb5e07bb32d16ddd2c4166fb144aaca3ef245",
+        "source_fact:v1:8f6492fb10198a5097e936377461db2f64e758c83fb95265a19850e407c0010c",
+        "source_fact:v1:99bcbedafd20691d9e6b2b3c00fc368f563a5679d29276661ce657b112fc5734",
+        "source_fact:v1:9beb15f718ccebce632a6e68178433118810a3604972f159b572a912016f7dfc",
+        "source_fact:v1:a7358c8f913b6d17303a99a2d526b951ed5225ffbeeb74c8c3ce9250e5ca3787",
+        "source_fact:v1:cc17ab4ff904e718ba130085782333fee1952fc2c88dec3e37aa1a512fb627fb",
+        "source_fact:v1:dc9a9d08cdbef408a2e2618806b3d61d1753372fe3df8f14032ebd38d7cf1907",
+        "source_fact:v1:f3ce867021f9b75086e86ed004c324b252874d1f8806106da79c60a3175bce33"
+      ],
+      "source_published_kst": "2026-10-06T10:59+09:00",
+      "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 공급"
+    },
     "source_fact:947247a7d10d041a8286ee90": {
       "first_seen_kst": "2026-10-05T23:05:12+09:00",
       "lanes": {
@@ -68368,7 +69107,7 @@
       "link": "https://zdnet.co.kr/view/?no=20261006101304",
       "source": "지디넷코리아",
       "source_body_digest": "2fdd24875200c6508926ba40a34c7263e41037412e77cb3e5a9a6e521572b4ee",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_development_mou:0cbfc1955a3402589c7698874d83168c25f3e6fdf698f00a8147221bcf665e37",
       "source_fact_identity": "source_facts:v1:d0c7292f17139c6ebe640e3f80304087e043045e295a342a9eedfb85e2bdb60b",
       "source_fact_keys": [
         "source_fact:v1:29b2a628625d8a059344abe33a81672147921b23fcc4455b1a56347e7c05bec5",
@@ -68539,6 +69278,27 @@
       ],
       "source_published_kst": "2026-10-05T23:11+09:00",
       "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
+    },
+    "source_fact:96835c9ccb9f16b4073579b7": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006103835",
+      "source": "지디넷코리아",
+      "source_body_digest": "9eecc7266e300ba4a6500b91cfaf7f3457b952840115160a89df5dd162af011f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a7b35c167ceeb2598a01d34100c13a64f6a3e76c270e1ceba049ae3cb5e5dcf4",
+      "source_fact_keys": [
+        "source_fact:v1:1969c25ca486931156d3218e4a74211c943cfcc6794636601958232abc6b367c",
+        "source_fact:v1:3858a6214562aa846e42b9f2612954879fc7bdfe96ffe0376c325fb8549c185f",
+        "source_fact:v1:81c7b0d458474de0f0b2e0fdbc64137377949e115c10a31a56c4e966a9777d58",
+        "source_fact:v1:956546c4594c7671f1807a848cd63fe58a1acd2740c5359253f1979646430c96",
+        "source_fact:v1:af4bb86c882cbff79cc620cf7375c160cf575637a2dbca81efd5518dcfa37400"
+      ],
+      "source_published_kst": "2026-10-06T10:44+09:00",
+      "title": "엑시나, 포트래이와 CXL 기반 바이오 데이터 인프라 구축 '맞손'"
     },
     "source_fact:96bcda0b0de8fddcaa241657": {
       "first_seen_kst": "2026-10-05T22:49:24+09:00",
@@ -71126,7 +71886,7 @@
       "link": "https://zdnet.co.kr/view/?no=20261006101304",
       "source": "지디넷코리아",
       "source_body_digest": "2fdd24875200c6508926ba40a34c7263e41037412e77cb3e5a9a6e521572b4ee",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_development_mou:0cbfc1955a3402589c7698874d83168c25f3e6fdf698f00a8147221bcf665e37",
       "source_fact_identity": "source_facts:v1:d0c7292f17139c6ebe640e3f80304087e043045e295a342a9eedfb85e2bdb60b",
       "source_fact_keys": [
         "source_fact:v1:29b2a628625d8a059344abe33a81672147921b23fcc4455b1a56347e7c05bec5",
@@ -71611,6 +72371,33 @@
       "source_published_kst": "2026-10-06T06:10+09:00",
       "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
     },
+    "source_fact:b3651549a855f2e1187cd77d": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03217686645610296",
+      "source": "이데일리",
+      "source_body_digest": "7f2270d55e18ee68683e61b4e92e5359be26909e57f102ff79b3f5cb0754199c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9734e8224162b106f0aa5a4cb2c64b694d4ed3557694215942d43dc676248233",
+      "source_fact_keys": [
+        "source_fact:v1:2e3241e32dd0d2f0278c1ab97650e75e52b2a4e91ddc81c8997aad2c8f71a76f",
+        "source_fact:v1:453619fa4d99de4bf4fc3e696c1179471964d96f2ecdf00e4b72773f63838227",
+        "source_fact:v1:567fa6015687c51a94b16994382a287e6e7d2e348a4fb7e63f58988437681a8f",
+        "source_fact:v1:6206a05a7665e38e45ca6f62975fb5e07bb32d16ddd2c4166fb144aaca3ef245",
+        "source_fact:v1:8f6492fb10198a5097e936377461db2f64e758c83fb95265a19850e407c0010c",
+        "source_fact:v1:99bcbedafd20691d9e6b2b3c00fc368f563a5679d29276661ce657b112fc5734",
+        "source_fact:v1:9beb15f718ccebce632a6e68178433118810a3604972f159b572a912016f7dfc",
+        "source_fact:v1:a7358c8f913b6d17303a99a2d526b951ed5225ffbeeb74c8c3ce9250e5ca3787",
+        "source_fact:v1:cc17ab4ff904e718ba130085782333fee1952fc2c88dec3e37aa1a512fb627fb",
+        "source_fact:v1:dc9a9d08cdbef408a2e2618806b3d61d1753372fe3df8f14032ebd38d7cf1907",
+        "source_fact:v1:f3ce867021f9b75086e86ed004c324b252874d1f8806106da79c60a3175bce33"
+      ],
+      "source_published_kst": "2026-10-06T10:59+09:00",
+      "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 공급"
+    },
     "source_fact:b365ebe79dc1811e9a472b7b": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -71988,6 +72775,33 @@
       ],
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "외국인·명품 소비에 비용 절감까지…백화점 3사, 3분기 실적 ‘청신호’"
+    },
+    "source_fact:b7b271b9ee2db436c0a07b2e": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03217686645610296",
+      "source": "이데일리",
+      "source_body_digest": "7f2270d55e18ee68683e61b4e92e5359be26909e57f102ff79b3f5cb0754199c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9734e8224162b106f0aa5a4cb2c64b694d4ed3557694215942d43dc676248233",
+      "source_fact_keys": [
+        "source_fact:v1:2e3241e32dd0d2f0278c1ab97650e75e52b2a4e91ddc81c8997aad2c8f71a76f",
+        "source_fact:v1:453619fa4d99de4bf4fc3e696c1179471964d96f2ecdf00e4b72773f63838227",
+        "source_fact:v1:567fa6015687c51a94b16994382a287e6e7d2e348a4fb7e63f58988437681a8f",
+        "source_fact:v1:6206a05a7665e38e45ca6f62975fb5e07bb32d16ddd2c4166fb144aaca3ef245",
+        "source_fact:v1:8f6492fb10198a5097e936377461db2f64e758c83fb95265a19850e407c0010c",
+        "source_fact:v1:99bcbedafd20691d9e6b2b3c00fc368f563a5679d29276661ce657b112fc5734",
+        "source_fact:v1:9beb15f718ccebce632a6e68178433118810a3604972f159b572a912016f7dfc",
+        "source_fact:v1:a7358c8f913b6d17303a99a2d526b951ed5225ffbeeb74c8c3ce9250e5ca3787",
+        "source_fact:v1:cc17ab4ff904e718ba130085782333fee1952fc2c88dec3e37aa1a512fb627fb",
+        "source_fact:v1:dc9a9d08cdbef408a2e2618806b3d61d1753372fe3df8f14032ebd38d7cf1907",
+        "source_fact:v1:f3ce867021f9b75086e86ed004c324b252874d1f8806106da79c60a3175bce33"
+      ],
+      "source_published_kst": "2026-10-06T10:59+09:00",
+      "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 공급"
     },
     "source_fact:b7d546416865a043fd65f919": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
@@ -72472,6 +73286,25 @@
       ],
       "source_published_kst": "2026-10-05T17:46+09:00",
       "title": "원화 강세의 그늘…상장사 영업익 전망 '뒷걸음질'"
+    },
+    "source_fact:bb8498afd5881e5ea3cccaba": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.hankyung.com/article/202610064627i",
+      "source": "한국경제",
+      "source_body_digest": "7e747175e3d4f7b0dde9bb00ea84f79e49a990e3f6a26374c56e4f47ccc51cf2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29a6ff134e505776b61add3ebef1b03a1c41b94639459afa831f15e131651149",
+      "source_fact_keys": [
+        "source_fact:v1:01bfe2f10e0fe7b32c86359ebd9f49dc357b74b2b831d51ff88dca0eb8fca039",
+        "source_fact:v1:3aa9e35f9a8c111d8d394e5894a15280644781bd4ab6e58a68ee92ac728a2c20",
+        "source_fact:v1:6ee0d38d5c47283c38ba2ff973281c063f9d60457c98978c543c9969ae47cf82"
+      ],
+      "source_published_kst": "2026-10-06T09:29+09:00",
+      "title": "노벨티노빌리티, 美 바이오텍에 ADC 후보물질 NN3201 기술이전…총 7443억원"
     },
     "source_fact:bb95f84350cf4e03f739b69e": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
@@ -73026,7 +73859,7 @@
       "link": "https://zdnet.co.kr/view/?no=20261006101304",
       "source": "지디넷코리아",
       "source_body_digest": "2fdd24875200c6508926ba40a34c7263e41037412e77cb3e5a9a6e521572b4ee",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_development_mou:0cbfc1955a3402589c7698874d83168c25f3e6fdf698f00a8147221bcf665e37",
       "source_fact_identity": "source_facts:v1:d0c7292f17139c6ebe640e3f80304087e043045e295a342a9eedfb85e2bdb60b",
       "source_fact_keys": [
         "source_fact:v1:29b2a628625d8a059344abe33a81672147921b23fcc4455b1a56347e7c05bec5",
@@ -75404,6 +76237,33 @@
       "source_published_kst": "2026-10-05T11:20+09:00",
       "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
     },
+    "source_fact:d8a71633ead5859e53941d15": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03217686645610296",
+      "source": "이데일리",
+      "source_body_digest": "7f2270d55e18ee68683e61b4e92e5359be26909e57f102ff79b3f5cb0754199c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9734e8224162b106f0aa5a4cb2c64b694d4ed3557694215942d43dc676248233",
+      "source_fact_keys": [
+        "source_fact:v1:2e3241e32dd0d2f0278c1ab97650e75e52b2a4e91ddc81c8997aad2c8f71a76f",
+        "source_fact:v1:453619fa4d99de4bf4fc3e696c1179471964d96f2ecdf00e4b72773f63838227",
+        "source_fact:v1:567fa6015687c51a94b16994382a287e6e7d2e348a4fb7e63f58988437681a8f",
+        "source_fact:v1:6206a05a7665e38e45ca6f62975fb5e07bb32d16ddd2c4166fb144aaca3ef245",
+        "source_fact:v1:8f6492fb10198a5097e936377461db2f64e758c83fb95265a19850e407c0010c",
+        "source_fact:v1:99bcbedafd20691d9e6b2b3c00fc368f563a5679d29276661ce657b112fc5734",
+        "source_fact:v1:9beb15f718ccebce632a6e68178433118810a3604972f159b572a912016f7dfc",
+        "source_fact:v1:a7358c8f913b6d17303a99a2d526b951ed5225ffbeeb74c8c3ce9250e5ca3787",
+        "source_fact:v1:cc17ab4ff904e718ba130085782333fee1952fc2c88dec3e37aa1a512fb627fb",
+        "source_fact:v1:dc9a9d08cdbef408a2e2618806b3d61d1753372fe3df8f14032ebd38d7cf1907",
+        "source_fact:v1:f3ce867021f9b75086e86ed004c324b252874d1f8806106da79c60a3175bce33"
+      ],
+      "source_published_kst": "2026-10-06T10:59+09:00",
+      "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 공급"
+    },
     "source_fact:d8c02088c7b6826ceb24a120": {
       "first_seen_kst": "2026-10-06T10:41:31+09:00",
       "lanes": {
@@ -76587,6 +77447,26 @@
       "source_published_kst": "2026-10-05T08:34+09:00",
       "title": "걸프국 원유 수출 회복세에 ‘먹구름’⋯호르무즈 선박 피격 나흘새 4건"
     },
+    "source_fact:e3c39b009457623ea9ec38f5": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.mk.co.kr/news/business/12168946",
+      "source": "매일경제",
+      "source_body_digest": "bc3268b28dd6b78d93b1f9671794f73c4d4ba0009094b28db04f15199b0185c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:33c779b4e7b4b4e6aa2b15823832c5ab300ff9cccdc2bb441c48b4a36f9319c0",
+      "source_fact_keys": [
+        "source_fact:v1:4b380246615a03f26c258f3bae829692f3e0ea80cca2b4470652db3f4ef0a44d",
+        "source_fact:v1:6b04ca2dc30da031090b81d242d093eaf87b04535f7feb58f960c0f5fdf8ce56",
+        "source_fact:v1:9b4378dcfdb8208fd4d47732df78a95756db975433517a8fb1b6b7f82f4cb0b3",
+        "source_fact:v1:a03c89f5a0a8f08377828810d9dc189c3f56d9ffeb2a14ff15e1eb0c48d697a2"
+      ],
+      "source_published_kst": "2026-10-06T10:00+09:00",
+      "title": "LG전자, 유럽 첫 상용 SDV에 통합 콕핏 솔루션 공급"
+    },
     "source_fact:e4150f351c4a074787562d52": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -76886,6 +77766,33 @@
       ],
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "외국인·명품 소비에 비용 절감까지…백화점 3사, 3분기 실적 ‘청신호’"
+    },
+    "source_fact:e6deb061f94b26577781570e": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03217686645610296",
+      "source": "이데일리",
+      "source_body_digest": "7f2270d55e18ee68683e61b4e92e5359be26909e57f102ff79b3f5cb0754199c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9734e8224162b106f0aa5a4cb2c64b694d4ed3557694215942d43dc676248233",
+      "source_fact_keys": [
+        "source_fact:v1:2e3241e32dd0d2f0278c1ab97650e75e52b2a4e91ddc81c8997aad2c8f71a76f",
+        "source_fact:v1:453619fa4d99de4bf4fc3e696c1179471964d96f2ecdf00e4b72773f63838227",
+        "source_fact:v1:567fa6015687c51a94b16994382a287e6e7d2e348a4fb7e63f58988437681a8f",
+        "source_fact:v1:6206a05a7665e38e45ca6f62975fb5e07bb32d16ddd2c4166fb144aaca3ef245",
+        "source_fact:v1:8f6492fb10198a5097e936377461db2f64e758c83fb95265a19850e407c0010c",
+        "source_fact:v1:99bcbedafd20691d9e6b2b3c00fc368f563a5679d29276661ce657b112fc5734",
+        "source_fact:v1:9beb15f718ccebce632a6e68178433118810a3604972f159b572a912016f7dfc",
+        "source_fact:v1:a7358c8f913b6d17303a99a2d526b951ed5225ffbeeb74c8c3ce9250e5ca3787",
+        "source_fact:v1:cc17ab4ff904e718ba130085782333fee1952fc2c88dec3e37aa1a512fb627fb",
+        "source_fact:v1:dc9a9d08cdbef408a2e2618806b3d61d1753372fe3df8f14032ebd38d7cf1907",
+        "source_fact:v1:f3ce867021f9b75086e86ed004c324b252874d1f8806106da79c60a3175bce33"
+      ],
+      "source_published_kst": "2026-10-06T10:59+09:00",
+      "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 공급"
     },
     "source_fact:e6ea4558d3d9658307282413": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -77328,6 +78235,23 @@
       ],
       "source_published_kst": "2026-10-06T08:15+09:00",
       "title": "[오늘의 투자전략] 코스피, 금리ㆍ삼성전자 실적 주목⋯“반도체 이익 상향 재개 여부 관건”"
+    },
+    "source_fact:eb906ac772b9a670b1298bc2": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.hankyung.com/article/202610065016i",
+      "source": "한국경제",
+      "source_body_digest": "3977dd101bc1caee96f349b253489808cb1f95f9e67bd7193357bc320d0104dd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f1dd1eda031c05dc6c0cdff66335dd23f80e3e5b2df5bf8a551dbca812003988",
+      "source_fact_keys": [
+        "source_fact:v1:af31e5dfdc77027ae98632f457484cc9919ffd7b59833cc73618afffb59cc95f"
+      ],
+      "source_published_kst": "2026-10-06T11:00+09:00",
+      "title": "'한국형 인큐텔' 도입 탄력…與 오세희, '新안보 혁신기업 특별법' 발의"
     },
     "source_fact:ebb41b0d480444957bc72a71": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -78877,6 +79801,27 @@
       "source_published_kst": "2026-10-06T10:09+09:00",
       "title": "씨피시스템 \"글로벌 MLCC 제조사사 장비에 '로보킷' 채택\""
     },
+    "source_fact:fb3c2a394f15d75610a99d99": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006103835",
+      "source": "지디넷코리아",
+      "source_body_digest": "9eecc7266e300ba4a6500b91cfaf7f3457b952840115160a89df5dd162af011f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a7b35c167ceeb2598a01d34100c13a64f6a3e76c270e1ceba049ae3cb5e5dcf4",
+      "source_fact_keys": [
+        "source_fact:v1:1969c25ca486931156d3218e4a74211c943cfcc6794636601958232abc6b367c",
+        "source_fact:v1:3858a6214562aa846e42b9f2612954879fc7bdfe96ffe0376c325fb8549c185f",
+        "source_fact:v1:81c7b0d458474de0f0b2e0fdbc64137377949e115c10a31a56c4e966a9777d58",
+        "source_fact:v1:956546c4594c7671f1807a848cd63fe58a1acd2740c5359253f1979646430c96",
+        "source_fact:v1:af4bb86c882cbff79cc620cf7375c160cf575637a2dbca81efd5518dcfa37400"
+      ],
+      "source_published_kst": "2026-10-06T10:44+09:00",
+      "title": "엑시나, 포트래이와 CXL 기반 바이오 데이터 인프라 구축 '맞손'"
+    },
     "source_fact:fb4e94a977cde0c786c47889": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -80155,7 +81100,7 @@
       "link": "https://www.mt.co.kr/industry/2026/10/06/2026100608521448232",
       "source": "머니투데이",
       "source_body_digest": "85567f3baaf0e878c4fb557f5d2447d405950e305b142aa225c8bd2d727a3578",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:research_award:dd0706e217c0395f7622e6a7a5b6a627bd8b073757d233b037e1489c9cc22e4b",
       "source_fact_identity": "source_facts:v1:b82d19e750b5ec33e53aed858966be9e11d58de001c2f9714c2a90b8a1b59984",
       "source_fact_keys": [
         "source_fact:v1:9b576cae3d2ddf57a3d7fbd92de23e42fe092a9401018ff0c799e220bf84820a"
@@ -81596,6 +82541,25 @@
       "source_published_kst": "2026-10-05T22:57+09:00",
       "title": "[美특징주]RXO, CH 로빈슨에 58억달러 피인수...주가 23%↑"
     },
+    "title:1982c5ea113a6a622e10d03f": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.hankyung.com/article/202610064627i",
+      "source": "한국경제",
+      "source_body_digest": "7e747175e3d4f7b0dde9bb00ea84f79e49a990e3f6a26374c56e4f47ccc51cf2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29a6ff134e505776b61add3ebef1b03a1c41b94639459afa831f15e131651149",
+      "source_fact_keys": [
+        "source_fact:v1:01bfe2f10e0fe7b32c86359ebd9f49dc357b74b2b831d51ff88dca0eb8fca039",
+        "source_fact:v1:3aa9e35f9a8c111d8d394e5894a15280644781bd4ab6e58a68ee92ac728a2c20",
+        "source_fact:v1:6ee0d38d5c47283c38ba2ff973281c063f9d60457c98978c543c9969ae47cf82"
+      ],
+      "source_published_kst": "2026-10-06T09:29+09:00",
+      "title": "노벨티노빌리티, 美 바이오텍에 ADC 후보물질 NN3201 기술이전…총 7443억원"
+    },
     "title:19ae6e191865e7ce220b1158": {
       "first_seen_kst": "2026-10-06T01:26:06+09:00",
       "lanes": {
@@ -82324,6 +83288,21 @@
       ],
       "source_published_kst": "2026-10-06T05:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
+    },
+    "title:235ca65f2d352d36a38b410b": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006070200530",
+      "source": "연합뉴스",
+      "source_body_digest": "f288ff760ba4dbc8ec89aa8e2e0ff9dba8591f3b27672495550956d2cb28b7db",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T10:45+09:00",
+      "title": "기후장관 \"탈탄소 선도국 도약…재생에너지 100GW 조기 달성\" | 연합뉴스"
     },
     "title:23a979d3ba80300e3e9b4398": {
       "first_seen_kst": "2026-10-01T21:12:25+09:00",
@@ -83346,6 +84325,23 @@
       "link": "https://www.mk.co.kr/news/business/12156227",
       "source": "매일경제",
       "title": "“경영진 4명, 자사주 4억원어치 매입”…KG모빌리티플랫폼, 책임경영 강화"
+    },
+    "title:315d6ed2d662fbe2b958f66c": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.hankyung.com/article/202610065016i",
+      "source": "한국경제",
+      "source_body_digest": "3977dd101bc1caee96f349b253489808cb1f95f9e67bd7193357bc320d0104dd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f1dd1eda031c05dc6c0cdff66335dd23f80e3e5b2df5bf8a551dbca812003988",
+      "source_fact_keys": [
+        "source_fact:v1:af31e5dfdc77027ae98632f457484cc9919ffd7b59833cc73618afffb59cc95f"
+      ],
+      "source_published_kst": "2026-10-06T11:00+09:00",
+      "title": "'한국형 인큐텔' 도입 탄력…與 오세희, '新안보 혁신기업 특별법' 발의"
     },
     "title:3196446f176a69f036cfd37b": {
       "first_seen_kst": "2026-09-21T17:35:34+09:00",
@@ -84937,18 +85933,19 @@
     "title:4224573d96ec3a96a2eaba52": {
       "first_seen_kst": "2026-10-06T10:41:31+09:00",
       "lanes": {
-        "live": "2026-10-06T10:41:31+09:00"
+        "live": "2026-10-06T12:35:44+09:00"
       },
-      "last_seen_kst": "2026-10-06T10:41:31+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2632589",
-      "source": "이투데이",
-      "source_body_digest": "719de3a8597293d6bf699ed5c1024d0609b61429d52ad752c0db3e6576d71416",
-      "source_event_identity": "source_event:v2:commercial_delivery:953ee206c135c175fa78175d742512ff88363937ecfa2301ba75bbc046250521",
-      "source_fact_identity": "source_facts:v1:2903811876f80530f8aa6d0d0c68daafa38c2a7f602c83d6bb718fcadc480fef",
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.mk.co.kr/news/business/12168946",
+      "source": "매일경제",
+      "source_body_digest": "bc3268b28dd6b78d93b1f9671794f73c4d4ba0009094b28db04f15199b0185c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:33c779b4e7b4b4e6aa2b15823832c5ab300ff9cccdc2bb441c48b4a36f9319c0",
       "source_fact_keys": [
-        "source_fact:v1:1a61d4b9d5f07f4f75bd601e8ec67434bf61721a8ab33be9e7dab15f377fe5bc",
-        "source_fact:v1:3ec65d2f8401194290a00c83111f7421b3c27147698ea59fe545ea8527403b7f",
-        "source_fact:v1:c700b286438560cfb3ce962e62fb5bf390a7f838e7ed5103eb70b2a8f5a431de"
+        "source_fact:v1:4b380246615a03f26c258f3bae829692f3e0ea80cca2b4470652db3f4ef0a44d",
+        "source_fact:v1:6b04ca2dc30da031090b81d242d093eaf87b04535f7feb58f960c0f5fdf8ce56",
+        "source_fact:v1:9b4378dcfdb8208fd4d47732df78a95756db975433517a8fb1b6b7f82f4cb0b3",
+        "source_fact:v1:a03c89f5a0a8f08377828810d9dc189c3f56d9ffeb2a14ff15e1eb0c48d697a2"
       ],
       "source_published_kst": "2026-10-06T10:00+09:00",
       "title": "LG전자, 유럽 첫 상용 SDV에 통합 콕핏 솔루션 공급"
@@ -85700,6 +86697,33 @@
       ],
       "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
+    },
+    "title:4a53bcd5860ad9284bdd5c20": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03217686645610296",
+      "source": "이데일리",
+      "source_body_digest": "7f2270d55e18ee68683e61b4e92e5359be26909e57f102ff79b3f5cb0754199c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9734e8224162b106f0aa5a4cb2c64b694d4ed3557694215942d43dc676248233",
+      "source_fact_keys": [
+        "source_fact:v1:2e3241e32dd0d2f0278c1ab97650e75e52b2a4e91ddc81c8997aad2c8f71a76f",
+        "source_fact:v1:453619fa4d99de4bf4fc3e696c1179471964d96f2ecdf00e4b72773f63838227",
+        "source_fact:v1:567fa6015687c51a94b16994382a287e6e7d2e348a4fb7e63f58988437681a8f",
+        "source_fact:v1:6206a05a7665e38e45ca6f62975fb5e07bb32d16ddd2c4166fb144aaca3ef245",
+        "source_fact:v1:8f6492fb10198a5097e936377461db2f64e758c83fb95265a19850e407c0010c",
+        "source_fact:v1:99bcbedafd20691d9e6b2b3c00fc368f563a5679d29276661ce657b112fc5734",
+        "source_fact:v1:9beb15f718ccebce632a6e68178433118810a3604972f159b572a912016f7dfc",
+        "source_fact:v1:a7358c8f913b6d17303a99a2d526b951ed5225ffbeeb74c8c3ce9250e5ca3787",
+        "source_fact:v1:cc17ab4ff904e718ba130085782333fee1952fc2c88dec3e37aa1a512fb627fb",
+        "source_fact:v1:dc9a9d08cdbef408a2e2618806b3d61d1753372fe3df8f14032ebd38d7cf1907",
+        "source_fact:v1:f3ce867021f9b75086e86ed004c324b252874d1f8806106da79c60a3175bce33"
+      ],
+      "source_published_kst": "2026-10-06T10:59+09:00",
+      "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 공급"
     },
     "title:4a7fb88e6bf21b8afb1da61c": {
       "first_seen_kst": "2026-10-04T15:04:58+09:00",
@@ -87034,7 +88058,7 @@
       "link": "https://biz.heraldcorp.com/article/10893767",
       "source": "헤럴드경제",
       "source_body_digest": "41edde68a6c8ebdffad2c25f37e19012aee8740ffb8317f92a94610bba4fefa5",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:research_award:dd0706e217c0395f7622e6a7a5b6a627bd8b073757d233b037e1489c9cc22e4b",
       "source_fact_identity": "source_facts:v1:adabab1b36b70491543070ee746f75e40ed8e5772268dac7b3349cc085f07b39",
       "source_fact_keys": [
         "source_fact:v1:f14c6695e3e9aba53606d0fb538ae58ebef1cef1eeccfcb81f66c15c01739d89"
@@ -87200,7 +88224,7 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03138966645610296",
       "source": "이데일리",
       "source_body_digest": "696f975fb05985d57420baf81a1f7eda2d1ce008cf9ed7670ef4bd3ac4fe0a4d",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_development_mou:0cbfc1955a3402589c7698874d83168c25f3e6fdf698f00a8147221bcf665e37",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T10:42+09:00",
@@ -90632,6 +91656,21 @@
       "source": "한국경제",
       "title": "건원엔지니어링, 목동4단지 재건축 CM 우선협상대상자 선정"
     },
+    "title:8b1a7fd0225b50388c09c11f": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006064200001",
+      "source": "연합뉴스",
+      "source_body_digest": "27a6625a05ec5b5cc28260e35844c55f81cd7cd7092a92080b02a4bf713cbc7d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T11:00+09:00",
+      "title": "디스플레이 산업 규제 개선…수입 간소화·AI가이드 마련 | 연합뉴스"
+    },
     "title:8b2d44fef0ead79821395e60": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
       "lanes": {
@@ -91647,7 +92686,7 @@
       "link": "https://zdnet.co.kr/view/?no=20261006101304",
       "source": "지디넷코리아",
       "source_body_digest": "2fdd24875200c6508926ba40a34c7263e41037412e77cb3e5a9a6e521572b4ee",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_development_mou:0cbfc1955a3402589c7698874d83168c25f3e6fdf698f00a8147221bcf665e37",
       "source_fact_identity": "source_facts:v1:d0c7292f17139c6ebe640e3f80304087e043045e295a342a9eedfb85e2bdb60b",
       "source_fact_keys": [
         "source_fact:v1:29b2a628625d8a059344abe33a81672147921b23fcc4455b1a56347e7c05bec5",
@@ -99441,6 +100480,27 @@
       "source_published_kst": "2026-10-05T10:59+09:00",
       "title": "“국내서 접하기 힘든 해외 AI 한곳 에”…LG유플러스가 ‘유독’으로 들여온다"
     },
+    "title:fbbf971d130a4ccab5110196": {
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006103835",
+      "source": "지디넷코리아",
+      "source_body_digest": "9eecc7266e300ba4a6500b91cfaf7f3457b952840115160a89df5dd162af011f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a7b35c167ceeb2598a01d34100c13a64f6a3e76c270e1ceba049ae3cb5e5dcf4",
+      "source_fact_keys": [
+        "source_fact:v1:1969c25ca486931156d3218e4a74211c943cfcc6794636601958232abc6b367c",
+        "source_fact:v1:3858a6214562aa846e42b9f2612954879fc7bdfe96ffe0376c325fb8549c185f",
+        "source_fact:v1:81c7b0d458474de0f0b2e0fdbc64137377949e115c10a31a56c4e966a9777d58",
+        "source_fact:v1:956546c4594c7671f1807a848cd63fe58a1acd2740c5359253f1979646430c96",
+        "source_fact:v1:af4bb86c882cbff79cc620cf7375c160cf575637a2dbca81efd5518dcfa37400"
+      ],
+      "source_published_kst": "2026-10-06T10:44+09:00",
+      "title": "엑시나, 포트래이와 CXL 기반 바이오 데이터 인프라 구축 '맞손'"
+    },
     "title:fbc01c0d91c82cdf3db93263": {
       "first_seen_kst": "2026-10-05T13:15:14+09:00",
       "lanes": {
@@ -99818,5 +100878,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T12:10:48+09:00"
+  "updated_at_kst": "2026-10-06T12:35:44+09:00"
 }
