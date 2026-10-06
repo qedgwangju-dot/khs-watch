@@ -229,6 +229,36 @@ def _new_tanker_attack_variant(row):
     return any(x in t for x in ("another tanker", "additional tanker", "fourth tanker", "fifth tanker", "추가 유조선", "또 다른 유조선", "4번째 유조선", "5번째 유조선"))
 
 
+def _hormuz_on_peace_attack(row):
+    t = _text(row).lower()
+    hormuz = any(x in t for x in ("hormuz", "호르무즈"))
+    vessel = any(x in t for x in ("mt on peace", "on peace", "온 피스", "온피스"))
+    panama_12 = (
+        any(x in t for x in ("panama-flagged", "panama flagged", "파나마 선적", "파나마 국적", "파나마"))
+        and any(x in t for x in ("12 crew", "12 seafarers", "12 injured", "12명 부상", "12명이 부상"))
+    )
+    strike = any(x in t for x in (
+        "struck by a projectile", "hit by a projectile", "projectile struck", "tanker attacked",
+        "피격", "공격", "발사체",
+    ))
+    return hormuz and strike and (vessel or panama_12)
+
+
+def _iran_south_unattributed_explosions(row):
+    t = _text(row).lower()
+    south = any(x in t for x in (
+        "sirik", "qeshm", "keshm", "minab", "hormozgan",
+        "시리크", "게슘", "케슘", "미나브", "호르무즈간",
+    ))
+    explosion = any(x in t for x in ("explosion", "explosions", "blast", "blasts", "폭발", "폭발음"))
+    explicit_attack = any(x in t for x in (
+        "hostile projectile", "enemy attack", "air strike", "airstrike",
+        "missile strike", "drone strike", "projectile hit", "projectiles hit",
+        "적의 공격", "공습", "미사일 공격", "드론 공격", "발사체 피격", "발사체가 타격",
+    ))
+    return south and explosion and not explicit_attack
+
+
 def _israel_oct7_abroad_warning(row):
     t = _text(row).lower()
     israel = any(x in t for x in ("israel", "israeli", "이스라엘"))
@@ -398,6 +428,10 @@ def marks(row):
         out.append("루코일종전협상연계상업거래")
     if _hormuz_tanker_attack(row):
         out.append("호르무즈유조선피격클러스터")
+    if _hormuz_on_peace_attack(row):
+        out.append("호르무즈온피스유조선피격")
+    if _iran_south_unattributed_explosions(row):
+        out.append("이란남부폭발원인미확정")
     if _israel_oct7_abroad_warning(row):
         out.append("이스라엘10월7일해외공격위험경고")
     if _saudi_houthi_airport_refinery_cluster(row):
@@ -426,6 +460,10 @@ def korean_title(ms):
         return "메드베데프, 우크라이나 종전 조건 재확인 — 실제 합의 진전이 아닌 러시아 측 입장 표명"
     if "루코일종전협상연계상업거래" in ms:
         return "종전 협상 과정에서 루코일 해외자산 매각 논의 — 휴전 진전과 별개의 상업거래"
+    if "호르무즈온피스유조선피격" in ms:
+        return "호르무즈 해협서 MT On Peace 발사체 피격 — 선원 12명 부상(인도인 11명), 오만으로 치료 이송·공격 주체 미확정"
+    if "이란남부폭발원인미확정" in ms:
+        return "이란 남부 시리크·게슘·미나브 일대 폭발음 — 원인·공격 주체 미확정, 발사체·공습 공식 확인 대기"
     if "호르무즈유조선피격클러스터" in ms:
         return "호르무즈 유조선 피격 지속 — 미확인 발사체·선박 피해를 실제 해상안보 사건으로 추적"
     if "이스라엘10월7일해외공격위험경고" in ms:
@@ -454,8 +492,12 @@ def signals(ms):
         out.append("🟡 메드베데프가 우크라이나 평화 조건을 재확인한 입장 표명 — 회담 타결·휴전 합의로 승격하지 않음")
     if "루코일종전협상연계상업거래" in ms:
         out.append("🟡 푸틴·미 특사 간 루코일 해외자산 매각 논의 — 종전회담과 같은 자리에서 논의됐지만 휴전 진전 자체는 아님")
-    if "호르무즈유조선피격클러스터" in ms:
+    if "호르무즈온피스유조선피격" in ms:
+        out.append("🔴 MT On Peace가 호르무즈 해협에서 발사체에 피격돼 선원 12명이 부상(인도인 11명) — 오만 당국이 치료 이송, 공격 주체는 미확정")
+    elif "호르무즈유조선피격클러스터" in ms:
         out.append("🔴 UKMTO 기준 호르무즈·오만 인근 유조선의 미확인 발사체 피격이 반복 — 동일 사건 재인용과 실제 추가 피격을 분리")
+    if "이란남부폭발원인미확정" in ms:
+        out.append("🟡 이란 남부 시리크·게슘·미나브 일대에서 복수 폭발음 보도 — 원인·공격 주체가 확인되기 전에는 실제 공습·피격으로 승격하지 않음")
     if "이스라엘10월7일해외공격위험경고" in ms:
         out.append("🟡 이스라엘 국가안보회의가 10월 7일 3주년 전후 해외 공격 위험 증가를 경고 — 실제 공격 발생과는 구분")
     if "목하탈환공세" in ms:
@@ -471,7 +513,8 @@ def signals(ms):
         "후티리야드아람코공격주장", "리야드아람코화재원인미확정",
         "러정유시설보복공격확대예고", "러시아종전조건입장표명",
         "루코일종전협상연계상업거래", "호르무즈유조선피격클러스터",
-        "이스라엘10월7일해외공격위험경고",
+        "이스라엘10월7일해외공격위험경고", "호르무즈온피스유조선피격",
+        "이란남부폭발원인미확정",
         "목하탈환공세", "러시아국방부타격주장", "TASS러시아최대드론공격집계",
     }
     if set(ms) & custom:
@@ -497,7 +540,7 @@ def score_item(row, now):
     yellow = {
         "러정유시설보복공격확대예고", "리야드아람코화재원인미확정",
         "러시아종전조건입장표명", "루코일종전협상연계상업거래",
-        "이스라엘10월7일해외공격위험경고",
+        "이스라엘10월7일해외공격위험경고", "이란남부폭발원인미확정",
     }
     if ms & yellow:
         tags = [t for t in tags if t not in ("확전", "휴전·평화", "재건", "종전·협상")]
@@ -520,6 +563,18 @@ def score_item(row, now):
         tags = [t for t in tags if t not in ("확전", "휴전·평화", "재건", "종전·협상")]
         tags += ["이스라엘", "해외안보경고", "실제공격아님"]
         score = max(score, 98)
+    if "이란남부폭발원인미확정" in ms:
+        row["title_ko"] = korean_title(ms)
+        row["signals_ko"] = []
+        tags = [t for t in tags if t not in ("확전", "휴전·평화", "재건", "종전·협상")]
+        tags += ["이란·호르무즈", "원인미확정", "공식확인대기"]
+        score = max(score, 98)
+    if "호르무즈온피스유조선피격" in ms:
+        row["title_ko"] = korean_title(ms)
+        row["signals_ko"] = []
+        tags = [t for t in tags if t not in ("휴전·평화", "재건", "종전·협상")]
+        tags += ["이란·호르무즈", "확전", "해상안보", "유조선피격", "MT On Peace", "선원12명부상"]
+        score = max(score, 100)
     if "호르무즈유조선피격클러스터" in ms:
         tags = [t for t in tags if t not in ("휴전·평화", "재건", "종전·협상")]
         tags += ["이란·호르무즈", "확전", "해상안보", "유조선피격"]
@@ -568,6 +623,11 @@ def _stable_source_url(row):
 
 
 def item_id(row):
+    if _hormuz_on_peace_attack(row):
+        return hashlib.sha256("event|hormuz|mt-on-peace|2026-10-06".encode()).hexdigest()[:20]
+    if _iran_south_unattributed_explosions(row):
+        key = f"iran-south|unattributed-explosions|{_published_day(row)}"
+        return hashlib.sha256(("event|" + key).encode()).hexdigest()[:20]
     if _saudi_houthi_airport_refinery_cluster(row):
         key = f"saudi-houthi|airport-refinery-attack|{_cluster_day(row, 6)}"
         if _new_saudi_houthi_attack_variant(row):
@@ -612,6 +672,10 @@ def topic_label(row):
         return "우크라이나·러시아 · 종전 조건 입장"
     if "루코일종전협상연계상업거래" in ms:
         return "우크라이나·러시아 · 종전협상 연계 상업거래"
+    if "호르무즈온피스유조선피격" in ms:
+        return "이란·호르무즈 · MT On Peace 피격"
+    if "이란남부폭발원인미확정" in ms:
+        return "이란 남부 · 폭발 원인 미확정"
     if "호르무즈유조선피격클러스터" in ms:
         return "이란·호르무즈 · 유조선 피격"
     if "이스라엘10월7일해외공격위험경고" in ms:
@@ -641,9 +705,11 @@ def final_color(row):
     if ms & {
         "러정유시설보복공격확대예고", "리야드아람코화재원인미확정",
         "러시아종전조건입장표명", "루코일종전협상연계상업거래",
-        "이스라엘10월7일해외공격위험경고",
+        "이스라엘10월7일해외공격위험경고", "이란남부폭발원인미확정",
     }:
         return "yellow"
+    if "호르무즈온피스유조선피격" in ms:
+        return "red"
     if "호르무즈유조선피격클러스터" in ms:
         return "red"
     if ms & {"목하탈환공세", "러시아국방부타격주장", "TASS러시아최대드론공격집계"}:
@@ -726,6 +792,10 @@ def semantic_fix(text):
         topic = None
         if any(x in block for x in ("리야드 aramco 시설 미사일·드론 공격 주장", "리야드 aramco 시설을 탄도미사일·드론으로 공격했다고 주장")):
             marker, topic = "🔴", "사우디·후티 · Aramco 공격 주장"
+        elif any(x in block for x in ("mt on peace", "선원 12명 부상(인도인 11명)")):
+            marker, topic = "🔴", "이란·호르무즈 · MT On Peace 피격"
+        elif any(x in block for x in ("원인·공격 주체 미확정", "원인 미확정 단계, 발사체·공습 확인 여부 추적")) and any(x in block for x in ("시리크", "게슘", "미나브")):
+            marker, topic = "🟡", "이란 남부 · 폭발 원인 미확정"
         elif any(x in block for x in ("유조선 피격 지속", "유조선 잇달아 피격", "유조선 2척 피격")):
             marker, topic = "🔴", "이란·호르무즈 · 유조선 피격"
         elif any(x in block for x in ("정유시설 공격 확대 예고", "실제 신규 피격 확인과 구분")):
@@ -814,6 +884,10 @@ def verify_alert(test_mode=False):
         issues.append("이스라엘 10월 7일 3주년 해외 공격위험 경고 제목을 오역")
     if re.search(r"(?ms)^🔴\s+\[(?:속보|신규|후속)\]\s+<b>\d+\.[^<]*</b>\n[^\n]*(?:10월 7일 3주년|해외 공격 위험 증가 경고)", text):
         issues.append("이스라엘의 해외 공격위험 경고를 실제 공격·확전으로 표시")
+    if re.search(r"(?ms)^🔴\s+\[(?:속보|신규|후속)\]\s+<b>\d+\.[^<]*</b>\n[^\n]*(?:시리크|게슘|미나브)[^\n]*(?:원인 미확정|원인·공격 주체 미확정)", text):
+        issues.append("이란 남부 원인 미확정 폭발음을 실제 공격·확전으로 표시")
+    if ("mt on peace" in low or "온 피스" in text) and "12명" in text and "부상" in text and "공격 주체" not in text:
+        issues.append("MT On Peace 피격의 피해·공격주체 확인 수준을 구분하지 않음")
     if issues:
         raise RuntimeError("WAR_OCT04_QUALITY_GATE: " + " | ".join(issues))
 
