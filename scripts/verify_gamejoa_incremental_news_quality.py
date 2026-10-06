@@ -39,6 +39,8 @@ NOISE_FIXTURE = json.loads((ROOT / "data/gamejoa_market_noise_fixtures_20261005.
 NOISE_CASES = {case["id"]: case for case in NOISE_FIXTURE["cases"]}
 BROKER_FIXTURE = json.loads((ROOT / "data/gamejoa_broker_report_fixtures_20261006.json").read_text(encoding="utf-8"))
 BROKER_CASES = {case["id"]: case for case in BROKER_FIXTURE["cases"]}
+FINAL_RUNTIME_FIXTURE = json.loads((ROOT / "data/gamejoa_final_runtime_fixtures_20261006.json").read_text(encoding="utf-8"))
+FINAL_RUNTIME_CASES = {case["id"]: case for case in FINAL_RUNTIME_FIXTURE["cases"]}
 LIVE_NOW = NOW.replace(hour=19)
 CONTRACT_BODY = "AMD는 삼성전자와 2027년 데이터센터용 인공지능(AI) 반도체 공동개발을 위한 100억원 규모의 공급 계약을 체결했다고 밝혔다."
 ADDITIONAL_FACT = " AMD는 해당 공급 계약을 위한 반도체 설비투자 예산 500억원을 확정했다고 공시했다."
@@ -80,6 +82,122 @@ def replay():
 
 
 class IncrementalNewsTests(unittest.TestCase):
+    def runtime_alert(self, key):
+        case = FINAL_RUNTIME_CASES[key]
+        return {**alert(case["title"], case["body"], case["url"]), "published": case["published"]}
+
+    def test_all_seven_actual_runtime_sources_keep_only_their_headline_change(self):
+        now = NOW.replace(day=6, hour=9)
+        for case in FINAL_RUNTIME_CASES.values():
+            with self.subTest(case=case["id"]), patch.object(radar.base, "kst_now", return_value=now):
+                item = classify(case, now)
+                selected = radar.quality_display_alerts([item], 30)
+                self.assertEqual(len(selected), 1)
+                self.assertFalse(radar.source_core_fact_errors(selected[0]))
+                self.assertTrue(radar.core_sentence_is_complete(selected[0]["telegram_core_fact"]))
+
+    def test_actual_background_and_segment_forecast_cores_are_rejected(self):
+        now = NOW.replace(day=6, hour=9)
+        for case in FINAL_RUNTIME_CASES.values():
+            if case.get("old_core"):
+                item = radar.normalize_alert_for_output(classify(case, now))
+                with self.subTest(case=case["id"]):
+                    self.assertTrue(radar.source_core_fact_errors({**item, "telegram_core_fact": case["old_core"]}))
+
+    def test_signed_smr_mou_keeps_parties_route_and_research_not_vessel_order(self):
+        item = radar.normalize_alert_for_output(classify(FINAL_RUNTIME_CASES["industrial_mou_not_sector_aspiration"], NOW.replace(day=6, hour=9)))
+        for term in ("현대글로비스", "LGL", "SMR", "한국과 미국", "공동 검토", "업무협약", "공동 연구할 예정"):
+            self.assertIn(term, item["telegram_core_fact"])
+        self.assertNotIn("수주", item["telegram_core_fact"])
+        self.assertEqual({row["kind"] for row in radar.source_market_materiality(item)["evidence"]}, {"industrial_partnership_execution"})
+
+    def test_smr_sector_aspiration_without_signed_mou_is_not_execution(self):
+        case = FINAL_RUNTIME_CASES["industrial_mou_not_sector_aspiration"]
+        self.assertFalse(eligible(case["title"], case["old_core"]))
+        self.assertFalse(eligible(case["title"], case["body"].replace("체결했다고", "체결할 가능성이 있다고")))
+
+    def test_three_target_cuts_keep_broker_issuer_and_previous_current_prices(self):
+        for key, terms in (("department_store_target_cut_not_segment_forecast", ("유안타증권", "현대백화점", "26만3000원", "12만원")),
+                           ("biopharma_broker_target_revision", ("다올투자증권", "삼성바이오로직스", "210만원", "200만원")),
+                           ("portal_target_cut_not_quarter_forecast", ("대신증권", "NAVER", "32만원", "29만원"))):
+            core = radar.normalize_alert_for_output(classify(FINAL_RUNTIME_CASES[key], NOW.replace(day=6, hour=9)))["telegram_core_fact"]
+            with self.subTest(case=key):
+                for term in terms:
+                    self.assertIn(term, core)
+                self.assertIn("하향 조정했다", core)
+
+    def test_primary_reported_earnings_are_not_overridden_by_secondary_target_revision(self):
+        title = "HL디앤아이한라, 상반기 영업익 34%↑…증권가도 목표주가 상향"
+        body = "HL D&I한라의 상반기 연결 기준 매출은 8302억원, 영업이익은 455억원으로 전년비 각각 13.5%, 34.1% 증가했다."
+        item = alert(title, body)
+        self.assertEqual(materiality.focus_kind(title), "earnings")
+        self.assertEqual(materiality.analyst_target_revision_terms(title, body), {})
+        core = radar.verified_alert_core(item, title)
+        self.assertIn("455억원", core)
+        self.assertIn("34.1%", core)
+        self.assertEqual(radar.source_core_fact_errors({**item, "telegram_core_fact": core}), [])
+
+    def test_foreign_target_revision_keeps_broker_issuer_and_original_currency(self):
+        title = "[美특징주]팔로알토, 수요 증가 전망·플랫폼 전략 ‘긍정적’ 평가…개장전 1%↑"
+        body = ("TD코웬은 2일(현지 시간) 인공지능(AI) 확산에 따른 사이버보안 수요 증가와 플랫폼 전략의 성과를 반영해 팔로 알토 네트웍스(PANW)의 목표주가를 기존 400달러에서 440달러로 상향하고, 투자의견은 그대로 ‘매수’를 유지했다.\n"
+                "플랫폼화 고객의 순매출유지율(NRR)은 120%를 기록했다.")
+        item = {**alert(title, body), "telegram_core_fact": "플랫폼화 고객의 순매출유지율(NRR)은 120%를 기록했다."}
+        core = radar.verified_alert_core(item, title)
+        for term in ("TD코웬", "PANW", "400달러", "440달러", "상향"):
+            self.assertIn(term, core)
+        self.assertNotIn("120%", core)
+        self.assertEqual(radar.source_core_fact_errors({**item, "telegram_core_fact": core}), [])
+
+    def test_target_revision_same_source_terms_dedupe_but_new_target_or_broker_survives(self):
+        first = self.runtime_alert("portal_target_cut_not_quarter_forecast")
+        same = {**first, "source_title": "대신證 NAVER 목표가 하향", "news": "대신證 NAVER 목표가 하향", "link": "https://www.etnews.com/20261006009998"}
+        self.assertEqual(materiality.source_event_identity(first), materiality.source_event_identity(same))
+        for old, new in (("29만원", "28만원"), ("대신", "한화"), ("NAVER", "KAKAO")):
+            changed = {**first, "source_title": first["source_title"].replace(old, new), "source_body": first["source_body"].replace(old, new)}
+            with self.subTest(term=old):
+                self.assertNotEqual(materiality.source_event_identity(first), materiality.source_event_identity(changed))
+
+    def test_equipment_order_same_exact_terms_dedupe_without_rounding_different_values(self):
+        first = self.runtime_alert("equipment_order_precise_reprint")
+        same = {**first, "source_body": first["source_body"].replace("244억8000만원", "244.8억원"), "source_title": "한미반도체, 삼성전기 MSVP 장비 공급계약"}
+        self.assertEqual(materiality.source_event_identity(first), materiality.source_event_identity(same))
+        for old, new in (("244억8000만원", "244억9000만원"), ("삼성전기", "LG이노텍"), ("MSVP", "OTHER"), ("6일", "7일"), ("수주했다고", "추가 수주했다고")):
+            changed = {**first, "source_title": first["source_title"].replace(old, new), "source_body": first["source_body"].replace(old, new)}
+            with self.subTest(term=old):
+                self.assertNotEqual(materiality.source_event_identity(first), materiality.source_event_identity(changed))
+        prior = FINAL_RUNTIME_FIXTURE["previous_order"]
+        rounded = {**alert(prior["title"], prior["body"], prior["url"]), "published": prior["published"]}
+        self.assertNotEqual(materiality.source_event_identity(first), materiality.source_event_identity(rounded))
+
+    def test_audited_equipment_alias_migrates_only_the_existing_successful_receipt(self):
+        previous = FINAL_RUNTIME_FIXTURE["previous_order"]
+        first = self.runtime_alert("equipment_order_precise_reprint")
+        identity = materiality.source_event_identity(first)
+        proofs = json.loads(telegram.VERIFIED_EVENT_ALIAS_PATH.read_text(encoding="utf-8"))["entries"]
+        proof = next(row for row in proofs if row["link"] == previous["url"])
+        self.assertEqual(proof["source_body_sha256"], previous["full_body_sha256"])
+        self.assertEqual(proof["message_id"], previous["message_id"])
+        self.assertEqual(proof["source_event_identity"], identity)
+        absent = {"seen": {}}
+        telegram.migrate_seen_verified_event_aliases(absent)
+        self.assertFalse(absent["seen"])
+        state = {"seen": {"historical": {"title": previous["title"], "link": previous["url"], "first_seen_kst": "2026-10-06T08:36:00+09:00"}}}
+        telegram.migrate_seen_verified_event_aliases(state)
+        self.assertIn("event:" + telegram.digest_seen(identity), state["seen"])
+
+    def test_current_holdings_core_names_owner_issuer_new_shares_and_stake(self):
+        case = FINAL_RUNTIME_CASES["holder_company_and_current_share_change"]
+        core = radar.normalize_alert_for_output(classify(case, NOW.replace(day=6, hour=9)))["telegram_core_fact"]
+        for term in ("제이엘케이", "KB자산운용", "130만9845주", "168만6664주", "5.09%", "6.56%", "단순투자"):
+            self.assertIn(term, core)
+        self.assertNotIn("지난 6월", core)
+
+    def test_missing_source_verification_cannot_create_order_or_target_identity(self):
+        for key in ("equipment_order_precise_reprint", "portal_target_cut_not_quarter_forecast"):
+            item = self.runtime_alert(key)
+            self.assertFalse(materiality.source_event_identity({**item, "body_verified": False}))
+            self.assertFalse(materiality.source_event_identity({**item, "published": ""}))
+
     def broker_alert(self, key):
         case = BROKER_CASES[key]
         return {**alert(case["title"], case["body"], case["url"]), "published": case["published"]}
@@ -1201,6 +1319,8 @@ if __name__ == "__main__":
               "event_equivalence_articles": len(EQUIVALENCE_CASES), "market_noise_run_id": NOISE_FIXTURE["run_id"],
               "market_noise_articles": len(NOISE_CASES)}
     output["broker_report_articles"] = len(BROKER_CASES)
+    output["final_runtime_run_id"] = FINAL_RUNTIME_FIXTURE["run_id"]
+    output["final_runtime_articles"] = len(FINAL_RUNTIME_CASES)
     path = ROOT / "out/gamejoa_incremental_news_verification.json"
     path.parent.mkdir(exist_ok=True)
     path.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

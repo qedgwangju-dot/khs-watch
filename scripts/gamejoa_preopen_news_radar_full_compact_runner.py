@@ -2590,6 +2590,42 @@ def reported_issuer_announcement_fact(title: str, body: str) -> str:
 def source_headline_event_fact(title: str, body: str) -> str:
     """Bind a compact observation to its source actor, population and period."""
     focus = market_materiality.focus_kind(title)
+    target_revision = market_materiality.analyst_target_revision_terms(title, body)
+    if target_revision:
+        broker, issuer = target_revision["broker"], target_revision["issuer"]
+        direction = "하향" if target_revision["direction"] == "down" else "상향"
+        fact = (f"{broker}{korean_topic_particle(broker)} {issuer}의 목표주가를 "
+                f"{target_revision['previous_display']}원에서 {target_revision['current_display']}원으로 {direction} 조정했다.")
+        sentences = market_materiality.source_sentences(market_materiality.source_reported_body(body))
+        index = next((i for i, sentence in enumerate(sentences) if market_materiality.focus_matches(title, sentence)), -1)
+        if index >= 0 and index + 1 < len(sentences):
+            reason = clean_article_summary_text(sentences[index + 1])
+            if (re.search(r"기저|부담|둔화|비용|반영|따른", reason)
+                    and not market_materiality.BACKGROUND.search(reason)
+                    and core_sentence_is_complete(fact + " " + reason)):
+                fact += " " + reason
+        return fact if core_sentence_is_complete(fact) else ""
+    if focus == "industrial_partnership":
+        sentences = market_materiality.source_sentences(market_materiality.source_reported_body(body))
+        statement = next((clean_article_summary_text(sentence) for sentence in sentences
+                          if market_materiality.focus_matches(title, sentence)
+                          and not market_materiality.PAST_ACTION.search(sentence)), "")
+        followup = next((clean_article_summary_text(sentence) for sentence in sentences
+                         if re.search(r"양사는.{0,50}공동\s*연구할\s*예정", sentence)), "")
+        if followup and core_sentence_is_complete(statement + " " + followup):
+            statement += " " + followup
+        return statement if core_sentence_is_complete(statement) else ""
+    if "지분" in title and re.search(r"확대|늘려|증가", title):
+        source = market_materiality.source_reported_body(body)
+        holding = re.search(r"([A-Za-z0-9가-힣&·.-]{2,30})의\s+([A-Za-z0-9가-힣&·.-]{2,30})\s+보유주식\s*수는\s*기존\s*(\d[\d,]*만?\d*)주에서\s*(\d[\d,]*만?\d*)주로", source)
+        stake = re.search(r"지분율도\s*기존\s*(\d+(?:\.\d+)?)%에서\s*(\d+(?:\.\d+)?)%로", source)
+        if holding and stake and holding.group(2) in title:
+            owner, issuer, previous, current = holding.groups()
+            fact = (f"{issuer}에 따르면 {owner}의 보유주식은 {previous}주에서 {current}주로 늘었고, "
+                    f"지분율은 {stake.group(1)}%에서 {stake.group(2)}%로 확대됐다.")
+            if re.search(r"지분\s*보유\s*목적은\s*['‘]단순투자['’]", source):
+                fact += " 보유 목적은 단순투자다."
+            return fact if core_sentence_is_complete(fact) else ""
     research = market_materiality.broker_earnings_report_terms(title, body)
     if research:
         fact = (f"{research['broker']}{korean_topic_particle(research['broker'])} {research['issuer']}의 "
@@ -3501,6 +3537,9 @@ def sentence_has_suspect_financial_amount(sentence: str) -> bool:
 
 
 def analyst_research_target(title: str, source: str) -> str:
+    revision = market_materiality.analyst_target_revision_terms(title, source)
+    if revision:
+        return str(revision["issuer"])
     research = market_materiality.broker_earnings_report_terms(title, source)
     if research:
         return str(research["issuer"])

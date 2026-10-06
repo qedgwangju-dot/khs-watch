@@ -81,6 +81,25 @@
       "source_event_identity": "source_event:v2:broker_earnings:f4e6bae1d443a1ee172bfd4e7db47bc1bb8b149c55f3ae3eaf9fe981f21ff9d6",
       "run_id": 37388895628,
       "message_id": 2282
+    },
+    {
+      "source_title": "한미반도체, 삼성전기와 245억 규모 공급계약",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814774",
+      "source_published_kst": "2026-10-06T08:25+09:00",
+      "source_body_sha256": "0cc455503f71f8e325953ba4d8ff1677719a45b525791770d8d3f3ef2ccb2e4b",
+      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
+      "run_id": 37388895628,
+      "message_id": 2282,
+      "equivalence_note": "Same 2026-10-06 Hanmi-Samsung Electro-Mechanics MSVP disclosure; rounded 245억원 and precise 244억8000만원. Only these audited bodies share the alias."
+    },
+    {
+      "source_title": "한미반도체, 삼성전기서 245억원 규모 MSVP 수주…“삼성그룹 환영”",
+      "link": "https://www.etoday.co.kr/news/view/2632580",
+      "source_published_kst": "2026-10-06T08:46+09:00",
+      "source_body_sha256": "9c4950c5eb97a313a37500399fc6f0858f02ba89dae91eddc0998645795899da",
+      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
+      "run_id": 37391147918,
+      "message_id": 2284
     }
   ]
 }

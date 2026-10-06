@@ -12,7 +12,7 @@ from functools import lru_cache
 from urllib.parse import urlsplit
 
 
-VERSION = 79
+VERSION = 80
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -182,6 +182,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("factory_tariff", r"공장.{0,20}(?:안|않|미건설).{0,25}관세", r"공장.{0,160}관세"),
     ("customer_implementation", r"1차\s*시공|초도\s*납품", r"1차\s*시공|초도\s*납품"),
     ("commercial_order", r"수주|공급\s*계약|제조\s*계약|납품\s*계약|발사\s*계약|\d+\s*년\s*계약(?!가)", r"수주|발주|계약"),
+    ("industrial_partnership", r"(?:SMR|원전|선박|반도체|데이터센터|휴머노이드|자율주행).{0,90}(?:공동\s*검토|공동\s*연구|업무협약|MOU)", r"업무협약|MOU|공동\s*개발\s*협약"),
     ("industrial_program", r"(?:SMR|원전|양자|반도체|로봇).{0,16}상용화", r"(?:상용화|사업화).{0,50}(?:출범|지원|시행|추진)|(?:출범|지원|시행|추진).{0,50}(?:상용화|사업화)"),
     ("environmental_approval", r"환경(?:영향)?평가.{0,15}(?:통과|완료|면제)", r"최종\s*환경평가|FONSI|환경영향평가서.{0,35}(?:없이|면제)"),
     ("ownership", r"지분.{0,25}(?:인수|매각|취득)|자산.{0,50}(?:인수|매각|취득)|(?:피?인수).{0,25}(?:지분|계약|합의|완료|협상|논의|검토|임박)|인수로|회사\s*인수|(?:결합|합병).{0,12}완료|합병(?!원)|주식.{0,8}(?:판다|매도|매각)", r"지분|인수|매각|매도|취득|거래계획|결합|합병(?!원)|stake|acquir|merger"),
@@ -301,6 +302,15 @@ def focus_kind(title: str) -> str:
     # A scoped tax treatment is the event; oil is only its subject.
     if HEADLINE_FOCUS[0][1].search(title or ""):
         return "tax_relief"
+    revision = re.search(r"목표(?:주가|가).{0,18}(?:[↑↓]|상향|하향|높여|낮춰|올려|내려)", title or "")
+    if revision:
+        primary = title[:revision.start()]
+        if (re.search(r"(?:상반기|하반기|[1-4]분기).{0,25}(?:매출|영업(?:이익|익|손실)|순(?:이익|익|손실)).{0,12}\d", primary)
+                and not re.search(r"전망|추정|예상|컨센서스", primary)):
+            return "earnings"
+        return "analyst_revision"
+    if next(head for name, head, _source in HEADLINE_FOCUS if name == "industrial_partnership").search(title or ""):
+        return "industrial_partnership"
     for kind in ("network_segmentation_policy", "housing_supply_policy", "maritime_attack", "production_target", "facility_approval", "nav_forecast"):
         if kind == "network_segmentation_policy" and re.search(r"유출|침해\s*사고|피해", title or ""):
             continue
@@ -332,6 +342,14 @@ def focus_matches(title: str, sentence: str) -> bool:
     if DENIAL_HEADLINE.search(title) and not DENIAL_SOURCE.search(sentence):
         return False
     kind = focus_kind(title)
+    if kind == "analyst_revision":
+        return bool(re.search(r"목표(?:주가|가)|적정\s*주가", sentence)
+                    and re.search(r"상향|하향|높였|낮췄|올렸|내렸", sentence)
+                    and re.search(SOURCE_MONEY, sentence))
+    if kind == "industrial_partnership":
+        return bool(re.search(r"SMR|소형모듈원자로|원전|선박|반도체|데이터센터|휴머노이드|자율주행", sentence, re.I)
+                    and re.search(r"(?:업무협약|MOU|공동개발\s*협약).{0,25}(?:체결했|서명했|맺었)|(?:체결했|서명했|맺었).{0,25}(?:업무협약|MOU)", sentence, re.I)
+                    and not SPECULATIVE_CONTACT.search(sentence))
     if kind == "maritime_attack":
         return bool(re.search(r"선박|유조선|해협", sentence)
                     and re.search(r"공격|피격|회항|발사체|화재", sentence)
@@ -995,6 +1013,60 @@ def broker_earnings_report_terms(title: str, body: str, published: str = "") -> 
             "revenue_display": revenue.strip(), "profit_display": profit.strip()}
 
 
+def analyst_target_revision_terms(title: str, body: str, published: str = "") -> dict[str, object]:
+    """Keep the broker's revised target distinct from issuer earnings guidance."""
+    if focus_kind(title) != "analyst_revision":
+        return {}
+    source = source_reported_body(body)
+    money = r"(\d[\d,.\s조억만천백십]*?)\s*원"
+    actor = re.search(
+        r"([A-Za-z가-힣]{2,20}증권)(?:은|는|이|가)(?:\s+\d{1,2}일)?\s+"
+        r"([A-Za-z0-9가-힣&·.-]{2,30})(?:\([^)]*\)|\[[^]]*\])?"
+        r"(?:의|에\s*대해)\s+목표(?:주가|가)(?:를|는|을|은)?\s*(?:기존\s*)?"
+        + money + r"에서\s*" + money + r"(?:으로|로)\s*(상향|하향|높였|낮췄|올렸|내렸)", source,
+    )
+    if not actor:
+        return {}
+    broker, issuer, previous, current, direction = actor.groups()
+    previous_value, current_value = korean_amount_value(previous), korean_amount_value(current)
+    if not previous_value or not current_value or previous_value == current_value:
+        return {}
+    return {"broker": broker, "issuer": issuer, "previous_won": previous_value,
+            "current_won": current_value, "direction": "down" if direction in {"하향", "낮췄", "내렸"} else "up",
+            "report_date": published[:10] if re.match(r"20\d{2}-\d{2}-\d{2}", published) else "",
+            "previous_display": previous.strip(), "current_display": current.strip()}
+
+
+def commercial_order_terms(title: str, body: str, published: str = "") -> dict[str, object]:
+    """Use disclosed counterparties, product and exact amount, never rounded proximity."""
+    if focus_kind(title) != "commercial_order":
+        return {}
+    source = source_reported_body(body)
+    lead = next((sentence for sentence in source_sentences(source)
+                 if not PAST_ACTION.search(sentence) and re.search(r"공시했다|공시했다고", sentence)
+                 and re.search(r"수주했|계약.{0,20}체결했", sentence)), "")
+    parties = re.search(r"([A-Za-z0-9가-힣&·.-]{2,30})(?:은|는)\s*(?:\d{1,2}일\s*)?([A-Za-z0-9가-힣&·.-]{2,30})(?:와|과|로부터)\s+", lead)
+    amount = re.search(SOURCE_MONEY, lead)
+    product = re.search(r"\(([A-Z][A-Z0-9-]{1,15})\)[’'\"]?\s*(?:장비|제품|설비)", lead)
+    day = re.search(r"(?<!\d)(\d{1,2})일(?=\s)", lead)
+    if not (parties and amount and product and day and re.match(r"20\d{2}-\d{2}-\d{2}", published)):
+        return {}
+    issuer, customer = parties.groups()
+    value = korean_amount_value(amount.group(1))
+    if issuer not in title or not value:
+        return {}
+    revision = bool(re.search(r"계약\s*(?:정정|변경|수정)|수주액\s*(?:상향|하향)|추가\s*수주", title + " " + lead))
+    period = re.search(r"계약\s*기간은\s*([^.!?\n]{1,45}?까지)", source)
+    terms = {"issuer": issuer, "customer": customer, "product": product.group(1),
+             "amount": [amount.group(2), value],
+             "disclosure_date": published[:8] + day.group(1).zfill(2), "stage": "signed",
+             "contract_period": canonical_source_fact(period.group(1)) if period else "",
+             "explicit_revision": revision}
+    if revision:
+        terms["revision_excerpt"] = canonical_source_fact(lead)
+    return terms
+
+
 def source_event_identity(alert: dict) -> str:
     """Identify a sourced action and its terms, not a company-wide theme.
 
@@ -1009,6 +1081,12 @@ def source_event_identity(alert: dict) -> str:
         return breadth
     title = str(alert.get("source_title") or alert.get("original_news") or alert.get("news") or "")
     body = str(alert.get("source_body") or "") if alert.get("body_verified") else ""
+    for event, terms in (("commercial_order", commercial_order_terms(title, body, str(alert.get("published") or ""))),
+                         ("analyst_target", analyst_target_revision_terms(title, body, str(alert.get("published") or "")))):
+        if terms and terms.get("disclosure_date", terms.get("report_date")):
+            terms = {key: value for key, value in terms.items() if not key.endswith("_display")}
+            digest = hashlib.sha256(json.dumps(terms, ensure_ascii=False, sort_keys=True).encode("utf-8")).hexdigest()
+            return f"source_event:v2:{event}:{digest}"
     research = broker_earnings_report_terms(title, body, str(alert.get("published") or ""))
     if research and research["report_date"] and research["year"]:
         terms = {key: value for key, value in research.items() if not key.endswith("_display")}
@@ -1180,7 +1258,7 @@ RULES = (
      r"hvdc|\bvdc\b|\bcpo\b|광트랜시버|광\s*인터커넥트|파운데이션\s*모델|foundation model|co.packaged optics",
      r"규격|채택|통합|전환|도입|standard|specification|adopt|integrat|deploy"),
     ("industrial_partnership_execution", ("earnings", "timeline"),
-     r"풍력|태양광|발전소|반도체|데이터센터|휴머노이드|자율주행|무인기|항공우주|wind power|solar|power plant|semiconductor|data center|humanoid|autonomous driving|drone|aerospace",
+     r"SMR|소형모듈원자로|원전|선박|풍력|태양광|발전소|반도체|데이터센터|휴머노이드|자율주행|무인기|항공우주|wind power|solar|power plant|semiconductor|data center|humanoid|autonomous driving|drone|aerospace",
      r"(?:업무협약|공동개발\s*협약|MOU).{0,20}(?:체결|맺|서명)|(?:체결|맺|서명).{0,20}(?:업무협약|공동개발\s*협약|MOU)|signed.{0,30}(?:mou|joint development)"),
     ("rates_fx_or_macro", ("discount_rate",),
      r"금리|국고채|모기지|주담대|주택담보대출|물가|인플레이션|고용(?!량)|비농업\s*일자리|실업률|건설지출|환율|달러화|유동성|차입|구매관리자|\bpmi\b|cpi|pce|payroll|mortgage|interest rate|treasury (?:yield|bond|note|bill|securit|borrow)|(?:u\.?s\.?\s+|united states )treasury|inflation|exchange rate|borrowing",
@@ -1272,6 +1350,10 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
     if kind in {"physical_supply_or_capacity", "technology_or_clinical_stage"} and re.search(
         r"상용화하며\s*축적|축적한.{0,70}바탕으로.{0,90}개발했다", sentence,
     ) and not re.search(r"새로.{0,40}(?:인증|양산|납품)|시험\s*결과|실증\s*결과|공급\s*계약", sentence):
+        return False
+    if kind in {"physical_supply_or_capacity", "technology_or_clinical_stage"} and re.search(
+        r"상용화\s*가능성이\s*높|기술\s*선점에\s*나서고", sentence,
+    ) and not QUANTITY.search(sentence) and not NEW_EXECUTION.search(sentence):
         return False
     if kind in {"network_segmentation_policy", "housing_supply_policy"}:
         focus_title = "망분리 규제 완화" if kind == "network_segmentation_policy" else "LH 미분양 매수확약"
@@ -1842,6 +1924,10 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
             }):
                 continue
             if focus_kind(title) == "earnings" and kind != "earnings_or_guidance":
+                continue
+            if focus_kind(title) == "analyst_revision" and kind != "analyst_revision":
+                continue
+            if focus_kind(title) == "industrial_partnership" and kind != "industrial_partnership_execution":
                 continue
             if not evidence_is_new_event(kind, sentence):
                 continue

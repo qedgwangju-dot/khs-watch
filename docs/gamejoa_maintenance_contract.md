@@ -263,6 +263,22 @@ Every defect or requested change must follow this sequence:
   A source-stated fiscal year is not replaced by its publication year; an
   unknown year stays unknown. Summaries name the broker and retain forecast
   status instead of promoting estimates into company-reported results.
+- An explicit primary analyst target-price change outranks a subsidiary
+  forecast or generic revenue outlook. A primary reported-period earnings
+  headline is not overridden by a secondary target-price mention. Name the broker and issuer,
+  preserve both previous and current target prices, and keep it an analyst
+  revision rather than company guidance. Identical dated broker revisions
+  across publishers share an event; changed targets or brokers do not. Foreign
+  target revisions retain their sourced original currency before FX display.
+- Signed industrial cooperation summaries retain counterparties and actual
+  study scope. A joint route/feasibility MOU is not a vessel order, regulatory
+  approval or operating launch. A possible future signing is not a signed MOU.
+- Disclosed equipment orders compare issuer, customer, product, disclosure
+  date, exact original amount, period and explicit revisions. Never merge
+  different amounts using a general rounding tolerance. Rounded historical
+  copies require an individually audited full-source/successful-receipt alias.
+- Shareholding summaries retain owner, issuer, previous/current share counts
+  and stake percentages. A prior purchase is not the new disclosed change.
 - DRAM market share must retain its source, period and revenue/bit basis.
   CAPEX plans must retain their fiscal period and net/gross basis. A reporter's
   annual extrapolation is not company guidance. A project bill is not a tariff.
