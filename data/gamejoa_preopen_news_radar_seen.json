@@ -212,6 +212,21 @@
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "주담대 금리도 '들썩'…한은 추가 인상에 이자 더 오르나[금리 쇼크③]"
     },
+    "event:0a2d5f83e551a353dffba30a": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632798",
+      "source": "이투데이",
+      "source_body_digest": "2fc71cd977b9799a893e7f2e04182f7d51ce1ab6648110901fcbc844a2c44517",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T13:27+09:00",
+      "title": "외국인 1.2조 매도에 코스피 7000선 하회…코스닥은 2%대 강세"
+    },
     "event:0ae51bf991f368666ccc228d": {
       "first_seen_kst": "2026-10-03T09:23:27+09:00",
       "lanes": {
@@ -2104,6 +2119,29 @@
       "source": "디지털타임스",
       "title": "‘한국을 내 편으로’…경쟁 붙은 젠슨 황·리사 수"
     },
+    "event:5d45eeb5faadd086b964bd69": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815896",
+      "source": "뉴시스",
+      "source_body_digest": "e4fd696d474fde69d335dafd89e312b7edfa068f0961240d7ad99fca2252aee0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00189cffb113199b40a66653141079758a3758fcd874907960f7859f4fe41bf9",
+      "source_fact_keys": [
+        "source_fact:v1:35cf256d20818487533f24fd4b22ad48a35779b2b9c8d7e75dc4aa3d85f8ad10",
+        "source_fact:v1:429d278085fc7fb35a2038c56114e920d4525ffb98b4daf6ed48b12029bbcbd8",
+        "source_fact:v1:6ed70a06d3a6b0c1ca7b9f3c62dec4b705d9d5bdac988867bcfceef67b159039",
+        "source_fact:v1:777f7cada13f1b31d30771a381ec60b1e8e3bc8181d1663d379cf8b042af1965",
+        "source_fact:v1:84e13038c4c269fc1309c8ed23ab434dd664aa09314966613af1391e82346485",
+        "source_fact:v1:a5b96a9ab14c6849d9df5cf9e03a5b55417604bc9dcfb86d866ac2f18c3ff4f6",
+        "source_fact:v1:dce6816893a7bb1e81ba9f93b12cfa0e403241b934e79fc86ea55c2cfd8e882b"
+      ],
+      "source_published_kst": "2026-10-06T15:44+09:00",
+      "title": "원·달러 환율, 0.4원 내린 1343.6원 마감"
+    },
     "event:5d49b53d072a32ee851f2242": {
       "first_seen_kst": "2026-09-28T09:32:57+09:00",
       "lanes": {
@@ -2771,6 +2809,23 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=05113526645585368",
       "source": "이데일리",
       "title": "유가 꺾이고 인상 전망 약해져도…美장기금리 ‘高高’"
+    },
+    "event:75ba71f00812ed9eb4a4e6d6": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05172566645610296",
+      "source": "이데일리",
+      "source_body_digest": "9f8a9376f6548112c36758ab95e90ebdd375dbee8c98993f6477dba44a971eb4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:468af3cae2fbcd7c3066ec782a0caa2d5d8bf15269ae3098b126274594d5a10f",
+      "source_fact_keys": [
+        "source_fact:v1:8baaf960c4f2cc4e014568f449e05e9c1a85695dcbc2552b386397d96b65481f"
+      ],
+      "source_published_kst": "2026-10-06T18:21+09:00",
+      "title": "\"'한국형 테마섹' 키우는데 본점은 전북?\"…KIC '서울 명문화' 목소리"
     },
     "event:75c1cb8abb7e3b6b7ff5d742": {
       "first_seen_kst": "2026-09-29T08:03:12+09:00",
@@ -5881,20 +5936,22 @@
     "event:ed5ed0d62394ba89a848cd55": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
       "lanes": {
-        "live": "2026-10-06T18:46:35+09:00"
+        "live": "2026-10-06T23:56:49+09:00"
       },
-      "last_seen_kst": "2026-10-06T18:46:35+09:00",
-      "link": "https://www.newsis.com/view/NISX20261006_0003815998",
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816138",
       "source": "뉴시스",
-      "source_body_digest": "332b738ab5d5ae083098f3d67710d3b97a254d54100e8e1c127ade37d2875e23",
+      "source_body_digest": "1e8ba2c3f0376e29a01121261b5121f046cfcd8fd3a3ab3092ee8dc9be4d6e19",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:be32577072c2b66b30f17c548d5cf8325f3309c6e74ddd2bbe8dd5198f62bf81",
+      "source_fact_identity": "source_facts:v1:a33f73b7f930339a73b98619fd561a93b9ee6f6cd95727d1db90ad5d56755921",
       "source_fact_keys": [
-        "source_fact:v1:4d21caa742794419250df3fbecb7910d87016d88408ef3730e8b76420e038b97",
-        "source_fact:v1:a08ad9429ade4dd59a77a95277a263417f9a7da3a8d0551e31b93fc888b8ca16"
+        "source_fact:v1:69d0c652bebeda27f45ad5c6ee7f0947f5d746142dd0719f01498d19fa792544",
+        "source_fact:v1:7fe59eacebf02a4a4675dfc60f4fab83aeb7e68b0165a91e5a9d2ad3728d5162",
+        "source_fact:v1:9b43500aeceacc3eca3d734bec7e5b7d2202f200ca6096489796a5f30f59ceaf",
+        "source_fact:v1:ae05e0c6fbbbc754ba7ee65a0d15c901ec4301817afb813d7bd97a0b19081e16"
       ],
-      "source_published_kst": "2026-10-06T16:30+09:00",
-      "title": "\"미디어텍 디멘시티, 프리미엄 스마트폰 AP시장서 삼성전자 역전 전망\""
+      "source_published_kst": "2026-10-06T21:33+09:00",
+      "title": "그리스·이탈리아보다 비싸게 빚내는 프랑스…국채금리 5% 눈앞"
     },
     "event:ee2445b0912c043ab1270e54": {
       "first_seen_kst": "2026-10-05T15:39:46+09:00",
@@ -6739,6 +6796,26 @@
       "source_published_kst": "2026-10-05T19:27+09:00",
       "title": "\"농식품부 고위공직자 모친 소유 농지 3필지 휴경\"(종합) | 연합뉴스"
     },
+    "fact:091657c45000df925cd6173e": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/06/2026100609373713420",
+      "source": "머니투데이",
+      "source_body_digest": "e5c330835ec84cc2c65a133b005181f3c0b33ff2b7cf2fd9ed910a69966b4de0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:245479a6b4fec10095c991c5d1107888634b2ca7bc136e8632b99494e18f010e",
+      "source_fact_keys": [
+        "source_fact:v1:0be260b6393a7b0520504776b29e9730996ee6e743d6db97c2e60f6f883a5088",
+        "source_fact:v1:174c1c6bbf592f0314af571f7b8c30755dd8b404ab6579c40899f2844b295e36",
+        "source_fact:v1:ac2ea3cad33074306a9b9a0bc4b2d7902a7a777a26464abe3d0be91ae143175f",
+        "source_fact:v1:fe9caadfb83f1874ef082113c4db11ff819acf6c5f5a3969de9c4093a176b6bc"
+      ],
+      "source_published_kst": "2026-10-06T09:41+09:00",
+      "title": "HLB그룹주 연일 강세…리픽투 FDA 품목허가 효과"
+    },
     "fact:0977e38e464d6871904bd675": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -7098,6 +7175,23 @@
       ],
       "source_published_kst": "2026-10-06T08:46+09:00",
       "title": "“코스피, 7100만 찍으면 7700까지 간다”…장밋빛 전망 근거는? [오늘 나온 보고서]"
+    },
+    "fact:0db5981cca8e65dd9368cc8f": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05172566645610296",
+      "source": "이데일리",
+      "source_body_digest": "9f8a9376f6548112c36758ab95e90ebdd375dbee8c98993f6477dba44a971eb4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:468af3cae2fbcd7c3066ec782a0caa2d5d8bf15269ae3098b126274594d5a10f",
+      "source_fact_keys": [
+        "source_fact:v1:8baaf960c4f2cc4e014568f449e05e9c1a85695dcbc2552b386397d96b65481f"
+      ],
+      "source_published_kst": "2026-10-06T18:21+09:00",
+      "title": "\"'한국형 테마섹' 키우는데 본점은 전북?\"…KIC '서울 명문화' 목소리"
     },
     "fact:0e16766991f641d4bac55cc7": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
@@ -11031,6 +11125,26 @@
       "source_published_kst": "2026-10-06T12:09+09:00",
       "title": "고범석 서울청장 \"암살자(들) 배우에 대한 범죄 혐의 확인시 엄정 대응\""
     },
+    "fact:608002d89d7af4d1ff870503": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816138",
+      "source": "뉴시스",
+      "source_body_digest": "1e8ba2c3f0376e29a01121261b5121f046cfcd8fd3a3ab3092ee8dc9be4d6e19",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a33f73b7f930339a73b98619fd561a93b9ee6f6cd95727d1db90ad5d56755921",
+      "source_fact_keys": [
+        "source_fact:v1:69d0c652bebeda27f45ad5c6ee7f0947f5d746142dd0719f01498d19fa792544",
+        "source_fact:v1:7fe59eacebf02a4a4675dfc60f4fab83aeb7e68b0165a91e5a9d2ad3728d5162",
+        "source_fact:v1:9b43500aeceacc3eca3d734bec7e5b7d2202f200ca6096489796a5f30f59ceaf",
+        "source_fact:v1:ae05e0c6fbbbc754ba7ee65a0d15c901ec4301817afb813d7bd97a0b19081e16"
+      ],
+      "source_published_kst": "2026-10-06T21:33+09:00",
+      "title": "그리스·이탈리아보다 비싸게 빚내는 프랑스…국채금리 5% 눈앞"
+    },
     "fact:60bf4a03fd87a3e831973156": {
       "first_seen_kst": "2026-10-06T06:36:31+09:00",
       "lanes": {
@@ -11163,6 +11277,27 @@
       ],
       "source_published_kst": "2026-10-06T17:29+09:00",
       "title": "삼성전자 '꿈의 영업이익' 눈앞 … 100조 훌쩍 넘나, 살짝 넘나"
+    },
+    "fact:64892005995ff1c39c36cda9": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816229",
+      "source": "뉴시스",
+      "source_body_digest": "eb1be220d6bdbbe86fcc4962b5615e756ba59d482c3c4b3f74903c8d7c513ad2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:024117ef9c519738f4480154e7a9b8e308d0714ddd2b523d79dafd0763a640c8",
+      "source_fact_keys": [
+        "source_fact:v1:17db21b36fb94ad3e300c76ab3bef380310abad27465b7ac9b710b5bb8b1ca19",
+        "source_fact:v1:5a23766599a74ac7a9cb4fea118ea53ff5430f56f69da04d6e180909af729035",
+        "source_fact:v1:64ced6ed8fa90a086a8aea3d61efe0d2ee842ae3646ba563e516686dd2ab098b",
+        "source_fact:v1:c0bb5bc03da25e94ee151c196a934a221e9570f0eba364f7b5bbec5d9a887380",
+        "source_fact:v1:f171556ed351f06ff00b04f122a1682309059e84780855566049a2125f53fcf2"
+      ],
+      "source_published_kst": "2026-10-06T19:00+09:00",
+      "title": "9월 유로존 종합 PMI 53.1·1.1P↑…\"3년5개월 만에 최고\""
     },
     "fact:657b39291ee4f6f20d3a6eba": {
       "first_seen_kst": "2026-10-06T22:08:07+09:00",
@@ -17111,6 +17246,29 @@
       "source_published_kst": "2026-10-05T06:17+09:00",
       "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
     },
+    "fact:e5b4691cad347a4fa223113f": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815896",
+      "source": "뉴시스",
+      "source_body_digest": "e4fd696d474fde69d335dafd89e312b7edfa068f0961240d7ad99fca2252aee0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00189cffb113199b40a66653141079758a3758fcd874907960f7859f4fe41bf9",
+      "source_fact_keys": [
+        "source_fact:v1:35cf256d20818487533f24fd4b22ad48a35779b2b9c8d7e75dc4aa3d85f8ad10",
+        "source_fact:v1:429d278085fc7fb35a2038c56114e920d4525ffb98b4daf6ed48b12029bbcbd8",
+        "source_fact:v1:6ed70a06d3a6b0c1ca7b9f3c62dec4b705d9d5bdac988867bcfceef67b159039",
+        "source_fact:v1:777f7cada13f1b31d30771a381ec60b1e8e3bc8181d1663d379cf8b042af1965",
+        "source_fact:v1:84e13038c4c269fc1309c8ed23ab434dd664aa09314966613af1391e82346485",
+        "source_fact:v1:a5b96a9ab14c6849d9df5cf9e03a5b55417604bc9dcfb86d866ac2f18c3ff4f6",
+        "source_fact:v1:dce6816893a7bb1e81ba9f93b12cfa0e403241b934e79fc86ea55c2cfd8e882b"
+      ],
+      "source_published_kst": "2026-10-06T15:44+09:00",
+      "title": "원·달러 환율, 0.4원 내린 1343.6원 마감"
+    },
     "fact:e5db3226059475bc40ddc098": {
       "first_seen_kst": "2026-10-06T00:26:07+09:00",
       "lanes": {
@@ -20555,6 +20713,21 @@
       "source_published_kst": "2026-10-06T03:34+09:00",
       "title": "[美특징주]백사이트, 폐렴구균 백신 3상 긍정적 결과에 주가 32%↑"
     },
+    "link:15533aaba86e6a7d1ee0cee4": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632798",
+      "source": "이투데이",
+      "source_body_digest": "2fc71cd977b9799a893e7f2e04182f7d51ce1ab6648110901fcbc844a2c44517",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T13:27+09:00",
+      "title": "외국인 1.2조 매도에 코스피 7000선 하회…코스닥은 2%대 강세"
+    },
     "link:158971b1b91032fb86686d09": {
       "first_seen_kst": "2026-10-01T04:48:27+09:00",
       "lanes": {
@@ -21192,6 +21365,26 @@
       "link": "https://www.yna.co.kr/view/AKR20261002119700530",
       "source": "연합뉴스",
       "title": "작년 산재사망 상위 10곳중 9곳 건설·배달업…5% 과징금 사정권 | 연합뉴스"
+    },
+    "link:1af7b73ba617319a3d84f7db": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816138",
+      "source": "뉴시스",
+      "source_body_digest": "1e8ba2c3f0376e29a01121261b5121f046cfcd8fd3a3ab3092ee8dc9be4d6e19",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a33f73b7f930339a73b98619fd561a93b9ee6f6cd95727d1db90ad5d56755921",
+      "source_fact_keys": [
+        "source_fact:v1:69d0c652bebeda27f45ad5c6ee7f0947f5d746142dd0719f01498d19fa792544",
+        "source_fact:v1:7fe59eacebf02a4a4675dfc60f4fab83aeb7e68b0165a91e5a9d2ad3728d5162",
+        "source_fact:v1:9b43500aeceacc3eca3d734bec7e5b7d2202f200ca6096489796a5f30f59ceaf",
+        "source_fact:v1:ae05e0c6fbbbc754ba7ee65a0d15c901ec4301817afb813d7bd97a0b19081e16"
+      ],
+      "source_published_kst": "2026-10-06T21:33+09:00",
+      "title": "그리스·이탈리아보다 비싸게 빚내는 프랑스…국채금리 5% 눈앞"
     },
     "link:1b0dc5803bf221f226551999": {
       "first_seen_kst": "2026-09-24T08:18:48+09:00",
@@ -23245,6 +23438,27 @@
       "source": "머니투데이",
       "title": "물가 상승, 수요보다 유가·환율 영향…김영환 \"추가 금리인상 신중해야\""
     },
+    "link:2e474a96a681baa2421ab669": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816229",
+      "source": "뉴시스",
+      "source_body_digest": "eb1be220d6bdbbe86fcc4962b5615e756ba59d482c3c4b3f74903c8d7c513ad2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:024117ef9c519738f4480154e7a9b8e308d0714ddd2b523d79dafd0763a640c8",
+      "source_fact_keys": [
+        "source_fact:v1:17db21b36fb94ad3e300c76ab3bef380310abad27465b7ac9b710b5bb8b1ca19",
+        "source_fact:v1:5a23766599a74ac7a9cb4fea118ea53ff5430f56f69da04d6e180909af729035",
+        "source_fact:v1:64ced6ed8fa90a086a8aea3d61efe0d2ee842ae3646ba563e516686dd2ab098b",
+        "source_fact:v1:c0bb5bc03da25e94ee151c196a934a221e9570f0eba364f7b5bbec5d9a887380",
+        "source_fact:v1:f171556ed351f06ff00b04f122a1682309059e84780855566049a2125f53fcf2"
+      ],
+      "source_published_kst": "2026-10-06T19:00+09:00",
+      "title": "9월 유로존 종합 PMI 53.1·1.1P↑…\"3년5개월 만에 최고\""
+    },
     "link:2e70b20478ba155809e9f1b6": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -23687,6 +23901,21 @@
       "source_published_kst": "2026-10-06T02:28+09:00",
       "title": "아람코 CEO \"세계 석유 공급 이미 압박…비축 최대 2년\""
     },
+    "link:31cfdc263196d0eeb259484c": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006146500002",
+      "source": "연합뉴스",
+      "source_body_digest": "e4e1c3f0a0ac416063e5adcd8f347ce3b7199459f775c070285149dfe7e86ee8",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T16:13+09:00",
+      "title": "원/달러 환율 보합 움직임…0.4원 내린 1,343.6원 | 연합뉴스"
+    },
     "link:320576f0080ac72c4fc6345b": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
       "lanes": {
@@ -23807,6 +24036,26 @@
       "link": "https://www.newsis.com/view/NISX20260927_0003804208",
       "source": "뉴시스",
       "title": "국감 시즌 임박…개인정보 유출·담합 등 현안에 유통·식품업계 '긴장'"
+    },
+    "link:339ace8bbb0c4f9d452a58ff": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/06/2026100609373713420",
+      "source": "머니투데이",
+      "source_body_digest": "e5c330835ec84cc2c65a133b005181f3c0b33ff2b7cf2fd9ed910a69966b4de0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:245479a6b4fec10095c991c5d1107888634b2ca7bc136e8632b99494e18f010e",
+      "source_fact_keys": [
+        "source_fact:v1:0be260b6393a7b0520504776b29e9730996ee6e743d6db97c2e60f6f883a5088",
+        "source_fact:v1:174c1c6bbf592f0314af571f7b8c30755dd8b404ab6579c40899f2844b295e36",
+        "source_fact:v1:ac2ea3cad33074306a9b9a0bc4b2d7902a7a777a26464abe3d0be91ae143175f",
+        "source_fact:v1:fe9caadfb83f1874ef082113c4db11ff819acf6c5f5a3969de9c4093a176b6bc"
+      ],
+      "source_published_kst": "2026-10-06T09:41+09:00",
+      "title": "HLB그룹주 연일 강세…리픽투 FDA 품목허가 효과"
     },
     "link:3406f55edcf4710a27384c16": {
       "first_seen_kst": "2026-09-19T17:57:47+09:00",
@@ -31534,6 +31783,29 @@
       "source_published_kst": "2026-10-06T12:08+09:00",
       "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
     },
+    "link:796a4a331e56b84f76fef008": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815896",
+      "source": "뉴시스",
+      "source_body_digest": "e4fd696d474fde69d335dafd89e312b7edfa068f0961240d7ad99fca2252aee0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00189cffb113199b40a66653141079758a3758fcd874907960f7859f4fe41bf9",
+      "source_fact_keys": [
+        "source_fact:v1:35cf256d20818487533f24fd4b22ad48a35779b2b9c8d7e75dc4aa3d85f8ad10",
+        "source_fact:v1:429d278085fc7fb35a2038c56114e920d4525ffb98b4daf6ed48b12029bbcbd8",
+        "source_fact:v1:6ed70a06d3a6b0c1ca7b9f3c62dec4b705d9d5bdac988867bcfceef67b159039",
+        "source_fact:v1:777f7cada13f1b31d30771a381ec60b1e8e3bc8181d1663d379cf8b042af1965",
+        "source_fact:v1:84e13038c4c269fc1309c8ed23ab434dd664aa09314966613af1391e82346485",
+        "source_fact:v1:a5b96a9ab14c6849d9df5cf9e03a5b55417604bc9dcfb86d866ac2f18c3ff4f6",
+        "source_fact:v1:dce6816893a7bb1e81ba9f93b12cfa0e403241b934e79fc86ea55c2cfd8e882b"
+      ],
+      "source_published_kst": "2026-10-06T15:44+09:00",
+      "title": "원·달러 환율, 0.4원 내린 1343.6원 마감"
+    },
     "link:79c71b2fe821e43f2b765290": {
       "first_seen_kst": "2026-09-28T10:16:02+09:00",
       "lanes": {
@@ -35438,6 +35710,23 @@
       "link": "https://www.etnews.com/20260929000207",
       "source": "전자신문",
       "title": "고려아연, 국내서 '친환경에너지' 20년간 확보…연간 11GWh 규모"
+    },
+    "link:a0aab7753ebb36df7646a598": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05172566645610296",
+      "source": "이데일리",
+      "source_body_digest": "9f8a9376f6548112c36758ab95e90ebdd375dbee8c98993f6477dba44a971eb4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:468af3cae2fbcd7c3066ec782a0caa2d5d8bf15269ae3098b126274594d5a10f",
+      "source_fact_keys": [
+        "source_fact:v1:8baaf960c4f2cc4e014568f449e05e9c1a85695dcbc2552b386397d96b65481f"
+      ],
+      "source_published_kst": "2026-10-06T18:21+09:00",
+      "title": "\"'한국형 테마섹' 키우는데 본점은 전북?\"…KIC '서울 명문화' 목소리"
     },
     "link:a0dcd1ddcb1ffbe9b6a65292": {
       "first_seen_kst": "2026-10-04T08:29:55+09:00",
@@ -45909,6 +46198,26 @@
       "source": "매일경제",
       "title": "콜플랜트 홀딩스, 2분기 매출 11만 달러..전년비 40% 감소"
     },
+    "original:01e1c93ec5ad4aea1fa56fbb": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816138",
+      "source": "뉴시스",
+      "source_body_digest": "1e8ba2c3f0376e29a01121261b5121f046cfcd8fd3a3ab3092ee8dc9be4d6e19",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a33f73b7f930339a73b98619fd561a93b9ee6f6cd95727d1db90ad5d56755921",
+      "source_fact_keys": [
+        "source_fact:v1:69d0c652bebeda27f45ad5c6ee7f0947f5d746142dd0719f01498d19fa792544",
+        "source_fact:v1:7fe59eacebf02a4a4675dfc60f4fab83aeb7e68b0165a91e5a9d2ad3728d5162",
+        "source_fact:v1:9b43500aeceacc3eca3d734bec7e5b7d2202f200ca6096489796a5f30f59ceaf",
+        "source_fact:v1:ae05e0c6fbbbc754ba7ee65a0d15c901ec4301817afb813d7bd97a0b19081e16"
+      ],
+      "source_published_kst": "2026-10-06T21:33+09:00",
+      "title": "그리스·이탈리아보다 비싸게 빚내는 프랑스…국채금리 5% 눈앞"
+    },
     "original:01eaccd9c38b4bb9823e0596": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
       "lanes": {
@@ -51996,6 +52305,27 @@
       "source": "매일경제",
       "title": "해외 단일종목 레버리지 보관액 석달 새 81% 급감…“국감서 면밀히 살필 것”"
     },
+    "original:3d25bc0f354c36cc492c7806": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816229",
+      "source": "뉴시스",
+      "source_body_digest": "eb1be220d6bdbbe86fcc4962b5615e756ba59d482c3c4b3f74903c8d7c513ad2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:024117ef9c519738f4480154e7a9b8e308d0714ddd2b523d79dafd0763a640c8",
+      "source_fact_keys": [
+        "source_fact:v1:17db21b36fb94ad3e300c76ab3bef380310abad27465b7ac9b710b5bb8b1ca19",
+        "source_fact:v1:5a23766599a74ac7a9cb4fea118ea53ff5430f56f69da04d6e180909af729035",
+        "source_fact:v1:64ced6ed8fa90a086a8aea3d61efe0d2ee842ae3646ba563e516686dd2ab098b",
+        "source_fact:v1:c0bb5bc03da25e94ee151c196a934a221e9570f0eba364f7b5bbec5d9a887380",
+        "source_fact:v1:f171556ed351f06ff00b04f122a1682309059e84780855566049a2125f53fcf2"
+      ],
+      "source_published_kst": "2026-10-06T19:00+09:00",
+      "title": "9월 유로존 종합 PMI 53.1·1.1P↑…\"3년5개월 만에 최고\""
+    },
     "original:3d4e4e16efb97a40b515fe2d": {
       "first_seen_kst": "2026-10-03T00:11:20+09:00",
       "lanes": {
@@ -52076,6 +52406,26 @@
       "link": "https://www.etnews.com/20260925000012",
       "source": "전자신문",
       "title": "李대통령, 멕시코와 정상회담…“무역협정 체결 긴요”"
+    },
+    "original:3e5fd36aed5f2d576937519e": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/06/2026100609373713420",
+      "source": "머니투데이",
+      "source_body_digest": "e5c330835ec84cc2c65a133b005181f3c0b33ff2b7cf2fd9ed910a69966b4de0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:245479a6b4fec10095c991c5d1107888634b2ca7bc136e8632b99494e18f010e",
+      "source_fact_keys": [
+        "source_fact:v1:0be260b6393a7b0520504776b29e9730996ee6e743d6db97c2e60f6f883a5088",
+        "source_fact:v1:174c1c6bbf592f0314af571f7b8c30755dd8b404ab6579c40899f2844b295e36",
+        "source_fact:v1:ac2ea3cad33074306a9b9a0bc4b2d7902a7a777a26464abe3d0be91ae143175f",
+        "source_fact:v1:fe9caadfb83f1874ef082113c4db11ff819acf6c5f5a3969de9c4093a176b6bc"
+      ],
+      "source_published_kst": "2026-10-06T09:41+09:00",
+      "title": "HLB그룹주 연일 강세…리픽투 FDA 품목허가 효과"
     },
     "original:3e659312ccf3f6c122d469bb": {
       "first_seen_kst": "2026-10-01T10:36:00+09:00",
@@ -53688,6 +54038,21 @@
       "link": "https://www.newsis.com/view/NISX20260922_0003799948",
       "source": "뉴시스",
       "title": "\"AI 속도 조절론 속에 숨은 의도 있다\"…서울대 교수가 본 빅테크의 셈법"
+    },
+    "original:4b4fa25e42f60f1cdf843f86": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006146500002",
+      "source": "연합뉴스",
+      "source_body_digest": "e4e1c3f0a0ac416063e5adcd8f347ce3b7199459f775c070285149dfe7e86ee8",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T16:13+09:00",
+      "title": "원/달러 환율 보합 움직임…0.4원 내린 1,343.6원 | 연합뉴스"
     },
     "original:4b58eb6e5f5a03e4293006e1": {
       "first_seen_kst": "2026-10-06T19:10:36+09:00",
@@ -55873,6 +56238,23 @@
       ],
       "source_published_kst": "2026-10-04T23:56+09:00",
       "title": "OPEC+, 11월 원유 생산 목표 유지 합의"
+    },
+    "original:6209ada10071c258e392efdb": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05172566645610296",
+      "source": "이데일리",
+      "source_body_digest": "9f8a9376f6548112c36758ab95e90ebdd375dbee8c98993f6477dba44a971eb4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:468af3cae2fbcd7c3066ec782a0caa2d5d8bf15269ae3098b126274594d5a10f",
+      "source_fact_keys": [
+        "source_fact:v1:8baaf960c4f2cc4e014568f449e05e9c1a85695dcbc2552b386397d96b65481f"
+      ],
+      "source_published_kst": "2026-10-06T18:21+09:00",
+      "title": "\"'한국형 테마섹' 키우는데 본점은 전북?\"…KIC '서울 명문화' 목소리"
     },
     "original:62278f783f8b20551015bd4d": {
       "first_seen_kst": "2026-10-01T19:41:53+09:00",
@@ -60906,6 +61288,29 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-05T12:30+09:00",
       "title": "\"요즘은 쫀득 시대\" 식품·디저트업계에 부는 식감 바람"
+    },
+    "original:915c416fb74eb89eadad5ccd": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815896",
+      "source": "뉴시스",
+      "source_body_digest": "e4fd696d474fde69d335dafd89e312b7edfa068f0961240d7ad99fca2252aee0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00189cffb113199b40a66653141079758a3758fcd874907960f7859f4fe41bf9",
+      "source_fact_keys": [
+        "source_fact:v1:35cf256d20818487533f24fd4b22ad48a35779b2b9c8d7e75dc4aa3d85f8ad10",
+        "source_fact:v1:429d278085fc7fb35a2038c56114e920d4525ffb98b4daf6ed48b12029bbcbd8",
+        "source_fact:v1:6ed70a06d3a6b0c1ca7b9f3c62dec4b705d9d5bdac988867bcfceef67b159039",
+        "source_fact:v1:777f7cada13f1b31d30771a381ec60b1e8e3bc8181d1663d379cf8b042af1965",
+        "source_fact:v1:84e13038c4c269fc1309c8ed23ab434dd664aa09314966613af1391e82346485",
+        "source_fact:v1:a5b96a9ab14c6849d9df5cf9e03a5b55417604bc9dcfb86d866ac2f18c3ff4f6",
+        "source_fact:v1:dce6816893a7bb1e81ba9f93b12cfa0e403241b934e79fc86ea55c2cfd8e882b"
+      ],
+      "source_published_kst": "2026-10-06T15:44+09:00",
+      "title": "원·달러 환율, 0.4원 내린 1343.6원 마감"
     },
     "original:916325272409459447520300": {
       "first_seen_kst": "2026-10-06T16:09:23+09:00",
@@ -67241,6 +67646,21 @@
       "source": "매일경제",
       "title": "자본시장 신뢰도 주주가치도 ‘쑥’…KT&G, 3600억원 규모 자사주 매입·소각 결정"
     },
+    "original:d285297ee8a7b66c9823e882": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632798",
+      "source": "이투데이",
+      "source_body_digest": "2fc71cd977b9799a893e7f2e04182f7d51ce1ab6648110901fcbc844a2c44517",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T13:27+09:00",
+      "title": "외국인 1.2조 매도에 코스피 7000선 하회…코스닥은 2%대 강세"
+    },
     "original:d2a50421012225a1d33db9c2": {
       "first_seen_kst": "2026-10-05T07:03:44+09:00",
       "lanes": {
@@ -73464,6 +73884,23 @@
       ],
       "source_published_kst": "2026-10-06T09:54+09:00",
       "title": "올해 청약 경쟁률 작년 절반으로 '뚝'…서울·3기신도시는 100대1"
+    },
+    "source_fact:06f634214863c44875dba708": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05172566645610296",
+      "source": "이데일리",
+      "source_body_digest": "9f8a9376f6548112c36758ab95e90ebdd375dbee8c98993f6477dba44a971eb4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:468af3cae2fbcd7c3066ec782a0caa2d5d8bf15269ae3098b126274594d5a10f",
+      "source_fact_keys": [
+        "source_fact:v1:8baaf960c4f2cc4e014568f449e05e9c1a85695dcbc2552b386397d96b65481f"
+      ],
+      "source_published_kst": "2026-10-06T18:21+09:00",
+      "title": "\"'한국형 테마섹' 키우는데 본점은 전북?\"…KIC '서울 명문화' 목소리"
     },
     "source_fact:0715ff904e694f00249047ba": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
@@ -79782,6 +80219,29 @@
       ],
       "source_published_kst": "2026-10-06T13:05+09:00",
       "title": "\"양자 산업 키우려면 민관협력 필수…韓 강점 제조업에 집중해야\""
+    },
+    "source_fact:27f1cee1145f9f7055108cd4": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815896",
+      "source": "뉴시스",
+      "source_body_digest": "e4fd696d474fde69d335dafd89e312b7edfa068f0961240d7ad99fca2252aee0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00189cffb113199b40a66653141079758a3758fcd874907960f7859f4fe41bf9",
+      "source_fact_keys": [
+        "source_fact:v1:35cf256d20818487533f24fd4b22ad48a35779b2b9c8d7e75dc4aa3d85f8ad10",
+        "source_fact:v1:429d278085fc7fb35a2038c56114e920d4525ffb98b4daf6ed48b12029bbcbd8",
+        "source_fact:v1:6ed70a06d3a6b0c1ca7b9f3c62dec4b705d9d5bdac988867bcfceef67b159039",
+        "source_fact:v1:777f7cada13f1b31d30771a381ec60b1e8e3bc8181d1663d379cf8b042af1965",
+        "source_fact:v1:84e13038c4c269fc1309c8ed23ab434dd664aa09314966613af1391e82346485",
+        "source_fact:v1:a5b96a9ab14c6849d9df5cf9e03a5b55417604bc9dcfb86d866ac2f18c3ff4f6",
+        "source_fact:v1:dce6816893a7bb1e81ba9f93b12cfa0e403241b934e79fc86ea55c2cfd8e882b"
+      ],
+      "source_published_kst": "2026-10-06T15:44+09:00",
+      "title": "원·달러 환율, 0.4원 내린 1343.6원 마감"
     },
     "source_fact:27f4f9794d67f9ea6efe6caf": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
@@ -90099,6 +90559,26 @@
       "source_published_kst": "2026-10-06T15:14+09:00",
       "title": "삼성전기, AI 서버용 MLCC 2900억 수주 ... 올해만 6번째 장기공급계약"
     },
+    "source_fact:58c278552fc2295ea5c24150": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/06/2026100609373713420",
+      "source": "머니투데이",
+      "source_body_digest": "e5c330835ec84cc2c65a133b005181f3c0b33ff2b7cf2fd9ed910a69966b4de0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:245479a6b4fec10095c991c5d1107888634b2ca7bc136e8632b99494e18f010e",
+      "source_fact_keys": [
+        "source_fact:v1:0be260b6393a7b0520504776b29e9730996ee6e743d6db97c2e60f6f883a5088",
+        "source_fact:v1:174c1c6bbf592f0314af571f7b8c30755dd8b404ab6579c40899f2844b295e36",
+        "source_fact:v1:ac2ea3cad33074306a9b9a0bc4b2d7902a7a777a26464abe3d0be91ae143175f",
+        "source_fact:v1:fe9caadfb83f1874ef082113c4db11ff819acf6c5f5a3969de9c4093a176b6bc"
+      ],
+      "source_published_kst": "2026-10-06T09:41+09:00",
+      "title": "HLB그룹주 연일 강세…리픽투 FDA 품목허가 효과"
+    },
     "source_fact:58d3dc82dcfd0335f8149f40": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -92205,6 +92685,26 @@
       "source_published_kst": "2026-10-06T13:28+09:00",
       "title": "세계 반도체 매출, 1조 달러 넘어섰다…18개월 연속 성장"
     },
+    "source_fact:6310ca2461f210d9b011330d": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/06/2026100609373713420",
+      "source": "머니투데이",
+      "source_body_digest": "e5c330835ec84cc2c65a133b005181f3c0b33ff2b7cf2fd9ed910a69966b4de0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:245479a6b4fec10095c991c5d1107888634b2ca7bc136e8632b99494e18f010e",
+      "source_fact_keys": [
+        "source_fact:v1:0be260b6393a7b0520504776b29e9730996ee6e743d6db97c2e60f6f883a5088",
+        "source_fact:v1:174c1c6bbf592f0314af571f7b8c30755dd8b404ab6579c40899f2844b295e36",
+        "source_fact:v1:ac2ea3cad33074306a9b9a0bc4b2d7902a7a777a26464abe3d0be91ae143175f",
+        "source_fact:v1:fe9caadfb83f1874ef082113c4db11ff819acf6c5f5a3969de9c4093a176b6bc"
+      ],
+      "source_published_kst": "2026-10-06T09:41+09:00",
+      "title": "HLB그룹주 연일 강세…리픽투 FDA 품목허가 효과"
+    },
     "source_fact:633d876314d1ac1278a57b82": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -92660,6 +93160,29 @@
       ],
       "source_published_kst": "2026-10-06T06:10+09:00",
       "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
+    },
+    "source_fact:652a5ba789bb3eab961f08a0": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815896",
+      "source": "뉴시스",
+      "source_body_digest": "e4fd696d474fde69d335dafd89e312b7edfa068f0961240d7ad99fca2252aee0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00189cffb113199b40a66653141079758a3758fcd874907960f7859f4fe41bf9",
+      "source_fact_keys": [
+        "source_fact:v1:35cf256d20818487533f24fd4b22ad48a35779b2b9c8d7e75dc4aa3d85f8ad10",
+        "source_fact:v1:429d278085fc7fb35a2038c56114e920d4525ffb98b4daf6ed48b12029bbcbd8",
+        "source_fact:v1:6ed70a06d3a6b0c1ca7b9f3c62dec4b705d9d5bdac988867bcfceef67b159039",
+        "source_fact:v1:777f7cada13f1b31d30771a381ec60b1e8e3bc8181d1663d379cf8b042af1965",
+        "source_fact:v1:84e13038c4c269fc1309c8ed23ab434dd664aa09314966613af1391e82346485",
+        "source_fact:v1:a5b96a9ab14c6849d9df5cf9e03a5b55417604bc9dcfb86d866ac2f18c3ff4f6",
+        "source_fact:v1:dce6816893a7bb1e81ba9f93b12cfa0e403241b934e79fc86ea55c2cfd8e882b"
+      ],
+      "source_published_kst": "2026-10-06T15:44+09:00",
+      "title": "원·달러 환율, 0.4원 내린 1343.6원 마감"
     },
     "source_fact:652eea937225eb2c23a7ec08": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
@@ -97013,6 +97536,27 @@
       "source_published_kst": "2026-10-06T14:46+09:00",
       "title": "중국, ‘물류 데이터 일대일로’ 좌초⋯한중일 협력도 중단"
     },
+    "source_fact:79cd92fca16936051a741132": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816229",
+      "source": "뉴시스",
+      "source_body_digest": "eb1be220d6bdbbe86fcc4962b5615e756ba59d482c3c4b3f74903c8d7c513ad2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:024117ef9c519738f4480154e7a9b8e308d0714ddd2b523d79dafd0763a640c8",
+      "source_fact_keys": [
+        "source_fact:v1:17db21b36fb94ad3e300c76ab3bef380310abad27465b7ac9b710b5bb8b1ca19",
+        "source_fact:v1:5a23766599a74ac7a9cb4fea118ea53ff5430f56f69da04d6e180909af729035",
+        "source_fact:v1:64ced6ed8fa90a086a8aea3d61efe0d2ee842ae3646ba563e516686dd2ab098b",
+        "source_fact:v1:c0bb5bc03da25e94ee151c196a934a221e9570f0eba364f7b5bbec5d9a887380",
+        "source_fact:v1:f171556ed351f06ff00b04f122a1682309059e84780855566049a2125f53fcf2"
+      ],
+      "source_published_kst": "2026-10-06T19:00+09:00",
+      "title": "9월 유로존 종합 PMI 53.1·1.1P↑…\"3년5개월 만에 최고\""
+    },
     "source_fact:79d82eea9daf79cb75dd1c17": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
       "lanes": {
@@ -99172,6 +99716,29 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "산업부 국감 돌입…대미투자·호남 반도체·메가특구 '도마'"
     },
+    "source_fact:82efd0af2318bdfaa7599a77": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815896",
+      "source": "뉴시스",
+      "source_body_digest": "e4fd696d474fde69d335dafd89e312b7edfa068f0961240d7ad99fca2252aee0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00189cffb113199b40a66653141079758a3758fcd874907960f7859f4fe41bf9",
+      "source_fact_keys": [
+        "source_fact:v1:35cf256d20818487533f24fd4b22ad48a35779b2b9c8d7e75dc4aa3d85f8ad10",
+        "source_fact:v1:429d278085fc7fb35a2038c56114e920d4525ffb98b4daf6ed48b12029bbcbd8",
+        "source_fact:v1:6ed70a06d3a6b0c1ca7b9f3c62dec4b705d9d5bdac988867bcfceef67b159039",
+        "source_fact:v1:777f7cada13f1b31d30771a381ec60b1e8e3bc8181d1663d379cf8b042af1965",
+        "source_fact:v1:84e13038c4c269fc1309c8ed23ab434dd664aa09314966613af1391e82346485",
+        "source_fact:v1:a5b96a9ab14c6849d9df5cf9e03a5b55417604bc9dcfb86d866ac2f18c3ff4f6",
+        "source_fact:v1:dce6816893a7bb1e81ba9f93b12cfa0e403241b934e79fc86ea55c2cfd8e882b"
+      ],
+      "source_published_kst": "2026-10-06T15:44+09:00",
+      "title": "원·달러 환율, 0.4원 내린 1343.6원 마감"
+    },
     "source_fact:82f7ac3cbf1eb9735260a060": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
       "lanes": {
@@ -99510,6 +100077,26 @@
       ],
       "source_published_kst": "2026-10-06T08:48+09:00",
       "title": "현대글로비스, SMR 추진 車운반선 상용화 시동…\"美 물류사와 항로 공동 검토\""
+    },
+    "source_fact:85226bde14217f8ba8cf2e4d": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816138",
+      "source": "뉴시스",
+      "source_body_digest": "1e8ba2c3f0376e29a01121261b5121f046cfcd8fd3a3ab3092ee8dc9be4d6e19",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a33f73b7f930339a73b98619fd561a93b9ee6f6cd95727d1db90ad5d56755921",
+      "source_fact_keys": [
+        "source_fact:v1:69d0c652bebeda27f45ad5c6ee7f0947f5d746142dd0719f01498d19fa792544",
+        "source_fact:v1:7fe59eacebf02a4a4675dfc60f4fab83aeb7e68b0165a91e5a9d2ad3728d5162",
+        "source_fact:v1:9b43500aeceacc3eca3d734bec7e5b7d2202f200ca6096489796a5f30f59ceaf",
+        "source_fact:v1:ae05e0c6fbbbc754ba7ee65a0d15c901ec4301817afb813d7bd97a0b19081e16"
+      ],
+      "source_published_kst": "2026-10-06T21:33+09:00",
+      "title": "그리스·이탈리아보다 비싸게 빚내는 프랑스…국채금리 5% 눈앞"
     },
     "source_fact:8529d02f8cc04e2509419eb2": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
@@ -101198,6 +101785,27 @@
       ],
       "source_published_kst": "2026-10-06T09:04+09:00",
       "title": "현대글로비스, 美 LGL과 원자력 자동차운반선 한·미 운항 검토"
+    },
+    "source_fact:8d72fd8ae18a898645ff92ec": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816229",
+      "source": "뉴시스",
+      "source_body_digest": "eb1be220d6bdbbe86fcc4962b5615e756ba59d482c3c4b3f74903c8d7c513ad2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:024117ef9c519738f4480154e7a9b8e308d0714ddd2b523d79dafd0763a640c8",
+      "source_fact_keys": [
+        "source_fact:v1:17db21b36fb94ad3e300c76ab3bef380310abad27465b7ac9b710b5bb8b1ca19",
+        "source_fact:v1:5a23766599a74ac7a9cb4fea118ea53ff5430f56f69da04d6e180909af729035",
+        "source_fact:v1:64ced6ed8fa90a086a8aea3d61efe0d2ee842ae3646ba563e516686dd2ab098b",
+        "source_fact:v1:c0bb5bc03da25e94ee151c196a934a221e9570f0eba364f7b5bbec5d9a887380",
+        "source_fact:v1:f171556ed351f06ff00b04f122a1682309059e84780855566049a2125f53fcf2"
+      ],
+      "source_published_kst": "2026-10-06T19:00+09:00",
+      "title": "9월 유로존 종합 PMI 53.1·1.1P↑…\"3년5개월 만에 최고\""
     },
     "source_fact:8d7eb9e00ffe523e0e0d2f70": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
@@ -105406,6 +106014,29 @@
       "source_published_kst": "2026-10-06T11:14+09:00",
       "title": "JW중외제약, 유럽당뇨병학회서 '엠파가드' 임상 3상 발표…3제 요법 유효성 입증"
     },
+    "source_fact:a0cd22e0559078f04a53ec73": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815896",
+      "source": "뉴시스",
+      "source_body_digest": "e4fd696d474fde69d335dafd89e312b7edfa068f0961240d7ad99fca2252aee0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00189cffb113199b40a66653141079758a3758fcd874907960f7859f4fe41bf9",
+      "source_fact_keys": [
+        "source_fact:v1:35cf256d20818487533f24fd4b22ad48a35779b2b9c8d7e75dc4aa3d85f8ad10",
+        "source_fact:v1:429d278085fc7fb35a2038c56114e920d4525ffb98b4daf6ed48b12029bbcbd8",
+        "source_fact:v1:6ed70a06d3a6b0c1ca7b9f3c62dec4b705d9d5bdac988867bcfceef67b159039",
+        "source_fact:v1:777f7cada13f1b31d30771a381ec60b1e8e3bc8181d1663d379cf8b042af1965",
+        "source_fact:v1:84e13038c4c269fc1309c8ed23ab434dd664aa09314966613af1391e82346485",
+        "source_fact:v1:a5b96a9ab14c6849d9df5cf9e03a5b55417604bc9dcfb86d866ac2f18c3ff4f6",
+        "source_fact:v1:dce6816893a7bb1e81ba9f93b12cfa0e403241b934e79fc86ea55c2cfd8e882b"
+      ],
+      "source_published_kst": "2026-10-06T15:44+09:00",
+      "title": "원·달러 환율, 0.4원 내린 1343.6원 마감"
+    },
     "source_fact:a0dc08a5e4ed7ea9305253f0": {
       "first_seen_kst": "2026-10-05T22:49:24+09:00",
       "lanes": {
@@ -105463,6 +106094,26 @@
       ],
       "source_published_kst": "2026-10-06T17:38+09:00",
       "title": "\"中국경절 연휴 특수\"… 외국인 매출 두배로"
+    },
+    "source_fact:a12084faa82f7d9feec092ed": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816138",
+      "source": "뉴시스",
+      "source_body_digest": "1e8ba2c3f0376e29a01121261b5121f046cfcd8fd3a3ab3092ee8dc9be4d6e19",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a33f73b7f930339a73b98619fd561a93b9ee6f6cd95727d1db90ad5d56755921",
+      "source_fact_keys": [
+        "source_fact:v1:69d0c652bebeda27f45ad5c6ee7f0947f5d746142dd0719f01498d19fa792544",
+        "source_fact:v1:7fe59eacebf02a4a4675dfc60f4fab83aeb7e68b0165a91e5a9d2ad3728d5162",
+        "source_fact:v1:9b43500aeceacc3eca3d734bec7e5b7d2202f200ca6096489796a5f30f59ceaf",
+        "source_fact:v1:ae05e0c6fbbbc754ba7ee65a0d15c901ec4301817afb813d7bd97a0b19081e16"
+      ],
+      "source_published_kst": "2026-10-06T21:33+09:00",
+      "title": "그리스·이탈리아보다 비싸게 빚내는 프랑스…국채금리 5% 눈앞"
     },
     "source_fact:a154b415c98114c1ea11611b": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
@@ -107486,6 +108137,29 @@
       ],
       "source_published_kst": "2026-10-06T17:46+09:00",
       "title": "메모리 반도체 호황 속 삼성전자 완제품은 '고전'…DX부문 3분기 실적 어떻게"
+    },
+    "source_fact:abebde3b220c746b1b9e0338": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815896",
+      "source": "뉴시스",
+      "source_body_digest": "e4fd696d474fde69d335dafd89e312b7edfa068f0961240d7ad99fca2252aee0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00189cffb113199b40a66653141079758a3758fcd874907960f7859f4fe41bf9",
+      "source_fact_keys": [
+        "source_fact:v1:35cf256d20818487533f24fd4b22ad48a35779b2b9c8d7e75dc4aa3d85f8ad10",
+        "source_fact:v1:429d278085fc7fb35a2038c56114e920d4525ffb98b4daf6ed48b12029bbcbd8",
+        "source_fact:v1:6ed70a06d3a6b0c1ca7b9f3c62dec4b705d9d5bdac988867bcfceef67b159039",
+        "source_fact:v1:777f7cada13f1b31d30771a381ec60b1e8e3bc8181d1663d379cf8b042af1965",
+        "source_fact:v1:84e13038c4c269fc1309c8ed23ab434dd664aa09314966613af1391e82346485",
+        "source_fact:v1:a5b96a9ab14c6849d9df5cf9e03a5b55417604bc9dcfb86d866ac2f18c3ff4f6",
+        "source_fact:v1:dce6816893a7bb1e81ba9f93b12cfa0e403241b934e79fc86ea55c2cfd8e882b"
+      ],
+      "source_published_kst": "2026-10-06T15:44+09:00",
+      "title": "원·달러 환율, 0.4원 내린 1343.6원 마감"
     },
     "source_fact:abf215c34b0efe55dde7da51": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
@@ -110765,6 +111439,27 @@
       "source_published_kst": "2026-10-06T00:04+09:00",
       "title": "엔진·배터리·공조… AI 데이터센터, 제조업 신시장을 열다"
     },
+    "source_fact:bb4c6a1964f13f082b498438": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816229",
+      "source": "뉴시스",
+      "source_body_digest": "eb1be220d6bdbbe86fcc4962b5615e756ba59d482c3c4b3f74903c8d7c513ad2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:024117ef9c519738f4480154e7a9b8e308d0714ddd2b523d79dafd0763a640c8",
+      "source_fact_keys": [
+        "source_fact:v1:17db21b36fb94ad3e300c76ab3bef380310abad27465b7ac9b710b5bb8b1ca19",
+        "source_fact:v1:5a23766599a74ac7a9cb4fea118ea53ff5430f56f69da04d6e180909af729035",
+        "source_fact:v1:64ced6ed8fa90a086a8aea3d61efe0d2ee842ae3646ba563e516686dd2ab098b",
+        "source_fact:v1:c0bb5bc03da25e94ee151c196a934a221e9570f0eba364f7b5bbec5d9a887380",
+        "source_fact:v1:f171556ed351f06ff00b04f122a1682309059e84780855566049a2125f53fcf2"
+      ],
+      "source_published_kst": "2026-10-06T19:00+09:00",
+      "title": "9월 유로존 종합 PMI 53.1·1.1P↑…\"3년5개월 만에 최고\""
+    },
     "source_fact:bb5bf88db8e735f0899f16aa": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
       "lanes": {
@@ -111012,6 +111707,26 @@
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
     },
+    "source_fact:bc9d17713d82d183e42f735f": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816138",
+      "source": "뉴시스",
+      "source_body_digest": "1e8ba2c3f0376e29a01121261b5121f046cfcd8fd3a3ab3092ee8dc9be4d6e19",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a33f73b7f930339a73b98619fd561a93b9ee6f6cd95727d1db90ad5d56755921",
+      "source_fact_keys": [
+        "source_fact:v1:69d0c652bebeda27f45ad5c6ee7f0947f5d746142dd0719f01498d19fa792544",
+        "source_fact:v1:7fe59eacebf02a4a4675dfc60f4fab83aeb7e68b0165a91e5a9d2ad3728d5162",
+        "source_fact:v1:9b43500aeceacc3eca3d734bec7e5b7d2202f200ca6096489796a5f30f59ceaf",
+        "source_fact:v1:ae05e0c6fbbbc754ba7ee65a0d15c901ec4301817afb813d7bd97a0b19081e16"
+      ],
+      "source_published_kst": "2026-10-06T21:33+09:00",
+      "title": "그리스·이탈리아보다 비싸게 빚내는 프랑스…국채금리 5% 눈앞"
+    },
     "source_fact:bcf73a6ed70a379f9c186a7b": {
       "first_seen_kst": "2026-10-06T22:21:21+09:00",
       "lanes": {
@@ -111028,6 +111743,27 @@
       ],
       "source_published_kst": "2026-10-06T20:38+09:00",
       "title": "이 대통령 \"전세사기 피해자 기다리지 않도록\"…보증금 3분의 1 보장"
+    },
+    "source_fact:bd2b7191c2bf464620e643fa": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816229",
+      "source": "뉴시스",
+      "source_body_digest": "eb1be220d6bdbbe86fcc4962b5615e756ba59d482c3c4b3f74903c8d7c513ad2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:024117ef9c519738f4480154e7a9b8e308d0714ddd2b523d79dafd0763a640c8",
+      "source_fact_keys": [
+        "source_fact:v1:17db21b36fb94ad3e300c76ab3bef380310abad27465b7ac9b710b5bb8b1ca19",
+        "source_fact:v1:5a23766599a74ac7a9cb4fea118ea53ff5430f56f69da04d6e180909af729035",
+        "source_fact:v1:64ced6ed8fa90a086a8aea3d61efe0d2ee842ae3646ba563e516686dd2ab098b",
+        "source_fact:v1:c0bb5bc03da25e94ee151c196a934a221e9570f0eba364f7b5bbec5d9a887380",
+        "source_fact:v1:f171556ed351f06ff00b04f122a1682309059e84780855566049a2125f53fcf2"
+      ],
+      "source_published_kst": "2026-10-06T19:00+09:00",
+      "title": "9월 유로존 종합 PMI 53.1·1.1P↑…\"3년5개월 만에 최고\""
     },
     "source_fact:bd5883464545745a6b4e7aac": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
@@ -115001,6 +115737,26 @@
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
     },
+    "source_fact:d0576e1d714871340b218f41": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/06/2026100609373713420",
+      "source": "머니투데이",
+      "source_body_digest": "e5c330835ec84cc2c65a133b005181f3c0b33ff2b7cf2fd9ed910a69966b4de0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:245479a6b4fec10095c991c5d1107888634b2ca7bc136e8632b99494e18f010e",
+      "source_fact_keys": [
+        "source_fact:v1:0be260b6393a7b0520504776b29e9730996ee6e743d6db97c2e60f6f883a5088",
+        "source_fact:v1:174c1c6bbf592f0314af571f7b8c30755dd8b404ab6579c40899f2844b295e36",
+        "source_fact:v1:ac2ea3cad33074306a9b9a0bc4b2d7902a7a777a26464abe3d0be91ae143175f",
+        "source_fact:v1:fe9caadfb83f1874ef082113c4db11ff819acf6c5f5a3969de9c4093a176b6bc"
+      ],
+      "source_published_kst": "2026-10-06T09:41+09:00",
+      "title": "HLB그룹주 연일 강세…리픽투 FDA 품목허가 효과"
+    },
     "source_fact:d07541f99330a78473dc6e57": {
       "first_seen_kst": "2026-10-05T20:38:34+09:00",
       "lanes": {
@@ -116406,6 +117162,29 @@
       ],
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "반도체 소부장 랠리 … ETF 출시도 잇따라"
+    },
+    "source_fact:d6522a8ca8381ae9afba87f8": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815896",
+      "source": "뉴시스",
+      "source_body_digest": "e4fd696d474fde69d335dafd89e312b7edfa068f0961240d7ad99fca2252aee0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00189cffb113199b40a66653141079758a3758fcd874907960f7859f4fe41bf9",
+      "source_fact_keys": [
+        "source_fact:v1:35cf256d20818487533f24fd4b22ad48a35779b2b9c8d7e75dc4aa3d85f8ad10",
+        "source_fact:v1:429d278085fc7fb35a2038c56114e920d4525ffb98b4daf6ed48b12029bbcbd8",
+        "source_fact:v1:6ed70a06d3a6b0c1ca7b9f3c62dec4b705d9d5bdac988867bcfceef67b159039",
+        "source_fact:v1:777f7cada13f1b31d30771a381ec60b1e8e3bc8181d1663d379cf8b042af1965",
+        "source_fact:v1:84e13038c4c269fc1309c8ed23ab434dd664aa09314966613af1391e82346485",
+        "source_fact:v1:a5b96a9ab14c6849d9df5cf9e03a5b55417604bc9dcfb86d866ac2f18c3ff4f6",
+        "source_fact:v1:dce6816893a7bb1e81ba9f93b12cfa0e403241b934e79fc86ea55c2cfd8e882b"
+      ],
+      "source_published_kst": "2026-10-06T15:44+09:00",
+      "title": "원·달러 환율, 0.4원 내린 1343.6원 마감"
     },
     "source_fact:d66fe6a7ccb0d0c922548137": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
@@ -121289,6 +122068,27 @@
       "source_published_kst": "2026-10-06T17:33+09:00",
       "title": "구미시·MSDI, 방위산업 맞손…\"미사일 방산 거점으로\""
     },
+    "source_fact:ebf4aef9d965137e5b086fbd": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816229",
+      "source": "뉴시스",
+      "source_body_digest": "eb1be220d6bdbbe86fcc4962b5615e756ba59d482c3c4b3f74903c8d7c513ad2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:024117ef9c519738f4480154e7a9b8e308d0714ddd2b523d79dafd0763a640c8",
+      "source_fact_keys": [
+        "source_fact:v1:17db21b36fb94ad3e300c76ab3bef380310abad27465b7ac9b710b5bb8b1ca19",
+        "source_fact:v1:5a23766599a74ac7a9cb4fea118ea53ff5430f56f69da04d6e180909af729035",
+        "source_fact:v1:64ced6ed8fa90a086a8aea3d61efe0d2ee842ae3646ba563e516686dd2ab098b",
+        "source_fact:v1:c0bb5bc03da25e94ee151c196a934a221e9570f0eba364f7b5bbec5d9a887380",
+        "source_fact:v1:f171556ed351f06ff00b04f122a1682309059e84780855566049a2125f53fcf2"
+      ],
+      "source_published_kst": "2026-10-06T19:00+09:00",
+      "title": "9월 유로존 종합 PMI 53.1·1.1P↑…\"3년5개월 만에 최고\""
+    },
     "source_fact:ebf8a00914d657f214316c71": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
@@ -122877,6 +123677,29 @@
       "source_published_kst": "2026-10-06T17:50+09:00",
       "title": "신세계 '유통·콘텐츠' 시너지"
     },
+    "source_fact:f35cecd3931de404813158d1": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815896",
+      "source": "뉴시스",
+      "source_body_digest": "e4fd696d474fde69d335dafd89e312b7edfa068f0961240d7ad99fca2252aee0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00189cffb113199b40a66653141079758a3758fcd874907960f7859f4fe41bf9",
+      "source_fact_keys": [
+        "source_fact:v1:35cf256d20818487533f24fd4b22ad48a35779b2b9c8d7e75dc4aa3d85f8ad10",
+        "source_fact:v1:429d278085fc7fb35a2038c56114e920d4525ffb98b4daf6ed48b12029bbcbd8",
+        "source_fact:v1:6ed70a06d3a6b0c1ca7b9f3c62dec4b705d9d5bdac988867bcfceef67b159039",
+        "source_fact:v1:777f7cada13f1b31d30771a381ec60b1e8e3bc8181d1663d379cf8b042af1965",
+        "source_fact:v1:84e13038c4c269fc1309c8ed23ab434dd664aa09314966613af1391e82346485",
+        "source_fact:v1:a5b96a9ab14c6849d9df5cf9e03a5b55417604bc9dcfb86d866ac2f18c3ff4f6",
+        "source_fact:v1:dce6816893a7bb1e81ba9f93b12cfa0e403241b934e79fc86ea55c2cfd8e882b"
+      ],
+      "source_published_kst": "2026-10-06T15:44+09:00",
+      "title": "원·달러 환율, 0.4원 내린 1343.6원 마감"
+    },
     "source_fact:f35f8c58c7a0b6c018f0b0f8": {
       "first_seen_kst": "2026-10-06T20:54:05+09:00",
       "lanes": {
@@ -123110,6 +123933,26 @@
       ],
       "source_published_kst": "2026-10-06T03:54+09:00",
       "title": "[美특징주]웰스파고, 모건스탠리 ‘매수’ 상향에 주가 2%↑"
+    },
+    "source_fact:f46415de803901b04e0f889c": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/06/2026100609373713420",
+      "source": "머니투데이",
+      "source_body_digest": "e5c330835ec84cc2c65a133b005181f3c0b33ff2b7cf2fd9ed910a69966b4de0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:245479a6b4fec10095c991c5d1107888634b2ca7bc136e8632b99494e18f010e",
+      "source_fact_keys": [
+        "source_fact:v1:0be260b6393a7b0520504776b29e9730996ee6e743d6db97c2e60f6f883a5088",
+        "source_fact:v1:174c1c6bbf592f0314af571f7b8c30755dd8b404ab6579c40899f2844b295e36",
+        "source_fact:v1:ac2ea3cad33074306a9b9a0bc4b2d7902a7a777a26464abe3d0be91ae143175f",
+        "source_fact:v1:fe9caadfb83f1874ef082113c4db11ff819acf6c5f5a3969de9c4093a176b6bc"
+      ],
+      "source_published_kst": "2026-10-06T09:41+09:00",
+      "title": "HLB그룹주 연일 강세…리픽투 FDA 품목허가 효과"
     },
     "source_fact:f48a80f29f8395fc30e1d4fc": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -124357,6 +125200,26 @@
       ],
       "source_published_kst": "2026-10-05T19:05+09:00",
       "title": "오메가 헬스케어 인베스터, 플로리다 32곳 운영사 교체..1년차 임대료 2600만 달러 증액"
+    },
+    "source_fact:fbb3251e0697b5f3d54b3d9e": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816138",
+      "source": "뉴시스",
+      "source_body_digest": "1e8ba2c3f0376e29a01121261b5121f046cfcd8fd3a3ab3092ee8dc9be4d6e19",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a33f73b7f930339a73b98619fd561a93b9ee6f6cd95727d1db90ad5d56755921",
+      "source_fact_keys": [
+        "source_fact:v1:69d0c652bebeda27f45ad5c6ee7f0947f5d746142dd0719f01498d19fa792544",
+        "source_fact:v1:7fe59eacebf02a4a4675dfc60f4fab83aeb7e68b0165a91e5a9d2ad3728d5162",
+        "source_fact:v1:9b43500aeceacc3eca3d734bec7e5b7d2202f200ca6096489796a5f30f59ceaf",
+        "source_fact:v1:ae05e0c6fbbbc754ba7ee65a0d15c901ec4301817afb813d7bd97a0b19081e16"
+      ],
+      "source_published_kst": "2026-10-06T21:33+09:00",
+      "title": "그리스·이탈리아보다 비싸게 빚내는 프랑스…국채금리 5% 눈앞"
     },
     "source_fact:fbbc5bb2882bae533fb11984": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
@@ -125814,6 +126677,26 @@
       "link": "https://www.mk.co.kr/news/stock/12165523",
       "source": "매일경제",
       "title": "콜플랜트 홀딩스, 2분기 매출 11만 달러..전년비 40% 감소"
+    },
+    "title:01e1c93ec5ad4aea1fa56fbb": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816138",
+      "source": "뉴시스",
+      "source_body_digest": "1e8ba2c3f0376e29a01121261b5121f046cfcd8fd3a3ab3092ee8dc9be4d6e19",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a33f73b7f930339a73b98619fd561a93b9ee6f6cd95727d1db90ad5d56755921",
+      "source_fact_keys": [
+        "source_fact:v1:69d0c652bebeda27f45ad5c6ee7f0947f5d746142dd0719f01498d19fa792544",
+        "source_fact:v1:7fe59eacebf02a4a4675dfc60f4fab83aeb7e68b0165a91e5a9d2ad3728d5162",
+        "source_fact:v1:9b43500aeceacc3eca3d734bec7e5b7d2202f200ca6096489796a5f30f59ceaf",
+        "source_fact:v1:ae05e0c6fbbbc754ba7ee65a0d15c901ec4301817afb813d7bd97a0b19081e16"
+      ],
+      "source_published_kst": "2026-10-06T21:33+09:00",
+      "title": "그리스·이탈리아보다 비싸게 빚내는 프랑스…국채금리 5% 눈앞"
     },
     "title:01eaccd9c38b4bb9823e0596": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
@@ -131913,6 +132796,27 @@
       "source": "매일경제",
       "title": "해외 단일종목 레버리지 보관액 석달 새 81% 급감…“국감서 면밀히 살필 것”"
     },
+    "title:3d25bc0f354c36cc492c7806": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816229",
+      "source": "뉴시스",
+      "source_body_digest": "eb1be220d6bdbbe86fcc4962b5615e756ba59d482c3c4b3f74903c8d7c513ad2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:024117ef9c519738f4480154e7a9b8e308d0714ddd2b523d79dafd0763a640c8",
+      "source_fact_keys": [
+        "source_fact:v1:17db21b36fb94ad3e300c76ab3bef380310abad27465b7ac9b710b5bb8b1ca19",
+        "source_fact:v1:5a23766599a74ac7a9cb4fea118ea53ff5430f56f69da04d6e180909af729035",
+        "source_fact:v1:64ced6ed8fa90a086a8aea3d61efe0d2ee842ae3646ba563e516686dd2ab098b",
+        "source_fact:v1:c0bb5bc03da25e94ee151c196a934a221e9570f0eba364f7b5bbec5d9a887380",
+        "source_fact:v1:f171556ed351f06ff00b04f122a1682309059e84780855566049a2125f53fcf2"
+      ],
+      "source_published_kst": "2026-10-06T19:00+09:00",
+      "title": "9월 유로존 종합 PMI 53.1·1.1P↑…\"3년5개월 만에 최고\""
+    },
     "title:3d4e4e16efb97a40b515fe2d": {
       "first_seen_kst": "2026-10-03T00:11:20+09:00",
       "lanes": {
@@ -132003,6 +132907,26 @@
       "link": "https://www.etnews.com/20260925000012",
       "source": "전자신문",
       "title": "李대통령, 멕시코와 정상회담…“무역협정 체결 긴요”"
+    },
+    "title:3e5fd36aed5f2d576937519e": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/06/2026100609373713420",
+      "source": "머니투데이",
+      "source_body_digest": "e5c330835ec84cc2c65a133b005181f3c0b33ff2b7cf2fd9ed910a69966b4de0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:245479a6b4fec10095c991c5d1107888634b2ca7bc136e8632b99494e18f010e",
+      "source_fact_keys": [
+        "source_fact:v1:0be260b6393a7b0520504776b29e9730996ee6e743d6db97c2e60f6f883a5088",
+        "source_fact:v1:174c1c6bbf592f0314af571f7b8c30755dd8b404ab6579c40899f2844b295e36",
+        "source_fact:v1:ac2ea3cad33074306a9b9a0bc4b2d7902a7a777a26464abe3d0be91ae143175f",
+        "source_fact:v1:fe9caadfb83f1874ef082113c4db11ff819acf6c5f5a3969de9c4093a176b6bc"
+      ],
+      "source_published_kst": "2026-10-06T09:41+09:00",
+      "title": "HLB그룹주 연일 강세…리픽투 FDA 품목허가 효과"
     },
     "title:3e659312ccf3f6c122d469bb": {
       "first_seen_kst": "2026-10-01T10:36:00+09:00",
@@ -133630,6 +134554,21 @@
       "link": "https://www.newsis.com/view/NISX20260922_0003799948",
       "source": "뉴시스",
       "title": "\"AI 속도 조절론 속에 숨은 의도 있다\"…서울대 교수가 본 빅테크의 셈법"
+    },
+    "title:4b4fa25e42f60f1cdf843f86": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006146500002",
+      "source": "연합뉴스",
+      "source_body_digest": "e4e1c3f0a0ac416063e5adcd8f347ce3b7199459f775c070285149dfe7e86ee8",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T16:13+09:00",
+      "title": "원/달러 환율 보합 움직임…0.4원 내린 1,343.6원 | 연합뉴스"
     },
     "title:4b58eb6e5f5a03e4293006e1": {
       "first_seen_kst": "2026-10-06T19:10:36+09:00",
@@ -135836,6 +136775,23 @@
       ],
       "source_published_kst": "2026-10-04T23:56+09:00",
       "title": "OPEC+, 11월 원유 생산 목표 유지 합의"
+    },
+    "title:6209ada10071c258e392efdb": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05172566645610296",
+      "source": "이데일리",
+      "source_body_digest": "9f8a9376f6548112c36758ab95e90ebdd375dbee8c98993f6477dba44a971eb4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:468af3cae2fbcd7c3066ec782a0caa2d5d8bf15269ae3098b126274594d5a10f",
+      "source_fact_keys": [
+        "source_fact:v1:8baaf960c4f2cc4e014568f449e05e9c1a85695dcbc2552b386397d96b65481f"
+      ],
+      "source_published_kst": "2026-10-06T18:21+09:00",
+      "title": "\"'한국형 테마섹' 키우는데 본점은 전북?\"…KIC '서울 명문화' 목소리"
     },
     "title:62278f783f8b20551015bd4d": {
       "first_seen_kst": "2026-10-01T19:41:53+09:00",
@@ -140979,6 +141935,29 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-05T12:30+09:00",
       "title": "\"요즘은 쫀득 시대\" 식품·디저트업계에 부는 식감 바람"
+    },
+    "title:915c416fb74eb89eadad5ccd": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815896",
+      "source": "뉴시스",
+      "source_body_digest": "e4fd696d474fde69d335dafd89e312b7edfa068f0961240d7ad99fca2252aee0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00189cffb113199b40a66653141079758a3758fcd874907960f7859f4fe41bf9",
+      "source_fact_keys": [
+        "source_fact:v1:35cf256d20818487533f24fd4b22ad48a35779b2b9c8d7e75dc4aa3d85f8ad10",
+        "source_fact:v1:429d278085fc7fb35a2038c56114e920d4525ffb98b4daf6ed48b12029bbcbd8",
+        "source_fact:v1:6ed70a06d3a6b0c1ca7b9f3c62dec4b705d9d5bdac988867bcfceef67b159039",
+        "source_fact:v1:777f7cada13f1b31d30771a381ec60b1e8e3bc8181d1663d379cf8b042af1965",
+        "source_fact:v1:84e13038c4c269fc1309c8ed23ab434dd664aa09314966613af1391e82346485",
+        "source_fact:v1:a5b96a9ab14c6849d9df5cf9e03a5b55417604bc9dcfb86d866ac2f18c3ff4f6",
+        "source_fact:v1:dce6816893a7bb1e81ba9f93b12cfa0e403241b934e79fc86ea55c2cfd8e882b"
+      ],
+      "source_published_kst": "2026-10-06T15:44+09:00",
+      "title": "원·달러 환율, 0.4원 내린 1343.6원 마감"
     },
     "title:916325272409459447520300": {
       "first_seen_kst": "2026-10-06T16:09:23+09:00",
@@ -147444,6 +148423,21 @@
       "source": "매일경제",
       "title": "자본시장 신뢰도 주주가치도 ‘쑥’…KT&G, 3600억원 규모 자사주 매입·소각 결정"
     },
+    "title:d285297ee8a7b66c9823e882": {
+      "first_seen_kst": "2026-10-06T23:56:49+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:56:49+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:56:49+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632798",
+      "source": "이투데이",
+      "source_body_digest": "2fc71cd977b9799a893e7f2e04182f7d51ce1ab6648110901fcbc844a2c44517",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T13:27+09:00",
+      "title": "외국인 1.2조 매도에 코스피 7000선 하회…코스닥은 2%대 강세"
+    },
     "title:d2a50421012225a1d33db9c2": {
       "first_seen_kst": "2026-10-05T07:03:44+09:00",
       "lanes": {
@@ -152380,5 +153374,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T23:46:46+09:00"
+  "updated_at_kst": "2026-10-06T23:56:49+09:00"
 }
