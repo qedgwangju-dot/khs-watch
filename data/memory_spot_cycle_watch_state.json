@@ -541,16 +541,40 @@
       "source": "네이트",
       "published_kst": "2026-10-01T08:09:06+09:00",
       "first_seen_kst": "2026-10-05T17:15:23+09:00"
+    },
+    "38249555800b54f0534b2022": {
+      "title": "YMTC Employee Says Memory Shortage Could Last 3 More Years as NAND Forecasts Diverge - XenoSpectrum",
+      "source": "XenoSpectrum",
+      "published_kst": "2026-10-06T11:05:14+09:00",
+      "first_seen_kst": "2026-10-06T19:25:25+09:00"
+    },
+    "42b363a79ca9c769b52faf96": {
+      "title": "China's YMTC raises chip prices as it braces for three more years of memory shortages - tweaktown.com",
+      "source": "tweaktown.com",
+      "published_kst": "2026-10-06T03:10:12+09:00",
+      "first_seen_kst": "2026-10-06T19:25:25+09:00"
+    },
+    "7bb837e98cef9c01fa912e62": {
+      "title": "Chinese NAND Maker YMTC Reportedly Expects Memory Shortage to Last Another Three Years - TechPowerUp",
+      "source": "TechPowerUp",
+      "published_kst": "2026-10-06T00:10:47+09:00",
+      "first_seen_kst": "2026-10-06T19:25:25+09:00"
+    },
+    "6b5e63a8ecc0ba563b2beaa3": {
+      "title": "Micron forecasts tighter memory supply through 2028, lifting Korea chip outlook - CHOSUNBIZ - biz.chosun.com",
+      "source": "biz.chosun.com",
+      "published_kst": "2026-10-01T11:19:00+09:00",
+      "first_seen_kst": "2026-10-06T19:25:25+09:00"
     }
   },
-  "updated_at_kst": "2026-10-06T18:26:09+09:00",
-  "last_scan_count": 35,
+  "updated_at_kst": "2026-10-06T19:25:25+09:00",
+  "last_scan_count": 38,
   "last_new_count": 0,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
     "period": "2027",
-    "blended_asp_yoy_pct": 121,
+    "blended_asp_yoy_pct": 121.0,
     "eight_hi_premium_min_pct": 10,
     "eight_hi_premium_max_pct": 20,
     "mainstream_layers": 8,
@@ -590,20 +614,20 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-10-06T07:37:38+09:00",
+  "last_successful_delivery_kst": "2026-10-06T19:25:33+09:00",
   "telegram_message_ids": [
-    238
+    245
   ],
-  "telegram_message_id": 238,
+  "telegram_message_id": 245,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      238
+      245
     ],
-    "confirmed_at_kst": "2026-10-06T07:37:38+09:00",
-    "alert_signature": "dba3c9aae55705574c02b602c0b1e9422cf587cf834ec7112e6f16baf2485bbd"
+    "confirmed_at_kst": "2026-10-06T19:25:33+09:00",
+    "alert_signature": "06e7466127dbc1d33ae42115e76332e4e820a0351403d5bbc2d531a9bd274418"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
@@ -749,13 +773,13 @@
     "source_rank": 2
   },
   "ymtc_nand_duration_track_version": 1,
-  "ymtc_nand_duration_alert_pending": true,
+  "ymtc_nand_duration_alert_pending": false,
   "ymtc_nand_duration": {
-    "shortage_scope": "global memory (YMTC 익명 직원 발언; NAND 전용 공식 전망으로 해석 금지)",
+    "shortage_scope": "global memory (NAND 전용 공식 전망으로 해석 금지)",
     "shortage_through_year": 2029,
     "shortage_duration_years_from_2026": 3,
     "shortage_official_guidance": false,
-    "anonymous_employee_source": true,
+    "anonymous_employee_source": false,
     "price_increase_reported": true,
     "capacity_shift_high_margin_reported": true,
     "q2_2026_nand_shipment_share_pct": 14,
@@ -766,9 +790,9 @@
     "trendforce_nand_easing_year": 2027,
     "trendforce_nand_easing_half": "2H",
     "micron_memory_tight_through_year": 2028,
-    "source": "The Wire China / YMTC 익명 직원",
+    "source": "XenoSpectrum",
     "source_kind": "The Wire China 원문 제목·공개영역 + 복수 2차 재인용; 회사 공식 가이던스 아님",
-    "source_url": "https://www.thewirechina.com/2026/10/04/the-survivor/",
+    "source_url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE05RVhVMHFPN2pvdDBEelRSeEhPSGlTR0NVLXllY1FBa0l0SHhGM3BOamtnYmo1SGdveURkNVBYUzRtWGJ6Unc0Z0lfeDYzX3ZjejhMZVlDVTlaTkxiU3dXdWVaZ2xmUU02dDllWWs4RQ?oc=5",
     "secondary_source_url": "https://www.tweaktown.com/news/113914/chinas-ymtc-raises-chip-prices-as-it-braces-for-three-more-years-of-memory-shortages/index.html",
     "counterpoint_url": "https://counterpointresearch.com/default.htm/insights/server-led-essds-hit-48-percent-of-nand-shipments",
     "trendforce_url": "https://www.trendforce.com/presscenter/news/20260721-13148.html",
