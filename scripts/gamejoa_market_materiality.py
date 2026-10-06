@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 97
+VERSION = 98
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -1046,7 +1046,7 @@ def dated_supply_agreement_observation(title: str, body: str) -> dict:
             continue
         match = re.search(rf'(?P<issuer>{party})(?:은|는)\s*(?P<day>\d{{1,2}})일\s*'
                           rf'(?P<customer>{party})(?:와|과)\s*[^.!?]{{2,160}}?'
-                          r'(?:공급\s*계약|공급계약)(?:을|를)\s*(?P<action>체결했다고|합의했다고|추진한다고)', row)
+                          r'(?:공급\s*계약|공급계약)(?:을|를)\s*(?P<action>체결했다고|체결했다|합의했다고|합의했다|추진한다고)', row)
         if not match or match['issuer'] not in title:
             continue
         # The companion lead must name both parties, not an unrelated later budget.
@@ -1065,7 +1065,8 @@ def dated_supply_agreement_observation(title: str, body: str) -> dict:
         if not amount:
             continue
         code, product_type = next(iter(products))
-        stage = {'체결했다고': 'signed', '합의했다고': 'agreement', '추진한다고': 'planned'}[match['action']]
+        stage = {'체결했다고': 'signed', '체결했다': 'signed', '합의했다고': 'agreement',
+                 '합의했다': 'agreement', '추진한다고': 'planned'}[match['action']]
         # Only explicitly current contract periods may enter the identity.
         # A previous agreement's period or an inverted range is never inherited.
         period = next((value for value in rows if re.match(r'이번\s*계약(?:의)?\s*기간은', value)), '')
@@ -1077,6 +1078,109 @@ def dated_supply_agreement_observation(title: str, body: str) -> dict:
                 'source_terms': owned,
                 'explicit_revision': bool(re.search(r'계약\s*(?:정정|변경|수정)|추가\s*수주', title))}
     return {}
+
+
+def declared_capital_participation_observation(title: str, body: str) -> dict:
+    """Bind an announced investment to investor, affiliate, sponsor and target.
+
+    The acquisition's total value or completion is not the investor's amount
+    or payment status. A later completed payment is a separate event.
+    """
+    source = source_reported_body(body)
+    rows = [row for row in source_sentences(source) if current_event_sentence(row)]
+    if re.search(r'투자.{0,15}(?:철회|취소)', title):
+        return {}
+    party = r'[A-Za-z0-9가-힣&·.-]{2,30}'
+    for row in rows[:8]:
+        match = re.search(rf'(?P<issuer>{party})(?:은|는|이|가)\s*(?:미국\s*)?'
+                          rf'(?P<sponsor>{party}(?:\s+{party}){{0,2}})\s*그룹이\s*주도하는\s*'
+                          rf'(?P<target>{party})\s*인수에\s*(?:자회사\s*)?(?P<affiliate>{party})'
+                          r'(?:가\s*투자한다고|를\s*통해\s*[^.!?]{0,65}투자한다)', row)
+        if not match or match['issuer'].removesuffix('그룹') not in title:
+            continue
+        announcement = next((value for value in rows[:10] if match['affiliate'] in value
+                             and re.search(r'참여한다고|투자한다고', value)
+                             and re.search(r'\d{1,2}일\s*밝혔다|\d{1,2}일\s*[^.!?]{0,120}밝혔다', value)), '')
+        day = re.search(r'(?<!\d)(\d{1,2})일', announcement)
+        if not day:
+            continue
+        amounts = {}
+        for value in rows[:8]:
+            if PAST_ACTION.search(value):
+                continue
+            label = re.search(r'투자\s*금액은', value)
+            if label:
+                fragment = value[label.end():]
+            elif match['affiliate'] in value and '투자한다' in value:
+                fragment = value[value.index(match['affiliate']) + len(match['affiliate']):]
+            else:
+                continue
+            money = re.search(SOURCE_MONEY, re.sub(r'\([^)]*\)', '', fragment))
+            if money:
+                amounts[(money[2], korean_amount_value(money[1]))] = money[0]
+        # A reported aggregate acquisition budget must never be substituted.
+        amounts = {key: value for key, value in amounts.items() if key[1]}
+        if len(amounts) != 1:
+            continue
+        amount, display = next(iter(amounts.items()))
+        canonical_name = lambda value: re.sub(r'\s', '', value.replace('워너브러더스', '워너브라더스'))
+        investor_execution = next((value for value in rows if match['affiliate'] in value and not PAST_ACTION.search(value)
+                                   and re.search(r'투자금.{0,20}(?:납입했다|집행했다)|출자금.{0,20}납입했다', value)), '')
+        payment = {}
+        if investor_execution:
+            paid_amount = re.search(SOURCE_MONEY, re.sub(r'\([^)]*\)', '', investor_execution))
+            if not paid_amount or not korean_amount_value(paid_amount[1]):
+                return {}
+            payment = {'payment_amount': [paid_amount[2], korean_amount_value(paid_amount[1])],
+                       'payment_amount_display': paid_amount[0]}
+            paid_day = re.search(r'(?<!\d)(\d{1,2})일', investor_execution)
+            if paid_day:
+                payment['payment_day'] = paid_day[1]
+        return {'issuer': match['issuer'].removesuffix('그룹'), 'issuer_display': match['issuer'], 'affiliate': match['affiliate'],
+                'sponsor': canonical_name(match['sponsor']), 'sponsor_display': match['sponsor'], 'target': canonical_name(match['target']),
+                'amount': list(amount), 'amount_display': display, 'day': day[1],
+                'stage': 'paid' if investor_execution else 'announced_participation',
+                'source_excerpt': row, 'source_terms': announcement, **payment,
+                'explicit_revision': bool(re.search(r'(?:투자금|출자금|투자\s*금액).{0,15}(?:변경|정정|추가|증액|감액)', title))}
+    return {}
+
+
+def quantified_oil_shipping_constraints_observation(title: str, body: str) -> dict:
+    """Retain a reported oil-loading period and a daily vessel cost basis."""
+    if not re.search(r'이란|원유\s*수출', title):
+        return {}
+    source = source_reported_body(body)
+    attribution = re.search(r'(?P<day>\d{1,2})일\(현지시간\)\s*(?P<provider>[A-Z]{2,8})에\s*따르면', source)
+    loading = re.search(r'지난\s*(?P<month>\d{1,2})월\s*(?P<country>[가-힣]+)\s*항구에서\s*원유\s*적재량은[^.!?]{0,70}'
+                        r'[‘\'\"]?(?P<barrels>\d[\d,]*)배럴', source)
+    cost = re.search(r'초대형\s*원유운반선\(VLCC\)의\s*하루\s*운항\s*비용은[^.!?]{0,50}?'
+                     r'(?P<cost>\d[\d,.만억조]*달러)까지\s*뛰었다\.\s*'
+                     r'지난해와\s*비교하면\s*(?P<multiple>\d+(?:\.\d+)?)배', source)
+    if not (attribution and loading and cost):
+        return {}
+    return {**attribution.groupdict(), **loading.groupdict(), **cost.groupdict(),
+            'stage': 'reported_measurement', 'source_excerpt': loading[0], 'source_terms': cost[0]}
+
+
+def procurement_lead_time_observation(title: str, body: str) -> dict:
+    """Do not turn an EPC interval effort into a guaranteed contract deadline."""
+    if not re.search(r'원전', title) or not re.search(r'조달|핵심부품|기자재', title):
+        return {}
+    source = source_reported_body(body)
+    lead_time = re.search(r'(?P<authority>[가-힣]+부)가\s*제시한\s*(?P<scope>대형원전)\s*'
+                          r'장주기품목\s*제작·공급\s*기간은\s*최장\s*(?P<months>\d+)개월', source)
+    equipment = re.search(r'(?P<equipment>[가-힣]+)의\s*공급기간이\s*(?P<months>\d+)개월로\s*가장\s*길고', source)
+    interval = re.search(r'(?P<parties>[가-힣]+)은\s*(?P<phases>첫\s*단계와\s*두\s*번째\s*단계)의\s*'
+                         r'설계·조달·시공\(EPC\)\s*계약\s*체결\s*간격을\s*(?P<months>\d+)개월\s*이내로\s*'
+                         r'좁히기\s*위해\s*합리적으로\s*노력하기로\s*했다', source)
+    project = re.search(r'(?P<location>[가-힣]+)\s*대형\s*원전\s*최대\s*(?P<units>\d+)기를\s*건설하는\s*방안을\s*추진', source)
+    if not (lead_time and equipment and interval and project) or equipment['months'] != lead_time['months']:
+        return {}
+    return {**lead_time.groupdict(), **project.groupdict(), 'equipment': equipment['equipment'],
+            'interval_months': interval['months'], 'phases': interval['phases'],
+            'parties': '한국과 미국' if re.search(r'한[·ㆍ]미\s*정부', source) else interval['parties'],
+            'stage': 'procurement_constraint_and_interval_effort',
+            'source_excerpt': lead_time[0], 'source_terms': interval[0]}
 
 
 def quantified_site_mou_observation(title: str, body: str) -> dict:
@@ -2368,13 +2472,14 @@ def source_event_identity(alert: dict) -> str:
             return f'source_event:v2:{event}:{digest}'
     if re.match(r"20\d{2}-\d{2}-\d{2}", published):
         for event, observation in (
+            ('capital_participation', declared_capital_participation_observation(title, body)),
             ('project_safety_assessment', project_safety_observation(title, body)),
             ('conditional_remittance', conditional_remittance_observation(title, body)),
             ('listing_suspension_ruling', listing_suspension_observation(title, body)),
         ):
             if observation:
                 terms = {key: value for key, value in observation.items()
-                         if key not in {'source_excerpt', 'amount_display', 'day'}}
+                         if key not in {'source_excerpt', 'source_terms', 'day'} and not key.endswith('_display')}
                 terms['event_date'] = published[:8] + observation.get('day', published[8:10]).zfill(2)
                 digest = hashlib.sha256(json.dumps(terms, ensure_ascii=False, sort_keys=True).encode('utf-8')).hexdigest()
                 return f'source_event:v2:{event}:{digest}'
@@ -2478,11 +2583,23 @@ def audited_source_event_identity(alert: dict) -> str:
         return ""
     title = str(alert.get("source_title") or alert.get("original_news") or alert.get("news") or "")
     digest = hashlib.sha256(str(alert["source_body"]).encode("utf-8")).hexdigest()
-    for proof in verified_event_aliases():
+    proofs = verified_event_aliases()
+    for proof in proofs:
         if (proof.get("source_title") == title and proof.get("link") == alert.get("link")
                 and proof.get("source_body_sha256") == digest
                 and proof.get("source_published_kst") == str(alert.get("published") or "")
                 and proof.get("run_id") and proof.get("message_id")):
+            if 'receipt_source' in proof:
+                reference = proof['receipt_source']
+                if not isinstance(reference, dict) or set(reference) != {
+                    'source_title', 'link', 'source_published_kst', 'source_body_sha256'
+                } or not any(
+                    'receipt_source' not in known
+                    and all(known.get(key) == value for key, value in reference.items())
+                    and all(known.get(key) == proof.get(key) for key in ('source_event_identity', 'run_id', 'message_id'))
+                    for known in proofs
+                ):
+                    continue
             return str(proof["source_event_identity"])
     return ""
 
@@ -2853,6 +2970,8 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
             r"(?:acquir|merg).{0,35}(?:announc|agree|complete|consider|negotiat)|acquired|acquisition of", sentence, re.I,
         ))
     if kind == "capital_or_shareholder_action":
+        if re.search(r'서비스는|기능은|상품은', sentence) and re.search(r'투자할\s*수\s*있도록|매수\s*서비스다|이용할\s*수\s*있', sentence):
+            return False
         if re.search(r"포함될\s*수\s*있|사용할\s*수\s*있|일반\s*운영자금에는", sentence) and not re.search(
             r"발행.{0,20}(?:계획|추진|발표)|유치했다|계약을\s*체결|집행했다|출자하기로\s*결정", sentence,
         ):
@@ -3003,6 +3122,34 @@ def equity_publication_assessment(title: str, evidence: list[dict], *, body: str
     ):
         return {'eligible': False, 'reason': 'annual_crypto_adoption_survey_without_equity_catalyst'}
     source_rows = source_sentences(source_reported_body(body))
+    maintained_broker_view = (re.search(r'증권|골드만|모건|애널리스트|analyst|Goldman|Morgan', lead, re.I)
+                              and re.search(r'(?:목표(?:주가|가)|투자의견).{0,90}유지했다', lead))
+    forecast_revision = any(current_event_sentence(row) and not PAST_ACTION.search(row)
+                            and re.search(r'매출|영업이익|순이익|주당순이익|EPS|목표(?:주가|가)|투자의견|가이던스', row, re.I)
+                            and re.search(r'상향|하향|높였|낮췄|올렸|내렸|수정했다|변경했다', row)
+                            and (QUANTITY.search(row) or re.search(r'투자의견.{0,40}(?:상향|하향)', row))
+                            for row in source_rows)
+    current_hard_execution = any(current_event_sentence(row) and not PAST_ACTION.search(row)
+                                 and not re.search(r'최근.{0,30}(?:인도량|실적|매출)|이미\s*발표', row)
+                                 and NEW_EXECUTION.search(row) for row in source_rows)
+    primary_metrics = (r'수출', r'수주(?:잔고|\s*비중|\s*북미)', r'매출', r'영업이익',
+                       r'순이익|EPS', r'시장\s*점유율', r'설비투자|CAPEX')
+    quantified_primary_fact = any(re.search(metric, title, re.I) and re.search(metric, row, re.I)
+                                  and QUANTITY.search(row) and current_event_sentence(row)
+                                  and not PAST_ACTION.search(row)
+                                  for metric in primary_metrics for row in source_rows)
+    if maintained_broker_view and not forecast_revision and not current_hard_execution and not quantified_primary_fact:
+        return {'eligible': False, 'reason': 'maintained_broker_opinion_without_new_forecast_or_execution'}
+    broker_service = (re.search(r'증권', title) and re.search(r'소수점|주식\s*모으기|적립식|자동\s*매수', title)
+                      and re.search(r'서비스\s*(?:개시|출시|시작|도입)', title))
+    market_wide_change = any(current_event_sentence(row) and not PAST_ACTION.search(row)
+                            and ((re.search(r'금융위|금융당국|거래소|정부|국회', row)
+                                  and FORMAL_POLICY_EXECUTION.search(row))
+                                 or (QUANTITY.search(row) and re.search(r'순유입|순유출|순매수|순매도|영업이익|연결\s*매출|수수료\s*수익', row)
+                                     and re.search(r'발표했다|공시했다|집계됐다|증가했다|감소했다', row)))
+                            for row in source_rows)
+    if broker_service and not market_wide_change and not current_hard_execution:
+        return {'eligible': False, 'reason': 'broker_app_feature_without_market_rule_or_financial_change'}
     career_inventory = (re.search(r'이직|인력\s*이동', title) and re.search(r'의원실|경력\s*정보|링크드인', body)
                         and re.search(r'평균\s*재직\s*기간|이미\s*회사를\s*떠난', body))
     if career_inventory and not re.search(r'기술\s*유출.{0,40}(?:판결|유죄|확인)|전직\s*금지.{0,30}(?:인용|명령)|'

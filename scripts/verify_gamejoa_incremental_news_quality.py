@@ -85,6 +85,9 @@ SOURCE_BINDING_FIXTURE = json.loads((ROOT / 'data/gamejoa_source_binding_fixture
 SOURCE_BINDING_CASES = {case['id']: case for case in SOURCE_BINDING_FIXTURE['cases']}
 PRIMARY_SUMMARY_FIXTURE = json.loads((ROOT / 'data/gamejoa_primary_summary_fixtures_20261006.json').read_text(encoding='utf-8'))
 PRIMARY_SUMMARY_CASES = {case['id']: case for case in PRIMARY_SUMMARY_FIXTURE['cases']}
+CONTRACT_BYLINE_CASE = json.loads((ROOT / 'data/gamejoa_contract_byline_fixture_20261006.json').read_text(encoding='utf-8'))
+PACKET_QUALITY_CASES = {case['id']: case for case in json.loads(
+    (ROOT / 'data/gamejoa_packet_quality_fixtures_20261006.json').read_text(encoding='utf-8'))['cases']}
 LIVE_NOW = NOW.replace(hour=19)
 CONTRACT_BODY = "AMD는 삼성전자와 2027년 데이터센터용 인공지능(AI) 반도체 공동개발을 위한 100억원 규모의 공급 계약을 체결했다고 밝혔다."
 ADDITIONAL_FACT = " AMD는 해당 공급 계약을 위한 반도체 설비투자 예산 500억원을 확정했다고 공시했다."
@@ -126,6 +129,195 @@ def replay():
 
 
 class IncrementalNewsTests(unittest.TestCase):
+    def packet_quality_alert(self, key):
+        case = PACKET_QUALITY_CASES[key]
+        return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],
+                'telegram_core_fact': case['old_core']}
+
+    def test_v97_entire_packet_is_hashed_and_selects_four_unique_market_events(self):
+        now = NOW.replace(day=6, hour=22)
+        candidates = []
+        for case in PACKET_QUALITY_CASES.values():
+            with self.subTest(case=case['id']):
+                self.assertEqual(hashlib.sha256(case['body'].encode()).hexdigest(), case['full_body_sha256'])
+                item = classify(case, now)
+                audit = radar.source_market_materiality(item) if item else {}
+                keep = bool(item and audit.get('disposition') == 'keep' and audit.get('priority', 0) >= 2)
+                self.assertEqual(keep, case['expected_keep'])
+                if keep:
+                    candidates.append(item)
+        with patch.object(radar.base, 'kst_now', return_value=now), patch.object(radar, 'collect_fx_snapshot', return_value={'rates': {}}):
+            selected = radar.compact_quality_final_alerts(candidates, 7)
+            self.assertEqual(len(selected), 4)
+            report = radar.compact_report(selected, {}, {}, now)
+            radar.guard_preopen_report(report)
+        for item in selected:
+            self.assertFalse(radar.source_core_fact_errors(item))
+            self.assertTrue(radar.core_sentence_is_complete(item['telegram_core_fact']))
+            self.assertLessEqual(len(item['telegram_core_fact']), radar.GAMEJOA_CORE_MAX_CHARS)
+        self.assertEqual(sum('신세계' in item['source_title'] for item in selected), 1)
+        self.assertNotIn('골드만', report)
+        self.assertNotIn('주식 모으기', report)
+
+    def test_capital_participation_reprints_share_actor_amount_target_and_stage(self):
+        first = self.packet_quality_alert('declared_capital_participation')
+        second = self.packet_quality_alert('capital_participation_reprint')
+        key = materiality.source_event_identity(first)
+        self.assertTrue(key.startswith('source_event:v2:capital_participation:'))
+        self.assertEqual(key, materiality.source_event_identity(second))
+        for item in (first, second):
+            core = radar.verified_alert_core(item, item['source_title'])
+            for term in ('신세계그룹', '6일', '신세계프라퍼티', '파라마운트 스카이댄스', '워너브라더스', '10억달러', '참여한다고'):
+                self.assertIn(term, core)
+            self.assertNotIn('1084억달러', core)
+            self.assertNotIn('완료', core)
+            self.assertNotIn('합병했다', core)
+            self.assertTrue(radar.source_core_fact_errors(item))
+
+    def test_capital_participation_new_terms_and_paid_stage_remain_fresh(self):
+        item = self.packet_quality_alert('capital_participation_reprint')
+        key = materiality.source_event_identity(item)
+        for old, new in (('10억달러', '12억달러'), ('신세계프라퍼티', '다른계열사'),
+                         ('워너브라더스', '다른인수대상'), ('파라마운트 스카이댄스', '다른 스폰서')):
+            changed = {**item, 'source_body': item['source_body'].replace(old, new)}
+            self.assertTrue(materiality.source_event_identity(changed).startswith('source_event:v2:capital_participation:'))
+            self.assertNotEqual(key, materiality.source_event_identity(changed))
+        paid = {**item, 'source_body': '신세계프라퍼티는 투자금 10억달러를 납입했다.\n' + item['source_body']}
+        self.assertNotEqual(key, materiality.source_event_identity(paid))
+        core = radar.verified_alert_core(paid, paid['source_title'])
+        self.assertIn('10억달러를 납입했다고', core)
+
+    def test_partial_capital_payment_does_not_claim_the_entire_budget_was_paid(self):
+        item = self.packet_quality_alert('capital_participation_reprint')
+        paid = {**item, 'source_body': '신세계프라퍼티는 7일 투자금 2억달러를 납입했다.\n' + item['source_body']}
+        core = radar.verified_alert_core(paid, paid['source_title'])
+        self.assertIn('7일', core)
+        self.assertIn('2억달러를 납입했다고', core)
+        self.assertNotIn('10억달러를 납입', core)
+        self.assertNotEqual(materiality.source_event_identity(item), materiality.source_event_identity(paid))
+
+    def test_lfp_corporate_reprint_keeps_amount_without_inheriting_old_period(self):
+        item = self.packet_quality_alert('lfp_press_release_reprint')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('포스코퓨처엠', '삼성SDI', '6조원', 'LFP 양극재', '체결했다'):
+            self.assertIn(term, core)
+        for historical in ('2027', '2032', '19만', '45%', 'LMO'):
+            self.assertNotIn(historical, core)
+        key = materiality.source_event_identity(item)
+        self.assertEqual(key, materiality.source_event_identity(self.source_binding_alert('battery_contract_yonhap')))
+        changed = {**item, 'source_body': item['source_body'].replace('6조원', '7조원')}
+        self.assertNotEqual(key, materiality.source_event_identity(changed))
+
+    def test_nuclear_procurement_keeps_equipment_lead_time_and_nonfixed_epc_interval(self):
+        item = self.packet_quality_alert('nuclear_procurement_lead_time')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('미국', '최대 8기', '산업부', '안전제어반', '70개월', '체결 간격', '6개월', '노력', '확정 일정은 아니다'):
+            self.assertIn(term, core)
+        self.assertNotIn('6개월 안에 계약을 체결', core)
+        self.assertNotIn('확정했다', core)
+        wrong = core.replace('체결 간격', '체결 기한').replace('확정 일정은 아니다', '확정 일정이다')
+        self.assertTrue(radar.source_core_fact_errors({**item, 'telegram_core_fact': wrong}))
+
+    def test_oil_shipping_summary_keeps_measurement_period_and_daily_cost_basis(self):
+        item = self.packet_quality_alert('iran_oil_shipping_constraints')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('CNN', '인용 보도', '9월', '원유 적재량', '0배럴', '하루 운항 비용', '160만달러', '지난해의 24배'):
+            self.assertIn(term, core)
+        self.assertNotIn('0만달러', core.replace('160만달러', ''))
+        self.assertTrue(radar.source_core_fact_errors({**item, 'telegram_core_fact': core.replace('160만달러', '60만달러')}))
+
+    def test_maintained_broker_view_without_quantified_revision_is_excluded(self):
+        item = self.packet_quality_alert('unchanged_broker_opinion')
+        self.assertFalse(eligible(item['source_title'], item['source_body']))
+
+    def test_maintained_target_with_actual_eps_revision_is_kept(self):
+        item = self.packet_quality_alert('unchanged_broker_opinion')
+        body = item['source_body'] + '\n골드만삭스는 테슬라의 2026년 주당순이익(EPS) 전망을 3달러에서 4달러로 상향했다.'
+        self.assertTrue(eligible(item['source_title'], body))
+
+    def test_fractional_broker_app_definition_is_not_a_capital_commitment(self):
+        case = PACKET_QUALITY_CASES['broker_fractional_service']
+        self.assertFalse(eligible(case['title'], case['body']))
+        definition = '국내 주식 모으기 서비스는 정기적으로 일정 금액을 주식에 투자할 수 있도록 하는 적립식 매수 서비스다.'
+        self.assertFalse(materiality.evidence_is_new_event('capital_or_shareholder_action', definition))
+
+    def test_broker_feature_with_new_market_rule_or_financial_result_is_kept(self):
+        case = PACKET_QUALITY_CASES['broker_fractional_service']
+        for title, change in (('금융위원회, 소수점 주식 매매수량단위 규칙 개정',
+                               '금융위원회는 6일 소수점 주식 매매수량단위 규칙을 개정했다고 발표했다.'),
+                              ('iM증권, 3분기 연결 매출 30% 증가…소수점 거래 서비스 개시',
+                               'iM증권은 3분기 연결 매출이 500억원으로 30% 증가했다고 공시했다.')):
+            self.assertTrue(eligible(title, change + '\n' + case['body']))
+
+    def test_bracketed_publisher_byline_does_not_drop_a_verified_contract(self):
+        case = CONTRACT_BYLINE_CASE
+        self.assertEqual(hashlib.sha256(case['body'].encode()).hexdigest(), case['full_body_sha256'])
+        now = NOW.replace(day=6, hour=22)
+        candidate = classify(case, now)
+        body_before = candidate['source_body']
+        with patch.object(radar.base, 'kst_now', return_value=now), patch.object(radar, 'collect_fx_snapshot', return_value={'rates': {}}):
+            selected = radar.compact_quality_final_alerts([candidate], 7)
+            self.assertEqual(len(selected), 1)
+            report = radar.compact_report(selected, {}, {}, now)
+            radar.guard_preopen_report(report)
+        self.assertEqual(candidate['source_body'], body_before)
+        self.assertEqual(selected[0]['source_body'], case['body'])
+        core = selected[0]['telegram_core_fact']
+        for term in ('삼성전기', '글로벌 대형기업', '2900억원', '인공지능(AI)', 'MLCC', '체결했다'):
+            self.assertIn(term, core)
+        self.assertNotIn('기자', core)
+        self.assertNotIn('아이뉴스24', core)
+        self.assertIn(case['url'], report)
+        self.assertFalse(radar.source_core_fact_errors(selected[0]))
+
+    def test_bracketed_byline_cleaning_does_not_need_a_publisher_allowlist(self):
+        source = '[새경제뉴스 홍길동 기자] ' + CONTRACT_BODY
+        self.assertEqual(radar.clean_article_summary_text(source), CONTRACT_BODY)
+
+    def test_bracketed_byline_guard_still_rejects_raw_metadata_in_output(self):
+        block = ('1) ' + CONTRACT_BYLINE_CASE['title'] + '\n- 핵심: ' + CONTRACT_BYLINE_CASE['body'].splitlines()[0])
+        self.assertIn('article_ui_boilerplate', radar.compact_alert_block_errors(block))
+
+    def test_non_byline_brackets_keep_the_source_actor_and_content(self):
+        source = '[한국은행] 기준금리를 0.25%포인트 인상했다고 발표했다.'
+        self.assertEqual(radar.clean_article_summary_text(source), source)
+
+    def test_discovery_equivalence_requires_exact_acknowledged_source_reference(self):
+        case = CONTRACT_BYLINE_CASE
+        item = classify(case, NOW.replace(day=6, hour=22))
+        identity = materiality.source_event_identity(item)
+        reference = self.headline_terms_alert('mlcc_rounded_reprint')
+        self.assertEqual(identity, materiality.source_event_identity(reference))
+        proofs = materiality.verified_event_aliases()
+        with patch.object(materiality, 'verified_event_aliases', return_value=tuple(
+            proof for proof in proofs if proof['link'] != reference['link']
+        )):
+            self.assertNotEqual(identity, materiality.source_event_identity(item))
+        for invalid in ({}, {'link': reference['link']}, {**next(proof['receipt_source'] for proof in proofs if proof.get('receipt_source')),
+                                                         'source_body_sha256': '0' * 64}):
+            altered = tuple({**proof, 'receipt_source': invalid} if proof.get('receipt_source') else proof for proof in proofs)
+            with patch.object(materiality, 'verified_event_aliases', return_value=altered):
+                self.assertNotEqual(identity, materiality.source_event_identity(item))
+        changed = {**item, 'source_body': item['source_body'].replace('2900억원', '3900억원')}
+        self.assertNotEqual(identity, materiality.source_event_identity(changed))
+
+    def test_discovery_alias_never_creates_sent_history_for_unsent_article(self):
+        case = CONTRACT_BYLINE_CASE
+        now = NOW.replace(day=6, hour=22)
+        item = classify(case, now)
+        identity = materiality.source_event_identity(item)
+        key = 'event:' + telegram.digest_seen(identity)
+        state = {'seen': {'unsent_metadata': {'title': case['title'], 'link': case['url'],
+                                              'first_seen_kst': now.isoformat()}}}
+        telegram.migrate_seen_verified_event_aliases(state)
+        self.assertNotIn(key, state['seen'])
+        with tempfile.TemporaryDirectory() as temp, patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}):
+            path = Path(temp) / 'seen.json'
+            path.write_text(json.dumps({'seen': {}}), encoding='utf-8')
+            with patch.object(telegram, 'SEEN_PATH', path):
+                fresh, _ = telegram.filter_previously_seen_alerts([item], now, 'live')
+            self.assertEqual(len(fresh), 1)
+
     def primary_summary_alert(self, key):
         case = PRIMARY_SUMMARY_CASES[key]
         return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],

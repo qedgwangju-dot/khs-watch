@@ -2,6 +2,22 @@
   "version": 1,
   "entries": [
     {
+      "source_title": "삼성전기, 글로벌 대형기업과 2900억원 규모 MLCC 공급계약",
+      "link": "https://www.inews24.com/view/2012088",
+      "source_published_kst": "2026-10-06T13:13+09:00",
+      "source_body_sha256": "d9c2438af1b8292eca240ba59e1ff3ebae8e2f41a8747947f25929b1580afa17",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
+      "run_id": 37423666041,
+      "message_id": 2304,
+      "receipt_source": {
+        "source_title": "삼성전기, 반년도 안 돼 컴포넌트 연매출 75% 채웠다⋯AI부품 수주 ‘4조 클럽’",
+        "link": "https://www.etoday.co.kr/news/view/2632760",
+        "source_published_kst": "2026-10-06T11:23+09:00",
+        "source_body_sha256": "122d10f5d4860d17b5242e8aa6686befee977e6525d73d84095c245324dec5dc"
+      },
+      "equivalence_note": "Freshly read, still-unsent candidate; not a delivery receipt for iNews24. Its exact body repeats the acknowledged Etoday sixth annual MLCC LTA: Oct 6 disclosure, anonymous global customer, about KRW 290 billion, Jan 1-Dec 31 2027. Both complete bodies were compared. The referenced Etoday receipt is message 2304; no candidate sent-history entry is created. Changed body, date, amount, period or missing receipt reference does not inherit this exact-source equivalence."
+    },
+    {
       "source_title": "뉴욕증시, 美 고용 지표 소화하며 상승⋯나스닥 1.19%↑[상보]",
       "link": "https://www.etoday.co.kr/news/view/2632252",
       "source_published_kst": "2026-10-03T06:47+09:00",
@@ -527,6 +543,26 @@
       "source_event_identity": "source_event:v2:listing_suspension_ruling:77b3e47fde472723cc52897ac3a1de2bbba91ee3912d93451670f1edd41730ed",
       "run_id": 37458416534,
       "message_id": 2330
+    },
+    {
+      "link": "https://www.mk.co.kr/news/business/12169612",
+      "source_title": "신세계 '유통·콘텐츠' 시너지",
+      "source_published_kst": "2026-10-06T17:50+09:00",
+      "source_body_sha256": "d70027923d46fb04f774d3313531313702446cf68e2b23c8c9a90736257f092e",
+      "source_body_digest": "8773ff343f9bc94194f72e4fae11b5eebed12d1f7723d83f41312a1452503172",
+      "source_event_identity": "source_event:v2:capital_participation:138d36bd714452fdba568411df0134fb30decaa2ca68f9e909b8bca2ce5de996",
+      "run_id": 37463535658,
+      "message_id": 2334
+    },
+    {
+      "link": "https://stock.mk.co.kr/news/view/1170379",
+      "source_title": "신세계그룹, 워너브라더스 인수에 10억달러…",
+      "source_published_kst": "2026-10-06T16:28+09:00",
+      "source_body_sha256": "370613800106f02ef0941745be4a5d9524503e7d41693866e1e7e2d9dc8917d9",
+      "source_body_digest": "52798cb353bf3689dab6fe14e00e3f1c1f00b2a2f8bbb2ca0b9d238328a1af8c",
+      "source_event_identity": "source_event:v2:capital_participation:138d36bd714452fdba568411df0134fb30decaa2ca68f9e909b8bca2ce5de996",
+      "run_id": 37463535658,
+      "message_id": 2334
     }
   ]
 }

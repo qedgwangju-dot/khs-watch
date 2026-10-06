@@ -521,7 +521,11 @@ class MaterialityChecks(unittest.TestCase):
         self.assertEqual(len(fresh), 2)
 
     def test_known_legacy_delivery_gets_verified_close_alias_without_new_sent_records(self):
-        evidence = json.loads(radar.telegram.VERIFIED_EVENT_ALIAS_PATH.read_text(encoding="utf-8"))["entries"][0]
+        evidence = next(proof for proof in json.loads(
+            radar.telegram.VERIFIED_EVENT_ALIAS_PATH.read_text(encoding="utf-8")
+        )["entries"] if proof["source_event_identity"] ==
+            "source_event:v1:us:equity_close:2026-10-02:nasdaq=27190.86:change=1.19"
+            and proof["message_id"] == 2111 and "receipt_source" not in proof)
         receipt = {"title": evidence["source_title"], "link": evidence["link"],
                    "first_seen_kst": "2026-10-04T00:22:15+09:00", "lanes": {"live": "2026-10-04T00:22:15+09:00"}}
         state = {"seen": {"old-link": dict(receipt)}}

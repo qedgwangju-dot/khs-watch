@@ -301,12 +301,16 @@ def migrate_seen_verified_event_aliases(state: dict) -> None:
         published = parse_seen_time(proof.get("source_published_kst"))
         if not (
             (identity.startswith("source_event:v1:us:equity_close:")
-             or re.fullmatch(r"source_event:v2:(?:license|odd_lot_rule|merger_agreement|broker_earnings|commercial_order|commercial_delivery|scoped_anonymous_order|construction_order|regulatory_package|industrial_product_milestone|legislative_action|capacity_supply_contract|industrial_adoption|industrial_development_mou|site_development_mou|project_safety_assessment|conditional_remittance|listing_suspension_ruling|research_award|analyst_target|industrial_route_study|conditional_index_outlook|intraday_equity|cumulative_foreign_sales|macro_model_report):[0-9a-f]{64}", identity)) and published
+             or re.fullmatch(r"source_event:v2:(?:license|odd_lot_rule|merger_agreement|broker_earnings|commercial_order|commercial_delivery|scoped_anonymous_order|construction_order|regulatory_package|industrial_product_milestone|legislative_action|capacity_supply_contract|industrial_adoption|industrial_development_mou|site_development_mou|project_safety_assessment|conditional_remittance|listing_suspension_ruling|capital_participation|research_award|analyst_target|industrial_route_study|conditional_index_outlook|intraday_equity|cumulative_foreign_sales|macro_model_report):[0-9a-f]{64}", identity)) and published
             and re.fullmatch(r"[0-9a-f]{64}", str(proof.get("source_body_sha256") or ""))
             and (not proof.get('source_body_digest') or re.fullmatch(r'[0-9a-f]{64}', str(proof['source_body_digest'])))
             and proof.get("run_id") and proof.get("message_id")
         ):
             raise ValueError("Invalid verified event-alias evidence")
+        # A discovery-side equivalence references another article's receipt;
+        # it cannot create sent history for the still-unsent source.
+        if 'receipt_source' in proof:
+            continue
         for entry in list(seen.values()):
             first_seen = parse_seen_time(entry.get("first_seen_kst")) if isinstance(entry, dict) else None
             if not first_seen or first_seen < published:

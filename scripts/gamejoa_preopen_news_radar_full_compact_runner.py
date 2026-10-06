@@ -1642,6 +1642,8 @@ def rank_korean_business_detail_candidates(
 
 
 ARTICLE_SUMMARY_NOISE_PATTERNS = [
+    r"^\s*\[[^\]\r\n]{1,40}\s+[가-힣]{2,6}(?:\s+[가-힣]{2,6}){0,2}\s*"
+    r"(?:인턴\s*|수습\s*|객원\s*)?기자\]\s*",
     r"\b[가-힣]{2,6}(?:\s+[가-힣]{2,6}){0,2}\s*(?:인턴\s*|수습\s*|객원\s*)?기자\s*=\s*",
     r"(?:저작권자\s*\(?c\)?\s*)?[^.\n]{0,80}?무단\s*전재\s*[-·–—]?\s*(?:및\s*)?재배포(?:\s*금지)?[.!。]?",
     r"AI\s*학습\s*및\s*활용\s*금지",
@@ -2596,6 +2598,26 @@ def source_headline_event_fact(title: str, body: str) -> str:
     source = market_materiality.source_reported_body(body)
     rows = market_materiality.source_sentences(source)
     # Render and validate the same source observation used for event identity.
+    participation = market_materiality.declared_capital_participation_observation(title, source)
+    if participation:
+        action = (f"투자금 {participation['payment_amount_display']}를 납입했다고 밝혔다" if participation['stage'] == 'paid'
+                  else f"{participation['amount_display']} 규모로 투자에 참여한다고 밝혔다")
+        day = participation.get('payment_day', participation['day'])
+        return (f"{participation['issuer_display']}{korean_topic_particle(participation['issuer_display'])} {day}일 {participation['affiliate']}를 통해 "
+                f"{participation['sponsor_display']}가 주도하는 {participation['target']} 인수에 "
+                f"{action}.")
+    oil_shipping = market_materiality.quantified_oil_shipping_constraints_observation(title, source)
+    if oil_shipping:
+        return (f"{oil_shipping['provider']} 인용 보도에 따르면 {oil_shipping['country']} 항구의 "
+                f"{oil_shipping['month']}월 원유 적재량은 {oil_shipping['barrels']}배럴이었다. "
+                f"초대형 원유운반선(VLCC)의 하루 운항 비용은 {oil_shipping['cost']}로 지난해의 "
+                f"{oil_shipping['multiple']}배 수준이다.")
+    procurement = market_materiality.procurement_lead_time_observation(title, source)
+    if procurement:
+        return (f"{procurement['location']} 원전 최대 {procurement['units']}기 추진과 관련해 {procurement['authority']}가 제시한 "
+                f"{procurement['equipment']} 제작·공급기간은 "
+                f"최장 {procurement['months']}개월이다. {procurement['parties']}은 {procurement['phases']} EPC 계약 체결 간격을 "
+                f"{procurement['interval_months']}개월 이내로 좁히려 노력하기로 했으며 확정 일정은 아니다.")
     remittance = market_materiality.conditional_remittance_observation(title, source)
     if remittance:
         conditions = '상업적 합리성 검토와 ' if remittance['commercial_review'] else ''
@@ -11193,10 +11215,13 @@ def source_core_fact_errors(alert: dict) -> list[str]:
         # The economic transmission may be in the full report rather than its
         # short deployment sentence. Require that exact source-bound summary.
         source_bound_deployment = bool(
-            market_materiality.focus_kind(title) == "military_reinforcement"
+            (market_materiality.focus_kind(title) == "military_reinforcement"
+             or market_materiality.declared_capital_participation_observation(title, source)
+             or market_materiality.quantified_oil_shipping_constraints_observation(title, source)
+             or market_materiality.procurement_lead_time_observation(title, source))
             and source_audit["disposition"] == "keep" and source_audit["priority"] >= 2
             and expected_observation
-            and market_materiality.canonical_source_fact(expected_observation) == market_materiality.canonical_source_fact(core)
+            and market_materiality.canonical_source_fact(expected_observation) == market_materiality.canonical_source_fact(observation_core)
         )
         if (core_audit["disposition"] != "keep" or not core_audit["evidence"]) and not source_bound_deployment:
             errors.append("core_without_market_change_evidence")
