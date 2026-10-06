@@ -1734,20 +1734,19 @@
     "event:4af0ec859cb52ac4537c1713": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
       "lanes": {
-        "live": "2026-10-07T00:09:35+09:00"
+        "live": "2026-10-07T01:07:29+09:00"
       },
-      "last_seen_kst": "2026-10-07T00:09:35+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261006197800089",
-      "source": "연합뉴스",
-      "source_body_digest": "c9c12b736a9d8d23e3fddb9dd7982c08784de2a6aaa4047d2516395e05b598a6",
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.hankyung.com/article/202610066004P",
+      "source": "한국경제",
+      "source_body_digest": "9dd399fcbc5785dfc52750d400208fe9f62f307f9dfa3a280f9ddd6e024b88d1",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:bfed80522e411806153db8305c35e59b5c60ae257feeb90d38462235bda0326d",
+      "source_fact_identity": "source_facts:v1:87f5b48cfad122f70094ae939dde61b3f7e822087c55a41ed5a7c8f3c854f52a",
       "source_fact_keys": [
-        "source_fact:v1:4b5f12338e1ec28104b5cf3606f3fccd2597a99b702cfff86ebfe435e4493b10",
-        "source_fact:v1:e8fae92d0f0520a68e52c4b1725f8a743c1d4359aaff7cd993f4c3de50053e0a"
+        "source_fact:v1:b0bf17004ea87e95f0a0d20f1990cf3247adfeedf492838935998700b7e7cafa"
       ],
-      "source_published_kst": "2026-10-06T22:01+09:00",
-      "title": "中화웨이, 美퀄컴과 5G·AI 등 '특허 상호사용' 계약 | 연합뉴스"
+      "source_published_kst": "2026-10-06T16:01+09:00",
+      "title": "신세계그룹, 美 워너브라더스 인수에 전격 투자"
     },
     "event:4b6c66ca03796acb2d14c1b0": {
       "first_seen_kst": "2026-10-01T11:18:10+09:00",
@@ -4639,6 +4638,23 @@
       "source": "전자신문",
       "title": "李대통령, 멕시코와 정상회담…“무역협정 체결 긴요”"
     },
+    "event:bb9dc6ae0b595a9506758d03": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://biz.chosun.com/international/international_economy/2026/10/07/GGRJD3NNFZC55ONJORPDPV5DR4/",
+      "source": "조선비즈",
+      "source_body_digest": "35a61bad9b9e6bb0c18d03e3cab60e2591d28db040a6068f91783f2634247e07",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a689ee9068f0206bb00a4118b211c4e56a7e646c31a6cad110081c093eead0b",
+      "source_fact_keys": [
+        "source_fact:v1:afec40359a79eacce5e8fe163cba1e3cd47dcff207d76c7fd76f16a7c3607ffc"
+      ],
+      "source_published_kst": "2026-10-07T00:06+09:00",
+      "title": "美 8월 무역적자 1056억원…작년 3월 이후 최대"
+    },
     "event:bc24083a4ed4e29f6523f79f": {
       "first_seen_kst": "2026-10-05T20:31:34+09:00",
       "lanes": {
@@ -5302,6 +5318,23 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03880246645582416",
       "source": "이데일리",
       "title": "ETF 성장세 주춤하자 다시 ‘쩐의 전쟁’…보수 0%대 승부수"
+    },
+    "event:d3ca22107781d9078e963f4a": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.hankyung.com/article/202610066622i",
+      "source": "한국경제",
+      "source_body_digest": "917fdfc4f321115526a3cf608943ff27bdc85443f945865c0aae0d718a41e3f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a1a9f8c27f4864a8e24910139f6853e7096380a2f9bd849876078a26de65a8ce",
+      "source_fact_keys": [
+        "source_fact:v1:224ed1689f5eb56a5a5b83e1c92431cd10ffca6f989c46a3a27eda8df09ecc2d"
+      ],
+      "source_published_kst": "2026-10-06T20:59+09:00",
+      "title": "AI가 부의 지형 바꿨다…세계 500대 부자 미국 IT에 집중"
     },
     "event:d43896e2f11c4711cdda0b39": {
       "first_seen_kst": "2026-10-02T13:38:43+09:00",
@@ -7601,6 +7634,27 @@
       "source_published_kst": "2026-10-06T20:10+09:00",
       "title": "콘스텔레이션, 구글과 10억 달러 이상 원전 전력 계약 임박 소식에 강세"
     },
+    "fact:135f87ba9f226d29727308ab": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.hankyung.com/article/202610066445i",
+      "source": "한국경제",
+      "source_body_digest": "501b820d520a514593dc0a63b192e2095285fdfb7539f7daee2326480166ca52",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2dacc5529aa93bfdfe059faa907dd8be8a40759132e643d1a3c60b1e6bd7eee3",
+      "source_fact_keys": [
+        "source_fact:v1:2918f139fbb96accac349de23f838234b61315846ef8252d5c91274144caf7f2",
+        "source_fact:v1:4c23088187c36c8d868e657a7893419f393c98411b27e1cf482b917e7e4ebe84",
+        "source_fact:v1:65c7c740bb4c011df9d476b6d9b03618b601537d2c083f2d4a99b76273797d0d",
+        "source_fact:v1:697dffe5455f4a71326987dfd76afb034f73019204c56f5c73b85b81abf99260",
+        "source_fact:v1:c88aec2460a7c86bd73f9c81f1787865a3da6e5addcb66d61ac28b984ae17dd8"
+      ],
+      "source_published_kst": "2026-10-06T17:48+09:00",
+      "title": "알테오젠, 알테오젠바이오로직스 흡수합병…사업 역량 통합"
+    },
     "fact:137619ae1f2b09901ac26b27": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
       "lanes": {
@@ -8407,6 +8461,24 @@
       "source_published_kst": "2026-10-06T11:19+09:00",
       "title": "넥스틴 수주공시 - Wafer Inspection System 공급계약 254.4억원 (매출액대비 38.02 %)"
     },
+    "fact:22407b27b264b5d30b18071c": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261003_0003813739",
+      "source": "뉴시스",
+      "source_body_digest": "4127a0782b550bab98fd6d179b0f9923cfb61b032de82d4c9f5391cd3d3388d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8dfd965e6dccbdf6d2097cba8bca0986c77e63792a68b979543e44076987f706",
+      "source_fact_keys": [
+        "source_fact:v1:790689add28bafdddbc6335c777d67ce1c6a8f623c954ebbb78e908d64510e98",
+        "source_fact:v1:ab06a0b93c686a4e672b7510f564fa4cc15454e1e0ff9f2e5e386533b5b0460d"
+      ],
+      "source_published_kst": "2026-10-06T09:37+09:00",
+      "title": "[제주馬이야기] 국난마다 전마 보탠 제주…김만일에서 레클리스까지"
+    },
     "fact:228fb4b90fbea63e6b1466de": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
       "lanes": {
@@ -9080,6 +9152,23 @@
       ],
       "source_published_kst": "2026-10-06T15:42+09:00",
       "title": "MSDI, 구미시와 7천억 규모 미사일 방산단지 조성 MOU | 연합뉴스"
+    },
+    "fact:2feb393986c5a69d1f14dbe4": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://biz.chosun.com/international/international_economy/2026/10/07/GGRJD3NNFZC55ONJORPDPV5DR4/",
+      "source": "조선비즈",
+      "source_body_digest": "35a61bad9b9e6bb0c18d03e3cab60e2591d28db040a6068f91783f2634247e07",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a689ee9068f0206bb00a4118b211c4e56a7e646c31a6cad110081c093eead0b",
+      "source_fact_keys": [
+        "source_fact:v1:afec40359a79eacce5e8fe163cba1e3cd47dcff207d76c7fd76f16a7c3607ffc"
+      ],
+      "source_published_kst": "2026-10-07T00:06+09:00",
+      "title": "美 8월 무역적자 1056억원…작년 3월 이후 최대"
     },
     "fact:2ff70382921ab2434447db09": {
       "first_seen_kst": "2026-10-06T16:09:23+09:00",
@@ -13876,6 +13965,23 @@
       "source_published_kst": "2026-10-06T06:27+09:00",
       "title": "국제유가, 1%대 하락…중동 원유 수출 회복·G7 비축유 방출"
     },
+    "fact:9420c9f086dd2027b8f52eca": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.hankyung.com/article/202610066622i",
+      "source": "한국경제",
+      "source_body_digest": "917fdfc4f321115526a3cf608943ff27bdc85443f945865c0aae0d718a41e3f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a1a9f8c27f4864a8e24910139f6853e7096380a2f9bd849876078a26de65a8ce",
+      "source_fact_keys": [
+        "source_fact:v1:224ed1689f5eb56a5a5b83e1c92431cd10ffca6f989c46a3a27eda8df09ecc2d"
+      ],
+      "source_published_kst": "2026-10-06T20:59+09:00",
+      "title": "AI가 부의 지형 바꿨다…세계 500대 부자 미국 IT에 집중"
+    },
     "fact:944ccd47451559315fe0b53f": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
       "lanes": {
@@ -15232,6 +15338,29 @@
       ],
       "source_published_kst": "2026-10-06T17:10+09:00",
       "title": "퓨처드라이브, KES 2026서 '텔레드라이브' 전시…AI 보조 원격주행으로 차량·무인장비 운영 지원"
+    },
+    "fact:ac9213cfaaffef4f9f3d6119": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632701",
+      "source": "이투데이",
+      "source_body_digest": "6d235467da505ac661ae2787afd488fb6cbd47634350561d236f2acec80289c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e6aa058722d13a4c91f9691ebccab7569e15cbb5d0e436e82e8ba726e52b6967",
+      "source_fact_keys": [
+        "source_fact:v1:02eb1dee85f771d7a4cc8cb19425b6ab4c2cb1a2591b4acb38e60fd303ffeca6",
+        "source_fact:v1:3ddb10f158f657914a5f1955febca6c16bf95ab9e7df2ab4fa6bf72b39dc7c0d",
+        "source_fact:v1:6c668c330cd4f10a390327afc7be03d7415d4530fbe9213a5d5522ad094f90d0",
+        "source_fact:v1:71fbe71732e18331482cb7e756d3828abeaadf4ecf7b88b992147fc0645954f7",
+        "source_fact:v1:865c3a11cc71d04c6dd595eaa234e07597967e35e4b8e765110db6e81f47515e",
+        "source_fact:v1:997e39d6c33db224951d9aa23696686f2a5f68da6573f8f04684e60ec8fb0466",
+        "source_fact:v1:b980a22e6136cd4a0b323256a86f4843bc1b2bcb26fd244a31cc2af3c6137a47"
+      ],
+      "source_published_kst": "2026-10-06T10:11+09:00",
+      "title": "세아베스틸, 로봇 감속기용 특수강 국산화…양산 본격화"
     },
     "fact:ad1c2752bc375237412312d1": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
@@ -18719,6 +18848,23 @@
       ],
       "source_published_kst": "2026-10-05T21:24+09:00",
       "title": "레이도스 홀딩스, 애널로직 보안검색 합작법인 출범..소수지분 유지"
+    },
+    "fact:fa9288b1a3d0529a38e9541b": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.hankyung.com/article/202610066004P",
+      "source": "한국경제",
+      "source_body_digest": "9dd399fcbc5785dfc52750d400208fe9f62f307f9dfa3a280f9ddd6e024b88d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:87f5b48cfad122f70094ae939dde61b3f7e822087c55a41ed5a7c8f3c854f52a",
+      "source_fact_keys": [
+        "source_fact:v1:b0bf17004ea87e95f0a0d20f1990cf3247adfeedf492838935998700b7e7cafa"
+      ],
+      "source_published_kst": "2026-10-06T16:01+09:00",
+      "title": "신세계그룹, 美 워너브라더스 인수에 전격 투자"
     },
     "fact:fb26750756c067519f05af0b": {
       "first_seen_kst": "2026-10-06T01:41:59+09:00",
@@ -30759,6 +30905,24 @@
       "source": "연합뉴스",
       "title": "[AI픽] 국산 AI반도체 성능지표 'K-Perf', 한전서 첫 실전검증 | 연합뉴스"
     },
+    "link:685399812b72f31f4dfcd760": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261003_0003813739",
+      "source": "뉴시스",
+      "source_body_digest": "4127a0782b550bab98fd6d179b0f9923cfb61b032de82d4c9f5391cd3d3388d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8dfd965e6dccbdf6d2097cba8bca0986c77e63792a68b979543e44076987f706",
+      "source_fact_keys": [
+        "source_fact:v1:790689add28bafdddbc6335c777d67ce1c6a8f623c954ebbb78e908d64510e98",
+        "source_fact:v1:ab06a0b93c686a4e672b7510f564fa4cc15454e1e0ff9f2e5e386533b5b0460d"
+      ],
+      "source_published_kst": "2026-10-06T09:37+09:00",
+      "title": "[제주馬이야기] 국난마다 전마 보탠 제주…김만일에서 레클리스까지"
+    },
     "link:686ef5a64628b8389f1081f3": {
       "first_seen_kst": "2026-10-05T17:16:33+09:00",
       "lanes": {
@@ -31711,6 +31875,21 @@
       "link": "https://www.seoul.co.kr/news/publicnews/local_govern/2026/10/02/20261002500037",
       "source": "서울신문",
       "title": "경기도, 전국 최초 온실가스 관측 ‘경기기후위성 2호기’ 발사 성공"
+    },
+    "link:72c6dd433b99fe8ab994f629": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632669",
+      "source": "이투데이",
+      "source_body_digest": "c6816fce3ef2188e8e5c63af74f70a06ab1bd6f0ec60407f6b4f854d8780390b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T09:39+09:00",
+      "title": "아침 버거 잘 팔리네…버거킹, 모닝 매장 전국 190곳으로 확대"
     },
     "link:72cb948adaad3377513fe6f7": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
@@ -36938,6 +37117,23 @@
       "source": "머니투데이",
       "title": "한국투자증권, 4000억 규모 SK 주식 취득…PRS 계약 방식"
     },
+    "link:a44bd01907e668113511ded2": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.hankyung.com/article/202610066004P",
+      "source": "한국경제",
+      "source_body_digest": "9dd399fcbc5785dfc52750d400208fe9f62f307f9dfa3a280f9ddd6e024b88d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:87f5b48cfad122f70094ae939dde61b3f7e822087c55a41ed5a7c8f3c854f52a",
+      "source_fact_keys": [
+        "source_fact:v1:b0bf17004ea87e95f0a0d20f1990cf3247adfeedf492838935998700b7e7cafa"
+      ],
+      "source_published_kst": "2026-10-06T16:01+09:00",
+      "title": "신세계그룹, 美 워너브라더스 인수에 전격 투자"
+    },
     "link:a46ae0a717be11b0a43efd67": {
       "first_seen_kst": "2026-10-06T20:37:39+09:00",
       "lanes": {
@@ -37569,6 +37765,27 @@
       ],
       "source_published_kst": "2026-10-05T08:34+09:00",
       "title": "걸프국 원유 수출 회복세에 ‘먹구름’⋯호르무즈 선박 피격 나흘새 4건"
+    },
+    "link:a95f32e98c5d05f77893923e": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.hankyung.com/article/202610066445i",
+      "source": "한국경제",
+      "source_body_digest": "501b820d520a514593dc0a63b192e2095285fdfb7539f7daee2326480166ca52",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2dacc5529aa93bfdfe059faa907dd8be8a40759132e643d1a3c60b1e6bd7eee3",
+      "source_fact_keys": [
+        "source_fact:v1:2918f139fbb96accac349de23f838234b61315846ef8252d5c91274144caf7f2",
+        "source_fact:v1:4c23088187c36c8d868e657a7893419f393c98411b27e1cf482b917e7e4ebe84",
+        "source_fact:v1:65c7c740bb4c011df9d476b6d9b03618b601537d2c083f2d4a99b76273797d0d",
+        "source_fact:v1:697dffe5455f4a71326987dfd76afb034f73019204c56f5c73b85b81abf99260",
+        "source_fact:v1:c88aec2460a7c86bd73f9c81f1787865a3da6e5addcb66d61ac28b984ae17dd8"
+      ],
+      "source_published_kst": "2026-10-06T17:48+09:00",
+      "title": "알테오젠, 알테오젠바이오로직스 흡수합병…사업 역량 통합"
     },
     "link:a97db9746d9359f539d1adf5": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -38828,6 +39045,23 @@
       "link": "https://www.newsis.com/view/NISX20260930_0003809191",
       "source": "뉴시스",
       "title": "원·달러 환율, 3.9원 내린 1352.8원 마감"
+    },
+    "link:b584bbc6878a207927ef953e": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.hankyung.com/article/202610066622i",
+      "source": "한국경제",
+      "source_body_digest": "917fdfc4f321115526a3cf608943ff27bdc85443f945865c0aae0d718a41e3f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a1a9f8c27f4864a8e24910139f6853e7096380a2f9bd849876078a26de65a8ce",
+      "source_fact_keys": [
+        "source_fact:v1:224ed1689f5eb56a5a5b83e1c92431cd10ffca6f989c46a3a27eda8df09ecc2d"
+      ],
+      "source_published_kst": "2026-10-06T20:59+09:00",
+      "title": "AI가 부의 지형 바꿨다…세계 500대 부자 미국 IT에 집중"
     },
     "link:b588648700534058ca0b6382": {
       "first_seen_kst": "2026-09-18T18:04:06+09:00",
@@ -43025,6 +43259,29 @@
       "source": "매일경제",
       "title": "수주 실적·사업 다변화 부각 … 주춤했던 조선株 상승세"
     },
+    "link:db19ec4822de08e1d0554418": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632701",
+      "source": "이투데이",
+      "source_body_digest": "6d235467da505ac661ae2787afd488fb6cbd47634350561d236f2acec80289c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e6aa058722d13a4c91f9691ebccab7569e15cbb5d0e436e82e8ba726e52b6967",
+      "source_fact_keys": [
+        "source_fact:v1:02eb1dee85f771d7a4cc8cb19425b6ab4c2cb1a2591b4acb38e60fd303ffeca6",
+        "source_fact:v1:3ddb10f158f657914a5f1955febca6c16bf95ab9e7df2ab4fa6bf72b39dc7c0d",
+        "source_fact:v1:6c668c330cd4f10a390327afc7be03d7415d4530fbe9213a5d5522ad094f90d0",
+        "source_fact:v1:71fbe71732e18331482cb7e756d3828abeaadf4ecf7b88b992147fc0645954f7",
+        "source_fact:v1:865c3a11cc71d04c6dd595eaa234e07597967e35e4b8e765110db6e81f47515e",
+        "source_fact:v1:997e39d6c33db224951d9aa23696686f2a5f68da6573f8f04684e60ec8fb0466",
+        "source_fact:v1:b980a22e6136cd4a0b323256a86f4843bc1b2bcb26fd244a31cc2af3c6137a47"
+      ],
+      "source_published_kst": "2026-10-06T10:11+09:00",
+      "title": "세아베스틸, 로봇 감속기용 특수강 국산화…양산 본격화"
+    },
     "link:dbbf0d5c09e9fbee0e7039e8": {
       "first_seen_kst": "2026-10-02T12:38:28+09:00",
       "lanes": {
@@ -46732,6 +46989,23 @@
       "source": "이데일리",
       "title": "[美특징주]팔로알토, 수요 증가 전망·플랫폼 전략 ‘긍정적’ 평가…개장전 1%↑"
     },
+    "link:feca29a58d030d70a7d62029": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://biz.chosun.com/international/international_economy/2026/10/07/GGRJD3NNFZC55ONJORPDPV5DR4/",
+      "source": "조선비즈",
+      "source_body_digest": "35a61bad9b9e6bb0c18d03e3cab60e2591d28db040a6068f91783f2634247e07",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a689ee9068f0206bb00a4118b211c4e56a7e646c31a6cad110081c093eead0b",
+      "source_fact_keys": [
+        "source_fact:v1:afec40359a79eacce5e8fe163cba1e3cd47dcff207d76c7fd76f16a7c3607ffc"
+      ],
+      "source_published_kst": "2026-10-07T00:06+09:00",
+      "title": "美 8월 무역적자 1056억원…작년 3월 이후 최대"
+    },
     "link:fef4c0c0fe70bb33e806f674": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
       "lanes": {
@@ -47632,6 +47906,27 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T16:00+09:00",
       "title": "오리지널 철수·위탁 회수 틈새 노린다…유유제약, 시나칼세트 '개량 제제' 개발 착수"
+    },
+    "original:0664bfa79688c327f9835b06": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.hankyung.com/article/202610066445i",
+      "source": "한국경제",
+      "source_body_digest": "501b820d520a514593dc0a63b192e2095285fdfb7539f7daee2326480166ca52",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2dacc5529aa93bfdfe059faa907dd8be8a40759132e643d1a3c60b1e6bd7eee3",
+      "source_fact_keys": [
+        "source_fact:v1:2918f139fbb96accac349de23f838234b61315846ef8252d5c91274144caf7f2",
+        "source_fact:v1:4c23088187c36c8d868e657a7893419f393c98411b27e1cf482b917e7e4ebe84",
+        "source_fact:v1:65c7c740bb4c011df9d476b6d9b03618b601537d2c083f2d4a99b76273797d0d",
+        "source_fact:v1:697dffe5455f4a71326987dfd76afb034f73019204c56f5c73b85b81abf99260",
+        "source_fact:v1:c88aec2460a7c86bd73f9c81f1787865a3da6e5addcb66d61ac28b984ae17dd8"
+      ],
+      "source_published_kst": "2026-10-06T17:48+09:00",
+      "title": "알테오젠, 알테오젠바이오로직스 흡수합병…사업 역량 통합"
     },
     "original:0670a4d48a73da81e5550609": {
       "first_seen_kst": "2026-10-05T09:59:51+09:00",
@@ -55174,6 +55469,21 @@
       "source_published_kst": "2026-10-04T14:16+09:00",
       "title": "LNG '알래스카'에 공들이는 트럼프…텃밭은 흔들 | 연합뉴스"
     },
+    "original:4b06a3975394397424b0a793": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632669",
+      "source": "이투데이",
+      "source_body_digest": "c6816fce3ef2188e8e5c63af74f70a06ab1bd6f0ec60407f6b4f854d8780390b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T09:39+09:00",
+      "title": "아침 버거 잘 팔리네…버거킹, 모닝 매장 전국 190곳으로 확대"
+    },
     "original:4b2b453e11dfb0819cc0e00c": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
       "lanes": {
@@ -58727,6 +59037,24 @@
       "source": "전자신문",
       "title": "[ET특징주] '캉골' 에스제이그룹, 20억원 규모 자사주 취득… 주가 上"
     },
+    "original:6e4c32e1c62088e8e56a4002": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261003_0003813739",
+      "source": "뉴시스",
+      "source_body_digest": "4127a0782b550bab98fd6d179b0f9923cfb61b032de82d4c9f5391cd3d3388d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8dfd965e6dccbdf6d2097cba8bca0986c77e63792a68b979543e44076987f706",
+      "source_fact_keys": [
+        "source_fact:v1:790689add28bafdddbc6335c777d67ce1c6a8f623c954ebbb78e908d64510e98",
+        "source_fact:v1:ab06a0b93c686a4e672b7510f564fa4cc15454e1e0ff9f2e5e386533b5b0460d"
+      ],
+      "source_published_kst": "2026-10-06T09:37+09:00",
+      "title": "[제주馬이야기] 국난마다 전마 보탠 제주…김만일에서 레클리스까지"
+    },
     "original:6e66c87cc7dede4232798458": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
       "lanes": {
@@ -60258,6 +60586,23 @@
       "source_published_kst": "2026-10-06T09:54+09:00",
       "title": "올해 청약 경쟁률 작년 절반으로 '뚝'…서울·3기신도시는 100대1"
     },
+    "original:7acb837354b53a6e42926b69": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://biz.chosun.com/international/international_economy/2026/10/07/GGRJD3NNFZC55ONJORPDPV5DR4/",
+      "source": "조선비즈",
+      "source_body_digest": "35a61bad9b9e6bb0c18d03e3cab60e2591d28db040a6068f91783f2634247e07",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a689ee9068f0206bb00a4118b211c4e56a7e646c31a6cad110081c093eead0b",
+      "source_fact_keys": [
+        "source_fact:v1:afec40359a79eacce5e8fe163cba1e3cd47dcff207d76c7fd76f16a7c3607ffc"
+      ],
+      "source_published_kst": "2026-10-07T00:06+09:00",
+      "title": "美 8월 무역적자 1056억원…작년 3월 이후 최대"
+    },
     "original:7b3ae65051a5d08e321aceb9": {
       "first_seen_kst": "2026-10-02T17:56:05+09:00",
       "lanes": {
@@ -60336,6 +60681,23 @@
       "link": "https://www.mk.co.kr/news/politics/12166478",
       "source": "매일경제",
       "title": "정무위, 김용범 '레버리지 ETF' 국감증인 채택 무산"
+    },
+    "original:7bfece770bdf5b814833e835": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.hankyung.com/article/202610066622i",
+      "source": "한국경제",
+      "source_body_digest": "917fdfc4f321115526a3cf608943ff27bdc85443f945865c0aae0d718a41e3f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a1a9f8c27f4864a8e24910139f6853e7096380a2f9bd849876078a26de65a8ce",
+      "source_fact_keys": [
+        "source_fact:v1:224ed1689f5eb56a5a5b83e1c92431cd10ffca6f989c46a3a27eda8df09ecc2d"
+      ],
+      "source_published_kst": "2026-10-06T20:59+09:00",
+      "title": "AI가 부의 지형 바꿨다…세계 500대 부자 미국 IT에 집중"
     },
     "original:7c279e78009ef708a0ed36d4": {
       "first_seen_kst": "2026-10-01T21:28:22+09:00",
@@ -61142,6 +61504,29 @@
       ],
       "source_published_kst": "2026-10-06T10:42+09:00",
       "title": "에코프로비엠, 삼성SDI와 맞손…전고체 배터리 공동 개발"
+    },
+    "original:84f286c4f34761d41b10e4d6": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632701",
+      "source": "이투데이",
+      "source_body_digest": "6d235467da505ac661ae2787afd488fb6cbd47634350561d236f2acec80289c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e6aa058722d13a4c91f9691ebccab7569e15cbb5d0e436e82e8ba726e52b6967",
+      "source_fact_keys": [
+        "source_fact:v1:02eb1dee85f771d7a4cc8cb19425b6ab4c2cb1a2591b4acb38e60fd303ffeca6",
+        "source_fact:v1:3ddb10f158f657914a5f1955febca6c16bf95ab9e7df2ab4fa6bf72b39dc7c0d",
+        "source_fact:v1:6c668c330cd4f10a390327afc7be03d7415d4530fbe9213a5d5522ad094f90d0",
+        "source_fact:v1:71fbe71732e18331482cb7e756d3828abeaadf4ecf7b88b992147fc0645954f7",
+        "source_fact:v1:865c3a11cc71d04c6dd595eaa234e07597967e35e4b8e765110db6e81f47515e",
+        "source_fact:v1:997e39d6c33db224951d9aa23696686f2a5f68da6573f8f04684e60ec8fb0466",
+        "source_fact:v1:b980a22e6136cd4a0b323256a86f4843bc1b2bcb26fd244a31cc2af3c6137a47"
+      ],
+      "source_published_kst": "2026-10-06T10:11+09:00",
+      "title": "세아베스틸, 로봇 감속기용 특수강 국산화…양산 본격화"
     },
     "original:84f66621e2fbbed0059c1bdb": {
       "first_seen_kst": "2026-10-01T19:16:32+09:00",
@@ -65035,6 +65420,23 @@
       "link": "https://www.newsis.com/view/NISX20260918_0003795800",
       "source": "뉴시스",
       "title": "반도체가 효자…평택 8월 수출 128억5천만불 '126.5%↑'"
+    },
+    "original:aa4d9ad5df9a82286757b3c2": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.hankyung.com/article/202610066004P",
+      "source": "한국경제",
+      "source_body_digest": "9dd399fcbc5785dfc52750d400208fe9f62f307f9dfa3a280f9ddd6e024b88d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:87f5b48cfad122f70094ae939dde61b3f7e822087c55a41ed5a7c8f3c854f52a",
+      "source_fact_keys": [
+        "source_fact:v1:b0bf17004ea87e95f0a0d20f1990cf3247adfeedf492838935998700b7e7cafa"
+      ],
+      "source_published_kst": "2026-10-06T16:01+09:00",
+      "title": "신세계그룹, 美 워너브라더스 인수에 전격 투자"
     },
     "original:aa67673717c069989eee9995": {
       "first_seen_kst": "2026-10-05T17:30:42+09:00",
@@ -76650,6 +77052,29 @@
       "source_published_kst": "2026-10-06T09:07+09:00",
       "title": "사우디 연합군, 주요 지역 탈환…후티는 사우디 공항 공습 반격 | 연합뉴스"
     },
+    "source_fact:0d0407bdc2f10498f265b20c": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632701",
+      "source": "이투데이",
+      "source_body_digest": "6d235467da505ac661ae2787afd488fb6cbd47634350561d236f2acec80289c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e6aa058722d13a4c91f9691ebccab7569e15cbb5d0e436e82e8ba726e52b6967",
+      "source_fact_keys": [
+        "source_fact:v1:02eb1dee85f771d7a4cc8cb19425b6ab4c2cb1a2591b4acb38e60fd303ffeca6",
+        "source_fact:v1:3ddb10f158f657914a5f1955febca6c16bf95ab9e7df2ab4fa6bf72b39dc7c0d",
+        "source_fact:v1:6c668c330cd4f10a390327afc7be03d7415d4530fbe9213a5d5522ad094f90d0",
+        "source_fact:v1:71fbe71732e18331482cb7e756d3828abeaadf4ecf7b88b992147fc0645954f7",
+        "source_fact:v1:865c3a11cc71d04c6dd595eaa234e07597967e35e4b8e765110db6e81f47515e",
+        "source_fact:v1:997e39d6c33db224951d9aa23696686f2a5f68da6573f8f04684e60ec8fb0466",
+        "source_fact:v1:b980a22e6136cd4a0b323256a86f4843bc1b2bcb26fd244a31cc2af3c6137a47"
+      ],
+      "source_published_kst": "2026-10-06T10:11+09:00",
+      "title": "세아베스틸, 로봇 감속기용 특수강 국산화…양산 본격화"
+    },
     "source_fact:0d34e03d573b6f2b10658877": {
       "first_seen_kst": "2026-10-06T01:41:59+09:00",
       "lanes": {
@@ -77809,6 +78234,23 @@
       ],
       "source_published_kst": "2026-10-05T05:18+09:00",
       "title": "“국산 AI반도체, 실험실 넘어 전력현장으로”…K-Perf 첫 적용"
+    },
+    "source_fact:12326d285cb0fe49f700a853": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.hankyung.com/article/202610066622i",
+      "source": "한국경제",
+      "source_body_digest": "917fdfc4f321115526a3cf608943ff27bdc85443f945865c0aae0d718a41e3f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a1a9f8c27f4864a8e24910139f6853e7096380a2f9bd849876078a26de65a8ce",
+      "source_fact_keys": [
+        "source_fact:v1:224ed1689f5eb56a5a5b83e1c92431cd10ffca6f989c46a3a27eda8df09ecc2d"
+      ],
+      "source_published_kst": "2026-10-06T20:59+09:00",
+      "title": "AI가 부의 지형 바꿨다…세계 500대 부자 미국 IT에 집중"
     },
     "source_fact:12b70517195b31b38ee58bd3": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
@@ -80406,6 +80848,23 @@
       "source_published_kst": "2026-10-05T14:48+09:00",
       "title": "예멘 정부군 \"후티 군사시설 1122곳 공격…1747명 사망\""
     },
+    "source_fact:2084c799ee002385bc33804c": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://biz.chosun.com/international/international_economy/2026/10/07/GGRJD3NNFZC55ONJORPDPV5DR4/",
+      "source": "조선비즈",
+      "source_body_digest": "35a61bad9b9e6bb0c18d03e3cab60e2591d28db040a6068f91783f2634247e07",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a689ee9068f0206bb00a4118b211c4e56a7e646c31a6cad110081c093eead0b",
+      "source_fact_keys": [
+        "source_fact:v1:afec40359a79eacce5e8fe163cba1e3cd47dcff207d76c7fd76f16a7c3607ffc"
+      ],
+      "source_published_kst": "2026-10-07T00:06+09:00",
+      "title": "美 8월 무역적자 1056억원…작년 3월 이후 최대"
+    },
     "source_fact:20984cf2a5e6366e92726fc3": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
       "lanes": {
@@ -80807,6 +81266,29 @@
       ],
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "\"일주일새 12% 올랐다\"…전고체 ETF 뛰는데 뭉칫돈 향한 곳은"
+    },
+    "source_fact:22465209dcd30ae205ad539b": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632701",
+      "source": "이투데이",
+      "source_body_digest": "6d235467da505ac661ae2787afd488fb6cbd47634350561d236f2acec80289c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e6aa058722d13a4c91f9691ebccab7569e15cbb5d0e436e82e8ba726e52b6967",
+      "source_fact_keys": [
+        "source_fact:v1:02eb1dee85f771d7a4cc8cb19425b6ab4c2cb1a2591b4acb38e60fd303ffeca6",
+        "source_fact:v1:3ddb10f158f657914a5f1955febca6c16bf95ab9e7df2ab4fa6bf72b39dc7c0d",
+        "source_fact:v1:6c668c330cd4f10a390327afc7be03d7415d4530fbe9213a5d5522ad094f90d0",
+        "source_fact:v1:71fbe71732e18331482cb7e756d3828abeaadf4ecf7b88b992147fc0645954f7",
+        "source_fact:v1:865c3a11cc71d04c6dd595eaa234e07597967e35e4b8e765110db6e81f47515e",
+        "source_fact:v1:997e39d6c33db224951d9aa23696686f2a5f68da6573f8f04684e60ec8fb0466",
+        "source_fact:v1:b980a22e6136cd4a0b323256a86f4843bc1b2bcb26fd244a31cc2af3c6137a47"
+      ],
+      "source_published_kst": "2026-10-06T10:11+09:00",
+      "title": "세아베스틸, 로봇 감속기용 특수강 국산화…양산 본격화"
     },
     "source_fact:2289ec8ff19d94ffb2b72b7d": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -83998,6 +84480,29 @@
       ],
       "source_published_kst": "2026-10-06T01:21+09:00",
       "title": "페라리, 자사주 2600만 유로 매입..3차 한도 41% 소진"
+    },
+    "source_fact:31399835a787038e8ac463cc": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632701",
+      "source": "이투데이",
+      "source_body_digest": "6d235467da505ac661ae2787afd488fb6cbd47634350561d236f2acec80289c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e6aa058722d13a4c91f9691ebccab7569e15cbb5d0e436e82e8ba726e52b6967",
+      "source_fact_keys": [
+        "source_fact:v1:02eb1dee85f771d7a4cc8cb19425b6ab4c2cb1a2591b4acb38e60fd303ffeca6",
+        "source_fact:v1:3ddb10f158f657914a5f1955febca6c16bf95ab9e7df2ab4fa6bf72b39dc7c0d",
+        "source_fact:v1:6c668c330cd4f10a390327afc7be03d7415d4530fbe9213a5d5522ad094f90d0",
+        "source_fact:v1:71fbe71732e18331482cb7e756d3828abeaadf4ecf7b88b992147fc0645954f7",
+        "source_fact:v1:865c3a11cc71d04c6dd595eaa234e07597967e35e4b8e765110db6e81f47515e",
+        "source_fact:v1:997e39d6c33db224951d9aa23696686f2a5f68da6573f8f04684e60ec8fb0466",
+        "source_fact:v1:b980a22e6136cd4a0b323256a86f4843bc1b2bcb26fd244a31cc2af3c6137a47"
+      ],
+      "source_published_kst": "2026-10-06T10:11+09:00",
+      "title": "세아베스틸, 로봇 감속기용 특수강 국산화…양산 본격화"
     },
     "source_fact:31a613f37af32b2a809c5cee": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
@@ -88503,6 +89008,24 @@
       "source_published_kst": "2026-10-06T04:36+09:00",
       "title": "美10년물 국채금리 장중 5.34% 돌파…24년 만에 최고"
     },
+    "source_fact:4763b7b7a9e1ec09f7628609": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261003_0003813739",
+      "source": "뉴시스",
+      "source_body_digest": "4127a0782b550bab98fd6d179b0f9923cfb61b032de82d4c9f5391cd3d3388d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8dfd965e6dccbdf6d2097cba8bca0986c77e63792a68b979543e44076987f706",
+      "source_fact_keys": [
+        "source_fact:v1:790689add28bafdddbc6335c777d67ce1c6a8f623c954ebbb78e908d64510e98",
+        "source_fact:v1:ab06a0b93c686a4e672b7510f564fa4cc15454e1e0ff9f2e5e386533b5b0460d"
+      ],
+      "source_published_kst": "2026-10-06T09:37+09:00",
+      "title": "[제주馬이야기] 국난마다 전마 보탠 제주…김만일에서 레클리스까지"
+    },
     "source_fact:477e21f96d2b33db6f219f99": {
       "first_seen_kst": "2026-10-06T23:19:02+09:00",
       "lanes": {
@@ -91157,22 +91680,23 @@
     "source_fact:535e5a47e43f954060e6057e": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
-        "live": "2026-10-06T21:28:22+09:00"
+        "live": "2026-10-07T01:07:29+09:00"
       },
-      "last_seen_kst": "2026-10-06T21:28:22+09:00",
-      "link": "https://www.hankyung.com/article/202610066402P",
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.hankyung.com/article/202610066445i",
       "source": "한국경제",
-      "source_body_digest": "61e08806ae7ebd3a65e02da02c92555e46d329661017665cd9ce666330a981b7",
+      "source_body_digest": "501b820d520a514593dc0a63b192e2095285fdfb7539f7daee2326480166ca52",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:7c6377a2257782517b01e7863dfcdd1db72b9a00e6089470863498523089d11e",
+      "source_fact_identity": "source_facts:v1:2dacc5529aa93bfdfe059faa907dd8be8a40759132e643d1a3c60b1e6bd7eee3",
       "source_fact_keys": [
         "source_fact:v1:2918f139fbb96accac349de23f838234b61315846ef8252d5c91274144caf7f2",
-        "source_fact:v1:96bc042fe46546ef8cfe17736036b21c81a523a515aa0b317d0adb907e20824a",
-        "source_fact:v1:d8db21824395f81de88bada2929d8edd4b08b8397b95f1a70b51218e231f3bd6",
-        "source_fact:v1:e01e77d275652da57088ac81ebf47b81356cac0bc48e25bc0463b777df2f5a6a"
+        "source_fact:v1:4c23088187c36c8d868e657a7893419f393c98411b27e1cf482b917e7e4ebe84",
+        "source_fact:v1:65c7c740bb4c011df9d476b6d9b03618b601537d2c083f2d4a99b76273797d0d",
+        "source_fact:v1:697dffe5455f4a71326987dfd76afb034f73019204c56f5c73b85b81abf99260",
+        "source_fact:v1:c88aec2460a7c86bd73f9c81f1787865a3da6e5addcb66d61ac28b984ae17dd8"
       ],
-      "source_published_kst": "2026-10-06T17:40+09:00",
-      "title": "알테오젠, 알테오젠바이오로직스 합병 결정…개발부터 상업화까지 역량 통합"
+      "source_published_kst": "2026-10-06T17:48+09:00",
+      "title": "알테오젠, 알테오젠바이오로직스 흡수합병…사업 역량 통합"
     },
     "source_fact:53904ecdc2a06c849f686787": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
@@ -94708,6 +95232,27 @@
       "source_published_kst": "2026-10-06T17:02+09:00",
       "title": "엠투클라우드 \"백신 유통 이력 '디지털 관리' 의료기관까지 확대\""
     },
+    "source_fact:637753786d4d02d2f3596c00": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.hankyung.com/article/202610066445i",
+      "source": "한국경제",
+      "source_body_digest": "501b820d520a514593dc0a63b192e2095285fdfb7539f7daee2326480166ca52",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2dacc5529aa93bfdfe059faa907dd8be8a40759132e643d1a3c60b1e6bd7eee3",
+      "source_fact_keys": [
+        "source_fact:v1:2918f139fbb96accac349de23f838234b61315846ef8252d5c91274144caf7f2",
+        "source_fact:v1:4c23088187c36c8d868e657a7893419f393c98411b27e1cf482b917e7e4ebe84",
+        "source_fact:v1:65c7c740bb4c011df9d476b6d9b03618b601537d2c083f2d4a99b76273797d0d",
+        "source_fact:v1:697dffe5455f4a71326987dfd76afb034f73019204c56f5c73b85b81abf99260",
+        "source_fact:v1:c88aec2460a7c86bd73f9c81f1787865a3da6e5addcb66d61ac28b984ae17dd8"
+      ],
+      "source_published_kst": "2026-10-06T17:48+09:00",
+      "title": "알테오젠, 알테오젠바이오로직스 흡수합병…사업 역량 통합"
+    },
     "source_fact:6396206163ed13d8642ee596": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
       "lanes": {
@@ -96186,6 +96731,29 @@
       ],
       "source_published_kst": "2026-10-06T05:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
+    },
+    "source_fact:6a6c1cf877b2aa41ce5c44b5": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632701",
+      "source": "이투데이",
+      "source_body_digest": "6d235467da505ac661ae2787afd488fb6cbd47634350561d236f2acec80289c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e6aa058722d13a4c91f9691ebccab7569e15cbb5d0e436e82e8ba726e52b6967",
+      "source_fact_keys": [
+        "source_fact:v1:02eb1dee85f771d7a4cc8cb19425b6ab4c2cb1a2591b4acb38e60fd303ffeca6",
+        "source_fact:v1:3ddb10f158f657914a5f1955febca6c16bf95ab9e7df2ab4fa6bf72b39dc7c0d",
+        "source_fact:v1:6c668c330cd4f10a390327afc7be03d7415d4530fbe9213a5d5522ad094f90d0",
+        "source_fact:v1:71fbe71732e18331482cb7e756d3828abeaadf4ecf7b88b992147fc0645954f7",
+        "source_fact:v1:865c3a11cc71d04c6dd595eaa234e07597967e35e4b8e765110db6e81f47515e",
+        "source_fact:v1:997e39d6c33db224951d9aa23696686f2a5f68da6573f8f04684e60ec8fb0466",
+        "source_fact:v1:b980a22e6136cd4a0b323256a86f4843bc1b2bcb26fd244a31cc2af3c6137a47"
+      ],
+      "source_published_kst": "2026-10-06T10:11+09:00",
+      "title": "세아베스틸, 로봇 감속기용 특수강 국산화…양산 본격화"
     },
     "source_fact:6a83f2b774dfb061d6ef13aa": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
@@ -103557,6 +104125,27 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "독파모, '프런티어 AI·산업 확산' 투트랙 재편…중국 넘는다"
     },
+    "source_fact:8bd7497d7ea4d574033fa31e": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.hankyung.com/article/202610066445i",
+      "source": "한국경제",
+      "source_body_digest": "501b820d520a514593dc0a63b192e2095285fdfb7539f7daee2326480166ca52",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2dacc5529aa93bfdfe059faa907dd8be8a40759132e643d1a3c60b1e6bd7eee3",
+      "source_fact_keys": [
+        "source_fact:v1:2918f139fbb96accac349de23f838234b61315846ef8252d5c91274144caf7f2",
+        "source_fact:v1:4c23088187c36c8d868e657a7893419f393c98411b27e1cf482b917e7e4ebe84",
+        "source_fact:v1:65c7c740bb4c011df9d476b6d9b03618b601537d2c083f2d4a99b76273797d0d",
+        "source_fact:v1:697dffe5455f4a71326987dfd76afb034f73019204c56f5c73b85b81abf99260",
+        "source_fact:v1:c88aec2460a7c86bd73f9c81f1787865a3da6e5addcb66d61ac28b984ae17dd8"
+      ],
+      "source_published_kst": "2026-10-06T17:48+09:00",
+      "title": "알테오젠, 알테오젠바이오로직스 흡수합병…사업 역량 통합"
+    },
     "source_fact:8be5dd3686fa564361168619": {
       "first_seen_kst": "2026-10-07T00:09:35+09:00",
       "lanes": {
@@ -106477,6 +107066,29 @@
       ],
       "source_published_kst": "2026-10-06T17:46+09:00",
       "title": "메모리 반도체 호황 속 삼성전자 완제품은 '고전'…DX부문 3분기 실적 어떻게"
+    },
+    "source_fact:98e7135b9e3362e71812cfcc": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632701",
+      "source": "이투데이",
+      "source_body_digest": "6d235467da505ac661ae2787afd488fb6cbd47634350561d236f2acec80289c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e6aa058722d13a4c91f9691ebccab7569e15cbb5d0e436e82e8ba726e52b6967",
+      "source_fact_keys": [
+        "source_fact:v1:02eb1dee85f771d7a4cc8cb19425b6ab4c2cb1a2591b4acb38e60fd303ffeca6",
+        "source_fact:v1:3ddb10f158f657914a5f1955febca6c16bf95ab9e7df2ab4fa6bf72b39dc7c0d",
+        "source_fact:v1:6c668c330cd4f10a390327afc7be03d7415d4530fbe9213a5d5522ad094f90d0",
+        "source_fact:v1:71fbe71732e18331482cb7e756d3828abeaadf4ecf7b88b992147fc0645954f7",
+        "source_fact:v1:865c3a11cc71d04c6dd595eaa234e07597967e35e4b8e765110db6e81f47515e",
+        "source_fact:v1:997e39d6c33db224951d9aa23696686f2a5f68da6573f8f04684e60ec8fb0466",
+        "source_fact:v1:b980a22e6136cd4a0b323256a86f4843bc1b2bcb26fd244a31cc2af3c6137a47"
+      ],
+      "source_published_kst": "2026-10-06T10:11+09:00",
+      "title": "세아베스틸, 로봇 감속기용 특수강 국산화…양산 본격화"
     },
     "source_fact:99019f1adc6518f8a289f2e1": {
       "first_seen_kst": "2026-10-07T00:09:35+09:00",
@@ -112322,6 +112934,29 @@
       ],
       "source_published_kst": "2026-10-06T18:02+09:00",
       "title": "포스코퓨처엠, 삼성SDI에 양극재 6조 공급"
+    },
+    "source_fact:b47fd4379eaa000ff1531161": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632701",
+      "source": "이투데이",
+      "source_body_digest": "6d235467da505ac661ae2787afd488fb6cbd47634350561d236f2acec80289c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e6aa058722d13a4c91f9691ebccab7569e15cbb5d0e436e82e8ba726e52b6967",
+      "source_fact_keys": [
+        "source_fact:v1:02eb1dee85f771d7a4cc8cb19425b6ab4c2cb1a2591b4acb38e60fd303ffeca6",
+        "source_fact:v1:3ddb10f158f657914a5f1955febca6c16bf95ab9e7df2ab4fa6bf72b39dc7c0d",
+        "source_fact:v1:6c668c330cd4f10a390327afc7be03d7415d4530fbe9213a5d5522ad094f90d0",
+        "source_fact:v1:71fbe71732e18331482cb7e756d3828abeaadf4ecf7b88b992147fc0645954f7",
+        "source_fact:v1:865c3a11cc71d04c6dd595eaa234e07597967e35e4b8e765110db6e81f47515e",
+        "source_fact:v1:997e39d6c33db224951d9aa23696686f2a5f68da6573f8f04684e60ec8fb0466",
+        "source_fact:v1:b980a22e6136cd4a0b323256a86f4843bc1b2bcb26fd244a31cc2af3c6137a47"
+      ],
+      "source_published_kst": "2026-10-06T10:11+09:00",
+      "title": "세아베스틸, 로봇 감속기용 특수강 국산화…양산 본격화"
     },
     "source_fact:b4916f7f42a1805a6c5ab8b5": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
@@ -119086,6 +119721,29 @@
       "source_published_kst": "2026-10-06T05:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
     },
+    "source_fact:d3a2a044993178b9c3afa19a": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632701",
+      "source": "이투데이",
+      "source_body_digest": "6d235467da505ac661ae2787afd488fb6cbd47634350561d236f2acec80289c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e6aa058722d13a4c91f9691ebccab7569e15cbb5d0e436e82e8ba726e52b6967",
+      "source_fact_keys": [
+        "source_fact:v1:02eb1dee85f771d7a4cc8cb19425b6ab4c2cb1a2591b4acb38e60fd303ffeca6",
+        "source_fact:v1:3ddb10f158f657914a5f1955febca6c16bf95ab9e7df2ab4fa6bf72b39dc7c0d",
+        "source_fact:v1:6c668c330cd4f10a390327afc7be03d7415d4530fbe9213a5d5522ad094f90d0",
+        "source_fact:v1:71fbe71732e18331482cb7e756d3828abeaadf4ecf7b88b992147fc0645954f7",
+        "source_fact:v1:865c3a11cc71d04c6dd595eaa234e07597967e35e4b8e765110db6e81f47515e",
+        "source_fact:v1:997e39d6c33db224951d9aa23696686f2a5f68da6573f8f04684e60ec8fb0466",
+        "source_fact:v1:b980a22e6136cd4a0b323256a86f4843bc1b2bcb26fd244a31cc2af3c6137a47"
+      ],
+      "source_published_kst": "2026-10-06T10:11+09:00",
+      "title": "세아베스틸, 로봇 감속기용 특수강 국산화…양산 본격화"
+    },
     "source_fact:d3eec9d0b134c405af600be9": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
@@ -119399,6 +120057,27 @@
       ],
       "source_published_kst": "2026-10-06T17:03+09:00",
       "title": "포스코퓨처엠, 삼성SDI와 LFP 6조원 규모 공급계약 체결…"
+    },
+    "source_fact:d59218656a629440474d1816": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.hankyung.com/article/202610066445i",
+      "source": "한국경제",
+      "source_body_digest": "501b820d520a514593dc0a63b192e2095285fdfb7539f7daee2326480166ca52",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2dacc5529aa93bfdfe059faa907dd8be8a40759132e643d1a3c60b1e6bd7eee3",
+      "source_fact_keys": [
+        "source_fact:v1:2918f139fbb96accac349de23f838234b61315846ef8252d5c91274144caf7f2",
+        "source_fact:v1:4c23088187c36c8d868e657a7893419f393c98411b27e1cf482b917e7e4ebe84",
+        "source_fact:v1:65c7c740bb4c011df9d476b6d9b03618b601537d2c083f2d4a99b76273797d0d",
+        "source_fact:v1:697dffe5455f4a71326987dfd76afb034f73019204c56f5c73b85b81abf99260",
+        "source_fact:v1:c88aec2460a7c86bd73f9c81f1787865a3da6e5addcb66d61ac28b984ae17dd8"
+      ],
+      "source_published_kst": "2026-10-06T17:48+09:00",
+      "title": "알테오젠, 알테오젠바이오로직스 흡수합병…사업 역량 통합"
     },
     "source_fact:d5a317931980d45cbe279cba": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
@@ -123066,6 +123745,27 @@
       "source_published_kst": "2026-10-06T18:00+09:00",
       "title": "박스피 갇힌 코스피, 11월 연말 랠리 올까?"
     },
+    "source_fact:e3aa7ff4127314797e87afcf": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.hankyung.com/article/202610066445i",
+      "source": "한국경제",
+      "source_body_digest": "501b820d520a514593dc0a63b192e2095285fdfb7539f7daee2326480166ca52",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2dacc5529aa93bfdfe059faa907dd8be8a40759132e643d1a3c60b1e6bd7eee3",
+      "source_fact_keys": [
+        "source_fact:v1:2918f139fbb96accac349de23f838234b61315846ef8252d5c91274144caf7f2",
+        "source_fact:v1:4c23088187c36c8d868e657a7893419f393c98411b27e1cf482b917e7e4ebe84",
+        "source_fact:v1:65c7c740bb4c011df9d476b6d9b03618b601537d2c083f2d4a99b76273797d0d",
+        "source_fact:v1:697dffe5455f4a71326987dfd76afb034f73019204c56f5c73b85b81abf99260",
+        "source_fact:v1:c88aec2460a7c86bd73f9c81f1787865a3da6e5addcb66d61ac28b984ae17dd8"
+      ],
+      "source_published_kst": "2026-10-06T17:48+09:00",
+      "title": "알테오젠, 알테오젠바이오로직스 흡수합병…사업 역량 통합"
+    },
     "source_fact:e3c39b009457623ea9ec38f5": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
       "lanes": {
@@ -123174,6 +123874,23 @@
       ],
       "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
+    },
+    "source_fact:e4a4a195ccb73d759ef73fde": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.hankyung.com/article/202610066004P",
+      "source": "한국경제",
+      "source_body_digest": "9dd399fcbc5785dfc52750d400208fe9f62f307f9dfa3a280f9ddd6e024b88d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:87f5b48cfad122f70094ae939dde61b3f7e822087c55a41ed5a7c8f3c854f52a",
+      "source_fact_keys": [
+        "source_fact:v1:b0bf17004ea87e95f0a0d20f1990cf3247adfeedf492838935998700b7e7cafa"
+      ],
+      "source_published_kst": "2026-10-06T16:01+09:00",
+      "title": "신세계그룹, 美 워너브라더스 인수에 전격 투자"
     },
     "source_fact:e4bcf3baf72481ff25805fbf": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -126994,6 +127711,24 @@
       "source_published_kst": "2026-10-05T20:34+09:00",
       "title": "해로우 헬스, 티르바야 인수 완료..선지급 3000만달러"
     },
+    "source_fact:f685a21dc7ddbd6995d4fb7a": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261003_0003813739",
+      "source": "뉴시스",
+      "source_body_digest": "4127a0782b550bab98fd6d179b0f9923cfb61b032de82d4c9f5391cd3d3388d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8dfd965e6dccbdf6d2097cba8bca0986c77e63792a68b979543e44076987f706",
+      "source_fact_keys": [
+        "source_fact:v1:790689add28bafdddbc6335c777d67ce1c6a8f623c954ebbb78e908d64510e98",
+        "source_fact:v1:ab06a0b93c686a4e672b7510f564fa4cc15454e1e0ff9f2e5e386533b5b0460d"
+      ],
+      "source_published_kst": "2026-10-06T09:37+09:00",
+      "title": "[제주馬이야기] 국난마다 전마 보탠 제주…김만일에서 레클리스까지"
+    },
     "source_fact:f6879b792281d57e65ae1428": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
       "lanes": {
@@ -129784,6 +130519,27 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T16:00+09:00",
       "title": "오리지널 철수·위탁 회수 틈새 노린다…유유제약, 시나칼세트 '개량 제제' 개발 착수"
+    },
+    "title:0664bfa79688c327f9835b06": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.hankyung.com/article/202610066445i",
+      "source": "한국경제",
+      "source_body_digest": "501b820d520a514593dc0a63b192e2095285fdfb7539f7daee2326480166ca52",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2dacc5529aa93bfdfe059faa907dd8be8a40759132e643d1a3c60b1e6bd7eee3",
+      "source_fact_keys": [
+        "source_fact:v1:2918f139fbb96accac349de23f838234b61315846ef8252d5c91274144caf7f2",
+        "source_fact:v1:4c23088187c36c8d868e657a7893419f393c98411b27e1cf482b917e7e4ebe84",
+        "source_fact:v1:65c7c740bb4c011df9d476b6d9b03618b601537d2c083f2d4a99b76273797d0d",
+        "source_fact:v1:697dffe5455f4a71326987dfd76afb034f73019204c56f5c73b85b81abf99260",
+        "source_fact:v1:c88aec2460a7c86bd73f9c81f1787865a3da6e5addcb66d61ac28b984ae17dd8"
+      ],
+      "source_published_kst": "2026-10-06T17:48+09:00",
+      "title": "알테오젠, 알테오젠바이오로직스 흡수합병…사업 역량 통합"
     },
     "title:0670a4d48a73da81e5550609": {
       "first_seen_kst": "2026-10-05T09:59:51+09:00",
@@ -137380,6 +138136,21 @@
       "source_published_kst": "2026-10-04T14:16+09:00",
       "title": "LNG '알래스카'에 공들이는 트럼프…텃밭은 흔들 | 연합뉴스"
     },
+    "title:4b06a3975394397424b0a793": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632669",
+      "source": "이투데이",
+      "source_body_digest": "c6816fce3ef2188e8e5c63af74f70a06ab1bd6f0ec60407f6b4f854d8780390b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T09:39+09:00",
+      "title": "아침 버거 잘 팔리네…버거킹, 모닝 매장 전국 190곳으로 확대"
+    },
     "title:4b2b453e11dfb0819cc0e00c": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
       "lanes": {
@@ -140964,6 +141735,24 @@
       "source": "전자신문",
       "title": "[ET특징주] '캉골' 에스제이그룹, 20억원 규모 자사주 취득… 주가 上"
     },
+    "title:6e4c32e1c62088e8e56a4002": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261003_0003813739",
+      "source": "뉴시스",
+      "source_body_digest": "4127a0782b550bab98fd6d179b0f9923cfb61b032de82d4c9f5391cd3d3388d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8dfd965e6dccbdf6d2097cba8bca0986c77e63792a68b979543e44076987f706",
+      "source_fact_keys": [
+        "source_fact:v1:790689add28bafdddbc6335c777d67ce1c6a8f623c954ebbb78e908d64510e98",
+        "source_fact:v1:ab06a0b93c686a4e672b7510f564fa4cc15454e1e0ff9f2e5e386533b5b0460d"
+      ],
+      "source_published_kst": "2026-10-06T09:37+09:00",
+      "title": "[제주馬이야기] 국난마다 전마 보탠 제주…김만일에서 레클리스까지"
+    },
     "title:6e66c87cc7dede4232798458": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
       "lanes": {
@@ -142549,6 +143338,23 @@
       "source_published_kst": "2026-10-06T09:54+09:00",
       "title": "올해 청약 경쟁률 작년 절반으로 '뚝'…서울·3기신도시는 100대1"
     },
+    "title:7acb837354b53a6e42926b69": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://biz.chosun.com/international/international_economy/2026/10/07/GGRJD3NNFZC55ONJORPDPV5DR4/",
+      "source": "조선비즈",
+      "source_body_digest": "35a61bad9b9e6bb0c18d03e3cab60e2591d28db040a6068f91783f2634247e07",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a689ee9068f0206bb00a4118b211c4e56a7e646c31a6cad110081c093eead0b",
+      "source_fact_keys": [
+        "source_fact:v1:afec40359a79eacce5e8fe163cba1e3cd47dcff207d76c7fd76f16a7c3607ffc"
+      ],
+      "source_published_kst": "2026-10-07T00:06+09:00",
+      "title": "美 8월 무역적자 1056억원…작년 3월 이후 최대"
+    },
     "title:7b3ae65051a5d08e321aceb9": {
       "first_seen_kst": "2026-10-02T17:56:05+09:00",
       "lanes": {
@@ -142627,6 +143433,23 @@
       "link": "https://www.mk.co.kr/news/politics/12166478",
       "source": "매일경제",
       "title": "정무위, 김용범 '레버리지 ETF' 국감증인 채택 무산"
+    },
+    "title:7bfece770bdf5b814833e835": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.hankyung.com/article/202610066622i",
+      "source": "한국경제",
+      "source_body_digest": "917fdfc4f321115526a3cf608943ff27bdc85443f945865c0aae0d718a41e3f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a1a9f8c27f4864a8e24910139f6853e7096380a2f9bd849876078a26de65a8ce",
+      "source_fact_keys": [
+        "source_fact:v1:224ed1689f5eb56a5a5b83e1c92431cd10ffca6f989c46a3a27eda8df09ecc2d"
+      ],
+      "source_published_kst": "2026-10-06T20:59+09:00",
+      "title": "AI가 부의 지형 바꿨다…세계 500대 부자 미국 IT에 집중"
     },
     "title:7c279e78009ef708a0ed36d4": {
       "first_seen_kst": "2026-10-01T21:28:22+09:00",
@@ -143479,6 +144302,29 @@
       ],
       "source_published_kst": "2026-10-06T10:42+09:00",
       "title": "에코프로비엠, 삼성SDI와 맞손…전고체 배터리 공동 개발"
+    },
+    "title:84f286c4f34761d41b10e4d6": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632701",
+      "source": "이투데이",
+      "source_body_digest": "6d235467da505ac661ae2787afd488fb6cbd47634350561d236f2acec80289c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e6aa058722d13a4c91f9691ebccab7569e15cbb5d0e436e82e8ba726e52b6967",
+      "source_fact_keys": [
+        "source_fact:v1:02eb1dee85f771d7a4cc8cb19425b6ab4c2cb1a2591b4acb38e60fd303ffeca6",
+        "source_fact:v1:3ddb10f158f657914a5f1955febca6c16bf95ab9e7df2ab4fa6bf72b39dc7c0d",
+        "source_fact:v1:6c668c330cd4f10a390327afc7be03d7415d4530fbe9213a5d5522ad094f90d0",
+        "source_fact:v1:71fbe71732e18331482cb7e756d3828abeaadf4ecf7b88b992147fc0645954f7",
+        "source_fact:v1:865c3a11cc71d04c6dd595eaa234e07597967e35e4b8e765110db6e81f47515e",
+        "source_fact:v1:997e39d6c33db224951d9aa23696686f2a5f68da6573f8f04684e60ec8fb0466",
+        "source_fact:v1:b980a22e6136cd4a0b323256a86f4843bc1b2bcb26fd244a31cc2af3c6137a47"
+      ],
+      "source_published_kst": "2026-10-06T10:11+09:00",
+      "title": "세아베스틸, 로봇 감속기용 특수강 국산화…양산 본격화"
     },
     "title:84f66621e2fbbed0059c1bdb": {
       "first_seen_kst": "2026-10-01T19:16:32+09:00",
@@ -147453,6 +148299,23 @@
       "link": "https://www.newsis.com/view/NISX20260918_0003795800",
       "source": "뉴시스",
       "title": "반도체가 효자…평택 8월 수출 128억5천만불 '126.5%↑'"
+    },
+    "title:aa4d9ad5df9a82286757b3c2": {
+      "first_seen_kst": "2026-10-07T01:07:29+09:00",
+      "lanes": {
+        "live": "2026-10-07T01:07:29+09:00"
+      },
+      "last_seen_kst": "2026-10-07T01:07:29+09:00",
+      "link": "https://www.hankyung.com/article/202610066004P",
+      "source": "한국경제",
+      "source_body_digest": "9dd399fcbc5785dfc52750d400208fe9f62f307f9dfa3a280f9ddd6e024b88d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:87f5b48cfad122f70094ae939dde61b3f7e822087c55a41ed5a7c8f3c854f52a",
+      "source_fact_keys": [
+        "source_fact:v1:b0bf17004ea87e95f0a0d20f1990cf3247adfeedf492838935998700b7e7cafa"
+      ],
+      "source_published_kst": "2026-10-06T16:01+09:00",
+      "title": "신세계그룹, 美 워너브라더스 인수에 전격 투자"
     },
     "title:aa67673717c069989eee9995": {
       "first_seen_kst": "2026-10-05T17:30:42+09:00",
@@ -156586,5 +157449,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-07T00:54:50+09:00"
+  "updated_at_kst": "2026-10-07T01:07:29+09:00"
 }
