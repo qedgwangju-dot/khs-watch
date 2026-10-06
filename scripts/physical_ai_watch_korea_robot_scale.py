@@ -454,7 +454,7 @@ def _physical_ai_memory_stage(text: str, source: str = '') -> str:
         return 'robot_volume_contract'
     if PHYS_MEM_ROBOT_OEM.search(text) and PHYS_MEM_PRODUCTION.search(text):
         return 'mass_production_or_shipment'
-    if PHYS_MEM_ROBOT_OEM.search(text) and PHYS_MEM_DESIGN_WIN.search(text) and PHYS_MEM_EXECUTED.search(text):
+    if PHYS_MEM_ROBOT_OEM.search(text) and PHYS_MEM_DESIGN_WIN.search(text):
         return 'robot_oem_design_win'
     if PHYS_MEM_ROBOT_OEM.search(text) and PHYS_MEM_QUAL.search(text) and PHYS_MEM_EXECUTED.search(text):
         return 'robot_customer_qualification'
