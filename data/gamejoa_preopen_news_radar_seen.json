@@ -2499,24 +2499,20 @@
     "event:7c6939491963b47e90e9bad7": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
       "lanes": {
-        "live": "2026-10-06T08:36:05+09:00"
+        "live": "2026-10-06T09:00:21+09:00"
       },
-      "last_seen_kst": "2026-10-06T08:36:05+09:00",
-      "link": "https://www.newsis.com/view/NISX20261006_0003814792",
-      "source": "뉴시스",
-      "source_body_digest": "5da58469752a21d5c31a8b20c77646ce4ef547ba9dfeb43ff535f3a78ea730ec",
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006026000008",
+      "source": "연합뉴스",
+      "source_body_digest": "a2d9fde024816e515ac24eb13523f827617f932ab9ab9d73bb48483f53e5ebcd",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:31fccbfc431c08079a18afc50cb626a145d4779ca7196d13a55bf1fc0593b9a9",
+      "source_fact_identity": "source_facts:v1:6e3dcfd5249c8d7d83d94263249ae7db8262bc6c602da0ba46c55b0d3603f4ff",
       "source_fact_keys": [
-        "source_fact:v1:0332def90a5f8a6140fc3078a87ce884cfad987382fce1de844f9a760efcb01c",
-        "source_fact:v1:2f580e3142dfb64875f8ac7822688555459aa19fe201414e7f883a9be7376d8a",
-        "source_fact:v1:4e03a9f086180d058c1de399a002a80b731583df18bb7a3fb082bd968a1ebe56",
-        "source_fact:v1:541bbc8b8cc2599e1c4b9e0f85f394e3c052be988905b77dba79b4c278110db4",
-        "source_fact:v1:b09cebdb219696c863aac8d8c75454814fb3843709d0591e2d7cd5a4cc525387",
-        "source_fact:v1:d3e0f633886b7c0a0ee63a7198b88678902c5929b8d36774ad3675d2b579ca78"
+        "source_fact:v1:69e4722c27a0480fb165dc710467b95300e926a8e874b708a01b9017beecbcbe",
+        "source_fact:v1:f59da17516f2408de0d1ec7d46f75b4bb5c3d01afa3366edb75065f235175d1e"
       ],
-      "source_published_kst": "2026-10-06T08:26+09:00",
-      "title": "대신證 \"삼성바이오, 3분기 실적 컨센서스 부합…4분기 성장폭 확대\""
+      "source_published_kst": "2026-10-06T08:29+09:00",
+      "title": "다올증권 \"삼성바이오, 유상증자에 목표가↓…성장동력은 유효\" | 연합뉴스"
     },
     "event:7c70eaa8c1320c52347eb0be": {
       "first_seen_kst": "2026-10-05T14:04:17+09:00",
@@ -2679,6 +2675,25 @@
       "link": "https://www.mt.co.kr/world/2026/09/24/2026092413520770400",
       "source": "머니투데이",
       "title": "\"중국산 메모리 쏟아진다\"...'빅쇼트' 마이클 버리, AI·반도체 공매도 확대"
+    },
+    "event:84ced397454ec6b7d12dd0de": {
+      "event_alias_evidence_message_id": 2235,
+      "event_alias_evidence_run_id": 37309452615,
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169777",
+      "source": "매일경제",
+      "source_body_digest": "9ca695e4c51874ea58c4d694731de45e3abe9ad2ebcf3b4d0382a5d81fe16032",
+      "source_event_identity": "source_event:v2:merger_agreement:a4008cb2d7cb560d837a4bf6b3d30c4648c70959b7469a6db86ee29bcd16e519",
+      "source_fact_identity": "source_facts:v1:54b800b8d0f3ba8e577b90bcda55319e5c792db1f5f13ffb668fe7e69b136ac3",
+      "source_fact_keys": [
+        "source_fact:v1:1077604efe10ea3eda65c30b17657dca0c353aa85ecfcfacbeb0997c11e4d3d5"
+      ],
+      "source_published_kst": "2026-10-05T20:40+09:00",
+      "title": "C.H.로빈슨, RXO 58억달러 인수 합의 후 재무 부담·주식 희석 우려 부각"
     },
     "event:853a54f1c3d8d6dcf1e07baf": {
       "first_seen_kst": "2026-09-18T06:33:53+09:00",
@@ -2867,6 +2882,29 @@
       "link": "https://www.etoday.co.kr/news/view/2632164",
       "source": "이투데이",
       "title": "[베스트&워스트] 씨싸이트 75% 급등…‘SK하이닉스 수주 확대 기대’ 윈팩도 ↑"
+    },
+    "event:9173f9c9d81c62abc1a79279": {
+      "event_alias_evidence_message_id": 2281,
+      "event_alias_evidence_run_id": 37386680752,
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632539",
+      "source": "이투데이",
+      "source_body_digest": "8c991b54bf21cf21ad70abe1e92d1ba97fdfcc8c60827bcd293383dec311a7d5",
+      "source_event_identity": "source_event:v2:broker_earnings:f4e6bae1d443a1ee172bfd4e7db47bc1bb8b149c55f3ae3eaf9fe981f21ff9d6",
+      "source_fact_identity": "source_facts:v1:76e404a8dca3bb40adb91d8f28048b80a353340b2481ff7e22b792bfcf5bea11",
+      "source_fact_keys": [
+        "source_fact:v1:41c8c4478e415c6be48d313a55f448cb69930dcc2db8e8491232a0c22bd585c4",
+        "source_fact:v1:53c9d8c8bc7127431dc145d02f13a9eb0151688173b3d0c55d581d8d7c9f1514",
+        "source_fact:v1:5efa4155243f43778ec9999fa28dc216e2a851055838366d1cd6d5dc7820c4d5",
+        "source_fact:v1:9283ca73728ebd53357827958bee721bc8fe439d0e3e7e32226b45223902be33",
+        "source_fact:v1:b8ba89ba8114c8d83205a7bb54810fc4ab2ad8cee24b641709fbcac1ebafb6a7"
+      ],
+      "source_published_kst": "2026-10-06T08:03+09:00",
+      "title": "대신證, “삼성바이오로직스, 3분기 실적 선방⋯4분기엔 반등 전망”"
     },
     "event:917532432d554a093970475d": {
       "first_seen_kst": "2026-10-04T19:59:24+09:00",
@@ -3074,6 +3112,25 @@
       "link": "https://www.newsis.com/view/NISX20261001_0003811439",
       "source": "뉴시스",
       "title": "\"로봇 한 대에 메모리 수백 GB\"…삼전·닉스, 로봇서 새 시장 바라본다"
+    },
+    "event:9a1d11972183f1572a5a0950": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168848",
+      "source": "매일경제",
+      "source_body_digest": "5bdf95ccf28cf4e852cc10d4d3650bd1234a0b14f8de485707a04946c02ccd79",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:35201d47ba75606f3ed0d7d9790a38a5c1dec0dcc3c32eb62c25975718204af4",
+      "source_fact_keys": [
+        "source_fact:v1:0594f893b9ebdb209b9bb446ae3155c7ae607940a8b9aa8d4da666a0c64c6271",
+        "source_fact:v1:0a89425abf741b7cf99b352bf50603ec4c08d4e9e072622e054d268b7b7a3076",
+        "source_fact:v1:f73c882e46d498445b86f0161ba059dc437d79b7bbca9929864e7501fe8a492d"
+      ],
+      "source_published_kst": "2026-10-06T08:33+09:00",
+      "title": "“광고·커머스 매출 성장 둔화, AI 비용 증가”…대신증권, NAVER 목표가↓"
     },
     "event:9a85a5a23d0ac5ed0356556d": {
       "first_seen_kst": "2026-09-18T07:13:57+09:00",
@@ -3360,19 +3417,19 @@
     "event:a89c3b7422e839c615213a10": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
-        "live": "2026-10-06T08:43:45+09:00"
+        "live": "2026-10-06T09:00:21+09:00"
       },
-      "last_seen_kst": "2026-10-06T08:43:45+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261006026800003",
-      "source": "연합뉴스",
-      "source_body_digest": "6583a79a66a41c5bd0c17e598b99e00523bac65c8aacef1938ca17df91c43084",
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632580",
+      "source": "이투데이",
+      "source_body_digest": "d195b3cc54e2af3f1a2431329a4c1d85a49cab49b718d197b4f6053a4b24d7e1",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:efb8ee35861bc421ef09a71cae38d46d80e7ea0f1ea4f976d03852c92e13b6ee",
+      "source_fact_identity": "source_facts:v1:e8606a148cd3dc3e5a35681a18bb3e93e5ffd8d52749e6c3cdc94105da222a84",
       "source_fact_keys": [
-        "source_fact:v1:9b0a580df3402258dd2799986e5d515296811c6ed88f4b62c63e44a3e394a97c"
+        "source_fact:v1:3c5ee1ab45de27b03db28bfd319392f9e0ce2c0b53ae0c6d218489a8c3044c26"
       ],
-      "source_published_kst": "2026-10-06T08:37+09:00",
-      "title": "한미반도체, 삼성전기서 245억 규모 장비 수주…\"삼성그룹 환영\" | 연합뉴스"
+      "source_published_kst": "2026-10-06T08:46+09:00",
+      "title": "한미반도체, 삼성전기서 245억원 규모 MSVP 수주…“삼성그룹 환영”"
     },
     "event:a8b73dc588b357eb243b3506": {
       "first_seen_kst": "2026-10-02T19:50:17+09:00",
@@ -5132,7 +5189,7 @@
       "link": "https://stock.mk.co.kr/news/view/1169803",
       "source": "매일경제",
       "source_body_digest": "23e19da2f1acc81142a06b610af265169bdab9b02876b40b1e28b055360d352d",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:merger_agreement:a4008cb2d7cb560d837a4bf6b3d30c4648c70959b7469a6db86ee29bcd16e519",
       "source_fact_identity": "source_facts:v1:87980f71b02dedae9b677b5b16147cfd03168b8ac52dc7a876ba4cd464923bf6",
       "source_fact_keys": [
         "source_fact:v1:4e16caa48be6424ad6a90f5a284144e704eec00e8ae3926d7e258771f8943d33",
@@ -5980,6 +6037,26 @@
       ],
       "source_published_kst": "2026-10-05T08:08+09:00",
       "title": "한반도 감시부터 우주의약품 실험까지…K-우주영토 넓힌다[누리호 5차 下]"
+    },
+    "fact:1b1b7db2ad5c3891394ad35f": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814784",
+      "source": "뉴시스",
+      "source_body_digest": "9abbf516b4531e4b968cc48ecee2a332215dbf01d2864d32c62d95474c4cb19f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e0b5e402a4f703314e372086f9447c427ab3a04590a2fdc73172e6f149d6c904",
+      "source_fact_keys": [
+        "source_fact:v1:5c044d9bf29f6ff32d943c5abadee23058cc3e4755723f331c15e5d39617f99b",
+        "source_fact:v1:7ca4b9150ff9055dc9066add86918ca005d43310373ca56e53680253c059d89e",
+        "source_fact:v1:7ec810c7924f129c78f2e0add555f7a07025618b8a264a7ceb3e0ad183ed00c2",
+        "source_fact:v1:a74a4ca2f2e2c267db719bf9875994bb963f89a7b2689d2dbc5e493e1ac577d1"
+      ],
+      "source_published_kst": "2026-10-06T08:26+09:00",
+      "title": "제이엘케이 \"2대 주주 KB운용 지분 5.09→6.56% 확대\""
     },
     "fact:1b5fa4e604cd5b57041e3f5d": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
@@ -7371,6 +7448,23 @@
       "source_published_kst": "2026-10-05T21:08+09:00",
       "title": "포럼 마켓츠, AI 합작사 설립..2027년 매출 최대 1억7500만달러"
     },
+    "fact:664877932747019a603d1760": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632580",
+      "source": "이투데이",
+      "source_body_digest": "d195b3cc54e2af3f1a2431329a4c1d85a49cab49b718d197b4f6053a4b24d7e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8606a148cd3dc3e5a35681a18bb3e93e5ffd8d52749e6c3cdc94105da222a84",
+      "source_fact_keys": [
+        "source_fact:v1:3c5ee1ab45de27b03db28bfd319392f9e0ce2c0b53ae0c6d218489a8c3044c26"
+      ],
+      "source_published_kst": "2026-10-06T08:46+09:00",
+      "title": "한미반도체, 삼성전기서 245억원 규모 MSVP 수주…“삼성그룹 환영”"
+    },
     "fact:66bc9d68dbbf6a94e86053c1": {
       "first_seen_kst": "2026-10-06T00:11:03+09:00",
       "lanes": {
@@ -7705,7 +7799,7 @@
       "link": "https://stock.mk.co.kr/news/view/1169777",
       "source": "매일경제",
       "source_body_digest": "9ca695e4c51874ea58c4d694731de45e3abe9ad2ebcf3b4d0382a5d81fe16032",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:merger_agreement:a4008cb2d7cb560d837a4bf6b3d30c4648c70959b7469a6db86ee29bcd16e519",
       "source_fact_identity": "source_facts:v1:54b800b8d0f3ba8e577b90bcda55319e5c792db1f5f13ffb668fe7e69b136ac3",
       "source_fact_keys": [
         "source_fact:v1:1077604efe10ea3eda65c30b17657dca0c353aa85ecfcfacbeb0997c11e4d3d5"
@@ -9105,7 +9199,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003814792",
       "source": "뉴시스",
       "source_body_digest": "5da58469752a21d5c31a8b20c77646ce4ef547ba9dfeb43ff535f3a78ea730ec",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:broker_earnings:f4e6bae1d443a1ee172bfd4e7db47bc1bb8b149c55f3ae3eaf9fe981f21ff9d6",
       "source_fact_identity": "source_facts:v1:31fccbfc431c08079a18afc50cb626a145d4779ca7196d13a55bf1fc0593b9a9",
       "source_fact_keys": [
         "source_fact:v1:0332def90a5f8a6140fc3078a87ce884cfad987382fce1de844f9a760efcb01c",
@@ -9201,7 +9295,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632539",
       "source": "이투데이",
       "source_body_digest": "8c991b54bf21cf21ad70abe1e92d1ba97fdfcc8c60827bcd293383dec311a7d5",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:broker_earnings:f4e6bae1d443a1ee172bfd4e7db47bc1bb8b149c55f3ae3eaf9fe981f21ff9d6",
       "source_fact_identity": "source_facts:v1:76e404a8dca3bb40adb91d8f28048b80a353340b2481ff7e22b792bfcf5bea11",
       "source_fact_keys": [
         "source_fact:v1:41c8c4478e415c6be48d313a55f448cb69930dcc2db8e8491232a0c22bd585c4",
@@ -9363,6 +9457,24 @@
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "어드밴스드 드레니쥐 시스, 스톰트랩 5억3000만 달러 인수..4분기 완료 예정"
     },
+    "fact:cff662aeedacd489c935c092": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006026000008",
+      "source": "연합뉴스",
+      "source_body_digest": "a2d9fde024816e515ac24eb13523f827617f932ab9ab9d73bb48483f53e5ebcd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e3dcfd5249c8d7d83d94263249ae7db8262bc6c602da0ba46c55b0d3603f4ff",
+      "source_fact_keys": [
+        "source_fact:v1:69e4722c27a0480fb165dc710467b95300e926a8e874b708a01b9017beecbcbe",
+        "source_fact:v1:f59da17516f2408de0d1ec7d46f75b4bb5c3d01afa3366edb75065f235175d1e"
+      ],
+      "source_published_kst": "2026-10-06T08:29+09:00",
+      "title": "다올증권 \"삼성바이오, 유상증자에 목표가↓…성장동력은 유효\" | 연합뉴스"
+    },
     "fact:d0387a94115635508d5d4ad0": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -9380,6 +9492,43 @@
       ],
       "source_published_kst": "2026-10-04T23:56+09:00",
       "title": "OPEC+, 11월 원유 생산 목표 유지 합의"
+    },
+    "fact:d13c536d069f0ce22349d608": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814846",
+      "source": "뉴시스",
+      "source_body_digest": "8424bbb54b542612a35bbbeb9b71e07702128097037033258bdbabc02ad6be56",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4df5c3f9b2244856fe42fb726a781f742d519b6b4e57ff9dfe49b9771c5fde6c",
+      "source_fact_keys": [
+        "source_fact:v1:22204b6408e111fb1f8a00587979c9a003fe769b27354437dbeeebbb549c7a9d",
+        "source_fact:v1:f5f55b7028340e3fd80b93612972874452d629efbfd290a9bca27c6c70a47f51"
+      ],
+      "source_published_kst": "2026-10-06T08:48+09:00",
+      "title": "현대글로비스, SMR 추진 車운반선 상용화 시동…\"美 물류사와 항로 공동 검토\""
+    },
+    "fact:d18739e67be476e45b11a48c": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168848",
+      "source": "매일경제",
+      "source_body_digest": "5bdf95ccf28cf4e852cc10d4d3650bd1234a0b14f8de485707a04946c02ccd79",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:35201d47ba75606f3ed0d7d9790a38a5c1dec0dcc3c32eb62c25975718204af4",
+      "source_fact_keys": [
+        "source_fact:v1:0594f893b9ebdb209b9bb446ae3155c7ae607940a8b9aa8d4da666a0c64c6271",
+        "source_fact:v1:0a89425abf741b7cf99b352bf50603ec4c08d4e9e072622e054d268b7b7a3076",
+        "source_fact:v1:f73c882e46d498445b86f0161ba059dc437d79b7bbca9929864e7501fe8a492d"
+      ],
+      "source_published_kst": "2026-10-06T08:33+09:00",
+      "title": "“광고·커머스 매출 성장 둔화, AI 비용 증가”…대신증권, NAVER 목표가↓"
     },
     "fact:d2392440ec3837ef2f90e591": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
@@ -10044,6 +10193,24 @@
       "source_published_kst": "2026-10-05T11:20+09:00",
       "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
     },
+    "fact:ff724636bf7294a3aa3287a2": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814704",
+      "source": "뉴시스",
+      "source_body_digest": "9bbcecc6cc1c3e5df944323a38d687b59033eff70599fa6b98aec7a3af7b0c0b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6251141b5bf986e74724dbef1cb97f6e846a09ead5a49905cad9a283bfa496cc",
+      "source_fact_keys": [
+        "source_fact:v1:04ae596cafe94c5d52296df134fb6ae93bad05bd0e05c684c0d55f2149ed18f3",
+        "source_fact:v1:f3faca37d91ffd3f2b304af7319d1db5e665066efed3f2fd3b2619f27a9e26f9"
+      ],
+      "source_published_kst": "2026-10-06T08:40+09:00",
+      "title": "그록 주주들, 엔비디아 '우회 인수'에 소송…\"껍데기 회사 남겨\""
+    },
     "fact:ffe00e1c72c0ec5f288b952c": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
       "lanes": {
@@ -10256,6 +10423,25 @@
       ],
       "source_published_kst": "2026-10-06T08:37+09:00",
       "title": "한미반도체, 삼성전기서 245억 규모 장비 수주…\"삼성그룹 환영\" | 연합뉴스"
+    },
+    "link:031dbb2fb3e4c8ed17047cec": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168848",
+      "source": "매일경제",
+      "source_body_digest": "5bdf95ccf28cf4e852cc10d4d3650bd1234a0b14f8de485707a04946c02ccd79",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:35201d47ba75606f3ed0d7d9790a38a5c1dec0dcc3c32eb62c25975718204af4",
+      "source_fact_keys": [
+        "source_fact:v1:0594f893b9ebdb209b9bb446ae3155c7ae607940a8b9aa8d4da666a0c64c6271",
+        "source_fact:v1:0a89425abf741b7cf99b352bf50603ec4c08d4e9e072622e054d268b7b7a3076",
+        "source_fact:v1:f73c882e46d498445b86f0161ba059dc437d79b7bbca9929864e7501fe8a492d"
+      ],
+      "source_published_kst": "2026-10-06T08:33+09:00",
+      "title": "“광고·커머스 매출 성장 둔화, AI 비용 증가”…대신증권, NAVER 목표가↓"
     },
     "link:037bcb8e7a8a073d7c466dd1": {
       "first_seen_kst": "2026-10-05T10:24:46+09:00",
@@ -11589,7 +11775,7 @@
       "link": "https://stock.mk.co.kr/news/view/1169799",
       "source": "매일경제",
       "source_body_digest": "4fa1c66f0afdbd1d33a8e514bca764ffec2545b48596537c7b338b4093bd853f",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:merger_agreement:a4008cb2d7cb560d837a4bf6b3d30c4648c70959b7469a6db86ee29bcd16e519",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-05T21:20+09:00",
@@ -13953,7 +14139,7 @@
       "link": "https://stock.mk.co.kr/news/view/1169777",
       "source": "매일경제",
       "source_body_digest": "9ca695e4c51874ea58c4d694731de45e3abe9ad2ebcf3b4d0382a5d81fe16032",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:merger_agreement:a4008cb2d7cb560d837a4bf6b3d30c4648c70959b7469a6db86ee29bcd16e519",
       "source_fact_identity": "source_facts:v1:54b800b8d0f3ba8e577b90bcda55319e5c792db1f5f13ffb668fe7e69b136ac3",
       "source_fact_keys": [
         "source_fact:v1:1077604efe10ea3eda65c30b17657dca0c353aa85ecfcfacbeb0997c11e4d3d5"
@@ -14115,7 +14301,7 @@
       "link": "https://stock.mk.co.kr/news/view/1169803",
       "source": "매일경제",
       "source_body_digest": "23e19da2f1acc81142a06b610af265169bdab9b02876b40b1e28b055360d352d",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:merger_agreement:a4008cb2d7cb560d837a4bf6b3d30c4648c70959b7469a6db86ee29bcd16e519",
       "source_fact_identity": "source_facts:v1:87980f71b02dedae9b677b5b16147cfd03168b8ac52dc7a876ba4cd464923bf6",
       "source_fact_keys": [
         "source_fact:v1:4e16caa48be6424ad6a90f5a284144e704eec00e8ae3926d7e258771f8943d33",
@@ -14329,6 +14515,24 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T18:44+09:00",
       "title": "웰컴저축은행, 법인고객 정보 2200건 유출…온투업도 해킹 당해(종합)"
+    },
+    "link:3b084054fe37ffc096cc9c3c": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814704",
+      "source": "뉴시스",
+      "source_body_digest": "9bbcecc6cc1c3e5df944323a38d687b59033eff70599fa6b98aec7a3af7b0c0b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6251141b5bf986e74724dbef1cb97f6e846a09ead5a49905cad9a283bfa496cc",
+      "source_fact_keys": [
+        "source_fact:v1:04ae596cafe94c5d52296df134fb6ae93bad05bd0e05c684c0d55f2149ed18f3",
+        "source_fact:v1:f3faca37d91ffd3f2b304af7319d1db5e665066efed3f2fd3b2619f27a9e26f9"
+      ],
+      "source_published_kst": "2026-10-06T08:40+09:00",
+      "title": "그록 주주들, 엔비디아 '우회 인수'에 소송…\"껍데기 회사 남겨\""
     },
     "link:3b1ca02541a9dec732094da0": {
       "first_seen_kst": "2026-10-04T07:39:13+09:00",
@@ -15135,6 +15339,24 @@
       ],
       "source_published_kst": "2026-10-05T13:29+09:00",
       "title": "JP모간, 10월 '콕' 집은 종목은…아멕스·써모피셔·리버티"
+    },
+    "link:46f03fb63803b3b95d5f7b9c": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006026000008",
+      "source": "연합뉴스",
+      "source_body_digest": "a2d9fde024816e515ac24eb13523f827617f932ab9ab9d73bb48483f53e5ebcd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e3dcfd5249c8d7d83d94263249ae7db8262bc6c602da0ba46c55b0d3603f4ff",
+      "source_fact_keys": [
+        "source_fact:v1:69e4722c27a0480fb165dc710467b95300e926a8e874b708a01b9017beecbcbe",
+        "source_fact:v1:f59da17516f2408de0d1ec7d46f75b4bb5c3d01afa3366edb75065f235175d1e"
+      ],
+      "source_published_kst": "2026-10-06T08:29+09:00",
+      "title": "다올증권 \"삼성바이오, 유상증자에 목표가↓…성장동력은 유효\" | 연합뉴스"
     },
     "link:47092b03813223b846db3aea": {
       "first_seen_kst": "2026-10-03T10:53:56+09:00",
@@ -16067,6 +16289,23 @@
       "source": "파이낸셜뉴스",
       "title": "변동성 장세에 단기자금 몰렸다…ACE 머니마켓액티브 순자산 1조 돌파"
     },
+    "link:51f677b06059ab47882904a5": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632580",
+      "source": "이투데이",
+      "source_body_digest": "d195b3cc54e2af3f1a2431329a4c1d85a49cab49b718d197b4f6053a4b24d7e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8606a148cd3dc3e5a35681a18bb3e93e5ffd8d52749e6c3cdc94105da222a84",
+      "source_fact_keys": [
+        "source_fact:v1:3c5ee1ab45de27b03db28bfd319392f9e0ce2c0b53ae0c6d218489a8c3044c26"
+      ],
+      "source_published_kst": "2026-10-06T08:46+09:00",
+      "title": "한미반도체, 삼성전기서 245억원 규모 MSVP 수주…“삼성그룹 환영”"
+    },
     "link:51fdd1a040274e16372c9c51": {
       "first_seen_kst": "2026-10-02T12:58:52+09:00",
       "lanes": {
@@ -16096,6 +16335,24 @@
       "link": "https://www.yna.co.kr/view/AKR20260920035100009",
       "source": "연합뉴스",
       "title": "이란 협상단장 \"우리 조건 이행안되면 호르무즈 계속 폐쇄\" | 연합뉴스"
+    },
+    "link:52ee510a7f40410ac47ecda0": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814846",
+      "source": "뉴시스",
+      "source_body_digest": "8424bbb54b542612a35bbbeb9b71e07702128097037033258bdbabc02ad6be56",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4df5c3f9b2244856fe42fb726a781f742d519b6b4e57ff9dfe49b9771c5fde6c",
+      "source_fact_keys": [
+        "source_fact:v1:22204b6408e111fb1f8a00587979c9a003fe769b27354437dbeeebbb549c7a9d",
+        "source_fact:v1:f5f55b7028340e3fd80b93612972874452d629efbfd290a9bca27c6c70a47f51"
+      ],
+      "source_published_kst": "2026-10-06T08:48+09:00",
+      "title": "현대글로비스, SMR 추진 車운반선 상용화 시동…\"美 물류사와 항로 공동 검토\""
     },
     "link:52fb241bec93acfe4bb2dd4f": {
       "first_seen_kst": "2026-09-29T17:47:48+09:00",
@@ -19265,6 +19522,21 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-05T22:00+09:00",
       "title": "LG전자, 美 '에어 컨트롤 콘셉트'과 5GW AIDC 냉각솔루션 장기 공급계약"
+    },
+    "link:7cc2a52cc2517003f148436c": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/06/2026100608031510497",
+      "source": "머니투데이",
+      "source_body_digest": "f47d7b4d17217cc3653254c39e0c470cf90ba6e87bacbd49beb1f388f778b4b2",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T08:35+09:00",
+      "title": "\"현대백화점, 두 자릿수 매출 성장률 유지 어려워… 목표가↓\"-유안타"
     },
     "link:7cc6216daf403fe29314bb68": {
       "first_seen_kst": "2026-09-24T06:34:46+09:00",
@@ -23098,7 +23370,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632539",
       "source": "이투데이",
       "source_body_digest": "8c991b54bf21cf21ad70abe1e92d1ba97fdfcc8c60827bcd293383dec311a7d5",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:broker_earnings:f4e6bae1d443a1ee172bfd4e7db47bc1bb8b149c55f3ae3eaf9fe981f21ff9d6",
       "source_fact_identity": "source_facts:v1:76e404a8dca3bb40adb91d8f28048b80a353340b2481ff7e22b792bfcf5bea11",
       "source_fact_keys": [
         "source_fact:v1:41c8c4478e415c6be48d313a55f448cb69930dcc2db8e8491232a0c22bd585c4",
@@ -23193,7 +23465,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003814792",
       "source": "뉴시스",
       "source_body_digest": "5da58469752a21d5c31a8b20c77646ce4ef547ba9dfeb43ff535f3a78ea730ec",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:broker_earnings:f4e6bae1d443a1ee172bfd4e7db47bc1bb8b149c55f3ae3eaf9fe981f21ff9d6",
       "source_fact_identity": "source_facts:v1:31fccbfc431c08079a18afc50cb626a145d4779ca7196d13a55bf1fc0593b9a9",
       "source_fact_keys": [
         "source_fact:v1:0332def90a5f8a6140fc3078a87ce884cfad987382fce1de844f9a760efcb01c",
@@ -26231,6 +26503,26 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T14:05+09:00",
       "title": "'대전 D-성장펀드' 540억 규모 출범...지역성장펀드 3호"
+    },
+    "link:d86069ee394c82bb82dae13f": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814784",
+      "source": "뉴시스",
+      "source_body_digest": "9abbf516b4531e4b968cc48ecee2a332215dbf01d2864d32c62d95474c4cb19f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e0b5e402a4f703314e372086f9447c427ab3a04590a2fdc73172e6f149d6c904",
+      "source_fact_keys": [
+        "source_fact:v1:5c044d9bf29f6ff32d943c5abadee23058cc3e4755723f331c15e5d39617f99b",
+        "source_fact:v1:7ca4b9150ff9055dc9066add86918ca005d43310373ca56e53680253c059d89e",
+        "source_fact:v1:7ec810c7924f129c78f2e0add555f7a07025618b8a264a7ceb3e0ad183ed00c2",
+        "source_fact:v1:a74a4ca2f2e2c267db719bf9875994bb963f89a7b2689d2dbc5e493e1ac577d1"
+      ],
+      "source_published_kst": "2026-10-06T08:26+09:00",
+      "title": "제이엘케이 \"2대 주주 KB운용 지분 5.09→6.56% 확대\""
     },
     "link:d8bcf9c804b0e1a2ad03dac9": {
       "first_seen_kst": "2026-10-02T09:58:25+09:00",
@@ -32885,6 +33177,21 @@
       "source": "연합뉴스",
       "title": "광주도시철도 2호선 양산-신가구간 2034년 우선 개통 | 연합뉴스"
     },
+    "original:359c8e04fea630c6c4d6546b": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/06/2026100608031510497",
+      "source": "머니투데이",
+      "source_body_digest": "f47d7b4d17217cc3653254c39e0c470cf90ba6e87bacbd49beb1f388f778b4b2",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T08:35+09:00",
+      "title": "\"현대백화점, 두 자릿수 매출 성장률 유지 어려워… 목표가↓\"-유안타"
+    },
     "original:35ee30aada1e5b4b4b2782dd": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -33770,6 +34077,24 @@
       "source": "매일경제",
       "title": "'日 글로벌X 닛케이 ETF' 일학개미 이달 순매수 1위"
     },
+    "original:402aad43139f6ed4847892c4": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814704",
+      "source": "뉴시스",
+      "source_body_digest": "9bbcecc6cc1c3e5df944323a38d687b59033eff70599fa6b98aec7a3af7b0c0b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6251141b5bf986e74724dbef1cb97f6e846a09ead5a49905cad9a283bfa496cc",
+      "source_fact_keys": [
+        "source_fact:v1:04ae596cafe94c5d52296df134fb6ae93bad05bd0e05c684c0d55f2149ed18f3",
+        "source_fact:v1:f3faca37d91ffd3f2b304af7319d1db5e665066efed3f2fd3b2619f27a9e26f9"
+      ],
+      "source_published_kst": "2026-10-06T08:40+09:00",
+      "title": "그록 주주들, 엔비디아 '우회 인수'에 소송…\"껍데기 회사 남겨\""
+    },
     "original:4067c18f803c064df1c555ae": {
       "first_seen_kst": "2026-10-02T12:43:56+09:00",
       "lanes": {
@@ -33800,6 +34125,24 @@
       "link": "https://www.mk.co.kr/news/columnists/12162051",
       "source": "매일경제",
       "title": "[매경포럼] K반도체 초호황 1년의 숙제"
+    },
+    "original:40e0ea98a3cdd615b095c62c": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814846",
+      "source": "뉴시스",
+      "source_body_digest": "8424bbb54b542612a35bbbeb9b71e07702128097037033258bdbabc02ad6be56",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4df5c3f9b2244856fe42fb726a781f742d519b6b4e57ff9dfe49b9771c5fde6c",
+      "source_fact_keys": [
+        "source_fact:v1:22204b6408e111fb1f8a00587979c9a003fe769b27354437dbeeebbb549c7a9d",
+        "source_fact:v1:f5f55b7028340e3fd80b93612972874452d629efbfd290a9bca27c6c70a47f51"
+      ],
+      "source_published_kst": "2026-10-06T08:48+09:00",
+      "title": "현대글로비스, SMR 추진 車운반선 상용화 시동…\"美 물류사와 항로 공동 검토\""
     },
     "original:40ff97bff8ea07dcf83d93e1": {
       "first_seen_kst": "2026-10-02T14:00:40+09:00",
@@ -34975,7 +35318,7 @@
       "link": "https://stock.mk.co.kr/news/view/1169803",
       "source": "매일경제",
       "source_body_digest": "23e19da2f1acc81142a06b610af265169bdab9b02876b40b1e28b055360d352d",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:merger_agreement:a4008cb2d7cb560d837a4bf6b3d30c4648c70959b7469a6db86ee29bcd16e519",
       "source_fact_identity": "source_facts:v1:87980f71b02dedae9b677b5b16147cfd03168b8ac52dc7a876ba4cd464923bf6",
       "source_fact_keys": [
         "source_fact:v1:4e16caa48be6424ad6a90f5a284144e704eec00e8ae3926d7e258771f8943d33",
@@ -35595,6 +35938,25 @@
       "link": "https://www.newsis.com/view/NISX20260918_0003796280",
       "source": "뉴시스",
       "title": "\"집값 올라 '풀대출' 받아야 하는데\"…금리 8% 눈앞에 발동동[긴축이 온다①]"
+    },
+    "original:58ec5ba67aa9e7d7a1cc63d4": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168848",
+      "source": "매일경제",
+      "source_body_digest": "5bdf95ccf28cf4e852cc10d4d3650bd1234a0b14f8de485707a04946c02ccd79",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:35201d47ba75606f3ed0d7d9790a38a5c1dec0dcc3c32eb62c25975718204af4",
+      "source_fact_keys": [
+        "source_fact:v1:0594f893b9ebdb209b9bb446ae3155c7ae607940a8b9aa8d4da666a0c64c6271",
+        "source_fact:v1:0a89425abf741b7cf99b352bf50603ec4c08d4e9e072622e054d268b7b7a3076",
+        "source_fact:v1:f73c882e46d498445b86f0161ba059dc437d79b7bbca9929864e7501fe8a492d"
+      ],
+      "source_published_kst": "2026-10-06T08:33+09:00",
+      "title": "“광고·커머스 매출 성장 둔화, AI 비용 증가”…대신증권, NAVER 목표가↓"
     },
     "original:59619bd9e8a5dba2ba0e4195": {
       "first_seen_kst": "2026-10-05T06:25:21+09:00",
@@ -36842,7 +37204,7 @@
       "link": "https://stock.mk.co.kr/news/view/1169777",
       "source": "매일경제",
       "source_body_digest": "9ca695e4c51874ea58c4d694731de45e3abe9ad2ebcf3b4d0382a5d81fe16032",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:merger_agreement:a4008cb2d7cb560d837a4bf6b3d30c4648c70959b7469a6db86ee29bcd16e519",
       "source_fact_identity": "source_facts:v1:54b800b8d0f3ba8e577b90bcda55319e5c792db1f5f13ffb668fe7e69b136ac3",
       "source_fact_keys": [
         "source_fact:v1:1077604efe10ea3eda65c30b17657dca0c353aa85ecfcfacbeb0997c11e4d3d5"
@@ -38553,6 +38915,26 @@
       "source_event_identity": "",
       "title": "뉴욕증시, 약한 美 고용에 상승…나스닥 1.19%↑ [종합]"
     },
+    "original:839d3c1ed6a5b45d5d2c5d4e": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814784",
+      "source": "뉴시스",
+      "source_body_digest": "9abbf516b4531e4b968cc48ecee2a332215dbf01d2864d32c62d95474c4cb19f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e0b5e402a4f703314e372086f9447c427ab3a04590a2fdc73172e6f149d6c904",
+      "source_fact_keys": [
+        "source_fact:v1:5c044d9bf29f6ff32d943c5abadee23058cc3e4755723f331c15e5d39617f99b",
+        "source_fact:v1:7ca4b9150ff9055dc9066add86918ca005d43310373ca56e53680253c059d89e",
+        "source_fact:v1:7ec810c7924f129c78f2e0add555f7a07025618b8a264a7ceb3e0ad183ed00c2",
+        "source_fact:v1:a74a4ca2f2e2c267db719bf9875994bb963f89a7b2689d2dbc5e493e1ac577d1"
+      ],
+      "source_published_kst": "2026-10-06T08:26+09:00",
+      "title": "제이엘케이 \"2대 주주 KB운용 지분 5.09→6.56% 확대\""
+    },
     "original:83c63d1d753adeb9e3d17cb9": {
       "first_seen_kst": "2026-10-02T08:38:38+09:00",
       "lanes": {
@@ -39211,7 +39593,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003814792",
       "source": "뉴시스",
       "source_body_digest": "5da58469752a21d5c31a8b20c77646ce4ef547ba9dfeb43ff535f3a78ea730ec",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:broker_earnings:f4e6bae1d443a1ee172bfd4e7db47bc1bb8b149c55f3ae3eaf9fe981f21ff9d6",
       "source_fact_identity": "source_facts:v1:31fccbfc431c08079a18afc50cb626a145d4779ca7196d13a55bf1fc0593b9a9",
       "source_fact_keys": [
         "source_fact:v1:0332def90a5f8a6140fc3078a87ce884cfad987382fce1de844f9a760efcb01c",
@@ -40421,7 +40803,7 @@
       "link": "https://stock.mk.co.kr/news/view/1169799",
       "source": "매일경제",
       "source_body_digest": "4fa1c66f0afdbd1d33a8e514bca764ffec2545b48596537c7b338b4093bd853f",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:merger_agreement:a4008cb2d7cb560d837a4bf6b3d30c4648c70959b7469a6db86ee29bcd16e519",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-05T21:20+09:00",
@@ -40614,7 +40996,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632539",
       "source": "이투데이",
       "source_body_digest": "8c991b54bf21cf21ad70abe1e92d1ba97fdfcc8c60827bcd293383dec311a7d5",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:broker_earnings:f4e6bae1d443a1ee172bfd4e7db47bc1bb8b149c55f3ae3eaf9fe981f21ff9d6",
       "source_fact_identity": "source_facts:v1:76e404a8dca3bb40adb91d8f28048b80a353340b2481ff7e22b792bfcf5bea11",
       "source_fact_keys": [
         "source_fact:v1:41c8c4478e415c6be48d313a55f448cb69930dcc2db8e8491232a0c22bd585c4",
@@ -45134,6 +45516,41 @@
       "source_published_kst": "2026-10-04T05:53+09:00",
       "title": "4대금융 3분기도 최대실적 전망…차기 은행장 선임 영향은"
     },
+    "original:db71bc34531f9cf7de8d3667": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632580",
+      "source": "이투데이",
+      "source_body_digest": "d195b3cc54e2af3f1a2431329a4c1d85a49cab49b718d197b4f6053a4b24d7e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8606a148cd3dc3e5a35681a18bb3e93e5ffd8d52749e6c3cdc94105da222a84",
+      "source_fact_keys": [
+        "source_fact:v1:3c5ee1ab45de27b03db28bfd319392f9e0ce2c0b53ae0c6d218489a8c3044c26"
+      ],
+      "source_published_kst": "2026-10-06T08:46+09:00",
+      "title": "한미반도체, 삼성전기서 245억원 규모 MSVP 수주…“삼성그룹 환영”"
+    },
+    "original:db81e39157c5aabab43a5871": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006026000008",
+      "source": "연합뉴스",
+      "source_body_digest": "a2d9fde024816e515ac24eb13523f827617f932ab9ab9d73bb48483f53e5ebcd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e3dcfd5249c8d7d83d94263249ae7db8262bc6c602da0ba46c55b0d3603f4ff",
+      "source_fact_keys": [
+        "source_fact:v1:69e4722c27a0480fb165dc710467b95300e926a8e874b708a01b9017beecbcbe",
+        "source_fact:v1:f59da17516f2408de0d1ec7d46f75b4bb5c3d01afa3366edb75065f235175d1e"
+      ],
+      "source_published_kst": "2026-10-06T08:29+09:00",
+      "title": "다올증권 \"삼성바이오, 유상증자에 목표가↓…성장동력은 유효\" | 연합뉴스"
+    },
     "original:db90699c4064e5e6112aacc5": {
       "first_seen_kst": "2026-10-05T07:24:39+09:00",
       "lanes": {
@@ -49225,6 +49642,26 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "KAIST, 데이터 추가·삭제에도 검색 정확도 유지하는 'CONDA' 개발"
     },
+    "source_fact:120a2d3f9ab4d1ee03f475f9": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814784",
+      "source": "뉴시스",
+      "source_body_digest": "9abbf516b4531e4b968cc48ecee2a332215dbf01d2864d32c62d95474c4cb19f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e0b5e402a4f703314e372086f9447c427ab3a04590a2fdc73172e6f149d6c904",
+      "source_fact_keys": [
+        "source_fact:v1:5c044d9bf29f6ff32d943c5abadee23058cc3e4755723f331c15e5d39617f99b",
+        "source_fact:v1:7ca4b9150ff9055dc9066add86918ca005d43310373ca56e53680253c059d89e",
+        "source_fact:v1:7ec810c7924f129c78f2e0add555f7a07025618b8a264a7ceb3e0ad183ed00c2",
+        "source_fact:v1:a74a4ca2f2e2c267db719bf9875994bb963f89a7b2689d2dbc5e493e1ac577d1"
+      ],
+      "source_published_kst": "2026-10-06T08:26+09:00",
+      "title": "제이엘케이 \"2대 주주 KB운용 지분 5.09→6.56% 확대\""
+    },
     "source_fact:12224c8311314c5ab9bb900e": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
@@ -50268,7 +50705,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632539",
       "source": "이투데이",
       "source_body_digest": "8c991b54bf21cf21ad70abe1e92d1ba97fdfcc8c60827bcd293383dec311a7d5",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:broker_earnings:f4e6bae1d443a1ee172bfd4e7db47bc1bb8b149c55f3ae3eaf9fe981f21ff9d6",
       "source_fact_identity": "source_facts:v1:76e404a8dca3bb40adb91d8f28048b80a353340b2481ff7e22b792bfcf5bea11",
       "source_fact_keys": [
         "source_fact:v1:41c8c4478e415c6be48d313a55f448cb69930dcc2db8e8491232a0c22bd585c4",
@@ -50667,7 +51104,7 @@
       "link": "https://stock.mk.co.kr/news/view/1169803",
       "source": "매일경제",
       "source_body_digest": "23e19da2f1acc81142a06b610af265169bdab9b02876b40b1e28b055360d352d",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:merger_agreement:a4008cb2d7cb560d837a4bf6b3d30c4648c70959b7469a6db86ee29bcd16e519",
       "source_fact_identity": "source_facts:v1:87980f71b02dedae9b677b5b16147cfd03168b8ac52dc7a876ba4cd464923bf6",
       "source_fact_keys": [
         "source_fact:v1:4e16caa48be6424ad6a90f5a284144e704eec00e8ae3926d7e258771f8943d33",
@@ -51050,7 +51487,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003814792",
       "source": "뉴시스",
       "source_body_digest": "5da58469752a21d5c31a8b20c77646ce4ef547ba9dfeb43ff535f3a78ea730ec",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:broker_earnings:f4e6bae1d443a1ee172bfd4e7db47bc1bb8b149c55f3ae3eaf9fe981f21ff9d6",
       "source_fact_identity": "source_facts:v1:31fccbfc431c08079a18afc50cb626a145d4779ca7196d13a55bf1fc0593b9a9",
       "source_fact_keys": [
         "source_fact:v1:0332def90a5f8a6140fc3078a87ce884cfad987382fce1de844f9a760efcb01c",
@@ -51304,6 +51741,25 @@
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "외국인·명품 소비에 비용 절감까지…백화점 3사, 3분기 실적 ‘청신호’"
     },
+    "source_fact:28c485bc4de70d8e5770172f": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168848",
+      "source": "매일경제",
+      "source_body_digest": "5bdf95ccf28cf4e852cc10d4d3650bd1234a0b14f8de485707a04946c02ccd79",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:35201d47ba75606f3ed0d7d9790a38a5c1dec0dcc3c32eb62c25975718204af4",
+      "source_fact_keys": [
+        "source_fact:v1:0594f893b9ebdb209b9bb446ae3155c7ae607940a8b9aa8d4da666a0c64c6271",
+        "source_fact:v1:0a89425abf741b7cf99b352bf50603ec4c08d4e9e072622e054d268b7b7a3076",
+        "source_fact:v1:f73c882e46d498445b86f0161ba059dc437d79b7bbca9929864e7501fe8a492d"
+      ],
+      "source_published_kst": "2026-10-06T08:33+09:00",
+      "title": "“광고·커머스 매출 성장 둔화, AI 비용 증가”…대신증권, NAVER 목표가↓"
+    },
     "source_fact:2948d779a5b7abb41beeb074": {
       "first_seen_kst": "2026-10-05T23:21:26+09:00",
       "lanes": {
@@ -51320,6 +51776,25 @@
       ],
       "source_published_kst": "2026-10-05T18:05+09:00",
       "title": "양산에 '선박 하이브리드 시스템' 실증센터"
+    },
+    "source_fact:29ae8084d42afa6135d76a49": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168848",
+      "source": "매일경제",
+      "source_body_digest": "5bdf95ccf28cf4e852cc10d4d3650bd1234a0b14f8de485707a04946c02ccd79",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:35201d47ba75606f3ed0d7d9790a38a5c1dec0dcc3c32eb62c25975718204af4",
+      "source_fact_keys": [
+        "source_fact:v1:0594f893b9ebdb209b9bb446ae3155c7ae607940a8b9aa8d4da666a0c64c6271",
+        "source_fact:v1:0a89425abf741b7cf99b352bf50603ec4c08d4e9e072622e054d268b7b7a3076",
+        "source_fact:v1:f73c882e46d498445b86f0161ba059dc437d79b7bbca9929864e7501fe8a492d"
+      ],
+      "source_published_kst": "2026-10-06T08:33+09:00",
+      "title": "“광고·커머스 매출 성장 둔화, AI 비용 증가”…대신증권, NAVER 목표가↓"
     },
     "source_fact:2a443456256be123e0f4d510": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
@@ -53297,7 +53772,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003814792",
       "source": "뉴시스",
       "source_body_digest": "5da58469752a21d5c31a8b20c77646ce4ef547ba9dfeb43ff535f3a78ea730ec",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:broker_earnings:f4e6bae1d443a1ee172bfd4e7db47bc1bb8b149c55f3ae3eaf9fe981f21ff9d6",
       "source_fact_identity": "source_facts:v1:31fccbfc431c08079a18afc50cb626a145d4779ca7196d13a55bf1fc0593b9a9",
       "source_fact_keys": [
         "source_fact:v1:0332def90a5f8a6140fc3078a87ce884cfad987382fce1de844f9a760efcb01c",
@@ -53430,6 +53905,26 @@
       ],
       "source_published_kst": "2026-10-05T11:25+09:00",
       "title": "사우디, 11월 아시아 공급용 원유가 대폭 인하 | 연합뉴스"
+    },
+    "source_fact:427500e5e90d013dbb4823ec": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814784",
+      "source": "뉴시스",
+      "source_body_digest": "9abbf516b4531e4b968cc48ecee2a332215dbf01d2864d32c62d95474c4cb19f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e0b5e402a4f703314e372086f9447c427ab3a04590a2fdc73172e6f149d6c904",
+      "source_fact_keys": [
+        "source_fact:v1:5c044d9bf29f6ff32d943c5abadee23058cc3e4755723f331c15e5d39617f99b",
+        "source_fact:v1:7ca4b9150ff9055dc9066add86918ca005d43310373ca56e53680253c059d89e",
+        "source_fact:v1:7ec810c7924f129c78f2e0add555f7a07025618b8a264a7ceb3e0ad183ed00c2",
+        "source_fact:v1:a74a4ca2f2e2c267db719bf9875994bb963f89a7b2689d2dbc5e493e1ac577d1"
+      ],
+      "source_published_kst": "2026-10-06T08:26+09:00",
+      "title": "제이엘케이 \"2대 주주 KB운용 지분 5.09→6.56% 확대\""
     },
     "source_fact:42b4c335b54d8c037577fff1": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
@@ -55065,6 +55560,24 @@
       "source_published_kst": "2026-10-05T21:02+09:00",
       "title": "레졸루트, FDA 3상 실패에도 BLA 사전회의 권고"
     },
+    "source_fact:5463ff28392ba2179fff05c1": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814704",
+      "source": "뉴시스",
+      "source_body_digest": "9bbcecc6cc1c3e5df944323a38d687b59033eff70599fa6b98aec7a3af7b0c0b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6251141b5bf986e74724dbef1cb97f6e846a09ead5a49905cad9a283bfa496cc",
+      "source_fact_keys": [
+        "source_fact:v1:04ae596cafe94c5d52296df134fb6ae93bad05bd0e05c684c0d55f2149ed18f3",
+        "source_fact:v1:f3faca37d91ffd3f2b304af7319d1db5e665066efed3f2fd3b2619f27a9e26f9"
+      ],
+      "source_published_kst": "2026-10-06T08:40+09:00",
+      "title": "그록 주주들, 엔비디아 '우회 인수'에 소송…\"껍데기 회사 남겨\""
+    },
     "source_fact:54793abf60847c2cd4df8a88": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -55461,6 +55974,25 @@
       "source_published_kst": "2026-10-05T08:08+09:00",
       "title": "한반도 감시부터 우주의약품 실험까지…K-우주영토 넓힌다[누리호 5차 下]"
     },
+    "source_fact:5930b23c5a1213705a01da81": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168848",
+      "source": "매일경제",
+      "source_body_digest": "5bdf95ccf28cf4e852cc10d4d3650bd1234a0b14f8de485707a04946c02ccd79",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:35201d47ba75606f3ed0d7d9790a38a5c1dec0dcc3c32eb62c25975718204af4",
+      "source_fact_keys": [
+        "source_fact:v1:0594f893b9ebdb209b9bb446ae3155c7ae607940a8b9aa8d4da666a0c64c6271",
+        "source_fact:v1:0a89425abf741b7cf99b352bf50603ec4c08d4e9e072622e054d268b7b7a3076",
+        "source_fact:v1:f73c882e46d498445b86f0161ba059dc437d79b7bbca9929864e7501fe8a492d"
+      ],
+      "source_published_kst": "2026-10-06T08:33+09:00",
+      "title": "“광고·커머스 매출 성장 둔화, AI 비용 증가”…대신증권, NAVER 목표가↓"
+    },
     "source_fact:59403f6613c79cef98cdc2f1": {
       "first_seen_kst": "2026-10-05T23:56:11+09:00",
       "lanes": {
@@ -55829,7 +56361,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632539",
       "source": "이투데이",
       "source_body_digest": "8c991b54bf21cf21ad70abe1e92d1ba97fdfcc8c60827bcd293383dec311a7d5",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:broker_earnings:f4e6bae1d443a1ee172bfd4e7db47bc1bb8b149c55f3ae3eaf9fe981f21ff9d6",
       "source_fact_identity": "source_facts:v1:76e404a8dca3bb40adb91d8f28048b80a353340b2481ff7e22b792bfcf5bea11",
       "source_fact_keys": [
         "source_fact:v1:41c8c4478e415c6be48d313a55f448cb69930dcc2db8e8491232a0c22bd585c4",
@@ -56477,7 +57009,7 @@
       "link": "https://stock.mk.co.kr/news/view/1169803",
       "source": "매일경제",
       "source_body_digest": "23e19da2f1acc81142a06b610af265169bdab9b02876b40b1e28b055360d352d",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:merger_agreement:a4008cb2d7cb560d837a4bf6b3d30c4648c70959b7469a6db86ee29bcd16e519",
       "source_fact_identity": "source_facts:v1:87980f71b02dedae9b677b5b16147cfd03168b8ac52dc7a876ba4cd464923bf6",
       "source_fact_keys": [
         "source_fact:v1:4e16caa48be6424ad6a90f5a284144e704eec00e8ae3926d7e258771f8943d33",
@@ -56737,7 +57269,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632539",
       "source": "이투데이",
       "source_body_digest": "8c991b54bf21cf21ad70abe1e92d1ba97fdfcc8c60827bcd293383dec311a7d5",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:broker_earnings:f4e6bae1d443a1ee172bfd4e7db47bc1bb8b149c55f3ae3eaf9fe981f21ff9d6",
       "source_fact_identity": "source_facts:v1:76e404a8dca3bb40adb91d8f28048b80a353340b2481ff7e22b792bfcf5bea11",
       "source_fact_keys": [
         "source_fact:v1:41c8c4478e415c6be48d313a55f448cb69930dcc2db8e8491232a0c22bd585c4",
@@ -59514,6 +60046,24 @@
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
     },
+    "source_fact:8514aeae77f960efb5c5142c": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814846",
+      "source": "뉴시스",
+      "source_body_digest": "8424bbb54b542612a35bbbeb9b71e07702128097037033258bdbabc02ad6be56",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4df5c3f9b2244856fe42fb726a781f742d519b6b4e57ff9dfe49b9771c5fde6c",
+      "source_fact_keys": [
+        "source_fact:v1:22204b6408e111fb1f8a00587979c9a003fe769b27354437dbeeebbb549c7a9d",
+        "source_fact:v1:f5f55b7028340e3fd80b93612972874452d629efbfd290a9bca27c6c70a47f51"
+      ],
+      "source_published_kst": "2026-10-06T08:48+09:00",
+      "title": "현대글로비스, SMR 추진 車운반선 상용화 시동…\"美 물류사와 항로 공동 검토\""
+    },
     "source_fact:8529d02f8cc04e2509419eb2": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
@@ -60100,7 +60650,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632539",
       "source": "이투데이",
       "source_body_digest": "8c991b54bf21cf21ad70abe1e92d1ba97fdfcc8c60827bcd293383dec311a7d5",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:broker_earnings:f4e6bae1d443a1ee172bfd4e7db47bc1bb8b149c55f3ae3eaf9fe981f21ff9d6",
       "source_fact_identity": "source_facts:v1:76e404a8dca3bb40adb91d8f28048b80a353340b2481ff7e22b792bfcf5bea11",
       "source_fact_keys": [
         "source_fact:v1:41c8c4478e415c6be48d313a55f448cb69930dcc2db8e8491232a0c22bd585c4",
@@ -60315,7 +60865,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003814792",
       "source": "뉴시스",
       "source_body_digest": "5da58469752a21d5c31a8b20c77646ce4ef547ba9dfeb43ff535f3a78ea730ec",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:broker_earnings:f4e6bae1d443a1ee172bfd4e7db47bc1bb8b149c55f3ae3eaf9fe981f21ff9d6",
       "source_fact_identity": "source_facts:v1:31fccbfc431c08079a18afc50cb626a145d4779ca7196d13a55bf1fc0593b9a9",
       "source_fact_keys": [
         "source_fact:v1:0332def90a5f8a6140fc3078a87ce884cfad987382fce1de844f9a760efcb01c",
@@ -60406,6 +60956,24 @@
       ],
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "S&K폴리텍, 선진엔지니어링 합병 마무리"
+    },
+    "source_fact:905bfcebcb7e66b41f47c1f4": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814704",
+      "source": "뉴시스",
+      "source_body_digest": "9bbcecc6cc1c3e5df944323a38d687b59033eff70599fa6b98aec7a3af7b0c0b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6251141b5bf986e74724dbef1cb97f6e846a09ead5a49905cad9a283bfa496cc",
+      "source_fact_keys": [
+        "source_fact:v1:04ae596cafe94c5d52296df134fb6ae93bad05bd0e05c684c0d55f2149ed18f3",
+        "source_fact:v1:f3faca37d91ffd3f2b304af7319d1db5e665066efed3f2fd3b2619f27a9e26f9"
+      ],
+      "source_published_kst": "2026-10-06T08:40+09:00",
+      "title": "그록 주주들, 엔비디아 '우회 인수'에 소송…\"껍데기 회사 남겨\""
     },
     "source_fact:908b585ec018ea9f37ae5f90": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
@@ -61523,7 +62091,7 @@
       "link": "https://stock.mk.co.kr/news/view/1169777",
       "source": "매일경제",
       "source_body_digest": "9ca695e4c51874ea58c4d694731de45e3abe9ad2ebcf3b4d0382a5d81fe16032",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:merger_agreement:a4008cb2d7cb560d837a4bf6b3d30c4648c70959b7469a6db86ee29bcd16e519",
       "source_fact_identity": "source_facts:v1:54b800b8d0f3ba8e577b90bcda55319e5c792db1f5f13ffb668fe7e69b136ac3",
       "source_fact_keys": [
         "source_fact:v1:1077604efe10ea3eda65c30b17657dca0c353aa85ecfcfacbeb0997c11e4d3d5"
@@ -61787,6 +62355,26 @@
       ],
       "source_published_kst": "2026-10-05T12:57+09:00",
       "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
+    },
+    "source_fact:9f6eab862843bea6ce079ea2": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814784",
+      "source": "뉴시스",
+      "source_body_digest": "9abbf516b4531e4b968cc48ecee2a332215dbf01d2864d32c62d95474c4cb19f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e0b5e402a4f703314e372086f9447c427ab3a04590a2fdc73172e6f149d6c904",
+      "source_fact_keys": [
+        "source_fact:v1:5c044d9bf29f6ff32d943c5abadee23058cc3e4755723f331c15e5d39617f99b",
+        "source_fact:v1:7ca4b9150ff9055dc9066add86918ca005d43310373ca56e53680253c059d89e",
+        "source_fact:v1:7ec810c7924f129c78f2e0add555f7a07025618b8a264a7ceb3e0ad183ed00c2",
+        "source_fact:v1:a74a4ca2f2e2c267db719bf9875994bb963f89a7b2689d2dbc5e493e1ac577d1"
+      ],
+      "source_published_kst": "2026-10-06T08:26+09:00",
+      "title": "제이엘케이 \"2대 주주 KB운용 지분 5.09→6.56% 확대\""
     },
     "source_fact:9ff87ba16c88e98f3029ac72": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
@@ -62881,6 +63469,24 @@
       "source_published_kst": "2026-10-05T18:17+09:00",
       "title": "뉴욕·상하이 증시, FOMC 의사록 공개…'S공포' 커지나"
     },
+    "source_fact:abc9c357178a675a8d5f850b": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006026000008",
+      "source": "연합뉴스",
+      "source_body_digest": "a2d9fde024816e515ac24eb13523f827617f932ab9ab9d73bb48483f53e5ebcd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e3dcfd5249c8d7d83d94263249ae7db8262bc6c602da0ba46c55b0d3603f4ff",
+      "source_fact_keys": [
+        "source_fact:v1:69e4722c27a0480fb165dc710467b95300e926a8e874b708a01b9017beecbcbe",
+        "source_fact:v1:f59da17516f2408de0d1ec7d46f75b4bb5c3d01afa3366edb75065f235175d1e"
+      ],
+      "source_published_kst": "2026-10-06T08:29+09:00",
+      "title": "다올증권 \"삼성바이오, 유상증자에 목표가↓…성장동력은 유효\" | 연합뉴스"
+    },
     "source_fact:abf942a098423ae6812f6571": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -62952,7 +63558,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003814792",
       "source": "뉴시스",
       "source_body_digest": "5da58469752a21d5c31a8b20c77646ce4ef547ba9dfeb43ff535f3a78ea730ec",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:broker_earnings:f4e6bae1d443a1ee172bfd4e7db47bc1bb8b149c55f3ae3eaf9fe981f21ff9d6",
       "source_fact_identity": "source_facts:v1:31fccbfc431c08079a18afc50cb626a145d4779ca7196d13a55bf1fc0593b9a9",
       "source_fact_keys": [
         "source_fact:v1:0332def90a5f8a6140fc3078a87ce884cfad987382fce1de844f9a760efcb01c",
@@ -63010,6 +63616,24 @@
       ],
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "산업부 국감 돌입…대미투자·호남 반도체·메가특구 '도마'"
+    },
+    "source_fact:ac993a4de382d57ef8e72502": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814846",
+      "source": "뉴시스",
+      "source_body_digest": "8424bbb54b542612a35bbbeb9b71e07702128097037033258bdbabc02ad6be56",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4df5c3f9b2244856fe42fb726a781f742d519b6b4e57ff9dfe49b9771c5fde6c",
+      "source_fact_keys": [
+        "source_fact:v1:22204b6408e111fb1f8a00587979c9a003fe769b27354437dbeeebbb549c7a9d",
+        "source_fact:v1:f5f55b7028340e3fd80b93612972874452d629efbfd290a9bca27c6c70a47f51"
+      ],
+      "source_published_kst": "2026-10-06T08:48+09:00",
+      "title": "현대글로비스, SMR 추진 車운반선 상용화 시동…\"美 물류사와 항로 공동 검토\""
     },
     "source_fact:acb82102db0f34db779c825b": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
@@ -63078,7 +63702,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632539",
       "source": "이투데이",
       "source_body_digest": "8c991b54bf21cf21ad70abe1e92d1ba97fdfcc8c60827bcd293383dec311a7d5",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:broker_earnings:f4e6bae1d443a1ee172bfd4e7db47bc1bb8b149c55f3ae3eaf9fe981f21ff9d6",
       "source_fact_identity": "source_facts:v1:76e404a8dca3bb40adb91d8f28048b80a353340b2481ff7e22b792bfcf5bea11",
       "source_fact_keys": [
         "source_fact:v1:41c8c4478e415c6be48d313a55f448cb69930dcc2db8e8491232a0c22bd585c4",
@@ -63571,6 +64195,23 @@
       ],
       "source_published_kst": "2026-10-05T22:21+09:00",
       "title": "뉴로원 메디컬 테크놀러지, 4분기 잠정 제품매출 380만달러..38% 증가"
+    },
+    "source_fact:b2ec3287b2001d8c592d1329": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632580",
+      "source": "이투데이",
+      "source_body_digest": "d195b3cc54e2af3f1a2431329a4c1d85a49cab49b718d197b4f6053a4b24d7e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8606a148cd3dc3e5a35681a18bb3e93e5ffd8d52749e6c3cdc94105da222a84",
+      "source_fact_keys": [
+        "source_fact:v1:3c5ee1ab45de27b03db28bfd319392f9e0ce2c0b53ae0c6d218489a8c3044c26"
+      ],
+      "source_published_kst": "2026-10-06T08:46+09:00",
+      "title": "한미반도체, 삼성전기서 245억원 규모 MSVP 수주…“삼성그룹 환영”"
     },
     "source_fact:b30afddc30aaf58bd9ee7dcb": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
@@ -64115,6 +64756,24 @@
       "source_published_kst": "2026-10-06T06:38+09:00",
       "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
     },
+    "source_fact:bad257c092aad740187994cd": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006026000008",
+      "source": "연합뉴스",
+      "source_body_digest": "a2d9fde024816e515ac24eb13523f827617f932ab9ab9d73bb48483f53e5ebcd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e3dcfd5249c8d7d83d94263249ae7db8262bc6c602da0ba46c55b0d3603f4ff",
+      "source_fact_keys": [
+        "source_fact:v1:69e4722c27a0480fb165dc710467b95300e926a8e874b708a01b9017beecbcbe",
+        "source_fact:v1:f59da17516f2408de0d1ec7d46f75b4bb5c3d01afa3366edb75065f235175d1e"
+      ],
+      "source_published_kst": "2026-10-06T08:29+09:00",
+      "title": "다올증권 \"삼성바이오, 유상증자에 목표가↓…성장동력은 유효\" | 연합뉴스"
+    },
     "source_fact:bb472372a84b50d9323ed8ed": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
       "lanes": {
@@ -64492,7 +65151,7 @@
       "link": "https://stock.mk.co.kr/news/view/1169803",
       "source": "매일경제",
       "source_body_digest": "23e19da2f1acc81142a06b610af265169bdab9b02876b40b1e28b055360d352d",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:merger_agreement:a4008cb2d7cb560d837a4bf6b3d30c4648c70959b7469a6db86ee29bcd16e519",
       "source_fact_identity": "source_facts:v1:87980f71b02dedae9b677b5b16147cfd03168b8ac52dc7a876ba4cd464923bf6",
       "source_fact_keys": [
         "source_fact:v1:4e16caa48be6424ad6a90f5a284144e704eec00e8ae3926d7e258771f8943d33",
@@ -66759,6 +67418,26 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "[단독]새일여성 97% 취업 전환…1년 뒤 고용유지율은 60% 그쳐"
     },
+    "source_fact:d9b2d468c335fbbdd3ac1ce6": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814784",
+      "source": "뉴시스",
+      "source_body_digest": "9abbf516b4531e4b968cc48ecee2a332215dbf01d2864d32c62d95474c4cb19f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e0b5e402a4f703314e372086f9447c427ab3a04590a2fdc73172e6f149d6c904",
+      "source_fact_keys": [
+        "source_fact:v1:5c044d9bf29f6ff32d943c5abadee23058cc3e4755723f331c15e5d39617f99b",
+        "source_fact:v1:7ca4b9150ff9055dc9066add86918ca005d43310373ca56e53680253c059d89e",
+        "source_fact:v1:7ec810c7924f129c78f2e0add555f7a07025618b8a264a7ceb3e0ad183ed00c2",
+        "source_fact:v1:a74a4ca2f2e2c267db719bf9875994bb963f89a7b2689d2dbc5e493e1ac577d1"
+      ],
+      "source_published_kst": "2026-10-06T08:26+09:00",
+      "title": "제이엘케이 \"2대 주주 KB운용 지분 5.09→6.56% 확대\""
+    },
     "source_fact:da6c1bf5db8eb5c538cbfb26": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
       "lanes": {
@@ -68527,7 +69206,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003814792",
       "source": "뉴시스",
       "source_body_digest": "5da58469752a21d5c31a8b20c77646ce4ef547ba9dfeb43ff535f3a78ea730ec",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:broker_earnings:f4e6bae1d443a1ee172bfd4e7db47bc1bb8b149c55f3ae3eaf9fe981f21ff9d6",
       "source_fact_identity": "source_facts:v1:31fccbfc431c08079a18afc50cb626a145d4779ca7196d13a55bf1fc0593b9a9",
       "source_fact_keys": [
         "source_fact:v1:0332def90a5f8a6140fc3078a87ce884cfad987382fce1de844f9a760efcb01c",
@@ -69440,7 +70119,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003814792",
       "source": "뉴시스",
       "source_body_digest": "5da58469752a21d5c31a8b20c77646ce4ef547ba9dfeb43ff535f3a78ea730ec",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:broker_earnings:f4e6bae1d443a1ee172bfd4e7db47bc1bb8b149c55f3ae3eaf9fe981f21ff9d6",
       "source_fact_identity": "source_facts:v1:31fccbfc431c08079a18afc50cb626a145d4779ca7196d13a55bf1fc0593b9a9",
       "source_fact_keys": [
         "source_fact:v1:0332def90a5f8a6140fc3078a87ce884cfad987382fce1de844f9a760efcb01c",
@@ -74106,6 +74785,21 @@
       "source": "연합뉴스",
       "title": "광주도시철도 2호선 양산-신가구간 2034년 우선 개통 | 연합뉴스"
     },
+    "title:359c8e04fea630c6c4d6546b": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/06/2026100608031510497",
+      "source": "머니투데이",
+      "source_body_digest": "f47d7b4d17217cc3653254c39e0c470cf90ba6e87bacbd49beb1f388f778b4b2",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T08:35+09:00",
+      "title": "\"현대백화점, 두 자릿수 매출 성장률 유지 어려워… 목표가↓\"-유안타"
+    },
     "title:35ee30aada1e5b4b4b2782dd": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -75012,6 +75706,24 @@
       "source": "매일경제",
       "title": "'日 글로벌X 닛케이 ETF' 일학개미 이달 순매수 1위"
     },
+    "title:402aad43139f6ed4847892c4": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814704",
+      "source": "뉴시스",
+      "source_body_digest": "9bbcecc6cc1c3e5df944323a38d687b59033eff70599fa6b98aec7a3af7b0c0b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6251141b5bf986e74724dbef1cb97f6e846a09ead5a49905cad9a283bfa496cc",
+      "source_fact_keys": [
+        "source_fact:v1:04ae596cafe94c5d52296df134fb6ae93bad05bd0e05c684c0d55f2149ed18f3",
+        "source_fact:v1:f3faca37d91ffd3f2b304af7319d1db5e665066efed3f2fd3b2619f27a9e26f9"
+      ],
+      "source_published_kst": "2026-10-06T08:40+09:00",
+      "title": "그록 주주들, 엔비디아 '우회 인수'에 소송…\"껍데기 회사 남겨\""
+    },
     "title:4067c18f803c064df1c555ae": {
       "first_seen_kst": "2026-10-02T12:43:56+09:00",
       "lanes": {
@@ -75042,6 +75754,24 @@
       "link": "https://www.mk.co.kr/news/columnists/12162051",
       "source": "매일경제",
       "title": "[매경포럼] K반도체 초호황 1년의 숙제"
+    },
+    "title:40e0ea98a3cdd615b095c62c": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814846",
+      "source": "뉴시스",
+      "source_body_digest": "8424bbb54b542612a35bbbeb9b71e07702128097037033258bdbabc02ad6be56",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4df5c3f9b2244856fe42fb726a781f742d519b6b4e57ff9dfe49b9771c5fde6c",
+      "source_fact_keys": [
+        "source_fact:v1:22204b6408e111fb1f8a00587979c9a003fe769b27354437dbeeebbb549c7a9d",
+        "source_fact:v1:f5f55b7028340e3fd80b93612972874452d629efbfd290a9bca27c6c70a47f51"
+      ],
+      "source_published_kst": "2026-10-06T08:48+09:00",
+      "title": "현대글로비스, SMR 추진 車운반선 상용화 시동…\"美 물류사와 항로 공동 검토\""
     },
     "title:40ff97bff8ea07dcf83d93e1": {
       "first_seen_kst": "2026-10-02T14:00:40+09:00",
@@ -76217,7 +76947,7 @@
       "link": "https://stock.mk.co.kr/news/view/1169803",
       "source": "매일경제",
       "source_body_digest": "23e19da2f1acc81142a06b610af265169bdab9b02876b40b1e28b055360d352d",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:merger_agreement:a4008cb2d7cb560d837a4bf6b3d30c4648c70959b7469a6db86ee29bcd16e519",
       "source_fact_identity": "source_facts:v1:87980f71b02dedae9b677b5b16147cfd03168b8ac52dc7a876ba4cd464923bf6",
       "source_fact_keys": [
         "source_fact:v1:4e16caa48be6424ad6a90f5a284144e704eec00e8ae3926d7e258771f8943d33",
@@ -76837,6 +77567,25 @@
       "link": "https://www.newsis.com/view/NISX20260918_0003796280",
       "source": "뉴시스",
       "title": "\"집값 올라 '풀대출' 받아야 하는데\"…금리 8% 눈앞에 발동동[긴축이 온다①]"
+    },
+    "title:58ec5ba67aa9e7d7a1cc63d4": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168848",
+      "source": "매일경제",
+      "source_body_digest": "5bdf95ccf28cf4e852cc10d4d3650bd1234a0b14f8de485707a04946c02ccd79",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:35201d47ba75606f3ed0d7d9790a38a5c1dec0dcc3c32eb62c25975718204af4",
+      "source_fact_keys": [
+        "source_fact:v1:0594f893b9ebdb209b9bb446ae3155c7ae607940a8b9aa8d4da666a0c64c6271",
+        "source_fact:v1:0a89425abf741b7cf99b352bf50603ec4c08d4e9e072622e054d268b7b7a3076",
+        "source_fact:v1:f73c882e46d498445b86f0161ba059dc437d79b7bbca9929864e7501fe8a492d"
+      ],
+      "source_published_kst": "2026-10-06T08:33+09:00",
+      "title": "“광고·커머스 매출 성장 둔화, AI 비용 증가”…대신증권, NAVER 목표가↓"
     },
     "title:59619bd9e8a5dba2ba0e4195": {
       "first_seen_kst": "2026-10-05T06:25:21+09:00",
@@ -78094,7 +78843,7 @@
       "link": "https://stock.mk.co.kr/news/view/1169777",
       "source": "매일경제",
       "source_body_digest": "9ca695e4c51874ea58c4d694731de45e3abe9ad2ebcf3b4d0382a5d81fe16032",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:merger_agreement:a4008cb2d7cb560d837a4bf6b3d30c4648c70959b7469a6db86ee29bcd16e519",
       "source_fact_identity": "source_facts:v1:54b800b8d0f3ba8e577b90bcda55319e5c792db1f5f13ffb668fe7e69b136ac3",
       "source_fact_keys": [
         "source_fact:v1:1077604efe10ea3eda65c30b17657dca0c353aa85ecfcfacbeb0997c11e4d3d5"
@@ -79845,6 +80594,26 @@
       "source_event_identity": "",
       "title": "뉴욕증시, 약한 美 고용에 상승…나스닥 1.19%↑ [종합]"
     },
+    "title:839d3c1ed6a5b45d5d2c5d4e": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814784",
+      "source": "뉴시스",
+      "source_body_digest": "9abbf516b4531e4b968cc48ecee2a332215dbf01d2864d32c62d95474c4cb19f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e0b5e402a4f703314e372086f9447c427ab3a04590a2fdc73172e6f149d6c904",
+      "source_fact_keys": [
+        "source_fact:v1:5c044d9bf29f6ff32d943c5abadee23058cc3e4755723f331c15e5d39617f99b",
+        "source_fact:v1:7ca4b9150ff9055dc9066add86918ca005d43310373ca56e53680253c059d89e",
+        "source_fact:v1:7ec810c7924f129c78f2e0add555f7a07025618b8a264a7ceb3e0ad183ed00c2",
+        "source_fact:v1:a74a4ca2f2e2c267db719bf9875994bb963f89a7b2689d2dbc5e493e1ac577d1"
+      ],
+      "source_published_kst": "2026-10-06T08:26+09:00",
+      "title": "제이엘케이 \"2대 주주 KB운용 지분 5.09→6.56% 확대\""
+    },
     "title:83c63d1d753adeb9e3d17cb9": {
       "first_seen_kst": "2026-10-02T08:38:38+09:00",
       "lanes": {
@@ -80503,7 +81272,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003814792",
       "source": "뉴시스",
       "source_body_digest": "5da58469752a21d5c31a8b20c77646ce4ef547ba9dfeb43ff535f3a78ea730ec",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:broker_earnings:f4e6bae1d443a1ee172bfd4e7db47bc1bb8b149c55f3ae3eaf9fe981f21ff9d6",
       "source_fact_identity": "source_facts:v1:31fccbfc431c08079a18afc50cb626a145d4779ca7196d13a55bf1fc0593b9a9",
       "source_fact_keys": [
         "source_fact:v1:0332def90a5f8a6140fc3078a87ce884cfad987382fce1de844f9a760efcb01c",
@@ -81724,7 +82493,7 @@
       "link": "https://stock.mk.co.kr/news/view/1169799",
       "source": "매일경제",
       "source_body_digest": "4fa1c66f0afdbd1d33a8e514bca764ffec2545b48596537c7b338b4093bd853f",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:merger_agreement:a4008cb2d7cb560d837a4bf6b3d30c4648c70959b7469a6db86ee29bcd16e519",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-05T21:20+09:00",
@@ -81917,7 +82686,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632539",
       "source": "이투데이",
       "source_body_digest": "8c991b54bf21cf21ad70abe1e92d1ba97fdfcc8c60827bcd293383dec311a7d5",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:broker_earnings:f4e6bae1d443a1ee172bfd4e7db47bc1bb8b149c55f3ae3eaf9fe981f21ff9d6",
       "source_fact_identity": "source_facts:v1:76e404a8dca3bb40adb91d8f28048b80a353340b2481ff7e22b792bfcf5bea11",
       "source_fact_keys": [
         "source_fact:v1:41c8c4478e415c6be48d313a55f448cb69930dcc2db8e8491232a0c22bd585c4",
@@ -86515,6 +87284,41 @@
       "source_published_kst": "2026-10-04T05:53+09:00",
       "title": "4대금융 3분기도 최대실적 전망…차기 은행장 선임 영향은"
     },
+    "title:db71bc34531f9cf7de8d3667": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632580",
+      "source": "이투데이",
+      "source_body_digest": "d195b3cc54e2af3f1a2431329a4c1d85a49cab49b718d197b4f6053a4b24d7e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8606a148cd3dc3e5a35681a18bb3e93e5ffd8d52749e6c3cdc94105da222a84",
+      "source_fact_keys": [
+        "source_fact:v1:3c5ee1ab45de27b03db28bfd319392f9e0ce2c0b53ae0c6d218489a8c3044c26"
+      ],
+      "source_published_kst": "2026-10-06T08:46+09:00",
+      "title": "한미반도체, 삼성전기서 245억원 규모 MSVP 수주…“삼성그룹 환영”"
+    },
+    "title:db81e39157c5aabab43a5871": {
+      "first_seen_kst": "2026-10-06T09:00:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:00:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:00:21+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006026000008",
+      "source": "연합뉴스",
+      "source_body_digest": "a2d9fde024816e515ac24eb13523f827617f932ab9ab9d73bb48483f53e5ebcd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e3dcfd5249c8d7d83d94263249ae7db8262bc6c602da0ba46c55b0d3603f4ff",
+      "source_fact_keys": [
+        "source_fact:v1:69e4722c27a0480fb165dc710467b95300e926a8e874b708a01b9017beecbcbe",
+        "source_fact:v1:f59da17516f2408de0d1ec7d46f75b4bb5c3d01afa3366edb75065f235175d1e"
+      ],
+      "source_published_kst": "2026-10-06T08:29+09:00",
+      "title": "다올증권 \"삼성바이오, 유상증자에 목표가↓…성장동력은 유효\" | 연합뉴스"
+    },
     "title:db90699c4064e5e6112aacc5": {
       "first_seen_kst": "2026-10-05T07:24:39+09:00",
       "lanes": {
@@ -89072,5 +89876,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T08:43:45+09:00"
+  "updated_at_kst": "2026-10-06T09:00:21+09:00"
 }
