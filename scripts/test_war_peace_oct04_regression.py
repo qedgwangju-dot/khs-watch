@@ -341,4 +341,62 @@ try:
 except RuntimeError as e:
     check("oct06-quality-gate-live-misclassifications", "목하" in str(e) and "가정적 정치 발언" in str(e))
 
+# 12) 10/7 실운영 오류 재발 방지: 이스라엘 경고/사우디 중복/TASS 일정/Reuters 제목 번역.
+israel_warning = row(
+    "ISRAEL WARNS OF ATTACK RISK ABROAD AHEAD OF OCT. 7 ANNIVERSARY",
+    source="Walter Bloomberg",
+    link="https://t.me/WalterBloomberg/36471",
+)
+check("oct07-israel-warning-detected", mod._israel_oct7_abroad_warning(israel_warning))
+s, tags = mod.score_item(israel_warning, dt.datetime.now(mod.watch.KST))
+check("oct07-israel-warning-yellow", mod.final_color(israel_warning) == "yellow" and "확전" not in tags and "실제공격아님" in tags)
+check(
+    "oct07-israel-warning-translation",
+    "10월 7일 3주년" in mod.translate_ko(israel_warning["title_original"])
+    and "실제 공격 발생 아님" in mod.translate_ko(israel_warning["title_original"]),
+)
+
+tass_visit = row(
+    "CIS summit, meeting with Pezeshkian, Caspian ecology: on Putin's visit to Turkmenistan",
+    source="TASS",
+    link="https://tass.com/politics/2198439",
+)
+s, tags = mod.score_item(tass_visit, dt.datetime.now(mod.watch.KST))
+check("oct07-tass-turkmenistan-routine-suppressed", mod._tass_turkmenistan_visit_noise(tass_visit) and s == 0 and tags == [])
+
+saudi_yonhap = row(
+    "사우디 공항·정유시설에 후티 공습…韓기업 가까운 지역도 피격",
+    source="연합뉴스",
+    description="후티가 자잔·나지란 공항과 라빅 정유시설 등을 공격했다는 보도.",
+)
+saudi_vietnam = row(
+    "Saudi Arabia confirms damage at two airports following Houthi attacks",
+    source="Vietnam.vn",
+    description="Saudi authorities confirmed damage at Jazan and Najran airports after Houthi attacks.",
+)
+saudi_special = row(
+    "후티, 사우디 공항·정유시설 공습…한국 기업 진출지 인근도 피해",
+    source="스페셜타임스",
+    description="사우디 공항과 라빅 정유시설 관련 동일 사건 재보도.",
+)
+saudi_yonhap["published"] = "Tue, 06 Oct 2026 14:04:00 +0000"
+saudi_vietnam["published"] = "Tue, 06 Oct 2026 13:39:00 +0000"
+saudi_special["published"] = "Tue, 06 Oct 2026 19:25:00 +0000"
+check("oct07-saudi-cluster-yh", mod._saudi_houthi_airport_refinery_cluster(saudi_yonhap))
+check("oct07-saudi-cluster-vn", mod._saudi_houthi_airport_refinery_cluster(saudi_vietnam))
+check("oct07-saudi-cluster-special", mod._saudi_houthi_airport_refinery_cluster(saudi_special))
+check(
+    "oct07-saudi-cross-source-same-id",
+    mod.item_id(saudi_yonhap) == mod.item_id(saudi_vietnam) == mod.item_id(saudi_special),
+)
+
+reuters_tanker_title = "Russia says tanker crew rescued in Black Sea after attack set ship ablaze"
+reuters_tanker_ko = mod.translate_ko(reuters_tanker_title)
+check(
+    "oct07-reuters-tanker-grammar",
+    "공격으로 화재가 난" in reuters_tanker_ko
+    and "승무원 23명 전원 구조" in reuters_tanker_ko
+    and "승무원이 선박에 불을 붙였" not in reuters_tanker_ko,
+)
+
 print("WAR_PEACE_OCT04_REGRESSION_OK")

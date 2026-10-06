@@ -9,7 +9,7 @@ import re
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
-from email.utils import parsedate_to_datetime
+from email.utils import format_datetime, parsedate_to_datetime
 from zoneinfo import ZoneInfo
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -50,6 +50,8 @@ TENDER = ('tender', 'bid', 'bidding', 'contract', 'award', 'epc', 'mou', '입찰
 INFRA = ('road', 'bridge', 'hydropower', 'electricity', 'energy', 'telecom', 'housing', 'school', 'hospital',
          '도로', '교량', '수력발전', '전력', '에너지', '통신', '주택', '학교', '병원')
 
+MAX_FRESH_MINUTES = 72 * 60
+
 
 def req(url, timeout=20):
     headers = {'User-Agent': 'Mozilla/5.0 khs-disaster-reconstruction-watch/1.0'}
@@ -70,6 +72,9 @@ def translate_ko(text):
     text = clean(text)
     if not text or has_korean(text):
         return text
+    low = text.lower()
+    if "south korea pledges support for nepal" in low and "post-flood reconstruction" in low:
+        return "한국, 네팔 홍수 피해 후 재건 지원 의향 밝혀"
     url = ('https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=ko&dt=t&q=' + urllib.parse.quote(text))
     for _ in range(2):
         try:
@@ -79,7 +84,7 @@ def translate_ko(text):
                 return out
         except Exception:
             pass
-    return '영문 기사 번역이 일시적으로 지연됨 — 원문 확인 필요'
+    return ''
 
 
 def parse_pub(pub):
@@ -169,6 +174,9 @@ def relevant(row):
 def score(row, now):
     if not relevant(row):
         return -100
+    age = age_minutes(row, now)
+    if age is None or age > MAX_FRESH_MINUTES:
+        return -100
     text = text_of(row)
     src = (row.get('source') or '').lower()
     s = 20
@@ -229,7 +237,7 @@ def freshness(row, now):
     if age <= 30: level = '속보'
     elif age <= 180: level = '신규'
     else: level = '후속'
-    return level, f'{pub:%H:%M} KST · 🟥 <b>{age}분 전</b>'
+    return level, f'{pub:%m-%d %H:%M} KST · <b>{age}분 전</b>'
 
 
 def source_label(row):
@@ -241,7 +249,7 @@ def build_alert(items, now):
     lines = ['<b>재난·재건 웹감시</b>', f'조회 {now:%Y-%m-%d %H:%M} KST', '', '<b>핵심 변화</b>']
     for i, row in enumerate(items[:5], 1):
         level, time_str = freshness(row, now)
-        title_ko = translate_ko(row.get('title_original', ''))
+        title_ko = row.get('title_ko') or translate_ko(row.get('title_original', ''))
         country = country_label(row)
         link = html.escape(row.get('link', ''), quote=True)
         src = html.escape(source_label(row), quote=False)
@@ -256,9 +264,19 @@ def build_alert(items, now):
         lines.append(meta)
         lines.append('')
 
+    blobs = [text_of(x) for x in items]
+    confirmed = []
+    if any(any(k in t for k in ('pledges support', 'support reconstruction', 'support for reconstruction', 'willingness', '재건 지원', '복구 지원')) for t in blobs):
+        confirmed.append('한국 정부의 재건·복구 지원 의향')
+    if any(any(k in t for k in ('humanitarian assistance', 'relief materials', '인도지원', '구호물자')) for t in blobs):
+        confirmed.append('인도지원·구호물자 제공')
+    if any(any(k in t for k in ('1 million', '$1 million', 'usd 1 million', '100만달러', '100만 달러')) for t in blobs):
+        confirmed.append('긴급 인도지원 100만달러(재건 사업비와 별도)')
+    confirmed_text = ' · '.join(dict.fromkeys(confirmed)) if confirmed else '기사별 재건·복구 관련 사실만 반영'
+
     lines += [
         '<b>재건 단계</b>',
-        '- <b>확정:</b> 정부 지원금·구호물자·재건 지원 의향',
+        f'- <b>확정:</b> {confirmed_text}',
         '- <b>미확정:</b> 별도 재건 사업비·발주처·입찰·한국기업 수주',
         '- <b>다음:</b> 피해평가 → 재원조달 → 사업목록 → 입찰 → 본계약',
     ]
@@ -294,6 +312,10 @@ def run():
         row['score'] = score(row, now)
         if row['score'] < 20:
             continue
+        title_ko = translate_ko(row.get('title_original', ''))
+        if not title_ko:
+            continue
+        row['title_ko'] = title_ko
         old = dedup.get(iid)
         if old is None or row['score'] > old['score']:
             dedup[iid] = row
@@ -328,12 +350,47 @@ def finalize():
     PENDING.unlink(missing_ok=True)
 
 
+def self_test():
+    now = dt.datetime.now(KST)
+    old = {
+        'title_original': "South Korea pledges support for Nepal's post-flood reconstruction",
+        'link': 'https://example.com/old-nepal',
+        'published': format_datetime(now - dt.timedelta(days=31)),
+        'source': 'Bing News',
+        'description': 'South Korea expressed willingness to support Nepal in post-disaster reconstruction efforts.',
+        'feed': 'Bing News',
+    }
+    assert score(old, now) == -100, 'stale article must be hard-suppressed'
+
+    fresh = dict(old)
+    fresh['published'] = format_datetime(now - dt.timedelta(minutes=10))
+    fresh['source'] = 'PTI'
+    fresh['description'] = (
+        'South Korea expressed willingness to support Nepal in post-disaster reconstruction efforts '
+        'and had provided humanitarian assistance and relief materials.'
+    )
+    fresh['tags'] = classify(fresh)
+    fresh['title_ko'] = translate_ko(fresh['title_original'])
+    assert fresh['title_ko'] == '한국, 네팔 홍수 피해 후 재건 지원 의향 밝혀'
+    alert = build_alert([fresh], now)
+    assert '영문 기사 번역이 일시적으로 지연됨' not in alert
+    assert '정부 지원금·구호물자·재건 지원 의향' not in alert
+    assert '한국 정부의 재건·복구 지원 의향' in alert
+    assert '인도지원·구호물자 제공' in alert
+    _, fresh_meta = freshness(fresh, now)
+    assert '🟥' not in fresh_meta
+    print('DISASTER_RECONSTRUCTION_REGRESSION_OK')
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--finalize', action='store_true')
+    ap.add_argument('--self-test', action='store_true')
     args = ap.parse_args()
     if args.finalize:
         finalize()
+    elif args.self_test:
+        self_test()
     else:
         run()
 

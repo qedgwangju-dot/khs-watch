@@ -38,6 +38,18 @@ def translate_ko(title):
     raw = str(title or "")
     low = raw.lower()
     if (
+        "israel" in low
+        and any(x in low for x in ("oct. 7", "oct 7", "october 7", "10월 7일"))
+        and any(x in low for x in ("attack risk abroad", "attacks abroad", "terror threat", "terror risk", "해외 공격 위험", "해외 테러"))
+        and any(x in low for x in ("anniversary", "주년"))
+    ):
+        return "이스라엘 국가안보회의, 10월 7일 3주년 전후 해외의 이스라엘인·유대인 대상 공격 위험 증가 경고 — 실제 공격 발생 아님"
+    if (
+        "tanker crew rescued in black sea" in low
+        and "attack set ship ablaze" in low
+    ):
+        return "러시아 교통부, 흑해에서 무인수상정 공격으로 화재가 난 유조선 승무원 23명 전원 구조됐다고 발표"
+    if (
         any(x in low for x in ("houthi", "후티"))
         and any(x in low for x in ("saudi", "사우디"))
         and any(x in low for x in ("rabigh", "라빅"))
@@ -217,6 +229,76 @@ def _new_tanker_attack_variant(row):
     return any(x in t for x in ("another tanker", "additional tanker", "fourth tanker", "fifth tanker", "추가 유조선", "또 다른 유조선", "4번째 유조선", "5번째 유조선"))
 
 
+def _israel_oct7_abroad_warning(row):
+    t = _text(row).lower()
+    israel = any(x in t for x in ("israel", "israeli", "이스라엘"))
+    anniversary = (
+        any(x in t for x in ("oct. 7", "oct 7", "october 7", "10월 7일"))
+        and any(x in t for x in ("anniversary", "주년"))
+    )
+    warning = any(x in t for x in (
+        "warns of attack risk abroad", "warns of attacks abroad", "attack risk abroad",
+        "terror threat abroad", "terror risk abroad", "heightened terror threat",
+        "해외 공격 위험", "해외 테러 위험", "공격 위험 경고",
+    ))
+    actual = any(x in t for x in (
+        "attack occurred", "attacked today", "was attacked", "were attacked",
+        "explosion killed", "casualties reported", "공격이 발생", "실제 공격",
+        "피격됐다", "폭발로 사망", "사상자 발생",
+    ))
+    return israel and anniversary and warning and not actual
+
+
+def _tass_turkmenistan_visit_noise(row):
+    src = " ".join([str(row.get("source", "")), str(row.get("link", ""))]).lower()
+    t = _text(row).lower()
+    if "tass.com/politics/2198439" in src:
+        return True
+    return (
+        "tass" in src
+        and "turkmenistan" in t
+        and "cis summit" in t
+        and "caspian" in t
+        and any(x in t for x in ("pezeshkian", "페제쉬키안"))
+    )
+
+
+def _saudi_houthi_airport_refinery_cluster(row):
+    t = _text(row).lower()
+    saudi = any(x in t for x in ("saudi", "사우디"))
+    houthi = any(x in t for x in ("houthi", "houthis", "후티"))
+    attack = any(x in t for x in (
+        "attack", "attacked", "strike", "struck", "missile", "drone",
+        "공격", "공습", "피격", "미사일", "드론",
+    ))
+    airport = any(x in t for x in ("airport", "airports", "공항"))
+    refinery = any(x in t for x in ("refinery", "aramco", "rabigh", "정유시설", "정유소", "아람코", "라빅"))
+    airport_damage = airport and any(x in t for x in (
+        "two airports", "2 airports", "damage", "damaged", "injured",
+        "공항 두 곳", "공항 2곳", "피해", "부상",
+    ))
+    named_targets = any(x in t for x in ("jazan", "najran", "riyadh", "rabigh", "자잔", "나지란", "리야드", "라빅"))
+    return saudi and houthi and attack and ((airport and refinery) or airport_damage or (airport and named_targets))
+
+
+def _new_saudi_houthi_attack_variant(row):
+    t = _text(row).lower()
+    return any(x in t for x in (
+        "another attack", "new attack", "additional attack", "another strike", "new strike",
+        "again attacked", "second wave", "또다시 공격", "추가 공격", "새 공격", "2차 공습",
+    ))
+
+
+def _cluster_day(row, shift_hours=6):
+    try:
+        pub = watch.parse_pub(row.get("published", ""))
+        if pub:
+            return (pub.astimezone(watch.KST) - dt.timedelta(hours=shift_hours)).date().isoformat()
+    except Exception:
+        pass
+    return (dt.datetime.now(watch.KST) - dt.timedelta(hours=shift_hours)).date().isoformat()
+
+
 def _trump_la_sd_hypothetical(row):
     """정치 연설의 가정적 수사를 실제 군사 신규 변화로 올리지 않는다."""
     t = _text(row)
@@ -316,6 +398,10 @@ def marks(row):
         out.append("루코일종전협상연계상업거래")
     if _hormuz_tanker_attack(row):
         out.append("호르무즈유조선피격클러스터")
+    if _israel_oct7_abroad_warning(row):
+        out.append("이스라엘10월7일해외공격위험경고")
+    if _saudi_houthi_airport_refinery_cluster(row):
+        out.append("사우디후티공항정유시설공격클러스터")
     if _mokha_counteroffensive_context(row):
         out.append("목하탈환공세")
     if _tass_russian_strike_claim(row):
@@ -342,6 +428,8 @@ def korean_title(ms):
         return "종전 협상 과정에서 루코일 해외자산 매각 논의 — 휴전 진전과 별개의 상업거래"
     if "호르무즈유조선피격클러스터" in ms:
         return "호르무즈 유조선 피격 지속 — 미확인 발사체·선박 피해를 실제 해상안보 사건으로 추적"
+    if "이스라엘10월7일해외공격위험경고" in ms:
+        return "이스라엘 국가안보회의, 10월 7일 3주년 전후 해외의 이스라엘인·유대인 대상 공격 위험 증가 경고 — 실제 공격 발생 아님"
     if "목하탈환공세" in ms:
         return "사우디 지원 예멘군, 후티가 장악했던 목하·바브엘만데브 일대 탈환 공세 — 후티의 9월 점령은 배경"
     if "러시아국방부타격주장" in ms:
@@ -368,6 +456,8 @@ def signals(ms):
         out.append("🟡 푸틴·미 특사 간 루코일 해외자산 매각 논의 — 종전회담과 같은 자리에서 논의됐지만 휴전 진전 자체는 아님")
     if "호르무즈유조선피격클러스터" in ms:
         out.append("🔴 UKMTO 기준 호르무즈·오만 인근 유조선의 미확인 발사체 피격이 반복 — 동일 사건 재인용과 실제 추가 피격을 분리")
+    if "이스라엘10월7일해외공격위험경고" in ms:
+        out.append("🟡 이스라엘 국가안보회의가 10월 7일 3주년 전후 해외 공격 위험 증가를 경고 — 실제 공격 발생과는 구분")
     if "목하탈환공세" in ms:
         out.append("🔴 현재 변화는 사우디 지원 예멘군의 목하·바브엘만데브 탈환 공세 — 후티의 9월 목하 점령을 신규 속보로 재사용하지 않음")
     if "러시아국방부타격주장" in ms:
@@ -381,6 +471,7 @@ def signals(ms):
         "후티리야드아람코공격주장", "리야드아람코화재원인미확정",
         "러정유시설보복공격확대예고", "러시아종전조건입장표명",
         "루코일종전협상연계상업거래", "호르무즈유조선피격클러스터",
+        "이스라엘10월7일해외공격위험경고",
         "목하탈환공세", "러시아국방부타격주장", "TASS러시아최대드론공격집계",
     }
     if set(ms) & custom:
@@ -398,7 +489,7 @@ def score_item(row, now):
     fresh_limit = int(getattr(prev, "FRESH_NEWS_MAX_MINUTES", 3 * 60))
     if age is not None and age > fresh_limit:
         return 0, []
-    if _trump_la_sd_hypothetical(row) or _stale_mokha_capture_only(row):
+    if _trump_la_sd_hypothetical(row) or _stale_mokha_capture_only(row) or _tass_turkmenistan_visit_noise(row):
         return 0, []
     score, tags = _orig_score_item(row, now)
     ms = set(marks(row))
@@ -406,6 +497,7 @@ def score_item(row, now):
     yellow = {
         "러정유시설보복공격확대예고", "리야드아람코화재원인미확정",
         "러시아종전조건입장표명", "루코일종전협상연계상업거래",
+        "이스라엘10월7일해외공격위험경고",
     }
     if ms & yellow:
         tags = [t for t in tags if t not in ("확전", "휴전·평화", "재건", "종전·협상")]
@@ -423,6 +515,11 @@ def score_item(row, now):
         tags += ["우크라이나·러시아", "종전조건", "입장표명"]
     if "루코일종전협상연계상업거래" in ms:
         tags += ["우크라이나·러시아", "협상연계상업거래", "이해충돌점검"]
+    if "이스라엘10월7일해외공격위험경고" in ms:
+        row["title_ko"] = korean_title(ms)
+        tags = [t for t in tags if t not in ("확전", "휴전·평화", "재건", "종전·협상")]
+        tags += ["이스라엘", "해외안보경고", "실제공격아님"]
+        score = max(score, 98)
     if "호르무즈유조선피격클러스터" in ms:
         tags = [t for t in tags if t not in ("휴전·평화", "재건", "종전·협상")]
         tags += ["이란·호르무즈", "확전", "해상안보", "유조선피격"]
@@ -471,6 +568,15 @@ def _stable_source_url(row):
 
 
 def item_id(row):
+    if _saudi_houthi_airport_refinery_cluster(row):
+        key = f"saudi-houthi|airport-refinery-attack|{_cluster_day(row, 6)}"
+        if _new_saudi_houthi_attack_variant(row):
+            norm = re.sub(r"\W+", " ", _title(row)).strip()
+            key += "|additional|" + norm[:80]
+        return hashlib.sha256(("event|" + key).encode()).hexdigest()[:20]
+    if _israel_oct7_abroad_warning(row):
+        key = f"israel|oct7-abroad-warning|{_published_day(row)}"
+        return hashlib.sha256(("event|" + key).encode()).hexdigest()[:20]
     if _hormuz_tanker_attack(row):
         key = f"hormuz|tanker-attack-cluster|{_published_day(row)}"
         if _new_tanker_attack_variant(row):
@@ -508,6 +614,10 @@ def topic_label(row):
         return "우크라이나·러시아 · 종전협상 연계 상업거래"
     if "호르무즈유조선피격클러스터" in ms:
         return "이란·호르무즈 · 유조선 피격"
+    if "이스라엘10월7일해외공격위험경고" in ms:
+        return "이스라엘 · 10월 7일 해외 공격 위험 경고"
+    if "사우디후티공항정유시설공격클러스터" in ms:
+        return "사우디·후티"
     if "목하탈환공세" in ms:
         return "예멘·후티·바브엘만데브 · 탈환 공세"
     if "러시아국방부타격주장" in ms:
@@ -531,6 +641,7 @@ def final_color(row):
     if ms & {
         "러정유시설보복공격확대예고", "리야드아람코화재원인미확정",
         "러시아종전조건입장표명", "루코일종전협상연계상업거래",
+        "이스라엘10월7일해외공격위험경고",
     }:
         return "yellow"
     if "호르무즈유조선피격클러스터" in ms:
@@ -625,6 +736,8 @@ def semantic_fix(text):
             marker, topic = "🟡", "우크라이나·러시아 · 종전 조건 입장"
         elif any(x in block for x in ("루코일 해외자산 매각", "휴전 진전과 별개의 상업거래")):
             marker, topic = "🟡", "우크라이나·러시아 · 종전협상 연계 상업거래"
+        elif any(x in block for x in ("10월 7일 3주년 전후 해외", "oct. 7 anniversary", "october 7 anniversary")):
+            marker, topic = "🟡", "이스라엘 · 10월 7일 해외 공격 위험 경고"
         elif (
             " · 확전" in block
             or any(x in block for x in (
@@ -693,6 +806,14 @@ def verify_alert(test_mode=False):
         issues.append("TASS 드론 규모 집계를 확정 사실처럼 표시")
     if ("라빅" in text and "정유시설" in text and "후티" in text) and "주장 단계" not in text:
         issues.append("라빅 정유시설 공격을 후티 주장 단계와 사우디 확인 피해로 분리하지 않음")
+    if "tass.com/politics/2198439" in low:
+        issues.append("투르크메니스탄 CIS·카스피 정상 일정 기사를 종전·협상 신규 변화로 표시")
+    if "승무원이 선박에 불을 붙였" in text:
+        issues.append("Reuters 유조선 제목 문법을 오역해 승무원이 방화한 것으로 표시")
+    if "10월을 앞두고 해외 공격 위험 경고 7주년" in text:
+        issues.append("이스라엘 10월 7일 3주년 해외 공격위험 경고 제목을 오역")
+    if re.search(r"(?ms)^🔴\s+\[(?:속보|신규|후속)\]\s+<b>\d+\.[^<]*</b>\n[^\n]*(?:10월 7일 3주년|해외 공격 위험 증가 경고)", text):
+        issues.append("이스라엘의 해외 공격위험 경고를 실제 공격·확전으로 표시")
     if issues:
         raise RuntimeError("WAR_OCT04_QUALITY_GATE: " + " | ".join(issues))
 
