@@ -193,7 +193,7 @@ OFFICIAL_DOMAINS = (
 TRUSTED_DOMAINS = (
     "reuters.com", "hankyung.com", "mt.co.kr", "biz.chosun.com", "sedaily.com",
     "etnews.com", "digitimes.com", "nikkei.com", "asia.nikkei.com", "pcbshop.org",
-    "skis.com.tw", "edaily.co.kr", "newspim.com",
+    "skis.com.tw", "edaily.co.kr", "newspim.com", "xxquant.com",
 )
 
 def fetch(url: str, timeout: int = 20) -> bytes:
