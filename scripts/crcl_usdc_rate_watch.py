@@ -365,20 +365,26 @@ def chartexchange_crcl_daily() -> dict:
 def verified_crcl_daily() -> dict:
     cx = chartexchange_crcl_daily()
     yahoo = yahoo_daily("CRCL")
-    if cx.get("date") != yahoo.get("date"):
-        raise RuntimeError(
-            f"CRCL close date mismatch: ChartExchange={cx.get('date')} Yahoo={yahoo.get('date')}"
-        )
     cx_close = float(cx["close"])
     yahoo_close = float(yahoo["close"])
+    same_date = str(cx.get("date") or "") == str(yahoo.get("date") or "")
     gap_pct = abs(cx_close - yahoo_close) / cx_close * 100.0 if cx_close else 0.0
+
+    if not same_date:
+        status = "yahoo_lagging" if str(yahoo.get("date") or "") < str(cx.get("date") or "") else "date_mismatch"
+    elif gap_pct <= 0.10:
+        status = "confirmed"
+    else:
+        status = "discrepant"
+
     result = dict(cx)
     result.update({
         "crosscheck_source": "Yahoo Finance chart",
+        "crosscheck_date": yahoo.get("date"),
         "crosscheck_close": yahoo_close,
         "crosscheck_daily_pct": float(yahoo.get("daily_pct", 0.0) or 0.0),
         "crosscheck_gap_pct": round(gap_pct, 3),
-        "crosscheck_status": "confirmed" if gap_pct <= 0.10 else "discrepant",
+        "crosscheck_status": status,
     })
     return result
 
