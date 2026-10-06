@@ -433,4 +433,45 @@ iran_projectile = row(
 )
 check("oct07-iran-south-confirmed-projectile-not-yellow", not mod._iran_south_unattributed_explosions(iran_projectile))
 
+# 14) 10/7 08:32 dry-run에서 확인된 추가 오류: 공급회복/배경기사/불가리아 번역/사우디 재인용.
+saudi_corrected_repost = row(
+    "Saudi airport and Rabigh Aramco attack follow-up",
+    source="Daum",
+    description="Follow-up report on the same Houthi attacks on Saudi airports and the Rabigh refinery claim.",
+)
+saudi_corrected_repost["title_ko"] = "후티의 사우디 공항·라빅 Aramco 정유시설 공격 보도 — 공항 피해는 사우디 확인, 라빅 정유시설은 후티 주장 단계"
+saudi_corrected_repost["published"] = "Tue, 06 Oct 2026 21:32:00 +0000"
+check("oct07-saudi-corrected-repost-cluster", mod._saudi_houthi_airport_refinery_cluster(saudi_corrected_repost))
+check("oct07-saudi-corrected-repost-canonical-id", mod.item_id(saudi_corrected_repost) == "ca42f91a5aa3fbdf8fa2")
+
+sk_russia_background = row(
+    "South Korea exports eased Russia fuel crisis caused by drone strikes, Ukraine says",
+    source="Reuters",
+    description="July and August 2026 South Korean exports of petroleum products eased Russia's fuel crisis after earlier drone strikes.",
+    link="https://www.reuters.com/business/energy/south-korea-exports-eased-russia-fuel-crisis-caused-by-drone-strikes-ukraine-2026-10-06/",
+)
+s, tags = mod.score_item(sk_russia_background, dt.datetime.now(mod.watch.KST))
+check("oct07-russia-fuel-background-suppressed", mod._south_korea_russia_fuel_background(sk_russia_background) and s == 0 and tags == [])
+
+pipeline_recovery = row(
+    "사우디 동서 송유관 하루 580만배럴 수송 회복…드론 공격 닷새 만에 재가동",
+    source="파이낸스투데이",
+    description="사우디 East-West pipeline이 재가동돼 5.8 million barrels 수준의 원유 수송을 회복했다.",
+)
+s, tags = mod.score_item(pipeline_recovery, dt.datetime.now(mod.watch.KST))
+check("oct07-saudi-pipeline-recovery-detected", mod._saudi_east_west_pipeline_recovery(pipeline_recovery))
+check("oct07-saudi-pipeline-recovery-green", mod.final_color(pipeline_recovery) == "green" and "확전" not in tags and "실물공급회복" in tags)
+check("oct07-saudi-pipeline-recovery-topic", mod.topic_label(pipeline_recovery) == "사우디 · 동서 송유관 공급회복")
+check("oct07-saudi-pipeline-recovery-id", mod.item_id(pipeline_recovery) == "a1fa9bcc8f6506fd0820")
+
+bulgaria_title = "Drone sinks ship off Bulgaria, as fears grow about hybrid attacks by Russia"
+bulgaria_ko = mod.translate_ko(bulgaria_title)
+check(
+    "oct07-bulgaria-reuters-translation",
+    "상선 2척 피격" in bulgaria_ko
+    and "1척 침몰" in bulgaria_ko
+    and "공격 주체는 공식 확인 전" in bulgaria_ko
+    and "드론이 불가리아에서 침몰" not in bulgaria_ko,
+)
+
 print("WAR_PEACE_OCT04_REGRESSION_OK")
