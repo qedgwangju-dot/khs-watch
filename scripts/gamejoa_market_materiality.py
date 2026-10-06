@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 84
+VERSION = 85
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -200,7 +200,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("project_response", r"(?:정부|산업부).{0,45}(?:팩트시트|합의.{0,15}없는|사업.{0,15}미정)", r"팩트시트|공동\s*합의|추진\s*여부"),
     ("stockpile_release", r"비축유|비축\s*원유|G7.{0,30}(?:원유|경유).{0,20}방출|oil reserves|stockpile", r"비축\s*(?:유|원유|경유)|석유\s*비축|oil reserves|stockpile"),
     ("mortgage_rate", r"주담대|모기지|주택담보대출", r"주담대|모기지|주택담보대출|mortgage"),
-    ("macro_release", r"\bcpi\b|\bpce\b|\bppi\b|\bgdp\b|고용(?!량)|실업률|물가|건설지출", r"cpi|pce|ppi|gdp|고용(?!량)|실업|물가|건설지출|인플레이션|inflation|payroll"),
+    ("macro_release", r"\bcpi\b|\bpce\b|\bppi\b|\bgdp\b|고용(?!량)|비농업\s*일자리|실업률|물가|건설지출", r"cpi|pce|ppi|gdp|고용(?!량)|비농업\s*일자리|실업|물가|건설지출|인플레이션|inflation|payroll"),
     ("market_macro_response", r"(?=.*(?:뉴욕마감|뉴욕증시|월가))(?=.*(?:고용|취업|실업|CPI|FOMC|연준))", r"고용|비농업|실업|CPI|FOMC|연준|나스닥|S&P\s*500|다우"),
     ("equity_index", r"(?:나스닥|S&P\s*500|다우|코스피|코스닥).{0,20}(?:사상\s*최고|역대\s*최고|신고가)", r"나스닥|S&P\s*500|다우|코스피|코스닥"),
     ("equity_index_outlook", r"(?:코스피|코스닥|나스닥|S&P\s*500)[^A-Za-z0-9가-힣]{0,6}\d[\d,]*(?:[~∼-]\d[\d,]*)?.{0,25}(?:전망|간다|목표)", r"코스피|코스닥|나스닥|S&P\s*500"),
@@ -319,6 +319,8 @@ def focus_kind(title: str) -> str:
         return "intraday_equity"
     if re.search(r"청약\s*경쟁률", title or ""):
         return "housing_demand"
+    if re.search(r"수주.{0,30}비중", title or "") and not re.search(r"추가\s*수주|신규\s*계약|수주액\s*변경", title or ""):
+        return "backlog_mix"
     if (re.search(r"국책과제.{0,15}(?:수주|선정)", title or "")
             and not re.search(r"매출|영업이익|실적|목표주가", title or "")):
         return "research_award"
@@ -372,6 +374,10 @@ def focus_matches(title: str, sentence: str) -> bool:
     if kind == "housing_demand":
         return bool(re.search(r"전국\s*1순위\s*평균\s*청약\s*경쟁률", sentence)
                     and re.search(r"\d+(?:\.\d+)?\s*대\s*1", sentence))
+    if kind == "backlog_mix":
+        return bool(re.search(r"수주\s*잔고", sentence) and re.search(SOURCE_MONEY, sentence)
+                    and re.search(r"비중.{0,15}\d+(?:\.\d+)?%", sentence)
+                    and re.search(r"분석했다|밝혔다|발표했다", sentence))
     if kind == "research_award":
         return bool(re.search(r"국책과제", sentence) and re.search(r"수주|선정", sentence)
                     and re.search(r"\d{1,2}일\s*밝혔다", sentence))
@@ -1377,6 +1383,23 @@ def industrial_customer_adoption_observation(title: str, body: str) -> dict[str,
                 r"초도\s*물량\s*납품을\s*완료", statement) else "adopted", "source_excerpt": statement}
 
 
+def broker_backlog_mix_observation(title: str, body: str) -> dict[str, str]:
+    if focus_kind(title) != "backlog_mix":
+        return {}
+    statement = next((row for row in source_sentences(source_reported_body(body)) if focus_matches(title, row)), "")
+    match = re.search(
+        rf"([A-Za-z0-9가-힣]{{2,25}}증권)(?:은|는)\s*(\d{{1,2}})일\s*"
+        rf"([A-Za-z0-9가-힣&·.-]{{2,30}})에\s*대해\s*(올해\s*(?:상반기|하반기)|20\d{{2}}년\s*(?:상반기|하반기)|[1-4]분기)\s*"
+        rf"기준\s*([^.!?]{{2,25}}?부문)\s*수주\s*잔고\s*(?P<amount>{SOURCE_MONEY})\s*중\s*"
+        rf"([가-힣]{{2,15}})\s*비중이\s*(\d+(?:\.\d+)?)%에\s*육박", statement,
+    )
+    if not match or match.group(3) not in title:
+        return {}
+    return {"broker": match.group(1), "day": match.group(2), "issuer": match.group(3),
+            "period": match.group(4), "business": match.group(5), "amount": match.group('amount'),
+            "region": match.group(9), "share": match.group(10), "source_excerpt": statement}
+
+
 def commercial_delivery_terms(title: str, body: str, published: str = "") -> dict[str, object]:
     """Bind a model-specific delivery to its supplier, customer and announcement."""
     if not re.search(r"공급|납품", title) or not re.match(r"20\d{2}-\d{2}-\d{2}", published):
@@ -1385,15 +1408,16 @@ def commercial_delivery_terms(title: str, body: str, published: str = "") -> dic
                  if not BACKGROUND.search(row) and not PAST_ACTION.search(row)
                  and re.search(r"(?:공급|납품)한다고\s*\d{1,2}일\s*밝혔다", row)), "")
     supplier = re.search(r"([A-Za-z0-9가-힣&·.-]{2,30})(?:은|는|가)\s+", lead)
-    delivery = re.search(r"([A-Za-z0-9가-힣&·.-]{2,30})(?:의)?\s*['‘]([^'’]{2,60})['’]에\s*"
+    delivery = re.search(r"([A-Za-z0-9가-힣&·.-]{2,30})의\s*[^'‘.!?]{0,40}?['‘]([^'’]{2,60})['’](?:[^'‘’.!?]{0,12})?에\s*"
                          r"([^'‘’\".!?]{2,60}?)\s*(?:공급|납품)한다고", lead)
     day = re.search(r"(?<!\d)(\d{1,2})일\s*밝혔다", lead)
     if not (supplier and delivery and day and supplier.group(1) in title):
         return {}
     customer = re.sub(r"의$", "", delivery.group(1))
+    product = re.sub(r"^(?:차세대\s*|소프트웨어\s*중심\s*차량\(SDV\)\s*맞춤형\s*)", "", delivery.group(3))
     return {"issuer": supplier.group(1), "customer": customer,
             "model": canonical_source_fact(delivery.group(2)),
-            "product": canonical_source_fact(re.sub(r"^차세대\s*", "", delivery.group(3))),
+            "product": canonical_source_fact(product),
             "disclosure_date": published[:8] + day.group(1).zfill(2), "stage": "delivery_announced",
             "amounts": [[row.group(2), korean_amount_value(row.group(1))] for row in re.finditer(SOURCE_MONEY, lead)],
             "explicit_revision": bool(re.search(r"공급\s*(?:변경|정정|철회)|추가\s*공급|납품\s*(?:변경|정정)", title + " " + lead))}
@@ -2043,6 +2067,26 @@ def equity_publication_assessment(title: str, evidence: list[dict], *, body: str
                  and re.search(r"발표했다|확정했다|결정했다|증액했다|인상했다|인하했다|변경했다", row)))
         for row in source_rows
     )
+    if (re.search(r"공론화|시민참여단|시민\s*회의", title + " " + " ".join(source_rows[:12]))
+            and re.search(r"인식조사|숙의토론|시민제안서|온라인\s*투표", body)
+            and not new_policy_terms and not economic_execution):
+        return {'eligible': False, 'reason': 'public_deliberation_survey_not_macro_release_or_policy_execution'}
+    if (re.search(r"국감|국정감사", title + " " + lead)
+            and re.search(r"정책\s*방향|정책.{0,10}제시", lead)
+            and re.search(r"발표한\s*데\s*이어|기존\s*계획|종전\s*계획", body)
+            and not new_policy_terms):
+        return {'eligible': False, 'reason': 'national_policy_roadmap_without_new_committed_terms'}
+    if (re.search(r"스마트오피스|사무환경|무선\s*업무\s*환경", title + " " + lead)
+            and re.search(r"업무협약|\bMOU\b", lead, re.I)
+            and not any(item['kind'] in {'commercial_order', 'earnings_or_guidance', 'licensing_cashflow',
+                                       'capital_or_shareholder_action', 'procurement_execution_stage'} for item in evidence)
+            and not re.search(r"(?:신규\s*고객|초도\s*납품|첫\s*납품|고객\s*검증).{0,35}(?:완료|시작|확정)|"
+                              r"공급\s*계약.{0,25}체결", lead)):
+        return {'eligible': False, 'reason': 'office_technology_mou_roles_not_actual_customer_delivery'}
+    if (re.search(r"\d+년간|연간", title) and re.search(r"정전|사고|피해", title)
+            and re.search(r"제출받은\s*자료|자료를\s*분석|예방.{0,20}투입", lead)
+            and not re.search(r"(?:오늘|이날|\d{1,2}일).{0,50}(?:정전.{0,15}발생|생산.{0,15}중단|피해.{0,15}발생)", lead)):
+        return {'eligible': False, 'reason': 'historical_operational_audit_not_current_supply_disruption'}
     if (re.search(r"국감|국정감사|청문회", title + " " + lead)
             and re.search(r"총력|최우선|안정|완화|강조", title)
             and re.search(r"\d{1,2}월\s*발표(?:된|한)|기존\s*계획|종전\s*계획", body)
@@ -2436,6 +2480,12 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
     routine = bool(ROUTINE_HEADLINE.search(title) and not HARD_HEADLINE.search(title))
     soft = bool(SOFT_HEADLINE.search(title) and not HARD_HEADLINE.search(title))
     matches = []
+    if focus_kind(title) == 'backlog_mix':
+        for sentence in sentences:
+            if focus_matches(title, sentence):
+                matches.append((2, 60, 0, ['earnings', 'timeline'], {
+                    'kind': 'order_backlog_level', 'stage': 'reported_statistic', 'source_excerpt': sentence,
+                }))
     research = research_program_award_observation(title, body)
     if research or focus_kind(title) == 'research_award':
         statement = research.get('source_excerpt') or next((row for row in sentences if focus_matches(title, row)), '')
@@ -2567,7 +2617,7 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
                 continue
             if focus_kind(title) == "equity_index" and kind != "market_price_or_flow":
                 continue
-            if focus_kind(title) in {"intraday_equity", "housing_demand", "marketing_offtake", "aviation_network", "research_award", "industrial_customer_adoption"}:
+            if focus_kind(title) in {"intraday_equity", "housing_demand", "marketing_offtake", "aviation_network", "research_award", "industrial_customer_adoption", "backlog_mix"}:
                 continue
             if not evidence_is_new_event(kind, sentence):
                 continue

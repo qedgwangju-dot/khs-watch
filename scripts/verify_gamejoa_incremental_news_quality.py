@@ -53,6 +53,8 @@ DELIVERY_SCOPE_FIXTURE = json.loads((ROOT / "data/gamejoa_delivery_scope_fixture
 DELIVERY_SCOPE_CASES = {case["id"]: case for case in DELIVERY_SCOPE_FIXTURE["cases"]}
 POSTDEPLOY_SCOPE_FIXTURE = json.loads((ROOT / "data/gamejoa_postdeploy_market_scope_fixtures_20261006.json").read_text(encoding="utf-8"))
 POSTDEPLOY_SCOPE_CASES = {case["id"]: case for case in POSTDEPLOY_SCOPE_FIXTURE["cases"]}
+FINAL_SCOPE_FIXTURE = json.loads((ROOT / "data/gamejoa_final_scope_fixtures_20261006.json").read_text(encoding="utf-8"))
+FINAL_SCOPE_CASES = {case["id"]: case for case in FINAL_SCOPE_FIXTURE["cases"]}
 LIVE_NOW = NOW.replace(hour=19)
 CONTRACT_BODY = "AMD는 삼성전자와 2027년 데이터센터용 인공지능(AI) 반도체 공동개발을 위한 100억원 규모의 공급 계약을 체결했다고 밝혔다."
 ADDITIONAL_FACT = " AMD는 해당 공급 계약을 위한 반도체 설비투자 예산 500억원을 확정했다고 공시했다."
@@ -94,6 +96,63 @@ def replay():
 
 
 class IncrementalNewsTests(unittest.TestCase):
+    def final_scope_alert(self, key):
+        case = FINAL_SCOPE_CASES[key]
+        return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],
+                'telegram_core_fact': case['old_core']}
+
+    def test_last_prefixed_version83_receipt_replays_all_seven_sources(self):
+        now = NOW.replace(day=6, hour=12)
+        selected_all = []
+        for case in FINAL_SCOPE_CASES.values():
+            with self.subTest(case=case['id']), patch.object(radar.base, 'kst_now', return_value=now):
+                self.assertEqual(hashlib.sha256(case['body'].encode()).hexdigest(), case['full_body_sha256'])
+                item = classify(case, now)
+                selected = radar.quality_display_alerts([item], 30) if item else []
+                self.assertEqual(bool(selected), case['expected_keep'])
+                if selected:
+                    self.assertFalse(radar.source_core_fact_errors(selected[0]))
+                    self.assertTrue(radar.core_sentence_is_complete(selected[0]['telegram_core_fact']))
+                selected_all.extend(selected)
+        with patch.object(radar.base, 'kst_now', return_value=now):
+            self.assertEqual(len(radar.quality_display_alerts(selected_all, 30)), 2)
+
+    def test_deliberative_opinion_survey_is_not_current_employment_statistics(self):
+        case = FINAL_SCOPE_CASES['public_deliberation_not_employment_data']
+        self.assertFalse(eligible(case['title'], case['body']))
+        self.assertTrue(eligible('美 비농업 고용 증가 10만명…예상치 하회',
+                                 '미 노동부는 9월 비농업 일자리가 10만명 증가해 예상치 15만명을 하회했다고 6일 발표했다.'))
+
+    def test_historical_grid_survey_does_not_block_current_power_outage(self):
+        case = FINAL_SCOPE_CASES['historical_grid_audit_not_current_outage']
+        self.assertFalse(eligible(case['title'], case['body']))
+        self.assertTrue(eligible('서울 폭염에 대규모 정전…3만가구 피해',
+                                 '서울시는 6일 폭염으로 변압기 과부하 정전이 발생해 3만가구가 피해를 봤다고 밝혔다.'))
+
+    def test_model_qualifiers_preserve_named_delivery_identity_and_receipt(self):
+        original = self.delivery_scope_alert('cockpit_delivery_newsis')
+        identity = materiality.source_event_identity(original)
+        for key in ('named_model_delivery_zdnet', 'named_model_delivery_fnnews'):
+            item = self.final_scope_alert(key)
+            self.assertEqual(materiality.source_event_identity(item), identity)
+            changed = {**item, 'source_body': item['source_body'].replace('뉴 트래픽 이테크 일렉트릭', '다른 차종')}
+            self.assertNotEqual(materiality.source_event_identity(changed), identity)
+
+    def test_broker_backlog_core_uses_issuer_period_amount_and_region_not_peer_margin(self):
+        item = self.final_scope_alert('broker_backlog_not_peer_margin')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for value in ('NH투자증권', '6일', '일진전기', '올해 상반기', '중전기 부문', '13억달러', '북미 비중', '80%에 육박', '분석했다'):
+            self.assertIn(value, core)
+        self.assertNotIn('30%', core)
+        self.assertFalse(radar.source_core_fact_errors({**item, 'telegram_core_fact': core}))
+        self.assertTrue(radar.source_core_fact_errors(item))
+        self.assertTrue(radar.source_core_fact_errors({**item, 'telegram_core_fact': core.replace('상반기', '하반기')}))
+        changed = {**item, 'source_title': item['source_title'].replace('일진전기', 'OTHER전기'),
+                   'source_body': item['source_body'].replace('일진전기', 'OTHER전기').replace('13억달러', '17억달러').replace('80%', '60%')}
+        changed_core = radar.verified_alert_core(changed, changed['source_title'])
+        for value in ('OTHER전기', '17억달러', '60%'):
+            self.assertIn(value, changed_core)
+
     def postdeploy_scope_alert(self, key):
         case = POSTDEPLOY_SCOPE_CASES[key]
         return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],

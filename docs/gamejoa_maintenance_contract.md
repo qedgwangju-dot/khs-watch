@@ -340,6 +340,15 @@ Every defect or requested change must follow this sequence:
   profiles, old customer references or planned factory output. Anonymous
   customers are not merged by sector alone; exact full-body receipt evidence
   may reconcile audited copies of one announcement, not later changed terms.
+- Public deliberation polls are not employment statistics or enacted policy.
+  Actual nonfarm jobs retain their reported period, amount and forecast basis.
+  Hearing repetitions of prior roadmaps require new committed terms to qualify.
+- Smart-office MOU partner roles are not actual customer orders. Historical
+  outage-budget audits are not current supply disruptions; current physical
+  outages and losses remain eligible.
+- Broker backlog summaries retain the broker, issuer, observation period,
+  business, backlog amount and regional share. Peer margin estimates do not
+  replace the issuer's current backlog or become reported company earnings.
 - Public compute allocation summaries name the data provider and original
   application round, requested/allocated units and denominator. Different
   application rounds are not combined and an advocate's request for increased

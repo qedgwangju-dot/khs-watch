@@ -2590,6 +2590,12 @@ def reported_issuer_announcement_fact(title: str, body: str) -> str:
 def source_headline_event_fact(title: str, body: str) -> str:
     """Bind a compact observation to its source actor, population and period."""
     focus = market_materiality.focus_kind(title)
+    backlog = market_materiality.broker_backlog_mix_observation(title, body)
+    if backlog:
+        fact = (f"{backlog['broker']}{korean_topic_particle(backlog['broker'])} {backlog['day']}일 "
+                f"{backlog['issuer']}의 {backlog['period']} {backlog['business']} 수주잔고 {backlog['amount']} 중 "
+                f"{backlog['region']} 비중이 {backlog['share']}%에 육박한다고 분석했다.")
+        return fact if core_sentence_is_complete(fact) else ""
     research = market_materiality.research_program_award_observation(title, body)
     if research:
         fact = (f"{research['issuer']}{korean_topic_particle(research['issuer'])} {research['tasks']} 국책과제 "

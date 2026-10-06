@@ -207,6 +207,16 @@
       "run_id": 37403253364,
       "message_id": 2292,
       "equivalence_note": "Full-body and sent-receipt audit: same 2026-10-06 ROBOKIT adoption announcement for the anonymous MLCC customer's Vietnam AOI equipment. Initial-delivery wording differs within that announcement, not a separately dated milestone. Only these exact bodies are reconciled; no generic anonymous-customer merging."
+    },
+    {
+      "source_title": "LG전자, 르노 '유럽 첫 상용 SDV'에 통합 콕핏 솔루션 공급",
+      "link": "https://www.fnnews.com/news/202610061000440539",
+      "source_published_kst": "2026-10-06T10:00+09:00",
+      "source_body_sha256": "3bd807efe70a0ae81ae6698d641118ed3dc1f1f95115ac9add463249f12152a5",
+      "source_event_identity": "source_event:v2:commercial_delivery:953ee206c135c175fa78175d742512ff88363937ecfa2301ba75bbc046250521",
+      "run_id": 37404886680,
+      "message_id": 2293,
+      "equivalence_note": "Full-body and sent-receipt audit: this exact Yonhap reprint reports the same 2026-10-06 Renault New Trafic E-Tech Electric cockpit announcement as message 2291. Past-tense wording and the cockpit definition are not a separately dated delivery milestone. Changed bodies, customers, models, dates and later completion stages remain distinct."
     }
   ]
 }
