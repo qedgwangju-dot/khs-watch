@@ -65,6 +65,7 @@ jobs:
           import json
           import pathlib
           from scripts import crypto_alert_format as fmt
+          from scripts import crypto_liquidity_watch as watch
 
           fmt.PENDING_STATE_PATH = pathlib.Path("data/crypto_liquidity_watch_state.json")
           sample = """[크립토 유동성 변화 감지]
@@ -189,6 +190,52 @@ jobs:
           assert "+50.4백만달러" in revised_rendered
           assert "순유입 강도 둔화" in revised_rendered
           print("same_day_partial_revision_layout_valid=true")
+
+          old_partial_state = {
+              "updated_at_kst": "2026-10-06T09:55:07+09:00",
+              "btc_etf": {
+                  "date": "2026-10-05",
+                  "total_usd_m": -159.7,
+                  "status": "partial",
+                  "reported_funds": 10,
+                  "missing_funds": 2,
+                  "provisional_history": [
+                      {
+                          "observed_at_kst": "2026-10-06T09:20:03+09:00",
+                          "total_usd_m": -85.2,
+                          "reported_funds": 7,
+                          "missing_funds": 5,
+                          "coverage": "7/12",
+                      }
+                  ],
+              },
+          }
+          final_etf = {
+              "date": "2026-10-05",
+              "total_usd_m": -89.8,
+              "status": "complete",
+              "reported_funds": 12,
+              "missing_funds": 0,
+          }
+          final_etf = watch.carry_partial_history(
+              old_partial_state, final_etf, "2026-10-06T15:38:16+09:00"
+          )
+          assert len(final_etf["provisional_history"]) == 2, final_etf
+          assert final_etf["provisional_history"][0]["total_usd_m"] == -85.2
+          assert final_etf["provisional_history"][0]["coverage"] == "7/12"
+          assert final_etf["provisional_history"][-1]["total_usd_m"] == -159.7
+          assert final_etf["provisional_history"][-1]["coverage"] == "10/12"
+
+          final_trigger = fmt.format_trigger(
+              "• BTC 현물 ETF 최종 확정: 최초 잠정 -85.2백만달러 (7/12) → "
+              "직전 잠정 -159.7백만달러 (10/12) → 최종 -89.8백만달러 (12/12)"
+          )
+          final_text = "\n".join(final_trigger)
+          assert "일간 최종 확정" in final_text
+          assert "최초 잠정 -85.2백만달러 (7/12)" in final_text
+          assert "직전 잠정 -159.7백만달러 (10/12)" in final_text
+          assert "최종 -89.8백만달러 (12/12)" in final_text
+          print("provisional_history_finalization_valid=true")
           PY
 
       - name: Validate exact Telegram bot route without sending
