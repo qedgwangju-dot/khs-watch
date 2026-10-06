@@ -71,7 +71,7 @@ BASELINE = {
 # Keep physical/official facts separate from broker forecasts.  The 2021 and 2028
 # shortage percentages are not treated as a like-for-like consensus series.
 ABF_AREA_STRUCTURE_BASELINE = {
-    "version": 2,
+    "version": 3,
     "primary_capacity_metric": "substrate_area_x_buildup_layers_and_SAP_process_load",
     "official": {
         # Ajinomoto business briefing / integrated report: PC=1 area index and 6 ABF layers;
@@ -97,6 +97,51 @@ ABF_AREA_STRUCTURE_BASELINE = {
         "abf_shortfall_pct_min": 25.0,
         "source_kind": "DigiTimes industry-source estimate; historical benchmark, not company guidance",
         "source": "https://www.digitimes.com/news/a20210303PD200.html",
+    },
+    "bofa_model": {
+        "issuer": "Bank of America (BofA Global Research)",
+        "prior_user_chart": {
+            "source_kind": "user-provided screenshot of BofA Global Research estimates; original report not directly fetched",
+            "metric": "supply_demand_ratio_pct",
+            "supply_demand_ratio_pct": {
+                "2018": -1.0, "2019": -3.0, "2020": -8.0, "2021": -13.0,
+                "2022": -10.0, "2023": 16.0, "2024": 13.0, "2025": 6.0,
+                "2026": -4.0, "2027": -10.0, "2028": -16.0,
+            },
+            "same_chart_2021_ratio_pct": -13.0,
+            "same_chart_2028_ratio_pct": -16.0,
+            "same_chart_2028_shortage_minus_2021_pp": 3.0,
+            "same_chart_like_for_like": True,
+        },
+        "current_public_recap": {
+            "abf_shortfall_2026_pct": 7.0,
+            "abf_shortfall_2027_pct": 14.0,
+            "abf_shortfall_2028_pct": 19.0,
+            "prior_abf_shortfall_2026_pct": 4.0,
+            "prior_abf_shortfall_2027_pct": 10.0,
+            "prior_abf_shortfall_2028_pct": 16.0,
+            "revision_2026_pp": 3.0,
+            "revision_2027_pp": 4.0,
+            "revision_2028_pp": 3.0,
+            "server_cpu_abf_demand_share_2026_pct": 17.0,
+            "server_cpu_abf_demand_share_2027_pct": 21.0,
+            "server_cpu_abf_demand_share_2028_pct": 21.0,
+            "prior_server_cpu_abf_demand_share_2026_pct": 13.0,
+            "prior_server_cpu_abf_demand_share_2027_pct": 14.0,
+            "prior_server_cpu_abf_demand_share_2028_pct": 14.0,
+            "source_kind": "BofA research relayed by public research summary; not original BofA report",
+            "source": "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82",
+        },
+        "comparison_guard": {
+            "prior_chart_2021_vs_2028_direct_same_chart": True,
+            "current_2028_vs_2021_direct_same_chart": False,
+            "note": (
+                "The user-provided BofA chart directly compares 2021 -13% with prior 2028 -16%, "
+                "so the 3pp deeper shortage is a valid same-chart comparison. "
+                "The later 2028 19% figure comes from a newer public recap, therefore 19% vs 13% "
+                "is a cross-vintage derived comparison and must not be phrased as the same-chart figure."
+            ),
+        },
     },
     "research_forecast": {
         # Public summaries of Goldman Sachs' Taiwan ABF research.  Keep source-specific.
@@ -134,6 +179,9 @@ SEARCHES = [
     ("google", 'Unimicron ABF price increase server CPU 2026'),
     ("google", 'ABF substrate price increase server CPU Ibiden Unimicron 2026'),
     ("google", '"Goldman Sachs" ABF substrate 2026 14% 2027 34% 2028 51% supply gap'),
+    ("google", '"BofA" ABF substrate 2026 7% 2027 14% 2028 19% shortage'),
+    ("google", '"Bank of America" ABF substrate 4% 10% 16% 7% 14% 19%'),
+    ("google", '"server CPU" ABF demand 17% 21% 21% BofA'),
     ("google", '"ABF substrate" Feynman 2028 area 3 5 times 2026'),
     ("google", '"ABF substrate" 2021 25% shortage 2028 supply gap'),
     ("google", 'site:ajinomoto.com OR site:ajinomoto.co.jp ABF substrate area 3.5 18 layers 10 times HPC'),
@@ -411,6 +459,61 @@ def parse_research_update(text: str, url: str) -> dict:
         if margin:
             out["unimicron_margin_pct"] = float(margin.group(1))
 
+    # BofA source-specific ABF model. Keep report vintages separate.
+    if any(k in low for k in ("bofa", "bank of america")):
+        triplet = r"(\d{1,2}(?:\.\d+)?)\s*%\s*/\s*(\d{1,2}(?:\.\d+)?)\s*%\s*/\s*(\d{1,2}(?:\.\d+)?)\s*%"
+        gap_sentence = re.search(
+            r"[^.]{0,160}?(?:abf)[^.]{0,220}?(?:shortfall|shortage|supply[- ]?demand gap|부족)[^.]{0,260}?[.]?",
+            text, re.I,
+        )
+        if not gap_sentence:
+            gap_sentence = re.search(
+                r"[^.]{0,120}?(?:shortfall|shortage|supply[- ]?demand gap|부족)[^.]{0,260}?(?:abf)[^.]{0,180}?[.]?",
+                text, re.I,
+            )
+        if gap_sentence:
+            chunk = gap_sentence.group(0)
+            triples = re.findall(triplet, chunk, re.I)
+            if len(triples) >= 2:
+                first = tuple(float(x) for x in triples[0])
+                second = tuple(float(x) for x in triples[1])
+                low_chunk = chunk.lower()
+                if ("from" in low_chunk and " to " in low_chunk) or ("기존" in chunk and "에서" in chunk):
+                    prior_vals, current_vals = first, second
+                else:
+                    current_vals, prior_vals = first, second
+                for year, prior_v, current_v in zip((2026, 2027, 2028), prior_vals, current_vals):
+                    out[f"bofa_prior_abf_shortfall_{year}_pct"] = prior_v
+                    out[f"bofa_abf_shortfall_{year}_pct"] = current_v
+            elif len(triples) == 1:
+                vals = tuple(float(x) for x in triples[0])
+                for year, current_v in zip((2026, 2027, 2028), vals):
+                    out[f"bofa_abf_shortfall_{year}_pct"] = current_v
+
+        cpu_sentence = re.search(
+            r"[^.]{0,160}?(?:server cpu|서버 cpu)[^.]{0,240}?(?:abf)[^.]{0,260}?(?:demand|수요)[^.]{0,260}?[.]?",
+            text, re.I,
+        )
+        if not cpu_sentence:
+            cpu_sentence = re.search(
+                r"[^.]{0,160}?(?:abf)[^.]{0,240}?(?:demand|수요)[^.]{0,220}?(?:server cpu|서버 cpu)[^.]{0,220}?[.]?",
+                text, re.I,
+            )
+        if cpu_sentence:
+            chunk = cpu_sentence.group(0)
+            triples = re.findall(triplet, chunk, re.I)
+            if len(triples) >= 2:
+                first = tuple(float(x) for x in triples[0])
+                second = tuple(float(x) for x in triples[1])
+                low_chunk = chunk.lower()
+                if ("from" in low_chunk and " to " in low_chunk) or ("기존" in chunk and "에서" in chunk):
+                    prior_vals, current_vals = first, second
+                else:
+                    current_vals, prior_vals = first, second
+                for year, prior_v, current_v in zip((2026, 2027, 2028), prior_vals, current_vals):
+                    out[f"bofa_prior_server_cpu_abf_demand_share_{year}_pct"] = prior_v
+                    out[f"bofa_server_cpu_abf_demand_share_{year}_pct"] = current_v
+
     # Source-specific ABF shortage model.  Do not collapse this into an industry consensus number.
     if "goldman" in low and any(k in low for k in ("shortfall", "undersupply", "supply gap", "supply-demand gap", "공급 부족", "供給缺口")):
         # Goldman September 2026 public recaps specify a 2H26 figure separately
@@ -458,6 +561,8 @@ def material_events(previous: dict, updates: list[dict]) -> list[dict]:
     facts = previous.get("facts") or {}
     area = previous.get("area_structure") or {}
     area_research = area.get("research_forecast") or {}
+    area_bofa = area.get("bofa_model") or {}
+    area_bofa_current = area_bofa.get("current_public_recap") or {}
     area_official = area.get("official") or {}
     events: list[dict] = []
 
@@ -524,6 +629,20 @@ def material_events(previous: dict, updates: list[dict]) -> list[dict]:
                         events.append({"type": "research_share", "key": key, "before": before, "after": after, "url": item["url"]})
             if "unimicron_abf_price_change_pct" in u and abs(float(u["unimicron_abf_price_change_pct"])) >= 10:
                 events.append({"type": "price", "key": "Unimicron ABF(리서치)", "value": float(u["unimicron_abf_price_change_pct"]), "url": item["url"]})
+
+            for year in (2026, 2027, 2028):
+                key = f"bofa_abf_shortfall_{year}_pct"
+                if key in u:
+                    before = area_bofa_current.get(f"abf_shortfall_{year}_pct")
+                    after = float(u[key])
+                    if before is not None and abs(after - float(before)) >= 3.0:
+                        events.append({"type": "bofa_supply_gap_forecast", "key": key, "before": float(before), "after": after, "url": item["url"]})
+                share_key = f"bofa_server_cpu_abf_demand_share_{year}_pct"
+                if share_key in u:
+                    before = area_bofa_current.get(f"server_cpu_abf_demand_share_{year}_pct")
+                    after = float(u[share_key])
+                    if before is not None and abs(after - float(before)) >= 3.0:
+                        events.append({"type": "bofa_server_cpu_share_forecast", "key": share_key, "before": float(before), "after": after, "url": item["url"]})
 
             for key in ("goldman_abf_shortfall_2h2026_pct", "goldman_abf_shortfall_2027_pct", "goldman_abf_shortfall_2028_pct"):
                 if key in u:
@@ -601,7 +720,22 @@ def merge_state(previous: dict, updates: list[dict], events: list[dict]) -> dict
                 latest["research"]["unimicron_abf_price_change_pct"] = u["unimicron_abf_price_change_pct"]
             if "unimicron_margin_pct" in u:
                 latest["research"]["unimicron_margin_pct"] = u["unimicron_margin_pct"]
-            ar = latest.setdefault("area_structure", copy.deepcopy(ABF_AREA_STRUCTURE_BASELINE)).setdefault("research_forecast", {})
+            area_latest = latest.setdefault("area_structure", copy.deepcopy(ABF_AREA_STRUCTURE_BASELINE))
+            bofa_current = area_latest.setdefault("bofa_model", copy.deepcopy(ABF_AREA_STRUCTURE_BASELINE["bofa_model"])).setdefault("current_public_recap", {})
+            for year in (2026, 2027, 2028):
+                key = f"bofa_abf_shortfall_{year}_pct"
+                if key in u:
+                    bofa_current[f"abf_shortfall_{year}_pct"] = u[key]
+                pkey = f"bofa_prior_abf_shortfall_{year}_pct"
+                if pkey in u:
+                    bofa_current[f"prior_abf_shortfall_{year}_pct"] = u[pkey]
+                share_key = f"bofa_server_cpu_abf_demand_share_{year}_pct"
+                if share_key in u:
+                    bofa_current[f"server_cpu_abf_demand_share_{year}_pct"] = u[share_key]
+                pshare_key = f"bofa_prior_server_cpu_abf_demand_share_{year}_pct"
+                if pshare_key in u:
+                    bofa_current[f"prior_server_cpu_abf_demand_share_{year}_pct"] = u[pshare_key]
+            ar = area_latest.setdefault("research_forecast", {})
             if "goldman_abf_shortfall_2h2026_pct" in u:
                 ar["abf_shortfall_2h2026_pct"] = u["goldman_abf_shortfall_2h2026_pct"]
             if "goldman_abf_shortfall_2027_pct" in u:
@@ -647,6 +781,10 @@ def build_alert(events: list[dict], state: dict) -> str:
     area = state.get("area_structure") or ABF_AREA_STRUCTURE_BASELINE
     area_off = area.get("official") or {}
     area_hist = area.get("historical_benchmark") or {}
+    area_bofa = area.get("bofa_model") or {}
+    bofa_prior = area_bofa.get("prior_user_chart") or {}
+    bofa_current = area_bofa.get("current_public_recap") or {}
+    bofa_guard = area_bofa.get("comparison_guard") or {}
     area_res = area.get("research_forecast") or {}
     area_guard = area.get("comparison_guard") or {}
     rate, rate_date = jpy_krw_rate()
@@ -691,7 +829,15 @@ def build_alert(events: list[dict], state: dict) -> str:
         elif t == "customer_sales":
             lines.append(f"• <b>Ibiden 고객매출:</b> {html.escape(str(ev['key']))} {jpy_bn_text(ev['before'], rate)} → {jpy_bn_text(ev['after'], rate)}")
         elif t == "area_structure_baseline":
-            lines.append("• <b>기판 병목 기준 업그레이드:</b> 완제품 개수보다 기판 면적×층수·SAP 공정부하를 우선 추적합니다.")
+            if str(ev.get("key") or "").endswith("v3"):
+                lines.append("• <b>ABF 수급 모델 업그레이드:</b> BofA 동일지표 과거 차트와 최신 리서치 리비전을 별도 버전으로 추적합니다.")
+                lines.append("• 사용자 제공 BofA 차트 안에서는 2021 -13% → 2028 -16%로 2028 부족이 3%p 더 큽니다. 최신 19% 전망은 후속 리포트라 같은 차트 직접비교로 섞지 않습니다.")
+            else:
+                lines.append("• <b>기판 병목 기준 업그레이드:</b> 완제품 개수보다 기판 면적×층수·SAP 공정부하를 우선 추적합니다.")
+        elif t == "bofa_supply_gap_forecast":
+            lines.append(f"• <b>BofA ABF 공급부족 전망 변경:</b> {html.escape(str(ev['key']))} {ev['before']:.0f}% → {ev['after']:.0f}% <i>(BofA 리서치 추정)</i>")
+        elif t == "bofa_server_cpu_share_forecast":
+            lines.append(f"• <b>BofA 서버 CPU ABF 수요비중 변경:</b> {html.escape(str(ev['key']))} {ev['before']:.0f}% → {ev['after']:.0f}% <i>(BofA 리서치 추정)</i>")
         elif t == "supply_gap_forecast":
             lines.append(f"• <b>ABF 공급부족 전망 변경:</b> {html.escape(str(ev['key']))} {ev['before']:.0f}% → {ev['after']:.0f}% <i>(리서치 추정)</i>")
         elif t == "area_forecast":
@@ -712,6 +858,8 @@ def build_alert(events: list[dict], state: dict) -> str:
         f"• ASIC: FY2026 전자사업 매출의 {float(off.get('ibiden_asic_share_fy2026_floor_pct') or 0):.0f}% 초과 예상",
         f"• 면적 기준 공식 물리량: Ajinomoto HPC 기판 면적지수 {float(area_off.get('ajinomoto_hpc_substrate_area_index') or 0):.1f}배(PC=1.0), ABF 층수 {int(area_off.get('ajinomoto_pc_abf_layers') or 0)}→{int(area_off.get('ajinomoto_hpc_abf_layers') or 0)}층, 총 ABF 사용량 10배+.",
         f"• Ibiden 공식 AI서버 기판당 SAP 공정부하: CY2024 {float(area_off.get('ibiden_ai_server_sap_load_cy2024_index') or 0):.1f} → CY2026 {float(area_off.get('ibiden_ai_server_sap_load_cy2026_index') or 0):.1f} → CY2028 {float(area_off.get('ibiden_ai_server_sap_load_cy2028_index') or 0):.1f}. 기판 개수보다 면적×층수·SAP 부하가 실제 생산능력을 더 잘 설명합니다.",
+        f"• BofA 사용자 제공 동일 차트: 공급/수요 비율 2021 {float(bofa_prior.get('same_chart_2021_ratio_pct') or 0):.0f}% → 2028 {float(bofa_prior.get('same_chart_2028_ratio_pct') or 0):.0f}%. 같은 차트 안에서는 2028 부족이 {float(bofa_prior.get('same_chart_2028_shortage_minus_2021_pp') or 0):.0f}%p 더 큽니다.",
+        f"• BofA 후속 공개 리서치 요약: 2026/2027/2028 ABF 공급부족 {float(bofa_current.get('prior_abf_shortfall_2026_pct') or 0):.0f}%/{float(bofa_current.get('prior_abf_shortfall_2027_pct') or 0):.0f}%/{float(bofa_current.get('prior_abf_shortfall_2028_pct') or 0):.0f}% → {float(bofa_current.get('abf_shortfall_2026_pct') or 0):.0f}%/{float(bofa_current.get('abf_shortfall_2027_pct') or 0):.0f}%/{float(bofa_current.get('abf_shortfall_2028_pct') or 0):.0f}%로 상향. 후속 리포트 빈티지이므로 2021 -13%와 19%를 같은 차트 직접비교로 표현하지 않습니다.",
         f"• Goldman 출처별 공급부족 전망: 2H26 {float(area_res.get('abf_shortfall_2h2026_pct') or 0):.0f}% → 2027 {float(area_res.get('abf_shortfall_2027_pct') or 0):.0f}% → 2028 {float(area_res.get('abf_shortfall_2028_pct') or 0):.0f}% <i>(리서치 추정·컨센서스 아님)</i>.",
         f"• 2021 역사 기준: ABF 공급부족 ≥{float(area_hist.get('abf_shortfall_pct_min') or 0):.0f}% <i>(DigiTimes 업계 추정)</i> / Goldman 2028 전망 {float(area_res.get('abf_shortfall_2028_pct') or 0):.0f}% <i>(리서치 추정·동일 범위 직접비교 금지)</i>.",
         f"• FY2025 공개 주요고객 매출: Intel {jpy_bn_text(float((off.get('ibiden_customer_sales_fy2024_jpy_bn') or {}).get('Intel') or 0), rate)} / "
@@ -720,6 +868,7 @@ def build_alert(events: list[dict], state: dict) -> str:
         "",
         "<b>2단계 미래 재평가 요인 발굴</b>",
         f"• Macquarie 추정 기준선: Intel향 ABF 약 {float(res.get('macquarie_intel_abf_share_pct') or 0):.0f}% / AMD향 약 {float(res.get('macquarie_amd_abf_share_pct') or 0):.0f}% / NVIDIA CPU용 기판 출하 시작. 공식 확인 전 추정으로 유지합니다.",
+        f"• BofA 서버 CPU의 ABF 수요비중 전망도 2026/2027/2028 {float(bofa_current.get('prior_server_cpu_abf_demand_share_2026_pct') or 0):.0f}%/{float(bofa_current.get('prior_server_cpu_abf_demand_share_2027_pct') or 0):.0f}%/{float(bofa_current.get('prior_server_cpu_abf_demand_share_2028_pct') or 0):.0f}% → {float(bofa_current.get('server_cpu_abf_demand_share_2026_pct') or 0):.0f}%/{float(bofa_current.get('server_cpu_abf_demand_share_2027_pct') or 0):.0f}%/{float(bofa_current.get('server_cpu_abf_demand_share_2028_pct') or 0):.0f}%로 상향돼 CPU가 부족 심화의 직접 수요축으로 강화됐습니다.",
         f"• Goldman 모델은 2H26 {float(area_res.get('abf_shortfall_2h2026_pct') or 0):.0f}% → 2027 {float(area_res.get('abf_shortfall_2027_pct') or 0):.0f}% → 2028 {float(area_res.get('abf_shortfall_2028_pct') or 0):.0f}%로 악화를 예상합니다. 2028 수치는 2021 ≥{float(area_hist.get('abf_shortfall_pct_min') or 0):.0f}%보다 크지만 제품군·분모·모델이 달라 ‘2021보다 확정적으로 더 부족’이라는 보편적 사실로 승격하지 않습니다.",
         f"• Meritz 추정: 2028 Feynman 등 차세대 AI 가속기 기판 면적이 2026 대비 {float(area_res.get('feynman_2028_area_vs_2026_min_multiple') or 0):.0f}~{float(area_res.get('feynman_2028_area_vs_2026_max_multiple') or 0):.0f}배. NVIDIA 공식 기판 면적 사양으로 취급하지 않습니다.",
         "• 공식 재평가 조건: NVIDIA CPU용 양산 확인, Intel·AMD 고객 비중 공식 공개, SAP 증설 상향, 가격 인상·마진 개선의 회사자료 확인.",
@@ -746,7 +895,8 @@ def build_alert(events: list[dict], state: dict) -> str:
         "• NVIDIA CPU용 기판 양산·출하가 공식 확인되면 즉시 알림.",
         "• ABF 가격 ±5% 이상 공식 변화, 신뢰 리서치 ±10% 이상 변화.",
         "• Ibiden SAP 생산능력·설비투자 ±10%, Gama 양산시점 변경, 주요 고객매출 ±10% 이상.",
-        "• 2H26·2027·2028 ABF 공급부족 전망이 동일 리서치 기준 ±5%p 이상 변경하면 출처별로 알림.",
+        "• Goldman 2H26·2027·2028 ABF 공급부족 전망이 동일 리서치 기준 ±5%p 이상 변경하면 출처별로 알림.",
+        "• BofA 2026·2027·2028 ABF 공급부족 전망 또는 서버 CPU ABF 수요비중이 같은 BofA 기준 ±3%p 이상 바뀌면 알림.",
         "• Ibiden AI서버 기판당 SAP 공정부하 지수(CY26 1.8·CY28 2.5)가 ±10% 이상 바뀌거나 기판 면적·층수의 공식 로드맵이 변경되면 알림.",
         "• Feynman 면적 추정이 ±0.5배 이상 바뀌면 별도 리서치 추정 변화로 알림.",
         "• 동일 Muse 기사·주가 급등·목표주가만 반복되면 알리지 않습니다.",
@@ -755,7 +905,7 @@ def build_alert(events: list[dict], state: dict) -> str:
         "• CPU 수요가 실제 ABF 공급사의 가격·가동률·고객매출·마진으로 전환되는지 확인하는 수익화 게이트입니다.",
         "",
         "<b>핵심 한 줄 요약</b>",
-        f"• 현재 공식 기준은 Ibiden AI서버 기판 수요>생산능력, FY26~28 5,000억엔 투자, AI서버 기판당 SAP 공정부하 CY24 1.0→CY26 {float(area_off.get('ibiden_ai_server_sap_load_cy2026_index') or 0):.1f}→CY28 {float(area_off.get('ibiden_ai_server_sap_load_cy2028_index') or 0):.1f}입니다. Goldman 2H26/2027/2028 공급부족 {float(area_res.get('abf_shortfall_2h2026_pct') or 0):.0f}%/{float(area_res.get('abf_shortfall_2027_pct') or 0):.0f}%/{float(area_res.get('abf_shortfall_2028_pct') or 0):.0f}%는 리서치 추정으로만 유지하고 2021 ≥25%와 범위가 달라 단순 확정 비교하지 않습니다.",
+        f"• 현재 공식 기준은 Ibiden AI서버 기판 수요>생산능력, FY26~28 5,000억엔 투자, SAP 공정부하 CY24 1.0→CY26 {float(area_off.get('ibiden_ai_server_sap_load_cy2026_index') or 0):.1f}→CY28 {float(area_off.get('ibiden_ai_server_sap_load_cy2028_index') or 0):.1f}입니다. BofA 사용자 차트는 2021 -13%→2028 -16%로 같은 차트상 3%p 더 부족하며, 후속 BofA 공개 요약은 2026/27/28 부족 전망을 4/10/16%→7/14/19%로 상향했습니다. Goldman 14/34/51%는 별도 리서치 모델로 분리 추적합니다.",
     ]
     if rate is not None:
         lines.append(f"• 환율 기준: 1엔={rate:.4f}원, {html.escape(rate_date or '최신 확인값')}")
@@ -812,7 +962,8 @@ def main() -> None:
     events = material_events(previous, updates)
     structure_upgrade = int((previous.get("area_structure") or {}).get("version") or 0) < int(ABF_AREA_STRUCTURE_BASELINE["version"])
     if structure_upgrade:
-        events.insert(0, {"type": "area_structure_baseline", "key": f"area_structure_v{ABF_AREA_STRUCTURE_BASELINE['version']}", "url": ABF_AREA_STRUCTURE_BASELINE["official"]["ibiden_sap_load_source"]})
+        upgrade_url = ABF_AREA_STRUCTURE_BASELINE["bofa_model"]["current_public_recap"]["source"] if int(ABF_AREA_STRUCTURE_BASELINE["version"]) >= 3 else ABF_AREA_STRUCTURE_BASELINE["official"]["ibiden_sap_load_source"]
+        events.insert(0, {"type": "area_structure_baseline", "key": f"area_structure_v{ABF_AREA_STRUCTURE_BASELINE['version']}", "url": upgrade_url})
     latest = merge_state(previous, updates, events)
     if structure_upgrade:
         latest["area_structure"] = copy.deepcopy(ABF_AREA_STRUCTURE_BASELINE)
