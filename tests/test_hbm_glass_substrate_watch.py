@@ -141,6 +141,22 @@ class GlassSubstrateWatchTests(unittest.TestCase):
         self.assertIn("확정 공급계약·양산매출로 승격하지 않습니다", out)
         self.assertIn("신규 금속 충진 방식", out)
 
+    def test_jntc_cycle_time_headline_stays_non_exact(self):
+        item = {
+            "title": "12시간을 분 단위로 단축…제이앤티씨, 유리기판 핵심기술 개발",
+            "description": "", "source": "디일렉",
+            "published_at_kst": "2026-10-06T10:00:00+09:00",
+            "direct_link": "https://thelec.kr/news/articleView.html?idxno=63298",
+        }
+        rows = w.parse_glass_substrate_records(
+            item, "제이앤티씨 TGV 유리기판. 기존 12시간 공정을 분 단위로 단축했다."
+        )
+        rec = next(x for x in rows if x["axis"] == "glass_process_cycle_time")
+        self.assertEqual(rec["value"]["before_minutes"], 720)
+        self.assertEqual(rec["value"]["after_time_class"], "minute_scale")
+        self.assertIsNone(rec["value"]["after_minutes_exact"])
+        self.assertEqual(rec["value"]["process_name"], "unverified_core_process")
+
     def test_yield_crossing_90_alerts(self):
         old = {"axis":"glass_panel_yield","value":{"yield_pct":88.0}}
         new = {"axis":"glass_panel_yield","value":{"yield_pct":92.0}}
