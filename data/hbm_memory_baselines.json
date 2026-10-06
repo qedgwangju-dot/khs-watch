@@ -608,17 +608,30 @@
       "axis": "glass_hvm_stage",
       "value": {
         "stage": "customer_evaluation",
-        "mass_production_target_year": 2027
+        "mass_production_target_year": 2027,
+        "pilot_line_count": 1,
+        "pilot_capacity_units_per_month_min": 10000,
+        "pilot_capacity_units_per_month_max": 12000,
+        "nda_customer_count": 27,
+        "end_customer_count": 7,
+        "paid_sample_customer_count": 7,
+        "target_product_thickness_mm": 2,
+        "next_product_thickness_mm": 3,
+        "gimcheon_groundbreaking_period": "2027H2",
+        "initial_line_count_min": 2,
+        "initial_line_count_max": 3,
+        "initial_customer_commercialization_period": "2028_mid",
+        "mass_ramp_line_count_min": 10
       },
       "unit": "stage,year",
       "period": "current",
-      "as_of": "2026-07-13",
+      "as_of": "2026-10-06",
       "evidence": "reported",
-      "source_url": "https://en.edaily.co.kr/news/eda202607135464/",
-      "source_title": "JNTC, 글로벌 고객 평가 진행·2027년 TGV 유리기판 양산 목표",
-      "source": "이데일리·JNTC 회사 설명",
-      "scope": "stage_transition_customer_evaluation_to_hvm",
-      "excerpt": "글로벌 반도체·패키징 고객 평가를 진행 중이며 2027년 양산 개시를 목표. 현재 단계는 고객 평가로 저장."
+      "source_url": "https://www.thelec.kr/news/articleView.html?idxno=63298",
+      "source_title": "12시간을 분 단위로 단축…제이앤티씨, 유리기판 핵심기술 개발",
+      "source": "디일렉(THE ELEC)",
+      "scope": "reported_customer_evaluation_paid_samples_pilot_capacity_and_2027_mass_supply_target",
+      "excerpt": "디일렉 보도: 파일럿 1개 라인 월 1만~1만2000개, NDA 27곳·최종 수요기업 7곳·유상샘플 전환 7곳. 2027년 2mm 제품 양산 공급 목표, 김천은 2027년 하반기 착공 후 2~3개 라인을 우선 구축하고 2028년 중반 고객 상용화 초기 물량 대응, 대량 양산 시 10개 이상으로 확대 계획."
     },
     {
       "key": "glass_hvm_stage|philoptics|current",
@@ -707,6 +720,74 @@
         "https://semiconductor.samsung.com/kr/technologies/package/"
       ],
       "prior_reported_milestone_source": "https://www.sedaily.com/NewsView/2GQ5I9X52M/GD01"
+    },
+    {
+      "key": "glass_process_cycle_time|jntc|current",
+      "axis": "glass_process_cycle_time",
+      "value": {
+        "process_name": "unverified_core_process",
+        "before_minutes": 720,
+        "after_minutes_exact": null,
+        "after_time_class": "minute_scale",
+        "body_direct_verified": false
+      },
+      "unit": "minutes,stage",
+      "period": "current",
+      "as_of": "2026-10-06",
+      "evidence": "reported",
+      "source_url": "https://www.thelec.kr/news/articleView.html?idxno=63298",
+      "source_title": "12시간을 분 단위로 단축…제이앤티씨, 유리기판 핵심기술 개발",
+      "source": "디일렉(THE ELEC)",
+      "scope": "headline_reports_12_hours_to_minute_scale_exact_process_and_after_minutes_not_confirmed",
+      "excerpt": "제목상 기존 12시간 공정을 분 단위로 단축. 12시간은 720분으로 환산하되, 개선 후 정확한 분 수와 해당 단축이 어느 개별 공정인지 직접 문구가 확인되기 전에는 속도배수와 공정명을 확정하지 않음."
+    },
+    {
+      "key": "glass_capex|jntc|gimcheon",
+      "axis": "glass_capex",
+      "value": {
+        "investment_krw": 347000000000,
+        "line_count_min_initial": 2,
+        "line_count_max_initial": 3,
+        "line_count_mass_ramp_min": 10,
+        "start_year": 2027,
+        "end_year": 2030,
+        "groundbreaking_period": "2027H2",
+        "initial_customer_commercialization_period": "2028_mid",
+        "employees": 430,
+        "site_area_pyeong": 30000,
+        "capacity_panels_per_month": null,
+        "stage": "reported_investment"
+      },
+      "unit": "KRW,count,year",
+      "period": "2027-2030",
+      "as_of": "2026-10-06",
+      "evidence": "reported",
+      "source_url": "https://www.thelec.kr/news/articleView.html?idxno=63298",
+      "source_title": "제이앤티씨 김천 TGV 유리기판 공장 투자·램프 계획",
+      "source": "디일렉(THE ELEC) + 제이앤티씨·김천 투자자료",
+      "scope": "capex_line_ramp_not_physical_output_capacity",
+      "excerpt": "김천 TGV 유리기판 공장에 2030년까지 3470억원 투자. 2027년 하반기 착공, 2~3개 라인 우선 구축, 2028년 중반 고객 상용화 초기 물량 대응, 대량 양산 시 10개 이상 확대. 실제 월 패널 생산능력은 미공개."
+    },
+    {
+      "key": "glass_hvm_stage|absolics|current",
+      "axis": "glass_hvm_stage",
+      "value": {
+        "stage": "customer_evaluation",
+        "mass_production_target_year": null,
+        "embedding_preliminary_evaluation_passed": true,
+        "embedding_reliability_evaluation_ongoing": true,
+        "non_embedding_supplier_selection_ongoing": true,
+        "non_embedding_poc_target_year": 2026
+      },
+      "unit": "stage,year",
+      "period": "current",
+      "as_of": "2026-09-22",
+      "evidence": "official",
+      "source_url": "https://skc.kr/m/eng/Conmmunication/pr/newsDetail.do?gubun=&seq=1746",
+      "source_title": "SKC Participates in Additional Rights Offering for Absolics… Accelerating Glass Substrate Business",
+      "source": "SKC",
+      "scope": "absolics_customer_validation_not_mass_production",
+      "excerpt": "SKC 공식: Embedding 제품은 예비평가를 통과하고 신뢰성 평가 단계, Non-Embedding은 공급사 선정 프로젝트 및 연내 PoC 준비 단계."
     }
   ],
   "user_capture": {
