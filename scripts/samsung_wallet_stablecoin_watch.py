@@ -35,6 +35,12 @@ WORKDAY_JOB_URL = (
 DIGITAL_ASSET_URL = "https://www.digitalasset.works/news/articleView.html?idxno=43115"
 KBW_FN_URL = "https://www.fnnews.com/news/202610011830546063"
 KBW_NEWSWHO_URL = "https://www.newswhoplus.com/news/articleView.html?idxno=70890"
+PATENT_US_URL = "https://patents.justia.com/patent/20260212355"
+PATENT_KR_URL = "https://patents.google.com/patent/KR20250040467A/en"
+PATENT_NEWS_URL = "https://www.digitalasset.works/news/articleView.html?idxno=43408"
+PATENT_PUBLICATION = "US20260212355A1"
+PATENT_PUBLICATION_DATE = "2026-07-23"
+PATENT_PRIORITY_DATE = "2023-09-15"
 
 RSS_URLS = [
     "https://news.google.com/rss/search?q="
@@ -138,6 +144,9 @@ def official_context() -> dict:
         "article_confirmed": False,
         "kbw_executive_primary_confirmed": False,
         "kbw_executive_crosscheck_confirmed": False,
+        "wallet_patent_us_confirmed": False,
+        "wallet_patent_family_confirmed": False,
+        "wallet_patent_news_confirmed": False,
         "explicit_reversal_confirmed": False,
         "errors": [],
     }
@@ -235,6 +244,47 @@ def official_context() -> dict:
     except Exception as exc:
         result["errors"].append(f"kbw_newswho: {exc}")
 
+    # Samsung smart-contract wallet patent milestone. This is a wallet-architecture
+    # R&D signal only: the patent itself does not establish Samsung Wallet product
+    # deployment, stablecoin support, a named issuer/network, pilot, or launch.
+    try:
+        text = clean_text(fetch(PATENT_US_URL)).lower()
+        result["wallet_patent_us_confirmed"] = bool(
+            "20260212355" in text
+            and "samsung electronics" in text
+            and "smart contract" in text
+            and "wallet function" in text
+            and ("jul 23, 2026" in text or "july 23, 2026" in text)
+            and ("mar 13, 2026" in text or "march 13, 2026" in text)
+        )
+    except Exception as exc:
+        result["errors"].append(f"wallet_patent_us: {exc}")
+
+    try:
+        text = clean_text(fetch(PATENT_KR_URL)).lower()
+        result["wallet_patent_family_confirmed"] = bool(
+            "kr20250040467a" in text
+            and ("삼성전자" in text or "samsung electronics" in text)
+            and "pct/kr2024/013967" in text
+            and "2023-09-15" in text
+            and "smart contract" in text
+            and "wallet function" in text
+        )
+    except Exception as exc:
+        result["errors"].append(f"wallet_patent_family: {exc}")
+
+    try:
+        text = clean_text(fetch(PATENT_NEWS_URL)).lower()
+        result["wallet_patent_news_confirmed"] = bool(
+            "삼성전자" in text
+            and "스마트" in text
+            and ("계약" in text or "컨트랙트" in text)
+            and ("지갑" in text or "wallet" in text)
+            and ("20260212355" in text or "7월23일" in text or "7월 23일" in text)
+        )
+    except Exception as exc:
+        result["errors"].append(f"wallet_patent_news: {exc}")
+
     return result
 
 
@@ -275,6 +325,14 @@ def topic_state(official: dict, candidates: list[dict], previous: dict | None = 
     )
     executive_default_feature_confirmation = (
         executive_now or bool(previous.get("executive_default_feature_confirmation"))
+    )
+
+    patent_now = bool(
+        official.get("wallet_patent_us_confirmed")
+        and official.get("wallet_patent_family_confirmed")
+    )
+    smart_contract_wallet_patent_confirmed = (
+        patent_now or bool(previous.get("smart_contract_wallet_patent_confirmed"))
     )
 
     # Partner/pilot signals require explicit semantic binding to stablecoin.
@@ -371,6 +429,11 @@ def topic_state(official: dict, candidates: list[dict], previous: dict | None = 
         "job_exists": job_exists,
         "stablecoin_bd_scope": stablecoin_bd_scope,
         "executive_default_feature_confirmation": executive_default_feature_confirmation,
+        "smart_contract_wallet_patent_confirmed": smart_contract_wallet_patent_confirmed,
+        "wallet_patent_publication": PATENT_PUBLICATION if smart_contract_wallet_patent_confirmed else "",
+        "wallet_patent_publication_date": PATENT_PUBLICATION_DATE if smart_contract_wallet_patent_confirmed else "",
+        "wallet_patent_priority_date": PATENT_PRIORITY_DATE if smart_contract_wallet_patent_confirmed else "",
+        "wallet_patent_direct_stablecoin_link": False,
         "stablecoin_partner": stablecoin_partner,
         "pilot_or_launch": pilot_or_launch,
         "explicit_reversal_confirmed": reversal,
@@ -410,6 +473,14 @@ def state_changed(old_state: dict, new_state: dict) -> tuple[bool, list[str]]:
     ):
         changes.append(
             "단계 2 강화: Samsung Wallet 담당 그룹장이 KBW2026에서 스테이블코인을 기본 기능으로 지원하는 방향을 공개 확인"
+        )
+
+    if (
+        not bool(old_state.get("smart_contract_wallet_patent_confirmed"))
+        and bool(new_state.get("smart_contract_wallet_patent_confirmed"))
+    ):
+        changes.append(
+            "R&D 인프라 강화: 삼성전자 스마트계약 지갑 특허 US20260212355A1 공개·패밀리 교차확인 · 단계 2 유지"
         )
 
     if (
@@ -503,6 +574,16 @@ def main() -> int:
                 if current.get("executive_default_feature_confirmation")
                 else "• KBW2026 담당 임원 공개 발언: 미확정"
             ),
+            (
+                f"• 지갑 기술 R&D: <b>{PATENT_PUBLICATION}</b> · 스마트계약 지갑 기능·주소/인증정보 갱신·복구 청구항 교차확인"
+                if current.get("smart_contract_wallet_patent_confirmed")
+                else "• 지갑 기술 R&D: 스마트계약 지갑 특허 교차확인 전"
+            ),
+            (
+                "• 특허의 Samsung Wallet·스테이블코인 직접 적용: <b>미확정</b>"
+                if current.get("smart_contract_wallet_patent_confirmed")
+                else "• 특허 제품 연결: 미확정"
+            ),
         ]
         if current.get("stablecoin_partner"):
             lines.append(
@@ -516,7 +597,8 @@ def main() -> int:
             "<b>투자 의미</b>",
             "• <b>기사 자체가 아니라 Samsung Wallet의 스테이블코인 사업 상태가 실제로 바뀔 때만 알림</b>",
             "• 기사 만료·검색 누락·파서 실패만으로 기존 확인 상태를 낮추거나 알림하지 않음",
-            "• 다음 상태 변화: 발행사/결제망 실명 → 파일럿 → 출시국·출시일 → Wallet 기능 공개 → 상용화·수수료 구조",
+            "• 다음 상태 변화: 발행사/결제망 실명 → 특허 기술의 Samsung Wallet 제품 연결 → 파일럿 → 출시국·출시일 → Wallet 기능 공개 → 상용화·수수료 구조",
+            "• <b>특허는 제품 출시 증거가 아님</b> — Samsung Wallet 탑재, 스테이블코인 연동, 발행사·체인·결제망 실명은 별도 확인 필요",
             "• <b>이번 건은 단계 3 승격이 아님</b> — 발행사·체인·결제 파트너 실명, 파일럿, 출시국·출시일은 아직 확인되지 않음",
             "",
             "<b>근거·교차검증</b>",
@@ -528,6 +610,13 @@ def main() -> int:
                 f'• KBW2026 직접 발언 보도 · 파이낸셜뉴스: <a href="{KBW_FN_URL}">원문</a>',
                 f'• KBW2026 교차검증 · 뉴스후플러스: <a href="{KBW_NEWSWHO_URL}">원문</a>',
             ]
+        if current.get("smart_contract_wallet_patent_confirmed"):
+            lines += [
+                f'• 미국 공개특허 {PATENT_PUBLICATION} · Justia: <a href="{PATENT_US_URL}">원문</a>',
+                f'• 한국 패밀리 KR20250040467A · Google Patents: <a href="{PATENT_KR_URL}">원문</a>',
+            ]
+            if official.get("wallet_patent_news_confirmed"):
+                lines.append(f'• 특허 보도 · Digital Asset: <a href="{PATENT_NEWS_URL}">원문</a>')
         if official["article_confirmed"]:
             lines.append(f'• Digital Asset 확인 기사: <a href="{DIGITAL_ASSET_URL}">근거</a>')
         for item in evidence[:3]:
@@ -547,6 +636,9 @@ def main() -> int:
         f"- Workday job exists: {official['job_fetch_ok']}",
         f"- stablecoin BD scope: {'확인 유지' if current['stablecoin_bd_scope'] else '미확인'}",
         f"- KBW executive default-feature confirmation: {current.get('executive_default_feature_confirmation', False)}",
+        f"- smart-contract wallet patent confirmed: {current.get('smart_contract_wallet_patent_confirmed', False)}",
+        f"- patent publication: {current.get('wallet_patent_publication') or 'unconfirmed'}",
+        f"- patent direct stablecoin/Samsung Wallet link: {current.get('wallet_patent_direct_stablecoin_link', False)}",
         f"- partner: {current['stablecoin_partner'] or 'unconfirmed'}",
         f"- pilot/live: {current['pilot_or_launch']}",
         f"- evidence count: {len(evidence)}",
