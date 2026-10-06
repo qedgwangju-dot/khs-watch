@@ -1006,7 +1006,9 @@ def meaning(cat: str) -> str:
         'Gemini Robotics 유료계약·상용 배치': '연구 파트너십이 실제 고객 계약·생산현장 배치·사용권 매출로 전환되는 가장 중요한 수익화 신호입니다. 고객 실명, 로봇 대수, 계약금액과 반복매출을 확인합니다.',
         '프런티어AI→로봇 지능': '프런티어 모델 자체 성능이 아니라 실제 로봇의 계획·추론·행동모델·현장 배치에 연결되는지를 봅니다. 로봇 성공률·시도비용·지연시간이 개선될 때만 구조 변화로 판단합니다.',
     }
-    return mapping.get(raw, _orig_meaning(cat))
+    if raw in mapping:
+        return mapping[raw]
+    return _orig_meaning(cat)
 
 
 def risk(cat: str) -> str:
@@ -1077,7 +1079,9 @@ def risk(cat: str) -> str:
         'Gemini Robotics 유료계약·상용 배치': '초기 고객 배치가 PoC에 그치면 반복매출이 작을 수 있습니다. 계약 갱신·로봇 대수 확대·작업 성공률·사람 개입률을 확인합니다.',
         '프런티어AI→로봇 지능': 'GPT-6 Astra 같은 모델의 일반 추론 성능만으로 로봇 상용화를 확정할 수 없습니다. 실제 로봇 통합·행동 성공률·지연·안전 검증이 없으면 알림하지 않습니다.',
     }
-    return mapping.get(raw, _orig_risk(cat))
+    if raw in mapping:
+        return mapping[raw]
+    return _orig_risk(cat)
 
 
 def verification(item: dict, group: str, text: str) -> str:
