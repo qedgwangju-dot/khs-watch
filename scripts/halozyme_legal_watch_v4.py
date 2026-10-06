@@ -6,6 +6,7 @@ import html
 import json
 import os
 import re
+import time
 import urllib.parse
 
 import halozyme_legal_watch_v3 as v3
@@ -17,8 +18,23 @@ _original_rss = base.rss
 ALTEOGEN_IR_LIST_URL = "https://alteogen.com/kr/sub/ir/information.php?bid=2"
 ALTEOGEN_IR_CURRENT_URL = "https://alteogen.com/kr/sub/ir/information.php?bid=2&idx=374&mode=view&page=1"
 OFFICIAL_IR_HTTP_TIMEOUT = 7
+OFFICIAL_IR_HTTP_ATTEMPTS = 2
+OFFICIAL_IR_RETRY_BACKOFF_SECONDS = 0.5
 OFFICIAL_IR_WORKERS = 4
 OFFICIAL_IR_MAX_ARTICLES = 12
+
+
+def _official_ir_fetch(url: str) -> str:
+    last_exc: Exception | None = None
+    for attempt in range(1, OFFICIAL_IR_HTTP_ATTEMPTS + 1):
+        try:
+            return base.fetch(url, timeout=OFFICIAL_IR_HTTP_TIMEOUT)
+        except Exception as exc:
+            last_exc = exc
+            if attempt < OFFICIAL_IR_HTTP_ATTEMPTS:
+                time.sleep(OFFICIAL_IR_RETRY_BACKOFF_SECONDS * attempt)
+    assert last_exc is not None
+    raise last_exc
 CURRENT_PORTFOLIO_SCORECARD = {
     "url": ALTEOGEN_IR_CURRENT_URL,
     "title": "알테오젠 파트너 MSD, 할로자임 MDASE 여섯 번째·일곱 번째 특허 무효화 판정",
@@ -116,7 +132,7 @@ def _strip_tags(value: str) -> str:
 
 def _alteogen_official_portfolio_items() -> list[dict]:
     try:
-        page = base.fetch(ALTEOGEN_IR_INDEX, timeout=OFFICIAL_IR_HTTP_TIMEOUT)
+        page = _official_ir_fetch(ALTEOGEN_IR_INDEX)
     except Exception:
         return []
 
@@ -142,7 +158,7 @@ def _alteogen_official_portfolio_items() -> list[dict]:
     def load(candidate: tuple[str, str]) -> dict | None:
         title, url = candidate
         try:
-            article = _strip_tags(base.fetch(url, timeout=OFFICIAL_IR_HTTP_TIMEOUT))
+            article = _strip_tags(_official_ir_fetch(url))
         except Exception:
             article = title
         low = article.lower()
