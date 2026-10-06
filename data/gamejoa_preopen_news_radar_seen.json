@@ -2497,22 +2497,20 @@
     "event:695102b941e71506d24b4e08": {
       "first_seen_kst": "2026-10-07T04:49:54+09:00",
       "lanes": {
-        "live": "2026-10-07T05:59:02+09:00"
+        "live": "2026-10-07T06:28:41+09:00"
       },
-      "last_seen_kst": "2026-10-07T05:59:02+09:00",
-      "link": "https://www.news1.kr/world/international-economy/6312171",
-      "source": "뉴스1",
-      "source_body_digest": "b9f07f2bccf6e94bd0b965def0ea950869d2524378ecdbe127261ab9452d4f12",
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816467",
+      "source": "뉴시스",
+      "source_body_digest": "db311c498205b8faf79511edb39e08ada853f8c78f365a9d915a308046f38770",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:04922142cb1c0c30a06bdc853e54784340a0f20bd4dad457cd8f6163322c2a58",
+      "source_fact_identity": "source_facts:v1:791c0192b4b69dfff077c866080c07788067a84147b75a61022ea843671f239d",
       "source_fact_keys": [
-        "source_fact:v1:8223d71b825c46250fdf767fcd8203689cfc81c7a4f649200833699e66a2aa6a",
-        "source_fact:v1:a2051e6b10e40f9965379bbae8c7f400f4c1c4eb4975d607aa630a56590406b0",
-        "source_fact:v1:ce5ddcf12838ed14939b7a75c6e92e095179e091c5e753d4ee1363c99e0edac1",
-        "source_fact:v1:f6bb05a8e4ee5721e0f1660e9ecec7352efccc484dec43a07233d3c6bd4c56f8"
+        "source_fact:v1:72a60e2cf9c99f27c182e2c30a79c0b3043cfbe8e7787e7719b561831aec2cb5",
+        "source_fact:v1:7d48d7cc7e73b6b26160c464b2579427d8459bb5d8be8d5526ed6d5730c44230"
       ],
-      "source_published_kst": "2026-10-07T05:22+09:00",
-      "title": "국제유가 보합…중동 수출 증가·G7 비축유 방출에 공급 우려 완화"
+      "source_published_kst": "2026-10-07T06:10+09:00",
+      "title": "북한 미사일 부품, 정품 아닌 위조품 대거 사용"
     },
     "event:6994ec3ec51f16c535c2ebd5": {
       "first_seen_kst": "2026-09-28T15:47:59+09:00",
@@ -2745,6 +2743,23 @@
       "link": "https://view.asiae.co.kr/article/2026100110003377696",
       "source": "아시아경제",
       "title": "KB인베, 엔비디아 손잡고 '美 AI 인프라' GMI클라우드 투자"
+    },
+    "event:71b9829ecca548e440a4e65c": {
+      "first_seen_kst": "2026-10-07T06:28:41+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:28:41+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/07/2026100706043267081",
+      "source": "머니투데이",
+      "source_body_digest": "68885a3b756c93c872946bf2a9a285c6011fe81857734e1aff6d04fe6ac35338",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-06:nasdaq=27599.79:change=0.45",
+      "source_fact_identity": "source_facts:v1:52b46add2a2dbda0fe4d4d44e457dbdd373eed42ed1dd8903db44c67a0f71de3",
+      "source_fact_keys": [
+        "source_fact:v1:11a6d164a65c837f77491b1d34ec6cfd78e2e455016ecee9a582ca3a270a11ae"
+      ],
+      "source_published_kst": "2026-10-07T06:07+09:00",
+      "title": "전쟁·고물가 뚫은 실적 기대…S&P·나스닥 쌍끌이 사상 최고[뉴욕마감]"
     },
     "event:71bd3e6091fd15e2e5f6e49d": {
       "first_seen_kst": "2026-10-04T06:09:53+09:00",
@@ -5398,27 +5413,19 @@
     "event:d031a764db670d3e288ddd0a": {
       "first_seen_kst": "2026-10-07T01:18:00+09:00",
       "lanes": {
-        "live": "2026-10-07T01:18:00+09:00"
+        "live": "2026-10-07T06:28:41+09:00"
       },
-      "last_seen_kst": "2026-10-07T01:18:00+09:00",
-      "link": "https://www.fnnews.com/news/202610070032317434",
-      "source": "파이낸셜뉴스",
-      "source_body_digest": "d27495a2b3c528ba24e27107ae4215162ca6a3878aeb8286c1a3dae1a79ff780",
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633060",
+      "source": "이투데이",
+      "source_body_digest": "015e1db411def0c233e80108a98c8a49a35a028ecd34b233e7ddc4aa6b356439",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:6927a867d51da74cf808c531815cb4087e3fdc0a430d9b6cc3835f1828765025",
+      "source_fact_identity": "source_facts:v1:b170e5a10a6a0d1a423a2ea0815e772693d4dd54e4987d38251aaa005b482beb",
       "source_fact_keys": [
-        "source_fact:v1:38b2dbd8e9961d0b6c001dcb9c0f47ff40d6d38d3c127d66302d25e86262b061",
-        "source_fact:v1:6783ef24b3e7d991ed1ed10b3010bc6284fe02eaf085a533cc349ab80776ae68",
-        "source_fact:v1:6a8b9a06323eeb48f51a401c270a1de8898ec9bd58650c121a716ee660038c60",
-        "source_fact:v1:6fc9dbb213d2b3afcc6807501860c2ef2f21abdb38b606b732e9139d78e38c8b",
-        "source_fact:v1:93eed331ae880edc49b712cfff99509b02f8ed358ca2aba2f5eb3b9422637fcc",
-        "source_fact:v1:ae04565928a71de8efaf9b992df9ffe14fddfc9bfffdf24792d56a05dbfc3e14",
-        "source_fact:v1:cb78c215395eaa760013694d35c142a5787f2953efbd2cfd8b62651f971b2f65",
-        "source_fact:v1:dc91acac28eec652d496b7346f9af909b975bbbeae91a1ccf57b6b538008b3d1",
-        "source_fact:v1:f5ea3343016889a9731997263a2e0ebabea08b0c7334ebc89b19a54f304196be"
+        "source_fact:v1:ab0267dcbd159d8990d35cf33bb6052dfb96771424bfa81c33f13c651941f522"
       ],
-      "source_published_kst": "2026-10-07T00:55+09:00",
-      "title": "국제 유가·美 국채 수익률 동반 하락…뉴욕 증시 사상 최고"
+      "source_published_kst": "2026-10-07T06:15+09:00",
+      "title": "뉴욕증시, 기술주 강세ㆍ국채금리 하락에 상승⋯나스닥ㆍS&P500 사상 최고치 [상보]"
     },
     "event:d03c5fd8ce0377d8a85c8fff": {
       "first_seen_kst": "2026-10-01T19:16:32+09:00",
@@ -5635,6 +5642,28 @@
       "link": "https://www.fnnews.com/news/202609270600595261",
       "source": "파이낸셜뉴스",
       "title": "기업 20만곳 늘 때 직원 7천명 늘었다…\"'1인 기업 78%' 투트랙 전략 필요\""
+    },
+    "event:d812265cdfa6d6eb53781072": {
+      "first_seen_kst": "2026-10-07T06:28:41+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:28:41+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633062",
+      "source": "이투데이",
+      "source_body_digest": "d5c1341f72fe6130ef7368211e854e114f4fb7b7acf532a851377844da6e3501",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:68cd2168f9e911a0c005590182e104337607b311d952a4c7e3d0b99d48810b2c",
+      "source_fact_keys": [
+        "source_fact:v1:27f4cda73567ec06c827016d7d1a603abe2e418a28b9af59753fab46fa50cc02",
+        "source_fact:v1:3038b0ccdc3007ee92ec6211a3d9dfc399dfdfbbd71d8253c738f2df4dc2eaad",
+        "source_fact:v1:5b0dac792a989d18b71142f7412b076e9f2996c0097fa7d56b8b92047864702e",
+        "source_fact:v1:6136699d3015e7e3409187470b8c6a6252e7aca46aee567c65638e3a92fdc2e8",
+        "source_fact:v1:926b60dae527e455c39723cd99743ff6fb5cb6af96749f03e7d6fa27cc579364",
+        "source_fact:v1:f702e52a8ad77afae35fa3ef2cc7a7252693403ef22db67c62f3641aedf4cc16"
+      ],
+      "source_published_kst": "2026-10-07T06:25+09:00",
+      "title": "국제유가, 후티 반격ㆍ중동 수출 증가 놓고 강보합⋯WTI 0.01%↑ [상보]"
     },
     "event:d827aa1412b84bbfd1fef8ff": {
       "first_seen_kst": "2026-10-01T09:21:19+09:00",
@@ -7683,6 +7712,28 @@
       "source_published_kst": "2026-10-06T08:41+09:00",
       "title": "AI 데이터센터 늘자 전력 수요도 급증…ETF 투자처도 '전력 인프라'로"
     },
+    "fact:0e39ef0385005d790d3c0f78": {
+      "first_seen_kst": "2026-10-07T06:28:41+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:28:41+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633062",
+      "source": "이투데이",
+      "source_body_digest": "d5c1341f72fe6130ef7368211e854e114f4fb7b7acf532a851377844da6e3501",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:68cd2168f9e911a0c005590182e104337607b311d952a4c7e3d0b99d48810b2c",
+      "source_fact_keys": [
+        "source_fact:v1:27f4cda73567ec06c827016d7d1a603abe2e418a28b9af59753fab46fa50cc02",
+        "source_fact:v1:3038b0ccdc3007ee92ec6211a3d9dfc399dfdfbbd71d8253c738f2df4dc2eaad",
+        "source_fact:v1:5b0dac792a989d18b71142f7412b076e9f2996c0097fa7d56b8b92047864702e",
+        "source_fact:v1:6136699d3015e7e3409187470b8c6a6252e7aca46aee567c65638e3a92fdc2e8",
+        "source_fact:v1:926b60dae527e455c39723cd99743ff6fb5cb6af96749f03e7d6fa27cc579364",
+        "source_fact:v1:f702e52a8ad77afae35fa3ef2cc7a7252693403ef22db67c62f3641aedf4cc16"
+      ],
+      "source_published_kst": "2026-10-07T06:25+09:00",
+      "title": "국제유가, 후티 반격ㆍ중동 수출 증가 놓고 강보합⋯WTI 0.01%↑ [상보]"
+    },
     "fact:0ea69da4170487ae2e2a0fdd": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -8361,6 +8412,23 @@
       ],
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어 | 연합뉴스"
+    },
+    "fact:17666eb506294a549d930777": {
+      "first_seen_kst": "2026-10-07T06:28:41+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:28:41+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/07/2026100706043267081",
+      "source": "머니투데이",
+      "source_body_digest": "68885a3b756c93c872946bf2a9a285c6011fe81857734e1aff6d04fe6ac35338",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-06:nasdaq=27599.79:change=0.45",
+      "source_fact_identity": "source_facts:v1:52b46add2a2dbda0fe4d4d44e457dbdd373eed42ed1dd8903db44c67a0f71de3",
+      "source_fact_keys": [
+        "source_fact:v1:11a6d164a65c837f77491b1d34ec6cfd78e2e455016ecee9a582ca3a270a11ae"
+      ],
+      "source_published_kst": "2026-10-07T06:07+09:00",
+      "title": "전쟁·고물가 뚫은 실적 기대…S&P·나스닥 쌍끌이 사상 최고[뉴욕마감]"
     },
     "fact:17851167c48b094cdbbe4cea": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
@@ -12486,6 +12554,23 @@
       ],
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "반도체 소부장 랠리 … ETF 출시도 잇따라"
+    },
+    "fact:62da2999dba78f9732d48b85": {
+      "first_seen_kst": "2026-10-07T06:28:41+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:28:41+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633060",
+      "source": "이투데이",
+      "source_body_digest": "015e1db411def0c233e80108a98c8a49a35a028ecd34b233e7ddc4aa6b356439",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b170e5a10a6a0d1a423a2ea0815e772693d4dd54e4987d38251aaa005b482beb",
+      "source_fact_keys": [
+        "source_fact:v1:ab0267dcbd159d8990d35cf33bb6052dfb96771424bfa81c33f13c651941f522"
+      ],
+      "source_published_kst": "2026-10-07T06:15+09:00",
+      "title": "뉴욕증시, 기술주 강세ㆍ국채금리 하락에 상승⋯나스닥ㆍS&P500 사상 최고치 [상보]"
     },
     "fact:63564361137dbec4e9a8c29a": {
       "first_seen_kst": "2026-10-05T20:04:01+09:00",
@@ -17966,6 +18051,24 @@
       "source_published_kst": "2026-10-06T04:55+09:00",
       "title": "[美특징주]세레브라스, 올트먼 “긴밀한 파트너” 발언에 주가10%↑…엔비디아 우려 완화"
     },
+    "fact:c68919e6d5a84391f483315b": {
+      "first_seen_kst": "2026-10-07T06:28:41+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:28:41+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816467",
+      "source": "뉴시스",
+      "source_body_digest": "db311c498205b8faf79511edb39e08ada853f8c78f365a9d915a308046f38770",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:791c0192b4b69dfff077c866080c07788067a84147b75a61022ea843671f239d",
+      "source_fact_keys": [
+        "source_fact:v1:72a60e2cf9c99f27c182e2c30a79c0b3043cfbe8e7787e7719b561831aec2cb5",
+        "source_fact:v1:7d48d7cc7e73b6b26160c464b2579427d8459bb5d8be8d5526ed6d5730c44230"
+      ],
+      "source_published_kst": "2026-10-07T06:10+09:00",
+      "title": "북한 미사일 부품, 정품 아닌 위조품 대거 사용"
+    },
     "fact:c6a667cdcde1e58473c564ec": {
       "first_seen_kst": "2026-10-05T23:37:00+09:00",
       "lanes": {
@@ -21086,6 +21189,24 @@
       "link": "https://www.etoday.co.kr/news/view/2631910",
       "source": "이투데이",
       "title": "대기업은 반도체, 중소기업은?…수출 성적표 뜯어보니"
+    },
+    "link:00f5493bf29ebc4868c47ca8": {
+      "first_seen_kst": "2026-10-07T06:28:41+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:28:41+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816467",
+      "source": "뉴시스",
+      "source_body_digest": "db311c498205b8faf79511edb39e08ada853f8c78f365a9d915a308046f38770",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:791c0192b4b69dfff077c866080c07788067a84147b75a61022ea843671f239d",
+      "source_fact_keys": [
+        "source_fact:v1:72a60e2cf9c99f27c182e2c30a79c0b3043cfbe8e7787e7719b561831aec2cb5",
+        "source_fact:v1:7d48d7cc7e73b6b26160c464b2579427d8459bb5d8be8d5526ed6d5730c44230"
+      ],
+      "source_published_kst": "2026-10-07T06:10+09:00",
+      "title": "북한 미사일 부품, 정품 아닌 위조품 대거 사용"
     },
     "link:00fdb0f4b87e7a7204c8890a": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
@@ -34611,6 +34732,23 @@
       "source_published_kst": "2026-10-06T13:10+09:00",
       "title": "서남권 반도체 팹은 제2 반도체 생산거점…풍부한 에너지 활용해야"
     },
+    "link:743288f0ccd074b45e2f4046": {
+      "first_seen_kst": "2026-10-07T06:28:41+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:28:41+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/07/2026100706043267081",
+      "source": "머니투데이",
+      "source_body_digest": "68885a3b756c93c872946bf2a9a285c6011fe81857734e1aff6d04fe6ac35338",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-06:nasdaq=27599.79:change=0.45",
+      "source_fact_identity": "source_facts:v1:52b46add2a2dbda0fe4d4d44e457dbdd373eed42ed1dd8903db44c67a0f71de3",
+      "source_fact_keys": [
+        "source_fact:v1:11a6d164a65c837f77491b1d34ec6cfd78e2e455016ecee9a582ca3a270a11ae"
+      ],
+      "source_published_kst": "2026-10-07T06:07+09:00",
+      "title": "전쟁·고물가 뚫은 실적 기대…S&P·나스닥 쌍끌이 사상 최고[뉴욕마감]"
+    },
     "link:7495263893005a81f0fff1af": {
       "first_seen_kst": "2026-09-19T20:13:35+09:00",
       "lanes": {
@@ -43833,6 +43971,28 @@
       "source_published_kst": "2026-10-04T06:00+09:00",
       "title": "모빌리티 펀드 돈이 암살자(들)로...자본시장 출자약정·심사 쟁점화"
     },
+    "link:c5a399ac0eb30176cd132aaa": {
+      "first_seen_kst": "2026-10-07T06:28:41+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:28:41+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633062",
+      "source": "이투데이",
+      "source_body_digest": "d5c1341f72fe6130ef7368211e854e114f4fb7b7acf532a851377844da6e3501",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:68cd2168f9e911a0c005590182e104337607b311d952a4c7e3d0b99d48810b2c",
+      "source_fact_keys": [
+        "source_fact:v1:27f4cda73567ec06c827016d7d1a603abe2e418a28b9af59753fab46fa50cc02",
+        "source_fact:v1:3038b0ccdc3007ee92ec6211a3d9dfc399dfdfbbd71d8253c738f2df4dc2eaad",
+        "source_fact:v1:5b0dac792a989d18b71142f7412b076e9f2996c0097fa7d56b8b92047864702e",
+        "source_fact:v1:6136699d3015e7e3409187470b8c6a6252e7aca46aee567c65638e3a92fdc2e8",
+        "source_fact:v1:926b60dae527e455c39723cd99743ff6fb5cb6af96749f03e7d6fa27cc579364",
+        "source_fact:v1:f702e52a8ad77afae35fa3ef2cc7a7252693403ef22db67c62f3641aedf4cc16"
+      ],
+      "source_published_kst": "2026-10-07T06:25+09:00",
+      "title": "국제유가, 후티 반격ㆍ중동 수출 증가 놓고 강보합⋯WTI 0.01%↑ [상보]"
+    },
     "link:c5ac832b6bba6f8e44e732da": {
       "first_seen_kst": "2026-10-05T05:59:37+09:00",
       "lanes": {
@@ -45332,6 +45492,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-03T07:00+09:00",
       "title": "한국 바람에 20년 투자, 외국 투자자는 무엇을 보나 [지평 기후에너지리포트]"
+    },
+    "link:d259b1bec6fd1f27306b8984": {
+      "first_seen_kst": "2026-10-07T06:28:41+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:28:41+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633060",
+      "source": "이투데이",
+      "source_body_digest": "015e1db411def0c233e80108a98c8a49a35a028ecd34b233e7ddc4aa6b356439",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b170e5a10a6a0d1a423a2ea0815e772693d4dd54e4987d38251aaa005b482beb",
+      "source_fact_keys": [
+        "source_fact:v1:ab0267dcbd159d8990d35cf33bb6052dfb96771424bfa81c33f13c651941f522"
+      ],
+      "source_published_kst": "2026-10-07T06:15+09:00",
+      "title": "뉴욕증시, 기술주 강세ㆍ국채금리 하락에 상승⋯나스닥ㆍS&P500 사상 최고치 [상보]"
     },
     "link:d262c6a8a3303b1a7c2f8119": {
       "first_seen_kst": "2026-10-02T13:22:36+09:00",
@@ -61748,6 +61925,23 @@
       "source_published_kst": "2026-10-06T10:42+09:00",
       "title": "에코프로비엠-삼성SDI, 전고체 배터리 상용화 맞손…27년 양산 목표"
     },
+    "original:6075de72272a496e8b6cefb2": {
+      "first_seen_kst": "2026-10-07T06:28:41+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:28:41+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633060",
+      "source": "이투데이",
+      "source_body_digest": "015e1db411def0c233e80108a98c8a49a35a028ecd34b233e7ddc4aa6b356439",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b170e5a10a6a0d1a423a2ea0815e772693d4dd54e4987d38251aaa005b482beb",
+      "source_fact_keys": [
+        "source_fact:v1:ab0267dcbd159d8990d35cf33bb6052dfb96771424bfa81c33f13c651941f522"
+      ],
+      "source_published_kst": "2026-10-07T06:15+09:00",
+      "title": "뉴욕증시, 기술주 강세ㆍ국채금리 하락에 상승⋯나스닥ㆍS&P500 사상 최고치 [상보]"
+    },
     "original:60c0ead3210dba4ae395370f": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
       "lanes": {
@@ -67113,6 +67307,28 @@
       "source": "전자신문",
       "title": "中 CXMT, D램 추격에 7조원 베팅…후공정 역량 확대"
     },
+    "original:8f61d0ed1b075b50c6e29386": {
+      "first_seen_kst": "2026-10-07T06:28:41+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:28:41+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633062",
+      "source": "이투데이",
+      "source_body_digest": "d5c1341f72fe6130ef7368211e854e114f4fb7b7acf532a851377844da6e3501",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:68cd2168f9e911a0c005590182e104337607b311d952a4c7e3d0b99d48810b2c",
+      "source_fact_keys": [
+        "source_fact:v1:27f4cda73567ec06c827016d7d1a603abe2e418a28b9af59753fab46fa50cc02",
+        "source_fact:v1:3038b0ccdc3007ee92ec6211a3d9dfc399dfdfbbd71d8253c738f2df4dc2eaad",
+        "source_fact:v1:5b0dac792a989d18b71142f7412b076e9f2996c0097fa7d56b8b92047864702e",
+        "source_fact:v1:6136699d3015e7e3409187470b8c6a6252e7aca46aee567c65638e3a92fdc2e8",
+        "source_fact:v1:926b60dae527e455c39723cd99743ff6fb5cb6af96749f03e7d6fa27cc579364",
+        "source_fact:v1:f702e52a8ad77afae35fa3ef2cc7a7252693403ef22db67c62f3641aedf4cc16"
+      ],
+      "source_published_kst": "2026-10-07T06:25+09:00",
+      "title": "국제유가, 후티 반격ㆍ중동 수출 증가 놓고 강보합⋯WTI 0.01%↑ [상보]"
+    },
     "original:8f86af5f5b89f8708a095226": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
       "lanes": {
@@ -70261,6 +70477,23 @@
       "source": "이투데이",
       "title": "산은·기업은행 “‘암살자(들)’ 투자에 외부 개입 없었어\""
     },
+    "original:ad5c9723b90684c4eba51fa0": {
+      "first_seen_kst": "2026-10-07T06:28:41+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:28:41+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/07/2026100706043267081",
+      "source": "머니투데이",
+      "source_body_digest": "68885a3b756c93c872946bf2a9a285c6011fe81857734e1aff6d04fe6ac35338",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-06:nasdaq=27599.79:change=0.45",
+      "source_fact_identity": "source_facts:v1:52b46add2a2dbda0fe4d4d44e457dbdd373eed42ed1dd8903db44c67a0f71de3",
+      "source_fact_keys": [
+        "source_fact:v1:11a6d164a65c837f77491b1d34ec6cfd78e2e455016ecee9a582ca3a270a11ae"
+      ],
+      "source_published_kst": "2026-10-07T06:07+09:00",
+      "title": "전쟁·고물가 뚫은 실적 기대…S&P·나스닥 쌍끌이 사상 최고[뉴욕마감]"
+    },
     "original:ad73539edb3392b6e4588040": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
       "lanes": {
@@ -72480,6 +72713,24 @@
       ],
       "source_published_kst": "2026-10-06T08:48+09:00",
       "title": "키움운용, '미국AI테크하이베타 ETF' 마이크론·스페이스X 신규 편입"
+    },
+    "original:c1479694d28a15ab9d3cf908": {
+      "first_seen_kst": "2026-10-07T06:28:41+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:28:41+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816467",
+      "source": "뉴시스",
+      "source_body_digest": "db311c498205b8faf79511edb39e08ada853f8c78f365a9d915a308046f38770",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:791c0192b4b69dfff077c866080c07788067a84147b75a61022ea843671f239d",
+      "source_fact_keys": [
+        "source_fact:v1:72a60e2cf9c99f27c182e2c30a79c0b3043cfbe8e7787e7719b561831aec2cb5",
+        "source_fact:v1:7d48d7cc7e73b6b26160c464b2579427d8459bb5d8be8d5526ed6d5730c44230"
+      ],
+      "source_published_kst": "2026-10-07T06:10+09:00",
+      "title": "북한 미사일 부품, 정품 아닌 위조품 대거 사용"
     },
     "original:c152787be187e7f37ea4512f": {
       "first_seen_kst": "2026-10-06T21:54:00+09:00",
@@ -85694,6 +85945,28 @@
       "source_published_kst": "2026-10-06T07:42+09:00",
       "title": "[오늘의 증시]美금리 상승에도 나스닥 최고치…코스피 상승 출발 전망"
     },
+    "source_fact:1bec90a99629d352c0703737": {
+      "first_seen_kst": "2026-10-07T06:28:41+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:28:41+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633062",
+      "source": "이투데이",
+      "source_body_digest": "d5c1341f72fe6130ef7368211e854e114f4fb7b7acf532a851377844da6e3501",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:68cd2168f9e911a0c005590182e104337607b311d952a4c7e3d0b99d48810b2c",
+      "source_fact_keys": [
+        "source_fact:v1:27f4cda73567ec06c827016d7d1a603abe2e418a28b9af59753fab46fa50cc02",
+        "source_fact:v1:3038b0ccdc3007ee92ec6211a3d9dfc399dfdfbbd71d8253c738f2df4dc2eaad",
+        "source_fact:v1:5b0dac792a989d18b71142f7412b076e9f2996c0097fa7d56b8b92047864702e",
+        "source_fact:v1:6136699d3015e7e3409187470b8c6a6252e7aca46aee567c65638e3a92fdc2e8",
+        "source_fact:v1:926b60dae527e455c39723cd99743ff6fb5cb6af96749f03e7d6fa27cc579364",
+        "source_fact:v1:f702e52a8ad77afae35fa3ef2cc7a7252693403ef22db67c62f3641aedf4cc16"
+      ],
+      "source_published_kst": "2026-10-07T06:25+09:00",
+      "title": "국제유가, 후티 반격ㆍ중동 수출 증가 놓고 강보합⋯WTI 0.01%↑ [상보]"
+    },
     "source_fact:1bfa59248636bfcdc962561c": {
       "first_seen_kst": "2026-10-05T22:57:49+09:00",
       "lanes": {
@@ -86579,6 +86852,28 @@
       ],
       "source_published_kst": "2026-10-05T21:08+09:00",
       "title": "포럼 마켓츠, AI 합작사 설립..2027년 매출 최대 1억7500만달러"
+    },
+    "source_fact:1ff511b3624d4bced87ee77f": {
+      "first_seen_kst": "2026-10-07T06:28:41+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:28:41+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633062",
+      "source": "이투데이",
+      "source_body_digest": "d5c1341f72fe6130ef7368211e854e114f4fb7b7acf532a851377844da6e3501",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:68cd2168f9e911a0c005590182e104337607b311d952a4c7e3d0b99d48810b2c",
+      "source_fact_keys": [
+        "source_fact:v1:27f4cda73567ec06c827016d7d1a603abe2e418a28b9af59753fab46fa50cc02",
+        "source_fact:v1:3038b0ccdc3007ee92ec6211a3d9dfc399dfdfbbd71d8253c738f2df4dc2eaad",
+        "source_fact:v1:5b0dac792a989d18b71142f7412b076e9f2996c0097fa7d56b8b92047864702e",
+        "source_fact:v1:6136699d3015e7e3409187470b8c6a6252e7aca46aee567c65638e3a92fdc2e8",
+        "source_fact:v1:926b60dae527e455c39723cd99743ff6fb5cb6af96749f03e7d6fa27cc579364",
+        "source_fact:v1:f702e52a8ad77afae35fa3ef2cc7a7252693403ef22db67c62f3641aedf4cc16"
+      ],
+      "source_published_kst": "2026-10-07T06:25+09:00",
+      "title": "국제유가, 후티 반격ㆍ중동 수출 증가 놓고 강보합⋯WTI 0.01%↑ [상보]"
     },
     "source_fact:1ffa094a2334ade5bf0691fc": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
@@ -90339,6 +90634,24 @@
       ],
       "source_published_kst": "2026-10-06T23:31+09:00",
       "title": "우크라, '한국의 러 석유공급' 기사 인용해 韓 비판(종합) | 연합뉴스"
+    },
+    "source_fact:2f5d60f6f2b72d5813918e02": {
+      "first_seen_kst": "2026-10-07T06:28:41+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:28:41+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816467",
+      "source": "뉴시스",
+      "source_body_digest": "db311c498205b8faf79511edb39e08ada853f8c78f365a9d915a308046f38770",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:791c0192b4b69dfff077c866080c07788067a84147b75a61022ea843671f239d",
+      "source_fact_keys": [
+        "source_fact:v1:72a60e2cf9c99f27c182e2c30a79c0b3043cfbe8e7787e7719b561831aec2cb5",
+        "source_fact:v1:7d48d7cc7e73b6b26160c464b2579427d8459bb5d8be8d5526ed6d5730c44230"
+      ],
+      "source_published_kst": "2026-10-07T06:10+09:00",
+      "title": "북한 미사일 부품, 정품 아닌 위조품 대거 사용"
     },
     "source_fact:2f6d62d1c65ce032fb15207d": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -101357,6 +101670,28 @@
       "source_published_kst": "2026-10-06T15:07+09:00",
       "title": "[2026 국감] 호남 반도체 놓고 여야 격돌…김성환 기후부 장관 “전력·용수 공급 가능”"
     },
+    "source_fact:5c69e73aa02a84615ea47258": {
+      "first_seen_kst": "2026-10-07T06:28:41+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:28:41+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633062",
+      "source": "이투데이",
+      "source_body_digest": "d5c1341f72fe6130ef7368211e854e114f4fb7b7acf532a851377844da6e3501",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:68cd2168f9e911a0c005590182e104337607b311d952a4c7e3d0b99d48810b2c",
+      "source_fact_keys": [
+        "source_fact:v1:27f4cda73567ec06c827016d7d1a603abe2e418a28b9af59753fab46fa50cc02",
+        "source_fact:v1:3038b0ccdc3007ee92ec6211a3d9dfc399dfdfbbd71d8253c738f2df4dc2eaad",
+        "source_fact:v1:5b0dac792a989d18b71142f7412b076e9f2996c0097fa7d56b8b92047864702e",
+        "source_fact:v1:6136699d3015e7e3409187470b8c6a6252e7aca46aee567c65638e3a92fdc2e8",
+        "source_fact:v1:926b60dae527e455c39723cd99743ff6fb5cb6af96749f03e7d6fa27cc579364",
+        "source_fact:v1:f702e52a8ad77afae35fa3ef2cc7a7252693403ef22db67c62f3641aedf4cc16"
+      ],
+      "source_published_kst": "2026-10-07T06:25+09:00",
+      "title": "국제유가, 후티 반격ㆍ중동 수출 증가 놓고 강보합⋯WTI 0.01%↑ [상보]"
+    },
     "source_fact:5c6ec42fa1e5d18d717ba211": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
       "lanes": {
@@ -104260,6 +104595,24 @@
       "source_published_kst": "2026-10-05T21:36+09:00",
       "title": "엑스 컴퓨트, 조지아 AI 클러스터 인수..고객계약 5년 연장"
     },
+    "source_fact:68fcca0f430ead4580cf95f1": {
+      "first_seen_kst": "2026-10-07T06:28:41+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:28:41+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816467",
+      "source": "뉴시스",
+      "source_body_digest": "db311c498205b8faf79511edb39e08ada853f8c78f365a9d915a308046f38770",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:791c0192b4b69dfff077c866080c07788067a84147b75a61022ea843671f239d",
+      "source_fact_keys": [
+        "source_fact:v1:72a60e2cf9c99f27c182e2c30a79c0b3043cfbe8e7787e7719b561831aec2cb5",
+        "source_fact:v1:7d48d7cc7e73b6b26160c464b2579427d8459bb5d8be8d5526ed6d5730c44230"
+      ],
+      "source_published_kst": "2026-10-07T06:10+09:00",
+      "title": "북한 미사일 부품, 정품 아닌 위조품 대거 사용"
+    },
     "source_fact:690a2c7052949bbe9ac432c7": {
       "first_seen_kst": "2026-10-06T19:46:03+09:00",
       "lanes": {
@@ -104573,6 +104926,23 @@
       ],
       "source_published_kst": "2026-10-05T18:21+09:00",
       "title": "솔리다임 美상장… \"SK하닉 가치 재평가\" vs \"주주 피해\" [어떻게 생각하십니까]"
+    },
+    "source_fact:6a2e1df80b263043c6f9f252": {
+      "first_seen_kst": "2026-10-07T06:28:41+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:28:41+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633060",
+      "source": "이투데이",
+      "source_body_digest": "015e1db411def0c233e80108a98c8a49a35a028ecd34b233e7ddc4aa6b356439",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b170e5a10a6a0d1a423a2ea0815e772693d4dd54e4987d38251aaa005b482beb",
+      "source_fact_keys": [
+        "source_fact:v1:ab0267dcbd159d8990d35cf33bb6052dfb96771424bfa81c33f13c651941f522"
+      ],
+      "source_published_kst": "2026-10-07T06:15+09:00",
+      "title": "뉴욕증시, 기술주 강세ㆍ국채금리 하락에 상승⋯나스닥ㆍS&P500 사상 최고치 [상보]"
     },
     "source_fact:6a2ef146a75eaff71aaef0a3": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
@@ -114556,6 +114926,28 @@
       "source_published_kst": "2026-10-06T06:38+09:00",
       "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
     },
+    "source_fact:93b0fbde6fc2bfafce80475f": {
+      "first_seen_kst": "2026-10-07T06:28:41+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:28:41+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633062",
+      "source": "이투데이",
+      "source_body_digest": "d5c1341f72fe6130ef7368211e854e114f4fb7b7acf532a851377844da6e3501",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:68cd2168f9e911a0c005590182e104337607b311d952a4c7e3d0b99d48810b2c",
+      "source_fact_keys": [
+        "source_fact:v1:27f4cda73567ec06c827016d7d1a603abe2e418a28b9af59753fab46fa50cc02",
+        "source_fact:v1:3038b0ccdc3007ee92ec6211a3d9dfc399dfdfbbd71d8253c738f2df4dc2eaad",
+        "source_fact:v1:5b0dac792a989d18b71142f7412b076e9f2996c0097fa7d56b8b92047864702e",
+        "source_fact:v1:6136699d3015e7e3409187470b8c6a6252e7aca46aee567c65638e3a92fdc2e8",
+        "source_fact:v1:926b60dae527e455c39723cd99743ff6fb5cb6af96749f03e7d6fa27cc579364",
+        "source_fact:v1:f702e52a8ad77afae35fa3ef2cc7a7252693403ef22db67c62f3641aedf4cc16"
+      ],
+      "source_published_kst": "2026-10-07T06:25+09:00",
+      "title": "국제유가, 후티 반격ㆍ중동 수출 증가 놓고 강보합⋯WTI 0.01%↑ [상보]"
+    },
     "source_fact:93c4152482e922d25de047f2": {
       "first_seen_kst": "2026-10-07T06:12:17+09:00",
       "lanes": {
@@ -123947,6 +124339,28 @@
       "source_published_kst": "2026-10-06T19:00+09:00",
       "title": "9월 유로존 종합 PMI 53.1·1.1P↑…\"3년5개월 만에 최고\""
     },
+    "source_fact:bb52881018cc7766b577443e": {
+      "first_seen_kst": "2026-10-07T06:28:41+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:28:41+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633062",
+      "source": "이투데이",
+      "source_body_digest": "d5c1341f72fe6130ef7368211e854e114f4fb7b7acf532a851377844da6e3501",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:68cd2168f9e911a0c005590182e104337607b311d952a4c7e3d0b99d48810b2c",
+      "source_fact_keys": [
+        "source_fact:v1:27f4cda73567ec06c827016d7d1a603abe2e418a28b9af59753fab46fa50cc02",
+        "source_fact:v1:3038b0ccdc3007ee92ec6211a3d9dfc399dfdfbbd71d8253c738f2df4dc2eaad",
+        "source_fact:v1:5b0dac792a989d18b71142f7412b076e9f2996c0097fa7d56b8b92047864702e",
+        "source_fact:v1:6136699d3015e7e3409187470b8c6a6252e7aca46aee567c65638e3a92fdc2e8",
+        "source_fact:v1:926b60dae527e455c39723cd99743ff6fb5cb6af96749f03e7d6fa27cc579364",
+        "source_fact:v1:f702e52a8ad77afae35fa3ef2cc7a7252693403ef22db67c62f3641aedf4cc16"
+      ],
+      "source_published_kst": "2026-10-07T06:25+09:00",
+      "title": "국제유가, 후티 반격ㆍ중동 수출 증가 놓고 강보합⋯WTI 0.01%↑ [상보]"
+    },
     "source_fact:bb5bf88db8e735f0899f16aa": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
       "lanes": {
@@ -125452,6 +125866,23 @@
       ],
       "source_published_kst": "2026-10-06T17:12+09:00",
       "title": "유로화 17개월 최저…프랑스 재정불안에 스페인 조기총선까지(종합)"
+    },
+    "source_fact:c27e34b0b2b0eb86abaf929a": {
+      "first_seen_kst": "2026-10-07T06:28:41+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:28:41+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/07/2026100706043267081",
+      "source": "머니투데이",
+      "source_body_digest": "68885a3b756c93c872946bf2a9a285c6011fe81857734e1aff6d04fe6ac35338",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-06:nasdaq=27599.79:change=0.45",
+      "source_fact_identity": "source_facts:v1:52b46add2a2dbda0fe4d4d44e457dbdd373eed42ed1dd8903db44c67a0f71de3",
+      "source_fact_keys": [
+        "source_fact:v1:11a6d164a65c837f77491b1d34ec6cfd78e2e455016ecee9a582ca3a270a11ae"
+      ],
+      "source_published_kst": "2026-10-07T06:07+09:00",
+      "title": "전쟁·고물가 뚫은 실적 기대…S&P·나스닥 쌍끌이 사상 최고[뉴욕마감]"
     },
     "source_fact:c29395a48d96cd7d36d2d476": {
       "first_seen_kst": "2026-10-07T01:18:00+09:00",
@@ -127223,6 +127654,28 @@
       ],
       "source_published_kst": "2026-10-06T17:38+09:00",
       "title": "[미국 주식 돋보기] 데이터센터 전력 구원투수 '비코' 고공행진"
+    },
+    "source_fact:c93bfb480ae0695d2b5a5f36": {
+      "first_seen_kst": "2026-10-07T06:28:41+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:28:41+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633062",
+      "source": "이투데이",
+      "source_body_digest": "d5c1341f72fe6130ef7368211e854e114f4fb7b7acf532a851377844da6e3501",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:68cd2168f9e911a0c005590182e104337607b311d952a4c7e3d0b99d48810b2c",
+      "source_fact_keys": [
+        "source_fact:v1:27f4cda73567ec06c827016d7d1a603abe2e418a28b9af59753fab46fa50cc02",
+        "source_fact:v1:3038b0ccdc3007ee92ec6211a3d9dfc399dfdfbbd71d8253c738f2df4dc2eaad",
+        "source_fact:v1:5b0dac792a989d18b71142f7412b076e9f2996c0097fa7d56b8b92047864702e",
+        "source_fact:v1:6136699d3015e7e3409187470b8c6a6252e7aca46aee567c65638e3a92fdc2e8",
+        "source_fact:v1:926b60dae527e455c39723cd99743ff6fb5cb6af96749f03e7d6fa27cc579364",
+        "source_fact:v1:f702e52a8ad77afae35fa3ef2cc7a7252693403ef22db67c62f3641aedf4cc16"
+      ],
+      "source_published_kst": "2026-10-07T06:25+09:00",
+      "title": "국제유가, 후티 반격ㆍ중동 수출 증가 놓고 강보합⋯WTI 0.01%↑ [상보]"
     },
     "source_fact:c942d23269e67fda2f4dd226": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
@@ -152085,6 +152538,23 @@
       "source_published_kst": "2026-10-06T10:42+09:00",
       "title": "에코프로비엠-삼성SDI, 전고체 배터리 상용화 맞손…27년 양산 목표"
     },
+    "title:6075de72272a496e8b6cefb2": {
+      "first_seen_kst": "2026-10-07T06:28:41+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:28:41+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633060",
+      "source": "이투데이",
+      "source_body_digest": "015e1db411def0c233e80108a98c8a49a35a028ecd34b233e7ddc4aa6b356439",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b170e5a10a6a0d1a423a2ea0815e772693d4dd54e4987d38251aaa005b482beb",
+      "source_fact_keys": [
+        "source_fact:v1:ab0267dcbd159d8990d35cf33bb6052dfb96771424bfa81c33f13c651941f522"
+      ],
+      "source_published_kst": "2026-10-07T06:15+09:00",
+      "title": "뉴욕증시, 기술주 강세ㆍ국채금리 하락에 상승⋯나스닥ㆍS&P500 사상 최고치 [상보]"
+    },
     "title:60c0ead3210dba4ae395370f": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
       "lanes": {
@@ -157594,6 +158064,28 @@
       "source": "전자신문",
       "title": "中 CXMT, D램 추격에 7조원 베팅…후공정 역량 확대"
     },
+    "title:8f61d0ed1b075b50c6e29386": {
+      "first_seen_kst": "2026-10-07T06:28:41+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:28:41+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633062",
+      "source": "이투데이",
+      "source_body_digest": "d5c1341f72fe6130ef7368211e854e114f4fb7b7acf532a851377844da6e3501",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:68cd2168f9e911a0c005590182e104337607b311d952a4c7e3d0b99d48810b2c",
+      "source_fact_keys": [
+        "source_fact:v1:27f4cda73567ec06c827016d7d1a603abe2e418a28b9af59753fab46fa50cc02",
+        "source_fact:v1:3038b0ccdc3007ee92ec6211a3d9dfc399dfdfbbd71d8253c738f2df4dc2eaad",
+        "source_fact:v1:5b0dac792a989d18b71142f7412b076e9f2996c0097fa7d56b8b92047864702e",
+        "source_fact:v1:6136699d3015e7e3409187470b8c6a6252e7aca46aee567c65638e3a92fdc2e8",
+        "source_fact:v1:926b60dae527e455c39723cd99743ff6fb5cb6af96749f03e7d6fa27cc579364",
+        "source_fact:v1:f702e52a8ad77afae35fa3ef2cc7a7252693403ef22db67c62f3641aedf4cc16"
+      ],
+      "source_published_kst": "2026-10-07T06:25+09:00",
+      "title": "국제유가, 후티 반격ㆍ중동 수출 증가 놓고 강보합⋯WTI 0.01%↑ [상보]"
+    },
     "title:8f86af5f5b89f8708a095226": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
       "lanes": {
@@ -159135,6 +159627,28 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T05:50+09:00",
       "title": "올해 5대 은행 가계대출 중도상환 13% 감소…수수료 40% 줄어"
+    },
+    "title:9e26dc6775468ee9c72ff626": {
+      "first_seen_kst": "2026-10-07T06:28:41+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:28:41+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633062",
+      "source": "이투데이",
+      "source_body_digest": "d5c1341f72fe6130ef7368211e854e114f4fb7b7acf532a851377844da6e3501",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:68cd2168f9e911a0c005590182e104337607b311d952a4c7e3d0b99d48810b2c",
+      "source_fact_keys": [
+        "source_fact:v1:27f4cda73567ec06c827016d7d1a603abe2e418a28b9af59753fab46fa50cc02",
+        "source_fact:v1:3038b0ccdc3007ee92ec6211a3d9dfc399dfdfbbd71d8253c738f2df4dc2eaad",
+        "source_fact:v1:5b0dac792a989d18b71142f7412b076e9f2996c0097fa7d56b8b92047864702e",
+        "source_fact:v1:6136699d3015e7e3409187470b8c6a6252e7aca46aee567c65638e3a92fdc2e8",
+        "source_fact:v1:926b60dae527e455c39723cd99743ff6fb5cb6af96749f03e7d6fa27cc579364",
+        "source_fact:v1:f702e52a8ad77afae35fa3ef2cc7a7252693403ef22db67c62f3641aedf4cc16"
+      ],
+      "source_published_kst": "2026-10-07T06:25+09:00",
+      "title": "국제유가, 후티 반격ㆍ중동 수출 증가 놓고 강보합⋯WTI 0.01%↑ [상보]"
     },
     "title:9e290a15bff7f109dd3b65f0": {
       "first_seen_kst": "2026-10-06T01:16:46+09:00",
@@ -160806,6 +161320,23 @@
       "source": "이투데이",
       "title": "산은·기업은행 “‘암살자(들)’ 투자에 외부 개입 없었어\""
     },
+    "title:ad5c9723b90684c4eba51fa0": {
+      "first_seen_kst": "2026-10-07T06:28:41+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:28:41+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/07/2026100706043267081",
+      "source": "머니투데이",
+      "source_body_digest": "68885a3b756c93c872946bf2a9a285c6011fe81857734e1aff6d04fe6ac35338",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-06:nasdaq=27599.79:change=0.45",
+      "source_fact_identity": "source_facts:v1:52b46add2a2dbda0fe4d4d44e457dbdd373eed42ed1dd8903db44c67a0f71de3",
+      "source_fact_keys": [
+        "source_fact:v1:11a6d164a65c837f77491b1d34ec6cfd78e2e455016ecee9a582ca3a270a11ae"
+      ],
+      "source_published_kst": "2026-10-07T06:07+09:00",
+      "title": "전쟁·고물가 뚫은 실적 기대…S&P·나스닥 쌍끌이 사상 최고[뉴욕마감]"
+    },
     "title:ad73539edb3392b6e4588040": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
       "lanes": {
@@ -161507,6 +162038,23 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=01315286645609312",
       "source": "이데일리",
       "title": "[美특징주]아르시스, 항공우주·방위산업 주요 부품 공급 업체 …주가 4%↑"
+    },
+    "title:b31e04b911e79ad20993816c": {
+      "first_seen_kst": "2026-10-07T06:28:41+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:28:41+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633060",
+      "source": "이투데이",
+      "source_body_digest": "015e1db411def0c233e80108a98c8a49a35a028ecd34b233e7ddc4aa6b356439",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b170e5a10a6a0d1a423a2ea0815e772693d4dd54e4987d38251aaa005b482beb",
+      "source_fact_keys": [
+        "source_fact:v1:ab0267dcbd159d8990d35cf33bb6052dfb96771424bfa81c33f13c651941f522"
+      ],
+      "source_published_kst": "2026-10-07T06:15+09:00",
+      "title": "뉴욕증시, 기술주 강세ㆍ국채금리 하락에 상승⋯나스닥ㆍS&P500 사상 최고치 [상보]"
     },
     "title:b320e0cefa3fc011ea548d52": {
       "first_seen_kst": "2026-10-03T12:48:39+09:00",
@@ -163080,6 +163628,24 @@
       ],
       "source_published_kst": "2026-10-06T08:48+09:00",
       "title": "키움운용, '미국AI테크하이베타 ETF' 마이크론·스페이스X 신규 편입"
+    },
+    "title:c1479694d28a15ab9d3cf908": {
+      "first_seen_kst": "2026-10-07T06:28:41+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:28:41+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:28:41+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816467",
+      "source": "뉴시스",
+      "source_body_digest": "db311c498205b8faf79511edb39e08ada853f8c78f365a9d915a308046f38770",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:791c0192b4b69dfff077c866080c07788067a84147b75a61022ea843671f239d",
+      "source_fact_keys": [
+        "source_fact:v1:72a60e2cf9c99f27c182e2c30a79c0b3043cfbe8e7787e7719b561831aec2cb5",
+        "source_fact:v1:7d48d7cc7e73b6b26160c464b2579427d8459bb5d8be8d5526ed6d5730c44230"
+      ],
+      "source_published_kst": "2026-10-07T06:10+09:00",
+      "title": "북한 미사일 부품, 정품 아닌 위조품 대거 사용"
     },
     "title:c152787be187e7f37ea4512f": {
       "first_seen_kst": "2026-10-06T21:54:00+09:00",
@@ -170271,5 +170837,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-07T06:12:17+09:00"
+  "updated_at_kst": "2026-10-07T06:28:41+09:00"
 }
