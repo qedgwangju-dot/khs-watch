@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 90
+VERSION = 91
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -123,6 +123,7 @@ SPECULATIVE_CONTACT = re.compile(
     r"(?:논의|회동|만남|협의)(?:할|가질|을\s*가질)[^.!?]{0,45}(?:전망|예상|가능성|관측)|"
     r"(?:만날|만나게\s*될)[^.!?]{0,50}(?:전망|예상|가능성)|"
     r"(?:논의|회동|협력)[^.!?]{0,30}할지[^.!?]{0,20}주목|"
+    r"(?:협력|논의|회동|만남|협의|공급)[^.!?]{0,100}(?:할지|힐지|릴지|될지|을지|날지|인지)[^.!?]{0,25}(?:관심|주목|전망|관측)|"
     r"(?:may|could|expected to).{0,35}(?:meet|discuss)", re.I,
 )
 EXPLANATORY_ONLY = re.compile(
@@ -1785,6 +1786,27 @@ def commercial_order_terms(title: str, body: str, published: str = "") -> dict[s
     return terms
 
 
+def mlcc_contract_observation(title: str, body: str) -> dict[str, str]:
+    if focus_kind(title) != 'commercial_order' or 'MLCC' not in title:
+        return {}
+    source = source_reported_body(body)
+    rows = source_sentences(source)
+    lead = next((row for row in rows if 'MLCC' in row and re.search(r'공급\s*계약을?\s*체결', row)
+                 and not PAST_ACTION.search(row)), '')
+    issuer = re.search(r'([A-Za-z가-힣&·.-]{2,30})(?:은|는|가)\s*(?:\d{1,2}일\s*)?글로벌\s*대형기업과', lead)
+    amount = re.search(r'(?<![\d.])(\d[\d,.]*)억\s*원', lead)
+    period = re.search(r'계약\s*기간은\s*(내년|20\d{2}년)\s*(\d{1,2})월\s*(\d{1,2})일부터\s*(?:같은해\s*)?(\d{1,2})월\s*(\d{1,2})일까지', source)
+    share = re.search(r'(?:지난해|작년)[^.!?]{0,60}매출액[^.!?]{0,35}(\d+(?:\.\d+)?)%', source)
+    disclosure = next((row for row in rows if 'MLCC' in row and '공시했다' in row and not PAST_ACTION.search(row)), '')
+    day = re.search(r'(?<!\d)(\d{1,2})일', disclosure)
+    if not (issuer and issuer[1] in title and amount and period and share and day):
+        return {}
+    return {'issuer': issuer[1], 'customer': '글로벌 대형기업', 'reported_krw': amount[1] + '억원',
+            'year_label': period[1], 'start_month': period[2], 'start_day': period[3],
+            'end_month': period[4], 'end_day': period[5], 'revenue_share': share[1],
+            'disclosure_day': day[1], 'source_excerpt': lead}
+
+
 def structured_supply_contract_observation(title: str, body: str) -> dict[str, str]:
     """Read split filing fields rather than a content-free disclosure sentence."""
     if focus_kind(title) != 'commercial_order':
@@ -1844,6 +1866,17 @@ def source_event_identity(alert: dict) -> str:
     body = str(alert.get("source_body") or "") if alert.get("body_verified") else ""
     published = str(alert.get("published") or "")
     if re.match(r"20\d{2}-\d{2}-\d{2}", published):
+        mlcc = mlcc_contract_observation(title, body)
+        if mlcc:
+            year = int(published[:4]) + 1 if mlcc['year_label'] == '내년' else int(mlcc['year_label'][:4])
+            terms = {key: mlcc[key] for key in ('issuer', 'customer', 'reported_krw', 'revenue_share')}
+            terms.update(product='MLCC', disclosure_date=published[:8] + mlcc['disclosure_day'].zfill(2),
+                         contract_start=f"{year:04}-{int(mlcc['start_month']):02}-{int(mlcc['start_day']):02}",
+                         contract_end=f"{year:04}-{int(mlcc['end_month']):02}-{int(mlcc['end_day']):02}", stage='signed_disclosure')
+            terms['additional_execution'] = [canonical_source_fact(row) for row in source_sentences(source_reported_body(body))
+                if not PAST_ACTION.search(row) and re.search(r'(?:설비투자|투자\s*예산|CAPEX|가이던스).{0,80}(?:확정했|공시했|상향했|하향했)|계약.{0,20}(?:정정|변경)했', row, re.I)]
+            digest = hashlib.sha256(json.dumps(terms, ensure_ascii=False, sort_keys=True).encode('utf-8')).hexdigest()
+            return f'source_event:v2:commercial_order:{digest}'
         law = legislative_action_observation(title, body)
         if law:
             terms = {'actor': law['actor'], 'law': canonical_source_fact(re.sub(r'법안$', '법', law['law'])),
@@ -1989,6 +2022,10 @@ def audited_source_event_identity(alert: dict) -> str:
 # Each rule needs a subject and a change in the same source-authored sentence.
 # Quantities, counterparties and stages are evidence, not estimates of price impact.
 RULES = (
+    ('project_funding_execution', ('earnings', 'timeline'),
+     r'(?:발전소|원전|데이터센터).{0,90}(?:건설|투자)', r'송금했|송금한\s*사실|집행했다|집행됐'),
+    ('conditional_funding_timeline', ('earnings', 'timeline'),
+     r'투자금.{0,100}송금', r'국내법(?:상)?\s*절차.{0,30}완료.{0,40}(?:가능|송금)'),
     ("public_compute_allocation", ("earnings", "timeline"),
      r"GPU.{0,100}신청|GPU.{0,60}배정", r"지원됐다|배정됐다|배정했다"),
     ("business_investment_observation", ("earnings", "discount_rate"),
@@ -2031,7 +2068,7 @@ RULES = (
      r"방출|매입|재비축|채우|채운|채울|release|refill|purchase"),
     ("earnings_or_guidance", ("earnings",),
      r"매출|영업이익|순이익|영업손실|순손실|마진|실적|가이던스|주당\s*(?:NAV|순자산가치)|(?<!제)출하|인도량|판매(?:량|실적|는|가)|시장점유율|revenue|earnings|profit|guidance|shipments",
-     r"증가|감소|상승|하락|상회|하회|상향|하향|달성|기록|집계|발표|공시|전망|예상|컨센서스|추정치|적자\s*전환|적자로\s*전환|rise|fall|grow|cut|rais|report|forecast|consensus|beat|miss"),
+     r"증가|감소|상승|하락|상회|하회|상향|하향|달성|돌파|기록|집계|발표|공시|전망|예상|컨센서스|추정치|적자\s*전환|적자로\s*전환|rise|fall|grow|cut|rais|report|forecast|consensus|beat|miss"),
     ("national_export_release", ("earnings", "discount_rate"),
      r"누적\s*수출|월간\s*수출|수출액", r"달(?:했|하|해)|늘었|증가|감소|기록|집계|넘어섰|달성|달러\s*(?:입니다|이다|였다|이었다)"),
     ("product_sales_mix", ("earnings",),
@@ -2113,7 +2150,7 @@ RULES = (
     ("attributed_fx_forecast", ("discount_rate",),
      r"원[·/]달러|달러[·/]원|환율", r"전망|예상"),
     ("policy_scope_or_stage", ("timeline",),
-     r"관세|법인세|세율|세금|수출통제|수출.{0,12}(?:금지|제한)|수입금지|수입 금지|수입 제한|수입제한|수입\s*승인|수출입공고|보안\s*가이드라인|과잉생산.{0,20}(?:대응|조치)|제재|보조금|지원금|예탁금|긴급조치권|규제|인허가|허가\s*절차|고시|조례|환경심사|환경영향평가|주파수|tariff|tax rate|corporate tax|export control|import ban|sanction|subsid|licens|environmental review|spectrum|\bban(?:s|ned)?\b",
+     r"관세|법인세|소비세|면세|세율|세금|수출통제|수출.{0,12}(?:금지|제한)|수입금지|수입 금지|수입 제한|수입제한|수입\s*승인|수출입공고|보안\s*가이드라인|과잉생산.{0,20}(?:대응|조치)|제재|보조금|지원금|예탁금|긴급조치권|규제|인허가|허가\s*절차|고시|조례|환경심사|환경영향평가|주파수|tariff|tax rate|corporate tax|export control|import ban|sanction|subsid|licens|environmental review|spectrum|\bban(?:s|ned)?\b",
      r"제안|검토|추진|인상|인하|부과|올리|올렸|낮추|낮췄|상향|하향|완화|강화|시행|발효|금지|제한|(?<!인)허가(?:했|한다|를\s*(?:내|받|취득))|승인(?:했|한다|을\s*(?:받|획득|취득))|제정|개정|철회|의견수렴|입법예고|면제|배정|의결|착수|발표|propos|draft|\bban(?:s|ned)?\b|prohibit|restrict|approv|enact|implement|consider|exempt|allocat|adopt"),
     ("economic_restriction_response", ("discount_rate", "timeline"),
      r"경제\s*전쟁|제재", r"새로운\s*조치.{0,30}(?:도입|발표)|대응\s*조치.{0,30}(?:도입|발표|시행)"),
@@ -2184,6 +2221,9 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
         return False
     if kind == 'earnings_or_guidance' and re.search(r'목표\s*매출.{0,25}%\s*초과\s*달성', sentence):
         return False
+    if re.search(r'도입\s*(?:당시|취지|경위)|결정\s*(?:주체|과정)|책임\s*소재|도마\s*위|송구|사과|무거[운움]\s*마음', sentence):
+        if not FORMAL_POLICY_EXECUTION.search(sentence) and not NEW_EXECUTION.search(sentence):
+            return False
     if kind == "business_investment_observation":
         return bool(business_investment_observation(sentence))
     if kind == "technical_standard":
@@ -2191,7 +2231,9 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
     if kind in {"customer_discussions", "commercial_order", "physical_supply_or_capacity",
                 "technology_or_clinical_stage", "industrial_partnership_execution",
                 "capital_or_shareholder_action"} and SPECULATIVE_CONTACT.search(sentence):
-        return False
+        confirmed = re.search(r'(?:계약|협약)[^.!?]{0,25}(?:체결했(?:다|다고|으며)|서명했(?:다|다고|으며))|수주했(?:다|다고|으며)', sentence)
+        if not confirmed or PAST_ACTION.search(sentence):
+            return False
     if kind in {"physical_supply_or_capacity", "technology_or_clinical_stage", "selling_price_or_cost",
                 "rates_fx_or_macro", "capital_or_shareholder_action", "market_price_or_flow"}:
         if EXPLANATORY_ONLY.search(sentence) and not NEW_EXECUTION.search(sentence) and not re.search(
@@ -2643,6 +2685,31 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
     political_poll = bool(re.search(r"지지율|국정\s*수행|정당\s*지지|political approval|approval rating", title, re.I)
                           and re.search(r"여론조사|응답자|유권자|poll|respondents|voters", body[:1600], re.I))
     primary_rows = ' '.join(source_sentences(body)[:6])
+    executive_visit = bool(re.search(r'CEO|회장|최고경영자', title, re.I)
+                           and re.search(r'방한|재방한|방미|회동|간담회|만남', title))
+    visit_execution = any(not PAST_ACTION.search(row) and not SPECULATIVE_CONTACT.search(row)
+                          and (NEW_EXECUTION.search(row) or (SCOPED_BUSINESS_DISCUSSION.search(row)
+                               and re.search(r'협상\s*중|논의하고\s*있|논의했다|협의\s*중', row)))
+                          for row in source_sentences(body)[:8])
+    if executive_visit and not visit_execution:
+        result.update(disposition='exclude', priority=0, reason='executive_visit_without_current_business_execution')
+        return result
+    retrospective_hearing = bool(re.search(r'국정감사|국감', body)
+                                 and re.search(r'송구|사과|책임|불일치|확인하겠다|의혹|공방|무겁게\s*생각|도입.{0,35}(?:결정|경위)', title))
+    current_instrument = any(not PAST_ACTION.search(row) and (
+        FORMAL_POLICY_EXECUTION.search(row) or NEW_EXECUTION.search(row)
+        or re.search(r'(?:예탁금|거래\s*규정|거래\s*한도).{0,70}(?:상향|하향|변경).{0,25}(?:결정했다|결정했다고|시행한다)', row)
+    ) for row in source_sentences(body))
+    if retrospective_hearing and not current_instrument:
+        result.update(disposition='exclude', priority=0, reason='retrospective_hearing_without_new_market_instrument')
+        return result
+    hearing_advocacy = bool(re.search(r'국정감사|국감', primary_rows)
+                            and re.search(r'활용해야|만들어야|확충해야', title)
+                            and '의원' in primary_rows)
+    new_policy_commitment = bool(re.search(r'정부.{0,90}(?:투자|예산|계획|규정|지원금).{0,80}(?:확정했다|발표했다|공시했다|시행한다)', primary_rows))
+    if hearing_advocacy and not new_policy_commitment:
+        result.update(disposition='exclude', priority=0, reason='hearing_advocacy_not_new_investment_commitment')
+        return result
     policy_advice = bool(re.search(r"(?:개정|제정|특례|규제).{0,40}(?:필요|제언|해야)", title)
                          and re.search(r"제언|토론회|연구위원|발제자|권고", primary_rows))
     official_action = bool(re.search(r"(?:법안|특별법).{0,30}(?:발의했다|공포했다|통과했다)|"

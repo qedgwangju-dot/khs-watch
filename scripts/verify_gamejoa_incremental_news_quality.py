@@ -65,6 +65,10 @@ FOREGROUND_TERMS_FIXTURE = json.loads((ROOT / 'data/gamejoa_foreground_terms_fix
 FOREGROUND_TERMS_CASES = {case['id']: case for case in FOREGROUND_TERMS_FIXTURE['cases']}
 MATERIAL_EXECUTION_FIXTURE = json.loads((ROOT / 'data/gamejoa_material_execution_fixtures_20261006.json').read_text(encoding='utf-8'))
 MATERIAL_EXECUTION_CASES = {case['id']: case for case in MATERIAL_EXECUTION_FIXTURE['cases']}
+HEARING_SPECULATION_FIXTURE = json.loads((ROOT / 'data/gamejoa_hearing_speculation_fixtures_20261006.json').read_text(encoding='utf-8'))
+HEARING_SPECULATION_CASES = {case['id']: case for case in HEARING_SPECULATION_FIXTURE['cases']}
+HEADLINE_TERMS_FIXTURE = json.loads((ROOT / 'data/gamejoa_headline_terms_fixtures_20261006.json').read_text(encoding='utf-8'))
+HEADLINE_TERMS_CASES = {case['id']: case for case in HEADLINE_TERMS_FIXTURE['cases']}
 LIVE_NOW = NOW.replace(hour=19)
 CONTRACT_BODY = "AMD는 삼성전자와 2027년 데이터센터용 인공지능(AI) 반도체 공동개발을 위한 100억원 규모의 공급 계약을 체결했다고 밝혔다."
 ADDITIONAL_FACT = " AMD는 해당 공급 계약을 위한 반도체 설비투자 예산 500억원을 확정했다고 공시했다."
@@ -106,6 +110,191 @@ def replay():
 
 
 class IncrementalNewsTests(unittest.TestCase):
+    def headline_terms_alert(self, key):
+        case = HEADLINE_TERMS_CASES[key]
+        return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],
+                'telegram_core_fact': case['old_core']}
+
+    def test_second_version90_whole_receipt_replays_headline_terms(self):
+        now = NOW.replace(day=6, hour=17)
+        for case in HEADLINE_TERMS_CASES.values():
+            with self.subTest(case=case['id']), patch.object(radar.base, 'kst_now', return_value=now):
+                self.assertEqual(hashlib.sha256(case['body'].encode()).hexdigest(), case['full_body_sha256'])
+                candidate = classify(case, now)
+                selected = radar.quality_display_alerts([candidate], 30) if candidate else []
+                self.assertEqual(bool(selected), case['expected_keep'])
+                if selected:
+                    self.assertFalse(radar.source_core_fact_errors(selected[0]))
+
+    def test_two_reporter_names_do_not_become_the_policy_actor(self):
+        core = radar.normalized_article_sentence('[세종=뉴시스]여동준 박광온 기자 = 정부가 24억 달러를 송금했다.')
+        self.assertEqual(core, '정부가 24억 달러를 송금했다.')
+        self.assertEqual(radar.normalized_article_sentence('김경택기자 = 삼성전기는 공급계약을 체결했다.'),
+                         '삼성전기는 공급계약을 체결했다.')
+
+    def test_paid_project_core_retains_not_yet_signed_power_purchase_contract(self):
+        item = self.headline_terms_alert('paid_texas_project_pending_ppa')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('이형일', '텍사스 천연가스 발전소', '지난 1일', '24억 달러', '송금', '전력구매계약은 아직 체결되지 않았', '향후 체결'):
+            self.assertIn(term, core)
+        self.assertNotIn('여동준', core)
+        self.assertTrue(radar.source_core_fact_errors(item))
+
+    def test_diesel_core_reports_signed_tax_scope_not_war_background(self):
+        item = self.headline_terms_alert('diesel_tax_exemption_executive_order')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('트럼프', '면세 경유', '도로 차량', '행정명령에 서명', '갤런당 24센트', '사용 범위'):
+            self.assertIn(term, core)
+        self.assertNotIn('러시아', core)
+        self.assertTrue(radar.source_core_fact_errors(item))
+
+    def test_regional_hearing_advocacy_is_not_a_new_capex_commitment(self):
+        item = self.headline_terms_alert('regional_cluster_advocacy_not_new_capex')
+        self.assertFalse(eligible(item['news'], item['source_body']))
+        self.assertTrue(eligible(item['news'], '정부는 6일 반도체산단 기반시설 투자 예산 1000억원을 확정했다.\n' + item['source_body']))
+
+    def test_semiconductor_sales_core_retains_cumulative_period_and_moving_average(self):
+        item = self.headline_terms_alert('semiconductor_sales_period_and_ma_basis')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('미국 반도체산업협회(SIA)', '1~8월', '누적 매출', '1조달러', '1597억4000만달러', '6~8월', '3개월 이동평균', '144.3%'):
+            self.assertIn(term, core)
+        self.assertTrue(radar.source_core_fact_errors(item))
+        self.assertTrue(radar.source_core_fact_errors({**item, 'telegram_core_fact': core.replace('3개월 이동평균', '8월 단월 매출')}))
+
+    def test_disclosed_contract_core_retains_counterparty_end_date_and_revenue_share(self):
+        item = self.headline_terms_alert('refractory_contract_period_share')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('조선내화', '포스코', '351억원', '내화물', '내년 3월 31일까지', '6.60%'):
+            self.assertIn(term, core)
+        self.assertTrue(radar.source_core_fact_errors(item))
+
+    def test_foreign_customer_sales_core_is_cumulative_not_regional_subset(self):
+        item = self.headline_terms_alert('retailer_cumulative_foreign_sales')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('롯데백화점', '올해 누적', '외국인 고객 매출', '1조원', '돌파'):
+            self.assertIn(term, core)
+        self.assertNotIn('수도권을 제외', core)
+        self.assertTrue(radar.source_core_fact_errors(item))
+
+    def test_rounded_mlcc_reprint_uses_individually_verified_alias_not_rounding_rule(self):
+        item = self.headline_terms_alert('mlcc_rounded_reprint')
+        first = self.hearing_speculation_alert('mlcc_first_exact_disclosure')
+        self.assertEqual(materiality.source_event_identity(first), materiality.source_event_identity(item))
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('2027년', '1~12월', '약 2900억 원', '올해 5월', '약 3조9000억 원'):
+            self.assertIn(term, core)
+        changed = {**item, 'source_body': item['source_body'].replace('2027년 1월 1일', '2027년 1월 2일')}
+        self.assertFalse(materiality.audited_source_event_identity(changed))
+
+    def hearing_speculation_alert(self, key):
+        case = HEARING_SPECULATION_CASES[key]
+        return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],
+                'telegram_core_fact': case['old_core']}
+
+    def test_version90_eight_full_bodies_replay_hearing_speculation(self):
+        now = NOW.replace(day=6, hour=16)
+        for case in HEARING_SPECULATION_CASES.values():
+            with self.subTest(case=case['id']), patch.object(radar.base, 'kst_now', return_value=now):
+                self.assertEqual(hashlib.sha256(case['body'].encode()).hexdigest(), case['full_body_sha256'])
+                candidate = classify(case, now)
+                selected = radar.quality_display_alerts([candidate], 30) if candidate else []
+                self.assertEqual(bool(selected), case['expected_keep'])
+                if selected:
+                    self.assertFalse(radar.source_core_fact_errors(selected[0]))
+
+    def test_interrogative_cooperation_interest_is_not_execution(self):
+        for ending in ('협력 범위를 넓힐지도 관심이다.', '협력이 구체화될지 주목된다.', '협력 접점을 늘릴지 관심이 쏠린다.'):
+            body = 'AMD가 차세대 AI 서버 공급 확대를 앞둔 만큼 이번 방한에서 ' + ending
+            for kind in ('physical_supply_or_capacity', 'technology_or_clinical_stage', 'customer_discussions'):
+                self.assertFalse(materiality.evidence_is_new_event(kind, body), (kind, body))
+
+    def test_signed_contract_survives_interrogative_extra_cooperation(self):
+        body = 'AMD는 삼성전자와 2027년 AI 반도체 공급계약 100억원을 체결했으며, 협력 범위를 더 넓힐지 관심이다.'
+        self.assertTrue(materiality.evidence_is_new_event('commercial_order', body))
+
+    def test_hearing_responsibility_and_apology_are_not_market_changes(self):
+        for key in ('capex_decision_blame', 'etf_past_decision_blame', 'etf_apology_reprint'):
+            item = self.hearing_speculation_alert(key)
+            self.assertEqual(materiality.assess(item['news'], item['source_body'])['reason'],
+                             'retrospective_hearing_without_new_market_instrument')
+        for row in ('투자계획의 결정 주체가 도마 위에 올랐다.', '레버리지 ETF 도입 취지는 규제의 비대칭성 완화였다고 설명했다.',
+                    '정책 의도와 달리 시장 변동성을 확대한 데 무거운 마음을 가지고 있다고 밝혔다.'):
+            for kind in ('capital_or_shareholder_action', 'policy_scope_or_stage', 'market_price_or_flow'):
+                self.assertFalse(materiality.evidence_is_new_event(kind, row))
+
+    def test_new_etf_instrument_survives_a_hearing_apology(self):
+        item = self.hearing_speculation_alert('etf_past_decision_blame')
+        body = '금융위는 단일종목 레버리지 ETF 규정을 개정했다. 기본예탁금은 7일부터 1000만원에서 3000만원으로 상향하며 시행일을 확정했다.\n' + item['source_body']
+        self.assertTrue(eligible(item['news'], body))
+
+    def test_conditional_project_payment_core_retains_condition_and_uncertainty(self):
+        item = self.hearing_speculation_alert('conditional_nuclear_payment')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('최대 100억달러', '우선지급 방안', '이형일', '국내법 절차 완료 후', '연내 송금이 가능', '회수 시점·규모는 협의 중'):
+            self.assertIn(term, core)
+        self.assertNotIn('지급했다', core)
+        self.assertTrue(radar.source_core_fact_errors(item))
+
+    def test_energy_report_core_keeps_targets_and_does_not_repeat_capacity(self):
+        item = self.hearing_speculation_alert('energy_work_plan_targets')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('국회에 보고', '2030년', '100GW', '3GW', '2040년', '목표', 'ESS', '유연접속'):
+            self.assertIn(term, core)
+        self.assertEqual(core.count('100GW'), 1)
+        self.assertTrue(radar.source_core_fact_errors(item))
+
+    def test_mlcc_core_keeps_period_and_disclosed_revenue_share(self):
+        for key in ('mlcc_reprint_exact_disclosure', 'mlcc_first_exact_disclosure'):
+            item = self.hearing_speculation_alert(key)
+            core = radar.verified_alert_core(item, item['source_title'])
+            for term in ('삼성전기', '글로벌 대형기업', '2856억원', '내년 1월 1일', '12월 31일', '지난해 매출의 2.5%'):
+                self.assertIn(term, core)
+            self.assertTrue(radar.source_core_fact_errors(item))
+
+    def test_mlcc_same_disclosure_terms_dedupe_but_changes_survive(self):
+        first = self.hearing_speculation_alert('mlcc_first_exact_disclosure')
+        reprint = self.hearing_speculation_alert('mlcc_reprint_exact_disclosure')
+        key = materiality.source_event_identity(first)
+        self.assertTrue(key.startswith('source_event:v2:commercial_order:'))
+        self.assertEqual(key, materiality.source_event_identity(reprint))
+        for old, new in (('2856억원', '2857억원'), ('1월 1일', '1월 2일'), ('2.5%', '2.6%'), ('글로벌 대형기업', '마이크로소프트')):
+            self.assertNotEqual(key, materiality.source_event_identity({**first, 'source_body': first['source_body'].replace(old, new)}))
+        changed = {**first, 'source_body': first['source_body'].replace(
+            '\n◎공감언론', '\n삼성전기는 해당 공급계약을 위한 설비투자 예산 500억원을 확정했다고 공시했다.\n◎공감언론')}
+        self.assertNotEqual(key, materiality.source_event_identity(changed))
+
+    def test_mlcc_related_content_after_reporter_footer_is_not_new_execution(self):
+        first = self.hearing_speculation_alert('mlcc_first_exact_disclosure')
+        contaminated = {**first, 'source_body': first['source_body'] + '\n삼성전기는 해당 공급계약을 위한 설비투자 예산 500억원을 확정했다고 공시했다.'}
+        self.assertEqual(materiality.source_event_identity(first), materiality.source_event_identity(contaminated))
+
+    def test_mlcc_previous_successful_receipt_blocks_other_publisher_reprint(self):
+        first = self.hearing_speculation_alert('mlcc_first_exact_disclosure')
+        reprint = self.hearing_speculation_alert('mlcc_reprint_exact_disclosure')
+        now = NOW.replace(day=6, hour=16)
+        state = {'seen': {'historical': {'title': first['source_title'], 'link': first['link'],
+                                         'first_seen_kst': '2026-10-06T11:52:00+09:00'}}}
+        with tempfile.TemporaryDirectory() as folder, patch.object(telegram, 'SEEN_PATH', Path(folder) / 'seen.json'):
+            original = json.dumps(state).encode('utf-8')
+            telegram.SEEN_PATH.write_bytes(original)
+            fresh, skipped = telegram.filter_previously_seen_alerts([reprint], now, 'live')
+            self.assertFalse(fresh)
+            self.assertEqual(len(skipped), 1)
+            self.assertEqual(telegram.SEEN_PATH.read_bytes(), original)
+            changed = {**reprint, 'source_body': reprint['source_body'].replace('2.5%', '2.6%'),
+                       'link': 'https://www.edaily.co.kr/News/Read?newsId=new-mlcc-terms'}
+            fresh, _ = telegram.filter_previously_seen_alerts([changed], now, 'live')
+            self.assertEqual(len(fresh), 1)
+
+    def test_mlcc_verified_alias_cannot_seed_a_missing_receipt(self):
+        first = self.hearing_speculation_alert('mlcc_first_exact_disclosure')
+        identity = materiality.source_event_identity(first)
+        state = {'seen': {}}
+        telegram.migrate_seen_verified_event_aliases(state)
+        self.assertNotIn('event:' + telegram.digest_seen(identity), state['seen'])
+        changed = {**first, 'source_body': first['source_body'].replace('2856억원', '2857억원')}
+        self.assertFalse(materiality.audited_source_event_identity(changed))
+
     def material_execution_alert(self, key):
         case = MATERIAL_EXECUTION_CASES[key]
         return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],

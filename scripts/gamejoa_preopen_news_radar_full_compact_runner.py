@@ -1640,7 +1640,7 @@ def rank_korean_business_detail_candidates(
 
 
 ARTICLE_SUMMARY_NOISE_PATTERNS = [
-    r"\b[가-힣]{2,6}\s*(?:인턴|수습|객원)?\s*기자\s*=\s*",
+    r"\b[가-힣]{2,6}(?:\s+[가-힣]{2,6}){0,2}\s*(?:인턴\s*|수습\s*|객원\s*)?기자\s*=\s*",
     r"(?:저작권자\s*\(?c\)?\s*)?[^.\n]{0,80}?무단\s*전재\s*[-·–—]?\s*(?:및\s*)?재배포(?:\s*금지)?[.!。]?",
     r"AI\s*학습\s*및\s*활용\s*금지",
     r"저작권자\s*©?\s*이투데이",
@@ -2591,6 +2591,73 @@ def reported_issuer_announcement_fact(title: str, body: str) -> str:
 def source_headline_event_fact(title: str, body: str) -> str:
     """Bind a compact observation to its source actor, population and period."""
     focus = market_materiality.focus_kind(title)
+    source = market_materiality.source_reported_body(body)
+    rows = market_materiality.source_sentences(source)
+    if '발전소' in title and '송금' in title:
+        speaker = re.search(r'([가-힣]{2,5})\s*경제부총리', source)
+        payment = re.search(r'정부가\s*대미투자\s*사업인\s*([^.!?]{2,40}발전소)\s*건설을\s*위해\s*(지난\s*\d{1,2}일)\s*(\d[\d,.]*억\s*달러)를\s*송금했다고', source)
+        pending = re.search(r'전력구매계약은\s*아직\s*체결되지\s*않았다', source)
+        if speaker and speaker[1] in title and payment and pending:
+            fact = (f"{speaker[1]} 부총리는 {payment[1]} 건설에 {payment[2]} {payment[3]}를 송금한 사실을 확인했다. "
+                    '발전소 전력구매계약은 아직 체결되지 않았으며 향후 체결할 예정이다.')
+            return fact if core_sentence_is_complete(fact) else ''
+    if '면세' in title and '경유' in title:
+        signed = next((row for row in rows if '트럼프' in row and '행정명령에 서명했다' in row
+                       and '면세 경유' in row and '도로 차량' in row), '')
+        tax = re.search(r'갤런당\s*(\d+(?:\.\d+)?)센트의\s*연방\s*소비세가\s*면제', source)
+        if signed and tax:
+            fact = ('트럼프는 면세 경유를 도로 차량에도 쓸 수 있도록 사용 제한을 완화하는 행정명령에 서명했다. '
+                    f'갤런당 {tax[1]}센트의 연방 소비세가 면제된 착색 경유의 사용 범위를 넓힌 조치다.')
+            return fact if core_sentence_is_complete(fact) else ''
+    if re.search(r'세계\s*반도체\s*매출', title) and '반도체산업협회(SIA)' in source:
+        cumulative = re.search(r'올해\s*(\d{1,2}[~∼-]\d{1,2}월)\s*세계\s*반도체\s*누적\s*매출이\s*(\d+(?:\.\d+)?조\s*달러)를\s*넘어', source)
+        observation = re.search(r'(\d{1,2}월)\s*세계\s*반도체\s*매출은\s*([\d,.]+억[\d,.]*만달러)로,\s*지난해\s*같은\s*달보다\s*([\d.]+)%\s*증가', source)
+        basis = re.search(r'수치는\s*(\d{1,2}[~∼-]\d{1,2}월)\s*월평균\s*매출을\s*뜻한다', source)
+        if cumulative and observation and basis and '3개월 이동평균 기준' in source:
+            fact = (f"미국 반도체산업협회(SIA)는 올해 {cumulative[1]} 누적 매출이 {cumulative[2]}를 넘었다고 발표했다. "
+                    f"{observation[1]} 수치 {observation[2]}는 {basis[1]} 3개월 이동평균으로 전년비 {observation[3]}% 증가했다.")
+            return fact if core_sentence_is_complete(fact) else ''
+    if '매출' in title and '돌파' in title:
+        milestone = next((normalized_article_sentence(row) for row in rows
+                          if re.search(r'올해\s*누적\s*외국인\s*고객\s*매출이\s*\d[\d,.]*조원을\s*돌파했다고\s*\d{1,2}일\s*밝혔다', row)), '')
+        if milestone and core_sentence_is_complete(milestone):
+            return milestone
+    if '원전' in title and '국내법' in title and '연내 송금' in source:
+        speaker = re.search(r'([가-힣]{2,5})\s*부총리', source)
+        payment = re.search(r'(최대\s*\d[\d,.]*억\s*달러)를\s*우선\s*지급하는\s*방안', source)
+        condition = re.search(r'국내법상\s*절차를\s*완료하면\s*가능하다', source)
+        if speaker and speaker[1] in title and payment and condition:
+            fact = (f"대미 원전 투자금 {payment[1]} 우선지급 방안에 대해 {speaker[1]} 부총리는 국내법 절차 완료 후 "
+                    '연내 송금이 가능하다고 밝혔다.')
+            if '투자금 회수 시점과 규모는 아직 정해지지 않았다' in source and '현재 협의 중' in source:
+                fact += ' 회수 시점·규모는 협의 중이다.'
+            return fact if core_sentence_is_complete(fact) else ''
+    if re.search(r'에너지\s*대전환|재생.{0,20}GW.*석탄발전', title):
+        report = re.search(r'([가-힣]{2,20}부)는\s*\d{1,2}일\s*이\s*같은\s*내용의\s*하반기\s*업무추진\s*계획을[^.!?]{0,60}보고했다', source)
+        capacity = re.search(r'(20\d{2}년)까지\s*재생에너지\s*발전설비\s*(\d+(?:\.\d+)?)\s*(?:기가와트\(GW\)|GW)\s*이상', source)
+        extra = re.search(r'(20\d{2}년)까지\s*계통포화지역\s*태양광\s*(\d+(?:\.\d+)?)GW를\s*추가\s*접속', source)
+        closure = re.search(r'(20\d{2}년)까지\s*석탄발전을\s*폐지', source)
+        if report and report[1] in title and capacity and extra and closure and '유연접속' in source and 'ESS를 설치' in source:
+            fact = (f"{report[1]}는 하반기 업무계획을 국회에 보고했다. {capacity[1]} 재생에너지 발전설비 {capacity[2]}GW 이상 확대, "
+                    f"{extra[1]} 계통포화지역 태양광 {extra[2]}GW 추가 접속과 {closure[1]} 석탄발전 폐지가 목표다. "
+                    'ESS 설치·유연접속을 추진한다.')
+            return fact if core_sentence_is_complete(fact) else ''
+    mlcc = market_materiality.mlcc_contract_observation(title, body)
+    if mlcc:
+        fact = (f"{mlcc['issuer']}{korean_topic_particle(mlcc['issuer'])} {mlcc['customer']}과 {mlcc['reported_krw']} MLCC 공급계약을 "
+                f"체결했다고 {mlcc['disclosure_day']}일 공시했다. 계약 기간은 {mlcc['year_label']} {mlcc['start_month']}월 "
+                f"{mlcc['start_day']}일부터 {mlcc['end_month']}월 {mlcc['end_day']}일까지, 지난해 매출의 {mlcc['revenue_share']}% 규모다.")
+        return fact if core_sentence_is_complete(fact) else ''
+    if focus == 'commercial_order':
+        disclosed = next((normalized_article_sentence(row) for row in rows
+                          if '공급계약을 체결했다고' in row and re.search(r'\d{1,2}일\s*공시했다', row)
+                          and not market_materiality.PAST_ACTION.search(row)), '')
+        terms = next((row for row in rows if '계약 기간은' in row and '지난해 매출액 대비' in row), '')
+        share = re.search(r'지난해\s*매출액\s*대비\s*([\d.]+)%', terms)
+        end = re.search(r'계약\s*기간은\s*((?:내년|20\d{2}년)\s*\d{1,2}월\s*\d{1,2}일까지)', terms)
+        if disclosed and share and end:
+            fact = f'{disclosed} 계약 기간은 {end[1]}이며 지난해 매출의 {share[1]}% 규모다.'
+            return fact if core_sentence_is_complete(fact) else ''
     structured = market_materiality.structured_supply_contract_observation(title, body)
     if structured:
         product = {'Wafer Inspection System': '웨이퍼 검사 시스템'}.get(structured['product'], structured['product'])
@@ -2608,15 +2675,15 @@ def source_headline_event_fact(title: str, body: str) -> str:
             fact = (f"{actor[1] or ''}{actor[2]} {actor[3]}는 {actor[4]} 데이터센터 건설 현장에 공사 중단을 명령했다. "
                     '환경영향평가 등 주요 인허가 미발급이 이유다.')
             return fact if core_sentence_is_complete(fact) else ''
-    if focus == 'commercial_order':
+    if focus == 'commercial_order' or ('수주' in title and 'MLCC' in source):
         lead = next((row for row in rows if re.search(r'체결했다고\s*\d{1,2}일\s*밝혔다', row)), '')
         issuer = re.match(r'([A-Za-z가-힣&·.-]{2,30})(?:은|는)\s*', lead)
         amount = re.search(r'(약\s*\d[\d,.]*억\s*원)', lead)
-        lta = next((row for row in rows if re.search(r'LTA\s*규모는\s*공시\s*기준', row)), '')
-        total = re.search(r'공시\s*기준\s*(약\s*\d+조\s*\d+억\s*원)', lta)
+        lta = next((row for row in rows if re.search(r'LTA\s*규모는\s*공시\s*기준|월부터\s*이번\s*계약까지.{0,100}장기공급계약', row)), '')
+        total = re.search(r'(약\s*\d+조\s*\d+억\s*원)', lta)
         since = re.search(r'((?:올해|지난해|20\d{2}년)\s*\d{1,2}월)부터\s*이번\s*계약까지', lta)
         period = next((row for row in rows if re.search(r'계약\s*기간은\s*20\d{2}년', row)), '')
-        dates = re.search(r'계약\s*기간은\s*(20\d{2}년)\s*(\d{1,2})월\s*\d{1,2}일부터\s*(\d{1,2})월\s*\d{1,2}일까지', period)
+        dates = re.search(r'계약\s*기간은\s*(20\d{2}년)\s*(\d{1,2})월\s*\d{1,2}일부터\s*(?:같은\s*해\s*)?(\d{1,2})월\s*\d{1,2}일까지', period)
         if issuer and issuer[1] in title and amount and total and since and dates and 'AI' in title and 'MLCC' in lead:
             fact = (f"{issuer[1]}{korean_topic_particle(issuer[1])} {dates[1]} {dates[2]}~{dates[3]}월 AI 서버용 MLCC "
                     f"{amount[1]} 공급계약을 체결했다. {since[1]}부터 공시한 LTA 합계는 {total[1]}이다.")

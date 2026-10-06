@@ -456,3 +456,25 @@ Every defect or requested change must follow this sequence:
 - Data-center policy cores prefer verified stop orders and permitting reasons
   over generic expert commentary. Trial-result cores retain duration, comparator
   and reported measurements without claiming approval or inferring medical units.
+- Executive visits need current sourced business execution or scoped discussions;
+  old MOUs plus curiosity about future cooperation are not a new contract event.
+  Embedded interrogatives such as whether cooperation will widen do not prove
+  execution, while an actual current signed contract remains separately eligible.
+- Hearing responsibility disputes and apologies are not new market instruments.
+  Real new deposit/trading rules, budgets and execution terms must remain eligible.
+  Conditional payment plans retain legal prerequisites and unresolved recovery;
+  energy work-plan targets are not installed capacity or already enacted budgets.
+- MLCC reprints compare issuer, customer, disclosure date, exact reported amount,
+  revenue share and annual term. Source-hash and successful-receipt proof may
+  upgrade an existing matching receipt only. Nearby rounded values never create
+  automatic equivalence; changed terms and additional execution remain distinct.
+  Reporter-footer recommendations cannot become current contract execution.
+- A signed tax-scope executive order is summarized by its instrument and affected
+  use, not generic war or price background. Project cash remittance is distinct
+  from a still-unexecuted power purchase contract or conditional later payment.
+- Headline sales milestones retain issuer, population and cumulative period.
+  Industry monthly releases using three-month moving averages retain that basis;
+  they are not single-month sales. Contract disclosures keep term and revenue share.
+  Multiple reporter names are removed without removing the source actor.
+- Regional hearing advocacy about an existing investment plan is not a new CAPEX
+  commitment. Current sourced budget confirmation or implementation is separate.
