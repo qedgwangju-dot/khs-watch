@@ -51,7 +51,8 @@ TRUSTED_DOMAINS = (
     "gevernova.com", "doosanenerbility.com", "nrg.com", "investors.nrg.com",
     "eia.gov", "iea.org", "moodys.com", "reuters.com", "utilitydive.com",
     "datacenterdynamics.com", "energy-storage.news", "publicpower.org",
-    "bloombergtax.com", "advisorperspectives.com",
+    "bloombergtax.com", "advisorperspectives.com", "morganstanley.com", "goldmansachs.com",
+    "hamiltonlane.com",
 )
 
 NEWS_QUERIES = (
@@ -60,6 +61,9 @@ NEWS_QUERIES = (
     'AI data center power generation project commercial operation 500 MW United States',
     'gas turbine data center order supply 500 MW United States',
     'Moody data center 45 GW 110 billion power plants 2030',
+    'Morgan Stanley data center onsite power distributed generation fuel cell BESS forecast United States',
+    'Morgan Stanley data center ESS 279 GWh 169 GWh forecast',
+    'Goldman Sachs US data center capacity 2027 GW forecast community opposition',
 )
 
 HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"}
@@ -126,6 +130,7 @@ def compact_generation_message(msg: list[str]) -> list[str]:
     turbine = sec("<b>🏭 가스터빈 공급 병목</b>")
     grid = sec("<b>🌐 전력망 투자·접속 병목</b>")
     orders = sec("<b>💻 반복 장비투자·한국 전력기기 실수주</b>")
+    research = sec("<b>⚡ Morgan Stanley·Goldman Sachs 전력 병목 기준선</b>")
     new = sec("<b>🆕 핵심 실행 변화</b>")
     fx = sec("<b>💱 환율</b>")
     change_rows = []
@@ -174,6 +179,19 @@ def compact_generation_message(msg: list[str]) -> list[str]:
     ]
     if confirmed:
         out += ["", "<b>💰 국내 확정 수주·매출 연결</b>"] + confirmed[:4]
+
+    research_keep = []
+    for prefix in (
+        "• Goldman Sachs 2026~2027 미국 용량",
+        "• Morgan Stanley 공개 기준",
+        "• Morgan Stanley 장비·계약 시간표",
+        "• Morgan Stanley ESS",
+    ):
+        row = next((x for x in research if _plain(x).startswith(prefix)), None)
+        if row:
+            research_keep.append(row)
+    if research_keep:
+        out += ["", "<b>📡 최신 수요·분산전원</b>"] + research_keep[:4]
 
     if change_rows:
         out += ["", "<b>🔄 숫자 변경</b>"] + change_rows[:6]
@@ -285,7 +303,8 @@ def source_label(source: str, url: str) -> str:
         ("iea", "IEA"), ("mood", "Moody's"), ("reuters", "Reuters"),
         ("utilitydive", "Utility Dive"), ("datacenterdynamics", "Data Center Dynamics"),
         ("energy-storage", "Energy-Storage.News"), ("bloomberg", "Bloomberg"),
-        ("advisorperspectives", "Bloomberg"),
+        ("advisorperspectives", "Bloomberg"), ("morganstanley", "Morgan Stanley"),
+        ("goldmansachs", "Goldman Sachs"), ("hamiltonlane", "Hamilton Lane"),
     ):
         if key in s:
             return label
@@ -315,6 +334,8 @@ def parse_gev() -> dict:
 
 def stage_of(text: str) -> str:
     low = text.lower()
+    if any(k in low for k in ("forecast", "outlook", "projection", "estimate", "전망", "추정")) and any(k in low for k in ("data center", "data centre", "데이터센터", "power", "capacity", "gw", "gwh")):
+        return "전망 변경"
     if any(k in low for k in ("cancel", "withdraw", "delay", "postpone", "suspend", "canceled", "cancelled")):
         return "취소·지연"
     if any(k in low for k in ("commercial operation", "commissioned", "online", "operational", "cod")):
@@ -346,6 +367,10 @@ def is_meaningful(text: str, source: str) -> bool:
     if "mood" in low and any(k in low for k in ("45 gw", "110 billion", "$110")):
         return True
     if "ge vernova" in low and any(k in low for k in ("gas turbine", "slot", "data center", "data centre")):
+        return True
+    research_house = any(k in low for k in ("morgan stanley", "goldman sachs", "모건스탠리", "골드만삭스"))
+    research_revision = any(k in low for k in ("forecast", "outlook", "projection", "estimate", "전망", "추정", "revised", "raised", "lowered"))
+    if research_house and research_revision and any(k in low for k in ("data center", "data centre", "데이터센터")) and scale >= 500:
         return True
     if not any(k in low for k in ("data center", "data centre", "hyperscaler", "ai campus", "ai factory")):
         return False
