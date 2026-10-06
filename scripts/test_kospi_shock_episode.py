@@ -259,3 +259,19 @@ finally:
     else:
         __import__("os").environ["LS_OPENAPI_APP_SECRET"] = orig_secret
 print("ls_token_retry_regression=true")
+
+
+# 장마감 시 복원되지 않은 급락을 '복원 확인'으로 오표기하지 않는다.
+w9 = Watch.__new__(Watch)
+w9.flows = deque(maxlen=2500)
+ep9 = {
+    "start_ts": time.time() - 300,
+    "start_price": 7000.0,
+    "low_ts": time.time() - 30,
+    "low_price": 6950.0,
+}
+close_text = Watch.build_end(w9, ep9, time.time(), 6960.0, session_close=True)
+assert "장마감 확정" in close_text, close_text
+assert "복원 여부는 확정하지 않습니다" in close_text, close_text
+assert "종료·복원 확인" not in close_text, close_text
+print("session_close_render_regression=true")
