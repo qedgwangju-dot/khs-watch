@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-10-06T03:19:01.229949+00:00",
+  "updated_at": "2026-10-06T04:58:22.258722+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -477,11 +477,15 @@
     "8ad898bdd13986d2301e953cef0cf5ae882e7e3275d4767d58d550e17c043cf0",
     "9d8cd9d0c0b39c1ad3adacb7fbc23a31d83416fcab9a6ec23827a67ea4895dc5",
     "6e3d10b4f6018bd1432e79c1ecc73030612b7e5a2a1848ac6877537ee2003906",
-    "31441ddc6b128266376fa4be7d79c5e0df2e0bb889796650865c34d5e2a447fd"
+    "31441ddc6b128266376fa4be7d79c5e0df2e0bb889796650865c34d5e2a447fd",
+    "5c7d76cd1b485eba2cf50ad481aae86dfc201592927e2b38d7a8a404a2f7169d"
   ],
-  "last_selected": [],
+  "last_selected": [
+    "5c7d76cd1b485eba2cf50ad481aae86dfc201592927e2b38d7a8a404a2f7169d"
+  ],
   "groups": [
     "ess_battery",
-    "robotis"
+    "robotis",
+    "samhyun"
   ]
 }
