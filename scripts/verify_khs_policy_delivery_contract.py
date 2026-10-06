@@ -264,10 +264,81 @@ def assert_dpa_grid_delivery_semantic_dedupe() -> None:
         raise AssertionError("DPA semantic duplicate path never emitted a deduped checkpoint")
 
 
+
+def assert_presidential_policy_timeline_contract() -> None:
+    alert = {
+        "source": "DOE news",
+        "title": "Energy Department Announces Alaska Railbelt Transmission Project to Receive Defense Production Act Funding",
+        "source_title": "Energy Department Announces Alaska Railbelt Transmission Project to Receive Defense Production Act Funding",
+        "link": "https://www.energy.gov/articles/energy-department-announces-alaska-railbelt-transmission-project-receive-defense",
+        "published_kst": "2026-10-05T00:00:00+09:00",
+        "body_verified": True,
+        "source_body": (
+            "The Beluga-Healy Transmission Project follows the April 20, 2026 Section 303 "
+            "grid infrastructure determination under the Defense Production Act."
+        ),
+        "importance": "상",
+        "status": "확정",
+        "policy_plain_summary": "DOE가 Beluga-Healy 송전사업에 DPA 자금을 투입할 의향을 발표했습니다.",
+        "investment_view": "기반 정책에서 특정 프로젝트 집행 단계로 이동했습니다.",
+        "korea_market_impact": "직접 공급계약이 확인된 기업만 실적 연결로 봅니다.",
+        "counter": "최종 자금협약과 조달은 아직 별도 확인이 필요합니다.",
+        "failure_signal": "최종 자금협약·RFP·계약이 뒤따르지 않으면 집행 단계가 지연됩니다.",
+        "impacts": ["돈 버는 능력", "시간표"],
+        "paths": ["전력망 투자", "정책 타임라인"],
+        "sectors": ["전력망/전력기기"],
+        "policy_timeline": [
+            {"date": "2025-01-20", "stage": "기반", "detail": "Executive Order 14156 국가 에너지 비상사태 선언"},
+            {"date": "2026-04-20", "stage": "법적 근거", "detail": "DPA 제303조 전력망·전력기기·공급망 대통령 결정"},
+            {"date": "2026-10-05", "stage": "이번 집행", "detail": "DOE, Beluga-Healy 송전사업 DPA 자금 투입 의향 발표"},
+        ],
+    }
+    now = dt.datetime(2026, 10, 6, 18, 0, tzinfo=ZoneInfo("Asia/Seoul"))
+    report = khs_policy_alert_router.render_policy_report([alert], now)
+    for marker in (
+        "- 타임라인:",
+        "2025년 1월 20일",
+        "Executive Order 14156",
+        "2026년 4월 20일",
+        "DPA 제303조",
+        "2026년 10월 5일",
+        "Beluga-Healy",
+    ):
+        if marker not in report:
+            raise AssertionError(f"presidential policy timeline missing marker: {marker}")
+
+    title, body = khs_policy_telegram_formatter.format_policy_message(
+        "미국 전력망 정책 중요 변화",
+        report,
+        rates={},
+        now=now,
+    )
+    errors = khs_policy_telegram_formatter.validate_final_policy_message(title, body)
+    timeline_errors = [
+        value for value in errors
+        if value.startswith("presidential_action_timeline")
+    ]
+    if timeline_errors:
+        raise AssertionError(f"verified presidential timeline failed final validation: {timeline_errors}")
+
+    missing_body = (
+        "미국 행정명령 정책 변화\n"
+        "- 핵심: 대통령 행정명령이 공식 발표됐습니다.\n"
+        "- 출처: <a href=\"https://www.whitehouse.gov/presidential-actions/example/\">원문</a>\n"
+    )
+    missing_errors = khs_policy_telegram_formatter.validate_final_policy_message(
+        "행정명령 정책 변화",
+        missing_body,
+    )
+    if "presidential_action_timeline_missing" not in missing_errors:
+        raise AssertionError("executive-order alert without timeline was not blocked")
+
+
 def main() -> int:
     OUT_DIR.mkdir(exist_ok=True)
     khs_policy_watch._self_test_doe_grid_dpa_event_model()
     assert_dpa_grid_delivery_semantic_dedupe()
+    assert_presidential_policy_timeline_contract()
     assert_workflow_delivery_dedupe()
     assert_final_policy_telegram_format_and_currency_conversion()
     assert_policy_source_links_are_html_safe()
