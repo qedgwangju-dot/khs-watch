@@ -322,8 +322,8 @@ NVIDIA_FACTORY_TARGET = re.compile(
     re.I,
 )
 NVIDIA_FACTORY_TARGET_HIT = re.compile(
-    r'(?:achiev|reach|hit|meet|attain|달성|도달|충족).{0,100}99\.5\s*%|'
-    r'99\.5\s*%.{0,100}(?:achiev|reach|hit|meet|attain|달성|도달|충족)|'
+    r'(?:achiev\w*|reach\w*|hit|meet\w*|attain\w*|달성|도달|충족).{0,35}99\.5\s*%|'
+    r'99\.5\s*%.{0,35}(?:achiev\w*|reach\w*|hit|meet\w*|attain\w*|달성|도달|충족)|'
     r'(?:achiev|reach|hit|meet|attain|reduc(?:e|ed)?\s+to|cut\s+to|달성|도달|충족|단축).{0,120}'
     r'(?:cycle\s*time|사이클\s*타임).{0,100}(?:124|72)\s*(?:seconds?|sec|s|초)|'
     r'(?:cycle\s*time|사이클\s*타임).{0,100}(?:124|72)\s*(?:seconds?|sec|s|초).{0,120}'
@@ -1265,7 +1265,7 @@ def key(item: dict) -> str:
         if stage == 'roadshow_within_year_unverified':
             return hashlib.sha256(b'nvidia-robotics|roadshow|within-a-year|unverified-user-baseline').hexdigest()
         if stage == 'factory_kpi_initial':
-            return hashlib.sha256(b'nvidia-foxconn|gb300-nvl72|tester-tray|robot-assembly-kpi|2026-10|95plus|90-95|160s|124s|72s|99.5target').hexdigest()
+            return hashlib.sha256(b'nvidia-foxconn|gb300-nvl72|tester-tray|robot-assembly-kpi|2026-10|95plus|90-95|160s|124s|72s|99.5target|corrected-v2').hexdigest()
         if stage == 'korea_event_baseline':
             return hashlib.sha256(b'nvidia-korea|ai-day-seoul-2026|2026-11-09-10|physical-ai').hexdigest()
         if stage == 'korea_prior_contact_baseline':
