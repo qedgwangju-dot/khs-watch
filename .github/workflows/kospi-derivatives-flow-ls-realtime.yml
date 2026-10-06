@@ -118,7 +118,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install dependencies
-        run: python -m pip install --disable-pip-version-check --quiet requests ebest
+        run: python -m pip install --disable-pip-version-check --quiet requests ebest exchange_calendars
       - name: Verify Telegram route
         run: |
           python - <<'PY'
@@ -135,8 +135,8 @@ jobs:
           PY
       - name: Run morning KOSPI watcher
         run: |
-          rm -f out/kospi_shock_episode_status.md out/kospi_shock_episode_raw.json out/kospi_shock_delivery_log.jsonl out/kospi_shock_enrichment_latest.json out/kospi_shock_handoff.json out/kospi_industry_flow.jsonl
-          python -m py_compile scripts/kospi_shock_episode_watch.py scripts/kospi_shock_enrichment.py scripts/kospi_unified_industry_collector.py
+          rm -f out/kospi_shock_episode_status.md out/kospi_shock_episode_raw.json out/kospi_shock_delivery_log.jsonl out/kospi_shock_enrichment_latest.json out/kospi_shock_handoff.json out/kospi_industry_flow.jsonl out/krx_market_closed.flag
+          python -m py_compile scripts/kospi_shock_episode_watch.py scripts/kospi_shock_enrichment.py scripts/kospi_unified_industry_collector.py scripts/krx_session_calendar.py
 
           collector_supervisor() {
             while [ "$(TZ=Asia/Seoul date +%H%M)" -lt 1215 ]; do
@@ -144,6 +144,7 @@ jobs:
               python scripts/kospi_unified_industry_collector.py --until 12:15 --out out/kospi_industry_flow.jsonl
               RC=$?
               set -e
+              [ -f out/krx_market_closed.flag ] && break
               [ "$(TZ=Asia/Seoul date +%H%M)" -ge 1215 ] && break
               echo "ubm_collector_restart rc=$RC"
               sleep 10
@@ -178,7 +179,11 @@ jobs:
           if [ -s out/kospi_shock_episode_status.md ]; then
             cat out/kospi_shock_episode_status.md >> "$GITHUB_STEP_SUMMARY"
           fi
-          test -s out/kospi_industry_flow.jsonl || { echo "Unified UBM industry flow file missing/empty"; exit 1; }
+          if [ -f out/krx_market_closed.flag ]; then
+            echo "krx_market_closed=true"
+          else
+            test -s out/kospi_industry_flow.jsonl || { echo "Unified UBM industry flow file missing/empty"; exit 1; }
+          fi
       - name: Upload morning handoff and verification
         if: always()
         uses: actions/upload-artifact@v4
@@ -220,7 +225,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install dependencies
-        run: python -m pip install --disable-pip-version-check --quiet requests ebest
+        run: python -m pip install --disable-pip-version-check --quiet requests ebest exchange_calendars
       - name: Verify Telegram route
         run: |
           python - <<'PY'
@@ -238,7 +243,7 @@ jobs:
       - name: Run afternoon KOSPI watcher with handoff
         run: |
           rm -f out/kospi_shock_episode_status.md out/kospi_shock_episode_raw.json out/kospi_shock_enrichment_latest.json
-          python -m py_compile scripts/kospi_shock_episode_watch.py scripts/kospi_shock_enrichment.py scripts/kospi_unified_industry_collector.py
+          python -m py_compile scripts/kospi_shock_episode_watch.py scripts/kospi_shock_enrichment.py scripts/kospi_unified_industry_collector.py scripts/krx_session_calendar.py
 
           collector_supervisor() {
             while [ "$(TZ=Asia/Seoul date +%H%M)" -lt 1532 ]; do
@@ -246,6 +251,7 @@ jobs:
               python scripts/kospi_unified_industry_collector.py --until 15:32 --out out/kospi_industry_flow.jsonl
               RC=$?
               set -e
+              [ -f out/krx_market_closed.flag ] && break
               [ "$(TZ=Asia/Seoul date +%H%M)" -ge 1532 ] && break
               echo "ubm_collector_restart rc=$RC"
               sleep 10
@@ -276,7 +282,11 @@ jobs:
           if [ -s out/kospi_shock_episode_status.md ]; then
             cat out/kospi_shock_episode_status.md >> "$GITHUB_STEP_SUMMARY"
           fi
-          test -s out/kospi_industry_flow.jsonl || { echo "Unified UBM industry flow file missing/empty"; exit 1; }
+          if [ -f out/krx_market_closed.flag ]; then
+            echo "krx_market_closed=true"
+          else
+            test -s out/kospi_industry_flow.jsonl || { echo "Unified UBM industry flow file missing/empty"; exit 1; }
+          fi
       - name: Upload afternoon verification
         if: always()
         uses: actions/upload-artifact@v4
