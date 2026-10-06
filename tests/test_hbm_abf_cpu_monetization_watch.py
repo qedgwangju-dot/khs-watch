@@ -41,6 +41,32 @@ class AbfCpuMonetizationParseTests(unittest.TestCase):
         parsed = w.parse_official_update(text, "https://www.ibiden.com/example")
         self.assertTrue(parsed["official_nvidia_cpu_substrate_confirmed"])
 
+    def test_area_structure_baseline_uses_area_layers_not_unit_count(self):
+        base = w.ABF_AREA_STRUCTURE_BASELINE
+        off = base["official"]
+        self.assertEqual(off["ajinomoto_pc_substrate_area_index"], 1.0)
+        self.assertEqual(off["ajinomoto_hpc_substrate_area_index"], 3.5)
+        self.assertEqual(off["ajinomoto_pc_abf_layers"], 6)
+        self.assertEqual(off["ajinomoto_hpc_abf_layers"], 18)
+        self.assertEqual(off["ajinomoto_hpc_abf_use_multiple_min"], 10.0)
+        self.assertTrue(off["ibiden_area_multilayer_increases_sap_load"])
+        self.assertFalse(base["comparison_guard"]["like_for_like_comparison_confirmed"])
+
+    def test_goldman_supply_gap_parser_keeps_source_specific_numbers(self):
+        text = (
+            "Goldman Sachs says the ABF substrate supply-demand gap is 34% in 2027 "
+            "and the supply shortfall is 51% in 2028."
+        )
+        parsed = w.parse_research_update(text, "https://www.skis.com.tw/Report/industry/example.html")
+        self.assertEqual(parsed["goldman_abf_shortfall_2027_pct"], 34.0)
+        self.assertEqual(parsed["goldman_abf_shortfall_2028_pct"], 51.0)
+
+    def test_feynman_area_parser_requires_research_scope(self):
+        text = "Feynman 2028 substrate area is estimated at 3-5 times the 2026 level."
+        parsed = w.parse_research_update(text, "https://www.edaily.co.kr/example")
+        self.assertEqual(parsed["feynman_2028_area_vs_2026_min_multiple"], 3.0)
+        self.assertEqual(parsed["feynman_2028_area_vs_2026_max_multiple"], 5.0)
+
 
 class AbfCpuMonetizationMaterialityTests(unittest.TestCase):
     def test_sap_ten_percent_change_triggers(self):
@@ -80,6 +106,18 @@ class AbfCpuMonetizationMaterialityTests(unittest.TestCase):
         }]
         self.assertEqual(w.material_events(previous, updates), [])
 
+    def test_goldman_2028_five_pp_revision_triggers(self):
+        previous = {**w.BASELINE, "area_structure": w.ABF_AREA_STRUCTURE_BASELINE}
+        updates = [{
+            "url": "https://www.skis.com.tw/Report/industry/example.html",
+            "parsed": {
+                "kind": "research_update",
+                "goldman_abf_shortfall_2028_pct": 57.0,
+            },
+        }]
+        ev = w.material_events(previous, updates)
+        self.assertTrue(any(x["type"] == "supply_gap_forecast" for x in ev))
+
 
 class AbfCpuMonetizationAlertTests(unittest.TestCase):
     def test_alert_has_required_sections_and_fact_separation(self):
@@ -101,6 +139,21 @@ class AbfCpuMonetizationAlertTests(unittest.TestCase):
         self.assertIn("<b>핵심 한 줄 요약</b>", alert)
         self.assertIn("Macquarie 추정 기준선", alert)
         self.assertIn("공식 확인 전 추정", alert)
+
+        self.assertIn("기판 개수보다 면적×층수·SAP 부하", alert)
+        self.assertIn("동일 범위 직접비교 금지", alert)
+        self.assertIn("Goldman 2028 전망 51%", alert)
+
+    def test_area_structure_upgrade_event_is_explicit(self):
+        state = {**w.BASELINE, "area_structure": w.ABF_AREA_STRUCTURE_BASELINE}
+        alert = w.build_alert([{
+            "type": "area_structure_baseline",
+            "key": "area_structure_v1",
+            "url": w.ABF_AREA_STRUCTURE_BASELINE["official"]["ajinomoto_source"],
+        }], state)
+        self.assertIn("기판 병목 기준 업그레이드", alert)
+        self.assertIn("면적×층수·SAP 공정부하", alert)
+        self.assertIn("2021 역사 기준", alert)
 
 
 if __name__ == "__main__":
