@@ -315,11 +315,22 @@ def collapse_events(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
             members,
             key=lambda row: (
                 event_level(row),
-                detail_score(row),
                 source_score(row),
+                detail_score(row),
                 str(row.get("published", "")),
             ),
         ).copy()
+        # 호남 반도체 국감 사건은 14GW·전력망 재점검이 드러나는 가장 정보량 많은 보도를 대표로 쓴다.
+        if key == "12th-plan|honam-semiconductor|power-water-grid-review":
+            best = max(
+                members,
+                key=lambda row: (
+                    event_level(row),
+                    detail_score(row),
+                    source_score(row),
+                    str(row.get("published", "")),
+                ),
+            ).copy()
         best["event_key"] = key
         best["members"] = members
         publishers = []
