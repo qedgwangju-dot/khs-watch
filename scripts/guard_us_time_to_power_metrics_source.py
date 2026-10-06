@@ -901,8 +901,8 @@ if vinatech_links_old in t:
 # current Google-Constellation item is installed as a verified media baseline
 # (near deal, not signed); future alerts require a stage/term change.
 nuclear_ppa_extension = r'''
-# HYPERSCALER_NUCLEAR_PPA_EXTENSION_V3
-PPA_STATE_VERSION = 3
+# HYPERSCALER_NUCLEAR_PPA_EXTENSION_V4
+PPA_STATE_VERSION = 4
 PPA_MAX_AGE_DAYS = 14
 PPA_CONSTELLATION_NEWSROOM = "https://www.constellationenergy.com/news/"
 PPA_CONSTELLATION_IR_NEWSROOM = "https://investors.constellationenergy.com/news-releases"
@@ -911,6 +911,7 @@ PPA_GOOGLE_OFFICIAL_INDEXES = (
     "https://blog.google/company-news/outreach-and-initiatives/sustainability/",
 )
 PPA_REUTERS_GOOGLE_CONSTELLATION = "https://www.reuters.com/legal/litigation/google-constellation-near-deal-nuclear-power-bloomberg-news-reports-2026-10-06/"
+PPA_REUTERS_GOOGLE_CONSTELLATION_SIGNED = "https://www.reuters.com/business/energy/google-enters-massive-36-gw-power-deal-with-constellation-energy-2026-10-06/"
 PPA_AMAZON_CONSTELLATION = "https://www.constellationenergy.com/news/2026/09/constellation-and-amazon-announce-20-year-power-purchase-agreement-at-calvert-cliffs.html"
 
 PPA_BASELINES = {
@@ -1206,20 +1207,29 @@ def _ppa_asset_mode(text: str, plant: str | None, uprate_mw):
 
 def _ppa_party_key(text: str):
     low = text.lower()
-    buyer = None
-    seller = None
+    buyer_hits = []
+    seller_hits = []
     for key, aliases in PPA_BUYERS:
-        if any(alias in low for alias in aliases):
-            buyer = key
-            break
+        for alias in aliases:
+            for match in re.finditer(r"(?<![a-z0-9])" + re.escape(alias) + r"(?![a-z0-9])", low):
+                buyer_hits.append((match.start(), key))
     for key, aliases in PPA_SELLERS:
-        if any(alias in low for alias in aliases):
-            seller = key
-            break
-    if not buyer or not seller:
+        for alias in aliases:
+            for match in re.finditer(r"(?<![a-z0-9])" + re.escape(alias) + r"(?![a-z0-9])", low):
+                seller_hits.append((match.start(), key))
+    if not buyer_hits or not seller_hits:
         return None
-    return f"{buyer}_{seller}"
 
+    # 여러 구매자·판매자가 한 기사에 섞여도 가장 가까운 실제 관계만 채택한다.
+    best = None
+    for bpos, buyer in buyer_hits:
+        for spos, seller in seller_hits:
+            candidate = (abs(bpos - spos), bpos, spos, buyer, seller)
+            if best is None or candidate < best:
+                best = candidate
+    if best is None or best[0] > 240:
+        return None
+    return f"{best[3]}_{best[4]}"
 
 def _ppa_stage(text: str, official: bool):
     low = text.lower()
@@ -1229,6 +1239,22 @@ def _ppa_stage(text: str, official: bool):
         "계약 취소", "철회",
     )):
         return "cancelled_official" if official else "cancelled_reported"
+
+    # 체결 기사에 과거 협상 문구가 같이 있어도 완료단계를 우선한다.
+    signed = (
+        any(term in low for term in (
+            "signed agreement", "signed a", "has signed", "have signed",
+            "entered into", "reached an agreement", "strikes deal", "struck a deal",
+            "finalizes", "finalises", "계약 체결", "협정 체결", "합의 체결",
+            "전력구매계약 체결", "장기 계약 체결",
+        ))
+        or bool(re.search(
+            r"\b(?:signs|signed|announces|announced|enters|entered|reaches|reached|strikes|struck|finalizes|finalized|finalises|finalised)\b.{0,100}\b(?:deal|agreement|ppa|power purchase)\b",
+            low,
+        ))
+    )
+    if signed:
+        return "signed_official" if official else "signed_reported"
 
     pending_terms = (
         "near deal", "near a deal", "nearing a deal", "nearing agreement", "close to a deal",
@@ -1240,18 +1266,7 @@ def _ppa_stage(text: str, official: bool):
     )
     if any(term in low for term in pending_terms):
         return "official_discussion" if official else "reported_near_deal"
-
-    signed_terms = (
-        "signs", "signed", "announce 20-year", "announces 20-year",
-        "announced a long-term agreement", "entered into", "reached an agreement",
-        "power purchase agreement", "purchase agreement", "long-term agreement",
-        "long term agreement", "strikes deal", "finalizes", "finalises",
-        "계약 체결", "협정 체결", "구매계약", "전력구매계약", "장기 계약",
-    )
-    if any(term in low for term in signed_terms):
-        return "signed_official" if official else "signed_reported"
     return None
-
 
 def _ppa_extract_state(blob: str, source: str, source_url: str, link: str, published: str):
     low = blob.lower()
@@ -1262,7 +1277,9 @@ def _ppa_extract_state(blob: str, source: str, source_url: str, link: str, publi
         return None
     domain = _ppa_domain(source_url or link)
     official = _ppa_official_domain(domain)
-    if not official and not _ppa_top_media(domain):
+    source_low = (source or "").lower()
+    trusted_media = _ppa_top_media(domain) or any(name in source_low for name in ("reuters", "bloomberg"))
+    if not official and not trusted_media:
         return None
     stage = _ppa_stage(blob, official)
     if not stage:
@@ -1356,6 +1373,47 @@ def _ppa_collect_rows():
             state = _ppa_extract_state(title, source, source_url, link, when.date().isoformat())
             if state:
                 rows.append(state)
+
+    # Reuters가 2026-10-06 체결과 정량조건을 후속 보도로 확인했다.
+    # RSS 색인/제목 축약과 무관하게 이 검증 상태를 한 번 반영하고,
+    # 이후 회사 공식 원문이 확인되면 signed_official로 다시 승격한다.
+    rows.append((
+        "google_constellation",
+        {
+            "buyer": "Google",
+            "seller": "Constellation",
+            "stage": "signed_reported",
+            "official": False,
+            "amount_floor_usd_b": 1.0,
+            "site_investment_floor_usd_b": None,
+            "nuclear_upgrade_investment_floor_usd_b": 4.3,
+            "ppa_mw": None,
+            "total_supply_mw": 3590.0,
+            "nuclear_supply_mw": 890.0,
+            "other_pjm_supply_mw": 2700.0,
+            "uprate_mw": 890.0,
+            "plant_capacity_mw": None,
+            "nuclear_unit_count": 11,
+            "years": None,
+            "plant": None,
+            "asset_mode": "existing_uprate",
+            "provenance": {
+                "stage": "media",
+                "amount_floor_usd_b": "media",
+                "nuclear_upgrade_investment_floor_usd_b": "media",
+                "total_supply_mw": "media",
+                "nuclear_supply_mw": "media",
+                "other_pjm_supply_mw": "media",
+                "uprate_mw": "media",
+                "nuclear_unit_count": "media",
+                "asset_mode": "media",
+            },
+            "source": "Reuters",
+            "url": PPA_REUTERS_GOOGLE_CONSTELLATION_SIGNED,
+            "published": "2026-10-06",
+            "note": "체결 보도 · 총 3,590MW 중 원전 증설 890MW, PJM 기타 공급 2,700MW · 11개 원전 호기 업그레이드에 43억달러 초과 투자",
+        },
+    ))
 
     # Directly inspect Constellation's own newsroom so a company-confirmed PPA
     # can outrank media reports even if Google News indexing lags.
@@ -1471,7 +1529,7 @@ def _ppa_collect_rows():
 def _ppa_state_score(state: dict):
     stage = str(state.get("stage") or "")
     terms = sum(
-        1 for key in ("amount_floor_usd_b", "site_investment_floor_usd_b", "ppa_mw", "uprate_mw", "plant_capacity_mw", "years", "plant", "asset_mode")
+        1 for key in ("amount_floor_usd_b", "site_investment_floor_usd_b", "nuclear_upgrade_investment_floor_usd_b", "ppa_mw", "total_supply_mw", "nuclear_supply_mw", "other_pjm_supply_mw", "uprate_mw", "plant_capacity_mw", "nuclear_unit_count", "years", "plant", "asset_mode")
         if state.get(key) not in (None, "")
     )
     return (
@@ -1509,11 +1567,11 @@ def _ppa_merge(prev: dict | None, new: dict):
         provenance["stage"] = new_provenance.get(
             "stage", "official" if new.get("official") else "media"
         )
-    for key in ("buyer", "seller", "amount_floor_usd_b", "ppa_mw", "uprate_mw", "plant_capacity_mw", "years", "plant", "asset_mode", "source", "url", "published", "note", "site_investment_floor_usd_b"):
+    for key in ("buyer", "seller", "amount_floor_usd_b", "ppa_mw", "total_supply_mw", "nuclear_supply_mw", "other_pjm_supply_mw", "uprate_mw", "plant_capacity_mw", "nuclear_unit_count", "years", "plant", "asset_mode", "source", "url", "published", "note", "site_investment_floor_usd_b", "nuclear_upgrade_investment_floor_usd_b"):
         value = new.get(key)
         if value not in (None, ""):
             out[key] = value
-            if key in ("amount_floor_usd_b", "ppa_mw", "uprate_mw", "plant_capacity_mw", "years", "plant", "asset_mode", "site_investment_floor_usd_b"):
+            if key in ("amount_floor_usd_b", "ppa_mw", "total_supply_mw", "nuclear_supply_mw", "other_pjm_supply_mw", "uprate_mw", "plant_capacity_mw", "nuclear_unit_count", "years", "plant", "asset_mode", "site_investment_floor_usd_b", "nuclear_upgrade_investment_floor_usd_b"):
                 provenance[key] = new_provenance.get(
                     key, "official" if new.get("official") else "media"
                 )
@@ -1540,8 +1598,13 @@ def _ppa_material_diff(prev: dict | None, now: dict):
     for key, label in (
         ("amount_floor_usd_b", "계약금액"),
         ("site_investment_floor_usd_b", "부지·인프라 투자액"),
+        ("nuclear_upgrade_investment_floor_usd_b", "원전 업그레이드 투자액"),
         ("ppa_mw", "전력구매용량"),
+        ("total_supply_mw", "총 공급용량"),
+        ("nuclear_supply_mw", "원전 증설 공급용량"),
+        ("other_pjm_supply_mw", "PJM 기타 공급용량"),
         ("uprate_mw", "증설용량"),
+        ("nuclear_unit_count", "업그레이드 원전 호기 수"),
         ("years", "계약기간"),
         ("plant", "대상 원전"),
         ("asset_mode", "기존원전·증설·재가동·신규건설 구분"),
@@ -1620,6 +1683,24 @@ def _ppa_self_test():
             f"Amazon-Constellation official semantics regression: {amazon_key} {amazon_state}"
         )
 
+    signed_with_history = _ppa_extract_state(
+        "Google enters massive 3.6-GW power deal with Constellation Energy for nuclear power. "
+        "The companies had been in talks earlier this week.",
+        "Reuters",
+        "https://www.reuters.com",
+        "https://www.reuters.com/test-google-constellation-signed",
+        "2026-10-06",
+    )
+    if not signed_with_history or signed_with_history[1].get("stage") != "signed_reported":
+        raise RuntimeError(f"signed-over-pending precedence regression: {signed_with_history}")
+
+    unrelated = _ppa_party_key(
+        "Google is evaluating nuclear options. Amazon separately signed a power agreement "
+        "with Constellation Energy after lengthy discussions."
+    )
+    if unrelated == "google_constellation":
+        raise RuntimeError(f"cross-party contract contamination regression: {unrelated}")
+
     pending = _ppa_extract_state(
         "Google may sign a power purchase agreement with Constellation for nuclear power.",
         "Reuters",
@@ -1695,6 +1776,26 @@ if _ppa_changes:
             )
         else:
             lines.append("• <b>금액</b> │ 공식·신뢰자료상 미공개")
+
+        if _now.get("total_supply_mw") is not None:
+            total_scope = "공식" if provenance.get("total_supply_mw") == "official" else "보도"
+            lines.append(f"• <b>총 공급</b> │ {total_scope} {float(_now['total_supply_mw']):,.0f}MW")
+        if _now.get("nuclear_supply_mw") is not None:
+            nuclear_scope = "공식" if provenance.get("nuclear_supply_mw") == "official" else "보도"
+            lines.append(f"• <b>원전 증설분</b> │ {nuclear_scope} {float(_now['nuclear_supply_mw']):,.0f}MW")
+        if _now.get("other_pjm_supply_mw") is not None:
+            other_scope = "공식" if provenance.get("other_pjm_supply_mw") == "official" else "보도"
+            lines.append(f"• <b>PJM 기타 공급</b> │ {other_scope} {float(_now['other_pjm_supply_mw']):,.0f}MW")
+        if _now.get("nuclear_upgrade_investment_floor_usd_b") is not None:
+            inv = float(_now["nuclear_upgrade_investment_floor_usd_b"])
+            inv_scope = "공식" if provenance.get("nuclear_upgrade_investment_floor_usd_b") == "official" else "보도"
+            lines.append(
+                f"• <b>원전 업그레이드 투자</b> │ {inv_scope} 최소 {inv:g}십억달러"
+                f"({h(krw_from_usd_b(inv, fx))})"
+            )
+        if _now.get("nuclear_unit_count") is not None:
+            unit_scope = "공식" if provenance.get("nuclear_unit_count") == "official" else "보도"
+            lines.append(f"• <b>대상</b> │ {unit_scope} 원전 {int(_now['nuclear_unit_count'])}개 호기 업그레이드")
 
         def _ppa_field(value, field, text_value):
             if value in (None, ""):
@@ -1786,7 +1887,7 @@ print(
 if "HYPERSCALER_NUCLEAR_PPA_EXTENSION_V1" not in t:
     t += "\n" + nuclear_ppa_extension + "\n"
 for marker in (
-    "HYPERSCALER_NUCLEAR_PPA_EXTENSION_V3",
+    "HYPERSCALER_NUCLEAR_PPA_EXTENSION_V4",
     '"google_constellation"',
     '"amazon_constellation_calvert_cliffs"',
     "reported_near_deal",
