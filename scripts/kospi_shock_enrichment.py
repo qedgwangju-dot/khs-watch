@@ -1116,7 +1116,7 @@ def run_probe(token: str) -> dict[str, Any]:
     now = time.time()
     start = now - 10 * 60
     master = stock_master(token)
-    etfs = [x for x in master if str(x.get("etfgubun") or "") == "1"]
+    etfs = etf_master(token)
     industries = industry_master(token)
     real_inds = [
         x for x in industries
