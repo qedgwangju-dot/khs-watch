@@ -392,10 +392,12 @@ def parse_research_update(text: str, url: str) -> dict:
     # Source-specific ABF shortage model.  Do not collapse this into an industry consensus number.
     if "goldman" in low and any(k in low for k in ("shortfall", "undersupply", "supply gap", "supply-demand gap", "공급 부족", "供給缺口")):
         for year, key in ((2027, "goldman_abf_shortfall_2027_pct"), (2028, "goldman_abf_shortfall_2028_pct")):
+            # Bind the percentage tightly to its year.  A broad cross-year pattern can
+            # incorrectly assign 2028's 51% to 2027 when both years appear in one sentence.
             patterns = (
-                rf"{year}[^.%]{{0,90}}?(\d{{1,2}}(?:\.\d+)?)\s*%[^.]*?(?:shortfall|undersupply|gap|공급 부족|供給缺口)",
-                rf"(?:shortfall|undersupply|gap|공급 부족|供給缺口)[^.]*?{year}[^0-9%]{{0,60}}?(\d{{1,2}}(?:\.\d+)?)\s*%",
-                rf"{year}\s*(?:년|年)?[^0-9%]{{0,40}}?(\d{{1,2}}(?:\.\d+)?)\s*%",
+                rf"(\d{{1,2}}(?:\.\d+)?)\s*%\s*(?:in|for)?\s*{year}\b",
+                rf"{year}\s*(?:년|年)?[^0-9%]{{0,30}}?(\d{{1,2}}(?:\.\d+)?)\s*%",
+                rf"(?:shortfall|undersupply|supply(?:-demand)?\s+gap|공급 부족|供給缺口)[^.;]{{0,55}}?(\d{{1,2}}(?:\.\d+)?)\s*%[^.;]{{0,25}}?{year}\b",
             )
             for pat in patterns:
                 m = re.search(pat, text, re.I)
