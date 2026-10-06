@@ -12,13 +12,13 @@
     "prev_date": "2026-10-02",
     "prev_10y": 5.28,
     "prev_30y": 5.63,
-    "daily_10y_bp": 3.0,
-    "daily_30y_bp": 3.0,
+    "daily_10y_bp": 3,
+    "daily_30y_bp": 3,
     "prev5_date": "2026-09-28",
     "prev5_10y": 5.24,
     "prev5_30y": 5.56,
-    "five_day_10y_bp": 7.0,
-    "five_day_30y_bp": 10.0
+    "five_day_10y_bp": 7,
+    "five_day_30y_bp": 10
   },
   "btc_etf": {
     "date": "2026-10-05",
@@ -34,7 +34,7 @@
     "source_latest_status": "complete",
     "pending_date": null,
     "latest_recomputed_total_usd_m": -89.8,
-    "latest_total_gap_usd_m": 0.0,
+    "latest_total_gap_usd_m": 0,
     "latest_total_validated": true,
     "last5_usd_m": 120.3,
     "last5_dates": [
@@ -64,13 +64,28 @@
       346.9,
       190.7,
       134.5,
-      31.0
+      31
     ],
     "five_day_compare_valid": true,
     "five_day_change_usd_m": -1297.5,
     "five_day_change_pct": -91.5,
     "five_day_direction": "순자금흐름 악화",
-    "provisional_history": []
+    "provisional_history": [
+      {
+        "observed_at_kst": "2026-10-06T09:20:03+09:00",
+        "total_usd_m": -85.2,
+        "reported_funds": 7,
+        "missing_funds": 5,
+        "coverage": "7/12"
+      },
+      {
+        "observed_at_kst": "2026-10-06T09:55:07+09:00",
+        "total_usd_m": -159.7,
+        "reported_funds": 10,
+        "missing_funds": 2,
+        "coverage": "10/12"
+      }
+    ]
   },
   "sources": {
     "treasury_buyback_xml": "https://home.treasury.gov/system/files/221/Tentative-Buyback-Schedule.xml",
