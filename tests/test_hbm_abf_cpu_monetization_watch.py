@@ -65,6 +65,13 @@ class AbfCpuMonetizationParseTests(unittest.TestCase):
         self.assertEqual(off["ibiden_ai_server_sap_load_cy2028_index"], 2.5)
         self.assertEqual(base["research_forecast"]["abf_shortfall_2h2026_pct"], 14.0)
         self.assertFalse(base["comparison_guard"]["like_for_like_comparison_confirmed"])
+        bofa = base["bofa_model"]
+        self.assertEqual(bofa["prior_user_chart"]["same_chart_2021_ratio_pct"], -13.0)
+        self.assertEqual(bofa["prior_user_chart"]["same_chart_2028_ratio_pct"], -16.0)
+        self.assertEqual(bofa["prior_user_chart"]["same_chart_2028_shortage_minus_2021_pp"], 3.0)
+        self.assertTrue(bofa["comparison_guard"]["prior_chart_2021_vs_2028_direct_same_chart"])
+        self.assertFalse(bofa["comparison_guard"]["current_2028_vs_2021_direct_same_chart"])
+        self.assertEqual(bofa["current_public_recap"]["abf_shortfall_2028_pct"], 19.0)
 
     def test_goldman_supply_gap_parser_keeps_source_specific_numbers(self):
         text = (
@@ -75,6 +82,23 @@ class AbfCpuMonetizationParseTests(unittest.TestCase):
         self.assertEqual(parsed["goldman_abf_shortfall_2h2026_pct"], 14.0)
         self.assertEqual(parsed["goldman_abf_shortfall_2027_pct"], 34.0)
         self.assertEqual(parsed["goldman_abf_shortfall_2028_pct"], 51.0)
+
+    def test_bofa_revision_parser_keeps_prior_and_current_vintages(self):
+        text = (
+            "BofA expanded its ABF substrate shortage forecast for 2026-2028 "
+            "from 4%/10%/16% to 7%/14%/19%. "
+            "Server CPU share of ABF demand rose from 13%/14%/14% to 17%/21%/21%."
+        )
+        parsed = w.parse_research_update(
+            text,
+            "https://www.xxquant.com/en/institution/institutional-research/example",
+        )
+        self.assertEqual(parsed["bofa_prior_abf_shortfall_2026_pct"], 4.0)
+        self.assertEqual(parsed["bofa_abf_shortfall_2026_pct"], 7.0)
+        self.assertEqual(parsed["bofa_abf_shortfall_2027_pct"], 14.0)
+        self.assertEqual(parsed["bofa_abf_shortfall_2028_pct"], 19.0)
+        self.assertEqual(parsed["bofa_prior_server_cpu_abf_demand_share_2027_pct"], 14.0)
+        self.assertEqual(parsed["bofa_server_cpu_abf_demand_share_2027_pct"], 21.0)
 
     def test_feynman_area_parser_requires_research_scope(self):
         text = "Feynman 2028 ABF substrate area is estimated at 3-5 times the 2026 level."
@@ -120,6 +144,30 @@ class AbfCpuMonetizationMaterialityTests(unittest.TestCase):
             }
         }]
         self.assertEqual(w.material_events(previous, updates), [])
+
+    def test_bofa_three_pp_revision_triggers(self):
+        previous = {**w.BASELINE, "area_structure": w.ABF_AREA_STRUCTURE_BASELINE}
+        updates = [{
+            "url": "https://www.xxquant.com/en/institution/institutional-research/example",
+            "parsed": {
+                "kind": "research_update",
+                "bofa_abf_shortfall_2028_pct": 22.0,
+            },
+        }]
+        ev = w.material_events(previous, updates)
+        self.assertTrue(any(x["type"] == "bofa_supply_gap_forecast" and x["key"] == "bofa_abf_shortfall_2028_pct" for x in ev))
+
+    def test_bofa_server_cpu_share_three_pp_revision_triggers(self):
+        previous = {**w.BASELINE, "area_structure": w.ABF_AREA_STRUCTURE_BASELINE}
+        updates = [{
+            "url": "https://www.xxquant.com/en/institution/institutional-research/example",
+            "parsed": {
+                "kind": "research_update",
+                "bofa_server_cpu_abf_demand_share_2027_pct": 24.0,
+            },
+        }]
+        ev = w.material_events(previous, updates)
+        self.assertTrue(any(x["type"] == "bofa_server_cpu_share_forecast" for x in ev))
 
     def test_goldman_2h2026_five_pp_revision_triggers(self):
         previous = {**w.BASELINE, "area_structure": w.ABF_AREA_STRUCTURE_BASELINE}
@@ -172,16 +220,20 @@ class AbfCpuMonetizationAlertTests(unittest.TestCase):
         self.assertIn("Goldman 2028 전망 51%", alert)
         self.assertIn("2H26 14% → 2027 34% → 2028 51%", alert)
         self.assertIn("CY2024 1.0 → CY2026 1.8 → CY2028 2.5", alert)
+        self.assertIn("BofA 사용자 제공 동일 차트", alert)
+        self.assertIn("2021 -13% → 2028 -16%", alert)
+        self.assertIn("4%/10%/16% → 7%/14%/19%", alert)
+        self.assertIn("13%/14%/14% → 17%/21%/21%", alert)
 
     def test_area_structure_upgrade_event_is_explicit(self):
         state = {**w.BASELINE, "area_structure": w.ABF_AREA_STRUCTURE_BASELINE}
         alert = w.build_alert([{
             "type": "area_structure_baseline",
-            "key": "area_structure_v1",
-            "url": w.ABF_AREA_STRUCTURE_BASELINE["official"]["ajinomoto_source"],
+            "key": "area_structure_v3",
+            "url": w.ABF_AREA_STRUCTURE_BASELINE["bofa_model"]["current_public_recap"]["source"],
         }], state)
-        self.assertIn("기판 병목 기준 업그레이드", alert)
-        self.assertIn("면적×층수·SAP 공정부하", alert)
+        self.assertIn("ABF 수급 모델 업그레이드", alert)
+        self.assertIn("2021 -13% → 2028 -16%", alert)
         self.assertIn("2021 역사 기준", alert)
 
 
