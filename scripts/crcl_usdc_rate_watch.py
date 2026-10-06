@@ -593,6 +593,13 @@ def main() -> None:
         if new_confirmed_close:
             changes.append(f"CRCL 새 종가: {crcl.get('daily_pct', 0):+.2f}%")
 
+    if correction_pending:
+        changes = [
+            "정정: 직전 CRCL 알림의 일부 수치와 종합판정을 재검증",
+            "BlackRock 공개 NAV 기준일과 7일 SEC 수익률 기준일을 일치시켜 재검증",
+            "USDC·준비금 수익률·SOFR·3개월 국채의 기준일이 다르면 합산 판정을 보류",
+        ]
+
     if changes:
         oc = old.get("circle") or circle
         ou = old.get("usdxx") or usdxx
