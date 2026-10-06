@@ -138,6 +138,7 @@ def assert_kbw_executive_confirmation_alerts_once_without_promotion():
     assert changed, changes
     assert any("단계 2 강화" in x for x in changes), changes
 
+    # The same confirmed patent milestone must not generate a second Telegram alert.
     changed_again, changes_again = state_changed(current, current)
     assert not changed_again, changes_again
 
