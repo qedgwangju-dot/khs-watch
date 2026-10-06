@@ -24,6 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       run_production: ${{ steps.elect.outputs.run_production }}
+      run_morning: ${{ steps.elect.outputs.run_morning }}
     steps:
       - name: Elect single production workflow
         id: elect
@@ -63,14 +64,19 @@ jobs:
               queued=[x for x in active if x[2]=="queued"]
               leader=(running[0][1] if running else (queued[0][1] if queued else current))
               should_run=(leader==current)
+          run_morning=bool(should_run and now.time()<dt.time(12,15))
           with open(os.environ["GITHUB_OUTPUT"],"a",encoding="utf-8") as fp:
               fp.write(f"run_production={'1' if should_run else '0'}\n")
-          print(f"kospi_gate_eligible={eligible} should_run={should_run} active={[(x[1],x[2]) for x in active]}")
+              fp.write(f"run_morning={'1' if run_morning else '0'}\n")
+          print(
+              f"kospi_gate_eligible={eligible} should_run={should_run} "
+              f"run_morning={run_morning} active={[(x[1],x[2]) for x in active]}"
+          )
           PY
 
   morning:
     needs: gate
-    if: needs.gate.outputs.run_production == '1'
+    if: needs.gate.outputs.run_production == '1' && needs.gate.outputs.run_morning == '1'
     runs-on: ubuntu-latest
     timeout-minutes: 250
     env:
