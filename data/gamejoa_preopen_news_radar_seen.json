@@ -1448,6 +1448,25 @@
       "source": "이투데이",
       "title": "기타법인 ‘삼전닉스’ 홀로 1.1조 순매수⋯코스닥은 880선 밀려"
     },
+    "event:49faf2776f85ab5aa9e37048": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814927",
+      "source": "뉴시스",
+      "source_body_digest": "8e3baea01b0ece4bfb818c1d4d9532bd36eb0dcc3aeffebd4ce48b8eb3f76a3c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47d62b299b8418301e12ddbc474cb182b589d86493d2be217decf5a628b952b6",
+      "source_fact_keys": [
+        "source_fact:v1:0e7a4148687d48396d923dbc5e0ac12be698605549607be883449df508464330",
+        "source_fact:v1:55878f7260ad47ca864572b775eedea44358db28cdcd06c9ff129d7139b1a27f",
+        "source_fact:v1:6ad083fa180b418bfb0d0ca14f29ebc6bbafe8c2d98e89ffa911799e18d1a953"
+      ],
+      "source_published_kst": "2026-10-06T09:16+09:00",
+      "title": "비트코인, 1억1600만원대 강보합…美 고용 둔화에 금리 인상 부담 완화"
+    },
     "event:4aa13fe7e5d51c0930b88592": {
       "first_seen_kst": "2026-09-21T10:52:59+09:00",
       "lanes": {
@@ -3104,6 +3123,26 @@
       "source": "연합뉴스",
       "title": "한투운용 \"'ACE 머니마켓액티브ETF' 순자산 1조원 돌파\" | 연합뉴스"
     },
+    "event:98dfe9fc663d0ae318aeffed": {
+      "event_alias_evidence_message_id": 2282,
+      "event_alias_evidence_run_id": 37388895628,
+      "first_seen_kst": "2026-10-06T08:36:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:36:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:36:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814774",
+      "source": "뉴시스",
+      "source_body_digest": "5f60fef5f9e9eefff4e7e81f6ce856d5991248d4c304d70397b28da558dba495",
+      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
+      "source_fact_identity": "source_facts:v1:fb22f50e155f49c8a7c5bd99659bb0a1f2f590ae4acacf60d944029b87439568",
+      "source_fact_keys": [
+        "source_fact:v1:7c9abe202e0358314bb95b4eb6d8db9ff5eec7e44a63d5d8583ff200807ab7dc",
+        "source_fact:v1:ea6ba86cbd046996fcbc2a937e093303a984c75473cedd05856b17307f954c93"
+      ],
+      "source_published_kst": "2026-10-06T08:25+09:00",
+      "title": "한미반도체, 삼성전기와 245억 규모 공급계약"
+    },
     "event:997fe20d0b3cc7332160f6d2": {
       "first_seen_kst": "2026-10-01T16:57:16+09:00",
       "lanes": {
@@ -3438,19 +3477,20 @@
     "event:a89c3b7422e839c615213a10": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
-        "live": "2026-10-06T09:00:21+09:00"
+        "live": "2026-10-06T09:42:55+09:00"
       },
-      "last_seen_kst": "2026-10-06T09:00:21+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2632580",
-      "source": "이투데이",
-      "source_body_digest": "d195b3cc54e2af3f1a2431329a4c1d85a49cab49b718d197b4f6053a4b24d7e1",
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.fnnews.com/news/202610060841477323",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "c1714ef9430a16d5393b6231f4cf58fda1599ade8dc5cd5728273e1f3d23e6bc",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:e8606a148cd3dc3e5a35681a18bb3e93e5ffd8d52749e6c3cdc94105da222a84",
+      "source_fact_identity": "source_facts:v1:8450db29bf57b4254eb5f95bd3ea8303b8df1c374c5cd86b15fb08c2e037aace",
       "source_fact_keys": [
-        "source_fact:v1:3c5ee1ab45de27b03db28bfd319392f9e0ce2c0b53ae0c6d218489a8c3044c26"
+        "source_fact:v1:4f9e813378bd871a299f541380964be9f30f1861d1859199a5716505a7e8a7de",
+        "source_fact:v1:7fbde7f6c2174aa01f1186226698faccb625aab33018f42146ae7cafba989612"
       ],
       "source_published_kst": "2026-10-06T08:46+09:00",
-      "title": "한미반도체, 삼성전기서 245억원 규모 MSVP 수주…“삼성그룹 환영”"
+      "title": "한미반도체, 삼성 첫 거래·MSVP 수주 확대 '두 마리 토끼'"
     },
     "event:a8b73dc588b357eb243b3506": {
       "first_seen_kst": "2026-10-02T19:50:17+09:00",
@@ -4901,6 +4941,28 @@
       "source": "매일경제",
       "title": "“긴축의 시대 투자로 정면돌파” … 서울머니쇼+에 초대합니다"
     },
+    "event:ed5ed0d62394ba89a848cd55": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02558406645610296",
+      "source": "이데일리",
+      "source_body_digest": "ef116248fc841049456a6b208b6051f75a8e53a950af9f3cb1d4f44aaccb4eeb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a2a570749d4ccc871babd4f0f65a240902509393b188b6e2f5de937c43bb85db",
+      "source_fact_keys": [
+        "source_fact:v1:3728838341532c2a7f4dc80e6d6ac4ce38bf8151e91f3337768607898ea6ab7f",
+        "source_fact:v1:577e4ec6ac44ad9f32cc1bb513141908b2d3db88bd9676f2e32327baeece5dbe",
+        "source_fact:v1:894c03b623b23805e72f6228ec07f15c68807a73219b0c32141c18cc9292624b",
+        "source_fact:v1:9047427a10a150083ef37b459490a25d5868981516bf6419567132c3e5b52312",
+        "source_fact:v1:c4d79c45300b48e184e399334e88de17b4bc924a6081c0647d4fac054c7a05b8",
+        "source_fact:v1:e75e8939f8bc6f6b916fdb796194a9b4892f191cb72cb14a0377365ade34a65d"
+      ],
+      "source_published_kst": "2026-10-06T08:17+09:00",
+      "title": "나스닥 사상 최고…비트코인 8만5000달러대[코인 모닝콜]"
+    },
     "event:ee2445b0912c043ab1270e54": {
       "first_seen_kst": "2026-10-05T15:39:46+09:00",
       "lanes": {
@@ -5636,7 +5698,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003814774",
       "source": "뉴시스",
       "source_body_digest": "5f60fef5f9e9eefff4e7e81f6ce856d5991248d4c304d70397b28da558dba495",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
       "source_fact_identity": "source_facts:v1:fb22f50e155f49c8a7c5bd99659bb0a1f2f590ae4acacf60d944029b87439568",
       "source_fact_keys": [
         "source_fact:v1:7c9abe202e0358314bb95b4eb6d8db9ff5eec7e44a63d5d8583ff200807ab7dc",
@@ -5781,6 +5843,24 @@
       ],
       "source_published_kst": "2026-10-06T06:15+09:00",
       "title": "[AI프리즘] '3대 메가프로젝트' 피지컬AI…전체 AI 예산 5%도 안돼"
+    },
+    "fact:137619ae1f2b09901ac26b27": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.fnnews.com/news/202610060841477323",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "c1714ef9430a16d5393b6231f4cf58fda1599ade8dc5cd5728273e1f3d23e6bc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8450db29bf57b4254eb5f95bd3ea8303b8df1c374c5cd86b15fb08c2e037aace",
+      "source_fact_keys": [
+        "source_fact:v1:4f9e813378bd871a299f541380964be9f30f1861d1859199a5716505a7e8a7de",
+        "source_fact:v1:7fbde7f6c2174aa01f1186226698faccb625aab33018f42146ae7cafba989612"
+      ],
+      "source_published_kst": "2026-10-06T08:46+09:00",
+      "title": "한미반도체, 삼성 첫 거래·MSVP 수주 확대 '두 마리 토끼'"
     },
     "fact:141e69347ed926b17a0db065": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
@@ -7517,7 +7597,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632580",
       "source": "이투데이",
       "source_body_digest": "d195b3cc54e2af3f1a2431329a4c1d85a49cab49b718d197b4f6053a4b24d7e1",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
       "source_fact_identity": "source_facts:v1:e8606a148cd3dc3e5a35681a18bb3e93e5ffd8d52749e6c3cdc94105da222a84",
       "source_fact_keys": [
         "source_fact:v1:3c5ee1ab45de27b03db28bfd319392f9e0ce2c0b53ae0c6d218489a8c3044c26"
@@ -7663,6 +7743,25 @@
       ],
       "source_published_kst": "2026-10-05T20:25+09:00",
       "title": "피티씨, 슈나이더에 피인수..주당 205달러·프리미엄 42%"
+    },
+    "fact:6d6a946dace48be5fb72425d": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814927",
+      "source": "뉴시스",
+      "source_body_digest": "8e3baea01b0ece4bfb818c1d4d9532bd36eb0dcc3aeffebd4ce48b8eb3f76a3c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47d62b299b8418301e12ddbc474cb182b589d86493d2be217decf5a628b952b6",
+      "source_fact_keys": [
+        "source_fact:v1:0e7a4148687d48396d923dbc5e0ac12be698605549607be883449df508464330",
+        "source_fact:v1:55878f7260ad47ca864572b775eedea44358db28cdcd06c9ff129d7139b1a27f",
+        "source_fact:v1:6ad083fa180b418bfb0d0ca14f29ebc6bbafe8c2d98e89ffa911799e18d1a953"
+      ],
+      "source_published_kst": "2026-10-06T09:16+09:00",
+      "title": "비트코인, 1억1600만원대 강보합…美 고용 둔화에 금리 인상 부담 완화"
     },
     "fact:6e49330a1ac30f01fe7d3351": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -7976,6 +8075,29 @@
       ],
       "source_published_kst": "2026-10-05T20:20+09:00",
       "title": "이카엑스 홀딩스, 플라이미 인수 완료로 차량용 OS 풀스택 경쟁력 부각"
+    },
+    "fact:7a34ebd26736137dac71960a": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02479686645610296",
+      "source": "이데일리",
+      "source_body_digest": "2f749ef3b6f4cde8f04fcdad700b8f6f7addfa6835b7f9a1d5e71821e6c853a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7aa2a6079c53ba211b2ca8c8dfc01e0db74d8468104e8278e3ceefc2ef8df529",
+      "source_fact_keys": [
+        "source_fact:v1:0d9a6cfc2b6f5f2602c40bf09de46260359fc8ff82ae4a57c8a2398f1438f10a",
+        "source_fact:v1:2ddb67b1b10110c84524b7741d858d1503f19049045d92f18ee297402c68f049",
+        "source_fact:v1:4fa25b7f8311510d9a84fab977dd862cc23ee4b88a7942b4bc8f8048bfa617fc",
+        "source_fact:v1:8f2f605ddc9b1753ae5016a2ca31d80fc07ce23999001f98cf8a52631a324928",
+        "source_fact:v1:b015b9fef78d2789f3c552d75386f63cef2f8c7e0c59040590e9303531788337",
+        "source_fact:v1:bb4854aa4b66f688ea9e667344aa589526878e67c2b67a2bbb5bb8d0130050ee",
+        "source_fact:v1:ed554d72642fc51742c18be1fe2679bd97c9faa213e344e921d03786e86b68f7"
+      ],
+      "source_published_kst": "2026-10-06T07:46+09:00",
+      "title": "고금리에도 꺾이지 않는 AI 투자…연준 긴축 고민"
     },
     "fact:7b04fce512e90fa300ee74f3": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
@@ -9365,6 +9487,48 @@
       "source_published_kst": "2026-10-05T16:20+09:00",
       "title": "日라피더스, 도시바 등 17개사와 반도체 설계 동맹"
     },
+    "fact:c32154d75dd1b73c7e65d64a": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02558406645610296",
+      "source": "이데일리",
+      "source_body_digest": "ef116248fc841049456a6b208b6051f75a8e53a950af9f3cb1d4f44aaccb4eeb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a2a570749d4ccc871babd4f0f65a240902509393b188b6e2f5de937c43bb85db",
+      "source_fact_keys": [
+        "source_fact:v1:3728838341532c2a7f4dc80e6d6ac4ce38bf8151e91f3337768607898ea6ab7f",
+        "source_fact:v1:577e4ec6ac44ad9f32cc1bb513141908b2d3db88bd9676f2e32327baeece5dbe",
+        "source_fact:v1:894c03b623b23805e72f6228ec07f15c68807a73219b0c32141c18cc9292624b",
+        "source_fact:v1:9047427a10a150083ef37b459490a25d5868981516bf6419567132c3e5b52312",
+        "source_fact:v1:c4d79c45300b48e184e399334e88de17b4bc924a6081c0647d4fac054c7a05b8",
+        "source_fact:v1:e75e8939f8bc6f6b916fdb796194a9b4892f191cb72cb14a0377365ade34a65d"
+      ],
+      "source_published_kst": "2026-10-06T08:17+09:00",
+      "title": "나스닥 사상 최고…비트코인 8만5000달러대[코인 모닝콜]"
+    },
+    "fact:c557e603a99be5434555b8a8": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632622",
+      "source": "이투데이",
+      "source_body_digest": "773c70e486a6fed6f5f0d9a9e66fd488bdb54eb2acf1ece4bb47db113a580e06",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e036cd95f30013bb055e9ecdb033ce90292917bcea91ea14a887ff911a40584c",
+      "source_fact_keys": [
+        "source_fact:v1:2eb2a5649f7565a4e7e93f955dce8f1e884b95e0dbdb4e27ced34528172b92a9",
+        "source_fact:v1:a4d598e082c96474761c276a41ab24d78ad482af2bb6494a8aa17eeef18c4c0d",
+        "source_fact:v1:b9d6dfbfda14159aaa9e5dfa981f9ac65234b2a6cee136dba0cc10c5c8336196",
+        "source_fact:v1:f833f101b594f0d5c520b628ede1e5f5cab9fb8ae071ae38d4e33ada0ba82a1e"
+      ],
+      "source_published_kst": "2026-10-06T09:09+09:00",
+      "title": "스페이스X 우주 모멘텀에…센서뷰·스피어 장 초반 강세"
+    },
     "fact:c5fcb565c84f642580b534a8": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
@@ -9681,6 +9845,25 @@
       ],
       "source_published_kst": "2026-10-05T21:07+09:00",
       "title": "텔라 바이오, 완전 흡수성 메시 '리오라' FDA 허가 획득"
+    },
+    "fact:d472e19b03522b1a5a61498f": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.etnews.com/20261006000012",
+      "source": "전자신문",
+      "source_body_digest": "62fba67cd9bb45d26a74eb24c2380682ba33f764a7413443a9da4b828be9ad66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a26628bb936dee4bd7c178b05579c119faa89a7f0c423ccd54920a65f6bd271",
+      "source_fact_keys": [
+        "source_fact:v1:617542f07b33e5031837f4d9c15ad36da5bc25d269d008c3ad911ae6662a87c5",
+        "source_fact:v1:99b7a51cd801af6f91608a2f057d9a12a7138e999ad22c50d40e71b983304026",
+        "source_fact:v1:c57e54a3437409a0dde8a409f3a99b7816f24bf03e8cea5f382b9689b021bedf"
+      ],
+      "source_published_kst": "2026-10-06T08:57+09:00",
+      "title": "스틸리언 '웹수트', AI 에이전트 기반 웹·API 공격 차단 검증"
     },
     "fact:d5d7803fa25aad6c5732829d": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
@@ -10372,6 +10555,23 @@
       ],
       "source_published_kst": "2026-10-06T08:40+09:00",
       "title": "그록 주주들, 엔비디아 '우회 인수'에 소송…\"껍데기 회사 남겨\""
+    },
+    "fact:ff9e844ebce02b6130be7bbb": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006038300004",
+      "source": "연합뉴스",
+      "source_body_digest": "ba01f8ab8fd8636d7946cfb1074ef02e23f560d5a31cbf7f33d51c2fe9c7fd17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bedaa6a8c0c6d8b431ba050e29b92f635b12127e7f80c607a093429b8df63509",
+      "source_fact_keys": [
+        "source_fact:v1:7b6f42bf2499bb2a66bd44f987cadc6c47bf8e2bbc0f6c41462ff0c475550e27"
+      ],
+      "source_published_kst": "2026-10-06T09:10+09:00",
+      "title": "강남구, 급식 조리로봇 고도화…\"뜨거운 튀김기름 자동배출\" | 연합뉴스"
     },
     "fact:ffe00e1c72c0ec5f288b952c": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
@@ -11340,6 +11540,24 @@
       "source": "연합뉴스",
       "title": "뉴욕증시, 비농업 고용지표 소화하며 상승 출발 | 연합뉴스"
     },
+    "link:0e1afca5ac2997f1720f0964": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.fnnews.com/news/202610060841477323",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "c1714ef9430a16d5393b6231f4cf58fda1599ade8dc5cd5728273e1f3d23e6bc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8450db29bf57b4254eb5f95bd3ea8303b8df1c374c5cd86b15fb08c2e037aace",
+      "source_fact_keys": [
+        "source_fact:v1:4f9e813378bd871a299f541380964be9f30f1861d1859199a5716505a7e8a7de",
+        "source_fact:v1:7fbde7f6c2174aa01f1186226698faccb625aab33018f42146ae7cafba989612"
+      ],
+      "source_published_kst": "2026-10-06T08:46+09:00",
+      "title": "한미반도체, 삼성 첫 거래·MSVP 수주 확대 '두 마리 토끼'"
+    },
     "link:0e1cf74a1cb5b1fc663ee6cb": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
       "lanes": {
@@ -12307,6 +12525,25 @@
       "source": "연합뉴스",
       "title": "신한운용 \"SOL초단기채권액티브 ETF 순자산 1조원 돌파\" | 연합뉴스"
     },
+    "link:1caec4018e89f285efa1c4e9": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.etnews.com/20261006000012",
+      "source": "전자신문",
+      "source_body_digest": "62fba67cd9bb45d26a74eb24c2380682ba33f764a7413443a9da4b828be9ad66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a26628bb936dee4bd7c178b05579c119faa89a7f0c423ccd54920a65f6bd271",
+      "source_fact_keys": [
+        "source_fact:v1:617542f07b33e5031837f4d9c15ad36da5bc25d269d008c3ad911ae6662a87c5",
+        "source_fact:v1:99b7a51cd801af6f91608a2f057d9a12a7138e999ad22c50d40e71b983304026",
+        "source_fact:v1:c57e54a3437409a0dde8a409f3a99b7816f24bf03e8cea5f382b9689b021bedf"
+      ],
+      "source_published_kst": "2026-10-06T08:57+09:00",
+      "title": "스틸리언 '웹수트', AI 에이전트 기반 웹·API 공격 차단 검증"
+    },
     "link:1ce0bde2de9626e9f0e51199": {
       "first_seen_kst": "2026-10-06T01:41:59+09:00",
       "lanes": {
@@ -12399,7 +12636,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003814774",
       "source": "뉴시스",
       "source_body_digest": "5f60fef5f9e9eefff4e7e81f6ce856d5991248d4c304d70397b28da558dba495",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
       "source_fact_identity": "source_facts:v1:fb22f50e155f49c8a7c5bd99659bb0a1f2f590ae4acacf60d944029b87439568",
       "source_fact_keys": [
         "source_fact:v1:7c9abe202e0358314bb95b4eb6d8db9ff5eec7e44a63d5d8583ff200807ab7dc",
@@ -14891,6 +15128,23 @@
       "source": "뉴시스",
       "title": "\"AI 속도 조절론 속에 숨은 의도 있다\"…서울대 교수가 본 빅테크의 셈법"
     },
+    "link:3cdf20e4347249945c58355b": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006038300004",
+      "source": "연합뉴스",
+      "source_body_digest": "ba01f8ab8fd8636d7946cfb1074ef02e23f560d5a31cbf7f33d51c2fe9c7fd17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bedaa6a8c0c6d8b431ba050e29b92f635b12127e7f80c607a093429b8df63509",
+      "source_fact_keys": [
+        "source_fact:v1:7b6f42bf2499bb2a66bd44f987cadc6c47bf8e2bbc0f6c41462ff0c475550e27"
+      ],
+      "source_published_kst": "2026-10-06T09:10+09:00",
+      "title": "강남구, 급식 조리로봇 고도화…\"뜨거운 튀김기름 자동배출\" | 연합뉴스"
+    },
     "link:3ce7cebbed1b8751206f09db": {
       "first_seen_kst": "2026-09-25T15:18:56+09:00",
       "lanes": {
@@ -15714,6 +15968,25 @@
       "link": "https://www.dt.co.kr/article/12087170",
       "source": "디지털타임스",
       "title": "최태원, 9440억 SK지분 매각 추진…‘노소영 재산분할’ 소요 자금 마련"
+    },
+    "link:489c59a83f143eddcfaeead2": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814927",
+      "source": "뉴시스",
+      "source_body_digest": "8e3baea01b0ece4bfb818c1d4d9532bd36eb0dcc3aeffebd4ce48b8eb3f76a3c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47d62b299b8418301e12ddbc474cb182b589d86493d2be217decf5a628b952b6",
+      "source_fact_keys": [
+        "source_fact:v1:0e7a4148687d48396d923dbc5e0ac12be698605549607be883449df508464330",
+        "source_fact:v1:55878f7260ad47ca864572b775eedea44358db28cdcd06c9ff129d7139b1a27f",
+        "source_fact:v1:6ad083fa180b418bfb0d0ca14f29ebc6bbafe8c2d98e89ffa911799e18d1a953"
+      ],
+      "source_published_kst": "2026-10-06T09:16+09:00",
+      "title": "비트코인, 1억1600만원대 강보합…美 고용 둔화에 금리 인상 부담 완화"
     },
     "link:48d1c7268bf9d19e3519e9fa": {
       "first_seen_kst": "2026-10-03T19:34:33+09:00",
@@ -16559,7 +16832,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632580",
       "source": "이투데이",
       "source_body_digest": "d195b3cc54e2af3f1a2431329a4c1d85a49cab49b718d197b4f6053a4b24d7e1",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
       "source_fact_identity": "source_facts:v1:e8606a148cd3dc3e5a35681a18bb3e93e5ffd8d52749e6c3cdc94105da222a84",
       "source_fact_keys": [
         "source_fact:v1:3c5ee1ab45de27b03db28bfd319392f9e0ce2c0b53ae0c6d218489a8c3044c26"
@@ -18660,6 +18933,26 @@
       "link": "https://www.mt.co.kr/world/2026/10/03/2026100306463872262",
       "source": "머니투데이",
       "title": "한미 알래스카 투자 온도차…봉합 나선 美국무부 \"상호 윈윈\""
+    },
+    "link:6d41fed95b956856cdeee6de": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632622",
+      "source": "이투데이",
+      "source_body_digest": "773c70e486a6fed6f5f0d9a9e66fd488bdb54eb2acf1ece4bb47db113a580e06",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e036cd95f30013bb055e9ecdb033ce90292917bcea91ea14a887ff911a40584c",
+      "source_fact_keys": [
+        "source_fact:v1:2eb2a5649f7565a4e7e93f955dce8f1e884b95e0dbdb4e27ced34528172b92a9",
+        "source_fact:v1:a4d598e082c96474761c276a41ab24d78ad482af2bb6494a8aa17eeef18c4c0d",
+        "source_fact:v1:b9d6dfbfda14159aaa9e5dfa981f9ac65234b2a6cee136dba0cc10c5c8336196",
+        "source_fact:v1:f833f101b594f0d5c520b628ede1e5f5cab9fb8ae071ae38d4e33ada0ba82a1e"
+      ],
+      "source_published_kst": "2026-10-06T09:09+09:00",
+      "title": "스페이스X 우주 모멘텀에…센서뷰·스피어 장 초반 강세"
     },
     "link:6d6eb4afbb090f372de221a2": {
       "first_seen_kst": "2026-09-20T19:20:28+09:00",
@@ -22972,6 +23265,28 @@
       "source": "파이낸셜뉴스",
       "title": "올데이올가닉, 생산능력 5배 확대…폐배터리 ESS로 전력비 낮춰"
     },
+    "link:a5210beca4efa59bbc4efb29": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02558406645610296",
+      "source": "이데일리",
+      "source_body_digest": "ef116248fc841049456a6b208b6051f75a8e53a950af9f3cb1d4f44aaccb4eeb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a2a570749d4ccc871babd4f0f65a240902509393b188b6e2f5de937c43bb85db",
+      "source_fact_keys": [
+        "source_fact:v1:3728838341532c2a7f4dc80e6d6ac4ce38bf8151e91f3337768607898ea6ab7f",
+        "source_fact:v1:577e4ec6ac44ad9f32cc1bb513141908b2d3db88bd9676f2e32327baeece5dbe",
+        "source_fact:v1:894c03b623b23805e72f6228ec07f15c68807a73219b0c32141c18cc9292624b",
+        "source_fact:v1:9047427a10a150083ef37b459490a25d5868981516bf6419567132c3e5b52312",
+        "source_fact:v1:c4d79c45300b48e184e399334e88de17b4bc924a6081c0647d4fac054c7a05b8",
+        "source_fact:v1:e75e8939f8bc6f6b916fdb796194a9b4892f191cb72cb14a0377365ade34a65d"
+      ],
+      "source_published_kst": "2026-10-06T08:17+09:00",
+      "title": "나스닥 사상 최고…비트코인 8만5000달러대[코인 모닝콜]"
+    },
     "link:a53f7582005066ef98b2af4f": {
       "first_seen_kst": "2026-09-26T20:35:23+09:00",
       "lanes": {
@@ -25366,6 +25681,29 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T06:01+09:00",
       "title": "‘미토스 쇼크'가 경고한 AI 해킹 현실화…금융권 공격서 드러난 흔적"
+    },
+    "link:c4dd0bd1376d56bfea699dd3": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02479686645610296",
+      "source": "이데일리",
+      "source_body_digest": "2f749ef3b6f4cde8f04fcdad700b8f6f7addfa6835b7f9a1d5e71821e6c853a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7aa2a6079c53ba211b2ca8c8dfc01e0db74d8468104e8278e3ceefc2ef8df529",
+      "source_fact_keys": [
+        "source_fact:v1:0d9a6cfc2b6f5f2602c40bf09de46260359fc8ff82ae4a57c8a2398f1438f10a",
+        "source_fact:v1:2ddb67b1b10110c84524b7741d858d1503f19049045d92f18ee297402c68f049",
+        "source_fact:v1:4fa25b7f8311510d9a84fab977dd862cc23ee4b88a7942b4bc8f8048bfa617fc",
+        "source_fact:v1:8f2f605ddc9b1753ae5016a2ca31d80fc07ce23999001f98cf8a52631a324928",
+        "source_fact:v1:b015b9fef78d2789f3c552d75386f63cef2f8c7e0c59040590e9303531788337",
+        "source_fact:v1:bb4854aa4b66f688ea9e667344aa589526878e67c2b67a2bbb5bb8d0130050ee",
+        "source_fact:v1:ed554d72642fc51742c18be1fe2679bd97c9faa213e344e921d03786e86b68f7"
+      ],
+      "source_published_kst": "2026-10-06T07:46+09:00",
+      "title": "고금리에도 꺾이지 않는 AI 투자…연준 긴축 고민"
     },
     "link:c521a94e509eadb69baec28e": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
@@ -33462,6 +33800,26 @@
       "source_published_kst": "2026-10-04T14:05+09:00",
       "title": "'대전 D-성장펀드' 540억 규모 출범...지역성장펀드 3호"
     },
+    "original:34bb5ff4dbd06379a258f0d0": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632622",
+      "source": "이투데이",
+      "source_body_digest": "773c70e486a6fed6f5f0d9a9e66fd488bdb54eb2acf1ece4bb47db113a580e06",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e036cd95f30013bb055e9ecdb033ce90292917bcea91ea14a887ff911a40584c",
+      "source_fact_keys": [
+        "source_fact:v1:2eb2a5649f7565a4e7e93f955dce8f1e884b95e0dbdb4e27ced34528172b92a9",
+        "source_fact:v1:a4d598e082c96474761c276a41ab24d78ad482af2bb6494a8aa17eeef18c4c0d",
+        "source_fact:v1:b9d6dfbfda14159aaa9e5dfa981f9ac65234b2a6cee136dba0cc10c5c8336196",
+        "source_fact:v1:f833f101b594f0d5c520b628ede1e5f5cab9fb8ae071ae38d4e33ada0ba82a1e"
+      ],
+      "source_published_kst": "2026-10-06T09:09+09:00",
+      "title": "스페이스X 우주 모멘텀에…센서뷰·스피어 장 초반 강세"
+    },
     "original:34c4345a8c13d544f752c6b6": {
       "first_seen_kst": "2026-10-05T09:59:51+09:00",
       "lanes": {
@@ -33692,6 +34050,24 @@
       "link": "https://www.etnews.com/20260929000109",
       "source": "전자신문",
       "title": "LG전자, '블록형 냉각설비' 모듈러 솔루션 공개…AI 데이터센터 구축기간 줄인다"
+    },
+    "original:3800773507f932bca69e1d59": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.fnnews.com/news/202610060841477323",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "c1714ef9430a16d5393b6231f4cf58fda1599ade8dc5cd5728273e1f3d23e6bc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8450db29bf57b4254eb5f95bd3ea8303b8df1c374c5cd86b15fb08c2e037aace",
+      "source_fact_keys": [
+        "source_fact:v1:4f9e813378bd871a299f541380964be9f30f1861d1859199a5716505a7e8a7de",
+        "source_fact:v1:7fbde7f6c2174aa01f1186226698faccb625aab33018f42146ae7cafba989612"
+      ],
+      "source_published_kst": "2026-10-06T08:46+09:00",
+      "title": "한미반도체, 삼성 첫 거래·MSVP 수주 확대 '두 마리 토끼'"
     },
     "original:3856c727fc8892fe6cce8890": {
       "first_seen_kst": "2026-09-28T17:51:03+09:00",
@@ -34386,6 +34762,25 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=02437046645583072",
       "source": "이데일리",
       "title": "日다카이치, 시진핑보다 먼저 트럼프 만났다…ICC 두고 이견"
+    },
+    "original:3ff89fbe0effc8b21b2e34ce": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814927",
+      "source": "뉴시스",
+      "source_body_digest": "8e3baea01b0ece4bfb818c1d4d9532bd36eb0dcc3aeffebd4ce48b8eb3f76a3c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47d62b299b8418301e12ddbc474cb182b589d86493d2be217decf5a628b952b6",
+      "source_fact_keys": [
+        "source_fact:v1:0e7a4148687d48396d923dbc5e0ac12be698605549607be883449df508464330",
+        "source_fact:v1:55878f7260ad47ca864572b775eedea44358db28cdcd06c9ff129d7139b1a27f",
+        "source_fact:v1:6ad083fa180b418bfb0d0ca14f29ebc6bbafe8c2d98e89ffa911799e18d1a953"
+      ],
+      "source_published_kst": "2026-10-06T09:16+09:00",
+      "title": "비트코인, 1억1600만원대 강보합…美 고용 둔화에 금리 인상 부담 완화"
     },
     "original:400d6957ad80f14cf12e881a": {
       "first_seen_kst": "2026-09-26T13:41:01+09:00",
@@ -38965,6 +39360,25 @@
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
     },
+    "original:7cd45900b0fda37ceddc0c68": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.etnews.com/20261006000012",
+      "source": "전자신문",
+      "source_body_digest": "62fba67cd9bb45d26a74eb24c2380682ba33f764a7413443a9da4b828be9ad66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a26628bb936dee4bd7c178b05579c119faa89a7f0c423ccd54920a65f6bd271",
+      "source_fact_keys": [
+        "source_fact:v1:617542f07b33e5031837f4d9c15ad36da5bc25d269d008c3ad911ae6662a87c5",
+        "source_fact:v1:99b7a51cd801af6f91608a2f057d9a12a7138e999ad22c50d40e71b983304026",
+        "source_fact:v1:c57e54a3437409a0dde8a409f3a99b7816f24bf03e8cea5f382b9689b021bedf"
+      ],
+      "source_published_kst": "2026-10-06T08:57+09:00",
+      "title": "스틸리언 '웹수트', AI 에이전트 기반 웹·API 공격 차단 검증"
+    },
     "original:7ce4fcae2fe2ed1fdb845777": {
       "first_seen_kst": "2026-10-02T22:19:09+09:00",
       "lanes": {
@@ -39962,6 +40376,29 @@
       "link": "https://magazine.hankyung.com/money/article/202610029562c",
       "source": "한국경제",
       "title": "건원엔지니어링, 목동4단지 재건축 CM 우선협상대상자 선정"
+    },
+    "original:8b2d44fef0ead79821395e60": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02479686645610296",
+      "source": "이데일리",
+      "source_body_digest": "2f749ef3b6f4cde8f04fcdad700b8f6f7addfa6835b7f9a1d5e71821e6c853a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7aa2a6079c53ba211b2ca8c8dfc01e0db74d8468104e8278e3ceefc2ef8df529",
+      "source_fact_keys": [
+        "source_fact:v1:0d9a6cfc2b6f5f2602c40bf09de46260359fc8ff82ae4a57c8a2398f1438f10a",
+        "source_fact:v1:2ddb67b1b10110c84524b7741d858d1503f19049045d92f18ee297402c68f049",
+        "source_fact:v1:4fa25b7f8311510d9a84fab977dd862cc23ee4b88a7942b4bc8f8048bfa617fc",
+        "source_fact:v1:8f2f605ddc9b1753ae5016a2ca31d80fc07ce23999001f98cf8a52631a324928",
+        "source_fact:v1:b015b9fef78d2789f3c552d75386f63cef2f8c7e0c59040590e9303531788337",
+        "source_fact:v1:bb4854aa4b66f688ea9e667344aa589526878e67c2b67a2bbb5bb8d0130050ee",
+        "source_fact:v1:ed554d72642fc51742c18be1fe2679bd97c9faa213e344e921d03786e86b68f7"
+      ],
+      "source_published_kst": "2026-10-06T07:46+09:00",
+      "title": "고금리에도 꺾이지 않는 AI 투자…연준 긴축 고민"
     },
     "original:8b6a88e6aa89907bcade6dc6": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
@@ -42202,6 +42639,28 @@
       "source": "뉴스1",
       "title": "[뉴욕마감]국채금리 20년래 최고에 혼조…다우 0.31%↓·나스닥 0.01%↑"
     },
+    "original:a8f2cecb94268ac3b3086b66": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02558406645610296",
+      "source": "이데일리",
+      "source_body_digest": "ef116248fc841049456a6b208b6051f75a8e53a950af9f3cb1d4f44aaccb4eeb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a2a570749d4ccc871babd4f0f65a240902509393b188b6e2f5de937c43bb85db",
+      "source_fact_keys": [
+        "source_fact:v1:3728838341532c2a7f4dc80e6d6ac4ce38bf8151e91f3337768607898ea6ab7f",
+        "source_fact:v1:577e4ec6ac44ad9f32cc1bb513141908b2d3db88bd9676f2e32327baeece5dbe",
+        "source_fact:v1:894c03b623b23805e72f6228ec07f15c68807a73219b0c32141c18cc9292624b",
+        "source_fact:v1:9047427a10a150083ef37b459490a25d5868981516bf6419567132c3e5b52312",
+        "source_fact:v1:c4d79c45300b48e184e399334e88de17b4bc924a6081c0647d4fac054c7a05b8",
+        "source_fact:v1:e75e8939f8bc6f6b916fdb796194a9b4892f191cb72cb14a0377365ade34a65d"
+      ],
+      "source_published_kst": "2026-10-06T08:17+09:00",
+      "title": "나스닥 사상 최고…비트코인 8만5000달러대[코인 모닝콜]"
+    },
     "original:a8f89d56ff0976b60e903d8f": {
       "first_seen_kst": "2026-09-27T12:25:25+09:00",
       "lanes": {
@@ -44156,7 +44615,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003814774",
       "source": "뉴시스",
       "source_body_digest": "5f60fef5f9e9eefff4e7e81f6ce856d5991248d4c304d70397b28da558dba495",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
       "source_fact_identity": "source_facts:v1:fb22f50e155f49c8a7c5bd99659bb0a1f2f590ae4acacf60d944029b87439568",
       "source_fact_keys": [
         "source_fact:v1:7c9abe202e0358314bb95b4eb6d8db9ff5eec7e44a63d5d8583ff200807ab7dc",
@@ -45948,7 +46407,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632580",
       "source": "이투데이",
       "source_body_digest": "d195b3cc54e2af3f1a2431329a4c1d85a49cab49b718d197b4f6053a4b24d7e1",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
       "source_fact_identity": "source_facts:v1:e8606a148cd3dc3e5a35681a18bb3e93e5ffd8d52749e6c3cdc94105da222a84",
       "source_fact_keys": [
         "source_fact:v1:3c5ee1ab45de27b03db28bfd319392f9e0ce2c0b53ae0c6d218489a8c3044c26"
@@ -47939,6 +48398,23 @@
       "source_published_kst": "2026-10-06T08:40+09:00",
       "title": "프랜차이즈 본사 매출 늘었는데…외식·편의점 가맹점은 뒷걸음"
     },
+    "original:f6f216b8af993ccab1b3ef3a": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006038300004",
+      "source": "연합뉴스",
+      "source_body_digest": "ba01f8ab8fd8636d7946cfb1074ef02e23f560d5a31cbf7f33d51c2fe9c7fd17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bedaa6a8c0c6d8b431ba050e29b92f635b12127e7f80c607a093429b8df63509",
+      "source_fact_keys": [
+        "source_fact:v1:7b6f42bf2499bb2a66bd44f987cadc6c47bf8e2bbc0f6c41462ff0c475550e27"
+      ],
+      "source_published_kst": "2026-10-06T09:10+09:00",
+      "title": "강남구, 급식 조리로봇 고도화…\"뜨거운 튀김기름 자동배출\" | 연합뉴스"
+    },
     "original:f71b7cd4d3d35c272c78a267": {
       "first_seen_kst": "2026-09-17T19:09:57+09:00",
       "lanes": {
@@ -48953,6 +49429,25 @@
       "source_published_kst": "2026-10-05T21:09+09:00",
       "title": "플렉스, 액시엄 20억달러 우선주 유치..가치 375억달러"
     },
+    "source_fact:0520e454c8a85c2767720753": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.etnews.com/20261006000012",
+      "source": "전자신문",
+      "source_body_digest": "62fba67cd9bb45d26a74eb24c2380682ba33f764a7413443a9da4b828be9ad66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a26628bb936dee4bd7c178b05579c119faa89a7f0c423ccd54920a65f6bd271",
+      "source_fact_keys": [
+        "source_fact:v1:617542f07b33e5031837f4d9c15ad36da5bc25d269d008c3ad911ae6662a87c5",
+        "source_fact:v1:99b7a51cd801af6f91608a2f057d9a12a7138e999ad22c50d40e71b983304026",
+        "source_fact:v1:c57e54a3437409a0dde8a409f3a99b7816f24bf03e8cea5f382b9689b021bedf"
+      ],
+      "source_published_kst": "2026-10-06T08:57+09:00",
+      "title": "스틸리언 '웹수트', AI 에이전트 기반 웹·API 공격 차단 검증"
+    },
     "source_fact:057c6e05e104977391991e11": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
       "lanes": {
@@ -49919,6 +50414,29 @@
       ],
       "source_published_kst": "2026-10-06T07:30+09:00",
       "title": "원화 강세의 그늘…실적시즌 앞두고 이익전망 '뒷걸음질'"
+    },
+    "source_fact:0f35be87ea50e1e41b5a0ac6": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02479686645610296",
+      "source": "이데일리",
+      "source_body_digest": "2f749ef3b6f4cde8f04fcdad700b8f6f7addfa6835b7f9a1d5e71821e6c853a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7aa2a6079c53ba211b2ca8c8dfc01e0db74d8468104e8278e3ceefc2ef8df529",
+      "source_fact_keys": [
+        "source_fact:v1:0d9a6cfc2b6f5f2602c40bf09de46260359fc8ff82ae4a57c8a2398f1438f10a",
+        "source_fact:v1:2ddb67b1b10110c84524b7741d858d1503f19049045d92f18ee297402c68f049",
+        "source_fact:v1:4fa25b7f8311510d9a84fab977dd862cc23ee4b88a7942b4bc8f8048bfa617fc",
+        "source_fact:v1:8f2f605ddc9b1753ae5016a2ca31d80fc07ce23999001f98cf8a52631a324928",
+        "source_fact:v1:b015b9fef78d2789f3c552d75386f63cef2f8c7e0c59040590e9303531788337",
+        "source_fact:v1:bb4854aa4b66f688ea9e667344aa589526878e67c2b67a2bbb5bb8d0130050ee",
+        "source_fact:v1:ed554d72642fc51742c18be1fe2679bd97c9faa213e344e921d03786e86b68f7"
+      ],
+      "source_published_kst": "2026-10-06T07:46+09:00",
+      "title": "고금리에도 꺾이지 않는 AI 투자…연준 긴축 고민"
     },
     "source_fact:0f38fe5de47bbe6ae3719469": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
@@ -51581,6 +52099,26 @@
       ],
       "source_published_kst": "2026-10-05T21:08+09:00",
       "title": "포럼 마켓츠, AI 합작사 설립..2027년 매출 최대 1억7500만달러"
+    },
+    "source_fact:22151cc678ba325aef027e49": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632622",
+      "source": "이투데이",
+      "source_body_digest": "773c70e486a6fed6f5f0d9a9e66fd488bdb54eb2acf1ece4bb47db113a580e06",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e036cd95f30013bb055e9ecdb033ce90292917bcea91ea14a887ff911a40584c",
+      "source_fact_keys": [
+        "source_fact:v1:2eb2a5649f7565a4e7e93f955dce8f1e884b95e0dbdb4e27ced34528172b92a9",
+        "source_fact:v1:a4d598e082c96474761c276a41ab24d78ad482af2bb6494a8aa17eeef18c4c0d",
+        "source_fact:v1:b9d6dfbfda14159aaa9e5dfa981f9ac65234b2a6cee136dba0cc10c5c8336196",
+        "source_fact:v1:f833f101b594f0d5c520b628ede1e5f5cab9fb8ae071ae38d4e33ada0ba82a1e"
+      ],
+      "source_published_kst": "2026-10-06T09:09+09:00",
+      "title": "스페이스X 우주 모멘텀에…센서뷰·스피어 장 초반 강세"
     },
     "source_fact:223e08442e75d06c8e69b371": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
@@ -53343,7 +53881,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003814774",
       "source": "뉴시스",
       "source_body_digest": "5f60fef5f9e9eefff4e7e81f6ce856d5991248d4c304d70397b28da558dba495",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
       "source_fact_identity": "source_facts:v1:fb22f50e155f49c8a7c5bd99659bb0a1f2f590ae4acacf60d944029b87439568",
       "source_fact_keys": [
         "source_fact:v1:7c9abe202e0358314bb95b4eb6d8db9ff5eec7e44a63d5d8583ff200807ab7dc",
@@ -54799,6 +55337,29 @@
       "source_published_kst": "2026-10-05T19:05+09:00",
       "title": "오메가 헬스케어 인베스터, 플로리다 32곳 운영사 교체..1년차 임대료 2600만 달러 증액"
     },
+    "source_fact:45430c4295fabd569cf5ded6": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02479686645610296",
+      "source": "이데일리",
+      "source_body_digest": "2f749ef3b6f4cde8f04fcdad700b8f6f7addfa6835b7f9a1d5e71821e6c853a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7aa2a6079c53ba211b2ca8c8dfc01e0db74d8468104e8278e3ceefc2ef8df529",
+      "source_fact_keys": [
+        "source_fact:v1:0d9a6cfc2b6f5f2602c40bf09de46260359fc8ff82ae4a57c8a2398f1438f10a",
+        "source_fact:v1:2ddb67b1b10110c84524b7741d858d1503f19049045d92f18ee297402c68f049",
+        "source_fact:v1:4fa25b7f8311510d9a84fab977dd862cc23ee4b88a7942b4bc8f8048bfa617fc",
+        "source_fact:v1:8f2f605ddc9b1753ae5016a2ca31d80fc07ce23999001f98cf8a52631a324928",
+        "source_fact:v1:b015b9fef78d2789f3c552d75386f63cef2f8c7e0c59040590e9303531788337",
+        "source_fact:v1:bb4854aa4b66f688ea9e667344aa589526878e67c2b67a2bbb5bb8d0130050ee",
+        "source_fact:v1:ed554d72642fc51742c18be1fe2679bd97c9faa213e344e921d03786e86b68f7"
+      ],
+      "source_published_kst": "2026-10-06T07:46+09:00",
+      "title": "고금리에도 꺾이지 않는 AI 투자…연준 긴축 고민"
+    },
     "source_fact:45e05a9384b743e4d9be9f43": {
       "first_seen_kst": "2026-10-06T06:36:31+09:00",
       "lanes": {
@@ -55142,6 +55703,28 @@
       ],
       "source_published_kst": "2026-10-05T19:04+09:00",
       "title": "니우 테크놀러지스, 3분기 판매 54만대..전년비 15% 증가·해외 3배 확대"
+    },
+    "source_fact:47ab024cba1b4dc50458b14a": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02558406645610296",
+      "source": "이데일리",
+      "source_body_digest": "ef116248fc841049456a6b208b6051f75a8e53a950af9f3cb1d4f44aaccb4eeb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a2a570749d4ccc871babd4f0f65a240902509393b188b6e2f5de937c43bb85db",
+      "source_fact_keys": [
+        "source_fact:v1:3728838341532c2a7f4dc80e6d6ac4ce38bf8151e91f3337768607898ea6ab7f",
+        "source_fact:v1:577e4ec6ac44ad9f32cc1bb513141908b2d3db88bd9676f2e32327baeece5dbe",
+        "source_fact:v1:894c03b623b23805e72f6228ec07f15c68807a73219b0c32141c18cc9292624b",
+        "source_fact:v1:9047427a10a150083ef37b459490a25d5868981516bf6419567132c3e5b52312",
+        "source_fact:v1:c4d79c45300b48e184e399334e88de17b4bc924a6081c0647d4fac054c7a05b8",
+        "source_fact:v1:e75e8939f8bc6f6b916fdb796194a9b4892f191cb72cb14a0377365ade34a65d"
+      ],
+      "source_published_kst": "2026-10-06T08:17+09:00",
+      "title": "나스닥 사상 최고…비트코인 8만5000달러대[코인 모닝콜]"
     },
     "source_fact:47e90d356fb4c77a2047730b": {
       "first_seen_kst": "2026-10-06T00:11:03+09:00",
@@ -55735,6 +56318,28 @@
       "source_published_kst": "2026-10-05T09:55+09:00",
       "title": "日라피더스, 삼성·TSMC식 설계동맹 생태계 구축"
     },
+    "source_fact:4e9481b7dd365c26736fd226": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02558406645610296",
+      "source": "이데일리",
+      "source_body_digest": "ef116248fc841049456a6b208b6051f75a8e53a950af9f3cb1d4f44aaccb4eeb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a2a570749d4ccc871babd4f0f65a240902509393b188b6e2f5de937c43bb85db",
+      "source_fact_keys": [
+        "source_fact:v1:3728838341532c2a7f4dc80e6d6ac4ce38bf8151e91f3337768607898ea6ab7f",
+        "source_fact:v1:577e4ec6ac44ad9f32cc1bb513141908b2d3db88bd9676f2e32327baeece5dbe",
+        "source_fact:v1:894c03b623b23805e72f6228ec07f15c68807a73219b0c32141c18cc9292624b",
+        "source_fact:v1:9047427a10a150083ef37b459490a25d5868981516bf6419567132c3e5b52312",
+        "source_fact:v1:c4d79c45300b48e184e399334e88de17b4bc924a6081c0647d4fac054c7a05b8",
+        "source_fact:v1:e75e8939f8bc6f6b916fdb796194a9b4892f191cb72cb14a0377365ade34a65d"
+      ],
+      "source_published_kst": "2026-10-06T08:17+09:00",
+      "title": "나스닥 사상 최고…비트코인 8만5000달러대[코인 모닝콜]"
+    },
     "source_fact:4e966730dceebafd75068181": {
       "first_seen_kst": "2026-10-06T00:57:01+09:00",
       "lanes": {
@@ -56285,6 +56890,29 @@
       ],
       "source_published_kst": "2026-10-06T06:38+09:00",
       "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
+    },
+    "source_fact:552fb9e0503b6384b1106dc9": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02479686645610296",
+      "source": "이데일리",
+      "source_body_digest": "2f749ef3b6f4cde8f04fcdad700b8f6f7addfa6835b7f9a1d5e71821e6c853a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7aa2a6079c53ba211b2ca8c8dfc01e0db74d8468104e8278e3ceefc2ef8df529",
+      "source_fact_keys": [
+        "source_fact:v1:0d9a6cfc2b6f5f2602c40bf09de46260359fc8ff82ae4a57c8a2398f1438f10a",
+        "source_fact:v1:2ddb67b1b10110c84524b7741d858d1503f19049045d92f18ee297402c68f049",
+        "source_fact:v1:4fa25b7f8311510d9a84fab977dd862cc23ee4b88a7942b4bc8f8048bfa617fc",
+        "source_fact:v1:8f2f605ddc9b1753ae5016a2ca31d80fc07ce23999001f98cf8a52631a324928",
+        "source_fact:v1:b015b9fef78d2789f3c552d75386f63cef2f8c7e0c59040590e9303531788337",
+        "source_fact:v1:bb4854aa4b66f688ea9e667344aa589526878e67c2b67a2bbb5bb8d0130050ee",
+        "source_fact:v1:ed554d72642fc51742c18be1fe2679bd97c9faa213e344e921d03786e86b68f7"
+      ],
+      "source_published_kst": "2026-10-06T07:46+09:00",
+      "title": "고금리에도 꺾이지 않는 AI 투자…연준 긴축 고민"
     },
     "source_fact:5560ed5e579dd2eea18340d2": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
@@ -57128,6 +57756,29 @@
       "source_published_kst": "2026-10-05T13:09+09:00",
       "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
     },
+    "source_fact:5d10cf44ba6bd0b384801e19": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02479686645610296",
+      "source": "이데일리",
+      "source_body_digest": "2f749ef3b6f4cde8f04fcdad700b8f6f7addfa6835b7f9a1d5e71821e6c853a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7aa2a6079c53ba211b2ca8c8dfc01e0db74d8468104e8278e3ceefc2ef8df529",
+      "source_fact_keys": [
+        "source_fact:v1:0d9a6cfc2b6f5f2602c40bf09de46260359fc8ff82ae4a57c8a2398f1438f10a",
+        "source_fact:v1:2ddb67b1b10110c84524b7741d858d1503f19049045d92f18ee297402c68f049",
+        "source_fact:v1:4fa25b7f8311510d9a84fab977dd862cc23ee4b88a7942b4bc8f8048bfa617fc",
+        "source_fact:v1:8f2f605ddc9b1753ae5016a2ca31d80fc07ce23999001f98cf8a52631a324928",
+        "source_fact:v1:b015b9fef78d2789f3c552d75386f63cef2f8c7e0c59040590e9303531788337",
+        "source_fact:v1:bb4854aa4b66f688ea9e667344aa589526878e67c2b67a2bbb5bb8d0130050ee",
+        "source_fact:v1:ed554d72642fc51742c18be1fe2679bd97c9faa213e344e921d03786e86b68f7"
+      ],
+      "source_published_kst": "2026-10-06T07:46+09:00",
+      "title": "고금리에도 꺾이지 않는 AI 투자…연준 긴축 고민"
+    },
     "source_fact:5d4a83512fdd37eb52951be5": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
       "lanes": {
@@ -57147,6 +57798,24 @@
       ],
       "source_published_kst": "2026-10-05T21:02+09:00",
       "title": "라디오팜 테라노스틱스, RAD101 2상 종료미팅 완료..3상 준비 착수"
+    },
+    "source_fact:5d7b52d296e3aa101fbf651b": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.fnnews.com/news/202610060841477323",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "c1714ef9430a16d5393b6231f4cf58fda1599ade8dc5cd5728273e1f3d23e6bc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8450db29bf57b4254eb5f95bd3ea8303b8df1c374c5cd86b15fb08c2e037aace",
+      "source_fact_keys": [
+        "source_fact:v1:4f9e813378bd871a299f541380964be9f30f1861d1859199a5716505a7e8a7de",
+        "source_fact:v1:7fbde7f6c2174aa01f1186226698faccb625aab33018f42146ae7cafba989612"
+      ],
+      "source_published_kst": "2026-10-06T08:46+09:00",
+      "title": "한미반도체, 삼성 첫 거래·MSVP 수주 확대 '두 마리 토끼'"
     },
     "source_fact:5dd806d7a2801ff9f76461d3": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
@@ -57868,6 +58537,29 @@
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
     },
+    "source_fact:67a737a321c26657727926f0": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02479686645610296",
+      "source": "이데일리",
+      "source_body_digest": "2f749ef3b6f4cde8f04fcdad700b8f6f7addfa6835b7f9a1d5e71821e6c853a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7aa2a6079c53ba211b2ca8c8dfc01e0db74d8468104e8278e3ceefc2ef8df529",
+      "source_fact_keys": [
+        "source_fact:v1:0d9a6cfc2b6f5f2602c40bf09de46260359fc8ff82ae4a57c8a2398f1438f10a",
+        "source_fact:v1:2ddb67b1b10110c84524b7741d858d1503f19049045d92f18ee297402c68f049",
+        "source_fact:v1:4fa25b7f8311510d9a84fab977dd862cc23ee4b88a7942b4bc8f8048bfa617fc",
+        "source_fact:v1:8f2f605ddc9b1753ae5016a2ca31d80fc07ce23999001f98cf8a52631a324928",
+        "source_fact:v1:b015b9fef78d2789f3c552d75386f63cef2f8c7e0c59040590e9303531788337",
+        "source_fact:v1:bb4854aa4b66f688ea9e667344aa589526878e67c2b67a2bbb5bb8d0130050ee",
+        "source_fact:v1:ed554d72642fc51742c18be1fe2679bd97c9faa213e344e921d03786e86b68f7"
+      ],
+      "source_published_kst": "2026-10-06T07:46+09:00",
+      "title": "고금리에도 꺾이지 않는 AI 투자…연준 긴축 고민"
+    },
     "source_fact:67beca34f17225be617ef37f": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -58207,6 +58899,29 @@
       ],
       "source_published_kst": "2026-10-05T09:13+09:00",
       "title": "\"국채 5%에도 주식이 낫다…반도체 대형주 쥐고 오래 기다려라\""
+    },
+    "source_fact:6bb2678f9a8a054b86213f1d": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02479686645610296",
+      "source": "이데일리",
+      "source_body_digest": "2f749ef3b6f4cde8f04fcdad700b8f6f7addfa6835b7f9a1d5e71821e6c853a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7aa2a6079c53ba211b2ca8c8dfc01e0db74d8468104e8278e3ceefc2ef8df529",
+      "source_fact_keys": [
+        "source_fact:v1:0d9a6cfc2b6f5f2602c40bf09de46260359fc8ff82ae4a57c8a2398f1438f10a",
+        "source_fact:v1:2ddb67b1b10110c84524b7741d858d1503f19049045d92f18ee297402c68f049",
+        "source_fact:v1:4fa25b7f8311510d9a84fab977dd862cc23ee4b88a7942b4bc8f8048bfa617fc",
+        "source_fact:v1:8f2f605ddc9b1753ae5016a2ca31d80fc07ce23999001f98cf8a52631a324928",
+        "source_fact:v1:b015b9fef78d2789f3c552d75386f63cef2f8c7e0c59040590e9303531788337",
+        "source_fact:v1:bb4854aa4b66f688ea9e667344aa589526878e67c2b67a2bbb5bb8d0130050ee",
+        "source_fact:v1:ed554d72642fc51742c18be1fe2679bd97c9faa213e344e921d03786e86b68f7"
+      ],
+      "source_published_kst": "2026-10-06T07:46+09:00",
+      "title": "고금리에도 꺾이지 않는 AI 투자…연준 긴축 고민"
     },
     "source_fact:6be07b4c46b9f8eb9b6e2692": {
       "first_seen_kst": "2026-10-05T22:49:24+09:00",
@@ -58612,6 +59327,26 @@
       ],
       "source_published_kst": "2026-10-06T05:30+09:00",
       "title": "車 부품 보던 AI, 로봇 관절 '가상검증' 나선다"
+    },
+    "source_fact:70b3e63d60b7a68b4ed30cdf": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632622",
+      "source": "이투데이",
+      "source_body_digest": "773c70e486a6fed6f5f0d9a9e66fd488bdb54eb2acf1ece4bb47db113a580e06",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e036cd95f30013bb055e9ecdb033ce90292917bcea91ea14a887ff911a40584c",
+      "source_fact_keys": [
+        "source_fact:v1:2eb2a5649f7565a4e7e93f955dce8f1e884b95e0dbdb4e27ced34528172b92a9",
+        "source_fact:v1:a4d598e082c96474761c276a41ab24d78ad482af2bb6494a8aa17eeef18c4c0d",
+        "source_fact:v1:b9d6dfbfda14159aaa9e5dfa981f9ac65234b2a6cee136dba0cc10c5c8336196",
+        "source_fact:v1:f833f101b594f0d5c520b628ede1e5f5cab9fb8ae071ae38d4e33ada0ba82a1e"
+      ],
+      "source_published_kst": "2026-10-06T09:09+09:00",
+      "title": "스페이스X 우주 모멘텀에…센서뷰·스피어 장 초반 강세"
     },
     "source_fact:714604805898407311bd5a31": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
@@ -60693,6 +61428,28 @@
       "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
     },
+    "source_fact:840b305df4b60813f1f2b279": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02558406645610296",
+      "source": "이데일리",
+      "source_body_digest": "ef116248fc841049456a6b208b6051f75a8e53a950af9f3cb1d4f44aaccb4eeb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a2a570749d4ccc871babd4f0f65a240902509393b188b6e2f5de937c43bb85db",
+      "source_fact_keys": [
+        "source_fact:v1:3728838341532c2a7f4dc80e6d6ac4ce38bf8151e91f3337768607898ea6ab7f",
+        "source_fact:v1:577e4ec6ac44ad9f32cc1bb513141908b2d3db88bd9676f2e32327baeece5dbe",
+        "source_fact:v1:894c03b623b23805e72f6228ec07f15c68807a73219b0c32141c18cc9292624b",
+        "source_fact:v1:9047427a10a150083ef37b459490a25d5868981516bf6419567132c3e5b52312",
+        "source_fact:v1:c4d79c45300b48e184e399334e88de17b4bc924a6081c0647d4fac054c7a05b8",
+        "source_fact:v1:e75e8939f8bc6f6b916fdb796194a9b4892f191cb72cb14a0377365ade34a65d"
+      ],
+      "source_published_kst": "2026-10-06T08:17+09:00",
+      "title": "나스닥 사상 최고…비트코인 8만5000달러대[코인 모닝콜]"
+    },
     "source_fact:84374769276066ddd1ceaa73": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
       "lanes": {
@@ -61090,6 +61847,26 @@
       ],
       "source_published_kst": "2026-10-05T20:25+09:00",
       "title": "피티씨, 슈나이더에 피인수..주당 205달러·프리미엄 42%"
+    },
+    "source_fact:86cb311db73e23fa85378834": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632622",
+      "source": "이투데이",
+      "source_body_digest": "773c70e486a6fed6f5f0d9a9e66fd488bdb54eb2acf1ece4bb47db113a580e06",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e036cd95f30013bb055e9ecdb033ce90292917bcea91ea14a887ff911a40584c",
+      "source_fact_keys": [
+        "source_fact:v1:2eb2a5649f7565a4e7e93f955dce8f1e884b95e0dbdb4e27ced34528172b92a9",
+        "source_fact:v1:a4d598e082c96474761c276a41ab24d78ad482af2bb6494a8aa17eeef18c4c0d",
+        "source_fact:v1:b9d6dfbfda14159aaa9e5dfa981f9ac65234b2a6cee136dba0cc10c5c8336196",
+        "source_fact:v1:f833f101b594f0d5c520b628ede1e5f5cab9fb8ae071ae38d4e33ada0ba82a1e"
+      ],
+      "source_published_kst": "2026-10-06T09:09+09:00",
+      "title": "스페이스X 우주 모멘텀에…센서뷰·스피어 장 초반 강세"
     },
     "source_fact:86e206ed0cd60af42337eb06": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
@@ -62049,7 +62826,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003814774",
       "source": "뉴시스",
       "source_body_digest": "5f60fef5f9e9eefff4e7e81f6ce856d5991248d4c304d70397b28da558dba495",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
       "source_fact_identity": "source_facts:v1:fb22f50e155f49c8a7c5bd99659bb0a1f2f590ae4acacf60d944029b87439568",
       "source_fact_keys": [
         "source_fact:v1:7c9abe202e0358314bb95b4eb6d8db9ff5eec7e44a63d5d8583ff200807ab7dc",
@@ -62143,6 +62920,25 @@
       ],
       "source_published_kst": "2026-10-06T08:15+09:00",
       "title": "[오늘의 투자전략] 코스피, 금리ㆍ삼성전자 실적 주목⋯“반도체 이익 상향 재개 여부 관건”"
+    },
+    "source_fact:95574479e671014568ad3b1a": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.etnews.com/20261006000012",
+      "source": "전자신문",
+      "source_body_digest": "62fba67cd9bb45d26a74eb24c2380682ba33f764a7413443a9da4b828be9ad66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a26628bb936dee4bd7c178b05579c119faa89a7f0c423ccd54920a65f6bd271",
+      "source_fact_keys": [
+        "source_fact:v1:617542f07b33e5031837f4d9c15ad36da5bc25d269d008c3ad911ae6662a87c5",
+        "source_fact:v1:99b7a51cd801af6f91608a2f057d9a12a7138e999ad22c50d40e71b983304026",
+        "source_fact:v1:c57e54a3437409a0dde8a409f3a99b7816f24bf03e8cea5f382b9689b021bedf"
+      ],
+      "source_published_kst": "2026-10-06T08:57+09:00",
+      "title": "스틸리언 '웹수트', AI 에이전트 기반 웹·API 공격 차단 검증"
     },
     "source_fact:960b84e54fc29bb7972e8350": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
@@ -63963,6 +64759,24 @@
       "source_published_kst": "2026-10-05T18:17+09:00",
       "title": "뉴욕·상하이 증시, FOMC 의사록 공개…'S공포' 커지나"
     },
+    "source_fact:a847cd66bf4f63f8b6dc1dde": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.fnnews.com/news/202610060841477323",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "c1714ef9430a16d5393b6231f4cf58fda1599ade8dc5cd5728273e1f3d23e6bc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8450db29bf57b4254eb5f95bd3ea8303b8df1c374c5cd86b15fb08c2e037aace",
+      "source_fact_keys": [
+        "source_fact:v1:4f9e813378bd871a299f541380964be9f30f1861d1859199a5716505a7e8a7de",
+        "source_fact:v1:7fbde7f6c2174aa01f1186226698faccb625aab33018f42146ae7cafba989612"
+      ],
+      "source_published_kst": "2026-10-06T08:46+09:00",
+      "title": "한미반도체, 삼성 첫 거래·MSVP 수주 확대 '두 마리 토끼'"
+    },
     "source_fact:a89e859fdbfade7a0eea29db": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
@@ -64038,6 +64852,28 @@
       ],
       "source_published_kst": "2026-10-06T04:36+09:00",
       "title": "美10년물 국채금리 장중 5.34% 돌파…24년 만에 최고"
+    },
+    "source_fact:a919bb6bb71b2892d9b0079d": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02558406645610296",
+      "source": "이데일리",
+      "source_body_digest": "ef116248fc841049456a6b208b6051f75a8e53a950af9f3cb1d4f44aaccb4eeb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a2a570749d4ccc871babd4f0f65a240902509393b188b6e2f5de937c43bb85db",
+      "source_fact_keys": [
+        "source_fact:v1:3728838341532c2a7f4dc80e6d6ac4ce38bf8151e91f3337768607898ea6ab7f",
+        "source_fact:v1:577e4ec6ac44ad9f32cc1bb513141908b2d3db88bd9676f2e32327baeece5dbe",
+        "source_fact:v1:894c03b623b23805e72f6228ec07f15c68807a73219b0c32141c18cc9292624b",
+        "source_fact:v1:9047427a10a150083ef37b459490a25d5868981516bf6419567132c3e5b52312",
+        "source_fact:v1:c4d79c45300b48e184e399334e88de17b4bc924a6081c0647d4fac054c7a05b8",
+        "source_fact:v1:e75e8939f8bc6f6b916fdb796194a9b4892f191cb72cb14a0377365ade34a65d"
+      ],
+      "source_published_kst": "2026-10-06T08:17+09:00",
+      "title": "나스닥 사상 최고…비트코인 8만5000달러대[코인 모닝콜]"
     },
     "source_fact:a9dbe901d2dc62198c8045d0": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
@@ -65051,7 +65887,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632580",
       "source": "이투데이",
       "source_body_digest": "d195b3cc54e2af3f1a2431329a4c1d85a49cab49b718d197b4f6053a4b24d7e1",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
       "source_fact_identity": "source_facts:v1:e8606a148cd3dc3e5a35681a18bb3e93e5ffd8d52749e6c3cdc94105da222a84",
       "source_fact_keys": [
         "source_fact:v1:3c5ee1ab45de27b03db28bfd319392f9e0ce2c0b53ae0c6d218489a8c3044c26"
@@ -65118,6 +65954,25 @@
       ],
       "source_published_kst": "2026-10-05T18:21+09:00",
       "title": "솔리다임 美상장… \"SK하닉 가치 재평가\" vs \"주주 피해\" [어떻게 생각하십니까]"
+    },
+    "source_fact:b3fa4be90c981fec6e7f69bc": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814927",
+      "source": "뉴시스",
+      "source_body_digest": "8e3baea01b0ece4bfb818c1d4d9532bd36eb0dcc3aeffebd4ce48b8eb3f76a3c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47d62b299b8418301e12ddbc474cb182b589d86493d2be217decf5a628b952b6",
+      "source_fact_keys": [
+        "source_fact:v1:0e7a4148687d48396d923dbc5e0ac12be698605549607be883449df508464330",
+        "source_fact:v1:55878f7260ad47ca864572b775eedea44358db28cdcd06c9ff129d7139b1a27f",
+        "source_fact:v1:6ad083fa180b418bfb0d0ca14f29ebc6bbafe8c2d98e89ffa911799e18d1a953"
+      ],
+      "source_published_kst": "2026-10-06T09:16+09:00",
+      "title": "비트코인, 1억1600만원대 강보합…美 고용 둔화에 금리 인상 부담 완화"
     },
     "source_fact:b40649db1e703ee9e8d19acb": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
@@ -67488,6 +68343,29 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "산업부 국감 돌입…대미투자·호남 반도체·메가특구 '도마'"
     },
+    "source_fact:d171cf46eac605b4e2c334c0": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02479686645610296",
+      "source": "이데일리",
+      "source_body_digest": "2f749ef3b6f4cde8f04fcdad700b8f6f7addfa6835b7f9a1d5e71821e6c853a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7aa2a6079c53ba211b2ca8c8dfc01e0db74d8468104e8278e3ceefc2ef8df529",
+      "source_fact_keys": [
+        "source_fact:v1:0d9a6cfc2b6f5f2602c40bf09de46260359fc8ff82ae4a57c8a2398f1438f10a",
+        "source_fact:v1:2ddb67b1b10110c84524b7741d858d1503f19049045d92f18ee297402c68f049",
+        "source_fact:v1:4fa25b7f8311510d9a84fab977dd862cc23ee4b88a7942b4bc8f8048bfa617fc",
+        "source_fact:v1:8f2f605ddc9b1753ae5016a2ca31d80fc07ce23999001f98cf8a52631a324928",
+        "source_fact:v1:b015b9fef78d2789f3c552d75386f63cef2f8c7e0c59040590e9303531788337",
+        "source_fact:v1:bb4854aa4b66f688ea9e667344aa589526878e67c2b67a2bbb5bb8d0130050ee",
+        "source_fact:v1:ed554d72642fc51742c18be1fe2679bd97c9faa213e344e921d03786e86b68f7"
+      ],
+      "source_published_kst": "2026-10-06T07:46+09:00",
+      "title": "고금리에도 꺾이지 않는 AI 투자…연준 긴축 고민"
+    },
     "source_fact:d17673f981ceb82e355d7371": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
       "lanes": {
@@ -67960,6 +68838,25 @@
       ],
       "source_published_kst": "2026-10-06T05:00+09:00",
       "title": "납품단가 다음은 ‘데이터’⋯AI 시대 대기업·中企 ‘新 갑을관계’ 탄생하나 [AI 신계급사회]"
+    },
+    "source_fact:d6b6e71b92a8da22cc924de7": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814927",
+      "source": "뉴시스",
+      "source_body_digest": "8e3baea01b0ece4bfb818c1d4d9532bd36eb0dcc3aeffebd4ce48b8eb3f76a3c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47d62b299b8418301e12ddbc474cb182b589d86493d2be217decf5a628b952b6",
+      "source_fact_keys": [
+        "source_fact:v1:0e7a4148687d48396d923dbc5e0ac12be698605549607be883449df508464330",
+        "source_fact:v1:55878f7260ad47ca864572b775eedea44358db28cdcd06c9ff129d7139b1a27f",
+        "source_fact:v1:6ad083fa180b418bfb0d0ca14f29ebc6bbafe8c2d98e89ffa911799e18d1a953"
+      ],
+      "source_published_kst": "2026-10-06T09:16+09:00",
+      "title": "비트코인, 1억1600만원대 강보합…美 고용 둔화에 금리 인상 부담 완화"
     },
     "source_fact:d6c8a07443667405ed8752e3": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -68537,6 +69434,23 @@
       ],
       "source_published_kst": "2026-10-05T21:24+09:00",
       "title": "레이도스 홀딩스, 애널로직 보안검색 합작법인 출범..소수지분 유지"
+    },
+    "source_fact:dccc10614b8efcbd20e9db45": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006038300004",
+      "source": "연합뉴스",
+      "source_body_digest": "ba01f8ab8fd8636d7946cfb1074ef02e23f560d5a31cbf7f33d51c2fe9c7fd17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bedaa6a8c0c6d8b431ba050e29b92f635b12127e7f80c607a093429b8df63509",
+      "source_fact_keys": [
+        "source_fact:v1:7b6f42bf2499bb2a66bd44f987cadc6c47bf8e2bbc0f6c41462ff0c475550e27"
+      ],
+      "source_published_kst": "2026-10-06T09:10+09:00",
+      "title": "강남구, 급식 조리로봇 고도화…\"뜨거운 튀김기름 자동배출\" | 연합뉴스"
     },
     "source_fact:dd55e7c34fc1cbac7d9e04db": {
       "first_seen_kst": "2026-10-06T03:45:53+09:00",
@@ -69787,6 +70701,26 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "외환보유액, 넉 달 만에 감소…대미투자 자산위탁 영향"
     },
+    "source_fact:e9bafb39ebcb1f087cac263a": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632622",
+      "source": "이투데이",
+      "source_body_digest": "773c70e486a6fed6f5f0d9a9e66fd488bdb54eb2acf1ece4bb47db113a580e06",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e036cd95f30013bb055e9ecdb033ce90292917bcea91ea14a887ff911a40584c",
+      "source_fact_keys": [
+        "source_fact:v1:2eb2a5649f7565a4e7e93f955dce8f1e884b95e0dbdb4e27ced34528172b92a9",
+        "source_fact:v1:a4d598e082c96474761c276a41ab24d78ad482af2bb6494a8aa17eeef18c4c0d",
+        "source_fact:v1:b9d6dfbfda14159aaa9e5dfa981f9ac65234b2a6cee136dba0cc10c5c8336196",
+        "source_fact:v1:f833f101b594f0d5c520b628ede1e5f5cab9fb8ae071ae38d4e33ada0ba82a1e"
+      ],
+      "source_published_kst": "2026-10-06T09:09+09:00",
+      "title": "스페이스X 우주 모멘텀에…센서뷰·스피어 장 초반 강세"
+    },
     "source_fact:e9c045f7a206f0b933f0ab1a": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
@@ -70394,6 +71328,28 @@
       "source_published_kst": "2026-10-05T18:21+09:00",
       "title": "솔리다임 美상장… \"SK하닉 가치 재평가\" vs \"주주 피해\" [어떻게 생각하십니까]"
     },
+    "source_fact:f03baa774f8f163f1721328b": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02558406645610296",
+      "source": "이데일리",
+      "source_body_digest": "ef116248fc841049456a6b208b6051f75a8e53a950af9f3cb1d4f44aaccb4eeb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a2a570749d4ccc871babd4f0f65a240902509393b188b6e2f5de937c43bb85db",
+      "source_fact_keys": [
+        "source_fact:v1:3728838341532c2a7f4dc80e6d6ac4ce38bf8151e91f3337768607898ea6ab7f",
+        "source_fact:v1:577e4ec6ac44ad9f32cc1bb513141908b2d3db88bd9676f2e32327baeece5dbe",
+        "source_fact:v1:894c03b623b23805e72f6228ec07f15c68807a73219b0c32141c18cc9292624b",
+        "source_fact:v1:9047427a10a150083ef37b459490a25d5868981516bf6419567132c3e5b52312",
+        "source_fact:v1:c4d79c45300b48e184e399334e88de17b4bc924a6081c0647d4fac054c7a05b8",
+        "source_fact:v1:e75e8939f8bc6f6b916fdb796194a9b4892f191cb72cb14a0377365ade34a65d"
+      ],
+      "source_published_kst": "2026-10-06T08:17+09:00",
+      "title": "나스닥 사상 최고…비트코인 8만5000달러대[코인 모닝콜]"
+    },
     "source_fact:f073e72340c0a08647d49b0a": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -70458,6 +71414,25 @@
       ],
       "source_published_kst": "2026-10-05T22:29+09:00",
       "title": "유나이티드 마이크로일렉, 18억 달러 전환사채 발행 확정..쿠폰 0%"
+    },
+    "source_fact:f0df11ef80035bdb8d3ab1fe": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814927",
+      "source": "뉴시스",
+      "source_body_digest": "8e3baea01b0ece4bfb818c1d4d9532bd36eb0dcc3aeffebd4ce48b8eb3f76a3c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47d62b299b8418301e12ddbc474cb182b589d86493d2be217decf5a628b952b6",
+      "source_fact_keys": [
+        "source_fact:v1:0e7a4148687d48396d923dbc5e0ac12be698605549607be883449df508464330",
+        "source_fact:v1:55878f7260ad47ca864572b775eedea44358db28cdcd06c9ff129d7139b1a27f",
+        "source_fact:v1:6ad083fa180b418bfb0d0ca14f29ebc6bbafe8c2d98e89ffa911799e18d1a953"
+      ],
+      "source_published_kst": "2026-10-06T09:16+09:00",
+      "title": "비트코인, 1억1600만원대 강보합…美 고용 둔화에 금리 인상 부담 완화"
     },
     "source_fact:f0ea3b0eab4354177fc967e9": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
@@ -70935,6 +71910,28 @@
       ],
       "source_published_kst": "2026-10-05T20:34+09:00",
       "title": "해로우 헬스, 티르바야 인수 완료..선지급 3000만달러"
+    },
+    "source_fact:f70e8a3e359896e8114f0f03": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02558406645610296",
+      "source": "이데일리",
+      "source_body_digest": "ef116248fc841049456a6b208b6051f75a8e53a950af9f3cb1d4f44aaccb4eeb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a2a570749d4ccc871babd4f0f65a240902509393b188b6e2f5de937c43bb85db",
+      "source_fact_keys": [
+        "source_fact:v1:3728838341532c2a7f4dc80e6d6ac4ce38bf8151e91f3337768607898ea6ab7f",
+        "source_fact:v1:577e4ec6ac44ad9f32cc1bb513141908b2d3db88bd9676f2e32327baeece5dbe",
+        "source_fact:v1:894c03b623b23805e72f6228ec07f15c68807a73219b0c32141c18cc9292624b",
+        "source_fact:v1:9047427a10a150083ef37b459490a25d5868981516bf6419567132c3e5b52312",
+        "source_fact:v1:c4d79c45300b48e184e399334e88de17b4bc924a6081c0647d4fac054c7a05b8",
+        "source_fact:v1:e75e8939f8bc6f6b916fdb796194a9b4892f191cb72cb14a0377365ade34a65d"
+      ],
+      "source_published_kst": "2026-10-06T08:17+09:00",
+      "title": "나스닥 사상 최고…비트코인 8만5000달러대[코인 모닝콜]"
     },
     "source_fact:f712a6bb1df3e10a0462074d": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -71557,6 +72554,25 @@
       ],
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
+    },
+    "source_fact:fd11f55f0294146ce2c2654f": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.etnews.com/20261006000012",
+      "source": "전자신문",
+      "source_body_digest": "62fba67cd9bb45d26a74eb24c2380682ba33f764a7413443a9da4b828be9ad66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a26628bb936dee4bd7c178b05579c119faa89a7f0c423ccd54920a65f6bd271",
+      "source_fact_keys": [
+        "source_fact:v1:617542f07b33e5031837f4d9c15ad36da5bc25d269d008c3ad911ae6662a87c5",
+        "source_fact:v1:99b7a51cd801af6f91608a2f057d9a12a7138e999ad22c50d40e71b983304026",
+        "source_fact:v1:c57e54a3437409a0dde8a409f3a99b7816f24bf03e8cea5f382b9689b021bedf"
+      ],
+      "source_published_kst": "2026-10-06T08:57+09:00",
+      "title": "스틸리언 '웹수트', AI 에이전트 기반 웹·API 공격 차단 검증"
     },
     "source_fact:fd5f1e32a701a781ea219c05": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -75717,6 +76733,26 @@
       "source_published_kst": "2026-10-04T14:05+09:00",
       "title": "'대전 D-성장펀드' 540억 규모 출범...지역성장펀드 3호"
     },
+    "title:34bb5ff4dbd06379a258f0d0": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632622",
+      "source": "이투데이",
+      "source_body_digest": "773c70e486a6fed6f5f0d9a9e66fd488bdb54eb2acf1ece4bb47db113a580e06",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e036cd95f30013bb055e9ecdb033ce90292917bcea91ea14a887ff911a40584c",
+      "source_fact_keys": [
+        "source_fact:v1:2eb2a5649f7565a4e7e93f955dce8f1e884b95e0dbdb4e27ced34528172b92a9",
+        "source_fact:v1:a4d598e082c96474761c276a41ab24d78ad482af2bb6494a8aa17eeef18c4c0d",
+        "source_fact:v1:b9d6dfbfda14159aaa9e5dfa981f9ac65234b2a6cee136dba0cc10c5c8336196",
+        "source_fact:v1:f833f101b594f0d5c520b628ede1e5f5cab9fb8ae071ae38d4e33ada0ba82a1e"
+      ],
+      "source_published_kst": "2026-10-06T09:09+09:00",
+      "title": "스페이스X 우주 모멘텀에…센서뷰·스피어 장 초반 강세"
+    },
     "title:34c4345a8c13d544f752c6b6": {
       "first_seen_kst": "2026-10-05T09:59:51+09:00",
       "lanes": {
@@ -75969,6 +77005,24 @@
       "link": "https://www.etnews.com/20260929000109",
       "source": "전자신문",
       "title": "LG전자, '블록형 냉각설비' 모듈러 솔루션 공개…AI 데이터센터 구축기간 줄인다"
+    },
+    "title:3800773507f932bca69e1d59": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.fnnews.com/news/202610060841477323",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "c1714ef9430a16d5393b6231f4cf58fda1599ade8dc5cd5728273e1f3d23e6bc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8450db29bf57b4254eb5f95bd3ea8303b8df1c374c5cd86b15fb08c2e037aace",
+      "source_fact_keys": [
+        "source_fact:v1:4f9e813378bd871a299f541380964be9f30f1861d1859199a5716505a7e8a7de",
+        "source_fact:v1:7fbde7f6c2174aa01f1186226698faccb625aab33018f42146ae7cafba989612"
+      ],
+      "source_published_kst": "2026-10-06T08:46+09:00",
+      "title": "한미반도체, 삼성 첫 거래·MSVP 수주 확대 '두 마리 토끼'"
     },
     "title:3856c727fc8892fe6cce8890": {
       "first_seen_kst": "2026-09-28T17:51:03+09:00",
@@ -76662,6 +77716,25 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=02437046645583072",
       "source": "이데일리",
       "title": "日다카이치, 시진핑보다 먼저 트럼프 만났다…ICC 두고 이견"
+    },
+    "title:3ff89fbe0effc8b21b2e34ce": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814927",
+      "source": "뉴시스",
+      "source_body_digest": "8e3baea01b0ece4bfb818c1d4d9532bd36eb0dcc3aeffebd4ce48b8eb3f76a3c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47d62b299b8418301e12ddbc474cb182b589d86493d2be217decf5a628b952b6",
+      "source_fact_keys": [
+        "source_fact:v1:0e7a4148687d48396d923dbc5e0ac12be698605549607be883449df508464330",
+        "source_fact:v1:55878f7260ad47ca864572b775eedea44358db28cdcd06c9ff129d7139b1a27f",
+        "source_fact:v1:6ad083fa180b418bfb0d0ca14f29ebc6bbafe8c2d98e89ffa911799e18d1a953"
+      ],
+      "source_published_kst": "2026-10-06T09:16+09:00",
+      "title": "비트코인, 1억1600만원대 강보합…美 고용 둔화에 금리 인상 부담 완화"
     },
     "title:400d6957ad80f14cf12e881a": {
       "first_seen_kst": "2026-09-26T13:41:01+09:00",
@@ -81262,6 +82335,25 @@
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
     },
+    "title:7cd45900b0fda37ceddc0c68": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.etnews.com/20261006000012",
+      "source": "전자신문",
+      "source_body_digest": "62fba67cd9bb45d26a74eb24c2380682ba33f764a7413443a9da4b828be9ad66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a26628bb936dee4bd7c178b05579c119faa89a7f0c423ccd54920a65f6bd271",
+      "source_fact_keys": [
+        "source_fact:v1:617542f07b33e5031837f4d9c15ad36da5bc25d269d008c3ad911ae6662a87c5",
+        "source_fact:v1:99b7a51cd801af6f91608a2f057d9a12a7138e999ad22c50d40e71b983304026",
+        "source_fact:v1:c57e54a3437409a0dde8a409f3a99b7816f24bf03e8cea5f382b9689b021bedf"
+      ],
+      "source_published_kst": "2026-10-06T08:57+09:00",
+      "title": "스틸리언 '웹수트', AI 에이전트 기반 웹·API 공격 차단 검증"
+    },
     "title:7ce4fcae2fe2ed1fdb845777": {
       "first_seen_kst": "2026-10-02T22:19:09+09:00",
       "lanes": {
@@ -82288,6 +83380,29 @@
       "link": "https://magazine.hankyung.com/money/article/202610029562c",
       "source": "한국경제",
       "title": "건원엔지니어링, 목동4단지 재건축 CM 우선협상대상자 선정"
+    },
+    "title:8b2d44fef0ead79821395e60": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02479686645610296",
+      "source": "이데일리",
+      "source_body_digest": "2f749ef3b6f4cde8f04fcdad700b8f6f7addfa6835b7f9a1d5e71821e6c853a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7aa2a6079c53ba211b2ca8c8dfc01e0db74d8468104e8278e3ceefc2ef8df529",
+      "source_fact_keys": [
+        "source_fact:v1:0d9a6cfc2b6f5f2602c40bf09de46260359fc8ff82ae4a57c8a2398f1438f10a",
+        "source_fact:v1:2ddb67b1b10110c84524b7741d858d1503f19049045d92f18ee297402c68f049",
+        "source_fact:v1:4fa25b7f8311510d9a84fab977dd862cc23ee4b88a7942b4bc8f8048bfa617fc",
+        "source_fact:v1:8f2f605ddc9b1753ae5016a2ca31d80fc07ce23999001f98cf8a52631a324928",
+        "source_fact:v1:b015b9fef78d2789f3c552d75386f63cef2f8c7e0c59040590e9303531788337",
+        "source_fact:v1:bb4854aa4b66f688ea9e667344aa589526878e67c2b67a2bbb5bb8d0130050ee",
+        "source_fact:v1:ed554d72642fc51742c18be1fe2679bd97c9faa213e344e921d03786e86b68f7"
+      ],
+      "source_published_kst": "2026-10-06T07:46+09:00",
+      "title": "고금리에도 꺾이지 않는 AI 투자…연준 긴축 고민"
     },
     "title:8b6a88e6aa89907bcade6dc6": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
@@ -84575,6 +85690,28 @@
       "source": "뉴스1",
       "title": "[뉴욕마감]국채금리 20년래 최고에 혼조…다우 0.31%↓·나스닥 0.01%↑"
     },
+    "title:a8f2cecb94268ac3b3086b66": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02558406645610296",
+      "source": "이데일리",
+      "source_body_digest": "ef116248fc841049456a6b208b6051f75a8e53a950af9f3cb1d4f44aaccb4eeb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a2a570749d4ccc871babd4f0f65a240902509393b188b6e2f5de937c43bb85db",
+      "source_fact_keys": [
+        "source_fact:v1:3728838341532c2a7f4dc80e6d6ac4ce38bf8151e91f3337768607898ea6ab7f",
+        "source_fact:v1:577e4ec6ac44ad9f32cc1bb513141908b2d3db88bd9676f2e32327baeece5dbe",
+        "source_fact:v1:894c03b623b23805e72f6228ec07f15c68807a73219b0c32141c18cc9292624b",
+        "source_fact:v1:9047427a10a150083ef37b459490a25d5868981516bf6419567132c3e5b52312",
+        "source_fact:v1:c4d79c45300b48e184e399334e88de17b4bc924a6081c0647d4fac054c7a05b8",
+        "source_fact:v1:e75e8939f8bc6f6b916fdb796194a9b4892f191cb72cb14a0377365ade34a65d"
+      ],
+      "source_published_kst": "2026-10-06T08:17+09:00",
+      "title": "나스닥 사상 최고…비트코인 8만5000달러대[코인 모닝콜]"
+    },
     "title:a8f89d56ff0976b60e903d8f": {
       "first_seen_kst": "2026-09-27T12:25:25+09:00",
       "lanes": {
@@ -86550,7 +87687,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003814774",
       "source": "뉴시스",
       "source_body_digest": "5f60fef5f9e9eefff4e7e81f6ce856d5991248d4c304d70397b28da558dba495",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
       "source_fact_identity": "source_facts:v1:fb22f50e155f49c8a7c5bd99659bb0a1f2f590ae4acacf60d944029b87439568",
       "source_fact_keys": [
         "source_fact:v1:7c9abe202e0358314bb95b4eb6d8db9ff5eec7e44a63d5d8583ff200807ab7dc",
@@ -88363,7 +89500,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632580",
       "source": "이투데이",
       "source_body_digest": "d195b3cc54e2af3f1a2431329a4c1d85a49cab49b718d197b4f6053a4b24d7e1",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
       "source_fact_identity": "source_facts:v1:e8606a148cd3dc3e5a35681a18bb3e93e5ffd8d52749e6c3cdc94105da222a84",
       "source_fact_keys": [
         "source_fact:v1:3c5ee1ab45de27b03db28bfd319392f9e0ce2c0b53ae0c6d218489a8c3044c26"
@@ -90364,6 +91501,23 @@
       "source_published_kst": "2026-10-06T08:40+09:00",
       "title": "프랜차이즈 본사 매출 늘었는데…외식·편의점 가맹점은 뒷걸음"
     },
+    "title:f6f216b8af993ccab1b3ef3a": {
+      "first_seen_kst": "2026-10-06T09:42:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:42:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:42:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006038300004",
+      "source": "연합뉴스",
+      "source_body_digest": "ba01f8ab8fd8636d7946cfb1074ef02e23f560d5a31cbf7f33d51c2fe9c7fd17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bedaa6a8c0c6d8b431ba050e29b92f635b12127e7f80c607a093429b8df63509",
+      "source_fact_keys": [
+        "source_fact:v1:7b6f42bf2499bb2a66bd44f987cadc6c47bf8e2bbc0f6c41462ff0c475550e27"
+      ],
+      "source_published_kst": "2026-10-06T09:10+09:00",
+      "title": "강남구, 급식 조리로봇 고도화…\"뜨거운 튀김기름 자동배출\" | 연합뉴스"
+    },
     "title:f71b7cd4d3d35c272c78a267": {
       "first_seen_kst": "2026-09-17T19:09:57+09:00",
       "lanes": {
@@ -90946,5 +92100,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T09:21:20+09:00"
+  "updated_at_kst": "2026-10-06T09:42:55+09:00"
 }
