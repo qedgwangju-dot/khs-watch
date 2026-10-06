@@ -507,3 +507,16 @@ Every defect or requested change must follow this sequence:
   earnings. Vehicle volumes keep global population and included vehicle types
   distinct from an issuer's growth and market share. Enacted bad-asset decrees
   keep effective dates separate from conditional later operational starts.
+- Local facility inspections and farm-support notices need actual sourced
+  industrial or public-market execution. A small local support budget alone
+  is not a stock-market catalyst. Preserve industrial contracts and real rules.
+- A generic per-unit build cost and ROI recommendations are not new CAPEX.
+  Weekly ETF return recaps with only hypothetical future bottlenecks do not
+  replace current fund flows, policy changes or operational disruptions.
+- Publisher-labelled AI summary cards are not reported source paragraphs.
+  Foundry forecasts retain process-specific ranges and projected effective
+  periods; airline updates retain current routes, dates and old/new frequencies,
+  not historical traffic-right awards. Reprints share the same sourced terms,
+  while changed rates, periods, frequencies or additional execution remain new.
+- A secondary price or route observation must not replace primary earnings,
+  contract, financing or analyst-revision coverage, including its event identity.

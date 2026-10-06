@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 93
+VERSION = 94
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -258,7 +258,9 @@ LOCAL_AUTHORITY = re.compile(
 LOCAL_ADMINISTRATIVE_TOPIC = re.compile(
     r"(?:평화경제|관광)특구|관광\s*(?:거점|개발)|주민|편입지역|생계지원|주거|주택공급\s*(?:전략|구상)|"
     r"도시계획|지역특화|지역경제|규제\s*개선|규제개선|지역\s*생산\s*전력|"
-    r"현안|건의|요청|제안|전략.{0,8}제시|돌파구|모색|지정\s*신청", re.I,
+    r"현안|건의|요청|제안|전략.{0,8}제시|돌파구|모색|지정\s*신청|"
+    r"현장\s*점검|시설.{0,8}(?:확충|점검)|(?:농가|농업인).{0,15}(?:지원|공급|부담)|"
+    r"지원\s*사업|가격안정지원|공급\s*방안", re.I,
 )
 POLICY_ADVOCACY = re.compile(r"건의|요청|요구|촉구|과제로\s*제시|의견이\s*나왔다|논의해\s*나가겠다|해소될\s*수\s*있도록")
 FORMAL_POLICY_EXECUTION = re.compile(
@@ -989,7 +991,14 @@ def source_reported_body(body: str) -> str:
         start = nonempty[2] if len(nonempty) > 2 else len(lines)
         lines = lines[start:]
     reported = []
+    skip_ai_summary = False
     for line in lines:
+        if re.fullmatch(r'AI\s*기사요약', line.strip()):
+            skip_ai_summary = True
+            continue
+        if skip_ai_summary and line.strip():
+            skip_ai_summary = False
+            continue
         if re.match(r'^(?:ⓒ|©|[가-힣]{2,6}\s+(?:[^\s]+\s+)?기자\s+\S+@)', line):
             break
         if re.fullmatch(r'(?:사회|경제|산업|한경\s*PREMIUM9|AI를 넘어서는 성공투자|구독하기|AI 추천 뉴스|'
@@ -1036,6 +1045,44 @@ def enacted_financial_decree_observation(title: str, body: str) -> dict[str, str
         return {}
     return {**announcement.groupdict(), **actor.groupdict(), **effective.groupdict(),
             'source_excerpt': announcement[0], 'operation_month': operation['operation_month'] if operation else ''}
+
+
+def foundry_price_observation(title: str, body: str) -> dict:
+    """Retain reported process-specific price ranges and projected effective periods."""
+    if focus_kind(title) or not re.search(r'파운드리|반도체값|웨이퍼', title) or not re.search(r'인상|올린다', title):
+        return {}
+    source = source_reported_body(body)
+    mature = re.search(r'(?P<issuer>[A-Za-z0-9가-힣]+)는\s*(?P<period>내년\s*\d{1,2}월)부터\s*가격을\s*'
+                       r'추가로\s*인상할\s*것으로\s*예상된다\.\s*성숙\s*공정\s*가격\s*인상\s*폭은\s*'
+                       r'약\s*(?P<range>\d+(?:\.\d+)?[~∼-]\d+(?:\.\d+)?)%로\s*거론된다', source)
+    if not mature or mature['issuer'] not in title:
+        return {}
+    advanced = re.search(rf"{re.escape(mature['issuer'])}는[^.!?]{{0,60}}(?P<period>내년\s*[1-4]분기)\s*"
+                         r'(?P<process>\d+(?:\.\d+)?)나노미터[^.!?]{0,40}웨이퍼\s*가격을\s*추가로\s*'
+                         r'(?P<range>\d+(?:\.\d+)?[~∼-]\d+(?:\.\d+)?)%\s*인상하기로\s*한\s*것으로\s*전해졌다', source)
+    return {**mature.groupdict(), 'source_excerpt': mature[0], 'stage': 'early_signal',
+            'advanced': advanced.groupdict() if advanced else {}}
+
+
+def airline_capacity_observation(title: str, body: str) -> dict:
+    """Current dated frequency changes, not a historical traffic-right award."""
+    if focus_kind(title) != 'aviation_network' or not re.search(r'증편|운항\s*횟수|노선.{0,15}(?:공급|확대)', title):
+        return {}
+    source = source_reported_body(body)
+    announcement = re.search(r'(?P<issuer>[A-Za-z가-힣]+항공)(?:이|은|는)\s*동계\s*운항기간[^.!?]{0,100}'
+                             r'운항\s*횟수를\s*늘린다고\s*(?P<day>\d{1,2})일\s*밝혔다', source)
+    if not announcement or announcement['issuer'] not in title:
+        return {}
+    segments = []
+    for row in source_sentences(source):
+        if PAST_ACTION.search(row):
+            continue
+        match = re.search(r'(?P<route>[A-Za-z가-힣]{2,15}[~∼][A-Za-z가-힣]{2,15})\s*노선은\s*'
+                          r'(?P<window>[^.!?]{3,55}?)\s*(?:기존\s*)?주\s*(?P<old>\d+)회에서\s*주\s*'
+                          r'(?P<new>\d+)회로\s*(?:늘려|확대)', row)
+        if match and re.search(r'\d{1,2}일(?:부터|까지)', match['window']):
+            segments.append({**match.groupdict(), 'source_excerpt': row})
+    return {**announcement.groupdict(), 'segments': segments} if segments else {}
 
 
 @lru_cache(maxsize=256)
@@ -1946,6 +1993,22 @@ def source_event_identity(alert: dict) -> str:
     body = str(alert.get("source_body") or "") if alert.get("body_verified") else ""
     published = str(alert.get("published") or "")
     if re.match(r"20\d{2}-\d{2}-\d{2}", published):
+        pricing = foundry_price_observation(title, body)
+        airline = airline_capacity_observation(title, body)
+        if pricing or airline:
+            if pricing:
+                terms = {key: pricing[key] for key in ('issuer', 'period', 'range', 'advanced', 'stage')}
+                terms['source_year'] = published[:4]
+                event = 'foundry_price_forecast'
+            else:
+                terms = {'issuer': airline['issuer'], 'disclosure_date': published[:8] + airline['day'].zfill(2),
+                         'segments': [{key: canonical_source_fact(segment[key]) for key in ('route', 'window', 'old', 'new')}
+                                      for segment in airline['segments']]}
+                event = 'airline_capacity_schedule'
+            terms['additional_execution'] = [canonical_source_fact(row) for row in source_sentences(source_reported_body(body))
+                                             if not PAST_ACTION.search(row) and NEW_EXECUTION.search(row)]
+            digest = hashlib.sha256(json.dumps(terms, ensure_ascii=False, sort_keys=True).encode('utf-8')).hexdigest()
+            return f'source_event:v2:{event}:{digest}'
         sales = cumulative_foreign_sales_observation(title, body)
         model = macro_model_report_observation(title, body)
         if sales or model:
@@ -2261,8 +2324,8 @@ RULES = (
     ("technical_standard", ("timeline",), r"JESD\d+[A-Z0-9.-]*|IEEE\s*\d+[A-Z0-9.-]*|ISO\s*\d+[A-Z0-9.-]*", r"표준|규격"),
     ("trading_rule", ("flows", "timeline"), r"단주|최소\s*(?:매매|거래)\s*(?:수량|단위)|매매수량단위|시간외\s*종가매매", r"검토|허용|확대|변경|시행|발표"),
     ("physical_supply_or_capacity", ("earnings", "timeline"),
-     r"공장|(?<!재)생산(?!자|성|유발)|설비|공급|수요|재고|수율|리드타임|부족|품귀|항만|물류|운송|데이터센터|AI\s*팩토리|factory|production|supply|demand|inventory|lead time|port|freight|data cent(?:er|re)",
-     r"증설|착공|가동|증가|감소|중단|차질|부족|품귀|지연|연장|매각|검토|확대|축소|상용화|구축|건설\s*(?:하|할|을|에|계획|계약|추진)|신설|짓고|짓는다|도입|생산할|늘고|늘었|expand|start|halt|disrupt|shortage|delay|consider|launch|build|deploy"),
+     r"공장|(?<!재)생산(?!자|성|유발)|설비|공급|수요|재고|수율|리드타임|부족|품귀|항만|물류|운송|데이터센터|AI\s*팩토리|(?:노선|운항).{0,70}주\s*\d+회|factory|production|supply|demand|inventory|lead time|port|freight|data cent(?:er|re)",
+     r"증설|착공|가동|증가|감소|중단|차질|부족|품귀|지연|연장|매각|검토|확대|축소|상용화|구축|건설\s*(?:하|할|을|에|계획|계약|추진)|신설|짓고|짓는다|도입|생산할|늘고|늘었|증편|주\s*\d+회에서\s*(?:주\s*)?\d+회로|expand|start|halt|disrupt|shortage|delay|consider|launch|build|deploy"),
     ("sector_demand_outlook", ("earnings",),
      r"반도체|메모리|데이터센터|출하량|semiconductor|memory|data center|shipments", r"호황|불황|수요.{0,20}(?:전망|늘|줄)|(?:발주|수주|시장\s*규모).{0,80}(?:추산|추정|전망|예상)|boom|bust|demand outlook"),
     ("macro_model_assessment", ("discount_rate", "timeline"),
@@ -2311,6 +2374,14 @@ COMPILED_RULES = tuple(
 def evidence_is_new_event(kind: str, sentence: str) -> bool:
     """Do not promote service descriptions or event support into transactions."""
     if COMPANY_PROFILE.search(sentence) or ACCOUNTING_NOTE.search(sentence):
+        return False
+    if kind == 'physical_supply_or_capacity' and re.search(
+        r'(?:구축|설치|건설)하는\s*데[^.!?]{0,70}(?:투입된다|필요하다|소요된다)', sentence,
+    ) and not NEW_EXECUTION.search(sentence):
+        return False
+    if kind == 'physical_supply_or_capacity' and re.search(r'투자\s*수익|수익성|ROI', sentence, re.I) and re.search(
+        r'극대화|고려해야|요소로\s*제시|지원해야|설명했다', sentence,
+    ) and not NEW_EXECUTION.search(sentence):
         return False
     if kind == 'technology_or_clinical_stage' and re.search(r'청탁|고발장|수사\s*중|판결문|협박|범죄\s*혐의|bribery|criminal investigation', sentence, re.I):
         return bool(re.search(r'(?:임상|시험|품목|판매|생산).{0,25}(?:중단했다|중단됐|취소했다|취소됐|허가를\s*취소|승인을\s*철회)|'
@@ -2609,6 +2680,15 @@ def equity_publication_assessment(title: str, evidence: list[dict], *, body: str
     ):
         return {'eligible': False, 'reason': 'annual_crypto_adoption_survey_without_equity_catalyst'}
     source_rows = source_sentences(source_reported_body(body))
+    weekly_etf_recap = (re.search(r'ETF', title, re.I) and re.search(r'한\s*주|일주일|주간|주일', title)
+                        and re.search(r'수익률|\d+(?:\.\d+)?%\s*(?:뛴|오른|상승)', title + ' ' + lead))
+    current_catalyst = any(not PAST_ACTION.search(row) and (
+        NEW_EXECUTION.search(row) or FORMAL_POLICY_EXECUTION.search(row)
+        or (QUANTITY.search(row) and re.search(r'순유입|순유출|순매수|순매도', row))
+        or re.search(r'(?:공사|가동|생산|전력\s*공급).{0,25}(?:중단했다고|중단했다|중단됐다고)|정전.{0,20}발생했다', row)
+    ) for row in source_rows)
+    if weekly_etf_recap and not current_catalyst and re.search(r'지연되면|밀릴\s*가능성|변수가|복병|전망', body):
+        return {'eligible': False, 'reason': 'weekly_etf_return_recap_with_only_conditional_bottleneck'}
     reported_lead = ' '.join([row for row in source_rows if len(row) >= 15
                              and re.search(r'[.!?。]$', row)
                              and canonical_source_fact(row) != canonical_source_fact(title)][:2])

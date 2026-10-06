@@ -73,6 +73,8 @@ CONSUMER_SCOPE_FIXTURE = json.loads((ROOT / 'data/gamejoa_consumer_scope_fixture
 CONSUMER_SCOPE_CASES = {case['id']: case for case in CONSUMER_SCOPE_FIXTURE['cases']}
 PRIMARY_EVENT_FIXTURE = json.loads((ROOT / 'data/gamejoa_primary_event_scope_fixtures_20261006.json').read_text(encoding='utf-8'))
 PRIMARY_EVENT_CASES = {case['id']: case for case in PRIMARY_EVENT_FIXTURE['cases']}
+LOCAL_SCOPE_FIXTURE = json.loads((ROOT / 'data/gamejoa_local_scope_fixtures_20261006.json').read_text(encoding='utf-8'))
+LOCAL_SCOPE_CASES = {case['id']: case for case in LOCAL_SCOPE_FIXTURE['cases']}
 LIVE_NOW = NOW.replace(hour=19)
 CONTRACT_BODY = "AMD는 삼성전자와 2027년 데이터센터용 인공지능(AI) 반도체 공동개발을 위한 100억원 규모의 공급 계약을 체결했다고 밝혔다."
 ADDITIONAL_FACT = " AMD는 해당 공급 계약을 위한 반도체 설비투자 예산 500억원을 확정했다고 공시했다."
@@ -114,6 +116,147 @@ def replay():
 
 
 class IncrementalNewsTests(unittest.TestCase):
+    def local_scope_alert(self, key):
+        case = LOCAL_SCOPE_CASES[key]
+        return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],
+                'telegram_core_fact': case['old_core']}
+
+    def test_version93_all_seven_received_bodies_have_market_scope(self):
+        now = NOW.replace(day=6, hour=18)
+        for case in LOCAL_SCOPE_CASES.values():
+            with self.subTest(case=case['id']), patch.object(radar.base, 'kst_now', return_value=now):
+                self.assertEqual(hashlib.sha256(case['body'].encode()).hexdigest(), case['full_body_sha256'])
+                candidate = classify(case, now)
+                selected = radar.quality_display_alerts([candidate], 30) if candidate else []
+                self.assertEqual(bool(selected), case['expected_keep'])
+                if selected:
+                    self.assertFalse(radar.source_core_fact_errors(selected[0]))
+
+    def test_local_inspection_and_small_farm_subsidy_are_not_equity_catalysts(self):
+        for key in ('local_fertiliser_inspection', 'local_farm_fuel_subsidy'):
+            case = LOCAL_SCOPE_CASES[key]
+            self.assertFalse(eligible(case['title'], case['body']))
+            self.assertFalse(eligible(case['title'].replace('완주', '다른').replace('익산', '다른'),
+                                     case['body'].replace('완주', '다른').replace('익산', '다른')))
+
+    def test_local_industrial_contract_remains_a_real_market_execution(self):
+        self.assertTrue(eligible('완주군, 데이터센터 1000억원 건설 계약 체결',
+                                 '완주군은 6일 데이터센터 1000억원 건설 계약을 체결했다고 밝혔다.'))
+
+    def test_national_farm_support_instrument_is_not_local_administration(self):
+        self.assertTrue(eligible('정부, 전국 농업용 경유 세율 인하 시행',
+                                 '정부는 6일 전국 농업용 경유의 세율을 5%에서 3%로 인하하는 고시를 개정했다.'))
+
+    def test_weekly_etf_conditional_return_recap_needs_a_current_catalyst(self):
+        case = LOCAL_SCOPE_CASES['weekly_etf_conditional_recap']
+        self.assertFalse(eligible(case['title'], case['body']))
+        current_flow = '6일 ETF 시장에 3000억원이 신규 순유입됐다고 거래소가 발표했다.\n' + case['body']
+        self.assertTrue(eligible(case['title'], current_flow))
+
+    def test_weekly_etf_recap_keeps_actual_power_supply_suspension(self):
+        case = LOCAL_SCOPE_CASES['weekly_etf_conditional_recap']
+        current = '전력회사는 6일 데이터센터 전력 공급을 중단했다고 발표했다.\n' + case['body']
+        self.assertTrue(eligible(case['title'], current))
+
+    def test_generic_build_cost_is_not_committed_capacity_investment(self):
+        case = LOCAL_SCOPE_CASES['ai_factory_cost_explainer']
+        self.assertFalse(eligible(case['title'], case['body']))
+        self.assertFalse(materiality.evidence_is_new_event('physical_supply_or_capacity',
+                         '메가와트급 AI 팩토리 하나를 구축하는 데 약 6000만달러가 투입된다.'))
+        self.assertTrue(eligible('엔비디아, AI 팩토리 투자액 6000만달러 확정',
+                                 '엔비디아는 6일 AI 팩토리 투자액 6000만달러를 확정했다고 공시했다.'))
+
+    def test_new_external_gpu_result_is_separate_from_general_roi_explanation(self):
+        self.assertTrue(eligible('엔비디아, GPU 반도체 외부 검증 결과 공개',
+                                 '외부 기관은 6일 엔비디아 GPU 반도체의 성능 검증 결과를 공개했다. 처리량은 기존 대비 30배 증가했다.'))
+
+    def test_foundry_core_keeps_reported_price_ranges_and_effective_periods(self):
+        item = self.local_scope_alert('foundry_price_ranges')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('보도에 따르면', 'TSMC', '성숙공정', '내년 1월', '3~10%', '전망이다', '2나노', '내년 1분기', '6~8%', '전해졌다'):
+            self.assertIn(term, core)
+        self.assertFalse(radar.source_core_fact_errors({**item, 'telegram_core_fact': core}))
+        self.assertTrue(radar.source_core_fact_errors(item))
+
+    def test_foundry_price_values_and_issuer_are_not_fixed_template_values(self):
+        case = LOCAL_SCOPE_CASES['foundry_price_ranges']
+        title = case['title'].replace('TSMC', 'OTHER')
+        body = case['body'].replace('TSMC', 'OTHER').replace('3~10%', '4~12%').replace('6~8%', '7~9%')
+        core = radar.source_headline_event_fact(title, body)
+        for term in ('OTHER', '4~12%', '7~9%'):
+            self.assertIn(term, core)
+
+    def test_airline_core_uses_current_schedule_not_april_rights(self):
+        item = self.local_scope_alert('airline_current_schedule')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('제주항공', '부산~상하이', '25일부터 12월15일까지', '주 4회에서 주 7회', '인천~칭다오', '12월31일까지', '주 7회에서 주 11회'):
+            self.assertIn(term, core)
+        self.assertNotIn('4월', core)
+        self.assertFalse(radar.source_core_fact_errors({**item, 'telegram_core_fact': core}))
+        self.assertTrue(radar.source_core_fact_errors(item))
+
+    def test_airline_schedule_changes_are_source_derived(self):
+        case = LOCAL_SCOPE_CASES['airline_current_schedule']
+        title = case['title'].replace('제주항공', 'OTHER항공')
+        body = case['body'].replace('제주항공', 'OTHER항공').replace('주 4회에서 주 7회', '주 5회에서 주 9회')
+        core = radar.source_headline_event_fact(title, body)
+        for term in ('OTHER항공', '주 5회에서 주 9회'):
+            self.assertIn(term, core)
+
+    def test_publisher_ai_summary_card_is_not_reported_body(self):
+        case = LOCAL_SCOPE_CASES['weekly_etf_conditional_recap']
+        body = materiality.source_reported_body(case['body'])
+        self.assertNotIn('AI 기사요약', body)
+        self.assertNotIn('반사이익을 얻을 수 있다는 전망이 나옵니다', body)
+        self.assertIn('11.09%', body)
+
+    def test_foundry_reprint_keeps_one_event_across_titles_and_links(self):
+        item = self.local_scope_alert('foundry_price_ranges')
+        other = {**item, 'news': 'TSMC, 내년 파운드리 단가 인상 전망',
+                 'source_title': 'TSMC, 내년 파운드리 단가 인상 전망', 'link': 'https://example.com/foundry-reprint'}
+        self.assertTrue(materiality.source_event_identity(item))
+        self.assertEqual(materiality.source_event_identity(item), materiality.source_event_identity(other))
+
+    def test_foundry_changed_ranges_and_effective_periods_remain_distinct(self):
+        item = self.local_scope_alert('foundry_price_ranges')
+        for old, new in (('3~10%', '4~12%'), ('내년 1월', '내년 2월')):
+            changed = {**item, 'source_body': item['source_body'].replace(old, new)}
+            self.assertNotEqual(materiality.source_event_identity(item), materiality.source_event_identity(changed))
+
+    def test_airline_reprint_keeps_one_event_across_titles_and_links(self):
+        item = self.local_scope_alert('airline_current_schedule')
+        other = {**item, 'news': '제주항공, 중국 동계 노선 증편 발표',
+                 'source_title': '제주항공, 중국 동계 노선 증편 발표', 'link': 'https://example.com/airline-reprint'}
+        self.assertTrue(materiality.source_event_identity(item))
+        self.assertEqual(materiality.source_event_identity(item), materiality.source_event_identity(other))
+
+    def test_airline_changed_frequencies_and_periods_remain_distinct(self):
+        item = self.local_scope_alert('airline_current_schedule')
+        for old, new in (('주 4회에서 주 7회', '주 4회에서 주 9회'), ('12월15일까지', '12월20일까지')):
+            changed = {**item, 'source_body': item['source_body'].replace(old, new)}
+            self.assertNotEqual(materiality.source_event_identity(item), materiality.source_event_identity(changed))
+
+    def test_price_and_airline_terms_cannot_override_primary_earnings_or_contract(self):
+        cases = (
+            ('foundry_price_ranges', materiality.foundry_price_observation,
+             'TSMC, 파운드리 단가 인상에 3분기 영업이익 10억달러', 'earnings'),
+            ('foundry_price_ranges', materiality.foundry_price_observation,
+             'TSMC, 파운드리 단가 인상 반영한 공급 계약 체결', 'commercial_order'),
+            ('airline_current_schedule', materiality.airline_capacity_observation,
+             '제주항공, 노선 증편에 3분기 영업이익 300억원', 'earnings'),
+            ('airline_current_schedule', materiality.airline_capacity_observation,
+             '제주항공, 노선 증편 위한 공급 계약 체결', 'commercial_order'),
+        )
+        for key, observe, title, focus in cases:
+            item = self.local_scope_alert(key)
+            changed = {**item, 'news': title, 'source_title': title, 'original_news': title}
+            with self.subTest(title=title):
+                self.assertEqual(materiality.focus_kind(title), focus)
+                self.assertFalse(observe(title, item['source_body']))
+                self.assertNotEqual(materiality.source_event_identity(item), materiality.source_event_identity(changed))
+                self.assertNotEqual(radar.source_headline_event_fact(item['source_title'], item['source_body']),
+                                    radar.source_headline_event_fact(title, item['source_body']))
+
     def primary_event_alert(self, key):
         case = PRIMARY_EVENT_CASES[key]
         return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],

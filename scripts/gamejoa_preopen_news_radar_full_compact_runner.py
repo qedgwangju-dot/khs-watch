@@ -2609,6 +2609,25 @@ def source_headline_event_fact(title: str, body: str) -> str:
         if decree['operation_month']:
             fact += f" 매입 업무는 출자·금융위 의결 등을 거쳐 {decree['operation_month']}월 이후 시작할 예정이다."
         return fact if len(fact) <= GAMEJOA_CORE_MAX_CHARS and core_sentence_is_complete(fact) else ''
+    pricing = market_materiality.foundry_price_observation(title, source)
+    if pricing:
+        fact = (f"보도에 따르면 {pricing['issuer']}의 성숙공정 파운드리 단가는 {pricing['period']}부터 "
+                f"약 {pricing['range']}% 인상될 전망이다.")
+        advanced = pricing['advanced']
+        if advanced:
+            fact += (f" {advanced['process']}나노 웨이퍼 가격도 {advanced['period']} "
+                     f"{advanced['range']}% 추가 인상이 전해졌다.")
+        return fact if len(fact) <= GAMEJOA_CORE_MAX_CHARS and core_sentence_is_complete(fact) else ''
+    airline = market_materiality.airline_capacity_observation(title, source)
+    if airline:
+        facts = []
+        for index, segment in enumerate(airline['segments'][:2]):
+            window = re.sub(r'^오는\s*', '', segment['window']).strip()
+            prefix = f"{airline['issuer']}{korean_topic_particle(airline['issuer'])} " if index == 0 else ''
+            facts.append(f"{prefix}{segment['route']} 운항을 {window} 주 {segment['old']}회에서 "
+                         f"주 {segment['new']}회로 증편한다.")
+        fact = ' '.join(facts)
+        return fact if len(fact) <= GAMEJOA_CORE_MAX_CHARS and core_sentence_is_complete(fact) else ''
     if re.search(r'글로벌\s*전기차', title):
         volume = re.search(r'(?P<provider>[A-Za-z가-힣]+리서치)에\s*따르면\s*'
                            r'(?P<period>\d{1,2}[∼~\-]\d{1,2}월)\s*글로벌\s*전기차\(플러그인하이브리드\s*포함\)\s*'
