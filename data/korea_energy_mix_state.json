@@ -166,7 +166,9 @@
     "2026-09-18|12th-plan|f9ee274270072b41": 1,
     "2026-09-19|12th-plan|renewable-2040-capacity": 1,
     "2026-09-22|12th-plan|nuclear": 3,
-    "2026-09-25|12th-plan|nuclear": 1
+    "2026-09-25|12th-plan|nuclear": 1,
+    "12th-plan|demand|datacenter-overestimate": 1
   },
-  "updated_at": "2026-10-06T14:14:28.913373+00:00"
+  "updated_at": "2026-10-06T14:14:28.913373+00:00",
+  "migration_note": "2026-10-06: stable semantic keys for committee disclosure, Honam 14GW/grid review, plan schedule delay, and data-center demand overestimate"
 }
