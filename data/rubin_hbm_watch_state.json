@@ -660,7 +660,7 @@
   },
   "_delivery": {
     "id": "27c8ec04697fe86bf4932c57758f6b9096bfd1dde89455cc5d1a16265614bd28",
-    "status": "queued",
+    "status": "in_flight",
     "created_at_kst": "2026-10-06T09:58:19+09:00",
     "chunks": [
       "<b>🔗 메모리·스토리지 연쇄 병목 감시 추가</b>\n\nTrendForce 10/5 기준으로 개별 부품이 아니라 DRAM→기업용 SSD→HDD의 연쇄 병목을 기존 알림에서 함께 추적합니다.\n• <b>DRAM:</b> 20주 / 균형 8주 · 2.5배 · 심각한 공급 부족\n• <b>기업용 SSD:</b> 16주 / 균형 8주 · DRAM 부족이 일부 NAND 공급사의 eSSD 솔루션 지원 능력을 제약\n• <b>HDD:</b> 50주 / 균형 16주 · 3.1배 · TrendForce 시장 전망상 정상화는 빨라도 2027년 말\n• <b>Toshiba 공식:</b> 10/2 Laguna 증설 nearline HDD 라인 첫 출하 완료 · FY2027 생산능력은 FY2025 대비 약 2배 목표\n\n<b>정확도 경계</b>\n• TrendForce 확인 범위는 ‘DRAM 부족 → 일부 NAND 공급사의 기업용 SSD 솔루션 지원 제약’입니다.\n• <b>NAND 컨트롤러 출하가 DRAM 때문에 직접 제한된다는 주장은 이번 원문에서 확인되지 않아 알림 확정조건에 넣지 않았습니다.</b>\n• <b>NAND 전체 수급:</b> TrendForce는 신규 생산능력·공정 전환으로 2H27부터 완화 가능성을 봅니다. 기업용 SSD 병목을 전체 NAND의 2027년 말까지 동일한 부족으로 확대하지 않습니다.\n• Toshiba는 이미 증설 라인에서 첫 출하를 시작했습니다. 따라서 ‘2027년 말’은 개별 Toshiba 라인의 미가동 시점이 아니라 시장 전체 리드타임 정상화 전망으로만 추적합니다.\n\n<b>다음 확인</b>\n• DRAM 리드타임·서버 DRAM 가격 / eSSD 리드타임·가격·출하 / HDD 리드타임·증설 가동시점이 함께 꺾이는지 확인\n• <a href=\"https://insights.trendforce.com/p/weekly-radar-004\">TrendForce 원문</a>\n• <a href=\"https://toshiba.semicon-storage.com/ap-en/company/news/news-topics/2026/10/storage-20261002-1.html\">Toshiba 공식 HDD 증설·첫 출하</a>\n• <a href=\"https://www.trendforce.com/presscenter/news/20260730-13158.html\">TrendForce 2027 NAND 수급 전망</a>"
@@ -1331,6 +1331,7 @@
         "as_of": "2026-10-04",
         "note": "91.7%·187.5%·72% 조합은 사용자 제공 Morgan Stanley 요약으로 기준선에 보존하되, 공개 검색에서 원문 또는 exact 수치의 독립 2중 재확인은 아직 확보하지 못했으므로 exact_tolerance_public_source_verified=false. 187.5%는 288→192GB(-33.3%) 가정에서 91.7% 허용치를 용량비 1.5배로 조정하면 약 187.55%로 산술상 일치. VR200 $2.0016M memory line은 공개 2차 자료가 HBM 포함 여부를 다르게 설명하므로 HBM-only 비용으로 승격 금지."
       }
-    }
+    },
+    "attempt_at_kst": "2026-10-06T09:58:21+09:00"
   }
 }
