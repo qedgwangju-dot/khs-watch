@@ -446,9 +446,16 @@ def main() -> int:
     new_items = [x for x in events if x["key"] not in old_seen] if initialized else []
     new_cns = [x for x in cns_trials if x["nct"] not in old_cns] if initialized else []
 
+    source_version = int(old.get("source_version") or 0)
+    if initialized and source_version < 2:
+        # Ray's official RSS fallback was added after the initial baseline.
+        # Do not resend already-known 2026 RMAT/PRIME/financing items as new events.
+        new_items = [x for x in new_items if x.get("company") != "Ray Therapeutics"]
+
     pending = {
         "initialized": True,
         "version": 1,
+        "source_version": 2,
         "last_checked_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
         "nobel_2026_verified": nobel_ok,
         "seen_event_keys": current_keys,
@@ -483,6 +490,8 @@ def main() -> int:
         f"trial_updates={len(trial_updates)} cns_new={len(new_cns)} "
         f"alert={int(ALERT.exists())} errors={len(errors)}"
     )
+    if errors:
+        print("optogenetics_source_errors=" + json.dumps(errors, ensure_ascii=False))
     return 0
 
 
