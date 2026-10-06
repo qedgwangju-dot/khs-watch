@@ -1741,20 +1741,19 @@
     "event:4af0ec859cb52ac4537c1713": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
       "lanes": {
-        "live": "2026-10-06T22:21:21+09:00"
+        "live": "2026-10-06T23:29:45+09:00"
       },
-      "last_seen_kst": "2026-10-06T22:21:21+09:00",
-      "link": "https://www.mt.co.kr/living/2026/10/06/2026100616183727001",
-      "source": "머니투데이",
-      "source_body_digest": "2e348f537e07c6f898e65e23d66f5532d5ef60ef13222f1c8c34faf654a5fa79",
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169384",
+      "source": "매일경제",
+      "source_body_digest": "ad737db95c9acc25c0b241ed274c7fe2be9c6016664532a4737aa849df20756f",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:c42a77cebf4d989a2051b3351160734a51536edd084a21ede3371cd12b0ed7aa",
+      "source_fact_identity": "source_facts:v1:446eb1951bd2e0cfaaba0cc4ffe4ccd80bc87a9fbfff9de1b1a3cea889505103",
       "source_fact_keys": [
-        "source_fact:v1:5bfe27a251b1a4116906683bf6cbce3ab7fc9df5788db1a4100d12a30b7dc352",
-        "source_fact:v1:a496daea31368fb202912e33125eb97ccc4df54d847275aa100c711f30f2366b"
+        "source_fact:v1:64f8784d1f119e5a1608751fde112580dbae5b0bf6b8f4433516729d8f794579"
       ],
-      "source_published_kst": "2026-10-06T16:35+09:00",
-      "title": "신세계, 콘텐츠 기업으로 키운다...워너브라더스 인수 1.4조 투자"
+      "source_published_kst": "2026-10-06T16:11+09:00",
+      "title": "[속보] “해리포터를 스타필드로?”…신세계, 워너브라더스 인수에 1.4조 베팅"
     },
     "event:4b6c66ca03796acb2d14c1b0": {
       "first_seen_kst": "2026-10-01T11:18:10+09:00",
@@ -8675,6 +8674,28 @@
       "source_published_kst": "2026-10-06T00:39+09:00",
       "title": "美 9월 서비스업 확장세 둔화…물가 압력 4년여만에 최고"
     },
+    "fact:2d6e8d67fc6125d5de31b4ee": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06081126645610296",
+      "source": "이데일리",
+      "source_body_digest": "b2f49b4f46f8ba6c326de7905f10e6d250933c32baf200699d11547e96b12533",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3e0ca4f48ea3b520f2bd74a3232413fa1c0fcb0e74edbe9207b0d64f4e24592",
+      "source_fact_keys": [
+        "source_fact:v1:3a18a0f99d19dc91ce365d37aac12d27d452fd89b00872f8f0e176c072ad5993",
+        "source_fact:v1:65d9ef530c00e8f8b95096d31c87cb397ac2f9a2934e3aeba2e93bb389cc1d34",
+        "source_fact:v1:91376c68471729eb76512090accb418e90b94dce095b5e02e0786089d7877b80",
+        "source_fact:v1:d619158e0fa629e2522c96d55b97cbcfa8d57a403f02fc756623769ae961180f",
+        "source_fact:v1:e1e7d3fa525c3952ef602fabb61b319b11d11dda98c0b530d32f4d6502e4995d",
+        "source_fact:v1:fbfecc38d73922d798c04c0dea4054a358b9392ccc1478b6d810cc9be2c1d81b"
+      ],
+      "source_published_kst": "2026-10-06T21:25+09:00",
+      "title": "[美특징주]콘스텔레이션 에너지, 구글과 20년 원전 전력 공급 계약에 개장 전↑"
+    },
     "fact:2dc0379dc7a81daa72d5831a": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
       "lanes": {
@@ -9400,6 +9421,24 @@
       ],
       "source_published_kst": "2026-10-06T09:32+09:00",
       "title": "LG전자, 美 AI 데이터센터 냉각 솔루션 공급 계약에 '급등'"
+    },
+    "fact:3a398dc3c3cd473ab8474004": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.hankyung.com/article/202610065636O",
+      "source": "한국경제",
+      "source_body_digest": "cb55fc51d56a6ae15e0876d2a1ea051252c78d327bf6b89481f5f61f6db4593c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1f69118f6d7ac9d272f72297d4122d4027b8b0c674d5754dce83c87584a5d2cb",
+      "source_fact_keys": [
+        "source_fact:v1:9e9fed52d1a0325941fae569f9198a25c9ffc0c9041d60f8ca3b679989798bbb",
+        "source_fact:v1:ad4632b5804297c6bd4f58f61c10daca201ade9f4fabd5a3727528f9a31ef2dd"
+      ],
+      "source_published_kst": "2026-10-06T14:48+09:00",
+      "title": "비드래프트, 퀀티넘 양자컴퓨팅 플랫폼 이용 기업 선정"
     },
     "fact:3a4f4dedb7e0edf8606572f4": {
       "first_seen_kst": "2026-10-06T21:40:57+09:00",
@@ -11839,6 +11878,23 @@
       "source_published_kst": "2026-10-06T16:41+09:00",
       "title": "최수진 의원실 ‘삼성·SK하이닉스 출신 27명 CXMT 이직’ 주장 [국감2026]"
     },
+    "fact:72ddcbc3c17c925ed89a4673": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816097",
+      "source": "뉴시스",
+      "source_body_digest": "3f492d8886e816451cbb76fba1f321002492aacde5af5c6f74e6c4b9f71dad58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:528f16bbb3fabf5ce5b178a3e3f4044930d1d01b3d5351900577ff62f8b8d69d",
+      "source_fact_keys": [
+        "source_fact:v1:9ac288b81a2202423b9c5da5c0f72664ddd8c6185ed470b4ceac823f73ff54cd"
+      ],
+      "source_published_kst": "2026-10-06T17:04+09:00",
+      "title": "이형일, 내년 가상자산 과세에 \"의견 수렴\"…추가 유예 여부 즉답 피해"
+    },
     "fact:72e73ef5b34240be9eee2cbe": {
       "first_seen_kst": "2026-10-06T01:05:54+09:00",
       "lanes": {
@@ -13516,6 +13572,23 @@
       "source_published_kst": "2026-10-06T17:38+09:00",
       "title": "\"中국경절 연휴 특수\"… 외국인 매출 두배로"
     },
+    "fact:96b3a68d4035c76a9998c9a1": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006177800054",
+      "source": "연합뉴스",
+      "source_body_digest": "8a19beb2dc3f125708688bcdccbc14952cf1520916b7eff0ed6878c296f1b824",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1ab4df7aabe0b8b50aabd821a8973f55ad75b631ca486e8a84fa8eed0582337a",
+      "source_fact_keys": [
+        "source_fact:v1:30a0ad49ae1e8407f927a81a5ab9c6fee61442255ceacb8d0e3bc7c961a65806"
+      ],
+      "source_published_kst": "2026-10-06T18:03+09:00",
+      "title": "조선대병원, 로봇수술 1천회 달성…\"지방에서도 고난도 수술\" | 연합뉴스"
+    },
     "fact:96d34239d03dbbd9a955c1aa": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
       "lanes": {
@@ -14073,6 +14146,23 @@
       ],
       "source_published_kst": "2026-10-06T10:09+09:00",
       "title": "씨피시스템 \"글로벌 MLCC 제조사사 장비에 '로보킷' 채택\""
+    },
+    "fact:a3031d55b8f239fa4ed24975": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815881",
+      "source": "뉴시스",
+      "source_body_digest": "d3d9bf93bb336ebd30c658e7cc35bf81589e3580e286b5ad24f3ba1d4b7999cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:51bb6d286b52af2fb07df331f320a3febcb8702939eee1f6c002870fe8f2a374",
+      "source_fact_keys": [
+        "source_fact:v1:b5afcf5d2468895375d1bc1b7f21d51a28a4b0e893d3865afec1608e36074247"
+      ],
+      "source_published_kst": "2026-10-06T18:50+09:00",
+      "title": "여야, 외통위 국정감사서 北지뢰 대응·포로 송환 등 설전(종합)"
     },
     "fact:a327b98dabaf58b74c0fc915": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
@@ -15064,6 +15154,24 @@
       ],
       "source_published_kst": "2026-10-06T09:57+09:00",
       "title": "네이버 소비자 분쟁 피해구제율 83.6%…“분류체계 세분화 필요\""
+    },
+    "fact:bc85136925d58cef831fe67e": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.hankyung.com/article/2026100663001",
+      "source": "한국경제",
+      "source_body_digest": "40ca31bdab9509789119f1061c8ef8ec2397fd05ddafbbbd005a8fbf257362a3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c3a18467f5f6f50ba1495aafd57df427a99544a53093ef9952b49e44cc8e89ad",
+      "source_fact_keys": [
+        "source_fact:v1:d9e27c582f8a845e3ddec8f9388dbaa5594258241aed9c8ee8c6f51511b74e78",
+        "source_fact:v1:f7ca50218094a95569035e5472b065bc8661e7e91c1995defbe566057e766d8f"
+      ],
+      "source_published_kst": "2026-10-06T18:04+09:00",
+      "title": "HLB, 간암 신약 '4수' 도전"
     },
     "fact:bd3c43dd7b2b8613b6d86d62": {
       "first_seen_kst": "2026-10-06T21:17:11+09:00",
@@ -17329,6 +17437,23 @@
       ],
       "source_published_kst": "2026-10-06T17:57+09:00",
       "title": "대학가 주택 '공공기숙사'로…LH, 서울대와 200가구 공급"
+    },
+    "fact:ef0700843a9a48d1e5b4a79e": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169384",
+      "source": "매일경제",
+      "source_body_digest": "ad737db95c9acc25c0b241ed274c7fe2be9c6016664532a4737aa849df20756f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:446eb1951bd2e0cfaaba0cc4ffe4ccd80bc87a9fbfff9de1b1a3cea889505103",
+      "source_fact_keys": [
+        "source_fact:v1:64f8784d1f119e5a1608751fde112580dbae5b0bf6b8f4433516729d8f794579"
+      ],
+      "source_published_kst": "2026-10-06T16:11+09:00",
+      "title": "[속보] “해리포터를 스타필드로?”…신세계, 워너브라더스 인수에 1.4조 베팅"
     },
     "fact:efac362e596d4797183e2802": {
       "first_seen_kst": "2026-10-06T17:24:43+09:00",
@@ -23532,6 +23657,28 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T06:00+09:00",
       "title": "美 인상 기대 꺾였지만 장기금리 5.28%…환율 어디로[주간외환전망]"
+    },
+    "link:345e2a75083f18ee82e7c6ea": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06081126645610296",
+      "source": "이데일리",
+      "source_body_digest": "b2f49b4f46f8ba6c326de7905f10e6d250933c32baf200699d11547e96b12533",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3e0ca4f48ea3b520f2bd74a3232413fa1c0fcb0e74edbe9207b0d64f4e24592",
+      "source_fact_keys": [
+        "source_fact:v1:3a18a0f99d19dc91ce365d37aac12d27d452fd89b00872f8f0e176c072ad5993",
+        "source_fact:v1:65d9ef530c00e8f8b95096d31c87cb397ac2f9a2934e3aeba2e93bb389cc1d34",
+        "source_fact:v1:91376c68471729eb76512090accb418e90b94dce095b5e02e0786089d7877b80",
+        "source_fact:v1:d619158e0fa629e2522c96d55b97cbcfa8d57a403f02fc756623769ae961180f",
+        "source_fact:v1:e1e7d3fa525c3952ef602fabb61b319b11d11dda98c0b530d32f4d6502e4995d",
+        "source_fact:v1:fbfecc38d73922d798c04c0dea4054a358b9392ccc1478b6d810cc9be2c1d81b"
+      ],
+      "source_published_kst": "2026-10-06T21:25+09:00",
+      "title": "[美특징주]콘스텔레이션 에너지, 구글과 20년 원전 전력 공급 계약에 개장 전↑"
     },
     "link:34853539c9605b62a0abd693": {
       "first_seen_kst": "2026-10-02T17:34:05+09:00",
@@ -39614,6 +39761,23 @@
       "source": "이데일리",
       "title": "호텔인데 매출 7%가 김치?…조선호텔, 연 540억 '김치 잭팟'"
     },
+    "link:cbc3d61b0002508e8ce38e56": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816097",
+      "source": "뉴시스",
+      "source_body_digest": "3f492d8886e816451cbb76fba1f321002492aacde5af5c6f74e6c4b9f71dad58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:528f16bbb3fabf5ce5b178a3e3f4044930d1d01b3d5351900577ff62f8b8d69d",
+      "source_fact_keys": [
+        "source_fact:v1:9ac288b81a2202423b9c5da5c0f72664ddd8c6185ed470b4ceac823f73ff54cd"
+      ],
+      "source_published_kst": "2026-10-06T17:04+09:00",
+      "title": "이형일, 내년 가상자산 과세에 \"의견 수렴\"…추가 유예 여부 즉답 피해"
+    },
     "link:cc32bc4ab63c3678ed586e9e": {
       "first_seen_kst": "2026-10-03T08:04:27+09:00",
       "lanes": {
@@ -39669,6 +39833,23 @@
       "source_published_kst": "2026-10-06T19:47+09:00",
       "title": "[마켓인]운용사에 직접 돈 댄다…글로벌 GP솔루션 펀드 20조 돌파"
     },
+    "link:ccd34444966af38296f2e0e1": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815881",
+      "source": "뉴시스",
+      "source_body_digest": "d3d9bf93bb336ebd30c658e7cc35bf81589e3580e286b5ad24f3ba1d4b7999cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:51bb6d286b52af2fb07df331f320a3febcb8702939eee1f6c002870fe8f2a374",
+      "source_fact_keys": [
+        "source_fact:v1:b5afcf5d2468895375d1bc1b7f21d51a28a4b0e893d3865afec1608e36074247"
+      ],
+      "source_published_kst": "2026-10-06T18:50+09:00",
+      "title": "여야, 외통위 국정감사서 北지뢰 대응·포로 송환 등 설전(종합)"
+    },
     "link:ccef8d57c04d86df6d82534c": {
       "first_seen_kst": "2026-10-06T10:41:31+09:00",
       "lanes": {
@@ -39719,6 +39900,23 @@
       "link": "https://www.yna.co.kr/view/MYH20261003002900038",
       "source": "연합뉴스",
       "title": "구글, 우주 데이터센터 첫 실험…TPU 위성 발사 | 연합뉴스"
+    },
+    "link:cd625c98c180a8c4ac231b44": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169384",
+      "source": "매일경제",
+      "source_body_digest": "ad737db95c9acc25c0b241ed274c7fe2be9c6016664532a4737aa849df20756f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:446eb1951bd2e0cfaaba0cc4ffe4ccd80bc87a9fbfff9de1b1a3cea889505103",
+      "source_fact_keys": [
+        "source_fact:v1:64f8784d1f119e5a1608751fde112580dbae5b0bf6b8f4433516729d8f794579"
+      ],
+      "source_published_kst": "2026-10-06T16:11+09:00",
+      "title": "[속보] “해리포터를 스타필드로?”…신세계, 워너브라더스 인수에 1.4조 베팅"
     },
     "link:cd6ed133439278ded73160b9": {
       "first_seen_kst": "2026-09-22T23:07:58+09:00",
@@ -39936,6 +40134,24 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=01587526645583728",
       "source": "이데일리",
       "title": "추석에도 24시간…삼성·SK하닉 반도체, 수출 최전선 지킨다"
+    },
+    "link:cfda1922fac34ab0aa0504fd": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.hankyung.com/article/202610065636O",
+      "source": "한국경제",
+      "source_body_digest": "cb55fc51d56a6ae15e0876d2a1ea051252c78d327bf6b89481f5f61f6db4593c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1f69118f6d7ac9d272f72297d4122d4027b8b0c674d5754dce83c87584a5d2cb",
+      "source_fact_keys": [
+        "source_fact:v1:9e9fed52d1a0325941fae569f9198a25c9ffc0c9041d60f8ca3b679989798bbb",
+        "source_fact:v1:ad4632b5804297c6bd4f58f61c10daca201ade9f4fabd5a3727528f9a31ef2dd"
+      ],
+      "source_published_kst": "2026-10-06T14:48+09:00",
+      "title": "비드래프트, 퀀티넘 양자컴퓨팅 플랫폼 이용 기업 선정"
     },
     "link:cfe6694961bc4f26e4eeb941": {
       "first_seen_kst": "2026-09-19T01:58:52+09:00",
@@ -43250,6 +43466,24 @@
       "source": "매일경제",
       "title": "주가 상승 챙기고 배당금도 꼬박꼬박 … 고정커버드콜 인기"
     },
+    "link:edfa8ba3533526a1e270e74b": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.hankyung.com/article/2026100663001",
+      "source": "한국경제",
+      "source_body_digest": "40ca31bdab9509789119f1061c8ef8ec2397fd05ddafbbbd005a8fbf257362a3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c3a18467f5f6f50ba1495aafd57df427a99544a53093ef9952b49e44cc8e89ad",
+      "source_fact_keys": [
+        "source_fact:v1:d9e27c582f8a845e3ddec8f9388dbaa5594258241aed9c8ee8c6f51511b74e78",
+        "source_fact:v1:f7ca50218094a95569035e5472b065bc8661e7e91c1995defbe566057e766d8f"
+      ],
+      "source_published_kst": "2026-10-06T18:04+09:00",
+      "title": "HLB, 간암 신약 '4수' 도전"
+    },
     "link:ee083778c35e153585bf08e9": {
       "first_seen_kst": "2026-10-02T09:58:25+09:00",
       "lanes": {
@@ -44241,6 +44475,23 @@
       "link": "https://www.newsis.com/view/NISX20260930_0003808025",
       "source": "뉴시스",
       "title": "\"마이크론 90% 상승 여력\" 월가 파격 전망에…삼성전자·SK하이닉스도 기대감"
+    },
+    "link:f6fdedc791c96a8e03c02b32": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006177800054",
+      "source": "연합뉴스",
+      "source_body_digest": "8a19beb2dc3f125708688bcdccbc14952cf1520916b7eff0ed6878c296f1b824",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1ab4df7aabe0b8b50aabd821a8973f55ad75b631ca486e8a84fa8eed0582337a",
+      "source_fact_keys": [
+        "source_fact:v1:30a0ad49ae1e8407f927a81a5ab9c6fee61442255ceacb8d0e3bc7c961a65806"
+      ],
+      "source_published_kst": "2026-10-06T18:03+09:00",
+      "title": "조선대병원, 로봇수술 1천회 달성…\"지방에서도 고난도 수술\" | 연합뉴스"
     },
     "link:f7089adb9a24ae9f2a2afb6c": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
@@ -45819,6 +46070,24 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T09:47+09:00",
       "title": "운문댐 가뭄 장기화…대구시 \"다음 달 초 금호강 물 공급 예상\" | 연합뉴스"
+    },
+    "original:067eea629ed31da695fcca79": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.hankyung.com/article/2026100663001",
+      "source": "한국경제",
+      "source_body_digest": "40ca31bdab9509789119f1061c8ef8ec2397fd05ddafbbbd005a8fbf257362a3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c3a18467f5f6f50ba1495aafd57df427a99544a53093ef9952b49e44cc8e89ad",
+      "source_fact_keys": [
+        "source_fact:v1:d9e27c582f8a845e3ddec8f9388dbaa5594258241aed9c8ee8c6f51511b74e78",
+        "source_fact:v1:f7ca50218094a95569035e5472b065bc8661e7e91c1995defbe566057e766d8f"
+      ],
+      "source_published_kst": "2026-10-06T18:04+09:00",
+      "title": "HLB, 간암 신약 '4수' 도전"
     },
     "original:06906882bf0206cdb19014dd": {
       "first_seen_kst": "2026-09-26T14:03:52+09:00",
@@ -60819,6 +61088,24 @@
       "source_published_kst": "2026-10-05T17:54+09:00",
       "title": "24년來 최고 금리도 AI 기세 못막아…나스닥 사상 최고[월스트리트in]"
     },
+    "original:96d63c9e8e4139c040c70389": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.hankyung.com/article/202610065636O",
+      "source": "한국경제",
+      "source_body_digest": "cb55fc51d56a6ae15e0876d2a1ea051252c78d327bf6b89481f5f61f6db4593c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1f69118f6d7ac9d272f72297d4122d4027b8b0c674d5754dce83c87584a5d2cb",
+      "source_fact_keys": [
+        "source_fact:v1:9e9fed52d1a0325941fae569f9198a25c9ffc0c9041d60f8ca3b679989798bbb",
+        "source_fact:v1:ad4632b5804297c6bd4f58f61c10daca201ade9f4fabd5a3727528f9a31ef2dd"
+      ],
+      "source_published_kst": "2026-10-06T14:48+09:00",
+      "title": "비드래프트, 퀀티넘 양자컴퓨팅 플랫폼 이용 기업 선정"
+    },
     "original:96edcfc5d7dbaad049948a2e": {
       "first_seen_kst": "2026-10-02T20:28:38+09:00",
       "lanes": {
@@ -61555,6 +61842,28 @@
       ],
       "source_published_kst": "2026-10-06T06:40+09:00",
       "title": "“중동 원유수출 증가·G7 비축유 방출 약속“ 국제유가 1.8%↓"
+    },
+    "original:9ea3ad4da73b808f795f1a93": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06081126645610296",
+      "source": "이데일리",
+      "source_body_digest": "b2f49b4f46f8ba6c326de7905f10e6d250933c32baf200699d11547e96b12533",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3e0ca4f48ea3b520f2bd74a3232413fa1c0fcb0e74edbe9207b0d64f4e24592",
+      "source_fact_keys": [
+        "source_fact:v1:3a18a0f99d19dc91ce365d37aac12d27d452fd89b00872f8f0e176c072ad5993",
+        "source_fact:v1:65d9ef530c00e8f8b95096d31c87cb397ac2f9a2934e3aeba2e93bb389cc1d34",
+        "source_fact:v1:91376c68471729eb76512090accb418e90b94dce095b5e02e0786089d7877b80",
+        "source_fact:v1:d619158e0fa629e2522c96d55b97cbcfa8d57a403f02fc756623769ae961180f",
+        "source_fact:v1:e1e7d3fa525c3952ef602fabb61b319b11d11dda98c0b530d32f4d6502e4995d",
+        "source_fact:v1:fbfecc38d73922d798c04c0dea4054a358b9392ccc1478b6d810cc9be2c1d81b"
+      ],
+      "source_published_kst": "2026-10-06T21:25+09:00",
+      "title": "[美특징주]콘스텔레이션 에너지, 구글과 20년 원전 전력 공급 계약에 개장 전↑"
     },
     "original:9eab8aa8f3ffaeea8adb6981": {
       "first_seen_kst": "2026-10-02T06:53:18+09:00",
@@ -64468,6 +64777,23 @@
       "source": "이데일리",
       "title": "마이크론, 호실적에 목표주가 상향…펀더멘털 고점 우려 해소-DA데이비슨"
     },
+    "original:bc523b12fb65bc3389eb9256": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169384",
+      "source": "매일경제",
+      "source_body_digest": "ad737db95c9acc25c0b241ed274c7fe2be9c6016664532a4737aa849df20756f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:446eb1951bd2e0cfaaba0cc4ffe4ccd80bc87a9fbfff9de1b1a3cea889505103",
+      "source_fact_keys": [
+        "source_fact:v1:64f8784d1f119e5a1608751fde112580dbae5b0bf6b8f4433516729d8f794579"
+      ],
+      "source_published_kst": "2026-10-06T16:11+09:00",
+      "title": "[속보] “해리포터를 스타필드로?”…신세계, 워너브라더스 인수에 1.4조 베팅"
+    },
     "original:bc57fb99117329754c4341d2": {
       "first_seen_kst": "2026-10-05T10:39:16+09:00",
       "lanes": {
@@ -66377,6 +66703,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T06:00+09:00",
       "title": "美 인상 기대 꺾였지만 장기금리 5.28%…환율 어디로[주간외환전망]"
+    },
+    "original:d14d750967606a3fcceba680": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006177800054",
+      "source": "연합뉴스",
+      "source_body_digest": "8a19beb2dc3f125708688bcdccbc14952cf1520916b7eff0ed6878c296f1b824",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1ab4df7aabe0b8b50aabd821a8973f55ad75b631ca486e8a84fa8eed0582337a",
+      "source_fact_keys": [
+        "source_fact:v1:30a0ad49ae1e8407f927a81a5ab9c6fee61442255ceacb8d0e3bc7c961a65806"
+      ],
+      "source_published_kst": "2026-10-06T18:03+09:00",
+      "title": "조선대병원, 로봇수술 1천회 달성…\"지방에서도 고난도 수술\" | 연합뉴스"
     },
     "original:d15f6a9f2d2ab4be60b214c0": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
@@ -68413,6 +68756,23 @@
       "source": "파이낸셜뉴스",
       "title": "AI 특수에 삼성전자 HBM4 매출 비중 내년 2배 증가-KB證"
     },
+    "original:e385ac158acfc6112339c383": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816097",
+      "source": "뉴시스",
+      "source_body_digest": "3f492d8886e816451cbb76fba1f321002492aacde5af5c6f74e6c4b9f71dad58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:528f16bbb3fabf5ce5b178a3e3f4044930d1d01b3d5351900577ff62f8b8d69d",
+      "source_fact_keys": [
+        "source_fact:v1:9ac288b81a2202423b9c5da5c0f72664ddd8c6185ed470b4ceac823f73ff54cd"
+      ],
+      "source_published_kst": "2026-10-06T17:04+09:00",
+      "title": "이형일, 내년 가상자산 과세에 \"의견 수렴\"…추가 유예 여부 즉답 피해"
+    },
     "original:e38f51b9b80603c6214c0612": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
       "lanes": {
@@ -69486,6 +69846,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T07:11+09:00",
       "title": "명절에 지방 간 10대들, 올리브영서 '질렀다'…비수도권 매출↑ | 연합뉴스"
+    },
+    "original:ebcc6901cd05b722e8679804": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815881",
+      "source": "뉴시스",
+      "source_body_digest": "d3d9bf93bb336ebd30c658e7cc35bf81589e3580e286b5ad24f3ba1d4b7999cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:51bb6d286b52af2fb07df331f320a3febcb8702939eee1f6c002870fe8f2a374",
+      "source_fact_keys": [
+        "source_fact:v1:b5afcf5d2468895375d1bc1b7f21d51a28a4b0e893d3865afec1608e36074247"
+      ],
+      "source_published_kst": "2026-10-06T18:50+09:00",
+      "title": "여야, 외통위 국정감사서 北지뢰 대응·포로 송환 등 설전(종합)"
     },
     "original:ebf4db9615c5a2d438158e75": {
       "first_seen_kst": "2026-10-03T12:26:15+09:00",
@@ -75181,6 +75558,28 @@
       "source_published_kst": "2026-10-05T21:02+09:00",
       "title": "라디오팜 테라노스틱스, RAD101 2상 종료미팅 완료..3상 준비 착수"
     },
+    "source_fact:138e146341006d53a5f6d783": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06081126645610296",
+      "source": "이데일리",
+      "source_body_digest": "b2f49b4f46f8ba6c326de7905f10e6d250933c32baf200699d11547e96b12533",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3e0ca4f48ea3b520f2bd74a3232413fa1c0fcb0e74edbe9207b0d64f4e24592",
+      "source_fact_keys": [
+        "source_fact:v1:3a18a0f99d19dc91ce365d37aac12d27d452fd89b00872f8f0e176c072ad5993",
+        "source_fact:v1:65d9ef530c00e8f8b95096d31c87cb397ac2f9a2934e3aeba2e93bb389cc1d34",
+        "source_fact:v1:91376c68471729eb76512090accb418e90b94dce095b5e02e0786089d7877b80",
+        "source_fact:v1:d619158e0fa629e2522c96d55b97cbcfa8d57a403f02fc756623769ae961180f",
+        "source_fact:v1:e1e7d3fa525c3952ef602fabb61b319b11d11dda98c0b530d32f4d6502e4995d",
+        "source_fact:v1:fbfecc38d73922d798c04c0dea4054a358b9392ccc1478b6d810cc9be2c1d81b"
+      ],
+      "source_published_kst": "2026-10-06T21:25+09:00",
+      "title": "[美특징주]콘스텔레이션 에너지, 구글과 20년 원전 전력 공급 계약에 개장 전↑"
+    },
     "source_fact:139c1b1aab5571f4ac9531c2": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
       "lanes": {
@@ -79514,6 +79913,28 @@
       "source_published_kst": "2026-10-06T08:30+09:00",
       "title": "환율 12% 빠지자…순이익 쇼크 주의보 떴다"
     },
+    "source_fact:2a844ddffbfef69242d37ddb": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06081126645610296",
+      "source": "이데일리",
+      "source_body_digest": "b2f49b4f46f8ba6c326de7905f10e6d250933c32baf200699d11547e96b12533",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3e0ca4f48ea3b520f2bd74a3232413fa1c0fcb0e74edbe9207b0d64f4e24592",
+      "source_fact_keys": [
+        "source_fact:v1:3a18a0f99d19dc91ce365d37aac12d27d452fd89b00872f8f0e176c072ad5993",
+        "source_fact:v1:65d9ef530c00e8f8b95096d31c87cb397ac2f9a2934e3aeba2e93bb389cc1d34",
+        "source_fact:v1:91376c68471729eb76512090accb418e90b94dce095b5e02e0786089d7877b80",
+        "source_fact:v1:d619158e0fa629e2522c96d55b97cbcfa8d57a403f02fc756623769ae961180f",
+        "source_fact:v1:e1e7d3fa525c3952ef602fabb61b319b11d11dda98c0b530d32f4d6502e4995d",
+        "source_fact:v1:fbfecc38d73922d798c04c0dea4054a358b9392ccc1478b6d810cc9be2c1d81b"
+      ],
+      "source_published_kst": "2026-10-06T21:25+09:00",
+      "title": "[美특징주]콘스텔레이션 에너지, 구글과 20년 원전 전력 공급 계약에 개장 전↑"
+    },
     "source_fact:2a911bf172ae7b0c8c5cf990": {
       "first_seen_kst": "2026-10-05T22:57:49+09:00",
       "lanes": {
@@ -80070,6 +80491,28 @@
       ],
       "source_published_kst": "2026-10-06T15:59+09:00",
       "title": "자사주 매입 막바지·솔리다임 상장설 악재? 삼전닉스 1~3%대↓(종합) | 연합뉴스"
+    },
+    "source_fact:2d556b066062e837bc9bbe50": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06081126645610296",
+      "source": "이데일리",
+      "source_body_digest": "b2f49b4f46f8ba6c326de7905f10e6d250933c32baf200699d11547e96b12533",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3e0ca4f48ea3b520f2bd74a3232413fa1c0fcb0e74edbe9207b0d64f4e24592",
+      "source_fact_keys": [
+        "source_fact:v1:3a18a0f99d19dc91ce365d37aac12d27d452fd89b00872f8f0e176c072ad5993",
+        "source_fact:v1:65d9ef530c00e8f8b95096d31c87cb397ac2f9a2934e3aeba2e93bb389cc1d34",
+        "source_fact:v1:91376c68471729eb76512090accb418e90b94dce095b5e02e0786089d7877b80",
+        "source_fact:v1:d619158e0fa629e2522c96d55b97cbcfa8d57a403f02fc756623769ae961180f",
+        "source_fact:v1:e1e7d3fa525c3952ef602fabb61b319b11d11dda98c0b530d32f4d6502e4995d",
+        "source_fact:v1:fbfecc38d73922d798c04c0dea4054a358b9392ccc1478b6d810cc9be2c1d81b"
+      ],
+      "source_published_kst": "2026-10-06T21:25+09:00",
+      "title": "[美특징주]콘스텔레이션 에너지, 구글과 20년 원전 전력 공급 계약에 개장 전↑"
     },
     "source_fact:2d5fe84b01f192aba492d9e2": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
@@ -83291,6 +83734,23 @@
       "source_published_kst": "2026-10-06T10:59+09:00",
       "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 공급"
     },
+    "source_fact:3e07d3ec65915dccc01a3af9": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815881",
+      "source": "뉴시스",
+      "source_body_digest": "d3d9bf93bb336ebd30c658e7cc35bf81589e3580e286b5ad24f3ba1d4b7999cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:51bb6d286b52af2fb07df331f320a3febcb8702939eee1f6c002870fe8f2a374",
+      "source_fact_keys": [
+        "source_fact:v1:b5afcf5d2468895375d1bc1b7f21d51a28a4b0e893d3865afec1608e36074247"
+      ],
+      "source_published_kst": "2026-10-06T18:50+09:00",
+      "title": "여야, 외통위 국정감사서 北지뢰 대응·포로 송환 등 설전(종합)"
+    },
     "source_fact:3e11f48d56b390a31413a947": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -86428,6 +86888,24 @@
       ],
       "source_published_kst": "2026-10-06T17:34+09:00",
       "title": "기업 DB, 계열사에만 제공…조사協, 한국평가데이터 공정위 신고"
+    },
+    "source_fact:4d245a1cc669fdd41ed6ea22": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.hankyung.com/article/2026100663001",
+      "source": "한국경제",
+      "source_body_digest": "40ca31bdab9509789119f1061c8ef8ec2397fd05ddafbbbd005a8fbf257362a3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c3a18467f5f6f50ba1495aafd57df427a99544a53093ef9952b49e44cc8e89ad",
+      "source_fact_keys": [
+        "source_fact:v1:d9e27c582f8a845e3ddec8f9388dbaa5594258241aed9c8ee8c6f51511b74e78",
+        "source_fact:v1:f7ca50218094a95569035e5472b065bc8661e7e91c1995defbe566057e766d8f"
+      ],
+      "source_published_kst": "2026-10-06T18:04+09:00",
+      "title": "HLB, 간암 신약 '4수' 도전"
     },
     "source_fact:4d45a05ac4a815641728397d": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
@@ -94495,6 +94973,23 @@
       "source_published_kst": "2026-10-05T08:55+09:00",
       "title": "매크로 공백+SEC 규제완화 효과…8.6만달러 회복[코인 모닝콜]"
     },
+    "source_fact:732c1bed4d69751862f1dea8": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006177800054",
+      "source": "연합뉴스",
+      "source_body_digest": "8a19beb2dc3f125708688bcdccbc14952cf1520916b7eff0ed6878c296f1b824",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1ab4df7aabe0b8b50aabd821a8973f55ad75b631ca486e8a84fa8eed0582337a",
+      "source_fact_keys": [
+        "source_fact:v1:30a0ad49ae1e8407f927a81a5ab9c6fee61442255ceacb8d0e3bc7c961a65806"
+      ],
+      "source_published_kst": "2026-10-06T18:03+09:00",
+      "title": "조선대병원, 로봇수술 1천회 달성…\"지방에서도 고난도 수술\" | 연합뉴스"
+    },
     "source_fact:734e9cbb3a8f8506f82a9d8d": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -95629,6 +96124,28 @@
       "source_published_kst": "2026-10-06T16:28+09:00",
       "title": "신세계그룹, 워너브라더스 인수에 10억달러…"
     },
+    "source_fact:77c557cecd3a7863ddf5cde0": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06081126645610296",
+      "source": "이데일리",
+      "source_body_digest": "b2f49b4f46f8ba6c326de7905f10e6d250933c32baf200699d11547e96b12533",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3e0ca4f48ea3b520f2bd74a3232413fa1c0fcb0e74edbe9207b0d64f4e24592",
+      "source_fact_keys": [
+        "source_fact:v1:3a18a0f99d19dc91ce365d37aac12d27d452fd89b00872f8f0e176c072ad5993",
+        "source_fact:v1:65d9ef530c00e8f8b95096d31c87cb397ac2f9a2934e3aeba2e93bb389cc1d34",
+        "source_fact:v1:91376c68471729eb76512090accb418e90b94dce095b5e02e0786089d7877b80",
+        "source_fact:v1:d619158e0fa629e2522c96d55b97cbcfa8d57a403f02fc756623769ae961180f",
+        "source_fact:v1:e1e7d3fa525c3952ef602fabb61b319b11d11dda98c0b530d32f4d6502e4995d",
+        "source_fact:v1:fbfecc38d73922d798c04c0dea4054a358b9392ccc1478b6d810cc9be2c1d81b"
+      ],
+      "source_published_kst": "2026-10-06T21:25+09:00",
+      "title": "[美특징주]콘스텔레이션 에너지, 구글과 20년 원전 전력 공급 계약에 개장 전↑"
+    },
     "source_fact:77de6e79e5f089d4bab004b5": {
       "first_seen_kst": "2026-10-06T18:16:47+09:00",
       "lanes": {
@@ -96316,6 +96833,24 @@
       ],
       "source_published_kst": "2026-10-06T18:02+09:00",
       "title": "포스코퓨처엠, 삼성SDI에 양극재 6조 공급"
+    },
+    "source_fact:7b9bfd26a4155f91d6647296": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.hankyung.com/article/2026100663001",
+      "source": "한국경제",
+      "source_body_digest": "40ca31bdab9509789119f1061c8ef8ec2397fd05ddafbbbd005a8fbf257362a3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c3a18467f5f6f50ba1495aafd57df427a99544a53093ef9952b49e44cc8e89ad",
+      "source_fact_keys": [
+        "source_fact:v1:d9e27c582f8a845e3ddec8f9388dbaa5594258241aed9c8ee8c6f51511b74e78",
+        "source_fact:v1:f7ca50218094a95569035e5472b065bc8661e7e91c1995defbe566057e766d8f"
+      ],
+      "source_published_kst": "2026-10-06T18:04+09:00",
+      "title": "HLB, 간암 신약 '4수' 도전"
     },
     "source_fact:7babe91c832784a769cdddc4": {
       "first_seen_kst": "2026-10-06T22:51:44+09:00",
@@ -97198,6 +97733,23 @@
       ],
       "source_published_kst": "2026-10-06T14:14+09:00",
       "title": "경상수지 흑자 너무 많아도 문제? IMF 내년 한국에 ‘과잉 평가’ 전망 [머니뭐니]"
+    },
+    "source_fact:7f9b41b938ff651c9f13fd76": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816097",
+      "source": "뉴시스",
+      "source_body_digest": "3f492d8886e816451cbb76fba1f321002492aacde5af5c6f74e6c4b9f71dad58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:528f16bbb3fabf5ce5b178a3e3f4044930d1d01b3d5351900577ff62f8b8d69d",
+      "source_fact_keys": [
+        "source_fact:v1:9ac288b81a2202423b9c5da5c0f72664ddd8c6185ed470b4ceac823f73ff54cd"
+      ],
+      "source_published_kst": "2026-10-06T17:04+09:00",
+      "title": "이형일, 내년 가상자산 과세에 \"의견 수렴\"…추가 유예 여부 즉답 피해"
     },
     "source_fact:7fa5054134c8e13dee9cd22f": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
@@ -100071,6 +100623,24 @@
       ],
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
+    },
+    "source_fact:8dc489b1b18f0d31e34abf55": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.hankyung.com/article/202610065636O",
+      "source": "한국경제",
+      "source_body_digest": "cb55fc51d56a6ae15e0876d2a1ea051252c78d327bf6b89481f5f61f6db4593c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1f69118f6d7ac9d272f72297d4122d4027b8b0c674d5754dce83c87584a5d2cb",
+      "source_fact_keys": [
+        "source_fact:v1:9e9fed52d1a0325941fae569f9198a25c9ffc0c9041d60f8ca3b679989798bbb",
+        "source_fact:v1:ad4632b5804297c6bd4f58f61c10daca201ade9f4fabd5a3727528f9a31ef2dd"
+      ],
+      "source_published_kst": "2026-10-06T14:48+09:00",
+      "title": "비드래프트, 퀀티넘 양자컴퓨팅 플랫폼 이용 기업 선정"
     },
     "source_fact:8dd37e8bbfafa7df972e14ee": {
       "first_seen_kst": "2026-10-06T17:24:43+09:00",
@@ -107920,6 +108490,28 @@
       "source_published_kst": "2026-10-06T08:58+09:00",
       "title": "오텍, AI 서버부터 신선배송까지…'열관리'로 성장축 확장"
     },
+    "source_fact:b3bdb8de00424ef62da9e44c": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06081126645610296",
+      "source": "이데일리",
+      "source_body_digest": "b2f49b4f46f8ba6c326de7905f10e6d250933c32baf200699d11547e96b12533",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3e0ca4f48ea3b520f2bd74a3232413fa1c0fcb0e74edbe9207b0d64f4e24592",
+      "source_fact_keys": [
+        "source_fact:v1:3a18a0f99d19dc91ce365d37aac12d27d452fd89b00872f8f0e176c072ad5993",
+        "source_fact:v1:65d9ef530c00e8f8b95096d31c87cb397ac2f9a2934e3aeba2e93bb389cc1d34",
+        "source_fact:v1:91376c68471729eb76512090accb418e90b94dce095b5e02e0786089d7877b80",
+        "source_fact:v1:d619158e0fa629e2522c96d55b97cbcfa8d57a403f02fc756623769ae961180f",
+        "source_fact:v1:e1e7d3fa525c3952ef602fabb61b319b11d11dda98c0b530d32f4d6502e4995d",
+        "source_fact:v1:fbfecc38d73922d798c04c0dea4054a358b9392ccc1478b6d810cc9be2c1d81b"
+      ],
+      "source_published_kst": "2026-10-06T21:25+09:00",
+      "title": "[美특징주]콘스텔레이션 에너지, 구글과 20년 원전 전력 공급 계약에 개장 전↑"
+    },
     "source_fact:b3fa4be90c981fec6e7f69bc": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
       "lanes": {
@@ -109820,6 +110412,23 @@
       ],
       "source_published_kst": "2026-10-06T13:31+09:00",
       "title": "한미반도체, 삼성전기에 244억원 규모 'MSVP' 반도체 장비 공급"
+    },
+    "source_fact:bd7d8e06c8524d8a5c59563b": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169384",
+      "source": "매일경제",
+      "source_body_digest": "ad737db95c9acc25c0b241ed274c7fe2be9c6016664532a4737aa849df20756f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:446eb1951bd2e0cfaaba0cc4ffe4ccd80bc87a9fbfff9de1b1a3cea889505103",
+      "source_fact_keys": [
+        "source_fact:v1:64f8784d1f119e5a1608751fde112580dbae5b0bf6b8f4433516729d8f794579"
+      ],
+      "source_published_kst": "2026-10-06T16:11+09:00",
+      "title": "[속보] “해리포터를 스타필드로?”…신세계, 워너브라더스 인수에 1.4조 베팅"
     },
     "source_fact:bd8c29ab3ec88a665367ff71": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
@@ -116869,6 +117478,24 @@
       "source_published_kst": "2026-10-05T10:35+09:00",
       "title": "삼성바이오·SK바이오팜·한미약품, 아태 바이오 ‘10대 거래’ 선정"
     },
+    "source_fact:de3ac6f90b983b21fc2d4657": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.hankyung.com/article/202610065636O",
+      "source": "한국경제",
+      "source_body_digest": "cb55fc51d56a6ae15e0876d2a1ea051252c78d327bf6b89481f5f61f6db4593c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1f69118f6d7ac9d272f72297d4122d4027b8b0c674d5754dce83c87584a5d2cb",
+      "source_fact_keys": [
+        "source_fact:v1:9e9fed52d1a0325941fae569f9198a25c9ffc0c9041d60f8ca3b679989798bbb",
+        "source_fact:v1:ad4632b5804297c6bd4f58f61c10daca201ade9f4fabd5a3727528f9a31ef2dd"
+      ],
+      "source_published_kst": "2026-10-06T14:48+09:00",
+      "title": "비드래프트, 퀀티넘 양자컴퓨팅 플랫폼 이용 기업 선정"
+    },
     "source_fact:de40c01a8669f0ef0043e9e5": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
       "lanes": {
@@ -121808,6 +122435,28 @@
       "source_published_kst": "2026-10-06T15:06+09:00",
       "title": "엠키스코어, AI Festa 26서 검증된 AI Factory 역량 공개… 대규모 구축부터 AI 활용까지"
     },
+    "source_fact:f557d79a39ee48a1a1bdee42": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06081126645610296",
+      "source": "이데일리",
+      "source_body_digest": "b2f49b4f46f8ba6c326de7905f10e6d250933c32baf200699d11547e96b12533",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3e0ca4f48ea3b520f2bd74a3232413fa1c0fcb0e74edbe9207b0d64f4e24592",
+      "source_fact_keys": [
+        "source_fact:v1:3a18a0f99d19dc91ce365d37aac12d27d452fd89b00872f8f0e176c072ad5993",
+        "source_fact:v1:65d9ef530c00e8f8b95096d31c87cb397ac2f9a2934e3aeba2e93bb389cc1d34",
+        "source_fact:v1:91376c68471729eb76512090accb418e90b94dce095b5e02e0786089d7877b80",
+        "source_fact:v1:d619158e0fa629e2522c96d55b97cbcfa8d57a403f02fc756623769ae961180f",
+        "source_fact:v1:e1e7d3fa525c3952ef602fabb61b319b11d11dda98c0b530d32f4d6502e4995d",
+        "source_fact:v1:fbfecc38d73922d798c04c0dea4054a358b9392ccc1478b6d810cc9be2c1d81b"
+      ],
+      "source_published_kst": "2026-10-06T21:25+09:00",
+      "title": "[美특징주]콘스텔레이션 에너지, 구글과 20년 원전 전력 공급 계약에 개장 전↑"
+    },
     "source_fact:f576233ea231f7ffcf838c9f": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
       "lanes": {
@@ -124757,6 +125406,24 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T09:47+09:00",
       "title": "운문댐 가뭄 장기화…대구시 \"다음 달 초 금호강 물 공급 예상\" | 연합뉴스"
+    },
+    "title:067eea629ed31da695fcca79": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.hankyung.com/article/2026100663001",
+      "source": "한국경제",
+      "source_body_digest": "40ca31bdab9509789119f1061c8ef8ec2397fd05ddafbbbd005a8fbf257362a3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c3a18467f5f6f50ba1495aafd57df427a99544a53093ef9952b49e44cc8e89ad",
+      "source_fact_keys": [
+        "source_fact:v1:d9e27c582f8a845e3ddec8f9388dbaa5594258241aed9c8ee8c6f51511b74e78",
+        "source_fact:v1:f7ca50218094a95569035e5472b065bc8661e7e91c1995defbe566057e766d8f"
+      ],
+      "source_published_kst": "2026-10-06T18:04+09:00",
+      "title": "HLB, 간암 신약 '4수' 도전"
     },
     "title:06906882bf0206cdb19014dd": {
       "first_seen_kst": "2026-09-26T14:03:52+09:00",
@@ -137845,6 +138512,23 @@
       "source": "이투데이",
       "title": "김성호 포스코 노조위원장 ‘3선’ 성공…멈췄던 임금협상 다시 테이블로"
     },
+    "title:84a0e7ed37b0c3dfe214a962": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815881",
+      "source": "뉴시스",
+      "source_body_digest": "d3d9bf93bb336ebd30c658e7cc35bf81589e3580e286b5ad24f3ba1d4b7999cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:51bb6d286b52af2fb07df331f320a3febcb8702939eee1f6c002870fe8f2a374",
+      "source_fact_keys": [
+        "source_fact:v1:b5afcf5d2468895375d1bc1b7f21d51a28a4b0e893d3865afec1608e36074247"
+      ],
+      "source_published_kst": "2026-10-06T18:50+09:00",
+      "title": "여야, 외통위 국정감사서 北지뢰 대응·포로 송환 등 설전(종합)"
+    },
     "title:84a83fbf552c0d902ff45a18": {
       "first_seen_kst": "2026-10-03T22:33:30+09:00",
       "lanes": {
@@ -139918,6 +140602,24 @@
       "source_published_kst": "2026-10-05T17:54+09:00",
       "title": "24년來 최고 금리도 AI 기세 못막아…나스닥 사상 최고[월스트리트in]"
     },
+    "title:96d63c9e8e4139c040c70389": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.hankyung.com/article/202610065636O",
+      "source": "한국경제",
+      "source_body_digest": "cb55fc51d56a6ae15e0876d2a1ea051252c78d327bf6b89481f5f61f6db4593c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1f69118f6d7ac9d272f72297d4122d4027b8b0c674d5754dce83c87584a5d2cb",
+      "source_fact_keys": [
+        "source_fact:v1:9e9fed52d1a0325941fae569f9198a25c9ffc0c9041d60f8ca3b679989798bbb",
+        "source_fact:v1:ad4632b5804297c6bd4f58f61c10daca201ade9f4fabd5a3727528f9a31ef2dd"
+      ],
+      "source_published_kst": "2026-10-06T14:48+09:00",
+      "title": "비드래프트, 퀀티넘 양자컴퓨팅 플랫폼 이용 기업 선정"
+    },
     "title:96edcfc5d7dbaad049948a2e": {
       "first_seen_kst": "2026-10-02T20:28:38+09:00",
       "lanes": {
@@ -140654,6 +141356,28 @@
       ],
       "source_published_kst": "2026-10-06T06:40+09:00",
       "title": "“중동 원유수출 증가·G7 비축유 방출 약속“ 국제유가 1.8%↓"
+    },
+    "title:9ea3ad4da73b808f795f1a93": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06081126645610296",
+      "source": "이데일리",
+      "source_body_digest": "b2f49b4f46f8ba6c326de7905f10e6d250933c32baf200699d11547e96b12533",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3e0ca4f48ea3b520f2bd74a3232413fa1c0fcb0e74edbe9207b0d64f4e24592",
+      "source_fact_keys": [
+        "source_fact:v1:3a18a0f99d19dc91ce365d37aac12d27d452fd89b00872f8f0e176c072ad5993",
+        "source_fact:v1:65d9ef530c00e8f8b95096d31c87cb397ac2f9a2934e3aeba2e93bb389cc1d34",
+        "source_fact:v1:91376c68471729eb76512090accb418e90b94dce095b5e02e0786089d7877b80",
+        "source_fact:v1:d619158e0fa629e2522c96d55b97cbcfa8d57a403f02fc756623769ae961180f",
+        "source_fact:v1:e1e7d3fa525c3952ef602fabb61b319b11d11dda98c0b530d32f4d6502e4995d",
+        "source_fact:v1:fbfecc38d73922d798c04c0dea4054a358b9392ccc1478b6d810cc9be2c1d81b"
+      ],
+      "source_published_kst": "2026-10-06T21:25+09:00",
+      "title": "[美특징주]콘스텔레이션 에너지, 구글과 20년 원전 전력 공급 계약에 개장 전↑"
     },
     "title:9eab8aa8f3ffaeea8adb6981": {
       "first_seen_kst": "2026-10-02T06:53:18+09:00",
@@ -143675,6 +144399,23 @@
       "source": "이데일리",
       "title": "마이크론, 호실적에 목표주가 상향…펀더멘털 고점 우려 해소-DA데이비슨"
     },
+    "title:bc523b12fb65bc3389eb9256": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169384",
+      "source": "매일경제",
+      "source_body_digest": "ad737db95c9acc25c0b241ed274c7fe2be9c6016664532a4737aa849df20756f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:446eb1951bd2e0cfaaba0cc4ffe4ccd80bc87a9fbfff9de1b1a3cea889505103",
+      "source_fact_keys": [
+        "source_fact:v1:64f8784d1f119e5a1608751fde112580dbae5b0bf6b8f4433516729d8f794579"
+      ],
+      "source_published_kst": "2026-10-06T16:11+09:00",
+      "title": "[속보] “해리포터를 스타필드로?”…신세계, 워너브라더스 인수에 1.4조 베팅"
+    },
     "title:bc57fb99117329754c4341d2": {
       "first_seen_kst": "2026-10-05T10:39:16+09:00",
       "lanes": {
@@ -145595,6 +146336,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T06:00+09:00",
       "title": "美 인상 기대 꺾였지만 장기금리 5.28%…환율 어디로[주간외환전망]"
+    },
+    "title:d14d750967606a3fcceba680": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006177800054",
+      "source": "연합뉴스",
+      "source_body_digest": "8a19beb2dc3f125708688bcdccbc14952cf1520916b7eff0ed6878c296f1b824",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1ab4df7aabe0b8b50aabd821a8973f55ad75b631ca486e8a84fa8eed0582337a",
+      "source_fact_keys": [
+        "source_fact:v1:30a0ad49ae1e8407f927a81a5ab9c6fee61442255ceacb8d0e3bc7c961a65806"
+      ],
+      "source_published_kst": "2026-10-06T18:03+09:00",
+      "title": "조선대병원, 로봇수술 1천회 달성…\"지방에서도 고난도 수술\" | 연합뉴스"
     },
     "title:d15f6a9f2d2ab4be60b214c0": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
@@ -147667,6 +148425,23 @@
       "source": "파이낸셜뉴스",
       "title": "AI 특수에 삼성전자 HBM4 매출 비중 내년 2배 증가-KB證"
     },
+    "title:e385ac158acfc6112339c383": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816097",
+      "source": "뉴시스",
+      "source_body_digest": "3f492d8886e816451cbb76fba1f321002492aacde5af5c6f74e6c4b9f71dad58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:528f16bbb3fabf5ce5b178a3e3f4044930d1d01b3d5351900577ff62f8b8d69d",
+      "source_fact_keys": [
+        "source_fact:v1:9ac288b81a2202423b9c5da5c0f72664ddd8c6185ed470b4ceac823f73ff54cd"
+      ],
+      "source_published_kst": "2026-10-06T17:04+09:00",
+      "title": "이형일, 내년 가상자산 과세에 \"의견 수렴\"…추가 유예 여부 즉답 피해"
+    },
     "title:e38f51b9b80603c6214c0612": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
       "lanes": {
@@ -148765,6 +149540,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T07:11+09:00",
       "title": "명절에 지방 간 10대들, 올리브영서 '질렀다'…비수도권 매출↑ | 연합뉴스"
+    },
+    "title:ebcc6901cd05b722e8679804": {
+      "first_seen_kst": "2026-10-06T23:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:29:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815881",
+      "source": "뉴시스",
+      "source_body_digest": "d3d9bf93bb336ebd30c658e7cc35bf81589e3580e286b5ad24f3ba1d4b7999cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:51bb6d286b52af2fb07df331f320a3febcb8702939eee1f6c002870fe8f2a374",
+      "source_fact_keys": [
+        "source_fact:v1:b5afcf5d2468895375d1bc1b7f21d51a28a4b0e893d3865afec1608e36074247"
+      ],
+      "source_published_kst": "2026-10-06T18:50+09:00",
+      "title": "여야, 외통위 국정감사서 北지뢰 대응·포로 송환 등 설전(종합)"
     },
     "title:ebf4db9615c5a2d438158e75": {
       "first_seen_kst": "2026-10-03T12:26:15+09:00",
@@ -150620,5 +151412,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T23:19:02+09:00"
+  "updated_at_kst": "2026-10-06T23:29:45+09:00"
 }
