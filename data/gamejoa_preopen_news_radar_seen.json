@@ -4999,6 +4999,23 @@
       "source": "매일경제",
       "title": "증시 횡보장서 뜬 커버드콜ETF … 순자산 30조 눈앞"
     },
+    "event:e58ee6e445aab931682bace3": {
+      "event_alias_evidence_message_id": 2292,
+      "event_alias_evidence_run_id": 37403253364,
+      "first_seen_kst": "2026-10-06T11:20:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T11:20:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T11:20:44+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632702",
+      "source": "이투데이",
+      "source_body_digest": "e70ba9857636e0be7335e491b224a82405925c25d46959756315fcaf4bb2518b",
+      "source_event_identity": "source_event:v2:industrial_adoption:d944d5855861af06cd4b4a3c12357750cc46d8b648236b868b657ade78c59c7b",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T10:13+09:00",
+      "title": "씨피시스템, 글로벌 MLCC 제조사 장비에 ‘로보킷’ 공급…공정 진입 본격화"
+    },
     "event:e5ade964b0522dc04ccdf124": {
       "first_seen_kst": "2026-09-19T08:53:16+09:00",
       "lanes": {
@@ -5998,6 +6015,29 @@
       "source_published_kst": "2026-10-06T08:25+09:00",
       "title": "한미반도체, 삼성전기와 245억 규모 공급계약"
     },
+    "fact:0edf99e22f180e82fba66f11": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006101304",
+      "source": "지디넷코리아",
+      "source_body_digest": "2fdd24875200c6508926ba40a34c7263e41037412e77cb3e5a9a6e521572b4ee",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d0c7292f17139c6ebe640e3f80304087e043045e295a342a9eedfb85e2bdb60b",
+      "source_fact_keys": [
+        "source_fact:v1:29b2a628625d8a059344abe33a81672147921b23fcc4455b1a56347e7c05bec5",
+        "source_fact:v1:75438f172e1333b988ff75c759df33da45b3e86f31b179bd48128081fadf74be",
+        "source_fact:v1:7845f2005305b4102147de09d4c9e0ecce9fc18735ab4402d51a1e8b59343357",
+        "source_fact:v1:aa94f6ce132356a9f0a110f1a80cdfc53904a8b8f9e0431a80b4e32be431c0ee",
+        "source_fact:v1:ae8e765c5ca3725d2c304c6d39cb4d9193de0134c72a25c8477804e6634d7d30",
+        "source_fact:v1:b345c83c1fb6ccbeb9c2f7bf2d41e5e5f635e4912eafab564aa22e058250444c",
+        "source_fact:v1:e26ed099addc2d3b0801d19390551123e64929ca1ca0ed915ee97c4774edf2be"
+      ],
+      "source_published_kst": "2026-10-06T10:22+09:00",
+      "title": "에코프로비엠, 삼성SDI와 '전고체' 개발 협력…상용화 목전"
+    },
     "fact:0fa78844e6f0e29da2be1568": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -6763,6 +6803,23 @@
       "source_published_kst": "2026-10-05T21:32+09:00",
       "title": "에볼루션 메탈스 앤 테크, 포항 희토류 자석공장 12월 17일 개장..연 1만t 확대 추진"
     },
+    "fact:2cc4b1195d5f749c2e2bb374": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10893767",
+      "source": "헤럴드경제",
+      "source_body_digest": "41edde68a6c8ebdffad2c25f37e19012aee8740ffb8317f92a94610bba4fefa5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:adabab1b36b70491543070ee746f75e40ed8e5772268dac7b3349cc085f07b39",
+      "source_fact_keys": [
+        "source_fact:v1:f14c6695e3e9aba53606d0fb538ae58ebef1cef1eeccfcb81f66c15c01739d89"
+      ],
+      "source_published_kst": "2026-10-06T09:43+09:00",
+      "title": "두산로보틱스, 국산 AI칩 기반 ‘피지컬 AI’ 개발…총 989억원 규모"
+    },
     "fact:2cfaa2443af3aa07259ce343": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
       "lanes": {
@@ -7467,7 +7524,7 @@
       "link": "https://www.fnnews.com/news/202610061000440539",
       "source": "파이낸셜뉴스",
       "source_body_digest": "456b14e7d52f43ac84525a8dd12695dc770e7ea9b97e39fa25371cae31bf2728",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_delivery:953ee206c135c175fa78175d742512ff88363937ecfa2301ba75bbc046250521",
       "source_fact_identity": "source_facts:v1:ac4267126364efaea0f459ae0079b19d0be149174256582e7ccea82d768d2e1c",
       "source_fact_keys": [
         "source_fact:v1:0cf44b1693b8eb60c5d2aeef22fd4ef6aa84b462e6e91cfd5b126b73f96d74f2",
@@ -7842,6 +7899,26 @@
       ],
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
+    },
+    "fact:58738a6d70181b241619210d": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03070086645610296",
+      "source": "이데일리",
+      "source_body_digest": "fd3ea15981229d5ef0bf79a864251292a751d51c6b578149916ba3608684a8da",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8cc2b3c4498e33b05dda12e53da4b18a174722f23b1a32ae8ef99d0bc76d8620",
+      "source_fact_keys": [
+        "source_fact:v1:901d13af36d6ccdd9b5916327360316d6a7ee83684b30673fa752b70a99ba273",
+        "source_fact:v1:b195ef818e8c8a5e9240b47eb034430a0804e38c7b5083881f8c0b45020436ba",
+        "source_fact:v1:c1d491f0b3c4ccd7555c825dd37ef1541a5d8fa3c9e1b882aa0af4ba6baf69ec",
+        "source_fact:v1:e612778d015d1578cace7a5e42bb7f9ff2d95cfbabcc0c4442361aa3746d4aa0"
+      ],
+      "source_published_kst": "2026-10-06T10:21+09:00",
+      "title": "원프레딕트, 7368억 피지컬AI 사업 참여…제조 AI 총괄"
     },
     "fact:5877ef625b2e470ada791ea5": {
       "first_seen_kst": "2026-10-05T22:57:49+09:00",
@@ -9623,6 +9700,29 @@
       "source_published_kst": "2026-10-05T09:13+09:00",
       "title": "\"국채 5%에도 주식이 낫다…반도체 대형주 쥐고 오래 기다려라\""
     },
+    "fact:a03ecf06870c0423631f08dd": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168734",
+      "source": "매일경제",
+      "source_body_digest": "d17f886080a9977be9577ea158f7c8d7d45d10913d11c4a57fb4334baad75b03",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9cde4272667e5285842495e455cc30dee4f08a55d30a6ff7bee7b30f17a7e11",
+      "source_fact_keys": [
+        "source_fact:v1:0557ffa33fcfa3cff0f9fecbb4ed8c58b27f90489756e16a79c6d85d987ea4e5",
+        "source_fact:v1:490ffb86a3458d63a9ccd8edf9ba527bd6921b9263eabd1c082a5edabb952821",
+        "source_fact:v1:7b870634e4b13da18d756899cd26ff47dae78c427a51ab15bde9e137fa0b3b6b",
+        "source_fact:v1:beffbe6735b37e28d3918d2899aaeeda72de0a1e01f98358fd31d80b06ac7882",
+        "source_fact:v1:ca44a4aedfe40192f459903be6d9d262dcf481d236f76980d71f675152f1e9be",
+        "source_fact:v1:ee22769d1238d8b416d9894dea17b0b614b808804599e4a9eca33b84cc44df93",
+        "source_fact:v1:fd6a656b52d048dfd6ea1620e8c65995eaf25161a44120a25215e5721787723c"
+      ],
+      "source_published_kst": "2026-10-05T21:32+09:00",
+      "title": "에볼루션 메탈스 앤 테크, 포항 희토류 자석공장 12월 17일 개장..연 1만t 확대 추진"
+    },
     "fact:a2d1c29d01679f21af8fadcd": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
       "lanes": {
@@ -9632,7 +9732,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815111",
       "source": "뉴시스",
       "source_body_digest": "46ddc403abd7412309e5df54bd4ebefdfeb96215db7541a48c60f5ce8eb0f1e9",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_adoption:d944d5855861af06cd4b4a3c12357750cc46d8b648236b868b657ade78c59c7b",
       "source_fact_identity": "source_facts:v1:9f46452eda3a2c107fd0995995d1d5eb56adcf0cdd23327685dc8a2ed8bca1e8",
       "source_fact_keys": [
         "source_fact:v1:2544b00671bb2158525144964577ae2c7acee20882e4be333591fd5c3f293f78",
@@ -10165,6 +10265,26 @@
       ],
       "source_published_kst": "2026-10-06T08:57+09:00",
       "title": "LH, 서울대에 기숙사형 전세임대 200가구 공급…전국 500가구 공모"
+    },
+    "fact:c10bad0897aebae10cd3e44b": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.mk.co.kr/news/it/12169019",
+      "source": "매일경제",
+      "source_body_digest": "bb105521d97e033eabd70c6d1122eb351759c00db0c9b28f513f975840f3d6ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0cf2c2d3c49a496f7e3a56d6eb91ac7a1e2077ee0b0fa5cd17d7e712ac486a1",
+      "source_fact_keys": [
+        "source_fact:v1:3ef8d0d2404ff3551452c55264db9d3f3d70ce99d1456b16c0228eb449a985b6",
+        "source_fact:v1:78b2ab6e0aaf459ea77a5036c5f6aad1f97ca2ab407784b9ffebefac5e59a1f9",
+        "source_fact:v1:8f1c7867bc8be5f03efc272a6c81dec367d4dfddfdd434190503d540907fcc93",
+        "source_fact:v1:b46d2e0d8dc84d57bca71a9b6a761216747ba94f94210bc4d3224543abcf3bc1"
+      ],
+      "source_published_kst": "2026-10-06T10:28+09:00",
+      "title": "에이프릴바이오 “APB-R3 임상결과 매우 고무적…다음 임상서 효능 확대 기대”"
     },
     "fact:c14cdbe8f99eebcdee16ff0d": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
@@ -15307,7 +15427,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815111",
       "source": "뉴시스",
       "source_body_digest": "46ddc403abd7412309e5df54bd4ebefdfeb96215db7541a48c60f5ce8eb0f1e9",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_adoption:d944d5855861af06cd4b4a3c12357750cc46d8b648236b868b657ade78c59c7b",
       "source_fact_identity": "source_facts:v1:9f46452eda3a2c107fd0995995d1d5eb56adcf0cdd23327685dc8a2ed8bca1e8",
       "source_fact_keys": [
         "source_fact:v1:2544b00671bb2158525144964577ae2c7acee20882e4be333591fd5c3f293f78",
@@ -18745,6 +18865,26 @@
       "source_published_kst": "2026-10-04T08:00+09:00",
       "title": "“물량 넘치는데 배가 없다”…현대글로비스 ‘100척 시대’, 매출 40조 조기달성 청신호 [비즈360]"
     },
+    "link:5a17a8c130acccd0d0b1b1c0": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.mk.co.kr/news/it/12169019",
+      "source": "매일경제",
+      "source_body_digest": "bb105521d97e033eabd70c6d1122eb351759c00db0c9b28f513f975840f3d6ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0cf2c2d3c49a496f7e3a56d6eb91ac7a1e2077ee0b0fa5cd17d7e712ac486a1",
+      "source_fact_keys": [
+        "source_fact:v1:3ef8d0d2404ff3551452c55264db9d3f3d70ce99d1456b16c0228eb449a985b6",
+        "source_fact:v1:78b2ab6e0aaf459ea77a5036c5f6aad1f97ca2ab407784b9ffebefac5e59a1f9",
+        "source_fact:v1:8f1c7867bc8be5f03efc272a6c81dec367d4dfddfdd434190503d540907fcc93",
+        "source_fact:v1:b46d2e0d8dc84d57bca71a9b6a761216747ba94f94210bc4d3224543abcf3bc1"
+      ],
+      "source_published_kst": "2026-10-06T10:28+09:00",
+      "title": "에이프릴바이오 “APB-R3 임상결과 매우 고무적…다음 임상서 효능 확대 기대”"
+    },
     "link:5a46f7d29274f129126a74c5": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
       "lanes": {
@@ -19012,6 +19152,29 @@
       "link": "https://www.newsis.com/view/NISX20260918_0003796384",
       "source": "뉴시스",
       "title": "[속보]뉴욕증시, 혼조 출발…연준 금리 인상 속 나스닥 0.3%↑"
+    },
+    "link:5dd396a85e32edc285072307": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168734",
+      "source": "매일경제",
+      "source_body_digest": "d17f886080a9977be9577ea158f7c8d7d45d10913d11c4a57fb4334baad75b03",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9cde4272667e5285842495e455cc30dee4f08a55d30a6ff7bee7b30f17a7e11",
+      "source_fact_keys": [
+        "source_fact:v1:0557ffa33fcfa3cff0f9fecbb4ed8c58b27f90489756e16a79c6d85d987ea4e5",
+        "source_fact:v1:490ffb86a3458d63a9ccd8edf9ba527bd6921b9263eabd1c082a5edabb952821",
+        "source_fact:v1:7b870634e4b13da18d756899cd26ff47dae78c427a51ab15bde9e137fa0b3b6b",
+        "source_fact:v1:beffbe6735b37e28d3918d2899aaeeda72de0a1e01f98358fd31d80b06ac7882",
+        "source_fact:v1:ca44a4aedfe40192f459903be6d9d262dcf481d236f76980d71f675152f1e9be",
+        "source_fact:v1:ee22769d1238d8b416d9894dea17b0b614b808804599e4a9eca33b84cc44df93",
+        "source_fact:v1:fd6a656b52d048dfd6ea1620e8c65995eaf25161a44120a25215e5721787723c"
+      ],
+      "source_published_kst": "2026-10-05T21:32+09:00",
+      "title": "에볼루션 메탈스 앤 테크, 포항 희토류 자석공장 12월 17일 개장..연 1만t 확대 추진"
     },
     "link:5de14a4fef3898f693ede3de": {
       "first_seen_kst": "2026-10-05T16:09:26+09:00",
@@ -21015,6 +21178,21 @@
       "link": "https://biz.heraldcorp.com/article/10886890",
       "source": "헤럴드경제",
       "title": "“주가 싸다” 204조원 베팅한 엔비디아…美 사상 최대 자사주 매입[투자360]"
+    },
+    "link:7720050fc45983163ba0296c": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12169015",
+      "source": "매일경제",
+      "source_body_digest": "2d818707ce945c0a714cb6f0af982b417c382445d2234ac815a621fc1c44b36b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T10:23+09:00",
+      "title": "“고성~거제 24.6km 연결”…쌍용건설, 8000억 규모 남부내륙철도 9공구 수주"
     },
     "link:774128b37f328b6456da27d2": {
       "first_seen_kst": "2026-09-29T17:06:52+09:00",
@@ -24031,7 +24209,7 @@
       "link": "https://www.fnnews.com/news/202610061000440539",
       "source": "파이낸셜뉴스",
       "source_body_digest": "456b14e7d52f43ac84525a8dd12695dc770e7ea9b97e39fa25371cae31bf2728",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_delivery:953ee206c135c175fa78175d742512ff88363937ecfa2301ba75bbc046250521",
       "source_fact_identity": "source_facts:v1:ac4267126364efaea0f459ae0079b19d0be149174256582e7ccea82d768d2e1c",
       "source_fact_keys": [
         "source_fact:v1:0cf44b1693b8eb60c5d2aeef22fd4ef6aa84b462e6e91cfd5b126b73f96d74f2",
@@ -24180,6 +24358,26 @@
       "link": "https://www.mk.co.kr/news/stock/12157738",
       "source": "매일경제",
       "title": "사흘만 장 열리는 코스피…미중 정상회담·미 금리 ‘촉각’"
+    },
+    "link:9d5bcb22d9ffeb4126788837": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03070086645610296",
+      "source": "이데일리",
+      "source_body_digest": "fd3ea15981229d5ef0bf79a864251292a751d51c6b578149916ba3608684a8da",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8cc2b3c4498e33b05dda12e53da4b18a174722f23b1a32ae8ef99d0bc76d8620",
+      "source_fact_keys": [
+        "source_fact:v1:901d13af36d6ccdd9b5916327360316d6a7ee83684b30673fa752b70a99ba273",
+        "source_fact:v1:b195ef818e8c8a5e9240b47eb034430a0804e38c7b5083881f8c0b45020436ba",
+        "source_fact:v1:c1d491f0b3c4ccd7555c825dd37ef1541a5d8fa3c9e1b882aa0af4ba6baf69ec",
+        "source_fact:v1:e612778d015d1578cace7a5e42bb7f9ff2d95cfbabcc0c4442361aa3746d4aa0"
+      ],
+      "source_published_kst": "2026-10-06T10:21+09:00",
+      "title": "원프레딕트, 7368억 피지컬AI 사업 참여…제조 AI 총괄"
     },
     "link:9dce49acb3d90bd476bd69e2": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -24476,6 +24674,21 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=06120486645608656",
       "source": "이데일리",
       "title": "[실적리뷰]마이크론, 마진 실망에 '중립'…추가 장기 계약은 긍정적\""
+    },
+    "link:a167099c27d8748b4d1bfc1d": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03138966645610296",
+      "source": "이데일리",
+      "source_body_digest": "696f975fb05985d57420baf81a1f7eda2d1ce008cf9ed7670ef4bd3ac4fe0a4d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T10:42+09:00",
+      "title": "에코프로비엠-삼성SDI, 전고체 배터리 상용화 맞손…27년 양산 목표"
     },
     "link:a18f5b1fd4c4a4bd36789ff1": {
       "first_seen_kst": "2026-10-06T00:26:07+09:00",
@@ -27479,6 +27692,29 @@
       "source_event_identity": "",
       "title": "가드포스 AI, 40대1 액면병합 추진…복수의결권 도입도"
     },
+    "link:c633377ff9fa0f3025a2708b": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006101304",
+      "source": "지디넷코리아",
+      "source_body_digest": "2fdd24875200c6508926ba40a34c7263e41037412e77cb3e5a9a6e521572b4ee",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d0c7292f17139c6ebe640e3f80304087e043045e295a342a9eedfb85e2bdb60b",
+      "source_fact_keys": [
+        "source_fact:v1:29b2a628625d8a059344abe33a81672147921b23fcc4455b1a56347e7c05bec5",
+        "source_fact:v1:75438f172e1333b988ff75c759df33da45b3e86f31b179bd48128081fadf74be",
+        "source_fact:v1:7845f2005305b4102147de09d4c9e0ecce9fc18735ab4402d51a1e8b59343357",
+        "source_fact:v1:aa94f6ce132356a9f0a110f1a80cdfc53904a8b8f9e0431a80b4e32be431c0ee",
+        "source_fact:v1:ae8e765c5ca3725d2c304c6d39cb4d9193de0134c72a25c8477804e6634d7d30",
+        "source_fact:v1:b345c83c1fb6ccbeb9c2f7bf2d41e5e5f635e4912eafab564aa22e058250444c",
+        "source_fact:v1:e26ed099addc2d3b0801d19390551123e64929ca1ca0ed915ee97c4774edf2be"
+      ],
+      "source_published_kst": "2026-10-06T10:22+09:00",
+      "title": "에코프로비엠, 삼성SDI와 '전고체' 개발 협력…상용화 목전"
+    },
     "link:c6482b7a9adf4a826a0bbc2b": {
       "first_seen_kst": "2026-09-27T14:25:34+09:00",
       "lanes": {
@@ -30032,6 +30268,23 @@
       "source": "뉴시스",
       "title": "이스라엘 대통령 \"트럼프, 최고의 친구\"…이란전 이견에도 우호 과시"
     },
+    "link:e68feea8c6a45a4b704edaa9": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10893767",
+      "source": "헤럴드경제",
+      "source_body_digest": "41edde68a6c8ebdffad2c25f37e19012aee8740ffb8317f92a94610bba4fefa5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:adabab1b36b70491543070ee746f75e40ed8e5772268dac7b3349cc085f07b39",
+      "source_fact_keys": [
+        "source_fact:v1:f14c6695e3e9aba53606d0fb538ae58ebef1cef1eeccfcb81f66c15c01739d89"
+      ],
+      "source_published_kst": "2026-10-06T09:43+09:00",
+      "title": "두산로보틱스, 국산 AI칩 기반 ‘피지컬 AI’ 개발…총 989억원 규모"
+    },
     "link:e6929f54b8bc50c07cddf844": {
       "first_seen_kst": "2026-10-06T01:51:09+09:00",
       "lanes": {
@@ -31681,7 +31934,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632702",
       "source": "이투데이",
       "source_body_digest": "e70ba9857636e0be7335e491b224a82405925c25d46959756315fcaf4bb2518b",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_adoption:d944d5855861af06cd4b4a3c12357750cc46d8b648236b868b657ade78c59c7b",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T10:13+09:00",
@@ -32843,7 +33096,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632702",
       "source": "이투데이",
       "source_body_digest": "e70ba9857636e0be7335e491b224a82405925c25d46959756315fcaf4bb2518b",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_adoption:d944d5855861af06cd4b4a3c12357750cc46d8b648236b868b657ade78c59c7b",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T10:13+09:00",
@@ -38638,6 +38891,21 @@
       "source_published_kst": "2026-10-05T15:01+09:00",
       "title": "포항시, 하수 찌꺼기를 친환경 에너지로…\"연 37억 절감\""
     },
+    "original:54ebf5e7d95e09020811763d": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12169015",
+      "source": "매일경제",
+      "source_body_digest": "2d818707ce945c0a714cb6f0af982b417c382445d2234ac815a621fc1c44b36b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T10:23+09:00",
+      "title": "“고성~거제 24.6km 연결”…쌍용건설, 8000억 규모 남부내륙철도 9공구 수주"
+    },
     "original:5585b332d45f466942458d69": {
       "first_seen_kst": "2026-10-04T21:15:01+09:00",
       "lanes": {
@@ -39301,6 +39569,23 @@
       "source": "연합뉴스",
       "title": "원/달러 환율, 1.1원 오른 1,383.3원…7거래일 연속 상승 | 연합뉴스"
     },
+    "original:5e9c8799477d3f6ed3a21e0e": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10893767",
+      "source": "헤럴드경제",
+      "source_body_digest": "41edde68a6c8ebdffad2c25f37e19012aee8740ffb8317f92a94610bba4fefa5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:adabab1b36b70491543070ee746f75e40ed8e5772268dac7b3349cc085f07b39",
+      "source_fact_keys": [
+        "source_fact:v1:f14c6695e3e9aba53606d0fb538ae58ebef1cef1eeccfcb81f66c15c01739d89"
+      ],
+      "source_published_kst": "2026-10-06T09:43+09:00",
+      "title": "두산로보틱스, 국산 AI칩 기반 ‘피지컬 AI’ 개발…총 989억원 규모"
+    },
     "original:5ea6d46f37ab30057353bf7c": {
       "first_seen_kst": "2026-10-01T21:23:29+09:00",
       "lanes": {
@@ -39449,6 +39734,21 @@
       "link": "https://www.yna.co.kr/view/AKR20260923167100008?input=1215m",
       "source": "연합뉴스",
       "title": "'국장'은 쉬어도 '미장'은 열린다…추석 전후 챙겨볼 ETF는 | 연합뉴스"
+    },
+    "original:6065c296b7b781de0623958c": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03138966645610296",
+      "source": "이데일리",
+      "source_body_digest": "696f975fb05985d57420baf81a1f7eda2d1ce008cf9ed7670ef4bd3ac4fe0a4d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T10:42+09:00",
+      "title": "에코프로비엠-삼성SDI, 전고체 배터리 상용화 맞손…27년 양산 목표"
     },
     "original:60c0ead3210dba4ae395370f": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
@@ -40648,7 +40948,7 @@
       "link": "https://www.fnnews.com/news/202610061000440539",
       "source": "파이낸셜뉴스",
       "source_body_digest": "456b14e7d52f43ac84525a8dd12695dc770e7ea9b97e39fa25371cae31bf2728",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_delivery:953ee206c135c175fa78175d742512ff88363937ecfa2301ba75bbc046250521",
       "source_fact_identity": "source_facts:v1:ac4267126364efaea0f459ae0079b19d0be149174256582e7ccea82d768d2e1c",
       "source_fact_keys": [
         "source_fact:v1:0cf44b1693b8eb60c5d2aeef22fd4ef6aa84b462e6e91cfd5b126b73f96d74f2",
@@ -43311,6 +43611,26 @@
       "source": "머니투데이",
       "title": "인벤테라, INV-002 임상 3상 성공…\"모든 평가지표 개선 확인\""
     },
+    "original:8eda1e29b9eb7adce2859cee": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03070086645610296",
+      "source": "이데일리",
+      "source_body_digest": "fd3ea15981229d5ef0bf79a864251292a751d51c6b578149916ba3608684a8da",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8cc2b3c4498e33b05dda12e53da4b18a174722f23b1a32ae8ef99d0bc76d8620",
+      "source_fact_keys": [
+        "source_fact:v1:901d13af36d6ccdd9b5916327360316d6a7ee83684b30673fa752b70a99ba273",
+        "source_fact:v1:b195ef818e8c8a5e9240b47eb034430a0804e38c7b5083881f8c0b45020436ba",
+        "source_fact:v1:c1d491f0b3c4ccd7555c825dd37ef1541a5d8fa3c9e1b882aa0af4ba6baf69ec",
+        "source_fact:v1:e612778d015d1578cace7a5e42bb7f9ff2d95cfbabcc0c4442361aa3746d4aa0"
+      ],
+      "source_published_kst": "2026-10-06T10:21+09:00",
+      "title": "원프레딕트, 7368억 피지컬AI 사업 참여…제조 AI 총괄"
+    },
     "original:8f1a69ab5e0b454233f73cfb": {
       "first_seen_kst": "2026-10-02T19:18:49+09:00",
       "lanes": {
@@ -43800,6 +44120,29 @@
       ],
       "source_published_kst": "2026-10-06T01:21+09:00",
       "title": "페라리, 자사주 2600만 유로 매입..3차 한도 41% 소진"
+    },
+    "original:95cf5ffe5273f1acf65fdd90": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006101304",
+      "source": "지디넷코리아",
+      "source_body_digest": "2fdd24875200c6508926ba40a34c7263e41037412e77cb3e5a9a6e521572b4ee",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d0c7292f17139c6ebe640e3f80304087e043045e295a342a9eedfb85e2bdb60b",
+      "source_fact_keys": [
+        "source_fact:v1:29b2a628625d8a059344abe33a81672147921b23fcc4455b1a56347e7c05bec5",
+        "source_fact:v1:75438f172e1333b988ff75c759df33da45b3e86f31b179bd48128081fadf74be",
+        "source_fact:v1:7845f2005305b4102147de09d4c9e0ecce9fc18735ab4402d51a1e8b59343357",
+        "source_fact:v1:aa94f6ce132356a9f0a110f1a80cdfc53904a8b8f9e0431a80b4e32be431c0ee",
+        "source_fact:v1:ae8e765c5ca3725d2c304c6d39cb4d9193de0134c72a25c8477804e6634d7d30",
+        "source_fact:v1:b345c83c1fb6ccbeb9c2f7bf2d41e5e5f635e4912eafab564aa22e058250444c",
+        "source_fact:v1:e26ed099addc2d3b0801d19390551123e64929ca1ca0ed915ee97c4774edf2be"
+      ],
+      "source_published_kst": "2026-10-06T10:22+09:00",
+      "title": "에코프로비엠, 삼성SDI와 '전고체' 개발 협력…상용화 목전"
     },
     "original:95f5fb7d0ee6163b0647ccfe": {
       "first_seen_kst": "2026-10-01T17:50:48+09:00",
@@ -46374,6 +46717,26 @@
       "source": "매일경제",
       "title": "특징주, RF머트리얼즈-광통신(광케이블/광섬유 등) 테마 상승세에 6.76% ↑"
     },
+    "original:b9c8e936c6cee7c2c045146e": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.mk.co.kr/news/it/12169019",
+      "source": "매일경제",
+      "source_body_digest": "bb105521d97e033eabd70c6d1122eb351759c00db0c9b28f513f975840f3d6ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0cf2c2d3c49a496f7e3a56d6eb91ac7a1e2077ee0b0fa5cd17d7e712ac486a1",
+      "source_fact_keys": [
+        "source_fact:v1:3ef8d0d2404ff3551452c55264db9d3f3d70ce99d1456b16c0228eb449a985b6",
+        "source_fact:v1:78b2ab6e0aaf459ea77a5036c5f6aad1f97ca2ab407784b9ffebefac5e59a1f9",
+        "source_fact:v1:8f1c7867bc8be5f03efc272a6c81dec367d4dfddfdd434190503d540907fcc93",
+        "source_fact:v1:b46d2e0d8dc84d57bca71a9b6a761216747ba94f94210bc4d3224543abcf3bc1"
+      ],
+      "source_published_kst": "2026-10-06T10:28+09:00",
+      "title": "에이프릴바이오 “APB-R3 임상결과 매우 고무적…다음 임상서 효능 확대 기대”"
+    },
     "original:b9d54422fb6142a85c6c2854": {
       "first_seen_kst": "2026-10-02T10:55:46+09:00",
       "lanes": {
@@ -48744,20 +49107,21 @@
     "original:d72b6b4136994fb172ccf931": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
-        "live": "2026-10-05T21:42:22+09:00"
+        "live": "2026-10-06T12:10:48+09:00"
       },
-      "last_seen_kst": "2026-10-05T21:42:22+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1169807",
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168734",
       "source": "매일경제",
-      "source_body_digest": "643a6910f1a88acb64f697d65a2a4727f0259f99a7b707946a8ffcba84725dfd",
+      "source_body_digest": "d17f886080a9977be9577ea158f7c8d7d45d10913d11c4a57fb4334baad75b03",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:adac742e5e901c41c45afe0c086ec0e0a615203e730e148b08d69b3aaafa0472",
+      "source_fact_identity": "source_facts:v1:b9cde4272667e5285842495e455cc30dee4f08a55d30a6ff7bee7b30f17a7e11",
       "source_fact_keys": [
         "source_fact:v1:0557ffa33fcfa3cff0f9fecbb4ed8c58b27f90489756e16a79c6d85d987ea4e5",
         "source_fact:v1:490ffb86a3458d63a9ccd8edf9ba527bd6921b9263eabd1c082a5edabb952821",
         "source_fact:v1:7b870634e4b13da18d756899cd26ff47dae78c427a51ab15bde9e137fa0b3b6b",
         "source_fact:v1:beffbe6735b37e28d3918d2899aaeeda72de0a1e01f98358fd31d80b06ac7882",
         "source_fact:v1:ca44a4aedfe40192f459903be6d9d262dcf481d236f76980d71f675152f1e9be",
+        "source_fact:v1:ee22769d1238d8b416d9894dea17b0b614b808804599e4a9eca33b84cc44df93",
         "source_fact:v1:fd6a656b52d048dfd6ea1620e8c65995eaf25161a44120a25215e5721787723c"
       ],
       "source_published_kst": "2026-10-05T21:32+09:00",
@@ -50009,7 +50373,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815111",
       "source": "뉴시스",
       "source_body_digest": "46ddc403abd7412309e5df54bd4ebefdfeb96215db7541a48c60f5ce8eb0f1e9",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_adoption:d944d5855861af06cd4b4a3c12357750cc46d8b648236b868b657ade78c59c7b",
       "source_fact_identity": "source_facts:v1:9f46452eda3a2c107fd0995995d1d5eb56adcf0cdd23327685dc8a2ed8bca1e8",
       "source_fact_keys": [
         "source_fact:v1:2544b00671bb2158525144964577ae2c7acee20882e4be333591fd5c3f293f78",
@@ -51887,6 +52251,23 @@
       "source_published_kst": "2026-10-06T05:00+09:00",
       "title": "납품단가 다음은 ‘데이터’⋯AI 시대 대기업·中企 ‘新 갑을관계’ 탄생하나 [AI 신계급사회]"
     },
+    "source_fact:00abc2c631e2449b0b8bd50b": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10893767",
+      "source": "헤럴드경제",
+      "source_body_digest": "41edde68a6c8ebdffad2c25f37e19012aee8740ffb8317f92a94610bba4fefa5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:adabab1b36b70491543070ee746f75e40ed8e5772268dac7b3349cc085f07b39",
+      "source_fact_keys": [
+        "source_fact:v1:f14c6695e3e9aba53606d0fb538ae58ebef1cef1eeccfcb81f66c15c01739d89"
+      ],
+      "source_published_kst": "2026-10-06T09:43+09:00",
+      "title": "두산로보틱스, 국산 AI칩 기반 ‘피지컬 AI’ 개발…총 989억원 규모"
+    },
     "source_fact:00d769a912ee4fe70bfd1118": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
       "lanes": {
@@ -52476,6 +52857,26 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"관세 300%\"...벼랑 끝 트럼프, 한국 쥐어짜서 현금 지원 공약 '펑펑'"
     },
+    "source_fact:05cc33823489ae9a36f1e1a5": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.mk.co.kr/news/it/12169019",
+      "source": "매일경제",
+      "source_body_digest": "bb105521d97e033eabd70c6d1122eb351759c00db0c9b28f513f975840f3d6ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0cf2c2d3c49a496f7e3a56d6eb91ac7a1e2077ee0b0fa5cd17d7e712ac486a1",
+      "source_fact_keys": [
+        "source_fact:v1:3ef8d0d2404ff3551452c55264db9d3f3d70ce99d1456b16c0228eb449a985b6",
+        "source_fact:v1:78b2ab6e0aaf459ea77a5036c5f6aad1f97ca2ab407784b9ffebefac5e59a1f9",
+        "source_fact:v1:8f1c7867bc8be5f03efc272a6c81dec367d4dfddfdd434190503d540907fcc93",
+        "source_fact:v1:b46d2e0d8dc84d57bca71a9b6a761216747ba94f94210bc4d3224543abcf3bc1"
+      ],
+      "source_published_kst": "2026-10-06T10:28+09:00",
+      "title": "에이프릴바이오 “APB-R3 임상결과 매우 고무적…다음 임상서 효능 확대 기대”"
+    },
     "source_fact:060bbe26a6926a33fa38087b": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
       "lanes": {
@@ -52989,7 +53390,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815111",
       "source": "뉴시스",
       "source_body_digest": "46ddc403abd7412309e5df54bd4ebefdfeb96215db7541a48c60f5ce8eb0f1e9",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_adoption:d944d5855861af06cd4b4a3c12357750cc46d8b648236b868b657ade78c59c7b",
       "source_fact_identity": "source_facts:v1:9f46452eda3a2c107fd0995995d1d5eb56adcf0cdd23327685dc8a2ed8bca1e8",
       "source_fact_keys": [
         "source_fact:v1:2544b00671bb2158525144964577ae2c7acee20882e4be333591fd5c3f293f78",
@@ -53081,20 +53482,21 @@
     "source_fact:0a514079fa3e9d37f37b8d7d": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
-        "live": "2026-10-05T21:42:22+09:00"
+        "live": "2026-10-06T12:10:48+09:00"
       },
-      "last_seen_kst": "2026-10-05T21:42:22+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1169807",
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168734",
       "source": "매일경제",
-      "source_body_digest": "643a6910f1a88acb64f697d65a2a4727f0259f99a7b707946a8ffcba84725dfd",
+      "source_body_digest": "d17f886080a9977be9577ea158f7c8d7d45d10913d11c4a57fb4334baad75b03",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:adac742e5e901c41c45afe0c086ec0e0a615203e730e148b08d69b3aaafa0472",
+      "source_fact_identity": "source_facts:v1:b9cde4272667e5285842495e455cc30dee4f08a55d30a6ff7bee7b30f17a7e11",
       "source_fact_keys": [
         "source_fact:v1:0557ffa33fcfa3cff0f9fecbb4ed8c58b27f90489756e16a79c6d85d987ea4e5",
         "source_fact:v1:490ffb86a3458d63a9ccd8edf9ba527bd6921b9263eabd1c082a5edabb952821",
         "source_fact:v1:7b870634e4b13da18d756899cd26ff47dae78c427a51ab15bde9e137fa0b3b6b",
         "source_fact:v1:beffbe6735b37e28d3918d2899aaeeda72de0a1e01f98358fd31d80b06ac7882",
         "source_fact:v1:ca44a4aedfe40192f459903be6d9d262dcf481d236f76980d71f675152f1e9be",
+        "source_fact:v1:ee22769d1238d8b416d9894dea17b0b614b808804599e4a9eca33b84cc44df93",
         "source_fact:v1:fd6a656b52d048dfd6ea1620e8c65995eaf25161a44120a25215e5721787723c"
       ],
       "source_published_kst": "2026-10-05T21:32+09:00",
@@ -53873,7 +54275,7 @@
       "link": "https://www.fnnews.com/news/202610061000440539",
       "source": "파이낸셜뉴스",
       "source_body_digest": "456b14e7d52f43ac84525a8dd12695dc770e7ea9b97e39fa25371cae31bf2728",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_delivery:953ee206c135c175fa78175d742512ff88363937ecfa2301ba75bbc046250521",
       "source_fact_identity": "source_facts:v1:ac4267126364efaea0f459ae0079b19d0be149174256582e7ccea82d768d2e1c",
       "source_fact_keys": [
         "source_fact:v1:0cf44b1693b8eb60c5d2aeef22fd4ef6aa84b462e6e91cfd5b126b73f96d74f2",
@@ -54632,7 +55034,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815111",
       "source": "뉴시스",
       "source_body_digest": "46ddc403abd7412309e5df54bd4ebefdfeb96215db7541a48c60f5ce8eb0f1e9",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_adoption:d944d5855861af06cd4b4a3c12357750cc46d8b648236b868b657ade78c59c7b",
       "source_fact_identity": "source_facts:v1:9f46452eda3a2c107fd0995995d1d5eb56adcf0cdd23327685dc8a2ed8bca1e8",
       "source_fact_keys": [
         "source_fact:v1:2544b00671bb2158525144964577ae2c7acee20882e4be333591fd5c3f293f78",
@@ -55367,6 +55769,26 @@
       ],
       "source_published_kst": "2026-10-06T08:41+09:00",
       "title": "AI 데이터센터 늘자 전력 수요도 급증…ETF 투자처도 '전력 인프라'로"
+    },
+    "source_fact:2026fe3d59301cd00d1fd214": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03070086645610296",
+      "source": "이데일리",
+      "source_body_digest": "fd3ea15981229d5ef0bf79a864251292a751d51c6b578149916ba3608684a8da",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8cc2b3c4498e33b05dda12e53da4b18a174722f23b1a32ae8ef99d0bc76d8620",
+      "source_fact_keys": [
+        "source_fact:v1:901d13af36d6ccdd9b5916327360316d6a7ee83684b30673fa752b70a99ba273",
+        "source_fact:v1:b195ef818e8c8a5e9240b47eb034430a0804e38c7b5083881f8c0b45020436ba",
+        "source_fact:v1:c1d491f0b3c4ccd7555c825dd37ef1541a5d8fa3c9e1b882aa0af4ba6baf69ec",
+        "source_fact:v1:e612778d015d1578cace7a5e42bb7f9ff2d95cfbabcc0c4442361aa3746d4aa0"
+      ],
+      "source_published_kst": "2026-10-06T10:21+09:00",
+      "title": "원프레딕트, 7368억 피지컬AI 사업 참여…제조 AI 총괄"
     },
     "source_fact:205706d0a312d8182dae3a0b": {
       "first_seen_kst": "2026-10-06T01:51:09+09:00",
@@ -58106,7 +58528,7 @@
       "link": "https://www.fnnews.com/news/202610061000440539",
       "source": "파이낸셜뉴스",
       "source_body_digest": "456b14e7d52f43ac84525a8dd12695dc770e7ea9b97e39fa25371cae31bf2728",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_delivery:953ee206c135c175fa78175d742512ff88363937ecfa2301ba75bbc046250521",
       "source_fact_identity": "source_facts:v1:ac4267126364efaea0f459ae0079b19d0be149174256582e7ccea82d768d2e1c",
       "source_fact_keys": [
         "source_fact:v1:0cf44b1693b8eb60c5d2aeef22fd4ef6aa84b462e6e91cfd5b126b73f96d74f2",
@@ -58587,6 +59009,26 @@
       ],
       "source_published_kst": "2026-10-06T07:04+09:00",
       "title": "\"AI가 돈 될까 고민은 시대착오…반도체 상승장 2028년까지 간다\""
+    },
+    "source_fact:404ea7ecc8f2130e61d75cbc": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03070086645610296",
+      "source": "이데일리",
+      "source_body_digest": "fd3ea15981229d5ef0bf79a864251292a751d51c6b578149916ba3608684a8da",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8cc2b3c4498e33b05dda12e53da4b18a174722f23b1a32ae8ef99d0bc76d8620",
+      "source_fact_keys": [
+        "source_fact:v1:901d13af36d6ccdd9b5916327360316d6a7ee83684b30673fa752b70a99ba273",
+        "source_fact:v1:b195ef818e8c8a5e9240b47eb034430a0804e38c7b5083881f8c0b45020436ba",
+        "source_fact:v1:c1d491f0b3c4ccd7555c825dd37ef1541a5d8fa3c9e1b882aa0af4ba6baf69ec",
+        "source_fact:v1:e612778d015d1578cace7a5e42bb7f9ff2d95cfbabcc0c4442361aa3746d4aa0"
+      ],
+      "source_published_kst": "2026-10-06T10:21+09:00",
+      "title": "원프레딕트, 7368억 피지컬AI 사업 참여…제조 AI 총괄"
     },
     "source_fact:407497ab12a9705701544c3e": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -60396,20 +60838,21 @@
     "source_fact:4ea88256bb5436c1ea10aa4f": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
-        "live": "2026-10-05T21:42:22+09:00"
+        "live": "2026-10-06T12:10:48+09:00"
       },
-      "last_seen_kst": "2026-10-05T21:42:22+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1169807",
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168734",
       "source": "매일경제",
-      "source_body_digest": "643a6910f1a88acb64f697d65a2a4727f0259f99a7b707946a8ffcba84725dfd",
+      "source_body_digest": "d17f886080a9977be9577ea158f7c8d7d45d10913d11c4a57fb4334baad75b03",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:adac742e5e901c41c45afe0c086ec0e0a615203e730e148b08d69b3aaafa0472",
+      "source_fact_identity": "source_facts:v1:b9cde4272667e5285842495e455cc30dee4f08a55d30a6ff7bee7b30f17a7e11",
       "source_fact_keys": [
         "source_fact:v1:0557ffa33fcfa3cff0f9fecbb4ed8c58b27f90489756e16a79c6d85d987ea4e5",
         "source_fact:v1:490ffb86a3458d63a9ccd8edf9ba527bd6921b9263eabd1c082a5edabb952821",
         "source_fact:v1:7b870634e4b13da18d756899cd26ff47dae78c427a51ab15bde9e137fa0b3b6b",
         "source_fact:v1:beffbe6735b37e28d3918d2899aaeeda72de0a1e01f98358fd31d80b06ac7882",
         "source_fact:v1:ca44a4aedfe40192f459903be6d9d262dcf481d236f76980d71f675152f1e9be",
+        "source_fact:v1:ee22769d1238d8b416d9894dea17b0b614b808804599e4a9eca33b84cc44df93",
         "source_fact:v1:fd6a656b52d048dfd6ea1620e8c65995eaf25161a44120a25215e5721787723c"
       ],
       "source_published_kst": "2026-10-05T21:32+09:00",
@@ -60447,20 +60890,21 @@
     "source_fact:4f9dbb6e421cd7419c441208": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
-        "live": "2026-10-05T21:42:22+09:00"
+        "live": "2026-10-06T12:10:48+09:00"
       },
-      "last_seen_kst": "2026-10-05T21:42:22+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1169807",
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168734",
       "source": "매일경제",
-      "source_body_digest": "643a6910f1a88acb64f697d65a2a4727f0259f99a7b707946a8ffcba84725dfd",
+      "source_body_digest": "d17f886080a9977be9577ea158f7c8d7d45d10913d11c4a57fb4334baad75b03",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:adac742e5e901c41c45afe0c086ec0e0a615203e730e148b08d69b3aaafa0472",
+      "source_fact_identity": "source_facts:v1:b9cde4272667e5285842495e455cc30dee4f08a55d30a6ff7bee7b30f17a7e11",
       "source_fact_keys": [
         "source_fact:v1:0557ffa33fcfa3cff0f9fecbb4ed8c58b27f90489756e16a79c6d85d987ea4e5",
         "source_fact:v1:490ffb86a3458d63a9ccd8edf9ba527bd6921b9263eabd1c082a5edabb952821",
         "source_fact:v1:7b870634e4b13da18d756899cd26ff47dae78c427a51ab15bde9e137fa0b3b6b",
         "source_fact:v1:beffbe6735b37e28d3918d2899aaeeda72de0a1e01f98358fd31d80b06ac7882",
         "source_fact:v1:ca44a4aedfe40192f459903be6d9d262dcf481d236f76980d71f675152f1e9be",
+        "source_fact:v1:ee22769d1238d8b416d9894dea17b0b614b808804599e4a9eca33b84cc44df93",
         "source_fact:v1:fd6a656b52d048dfd6ea1620e8c65995eaf25161a44120a25215e5721787723c"
       ],
       "source_published_kst": "2026-10-05T21:32+09:00",
@@ -60614,20 +61058,21 @@
     "source_fact:51417a12957fdafbacedbc1c": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
-        "live": "2026-10-05T21:42:22+09:00"
+        "live": "2026-10-06T12:10:48+09:00"
       },
-      "last_seen_kst": "2026-10-05T21:42:22+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1169807",
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168734",
       "source": "매일경제",
-      "source_body_digest": "643a6910f1a88acb64f697d65a2a4727f0259f99a7b707946a8ffcba84725dfd",
+      "source_body_digest": "d17f886080a9977be9577ea158f7c8d7d45d10913d11c4a57fb4334baad75b03",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:adac742e5e901c41c45afe0c086ec0e0a615203e730e148b08d69b3aaafa0472",
+      "source_fact_identity": "source_facts:v1:b9cde4272667e5285842495e455cc30dee4f08a55d30a6ff7bee7b30f17a7e11",
       "source_fact_keys": [
         "source_fact:v1:0557ffa33fcfa3cff0f9fecbb4ed8c58b27f90489756e16a79c6d85d987ea4e5",
         "source_fact:v1:490ffb86a3458d63a9ccd8edf9ba527bd6921b9263eabd1c082a5edabb952821",
         "source_fact:v1:7b870634e4b13da18d756899cd26ff47dae78c427a51ab15bde9e137fa0b3b6b",
         "source_fact:v1:beffbe6735b37e28d3918d2899aaeeda72de0a1e01f98358fd31d80b06ac7882",
         "source_fact:v1:ca44a4aedfe40192f459903be6d9d262dcf481d236f76980d71f675152f1e9be",
+        "source_fact:v1:ee22769d1238d8b416d9894dea17b0b614b808804599e4a9eca33b84cc44df93",
         "source_fact:v1:fd6a656b52d048dfd6ea1620e8c65995eaf25161a44120a25215e5721787723c"
       ],
       "source_published_kst": "2026-10-05T21:32+09:00",
@@ -60773,6 +61218,26 @@
       ],
       "source_published_kst": "2026-10-06T08:37+09:00",
       "title": "한미반도체, 삼성전기서 245억 규모 장비 수주…\"삼성그룹 환영\" | 연합뉴스"
+    },
+    "source_fact:53368acf9af07debe7f63a71": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.mk.co.kr/news/it/12169019",
+      "source": "매일경제",
+      "source_body_digest": "bb105521d97e033eabd70c6d1122eb351759c00db0c9b28f513f975840f3d6ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0cf2c2d3c49a496f7e3a56d6eb91ac7a1e2077ee0b0fa5cd17d7e712ac486a1",
+      "source_fact_keys": [
+        "source_fact:v1:3ef8d0d2404ff3551452c55264db9d3f3d70ce99d1456b16c0228eb449a985b6",
+        "source_fact:v1:78b2ab6e0aaf459ea77a5036c5f6aad1f97ca2ab407784b9ffebefac5e59a1f9",
+        "source_fact:v1:8f1c7867bc8be5f03efc272a6c81dec367d4dfddfdd434190503d540907fcc93",
+        "source_fact:v1:b46d2e0d8dc84d57bca71a9b6a761216747ba94f94210bc4d3224543abcf3bc1"
+      ],
+      "source_published_kst": "2026-10-06T10:28+09:00",
+      "title": "에이프릴바이오 “APB-R3 임상결과 매우 고무적…다음 임상서 효능 확대 기대”"
     },
     "source_fact:53904ecdc2a06c849f686787": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
@@ -61698,6 +62163,26 @@
       "source_published_kst": "2026-10-05T20:58+09:00",
       "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
     },
+    "source_fact:5b800ca7ee5cdbc976ff8f64": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03070086645610296",
+      "source": "이데일리",
+      "source_body_digest": "fd3ea15981229d5ef0bf79a864251292a751d51c6b578149916ba3608684a8da",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8cc2b3c4498e33b05dda12e53da4b18a174722f23b1a32ae8ef99d0bc76d8620",
+      "source_fact_keys": [
+        "source_fact:v1:901d13af36d6ccdd9b5916327360316d6a7ee83684b30673fa752b70a99ba273",
+        "source_fact:v1:b195ef818e8c8a5e9240b47eb034430a0804e38c7b5083881f8c0b45020436ba",
+        "source_fact:v1:c1d491f0b3c4ccd7555c825dd37ef1541a5d8fa3c9e1b882aa0af4ba6baf69ec",
+        "source_fact:v1:e612778d015d1578cace7a5e42bb7f9ff2d95cfbabcc0c4442361aa3746d4aa0"
+      ],
+      "source_published_kst": "2026-10-06T10:21+09:00",
+      "title": "원프레딕트, 7368억 피지컬AI 사업 참여…제조 AI 총괄"
+    },
     "source_fact:5bb16f54ecee7d768c02b922": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -62417,6 +62902,29 @@
       "source_published_kst": "2026-10-06T07:07+09:00",
       "title": "스페이스X 주가 급등에 머스크 다시 조만장자 [마켓핫]"
     },
+    "source_fact:6279654aec63fb9e200abf5c": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006101304",
+      "source": "지디넷코리아",
+      "source_body_digest": "2fdd24875200c6508926ba40a34c7263e41037412e77cb3e5a9a6e521572b4ee",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d0c7292f17139c6ebe640e3f80304087e043045e295a342a9eedfb85e2bdb60b",
+      "source_fact_keys": [
+        "source_fact:v1:29b2a628625d8a059344abe33a81672147921b23fcc4455b1a56347e7c05bec5",
+        "source_fact:v1:75438f172e1333b988ff75c759df33da45b3e86f31b179bd48128081fadf74be",
+        "source_fact:v1:7845f2005305b4102147de09d4c9e0ecce9fc18735ab4402d51a1e8b59343357",
+        "source_fact:v1:aa94f6ce132356a9f0a110f1a80cdfc53904a8b8f9e0431a80b4e32be431c0ee",
+        "source_fact:v1:ae8e765c5ca3725d2c304c6d39cb4d9193de0134c72a25c8477804e6634d7d30",
+        "source_fact:v1:b345c83c1fb6ccbeb9c2f7bf2d41e5e5f635e4912eafab564aa22e058250444c",
+        "source_fact:v1:e26ed099addc2d3b0801d19390551123e64929ca1ca0ed915ee97c4774edf2be"
+      ],
+      "source_published_kst": "2026-10-06T10:22+09:00",
+      "title": "에코프로비엠, 삼성SDI와 '전고체' 개발 협력…상용화 목전"
+    },
     "source_fact:62823c9f4633912ff7baa49a": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -62664,6 +63172,29 @@
       ],
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "LK삼양–다온아이앤씨, 드론용 초경량 EO·IR 모듈 개발 MOU"
+    },
+    "source_fact:643f3ca0ee5c469415ad93b9": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006101304",
+      "source": "지디넷코리아",
+      "source_body_digest": "2fdd24875200c6508926ba40a34c7263e41037412e77cb3e5a9a6e521572b4ee",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d0c7292f17139c6ebe640e3f80304087e043045e295a342a9eedfb85e2bdb60b",
+      "source_fact_keys": [
+        "source_fact:v1:29b2a628625d8a059344abe33a81672147921b23fcc4455b1a56347e7c05bec5",
+        "source_fact:v1:75438f172e1333b988ff75c759df33da45b3e86f31b179bd48128081fadf74be",
+        "source_fact:v1:7845f2005305b4102147de09d4c9e0ecce9fc18735ab4402d51a1e8b59343357",
+        "source_fact:v1:aa94f6ce132356a9f0a110f1a80cdfc53904a8b8f9e0431a80b4e32be431c0ee",
+        "source_fact:v1:ae8e765c5ca3725d2c304c6d39cb4d9193de0134c72a25c8477804e6634d7d30",
+        "source_fact:v1:b345c83c1fb6ccbeb9c2f7bf2d41e5e5f635e4912eafab564aa22e058250444c",
+        "source_fact:v1:e26ed099addc2d3b0801d19390551123e64929ca1ca0ed915ee97c4774edf2be"
+      ],
+      "source_published_kst": "2026-10-06T10:22+09:00",
+      "title": "에코프로비엠, 삼성SDI와 '전고체' 개발 협력…상용화 목전"
     },
     "source_fact:65177694dd8470e009a7c8af": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
@@ -63249,6 +63780,29 @@
       "source_published_kst": "2026-10-05T09:13+09:00",
       "title": "\"국채 5%에도 주식이 낫다…반도체 대형주 쥐고 오래 기다려라\""
     },
+    "source_fact:6b0e1b6e03d6c8b9c18cd7e0": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006101304",
+      "source": "지디넷코리아",
+      "source_body_digest": "2fdd24875200c6508926ba40a34c7263e41037412e77cb3e5a9a6e521572b4ee",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d0c7292f17139c6ebe640e3f80304087e043045e295a342a9eedfb85e2bdb60b",
+      "source_fact_keys": [
+        "source_fact:v1:29b2a628625d8a059344abe33a81672147921b23fcc4455b1a56347e7c05bec5",
+        "source_fact:v1:75438f172e1333b988ff75c759df33da45b3e86f31b179bd48128081fadf74be",
+        "source_fact:v1:7845f2005305b4102147de09d4c9e0ecce9fc18735ab4402d51a1e8b59343357",
+        "source_fact:v1:aa94f6ce132356a9f0a110f1a80cdfc53904a8b8f9e0431a80b4e32be431c0ee",
+        "source_fact:v1:ae8e765c5ca3725d2c304c6d39cb4d9193de0134c72a25c8477804e6634d7d30",
+        "source_fact:v1:b345c83c1fb6ccbeb9c2f7bf2d41e5e5f635e4912eafab564aa22e058250444c",
+        "source_fact:v1:e26ed099addc2d3b0801d19390551123e64929ca1ca0ed915ee97c4774edf2be"
+      ],
+      "source_published_kst": "2026-10-06T10:22+09:00",
+      "title": "에코프로비엠, 삼성SDI와 '전고체' 개발 협력…상용화 목전"
+    },
     "source_fact:6bb2678f9a8a054b86213f1d": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
       "lanes": {
@@ -63388,20 +63942,21 @@
     "source_fact:6d5250d8ace8ef0dced9f04a": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
-        "live": "2026-10-05T21:42:22+09:00"
+        "live": "2026-10-06T12:10:48+09:00"
       },
-      "last_seen_kst": "2026-10-05T21:42:22+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1169807",
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168734",
       "source": "매일경제",
-      "source_body_digest": "643a6910f1a88acb64f697d65a2a4727f0259f99a7b707946a8ffcba84725dfd",
+      "source_body_digest": "d17f886080a9977be9577ea158f7c8d7d45d10913d11c4a57fb4334baad75b03",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:adac742e5e901c41c45afe0c086ec0e0a615203e730e148b08d69b3aaafa0472",
+      "source_fact_identity": "source_facts:v1:b9cde4272667e5285842495e455cc30dee4f08a55d30a6ff7bee7b30f17a7e11",
       "source_fact_keys": [
         "source_fact:v1:0557ffa33fcfa3cff0f9fecbb4ed8c58b27f90489756e16a79c6d85d987ea4e5",
         "source_fact:v1:490ffb86a3458d63a9ccd8edf9ba527bd6921b9263eabd1c082a5edabb952821",
         "source_fact:v1:7b870634e4b13da18d756899cd26ff47dae78c427a51ab15bde9e137fa0b3b6b",
         "source_fact:v1:beffbe6735b37e28d3918d2899aaeeda72de0a1e01f98358fd31d80b06ac7882",
         "source_fact:v1:ca44a4aedfe40192f459903be6d9d262dcf481d236f76980d71f675152f1e9be",
+        "source_fact:v1:ee22769d1238d8b416d9894dea17b0b614b808804599e4a9eca33b84cc44df93",
         "source_fact:v1:fd6a656b52d048dfd6ea1620e8c65995eaf25161a44120a25215e5721787723c"
       ],
       "source_published_kst": "2026-10-05T21:32+09:00",
@@ -64224,6 +64779,29 @@
       "source_published_kst": "2026-10-05T11:20+09:00",
       "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
     },
+    "source_fact:739cf99b782ab76948f142c1": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006101304",
+      "source": "지디넷코리아",
+      "source_body_digest": "2fdd24875200c6508926ba40a34c7263e41037412e77cb3e5a9a6e521572b4ee",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d0c7292f17139c6ebe640e3f80304087e043045e295a342a9eedfb85e2bdb60b",
+      "source_fact_keys": [
+        "source_fact:v1:29b2a628625d8a059344abe33a81672147921b23fcc4455b1a56347e7c05bec5",
+        "source_fact:v1:75438f172e1333b988ff75c759df33da45b3e86f31b179bd48128081fadf74be",
+        "source_fact:v1:7845f2005305b4102147de09d4c9e0ecce9fc18735ab4402d51a1e8b59343357",
+        "source_fact:v1:aa94f6ce132356a9f0a110f1a80cdfc53904a8b8f9e0431a80b4e32be431c0ee",
+        "source_fact:v1:ae8e765c5ca3725d2c304c6d39cb4d9193de0134c72a25c8477804e6634d7d30",
+        "source_fact:v1:b345c83c1fb6ccbeb9c2f7bf2d41e5e5f635e4912eafab564aa22e058250444c",
+        "source_fact:v1:e26ed099addc2d3b0801d19390551123e64929ca1ca0ed915ee97c4774edf2be"
+      ],
+      "source_published_kst": "2026-10-06T10:22+09:00",
+      "title": "에코프로비엠, 삼성SDI와 '전고체' 개발 협력…상용화 목전"
+    },
     "source_fact:73b3dc594275cb236bc4ad57": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -64831,6 +65409,26 @@
       ],
       "source_published_kst": "2026-10-05T19:24+09:00",
       "title": "ZTO 익스프레스, 자사주 14만주 매입..268만 달러 규모"
+    },
+    "source_fact:79dc355a371a15c20ebd44da": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.mk.co.kr/news/it/12169019",
+      "source": "매일경제",
+      "source_body_digest": "bb105521d97e033eabd70c6d1122eb351759c00db0c9b28f513f975840f3d6ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0cf2c2d3c49a496f7e3a56d6eb91ac7a1e2077ee0b0fa5cd17d7e712ac486a1",
+      "source_fact_keys": [
+        "source_fact:v1:3ef8d0d2404ff3551452c55264db9d3f3d70ce99d1456b16c0228eb449a985b6",
+        "source_fact:v1:78b2ab6e0aaf459ea77a5036c5f6aad1f97ca2ab407784b9ffebefac5e59a1f9",
+        "source_fact:v1:8f1c7867bc8be5f03efc272a6c81dec367d4dfddfdd434190503d540907fcc93",
+        "source_fact:v1:b46d2e0d8dc84d57bca71a9b6a761216747ba94f94210bc4d3224543abcf3bc1"
+      ],
+      "source_published_kst": "2026-10-06T10:28+09:00",
+      "title": "에이프릴바이오 “APB-R3 임상결과 매우 고무적…다음 임상서 효능 확대 기대”"
     },
     "source_fact:79df1c4bb0d1cb275864c4f1": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
@@ -67761,6 +68359,29 @@
       "source_published_kst": "2026-10-06T08:57+09:00",
       "title": "스틸리언 '웹수트', AI 에이전트 기반 웹·API 공격 차단 검증"
     },
+    "source_fact:9576c19608543bf8eacdafdf": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006101304",
+      "source": "지디넷코리아",
+      "source_body_digest": "2fdd24875200c6508926ba40a34c7263e41037412e77cb3e5a9a6e521572b4ee",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d0c7292f17139c6ebe640e3f80304087e043045e295a342a9eedfb85e2bdb60b",
+      "source_fact_keys": [
+        "source_fact:v1:29b2a628625d8a059344abe33a81672147921b23fcc4455b1a56347e7c05bec5",
+        "source_fact:v1:75438f172e1333b988ff75c759df33da45b3e86f31b179bd48128081fadf74be",
+        "source_fact:v1:7845f2005305b4102147de09d4c9e0ecce9fc18735ab4402d51a1e8b59343357",
+        "source_fact:v1:aa94f6ce132356a9f0a110f1a80cdfc53904a8b8f9e0431a80b4e32be431c0ee",
+        "source_fact:v1:ae8e765c5ca3725d2c304c6d39cb4d9193de0134c72a25c8477804e6634d7d30",
+        "source_fact:v1:b345c83c1fb6ccbeb9c2f7bf2d41e5e5f635e4912eafab564aa22e058250444c",
+        "source_fact:v1:e26ed099addc2d3b0801d19390551123e64929ca1ca0ed915ee97c4774edf2be"
+      ],
+      "source_published_kst": "2026-10-06T10:22+09:00",
+      "title": "에코프로비엠, 삼성SDI와 '전고체' 개발 협력…상용화 목전"
+    },
     "source_fact:960b84e54fc29bb7972e8350": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
       "lanes": {
@@ -69014,7 +69635,7 @@
       "link": "https://www.fnnews.com/news/202610061000440539",
       "source": "파이낸셜뉴스",
       "source_body_digest": "456b14e7d52f43ac84525a8dd12695dc770e7ea9b97e39fa25371cae31bf2728",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_delivery:953ee206c135c175fa78175d742512ff88363937ecfa2301ba75bbc046250521",
       "source_fact_identity": "source_facts:v1:ac4267126364efaea0f459ae0079b19d0be149174256582e7ccea82d768d2e1c",
       "source_fact_keys": [
         "source_fact:v1:0cf44b1693b8eb60c5d2aeef22fd4ef6aa84b462e6e91cfd5b126b73f96d74f2",
@@ -69186,20 +69807,21 @@
     "source_fact:a3627d5143a3d351fc446526": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
-        "live": "2026-10-05T21:42:22+09:00"
+        "live": "2026-10-06T12:10:48+09:00"
       },
-      "last_seen_kst": "2026-10-05T21:42:22+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1169807",
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168734",
       "source": "매일경제",
-      "source_body_digest": "643a6910f1a88acb64f697d65a2a4727f0259f99a7b707946a8ffcba84725dfd",
+      "source_body_digest": "d17f886080a9977be9577ea158f7c8d7d45d10913d11c4a57fb4334baad75b03",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:adac742e5e901c41c45afe0c086ec0e0a615203e730e148b08d69b3aaafa0472",
+      "source_fact_identity": "source_facts:v1:b9cde4272667e5285842495e455cc30dee4f08a55d30a6ff7bee7b30f17a7e11",
       "source_fact_keys": [
         "source_fact:v1:0557ffa33fcfa3cff0f9fecbb4ed8c58b27f90489756e16a79c6d85d987ea4e5",
         "source_fact:v1:490ffb86a3458d63a9ccd8edf9ba527bd6921b9263eabd1c082a5edabb952821",
         "source_fact:v1:7b870634e4b13da18d756899cd26ff47dae78c427a51ab15bde9e137fa0b3b6b",
         "source_fact:v1:beffbe6735b37e28d3918d2899aaeeda72de0a1e01f98358fd31d80b06ac7882",
         "source_fact:v1:ca44a4aedfe40192f459903be6d9d262dcf481d236f76980d71f675152f1e9be",
+        "source_fact:v1:ee22769d1238d8b416d9894dea17b0b614b808804599e4a9eca33b84cc44df93",
         "source_fact:v1:fd6a656b52d048dfd6ea1620e8c65995eaf25161a44120a25215e5721787723c"
       ],
       "source_published_kst": "2026-10-05T21:32+09:00",
@@ -70082,7 +70704,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815111",
       "source": "뉴시스",
       "source_body_digest": "46ddc403abd7412309e5df54bd4ebefdfeb96215db7541a48c60f5ce8eb0f1e9",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_adoption:d944d5855861af06cd4b4a3c12357750cc46d8b648236b868b657ade78c59c7b",
       "source_fact_identity": "source_facts:v1:9f46452eda3a2c107fd0995995d1d5eb56adcf0cdd23327685dc8a2ed8bca1e8",
       "source_fact_keys": [
         "source_fact:v1:2544b00671bb2158525144964577ae2c7acee20882e4be333591fd5c3f293f78",
@@ -70495,6 +71117,29 @@
       "source_published_kst": "2026-10-05T12:57+09:00",
       "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
     },
+    "source_fact:b0273e75c53dcbd28e925142": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006101304",
+      "source": "지디넷코리아",
+      "source_body_digest": "2fdd24875200c6508926ba40a34c7263e41037412e77cb3e5a9a6e521572b4ee",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d0c7292f17139c6ebe640e3f80304087e043045e295a342a9eedfb85e2bdb60b",
+      "source_fact_keys": [
+        "source_fact:v1:29b2a628625d8a059344abe33a81672147921b23fcc4455b1a56347e7c05bec5",
+        "source_fact:v1:75438f172e1333b988ff75c759df33da45b3e86f31b179bd48128081fadf74be",
+        "source_fact:v1:7845f2005305b4102147de09d4c9e0ecce9fc18735ab4402d51a1e8b59343357",
+        "source_fact:v1:aa94f6ce132356a9f0a110f1a80cdfc53904a8b8f9e0431a80b4e32be431c0ee",
+        "source_fact:v1:ae8e765c5ca3725d2c304c6d39cb4d9193de0134c72a25c8477804e6634d7d30",
+        "source_fact:v1:b345c83c1fb6ccbeb9c2f7bf2d41e5e5f635e4912eafab564aa22e058250444c",
+        "source_fact:v1:e26ed099addc2d3b0801d19390551123e64929ca1ca0ed915ee97c4774edf2be"
+      ],
+      "source_published_kst": "2026-10-06T10:22+09:00",
+      "title": "에코프로비엠, 삼성SDI와 '전고체' 개발 협력…상용화 목전"
+    },
     "source_fact:b09fec03ab1bca2e3b226ae1": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
       "lanes": {
@@ -70504,7 +71149,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815111",
       "source": "뉴시스",
       "source_body_digest": "46ddc403abd7412309e5df54bd4ebefdfeb96215db7541a48c60f5ce8eb0f1e9",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_adoption:d944d5855861af06cd4b4a3c12357750cc46d8b648236b868b657ade78c59c7b",
       "source_fact_identity": "source_facts:v1:9f46452eda3a2c107fd0995995d1d5eb56adcf0cdd23327685dc8a2ed8bca1e8",
       "source_fact_keys": [
         "source_fact:v1:2544b00671bb2158525144964577ae2c7acee20882e4be333591fd5c3f293f78",
@@ -72372,6 +73017,29 @@
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
     },
+    "source_fact:c2f20aa590907c97672dbcdb": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006101304",
+      "source": "지디넷코리아",
+      "source_body_digest": "2fdd24875200c6508926ba40a34c7263e41037412e77cb3e5a9a6e521572b4ee",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d0c7292f17139c6ebe640e3f80304087e043045e295a342a9eedfb85e2bdb60b",
+      "source_fact_keys": [
+        "source_fact:v1:29b2a628625d8a059344abe33a81672147921b23fcc4455b1a56347e7c05bec5",
+        "source_fact:v1:75438f172e1333b988ff75c759df33da45b3e86f31b179bd48128081fadf74be",
+        "source_fact:v1:7845f2005305b4102147de09d4c9e0ecce9fc18735ab4402d51a1e8b59343357",
+        "source_fact:v1:aa94f6ce132356a9f0a110f1a80cdfc53904a8b8f9e0431a80b4e32be431c0ee",
+        "source_fact:v1:ae8e765c5ca3725d2c304c6d39cb4d9193de0134c72a25c8477804e6634d7d30",
+        "source_fact:v1:b345c83c1fb6ccbeb9c2f7bf2d41e5e5f635e4912eafab564aa22e058250444c",
+        "source_fact:v1:e26ed099addc2d3b0801d19390551123e64929ca1ca0ed915ee97c4774edf2be"
+      ],
+      "source_published_kst": "2026-10-06T10:22+09:00",
+      "title": "에코프로비엠, 삼성SDI와 '전고체' 개발 협력…상용화 목전"
+    },
     "source_fact:c33c1bee78a25397440ae0fa": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
       "lanes": {
@@ -73900,6 +74568,29 @@
       ],
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "삼닉 레버리지 '20좌 미만' 출구 마련"
+    },
+    "source_fact:d2bae35564b76d2ec79739bb": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168734",
+      "source": "매일경제",
+      "source_body_digest": "d17f886080a9977be9577ea158f7c8d7d45d10913d11c4a57fb4334baad75b03",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9cde4272667e5285842495e455cc30dee4f08a55d30a6ff7bee7b30f17a7e11",
+      "source_fact_keys": [
+        "source_fact:v1:0557ffa33fcfa3cff0f9fecbb4ed8c58b27f90489756e16a79c6d85d987ea4e5",
+        "source_fact:v1:490ffb86a3458d63a9ccd8edf9ba527bd6921b9263eabd1c082a5edabb952821",
+        "source_fact:v1:7b870634e4b13da18d756899cd26ff47dae78c427a51ab15bde9e137fa0b3b6b",
+        "source_fact:v1:beffbe6735b37e28d3918d2899aaeeda72de0a1e01f98358fd31d80b06ac7882",
+        "source_fact:v1:ca44a4aedfe40192f459903be6d9d262dcf481d236f76980d71f675152f1e9be",
+        "source_fact:v1:ee22769d1238d8b416d9894dea17b0b614b808804599e4a9eca33b84cc44df93",
+        "source_fact:v1:fd6a656b52d048dfd6ea1620e8c65995eaf25161a44120a25215e5721787723c"
+      ],
+      "source_published_kst": "2026-10-05T21:32+09:00",
+      "title": "에볼루션 메탈스 앤 테크, 포항 희토류 자석공장 12월 17일 개장..연 1만t 확대 추진"
     },
     "source_fact:d2eb6102760aa25cedbae9db": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -76572,6 +77263,26 @@
       "source_published_kst": "2026-10-06T07:10+09:00",
       "title": "5만 가구 ‘한강2’ 연계 5호선 2034년 개통할까 [교통지옥 김포 ③]"
     },
+    "source_fact:eb15ca3d69255d53f7a974f6": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.mk.co.kr/news/it/12169019",
+      "source": "매일경제",
+      "source_body_digest": "bb105521d97e033eabd70c6d1122eb351759c00db0c9b28f513f975840f3d6ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0cf2c2d3c49a496f7e3a56d6eb91ac7a1e2077ee0b0fa5cd17d7e712ac486a1",
+      "source_fact_keys": [
+        "source_fact:v1:3ef8d0d2404ff3551452c55264db9d3f3d70ce99d1456b16c0228eb449a985b6",
+        "source_fact:v1:78b2ab6e0aaf459ea77a5036c5f6aad1f97ca2ab407784b9ffebefac5e59a1f9",
+        "source_fact:v1:8f1c7867bc8be5f03efc272a6c81dec367d4dfddfdd434190503d540907fcc93",
+        "source_fact:v1:b46d2e0d8dc84d57bca71a9b6a761216747ba94f94210bc4d3224543abcf3bc1"
+      ],
+      "source_published_kst": "2026-10-06T10:28+09:00",
+      "title": "에이프릴바이오 “APB-R3 임상결과 매우 고무적…다음 임상서 효능 확대 기대”"
+    },
     "source_fact:eb1b9f66bbe905e3cb178657": {
       "first_seen_kst": "2026-10-06T01:51:09+09:00",
       "lanes": {
@@ -78153,7 +78864,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815111",
       "source": "뉴시스",
       "source_body_digest": "46ddc403abd7412309e5df54bd4ebefdfeb96215db7541a48c60f5ce8eb0f1e9",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_adoption:d944d5855861af06cd4b4a3c12357750cc46d8b648236b868b657ade78c59c7b",
       "source_fact_identity": "source_facts:v1:9f46452eda3a2c107fd0995995d1d5eb56adcf0cdd23327685dc8a2ed8bca1e8",
       "source_fact_keys": [
         "source_fact:v1:2544b00671bb2158525144964577ae2c7acee20882e4be333591fd5c3f293f78",
@@ -78337,6 +79048,26 @@
       "source_published_kst": "2026-10-05T17:23+09:00",
       "title": "AI 해킹 확산에 'AI 방패' 꺼낸 금융당국…'망분리 완화' 해법 될 수 있나"
     },
+    "source_fact:fc30b3f2fed86c43447e9cd1": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03070086645610296",
+      "source": "이데일리",
+      "source_body_digest": "fd3ea15981229d5ef0bf79a864251292a751d51c6b578149916ba3608684a8da",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8cc2b3c4498e33b05dda12e53da4b18a174722f23b1a32ae8ef99d0bc76d8620",
+      "source_fact_keys": [
+        "source_fact:v1:901d13af36d6ccdd9b5916327360316d6a7ee83684b30673fa752b70a99ba273",
+        "source_fact:v1:b195ef818e8c8a5e9240b47eb034430a0804e38c7b5083881f8c0b45020436ba",
+        "source_fact:v1:c1d491f0b3c4ccd7555c825dd37ef1541a5d8fa3c9e1b882aa0af4ba6baf69ec",
+        "source_fact:v1:e612778d015d1578cace7a5e42bb7f9ff2d95cfbabcc0c4442361aa3746d4aa0"
+      ],
+      "source_published_kst": "2026-10-06T10:21+09:00",
+      "title": "원프레딕트, 7368억 피지컬AI 사업 참여…제조 AI 총괄"
+    },
     "source_fact:fc50a792de8914109e5135d0": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -78391,7 +79122,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815111",
       "source": "뉴시스",
       "source_body_digest": "46ddc403abd7412309e5df54bd4ebefdfeb96215db7541a48c60f5ce8eb0f1e9",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_adoption:d944d5855861af06cd4b4a3c12357750cc46d8b648236b868b657ade78c59c7b",
       "source_fact_identity": "source_facts:v1:9f46452eda3a2c107fd0995995d1d5eb56adcf0cdd23327685dc8a2ed8bca1e8",
       "source_fact_keys": [
         "source_fact:v1:2544b00671bb2158525144964577ae2c7acee20882e4be333591fd5c3f293f78",
@@ -78947,7 +79678,7 @@
       "link": "https://www.fnnews.com/news/202610061000440539",
       "source": "파이낸셜뉴스",
       "source_body_digest": "456b14e7d52f43ac84525a8dd12695dc770e7ea9b97e39fa25371cae31bf2728",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_delivery:953ee206c135c175fa78175d742512ff88363937ecfa2301ba75bbc046250521",
       "source_fact_identity": "source_facts:v1:ac4267126364efaea0f459ae0079b19d0be149174256582e7ccea82d768d2e1c",
       "source_fact_keys": [
         "source_fact:v1:0cf44b1693b8eb60c5d2aeef22fd4ef6aa84b462e6e91cfd5b126b73f96d74f2",
@@ -79800,7 +80531,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632702",
       "source": "이투데이",
       "source_body_digest": "e70ba9857636e0be7335e491b224a82405925c25d46959756315fcaf4bb2518b",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_adoption:d944d5855861af06cd4b4a3c12357750cc46d8b648236b868b657ade78c59c7b",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T10:13+09:00",
@@ -85616,6 +86347,21 @@
       "source_published_kst": "2026-10-05T15:01+09:00",
       "title": "포항시, 하수 찌꺼기를 친환경 에너지로…\"연 37억 절감\""
     },
+    "title:54ebf5e7d95e09020811763d": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12169015",
+      "source": "매일경제",
+      "source_body_digest": "2d818707ce945c0a714cb6f0af982b417c382445d2234ac815a621fc1c44b36b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T10:23+09:00",
+      "title": "“고성~거제 24.6km 연결”…쌍용건설, 8000억 규모 남부내륙철도 9공구 수주"
+    },
     "title:5585b332d45f466942458d69": {
       "first_seen_kst": "2026-10-04T21:15:01+09:00",
       "lanes": {
@@ -86279,6 +87025,23 @@
       "source": "연합뉴스",
       "title": "원/달러 환율, 1.1원 오른 1,383.3원…7거래일 연속 상승 | 연합뉴스"
     },
+    "title:5e9c8799477d3f6ed3a21e0e": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10893767",
+      "source": "헤럴드경제",
+      "source_body_digest": "41edde68a6c8ebdffad2c25f37e19012aee8740ffb8317f92a94610bba4fefa5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:adabab1b36b70491543070ee746f75e40ed8e5772268dac7b3349cc085f07b39",
+      "source_fact_keys": [
+        "source_fact:v1:f14c6695e3e9aba53606d0fb538ae58ebef1cef1eeccfcb81f66c15c01739d89"
+      ],
+      "source_published_kst": "2026-10-06T09:43+09:00",
+      "title": "두산로보틱스, 국산 AI칩 기반 ‘피지컬 AI’ 개발…총 989억원 규모"
+    },
     "title:5ea6d46f37ab30057353bf7c": {
       "first_seen_kst": "2026-10-01T21:23:29+09:00",
       "lanes": {
@@ -86427,6 +87190,21 @@
       "link": "https://www.yna.co.kr/view/AKR20260923167100008?input=1215m",
       "source": "연합뉴스",
       "title": "'국장'은 쉬어도 '미장'은 열린다…추석 전후 챙겨볼 ETF는 | 연합뉴스"
+    },
+    "title:6065c296b7b781de0623958c": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03138966645610296",
+      "source": "이데일리",
+      "source_body_digest": "696f975fb05985d57420baf81a1f7eda2d1ce008cf9ed7670ef4bd3ac4fe0a4d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T10:42+09:00",
+      "title": "에코프로비엠-삼성SDI, 전고체 배터리 상용화 맞손…27년 양산 목표"
     },
     "title:60c0ead3210dba4ae395370f": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
@@ -87636,7 +88414,7 @@
       "link": "https://www.fnnews.com/news/202610061000440539",
       "source": "파이낸셜뉴스",
       "source_body_digest": "456b14e7d52f43ac84525a8dd12695dc770e7ea9b97e39fa25371cae31bf2728",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_delivery:953ee206c135c175fa78175d742512ff88363937ecfa2301ba75bbc046250521",
       "source_fact_identity": "source_facts:v1:ac4267126364efaea0f459ae0079b19d0be149174256582e7ccea82d768d2e1c",
       "source_fact_keys": [
         "source_fact:v1:0cf44b1693b8eb60c5d2aeef22fd4ef6aa84b462e6e91cfd5b126b73f96d74f2",
@@ -90339,6 +91117,26 @@
       "source": "머니투데이",
       "title": "인벤테라, INV-002 임상 3상 성공…\"모든 평가지표 개선 확인\""
     },
+    "title:8eda1e29b9eb7adce2859cee": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03070086645610296",
+      "source": "이데일리",
+      "source_body_digest": "fd3ea15981229d5ef0bf79a864251292a751d51c6b578149916ba3608684a8da",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8cc2b3c4498e33b05dda12e53da4b18a174722f23b1a32ae8ef99d0bc76d8620",
+      "source_fact_keys": [
+        "source_fact:v1:901d13af36d6ccdd9b5916327360316d6a7ee83684b30673fa752b70a99ba273",
+        "source_fact:v1:b195ef818e8c8a5e9240b47eb034430a0804e38c7b5083881f8c0b45020436ba",
+        "source_fact:v1:c1d491f0b3c4ccd7555c825dd37ef1541a5d8fa3c9e1b882aa0af4ba6baf69ec",
+        "source_fact:v1:e612778d015d1578cace7a5e42bb7f9ff2d95cfbabcc0c4442361aa3746d4aa0"
+      ],
+      "source_published_kst": "2026-10-06T10:21+09:00",
+      "title": "원프레딕트, 7368억 피지컬AI 사업 참여…제조 AI 총괄"
+    },
     "title:8f1a69ab5e0b454233f73cfb": {
       "first_seen_kst": "2026-10-02T19:18:49+09:00",
       "lanes": {
@@ -90839,6 +91637,29 @@
       ],
       "source_published_kst": "2026-10-06T01:21+09:00",
       "title": "페라리, 자사주 2600만 유로 매입..3차 한도 41% 소진"
+    },
+    "title:95cf5ffe5273f1acf65fdd90": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006101304",
+      "source": "지디넷코리아",
+      "source_body_digest": "2fdd24875200c6508926ba40a34c7263e41037412e77cb3e5a9a6e521572b4ee",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d0c7292f17139c6ebe640e3f80304087e043045e295a342a9eedfb85e2bdb60b",
+      "source_fact_keys": [
+        "source_fact:v1:29b2a628625d8a059344abe33a81672147921b23fcc4455b1a56347e7c05bec5",
+        "source_fact:v1:75438f172e1333b988ff75c759df33da45b3e86f31b179bd48128081fadf74be",
+        "source_fact:v1:7845f2005305b4102147de09d4c9e0ecce9fc18735ab4402d51a1e8b59343357",
+        "source_fact:v1:aa94f6ce132356a9f0a110f1a80cdfc53904a8b8f9e0431a80b4e32be431c0ee",
+        "source_fact:v1:ae8e765c5ca3725d2c304c6d39cb4d9193de0134c72a25c8477804e6634d7d30",
+        "source_fact:v1:b345c83c1fb6ccbeb9c2f7bf2d41e5e5f635e4912eafab564aa22e058250444c",
+        "source_fact:v1:e26ed099addc2d3b0801d19390551123e64929ca1ca0ed915ee97c4774edf2be"
+      ],
+      "source_published_kst": "2026-10-06T10:22+09:00",
+      "title": "에코프로비엠, 삼성SDI와 '전고체' 개발 협력…상용화 목전"
     },
     "title:95f5fb7d0ee6163b0647ccfe": {
       "first_seen_kst": "2026-10-01T17:50:48+09:00",
@@ -93470,6 +94291,26 @@
       "source": "매일경제",
       "title": "특징주, RF머트리얼즈-광통신(광케이블/광섬유 등) 테마 상승세에 6.76% ↑"
     },
+    "title:b9c8e936c6cee7c2c045146e": {
+      "first_seen_kst": "2026-10-06T12:10:48+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:10:48+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.mk.co.kr/news/it/12169019",
+      "source": "매일경제",
+      "source_body_digest": "bb105521d97e033eabd70c6d1122eb351759c00db0c9b28f513f975840f3d6ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0cf2c2d3c49a496f7e3a56d6eb91ac7a1e2077ee0b0fa5cd17d7e712ac486a1",
+      "source_fact_keys": [
+        "source_fact:v1:3ef8d0d2404ff3551452c55264db9d3f3d70ce99d1456b16c0228eb449a985b6",
+        "source_fact:v1:78b2ab6e0aaf459ea77a5036c5f6aad1f97ca2ab407784b9ffebefac5e59a1f9",
+        "source_fact:v1:8f1c7867bc8be5f03efc272a6c81dec367d4dfddfdd434190503d540907fcc93",
+        "source_fact:v1:b46d2e0d8dc84d57bca71a9b6a761216747ba94f94210bc4d3224543abcf3bc1"
+      ],
+      "source_published_kst": "2026-10-06T10:28+09:00",
+      "title": "에이프릴바이오 “APB-R3 임상결과 매우 고무적…다음 임상서 효능 확대 기대”"
+    },
     "title:b9d54422fb6142a85c6c2854": {
       "first_seen_kst": "2026-10-02T10:55:46+09:00",
       "lanes": {
@@ -95851,20 +96692,21 @@
     "title:d72b6b4136994fb172ccf931": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
-        "live": "2026-10-05T21:42:22+09:00"
+        "live": "2026-10-06T12:10:48+09:00"
       },
-      "last_seen_kst": "2026-10-05T21:42:22+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1169807",
+      "last_seen_kst": "2026-10-06T12:10:48+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168734",
       "source": "매일경제",
-      "source_body_digest": "643a6910f1a88acb64f697d65a2a4727f0259f99a7b707946a8ffcba84725dfd",
+      "source_body_digest": "d17f886080a9977be9577ea158f7c8d7d45d10913d11c4a57fb4334baad75b03",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:adac742e5e901c41c45afe0c086ec0e0a615203e730e148b08d69b3aaafa0472",
+      "source_fact_identity": "source_facts:v1:b9cde4272667e5285842495e455cc30dee4f08a55d30a6ff7bee7b30f17a7e11",
       "source_fact_keys": [
         "source_fact:v1:0557ffa33fcfa3cff0f9fecbb4ed8c58b27f90489756e16a79c6d85d987ea4e5",
         "source_fact:v1:490ffb86a3458d63a9ccd8edf9ba527bd6921b9263eabd1c082a5edabb952821",
         "source_fact:v1:7b870634e4b13da18d756899cd26ff47dae78c427a51ab15bde9e137fa0b3b6b",
         "source_fact:v1:beffbe6735b37e28d3918d2899aaeeda72de0a1e01f98358fd31d80b06ac7882",
         "source_fact:v1:ca44a4aedfe40192f459903be6d9d262dcf481d236f76980d71f675152f1e9be",
+        "source_fact:v1:ee22769d1238d8b416d9894dea17b0b614b808804599e4a9eca33b84cc44df93",
         "source_fact:v1:fd6a656b52d048dfd6ea1620e8c65995eaf25161a44120a25215e5721787723c"
       ],
       "source_published_kst": "2026-10-05T21:32+09:00",
@@ -97126,7 +97968,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815111",
       "source": "뉴시스",
       "source_body_digest": "46ddc403abd7412309e5df54bd4ebefdfeb96215db7541a48c60f5ce8eb0f1e9",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:industrial_adoption:d944d5855861af06cd4b4a3c12357750cc46d8b648236b868b657ade78c59c7b",
       "source_fact_identity": "source_facts:v1:9f46452eda3a2c107fd0995995d1d5eb56adcf0cdd23327685dc8a2ed8bca1e8",
       "source_fact_keys": [
         "source_fact:v1:2544b00671bb2158525144964577ae2c7acee20882e4be333591fd5c3f293f78",
@@ -98976,5 +99818,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T11:41:27+09:00"
+  "updated_at_kst": "2026-10-06T12:10:48+09:00"
 }
