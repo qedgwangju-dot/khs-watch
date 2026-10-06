@@ -1307,6 +1307,23 @@
       "source": "뉴시스",
       "title": "中상무부, 美 무역장벽 조사 연말까지 연장"
     },
+    "event:366f99a5908ade32484afd0f": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.fnnews.com/news/202610061912189991",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "c09fe43bab7ab21632cacdd53c63bdff68962ae706c4ee7cfcfba0b65ebf3c2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b63fad41863c8e03954db74e8a5a22aa2e8d620748257707445d44a280136c27",
+      "source_fact_keys": [
+        "source_fact:v1:d2158d84b176df1bee6c00e8b9ef213ad76275205bfb6d97a3a9fb7049b875df"
+      ],
+      "source_published_kst": "2026-10-06T19:12+09:00",
+      "title": "'삼전닉스 레버리지' 투자한 개미, 석달 만에 2조3000억 날렸다"
+    },
     "event:3780ae43119fc3716dcb1b07": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
       "lanes": {
@@ -1728,25 +1745,26 @@
     "event:4af0ec859cb52ac4537c1713": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
       "lanes": {
-        "live": "2026-10-06T19:58:43+09:00"
+        "live": "2026-10-06T21:05:27+09:00"
       },
-      "last_seen_kst": "2026-10-06T19:58:43+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2632986",
-      "source": "이투데이",
-      "source_body_digest": "4cc901d164e6d181651ac86caeeb36983fb6efe25f786c6c8e60c29159bb06a9",
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04674006645610296",
+      "source": "이데일리",
+      "source_body_digest": "dedb11618feffaf7648477f9488c6c39b942d70df3bcafcfd5c9772da1998727",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:975cd97c3ef18a92621b43dcba7315957288f2af37a23fb8f5a9eb6c8c52ab31",
+      "source_fact_identity": "source_facts:v1:6cb87fde4e0d61213911e27fe53b9ffe89cef2f406d4cf327a7aa22d6be69746",
       "source_fact_keys": [
-        "source_fact:v1:0b0ca15b1455d95de0ed7b2367eb2ce1e515eddb7d2ac428fcdfb85408f22ebe",
-        "source_fact:v1:2734cc08752f4ea270edf2ed962030fc98731728b393391927c65fe26f749b5e",
-        "source_fact:v1:2e6476ed383ee616f10b0092ac24c84b1569b5fd7e50a3ebe91645866c5f2017",
-        "source_fact:v1:4dae1336a00e41f2455b93a5b644fce791c405c7c97183981ac2c74e9cd7484b",
-        "source_fact:v1:9b6c195a1da06b253d1ae2e82fbfc3a7cb9239df3b109aa2958d48609a9eb767",
-        "source_fact:v1:9f494a6cc65453f02ee9609d4f8f5b5078e8694437018e190f3cf37ce93e0718",
-        "source_fact:v1:e3de2984477feec7335144ea688db18aad59fbbf02d8975c2d02b501fa489b13"
+        "source_fact:v1:2b4bad5b4fd3d36678b58c37b360d2196872b780a3d2ef63a0092c7e750e805d",
+        "source_fact:v1:37f94eb3831089dfacaca9270deadff95351c5b0692124acc75d6f8f483881de",
+        "source_fact:v1:5a2fb9090265705a17da40f10de60729d9c7cd51ee150442c47ef2c2140bb1d7",
+        "source_fact:v1:68a2e3a7385cb8e1b614d646a37ea4816e4f0f88b4e9f2fff017e98e2bb988ba",
+        "source_fact:v1:838c9fc14bd97d2691964ccb46eb1b0cc3726752c60bbe966c700b2dfd49f29a",
+        "source_fact:v1:a03b187d03eb1b4c688cc66179be8134f69aee266cdd1c829a4fc5177afca07b",
+        "source_fact:v1:b501c90ee97526ecda082c554c914cd993bacde5a2525eeb1d7c85b568e6945f",
+        "source_fact:v1:d039c1c3dc42fa676b8c93a7b53b0eb035f7952d55d815b58d305bd68dc8338f"
       ],
-      "source_published_kst": "2026-10-06T16:57+09:00",
-      "title": "[BioS]알테오젠, 국민성장펀드 등 2000억 유치..\"新동력 확보\""
+      "source_published_kst": "2026-10-06T16:45+09:00",
+      "title": "알테오젠, 2000억 투자 유치…연구부터 판매까지 한 회사로"
     },
     "event:4b6c66ca03796acb2d14c1b0": {
       "first_seen_kst": "2026-10-01T11:18:10+09:00",
@@ -2323,19 +2341,22 @@
     "event:6926adee1d70facd68aecdd5": {
       "first_seen_kst": "2026-10-06T06:44:01+09:00",
       "lanes": {
-        "live": "2026-10-06T20:54:05+09:00"
+        "live": "2026-10-06T21:05:27+09:00"
       },
-      "last_seen_kst": "2026-10-06T20:54:05+09:00",
-      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000020343",
-      "source": "국민일보",
-      "source_body_digest": "56fba7f7f8026facfc0e648d17ae762067a174b3ceeabf00e08c213ecb29d70c",
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169500",
+      "source": "매일경제",
+      "source_body_digest": "f16adaa6531f4632313a04b2bde925f976ce4c69ebb57d5cab1c9208493f244c",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:38f586c6971e6cf59f2f636bb6c48b32eb9d4177c71db9d92b02de50d731b054",
+      "source_fact_identity": "source_facts:v1:05c3a21122777f3b6a4f7099409d0c25a4ddf9a5754e75d5b8887ddd02d49a6b",
       "source_fact_keys": [
-        "source_fact:v1:237a3e87a63714651fd20f16c49a936ef5da361a8a5e646a8f1e7a1739d7d368"
+        "source_fact:v1:2dee003d7213d16dcf97cd9bc77a187682790ad8f652dd6cf1c428c242fe5f4d",
+        "source_fact:v1:5887f95945fb471d3617205a6a5d6b086871d33c6fead636b7ed56c0c82c8e28",
+        "source_fact:v1:922f2ad45b43fad83dcb9ad8cf87ced02e291be2150fdc11aa5b0df96dd3f28e",
+        "source_fact:v1:a4d472d50bf49ec2a8b84c8e7197bc883f9b40b74717bccd09f489d8272146b8"
       ],
-      "source_published_kst": "2026-10-06T19:04+09:00",
-      "title": "이형일 “美 원전 선급금, 국내 절차·상업성 충족돼야 송금”"
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "삼성전자 '꿈의 영업이익' 눈앞 … 100조 훌쩍 넘나, 살짝 넘나"
     },
     "event:6994ec3ec51f16c535c2ebd5": {
       "first_seen_kst": "2026-09-28T15:47:59+09:00",
@@ -2950,19 +2971,22 @@
     "event:7c6939491963b47e90e9bad7": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
       "lanes": {
-        "live": "2026-10-06T18:34:25+09:00"
+        "live": "2026-10-06T21:05:27+09:00"
       },
-      "last_seen_kst": "2026-10-06T18:34:25+09:00",
-      "link": "https://www.mt.co.kr/society/2026/10/06/2026100614131276388",
-      "source": "머니투데이",
-      "source_body_digest": "050e41993c609335405ef4f3560cea7b5fd09010fe818a19cd6b44c4765fb54b",
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.hankyung.com/article/202610066108i",
+      "source": "한국경제",
+      "source_body_digest": "d8c02ec8b74936217c395e8f6500f478c38a5160cdba9bae4035f72b113c7e7e",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:297cf19dbd0b9ea4d66756f1c401d8e0d3f6cdcc98da9b18b8d761ef06ecce9f",
+      "source_fact_identity": "source_facts:v1:d1cc1ca5e9047acd56c798dccb596a2c434837d9000cce0752085332a1c35939",
       "source_fact_keys": [
-        "source_fact:v1:bd917f46332aa2af22c94d8c41a7a5d8870e8f391e76d7d020e2d685b85ca4e3"
+        "source_fact:v1:2e6476ed383ee616f10b0092ac24c84b1569b5fd7e50a3ebe91645866c5f2017",
+        "source_fact:v1:7b0995e9ca21ffef7adb2b3235c7bad1cfef9c70f5d99a27e0286c91946bccf7",
+        "source_fact:v1:e7513aeec67b961e701961f13e7c32f63618c46ef92f06f39e8f7db2af1b9c18",
+        "source_fact:v1:f0433b171f849bc8a1b02a58bf5eef723b4b1131cf36fa843bb840351ac32365"
       ],
-      "source_published_kst": "2026-10-06T14:41+09:00",
-      "title": "삼성전자 노조위원장 '장인 회사 계약 의혹'…경찰, 고발인 조사"
+      "source_published_kst": "2026-10-06T16:40+09:00",
+      "title": "알테오젠, 국민성장펀드·스카이레이크서 2000억원 투자 유치"
     },
     "event:7c70eaa8c1320c52347eb0be": {
       "first_seen_kst": "2026-10-05T14:04:17+09:00",
@@ -6022,6 +6046,21 @@
       "source": "매일경제",
       "title": "“아연 마진 흔들려도 굳건”…고려아연 ‘핵심광물 포트폴리오’ 재조명"
     },
+    "event:fc0d860f8da3830c26166cf4": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/06/2026100614254016183",
+      "source": "머니투데이",
+      "source_body_digest": "4aa0b50158e3f9b899aaac5ab8374dac8e006c556243ba369b49b99f441b13b6",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T15:22+09:00",
+      "title": "회사채 피해 어음 발행 몰렸는데…어음 금리가 치솟아"
+    },
     "event:fce93aaf474246af8dcc0ec6": {
       "first_seen_kst": "2026-09-28T18:02:59+09:00",
       "lanes": {
@@ -8087,6 +8126,26 @@
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "데이터센터 반대여론에도 美건설 계속…2027년 90GW 전망"
     },
+    "fact:293a49649f3e7875e240e13d": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.hankyung.com/article/202610066108i",
+      "source": "한국경제",
+      "source_body_digest": "d8c02ec8b74936217c395e8f6500f478c38a5160cdba9bae4035f72b113c7e7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d1cc1ca5e9047acd56c798dccb596a2c434837d9000cce0752085332a1c35939",
+      "source_fact_keys": [
+        "source_fact:v1:2e6476ed383ee616f10b0092ac24c84b1569b5fd7e50a3ebe91645866c5f2017",
+        "source_fact:v1:7b0995e9ca21ffef7adb2b3235c7bad1cfef9c70f5d99a27e0286c91946bccf7",
+        "source_fact:v1:e7513aeec67b961e701961f13e7c32f63618c46ef92f06f39e8f7db2af1b9c18",
+        "source_fact:v1:f0433b171f849bc8a1b02a58bf5eef723b4b1131cf36fa843bb840351ac32365"
+      ],
+      "source_published_kst": "2026-10-06T16:40+09:00",
+      "title": "알테오젠, 국민성장펀드·스카이레이크서 2000억원 투자 유치"
+    },
     "fact:2a6779951a67f0f29f05d98f": {
       "first_seen_kst": "2026-10-05T23:21:26+09:00",
       "lanes": {
@@ -9244,6 +9303,30 @@
       "source_published_kst": "2026-10-06T11:44+09:00",
       "title": "직스테크놀로지·한신공영·정도, AI 기반 '데이터센터 스마트 건설' 맞손"
     },
+    "fact:4329c41e471526dafb512563": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04674006645610296",
+      "source": "이데일리",
+      "source_body_digest": "dedb11618feffaf7648477f9488c6c39b942d70df3bcafcfd5c9772da1998727",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cb87fde4e0d61213911e27fe53b9ffe89cef2f406d4cf327a7aa22d6be69746",
+      "source_fact_keys": [
+        "source_fact:v1:2b4bad5b4fd3d36678b58c37b360d2196872b780a3d2ef63a0092c7e750e805d",
+        "source_fact:v1:37f94eb3831089dfacaca9270deadff95351c5b0692124acc75d6f8f483881de",
+        "source_fact:v1:5a2fb9090265705a17da40f10de60729d9c7cd51ee150442c47ef2c2140bb1d7",
+        "source_fact:v1:68a2e3a7385cb8e1b614d646a37ea4816e4f0f88b4e9f2fff017e98e2bb988ba",
+        "source_fact:v1:838c9fc14bd97d2691964ccb46eb1b0cc3726752c60bbe966c700b2dfd49f29a",
+        "source_fact:v1:a03b187d03eb1b4c688cc66179be8134f69aee266cdd1c829a4fc5177afca07b",
+        "source_fact:v1:b501c90ee97526ecda082c554c914cd993bacde5a2525eeb1d7c85b568e6945f",
+        "source_fact:v1:d039c1c3dc42fa676b8c93a7b53b0eb035f7952d55d815b58d305bd68dc8338f"
+      ],
+      "source_published_kst": "2026-10-06T16:45+09:00",
+      "title": "알테오젠, 2000억 투자 유치…연구부터 판매까지 한 회사로"
+    },
     "fact:43a21f6ac0b5c6d74b9f7a30": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
       "lanes": {
@@ -10368,6 +10451,26 @@
       "source_published_kst": "2026-10-05T21:08+09:00",
       "title": "포럼 마켓츠, AI 합작사 설립..2027년 매출 최대 1억7500만달러"
     },
+    "fact:6451edbeddf08a23756022ae": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169500",
+      "source": "매일경제",
+      "source_body_digest": "f16adaa6531f4632313a04b2bde925f976ce4c69ebb57d5cab1c9208493f244c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05c3a21122777f3b6a4f7099409d0c25a4ddf9a5754e75d5b8887ddd02d49a6b",
+      "source_fact_keys": [
+        "source_fact:v1:2dee003d7213d16dcf97cd9bc77a187682790ad8f652dd6cf1c428c242fe5f4d",
+        "source_fact:v1:5887f95945fb471d3617205a6a5d6b086871d33c6fead636b7ed56c0c82c8e28",
+        "source_fact:v1:922f2ad45b43fad83dcb9ad8cf87ced02e291be2150fdc11aa5b0df96dd3f28e",
+        "source_fact:v1:a4d472d50bf49ec2a8b84c8e7197bc883f9b40b74717bccd09f489d8272146b8"
+      ],
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "삼성전자 '꿈의 영업이익' 눈앞 … 100조 훌쩍 넘나, 살짝 넘나"
+    },
     "fact:6580dd017d28e86651af8335": {
       "first_seen_kst": "2026-10-06T14:52:12+09:00",
       "lanes": {
@@ -11399,6 +11502,23 @@
       ],
       "source_published_kst": "2026-10-06T14:06+09:00",
       "title": "미 국방부, 앤트로픽 AI 사용 중단…블랙리스트 지정 8개월만 | 연합뉴스"
+    },
+    "fact:7c8b36f295f636533759ecf1": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.fnnews.com/news/202610061912189991",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "c09fe43bab7ab21632cacdd53c63bdff68962ae706c4ee7cfcfba0b65ebf3c2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b63fad41863c8e03954db74e8a5a22aa2e8d620748257707445d44a280136c27",
+      "source_fact_keys": [
+        "source_fact:v1:d2158d84b176df1bee6c00e8b9ef213ad76275205bfb6d97a3a9fb7049b875df"
+      ],
+      "source_published_kst": "2026-10-06T19:12+09:00",
+      "title": "'삼전닉스 레버리지' 투자한 개미, 석달 만에 2조3000억 날렸다"
     },
     "fact:7e18aa1a94e580560d728a24": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -18244,6 +18364,21 @@
       "source": "이데일리",
       "title": "[TODAY엔비디아]역대급 자사주 매입 하루만에 하락 전환…다시 230달러 내줘"
     },
+    "link:106be3f7df0c06c2a7c5fe0c": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.mk.co.kr/news/it/12169661",
+      "source": "매일경제",
+      "source_body_digest": "d331d67fd3118138de109ad6b5c2136964ce9268030d03ddc3de6f5b19538e0f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T18:46+09:00",
+      "title": "알테오젠, 알테오젠바이오로직스 흡수합병"
+    },
     "link:110a1e2f409edae424fe8b71": {
       "first_seen_kst": "2026-10-02T07:42:52+09:00",
       "lanes": {
@@ -18679,6 +18814,21 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03335766645585368",
       "source": "이데일리",
       "title": "오픈AI \"AI가 일자리 대체 안 해…'에이전트', 기업 격차 갈라\""
+    },
+    "link:1595bab8a9a72c3c0bdfa3bc": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.hankyung.com/article/202610066550i",
+      "source": "한국경제",
+      "source_body_digest": "910c0511b9dc3f9823be5a0ea320ae730208da0d31135d114b378f88dcfa1d5f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T19:21+09:00",
+      "title": "日경제상 \"반도체·전력 수요 무한대…美·日 투자 충분히 양립\""
     },
     "link:15cb0adf611837b961bda2ea": {
       "first_seen_kst": "2026-10-02T19:18:49+09:00",
@@ -22695,6 +22845,26 @@
       "link": "https://www.yna.co.kr/view/AKR20260928015700009",
       "source": "연합뉴스",
       "title": "美재무 \"연준, 열린 마음 가져야…그린스펀은 경기 달리게 뒀다\" | 연합뉴스"
+    },
+    "link:3dc53e480811c0dfe582832c": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169500",
+      "source": "매일경제",
+      "source_body_digest": "f16adaa6531f4632313a04b2bde925f976ce4c69ebb57d5cab1c9208493f244c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05c3a21122777f3b6a4f7099409d0c25a4ddf9a5754e75d5b8887ddd02d49a6b",
+      "source_fact_keys": [
+        "source_fact:v1:2dee003d7213d16dcf97cd9bc77a187682790ad8f652dd6cf1c428c242fe5f4d",
+        "source_fact:v1:5887f95945fb471d3617205a6a5d6b086871d33c6fead636b7ed56c0c82c8e28",
+        "source_fact:v1:922f2ad45b43fad83dcb9ad8cf87ced02e291be2150fdc11aa5b0df96dd3f28e",
+        "source_fact:v1:a4d472d50bf49ec2a8b84c8e7197bc883f9b40b74717bccd09f489d8272146b8"
+      ],
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "삼성전자 '꿈의 영업이익' 눈앞 … 100조 훌쩍 넘나, 살짝 넘나"
     },
     "link:3dea9e4064d41d4413eac37b": {
       "first_seen_kst": "2026-10-06T19:33:48+09:00",
@@ -27991,6 +28161,21 @@
       "source": "매일경제",
       "title": "잘나가는 반도체 ETF … '소부장' 듬뿍 담았네"
     },
+    "link:6ff03e3ab9f4d8b615d5cd5c": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/06/2026100614254016183",
+      "source": "머니투데이",
+      "source_body_digest": "4aa0b50158e3f9b899aaac5ab8374dac8e006c556243ba369b49b99f441b13b6",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T15:22+09:00",
+      "title": "회사채 피해 어음 발행 몰렸는데…어음 금리가 치솟아"
+    },
     "link:702a35d4b2a4ad205806446f": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
       "lanes": {
@@ -31535,6 +31720,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T17:50+09:00",
       "title": "\"수술 로봇이 '의사 부족' 문제 해결…한국 투자 늘리겠다\""
+    },
+    "link:9586ab54aa5f9a44bff4ee08": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.fnnews.com/news/202610061912189991",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "c09fe43bab7ab21632cacdd53c63bdff68962ae706c4ee7cfcfba0b65ebf3c2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b63fad41863c8e03954db74e8a5a22aa2e8d620748257707445d44a280136c27",
+      "source_fact_keys": [
+        "source_fact:v1:d2158d84b176df1bee6c00e8b9ef213ad76275205bfb6d97a3a9fb7049b875df"
+      ],
+      "source_published_kst": "2026-10-06T19:12+09:00",
+      "title": "'삼전닉스 레버리지' 투자한 개미, 석달 만에 2조3000억 날렸다"
     },
     "link:95959f2510b93b6b9317775d": {
       "first_seen_kst": "2026-10-03T07:28:32+09:00",
@@ -39274,6 +39476,30 @@
       "source_published_kst": "2026-10-04T22:38+09:00",
       "title": "\"사우디, 2034 월드컵 경기장 '네옴 스타디움' 건설 계획 보류\" | 연합뉴스"
     },
+    "link:e245061a8771bc47ab000893": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04674006645610296",
+      "source": "이데일리",
+      "source_body_digest": "dedb11618feffaf7648477f9488c6c39b942d70df3bcafcfd5c9772da1998727",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cb87fde4e0d61213911e27fe53b9ffe89cef2f406d4cf327a7aa22d6be69746",
+      "source_fact_keys": [
+        "source_fact:v1:2b4bad5b4fd3d36678b58c37b360d2196872b780a3d2ef63a0092c7e750e805d",
+        "source_fact:v1:37f94eb3831089dfacaca9270deadff95351c5b0692124acc75d6f8f483881de",
+        "source_fact:v1:5a2fb9090265705a17da40f10de60729d9c7cd51ee150442c47ef2c2140bb1d7",
+        "source_fact:v1:68a2e3a7385cb8e1b614d646a37ea4816e4f0f88b4e9f2fff017e98e2bb988ba",
+        "source_fact:v1:838c9fc14bd97d2691964ccb46eb1b0cc3726752c60bbe966c700b2dfd49f29a",
+        "source_fact:v1:a03b187d03eb1b4c688cc66179be8134f69aee266cdd1c829a4fc5177afca07b",
+        "source_fact:v1:b501c90ee97526ecda082c554c914cd993bacde5a2525eeb1d7c85b568e6945f",
+        "source_fact:v1:d039c1c3dc42fa676b8c93a7b53b0eb035f7952d55d815b58d305bd68dc8338f"
+      ],
+      "source_published_kst": "2026-10-06T16:45+09:00",
+      "title": "알테오젠, 2000억 투자 유치…연구부터 판매까지 한 회사로"
+    },
     "link:e2554001591da4aa17a25008": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
       "lanes": {
@@ -40352,6 +40578,26 @@
       ],
       "source_published_kst": "2026-10-06T09:32+09:00",
       "title": "LG전자, 美 AI 데이터센터 냉각 솔루션 공급 계약에 '급등'"
+    },
+    "link:ec4d2f8b7a8c04c2fd11f944": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.hankyung.com/article/202610066108i",
+      "source": "한국경제",
+      "source_body_digest": "d8c02ec8b74936217c395e8f6500f478c38a5160cdba9bae4035f72b113c7e7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d1cc1ca5e9047acd56c798dccb596a2c434837d9000cce0752085332a1c35939",
+      "source_fact_keys": [
+        "source_fact:v1:2e6476ed383ee616f10b0092ac24c84b1569b5fd7e50a3ebe91645866c5f2017",
+        "source_fact:v1:7b0995e9ca21ffef7adb2b3235c7bad1cfef9c70f5d99a27e0286c91946bccf7",
+        "source_fact:v1:e7513aeec67b961e701961f13e7c32f63618c46ef92f06f39e8f7db2af1b9c18",
+        "source_fact:v1:f0433b171f849bc8a1b02a58bf5eef723b4b1131cf36fa843bb840351ac32365"
+      ],
+      "source_published_kst": "2026-10-06T16:40+09:00",
+      "title": "알테오젠, 국민성장펀드·스카이레이크서 2000억원 투자 유치"
     },
     "link:ec68090b2fbc5250fa4ba59d": {
       "first_seen_kst": "2026-10-02T17:56:05+09:00",
@@ -49063,6 +49309,26 @@
       "source": "매일경제",
       "title": "주가 빠진 오리온, 지금이 기회?…“배당 4%대·저점 매수 유효”"
     },
+    "original:42d15a9c1b1443d00837dd2c": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.hankyung.com/article/202610066108i",
+      "source": "한국경제",
+      "source_body_digest": "d8c02ec8b74936217c395e8f6500f478c38a5160cdba9bae4035f72b113c7e7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d1cc1ca5e9047acd56c798dccb596a2c434837d9000cce0752085332a1c35939",
+      "source_fact_keys": [
+        "source_fact:v1:2e6476ed383ee616f10b0092ac24c84b1569b5fd7e50a3ebe91645866c5f2017",
+        "source_fact:v1:7b0995e9ca21ffef7adb2b3235c7bad1cfef9c70f5d99a27e0286c91946bccf7",
+        "source_fact:v1:e7513aeec67b961e701961f13e7c32f63618c46ef92f06f39e8f7db2af1b9c18",
+        "source_fact:v1:f0433b171f849bc8a1b02a58bf5eef723b4b1131cf36fa843bb840351ac32365"
+      ],
+      "source_published_kst": "2026-10-06T16:40+09:00",
+      "title": "알테오젠, 국민성장펀드·스카이레이크서 2000억원 투자 유치"
+    },
     "original:42d26588e9c46f4b2bef902a": {
       "first_seen_kst": "2026-10-04T22:49:21+09:00",
       "lanes": {
@@ -52760,6 +53026,21 @@
       "source_published_kst": "2026-10-06T09:42+09:00",
       "title": "체이널리시스 \"한국 가상자산 시장 규모 동아시아 최대⋯AI 관련 코인 거래 주목\""
     },
+    "original:6b14253c487dded561311985": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/06/2026100614254016183",
+      "source": "머니투데이",
+      "source_body_digest": "4aa0b50158e3f9b899aaac5ab8374dac8e006c556243ba369b49b99f441b13b6",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T15:22+09:00",
+      "title": "회사채 피해 어음 발행 몰렸는데…어음 금리가 치솟아"
+    },
     "original:6b14523424a2229feb1b72a4": {
       "first_seen_kst": "2026-10-05T10:49:34+09:00",
       "lanes": {
@@ -54177,6 +54458,21 @@
       "link": "https://www.yna.co.kr/view/AKR20260918124800003",
       "source": "연합뉴스",
       "title": "삼성전자 DX노조, 이재용 회장 자택 앞 집회…\"직접 대화하자\" | 연합뉴스"
+    },
+    "original:785c3cb7e5f9998f99621ed0": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.mk.co.kr/news/it/12169661",
+      "source": "매일경제",
+      "source_body_digest": "d331d67fd3118138de109ad6b5c2136964ce9268030d03ddc3de6f5b19538e0f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T18:46+09:00",
+      "title": "알테오젠, 알테오젠바이오로직스 흡수합병"
     },
     "original:786ef310e739a6e202406b4c": {
       "first_seen_kst": "2026-10-06T15:14:29+09:00",
@@ -57616,6 +57912,23 @@
       "source_published_kst": "2026-10-05T10:30+09:00",
       "title": "삼전닉스 17조 던진 외국인…코스피 한달새 20조 '매도 폭탄'"
     },
+    "original:9cab462681f4a7eebdfb344e": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.fnnews.com/news/202610061912189991",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "c09fe43bab7ab21632cacdd53c63bdff68962ae706c4ee7cfcfba0b65ebf3c2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b63fad41863c8e03954db74e8a5a22aa2e8d620748257707445d44a280136c27",
+      "source_fact_keys": [
+        "source_fact:v1:d2158d84b176df1bee6c00e8b9ef213ad76275205bfb6d97a3a9fb7049b875df"
+      ],
+      "source_published_kst": "2026-10-06T19:12+09:00",
+      "title": "'삼전닉스 레버리지' 투자한 개미, 석달 만에 2조3000억 날렸다"
+    },
     "original:9cb8912caa8830324533b016": {
       "first_seen_kst": "2026-10-02T09:58:25+09:00",
       "lanes": {
@@ -59228,6 +59541,30 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T21:04+09:00",
       "title": "러시아, 키이우 교량 나흘째 공격… 젤렌스키 \"푸틴, 민간시설 공격↑\""
+    },
+    "original:ae9233b2b15dda08eee1d195": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04674006645610296",
+      "source": "이데일리",
+      "source_body_digest": "dedb11618feffaf7648477f9488c6c39b942d70df3bcafcfd5c9772da1998727",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cb87fde4e0d61213911e27fe53b9ffe89cef2f406d4cf327a7aa22d6be69746",
+      "source_fact_keys": [
+        "source_fact:v1:2b4bad5b4fd3d36678b58c37b360d2196872b780a3d2ef63a0092c7e750e805d",
+        "source_fact:v1:37f94eb3831089dfacaca9270deadff95351c5b0692124acc75d6f8f483881de",
+        "source_fact:v1:5a2fb9090265705a17da40f10de60729d9c7cd51ee150442c47ef2c2140bb1d7",
+        "source_fact:v1:68a2e3a7385cb8e1b614d646a37ea4816e4f0f88b4e9f2fff017e98e2bb988ba",
+        "source_fact:v1:838c9fc14bd97d2691964ccb46eb1b0cc3726752c60bbe966c700b2dfd49f29a",
+        "source_fact:v1:a03b187d03eb1b4c688cc66179be8134f69aee266cdd1c829a4fc5177afca07b",
+        "source_fact:v1:b501c90ee97526ecda082c554c914cd993bacde5a2525eeb1d7c85b568e6945f",
+        "source_fact:v1:d039c1c3dc42fa676b8c93a7b53b0eb035f7952d55d815b58d305bd68dc8338f"
+      ],
+      "source_published_kst": "2026-10-06T16:45+09:00",
+      "title": "알테오젠, 2000억 투자 유치…연구부터 판매까지 한 회사로"
     },
     "original:aedeabc0d3f2d592db188970": {
       "first_seen_kst": "2026-10-05T12:09:30+09:00",
@@ -62457,6 +62794,21 @@
       "source": "매일경제",
       "title": "카바 그룹, 1억 달러 자사주 매입 프로그램 승인"
     },
+    "original:d2293028d652cd6d750f9cf0": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.hankyung.com/article/202610066550i",
+      "source": "한국경제",
+      "source_body_digest": "910c0511b9dc3f9823be5a0ea320ae730208da0d31135d114b378f88dcfa1d5f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T19:21+09:00",
+      "title": "日경제상 \"반도체·전력 수요 무한대…美·日 투자 충분히 양립\""
+    },
     "original:d2732180359972d9693731c6": {
       "first_seen_kst": "2026-10-06T01:16:46+09:00",
       "lanes": {
@@ -65394,6 +65746,26 @@
       "source_event_identity": "",
       "title": "“1550원일땐 차마 못 갚았습니다”…1350원에 달러빚 정리나선 기업들"
     },
+    "original:ed36e4e69d84d5569c3ceb92": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169500",
+      "source": "매일경제",
+      "source_body_digest": "f16adaa6531f4632313a04b2bde925f976ce4c69ebb57d5cab1c9208493f244c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05c3a21122777f3b6a4f7099409d0c25a4ddf9a5754e75d5b8887ddd02d49a6b",
+      "source_fact_keys": [
+        "source_fact:v1:2dee003d7213d16dcf97cd9bc77a187682790ad8f652dd6cf1c428c242fe5f4d",
+        "source_fact:v1:5887f95945fb471d3617205a6a5d6b086871d33c6fead636b7ed56c0c82c8e28",
+        "source_fact:v1:922f2ad45b43fad83dcb9ad8cf87ced02e291be2150fdc11aa5b0df96dd3f28e",
+        "source_fact:v1:a4d472d50bf49ec2a8b84c8e7197bc883f9b40b74717bccd09f489d8272146b8"
+      ],
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "삼성전자 '꿈의 영업이익' 눈앞 … 100조 훌쩍 넘나, 살짝 넘나"
+    },
     "original:ed4fbb51980c1f22167adf59": {
       "first_seen_kst": "2026-10-04T06:34:33+09:00",
       "lanes": {
@@ -68134,6 +68506,30 @@
       ],
       "source_published_kst": "2026-10-05T16:00+09:00",
       "title": "[기획]한국재료연구원, AI·데이터로 '예측하고 설계하는' 소재 연구시대 연다"
+    },
+    "source_fact:061d27d702913dbbd032716d": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04674006645610296",
+      "source": "이데일리",
+      "source_body_digest": "dedb11618feffaf7648477f9488c6c39b942d70df3bcafcfd5c9772da1998727",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cb87fde4e0d61213911e27fe53b9ffe89cef2f406d4cf327a7aa22d6be69746",
+      "source_fact_keys": [
+        "source_fact:v1:2b4bad5b4fd3d36678b58c37b360d2196872b780a3d2ef63a0092c7e750e805d",
+        "source_fact:v1:37f94eb3831089dfacaca9270deadff95351c5b0692124acc75d6f8f483881de",
+        "source_fact:v1:5a2fb9090265705a17da40f10de60729d9c7cd51ee150442c47ef2c2140bb1d7",
+        "source_fact:v1:68a2e3a7385cb8e1b614d646a37ea4816e4f0f88b4e9f2fff017e98e2bb988ba",
+        "source_fact:v1:838c9fc14bd97d2691964ccb46eb1b0cc3726752c60bbe966c700b2dfd49f29a",
+        "source_fact:v1:a03b187d03eb1b4c688cc66179be8134f69aee266cdd1c829a4fc5177afca07b",
+        "source_fact:v1:b501c90ee97526ecda082c554c914cd993bacde5a2525eeb1d7c85b568e6945f",
+        "source_fact:v1:d039c1c3dc42fa676b8c93a7b53b0eb035f7952d55d815b58d305bd68dc8338f"
+      ],
+      "source_published_kst": "2026-10-06T16:45+09:00",
+      "title": "알테오젠, 2000억 투자 유치…연구부터 판매까지 한 회사로"
     },
     "source_fact:061f22d1f79544d3c4fffbea": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -77819,6 +78215,30 @@
       "source_published_kst": "2026-10-06T04:36+09:00",
       "title": "美10년물 국채금리 장중 5.34% 돌파…24년 만에 최고"
     },
+    "source_fact:3c3e3a0130c7d336bbbabe51": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04674006645610296",
+      "source": "이데일리",
+      "source_body_digest": "dedb11618feffaf7648477f9488c6c39b942d70df3bcafcfd5c9772da1998727",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cb87fde4e0d61213911e27fe53b9ffe89cef2f406d4cf327a7aa22d6be69746",
+      "source_fact_keys": [
+        "source_fact:v1:2b4bad5b4fd3d36678b58c37b360d2196872b780a3d2ef63a0092c7e750e805d",
+        "source_fact:v1:37f94eb3831089dfacaca9270deadff95351c5b0692124acc75d6f8f483881de",
+        "source_fact:v1:5a2fb9090265705a17da40f10de60729d9c7cd51ee150442c47ef2c2140bb1d7",
+        "source_fact:v1:68a2e3a7385cb8e1b614d646a37ea4816e4f0f88b4e9f2fff017e98e2bb988ba",
+        "source_fact:v1:838c9fc14bd97d2691964ccb46eb1b0cc3726752c60bbe966c700b2dfd49f29a",
+        "source_fact:v1:a03b187d03eb1b4c688cc66179be8134f69aee266cdd1c829a4fc5177afca07b",
+        "source_fact:v1:b501c90ee97526ecda082c554c914cd993bacde5a2525eeb1d7c85b568e6945f",
+        "source_fact:v1:d039c1c3dc42fa676b8c93a7b53b0eb035f7952d55d815b58d305bd68dc8338f"
+      ],
+      "source_published_kst": "2026-10-06T16:45+09:00",
+      "title": "알테오젠, 2000억 투자 유치…연구부터 판매까지 한 회사로"
+    },
     "source_fact:3c6f9439fb3c8dd4d57e78dd": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
       "lanes": {
@@ -79226,6 +79646,26 @@
       ],
       "source_published_kst": "2026-10-06T04:02+09:00",
       "title": "美부통령 \"韓 알래스카 투자 이뤄질것…세부협상은 남아\""
+    },
+    "source_fact:445b3a31077452b6f402f438": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169500",
+      "source": "매일경제",
+      "source_body_digest": "f16adaa6531f4632313a04b2bde925f976ce4c69ebb57d5cab1c9208493f244c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05c3a21122777f3b6a4f7099409d0c25a4ddf9a5754e75d5b8887ddd02d49a6b",
+      "source_fact_keys": [
+        "source_fact:v1:2dee003d7213d16dcf97cd9bc77a187682790ad8f652dd6cf1c428c242fe5f4d",
+        "source_fact:v1:5887f95945fb471d3617205a6a5d6b086871d33c6fead636b7ed56c0c82c8e28",
+        "source_fact:v1:922f2ad45b43fad83dcb9ad8cf87ced02e291be2150fdc11aa5b0df96dd3f28e",
+        "source_fact:v1:a4d472d50bf49ec2a8b84c8e7197bc883f9b40b74717bccd09f489d8272146b8"
+      ],
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "삼성전자 '꿈의 영업이익' 눈앞 … 100조 훌쩍 넘나, 살짝 넘나"
     },
     "source_fact:44747d07bd5171405d474305": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
@@ -86244,6 +86684,26 @@
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "어드밴스드 드레니쥐 시스, 스톰트랩 5억3000만 달러 인수..4분기 완료 예정"
     },
+    "source_fact:6866e260949ba097d2efbf53": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169500",
+      "source": "매일경제",
+      "source_body_digest": "f16adaa6531f4632313a04b2bde925f976ce4c69ebb57d5cab1c9208493f244c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05c3a21122777f3b6a4f7099409d0c25a4ddf9a5754e75d5b8887ddd02d49a6b",
+      "source_fact_keys": [
+        "source_fact:v1:2dee003d7213d16dcf97cd9bc77a187682790ad8f652dd6cf1c428c242fe5f4d",
+        "source_fact:v1:5887f95945fb471d3617205a6a5d6b086871d33c6fead636b7ed56c0c82c8e28",
+        "source_fact:v1:922f2ad45b43fad83dcb9ad8cf87ced02e291be2150fdc11aa5b0df96dd3f28e",
+        "source_fact:v1:a4d472d50bf49ec2a8b84c8e7197bc883f9b40b74717bccd09f489d8272146b8"
+      ],
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "삼성전자 '꿈의 영업이익' 눈앞 … 100조 훌쩍 넘나, 살짝 넘나"
+    },
     "source_fact:68840e77515711ccb8e25497": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
       "lanes": {
@@ -87089,6 +87549,26 @@
       ],
       "source_published_kst": "2026-10-05T21:41+09:00",
       "title": "ESS 테크, NYSE 거래정지·상장폐지 개시..OTC서 GWHT 거래"
+    },
+    "source_fact:6d8fc4c3f26521596553b76c": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169500",
+      "source": "매일경제",
+      "source_body_digest": "f16adaa6531f4632313a04b2bde925f976ce4c69ebb57d5cab1c9208493f244c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05c3a21122777f3b6a4f7099409d0c25a4ddf9a5754e75d5b8887ddd02d49a6b",
+      "source_fact_keys": [
+        "source_fact:v1:2dee003d7213d16dcf97cd9bc77a187682790ad8f652dd6cf1c428c242fe5f4d",
+        "source_fact:v1:5887f95945fb471d3617205a6a5d6b086871d33c6fead636b7ed56c0c82c8e28",
+        "source_fact:v1:922f2ad45b43fad83dcb9ad8cf87ced02e291be2150fdc11aa5b0df96dd3f28e",
+        "source_fact:v1:a4d472d50bf49ec2a8b84c8e7197bc883f9b40b74717bccd09f489d8272146b8"
+      ],
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "삼성전자 '꿈의 영업이익' 눈앞 … 100조 훌쩍 넘나, 살짝 넘나"
     },
     "source_fact:6dafbef266acd67c4fbe7c76": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
@@ -92363,6 +92843,30 @@
       ],
       "source_published_kst": "2026-10-06T10:16+09:00",
       "title": "엠플러스, 유럽 배터리 기업에 각형 장비 공급…방산·항공우주로 고객군 확대"
+    },
+    "source_fact:8667bfb3ab884039a0c26849": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04674006645610296",
+      "source": "이데일리",
+      "source_body_digest": "dedb11618feffaf7648477f9488c6c39b942d70df3bcafcfd5c9772da1998727",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cb87fde4e0d61213911e27fe53b9ffe89cef2f406d4cf327a7aa22d6be69746",
+      "source_fact_keys": [
+        "source_fact:v1:2b4bad5b4fd3d36678b58c37b360d2196872b780a3d2ef63a0092c7e750e805d",
+        "source_fact:v1:37f94eb3831089dfacaca9270deadff95351c5b0692124acc75d6f8f483881de",
+        "source_fact:v1:5a2fb9090265705a17da40f10de60729d9c7cd51ee150442c47ef2c2140bb1d7",
+        "source_fact:v1:68a2e3a7385cb8e1b614d646a37ea4816e4f0f88b4e9f2fff017e98e2bb988ba",
+        "source_fact:v1:838c9fc14bd97d2691964ccb46eb1b0cc3726752c60bbe966c700b2dfd49f29a",
+        "source_fact:v1:a03b187d03eb1b4c688cc66179be8134f69aee266cdd1c829a4fc5177afca07b",
+        "source_fact:v1:b501c90ee97526ecda082c554c914cd993bacde5a2525eeb1d7c85b568e6945f",
+        "source_fact:v1:d039c1c3dc42fa676b8c93a7b53b0eb035f7952d55d815b58d305bd68dc8338f"
+      ],
+      "source_published_kst": "2026-10-06T16:45+09:00",
+      "title": "알테오젠, 2000억 투자 유치…연구부터 판매까지 한 회사로"
     },
     "source_fact:868cc9b13672339281a056bb": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -101945,6 +102449,23 @@
       "source_published_kst": "2026-10-06T01:21+09:00",
       "title": "페라리, 자사주 2600만 유로 매입..3차 한도 41% 소진"
     },
+    "source_fact:b922c25d79355beed17ca3f5": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.fnnews.com/news/202610061912189991",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "c09fe43bab7ab21632cacdd53c63bdff68962ae706c4ee7cfcfba0b65ebf3c2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b63fad41863c8e03954db74e8a5a22aa2e8d620748257707445d44a280136c27",
+      "source_fact_keys": [
+        "source_fact:v1:d2158d84b176df1bee6c00e8b9ef213ad76275205bfb6d97a3a9fb7049b875df"
+      ],
+      "source_published_kst": "2026-10-06T19:12+09:00",
+      "title": "'삼전닉스 레버리지' 투자한 개미, 석달 만에 2조3000억 날렸다"
+    },
     "source_fact:b99b8e70a66992280aa12f12": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
       "lanes": {
@@ -102867,6 +103388,26 @@
       ],
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "데이터센터 반대여론에도 美건설 계속…2027년 90GW 전망"
+    },
+    "source_fact:be7e9cc0ab7ed20f911026b8": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.hankyung.com/article/202610066108i",
+      "source": "한국경제",
+      "source_body_digest": "d8c02ec8b74936217c395e8f6500f478c38a5160cdba9bae4035f72b113c7e7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d1cc1ca5e9047acd56c798dccb596a2c434837d9000cce0752085332a1c35939",
+      "source_fact_keys": [
+        "source_fact:v1:2e6476ed383ee616f10b0092ac24c84b1569b5fd7e50a3ebe91645866c5f2017",
+        "source_fact:v1:7b0995e9ca21ffef7adb2b3235c7bad1cfef9c70f5d99a27e0286c91946bccf7",
+        "source_fact:v1:e7513aeec67b961e701961f13e7c32f63618c46ef92f06f39e8f7db2af1b9c18",
+        "source_fact:v1:f0433b171f849bc8a1b02a58bf5eef723b4b1131cf36fa843bb840351ac32365"
+      ],
+      "source_published_kst": "2026-10-06T16:40+09:00",
+      "title": "알테오젠, 국민성장펀드·스카이레이크서 2000억원 투자 유치"
     },
     "source_fact:bea18873f2d8d26f4cb1dfb6": {
       "first_seen_kst": "2026-10-06T20:37:39+09:00",
@@ -108389,6 +108930,26 @@
       "source_published_kst": "2026-10-05T18:21+09:00",
       "title": "솔리다임 美상장… \"SK하닉 가치 재평가\" vs \"주주 피해\" [어떻게 생각하십니까]"
     },
+    "source_fact:db5b33c4b7461d30d4d4a32b": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169500",
+      "source": "매일경제",
+      "source_body_digest": "f16adaa6531f4632313a04b2bde925f976ce4c69ebb57d5cab1c9208493f244c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05c3a21122777f3b6a4f7099409d0c25a4ddf9a5754e75d5b8887ddd02d49a6b",
+      "source_fact_keys": [
+        "source_fact:v1:2dee003d7213d16dcf97cd9bc77a187682790ad8f652dd6cf1c428c242fe5f4d",
+        "source_fact:v1:5887f95945fb471d3617205a6a5d6b086871d33c6fead636b7ed56c0c82c8e28",
+        "source_fact:v1:922f2ad45b43fad83dcb9ad8cf87ced02e291be2150fdc11aa5b0df96dd3f28e",
+        "source_fact:v1:a4d472d50bf49ec2a8b84c8e7197bc883f9b40b74717bccd09f489d8272146b8"
+      ],
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "삼성전자 '꿈의 영업이익' 눈앞 … 100조 훌쩍 넘나, 살짝 넘나"
+    },
     "source_fact:db7a955b9c12004f0c6158ca": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
       "lanes": {
@@ -109584,6 +110145,26 @@
       "source_published_kst": "2026-10-06T09:44+09:00",
       "title": "[특징주] LG전자 5%대 강세⋯북미 AI 데이터센터 냉각 솔루션 공급 호재"
     },
+    "source_fact:e0de7bcd8f507ea7d39d4f7c": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.hankyung.com/article/202610066108i",
+      "source": "한국경제",
+      "source_body_digest": "d8c02ec8b74936217c395e8f6500f478c38a5160cdba9bae4035f72b113c7e7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d1cc1ca5e9047acd56c798dccb596a2c434837d9000cce0752085332a1c35939",
+      "source_fact_keys": [
+        "source_fact:v1:2e6476ed383ee616f10b0092ac24c84b1569b5fd7e50a3ebe91645866c5f2017",
+        "source_fact:v1:7b0995e9ca21ffef7adb2b3235c7bad1cfef9c70f5d99a27e0286c91946bccf7",
+        "source_fact:v1:e7513aeec67b961e701961f13e7c32f63618c46ef92f06f39e8f7db2af1b9c18",
+        "source_fact:v1:f0433b171f849bc8a1b02a58bf5eef723b4b1131cf36fa843bb840351ac32365"
+      ],
+      "source_published_kst": "2026-10-06T16:40+09:00",
+      "title": "알테오젠, 국민성장펀드·스카이레이크서 2000억원 투자 유치"
+    },
     "source_fact:e11f53b0b64c3ccce8b44c84": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
       "lanes": {
@@ -109630,6 +110211,30 @@
       ],
       "source_published_kst": "2026-10-06T14:48+09:00",
       "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
+    },
+    "source_fact:e14bfb7ba8cca5960a8499db": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04674006645610296",
+      "source": "이데일리",
+      "source_body_digest": "dedb11618feffaf7648477f9488c6c39b942d70df3bcafcfd5c9772da1998727",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cb87fde4e0d61213911e27fe53b9ffe89cef2f406d4cf327a7aa22d6be69746",
+      "source_fact_keys": [
+        "source_fact:v1:2b4bad5b4fd3d36678b58c37b360d2196872b780a3d2ef63a0092c7e750e805d",
+        "source_fact:v1:37f94eb3831089dfacaca9270deadff95351c5b0692124acc75d6f8f483881de",
+        "source_fact:v1:5a2fb9090265705a17da40f10de60729d9c7cd51ee150442c47ef2c2140bb1d7",
+        "source_fact:v1:68a2e3a7385cb8e1b614d646a37ea4816e4f0f88b4e9f2fff017e98e2bb988ba",
+        "source_fact:v1:838c9fc14bd97d2691964ccb46eb1b0cc3726752c60bbe966c700b2dfd49f29a",
+        "source_fact:v1:a03b187d03eb1b4c688cc66179be8134f69aee266cdd1c829a4fc5177afca07b",
+        "source_fact:v1:b501c90ee97526ecda082c554c914cd993bacde5a2525eeb1d7c85b568e6945f",
+        "source_fact:v1:d039c1c3dc42fa676b8c93a7b53b0eb035f7952d55d815b58d305bd68dc8338f"
+      ],
+      "source_published_kst": "2026-10-06T16:45+09:00",
+      "title": "알테오젠, 2000억 투자 유치…연구부터 판매까지 한 회사로"
     },
     "source_fact:e15561233290551a1566a362": {
       "first_seen_kst": "2026-10-06T20:37:39+09:00",
@@ -110174,6 +110779,30 @@
       "source_published_kst": "2026-10-05T21:09+09:00",
       "title": "베니테크 바이오파마, BB-301 FDA 추가자료 요청..임상 일정 유지"
     },
+    "source_fact:e37db87955cda0136a58b1a4": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04674006645610296",
+      "source": "이데일리",
+      "source_body_digest": "dedb11618feffaf7648477f9488c6c39b942d70df3bcafcfd5c9772da1998727",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cb87fde4e0d61213911e27fe53b9ffe89cef2f406d4cf327a7aa22d6be69746",
+      "source_fact_keys": [
+        "source_fact:v1:2b4bad5b4fd3d36678b58c37b360d2196872b780a3d2ef63a0092c7e750e805d",
+        "source_fact:v1:37f94eb3831089dfacaca9270deadff95351c5b0692124acc75d6f8f483881de",
+        "source_fact:v1:5a2fb9090265705a17da40f10de60729d9c7cd51ee150442c47ef2c2140bb1d7",
+        "source_fact:v1:68a2e3a7385cb8e1b614d646a37ea4816e4f0f88b4e9f2fff017e98e2bb988ba",
+        "source_fact:v1:838c9fc14bd97d2691964ccb46eb1b0cc3726752c60bbe966c700b2dfd49f29a",
+        "source_fact:v1:a03b187d03eb1b4c688cc66179be8134f69aee266cdd1c829a4fc5177afca07b",
+        "source_fact:v1:b501c90ee97526ecda082c554c914cd993bacde5a2525eeb1d7c85b568e6945f",
+        "source_fact:v1:d039c1c3dc42fa676b8c93a7b53b0eb035f7952d55d815b58d305bd68dc8338f"
+      ],
+      "source_published_kst": "2026-10-06T16:45+09:00",
+      "title": "알테오젠, 2000억 투자 유치…연구부터 판매까지 한 회사로"
+    },
     "source_fact:e38d572b5cbb3306dd03b4bb": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
       "lanes": {
@@ -110522,6 +111151,30 @@
       ],
       "source_published_kst": "2026-10-04T22:38+09:00",
       "title": "\"사우디, 2034 월드컵 경기장 '네옴 스타디움' 건설 계획 보류\" | 연합뉴스"
+    },
+    "source_fact:e66c2035b24f403b1c677e87": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04674006645610296",
+      "source": "이데일리",
+      "source_body_digest": "dedb11618feffaf7648477f9488c6c39b942d70df3bcafcfd5c9772da1998727",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cb87fde4e0d61213911e27fe53b9ffe89cef2f406d4cf327a7aa22d6be69746",
+      "source_fact_keys": [
+        "source_fact:v1:2b4bad5b4fd3d36678b58c37b360d2196872b780a3d2ef63a0092c7e750e805d",
+        "source_fact:v1:37f94eb3831089dfacaca9270deadff95351c5b0692124acc75d6f8f483881de",
+        "source_fact:v1:5a2fb9090265705a17da40f10de60729d9c7cd51ee150442c47ef2c2140bb1d7",
+        "source_fact:v1:68a2e3a7385cb8e1b614d646a37ea4816e4f0f88b4e9f2fff017e98e2bb988ba",
+        "source_fact:v1:838c9fc14bd97d2691964ccb46eb1b0cc3726752c60bbe966c700b2dfd49f29a",
+        "source_fact:v1:a03b187d03eb1b4c688cc66179be8134f69aee266cdd1c829a4fc5177afca07b",
+        "source_fact:v1:b501c90ee97526ecda082c554c914cd993bacde5a2525eeb1d7c85b568e6945f",
+        "source_fact:v1:d039c1c3dc42fa676b8c93a7b53b0eb035f7952d55d815b58d305bd68dc8338f"
+      ],
+      "source_published_kst": "2026-10-06T16:45+09:00",
+      "title": "알테오젠, 2000억 투자 유치…연구부터 판매까지 한 회사로"
     },
     "source_fact:e6943e58cd31baaaa8bea56e": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
@@ -111484,25 +112137,22 @@
     "source_fact:ea67bcf46a9864f7e55b98d9": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
       "lanes": {
-        "live": "2026-10-06T19:58:43+09:00"
+        "live": "2026-10-06T21:05:27+09:00"
       },
-      "last_seen_kst": "2026-10-06T19:58:43+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2632986",
-      "source": "이투데이",
-      "source_body_digest": "4cc901d164e6d181651ac86caeeb36983fb6efe25f786c6c8e60c29159bb06a9",
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.hankyung.com/article/202610066108i",
+      "source": "한국경제",
+      "source_body_digest": "d8c02ec8b74936217c395e8f6500f478c38a5160cdba9bae4035f72b113c7e7e",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:975cd97c3ef18a92621b43dcba7315957288f2af37a23fb8f5a9eb6c8c52ab31",
+      "source_fact_identity": "source_facts:v1:d1cc1ca5e9047acd56c798dccb596a2c434837d9000cce0752085332a1c35939",
       "source_fact_keys": [
-        "source_fact:v1:0b0ca15b1455d95de0ed7b2367eb2ce1e515eddb7d2ac428fcdfb85408f22ebe",
-        "source_fact:v1:2734cc08752f4ea270edf2ed962030fc98731728b393391927c65fe26f749b5e",
         "source_fact:v1:2e6476ed383ee616f10b0092ac24c84b1569b5fd7e50a3ebe91645866c5f2017",
-        "source_fact:v1:4dae1336a00e41f2455b93a5b644fce791c405c7c97183981ac2c74e9cd7484b",
-        "source_fact:v1:9b6c195a1da06b253d1ae2e82fbfc3a7cb9239df3b109aa2958d48609a9eb767",
-        "source_fact:v1:9f494a6cc65453f02ee9609d4f8f5b5078e8694437018e190f3cf37ce93e0718",
-        "source_fact:v1:e3de2984477feec7335144ea688db18aad59fbbf02d8975c2d02b501fa489b13"
+        "source_fact:v1:7b0995e9ca21ffef7adb2b3235c7bad1cfef9c70f5d99a27e0286c91946bccf7",
+        "source_fact:v1:e7513aeec67b961e701961f13e7c32f63618c46ef92f06f39e8f7db2af1b9c18",
+        "source_fact:v1:f0433b171f849bc8a1b02a58bf5eef723b4b1131cf36fa843bb840351ac32365"
       ],
-      "source_published_kst": "2026-10-06T16:57+09:00",
-      "title": "[BioS]알테오젠, 국민성장펀드 등 2000억 유치..\"新동력 확보\""
+      "source_published_kst": "2026-10-06T16:40+09:00",
+      "title": "알테오젠, 국민성장펀드·스카이레이크서 2000억원 투자 유치"
     },
     "source_fact:eb0978ae83ebde68e3a38ca7": {
       "first_seen_kst": "2026-10-06T07:30:15+09:00",
@@ -111802,6 +112452,30 @@
       ],
       "source_published_kst": "2026-10-06T06:15+09:00",
       "title": "[AI프리즘] '3대 메가프로젝트' 피지컬AI…전체 AI 예산 5%도 안돼"
+    },
+    "source_fact:ec7099128cd8fb8e91a61a52": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04674006645610296",
+      "source": "이데일리",
+      "source_body_digest": "dedb11618feffaf7648477f9488c6c39b942d70df3bcafcfd5c9772da1998727",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cb87fde4e0d61213911e27fe53b9ffe89cef2f406d4cf327a7aa22d6be69746",
+      "source_fact_keys": [
+        "source_fact:v1:2b4bad5b4fd3d36678b58c37b360d2196872b780a3d2ef63a0092c7e750e805d",
+        "source_fact:v1:37f94eb3831089dfacaca9270deadff95351c5b0692124acc75d6f8f483881de",
+        "source_fact:v1:5a2fb9090265705a17da40f10de60729d9c7cd51ee150442c47ef2c2140bb1d7",
+        "source_fact:v1:68a2e3a7385cb8e1b614d646a37ea4816e4f0f88b4e9f2fff017e98e2bb988ba",
+        "source_fact:v1:838c9fc14bd97d2691964ccb46eb1b0cc3726752c60bbe966c700b2dfd49f29a",
+        "source_fact:v1:a03b187d03eb1b4c688cc66179be8134f69aee266cdd1c829a4fc5177afca07b",
+        "source_fact:v1:b501c90ee97526ecda082c554c914cd993bacde5a2525eeb1d7c85b568e6945f",
+        "source_fact:v1:d039c1c3dc42fa676b8c93a7b53b0eb035f7952d55d815b58d305bd68dc8338f"
+      ],
+      "source_published_kst": "2026-10-06T16:45+09:00",
+      "title": "알테오젠, 2000억 투자 유치…연구부터 판매까지 한 회사로"
     },
     "source_fact:ec788c5c0d8fb24106364e81": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -112791,6 +113465,30 @@
       ],
       "source_published_kst": "2026-10-05T21:00+09:00",
       "title": "알보테크, FDA 심랜디 미국 생산설비 추가 승인에 공급능력 2배 확대 기대"
+    },
+    "source_fact:f157884ced9882ed85d94686": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04674006645610296",
+      "source": "이데일리",
+      "source_body_digest": "dedb11618feffaf7648477f9488c6c39b942d70df3bcafcfd5c9772da1998727",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cb87fde4e0d61213911e27fe53b9ffe89cef2f406d4cf327a7aa22d6be69746",
+      "source_fact_keys": [
+        "source_fact:v1:2b4bad5b4fd3d36678b58c37b360d2196872b780a3d2ef63a0092c7e750e805d",
+        "source_fact:v1:37f94eb3831089dfacaca9270deadff95351c5b0692124acc75d6f8f483881de",
+        "source_fact:v1:5a2fb9090265705a17da40f10de60729d9c7cd51ee150442c47ef2c2140bb1d7",
+        "source_fact:v1:68a2e3a7385cb8e1b614d646a37ea4816e4f0f88b4e9f2fff017e98e2bb988ba",
+        "source_fact:v1:838c9fc14bd97d2691964ccb46eb1b0cc3726752c60bbe966c700b2dfd49f29a",
+        "source_fact:v1:a03b187d03eb1b4c688cc66179be8134f69aee266cdd1c829a4fc5177afca07b",
+        "source_fact:v1:b501c90ee97526ecda082c554c914cd993bacde5a2525eeb1d7c85b568e6945f",
+        "source_fact:v1:d039c1c3dc42fa676b8c93a7b53b0eb035f7952d55d815b58d305bd68dc8338f"
+      ],
+      "source_published_kst": "2026-10-06T16:45+09:00",
+      "title": "알테오젠, 2000억 투자 유치…연구부터 판매까지 한 회사로"
     },
     "source_fact:f17591b4f643e1e406c5412e": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -114121,6 +114819,26 @@
       ],
       "source_published_kst": "2026-10-06T07:05+09:00",
       "title": "한강신도시 때도 그러더니⋯반복되는 ‘교통난’ [교통지옥 김포②]"
+    },
+    "source_fact:fa259ced75213f3634867e83": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.hankyung.com/article/202610066108i",
+      "source": "한국경제",
+      "source_body_digest": "d8c02ec8b74936217c395e8f6500f478c38a5160cdba9bae4035f72b113c7e7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d1cc1ca5e9047acd56c798dccb596a2c434837d9000cce0752085332a1c35939",
+      "source_fact_keys": [
+        "source_fact:v1:2e6476ed383ee616f10b0092ac24c84b1569b5fd7e50a3ebe91645866c5f2017",
+        "source_fact:v1:7b0995e9ca21ffef7adb2b3235c7bad1cfef9c70f5d99a27e0286c91946bccf7",
+        "source_fact:v1:e7513aeec67b961e701961f13e7c32f63618c46ef92f06f39e8f7db2af1b9c18",
+        "source_fact:v1:f0433b171f849bc8a1b02a58bf5eef723b4b1131cf36fa843bb840351ac32365"
+      ],
+      "source_published_kst": "2026-10-06T16:40+09:00",
+      "title": "알테오젠, 국민성장펀드·스카이레이크서 2000억원 투자 유치"
     },
     "source_fact:fa5a79c292035a14f0a79bfa": {
       "first_seen_kst": "2026-10-06T01:16:46+09:00",
@@ -122451,6 +123169,26 @@
       "source": "매일경제",
       "title": "주가 빠진 오리온, 지금이 기회?…“배당 4%대·저점 매수 유효”"
     },
+    "title:42d15a9c1b1443d00837dd2c": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.hankyung.com/article/202610066108i",
+      "source": "한국경제",
+      "source_body_digest": "d8c02ec8b74936217c395e8f6500f478c38a5160cdba9bae4035f72b113c7e7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d1cc1ca5e9047acd56c798dccb596a2c434837d9000cce0752085332a1c35939",
+      "source_fact_keys": [
+        "source_fact:v1:2e6476ed383ee616f10b0092ac24c84b1569b5fd7e50a3ebe91645866c5f2017",
+        "source_fact:v1:7b0995e9ca21ffef7adb2b3235c7bad1cfef9c70f5d99a27e0286c91946bccf7",
+        "source_fact:v1:e7513aeec67b961e701961f13e7c32f63618c46ef92f06f39e8f7db2af1b9c18",
+        "source_fact:v1:f0433b171f849bc8a1b02a58bf5eef723b4b1131cf36fa843bb840351ac32365"
+      ],
+      "source_published_kst": "2026-10-06T16:40+09:00",
+      "title": "알테오젠, 국민성장펀드·스카이레이크서 2000억원 투자 유치"
+    },
     "title:42d26588e9c46f4b2bef902a": {
       "first_seen_kst": "2026-10-04T22:49:21+09:00",
       "lanes": {
@@ -126179,6 +126917,21 @@
       "source_published_kst": "2026-10-06T09:42+09:00",
       "title": "체이널리시스 \"한국 가상자산 시장 규모 동아시아 최대⋯AI 관련 코인 거래 주목\""
     },
+    "title:6b14253c487dded561311985": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/06/2026100614254016183",
+      "source": "머니투데이",
+      "source_body_digest": "4aa0b50158e3f9b899aaac5ab8374dac8e006c556243ba369b49b99f441b13b6",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T15:22+09:00",
+      "title": "회사채 피해 어음 발행 몰렸는데…어음 금리가 치솟아"
+    },
     "title:6b14523424a2229feb1b72a4": {
       "first_seen_kst": "2026-10-05T10:49:34+09:00",
       "lanes": {
@@ -127650,6 +128403,21 @@
       "link": "https://www.yna.co.kr/view/AKR20260918124800003",
       "source": "연합뉴스",
       "title": "삼성전자 DX노조, 이재용 회장 자택 앞 집회…\"직접 대화하자\" | 연합뉴스"
+    },
+    "title:785c3cb7e5f9998f99621ed0": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.mk.co.kr/news/it/12169661",
+      "source": "매일경제",
+      "source_body_digest": "d331d67fd3118138de109ad6b5c2136964ce9268030d03ddc3de6f5b19538e0f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T18:46+09:00",
+      "title": "알테오젠, 알테오젠바이오로직스 흡수합병"
     },
     "title:786ef310e739a6e202406b4c": {
       "first_seen_kst": "2026-10-06T15:14:29+09:00",
@@ -131129,6 +131897,23 @@
       "source_published_kst": "2026-10-05T10:30+09:00",
       "title": "삼전닉스 17조 던진 외국인…코스피 한달새 20조 '매도 폭탄'"
     },
+    "title:9cab462681f4a7eebdfb344e": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.fnnews.com/news/202610061912189991",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "c09fe43bab7ab21632cacdd53c63bdff68962ae706c4ee7cfcfba0b65ebf3c2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b63fad41863c8e03954db74e8a5a22aa2e8d620748257707445d44a280136c27",
+      "source_fact_keys": [
+        "source_fact:v1:d2158d84b176df1bee6c00e8b9ef213ad76275205bfb6d97a3a9fb7049b875df"
+      ],
+      "source_published_kst": "2026-10-06T19:12+09:00",
+      "title": "'삼전닉스 레버리지' 투자한 개미, 석달 만에 2조3000억 날렸다"
+    },
     "title:9cb8912caa8830324533b016": {
       "first_seen_kst": "2026-10-02T09:58:25+09:00",
       "lanes": {
@@ -132788,6 +133573,30 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T21:04+09:00",
       "title": "러시아, 키이우 교량 나흘째 공격… 젤렌스키 \"푸틴, 민간시설 공격↑\""
+    },
+    "title:ae9233b2b15dda08eee1d195": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04674006645610296",
+      "source": "이데일리",
+      "source_body_digest": "dedb11618feffaf7648477f9488c6c39b942d70df3bcafcfd5c9772da1998727",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cb87fde4e0d61213911e27fe53b9ffe89cef2f406d4cf327a7aa22d6be69746",
+      "source_fact_keys": [
+        "source_fact:v1:2b4bad5b4fd3d36678b58c37b360d2196872b780a3d2ef63a0092c7e750e805d",
+        "source_fact:v1:37f94eb3831089dfacaca9270deadff95351c5b0692124acc75d6f8f483881de",
+        "source_fact:v1:5a2fb9090265705a17da40f10de60729d9c7cd51ee150442c47ef2c2140bb1d7",
+        "source_fact:v1:68a2e3a7385cb8e1b614d646a37ea4816e4f0f88b4e9f2fff017e98e2bb988ba",
+        "source_fact:v1:838c9fc14bd97d2691964ccb46eb1b0cc3726752c60bbe966c700b2dfd49f29a",
+        "source_fact:v1:a03b187d03eb1b4c688cc66179be8134f69aee266cdd1c829a4fc5177afca07b",
+        "source_fact:v1:b501c90ee97526ecda082c554c914cd993bacde5a2525eeb1d7c85b568e6945f",
+        "source_fact:v1:d039c1c3dc42fa676b8c93a7b53b0eb035f7952d55d815b58d305bd68dc8338f"
+      ],
+      "source_published_kst": "2026-10-06T16:45+09:00",
+      "title": "알테오젠, 2000억 투자 유치…연구부터 판매까지 한 회사로"
     },
     "title:aedeabc0d3f2d592db188970": {
       "first_seen_kst": "2026-10-05T12:09:30+09:00",
@@ -136038,6 +136847,21 @@
       "source": "매일경제",
       "title": "카바 그룹, 1억 달러 자사주 매입 프로그램 승인"
     },
+    "title:d2293028d652cd6d750f9cf0": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.hankyung.com/article/202610066550i",
+      "source": "한국경제",
+      "source_body_digest": "910c0511b9dc3f9823be5a0ea320ae730208da0d31135d114b378f88dcfa1d5f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T19:21+09:00",
+      "title": "日경제상 \"반도체·전력 수요 무한대…美·日 투자 충분히 양립\""
+    },
     "title:d2732180359972d9693731c6": {
       "first_seen_kst": "2026-10-06T01:16:46+09:00",
       "lanes": {
@@ -139036,6 +139860,26 @@
       "source_event_identity": "",
       "title": "“1550원일땐 차마 못 갚았습니다”…1350원에 달러빚 정리나선 기업들"
     },
+    "title:ed36e4e69d84d5569c3ceb92": {
+      "first_seen_kst": "2026-10-06T21:05:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:05:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:05:27+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169500",
+      "source": "매일경제",
+      "source_body_digest": "f16adaa6531f4632313a04b2bde925f976ce4c69ebb57d5cab1c9208493f244c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05c3a21122777f3b6a4f7099409d0c25a4ddf9a5754e75d5b8887ddd02d49a6b",
+      "source_fact_keys": [
+        "source_fact:v1:2dee003d7213d16dcf97cd9bc77a187682790ad8f652dd6cf1c428c242fe5f4d",
+        "source_fact:v1:5887f95945fb471d3617205a6a5d6b086871d33c6fead636b7ed56c0c82c8e28",
+        "source_fact:v1:922f2ad45b43fad83dcb9ad8cf87ced02e291be2150fdc11aa5b0df96dd3f28e",
+        "source_fact:v1:a4d472d50bf49ec2a8b84c8e7197bc883f9b40b74717bccd09f489d8272146b8"
+      ],
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "삼성전자 '꿈의 영업이익' 눈앞 … 100조 훌쩍 넘나, 살짝 넘나"
+    },
     "title:ed4fbb51980c1f22167adf59": {
       "first_seen_kst": "2026-10-04T06:34:33+09:00",
       "lanes": {
@@ -140705,5 +141549,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T20:54:05+09:00"
+  "updated_at_kst": "2026-10-06T21:05:27+09:00"
 }
