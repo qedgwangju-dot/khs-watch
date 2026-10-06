@@ -540,3 +540,5 @@ def test_committee_disclosure_never_notifies_even_when_unseen():
     }
     assert semantic_event_key(row) == "12th-plan|committee-governance|member-disclosure"
     assert semantic_event_level(row) == 0
+
+# live-regression-20261006-v3
