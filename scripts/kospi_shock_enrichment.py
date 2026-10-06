@@ -931,7 +931,7 @@ def build_enrichment(
     else:
         lines.append("• 업종 분류 확인 불가")
 
-    lines += ["", "<b>어느 테마가 밀렸나</b>"]
+    lines += ["", "<b>상위 프로그램 매도 후보 연결 테마</b>"]
     if theme_rows:
         for i, th in enumerate(theme_rows[:4], 1):
             names = ", ".join(th.get("stocks", [])[:3])
@@ -942,7 +942,7 @@ def build_enrichment(
     else:
         lines.append("• 상위 매도종목의 LS 테마 연결 확인 불가")
 
-    lines += ["", "<b>프로그램 매도 집중 종목</b>"]
+    lines += ["", "<b>프로그램 매도 상위 후보 종목</b>"]
     if top_stocks:
         for i, stock in enumerate(top_stocks[:6], 1):
             pd = stock.get("program", {}).get("program_delta")
@@ -978,7 +978,8 @@ def build_enrichment(
         "",
         "<b>정확성</b>",
         "• '현물 주체가 직접 판 업종'만 통합 UBM 투자자 수급으로 직접 판정합니다. 기준점이 30초를 넘으면 판정을 보류합니다.",
-        "• 프로그램·가격 업종 및 테마 수치는 <b>통합 종목 프로그램 매도와 구간 가격을 묶은 분해</b>이며, LS 프로그램 원값은 임의로 억원 환산하지 않습니다.",
+        "• 프로그램·가격 업종·테마·종목 순위는 장중 프로그램 매도 상위 후보군을 사건구간으로 재검산한 결과이며 전체 상장종목의 완전 전수순위로 표현하지 않습니다.",
+        "• LS 프로그램 원값은 단위를 임의로 억원 환산하지 않습니다.",
         "• 특정 업종·테마의 외국인 직접 순매도액으로 바꿔 쓰지 않습니다.",
         "• ETF는 2차시장 가격과 PDF 겹침을 보여주며, ETF 자금 유출로 단정하지 않습니다.",
     ]
