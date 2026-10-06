@@ -619,11 +619,19 @@ class Watch:
             calc_total is not None and direct_total is not None
             and (calc_total == 0 or direct_total == 0 or (calc_total < 0) == (direct_total < 0))
         )
+        crosscheck_ratio_pct = None
+        if crosscheck_gap is not None and calc_total is not None and direct_total is not None:
+            denom = max(abs(calc_total), abs(direct_total), 1.0)
+            crosscheck_ratio_pct = abs(crosscheck_gap) / denom * 100.0
+        crosscheck_consistent = bool(
+            crosscheck_ratio_pct is not None and crosscheck_ratio_pct <= 5.0
+        )
         program_quality = bool(
             pgm_aligned
             and max_pgm_span is not None
             and max_pgm_span <= MAX_PROGRAM_SNAPSHOT_SKEW_SEC
             and direction_consistent
+            and crosscheck_consistent
         )
 
         # '두 시장 모두 음수'와 '두 시장을 주도'를 구분한다.
@@ -633,7 +641,7 @@ class Watch:
                 verdict = f"{spot_leader}: 현물·선물 모두 최다 매도 + 프로그램 매도 동반 — 주도 가능성 높음"
                 confidence = "높음"
             elif pgm_neg:
-                verdict = f"{spot_leader}: 현물·선물 모두 최다 매도, 프로그램 매도 방향도 확인 — 프로그램 표본 시차 때문에 확신도 상향 보류"
+                verdict = f"{spot_leader}: 현물·선물 모두 최다 매도, 프로그램 매도 방향도 확인 — 프로그램 시차·검산 품질 때문에 확신도 상향 보류"
                 confidence = "중간"
             else:
                 verdict = f"{spot_leader}: 현물·선물 모두 최다 매도 — 주도 후보지만 프로그램 동조는 약함"
@@ -671,6 +679,7 @@ class Watch:
                 "program_start_alignment_sec": pgm_start_gap, "program_end_alignment_sec": pgm_end_gap,
                 "program_sample_span_sec": max_pgm_span,
                 "program_crosscheck_gap": crosscheck_gap,
+                "program_crosscheck_ratio_pct": crosscheck_ratio_pct,
                 "program_direct_total": direct_total,
                 "program_quality": program_quality}
 
@@ -707,10 +716,10 @@ class Watch:
                       f"• 선물 최다매도: <b>{html.escape(str(att.get('futures_leader') or '없음'))}</b> {fmt_eok(att.get('futures_leader_value'))}",
                       f"• 양시장 동시매도: <b>{html.escape(cross)}</b>",
                       f"• 프로그램 전체(차익+비차익) <b>{fmt_raw(p.get('전체'))}</b> · 차익 <b>{fmt_raw(p.get('차익'))}</b> · 비차익 <b>{fmt_raw(p.get('비차익'))}</b> <i>(LS t1640 사건구간 변화)</i>",
-                      f"• LS 전체 직접값 변화 <b>{fmt_raw(p.get('전체직접'))}</b> · 계산합계와 차이 <b>{fmt_raw(p.get('검산차이'))}</b>",
+                      f"• LS 전체 직접값 변화 <b>{fmt_raw(p.get('전체직접'))}</b> · 계산합계와 차이 <b>{fmt_raw(p.get('검산차이'))}</b> ({float(att.get('program_crosscheck_ratio_pct') or 0):.2f}%)",
                       f"• 프로그램 방향: <b>{html.escape(str(att.get('program_kind')))}</b>",
                       f"• 수급 기준점 시차: 시작 <b>{float(att.get('start_alignment_sec') or 0):.1f}초</b> · 종료 <b>{float(att.get('end_alignment_sec') or 0):.1f}초</b> · 프로그램 3종 조회시차 최대 <b>{float(att.get('program_sample_span_sec') or 0):.1f}초</b>",
-                      f"• 프로그램 방향 교차검증: <b>{'일치' if att.get('program_quality') else '시차·방향 재확인 필요'}</b>", "",
+                      f"• 프로그램 교차검증 품질: <b>{'일치' if att.get('program_quality') else '시차·합계차 재확인 필요'}</b>", "",
                       "<b>판정</b>", f"• <b>{html.escape(str(att.get('verdict')))}</b> · 확신도 {html.escape(str(att.get('confidence')))}"]
         else:
             lines += [f"• 주체 판정 보류 — {html.escape(str(att.get('reason') or '수급 스냅샷 부족'))}"]
@@ -744,9 +753,9 @@ class Watch:
                       f"• 선물 최다매도: <b>{html.escape(str(att.get('futures_leader') or '없음'))}</b> {fmt_eok(att.get('futures_leader_value'))}",
                       f"• 양시장 동시매도: <b>{html.escape(cross)}</b>",
                       f"• 프로그램 전체(차익+비차익) <b>{fmt_raw(p.get('전체'))}</b> · 차익 <b>{fmt_raw(p.get('차익'))}</b> · 비차익 <b>{fmt_raw(p.get('비차익'))}</b> <i>(LS t1640 사건구간 변화)</i>",
-                      f"• LS 전체 직접값 변화 <b>{fmt_raw(p.get('전체직접'))}</b> · 계산합계와 차이 <b>{fmt_raw(p.get('검산차이'))}</b>",
+                      f"• LS 전체 직접값 변화 <b>{fmt_raw(p.get('전체직접'))}</b> · 계산합계와 차이 <b>{fmt_raw(p.get('검산차이'))}</b> ({float(att.get('program_crosscheck_ratio_pct') or 0):.2f}%)",
                       f"• 수급 기준점 시차: 시작 <b>{float(att.get('start_alignment_sec') or 0):.1f}초</b> · 저점 <b>{float(att.get('end_alignment_sec') or 0):.1f}초</b> · 프로그램 3종 조회시차 최대 <b>{float(att.get('program_sample_span_sec') or 0):.1f}초</b>",
-                      f"• 프로그램 방향 교차검증: <b>{'일치' if att.get('program_quality') else '시차·방향 재확인 필요'}</b>",
+                      f"• 프로그램 교차검증 품질: <b>{'일치' if att.get('program_quality') else '시차·합계차 재확인 필요'}</b>",
                       f"• 최종 판정: <b>{html.escape(str(att.get('verdict')))}</b> · 확신도 {html.escape(str(att.get('confidence')))}"]
         else:
             lines += [f"• 가격 구간만 확정 — {html.escape(str(att.get('reason') or '수급 스냅샷 부족'))}"]
