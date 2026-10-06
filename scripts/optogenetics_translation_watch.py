@@ -61,6 +61,8 @@ ACTION_TERMS = (
     "launch", "partnership", "license", "licensing", "financing", "series b", "series c",
     "first patient", "first-in-human", "interim", "52-week", "52 week", "ind clearance", "ind cleared",
     "orphan drug", "grant", "cgmp", "commercial supply", "priority review", "late-stage", "late stage",
+    "advisory committee", "adcom", "clinical hold", "hold lifted", "serious adverse event", "sae",
+    "dose-limiting toxicity", "dlt", "inspection", "pre-approval inspection", "cmc", "validation",
 )
 
 RETINAL_TERMS = (
@@ -130,6 +132,16 @@ def save_json(path: pathlib.Path, obj: dict) -> None:
 
 def classify_press(title: str) -> tuple[str, str]:
     low = title.lower()
+    if "clinical hold" in low:
+        return "임상 보류", "규제기관 임상 보류로 개발 일정·안전성 위험이 확대"
+    if "hold lifted" in low:
+        return "임상 보류 해제", "규제기관 임상 보류 해제로 임상 재개 가능"
+    if "advisory committee" in low or "adcom" in low:
+        return "FDA 자문위원회", "FDA 자문위원회 일정·권고가 허가 확률과 심사 시간표를 변경"
+    if "serious adverse event" in low or re.search(r"\bsae\b", low) or "dose-limiting toxicity" in low or re.search(r"\bdlt\b", low):
+        return "임상 안전성", "중대한 이상반응 또는 용량제한독성 변화"
+    if "pre-approval inspection" in low or ("inspection" in low and ("fda" in low or "manufactur" in low)) or re.search(r"\bcmc\b", low):
+        return "CMC·제조심사", "허가 전 제조·품질·CMC 심사 또는 실사 단계 변화"
     if ("fda" in low and "bla" in low and ("accept" in low or "file" in low)):
         return "FDA 허가심사", "FDA가 생물의약품 허가신청(BLA)을 접수·심사 단계로 전환"
     if "ind" in low and ("clear" in low or "cleared" in low):
