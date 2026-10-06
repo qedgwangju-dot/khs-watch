@@ -59,7 +59,7 @@ HBM_MARKET_PRICE_BASELINE = {
     "source_rank": 3,
     "as_of": "2026-09-29",
 }
-NAND_DIVERGENCE_TRACK_VERSION = 1
+NAND_DIVERGENCE_TRACK_VERSION = 2
 NAND_DIVERGENCE_BASELINE = {
     "enterprise_direction": "up",
     "consumer_direction": "weak",
@@ -67,12 +67,25 @@ NAND_DIVERGENCE_BASELINE = {
     "enterprise_ssd_q4_max_pct": 28.0,
     "overall_nand_q4_min_pct": 15.0,
     "overall_nand_q4_max_pct": 20.0,
+    "essd_bit_demand_yoy_min_pct": 80.0,
+    "incremental_supply_mostly_committed": True,
+    "qlc_capacity_expansion": True,
+    "pcie6_adoption_ramping": True,
     "kv_cache_qlc": True,
+    "new_nand_capacity_start_year": 2027,
+    "new_nand_capacity_end_year": 2028,
+    "trendforce_nand_easing_year": 2027,
+    "trendforce_nand_easing_half": "2H",
+    "secondary_industry_new_fab_earliest_year": 2028,
+    "secondary_industry_new_fab_timeline_official": False,
     "source": "TrendForce",
-    "source_url": "https://www.trendforce.com/research/download/RP260924PL",
-    "secondary_source_url": "https://www.trendforce.com/presscenter/news/20260921-13246.html",
+    "source_url": "https://www.trendforce.com/presscenter/news/20260930-13258.html",
+    "research_url": "https://www.trendforce.com/research/download/RP260924PL",
+    "capacity_source_url": "https://www.trendforce.com/research/download/RP260819HW",
+    "easing_source_url": "https://www.trendforce.com/presscenter/news/20260721-13148.html",
+    "secondary_source_url": "https://www.newsis.com/view/NISX20261002_0003812363",
     "source_rank": 3,
-    "as_of": "2026-09-24",
+    "as_of": "2026-09-30",
 }
 TREND_4Q26_REVISION_TRACK_VERSION = 1
 TREND_4Q26_PRIOR_BASELINE = {
@@ -300,6 +313,8 @@ QUERIES = [
     ("ko", 'DRAM 현물 가격 공급 부족 BofA OR 뱅크오브아메리카'),
     ("ko", 'NAND 현물 가격 공급 부족 TrendForce OR 트렌드포스'),
     ("ko", 'TrendForce 4Q26 메모리 가격 전망 Enterprise SSD QLC KV 캐시 23 28 NAND 15 20'),
+    ("ko", 'TrendForce eSSD 비트 수요 80% 추가 공급 이미 계약 QLC PCIe 6.0 2026'),
+    ("ko", '낸드 신규 캐파 2027 2028 TrendForce 2H27 수급 완화 기업용 SSD'),
     ("ko", '서버 DRAM 고정가격 계약가격 ASP 삼성전자 SK하이닉스'),
     ("ko", '2028 HBM 공급확약 브로드컴 엔비디아 구글 AMD'),
     ("ko", 'TrendForce 2027 HBM 평균판매가격 121% 8단 12단 10 20'),
@@ -329,6 +344,8 @@ QUERIES = [
     ("en", 'DRAM spot price shortage BofA Bank of America memory'),
     ("en", 'NAND spot price shortage TrendForce memory'),
     ("en", 'TrendForce 4Q26 Memory Price Forecast enterprise SSD QLC KV cache 23 28 NAND 15 20'),
+    ("en", 'TrendForce enterprise SSD bit demand 80% incremental supply committed QLC PCIe 6.0 2026'),
+    ("en", 'TrendForce NAND new capacity 2027 2028 supply constraints ease 2H27 enterprise SSD'),
     ("en", 'server DRAM contract price TrendForce Samsung SK hynix Micron'),
     ("en", '2028 HBM supply commitment Broadcom NVIDIA Google AMD'),
     ("en", 'HBM trade ratio Micron HBM4E DRAM capacity'),
@@ -2508,7 +2525,13 @@ def _merge_typed_state(old: dict, obs: dict) -> dict:
 def _extract_nand_divergence(item: dict) -> dict | None:
     text = _clean(f"{item.get('title','')} {item.get('description','')}")
     low = text.lower()
-    if not (("enterprise ssd" in low or "essd" in low) and any(k in low for k in ("consumer", "client", "ufs", "mobile", "소비자", "클라이언트", "모바일"))):
+    enterprise = "enterprise ssd" in low or "essd" in low or "기업용 ssd" in text
+    divergence_context = any(k in low or k in text for k in (
+        "consumer", "client", "ufs", "mobile", "소비자", "클라이언트", "모바일",
+        "bit demand", "incremental supply", "committed", "agentic ai", "qlc", "pcie 6.0",
+        "비트 수요", "추가 공급", "계약", "공급량", "추론 인프라",
+    ))
+    if not (enterprise and divergence_context):
         return None
     obs: dict = {}
     if any(k in low for k in ("enterprise ssd surge", "enterprise ssd demand", "orders", "upward trend", "raise", "increase", "stronger", "상향", "증가", "강세")):
@@ -2561,6 +2584,36 @@ def _nand_divergence_changes(old: dict, new: dict) -> list[str]:
         a, b = old.get(key), new.get(key)
         if a is not None and b is not None and abs(float(b) - float(a)) >= 5:
             changes.append(f"{label}: {float(a):.0f}%→{float(b):.0f}%")
+    a, b = old.get("essd_bit_demand_yoy_min_pct"), new.get("essd_bit_demand_yoy_min_pct")
+    if b is not None:
+        if a is None:
+            changes.append(f"기업용 SSD 2026 비트 수요 증가율: +{float(b):.0f}% YoY 신규 확인")
+        elif abs(float(b) - float(a)) >= 10:
+            changes.append(f"기업용 SSD 2026 비트 수요 증가율: +{float(a):.0f}%→+{float(b):.0f}% YoY")
+
+    for key, label in (
+        ("incremental_supply_mostly_committed", "기업용 SSD 추가 공급 대부분 계약완료"),
+        ("qlc_capacity_expansion", "QLC 생산능력 확대"),
+        ("pcie6_adoption_ramping", "PCIe 6.0 채택 램프"),
+    ):
+        a, b = old.get(key), new.get(key)
+        if b is not None and a is not None and bool(a) != bool(b):
+            changes.append(f"{label}: {'확인' if a else '미확인'}→{'확인' if b else '미확인'}")
+        elif b is True and a is None:
+            changes.append(f"{label}: 확인")
+
+    for key, label in (
+        ("new_nand_capacity_start_year", "NAND 신규 생산능력 시작연도"),
+        ("new_nand_capacity_end_year", "NAND 신규 생산능력 계획 종료연도"),
+        ("trendforce_nand_easing_year", "TrendForce NAND 수급 완화연도"),
+        ("secondary_industry_new_fab_earliest_year", "업계 발언상 신규 공장 이른 가동연도"),
+    ):
+        a, b = old.get(key), new.get(key)
+        if b is not None and a is not None and int(a) != int(b):
+            changes.append(f"{label}: {int(a)}→{int(b)}")
+        elif b is not None and a is None:
+            changes.append(f"{label}: {int(b)} 신규 확인")
+
     if old.get("kv_cache_qlc") != new.get("kv_cache_qlc") and new.get("kv_cache_qlc") is not None:
         changes.append("KV 캐시→QLC 기업용 SSD 연결 상태 변화")
     return changes
@@ -2689,7 +2742,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         state["hbm_market_pricing_track_version"] = HBM_MARKET_PRICE_TRACK_VERSION
 
     divergence_state = dict(state.get("nand_divergence") or {})
-    if int(state.get("nand_divergence_track_version") or 0) < NAND_DIVERGENCE_TRACK_VERSION:
+    divergence_upgrade_due = int(state.get("nand_divergence_track_version") or 0) < NAND_DIVERGENCE_TRACK_VERSION
+    if divergence_upgrade_due:
         divergence_state = _merge_typed_state(NAND_DIVERGENCE_BASELINE, divergence_state)
         state["nand_divergence_track_version"] = NAND_DIVERGENCE_TRACK_VERSION
 
@@ -2883,6 +2937,11 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
 
     divergence_changes: list[str] = []
     divergence_source_url = ""
+    if divergence_upgrade_due:
+        divergence_changes.append(
+            "TrendForce eSSD 구조축 신규: 2026 비트 수요 +80% 이상·추가 공급 대부분 계약 완료·NAND 신규 생산능력 2027~2028"
+        )
+        divergence_source_url = NAND_DIVERGENCE_BASELINE["source_url"]
     legacy_changes: list[str] = []
     legacy_source_url = ""
     for item in sorted(items, key=lambda x: x.get("published_kst") or ""):
@@ -3422,10 +3481,39 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             lines.append(
                 f"  전체 NAND 4Q26 계약가: <b>+{float(divergence_state['overall_nand_q4_min_pct']):.0f}~{float(divergence_state['overall_nand_q4_max_pct']):.0f}% QoQ</b>"
             )
+        if divergence_state.get("essd_bit_demand_yoy_min_pct") is not None:
+            lines.append(
+                f"  eSSD 비트 수요: 2026년 <b>전년 대비 +{float(divergence_state['essd_bit_demand_yoy_min_pct']):.0f}% 이상</b> · TrendForce 공식"
+            )
+        if divergence_state.get("incremental_supply_mostly_committed"):
+            lines.append("  공급 잠금: <b>추가 공급 물량 대부분 이미 계약</b> → 공개시장 잔여 물량 제한")
         if divergence_state.get("kv_cache_qlc"):
-            lines.append("  구조: KV 캐시 오프로딩→QLC 기업용 SSD 수요 연결 유지")
+            lines.append("  구조: Agentic AI·KV 캐시 오프로딩→QLC 기업용 SSD 수요 연결 유지")
+        if divergence_state.get("qlc_capacity_expansion"):
+            lines.append("  공급 대응: 공급사들이 QLC 생산능력·고용량 제품을 확대하고 PCIe 6.0 채택도 진행")
+        if divergence_state.get("new_nand_capacity_start_year") is not None:
+            lines.append(
+                f"  증설 시간표: TrendForce 공개 리서치상 신규 NAND 생산능력은 <b>{int(divergence_state['new_nand_capacity_start_year'])}~{int(divergence_state.get('new_nand_capacity_end_year') or divergence_state['new_nand_capacity_start_year'])}년</b> 구간"
+            )
+        if divergence_state.get("trendforce_nand_easing_year") is not None:
+            lines.append(
+                f"  역풍·반대축: TrendForce는 전체 NAND 수급이 <b>{html.escape(str(divergence_state.get('trendforce_nand_easing_half') or ''))}{int(divergence_state['trendforce_nand_easing_year'])}</b>부터 완화될 가능성을 제시"
+            )
+        if divergence_state.get("secondary_industry_new_fab_earliest_year") is not None:
+            lines.append(
+                f"  기사 업계발언: 신규 공장 실제 가동은 빠르면 <b>{int(divergence_state['secondary_industry_new_fab_earliest_year'])}년</b>이라는 견해 · TrendForce 공식 가이던스가 아닌 업계 관계자 발언"
+            )
         if divergence_source_url:
-            lines.append('  <a href="' + html.escape(divergence_source_url, quote=True) + '">근거 기사</a>')
+            lines.append('  <a href="' + html.escape(divergence_source_url, quote=True) + '">TrendForce 4Q26 공식자료</a>')
+        cap_url = divergence_state.get("capacity_source_url") or NAND_DIVERGENCE_BASELINE.get("capacity_source_url")
+        ease_url = divergence_state.get("easing_source_url") or NAND_DIVERGENCE_BASELINE.get("easing_source_url")
+        secondary_url = divergence_state.get("secondary_source_url") or NAND_DIVERGENCE_BASELINE.get("secondary_source_url")
+        if cap_url:
+            lines.append('  <a href="' + html.escape(str(cap_url), quote=True) + '">NAND 신규 생산능력 2027~2028</a>')
+        if ease_url:
+            lines.append('  <a href="' + html.escape(str(ease_url), quote=True) + '">2H27 수급 완화 반대축</a>')
+        if secondary_url:
+            lines.append('  <a href="' + html.escape(str(secondary_url), quote=True) + '">국내 기사·업계발언</a>')
 
     emitted = 0
     for prepared in prepared_items:
