@@ -2707,6 +2707,28 @@
       "source": "매일경제",
       "title": "[뉴스&분석] 삼성 6社 뭉쳐 'AI 인프라' 승부"
     },
+    "event:74cd389ef8bc86c20757f06b": {
+      "event_alias_evidence_message_id": 2330,
+      "event_alias_evidence_run_id": 37458416534,
+      "first_seen_kst": "2026-10-06T20:54:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:54:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:54:05+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170367",
+      "source": "매일경제",
+      "source_body_digest": "811abdd9f27e9f97a13cff846b7201f27e0ebf9a9142d075eae3a011424c8c4f",
+      "source_event_identity": "source_event:v2:project_safety_assessment:758f575f8e01542a7b2f5318b20515758991470e8d878d8a526e8d2376ea78a6",
+      "source_fact_identity": "source_facts:v1:3f439b38b56141cab66194370494d6c4af2c96530fa2282734314ca62e603fb8",
+      "source_fact_keys": [
+        "source_fact:v1:472c8c9208215b533177b84d0383b3733258dc104e810f8b3b8b2c11166e2a73",
+        "source_fact:v1:527794b3a41efc558d9f5d2ef4bbe147e58871be58fe5d1dc55da1cd80bb9435",
+        "source_fact:v1:759bfb9f7b300de392dcdb9f8eaa6d110a3ad7cd48aa03454caf4da0bacc1173",
+        "source_fact:v1:f63195f4e7e910f99ace1bfa26f4de088e378a5033e5c68bdf10bc9584944e8a"
+      ],
+      "source_published_kst": "2026-10-06T16:02+09:00",
+      "title": "후티 사우디 공격에…현대차"
+    },
     "event:755c6afe541fe41fae0dcaa7": {
       "first_seen_kst": "2026-10-01T21:06:52+09:00",
       "lanes": {
@@ -3047,6 +3069,28 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T11:00+09:00",
       "title": "디스플레이 산업 규제 개선…수입 간소화·AI가이드 마련 | 연합뉴스"
+    },
+    "event:7f65c34d2d4b336751794ff5": {
+      "event_alias_evidence_message_id": 2330,
+      "event_alias_evidence_run_id": 37458416534,
+      "first_seen_kst": "2026-10-06T20:54:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:54:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:54:05+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170392",
+      "source": "매일경제",
+      "source_body_digest": "cdd19cf499f2657ff809e9e8aa156cf5b19336f7966324dd42b56aa5eb096e1f",
+      "source_event_identity": "source_event:v2:listing_suspension_ruling:77b3e47fde472723cc52897ac3a1de2bbba91ee3912d93451670f1edd41730ed",
+      "source_fact_identity": "source_facts:v1:cb242d0d7d7788df0d9d5e38445136825ec30a481068d0297b9a61974810ae3b",
+      "source_fact_keys": [
+        "source_fact:v1:68accc0a4f6d51c542eba7c2a032e2ed74911798c45580483f70e6b7b192b127",
+        "source_fact:v1:a71a6ec302191ce5dfdc1a3e69f16e3ded6797aafeae64be877f873088b9650a",
+        "source_fact:v1:f27857759dedd3f9d905d1eed8b9f23d8910cbd41a88d9c95146259262411fa7",
+        "source_fact:v1:fc327d342094bd3dce48a4fb45f2ee115bc9964c0bcf0ec782a898a271c9eb89"
+      ],
+      "source_published_kst": "2026-10-06T16:47+09:00",
+      "title": "상장폐지 기준 강화에 법원 제동…거래소"
     },
     "event:805f3f743bb1dcc747449d9a": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
@@ -4550,6 +4594,25 @@
       "source_event_identity": "source_event:v1:trump:us_factory_not_built:statement:max_rate=300:grace_approx_months=18",
       "source_published_kst": "2026-10-04T11:10+09:00",
       "title": "“미국에 공장 안 지으면 관세 300%”…트럼프, 중간선거 격전지서 또 협박"
+    },
+    "event:bcf1e6238a30dc31cad96cdb": {
+      "event_alias_evidence_message_id": 2330,
+      "event_alias_evidence_run_id": 37458416534,
+      "first_seen_kst": "2026-10-06T20:54:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T20:54:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T20:54:05+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000020343",
+      "source": "국민일보",
+      "source_body_digest": "56fba7f7f8026facfc0e648d17ae762067a174b3ceeabf00e08c213ecb29d70c",
+      "source_event_identity": "source_event:v2:conditional_remittance:bf825e633beec5b6c5c46b2e8ac7af31137e8e30feaad12941158548ca6d5d31",
+      "source_fact_identity": "source_facts:v1:38f586c6971e6cf59f2f636bb6c48b32eb9d4177c71db9d92b02de50d731b054",
+      "source_fact_keys": [
+        "source_fact:v1:237a3e87a63714651fd20f16c49a936ef5da361a8a5e646a8f1e7a1739d7d368"
+      ],
+      "source_published_kst": "2026-10-06T19:04+09:00",
+      "title": "이형일 “美 원전 선급금, 국내 절차·상업성 충족돼야 송금”"
     },
     "event:bd57e57fd4faa092c5f45da4": {
       "first_seen_kst": "2026-09-29T17:06:52+09:00",
