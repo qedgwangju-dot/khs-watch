@@ -3906,21 +3906,31 @@
       "title": "D램은 중국에, HBM은 미국에…협공 당하는 K-메모리 | 연합뉴스"
     },
     "event:a1c4c86757794cc8d10ed431": {
-      "event_alias_evidence_message_id": 2304,
-      "event_alias_evidence_run_id": 37423666041,
+      "event_alias_evidence_message_id": 2318,
+      "event_alias_evidence_run_id": 37440806142,
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
       "lanes": {
-        "live": "2026-10-06T15:31:24+09:00"
+        "live": "2026-10-06T18:16:47+09:00"
       },
-      "last_seen_kst": "2026-10-06T15:31:24+09:00",
-      "link": "https://www.etnews.com/20261006000199",
-      "source": "전자신문",
-      "source_body_digest": "d1000689f998305d8219d14590da45632660ebe70fd9e22b940e3bcb415af15a",
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815599",
+      "source": "뉴시스",
+      "source_body_digest": "b8a057c8ce8aed11a580997e744e7c13908853522ef385f19837e6a63380047b",
       "source_event_identity": "source_event:v2:cumulative_foreign_sales:057184f04c505811ce09d2a9a4922994248f84d0c3d7285574b2a557735c5c59",
-      "source_fact_identity": "",
-      "source_fact_keys": [],
-      "source_published_kst": "2026-10-06T13:16+09:00",
-      "title": "롯데백화점, 외국인 매출 1兆 돌파…업계 최초"
+      "source_fact_identity": "source_facts:v1:4ca28d438ea4649f3007dcfef40b9bffe1e565ae8ea6cf324c55438730d2c635",
+      "source_fact_keys": [
+        "source_fact:v1:1bfa6d0470f96f1e5027ea43cc64a98f21e1041e70a79d84f9e2e4fd37c58f9e",
+        "source_fact:v1:1d72f166ad9827c11491c100685f1633c4c0925ba9e75b239795b6e2265644c9",
+        "source_fact:v1:9d6c9c163d4db4cf4ccacf3da7de634a42689fa9353abc85d013bf4bebeff2c3",
+        "source_fact:v1:a74dc71773614ca7f76829a27aebbb1adb5b3318ab529a72bd54d8f76e9f85ac",
+        "source_fact:v1:baab8ed504e20d00740766dda13d46dcb5bc01b7980df0ffc596a5235bf69b8a",
+        "source_fact:v1:c1a8992dea846528fd6793f56a2948ae11efcbd42e4de2ed7ede55309a0731e0",
+        "source_fact:v1:c8add69e476474bb3326d62aad61f2609f72b941bd63c6ac4a0acfd475b82f01",
+        "source_fact:v1:d416aab72e6bc7e81342d7de989848783c726fc0062368b066812b49e927a265",
+        "source_fact:v1:d4db6638141f5939363f633f465ade5635fbed42ea869394270aa76cab455377"
+      ],
+      "source_published_kst": "2026-10-06T16:00+09:00",
+      "title": "롯데백화점, 업계 사상 첫 외국인 매출 1조 돌파…\"상징적 성과\""
     },
     "event:a2cfc7b6b0a3bbbd0bed93bb": {
       "first_seen_kst": "2026-09-24T00:05:53+09:00",

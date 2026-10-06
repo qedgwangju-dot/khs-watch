@@ -13,10 +13,10 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 94
+VERSION = 95
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
-    rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
+    rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
     r"\boil\b|brent|wti|\bgas\b|hormuz|iran|ukraine|russia|copper|lithium"
 )
 EARLY_SIGNAL = re.compile(
@@ -198,7 +198,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("capital_listing", r"기업공개|\bipo\b|(?:증시|코스피|코스닥|나스닥)\s*상장|상장\s*(?:추진|예정|연기|철회|신청|승인)|신규\s*상장|ETF.{0,15}(?:출시|상장)", r"기업공개|\bipo\b|상장(?!지수)|ETF.{0,80}출시"),
     ("financing", r"자금.{0,12}(?:투입|조달|유입)|대출|전환사채|전환\s*(?:선순위)?\s*채권|회사채\s*발행|funding|financing|loan|convertible (?:bond|note|debt)", r"자금|외부\s*자본|대출|투자(?!자)|조달|전환사채|전환\s*(?:선순위)?\s*채권|출자|납입|증자|확정된\s*사항|funding|financing|loan|convertible (?:bond|note|debt)"),
     ("capital_spending", r"설비투자|capex|자본지출|capital expenditure|(?:AI|인공지능)\s*(?:인프라\s*)?투자", r"설비투자|capex|자본지출|capital expenditure|(?:컴퓨터|컴퓨팅|설비|장비|인프라).{0,35}투자"),
-    ("industry_market_share", r"점유율|시장.{0,8}(?:\d위|순위)", r"점유율|market share"),
+    ("industry_market_share", r"점유율|시장.{0,8}(?:\d위|순위)|AP\s*시장.{0,35}(?:역전|추격)", r"점유율|market share"),
     ("trade_threat", r"관세.{0,35}(?:위협|경고|두\s*배|2\s*배)|(?:두\s*배|2\s*배).{0,15}(?:청구|관세)|알래스카.{0,55}(?:청구|부담|압박)|tariff.{0,30}(?:threat|doubl)|doubl.{0,15}tariff", r"관세|청구|tariff|charge"),
     ("project_response", r"(?:정부|산업부).{0,45}(?:팩트시트|합의.{0,15}없는|사업.{0,15}미정)", r"팩트시트|공동\s*합의|추진\s*여부"),
     ("stockpile_release", r"비축유|비축\s*원유|G7.{0,30}(?:원유|경유).{0,20}방출|oil reserves|stockpile", r"비축\s*(?:유|원유|경유)|석유\s*비축|oil reserves|stockpile"),
@@ -360,6 +360,9 @@ def focus_kind(title: str) -> str:
         return "financing"
     if re.search(r"성과급|보상\s*비용", title or "") and re.search(r"매출|이익|마진|수익성|실적", title or ""):
         return "earnings"
+    if (re.search(r'(?:DX|완제품).{0,35}(?:실적|적자|영업손실)', title or '')
+            and not re.search(r'공급\s*계약|수주|목표주가', title or '')):
+        return 'earnings'
     if next(head for name, head, _source in HEADLINE_FOCUS if name == "investor_flow").search(title or ""):
         return "investor_flow"
     # The changed measure/action outranks a company or commodity mentioned
@@ -1083,6 +1086,77 @@ def airline_capacity_observation(title: str, body: str) -> dict:
         if match and re.search(r'\d{1,2}일(?:부터|까지)', match['window']):
             segments.append({**match.groupdict(), 'source_excerpt': row})
     return {**announcement.groupdict(), 'segments': segments} if segments else {}
+
+
+def segment_loss_forecast_observation(title: str, body: str) -> dict:
+    if focus_kind(title) != 'earnings' or not re.search(r'DX|완제품', title):
+        return {}
+    source = source_reported_body(body)
+    issuer = re.search(r'([A-Za-z가-힣]+전자)', title)
+    first = re.search(r'(?P<provider>[A-Za-z가-힣]+증권)은\s*모바일경험\(MX\)·네트워크\s*사업부가\s*'
+                      r'(?P<quarter>[1-4])분기\s*(?P<amount>\d[\d,.조억만천백십\s]*원)의\s*영업손실을\s*낼\s*것으로\s*내다봤다', source)
+    if not issuer or not first or issuer[1] not in source:
+        return {}
+    second = re.search(r'(?P<provider>[A-Za-z가-힣]+증권)은\s*(?P<quarter>[1-4])분기\s*'
+                       r'MX\s*(?P<mx>\d[\d,.조억만천백십\s]*원),\s*VD·DA\s*'
+                       r'(?P<vd_da>\d[\d,.조억만천백십\s]*원)\s*손실이\s*날\s*것으로\s*추정했다', source)
+    return {'issuer': issuer[1], **first.groupdict(),
+            'second': second.groupdict() if second and second['quarter'] == first['quarter'] else {}}
+
+
+def quarterly_consensus_observation(title: str, body: str) -> dict:
+    if focus_kind(title) != 'earnings' or re.search(r'DX|완제품', title):
+        return {}
+    if re.search(r'(?:올해|내년|20\d{2}년).{0,15}(?:매출|영업이익)', title) and not re.search(r'[1-4]분기', title):
+        return {}
+    source = source_reported_body(body)
+    result = re.search(r'(?P<provider>[A-Za-z가-힣]+)(?:가|이)\s*집계한\s*(?P<quarter>[1-4])분기\s*'
+                       r'실적\s*전망치는\s*매출\s*(?P<sales>\d[\d,.조억만천백십\s]*원),\s*'
+                       r'영업이익\s*(?P<profit>\d[\d,.조억만천백십\s]*원)이다', source)
+    announcement = re.search(r'(?P<issuer>[A-Za-z가-힣]+)(?:은|는)\s*(?P<day>\d{1,2})일\s*'
+                             r'(?P<quarter>[1-4])분기\s*잠정실적을\s*발표할\s*예정', source)
+    if not result or not announcement or result['quarter'] != announcement['quarter']:
+        return {}
+    issuer = announcement['issuer']
+    if issuer not in title and not (issuer == 'LG에너지솔루션' and 'LG엔솔' in title):
+        return {}
+    rates = re.search(r'매출은\s*(?P<baseline>[1-4])분기보다\s*(?P<sales_growth>\d+(?:\.\d+)?)%,\s*'
+                      r'영업이익은\s*(?P<profit_growth>\d+(?:\.\d+)?)%\s*(?P<direction>증가|감소)한\s*수준', source)
+    return {**result.groupdict(), **announcement.groupdict(), 'rates': rates.groupdict() if rates else {}}
+
+
+def project_safety_observation(title: str, body: str) -> dict:
+    if not re.search(r'(?:공장|건설현장).{0,30}피해\s*없', title):
+        return {}
+    source = source_reported_body(body)
+    response = re.search(r'(?P<issuer>[A-Za-z가-힣]+)\[\d{6}\]\s*관계자는\s*(?P<day>\d{1,2})일[^.!?]{0,70}'
+                         r'건설\s*현장이나\s*직원의\s*피해는\s*발생하지\s*않은\s*것으로\s*파악했다', source)
+    attack = re.search(r'외신에\s*따르면\s*(?P<attacker>[A-Za-z가-힣]+)(?:은|는)[^.!?]{0,100}'
+                       r'정유시설[^.!?]{0,30}공격했다고\s*주장했다', source)
+    if not response or not attack or response['issuer'] not in title:
+        return {}
+    return {**response.groupdict(), **attack.groupdict()}
+
+
+def premium_ap_share_forecast_observation(title: str, body: str) -> dict:
+    if focus_kind(title) != 'industry_market_share' or not re.search(r'프리미엄.{0,20}AP', title):
+        return {}
+    challenger = re.match(r'^["“]?(?P<issuer>[A-Za-z가-힣]+)', title)
+    if not challenger:
+        return {}
+    rows = source_sentences(source_reported_body(body))
+    for index, row in enumerate(rows):
+        provider = re.search(r'(?P<provider>[A-Za-z가-힣]+리서치)에\s*따르면\s*프리미엄\s*안드로이드\s*AP\s*시장', row)
+        period = re.search(r'(?P<period>20\d{2}년)\s*\d+(?:\.\d+)?%로', row)
+        share = re.search(re.escape(challenger['issuer']) + r'(?:은|는)\s*\d+(?:\.\d+)?%에서\s*'
+                          r'(?P<share>\d+(?:\.\d+)?)%로', row)
+        peer = re.search(r'(?P<peer>[A-Za-z가-힣]+)\s*(?P<product>[A-Za-z가-힣]+)(?:은|는)\s*'
+                         r'(?P<share>\d+(?:\.\d+)?)%에\s*머물', rows[index + 1] if index + 1 < len(rows) else '')
+        if provider and period and share and peer and re.search(r'전망', row) and peer['peer'] in title:
+            return {**provider.groupdict(), **period.groupdict(), 'challenger': challenger['issuer'],
+                    'challenger_share': share['share'], 'peer': peer['peer'],
+                    'peer_product': peer['product'], 'peer_share': peer['share']}
+    return {}
 
 
 @lru_cache(maxsize=256)
@@ -1947,16 +2021,28 @@ def industrial_route_study_terms(title: str, body: str, published: str = "") -> 
 
 
 def cumulative_foreign_sales_observation(title: str, body: str) -> dict[str, str]:
-    if not re.search(r'롯데(?:백화점|百)', title) or not re.search(r'외국인.{0,15}매출', title):
+    issuer_match = re.search(r'([A-Za-z가-힣]+백화점|롯데百)', title)
+    if not issuer_match or not re.search(r'외국인.{0,15}매출', title):
         return {}
-    for row in source_sentences(source_reported_body(body)):
-        if '롯데백화점' not in row or not re.search(r'밝혔다|밝혔|발표했다', row):
-            continue
-        period = re.search(r'(올해|20\d{2}년)\s*(?:누적\s*)?외국인\s*(?:고객\s*)?(?:누적\s*)?매출이\s*(\d[\d,.]*조원)(?:을|를)\s*(?:돌파|넘어)', row)
-        day = re.search(r'(?<!\d)(\d{1,2})일', row)
-        if period and day:
-            return {'issuer': '롯데백화점', 'population': '외국인 고객', 'period': period[1],
-                    'amount': period[2], 'day': day[1], 'source_excerpt': row}
+    issuer = issuer_match[1].replace('百', '백화점')
+    rows = [row for row in source_sentences(source_reported_body(body)) if re.search(r'[.!?]$', row)]
+    owned_rows = [row for row in rows if issuer in row]
+    day = next((match for row in owned_rows if not PAST_ACTION.search(row)
+                and (match := re.search(r'(?<!\d)(\d{1,2})일', row))), None)
+    # A roundup may declare the shared year before naming each retailer.
+    period_rows = owned_rows + [row for row in rows[:3] if re.search(r'백화점\s*3사', row)]
+    declared_period = next((match for row in period_rows
+                            if (match := re.search(r'(올해|20\d{2}년)[^.!?]{0,30}(?:누적\s*)?외국인', row))), None)
+    for row in owned_rows:
+        milestone = re.search(r'(?:(?P<period>올해|20\d{2}년)\s*)?(?:누적\s*)?외국인\s*(?:고객\s*)?'
+                              r'(?:누적\s*)?매출(?:이|은)?\s*(?P<amount>\d[\d,.]*조원)(?:을|를)?\s*'
+                              r'(?:돌파|넘어|달성)', row)
+        period = milestone['period'] if milestone else ''
+        if not period and declared_period:
+            period = declared_period[1]
+        if milestone and period and day:
+            return {'issuer': issuer, 'population': '외국인 고객', 'period': period,
+                    'amount': milestone['amount'], 'day': day[1], 'source_excerpt': row}
     return {}
 
 
@@ -2229,7 +2315,7 @@ RULES = (
     ("product_sales_mix", ("earnings",),
      r"판매(?:량|대수|비중)?", r"\d+(?:\.\d+)?%\s*(?:를|을)?\s*차지|비중.{0,20}(?:높아|올라|낮아|줄어)"),
     ("industry_market_share", ("earnings",),
-     r"(?:D램|DRAM|낸드|NAND|HBM|반도체).{0,80}점유율|매출\s*점유율|시장점유율|market share",
+     r"(?:D램|DRAM|낸드|NAND|HBM|반도체|\bAP).{0,80}점유율|매출\s*점유율|시장점유율|market share",
      r"\d+(?:\.\d+)?\s*%|기록|집계|report"),
     ("analyst_revision", ("discount_rate",),
      r"목표주가|목표가|투자의견", r"상향|하향|높였|낮췄|올렸|내렸"),
@@ -2682,7 +2768,7 @@ def equity_publication_assessment(title: str, evidence: list[dict], *, body: str
     source_rows = source_sentences(source_reported_body(body))
     weekly_etf_recap = (re.search(r'ETF', title, re.I) and re.search(r'한\s*주|일주일|주간|주일', title)
                         and re.search(r'수익률|\d+(?:\.\d+)?%\s*(?:뛴|오른|상승)', title + ' ' + lead))
-    current_catalyst = any(not PAST_ACTION.search(row) and (
+    current_catalyst = weekly_etf_recap and any(not PAST_ACTION.search(row) and (
         NEW_EXECUTION.search(row) or FORMAL_POLICY_EXECUTION.search(row)
         or (QUANTITY.search(row) and re.search(r'순유입|순유출|순매수|순매도', row))
         or re.search(r'(?:공사|가동|생산|전력\s*공급).{0,25}(?:중단했다고|중단했다|중단됐다고)|정전.{0,20}발생했다', row)
@@ -2692,6 +2778,22 @@ def equity_publication_assessment(title: str, evidence: list[dict], *, body: str
     reported_lead = ' '.join([row for row in source_rows if len(row) >= 15
                              and re.search(r'[.!?。]$', row)
                              and canonical_source_fact(row) != canonical_source_fact(title)][:2])
+    local_demolition = (re.search(r'철거', title) and LOCAL_AUTHORITY.search(reported_lead)
+                        and re.search(r'20\d{2}년[^.!?]{0,50}시공사로\s*선정했다', body))
+    new_order = any(item['kind'] == 'commercial_order' and QUANTITY.search(item['source_excerpt'])
+                    and not PAST_ACTION.search(item['source_excerpt']) for item in evidence)
+    if local_demolition and not new_order:
+        return {'eligible': False, 'reason': 'local_demolition_notice_with_only_historical_contractor'}
+    anniversary_memorial = re.search(r'추모식|\d+주기\s*추모|별세.{0,15}\d+주기', title + ' ' + reported_lead)
+    if anniversary_memorial and not economic_execution and not new_order:
+        return {'eligible': False, 'reason': 'anniversary_memorial_reuses_historical_business_profile'}
+    ownership_scenario = (re.search(r'지분', title) and re.search(
+        r'엑시트\s*셈법|매각\s*방식|인수\s*셈법|거래\s*시나리오', title))
+    current_owner_process = ownership_scenario and any(not PAST_ACTION.search(row) and re.search(
+        r'지분\s*매각.{0,25}(?:검토\s*중|협상\s*중|논의\s*중|입찰\s*공고|공개\s*입찰)', row)
+        and re.search(r'밝혔다|공시했다|발표했다', row) for row in source_rows)
+    if ownership_scenario and not economic_execution and not current_owner_process:
+        return {'eligible': False, 'reason': 'ownership_exit_scenario_without_new_owner_action'}
     infrastructure_headline = ('physical_supply_or_capacity' in kinds and re.search(
         r'인프라\s*(?:지출|투자|구축|확장)\s*(?:계획|전략)|(?:지출|투자|구축|확장)\s*계획.{0,15}인프라', title))
     if (not focus_kind(title) and not infrastructure_headline
@@ -3103,9 +3205,12 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
         r"(?:연결|분기|반기|연간|전체|회사).{0,20}매출|영업이익|순이익|가이던스|설비투자|"
         r"공급\s*계약.{0,20}체결|공장.{0,20}(?:착공|증설)|규제.{0,20}(?:시행|발효)", headline_lead,
     ))
-    consumer_sku = bool(re.search(r"라면|칼국수|과자|음료|화장품|스킨케어|신발|생활용품", title)
+    consumer_sku = bool(re.search(r"라면|칼국수|과자|음료|화장품|스킨케어|신발|생활용품|찹쌀떡|피자설기|디저트", title)
                         and re.search(r"['‘][^'’]{2,45}['’]|(?:신제품|단일\s*제품|개별\s*제품|특정\s*매장)", headline_lead)
                         and re.search(r"판매\s*호조|(?:매장|마트).{0,25}(?:점|1위)|제품.{0,30}매출|판매량", headline_lead))
+    consumer_sku = consumer_sku or bool(re.search(r'찹쌀떡|피자설기|디저트', title)
+                                       and re.search(r'대박템|품절|유행|열풍|인기', title)
+                                       and re.search(r'판매량|판매율|팝업|신제품', body))
     if consumer_sku and not company_result_or_execution:
         result.update(disposition="exclude", priority=0, reason="single_consumer_sku_or_store_sales_publicity")
         return result

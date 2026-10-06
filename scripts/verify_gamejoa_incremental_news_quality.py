@@ -75,6 +75,10 @@ PRIMARY_EVENT_FIXTURE = json.loads((ROOT / 'data/gamejoa_primary_event_scope_fix
 PRIMARY_EVENT_CASES = {case['id']: case for case in PRIMARY_EVENT_FIXTURE['cases']}
 LOCAL_SCOPE_FIXTURE = json.loads((ROOT / 'data/gamejoa_local_scope_fixtures_20261006.json').read_text(encoding='utf-8'))
 LOCAL_SCOPE_CASES = {case['id']: case for case in LOCAL_SCOPE_FIXTURE['cases']}
+FOREIGN_SALES_FIXTURE = json.loads((ROOT / 'data/gamejoa_foreign_sales_scope_fixtures_20261006.json').read_text(encoding='utf-8'))
+FOREIGN_SALES_CASES = {case['id']: case for case in FOREIGN_SALES_FIXTURE['cases']}
+FOREGROUND_RECAP_FIXTURE = json.loads((ROOT / 'data/gamejoa_foreground_recap_fixtures_20261006.json').read_text(encoding='utf-8'))
+FOREGROUND_RECAP_CASES = {case['id']: case for case in FOREGROUND_RECAP_FIXTURE['cases']}
 LIVE_NOW = NOW.replace(hour=19)
 CONTRACT_BODY = "AMD는 삼성전자와 2027년 데이터센터용 인공지능(AI) 반도체 공동개발을 위한 100억원 규모의 공급 계약을 체결했다고 밝혔다."
 ADDITIONAL_FACT = " AMD는 해당 공급 계약을 위한 반도체 설비투자 예산 500억원을 확정했다고 공시했다."
@@ -116,6 +120,244 @@ def replay():
 
 
 class IncrementalNewsTests(unittest.TestCase):
+    def foreground_recap_alert(self, key):
+        case = FOREGROUND_RECAP_CASES[key]
+        return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],
+                'telegram_core_fact': case['old_core']}
+
+    def test_all_seven_followup_bodies_keep_four_foreground_catalysts(self):
+        now = NOW.replace(day=6, hour=19)
+        candidates = []
+        for case in FOREGROUND_RECAP_CASES.values():
+            with self.subTest(case=case['id']), patch.object(radar.base, 'kst_now', return_value=now):
+                self.assertEqual(hashlib.sha256(case['body'].encode()).hexdigest(), case['full_body_sha256'])
+                candidate = classify(case, now)
+                selected = radar.quality_display_alerts([candidate], 30) if candidate else []
+                self.assertEqual(bool(selected), case['expected_keep'])
+                if selected:
+                    self.assertFalse(radar.source_core_fact_errors(selected[0]))
+                    candidates.extend(selected)
+        self.assertEqual(len(candidates), 4)
+
+    def test_anniversary_memorial_is_not_a_new_factory_or_supply_event(self):
+        item = self.foreground_recap_alert('anniversary_memorial')
+        self.assertFalse(eligible(item['source_title'], item['source_body']))
+        self.assertFalse(eligible(item['source_title'].replace('고려아연', '다른금속'),
+                                 item['source_body'].replace('고려아연', '다른금속')))
+        self.assertTrue(eligible('금속기업, 창립 50주년 맞아 3000억원 제련공장 건설 계약 체결',
+                                 '금속기업은 6일 3000억원 규모 제련공장 건설 계약을 체결했다고 공시했다.'))
+
+    def test_retail_dessert_trend_sales_are_not_company_wide_earnings(self):
+        item = self.foreground_recap_alert('consumer_dessert_trend')
+        self.assertFalse(eligible(item['source_title'], item['source_body']))
+        self.assertTrue(eligible('유통기업, 분기 영업이익 1000억원…디저트 판매 증가',
+                                 '유통기업은 6일 3분기 연결 영업이익 1000억원을 발표했다. 디저트 판매도 늘었다.'))
+
+    def test_ownership_exit_scenarios_need_a_current_owner_action(self):
+        item = self.foreground_recap_alert('ownership_exit_scenario')
+        self.assertFalse(eligible(item['source_title'], item['source_body']))
+        body = '산업은행은 6일 한진칼 지분 매각을 검토 중이라고 밝혔다.\n' + item['source_body']
+        self.assertTrue(eligible(item['source_title'], body))
+
+    def test_premium_ap_share_core_keeps_forecast_population_and_period(self):
+        item = self.foreground_recap_alert('premium_ap_share_forecast')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('카운터포인트리서치', '2026년', '프리미엄 안드로이드 AP', '미디어텍 12%', '삼성전자 엑시노스 11%', '전망'):
+            self.assertIn(term, core)
+        self.assertNotIn('2분기', core)
+        self.assertNotIn('9%', core)
+        self.assertTrue(radar.source_core_fact_errors(item))
+        self.assertFalse(radar.source_core_fact_errors({**item, 'telegram_core_fact': core}))
+
+    def test_premium_ap_share_forecasts_are_source_derived_not_fixed(self):
+        item = self.foreground_recap_alert('premium_ap_share_forecast')
+        body = item['source_body'].replace('2026년', '2027년').replace('12%로', '13%로').replace('11%에', '10%에')
+        core = radar.source_headline_event_fact(item['source_title'], body)
+        for term in ('2027년', '미디어텍 13%', '엑시노스 10%'):
+            self.assertIn(term, core)
+
+    def test_new_listing_power_contract_report_and_quantified_mou_remain_early(self):
+        for key in ('ai_listing_report', 'power_contract_early_report', 'quantified_defense_mou'):
+            item = self.foreground_recap_alert(key)
+            self.assertTrue(eligible(item['source_title'], item['source_body']))
+            core = radar.verified_alert_core(item, item['source_title'])
+            self.assertFalse(radar.source_core_fact_errors({**item, 'telegram_core_fact': core}))
+            self.assertNotIn('확정됐다', core)
+
+    def foreign_sales_alert(self, key):
+        case = FOREIGN_SALES_CASES[key]
+        return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],
+                'telegram_core_fact': case['old_core']}
+
+    def test_version94_seven_received_bodies_retain_primary_economic_facts(self):
+        now = NOW.replace(day=6, hour=19)
+        candidates = []
+        for case in FOREIGN_SALES_CASES.values():
+            with self.subTest(case=case['id']), patch.object(radar.base, 'kst_now', return_value=now):
+                self.assertEqual(hashlib.sha256(case['body'].encode()).hexdigest(), case['full_body_sha256'])
+                candidate = classify(case, now)
+                selected = radar.quality_display_alerts([candidate], 30) if candidate else []
+                self.assertEqual(bool(selected), case['expected_keep'])
+                if selected:
+                    self.assertFalse(radar.source_core_fact_errors(selected[0]))
+                    candidates.extend(selected)
+        with patch.object(radar.base, 'kst_now', return_value=now):
+            self.assertEqual(len(radar.quality_display_alerts(candidates, 30)), 4)
+
+    def test_foreign_sales_all_three_publishers_have_one_primary_milestone(self):
+        identities = []
+        for key in ('foreign_sales_newsis_roundup', 'foreign_sales_etoday_roundup', 'foreign_sales_newsis_release'):
+            item = self.foreign_sales_alert(key)
+            core = radar.verified_alert_core(item, item['source_title'])
+            for term in ('롯데백화점', '6일', '올해', '누적', '외국인 고객 매출', '1조원', '돌파'):
+                self.assertIn(term, core)
+            self.assertNotIn('상징적', core)
+            self.assertTrue(radar.source_core_fact_errors(item))
+            identities.append(materiality.source_event_identity(item))
+        self.assertTrue(all(identities))
+        self.assertEqual(len(set(identities)), 1)
+
+    def test_foreign_sales_milestone_values_and_issuer_are_source_derived(self):
+        item = self.foreign_sales_alert('foreign_sales_etoday_roundup')
+        title = item['source_title'].replace('롯데백화점', 'OTHER백화점')
+        body = item['source_body'].replace('롯데백화점', 'OTHER백화점').replace('1조원', '1.2조원')
+        core = radar.source_headline_event_fact(title, body)
+        self.assertIn('OTHER백화점', core)
+        self.assertIn('1.2조원', core)
+        changed = {**item, 'source_title': title, 'news': title, 'source_body': body}
+        self.assertNotEqual(materiality.source_event_identity(item), materiality.source_event_identity(changed))
+
+    def test_foreign_sales_missing_period_or_missing_date_cannot_invent_terms(self):
+        item = self.foreign_sales_alert('foreign_sales_etoday_roundup')
+        self.assertFalse(materiality.cumulative_foreign_sales_observation(item['source_title'],
+                         '롯데백화점이 외국인 매출 1조원을 돌파했다고 발표했다.'))
+
+    def test_foreign_sales_other_retailer_cannot_supply_the_disclosure_date(self):
+        item = self.foreign_sales_alert('foreign_sales_etoday_roundup')
+        body = '신세계백화점은 5일 올해 외국인 매출 8500억원을 기록했다고 밝혔다.\n' + item['source_body']
+        observation = materiality.cumulative_foreign_sales_observation(item['source_title'], body)
+        self.assertEqual(observation['day'], '6')
+        self.assertEqual(observation['amount'], '1조원')
+        self.assertEqual(materiality.source_event_identity(item),
+                         materiality.source_event_identity({**item, 'source_body': body}))
+
+    def test_foreign_sales_same_title_cannot_hide_revised_amount_or_period(self):
+        item = self.foreign_sales_alert('foreign_sales_etoday_roundup')
+        identity = materiality.source_event_identity(item)
+        for old, new in (('1조원', '1.2조원'), ('올해', '2027년'), ('6일', '7일')):
+            changed = {**item, 'source_body': item['source_body'].replace(old, new)}
+            self.assertTrue(materiality.source_event_identity(changed))
+            self.assertNotEqual(identity, materiality.source_event_identity(changed))
+
+    def test_segment_forecasts_do_not_become_total_company_profit_or_actual_losses(self):
+        item = self.foreign_sales_alert('segment_loss_forecast')
+        self.assertEqual(materiality.focus_kind(item['source_title']), 'earnings')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('IBK투자증권', 'MX·네트워크', '3분기', '1조1000억원', '유안타증권', '9000억원', '2000억원', '전망', '추정'):
+            self.assertIn(term, core)
+        self.assertNotIn('108조6800', core)
+        self.assertFalse(radar.source_core_fact_errors({**item, 'telegram_core_fact': core}))
+
+    def test_segment_forecast_values_are_not_fixed_template_amounts(self):
+        item = self.foreign_sales_alert('segment_loss_forecast')
+        body = item['source_body'].replace('1조1000억원', '1조3000억원').replace('9000억원', '8000억원')
+        core = radar.source_headline_event_fact(item['source_title'], body)
+        self.assertIn('1조3000억원', core)
+        self.assertIn('8000억원', core)
+
+    def test_quarterly_consensus_core_keeps_provider_values_period_and_release(self):
+        item = self.foreign_sales_alert('quarterly_consensus')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('에프앤가이드', 'LG에너지솔루션', '3분기', '8조8257억원', '3217억원', '16.7%', '183.9%', '8일', '전망'):
+            self.assertIn(term, core)
+        self.assertFalse(radar.source_core_fact_errors({**item, 'telegram_core_fact': core}))
+        self.assertTrue(radar.source_core_fact_errors(item))
+
+    def test_quarterly_consensus_cannot_attach_a_different_lg_company(self):
+        item = self.foreign_sales_alert('quarterly_consensus')
+        self.assertFalse(materiality.quarterly_consensus_observation('LG전자, 3분기 매출 8조원 전망', item['source_body']))
+        self.assertFalse(materiality.quarterly_consensus_observation('LG엔솔, 내년 매출 30조원 전망', item['source_body']))
+
+    def test_project_safety_core_keeps_claim_and_current_company_response(self):
+        item = self.foreign_sales_alert('project_safety_denial')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('후티', '공격 주장', '현대차', '6일', '건설현장', '직원 피해', '파악했다고'):
+            self.assertIn(term, core)
+        self.assertNotIn('작년', core)
+        self.assertNotIn('5만대', core)
+        self.assertFalse(radar.source_core_fact_errors({**item, 'telegram_core_fact': core}))
+        self.assertTrue(radar.source_core_fact_errors(item))
+
+    def test_local_demolition_cannot_reuse_a_historical_contractor_selection(self):
+        item = self.foreign_sales_alert('local_demolition_notice')
+        self.assertFalse(eligible(item['source_title'], item['source_body']))
+        self.assertFalse(eligible(item['source_title'].replace('불광5', '다른7'), item['source_body'].replace('불광5', '다른7')))
+        self.assertTrue(eligible('건설기업, 재개발 철거공사 500억원 수주',
+                                '건설기업은 6일 재개발 철거공사 500억원 공급 계약을 체결했다고 공시했다.'))
+
+    def test_non_etf_article_skips_etf_specific_execution_scan(self):
+        from unittest.mock import Mock
+        evidence = [{'kind': 'earnings_or_guidance', 'stage': 'reported_change',
+                     'source_excerpt': '기업은 3분기 영업이익 1000억원을 발표했다.'}]
+        counts = []
+        for n in (5, 100):
+            body = '기업은 3분기 영업이익 1000억원을 발표했다.\n' + '반도체 가격의 방향은 아직 불분명하다.\n' * n
+            probe = Mock(wraps=materiality.NEW_EXECUTION)
+            with patch.object(materiality, 'NEW_EXECUTION', probe):
+                materiality.equity_publication_assessment('기업, 3분기 영업이익 1000억원', evidence, body=body)
+            counts.append(probe.search.call_count)
+        self.assertEqual(counts[0], counts[1])
+
+    def test_acknowledged_receipt_survives_cancelled_job_but_failed_send_does_not(self):
+        import merge_gamejoa_preopen_news_radar_seen as merge
+        receipt = {'status': 'sent', 'message_id': 2318, 'sent_chars': 1079, 'attempts': 1, 'error': ''}
+        self.assertTrue(merge.delivery_receipt_allows_seen_persistence(receipt))
+        for change in ({'status': 'failed'}, {'status': 'dry_run'}, {'message_id': None},
+                       {'message_id': True}, {'sent_chars': 0}, {'attempts': 0}, {'error': 'unconfirmed'}):
+            self.assertFalse(merge.delivery_receipt_allows_seen_persistence({**receipt, **change}))
+
+    def test_received_message_recovers_missing_seen_keys_without_resending(self):
+        import gamejoa_recover_delivered_seen as recovery
+        folder = ROOT / 'data/gamejoa_receipt_recovery_fixture_20261006'
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / 'seen.json'
+            path.write_text(json.dumps({'seen': {'sentinel': {'title': 'Existing receipt'}}}), encoding='utf-8')
+            with patch.object(telegram, 'SEEN_PATH', path), patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}), \
+                    patch.object(radar, 'send_telegram', side_effect=AssertionError('Recovery must not send')):
+                self.assertEqual(recovery.recover_delivered_seen(folder / 'gamejoa_preopen_news_radar.json',
+                                 folder / 'gamejoa_preopen_news_radar.md', folder / 'gamejoa_preopen_news_radar_delivery.json'), 7)
+                self.assertEqual(recovery.recover_delivered_seen(folder / 'gamejoa_preopen_news_radar.json',
+                                 folder / 'gamejoa_preopen_news_radar.md', folder / 'gamejoa_preopen_news_radar_delivery.json'), 0)
+            self.assertIn('sentinel', json.loads(path.read_text(encoding='utf-8'))['seen'])
+
+    def test_receipt_recovery_rejects_wrong_or_truncated_reports_without_seen_changes(self):
+        import gamejoa_recover_delivered_seen as recovery
+        folder = ROOT / 'data/gamejoa_receipt_recovery_fixture_20261006'
+        receipt = json.loads((folder / 'gamejoa_preopen_news_radar_delivery.json').read_text(encoding='utf-8'))
+        with tempfile.TemporaryDirectory() as tmp:
+            state = Path(tmp) / 'seen.json'
+            state.write_text('{"seen": {}}', encoding='utf-8')
+            before = state.read_bytes()
+            for change in ({'status': 'failed'}, {'original_chars': receipt['original_chars'] + 1},
+                           {'sent_chars': receipt['sent_chars'] - 1},
+                           {'report_sha256': '0' * 64}, {'sent_text_sha256': '0' * 64}):
+                proof = Path(tmp) / 'receipt.json'
+                proof.write_text(json.dumps({**receipt, **change}), encoding='utf-8')
+                with patch.object(telegram, 'SEEN_PATH', state), patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}):
+                    with self.assertRaises(ValueError):
+                        recovery.recover_delivered_seen(folder / 'gamejoa_preopen_news_radar.json',
+                            folder / 'gamejoa_preopen_news_radar.md', proof)
+                self.assertEqual(before, state.read_bytes())
+
+    def test_workflow_retains_receipt_backed_state_after_timeout(self):
+        workflow = (ROOT / '.github/workflows/gamejoa-preopen-news-radar.yml').read_text(encoding='utf-8')
+        self.assertIn('timeout-minutes: 20', workflow)
+        step = workflow.split('- name: Commit GAMEJOA radar seen state', 1)[1].split('- name: Commit GAMEJOA article retrieval queue', 1)[0]
+        self.assertIn('if: always()', step)
+        self.assertIn('delivery_receipt_allows_seen_persistence', step)
+        self.assertIn('python scripts/gamejoa_recover_delivered_seen.py', step)
+        self.assertIn('No acknowledged Telegram delivery', step)
+
     def local_scope_alert(self, key):
         case = LOCAL_SCOPE_CASES[key]
         return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],

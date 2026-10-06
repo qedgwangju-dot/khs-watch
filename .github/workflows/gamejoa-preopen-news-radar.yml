@@ -42,7 +42,7 @@ concurrency:
 jobs:
   radar:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     env:
       RADAR_MAX_AGE_HOURS: "24"
       RADAR_DISPLAY_LIMIT: "7"
@@ -139,8 +139,15 @@ jobs:
         run: python scripts/verify_gamejoa_delivery_result.py
 
       - name: Commit GAMEJOA radar seen state
-        if: success() && github.event.inputs.telegram_dry_run != 'true' && hashFiles('data/gamejoa_preopen_news_radar_seen.json') != ''
+        if: always() && github.event.inputs.telegram_dry_run != 'true' && hashFiles('data/gamejoa_preopen_news_radar_seen.json') != ''
         run: |
+          # A runner may time out after Telegram acknowledges the message.
+          # Persist only receipt-backed keys, never a preflight or failed send.
+          if ! python -c 'import json,sys; from pathlib import Path; sys.path.insert(0,"scripts"); from merge_gamejoa_preopen_news_radar_seen import delivery_receipt_allows_seen_persistence as allowed; p=Path("out/gamejoa_preopen_news_radar_delivery.json"); sys.exit(0 if p.is_file() and allowed(json.loads(p.read_text(encoding="utf-8"))) else 1)'; then
+            echo "No acknowledged Telegram delivery; seen-state commit skipped."
+            exit 0
+          fi
+          python scripts/gamejoa_recover_delivered_seen.py
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           cp data/gamejoa_preopen_news_radar_seen.json "$RUNNER_TEMP/gamejoa_seen_pending.json"

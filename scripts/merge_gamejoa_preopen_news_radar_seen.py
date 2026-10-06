@@ -61,6 +61,13 @@ def merge_states(remote: dict, pending: dict) -> dict:
     return merged
 
 
+def delivery_receipt_allows_seen_persistence(receipt: dict) -> bool:
+    return (receipt.get('status') == 'sent' and not receipt.get('error')
+            and type(receipt.get('message_id')) is int and receipt['message_id'] > 0
+            and type(receipt.get('sent_chars')) is int and receipt['sent_chars'] > 0
+            and type(receipt.get('attempts')) is int and receipt['attempts'] > 0)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("pending", type=Path)

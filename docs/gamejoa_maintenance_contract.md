@@ -72,6 +72,23 @@ Every defect or requested change must follow this sequence:
   not substitute HBM demand from its background. Conditional valuation or IPO
   scenarios do not become secured funding. Earnings forecasts retain their
   forecast attribution and quarter; prior-quarter results cannot own the core.
+- Segment earnings forecasts retain the named estimator, segment, quarter and
+  loss estimate. An unrelated total-company profit forecast is not that event.
+  Quarterly consensus cores bind their provider, revenue/profit, comparison basis
+  and scheduled release to the same issuer, never an issuer-name prefix.
+- A cumulative-sales milestone uses the source's issuer, population, period,
+  amount and disclosure date across publishers. A later source sentence cannot
+  be ignored merely because introductory paragraphs came first. Peer retailers
+  cannot supply its date. Changed amount, period or disclosure date is new.
+- A company response to a reported attack retains claim versus confirmation and
+  the current damage/safety assessment. Historical capacity is not that response.
+  Local demolition ceremonies cannot qualify through an old contractor selection;
+  newly quantified listed-company contracts remain eligible.
+- Persist acknowledged, nonempty Telegram receipts even if the job later times
+  out. A preflight, dry run, failed send or missing acknowledgement cannot update
+  sent-event history. Reconcile receipt-backed aliases without deleting older keys
+  or resending delivered articles. Execution timeouts are operational failures,
+  not proof of absent news or successful content validation.
 - An economic-war response needs sourced economic measures, not victory
   rhetoric. A reported review/announcement without specified policy terms stays
   an early signal; it never becomes a confirmed ban or oil-price change.

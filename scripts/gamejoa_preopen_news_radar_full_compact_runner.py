@@ -6,6 +6,7 @@ from __future__ import annotations
 import concurrent.futures
 import datetime as dt
 import html
+import hashlib
 import json
 import os
 import re
@@ -2609,6 +2610,36 @@ def source_headline_event_fact(title: str, body: str) -> str:
                 f"{decree['beneficiary']}의 부실채권 매입을 허용하며 {decree['effective_day']}일부터 시행된다.")
         if decree['operation_month']:
             fact += f" 매입 업무는 출자·금융위 의결 등을 거쳐 {decree['operation_month']}월 이후 시작할 예정이다."
+        return fact if len(fact) <= GAMEJOA_CORE_MAX_CHARS and core_sentence_is_complete(fact) else ''
+    segment = market_materiality.segment_loss_forecast_observation(title, source)
+    if segment:
+        fact = (f"{segment['provider']}은 {segment['issuer']} MX·네트워크의 {segment['quarter']}분기 "
+                f"영업손실을 {segment['amount'].strip()}으로 전망했다.")
+        second = segment['second']
+        if second:
+            fact += (f" {second['provider']}은 같은 분기 MX {second['mx'].strip()}, "
+                     f"VD·DA {second['vd_da'].strip()} 손실을 추정했다.")
+        return fact if len(fact) <= GAMEJOA_CORE_MAX_CHARS and core_sentence_is_complete(fact) else ''
+    quarter = market_materiality.quarterly_consensus_observation(title, source)
+    if quarter:
+        fact = (f"{quarter['provider']}가 집계한 {quarter['issuer']}의 {quarter['quarter']}분기 전망은 "
+                f"매출 {quarter['sales'].strip()}, 영업이익 {quarter['profit'].strip()}이다.")
+        rates = quarter['rates']
+        if rates:
+            fact += (f" {rates['baseline']}분기보다 각각 {rates['sales_growth']}%, {rates['profit_growth']}% "
+                     f"{rates['direction']}할 전망이다.")
+        fact += f" {quarter['day']}일 잠정실적을 발표할 예정이다."
+        return fact if len(fact) <= GAMEJOA_CORE_MAX_CHARS and core_sentence_is_complete(fact) else ''
+    safety = market_materiality.project_safety_observation(title, source)
+    if safety:
+        fact = (f"{safety['attacker']}의 정유시설 공격 주장과 관련해 {safety['issuer']}{korean_topic_particle(safety['issuer'])} {safety['day']}일 "
+                '공장 건설현장과 직원 피해가 발생하지 않은 것으로 파악했다고 밝혔다.')
+        return fact if len(fact) <= GAMEJOA_CORE_MAX_CHARS and core_sentence_is_complete(fact) else ''
+    shares = market_materiality.premium_ap_share_forecast_observation(title, source)
+    if shares:
+        fact = (f"{shares['provider']}는 {shares['period']} 프리미엄 안드로이드 AP 시장 점유율을 "
+                f"{shares['challenger']} {shares['challenger_share']}%, {shares['peer']} {shares['peer_product']} "
+                f"{shares['peer_share']}%로 전망했다.")
         return fact if len(fact) <= GAMEJOA_CORE_MAX_CHARS and core_sentence_is_complete(fact) else ''
     pricing = market_materiality.foundry_price_observation(title, source)
     if pricing:
@@ -11600,7 +11631,9 @@ def send_telegram(text: str) -> None:
             message_id = (telegram_response.get("result") or {}).get("message_id")
             if message_id is None:
                 raise RuntimeError("Telegram send succeeded without message_id")
-            write_delivery_status("sent", chat_id, len(text), "", len(message), attempt, message_id)
+            write_delivery_status("sent", chat_id, len(text), "", len(message), attempt, message_id,
+                                  report_sha256=hashlib.sha256(text.encode('utf-8')).hexdigest(),
+                                  sent_text_sha256=hashlib.sha256(message.encode('utf-8')).hexdigest())
             print(
                 f"Telegram: sent message_id={message_id} chars={len(message)} "
                 f"entities={len(entities)} original_chars={len(text)} attempt={attempt}"
@@ -11696,6 +11729,8 @@ def write_delivery_status(
     sent_chars: int | None = None,
     attempts: int | None = None,
     message_id: int | None = None,
+    report_sha256: str = "",
+    sent_text_sha256: str = "",
 ) -> None:
     payload = {
         "status": status,
@@ -11704,6 +11739,8 @@ def write_delivery_status(
         "sent_chars": sent_chars,
         "attempts": attempts,
         "message_id": message_id,
+        "report_sha256": report_sha256,
+        "sent_text_sha256": sent_text_sha256,
         "error": error,
     }
     base.OUT.mkdir(exist_ok=True)
