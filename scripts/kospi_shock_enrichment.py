@@ -19,6 +19,7 @@ KST = ZoneInfo("Asia/Seoul")
 BASE = "https://openapi.ls-sec.co.kr:8080"
 OUT = Path("out/kospi_shock_enrichment_latest.json")
 PROBE = Path("out/kospi_shock_enrichment_probe.json")
+INDUSTRY_FLOW = Path(os.getenv("KOSPI_INDUSTRY_FLOW_PATH", "out/kospi_industry_flow.jsonl"))
 
 _LAST_CALL: dict[str, float] = {}
 _ONE_SEC_TR = {
@@ -196,6 +197,88 @@ def _nearest_row(
             continue
         vals.append((row, ts, abs(ts - target_ts)))
     return min(vals, key=lambda x: x[2]) if vals else None
+
+
+def direct_industry_interval(
+    start_ts: float,
+    end_ts: float,
+    investor: str | None,
+    path: Path | None = None,
+    max_gap_sec: float = 30.0,
+) -> dict[str, Any]:
+    p = path or INDUSTRY_FLOW
+    if not investor:
+        return {"available": False, "reason": "현물 최다매도 주체 없음", "rows": []}
+    if not p.exists():
+        return {"available": False, "reason": "통합 UBM 수급 파일 없음", "rows": []}
+
+    grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    try:
+        for line in p.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                row = json.loads(line)
+            except Exception:
+                continue
+            if str(row.get("investor") or "") != investor:
+                continue
+            code = str(row.get("upcode") or "").strip()
+            ts = fnum(row.get("ts"))
+            msval = fnum(row.get("msval"))
+            if not code or ts is None or msval is None:
+                continue
+            grouped[code].append(row)
+    except Exception as exc:
+        return {
+            "available": False,
+            "reason": f"통합 UBM 파일 읽기 실패: {type(exc).__name__}: {exc}",
+            "rows": [],
+        }
+
+    out = []
+    for code, rows in grouped.items():
+        rows.sort(key=lambda x: float(x.get("ts") or 0))
+        before_start = [x for x in rows if float(x.get("ts") or 0) <= start_ts]
+        before_end = [x for x in rows if float(x.get("ts") or 0) <= end_ts]
+        if not before_start or not before_end:
+            continue
+        a = before_start[-1]
+        b = before_end[-1]
+        a_ts = float(a.get("ts") or 0)
+        b_ts = float(b.get("ts") or 0)
+        start_gap = start_ts - a_ts
+        end_gap = end_ts - b_ts
+        if start_gap < 0 or end_gap < 0 or start_gap > max_gap_sec or end_gap > max_gap_sec:
+            continue
+        av = fnum(a.get("msval"))
+        bv = fnum(b.get("msval"))
+        if av is None or bv is None:
+            continue
+        out.append({
+            "code": code,
+            "name": _display_name(b.get("industry") or a.get("industry") or code),
+            "investor": investor,
+            "delta": bv - av,
+            "start_value": av,
+            "end_value": bv,
+            "start_gap_sec": start_gap,
+            "end_gap_sec": end_gap,
+            "start_time": fmt_clock(a_ts),
+            "end_time": fmt_clock(b_ts),
+        })
+
+    out.sort(key=lambda x: float(x.get("delta") or 0))
+    return {
+        "available": bool(out),
+        "reason": None if out else f"통합 UBM 기준점 {max_gap_sec:.0f}초 정렬 충족 업종 없음",
+        "investor": investor,
+        "rows": out,
+        "covered_industries": len(out),
+        "source": "LS UBM 통합 업종별투자자별매매현황",
+        "unit_note": "msval 누적 원값의 사건 시작→저점 변화. 임의 원화 환산 없음.",
+    }
 
 
 def stock_master(token: str) -> list[dict[str, Any]]:
@@ -618,6 +701,7 @@ def build_enrichment(
         att.get("available") and spot_leader and spot_leader == futures_leader
         and "보류" not in verdict
     )
+    direct_industry = direct_industry_interval(start_ts, low_ts, spot_leader or None)
 
     master_rows = stock_master(token)
     master = {str(x.get("shcode") or "").strip(): x for x in master_rows}
@@ -774,6 +858,7 @@ def build_enrichment(
             },
         },
         "stocks": top_stocks,
+        "direct_industry": direct_industry,
         "industries": industries,
         "themes": theme_rows,
         "etfs": etfs[:6],
@@ -811,7 +896,30 @@ def build_enrichment(
     elif legacy_leader:
         lines.append(f"• 시장 매도 주도 후보: <b>{html.escape(legacy_leader)}</b>")
 
-    lines += ["", "<b>어느 업종이 밀렸나</b>"]
+    lines += ["", "<b>현물 주체가 직접 판 업종</b>"]
+    direct_rows = [
+        x for x in (direct_industry.get("rows") or [])
+        if (fnum(x.get("delta")) or 0.0) < 0
+    ]
+    if direct_industry.get("available") and direct_rows:
+        lines.append(
+            f"• 기준: 현물 최다매도 <b>{html.escape(str(direct_industry.get('investor') or '확인 불가'))}</b> · "
+            "통합 UBM 사건구간 순매수 원값 변화"
+        )
+        for i, row in enumerate(direct_rows[:4], 1):
+            lines.append(
+                f"• {i}. <b>{html.escape(str(row.get('name') or row.get('code')))}</b> · "
+                f"{html.escape(str(row.get('investor') or ''))} {_fmt_program(row.get('delta'))} "
+                f"<i>(LS UBM 원값)</i> · 기준점 시차 "
+                f"{float(row.get('start_gap_sec') or 0):.1f}초/{float(row.get('end_gap_sec') or 0):.1f}초"
+            )
+    else:
+        lines.append(
+            "• 직접 업종 수급 판정 보류 — "
+            + html.escape(str(direct_industry.get("reason") or "통합 UBM 기준점 부족"))
+        )
+
+    lines += ["", "<b>프로그램·가격으로 본 하락 업종</b>"]
     if industries:
         for i, ind in enumerate(industries[:3], 1):
             ret = (ind.get("price") or {}).get("return_pct")
@@ -869,7 +977,8 @@ def build_enrichment(
     lines += [
         "",
         "<b>정확성</b>",
-        "• 업종·테마 수치는 <b>통합 종목 프로그램 매도와 구간 가격을 묶은 분해</b>이며, LS 프로그램 원값은 임의로 억원 환산하지 않습니다.",
+        "• '현물 주체가 직접 판 업종'만 통합 UBM 투자자 수급으로 직접 판정합니다. 기준점이 30초를 넘으면 판정을 보류합니다.",
+        "• 프로그램·가격 업종 및 테마 수치는 <b>통합 종목 프로그램 매도와 구간 가격을 묶은 분해</b>이며, LS 프로그램 원값은 임의로 억원 환산하지 않습니다.",
         "• 특정 업종·테마의 외국인 직접 순매도액으로 바꿔 쓰지 않습니다.",
         "• ETF는 2차시장 가격과 PDF 겹침을 보여주며, ETF 자금 유출로 단정하지 않습니다.",
     ]
