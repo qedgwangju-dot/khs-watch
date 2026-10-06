@@ -307,7 +307,16 @@ jobs:
           with urllib.request.urlopen(req,timeout=25) as r:
               root=ET.fromstring(r.read())
 
-          trusted={"Reuters","AP News","Associated Press","The Associated Press","The Wall Street Journal","Wall Street Journal"}
+          trusted={
+              "Reuters","AP News","Associated Press","The Associated Press",
+              "The Wall Street Journal","Wall Street Journal","CBS News",
+              "The White House","White House",
+              "Office of the Director of National Intelligence",
+              "Federal Trade Commission",
+              "U.S. Department of Defense","Department of Defense",
+              "U.S. Department of War","Department of War",
+              "Office of Personnel Management",
+          }
           rows=[]
           for node in root.findall("./channel/item"):
               title=html.unescape(re.sub(r"<[^>]+>"," ",node.findtext("title") or ""))
@@ -341,41 +350,113 @@ jobs:
           def stage(row):
               text=row["text"]
               title=row["title"].lower()
+
+              # A promised/due report is not a released report.
               if any(x in text for x in (
                   "final report released","final report published","final report submitted",
-                  "report released","report published","report submitted",
+                  "120-day report released","120 day report released",
                   "recommendations released","recommendations published","recommendations submitted",
               )):
                   return "report","us-sif-report"
+
+              # Legal authority must be affirmatively created/published. Articles saying
+              # the SIF has no statutory/legal authority must never become a new stage.
+              authority_positive=any(x in text for x in (
+                  "executive order establishing","executive order establishes",
+                  "executive order creating","executive order creates",
+                  "presidential memorandum","charter released","charter published","charter signed",
+                  "statutory authority granted","legal authority granted","codified","established by law",
+              ))
+              authority_negative=any(x in text for x in (
+                  "no statutory authority","without statutory authority","lacks statutory authority",
+                  "no legal authority","without legal authority","lacks legal authority",
+              ))
+              if authority_positive and not authority_negative:
+                  return "authority","us-sif-authority-"+hashlib.sha1(title.encode()).hexdigest()[:10]
+
+              # Separate a formal request from actually appropriated/approved resources.
+              funding_actual=any(x in text for x in (
+                  "appropriation enacted","appropriations enacted","funding approved",
+                  "funds appropriated","funds allocated","budget enacted","budget signed",
+                  "staffing approved","staffing levels approved",
+              ))
+              if funding_actual:
+                  return "funding","us-sif-funding-"+hashlib.sha1(title.encode()).hexdigest()[:10]
+              funding_request=any(x in text for x in (
+                  "budget request","funding request","requests funding","requested funding",
+                  "proposed funding","staffing request","staffing proposal",
+              ))
+              funding_request_negative=any(x in text for x in (
+                  "no budget request","without a budget request","no funding request",
+              ))
+              if funding_request and not funding_request_negative:
+                  return "funding_request","us-sif-funding-request-"+hashlib.sha1(title.encode()).hexdigest()[:10]
+
+              # Procurement must be an issued/awarded action, not commentary about possible procurement.
               if any(x in text for x in (
-                  "appropriation","appropriations","budget","funding","procurement",
-                  "contract award","contract awarded","request for proposals",
+                  "contract award","contract awarded","awarded a contract",
+                  "rfp issued","request for proposals issued","ota award","baa award",
+                  "procurement directive","procurement order",
+              )):
+                  return "procurement","us-sif-procurement-"+hashlib.sha1(title.encode()).hexdigest()[:10]
+
+              # Regulation must have an identifiable proposed/final/mandatory instrument.
+              if any(x in text for x in (
                   "mandatory incident reporting","incident reporting requirement",
-                  "final rule","proposed rule","regulation","charter released","charter published",
+                  "final rule","proposed rule","reporting requirement","regulatory requirement",
+                  "binding guidance",
               )):
-                  return "execution","us-sif-execution-"+hashlib.sha1(title.encode()).hexdigest()[:10]
-              if any(x in title for x in (
+                  return "regulation","us-sif-regulation-"+hashlib.sha1(title.encode()).hexdigest()[:10]
+
+              membership_action=any(x in title for x in (
                   "new member","new members","joins","added to","leadership change",
-                  "replaces","names vice chair","appoints vice chair",
-              )):
+                  "replaces","names vice chair","appoints vice chair","appoints member",
+                  "names member","steps down","resigns",
+              ))
+              membership_role=any(x in text for x in (
+                  "member","members","chair","co-chair","vice chair","leadership",
+              ))
+              if membership_action and membership_role:
                   return "membership","us-sif-membership-"+hashlib.sha1(title.encode()).hexdigest()[:10]
+
               if any(x in text for x in (
                   "formation","formed","forms","created","creates","established","establishes",
                   "launched","launches","announced","announces","new federal ai task force","new federal task force",
               )):
                   return "formation","us-sif-formation-2026-10-04"
-              return "other","us-sif-other-"+hashlib.sha1(title.encode()).hexdigest()[:10]
+
+              # Commentary, explainers and articles that only say the SIF has no budget/
+              # authority are not state changes and must not generate a Telegram alert.
+              return "ignore",""
+
+          assert stage({
+              "title":"Super Intelligence Force has no budget or statutory authority",
+              "text":"the super intelligence force has no budget and no statutory authority",
+          })[0]=="ignore"
+          assert stage({
+              "title":"Super Intelligence Force budget request submitted",
+              "text":"a budget request for the super intelligence force proposes new staffing",
+          })[0]=="funding_request"
+          assert stage({
+              "title":"Super Intelligence Force RFP issued",
+              "text":"the super intelligence force request for proposals issued for a federal procurement",
+          })[0]=="procurement"
 
           candidates=[]
           for row in rows:
               st,key=stage(row)
-              digest=hashlib.sha256(("sif-semantic-v1:"+key).encode()).hexdigest()[:24]
+              if st=="ignore" or not key:
+                  continue
+              digest=hashlib.sha256(("sif-semantic-v2:"+key).encode()).hexdigest()[:24]
               if digest in seen:
                   continue
               candidates.append((st,key,digest,row))
 
           if candidates:
-              rank={"formation":4,"execution":3,"report":2,"membership":1,"other":0}
+              rank={
+                  "procurement":8,"funding":7,"regulation":7,"report":6,
+                  "authority":5,"funding_request":4,"membership":2,"formation":1,
+              }
               st,key,digest,row=sorted(candidates,key=lambda x:rank.get(x[0],0),reverse=True)[0]
               if st=="formation":
                   heading="미국 Super Intelligence Force(SIF) 창설"
@@ -389,22 +470,50 @@ jobs:
               elif st=="report":
                   heading="SIF 120일 검토 후속 보고서·권고 공개"
                   detail=[
-                      "• <b>현재 단계</b>: 보고서·권고 공개",
+                      "• <b>현재 단계</b>: 보고서·권고 실제 공개·제출",
                       "• <b>의미</b>: 조정기구 출범에서 실제 정책 권고 산출물 단계로 이동",
-                      "• <b>다음 확인</b>: 행정명령·규칙·예산·조달에 반영되는지 확인",
+                      "• <b>다음 확인</b>: 행정명령·규칙·예산·조달에 실제 반영되는지 확인",
                   ]
-              elif st=="execution":
-                  heading="SIF 권한·예산·규제·조달 실행 변화"
+              elif st=="authority":
+                  heading="SIF 법적 권한·헌장 공식화"
                   detail=[
-                      "• <b>현재 단계</b>: 후속 집행 구체화",
-                      "• <b>의미</b>: 단순 조정기구에서 실제 정책·조달 수단으로 전환되는지 확인",
-                      "• <b>다음 확인</b>: 법적 근거·예산액·조달 대상·시행일·계약 상대방",
+                      "• <b>현재 단계</b>: 행정명령·대통령각서·헌장·법률 등 권한 근거가 실제 공개된 단계",
+                      "• <b>미확정</b>: 문서 공개만으로 독립 예산·조달권이 생겼다고 보지 않음",
+                      "• <b>다음 확인</b>: 문서번호·법적 근거·적용기관·효력발생일·의회 근거",
+                  ]
+              elif st=="funding_request":
+                  heading="SIF 예산·인력 요청"
+                  detail=[
+                      "• <b>현재 단계</b>: 예산·인력 요청 또는 제안 단계",
+                      "• <b>주의</b>: 요청액은 실제 세출·집행액이 아님",
+                      "• <b>다음 확인</b>: 의회 세출·OMB 반영·실제 배정액·상근 인력 승인",
+                  ]
+              elif st=="funding":
+                  heading="SIF 예산·인력 실제 배정"
+                  detail=[
+                      "• <b>현재 단계</b>: 예산·인력의 승인·배정 단계",
+                      "• <b>의미</b>: 조정기구가 실제 집행 자원을 확보하는 변화",
+                      "• <b>다음 확인</b>: 배정액·인원·지출처·집행기관·계약 전환 일정",
+                  ]
+              elif st=="procurement":
+                  heading="SIF 연계 정부 조달·계약 실행"
+                  detail=[
+                      "• <b>현재 단계</b>: RFP·OTA·BAA·계약 수주 등 실제 조달 행동",
+                      "• <b>의미</b>: 정책 지휘체계가 기업 매출로 연결될 수 있는 첫 직접 단계",
+                      "• <b>다음 확인</b>: 계약 상대방·계약금액·물량·기간·납품·검수·매출 인식",
+                  ]
+              elif st=="regulation":
+                  heading="SIF 연계 의무 규칙·보고·감사 변화"
+                  detail=[
+                      "• <b>현재 단계</b>: 제안규칙·최종규칙·의무 보고 등 규제 수단이 구체화된 단계",
+                      "• <b>의미</b>: 기업의 준수비용·보안·모델 평가 의무가 바뀔 수 있음",
+                      "• <b>다음 확인</b>: 적용 대상·시행일·법적 근거·벌칙·감사 범위",
                   ]
               else:
                   heading="SIF 구성·운영 변화"
                   detail=[
-                      "• <b>현재 단계</b>: 구성·운영 후속 변화",
-                      "• <b>다음 확인</b>: 실제 권한·예산·조달 변화 동반 여부",
+                      "• <b>현재 단계</b>: 지도부·구성의 실제 변경",
+                      "• <b>다음 확인</b>: 권한·예산·조달 변화 동반 여부",
                   ]
 
               truth="https://truthsocial.com/@realDonaldTrump/117382616783706638"
@@ -416,7 +525,8 @@ jobs:
                   f"<b>{heading}</b>",
                   *detail,
                   "• <b>투자 연결</b>: 현재 특정 기업 신규 정부계약 확정이 아님. 예산·조달·규칙이 GPU·클라우드·사이버보안·데이터센터 전력·국방 AI 발주로 전환될 때 실적 연결",
-                  f'• <a href="{truth}">Trump Truth Social 원문</a>',
+                  *( [f'• <a href="{row["link"]}">이번 변화 출처: {html.escape(row["source"])}</a>'] if row.get("link") and row.get("link")!=truth else [] ),
+                  f'• <a href="{truth}">Trump Truth Social 창설 원문</a>',
                   f'• <a href="{reuters}">Reuters 교차검증</a>',
               ]
               alert=pathlib.Path("out/ai_safety_policy_watch_alert.html")

@@ -3793,6 +3793,11 @@ def main() -> int:
         if rule.key.startswith("_disabled_"):
             continue
         items = collect_rule_items(rule, now)
+        if rule.key == "trump_direct_policy_remarks_watch":
+            items = [
+                item for item in items
+                if not semantic_policy_event_key(item).startswith("us-trump-super-intelligence-force-")
+            ]
         for alert_items in alert_item_groups(rule, items):
             alert_items = unseen_items_for_rule(rule, alert_items, seen)
             if not alert_items:
