@@ -20,7 +20,10 @@ def run(cmd: list[str], timeout: int = 240):
             patched.append('scripts/intismeran_structured_telegram_send_v2.py')
         else:
             patched.append(part)
-    return _original_run(patched, timeout=timeout)
+    effective_timeout = timeout
+    if 'scripts/halozyme_legal_watch_v4.py' in patched:
+        effective_timeout = max(timeout, 300)
+    return _original_run(patched, timeout=effective_timeout)
 
 
 base.run = run

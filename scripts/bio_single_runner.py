@@ -310,16 +310,19 @@ def main() -> int:
 
     except Exception as exc:
         hb["status"] = "failed"
-        hb["errors"].append(f"{type(exc).__name__}: {exc}")
+        failure_dt = dt.datetime.now(KST)
+        detail = f"{type(exc).__name__}: {exc}"
+        hb["failed_at_kst"] = failure_dt.isoformat(timespec="seconds")
+        hb["errors"].append(detail)
         if token and chat_id:
             try:
                 hb["failure_notice_message_id"] = send_text(
                     token,
                     chat_id,
                     "[바이오 감시] 실행 오류\n\n"
-                    f"- 시각: {now_dt.strftime('%Y-%m-%d %H:%M KST')}\n"
-                    "- QLEX 전환율·월간 WAC·Intismeran·Jemperli·Enhertu·Halozyme 특허분쟁 감시 실행 중 오류가 발생했습니다.\n"
-                    "- 다음 15분 실행에서 다시 확인합니다.",
+                    f"- 실제 오류 시각: {failure_dt.strftime('%Y-%m-%d %H:%M KST')}\n"
+                    f"- 확인 원인: {detail[:500]}\n"
+                    "- 다음 실행에서 자동 재확인합니다.",
                 )
             except Exception:
                 pass

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import datetime as dt
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import hashlib
 import html
 import json
@@ -8,6 +9,7 @@ import os
 import pathlib
 import re
 import subprocess
+import time
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -34,6 +36,7 @@ KNOWN_CASES = {
     'IPR2026-00313': '11,041,149', 'IPR2026-00314': '11,066,656',
 }
 DISTRICT_CASE = '2:25-cv-03179'
+SEARCH_WORKERS = 8
 
 SEARCHES = [
     '"Halozyme" "Merck" PTAB PGR',
@@ -207,22 +210,36 @@ def main() -> int:
     seen_events=set(state.get('seen_events') or []); seen_urls=set(state.get('seen_urls') or [])
     discovered=dict(state.get('discovered_cases') or {})
     errors=[]; candidates=[]
-    for q in SEARCHES:
-        for engine in ('Bing 웹','Google 뉴스'):
+    search_tasks=[(q,engine) for q in SEARCHES for engine in ('Bing 웹','Google 뉴스')]
+    search_started=time.monotonic()
+    raw_items=[]
+
+    def collect(q: str, engine: str) -> tuple[str, str, list[dict]]:
+        return q, engine, rss(q, engine)
+
+    workers=max(1,min(SEARCH_WORKERS,len(search_tasks)))
+    with ThreadPoolExecutor(max_workers=workers, thread_name_prefix='halozyme-search') as pool:
+        futures={pool.submit(collect,q,engine):(q,engine) for q,engine in search_tasks}
+        for future in as_completed(futures):
+            q,engine=futures[future]
             try:
-                for item in rss(q,engine):
-                    blob=f"{item['title']} {item['description']} {item['url']}"
-                    if 'halozyme' not in blob.lower() or not any(x in blob.lower() for x in ('merck','msd','pgr','ipr','ptab','2:25-cv-03179')):
-                        continue
-                    case,patent=get_case(blob)
-                    if not case: continue
-                    if case.startswith(('PGR','IPR')): discovered[case]=patent or discovered.get(case,'')
-                    kind=classify(blob,case)
-                    if not kind: continue
-                    ekey=digest(f'{case}|{kind}')
-                    candidates.append((0 if official(item['url']) else 1,ekey,case,patent or discovered.get(case,''),kind,item))
+                _,_,items=future.result()
+                raw_items.extend(items)
             except Exception as exc:
-                errors.append(f'{engine}:{type(exc).__name__}')
+                errors.append(f'{engine}:{type(exc).__name__}:{q[:80]}')
+
+    search_elapsed=round(time.monotonic()-search_started,3)
+    for item in raw_items:
+        blob=f"{item['title']} {item['description']} {item['url']}"
+        if 'halozyme' not in blob.lower() or not any(x in blob.lower() for x in ('merck','msd','pgr','ipr','ptab','2:25-cv-03179')):
+            continue
+        case,patent=get_case(blob)
+        if not case: continue
+        if case.startswith(('PGR','IPR')): discovered[case]=patent or discovered.get(case,'')
+        kind=classify(blob,case)
+        if not kind: continue
+        ekey=digest(f'{case}|{kind}')
+        candidates.append((0 if official(item['url']) else 1,ekey,case,patent or discovered.get(case,''),kind,item))
     best={}
     for row in sorted(candidates,key=lambda x:x[0]):
         best.setdefault(row[1],row)
@@ -245,10 +262,10 @@ def main() -> int:
                 seen_events.add(ekey); seen_urls.add(item['url'])
 
     now=dt.datetime.now(KST).isoformat(timespec='seconds')
-    state.update({'initialized':True,'last_check_kst':now,'seen_events':sorted(seen_events)[-5000:],'seen_urls':sorted(seen_urls)[-5000:],'tracked_known_cases':KNOWN_CASES,'discovered_cases':discovered,'district_case':DISTRICT_CASE,'errors_last_run':errors[-20:]})
+    state.update({'initialized':True,'last_check_kst':now,'seen_events':sorted(seen_events)[-5000:],'seen_urls':sorted(seen_urls)[-5000:],'tracked_known_cases':KNOWN_CASES,'discovered_cases':discovered,'district_case':DISTRICT_CASE,'errors_last_run':errors[-20:],'search_query_count':len(SEARCHES),'search_task_count':len(search_tasks),'search_workers':workers,'search_elapsed_seconds':search_elapsed})
     STATE.write_text(json.dumps(state,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-    STATUS.write_text(f'Halozyme 특허분쟁 감시 — {now}; 신규송출={len(sent)}; 알려진 PGR·IPR={len(KNOWN_CASES)}; 발견사건={len(discovered)}; 오류={len(errors)}\n',encoding='utf-8')
-    print(json.dumps({'status':'ok' if not errors else 'partial','first_run':first,'sent_message_ids':sent,'tracked_known_cases':len(KNOWN_CASES),'discovered_cases':len(discovered),'errors':errors[-5:]},ensure_ascii=False))
+    STATUS.write_text(f'Halozyme 특허분쟁 감시 — {now}; 신규송출={len(sent)}; 알려진 PGR·IPR={len(KNOWN_CASES)}; 발견사건={len(discovered)}; 검색={len(SEARCHES)}문구/{len(search_tasks)}작업/{search_elapsed:.1f}초; 오류={len(errors)}\n',encoding='utf-8')
+    print(json.dumps({'status':'ok' if not errors else 'partial','first_run':first,'sent_message_ids':sent,'tracked_known_cases':len(KNOWN_CASES),'discovered_cases':len(discovered),'search_query_count':len(SEARCHES),'search_task_count':len(search_tasks),'search_workers':workers,'search_elapsed_seconds':search_elapsed,'errors':errors[-5:]},ensure_ascii=False))
     return 0
 
 if __name__=='__main__': raise SystemExit(main())

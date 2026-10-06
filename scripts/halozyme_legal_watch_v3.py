@@ -8,6 +8,8 @@ import xml.etree.ElementTree as ET
 
 import halozyme_legal_watch_v2 as base
 
+SEARCH_HTTP_TIMEOUT = 7
+
 # 미국 공식/영문 검색뿐 아니라 국내 보도가 먼저 뜨는 경우도 잡는다.
 base.SEARCHES.extend([
     '할로자임 MSD 특허 무효 PGR',
@@ -31,8 +33,13 @@ def rss(query: str, engine: str) -> list[dict]:
         urls.append(('Bing 웹', 'https://www.bing.com/search?' + urllib.parse.urlencode({'q': query, 'format': 'rss'})))
 
     out: list[dict] = []
+    failures: list[str] = []
     for label, url in urls:
-        root = ET.fromstring(base.fetch(url))
+        try:
+            root = ET.fromstring(base.fetch(url, timeout=SEARCH_HTTP_TIMEOUT))
+        except Exception as exc:
+            failures.append(f"{label}:{type(exc).__name__}")
+            continue
         for n in root.findall('.//item')[:30]:
             title = html.unescape((n.findtext('title') or '').strip())
             link = base.clean_url((n.findtext('link') or '').strip())
@@ -40,6 +47,8 @@ def rss(query: str, engine: str) -> list[dict]:
             pub = (n.findtext('pubDate') or '').strip()
             if link:
                 out.append({'engine': label, 'title': title, 'url': link, 'description': desc, 'published': pub})
+    if failures and len(failures) == len(urls):
+        raise RuntimeError(";".join(failures))
     # 같은 URL은 여기서 한 번만 남긴다.
     unique: dict[str, dict] = {}
     for item in out:

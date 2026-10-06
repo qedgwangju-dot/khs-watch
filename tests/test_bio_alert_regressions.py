@@ -65,6 +65,18 @@ class BioAlertRegressionTests(unittest.TestCase):
             "약 1조3,787억원",
         )
 
+    def test_halozyme_search_matrix_is_bounded_and_covers_every_known_case(self):
+        searches = halo.base.SEARCHES
+        self.assertLessEqual(len(searches), 40)
+        for case in halo.base.KNOWN_CASES:
+            self.assertTrue(any(case in query for query in searches), case)
+        self.assertEqual(halo.base.SEARCH_WORKERS, 8)
+        self.assertEqual(halo.v3.SEARCH_HTTP_TIMEOUT, 7)
+
+    def test_halozyme_runner_has_timeout_safety_margin(self):
+        source = (ROOT / "scripts" / "bio_single_runner_v3.py").read_text(encoding="utf-8")
+        self.assertIn("max(timeout, 300)", source)
+
     def test_halozyme_two_patent_article_without_case_number_is_not_dropped(self):
         text = "알테오젠 파트너 MSD, 할로자임 PH20 특허 2건 청구항 특허성 없음"
         case, patent = halo.get_case(text)

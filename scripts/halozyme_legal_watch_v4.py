@@ -26,22 +26,28 @@ CURRENT_PORTFOLIO_SCORECARD = {
     },
 }
 
-# 각 사건번호를 개별 검색한다. OR 검색은 새 최종결정을 누락할 수 있어
-# 사건번호·특허번호·한국어 결과 표현을 직접 조회한다.
-for case, patent in base.KNOWN_CASES.items():
-    if case.startswith("PGR"):
-        base.SEARCHES.extend([
-            f'"{case}" Halozyme Merck "Final Written Decision"',
-            f'"{case}" Halozyme Merck unpatentable',
-            f'"{patent}" Halozyme Merck unpatentable',
-            f'"{patent}" 할로자임 MSD 특허성 없음',
-        ])
-
-base.SEARCHES.extend([
-    '"알테오젠 파트너 MSD" 할로자임 PH20 특허 2건 특허성 없음',
+# 동일 사건당 4개 변형 검색을 직렬 반복하던 구조를 제거한다.
+# 각 알려진 PGR·IPR은 정확 사건번호 검색 1개로 전수 추적하고,
+# 최종결정·국장 재검토·재심·항소·민사소송·한국어 보도는 별도 광역 검색축으로 유지한다.
+base.SEARCHES = [
+    '"Halozyme" "Merck" PTAB PGR',
+    '"Halozyme" "Merck" "Final Written Decision"',
+    '"Halozyme" "Merck" "Director Review" PTAB',
+    '"Halozyme" "Merck" rehearing PTAB',
+    '"Halozyme" "Merck" "Federal Circuit" patent',
+    '"Halozyme" "Merck" MDASE patent',
+    '"Halozyme" "Merck" modified PH20 patent',
+    '"2:25-cv-03179" Halozyme Merck',
+    '할로자임 MSD 특허 무효 PGR',
+    '할로자임 MDASE 특허 PTAB',
+    '알테오젠 할로자임 특허 분쟁 MSD',
+    'Halozyme MSD 특허심판원 무효',
+    '"알테오젠 파트너 MSD" 할로자임 PH20 특허 특허성 없음',
     '"할로자임 PH20" MSD 특허성 없음',
-    '"Halozyme" "PH20" Merck "unpatentable" September 2026',
-])
+    '"Halozyme" "PH20" Merck unpatentable',
+]
+for case in base.KNOWN_CASES:
+    base.SEARCHES.append(f'"{case}" Halozyme Merck')
 
 
 _CURRENT_BATCH_SOURCE = "http://the-biz.co.kr/news/articleView.html?idxno=728392"
@@ -106,7 +112,7 @@ def _strip_tags(value: str) -> str:
 def _alteogen_official_portfolio_items() -> list[dict]:
     out: list[dict] = []
     try:
-        page = base.fetch(ALTEOGEN_IR_INDEX, timeout=15)
+        page = base.fetch(ALTEOGEN_IR_INDEX, timeout=7)
     except Exception:
         return out
 
@@ -122,7 +128,7 @@ def _alteogen_official_portfolio_items() -> list[dict]:
         if not any(k in low_title for k in ("할로자임", "halozyme", "mdase", "특허")):
             continue
         try:
-            article = _strip_tags(base.fetch(url, timeout=15))
+            article = _strip_tags(base.fetch(url, timeout=7))
         except Exception:
             article = title
         low = article.lower()
@@ -547,7 +553,7 @@ def parse_portfolio_scorecard(text: str) -> dict | None:
 def _portfolio_ir_urls() -> list[str]:
     urls = [ALTEOGEN_IR_CURRENT_URL]
     try:
-        page = base.fetch(ALTEOGEN_IR_LIST_URL, timeout=15)
+        page = base.fetch(ALTEOGEN_IR_LIST_URL, timeout=7)
         for href, label in re.findall(r'href=["\']([^"\']*information\.php\?[^"\']*idx=\d+[^"\']*)["\'][^>]*>(.*?)</a>', page, re.I | re.S):
             title = _plain_text(label)
             if not any(k in title.lower() for k in ("halozyme", "mdase", "pgr", "ipr")) and "할로자임" not in title:
@@ -570,18 +576,19 @@ def portfolio_updates() -> list[dict]:
     # 현재 공식 IR에서 확인된 7/14 판세는 검색색인·HTML 파싱 실패와 무관하게
     # 한 번은 반드시 이벤트로 소비하도록 검증된 기준선을 포함한다.
     updates: list[dict] = [CURRENT_PORTFOLIO_SCORECARD, PTAB_VERIFIED_PORTFOLIO_SCORECARD]
-    for url in _portfolio_ir_urls():
-        try:
-            page = base.fetch(url, timeout=15)
-            text = _plain_text(page)
-        except Exception:
-            continue
+    global _official_portfolio_cache
+    if _official_portfolio_cache is None:
+        _official_portfolio_cache = _alteogen_official_portfolio_items()
+    for official_item in _official_portfolio_cache:
+        text = str(official_item.get("description") or "")
         score = parse_portfolio_scorecard(text)
         if not score:
             continue
-        title_match = re.search(r"<title>(.*?)</title>", page, re.I | re.S)
-        title = _plain_text(title_match.group(1)) if title_match else "알테오젠 공식 IR Halozyme PGR 판세 업데이트"
-        updates.append({"url": base.clean_url(url), "title": title, "score": score})
+        updates.append({
+            "url": base.clean_url(str(official_item.get("url") or "")),
+            "title": str(official_item.get("title") or "알테오젠 공식 IR Halozyme PGR 판세 업데이트"),
+            "score": score,
+        })
     unique = {}
     for item in updates:
         s = item["score"]
