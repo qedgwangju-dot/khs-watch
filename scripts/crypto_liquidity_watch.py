@@ -260,6 +260,55 @@ def signed_pct(value: float | None) -> str:
     return f"{sign}{value:,.1f}%"
 
 
+def _partial_snapshot(etf: dict, observed_at_kst: str) -> dict:
+    reported = int(etf.get("reported_funds", 0) or 0)
+    missing = int(etf.get("missing_funds", 0) or 0)
+    return {
+        "observed_at_kst": observed_at_kst,
+        "total_usd_m": float(etf.get("total_usd_m", 0.0) or 0.0),
+        "reported_funds": reported,
+        "missing_funds": missing,
+        "coverage": f"{reported}/{reported + missing}" if (reported + missing) else "",
+    }
+
+
+def _same_snapshot(a: dict, b: dict) -> bool:
+    return (
+        round(float(a.get("total_usd_m", 0.0) or 0.0), 1)
+        == round(float(b.get("total_usd_m", 0.0) or 0.0), 1)
+        and int(a.get("reported_funds", 0) or 0) == int(b.get("reported_funds", 0) or 0)
+        and int(a.get("missing_funds", 0) or 0) == int(b.get("missing_funds", 0) or 0)
+    )
+
+
+def carry_partial_history(old_state: dict, etf: dict, observed_at_kst: str) -> dict:
+    old_etf = old_state.get("btc_etf") or {}
+    new_date = str(etf.get("date") or "")
+    old_date = str(old_etf.get("date") or "")
+    history: list[dict] = []
+
+    if new_date and new_date == old_date:
+        history = [
+            x for x in (old_etf.get("provisional_history") or [])
+            if isinstance(x, dict)
+        ]
+        if old_etf.get("status") == "partial":
+            old_snapshot = _partial_snapshot(
+                old_etf,
+                str(old_state.get("updated_at_kst") or observed_at_kst),
+            )
+            if not history or not _same_snapshot(history[-1], old_snapshot):
+                history.append(old_snapshot)
+
+    if etf.get("status") == "partial":
+        current_snapshot = _partial_snapshot(etf, observed_at_kst)
+        if not history or not _same_snapshot(history[-1], current_snapshot):
+            history.append(current_snapshot)
+
+    etf["provisional_history"] = history[-12:]
+    return etf
+
+
 def market_read(rates: dict, etf: dict) -> str:
     rate_date = rates.get("date")
     etf_date = etf.get("date")
@@ -314,6 +363,8 @@ def main() -> None:
     except Exception as e:
         errors.append(f"btc_etf: {e}")
         etf = old.get("btc_etf") or {}
+
+    etf = carry_partial_history(old, etf, now_kst)
 
     new_state = {
         "updated_at_kst": now_kst,
@@ -389,16 +440,34 @@ def main() -> None:
                 f"{signed_millions(etf.get('total_usd_m', 0.0))}"
             )
         elif partial_to_complete:
+            history = etf.get("provisional_history") or []
+            first_partial = history[0] if history else _partial_snapshot(
+                old_etf, str(old.get("updated_at_kst") or now_kst)
+            )
+            last_partial = history[-1] if history else first_partial
+            final_reported = int(etf.get("reported_funds", 0) or 0)
+            final_missing = int(etf.get("missing_funds", 0) or 0)
+            final_total = final_reported + final_missing
+            first_cov = str(first_partial.get("coverage") or "")
+            last_cov = str(last_partial.get("coverage") or "")
+            final_cov = f"{final_reported}/{final_total}" if final_total else ""
             if same_day_value_changed:
                 triggers.append(
-                    "BTC 현물 ETF 잠정치 확정: "
-                    f"{signed_millions(old_etf.get('total_usd_m', 0.0))} → "
-                    f"{signed_millions(etf.get('total_usd_m', 0.0))}"
+                    "BTC 현물 ETF 최종 확정: "
+                    f"최초 잠정 {signed_millions(float(first_partial.get('total_usd_m', 0.0) or 0.0))}"
+                    f"{f' ({first_cov})' if first_cov else ''} → "
+                    f"직전 잠정 {signed_millions(float(last_partial.get('total_usd_m', 0.0) or 0.0))}"
+                    f"{f' ({last_cov})' if last_cov else ''} → "
+                    f"최종 {signed_millions(etf.get('total_usd_m', 0.0))}"
+                    f"{f' ({final_cov})' if final_cov else ''}"
                 )
             else:
                 triggers.append(
-                    "BTC 현물 ETF 잠정치 확정(값 동일): "
-                    f"{signed_millions(etf.get('total_usd_m', 0.0))}"
+                    "BTC 현물 ETF 최종 확정(값 동일): "
+                    f"직전 잠정 {signed_millions(float(last_partial.get('total_usd_m', 0.0) or 0.0))}"
+                    f"{f' ({last_cov})' if last_cov else ''} → "
+                    f"최종 {signed_millions(etf.get('total_usd_m', 0.0))}"
+                    f"{f' ({final_cov})' if final_cov else ''}"
                 )
         elif same_day_value_changed:
             qualifier = "잠정 집계" if etf.get("status") == "partial" else "현재 집계"
