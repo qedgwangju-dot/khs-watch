@@ -43,6 +43,20 @@ def quote_phase(pending: dict, section: str) -> str:
     return "마감값"
 
 
+def _iso_date(value: object) -> dt.date | None:
+    try:
+        return dt.date.fromisoformat(str(value))
+    except Exception:
+        return None
+
+
+def _date_gap_days(a: object, b: object) -> int | None:
+    da, db = _iso_date(a), _iso_date(b)
+    if not da or not db:
+        return None
+    return abs((da - db).days)
+
+
 def direct_earnings(pending: dict) -> tuple[str, str, int]:
     circle = pending.get("circle") or {}
     usdxx = pending.get("usdxx") or {}
@@ -54,23 +68,33 @@ def direct_earnings(pending: dict) -> tuple[str, str, int]:
     c_prev = cp.get("circulation_usd_b")
     y_now = usdxx.get("sec_yield_7d")
     y_prev = up.get("sec_yield_7d")
+    c_date = str(circle.get("date") or "")
+    cp_date = str(cp.get("date") or "")
+    y_date = str(usdxx.get("date") or "")
+    yp_date = str(up.get("date") or "")
 
     parts: list[str] = []
     if c_now is not None:
-        if c_prev is not None:
-            c_delta = float(c_now) - float(c_prev)
-            parts.append(f"USDC {float(c_prev):.1f}→{float(c_now):.1f}십억달러 ({c_delta:+.1f})")
+        if c_prev is not None and cp_date and c_date:
+            c_pct = ((float(c_now) / float(c_prev)) - 1.0) * 100.0 if float(c_prev) else 0.0
+            parts.append(
+                f"USDC {float(c_now):.1f}십억달러({c_date}) · 최근 공식 업데이트 "
+                f"{float(c_prev):.1f}→{float(c_now):.1f}십억달러({cp_date}→{c_date}, {c_pct:+.2f}%)"
+            )
         else:
-            parts.append(f"USDC {float(c_now):.1f}십억달러")
+            parts.append(f"USDC {float(c_now):.1f}십억달러({c_date or '기준일 확인 불가'})")
     else:
         parts.append("USDC 확인 불가")
 
     if y_now is not None:
-        if y_prev is not None:
+        if y_prev is not None and yp_date and y_date:
             y_bp = (float(y_now) - float(y_prev)) * 100.0
-            parts.append(f"준비금 수익률 {float(y_prev):.2f}%→{float(y_now):.2f}% ({fbp(y_bp)})")
+            parts.append(
+                f"준비금 수익률 {float(y_now):.2f}%({y_date}) · 직전 공식일 "
+                f"{float(y_prev):.2f}%({yp_date}) 대비 {fbp(y_bp)}"
+            )
         else:
-            parts.append(f"준비금 수익률 {float(y_now):.2f}%")
+            parts.append(f"준비금 수익률 {float(y_now):.2f}%({y_date or '기준일 확인 불가'})")
     else:
         parts.append("준비금 수익률 확인 불가")
 
@@ -78,8 +102,15 @@ def direct_earnings(pending: dict) -> tuple[str, str, int]:
         parts.append("BlackRock 공식 원문 재조회 실패 · 직전 성공값 사용")
         return "판정 보류", " · ".join(parts), 0
 
-    # Primary earnings test: USDC circulation × actual Circle Reserve Fund 7-day SEC yield.
-    # This follows the direct reserve-economics hierarchy instead of scoring volume and yield separately.
+    current_gap = _date_gap_days(c_date, y_date)
+    prior_gap = _date_gap_days(cp_date, yp_date)
+    if current_gap is None or prior_gap is None or current_gap > 3 or prior_gap > 3:
+        parts.append(
+            f"USDC와 준비금 수익률 기준일 차이"
+            f"{f' {current_gap}일' if current_gap is not None else ''} → 합산 이익 프록시 판정 보류"
+        )
+        return "판정 보류", " · ".join(parts), 0
+
     if None not in (c_now, c_prev, y_now, y_prev):
         now_proxy = float(c_now) * float(y_now)
         prev_proxy = float(c_prev) * float(y_prev)
@@ -95,7 +126,6 @@ def direct_earnings(pending: dict) -> tuple[str, str, int]:
             return "소폭 불리", " · ".join(parts), -1
         return "거의 중립", " · ".join(parts), 0
 
-    # If one prior official leg is unavailable, do not fabricate a combined earnings delta.
     return "판정 보류", " · ".join(parts) + " · 직전 공식 조합 부족", 0
 
 
@@ -104,7 +134,14 @@ def proxy_rates(pending: dict) -> tuple[str, str, int]:
     treasury = pending.get("treasury") or {}
     s = float(sofr.get("daily_bp", 0.0) or 0.0)
     t3 = float(treasury.get("daily_3m_bp", 0.0) or 0.0)
-    text = f"SOFR {fbp(s)} · 미 국채 3개월 {fbp(t3)}"
+    s_date = str(sofr.get("date") or "")
+    t_date = str(treasury.get("date") or "")
+    text = (
+        f"SOFR {float(sofr.get('rate', 0.0)):.2f}%({s_date or 'N/A'}, {fbp(s)}) · "
+        f"미 국채 3개월 {float(treasury.get('three_month', 0.0)):.2f}%({t_date or 'N/A'}, {fbp(t3)})"
+    )
+    if not s_date or not t_date or s_date != t_date:
+        return "판정 보류", text + " → 기준일이 달라 선행 단기금리 합산 판정 보류", 0
     if s > 0 and t3 > 0:
         return "소폭 우호적", text + " → 향후 준비금 수익률 하락을 일부 완충할 수 있는 방향", 1
     if s < 0 and t3 < 0:
@@ -209,7 +246,9 @@ def build_summary(pending: dict) -> tuple[str, str]:
         else:
             stock_take = "주가와 본업·단기금리·할인율 신호가 혼재 → 개별 요인 확인 필요"
 
-    if direct_score < 0 and disc_score < 0:
+    if direct_label == "판정 보류" and disc_score < 0:
+        take = "본업은 기준일 불일치로 판정 보류. 장기금리 상승은 밸류에이션에 불리"
+    elif direct_score < 0 and disc_score < 0:
         take = "실제 이익 변수와 할인율이 모두 약하게 악화. 단기금리 선행지표 반등이 일부 완충하지만 현재는 악재가 조금 우세"
     elif direct_score > 0 and disc_score > 0:
         take = "실제 이익 변수와 할인율이 함께 개선돼 현재는 호재가 우세"
@@ -297,6 +336,10 @@ def _direct_proxy_pct(pending: dict) -> float | None:
     )
     if any(v is None for v in vals):
         return None
+    if (_date_gap_days(circle.get("date"), usdxx.get("date")) or 0) > 3:
+        return None
+    if (_date_gap_days(cp.get("date"), up.get("date")) or 0) > 3:
+        return None
     c_now, c_prev, y_now, y_prev = map(float, vals)
     prev_proxy = c_prev * y_prev
     if not prev_proxy:
@@ -305,12 +348,14 @@ def _direct_proxy_pct(pending: dict) -> float | None:
 
 
 def build_compact_alert(pending: dict, original_text: str) -> str:
-    direct_label, _, direct_score = direct_earnings(pending)
-    proxy_label, _, proxy_score = proxy_rates(pending)
+    direct_label, direct_text, direct_score = direct_earnings(pending)
+    proxy_label, proxy_text, proxy_score = proxy_rates(pending)
     disc_label, disc_text, disc_score = discount_view(pending)
     verdict = verdict_label(direct_score, proxy_score, disc_score)
 
-    if direct_score > 0 and disc_score < 0:
+    if direct_label == "판정 보류" and disc_score < 0:
+        take = "본업은 기준일 불일치로 판정 보류 · 장기금리 상승은 밸류에이션에 불리"
+    elif direct_score > 0 and disc_score < 0:
         take = "본업 개선은 맞지만 장기금리 상승이 밸류에이션을 누르는 구간"
     elif direct_score > 0 and disc_score > 0:
         take = "본업과 할인율이 함께 개선돼 현재는 우호 신호가 우세"
@@ -346,43 +391,47 @@ def build_compact_alert(pending: dict, original_text: str) -> str:
 
     lines += ["", "<b>핵심 숫자</b>"]
 
+    circle = pending.get("circle") or {}
+    usdxx = pending.get("usdxx") or {}
+    sofr = pending.get("sofr") or {}
+    treasury = pending.get("treasury") or {}
+    crcl = pending.get("crcl") or {}
+    fx = pending.get("fx") or {}
+    fx_rate = float(fx.get("rate", 0.0) or 0.0)
+
     c_now = circle.get("circulation_usd_b")
-    c_prev = cp.get("circulation_usd_b")
-    y_now = usdxx.get("sec_yield_7d")
-    y_prev = up.get("sec_yield_7d")
+    c_prev = (circle.get("_previous_distinct") or {}).get("circulation_usd_b")
+    c_date = str(circle.get("date") or "")
+    cp_date = str((circle.get("_previous_distinct") or {}).get("date") or "")
     if c_now is not None:
-        c_now_f = float(c_now)
-        if c_prev is not None:
-            c_prev_f = float(c_prev)
-            c_pct = ((c_now_f / c_prev_f) - 1.0) * 100 if c_prev_f else 0.0
-            usdc_text = f"USDC {c_prev_f:.1f}→{c_now_f:.1f}십억달러 ({c_pct:+.2f}%)"
-        else:
-            usdc_text = f"USDC {c_now_f:.1f}십억달러"
+        usdc_text = f"USDC {float(c_now):.1f}십억달러"
         if fx_rate:
-            usdc_text += f" · {_fmt_krw_from_usd_m(c_now_f * 1000.0, fx_rate)}"
+            usdc_text += f" · {_fmt_krw_from_usd_m(float(c_now) * 1000.0, fx_rate)}"
+        usdc_text += f" · {c_date or '기준일 확인 불가'}"
+        if c_prev is not None and cp_date and c_date:
+            pct = ((float(c_now) / float(c_prev)) - 1.0) * 100.0 if float(c_prev) else 0.0
+            usdc_text += f" · 최근 공식 업데이트 {float(c_prev):.1f}→{float(c_now):.1f}({pct:+.2f}%)"
+        lines.append(f"• <b>USDC</b> · {html.escape(usdc_text)}")
 
-        reserve_text = ""
-        if y_now is not None:
-            if y_prev is not None:
-                y_bp = (float(y_now) - float(y_prev)) * 100.0
-                reserve_text = f" | 준비금 {float(y_prev):.2f}→{float(y_now):.2f}% ({y_bp:+.1f}bp)"
-            else:
-                reserve_text = f" | 준비금 {float(y_now):.2f}%"
+    y_now = usdxx.get("sec_yield_7d")
+    y_prev = (usdxx.get("_previous_distinct") or {}).get("sec_yield_7d")
+    y_date = str(usdxx.get("date") or "")
+    yp_date = str((usdxx.get("_previous_distinct") or {}).get("date") or "")
+    if y_now is not None:
+        reserve_text = f"{float(y_now):.2f}% · {y_date or '기준일 확인 불가'}"
+        if y_prev is not None and yp_date and yp_date != y_date:
+            y_bp = (float(y_now) - float(y_prev)) * 100.0
+            reserve_text += f" · 직전 {float(y_prev):.2f}%({yp_date}) 대비 {y_bp:+.1f}bp"
+        lines.append(f"• <b>준비금 수익률</b> · {html.escape(reserve_text)}")
 
+    if direct_label == "판정 보류":
+        lines.append(f"• <b>본업 판정</b> · {html.escape(direct_text)}")
+    else:
         proxy_pct = _direct_proxy_pct(pending)
-        proxy_text = f" | 이익 프록시 {proxy_pct:+.2f}%" if proxy_pct is not None else ""
-        lines.append(f"• <b>본업</b> · {html.escape(usdc_text + reserve_text + proxy_text)}")
+        proxy_suffix = f" · 이익 프록시 {proxy_pct:+.2f}%" if proxy_pct is not None else ""
+        lines.append(f"• <b>본업 판정 · {html.escape(direct_label)}</b>{html.escape(proxy_suffix)}")
 
-    if sofr or treasury:
-        s_text = (
-            f"SOFR {float(sofr.get('rate', 0.0)):.2f}% ({float(sofr.get('daily_bp', 0.0)):+.1f}bp)"
-            if sofr else "SOFR 확인 불가"
-        )
-        t3_text = (
-            f"3M {float(treasury.get('three_month', 0.0)):.2f}% ({float(treasury.get('daily_3m_bp', 0.0)):+.1f}bp)"
-            if treasury else "3M 확인 불가"
-        )
-        lines.append(f"• <b>단기금리</b> · {html.escape(s_text)} | {html.escape(t3_text)}")
+    lines.append(f"• <b>단기금리 · {html.escape(proxy_label)}</b> · {html.escape(proxy_text)}")
 
     if treasury:
         treasury_date = str(treasury.get("date") or "")
