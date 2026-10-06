@@ -577,10 +577,16 @@
       "source": "techpowerup.com",
       "published_kst": "2026-10-06T00:10:47+09:00",
       "first_seen_kst": "2026-10-06T19:29:52+09:00"
+    },
+    "81cfabaa95d7d624deaad42c": {
+      "title": "YMTC Employee Says Memory Shortage Could Last 3 More Years as NAND Forecasts Diverge - xenospectrum.com",
+      "source": "xenospectrum.com",
+      "published_kst": "2026-10-06T11:05:14+09:00",
+      "first_seen_kst": "2026-10-06T23:15:20+09:00"
     }
   },
-  "updated_at_kst": "2026-10-06T19:31:03+09:00",
-  "last_scan_count": 38,
+  "updated_at_kst": "2026-10-06T23:15:20+09:00",
+  "last_scan_count": 39,
   "last_new_count": 0,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
@@ -609,7 +615,7 @@
     "source_rank": 2,
     "as_of": "2026-09-29"
   },
-  "nand_divergence_track_version": 1,
+  "nand_divergence_track_version": 2,
   "nand_divergence": {
     "enterprise_direction": "up",
     "consumer_direction": "weak",
@@ -617,29 +623,42 @@
     "enterprise_ssd_q4_max_pct": 28,
     "overall_nand_q4_min_pct": 15,
     "overall_nand_q4_max_pct": 20,
+    "essd_bit_demand_yoy_min_pct": 80.0,
+    "incremental_supply_mostly_committed": true,
+    "qlc_capacity_expansion": true,
+    "pcie6_adoption_ramping": true,
     "kv_cache_qlc": true,
+    "new_nand_capacity_start_year": 2027,
+    "new_nand_capacity_end_year": 2028,
+    "trendforce_nand_easing_year": 2027,
+    "trendforce_nand_easing_half": "2H",
+    "secondary_industry_new_fab_earliest_year": 2028,
+    "secondary_industry_new_fab_timeline_official": false,
     "source": "TrendForce",
     "source_url": "https://www.trendforce.com/presscenter/news/20260930-13258.html",
+    "research_url": "https://www.trendforce.com/research/download/RP260924PL",
+    "capacity_source_url": "https://www.trendforce.com/research/download/RP260819HW",
+    "easing_source_url": "https://www.trendforce.com/presscenter/news/20260721-13148.html",
     "secondary_source_url": "https://www.trendforce.com/presscenter/news/20260921-13246.html",
     "source_rank": 3,
     "as_of": "2026-09-30"
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-10-06T19:25:33+09:00",
+  "last_successful_delivery_kst": "2026-10-06T23:15:28+09:00",
   "telegram_message_ids": [
-    245
+    247
   ],
-  "telegram_message_id": 245,
+  "telegram_message_id": 247,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      245
+      247
     ],
-    "confirmed_at_kst": "2026-10-06T19:25:33+09:00",
-    "alert_signature": "06e7466127dbc1d33ae42115e76332e4e820a0351403d5bbc2d531a9bd274418"
+    "confirmed_at_kst": "2026-10-06T23:15:28+09:00",
+    "alert_signature": "ef73e7019d397ba929bc6ecb68d40719523e026616cb032c1be3e335b8004496"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
