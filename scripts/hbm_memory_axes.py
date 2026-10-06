@@ -1953,10 +1953,16 @@ def render(change, rate=None):
             parts = []
             if v.get('investment_krw') is not None:
                 parts.append(f"투자 {float(v['investment_krw'])/1e8:,.0f}억원")
-            if v.get('line_count') is not None:
-                parts.append(f"{int(v['line_count'])}개 라인")
+            if v.get('line_count_min_initial') is not None:
+                parts.append(f"초기 {int(v['line_count_min_initial'])}~{int(v.get('line_count_max_initial') or v['line_count_min_initial'])}개 라인")
+            if v.get('line_count_mass_ramp_min') is not None:
+                parts.append(f"대량양산 {int(v['line_count_mass_ramp_min'])}개 이상")
+            if v.get('groundbreaking_period'):
+                parts.append(f"착공 {v['groundbreaking_period']}")
+            if v.get('initial_customer_commercialization_period'):
+                parts.append(f"고객 초기 상용화 {v['initial_customer_commercialization_period']}")
             if v.get('start_year') or v.get('end_year'):
-                parts.append(f"{v.get('start_year') or '?'}~{v.get('end_year') or '?'}년")
+                parts.append(f"투자기간 {v.get('start_year') or '?'}~{v.get('end_year') or '?'}년")
             if v.get('site_area_pyeong') is not None:
                 parts.append(f"부지 {int(v['site_area_pyeong']):,}평")
             if v.get('employees') is not None:
@@ -1976,6 +1982,12 @@ def render(change, rate=None):
                 text += " / 평가 진행"
             if v.get('mass_production_target_year'):
                 text += f" / 양산 목표 {int(v['mass_production_target_year'])}년"
+            if v.get('pilot_capacity_units_per_month_min') is not None:
+                text += f" / 파일럿 월 {int(v['pilot_capacity_units_per_month_min']):,}~{int(v.get('pilot_capacity_units_per_month_max') or v['pilot_capacity_units_per_month_min']):,}개"
+            if v.get('paid_sample_customer_count') is not None:
+                text += f" / 유상샘플 {int(v['paid_sample_customer_count'])}곳"
+            if v.get('nda_customer_count') is not None:
+                text += f" / NDA {int(v['nda_customer_count'])}곳"
             return text
         if record['axis'] == 'foundry_loss_outlook':
             parts = []
