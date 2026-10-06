@@ -25,6 +25,7 @@ import khs_nuclear_policy_watch
 import khs_policy_runtime_patch
 import khs_policy_seen_finalize
 import khs_policy_telegram_formatter
+import khs_policy_telegram_delivery
 import khs_policy_watch
 import khs_telegram_delivery_guard
 import khs_trusted_policy_news_watch
@@ -166,8 +167,107 @@ def assert_fcc_space_nepa_and_satellite_spectrum_are_monitored() -> None:
         raise AssertionError("First-party FCC follow-on spectrum item did not upgrade to official-source confirmation")
 
 
+def assert_dpa_grid_delivery_semantic_dedupe() -> None:
+    """Lock the DOE/Office-of-Electricity DPA story to one Telegram event."""
+    now = dt.datetime(2026, 10, 6, 0, 0, tzinfo=dt.timezone.utc)
+    sent_state: dict = {}
+    sent_payloads: list[str] = []
+    checkpoints: list[dict] = []
+
+    def send(text: str) -> int:
+        sent_payloads.append(text)
+        return 900 + len(sent_payloads)
+
+    def checkpoint(receipt: dict) -> None:
+        checkpoints.append(dict(receipt))
+
+    base_title = "미국 전력망·전력기기 정책 중요 변화"
+    base_a = [
+        "미국, DPA 제303조로 변압기·송전선·도체·변전소·고압차단기 공급망의 미국 내 생산능력 확대"
+    ]
+    base_b = [
+        "미 에너지부 전력국: Defense Production Act Section 303 grid equipment support for transformer, transmission line, substation and capacitor bank production"
+    ]
+    first = khs_policy_telegram_delivery.deliver_policy_parts(
+        base_a,
+        digest="raw-doe-news",
+        route="policy",
+        title=base_title,
+        sent_state=sent_state,
+        now_utc=now,
+        dedupe_hours=48,
+        send=send,
+        checkpoint=checkpoint,
+    )
+    second = khs_policy_telegram_delivery.deliver_policy_parts(
+        base_b,
+        digest="raw-office-of-electricity-news",
+        route="policy",
+        title=base_title,
+        sent_state=sent_state,
+        now_utc=now + dt.timedelta(minutes=1),
+        dedupe_hours=48,
+        send=send,
+        checkpoint=checkpoint,
+    )
+    if first["new_message_ids"] != [901]:
+        raise AssertionError(f"DPA Section 303 first delivery was not confirmed once: {first}")
+    if second["new_message_ids"]:
+        raise AssertionError(f"DPA Section 303 cross-lane duplicate was re-sent: {second}")
+    if len(sent_payloads) != 1:
+        raise AssertionError(f"DPA Section 303 duplicate guard sent {len(sent_payloads)} messages")
+
+    alaska_a = [
+        "DOE Defense Production Act funding for the Beluga-Healy Transmission Project in the Alaska Railbelt"
+    ]
+    alaska_b = [
+        "미 에너지부 전력국: DPA Beluga Healy Alaska Railbelt 송전 프로젝트 후속"
+    ]
+    third = khs_policy_telegram_delivery.deliver_policy_parts(
+        alaska_a,
+        digest="raw-doe-alaska",
+        route="policy",
+        title=base_title,
+        sent_state=sent_state,
+        now_utc=now + dt.timedelta(minutes=2),
+        dedupe_hours=48,
+        send=send,
+        checkpoint=checkpoint,
+    )
+    fourth = khs_policy_telegram_delivery.deliver_policy_parts(
+        alaska_b,
+        digest="raw-oe-alaska",
+        route="policy",
+        title=base_title,
+        sent_state=sent_state,
+        now_utc=now + dt.timedelta(minutes=3),
+        dedupe_hours=48,
+        send=send,
+        checkpoint=checkpoint,
+    )
+    if third["new_message_ids"] != [902]:
+        raise AssertionError(f"Beluga-Healy execution stage was not delivered once: {third}")
+    if fourth["new_message_ids"]:
+        raise AssertionError(f"Beluga-Healy cross-lane duplicate was re-sent: {fourth}")
+    if len(sent_payloads) != 2:
+        raise AssertionError(f"DPA base and execution stages should total two distinct sends, got {len(sent_payloads)}")
+
+    base_digest = khs_policy_telegram_delivery._semantic_delivery_digest(
+        base_a, digest="a", route="policy", title=base_title
+    )
+    alaska_digest = khs_policy_telegram_delivery._semantic_delivery_digest(
+        alaska_a, digest="b", route="policy", title=base_title
+    )
+    if base_digest == alaska_digest:
+        raise AssertionError("April Section 303 legal baseline collapsed into the Oct. 5 Alaska funding execution stage")
+    if not any(row.get("status") == "deduped" for row in checkpoints):
+        raise AssertionError("DPA semantic duplicate path never emitted a deduped checkpoint")
+
+
 def main() -> int:
     OUT_DIR.mkdir(exist_ok=True)
+    khs_policy_watch._self_test_doe_grid_dpa_event_model()
+    assert_dpa_grid_delivery_semantic_dedupe()
     assert_workflow_delivery_dedupe()
     assert_final_policy_telegram_format_and_currency_conversion()
     assert_policy_source_links_are_html_safe()
