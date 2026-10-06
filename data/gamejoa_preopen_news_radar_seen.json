@@ -2410,27 +2410,38 @@
     "event:6926adee1d70facd68aecdd5": {
       "first_seen_kst": "2026-10-06T06:44:01+09:00",
       "lanes": {
-        "live": "2026-10-07T03:30:59+09:00"
+        "live": "2026-10-07T04:49:54+09:00"
       },
-      "last_seen_kst": "2026-10-07T03:30:59+09:00",
-      "link": "https://www.fnnews.com/news/202610060600523372",
-      "source": "파이낸셜뉴스",
-      "source_body_digest": "f1fb8abbe5afb93b58fed315951e6431142efb347d45ee19aeb54378a68225ac",
+      "last_seen_kst": "2026-10-07T04:49:54+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632583",
+      "source": "이투데이",
+      "source_body_digest": "c51d560d7493112e062e184e29dac487b54c97e9e31c2adb5a98fd5eabc44a04",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:5f8e42fcb3c41ad4789c96ea06433d6561d03f31c13165c8c3bd477c2f7aaf8b",
+      "source_fact_identity": "source_facts:v1:ffc9fe9443d7a0276399856eb938bbe7f525044ef07273b6a33975d43039f74d",
       "source_fact_keys": [
-        "source_fact:v1:2a52f1c839d2189abdeaadacc2f8198adbbe34a3872972caa8b3596f56e074da",
-        "source_fact:v1:2a87966e0d55eb1f751fef72d6943adcffb37b5d32c64a8cbcfa93c98f7ccc2d",
-        "source_fact:v1:5ec7db80d704e232c73e61ce411a47fa75b4545f45fc1eefbaec266bcfaf7b29",
-        "source_fact:v1:a165c512effd826916d6f43e0e268e84f71de422a2d04f363e085ca0de23eac6",
-        "source_fact:v1:a7864503f72ac82bdd581f2a5de21d4f0b0d1c6e2696bda329e42d298da303b3",
-        "source_fact:v1:bec9f06760fe41d4c8b9848aac87bf3ff442047b75c999abf28fa48f8cc41cf9",
-        "source_fact:v1:ca0f516d739cadedd19970ef12cd954970e5d499818092cbeb43ffdcdbcbbd79",
-        "source_fact:v1:d092993c6e2d2c714bee82c3e18025a199870d304386c2066783586cfd6073c9",
-        "source_fact:v1:e61e15f98ab10bd590c8c4347bdd275c88e57cd5b0e25921e0372fa18ec18d08"
+        "source_fact:v1:04e2f3dca31d56b1405ae22a350829ed60818c2731d705159d0a0cd3667952af",
+        "source_fact:v1:10af127a383e940f8487bd8e611faa7a970acbb67d89138ce70c1ca6d72cb81e",
+        "source_fact:v1:3857bef7768d69f307e567a1d42aa1f7645d005da449e8b7a2592921643860c8",
+        "source_fact:v1:e23f8cc47a9e58308bc8e326d6ef1e8daec3c2b09e548cd2f38bbe9898d12828",
+        "source_fact:v1:f253cc731f43f4271609d52e7d0288df99c8af7046c0cf8a30630bbdbf4410f7"
       ],
-      "source_published_kst": "2026-10-06T06:00+09:00",
-      "title": "[ETF업&다운]3분기 엇갈린 반도체…삼전닉스 빠지고 소부장 버텼다"
+      "source_published_kst": "2026-10-06T08:48+09:00",
+      "title": "키움운용, '미국AI테크하이베타 ETF' 마이크론·스페이스X 신규 편입"
+    },
+    "event:695102b941e71506d24b4e08": {
+      "first_seen_kst": "2026-10-07T04:49:54+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:49:54+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:49:54+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007003800099",
+      "source": "연합뉴스",
+      "source_body_digest": "6319ff508ac2a5d077ecfa877cb0fe711e5ae36b29d60c3bad665c2dce6ac88f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T04:15+09:00",
+      "title": "사우디 공항·정유시설에 후티 공습…韓기업 가까운 지역도 피격(종합) | 연합뉴스"
     },
     "event:6994ec3ec51f16c535c2ebd5": {
       "first_seen_kst": "2026-09-28T15:47:59+09:00",
@@ -7703,6 +7714,25 @@
       ],
       "source_published_kst": "2026-10-06T01:21+09:00",
       "title": "페라리, 자사주 2600만 유로 매입..3차 한도 41% 소진"
+    },
+    "fact:10b413cac25d6caf27be6eb0": {
+      "first_seen_kst": "2026-10-07T04:49:54+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:49:54+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:49:54+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169303",
+      "source": "매일경제",
+      "source_body_digest": "fd8d9aa0ead9c42b7073c061cbb014ae4c2d65bfbdb4430652c196de60a4c0f9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9cdbfe97dcacf7fbe4a4ddfea4b021b238f4822134fb1e4d45f9ea811e97618c",
+      "source_fact_keys": [
+        "source_fact:v1:bc8afe67c5288ee78a41b7ba11a3c740421e8080160acc2b66ff68a26082ac97",
+        "source_fact:v1:bf09e5ecf0f5d034a14ac773800ca5a3a49091a3c88ce19aa5b2c26b99ace701",
+        "source_fact:v1:f179bd515938c7f40b5d820e4b54cb676754361d9d627937ddcc8b80184ee597"
+      ],
+      "source_published_kst": "2026-10-06T15:16+09:00",
+      "title": "“유럽 첫 상용 SDV 뚫었다”… LG전자 차세대 콕핏 르노 공급"
     },
     "fact:115d943816b8ff3175a28883": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
@@ -13260,6 +13290,27 @@
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "C.H.로빈슨, RXO 58억달러 인수 합의 후 재무 부담·주식 희석 우려 부각"
     },
+    "fact:743e1a3060742d5014454338": {
+      "first_seen_kst": "2026-10-07T04:49:54+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:49:54+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:49:54+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632583",
+      "source": "이투데이",
+      "source_body_digest": "c51d560d7493112e062e184e29dac487b54c97e9e31c2adb5a98fd5eabc44a04",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ffc9fe9443d7a0276399856eb938bbe7f525044ef07273b6a33975d43039f74d",
+      "source_fact_keys": [
+        "source_fact:v1:04e2f3dca31d56b1405ae22a350829ed60818c2731d705159d0a0cd3667952af",
+        "source_fact:v1:10af127a383e940f8487bd8e611faa7a970acbb67d89138ce70c1ca6d72cb81e",
+        "source_fact:v1:3857bef7768d69f307e567a1d42aa1f7645d005da449e8b7a2592921643860c8",
+        "source_fact:v1:e23f8cc47a9e58308bc8e326d6ef1e8daec3c2b09e548cd2f38bbe9898d12828",
+        "source_fact:v1:f253cc731f43f4271609d52e7d0288df99c8af7046c0cf8a30630bbdbf4410f7"
+      ],
+      "source_published_kst": "2026-10-06T08:48+09:00",
+      "title": "키움운용, '미국AI테크하이베타 ETF' 마이크론·스페이스X 신규 편입"
+    },
     "fact:74aacad73deb91b155dbc31e": {
       "first_seen_kst": "2026-10-06T20:37:39+09:00",
       "lanes": {
@@ -13532,6 +13583,23 @@
       ],
       "source_published_kst": "2026-10-06T17:49+09:00",
       "title": "\"웨스팅하우스 상장때 신주인수권\" … 韓, 대미원전투자 지분율 지킨다"
+    },
+    "fact:7a678b69a2e77d0f92b5ac8a": {
+      "first_seen_kst": "2026-10-07T04:49:54+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:49:54+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:49:54+09:00",
+      "link": "https://www.hankyung.com/article/202610065825i",
+      "source": "한국경제",
+      "source_body_digest": "569adf942823a87768b7afe1766b52cabc352b2c57adeb3b58388413e485cc2c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dc4c0fe00032f2c374525ecadc1bafbc5fc0492c377dcfa4a370e0345a68d449",
+      "source_fact_keys": [
+        "source_fact:v1:abd7161ec6d52b95c428bde0a29cd8f6808bd8407ee0a7218e97eff5b1141922"
+      ],
+      "source_published_kst": "2026-10-06T16:39+09:00",
+      "title": "\"10월은 미국보다 한국 주식·채권 투자 최적 시점\""
     },
     "fact:7a7ba92698f7432d53bad942": {
       "first_seen_kst": "2026-10-07T01:18:00+09:00",
@@ -28116,6 +28184,27 @@
       "source_published_kst": "2026-10-05T12:32+09:00",
       "title": "엔씨 '아이온2' 글로벌 정식 출시... 얼리액세스 동접 17만명"
     },
+    "link:42e442af08d588ededb222fd": {
+      "first_seen_kst": "2026-10-07T04:49:54+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:49:54+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:49:54+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632583",
+      "source": "이투데이",
+      "source_body_digest": "c51d560d7493112e062e184e29dac487b54c97e9e31c2adb5a98fd5eabc44a04",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ffc9fe9443d7a0276399856eb938bbe7f525044ef07273b6a33975d43039f74d",
+      "source_fact_keys": [
+        "source_fact:v1:04e2f3dca31d56b1405ae22a350829ed60818c2731d705159d0a0cd3667952af",
+        "source_fact:v1:10af127a383e940f8487bd8e611faa7a970acbb67d89138ce70c1ca6d72cb81e",
+        "source_fact:v1:3857bef7768d69f307e567a1d42aa1f7645d005da449e8b7a2592921643860c8",
+        "source_fact:v1:e23f8cc47a9e58308bc8e326d6ef1e8daec3c2b09e548cd2f38bbe9898d12828",
+        "source_fact:v1:f253cc731f43f4271609d52e7d0288df99c8af7046c0cf8a30630bbdbf4410f7"
+      ],
+      "source_published_kst": "2026-10-06T08:48+09:00",
+      "title": "키움운용, '미국AI테크하이베타 ETF' 마이크론·스페이스X 신규 편입"
+    },
     "link:4315cd67abd747b10018a71c": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
       "lanes": {
@@ -30163,6 +30252,23 @@
       "link": "https://www.yna.co.kr/view/AKR20261002151600008",
       "source": "연합뉴스",
       "title": "한국투자증권, SK 주식 4천억원어치 취득…지분율 0.9% | 연합뉴스"
+    },
+    "link:55b4f44f0206ec134502b551": {
+      "first_seen_kst": "2026-10-07T04:49:54+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:49:54+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:49:54+09:00",
+      "link": "https://www.hankyung.com/article/202610065825i",
+      "source": "한국경제",
+      "source_body_digest": "569adf942823a87768b7afe1766b52cabc352b2c57adeb3b58388413e485cc2c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dc4c0fe00032f2c374525ecadc1bafbc5fc0492c377dcfa4a370e0345a68d449",
+      "source_fact_keys": [
+        "source_fact:v1:abd7161ec6d52b95c428bde0a29cd8f6808bd8407ee0a7218e97eff5b1141922"
+      ],
+      "source_published_kst": "2026-10-06T16:39+09:00",
+      "title": "\"10월은 미국보다 한국 주식·채권 투자 최적 시점\""
     },
     "link:55c13fc6009c5f63d1c0225f": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
@@ -40136,6 +40242,21 @@
       "source": "뉴시스",
       "title": "해양산업 AI 전환 지원…해진공 AX 사이트 개통"
     },
+    "link:ac94a856bfaefe3752643ab3": {
+      "first_seen_kst": "2026-10-07T04:49:54+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:49:54+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:49:54+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007003800099",
+      "source": "연합뉴스",
+      "source_body_digest": "6319ff508ac2a5d077ecfa877cb0fe711e5ae36b29d60c3bad665c2dce6ac88f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T04:15+09:00",
+      "title": "사우디 공항·정유시설에 후티 공습…韓기업 가까운 지역도 피격(종합) | 연합뉴스"
+    },
     "link:aca1fbb25e5338b252bb7bc2": {
       "first_seen_kst": "2026-10-03T22:55:30+09:00",
       "lanes": {
@@ -48825,6 +48946,25 @@
       "link": "https://www.etoday.co.kr/news/view/2632164",
       "source": "이투데이",
       "title": "[베스트&워스트] 씨싸이트 75% 급등…‘SK하이닉스 수주 확대 기대’ 윈팩도 ↑"
+    },
+    "link:f916bde7b7663002b0c96004": {
+      "first_seen_kst": "2026-10-07T04:49:54+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:49:54+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:49:54+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169303",
+      "source": "매일경제",
+      "source_body_digest": "fd8d9aa0ead9c42b7073c061cbb014ae4c2d65bfbdb4430652c196de60a4c0f9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9cdbfe97dcacf7fbe4a4ddfea4b021b238f4822134fb1e4d45f9ea811e97618c",
+      "source_fact_keys": [
+        "source_fact:v1:bc8afe67c5288ee78a41b7ba11a3c740421e8080160acc2b66ff68a26082ac97",
+        "source_fact:v1:bf09e5ecf0f5d034a14ac773800ca5a3a49091a3c88ce19aa5b2c26b99ace701",
+        "source_fact:v1:f179bd515938c7f40b5d820e4b54cb676754361d9d627937ddcc8b80184ee597"
+      ],
+      "source_published_kst": "2026-10-06T15:16+09:00",
+      "title": "“유럽 첫 상용 SDV 뚫었다”… LG전자 차세대 콕핏 르노 공급"
     },
     "link:f9447aa379ac71911169104c": {
       "first_seen_kst": "2026-10-06T23:19:02+09:00",
@@ -59193,6 +59333,23 @@
       "source_published_kst": "2026-10-06T14:14+09:00",
       "title": "\"이종이식 사업화 속도\"…옵티팜, cGMP 시설인수"
     },
+    "original:552cfc3bc99f45a136bf34ae": {
+      "first_seen_kst": "2026-10-07T04:49:54+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:49:54+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:49:54+09:00",
+      "link": "https://www.hankyung.com/article/202610065825i",
+      "source": "한국경제",
+      "source_body_digest": "569adf942823a87768b7afe1766b52cabc352b2c57adeb3b58388413e485cc2c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dc4c0fe00032f2c374525ecadc1bafbc5fc0492c377dcfa4a370e0345a68d449",
+      "source_fact_keys": [
+        "source_fact:v1:abd7161ec6d52b95c428bde0a29cd8f6808bd8407ee0a7218e97eff5b1141922"
+      ],
+      "source_published_kst": "2026-10-06T16:39+09:00",
+      "title": "\"10월은 미국보다 한국 주식·채권 투자 최적 시점\""
+    },
     "original:555e6ee8c512b22f08c1586e": {
       "first_seen_kst": "2026-10-07T03:04:14+09:00",
       "lanes": {
@@ -60799,6 +60956,21 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T12:53+09:00",
       "title": "이강석 대우건설 대표이사 공식 취임…“AI· 데이터센터 등 미래성장 분야 발굴”"
+    },
+    "original:64cfe5f26c338742fd4bacc6": {
+      "first_seen_kst": "2026-10-07T04:49:54+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:49:54+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:49:54+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007003800099",
+      "source": "연합뉴스",
+      "source_body_digest": "6319ff508ac2a5d077ecfa877cb0fe711e5ae36b29d60c3bad665c2dce6ac88f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T04:15+09:00",
+      "title": "사우디 공항·정유시설에 후티 공습…韓기업 가까운 지역도 피격(종합) | 연합뉴스"
     },
     "original:64e2c1f266ee8d6167c159a6": {
       "first_seen_kst": "2026-09-21T10:10:34+09:00",
@@ -70981,6 +71153,27 @@
       "source": "연합뉴스",
       "title": "중기부, 보조금 부정수급 6년간 26억원 적발…바우처 사업 최다 | 연합뉴스"
     },
+    "original:c10d592dca6a5d66e0d52460": {
+      "first_seen_kst": "2026-10-07T04:49:54+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:49:54+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:49:54+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632583",
+      "source": "이투데이",
+      "source_body_digest": "c51d560d7493112e062e184e29dac487b54c97e9e31c2adb5a98fd5eabc44a04",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ffc9fe9443d7a0276399856eb938bbe7f525044ef07273b6a33975d43039f74d",
+      "source_fact_keys": [
+        "source_fact:v1:04e2f3dca31d56b1405ae22a350829ed60818c2731d705159d0a0cd3667952af",
+        "source_fact:v1:10af127a383e940f8487bd8e611faa7a970acbb67d89138ce70c1ca6d72cb81e",
+        "source_fact:v1:3857bef7768d69f307e567a1d42aa1f7645d005da449e8b7a2592921643860c8",
+        "source_fact:v1:e23f8cc47a9e58308bc8e326d6ef1e8daec3c2b09e548cd2f38bbe9898d12828",
+        "source_fact:v1:f253cc731f43f4271609d52e7d0288df99c8af7046c0cf8a30630bbdbf4410f7"
+      ],
+      "source_published_kst": "2026-10-06T08:48+09:00",
+      "title": "키움운용, '미국AI테크하이베타 ETF' 마이크론·스페이스X 신규 편입"
+    },
     "original:c152787be187e7f37ea4512f": {
       "first_seen_kst": "2026-10-06T21:54:00+09:00",
       "lanes": {
@@ -74487,6 +74680,25 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=04690406645583072",
       "source": "이데일리",
       "title": "[美특징주]마이크론, 실적 발표 앞두고 개장 전 '약보합'…공매도·HBM4 경쟁 부담"
+    },
+    "original:e01d0c55099b87057fe3ff7a": {
+      "first_seen_kst": "2026-10-07T04:49:54+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:49:54+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:49:54+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169303",
+      "source": "매일경제",
+      "source_body_digest": "fd8d9aa0ead9c42b7073c061cbb014ae4c2d65bfbdb4430652c196de60a4c0f9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9cdbfe97dcacf7fbe4a4ddfea4b021b238f4822134fb1e4d45f9ea811e97618c",
+      "source_fact_keys": [
+        "source_fact:v1:bc8afe67c5288ee78a41b7ba11a3c740421e8080160acc2b66ff68a26082ac97",
+        "source_fact:v1:bf09e5ecf0f5d034a14ac773800ca5a3a49091a3c88ce19aa5b2c26b99ace701",
+        "source_fact:v1:f179bd515938c7f40b5d820e4b54cb676754361d9d627937ddcc8b80184ee597"
+      ],
+      "source_published_kst": "2026-10-06T15:16+09:00",
+      "title": "“유럽 첫 상용 SDV 뚫었다”… LG전자 차세대 콕핏 르노 공급"
     },
     "original:e0344f26abbb500ec946b24e": {
       "first_seen_kst": "2026-09-21T07:18:23+09:00",
@@ -84903,6 +85115,27 @@
       "source_published_kst": "2026-10-06T04:02+09:00",
       "title": "美부통령 \"韓 알래스카 투자 이뤄질것…세부협상은 남아\""
     },
+    "source_fact:20a67fa8cbd47b100a559e9f": {
+      "first_seen_kst": "2026-10-07T04:49:54+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:49:54+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:49:54+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632583",
+      "source": "이투데이",
+      "source_body_digest": "c51d560d7493112e062e184e29dac487b54c97e9e31c2adb5a98fd5eabc44a04",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ffc9fe9443d7a0276399856eb938bbe7f525044ef07273b6a33975d43039f74d",
+      "source_fact_keys": [
+        "source_fact:v1:04e2f3dca31d56b1405ae22a350829ed60818c2731d705159d0a0cd3667952af",
+        "source_fact:v1:10af127a383e940f8487bd8e611faa7a970acbb67d89138ce70c1ca6d72cb81e",
+        "source_fact:v1:3857bef7768d69f307e567a1d42aa1f7645d005da449e8b7a2592921643860c8",
+        "source_fact:v1:e23f8cc47a9e58308bc8e326d6ef1e8daec3c2b09e548cd2f38bbe9898d12828",
+        "source_fact:v1:f253cc731f43f4271609d52e7d0288df99c8af7046c0cf8a30630bbdbf4410f7"
+      ],
+      "source_published_kst": "2026-10-06T08:48+09:00",
+      "title": "키움운용, '미국AI테크하이베타 ETF' 마이크론·스페이스X 신규 편입"
+    },
     "source_fact:20b3cbc349c4ac2fe1833189": {
       "first_seen_kst": "2026-10-06T06:44:01+09:00",
       "lanes": {
@@ -92659,6 +92892,23 @@
       ],
       "source_published_kst": "2026-10-06T09:21+09:00",
       "title": "CPTPP, 농산물 관세만의 문제 아니다…농가 지원·검역도 '시험대'"
+    },
+    "source_fact:42e811cd786b3e869fdc74d2": {
+      "first_seen_kst": "2026-10-07T04:49:54+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:49:54+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:49:54+09:00",
+      "link": "https://www.hankyung.com/article/202610065825i",
+      "source": "한국경제",
+      "source_body_digest": "569adf942823a87768b7afe1766b52cabc352b2c57adeb3b58388413e485cc2c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dc4c0fe00032f2c374525ecadc1bafbc5fc0492c377dcfa4a370e0345a68d449",
+      "source_fact_keys": [
+        "source_fact:v1:abd7161ec6d52b95c428bde0a29cd8f6808bd8407ee0a7218e97eff5b1141922"
+      ],
+      "source_published_kst": "2026-10-06T16:39+09:00",
+      "title": "\"10월은 미국보다 한국 주식·채권 투자 최적 시점\""
     },
     "source_fact:430d94efd14d3c06ceddf101": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
@@ -114892,6 +115142,27 @@
       "source_published_kst": "2026-10-06T21:33+09:00",
       "title": "그리스·이탈리아보다 비싸게 빚내는 프랑스…국채금리 5% 눈앞"
     },
+    "source_fact:a12343ef608dbbb460cf2530": {
+      "first_seen_kst": "2026-10-07T04:49:54+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:49:54+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:49:54+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632583",
+      "source": "이투데이",
+      "source_body_digest": "c51d560d7493112e062e184e29dac487b54c97e9e31c2adb5a98fd5eabc44a04",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ffc9fe9443d7a0276399856eb938bbe7f525044ef07273b6a33975d43039f74d",
+      "source_fact_keys": [
+        "source_fact:v1:04e2f3dca31d56b1405ae22a350829ed60818c2731d705159d0a0cd3667952af",
+        "source_fact:v1:10af127a383e940f8487bd8e611faa7a970acbb67d89138ce70c1ca6d72cb81e",
+        "source_fact:v1:3857bef7768d69f307e567a1d42aa1f7645d005da449e8b7a2592921643860c8",
+        "source_fact:v1:e23f8cc47a9e58308bc8e326d6ef1e8daec3c2b09e548cd2f38bbe9898d12828",
+        "source_fact:v1:f253cc731f43f4271609d52e7d0288df99c8af7046c0cf8a30630bbdbf4410f7"
+      ],
+      "source_published_kst": "2026-10-06T08:48+09:00",
+      "title": "키움운용, '미국AI테크하이베타 ETF' 마이크론·스페이스X 신규 편입"
+    },
     "source_fact:a154b415c98114c1ea11611b": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
       "lanes": {
@@ -115184,20 +115455,21 @@
     "source_fact:a3159d90d7aec3bf6d1b7e33": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
       "lanes": {
-        "live": "2026-10-06T21:28:22+09:00"
+        "live": "2026-10-07T04:49:54+09:00"
       },
-      "last_seen_kst": "2026-10-06T21:28:22+09:00",
-      "link": "https://www.mk.co.kr/news/business/12169574",
+      "last_seen_kst": "2026-10-07T04:49:54+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169303",
       "source": "매일경제",
-      "source_body_digest": "6827c8bc76e00df6ff018a5e86d11995589778817da098e7f4694bb6c134c6fc",
+      "source_body_digest": "fd8d9aa0ead9c42b7073c061cbb014ae4c2d65bfbdb4430652c196de60a4c0f9",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:747329ec1f02e365844f0233fbab206f4df039a9ce0a054d76ed81423c42a7e2",
+      "source_fact_identity": "source_facts:v1:9cdbfe97dcacf7fbe4a4ddfea4b021b238f4822134fb1e4d45f9ea811e97618c",
       "source_fact_keys": [
         "source_fact:v1:bc8afe67c5288ee78a41b7ba11a3c740421e8080160acc2b66ff68a26082ac97",
-        "source_fact:v1:bf09e5ecf0f5d034a14ac773800ca5a3a49091a3c88ce19aa5b2c26b99ace701"
+        "source_fact:v1:bf09e5ecf0f5d034a14ac773800ca5a3a49091a3c88ce19aa5b2c26b99ace701",
+        "source_fact:v1:f179bd515938c7f40b5d820e4b54cb676754361d9d627937ddcc8b80184ee597"
       ],
-      "source_published_kst": "2026-10-06T17:45+09:00",
-      "title": "LG전자, 르노에 콕핏 솔루션 … 유럽 최초 상용 SDV에 탑재"
+      "source_published_kst": "2026-10-06T15:16+09:00",
+      "title": "“유럽 첫 상용 SDV 뚫었다”… LG전자 차세대 콕핏 르노 공급"
     },
     "source_fact:a31954373ebe106396bf16db": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
@@ -117216,6 +117488,27 @@
       ],
       "source_published_kst": "2026-10-06T16:05+09:00",
       "title": "[단독] 개인정보·데이터 유출 민원 4년새 3.5배↑…“피해구제 배상은 2% 불과”"
+    },
+    "source_fact:ac3eee77e76196aaecbabe0b": {
+      "first_seen_kst": "2026-10-07T04:49:54+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:49:54+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:49:54+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632583",
+      "source": "이투데이",
+      "source_body_digest": "c51d560d7493112e062e184e29dac487b54c97e9e31c2adb5a98fd5eabc44a04",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ffc9fe9443d7a0276399856eb938bbe7f525044ef07273b6a33975d43039f74d",
+      "source_fact_keys": [
+        "source_fact:v1:04e2f3dca31d56b1405ae22a350829ed60818c2731d705159d0a0cd3667952af",
+        "source_fact:v1:10af127a383e940f8487bd8e611faa7a970acbb67d89138ce70c1ca6d72cb81e",
+        "source_fact:v1:3857bef7768d69f307e567a1d42aa1f7645d005da449e8b7a2592921643860c8",
+        "source_fact:v1:e23f8cc47a9e58308bc8e326d6ef1e8daec3c2b09e548cd2f38bbe9898d12828",
+        "source_fact:v1:f253cc731f43f4271609d52e7d0288df99c8af7046c0cf8a30630bbdbf4410f7"
+      ],
+      "source_published_kst": "2026-10-06T08:48+09:00",
+      "title": "키움운용, '미국AI테크하이베타 ETF' 마이크론·스페이스X 신규 편입"
     },
     "source_fact:ac43c8e579c1f42786d71a00": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
@@ -132381,6 +132674,27 @@
       "source_published_kst": "2026-10-06T16:40+09:00",
       "title": "알테오젠, 국민성장펀드·스카이레이크서 2000억원 투자 유치"
     },
+    "source_fact:eaa086990a85e9470546bac3": {
+      "first_seen_kst": "2026-10-07T04:49:54+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:49:54+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:49:54+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632583",
+      "source": "이투데이",
+      "source_body_digest": "c51d560d7493112e062e184e29dac487b54c97e9e31c2adb5a98fd5eabc44a04",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ffc9fe9443d7a0276399856eb938bbe7f525044ef07273b6a33975d43039f74d",
+      "source_fact_keys": [
+        "source_fact:v1:04e2f3dca31d56b1405ae22a350829ed60818c2731d705159d0a0cd3667952af",
+        "source_fact:v1:10af127a383e940f8487bd8e611faa7a970acbb67d89138ce70c1ca6d72cb81e",
+        "source_fact:v1:3857bef7768d69f307e567a1d42aa1f7645d005da449e8b7a2592921643860c8",
+        "source_fact:v1:e23f8cc47a9e58308bc8e326d6ef1e8daec3c2b09e548cd2f38bbe9898d12828",
+        "source_fact:v1:f253cc731f43f4271609d52e7d0288df99c8af7046c0cf8a30630bbdbf4410f7"
+      ],
+      "source_published_kst": "2026-10-06T08:48+09:00",
+      "title": "키움운용, '미국AI테크하이베타 ETF' 마이크론·스페이스X 신규 편입"
+    },
     "source_fact:eb0978ae83ebde68e3a38ca7": {
       "first_seen_kst": "2026-10-06T07:30:15+09:00",
       "lanes": {
@@ -132506,20 +132820,21 @@
     "source_fact:eba6332b6db0eed1dfe35827": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
       "lanes": {
-        "live": "2026-10-06T21:28:22+09:00"
+        "live": "2026-10-07T04:49:54+09:00"
       },
-      "last_seen_kst": "2026-10-06T21:28:22+09:00",
-      "link": "https://www.mk.co.kr/news/business/12169574",
+      "last_seen_kst": "2026-10-07T04:49:54+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169303",
       "source": "매일경제",
-      "source_body_digest": "6827c8bc76e00df6ff018a5e86d11995589778817da098e7f4694bb6c134c6fc",
+      "source_body_digest": "fd8d9aa0ead9c42b7073c061cbb014ae4c2d65bfbdb4430652c196de60a4c0f9",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:747329ec1f02e365844f0233fbab206f4df039a9ce0a054d76ed81423c42a7e2",
+      "source_fact_identity": "source_facts:v1:9cdbfe97dcacf7fbe4a4ddfea4b021b238f4822134fb1e4d45f9ea811e97618c",
       "source_fact_keys": [
         "source_fact:v1:bc8afe67c5288ee78a41b7ba11a3c740421e8080160acc2b66ff68a26082ac97",
-        "source_fact:v1:bf09e5ecf0f5d034a14ac773800ca5a3a49091a3c88ce19aa5b2c26b99ace701"
+        "source_fact:v1:bf09e5ecf0f5d034a14ac773800ca5a3a49091a3c88ce19aa5b2c26b99ace701",
+        "source_fact:v1:f179bd515938c7f40b5d820e4b54cb676754361d9d627937ddcc8b80184ee597"
       ],
-      "source_published_kst": "2026-10-06T17:45+09:00",
-      "title": "LG전자, 르노에 콕핏 솔루션 … 유럽 최초 상용 SDV에 탑재"
+      "source_published_kst": "2026-10-06T15:16+09:00",
+      "title": "“유럽 첫 상용 SDV 뚫었다”… LG전자 차세대 콕핏 르노 공급"
     },
     "source_fact:ebb41b0d480444957bc72a71": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -134794,6 +135109,27 @@
       "source_published_kst": "2026-10-06T15:06+09:00",
       "title": "엠키스코어, AI Festa 26서 검증된 AI Factory 역량 공개… 대규모 구축부터 AI 활용까지"
     },
+    "source_fact:f5340e9d144860f61ecccc1d": {
+      "first_seen_kst": "2026-10-07T04:49:54+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:49:54+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:49:54+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632583",
+      "source": "이투데이",
+      "source_body_digest": "c51d560d7493112e062e184e29dac487b54c97e9e31c2adb5a98fd5eabc44a04",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ffc9fe9443d7a0276399856eb938bbe7f525044ef07273b6a33975d43039f74d",
+      "source_fact_keys": [
+        "source_fact:v1:04e2f3dca31d56b1405ae22a350829ed60818c2731d705159d0a0cd3667952af",
+        "source_fact:v1:10af127a383e940f8487bd8e611faa7a970acbb67d89138ce70c1ca6d72cb81e",
+        "source_fact:v1:3857bef7768d69f307e567a1d42aa1f7645d005da449e8b7a2592921643860c8",
+        "source_fact:v1:e23f8cc47a9e58308bc8e326d6ef1e8daec3c2b09e548cd2f38bbe9898d12828",
+        "source_fact:v1:f253cc731f43f4271609d52e7d0288df99c8af7046c0cf8a30630bbdbf4410f7"
+      ],
+      "source_published_kst": "2026-10-06T08:48+09:00",
+      "title": "키움운용, '미국AI테크하이베타 ETF' 마이크론·스페이스X 신규 편입"
+    },
     "source_fact:f557d79a39ee48a1a1bdee42": {
       "first_seen_kst": "2026-10-06T23:29:45+09:00",
       "lanes": {
@@ -136091,6 +136427,25 @@
       ],
       "source_published_kst": "2026-10-06T06:04+09:00",
       "title": "[속보] 국제유가, 하락⋯WTI 1.84% ↓"
+    },
+    "source_fact:fc0d4004f6528edc5c54200f": {
+      "first_seen_kst": "2026-10-07T04:49:54+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:49:54+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:49:54+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169303",
+      "source": "매일경제",
+      "source_body_digest": "fd8d9aa0ead9c42b7073c061cbb014ae4c2d65bfbdb4430652c196de60a4c0f9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9cdbfe97dcacf7fbe4a4ddfea4b021b238f4822134fb1e4d45f9ea811e97618c",
+      "source_fact_keys": [
+        "source_fact:v1:bc8afe67c5288ee78a41b7ba11a3c740421e8080160acc2b66ff68a26082ac97",
+        "source_fact:v1:bf09e5ecf0f5d034a14ac773800ca5a3a49091a3c88ce19aa5b2c26b99ace701",
+        "source_fact:v1:f179bd515938c7f40b5d820e4b54cb676754361d9d627937ddcc8b80184ee597"
+      ],
+      "source_published_kst": "2026-10-06T15:16+09:00",
+      "title": "“유럽 첫 상용 SDV 뚫었다”… LG전자 차세대 콕핏 르노 공급"
     },
     "source_fact:fc200f9b0eab648c383af9a7": {
       "first_seen_kst": "2026-10-05T19:54:04+09:00",
@@ -146960,6 +147315,23 @@
       "source_published_kst": "2026-10-06T14:14+09:00",
       "title": "\"이종이식 사업화 속도\"…옵티팜, cGMP 시설인수"
     },
+    "title:552cfc3bc99f45a136bf34ae": {
+      "first_seen_kst": "2026-10-07T04:49:54+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:49:54+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:49:54+09:00",
+      "link": "https://www.hankyung.com/article/202610065825i",
+      "source": "한국경제",
+      "source_body_digest": "569adf942823a87768b7afe1766b52cabc352b2c57adeb3b58388413e485cc2c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dc4c0fe00032f2c374525ecadc1bafbc5fc0492c377dcfa4a370e0345a68d449",
+      "source_fact_keys": [
+        "source_fact:v1:abd7161ec6d52b95c428bde0a29cd8f6808bd8407ee0a7218e97eff5b1141922"
+      ],
+      "source_published_kst": "2026-10-06T16:39+09:00",
+      "title": "\"10월은 미국보다 한국 주식·채권 투자 최적 시점\""
+    },
     "title:555e6ee8c512b22f08c1586e": {
       "first_seen_kst": "2026-10-07T03:04:14+09:00",
       "lanes": {
@@ -148587,6 +148959,21 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T12:53+09:00",
       "title": "이강석 대우건설 대표이사 공식 취임…“AI· 데이터센터 등 미래성장 분야 발굴”"
+    },
+    "title:64cfe5f26c338742fd4bacc6": {
+      "first_seen_kst": "2026-10-07T04:49:54+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:49:54+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:49:54+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007003800099",
+      "source": "연합뉴스",
+      "source_body_digest": "6319ff508ac2a5d077ecfa877cb0fe711e5ae36b29d60c3bad665c2dce6ac88f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T04:15+09:00",
+      "title": "사우디 공항·정유시설에 후티 공습…韓기업 가까운 지역도 피격(종합) | 연합뉴스"
     },
     "title:64e2c1f266ee8d6167c159a6": {
       "first_seen_kst": "2026-09-21T10:10:34+09:00",
@@ -159032,6 +159419,27 @@
       "source": "연합뉴스",
       "title": "중기부, 보조금 부정수급 6년간 26억원 적발…바우처 사업 최다 | 연합뉴스"
     },
+    "title:c10d592dca6a5d66e0d52460": {
+      "first_seen_kst": "2026-10-07T04:49:54+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:49:54+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:49:54+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632583",
+      "source": "이투데이",
+      "source_body_digest": "c51d560d7493112e062e184e29dac487b54c97e9e31c2adb5a98fd5eabc44a04",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ffc9fe9443d7a0276399856eb938bbe7f525044ef07273b6a33975d43039f74d",
+      "source_fact_keys": [
+        "source_fact:v1:04e2f3dca31d56b1405ae22a350829ed60818c2731d705159d0a0cd3667952af",
+        "source_fact:v1:10af127a383e940f8487bd8e611faa7a970acbb67d89138ce70c1ca6d72cb81e",
+        "source_fact:v1:3857bef7768d69f307e567a1d42aa1f7645d005da449e8b7a2592921643860c8",
+        "source_fact:v1:e23f8cc47a9e58308bc8e326d6ef1e8daec3c2b09e548cd2f38bbe9898d12828",
+        "source_fact:v1:f253cc731f43f4271609d52e7d0288df99c8af7046c0cf8a30630bbdbf4410f7"
+      ],
+      "source_published_kst": "2026-10-06T08:48+09:00",
+      "title": "키움운용, '미국AI테크하이베타 ETF' 마이크론·스페이스X 신규 편입"
+    },
     "title:c152787be187e7f37ea4512f": {
       "first_seen_kst": "2026-10-06T21:54:00+09:00",
       "lanes": {
@@ -162586,6 +162994,25 @@
       "source": "이데일리",
       "title": "[美특징주]마이크론, 실적 발표 앞두고 개장 전 '약보합'…공매도·HBM4 경쟁 부담"
     },
+    "title:e01d0c55099b87057fe3ff7a": {
+      "first_seen_kst": "2026-10-07T04:49:54+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:49:54+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:49:54+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169303",
+      "source": "매일경제",
+      "source_body_digest": "fd8d9aa0ead9c42b7073c061cbb014ae4c2d65bfbdb4430652c196de60a4c0f9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9cdbfe97dcacf7fbe4a4ddfea4b021b238f4822134fb1e4d45f9ea811e97618c",
+      "source_fact_keys": [
+        "source_fact:v1:bc8afe67c5288ee78a41b7ba11a3c740421e8080160acc2b66ff68a26082ac97",
+        "source_fact:v1:bf09e5ecf0f5d034a14ac773800ca5a3a49091a3c88ce19aa5b2c26b99ace701",
+        "source_fact:v1:f179bd515938c7f40b5d820e4b54cb676754361d9d627937ddcc8b80184ee597"
+      ],
+      "source_published_kst": "2026-10-06T15:16+09:00",
+      "title": "“유럽 첫 상용 SDV 뚫었다”… LG전자 차세대 콕핏 르노 공급"
+    },
     "title:e0344f26abbb500ec946b24e": {
       "first_seen_kst": "2026-09-21T07:18:23+09:00",
       "lanes": {
@@ -166054,5 +166481,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-07T04:29:18+09:00"
+  "updated_at_kst": "2026-10-07T04:49:54+09:00"
 }
