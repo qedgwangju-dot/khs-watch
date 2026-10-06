@@ -7,6 +7,7 @@ import datetime as dt
 import json
 import os
 import time
+import threading
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -85,7 +86,8 @@ async def main(out_path: Path, until: dt.time, test_seconds: int | None = None) 
     written = 0
     registrations: list[tuple[str, str]] = []
     industry_names: dict[str, str] = {}
-    last_signature: dict[tuple[str, str], tuple[str, float]] = {}
+    last_signature: dict[tuple[str, str], tuple[str, float, float | None, float]] = {}
+    signature_lock = threading.Lock()
     last_payload_ts: float | None = None
 
     try:
@@ -113,22 +115,37 @@ async def main(out_path: Path, until: dt.time, test_seconds: int | None = None) 
             if not upcode or msval is None:
                 return
             tjjtime = str(data.get("tjjtime") or "")
+            msvol = fnum(data.get("msvol"))
             signature_key = (upcode, investor)
-            signature = (tjjtime, msval)
-            if last_signature.get(signature_key) == signature:
-                return
-            last_signature[signature_key] = signature
             received_ts = time.time()
+            # UBM의 tjjtime은 같은 값이 여러 초~수십 초 유지될 수 있다.
+            # 사건구간 정렬은 실제 payload 수신시각을 사용하고, LS 원시시각은 별도 보존한다.
+            with signature_lock:
+                prev = last_signature.get(signature_key)
+                if prev is not None:
+                    prev_time, prev_val, prev_vol, prev_received = prev
+                    same_payload = (
+                        prev_time == tjjtime and prev_val == msval and prev_vol == msvol
+                    )
+                    # 같은 payload가 짧은 간격으로 중복 전송되면 억제하되,
+                    # 값이 그대로여도 5초마다 기준점용 heartbeat는 남긴다.
+                    if same_payload and received_ts - prev_received < 5.0:
+                        return
+                last_signature[signature_key] = (tjjtime, msval, msvol, received_ts)
+            source_ts = market_ts(tjjtime, received_ts)
             row = {
-                "ts": market_ts(str(data.get("tjjtime") or ""), received_ts),
+                "ts": received_ts,
                 "received_ts": received_ts,
+                "source_ts": source_ts,
+                "source_time": tjjtime,
+                "source_lag_sec": (received_ts - source_ts) if source_ts is not None else None,
                 "time": tjjtime,
                 "upcode": upcode,
                 "industry": industry_names.get(upcode) or upcode,
                 "investor_code": investor_code,
                 "investor": investor,
                 "msval": msval,
-                "msvol": fnum(data.get("msvol")),
+                "msvol": msvol,
                 "ex_upcode": str(data.get("ex_upcode") or ""),
             }
             fp.write(json.dumps(row, ensure_ascii=False) + "\n")
