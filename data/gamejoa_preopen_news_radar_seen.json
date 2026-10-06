@@ -5974,6 +5974,28 @@
       "source": "뉴시스",
       "title": "반도체 훈풍 탄 K수출…코트라 \"올해 수출 1조 달러 달성 가능\""
     },
+    "event:f2763155e25ff6e663c25ca8": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06045046645610296",
+      "source": "이데일리",
+      "source_body_digest": "aa9076dc3f4db12dc4af9c8d20cc46da0e3f36dcc03663acf80a88dd761367eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a97ca1abb48109f302d2cd3d8c9592a3a959a25068fb660f9dff8ceedd9edc4a",
+      "source_fact_keys": [
+        "source_fact:v1:0984eb8f650e77afb63dec98f1115c1028fc9fd69954a669f10827218aa50ce4",
+        "source_fact:v1:301f5d49cad400a4d11a133b42ee57ece58c299a13f90df815f2ff5c584b23f8",
+        "source_fact:v1:7e99bb1eb054e570895d7ae1871a24f85dd5c32219eb8b6dedc060ce5551fbb6",
+        "source_fact:v1:846e2a1544346cf2aea56a5c62e5c678be2e7b16e0d1e7bde48ca44ad3ef89ee",
+        "source_fact:v1:bd92f6e152ade34d77b9b2f9cbd49635c3be2fda8a59cc56bd5f770d7c4bb412",
+        "source_fact:v1:e00592e43285c47ebe9195c2370ccc93c1510a2615def9e4968c83d56e33efda"
+      ],
+      "source_published_kst": "2026-10-06T21:16+09:00",
+      "title": "[개장전특징주]AMD, TSMC, 마벨, 씨게이트"
+    },
     "event:f295ffb9cb9c6c288aa73a73": {
       "first_seen_kst": "2026-10-03T22:33:30+09:00",
       "lanes": {
@@ -9031,6 +9053,26 @@
       "source_published_kst": "2026-10-06T09:18+09:00",
       "title": "정부 GPU 4224장 풀었더니 1만3712장 신청…70%가 못 받아"
     },
+    "fact:343281e32c4106696333aa17": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006061300017",
+      "source": "연합뉴스",
+      "source_body_digest": "4cb3e52247797107ebf5882ac1771f78ae94fccf9f34995191d8de0b29737302",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0548e1451aedc602aed158aa2c9613bf6acad6bb652fcccc7248f8bbc786f24e",
+      "source_fact_keys": [
+        "source_fact:v1:a9c0f6f65effd1fd500003ebdb4ba30ada8270792c51fe13d01918c7dd562ead",
+        "source_fact:v1:a9d486f5898dcaf6b10d0003974368e838a3bc567c6a20f6492dba121941c9ea",
+        "source_fact:v1:cbc8ca3e76ac3ba58e9d40dabc5b8976316b8564b65f24224f143044c55809ad",
+        "source_fact:v1:f71ce4f6af04f3e1b0e1a1898fc5d44bdaac7dca797c031467c15044d49a5433"
+      ],
+      "source_published_kst": "2026-10-06T10:17+09:00",
+      "title": "[바이오스냅] JW중외제약, 당뇨병약 '엠파가드' 임상 3상 결과 발표 | 연합뉴스"
+    },
     "fact:344b31b98acc7c184094ed33": {
       "first_seen_kst": "2026-10-06T22:37:02+09:00",
       "lanes": {
@@ -9847,6 +9889,27 @@
       "source_published_kst": "2026-10-06T17:02+09:00",
       "title": "김정관 \"서남권 반도체 최종 결정은 기업…알래스카 LNG 투자 확정 아냐\"(종합)"
     },
+    "fact:48191ca5f4824185a715074e": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.hankyung.com/article/202610064468P",
+      "source": "한국경제",
+      "source_body_digest": "934ac868ddb20ef4ca2a7edd41bff0c4f69c96d0cf0425b2eab293ebfbe247d5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8597dd3654ee738abc8588e1ec9906871210fed7bf4a682ed8ca5fc18f37fbe9",
+      "source_fact_keys": [
+        "source_fact:v1:0353e49ac6355df42a2c10e6b251a7097ea23c48e7a678aaf19891f81b65de73",
+        "source_fact:v1:b405b46ae7b904060a1908a784616dd0c62aaab415a8222fc93b452e388e2722",
+        "source_fact:v1:ca5b72ba7a74f60e34089b5c98ce8ec11d2dcfe0b0fa977187402d1ac4870010",
+        "source_fact:v1:eb3eb06088968b92469ee20a207eacac0f90e8a244e13c69917179fa2474e4e5",
+        "source_fact:v1:f06c5c9bb04a70ddd5e9ea223ff8c1a1bb2bdafb855daa21dbdc39dace80437f"
+      ],
+      "source_published_kst": "2026-10-06T08:57+09:00",
+      "title": "JW중외제약, EASD 2026서 당뇨병 치료제 ‘엠파가드’ 임상 3상 결과 발표"
+    },
     "fact:48196e97d386c7c9195d05f4": {
       "first_seen_kst": "2026-10-06T04:08:54+09:00",
       "lanes": {
@@ -10068,6 +10131,28 @@
       ],
       "source_published_kst": "2026-10-05T19:24+09:00",
       "title": "[TODAY엔비디아]개장전 '상승'…월가, 신고가 경신에도 여전히 \"밸류 매력\""
+    },
+    "fact:4f3cee43967883b9a0571878": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06045046645610296",
+      "source": "이데일리",
+      "source_body_digest": "aa9076dc3f4db12dc4af9c8d20cc46da0e3f36dcc03663acf80a88dd761367eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a97ca1abb48109f302d2cd3d8c9592a3a959a25068fb660f9dff8ceedd9edc4a",
+      "source_fact_keys": [
+        "source_fact:v1:0984eb8f650e77afb63dec98f1115c1028fc9fd69954a669f10827218aa50ce4",
+        "source_fact:v1:301f5d49cad400a4d11a133b42ee57ece58c299a13f90df815f2ff5c584b23f8",
+        "source_fact:v1:7e99bb1eb054e570895d7ae1871a24f85dd5c32219eb8b6dedc060ce5551fbb6",
+        "source_fact:v1:846e2a1544346cf2aea56a5c62e5c678be2e7b16e0d1e7bde48ca44ad3ef89ee",
+        "source_fact:v1:bd92f6e152ade34d77b9b2f9cbd49635c3be2fda8a59cc56bd5f770d7c4bb412",
+        "source_fact:v1:e00592e43285c47ebe9195c2370ccc93c1510a2615def9e4968c83d56e33efda"
+      ],
+      "source_published_kst": "2026-10-06T21:16+09:00",
+      "title": "[개장전특징주]AMD, TSMC, 마벨, 씨게이트"
     },
     "fact:5037ab3121939426f0065b85": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
@@ -17820,6 +17905,26 @@
       "source_published_kst": "2026-10-06T11:41+09:00",
       "title": "한미약품, 오픈이노베이션 전략 통했다…기술수출 성과 목전"
     },
+    "fact:fe4958faf0b26e7ed718552f": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610065545b",
+      "source": "한국경제",
+      "source_body_digest": "f5875319bb4c1a9b68c023db3d3a734ce31c6b60288ce8faacf9c372d5bb116f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:50df31862afe117eda483be77de3601acd29db58383b1c49caee15d1f49dcde5",
+      "source_fact_keys": [
+        "source_fact:v1:149e2a3736cb008ec6a6afe6c1838167ebebe9a817b4bcba1b0b6e483a8bb3d4",
+        "source_fact:v1:347eda9d135d2f73f8e149a8cd18c2c718b6a2d02d375782750ea3e21b04b050",
+        "source_fact:v1:891e6dfe4b5662b2fbd7fa2c591ab4864a674a349eaaa9c8b7bb53c04f8839a9",
+        "source_fact:v1:b298bc766c635959b828982ecf285ce2e44cd9d557272aebb78a29e8c2fa3f60"
+      ],
+      "source_published_kst": "2026-10-06T14:04+09:00",
+      "title": "세아베스틸, 로봇 감속기 소재 시장 진출…휴머노이드까지 확대"
+    },
     "fact:ff4d615e58fc5d7ecdadb822": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -22199,6 +22304,27 @@
       "source": "파이낸셜뉴스",
       "title": "[오늘의 증시]美 장기금리 부담 속 마이크론 '어닝서프'…코스피 반등 기대"
     },
+    "link:2a6417e94880b7b52cd1716d": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.hankyung.com/article/202610064468P",
+      "source": "한국경제",
+      "source_body_digest": "934ac868ddb20ef4ca2a7edd41bff0c4f69c96d0cf0425b2eab293ebfbe247d5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8597dd3654ee738abc8588e1ec9906871210fed7bf4a682ed8ca5fc18f37fbe9",
+      "source_fact_keys": [
+        "source_fact:v1:0353e49ac6355df42a2c10e6b251a7097ea23c48e7a678aaf19891f81b65de73",
+        "source_fact:v1:b405b46ae7b904060a1908a784616dd0c62aaab415a8222fc93b452e388e2722",
+        "source_fact:v1:ca5b72ba7a74f60e34089b5c98ce8ec11d2dcfe0b0fa977187402d1ac4870010",
+        "source_fact:v1:eb3eb06088968b92469ee20a207eacac0f90e8a244e13c69917179fa2474e4e5",
+        "source_fact:v1:f06c5c9bb04a70ddd5e9ea223ff8c1a1bb2bdafb855daa21dbdc39dace80437f"
+      ],
+      "source_published_kst": "2026-10-06T08:57+09:00",
+      "title": "JW중외제약, EASD 2026서 당뇨병 치료제 ‘엠파가드’ 임상 3상 결과 발표"
+    },
     "link:2a69caff437028412872d017": {
       "first_seen_kst": "2026-10-04T01:34:15+09:00",
       "lanes": {
@@ -24698,6 +24824,28 @@
       ],
       "source_published_kst": "2026-10-06T15:07+09:00",
       "title": "\"K-콘텐츠 금융지원\"…부산은행·신보, 100억원 보증지원"
+    },
+    "link:3fce055a4b96c74b25168489": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06045046645610296",
+      "source": "이데일리",
+      "source_body_digest": "aa9076dc3f4db12dc4af9c8d20cc46da0e3f36dcc03663acf80a88dd761367eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a97ca1abb48109f302d2cd3d8c9592a3a959a25068fb660f9dff8ceedd9edc4a",
+      "source_fact_keys": [
+        "source_fact:v1:0984eb8f650e77afb63dec98f1115c1028fc9fd69954a669f10827218aa50ce4",
+        "source_fact:v1:301f5d49cad400a4d11a133b42ee57ece58c299a13f90df815f2ff5c584b23f8",
+        "source_fact:v1:7e99bb1eb054e570895d7ae1871a24f85dd5c32219eb8b6dedc060ce5551fbb6",
+        "source_fact:v1:846e2a1544346cf2aea56a5c62e5c678be2e7b16e0d1e7bde48ca44ad3ef89ee",
+        "source_fact:v1:bd92f6e152ade34d77b9b2f9cbd49635c3be2fda8a59cc56bd5f770d7c4bb412",
+        "source_fact:v1:e00592e43285c47ebe9195c2370ccc93c1510a2615def9e4968c83d56e33efda"
+      ],
+      "source_published_kst": "2026-10-06T21:16+09:00",
+      "title": "[개장전특징주]AMD, TSMC, 마벨, 씨게이트"
     },
     "link:3fdce0b90bf44c7211df83a7": {
       "first_seen_kst": "2026-10-02T15:40:35+09:00",
@@ -35372,6 +35520,26 @@
       "source": "뉴시스",
       "title": "지하철서 신발 벗고 맨발로…임산부석엔 짐 떡하니"
     },
+    "link:a73421272c8d0505fa2ea299": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610065545b",
+      "source": "한국경제",
+      "source_body_digest": "f5875319bb4c1a9b68c023db3d3a734ce31c6b60288ce8faacf9c372d5bb116f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:50df31862afe117eda483be77de3601acd29db58383b1c49caee15d1f49dcde5",
+      "source_fact_keys": [
+        "source_fact:v1:149e2a3736cb008ec6a6afe6c1838167ebebe9a817b4bcba1b0b6e483a8bb3d4",
+        "source_fact:v1:347eda9d135d2f73f8e149a8cd18c2c718b6a2d02d375782750ea3e21b04b050",
+        "source_fact:v1:891e6dfe4b5662b2fbd7fa2c591ab4864a674a349eaaa9c8b7bb53c04f8839a9",
+        "source_fact:v1:b298bc766c635959b828982ecf285ce2e44cd9d557272aebb78a29e8c2fa3f60"
+      ],
+      "source_published_kst": "2026-10-06T14:04+09:00",
+      "title": "세아베스틸, 로봇 감속기 소재 시장 진출…휴머노이드까지 확대"
+    },
     "link:a73e151f98870e7357f9b9c4": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
       "lanes": {
@@ -36792,6 +36960,21 @@
       "source": "매일경제",
       "title": "콜플랜트 홀딩스, 2분기 매출 11만 달러..전년비 40% 감소"
     },
+    "link:b4d6c7f4e77c9ebd7c076e2a": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100611432776649",
+      "source": "머니투데이",
+      "source_body_digest": "3c6444b28b4612bc5f3979d7d1836167a67295c93ff365c834b0f8794f047981",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T12:00+09:00",
+      "title": "美·中 반도체 설계 표준 협력…AI·데이터센터로 영역 넓힌다"
+    },
     "link:b4eb0c1df8078a5e3a0c04cd": {
       "first_seen_kst": "2026-10-01T19:33:29+09:00",
       "lanes": {
@@ -37352,6 +37535,21 @@
       "link": "https://www.mk.co.kr/news/politics/12159007",
       "source": "매일경제",
       "title": "이소영 청문보고서 여야 합의 채택…“우려 있지만 역량 갖춰”"
+    },
+    "link:badcebe977faed02b62b77d3": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://biz.chosun.com/science-chosun/bio/2026/10/06/WCUIDHQG5NBXNF3FYYWWDQV4QI/",
+      "source": "조선비즈",
+      "source_body_digest": "f86208bc1b645f327a2b39bf94fadd1a9f8a514344c14ba79ace45126a15842b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T09:11+09:00",
+      "title": "JW중외제약 “엠파가드, 임상 3상서 기존 치료보다 혈당 낮춰”"
     },
     "link:bb0f437f8d1f2b067145c9a9": {
       "first_seen_kst": "2026-10-06T04:08:54+09:00",
@@ -41723,6 +41921,26 @@
       "source": "연합뉴스",
       "title": "[머니플로우] 금리 고공행진에 CD·채권 관련 ETF 인기 '쑥' | 연합뉴스"
     },
+    "link:e45f9f9816bc64b1d2223e42": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006061300017",
+      "source": "연합뉴스",
+      "source_body_digest": "4cb3e52247797107ebf5882ac1771f78ae94fccf9f34995191d8de0b29737302",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0548e1451aedc602aed158aa2c9613bf6acad6bb652fcccc7248f8bbc786f24e",
+      "source_fact_keys": [
+        "source_fact:v1:a9c0f6f65effd1fd500003ebdb4ba30ada8270792c51fe13d01918c7dd562ead",
+        "source_fact:v1:a9d486f5898dcaf6b10d0003974368e838a3bc567c6a20f6492dba121941c9ea",
+        "source_fact:v1:cbc8ca3e76ac3ba58e9d40dabc5b8976316b8564b65f24224f143044c55809ad",
+        "source_fact:v1:f71ce4f6af04f3e1b0e1a1898fc5d44bdaac7dca797c031467c15044d49a5433"
+      ],
+      "source_published_kst": "2026-10-06T10:17+09:00",
+      "title": "[바이오스냅] JW중외제약, 당뇨병약 '엠파가드' 임상 3상 결과 발표 | 연합뉴스"
+    },
     "link:e462f96ed5e28dc1ef0fbe37": {
       "first_seen_kst": "2026-10-04T06:34:33+09:00",
       "lanes": {
@@ -43237,6 +43455,21 @@
       "source": "이데일리",
       "title": "개인·외인·기관 다 파는데…코스피 7000선 공방"
     },
+    "link:f231b40562b1e0665b4756cb": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815134",
+      "source": "뉴시스",
+      "source_body_digest": "243a3b2fa1be375547b317b82511ca840c136f5ab09dc54f9ac00f62b54f4a09",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T10:14+09:00",
+      "title": "JW중외 \"당뇨병치료제 임상 3상 국제학회 발표\""
+    },
     "link:f24379ce94ca066f96d60a03": {
       "first_seen_kst": "2026-10-06T21:40:57+09:00",
       "lanes": {
@@ -44661,6 +44894,28 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T11:30+09:00",
       "title": "암로, 韓 성장률 3.1→3.3% 상향…물가도 2.6→2.7%"
+    },
+    "original:0063ceaeaaf6ceb3555c05d6": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06045046645610296",
+      "source": "이데일리",
+      "source_body_digest": "aa9076dc3f4db12dc4af9c8d20cc46da0e3f36dcc03663acf80a88dd761367eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a97ca1abb48109f302d2cd3d8c9592a3a959a25068fb660f9dff8ceedd9edc4a",
+      "source_fact_keys": [
+        "source_fact:v1:0984eb8f650e77afb63dec98f1115c1028fc9fd69954a669f10827218aa50ce4",
+        "source_fact:v1:301f5d49cad400a4d11a133b42ee57ece58c299a13f90df815f2ff5c584b23f8",
+        "source_fact:v1:7e99bb1eb054e570895d7ae1871a24f85dd5c32219eb8b6dedc060ce5551fbb6",
+        "source_fact:v1:846e2a1544346cf2aea56a5c62e5c678be2e7b16e0d1e7bde48ca44ad3ef89ee",
+        "source_fact:v1:bd92f6e152ade34d77b9b2f9cbd49635c3be2fda8a59cc56bd5f770d7c4bb412",
+        "source_fact:v1:e00592e43285c47ebe9195c2370ccc93c1510a2615def9e4968c83d56e33efda"
+      ],
+      "source_published_kst": "2026-10-06T21:16+09:00",
+      "title": "[개장전특징주]AMD, TSMC, 마벨, 씨게이트"
     },
     "original:007be724d660d8cb05b79d2e": {
       "first_seen_kst": "2026-09-29T03:48:26+09:00",
@@ -47437,6 +47692,21 @@
       "source_published_kst": "2026-10-05T17:20+09:00",
       "title": "리사 수 AMD 회장 7개월 만에 방한…'AI 동맹' 넓히나(종합) | 연합뉴스"
     },
+    "original:1c948615fe0db2f8f0bc33a4": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://biz.chosun.com/science-chosun/bio/2026/10/06/WCUIDHQG5NBXNF3FYYWWDQV4QI/",
+      "source": "조선비즈",
+      "source_body_digest": "f86208bc1b645f327a2b39bf94fadd1a9f8a514344c14ba79ace45126a15842b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T09:11+09:00",
+      "title": "JW중외제약 “엠파가드, 임상 3상서 기존 치료보다 혈당 낮춰”"
+    },
     "original:1cbdaf922d83956ec9599ac8": {
       "first_seen_kst": "2026-10-04T20:25:15+09:00",
       "lanes": {
@@ -50183,6 +50453,26 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T15:13+09:00",
       "title": "환율에 노사 리스크까지…HD현대重·한화오션 3분기 실적 '이중고'"
+    },
+    "original:376cf99ff73681f343514e71": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610065545b",
+      "source": "한국경제",
+      "source_body_digest": "f5875319bb4c1a9b68c023db3d3a734ce31c6b60288ce8faacf9c372d5bb116f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:50df31862afe117eda483be77de3601acd29db58383b1c49caee15d1f49dcde5",
+      "source_fact_keys": [
+        "source_fact:v1:149e2a3736cb008ec6a6afe6c1838167ebebe9a817b4bcba1b0b6e483a8bb3d4",
+        "source_fact:v1:347eda9d135d2f73f8e149a8cd18c2c718b6a2d02d375782750ea3e21b04b050",
+        "source_fact:v1:891e6dfe4b5662b2fbd7fa2c591ab4864a674a349eaaa9c8b7bb53c04f8839a9",
+        "source_fact:v1:b298bc766c635959b828982ecf285ce2e44cd9d557272aebb78a29e8c2fa3f60"
+      ],
+      "source_published_kst": "2026-10-06T14:04+09:00",
+      "title": "세아베스틸, 로봇 감속기 소재 시장 진출…휴머노이드까지 확대"
     },
     "original:37805ca0eecae179c58ddace": {
       "first_seen_kst": "2026-09-28T20:44:08+09:00",
@@ -61748,6 +62038,21 @@
       "source": "이데일리",
       "title": "[美특징주]인수가 낮췄는데 주가는 올랐다…온세미컨덕터·시냅틱스, 개장전 '급등'"
     },
+    "original:a810eadd3a3aaf1406ed9be7": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100611432776649",
+      "source": "머니투데이",
+      "source_body_digest": "3c6444b28b4612bc5f3979d7d1836167a67295c93ff365c834b0f8794f047981",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T12:00+09:00",
+      "title": "美·中 반도체 설계 표준 협력…AI·데이터센터로 영역 넓힌다"
+    },
     "original:a82138ef7449119ebb68f4f4": {
       "first_seen_kst": "2026-10-01T18:42:30+09:00",
       "lanes": {
@@ -62483,6 +62788,26 @@
       "source": "이투데이",
       "title": "메리츠증권 \"넷마블, 신작보다 기존작 수명 연장 집중…재정비 성과 주목\""
     },
+    "original:afc28252045483faff2ed78f": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006061300017",
+      "source": "연합뉴스",
+      "source_body_digest": "4cb3e52247797107ebf5882ac1771f78ae94fccf9f34995191d8de0b29737302",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0548e1451aedc602aed158aa2c9613bf6acad6bb652fcccc7248f8bbc786f24e",
+      "source_fact_keys": [
+        "source_fact:v1:a9c0f6f65effd1fd500003ebdb4ba30ada8270792c51fe13d01918c7dd562ead",
+        "source_fact:v1:a9d486f5898dcaf6b10d0003974368e838a3bc567c6a20f6492dba121941c9ea",
+        "source_fact:v1:cbc8ca3e76ac3ba58e9d40dabc5b8976316b8564b65f24224f143044c55809ad",
+        "source_fact:v1:f71ce4f6af04f3e1b0e1a1898fc5d44bdaac7dca797c031467c15044d49a5433"
+      ],
+      "source_published_kst": "2026-10-06T10:17+09:00",
+      "title": "[바이오스냅] JW중외제약, 당뇨병약 '엠파가드' 임상 3상 결과 발표 | 연합뉴스"
+    },
     "original:afcd483b8ef587c1a9babfbc": {
       "first_seen_kst": "2026-10-01T21:33:24+09:00",
       "lanes": {
@@ -62718,6 +63043,27 @@
       "link": "https://www.yna.co.kr/view/AKR20261002064300054",
       "source": "연합뉴스",
       "title": "전남광주, 투자·펀드 기능 한데 묶는다…투자 기관 설립 추진 | 연합뉴스"
+    },
+    "original:b1b46026bfc0ba14402bdb7a": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.hankyung.com/article/202610064468P",
+      "source": "한국경제",
+      "source_body_digest": "934ac868ddb20ef4ca2a7edd41bff0c4f69c96d0cf0425b2eab293ebfbe247d5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8597dd3654ee738abc8588e1ec9906871210fed7bf4a682ed8ca5fc18f37fbe9",
+      "source_fact_keys": [
+        "source_fact:v1:0353e49ac6355df42a2c10e6b251a7097ea23c48e7a678aaf19891f81b65de73",
+        "source_fact:v1:b405b46ae7b904060a1908a784616dd0c62aaab415a8222fc93b452e388e2722",
+        "source_fact:v1:ca5b72ba7a74f60e34089b5c98ce8ec11d2dcfe0b0fa977187402d1ac4870010",
+        "source_fact:v1:eb3eb06088968b92469ee20a207eacac0f90e8a244e13c69917179fa2474e4e5",
+        "source_fact:v1:f06c5c9bb04a70ddd5e9ea223ff8c1a1bb2bdafb855daa21dbdc39dace80437f"
+      ],
+      "source_published_kst": "2026-10-06T08:57+09:00",
+      "title": "JW중외제약, EASD 2026서 당뇨병 치료제 ‘엠파가드’ 임상 3상 결과 발표"
     },
     "original:b1baf71c1c5298ba16571866": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -68884,6 +69230,21 @@
       "link": "https://www.etnews.com/20260917000462",
       "source": "전자신문",
       "title": "한화, K9·천무 무인화-UGV 6종 구축…“AI 유무인 전환 기술 확보”"
+    },
+    "original:ed60f99c9e8d514a2006a4f5": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815134",
+      "source": "뉴시스",
+      "source_body_digest": "243a3b2fa1be375547b317b82511ca840c136f5ab09dc54f9ac00f62b54f4a09",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T10:14+09:00",
+      "title": "JW중외 \"당뇨병치료제 임상 3상 국제학회 발표\""
     },
     "original:ee6c55fdbb8a8c9aac15dd6a": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
@@ -75728,6 +76089,26 @@
       "source_published_kst": "2026-10-05T15:21+09:00",
       "title": "“영끌했는데 매달 이자 어쩌죠”...치솟는 주담대 금리- 매경ECONOMY"
     },
+    "source_fact:1b92d15eaa6e0c64392d3db9": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610065545b",
+      "source": "한국경제",
+      "source_body_digest": "f5875319bb4c1a9b68c023db3d3a734ce31c6b60288ce8faacf9c372d5bb116f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:50df31862afe117eda483be77de3601acd29db58383b1c49caee15d1f49dcde5",
+      "source_fact_keys": [
+        "source_fact:v1:149e2a3736cb008ec6a6afe6c1838167ebebe9a817b4bcba1b0b6e483a8bb3d4",
+        "source_fact:v1:347eda9d135d2f73f8e149a8cd18c2c718b6a2d02d375782750ea3e21b04b050",
+        "source_fact:v1:891e6dfe4b5662b2fbd7fa2c591ab4864a674a349eaaa9c8b7bb53c04f8839a9",
+        "source_fact:v1:b298bc766c635959b828982ecf285ce2e44cd9d557272aebb78a29e8c2fa3f60"
+      ],
+      "source_published_kst": "2026-10-06T14:04+09:00",
+      "title": "세아베스틸, 로봇 감속기 소재 시장 진출…휴머노이드까지 확대"
+    },
     "source_fact:1badefcf865de0f1011a1b26": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
       "lanes": {
@@ -76038,6 +76419,28 @@
       ],
       "source_published_kst": "2026-10-06T06:38+09:00",
       "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
+    },
+    "source_fact:1d361840b9981019914e6e54": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06045046645610296",
+      "source": "이데일리",
+      "source_body_digest": "aa9076dc3f4db12dc4af9c8d20cc46da0e3f36dcc03663acf80a88dd761367eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a97ca1abb48109f302d2cd3d8c9592a3a959a25068fb660f9dff8ceedd9edc4a",
+      "source_fact_keys": [
+        "source_fact:v1:0984eb8f650e77afb63dec98f1115c1028fc9fd69954a669f10827218aa50ce4",
+        "source_fact:v1:301f5d49cad400a4d11a133b42ee57ece58c299a13f90df815f2ff5c584b23f8",
+        "source_fact:v1:7e99bb1eb054e570895d7ae1871a24f85dd5c32219eb8b6dedc060ce5551fbb6",
+        "source_fact:v1:846e2a1544346cf2aea56a5c62e5c678be2e7b16e0d1e7bde48ca44ad3ef89ee",
+        "source_fact:v1:bd92f6e152ade34d77b9b2f9cbd49635c3be2fda8a59cc56bd5f770d7c4bb412",
+        "source_fact:v1:e00592e43285c47ebe9195c2370ccc93c1510a2615def9e4968c83d56e33efda"
+      ],
+      "source_published_kst": "2026-10-06T21:16+09:00",
+      "title": "[개장전특징주]AMD, TSMC, 마벨, 씨게이트"
     },
     "source_fact:1d3a1faae44e0024f388e1f9": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
@@ -77184,6 +77587,28 @@
       ],
       "source_published_kst": "2026-10-06T12:07+09:00",
       "title": "'악수하고 춤까지' 中 휴머노이드 국감장 떴다...\"韓 투자 턱없이 부족\""
+    },
+    "source_fact:22f929de71f540f89eb96bb0": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06045046645610296",
+      "source": "이데일리",
+      "source_body_digest": "aa9076dc3f4db12dc4af9c8d20cc46da0e3f36dcc03663acf80a88dd761367eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a97ca1abb48109f302d2cd3d8c9592a3a959a25068fb660f9dff8ceedd9edc4a",
+      "source_fact_keys": [
+        "source_fact:v1:0984eb8f650e77afb63dec98f1115c1028fc9fd69954a669f10827218aa50ce4",
+        "source_fact:v1:301f5d49cad400a4d11a133b42ee57ece58c299a13f90df815f2ff5c584b23f8",
+        "source_fact:v1:7e99bb1eb054e570895d7ae1871a24f85dd5c32219eb8b6dedc060ce5551fbb6",
+        "source_fact:v1:846e2a1544346cf2aea56a5c62e5c678be2e7b16e0d1e7bde48ca44ad3ef89ee",
+        "source_fact:v1:bd92f6e152ade34d77b9b2f9cbd49635c3be2fda8a59cc56bd5f770d7c4bb412",
+        "source_fact:v1:e00592e43285c47ebe9195c2370ccc93c1510a2615def9e4968c83d56e33efda"
+      ],
+      "source_published_kst": "2026-10-06T21:16+09:00",
+      "title": "[개장전특징주]AMD, TSMC, 마벨, 씨게이트"
     },
     "source_fact:2323ca6312d46eb09d8e8fb5": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
@@ -78508,6 +78933,27 @@
       ],
       "source_published_kst": "2026-10-05T18:05+09:00",
       "title": "양산에 '선박 하이브리드 시스템' 실증센터"
+    },
+    "source_fact:297c69f9c58fd5570269ac87": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.hankyung.com/article/202610064468P",
+      "source": "한국경제",
+      "source_body_digest": "934ac868ddb20ef4ca2a7edd41bff0c4f69c96d0cf0425b2eab293ebfbe247d5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8597dd3654ee738abc8588e1ec9906871210fed7bf4a682ed8ca5fc18f37fbe9",
+      "source_fact_keys": [
+        "source_fact:v1:0353e49ac6355df42a2c10e6b251a7097ea23c48e7a678aaf19891f81b65de73",
+        "source_fact:v1:b405b46ae7b904060a1908a784616dd0c62aaab415a8222fc93b452e388e2722",
+        "source_fact:v1:ca5b72ba7a74f60e34089b5c98ce8ec11d2dcfe0b0fa977187402d1ac4870010",
+        "source_fact:v1:eb3eb06088968b92469ee20a207eacac0f90e8a244e13c69917179fa2474e4e5",
+        "source_fact:v1:f06c5c9bb04a70ddd5e9ea223ff8c1a1bb2bdafb855daa21dbdc39dace80437f"
+      ],
+      "source_published_kst": "2026-10-06T08:57+09:00",
+      "title": "JW중외제약, EASD 2026서 당뇨병 치료제 ‘엠파가드’ 임상 3상 결과 발표"
     },
     "source_fact:29ae8084d42afa6135d76a49": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
@@ -80743,6 +81189,27 @@
       "source_published_kst": "2026-10-06T14:21+09:00",
       "title": "IPARK현대산업개발, 부산 연산13구역 재개발 수주…2812억 규모"
     },
+    "source_fact:34b13b49bfe8792dc5745109": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.hankyung.com/article/202610064468P",
+      "source": "한국경제",
+      "source_body_digest": "934ac868ddb20ef4ca2a7edd41bff0c4f69c96d0cf0425b2eab293ebfbe247d5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8597dd3654ee738abc8588e1ec9906871210fed7bf4a682ed8ca5fc18f37fbe9",
+      "source_fact_keys": [
+        "source_fact:v1:0353e49ac6355df42a2c10e6b251a7097ea23c48e7a678aaf19891f81b65de73",
+        "source_fact:v1:b405b46ae7b904060a1908a784616dd0c62aaab415a8222fc93b452e388e2722",
+        "source_fact:v1:ca5b72ba7a74f60e34089b5c98ce8ec11d2dcfe0b0fa977187402d1ac4870010",
+        "source_fact:v1:eb3eb06088968b92469ee20a207eacac0f90e8a244e13c69917179fa2474e4e5",
+        "source_fact:v1:f06c5c9bb04a70ddd5e9ea223ff8c1a1bb2bdafb855daa21dbdc39dace80437f"
+      ],
+      "source_published_kst": "2026-10-06T08:57+09:00",
+      "title": "JW중외제약, EASD 2026서 당뇨병 치료제 ‘엠파가드’ 임상 3상 결과 발표"
+    },
     "source_fact:34b216d97894a1adc719b2ce": {
       "first_seen_kst": "2026-10-06T10:04:04+09:00",
       "lanes": {
@@ -81889,6 +82356,26 @@
       "source_published_kst": "2026-10-06T09:24+09:00",
       "title": "특징주, 아이티센씨티에스-네트워크통합 테마 상승세에 2.22% ↑"
     },
+    "source_fact:3a9bc4700884490835eac8b7": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006061300017",
+      "source": "연합뉴스",
+      "source_body_digest": "4cb3e52247797107ebf5882ac1771f78ae94fccf9f34995191d8de0b29737302",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0548e1451aedc602aed158aa2c9613bf6acad6bb652fcccc7248f8bbc786f24e",
+      "source_fact_keys": [
+        "source_fact:v1:a9c0f6f65effd1fd500003ebdb4ba30ada8270792c51fe13d01918c7dd562ead",
+        "source_fact:v1:a9d486f5898dcaf6b10d0003974368e838a3bc567c6a20f6492dba121941c9ea",
+        "source_fact:v1:cbc8ca3e76ac3ba58e9d40dabc5b8976316b8564b65f24224f143044c55809ad",
+        "source_fact:v1:f71ce4f6af04f3e1b0e1a1898fc5d44bdaac7dca797c031467c15044d49a5433"
+      ],
+      "source_published_kst": "2026-10-06T10:17+09:00",
+      "title": "[바이오스냅] JW중외제약, 당뇨병약 '엠파가드' 임상 3상 결과 발표 | 연합뉴스"
+    },
     "source_fact:3abc33cafe02030dd88e7402": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
       "lanes": {
@@ -82037,6 +82524,27 @@
       ],
       "source_published_kst": "2026-10-06T18:09+09:00",
       "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어(종합) | 연합뉴스"
+    },
+    "source_fact:3b6bbfdf710ea08a5000db53": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.hankyung.com/article/202610064468P",
+      "source": "한국경제",
+      "source_body_digest": "934ac868ddb20ef4ca2a7edd41bff0c4f69c96d0cf0425b2eab293ebfbe247d5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8597dd3654ee738abc8588e1ec9906871210fed7bf4a682ed8ca5fc18f37fbe9",
+      "source_fact_keys": [
+        "source_fact:v1:0353e49ac6355df42a2c10e6b251a7097ea23c48e7a678aaf19891f81b65de73",
+        "source_fact:v1:b405b46ae7b904060a1908a784616dd0c62aaab415a8222fc93b452e388e2722",
+        "source_fact:v1:ca5b72ba7a74f60e34089b5c98ce8ec11d2dcfe0b0fa977187402d1ac4870010",
+        "source_fact:v1:eb3eb06088968b92469ee20a207eacac0f90e8a244e13c69917179fa2474e4e5",
+        "source_fact:v1:f06c5c9bb04a70ddd5e9ea223ff8c1a1bb2bdafb855daa21dbdc39dace80437f"
+      ],
+      "source_published_kst": "2026-10-06T08:57+09:00",
+      "title": "JW중외제약, EASD 2026서 당뇨병 치료제 ‘엠파가드’ 임상 3상 결과 발표"
     },
     "source_fact:3b945d877efe0c444cb25f14": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
@@ -82880,6 +83388,27 @@
       "source_published_kst": "2026-10-05T21:34+09:00",
       "title": "北지뢰에 '대북 사이버 독자제재' 내부 검토…외교부·통일부 이견"
     },
+    "source_fact:412596af907386682d21b848": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.hankyung.com/article/202610064468P",
+      "source": "한국경제",
+      "source_body_digest": "934ac868ddb20ef4ca2a7edd41bff0c4f69c96d0cf0425b2eab293ebfbe247d5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8597dd3654ee738abc8588e1ec9906871210fed7bf4a682ed8ca5fc18f37fbe9",
+      "source_fact_keys": [
+        "source_fact:v1:0353e49ac6355df42a2c10e6b251a7097ea23c48e7a678aaf19891f81b65de73",
+        "source_fact:v1:b405b46ae7b904060a1908a784616dd0c62aaab415a8222fc93b452e388e2722",
+        "source_fact:v1:ca5b72ba7a74f60e34089b5c98ce8ec11d2dcfe0b0fa977187402d1ac4870010",
+        "source_fact:v1:eb3eb06088968b92469ee20a207eacac0f90e8a244e13c69917179fa2474e4e5",
+        "source_fact:v1:f06c5c9bb04a70ddd5e9ea223ff8c1a1bb2bdafb855daa21dbdc39dace80437f"
+      ],
+      "source_published_kst": "2026-10-06T08:57+09:00",
+      "title": "JW중외제약, EASD 2026서 당뇨병 치료제 ‘엠파가드’ 임상 3상 결과 발표"
+    },
     "source_fact:41273b5dd5b8bdba79484be8": {
       "first_seen_kst": "2026-10-06T20:54:05+09:00",
       "lanes": {
@@ -83368,6 +83897,27 @@
       ],
       "source_published_kst": "2026-10-05T23:10+09:00",
       "title": "유나이티드마이크로일렉, 18억 달러 해외CB 발행 확정에 지분 희석·매물 부담 부각"
+    },
+    "source_fact:431bcabd29d70c105c446b26": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.hankyung.com/article/202610064468P",
+      "source": "한국경제",
+      "source_body_digest": "934ac868ddb20ef4ca2a7edd41bff0c4f69c96d0cf0425b2eab293ebfbe247d5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8597dd3654ee738abc8588e1ec9906871210fed7bf4a682ed8ca5fc18f37fbe9",
+      "source_fact_keys": [
+        "source_fact:v1:0353e49ac6355df42a2c10e6b251a7097ea23c48e7a678aaf19891f81b65de73",
+        "source_fact:v1:b405b46ae7b904060a1908a784616dd0c62aaab415a8222fc93b452e388e2722",
+        "source_fact:v1:ca5b72ba7a74f60e34089b5c98ce8ec11d2dcfe0b0fa977187402d1ac4870010",
+        "source_fact:v1:eb3eb06088968b92469ee20a207eacac0f90e8a244e13c69917179fa2474e4e5",
+        "source_fact:v1:f06c5c9bb04a70ddd5e9ea223ff8c1a1bb2bdafb855daa21dbdc39dace80437f"
+      ],
+      "source_published_kst": "2026-10-06T08:57+09:00",
+      "title": "JW중외제약, EASD 2026서 당뇨병 치료제 ‘엠파가드’ 임상 3상 결과 발표"
     },
     "source_fact:433de656bab94446d4f01960": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
@@ -83861,6 +84411,26 @@
       ],
       "source_published_kst": "2026-10-06T13:06+09:00",
       "title": "美 소비자신뢰지수 12년 최저인데 가계지출 6.1%↑…실질소비도 늘었다"
+    },
+    "source_fact:45d6ba0067bbf23ed00f1eb2": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006061300017",
+      "source": "연합뉴스",
+      "source_body_digest": "4cb3e52247797107ebf5882ac1771f78ae94fccf9f34995191d8de0b29737302",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0548e1451aedc602aed158aa2c9613bf6acad6bb652fcccc7248f8bbc786f24e",
+      "source_fact_keys": [
+        "source_fact:v1:a9c0f6f65effd1fd500003ebdb4ba30ada8270792c51fe13d01918c7dd562ead",
+        "source_fact:v1:a9d486f5898dcaf6b10d0003974368e838a3bc567c6a20f6492dba121941c9ea",
+        "source_fact:v1:cbc8ca3e76ac3ba58e9d40dabc5b8976316b8564b65f24224f143044c55809ad",
+        "source_fact:v1:f71ce4f6af04f3e1b0e1a1898fc5d44bdaac7dca797c031467c15044d49a5433"
+      ],
+      "source_published_kst": "2026-10-06T10:17+09:00",
+      "title": "[바이오스냅] JW중외제약, 당뇨병약 '엠파가드' 임상 3상 결과 발표 | 연합뉴스"
     },
     "source_fact:45e05a9384b743e4d9be9f43": {
       "first_seen_kst": "2026-10-06T06:36:31+09:00",
@@ -87819,6 +88389,26 @@
       ],
       "source_published_kst": "2026-10-06T11:30+09:00",
       "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
+    },
+    "source_fact:583f7682d0c60e8e486ae133": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006061300017",
+      "source": "연합뉴스",
+      "source_body_digest": "4cb3e52247797107ebf5882ac1771f78ae94fccf9f34995191d8de0b29737302",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0548e1451aedc602aed158aa2c9613bf6acad6bb652fcccc7248f8bbc786f24e",
+      "source_fact_keys": [
+        "source_fact:v1:a9c0f6f65effd1fd500003ebdb4ba30ada8270792c51fe13d01918c7dd562ead",
+        "source_fact:v1:a9d486f5898dcaf6b10d0003974368e838a3bc567c6a20f6492dba121941c9ea",
+        "source_fact:v1:cbc8ca3e76ac3ba58e9d40dabc5b8976316b8564b65f24224f143044c55809ad",
+        "source_fact:v1:f71ce4f6af04f3e1b0e1a1898fc5d44bdaac7dca797c031467c15044d49a5433"
+      ],
+      "source_published_kst": "2026-10-06T10:17+09:00",
+      "title": "[바이오스냅] JW중외제약, 당뇨병약 '엠파가드' 임상 3상 결과 발표 | 연합뉴스"
     },
     "source_fact:58554a1d7f372e197ccd23c9": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
@@ -91934,6 +92524,26 @@
       ],
       "source_published_kst": "2026-10-06T17:57+09:00",
       "title": "대학가 주택 '공공기숙사'로…LH, 서울대와 200가구 공급"
+    },
+    "source_fact:6d0c38058d5b5d61e65387ce": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610065545b",
+      "source": "한국경제",
+      "source_body_digest": "f5875319bb4c1a9b68c023db3d3a734ce31c6b60288ce8faacf9c372d5bb116f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:50df31862afe117eda483be77de3601acd29db58383b1c49caee15d1f49dcde5",
+      "source_fact_keys": [
+        "source_fact:v1:149e2a3736cb008ec6a6afe6c1838167ebebe9a817b4bcba1b0b6e483a8bb3d4",
+        "source_fact:v1:347eda9d135d2f73f8e149a8cd18c2c718b6a2d02d375782750ea3e21b04b050",
+        "source_fact:v1:891e6dfe4b5662b2fbd7fa2c591ab4864a674a349eaaa9c8b7bb53c04f8839a9",
+        "source_fact:v1:b298bc766c635959b828982ecf285ce2e44cd9d557272aebb78a29e8c2fa3f60"
+      ],
+      "source_published_kst": "2026-10-06T14:04+09:00",
+      "title": "세아베스틸, 로봇 감속기 소재 시장 진출…휴머노이드까지 확대"
     },
     "source_fact:6d0db97ab65528d993f3bef8": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
@@ -102269,6 +102879,28 @@
       "source_published_kst": "2026-10-06T06:10+09:00",
       "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
     },
+    "source_fact:9d6d1556cc8e2cfa1a3a7564": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06045046645610296",
+      "source": "이데일리",
+      "source_body_digest": "aa9076dc3f4db12dc4af9c8d20cc46da0e3f36dcc03663acf80a88dd761367eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a97ca1abb48109f302d2cd3d8c9592a3a959a25068fb660f9dff8ceedd9edc4a",
+      "source_fact_keys": [
+        "source_fact:v1:0984eb8f650e77afb63dec98f1115c1028fc9fd69954a669f10827218aa50ce4",
+        "source_fact:v1:301f5d49cad400a4d11a133b42ee57ece58c299a13f90df815f2ff5c584b23f8",
+        "source_fact:v1:7e99bb1eb054e570895d7ae1871a24f85dd5c32219eb8b6dedc060ce5551fbb6",
+        "source_fact:v1:846e2a1544346cf2aea56a5c62e5c678be2e7b16e0d1e7bde48ca44ad3ef89ee",
+        "source_fact:v1:bd92f6e152ade34d77b9b2f9cbd49635c3be2fda8a59cc56bd5f770d7c4bb412",
+        "source_fact:v1:e00592e43285c47ebe9195c2370ccc93c1510a2615def9e4968c83d56e33efda"
+      ],
+      "source_published_kst": "2026-10-06T21:16+09:00",
+      "title": "[개장전특징주]AMD, TSMC, 마벨, 씨게이트"
+    },
     "source_fact:9d7b0d355f8b32ca9eb97770": {
       "first_seen_kst": "2026-10-06T15:14:29+09:00",
       "lanes": {
@@ -104490,6 +105122,26 @@
       ],
       "source_published_kst": "2026-10-05T16:41+09:00",
       "title": "에비던트, 크레스트옵틱스 인수 완료"
+    },
+    "source_fact:a8f8a87003d04125cd9b1274": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006061300017",
+      "source": "연합뉴스",
+      "source_body_digest": "4cb3e52247797107ebf5882ac1771f78ae94fccf9f34995191d8de0b29737302",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0548e1451aedc602aed158aa2c9613bf6acad6bb652fcccc7248f8bbc786f24e",
+      "source_fact_keys": [
+        "source_fact:v1:a9c0f6f65effd1fd500003ebdb4ba30ada8270792c51fe13d01918c7dd562ead",
+        "source_fact:v1:a9d486f5898dcaf6b10d0003974368e838a3bc567c6a20f6492dba121941c9ea",
+        "source_fact:v1:cbc8ca3e76ac3ba58e9d40dabc5b8976316b8564b65f24224f143044c55809ad",
+        "source_fact:v1:f71ce4f6af04f3e1b0e1a1898fc5d44bdaac7dca797c031467c15044d49a5433"
+      ],
+      "source_published_kst": "2026-10-06T10:17+09:00",
+      "title": "[바이오스냅] JW중외제약, 당뇨병약 '엠파가드' 임상 3상 결과 발표 | 연합뉴스"
     },
     "source_fact:a8fa399d9a8ffcda7285e9a1": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
@@ -109813,6 +110465,26 @@
       "source_published_kst": "2026-10-06T16:33+09:00",
       "title": "'컨테이너 운임 지수' 소폭 하락…유럽·지중해·중동 약세"
     },
+    "source_fact:c316f4d683f4f27392ae9c95": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610065545b",
+      "source": "한국경제",
+      "source_body_digest": "f5875319bb4c1a9b68c023db3d3a734ce31c6b60288ce8faacf9c372d5bb116f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:50df31862afe117eda483be77de3601acd29db58383b1c49caee15d1f49dcde5",
+      "source_fact_keys": [
+        "source_fact:v1:149e2a3736cb008ec6a6afe6c1838167ebebe9a817b4bcba1b0b6e483a8bb3d4",
+        "source_fact:v1:347eda9d135d2f73f8e149a8cd18c2c718b6a2d02d375782750ea3e21b04b050",
+        "source_fact:v1:891e6dfe4b5662b2fbd7fa2c591ab4864a674a349eaaa9c8b7bb53c04f8839a9",
+        "source_fact:v1:b298bc766c635959b828982ecf285ce2e44cd9d557272aebb78a29e8c2fa3f60"
+      ],
+      "source_published_kst": "2026-10-06T14:04+09:00",
+      "title": "세아베스틸, 로봇 감속기 소재 시장 진출…휴머노이드까지 확대"
+    },
     "source_fact:c3323a77aee62ffea906ffef": {
       "first_seen_kst": "2026-10-06T18:16:47+09:00",
       "lanes": {
@@ -113878,6 +114550,26 @@
       "source_published_kst": "2026-10-05T10:35+09:00",
       "title": "삼성바이오·SK바이오팜·한미약품, 아태 바이오 ‘10대 거래’ 선정"
     },
+    "source_fact:d68e0be3db8f279db120b831": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610065545b",
+      "source": "한국경제",
+      "source_body_digest": "f5875319bb4c1a9b68c023db3d3a734ce31c6b60288ce8faacf9c372d5bb116f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:50df31862afe117eda483be77de3601acd29db58383b1c49caee15d1f49dcde5",
+      "source_fact_keys": [
+        "source_fact:v1:149e2a3736cb008ec6a6afe6c1838167ebebe9a817b4bcba1b0b6e483a8bb3d4",
+        "source_fact:v1:347eda9d135d2f73f8e149a8cd18c2c718b6a2d02d375782750ea3e21b04b050",
+        "source_fact:v1:891e6dfe4b5662b2fbd7fa2c591ab4864a674a349eaaa9c8b7bb53c04f8839a9",
+        "source_fact:v1:b298bc766c635959b828982ecf285ce2e44cd9d557272aebb78a29e8c2fa3f60"
+      ],
+      "source_published_kst": "2026-10-06T14:04+09:00",
+      "title": "세아베스틸, 로봇 감속기 소재 시장 진출…휴머노이드까지 확대"
+    },
     "source_fact:d69d90835583eb5d7319d665": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
@@ -114440,6 +115132,28 @@
       "source_published_kst": "2026-10-06T14:22+09:00",
       "title": "한은 \"IMF 제도 개편, 한국 경상수지 평가에 불리\""
     },
+    "source_fact:d83a83e4e7738e7e91385289": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06045046645610296",
+      "source": "이데일리",
+      "source_body_digest": "aa9076dc3f4db12dc4af9c8d20cc46da0e3f36dcc03663acf80a88dd761367eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a97ca1abb48109f302d2cd3d8c9592a3a959a25068fb660f9dff8ceedd9edc4a",
+      "source_fact_keys": [
+        "source_fact:v1:0984eb8f650e77afb63dec98f1115c1028fc9fd69954a669f10827218aa50ce4",
+        "source_fact:v1:301f5d49cad400a4d11a133b42ee57ece58c299a13f90df815f2ff5c584b23f8",
+        "source_fact:v1:7e99bb1eb054e570895d7ae1871a24f85dd5c32219eb8b6dedc060ce5551fbb6",
+        "source_fact:v1:846e2a1544346cf2aea56a5c62e5c678be2e7b16e0d1e7bde48ca44ad3ef89ee",
+        "source_fact:v1:bd92f6e152ade34d77b9b2f9cbd49635c3be2fda8a59cc56bd5f770d7c4bb412",
+        "source_fact:v1:e00592e43285c47ebe9195c2370ccc93c1510a2615def9e4968c83d56e33efda"
+      ],
+      "source_published_kst": "2026-10-06T21:16+09:00",
+      "title": "[개장전특징주]AMD, TSMC, 마벨, 씨게이트"
+    },
     "source_fact:d8647a36cd26de362e3902c8": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
       "lanes": {
@@ -114766,6 +115480,28 @@
       ],
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
+    },
+    "source_fact:da089b9b5dff3bb680cf0fa3": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06045046645610296",
+      "source": "이데일리",
+      "source_body_digest": "aa9076dc3f4db12dc4af9c8d20cc46da0e3f36dcc03663acf80a88dd761367eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a97ca1abb48109f302d2cd3d8c9592a3a959a25068fb660f9dff8ceedd9edc4a",
+      "source_fact_keys": [
+        "source_fact:v1:0984eb8f650e77afb63dec98f1115c1028fc9fd69954a669f10827218aa50ce4",
+        "source_fact:v1:301f5d49cad400a4d11a133b42ee57ece58c299a13f90df815f2ff5c584b23f8",
+        "source_fact:v1:7e99bb1eb054e570895d7ae1871a24f85dd5c32219eb8b6dedc060ce5551fbb6",
+        "source_fact:v1:846e2a1544346cf2aea56a5c62e5c678be2e7b16e0d1e7bde48ca44ad3ef89ee",
+        "source_fact:v1:bd92f6e152ade34d77b9b2f9cbd49635c3be2fda8a59cc56bd5f770d7c4bb412",
+        "source_fact:v1:e00592e43285c47ebe9195c2370ccc93c1510a2615def9e4968c83d56e33efda"
+      ],
+      "source_published_kst": "2026-10-06T21:16+09:00",
+      "title": "[개장전특징주]AMD, TSMC, 마벨, 씨게이트"
     },
     "source_fact:da0b987d3796b921c8a33aac": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
@@ -116333,6 +117069,28 @@
       ],
       "source_published_kst": "2026-10-06T16:40+09:00",
       "title": "알테오젠, 국민성장펀드·스카이레이크서 2000억원 투자 유치"
+    },
+    "source_fact:e0fa8dc3e1c73d1e24ef7e11": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06045046645610296",
+      "source": "이데일리",
+      "source_body_digest": "aa9076dc3f4db12dc4af9c8d20cc46da0e3f36dcc03663acf80a88dd761367eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a97ca1abb48109f302d2cd3d8c9592a3a959a25068fb660f9dff8ceedd9edc4a",
+      "source_fact_keys": [
+        "source_fact:v1:0984eb8f650e77afb63dec98f1115c1028fc9fd69954a669f10827218aa50ce4",
+        "source_fact:v1:301f5d49cad400a4d11a133b42ee57ece58c299a13f90df815f2ff5c584b23f8",
+        "source_fact:v1:7e99bb1eb054e570895d7ae1871a24f85dd5c32219eb8b6dedc060ce5551fbb6",
+        "source_fact:v1:846e2a1544346cf2aea56a5c62e5c678be2e7b16e0d1e7bde48ca44ad3ef89ee",
+        "source_fact:v1:bd92f6e152ade34d77b9b2f9cbd49635c3be2fda8a59cc56bd5f770d7c4bb412",
+        "source_fact:v1:e00592e43285c47ebe9195c2370ccc93c1510a2615def9e4968c83d56e33efda"
+      ],
+      "source_published_kst": "2026-10-06T21:16+09:00",
+      "title": "[개장전특징주]AMD, TSMC, 마벨, 씨게이트"
     },
     "source_fact:e11f53b0b64c3ccce8b44c84": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
@@ -122753,6 +123511,28 @@
       "source_published_kst": "2026-10-05T11:30+09:00",
       "title": "암로, 韓 성장률 3.1→3.3% 상향…물가도 2.6→2.7%"
     },
+    "title:0063ceaeaaf6ceb3555c05d6": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06045046645610296",
+      "source": "이데일리",
+      "source_body_digest": "aa9076dc3f4db12dc4af9c8d20cc46da0e3f36dcc03663acf80a88dd761367eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a97ca1abb48109f302d2cd3d8c9592a3a959a25068fb660f9dff8ceedd9edc4a",
+      "source_fact_keys": [
+        "source_fact:v1:0984eb8f650e77afb63dec98f1115c1028fc9fd69954a669f10827218aa50ce4",
+        "source_fact:v1:301f5d49cad400a4d11a133b42ee57ece58c299a13f90df815f2ff5c584b23f8",
+        "source_fact:v1:7e99bb1eb054e570895d7ae1871a24f85dd5c32219eb8b6dedc060ce5551fbb6",
+        "source_fact:v1:846e2a1544346cf2aea56a5c62e5c678be2e7b16e0d1e7bde48ca44ad3ef89ee",
+        "source_fact:v1:bd92f6e152ade34d77b9b2f9cbd49635c3be2fda8a59cc56bd5f770d7c4bb412",
+        "source_fact:v1:e00592e43285c47ebe9195c2370ccc93c1510a2615def9e4968c83d56e33efda"
+      ],
+      "source_published_kst": "2026-10-06T21:16+09:00",
+      "title": "[개장전특징주]AMD, TSMC, 마벨, 씨게이트"
+    },
     "title:007be724d660d8cb05b79d2e": {
       "first_seen_kst": "2026-09-29T03:48:26+09:00",
       "lanes": {
@@ -125528,6 +126308,21 @@
       "source_published_kst": "2026-10-05T17:20+09:00",
       "title": "리사 수 AMD 회장 7개월 만에 방한…'AI 동맹' 넓히나(종합) | 연합뉴스"
     },
+    "title:1c948615fe0db2f8f0bc33a4": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://biz.chosun.com/science-chosun/bio/2026/10/06/WCUIDHQG5NBXNF3FYYWWDQV4QI/",
+      "source": "조선비즈",
+      "source_body_digest": "f86208bc1b645f327a2b39bf94fadd1a9f8a514344c14ba79ace45126a15842b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T09:11+09:00",
+      "title": "JW중외제약 “엠파가드, 임상 3상서 기존 치료보다 혈당 낮춰”"
+    },
     "title:1cbdaf922d83956ec9599ac8": {
       "first_seen_kst": "2026-10-04T20:25:15+09:00",
       "lanes": {
@@ -128286,6 +129081,26 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T15:13+09:00",
       "title": "환율에 노사 리스크까지…HD현대重·한화오션 3분기 실적 '이중고'"
+    },
+    "title:376cf99ff73681f343514e71": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610065545b",
+      "source": "한국경제",
+      "source_body_digest": "f5875319bb4c1a9b68c023db3d3a734ce31c6b60288ce8faacf9c372d5bb116f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:50df31862afe117eda483be77de3601acd29db58383b1c49caee15d1f49dcde5",
+      "source_fact_keys": [
+        "source_fact:v1:149e2a3736cb008ec6a6afe6c1838167ebebe9a817b4bcba1b0b6e483a8bb3d4",
+        "source_fact:v1:347eda9d135d2f73f8e149a8cd18c2c718b6a2d02d375782750ea3e21b04b050",
+        "source_fact:v1:891e6dfe4b5662b2fbd7fa2c591ab4864a674a349eaaa9c8b7bb53c04f8839a9",
+        "source_fact:v1:b298bc766c635959b828982ecf285ce2e44cd9d557272aebb78a29e8c2fa3f60"
+      ],
+      "source_published_kst": "2026-10-06T14:04+09:00",
+      "title": "세아베스틸, 로봇 감속기 소재 시장 진출…휴머노이드까지 확대"
     },
     "title:3770deae22bb8806e9333b38": {
       "first_seen_kst": "2026-10-01T22:15:47+09:00",
@@ -140053,6 +140868,21 @@
       "source": "이데일리",
       "title": "[美특징주]인수가 낮췄는데 주가는 올랐다…온세미컨덕터·시냅틱스, 개장전 '급등'"
     },
+    "title:a810eadd3a3aaf1406ed9be7": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100611432776649",
+      "source": "머니투데이",
+      "source_body_digest": "3c6444b28b4612bc5f3979d7d1836167a67295c93ff365c834b0f8794f047981",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T12:00+09:00",
+      "title": "美·中 반도체 설계 표준 협력…AI·데이터센터로 영역 넓힌다"
+    },
     "title:a82138ef7449119ebb68f4f4": {
       "first_seen_kst": "2026-10-01T18:42:30+09:00",
       "lanes": {
@@ -140816,6 +141646,26 @@
       "source": "이투데이",
       "title": "메리츠증권 \"넷마블, 신작보다 기존작 수명 연장 집중…재정비 성과 주목\""
     },
+    "title:afc28252045483faff2ed78f": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006061300017",
+      "source": "연합뉴스",
+      "source_body_digest": "4cb3e52247797107ebf5882ac1771f78ae94fccf9f34995191d8de0b29737302",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0548e1451aedc602aed158aa2c9613bf6acad6bb652fcccc7248f8bbc786f24e",
+      "source_fact_keys": [
+        "source_fact:v1:a9c0f6f65effd1fd500003ebdb4ba30ada8270792c51fe13d01918c7dd562ead",
+        "source_fact:v1:a9d486f5898dcaf6b10d0003974368e838a3bc567c6a20f6492dba121941c9ea",
+        "source_fact:v1:cbc8ca3e76ac3ba58e9d40dabc5b8976316b8564b65f24224f143044c55809ad",
+        "source_fact:v1:f71ce4f6af04f3e1b0e1a1898fc5d44bdaac7dca797c031467c15044d49a5433"
+      ],
+      "source_published_kst": "2026-10-06T10:17+09:00",
+      "title": "[바이오스냅] JW중외제약, 당뇨병약 '엠파가드' 임상 3상 결과 발표 | 연합뉴스"
+    },
     "title:afcd483b8ef587c1a9babfbc": {
       "first_seen_kst": "2026-10-01T21:33:24+09:00",
       "lanes": {
@@ -141068,6 +141918,27 @@
       "link": "https://www.yna.co.kr/view/AKR20261002064300054",
       "source": "연합뉴스",
       "title": "전남광주, 투자·펀드 기능 한데 묶는다…투자 기관 설립 추진 | 연합뉴스"
+    },
+    "title:b1b46026bfc0ba14402bdb7a": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.hankyung.com/article/202610064468P",
+      "source": "한국경제",
+      "source_body_digest": "934ac868ddb20ef4ca2a7edd41bff0c4f69c96d0cf0425b2eab293ebfbe247d5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8597dd3654ee738abc8588e1ec9906871210fed7bf4a682ed8ca5fc18f37fbe9",
+      "source_fact_keys": [
+        "source_fact:v1:0353e49ac6355df42a2c10e6b251a7097ea23c48e7a678aaf19891f81b65de73",
+        "source_fact:v1:b405b46ae7b904060a1908a784616dd0c62aaab415a8222fc93b452e388e2722",
+        "source_fact:v1:ca5b72ba7a74f60e34089b5c98ce8ec11d2dcfe0b0fa977187402d1ac4870010",
+        "source_fact:v1:eb3eb06088968b92469ee20a207eacac0f90e8a244e13c69917179fa2474e4e5",
+        "source_fact:v1:f06c5c9bb04a70ddd5e9ea223ff8c1a1bb2bdafb855daa21dbdc39dace80437f"
+      ],
+      "source_published_kst": "2026-10-06T08:57+09:00",
+      "title": "JW중외제약, EASD 2026서 당뇨병 치료제 ‘엠파가드’ 임상 3상 결과 발표"
     },
     "title:b1baf71c1c5298ba16571866": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -147317,6 +148188,21 @@
       "source": "전자신문",
       "title": "한화, K9·천무 무인화-UGV 6종 구축…“AI 유무인 전환 기술 확보”"
     },
+    "title:ed60f99c9e8d514a2006a4f5": {
+      "first_seen_kst": "2026-10-06T23:05:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T23:05:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T23:05:07+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815134",
+      "source": "뉴시스",
+      "source_body_digest": "243a3b2fa1be375547b317b82511ca840c136f5ab09dc54f9ac00f62b54f4a09",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T10:14+09:00",
+      "title": "JW중외 \"당뇨병치료제 임상 3상 국제학회 발표\""
+    },
     "title:ee6c55fdbb8a8c9aac15dd6a": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
       "lanes": {
@@ -149045,5 +149931,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T22:51:44+09:00"
+  "updated_at_kst": "2026-10-06T23:05:07+09:00"
 }
