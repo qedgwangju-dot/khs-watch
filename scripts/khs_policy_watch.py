@@ -883,6 +883,7 @@ def apply_doe_grid_dpa_profile(item: dict, haystack: str) -> None:
                 ),
                 "policy_timeline": [
                     {"date": "2025-01-20", "stage": "기반", "detail": "Executive Order 14156 국가 에너지 비상사태 선언"},
+                    {"date": "2026-03-13", "stage": "권한 위임", "detail": "Executive Order 14391 DPA 권한 위임 조정"},
                     {"date": "2026-04-20", "stage": "법적 근거", "detail": "DPA 제303조 전력망·전력기기·공급망 대통령 결정"},
                     {"date": "2026-10-05", "stage": "이번 집행", "detail": "DOE, Beluga-Healy 송전사업 DPA 자금 투입 의향 발표"},
                 ],
