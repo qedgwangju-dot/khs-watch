@@ -3614,17 +3614,22 @@
     "event:88f963c9ef72bbb16d0015e4": {
       "first_seen_kst": "2026-10-07T00:23:09+09:00",
       "lanes": {
-        "live": "2026-10-07T00:23:09+09:00"
+        "live": "2026-10-07T07:12:15+09:00"
       },
-      "last_seen_kst": "2026-10-07T00:23:09+09:00",
-      "link": "https://www.newsis.com/view/NISX20261006_0003815022",
-      "source": "뉴시스",
-      "source_body_digest": "002ec06298282843bb4cb5b63e7a98640cc007da896698935eea84a76703f8b4",
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.fnnews.com/news/202610070631319352",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "959ea76632115146676880fea679fc55d3878c50a546602098a3db82505e07f4",
       "source_event_identity": "",
-      "source_fact_identity": "",
-      "source_fact_keys": [],
-      "source_published_kst": "2026-10-07T00:14+09:00",
-      "title": "\"지금부터 겁먹을 이유 없다\"…미 국채금리 5% 시대, 증시 전망과 취약점"
+      "source_fact_identity": "source_facts:v1:af46f43b34b8958fa67f9e5e7907679a7377c0d502679119a783358de0382bc2",
+      "source_fact_keys": [
+        "source_fact:v1:05bf905460c3251d9c12bbbfacf5af0d870f731d4efb0189028fcd2452ba2440",
+        "source_fact:v1:3fc2e6e7026b636ac78564ec3ce24cc56f86197d941a584e9a84adc461016897",
+        "source_fact:v1:6f1522eba4c02992114427a57a556c1e1d3a83a7166abfb59a2dbac9189111af",
+        "source_fact:v1:aab345e64daa49ef634661a1728564770059f71d577adb27324dbcda2ae963a3"
+      ],
+      "source_published_kst": "2026-10-07T06:31+09:00",
+      "title": "실적 기대에 힘받은 뉴욕증시…S&P500·나스닥 또 최고치(종합)"
     },
     "event:89a487c8295ea75a26c50b66": {
       "first_seen_kst": "2026-10-02T11:29:29+09:00",
@@ -5727,24 +5732,19 @@
     "event:d812265cdfa6d6eb53781072": {
       "first_seen_kst": "2026-10-07T06:28:41+09:00",
       "lanes": {
-        "live": "2026-10-07T06:28:41+09:00"
+        "live": "2026-10-07T07:12:15+09:00"
       },
-      "last_seen_kst": "2026-10-07T06:28:41+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2633062",
-      "source": "이투데이",
-      "source_body_digest": "d5c1341f72fe6130ef7368211e854e114f4fb7b7acf532a851377844da6e3501",
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.inews24.com/view/2012412",
+      "source": "아이뉴스24",
+      "source_body_digest": "edb17a22333dee5e2297937dc3a418c85a87820b23ca642de8f4d5ef8a2473b2",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:68cd2168f9e911a0c005590182e104337607b311d952a4c7e3d0b99d48810b2c",
+      "source_fact_identity": "source_facts:v1:47ce5e78d4d7540ed82af86cc9ced6e3d6df20aa387386aa5ffff6695e5fdab3",
       "source_fact_keys": [
-        "source_fact:v1:27f4cda73567ec06c827016d7d1a603abe2e418a28b9af59753fab46fa50cc02",
-        "source_fact:v1:3038b0ccdc3007ee92ec6211a3d9dfc399dfdfbbd71d8253c738f2df4dc2eaad",
-        "source_fact:v1:5b0dac792a989d18b71142f7412b076e9f2996c0097fa7d56b8b92047864702e",
-        "source_fact:v1:6136699d3015e7e3409187470b8c6a6252e7aca46aee567c65638e3a92fdc2e8",
-        "source_fact:v1:926b60dae527e455c39723cd99743ff6fb5cb6af96749f03e7d6fa27cc579364",
-        "source_fact:v1:f702e52a8ad77afae35fa3ef2cc7a7252693403ef22db67c62f3641aedf4cc16"
+        "source_fact:v1:0ad69e92e13e9b3e5c54895895d40758c5bb5aeed6e64d93a4b8562a4788c1f3"
       ],
-      "source_published_kst": "2026-10-07T06:25+09:00",
-      "title": "국제유가, 후티 반격ㆍ중동 수출 증가 놓고 강보합⋯WTI 0.01%↑ [상보]"
+      "source_published_kst": "2026-10-07T07:02+09:00",
+      "title": "뉴욕증시 상승...S&P500·나스닥 사상 최고치 경신"
     },
     "event:d827aa1412b84bbfd1fef8ff": {
       "first_seen_kst": "2026-10-01T09:21:19+09:00",
@@ -10407,6 +10407,23 @@
       "source_published_kst": "2026-10-07T05:00+09:00",
       "title": "헬스케어 제2의 먹거리…디지털 사업 키우는 제약사들"
     },
+    "fact:365ec99cee7f7f4dc71e01c2": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261004005800898",
+      "source": "연합뉴스",
+      "source_body_digest": "a85fe45d41a5e058ffc51291df7f0d10eae4768b66d74515a5ea49c27c25cca7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:95346ec3d6ca9e07e1fb0ac22d9f1b76d5fa11ed3b4fc599d28ddb5f4d391d24",
+      "source_fact_keys": [
+        "source_fact:v1:f05f46a66872390ab970bacf3d00a82ba886d98f8b9714e1f60c455c56bf88dc"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "[우리품의 아프리카인](55) 대륙 맞춤형 디지털 기술…짐바브웨 개발자 시원데 | 연합뉴스"
+    },
     "fact:3669df86f942074ed7b661f2": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
       "lanes": {
@@ -12053,6 +12070,24 @@
       "source_published_kst": "2026-10-06T09:29+09:00",
       "title": "노벨티노빌리티, 美 바이오텍에 ADC 후보물질 NN3201 기술이전…총 7443억원"
     },
+    "fact:559e98309ec18d49a0e79833": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100623487084969",
+      "source": "머니투데이",
+      "source_body_digest": "f53d9ebb62ddff7555dbb8d97a1c3fa1b2e0067c8870e32bd88150319bda9044",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a852b4bf9e93fb83016b2ad049d761139a2ebcad41f218ff09a1f4381bcd288",
+      "source_fact_keys": [
+        "source_fact:v1:3bec8d06375377a947ad86ff5536983693c943e6949e83df7b8d32a2cceaaf7a",
+        "source_fact:v1:cb2996019024001b377e7c8fb6ef1247a65c609899d5c51302c693253e0a7ba6"
+      ],
+      "source_published_kst": "2026-10-07T06:40+09:00",
+      "title": "[시선강탈] 엘앤에프 vs 이수페타시스 vs 파미셀, 공략법은?"
+    },
     "fact:55c50bb7ff39d169933f4fd7": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -13128,6 +13163,23 @@
       ],
       "source_published_kst": "2026-10-06T16:47+09:00",
       "title": "상장폐지 기준 강화에 법원 제동…거래소"
+    },
+    "fact:6a0249201aeaf8ca4b13ca65": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=02050006645610624&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "03a7fc92d8001df9f43d68c6450e56ca2358eb7f259cf833b6386335fb634066",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9dc62e13c60b74c4c8a52d90393bd10743f99abf110678c59371c1da72dd7582",
+      "source_fact_keys": [
+        "source_fact:v1:4a405be10b874534abada94cc46b9c6a570b691c8f8913ddd89107ee2bf8c10c"
+      ],
+      "source_published_kst": "2026-10-06T17:46+09:00",
+      "title": "美증시 '사상 최고'…고금리도 못막은 AI 랠리[월스트리트in]"
     },
     "fact:6a961b80aa6b810489c1671d": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
@@ -15446,6 +15498,23 @@
       ],
       "source_published_kst": "2026-10-06T08:58+09:00",
       "title": "오텍, AI 서버부터 신선배송까지…'열관리'로 성장축 확장"
+    },
+    "fact:92fe110a363ee25798110aa0": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.inews24.com/view/2012412",
+      "source": "아이뉴스24",
+      "source_body_digest": "edb17a22333dee5e2297937dc3a418c85a87820b23ca642de8f4d5ef8a2473b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47ce5e78d4d7540ed82af86cc9ced6e3d6df20aa387386aa5ffff6695e5fdab3",
+      "source_fact_keys": [
+        "source_fact:v1:0ad69e92e13e9b3e5c54895895d40758c5bb5aeed6e64d93a4b8562a4788c1f3"
+      ],
+      "source_published_kst": "2026-10-07T07:02+09:00",
+      "title": "뉴욕증시 상승...S&P500·나스닥 사상 최고치 경신"
     },
     "fact:936e05cc02bbce9e0ef6b010": {
       "first_seen_kst": "2026-10-06T17:24:43+09:00",
@@ -19166,6 +19235,26 @@
       "source_published_kst": "2026-10-06T15:19+09:00",
       "title": "삼성전자 덜고 하이닉스 담는 ETF…8일 반도체주 수급 분기점"
     },
+    "fact:d795e5f3d8c92cc358b9ef6d": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.fnnews.com/news/202610070631319352",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "959ea76632115146676880fea679fc55d3878c50a546602098a3db82505e07f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:af46f43b34b8958fa67f9e5e7907679a7377c0d502679119a783358de0382bc2",
+      "source_fact_keys": [
+        "source_fact:v1:05bf905460c3251d9c12bbbfacf5af0d870f731d4efb0189028fcd2452ba2440",
+        "source_fact:v1:3fc2e6e7026b636ac78564ec3ce24cc56f86197d941a584e9a84adc461016897",
+        "source_fact:v1:6f1522eba4c02992114427a57a556c1e1d3a83a7166abfb59a2dbac9189111af",
+        "source_fact:v1:aab345e64daa49ef634661a1728564770059f71d577adb27324dbcda2ae963a3"
+      ],
+      "source_published_kst": "2026-10-07T06:31+09:00",
+      "title": "실적 기대에 힘받은 뉴욕증시…S&P500·나스닥 또 최고치(종합)"
+    },
     "fact:d7b0df917265718882e81fa5": {
       "first_seen_kst": "2026-10-06T07:30:15+09:00",
       "lanes": {
@@ -20658,6 +20747,23 @@
       ],
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"30개 테스트공장 풀가동\" SK엔무브 고급 윤활기유 1위 만든 R&D"
+    },
+    "fact:f60cab73ad877a870fa9d429": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02348486645610624",
+      "source": "이데일리",
+      "source_body_digest": "dde4b31cfcf86032b3884d780f2f1a3595be873fb6b121c26499f0703a8214eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a90d336f3b8a5faeee1bcef00a6cc0d6881643f2a81e69b0395d4dd10de74840",
+      "source_fact_keys": [
+        "source_fact:v1:71fb4e58b8eaaf8d65a67ec97c1eb5b3e49dc7963bafe8b8e27a4a453d9909df"
+      ],
+      "source_published_kst": "2026-10-07T06:30+09:00",
+      "title": "“세금 억울” 권리구제 요청한 사장님…국민신문고에 “국세청 직원에 감동”"
     },
     "fact:f69e7631002c0210df2085cf": {
       "first_seen_kst": "2026-10-06T21:54:00+09:00",
@@ -22198,6 +22304,23 @@
       ],
       "source_published_kst": "2026-10-06T15:11+09:00",
       "title": "\"중국 문샷, 내년 1분기 홍콩 상장 추진\" | 연합뉴스"
+    },
+    "link:08a4741577663746fd216ae0": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261004005800898",
+      "source": "연합뉴스",
+      "source_body_digest": "a85fe45d41a5e058ffc51291df7f0d10eae4768b66d74515a5ea49c27c25cca7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:95346ec3d6ca9e07e1fb0ac22d9f1b76d5fa11ed3b4fc599d28ddb5f4d391d24",
+      "source_fact_keys": [
+        "source_fact:v1:f05f46a66872390ab970bacf3d00a82ba886d98f8b9714e1f60c455c56bf88dc"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "[우리품의 아프리카인](55) 대륙 맞춤형 디지털 기술…짐바브웨 개발자 시원데 | 연합뉴스"
     },
     "link:08ad717a78d25acb88132e03": {
       "first_seen_kst": "2026-10-05T17:45:06+09:00",
@@ -25713,6 +25836,23 @@
       "source_published_kst": "2026-10-06T07:34+09:00",
       "title": "KB증권 \"HPSP, 4분기부터 낸드 수혜 본격화…목표가 31%↑\""
     },
+    "link:2734d413121ac41d32bf842e": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=02050006645610624&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "03a7fc92d8001df9f43d68c6450e56ca2358eb7f259cf833b6386335fb634066",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9dc62e13c60b74c4c8a52d90393bd10743f99abf110678c59371c1da72dd7582",
+      "source_fact_keys": [
+        "source_fact:v1:4a405be10b874534abada94cc46b9c6a570b691c8f8913ddd89107ee2bf8c10c"
+      ],
+      "source_published_kst": "2026-10-06T17:46+09:00",
+      "title": "美증시 '사상 최고'…고금리도 못막은 AI 랠리[월스트리트in]"
+    },
     "link:274c131f09fbcca883392a7c": {
       "first_seen_kst": "2026-10-02T16:06:36+09:00",
       "lanes": {
@@ -27592,6 +27732,23 @@
       "source": "뉴시스",
       "title": "버스파업에 놀란 서울시, 2030년 자율주행버스 500대 도입"
     },
+    "link:3693b9bb80413f803ed6f5c3": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=02050006645610624&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "03a7fc92d8001df9f43d68c6450e56ca2358eb7f259cf833b6386335fb634066",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9dc62e13c60b74c4c8a52d90393bd10743f99abf110678c59371c1da72dd7582",
+      "source_fact_keys": [
+        "source_fact:v1:4a405be10b874534abada94cc46b9c6a570b691c8f8913ddd89107ee2bf8c10c"
+      ],
+      "source_published_kst": "2026-10-06T17:46+09:00",
+      "title": "美증시 '사상 최고'…고금리도 못막은 AI 랠리[월스트리트in]"
+    },
     "link:369910ba5966a4fcd386acbc": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
       "lanes": {
@@ -27674,6 +27831,23 @@
       "link": "https://www.etoday.co.kr/news/view/2631725",
       "source": "이투데이",
       "title": "이더커넥트 2026, 폐회사 하는 이종재 이투데이 대표 [포토]"
+    },
+    "link:3779b25a13e9ad059154823b": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.inews24.com/view/2012412",
+      "source": "아이뉴스24",
+      "source_body_digest": "edb17a22333dee5e2297937dc3a418c85a87820b23ca642de8f4d5ef8a2473b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47ce5e78d4d7540ed82af86cc9ced6e3d6df20aa387386aa5ffff6695e5fdab3",
+      "source_fact_keys": [
+        "source_fact:v1:0ad69e92e13e9b3e5c54895895d40758c5bb5aeed6e64d93a4b8562a4788c1f3"
+      ],
+      "source_published_kst": "2026-10-07T07:02+09:00",
+      "title": "뉴욕증시 상승...S&P500·나스닥 사상 최고치 경신"
     },
     "link:377bc40e92ff971f49297ae3": {
       "first_seen_kst": "2026-09-29T06:34:33+09:00",
@@ -41294,6 +41468,24 @@
       "source": "전자신문",
       "title": "삼성바이오에피스, 테바와 바이오시밀러 2종 개발·상업화 협력"
     },
+    "link:aa891f89a45e882973ec3d51": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100623487084969",
+      "source": "머니투데이",
+      "source_body_digest": "f53d9ebb62ddff7555dbb8d97a1c3fa1b2e0067c8870e32bd88150319bda9044",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a852b4bf9e93fb83016b2ad049d761139a2ebcad41f218ff09a1f4381bcd288",
+      "source_fact_keys": [
+        "source_fact:v1:3bec8d06375377a947ad86ff5536983693c943e6949e83df7b8d32a2cceaaf7a",
+        "source_fact:v1:cb2996019024001b377e7c8fb6ef1247a65c609899d5c51302c693253e0a7ba6"
+      ],
+      "source_published_kst": "2026-10-07T06:40+09:00",
+      "title": "[시선강탈] 엘앤에프 vs 이수페타시스 vs 파미셀, 공략법은?"
+    },
     "link:aa92c96d57e0c1bbeac50c0b": {
       "first_seen_kst": "2026-09-29T09:18:00+09:00",
       "lanes": {
@@ -45800,6 +45992,26 @@
       ],
       "source_published_kst": "2026-10-05T20:21+09:00",
       "title": "퀀티넘과 서호주대학교, 호주의 양자 역량 강화를 위한 파트너십 체결"
+    },
+    "link:d152663db6ca4fe7b02f8371": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.fnnews.com/news/202610070631319352",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "959ea76632115146676880fea679fc55d3878c50a546602098a3db82505e07f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:af46f43b34b8958fa67f9e5e7907679a7377c0d502679119a783358de0382bc2",
+      "source_fact_keys": [
+        "source_fact:v1:05bf905460c3251d9c12bbbfacf5af0d870f731d4efb0189028fcd2452ba2440",
+        "source_fact:v1:3fc2e6e7026b636ac78564ec3ce24cc56f86197d941a584e9a84adc461016897",
+        "source_fact:v1:6f1522eba4c02992114427a57a556c1e1d3a83a7166abfb59a2dbac9189111af",
+        "source_fact:v1:aab345e64daa49ef634661a1728564770059f71d577adb27324dbcda2ae963a3"
+      ],
+      "source_published_kst": "2026-10-07T06:31+09:00",
+      "title": "실적 기대에 힘받은 뉴욕증시…S&P500·나스닥 또 최고치(종합)"
     },
     "link:d1948158db726ecf49fbdccf": {
       "first_seen_kst": "2026-10-03T19:42:44+09:00",
@@ -50682,6 +50894,23 @@
       "link": "https://www.etoday.co.kr/news/view/2631947",
       "source": "이투데이",
       "title": "컬리, 넥스트키친 100% 자회사로…간편식 기획부터 유통까지 내재화"
+    },
+    "link:f9e565f8a3a92bf0c0f67bf4": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02348486645610624",
+      "source": "이데일리",
+      "source_body_digest": "dde4b31cfcf86032b3884d780f2f1a3595be873fb6b121c26499f0703a8214eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a90d336f3b8a5faeee1bcef00a6cc0d6881643f2a81e69b0395d4dd10de74840",
+      "source_fact_keys": [
+        "source_fact:v1:71fb4e58b8eaaf8d65a67ec97c1eb5b3e49dc7963bafe8b8e27a4a453d9909df"
+      ],
+      "source_published_kst": "2026-10-07T06:30+09:00",
+      "title": "“세금 억울” 권리구제 요청한 사장님…국민신문고에 “국세청 직원에 감동”"
     },
     "link:fa028724fbd16e4735e20d19": {
       "first_seen_kst": "2026-09-28T15:47:59+09:00",
@@ -56917,6 +57146,24 @@
       "source": "파이낸셜뉴스",
       "title": "한투운용, ACE ETF 대학생 서포터즈와 '캠퍼스어택' 진행"
     },
+    "original:30fd73f7c6fba47fc8847cf8": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100623487084969",
+      "source": "머니투데이",
+      "source_body_digest": "f53d9ebb62ddff7555dbb8d97a1c3fa1b2e0067c8870e32bd88150319bda9044",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a852b4bf9e93fb83016b2ad049d761139a2ebcad41f218ff09a1f4381bcd288",
+      "source_fact_keys": [
+        "source_fact:v1:3bec8d06375377a947ad86ff5536983693c943e6949e83df7b8d32a2cceaaf7a",
+        "source_fact:v1:cb2996019024001b377e7c8fb6ef1247a65c609899d5c51302c693253e0a7ba6"
+      ],
+      "source_published_kst": "2026-10-07T06:40+09:00",
+      "title": "[시선강탈] 엘앤에프 vs 이수페타시스 vs 파미셀, 공략법은?"
+    },
     "original:3139263bd963370152cedc85": {
       "first_seen_kst": "2026-10-03T23:33:26+09:00",
       "lanes": {
@@ -57156,6 +57403,23 @@
       ],
       "source_published_kst": "2026-10-06T03:30+09:00",
       "title": "[美특징주]할리-데이비슨, 신제품·비용절감 기대에 월가 ‘매수’ 상향…주가 8%↑"
+    },
+    "original:338cbebfe4f096cf89245c2c": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=02050006645610624&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "03a7fc92d8001df9f43d68c6450e56ca2358eb7f259cf833b6386335fb634066",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9dc62e13c60b74c4c8a52d90393bd10743f99abf110678c59371c1da72dd7582",
+      "source_fact_keys": [
+        "source_fact:v1:4a405be10b874534abada94cc46b9c6a570b691c8f8913ddd89107ee2bf8c10c"
+      ],
+      "source_published_kst": "2026-10-06T17:46+09:00",
+      "title": "美증시 '사상 최고'…고금리도 못막은 AI 랠리[월스트리트in]"
     },
     "original:3398cf131c6b72042b5fee5d": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -58164,6 +58428,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T10:30+09:00",
       "title": "토스, CJ대한통운과 MOU…프론트 설치 가맹점서 택배 접수까지"
+    },
+    "original:3b705818b6325e839985dc60": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261004005800898",
+      "source": "연합뉴스",
+      "source_body_digest": "a85fe45d41a5e058ffc51291df7f0d10eae4768b66d74515a5ea49c27c25cca7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:95346ec3d6ca9e07e1fb0ac22d9f1b76d5fa11ed3b4fc599d28ddb5f4d391d24",
+      "source_fact_keys": [
+        "source_fact:v1:f05f46a66872390ab970bacf3d00a82ba886d98f8b9714e1f60c455c56bf88dc"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "[우리품의 아프리카인](55) 대륙 맞춤형 디지털 기술…짐바브웨 개발자 시원데 | 연합뉴스"
     },
     "original:3bb734c09597f2d4cc28137e": {
       "first_seen_kst": "2026-10-01T22:39:53+09:00",
@@ -62752,6 +63033,23 @@
       "source_published_kst": "2026-10-05T20:05+09:00",
       "title": "마이크로소프트, 기업 보안 수요 확대…투자의견↑-멜리우스"
     },
+    "original:628a82b918962d9f79daf7d8": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.inews24.com/view/2012412",
+      "source": "아이뉴스24",
+      "source_body_digest": "edb17a22333dee5e2297937dc3a418c85a87820b23ca642de8f4d5ef8a2473b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47ce5e78d4d7540ed82af86cc9ced6e3d6df20aa387386aa5ffff6695e5fdab3",
+      "source_fact_keys": [
+        "source_fact:v1:0ad69e92e13e9b3e5c54895895d40758c5bb5aeed6e64d93a4b8562a4788c1f3"
+      ],
+      "source_published_kst": "2026-10-07T07:02+09:00",
+      "title": "뉴욕증시 상승...S&P500·나스닥 사상 최고치 경신"
+    },
     "original:628c033cd14a2df50403ee7b": {
       "first_seen_kst": "2026-10-02T18:23:52+09:00",
       "lanes": {
@@ -67327,6 +67625,26 @@
       "link": "https://magazine.hankyung.com/money/article/202610029562c",
       "source": "한국경제",
       "title": "건원엔지니어링, 목동4단지 재건축 CM 우선협상대상자 선정"
+    },
+    "original:8ad6fba5563badcf05173e0d": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.fnnews.com/news/202610070631319352",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "959ea76632115146676880fea679fc55d3878c50a546602098a3db82505e07f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:af46f43b34b8958fa67f9e5e7907679a7377c0d502679119a783358de0382bc2",
+      "source_fact_keys": [
+        "source_fact:v1:05bf905460c3251d9c12bbbfacf5af0d870f731d4efb0189028fcd2452ba2440",
+        "source_fact:v1:3fc2e6e7026b636ac78564ec3ce24cc56f86197d941a584e9a84adc461016897",
+        "source_fact:v1:6f1522eba4c02992114427a57a556c1e1d3a83a7166abfb59a2dbac9189111af",
+        "source_fact:v1:aab345e64daa49ef634661a1728564770059f71d577adb27324dbcda2ae963a3"
+      ],
+      "source_published_kst": "2026-10-07T06:31+09:00",
+      "title": "실적 기대에 힘받은 뉴욕증시…S&P500·나스닥 또 최고치(종합)"
     },
     "original:8b1a7fd0225b50388c09c11f": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
@@ -74149,6 +74467,23 @@
       ],
       "source_published_kst": "2026-10-06T11:40+09:00",
       "title": "심텍 `CPU, LPDDR 수요 확대의 중심` 증권사 발표에 강세…7.78%"
+    },
+    "original:c948d06008def095cba00d54": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02348486645610624",
+      "source": "이데일리",
+      "source_body_digest": "dde4b31cfcf86032b3884d780f2f1a3595be873fb6b121c26499f0703a8214eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a90d336f3b8a5faeee1bcef00a6cc0d6881643f2a81e69b0395d4dd10de74840",
+      "source_fact_keys": [
+        "source_fact:v1:71fb4e58b8eaaf8d65a67ec97c1eb5b3e49dc7963bafe8b8e27a4a453d9909df"
+      ],
+      "source_published_kst": "2026-10-07T06:30+09:00",
+      "title": "“세금 억울” 권리구제 요청한 사장님…국민신문고에 “국세청 직원에 감동”"
     },
     "original:c9599f329a68b7272cbfe673": {
       "first_seen_kst": "2026-10-07T01:18:00+09:00",
@@ -81720,6 +82055,26 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"관세 300%\"...벼랑 끝 트럼프, 한국 쥐어짜서 현금 지원 공약 '펑펑'"
     },
+    "source_fact:05a86d645663d0854b3e7bd6": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.fnnews.com/news/202610070631319352",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "959ea76632115146676880fea679fc55d3878c50a546602098a3db82505e07f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:af46f43b34b8958fa67f9e5e7907679a7377c0d502679119a783358de0382bc2",
+      "source_fact_keys": [
+        "source_fact:v1:05bf905460c3251d9c12bbbfacf5af0d870f731d4efb0189028fcd2452ba2440",
+        "source_fact:v1:3fc2e6e7026b636ac78564ec3ce24cc56f86197d941a584e9a84adc461016897",
+        "source_fact:v1:6f1522eba4c02992114427a57a556c1e1d3a83a7166abfb59a2dbac9189111af",
+        "source_fact:v1:aab345e64daa49ef634661a1728564770059f71d577adb27324dbcda2ae963a3"
+      ],
+      "source_published_kst": "2026-10-07T06:31+09:00",
+      "title": "실적 기대에 힘받은 뉴욕증시…S&P500·나스닥 또 최고치(종합)"
+    },
     "source_fact:05cc33823489ae9a36f1e1a5": {
       "first_seen_kst": "2026-10-06T12:10:48+09:00",
       "lanes": {
@@ -87180,6 +87535,26 @@
       "source_published_kst": "2026-10-05T22:23+09:00",
       "title": "시놉시스, 10억달러 자사주 ASR 체결..173만5천주 우선 인도"
     },
+    "source_fact:1d8c6b59e645f8dd13891748": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.fnnews.com/news/202610070631319352",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "959ea76632115146676880fea679fc55d3878c50a546602098a3db82505e07f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:af46f43b34b8958fa67f9e5e7907679a7377c0d502679119a783358de0382bc2",
+      "source_fact_keys": [
+        "source_fact:v1:05bf905460c3251d9c12bbbfacf5af0d870f731d4efb0189028fcd2452ba2440",
+        "source_fact:v1:3fc2e6e7026b636ac78564ec3ce24cc56f86197d941a584e9a84adc461016897",
+        "source_fact:v1:6f1522eba4c02992114427a57a556c1e1d3a83a7166abfb59a2dbac9189111af",
+        "source_fact:v1:aab345e64daa49ef634661a1728564770059f71d577adb27324dbcda2ae963a3"
+      ],
+      "source_published_kst": "2026-10-07T06:31+09:00",
+      "title": "실적 기대에 힘받은 뉴욕증시…S&P500·나스닥 또 최고치(종합)"
+    },
     "source_fact:1d9b9915b882557f15e625ad": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
       "lanes": {
@@ -91847,6 +92222,23 @@
       "source_published_kst": "2026-10-07T07:00+09:00",
       "title": "후티 공습, 사우디 진출 韓 기업 인근까지⋯현장·직원 피해는 아직"
     },
+    "source_fact:2fe89d9c08c498f02d92c3d6": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.inews24.com/view/2012412",
+      "source": "아이뉴스24",
+      "source_body_digest": "edb17a22333dee5e2297937dc3a418c85a87820b23ca642de8f4d5ef8a2473b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47ce5e78d4d7540ed82af86cc9ced6e3d6df20aa387386aa5ffff6695e5fdab3",
+      "source_fact_keys": [
+        "source_fact:v1:0ad69e92e13e9b3e5c54895895d40758c5bb5aeed6e64d93a4b8562a4788c1f3"
+      ],
+      "source_published_kst": "2026-10-07T07:02+09:00",
+      "title": "뉴욕증시 상승...S&P500·나스닥 사상 최고치 경신"
+    },
     "source_fact:2ff6713ef964b10ed1eabd08": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
       "lanes": {
@@ -93944,6 +94336,24 @@
       ],
       "source_published_kst": "2026-10-06T03:32+09:00",
       "title": "[美특징주]마이크로소프트, 멜리우스 ‘매수’ 상향에 2%↑…AI 보안 경쟁력 주목"
+    },
+    "source_fact:37d871a17c17f8ae26f738da": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100623487084969",
+      "source": "머니투데이",
+      "source_body_digest": "f53d9ebb62ddff7555dbb8d97a1c3fa1b2e0067c8870e32bd88150319bda9044",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a852b4bf9e93fb83016b2ad049d761139a2ebcad41f218ff09a1f4381bcd288",
+      "source_fact_keys": [
+        "source_fact:v1:3bec8d06375377a947ad86ff5536983693c943e6949e83df7b8d32a2cceaaf7a",
+        "source_fact:v1:cb2996019024001b377e7c8fb6ef1247a65c609899d5c51302c693253e0a7ba6"
+      ],
+      "source_published_kst": "2026-10-07T06:40+09:00",
+      "title": "[시선강탈] 엘앤에프 vs 이수페타시스 vs 파미셀, 공략법은?"
     },
     "source_fact:37e4d8c7d12a67fd399780a6": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
@@ -105190,6 +105600,26 @@
       "source_published_kst": "2026-10-06T22:00+09:00",
       "title": "포스코퓨처엠·삼성SDI … LFP 양극재 6조원 계약"
     },
+    "source_fact:65865c267f9a04bde81b2968": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.fnnews.com/news/202610070631319352",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "959ea76632115146676880fea679fc55d3878c50a546602098a3db82505e07f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:af46f43b34b8958fa67f9e5e7907679a7377c0d502679119a783358de0382bc2",
+      "source_fact_keys": [
+        "source_fact:v1:05bf905460c3251d9c12bbbfacf5af0d870f731d4efb0189028fcd2452ba2440",
+        "source_fact:v1:3fc2e6e7026b636ac78564ec3ce24cc56f86197d941a584e9a84adc461016897",
+        "source_fact:v1:6f1522eba4c02992114427a57a556c1e1d3a83a7166abfb59a2dbac9189111af",
+        "source_fact:v1:aab345e64daa49ef634661a1728564770059f71d577adb27324dbcda2ae963a3"
+      ],
+      "source_published_kst": "2026-10-07T06:31+09:00",
+      "title": "실적 기대에 힘받은 뉴욕증시…S&P500·나스닥 또 최고치(종합)"
+    },
     "source_fact:6628a7a455edee40bcd94457": {
       "first_seen_kst": "2026-10-06T15:03:09+09:00",
       "lanes": {
@@ -105459,6 +105889,23 @@
       ],
       "source_published_kst": "2026-10-06T18:38+09:00",
       "title": "부산 스타트업 '데이터스피라' 伊 명품 돌체앤가바나 뚫었다"
+    },
+    "source_fact:6723b4362dcb43dc3312ce93": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=02050006645610624&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "03a7fc92d8001df9f43d68c6450e56ca2358eb7f259cf833b6386335fb634066",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9dc62e13c60b74c4c8a52d90393bd10743f99abf110678c59371c1da72dd7582",
+      "source_fact_keys": [
+        "source_fact:v1:4a405be10b874534abada94cc46b9c6a570b691c8f8913ddd89107ee2bf8c10c"
+      ],
+      "source_published_kst": "2026-10-06T17:46+09:00",
+      "title": "美증시 '사상 최고'…고금리도 못막은 AI 랠리[월스트리트in]"
     },
     "source_fact:67330f47e3cc6c9df0bfd2c4": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
@@ -121079,6 +121526,23 @@
       "source_published_kst": "2026-10-05T21:54+09:00",
       "title": "비트마인 이머전 테크놀로, ETH 602만개 보유..총자산 174억 달러"
     },
+    "source_fact:a728cbd823fc1db5b43acdcb": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261004005800898",
+      "source": "연합뉴스",
+      "source_body_digest": "a85fe45d41a5e058ffc51291df7f0d10eae4768b66d74515a5ea49c27c25cca7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:95346ec3d6ca9e07e1fb0ac22d9f1b76d5fa11ed3b4fc599d28ddb5f4d391d24",
+      "source_fact_keys": [
+        "source_fact:v1:f05f46a66872390ab970bacf3d00a82ba886d98f8b9714e1f60c455c56bf88dc"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "[우리품의 아프리카인](55) 대륙 맞춤형 디지털 기술…짐바브웨 개발자 시원데 | 연합뉴스"
+    },
     "source_fact:a7295c3facb2263731b62c95": {
       "first_seen_kst": "2026-10-06T21:54:00+09:00",
       "lanes": {
@@ -121973,6 +122437,24 @@
       ],
       "source_published_kst": "2026-10-05T22:07+09:00",
       "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
+    },
+    "source_fact:ab59b5229d7249a10421faca": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100623487084969",
+      "source": "머니투데이",
+      "source_body_digest": "f53d9ebb62ddff7555dbb8d97a1c3fa1b2e0067c8870e32bd88150319bda9044",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a852b4bf9e93fb83016b2ad049d761139a2ebcad41f218ff09a1f4381bcd288",
+      "source_fact_keys": [
+        "source_fact:v1:3bec8d06375377a947ad86ff5536983693c943e6949e83df7b8d32a2cceaaf7a",
+        "source_fact:v1:cb2996019024001b377e7c8fb6ef1247a65c609899d5c51302c693253e0a7ba6"
+      ],
+      "source_published_kst": "2026-10-07T06:40+09:00",
+      "title": "[시선강탈] 엘앤에프 vs 이수페타시스 vs 파미셀, 공략법은?"
     },
     "source_fact:ab6176bf5e22d68b4c423646": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
@@ -124209,6 +124691,26 @@
       ],
       "source_published_kst": "2026-10-06T09:16+09:00",
       "title": "비트코인, 1억1600만원대 강보합…美 고용 둔화에 금리 인상 부담 완화"
+    },
+    "source_fact:b40419b5d4d638aca542bdbf": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.fnnews.com/news/202610070631319352",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "959ea76632115146676880fea679fc55d3878c50a546602098a3db82505e07f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:af46f43b34b8958fa67f9e5e7907679a7377c0d502679119a783358de0382bc2",
+      "source_fact_keys": [
+        "source_fact:v1:05bf905460c3251d9c12bbbfacf5af0d870f731d4efb0189028fcd2452ba2440",
+        "source_fact:v1:3fc2e6e7026b636ac78564ec3ce24cc56f86197d941a584e9a84adc461016897",
+        "source_fact:v1:6f1522eba4c02992114427a57a556c1e1d3a83a7166abfb59a2dbac9189111af",
+        "source_fact:v1:aab345e64daa49ef634661a1728564770059f71d577adb27324dbcda2ae963a3"
+      ],
+      "source_published_kst": "2026-10-07T06:31+09:00",
+      "title": "실적 기대에 힘받은 뉴욕증시…S&P500·나스닥 또 최고치(종합)"
     },
     "source_fact:b40649db1e703ee9e8d19acb": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
@@ -141546,6 +142048,23 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "산업부 국감 돌입…대미투자·호남 반도체·메가특구 '도마'"
     },
+    "source_fact:fa146361d81f939bdcead6fc": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02348486645610624",
+      "source": "이데일리",
+      "source_body_digest": "dde4b31cfcf86032b3884d780f2f1a3595be873fb6b121c26499f0703a8214eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a90d336f3b8a5faeee1bcef00a6cc0d6881643f2a81e69b0395d4dd10de74840",
+      "source_fact_keys": [
+        "source_fact:v1:71fb4e58b8eaaf8d65a67ec97c1eb5b3e49dc7963bafe8b8e27a4a453d9909df"
+      ],
+      "source_published_kst": "2026-10-07T06:30+09:00",
+      "title": "“세금 억울” 권리구제 요청한 사장님…국민신문고에 “국세청 직원에 감동”"
+    },
     "source_fact:fa1abc1a8c2a9e9a43cab46c": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
       "lanes": {
@@ -148859,6 +149378,24 @@
       "source": "파이낸셜뉴스",
       "title": "한투운용, ACE ETF 대학생 서포터즈와 '캠퍼스어택' 진행"
     },
+    "title:30fd73f7c6fba47fc8847cf8": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100623487084969",
+      "source": "머니투데이",
+      "source_body_digest": "f53d9ebb62ddff7555dbb8d97a1c3fa1b2e0067c8870e32bd88150319bda9044",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a852b4bf9e93fb83016b2ad049d761139a2ebcad41f218ff09a1f4381bcd288",
+      "source_fact_keys": [
+        "source_fact:v1:3bec8d06375377a947ad86ff5536983693c943e6949e83df7b8d32a2cceaaf7a",
+        "source_fact:v1:cb2996019024001b377e7c8fb6ef1247a65c609899d5c51302c693253e0a7ba6"
+      ],
+      "source_published_kst": "2026-10-07T06:40+09:00",
+      "title": "[시선강탈] 엘앤에프 vs 이수페타시스 vs 파미셀, 공략법은?"
+    },
     "title:3139263bd963370152cedc85": {
       "first_seen_kst": "2026-10-03T23:33:26+09:00",
       "lanes": {
@@ -149098,6 +149635,23 @@
       ],
       "source_published_kst": "2026-10-06T03:30+09:00",
       "title": "[美특징주]할리-데이비슨, 신제품·비용절감 기대에 월가 ‘매수’ 상향…주가 8%↑"
+    },
+    "title:338cbebfe4f096cf89245c2c": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=02050006645610624&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "03a7fc92d8001df9f43d68c6450e56ca2358eb7f259cf833b6386335fb634066",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9dc62e13c60b74c4c8a52d90393bd10743f99abf110678c59371c1da72dd7582",
+      "source_fact_keys": [
+        "source_fact:v1:4a405be10b874534abada94cc46b9c6a570b691c8f8913ddd89107ee2bf8c10c"
+      ],
+      "source_published_kst": "2026-10-06T17:46+09:00",
+      "title": "美증시 '사상 최고'…고금리도 못막은 AI 랠리[월스트리트in]"
     },
     "title:3398cf131c6b72042b5fee5d": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -150117,6 +150671,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T10:30+09:00",
       "title": "토스, CJ대한통운과 MOU…프론트 설치 가맹점서 택배 접수까지"
+    },
+    "title:3b705818b6325e839985dc60": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261004005800898",
+      "source": "연합뉴스",
+      "source_body_digest": "a85fe45d41a5e058ffc51291df7f0d10eae4768b66d74515a5ea49c27c25cca7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:95346ec3d6ca9e07e1fb0ac22d9f1b76d5fa11ed3b4fc599d28ddb5f4d391d24",
+      "source_fact_keys": [
+        "source_fact:v1:f05f46a66872390ab970bacf3d00a82ba886d98f8b9714e1f60c455c56bf88dc"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "[우리품의 아프리카인](55) 대륙 맞춤형 디지털 기술…짐바브웨 개발자 시원데 | 연합뉴스"
     },
     "title:3bb734c09597f2d4cc28137e": {
       "first_seen_kst": "2026-10-01T22:39:53+09:00",
@@ -154750,6 +155321,23 @@
       ],
       "source_published_kst": "2026-10-05T20:05+09:00",
       "title": "마이크로소프트, 기업 보안 수요 확대…투자의견↑-멜리우스"
+    },
+    "title:628a82b918962d9f79daf7d8": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.inews24.com/view/2012412",
+      "source": "아이뉴스24",
+      "source_body_digest": "edb17a22333dee5e2297937dc3a418c85a87820b23ca642de8f4d5ef8a2473b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47ce5e78d4d7540ed82af86cc9ced6e3d6df20aa387386aa5ffff6695e5fdab3",
+      "source_fact_keys": [
+        "source_fact:v1:0ad69e92e13e9b3e5c54895895d40758c5bb5aeed6e64d93a4b8562a4788c1f3"
+      ],
+      "source_published_kst": "2026-10-07T07:02+09:00",
+      "title": "뉴욕증시 상승...S&P500·나스닥 사상 최고치 경신"
     },
     "title:628c033cd14a2df50403ee7b": {
       "first_seen_kst": "2026-10-02T18:23:52+09:00",
@@ -159453,6 +160041,26 @@
       "link": "https://magazine.hankyung.com/money/article/202610029562c",
       "source": "한국경제",
       "title": "건원엔지니어링, 목동4단지 재건축 CM 우선협상대상자 선정"
+    },
+    "title:8ad6fba5563badcf05173e0d": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.fnnews.com/news/202610070631319352",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "959ea76632115146676880fea679fc55d3878c50a546602098a3db82505e07f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:af46f43b34b8958fa67f9e5e7907679a7377c0d502679119a783358de0382bc2",
+      "source_fact_keys": [
+        "source_fact:v1:05bf905460c3251d9c12bbbfacf5af0d870f731d4efb0189028fcd2452ba2440",
+        "source_fact:v1:3fc2e6e7026b636ac78564ec3ce24cc56f86197d941a584e9a84adc461016897",
+        "source_fact:v1:6f1522eba4c02992114427a57a556c1e1d3a83a7166abfb59a2dbac9189111af",
+        "source_fact:v1:aab345e64daa49ef634661a1728564770059f71d577adb27324dbcda2ae963a3"
+      ],
+      "source_published_kst": "2026-10-07T06:31+09:00",
+      "title": "실적 기대에 힘받은 뉴욕증시…S&P500·나스닥 또 최고치(종합)"
     },
     "title:8b1a7fd0225b50388c09c11f": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
@@ -164327,6 +164935,26 @@
       "source": "뉴시스",
       "title": "나경원 \"재판 받겠다 이 한마디면 충분했던 기자회견…나머지는 믿거나 말거나\""
     },
+    "title:b5d4e18e87ef217432f34a80": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.fnnews.com/news/202610070631319352",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "959ea76632115146676880fea679fc55d3878c50a546602098a3db82505e07f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:af46f43b34b8958fa67f9e5e7907679a7377c0d502679119a783358de0382bc2",
+      "source_fact_keys": [
+        "source_fact:v1:05bf905460c3251d9c12bbbfacf5af0d870f731d4efb0189028fcd2452ba2440",
+        "source_fact:v1:3fc2e6e7026b636ac78564ec3ce24cc56f86197d941a584e9a84adc461016897",
+        "source_fact:v1:6f1522eba4c02992114427a57a556c1e1d3a83a7166abfb59a2dbac9189111af",
+        "source_fact:v1:aab345e64daa49ef634661a1728564770059f71d577adb27324dbcda2ae963a3"
+      ],
+      "source_published_kst": "2026-10-07T06:31+09:00",
+      "title": "실적 기대에 힘받은 뉴욕증시…S&P500·나스닥 또 최고치(종합)"
+    },
     "title:b64051ec5babb32bd0c827fc": {
       "first_seen_kst": "2026-10-05T06:25:21+09:00",
       "lanes": {
@@ -166450,6 +167078,23 @@
       ],
       "source_published_kst": "2026-10-06T11:40+09:00",
       "title": "심텍 `CPU, LPDDR 수요 확대의 중심` 증권사 발표에 강세…7.78%"
+    },
+    "title:c948d06008def095cba00d54": {
+      "first_seen_kst": "2026-10-07T07:12:15+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:12:15+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:12:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02348486645610624",
+      "source": "이데일리",
+      "source_body_digest": "dde4b31cfcf86032b3884d780f2f1a3595be873fb6b121c26499f0703a8214eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a90d336f3b8a5faeee1bcef00a6cc0d6881643f2a81e69b0395d4dd10de74840",
+      "source_fact_keys": [
+        "source_fact:v1:71fb4e58b8eaaf8d65a67ec97c1eb5b3e49dc7963bafe8b8e27a4a453d9909df"
+      ],
+      "source_published_kst": "2026-10-07T06:30+09:00",
+      "title": "“세금 억울” 권리구제 요청한 사장님…국민신문고에 “국세청 직원에 감동”"
     },
     "title:c9599f329a68b7272cbfe673": {
       "first_seen_kst": "2026-10-07T01:18:00+09:00",
@@ -172882,5 +173527,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-07T07:01:10+09:00"
+  "updated_at_kst": "2026-10-07T07:12:15+09:00"
 }
