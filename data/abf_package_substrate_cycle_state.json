@@ -1,0 +1,43 @@
+{
+  "initialized": true,
+  "track_version": 1,
+  "bootstrap_pending": true,
+  "bofa_prior": {
+    "as_of": "2026-06",
+    "shortage_2026_pct": 4,
+    "shortage_2027_pct": 10,
+    "shortage_2028_pct": 16,
+    "server_cpu_share_2026_pct": 13,
+    "server_cpu_share_2027_pct": 14,
+    "server_cpu_share_2028_pct": 14,
+    "source_kind": "사용자 제공 BofA Global Research 차트 + 최신 BofA 리비전에서 과거 전망으로 재확인"
+  },
+  "bofa_current": {
+    "as_of": "2026-08-19",
+    "shortage_2026_pct": 7,
+    "shortage_2027_pct": 14,
+    "shortage_2028_pct": 19,
+    "server_cpu_share_2026_pct": 17,
+    "server_cpu_share_2027_pct": 21,
+    "server_cpu_share_2028_pct": 21,
+    "supply_growth_2026_pct": 12,
+    "supply_growth_2027_pct": 22,
+    "supply_growth_2028_pct": 19,
+    "unimicron_capacity_growth_2027_min_pct": 30,
+    "unimicron_capacity_growth_2028_min_pct": 30,
+    "unimicron_high_value_share_2h26_min_pct": 50,
+    "nypcb_high_end_switch_share_min_pct": 50,
+    "source": "BofA Global Research",
+    "source_kind": "BofA 리포트 해설 재현자료 교차확인",
+    "source_url": "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82",
+    "secondary_source_url": "https://www.cmoney.tw/forum/article/182861822",
+    "source_rank": 2
+  },
+  "updated_at_kst": "2026-10-06T17:22:00+09:00",
+  "last_scan_count": 0,
+  "last_material_change_count": 0,
+  "last_new_event_count": 0,
+  "historical_prior_reposts_suppressed": 0,
+  "seen_fingerprints": [],
+  "delivered_event_keys": []
+}
