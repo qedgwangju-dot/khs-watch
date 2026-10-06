@@ -75,6 +75,10 @@ jobs:
           assert "kospi_unified_industry_collector.py" in s, "UBM industry collector missing"
           assert "out/kospi_industry_flow.jsonl" in s, "UBM industry flow handoff missing"
           assert "requests ebest" in s, "production ebest dependency missing"
+          assert "collector_supervisor()" in s, "UBM collector supervisor missing"
+          assert "kospi_watcher_restart" in s, "KOSPI watcher restart loop missing"
+          assert "WATCH_FAILS" in s, "KOSPI watcher failure counter missing"
+          assert "timeout-minutes: 280" in s, "afternoon close coverage timeout missing"
           print("production_workflow_structure_valid=true")
           PY
 
