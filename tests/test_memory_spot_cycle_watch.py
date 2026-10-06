@@ -495,6 +495,38 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         official = dict(old, shortage_official_guidance=True)
         self.assertTrue(any("익명·보도→공식" in x for x in w._ymtc_nand_duration_changes(old, official)))
 
+    def test_ymtc_secondary_cannot_clear_original_anonymous_provenance(self):
+        old = dict(w.YMTC_NAND_DURATION_BASELINE)
+        self.assertTrue(old["anonymous_employee_source"])
+        obs = {
+            "shortage_through_year": 2029,
+            "shortage_official_guidance": False,
+            "source": "XenoSpectrum",
+            "source_url": "https://xenospectrum.com/en/ymtc-memory-shortage-nand-outlook/",
+            "source_rank": 2,
+        }
+        merged = w._merge_ymtc_nand_state(old, obs)
+        self.assertTrue(merged["anonymous_employee_source"])
+        self.assertEqual(
+            merged["source_url"],
+            "https://www.thewirechina.com/2026/10/04/the-survivor/",
+        )
+
+    def test_ymtc_official_guidance_can_supersede_anonymous_status(self):
+        old = dict(w.YMTC_NAND_DURATION_BASELINE)
+        obs = {
+            "shortage_through_year": 2030,
+            "shortage_official_guidance": True,
+            "anonymous_employee_source": False,
+            "source": "YMTC",
+            "source_url": "https://www.ymtc.com/example",
+            "source_rank": 4,
+        }
+        merged = w._merge_ymtc_nand_state(old, obs)
+        self.assertTrue(merged["shortage_official_guidance"])
+        self.assertFalse(merged["anonymous_employee_source"])
+        self.assertEqual(merged["source"], "YMTC")
+
     def test_ymtc_untrusted_repost_is_not_promoted(self):
         item = {
             "title": "YMTC NAND shortage may last until 2029",
