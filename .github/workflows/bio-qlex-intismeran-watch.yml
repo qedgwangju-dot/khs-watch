@@ -25,6 +25,7 @@ on:
       - "scripts/halozyme_legal_watch_v2.py"
       - "scripts/halozyme_legal_watch_v3.py"
       - "scripts/halozyme_legal_watch_v4.py"
+      - "scripts/optogenetics_translation_watch.py"
       - "tests/test_bio_alert_regressions.py"
   schedule:
     - cron: "*/15 * * * *"
@@ -62,6 +63,67 @@ jobs:
       - name: Run Korean-guarded bio watch
         run: python scripts/bio_single_runner_v3.py
 
+      - name: Run optogenetics clinical translation watch
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/optogenetics_translation_watch.py
+          python scripts/optogenetics_translation_watch.py
+          cat out/optogenetics_translation_status.md >> "$GITHUB_STEP_SUMMARY"
+
+          sent_ok=0
+          if [ -f out/optogenetics_translation_alert.md ]; then
+            result=$(python scripts/qlex_telegram_send_v2.py out/optogenetics_translation_alert.md)
+            echo "$result"
+            RESULT="$result" python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          import re
+          from zoneinfo import ZoneInfo
+
+          text = os.environ.get("RESULT", "")
+          m = re.search(r"message_ids=\[([^\]]*)\]", text)
+          ids = []
+          if m:
+              ids = [int(x.strip()) for x in m.group(1).split(",") if x.strip().isdigit()]
+          if not ids:
+              raise SystemExit("optogenetics Telegram message_id missing")
+          proof = {
+              "status": "confirmed",
+              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+              "bot_username": os.environ.get("EXPECTED_TELEGRAM_BOT_USERNAME", ""),
+              "message_ids": ids,
+          }
+          pathlib.Path("out/optogenetics_translation_send_confirmed.json").write_text(
+              json.dumps(proof, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          PY
+            sent_ok=1
+          fi
+
+          if [ ! -f out/optogenetics_translation_alert.md ] || [ "$sent_ok" -eq 1 ]; then
+            cp out/optogenetics_translation_watch_pending_state.json data/optogenetics_translation_watch_state.json
+            if [ "$sent_ok" -eq 1 ]; then
+              python - <<'PY'
+          import json
+          import pathlib
+
+          state_path = pathlib.Path("data/optogenetics_translation_watch_state.json")
+          state = json.loads(state_path.read_text(encoding="utf-8"))
+          proof = json.loads(pathlib.Path("out/optogenetics_translation_send_confirmed.json").read_text(encoding="utf-8"))
+          state["last_successful_delivery_kst"] = proof["confirmed_at_kst"]
+          state["telegram_message_ids"] = proof["message_ids"]
+          state["bot_username"] = proof["bot_username"]
+          state_path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          PY
+            fi
+          else
+            echo "광유전학 Telegram 전송 미확인 — 상태 기준선을 갱신하지 않습니다." >&2
+            exit 1
+          fi
 
       - name: Publish bio watch status
         if: always()
@@ -80,13 +142,17 @@ jobs:
             echo "## Halozyme 특허분쟁 감시" >> "$GITHUB_STEP_SUMMARY"
             cat out/halozyme_ptab_status.md >> "$GITHUB_STEP_SUMMARY"
           fi
+          if [ -f out/optogenetics_translation_status.md ]; then
+            echo "## 광유전학 임상·허가 감시" >> "$GITHUB_STEP_SUMMARY"
+            cat out/optogenetics_translation_status.md >> "$GITHUB_STEP_SUMMARY"
+          fi
 
       - name: Commit bio watch states
         if: always()
         run: |
           git config user.name "bio-watch[bot]"
           git config user.email "bio-watch[bot]@users.noreply.github.com"
-          git add data/qlex_sc_conversion_watch_state.json data/qlex_wac_ir_watch_state.json data/intismeran_qlex_watch_state.json data/jemperli_altb4_watch_state.json data/enhertu_altb4_watch_state.json data/halozyme_ptab_watch_state.json data/bio_watch_heartbeat.json 2>/dev/null || true
+          git add data/qlex_sc_conversion_watch_state.json data/qlex_wac_ir_watch_state.json data/intismeran_qlex_watch_state.json data/jemperli_altb4_watch_state.json data/enhertu_altb4_watch_state.json data/halozyme_ptab_watch_state.json data/bio_watch_heartbeat.json data/optogenetics_translation_watch_state.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "Bio watcher states unchanged"
           else
@@ -110,6 +176,11 @@ jobs:
             data/bio_watch_heartbeat.json
             data/qlex_wac_ir_watch_state.json
             data/halozyme_ptab_watch_state.json
+            data/optogenetics_translation_watch_state.json
+            out/optogenetics_translation_status.md
+            out/optogenetics_translation_alert.md
+            out/optogenetics_translation_watch_pending_state.json
+            out/optogenetics_translation_send_confirmed.json
             out/qlex_sc_conversion_status.md
             out/qlex_sc_conversion_alert.md
             out/qlex_sc_conversion_watch_state_pending.json
