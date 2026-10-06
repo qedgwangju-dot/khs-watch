@@ -63,7 +63,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: python -m pip install --disable-pip-version-check --quiet requests beautifulsoup4 pandas lxml
+        run: python -m pip install --disable-pip-version-check --quiet requests beautifulsoup4 pandas lxml exchange_calendars
 
       - name: Verify required secrets
         run: |
@@ -149,8 +149,10 @@ jobs:
           REPOSITORY: ${{ github.repository }}
         run: |
           python - <<'PY'
-          import datetime as dt, json, os, urllib.request
+          import datetime as dt, json, os, sys, urllib.request
           from zoneinfo import ZoneInfo
+          sys.path.insert(0, "scripts")
+          from krx_session_calendar import session_state
 
           repo=os.environ["REPOSITORY"]
           token=os.environ["GH_TOKEN"]
@@ -166,8 +168,13 @@ jobs:
                   return json.loads(r.read().decode("utf-8")).get("workflow_runs",[])
 
           now=dt.datetime.now(ZoneInfo("Asia/Seoul"))
+          session=session_state(now)
           market_window=bool(
-              now.weekday()<5 and dt.time(8,20)<=now.time()<=dt.time(15,32)
+              session["is_session"]
+              and session["open"] is not None
+              and session["close"] is not None
+              and session["open"]-dt.timedelta(minutes=40) <= now
+              and now <= session["close"]+dt.timedelta(minutes=2)
           )
           active=[x for x in list_runs() if x.get("status") in {"queued","in_progress"}]
 
@@ -204,16 +211,26 @@ jobs:
           REPOSITORY: ${{ github.repository }}
         run: |
           python - <<'PY'
-          import datetime as dt, json, os, urllib.request
+          import datetime as dt, json, os, sys, urllib.request
           from zoneinfo import ZoneInfo
+          sys.path.insert(0, "scripts")
+          from krx_session_calendar import session_state
 
           if os.getenv("KOSPI_REALTIME_WATCH_ACTIVE") == "1":
               print("kospi_realtime_watchdog=rollout_already_dispatched")
               raise SystemExit(0)
 
           now = dt.datetime.now(ZoneInfo("Asia/Seoul"))
-          if now.weekday() >= 5 or not (dt.time(8, 20) <= now.time() <= dt.time(15, 32)):
-              print("kospi_realtime_watchdog=outside_market_window")
+          session=session_state(now)
+          market_window=bool(
+              session["is_session"]
+              and session["open"] is not None
+              and session["close"] is not None
+              and session["open"]-dt.timedelta(minutes=40) <= now
+              and now <= session["close"]+dt.timedelta(minutes=2)
+          )
+          if not market_window:
+              print(f"kospi_realtime_watchdog=outside_market_window session={session['is_session']}")
               raise SystemExit(0)
 
           repo = os.environ["REPOSITORY"]
