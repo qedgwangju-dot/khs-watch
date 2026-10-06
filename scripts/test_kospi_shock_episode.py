@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import time
 from collections import deque
-from kospi_shock_episode_watch import Watch, fmt_clock, ko_subject, ls_post
+from kospi_shock_episode_watch import Watch, fmt_clock, ko_subject, ls_post, get_token
 
 w = Watch.__new__(Watch)
 w.idx = deque(maxlen=30000)
@@ -214,3 +214,48 @@ amain_src = inspect.getsource(ks.amain)
 assert "w.save_handoff(handoff_out)" in amain_src, amain_src
 assert "handoff_save_error" in amain_src, amain_src
 print("failure_handoff_regression=true")
+
+
+# Regression: LS OAuth의 503/redirect성 장애도 재시도 후 회복한다.
+class DummyTokenResponse:
+    def __init__(self, status, payload=None, text=""):
+        self.status_code = status
+        self._payload = payload
+        self.text = text
+        self.ok = 200 <= status < 300
+    def json(self):
+        if self._payload is None:
+            raise ValueError("not json")
+        return self._payload
+
+token_attempts = {"n": 0}
+orig_post2 = ks.requests.post
+orig_sleep2 = ks.time.sleep
+orig_key = __import__("os").environ.get("LS_OPENAPI_APP_KEY")
+orig_secret = __import__("os").environ.get("LS_OPENAPI_APP_SECRET")
+def token_post(*args, **kwargs):
+    token_attempts["n"] += 1
+    if token_attempts["n"] == 1:
+        return DummyTokenResponse(503, None, "temporary")
+    if token_attempts["n"] == 2:
+        return DummyTokenResponse(302, None, "maintenance redirect")
+    return DummyTokenResponse(200, {"access_token": "abc"})
+try:
+    __import__("os").environ["LS_OPENAPI_APP_KEY"] = "k"
+    __import__("os").environ["LS_OPENAPI_APP_SECRET"] = "s"
+    ks.requests.post = token_post
+    ks.time.sleep = lambda *_args, **_kwargs: None
+    assert get_token() == "abc"
+    assert token_attempts["n"] == 3, token_attempts
+finally:
+    ks.requests.post = orig_post2
+    ks.time.sleep = orig_sleep2
+    if orig_key is None:
+        __import__("os").environ.pop("LS_OPENAPI_APP_KEY", None)
+    else:
+        __import__("os").environ["LS_OPENAPI_APP_KEY"] = orig_key
+    if orig_secret is None:
+        __import__("os").environ.pop("LS_OPENAPI_APP_SECRET", None)
+    else:
+        __import__("os").environ["LS_OPENAPI_APP_SECRET"] = orig_secret
+print("ls_token_retry_regression=true")
