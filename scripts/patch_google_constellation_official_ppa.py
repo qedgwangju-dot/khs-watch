@@ -8,8 +8,8 @@ s = p.read_text(encoding="utf-8")
 # Google–Constellation from the earlier Reuters/Bloomberg negotiation baseline
 # to the Oct. 6, 2026 first-party signed agreement while keeping the reported
 # "$1B+" negotiation value distinct from the official transaction economics.
-s = s.replace("HYPERSCALER_NUCLEAR_PPA_EXTENSION_V5", "HYPERSCALER_NUCLEAR_PPA_EXTENSION_V6", 1)
-s = s.replace("PPA_STATE_VERSION = 5", "PPA_STATE_VERSION = 6", 1)
+s = s.replace("HYPERSCALER_NUCLEAR_PPA_EXTENSION_V5", "HYPERSCALER_NUCLEAR_PPA_EXTENSION_V7", 1)
+s = s.replace("PPA_STATE_VERSION = 5", "PPA_STATE_VERSION = 7", 1)
 
 anchor = 'PPA_REUTERS_GOOGLE_CONSTELLATION_SIGNED = "https://www.reuters.com/business/energy/google-enters-massive-36-gw-power-deal-with-constellation-energy-2026-10-06/"\n'
 if anchor not in s:
@@ -162,6 +162,47 @@ s = s.replace(
 ''' + test_anchor,
     1,
 )
+
+
+# First-party confirmation itself is a material event.  A prior migration may
+# have upgraded the saved schema before the user-facing confirmation alert was
+# emitted, so persist an explicit one-time acknowledgement flag.
+ack_old = '''_ppa_pending = load_json(PENDING)
+_ppa_pending["hyperscaler_nuclear_ppa"] = {
+    "version": PPA_STATE_VERSION,
+    "states": _ppa_states,
+    "source_errors": _ppa_errors,
+    "last_checked_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+    "alert_change_count": len(_ppa_changes),
+}'''
+ack_new = '''_google_official_ack = bool(_ppa_old_bundle.get("google_constellation_official_ack"))
+_google_now = _ppa_states.get("google_constellation") or {}
+if (
+    not _ppa_first_install
+    and not _google_official_ack
+    and _google_now.get("stage") == "signed_official"
+    and _google_now.get("official")
+):
+    _ppa_changes.append((
+        "google_constellation",
+        dict((_ppa_old_bundle.get("states") or {}).get("google_constellation") or {}),
+        dict(_google_now),
+        ["Google·Constellation 1차 공식 계약 발표 확인"],
+    ))
+    _google_official_ack = True
+
+_ppa_pending = load_json(PENDING)
+_ppa_pending["hyperscaler_nuclear_ppa"] = {
+    "version": PPA_STATE_VERSION,
+    "states": _ppa_states,
+    "source_errors": _ppa_errors,
+    "last_checked_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+    "alert_change_count": len(_ppa_changes),
+    "google_constellation_official_ack": _google_official_ack,
+}'''
+if ack_old not in s:
+    raise SystemExit("PPA pending bundle block missing")
+s = s.replace(ack_old, ack_new, 1)
 
 p.write_text(s, encoding="utf-8")
 print("Google-Constellation official signed PPA patch applied")
