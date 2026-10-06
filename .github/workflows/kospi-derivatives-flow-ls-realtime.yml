@@ -6,6 +6,12 @@ on:
       timezone: "Asia/Seoul"
     - cron: "3,13 9 * * 1-5"
       timezone: "Asia/Seoul"
+  workflow_run:
+    workflows:
+      - "Korea Market Stress and Global Wave Telegram Watch"
+      - "GAMEJOA preopen news radar"
+      - "AI Security Web Watch"
+    types: [completed]
   workflow_dispatch:
     inputs:
       mode:
@@ -20,109 +26,166 @@ permissions:
   actions: read
 
 jobs:
-  watch:
+  gate:
     runs-on: ubuntu-latest
-    timeout-minutes: 430
-    env:
-      EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900008879_bot"
-      TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
-      TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID }}
-      TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
-      LS_OPENAPI_APP_KEY: ${{ secrets.LS_OPENAPI_APP_KEY }}
-      LS_OPENAPI_APP_SECRET: ${{ secrets.LS_OPENAPI_APP_SECRET }}
-
+    outputs:
+      run_production: \${{ steps.elect.outputs.run_production }}
     steps:
-      - name: Elect single production leader
+      - name: Elect single production workflow
+        id: elect
         env:
-          GH_TOKEN: ${{ github.token }}
-          REPOSITORY: ${{ github.repository }}
-          CURRENT_RUN_ID: ${{ github.run_id }}
+          GH_TOKEN: \${{ github.token }}
+          REPOSITORY: \${{ github.repository }}
+          CURRENT_RUN_ID: \${{ github.run_id }}
         run: |
           python - <<'PY'
           import datetime as dt, json, os, urllib.request
           from zoneinfo import ZoneInfo
 
-          repo = os.environ["REPOSITORY"]
-          current = int(os.environ["CURRENT_RUN_ID"])
-          token = os.environ["GH_TOKEN"]
-          headers = {
-              "Authorization": f"Bearer {token}",
-              "Accept": "application/vnd.github+json",
-              "X-GitHub-Api-Version": "2022-11-28",
+          repo=os.environ["REPOSITORY"]
+          current=int(os.environ["CURRENT_RUN_ID"])
+          token=os.environ["GH_TOKEN"]
+          headers={
+              "Authorization":f"Bearer {token}",
+              "Accept":"application/vnd.github+json",
+              "X-GitHub-Api-Version":"2022-11-28",
           }
-          url = f"https://api.github.com/repos/{repo}/actions/workflows/kospi-derivatives-flow-ls-realtime.yml/runs?per_page=50"
-          req = urllib.request.Request(url, headers=headers)
-          with urllib.request.urlopen(req, timeout=20) as r:
-              runs = json.loads(r.read().decode("utf-8")).get("workflow_runs", [])
-
-          now_kst = dt.datetime.now(ZoneInfo("Asia/Seoul"))
-          active = []
-          for run in runs:
-              if run.get("status") not in {"queued", "in_progress"}:
-                  continue
-              created = dt.datetime.fromisoformat(str(run["created_at"]).replace("Z", "+00:00")).astimezone(ZoneInfo("Asia/Seoul"))
-              if created.date() != now_kst.date():
-                  continue
-              active.append((created, int(run["id"]), run.get("status")))
-
-          active.sort()
-          running = [x for x in active if x[2] == "in_progress"]
-          queued = [x for x in active if x[2] == "queued"]
-          leader_id = (running[0][1] if running else (queued[0][1] if queued else current))
-          should_run = leader_id == current
-          with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as fp:
-              fp.write(f"RUN_PRODUCTION={'1' if should_run else '0'}\n")
-          print(f"kospi_production_leader={leader_id} current={current} should_run={str(should_run).lower()} active={[(x[1], x[2]) for x in active]}")
+          now=dt.datetime.now(ZoneInfo("Asia/Seoul"))
+          eligible=(now.weekday()<5 and dt.time(8,15)<=now.time()<=dt.time(15,20))
+          should_run=False
+          active=[]
+          if eligible:
+              url=f"https://api.github.com/repos/{repo}/actions/workflows/kospi-derivatives-flow-ls-realtime.yml/runs?per_page=50"
+              with urllib.request.urlopen(urllib.request.Request(url,headers=headers),timeout=20) as r:
+                  runs=json.loads(r.read().decode("utf-8")).get("workflow_runs",[])
+              for run in runs:
+                  if run.get("status") not in {"queued","in_progress"}:
+                      continue
+                  created=dt.datetime.fromisoformat(str(run["created_at"]).replace("Z","+00:00")).astimezone(ZoneInfo("Asia/Seoul"))
+                  if created.date()==now.date():
+                      active.append((created,int(run["id"]),run.get("status")))
+              active.sort()
+              running=[x for x in active if x[2]=="in_progress"]
+              queued=[x for x in active if x[2]=="queued"]
+              leader=(running[0][1] if running else (queued[0][1] if queued else current))
+              should_run=(leader==current)
+          with open(os.environ["GITHUB_OUTPUT"],"a",encoding="utf-8") as fp:
+              fp.write(f"run_production={'1' if should_run else '0'}\n")
+          print(f"kospi_gate_eligible={eligible} should_run={should_run} active={[(x[1],x[2]) for x in active]}")
           PY
 
+  morning:
+    needs: gate
+    if: needs.gate.outputs.run_production == '1'
+    runs-on: ubuntu-latest
+    timeout-minutes: 250
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900008879_bot"
+      TELEGRAM_BOT_TOKEN: \${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID_PRIMARY: \${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID }}
+      TELEGRAM_CHAT_ID_FALLBACK: \${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+      LS_OPENAPI_APP_KEY: \${{ secrets.LS_OPENAPI_APP_KEY }}
+      LS_OPENAPI_APP_SECRET: \${{ secrets.LS_OPENAPI_APP_SECRET }}
+    steps:
       - name: Checkout
-        if: env.RUN_PRODUCTION == '1'
         uses: actions/checkout@v4
-
       - name: Set up Python
-        if: env.RUN_PRODUCTION == '1'
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-
       - name: Install dependencies
-        if: env.RUN_PRODUCTION == '1'
         run: python -m pip install --disable-pip-version-check --quiet requests
-
       - name: Verify Telegram route
-        if: env.RUN_PRODUCTION == '1'
         run: |
           python - <<'PY'
           import json, os, urllib.request
-          token=(os.getenv('TELEGRAM_BOT_TOKEN') or '').strip()
-          expected=(os.getenv('EXPECTED_TELEGRAM_BOT_USERNAME') or '').strip().lstrip('@')
-          if not token:
-              raise RuntimeError('Telegram token missing')
-          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=20) as r:
-              d=json.loads(r.read().decode('utf-8'))
-          actual=str((d.get('result') or {}).get('username') or '')
-          if not d.get('ok') or actual.lower()!=expected.lower():
-              raise RuntimeError(f'Wrong Telegram bot: expected @{expected}, got @{actual or "unknown"}')
-          print(f'telegram_route_valid=true bot=@{actual}')
+          token=(os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          expected=(os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token: raise RuntimeError("Telegram token missing")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe",timeout=20) as r:
+              d=json.loads(r.read().decode("utf-8"))
+          actual=str((d.get("result") or {}).get("username") or "")
+          if not d.get("ok") or actual.lower()!=expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
+          print(f"telegram_route_valid=true bot=@{actual}")
           PY
-
-      - name: Run market-hours variable shock episode watcher
-        if: env.RUN_PRODUCTION == '1'
+      - name: Run morning KOSPI watcher
         run: |
-          rm -f out/kospi_shock_episode_status.md out/kospi_shock_episode_raw.json out/kospi_shock_delivery_log.jsonl out/kospi_shock_enrichment_latest.json
-          python -m py_compile scripts/kospi_shock_episode_watch.py
-          python scripts/kospi_shock_episode_watch.py --until 15:20
+          rm -f out/kospi_shock_episode_status.md out/kospi_shock_episode_raw.json out/kospi_shock_delivery_log.jsonl out/kospi_shock_enrichment_latest.json out/kospi_shock_handoff.json
+          python -m py_compile scripts/kospi_shock_episode_watch.py scripts/kospi_shock_enrichment.py
+          python scripts/kospi_shock_episode_watch.py --until 12:15 --handoff-out out/kospi_shock_handoff.json
           cat out/kospi_shock_episode_status.md >> "$GITHUB_STEP_SUMMARY"
-
-      - name: Upload verification artifacts
-        if: always() && env.RUN_PRODUCTION == '1'
+      - name: Upload morning handoff and verification
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: kospi-shock-episode-${{ github.run_id }}
+          name: kospi-shock-morning-\${{ github.run_id }}
+          path: |
+            out/kospi_shock_handoff.json
+            out/kospi_shock_episode_status.md
+            out/kospi_shock_episode_raw.json
+            out/kospi_shock_delivery_log.jsonl
+            out/kospi_shock_enrichment_latest.json
+          if-no-files-found: ignore
+          retention-days: 14
+
+  afternoon:
+    needs: [gate, morning]
+    if: always() && needs.gate.outputs.run_production == '1'
+    runs-on: ubuntu-latest
+    timeout-minutes: 210
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900008879_bot"
+      TELEGRAM_BOT_TOKEN: \${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID_PRIMARY: \${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID }}
+      TELEGRAM_CHAT_ID_FALLBACK: \${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+      LS_OPENAPI_APP_KEY: \${{ secrets.LS_OPENAPI_APP_KEY }}
+      LS_OPENAPI_APP_SECRET: \${{ secrets.LS_OPENAPI_APP_SECRET }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Download morning handoff
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: kospi-shock-morning-\${{ github.run_id }}
+          path: out
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check --quiet requests
+      - name: Verify Telegram route
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          token=(os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          expected=(os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token: raise RuntimeError("Telegram token missing")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe",timeout=20) as r:
+              d=json.loads(r.read().decode("utf-8"))
+          actual=str((d.get("result") or {}).get("username") or "")
+          if not d.get("ok") or actual.lower()!=expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
+          print(f"telegram_route_valid=true bot=@{actual}")
+          PY
+      - name: Run afternoon KOSPI watcher with handoff
+        run: |
+          rm -f out/kospi_shock_episode_status.md out/kospi_shock_episode_raw.json out/kospi_shock_enrichment_latest.json
+          python -m py_compile scripts/kospi_shock_episode_watch.py scripts/kospi_shock_enrichment.py
+          python scripts/kospi_shock_episode_watch.py --until 15:20 --handoff-in out/kospi_shock_handoff.json
+          cat out/kospi_shock_episode_status.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload afternoon verification
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kospi-shock-afternoon-\${{ github.run_id }}
           path: |
             out/kospi_shock_episode_status.md
             out/kospi_shock_episode_raw.json
             out/kospi_shock_delivery_log.jsonl
             out/kospi_shock_enrichment_latest.json
+            out/kospi_shock_handoff.json
           if-no-files-found: ignore
           retention-days: 14
