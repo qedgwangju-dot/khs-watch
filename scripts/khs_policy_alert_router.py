@@ -955,6 +955,7 @@ def render_policy_report(alerts: list[dict], now: dt.datetime) -> str:
         lines.extend([
             f"## {idx}. [{alert.get('importance', '중')}·{alert.get('status', '확정')}] {title}",
             *compact_explanation_lines(alert),
+            *presidential_action_timeline_lines(alert),
             f"- 출처: [원문 보기]({alert.get('link', '')}) · {display_source(alert.get('source'))} · 조회 {now:%H:%M KST}",
             "",
         ])
