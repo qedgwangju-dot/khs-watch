@@ -85,6 +85,7 @@ async def main(out_path: Path, until: dt.time, test_seconds: int | None = None) 
     written = 0
     registrations: list[tuple[str, str]] = []
     industry_names: dict[str, str] = {}
+    last_signature: dict[tuple[str, str], tuple[str, float]] = {}
 
     try:
         if not await api.login(appkey, appsecret):
@@ -109,11 +110,17 @@ async def main(out_path: Path, until: dt.time, test_seconds: int | None = None) 
             msval = fnum(data.get("msval"))
             if not upcode or msval is None:
                 return
+            tjjtime = str(data.get("tjjtime") or "")
+            signature_key = (upcode, investor)
+            signature = (tjjtime, msval)
+            if last_signature.get(signature_key) == signature:
+                return
+            last_signature[signature_key] = signature
             received_ts = time.time()
             row = {
                 "ts": market_ts(str(data.get("tjjtime") or ""), received_ts),
                 "received_ts": received_ts,
-                "time": str(data.get("tjjtime") or ""),
+                "time": tjjtime,
                 "upcode": upcode,
                 "industry": industry_names.get(upcode) or upcode,
                 "investor_code": investor_code,
