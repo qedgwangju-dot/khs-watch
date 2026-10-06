@@ -71,7 +71,7 @@ BASELINE = {
 # Keep physical/official facts separate from broker forecasts.  The 2021 and 2028
 # shortage percentages are not treated as a like-for-like consensus series.
 ABF_AREA_STRUCTURE_BASELINE = {
-    "version": 1,
+    "version": 2,
     "primary_capacity_metric": "substrate_area_x_buildup_layers_and_SAP_process_load",
     "official": {
         # Ajinomoto business briefing / integrated report: PC=1 area index and 6 ABF layers;
@@ -86,7 +86,11 @@ ABF_AREA_STRUCTURE_BASELINE = {
         # can create a shortage of SAP capacity for cutting-edge products.
         "ibiden_area_multilayer_increases_sap_load": True,
         "ibiden_cutting_edge_sap_shortage_risk_confirmed": True,
+        "ibiden_ai_server_sap_load_cy2024_index": 1.0,
+        "ibiden_ai_server_sap_load_cy2026_index": 1.8,
+        "ibiden_ai_server_sap_load_cy2028_index": 2.5,
         "ibiden_source": "https://www.ibiden.com/ir/items/en_QA_FY2025Q3.pdf",
+        "ibiden_sap_load_source": "https://www.ibiden.com/ir/items/en_kessannsetsumeiFY2025.pdf",
     },
     "historical_benchmark": {
         "year": 2021,
@@ -97,6 +101,7 @@ ABF_AREA_STRUCTURE_BASELINE = {
     "research_forecast": {
         # Public summaries of Goldman Sachs' Taiwan ABF research.  Keep source-specific.
         "issuer": "Goldman Sachs",
+        "abf_shortfall_2h2026_pct": 14.0,
         "abf_shortfall_2027_pct": 34.0,
         "abf_shortfall_2028_pct": 51.0,
         "source_kind": "broker estimate relayed by public securities/research summaries; not industry consensus",
@@ -111,7 +116,8 @@ ABF_AREA_STRUCTURE_BASELINE = {
         "numerical_2028_minus_2021_pct_points": 26.0,
         "like_for_like_comparison_confirmed": False,
         "note": (
-            "Goldman 2028 51% estimate is numerically above the 2021 ≥25% historical estimate, "
+            "Goldman estimates 2H26/2027/2028 ABF shortfalls at 14%/34%/51%. "
+            "The 2028 51% estimate is numerically above the 2021 ≥25% historical estimate, "
             "but source, product mix and model scope differ. Never phrase this as a universal/consensus fact."
         ),
     },
@@ -127,7 +133,7 @@ SEARCHES = [
     ("google", 'Ibiden NVIDIA CPU substrate shipment ABF 2026'),
     ("google", 'Unimicron ABF price increase server CPU 2026'),
     ("google", 'ABF substrate price increase server CPU Ibiden Unimicron 2026'),
-    ("google", '"Goldman Sachs" ABF substrate 2028 51% 34% supply gap'),
+    ("google", '"Goldman Sachs" ABF substrate 2026 14% 2027 34% 2028 51% supply gap'),
     ("google", '"ABF substrate" Feynman 2028 area 3 5 times 2026'),
     ("google", '"ABF substrate" 2021 25% shortage 2028 supply gap'),
     ("google", 'site:ajinomoto.com OR site:ajinomoto.co.jp ABF substrate area 3.5 18 layers 10 times HPC'),
@@ -292,6 +298,22 @@ def parse_official_update(text: str, url: str) -> dict:
         if "fy2027" in low and "sap" in low and any(k in low for k in ("more than double", "double", "2.0")):
             out["ibiden_sap_capacity_fy2027_multiple_min"] = 2.0
 
+        # Ibiden's official FY2025 results presentation expresses AI-server substrate
+        # production load in SAP terms (CY24=1.0, CY26=1.8, CY28=2.5).
+        # This is a process-load index, not unit shipments.
+        sap_load = re.search(
+            r"CY24\s*1\.0[^\n]{0,260}?CY26\s*(?:x\s*)?(\d+(?:\.\d+)?)"
+            r"[^\n]{0,260}?CY28\s*(?:x\s*)?(\d+(?:\.\d+)?)",
+            text,
+            re.I,
+        )
+        if sap_load:
+            cy26, cy28 = float(sap_load.group(1)), float(sap_load.group(2))
+            if 1.0 <= cy26 <= 5.0 and 1.0 <= cy28 <= 8.0:
+                out["ibiden_ai_server_sap_load_cy2024_index"] = 1.0
+                out["ibiden_ai_server_sap_load_cy2026_index"] = cy26
+                out["ibiden_ai_server_sap_load_cy2028_index"] = cy28
+
         fy = re.search(r"(?:mass production|operation)[^.]{0,100}?(?:from|in)\s+(?:fiscal year|fy)\s*(20\d{2})", text, re.I)
         if fy:
             out["ibiden_gama_mass_production_start_fy"] = int(fy.group(1))
@@ -391,6 +413,19 @@ def parse_research_update(text: str, url: str) -> dict:
 
     # Source-specific ABF shortage model.  Do not collapse this into an industry consensus number.
     if "goldman" in low and any(k in low for k in ("shortfall", "undersupply", "supply gap", "supply-demand gap", "공급 부족", "供給缺口")):
+        # Goldman September 2026 public recaps specify a 2H26 figure separately
+        # from full-year 2026 estimates published by other firms. Keep that scope explicit.
+        for pat in (
+            r"(?:2H\s*26|2H\s*2026|2026\s*년\s*하반기|2026年下半年)[^0-9%]{0,40}?(\d{1,2}(?:\.\d+)?)\s*%",
+            r"(\d{1,2}(?:\.\d+)?)\s*%[^.;]{0,35}?(?:2H\s*26|2H\s*2026|2026\s*년\s*하반기|2026年下半年)",
+        ):
+            m = re.search(pat, text, re.I)
+            if m:
+                value = float(m.group(1))
+                if 5 <= value <= 80:
+                    out["goldman_abf_shortfall_2h2026_pct"] = value
+                    break
+
         for year, key in ((2027, "goldman_abf_shortfall_2027_pct"), (2028, "goldman_abf_shortfall_2028_pct")):
             # Bind the percentage tightly to its year.  A broad cross-year pattern can
             # incorrectly assign 2028's 51% to 2027 when both years appear in one sentence.
@@ -421,6 +456,7 @@ def material_events(previous: dict, updates: list[dict]) -> list[dict]:
     facts = previous.get("facts") or {}
     area = previous.get("area_structure") or {}
     area_research = area.get("research_forecast") or {}
+    area_official = area.get("official") or {}
     events: list[dict] = []
 
     for item in updates:
@@ -443,6 +479,15 @@ def material_events(previous: dict, updates: list[dict]) -> list[dict]:
                 after = int(u["ibiden_gama_mass_production_start_fy"])
                 if before and after != before:
                     events.append({"type": "official_metric", "key": "ibiden_gama_mass_production_start_fy", "before": before, "after": after, "url": item["url"]})
+
+            for key in (
+                "ibiden_ai_server_sap_load_cy2026_index",
+                "ibiden_ai_server_sap_load_cy2028_index",
+            ):
+                if key in u and area_official.get(key):
+                    before, after = float(area_official[key]), float(u[key])
+                    if abs(after / before - 1.0) >= 0.10:
+                        events.append({"type": "official_metric", "key": key, "before": before, "after": after, "url": item["url"]})
 
             if u.get("official_nvidia_cpu_substrate_confirmed") and not facts.get("official_nvidia_cpu_substrate_confirmed"):
                 events.append({"type": "official_confirmation", "key": "official_nvidia_cpu_substrate_confirmed", "url": item["url"]})
@@ -478,7 +523,7 @@ def material_events(previous: dict, updates: list[dict]) -> list[dict]:
             if "unimicron_abf_price_change_pct" in u and abs(float(u["unimicron_abf_price_change_pct"])) >= 10:
                 events.append({"type": "price", "key": "Unimicron ABF(리서치)", "value": float(u["unimicron_abf_price_change_pct"]), "url": item["url"]})
 
-            for key in ("goldman_abf_shortfall_2027_pct", "goldman_abf_shortfall_2028_pct"):
+            for key in ("goldman_abf_shortfall_2h2026_pct", "goldman_abf_shortfall_2027_pct", "goldman_abf_shortfall_2028_pct"):
                 if key in u:
                     before = area_research.get(key.replace("goldman_", ""))
                     # Stored baseline keys omit the 'goldman_' prefix.
@@ -519,6 +564,15 @@ def merge_state(previous: dict, updates: list[dict], events: list[dict]) -> dict
                     latest["official"][mapped] = u[key]
             if u.get("customer_sales_jpy_bn"):
                 latest["official"]["ibiden_customer_sales_fy2024_jpy_bn"] = u["customer_sales_jpy_bn"]
+
+            area_off = latest.setdefault("area_structure", copy.deepcopy(ABF_AREA_STRUCTURE_BASELINE)).setdefault("official", {})
+            for key in (
+                "ibiden_ai_server_sap_load_cy2024_index",
+                "ibiden_ai_server_sap_load_cy2026_index",
+                "ibiden_ai_server_sap_load_cy2028_index",
+            ):
+                if key in u:
+                    area_off[key] = u[key]
             for key in (
                 "official_nvidia_cpu_substrate_confirmed", "official_abf_price_increase_confirmed",
                 "samsung_server_cpu_fcbga_confirmed",
@@ -546,6 +600,8 @@ def merge_state(previous: dict, updates: list[dict], events: list[dict]) -> dict
             if "unimicron_margin_pct" in u:
                 latest["research"]["unimicron_margin_pct"] = u["unimicron_margin_pct"]
             ar = latest.setdefault("area_structure", copy.deepcopy(ABF_AREA_STRUCTURE_BASELINE)).setdefault("research_forecast", {})
+            if "goldman_abf_shortfall_2h2026_pct" in u:
+                ar["abf_shortfall_2h2026_pct"] = u["goldman_abf_shortfall_2h2026_pct"]
             if "goldman_abf_shortfall_2027_pct" in u:
                 ar["abf_shortfall_2027_pct"] = u["goldman_abf_shortfall_2027_pct"]
             if "goldman_abf_shortfall_2028_pct" in u:
@@ -602,6 +658,8 @@ def build_alert(events: list[dict], state: dict) -> str:
         "ibiden_capex_fy2026_2028_jpy_bn": "Ibiden FY26~28 전자사업 설비투자",
         "ibiden_gama_capex_jpy_bn": "Ibiden Gama 투자",
         "ibiden_sap_capacity_fy2027_multiple_min": "Ibiden FY2027 SAP 생산능력",
+        "ibiden_ai_server_sap_load_cy2026_index": "AI서버 기판당 SAP 공정부하 CY2026",
+        "ibiden_ai_server_sap_load_cy2028_index": "AI서버 기판당 SAP 공정부하 CY2028",
         "ibiden_gama_mass_production_start_fy": "Ibiden Gama 양산개시",
     }
     for ev in events:
@@ -651,6 +709,8 @@ def build_alert(events: list[dict], state: dict) -> str:
         f"• SAP 생산능력: FY2024 상반기말=1.0 대비 FY2027말 {float(off.get('ibiden_sap_capacity_fy2027_multiple_min') or 0):.1f}배 이상",
         f"• ASIC: FY2026 전자사업 매출의 {float(off.get('ibiden_asic_share_fy2026_floor_pct') or 0):.0f}% 초과 예상",
         f"• 면적 기준 공식 물리량: Ajinomoto HPC 기판 면적지수 {float(area_off.get('ajinomoto_hpc_substrate_area_index') or 0):.1f}배(PC=1.0), ABF 층수 {int(area_off.get('ajinomoto_pc_abf_layers') or 0)}→{int(area_off.get('ajinomoto_hpc_abf_layers') or 0)}층, 총 ABF 사용량 10배+.",
+        f"• Ibiden 공식 AI서버 기판당 SAP 공정부하: CY2024 {float(area_off.get('ibiden_ai_server_sap_load_cy2024_index') or 0):.1f} → CY2026 {float(area_off.get('ibiden_ai_server_sap_load_cy2026_index') or 0):.1f} → CY2028 {float(area_off.get('ibiden_ai_server_sap_load_cy2028_index') or 0):.1f}. 완제품 개수보다 면적·층수·공정 부하가 실제 생산능력을 더 잘 설명합니다.",
+        f"• Goldman 출처별 공급부족 전망: 2H26 {float(area_res.get('abf_shortfall_2h2026_pct') or 0):.0f}% → 2027 {float(area_res.get('abf_shortfall_2027_pct') or 0):.0f}% → 2028 {float(area_res.get('abf_shortfall_2028_pct') or 0):.0f}% <i>(리서치 추정·컨센서스 아님)</i>.",
         f"• 2021 역사 기준: ABF 공급부족 ≥{float(area_hist.get('abf_shortfall_pct_min') or 0):.0f}% <i>(DigiTimes 업계 추정)</i> / Goldman 2028 전망 {float(area_res.get('abf_shortfall_2028_pct') or 0):.0f}% <i>(리서치 추정·동일 범위 직접비교 금지)</i>.",
         f"• FY2025 공개 주요고객 매출: Intel {jpy_bn_text(float((off.get('ibiden_customer_sales_fy2024_jpy_bn') or {}).get('Intel') or 0), rate)} / "
         f"AMD {jpy_bn_text(float((off.get('ibiden_customer_sales_fy2024_jpy_bn') or {}).get('AMD') or 0), rate)} / "
@@ -658,7 +718,7 @@ def build_alert(events: list[dict], state: dict) -> str:
         "",
         "<b>2단계 미래 재평가 요인 발굴</b>",
         f"• Macquarie 추정 기준선: Intel향 ABF 약 {float(res.get('macquarie_intel_abf_share_pct') or 0):.0f}% / AMD향 약 {float(res.get('macquarie_amd_abf_share_pct') or 0):.0f}% / NVIDIA CPU용 기판 출하 시작. 공식 확인 전 추정으로 유지합니다.",
-        f"• 2028 Goldman 공급부족 전망: {float(area_res.get('abf_shortfall_2028_pct') or 0):.0f}%로 2021 ≥{float(area_hist.get('abf_shortfall_pct_min') or 0):.0f}%보다 수치상 크지만, 제품군·분모·모델이 달라 ‘2021보다 확정적으로 더 부족’이라는 보편적 사실로 승격하지 않습니다.",
+        f"• Goldman 모델은 2H26 {float(area_res.get('abf_shortfall_2h2026_pct') or 0):.0f}% → 2027 {float(area_res.get('abf_shortfall_2027_pct') or 0):.0f}% → 2028 {float(area_res.get('abf_shortfall_2028_pct') or 0):.0f}%로 악화를 예상합니다. 2028 수치는 2021 ≥{float(area_hist.get('abf_shortfall_pct_min') or 0):.0f}%보다 크지만 제품군·분모·모델이 달라 ‘2021보다 확정적으로 더 부족’이라는 보편적 사실로 승격하지 않습니다.",
         f"• Meritz 추정: 2028 Feynman 등 차세대 AI 가속기 기판 면적이 2026 대비 {float(area_res.get('feynman_2028_area_vs_2026_min_multiple') or 0):.0f}~{float(area_res.get('feynman_2028_area_vs_2026_max_multiple') or 0):.0f}배. NVIDIA 공식 기판 면적 사양으로 취급하지 않습니다.",
         "• 공식 재평가 조건: NVIDIA CPU용 양산 확인, Intel·AMD 고객 비중 공식 공개, SAP 증설 상향, 가격 인상·마진 개선의 회사자료 확인.",
         "",
@@ -684,15 +744,16 @@ def build_alert(events: list[dict], state: dict) -> str:
         "• NVIDIA CPU용 기판 양산·출하가 공식 확인되면 즉시 알림.",
         "• ABF 가격 ±5% 이상 공식 변화, 신뢰 리서치 ±10% 이상 변화.",
         "• Ibiden SAP 생산능력·설비투자 ±10%, Gama 양산시점 변경, 주요 고객매출 ±10% 이상.",
-        "• 2027·2028 ABF 공급부족 전망이 동일 리서치 기준 ±5%p 이상 변경하면 출처별로 알림.",
-        "• 기판 면적·층수·SAP 공정부하의 공식 로드맵이 변경되거나 Feynman 면적 추정이 ±0.5배 이상 바뀌면 알림.",
+        "• 2H26·2027·2028 ABF 공급부족 전망이 동일 리서치 기준 ±5%p 이상 변경하면 출처별로 알림.",
+        "• Ibiden AI서버 기판당 SAP 공정부하 지수(CY26 1.8·CY28 2.5)가 ±10% 이상 바뀌거나 기판 면적·층수의 공식 로드맵이 변경되면 알림.",
+        "• Feynman 면적 추정이 ±0.5배 이상 바뀌면 별도 리서치 추정 변화로 알림.",
         "• 동일 Muse 기사·주가 급등·목표주가만 반복되면 알리지 않습니다.",
         "",
         "<b>결론</b>",
         "• CPU 수요가 실제 ABF 공급사의 가격·가동률·고객매출·마진으로 전환되는지 확인하는 수익화 게이트입니다.",
         "",
         "<b>핵심 한 줄 요약</b>",
-        "• 현재 공식 기준은 Ibiden AI서버 기판 수요>생산능력, FY26~28 5,000억엔 투자, FY2027 SAP 2배+이며, 기판 개수보다 면적×층수·SAP 부하를 우선 추적합니다. 2028 51%는 Goldman 추정치로만 유지하고 2021 ≥25%와 범위가 달라 단순 확정 비교하지 않습니다.",
+        f"• 현재 공식 기준은 Ibiden AI서버 기판 수요>생산능력, FY26~28 5,000억엔 투자, AI서버 기판당 SAP 공정부하 CY24 1.0→CY26 {float(area_off.get('ibiden_ai_server_sap_load_cy2026_index') or 0):.1f}→CY28 {float(area_off.get('ibiden_ai_server_sap_load_cy2028_index') or 0):.1f}입니다. Goldman 2H26/2027/2028 공급부족 {float(area_res.get('abf_shortfall_2h2026_pct') or 0):.0f}%/{float(area_res.get('abf_shortfall_2027_pct') or 0):.0f}%/{float(area_res.get('abf_shortfall_2028_pct') or 0):.0f}%는 리서치 추정으로만 유지하고 2021 ≥25%와 범위가 달라 단순 확정 비교하지 않습니다.",
     ]
     if rate is not None:
         lines.append(f"• 환율 기준: 1엔={rate:.4f}원, {html.escape(rate_date or '최신 확인값')}")
@@ -749,7 +810,7 @@ def main() -> None:
     events = material_events(previous, updates)
     structure_upgrade = int((previous.get("area_structure") or {}).get("version") or 0) < int(ABF_AREA_STRUCTURE_BASELINE["version"])
     if structure_upgrade:
-        events.insert(0, {"type": "area_structure_baseline", "key": "area_structure_v1", "url": ABF_AREA_STRUCTURE_BASELINE["official"]["ajinomoto_source"]})
+        events.insert(0, {"type": "area_structure_baseline", "key": f"area_structure_v{ABF_AREA_STRUCTURE_BASELINE['version']}", "url": ABF_AREA_STRUCTURE_BASELINE["official"]["ibiden_sap_load_source"]})
     latest = merge_state(previous, updates, events)
     if structure_upgrade:
         latest["area_structure"] = copy.deepcopy(ABF_AREA_STRUCTURE_BASELINE)
