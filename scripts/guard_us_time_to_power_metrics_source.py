@@ -1025,17 +1025,41 @@ def _ppa_parse_date(pub: str):
         return None
 
 
-def _ppa_extract_amount_usd_b(text: str):
+def _ppa_extract_money_roles(text: str):
+    """Return (contract/deal value, site/infrastructure investment), USD billions."""
     low = text.lower().replace(",", "")
-    candidates = []
+    mentions = []
     for m in re.finditer(r"\$\s*([0-9]+(?:\.[0-9]+)?)\s*(billion|million|bn|b)\b", low):
         val = float(m.group(1))
         if m.group(2) == "million":
             val /= 1000.0
-        candidates.append(val)
+        mentions.append((val, m.start(), m.end()))
     for m in re.finditer(r"\b([0-9]+(?:\.[0-9]+)?)\s*billion\s+(?:dollars|dollar|usd)?\b", low):
-        candidates.append(float(m.group(1)))
-    return max(candidates) if candidates else None
+        mentions.append((float(m.group(1)), m.start(), m.end()))
+
+    contract_values = []
+    site_investments = []
+    for val, start, end in mentions:
+        window = low[max(0, start - 100): min(len(low), end + 120)]
+        site_context = any(term in window for term in (
+            "infrastructure investment", "investment in", "invest in", "site investment",
+            "plant investment", "capital investment", "capex", "infrastructure spending",
+            "maryland infrastructure", "investment across", "investment at the",
+        ))
+        contract_context = any(term in window for term in (
+            "deal valued", "deal worth", "agreement valued", "agreement worth",
+            "contract valued", "contract worth", "transaction valued",
+            "purchase price", "deal value", "contract value", "valued at",
+        ))
+        if site_context and not contract_context:
+            site_investments.append(val)
+        elif contract_context:
+            contract_values.append(val)
+
+    return (
+        max(contract_values) if contract_values else None,
+        max(site_investments) if site_investments else None,
+    )
 
 
 def _ppa_extract_mw_values(text: str):
@@ -1117,7 +1141,7 @@ def _ppa_extract_state(blob: str, source: str, source_url: str, link: str, publi
     if not stage:
         return None
 
-    amount = _ppa_extract_amount_usd_b(blob)
+    amount, site_investment = _ppa_extract_money_roles(blob)
     mw_values = _ppa_extract_mw_values(blob)
     years = _ppa_extract_years(blob)
     ppa_mw = max(mw_values) if mw_values else None
@@ -1140,6 +1164,7 @@ def _ppa_extract_state(blob: str, source: str, source_url: str, link: str, publi
     provenance = {"stage": "official" if official else "media"}
     for field, value in (
         ("amount_floor_usd_b", amount),
+        ("site_investment_floor_usd_b", site_investment),
         ("ppa_mw", ppa_mw),
         ("uprate_mw", uprate_mw),
         ("years", years),
@@ -1148,12 +1173,18 @@ def _ppa_extract_state(blob: str, source: str, source_url: str, link: str, publi
         if value not in (None, ""):
             provenance[field] = "official" if official else "media"
 
+    # Canonicalize the already-known Amazon/Calvert Cliffs contract so the
+    # official page cannot reappear later as a duplicate amazon_constellation event.
+    if key == "amazon_constellation" and plant and "calvert cliffs" in plant.lower():
+        key = "amazon_constellation_calvert_cliffs"
+
     return key, {
         "buyer": key.split("_", 1)[0].replace("google", "Google").replace("amazon", "Amazon").replace("microsoft", "Microsoft").replace("meta", "Meta").replace("walmart", "Walmart"),
         "seller": key.split("_", 1)[1].replace("constellation", "Constellation").replace("nextera", "NextEra").replace("southern", "Southern/Georgia Power").replace("talen", "Talen"),
         "stage": stage,
         "official": official,
         "amount_floor_usd_b": amount,
+        "site_investment_floor_usd_b": site_investment,
         "ppa_mw": ppa_mw,
         "uprate_mw": uprate_mw,
         "years": years,
@@ -1274,7 +1305,7 @@ def _ppa_collect_rows():
 def _ppa_state_score(state: dict):
     stage = str(state.get("stage") or "")
     terms = sum(
-        1 for key in ("amount_floor_usd_b", "ppa_mw", "uprate_mw", "years", "plant")
+        1 for key in ("amount_floor_usd_b", "site_investment_floor_usd_b", "ppa_mw", "uprate_mw", "years", "plant")
         if state.get(key) not in (None, "")
     )
     return (
@@ -1342,6 +1373,7 @@ def _ppa_material_diff(prev: dict | None, now: dict):
         reasons.append("회사 공식확인 추가")
     for key, label in (
         ("amount_floor_usd_b", "계약금액"),
+        ("site_investment_floor_usd_b", "부지·인프라 투자액"),
         ("ppa_mw", "전력구매용량"),
         ("uprate_mw", "증설용량"),
         ("years", "계약기간"),
