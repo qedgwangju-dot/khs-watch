@@ -102,31 +102,42 @@
   ],
   "last_fx_krw_per_usd": 1342.774629,
   "fx_source": "ER-API",
-  "fx_checked_utc": "2026-10-06T11:00:13+00:00",
-  "updated_at_utc": "2026-10-06T11:00:34+00:00",
+  "fx_checked_utc": "2026-10-06T11:05:03+00:00",
+  "updated_at_utc": "2026-10-06T11:05:24+00:00",
   "hyperscaler_nuclear_ppa": {
-    "version": 3,
+    "version": 4,
     "states": {
       "google_constellation": {
         "buyer": "Google",
         "seller": "Constellation",
-        "stage": "reported_near_deal",
+        "stage": "signed_reported",
         "official": false,
         "amount_floor_usd_b": 1.0,
         "provenance": {
           "stage": "media",
           "amount_floor_usd_b": "media",
-          "asset_mode": "media"
+          "asset_mode": "media",
+          "total_supply_mw": "media",
+          "nuclear_supply_mw": "media",
+          "other_pjm_supply_mw": "media",
+          "uprate_mw": "media",
+          "nuclear_unit_count": "media",
+          "nuclear_upgrade_investment_floor_usd_b": "media"
         },
         "ppa_mw": null,
-        "uprate_mw": null,
+        "uprate_mw": 890.0,
         "years": null,
         "plant": null,
         "source": "Reuters",
-        "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOQnB3VGQ4am5pajBjVTZZeTAtTU9KVHZFc3p3R3hWYkNBVzFEcENOYUI5WGVobTk1OEYtZm8tVGFHTFc3ZzdzY1I2allEUm1lN0ZkSjREZ1Z6QjlXczNrTmlRcEFZMEJkYldSYzVIVUxMYzV4bFVuSDZTcFlvTTI4N2V1UHdWUWtIWl9KbUREWWN4a0VYMjJFLUg4MEZLWV9YcTF1OTFSZG53MXdkMnJkWFlhQkV6N2VjRGZVNg?oc=5",
+        "url": "https://www.reuters.com/business/energy/google-enters-massive-36-gw-power-deal-with-constellation-energy-2026-10-06/",
         "published": "2026-10-06",
-        "note": "다년 계약 협상 임박 보도 · 아직 양사 공식 체결 발표 없음",
-        "asset_mode": "unknown"
+        "note": "체결 보도 · 총 3,590MW 중 원전 증설 890MW, PJM 기타 공급 2,700MW · 11개 원전 호기 업그레이드에 43억달러 초과 투자",
+        "asset_mode": "existing_uprate",
+        "total_supply_mw": 3590.0,
+        "nuclear_supply_mw": 890.0,
+        "other_pjm_supply_mw": 2700.0,
+        "nuclear_unit_count": 11,
+        "nuclear_upgrade_investment_floor_usd_b": 4.3
       },
       "amazon_constellation_calvert_cliffs": {
         "buyer": "Amazon",
@@ -177,7 +188,7 @@
     "source_errors": [
       "Constellation IR newsroom: ReadTimeout"
     ],
-    "last_checked_utc": "2026-10-06T11:01:02+00:00",
+    "last_checked_utc": "2026-10-06T11:05:52+00:00",
     "alert_change_count": 1
   }
 }
