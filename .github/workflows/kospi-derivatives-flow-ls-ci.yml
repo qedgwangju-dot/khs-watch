@@ -91,6 +91,9 @@ jobs:
           assert "UBM feed stale >120s during market hours" in collector, "UBM stale-feed restart guard missing"
           assert 'now.time() < dt.time(15, 20)' in collector, "UBM stale guard must stop before closing auction"
           assert "continuous_market_hours" in collector, "UBM closing-auction test semantics missing"
+          assert '"ts": received_ts' in collector, "UBM event alignment must use payload receive time"
+          assert '"source_ts": source_ts' in collector, "UBM source time must be preserved separately"
+          assert "received_ts - prev_received < 5.0" in collector, "UBM duplicate-burst suppression missing"
           enrichment=Path("scripts/kospi_shock_enrichment.py").read_text(encoding="utf-8")
           assert "requests.RequestException" in enrichment and "transport error" in enrichment, "enrichment LS transport retry missing"
           print("production_workflow_structure_valid=true")
