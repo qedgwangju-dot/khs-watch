@@ -544,11 +544,13 @@ def main() -> None:
     if not old and confirmed_close_date:
         next_alerted_close = confirmed_close_date
 
+    correction_pending = bool(old.get("correction_pending"))
     new_state = {
         "updated_at_kst": now,
         "circle": circle, "usdxx": usdxx, "sofr": sofr, "treasury": treasury,
         "crcl": crcl, "tbx": tbx, "fx": fx,
         "crcl_last_alerted_close_date": next_alerted_close,
+        "correction_pending": False,
         "errors": errors,
     }
     atomic_write(PENDING_STATE, json.dumps(new_state, ensure_ascii=False, indent=2) + "\n")
