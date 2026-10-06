@@ -29,14 +29,14 @@ jobs:
   gate:
     runs-on: ubuntu-latest
     outputs:
-      run_production: \${{ steps.elect.outputs.run_production }}
+      run_production: ${{ steps.elect.outputs.run_production }}
     steps:
       - name: Elect single production workflow
         id: elect
         env:
-          GH_TOKEN: \${{ github.token }}
-          REPOSITORY: \${{ github.repository }}
-          CURRENT_RUN_ID: \${{ github.run_id }}
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          CURRENT_RUN_ID: ${{ github.run_id }}
         run: |
           python - <<'PY'
           import datetime as dt, json, os, urllib.request
@@ -81,11 +81,11 @@ jobs:
     timeout-minutes: 250
     env:
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900008879_bot"
-      TELEGRAM_BOT_TOKEN: \${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
-      TELEGRAM_CHAT_ID_PRIMARY: \${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID }}
-      TELEGRAM_CHAT_ID_FALLBACK: \${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
-      LS_OPENAPI_APP_KEY: \${{ secrets.LS_OPENAPI_APP_KEY }}
-      LS_OPENAPI_APP_SECRET: \${{ secrets.LS_OPENAPI_APP_SECRET }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID }}
+      TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+      LS_OPENAPI_APP_KEY: ${{ secrets.LS_OPENAPI_APP_KEY }}
+      LS_OPENAPI_APP_SECRET: ${{ secrets.LS_OPENAPI_APP_SECRET }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -119,7 +119,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: kospi-shock-morning-\${{ github.run_id }}
+          name: kospi-shock-morning-${{ github.run_id }}
           path: |
             out/kospi_shock_handoff.json
             out/kospi_shock_episode_status.md
@@ -136,11 +136,11 @@ jobs:
     timeout-minutes: 210
     env:
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900008879_bot"
-      TELEGRAM_BOT_TOKEN: \${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
-      TELEGRAM_CHAT_ID_PRIMARY: \${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID }}
-      TELEGRAM_CHAT_ID_FALLBACK: \${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
-      LS_OPENAPI_APP_KEY: \${{ secrets.LS_OPENAPI_APP_KEY }}
-      LS_OPENAPI_APP_SECRET: \${{ secrets.LS_OPENAPI_APP_SECRET }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID }}
+      TELEGRAM_CHAT_ID_FALLBACK: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+      LS_OPENAPI_APP_KEY: ${{ secrets.LS_OPENAPI_APP_KEY }}
+      LS_OPENAPI_APP_SECRET: ${{ secrets.LS_OPENAPI_APP_SECRET }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -148,7 +148,7 @@ jobs:
         continue-on-error: true
         uses: actions/download-artifact@v4
         with:
-          name: kospi-shock-morning-\${{ github.run_id }}
+          name: kospi-shock-morning-${{ github.run_id }}
           path: out
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -180,7 +180,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: kospi-shock-afternoon-\${{ github.run_id }}
+          name: kospi-shock-afternoon-${{ github.run_id }}
           path: |
             out/kospi_shock_episode_status.md
             out/kospi_shock_episode_raw.json
