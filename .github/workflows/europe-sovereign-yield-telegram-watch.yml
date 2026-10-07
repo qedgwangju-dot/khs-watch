@@ -199,5 +199,6 @@ jobs:
             out/europe_sovereign_yield_alert.json
             out/europe_sovereign_yield_pending_state.json
             out/europe_sovereign_yield_telegram_confirmed.json
+            out/europe_sovereign_debug_*.txt
           if-no-files-found: ignore
           retention-days: 14
