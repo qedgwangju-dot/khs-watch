@@ -159,6 +159,44 @@ class AgenticCpuStructureTests(unittest.TestCase):
         )
         self.assertEqual(w.cpu_structure_changes(old, {"market_2030_usd_bn": 245}, "bnpp_analyst"), [])
 
+    def test_secondary_bnp_target_requires_exact_issuer_and_company(self):
+        url = "https://www.marketscreener.com/news/bnp-paribas-adjusts-pt-on-advanced-micro-devices-to-960-from-600-keeps-outperform-rating-ce785ddbd08af222"
+        name, obs = w.cpu_structure_observation(
+            "BNP Paribas Adjusts PT on Advanced Micro Devices to $960 From $600",
+            "", url,
+        )
+        self.assertEqual(name, "bnpp_analyst")
+        self.assertEqual(obs["amd_target_usd"], 960)
+        self.assertEqual(w.cpu_structure_changes(w.CPU_STRUCTURE_BASELINE[name], obs, name), [])
+        name, obs = w.cpu_structure_observation(
+            "BNP Paribas Adjusts PT on Advanced Micro Devices to $1,100 From $960",
+            "", url,
+        )
+        self.assertEqual(name, "bnpp_analyst")
+        self.assertIn("AMD 목표주가 전망 변경", w.cpu_structure_changes(w.CPU_STRUCTURE_BASELINE[name], obs, name)[0])
+        name, obs = w.cpu_structure_observation(
+            "Citi adjusts AMD price target to $1,100 from $960",
+            "", url,
+        )
+        self.assertEqual((name, obs), ("", {}))
+
+    def test_digitimes_ai_server_cpu_quantity_is_not_all_server_total(self):
+        url = w.CPU_STRUCTURE_BASELINE["digitimes"]["shipments_source_url"]
+        name, obs = w.cpu_structure_observation(
+            "2027 AI server CPU demand increases",
+            "AI server CPU shipments in 2027 will reach 11.2 million processors.",
+            url,
+        )
+        self.assertEqual(name, "digitimes")
+        self.assertEqual(obs["ai_server_cpu_2027_million"], 11.2)
+        self.assertIn("출하 전망 변경", w.cpu_structure_changes(w.CPU_STRUCTURE_BASELINE[name], obs, name)[0])
+        name, obs = w.cpu_structure_observation(
+            "2027 CPU shipments",
+            "Total server CPU shipments in 2027 will reach 50 million.",
+            url,
+        )
+        self.assertEqual((name, obs), ("", {}))
+
     def test_one_shot_cpu_alert_has_separate_official_and_broker_provenance(self):
         a = w.cpu_structure_block(w.CPU_STRUCTURE_BASELINE, 1400.0, [])
         self.assertIn("260억달러(약", a)
@@ -166,7 +204,8 @@ class AgenticCpuStructureTests(unittest.TestCase):
         self.assertIn("2,450억달러(약", a)
         self.assertIn("BNP 애널리스트 별도 보도", a)
         self.assertIn("AMD 목표주가", a)
-        self.assertIn("Arm 목표주가 $405", a)
+        self.assertIn("Arm 목표주가 $405(약", a)
+        self.assertIn("300억달러(약", a)
         self.assertIn("가속기당 CPU 거의 2배 전망", a)
         self.assertIn("984.5만개(+84.1%", a)
         self.assertIn("Arm 계열 전체 서버 CPU 1,580만개(32.5%)", a)
