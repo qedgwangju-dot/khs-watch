@@ -45,9 +45,11 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           REPOSITORY: ${{ github.repository }}
           CURRENT_RUN_ID: ${{ github.run_id }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID }}
         run: |
           python - <<'PY'
-          import datetime as dt, json, os, sys, urllib.request
+          import datetime as dt, json, os, sys, urllib.parse, urllib.request
           from zoneinfo import ZoneInfo
           sys.path.insert(0, "scripts")
           from krx_session_calendar import session_state
@@ -108,6 +110,36 @@ jobs:
                       startup.append((run_id,run.get("status")))
               should_run=not healthy and not startup and not unknown
           run_morning=bool(should_run and now.time()<dt.time(12,15))
+
+          # 장 시작 뒤 감시가 비어 있다가 뒤늦게 복구되는 경우 침묵하지 않는다.
+          # 과거 구간의 투자자 수급은 소급 생성하지 않고 감시 공백 자체만 알린다.
+          if (
+              should_run
+              and session["open"] is not None
+              and now >= session["open"] + dt.timedelta(minutes=5)
+          ):
+              bot=(os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+              chat=(os.getenv("TELEGRAM_CHAT_ID") or "").strip()
+              if bot and chat:
+                  text=(
+                      "⚠️ 코스피 급락 감시 공백 감지·자동 복구\n"
+                      f"현재 시각 {now:%Y-%m-%d %H:%M:%S} KST\n"
+                      f"정규장 시작 {session['open']:%H:%M:%S} 이후 활성 production이 없어 새 감시를 기동합니다.\n"
+                      "공백 구간은 정확한 시작 수급 스냅샷이 없으므로 매도주체를 소급 추정하지 않습니다."
+                  )
+                  payload=urllib.parse.urlencode({
+                      "chat_id":chat,"text":text,"disable_web_page_preview":"true"
+                  }).encode("utf-8")
+                  req=urllib.request.Request(
+                      f"https://api.telegram.org/bot{bot}/sendMessage",
+                      data=payload,method="POST",
+                  )
+                  with urllib.request.urlopen(req,timeout=25) as r:
+                      out=json.loads(r.read().decode("utf-8"))
+                  if not out.get("ok"):
+                      raise RuntimeError(f"Telegram gap alert rejected: {out}")
+                  print(f"kospi_gap_recovery_alert=true message_id={out['result'].get('message_id')}")
+
           with open(os.environ["GITHUB_OUTPUT"],"a",encoding="utf-8") as fp:
               fp.write(f"run_production={'1' if should_run else '0'}\n")
               fp.write(f"run_morning={'1' if run_morning else '0'}\n")
