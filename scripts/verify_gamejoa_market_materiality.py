@@ -3549,6 +3549,102 @@ class ForegroundAndEventIdentityTests(unittest.TestCase):
         self.assertEqual(len(repeated), 1)
 
 
+class PostMergeLiveArtifactQualityChecks(unittest.TestCase):
+    """Regressions captured from the 2026-10-07 post-merge GitHub dry-run."""
+
+    def assert_source_aligned(self, title, body, core, link):
+        alert = {
+            "source_title": title,
+            "source_body": body,
+            "source_abstract": "",
+            "news": title,
+            "policy_plain_summary": core,
+            "telegram_core_fact": core,
+            "body_verified": True,
+            "korean_business_news": True,
+            "link": link,
+        }
+        self.assertEqual(radar.source_core_fact_errors(alert), [])
+        self.assertTrue(radar.source_output_aligned(alert))
+
+    def test_professional_qualification_is_not_a_licensing_cashflow_event(self):
+        title = "기술사업화 전문인력 수요 확대…'IP중개사' 양성교육·자격시험 운영"
+        body = (
+            "한국지식재산서비스협회는 IP중개사 자격시험을 11월 7일 시행한다고 밝혔다. "
+            "IP중개사는 기술이전과 라이선스 계약, 사업화 전략 수립을 지원하는 실무형 전문인력이다."
+        )
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["disposition"], "exclude", audit)
+        self.assertEqual(audit["reason"], "professional_training_or_qualification_without_equity_event")
+        self.assertFalse(materiality.evidence_is_new_event("licensing_cashflow", body.split(". ")[1] + "."))
+
+    def test_corporate_tax_cut_advocacy_is_not_policy_execution(self):
+        title = "세수 부족해 올린 법인세…63조 초과세수에 고개드는 '인하' 요구"
+        body = (
+            "경기 둔화로 기업 이익이 줄어든 데다 법인세율 인하도 세수 감소에 영향을 미쳤다는 설명이었다. "
+            "반도체 호황으로 세입 기반이 확충됐다는 점을 인정했다. "
+            "법인세수가 늘어난 만큼 법인세율을 다시 살펴야 한다는 주장이다."
+        )
+        audit = materiality.assess(title, body)
+        self.assertLessEqual(audit["priority"], 1, audit)
+        self.assertFalse(any(item["kind"] == "policy_scope_or_stage" for item in audit["evidence"]), audit)
+        self.assertFalse(any(item["kind"] == "physical_supply_or_capacity" for item in audit["evidence"]), audit)
+
+    def test_vague_production_base_expansion_needs_amount_or_execution(self):
+        title = "LG전자, 히트펌프 기반 '보일러 없는 아파트' 확산 나선다"
+        body = "LG전자는 창원공장을 중심으로 국내 히트펌프 생산 기반도 확대한다."
+        audit = materiality.assess(title, body)
+        self.assertLessEqual(audit["priority"], 1, audit)
+        self.assertFalse(any(item["kind"] == "physical_supply_or_capacity" for item in audit["evidence"]), audit)
+
+    def test_nanya_core_keeps_reported_price_increase_and_attribution(self):
+        title = '"대만 반도체업체 난야, D램 가격 최대 20% 인상 전망" | 연합뉴스'
+        body = (
+            "대만 경제일보는 업계 전언을 인용해 난야가 최근 고객사들에 D램 계약가격을 "
+            "올리겠다고 통보했으며 상승폭은 최대 20%에 이른다고 보도했다."
+        )
+        core = radar.detailed_article_core(title, body)
+        self.assertIn("난야", core)
+        self.assertIn("D램 계약가격", core)
+        self.assertIn("최대 20%", core)
+        self.assertIn("경제일보", core)
+        self.assertNotIn("실적 호조로 이어질", core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        self.assert_source_aligned(title, body, core, "https://www.yna.co.kr/view/AKR20261007154000089")
+
+    def test_split_contract_terms_are_joined_into_the_core(self):
+        title = "HD건설기계, 美 데이터센터에 3900억 규모 발전용 엔진 공급"
+        body = (
+            "HD건설기계는 미국 발전 인프라 솔루션 업체 이록(ERock)과 가스 발전용 엔진 "
+            "롱블록(Long Block) 공급 계약을 체결했다고 7일 공시했다. "
+            "계약 기간은 내년부터 2028년까지 2년이며, 계약 규모는 약 3900억원이다."
+        )
+        core = radar.detailed_article_core(title, body)
+        self.assertIn("이록", core)
+        self.assertIn("2028년", core)
+        self.assertIn("3900억원", core)
+        self.assertIn("3900억원이다", core)
+        self.assertNotIn("3900억원다", core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        self.assert_source_aligned(title, body, core, "https://www.newsis.com/view/NISX20261007_0003817397")
+
+    def test_share_exchange_delay_core_keeps_date_terms_and_break_condition(self):
+        title = "'두나무+네이버' 내년 3월로...\"합병 방향 바뀐 것 없다\""
+        body = (
+            "두나무는 네이버 종속회사인 네이버파이낸셜과 자사의 주식교환일이 내년 3월 31일로 "
+            "변경됐다고 7일 정정 공시했다. 교환 조건에는 변동이 없다. "
+            "두나무 또는 네이버파이낸셜 주주가 행사한 주식매수청구권 규모가 회사별로 1조2000억원 이상이면 "
+            "거래 종결의 선행조건이 충족되지 않아 계약이 해제될 수 있다."
+        )
+        core = radar.detailed_article_core(title, body)
+        self.assertIn("내년 3월 31일", core)
+        self.assertIn("교환 조건은 유지", core)
+        self.assertIn("1조2000억원", core)
+        self.assertIn("해제될 수 있다", core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        self.assert_source_aligned(title, body, core, "https://www.fnnews.com/news/202610071554200943")
+
+
 def audit_saved_runs(paths):
     results = []
     selections = []
