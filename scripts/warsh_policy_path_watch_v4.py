@@ -126,6 +126,40 @@ def official_effr():
     return float(rate), str(row.get("effectiveDate") or row.get("effective_date") or "")
 
 
+def official_fomc_dates():
+    raw, _ = v3.base.fetch(v3.base.FED_CALENDAR)
+    text = v3.base.clean_text(raw)
+    today = ny_today()
+    month_re = "|".join(calendar.month_name[1:])
+    out = []
+    for year in (today.year, today.year + 1):
+        start = text.find(f"{year} FOMC Meetings")
+        if start < 0:
+            continue
+        end = text.find(f"{year + 1} FOMC Meetings", start + 1)
+        section = text[start:end if end >= 0 else None]
+        # 공식 달력의 정규 FOMC는 2일 범위로 표시된다.
+        # 의사록 공개일(예: October 7)을 정책회의로 오인하지 않도록
+        # 반드시 '월 일-일' 범위만 회의일로 인정한다.
+        for m in re.finditer(
+            rf"\\b({month_re})\\s+(\\d{{1,2}})-(\\d{{1,2}})\\*?",
+            section,
+            re.I,
+        ):
+            month = list(calendar.month_name).index(m.group(1).capitalize())
+            day = int(m.group(3))
+            try:
+                d = datetime(year, month, day).date()
+            except ValueError:
+                continue
+            if d >= today:
+                out.append(d)
+    out = sorted(dict.fromkeys(out))
+    if not out:
+        raise RuntimeError("연준 공식 FOMC 회의일 파싱 실패")
+    return out
+
+
 def adjacent_distribution(change_bp):
     """확률가중 기대변화를 인접한 25bp 결과 두 개로 분해."""
     u = float(change_bp) / 25.0
@@ -141,19 +175,9 @@ def adjacent_distribution(change_bp):
 def official_snapshot():
     trade_date, monthly = cme_monthly_rates()
     effr, effr_date = official_effr()
-    meetings = v3.base.parse_snapshot().get("meetings") or []
-    # 회의 날짜 자체는 공개 FOMC 일정과 기존 파서가 이미 검증한 미래 회의만 사용.
+    # 회의 날짜도 제3자 시장화면이 아니라 연준 공식 FOMC 달력에서 직접 읽는다.
     today = ny_today()
-    future = []
-    for m in meetings:
-        try:
-            d = datetime.strptime(str(m.get("date")), "%Y-%m-%d").date()
-        except Exception:
-            continue
-        if d >= today:
-            future.append(d)
-    if not future:
-        raise RuntimeError("향후 FOMC 회의 날짜 없음")
+    future = official_fomc_dates()
 
     meet_months = {(d.year,d.month) for d in future}
     result = []
