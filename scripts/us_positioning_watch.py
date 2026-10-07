@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import os, re, json, hashlib, html
+import os, re, json, hashlib, html, time
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
 from io import StringIO, BytesIO
@@ -47,9 +47,23 @@ SOX_AUX = "https://indexes.nasdaq.com/Index/Weighting/SOX"
 
 
 def get(url, timeout=35):
-    r = S.get(url, timeout=timeout, allow_redirects=True)
-    r.raise_for_status()
-    return r
+    """Bounded retries for transient 429/5xx/network failures; no stale cache reuse."""
+    errors = []
+    for attempt in range(3):
+        try:
+            r = S.get(
+                url,
+                timeout=timeout,
+                allow_redirects=True,
+                headers={"Cache-Control": "no-cache", "Pragma": "no-cache"},
+            )
+            r.raise_for_status()
+            return r
+        except Exception as exc:
+            errors.append(f"{type(exc).__name__}: {exc}")
+            if attempt < 2:
+                time.sleep(1.5 * (attempt + 1))
+    raise RuntimeError(f"HTTP 조회 3회 실패: {url} / {' | '.join(errors)}")
 
 
 def browser_html(url):
@@ -127,6 +141,14 @@ def int_list(text):
     return [int(x.replace(",", "")) for x in vals]
 
 
+def cftc_fixed_fields(text, expected=14):
+    """Preserve CFTC '.' confidentiality placeholders so columns never shift."""
+    tokens = re.findall(r"[-+]?(?:\d{1,3}(?:,\d{3})+|\d+)|\.", text or "")
+    if len(tokens) < expected:
+        raise RuntimeError(f"CFTC TFF row too short: {len(tokens)} < {expected}")
+    return [None if t == "." else int(t.replace(",", "")) for t in tokens[:expected]]
+
+
 def parse_cftc_nq_mini(plain):
     """Parse the official NASDAQ MINI (NQ) TFF block separately from Consolidated."""
     start = plain.find("NASDAQ MINI -")
@@ -145,15 +167,15 @@ def parse_cftc_nq_mini(plain):
     if not oi_m or not pos_m or not ch_m:
         return None
 
-    pos = int_list(pos_m.group(1))[:14]
-    changes = int_list(ch_m.group(3))[:14]
-    if len(pos) < 14 or len(changes) < 14:
-        return None
+    pos = cftc_fixed_fields(pos_m.group(1))
+    changes = cftc_fixed_fields(ch_m.group(3))
+    if any(pos[i] is None for i in (6, 7)) or any(changes[i] is None for i in (6, 7)):
+        raise RuntimeError("NASDAQ MINI Leveraged Funds fields confidential/missing")
 
     oi = int(oi_m.group(1).replace(",", ""))
     oi_wow = int(ch_m.group(2).replace(" ", "").replace(",", ""))
-    lev_long, lev_short = pos[6], pos[7]
-    lev_long_wow, lev_short_wow = changes[6], changes[7]
+    lev_long, lev_short = int(pos[6]), int(pos[7])
+    lev_long_wow, lev_short_wow = int(changes[6]), int(changes[7])
     return {
         "contract": "NASDAQ MINI",
         "cftc_code": NQ_CFTC_CODE,
@@ -170,6 +192,38 @@ def parse_cftc_nq_mini(plain):
         "scope": "CFTC TFF NASDAQ MINI 전체시장 주간",
     }
 
+
+def _self_test_cftc_parser():
+    # Official CFTC TFF NASDAQ MINI sample, 2026-09-29. This guards both
+    # category indexes and signed weekly changes from silent regex drift.
+    sample = """
+NASDAQ MINI - CHICAGO MERCANTILE EXCHANGE (NASDAQ 100 STOCK INDEX X $20)
+CFTC Code #209742 Open Interest is 270,554
+Positions
+49,079 107,321 3,041 108,558 38,814 4,654 48,150 72,873 6,073 11,001 8,124 0 39,998 29,654
+Changes from: September 22, 2026 Total Change is: -15,767
+-8,433 -8,595 1,145 2,318 4,794 -628 -5,883 -11,843 919 -4,589 -212 -4 -612 -1,343
+Percent of Open Interest
+"""
+    row = parse_cftc_nq_mini(sample)
+    expected = {
+        "open_interest": 270554,
+        "open_interest_wow": -15767,
+        "leveraged_long": 48150,
+        "leveraged_short": 72873,
+        "leveraged_net": -24723,
+        "leveraged_net_wow": 5960,
+    }
+    if row is None:
+        raise RuntimeError("CFTC NQ parser self-test returned None")
+    for key, value in expected.items():
+        if row.get(key) != value:
+            raise RuntimeError(
+                f"CFTC NQ parser self-test failed: {key}={row.get(key)} expected={value}"
+            )
+
+
+_self_test_cftc_parser()
 
 def cftc_nq_history_3y(current_nq=None, current_period=None):
     """Build 3Y and 10Y NQ leveraged-fund distributions from official CFTC TFF history.
@@ -460,12 +514,11 @@ def parse_cftc():
     )
     if not pos_m:
         raise RuntimeError("NASDAQ-100 CFTC positions row not found")
-    pos = int_list(pos_m.group(1))
+    pos = cftc_fixed_fields(pos_m.group(1))
     # Exact CFTC layout has 14 position values:
     # dealer(3), asset manager(3), leveraged funds(3), other reportable(3), nonreportable(2).
-    if len(pos) < 14:
-        raise RuntimeError(f"NASDAQ-100 CFTC positions parse failed: {len(pos)} fields")
-    pos = pos[:14]
+    if any(pos[i] is None for i in (3, 4, 6, 7)):
+        raise RuntimeError("NASDAQ-100 CFTC critical position fields confidential/missing")
 
     ch_m = re.search(
         r"Changes from:\s*([A-Za-z]+\s+\d{1,2},\s+20\d{2}).*?Total Change is:\s*[-+]?([\d,]+)\s+([\s\S]*?)\s+Percent of Open Interest",
@@ -475,15 +528,14 @@ def parse_cftc():
     if not ch_m:
         raise RuntimeError("NASDAQ-100 CFTC weekly changes row not found")
     prev_period = ch_m.group(1)
-    changes = int_list(ch_m.group(3))
-    if len(changes) < 14:
-        raise RuntimeError(f"NASDAQ-100 CFTC change parse failed: {len(changes)} fields")
-    changes = changes[:14]
+    changes = cftc_fixed_fields(ch_m.group(3))
+    if any(changes[i] is None for i in (3, 4, 6, 7)):
+        raise RuntimeError("NASDAQ-100 CFTC critical weekly-change fields confidential/missing")
 
-    asset_long, asset_short = pos[3], pos[4]
-    lev_long, lev_short = pos[6], pos[7]
-    asset_long_wow, asset_short_wow = changes[3], changes[4]
-    lev_long_wow, lev_short_wow = changes[6], changes[7]
+    asset_long, asset_short = int(pos[3]), int(pos[4])
+    lev_long, lev_short = int(pos[6]), int(pos[7])
+    asset_long_wow, asset_short_wow = int(changes[3]), int(changes[4])
+    lev_long_wow, lev_short_wow = int(changes[6]), int(changes[7])
 
     metrics = {
         "open_interest": open_interest,
