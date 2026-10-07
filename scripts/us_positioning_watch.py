@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 import os, re, json, hashlib, html, time
 from pathlib import Path
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timezone, timedelta, time as dt_time
+from zoneinfo import ZoneInfo
 from io import StringIO, BytesIO
 
 import requests
@@ -45,6 +46,8 @@ SOX = "https://indexes.nasdaq.com/Index/History/SOX"
 SOX_OVERVIEW = "https://beta.indexes.nasdaq.com/Index/Overview/SOX"
 SOX_OVERVIEW_FALLBACK = "https://indexes.nasdaq.com/Index/Overview/SOX"
 SOX_YAHOO = "https://query1.finance.yahoo.com/v8/finance/chart/%5ESOX?range=10d&interval=1d"
+SOX_NASDAQ_HIST_API = "https://api.nasdaq.com/api/quote/SOX/historical"
+NY = ZoneInfo("America/New_York")
 SOX_AUX = "https://indexes.nasdaq.com/Index/Weighting/SOX"
 
 
@@ -976,6 +979,37 @@ def _parse_cboe_daily_volume_section(text, heading, next_heading=None):
     return {"calls": calls, "puts": puts, "total": total}
 
 
+def _previous_weekday(day):
+    d = day - timedelta(days=1)
+    while d.weekday() >= 5:
+        d -= timedelta(days=1)
+    return d
+
+
+def _expected_completed_us_session():
+    """Latest session that should have a final close, not the live intraday date."""
+    now = datetime.now(NY)
+    if now.weekday() < 5 and now.time() >= dt_time(16, 30):
+        return now.date()
+    d = now.date()
+    if now.weekday() < 5:
+        d = _previous_weekday(d)
+    else:
+        while d.weekday() >= 5:
+            d -= timedelta(days=1)
+    return d
+
+
+def _completed_session_candidates(limit=7):
+    d = _expected_completed_us_session()
+    out = []
+    while len(out) < limit:
+        if d.weekday() < 5:
+            out.append(d)
+        d -= timedelta(days=1)
+    return out
+
+
 def fetch_cboe_daily_snapshot(period):
     """Use Cboe's date-specific Daily Market Statistics as the canonical EOD source.
 
@@ -1057,55 +1091,67 @@ def fetch_cboe_daily_snapshot(period):
 
 
 def parse_cboe():
-    # Discover only the latest Cboe session date from the live page.
-    # All numeric option data comes from the date-specific Daily Market Statistics page.
-    h = browser_html(CBOE)
-    text = BeautifulSoup(h, "html.parser").get_text("\n", strip=True)
-    text = re.sub(r"[ \t]+", " ", text)
+    # Never treat the current intraday page as an end-of-day snapshot.
+    # Try the latest completed U.S. session first and walk backward across holidays.
+    errors = []
+    for d in _completed_session_candidates(7):
+        period = d.strftime("%A, %B %d, %Y").replace(" 0", " ")
+        try:
+            return fetch_cboe_daily_snapshot(period)
+        except Exception as exc:
+            errors.append(f"{d.isoformat()}:{type(exc).__name__}:{exc}")
+    raise RuntimeError("Cboe completed-session EOD unavailable: " + " | ".join(errors))
 
-    period_m = re.search(
-        r"Cboe Exchange Market Statistics for\s+([A-Za-z]+,\s+[A-Za-z]+\s+\d{1,2},\s+20\d{2})",
-        text,
-        re.I,
-    )
-    if not period_m:
-        raise RuntimeError("Cboe latest market-statistics session date not found")
-    period = period_m.group(1)
+def _nasdaq_sox_historical(expected_date):
+    """Official Nasdaq historical API, restricted to completed sessions."""
+    start = expected_date - timedelta(days=14)
+    params = urllib.parse.urlencode({
+        "assetclass": "index",
+        "fromdate": start.isoformat(),
+        "todate": expected_date.isoformat(),
+        "limit": "20",
+    })
+    url = SOX_NASDAQ_HIST_API + "?" + params
+    payload = get(url, timeout=40).json()
+    data = (payload or {}).get("data") or {}
+    table = data.get("tradesTable") or data.get("trades_table") or {}
+    rows = table.get("rows") if isinstance(table, dict) else None
+    if not isinstance(rows, list):
+        rows = data.get("rows") if isinstance(data.get("rows"), list) else []
+    parsed = []
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        raw_date = str(row.get("date") or row.get("tradeDate") or row.get("trade_date") or "").strip()
+        d = None
+        for fmt in ("%m/%d/%Y", "%Y-%m-%d", "%m/%d/%y"):
+            try:
+                d = datetime.strptime(raw_date, fmt).date()
+                break
+            except ValueError:
+                pass
+        if d is None or d > expected_date:
+            continue
+        close = parse_num(
+            row.get("close")
+            or row.get("last")
+            or row.get("indexValue")
+            or row.get("index_value")
+            or row.get("value")
+        )
+        if close is not None:
+            parsed.append((d, float(close)))
+    if not parsed:
+        raise RuntimeError("Nasdaq SOX historical API returned no completed closes")
+    parsed.sort(key=lambda x: x[0])
+    return parsed, url
 
-    return fetch_cboe_daily_snapshot(period)
 
 def parse_sox():
-    """Cross-check Nasdaq's official SOX level with Yahoo daily closes.
+    """Use completed-session closes only and cross-check Nasdaq vs Yahoo."""
+    expected = _expected_completed_us_session()
 
-    Nasdaq's index pages sometimes render stale Previous Close / Net Change fields
-    while the headline level/date is current. We therefore use Nasdaq only for the
-    official session date and close level, and require Yahoo's daily chart to match
-    that same session/level before calculating the 1D move. Any mismatch fails closed.
-    """
-    nasdaq = None
-    nasdaq_errors = []
-
-    for url in (SOX_OVERVIEW, SOX_OVERVIEW_FALLBACK):
-        try:
-            txt = BeautifulSoup(get(url).text, "html.parser").get_text(" ", strip=True)
-            cur = re.search(
-                r"DATA AS OF\s+(\d{1,2}/\d{1,2}/20\d{2})\s+([\d,]+\.\d+)",
-                txt,
-                re.I,
-            )
-            if not cur:
-                raise RuntimeError("Nasdaq SOX headline date/level missing")
-            period = cur.group(1)
-            latest = float(cur.group(2).replace(",", ""))
-            nasdaq = {"period": period, "latest": latest, "url": url}
-            break
-        except Exception as exc:
-            nasdaq_errors.append(f"{url}: {type(exc).__name__}: {exc}")
-
-    if nasdaq is None:
-        raise RuntimeError("SOX Nasdaq official level unavailable: " + " | ".join(nasdaq_errors))
-
-    # Yahoo daily chart is used only as an independent historical-close cross-check.
+    # Independent daily series: discard any current intraday bar after expected session.
     try:
         payload = get(SOX_YAHOO).json()
         result = (((payload or {}).get("chart") or {}).get("result") or [None])[0]
@@ -1118,27 +1164,63 @@ def parse_sox():
         for ts, close in zip(timestamps, closes):
             if close is None:
                 continue
-            day = datetime.fromtimestamp(int(ts), timezone.utc).astimezone(
-                timezone(timedelta(hours=-4))
-            ).strftime("%m/%d/%Y")
-            rows.append((day, float(close)))
+            day = datetime.fromtimestamp(int(ts), timezone.utc).astimezone(NY).date()
+            if day <= expected:
+                rows.append((day, float(close)))
+        rows = sorted(dict(rows).items())
         if len(rows) < 2:
-            raise RuntimeError("Yahoo SOX daily closes insufficient")
+            raise RuntimeError("Yahoo SOX completed daily closes insufficient")
         yahoo_date, yahoo_latest = rows[-1]
         _, yahoo_prev = rows[-2]
     except Exception as exc:
-        raise RuntimeError(f"SOX Yahoo cross-check unavailable: {type(exc).__name__}: {exc}")
+        raise RuntimeError(f"SOX Yahoo completed-close cross-check unavailable: {type(exc).__name__}: {exc}")
 
-    if yahoo_date != nasdaq["period"]:
+    # Primary official route: Nasdaq historical API for the same completed date.
+    nasdaq_errors = []
+    nasdaq_latest = None
+    official_url = None
+    try:
+        nrows, official_url = _nasdaq_sox_historical(expected)
+        same = [x for x in nrows if x[0] == yahoo_date]
+        if not same:
+            raise RuntimeError(f"Nasdaq historical API missing {yahoo_date}")
+        nasdaq_latest = same[-1][1]
+    except Exception as exc:
+        nasdaq_errors.append(f"historical API: {type(exc).__name__}: {exc}")
+
+    # Secondary official route: GIW overview/history headline, accepted only when
+    # it is already on the same completed date. Intraday/current-date values are rejected.
+    if nasdaq_latest is None:
+        for url in (SOX, SOX_OVERVIEW, SOX_OVERVIEW_FALLBACK):
+            try:
+                txt = BeautifulSoup(get(url).text, "html.parser").get_text(" ", strip=True)
+                cur = re.search(
+                    r"DATA AS OF\s+(\d{1,2}/\d{1,2}/20\d{2})\s+([\d,]+\.\d+)",
+                    txt,
+                    re.I,
+                )
+                if not cur:
+                    raise RuntimeError("Nasdaq SOX headline date/level missing")
+                day = datetime.strptime(cur.group(1), "%m/%d/%Y").date()
+                if day != yahoo_date:
+                    raise RuntimeError(
+                        f"official headline is not completed target: {day} vs {yahoo_date}"
+                    )
+                nasdaq_latest = float(cur.group(2).replace(",", ""))
+                official_url = url
+                break
+            except Exception as exc:
+                nasdaq_errors.append(f"{url}: {type(exc).__name__}: {exc}")
+
+    if nasdaq_latest is None:
+        raise RuntimeError("SOX Nasdaq completed close unavailable: " + " | ".join(nasdaq_errors))
+
+    if abs(yahoo_latest - nasdaq_latest) > 0.10:
         raise RuntimeError(
-            f"SOX source date mismatch: Nasdaq={nasdaq['period']}, Yahoo={yahoo_date}"
-        )
-    if abs(yahoo_latest - nasdaq["latest"]) > 0.10:
-        raise RuntimeError(
-            f"SOX final-close mismatch: Nasdaq={nasdaq['latest']:.2f}, Yahoo={yahoo_latest:.2f}"
+            f"SOX final-close mismatch: Nasdaq={nasdaq_latest:.2f}, Yahoo={yahoo_latest:.2f}"
         )
 
-    latest = nasdaq["latest"]
+    latest = nasdaq_latest
     previous_close = yahoo_prev
     net_change = latest - previous_close
     pct = (latest / previous_close - 1.0) * 100.0 if previous_close else None
@@ -1150,25 +1232,26 @@ def parse_sox():
         "previous_close": previous_close,
         "previous_close_source": "Yahoo daily close cross-check",
         "net_change": net_change,
-        "net_change_source": "Nasdaq official close minus Yahoo prior daily close",
+        "net_change_source": "Nasdaq official completed close minus Yahoo prior daily close",
         "pct": pct,
         "d1_pct": pct,
-        "official_overview_url": nasdaq["url"],
+        "official_overview_url": official_url,
         "crosscheck_url": SOX_YAHOO,
         "crosscheck_same_date": True,
         "crosscheck_close_diff": latest - yahoo_latest,
         "final_close_confirmed": True,
+        "expected_completed_session": expected.isoformat(),
     }
 
-    # The same verified Yahoo daily series supplies 3D/5D context.
     vals = [x[1] for x in rows]
     if len(vals) >= 4:
         metrics["d3_pct"] = (vals[-1] / vals[-4] - 1.0) * 100.0
     if len(vals) >= 6:
         metrics["d5_pct"] = (vals[-1] / vals[-6] - 1.0) * 100.0
 
-    core = {"source": "Nasdaq SOX", "kind": "sox", "period": nasdaq["period"], "metrics": metrics}
-    return {**core, "url": nasdaq["url"], "fingerprint": fp(core)}
+    period = yahoo_date.strftime("%m/%d/%Y")
+    core = {"source": "Nasdaq SOX", "kind": "sox", "period": period, "metrics": metrics}
+    return {**core, "url": official_url, "fingerprint": fp(core)}
 
 
 def explain(cftc, cboe, sox):
