@@ -1970,6 +1970,56 @@ def main() -> int:
     seen_map = seen.setdefault("seen", {})
     alerts: list[dict] = []
 
+    # 운영 검증용 1회 모드: 기존 nuclear 워처/상태파일/Telegram 경로는 그대로 쓰되
+    # 한울4호기 외 다른 원전·Westinghouse·SMR 이벤트는 수집하지 않는다.
+    # 평상시 스케줄에는 이 환경변수가 없으므로 기존 동작에는 영향이 없다.
+    hanul4_only = os.getenv("KHS_HANUL4_ONLY", "false").lower() == "true"
+    if hanul4_only:
+        seen["hanul4_operation_state_model_version"] = HANUL4_STATE_MODEL_VERSION
+        previous_hanul4 = seen.get("hanul4_operation_state") or {}
+        if not previous_hanul4:
+            seen["hanul4_operation_state"] = {
+                **HANUL4_FIXED_BASELINE,
+                "first_seen_kst": now.isoformat(timespec="seconds"),
+            }
+            previous_hanul4 = seen["hanul4_operation_state"]
+            print("hanul4_operation_baseline_restored=automatic_trip_2026-08-19")
+
+        hanul4_items = collect_hanul4_operation_items(now)
+        latest_hanul4 = _select_hanul4_transition(previous_hanul4, hanul4_items)
+        if latest_hanul4:
+            latest_hanul4["trigger"] = "verified_domestic_reactor_operation_stage_change"
+            alerts.append(latest_hanul4)
+            seen["hanul4_operation_state"] = {
+                **latest_hanul4,
+                "first_seen_kst": now.isoformat(timespec="seconds"),
+            }
+            print(
+                "hanul4_operation_state_change=true "
+                f"stage={latest_hanul4.get('stage')} "
+                f"live_status={latest_hanul4.get('live_status')}"
+            )
+
+        if not alerts:
+            current_seen_snapshot = json.dumps(seen, ensure_ascii=False, sort_keys=True)
+            if current_seen_snapshot != initial_seen_snapshot:
+                save_seen(seen, now)
+                print("nuclear_policy_state_persisted_without_alert=true")
+            clear_outputs()
+            print(f"nuclear_policy_alerts=0 hanul4_only=true hanul4_candidates={len(hanul4_items)}")
+            return 0
+
+        OUT_DIR.mkdir(exist_ok=True)
+        ALERT_PATH.write_text(render(alerts, now), encoding="utf-8")
+        ALERTS_JSON_PATH.write_text(json.dumps(alerts, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        TITLE_PATH.write_text("국내 원전 운전·재가동 웹감시: 확인된 상태 변화\n", encoding="utf-8")
+        save_seen(seen, now)
+        print(
+            f"nuclear_policy_alerts={len(alerts)} "
+            f"hanul4_only=true hanul4_candidates={len(hanul4_items)}"
+        )
+        return 0
+
     direct_items = collect_direct_items(now)
     for item in direct_items:
         if item["fingerprint"] in seen_map:
