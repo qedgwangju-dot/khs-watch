@@ -119,6 +119,7 @@ CPU_STRUCTURE_SEARCHES = [
     ("bing", 'site:digitimes.com "CPU" "per accelerator" "2027"'),
     ("google", '"BNP Paribas" "AMD" "price target" "CPU"'),
     ("bing", 'site:marketscreener.com "BNP Paribas" "AMD" "price target"'),
+    ("google", 'site:gb-www.digitimes.com.tw agentic AI 2027 CPU 出货'),
 ]
 
 FORECAST_SEARCHES = [
@@ -444,15 +445,53 @@ def cpu_structure_observation(title: str, text: str, url: str) -> tuple[str, dic
                 "market_2030_usd_bn": float(m.group(2)),
             }
         return "", {}
-    if host == "digitimes.com" or host.endswith(".digitimes.com"):
-        if "cpu" not in low or "accelerator" not in low or "2027" not in low:
+    # Secondary analyst reporting is not BNP's public AMD-estimate series.
+    trusted = ("marketscreener.com", "investors.com", "247wallst.com", "finance.yahoo.com", "gurufocus.com")
+    if any(host == d or host.endswith("." + d) for d in trusted):
+        if "bnp paribas" not in low or not any(s in low for s in ("amd", "advanced micro devices")):
             return "", {}
-        if re.search(r"(?:nearly|almost)\s+(?:twice|double)|nearly\s+twofold", low):
-            return "digitimes", {"per_accelerator_cpu_2027": "nearly_double"}
-        if re.search(r"(?:threefold|three[- ]?times|triple)\s+(?:as many\s+)?cpus?\s+per\s+accelerator", low):
-            return "digitimes", {"per_accelerator_cpu_2027": "triple"}
-        if re.search(r"(?:half|1\.5)\s+(?:as many\s+)?cpus?\s+per\s+accelerator", low):
-            return "digitimes", {"per_accelerator_cpu_2027": "one_point_five"}
+        obs = {}
+        m = re.search(
+            r"bnp paribas[^.!?]{0,180}?(?:amd|advanced micro devices)[^.!?]{0,120}?"
+            r"(?:price\s+target|target|pt)[^.!?]{0,70}?\bto\s*\$?\s*(\d{3,4})(?:\b|[^0-9])",
+            low,
+            re.I,
+        )
+        if m and 100 <= float(m.group(1)) <= 2000:
+            obs["amd_target_usd"] = float(m.group(1))
+        market = re.search(
+            r"(?:agentic\s+cpu\s+market|cpu\s+market)[^.!?]{0,130}?"
+            r"(?:\$|usd\s*)?(\d{2,3}(?:\.\d+)?)\s*(?:billion|bn)[^.!?]{0,40}?(?:by\s+)?2030",
+            low,
+            re.I,
+        )
+        if market and 100 <= float(market.group(1)) <= 600:
+            obs["market_2030_usd_bn"] = float(market.group(1))
+        return ("bnpp_analyst", obs) if obs else ("", {})
+    if (host == "digitimes.com" or host.endswith(".digitimes.com")
+            or host == "digitimes.com.tw" or host.endswith(".digitimes.com.tw")):
+        if "cpu" not in low or "2027" not in low:
+            return "", {}
+        obs = {}
+        if "accelerator" in low:
+            if re.search(r"(?:nearly|almost)\s+(?:twice|double)|nearly\s+twofold", low):
+                obs["per_accelerator_cpu_2027"] = "nearly_double"
+            elif re.search(r"(?:threefold|three[- ]?times|triple)\s+(?:as many\s+)?cpus?\s+per\s+accelerator", low):
+                obs["per_accelerator_cpu_2027"] = "triple"
+            elif re.search(r"(?:half|1\.5)\s+(?:as many\s+)?cpus?\s+per\s+accelerator", low):
+                obs["per_accelerator_cpu_2027"] = "one_point_five"
+        # Only exact AI-server CPU shipments; total server CPUs use a separate denominator.
+        m = re.search(
+            r"(?:ai[- ]?server\s+cpu|ai\s+servers?\s+cpu|ai服务器cpu)[^.!?]{0,190}?"
+            r"2027[^.!?]{0,90}?(\d+(?:\.\d+)?)\s*(million|万|萬)",
+            low,
+            re.I,
+        )
+        if m:
+            amount = float(m.group(1)) * (0.01 if m.group(2) in ("万", "萬") else 1.0)
+            if 2 <= amount <= 30:
+                obs["ai_server_cpu_2027_million"] = round(amount, 4)
+        return ("digitimes", obs) if obs else ("", {})
     return "", {}
 
 
@@ -464,11 +503,26 @@ def cpu_structure_changes(old: dict, observed: dict, issuer: str) -> list[str]:
         after = float(observed["market_2030_usd_bn"])
         if before and abs(after / before - 1) >= 0.10:
             changes.append(f"BNP 공개자료의 AMD 인용 CPU 시장 전망: {before:.0f}→{after:.0f}십억달러")
-    if issuer == "digitimes" and "per_accelerator_cpu_2027" in observed:
-        before = str(old.get("per_accelerator_cpu_2027") or "")
-        after = str(observed["per_accelerator_cpu_2027"])
-        if before and after != before:
-            changes.append(f"DIGITIMES 2027 가속기당 CPU 전망 변경: {before}→{after}")
+    if issuer == "bnpp_analyst":
+        for key, title in (("market_2030_usd_bn", "2030 데이터센터 CPU 시장"),
+                           ("amd_target_usd", "AMD 목표주가")):
+            if key not in observed:
+                continue
+            before = float(old.get(key) or 0)
+            after = float(observed[key])
+            if before and abs(after / before - 1) >= 0.10:
+                changes.append(f"BNP 애널리스트 {title} 전망 변경 {((after/before)-1)*100:+.1f}%")
+    if issuer == "digitimes":
+        if "per_accelerator_cpu_2027" in observed:
+            before = str(old.get("per_accelerator_cpu_2027") or "")
+            after = str(observed["per_accelerator_cpu_2027"])
+            if before and after != before:
+                changes.append(f"DIGITIMES 2027 가속기당 CPU 전망 변경: {before}→{after}")
+        if "ai_server_cpu_2027_million" in observed:
+            before = float(old.get("ai_server_cpu_2027_million") or 0)
+            after = float(observed["ai_server_cpu_2027_million"])
+            if before and abs(after / before - 1) >= 0.10:
+                changes.append(f"DIGITIMES 2027 AI 서버 CPU 출하 전망 변경 {((after/before)-1)*100:+.1f}%")
     return changes
 
 
@@ -487,9 +541,12 @@ def discover_cpu_structure(now: datetime, previous: dict) -> list[dict]:
             if not url or url in seen:
                 continue
             host = (urlparse(url).hostname or "").lower()
+            trusted = ("marketscreener.com", "investors.com", "247wallst.com", "finance.yahoo.com", "gurufocus.com")
             issuer = (
                 "bnpp_public" if host == "cib.bnpparibas" or host.endswith(".cib.bnpparibas")
                 else "digitimes" if host == "digitimes.com" or host.endswith(".digitimes.com")
+                    or host == "digitimes.com.tw" or host.endswith(".digitimes.com.tw")
+                else "bnpp_analyst" if any(host == d or host.endswith("." + d) for d in trusted)
                 else ""
             )
             if not issuer:
@@ -527,10 +584,10 @@ def cpu_structure_block(state: dict, fx: float, changes: list[str]) -> str:
         "• BNP 공개자료의 AMD 추정 인용: 2025년 " + fmt(bp["market_2025_usd_bn"])
         + " → 2030년 " + fmt(bp["market_2030_usd_bn"]),
         "• BNP 애널리스트 별도 보도: 2030년 " + fmt(ba["market_2030_usd_bn"])
-        + " · 원문 리포트 미열람 / 2025년 300억달러는 사용자 제공치로 공식 확인 전",
+        + " · 원문 리포트 미열람 / 2025년 " + fmt(ba["market_2025_user_claim_usd_bn"]) + "는 사용자 제공치로 공식 확인 전",
         "• AMD 목표주가: BNP 보도상 " + usd_shares(ba["amd_prior_target_usd"])
         + "→" + usd_shares(ba["amd_target_usd"])
-        + " · Arm 목표주가 $405는 원문 근거 확인 전이므로 확정 알림에서 제외",
+        + " · Arm 목표주가 " + usd_shares(ba["arm_target_user_claim_usd"]) + "는 원문 근거 확인 전이므로 확정 알림에서 제외",
         "• DIGITIMES: 2027년 가속기당 CPU 거의 2배 전망(유료 기사 표제)"
         + " · <b>코어 수·소켓 수·실제 출하가 각각 2배라는 의미는 아님</b>",
         "• DIGITIMES 공개 출하 전망: 2027년 AI 서버 CPU "
