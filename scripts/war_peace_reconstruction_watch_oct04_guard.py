@@ -1266,6 +1266,29 @@ def _rendered_item_count(text):
     return len(re.findall(r"(?m)^[🔴🟢🟡]?\s*\[(?:속보|신규|후속)\]\s+<b>\d+\.", text or ""))
 
 
+def _fit_alert_for_telegram(max_chars=4000):
+    """Telegram 4096자 제한 전에 완전한 항목 단위로 잘라 HTML/seen 불일치를 막는다."""
+    if not watch.ALERT.exists():
+        return
+    text = watch.ALERT.read_text(encoding="utf-8").strip()
+    if len(text) <= max_chars:
+        return
+
+    item_re = re.compile(r"(?m)^[🔴🟢🟡]?\\s*\\[(?:속보|신규|후속)\\]\\s+<b>\\d+\\.")
+    section_re = re.compile(r"(?m)^<b>(?:시장 파급|시장 반응|투자 판정|재건 단계)</b>")
+    while len(text) > max_chars:
+        items = list(item_re.finditer(text))
+        if len(items) <= 1:
+            # 한 항목 자체가 비정상적으로 긴 경우에는 잘못된 HTML을 보내지 않고 차단한다.
+            raise RuntimeError(f"WAR_TELEGRAM_LENGTH_GATE: {len(text)} chars")
+        last = items[-1]
+        tail_sections = [m for m in section_re.finditer(text) if m.start() > last.start()]
+        end = tail_sections[0].start() if tail_sections else len(text)
+        text = (text[:last.start()] + text[end:]).strip()
+
+    watch.ALERT.write_text(text + "\n", encoding="utf-8")
+
+
 def _sync_pending_to_rendered_alert():
     """Telegram 본문에 실제 포함된 항목만 seen 처리되도록 pending을 맞춘다.
 
@@ -1302,6 +1325,7 @@ def main():
         base._write_inline_test()
     else:
         watch.run(test=False)
+    _fit_alert_for_telegram()
     _sync_pending_to_rendered_alert()
     runner.verify_alert(test_mode=False)
 
