@@ -493,6 +493,29 @@
       "telegram_core_fact": "롯데바이오로직스가 글로벌 바이오시밀러 기업 알보텍과 생산 수주 계약을 체결했다고 7일 밝혔다.",
       "title": "롯데바이오로직스, 알보텍 바이오시밀러 생산 수주"
     },
+    "core:0e39e116ac225d99dde6560c": {
+      "first_seen_kst": "2026-10-08T06:42:50+09:00",
+      "lanes": {
+        "preopen": "2026-10-08T06:42:50+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007048500003",
+      "source": "연합뉴스",
+      "source_body_digest": "ff948cc1b8552af6a91612a09c7455f5155faf12d43bce4152773145d45f30bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5bba8f3f45feb104554677f6a77efb8242eba5988bb03c8fad9394839a93dbc9",
+      "source_fact_keys": [
+        "source_fact:v1:161d4157e80388c985e271ced553dfc4bf9b7600390ac1a6c0a02c85d51b5fa7",
+        "source_fact:v1:1695bd39f7c6507b80dd30a9a32d353b7c0a1d06bb4c0b0f05ecd141b02c6434",
+        "source_fact:v1:bb9ff406e4a7af77786af50dbecef460f3501ba405311a282eb52aec30cee753",
+        "source_fact:v1:e8714b7d3c8056c5f3bac586be974735815cf28d7cb41ceb0f9d7f9bbd0f4edc",
+        "source_fact:v1:f0493e0baaf363a512ea4f8bb590c5980f7a1e67fe56b3f0afcfdbc4b7c003e6"
+      ],
+      "source_published_kst": "2026-10-07T09:35+09:00",
+      "source_title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표 | 연합뉴스",
+      "telegram_core_fact": "반도체 초호황 속 삼성전자가 국내 기업 사상 최초로 분기 영업이익 100조원 달성을 가시권에 두고 있다.",
+      "title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표 | 연합뉴스"
+    },
     "core:0e5f29f954e8a64edef5ac70": {
       "first_seen_kst": "2026-10-08T01:09:29+09:00",
       "lanes": {
@@ -2289,6 +2312,26 @@
       ],
       "source_published_kst": "2026-10-07T15:05+09:00",
       "title": "AMD 리사수, 삼성전자 전영현·SK하이닉스 곽노정과 회동 | 연합뉴스"
+    },
+    "core:41cbc31fed21b130205497b4": {
+      "first_seen_kst": "2026-10-08T06:42:50+09:00",
+      "lanes": {
+        "preopen": "2026-10-08T06:42:50+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
+      "link": "https://www.mk.co.kr/news/it/12170651",
+      "source": "매일경제",
+      "source_body_digest": "1062f34753b6aa0c36cb58c042e2d8b23095762e5a2cb2afe6a2f2e1801e6982",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:43c2f4e05ba7f3638c6bc993417d862256d70b98bf8a0742b0e459e04f7d0aef",
+      "source_fact_keys": [
+        "source_fact:v1:38000f5ec8593b8b3bd8e14150581b3ebdf172b798093d2850300b8c48fde2a3",
+        "source_fact:v1:a36962b4ca859a8f479c13a26b31a3c673008e788a78e73d73cb5bf8fb9955c4"
+      ],
+      "source_published_kst": "2026-10-07T17:26+09:00",
+      "source_title": "현대ENG, 인천 데이터센터 공사 수주",
+      "telegram_core_fact": "현대엔지니어링은 인천 서해구 원창동 데이터센터 신축 사업(투시도)을 수주했다고 7일 밝혔다.",
+      "title": "현대ENG, 인천 데이터센터 공사 수주"
     },
     "core:423f73ddf28e8632304bd0fd": {
       "first_seen_kst": "2026-10-08T04:45:20+09:00",
@@ -5073,9 +5116,10 @@
     "core:abe9a07e563d164bb9f801d3": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
-        "live": "2026-10-08T05:31:58+09:00"
+        "live": "2026-10-08T05:31:58+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:31:58+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://stock.mk.co.kr/news/view/1171395",
       "source": "매일경제",
       "source_body_digest": "cd7d71547869d44cce44f2136cc8d22de6125573cd3a2c40f6e078fa030cbfb8",
@@ -5169,9 +5213,10 @@
     "core:ae099cd1c153ff71e978aaa3": {
       "first_seen_kst": "2026-10-08T05:01:11+09:00",
       "lanes": {
-        "live": "2026-10-08T05:01:11+09:00"
+        "live": "2026-10-08T05:01:11+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://www.newsis.com/view/NISX20261007_0003817414",
       "source": "뉴시스",
       "source_body_digest": "bf111c62915ca3cd4a69b2be1f7d27864f9aa5d11c508c32df575c1ef135c0c8",
@@ -6218,6 +6263,31 @@
       "source_title": "뱅크오브아메리카 \"기술주·코스피 버블 형성 중\"",
       "telegram_core_fact": "BofA가 32개 자산군과 업종을 대상으로 산출하는 자체 ‘버블위험지표(BRI)’에서 미국 기술주는 현재 가장 높은 수준을 기록했다. 뱅크오브아메리카(BofA)가 미국 기술주와 한국 증시에서 ‘버블형’ 가격 움직임이 나타나고 있다고 경고했다.",
       "title": "뱅크오브아메리카 \"기술주·코스피 버블 형성 중\""
+    },
+    "core:c9fd8bb56eab74138833087f": {
+      "first_seen_kst": "2026-10-08T06:42:50+09:00",
+      "lanes": {
+        "preopen": "2026-10-08T06:42:50+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
+      "link": "https://www.etnews.com/20261007000126",
+      "source": "전자신문",
+      "source_body_digest": "c14df3762821c77e1457188bc65a1d3454f5d0dc5cf9c6ad7e598ac29a93189c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d3f2d0307101aa9f773045a9f4a75ee6cef0835b1f28ac891c37250ba2355af8",
+      "source_fact_keys": [
+        "source_fact:v1:0609894b679db695b6bc6b2a1f7553fe30a96eec315a6debe84ea11cd87ecc79",
+        "source_fact:v1:19417bbe7d3cce91db65448a0827bef3f8af351287180a5c48ad1b9cdbaed724",
+        "source_fact:v1:63a4ec3b26de058277501cb1cc8d0234a8e0e0ad8867ed7def116a52561a3982",
+        "source_fact:v1:7adf3269e9a1149900d545cbe517a632597d3b6857d722a392b52070df183617",
+        "source_fact:v1:c5136c48bdebe30f95693886748252441fb45ec438acf3b07a1904829352382d",
+        "source_fact:v1:db8fc1e08906d65f66bfbffcd7fd92a16a74e5b4cdb7c965c3ba823a73af6434",
+        "source_fact:v1:ee43e6f3172cb26afca25bb7f3e11959ec8320d6f1c4b178d50ed75435310f85"
+      ],
+      "source_published_kst": "2026-10-07T10:31+09:00",
+      "source_title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력",
+      "telegram_core_fact": "어플라이드 머티어리얼즈와 인텔이 인공지능(AI) 반도체용 차세대 공정과 첨단 패키징 기술 개발 협력에 나선다. 어플라이드는 6일(현지시간) 인텔과 차세대 트랜지스터·인터커넥트·첨단 패키징 개발을 위해 협력한다고 밝혔다.",
+      "title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력"
     },
     "core:cb3633a8ac080a7526a7984d": {
       "first_seen_kst": "2026-10-08T01:09:29+09:00",
@@ -7939,6 +8009,23 @@
       "source_published_kst": "2026-10-07T14:46+09:00",
       "title": "HD현대중공업, 누리호 성공에 기여…발사대시스템 총괄 지원 | 연합뉴스"
     },
+    "core:fe4e3050fa428d0e562568df": {
+      "first_seen_kst": "2026-10-08T06:42:50+09:00",
+      "lanes": {
+        "preopen": "2026-10-08T06:42:50+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816698",
+      "source": "뉴시스",
+      "source_body_digest": "a09c8e5489e69d2613661229475556c51dd83c350f127544e6c757f2549d2dc3",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T10:56+09:00",
+      "source_title": "삼성전자 HBM도 모바일 D램도 '가격 뛴다'…증권가 눈높이↑",
+      "telegram_core_fact": "KB증권은 삼성전자의 내년 고대역폭메모리(HBM) 판매가격이 올해보다 100% 이상 오를 것으로 예상했고, 메리츠증권은 서버 D램과 HBM으로의 생산능력 전환에 따라 모바일 메모리 판가도 내년 1분기부터 분기 기준 50% 이상 상승할 것으로 내다봤다.",
+      "title": "삼성전자 HBM도 모바일 D램도 '가격 뛴다'…증권가 눈높이↑"
+    },
     "core:fea325fd412cc1214bd4d846": {
       "first_seen_kst": "2026-10-07T17:47:45+09:00",
       "lanes": {
@@ -8969,9 +9056,10 @@
     "event:2059562a028cff35e70b8453": {
       "first_seen_kst": "2026-10-07T09:44:16+09:00",
       "lanes": {
-        "live": "2026-10-07T11:25:20+09:00"
+        "live": "2026-10-07T11:25:20+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-07T11:25:20+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://www.yna.co.kr/view/AKR20261007048500003",
       "source": "연합뉴스",
       "source_body_digest": "ff948cc1b8552af6a91612a09c7455f5155faf12d43bce4152773145d45f30bb",
@@ -8985,6 +9073,8 @@
         "source_fact:v1:f0493e0baaf363a512ea4f8bb590c5980f7a1e67fe56b3f0afcfdbc4b7c003e6"
       ],
       "source_published_kst": "2026-10-07T09:35+09:00",
+      "source_title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표 | 연합뉴스",
+      "telegram_core_fact": "반도체 초호황 속 삼성전자가 국내 기업 사상 최초로 분기 영업이익 100조원 달성을 가시권에 두고 있다.",
       "title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표 | 연합뉴스"
     },
     "event:206e8e1b875f49dacbec7399": {
@@ -10408,9 +10498,10 @@
     "event:5554e14d54a8576761a66cf5": {
       "first_seen_kst": "2026-10-07T05:13:11+09:00",
       "lanes": {
-        "live": "2026-10-07T18:12:46+09:00"
+        "live": "2026-10-07T18:12:46+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-07T18:12:46+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://magazine.hankyung.com/business/article/202610016190b",
       "source": "한국경제",
       "source_body_digest": "bcd65113dff2e257c6a3955f3f5ce96ab3cddf24fc1a8be19382e0584c574541",
@@ -10422,6 +10513,8 @@
         "source_fact:v1:b834f0e03212051efff61e9036880f6310df1d77dfd6a8e69a9b7c243832e515"
       ],
       "source_published_kst": "2026-10-07T13:34+09:00",
+      "source_title": "한국 HBM 수출 200배 뛴 말레이시아…이유는?",
+      "telegram_core_fact": "말레이시아가 한국산 고대역폭메모리(HBM)의 핵심 수출처로 떠올랐다.",
       "title": "한국 HBM 수출 200배 뛴 말레이시아…이유는?"
     },
     "event:5752f44e92ac107d74cdcfbe": {
@@ -12965,25 +13058,24 @@
     "event:a9c0dc518f880d430bbcffd6": {
       "first_seen_kst": "2026-10-08T05:01:11+09:00",
       "lanes": {
-        "live": "2026-10-08T05:17:22+09:00"
+        "live": "2026-10-08T05:17:22+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:17:22+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01666246645610952",
-      "source": "이데일리",
-      "source_body_digest": "32e38f244760aee4acf907e2287c8ef7bacb7cbfabf0e2058f4c7613c1f2c781",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817414",
+      "source": "뉴시스",
+      "source_body_digest": "bf111c62915ca3cd4a69b2be1f7d27864f9aa5d11c508c32df575c1ef135c0c8",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:d5e28ff24f6b577923f0fe5a4bd2a1daa66d345194333e90aaaa2fb7ffec832d",
+      "source_fact_identity": "source_facts:v1:cc0e240f556672664cf5c159e856da2b20ec61851fb04e3c0e05f53f658b3374",
       "source_fact_keys": [
-        "source_fact:v1:172331ecc31902ba9e4016c8a0c3737d716ae11906773a8689d056a96dd3c196",
-        "source_fact:v1:1b8d3ec132f056e232733cc5ee8ba30afaf26e8b48639434c430487aa8beb398",
-        "source_fact:v1:75518234835c1f468d4a85b14e21050395067f551c19940f26cf67a37e95aefd",
-        "source_fact:v1:b4e87c4cf06e6df12e19f276d6f99a706827b2d68a1b8bd2aeda64637e33c3a8",
-        "source_fact:v1:d01c1855b12c895edaeb92e1563ab75b73481da61adb7ce0e9a5b6dab91e5a22"
+        "source_fact:v1:57fe685d52821c6de4b4d26aef16bc52e20107e932286794b61bbe0b3a1d7ed0",
+        "source_fact:v1:6a7264735db5fde9cc2c8c02c528822dc1b29f309c62cebca0cf6ce26678cfc5",
+        "source_fact:v1:b31129746af7a6a6225c75e44292b1b5af4c70eea73fdfb7fe1ede40b4f7b4c1"
       ],
       "source_published_kst": "2026-10-08T05:00+09:00",
-      "source_title": "삼성전자, 오늘 3분기 실적 발표…사상 첫 영업익 100조 넘나",
-      "telegram_core_fact": "금융정보업체 에프앤가이드에 따르면 삼성전자의 올해 3분기 연결 기준 매출 컨센서스(증권사 평균 전망치)는 200조6417억원, 영업이익은 106조6401억원으로 집계됐다.",
-      "title": "삼성전자, 오늘 3분기 실적 발표…사상 첫 영업익 100조 넘나"
+      "source_title": "삼성전자, 올 3분기 실적 오늘 발표…韓기업 사상 첫 영업익 '100조' 달성하나",
+      "telegram_core_fact": "삼성전자가 올해 3분기 성적표를 발표하는 가운데, 메모리 반도체 호황에 힘입어 국내 기업 사상 최초로 분기 영업이익 100조원을 달성할 지 주목된다.",
+      "title": "삼성전자, 올 3분기 실적 오늘 발표…韓기업 사상 첫 영업익 '100조' 달성하나"
     },
     "event:a9dc5b3e4c7e6aef4cecc596": {
       "first_seen_kst": "2026-09-27T19:02:46+09:00",
@@ -14722,25 +14814,20 @@
     "event:dd87cc13e30f19c890aebcd1": {
       "first_seen_kst": "2026-10-07T03:30:59+09:00",
       "lanes": {
-        "live": "2026-10-08T02:57:10+09:00"
+        "live": "2026-10-08T02:57:10+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-08T02:57:10+09:00",
-      "link": "https://www.mk.co.kr/news/economy/12170195",
-      "source": "매일경제",
-      "source_body_digest": "119fb5a6c5841c4c871b30f7ffac74ee22ba4d380cf0730aca5ad70e557bf752",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816698",
+      "source": "뉴시스",
+      "source_body_digest": "a09c8e5489e69d2613661229475556c51dd83c350f127544e6c757f2549d2dc3",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:b75305b523ea18aa4ebd972b8932e4c28f3a0482d054d5164c13cf0b0c2e9929",
-      "source_fact_keys": [
-        "source_fact:v1:7abafa86d5fbc877daadf6f994bf125e94cbcdad28c0a6696bfd2e0e81adc517",
-        "source_fact:v1:c59cef724de85451bba45ea5f4f98098389397477b3f519ab91a4320660c6dca",
-        "source_fact:v1:e6f37b92a9c72c9e0b685a445a66fd99cbb4265fa6d248866109ecf7a6228bdc",
-        "source_fact:v1:ea1fbeac3f60b3f1eb01c90248c5cb8650e98fb4ebee5890f32e8deba8163d1e",
-        "source_fact:v1:f7724aaa95b0369a36722de01b5db06cb5c07046df7a517991e84910f0595ddb"
-      ],
-      "source_published_kst": "2026-10-07T11:18+09:00",
-      "source_title": "삼성전자 분기 영업이익 100조원 넘을까...하닉도 역대급 실적- 매경ECONOMY",
-      "telegram_core_fact": "10월 7일 금융정보업체 에프앤가이드에 따르면 삼성전자의 3분기 영업이익 컨센서스는 약 106조억원으로 집계됐다.",
-      "title": "삼성전자 분기 영업이익 100조원 넘을까...하닉도 역대급 실적- 매경ECONOMY"
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T10:56+09:00",
+      "source_title": "삼성전자 HBM도 모바일 D램도 '가격 뛴다'…증권가 눈높이↑",
+      "telegram_core_fact": "KB증권은 삼성전자의 내년 고대역폭메모리(HBM) 판매가격이 올해보다 100% 이상 오를 것으로 예상했고, 메리츠증권은 서버 D램과 HBM으로의 생산능력 전환에 따라 모바일 메모리 판가도 내년 1분기부터 분기 기준 50% 이상 상승할 것으로 내다봤다.",
+      "title": "삼성전자 HBM도 모바일 D램도 '가격 뛴다'…증권가 눈높이↑"
     },
     "event:de0944201f01ab6356bb27a3": {
       "first_seen_kst": "2026-10-07T09:44:16+09:00",
@@ -15673,31 +15760,28 @@
     "event:febefe7c470ae5912214fadc": {
       "first_seen_kst": "2026-10-07T03:04:14+09:00",
       "lanes": {
-        "live": "2026-10-08T05:31:58+09:00"
+        "live": "2026-10-08T05:31:58+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:31:58+09:00",
-      "link": "https://www.fnnews.com/news/202610071702312411",
-      "source": "파이낸셜뉴스",
-      "source_body_digest": "ccabd2500f3a289e4d0079d61f2c0972efaa287d3217808656efef935fdb115d",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
+      "link": "https://www.etnews.com/20261007000126",
+      "source": "전자신문",
+      "source_body_digest": "c14df3762821c77e1457188bc65a1d3454f5d0dc5cf9c6ad7e598ac29a93189c",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:798cc23190973b45bcd27536ed4693d2f9d4443d92843f0978b7990065cee9f5",
+      "source_fact_identity": "source_facts:v1:d3f2d0307101aa9f773045a9f4a75ee6cef0835b1f28ac891c37250ba2355af8",
       "source_fact_keys": [
-        "source_fact:v1:388ba0298051a74bb1148e89ffca718af085986cd540125f2c7c595e26fd92fc",
-        "source_fact:v1:40e78ae46904f504928383e066ba6df1d84ea06f0c66ab31e9938ad5867044dc",
-        "source_fact:v1:51563e8b245e4a9ba74f988ec2df873a234e81d8dd5b9b81a1a738e900b51e1a",
-        "source_fact:v1:5d8e23b7d6656e8564bbf3dccfcf4c30968733691b262d9cff49bc5cd68d6006",
-        "source_fact:v1:76ee7a38da4e91f5269d68161bbdc53af0e7180aec0cf43090c4b7649f88560c",
-        "source_fact:v1:7acd42a6d236527ed4baf8b1399167740ef0d2ce7fecfb185f1d985a754cb1c8",
-        "source_fact:v1:853b92dcbadff393871bd74a881090016fe7b5b56cd3e23e95601fcbafe134af",
-        "source_fact:v1:a5699590f525bd98c9db67e154bb42de625ab37f9316544dd63cbc8f54f20cf4",
-        "source_fact:v1:ad23703072e04a5b7ee71ae87e90b6943bff971d96ede99c7919d2b15a3199c9",
-        "source_fact:v1:f5feaee726a83baa05b36c98a952803d645630f44a78c1eac8ffd0030a4b2bd8",
-        "source_fact:v1:f80a19a5fdc595214c67387fa0dd6d50a8ffda35bd88b8107cc3b74a8063c597"
+        "source_fact:v1:0609894b679db695b6bc6b2a1f7553fe30a96eec315a6debe84ea11cd87ecc79",
+        "source_fact:v1:19417bbe7d3cce91db65448a0827bef3f8af351287180a5c48ad1b9cdbaed724",
+        "source_fact:v1:63a4ec3b26de058277501cb1cc8d0234a8e0e0ad8867ed7def116a52561a3982",
+        "source_fact:v1:7adf3269e9a1149900d545cbe517a632597d3b6857d722a392b52070df183617",
+        "source_fact:v1:c5136c48bdebe30f95693886748252441fb45ec438acf3b07a1904829352382d",
+        "source_fact:v1:db8fc1e08906d65f66bfbffcd7fd92a16a74e5b4cdb7c965c3ba823a73af6434",
+        "source_fact:v1:ee43e6f3172cb26afca25bb7f3e11959ec8320d6f1c4b178d50ed75435310f85"
       ],
-      "source_published_kst": "2026-10-07T17:03+09:00",
-      "source_title": "리사 수 AMD 회장 \"韓과 3~5년 중장기 파트너십 구축…오늘 삼성전자 만나 협력 논의\"",
-      "telegram_core_fact": "리사 수 AMD 회장이 \"한국은 AMD에 매우 중요한 생태계\"라고 말하며 삼성전자, SK하이닉스와 중장기적인 협력을 확대할 것이라는 뜻을 밝혔다. 수 회장은 방한 기간 중 삼성전자와 SK하이닉스 경영진을 잇달아 만나 고대역폭메모리(HBM) 등 반도체 공급망 전반의 협력 방안 논의에 나섰다.",
-      "title": "리사 수 AMD 회장 \"韓과 3~5년 중장기 파트너십 구축…오늘 삼성전자 만나 협력 논의\""
+      "source_published_kst": "2026-10-07T10:31+09:00",
+      "source_title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력",
+      "telegram_core_fact": "어플라이드 머티어리얼즈와 인텔이 인공지능(AI) 반도체용 차세대 공정과 첨단 패키징 기술 개발 협력에 나선다. 어플라이드는 6일(현지시간) 인텔과 차세대 트랜지스터·인터커넥트·첨단 패키징 개발을 위해 협력한다고 밝혔다.",
+      "title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력"
     },
     "event:ff5ac051a53f599db6640777": {
       "first_seen_kst": "2026-10-07T20:43:18+09:00",
@@ -20518,9 +20602,10 @@
     "fact:30a8e1f3d48192d2d9b1eda8": {
       "first_seen_kst": "2026-10-07T18:12:46+09:00",
       "lanes": {
-        "live": "2026-10-07T18:12:46+09:00"
+        "live": "2026-10-07T18:12:46+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-07T18:12:46+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://magazine.hankyung.com/business/article/202610016190b",
       "source": "한국경제",
       "source_body_digest": "bcd65113dff2e257c6a3955f3f5ce96ab3cddf24fc1a8be19382e0584c574541",
@@ -20532,6 +20617,8 @@
         "source_fact:v1:b834f0e03212051efff61e9036880f6310df1d77dfd6a8e69a9b7c243832e515"
       ],
       "source_published_kst": "2026-10-07T13:34+09:00",
+      "source_title": "한국 HBM 수출 200배 뛴 말레이시아…이유는?",
+      "telegram_core_fact": "말레이시아가 한국산 고대역폭메모리(HBM)의 핵심 수출처로 떠올랐다.",
       "title": "한국 HBM 수출 200배 뛴 말레이시아…이유는?"
     },
     "fact:30d5b6e6f8daabd16ad9f301": {
@@ -27470,9 +27557,10 @@
     "fact:7bf044c7498763a4f237fedb": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
       "lanes": {
-        "live": "2026-10-07T11:11:31+09:00"
+        "live": "2026-10-07T11:11:31+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://www.etnews.com/20261007000126",
       "source": "전자신문",
       "source_body_digest": "c14df3762821c77e1457188bc65a1d3454f5d0dc5cf9c6ad7e598ac29a93189c",
@@ -27488,6 +27576,8 @@
         "source_fact:v1:ee43e6f3172cb26afca25bb7f3e11959ec8320d6f1c4b178d50ed75435310f85"
       ],
       "source_published_kst": "2026-10-07T10:31+09:00",
+      "source_title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력",
+      "telegram_core_fact": "어플라이드 머티어리얼즈와 인텔이 인공지능(AI) 반도체용 차세대 공정과 첨단 패키징 기술 개발 협력에 나선다. 어플라이드는 6일(현지시간) 인텔과 차세대 트랜지스터·인터커넥트·첨단 패키징 개발을 위해 협력한다고 밝혔다.",
       "title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력"
     },
     "fact:7c397f84e4d36a800a7caa98": {
@@ -30946,9 +31036,10 @@
     "fact:9d7db11ee7785decacab96ee": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
       "lanes": {
-        "live": "2026-10-07T11:25:20+09:00"
+        "live": "2026-10-07T11:25:20+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-07T11:25:20+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://www.yna.co.kr/view/AKR20261007048500003",
       "source": "연합뉴스",
       "source_body_digest": "ff948cc1b8552af6a91612a09c7455f5155faf12d43bce4152773145d45f30bb",
@@ -30962,6 +31053,8 @@
         "source_fact:v1:f0493e0baaf363a512ea4f8bb590c5980f7a1e67fe56b3f0afcfdbc4b7c003e6"
       ],
       "source_published_kst": "2026-10-07T09:35+09:00",
+      "source_title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표 | 연합뉴스",
+      "telegram_core_fact": "반도체 초호황 속 삼성전자가 국내 기업 사상 최초로 분기 영업이익 100조원 달성을 가시권에 두고 있다.",
       "title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표 | 연합뉴스"
     },
     "fact:9da243ba4b198bff53f8e577": {
@@ -32928,6 +33021,26 @@
       "source_published_kst": "2026-10-06T10:58+09:00",
       "title": "신고가 엔비디아 따라 달린다…‘수혜주’ 두산·LG전자 랠리"
     },
+    "fact:b406b407d8f1b7feee0e9c7a": {
+      "first_seen_kst": "2026-10-08T06:42:50+09:00",
+      "lanes": {
+        "preopen": "2026-10-08T06:42:50+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
+      "link": "https://www.mk.co.kr/news/it/12170651",
+      "source": "매일경제",
+      "source_body_digest": "1062f34753b6aa0c36cb58c042e2d8b23095762e5a2cb2afe6a2f2e1801e6982",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:43c2f4e05ba7f3638c6bc993417d862256d70b98bf8a0742b0e459e04f7d0aef",
+      "source_fact_keys": [
+        "source_fact:v1:38000f5ec8593b8b3bd8e14150581b3ebdf172b798093d2850300b8c48fde2a3",
+        "source_fact:v1:a36962b4ca859a8f479c13a26b31a3c673008e788a78e73d73cb5bf8fb9955c4"
+      ],
+      "source_published_kst": "2026-10-07T17:26+09:00",
+      "source_title": "현대ENG, 인천 데이터센터 공사 수주",
+      "telegram_core_fact": "현대엔지니어링은 인천 서해구 원창동 데이터센터 신축 사업(투시도)을 수주했다고 7일 밝혔다.",
+      "title": "현대ENG, 인천 데이터센터 공사 수주"
+    },
     "fact:b47cfc1d118d4e3698c2633f": {
       "first_seen_kst": "2026-10-06T21:54:00+09:00",
       "lanes": {
@@ -33067,9 +33180,10 @@
     "fact:b6a6fd525a97fcb64154cdb7": {
       "first_seen_kst": "2026-10-08T05:01:11+09:00",
       "lanes": {
-        "live": "2026-10-08T05:01:11+09:00"
+        "live": "2026-10-08T05:01:11+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://www.newsis.com/view/NISX20261007_0003817414",
       "source": "뉴시스",
       "source_body_digest": "bf111c62915ca3cd4a69b2be1f7d27864f9aa5d11c508c32df575c1ef135c0c8",
@@ -37109,9 +37223,10 @@
     "fact:e1d119d323fe415bec9dcb20": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
-        "live": "2026-10-08T05:31:58+09:00"
+        "live": "2026-10-08T05:31:58+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:31:58+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://stock.mk.co.kr/news/view/1171395",
       "source": "매일경제",
       "source_body_digest": "cd7d71547869d44cce44f2136cc8d22de6125573cd3a2c40f6e078fa030cbfb8",
@@ -49932,9 +50047,10 @@
     "link:3c01b4f1e0d04f4b9667b950": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
-        "live": "2026-10-08T05:31:58+09:00"
+        "live": "2026-10-08T05:31:58+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:31:58+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://stock.mk.co.kr/news/view/1171395",
       "source": "매일경제",
       "source_body_digest": "cd7d71547869d44cce44f2136cc8d22de6125573cd3a2c40f6e078fa030cbfb8",
@@ -56120,9 +56236,10 @@
     "link:62e056130de9c592ec470c91": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
       "lanes": {
-        "live": "2026-10-07T11:11:31+09:00"
+        "live": "2026-10-07T11:11:31+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://www.etnews.com/20261007000126",
       "source": "전자신문",
       "source_body_digest": "c14df3762821c77e1457188bc65a1d3454f5d0dc5cf9c6ad7e598ac29a93189c",
@@ -56138,6 +56255,8 @@
         "source_fact:v1:ee43e6f3172cb26afca25bb7f3e11959ec8320d6f1c4b178d50ed75435310f85"
       ],
       "source_published_kst": "2026-10-07T10:31+09:00",
+      "source_title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력",
+      "telegram_core_fact": "어플라이드 머티어리얼즈와 인텔이 인공지능(AI) 반도체용 차세대 공정과 첨단 패키징 기술 개발 협력에 나선다. 어플라이드는 6일(현지시간) 인텔과 차세대 트랜지스터·인터커넥트·첨단 패키징 개발을 위해 협력한다고 밝혔다.",
       "title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력"
     },
     "link:630d6bb588e179406f1ad0b1": {
@@ -60641,6 +60760,23 @@
       "source_published_kst": "2026-10-07T07:48+09:00",
       "title": "트럼프 \"이란 누가 이끄는지 모른다는 게 가장 큰 문제\""
     },
+    "link:7d96ee93143115074d58f475": {
+      "first_seen_kst": "2026-10-08T06:42:50+09:00",
+      "lanes": {
+        "preopen": "2026-10-08T06:42:50+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816698",
+      "source": "뉴시스",
+      "source_body_digest": "a09c8e5489e69d2613661229475556c51dd83c350f127544e6c757f2549d2dc3",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T10:56+09:00",
+      "source_title": "삼성전자 HBM도 모바일 D램도 '가격 뛴다'…증권가 눈높이↑",
+      "telegram_core_fact": "KB증권은 삼성전자의 내년 고대역폭메모리(HBM) 판매가격이 올해보다 100% 이상 오를 것으로 예상했고, 메리츠증권은 서버 D램과 HBM으로의 생산능력 전환에 따라 모바일 메모리 판가도 내년 1분기부터 분기 기준 50% 이상 상승할 것으로 내다봤다.",
+      "title": "삼성전자 HBM도 모바일 D램도 '가격 뛴다'…증권가 눈높이↑"
+    },
     "link:7dcb6b4d6338a1c515e66a71": {
       "first_seen_kst": "2026-09-25T14:18:58+09:00",
       "lanes": {
@@ -61454,9 +61590,10 @@
     "link:84b67e5374cf4cd126319342": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
       "lanes": {
-        "live": "2026-10-07T11:25:20+09:00"
+        "live": "2026-10-07T11:25:20+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-07T11:25:20+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://www.yna.co.kr/view/AKR20261007048500003",
       "source": "연합뉴스",
       "source_body_digest": "ff948cc1b8552af6a91612a09c7455f5155faf12d43bce4152773145d45f30bb",
@@ -61470,6 +61607,8 @@
         "source_fact:v1:f0493e0baaf363a512ea4f8bb590c5980f7a1e67fe56b3f0afcfdbc4b7c003e6"
       ],
       "source_published_kst": "2026-10-07T09:35+09:00",
+      "source_title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표 | 연합뉴스",
+      "telegram_core_fact": "반도체 초호황 속 삼성전자가 국내 기업 사상 최초로 분기 영업이익 100조원 달성을 가시권에 두고 있다.",
       "title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표 | 연합뉴스"
     },
     "link:84bc64056d0c99ffe2fc8451": {
@@ -64950,9 +65089,10 @@
     "link:996fb67bc6e42315d1b7eb3a": {
       "first_seen_kst": "2026-10-07T18:12:46+09:00",
       "lanes": {
-        "live": "2026-10-07T18:12:46+09:00"
+        "live": "2026-10-07T18:12:46+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-07T18:12:46+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://magazine.hankyung.com/business/article/202610016190b",
       "source": "한국경제",
       "source_body_digest": "bcd65113dff2e257c6a3955f3f5ce96ab3cddf24fc1a8be19382e0584c574541",
@@ -64964,6 +65104,8 @@
         "source_fact:v1:b834f0e03212051efff61e9036880f6310df1d77dfd6a8e69a9b7c243832e515"
       ],
       "source_published_kst": "2026-10-07T13:34+09:00",
+      "source_title": "한국 HBM 수출 200배 뛴 말레이시아…이유는?",
+      "telegram_core_fact": "말레이시아가 한국산 고대역폭메모리(HBM)의 핵심 수출처로 떠올랐다.",
       "title": "한국 HBM 수출 200배 뛴 말레이시아…이유는?"
     },
     "link:997d55237ce725dfa143cd5c": {
@@ -69582,9 +69724,10 @@
     "link:b63d3de2810872319113d8e3": {
       "first_seen_kst": "2026-10-08T05:01:11+09:00",
       "lanes": {
-        "live": "2026-10-08T05:01:11+09:00"
+        "live": "2026-10-08T05:01:11+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://www.newsis.com/view/NISX20261007_0003817414",
       "source": "뉴시스",
       "source_body_digest": "bf111c62915ca3cd4a69b2be1f7d27864f9aa5d11c508c32df575c1ef135c0c8",
@@ -77321,6 +77464,26 @@
       "source_title": "브릴리아, 말레이시아 뉴보디 과반 인수..동남아 B2C 진출",
       "telegram_core_fact": "이번 거래는 뉴보디의 연매출 목표가 약 300만 달러에 그치는 소규모 인수여서 단기간에 브릴리아 전체 실적을 크게 바꾸기는 어려울 전망이다. 뉴보디 경영진의 2026년 12월 31일 종료 회계연도 예산 기준 순매출은 약 300만 달러, 예상 순이익률은 약 10~12%다.",
       "title": "브릴리아, 말레이시아 뉴보디 과반 인수..동남아 B2C 진출"
+    },
+    "link:e64d0c3674a35ae331dae695": {
+      "first_seen_kst": "2026-10-08T06:42:50+09:00",
+      "lanes": {
+        "preopen": "2026-10-08T06:42:50+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
+      "link": "https://www.mk.co.kr/news/it/12170651",
+      "source": "매일경제",
+      "source_body_digest": "1062f34753b6aa0c36cb58c042e2d8b23095762e5a2cb2afe6a2f2e1801e6982",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:43c2f4e05ba7f3638c6bc993417d862256d70b98bf8a0742b0e459e04f7d0aef",
+      "source_fact_keys": [
+        "source_fact:v1:38000f5ec8593b8b3bd8e14150581b3ebdf172b798093d2850300b8c48fde2a3",
+        "source_fact:v1:a36962b4ca859a8f479c13a26b31a3c673008e788a78e73d73cb5bf8fb9955c4"
+      ],
+      "source_published_kst": "2026-10-07T17:26+09:00",
+      "source_title": "현대ENG, 인천 데이터센터 공사 수주",
+      "telegram_core_fact": "현대엔지니어링은 인천 서해구 원창동 데이터센터 신축 사업(투시도)을 수주했다고 7일 밝혔다.",
+      "title": "현대ENG, 인천 데이터센터 공사 수주"
     },
     "link:e66c88bbf90b01fba7c55f98": {
       "first_seen_kst": "2026-09-24T06:34:46+09:00",
@@ -89134,9 +89297,10 @@
     "original:31ee7eb3ad0a785f45454e24": {
       "first_seen_kst": "2026-10-07T18:12:46+09:00",
       "lanes": {
-        "live": "2026-10-07T18:12:46+09:00"
+        "live": "2026-10-07T18:12:46+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-07T18:12:46+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://magazine.hankyung.com/business/article/202610016190b",
       "source": "한국경제",
       "source_body_digest": "bcd65113dff2e257c6a3955f3f5ce96ab3cddf24fc1a8be19382e0584c574541",
@@ -89148,6 +89312,8 @@
         "source_fact:v1:b834f0e03212051efff61e9036880f6310df1d77dfd6a8e69a9b7c243832e515"
       ],
       "source_published_kst": "2026-10-07T13:34+09:00",
+      "source_title": "한국 HBM 수출 200배 뛴 말레이시아…이유는?",
+      "telegram_core_fact": "말레이시아가 한국산 고대역폭메모리(HBM)의 핵심 수출처로 떠올랐다.",
       "title": "한국 HBM 수출 200배 뛴 말레이시아…이유는?"
     },
     "original:31efdc12e6e2f7efe3d02528": {
@@ -89495,6 +89661,23 @@
       ],
       "source_published_kst": "2026-10-06T20:29+09:00",
       "title": "[올댓차이나] 홍콩 증시, 뉴욕 증시 강세에 이틀째 상승 마감… H주 0.96%↑"
+    },
+    "original:345be500553518d1270ee2ed": {
+      "first_seen_kst": "2026-10-08T06:42:50+09:00",
+      "lanes": {
+        "preopen": "2026-10-08T06:42:50+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816698",
+      "source": "뉴시스",
+      "source_body_digest": "a09c8e5489e69d2613661229475556c51dd83c350f127544e6c757f2549d2dc3",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T10:56+09:00",
+      "source_title": "삼성전자 HBM도 모바일 D램도 '가격 뛴다'…증권가 눈높이↑",
+      "telegram_core_fact": "KB증권은 삼성전자의 내년 고대역폭메모리(HBM) 판매가격이 올해보다 100% 이상 오를 것으로 예상했고, 메리츠증권은 서버 D램과 HBM으로의 생산능력 전환에 따라 모바일 메모리 판가도 내년 1분기부터 분기 기준 50% 이상 상승할 것으로 내다봤다.",
+      "title": "삼성전자 HBM도 모바일 D램도 '가격 뛴다'…증권가 눈높이↑"
     },
     "original:346416c2c517260b8fe24cbd": {
       "first_seen_kst": "2026-10-06T19:33:48+09:00",
@@ -90623,9 +90806,10 @@
     "original:3b806c9033b72e1d76e88e0c": {
       "first_seen_kst": "2026-10-08T05:01:11+09:00",
       "lanes": {
-        "live": "2026-10-08T05:01:11+09:00"
+        "live": "2026-10-08T05:01:11+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://www.newsis.com/view/NISX20261007_0003817414",
       "source": "뉴시스",
       "source_body_digest": "bf111c62915ca3cd4a69b2be1f7d27864f9aa5d11c508c32df575c1ef135c0c8",
@@ -94167,9 +94351,10 @@
     "original:4f201c835aacc882b9dff716": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
       "lanes": {
-        "live": "2026-10-07T11:11:31+09:00"
+        "live": "2026-10-07T11:11:31+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://www.etnews.com/20261007000126",
       "source": "전자신문",
       "source_body_digest": "c14df3762821c77e1457188bc65a1d3454f5d0dc5cf9c6ad7e598ac29a93189c",
@@ -94185,6 +94370,8 @@
         "source_fact:v1:ee43e6f3172cb26afca25bb7f3e11959ec8320d6f1c4b178d50ed75435310f85"
       ],
       "source_published_kst": "2026-10-07T10:31+09:00",
+      "source_title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력",
+      "telegram_core_fact": "어플라이드 머티어리얼즈와 인텔이 인공지능(AI) 반도체용 차세대 공정과 첨단 패키징 기술 개발 협력에 나선다. 어플라이드는 6일(현지시간) 인텔과 차세대 트랜지스터·인터커넥트·첨단 패키징 개발을 위해 협력한다고 밝혔다.",
       "title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력"
     },
     "original:4f3a7905919bf737c48990c3": {
@@ -109026,9 +109213,10 @@
     "original:b024f34385b01d40bbf11bd0": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
       "lanes": {
-        "live": "2026-10-07T11:25:20+09:00"
+        "live": "2026-10-07T11:25:20+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-07T11:25:20+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://www.yna.co.kr/view/AKR20261007048500003",
       "source": "연합뉴스",
       "source_body_digest": "ff948cc1b8552af6a91612a09c7455f5155faf12d43bce4152773145d45f30bb",
@@ -109042,6 +109230,8 @@
         "source_fact:v1:f0493e0baaf363a512ea4f8bb590c5980f7a1e67fe56b3f0afcfdbc4b7c003e6"
       ],
       "source_published_kst": "2026-10-07T09:35+09:00",
+      "source_title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표 | 연합뉴스",
+      "telegram_core_fact": "반도체 초호황 속 삼성전자가 국내 기업 사상 최초로 분기 영업이익 100조원 달성을 가시권에 두고 있다.",
       "title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표 | 연합뉴스"
     },
     "original:b07821602aa1e2546aaa2c75": {
@@ -111418,9 +111608,10 @@
     "original:c0ab4eb12572c8421b67b3e4": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
-        "live": "2026-10-08T05:31:58+09:00"
+        "live": "2026-10-08T05:31:58+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:31:58+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://stock.mk.co.kr/news/view/1171395",
       "source": "매일경제",
       "source_body_digest": "cd7d71547869d44cce44f2136cc8d22de6125573cd3a2c40f6e078fa030cbfb8",
@@ -119429,6 +119620,26 @@
       "source_published_kst": "2026-10-05T06:01+09:00",
       "title": "내일 행안부 국감…중수청 개문발차·미래기금 교부세 '쟁점'"
     },
+    "original:f2a192955e8e22ff4790c831": {
+      "first_seen_kst": "2026-10-08T06:42:50+09:00",
+      "lanes": {
+        "preopen": "2026-10-08T06:42:50+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
+      "link": "https://www.mk.co.kr/news/it/12170651",
+      "source": "매일경제",
+      "source_body_digest": "1062f34753b6aa0c36cb58c042e2d8b23095762e5a2cb2afe6a2f2e1801e6982",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:43c2f4e05ba7f3638c6bc993417d862256d70b98bf8a0742b0e459e04f7d0aef",
+      "source_fact_keys": [
+        "source_fact:v1:38000f5ec8593b8b3bd8e14150581b3ebdf172b798093d2850300b8c48fde2a3",
+        "source_fact:v1:a36962b4ca859a8f479c13a26b31a3c673008e788a78e73d73cb5bf8fb9955c4"
+      ],
+      "source_published_kst": "2026-10-07T17:26+09:00",
+      "source_title": "현대ENG, 인천 데이터센터 공사 수주",
+      "telegram_core_fact": "현대엔지니어링은 인천 서해구 원창동 데이터센터 신축 사업(투시도)을 수주했다고 7일 밝혔다.",
+      "title": "현대ENG, 인천 데이터센터 공사 수주"
+    },
     "original:f2b61dd0a08abcd92be9cfa7": {
       "first_seen_kst": "2026-10-08T02:57:10+09:00",
       "lanes": {
@@ -126972,9 +127183,10 @@
     "source_fact:0e2da3eee48b509382400a17": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
-        "live": "2026-10-08T05:31:58+09:00"
+        "live": "2026-10-08T05:31:58+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:31:58+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://stock.mk.co.kr/news/view/1171395",
       "source": "매일경제",
       "source_body_digest": "cd7d71547869d44cce44f2136cc8d22de6125573cd3a2c40f6e078fa030cbfb8",
@@ -127275,9 +127487,10 @@
     "source_fact:0ef49fe214c4a49dba1a4794": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
-        "live": "2026-10-08T05:31:58+09:00"
+        "live": "2026-10-08T05:31:58+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:31:58+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://stock.mk.co.kr/news/view/1171395",
       "source": "매일경제",
       "source_body_digest": "cd7d71547869d44cce44f2136cc8d22de6125573cd3a2c40f6e078fa030cbfb8",
@@ -134653,9 +134866,10 @@
     "source_fact:210a96920aec471617e832c9": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
-        "live": "2026-10-08T05:31:58+09:00"
+        "live": "2026-10-08T05:31:58+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:31:58+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://stock.mk.co.kr/news/view/1171395",
       "source": "매일경제",
       "source_body_digest": "cd7d71547869d44cce44f2136cc8d22de6125573cd3a2c40f6e078fa030cbfb8",
@@ -134956,9 +135170,10 @@
     "source_fact:21f6563b4cd81e550d71a856": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
-        "live": "2026-10-08T05:31:58+09:00"
+        "live": "2026-10-08T05:31:58+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:31:58+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://stock.mk.co.kr/news/view/1171395",
       "source": "매일경제",
       "source_body_digest": "cd7d71547869d44cce44f2136cc8d22de6125573cd3a2c40f6e078fa030cbfb8",
@@ -138479,9 +138694,10 @@
     "source_fact:29a2cbf8c4134612abf138e9": {
       "first_seen_kst": "2026-10-08T05:01:11+09:00",
       "lanes": {
-        "live": "2026-10-08T05:01:11+09:00"
+        "live": "2026-10-08T05:01:11+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://www.newsis.com/view/NISX20261007_0003817414",
       "source": "뉴시스",
       "source_body_digest": "bf111c62915ca3cd4a69b2be1f7d27864f9aa5d11c508c32df575c1ef135c0c8",
@@ -139428,9 +139644,10 @@
     "source_fact:2b82994dfeaaa290d4a5cc5b": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
       "lanes": {
-        "live": "2026-10-07T11:11:31+09:00"
+        "live": "2026-10-07T11:11:31+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://www.etnews.com/20261007000126",
       "source": "전자신문",
       "source_body_digest": "c14df3762821c77e1457188bc65a1d3454f5d0dc5cf9c6ad7e598ac29a93189c",
@@ -139446,6 +139663,8 @@
         "source_fact:v1:ee43e6f3172cb26afca25bb7f3e11959ec8320d6f1c4b178d50ed75435310f85"
       ],
       "source_published_kst": "2026-10-07T10:31+09:00",
+      "source_title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력",
+      "telegram_core_fact": "어플라이드 머티어리얼즈와 인텔이 인공지능(AI) 반도체용 차세대 공정과 첨단 패키징 기술 개발 협력에 나선다. 어플라이드는 6일(현지시간) 인텔과 차세대 트랜지스터·인터커넥트·첨단 패키징 개발을 위해 협력한다고 밝혔다.",
       "title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력"
     },
     "source_fact:2b884dfdf32543bcf7f24a97": {
@@ -141029,9 +141248,10 @@
     "source_fact:2f50cacf48c13c947dcaddb9": {
       "first_seen_kst": "2026-10-07T10:49:23+09:00",
       "lanes": {
-        "live": "2026-10-07T11:25:20+09:00"
+        "live": "2026-10-07T11:25:20+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-07T11:25:20+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://www.yna.co.kr/view/AKR20261007048500003",
       "source": "연합뉴스",
       "source_body_digest": "ff948cc1b8552af6a91612a09c7455f5155faf12d43bce4152773145d45f30bb",
@@ -141045,6 +141265,8 @@
         "source_fact:v1:f0493e0baaf363a512ea4f8bb590c5980f7a1e67fe56b3f0afcfdbc4b7c003e6"
       ],
       "source_published_kst": "2026-10-07T09:35+09:00",
+      "source_title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표 | 연합뉴스",
+      "telegram_core_fact": "반도체 초호황 속 삼성전자가 국내 기업 사상 최초로 분기 영업이익 100조원 달성을 가시권에 두고 있다.",
       "title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표 | 연합뉴스"
     },
     "source_fact:2f5d60f6f2b72d5813918e02": {
@@ -142471,9 +142693,10 @@
     "source_fact:3255b57dfbcfa0418c3702b6": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
       "lanes": {
-        "live": "2026-10-07T11:11:31+09:00"
+        "live": "2026-10-07T11:11:31+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://www.etnews.com/20261007000126",
       "source": "전자신문",
       "source_body_digest": "c14df3762821c77e1457188bc65a1d3454f5d0dc5cf9c6ad7e598ac29a93189c",
@@ -142489,6 +142712,8 @@
         "source_fact:v1:ee43e6f3172cb26afca25bb7f3e11959ec8320d6f1c4b178d50ed75435310f85"
       ],
       "source_published_kst": "2026-10-07T10:31+09:00",
+      "source_title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력",
+      "telegram_core_fact": "어플라이드 머티어리얼즈와 인텔이 인공지능(AI) 반도체용 차세대 공정과 첨단 패키징 기술 개발 협력에 나선다. 어플라이드는 6일(현지시간) 인텔과 차세대 트랜지스터·인터커넥트·첨단 패키징 개발을 위해 협력한다고 밝혔다.",
       "title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력"
     },
     "source_fact:32579f8b96fe4efeb4023085": {
@@ -143925,9 +144150,10 @@
     "source_fact:3591d1e952f7b636ed7b240f": {
       "first_seen_kst": "2026-10-07T18:12:46+09:00",
       "lanes": {
-        "live": "2026-10-07T18:12:46+09:00"
+        "live": "2026-10-07T18:12:46+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-07T18:12:46+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://magazine.hankyung.com/business/article/202610016190b",
       "source": "한국경제",
       "source_body_digest": "bcd65113dff2e257c6a3955f3f5ce96ab3cddf24fc1a8be19382e0584c574541",
@@ -143939,6 +144165,8 @@
         "source_fact:v1:b834f0e03212051efff61e9036880f6310df1d77dfd6a8e69a9b7c243832e515"
       ],
       "source_published_kst": "2026-10-07T13:34+09:00",
+      "source_title": "한국 HBM 수출 200배 뛴 말레이시아…이유는?",
+      "telegram_core_fact": "말레이시아가 한국산 고대역폭메모리(HBM)의 핵심 수출처로 떠올랐다.",
       "title": "한국 HBM 수출 200배 뛴 말레이시아…이유는?"
     },
     "source_fact:35ac386eda6cb4b920324b33": {
@@ -146472,9 +146700,10 @@
     "source_fact:3b859638439eb79acdd80a05": {
       "first_seen_kst": "2026-10-07T18:12:46+09:00",
       "lanes": {
-        "live": "2026-10-07T18:12:46+09:00"
+        "live": "2026-10-07T18:12:46+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-07T18:12:46+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://magazine.hankyung.com/business/article/202610016190b",
       "source": "한국경제",
       "source_body_digest": "bcd65113dff2e257c6a3955f3f5ce96ab3cddf24fc1a8be19382e0584c574541",
@@ -146486,6 +146715,8 @@
         "source_fact:v1:b834f0e03212051efff61e9036880f6310df1d77dfd6a8e69a9b7c243832e515"
       ],
       "source_published_kst": "2026-10-07T13:34+09:00",
+      "source_title": "한국 HBM 수출 200배 뛴 말레이시아…이유는?",
+      "telegram_core_fact": "말레이시아가 한국산 고대역폭메모리(HBM)의 핵심 수출처로 떠올랐다.",
       "title": "한국 HBM 수출 200배 뛴 말레이시아…이유는?"
     },
     "source_fact:3b942e8e6533b6956b6e7243": {
@@ -146551,9 +146782,10 @@
     "source_fact:3b9f5ed601354d1e6770e7d7": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
       "lanes": {
-        "live": "2026-10-07T11:11:31+09:00"
+        "live": "2026-10-07T11:11:31+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://www.etnews.com/20261007000126",
       "source": "전자신문",
       "source_body_digest": "c14df3762821c77e1457188bc65a1d3454f5d0dc5cf9c6ad7e598ac29a93189c",
@@ -146569,6 +146801,8 @@
         "source_fact:v1:ee43e6f3172cb26afca25bb7f3e11959ec8320d6f1c4b178d50ed75435310f85"
       ],
       "source_published_kst": "2026-10-07T10:31+09:00",
+      "source_title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력",
+      "telegram_core_fact": "어플라이드 머티어리얼즈와 인텔이 인공지능(AI) 반도체용 차세대 공정과 첨단 패키징 기술 개발 협력에 나선다. 어플라이드는 6일(현지시간) 인텔과 차세대 트랜지스터·인터커넥트·첨단 패키징 개발을 위해 협력한다고 밝혔다.",
       "title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력"
     },
     "source_fact:3bb0c2387f583732922dda79": {
@@ -146949,9 +147183,10 @@
     "source_fact:3c7320440be3941b5a96cd6c": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
-        "live": "2026-10-08T05:31:58+09:00"
+        "live": "2026-10-08T05:31:58+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:31:58+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://stock.mk.co.kr/news/view/1171395",
       "source": "매일경제",
       "source_body_digest": "cd7d71547869d44cce44f2136cc8d22de6125573cd3a2c40f6e078fa030cbfb8",
@@ -147876,9 +148111,10 @@
     "source_fact:3ee189d84742379993cc096f": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
-        "live": "2026-10-08T05:31:58+09:00"
+        "live": "2026-10-08T05:31:58+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:31:58+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://stock.mk.co.kr/news/view/1171395",
       "source": "매일경제",
       "source_body_digest": "cd7d71547869d44cce44f2136cc8d22de6125573cd3a2c40f6e078fa030cbfb8",
@@ -151926,6 +152162,26 @@
       "source_title": "뉴젠IVF 그룹, 상반기 순손실 808만달러..적자전환",
       "telegram_core_fact": "뉴젠IVF 그룹(NIVF)은 6월 30일 종료된 2026년 상반기 매출액이 192만4900달러로 전년비 4.7% 감소했고, 순손실은 807만9400달러로 전년 동기 69만8000달러 순이익에서 적자 전환했다고 10월 7일 발표했다.",
       "title": "뉴젠IVF 그룹, 상반기 순손실 808만달러..적자전환"
+    },
+    "source_fact:4805ee5d37ff66efc25aec3a": {
+      "first_seen_kst": "2026-10-08T06:42:50+09:00",
+      "lanes": {
+        "preopen": "2026-10-08T06:42:50+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
+      "link": "https://www.mk.co.kr/news/it/12170651",
+      "source": "매일경제",
+      "source_body_digest": "1062f34753b6aa0c36cb58c042e2d8b23095762e5a2cb2afe6a2f2e1801e6982",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:43c2f4e05ba7f3638c6bc993417d862256d70b98bf8a0742b0e459e04f7d0aef",
+      "source_fact_keys": [
+        "source_fact:v1:38000f5ec8593b8b3bd8e14150581b3ebdf172b798093d2850300b8c48fde2a3",
+        "source_fact:v1:a36962b4ca859a8f479c13a26b31a3c673008e788a78e73d73cb5bf8fb9955c4"
+      ],
+      "source_published_kst": "2026-10-07T17:26+09:00",
+      "source_title": "현대ENG, 인천 데이터센터 공사 수주",
+      "telegram_core_fact": "현대엔지니어링은 인천 서해구 원창동 데이터센터 신축 사업(투시도)을 수주했다고 7일 밝혔다.",
+      "title": "현대ENG, 인천 데이터센터 공사 수주"
     },
     "source_fact:4807f47a309e1bc32d9b7a60": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
@@ -156234,9 +156490,10 @@
     "source_fact:522b2da75b54734273afe39a": {
       "first_seen_kst": "2026-10-08T05:01:11+09:00",
       "lanes": {
-        "live": "2026-10-08T05:01:11+09:00"
+        "live": "2026-10-08T05:01:11+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://www.newsis.com/view/NISX20261007_0003817414",
       "source": "뉴시스",
       "source_body_digest": "bf111c62915ca3cd4a69b2be1f7d27864f9aa5d11c508c32df575c1ef135c0c8",
@@ -162473,9 +162730,10 @@
     "source_fact:6032c4589b9383941fb13a1b": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
       "lanes": {
-        "live": "2026-10-07T11:11:31+09:00"
+        "live": "2026-10-07T11:11:31+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://www.etnews.com/20261007000126",
       "source": "전자신문",
       "source_body_digest": "c14df3762821c77e1457188bc65a1d3454f5d0dc5cf9c6ad7e598ac29a93189c",
@@ -162491,6 +162749,8 @@
         "source_fact:v1:ee43e6f3172cb26afca25bb7f3e11959ec8320d6f1c4b178d50ed75435310f85"
       ],
       "source_published_kst": "2026-10-07T10:31+09:00",
+      "source_title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력",
+      "telegram_core_fact": "어플라이드 머티어리얼즈와 인텔이 인공지능(AI) 반도체용 차세대 공정과 첨단 패키징 기술 개발 협력에 나선다. 어플라이드는 6일(현지시간) 인텔과 차세대 트랜지스터·인터커넥트·첨단 패키징 개발을 위해 협력한다고 밝혔다.",
       "title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력"
     },
     "source_fact:60365f6ae529d5474cf75ce8": {
@@ -171487,9 +171747,10 @@
     "source_fact:767d30573e525454a8921688": {
       "first_seen_kst": "2026-10-07T18:12:46+09:00",
       "lanes": {
-        "live": "2026-10-07T18:12:46+09:00"
+        "live": "2026-10-07T18:12:46+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-07T18:12:46+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://magazine.hankyung.com/business/article/202610016190b",
       "source": "한국경제",
       "source_body_digest": "bcd65113dff2e257c6a3955f3f5ce96ab3cddf24fc1a8be19382e0584c574541",
@@ -171501,6 +171762,8 @@
         "source_fact:v1:b834f0e03212051efff61e9036880f6310df1d77dfd6a8e69a9b7c243832e515"
       ],
       "source_published_kst": "2026-10-07T13:34+09:00",
+      "source_title": "한국 HBM 수출 200배 뛴 말레이시아…이유는?",
+      "telegram_core_fact": "말레이시아가 한국산 고대역폭메모리(HBM)의 핵심 수출처로 떠올랐다.",
       "title": "한국 HBM 수출 200배 뛴 말레이시아…이유는?"
     },
     "source_fact:76824f9ff4323ceda351141f": {
@@ -179036,9 +179299,10 @@
     "source_fact:8847dead5bb175d58dfceeb1": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
       "lanes": {
-        "live": "2026-10-07T11:25:20+09:00"
+        "live": "2026-10-07T11:25:20+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-07T11:25:20+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://www.yna.co.kr/view/AKR20261007048500003",
       "source": "연합뉴스",
       "source_body_digest": "ff948cc1b8552af6a91612a09c7455f5155faf12d43bce4152773145d45f30bb",
@@ -179052,6 +179316,8 @@
         "source_fact:v1:f0493e0baaf363a512ea4f8bb590c5980f7a1e67fe56b3f0afcfdbc4b7c003e6"
       ],
       "source_published_kst": "2026-10-07T09:35+09:00",
+      "source_title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표 | 연합뉴스",
+      "telegram_core_fact": "반도체 초호황 속 삼성전자가 국내 기업 사상 최초로 분기 영업이익 100조원 달성을 가시권에 두고 있다.",
       "title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표 | 연합뉴스"
     },
     "source_fact:884d7231a70caf625ded762d": {
@@ -179287,9 +179553,10 @@
     "source_fact:88ae9bf597d868c8114a42c6": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
       "lanes": {
-        "live": "2026-10-07T11:11:31+09:00"
+        "live": "2026-10-07T11:11:31+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://www.etnews.com/20261007000126",
       "source": "전자신문",
       "source_body_digest": "c14df3762821c77e1457188bc65a1d3454f5d0dc5cf9c6ad7e598ac29a93189c",
@@ -179305,6 +179572,8 @@
         "source_fact:v1:ee43e6f3172cb26afca25bb7f3e11959ec8320d6f1c4b178d50ed75435310f85"
       ],
       "source_published_kst": "2026-10-07T10:31+09:00",
+      "source_title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력",
+      "telegram_core_fact": "어플라이드 머티어리얼즈와 인텔이 인공지능(AI) 반도체용 차세대 공정과 첨단 패키징 기술 개발 협력에 나선다. 어플라이드는 6일(현지시간) 인텔과 차세대 트랜지스터·인터커넥트·첨단 패키징 개발을 위해 협력한다고 밝혔다.",
       "title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력"
     },
     "source_fact:88b6d15a55f50cf35efc9134": {
@@ -179894,9 +180163,10 @@
     "source_fact:8a3facdde4313c59bb77dfe1": {
       "first_seen_kst": "2026-10-07T10:49:23+09:00",
       "lanes": {
-        "live": "2026-10-07T11:25:20+09:00"
+        "live": "2026-10-07T11:25:20+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-07T11:25:20+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://www.yna.co.kr/view/AKR20261007048500003",
       "source": "연합뉴스",
       "source_body_digest": "ff948cc1b8552af6a91612a09c7455f5155faf12d43bce4152773145d45f30bb",
@@ -179910,6 +180180,8 @@
         "source_fact:v1:f0493e0baaf363a512ea4f8bb590c5980f7a1e67fe56b3f0afcfdbc4b7c003e6"
       ],
       "source_published_kst": "2026-10-07T09:35+09:00",
+      "source_title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표 | 연합뉴스",
+      "telegram_core_fact": "반도체 초호황 속 삼성전자가 국내 기업 사상 최초로 분기 영업이익 100조원 달성을 가시권에 두고 있다.",
       "title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표 | 연합뉴스"
     },
     "source_fact:8a6102dc5914b72b8e661aa8": {
@@ -180278,9 +180550,10 @@
     "source_fact:8b8fc36c01cb80b7b78a55c0": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
       "lanes": {
-        "live": "2026-10-07T11:11:31+09:00"
+        "live": "2026-10-07T11:11:31+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://www.etnews.com/20261007000126",
       "source": "전자신문",
       "source_body_digest": "c14df3762821c77e1457188bc65a1d3454f5d0dc5cf9c6ad7e598ac29a93189c",
@@ -180296,6 +180569,8 @@
         "source_fact:v1:ee43e6f3172cb26afca25bb7f3e11959ec8320d6f1c4b178d50ed75435310f85"
       ],
       "source_published_kst": "2026-10-07T10:31+09:00",
+      "source_title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력",
+      "telegram_core_fact": "어플라이드 머티어리얼즈와 인텔이 인공지능(AI) 반도체용 차세대 공정과 첨단 패키징 기술 개발 협력에 나선다. 어플라이드는 6일(현지시간) 인텔과 차세대 트랜지스터·인터커넥트·첨단 패키징 개발을 위해 협력한다고 밝혔다.",
       "title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력"
     },
     "source_fact:8b96c74abdc781b5acff1e73": {
@@ -181190,9 +181465,10 @@
     "source_fact:8d7dcb582bf22f532a510e2c": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
-        "live": "2026-10-08T05:31:58+09:00"
+        "live": "2026-10-08T05:31:58+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:31:58+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://stock.mk.co.kr/news/view/1171395",
       "source": "매일경제",
       "source_body_digest": "cd7d71547869d44cce44f2136cc8d22de6125573cd3a2c40f6e078fa030cbfb8",
@@ -184334,9 +184610,10 @@
     "source_fact:9591850c21ee3df2a8194148": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
-        "live": "2026-10-08T05:31:58+09:00"
+        "live": "2026-10-08T05:31:58+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:31:58+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://stock.mk.co.kr/news/view/1171395",
       "source": "매일경제",
       "source_body_digest": "cd7d71547869d44cce44f2136cc8d22de6125573cd3a2c40f6e078fa030cbfb8",
@@ -184490,9 +184767,10 @@
     "source_fact:95d3fdeaf2729eb473ba3617": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
-        "live": "2026-10-08T05:31:58+09:00"
+        "live": "2026-10-08T05:31:58+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:31:58+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://stock.mk.co.kr/news/view/1171395",
       "source": "매일경제",
       "source_body_digest": "cd7d71547869d44cce44f2136cc8d22de6125573cd3a2c40f6e078fa030cbfb8",
@@ -187953,9 +188231,10 @@
     "source_fact:9d825023b4410b25430e6e4b": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
       "lanes": {
-        "live": "2026-10-07T11:11:31+09:00"
+        "live": "2026-10-07T11:11:31+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://www.etnews.com/20261007000126",
       "source": "전자신문",
       "source_body_digest": "c14df3762821c77e1457188bc65a1d3454f5d0dc5cf9c6ad7e598ac29a93189c",
@@ -187971,6 +188250,8 @@
         "source_fact:v1:ee43e6f3172cb26afca25bb7f3e11959ec8320d6f1c4b178d50ed75435310f85"
       ],
       "source_published_kst": "2026-10-07T10:31+09:00",
+      "source_title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력",
+      "telegram_core_fact": "어플라이드 머티어리얼즈와 인텔이 인공지능(AI) 반도체용 차세대 공정과 첨단 패키징 기술 개발 협력에 나선다. 어플라이드는 6일(현지시간) 인텔과 차세대 트랜지스터·인터커넥트·첨단 패키징 개발을 위해 협력한다고 밝혔다.",
       "title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력"
     },
     "source_fact:9d83afd569d95e02a2c62f33": {
@@ -190648,6 +190929,26 @@
       ],
       "source_published_kst": "2026-10-06T13:55+09:00",
       "title": "금투협, IIFA 총회 참여…\"글로벌 펀드산업 현안 논의\""
+    },
+    "source_fact:a3d1d74f0cf3c5f7eef2cf7b": {
+      "first_seen_kst": "2026-10-08T06:42:50+09:00",
+      "lanes": {
+        "preopen": "2026-10-08T06:42:50+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
+      "link": "https://www.mk.co.kr/news/it/12170651",
+      "source": "매일경제",
+      "source_body_digest": "1062f34753b6aa0c36cb58c042e2d8b23095762e5a2cb2afe6a2f2e1801e6982",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:43c2f4e05ba7f3638c6bc993417d862256d70b98bf8a0742b0e459e04f7d0aef",
+      "source_fact_keys": [
+        "source_fact:v1:38000f5ec8593b8b3bd8e14150581b3ebdf172b798093d2850300b8c48fde2a3",
+        "source_fact:v1:a36962b4ca859a8f479c13a26b31a3c673008e788a78e73d73cb5bf8fb9955c4"
+      ],
+      "source_published_kst": "2026-10-07T17:26+09:00",
+      "source_title": "현대ENG, 인천 데이터센터 공사 수주",
+      "telegram_core_fact": "현대엔지니어링은 인천 서해구 원창동 데이터센터 신축 사업(투시도)을 수주했다고 7일 밝혔다.",
+      "title": "현대ENG, 인천 데이터센터 공사 수주"
     },
     "source_fact:a3dab33312c99cf2d42899bd": {
       "first_seen_kst": "2026-10-07T20:28:48+09:00",
@@ -198312,9 +198613,10 @@
     "source_fact:b6b54b1a95c00d7d1a7c4c1e": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
-        "live": "2026-10-08T05:31:58+09:00"
+        "live": "2026-10-08T05:31:58+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:31:58+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://stock.mk.co.kr/news/view/1171395",
       "source": "매일경제",
       "source_body_digest": "cd7d71547869d44cce44f2136cc8d22de6125573cd3a2c40f6e078fa030cbfb8",
@@ -200268,9 +200570,10 @@
     "source_fact:bb489fba768abcd4771982a7": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
-        "live": "2026-10-08T05:31:58+09:00"
+        "live": "2026-10-08T05:31:58+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:31:58+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://stock.mk.co.kr/news/view/1171395",
       "source": "매일경제",
       "source_body_digest": "cd7d71547869d44cce44f2136cc8d22de6125573cd3a2c40f6e078fa030cbfb8",
@@ -205937,9 +206240,10 @@
     "source_fact:c8c046f10fe908fafa37b0a2": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
-        "live": "2026-10-08T05:31:58+09:00"
+        "live": "2026-10-08T05:31:58+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:31:58+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://stock.mk.co.kr/news/view/1171395",
       "source": "매일경제",
       "source_body_digest": "cd7d71547869d44cce44f2136cc8d22de6125573cd3a2c40f6e078fa030cbfb8",
@@ -206693,9 +206997,10 @@
     "source_fact:cac0c726217ca9b368e2f4da": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
       "lanes": {
-        "live": "2026-10-07T11:25:20+09:00"
+        "live": "2026-10-07T11:25:20+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-07T11:25:20+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://www.yna.co.kr/view/AKR20261007048500003",
       "source": "연합뉴스",
       "source_body_digest": "ff948cc1b8552af6a91612a09c7455f5155faf12d43bce4152773145d45f30bb",
@@ -206709,6 +207014,8 @@
         "source_fact:v1:f0493e0baaf363a512ea4f8bb590c5980f7a1e67fe56b3f0afcfdbc4b7c003e6"
       ],
       "source_published_kst": "2026-10-07T09:35+09:00",
+      "source_title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표 | 연합뉴스",
+      "telegram_core_fact": "반도체 초호황 속 삼성전자가 국내 기업 사상 최초로 분기 영업이익 100조원 달성을 가시권에 두고 있다.",
       "title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표 | 연합뉴스"
     },
     "source_fact:cacaed2ebf359cbfddc47d7f": {
@@ -219740,9 +220047,10 @@
     "source_fact:e7426e41b4aade086bcde964": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
       "lanes": {
-        "live": "2026-10-08T05:01:11+09:00"
+        "live": "2026-10-08T05:01:11+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://www.newsis.com/view/NISX20261007_0003817414",
       "source": "뉴시스",
       "source_body_digest": "bf111c62915ca3cd4a69b2be1f7d27864f9aa5d11c508c32df575c1ef135c0c8",
@@ -222803,9 +223111,10 @@
     "source_fact:ed87d63d19ac58857cd00abc": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
-        "live": "2026-10-08T05:31:58+09:00"
+        "live": "2026-10-08T05:31:58+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:31:58+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://stock.mk.co.kr/news/view/1171395",
       "source": "매일경제",
       "source_body_digest": "cd7d71547869d44cce44f2136cc8d22de6125573cd3a2c40f6e078fa030cbfb8",
@@ -227604,9 +227913,10 @@
     "source_fact:fad2954b58d19384ce643787": {
       "first_seen_kst": "2026-10-07T10:49:23+09:00",
       "lanes": {
-        "live": "2026-10-07T11:25:20+09:00"
+        "live": "2026-10-07T11:25:20+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-07T11:25:20+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://www.yna.co.kr/view/AKR20261007048500003",
       "source": "연합뉴스",
       "source_body_digest": "ff948cc1b8552af6a91612a09c7455f5155faf12d43bce4152773145d45f30bb",
@@ -227620,6 +227930,8 @@
         "source_fact:v1:f0493e0baaf363a512ea4f8bb590c5980f7a1e67fe56b3f0afcfdbc4b7c003e6"
       ],
       "source_published_kst": "2026-10-07T09:35+09:00",
+      "source_title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표 | 연합뉴스",
+      "telegram_core_fact": "반도체 초호황 속 삼성전자가 국내 기업 사상 최초로 분기 영업이익 100조원 달성을 가시권에 두고 있다.",
       "title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표 | 연합뉴스"
     },
     "source_fact:fae1e8b005b98c15b05d74ba": {
@@ -238063,9 +238375,10 @@
     "title:31ee7eb3ad0a785f45454e24": {
       "first_seen_kst": "2026-10-07T18:12:46+09:00",
       "lanes": {
-        "live": "2026-10-07T18:12:46+09:00"
+        "live": "2026-10-07T18:12:46+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-07T18:12:46+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://magazine.hankyung.com/business/article/202610016190b",
       "source": "한국경제",
       "source_body_digest": "bcd65113dff2e257c6a3955f3f5ce96ab3cddf24fc1a8be19382e0584c574541",
@@ -238077,6 +238390,8 @@
         "source_fact:v1:b834f0e03212051efff61e9036880f6310df1d77dfd6a8e69a9b7c243832e515"
       ],
       "source_published_kst": "2026-10-07T13:34+09:00",
+      "source_title": "한국 HBM 수출 200배 뛴 말레이시아…이유는?",
+      "telegram_core_fact": "말레이시아가 한국산 고대역폭메모리(HBM)의 핵심 수출처로 떠올랐다.",
       "title": "한국 HBM 수출 200배 뛴 말레이시아…이유는?"
     },
     "title:31efdc12e6e2f7efe3d02528": {
@@ -238424,6 +238739,23 @@
       ],
       "source_published_kst": "2026-10-06T20:29+09:00",
       "title": "[올댓차이나] 홍콩 증시, 뉴욕 증시 강세에 이틀째 상승 마감… H주 0.96%↑"
+    },
+    "title:345be500553518d1270ee2ed": {
+      "first_seen_kst": "2026-10-08T06:42:50+09:00",
+      "lanes": {
+        "preopen": "2026-10-08T06:42:50+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816698",
+      "source": "뉴시스",
+      "source_body_digest": "a09c8e5489e69d2613661229475556c51dd83c350f127544e6c757f2549d2dc3",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T10:56+09:00",
+      "source_title": "삼성전자 HBM도 모바일 D램도 '가격 뛴다'…증권가 눈높이↑",
+      "telegram_core_fact": "KB증권은 삼성전자의 내년 고대역폭메모리(HBM) 판매가격이 올해보다 100% 이상 오를 것으로 예상했고, 메리츠증권은 서버 D램과 HBM으로의 생산능력 전환에 따라 모바일 메모리 판가도 내년 1분기부터 분기 기준 50% 이상 상승할 것으로 내다봤다.",
+      "title": "삼성전자 HBM도 모바일 D램도 '가격 뛴다'…증권가 눈높이↑"
     },
     "title:346416c2c517260b8fe24cbd": {
       "first_seen_kst": "2026-10-06T19:33:48+09:00",
@@ -239578,9 +239910,10 @@
     "title:3b806c9033b72e1d76e88e0c": {
       "first_seen_kst": "2026-10-08T05:01:11+09:00",
       "lanes": {
-        "live": "2026-10-08T05:01:11+09:00"
+        "live": "2026-10-08T05:01:11+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://www.newsis.com/view/NISX20261007_0003817414",
       "source": "뉴시스",
       "source_body_digest": "bf111c62915ca3cd4a69b2be1f7d27864f9aa5d11c508c32df575c1ef135c0c8",
@@ -243147,9 +243480,10 @@
     "title:4f201c835aacc882b9dff716": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
       "lanes": {
-        "live": "2026-10-07T11:11:31+09:00"
+        "live": "2026-10-07T11:11:31+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://www.etnews.com/20261007000126",
       "source": "전자신문",
       "source_body_digest": "c14df3762821c77e1457188bc65a1d3454f5d0dc5cf9c6ad7e598ac29a93189c",
@@ -243165,6 +243499,8 @@
         "source_fact:v1:ee43e6f3172cb26afca25bb7f3e11959ec8320d6f1c4b178d50ed75435310f85"
       ],
       "source_published_kst": "2026-10-07T10:31+09:00",
+      "source_title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력",
+      "telegram_core_fact": "어플라이드 머티어리얼즈와 인텔이 인공지능(AI) 반도체용 차세대 공정과 첨단 패키징 기술 개발 협력에 나선다. 어플라이드는 6일(현지시간) 인텔과 차세대 트랜지스터·인터커넥트·첨단 패키징 개발을 위해 협력한다고 밝혔다.",
       "title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력"
     },
     "title:4f3a7905919bf737c48990c3": {
@@ -258457,9 +258793,10 @@
     "title:b024f34385b01d40bbf11bd0": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
       "lanes": {
-        "live": "2026-10-07T11:25:20+09:00"
+        "live": "2026-10-07T11:25:20+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-07T11:25:20+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://www.yna.co.kr/view/AKR20261007048500003",
       "source": "연합뉴스",
       "source_body_digest": "ff948cc1b8552af6a91612a09c7455f5155faf12d43bce4152773145d45f30bb",
@@ -258473,6 +258810,8 @@
         "source_fact:v1:f0493e0baaf363a512ea4f8bb590c5980f7a1e67fe56b3f0afcfdbc4b7c003e6"
       ],
       "source_published_kst": "2026-10-07T09:35+09:00",
+      "source_title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표 | 연합뉴스",
+      "telegram_core_fact": "반도체 초호황 속 삼성전자가 국내 기업 사상 최초로 분기 영업이익 100조원 달성을 가시권에 두고 있다.",
       "title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표 | 연합뉴스"
     },
     "title:b07821602aa1e2546aaa2c75": {
@@ -260913,9 +261252,10 @@
     "title:c0ab4eb12572c8421b67b3e4": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
-        "live": "2026-10-08T05:31:58+09:00"
+        "live": "2026-10-08T05:31:58+09:00",
+        "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:31:58+09:00",
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
       "link": "https://stock.mk.co.kr/news/view/1171395",
       "source": "매일경제",
       "source_body_digest": "cd7d71547869d44cce44f2136cc8d22de6125573cd3a2c40f6e078fa030cbfb8",
@@ -269022,6 +269362,26 @@
       "source_published_kst": "2026-10-05T06:01+09:00",
       "title": "내일 행안부 국감…중수청 개문발차·미래기금 교부세 '쟁점'"
     },
+    "title:f2a192955e8e22ff4790c831": {
+      "first_seen_kst": "2026-10-08T06:42:50+09:00",
+      "lanes": {
+        "preopen": "2026-10-08T06:42:50+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:42:50+09:00",
+      "link": "https://www.mk.co.kr/news/it/12170651",
+      "source": "매일경제",
+      "source_body_digest": "1062f34753b6aa0c36cb58c042e2d8b23095762e5a2cb2afe6a2f2e1801e6982",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:43c2f4e05ba7f3638c6bc993417d862256d70b98bf8a0742b0e459e04f7d0aef",
+      "source_fact_keys": [
+        "source_fact:v1:38000f5ec8593b8b3bd8e14150581b3ebdf172b798093d2850300b8c48fde2a3",
+        "source_fact:v1:a36962b4ca859a8f479c13a26b31a3c673008e788a78e73d73cb5bf8fb9955c4"
+      ],
+      "source_published_kst": "2026-10-07T17:26+09:00",
+      "source_title": "현대ENG, 인천 데이터센터 공사 수주",
+      "telegram_core_fact": "현대엔지니어링은 인천 서해구 원창동 데이터센터 신축 사업(투시도)을 수주했다고 7일 밝혔다.",
+      "title": "현대ENG, 인천 데이터센터 공사 수주"
+    },
     "title:f2b61dd0a08abcd92be9cfa7": {
       "first_seen_kst": "2026-10-08T02:57:10+09:00",
       "lanes": {
@@ -270968,5 +271328,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-08T06:27:52+09:00"
+  "updated_at_kst": "2026-10-08T06:42:50+09:00"
 }
