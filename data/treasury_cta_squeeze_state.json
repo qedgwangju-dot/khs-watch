@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-10-07T23:39:45+09:00",
+  "last_checked_kst": "2026-10-07T23:40:24+09:00",
   "media_id": null,
   "cftc_date": "September 29, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-10-07T23:39:45+09:00",
+    "checked_kst": "2026-10-07T23:40:24+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "September 29, 2026",
@@ -67,10 +67,10 @@
         "display_symbol": "TY/ZN",
         "ticker": "ZN=F",
         "month": "",
-        "last": 104.28125,
-        "settlement": 104.28125,
-        "change": -0.21875,
-        "pct_change": -0.2093301435406647,
+        "last": 104.265625,
+        "settlement": 104.265625,
+        "change": -0.234375,
+        "pct_change": -0.22428229665071298,
         "open_interest": 5676556,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 29, 2026)",
         "volume": 0,
@@ -307,8 +307,7 @@
     "stage": 0,
     "oi_scope_fixes": [
       "ZN OI 71→5,676,556로 동일 범위 교체",
-      "ZB OI 71→1,879,173로 동일 범위 교체",
-      "UB OI 71→2,507,580로 동일 범위 교체"
+      "ZB OI 71→1,879,173로 동일 범위 교체"
     ]
   },
   "last_fomc_eve_report": "2026-09-16",
