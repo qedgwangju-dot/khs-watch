@@ -16,8 +16,10 @@ Important:
 """
 from __future__ import annotations
 
+import csv
 import email.utils
 import html
+import io
 import json
 import math
 import re
@@ -26,6 +28,7 @@ import time
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
+import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -44,6 +47,7 @@ STATUS = OUT / "treasury_cta_squeeze_status.md"
 FORMAT_REVISION = 1
 
 CFTC_TFF = "https://www.cftc.gov/dea/futures/financial_lf.htm"
+CFTC_TFF_HISTORY = "https://www.cftc.gov/files/dea/history/fut_fin_txt_{year}.zip"
 TREASURY_YIELD_XML = "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve"
 TREASURY_YIELD_XML_YEAR = TREASURY_YIELD_XML + "&field_tdr_date_value={year}"
 NYFED_SOFR_API = "https://markets.newyorkfed.org/api/rates/secured/sofr/last/1.json"
@@ -175,7 +179,7 @@ def _tff_fields(text: str, expected: int = 14) -> list[int | None]:
     return out
 
 
-def cftc_snapshot() -> dict:
+def _cftc_snapshot_live() -> dict:
     raw = fetch(CFTC_TFF)
     text = strip_tags(raw)
     date_match = re.search(r"Positions\s+as\s+of\s+([A-Za-z]+\s+\d{1,2},\s+20\d{2})", text, re.I)
@@ -220,6 +224,124 @@ def cftc_snapshot() -> dict:
     if "10Y" not in result["markets"]:
         raise RuntimeError("CFTC TFF 10Y Leveraged Funds 파싱 실패")
     return result
+
+
+CFTC_TREASURY_CODES = {
+    "2Y": "042601",
+    "5Y": "044601",
+    "10Y": "043602",
+    "ULTRA10Y": "043607",
+    "BOND": "020601",
+    "ULTRABOND": "020604",
+}
+
+
+def _download_bytes(url: str) -> bytes:
+    req = urllib.request.Request(url, headers={
+        "User-Agent": "Mozilla/5.0 khs-watch/cta-squeeze",
+        "Accept": "*/*",
+    })
+    with urllib.request.urlopen(req, timeout=35) as r:
+        return r.read()
+
+
+def _history_cftc_snapshot(live_error: Exception | None = None) -> dict:
+    """Official annual TFF compressed fallback for Treasury positioning.
+
+    This path is independent of the live HTML endpoint and uses the same CFTC
+    Traders in Financial Futures futures-only dataset.
+    """
+    year = datetime.now(KST).year
+    url = CFTC_TFF_HISTORY.format(year=year)
+    raw = _download_bytes(url)
+    zf = zipfile.ZipFile(io.BytesIO(raw))
+    names = [n for n in zf.namelist() if not n.endswith("/")]
+    if not names:
+        raise RuntimeError("CFTC TFF compressed zip is empty")
+    with zf.open(names[0]) as fp:
+        text_stream = io.TextIOWrapper(fp, encoding="utf-8-sig", errors="replace", newline="")
+        reader = csv.DictReader(text_stream)
+        rows = list(reader)
+    if not rows:
+        raise RuntimeError("CFTC TFF compressed csv is empty")
+
+    code_col = "CFTC_Contract_Market_Code"
+    date_cols = ("Report_Date_as_YYYY-MM-DD", "Report_Date_as_MM_DD_YYYY")
+    date_col = next((x for x in date_cols if x in rows[0]), None)
+    if code_col not in rows[0] or date_col is None:
+        raise RuntimeError("CFTC TFF compressed required columns missing")
+
+    by_key: dict[str, list[dict]] = {k: [] for k in CFTC_TREASURY_CODES}
+    reverse = {v: k for k, v in CFTC_TREASURY_CODES.items()}
+    for row in rows:
+        code = str(row.get(code_col) or "").replace('"', "").strip()
+        key = reverse.get(code)
+        if key:
+            by_key[key].append(row)
+
+    def parse_date(raw_date: str):
+        s = str(raw_date or "").strip()
+        for fmt in ("%Y-%m-%d", "%m/%d/%Y", "%Y%m%d"):
+            try:
+                return datetime.strptime(s, fmt).date()
+            except ValueError:
+                pass
+        raise RuntimeError(f"CFTC TFF compressed bad date: {s}")
+
+    def intval(row: dict, field: str) -> int:
+        v = str(row.get(field) or "").replace(",", "").strip()
+        if v in ("", "."):
+            raise RuntimeError(f"CFTC TFF compressed missing {field}")
+        return int(float(v))
+
+    latest_rows = {}
+    dates = {}
+    for key, candidates in by_key.items():
+        if not candidates:
+            raise RuntimeError(f"CFTC TFF compressed market missing: {key}")
+        candidates.sort(key=lambda r: parse_date(r.get(date_col)))
+        row = candidates[-1]
+        d = parse_date(row.get(date_col))
+        latest_rows[key] = row
+        dates[key] = d
+
+    latest_date = dates["10Y"]
+    mismatched = {k: d.isoformat() for k, d in dates.items() if d != latest_date}
+    if mismatched:
+        raise RuntimeError(f"CFTC TFF compressed latest-date mismatch: {mismatched}")
+
+    result = {
+        "report_date": latest_date.strftime("%B %d, %Y").replace(" 0", " "),
+        "markets": {},
+        "source_mode": "CFTC TFF official historical compressed fallback",
+        "source_url": url,
+    }
+    for key, row in latest_rows.items():
+        oi = intval(row, "Open_Interest_All")
+        lev_long = intval(row, "Lev_Money_Positions_Long_All")
+        lev_short = intval(row, "Lev_Money_Positions_Short_All")
+        lev_spread = intval(row, "Lev_Money_Positions_Spread_All")
+        result["markets"][key] = {
+            "open_interest": oi,
+            "leveraged_long": lev_long,
+            "leveraged_short": lev_short,
+            "leveraged_spreading": lev_spread,
+            "leveraged_net": lev_long - lev_short,
+            "short_share_oi_pct": lev_short / oi * 100 if oi else None,
+        }
+    if live_error is not None:
+        result["live_source_error"] = f"{type(live_error).__name__}: {live_error}"
+    return result
+
+
+def cftc_snapshot() -> dict:
+    try:
+        result = _cftc_snapshot_live()
+        result["source_mode"] = "CFTC TFF live HTML"
+        result["source_url"] = CFTC_TFF
+        return result
+    except Exception as live_exc:
+        return _history_cftc_snapshot(live_exc)
 
 
 def treasury_10y_snapshot() -> dict:
