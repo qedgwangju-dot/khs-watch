@@ -37,6 +37,7 @@ S.headers.update({
 CFTC = "https://www.cftc.gov/dea/futures/financial_lf.htm"
 CFTC_HISTORY_TEMPLATE = "https://www.cftc.gov/files/dea/history/fut_fin_txt_{year}.zip"
 NQ_CFTC_CODE = "209742"
+CFTC_HISTORY_INDEX = "https://www.cftc.gov/MarketReports/CommitmentsofTraders/HistoricalCompressed/index.htm"
 CBOE = "https://www.cboe.com/us/options/market_statistics/market/"
 CBOE_DAILY_TEMPLATE = "https://www.cboe.com/markets/us/options/market-statistics/daily?dt={date}"
 SOX = "https://indexes.nasdaq.com/Index/History/SOX"
@@ -480,7 +481,7 @@ def cftc_nq_history_3y(current_nq=None, current_period=None):
 
 
 
-def parse_cftc():
+def _parse_cftc_live():
     raw = get(CFTC).text
     soup = BeautifulSoup(raw, "html.parser")
 
@@ -569,6 +570,159 @@ def parse_cftc():
         "nq_mini": nq_mini,
         "history_3y": history_3y,
     }
+
+
+def _tff_latest_rows_from_compressed():
+    """Official current-year TFF compressed fallback when the live CFTC HTML is blocked."""
+    year = datetime.now(timezone.utc).year
+    url = CFTC_HISTORY_TEMPLATE.format(year=year)
+    raw = get(url, timeout=50).content
+    df = pd.read_csv(BytesIO(raw), compression="zip", low_memory=False)
+    df.columns = [str(x).strip() for x in df.columns]
+
+    date_col = next(
+        (x for x in ("Report_Date_as_YYYY-MM-DD", "Report_Date_as_MM_DD_YYYY") if x in df.columns),
+        None,
+    )
+    if not date_col:
+        raise RuntimeError("CFTC compressed fallback date column missing")
+    df["_date"] = pd.to_datetime(df[date_col], errors="coerce")
+    df = df.dropna(subset=["_date"])
+    if df.empty:
+        raise RuntimeError("CFTC compressed fallback has no dated rows")
+    return df, url
+
+
+def _num_int(row, key, fallback=None):
+    val = pd.to_numeric(row.get(key), errors="coerce")
+    if pd.notna(val):
+        return int(val)
+    return fallback
+
+
+def _period_label(ts) -> str:
+    return pd.Timestamp(ts).strftime("%B %d, %Y").replace(" 0", " ")
+
+
+def _parse_cftc_compressed_fallback(live_error: Exception | None = None):
+    df, source_url = _tff_latest_rows_from_compressed()
+
+    names = df["Market_and_Exchange_Names"].astype(str) if "Market_and_Exchange_Names" in df.columns else pd.Series("", index=df.index)
+    codes = (
+        df["CFTC_Contract_Market_Code"].astype(str)
+        .str.replace('"', "", regex=False).str.strip().str.replace(r"\.0$", "", regex=True)
+        if "CFTC_Contract_Market_Code" in df.columns
+        else pd.Series("", index=df.index)
+    )
+
+    consolidated = df[names.str.contains("NASDAQ-100 Consolidated", case=False, na=False)].copy()
+    if consolidated.empty:
+        consolidated = df[codes.str.startswith("20974+")].copy()
+    nqdf = df[codes == NQ_CFTC_CODE].copy()
+
+    if consolidated.empty or nqdf.empty:
+        raise RuntimeError(
+            f"CFTC compressed fallback missing markets: consolidated={len(consolidated)} nq={len(nqdf)}"
+        )
+
+    consolidated = consolidated.sort_values("_date").drop_duplicates("_date", keep="last")
+    nqdf = nqdf.sort_values("_date").drop_duplicates("_date", keep="last")
+    crow = consolidated.iloc[-1]
+    nrow = nqdf.iloc[-1]
+    if pd.Timestamp(crow["_date"]) != pd.Timestamp(nrow["_date"]):
+        raise RuntimeError(
+            f"CFTC compressed fallback date mismatch: consolidated={crow['_date']} nq={nrow['_date']}"
+        )
+
+    period = _period_label(crow["_date"])
+    previous_period = _period_label(consolidated.iloc[-2]["_date"]) if len(consolidated) >= 2 else "확인 불가"
+
+    asset_long = _num_int(crow, "Asset_Mgr_Positions_Long_All")
+    asset_short = _num_int(crow, "Asset_Mgr_Positions_Short_All")
+    lev_long = _num_int(crow, "Lev_Money_Positions_Long_All")
+    lev_short = _num_int(crow, "Lev_Money_Positions_Short_All")
+    open_interest = _num_int(crow, "Open_Interest_All")
+    critical = [asset_long, asset_short, lev_long, lev_short, open_interest]
+    if any(x is None for x in critical):
+        raise RuntimeError("CFTC compressed fallback critical consolidated fields missing")
+
+    prev_crow = consolidated.iloc[-2] if len(consolidated) >= 2 else None
+    def wow(change_key, value_key, current_value):
+        v = _num_int(crow, change_key)
+        if v is not None:
+            return v
+        if prev_crow is not None:
+            prevv = _num_int(prev_crow, value_key)
+            if prevv is not None:
+                return int(current_value - prevv)
+        raise RuntimeError(f"CFTC compressed fallback missing weekly change: {change_key}")
+
+    asset_long_wow = wow("Change_in_Asset_Mgr_Long_All", "Asset_Mgr_Positions_Long_All", asset_long)
+    asset_short_wow = wow("Change_in_Asset_Mgr_Short_All", "Asset_Mgr_Positions_Short_All", asset_short)
+    lev_long_wow = wow("Change_in_Lev_Money_Long_All", "Lev_Money_Positions_Long_All", lev_long)
+    lev_short_wow = wow("Change_in_Lev_Money_Short_All", "Lev_Money_Positions_Short_All", lev_short)
+
+    metrics = {
+        "open_interest": open_interest,
+        "asset_long": asset_long,
+        "asset_short": asset_short,
+        "asset_net": asset_long - asset_short,
+        "asset_long_wow": asset_long_wow,
+        "asset_short_wow": asset_short_wow,
+        "asset_net_wow": asset_long_wow - asset_short_wow,
+        "lev_long": lev_long,
+        "lev_short": lev_short,
+        "lev_net": lev_long - lev_short,
+        "lev_long_wow": lev_long_wow,
+        "lev_short_wow": lev_short_wow,
+        "lev_net_wow": lev_long_wow - lev_short_wow,
+        "previous_period": previous_period,
+    }
+
+    nqi = {
+        "contract": "NASDAQ MINI",
+        "cftc_code": NQ_CFTC_CODE,
+        "open_interest": _num_int(nrow, "Open_Interest_All"),
+        "open_interest_wow": _num_int(nrow, "Change_in_Open_Interest_All"),
+        "leveraged_long": _num_int(nrow, "Lev_Money_Positions_Long_All"),
+        "leveraged_short": _num_int(nrow, "Lev_Money_Positions_Short_All"),
+        "leveraged_long_wow": _num_int(nrow, "Change_in_Lev_Money_Long_All"),
+        "leveraged_short_wow": _num_int(nrow, "Change_in_Lev_Money_Short_All"),
+        "previous_period": _period_label(nqdf.iloc[-2]["_date"]) if len(nqdf) >= 2 else "확인 불가",
+        "scope": "CFTC TFF NASDAQ MINI 전체시장 주간",
+    }
+    if any(nqi.get(k) is None for k in ("open_interest","open_interest_wow","leveraged_long","leveraged_short","leveraged_long_wow","leveraged_short_wow")):
+        raise RuntimeError("CFTC compressed fallback critical NQ fields missing")
+    nqi["leveraged_net"] = nqi["leveraged_long"] - nqi["leveraged_short"]
+    nqi["leveraged_net_wow"] = nqi["leveraged_long_wow"] - nqi["leveraged_short_wow"]
+    nqi["short_share_oi_pct"] = nqi["leveraged_short"] / nqi["open_interest"] * 100.0 if nqi["open_interest"] else None
+
+    try:
+        history_3y = cftc_nq_history_3y(nqi, period)
+    except Exception as exc:
+        history_3y = {"error": f"{type(exc).__name__}: {exc}"}
+
+    core = {"source": "CFTC", "kind": "cot", "period": period, "metrics": metrics}
+    return {
+        **core,
+        "url": source_url,
+        "fingerprint": fp(core),
+        "nq_mini": nqi,
+        "history_3y": history_3y,
+        "source_mode": "CFTC TFF official historical compressed fallback",
+        "live_source_error": (
+            f"{type(live_error).__name__}: {live_error}" if live_error is not None else None
+        ),
+    }
+
+
+def parse_cftc():
+    try:
+        out = _parse_cftc_live()
+        out["source_mode"] = "CFTC TFF live HTML"
+        return out
+    except Exception as live_exc:
+        return _parse_cftc_compressed_fallback(live_exc)
 
 
 def parse_cboe_section(text, heading, next_heading=None, required_time="03:15 PM"):
