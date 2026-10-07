@@ -95,6 +95,10 @@ NEWS_QUERIES = [
     '(OpenAI OR Anthropic OR Google OR Meta) monitorability threshold automatic stop fail-closed training',
     '(OpenAI OR Anthropic OR Google OR Meta) regression test postmortem misalignment incident',
     '(OpenAI OR Anthropic OR Google OR Meta) tool-use training evaluation inference resumed paused frontier model',
+    '(Anthropic OR Claude) (Mythos OR "Cyber Verification Program" OR Glasswing) cyber capability vulnerability security access',
+    '"Jamie Dimon" (Mythos OR Anthropic) cyber risk bank financial "10-fold"',
+    '(JPMorgan OR Citi OR Goldman OR bank OR "critical infrastructure") (Mythos OR Anthropic) AI cyber risk',
+    'Anthropic Mythos vulnerabilities critical high severity 129000 33000 5500',
 ]
 
 AI_TERMS = (
@@ -106,6 +110,8 @@ AI_TERMS = (
     "secure agent runtime", "nvidia agent toolkit",
     "frontier ai", "frontier model", "super intelligence", "superintelligence",
     "joint commitment on frontier responsibilities", "white house accord on super intelligence",
+    "mythos", "claude mythos", "claude fable", "cyber verification program",
+    "project glasswing",
 )
 
 SECURITY_TERMS = (
@@ -148,6 +154,11 @@ SECURITY_TERMS = (
     "fail-closed", "fail closed", "automatic stop", "auto-stop", "auto stop",
     "regression test", "postmortem", "post-mortem", "root cause",
     "senior leadership veto", "training veto",
+    "mythos", "cyber verification program", "project glasswing",
+    "reduced blocking classifiers", "specialized access", "red team tier",
+    "defense tier", "financial sector", "critical infrastructure",
+    "10-fold", "tenfold", "ten-fold", "cyber risk",
+    "verified software vulnerabilities", "critical or high severity",
 )
 
 HARD_SECURITY_TERMS = (
@@ -166,6 +177,8 @@ HARD_SECURITY_TERMS = (
     "audit found unauthorized access", "audit found control failure",
     "external audit found", "independent audit found",
     "board ordered pause", "oversight ordered pause",
+    "mythos", "reduced blocking classifiers", "critical or high severity",
+    "10-fold", "tenfold", "ten-fold",
     "fail-closed", "fail closed", "automatic stop", "auto-stop",
 )
 
@@ -195,6 +208,7 @@ OFFICIAL_SOURCE_HINTS = (
 DIRECT_OFFICIAL_PAGES = [
     ("OpenAI Alignment", "https://alignment.openai.com/", r'href=["\\\']([^"\\\']*/misalignment-reports/[^"\\\']+)["\\\']'),
     ("Anthropic Research", "https://www.anthropic.com/research", r'href=["\\\']([^"\\\']*/research/[^"\\\']+)["\\\']'),
+    ("Anthropic News", "https://www.anthropic.com/news", r'href=["\\\']([^"\\\']*/(?:news/[^"\\\']+|claude-fable-and-mythos-5-1))["\\\']'),
 ]
 
 VENDOR_PATTERNS = [
@@ -212,6 +226,21 @@ VENDOR_PATTERNS = [
 ]
 
 CATEGORY_PATTERNS = [
+    ("금융·핵심인프라 AI 사이버 위험 경보", (
+        "jamie dimon", "jpmorgan", "financial sector", "bank", "banks",
+        "critical infrastructure", "10-fold", "tenfold", "ten-fold",
+        "biggest threat", "cyber risk",
+    )),
+    ("프런티어 모델 사이버 역량·접근 확대", (
+        "claude mythos", "mythos", "cyber verification program",
+        "project glasswing", "reduced blocking classifiers",
+        "specialized access", "red team tier", "defense tier",
+    )),
+    ("대규모 취약점 발굴·검증", (
+        "verified software vulnerabilities", "critical or high severity",
+        "129,000", "129000", "33,000", "33000", "5,500", "5500",
+        "vulnerabilities discovered", "vulnerabilities identified",
+    )),
     ("공동서약·외부감사 보안실패", (
         "joint commitment on frontier responsibilities",
         "white house accord on super intelligence",
@@ -803,6 +832,14 @@ def incident_fact(item: dict) -> str | None:
         return "최고 성능 모델의 학습·평가·추론 또는 도구사용 중단"
     if ("training" in text or "evaluation" in text or "inference" in text) and ("resumed" in text or "restart" in text):
         return "중단됐던 모델 학습·평가·추론 또는 도구사용 재개"
+    if ("10-fold" in text or "tenfold" in text or "ten-fold" in text) and ("mythos" in text or "anthropic" in text):
+        return "Anthropic Mythos 이후 AI 사이버 위험이 10배 높아졌다는 대형 금융기관 경고"
+    if ("129,000" in text or "129000" in text) and "vulnerab" in text:
+        return "검증된 소프트웨어 취약점 최소 12만9,000건 확인"
+    if ("33,000" in text or "33000" in text) and ("critical" in text or "high" in text):
+        return "이 중 3만3,000건이 긴급·높음 등급"
+    if ("5,500" in text or "5500" in text) and "vulnerab" in text:
+        return "Anthropic 자체 스캔으로 추가 취약점 5,500건 발견"
     if "481 million" in text or "481m" in text:
         return "Anthropic 조사 범위 약 4억8,100만 기록"
     if ("four incidents" in text or "4 incidents" in text) and ("unauthorized" in text or "third-party" in text):
@@ -851,6 +888,12 @@ def event_heading(cluster: list[dict]) -> str:
 
 def event_impact(cluster: list[dict]) -> str:
     cats = " ".join(item.get("category", "") for item in cluster)
+    if "금융·핵심인프라 AI 사이버 위험 경보" in cats:
+        return "대형 은행·핵심인프라 운영자가 프런티어 모델의 공격·취약점 탐색 능력을 실제 시스템 위험으로 평가하기 시작했는지, 보안예산·모델 접근통제·사고대응 체계가 강화되는지가 핵심입니다."
+    if "프런티어 모델 사이버 역량·접근 확대" in cats:
+        return "Anthropic이 Mythos 같은 고성능 사이버 모델의 접근범위와 차단 수준을 검증된 방어·레드팀 조직에 확대하면서 방어 생산성과 오용 위험이 동시에 커지는지가 핵심입니다."
+    if "대규모 취약점 발굴·검증" in cats:
+        return "AI가 실제 소프트웨어에서 발굴·검증하는 취약점 규모와 심각도가 인간 중심 보안 프로세스의 처리용량을 넘어서는지가 핵심입니다."
     if "공동서약·외부감사 보안실패" in cats:
         return "공동 안전서약의 외부감사에서 실제 보안통제 실패·비인가 접근·준수 위반이 확인됐는지가 핵심입니다."
     if "이사회·감독기구 중단명령" in cats:
@@ -950,7 +993,7 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str, str]:
 
     lines += [
         "",
-        "<b>다음 확인</b>: 공동서약 외부감사 보안실패·준수위반 · 독립 이사회/감독기구의 실제 중단명령 · 공식 출시일/변경일 · 안전게이트 통과 여부 · 제한배포 범위 · 실제 사고/모의평가 구분 · 탐지→강제종료 시간 · 중단/재개 · 패치/완화책",
+        "<b>다음 확인</b>: Mythos/CVP 접근등급·차단수준 · 금융·핵심인프라 실제 사고·보안예산 변화 · AI 취약점 발굴량/긴급·높음 비중 · 공동서약 외부감사 보안실패·준수위반 · 독립 이사회/감독기구의 실제 중단명령 · 공식 출시일/변경일 · 안전게이트 통과 여부 · 제한배포 범위 · 실제 사고/모의평가 구분 · 탐지→강제종료 시간 · 중단/재개 · 패치/완화책",
     ]
     return title, "\n".join(lines)
 
