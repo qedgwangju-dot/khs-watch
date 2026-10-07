@@ -22,6 +22,7 @@ STATE = ROOT / "data" / "solidigm_ipo_watch_state.json"
 ALERT = ROOT / "out" / "solidigm_ipo_alert.html"
 UA = "Mozilla/5.0 (compatible; khs-watch/2.0; +https://github.com/qedgwangju-dot/khs-watch)"
 WATCH_VERSION = 4
+IPO_ALERT_FORMAT_VERSION = 2
 CANONICAL_REUTERS_URL = "https://www.reuters.com/world/sk-hynixs-solidigm-weighs-ipo-that-could-value-the-unit-up-150-billion-sources-2026-09-25/"
 SOLIDIGM_DMS_URL = "https://www.solidigm.com/products/document-management-system.html"
 OFFICIAL_SK_REPLY = "https://news.skhynix.com/en/fact-11/"
@@ -665,15 +666,17 @@ def manufacturing_alert_text(old, new, reasons, checked):
         lines.append("• 고객 구분: Foxconn·Quanta·Wistron 등은 대만 AI 서버 생태계 설명이며 Solidigm 직접 고객·공급계약으로 승격하지 않습니다.")
     lines.append("• 공정 구분: 대만 SSD 제조·조립 거점 확대이며 NAND 웨이퍼 팹 증설과 분리합니다.")
     lines.append("• 이번 변화: <b>" + html.escape(" · ".join(reasons)) + "</b>")
-    if old.get("source_name") == "Reuters" and new.get("reported_original") == "Bloomberg":
+    if new.get("reported_original") == "Bloomberg" and (
+        old.get("source_name") == "Reuters"
+        or "알림 표시 보강" in " ".join(reasons)
+    ):
         lines.append(
-            "• 서로 다른 시점의 보도 추정: 과거 Reuters "
-            + usd_display(old.get("raise_target_usd"), rate)
-            + " 조달 / " + usd_display(old.get("valuation_max_usd"), rate)
-            + " 기업가치 → 새 Bloomberg "
+            "• 서로 다른 시점의 보도 추정: Reuters(9월 25일) "
+            + usd_display(15_000_000_000, rate)
+            + " 조달·기업가치 " + usd_display(150_000_000_000, rate)
+            + " ↔ Bloomberg(10월 8일) "
             + usd_display(new.get("raise_target_usd"), rate)
-            + " 조달 / " + usd_display(new.get("valuation_max_usd"), rate)
-            + " 기업가치"
+            + " 조달·기업가치 " + usd_display(new.get("valuation_max_usd"), rate)
         )
         lines.append("• 이는 확정 공모금액 감액이 아니라 서로 다른 보도상 추정치의 비교입니다.")
     lines.append("• 다음 확인: 실제 12월 출하 · 생산능력 수치 · 신규 ODM 실명 · 고객 인증·직접 공급계약 · 품질·수율 이슈 · 일정 지연")
@@ -816,9 +819,11 @@ def alert_text(old, new, reasons, checked):
         lines.append("• 주관사 명단(보도): " + html.escape(", ".join(new["underwriters"])))
     if new.get("reported_original") == "Bloomberg":
         lines.append("• 출처 계보: Bloomberg 원보도 → 연합뉴스·이데일리·Investing.com 재인용. 별개 독립 확인 3건이 아닙니다.")
-    if new.get("primary_secondary_mix"):
+    if new.get("ipo_officially_confirmed") is True and new.get("primary_secondary_mix"):
         labels = {"primary_included":"신주 포함","secondary_included":"구주매출 포함","primary_and_secondary":"신주+구주매출"}
-        lines.append("• 공모 구조: " + labels.get(new["primary_secondary_mix"], new["primary_secondary_mix"]))
+        lines.append("• 회사 확정 공모 구조: " + labels.get(new["primary_secondary_mix"], new["primary_secondary_mix"]))
+    else:
+        lines.append("• 신주·구주 매출 비율 및 자금이 어느 회사에 귀속될지: <b>미확정</b>")
     if new.get("parent_post_ipo_stake_pct") is not None:
         lines.append(f"• SK하이닉스 상장 후 지분율: {new['parent_post_ipo_stake_pct']:.1f}%")
     if new.get("use_of_proceeds"):
@@ -862,6 +867,16 @@ def main():
             best_source = event
 
     ipo_reasons = material_changes(current, candidate)
+    ipo_format_refresh = bool(
+        candidate.get("stage") == "underwriters_selected"
+        and candidate.get("reported_original") == "Bloomberg"
+        and int(state.get("ipo_alert_format_version") or 0) < IPO_ALERT_FORMAT_VERSION
+    )
+    if ipo_format_refresh and not ipo_reasons:
+        ipo_reasons = [
+            "알림 표시 보강: 대표주관사·참여은행을 분리하고 기존 주주 희석·회사 미확정 상태를 명시 "
+            "(기존 주관사 선정 소식의 정확한 재표시, 새로운 IPO 진척 아님)"
+        ]
 
     # --- Manufacturing / Taiwan ODM lane (new, same existing route) ---
     if int(state.get("watch_version") or 0) < WATCH_VERSION or not state.get("manufacturing_state"):
@@ -890,6 +905,8 @@ def main():
     manufacturing_reasons = manufacturing_material_changes(manufacturing_current, manufacturing_candidate)
 
     state["watch_version"] = WATCH_VERSION
+    if ipo_format_refresh:
+        state["ipo_alert_format_version"] = IPO_ALERT_FORMAT_VERSION
     state["last_checked_at_kst"] = checked.isoformat(timespec="seconds")
     state["current_state"] = candidate
     state["manufacturing_state"] = manufacturing_candidate
