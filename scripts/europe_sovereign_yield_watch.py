@@ -61,9 +61,17 @@ FR_LEVELS = [4.50, 4.75, 5.00]
 UK_LEVELS = [5.00, 5.25, 5.50]
 DE_LEVELS = [3.25, 3.50, 3.75]
 FR_DE_SPREAD_LEVELS_BP = [100.0, 125.0, 150.0]
+IT_LEVELS = [4.50, 4.75, 5.00]
 DAILY_MOVE_BP = 10.0
 FIVE_OBS_MOVE_BP = 25.0
-MAX_AGE_DAYS = {"fr10": 3, "de10": 3, "uk10": 5}
+MAX_BUSINESS_LAG = 1
+
+MARKET_URLS = {
+    "fr_mkt": "https://www.investing.com/rates-bonds/france-10-year-bond-yield-historical-data",
+    "de_mkt": "https://www.investing.com/rates-bonds/germany-10-year-bond-yield-historical-data",
+    "it10": "https://www.investing.com/rates-bonds/italy-10-year-bond-yield-historical-data",
+    "uk_mkt": "https://www.investing.com/rates-bonds/uk-10-year-bond-yield-historical-data",
+}
 
 
 @dataclass
@@ -331,9 +339,45 @@ def fetch_germany() -> list[Obs]:
     return rows[-30:]
 
 
-def age_days(obs: Obs, now: dt.datetime) -> int:
+def business_lag_days(obs: Obs, now: dt.datetime, tz=PARIS) -> int:
     d = parse_iso(obs.date)
-    return 999 if d is None else max(0, (now.date() - d).days)
+    if d is None:
+        return 999
+    today = now.astimezone(tz).date()
+    if d >= today:
+        return 0
+    lag = 0
+    cur = d
+    while cur < today:
+        cur += dt.timedelta(days=1)
+        if cur.weekday() < 5:
+            lag += 1
+    return lag
+
+
+def parse_investing_history(text: str, key: str, label: str, source: str) -> list[Obs]:
+    plain = strip_html(text)
+    out: list[Obs] = []
+    # Historical table rows are rendered as "Oct 07, 2026 4.688 ...".
+    pat = re.compile(
+        r"\b([A-Z][a-z]{2}\s+\d{2},\s+20\d{2})\s+([0-9]+(?:\.[0-9]+)?)"
+    )
+    for ds, raw in pat.findall(plain):
+        try:
+            d = dt.datetime.strptime(ds, "%b %d, %Y").date().isoformat()
+            out.append(Obs(key, label, d, float(raw), source))
+        except Exception:
+            pass
+    dedup = {x.date: x for x in out}
+    return sorted(dedup.values(), key=lambda x: x.date)
+
+
+def fetch_market_history(key: str, label: str) -> list[Obs]:
+    url = MARKET_URLS[key]
+    rows = parse_investing_history(fetch(url), key, label, url)
+    if not rows:
+        raise RuntimeError(f"Investing historical parse failed: {key}")
+    return rows[-30:]
 
 
 def bp(new: float, old: float) -> float:
@@ -370,11 +414,17 @@ def build_alert(latest: dict[str, Obs], changes: dict, spread_bp: float | None, 
     fr = latest.get("fr10")
     de = latest.get("de10")
     uk = latest.get("uk10")
+    it = latest.get("it10")
+    fr_mkt = latest.get("fr_mkt")
+    de_mkt = latest.get("de_mkt")
+    uk_mkt = latest.get("uk_mkt")
 
+    uk_live = uk if uk and "uk10" not in stale else uk_mkt if uk_mkt and "uk_mkt" not in stale else None
     stress_count = sum([
         bool(fr and fr.value >= 4.75 and "fr10" not in stale),
-        bool(uk and uk.value >= 5.25 and "uk10" not in stale),
-        bool(spread_bp is not None and spread_bp >= 125 and "fr10" not in stale and "de10" not in stale),
+        bool(uk_live and uk_live.value >= 5.25),
+        bool(it and it.value >= 4.75 and "it10" not in stale),
+        bool(spread_bp is not None and spread_bp >= 125),
     ])
     if stress_count >= 2 or (fr and fr.value >= 5.0):
         level, emoji = "유럽 장기금리 스트레스 강화", "🔴"
@@ -389,15 +439,22 @@ def build_alert(latest: dict[str, Obs], changes: dict, spread_bp: float | None, 
         "■ 지금 숫자",
     ]
     if fr:
-        lines.append(f"🇫🇷 프랑스 10년 {fr.value:.3f}% / 전일 {signed_bp(changes.get('fr10_day_bp'))} / 기준일 {fr.date}")
-    if uk:
-        suffix = " ⚠️ 후행값" if "uk10" in stale else ""
-        lines.append(f"🇬🇧 영국 10년 {uk.value:.3f}% / 전일 {signed_bp(changes.get('uk10_day_bp'))} / 기준일 {uk.date}{suffix}")
+        lines.append(f"🇫🇷 Banque de France TEC10 {fr.value:.3f}% / 전일 {signed_bp(changes.get('fr10_day_bp'))} / 기준일 {fr.date}")
+    if fr_mkt and "fr_mkt" not in stale:
+        lines.append(f"   ↳ 프랑스 10년 시장수익률 {fr_mkt.value:.3f}% / 기준일 {fr_mkt.date} (보조 시장자료)")
+    if it and "it10" not in stale:
+        lines.append(f"🇮🇹 이탈리아 10년 시장수익률 {it.value:.3f}% / 전일 {signed_bp(changes.get('it10_day_bp'))} / 기준일 {it.date}")
+    if uk and "uk10" not in stale:
+        lines.append(f"🇬🇧 BoE 10년 명목 파수익률 {uk.value:.3f}% / 전일 {signed_bp(changes.get('uk10_day_bp'))} / 기준일 {uk.date}")
+    elif uk_mkt and "uk_mkt" not in stale:
+        lines.append(f"🇬🇧 영국 10년 시장수익률 {uk_mkt.value:.3f}% / 전일 {signed_bp(changes.get('uk_mkt_day_bp'))} / 기준일 {uk_mkt.date} (BoE 공식값 후행으로 보조 시장자료 사용)")
     if de:
         suffix = " ⚠️ 후행값" if "de10" in stale else ""
-        lines.append(f"🇩🇪 독일 10년 {de.value:.3f}% / 전일 {signed_bp(changes.get('de10_day_bp'))} / 기준일 {de.date}{suffix}")
+        lines.append(f"🇩🇪 Bundesbank 10년 {de.value:.3f}% / 전일 {signed_bp(changes.get('de10_day_bp'))} / 기준일 {de.date}{suffix}")
+    if de_mkt and "de_mkt" not in stale:
+        lines.append(f"   ↳ 독일 10년 시장수익률 {de_mkt.value:.3f}% / 기준일 {de_mkt.date} (보조 시장자료)")
     if spread_bp is not None:
-        lines.append(f"🇫🇷-🇩🇪 프랑스 위험프리미엄 {spread_bp:.1f}bp")
+        lines.append(f"🇫🇷-🇩🇪 동일 시장자료 기준 금리차 {spread_bp:.1f}bp")
 
     lines += ["", "■ 무엇이 바뀌었나"]
     for e in events[:8]:
@@ -408,7 +465,7 @@ def build_alert(latest: dict[str, Obs], changes: dict, spread_bp: float | None, 
         "",
         "■ 왜 중요한가",
         "• ECB 정책금리와 별개입니다. 시장의 10년 국채금리가 오르면 정부·기업·주택의 실제 장기 차입비용과 주식 할인율이 올라갑니다.",
-        "• 프랑스-독일 금리차 확대는 단순 글로벌 금리 상승보다 프랑스 재정·정치 위험프리미엄이 추가됐다는 뜻입니다.",
+        "• 프랑스-독일 금리차는 동일 시장자료끼리 계산합니다. 서로 방법론이 다른 공식 지표를 섞어 위험프리미엄으로 부르지 않습니다.",
         "",
         "■ 시장 영향",
         "• 성장주·리츠·고부채 기업: 할인율·자금조달비용 상승 부담.",
@@ -427,10 +484,18 @@ def build_alert(latest: dict[str, Obs], changes: dict, spread_bp: float | None, 
         lines.append(f"• Deutsche Bundesbank 10Y: {DE_PAGE}")
     if uk:
         lines.append(f"• Bank of England IUDMNPY: {uk.source}")
+    if it:
+        lines.append(f"• Italy 10Y 보조 시장자료: {it.source}")
+    if fr_mkt:
+        lines.append(f"• France 10Y 보조 시장자료: {fr_mkt.source}")
+    if de_mkt:
+        lines.append(f"• Germany 10Y 보조 시장자료: {de_mkt.source}")
+    if uk_mkt:
+        lines.append(f"• UK 10Y 보조 시장자료: {uk_mkt.source}")
     if stale:
-        lines += ["", "※ 후행 데이터: " + ", ".join(stale) + " — 후행값은 신규 경계 진입 판정에서 제외합니다."]
+        lines += ["", "※ 후행 데이터는 신규 경계 판정에서 제외했습니다: " + ", ".join(stale)]
     if errors:
-        lines += ["※ 일부 소스 오류: " + " | ".join(errors[:3]) + " — 정상 소스만으로 판정했습니다."]
+        lines += ["※ 일부 보조 소스는 확인 불가였지만, 해당 값은 경보 계산에서 제외했습니다. 상세 오류는 실행 상태에만 기록합니다."]
 
     detail = {
         "checked_at_kst": now.isoformat(timespec="seconds"),
@@ -476,7 +541,16 @@ def main() -> int:
     errors = []
     all_rows: dict[str, list[Obs]] = {}
 
-    for key, fn in (("fr10", lambda: fetch_france(now)), ("de10", fetch_germany), ("uk10", lambda: fetch_uk(now))):
+    source_jobs = (
+        ("fr10", lambda: fetch_france(now)),
+        ("de10", fetch_germany),
+        ("uk10", lambda: fetch_uk(now)),
+        ("fr_mkt", lambda: fetch_market_history("fr_mkt", "프랑스 10년 시장수익률")),
+        ("de_mkt", lambda: fetch_market_history("de_mkt", "독일 10년 시장수익률")),
+        ("it10", lambda: fetch_market_history("it10", "이탈리아 10년 시장수익률")),
+        ("uk_mkt", lambda: fetch_market_history("uk_mkt", "영국 10년 시장수익률")),
+    )
+    for key, fn in source_jobs:
         try:
             all_rows[key] = fn()
         except Exception as exc:
@@ -492,7 +566,8 @@ def main() -> int:
         cur, before = latest_two(rows)
         if cur:
             latest[key] = cur
-            if age_days(cur, now) > MAX_AGE_DAYS[key]:
+            tz = LONDON if key in {"uk10", "uk_mkt"} else PARIS
+            if business_lag_days(cur, now, tz) > MAX_BUSINESS_LAG:
                 stale.append(key)
             old = before
             if old is None:
@@ -520,10 +595,14 @@ def main() -> int:
     def fresh(key: str) -> bool:
         return key in latest and key not in stale
 
+    # Official hard levels for France/Germany; UK uses the official series when fresh.
+    # Italy is monitored from the current benchmark market series because Banca d'Italia
+    # does not publish a timely daily benchmark 10Y series.
     for key, levels, label in (
-        ("fr10", FR_LEVELS, "프랑스 10년"),
-        ("uk10", UK_LEVELS, "영국 10년"),
-        ("de10", DE_LEVELS, "독일 10년"),
+        ("fr10", FR_LEVELS, "프랑스 TEC10"),
+        ("uk10", UK_LEVELS, "영국 10년(BoE)"),
+        ("de10", DE_LEVELS, "독일 10년(Bundesbank)"),
+        ("it10", IT_LEVELS, "이탈리아 10년 시장수익률"),
     ):
         if not fresh(key):
             continue
@@ -538,14 +617,17 @@ def main() -> int:
         if d5 is not None:
             mark_event(events, active, state, f"{key}:5obs:{FIVE_OBS_MOVE_BP}", d5 >= FIVE_OBS_MOVE_BP, f"{label} 최근 5개 관측치 +{FIVE_OBS_MOVE_BP:.0f}bp 이상 ({d5:+.1f}bp)", clear_summary=f"{label} 5개 관측치 급등 속도 정상화 ({d5:+.1f}bp)")
 
+    # Comparable spread must use the same market-data methodology/provider.
+    # Do NOT mix Banque de France TEC10 with a Bundesbank benchmark and call the
+    # arithmetic difference a market risk premium.
     spread_bp = None
-    if fresh("fr10") and fresh("de10"):
-        spread_bp = bp(latest["fr10"].value, latest["de10"].value)
+    if fresh("fr_mkt") and fresh("de_mkt"):
+        spread_bp = bp(latest["fr_mkt"].value, latest["de_mkt"].value)
         for level in FR_DE_SPREAD_LEVELS_BP:
             mark_event(
-                events, active, state, f"fr_de_spread:above:{level}", spread_bp >= level,
-                f"프랑스-독일 10년 금리차 {level:.0f}bp 이상 ({spread_bp:.1f}bp)",
-                clear_summary=f"프랑스-독일 10년 금리차 {level:.0f}bp 아래 ({spread_bp:.1f}bp)",
+                events, active, state, f"fr_de_market_spread:above:{level}", spread_bp >= level,
+                f"프랑스-독일 10년 시장금리차 {level:.0f}bp 이상 ({spread_bp:.1f}bp)",
+                clear_summary=f"프랑스-독일 10년 시장금리차 {level:.0f}bp 아래 ({spread_bp:.1f}bp)",
             )
 
     next_state = {
@@ -570,7 +652,7 @@ def main() -> int:
     for k, v in latest.items():
         status.append(f"- {v.label}: {v.value:.3f}% ({v.date})")
     if spread_bp is not None:
-        status.append(f"- 프랑스-독일 10년 금리차: {spread_bp:.1f}bp")
+        status.append(f"- 프랑스-독일 10년 동일 시장자료 금리차: {spread_bp:.1f}bp")
     if errors:
         status += ["", "## 일부 소스 오류"] + [f"- {x}" for x in errors]
     STATUS.write_text("\n".join(status) + "\n", encoding="utf-8")
