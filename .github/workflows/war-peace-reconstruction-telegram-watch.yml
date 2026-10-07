@@ -34,7 +34,7 @@ jobs:
       DRY_RUN: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, '[dry-run]') && 'true' || 'false' }}
     steps:
       - name: Checkout latest main
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: main
           fetch-depth: 1
@@ -43,7 +43,7 @@ jobs:
           git fetch origin main --depth=1
           git reset --hard origin/main
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - name: Validate monitor
@@ -208,7 +208,7 @@ jobs:
           fi
       - name: Upload verification artifacts
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: war-peace-reconstruction-${{ github.run_id }}
           path: |
