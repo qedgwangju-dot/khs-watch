@@ -503,6 +503,15 @@ def _aden_airport_attack_cluster(row):
     return aden and airport and houthi and attack
 
 
+def _saudi_oct06_attack_signature(row):
+    """10월 5~6일 시작된 동일 사우디 공항·라빅 공격 재보도를 발행일과 무관하게 식별한다."""
+    t = _text(row).lower()
+    targets = sum(bool(x in t) for x in ("jazan", "najran", "riyadh", "rabigh", "자잔", "나지란", "리야드", "라빅"))
+    airport = any(x in t for x in ("airport", "airports", "공항"))
+    refinery = any(x in t for x in ("refinery", "aramco", "정유시설", "아람코"))
+    return targets >= 2 and airport and refinery and _saudi_houthi_airport_refinery_cluster(row)
+
+
 def _new_saudi_houthi_attack_variant(row):
     t = _text(row).lower()
     return any(x in t for x in (
