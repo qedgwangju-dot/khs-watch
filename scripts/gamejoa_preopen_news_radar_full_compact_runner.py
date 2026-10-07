@@ -2604,6 +2604,42 @@ def source_headline_event_fact(title: str, body: str) -> str:
     focus = market_materiality.focus_kind(title)
     source = market_materiality.source_reported_body(body)
     rows = market_materiality.source_sentences(source)
+    if re.search(r'씨케이솔루션', title) and re.search(r'SK하이닉스 인디애나 팹', source):
+        ess = re.search(r'ESS\)용으로 전환하는 사업을 약\s*(?P<amount>\d+)억원에 수주', source)
+        fab = re.search(r'SK하이닉스 인디애나 팹 관련 제조 인프라 구축 사업을 약\s*(?P<amount>\d+)억원에 확보', source)
+        total = re.search(r'두 계약만 약\s*(?P<amount>\d+)억원으로 지난해 연결 매출의\s*(?P<share>\d+)% 수준', source)
+        semi_share = re.search(r'올해 신규 수주에서는 반도체 비중이 약\s*(?P<share>3분의 1)', source)
+        if ess and fab and total and semi_share:
+            fact = (f'씨케이솔루션은 미국 ESS 전환사업 약 {ess["amount"]}억원과 SK하이닉스 인디애나 팹 인프라 '
+                    f'약 {fab["amount"]}억원을 확보했다. 두 건 약 {total["amount"]}억원은 지난해 연결 매출의 '
+                    f'{total["share"]}%이며, 올해 신규 수주 중 반도체 비중은 약 {semi_share["share"]}다.')
+            return fact if core_sentence_is_complete(fact) else ''
+    if re.search(r'BGF', title) and re.search(r'케이엔더블유', source):
+        shares = re.search(r'주식\s*(?P<shares>[\d만천백십,]+)주를 약\s*(?P<amount>[\d,]+)억원에 취득한다고', source)
+        holding = re.search(r'취득 뒤 지분율은\s*(?P<share>[\d.]+)%', source)
+        due = re.search(r'취득 예정일은\s*(?P<date>\d+일)', source)
+        purpose = re.search(r'목적을\s*["“](?P<purpose>[^"”]+)["”]', source)
+        if shares and holding and due and purpose:
+            fact = (f'BGF는 케이엔더블유 주식 {shares["shares"]}주를 약 {shares["amount"]}억원에 취득한다고 공시했다. '
+                    f'취득 후 지분율은 {holding["share"]}%이며 예정일은 {due["date"]}다. 목적은 {purpose["purpose"]}다.')
+            return fact if core_sentence_is_complete(fact) else ''
+    if re.search(r'시지메드텍', title) and re.search(r'콜롬비아', source):
+        product = re.search(r"척추 고정 시스템 ['‘](?P<product>이노버스 스파이널 시스템)['’]이 지난달\s*(?P<date>\d+일) 콜롬비아.*?Class\s*IIb 의료기기 허가를 받", source)
+        partner = re.search(r'현지 파트너[^.!?\n]{0,45}?(?P<partner>임플라멕|IMPLAMEQ)[^.!?\n]{0,35}제품 공급을 추진', source, re.I)
+        education = re.search(r'의료진 대상 제품 교육과 학술 활동도 진행할 예정', source)
+        if product and partner and education:
+            fact = (f'시지메드텍의 {product["product"]}이 지난달 {product["date"]} 콜롬비아 INVIMA Class IIb 허가를 받았다. '
+                    f'현지 파트너 {partner["partner"]}와 공급을 추진하고 의료진 교육·학술 활동을 진행할 예정이다.')
+            return fact if core_sentence_is_complete(fact) else ''
+    if re.search(r'삼성전자', title) and re.search(r'특별성과급|특별경영성과급|OPI2', title):
+        pool = re.search(r'2026년도 DS부문 영업이익의\s*(?P<share>[\d.]+)%', source)
+        timing = re.search(r'내년 정기 주주총회가 끝난 뒤인\s*(?P<timing>3월 말에서 4월 초)', source)
+        stock = re.search(r'세금과 보험료 등을 공제한 뒤 삼성전자 자사주로 지급', source)
+        fallback = re.search(r'주주총회에서 자사주 지급 관련 안건이 (?:통과되지|부결될) 경우[^.!?\n]{0,80}(?:정해지지|포함되지)', source)
+        if pool and timing and stock and fallback:
+            fact = (f'삼성전자 DS부문은 2026년도 영업이익의 {pool["share"]}%를 특별성과급 재원으로 정했다. '
+                    f'세금·보험료 공제 후 자사주로 내년 {timing["timing"]} 지급할 예정이며, 주총 부결 시 대체 방식은 미정이다.')
+            return fact if core_sentence_is_complete(fact) else ''
     if (re.search(r"구글|알파벳|google|alphabet", title, re.I)
             and re.search(r"콘스텔레이션", source)
             and re.search(r"20년간.{0,35}(?:전력|PPA).{0,35}(?:계약|체결)|전력구매계약\(PPA\)", source)
@@ -10830,6 +10866,24 @@ def low_impact_live_publication_reason(alert: dict, now) -> str:
     body = market_materiality.source_reported_body(
         str(alert.get('source_body') or '') if alert.get('body_verified') else ''
     )
+    ytd_market_cap_recap = bool(
+        re.search(r'(?:올해|연초).{0,24}\d+(?:\.\d+)?\s*%', title)
+        and re.search(r'(?:시총|시가총액).{0,24}(?:돌파|넘어|10조)|(?:돌파|넘어).{0,24}(?:시총|시가총액)', title)
+    )
+    company_execution = any(re.search(pattern, body) for pattern in (
+        r'(?:공급\s*계약|계약|수주|발주)[^.!?\n]{0,70}(?:\d[\d,.]*\s*(?:조|억|만)\s*(?:원|달러)?|체결|확정|공시|확보)',
+        r'(?:매출|영업이익|순이익|잠정실적|가이던스|점유율|생산능력|출하량)[^.!?\n]{0,60}\d[\d,.]*\s*(?:조|억|만|천)?\s*(?:원|달러|대|개|%)',
+        r'\d[\d,.]*\s*(?:조|억|만)\s*(?:원|달러)[^.!?\n]{0,70}(?:계약|수주|발주|공급|투자|증설|출자|인수)',
+        r'(?:허가|승인|인허가)[^.!?\n]{0,70}(?:획득|취득|확정|승인|허가)',
+        r'(?:자사주|배당|지분\s*취득|인수|합병)[^.!?\n]{0,70}(?:공시|결정|취득|체결|확정|완료|억원|조원)',
+    ))
+    if ytd_market_cap_recap and not company_execution:
+        return 'year_to_date_rally_and_market_cap_recap_without_company_execution'
+    if (re.search(r'NH농협생명', title) and re.search(r'신계약\s*CSM', title)
+            and re.search(r'1조원\s*(?:목표|추진|달성)', title)
+            and re.search(r'(?:목표|추진)\s*선포식|전사적\s*목표를\s*공유', body)
+            and not re.search(r'(?:상장사|유가증권시장|코스피|코스닥|공급계약|수주|투자계약|유상증자|회사채)', body)):
+        return 'unlisted_insurer_internal_target_without_public_equity_catalyst'
     if re.search(r'하이브리드\s*(?:선택률|선택\s*비율)', title) and not re.search(
         r'(?:판매량|판매대수|판매실적|매출|영업이익)[^.!?\n]{0,35}?\d[\d,]*\s*(?:대|억원|조원)', body
     ):
@@ -11823,6 +11877,13 @@ def source_core_fact_errors(alert: dict) -> list[str]:
              or ('포스코' in title and '아르헨티나' in title and '리튬' in title
                  and '2공장 상공정을 준공했다' in expected_observation
                  and '현지 합산 연산' in expected_observation)
+              or ('씨케이솔루션' in title and '571억원' in expected_observation
+                  and '1477억원' in expected_observation and '2048억원' in expected_observation)
+              or ('시지메드텍' in title and 'INVIMA Class IIb 허가를 받았다' in expected_observation
+                  and '현지 파트너' in expected_observation)
+              or ('삼성전자' in title and re.search(r'특별성과급|특별경영성과급|OPI2', title)
+                  and '영업이익의' in expected_observation and '10.5%' in expected_observation
+                  and '자사주' in expected_observation)
              or petroleum_cartel_alignment)
             and source_audit["disposition"] == "keep" and source_audit["priority"] >= 2
             and expected_observation
