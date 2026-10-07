@@ -589,4 +589,33 @@ try:
 except RuntimeError as e:
     check("oct07-quality-gate-unknown-time", "공개시각" in str(e))
 
+
+# 19) 조건부 선제공격 경고는 실제 공격이 아닌 노란색 군사위협으로 처리한다.
+iran_preemptive = row(
+    "*IRAN AMRY SAYS IT WILL LAUNCH PREEMPTIVE ATTACKS IF NECESSARY: FARS",
+    source="Walter Bloomberg",
+    description="Iran army says it may launch a preemptive attack if necessary.",
+    link="https://t.me/WalterBloomberg/36505",
+)
+check("oct07-conditional-threat-detected", mod._conditional_military_threat(iran_preemptive))
+check("oct07-conditional-threat-yellow", mod.final_color(iran_preemptive) == "yellow")
+s, tags = mod.score_item(iran_preemptive, dt.datetime.now(mod.watch.KST))
+check("oct07-conditional-threat-no-red-tag", "확전" not in tags and "실제공격아님" in tags)
+check("oct07-conditional-threat-topic", mod.topic_label(iran_preemptive) == "이란 · 조건부 선제공격 경고")
+check(
+    "oct07-conditional-threat-translation",
+    mod.translate_ko(iran_preemptive["title_original"]) == "이란군, 필요할 경우 선제공격에 나설 수 있다고 경고 — 실제 공격 발생이 아닌 조건부 군사위협",
+)
+
+bad_conditional = """<b>전쟁·종전·재건 웹감시</b>
+🔴 [속보] <b>1. 이란</b>
+이란군, 필요한 경우 선제 공격에 나설 수 있다고 경고 — 조건부 군사위협
+"""
+mod.watch.ALERT.write_text(bad_conditional, encoding="utf-8")
+try:
+    mod.verify_alert(False)
+    raise AssertionError("oct07-quality-gate-conditional-threat")
+except RuntimeError as e:
+    check("oct07-quality-gate-conditional-threat", "조건부 선제공격" in str(e))
+
 print("WAR_PEACE_OCT04_REGRESSION_OK")
