@@ -112,6 +112,7 @@ class HBMExportSourceGuardTests(unittest.TestCase):
         state = {
             "official_source_health_version": w.OFFICIAL_SOURCE_HEALTH_VERSION,
             "compare_version": w.COMPARE_VERSION,
+            "export_alert_format_version": w.EXPORT_ALERT_FORMAT_VERSION,
             "last_successful_official_month": "202608",
             "last_official_poll_attempt_kst": (self.now - timedelta(hours=2)).isoformat(),
         }
@@ -127,6 +128,7 @@ class HBMExportSourceGuardTests(unittest.TestCase):
         state = {
             "official_source_health_version": w.OFFICIAL_SOURCE_HEALTH_VERSION,
             "compare_version": w.COMPARE_VERSION,
+            "export_alert_format_version": w.EXPORT_ALERT_FORMAT_VERSION,
             "last_successful_official_month": "202609",
             "last_official_poll_attempt_kst": (self.now - timedelta(hours=23)).isoformat(),
         }
@@ -139,6 +141,7 @@ class HBMExportSourceGuardTests(unittest.TestCase):
         state = {
             "official_source_health_version": w.OFFICIAL_SOURCE_HEALTH_VERSION,
             "compare_version": w.COMPARE_VERSION,
+            "export_alert_format_version": w.EXPORT_ALERT_FORMAT_VERSION,
             "last_successful_official_month": "202608",
             "official_source_health": {"status": "error", "target_month": "202609"},
             "last_official_poll_attempt_kst": (self.now - timedelta(minutes=59)).isoformat(),
@@ -165,6 +168,19 @@ class HBMExportSourceGuardTests(unittest.TestCase):
         state = {
             "official_source_health_version": w.OFFICIAL_SOURCE_HEALTH_VERSION,
             "compare_version": w.COMPARE_VERSION - 1,
+            "export_alert_format_version": w.EXPORT_ALERT_FORMAT_VERSION,
+            "last_successful_official_month": "202608",
+            "last_official_poll_attempt_kst": self.now.isoformat(),
+        }
+        due, interval = w._official_poll_due(state, self.now)
+        self.assertTrue(due)
+        self.assertEqual(interval, 3)
+
+    def test_alert_format_upgrade_forces_repoll(self):
+        state = {
+            "official_source_health_version": w.OFFICIAL_SOURCE_HEALTH_VERSION,
+            "compare_version": w.COMPARE_VERSION,
+            "export_alert_format_version": w.EXPORT_ALERT_FORMAT_VERSION - 1,
             "last_successful_official_month": "202608",
             "last_official_poll_attempt_kst": self.now.isoformat(),
         }
