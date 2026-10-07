@@ -294,3 +294,19 @@ assert "수급 원인 보류" in txt10, txt10
 assert "소급 추정하지 않습니다" in txt10, txt10
 assert "주도 가능성 높음" not in txt10, txt10
 print("price_only_gap_alert_regression=true")
+
+
+# Regression: 전일 종가 대비 시가 급락은 장중 사건과 별도로 1회 경고한다.
+w11 = Watch.__new__(Watch)
+gap_text = Watch.build_open_gap_alert(w11, {
+    "KOSPI": {
+        "prev_close": 6941.30,
+        "open": 6864.25,
+        "open_pct": -1.11,
+    }
+})
+assert "코스피 개장 갭다운" in gap_text, gap_text
+assert "-1.11%" in gap_text, gap_text
+assert "매도주체를 단정하지 않습니다" in gap_text, gap_text
+assert "주도 가능성 높음" not in gap_text, gap_text
+print("opening_gap_alert_regression=true")
