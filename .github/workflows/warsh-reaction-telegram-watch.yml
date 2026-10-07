@@ -147,11 +147,11 @@ jobs:
           run_watch() {
             WATCH="$1"
             echo "::group::${WATCH}"
-            if ! python "$WATCH"; then
+            python "$WATCH" || {
               RC=$?
               echo "::error::${WATCH} failed with exit code ${RC}; remaining Warsh watchers will continue."
               MACRO_RC=1
-            fi
+            }
             echo "::endgroup::"
           }
 
