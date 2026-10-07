@@ -2648,20 +2648,20 @@
     "event:695102b941e71506d24b4e08": {
       "first_seen_kst": "2026-10-07T04:49:54+09:00",
       "lanes": {
-        "live": "2026-10-07T09:44:16+09:00"
+        "live": "2026-10-07T10:23:42+09:00"
       },
-      "last_seen_kst": "2026-10-07T09:44:16+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1170595",
-      "source": "매일경제",
-      "source_body_digest": "121737cc9d7798f7101c6bb6605bba647f45880aeea957c7799c252f58f832ec",
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02761766645610624",
+      "source": "이데일리",
+      "source_body_digest": "2559593a59d8724dbd97cd85c1bd2cc7e2769a511633145b5e0370c863d187f7",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:9745995a753f41120d44ab43a6e185ca1566aa1bc0421e0b181cd4dc4df33054",
+      "source_fact_identity": "source_facts:v1:2654f6b96d485623a85efb3165f038e01893badf818bd226a35af25d1201c333",
       "source_fact_keys": [
-        "source_fact:v1:495c66fc205fb2fc15911b140f5c2b6bbd8108d7b82f0b05102e4a86ac76e8b3",
-        "source_fact:v1:a542d840ff1833203ff1bdfb72f3fb050c8dafd1426b04e2050e96228ecacc08"
+        "source_fact:v1:2cbebbe729b83ab16c132a477f04aa1f48d2b29b07efd7b29df45d01599098a5",
+        "source_fact:v1:f5742bb603aae4848a7e0905adfdc049a79433d0cb443b5520bfe5496e7d5e2b"
       ],
-      "source_published_kst": "2026-10-07T08:42+09:00",
-      "title": "네이처 우드 그룹, 상반기 매출 64% 급감..174만달러 순손실"
+      "source_published_kst": "2026-10-07T08:10+09:00",
+      "title": "\"관세 깎아줄게, 돈 더 내놔\" 트럼프, 韓 관세 또 압박"
     },
     "event:6994ec3ec51f16c535c2ebd5": {
       "first_seen_kst": "2026-09-28T15:47:59+09:00",
@@ -10131,6 +10131,24 @@
       "source_published_kst": "2026-10-05T18:17+09:00",
       "title": "'전고체 배터리' 기대감…한주새 ETF 12% 뛰어"
     },
+    "fact:2e40eb30655f4e1be9616da6": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895071",
+      "source": "헤럴드경제",
+      "source_body_digest": "cbcc122cddca28c98f3a32d320f6a15025c26b311634c643e91af6d01b1949a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11c228892bd33ccbd69526a7372cf0be020291cac49c2eed534a5dcf4eb74152",
+      "source_fact_keys": [
+        "source_fact:v1:09451075eafa2691b134c902cd98d6c4a665bf02f9afb493fc9f12b3faa784ef",
+        "source_fact:v1:6bb11a32d43c8625ce778e0787ff15221920f6fa897fc42c630148893082611b"
+      ],
+      "source_published_kst": "2026-10-07T09:23+09:00",
+      "title": "법무법인 태평양, 9년 연속 ‘글로벌 200대 로펌’ 선정 쾌거"
+    },
     "fact:2e65e9ca99a737663f7fa476": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
       "lanes": {
@@ -12918,6 +12936,26 @@
       ],
       "source_published_kst": "2026-10-06T16:35+09:00",
       "title": "신세계, 콘텐츠 기업으로 키운다...워너브라더스 인수 1.4조 투자"
+    },
+    "fact:5aad0c0018d7eec4d0c5f018": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261007093053",
+      "source": "지디넷코리아",
+      "source_body_digest": "8ca4ec512e7d6b32ea010ba50a044bf977120512db063eee92fe30aacdf02231",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c01ccf13658fbe2aa042b57a37faa4a715a3151b8df6fa5d1c906b7bec4ec231",
+      "source_fact_keys": [
+        "source_fact:v1:7890bc41ba248059f973b485be7ca3c4b8d4c22b54e03215a79ee160a9387b79",
+        "source_fact:v1:91ab6d077f3c30788d3a1b422101414dd5f537e2556409ca130b084c337e4467",
+        "source_fact:v1:cdf63e108c66d848be561c0f27de9b3046ef785b7a1b219fb18361caf3e2ee58",
+        "source_fact:v1:d58096fad5e7d44698f375025ef1e4a305648c77b57fd4206a66344b75f5c449"
+      ],
+      "source_published_kst": "2026-10-07T09:31+09:00",
+      "title": "KT클라우드, 청라 50MW AIDC 구축 참여…수도권 서부 거점 넓힌다"
     },
     "fact:5b3226a48706e53e0b3d6cbd": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
@@ -16267,6 +16305,23 @@
       "source_published_kst": "2026-10-06T15:54+09:00",
       "title": "모던 트레저리, 美 국립신탁은행 설립 추진∙∙∙스테이블코인 결제∙수탁 확대"
     },
+    "fact:92a23e60184303c85657fdc4": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170666",
+      "source": "매일경제",
+      "source_body_digest": "784de609151b2bd13afb084e94d40a5bdbfb49c61b159dc3585cac7cc9fe2072",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1544ec5af39dcb5bf10ec7e25d1a76d14a3bd202c1334ca9bec9e8998bb7a729",
+      "source_fact_keys": [
+        "source_fact:v1:0ee32e6c1fd3c8113c8f4d71f241a52e453c66c6d74745c8efd26848d7ca5598"
+      ],
+      "source_published_kst": "2026-10-07T08:56+09:00",
+      "title": "엘텍, 해외 고객사 680만 달러 후속 수주..수주잔고 사상 최고"
+    },
     "fact:92e46059009c5c5b1611beed": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
       "lanes": {
@@ -19432,6 +19487,24 @@
       "source_published_kst": "2026-10-06T04:55+09:00",
       "title": "[美특징주]세레브라스, 올트먼 “긴밀한 파트너” 발언에 주가10%↑…엔비디아 우려 완화"
     },
+    "fact:c63ac6649063366907dc83f6": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170603",
+      "source": "매일경제",
+      "source_body_digest": "c1b6a60d8edc1281112ee571184c65652477c08be36a9cd03dd2cbe9dd50b050",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:924e78f1e7e6f2e85f622c12918c0c6f3a25e6c6d784247a2dcb450147e7e528",
+      "source_fact_keys": [
+        "source_fact:v1:735f65309df10724cca4fda4f186fdde86c3ebe6b4d93f13c5f11489283a1e41",
+        "source_fact:v1:e17ff6376d51beb965ceed9008098536db3795f0637358826b811ca360952679"
+      ],
+      "source_published_kst": "2026-10-07T08:44+09:00",
+      "title": "이자벨라 뱅크, 그랜드리버 합병 규제승인 완료..11월 2일 종결 예정"
+    },
     "fact:c68919e6d5a84391f483315b": {
       "first_seen_kst": "2026-10-07T06:28:41+09:00",
       "lanes": {
@@ -21959,6 +22032,24 @@
       "source_published_kst": "2026-10-06T11:42+09:00",
       "title": "대전급식비 전국 꼴찌수준…허태정 시장 \"15%까지 인상\""
     },
+    "fact:f2bfa773dfd4bf8d462390c3": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02761766645610624",
+      "source": "이데일리",
+      "source_body_digest": "2559593a59d8724dbd97cd85c1bd2cc7e2769a511633145b5e0370c863d187f7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2654f6b96d485623a85efb3165f038e01893badf818bd226a35af25d1201c333",
+      "source_fact_keys": [
+        "source_fact:v1:2cbebbe729b83ab16c132a477f04aa1f48d2b29b07efd7b29df45d01599098a5",
+        "source_fact:v1:f5742bb603aae4848a7e0905adfdc049a79433d0cb443b5520bfe5496e7d5e2b"
+      ],
+      "source_published_kst": "2026-10-07T08:10+09:00",
+      "title": "\"관세 깎아줄게, 돈 더 내놔\" 트럼프, 韓 관세 또 압박"
+    },
     "fact:f2c27a2fd7cf9704b87a684d": {
       "first_seen_kst": "2026-10-06T16:30:27+09:00",
       "lanes": {
@@ -22919,6 +23010,24 @@
       ],
       "source_published_kst": "2026-10-06T15:14+09:00",
       "title": "삼성전기, AI 서버용 MLCC 2900억 수주 ... 올해만 6번째 장기공급계약"
+    },
+    "link:00c608a94a6bd2c0e32e5982": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170603",
+      "source": "매일경제",
+      "source_body_digest": "c1b6a60d8edc1281112ee571184c65652477c08be36a9cd03dd2cbe9dd50b050",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:924e78f1e7e6f2e85f622c12918c0c6f3a25e6c6d784247a2dcb450147e7e528",
+      "source_fact_keys": [
+        "source_fact:v1:735f65309df10724cca4fda4f186fdde86c3ebe6b4d93f13c5f11489283a1e41",
+        "source_fact:v1:e17ff6376d51beb965ceed9008098536db3795f0637358826b811ca360952679"
+      ],
+      "source_published_kst": "2026-10-07T08:44+09:00",
+      "title": "이자벨라 뱅크, 그랜드리버 합병 규제승인 완료..11월 2일 종결 예정"
     },
     "link:00d654739a44535b33e5ab8a": {
       "first_seen_kst": "2026-10-05T13:39:56+09:00",
@@ -25041,6 +25150,23 @@
       ],
       "source_published_kst": "2026-10-06T11:44+09:00",
       "title": "정부 \"11월 원유 90% 이상 확보…나프타도 90% 이상\" | 연합뉴스"
+    },
+    "link:12498916bba31ec0812ed710": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170666",
+      "source": "매일경제",
+      "source_body_digest": "784de609151b2bd13afb084e94d40a5bdbfb49c61b159dc3585cac7cc9fe2072",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1544ec5af39dcb5bf10ec7e25d1a76d14a3bd202c1334ca9bec9e8998bb7a729",
+      "source_fact_keys": [
+        "source_fact:v1:0ee32e6c1fd3c8113c8f4d71f241a52e453c66c6d74745c8efd26848d7ca5598"
+      ],
+      "source_published_kst": "2026-10-07T08:56+09:00",
+      "title": "엘텍, 해외 고객사 680만 달러 후속 수주..수주잔고 사상 최고"
     },
     "link:128869b43cca561d181fe3d7": {
       "first_seen_kst": "2026-10-02T00:28:46+09:00",
@@ -27857,6 +27983,21 @@
       "link": "https://www.asiae.co.kr/article/2026092109164342016",
       "source": "아시아경제",
       "title": "삼성운용 'KODEX 미국반도체' ETF, SK하이닉스 ADR 편입"
+    },
+    "link:2a5350d075fb1e84c37db475": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816909",
+      "source": "뉴시스",
+      "source_body_digest": "048539f1bcd550f2963722622d9647ba59669455721b729f36c077eaaaa7ccc8",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T10:15+09:00",
+      "title": "곽동신 한미반도체 회장, 누적 702억 규모 자사주 취득 완료"
     },
     "link:2a57dd538e0b1dd90c617098": {
       "first_seen_kst": "2026-10-02T07:36:51+09:00",
@@ -44182,6 +44323,21 @@
       "source": "매일경제",
       "title": "3000억 펀드 만들고 저리 대출까지…정책금융, 피지컬 AI에 돈 푼다"
     },
+    "link:ae2d7d72d6e54fe92d0a477b": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633245",
+      "source": "이투데이",
+      "source_body_digest": "64d755c6a79a8ffbea712810ab8ac3dd2a32365ec48f0a1267bf4273090fcf6e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T10:06+09:00",
+      "title": "한미반도체 곽동신 회장, 자사주 누적 702억원 취득"
+    },
     "link:ae4809e9db0279ea63d4503d": {
       "first_seen_kst": "2026-10-07T07:24:41+09:00",
       "lanes": {
@@ -44881,6 +45037,24 @@
       "link": "https://www.mk.co.kr/news/stock/12165523",
       "source": "매일경제",
       "title": "콜플랜트 홀딩스, 2분기 매출 11만 달러..전년비 40% 감소"
+    },
+    "link:b4d450ae65fd41e7b8260ff7": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895071",
+      "source": "헤럴드경제",
+      "source_body_digest": "cbcc122cddca28c98f3a32d320f6a15025c26b311634c643e91af6d01b1949a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11c228892bd33ccbd69526a7372cf0be020291cac49c2eed534a5dcf4eb74152",
+      "source_fact_keys": [
+        "source_fact:v1:09451075eafa2691b134c902cd98d6c4a665bf02f9afb493fc9f12b3faa784ef",
+        "source_fact:v1:6bb11a32d43c8625ce778e0787ff15221920f6fa897fc42c630148893082611b"
+      ],
+      "source_published_kst": "2026-10-07T09:23+09:00",
+      "title": "법무법인 태평양, 9년 연속 ‘글로벌 200대 로펌’ 선정 쾌거"
     },
     "link:b4d6c7f4e77c9ebd7c076e2a": {
       "first_seen_kst": "2026-10-06T23:05:07+09:00",
@@ -49730,6 +49904,24 @@
       "source": "뉴시스",
       "title": "\"주가 오르는데 웃지 못한다…신고가보다 신저가 종목이 더 많은 기현상\""
     },
+    "link:daf8c6ddb20fd5406385fe18": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02761766645610624",
+      "source": "이데일리",
+      "source_body_digest": "2559593a59d8724dbd97cd85c1bd2cc7e2769a511633145b5e0370c863d187f7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2654f6b96d485623a85efb3165f038e01893badf818bd226a35af25d1201c333",
+      "source_fact_keys": [
+        "source_fact:v1:2cbebbe729b83ab16c132a477f04aa1f48d2b29b07efd7b29df45d01599098a5",
+        "source_fact:v1:f5742bb603aae4848a7e0905adfdc049a79433d0cb443b5520bfe5496e7d5e2b"
+      ],
+      "source_published_kst": "2026-10-07T08:10+09:00",
+      "title": "\"관세 깎아줄게, 돈 더 내놔\" 트럼프, 韓 관세 또 압박"
+    },
     "link:db035ecd85084cdf8cdd8dfa": {
       "first_seen_kst": "2026-09-18T16:58:33+09:00",
       "lanes": {
@@ -50073,6 +50265,26 @@
       "link": "https://www.newsis.com/view/NISX20261001_0003810029",
       "source": "뉴시스",
       "title": "트럼프 \"이란 추가 공격할지, 합의할지 곧 결정\""
+    },
+    "link:df145d9cd191e7304ab12ffb": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261007093053",
+      "source": "지디넷코리아",
+      "source_body_digest": "8ca4ec512e7d6b32ea010ba50a044bf977120512db063eee92fe30aacdf02231",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c01ccf13658fbe2aa042b57a37faa4a715a3151b8df6fa5d1c906b7bec4ec231",
+      "source_fact_keys": [
+        "source_fact:v1:7890bc41ba248059f973b485be7ca3c4b8d4c22b54e03215a79ee160a9387b79",
+        "source_fact:v1:91ab6d077f3c30788d3a1b422101414dd5f537e2556409ca130b084c337e4467",
+        "source_fact:v1:cdf63e108c66d848be561c0f27de9b3046ef785b7a1b219fb18361caf3e2ee58",
+        "source_fact:v1:d58096fad5e7d44698f375025ef1e4a305648c77b57fd4206a66344b75f5c449"
+      ],
+      "source_published_kst": "2026-10-07T09:31+09:00",
+      "title": "KT클라우드, 청라 50MW AIDC 구축 참여…수도권 서부 거점 넓힌다"
     },
     "link:df1de6f28e4b875517099076": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
@@ -60549,6 +60761,24 @@
       "source_published_kst": "2026-10-06T09:21+09:00",
       "title": "[특징주] LG전자, 북미향 AI데이터센터 냉각솔루션 계약에 장초반 급등"
     },
+    "original:350612623e50a4b6f2a10e56": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02761766645610624",
+      "source": "이데일리",
+      "source_body_digest": "2559593a59d8724dbd97cd85c1bd2cc7e2769a511633145b5e0370c863d187f7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2654f6b96d485623a85efb3165f038e01893badf818bd226a35af25d1201c333",
+      "source_fact_keys": [
+        "source_fact:v1:2cbebbe729b83ab16c132a477f04aa1f48d2b29b07efd7b29df45d01599098a5",
+        "source_fact:v1:f5742bb603aae4848a7e0905adfdc049a79433d0cb443b5520bfe5496e7d5e2b"
+      ],
+      "source_published_kst": "2026-10-07T08:10+09:00",
+      "title": "\"관세 깎아줄게, 돈 더 내놔\" 트럼프, 韓 관세 또 압박"
+    },
     "original:352aeaaa0886bc64470e7eda": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -60667,6 +60897,21 @@
       ],
       "source_published_kst": "2026-10-06T15:51+09:00",
       "title": "이형일 \"119만호 추가 공급…2030년까지 착공 노력\""
+    },
+    "original:3644421575ff282972632495": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816909",
+      "source": "뉴시스",
+      "source_body_digest": "048539f1bcd550f2963722622d9647ba59669455721b729f36c077eaaaa7ccc8",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T10:15+09:00",
+      "title": "곽동신 한미반도체 회장, 누적 702억 규모 자사주 취득 완료"
     },
     "original:36574dea428006a7960f85ba": {
       "first_seen_kst": "2026-10-02T23:58:50+09:00",
@@ -62196,6 +62441,21 @@
       "link": "https://www.mk.co.kr/news/business/12163459",
       "source": "매일경제",
       "title": "“AI 데이터센터 냉각도 레고처럼 뚝딱”…LG전자, 냉각설비 ‘모듈형’ 승부수"
+    },
+    "original:416d6e029077183c9a5661e9": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633245",
+      "source": "이투데이",
+      "source_body_digest": "64d755c6a79a8ffbea712810ab8ac3dd2a32365ec48f0a1267bf4273090fcf6e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T10:06+09:00",
+      "title": "한미반도체 곽동신 회장, 자사주 누적 702억원 취득"
     },
     "original:41875cb990f377f3bd9670ce": {
       "first_seen_kst": "2026-10-06T10:41:31+09:00",
@@ -69911,6 +70171,23 @@
       "source_published_kst": "2026-10-06T16:02+09:00",
       "title": "후티 사우디 공격에…현대차"
     },
+    "original:811dad3dab7c580154ec9106": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170666",
+      "source": "매일경제",
+      "source_body_digest": "784de609151b2bd13afb084e94d40a5bdbfb49c61b159dc3585cac7cc9fe2072",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1544ec5af39dcb5bf10ec7e25d1a76d14a3bd202c1334ca9bec9e8998bb7a729",
+      "source_fact_keys": [
+        "source_fact:v1:0ee32e6c1fd3c8113c8f4d71f241a52e453c66c6d74745c8efd26848d7ca5598"
+      ],
+      "source_published_kst": "2026-10-07T08:56+09:00",
+      "title": "엘텍, 해외 고객사 680만 달러 후속 수주..수주잔고 사상 최고"
+    },
     "original:812a343e0ab165b4ce585bde": {
       "first_seen_kst": "2026-10-07T05:33:37+09:00",
       "lanes": {
@@ -76605,6 +76882,24 @@
       "source_published_kst": "2026-10-04T07:52+09:00",
       "title": "\"누가 좀 사가세요\"…11조 규모 '엔비디아 칩' 파는 아마존"
     },
+    "original:bb77043cb9ba7a8c46cd7d39": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895071",
+      "source": "헤럴드경제",
+      "source_body_digest": "cbcc122cddca28c98f3a32d320f6a15025c26b311634c643e91af6d01b1949a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11c228892bd33ccbd69526a7372cf0be020291cac49c2eed534a5dcf4eb74152",
+      "source_fact_keys": [
+        "source_fact:v1:09451075eafa2691b134c902cd98d6c4a665bf02f9afb493fc9f12b3faa784ef",
+        "source_fact:v1:6bb11a32d43c8625ce778e0787ff15221920f6fa897fc42c630148893082611b"
+      ],
+      "source_published_kst": "2026-10-07T09:23+09:00",
+      "title": "법무법인 태평양, 9년 연속 ‘글로벌 200대 로펌’ 선정 쾌거"
+    },
     "original:bb8327ddf5d654178d936d0b": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
@@ -80815,6 +81110,24 @@
       "source_published_kst": "2026-10-07T07:16+09:00",
       "title": "앞서가는 트럼프 \"韓, 최근 美조선업에 1500억불 줬다\""
     },
+    "original:dbd5a75191297baba92539d9": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170603",
+      "source": "매일경제",
+      "source_body_digest": "c1b6a60d8edc1281112ee571184c65652477c08be36a9cd03dd2cbe9dd50b050",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:924e78f1e7e6f2e85f622c12918c0c6f3a25e6c6d784247a2dcb450147e7e528",
+      "source_fact_keys": [
+        "source_fact:v1:735f65309df10724cca4fda4f186fdde86c3ebe6b4d93f13c5f11489283a1e41",
+        "source_fact:v1:e17ff6376d51beb965ceed9008098536db3795f0637358826b811ca360952679"
+      ],
+      "source_published_kst": "2026-10-07T08:44+09:00",
+      "title": "이자벨라 뱅크, 그랜드리버 합병 규제승인 완료..11월 2일 종결 예정"
+    },
     "original:dbd6b5f1287426d9d2bb039a": {
       "first_seen_kst": "2026-09-18T16:49:31+09:00",
       "lanes": {
@@ -81238,6 +81551,26 @@
       ],
       "source_published_kst": "2026-10-07T03:11+09:00",
       "title": "\"지금 폰 바꿀까?\" AI 서버가 D램 싹쓸이…스마트폰값 더 비싸진다"
+    },
+    "original:e0f269f1322bc59b255061a3": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261007093053",
+      "source": "지디넷코리아",
+      "source_body_digest": "8ca4ec512e7d6b32ea010ba50a044bf977120512db063eee92fe30aacdf02231",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c01ccf13658fbe2aa042b57a37faa4a715a3151b8df6fa5d1c906b7bec4ec231",
+      "source_fact_keys": [
+        "source_fact:v1:7890bc41ba248059f973b485be7ca3c4b8d4c22b54e03215a79ee160a9387b79",
+        "source_fact:v1:91ab6d077f3c30788d3a1b422101414dd5f537e2556409ca130b084c337e4467",
+        "source_fact:v1:cdf63e108c66d848be561c0f27de9b3046ef785b7a1b219fb18361caf3e2ee58",
+        "source_fact:v1:d58096fad5e7d44698f375025ef1e4a305648c77b57fd4206a66344b75f5c449"
+      ],
+      "source_published_kst": "2026-10-07T09:31+09:00",
+      "title": "KT클라우드, 청라 50MW AIDC 구축 참여…수도권 서부 거점 넓힌다"
     },
     "original:e13e192fe29460a31f0f46bc": {
       "first_seen_kst": "2026-10-07T06:12:17+09:00",
@@ -86862,6 +87195,26 @@
       ],
       "source_published_kst": "2026-10-06T22:58+09:00",
       "title": "우크라, '한국의 러 석유공급' 보도에 韓 비판 | 연합뉴스"
+    },
+    "source_fact:07e4331bbf3d00f9991f2a9e": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261007093053",
+      "source": "지디넷코리아",
+      "source_body_digest": "8ca4ec512e7d6b32ea010ba50a044bf977120512db063eee92fe30aacdf02231",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c01ccf13658fbe2aa042b57a37faa4a715a3151b8df6fa5d1c906b7bec4ec231",
+      "source_fact_keys": [
+        "source_fact:v1:7890bc41ba248059f973b485be7ca3c4b8d4c22b54e03215a79ee160a9387b79",
+        "source_fact:v1:91ab6d077f3c30788d3a1b422101414dd5f537e2556409ca130b084c337e4467",
+        "source_fact:v1:cdf63e108c66d848be561c0f27de9b3046ef785b7a1b219fb18361caf3e2ee58",
+        "source_fact:v1:d58096fad5e7d44698f375025ef1e4a305648c77b57fd4206a66344b75f5c449"
+      ],
+      "source_published_kst": "2026-10-07T09:31+09:00",
+      "title": "KT클라우드, 청라 50MW AIDC 구축 참여…수도권 서부 거점 넓힌다"
     },
     "source_fact:080f15552b64650d9c8ebb27": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -107728,6 +108081,24 @@
       "source_published_kst": "2026-10-06T11:07+09:00",
       "title": "쌍용건설, 8천65억원 규모 남부내륙철도 제9공구 수주 | 연합뉴스"
     },
+    "source_fact:56a1b5910e7d898c045f442b": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895071",
+      "source": "헤럴드경제",
+      "source_body_digest": "cbcc122cddca28c98f3a32d320f6a15025c26b311634c643e91af6d01b1949a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11c228892bd33ccbd69526a7372cf0be020291cac49c2eed534a5dcf4eb74152",
+      "source_fact_keys": [
+        "source_fact:v1:09451075eafa2691b134c902cd98d6c4a665bf02f9afb493fc9f12b3faa784ef",
+        "source_fact:v1:6bb11a32d43c8625ce778e0787ff15221920f6fa897fc42c630148893082611b"
+      ],
+      "source_published_kst": "2026-10-07T09:23+09:00",
+      "title": "법무법인 태평양, 9년 연속 ‘글로벌 200대 로펌’ 선정 쾌거"
+    },
     "source_fact:56cd475aad5207bd5c2e3cef": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -109875,6 +110246,24 @@
       "source_published_kst": "2026-10-06T07:46+09:00",
       "title": "고금리에도 꺾이지 않는 AI 투자…연준 긴축 고민"
     },
+    "source_fact:5d11ff391aaf8edb15ab620c": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170603",
+      "source": "매일경제",
+      "source_body_digest": "c1b6a60d8edc1281112ee571184c65652477c08be36a9cd03dd2cbe9dd50b050",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:924e78f1e7e6f2e85f622c12918c0c6f3a25e6c6d784247a2dcb450147e7e528",
+      "source_fact_keys": [
+        "source_fact:v1:735f65309df10724cca4fda4f186fdde86c3ebe6b4d93f13c5f11489283a1e41",
+        "source_fact:v1:e17ff6376d51beb965ceed9008098536db3795f0637358826b811ca360952679"
+      ],
+      "source_published_kst": "2026-10-07T08:44+09:00",
+      "title": "이자벨라 뱅크, 그랜드리버 합병 규제승인 완료..11월 2일 종결 예정"
+    },
     "source_fact:5d1c86630f34f557fe848606": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
       "lanes": {
@@ -111283,6 +111672,26 @@
       "source_published_kst": "2026-10-06T09:41+09:00",
       "title": "HLB그룹주 연일 강세…리픽투 FDA 품목허가 효과"
     },
+    "source_fact:631e06d6362cf63ec5c639ee": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261007093053",
+      "source": "지디넷코리아",
+      "source_body_digest": "8ca4ec512e7d6b32ea010ba50a044bf977120512db063eee92fe30aacdf02231",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c01ccf13658fbe2aa042b57a37faa4a715a3151b8df6fa5d1c906b7bec4ec231",
+      "source_fact_keys": [
+        "source_fact:v1:7890bc41ba248059f973b485be7ca3c4b8d4c22b54e03215a79ee160a9387b79",
+        "source_fact:v1:91ab6d077f3c30788d3a1b422101414dd5f537e2556409ca130b084c337e4467",
+        "source_fact:v1:cdf63e108c66d848be561c0f27de9b3046ef785b7a1b219fb18361caf3e2ee58",
+        "source_fact:v1:d58096fad5e7d44698f375025ef1e4a305648c77b57fd4206a66344b75f5c449"
+      ],
+      "source_published_kst": "2026-10-07T09:31+09:00",
+      "title": "KT클라우드, 청라 50MW AIDC 구축 참여…수도권 서부 거점 넓힌다"
+    },
     "source_fact:633d876314d1ac1278a57b82": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -111389,6 +111798,24 @@
       ],
       "source_published_kst": "2026-10-06T23:54+09:00",
       "title": "AI 전력난에 기존 원전 영끌…구글, 전력 3.6GW 확보"
+    },
+    "source_fact:6373af9080839cb66156ba01": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170603",
+      "source": "매일경제",
+      "source_body_digest": "c1b6a60d8edc1281112ee571184c65652477c08be36a9cd03dd2cbe9dd50b050",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:924e78f1e7e6f2e85f622c12918c0c6f3a25e6c6d784247a2dcb450147e7e528",
+      "source_fact_keys": [
+        "source_fact:v1:735f65309df10724cca4fda4f186fdde86c3ebe6b4d93f13c5f11489283a1e41",
+        "source_fact:v1:e17ff6376d51beb965ceed9008098536db3795f0637358826b811ca360952679"
+      ],
+      "source_published_kst": "2026-10-07T08:44+09:00",
+      "title": "이자벨라 뱅크, 그랜드리버 합병 규제승인 완료..11월 2일 종결 예정"
     },
     "source_fact:637753786d4d02d2f3596c00": {
       "first_seen_kst": "2026-10-07T01:07:29+09:00",
@@ -112343,6 +112770,23 @@
       ],
       "source_published_kst": "2026-10-06T15:22+09:00",
       "title": "“中 AI 굴기 또 온다”…문샷, 기업가치 68조원 찍고 홍콩 상장 추진"
+    },
+    "source_fact:67689219271497ac114f8902": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170666",
+      "source": "매일경제",
+      "source_body_digest": "784de609151b2bd13afb084e94d40a5bdbfb49c61b159dc3585cac7cc9fe2072",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1544ec5af39dcb5bf10ec7e25d1a76d14a3bd202c1334ca9bec9e8998bb7a729",
+      "source_fact_keys": [
+        "source_fact:v1:0ee32e6c1fd3c8113c8f4d71f241a52e453c66c6d74745c8efd26848d7ca5598"
+      ],
+      "source_published_kst": "2026-10-07T08:56+09:00",
+      "title": "엘텍, 해외 고객사 680만 달러 후속 수주..수주잔고 사상 최고"
     },
     "source_fact:6776573c3fb4808441baa10d": {
       "first_seen_kst": "2026-10-07T01:18:00+09:00",
@@ -126905,6 +127349,24 @@
       "source_published_kst": "2026-10-06T16:27+09:00",
       "title": "[올댓차이나] 中 AI 스타트업 문샷, 내년 1분기 홍콩 상장…\"기업가치 500억＄\""
     },
+    "source_fact:9c7d9da7a52a728944182e40": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02761766645610624",
+      "source": "이데일리",
+      "source_body_digest": "2559593a59d8724dbd97cd85c1bd2cc7e2769a511633145b5e0370c863d187f7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2654f6b96d485623a85efb3165f038e01893badf818bd226a35af25d1201c333",
+      "source_fact_keys": [
+        "source_fact:v1:2cbebbe729b83ab16c132a477f04aa1f48d2b29b07efd7b29df45d01599098a5",
+        "source_fact:v1:f5742bb603aae4848a7e0905adfdc049a79433d0cb443b5520bfe5496e7d5e2b"
+      ],
+      "source_published_kst": "2026-10-07T08:10+09:00",
+      "title": "\"관세 깎아줄게, 돈 더 내놔\" 트럼프, 韓 관세 또 압박"
+    },
     "source_fact:9cb45f6383bb35560608e28e": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
       "lanes": {
@@ -139610,6 +140072,24 @@
       "source_published_kst": "2026-10-06T15:07+09:00",
       "title": "\"K-콘텐츠 금융지원\"…부산은행·신보, 100억원 보증지원"
     },
+    "source_fact:cd53eeea4c461a0f9715aa3e": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02761766645610624",
+      "source": "이데일리",
+      "source_body_digest": "2559593a59d8724dbd97cd85c1bd2cc7e2769a511633145b5e0370c863d187f7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2654f6b96d485623a85efb3165f038e01893badf818bd226a35af25d1201c333",
+      "source_fact_keys": [
+        "source_fact:v1:2cbebbe729b83ab16c132a477f04aa1f48d2b29b07efd7b29df45d01599098a5",
+        "source_fact:v1:f5742bb603aae4848a7e0905adfdc049a79433d0cb443b5520bfe5496e7d5e2b"
+      ],
+      "source_published_kst": "2026-10-07T08:10+09:00",
+      "title": "\"관세 깎아줄게, 돈 더 내놔\" 트럼프, 韓 관세 또 압박"
+    },
     "source_fact:cd77761e5d0af7bcd8ca350b": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -140448,6 +140928,24 @@
       ],
       "source_published_kst": "2026-10-05T20:21+09:00",
       "title": "[美특징주]코어위브, 연이은 제품 가격 인상에 월가 호평…개장전 '강보합'"
+    },
+    "source_fact:d07c81843bec7da8712a87d8": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895071",
+      "source": "헤럴드경제",
+      "source_body_digest": "cbcc122cddca28c98f3a32d320f6a15025c26b311634c643e91af6d01b1949a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11c228892bd33ccbd69526a7372cf0be020291cac49c2eed534a5dcf4eb74152",
+      "source_fact_keys": [
+        "source_fact:v1:09451075eafa2691b134c902cd98d6c4a665bf02f9afb493fc9f12b3faa784ef",
+        "source_fact:v1:6bb11a32d43c8625ce778e0787ff15221920f6fa897fc42c630148893082611b"
+      ],
+      "source_published_kst": "2026-10-07T09:23+09:00",
+      "title": "법무법인 태평양, 9년 연속 ‘글로벌 200대 로펌’ 선정 쾌거"
     },
     "source_fact:d07d60e4ccf66ef64ed32cd7": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
@@ -143776,6 +144274,26 @@
       ],
       "source_published_kst": "2026-10-06T17:24+09:00",
       "title": "英매체 \"한국산 연료, 서방 제재 선박 통해 러시아 대거 반출\""
+    },
+    "source_fact:db1847a39ec1cd91e62a6fbd": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261007093053",
+      "source": "지디넷코리아",
+      "source_body_digest": "8ca4ec512e7d6b32ea010ba50a044bf977120512db063eee92fe30aacdf02231",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c01ccf13658fbe2aa042b57a37faa4a715a3151b8df6fa5d1c906b7bec4ec231",
+      "source_fact_keys": [
+        "source_fact:v1:7890bc41ba248059f973b485be7ca3c4b8d4c22b54e03215a79ee160a9387b79",
+        "source_fact:v1:91ab6d077f3c30788d3a1b422101414dd5f537e2556409ca130b084c337e4467",
+        "source_fact:v1:cdf63e108c66d848be561c0f27de9b3046ef785b7a1b219fb18361caf3e2ee58",
+        "source_fact:v1:d58096fad5e7d44698f375025ef1e4a305648c77b57fd4206a66344b75f5c449"
+      ],
+      "source_published_kst": "2026-10-07T09:31+09:00",
+      "title": "KT클라우드, 청라 50MW AIDC 구축 참여…수도권 서부 거점 넓힌다"
     },
     "source_fact:db2b97e01552c2bb6ca79a21": {
       "first_seen_kst": "2026-10-07T00:54:50+09:00",
@@ -149229,6 +149747,26 @@
       ],
       "source_published_kst": "2026-10-06T16:55+09:00",
       "title": "이현재 하남시장 \"2030년까지 10조 투자유치 달성할 것\""
+    },
+    "source_fact:ed918ef360c598bb1b65d08c": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261007093053",
+      "source": "지디넷코리아",
+      "source_body_digest": "8ca4ec512e7d6b32ea010ba50a044bf977120512db063eee92fe30aacdf02231",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c01ccf13658fbe2aa042b57a37faa4a715a3151b8df6fa5d1c906b7bec4ec231",
+      "source_fact_keys": [
+        "source_fact:v1:7890bc41ba248059f973b485be7ca3c4b8d4c22b54e03215a79ee160a9387b79",
+        "source_fact:v1:91ab6d077f3c30788d3a1b422101414dd5f537e2556409ca130b084c337e4467",
+        "source_fact:v1:cdf63e108c66d848be561c0f27de9b3046ef785b7a1b219fb18361caf3e2ee58",
+        "source_fact:v1:d58096fad5e7d44698f375025ef1e4a305648c77b57fd4206a66344b75f5c449"
+      ],
+      "source_published_kst": "2026-10-07T09:31+09:00",
+      "title": "KT클라우드, 청라 50MW AIDC 구축 참여…수도권 서부 거점 넓힌다"
     },
     "source_fact:ed9953e3306b7535143bff39": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
@@ -160189,6 +160727,24 @@
       "source_published_kst": "2026-10-06T09:21+09:00",
       "title": "[특징주] LG전자, 북미향 AI데이터센터 냉각솔루션 계약에 장초반 급등"
     },
+    "title:350612623e50a4b6f2a10e56": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02761766645610624",
+      "source": "이데일리",
+      "source_body_digest": "2559593a59d8724dbd97cd85c1bd2cc7e2769a511633145b5e0370c863d187f7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2654f6b96d485623a85efb3165f038e01893badf818bd226a35af25d1201c333",
+      "source_fact_keys": [
+        "source_fact:v1:2cbebbe729b83ab16c132a477f04aa1f48d2b29b07efd7b29df45d01599098a5",
+        "source_fact:v1:f5742bb603aae4848a7e0905adfdc049a79433d0cb443b5520bfe5496e7d5e2b"
+      ],
+      "source_published_kst": "2026-10-07T08:10+09:00",
+      "title": "\"관세 깎아줄게, 돈 더 내놔\" 트럼프, 韓 관세 또 압박"
+    },
     "title:352aeaaa0886bc64470e7eda": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -160319,6 +160875,21 @@
       ],
       "source_published_kst": "2026-10-06T15:51+09:00",
       "title": "이형일 \"119만호 추가 공급…2030년까지 착공 노력\""
+    },
+    "title:3644421575ff282972632495": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816909",
+      "source": "뉴시스",
+      "source_body_digest": "048539f1bcd550f2963722622d9647ba59669455721b729f36c077eaaaa7ccc8",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T10:15+09:00",
+      "title": "곽동신 한미반도체 회장, 누적 702억 규모 자사주 취득 완료"
     },
     "title:36574dea428006a7960f85ba": {
       "first_seen_kst": "2026-10-02T23:58:50+09:00",
@@ -161872,6 +162443,21 @@
       "link": "https://www.mk.co.kr/news/business/12163459",
       "source": "매일경제",
       "title": "“AI 데이터센터 냉각도 레고처럼 뚝딱”…LG전자, 냉각설비 ‘모듈형’ 승부수"
+    },
+    "title:416d6e029077183c9a5661e9": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633245",
+      "source": "이투데이",
+      "source_body_digest": "64d755c6a79a8ffbea712810ab8ac3dd2a32365ec48f0a1267bf4273090fcf6e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T10:06+09:00",
+      "title": "한미반도체 곽동신 회장, 자사주 누적 702억원 취득"
     },
     "title:41875cb990f377f3bd9670ce": {
       "first_seen_kst": "2026-10-06T10:41:31+09:00",
@@ -169682,6 +170268,23 @@
       "source": "DOE",
       "title": "미 에너지부, 우주태양광 R&D 지원사업 공고"
     },
+    "title:811dad3dab7c580154ec9106": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170666",
+      "source": "매일경제",
+      "source_body_digest": "784de609151b2bd13afb084e94d40a5bdbfb49c61b159dc3585cac7cc9fe2072",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1544ec5af39dcb5bf10ec7e25d1a76d14a3bd202c1334ca9bec9e8998bb7a729",
+      "source_fact_keys": [
+        "source_fact:v1:0ee32e6c1fd3c8113c8f4d71f241a52e453c66c6d74745c8efd26848d7ca5598"
+      ],
+      "source_published_kst": "2026-10-07T08:56+09:00",
+      "title": "엘텍, 해외 고객사 680만 달러 후속 수주..수주잔고 사상 최고"
+    },
     "title:812a343e0ab165b4ce585bde": {
       "first_seen_kst": "2026-10-07T05:33:37+09:00",
       "lanes": {
@@ -176624,6 +177227,24 @@
       "source_published_kst": "2026-10-04T07:52+09:00",
       "title": "\"누가 좀 사가세요\"…11조 규모 '엔비디아 칩' 파는 아마존"
     },
+    "title:bb77043cb9ba7a8c46cd7d39": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895071",
+      "source": "헤럴드경제",
+      "source_body_digest": "cbcc122cddca28c98f3a32d320f6a15025c26b311634c643e91af6d01b1949a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11c228892bd33ccbd69526a7372cf0be020291cac49c2eed534a5dcf4eb74152",
+      "source_fact_keys": [
+        "source_fact:v1:09451075eafa2691b134c902cd98d6c4a665bf02f9afb493fc9f12b3faa784ef",
+        "source_fact:v1:6bb11a32d43c8625ce778e0787ff15221920f6fa897fc42c630148893082611b"
+      ],
+      "source_published_kst": "2026-10-07T09:23+09:00",
+      "title": "법무법인 태평양, 9년 연속 ‘글로벌 200대 로펌’ 선정 쾌거"
+    },
     "title:bb8327ddf5d654178d936d0b": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
@@ -180855,6 +181476,24 @@
       "source_published_kst": "2026-10-07T07:16+09:00",
       "title": "앞서가는 트럼프 \"韓, 최근 美조선업에 1500억불 줬다\""
     },
+    "title:dbd5a75191297baba92539d9": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170603",
+      "source": "매일경제",
+      "source_body_digest": "c1b6a60d8edc1281112ee571184c65652477c08be36a9cd03dd2cbe9dd50b050",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:924e78f1e7e6f2e85f622c12918c0c6f3a25e6c6d784247a2dcb450147e7e528",
+      "source_fact_keys": [
+        "source_fact:v1:735f65309df10724cca4fda4f186fdde86c3ebe6b4d93f13c5f11489283a1e41",
+        "source_fact:v1:e17ff6376d51beb965ceed9008098536db3795f0637358826b811ca360952679"
+      ],
+      "source_published_kst": "2026-10-07T08:44+09:00",
+      "title": "이자벨라 뱅크, 그랜드리버 합병 규제승인 완료..11월 2일 종결 예정"
+    },
     "title:dbd6b5f1287426d9d2bb039a": {
       "first_seen_kst": "2026-09-18T16:49:31+09:00",
       "lanes": {
@@ -181304,6 +181943,26 @@
       ],
       "source_published_kst": "2026-10-07T03:11+09:00",
       "title": "\"지금 폰 바꿀까?\" AI 서버가 D램 싹쓸이…스마트폰값 더 비싸진다"
+    },
+    "title:e0f269f1322bc59b255061a3": {
+      "first_seen_kst": "2026-10-07T10:23:42+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:23:42+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:23:42+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261007093053",
+      "source": "지디넷코리아",
+      "source_body_digest": "8ca4ec512e7d6b32ea010ba50a044bf977120512db063eee92fe30aacdf02231",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c01ccf13658fbe2aa042b57a37faa4a715a3151b8df6fa5d1c906b7bec4ec231",
+      "source_fact_keys": [
+        "source_fact:v1:7890bc41ba248059f973b485be7ca3c4b8d4c22b54e03215a79ee160a9387b79",
+        "source_fact:v1:91ab6d077f3c30788d3a1b422101414dd5f537e2556409ca130b084c337e4467",
+        "source_fact:v1:cdf63e108c66d848be561c0f27de9b3046ef785b7a1b219fb18361caf3e2ee58",
+        "source_fact:v1:d58096fad5e7d44698f375025ef1e4a305648c77b57fd4206a66344b75f5c449"
+      ],
+      "source_published_kst": "2026-10-07T09:31+09:00",
+      "title": "KT클라우드, 청라 50MW AIDC 구축 참여…수도권 서부 거점 넓힌다"
     },
     "title:e13e192fe29460a31f0f46bc": {
       "first_seen_kst": "2026-10-07T06:12:17+09:00",
@@ -184915,5 +185574,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-07T10:04:59+09:00"
+  "updated_at_kst": "2026-10-07T10:23:42+09:00"
 }
