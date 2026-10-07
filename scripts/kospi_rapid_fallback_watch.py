@@ -6,6 +6,7 @@ import html
 import json
 import os
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
@@ -28,6 +29,7 @@ KOSPI_URL = "https://m.stock.naver.com/domestic/index/KOSPI/total"
 SESSION_HIGH_DD = -1.50
 FAST_15M = -1.00
 FAST_30M = -1.25
+OPEN_GAP_ALERT_PCT = -1.0
 START_TIME = dt.time(9, 0)
 END_TIME = dt.time(15, 35)
 
@@ -55,7 +57,7 @@ def load_state(today: str) -> dict[str, Any]:
     if state.get("date") != today:
         state = {"date": today, "samples": [], "session_high": None,
                  "sent_session_high": False, "sent_fast": False,
-                 "last_alert_ts": None}
+                 "sent_open_gap": False, "last_alert_ts": None}
     return state
 
 
@@ -77,6 +79,7 @@ def fetch_kospi() -> dict[str, Any]:
                 "highPrice": (fnum(row.get("hv")) or 0.0) / 100.0 if row.get("hv") is not None else None,
                 "openPrice": (fnum(row.get("ov")) or 0.0) / 100.0 if row.get("ov") is not None else None,
                 "lowPrice": (fnum(row.get("lv")) or 0.0) / 100.0 if row.get("lv") is not None else None,
+                "previousClosePrice": (fnum(row.get("pcv")) or 0.0) / 100.0 if row.get("pcv") is not None else None,
                 "fluctuationsRatio": fnum(row.get("cr")),
                 "marketStatus": row.get("ms"), "source": "naver_polling",
             }
@@ -107,6 +110,29 @@ def get_high(data: dict[str, Any]) -> float | None:
     return None
 
 
+def get_prev_close(data: dict[str, Any]) -> float | None:
+    for key in ("previousClosePrice", "prevClosePrice", "previousClose", "basePrice"):
+        value = fnum(data.get(key))
+        if value is not None and value > 0:
+            return value
+    cur = get_price(data)
+    ratio = fnum(data.get("fluctuationsRatio"))
+    if cur is not None and ratio is not None and abs(1.0 + ratio / 100.0) > 1e-9:
+        return cur / (1.0 + ratio / 100.0)
+    return None
+
+
+def opening_gap_pct(data: dict[str, Any]) -> float | None:
+    op = None
+    for key in ("openPrice", "open", "openingPrice"):
+        value = fnum(data.get(key))
+        if value is not None and value > 0:
+            op = value
+            break
+    prev = get_prev_close(data)
+    return pct(prev, op) if prev is not None and op is not None else None
+
+
 def nearest_sample(samples: list[dict[str, Any]], seconds_ago: int, now_ts: float) -> float | None:
     if not samples:
         return None
@@ -123,19 +149,70 @@ def telegram_send(text: str) -> int:
     expected = (os.getenv("DERIV_EXPECTED_TELEGRAM_BOT_USERNAME") or "khs887900887900008879_bot").strip().lstrip("@")
     if not token or not chat_id:
         raise RuntimeError("KOSPI derivative Telegram secrets missing")
-    with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=20) as response:
-        identity = json.loads(response.read().decode("utf-8"))
-    actual = str((identity.get("result") or {}).get("username") or "")
-    if not identity.get("ok") or actual.lower() != expected.lower():
-        raise RuntimeError(f"Wrong derivative Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
-    payload = urllib.parse.urlencode({"chat_id": chat_id, "text": text,
-        "parse_mode": "HTML", "disable_web_page_preview": "true"}).encode("utf-8")
-    req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST")
-    with urllib.request.urlopen(req, timeout=30) as response:
-        result = json.loads(response.read().decode("utf-8"))
-    if not result.get("ok"):
-        raise RuntimeError(f"Telegram rejected fallback alert: {result}")
-    return int(result["result"]["message_id"])
+
+    actual = ""
+    last_error = ""
+    for attempt in range(5):
+        try:
+            with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=20) as response:
+                identity = json.loads(response.read().decode("utf-8"))
+            actual = str((identity.get("result") or {}).get("username") or "")
+            if not identity.get("ok") or actual.lower() != expected.lower():
+                raise RuntimeError(f"Wrong derivative Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
+            break
+        except RuntimeError:
+            raise
+        except Exception as exc:
+            last_error = f"Telegram getMe transport error: {type(exc).__name__}: {exc}"
+            if attempt >= 4:
+                raise RuntimeError(last_error) from exc
+            time.sleep(min(8.0, 1.0 * (2 ** attempt)))
+
+    payload = urllib.parse.urlencode({
+        "chat_id": chat_id, "text": text,
+        "parse_mode": "HTML", "disable_web_page_preview": "true",
+    }).encode("utf-8")
+    for attempt in range(6):
+        try:
+            req = urllib.request.Request(
+                f"https://api.telegram.org/bot{token}/sendMessage",
+                data=payload, method="POST",
+            )
+            with urllib.request.urlopen(req, timeout=30) as response:
+                result = json.loads(response.read().decode("utf-8"))
+            if result.get("ok"):
+                message_id = int(result["result"]["message_id"])
+                print(
+                    f"rapid_fallback_telegram_delivery_confirmed=true "
+                    f"bot=@{actual} message_id={message_id}",
+                    flush=True,
+                )
+                return message_id
+            code = int(result.get("error_code") or 0)
+            last_error = f"Telegram rejected fallback alert: {result}"
+            if code == 429 or code >= 500:
+                retry_after = fnum(((result.get("parameters") or {}).get("retry_after")))
+                time.sleep(min(30.0, retry_after if retry_after is not None else 1.5 * (2 ** attempt)))
+                continue
+            raise RuntimeError(last_error)
+        except urllib.error.HTTPError as exc:
+            try:
+                body = exc.read().decode("utf-8", errors="replace")
+            except Exception:
+                body = ""
+            last_error = f"Telegram HTTP {exc.code}: {body[:300]}"
+            if attempt < 5 and (exc.code == 429 or 500 <= exc.code < 600):
+                time.sleep(min(30.0, 1.5 * (2 ** attempt)))
+                continue
+            raise RuntimeError(last_error) from exc
+        except RuntimeError:
+            raise
+        except Exception as exc:
+            last_error = f"Telegram send transport error: {type(exc).__name__}: {exc}"
+            if attempt >= 5:
+                raise RuntimeError(last_error) from exc
+            time.sleep(min(30.0, 1.5 * (2 ** attempt)))
+    raise RuntimeError(last_error or "Telegram send failed after retries")
 
 
 def build_alert(now: dt.datetime, cur: float, high: float, dd: float,
@@ -187,6 +264,7 @@ def main() -> int:
     prev_high = fnum(state.get("session_high"))
     session_high = max(x for x in (api_high, prev_high, cur) if x is not None)
     state["session_high"] = session_high
+    open_gap = opening_gap_pct(data)
 
     now_ts = time.time()
     samples = list(state.get("samples") or [])
@@ -203,7 +281,10 @@ def main() -> int:
     fast15_hit = m15 is not None and m15 <= FAST_15M
     fast30_hit = m30 is not None and m30 <= FAST_30M
     fast_hit = fast15_hit or fast30_hit
+    open_gap_hit = open_gap is not None and open_gap <= OPEN_GAP_ALERT_PCT
     reasons: list[str] = []
+    if open_gap_hit and not state.get("sent_open_gap"):
+        reasons.append(f"시가 갭다운 {open_gap:+.2f}% ≤ {OPEN_GAP_ALERT_PCT:.2f}%")
     if session_hit and not state.get("sent_session_high"):
         reasons.append(f"장중 고점 대비 {dd:+.2f}% ≤ {SESSION_HIGH_DD:.2f}%")
     if fast_hit and not state.get("sent_fast"):
@@ -237,6 +318,8 @@ def main() -> int:
             attribution_error = "장중 고점 대비 안전망 경보 — 정확한 사건구간 수급은 주 실시간 감시에서 판정"
         msg_id = telegram_send(build_alert(now, cur, session_high, dd, m15, m30,
                                            reasons, attribution, attribution_error))
+        if open_gap_hit:
+            state["sent_open_gap"] = True
         if session_hit:
             state["sent_session_high"] = True
         if fast_hit:
@@ -249,6 +332,7 @@ def main() -> int:
     write_status(now, "경보 발송" if msg_id else "정상 감시 — 신규 조건 없음", {
         "데이터 경로": data.get("source"), "KOSPI": f"{cur:,.2f}",
         "장중 고점": f"{session_high:,.2f}", "고점 대비": f"{dd:+.2f}%",
+        "시가 갭": "확인 불가" if open_gap is None else f"{open_gap:+.2f}%",
         "15분": "계산 대기" if m15 is None else f"{m15:+.2f}%",
         "30분": "계산 대기" if m30 is None else f"{m30:+.2f}%",
         "수급 판정": cls.get("verdict") or ("조회 실패" if attribution_error else "미조회"),
