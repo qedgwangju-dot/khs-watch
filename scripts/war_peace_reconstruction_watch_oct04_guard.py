@@ -750,7 +750,7 @@ def score_item(row, now):
         "러정유시설보복공격확대예고", "리야드아람코화재원인미확정",
         "러시아종전조건입장표명", "루코일종전협상연계상업거래",
         "이스라엘10월7일해외공격위험경고", "이란남부폭발원인미확정",
-        "종전전망성발언",
+        "종전전망성발언", "조건부군사위협",
     }
     if ms & yellow:
         tags = [t for t in tags if t not in ("확전", "휴전·평화", "재건", "종전·협상")]
@@ -784,6 +784,12 @@ def score_item(row, now):
         row["signals_ko"] = []
         tags = [t for t in tags if t not in ("확전", "휴전·평화", "재건", "종전·협상")]
         tags += ["전망성발언", "합의진전아님"]
+        score = max(score, 98)
+    if "조건부군사위협" in ms:
+        row["title_ko"] = korean_title(ms)
+        row["signals_ko"] = []
+        tags = [t for t in tags if t not in ("확전", "휴전·평화", "재건", "종전·협상")]
+        tags += ["군사위협", "조건부발언", "실제공격아님"]
         score = max(score, 98)
     if "사우디리야드후티미사일요격확인" in ms:
         row["title_ko"] = korean_title(ms)
@@ -863,6 +869,8 @@ def _stable_source_url(row):
 
 
 def item_id(row):
+    if _conditional_military_threat(row):
+        return hashlib.sha256(("event|conditional-military-threat|" + _published_day(row)).encode()).hexdigest()[:20]
     if _non_concrete_endgame_rhetoric(row):
         return hashlib.sha256(("event|endgame-rhetoric|" + _published_day(row)).encode()).hexdigest()[:20]
     if _aden_airport_attack_cluster(row):
@@ -934,6 +942,8 @@ def topic_label(row):
         return "미국·이란 · 종전 협상 조건"
     if "종전전망성발언" in ms:
         return "전쟁·외교 · 종전 전망성 발언"
+    if "조건부군사위협" in ms:
+        return "이란 · 조건부 선제공격 경고"
     if "사우디리야드후티미사일요격확인" in ms:
         return "사우디·후티 · 리야드 미사일 요격"
     if "예멘아덴공항후티공격클러스터" in ms:
@@ -971,6 +981,8 @@ def final_color(row):
     if "미국부통령이란농축종전조건" in ms:
         return "yellow"
     if "종전전망성발언" in ms:
+        return "yellow"
+    if "조건부군사위협" in ms:
         return "yellow"
     if ms & {
         "러정유시설보복공격확대예고", "리야드아람코화재원인미확정",
