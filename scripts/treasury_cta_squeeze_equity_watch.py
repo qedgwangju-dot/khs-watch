@@ -77,6 +77,17 @@ def _ints(text: str) -> list[int]:
     ]
 
 
+def _tff_fields_strict(text: str, expected: int = 14) -> list[int | None]:
+    """Preserve CFTC confidential '.' placeholders so column indexes never shift."""
+    tokens = re.findall(r"[-+]?(?:\d{1,3}(?:,\d{3})+|\d+)|\.", text or "")
+    if len(tokens) < expected:
+        raise RuntimeError(f"CFTC TFF row too short: {len(tokens)} < {expected}")
+    return [
+        None if tok == "." else int(tok.replace(",", ""))
+        for tok in tokens[:expected]
+    ]
+
+
 def _nq_cftc_weekly() -> dict:
     """Official NASDAQ MINI weekly TFF lane; OI and positioning are same-scope."""
     raw = watcher.fetch(CFTC_URL)
@@ -103,15 +114,15 @@ def _nq_cftc_weekly() -> dict:
     if not oi_m or not pos_m or not ch_m:
         raise RuntimeError("CFTC NASDAQ MINI weekly fields missing")
 
-    pos = _ints(pos_m.group(1))[:14]
-    changes = _ints(ch_m.group(3))[:14]
-    if len(pos) < 14 or len(changes) < 14:
-        raise RuntimeError("CFTC NASDAQ MINI positions parse failed")
+    pos = _tff_fields_strict(pos_m.group(1))
+    changes = _tff_fields_strict(ch_m.group(3))
+    if any(pos[i] is None for i in (6, 7)) or any(changes[i] is None for i in (6, 7)):
+        raise RuntimeError("CFTC NASDAQ MINI Leveraged Funds fields are confidential/missing")
 
     oi = int(oi_m.group(1).replace(",", ""))
     oi_wow = int(ch_m.group(2).replace(" ", "").replace(",", ""))
-    lev_long, lev_short = pos[6], pos[7]
-    lev_long_wow, lev_short_wow = changes[6], changes[7]
+    lev_long, lev_short = int(pos[6]), int(pos[7])
+    lev_long_wow, lev_short_wow = int(changes[6]), int(changes[7])
     return {
         "report_date": report_date,
         "previous_period": ch_m.group(1),
