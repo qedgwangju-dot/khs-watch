@@ -19,7 +19,7 @@ FORCE=os.getenv('FORCE_NOTIFY','0')=='1'
 UA='Mozilla/5.0 (compatible; khs-watch/3.0; +https://github.com/qedgwangju-dot/khs-watch)'
 YAHOO='https://query1.finance.yahoo.com/v8/finance/chart/{}?range=1mo&interval=1d&includePrePost=false'
 CBOE_VIX_CSV='https://cdn.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv'
-METHODOLOGY_VERSION='2026-10-07-v2'
+METHODOLOGY_VERSION='2026-10-07-v3'
 
 SYMBOLS={
     'S&P500':'SPY','동일가중 S&P500':'RSP','중소형주':'IWM','하이일드 회사채':'HYG','VIX':'^VIX',
@@ -91,14 +91,13 @@ def ret(rows,n): return (rows[-1][1]/rows[-1-n][1]-1)*100.0
 def snapshot():
     data={}
     for name,symbol in SYMBOLS.items():
-        if name == 'VIX':
-            data[name]=cboe_vix_series()
-        elif name == '하이일드 회사채':
+        if name == '하이일드 회사채':
             # HYG is monthly-distributing. Use adjusted close so ex-dividend drops
             # are not misread as credit deterioration.
             data[name]=series(symbol, adjusted=True)
         else:
             data[name]=series(symbol)
+    cboe_vix=cboe_vix_series()
 
     # 일부 ETF/지수의 Yahoo 종가 반영이 하루 늦을 수 있다.
     # 서로 다른 기준일을 억지로 섞지 말고, 모든 시계열에 공통으로 존재하는
@@ -120,22 +119,37 @@ def snapshot():
     # 한 종목의 데이터 누락 때문에 "5거래일"의 시작일이 달라지는 것을 금지한다.
     maps={name:{d:v for d,v in rows} for name,rows in data.items()}
 
-    # Independent VIX cross-check: Cboe official history is canonical; Yahoo must
-    # agree on the synchronized close within 0.05 VIX points.
-    yahoo_vix={d:v for d,v in series('^VIX')}
-    for d in (common_date,d1,d3,d5):
-        if d not in yahoo_vix:
-            raise RuntimeError(f'Yahoo VIX cross-check missing {d}')
-        if abs(yahoo_vix[d]-maps['VIX'][d]) > 0.05:
-            raise RuntimeError(
-                f'VIX Cboe/Yahoo mismatch {d}: Cboe={maps["VIX"][d]:.2f} Yahoo={yahoo_vix[d]:.2f}'
-            )
+    # VIX timing guard: use Yahoo's completed-session close so all market lanes
+    # stay on the same trading date, while validating the latest overlapping date
+    # against Cboe's official daily-history file. Cboe's CSV can publish one session late;
+    # never roll the whole snapshot back to a stale date just because that file lags.
+    yahoo_vix=maps['VIX']
+    cboe_map={d:v for d,v in cboe_vix}
+    overlap=[d for d in cboe_map if d in yahoo_vix and d <= common_date]
+    if not overlap:
+        raise RuntimeError('VIX Cboe/Yahoo overlapping completed date unavailable')
+    official_check_date=max(overlap)
+    official_diff=abs(cboe_map[official_check_date]-yahoo_vix[official_check_date])
+    if official_diff > 0.05:
+        raise RuntimeError(
+            f'VIX Cboe/Yahoo mismatch {official_check_date}: '
+            f'Cboe={cboe_map[official_check_date]:.2f} Yahoo={yahoo_vix[official_check_date]:.2f}'
+        )
+    official_same_day=common_date in cboe_map
+    lag_days=(datetime.fromisoformat(common_date).date()-datetime.fromisoformat(official_check_date).date()).days
+    if lag_days < 0 or lag_days > 4:
+        raise RuntimeError(
+            f'Cboe VIX official history lag too large: market={common_date} official={official_check_date}'
+        )
 
     out={'date':common_date,'window':{'1d':d1,'3d':d3,'5d':d5},'returns':{},
          'methodology_version':METHODOLOGY_VERSION,
          'hyg_basis':'Yahoo adjusted close total return',
-         'vix_source':'Cboe official daily close',
-         'vix_crosscheck_max_abs_diff':max(abs(yahoo_vix[d]-maps['VIX'][d]) for d in (common_date,d1,d3,d5))}
+         'vix_source':'Yahoo completed close with Cboe official overlap validation',
+         'vix_official_crosscheck_date':official_check_date,
+         'vix_official_same_day':official_same_day,
+         'vix_official_lag_days':lag_days,
+         'vix_crosscheck_max_abs_diff':official_diff}
     for name,m in maps.items():
         for d in (common_date,d1,d3,d5):
             if d not in m:
@@ -243,7 +257,7 @@ def message(s, correction=False, old_date=None, correction_reason=None):
            '<b>왜 보나</b>',
            '• RSP가 SPY보다 강하면 몇몇 초대형주만 오르는 게 아니라 종목 전체로 상승이 퍼지는지 보는 대용지표입니다.',
            '• HYG(하이일드 회사채)는 월별 분배금 때문에 단순 가격수익률이 왜곡될 수 있어 분배금을 반영한 조정종가 총수익으로 봅니다.',
-           '• VIX는 주식시장 변동성 기대를 보여주는 지수로, 급등하면 위험회피가 강해졌다는 뜻입니다.', '',
+           '• VIX는 같은 완료 거래일의 종가를 쓰고, Cboe 공식 일별자료가 같은 날까지 갱신됐으면 당일값을 직접 검산합니다. 공식 파일이 하루 늦으면 최신 겹치는 날짜를 검산하고 지수 전체 기준일은 뒤로 돌리지 않습니다.', '',
            '<b>판정이 나빠지는 조건</b>',
            '• RSP 또는 IWM 중 하나라도 S&P보다 5거래일 기준 1%포인트 이상 더 약해지면 시장 폭 경고',
            '• HYG가 5거래일 -1% 이하로 밀리고 VIX가 15% 이상 급등',
@@ -259,19 +273,15 @@ def main():
     new_day=old.get('date') not in (None,s['date'])
     changed=old.get('verdict') not in (None,s['verdict'])
     method_changed=old.get('methodology_version') != METHODOLOGY_VERSION
-    same_day_method_correction=bool(
-        old.get('date') == s['date'] and method_changed and (
-            old.get('verdict') != s['verdict']
-            or old.get('returns',{}).get('하이일드 회사채') != s['returns'].get('하이일드 회사채')
-        )
-    )
+    method_correction=bool(old and method_changed)
     stale_date_correction=bool(old.get('date') and old.get('date') > s['date'])
-    correction=stale_date_correction or same_day_method_correction
+    correction=stale_date_correction or method_correction
     correction_reason=None
-    if same_day_method_correction:
+    if method_correction:
         correction_reason=(
-            "HYG를 분배금 반영 조정종가 총수익으로 바꾸고, RSP 또는 IWM이 S&P보다 "
-            "5거래일 기준 1%포인트 이상 뒤처질 때 시장 폭 경고가 종합 판정에 반영되도록 재계산했습니다."
+            "HYG는 분배금 반영 조정종가 총수익으로 재계산하고, RSP 또는 IWM의 상대약세를 시장 폭 경고에 반영했습니다. "
+            "VIX는 모든 자산과 같은 완료 거래일의 Yahoo 종가를 사용하되 Cboe 공식 일별자료의 최신 겹치는 날짜와 0.05포인트 이내로 교차검증하며, "
+            "Cboe 파일 갱신이 하루 늦어도 전체 기준일을 과거로 되돌리지 않도록 수정했습니다."
         )
     elif stale_date_correction:
         correction_reason=f"직전 {old.get('date')} 값보다 최신 완료 종가 기준일이 뒤로 돌아가 데이터 시점 오류를 정정했습니다."
@@ -285,6 +295,9 @@ def main():
             'date':s['date'],'window':s.get('window'),'verdict':s['verdict'],'shock':shock,
             'methodology_version':METHODOLOGY_VERSION,
             'hyg_basis':s.get('hyg_basis'),'vix_source':s.get('vix_source'),
+            'vix_official_crosscheck_date':s.get('vix_official_crosscheck_date'),
+            'vix_official_same_day':s.get('vix_official_same_day'),
+            'vix_official_lag_days':s.get('vix_official_lag_days'),
             'vix_crosscheck_max_abs_diff':s.get('vix_crosscheck_max_abs_diff'),
             'breadth_warning':s.get('breadth_warning'),'rsp_warning':s.get('rsp_warning'),'iwm_warning':s.get('iwm_warning'),
             'rsp_rel_5d':s['rsp_rel_5d'],'iwm_rel_5d':s['iwm_rel_5d'],
@@ -293,7 +306,9 @@ def main():
     print(json.dumps({
         'first_run':first,'date':s['date'],'verdict':s['verdict'],'shock':shock,
         'methodology_version':METHODOLOGY_VERSION,'hyg_basis':s.get('hyg_basis'),
-        'vix_source':s.get('vix_source'),'vix_crosscheck_max_abs_diff':s.get('vix_crosscheck_max_abs_diff'),
+        'vix_source':s.get('vix_source'),'vix_official_crosscheck_date':s.get('vix_official_crosscheck_date'),
+        'vix_official_same_day':s.get('vix_official_same_day'),'vix_official_lag_days':s.get('vix_official_lag_days'),
+        'vix_crosscheck_max_abs_diff':s.get('vix_crosscheck_max_abs_diff'),
         'rsp_rel_5d':s['rsp_rel_5d'],'iwm_rel_5d':s['iwm_rel_5d'],
         'rsp_warning':s.get('rsp_warning'),'iwm_warning':s.get('iwm_warning'),
         'sector_up_5d':s['sector_up_5d'],'correction':correction,'sent':should
