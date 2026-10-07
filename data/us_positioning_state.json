@@ -78,7 +78,7 @@
         "lev_net_wow": 1888,
         "previous_period": "September 22, 2026"
       },
-      "url": "https://www.cftc.gov/dea/futures/financial_lf.htm",
+      "url": "https://publicreporting.cftc.gov/resource/gpe5-46if.json",
       "fingerprint": "c6cd12bb2f7ff0dae21beafc02d13fa2a2370b448ca51c53f9192bd15fa89dc3",
       "nq_mini": {
         "contract": "NASDAQ MINI",
@@ -116,8 +116,31 @@
         "leveraged_net_1w_change": 5960,
         "leveraged_net_4w_change": -10631,
         "history_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/HistoricalCompressed/index.htm",
-        "download_errors": [],
+        "history_source": "CFTC Public Reporting Socrata gpe5-46if",
+        "download_errors": [
+          "2016:RuntimeError",
+          "2017:RuntimeError",
+          "2018:RuntimeError",
+          "2019:RuntimeError",
+          "2020:RuntimeError",
+          "2021:RuntimeError",
+          "2022:RuntimeError",
+          "2023:RuntimeError",
+          "2024:RuntimeError",
+          "2025:RuntimeError",
+          "2026:RuntimeError"
+        ],
         "loaded_years": [
+          2006,
+          2007,
+          2008,
+          2009,
+          2010,
+          2011,
+          2012,
+          2013,
+          2014,
+          2015,
           2016,
           2017,
           2018,
@@ -153,8 +176,10 @@
         "max_net_short_weekly_build_date_10y": "2016-11-15",
         "gross_short_weekly_record_10y": false,
         "net_short_weekly_record_10y": false
-      }
+      },
+      "source_mode": "CFTC Public Reporting Socrata gpe5-46if",
+      "live_source_error": "RuntimeError: HTTP 조회 3회 실패: https://www.cftc.gov/dea/futures/financial_lf.htm / HTTPError: 403 Client Error: Forbidden for url: https://www.cftc.gov/dea/futures/financial_lf.htm | HTTPError: 403 Client Error: Forbidden for url: https://www.cftc.gov/dea/futures/financial_lf.htm | HTTPError: 403 Client Error: Forbidden for url: https://www.cftc.gov/dea/futures/financial_lf.htm"
     }
   },
-  "updated_at_kst": "2026-10-06T11:58:10.707244+09:00"
+  "updated_at_kst": "2026-10-07T23:47:41.775944+09:00"
 }
