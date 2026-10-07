@@ -6,9 +6,137 @@ from unittest.mock import patch
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "scripts"))
 import solidigm_ipo_watch as w
+import hbm_delivery as delivery
 
 
 class SolidigmIPOTests(unittest.TestCase):
+
+    def _bloomberg_selected_event(self):
+        return {
+            "id": "solidigm_bloomberg_banks_20261008",
+            "title": "Bloomberg: Solidigm selected Goldman Sachs and Morgan Stanley to lead IPO",
+            "description": (
+                "Solidigm selected Goldman Sachs and Morgan Stanley as lead underwriters "
+                "for its potential US IPO. JPMorgan Chase, Citigroup and UBS join the syndicate. "
+                "The IPO could raise $10 billion and value Solidigm at up to $100 billion. "
+                "It could happen as soon as 2027. Pre-IPO financing being considered, "
+                "its precise amount unconfirmed; no company IPO decision confirmed."
+            ),
+            "source": "Bloomberg 보도(이데일리·연합뉴스·Investing.com 재인용)",
+            "published_at_kst": "2026-10-08T07:48:01+09:00",
+            "direct_link": w.REPORT_EDAILY_URL,
+            "is_curated_reported_milestone": True,
+        }
+
+    def test_bloomberg_selection_is_reported_not_official(self):
+        event = self._bloomberg_selected_event()
+        with patch.object(w, "article_text", return_value=""):
+            out = w.extract_patch(event)
+        self.assertEqual(out["stage"], "underwriters_selected")
+        self.assertEqual(out["evidence_state"], "top_tier_report")
+        self.assertEqual(out["reported_original"], "Bloomberg")
+        self.assertEqual(out["independent_origin_count"], 1)
+        self.assertFalse(out["ipo_officially_confirmed"])
+        self.assertFalse(out["underwriter_officially_confirmed"])
+        self.assertEqual(out["lead_underwriters"], ["Goldman Sachs", "Morgan Stanley"])
+        self.assertEqual(out["other_syndicate_banks"], ["JPMorgan Chase", "Citigroup", "UBS"])
+        self.assertEqual(out["raise_target_usd"], 10_000_000_000)
+        self.assertEqual(out["valuation_max_usd"], 100_000_000_000)
+        self.assertNotIn("pre_ipo_raise_usd", out)
+        self.assertEqual(out["user_original_url"], w.REPORT_YONHAP_URL)
+
+    def test_baseline_stage_is_upgraded_only_once(self):
+        old = {
+            "stage": "bank_bakeoff",
+            "target_year": 2027,
+            "valuation_max_usd": 150_000_000_000,
+            "raise_target_usd": 15_000_000_000,
+            "pre_ipo_raise_usd": 3_600_000_000,
+            "source_name": "Reuters",
+            "source_url": w.CANONICAL_REUTERS_URL,
+            "evidence_state": "top_tier_report",
+            "underwriters": [],
+        }
+        with patch.object(w, "article_text", return_value=""):
+            patch_data = w.extract_patch(self._bloomberg_selected_event())
+        upgraded = w.merge_state(old, patch_data)
+        self.assertEqual(upgraded["stage"], "underwriters_selected")
+        self.assertEqual(upgraded["raise_target_usd"], 10_000_000_000)
+        self.assertEqual(upgraded["valuation_max_usd"], 100_000_000_000)
+        self.assertEqual(upgraded["source_url"], w.REPORT_EDAILY_URL)
+        self.assertIn("대표주관사", " / ".join(w.material_changes(old, upgraded)))
+        self.assertEqual(w.material_changes(upgraded, w.merge_state(upgraded, patch_data)), [])
+        alert = w.alert_text(old, upgraded, w.material_changes(old, upgraded), w.now_kst())
+        self.assertIn("대표주관사(블룸버그 보도)", alert)
+        self.assertIn("확정 공모금액 감액이 아니라", alert)
+        self.assertIn("별개 독립 확인 3건이 아닙니다", alert)
+        self.assertIn("신주·구주 비율", alert)
+        self.assertIn("연합뉴스", alert)
+        self.assertIn("SK하이닉스 공식 입장", alert)
+        self.assertTrue(delivery.chunks(alert))
+
+    def test_reposted_article_not_three_independent_sources(self):
+        event = self._bloomberg_selected_event()
+        with patch.object(w, "article_text", return_value=""):
+            rec = w.extract_patch(event)
+        self.assertEqual(rec["independent_origin_count"], 1)
+        self.assertEqual(rec["crosscheck_url"], w.REPORT_INVESTING_URL)
+
+    def test_older_bakeoff_cannot_replace_new_bank_selection_estimates(self):
+        chosen = {
+            "stage": "underwriters_selected",
+            "valuation_max_usd": 100_000_000_000,
+            "raise_target_usd": 10_000_000_000,
+            "evidence_state": "top_tier_report",
+            "source_name": "Bloomberg",
+        }
+        older = {
+            "stage": "bank_bakeoff",
+            "valuation_max_usd": 150_000_000_000,
+            "raise_target_usd": 15_000_000_000,
+            "evidence_state": "official",
+            "source_name": "Generic SK hynix no-decision statement",
+        }
+        self.assertEqual(w.merge_state(chosen, older), chosen)
+
+    def test_official_no_decision_does_not_confirm_ipo(self):
+        statement = {
+            "title": "SK hynix clarification: Solidigm IPO no definitive funding plan",
+            "description": "Solidigm is reviewing options. No concrete plans have been confirmed.",
+            "source": "SK hynix",
+            "direct_link": w.OFFICIAL_SK_REPLY,
+            "published_at_kst": "2026-10-01T13:00:00+09:00",
+        }
+        with patch.object(w, "article_text", return_value="IPO capital plans are undecided"):
+            self.assertEqual(w.extract_patch(statement), {})
+
+    def test_korean_yonhap_company_name_is_supported(self):
+        event = {
+            "title": "블룸버그, 솔리다임 IPO 대표주관사 선정",
+            "description": "골드만삭스와 모건스탠리를 대표주관사로 선정한 것으로 보도됐다.",
+            "source": "연합뉴스",
+            "published_at_kst": "2026-10-08T08:00:00+09:00",
+            "direct_link": w.REPORT_YONHAP_URL,
+        }
+        with patch.object(w, "article_text", return_value=""):
+            rec = w.extract_patch(event)
+        self.assertEqual(rec["stage"], "underwriters_selected")
+        self.assertEqual(rec["lead_underwriters"], ["Goldman Sachs", "Morgan Stanley"])
+        self.assertNotEqual(rec["evidence_state"], "official")
+
+    def test_full_page_unrelated_ipo_does_not_change_stage(self):
+        event = {
+            "title": "Solidigm weighs an IPO",
+            "description": "Solidigm IPO is under review.",
+            "source": "Reuters",
+            "direct_link": w.CANONICAL_REUTERS_URL,
+        }
+        page = "Another unrelated issuer's IPO was postponed and then priced at $30 billion."
+        with patch.object(w, "article_text", return_value=page):
+            rec = w.extract_patch(event)
+        self.assertEqual(rec.get("stage"), "exploring")
+        self.assertNotIn("valuation_max_usd", rec)
+
     def test_reuters_baseline_stage_and_amounts(self):
         text = (
             "Solidigm is considering an initial public offering as early as 2027 that could value "
