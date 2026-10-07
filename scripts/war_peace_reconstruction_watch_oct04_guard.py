@@ -476,8 +476,6 @@ def marks(row):
         out.append("사우디동서송유관회복")
     if _israel_oct7_abroad_warning(row):
         out.append("이스라엘10월7일해외공격위험경고")
-    if _saudi_east_west_pipeline_recovery(row):
-        return hashlib.sha256("event|saudi|east-west-pipeline-recovery|2026-10-06".encode()).hexdigest()[:20]
     if _saudi_houthi_airport_refinery_cluster(row):
         out.append("사우디후티공항정유시설공격클러스터")
     if _mokha_counteroffensive_context(row):
@@ -506,22 +504,12 @@ def korean_title(ms):
         return "종전 협상 과정에서 루코일 해외자산 매각 논의 — 휴전 진전과 별개의 상업거래"
     if "사우디동서송유관회복" in ms:
         return "사우디 동서 송유관 재가동 — 하루 580만배럴 수송 회복, 호르무즈 우회 공급능력 개선"
-    if "사우디동서송유관회복" in ms:
-        out.append("🟢 사우디 동서 송유관 원유 수송이 하루 580만배럴 수준으로 회복 — 과거 드론 공격의 현재 신규 확전이 아니라 실물 공급 복구 신호")
-    if "사우디동서송유관회복" in ms:
-        return "사우디 · 동서 송유관 공급회복"
     if "호르무즈온피스유조선피격" in ms:
         return "호르무즈 해협서 MT On Peace 발사체 피격 — 선원 12명 부상(인도인 11명), 오만으로 치료 이송·공격 주체 미확정"
     if "이란남부폭발원인미확정" in ms:
         return "이란 남부 시리크·게슘·미나브 일대 폭발음 — 원인·공격 주체 미확정, 발사체·공습 공식 확인 대기"
     if "호르무즈유조선피격클러스터" in ms:
         return "호르무즈 유조선 피격 지속 — 미확인 발사체·선박 피해를 실제 해상안보 사건으로 추적"
-    if "사우디동서송유관회복" in ms:
-        row["title_ko"] = korean_title(ms)
-        row["signals_ko"] = []
-        tags = [t for t in tags if t not in ("확전", "휴전·평화", "재건", "종전·협상")]
-        tags += ["사우디", "실물공급회복", "원유수송회복", "580만배럴"]
-        score = max(score, 100)
     if "이스라엘10월7일해외공격위험경고" in ms:
         return "이스라엘 국가안보회의, 10월 7일 3주년 전후 해외의 이스라엘인·유대인 대상 공격 위험 증가 경고 — 실제 공격 발생 아님"
     if "목하탈환공세" in ms:
@@ -554,6 +542,8 @@ def signals(ms):
         out.append("🔴 UKMTO 기준 호르무즈·오만 인근 유조선의 미확인 발사체 피격이 반복 — 동일 사건 재인용과 실제 추가 피격을 분리")
     if "이란남부폭발원인미확정" in ms:
         out.append("🟡 이란 남부 시리크·게슘·미나브 일대에서 복수 폭발음 보도 — 원인·공격 주체가 확인되기 전에는 실제 공습·피격으로 승격하지 않음")
+    if "사우디동서송유관회복" in ms:
+        out.append("🟢 사우디 동서 송유관 원유 수송이 하루 580만배럴 수준으로 회복 — 과거 공격의 현재 신규 확전이 아니라 실물 공급 복구 신호")
     if "이스라엘10월7일해외공격위험경고" in ms:
         out.append("🟡 이스라엘 국가안보회의가 10월 7일 3주년 전후 해외 공격 위험 증가를 경고 — 실제 공격 발생과는 구분")
     if "목하탈환공세" in ms:
@@ -630,6 +620,12 @@ def score_item(row, now):
         tags = [t for t in tags if t not in ("확전", "휴전·평화", "재건", "종전·협상")]
         tags += ["이란·호르무즈", "원인미확정", "공식확인대기"]
         score = max(score, 98)
+    if "사우디동서송유관회복" in ms:
+        row["title_ko"] = korean_title(ms)
+        row["signals_ko"] = []
+        tags = [t for t in tags if t not in ("확전", "휴전·평화", "재건", "종전·협상", "에너지위험", "반대신호")]
+        tags += ["사우디", "실물공급회복", "원유수송회복", "580만배럴"]
+        score = max(score, 100)
     if "호르무즈온피스유조선피격" in ms:
         row["title_ko"] = korean_title(ms)
         row["signals_ko"] = []
@@ -684,6 +680,8 @@ def _stable_source_url(row):
 
 
 def item_id(row):
+    if _saudi_east_west_pipeline_recovery(row):
+        return hashlib.sha256("event|saudi|east-west-pipeline-recovery|2026-10-06".encode()).hexdigest()[:20]
     if _hormuz_on_peace_attack(row):
         return hashlib.sha256("event|hormuz|mt-on-peace|2026-10-06".encode()).hexdigest()[:20]
     if _iran_south_unattributed_explosions(row):
@@ -966,6 +964,9 @@ def verify_alert(test_mode=False):
         issues.append("과거 러시아 연료위기·한국 수출 배경기사를 신규 확전으로 표시")
     if "드론이 불가리아에서 침몰" in text:
         issues.append("Reuters 불가리아 흑해 선박 드론 공격 제목을 문법 오역")
+    stale_ages = [int(x) for x in re.findall(r"(\d{3,})분 전", text)]
+    if any(x > int(getattr(prev, "FRESH_NEWS_MAX_MINUTES", 3 * 60)) for x in stale_ages):
+        issues.append("3시간을 초과한 오래된 기사가 신규·후속 알림으로 송출됨")
     if re.search(r"(?ms)^🔴\s+\[(?:속보|신규|후속)\]\s+<b>\d+\.[^<]*</b>\n[^\n]*(?:동서 송유관|580만배럴)[^\n]*(?:회복|재가동)", text):
         issues.append("사우디 동서 송유관 공급회복을 신규 확전으로 표시")
     if issues:
