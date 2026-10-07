@@ -27,6 +27,7 @@ class HBMExportSourceGuardTests(unittest.TestCase):
     def test_unpublished_month_poll_is_three_hourly(self):
         state = {
             "official_source_health_version": w.OFFICIAL_SOURCE_HEALTH_VERSION,
+            "compare_version": w.COMPARE_VERSION,
             "last_successful_official_month": "202608",
             "last_official_poll_attempt_kst": (self.now - timedelta(hours=2)).isoformat(),
         }
@@ -41,12 +42,30 @@ class HBMExportSourceGuardTests(unittest.TestCase):
     def test_published_month_revision_poll_is_daily(self):
         state = {
             "official_source_health_version": w.OFFICIAL_SOURCE_HEALTH_VERSION,
+            "compare_version": w.COMPARE_VERSION,
             "last_successful_official_month": "202609",
             "last_official_poll_attempt_kst": (self.now - timedelta(hours=23)).isoformat(),
         }
         due, interval = w._official_poll_due(state, self.now)
         self.assertFalse(due)
         self.assertEqual(interval, 24)
+
+
+    def test_source_error_retries_hourly(self):
+        state = {
+            "official_source_health_version": w.OFFICIAL_SOURCE_HEALTH_VERSION,
+            "compare_version": w.COMPARE_VERSION,
+            "last_successful_official_month": "202608",
+            "official_source_health": {"status": "error", "target_month": "202609"},
+            "last_official_poll_attempt_kst": (self.now - timedelta(minutes=59)).isoformat(),
+        }
+        due, interval = w._official_poll_due(state, self.now)
+        self.assertFalse(due)
+        self.assertEqual(interval, 1)
+        state["last_official_poll_attempt_kst"] = (self.now - timedelta(hours=1, minutes=1)).isoformat()
+        due, interval = w._official_poll_due(state, self.now)
+        self.assertTrue(due)
+        self.assertEqual(interval, 1)
 
     def test_health_version_migration_forces_one_poll(self):
         state = {
