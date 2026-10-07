@@ -2,7 +2,7 @@ name: KOSPI LS Realtime Derivatives Flow Watch
 
 on:
   schedule:
-    - cron: "13,23,33,43,53 8 * * 1-5"
+    - cron: "3,13,23,33,43,53 8 * * 1-5"
       timezone: "Asia/Seoul"
     - cron: "3,13,23,33,43,53 9-14 * * 1-5"
       timezone: "Asia/Seoul"
@@ -12,6 +12,7 @@ on:
     workflows:
       - "Wonyotti 90D Thesis Telegram Watch"
       - "Korea Market Stress and Global Wave Telegram Watch"
+      - "GAMEJOA preopen news radar"
     types: [completed]
   workflow_dispatch:
     inputs:
