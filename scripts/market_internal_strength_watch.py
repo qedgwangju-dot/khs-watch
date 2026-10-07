@@ -5,6 +5,8 @@ import os
 import urllib.parse
 import urllib.request
 import time
+import csv
+import io
 from datetime import datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -16,6 +18,8 @@ EXPECTED_BOT=(os.getenv('EXPECTED_BOT_USERNAME') or 'khs887900887900008879_bot')
 FORCE=os.getenv('FORCE_NOTIFY','0')=='1'
 UA='Mozilla/5.0 (compatible; khs-watch/3.0; +https://github.com/qedgwangju-dot/khs-watch)'
 YAHOO='https://query1.finance.yahoo.com/v8/finance/chart/{}?range=1mo&interval=1d&includePrePost=false'
+CBOE_VIX_CSV='https://cdn.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv'
+METHODOLOGY_VERSION='2026-10-07-v2'
 
 SYMBOLS={
     'S&P500':'SPY','동일가중 S&P500':'RSP','중소형주':'IWM','하이일드 회사채':'HYG','VIX':'^VIX',
@@ -29,11 +33,20 @@ def fetch(url):
     req=urllib.request.Request(url,headers={'User-Agent':UA,'Accept-Language':'en-US,en;q=0.9'})
     with urllib.request.urlopen(req,timeout=25) as r:return r.read().decode('utf-8','replace')
 
-def series(symbol):
+def series(symbol, adjusted=False):
     d=json.loads(fetch(YAHOO.format(urllib.parse.quote(symbol,safe=''))))
     r=((d.get('chart') or {}).get('result') or [None])[0]
     if not r: raise RuntimeError(f'{symbol} unavailable')
-    ts=r.get('timestamp') or []; q=(((r.get('indicators') or {}).get('quote') or [{}])[0].get('close') or [])
+    ts=r.get('timestamp') or []
+    ind=r.get('indicators') or {}
+    closes=(((ind.get('quote') or [{}])[0]).get('close') or [])
+    adj=(((ind.get('adjclose') or [{}])[0]).get('adjclose') or [])
+    if adjusted:
+        if not adj or len(adj) != len(ts):
+            raise RuntimeError(f'{symbol} adjusted close unavailable')
+        values=adj
+    else:
+        values=closes
     meta=r.get('meta') or {}
     regular=((meta.get('currentTradingPeriod') or {}).get('regular') or {})
     regular_start=regular.get('start'); regular_end=regular.get('end')
@@ -42,11 +55,9 @@ def series(symbol):
     ny_today=ny_now.date().isoformat()
     before_close_buffer=(ny_now.hour < 16 or (ny_now.hour == 16 and ny_now.minute < 15))
     rows=[]
-    for t,v in zip(ts,q):
+    for t,v in zip(ts,values):
         if v is None:
             continue
-        # Yahoo 1d chart can expose the current, still-open U.S. session as a daily bar.
-        # Do not treat that partial bar as a completed daily close.
         row_date=datetime.fromtimestamp(t,ZoneInfo('America/New_York')).date().isoformat()
         if row_date == ny_today and before_close_buffer:
             continue
@@ -56,10 +67,38 @@ def series(symbol):
     if len(rows)<7: raise RuntimeError(f'{symbol} completed-session history too short')
     return rows
 
+def cboe_vix_series():
+    raw=fetch(CBOE_VIX_CSV)
+    rows=[]
+    for row in csv.DictReader(io.StringIO(raw)):
+        raw_date=str(row.get('DATE') or '').strip()
+        raw_close=str(row.get('CLOSE') or '').strip()
+        if not raw_date or not raw_close:
+            continue
+        try:
+            d=datetime.strptime(raw_date,'%m/%d/%Y').date().isoformat()
+            v=float(raw_close)
+        except Exception:
+            continue
+        rows.append((d,v))
+    rows.sort(key=lambda x:x[0])
+    if len(rows)<7:
+        raise RuntimeError('Cboe VIX official history too short')
+    return rows
+
 def ret(rows,n): return (rows[-1][1]/rows[-1-n][1]-1)*100.0
 
 def snapshot():
-    data={k:series(v) for k,v in SYMBOLS.items()}
+    data={}
+    for name,symbol in SYMBOLS.items():
+        if name == 'VIX':
+            data[name]=cboe_vix_series()
+        elif name == '하이일드 회사채':
+            # HYG is monthly-distributing. Use adjusted close so ex-dividend drops
+            # are not misread as credit deterioration.
+            data[name]=series(symbol, adjusted=True)
+        else:
+            data[name]=series(symbol)
 
     # 일부 ETF/지수의 Yahoo 종가 반영이 하루 늦을 수 있다.
     # 서로 다른 기준일을 억지로 섞지 말고, 모든 시계열에 공통으로 존재하는
@@ -80,7 +119,23 @@ def snapshot():
     # 모든 자산을 정확히 같은 시작일/종료일로 비교한다.
     # 한 종목의 데이터 누락 때문에 "5거래일"의 시작일이 달라지는 것을 금지한다.
     maps={name:{d:v for d,v in rows} for name,rows in data.items()}
-    out={'date':common_date,'window':{'1d':d1,'3d':d3,'5d':d5},'returns':{}}
+
+    # Independent VIX cross-check: Cboe official history is canonical; Yahoo must
+    # agree on the synchronized close within 0.05 VIX points.
+    yahoo_vix={d:v for d,v in series('^VIX')}
+    for d in (common_date,d1,d3,d5):
+        if d not in yahoo_vix:
+            raise RuntimeError(f'Yahoo VIX cross-check missing {d}')
+        if abs(yahoo_vix[d]-maps['VIX'][d]) > 0.05:
+            raise RuntimeError(
+                f'VIX Cboe/Yahoo mismatch {d}: Cboe={maps["VIX"][d]:.2f} Yahoo={yahoo_vix[d]:.2f}'
+            )
+
+    out={'date':common_date,'window':{'1d':d1,'3d':d3,'5d':d5},'returns':{},
+         'methodology_version':METHODOLOGY_VERSION,
+         'hyg_basis':'Yahoo adjusted close total return',
+         'vix_source':'Cboe official daily close',
+         'vix_crosscheck_max_abs_diff':max(abs(yahoo_vix[d]-maps['VIX'][d]) for d in (common_date,d1,d3,d5))}
     for name,m in maps.items():
         for d in (common_date,d1,d3,d5):
             if d not in m:
@@ -94,13 +149,32 @@ def snapshot():
     out['rsp_rel_5d']=rsp['5d']-spy['5d']; out['iwm_rel_5d']=iwm['5d']-spy['5d']
     out['sector_up_1d']=sum(1 for s in SECTORS if out['returns'][s]['1d']>0)
     out['sector_up_5d']=sum(1 for s in SECTORS if out['returns'][s]['5d']>0)
-    if spy['5d']<0 and out['rsp_rel_5d']<=-1.0 and out['iwm_rel_5d']<=-1.0 and hyg['5d']<=-1.0 and vix['5d']>=15:
+    rsp_warn=out['rsp_rel_5d']<=-1.0
+    iwm_warn=out['iwm_rel_5d']<=-1.0
+    breadth_warn=rsp_warn or iwm_warn
+    credit_stress=hyg['5d']<=-1.0
+    vol_stress=vix['5d']>=15.0
+    sector_narrow=out['sector_up_5d']<=4
+    out['breadth_warning']=breadth_warn
+    out['rsp_warning']=rsp_warn
+    out['iwm_warning']=iwm_warn
+    out['credit_stress']=credit_stress
+    out['vol_stress']=vol_stress
+
+    if spy['5d']<0 and rsp_warn and iwm_warn and credit_stress and vol_stress and sector_narrow:
         verdict='광범위 위험회피 — 순환매보다 자금 이탈 경계'
-    elif out['rsp_rel_5d']<=-1.5 and out['sector_up_5d']<=4:
-        verdict='대형주 편중 — 지수보다 시장 내부 체력 약함'
-    elif (out['rsp_rel_5d']>=0.75 or out['iwm_rel_5d']>=0.75) and hyg['5d']>-1.0 and vix['5d']<15 and out['sector_up_5d']>=6:
+    elif rsp_warn and iwm_warn and out['sector_up_5d']<=5:
+        verdict='대형주 편중 — 시장 폭 약화'
+    elif breadth_warn and out['sector_up_5d']>=6 and not credit_stress and not vol_stress:
+        if iwm_warn and not rsp_warn:
+            verdict='업종 순환 유지·중소형주 확산 약화'
+        elif rsp_warn and not iwm_warn:
+            verdict='업종 순환 유지·동일가중 확산 약화'
+        else:
+            verdict='업종 순환 유지·시장 폭 약화'
+    elif (out['rsp_rel_5d']>=0.75 or out['iwm_rel_5d']>=0.75) and not credit_stress and not vol_stress and out['sector_up_5d']>=6:
         verdict='순환매·시장 내부 체력 양호'
-    elif out['sector_up_5d']>=7 and hyg['5d']>-0.5:
+    elif out['sector_up_5d']>=7 and hyg['5d']>-0.5 and not vol_stress and not breadth_warn:
         verdict='종목·업종 순환매 유지'
     else:
         verdict='혼합 — 뚜렷한 순환매/위험회피 미확인'
@@ -127,13 +201,22 @@ def send(msg):
     with urllib.request.urlopen(req,timeout=25) as r:
         out=json.loads(r.read().decode())
     if not out.get('ok'): raise RuntimeError(f'Telegram send failed: {out}')
+    mid=(out.get('result') or {}).get('message_id')
+    print(f'market_internal_telegram_delivery_confirmed=true bot=@{actual} id={mid}')
+    return mid
 
 def easy_read(s):
     r=s['returns']; hyg=r['하이일드 회사채']; vix=r['VIX']
     if s['verdict']=='순환매·시장 내부 체력 양호':
         return '지수 몇 종목만 버티는 장이 아니라 동일가중·중소형주·여러 업종까지 같이 움직이고 있어, 돈이 시장 밖으로 빠지기보다 업종 사이를 돌고 있는 모습에 가깝습니다.'
     if s['verdict']=='종목·업종 순환매 유지':
-        return '지수는 흔들려도 여러 업종이 번갈아 오르고 회사채도 크게 흔들리지 않아, 아직 전면적인 위험회피보다 순환매 성격이 남아 있습니다.'
+        return '동일가중·중소형주의 상대성과 여러 업종의 참여가 크게 훼손되지 않았고, 신용시장과 변동성도 안정적이라 순환매가 유지되는 쪽입니다.'
+    if s['verdict']=='업종 순환 유지·중소형주 확산 약화':
+        return '여러 업종은 오르고 신용·변동성도 안정적이지만 중소형주가 S&P보다 5거래일 기준 1%포인트 넘게 뒤처집니다. 전면 위험회피는 아니지만 상승의 폭이 충분히 넓다고 보기는 어렵습니다.'
+    if s['verdict']=='업종 순환 유지·동일가중 확산 약화':
+        return '여러 업종은 오르고 신용·변동성도 안정적이지만 동일가중 S&P 500이 시가총액가중 S&P보다 5거래일 기준 1%포인트 넘게 뒤처집니다. 업종 순환은 남아 있어도 종목 확산은 약합니다.'
+    if s['verdict']=='업종 순환 유지·시장 폭 약화':
+        return '업종별 상승은 남아 있지만 동일가중과 중소형주가 모두 뒤처져 시장 폭은 약합니다. 전면 위험회피와는 다르지만 대형주 의존도가 높아지는 구간입니다.'
     if s['verdict'].startswith('광범위 위험회피'):
         return '대형주뿐 아니라 동일가중·중소형주·회사채까지 같이 약해지고 변동성도 뛰어, 단순 순환매가 아니라 실제 위험회피로 번질 가능성을 경계해야 합니다.'
     if s['verdict'].startswith('대형주 편중'):
@@ -153,14 +236,15 @@ def message(s, correction=False, old_date=None):
            f"• 동일가중 S&P 500(RSP): 5거래일 {rsp['5d']:+.1f}% · S&P 대비 {s['rsp_rel_5d']:+.1f}%p",
            f"• 중소형주(IWM): 5거래일 {iwm['5d']:+.1f}% · S&P 대비 {s['iwm_rel_5d']:+.1f}%p",
            f"• 11개 업종 중 상승: 1거래일 {s['sector_up_1d']}개 · 5거래일 {s['sector_up_5d']}개",
-           f"• 하이일드 회사채(HYG): 5거래일 {hyg['5d']:+.1f}% · VIX(주식시장 공포·변동성 지수): 5거래일 {vix['5d']:+.1f}%",'',
+           f"• 하이일드 회사채(HYG, 분배금 반영 총수익): 5거래일 {hyg['5d']:+.1f}% · VIX(주식시장 공포·변동성 지수): 5거래일 {vix['5d']:+.1f}%",'',
+           f"• 시장 폭 경고: RSP {'예' if s.get('rsp_warning') else '아니오'} · IWM {'예' if s.get('iwm_warning') else '아니오'}",'',
            '<b>쉽게 말하면</b>',f"• {easy_read(s)}",'',
            '<b>왜 보나</b>',
            '• RSP가 SPY보다 강하면 몇몇 초대형주만 오르는 게 아니라 종목 전체로 상승이 퍼지는지 보는 대용지표입니다.',
-           '• HYG(하이일드 회사채)는 신용위험이 커질 때 먼저 약해질 수 있어, 주식의 순환매가 진짜 체력인지 확인하는 보조지표입니다.',
+           '• HYG(하이일드 회사채)는 월별 분배금 때문에 단순 가격수익률이 왜곡될 수 있어 분배금을 반영한 조정종가 총수익으로 봅니다.',
            '• VIX는 주식시장 변동성 기대를 보여주는 지수로, 급등하면 위험회피가 강해졌다는 뜻입니다.', '',
            '<b>판정이 나빠지는 조건</b>',
-           '• 동일가중·중소형주가 S&P보다 5거래일 기준 1%포인트 이상 더 약해짐',
+           '• RSP 또는 IWM 중 하나라도 S&P보다 5거래일 기준 1%포인트 이상 더 약해지면 시장 폭 경고',
            '• HYG가 5거래일 -1% 이하로 밀리고 VIX가 15% 이상 급등',
            '• 11개 업종 중 상승 업종이 4개 이하로 축소', '',
            '<b>원천</b>', f"{link('SPY',quote_url('SPY'))} · {link('RSP',quote_url('RSP'))} · {link('IWM',quote_url('IWM'))} · {link('HYG',quote_url('HYG'))} · {link('VIX',quote_url('^VIX'))}"]
@@ -168,14 +252,39 @@ def message(s, correction=False, old_date=None):
 
 def main():
     s=snapshot(); old=load_state(); first=not bool(old)
-    new_day=old.get('date') not in (None,s['date']); changed=old.get('verdict') not in (None,s['verdict'])
-    correction=bool(old.get('date') and old.get('date') > s['date'])
+    new_day=old.get('date') not in (None,s['date'])
+    changed=old.get('verdict') not in (None,s['verdict'])
+    method_changed=old.get('methodology_version') != METHODOLOGY_VERSION
+    same_day_method_correction=bool(
+        old.get('date') == s['date'] and method_changed and (
+            old.get('verdict') != s['verdict']
+            or old.get('returns',{}).get('하이일드 회사채') != s['returns'].get('하이일드 회사채')
+        )
+    )
+    stale_date_correction=bool(old.get('date') and old.get('date') > s['date'])
+    correction=stale_date_correction or same_day_method_correction
     shock=(s['returns']['VIX']['5d']>=20 or s['returns']['하이일드 회사채']['5d']<=-2.0)
     old_shock=bool(old.get('shock'))
     should=FORCE or correction or (not first and (changed or (shock and not old_shock)))
-    if should: send(message(s, correction=correction, old_date=old.get('date')))
-    if first or new_day or changed or shock!=old_shock:
-        save_state({'date':s['date'],'window':s.get('window'),'verdict':s['verdict'],'shock':shock,'rsp_rel_5d':s['rsp_rel_5d'],'iwm_rel_5d':s['iwm_rel_5d'],'sector_up_1d':s['sector_up_1d'],'sector_up_5d':s['sector_up_5d'],'returns':s['returns']})
-    print(json.dumps({'first_run':first,'date':s['date'],'verdict':s['verdict'],'shock':shock,'rsp_rel_5d':s['rsp_rel_5d'],'iwm_rel_5d':s['iwm_rel_5d'],'sector_up_5d':s['sector_up_5d'],'sent':should},ensure_ascii=False))
+    if should:
+        send(message(s, correction=correction, old_date=old.get('date')))
+    if first or new_day or changed or shock!=old_shock or method_changed:
+        save_state({
+            'date':s['date'],'window':s.get('window'),'verdict':s['verdict'],'shock':shock,
+            'methodology_version':METHODOLOGY_VERSION,
+            'hyg_basis':s.get('hyg_basis'),'vix_source':s.get('vix_source'),
+            'vix_crosscheck_max_abs_diff':s.get('vix_crosscheck_max_abs_diff'),
+            'breadth_warning':s.get('breadth_warning'),'rsp_warning':s.get('rsp_warning'),'iwm_warning':s.get('iwm_warning'),
+            'rsp_rel_5d':s['rsp_rel_5d'],'iwm_rel_5d':s['iwm_rel_5d'],
+            'sector_up_1d':s['sector_up_1d'],'sector_up_5d':s['sector_up_5d'],'returns':s['returns']
+        })
+    print(json.dumps({
+        'first_run':first,'date':s['date'],'verdict':s['verdict'],'shock':shock,
+        'methodology_version':METHODOLOGY_VERSION,'hyg_basis':s.get('hyg_basis'),
+        'vix_source':s.get('vix_source'),'vix_crosscheck_max_abs_diff':s.get('vix_crosscheck_max_abs_diff'),
+        'rsp_rel_5d':s['rsp_rel_5d'],'iwm_rel_5d':s['iwm_rel_5d'],
+        'rsp_warning':s.get('rsp_warning'),'iwm_warning':s.get('iwm_warning'),
+        'sector_up_5d':s['sector_up_5d'],'correction':correction,'sent':should
+    },ensure_ascii=False))
 
 if __name__=='__main__': main()
