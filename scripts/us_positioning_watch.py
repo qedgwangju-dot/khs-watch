@@ -38,6 +38,7 @@ CFTC = "https://www.cftc.gov/dea/futures/financial_lf.htm"
 CFTC_HISTORY_TEMPLATE = "https://www.cftc.gov/files/dea/history/fut_fin_txt_{year}.zip"
 NQ_CFTC_CODE = "209742"
 CFTC_HISTORY_INDEX = "https://www.cftc.gov/MarketReports/CommitmentsofTraders/HistoricalCompressed/index.htm"
+CFTC_SOCRATA = "https://publicreporting.cftc.gov/resource/gpe5-46if.json"
 CBOE = "https://www.cboe.com/us/options/market_statistics/market/"
 CBOE_DAILY_TEMPLATE = "https://www.cboe.com/markets/us/options/market-statistics/daily?dt={date}"
 SOX = "https://indexes.nasdaq.com/Index/History/SOX"
@@ -226,6 +227,60 @@ Percent of Open Interest
 
 _self_test_cftc_parser()
 
+def _socrata_rows(params, timeout=50):
+    """Official CFTC Public Reporting API fallback (dataset gpe5-46if)."""
+    errors = []
+    for attempt in range(3):
+        try:
+            r = S.get(
+                CFTC_SOCRATA,
+                params=params,
+                timeout=timeout,
+                headers={
+                    "Accept": "application/json",
+                    "Cache-Control": "no-cache",
+                    "Pragma": "no-cache",
+                },
+            )
+            r.raise_for_status()
+            rows = r.json()
+            if not isinstance(rows, list):
+                raise RuntimeError("CFTC Socrata response is not a list")
+            return rows
+        except Exception as exc:
+            errors.append(f"{type(exc).__name__}: {exc}")
+            if attempt < 2:
+                time.sleep(1.5 * (attempt + 1))
+    raise RuntimeError("CFTC Socrata 3회 실패: " + " | ".join(errors))
+
+
+def _socrata_nq_history_frame():
+    rows = _socrata_rows({
+        "$where": f"cftc_contract_market_code='{NQ_CFTC_CODE}'",
+        "$order": "report_date_as_yyyy_mm_dd ASC",
+        "$limit": "2000",
+    }, timeout=60)
+    if not rows:
+        raise RuntimeError("CFTC Socrata NQ history empty")
+    df = pd.DataFrame(rows)
+    needed = [
+        "report_date_as_yyyy_mm_dd",
+        "open_interest_all",
+        "lev_money_positions_long",
+        "lev_money_positions_short",
+    ]
+    missing = [x for x in needed if x not in df.columns]
+    if missing:
+        raise RuntimeError("CFTC Socrata NQ history missing fields: " + ",".join(missing))
+    out = pd.DataFrame({
+        "_date": pd.to_datetime(df["report_date_as_yyyy_mm_dd"].astype(str).str[:10], errors="coerce"),
+        "Open_Interest_All": pd.to_numeric(df["open_interest_all"], errors="coerce"),
+        "Lev_Money_Positions_Long_All": pd.to_numeric(df["lev_money_positions_long"], errors="coerce"),
+        "Lev_Money_Positions_Short_All": pd.to_numeric(df["lev_money_positions_short"], errors="coerce"),
+    })
+    return out.dropna().sort_values("_date").drop_duplicates("_date", keep="last")
+
+
 def cftc_nq_history_3y(current_nq=None, current_period=None):
     """Build 3Y and 10Y NQ leveraged-fund distributions from official CFTC TFF history.
 
@@ -238,6 +293,7 @@ def cftc_nq_history_3y(current_nq=None, current_period=None):
     frames = []
     errors = []
     loaded_years = []
+    history_source = "CFTC annual compressed TFF"
 
     for y in requested_years:
         url = CFTC_HISTORY_TEMPLATE.format(year=y)
@@ -256,41 +312,42 @@ def cftc_nq_history_3y(current_nq=None, current_period=None):
         if last_exc is not None:
             errors.append(f"{y}:{type(last_exc).__name__}")
 
-    if not frames:
-        raise RuntimeError("CFTC TFF 압축자료 조회 실패: " + ", ".join(errors))
-
-    df = pd.concat(frames, ignore_index=True)
-    code_col = "CFTC_Contract_Market_Code"
-    if code_col not in df.columns:
-        raise RuntimeError("CFTC history code column missing")
-
-    codes = (
-        df[code_col].astype(str)
-        .str.replace('"', "", regex=False)
-        .str.strip()
-        .str.replace(r"\.0$", "", regex=True)
-    )
-    df = df[codes == NQ_CFTC_CODE].copy()
-    if df.empty:
-        raise RuntimeError("CFTC history NASDAQ MINI rows missing")
-
-    date_col = next(
-        (x for x in ("Report_Date_as_YYYY-MM-DD", "Report_Date_as_MM_DD_YYYY") if x in df.columns),
-        None,
-    )
-    needed = [
-        "Open_Interest_All",
-        "Lev_Money_Positions_Long_All",
-        "Lev_Money_Positions_Short_All",
-    ]
-    if not date_col or any(x not in df.columns for x in needed):
-        raise RuntimeError("CFTC history required columns missing")
-
-    df["_date"] = pd.to_datetime(df[date_col], errors="coerce")
-    for col in needed:
-        df[col] = pd.to_numeric(df[col], errors="coerce")
-    df = df.dropna(subset=["_date", *needed]).sort_values("_date")
-    df = df.drop_duplicates(subset=["_date"], keep="last")
+    if frames:
+        df = pd.concat(frames, ignore_index=True)
+        code_col = "CFTC_Contract_Market_Code"
+        if code_col not in df.columns:
+            raise RuntimeError("CFTC history code column missing")
+        codes = (
+            df[code_col].astype(str)
+            .str.replace('"', "", regex=False)
+            .str.strip()
+            .str.replace(r"\.0$", "", regex=True)
+        )
+        df = df[codes == NQ_CFTC_CODE].copy()
+        if df.empty:
+            raise RuntimeError("CFTC history NASDAQ MINI rows missing")
+        date_col = next(
+            (x for x in ("Report_Date_as_YYYY-MM-DD", "Report_Date_as_MM_DD_YYYY") if x in df.columns),
+            None,
+        )
+        needed = [
+            "Open_Interest_All",
+            "Lev_Money_Positions_Long_All",
+            "Lev_Money_Positions_Short_All",
+        ]
+        if not date_col or any(x not in df.columns for x in needed):
+            raise RuntimeError("CFTC history required columns missing")
+        df["_date"] = pd.to_datetime(df[date_col], errors="coerce")
+        for col in needed:
+            df[col] = pd.to_numeric(df[col], errors="coerce")
+        df = df.dropna(subset=["_date", *needed]).sort_values("_date")
+        df = df.drop_duplicates(subset=["_date"], keep="last")
+    else:
+        # www.cftc.gov can block cloud runners. Public Reporting is an independent
+        # official CFTC path to the same TFF futures-only dataset.
+        df = _socrata_nq_history_frame()
+        loaded_years = sorted(set(int(x.year) for x in df["_date"]))
+        history_source = "CFTC Public Reporting Socrata gpe5-46if"
 
     if current_nq and current_period:
         try:
@@ -446,7 +503,8 @@ def cftc_nq_history_3y(current_nq=None, current_period=None):
         "leveraged_short_4w_change": int(round(diff(df3, "_gross_short", 4))) if diff(df3, "_gross_short", 4) is not None else None,
         "leveraged_net_1w_change": int(round(diff(df3, "_net", 1))) if diff(df3, "_net", 1) is not None else None,
         "leveraged_net_4w_change": int(round(diff(df3, "_net", 4))) if diff(df3, "_net", 4) is not None else None,
-        "history_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/HistoricalCompressed/index.htm",
+        "history_url": CFTC_HISTORY_INDEX,
+        "history_source": history_source,
         "download_errors": errors,
         "loaded_years": loaded_years,
         "ten_year_complete": ten_year_complete,
@@ -604,6 +662,134 @@ def _period_label(ts) -> str:
     return pd.Timestamp(ts).strftime("%B %d, %Y").replace(" 0", " ")
 
 
+def _parse_cftc_socrata_fallback(live_error: Exception | None = None):
+    """Official Public Reporting current-row fallback for Consolidated + NQ."""
+    rows = _socrata_rows({
+        "$order": "report_date_as_yyyy_mm_dd DESC",
+        "$limit": "1000",
+    }, timeout=60)
+    if not rows:
+        raise RuntimeError("CFTC Socrata current rows empty")
+
+    def dkey(row):
+        return str(row.get("report_date_as_yyyy_mm_dd") or "")[:10]
+
+    latest = max((dkey(r) for r in rows if dkey(r)), default="")
+    if not latest:
+        raise RuntimeError("CFTC Socrata current date missing")
+    same = [r for r in rows if dkey(r) == latest]
+
+    def code(row):
+        return str(row.get("cftc_contract_market_code") or "").replace('"', "").strip()
+
+    nq = next((r for r in same if code(r) == NQ_CFTC_CODE), None)
+    cons = next(
+        (
+            r for r in same
+            if "NASDAQ-100 Consolidated" in str(r.get("market_and_exchange_names") or "")
+        ),
+        None,
+    )
+    if cons is None:
+        cons = next((r for r in same if code(r).startswith("20974") and code(r) != NQ_CFTC_CODE), None)
+    if nq is None or cons is None:
+        raise RuntimeError(
+            f"CFTC Socrata latest markets missing: date={latest} consolidated={bool(cons)} nq={bool(nq)}"
+        )
+
+    def iv(row, key):
+        v = parse_num(row.get(key))
+        if v is None:
+            raise RuntimeError(f"CFTC Socrata missing {key}")
+        return int(v)
+
+    period = datetime.strptime(latest, "%Y-%m-%d").strftime("%B %d, %Y").replace(" 0", " ")
+    prev_iso = ""
+    prior_dates = sorted({dkey(r) for r in rows if dkey(r) and dkey(r) < latest}, reverse=True)
+    if prior_dates:
+        prev_iso = prior_dates[0]
+    prev_period = (
+        datetime.strptime(prev_iso, "%Y-%m-%d").strftime("%B %d, %Y").replace(" 0", " ")
+        if prev_iso else "확인 불가"
+    )
+
+    asset_long = iv(cons, "asset_mgr_positions_long")
+    asset_short = iv(cons, "asset_mgr_positions_short")
+    lev_long = iv(cons, "lev_money_positions_long")
+    lev_short = iv(cons, "lev_money_positions_short")
+    open_interest = iv(cons, "open_interest_all")
+
+    def change(row, key, current_key, market_code):
+        val = parse_num(row.get(key))
+        if val is not None:
+            return int(val)
+        if not prev_iso:
+            raise RuntimeError(f"CFTC Socrata no prior date for {key}")
+        prev = next((r for r in rows if dkey(r) == prev_iso and code(r) == market_code), None)
+        if prev is None:
+            raise RuntimeError(f"CFTC Socrata prior row missing for {market_code}")
+        return iv(row, current_key) - iv(prev, current_key)
+
+    ccode = code(cons)
+    asset_long_wow = change(cons, "change_in_asset_mgr_long", "asset_mgr_positions_long", ccode)
+    asset_short_wow = change(cons, "change_in_asset_mgr_short", "asset_mgr_positions_short", ccode)
+    lev_long_wow = change(cons, "change_in_lev_money_long", "lev_money_positions_long", ccode)
+    lev_short_wow = change(cons, "change_in_lev_money_short", "lev_money_positions_short", ccode)
+
+    metrics = {
+        "open_interest": open_interest,
+        "asset_long": asset_long,
+        "asset_short": asset_short,
+        "asset_net": asset_long - asset_short,
+        "asset_long_wow": asset_long_wow,
+        "asset_short_wow": asset_short_wow,
+        "asset_net_wow": asset_long_wow - asset_short_wow,
+        "lev_long": lev_long,
+        "lev_short": lev_short,
+        "lev_net": lev_long - lev_short,
+        "lev_long_wow": lev_long_wow,
+        "lev_short_wow": lev_short_wow,
+        "lev_net_wow": lev_long_wow - lev_short_wow,
+        "previous_period": prev_period,
+    }
+
+    nq_oi = iv(nq, "open_interest_all")
+    nq_long = iv(nq, "lev_money_positions_long")
+    nq_short = iv(nq, "lev_money_positions_short")
+    nq_long_wow = change(nq, "change_in_lev_money_long", "lev_money_positions_long", NQ_CFTC_CODE)
+    nq_short_wow = change(nq, "change_in_lev_money_short", "lev_money_positions_short", NQ_CFTC_CODE)
+    nq_oi_wow = change(nq, "change_in_open_interest_all", "open_interest_all", NQ_CFTC_CODE)
+    nqi = {
+        "contract": "NASDAQ MINI",
+        "cftc_code": NQ_CFTC_CODE,
+        "open_interest": nq_oi,
+        "open_interest_wow": nq_oi_wow,
+        "leveraged_long": nq_long,
+        "leveraged_short": nq_short,
+        "leveraged_net": nq_long - nq_short,
+        "leveraged_long_wow": nq_long_wow,
+        "leveraged_short_wow": nq_short_wow,
+        "leveraged_net_wow": nq_long_wow - nq_short_wow,
+        "short_share_oi_pct": nq_short / nq_oi * 100.0 if nq_oi else None,
+        "previous_period": prev_period,
+        "scope": "CFTC TFF NASDAQ MINI 전체시장 주간",
+    }
+
+    history_3y = cftc_nq_history_3y(nqi, period)
+    core = {"source": "CFTC", "kind": "cot", "period": period, "metrics": metrics}
+    return {
+        **core,
+        "url": CFTC_SOCRATA,
+        "fingerprint": fp(core),
+        "nq_mini": nqi,
+        "history_3y": history_3y,
+        "source_mode": "CFTC Public Reporting Socrata gpe5-46if",
+        "live_source_error": (
+            f"{type(live_error).__name__}: {live_error}" if live_error is not None else None
+        ),
+    }
+
+
 def _parse_cftc_compressed_fallback(live_error: Exception | None = None):
     df, source_url = _tff_latest_rows_from_compressed()
 
@@ -717,12 +903,19 @@ def _parse_cftc_compressed_fallback(live_error: Exception | None = None):
 
 
 def parse_cftc():
+    live_exc = None
     try:
         out = _parse_cftc_live()
         out["source_mode"] = "CFTC TFF live HTML"
         return out
-    except Exception as live_exc:
-        return _parse_cftc_compressed_fallback(live_exc)
+    except Exception as exc:
+        live_exc = exc
+    try:
+        return _parse_cftc_socrata_fallback(live_exc)
+    except Exception as socrata_exc:
+        out = _parse_cftc_compressed_fallback(live_exc)
+        out["socrata_error"] = f"{type(socrata_exc).__name__}: {socrata_exc}"
+        return out
 
 
 def parse_cboe_section(text, heading, next_heading=None, required_time="03:15 PM"):
