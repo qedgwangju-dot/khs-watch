@@ -37,6 +37,30 @@ def extract_source_urls(text: str) -> list[str]:
     return urls
 
 
+def prepare_for_translation(original: str) -> tuple[str, list[str]]:
+    urls = extract_source_urls(original)
+    prepared = original
+    for index, url in enumerate(urls, start=1):
+        prepared = prepared.replace(
+            SOURCE_PREFIX + url,
+            SOURCE_PREFIX + f"__SOURCE_URL_{index:04d}__",
+            1,
+        )
+    return prepared, urls
+
+
+def restore_source_urls(translated: str, urls: list[str]) -> str:
+    restored = translated
+    for index, url in enumerate(urls, start=1):
+        token = f"__SOURCE_URL_{index:04d}__"
+        if token not in restored:
+            raise ValueError(f"source URL placeholder missing after translation: {token}")
+        restored = restored.replace(token, url, 1)
+    if re.search(r"__SOURCE_URL_\\d{4}__", restored):
+        raise ValueError("unexpected source URL placeholder remains")
+    return restored
+
+
 def tags(text: str) -> list[str]:
     return [line.strip() for line in text.splitlines() if TAG_RE.match(line.strip())]
 
@@ -87,6 +111,15 @@ def validate_korean_translation(original: str, translated: str) -> None:
 
 
 def main() -> int:
+    if len(sys.argv) == 4 and sys.argv[1] == "--prepare":
+        original_path = pathlib.Path(sys.argv[2])
+        output_path = pathlib.Path(sys.argv[3])
+        original = original_path.read_text(encoding="utf-8")
+        prepared, _ = prepare_for_translation(original)
+        output_path.write_text(prepared.rstrip() + "\\n", encoding="utf-8")
+        print("space_launch_translation_prepared=true")
+        return 0
+
     if len(sys.argv) == 2 and sys.argv[1] == "--self-test":
         original = (
             "🚀 우주 발사 병목 웹감시\\n"
@@ -104,13 +137,20 @@ def main() -> int:
             "• 검증: 공식자료 | 출처: Rocket Lab\\n"
             "• 원문: https://example.com/a?x=1&y=2\\n"
         )
-        validate_korean_translation(original, translated)
+        prepared, urls = prepare_for_translation(original)
+        assert "__SOURCE_URL_0001__" in prepared
+        translated_prepared = translated.replace(
+            "https://example.com/a?x=1&y=2",
+            "__SOURCE_URL_0001__",
+        )
+        restored = restore_source_urls(translated_prepared, urls)
+        validate_korean_translation(original, restored)
         print("space_launch_korean_translation_self_test=ok")
         return 0
 
     if len(sys.argv) != 4:
         print(
-            "usage: validate_space_launch_korean.py ORIGINAL TRANSLATED DESTINATION | --self-test",
+            "usage: validate_space_launch_korean.py ORIGINAL TRANSLATED DESTINATION | --prepare ORIGINAL OUTPUT | --self-test",
             file=sys.stderr,
         )
         return 2
@@ -121,6 +161,8 @@ def main() -> int:
 
     original = original_path.read_text(encoding="utf-8")
     translated = clean_model_output(translated_path.read_text(encoding="utf-8"))
+    urls = extract_source_urls(original)
+    translated = restore_source_urls(translated, urls)
     validate_korean_translation(original, translated)
 
     destination_path.write_text(translated.rstrip() + "\\n", encoding="utf-8")
