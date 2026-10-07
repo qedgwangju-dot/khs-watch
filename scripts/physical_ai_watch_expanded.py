@@ -25,10 +25,12 @@ ext = readable.ext
 base = readable.base
 
 NVIDIA_FOXCONN_GB300_RECOVERY_SENTINEL = 'DIRECT_NVIDIA_FOXCONN_GB300_FACTORY_KPI_20261005'
+NVIDIA_MADISON_KOREA_CONFIRM_RECOVERY_SENTINEL = 'DIRECT_NVIDIA_MADISON_KOREA_CONFIRM_20261007'
 _orig_query_news = base.query_news
 
 base.QUERIES.extend([
     NVIDIA_FOXCONN_GB300_RECOVERY_SENTINEL,
+    NVIDIA_MADISON_KOREA_CONFIRM_RECOVERY_SENTINEL,
     '(삼현 OR SAMHYUN) (휴머노이드 OR humanoid OR 로봇 OR robot) (액추에이터 OR actuator OR 모터 OR 감속기 OR 제어기) (20곳 OR 20개 OR 4건 OR 프로토타입 OR prototype OR 양산 OR 수주 OR 고객 OR 공급)',
     '(삼현 OR SAMHYUN) (액추에이터 OR actuator) (생산능력 OR capacity OR 50만 OR 100만 OR 150만 OR 창원 2공장 OR 5PPM)',
     '(삼현 OR SAMHYUN) (AXLON OR 액슬론 OR 휴머노이드) (초도 양산 OR 양산 수주 OR 북미 OR 12월 OR 첫 출하 OR 후속 발주 OR 추가 수주)',
@@ -77,7 +79,28 @@ def _gb300_factory_kpi_recovery() -> list[dict]:
     }]
 
 
+def _madison_korea_attendance_recovery() -> list[dict]:
+    return [{
+        'title': "[단독] 매디슨 황, 11월 방한 확정…한국 기업과 '피지컬 AI' 협력 주목",
+        'link': 'https://www.mt.co.kr/index.php/tech/2026/10/07/2026100618010617114',
+        'description': (
+            'MoneyToday reported on 2026-10-07, citing ICT industry sources, that Madison Huang attendance at '
+            'NVIDIA AI Day Seoul 2026 on November 9-10 has recently been confirmed. The report says she is not '
+            'scheduled for a separate speaking session but is expected to participate in key meetings and event schedules. '
+            'NVIDIA official event materials confirm the Seoul event dates and physical AI/robotics program, while Madison '
+            'Huang is not currently listed there as a speaker. Treat this as trusted-media attendance confirmation, not '
+            'NVIDIA/Madison first-party confirmation and not as a Korean-company MOU, pilot, deployment or contract.'
+        ),
+        'published': '2026-10-06T21:00:00+00:00',
+        'source': 'MoneyToday',
+        'direct_recovery': True,
+        'reported_attendance_confirmation': True,
+    }]
+
+
 def query_news(q: str) -> list[dict]:
+    if q == NVIDIA_MADISON_KOREA_CONFIRM_RECOVERY_SENTINEL:
+        return _madison_korea_attendance_recovery()
     if q == NVIDIA_FOXCONN_GB300_RECOVERY_SENTINEL:
         return _gb300_factory_kpi_recovery()
     return _orig_query_news(q)
