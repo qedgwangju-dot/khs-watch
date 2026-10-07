@@ -53,7 +53,7 @@ FR_BASE_FR = "https://www.banque-france.fr/fr/statistiques/taux-et-cours/indices
 DE_CSV = "https://api.statistiken.bundesbank.de/rest/data/BBSSY/D.REN.EUR.A630.000000WT1010.A?format=csv&lang=en"
 DE_PAGE = "https://www.bundesbank.de/en/statistics/money-and-capital-markets/interest-rates-and-yields/daily-yields-of-current-federal-securities-772220"
 UK_SERIES = "IUDMNPY"
-UK_VIEW = "https://www.bankofengland.co.uk/boeapps/database/fromshowcolumns.asp"
+UK_VIEW = "https://www.bankofengland.co.uk/boeapps/database/fromshowcolumns.asp"\nUK_CSV = "https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp"
 UA = "khs-watch-europe-sovereign-yield/1.0"
 
 FR_LEVELS = [4.50, 4.75, 5.00]
@@ -278,25 +278,39 @@ def parse_delimited(text: str) -> list[dict[str, str]]:
 
 
 def parse_germany(text: str, source: str) -> list[Obs]:
-    rows = parse_delimited(text)
     out = []
+
+    # Official Bundesbank CSV: metadata first, then YYYY-MM-DD,value,flags.
+    for line in text.replace("\ufeff", "").splitlines():
+        m = re.match(
+            r'^"?([0-9]{4}-[0-9]{2}-[0-9]{2})"?[,;\\t]+"?([+-]?[0-9]+(?:[.,][0-9]+)?)"?(?:[,;\\t]|$)',
+            line.strip(),
+        )
+        if not m:
+            continue
+        ds, raw = m.groups()
+        try:
+            out.append(Obs("de10", "독일 10년", ds, float(raw.replace(",", ".")), source))
+        except Exception:
+            pass
+
+    if out:
+        dedup = {x.date: x for x in out}
+        return sorted(dedup.values(), key=lambda x: x.date)
+
+    # Fallback for SDMX-like exports with explicit observation headers.
+    rows = parse_delimited(text)
     for row in rows:
         keys = {re.sub(r"[^A-Z0-9_]", "", k.upper()): k for k in row}
         date_key = next((keys[x] for x in ("TIME_PERIOD", "DATE", "TIMEPERIOD") if x in keys), None)
         value_key = next((keys[x] for x in ("OBS_VALUE", "VALUE", "OBSVALUE") if x in keys), None)
-        if date_key is None or value_key is None:
-            # Bundesbank CSV variants may put the observation in the last numeric column.
-            candidates = list(row)
-            date_key = next((k for k in candidates if re.search(r"TIME|DATE", k, re.I)), None)
-            value_key = next((k for k in candidates if re.search(r"OBS.*VALUE|VALUE", k, re.I)), None)
         if date_key is None or value_key is None:
             continue
         ds = row.get(date_key, "")
         raw = row.get(value_key, "").replace(",", ".")
         try:
             d = dt.date.fromisoformat(ds[:10]).isoformat()
-            v = float(raw)
-            out.append(Obs("de10", "독일 10년", d, v, source))
+            out.append(Obs("de10", "독일 10년", d, float(raw), source))
         except Exception:
             continue
     dedup = {x.date: x for x in out}
