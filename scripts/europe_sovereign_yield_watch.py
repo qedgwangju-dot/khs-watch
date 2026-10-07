@@ -211,7 +211,7 @@ def uk_csv_url(now: dt.datetime) -> str:
 def parse_uk_csv(text: str, source: str) -> list[Obs]:
     rows = []
     # Accept both CSV and tab-delimited exports and several official date styles.
-    for line in text.replace("\\ufeff", "").splitlines():
+    for line in text.replace("\ufeff", "").splitlines():
         m = re.search(r"(\\d{1,2}[ /-][A-Za-z]{3}[ /-]\\d{2,4}|\\d{4}-\\d{2}-\\d{2})[^0-9+-]+([+-]?\\d+(?:[.,]\\d+)?)\\s*$", line.strip())
         if not m:
             continue
@@ -260,7 +260,7 @@ def fetch_uk(now: dt.datetime) -> list[Obs]:
 
 
 def parse_delimited(text: str) -> list[dict[str, str]]:
-    lines = text.replace("\\ufeff", "").splitlines()
+    lines = text.replace("\ufeff", "").splitlines()
     for delimiter in (";", ",", "\t"):
         for start in range(min(120, len(lines))):
             header = [x.strip().strip('"') for x in lines[start].split(delimiter)]
@@ -268,7 +268,7 @@ def parse_delimited(text: str) -> list[dict[str, str]]:
             if not ({"TIME_PERIOD", "OBS_VALUE"} <= normalized or {"DATE", "IUDMNPY"} <= normalized):
                 continue
             try:
-                reader = csv.DictReader(io.StringIO("\\n".join(lines[start:])), delimiter=delimiter)
+                reader = csv.DictReader(io.StringIO("\n".join(lines[start:])), delimiter=delimiter)
                 rows = list(reader)
                 if reader.fieldnames and rows:
                     return [{str(k or "").strip().strip('"'): str(v or "").strip().strip('"') for k, v in row.items()} for row in rows]
