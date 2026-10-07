@@ -77,7 +77,7 @@ class EuropeSovereignYieldWatchTests(unittest.TestCase):
         )
         self.assertIn("ECB 정책금리와 별개", body)
         self.assertIn("동일 시장자료", body)
-        self.assertIn("프랑스 10년 5.00%", body)
+        self.assertIn("프랑스 TEC10 5.00%", body)
         self.assertIn("유럽 국채금리 경보", title)
         self.assertTrue(detail["signature"])
 
