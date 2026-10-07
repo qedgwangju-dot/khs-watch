@@ -1710,6 +1710,25 @@
       "telegram_core_fact": "주주환원이 꾸준히 이어지는지, 실제로 벌어들인 현금 흐름을 바탕으로 하는지, 발표에 그치지 않고 자사주 소각 등 실제 행동으로 연결되는지를 본다는 것이다.",
       "title": "\"코리아 디스카운트 해소, 주주환원 지속에 답 있다\""
     },
+    "core:37770830b6b3ccd1f99f0035": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632489",
+      "source": "이투데이",
+      "source_body_digest": "0c57cf0c79cf643c0dec9a69eebf8777a0441b26335d6f0ca8143dd0ca4a4f3f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:984e0f6c8268f212a841a85a37216a528823ae94b085110663332869d9202a3b",
+      "source_fact_keys": [
+        "source_fact:v1:64913b11cc3084db53f42c6a54868de217352b2e73a0901dd025f7a738fc1426"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "“신약도 AI로 만든다”…빅파마·바이오텍, 커지는 R&D 격차[AI 新계급사회]",
+      "telegram_core_fact": "하지만 막대한 자본과 데이터를 보유한 글로벌 빅파마가 AI 투자를 확대하면서 중소 바이오벤처와의 R&D 격차가 더욱 벌어질 수 있다는 전망도 나온다.",
+      "title": "“신약도 AI로 만든다”…빅파마·바이오텍, 커지는 R&D 격차[AI 新계급사회]"
+    },
     "core:38516ab0ff2022516cee54f7": {
       "first_seen_kst": "2026-10-07T16:15:21+09:00",
       "lanes": {
@@ -2272,6 +2291,25 @@
       "telegram_core_fact": "최근 반도체 특수로 경기 동남권 주택 가격이 가파르게 오르고 있는 만큼 신규 분양 단지에 대한 수요자 관심이 이어질 것으로 전망된다.",
       "title": "‘청약 불패’ 성남·과천·동탄서 신규 분양 잇따라"
     },
+    "core:4f37b64e57c66a6db8869ab6": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003818134",
+      "source": "뉴시스",
+      "source_body_digest": "62c7456a0b3ff003d311ade8e2fa5db1cf3b31fab298ed4479d2ca9b89734b4f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3cb9a8f9f05e898cd0a9e811a7fe21317778685bcb507f2ac2b4eb00a4150217",
+      "source_fact_keys": [
+        "source_fact:v1:ff0ed80168a9e706789ba192228ca6d3041a22d6eda56fb3bf17379baeffe27e"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "'세상에 없던 테마파크, 그 이상' 정용진의 '워너 인수 투자' 그림은",
+      "telegram_core_fact": "신세계그룹에 따르면 신세계프라퍼티는 데이비드 엘리슨 스카이댄스 공동 최고경영자(CEO), 미국 투자운용사 레드버드 등, 추진하는 워너브라더스 인수에 투자한다.",
+      "title": "'세상에 없던 테마파크, 그 이상' 정용진의 '워너 인수 투자' 그림은"
+    },
     "core:50e8f390f2afd9b1a5a424fb": {
       "first_seen_kst": "2026-10-07T14:56:20+09:00",
       "lanes": {
@@ -2546,6 +2584,23 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-07T11:21+09:00",
       "title": "엔키AX, AI챗 이용 확대… 플랫폼 결제자당 평균 결제액 약 18% 상승"
+    },
+    "core:60204954bd72bacc99903e7b": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2630023",
+      "source": "이투데이",
+      "source_body_digest": "2a83b4400c377a71d0ca435de1cc7325e301f0d23bd129ba1e62665572b4b330",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "오늘 밤 노벨문학상 발표…김혜순·애트우드·찬쉐·머네인 등 거론",
+      "telegram_core_fact": "애트우드의 저서 판매량은 예스24에서 지난 8월 전월보다 28.5% 증가했다. 찬쉐와 머네인의 책은 과거 수상자 발표 시기에 판매량이 크게 늘었다.",
+      "title": "오늘 밤 노벨문학상 발표…김혜순·애트우드·찬쉐·머네인 등 거론"
     },
     "core:60a06781786d7b7aa87e5642": {
       "first_seen_kst": "2026-10-07T15:44:50+09:00",
@@ -3097,6 +3152,23 @@
       ],
       "source_published_kst": "2026-10-07T09:44+09:00",
       "title": "장인화 회장 '자원 승부수' 결실…포스코홀딩스, 아르헨 리튬 2공장 준공"
+    },
+    "core:7693afea6755e52609a95e0a": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008005800072",
+      "source": "연합뉴스",
+      "source_body_digest": "15304d485b220280c581ad48a17e10ee5585ba4016eade0e5578dc9b886da0ad",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T04:47+09:00",
+      "source_title": "국제유가, IEA 비축유 방출 가속에 하락…WTI 1.3%↓ | 연합뉴스",
+      "telegram_core_fact": "국제에너지기구(IEA)가 비축유 방출을 앞당기기로 하면서 7일(현지시간) 국제유가가 하락했다.",
+      "title": "국제유가, IEA 비축유 방출 가속에 하락…WTI 1.3%↓ | 연합뉴스"
     },
     "core:77cc97562c8eb4b87f55a927": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
@@ -4633,6 +4705,27 @@
       "telegram_core_fact": "국내 중견 해운사 장금상선이 종합물류기업 (주)한진 지분을 5% 이상 확보하면서 투자 배경에 관심이 쏠리고 있다.",
       "title": "장금상선, 한진 지분 5.58% 확보…20년 물류동맹 더 끈끈해지나"
     },
+    "core:ae099cd1c153ff71e978aaa3": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817414",
+      "source": "뉴시스",
+      "source_body_digest": "bf111c62915ca3cd4a69b2be1f7d27864f9aa5d11c508c32df575c1ef135c0c8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cc0e240f556672664cf5c159e856da2b20ec61851fb04e3c0e05f53f658b3374",
+      "source_fact_keys": [
+        "source_fact:v1:57fe685d52821c6de4b4d26aef16bc52e20107e932286794b61bbe0b3a1d7ed0",
+        "source_fact:v1:6a7264735db5fde9cc2c8c02c528822dc1b29f309c62cebca0cf6ce26678cfc5",
+        "source_fact:v1:b31129746af7a6a6225c75e44292b1b5af4c70eea73fdfb7fe1ede40b4f7b4c1"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "삼성전자, 올 3분기 실적 오늘 발표…韓기업 사상 첫 영업익 '100조' 달성하나",
+      "telegram_core_fact": "삼성전자가 올해 3분기 성적표를 발표하는 가운데, 메모리 반도체 호황에 힘입어 국내 기업 사상 최초로 분기 영업이익 100조원을 달성할 지 주목된다.",
+      "title": "삼성전자, 올 3분기 실적 오늘 발표…韓기업 사상 첫 영업익 '100조' 달성하나"
+    },
     "core:aeac5b3f8e6f164757c3ac50": {
       "first_seen_kst": "2026-10-07T13:41:41+09:00",
       "lanes": {
@@ -5617,6 +5710,25 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-07T12:21+09:00",
       "title": "[종합] LG전자, 3분기 누적 매출 70조ㆍ영업익 4조 첫 돌파"
+    },
+    "core:d1d4e2bc6f25aa5ef4c160eb": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100717434794610",
+      "source": "머니투데이",
+      "source_body_digest": "0dcc35757d4fdd6c5692dec0f7fcf5106c49086761b451ddedb28b766dc95800",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2a5b0129f6daace5783d3b349d7f25dc54c804ad94b689c7dc699b2e83f68c58",
+      "source_fact_keys": [
+        "source_fact:v1:bf7d2c81e1c55a17a19c3cf3bdb743f92a63e0edddcaa0676a812574abc40037"
+      ],
+      "source_published_kst": "2026-10-07T18:17+09:00",
+      "source_title": "에피소드컴퍼니, 160억 규모 유상증자 결정…자본 확충·성장재원 확보",
+      "telegram_core_fact": "에피소드컴퍼니는 이번 유상증자로 조달할 자금을 활용해 콘텐츠, IP·매니지먼트, 커머스 사업에 대한 투자를 이어가며 성장 기반을 강화할 계획이다.",
+      "title": "에피소드컴퍼니, 160억 규모 유상증자 결정…자본 확충·성장재원 확보"
     },
     "core:d1e32d13f1fdc51635f48f8b": {
       "first_seen_kst": "2026-10-08T03:13:06+09:00",
@@ -7661,6 +7773,25 @@
       "source_published_kst": "2026-10-06T13:51+09:00",
       "title": "코스피, 반도체 약세에 6900선으로…코스닥은 2%대 뛰며 900선 돌파"
     },
+    "event:16cedc29d0ecae3136e09f54": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632489",
+      "source": "이투데이",
+      "source_body_digest": "0c57cf0c79cf643c0dec9a69eebf8777a0441b26335d6f0ca8143dd0ca4a4f3f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:984e0f6c8268f212a841a85a37216a528823ae94b085110663332869d9202a3b",
+      "source_fact_keys": [
+        "source_fact:v1:64913b11cc3084db53f42c6a54868de217352b2e73a0901dd025f7a738fc1426"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "“신약도 AI로 만든다”…빅파마·바이오텍, 커지는 R&D 격차[AI 新계급사회]",
+      "telegram_core_fact": "하지만 막대한 자본과 데이터를 보유한 글로벌 빅파마가 AI 투자를 확대하면서 중소 바이오벤처와의 R&D 격차가 더욱 벌어질 수 있다는 전망도 나온다.",
+      "title": "“신약도 AI로 만든다”…빅파마·바이오텍, 커지는 R&D 격차[AI 新계급사회]"
+    },
     "event:16f0a33950b9d34aa55034f8": {
       "first_seen_kst": "2026-10-02T03:33:19+09:00",
       "lanes": {
@@ -9225,22 +9356,21 @@
     "event:4ba92d539128333cf55740c9": {
       "first_seen_kst": "2026-10-07T06:12:17+09:00",
       "lanes": {
-        "live": "2026-10-08T03:51:03+09:00"
+        "live": "2026-10-08T05:01:11+09:00"
       },
-      "last_seen_kst": "2026-10-08T03:51:03+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12170783",
-      "source": "매일경제",
-      "source_body_digest": "0a8cebf1fcfc440212a3d9cc465033a5279e42427dcf2d853073bf5d2b22d633",
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100717434794610",
+      "source": "머니투데이",
+      "source_body_digest": "0dcc35757d4fdd6c5692dec0f7fcf5106c49086761b451ddedb28b766dc95800",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:9c999e85af9a871d9046f16a385ae22ae342698778738b986ab70a195b6cb837",
+      "source_fact_identity": "source_facts:v1:2a5b0129f6daace5783d3b349d7f25dc54c804ad94b689c7dc699b2e83f68c58",
       "source_fact_keys": [
-        "source_fact:v1:1e09c286b3701f7dd123655017099bbd86ad0d1588f13db53c9ee379895a136f",
-        "source_fact:v1:2bd0c1f82b9afac4ca8961ac6051ca893c48a1ddf9c038476a06e440163a9e26"
+        "source_fact:v1:bf7d2c81e1c55a17a19c3cf3bdb743f92a63e0edddcaa0676a812574abc40037"
       ],
-      "source_published_kst": "2026-10-07T17:57+09:00",
-      "source_title": "워너브라더스 투자 나선 신세계프라퍼티, 메리츠서 1조 조달",
-      "telegram_core_fact": "투자은행(IB) 업계에 따르면 신세계프라퍼티는 메리츠증권을 상대로 약 1조원 사모사채를 발행할 예정인 것으로 알려졌다. 이마트는 지난 6일 종속회사를 통해 파라마운트 스카이댄스와 WBD 합병 과정에서 발행되는 신주에 10억달러(약 1조3596억원)를 간접 투자한다고 공시했다.",
-      "title": "워너브라더스 투자 나선 신세계프라퍼티, 메리츠서 1조 조달"
+      "source_published_kst": "2026-10-07T18:17+09:00",
+      "source_title": "에피소드컴퍼니, 160억 규모 유상증자 결정…자본 확충·성장재원 확보",
+      "telegram_core_fact": "에피소드컴퍼니는 이번 유상증자로 조달할 자금을 활용해 콘텐츠, IP·매니지먼트, 커머스 사업에 대한 투자를 이어가며 성장 기반을 강화할 계획이다.",
+      "title": "에피소드컴퍼니, 160억 규모 유상증자 결정…자본 확충·성장재원 확보"
     },
     "event:4c60ef5885703c4873ef90e7": {
       "first_seen_kst": "2026-10-05T07:03:44+09:00",
@@ -12021,6 +12151,27 @@
       "source": "뉴시스",
       "title": "고려아연 '프로젝트 크루서블' 美 환경평가 통과…\"친환경 제련소 구축 탄력\""
     },
+    "event:a9c0dc518f880d430bbcffd6": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817414",
+      "source": "뉴시스",
+      "source_body_digest": "bf111c62915ca3cd4a69b2be1f7d27864f9aa5d11c508c32df575c1ef135c0c8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cc0e240f556672664cf5c159e856da2b20ec61851fb04e3c0e05f53f658b3374",
+      "source_fact_keys": [
+        "source_fact:v1:57fe685d52821c6de4b4d26aef16bc52e20107e932286794b61bbe0b3a1d7ed0",
+        "source_fact:v1:6a7264735db5fde9cc2c8c02c528822dc1b29f309c62cebca0cf6ce26678cfc5",
+        "source_fact:v1:b31129746af7a6a6225c75e44292b1b5af4c70eea73fdfb7fe1ede40b4f7b4c1"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "삼성전자, 올 3분기 실적 오늘 발표…韓기업 사상 첫 영업익 '100조' 달성하나",
+      "telegram_core_fact": "삼성전자가 올해 3분기 성적표를 발표하는 가운데, 메모리 반도체 호황에 힘입어 국내 기업 사상 최초로 분기 영업이익 100조원을 달성할 지 주목된다.",
+      "title": "삼성전자, 올 3분기 실적 오늘 발표…韓기업 사상 첫 영업익 '100조' 달성하나"
+    },
     "event:a9dc5b3e4c7e6aef4cecc596": {
       "first_seen_kst": "2026-09-27T19:02:46+09:00",
       "lanes": {
@@ -12489,6 +12640,23 @@
       "link": "https://www.mk.co.kr/news/politics/12161571",
       "source": "매일경제",
       "title": "李대통령, 멕시코 ‘K엑스포’ 방문…“관세 얼마나 올랐나”"
+    },
+    "event:ba788d3209221bdc009f8f7e": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008005800072",
+      "source": "연합뉴스",
+      "source_body_digest": "15304d485b220280c581ad48a17e10ee5585ba4016eade0e5578dc9b886da0ad",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T04:47+09:00",
+      "source_title": "국제유가, IEA 비축유 방출 가속에 하락…WTI 1.3%↓ | 연합뉴스",
+      "telegram_core_fact": "국제에너지기구(IEA)가 비축유 방출을 앞당기기로 하면서 7일(현지시간) 국제유가가 하락했다.",
+      "title": "국제유가, IEA 비축유 방출 가속에 하락…WTI 1.3%↓ | 연합뉴스"
     },
     "event:ba92964c9b95ffb842e33659": {
       "first_seen_kst": "2026-09-21T16:48:31+09:00",
@@ -26012,6 +26180,25 @@
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "\"일주일새 12% 올랐다\"…전고체 ETF 뛰는데 뭉칫돈 향한 곳은"
     },
+    "fact:79cfd590a9604ba6b025c896": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100717434794610",
+      "source": "머니투데이",
+      "source_body_digest": "0dcc35757d4fdd6c5692dec0f7fcf5106c49086761b451ddedb28b766dc95800",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2a5b0129f6daace5783d3b349d7f25dc54c804ad94b689c7dc699b2e83f68c58",
+      "source_fact_keys": [
+        "source_fact:v1:bf7d2c81e1c55a17a19c3cf3bdb743f92a63e0edddcaa0676a812574abc40037"
+      ],
+      "source_published_kst": "2026-10-07T18:17+09:00",
+      "source_title": "에피소드컴퍼니, 160억 규모 유상증자 결정…자본 확충·성장재원 확보",
+      "telegram_core_fact": "에피소드컴퍼니는 이번 유상증자로 조달할 자금을 활용해 콘텐츠, IP·매니지먼트, 커머스 사업에 대한 투자를 이어가며 성장 기반을 강화할 계획이다.",
+      "title": "에피소드컴퍼니, 160억 규모 유상증자 결정…자본 확충·성장재원 확보"
+    },
     "fact:79fafb0954e9fa8c746fd858": {
       "first_seen_kst": "2026-10-07T23:50:27+09:00",
       "lanes": {
@@ -31656,6 +31843,27 @@
       "source_published_kst": "2026-10-06T09:53+09:00",
       "title": "예멘 후티군 사우디 전역 미사일 무인기공격.. 사우디 군은 홍해 승리 주장"
     },
+    "fact:b6a6fd525a97fcb64154cdb7": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817414",
+      "source": "뉴시스",
+      "source_body_digest": "bf111c62915ca3cd4a69b2be1f7d27864f9aa5d11c508c32df575c1ef135c0c8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cc0e240f556672664cf5c159e856da2b20ec61851fb04e3c0e05f53f658b3374",
+      "source_fact_keys": [
+        "source_fact:v1:57fe685d52821c6de4b4d26aef16bc52e20107e932286794b61bbe0b3a1d7ed0",
+        "source_fact:v1:6a7264735db5fde9cc2c8c02c528822dc1b29f309c62cebca0cf6ce26678cfc5",
+        "source_fact:v1:b31129746af7a6a6225c75e44292b1b5af4c70eea73fdfb7fe1ede40b4f7b4c1"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "삼성전자, 올 3분기 실적 오늘 발표…韓기업 사상 첫 영업익 '100조' 달성하나",
+      "telegram_core_fact": "삼성전자가 올해 3분기 성적표를 발표하는 가운데, 메모리 반도체 호황에 힘입어 국내 기업 사상 최초로 분기 영업이익 100조원을 달성할 지 주목된다.",
+      "title": "삼성전자, 올 3분기 실적 오늘 발표…韓기업 사상 첫 영업익 '100조' 달성하나"
+    },
     "fact:b6ad89006e587c55f32422ac": {
       "first_seen_kst": "2026-10-07T17:10:43+09:00",
       "lanes": {
@@ -33874,6 +34082,25 @@
       "source_published_kst": "2026-10-07T14:04+09:00",
       "title": "[누리호 성공] 최다 위성 싣고 우주로…'군집위성 시대' 열었다 | 연합뉴스"
     },
+    "fact:d1189177505758d8b386d63a": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003818134",
+      "source": "뉴시스",
+      "source_body_digest": "62c7456a0b3ff003d311ade8e2fa5db1cf3b31fab298ed4479d2ca9b89734b4f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3cb9a8f9f05e898cd0a9e811a7fe21317778685bcb507f2ac2b4eb00a4150217",
+      "source_fact_keys": [
+        "source_fact:v1:ff0ed80168a9e706789ba192228ca6d3041a22d6eda56fb3bf17379baeffe27e"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "'세상에 없던 테마파크, 그 이상' 정용진의 '워너 인수 투자' 그림은",
+      "telegram_core_fact": "신세계그룹에 따르면 신세계프라퍼티는 데이비드 엘리슨 스카이댄스 공동 최고경영자(CEO), 미국 투자운용사 레드버드 등, 추진하는 워너브라더스 인수에 투자한다.",
+      "title": "'세상에 없던 테마파크, 그 이상' 정용진의 '워너 인수 투자' 그림은"
+    },
     "fact:d120feece4ab0cf339c2245f": {
       "first_seen_kst": "2026-10-07T18:44:00+09:00",
       "lanes": {
@@ -34351,6 +34578,25 @@
       "source_title": "“엔비디아 살 걸”…반도체 호황이라더니 삼전닉스 주주 속 탄다",
       "telegram_core_fact": "알파벳과 아마존의 자체 AI 반도체에 들어가는 메모리 수요와 엔비디아의 차세대 플랫폼 출시가 HBM 수요 강세를 이어갈 것으로 전망했다.",
       "title": "“엔비디아 살 걸”…반도체 호황이라더니 삼전닉스 주주 속 탄다"
+    },
+    "fact:d520f2c3b43387121624ee40": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632489",
+      "source": "이투데이",
+      "source_body_digest": "0c57cf0c79cf643c0dec9a69eebf8777a0441b26335d6f0ca8143dd0ca4a4f3f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:984e0f6c8268f212a841a85a37216a528823ae94b085110663332869d9202a3b",
+      "source_fact_keys": [
+        "source_fact:v1:64913b11cc3084db53f42c6a54868de217352b2e73a0901dd025f7a738fc1426"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "“신약도 AI로 만든다”…빅파마·바이오텍, 커지는 R&D 격차[AI 新계급사회]",
+      "telegram_core_fact": "하지만 막대한 자본과 데이터를 보유한 글로벌 빅파마가 AI 투자를 확대하면서 중소 바이오벤처와의 R&D 격차가 더욱 벌어질 수 있다는 전망도 나온다.",
+      "title": "“신약도 AI로 만든다”…빅파마·바이오텍, 커지는 R&D 격차[AI 新계급사회]"
     },
     "fact:d52a0cec46372f917de24de1": {
       "first_seen_kst": "2026-10-07T18:44:00+09:00",
@@ -40821,6 +41067,25 @@
       "source_published_kst": "2026-10-07T10:21+09:00",
       "title": "현대엔지니어링, 인천 데이터센터 공사 수주…총 8700억원 규모"
     },
+    "link:10f98eb81662d293d90a28fe": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003818134",
+      "source": "뉴시스",
+      "source_body_digest": "62c7456a0b3ff003d311ade8e2fa5db1cf3b31fab298ed4479d2ca9b89734b4f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3cb9a8f9f05e898cd0a9e811a7fe21317778685bcb507f2ac2b4eb00a4150217",
+      "source_fact_keys": [
+        "source_fact:v1:ff0ed80168a9e706789ba192228ca6d3041a22d6eda56fb3bf17379baeffe27e"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "'세상에 없던 테마파크, 그 이상' 정용진의 '워너 인수 투자' 그림은",
+      "telegram_core_fact": "신세계그룹에 따르면 신세계프라퍼티는 데이비드 엘리슨 스카이댄스 공동 최고경영자(CEO), 미국 투자운용사 레드버드 등, 추진하는 워너브라더스 인수에 투자한다.",
+      "title": "'세상에 없던 테마파크, 그 이상' 정용진의 '워너 인수 투자' 그림은"
+    },
     "link:110a1e2f409edae424fe8b71": {
       "first_seen_kst": "2026-10-02T07:42:52+09:00",
       "lanes": {
@@ -42137,6 +42402,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T06:15+09:00",
       "title": "HBM에 호남까지 갈길 바쁜 SK하이닉스…솔리다임 자금조달 고심 | 연합뉴스"
+    },
+    "link:18d7cf49f67121505a78022b": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.hankyung.com/article/202610078998i",
+      "source": "한국경제",
+      "source_body_digest": "65c9d1071b259254b3e4e7db32c984949435f0209e5daa27cdd05254bb49dbdc",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T17:08+09:00",
+      "source_title": "국토장관 \"올해 수도권 착공 목표 최대 88% 달성\"",
+      "telegram_core_fact": "정부는 신규 택지의 착공 기간을 37개월로 줄여 공급 시점을 앞당기기로 했다.",
+      "title": "국토장관 \"올해 수도권 착공 목표 최대 88% 달성\""
     },
     "link:18e3309135f5c87c850cf3dc": {
       "first_seen_kst": "2026-10-07T18:12:46+09:00",
@@ -58540,6 +58822,23 @@
       "source_published_kst": "2026-10-05T05:18+09:00",
       "title": "“국산 AI반도체, 실험실 넘어 전력현장으로”…K-Perf 첫 적용"
     },
+    "link:7e5edaf005d5854e59f0aa5a": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008005800072",
+      "source": "연합뉴스",
+      "source_body_digest": "15304d485b220280c581ad48a17e10ee5585ba4016eade0e5578dc9b886da0ad",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T04:47+09:00",
+      "source_title": "국제유가, IEA 비축유 방출 가속에 하락…WTI 1.3%↓ | 연합뉴스",
+      "telegram_core_fact": "국제에너지기구(IEA)가 비축유 방출을 앞당기기로 하면서 7일(현지시간) 국제유가가 하락했다.",
+      "title": "국제유가, IEA 비축유 방출 가속에 하락…WTI 1.3%↓ | 연합뉴스"
+    },
     "link:7e823f7e7f4d37d257a589ac": {
       "first_seen_kst": "2026-10-04T16:43:45+09:00",
       "lanes": {
@@ -67138,6 +67437,27 @@
       "source": "전자신문",
       "title": "엔비디아, 11월 서울서 AI 데이 연다…삼성·SK·네이버 등 20개사 참여"
     },
+    "link:b63d3de2810872319113d8e3": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817414",
+      "source": "뉴시스",
+      "source_body_digest": "bf111c62915ca3cd4a69b2be1f7d27864f9aa5d11c508c32df575c1ef135c0c8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cc0e240f556672664cf5c159e856da2b20ec61851fb04e3c0e05f53f658b3374",
+      "source_fact_keys": [
+        "source_fact:v1:57fe685d52821c6de4b4d26aef16bc52e20107e932286794b61bbe0b3a1d7ed0",
+        "source_fact:v1:6a7264735db5fde9cc2c8c02c528822dc1b29f309c62cebca0cf6ce26678cfc5",
+        "source_fact:v1:b31129746af7a6a6225c75e44292b1b5af4c70eea73fdfb7fe1ede40b4f7b4c1"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "삼성전자, 올 3분기 실적 오늘 발표…韓기업 사상 첫 영업익 '100조' 달성하나",
+      "telegram_core_fact": "삼성전자가 올해 3분기 성적표를 발표하는 가운데, 메모리 반도체 호황에 힘입어 국내 기업 사상 최초로 분기 영업이익 100조원을 달성할 지 주목된다.",
+      "title": "삼성전자, 올 3분기 실적 오늘 발표…韓기업 사상 첫 영업익 '100조' 달성하나"
+    },
     "link:b642786893731cd16ad9f3e9": {
       "first_seen_kst": "2026-10-04T21:15:01+09:00",
       "lanes": {
@@ -69977,6 +70297,25 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "LGU+, 해외 AI 서비스 '유독'에서 선보인다"
     },
+    "link:c83b42a21fa5e55ff092de91": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100717434794610",
+      "source": "머니투데이",
+      "source_body_digest": "0dcc35757d4fdd6c5692dec0f7fcf5106c49086761b451ddedb28b766dc95800",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2a5b0129f6daace5783d3b349d7f25dc54c804ad94b689c7dc699b2e83f68c58",
+      "source_fact_keys": [
+        "source_fact:v1:bf7d2c81e1c55a17a19c3cf3bdb743f92a63e0edddcaa0676a812574abc40037"
+      ],
+      "source_published_kst": "2026-10-07T18:17+09:00",
+      "source_title": "에피소드컴퍼니, 160억 규모 유상증자 결정…자본 확충·성장재원 확보",
+      "telegram_core_fact": "에피소드컴퍼니는 이번 유상증자로 조달할 자금을 활용해 콘텐츠, IP·매니지먼트, 커머스 사업에 대한 투자를 이어가며 성장 기반을 강화할 계획이다.",
+      "title": "에피소드컴퍼니, 160억 규모 유상증자 결정…자본 확충·성장재원 확보"
+    },
     "link:c8550025555edc254bcd0a4a": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
@@ -71940,6 +72279,23 @@
       ],
       "source_published_kst": "2026-10-05T22:29+09:00",
       "title": "토스뱅크서도 해킹 시도…일부 보험사도 공격 흔적 포착"
+    },
+    "link:d56b094bf3a033f4c8e4a25b": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2630023",
+      "source": "이투데이",
+      "source_body_digest": "2a83b4400c377a71d0ca435de1cc7325e301f0d23bd129ba1e62665572b4b330",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "오늘 밤 노벨문학상 발표…김혜순·애트우드·찬쉐·머네인 등 거론",
+      "telegram_core_fact": "애트우드의 저서 판매량은 예스24에서 지난 8월 전월보다 28.5% 증가했다. 찬쉐와 머네인의 책은 과거 수상자 발표 시기에 판매량이 크게 늘었다.",
+      "title": "오늘 밤 노벨문학상 발표…김혜순·애트우드·찬쉐·머네인 등 거론"
     },
     "link:d57e5b3e39d56e7e76c80b6b": {
       "first_seen_kst": "2026-10-06T17:59:23+09:00",
@@ -75327,6 +75683,25 @@
       "link": "https://www.etoday.co.kr/news/view/2631475",
       "source": "이투데이",
       "title": "3분기 스타트업 투자, 4년 만에 누적 10조원 돌파...AI 반도체•우주항공 투자 급증"
+    },
+    "link:ea1e5d15614d312ef40149fb": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632489",
+      "source": "이투데이",
+      "source_body_digest": "0c57cf0c79cf643c0dec9a69eebf8777a0441b26335d6f0ca8143dd0ca4a4f3f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:984e0f6c8268f212a841a85a37216a528823ae94b085110663332869d9202a3b",
+      "source_fact_keys": [
+        "source_fact:v1:64913b11cc3084db53f42c6a54868de217352b2e73a0901dd025f7a738fc1426"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "“신약도 AI로 만든다”…빅파마·바이오텍, 커지는 R&D 격차[AI 新계급사회]",
+      "telegram_core_fact": "하지만 막대한 자본과 데이터를 보유한 글로벌 빅파마가 AI 투자를 확대하면서 중소 바이오벤처와의 R&D 격차가 더욱 벌어질 수 있다는 전망도 나온다.",
+      "title": "“신약도 AI로 만든다”…빅파마·바이오텍, 커지는 R&D 격차[AI 新계급사회]"
     },
     "link:ea50ca2282bd4fa3c992be44": {
       "first_seen_kst": "2026-10-07T03:04:14+09:00",
@@ -87820,6 +88195,27 @@
       "source_published_kst": "2026-10-07T07:00+09:00",
       "title": "[우리품의 아프리카인](55) 대륙 맞춤형 디지털 기술…짐바브웨 개발자 시원데 | 연합뉴스"
     },
+    "original:3b806c9033b72e1d76e88e0c": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817414",
+      "source": "뉴시스",
+      "source_body_digest": "bf111c62915ca3cd4a69b2be1f7d27864f9aa5d11c508c32df575c1ef135c0c8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cc0e240f556672664cf5c159e856da2b20ec61851fb04e3c0e05f53f658b3374",
+      "source_fact_keys": [
+        "source_fact:v1:57fe685d52821c6de4b4d26aef16bc52e20107e932286794b61bbe0b3a1d7ed0",
+        "source_fact:v1:6a7264735db5fde9cc2c8c02c528822dc1b29f309c62cebca0cf6ce26678cfc5",
+        "source_fact:v1:b31129746af7a6a6225c75e44292b1b5af4c70eea73fdfb7fe1ede40b4f7b4c1"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "삼성전자, 올 3분기 실적 오늘 발표…韓기업 사상 첫 영업익 '100조' 달성하나",
+      "telegram_core_fact": "삼성전자가 올해 3분기 성적표를 발표하는 가운데, 메모리 반도체 호황에 힘입어 국내 기업 사상 최초로 분기 영업이익 100조원을 달성할 지 주목된다.",
+      "title": "삼성전자, 올 3분기 실적 오늘 발표…韓기업 사상 첫 영업익 '100조' 달성하나"
+    },
     "original:3bb734c09597f2d4cc28137e": {
       "first_seen_kst": "2026-10-01T22:39:53+09:00",
       "lanes": {
@@ -92826,6 +93222,25 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T06:00+09:00",
       "title": "\"상장폐지 요건 강화 이후 주식병합·감자 등 급증\" | 연합뉴스"
+    },
+    "original:59ba5df61f67616d73e0c18c": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632489",
+      "source": "이투데이",
+      "source_body_digest": "0c57cf0c79cf643c0dec9a69eebf8777a0441b26335d6f0ca8143dd0ca4a4f3f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:984e0f6c8268f212a841a85a37216a528823ae94b085110663332869d9202a3b",
+      "source_fact_keys": [
+        "source_fact:v1:64913b11cc3084db53f42c6a54868de217352b2e73a0901dd025f7a738fc1426"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "“신약도 AI로 만든다”…빅파마·바이오텍, 커지는 R&D 격차[AI 新계급사회]",
+      "telegram_core_fact": "하지만 막대한 자본과 데이터를 보유한 글로벌 빅파마가 AI 투자를 확대하면서 중소 바이오벤처와의 R&D 격차가 더욱 벌어질 수 있다는 전망도 나온다.",
+      "title": "“신약도 AI로 만든다”…빅파마·바이오텍, 커지는 R&D 격차[AI 新계급사회]"
     },
     "original:59d296753df80759628e5cf6": {
       "first_seen_kst": "2026-10-07T23:23:06+09:00",
@@ -98511,6 +98926,23 @@
       ],
       "source_published_kst": "2026-10-06T16:02+09:00",
       "title": "후티 사우디 공격에…현대차"
+    },
+    "original:80c9606b8d3db862c11e8aee": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008005800072",
+      "source": "연합뉴스",
+      "source_body_digest": "15304d485b220280c581ad48a17e10ee5585ba4016eade0e5578dc9b886da0ad",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T04:47+09:00",
+      "source_title": "국제유가, IEA 비축유 방출 가속에 하락…WTI 1.3%↓ | 연합뉴스",
+      "telegram_core_fact": "국제에너지기구(IEA)가 비축유 방출을 앞당기기로 하면서 7일(현지시간) 국제유가가 하락했다.",
+      "title": "국제유가, IEA 비축유 방출 가속에 하락…WTI 1.3%↓ | 연합뉴스"
     },
     "original:811dad3dab7c580154ec9106": {
       "first_seen_kst": "2026-10-07T10:23:42+09:00",
@@ -105166,6 +105598,23 @@
       "source_published_kst": "2026-10-07T09:30+09:00",
       "title": "포스코홀딩스, 8년 투자 결실…아르헨티나 리튬 2공장 준공"
     },
+    "original:ad972acbfd4c62d0df1fc112": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.hankyung.com/article/202610078998i",
+      "source": "한국경제",
+      "source_body_digest": "65c9d1071b259254b3e4e7db32c984949435f0209e5daa27cdd05254bb49dbdc",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T17:08+09:00",
+      "source_title": "국토장관 \"올해 수도권 착공 목표 최대 88% 달성\"",
+      "telegram_core_fact": "정부는 신규 택지의 착공 기간을 37개월로 줄여 공급 시점을 앞당기기로 했다.",
+      "title": "국토장관 \"올해 수도권 착공 목표 최대 88% 달성\""
+    },
     "original:ad9b96299f5d7f74b6da38bc": {
       "first_seen_kst": "2026-10-02T13:04:47+09:00",
       "lanes": {
@@ -111131,6 +111580,25 @@
       "source": "한국경제",
       "title": "환율 뛰어도 X세대는 지갑 덜 닫았다… MZ와 다른 이유"
     },
+    "original:d531ca7f25343c11ebd7350b": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003818134",
+      "source": "뉴시스",
+      "source_body_digest": "62c7456a0b3ff003d311ade8e2fa5db1cf3b31fab298ed4479d2ca9b89734b4f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3cb9a8f9f05e898cd0a9e811a7fe21317778685bcb507f2ac2b4eb00a4150217",
+      "source_fact_keys": [
+        "source_fact:v1:ff0ed80168a9e706789ba192228ca6d3041a22d6eda56fb3bf17379baeffe27e"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "'세상에 없던 테마파크, 그 이상' 정용진의 '워너 인수 투자' 그림은",
+      "telegram_core_fact": "신세계그룹에 따르면 신세계프라퍼티는 데이비드 엘리슨 스카이댄스 공동 최고경영자(CEO), 미국 투자운용사 레드버드 등, 추진하는 워너브라더스 인수에 투자한다.",
+      "title": "'세상에 없던 테마파크, 그 이상' 정용진의 '워너 인수 투자' 그림은"
+    },
     "original:d540074c6e8c0fd4585d89c2": {
       "first_seen_kst": "2026-09-28T08:48:10+09:00",
       "lanes": {
@@ -111964,6 +112432,23 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T17:28+09:00",
       "title": "금리 뛰자 매수자들 계약가 다시 깎는다…美상업용 부동산 재협상 확산"
+    },
+    "original:d94fd80a257bcf5b377a69ef": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2630023",
+      "source": "이투데이",
+      "source_body_digest": "2a83b4400c377a71d0ca435de1cc7325e301f0d23bd129ba1e62665572b4b330",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "오늘 밤 노벨문학상 발표…김혜순·애트우드·찬쉐·머네인 등 거론",
+      "telegram_core_fact": "애트우드의 저서 판매량은 예스24에서 지난 8월 전월보다 28.5% 증가했다. 찬쉐와 머네인의 책은 과거 수상자 발표 시기에 판매량이 크게 늘었다.",
+      "title": "오늘 밤 노벨문학상 발표…김혜순·애트우드·찬쉐·머네인 등 거론"
     },
     "original:d95d569dce4024f170b3d583": {
       "first_seen_kst": "2026-10-05T06:25:21+09:00",
@@ -114304,6 +114789,25 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T08:57+09:00",
       "title": "\"50만 동네 토스 매장서 택배 보낸다\"…CJ대한통운, 오프라인 접점 확대"
+    },
+    "original:e85d6042e99ef38e3a61a8ab": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100717434794610",
+      "source": "머니투데이",
+      "source_body_digest": "0dcc35757d4fdd6c5692dec0f7fcf5106c49086761b451ddedb28b766dc95800",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2a5b0129f6daace5783d3b349d7f25dc54c804ad94b689c7dc699b2e83f68c58",
+      "source_fact_keys": [
+        "source_fact:v1:bf7d2c81e1c55a17a19c3cf3bdb743f92a63e0edddcaa0676a812574abc40037"
+      ],
+      "source_published_kst": "2026-10-07T18:17+09:00",
+      "source_title": "에피소드컴퍼니, 160억 규모 유상증자 결정…자본 확충·성장재원 확보",
+      "telegram_core_fact": "에피소드컴퍼니는 이번 유상증자로 조달할 자금을 활용해 콘텐츠, IP·매니지먼트, 커머스 사업에 대한 투자를 이어가며 성장 기반을 강화할 계획이다.",
+      "title": "에피소드컴퍼니, 160억 규모 유상증자 결정…자본 확충·성장재원 확보"
     },
     "original:e865c7c4ea151427a759dcd7": {
       "first_seen_kst": "2026-10-05T14:59:09+09:00",
@@ -134070,6 +134574,27 @@
       "source_published_kst": "2026-10-06T08:57+09:00",
       "title": "JW중외제약, EASD 2026서 당뇨병 치료제 ‘엠파가드’ 임상 3상 결과 발표"
     },
+    "source_fact:29a2cbf8c4134612abf138e9": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817414",
+      "source": "뉴시스",
+      "source_body_digest": "bf111c62915ca3cd4a69b2be1f7d27864f9aa5d11c508c32df575c1ef135c0c8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cc0e240f556672664cf5c159e856da2b20ec61851fb04e3c0e05f53f658b3374",
+      "source_fact_keys": [
+        "source_fact:v1:57fe685d52821c6de4b4d26aef16bc52e20107e932286794b61bbe0b3a1d7ed0",
+        "source_fact:v1:6a7264735db5fde9cc2c8c02c528822dc1b29f309c62cebca0cf6ce26678cfc5",
+        "source_fact:v1:b31129746af7a6a6225c75e44292b1b5af4c70eea73fdfb7fe1ede40b4f7b4c1"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "삼성전자, 올 3분기 실적 오늘 발표…韓기업 사상 첫 영업익 '100조' 달성하나",
+      "telegram_core_fact": "삼성전자가 올해 3분기 성적표를 발표하는 가운데, 메모리 반도체 호황에 힘입어 국내 기업 사상 최초로 분기 영업이익 100조원을 달성할 지 주목된다.",
+      "title": "삼성전자, 올 3분기 실적 오늘 발표…韓기업 사상 첫 영업익 '100조' 달성하나"
+    },
     "source_fact:29ae8084d42afa6135d76a49": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
       "lanes": {
@@ -151149,6 +151674,27 @@
       ],
       "source_published_kst": "2026-10-06T15:52+09:00",
       "title": "국내 주식형 ETF 리밸런싱 8일 집중…\"삼전 비중축소 전망\""
+    },
+    "source_fact:522b2da75b54734273afe39a": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817414",
+      "source": "뉴시스",
+      "source_body_digest": "bf111c62915ca3cd4a69b2be1f7d27864f9aa5d11c508c32df575c1ef135c0c8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cc0e240f556672664cf5c159e856da2b20ec61851fb04e3c0e05f53f658b3374",
+      "source_fact_keys": [
+        "source_fact:v1:57fe685d52821c6de4b4d26aef16bc52e20107e932286794b61bbe0b3a1d7ed0",
+        "source_fact:v1:6a7264735db5fde9cc2c8c02c528822dc1b29f309c62cebca0cf6ce26678cfc5",
+        "source_fact:v1:b31129746af7a6a6225c75e44292b1b5af4c70eea73fdfb7fe1ede40b4f7b4c1"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "삼성전자, 올 3분기 실적 오늘 발표…韓기업 사상 첫 영업익 '100조' 달성하나",
+      "telegram_core_fact": "삼성전자가 올해 3분기 성적표를 발표하는 가운데, 메모리 반도체 호황에 힘입어 국내 기업 사상 최초로 분기 영업이익 100조원을 달성할 지 주목된다.",
+      "title": "삼성전자, 올 3분기 실적 오늘 발표…韓기업 사상 첫 영업익 '100조' 달성하나"
     },
     "source_fact:522e16de59e3d40b95931561": {
       "first_seen_kst": "2026-10-07T18:12:46+09:00",
@@ -170718,6 +171264,25 @@
       ],
       "source_published_kst": "2026-10-06T15:34+09:00",
       "title": "\"세계 3위 車시장서 월 최대 판매\" 현대차, 푸네공장 앞세워 '인도 공략' 속도"
+    },
+    "source_fact:819875a8f9e3dbc64c01d79b": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632489",
+      "source": "이투데이",
+      "source_body_digest": "0c57cf0c79cf643c0dec9a69eebf8777a0441b26335d6f0ca8143dd0ca4a4f3f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:984e0f6c8268f212a841a85a37216a528823ae94b085110663332869d9202a3b",
+      "source_fact_keys": [
+        "source_fact:v1:64913b11cc3084db53f42c6a54868de217352b2e73a0901dd025f7a738fc1426"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "“신약도 AI로 만든다”…빅파마·바이오텍, 커지는 R&D 격차[AI 新계급사회]",
+      "telegram_core_fact": "하지만 막대한 자본과 데이터를 보유한 글로벌 빅파마가 AI 투자를 확대하면서 중소 바이오벤처와의 R&D 격차가 더욱 벌어질 수 있다는 전망도 나온다.",
+      "title": "“신약도 AI로 만든다”…빅파마·바이오텍, 커지는 R&D 격차[AI 新계급사회]"
     },
     "source_fact:819c013231ed12a27febceb7": {
       "first_seen_kst": "2026-10-07T22:13:12+09:00",
@@ -195484,6 +196049,25 @@
       "source_published_kst": "2026-10-06T15:09+09:00",
       "title": "AI팩토리에 승부 건 엔비디아 \"생산성·수명·범용성이 수익 좌우\""
     },
+    "source_fact:c0c577820135da30924a2750": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100717434794610",
+      "source": "머니투데이",
+      "source_body_digest": "0dcc35757d4fdd6c5692dec0f7fcf5106c49086761b451ddedb28b766dc95800",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2a5b0129f6daace5783d3b349d7f25dc54c804ad94b689c7dc699b2e83f68c58",
+      "source_fact_keys": [
+        "source_fact:v1:bf7d2c81e1c55a17a19c3cf3bdb743f92a63e0edddcaa0676a812574abc40037"
+      ],
+      "source_published_kst": "2026-10-07T18:17+09:00",
+      "source_title": "에피소드컴퍼니, 160억 규모 유상증자 결정…자본 확충·성장재원 확보",
+      "telegram_core_fact": "에피소드컴퍼니는 이번 유상증자로 조달할 자금을 활용해 콘텐츠, IP·매니지먼트, 커머스 사업에 대한 투자를 이어가며 성장 기반을 강화할 계획이다.",
+      "title": "에피소드컴퍼니, 160억 규모 유상증자 결정…자본 확충·성장재원 확보"
+    },
     "source_fact:c0c5f2bcaa5aa116a59267df": {
       "first_seen_kst": "2026-10-07T05:13:11+09:00",
       "lanes": {
@@ -212635,25 +213219,23 @@
     "source_fact:e7426e41b4aade086bcde964": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
       "lanes": {
-        "live": "2026-10-06T19:58:43+09:00"
+        "live": "2026-10-08T05:01:11+09:00"
       },
-      "last_seen_kst": "2026-10-06T19:58:43+09:00",
-      "link": "https://nwww.newsis.com/view/NISX20261006_0003815157",
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817414",
       "source": "뉴시스",
-      "source_body_digest": "6491848555359f33e6ceea2e814edff3a93ffb5e1ea6367af5cd6c930ad40ecc",
+      "source_body_digest": "bf111c62915ca3cd4a69b2be1f7d27864f9aa5d11c508c32df575c1ef135c0c8",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:90b64ee035f95d58ed41b701b6a3d2c9d0846eb12e41603cc73e73a840da8535",
+      "source_fact_identity": "source_facts:v1:cc0e240f556672664cf5c159e856da2b20ec61851fb04e3c0e05f53f658b3374",
       "source_fact_keys": [
-        "source_fact:v1:08ed02554506b616b47e87a50fa7137d9166ce13357880061f25d3dbec39e5d1",
-        "source_fact:v1:506aa3f657dc587d46f223b6f3dd7b0e915ae8d72110099b67e2a33dc95a190b",
-        "source_fact:v1:77763469ced4d5af25e189b5a2c50112efa845af58645f7883be73a2ded75eb6",
-        "source_fact:v1:8a37867df80994cb260f76f333d937a4163741c38415362ec1c01a8fd65f4449",
-        "source_fact:v1:8fd33645c43eb03940b41451395c08fe6e98e5dbced2ac024856a860e202c3d8",
-        "source_fact:v1:b31129746af7a6a6225c75e44292b1b5af4c70eea73fdfb7fe1ede40b4f7b4c1",
-        "source_fact:v1:b3f817529e932d96b7064c91151cdef4085b9e29ed6fd3f64c973ae080260d5c"
+        "source_fact:v1:57fe685d52821c6de4b4d26aef16bc52e20107e932286794b61bbe0b3a1d7ed0",
+        "source_fact:v1:6a7264735db5fde9cc2c8c02c528822dc1b29f309c62cebca0cf6ce26678cfc5",
+        "source_fact:v1:b31129746af7a6a6225c75e44292b1b5af4c70eea73fdfb7fe1ede40b4f7b4c1"
       ],
-      "source_published_kst": "2026-10-06T17:46+09:00",
-      "title": "메모리 반도체 호황 속 삼성전자 완제품은 '고전'…DX부문 3분기 실적 어떻게"
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "삼성전자, 올 3분기 실적 오늘 발표…韓기업 사상 첫 영업익 '100조' 달성하나",
+      "telegram_core_fact": "삼성전자가 올해 3분기 성적표를 발표하는 가운데, 메모리 반도체 호황에 힘입어 국내 기업 사상 최초로 분기 영업이익 100조원을 달성할 지 주목된다.",
+      "title": "삼성전자, 올 3분기 실적 오늘 발표…韓기업 사상 첫 영업익 '100조' 달성하나"
     },
     "source_fact:e74c2fab0187b5d7acc2b98d": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
@@ -212873,6 +213455,25 @@
       ],
       "source_published_kst": "2026-10-07T07:43+09:00",
       "title": "“56만전자·320만닉스 간다\"…삼전닉스, 3분기 실적 기대 이상"
+    },
+    "source_fact:e7b302e2d272697a517e8912": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003818134",
+      "source": "뉴시스",
+      "source_body_digest": "62c7456a0b3ff003d311ade8e2fa5db1cf3b31fab298ed4479d2ca9b89734b4f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3cb9a8f9f05e898cd0a9e811a7fe21317778685bcb507f2ac2b4eb00a4150217",
+      "source_fact_keys": [
+        "source_fact:v1:ff0ed80168a9e706789ba192228ca6d3041a22d6eda56fb3bf17379baeffe27e"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "'세상에 없던 테마파크, 그 이상' 정용진의 '워너 인수 투자' 그림은",
+      "telegram_core_fact": "신세계그룹에 따르면 신세계프라퍼티는 데이비드 엘리슨 스카이댄스 공동 최고경영자(CEO), 미국 투자운용사 레드버드 등, 추진하는 워너브라더스 인수에 투자한다.",
+      "title": "'세상에 없던 테마파크, 그 이상' 정용진의 '워너 인수 투자' 그림은"
     },
     "source_fact:e814234fb54ab0cdc8fd4601": {
       "first_seen_kst": "2026-10-08T03:26:42+09:00",
@@ -231862,6 +232463,27 @@
       "source_published_kst": "2026-10-07T07:00+09:00",
       "title": "[우리품의 아프리카인](55) 대륙 맞춤형 디지털 기술…짐바브웨 개발자 시원데 | 연합뉴스"
     },
+    "title:3b806c9033b72e1d76e88e0c": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817414",
+      "source": "뉴시스",
+      "source_body_digest": "bf111c62915ca3cd4a69b2be1f7d27864f9aa5d11c508c32df575c1ef135c0c8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cc0e240f556672664cf5c159e856da2b20ec61851fb04e3c0e05f53f658b3374",
+      "source_fact_keys": [
+        "source_fact:v1:57fe685d52821c6de4b4d26aef16bc52e20107e932286794b61bbe0b3a1d7ed0",
+        "source_fact:v1:6a7264735db5fde9cc2c8c02c528822dc1b29f309c62cebca0cf6ce26678cfc5",
+        "source_fact:v1:b31129746af7a6a6225c75e44292b1b5af4c70eea73fdfb7fe1ede40b4f7b4c1"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "삼성전자, 올 3분기 실적 오늘 발표…韓기업 사상 첫 영업익 '100조' 달성하나",
+      "telegram_core_fact": "삼성전자가 올해 3분기 성적표를 발표하는 가운데, 메모리 반도체 호황에 힘입어 국내 기업 사상 최초로 분기 영업이익 100조원을 달성할 지 주목된다.",
+      "title": "삼성전자, 올 3분기 실적 오늘 발표…韓기업 사상 첫 영업익 '100조' 달성하나"
+    },
     "title:3bb734c09597f2d4cc28137e": {
       "first_seen_kst": "2026-10-01T22:39:53+09:00",
       "lanes": {
@@ -236940,6 +237562,25 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T06:00+09:00",
       "title": "\"상장폐지 요건 강화 이후 주식병합·감자 등 급증\" | 연합뉴스"
+    },
+    "title:59ba5df61f67616d73e0c18c": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632489",
+      "source": "이투데이",
+      "source_body_digest": "0c57cf0c79cf643c0dec9a69eebf8777a0441b26335d6f0ca8143dd0ca4a4f3f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:984e0f6c8268f212a841a85a37216a528823ae94b085110663332869d9202a3b",
+      "source_fact_keys": [
+        "source_fact:v1:64913b11cc3084db53f42c6a54868de217352b2e73a0901dd025f7a738fc1426"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "“신약도 AI로 만든다”…빅파마·바이오텍, 커지는 R&D 격차[AI 新계급사회]",
+      "telegram_core_fact": "하지만 막대한 자본과 데이터를 보유한 글로벌 빅파마가 AI 투자를 확대하면서 중소 바이오벤처와의 R&D 격차가 더욱 벌어질 수 있다는 전망도 나온다.",
+      "title": "“신약도 AI로 만든다”…빅파마·바이오텍, 커지는 R&D 격차[AI 新계급사회]"
     },
     "title:59d296753df80759628e5cf6": {
       "first_seen_kst": "2026-10-07T23:23:06+09:00",
@@ -242708,6 +243349,23 @@
       ],
       "source_published_kst": "2026-10-06T16:02+09:00",
       "title": "후티 사우디 공격에…현대차"
+    },
+    "title:80c9606b8d3db862c11e8aee": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008005800072",
+      "source": "연합뉴스",
+      "source_body_digest": "15304d485b220280c581ad48a17e10ee5585ba4016eade0e5578dc9b886da0ad",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T04:47+09:00",
+      "source_title": "국제유가, IEA 비축유 방출 가속에 하락…WTI 1.3%↓ | 연합뉴스",
+      "telegram_core_fact": "국제에너지기구(IEA)가 비축유 방출을 앞당기기로 하면서 7일(현지시간) 국제유가가 하락했다.",
+      "title": "국제유가, IEA 비축유 방출 가속에 하락…WTI 1.3%↓ | 연합뉴스"
     },
     "title:80e5e1e8773f097324108920": {
       "first_seen_kst": "2026-09-25T00:00:00+09:00",
@@ -249656,6 +250314,23 @@
       "source_published_kst": "2026-10-07T09:30+09:00",
       "title": "포스코홀딩스, 8년 투자 결실…아르헨티나 리튬 2공장 준공"
     },
+    "title:ad972acbfd4c62d0df1fc112": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.hankyung.com/article/202610078998i",
+      "source": "한국경제",
+      "source_body_digest": "65c9d1071b259254b3e4e7db32c984949435f0209e5daa27cdd05254bb49dbdc",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T17:08+09:00",
+      "source_title": "국토장관 \"올해 수도권 착공 목표 최대 88% 달성\"",
+      "telegram_core_fact": "정부는 신규 택지의 착공 기간을 37개월로 줄여 공급 시점을 앞당기기로 했다.",
+      "title": "국토장관 \"올해 수도권 착공 목표 최대 88% 달성\""
+    },
     "title:ad9b96299f5d7f74b6da38bc": {
       "first_seen_kst": "2026-10-02T13:04:47+09:00",
       "lanes": {
@@ -255724,6 +256399,25 @@
       "source": "한국경제",
       "title": "환율 뛰어도 X세대는 지갑 덜 닫았다… MZ와 다른 이유"
     },
+    "title:d531ca7f25343c11ebd7350b": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003818134",
+      "source": "뉴시스",
+      "source_body_digest": "62c7456a0b3ff003d311ade8e2fa5db1cf3b31fab298ed4479d2ca9b89734b4f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3cb9a8f9f05e898cd0a9e811a7fe21317778685bcb507f2ac2b4eb00a4150217",
+      "source_fact_keys": [
+        "source_fact:v1:ff0ed80168a9e706789ba192228ca6d3041a22d6eda56fb3bf17379baeffe27e"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "'세상에 없던 테마파크, 그 이상' 정용진의 '워너 인수 투자' 그림은",
+      "telegram_core_fact": "신세계그룹에 따르면 신세계프라퍼티는 데이비드 엘리슨 스카이댄스 공동 최고경영자(CEO), 미국 투자운용사 레드버드 등, 추진하는 워너브라더스 인수에 투자한다.",
+      "title": "'세상에 없던 테마파크, 그 이상' 정용진의 '워너 인수 투자' 그림은"
+    },
     "title:d540074c6e8c0fd4585d89c2": {
       "first_seen_kst": "2026-09-28T08:48:10+09:00",
       "lanes": {
@@ -256557,6 +257251,23 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T17:28+09:00",
       "title": "금리 뛰자 매수자들 계약가 다시 깎는다…美상업용 부동산 재협상 확산"
+    },
+    "title:d94fd80a257bcf5b377a69ef": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2630023",
+      "source": "이투데이",
+      "source_body_digest": "2a83b4400c377a71d0ca435de1cc7325e301f0d23bd129ba1e62665572b4b330",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "오늘 밤 노벨문학상 발표…김혜순·애트우드·찬쉐·머네인 등 거론",
+      "telegram_core_fact": "애트우드의 저서 판매량은 예스24에서 지난 8월 전월보다 28.5% 증가했다. 찬쉐와 머네인의 책은 과거 수상자 발표 시기에 판매량이 크게 늘었다.",
+      "title": "오늘 밤 노벨문학상 발표…김혜순·애트우드·찬쉐·머네인 등 거론"
     },
     "title:d95cc8b1f263e8ed81fce253": {
       "first_seen_kst": "2026-10-02T17:56:05+09:00",
@@ -258974,6 +259685,25 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T16:01+09:00",
       "title": "롯데백화점, 외국인 매출 첫 1조 달성…신세계·현대도 눈앞 [종합]"
+    },
+    "title:e85d6042e99ef38e3a61a8ab": {
+      "first_seen_kst": "2026-10-08T05:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-08T05:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-08T05:01:11+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100717434794610",
+      "source": "머니투데이",
+      "source_body_digest": "0dcc35757d4fdd6c5692dec0f7fcf5106c49086761b451ddedb28b766dc95800",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2a5b0129f6daace5783d3b349d7f25dc54c804ad94b689c7dc699b2e83f68c58",
+      "source_fact_keys": [
+        "source_fact:v1:bf7d2c81e1c55a17a19c3cf3bdb743f92a63e0edddcaa0676a812574abc40037"
+      ],
+      "source_published_kst": "2026-10-07T18:17+09:00",
+      "source_title": "에피소드컴퍼니, 160억 규모 유상증자 결정…자본 확충·성장재원 확보",
+      "telegram_core_fact": "에피소드컴퍼니는 이번 유상증자로 조달할 자금을 활용해 콘텐츠, IP·매니지먼트, 커머스 사업에 대한 투자를 이어가며 성장 기반을 강화할 계획이다.",
+      "title": "에피소드컴퍼니, 160억 규모 유상증자 결정…자본 확충·성장재원 확보"
     },
     "title:e865c7c4ea151427a759dcd7": {
       "first_seen_kst": "2026-10-05T14:59:09+09:00",
@@ -262486,5 +263216,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-08T04:45:20+09:00"
+  "updated_at_kst": "2026-10-08T05:01:11+09:00"
 }
