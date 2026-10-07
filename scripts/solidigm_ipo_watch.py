@@ -338,7 +338,7 @@ def stage_from_text(text):
         r"(?:selected|appointed|tapped|picked)[^.]{0,140}?"
         r"(?:banks|underwriters|Goldman Sachs|Morgan Stanley)|"
         r"(?:banks|underwriters)[^.]{0,100}?(?:selected|appointed)|"
-        r"(?:대표\\s*주관사|주관사)[^.]{0,45}?(?:선정|낙점|확정)|"
+        r"(?:대표\s*주관사|주관사)[^.]{0,45}?(?:선정|낙점|확정)|"
         r"(?:선정|낙점)[^.]{0,60}?(?:골드만삭스|모건스탠리)",
         text, re.I,
     ):
@@ -665,6 +665,17 @@ def manufacturing_alert_text(old, new, reasons, checked):
         lines.append("• 고객 구분: Foxconn·Quanta·Wistron 등은 대만 AI 서버 생태계 설명이며 Solidigm 직접 고객·공급계약으로 승격하지 않습니다.")
     lines.append("• 공정 구분: 대만 SSD 제조·조립 거점 확대이며 NAND 웨이퍼 팹 증설과 분리합니다.")
     lines.append("• 이번 변화: <b>" + html.escape(" · ".join(reasons)) + "</b>")
+    if old.get("source_name") == "Reuters" and new.get("reported_original") == "Bloomberg":
+        lines.append(
+            "• 서로 다른 시점의 보도 추정: 과거 Reuters "
+            + usd_display(old.get("raise_target_usd"), rate)
+            + " 조달 / " + usd_display(old.get("valuation_max_usd"), rate)
+            + " 기업가치 → 새 Bloomberg "
+            + usd_display(new.get("raise_target_usd"), rate)
+            + " 조달 / " + usd_display(new.get("valuation_max_usd"), rate)
+            + " 기업가치"
+        )
+        lines.append("• 이는 확정 공모금액 감액이 아니라 서로 다른 보도상 추정치의 비교입니다.")
     lines.append("• 다음 확인: 실제 12월 출하 · 생산능력 수치 · 신규 ODM 실명 · 고객 인증·직접 공급계약 · 품질·수율 이슈 · 일정 지연")
     src = new.get("official_source_url") or SOLIDIGM_DMS_URL
     lines.append("• 공식 근거: Solidigm PCN/DMS · " + href(src))
@@ -680,6 +691,14 @@ def merge_state(current, patch):
     old_evidence = out.get("evidence_state", "reported")
     new_evidence = patch.get("evidence_state", "reported")
     can_replace_source = EVIDENCE_RANK.get(new_evidence, 0) >= EVIDENCE_RANK.get(old_evidence, 0)
+
+    # A stale or generic company denial cannot downgrade IPO stage, replace
+    # newer deal parameters, or masquerade as official IPO approval.
+    if (
+        new_stage in STAGE_RANK and old_stage in STAGE_RANK
+        and STAGE_RANK[new_stage] < STAGE_RANK[old_stage]
+    ):
+        return out
 
     for k, v in patch.items():
         if k in ("stage", "evidence_state", "source_url", "source_name", "source_published_at_kst"):
@@ -722,7 +741,11 @@ def material_changes(old, new):
     if old.get("target_year") != new.get("target_year") and new.get("target_year"):
         reasons.append(f"목표 시점 {old.get('target_year','미확인')}→{new['target_year']}")
     if old.get("underwriters") != new.get("underwriters") and new.get("underwriters"):
-        reasons.append("대표주관사·주관단 확인")
+        reasons.append("대표주관사·주관단 명단 보도")
+    if old.get("lead_underwriters") != new.get("lead_underwriters") and new.get("lead_underwriters"):
+        reasons.append("Goldman Sachs·Morgan Stanley 대표주관사 선정 보도")
+    if old.get("other_syndicate_banks") != new.get("other_syndicate_banks") and new.get("other_syndicate_banks"):
+        reasons.append("JPMorgan·Citigroup·UBS 주관단 참여 보도")
     if old.get("primary_secondary_mix") != new.get("primary_secondary_mix") and new.get("primary_secondary_mix"):
         reasons.append("신주·구주매출 구조 확인")
     if old.get("parent_post_ipo_stake_pct") != new.get("parent_post_ipo_stake_pct") and new.get("parent_post_ipo_stake_pct") is not None:
@@ -768,7 +791,7 @@ def alert_text(old, new, reasons, checked):
     rate, fx_basis = fx_quote()
     evidence_ko = {
         "official": "회사·SEC 공식 확인",
-        "top_tier_report": "Reuters 복수 관계자 보도 단계",
+        "top_tier_report": "Reuters·Bloomberg 등 신뢰 보도 단계(회사 미확정)",
         "reported": "신뢰 보도 단계",
     }.get(new.get("evidence_state"), "확인 단계")
     lines = [
@@ -784,9 +807,15 @@ def alert_text(old, new, reasons, checked):
     if new.get("raise_target_usd"):
         lines.append(f"• 조달 가능 규모: <b>{usd_display(new['raise_target_usd'], rate)}</b>")
     if new.get("pre_ipo_raise_usd"):
-        lines.append(f"• Pre-IPO 별도 검토액: {usd_display(new['pre_ipo_raise_usd'], rate)}")
-    if new.get("underwriters"):
-        lines.append("• 주관사: " + html.escape(", ".join(new["underwriters"])))
+        lines.append(f"• 선행 보도상 별도 상장 전 자금조달 검토액: {usd_display(new['pre_ipo_raise_usd'], rate)} (이번 기사에서 재확인된 확정액 아님)")
+    if new.get("lead_underwriters"):
+        lines.append("• 대표주관사(블룸버그 보도): <b>" + html.escape(", ".join(new["lead_underwriters"])) + "</b>")
+    if new.get("other_syndicate_banks"):
+        lines.append("• 추가 참여 주관단(보도): " + html.escape(", ".join(new["other_syndicate_banks"])))
+    if new.get("underwriters") and not new.get("lead_underwriters"):
+        lines.append("• 주관사 명단(보도): " + html.escape(", ".join(new["underwriters"])))
+    if new.get("reported_original") == "Bloomberg":
+        lines.append("• 출처 계보: Bloomberg 원보도 → 연합뉴스·이데일리·Investing.com 재인용. 별개 독립 확인 3건이 아닙니다.")
     if new.get("primary_secondary_mix"):
         labels = {"primary_included":"신주 포함","secondary_included":"구주매출 포함","primary_and_secondary":"신주+구주매출"}
         lines.append("• 공모 구조: " + labels.get(new["primary_secondary_mix"], new["primary_secondary_mix"]))
@@ -798,7 +827,11 @@ def alert_text(old, new, reasons, checked):
     lines.append("• 다음 확인: 대표주관사 선정 · SEC 비공개/공개 신고 · 공모가 밴드 · 신주/구주 비중 · SK하이닉스 잔여지분 · 자금용도")
     if new.get("source_url"):
         lines.append(f"• 근거: {html.escape(new.get('source_name') or '출처')} · {href(new['source_url'])}")
-    lines.append("• 주의: 기업가치·조달액·일정은 현재 확정값이 아니라 보도 단계이며 시장 상황에 따라 변경될 수 있습니다.")
+    if new.get("user_original_url"):
+        lines.append("• 사용자 원문: 연합뉴스 " + href(new["user_original_url"]))
+    lines.append("• SK하이닉스 공식 입장(10월 1일): 구체적인 자금조달 방안 미확정. 기존 주주 경제적 가치·희석 위험 검토 " + href(OFFICIAL_SK_REPLY))
+    lines.append("• 확인 대기: SEC 신고, 신주·구주 비율, SK하이닉스 상장 후 지분, 자금 유입처, 이사회 승인.")
+    lines.append("• 주의: 이번 주관사·조달액·기업가치·일정은 보도 단계이며 회사나 SEC 확정 사실이 아닙니다.")
     lines.append("• 환율: " + html.escape(fx_basis))
     lines.append("• 조회: " + checked.strftime("%Y-%m-%d %H:%M KST"))
     return "\n".join(lines) + "\n"
