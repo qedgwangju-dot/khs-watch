@@ -33,6 +33,15 @@ GENSIGHT_NEWS = "https://www.gensight-biologics.com/subject/gs030/"
 RESTORE_VISION_NEWS = "https://restore-vis.com/en/news/2026/"
 AUGELUX_NEWS = "https://www.augeluxtherapeutics.com/en/news/"
 MAPLIGHT_RSS = "https://ir.maplightrx.com/rss/news-releases.xml"
+MAPLIGHT_TRACK_VERSION = 1
+MAPLIGHT_BASELINE_MILESTONES = {
+    "maplight|nobel-optogenetics-bridge",
+    "maplight|ml007|zephyr-phase2-positive",
+    "maplight|ml004|iris-phase2-results",
+    "maplight|ml007|adp-fast-track",
+    "maplight|financing|pipe-150m",
+    "maplight|portfolio|discovery-paused",
+}
 JRCT_RV001 = "https://jrct.mhlw.go.jp/en-latest-detail/jRCT2033240611"
 
 TRIALS = {
@@ -191,8 +200,12 @@ def program_label(company: str, low_title: str) -> str:
             return "ML-007C-MA · 광유전학 기반 약물발굴(간접)"
         if "ml-004" in low_title or "iris" in low_title:
             return "ML-004 · 광유전학 기반 약물발굴(간접)"
+        if "ml-009" in low_title:
+            return "ML-009 · 광유전학 기반 회로지도 후속 파이프라인"
         if "ml-055" in low_title:
-            return "ML-055 · 광유전학 기반 약물발굴(간접)"
+            return "ML-055 · 광유전학 기반 회로지도 후속 파이프라인"
+        if "ml-021" in low_title:
+            return "ML-021 · 광유전학 기반 회로지도 후속 파이프라인"
         return "회로지도 기반 약물발굴 · 광유전학 간접 상용화"
     if company == "Ray Therapeutics":
         return "RTx-015/RTx-021"
@@ -450,8 +463,12 @@ def discover_maplight_trials() -> list[dict]:
             program = "ML-007C-MA"
         elif "ml-004" in blob:
             program = "ML-004"
+        elif "ml-009" in blob:
+            program = "ML-009"
         elif "ml-055" in blob:
             program = "ML-055"
+        elif "ml-021" in blob:
+            program = "ML-021"
         else:
             continue
         ident = p.get("identificationModule") or {}
@@ -489,6 +506,99 @@ def validate_nobel() -> bool:
     return all(x in text for x in required)
 
 
+def maplight_milestone_keys(title: str, body: str) -> list[str]:
+    text = clean(f"{title} {body}").lower()
+    keys: list[str] = []
+
+    def add(key: str) -> None:
+        if key not in keys:
+            keys.append(key)
+
+    if "nobel prize" in title.lower() and "optogen" in text:
+        add("maplight|nobel-optogenetics-bridge")
+
+    if "ml-007c-ma" in text or "zephyr" in text or "vista" in text:
+        if "zephyr" in text and re.search(r"positive.{0,80}(topline|results)|met (?:its )?primary endpoint", text, re.I):
+            add("maplight|ml007|zephyr-phase2-positive")
+        if "vista" in text and "fast track" in text and re.search(r"received|granted|designation", text, re.I):
+            add("maplight|ml007|adp-fast-track")
+        if re.search(r"end[- ]of[- ]phase\s*2|\beop2\b", text, re.I) and re.search(
+            r"completed|held|met with|meeting (?:was )?(?:completed|held)|agreement with (?:the )?fda|feedback from (?:the )?fda",
+            text,
+            re.I,
+        ):
+            add("maplight|ml007|fda-eop2-completed")
+        if "zephyr-2" in text and re.search(
+            r"initiated|began|started|first patient|first participant|first subject|dosed|enrollment (?:has )?begun|recruiting",
+            text,
+            re.I,
+        ):
+            add("maplight|ml007|zephyr2-started")
+        if "zephyr-2" in text and re.search(r"topline|primary endpoint|results?", text, re.I):
+            add("maplight|ml007|zephyr2-results")
+        if "vista" in text and re.search(r"enrollment (?:is )?complete|completed enrollment|fully enrolled", text, re.I):
+            add("maplight|ml007|vista-enrollment-complete")
+        if "vista" in text and re.search(r"topline|primary endpoint|results?", text, re.I):
+            add("maplight|ml007|vista-results")
+        if re.search(r"new drug application|\bnda\b", text, re.I) and re.search(r"submit|submission|filed|accepted|review", text, re.I):
+            add("maplight|ml007|nda")
+
+    if "ml-004" in text or "iris" in text:
+        if "iris" in text and re.search(r"did not meet.{0,80}primary endpoint|topline results", text, re.I):
+            add("maplight|ml004|iris-phase2-results")
+        if re.search(r"end[- ]of[- ]phase\s*2|\beop2\b", text, re.I) and re.search(
+            r"completed|held|met with|meeting (?:was )?(?:completed|held)|agreement with (?:the )?fda|feedback from (?:the )?fda",
+            text,
+            re.I,
+        ):
+            add("maplight|ml004|fda-eop2-completed")
+        if re.search(r"phase\s*3|registrational", text, re.I) and re.search(
+            r"initiated|began|started|first patient|first participant|first subject|dosed|enrollment (?:has )?begun",
+            text,
+            re.I,
+        ):
+            add("maplight|ml004|phase3-started")
+        if re.search(r"partnership|collaboration|license|licensing|strategic (?:collaboration|partner)", text, re.I):
+            add("maplight|ml004|partnering")
+
+    if re.search(r"clinical hold|hold placed|suspend(?:ed)?|terminate(?:d)?|discontinue(?:d)?", text, re.I):
+        program = "ml007" if ("ml-007c-ma" in text or "zephyr" in text or "vista" in text) else "ml004" if ("ml-004" in text or "iris" in text) else "pipeline"
+        add(f"maplight|{program}|hold-stop")
+
+    if re.search(r"\$150\s*million|150\s*million", text, re.I) and re.search(r"private placement|pipe|financing", text, re.I):
+        add("maplight|financing|pipe-150m")
+    if re.search(r"paus(?:e|ed|ing).{0,80}(preclinical|discovery)|foregoing advancement", text, re.I):
+        add("maplight|portfolio|discovery-paused")
+    if re.search(r"resum(?:e|ed|ing)|restart(?:ed|ing)?", text, re.I) and re.search(r"preclinical|discovery|ml-009|ml-055|ml-021", text, re.I):
+        add("maplight|portfolio|discovery-resumed")
+
+    if not keys and re.search(r"ml-007c-ma|ml-004|ml-009|ml-055|ml-021|zephyr|vista|iris", title, re.I):
+        if any(term in text for term in ACTION_TERMS):
+            add("maplight|program-release|" + key_for(title.lower())[:16])
+    return keys
+
+
+def maplight_stage_and_meaning(keys: list[str], title: str) -> tuple[str, str]:
+    joined = " ".join(keys)
+    if "fda-eop2-completed" in joined:
+        return "FDA EOP2 완료", "FDA와 후기임상·허가 경로가 실제로 조율된 단계 변화"
+    if "zephyr2-started" in joined or "phase3-started" in joined:
+        return "3상 실행", "계획이 아니라 등록 임상 실행 단계로 전환"
+    if "zephyr2-results" in joined or "vista-results" in joined:
+        return "핵심 임상 결과", "후기 임상 유효성·안전성 결과가 기업가치와 허가 확률을 직접 변경"
+    if "vista-enrollment-complete" in joined:
+        return "임상 모집 완료", "VISTA 데이터 판독 시간표의 불확실성이 낮아짐"
+    if "|nda" in joined:
+        return "NDA 허가경로", "신약허가신청 제출·접수 단계로 상용화 시간표가 전진"
+    if "hold-stop" in joined:
+        return "개발 중단·보류", "임상 또는 파이프라인 일정이 후퇴하는 핵심 실패 신호"
+    if "partnering" in joined:
+        return "사업협력", "ML-004의 자체개발 외 자금·파트너 경로가 구체화"
+    if "discovery-resumed" in joined:
+        return "후속 파이프라인 재개", "중단했던 회로기반 초기 파이프라인의 투자 재개"
+    return classify_press(title)
+
+
 def validate_maplight_bridge_and_events() -> tuple[bool, list[dict]]:
     # MapLight's IR HTML pages can intermittently time out from GitHub-hosted runners.
     # Use the company's own Q4-hosted RSS feed as the primary machine-readable official source.
@@ -501,26 +611,39 @@ def validate_maplight_bridge_and_events() -> tuple[bool, list[dict]]:
     root = ET.fromstring(xml)
     out: list[dict] = []
     seen: set[str] = set()
-    terms = ("ml-007c-ma", "ml-004", "ml-055", "zephyr", "iris", "vista")
+    terms = ("ml-007c-ma", "ml-004", "ml-009", "ml-055", "ml-021", "zephyr", "iris", "vista")
     for item in root.findall(".//item"):
         title = clean(item.findtext("title") or "")
         link = clean(item.findtext("link") or "")
-        low_title = title.lower()
+        description = clean(re.sub(r"<[^>]+>", " ", item.findtext("description") or ""))
+        content_parts = []
+        for child in list(item):
+            if child.tag.endswith("encoded") and child.text:
+                content_parts.append(clean(re.sub(r"<[^>]+>", " ", child.text)))
+        body = clean(" ".join([description] + content_parts))
+        combined = f"{title} {body}".lower()
         if not title or not link:
             continue
-        if not any(term in low_title for term in terms):
+        if not any(term in combined for term in terms):
             continue
-        if not any(term in low_title for term in ACTION_TERMS):
+        milestone_keys = maplight_milestone_keys(title, body)
+        if not milestone_keys:
             continue
-        k = key_for("MapLight Therapeutics", link.rstrip("/"), title.lower())
+        if "nobel prize" in title.lower():
+            milestone_keys = [k for k in milestone_keys if k != "maplight|nobel-optogenetics-bridge"]
+            if not milestone_keys:
+                continue
+        event_identity = "|".join(sorted(milestone_keys))
+        k = key_for("MapLight Therapeutics", event_identity)
         if k in seen:
             continue
         seen.add(k)
-        stage, meaning = classify_press(title)
+        stage, meaning = maplight_stage_and_meaning(milestone_keys, title)
         out.append({
             "key": k,
+            "milestone_keys": milestone_keys,
             "company": "MapLight Therapeutics",
-            "program": program_label("MapLight Therapeutics", low_title),
+            "program": program_label("MapLight Therapeutics", combined),
             "stage": stage,
             "meaning": meaning,
             "title": title,
@@ -534,13 +657,21 @@ def render_alert(
     items: list[dict],
     trial_updates: list[dict],
     registry_updates: list[dict],
+    maplight_press_updates: list[dict],
     maplight_updates: list[dict],
     new_maplight_trials: list[dict],
     new_cns_trials: list[dict],
     now: dt.datetime,
 ) -> str:
+    non_maplight_count = len(items) + len(trial_updates) + len(registry_updates) + len(new_cns_trials)
+    maplight_count = len(maplight_press_updates) + len(maplight_updates) + len(new_maplight_trials)
+    header = (
+        "[바이오 감시] MapLight(MPLT) 광유전학 기반 약물발굴 전환"
+        if maplight_count and not non_maplight_count
+        else "[바이오 감시] 광유전학 임상·허가 구조 변화"
+    )
     lines = [
-        "[바이오 감시] 광유전학 임상·허가 구조 변화",
+        header,
         f"조회 시각: {now.strftime('%Y-%m-%d %H:%M')} 한국시간",
         "",
         "판정 원칙: 노벨상·논문·행사 자체는 재알림하지 않고, 인간 임상·허가·환자투여·유효성·제조·상용화 단계가 실제로 바뀔 때만 알립니다.",
@@ -575,6 +706,22 @@ def render_alert(
             f"- 변화: {' / '.join(item['changes'])}",
             "- 확인 수준: 일본 임상연구등제출·공개시스템(jRCT) 공식 등록",
             f"- 원문: {JRCT_RV001}",
+        ]
+        idx += 1
+    if maplight_press_updates or maplight_updates or new_maplight_trials:
+        lines += [
+            "",
+            "[MapLight(MPLT) 전용 추적]",
+            "- 구분: 직접 광치료가 아니라 optogenetics·회로지도 → 표적 발굴 → 경구 CNS 약물 임상의 간접 상용화",
+        ]
+    for item in maplight_press_updates:
+        lines += [
+            "",
+            f"{idx}. MapLight Therapeutics · {item['program']}",
+            f"- 단계: {item['stage']}",
+            f"- 변화: {item['meaning']}",
+            "- 확인 수준: MapLight 공식 IR RSS",
+            f"- 원문: {item['url']}",
         ]
         idx += 1
     for item in maplight_updates:
@@ -616,7 +763,7 @@ def render_alert(
         "- 망막 광유전학: MOGENRY 허가결정·RTx-015 후기임상 전환이 가장 가까운 상용화 검증 신호입니다.",
         "- 뇌·BCI: 아직 인간 치료의 중심은 전기식 BCI·DBS이며, 일반 BCI 뉴스를 광유전학 수혜로 묶지 않습니다. 비망막 인간 광유전학 임상 등록·IND·첫 환자투여가 생길 때만 별도 핵심 알림으로 올립니다.",
         "- 시각복원: MOGENRY·RTx-015/021·GS030·BS01·ZM-02·RV-001은 opsin·표적세포·보조광학장치 의존성이 서로 달라 한 묶음으로 보지 않습니다.",
-        "- MapLight(MPLT): 직접 광치료 기업으로 분류하지 않습니다. optogenetics·회로지도에서 발굴한 표적을 ML-007C-MA·ML-004 같은 경구 약물로 번역하는 간접 상용화이며, 신규 임상등록·등록임상 전환·FDA 후기임상 경로·핵심 유효성 변화만 알립니다.",
+        "- MapLight(MPLT): 별도 하위 감시로 분리합니다. FDA EOP2 실제 완료, 3상 등록·첫 환자, VISTA·ZEPHYR-2 결과, ML-004 후기개발·파트너링, 개발중단·재개만 핵심 알림으로 올리고 노벨상 재탕·행사·단순 계획 반복은 제외합니다.",
         "- 연구장비: Bruker/Inscopix·레이저·광섬유 같은 연구도구는 직접 임상·상용화 매출과 분리하며, 단순 노벨상 테마 뉴스에는 알림하지 않습니다.",
     ]
     return "\n".join(lines).strip() + "\n"
@@ -634,6 +781,14 @@ def self_test() -> None:
     stage, _ = classify_press("MapLight Therapeutics Receives Fast Track Designation for ML-007C-MA")
     assert stage == "FDA Fast Track"
     assert program_label("MapLight Therapeutics", "positive zephyr results for ml-007c-ma").startswith("ML-007C-MA")
+    planned = "MapLight plans to engage with FDA at an End-of-Phase 2 meeting for ML-007C-MA"
+    completed = "MapLight completed its End-of-Phase 2 meeting with FDA for ML-007C-MA"
+    assert "maplight|ml007|fda-eop2-completed" not in maplight_milestone_keys(planned, "")
+    assert "maplight|ml007|fda-eop2-completed" in maplight_milestone_keys(completed, "")
+    phase3 = "MapLight initiates ZEPHYR-2 Phase 3 and doses first patient with ML-007C-MA"
+    assert "maplight|ml007|zephyr2-started" in maplight_milestone_keys(phase3, "")
+    nobel_only = "MapLight celebrates Nobel Prize for optogenetics"
+    assert maplight_milestone_keys(nobel_only, "") == ["maplight|nobel-optogenetics-bridge"]
     assert not any(x in "2026 nobel prize for optogenetics".lower() for x in ("pdufa", "approval", "phase 3"))
 
 
@@ -650,6 +805,8 @@ def main() -> int:
     old_trials = old.get("trial_snapshots") or {}
     old_rv001 = old.get("rv001_registry_snapshot") or {}
     old_maplight = old.get("maplight_trial_snapshots") or {}
+    old_maplight_milestones = set(old.get("maplight_seen_milestone_keys") or []) | set(MAPLIGHT_BASELINE_MILESTONES)
+    old_maplight_version = int(old.get("maplight_track_version") or 0)
     old_cns = set(old.get("cns_trial_ids") or [])
 
     errors: list[str] = []
@@ -666,14 +823,16 @@ def main() -> int:
         errors.append(f"Karolinska Institutet: {type(exc).__name__}")
 
     maplight_bridge_ok = False
+    maplight_rss_ok = False
+    maplight_events: list[dict] = []
+    maplight_errors: list[str] = []
     try:
         maplight_bridge_ok, maplight_events = validate_maplight_bridge_and_events()
-        events.extend(maplight_events)
-        successful += 1
+        maplight_rss_ok = True
         if not maplight_bridge_ok:
-            errors.append("MapLight 광유전학→회로지도→약물발굴 공식 연결 검증 실패")
+            maplight_errors.append("MapLight 광유전학→회로지도→약물발굴 공식 연결 검증 실패")
     except Exception as exc:
-        errors.append(f"MapLight 공식 RSS: {type(exc).__name__}")
+        maplight_errors.append(f"MapLight 공식 RSS: {type(exc).__name__}")
 
     for company, url, terms in COMPANY_SOURCES:
         try:
@@ -726,10 +885,11 @@ def main() -> int:
     maplight_snapshots: dict[str, dict] = {}
     maplight_updates: list[dict] = []
     new_maplight_trials: list[dict] = []
+    maplight_trials_ok = False
     try:
         maplight_trials = discover_maplight_trials()
         maplight_snapshots = {item["nct"]: item["snapshot"] for item in maplight_trials}
-        successful += 1
+        maplight_trials_ok = True
         if initialized:
             for item in maplight_trials:
                 nct = item["nct"]
@@ -744,7 +904,7 @@ def main() -> int:
                         "changes": changes,
                     })
     except Exception as exc:
-        errors.append(f"ClinicalTrials MapLight discovery: {type(exc).__name__}")
+        maplight_errors.append(f"ClinicalTrials MapLight discovery: {type(exc).__name__}")
 
     cns_trials: list[dict] = []
     try:
@@ -753,14 +913,15 @@ def main() -> int:
     except Exception as exc:
         errors.append(f"ClinicalTrials optogenetics discovery: {type(exc).__name__}")
 
-    expected_sources = 1 + 1 + len(COMPANY_SOURCES) + 1 + len(TRIALS) + 1 + 1 + 1
+    expected_sources = 1 + len(COMPANY_SOURCES) + 1 + len(TRIALS) + 1 + 1
     minimum_successful = max(8, (expected_sources * 2 + 2) // 3)
-    if successful < minimum_successful or not nobel_ok or not maplight_bridge_ok:
+    maplight_health_ok = maplight_rss_ok and maplight_bridge_ok and maplight_trials_ok
+    if successful < minimum_successful or not nobel_ok:
         STATUS.write_text(
             "# 광유전학 임상·허가 감시 상태\n\n"
             f"- 공식 소스 정상 조회: {successful}/{expected_sources} · 최소 통과 {minimum_successful}\n"
             f"- 노벨상 공식 검증: {'성공' if nobel_ok else '실패'}\n"
-            f"- MapLight 광유전학 기반 약물발굴 연결: {'성공' if maplight_bridge_ok else '실패'}\n"
+            f"- MapLight 전용 감시: {'정상' if maplight_health_ok else '독립 보류 — 기존 MapLight 기준선 유지'}\n"
             "- 상태 기준선: 갱신하지 않음\n"
             "- Telegram: 송출하지 않음\n"
             + ("\n".join(f"- 오류: {e}" for e in errors) + "\n" if errors else ""),
@@ -773,6 +934,20 @@ def main() -> int:
     new_items = [x for x in events if x["key"] not in old_seen] if initialized else []
     new_cns = [x for x in cns_trials if x["nct"] not in old_cns] if initialized else []
 
+    maplight_press_updates: list[dict] = []
+    current_maplight_milestones = set(old_maplight_milestones)
+    if maplight_health_ok:
+        for item in maplight_events:
+            keys = set(item.get("milestone_keys") or [])
+            unseen = keys - old_maplight_milestones
+            if initialized and old_maplight_version >= MAPLIGHT_TRACK_VERSION and unseen:
+                maplight_press_updates.append(item)
+            current_maplight_milestones.update(keys)
+    else:
+        maplight_snapshots = old_maplight
+        maplight_updates = []
+        new_maplight_trials = []
+
     source_version = int(old.get("source_version") or 0)
     if initialized and source_version < 6:
         # Source coverage expanded after the first baseline. Do not replay
@@ -782,12 +957,20 @@ def main() -> int:
         maplight_updates = []
         new_maplight_trials = []
 
+    if old_maplight_version < MAPLIGHT_TRACK_VERSION:
+        maplight_press_updates = []
+        maplight_updates = []
+        new_maplight_trials = []
+
     pending = {
         "initialized": True,
         "version": 1,
-        "source_version": 6,
+        "source_version": 7,
         "ray_official_index_verified": ray_official_index_ok,
+        "maplight_track_version": MAPLIGHT_TRACK_VERSION,
+        "maplight_health_ok": maplight_health_ok,
         "maplight_optogenetics_bridge_verified": maplight_bridge_ok,
+        "maplight_seen_milestone_keys": sorted(current_maplight_milestones) if maplight_health_ok else sorted(old_maplight_milestones),
         "last_checked_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
         "nobel_2026_verified": nobel_ok,
         "seen_event_keys": current_keys,
@@ -797,6 +980,7 @@ def main() -> int:
         "cns_trial_ids": cns_ids,
         "relevant_press_events": len(events),
         "source_errors": errors,
+        "maplight_source_errors": maplight_errors,
     }
     for k in ("last_successful_delivery_kst", "telegram_message_ids", "bot_username"):
         if old.get(k) is not None:
@@ -804,12 +988,13 @@ def main() -> int:
     save_json(PENDING, pending)
 
     now = dt.datetime.now(KST)
-    if initialized and (new_items or trial_updates or rv001_updates or maplight_updates or new_maplight_trials or new_cns):
+    if initialized and (new_items or trial_updates or rv001_updates or maplight_press_updates or maplight_updates or new_maplight_trials or new_cns):
         ALERT.write_text(
             render_alert(
                 new_items[:8],
                 trial_updates[:8],
                 rv001_updates[:4],
+                maplight_press_updates[:8],
                 maplight_updates[:8],
                 new_maplight_trials[:4],
                 new_cns[:4],
@@ -821,26 +1006,31 @@ def main() -> int:
     STATUS.write_text(
         "# 광유전학 임상·허가 감시 상태\n\n"
         f"- 노벨상 공식 검증: **{'성공' if nobel_ok else '실패'}**\n"
+        f"- MapLight 전용 감시: **{'정상' if maplight_health_ok else '보류 — MapLight 기준선 미갱신'}**\n"
         f"- MapLight 광유전학 기반 약물발굴 연결: **{'성공' if maplight_bridge_ok else '실패'}**\n"
         f"- 공식 소스 정상 조회: **{successful}/{expected_sources}** · 최소 통과 **{minimum_successful}**\n"
         f"- 공식 기업 이벤트 기준선: **{len(events)}건**\n"
         f"- 추적 ClinicalTrials.gov 임상: **{len(snapshots)}건**\n"
         f"- 일본 jRCT RV-001 등록: **{'확인' if rv001_snapshot else '확인 실패'}**\n"
-        f"- MapLight 광유전학 기반 약물발굴 임상: **{len(maplight_trials)}건**\n"
+        f"- MapLight 광유전학 기반 약물발굴 임상: **{len(maplight_snapshots)}건**\n"
+        f"- MapLight 신규 변화: **{len(maplight_press_updates) + len(maplight_updates) + len(new_maplight_trials)}건**\n"
         f"- 비망막 중추신경계 광유전학 임상: **{len(cns_trials)}건**\n"
-        f"- 신규 알림: **{len(new_items) + len(trial_updates) + len(rv001_updates) + len(maplight_updates) + len(new_maplight_trials) + len(new_cns)}건**\n"
-        f"- 오류: **{len(errors)}건**\n",
+        f"- 신규 알림: **{len(new_items) + len(trial_updates) + len(rv001_updates) + len(maplight_press_updates) + len(maplight_updates) + len(new_maplight_trials) + len(new_cns)}건**\n"
+        f"- 일반 소스 오류: **{len(errors)}건** · MapLight 소스 오류: **{len(maplight_errors)}건**\n",
         encoding="utf-8",
     )
 
     print(
         f"optogenetics_watch initialized_before={initialized} press={len(events)} "
         f"trial_updates={len(trial_updates)} rv001_updates={len(rv001_updates)} "
-        f"maplight_updates={len(maplight_updates)} maplight_new={len(new_maplight_trials)} cns_new={len(new_cns)} "
-        f"alert={int(ALERT.exists())} errors={len(errors)}"
+        f"maplight_press={len(maplight_press_updates)} maplight_updates={len(maplight_updates)} "
+        f"maplight_new={len(new_maplight_trials)} maplight_health={int(maplight_health_ok)} cns_new={len(new_cns)} "
+        f"alert={int(ALERT.exists())} errors={len(errors)} maplight_errors={len(maplight_errors)}"
     )
     if errors:
         print("optogenetics_source_errors=" + json.dumps(errors, ensure_ascii=False))
+    if maplight_errors:
+        print("maplight_source_errors=" + json.dumps(maplight_errors, ensure_ascii=False))
     return 0
 
 
