@@ -7,8 +7,12 @@ on:
       - ".github/workflows/us-positioning-telegram-watch.yml"
       - "scripts/us_positioning_watch.py"
   schedule:
-    # Weekdays: KST 08:12 / 10:12 / 22:12; catches US close, CFTC Friday refresh, and daytime confirmation.
-    - cron: "12 23,1,13 * * 1-5"
+    # Completed-session checks only. KST 08:12 / 10:12 are after the U.S. close;
+    # the former 22:12 KST pre-open slot was removed because it could mix live
+    # SOX/Cboe values with completed-session CFTC data.
+    - cron: "12 23,1 * * 1-5"
+    # Backups for GitHub scheduled-event delay/drop. State fingerprints dedupe sends.
+    - cron: "27 23,1 * * 1-5"
   workflow_dispatch:
     inputs:
       force_send:
