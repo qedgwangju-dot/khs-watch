@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 111
+VERSION = 112
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -946,10 +946,19 @@ def same_headline_event(title_a: str, title_b: str, fact_a: str = "", fact_b: st
         "전망", "예상", "가능성", "밝혔다", "한다", "했다", "한다는", "위해", "대한",
         "news", "update", "exclusive", "report", "says", "said",
     }
+    financial_amount_token = re.compile(
+        r"(?<!\d)(?:(?:US\s*\$|USD|EUR|CNY|[$€¥])\s*)?\d[\d,.]*(?:\.\d+)?\s*"
+        r"(?:조\s*\d[\d,.]*\s*억(?:\s*\d[\d,.]*\s*만)?|조|억|만|"
+        r"trillion|billion|million|tn|bn|mn)\s*"
+        r"(?:원|달러|유로|위안|US\s*dollars?|dollars?|euros?|yuan|USD|EUR|CNY)?",
+        re.I,
+    )
 
     def tokens(value: str) -> set[str]:
         cleaned = re.sub(r"\s*[|｜]\s*(?:연합뉴스|뉴스1|뉴시스|한국경제|매일경제|Reuters|AP News)\s*$", "", value or "", flags=re.I)
+        cleaned = re.sub(r"삼전\s*[·ㆍ]?\s*닉스|삼전\s*[·ㆍ]?\s*하닉", "삼성전자 SK하이닉스", cleaned)
         cleaned = re.sub(r"\[[^\]]{1,12}\]|\([^)]{1,20}\)", " ", cleaned)
+        cleaned = financial_amount_token.sub(" ", cleaned)
         found = re.findall(
             r"\d+(?:[,.]\d+)*(?:조원|억원|만원|원|달러|유로|위안|%포인트|%|MW|GW|톤|명|대|개비|개|주|일|개월|년)?"
             r"|[a-z]{2,}[a-z0-9]*|[가-힣]{2,}",
@@ -964,21 +973,105 @@ def same_headline_event(title_a: str, title_b: str, fact_a: str = "", fact_b: st
     common = left & right
     overlap = len(common) / min(len(left), len(right))
     jaccard = len(common) / len(left | right)
-    if len(common) < 5 or overlap < 0.45 or jaccard < 0.32:
-        return False
 
     quantity = (
         r"\d[\d,.]*\s*조\s*\d[\d,.]*\s*억(?:\s*\d[\d,.]*\s*만)?\s*원?"
-        r"|\d[\d,.]*\s*(?:조원|억원|만원|원|달러|유로|위안|USD|EUR|CNY|%포인트|%|MW|GW|톤|명|대|개비|개월|년|billion|million|bn|mn|B|M)"
+        r"|\d[\d,.]*\s*(?:조원|억원|만원|조|억|만|원|달러|유로|위안|USD|EUR|CNY|%포인트|%|MW|GW|톤|명|대|개비|개월|년|billion|million|bn|mn|B|M)"
     )
     title_measures_a = set(re.findall(quantity, title_a, re.I))
     title_measures_b = set(re.findall(quantity, title_b, re.I))
     fact_measures_a = set(re.findall(quantity, fact_a, re.I))
     fact_measures_b = set(re.findall(quantity, fact_b, re.I))
+    def financial_amounts(text: str) -> list[tuple[float, str, int]]:
+        amounts: list[tuple[float, str, int]] = []
+        korean = re.compile(
+            r"(?<![\d])(?P<major>\d[\d,.]*(?:\.\d+)?)\s*(?P<unit>조|억|만)"
+            r"(?:\s*(?P<minor>\d[\d,.]*)\s*(?P<minor_unit>억|만))?\s*"
+            r"(?P<currency>원|달러|유로|위안)?"
+        )
+        multipliers = {"조": 1_000_000_000_000, "억": 100_000_000, "만": 10_000}
+        currencies = {"원": "KRW", "달러": "USD", "유로": "EUR", "위안": "CNY"}
+        for match in korean.finditer(text):
+            major = float(match.group("major").replace(",", ""))
+            value = major * multipliers[match.group("unit")]
+            if match.group("minor"):
+                value += float(match.group("minor").replace(",", "")) * multipliers[match.group("minor_unit")]
+            unit = match.group("currency")
+            currency = currencies.get(unit, "KRW")
+            significant = re.sub(r"\D", "", match.group("major")).lstrip("0").rstrip("0")
+            precision = max(1, len(significant))
+            amounts.append((value, currency, precision))
+
+        english = re.compile(
+            r"(?:(?P<prefix>US\s*\$|USD|EUR|CNY|\$|€|¥)\s*)?"
+            r"(?P<number>\d[\d,.]*(?:\.\d+)?)\s*"
+            r"(?P<unit>trillion|billion|million|tn|bn|mn)\s*"
+            r"(?P<suffix>US\s*dollars?|dollars?|euros?|yuan|USD|EUR|CNY)?",
+            re.I,
+        )
+        english_multipliers = {
+            "trillion": 1_000_000_000_000, "tn": 1_000_000_000_000,
+            "billion": 1_000_000_000, "bn": 1_000_000_000,
+            "million": 1_000_000, "mn": 1_000_000,
+        }
+        for match in english.finditer(text):
+            prefix, suffix = match.group("prefix") or "", match.group("suffix") or ""
+            currency_text = f"{prefix} {suffix}".casefold()
+            if not currency_text.strip():
+                continue
+            currency = "EUR" if "€" in currency_text or "eur" in currency_text or "euro" in currency_text else (
+                "CNY" if "¥" in currency_text or "cny" in currency_text or "yuan" in currency_text else "USD"
+            )
+            number = float(match.group("number").replace(",", ""))
+            precision = max(1, len(re.sub(r"\D", "", match.group("number")).lstrip("0").rstrip("0")))
+            amounts.append((number * english_multipliers[match.group("unit").casefold()], currency, precision))
+        return amounts
+
+    def equivalent_rounded_amount(left: list[tuple[float, str, int]],
+                                  right: list[tuple[float, str, int]]) -> bool:
+        if len(left) != 1 or len(right) != 1:
+            return False
+        left_value, left_currency, left_precision = left[0]
+        right_value, right_currency, right_precision = right[0]
+        if left_currency == right_currency:
+            ratio = max(left_value, right_value) / min(left_value, right_value)
+            # A one-significant-digit headline may round a detailed source total
+            # (for example, 17.2 trillion to 20 trillion); precise amounts stay strict.
+            tolerance = 1.18 if min(left_precision, right_precision) == 1 else 1.05
+            return ratio <= tolerance
+        if {left_currency, right_currency} == {"KRW", "USD"}:
+            won = left_value if left_currency == "KRW" else right_value
+            dollars = right_value if right_currency == "USD" else left_value
+            fx = won / dollars
+            return 900 <= fx <= 2_000
+        return False
+
+    def nonfinancial_measures(text: str) -> set[str]:
+        without_money = financial_amount_token.sub(" ", text or "")
+        return set(re.findall(quantity, without_money, re.I))
+
+    title_amounts_equivalent = equivalent_rounded_amount(
+        financial_amounts(title_a), financial_amounts(title_b),
+    )
+    if (
+        len(common) < 5
+        or overlap < 0.45
+        or (jaccard < 0.32 and not title_amounts_equivalent)
+    ):
+        return False
+
     if title_measures_a and title_measures_b and title_measures_a != title_measures_b:
-        return False
+        if (
+            not equivalent_rounded_amount(financial_amounts(title_a), financial_amounts(title_b))
+            or nonfinancial_measures(title_a) != nonfinancial_measures(title_b)
+        ):
+            return False
     if not title_measures_a and not title_measures_b and fact_measures_a and fact_measures_b and fact_measures_a != fact_measures_b:
-        return False
+        if (
+            not equivalent_rounded_amount(financial_amounts(fact_a), financial_amounts(fact_b))
+            or nonfinancial_measures(fact_a) != nonfinancial_measures(fact_b)
+        ):
+            return False
 
     early = re.compile(r"검토|논의|협상|추진|예정|계획|가능|전망|consider|discuss|negotiat|plan|propos", re.I)
     completed = re.compile(
@@ -3284,6 +3377,13 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
 def news_value_rank(evidence: list[dict]) -> int:
     """Economic mechanism outranks textual focus and announcement certainty."""
     kinds = {item["kind"] for item in evidence}
+    quantified_flow = any(
+        item["kind"] in {"market_price_or_flow", "insider_disclosed_trade"}
+        and QUANTITY.search(item["source_excerpt"])
+        for item in evidence
+    )
+    if quantified_flow:
+        return 4
     if kinds & {"business_investment_observation", "trading_rule", "energy_import_mix", "network_segmentation_policy", "housing_supply_policy", "commercial_order", "order_backlog_level", "customer_supply_start", "procurement_execution_stage", "selling_price_or_cost",
                 "earnings_or_guidance", "industry_market_share", "export_results", "national_export_release", "licensing_cashflow", "corporate_transaction", "corporate_ownership_execution", "export_control_scope",
                 "policy_scope_or_stage", "environmental_approval", "industrial_architecture_adoption", "physical_supply_or_capacity",
