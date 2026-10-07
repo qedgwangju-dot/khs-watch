@@ -4511,6 +4511,16 @@ class IncrementalNewsTests(unittest.TestCase):
         self.assertNotIn('5만t 체제', updated)
 
     def test_october_7_live_artifact_keeps_source_bound_market_facts(self):
+        company_cash_title = '반도체 호황에 기업 여윳돈 67조…역대 최대'
+        company_cash_body = ('반도체 호황으로 기업들의 여유 자금이 불어나면서 2분기 국내 비금융 기업의 순자금 운용 규모가 역대 최대를 기록했다. '
+                             '2분기 비금융 기업의 순운용은 67조 1000억원으로 전분기보다 46조 2000억원 증가했다. '
+                             '2009년 통계 작성 이후 최대치다. 기업의 금융기관 예치금도 급증했다.')
+        company_cash_core = radar.source_headline_event_fact(company_cash_title, company_cash_body)
+        for fact in ('비금융기업', '67조1000억원', '46조2000억원', '반도체 호황'):
+            self.assertIn(fact, company_cash_core)
+        self.assertNotIn('가계의 국내주식 순취득액', company_cash_core)
+        self.assertTrue(radar.core_sentence_is_complete(company_cash_core))
+
         amd_title = '정부, AMD와 국산 AI 반도체 생태계 키운다…이기종 컴퓨팅 협력 확대'
         amd_body = ('과기정통부는 AMD와 이기종 AI 컴퓨팅 인프라 구축 협력을 통해 국산 NPU 기업들을 지원한다. '
                     '내년에는 국산 NPU 지원을 기존 칩 단위에서 대규모 풀스택 인프라 구축으로 확대할 계획이다. '
@@ -4562,6 +4572,50 @@ class IncrementalNewsTests(unittest.TestCase):
         for fact in ('112조원', '106조원', 'ETF 7종', '옵션 만기', '15조원'):
             self.assertIn(fact, gs_core)
         self.assertTrue(radar.core_sentence_is_complete(gs_core))
+
+        ukraine_title = '우크라 "한국이 러시아 도왔다"…외신 인용 韓비판 | 연합뉴스'
+        ukraine_body = ('영국 일간 가디언은 지난 7∼8월 유조선 7척이 14차례에 나눠 총 17만6천톤 이상의 석유제품을 '
+                        '한국에서 러시아 극동 지역으로 실어 날랐다고 보도했다. 유조선 중 3척은 영국과 EU의 대러 제재 대상이었다. '
+                        '보도에 따르면 한국 외교부는 비전략 물자까지 포함해 수출 통제 대상을 확대해 엄격히 집행하고 있다고 밝혔다.')
+        ukraine_core = radar.source_headline_event_fact(ukraine_title, ukraine_body)
+        for fact in ('7~8월', '유조선 7척', '14차례', '17만6천t 이상', '3척', '영국·EU 제재', '외교부'):
+            self.assertIn(fact, ukraine_core)
+        self.assertTrue(radar.core_sentence_is_complete(ukraine_core))
+
+    def test_live_publisher_rewrites_of_one_kftc_case_collapse_to_one_alert(self):
+        titles_and_bodies = (
+            ('전쟁 틈타 44조원대 유가담합…SK에너지·현대오일뱅크 심판대에',
+             '국제유가가 불안정한 가운데 2개 정유사가 휘발유·경유·등유 가격정보를 공유하고 판매가격을 담합한 혐의가 공정거래위원회의 심판대에 올랐다. '
+             '공정거래위원회가 심사보고서를 제출했다. SK에너지와 현대오일뱅크는 2022년 2월부터 2026년 3월까지 가격정보를 교환했고, 올해 3월 두 차례 가격을 담합한 혐의를 받는다. 관련 매출액은 약 44조1천억원으로 추산됐으며 위원회 최종 판단은 아직 나오지 않았다.'),
+            ('SK에너지·HD현대오일뱅크 44조 정유 담합 심의…과징금 추산',
+             '국제유가가 불안정한 가운데 2개 정유사가 휘발유·경유·등유 가격정보를 공유하고 판매가격을 담합한 혐의가 공정위 심판대에 올랐다. '
+             '공정위는 SK에너지와 HD현대오일뱅크의 심사보고서를 위원회에 제출했다. 두 회사는 2022년 2월부터 2026년 3월까지 입금가 등 가격정보를 교환하고 올해 3월 가격을 담합한 혐의를 받는다. 관련 매출액은 44조1000억원이며 최종 제재는 확정되지 않았다.'),
+            ('SK에너지·현대오일뱅크, 44조원대 유류 담합 혐의…공정위 제재 착수',
+             '국제유가가 불안정한 가운데 2개 정유사가 휘발유·경유·등유 가격정보를 공유하고 판매가격을 담합한 혐의가 공정위 심판대에 올랐다. '
+             '공정거래위원회가 SK에너지와 현대오일뱅크의 심사보고서를 위원회에 제출했다. 두 회사가 2022년 2월부터 2026년 3월까지 가격정보를 교환하고 올해 3월 두 차례 담합했다는 혐의이며 관련 매출액은 약 44조1000억원이다. 법 위반 여부와 제재 수위는 전원회의에서 결정된다.'),
+        )
+        candidates = [
+            alert(title, body, f'https://example.com/kftc-{index}')
+            for index, (title, body) in enumerate(titles_and_bodies, 1)
+        ]
+        expected = ('공정위 심사관은 SK에너지·현대오일뱅크가 약 4년간 유류 가격정보를 교환하고 올해 3월 두 차례 가격을 '
+                    '담합했다는 혐의로 심의에 넘겼다. 관련 매출은 약 44.1조원이며 최종 위법 여부와 제재는 미확정이다.')
+        for candidate in candidates:
+            self.assertEqual(radar.korean_petroleum_cartel_event_theme(candidate),
+                             radar.korean_petroleum_cartel_event_theme(candidates[0]))
+            self.assertEqual(radar.source_headline_event_fact(candidate['source_title'], candidate['source_body']), expected)
+
+        unrelated = alert(
+            'SK에너지·현대오일뱅크, 별도 유통 담합 조사',
+            '공정위가 두 회사의 2024년 유통계약 관련 조사를 시작했다. 휘발유·경유·등유 가격정보 교환 사건과는 별개다.',
+        )
+        self.assertEqual(radar.korean_petroleum_cartel_event_theme(unrelated), '')
+
+        now = dt.datetime(2026, 10, 7, 14, 37, tzinfo=dt.timezone(dt.timedelta(hours=9)))
+        with patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}), patch.object(radar.base, 'kst_now', return_value=now):
+            selected = radar.quality_display_alerts(candidates, 3)
+        self.assertEqual(len(selected), 1)
+        self.assertEqual(selected[0]['telegram_core_fact'], expected)
 
     def test_live_radar_withholds_routine_items_and_keeps_material_revisions(self):
         now = dt.datetime(2026, 10, 7, 14, 37, tzinfo=dt.timezone(dt.timedelta(hours=9)))
