@@ -15,11 +15,14 @@ on:
     # Important-event precheck: 20:40 KST, with a 20:47 backup. State dedupe allows one send.
     - cron: "40 11 * * 1-5"
     - cron: "47 11 * * 1-5"
-    # Monday 07:00 KST report exactly, with 07:03 and 07:13 backups.
+    # Monday 07:00 KST primary report. Backups are spread out because GitHub
+    # scheduled events can be delayed/dropped around busy clock boundaries.
     # State dedupe ensures that only the first successful slot sends.
     - cron: "0 22 * * 0"
     - cron: "3 22 * * 0"
     - cron: "13 22 * * 0"
+    - cron: "30 22 * * 0"
+    - cron: "0 23 * * 0"
   workflow_dispatch:
 
 permissions:
