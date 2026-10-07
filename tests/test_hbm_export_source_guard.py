@@ -26,6 +26,7 @@ class HBMExportSourceGuardTests(unittest.TestCase):
 
     def test_unpublished_month_poll_is_three_hourly(self):
         state = {
+            "official_source_health_version": w.OFFICIAL_SOURCE_HEALTH_VERSION,
             "last_successful_official_month": "202608",
             "last_official_poll_attempt_kst": (self.now - timedelta(hours=2)).isoformat(),
         }
@@ -39,12 +40,23 @@ class HBMExportSourceGuardTests(unittest.TestCase):
 
     def test_published_month_revision_poll_is_daily(self):
         state = {
+            "official_source_health_version": w.OFFICIAL_SOURCE_HEALTH_VERSION,
             "last_successful_official_month": "202609",
             "last_official_poll_attempt_kst": (self.now - timedelta(hours=23)).isoformat(),
         }
         due, interval = w._official_poll_due(state, self.now)
         self.assertFalse(due)
         self.assertEqual(interval, 24)
+
+    def test_health_version_migration_forces_one_poll(self):
+        state = {
+            "official_source_health_version": w.OFFICIAL_SOURCE_HEALTH_VERSION - 1,
+            "last_successful_official_month": "202608",
+            "last_official_poll_attempt_kst": self.now.isoformat(),
+        }
+        due, interval = w._official_poll_due(state, self.now)
+        self.assertTrue(due)
+        self.assertEqual(interval, 3)
 
     def test_regional_data_go_row_is_exact_hsk10(self):
         xml = """<response><header><resultCode>00</resultCode><resultMsg>OK</resultMsg></header>
