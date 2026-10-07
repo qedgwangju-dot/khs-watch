@@ -266,12 +266,24 @@ CFTC_TREASURY_CODES = {
 
 
 def _download_bytes(url: str) -> bytes:
-    req = urllib.request.Request(url, headers={
-        "User-Agent": "Mozilla/5.0 khs-watch/cta-squeeze",
-        "Accept": "*/*",
-    })
-    with urllib.request.urlopen(req, timeout=35) as r:
-        return r.read()
+    errors = []
+    for attempt in range(3):
+        try:
+            req = urllib.request.Request(url, headers={
+                "User-Agent": "Mozilla/5.0 khs-watch/cta-squeeze",
+                "Accept": "*/*",
+                "Cache-Control": "no-cache",
+                "Pragma": "no-cache",
+            })
+            with urllib.request.urlopen(req, timeout=35) as r:
+                return r.read()
+        except Exception as exc:
+            errors.append(f"{type(exc).__name__}: {exc}")
+            if attempt < 2:
+                time.sleep(1.5 * (attempt + 1))
+    raise RuntimeError(
+        f"CFTC compressed download 3회 실패: {url} / {' | '.join(errors)}"
+    )
 
 
 def _history_cftc_snapshot(live_error: Exception | None = None) -> dict:
