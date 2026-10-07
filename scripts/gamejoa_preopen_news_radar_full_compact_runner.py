@@ -3680,12 +3680,29 @@ def source_headline_event_fact(title: str, body: str) -> str:
 def source_focused_article_core(title: str, sentences: list[str]) -> str:
     """Prefer a complete source fact about the headline, never an unrelated number."""
     focus = market_materiality.focus_kind(title)
+    source = " ".join(sentences)
     observed = source_headline_event_fact(title, "\n".join(sentences))
     if observed:
         return observed
     negotiation = acquisition_negotiation_fact(title, "\n".join(sentences))
     if negotiation:
         return negotiation
+    for sentence in sentences:
+        if not market_materiality.evidence_is_new_event("commercial_order", sentence):
+            continue
+        period = re.search(r"계약\s*기간은\s*([^.!?]{3,45}?)(?:이며|,)", source)
+        amount = re.search(
+            r"계약\s*규모는\s*(약\s*)?"
+            r"(\d[\d,.]*(?:(?:조|억|만|천)\s*)*(?:원|달러|유로))",
+            source,
+        )
+        if not period or not amount:
+            continue
+        fact = normalized_article_sentence(sentence)
+        expanded = (f"{fact} 계약 기간은 {period.group(1).strip()}, "
+                    f"규모는 {amount.group(1) or ''}{amount.group(2)}이다.")
+        if core_sentence_is_complete(expanded):
+            return expanded
     if focus == "capital_listing" and "ETF" in title.upper():
         for sentence in sentences:
             if market_materiality.evidence_is_new_event("capital_listing_stage", sentence) and re.search(
@@ -3745,7 +3762,45 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
     if not market_materiality.focus_kind(title) and not market_materiality.DENIAL_HEADLINE.search(title):
         return ""
     focus = market_materiality.focus_kind(title)
-    source = " ".join(sentences)
+    if focus == "memory" and re.search(r"난야", title, re.I):
+        report = re.search(
+            r"난야[^.!?]{0,140}?D램\s*계약가격을\s*올리겠다고\s*통보했[^.!?]{0,80}?"
+            r"최대\s*(\d+(?:\.\d+)?)%",
+            source,
+            re.I,
+        )
+        publisher = re.search(r"([A-Za-z가-힣0-9·]+(?:일보|통신|방송))(?:은|는|이|가)", source)
+        if report and publisher:
+            fact = (f"{publisher.group(1)}는 난야가 고객사에 D램 계약가격을 최대 {report.group(1)}% "
+                    "올리겠다고 통보했다고 보도했다.")
+            if core_sentence_is_complete(fact):
+                return fact
+    if focus == "ownership" and "주식교환" in source:
+        schedule = re.search(
+            r"([A-Za-z0-9가-힣&·]+)(?:은|는)\s*(?:[A-Za-z0-9가-힣&·]+\s*종속회사인\s*)?"
+            r"([A-Za-z0-9가-힣&·]+)과\s*자사의\s*"
+            r"주식교환일이\s*((?:(?:20\d{2}년|내년)\s*)?\d{1,2}월\s*\d{1,2}일)로\s*변경됐다고[^.!?]{0,30}"
+            r"(?:정정\s*)?공시했다",
+            source,
+        )
+        if schedule:
+            buyer, target, exchange_date = schedule.groups()
+            fact = (f"{buyer}{korean_topic_particle(buyer)} {target}과의 주식교환일을 "
+                    f"{exchange_date}로 변경했다고 정정 공시했다.")
+            if re.search(r"교환\s*조건에는\s*변동이\s*없", source):
+                fact += " 교환 조건은 유지된다."
+            threshold = re.search(
+                r"주식매수청구권\s*규모가\s*회사별로\s*"
+                rf"({KOREAN_WON_AMOUNT_PATTERN}|\d[\d,.]*(?:(?:조|억|만|천)\s*)*(?:달러|유로))\s*이상이면[^.!?]{{0,55}}"
+                r"계약이\s*해제될\s*수\s*있",
+                source,
+            )
+            if threshold:
+                expanded = fact + f" 회사별 매수청구권이 {threshold.group(1)} 이상이면 계약이 해제될 수 있다."
+                if core_sentence_is_complete(expanded):
+                    fact = expanded
+            if core_sentence_is_complete(fact):
+                return fact
     if focus == "capital_spending" and re.search(r"공급|생산", title):
         investment = re.search(
             r"([A-Za-z가-힣]{2,20})(?:은|는)\s*(\d{4})\s*회계연도\s*(상반기|하반기)\s*"
@@ -3936,6 +3991,23 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
                 if core_sentence_is_complete(fact):
                     return fact
     if focus == "commercial_order":
+        for index, sentence in enumerate(sentences):
+            if not market_materiality.evidence_is_new_event("commercial_order", sentence):
+                continue
+            terms = " ".join(sentences[index + 1:index + 3])
+            period = re.search(r"계약\s*기간은\s*([^.!?]{3,45}?)(?:이며|,)", terms)
+            amount = re.search(
+                r"계약\s*규모는\s*(약\s*)?"
+                r"(\d[\d,.]*(?:(?:조|억|만|천)\s*)*(?:원|달러|유로))",
+                terms,
+            )
+            if not period or not amount:
+                continue
+            fact = normalized_article_sentence(sentence)
+            expanded = (f"{fact} 계약 기간은 {period.group(1).strip()}, "
+                        f"규모는 {amount.group(1) or ''}{amount.group(2)}이다.")
+            if core_sentence_is_complete(expanded):
+                return expanded
         for sentence in sentences:
             issuer = re.match(r"^([A-Za-z0-9가-힣&·]+(?:\s+[A-Za-z0-9가-힣&·]+){0,4})\s*(?:\([A-Za-z0-9.-]+\))?(?:은|는|이|가)\s+", sentence)
             headline_issuer = re.match(r"^([^,，]{2,35})[,，]", title)

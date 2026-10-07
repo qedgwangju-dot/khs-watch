@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 110
+VERSION = 111
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -268,7 +268,10 @@ LOCAL_ADMINISTRATIVE_TOPIC = re.compile(
     r"현장\s*점검|시설.{0,8}(?:확충|점검)|(?:농가|농업인).{0,15}(?:지원|공급|부담)|"
     r"지원\s*사업|가격안정지원|공급\s*방안", re.I,
 )
-POLICY_ADVOCACY = re.compile(r"건의|요청|요구|촉구|과제로\s*제시|의견이\s*나왔다|논의해\s*나가겠다|해소될\s*수\s*있도록")
+POLICY_ADVOCACY = re.compile(
+    r"건의|요청|요구|촉구|주장(?:이다|했다)?|목소리|과제로\s*제시|의견이\s*나왔다|"
+    r"재검토(?:해야|를\s*요구)|살펴야|논의해\s*나가겠다|해소될\s*수\s*있도록"
+)
 FORMAL_POLICY_EXECUTION = re.compile(
     r"입법예고(?:했다|한다)|(?:법안|특별법|법률).{0,40}(?:대표발의했다|발의했다|발의됐다|제출했다|통과했다|공포했다)|"
     r"(?:고시|조례|규제|규정).{0,20}(?:개정했다|개정한다|제정했다|시행한다|의결했다|완화했다)|"
@@ -441,7 +444,7 @@ def focus_matches(title: str, sentence: str) -> bool:
         return bool(re.search(r"주당\s*(?:순자산가치|NAV)", sentence)
                     and re.search(r"대비|기준|증가|예상", sentence))
     if kind == "ownership" and re.search(r"인수|합병", title):
-        return bool(re.search(r"인수|합병|완전자회사", sentence))
+        return bool(re.search(r"인수|합병|완전자회사|주식교환", sentence))
     if kind == "management_change":
         return bool(re.search(r"CFO|CEO|최고재무책임자|최고경영자", sentence, re.I)
                     and re.search(r"사임|해임|교체", sentence))
@@ -2848,8 +2851,8 @@ RULES = (
      r"입찰|시공사|우선협상|procurement|bid|preferred bidder",
      r"제출|선정|선택|낙찰|철회|탈락|확보|submit|select|award|withdraw"),
     ("selling_price_or_cost", ("earnings",),
-     r"판매가격|판매\s*가격|판가|단가|원가|평균판매가격|(?:세계\s*)?식량\s*가격\s*지수|(?:메모리|HBM|D램|DRAM|낸드|NAND)\s*(?:공급\s*)?가격|\basp\b|selling price|unit price|input cost",
-     r"인상|인하|상승|하락|오르|내리|올랐|내렸|급등|급락|증가|감소|전가|협상|상향|하향|rais|cut|rise|fall|increas|decreas|negotiat"),
+     r"판매가격|판매\s*가격|계약\s*가격|판가|단가|원가|평균판매가격|(?:세계\s*)?식량\s*가격\s*지수|(?:메모리|HBM|D램|DRAM|낸드|NAND)\s*(?:공급\s*)?가격|\basp\b|selling price|unit price|input cost",
+     r"인상|인하|상승|하락|오르|내리|올리|낮추|올랐|내렸|급등|급락|증가|감소|전가|협상|상향|하향|rais|cut|rise|fall|increas|decreas|negotiat"),
     ("project_cost_evaluation", ("earnings",),
      r"(?:LNG|원전|데이터센터|발전소|공장).{0,40}(?:사업비|건설비|사업.{0,15}비용)",
      r"추산|추정|비교|두\s*배|\d+(?:\.\d+)?\s*배|cost estimate|estimated cost"),
@@ -2880,7 +2883,7 @@ RULES = (
      r"벤치마크|benchmark", r"\d+(?:\.\d+)?\s*(?:%|배).{0,15}(?:향상|개선|증가|감소|절감)"),
     ("licensing_cashflow", ("earnings", "timeline"),
      r"로열티|선급금|마일스톤|기술이전|royalty|upfront|milestone|licens",
-     r"체결|계약|수령|수취|받|합의|서명|sign|agreement|receiv"),
+     r"체결|계약|수령|수취|받|부여|허여|확보|합의|서명|sign|agreement|receiv"),
     ("customer_financing_commitment", ("earnings", "timeline"),
      r"대출|전환사채|loan|convertible debt",
      r"받기로\s*합의|대출\s*(?:계약|약정).{0,15}(?:체결|서명)|대출.{0,20}(?:집행했다|승인했다)|agreed to (?:lend|borrow)|loan agreement.{0,20}(?:signed|executed)"),
@@ -3020,6 +3023,39 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
     if quoted_label and not re.search(
         r"체결|서명|수주|계약|투자|출시|가동|승인|확정|발표|기록|집계|" + QUANTITY.pattern,
         quoted_label.group(0), re.I,
+    ):
+        return False
+    if kind == "licensing_cashflow":
+        # A qualification or training description can mention that a role
+        # "supports technology-transfer and licensing contracts".  It is not
+        # itself a signed licence or a cash-flow event.
+        if re.search(r"자격\s*(?:시험|증)|양성\s*교육|전문\s*인력|실무형\s*전문가|업무가\s*지원", sentence):
+            return False
+        return bool(re.search(
+            r"(?:기술이전|라이선스|licen[cs]e)[^.!?]{0,55}(?:계약[^.!?]{0,18}(?:체결|서명|합의)|체결했|서명했|선급금|마일스톤|로열티)|"
+            r"(?:라이선스|licen[cs]e)[^.!?]{0,35}(?:부여|허여)[^.!?]{0,35}(?:선급금|마일스톤|로열티)|"
+            r"(?:선급금|마일스톤|로열티)[^.!?]{0,45}(?:수령|수취|받기로|합의|계약)",
+            sentence, re.I,
+        ))
+    if kind == "policy_scope_or_stage" and re.search(
+        r"세수\s*(?:감소|증가)|세입\s*기반|경기\s*둔화|기업\s*이익이\s*줄",
+        sentence,
+    ) and not FORMAL_POLICY_EXECUTION.search(sentence):
+        return False
+    if kind == "physical_supply_or_capacity" and re.search(
+        r"세수|세입\s*기반|과세\s*기반|법인세|세율", sentence,
+    ) and not re.search(
+        r"(?:공장|설비|생산량|공급량|재고|리드타임)[^.!?]{0,35}"
+        r"(?:증설|증가|감소|중단|부족|지연|가동)",
+        sentence,
+    ):
+        return False
+    if kind == "physical_supply_or_capacity" and re.search(
+        r"생산\s*기반(?:도|을|은|이)?[^.!?]{0,24}(?:확대|강화)", sentence,
+    ) and not (
+        QUANTITY.search(sentence)
+        or NEW_EXECUTION.search(sentence)
+        or re.search(r"착공했|준공|가동을\s*시작|설비투자|신공장|증설", sentence)
     ):
         return False
     if kind == "hardware_procurement_commitment":
@@ -3732,6 +3768,17 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
     result = {"version": VERSION, "disposition": "review", "priority": 1, "axes": [], "evidence": []}
     if not title or not body:
         result["reason"] = "source_evidence_unavailable"
+        return result
+    professional_training = re.search(
+        r"자격\s*(?:시험|증)|양성\s*교육|전문\s*인력\s*양성|교육생\s*모집", title,
+    )
+    commercial_training_change = re.search(
+        r"(?:상장사|코스피|코스닥)[^.!?]{0,65}(?:수주|공급\s*계약|매출|영업이익)|"
+        r"(?:수주|공급\s*계약|매출|영업이익)[^.!?]{0,65}(?:상장사|코스피|코스닥)",
+        body[:2500],
+    )
+    if professional_training and not commercial_training_change:
+        result.update(disposition="exclude", priority=0, reason="professional_training_or_qualification_without_equity_event")
         return result
     production_mentions = len(re.findall(r"산업생산", body))
     orders_mentions = len(re.findall(r"산업수주", body))
@@ -4608,6 +4655,11 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
         ):
             result["priority"] = 1
             result["scope_note"] = "target_reiteration_without_new_instrument_or_execution"
+        if re.search(r"요구|촉구|주장|목소리|고개드는|재검토|살펴야", title) and kinds <= {
+            "policy_scope_or_stage", "physical_supply_or_capacity", "rates_fx_or_macro", "sector_demand_outlook",
+        } and not FORMAL_POLICY_EXECUTION.search(body):
+            result["priority"] = 1
+            result["scope_note"] = "policy_advocacy_without_announced_instrument_change"
         forum_agenda = re.search(r"포럼|패널토론|토론회|기조\s*발제|forum|panel discussion", headline_lead + " " + body[:400], re.I)
         forum_change = any(
             not BACKGROUND.search(sentence) and not PAST_ACTION.search(sentence)
