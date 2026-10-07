@@ -855,7 +855,7 @@ def update_transformer_import_watch(now: datetime, previous: dict) -> tuple[dict
             latest["latest_month"] = key
             break
         except Exception as e:
-            errors.append(f"{key}: {type(e).__name__}")
+            errors.append(f"{key}: {type(e).__name__}: {str(e)[:180]}")
 
     if new_month and not prior_latest:
         cy, cm = map(int, new_month["month"].split("-"))
