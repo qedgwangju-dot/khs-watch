@@ -109,9 +109,38 @@ def load_state() -> dict:
 
 
 def latest_fx():
-    from fx_api import daily_krw
-    q = daily_krw()
-    return q.rate, q.basis
+    """Validated cross-checked FX first; official FRED DEXKOUS fallback only."""
+    errors = []
+    try:
+        from fx_api import daily_krw
+        q = daily_krw()
+        return q.rate, q.basis
+    except Exception as exc:
+        errors.append(f"daily_krw {type(exc).__name__}: {exc}")
+
+    try:
+        raw = fetch(FRED_FX)
+        rows = [line.split(",") for line in raw.splitlines()[1:] if "," in line]
+        today = datetime.now(KST).date()
+        for row in reversed(rows):
+            if len(row) < 2 or row[1].strip() in ("", "."):
+                continue
+            day = datetime.strptime(row[0].strip(), "%Y-%m-%d").date()
+            rate = float(row[1].strip())
+            age = (today - day).days
+            if rate <= 0 or age < 0 or age > 7:
+                continue
+            basis = (
+                f"{day.isoformat()} FRED DEXKOUS 공식 fallback · "
+                f"조회 {datetime.now(KST).strftime('%Y-%m-%d %H:%M KST')} · "
+                "교차검증 API 실패"
+            )
+            return rate, basis
+        errors.append("FRED DEXKOUS 유효 7일 이내 관측치 없음")
+    except Exception as exc:
+        errors.append(f"FRED DEXKOUS {type(exc).__name__}: {exc}")
+
+    raise RuntimeError("환율 검증 경로 전체 실패 — 원화 환산 중단: " + " | ".join(errors))
 
 
 def krw(usd: float, fx: float) -> str:
