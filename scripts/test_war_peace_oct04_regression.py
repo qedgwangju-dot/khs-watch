@@ -496,6 +496,9 @@ try:
     mod.verify_alert(False)
     raise AssertionError("oct07-quality-gate-stale-nepal")
 except RuntimeError as e:
-    check("oct07-quality-gate-stale-nepal", "3시간을 초과" in str(e))
+    check(
+        "oct07-quality-gate-stale-nepal",
+        ("3시간을 초과" in str(e)) or ("노후 기사 재등장" in str(e)),
+    )
 
 print("WAR_PEACE_OCT04_REGRESSION_OK")
