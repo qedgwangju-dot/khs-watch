@@ -3,6 +3,8 @@ import pathlib
 import tempfile
 import sys
 import unittest
+from datetime import datetime
+from zoneinfo import ZoneInfo
 from unittest.mock import patch
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "scripts"))
@@ -45,6 +47,9 @@ class SolidigmIPOTests(unittest.TestCase):
         self.assertEqual(out["valuation_max_usd"], 100_000_000_000)
         self.assertNotIn("pre_ipo_raise_usd", out)
         self.assertEqual(out["user_original_url"], w.REPORT_YONHAP_URL)
+        self.assertEqual(out["bloomberg_original_url"], w.BLOOMBERG_ORIGINAL_URL)
+        self.assertEqual(out["bloomberg_original_title"], w.BLOOMBERG_ORIGINAL_TITLE)
+        self.assertIs(out["bloomberg_original_body_directly_verified"], False)
 
     def test_baseline_stage_is_upgraded_only_once(self):
         old = {
@@ -76,6 +81,81 @@ class SolidigmIPOTests(unittest.TestCase):
         self.assertIn("연합뉴스", alert)
         self.assertIn("SK하이닉스 공식 입장", alert)
         self.assertTrue(delivery.chunks(alert))
+
+
+    def test_primary_article_url_rendered_as_original_not_claimed_directly_read(self):
+        event = self._bloomberg_selected_event()
+        with patch.object(w, "article_text", return_value=""):
+            new = w.extract_patch(event)
+        old = dict(new, bloomberg_original_url="", source_name="Reuters")
+        with patch.object(w, "fx_quote", return_value=(1340.0, "테스트 환율")):
+            alert = w.alert_text(old, new, ["Bloomberg 원문 주소 연결"], w.now_kst())
+        self.assertIn(w.BLOOMBERG_ORIGINAL_URL.replace("&", "&amp;"), alert)
+        self.assertIn("Bloomberg 원문(사용자 제공 주소)", alert)
+        self.assertIn("본문은 직접 열람 제한", alert)
+        self.assertIn("재인용 확인", alert)
+        self.assertIn("추가 재인용", alert)
+        self.assertIn("회사나 SEC 확정 사실이 아닙니다", alert)
+        self.assertTrue(delivery.chunks(alert))
+
+    def test_primary_original_url_added_once_without_false_ipo_progress(self):
+        initial = {
+            "watch_version": w.WATCH_VERSION,
+            "ipo_alert_format_version": w.IPO_ALERT_FORMAT_VERSION,
+            "current_state": {
+                "stage": "underwriters_selected",
+                "target_year": 2027,
+                "valuation_max_usd": 100_000_000_000,
+                "raise_target_usd": 10_000_000_000,
+                "evidence_state": "top_tier_report",
+                "source_name": "Bloomberg 보도(이데일리·연합뉴스·Investing.com 재인용)",
+                "source_url": w.REPORT_EDAILY_URL,
+                "source_published_at_kst": "2026-10-08T07:48:01+09:00",
+                "reported_original": "Bloomberg",
+                "independent_origin_count": 1,
+                "ipo_officially_confirmed": False,
+                "underwriter_officially_confirmed": False,
+                "underwriters": ["Citigroup","Goldman Sachs","JPMorgan Chase","Morgan Stanley","UBS"],
+                "lead_underwriters": ["Goldman Sachs","Morgan Stanley"],
+                "other_syndicate_banks": ["JPMorgan Chase","Citigroup","UBS"],
+                "user_original_url": w.REPORT_YONHAP_URL,
+                "crosscheck_url": w.REPORT_INVESTING_URL,
+            },
+            "manufacturing_state": dict(w.MANUFACTURING_BASELINE),
+        }
+        saved = {"value": initial}
+        def load():
+            return copy.deepcopy(saved["value"])
+        def save(data):
+            saved["value"] = copy.deepcopy(data)
+        checked = datetime(2026, 10, 8, 9, 0, tzinfo=ZoneInfo("Asia/Seoul"))
+        with tempfile.TemporaryDirectory() as tmp:
+            outfile = pathlib.Path(tmp) / "ipo_alert.html"
+            with (
+                patch.object(w, "ALERT", outfile),
+                patch.object(w, "now_kst", return_value=checked),
+                patch.object(w, "article_text", return_value=""),
+                patch.object(w, "read_events", return_value=[self._bloomberg_selected_event()]),
+                patch.object(w, "read_manufacturing_events", return_value=[]),
+                patch.object(w, "load_state", side_effect=load),
+                patch.object(w, "save_state", side_effect=save),
+                patch.object(w, "fx_quote", return_value=(1340.0, "테스트 환율")),
+            ):
+                w.main()
+                self.assertTrue(outfile.exists())
+                text = outfile.read_text(encoding="utf-8")
+                self.assertIn("원문 주소 추가", text)
+                self.assertIn(w.BLOOMBERG_ORIGINAL_URL, text)
+                self.assertIn("신규 IPO 진행 아님", text)
+                self.assertEqual(saved["value"]["current_state"]["stage"], "underwriters_selected")
+                self.assertEqual(saved["value"]["current_state"]["raise_target_usd"], 10_000_000_000)
+                self.assertEqual(saved["value"]["current_state"]["valuation_max_usd"], 100_000_000_000)
+                self.assertEqual(saved["value"]["current_state"]["independent_origin_count"], 1)
+                self.assertEqual(saved["value"]["ipo_source_link_version"], w.IPO_SOURCE_LINK_VERSION)
+                self.assertTrue(delivery.chunks(text))
+                w.main()
+                self.assertFalse(outfile.exists())
+                self.assertEqual(saved["value"]["ipo_source_link_version"], w.IPO_SOURCE_LINK_VERSION)
 
     def test_reposted_article_not_three_independent_sources(self):
         event = self._bloomberg_selected_event()
