@@ -15,6 +15,7 @@ on:
     paths:
       - ".github/workflows/kospi-derivatives-flow-ls-ci.yml"
       - ".github/workflows/kospi-derivatives-flow-ls-realtime.yml"
+      - ".github/workflows/korea-market-stress-telegram-watch.yml"
       - "scripts/kospi_shock_episode_watch.py"
       - "scripts/kospi_shock_enrichment.py"
       - "scripts/test_kospi_shock_episode.py"
@@ -156,6 +157,82 @@ jobs:
           enrichment=Path("scripts/kospi_shock_enrichment.py").read_text(encoding="utf-8")
           assert "requests.RequestException" in enrichment and "transport error" in enrichment, "enrichment LS transport retry missing"
           print("production_workflow_structure_valid=true")
+          PY
+
+      - name: Verify redundant fallback and recovery semantics
+        run: |
+          PYTHONPATH=scripts python - <<'PY'
+          import json
+          import os
+          import pathlib
+          import urllib.error
+          import kospi_rapid_fallback_watch as fb
+
+          korea = pathlib.Path(".github/workflows/korea-market-stress-telegram-watch.yml").read_text(encoding="utf-8")
+          assert 'cron: "4 9 * * 1-5"' in korea and 'timezone: "Asia/Seoul"' in korea, "09:04 KST fallback schedule missing"
+          assert "startup_unverified fallback_kept_active" in korea, "unverified startup must not suppress fallback"
+          assert "production_unverified_fallback_enabled" in korea, "dispatch without production verification must leave fallback enabled"
+          assert "kospi_realtime_watchdog=verified_production" in korea, "recovery must verify real production job"
+          assert "deadline=time.time()+90" in korea, "post-dispatch production verification window missing"
+          assert 'KOSPI_REALTIME_WATCH_ACTIVE=0' in korea, "fallback-safe inactive state missing"
+          print("redundant_recovery_structure_valid=true")
+
+          # 2026-10-07 실데이터 조건: 종가 6,803.90, 일간 -1.98%, 시가 6,864.25.
+          # 전일종가를 역산해 -1% 이하 개장 갭다운을 독립 fallback도 검출하는지 확인한다.
+          sample = {
+              "closePrice": 6803.90,
+              "openPrice": 6864.25,
+              "highPrice": 6977.77,
+              "fluctuationsRatio": -1.98,
+          }
+          prev = fb.get_prev_close(sample)
+          gap = fb.opening_gap_pct(sample)
+          assert prev is not None and 6940.0 < prev < 6943.0, (prev, sample)
+          assert gap is not None and -1.20 < gap < -1.00, gap
+          assert gap <= fb.OPEN_GAP_ALERT_PCT, (gap, fb.OPEN_GAP_ALERT_PCT)
+          state = fb.load_state("2099-01-01")
+          assert state.get("sent_open_gap") is False, state
+          print("rapid_fallback_opening_gap_valid=true", "prev_close=", round(prev,2), "open_gap=", round(gap,2))
+
+          # fallback Telegram도 일시 네트워크 장애 후 재시도해 실제 성공 응답의 message_id만 인정한다.
+          orig_urlopen = fb.urllib.request.urlopen
+          orig_sleep = fb.time.sleep
+          env = os.environ
+          old_env = {k: env.get(k) for k in (
+              "DERIV_TELEGRAM_BOT_TOKEN", "DERIV_TELEGRAM_CHAT_ID",
+              "DERIV_EXPECTED_TELEGRAM_BOT_USERNAME",
+          )}
+          calls = {"send": 0}
+          class Dummy:
+              def __init__(self,obj): self.payload=json.dumps(obj).encode("utf-8")
+              def __enter__(self): return self
+              def __exit__(self,*args): return False
+              def read(self): return self.payload
+          def flaky(req, timeout=0):
+              url = req if isinstance(req,str) else req.full_url
+              if "/getMe" in url:
+                  return Dummy({"ok":True,"result":{"username":"khs887900887900008879_bot"}})
+              if "/sendMessage" in url:
+                  calls["send"] += 1
+                  if calls["send"] < 3:
+                      raise urllib.error.URLError("synthetic disconnect")
+                  return Dummy({"ok":True,"result":{"message_id":778}})
+              raise AssertionError(url)
+          try:
+              env["DERIV_TELEGRAM_BOT_TOKEN"]="token"
+              env["DERIV_TELEGRAM_CHAT_ID"]="chat"
+              env["DERIV_EXPECTED_TELEGRAM_BOT_USERNAME"]="khs887900887900008879_bot"
+              fb.urllib.request.urlopen=flaky
+              fb.time.sleep=lambda *_args,**_kwargs: None
+              assert fb.telegram_send("test") == 778
+              assert calls["send"] == 3, calls
+          finally:
+              fb.urllib.request.urlopen=orig_urlopen
+              fb.time.sleep=orig_sleep
+              for k,v in old_env.items():
+                  if v is None: env.pop(k,None)
+                  else: env[k]=v
+          print("rapid_fallback_telegram_retry_valid=true")
           PY
 
       - name: Verify production leader election API
