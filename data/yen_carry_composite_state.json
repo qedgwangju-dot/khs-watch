@@ -3,7 +3,7 @@
   "evidence": {
     "rebuild::FX 변동성 비상승": true,
     "rebuild::USD/JPY 상승·엔화 재약세": false,
-    "rebuild::USD/JPY 완만한 상승 방향": false,
+    "rebuild::USD/JPY 완만한 상승 방향": true,
     "rebuild::레버리지 엔화 숏 축소에도 USD/JPY 상승": false,
     "rebuild::미·일 2년 금리차 여전히 넓음": true,
     "rebuild::미·일 2년 금리차 재확대": false,
@@ -16,21 +16,21 @@
     "unwind::일본 단기금리 상승": false,
     "unwind::최근 공식 공동개입·추가개입 경고": false
   },
-  "fx_age_seconds": 1.5985260009765625,
+  "fx_age_seconds": 3.2693519592285156,
   "fx_signal_eligible": true,
   "initialized": true,
   "policy_path": {
     "cftc_net_short": 14161.0,
     "cftc_net_short_change": 0.0,
     "cftc_net_short_pct_oi": 3.9257595919272568,
-    "checked_at_kst": "2026-10-08T00:48:19+09:00",
+    "checked_at_kst": "2026-10-08T05:49:29+09:00",
     "elevated_vol": false,
-    "fx_vol_ratio": 1.168142597511863,
+    "fx_vol_ratio": 0.9072395215855372,
     "gradual_absorption": true,
     "hawkish_repricing_proxy": false,
     "initialized": true,
     "jgb2_change_bp": 0.0,
-    "low_or_stable_vol": false,
+    "low_or_stable_vol": true,
     "new_cftc": false,
     "new_jgb2": false,
     "new_ust2": false,
@@ -57,7 +57,7 @@
   },
   "real_rate_overlay": {
     "available": true,
-    "checked_at_kst": "2026-10-08T00:48:21+09:00",
+    "checked_at_kst": "2026-10-08T05:49:31+09:00",
     "initialized": true,
     "inputs": {
       "boj_effective_date": null,
@@ -117,25 +117,25 @@
     "initialized": true,
     "stressed_codes": [],
     "stressed_count": 0,
-    "updated_at_kst": "2026-10-08T00:48:14+09:00"
+    "updated_at_kst": "2026-10-08T05:49:22+09:00"
   },
   "unwind_label": "엔캐리 청산 미확인",
   "unwind_level": 0,
-  "updated_at_kst": "2026-10-08T00:47:49+09:00",
+  "updated_at_kst": "2026-10-08T05:48:32+09:00",
   "values": {
     "cftc_net_short": 14161,
     "cftc_net_short_pct_oi": 3.9257595919272568,
-    "fx_12h_5m_sigma_bps": 2.1957512079017727,
-    "fx_vol_ratio": 1.168142597511863,
+    "fx_12h_5m_sigma_bps": 1.905633788036637,
+    "fx_vol_ratio": 0.9072395215855372,
     "jgb2": 1.93,
     "mof_latest_2w_outward_trillion_yen": -2.3194,
     "mof_prior_2w_outward_trillion_yen": 0.8836,
     "us_jp_2y_spread": 2.8600000000000003,
-    "usdjpy": 158.10299682617188,
-    "usdjpy_12h_drawdown_pct": -0.20955012310275178,
-    "usdjpy_15m_pct": -0.0031654835671834315,
-    "usdjpy_30m_pct": -0.024035286231698424,
-    "usdjpy_60m_pct": -0.02023440843302985,
+    "usdjpy": 158.08099365234375,
+    "usdjpy_12h_drawdown_pct": -0.18122510250457544,
+    "usdjpy_15m_pct": 0.001891928415606479,
+    "usdjpy_30m_pct": 0.008852138303028678,
+    "usdjpy_60m_pct": 0.031003829856466075,
     "ust2": 4.79
   }
 }
