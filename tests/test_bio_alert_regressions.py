@@ -151,6 +151,24 @@ class BioAlertRegressionTests(unittest.TestCase):
         self.assertTrue(f('old-appeal', 'same-docket', 'nl_appeal', {'old-appeal'}, {'same-docket'}))
         self.assertTrue(f('historical-news', 'same-docket', 'institution', set(), {'same-docket'}))
 
+    def test_halozyme_nl_stay_application_and_decision_not_conflated(self):
+        self.assertEqual(
+            halo.classify("Merck Dutch EP622 motion for stay filed", halo.DUTCH_VRO_CASE),
+            "nl_stay_request",
+        )
+        self.assertEqual(
+            halo.classify("Merck Dutch EP622 court granted a stay", halo.DUTCH_VRO_CASE),
+            "nl_stay_decision",
+        )
+        self.assertNotEqual(
+            halo.base.digest(f"{halo.DUTCH_VRO_CASE}|nl_stay_request"),
+            halo.base.digest(f"{halo.DUTCH_VRO_CASE}|nl_stay_decision"),
+        )
+        self.assertFalse(halo.base.event_already_sent(
+            "new-nl-stay-order", "https://docket.example/unchanged", "nl_stay_decision",
+            set(), {"https://docket.example/unchanged"},
+        ))
+
     def test_halozyme_forecast_is_not_reported_as_actual_appeal(self):
         self.assertEqual(halo.classify(
             "Halozyme Merck EP622 Dutch court issued an injunction and Merck plans to appeal",
@@ -214,6 +232,8 @@ class BioAlertRegressionTests(unittest.TestCase):
         self.assertIn("2032년 12월 27일", rendered)
         self.assertIn("US$463M", rendered)
         self.assertIn("미국 외 US$68M의 일부", rendered)
+        self.assertIn("Keytruda 정맥주사(IV)는", rendered)
+        self.assertIn("실제 항소장 제출을 구분", rendered)
         self.assertIn("GSK·Biogen·Novartis 제품이 자동으로 EP622 침해가 되는 것은 아닙니다", rendered)
         self.assertIn("<b>2026년 11월 19일</b>", rendered)
         self.assertIn("<b>2026년 11월 23일</b>", rendered)
@@ -226,12 +246,13 @@ class BioAlertRegressionTests(unittest.TestCase):
         )
         self.assertEqual(halo.classify(text, halo.DUTCH_VRO_CASE), "nl_appeal")
 
-    def test_halozyme_two_patent_article_without_case_number_is_not_dropped(self):
+    def test_halozyme_does_not_invent_case_for_unnumbered_patent_story(self):
         text = "알테오젠 파트너 MSD, 할로자임 PH20 특허 2건 청구항 특허성 없음"
-        case, patent = halo.get_case(text)
-        self.assertEqual(case, "PGR2025-00033")
-        self.assertEqual(patent, "12,049,652")
-        self.assertEqual(halo.classify(text, case), "final_unpatentable")
+        self.assertEqual(halo.get_case(text), ("", ""))
+        self.assertEqual(
+            halo.get_case("PGR2025-00033 Halozyme patent 12,049,652 final written decision"),
+            ("PGR2025-00033", "12,049,652"),
+        )
 
     def test_halozyme_current_fwd_cases_upgrade_to_unpatentable(self):
         for case in ("PGR2025-00033", "PGR2025-00039", "PGR2025-00046", "PGR2025-00052"):

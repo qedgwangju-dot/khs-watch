@@ -206,7 +206,7 @@ def alert(case: str, patent: str, kind: str, item: dict) -> str:
 
 FOLLOWUP_EVENT_KINDS = {
     'director_review', 'rehearing', 'appeal',
-    'nl_appeal', 'nl_stay', 'nl_appeal_decision',
+    'nl_appeal', 'nl_stay', 'nl_stay_request', 'nl_stay_decision', 'nl_appeal_decision',
     'de_appeal_decision', 'uk_judgment',
 }
 

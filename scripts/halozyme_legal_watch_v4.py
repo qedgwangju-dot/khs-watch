@@ -338,6 +338,8 @@ TIMELINE_EVENT_LABELS = {
     "nl_injunction": "VRO 본안 — EP622 유효·Keytruda SC 침해·8개 유럽시장 금지명령",
     "nl_appeal": "네덜란드 항소 제기",
     "nl_stay": "네덜란드 집행정지 절차 변화",
+    "nl_stay_request": "네덜란드 집행정지 신청",
+    "nl_stay_decision": "네덜란드 집행정지 인용·기각 판단",
     "nl_appeal_decision": "네덜란드 항소심 결정",
     "de_appeal_decision": "독일 가처분 항소심 결정",
     "uk_judgment": "영국 EP347 본안 판단",
@@ -469,12 +471,18 @@ def classify(text: str, case: str) -> str:
             "gerechtshof heeft geoordeeld", "항소심 선고", "항소심 판결",
         )):
             return "nl_appeal_decision"
+        # 신청서 접수와 법원의 집행정지 인용·기각은 각각 다른 타임라인 이벤트다.
         if any(term in low for term in (
-            "court granted a stay", "court denied a stay", "motion for stay filed",
-            "filed a request to suspend", "schorsing toegewezen", "schorsing afgewezen",
-            "집행정지 신청", "집행정지 인용", "집행정지 기각",
+            "court granted a stay", "court denied a stay", "stay order issued",
+            "schorsing toegewezen", "schorsing afgewezen",
+            "집행정지 인용", "집행정지 기각", "집행정지 결정",
         )):
-            return "nl_stay"
+            return "nl_stay_decision"
+        if any(term in low for term in (
+            "motion for stay filed", "filed a request to suspend",
+            "requested a stay of injunction", "schorsing verzocht", "집행정지 신청",
+        )):
+            return "nl_stay_request"
         if any(term in low for term in (
             "notice of appeal filed", "filed an appeal", "has filed an appeal",
             "has appealed", "appeal was lodged", "hoger beroep ingesteld",
@@ -635,6 +643,8 @@ def alert(case: str, patent: str, kind: str, item: dict) -> str:
             f"- <b>사건:</b> C/09/695432 · MDASE {html.escape(DUTCH_VRO_PATENT)}\n"
             f"- <b>타임라인:</b>\n{timeline_html(case, kind, item)}\n"
             "- <b>금지 범위:</b> 벨기에·덴마크·프랑스·아일랜드·이탈리아·스웨덴·스위스·네덜란드에서 제조·위탁제조·판매제안·판매·사용·수입·재고보유를 금지하고, MSD B.V.가 유럽 판매허가를 이용해 계열사 침해를 돕는 것도 금지했습니다.\n"
+            "- <b>제외 대상:</b> Keytruda 정맥주사(IV)는 이번 SC 금지명령 대상이 아닙니다.\n"
+            "- <b>상대방 입장:</b> Merck는 이번 판결에 동의하지 않는다고 밝혔으며, 법적 대응 검토와 실제 항소장 제출을 구분합니다.\n"
             "- <b>특허 층:</b> 이번 특허는 ENHANZE 핵심특허가 아니라 별도 MDASE EP622이며, 네덜란드 법원 공개자료 기준 2032년 12월 27일까지 존속합니다.\n"
             "- <b>현재 숫자:</b> Merck 공식 2Q26 Keytruda Qlex 매출은 글로벌 US$463M, 미국 US$395M, 미국 외 US$68M입니다. 공개 지역분류상 이번 8개국 직접 판매 노출은 미국 외 US$68M의 일부입니다.\n"
             "- <b>알테오젠 의미:</b> 현재 매출의 즉시 훼손보다 유럽 확장·판매 마일스톤·향후 로열티의 시간표와 법률 할인율 훼손이 더 중요합니다.\n"
@@ -653,6 +663,8 @@ def alert(case: str, patent: str, kind: str, item: dict) -> str:
         title_map = {
             "nl_appeal": "네덜란드 EP622 항소 제기",
             "nl_stay": "네덜란드 EP622 집행정지 절차 변화",
+            "nl_stay_request": "네덜란드 EP622 집행정지 신청",
+            "nl_stay_decision": "네덜란드 EP622 집행정지 법원 결정",
             "nl_appeal_decision": "네덜란드 EP622 항소심 결정",
             "de_appeal_decision": "독일 EP622 가처분 항소심 결정",
             "uk_judgment": "영국 EP347 본안 판단",
@@ -729,18 +741,8 @@ def get_case(text: str) -> tuple[str, str]:
     ):
         return UK_EP347_CASE, "EP 3,130,347"
 
-    # 2026-09-25에 동시에 최종서면결정이 확인된 두 사건을 다룬
-    # "PH20 특허 2건" 기사 중 사건번호가 RSS 요약에서 빠진 경우의 식별 보조.
-    if (
-        "halozyme" in low or "할로자임" in low
-    ) and (
-        "ph20" in low or "mdase" in low
-    ) and (
-        "특허 2건" in low or "2건" in low
-    ) and (
-        "특허성 없음" in low or "unpatentable" in low
-    ):
-        return "PGR2025-00033", base.KNOWN_CASES["PGR2025-00033"]
+    # 번호가 없는 '2건' 기사를 임의로 PGR2025-00033에 귀속시키지 않는다.
+    # 기왕의 판정은 VERIFIED_CURRENT_DECISIONS와 공식 IR로 별도 확인한다.
     return "", ""
 
 
