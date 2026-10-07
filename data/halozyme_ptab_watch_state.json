@@ -24,7 +24,7 @@
     "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557766",
     "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557959"
   ],
-  "last_check_kst": "2026-10-08T00:48:18+09:00",
+  "last_check_kst": "2026-10-08T00:55:36+09:00",
   "tracked_cases": {
     "PGR2025-00003": "11,952,600",
     "PGR2025-00004": "12,018,298",
@@ -82,9 +82,7 @@
   ],
   "legal_v4_initialized": true,
   "search_mode": "개별 사건번호 + 미국/한국 뉴스 + Bing 웹",
-  "last_sent_message_ids": [
-    130
-  ],
+  "last_sent_message_ids": [],
   "final_decision_classification_version": 2,
   "seen_portfolio_updates": [
     "38543e8786807a5007ba4efd",
@@ -198,11 +196,6 @@
         "date": "2026-10-07",
         "kind": "",
         "label": "VRO 본안 — EP622 유효·Keytruda SC 침해·8개 유럽시장 금지명령"
-      },
-      {
-        "date": "2026-10-07",
-        "kind": "nl_injunction",
-        "label": "VRO 본안 — EP622 유효·침해·8개 유럽시장 금지명령"
       }
     ],
     "DE-EP622-KEYTRUDA": [
@@ -233,5 +226,5 @@
   "search_query_count": 36,
   "search_task_count": 72,
   "search_workers": 8,
-  "search_elapsed_seconds": 3.871
+  "search_elapsed_seconds": 3.502
 }
