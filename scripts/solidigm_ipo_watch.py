@@ -666,31 +666,6 @@ def manufacturing_alert_text(old, new, reasons, checked):
         lines.append("• 고객 구분: Foxconn·Quanta·Wistron 등은 대만 AI 서버 생태계 설명이며 Solidigm 직접 고객·공급계약으로 승격하지 않습니다.")
     lines.append("• 공정 구분: 대만 SSD 제조·조립 거점 확대이며 NAND 웨이퍼 팹 증설과 분리합니다.")
     lines.append("• 이번 변화: <b>" + html.escape(" · ".join(reasons)) + "</b>")
-    if new.get("reported_original") == "Bloomberg" and (
-        old.get("source_name") == "Reuters" or "알림 표시 보강" in " ".join(reasons)
-    ):
-        lines.append(
-            "• 보도 추정치 비교: Reuters(9월 25일) 조달 "
-            + usd_display(15_000_000_000, rate)
-            + "·기업가치 " + usd_display(150_000_000_000, rate)
-            + " ↔ Bloomberg(10월 8일) 조달 "
-            + usd_display(new.get("raise_target_usd"), rate)
-            + "·기업가치 " + usd_display(new.get("valuation_max_usd"), rate)
-        )
-        lines.append("• 확정 공모금액 감액이 아니라 두 시점 보도의 추정치 차이입니다.")
-    if new.get("reported_original") == "Bloomberg" and (
-        old.get("source_name") == "Reuters"
-        or "알림 표시 보강" in " ".join(reasons)
-    ):
-        lines.append(
-            "• 서로 다른 시점의 보도 추정: Reuters(9월 25일) "
-            + usd_display(15_000_000_000, rate)
-            + " 조달·기업가치 " + usd_display(150_000_000_000, rate)
-            + " ↔ Bloomberg(10월 8일) "
-            + usd_display(new.get("raise_target_usd"), rate)
-            + " 조달·기업가치 " + usd_display(new.get("valuation_max_usd"), rate)
-        )
-        lines.append("• 이는 확정 공모금액 감액이 아니라 서로 다른 보도상 추정치의 비교입니다.")
     lines.append("• 다음 확인: 실제 12월 출하 · 생산능력 수치 · 신규 ODM 실명 · 고객 인증·직접 공급계약 · 품질·수율 이슈 · 일정 지연")
     src = new.get("official_source_url") or SOLIDIGM_DMS_URL
     lines.append("• 공식 근거: Solidigm PCN/DMS · " + href(src))
@@ -841,6 +816,18 @@ def alert_text(old, new, reasons, checked):
     if new.get("use_of_proceeds"):
         lines.append("• 조달자금 용도: " + html.escape(" · ".join(new["use_of_proceeds"])))
     lines.append("• 이번 변화: <b>" + html.escape(" · ".join(reasons)) + "</b>")
+    if new.get("reported_original") == "Bloomberg" and (
+        old.get("source_name") == "Reuters" or "알림 표시 보강" in " ".join(reasons)
+    ):
+        lines.append(
+            "• 보도 추정치 비교: Reuters(9월 25일) 조달 "
+            + usd_display(15_000_000_000, rate)
+            + "·기업가치 " + usd_display(150_000_000_000, rate)
+            + " ↔ Bloomberg(10월 8일) 조달 "
+            + usd_display(new.get("raise_target_usd"), rate)
+            + "·기업가치 " + usd_display(new.get("valuation_max_usd"), rate)
+        )
+        lines.append("• 확정 공모금액 감액이 아니라 서로 다른 보도상 추정치의 비교입니다.")
     lines.append("• 다음 확인: 대표주관사 선정 · SEC 비공개/공개 신고 · 공모가 밴드 · 신주/구주 비중 · SK하이닉스 잔여지분 · 자금용도")
     if new.get("source_url"):
         lines.append(f"• 근거: {html.escape(new.get('source_name') or '출처')} · {href(new['source_url'])}")
