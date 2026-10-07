@@ -782,13 +782,15 @@
   },
   "_delivery": {
     "id": "577e783d2678436667bfeacb33c524c5ff240c64ecd91a1e08683ae980cfaf10",
-    "status": "in_flight",
+    "status": "partial",
     "created_at_kst": "2026-10-08T07:28:54+09:00",
     "chunks": [
       "<b>에이전틱 AI·데이터센터 CPU 수요 구조 감시</b>\n• 신규 기준선: 시장 전망과 실제 CPU 공급·양산 검증을 분리\n• BNP 공개자료의 AMD 추정 인용: 2025년 260억달러(약 34.8조원) → 2030년 2,200억달러(약 294.5조원)\n• BNP 애널리스트 별도 보도: 2030년 2,450억달러(약 328.0조원) · 원문 리포트 미열람 / 2025년 300억달러(약 40조1,607억원)는 사용자 제공치로 공식 확인 전\n• AMD 목표주가: BNP 보도상 $600(약 803,214원)→$960(약 1,285,142원) · Arm 목표주가 $405(약 542,169원)는 원문 근거 확인 전이므로 확정 알림에서 제외\n• DIGITIMES: 2027년 가속기당 CPU 거의 2배 전망(유료 기사 표제) · <b>코어 수·소켓 수·실제 출하가 각각 2배라는 의미는 아님</b>\n• DIGITIMES 공개 출하 전망: 2027년 AI 서버 CPU 984.5만개(+84.1% 전년 대비) / 전체 서버 CPU 4,857.4만개 / Arm 계열 전체 서버 CPU 1,580만개(32.5%)\n• 실제 설계 검증: AMD Helios 1랙당 Venice CPU 18개·MI455X GPU 72개(물리 1:4). 별도 CPU 전용 랙 수요와 혼동 금지\n• 후속 확인: CPU 발주·소켓·실출하→DDR5 RDIMM·서버용 FC-BGA/ABF·eSSD 주문 연결 · 2nm 수율·ABF·전원·냉각 병목 및 가상화 최적화에 따른 수요 미달 점검\n• <a href=\"https://cib.bnpparibas/ai-infrastructure-investment-2026/\">BNP 공식 공개자료</a> · <a href=\"https://finance.yahoo.com/markets/stocks/articles/bnp-paribas-revamps-amd-stock-191959150.html\">BNP 애널리스트 2차 보도</a> · <a href=\"https://www.digitimes.com/news/a20261005PD216/cpu-demand-commercial-llm-market.html\">DIGITIMES 가속기당 전망</a> · <a href=\"https://gb-www.digitimes.com.tw/about_us/article.asp?news_key=1150023\">DIGITIMES 출하 전망</a> · <a href=\"https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era\">AMD 실제 설계 자료</a>"
     ],
-    "next_chunk": 0,
-    "message_ids": [],
+    "next_chunk": 1,
+    "message_ids": [
+      258
+    ],
     "candidate": {
       "updated_at_kst": "2026-10-08T07:27:56+09:00",
       "seen_ids": [
