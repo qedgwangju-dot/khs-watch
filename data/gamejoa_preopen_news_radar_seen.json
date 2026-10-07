@@ -303,6 +303,28 @@
       "source_published_kst": "2026-10-07T05:26+09:00",
       "title": "[美공시]블랙 힐스, 와이오밍주 샤이엔에 건설 예정인 구글 데이터센터에 전력을 공급하기 위한 18억 달러 규모의 계약을 체결"
     },
+    "core:2c91b75045178804508fe33e": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.fnnews.com/news/202610071526186376",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "e7883849255d5f762a02ecbfdb2d8bc6daa69318ad3889cec4f15f14f9b45bad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bddeff44f5954b97787caf7c5a95aaf5cde21cc4f3608f7f0d909aa41d29354c",
+      "source_fact_keys": [
+        "source_fact:v1:01162310a5e1a8e9833aaa0686528184ec776027758b3127c06361fca6777d99",
+        "source_fact:v1:160dfbc4ad41b8b5c97289eb4f67eaae5949ca4898cd8c8737dc10a72331aa64",
+        "source_fact:v1:3b01d6846da404d5f6930219779c3fef89d186c08210aa98143d19997887b6ce",
+        "source_fact:v1:654e700fd512ddc1aab121ba0c71d67f9aa426a507bf36dc5898c673b04edabc",
+        "source_fact:v1:acfea74bd8d3d5e8d6a1be104c139a7d39e0af5bcd0f65ce2da82f6670d5c1f3",
+        "source_fact:v1:f47571001282dae58ccea4a65a034c6caf5060b97664bae87b7647e700119565"
+      ],
+      "source_published_kst": "2026-10-07T15:28+09:00",
+      "title": "두나무-네이버파이낸셜 주식교환, 내년 3월로 연기 [공시]"
+    },
     "core:2fe4c823ce5dcdc1be7fd537": {
       "first_seen_kst": "2026-10-07T17:10:43+09:00",
       "lanes": {
@@ -1362,6 +1384,24 @@
       "source_published_kst": "2026-10-07T17:16+09:00",
       "title": "핀란드, 구글 데이터센터 2곳 건립 제동…\"환경 훼손 우려\""
     },
+    "core:92737e25549d89de658d60e8": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007146400053",
+      "source": "연합뉴스",
+      "source_body_digest": "0dfd2b02c2d4311809c2ed6bf397894741669cf2397ac89dc3c790c31138e498",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5cdd6de3f203dfd0db52f341f8af831c04bdf2697c37ebab9142eb58a8c6a1c0",
+      "source_fact_keys": [
+        "source_fact:v1:8d3644928fa5faac8d72e758ba72c14d81cd9f11c445bb914a5a57d21ad38c62",
+        "source_fact:v1:ca0e0561594c59024a2ae9b05a707118fb4b918d7e775c663bf5097a256969e1"
+      ],
+      "source_published_kst": "2026-10-07T15:55+09:00",
+      "title": "대구·전남광주, 공장 누비며 부품 나르는 '공정모빌리티' 개발 | 연합뉴스"
+    },
     "core:957cc4730d9ca083b67ecb38": {
       "first_seen_kst": "2026-10-07T16:15:21+09:00",
       "lanes": {
@@ -1522,6 +1562,25 @@
       "source_published_kst": "2026-10-07T12:00+09:00",
       "title": "반도체 호황에 기업 여윳돈 67조…역대 최대"
     },
+    "core:a052850ce2e27cd0b0eb2155": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007147900057",
+      "source": "연합뉴스",
+      "source_body_digest": "0b7b38b47f5733f6d3f113f327ca7f3fadd7d300bad9457eab3c3e45e0251d9b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8e9cf7aebfb54db263f095711e324c59273fdfdf4bc7d6983fc857403523405",
+      "source_fact_keys": [
+        "source_fact:v1:7bdc9b37e46d366eda33ce8b4230e290621a16a4ad55bbff8fee104f141b86c8",
+        "source_fact:v1:9adcc0bb30be06c178f355d3dd34ff7f519f3f1461574e805aa1475f499d5574",
+        "source_fact:v1:9ceda971c39dde6516fed29eabbfa54990408b6d17c87388116b69a3a98a3624"
+      ],
+      "source_published_kst": "2026-10-07T15:50+09:00",
+      "title": "동서발전, 산불 복합재난 대응체계 면밀 점검한다 | 연합뉴스"
+    },
     "core:a24477ef484130eb18d58ee1": {
       "first_seen_kst": "2026-10-07T13:13:19+09:00",
       "lanes": {
@@ -1656,6 +1715,21 @@
       "source_published_kst": "2026-10-07T11:00+09:00",
       "title": "건설현장 불법하도급 연말까지 집중단속…공공현장 275곳 점검 | 연합뉴스"
     },
+    "core:b0932578e9db54353304f5ba": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007139551002",
+      "source": "연합뉴스",
+      "source_body_digest": "9675f85e9caf83cfea49aaae5f0d5fb533597df748f211973357def1d13eb05a",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T15:40+09:00",
+      "title": "두나무·네파 주식교환 세 번째 연기…내년 3월로(종합) | 연합뉴스"
+    },
     "core:b4bbc6c9a006a8712d2a58e8": {
       "first_seen_kst": "2026-10-07T18:00:43+09:00",
       "lanes": {
@@ -1674,6 +1748,26 @@
       ],
       "source_published_kst": "2026-10-07T14:11+09:00",
       "title": "HD건설기계, 美 데이터센터에 발전엔진 공급…3900억원 수주"
+    },
+    "core:b537593b649a9f0d44bad4f5": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633320",
+      "source": "이투데이",
+      "source_body_digest": "1e6728bff7efb6b5c3fc9b286b06b19a84d0a63f164ef83707a997c3f99c9e2a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3a82a846580f71fa4ca0efa6e5d07783f741e7a9095a173b2d49096bd19e6fc",
+      "source_fact_keys": [
+        "source_fact:v1:01e25e67d9fded9ec0cb522f792c6b12ad6120caefd3bf1dfcb9b92c4dba8251",
+        "source_fact:v1:64448a99320c96c45743aaef923b4b36f74606af109d169cf27c77a51e4e1032",
+        "source_fact:v1:93af958b70a50744e81f5c58ce8a9eab90018ab806ba8e0215df60c7dd7510b7",
+        "source_fact:v1:baaff1b8876044188aa734161937491ad6f6b4c582670fb2881fa9c399d2d067"
+      ],
+      "source_published_kst": "2026-10-07T14:21+09:00",
+      "title": "리사 수 방한 계기로 韓ㆍAMD 반도체 협력 확대⋯정부, 내년 실증사업 속도 [종합]"
     },
     "core:b714df4a48f59c84f55c0109": {
       "first_seen_kst": "2026-10-07T13:13:19+09:00",
@@ -2045,6 +2139,21 @@
       ],
       "source_published_kst": "2026-10-07T11:58+09:00",
       "title": "LG전자, 3분기 누적 매출·영업익 '사상 최대'…가전·전장 호조"
+    },
+    "core:d39642f4b368142eb3832be1": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633473",
+      "source": "이투데이",
+      "source_body_digest": "8df749a26e56b6f657c9f36b6a40dd30b0530b240e394e665b9f236aa389e88c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T15:50+09:00",
+      "title": "LG엔솔, 美 공장 인수 효과는?⋯ESSㆍ세액공제에 주목 [찐코노미]"
     },
     "core:d3a6932f6f119ab94093af9a": {
       "first_seen_kst": "2026-10-07T14:56:20+09:00",
@@ -11506,6 +11615,26 @@
       "source_published_kst": "2026-10-06T20:38+09:00",
       "title": "이 대통령 \"전세사기 피해자 기다리지 않도록\"…보증금 3분의 1 보장"
     },
+    "fact:1457105a3bb8521a04a3a3de": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633320",
+      "source": "이투데이",
+      "source_body_digest": "1e6728bff7efb6b5c3fc9b286b06b19a84d0a63f164ef83707a997c3f99c9e2a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3a82a846580f71fa4ca0efa6e5d07783f741e7a9095a173b2d49096bd19e6fc",
+      "source_fact_keys": [
+        "source_fact:v1:01e25e67d9fded9ec0cb522f792c6b12ad6120caefd3bf1dfcb9b92c4dba8251",
+        "source_fact:v1:64448a99320c96c45743aaef923b4b36f74606af109d169cf27c77a51e4e1032",
+        "source_fact:v1:93af958b70a50744e81f5c58ce8a9eab90018ab806ba8e0215df60c7dd7510b7",
+        "source_fact:v1:baaff1b8876044188aa734161937491ad6f6b4c582670fb2881fa9c399d2d067"
+      ],
+      "source_published_kst": "2026-10-07T14:21+09:00",
+      "title": "리사 수 방한 계기로 韓ㆍAMD 반도체 협력 확대⋯정부, 내년 실증사업 속도 [종합]"
+    },
     "fact:145920c3b3800eca2cddf7a5": {
       "first_seen_kst": "2026-10-06T22:21:21+09:00",
       "lanes": {
@@ -17211,6 +17340,24 @@
       "source_published_kst": "2026-10-06T12:09+09:00",
       "title": "고범석 서울청장 \"암살자(들) 배우에 대한 범죄 혐의 확인시 엄정 대응\""
     },
+    "fact:6060ab07e4f97e2d0acc454e": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007146400053",
+      "source": "연합뉴스",
+      "source_body_digest": "0dfd2b02c2d4311809c2ed6bf397894741669cf2397ac89dc3c790c31138e498",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5cdd6de3f203dfd0db52f341f8af831c04bdf2697c37ebab9142eb58a8c6a1c0",
+      "source_fact_keys": [
+        "source_fact:v1:8d3644928fa5faac8d72e758ba72c14d81cd9f11c445bb914a5a57d21ad38c62",
+        "source_fact:v1:ca0e0561594c59024a2ae9b05a707118fb4b918d7e775c663bf5097a256969e1"
+      ],
+      "source_published_kst": "2026-10-07T15:55+09:00",
+      "title": "대구·전남광주, 공장 누비며 부품 나르는 '공정모빌리티' 개발 | 연합뉴스"
+    },
     "fact:6060b40eaa8fd6b5c415d8f7": {
       "first_seen_kst": "2026-10-07T05:33:37+09:00",
       "lanes": {
@@ -19391,6 +19538,28 @@
       ],
       "source_published_kst": "2026-10-05T10:59+09:00",
       "title": "“국내서 접하기 힘든 해외 AI 한곳 에”…LG유플러스가 ‘유독’으로 들여온다"
+    },
+    "fact:7e9b98d22d2a391262372873": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.fnnews.com/news/202610071526186376",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "e7883849255d5f762a02ecbfdb2d8bc6daa69318ad3889cec4f15f14f9b45bad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bddeff44f5954b97787caf7c5a95aaf5cde21cc4f3608f7f0d909aa41d29354c",
+      "source_fact_keys": [
+        "source_fact:v1:01162310a5e1a8e9833aaa0686528184ec776027758b3127c06361fca6777d99",
+        "source_fact:v1:160dfbc4ad41b8b5c97289eb4f67eaae5949ca4898cd8c8737dc10a72331aa64",
+        "source_fact:v1:3b01d6846da404d5f6930219779c3fef89d186c08210aa98143d19997887b6ce",
+        "source_fact:v1:654e700fd512ddc1aab121ba0c71d67f9aa426a507bf36dc5898c673b04edabc",
+        "source_fact:v1:acfea74bd8d3d5e8d6a1be104c139a7d39e0af5bcd0f65ce2da82f6670d5c1f3",
+        "source_fact:v1:f47571001282dae58ccea4a65a034c6caf5060b97664bae87b7647e700119565"
+      ],
+      "source_published_kst": "2026-10-07T15:28+09:00",
+      "title": "두나무-네이버파이낸셜 주식교환, 내년 3월로 연기 [공시]"
     },
     "fact:7f76478f710ac219382be3e1": {
       "first_seen_kst": "2026-10-06T21:40:57+09:00",
@@ -28758,6 +28927,25 @@
       "source_published_kst": "2026-10-07T15:35+09:00",
       "title": "HD건설기계, 북미 AI 데이터센터에 전력 공급…3900억 계약 체결"
     },
+    "fact:fd97d5758014bc361eacf132": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007147900057",
+      "source": "연합뉴스",
+      "source_body_digest": "0b7b38b47f5733f6d3f113f327ca7f3fadd7d300bad9457eab3c3e45e0251d9b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8e9cf7aebfb54db263f095711e324c59273fdfdf4bc7d6983fc857403523405",
+      "source_fact_keys": [
+        "source_fact:v1:7bdc9b37e46d366eda33ce8b4230e290621a16a4ad55bbff8fee104f141b86c8",
+        "source_fact:v1:9adcc0bb30be06c178f355d3dd34ff7f519f3f1461574e805aa1475f499d5574",
+        "source_fact:v1:9ceda971c39dde6516fed29eabbfa54990408b6d17c87388116b69a3a98a3624"
+      ],
+      "source_published_kst": "2026-10-07T15:50+09:00",
+      "title": "동서발전, 산불 복합재난 대응체계 면밀 점검한다 | 연합뉴스"
+    },
     "fact:fda22346e5f7dce1fc7baa99": {
       "first_seen_kst": "2026-10-07T17:23:27+09:00",
       "lanes": {
@@ -33482,6 +33670,25 @@
       "source_published_kst": "2026-10-06T11:35+09:00",
       "title": "日 ‘신중’ 알래스카 LNG 프로젝트…밴스 부통령 “韓과 조율…결국 이뤄질 일” [대미투자]"
     },
+    "link:2289d3de7404063b380aa72b": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007147900057",
+      "source": "연합뉴스",
+      "source_body_digest": "0b7b38b47f5733f6d3f113f327ca7f3fadd7d300bad9457eab3c3e45e0251d9b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8e9cf7aebfb54db263f095711e324c59273fdfdf4bc7d6983fc857403523405",
+      "source_fact_keys": [
+        "source_fact:v1:7bdc9b37e46d366eda33ce8b4230e290621a16a4ad55bbff8fee104f141b86c8",
+        "source_fact:v1:9adcc0bb30be06c178f355d3dd34ff7f519f3f1461574e805aa1475f499d5574",
+        "source_fact:v1:9ceda971c39dde6516fed29eabbfa54990408b6d17c87388116b69a3a98a3624"
+      ],
+      "source_published_kst": "2026-10-07T15:50+09:00",
+      "title": "동서발전, 산불 복합재난 대응체계 면밀 점검한다 | 연합뉴스"
+    },
     "link:228a2e9e18bf02bd0c56c4aa": {
       "first_seen_kst": "2026-09-19T00:05:24+09:00",
       "lanes": {
@@ -36566,6 +36773,28 @@
       "source": "뉴스1",
       "title": "3高 다시 꿈틀…연말 경제 흔드는 금리·환율·유가 변수"
     },
+    "link:35d1a3e85f006b87efe9fd73": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.fnnews.com/news/202610071526186376",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "e7883849255d5f762a02ecbfdb2d8bc6daa69318ad3889cec4f15f14f9b45bad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bddeff44f5954b97787caf7c5a95aaf5cde21cc4f3608f7f0d909aa41d29354c",
+      "source_fact_keys": [
+        "source_fact:v1:01162310a5e1a8e9833aaa0686528184ec776027758b3127c06361fca6777d99",
+        "source_fact:v1:160dfbc4ad41b8b5c97289eb4f67eaae5949ca4898cd8c8737dc10a72331aa64",
+        "source_fact:v1:3b01d6846da404d5f6930219779c3fef89d186c08210aa98143d19997887b6ce",
+        "source_fact:v1:654e700fd512ddc1aab121ba0c71d67f9aa426a507bf36dc5898c673b04edabc",
+        "source_fact:v1:acfea74bd8d3d5e8d6a1be104c139a7d39e0af5bcd0f65ce2da82f6670d5c1f3",
+        "source_fact:v1:f47571001282dae58ccea4a65a034c6caf5060b97664bae87b7647e700119565"
+      ],
+      "source_published_kst": "2026-10-07T15:28+09:00",
+      "title": "두나무-네이버파이낸셜 주식교환, 내년 3월로 연기 [공시]"
+    },
     "link:35ef4d70412d678859700083": {
       "first_seen_kst": "2026-10-06T00:03:48+09:00",
       "lanes": {
@@ -36637,6 +36866,21 @@
       ],
       "source_published_kst": "2026-10-06T15:06+09:00",
       "title": "엠키스코어, AI Festa 26서 검증된 AI Factory 역량 공개… 대규모 구축부터 AI 활용까지"
+    },
+    "link:36996e90cc13a5c9e5064779": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633473",
+      "source": "이투데이",
+      "source_body_digest": "8df749a26e56b6f657c9f36b6a40dd30b0530b240e394e665b9f236aa389e88c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T15:50+09:00",
+      "title": "LG엔솔, 美 공장 인수 효과는?⋯ESSㆍ세액공제에 주목 [찐코노미]"
     },
     "link:36a371ccc76e0919d61483a9": {
       "first_seen_kst": "2026-10-04T00:00:47+09:00",
@@ -48353,6 +48597,26 @@
       "source_published_kst": "2026-10-05T07:00+09:00",
       "title": "[단독]코스닥 입성 3년도 안 돼 '부실징후' 11곳…절반은 거래정지"
     },
+    "link:8aac15e3485ded672c4e7f1b": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633320",
+      "source": "이투데이",
+      "source_body_digest": "1e6728bff7efb6b5c3fc9b286b06b19a84d0a63f164ef83707a997c3f99c9e2a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3a82a846580f71fa4ca0efa6e5d07783f741e7a9095a173b2d49096bd19e6fc",
+      "source_fact_keys": [
+        "source_fact:v1:01e25e67d9fded9ec0cb522f792c6b12ad6120caefd3bf1dfcb9b92c4dba8251",
+        "source_fact:v1:64448a99320c96c45743aaef923b4b36f74606af109d169cf27c77a51e4e1032",
+        "source_fact:v1:93af958b70a50744e81f5c58ce8a9eab90018ab806ba8e0215df60c7dd7510b7",
+        "source_fact:v1:baaff1b8876044188aa734161937491ad6f6b4c582670fb2881fa9c399d2d067"
+      ],
+      "source_published_kst": "2026-10-07T14:21+09:00",
+      "title": "리사 수 방한 계기로 韓ㆍAMD 반도체 협력 확대⋯정부, 내년 실증사업 속도 [종합]"
+    },
     "link:8b005c0f10bbe2445e118749": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
       "lanes": {
@@ -55590,6 +55854,24 @@
       "source": "뉴시스",
       "title": "이번 주 국제 유가 요동치다가 지난주 수준 마감"
     },
+    "link:c010b64c18164dabee3ffe3c": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007146400053",
+      "source": "연합뉴스",
+      "source_body_digest": "0dfd2b02c2d4311809c2ed6bf397894741669cf2397ac89dc3c790c31138e498",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5cdd6de3f203dfd0db52f341f8af831c04bdf2697c37ebab9142eb58a8c6a1c0",
+      "source_fact_keys": [
+        "source_fact:v1:8d3644928fa5faac8d72e758ba72c14d81cd9f11c445bb914a5a57d21ad38c62",
+        "source_fact:v1:ca0e0561594c59024a2ae9b05a707118fb4b918d7e775c663bf5097a256969e1"
+      ],
+      "source_published_kst": "2026-10-07T15:55+09:00",
+      "title": "대구·전남광주, 공장 누비며 부품 나르는 '공정모빌리티' 개발 | 연합뉴스"
+    },
     "link:c0890f16a8f532d67719d159": {
       "first_seen_kst": "2026-10-03T03:56:27+09:00",
       "lanes": {
@@ -60176,6 +60458,21 @@
       "source": "매일경제",
       "title": "액센츄어, 4분기 실적 가이던스 상회에 사상 최대 주주환원까지 겹쳐 급등세"
     },
+    "link:e217f202717cb5eebb1c9609": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007139551002",
+      "source": "연합뉴스",
+      "source_body_digest": "9675f85e9caf83cfea49aaae5f0d5fb533597df748f211973357def1d13eb05a",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T15:40+09:00",
+      "title": "두나무·네파 주식교환 세 번째 연기…내년 3월로(종합) | 연합뉴스"
+    },
     "link:e232b79bc49cb003128a82d9": {
       "first_seen_kst": "2026-10-06T04:08:54+09:00",
       "lanes": {
@@ -63742,6 +64039,21 @@
       "source": "연합뉴스",
       "title": "IBK운용, 한미 대표기업TOP2+채권혼합50액티브 ETF 상장 | 연합뉴스"
     },
+    "link:fbbe1e2086fb3b6ff546befa": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007149000008",
+      "source": "연합뉴스",
+      "source_body_digest": "12495b5c17b6788c6472b8cf75e1b1976f7b1c72ff3d0a2a748577ee11533e6c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T15:46+09:00",
+      "title": "대성산업 \"자회사 대성쎌틱에너시스 주식 380억원에 추가취득\" | 연합뉴스"
+    },
     "link:fc179294df60e688392134d8": {
       "first_seen_kst": "2026-10-03T13:31:23+09:00",
       "lanes": {
@@ -65629,6 +65941,21 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "[일문일답] 독파모 끝까지 간다…\"프론티어 AI 사업 별도 추진\""
+    },
+    "original:09b0ecd9c67c76787116e85e": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633473",
+      "source": "이투데이",
+      "source_body_digest": "8df749a26e56b6f657c9f36b6a40dd30b0530b240e394e665b9f236aa389e88c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T15:50+09:00",
+      "title": "LG엔솔, 美 공장 인수 효과는?⋯ESSㆍ세액공제에 주목 [찐코노미]"
     },
     "original:09bf68afdfa27958ffae98e0": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
@@ -74161,6 +74488,26 @@
       "source_published_kst": "2026-10-06T08:58+09:00",
       "title": "오텍, AI 서버부터 신선배송까지…'열관리'로 성장축 확장"
     },
+    "original:460a83666525dddc3659e890": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633320",
+      "source": "이투데이",
+      "source_body_digest": "1e6728bff7efb6b5c3fc9b286b06b19a84d0a63f164ef83707a997c3f99c9e2a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3a82a846580f71fa4ca0efa6e5d07783f741e7a9095a173b2d49096bd19e6fc",
+      "source_fact_keys": [
+        "source_fact:v1:01e25e67d9fded9ec0cb522f792c6b12ad6120caefd3bf1dfcb9b92c4dba8251",
+        "source_fact:v1:64448a99320c96c45743aaef923b4b36f74606af109d169cf27c77a51e4e1032",
+        "source_fact:v1:93af958b70a50744e81f5c58ce8a9eab90018ab806ba8e0215df60c7dd7510b7",
+        "source_fact:v1:baaff1b8876044188aa734161937491ad6f6b4c582670fb2881fa9c399d2d067"
+      ],
+      "source_published_kst": "2026-10-07T14:21+09:00",
+      "title": "리사 수 방한 계기로 韓ㆍAMD 반도체 협력 확대⋯정부, 내년 실증사업 속도 [종합]"
+    },
     "original:461bfa73c77e9ed746ed8628": {
       "first_seen_kst": "2026-10-04T09:16:34+09:00",
       "lanes": {
@@ -82407,6 +82754,28 @@
       "source_published_kst": "2026-10-07T07:34+09:00",
       "title": "\"한국, 관세 낮추려 대가 치렀다\"…트럼프, 대미 투자 성과 재차 부각"
     },
+    "original:857c69aa4a4547c43c56645e": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.fnnews.com/news/202610071526186376",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "e7883849255d5f762a02ecbfdb2d8bc6daa69318ad3889cec4f15f14f9b45bad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bddeff44f5954b97787caf7c5a95aaf5cde21cc4f3608f7f0d909aa41d29354c",
+      "source_fact_keys": [
+        "source_fact:v1:01162310a5e1a8e9833aaa0686528184ec776027758b3127c06361fca6777d99",
+        "source_fact:v1:160dfbc4ad41b8b5c97289eb4f67eaae5949ca4898cd8c8737dc10a72331aa64",
+        "source_fact:v1:3b01d6846da404d5f6930219779c3fef89d186c08210aa98143d19997887b6ce",
+        "source_fact:v1:654e700fd512ddc1aab121ba0c71d67f9aa426a507bf36dc5898c673b04edabc",
+        "source_fact:v1:acfea74bd8d3d5e8d6a1be104c139a7d39e0af5bcd0f65ce2da82f6670d5c1f3",
+        "source_fact:v1:f47571001282dae58ccea4a65a034c6caf5060b97664bae87b7647e700119565"
+      ],
+      "source_published_kst": "2026-10-07T15:28+09:00",
+      "title": "두나무-네이버파이낸셜 주식교환, 내년 3월로 연기 [공시]"
+    },
     "original:857cf56d324ff4f045f5a725": {
       "first_seen_kst": "2026-09-18T09:27:02+09:00",
       "lanes": {
@@ -84406,6 +84775,25 @@
       "source": "이데일리",
       "title": "재경부 \"최고가격제, 물가상승 0.6%p 완화…가격관리 강화\""
     },
+    "original:9278533296db30262b141eab": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007147900057",
+      "source": "연합뉴스",
+      "source_body_digest": "0b7b38b47f5733f6d3f113f327ca7f3fadd7d300bad9457eab3c3e45e0251d9b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8e9cf7aebfb54db263f095711e324c59273fdfdf4bc7d6983fc857403523405",
+      "source_fact_keys": [
+        "source_fact:v1:7bdc9b37e46d366eda33ce8b4230e290621a16a4ad55bbff8fee104f141b86c8",
+        "source_fact:v1:9adcc0bb30be06c178f355d3dd34ff7f519f3f1461574e805aa1475f499d5574",
+        "source_fact:v1:9ceda971c39dde6516fed29eabbfa54990408b6d17c87388116b69a3a98a3624"
+      ],
+      "source_published_kst": "2026-10-07T15:50+09:00",
+      "title": "동서발전, 산불 복합재난 대응체계 면밀 점검한다 | 연합뉴스"
+    },
     "original:92900a77e73c529323978209": {
       "first_seen_kst": "2026-10-03T11:19:18+09:00",
       "lanes": {
@@ -86392,6 +86780,21 @@
       ],
       "source_published_kst": "2026-10-06T17:29+09:00",
       "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 양극재 공급계약 | 연합뉴스"
+    },
+    "original:a424a15f60e8d00eb9c7dc35": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007139551002",
+      "source": "연합뉴스",
+      "source_body_digest": "9675f85e9caf83cfea49aaae5f0d5fb533597df748f211973357def1d13eb05a",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T15:40+09:00",
+      "title": "두나무·네파 주식교환 세 번째 연기…내년 3월로(종합) | 연합뉴스"
     },
     "original:a4331d348e5a004d3cfd2afb": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
@@ -89675,6 +90078,24 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T10:21+09:00",
       "title": "[AI픽] LGU+ '유독', 글로벌 AI 서비스 품는다 | 연합뉴스"
+    },
+    "original:bc711784f066b7bab593243e": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007146400053",
+      "source": "연합뉴스",
+      "source_body_digest": "0dfd2b02c2d4311809c2ed6bf397894741669cf2397ac89dc3c790c31138e498",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5cdd6de3f203dfd0db52f341f8af831c04bdf2697c37ebab9142eb58a8c6a1c0",
+      "source_fact_keys": [
+        "source_fact:v1:8d3644928fa5faac8d72e758ba72c14d81cd9f11c445bb914a5a57d21ad38c62",
+        "source_fact:v1:ca0e0561594c59024a2ae9b05a707118fb4b918d7e775c663bf5097a256969e1"
+      ],
+      "source_published_kst": "2026-10-07T15:55+09:00",
+      "title": "대구·전남광주, 공장 누비며 부품 나르는 '공정모빌리티' 개발 | 연합뉴스"
     },
     "original:bc86abc7cec676f5ae298277": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -94455,6 +94876,21 @@
       "link": "https://www.yna.co.kr/view/AKR20260924040200008",
       "source": "연합뉴스",
       "title": "[머니플로우] '국장'도 '미장'도 美대표지수 ETF 순매수 상위 | 연합뉴스"
+    },
+    "original:dfa774aa4af37e25a3321383": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007149000008",
+      "source": "연합뉴스",
+      "source_body_digest": "12495b5c17b6788c6472b8cf75e1b1976f7b1c72ff3d0a2a748577ee11533e6c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T15:46+09:00",
+      "title": "대성산업 \"자회사 대성쎌틱에너시스 주식 380억원에 추가취득\" | 연합뉴스"
     },
     "original:dfcce54f25efd566adf27276": {
       "first_seen_kst": "2026-10-01T21:06:52+09:00",
@@ -114271,6 +114707,28 @@
       "source_published_kst": "2026-10-06T10:11+09:00",
       "title": "세아베스틸, 로봇 감속기용 특수강 국산화…양산 본격화"
     },
+    "source_fact:3172971858f87c52f38c109e": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.fnnews.com/news/202610071526186376",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "e7883849255d5f762a02ecbfdb2d8bc6daa69318ad3889cec4f15f14f9b45bad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bddeff44f5954b97787caf7c5a95aaf5cde21cc4f3608f7f0d909aa41d29354c",
+      "source_fact_keys": [
+        "source_fact:v1:01162310a5e1a8e9833aaa0686528184ec776027758b3127c06361fca6777d99",
+        "source_fact:v1:160dfbc4ad41b8b5c97289eb4f67eaae5949ca4898cd8c8737dc10a72331aa64",
+        "source_fact:v1:3b01d6846da404d5f6930219779c3fef89d186c08210aa98143d19997887b6ce",
+        "source_fact:v1:654e700fd512ddc1aab121ba0c71d67f9aa426a507bf36dc5898c673b04edabc",
+        "source_fact:v1:acfea74bd8d3d5e8d6a1be104c139a7d39e0af5bcd0f65ce2da82f6670d5c1f3",
+        "source_fact:v1:f47571001282dae58ccea4a65a034c6caf5060b97664bae87b7647e700119565"
+      ],
+      "source_published_kst": "2026-10-07T15:28+09:00",
+      "title": "두나무-네이버파이낸셜 주식교환, 내년 3월로 연기 [공시]"
+    },
     "source_fact:31809ab388cd393cbca8b5b1": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
       "lanes": {
@@ -117483,6 +117941,28 @@
       ],
       "source_published_kst": "2026-10-06T11:01+09:00",
       "title": "자동차 화면용 강화유리 수입승인 없앤다…디스플레이 규제 개선"
+    },
+    "source_fact:3a6ecf73568b26effd4c0a3f": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.fnnews.com/news/202610071526186376",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "e7883849255d5f762a02ecbfdb2d8bc6daa69318ad3889cec4f15f14f9b45bad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bddeff44f5954b97787caf7c5a95aaf5cde21cc4f3608f7f0d909aa41d29354c",
+      "source_fact_keys": [
+        "source_fact:v1:01162310a5e1a8e9833aaa0686528184ec776027758b3127c06361fca6777d99",
+        "source_fact:v1:160dfbc4ad41b8b5c97289eb4f67eaae5949ca4898cd8c8737dc10a72331aa64",
+        "source_fact:v1:3b01d6846da404d5f6930219779c3fef89d186c08210aa98143d19997887b6ce",
+        "source_fact:v1:654e700fd512ddc1aab121ba0c71d67f9aa426a507bf36dc5898c673b04edabc",
+        "source_fact:v1:acfea74bd8d3d5e8d6a1be104c139a7d39e0af5bcd0f65ce2da82f6670d5c1f3",
+        "source_fact:v1:f47571001282dae58ccea4a65a034c6caf5060b97664bae87b7647e700119565"
+      ],
+      "source_published_kst": "2026-10-07T15:28+09:00",
+      "title": "두나무-네이버파이낸셜 주식교환, 내년 3월로 연기 [공시]"
     },
     "source_fact:3a72a93b361b8c1250b12f82": {
       "first_seen_kst": "2026-10-06T17:59:23+09:00",
@@ -121634,6 +122114,26 @@
       "source_published_kst": "2026-10-06T04:36+09:00",
       "title": "美10년물 국채금리 장중 5.34% 돌파…24년 만에 최고"
     },
+    "source_fact:47517289aac1b133c217c770": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633320",
+      "source": "이투데이",
+      "source_body_digest": "1e6728bff7efb6b5c3fc9b286b06b19a84d0a63f164ef83707a997c3f99c9e2a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3a82a846580f71fa4ca0efa6e5d07783f741e7a9095a173b2d49096bd19e6fc",
+      "source_fact_keys": [
+        "source_fact:v1:01e25e67d9fded9ec0cb522f792c6b12ad6120caefd3bf1dfcb9b92c4dba8251",
+        "source_fact:v1:64448a99320c96c45743aaef923b4b36f74606af109d169cf27c77a51e4e1032",
+        "source_fact:v1:93af958b70a50744e81f5c58ce8a9eab90018ab806ba8e0215df60c7dd7510b7",
+        "source_fact:v1:baaff1b8876044188aa734161937491ad6f6b4c582670fb2881fa9c399d2d067"
+      ],
+      "source_published_kst": "2026-10-07T14:21+09:00",
+      "title": "리사 수 방한 계기로 韓ㆍAMD 반도체 협력 확대⋯정부, 내년 실증사업 속도 [종합]"
+    },
     "source_fact:475891f28f2fb7a9158d5a6f": {
       "first_seen_kst": "2026-10-07T18:30:29+09:00",
       "lanes": {
@@ -124620,6 +125120,26 @@
       "source_published_kst": "2026-10-07T05:00+09:00",
       "title": "개미는 반도체 ‘팔자’…美 지수·파킹형에 몰린 돈 [ETF 지형도 변화]①"
     },
+    "source_fact:5073f2390f4bde44cca0cb1f": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633320",
+      "source": "이투데이",
+      "source_body_digest": "1e6728bff7efb6b5c3fc9b286b06b19a84d0a63f164ef83707a997c3f99c9e2a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3a82a846580f71fa4ca0efa6e5d07783f741e7a9095a173b2d49096bd19e6fc",
+      "source_fact_keys": [
+        "source_fact:v1:01e25e67d9fded9ec0cb522f792c6b12ad6120caefd3bf1dfcb9b92c4dba8251",
+        "source_fact:v1:64448a99320c96c45743aaef923b4b36f74606af109d169cf27c77a51e4e1032",
+        "source_fact:v1:93af958b70a50744e81f5c58ce8a9eab90018ab806ba8e0215df60c7dd7510b7",
+        "source_fact:v1:baaff1b8876044188aa734161937491ad6f6b4c582670fb2881fa9c399d2d067"
+      ],
+      "source_published_kst": "2026-10-07T14:21+09:00",
+      "title": "리사 수 방한 계기로 韓ㆍAMD 반도체 협력 확대⋯정부, 내년 실증사업 속도 [종합]"
+    },
     "source_fact:5092fdc506dfbb6bd4c542e9": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
       "lanes": {
@@ -124681,6 +125201,25 @@
       ],
       "source_published_kst": "2026-10-07T08:31+09:00",
       "title": "한성크린텍, 삼성전기 베트남 공장 초순수 시스템 230억원 수주"
+    },
+    "source_fact:50974771d7b44330f438d51a": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007147900057",
+      "source": "연합뉴스",
+      "source_body_digest": "0b7b38b47f5733f6d3f113f327ca7f3fadd7d300bad9457eab3c3e45e0251d9b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8e9cf7aebfb54db263f095711e324c59273fdfdf4bc7d6983fc857403523405",
+      "source_fact_keys": [
+        "source_fact:v1:7bdc9b37e46d366eda33ce8b4230e290621a16a4ad55bbff8fee104f141b86c8",
+        "source_fact:v1:9adcc0bb30be06c178f355d3dd34ff7f519f3f1461574e805aa1475f499d5574",
+        "source_fact:v1:9ceda971c39dde6516fed29eabbfa54990408b6d17c87388116b69a3a98a3624"
+      ],
+      "source_published_kst": "2026-10-07T15:50+09:00",
+      "title": "동서발전, 산불 복합재난 대응체계 면밀 점검한다 | 연합뉴스"
     },
     "source_fact:509d40fbf7f97baebe4ee881": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
@@ -130598,6 +131137,24 @@
       "source_published_kst": "2026-10-06T14:16+09:00",
       "title": "프랑스 중앙은행 총재 “금리에 목 졸릴수도”⋯재정개혁 촉구"
     },
+    "source_fact:626ad2afdb390945e3888e2a": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007146400053",
+      "source": "연합뉴스",
+      "source_body_digest": "0dfd2b02c2d4311809c2ed6bf397894741669cf2397ac89dc3c790c31138e498",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5cdd6de3f203dfd0db52f341f8af831c04bdf2697c37ebab9142eb58a8c6a1c0",
+      "source_fact_keys": [
+        "source_fact:v1:8d3644928fa5faac8d72e758ba72c14d81cd9f11c445bb914a5a57d21ad38c62",
+        "source_fact:v1:ca0e0561594c59024a2ae9b05a707118fb4b918d7e775c663bf5097a256969e1"
+      ],
+      "source_published_kst": "2026-10-07T15:55+09:00",
+      "title": "대구·전남광주, 공장 누비며 부품 나르는 '공정모빌리티' 개발 | 연합뉴스"
+    },
     "source_fact:627030064d62dda4387d903d": {
       "first_seen_kst": "2026-10-07T18:12:46+09:00",
       "lanes": {
@@ -131755,6 +132312,25 @@
       ],
       "source_published_kst": "2026-10-07T06:31+09:00",
       "title": "실적 기대에 힘받은 뉴욕증시…S&P500·나스닥 또 최고치(종합)"
+    },
+    "source_fact:65e46c88dd31fc0bc3c477af": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007147900057",
+      "source": "연합뉴스",
+      "source_body_digest": "0b7b38b47f5733f6d3f113f327ca7f3fadd7d300bad9457eab3c3e45e0251d9b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8e9cf7aebfb54db263f095711e324c59273fdfdf4bc7d6983fc857403523405",
+      "source_fact_keys": [
+        "source_fact:v1:7bdc9b37e46d366eda33ce8b4230e290621a16a4ad55bbff8fee104f141b86c8",
+        "source_fact:v1:9adcc0bb30be06c178f355d3dd34ff7f519f3f1461574e805aa1475f499d5574",
+        "source_fact:v1:9ceda971c39dde6516fed29eabbfa54990408b6d17c87388116b69a3a98a3624"
+      ],
+      "source_published_kst": "2026-10-07T15:50+09:00",
+      "title": "동서발전, 산불 복합재난 대응체계 면밀 점검한다 | 연합뉴스"
     },
     "source_fact:660b1dee3fced55de2a283c5": {
       "first_seen_kst": "2026-10-07T18:44:00+09:00",
@@ -165198,6 +165774,24 @@
       "source_published_kst": "2026-10-06T15:07+09:00",
       "title": "\"K-콘텐츠 금융지원\"…부산은행·신보, 100억원 보증지원"
     },
+    "source_fact:cd4cc57d390d1b5af412a1a7": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007146400053",
+      "source": "연합뉴스",
+      "source_body_digest": "0dfd2b02c2d4311809c2ed6bf397894741669cf2397ac89dc3c790c31138e498",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5cdd6de3f203dfd0db52f341f8af831c04bdf2697c37ebab9142eb58a8c6a1c0",
+      "source_fact_keys": [
+        "source_fact:v1:8d3644928fa5faac8d72e758ba72c14d81cd9f11c445bb914a5a57d21ad38c62",
+        "source_fact:v1:ca0e0561594c59024a2ae9b05a707118fb4b918d7e775c663bf5097a256969e1"
+      ],
+      "source_published_kst": "2026-10-07T15:55+09:00",
+      "title": "대구·전남광주, 공장 누비며 부품 나르는 '공정모빌리티' 개발 | 연합뉴스"
+    },
     "source_fact:cd53eeea4c461a0f9715aa3e": {
       "first_seen_kst": "2026-10-07T10:23:42+09:00",
       "lanes": {
@@ -169088,6 +169682,28 @@
       "source_published_kst": "2026-10-07T09:30+09:00",
       "title": "포스코, 아르헨티나서 리튬 5만t 생산체제 구축 눈앞"
     },
+    "source_fact:d7fceeb77f327ab4e39962cf": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.fnnews.com/news/202610071526186376",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "e7883849255d5f762a02ecbfdb2d8bc6daa69318ad3889cec4f15f14f9b45bad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bddeff44f5954b97787caf7c5a95aaf5cde21cc4f3608f7f0d909aa41d29354c",
+      "source_fact_keys": [
+        "source_fact:v1:01162310a5e1a8e9833aaa0686528184ec776027758b3127c06361fca6777d99",
+        "source_fact:v1:160dfbc4ad41b8b5c97289eb4f67eaae5949ca4898cd8c8737dc10a72331aa64",
+        "source_fact:v1:3b01d6846da404d5f6930219779c3fef89d186c08210aa98143d19997887b6ce",
+        "source_fact:v1:654e700fd512ddc1aab121ba0c71d67f9aa426a507bf36dc5898c673b04edabc",
+        "source_fact:v1:acfea74bd8d3d5e8d6a1be104c139a7d39e0af5bcd0f65ce2da82f6670d5c1f3",
+        "source_fact:v1:f47571001282dae58ccea4a65a034c6caf5060b97664bae87b7647e700119565"
+      ],
+      "source_published_kst": "2026-10-07T15:28+09:00",
+      "title": "두나무-네이버파이낸셜 주식교환, 내년 3월로 연기 [공시]"
+    },
     "source_fact:d7ffdc4dcd450bf6c3dfeb60": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
       "lanes": {
@@ -169989,6 +170605,28 @@
       "source_published_kst": "2026-10-05T18:21+09:00",
       "title": "솔리다임 美상장… \"SK하닉 가치 재평가\" vs \"주주 피해\" [어떻게 생각하십니까]"
     },
+    "source_fact:dadd9cffdba75b457639866b": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.fnnews.com/news/202610071526186376",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "e7883849255d5f762a02ecbfdb2d8bc6daa69318ad3889cec4f15f14f9b45bad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bddeff44f5954b97787caf7c5a95aaf5cde21cc4f3608f7f0d909aa41d29354c",
+      "source_fact_keys": [
+        "source_fact:v1:01162310a5e1a8e9833aaa0686528184ec776027758b3127c06361fca6777d99",
+        "source_fact:v1:160dfbc4ad41b8b5c97289eb4f67eaae5949ca4898cd8c8737dc10a72331aa64",
+        "source_fact:v1:3b01d6846da404d5f6930219779c3fef89d186c08210aa98143d19997887b6ce",
+        "source_fact:v1:654e700fd512ddc1aab121ba0c71d67f9aa426a507bf36dc5898c673b04edabc",
+        "source_fact:v1:acfea74bd8d3d5e8d6a1be104c139a7d39e0af5bcd0f65ce2da82f6670d5c1f3",
+        "source_fact:v1:f47571001282dae58ccea4a65a034c6caf5060b97664bae87b7647e700119565"
+      ],
+      "source_published_kst": "2026-10-07T15:28+09:00",
+      "title": "두나무-네이버파이낸셜 주식교환, 내년 3월로 연기 [공시]"
+    },
     "source_fact:dae305cc99615cc2bcaa809e": {
       "first_seen_kst": "2026-10-06T21:40:57+09:00",
       "lanes": {
@@ -170170,6 +170808,26 @@
       ],
       "source_published_kst": "2026-10-07T15:35+09:00",
       "title": "HD건설기계, 북미 AI 데이터센터에 전력 공급…3900억 계약 체결"
+    },
+    "source_fact:db5f84053a1efcafc700be43": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633320",
+      "source": "이투데이",
+      "source_body_digest": "1e6728bff7efb6b5c3fc9b286b06b19a84d0a63f164ef83707a997c3f99c9e2a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3a82a846580f71fa4ca0efa6e5d07783f741e7a9095a173b2d49096bd19e6fc",
+      "source_fact_keys": [
+        "source_fact:v1:01e25e67d9fded9ec0cb522f792c6b12ad6120caefd3bf1dfcb9b92c4dba8251",
+        "source_fact:v1:64448a99320c96c45743aaef923b4b36f74606af109d169cf27c77a51e4e1032",
+        "source_fact:v1:93af958b70a50744e81f5c58ce8a9eab90018ab806ba8e0215df60c7dd7510b7",
+        "source_fact:v1:baaff1b8876044188aa734161937491ad6f6b4c582670fb2881fa9c399d2d067"
+      ],
+      "source_published_kst": "2026-10-07T14:21+09:00",
+      "title": "리사 수 방한 계기로 韓ㆍAMD 반도체 협력 확대⋯정부, 내년 실증사업 속도 [종합]"
     },
     "source_fact:db6fcc8d631417ce6b777b82": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
@@ -172106,6 +172764,28 @@
       ],
       "source_published_kst": "2026-10-06T10:16+09:00",
       "title": "이형일 “대미 관세·CPTPP 불확실성 최소화…공정과세 실현”"
+    },
+    "source_fact:e08bffc881cd3c898192da71": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.fnnews.com/news/202610071526186376",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "e7883849255d5f762a02ecbfdb2d8bc6daa69318ad3889cec4f15f14f9b45bad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bddeff44f5954b97787caf7c5a95aaf5cde21cc4f3608f7f0d909aa41d29354c",
+      "source_fact_keys": [
+        "source_fact:v1:01162310a5e1a8e9833aaa0686528184ec776027758b3127c06361fca6777d99",
+        "source_fact:v1:160dfbc4ad41b8b5c97289eb4f67eaae5949ca4898cd8c8737dc10a72331aa64",
+        "source_fact:v1:3b01d6846da404d5f6930219779c3fef89d186c08210aa98143d19997887b6ce",
+        "source_fact:v1:654e700fd512ddc1aab121ba0c71d67f9aa426a507bf36dc5898c673b04edabc",
+        "source_fact:v1:acfea74bd8d3d5e8d6a1be104c139a7d39e0af5bcd0f65ce2da82f6670d5c1f3",
+        "source_fact:v1:f47571001282dae58ccea4a65a034c6caf5060b97664bae87b7647e700119565"
+      ],
+      "source_published_kst": "2026-10-07T15:28+09:00",
+      "title": "두나무-네이버파이낸셜 주식교환, 내년 3월로 연기 [공시]"
     },
     "source_fact:e093801788c9e962309e5f42": {
       "first_seen_kst": "2026-10-07T01:33:00+09:00",
@@ -176219,6 +176899,28 @@
       "source_published_kst": "2026-10-06T11:12+09:00",
       "title": "LG전자, 5GW 북미 냉각 설루션 장기 계약"
     },
+    "source_fact:ec500caf3d594c9336628b44": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.fnnews.com/news/202610071526186376",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "e7883849255d5f762a02ecbfdb2d8bc6daa69318ad3889cec4f15f14f9b45bad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bddeff44f5954b97787caf7c5a95aaf5cde21cc4f3608f7f0d909aa41d29354c",
+      "source_fact_keys": [
+        "source_fact:v1:01162310a5e1a8e9833aaa0686528184ec776027758b3127c06361fca6777d99",
+        "source_fact:v1:160dfbc4ad41b8b5c97289eb4f67eaae5949ca4898cd8c8737dc10a72331aa64",
+        "source_fact:v1:3b01d6846da404d5f6930219779c3fef89d186c08210aa98143d19997887b6ce",
+        "source_fact:v1:654e700fd512ddc1aab121ba0c71d67f9aa426a507bf36dc5898c673b04edabc",
+        "source_fact:v1:acfea74bd8d3d5e8d6a1be104c139a7d39e0af5bcd0f65ce2da82f6670d5c1f3",
+        "source_fact:v1:f47571001282dae58ccea4a65a034c6caf5060b97664bae87b7647e700119565"
+      ],
+      "source_published_kst": "2026-10-07T15:28+09:00",
+      "title": "두나무-네이버파이낸셜 주식교환, 내년 3월로 연기 [공시]"
+    },
     "source_fact:ec50cd54e37ed798b711f417": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
       "lanes": {
@@ -176617,6 +177319,25 @@
       ],
       "source_published_kst": "2026-10-07T08:51+09:00",
       "title": "트럼프 “한국에 관세 인하 ‘대가’ 요구했다”…대미 투자 거듭 압박"
+    },
+    "source_fact:ed347021d8480fbb0c202f24": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007147900057",
+      "source": "연합뉴스",
+      "source_body_digest": "0b7b38b47f5733f6d3f113f327ca7f3fadd7d300bad9457eab3c3e45e0251d9b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8e9cf7aebfb54db263f095711e324c59273fdfdf4bc7d6983fc857403523405",
+      "source_fact_keys": [
+        "source_fact:v1:7bdc9b37e46d366eda33ce8b4230e290621a16a4ad55bbff8fee104f141b86c8",
+        "source_fact:v1:9adcc0bb30be06c178f355d3dd34ff7f519f3f1461574e805aa1475f499d5574",
+        "source_fact:v1:9ceda971c39dde6516fed29eabbfa54990408b6d17c87388116b69a3a98a3624"
+      ],
+      "source_published_kst": "2026-10-07T15:50+09:00",
+      "title": "동서발전, 산불 복합재난 대응체계 면밀 점검한다 | 연합뉴스"
     },
     "source_fact:ed3548bb2cbdea54e4bcf389": {
       "first_seen_kst": "2026-10-07T05:33:37+09:00",
@@ -181775,6 +182496,26 @@
       "source_published_kst": "2026-10-06T05:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
     },
+    "source_fact:fdacc7a95031a60dac2f8d8e": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633320",
+      "source": "이투데이",
+      "source_body_digest": "1e6728bff7efb6b5c3fc9b286b06b19a84d0a63f164ef83707a997c3f99c9e2a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3a82a846580f71fa4ca0efa6e5d07783f741e7a9095a173b2d49096bd19e6fc",
+      "source_fact_keys": [
+        "source_fact:v1:01e25e67d9fded9ec0cb522f792c6b12ad6120caefd3bf1dfcb9b92c4dba8251",
+        "source_fact:v1:64448a99320c96c45743aaef923b4b36f74606af109d169cf27c77a51e4e1032",
+        "source_fact:v1:93af958b70a50744e81f5c58ce8a9eab90018ab806ba8e0215df60c7dd7510b7",
+        "source_fact:v1:baaff1b8876044188aa734161937491ad6f6b4c582670fb2881fa9c399d2d067"
+      ],
+      "source_published_kst": "2026-10-07T14:21+09:00",
+      "title": "리사 수 방한 계기로 韓ㆍAMD 반도체 협력 확대⋯정부, 내년 실증사업 속도 [종합]"
+    },
     "source_fact:fdb75e42b3c5b777c50b58b5": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -183787,6 +184528,21 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "[일문일답] 독파모 끝까지 간다…\"프론티어 AI 사업 별도 추진\""
+    },
+    "title:09b0ecd9c67c76787116e85e": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633473",
+      "source": "이투데이",
+      "source_body_digest": "8df749a26e56b6f657c9f36b6a40dd30b0530b240e394e665b9f236aa389e88c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T15:50+09:00",
+      "title": "LG엔솔, 美 공장 인수 효과는?⋯ESSㆍ세액공제에 주목 [찐코노미]"
     },
     "title:09bf68afdfa27958ffae98e0": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
@@ -186006,6 +186762,26 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-07T15:15+09:00",
       "title": "두나무·네이버파이낸셜 주식교환 또 연기…내년 3월 예정 | 연합뉴스"
+    },
+    "title:1b22ddd3f17d6143b4ca86c8": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633320",
+      "source": "이투데이",
+      "source_body_digest": "1e6728bff7efb6b5c3fc9b286b06b19a84d0a63f164ef83707a997c3f99c9e2a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3a82a846580f71fa4ca0efa6e5d07783f741e7a9095a173b2d49096bd19e6fc",
+      "source_fact_keys": [
+        "source_fact:v1:01e25e67d9fded9ec0cb522f792c6b12ad6120caefd3bf1dfcb9b92c4dba8251",
+        "source_fact:v1:64448a99320c96c45743aaef923b4b36f74606af109d169cf27c77a51e4e1032",
+        "source_fact:v1:93af958b70a50744e81f5c58ce8a9eab90018ab806ba8e0215df60c7dd7510b7",
+        "source_fact:v1:baaff1b8876044188aa734161937491ad6f6b4c582670fb2881fa9c399d2d067"
+      ],
+      "source_published_kst": "2026-10-07T14:21+09:00",
+      "title": "리사 수 방한 계기로 韓ㆍAMD 반도체 협력 확대⋯정부, 내년 실증사업 속도 [종합]"
     },
     "title:1b3ce221f9b8d52fc53526cc": {
       "first_seen_kst": "2026-10-01T16:14:13+09:00",
@@ -192389,6 +193165,26 @@
       ],
       "source_published_kst": "2026-10-06T08:58+09:00",
       "title": "오텍, AI 서버부터 신선배송까지…'열관리'로 성장축 확장"
+    },
+    "title:460a83666525dddc3659e890": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633320",
+      "source": "이투데이",
+      "source_body_digest": "1e6728bff7efb6b5c3fc9b286b06b19a84d0a63f164ef83707a997c3f99c9e2a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3a82a846580f71fa4ca0efa6e5d07783f741e7a9095a173b2d49096bd19e6fc",
+      "source_fact_keys": [
+        "source_fact:v1:01e25e67d9fded9ec0cb522f792c6b12ad6120caefd3bf1dfcb9b92c4dba8251",
+        "source_fact:v1:64448a99320c96c45743aaef923b4b36f74606af109d169cf27c77a51e4e1032",
+        "source_fact:v1:93af958b70a50744e81f5c58ce8a9eab90018ab806ba8e0215df60c7dd7510b7",
+        "source_fact:v1:baaff1b8876044188aa734161937491ad6f6b4c582670fb2881fa9c399d2d067"
+      ],
+      "source_published_kst": "2026-10-07T14:21+09:00",
+      "title": "리사 수 방한 계기로 韓ㆍAMD 반도체 협력 확대⋯정부, 내년 실증사업 속도 [종합]"
     },
     "title:461bfa73c77e9ed746ed8628": {
       "first_seen_kst": "2026-10-04T09:16:34+09:00",
@@ -200767,6 +201563,28 @@
       "source_published_kst": "2026-10-07T07:34+09:00",
       "title": "\"한국, 관세 낮추려 대가 치렀다\"…트럼프, 대미 투자 성과 재차 부각"
     },
+    "title:857c69aa4a4547c43c56645e": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.fnnews.com/news/202610071526186376",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "e7883849255d5f762a02ecbfdb2d8bc6daa69318ad3889cec4f15f14f9b45bad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bddeff44f5954b97787caf7c5a95aaf5cde21cc4f3608f7f0d909aa41d29354c",
+      "source_fact_keys": [
+        "source_fact:v1:01162310a5e1a8e9833aaa0686528184ec776027758b3127c06361fca6777d99",
+        "source_fact:v1:160dfbc4ad41b8b5c97289eb4f67eaae5949ca4898cd8c8737dc10a72331aa64",
+        "source_fact:v1:3b01d6846da404d5f6930219779c3fef89d186c08210aa98143d19997887b6ce",
+        "source_fact:v1:654e700fd512ddc1aab121ba0c71d67f9aa426a507bf36dc5898c673b04edabc",
+        "source_fact:v1:acfea74bd8d3d5e8d6a1be104c139a7d39e0af5bcd0f65ce2da82f6670d5c1f3",
+        "source_fact:v1:f47571001282dae58ccea4a65a034c6caf5060b97664bae87b7647e700119565"
+      ],
+      "source_published_kst": "2026-10-07T15:28+09:00",
+      "title": "두나무-네이버파이낸셜 주식교환, 내년 3월로 연기 [공시]"
+    },
     "title:857cf56d324ff4f045f5a725": {
       "first_seen_kst": "2026-09-18T09:27:02+09:00",
       "lanes": {
@@ -202818,6 +203636,25 @@
       "source": "이데일리",
       "title": "재경부 \"최고가격제, 물가상승 0.6%p 완화…가격관리 강화\""
     },
+    "title:9278533296db30262b141eab": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007147900057",
+      "source": "연합뉴스",
+      "source_body_digest": "0b7b38b47f5733f6d3f113f327ca7f3fadd7d300bad9457eab3c3e45e0251d9b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8e9cf7aebfb54db263f095711e324c59273fdfdf4bc7d6983fc857403523405",
+      "source_fact_keys": [
+        "source_fact:v1:7bdc9b37e46d366eda33ce8b4230e290621a16a4ad55bbff8fee104f141b86c8",
+        "source_fact:v1:9adcc0bb30be06c178f355d3dd34ff7f519f3f1461574e805aa1475f499d5574",
+        "source_fact:v1:9ceda971c39dde6516fed29eabbfa54990408b6d17c87388116b69a3a98a3624"
+      ],
+      "source_published_kst": "2026-10-07T15:50+09:00",
+      "title": "동서발전, 산불 복합재난 대응체계 면밀 점검한다 | 연합뉴스"
+    },
     "title:92900a77e73c529323978209": {
       "first_seen_kst": "2026-10-03T11:19:18+09:00",
       "lanes": {
@@ -204849,6 +205686,21 @@
       ],
       "source_published_kst": "2026-10-06T17:29+09:00",
       "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 양극재 공급계약 | 연합뉴스"
+    },
+    "title:a424a15f60e8d00eb9c7dc35": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007139551002",
+      "source": "연합뉴스",
+      "source_body_digest": "9675f85e9caf83cfea49aaae5f0d5fb533597df748f211973357def1d13eb05a",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T15:40+09:00",
+      "title": "두나무·네파 주식교환 세 번째 연기…내년 3월로(종합) | 연합뉴스"
     },
     "title:a4331d348e5a004d3cfd2afb": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
@@ -208265,6 +209117,24 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T10:21+09:00",
       "title": "[AI픽] LGU+ '유독', 글로벌 AI 서비스 품는다 | 연합뉴스"
+    },
+    "title:bc711784f066b7bab593243e": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007146400053",
+      "source": "연합뉴스",
+      "source_body_digest": "0dfd2b02c2d4311809c2ed6bf397894741669cf2397ac89dc3c790c31138e498",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5cdd6de3f203dfd0db52f341f8af831c04bdf2697c37ebab9142eb58a8c6a1c0",
+      "source_fact_keys": [
+        "source_fact:v1:8d3644928fa5faac8d72e758ba72c14d81cd9f11c445bb914a5a57d21ad38c62",
+        "source_fact:v1:ca0e0561594c59024a2ae9b05a707118fb4b918d7e775c663bf5097a256969e1"
+      ],
+      "source_published_kst": "2026-10-07T15:55+09:00",
+      "title": "대구·전남광주, 공장 누비며 부품 나르는 '공정모빌리티' 개발 | 연합뉴스"
     },
     "title:bc86abc7cec676f5ae298277": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -213093,6 +213963,21 @@
       "source_published_kst": "2026-10-06T12:08+09:00",
       "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
     },
+    "title:dfa774aa4af37e25a3321383": {
+      "first_seen_kst": "2026-10-07T19:47:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T19:47:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T19:47:02+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007149000008",
+      "source": "연합뉴스",
+      "source_body_digest": "12495b5c17b6788c6472b8cf75e1b1976f7b1c72ff3d0a2a748577ee11533e6c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T15:46+09:00",
+      "title": "대성산업 \"자회사 대성쎌틱에너시스 주식 380억원에 추가취득\" | 연합뉴스"
+    },
     "title:dfcce54f25efd566adf27276": {
       "first_seen_kst": "2026-10-01T21:06:52+09:00",
       "lanes": {
@@ -217328,5 +218213,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-07T19:32:28+09:00"
+  "updated_at_kst": "2026-10-07T19:47:02+09:00"
 }
