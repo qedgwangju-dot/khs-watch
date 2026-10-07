@@ -25,7 +25,7 @@ import treasury_cta_squeeze_audited_watch as audited
 watcher = audited.watcher
 # Revision 10 adds the official NQ/CFTC cross-asset squeeze lane.
 # The audited gate still prevents a formatting-only push from becoming an event alert.
-watcher.FORMAT_REVISION = max(int(getattr(watcher, "FORMAT_REVISION", 0)), 11)
+watcher.FORMAT_REVISION = max(int(getattr(watcher, "FORMAT_REVISION", 0)), 12)
 _base_format = audited.format_alert
 _base_main = watcher.main
 
@@ -783,6 +783,150 @@ def _policy_boundary_block(compact: bool = True) -> str:
     ])
 
 
+def _compact_event_body(snapshot: dict, previous: dict, fx, fx_date, reasons: list[str]) -> str:
+    """Fail-safe readable event alert that always fits Telegram."""
+    y = snapshot.get("yield10") or {}
+    cftc = ((snapshot.get("cftc") or {}).get("markets") or {})
+    cme = snapshot.get("cme") or {}
+    repo = snapshot.get("repo") or {}
+    cross = _cross_asset_snapshot(snapshot, previous)
+    impact, path = _equity_impact(snapshot, previous, reasons)
+    repo_ok, repo_worse = audited._repo_not_worse(snapshot, previous)
+    data_fresh, stale = audited._data_freshness(snapshot)
+
+    def fut_line(symbol: str) -> str:
+        row = cme.get(symbol) or {}
+        label = row.get("display_symbol") or symbol
+        pct = row.get("pct_change")
+        pct_txt = f"{float(pct):+.2f}%" if pct is not None else "변화율 확인 불가"
+        oi = row.get("open_interest")
+        oi_txt = f"{int(oi):,}" if oi is not None else "확인 불가"
+        src = row.get("oi_source") or row.get("source_type") or "출처 확인 불가"
+        return f"• {label}: {pct_txt} · OI {oi_txt} [{src}]"
+
+    t10 = cftc.get("10Y") or {}
+    repo_bits = []
+    for k in ("SOFR", "BGCR", "TGCR"):
+        rr = repo.get(k) or {}
+        if rr.get("rate") is not None:
+            repo_bits.append(f"{k} {float(rr['rate']):.2f}%")
+
+    lines = [
+        "<b>👀 지금 쉽게 보면</b>",
+        f"• 10년물 <b>{float(y.get('yield') or 0):.3f}%</b> · z={float(y.get('z20') or 0):+.2f}σ",
+        f"• CTA/국채 스퀴즈: <b>{audited._direction_label(snapshot, previous, reasons)[0]}</b>",
+        f"• 채권→Nasdaq: <b>{cross.get('label')}</b>",
+        f"• 자료 신선도: {'통과' if data_fresh else '차단'}"
+        + (f" ({', '.join(stale)})" if stale else ""),
+        "",
+        "<b>📍 핵심 포지션</b>",
+        f"• 10Y Leveraged Funds 순 {int(t10.get('leveraged_net') or 0):+,}계약"
+        f" · 숏/OI {float(t10.get('short_share_oi_pct') or 0):.1f}%",
+        _cross_asset_block(snapshot, previous, fx=fx, fx_date=fx_date, compact=True).rstrip(),
+        "",
+        "<b>📉 국채 선물 확인</b>",
+        fut_line("ZN"),
+        fut_line("ZB"),
+        fut_line("UB"),
+        "• 공식 CME 같은 거래일 가격↑+OI↓를 못 받으면 스퀴즈 '확정'은 자동 차단합니다.",
+        "",
+        "<b>💵 자금조달</b>",
+        f"• {' · '.join(repo_bits) if repo_bits else 'NY Fed repo 확인 불가'}"
+        f" · 판정 {'안정' if repo_ok else '주의: ' + ', '.join(repo_worse)}",
+        "",
+        "<b>🧭 주식시장 해석</b>",
+        f"• <b>{impact}</b> — {path}.",
+        "• 금리↓가 repo·신용 스트레스 때문이면 위험자산 호재로 보지 않습니다.",
+        "",
+        "<b>🚦 다음 확인</b>",
+        "• ZN 공식 가격↑·같은 거래일 OI↓ + NQ 공식 가격↑·같은 거래일 OI↓",
+        "• 이후 CFTC 10Y·NQ 순숏 축소와 -1σ 이하가 붙을 때만 실제 이중 스퀴즈로 격상",
+        "",
+        "<b>⚠️ 실패모드</b>",
+        "• 가격만 오르고 OI가 안 줄면 신규 롱일 수 있음",
+        "• CFTC는 주간 후행자료이므로 장중 가격과 '동시 신호'로 과장하지 않음",
+        "",
+        "<b>📌 이번 알림 사유</b>",
+        "• " + (" · ".join(reasons) if reasons else "기준선 재검증"),
+        "",
+        f"환율 기준: {fx_date}, 1달러={float(fx):,.2f}원" if fx is not None else "환율 기준: 확인 불가",
+        f'<a href="{CFTC_URL}">CFTC</a> · <a href="{TREASURY_URL}">미 재무부 금리</a> · <a href="{NYFED_URL}">NY Fed repo</a> · <a href="{CME_NQ_URL}">CME NQ</a>',
+    ]
+    return "\n".join(lines)
+
+
+def _compact_scheduled_report(snapshot: dict, previous: dict, reasons: list[str], fx=None, fx_date=None) -> tuple[str, str]:
+    y = snapshot.get("yield10") or {}
+    cftc = (snapshot.get("cftc") or {}).get("markets", {})
+    repo = snapshot.get("repo") or {}
+    cross = _cross_asset_snapshot(snapshot, previous)
+    impact, path = _equity_impact(snapshot, previous, reasons)
+    repo_ok, repo_worse = audited._repo_not_worse(snapshot, previous)
+    data_fresh, stale = audited._data_freshness(snapshot)
+
+    is_fomc = any("FOMC 전날 점검" in r for r in reasons)
+    title = "🚨 미 국채 CTA · FOMC 전날 점검" if is_fomc else "📅 미 국채 CTA · 월요일 07:00 주간 점검"
+
+    lines = [
+        "<b>👀 지금 쉽게 보면</b>",
+        f"• 10년물 <b>{float(y.get('yield') or 0):.3f}%</b> · z={float(y.get('z20') or 0):+.2f}σ · 4.30%까지 {max(0.0,(float(y.get('yield') or 0)-4.30)*100):.1f}bp",
+        f"• 채권→Nasdaq: <b>{cross.get('label')}</b>",
+        f"• 자료 신선도: {'통과' if data_fresh else '차단'}" + (f" ({', '.join(stale)})" if stale else ""),
+        "",
+        "<b>📍 포지션은 얼마나 쌓였나</b>",
+        f"• CFTC {(snapshot.get('cftc') or {}).get('report_date','확인 불가')}: "
+        f"2Y {_fmt_net_with_krw((cftc.get('2Y') or {}).get('leveraged_net'),'2Y',fx)} · "
+        f"5Y {_fmt_net_with_krw((cftc.get('5Y') or {}).get('leveraged_net'),'5Y',fx)}",
+        f"• 10Y {_fmt_net_with_krw((cftc.get('10Y') or {}).get('leveraged_net'),'10Y',fx)} · "
+        f"Bond {_fmt_net_with_krw((cftc.get('BOND') or {}).get('leveraged_net'),'BOND',fx)} · "
+        f"Ultra {_fmt_net_with_krw((cftc.get('ULTRABOND') or {}).get('leveraged_net'),'ULTRABOND',fx)}",
+        "",
+        _cross_asset_block(snapshot, previous, fx=fx, fx_date=fx_date, compact=True).rstrip(),
+        "",
+        "<b>💵 Repo</b>",
+        f"• SOFR {(repo.get('SOFR') or {}).get('rate','확인 불가')}% · "
+        f"BGCR {(repo.get('BGCR') or {}).get('rate','확인 불가')}% · "
+        f"TGCR {(repo.get('TGCR') or {}).get('rate','확인 불가')}%"
+        f" → {'안정' if repo_ok else '주의 ' + ', '.join(repo_worse)}",
+    ]
+
+    if is_fomc:
+        d = _checked_date(snapshot)
+        start = d - timedelta(days=1)
+        decision_kst, press_kst = _fomc_times(d)
+        sep = " · 점도표·경제전망 동반" if d.isoformat() in FOMC_SEP_END_DATES else ""
+        lines += [
+            "",
+            "<b>⚡ FOMC 전날</b>",
+            f"• 미국 {start:%m/%d}~{d:%m/%d}{sep}",
+            f"• 결정문 한국시간 <b>{decision_kst:%m/%d %H:%M}</b> · 기자회견 {press_kst:%H:%M}",
+            "• 발표 직후 가격을 먼저 보고 OI·CFTC는 후행 확인합니다.",
+        ]
+    else:
+        lines += [
+            "",
+            "<b>📅 이번 주 확인</b>",
+            "• 10Y 4.50→4.40→4.35→4.30%와 -1σ/-2σ 진입",
+            "• ZN·NQ 각각 공식 같은 거래일 가격↑+OI↓ 여부",
+            "• 다음 CFTC에서 10Y·NQ 순숏이 실제로 줄었는지",
+        ]
+
+    lines += [
+        "",
+        "<b>🧭 주식시장 해석</b>",
+        f"• <b>{impact}</b> — {path}.",
+        "• repo·신용 스트레스형 금리 하락은 주식 호재로 보지 않음",
+        "",
+        "<b>⚠️ 실패모드</b>",
+        "• 금리만 하락하고 OI가 줄지 않으면 단순 매크로 랠리",
+        "• NQ 숏 잔고가 이미 낮아졌다면 기계적 매수 연료가 약할 수 있음",
+        "",
+        f"환율 기준: {fx_date}, 1달러={float(fx):,.2f}원" if fx is not None else "환율 기준: 확인 불가",
+        f'<a href="{CFTC_URL}">CFTC</a> · <a href="{TREASURY_URL}">미 재무부 금리</a> · <a href="{NYFED_URL}">NY Fed repo</a>',
+    ]
+    return title, "\n".join(lines)
+
+
 def format_alert(snapshot, previous, fx, fx_date, reasons):
     title, body = _base_format(snapshot, previous, fx, fx_date, reasons)
     body = _compact_duplicates(body)
@@ -808,6 +952,10 @@ def format_alert(snapshot, previous, fx, fx_date, reasons):
             body,
             count=1,
         )
+    if len(title) + 2 + len(body) > 4050:
+        body = _compact_event_body(snapshot, previous, fx, fx_date, reasons)
+    if len(title) + 2 + len(body) > 4096:
+        raise RuntimeError(f"compact CTA alert still too long: {len(title)+2+len(body)}")
     return title, body
 
 
@@ -1094,8 +1242,10 @@ def scheduled_main() -> int:
         ])
     else:
         title, body = _scheduled_report(snapshot, previous, reasons, fx=fx, fx_date=fx_date)
+    if len(title) + 2 + len(body) > 4050:
+        title, body = _compact_scheduled_report(snapshot, previous, reasons, fx=fx, fx_date=fx_date)
     if len(title) + 2 + len(body) > 4096:
-        raise RuntimeError(f"Telegram scheduled report too long: {len(title)+2+len(body)}")
+        raise RuntimeError(f"Telegram scheduled report too long after compact fallback: {len(title)+2+len(body)}")
 
     watcher.TITLE.write_text(title + "\n", encoding="utf-8")
     watcher.ALERT.write_text(body + "\n", encoding="utf-8")
