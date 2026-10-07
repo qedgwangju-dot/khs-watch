@@ -1838,20 +1838,6 @@ _ppa_pending["hyperscaler_nuclear_ppa"] = {
     "source_errors": _ppa_errors,
     "last_checked_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
     "alert_change_count": len(_ppa_changes),
-    # Preserve first-party acknowledgement across ordinary rechecks even when
-    # Google's press page is temporarily unavailable from the Actions runner.
-    # Never infer signed status merely from an unrelated Google article.
-    "google_constellation_official_ack": bool(
-        _ppa_old_bundle.get("google_constellation_official_ack")
-        or (
-            (_ppa_states.get("google_constellation") or {}).get("stage") == "signed_official"
-            and (_ppa_states.get("google_constellation") or {}).get("official") is True
-            and str((_ppa_states.get("google_constellation") or {}).get("url") or "").startswith(
-                "https://www.googlecloudpresscorner.com/2026-10-06-Google-and-Constellation"
-            )
-            and float((_ppa_states.get("google_constellation") or {}).get("ppa_mw") or 0) == 890
-        )
-    ),
 }
 PENDING.write_text(json.dumps(_ppa_pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
