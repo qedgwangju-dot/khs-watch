@@ -1,0 +1,26 @@
+{
+  "last_checked_kst": "2026-10-07T23:52:12+09:00",
+  "active": {
+    "fr10:above:4.5": true,
+    "fr10:above:4.75": true,
+    "fr10:above:5.0": false,
+    "fr10:daymove:10.0": true,
+    "fr10:5obs:25.0": false
+  },
+  "history": {
+    "fr10": [
+      {
+        "date": "2026-10-07",
+        "value": 4.834
+      }
+    ]
+  },
+  "source_fail_streak": 0,
+  "last_source_dates": {
+    "fr10": "2026-10-07"
+  },
+  "last_values": {
+    "fr10": 4.834
+  },
+  "stale": []
+}
