@@ -129,6 +129,13 @@ def stockanalysis_latest(symbol, adjusted=False):
 
 def ret(rows,n): return (rows[-1][1]/rows[-1-n][1]-1)*100.0
 
+def sector_is_up(return_pct):
+    return return_pct > SECTOR_MOVE_EPS_PCT
+
+# Regression guard: microscopic floating noise must be flat, real >1bp moves are directional.
+if sector_is_up(0.000003) or not sector_is_up(0.02):
+    raise RuntimeError('sector breadth tolerance self-test failed')
+
 def snapshot():
     data={}
     final_rows={}
@@ -228,8 +235,8 @@ def snapshot():
     out['rsp_rel_5d']=rsp['5d']-spy['5d']; out['iwm_rel_5d']=iwm['5d']-spy['5d']
     # Treat sub-1bp floating-point noise as flat. This prevents an unchanged ETF
     # (e.g. same cent-level close at both endpoints) from being counted as "up".
-    out['sector_up_1d']=sum(1 for s in SECTORS if out['returns'][s]['1d']>SECTOR_MOVE_EPS_PCT)
-    out['sector_up_5d']=sum(1 for s in SECTORS if out['returns'][s]['5d']>SECTOR_MOVE_EPS_PCT)
+    out['sector_up_1d']=sum(1 for s in SECTORS if sector_is_up(out['returns'][s]['1d']))
+    out['sector_up_5d']=sum(1 for s in SECTORS if sector_is_up(out['returns'][s]['5d']))
     rsp_warn=out['rsp_rel_5d']<=-1.0
     iwm_warn=out['iwm_rel_5d']<=-1.0
     breadth_warn=rsp_warn or iwm_warn
