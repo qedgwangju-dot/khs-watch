@@ -6,6 +6,7 @@ import html
 import json
 import pathlib
 import re
+import time
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -60,9 +61,31 @@ POLITICAL = ["midterm", "election", "republican", "gop", "중간선거", "공화
 
 
 def req(url, timeout=20):
-    headers = {"User-Agent": "Mozilla/5.0 khs-watch/2.0"}
-    with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=timeout) as r:
-        return r.read()
+    """일시적 HTTP/DNS 오류를 한 번 재시도하되 전체 감시 지연은 제한한다."""
+    headers_list = [
+        {
+            "User-Agent": "Mozilla/5.0 khs-watch/2.0",
+            "Accept": "text/html,application/xhtml+xml,application/xml,application/json;q=0.9,*/*;q=0.8",
+            "Accept-Language": "ko-KR,ko;q=0.9,en;q=0.7",
+        },
+        {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/154 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml,application/json;q=0.9,*/*;q=0.8",
+            "Accept-Language": "en-US,en;q=0.9,ko;q=0.7",
+        },
+    ]
+    last = None
+    for attempt, headers in enumerate(headers_list):
+        try:
+            attempt_timeout = timeout if attempt == 0 else min(timeout, 8)
+            request = urllib.request.Request(url, headers=headers)
+            with urllib.request.urlopen(request, timeout=attempt_timeout) as r:
+                return r.read()
+        except Exception as exc:
+            last = exc
+            if attempt == 0:
+                time.sleep(0.6)
+    raise last
 
 
 def clean(s):
@@ -361,8 +384,9 @@ def run(test=False):
         "- Telegram 형식: 핵심 변화 → 시장 반응 → 투자 판정 → 다음 확인 → 원문",
     ]
     if errors:
-        summary.append(f"- 소스 오류: {len(errors)}개")
-        for err in list(dict.fromkeys(errors))[:5]:
+        unique_errors = list(dict.fromkeys(errors))
+        summary.append(f"- 소스 오류(고유): {len(unique_errors)}개")
+        for err in unique_errors[:8]:
             summary.append(f"  - {err}")
     SUMMARY.write_text("\n".join(summary) + "\n", encoding="utf-8")
 
