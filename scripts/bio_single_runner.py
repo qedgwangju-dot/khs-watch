@@ -139,6 +139,9 @@ def main() -> int:
         "jemperli_state_persisted": False,
         "enhertu_state_persisted": False,
         "halozyme_state_persisted": False,
+        "halozyme_source_health": "not_checked",
+        "halozyme_search_failed_tasks": None,
+        "halozyme_search_task_count": None,
         "intismeran_retry_pending": False,
         "last_health_notice_date": prev.get("last_health_notice_date", ""),
         "errors": [],
@@ -191,8 +194,18 @@ def main() -> int:
         halo_rc, halo_log = run([sys.executable, "scripts/halozyme_legal_watch_v4.py"])
         hb["halozyme_collector_rc"] = halo_rc
         hb["halozyme_run_outcome"] = "success" if halo_rc == 0 else "failure"
+        try:
+            halo_state = json.loads((DATA / "halozyme_ptab_watch_state.json").read_text(encoding="utf-8"))
+            hb["halozyme_source_health"] = str(halo_state.get("source_health") or "unknown")
+            hb["halozyme_search_failed_tasks"] = halo_state.get("search_failed_tasks")
+            hb["halozyme_search_task_count"] = halo_state.get("search_task_count")
+        except Exception:
+            hb["halozyme_source_health"] = "unavailable"
         if halo_rc != 0:
-            hb["errors"].append(f"Halozyme collector rc={halo_rc}: {halo_log}")
+            if hb["halozyme_source_health"] == "degraded":
+                hb["errors"].append("Halozyme 검색 원천 가용성 저하: 정상 응답 부족; 상세 실패 수는 heartbeat와 Halozyme 상태 파일 확인")
+            else:
+                hb["errors"].append(f"Halozyme collector rc={halo_rc}: {halo_log[-1500:]}")
         hb["halozyme_state_persisted"] = halo_rc == 0 and (DATA / "halozyme_ptab_watch_state.json").exists()
         hb["failed_component"] = ""
 

@@ -462,12 +462,24 @@ def classify(text: str, case: str) -> str:
         return "district_order"
 
     if case == DUTCH_VRO_CASE:
-        appeal_decision_terms = ("appeal court", "court of appeal", "appeal judgment", "appeal decision", "upheld", "overturned", "reversed", "vacated", "gerechtshof")
-        if any(term in low for term in appeal_decision_terms) and any(term in low for term in ("appeal", "hoger beroep", "gerechtshof")):
+        # 항소 검토 발언과 실제 항소장 제출, 항소심 선고는 서로 다른 사건이다.
+        if any(term in low for term in (
+            "appeal court ruled", "court of appeal ruled", "appeals court held",
+            "appeal judgment issued", "appeal decision published",
+            "gerechtshof heeft geoordeeld", "항소심 선고", "항소심 판결",
+        )):
             return "nl_appeal_decision"
-        if any(term in low for term in ("stay of injunction", "stay pending appeal", "suspend the injunction", "schorsing", "집행정지")):
+        if any(term in low for term in (
+            "court granted a stay", "court denied a stay", "motion for stay filed",
+            "filed a request to suspend", "schorsing toegewezen", "schorsing afgewezen",
+            "집행정지 신청", "집행정지 인용", "집행정지 기각",
+        )):
             return "nl_stay"
-        if any(term in low for term in ("notice of appeal", "filed an appeal", "has appealed", "appeals the", "hoger beroep", "항소")):
+        if any(term in low for term in (
+            "notice of appeal filed", "filed an appeal", "has filed an appeal",
+            "has appealed", "appeal was lodged", "hoger beroep ingesteld",
+            "항소장을 제출", "항소를 제기",
+        )):
             return "nl_appeal"
         has_infringement = any(term in low for term in ("found merck to be infringing", "found merck infringing", "infringes", "infringement"))
         has_injunction = any(term in low for term in ("granted injunction", "injunction stopping", "ordered merck", "refrain from manufacturing", "halt", "block merck"))
@@ -477,12 +489,23 @@ def classify(text: str, case: str) -> str:
         return ""
 
     if case == GERMAN_EP622_CASE:
-        if any(term in low for term in ("upheld", "overturned", "reversed", "vacated", "appeal decision", "appeal judgment", "appeal court ruled", "oberlandesgericht")):
+        if any(term in low for term in (
+            "appeal court ruled", "appeals court held", "appeal judgment issued",
+            "appeal decision published", "oberlandesgericht ruled", "oberlandesgericht decided",
+            "항소심 선고", "항소심 판결",
+        )):
             return "de_appeal_decision"
         return ""
 
     if case == UK_EP347_CASE:
-        if any(term in low for term in ("judgment", "judgement", "court ruled", "held that", "patents court decided")):
+        # 영국 7월 EWHC 1838은 증거공개 절차판결이므로 본안결정과 구분한다.
+        court_result = (
+            "trial judgment issued", "trial judgment handed down",
+            "court held ep347 valid", "court held ep347 invalid",
+            "court found ep347 infringed", "patents court ruled on ep347 validity",
+            "ep347 본안 판결", "ep347 무효 판결", "ep347 침해 인정",
+        )
+        if any(term in low for term in ("ep347", "ep 347", "ep 3 130 347", "ep3130347")) and any(term in low for term in court_result):
             return "uk_judgment"
         return ""
 

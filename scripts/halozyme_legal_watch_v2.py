@@ -204,6 +204,26 @@ def alert(case: str, patent: str, kind: str, item: dict) -> str:
             f'- <a href="{url}">원문 뉴스보기</a>')
 
 
+FOLLOWUP_EVENT_KINDS = {
+    'director_review', 'rehearing', 'appeal',
+    'nl_appeal', 'nl_stay', 'nl_appeal_decision',
+    'de_appeal_decision', 'uk_judgment',
+}
+
+
+def event_already_sent(key: str, url: str, kind: str, seen_events: set[str], seen_urls: set[str]) -> bool:
+    # 항소·재심 문서는 이전 최종결정과 같은 고정 사건 URL에서 제공될 수 있다.
+    return key in seen_events or (url in seen_urls and kind not in FOLLOWUP_EVENT_KINDS)
+
+
+def search_source_health(task_count: int, failed_count: int, completed_by_engine: dict[str, int]) -> str:
+    if task_count <= 0 or not completed_by_engine or any(v <= 0 for v in completed_by_engine.values()):
+        return 'degraded'
+    if failed_count * 5 >= task_count:
+        return 'degraded'
+    return 'partial' if failed_count else 'ok'
+
+
 def main() -> int:
     STATE.parent.mkdir(parents=True,exist_ok=True); STATUS.parent.mkdir(parents=True,exist_ok=True)
     state=load_state(); first=not state.get('initialized')
@@ -211,6 +231,7 @@ def main() -> int:
     discovered=dict(state.get('discovered_cases') or {})
     errors=[]; candidates=[]
     search_tasks=[(q,engine) for q in SEARCHES for engine in ('Bing 웹','Google 뉴스')]
+    completed_by_engine={'Bing 웹':0,'Google 뉴스':0}
     search_started=time.monotonic()
     raw_items=[]
 
@@ -224,11 +245,14 @@ def main() -> int:
             q,engine=futures[future]
             try:
                 _,_,items=future.result()
+                completed_by_engine[engine]+=1
                 raw_items.extend(items)
             except Exception as exc:
                 errors.append(f'{engine}:{type(exc).__name__}:{q[:80]}')
 
     search_elapsed=round(time.monotonic()-search_started,3)
+    fetch_failures=len(errors)
+    source_health=search_source_health(len(search_tasks),fetch_failures,completed_by_engine)
     for item in raw_items:
         blob=f"{item['title']} {item['description']} {item['url']}"
         if 'halozyme' not in blob.lower() or not any(x in blob.lower() for x in ('merck','msd','pgr','ipr','ptab','2:25-cv-03179')):
@@ -257,15 +281,15 @@ def main() -> int:
         else:
             for ekey,row in list(best.items()):
                 _,_,case,patent,kind,item=row
-                if ekey in seen_events or item['url'] in seen_urls: continue
+                if event_already_sent(ekey,item['url'],kind,seen_events,seen_urls): continue
                 mid=send(token,chat,alert(case,patent,kind,item)); sent.append(mid)
                 seen_events.add(ekey); seen_urls.add(item['url'])
 
     now=dt.datetime.now(KST).isoformat(timespec='seconds')
-    state.update({'initialized':True,'last_check_kst':now,'seen_events':sorted(seen_events)[-5000:],'seen_urls':sorted(seen_urls)[-5000:],'tracked_known_cases':KNOWN_CASES,'discovered_cases':discovered,'district_case':DISTRICT_CASE,'errors_last_run':errors[-20:],'search_query_count':len(SEARCHES),'search_task_count':len(search_tasks),'search_workers':workers,'search_elapsed_seconds':search_elapsed})
+    state.update({'initialized':True,'last_check_kst':now,'seen_events':sorted(seen_events)[-5000:],'seen_urls':sorted(seen_urls)[-5000:],'tracked_known_cases':KNOWN_CASES,'discovered_cases':discovered,'district_case':DISTRICT_CASE,'errors_last_run':errors[-20:],'search_query_count':len(SEARCHES),'search_task_count':len(search_tasks),'search_workers':workers,'search_elapsed_seconds':search_elapsed,'search_completed_tasks':sum(completed_by_engine.values()),'search_failed_tasks':fetch_failures,'search_completed_by_engine':completed_by_engine,'source_health':source_health})
     STATE.write_text(json.dumps(state,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     STATUS.write_text(f'Halozyme 특허분쟁 감시 — {now}; 신규송출={len(sent)}; 알려진 PGR·IPR={len(KNOWN_CASES)}; 발견사건={len(discovered)}; 검색={len(SEARCHES)}문구/{len(search_tasks)}작업/{search_elapsed:.1f}초; 오류={len(errors)}\n',encoding='utf-8')
-    print(json.dumps({'status':'ok' if not errors else 'partial','first_run':first,'sent_message_ids':sent,'tracked_known_cases':len(KNOWN_CASES),'discovered_cases':len(discovered),'search_query_count':len(SEARCHES),'search_task_count':len(search_tasks),'search_workers':workers,'search_elapsed_seconds':search_elapsed,'errors':errors[-5:]},ensure_ascii=False))
-    return 0
+    print(json.dumps({'status':source_health,'first_run':first,'sent_message_ids':sent,'tracked_known_cases':len(KNOWN_CASES),'discovered_cases':len(discovered),'search_query_count':len(SEARCHES),'search_task_count':len(search_tasks),'search_workers':workers,'search_elapsed_seconds':search_elapsed,'errors':errors[-5:]},ensure_ascii=False))
+    return 2 if source_health=='degraded' or 'Telegram 경로 없음' in errors else 0
 
 if __name__=='__main__': raise SystemExit(main())

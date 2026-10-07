@@ -38,13 +38,13 @@ base.SEARCHES.extend([
 def rss(query: str, engine: str) -> list[dict]:
     urls: list[tuple[str, str]] = []
     if engine == 'Google 뉴스':
-        # 같은 검색어를 미국·한국 뉴스 색인에서 동시에 확인한다.
-        urls.append(('Google 뉴스(미국)', 'https://news.google.com/rss/search?' + urllib.parse.urlencode({
-            'q': query, 'hl': 'en-US', 'gl': 'US', 'ceid': 'US:en'
-        })))
-        urls.append(('Google 뉴스(한국)', 'https://news.google.com/rss/search?' + urllib.parse.urlencode({
-            'q': query, 'hl': 'ko', 'gl': 'KR', 'ceid': 'KR:ko'
-        })))
+        # 영문 사건번호는 미국, 한국어 기사 키워드는 한국 뉴스 색인으로 조회한다.
+        # 한 검색어의 미·한 중복요청이 불필요한 대기시간을 증폭하는 것을 방지한다.
+        korean_query = bool(re.search(r'[가-힣]', query))
+        label = 'Google 뉴스(한국)' if korean_query else 'Google 뉴스(미국)'
+        params = ({'hl': 'ko', 'gl': 'KR', 'ceid': 'KR:ko'}
+                  if korean_query else {'hl': 'en-US', 'gl': 'US', 'ceid': 'US:en'})
+        urls.append((label, 'https://news.google.com/rss/search?' + urllib.parse.urlencode({'q': query, **params})))
     else:
         urls.append(('Bing 웹', 'https://www.bing.com/search?' + urllib.parse.urlencode({'q': query, 'format': 'rss'})))
 

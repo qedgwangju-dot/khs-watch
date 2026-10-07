@@ -3,6 +3,8 @@ from __future__ import annotations
 import pathlib
 import sys
 import unittest
+import xml.etree.ElementTree as ET
+from unittest.mock import patch
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
@@ -123,6 +125,54 @@ class BioAlertRegressionTests(unittest.TestCase):
     def test_halozyme_runner_has_timeout_safety_margin(self):
         source = (ROOT / "scripts" / "bio_single_runner_v3.py").read_text(encoding="utf-8")
         self.assertIn("max(timeout, 300)", source)
+
+    def test_halozyme_news_locale_avoids_redundant_dual_fetch(self):
+        with patch.object(halo.v3, "_fetch_search_xml", return_value=ET.Element("rss")) as mocked:
+            halo.v3.rss('"PGR2025-00052" Halozyme Merck', 'Google 뉴스')
+            self.assertEqual(mocked.call_count, 1)
+            self.assertIn('ceid=US%3Aen', mocked.call_args.args[0])
+        with patch.object(halo.v3, "_fetch_search_xml", return_value=ET.Element("rss")) as mocked:
+            halo.v3.rss('알테오젠 할로자임 특허 분쟁 MSD', 'Google 뉴스')
+            self.assertEqual(mocked.call_count, 1)
+            self.assertIn('ceid=KR%3Ako', mocked.call_args.args[0])
+
+    def test_halozyme_source_health_flags_real_feed_outage(self):
+        f = halo.base.search_source_health
+        self.assertEqual(f(72, 0, {'Bing 웹': 36, 'Google 뉴스': 36}), 'ok')
+        self.assertEqual(f(72, 1, {'Bing 웹': 36, 'Google 뉴스': 35}), 'partial')
+        self.assertEqual(f(72, 20, {'Bing 웹': 36, 'Google 뉴스': 16}), 'degraded')
+        self.assertEqual(f(72, 36, {'Bing 웹': 36, 'Google 뉴스': 0}), 'degraded')
+        self.assertEqual(f(0, 0, {}), 'degraded')
+
+    def test_halozyme_existing_docket_url_cannot_hide_new_appeal(self):
+        f = halo.base.event_already_sent
+        self.assertFalse(f('new-appeal', 'same-docket', 'nl_appeal', set(), {'same-docket'}))
+        self.assertFalse(f('new-review', 'same-docket', 'director_review', set(), {'same-docket'}))
+        self.assertTrue(f('old-appeal', 'same-docket', 'nl_appeal', {'old-appeal'}, {'same-docket'}))
+        self.assertTrue(f('historical-news', 'same-docket', 'institution', set(), {'same-docket'}))
+
+    def test_halozyme_forecast_is_not_reported_as_actual_appeal(self):
+        self.assertEqual(halo.classify(
+            "Halozyme Merck EP622 Dutch court issued an injunction and Merck plans to appeal",
+            halo.DUTCH_VRO_CASE), "")
+        self.assertEqual(halo.classify(
+            "Halozyme Merck EP622 Dutch court; notice of appeal filed after injunction",
+            halo.DUTCH_VRO_CASE), "nl_appeal")
+        self.assertEqual(halo.classify(
+            "UK 2026 EWHC 1838 procedural disclosure judgment concerns EP347",
+            halo.UK_EP347_CASE), "")
+        self.assertEqual(halo.classify(
+            "German injunction upheld in December 2025 and appeal hearing scheduled November 19 2026",
+            halo.GERMAN_EP622_CASE), "")
+        self.assertEqual(halo.classify(
+            "UK Patents Court trial judgment issued finding EP347 invalid",
+            halo.UK_EP347_CASE), "uk_judgment")
+
+    def test_halozyme_heartbeat_records_search_source_health(self):
+        source = (ROOT / "scripts" / "bio_single_runner.py").read_text(encoding="utf-8")
+        self.assertIn('"halozyme_source_health"', source)
+        self.assertIn('"halozyme_search_failed_tasks"', source)
+        self.assertIn('정상 응답 부족', source)
 
     def test_halozyme_europe_searches_are_bounded_and_present(self):
         searches = halo.base.SEARCHES
