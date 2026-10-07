@@ -109,11 +109,13 @@ jobs:
           assert "--handoff-in out/kospi_shock_handoff.json" in s, "afternoon handoff missing"
           assert "timeout-minutes: 430" not in s, "GitHub-hosted 6h limit unsafe timeout remains"
           assert "timeout-minutes: 300" in s, "morning preopen coverage timeout missing"
-          earliest=dt.datetime(2026,10,7,8,3)
+          # workflow_run 경로는 정규장 60분 전(08:00)부터 production이 될 수 있으므로
+          # 08:03 정규 schedule보다 더 이른 실제 최악 조건으로 검산한다.
+          earliest=dt.datetime(2026,10,7,8,0)
           handoff_end=dt.datetime(2026,10,7,12,15)
           required_minutes=int((handoff_end-earliest).total_seconds()/60)
-          assert 300 >= required_minutes + 15, (required_minutes,300)
-          print("morning_preopen_timeout_valid=true", "required_minutes=",required_minutes, "timeout_minutes=300")
+          assert 300 >= required_minutes + 30, (required_minutes,300)
+          print("morning_preopen_timeout_valid=true", "required_minutes=",required_minutes, "timeout_minutes=300", "safety_margin_minutes=",300-required_minutes)
           assert "actions/download-artifact@v4" in s, "handoff artifact download missing"
           assert "kospi_unified_industry_collector.py" in s, "UBM industry collector missing"
           assert "out/kospi_industry_flow.jsonl" in s, "UBM industry flow handoff missing"
