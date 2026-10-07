@@ -2208,8 +2208,13 @@ foxconn_gb300_kpi = make(
 )
 g, s, c, k = classify(foxconn_gb300_kpi)
 assert g == "nvidia_robotics_exec", (g, s, c)
-assert c.endswith("폭스콘 GB300 실제 조립 KPI 첫 정량화"), c
+assert c.endswith("NVIDIA·Foxconn GB300 조립 KPI 첫 정량화"), c
 assert s >= 11, s
+
+assert "휴스턴" not in watcher.base.meaning(c) or "단정하지" in watcher.base.meaning(c), (
+    "GB300 KPI meaning must not present Houston as confirmed measurement location",
+    watcher.base.meaning(c),
+)
 
 foxconn_gb300_target_wording = make(
     "NVIDIA Foxconn GB300 live production robot assembly",
@@ -2223,7 +2228,7 @@ foxconn_gb300_target_wording = make(
 )
 gt, st, ct, kt = classify(foxconn_gb300_target_wording)
 assert gt == "nvidia_robotics_exec", (gt, st, ct)
-assert ct.endswith("폭스콘 GB300 실제 조립 KPI 첫 정량화"), (
+assert ct.endswith("NVIDIA·Foxconn GB300 조립 KPI 첫 정량화"), (
     "target wording must not be misread as target achieved",
     ct,
 )
@@ -2240,7 +2245,7 @@ foxconn_gb300_kpi_rewrite = make(
 )
 g2, s2, c2, k2 = classify(foxconn_gb300_kpi_rewrite)
 assert g2 == "nvidia_robotics_exec", (g2, s2, c2)
-assert c2.endswith("폭스콘 GB300 실제 조립 KPI 첫 정량화"), c2
+assert c2.endswith("NVIDIA·Foxconn GB300 조립 KPI 첫 정량화"), c2
 assert s2 >= 11, s2
 assert k2 == k, ("same GB300 factory KPI must dedupe across publishers", k, k2)
 
