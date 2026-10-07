@@ -59,6 +59,7 @@ class EuropeSovereignYieldWatchTests(unittest.TestCase):
         rows = watch.parse_market_page(text, "it10", "이탈리아 10년 시장수익률", "https://example")
         self.assertEqual(rows[-1].date, "2026-10-07")
         self.assertAlmostEqual(rows[-1].value, 4.69)
+        self.assertAlmostEqual(rows[-1].daily_bp, 15.0)
 
     def test_alert_explains_policy_vs_market_rate(self):
         latest = {
