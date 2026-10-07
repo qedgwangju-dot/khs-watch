@@ -11,6 +11,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 RSS_URL = "https://www.federalreserve.gov/feeds/speeches.xml"
+SPEECH_ARCHIVE_URL = f"https://www.federalreserve.gov/newsevents/{datetime.now(timezone.utc).year}-speeches.htm"
 STATE_PATH = Path("data/warsh_speech_watch_state.json")
 UA = "Mozilla/5.0 (compatible; khs-watch/1.2; +https://github.com/qedgwangju-dot/khs-watch)"
 TOKEN = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
@@ -100,6 +101,29 @@ def latest_warsh_item(xml_text: str):
         return None
     items.sort(key=lambda x: x[0])
     return items[-1]
+
+
+def latest_warsh_archive_item():
+    """Official annual speeches-page fallback when the short RSS window omits Warsh."""
+    try:
+        raw, _ = fetch(SPEECH_ARCHIVE_URL)
+    except Exception:
+        return None
+    rows = []
+    for m in re.finditer(
+        r'<a\\b[^>]*href=["\\\']([^"\\\']*/newsevents/speech/warsh(20\\d{6})[a-z]?\\.htm)["\\\'][^>]*>(.*?)</a>',
+        raw, re.I | re.S
+    ):
+        href = urllib.parse.urljoin(SPEECH_ARCHIVE_URL, m.group(1))
+        ds = m.group(2)
+        title = re.sub(r'<[^>]+>', ' ', m.group(3))
+        title = ' '.join(html.unescape(title).split()).strip() or 'Kevin Warsh 공식 연설'
+        dt = datetime.strptime(ds, '%Y%m%d').replace(tzinfo=timezone.utc)
+        rows.append((dt, title, href, dt.strftime('%a, %d %b %Y 00:00:00 +0000')))
+    if not rows:
+        return None
+    rows.sort(key=lambda x: x[0])
+    return rows[-1]
 
 
 def is_hiking_only(sentence: str) -> bool:
@@ -274,12 +298,24 @@ def save_state(state):
 
 
 def main():
-    rss, _ = fetch(RSS_URL)
-    item = latest_warsh_item(rss)
-    if not item:
-        raise RuntimeError("No Kevin Warsh item found in official Fed speeches RSS")
-    dt, title, link, pub = item
     old = load_state()
+    rss, _ = fetch(RSS_URL)
+    item = latest_warsh_item(rss) or latest_warsh_archive_item()
+    if not item:
+        # A short rolling RSS window can legitimately omit older Warsh speeches.
+        # Preserve the last confirmed item and wait instead of failing the full workflow.
+        state = dict(old)
+        state["source_status"] = "연준 RSS·연간 공식 연설목록에서 신규 Warsh 연설 없음"
+        save_state(state)
+        print(json.dumps({
+            "first_run": not bool(old.get("last_link")),
+            "changed": False,
+            "sent": False,
+            "latest": old.get("last_link"),
+            "source_status": state["source_status"],
+        }, ensure_ascii=False))
+        return
+    dt, title, link, pub = item
     new_key = link
     first_run = not bool(old.get("last_link"))
     changed = old.get("last_link") not in (None, new_key)
