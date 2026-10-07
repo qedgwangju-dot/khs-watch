@@ -37,7 +37,7 @@ def ny_today():
     return datetime.now(ZoneInfo("America/New_York")).date()
 
 
-def get_json(url, referer=None, retries=3):
+def get_json(url, referer=None, retries=1, timeout=8):
     last = None
     headers = {
         "User-Agent": UA,
@@ -49,7 +49,7 @@ def get_json(url, referer=None, retries=3):
     for n in range(retries):
         try:
             req = urllib.request.Request(url, headers=headers)
-            with urllib.request.urlopen(req, timeout=30) as r:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
                 return json.loads(r.read().decode("utf-8", "replace"))
         except Exception as exc:
             last = exc
@@ -77,14 +77,14 @@ def parse_month(value):
 def cme_monthly_rates():
     errors = []
     today = ny_today()
-    for offset in range(10):
+    for offset in range(6):
         d = today - timedelta(days=offset)
         if d.weekday() >= 5:
             continue
         td = urllib.parse.quote(d.strftime("%m/%d/%Y"), safe="")
         url = CME_API.format(trade_date=td)
         try:
-            data = get_json(url, CME_SETTLEMENTS_PAGE, retries=2)
+            data = get_json(url, CME_SETTLEMENTS_PAGE, retries=1, timeout=8)
         except Exception as exc:
             errors.append(f"{d}: {exc}")
             continue
@@ -111,6 +111,7 @@ def official_effr():
     data = get_json(
         NYFED_EFFR,
         "https://www.newyorkfed.org/markets/reference-rates/effr",
+        retries=1, timeout=8,
     )
     rows = data.get("refRates") or data.get("ref_rates") or []
     rows = [r for r in rows if str(r.get("type") or "").upper() == "EFFR"] or rows
@@ -175,6 +176,12 @@ def adjacent_distribution(change_bp):
 def official_snapshot():
     trade_date, monthly = cme_monthly_rates()
     effr, effr_date = official_effr()
+    try:
+        effr_age = (ny_today() - datetime.strptime(effr_date[:10], '%Y-%m-%d').date()).days
+    except (ValueError, TypeError):
+        raise RuntimeError('뉴욕연은 EFFR 기준일 검증 실패')
+    if not 0 <= effr_age <= 7:
+        raise RuntimeError(f'뉴욕연은 EFFR 오래됨: {effr_date}, {effr_age}일')
     # 회의 날짜도 제3자 시장화면이 아니라 연준 공식 FOMC 달력에서 직접 읽는다.
     today = ny_today()
     future = official_fomc_dates()
@@ -207,16 +214,17 @@ def official_snapshot():
         result.append({
             "date":d.isoformat(),
             "label":f"{calendar.month_abbr[d.month]} {d.day}, {d.year}",
-            "prob_cell":" / ".join(f"{k:+d}bp {p:.0f}%" for k,p in sorted(dist.items())),
+            "prob_cell":"CME 결제값 기반 확률 역산 보류", 
+
             "implied_avg":avg,
             "pre_rate":pre,
             "post_rate":post,
             "change_bp":change,
-            "hike25_prob":dist.get(25,0.0),
-            "hike25_or_more_prob":sum(p for k,p in dist.items() if k >= 25),
-            "hold_prob":dist.get(0,0.0),
-            "cut_prob":sum(p for k,p in dist.items() if k < 0),
-            "outcomes":{str(k):p for k,p in dist.items()},
+            "hike25_prob":None,  # 공식 CME FedWatch 확률이 아닌 2구간 추정치를 확정 확률로 내지 않는다.
+            "hike25_or_more_prob":None,
+            "hold_prob":None,
+            "cut_prob":None,
+            "outcomes":{},  # 월평균 선물 결제값과 실제 FedWatch 확률 분포를 혼동하지 않음.
             "contract":f"ZQ-{d.year:04d}-{d.month:02d}",
         })
         prev_post = post
@@ -232,7 +240,7 @@ def official_snapshot():
         "effr_date":effr_date,
         "meetings":result[:6],
         "url":CME_SETTLEMENTS_PAGE,
-        "market_data_basis":"CME 공식 지연 결제값",
+        "market_data_basis":"CME 공식 지연 결제값 기반 금리 기대(확률 별도 확인 전 판정 유보)",
         "official_settlement_date":trade_date,
     }
     # v3 메시지/분류가 요구하는 필드와 정확도 라벨.
