@@ -2792,10 +2792,14 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         market_state = _merge_hbm_market_pricing(market_state, HBM_MARKET_PRICE_BASELINE)
         state["hbm_market_pricing_track_version"] = HBM_MARKET_PRICE_TRACK_VERSION
 
-    divergence_state = dict(state.get("nand_divergence") or {})
+    # Always layer persisted observations over the baseline so newly-added
+    # provenance metadata cannot be dropped by an older concurrent state snapshot.
+    divergence_state = _merge_typed_state(
+        NAND_DIVERGENCE_BASELINE,
+        dict(state.get("nand_divergence") or {}),
+    )
     divergence_upgrade_due = int(state.get("nand_divergence_track_version") or 0) < NAND_DIVERGENCE_TRACK_VERSION
     if divergence_upgrade_due:
-        divergence_state = _merge_typed_state(NAND_DIVERGENCE_BASELINE, divergence_state)
         state["nand_divergence_track_version"] = NAND_DIVERGENCE_TRACK_VERSION
 
     legacy_state = dict(state.get("legacy_dram") or {})
