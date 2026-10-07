@@ -50,14 +50,15 @@
     "cboe_url": "https://www.cboe.com/insights/posts/week-of-9-21-2026-oil-rates-correlation-jumps-to-a-35-year-high"
   },
   "policy": {
-    "date": "2026-10-07T22:49:15.307176+00:00",
+    "date": "2026-10-07T22:52:57.219329+00:00",
     "meeting_date": "2026-10-28",
-    "hike25_prob": 72.0,
-    "extra_bp": 41.000000000000014,
-    "verdict": "추가 1회는 상당히 반영·두 번째 인상 가능성도 일부 반영",
-    "source": "https://www.frenzycap.com/fedwatch",
-    "source_status": "최신성 검증 실패 — 직전 정상값 보존"
+    "hike25_prob": null,
+    "extra_bp": null,
+    "verdict": "시장원천 최신성 미확인 — 정책경로 판정 유보",
+    "source": null,
+    "source_status": "최신성 검증 실패 — 직전 정상값 보존",
+    "fresh": false
   },
-  "oil_rates_verdict": "유가발 긴축 강경보 — 상관·방향·시장 추가인상 기대 동시 확인",
-  "updated_at_utc": "2026-10-07T22:54:50.781819+00:00"
+  "oil_rates_verdict": "유가·10년물 동반 상승 — 추가인상 기대 원천 검증 불가",
+  "updated_at_utc": "2026-10-07T22:57:28.113937+00:00"
 }
