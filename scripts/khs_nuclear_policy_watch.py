@@ -132,7 +132,7 @@ HANUL4_RESTART_APPROVAL_SECONDARY = "https://www.newsis.com/view/NISX20261007_00
 HANUL4_FACILITY_CAPACITY_LABEL = "100만 kW급"
 HANUL4_NSSC_CAPACITY_LABEL = "1,050 MWe"
 HANUL4_NSSC_CAPACITY_SOURCE = "https://www.nssc.go.kr/attach/namo/files/000004/20260528165153915_JPYQQ6WS.pdf"
-HANUL4_KHNP_MAIN_FRESH_HOURS = 12
+HANUL4_KHNP_MAIN_FRESH_HOURS = 2
 HANUL4_USER_SOURCE = "https://www.electimes.com/news/articleView.html?idxno=373171"
 HANUL4_FIXED_BASELINE = {
     "kind": "domestic_reactor_operation",
@@ -1476,7 +1476,7 @@ def collect_hanul4_operation_items(now: dt.datetime) -> list[dict]:
             "evidence_count": 2,
             "live_status": "운전",
             "live_status_source": HANUL4_KHNP_STATUS_MAIN,
-            "verification": "한국수력원자력 본사 호기별 운영현황 '운전' + 한울본부 공식 페이지 최신 측정시각 확인",
+            "verification": "한국수력원자력 본사 호기별 운영현황 '운전' + 한울본부 최신 공식 표면의 '운전' 또는 한울4호기 명시적 출력상승 교차확인",
         })
 
     # 원안위 보도자료 목록도 직접 확인한다. 검색엔진·언론 색인보다 늦더라도
@@ -1743,11 +1743,14 @@ def _self_test_hanul4_operating_event_model() -> None:
         raise RuntimeError("Hanul4 explicit unit-status priority regression")
     fresh_main_fixture = live_ramp_fixture + " 한울원자력본부 측정시간 2026-10-07 19:55:00"
     stale_main_fixture = live_ramp_fixture + " 한울원자력본부 측정시간 2026-08-11 00:03:00"
+    too_old_main_fixture = live_ramp_fixture + " 한울원자력본부 측정시간 2026-10-07 17:30:00"
     fixture_now = dt.datetime(2026, 10, 7, 20, 0, tzinfo=KST)
     if not _hanul4_main_is_fresh(fresh_main_fixture, fixture_now):
         raise RuntimeError("Hanul4 fresh-main timestamp regression")
     if _hanul4_main_is_fresh(stale_main_fixture, fixture_now):
         raise RuntimeError("Hanul4 stale-main timestamp false-positive regression")
+    if _hanul4_main_is_fresh(too_old_main_fixture, fixture_now):
+        raise RuntimeError("Hanul4 two-hour freshness-window regression")
     if not _hanul4_operating_verified("운전", "운전", False, True):
         raise RuntimeError("Hanul4 dual-official operating verification regression")
     if not _hanul4_operating_verified("운전", None, True, True):
