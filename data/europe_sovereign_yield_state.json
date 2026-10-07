@@ -1,5 +1,5 @@
 {
-  "last_checked_kst": "2026-10-08T00:41:10+09:00",
+  "last_checked_kst": "2026-10-08T00:44:30+09:00",
   "active": {
     "fr10:above:4.5": true,
     "fr10:above:4.75": true,
@@ -24,7 +24,8 @@
     "it10:above:5.0": false,
     "fr_de_market_spread:above:100.0": true,
     "fr_de_market_spread:above:125.0": true,
-    "fr_de_market_spread:above:150.0": false
+    "fr_de_market_spread:above:150.0": false,
+    "it10:daymove:10.0": false
   },
   "history": {
     "fr10": [
