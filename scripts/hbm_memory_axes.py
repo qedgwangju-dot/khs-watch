@@ -19,7 +19,7 @@ VERSION = 1
 FOUNDRY_TRACK_VERSION = 1
 FOUNDRY_RECOVERY_TRACK_VERSION = 1
 FOUNDRY_PRICING_RANGE_TRACK_VERSION = 1
-GLASS_SUBSTRATE_TRACK_VERSION = 4
+GLASS_SUBSTRATE_TRACK_VERSION = 5
 HBM_GENERATION_PRICE_TRACK_VERSION = 1
 MARKET_PRICING_TRACK_VERSION = 1
 EXTRA_QUERIES = [
@@ -42,6 +42,7 @@ EXTRA_QUERIES = [
     '(Philoptics OR 필옵틱스 OR JNTC OR 제이앤티씨 OR Absolics OR 앱솔릭스 OR SKC OR GlaSSEM OR 삼성전기 OR "LG Innotek" OR LG이노텍 OR Chemtronics OR 켐트로닉스) (TGV OR glass substrate OR glass interposer OR 유리기판 OR 유리 인터포저) (yield OR 수율 OR sample OR 샘플 OR customer evaluation OR 고객 평가 OR 고객 검증 OR purchase order OR PO OR 양산 OR pilot OR 삼성전자 OR Samsung OR 설비투자 OR 공정시간 OR "12시간" OR "분 단위")',
     '(JNTC OR 제이앤티씨) (TGV OR 유리기판) ("12시간" OR "분 단위" OR 공정시간) (단축 OR 개발)',
     '(JNTC OR 제이앤티씨) (TGV OR 유리기판) (김천 OR Gimcheon) (3470억 OR 10개 OR 설비투자)',
+    '(Chemtronics OR 켐트로닉스) (Samsung OR 삼성전자) ("glass interposer" OR 유리 인터포저) (sample OR 샘플 OR evaluation OR 평가 OR qualification OR 검증 OR contract OR 계약 OR mass production OR 양산)',
     '(SemiAnalysis OR TrendForce OR Micron OR Citi OR JPMorgan OR "J.P. Morgan" OR BofA) 2027 (HBM3E OR HBM4 OR HBM4E) (price OR pricing OR ASP OR "$/Gb" OR "per Gb" OR 가격)',
     '"HBM3E" "HBM4" "HBM4E" 2027 (price OR ASP OR "$/Gb")',
 ]
@@ -1219,6 +1220,12 @@ def parse_glass_substrate_records(item, body):
                 })
                 scope = 'lg_innotek_official_gumi_pilot_and_2027_2028_glass_commercialization'
             if entity == 'chemtronics' and re.search(r'(?:삼성전자|Samsung(?: Electronics)?)', text, re.I):
+                src_host = host(item.get('direct_link',''))
+                src_name = (item.get('source') or '').lower()
+                is_digitimes = 'digitimes' in src_host or 'digitimes' in src_name
+                cites_dealsite = bool(re.search(r'(?:according\s+to|citing|via)\s+(?:korean\s+business\s+outlet\s+)?DealSite|DealSite[^.]{0,50}?(?:보도|reported)', text, re.I))
+                is_chemtronics_official = src_host in ('chemtronics.co.kr','www.chemtronics.co.kr')
+                is_samsung_official = src_host in ('news.samsung.com','semiconductor.samsung.com','www.samsung.com','samsung.com')
                 value.update({
                     'customer': 'Samsung Electronics',
                     'product': 'glass_interposer',
@@ -1229,6 +1236,12 @@ def parse_glass_substrate_records(item, body):
                     'new_metal_fill_stage': 'development' if re.search(r'(?:새롭게|신규|new)[^.]{0,80}?(?:금속\s*충진|metal\s*fill)', text, re.I) else None,
                     'new_metal_fill_sample_delivered': False if re.search(r'(?:새롭게|신규|new)[^.]{0,100}?(?:금속\s*충진|metal\s*fill)[^.]{0,120}?(?:샘플)[^.]{0,60}?(?:나가지는\s*않|미공급|아직\s*.*않)|(?:new)[^.]{0,100}?(?:metal\s*fill)[^.]{0,120}?(?:sample)[^.]{0,60}?(?:not\s+(?:yet\s+)?(?:delivered|shipped|supplied))', text, re.I) else None,
                     'mass_production_supply_confirmed': bool(re.search(r'(?:양산\s*(?:공급|계약)\s*(?:확정|체결)|mass\s*production\s+supply\s+(?:confirmed|contracted))', text, re.I)),
+                    'fact_origin_source': 'DealSite' if cites_dealsite or is_digitimes else None,
+                    'digitimes_republisher': True if is_digitimes and cites_dealsite else None,
+                    'independent_cross_verified': False if is_digitimes and cites_dealsite else None,
+                    'independent_source_count': 1 if is_digitimes and cites_dealsite else None,
+                    'samsung_official_confirmation': True if is_samsung_official else None,
+                    'chemtronics_official_customer_confirmation': True if is_chemtronics_official else None,
                 })
                 scope = 'chemtronics_samsung_glass_interposer_reported_customer_evaluation_not_mass_production'
             rows.append(make_record(
@@ -1714,6 +1727,14 @@ def comparison(old, new):
             reasons.append(f"신규 금속 충진 공정 {a.get('new_metal_fill_stage') or '미확인'}→{b.get('new_metal_fill_stage')}")
         if a.get('new_metal_fill_sample_delivered') != b.get('new_metal_fill_sample_delivered') and b.get('new_metal_fill_sample_delivered') is not None:
             reasons.append('신규 금속 충진 샘플 고객 전달' if b.get('new_metal_fill_sample_delivered') else '신규 금속 충진 샘플 미전달 확인')
+        for field, label in (
+            ('samsung_official_confirmation','삼성전자 공식 고객검증 확인'),
+            ('chemtronics_official_customer_confirmation','켐트로닉스 공식 삼성전자 고객검증 확인'),
+        ):
+            if a.get(field) != b.get(field) and b.get(field) is True:
+                reasons.append(label)
+        if a.get('independent_cross_verified') is not True and b.get('independent_cross_verified') is True:
+            reasons.append('독립 출처 2곳 이상 고객검증 교차확인')
         for field, label in (
             ('pilot_line_count','파일럿 라인 수'),
             ('pilot_capacity_units_per_month_min','파일럿 월 생산능력 하단'),
@@ -2376,7 +2397,13 @@ def render(change, rate=None):
         lines.append('• 샘플→고객 검증→정식 발주 대기→정식 수주→파일럿→양산을 구분하며 기사상 기대감을 양산매출로 승격하지 않습니다.')
         v = r['value']
         if v.get('customer') == 'Samsung Electronics':
-            lines.append('• 고객 실명 삼성전자는 딜사이트 보도 단계로 저장합니다. 켐트로닉스·삼성전자 공식 공시 전에는 확정 공급계약·양산매출로 승격하지 않습니다.')
+            lines.append('• 고객 실명 삼성전자는 보도 단계로 저장합니다. 켐트로닉스·삼성전자 공식 확인 전에는 확정 공급계약·양산매출로 승격하지 않습니다.')
+            if v.get('digitimes_republisher'):
+                lines.append('• 출처 계보: DealSite 원보도 → DIGITIMES 재인용. 독립된 2개 검증 출처로 계산하지 않습니다.')
+            lines.append(
+                '• 회사 공식 확인: 삼성전자 ' + ('확인' if v.get('samsung_official_confirmation') else '미확인')
+                + ' · 켐트로닉스 ' + ('확인' if v.get('chemtronics_official_customer_confirmation') else '미확인')
+            )
         if v.get('sample_process') == 'existing_method':
             lines.append('• 현재 삼성전자에 전달된 샘플은 보도상 기존 방식 제품입니다.')
         if v.get('new_metal_fill_stage'):

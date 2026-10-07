@@ -708,23 +708,30 @@
         "sample_process": "existing_method",
         "new_metal_fill_stage": "development",
         "new_metal_fill_sample_delivered": false,
-        "mass_production_supply_confirmed": false
+        "mass_production_supply_confirmed": false,
+        "fact_origin_source": "DealSite",
+        "digitimes_republisher": true,
+        "independent_cross_verified": false,
+        "independent_source_count": 1,
+        "samsung_official_confirmation": false,
+        "chemtronics_official_customer_confirmation": false
       },
       "unit": "stage,year",
       "period": "current",
-      "as_of": "2026-10-02",
+      "as_of": "2026-10-07",
       "evidence": "reported",
       "source_url": "https://dealsite.co.kr/newsflash/170000",
-      "source_title": "딜사이트: 삼성전자, 켐트로닉스 유리 인터포저 샘플 테스트…첨단 패키징 개발 속도",
-      "source": "딜사이트·사용자 제공 본문",
+      "source_title": "Samsung tests Chemtronics glass interposer samples — DIGITIMES가 DealSite 원보도를 재인용",
+      "source": "DealSite 원보도 · DIGITIMES 재인용",
       "scope": "chemtronics_samsung_glass_interposer_reported_customer_evaluation_not_mass_production",
-      "excerpt": "켐트로닉스가 삼성전자에 기존 방식 유리 인터포저 샘플을 납품했고 평가·이슈 보완이 진행 중이라는 딜사이트 보도. 신규 금속 충진 방식은 아직 고객 샘플 미전달. 고객 실명은 보도 단계이며 평가 통과·정식 발주·양산 공급은 미확정.",
+      "excerpt": "켐트로닉스의 삼성전자 유리 인터포저 샘플 납품·고객평가 진행은 DealSite 원보도 사실. DIGITIMES 2026-10-07 기사도 이를 전했지만 본문이 DealSite를 명시적으로 인용하므로 독립 2중 검증으로 계산하지 않음. 삼성전자·켐트로닉스 공식 고객확인, 평가 통과, 정식 발주, 양산 공급은 미확정.",
       "official_background_sources": [
         "https://kind.krx.co.kr/external/2026/05/15/001375/20260515002994/11013.htm",
         "https://kind.krx.co.kr/external/2026/03/26/002516/20260317001410/72101.htm",
         "https://semiconductor.samsung.com/kr/technologies/package/"
       ],
-      "prior_reported_milestone_source": "https://www.sedaily.com/NewsView/2GQ5I9X52M/GD01"
+      "prior_reported_milestone_source": "https://www.sedaily.com/NewsView/2GQ5I9X52M/GD01",
+      "digitimes_source_url": "https://www.digitimes.com/news/a20261006VL222/samsung-interposer-chemtronics-materials-development.html"
     },
     {
       "key": "glass_process_cycle_time|jntc|current",

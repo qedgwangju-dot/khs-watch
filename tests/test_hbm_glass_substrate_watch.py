@@ -94,6 +94,81 @@ class GlassSubstrateWatchTests(unittest.TestCase):
         self.assertFalse(rec["value"]["new_metal_fill_sample_delivered"])
         self.assertFalse(rec["value"]["mass_production_supply_confirmed"])
 
+    def test_digitimes_dealsite_republication_is_not_independent_cross_verification(self):
+        item = {
+            "title": "Samsung tests Chemtronics glass interposer samples",
+            "description": "",
+            "source": "DIGITIMES",
+            "published_at_kst": "2026-10-07T08:37:00+09:00",
+            "direct_link": "https://www.digitimes.com/news/a20261006VL222/samsung-interposer-chemtronics-materials-development.html",
+        }
+        body = (
+            "South Korean materials company Chemtronics has delivered glass interposer samples "
+            "to Samsung Electronics, with customer evaluation now underway, according to Korean business outlet DealSite."
+        )
+        rows = w.parse_glass_substrate_records(item, body)
+        rec = next(x for x in rows if x["axis"] == "glass_hvm_stage")
+        v = rec["value"]
+        self.assertEqual(v["customer"], "Samsung Electronics")
+        self.assertTrue(v["sample_delivered"])
+        self.assertTrue(v["evaluation_ongoing"])
+        self.assertTrue(v["digitimes_republisher"])
+        self.assertEqual(v["fact_origin_source"], "DealSite")
+        self.assertEqual(v["independent_source_count"], 1)
+        self.assertFalse(v["independent_cross_verified"])
+        self.assertIsNone(v.get("samsung_official_confirmation"))
+        self.assertIsNone(v.get("chemtronics_official_customer_confirmation"))
+
+    def test_chemtronics_official_customer_confirmation_is_material(self):
+        old = {"axis":"glass_hvm_stage","value":{
+            "stage":"customer_evaluation","customer":"Samsung Electronics",
+            "samsung_official_confirmation":False,
+            "chemtronics_official_customer_confirmation":False,
+            "independent_cross_verified":False,
+        }}
+        new = {"axis":"glass_hvm_stage","value":{
+            "stage":"customer_evaluation","customer":"Samsung Electronics",
+            "samsung_official_confirmation":False,
+            "chemtronics_official_customer_confirmation":True,
+            "independent_cross_verified":False,
+        }}
+        reasons = w.comparison(old,new)
+        self.assertTrue(any("켐트로닉스 공식 삼성전자 고객검증 확인" in x for x in reasons))
+
+    def test_samsung_official_customer_confirmation_is_material(self):
+        old = {"axis":"glass_hvm_stage","value":{
+            "stage":"customer_evaluation","customer":"Samsung Electronics",
+            "samsung_official_confirmation":False,
+            "chemtronics_official_customer_confirmation":False,
+        }}
+        new = {"axis":"glass_hvm_stage","value":{
+            "stage":"customer_evaluation","customer":"Samsung Electronics",
+            "samsung_official_confirmation":True,
+            "chemtronics_official_customer_confirmation":False,
+        }}
+        reasons = w.comparison(old,new)
+        self.assertTrue(any("삼성전자 공식 고객검증 확인" in x for x in reasons))
+
+    def test_render_marks_digitimes_as_republisher_not_second_confirmation(self):
+        rec = {
+            "key":"glass_hvm_stage|chemtronics|current",
+            "axis":"glass_hvm_stage",
+            "value":{
+                "stage":"customer_evaluation","customer":"Samsung Electronics",
+                "product":"glass_interposer","digitimes_republisher":True,
+                "samsung_official_confirmation":False,
+                "chemtronics_official_customer_confirmation":False,
+            },
+            "unit":"stage,year","period":"current","as_of":"2026-10-07","evidence":"reported",
+            "source_url":"https://dealsite.co.kr/newsflash/170000",
+            "source_title":"DealSite 원보도 + DIGITIMES 재인용",
+        }
+        out = w.render({"record":rec,"old":rec,"reasons":["기준선"]})
+        self.assertIn("DealSite 원보도 → DIGITIMES 재인용", out)
+        self.assertIn("독립된 2개 검증 출처로 계산하지 않습니다", out)
+        self.assertIn("삼성전자 미확인", out)
+        self.assertIn("켐트로닉스 미확인", out)
+
     def test_chemtronics_future_stage_and_new_fill_sample_alert(self):
         old = {
             "axis":"glass_hvm_stage",
