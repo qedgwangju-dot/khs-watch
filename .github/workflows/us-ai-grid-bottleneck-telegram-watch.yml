@@ -140,11 +140,18 @@ jobs:
                   raise RuntimeError(str(result))
               ids.append(result["result"]["message_id"])
 
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+          confirmed_at = datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds")
           pathlib.Path("out/us_ai_grid_bottleneck_telegram_confirmed.json").write_text(
-              json.dumps({"status": "confirmed", "message_ids": ids}, ensure_ascii=False, indent=2) + "\n",
+              json.dumps(
+                  {"status": "confirmed", "message_ids": ids, "confirmed_at_kst": confirmed_at},
+                  ensure_ascii=False,
+                  indent=2,
+              ) + "\n",
               encoding="utf-8",
           )
-          print(f"telegram_delivery_confirmed=true messages={len(ids)}")
+          print(f"telegram_delivery_confirmed=true message_ids={ids}")
           PY
 
       - name: Promote state after successful send/check
@@ -152,6 +159,27 @@ jobs:
         run: |
           if [ -f out/us_ai_grid_bottleneck_pending_state.json ]; then
             cp out/us_ai_grid_bottleneck_pending_state.json data/us_ai_grid_bottleneck_state.json
+            python - <<'PY'
+          import json, pathlib
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+
+          state_path = pathlib.Path("data/us_ai_grid_bottleneck_state.json")
+          state = json.loads(state_path.read_text(encoding="utf-8"))
+          receipt_path = pathlib.Path("out/us_ai_grid_bottleneck_telegram_confirmed.json")
+          now = datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds")
+          if receipt_path.exists():
+              receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+              ids = [int(x) for x in (receipt.get("message_ids") or []) if int(x) > 0]
+              state["delivery_check"] = {"checked_at_kst": now, "status": "confirmed"}
+              state["last_successful_delivery_kst"] = str(receipt.get("confirmed_at_kst") or now)
+              state["telegram_message_ids"] = ids
+              state["telegram_message_id"] = ids[-1] if ids else None
+              state["delivery_receipt"] = receipt
+          else:
+              state["delivery_check"] = {"checked_at_kst": now, "status": "no_message_due"}
+          state_path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          PY
           fi
 
       - name: Commit state
