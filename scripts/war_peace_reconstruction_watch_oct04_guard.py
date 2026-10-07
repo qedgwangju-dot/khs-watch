@@ -368,7 +368,7 @@ def _conditional_military_threat(row):
     """조건부·미래형 군사위협을 실제 공격과 분리한다."""
     t = _text(row).lower()
     military = any(x in t for x in (
-        "army", "military", "armed forces", "군", "군대", "군부",
+        "army", "amry", "military", "armed forces", "군", "군대", "군부",
     ))
     threat = any(x in t for x in (
         "preemptive attack", "preemptive strike", "launch a preemptive", "start a preemptive",
