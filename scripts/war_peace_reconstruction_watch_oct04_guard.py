@@ -336,6 +336,34 @@ def _israel_oct7_abroad_warning(row):
     return israel and anniversary and warning and not actual
 
 
+def _recycled_iran_full_scale_war_rhetoric(row):
+    """이미 수개월 전 공개된 이란 대통령의 '전면전' 표현 재인용을 신규 사건에서 제외한다."""
+    t = _text(row).lower()
+    iran = any(x in t for x in ("iran", "iranian", "이란"))
+    president = any(x in t for x in ("president", "pezeshkian", "페제쉬키안", "대통령"))
+    full_war = any(x in t for x in ("full-scale war", "full scale war", "전면전", "전면 전쟁"))
+    resistance = any(x in t for x in ("resist", "resistance", "저항"))
+    return iran and president and full_war and resistance
+
+
+def _statement_only_no_action(row):
+    """속보형 인용문이 실제 공격·피해·합의 행동 없이 발언만 전달하면 군사사건으로 승격하지 않는다."""
+    src = str(row.get("source", "")).lower()
+    t = _text(row).lower()
+    aggregator = any(x in src for x in ("walter bloomberg", "tass", "fars"))
+    speech = any(x in t for x in (
+        " says ", " said ", " warns ", " warned ", " threatens ", " threatened ",
+        "believes ", "reiterates ", "repeated ", "말했습니다", "밝혔", "경고", "위협", "반복",
+    ))
+    concrete = any(x in t for x in (
+        "was hit", "were hit", "struck", "attacked", "launched missiles", "launched drones",
+        "intercepted", "killed", "injured", "damaged", "explosion", "fire broke out",
+        "피격", "공격을 받", "미사일을 발사", "드론을 발사", "요격", "사망", "부상", "피해", "폭발", "화재",
+        "agreement signed", "ceasefire signed", "합의 체결", "휴전 체결",
+    ))
+    return aggregator and speech and not concrete
+
+
 def _conditional_military_threat(row):
     """조건부·미래형 군사위협을 실제 공격과 분리한다."""
     t = _text(row).lower()
