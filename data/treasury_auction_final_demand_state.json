@@ -1,6 +1,7 @@
 {
   "state_version": 3,
   "seen_result_urls": [
+    "https://www.treasurydirect.gov/auctions/results/#auction-91282CRF0-2026-10-07T00:00:00",
     "https://www.treasurydirect.gov/auctions/results/#auction-912810UX4-2026-09-15T00:00:00",
     "https://www.treasurydirect.gov/auctions/results/#auction-912810UW6-2026-09-10T00:00:00",
     "https://www.treasurydirect.gov/auctions/results/#auction-91282CRF0-2026-09-09T00:00:00",
@@ -39,8 +40,7 @@
     "https://www.treasurydirect.gov/auctions/results/#auction-91282CNT4-2025-10-08T00:00:00",
     "https://www.treasurydirect.gov/auctions/results/#auction-912810UN6-2025-09-16T00:00:00",
     "https://www.treasurydirect.gov/auctions/results/#auction-912810UM8-2025-09-11T00:00:00",
-    "https://www.treasurydirect.gov/auctions/results/#auction-91282CNT4-2025-09-10T00:00:00",
-    "https://www.treasurydirect.gov/auctions/results/#auction-912810UN6-2025-08-20T00:00:00"
+    "https://www.treasurydirect.gov/auctions/results/#auction-91282CNT4-2025-09-10T00:00:00"
   ],
   "history": {
     "20-Year Bond": [
@@ -253,23 +253,6 @@
       {
         "tenor": "10-Year Note",
         "tenor_ko": "10년물",
-        "auction_date": "2025-10-08T00:00:00",
-        "result_url": "https://www.treasurydirect.gov/auctions/results/#auction-91282CNT4-2025-10-08T00:00:00",
-        "offering_bn": 39.0,
-        "high_yield": 4.117,
-        "btc": 2.48,
-        "indirect_bn": 26.001456,
-        "direct_bn": 9.381,
-        "dealer_bn": 3.539221,
-        "soma_bn": 0.7239688,
-        "total_accepted_bn": 38.921677,
-        "indirect_pct": 66.80456240361895,
-        "direct_pct": 24.102250270459823,
-        "dealer_pct": 9.093187325921233
-      },
-      {
-        "tenor": "10-Year Note",
-        "tenor_ko": "10년물",
         "auction_date": "2025-11-12T00:00:00",
         "result_url": "https://www.treasurydirect.gov/auctions/results/#auction-91282CPJ4-2025-11-12T00:00:00",
         "offering_bn": 42.0,
@@ -453,6 +436,23 @@
         "indirect_pct": 79.1840447854847,
         "direct_pct": 16.505110677141907,
         "dealer_pct": 4.310844537373377
+      },
+      {
+        "tenor": "10-Year Note",
+        "tenor_ko": "10년물",
+        "auction_date": "2026-10-07T00:00:00",
+        "result_url": "https://www.treasurydirect.gov/auctions/results/#auction-91282CRF0-2026-10-07T00:00:00",
+        "offering_bn": 39.0,
+        "high_yield": 5.3,
+        "btc": 2.77,
+        "indirect_bn": 31.063238,
+        "direct_bn": 6.6182,
+        "dealer_bn": 0.984,
+        "soma_bn": 0.9262902,
+        "total_accepted_bn": 38.665437999999995,
+        "indirect_pct": 80.33851317034092,
+        "direct_pct": 17.116578376792216,
+        "dealer_pct": 2.5449084528668733
       }
     ],
     "30-Year Bond": [
