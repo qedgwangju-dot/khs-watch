@@ -213,7 +213,7 @@ def parse_uk_csv(text: str, source: str) -> list[Obs]:
     rows = []
     # Accept both CSV and tab-delimited exports and several official date styles.
     for line in text.replace("\ufeff", "").splitlines():
-        m = re.search(r"(\\d{1,2}[ /-][A-Za-z]{3}[ /-]\\d{2,4}|\\d{4}-\\d{2}-\\d{2})[^0-9+-]+([+-]?\\d+(?:[.,]\\d+)?)\\s*$", line.strip())
+        m = re.search(r"(\d{1,2}[ /-][A-Za-z]{3}[ /-]\d{2,4}|\d{4}-\d{2}-\d{2})[^0-9+-]+([+-]?\d+(?:[.,]\d+)?)\s*$", line.strip())
         if not m:
             continue
         ds, raw = m.groups()
@@ -284,7 +284,7 @@ def parse_germany(text: str, source: str) -> list[Obs]:
     # Official Bundesbank CSV: metadata first, then YYYY-MM-DD,value,flags.
     for line in text.replace("\ufeff", "").splitlines():
         m = re.match(
-            r'^"?([0-9]{4}-[0-9]{2}-[0-9]{2})"?[,;\\t]+"?([+-]?[0-9]+(?:[.,][0-9]+)?)"?(?:[,;\\t]|$)',
+            r'^"?([0-9]{4}-[0-9]{2}-[0-9]{2})"?[,;\t]+"?([+-]?[0-9]+(?:[.,][0-9]+)?)"?(?:[,;\t]|$)',
             line.strip(),
         )
         if not m:
