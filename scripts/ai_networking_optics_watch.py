@@ -695,6 +695,62 @@ def source_priority(source: str) -> int:
     return 50
 
 
+def _article_title_identity(title: str) -> str:
+    value = html.unescape(title or "").lower()
+    # Google News commonly appends " - Source" to the headline.
+    value = re.sub(r"\s+-\s+[^-]{2,100}$", " ", value)
+    value = re.sub(r"[^a-z0-9.\uac00-\ud7a3\u4e00-\u9fff]+", " ", value)
+    return " ".join(value.split())
+
+
+def same_article_identity(a: dict, b: dict) -> bool:
+    # One underlying article can be returned by several thematic queries
+    # (e.g. FAU coupling under both packaging/test and equipment). It is one
+    # new event, not two. Collapse across synthetic company buckets.
+    a_link = normalize_text(a.get("link") or "")
+    b_link = normalize_text(b.get("link") or "")
+    if a_link and b_link and a_link == b_link:
+        return True
+    a_title = _article_title_identity(a.get("title") or "")
+    b_title = _article_title_identity(b.get("title") or "")
+    if not a_title or a_title != b_title:
+        return False
+    a_source = normalize_text(a.get("source") or "").lower()
+    b_source = normalize_text(b.get("source") or "").lower()
+    return bool(a_source and a_source == b_source)
+
+
+def _scope_descriptor(item: dict) -> dict:
+    return {
+        "company": item.get("company"),
+        "ticker": item.get("ticker"),
+        "category": item.get("category"),
+    }
+
+
+def merge_article_scopes(current: dict, candidate: dict) -> dict:
+    # Keep one alert item while preserving every legitimate interpretation axis.
+    chosen = dict(candidate if prefer_story_item(candidate, current) else current)
+    scopes: list[dict] = []
+    seen_scopes: set[tuple[str, str]] = set()
+    for source_item in (current, candidate):
+        rows = list(source_item.get("related_scopes") or []) + [_scope_descriptor(source_item)]
+        for row in rows:
+            company = str(row.get("company") or "")
+            category = str(row.get("category") or "")
+            key = (company, category)
+            if not company or not category or key in seen_scopes:
+                continue
+            seen_scopes.add(key)
+            scopes.append({
+                "company": company,
+                "ticker": row.get("ticker"),
+                "category": category,
+            })
+    chosen["related_scopes"] = scopes
+    return chosen
+
+
 def same_underlying_story(a: dict, b: dict) -> bool:
     if a.get("company") != b.get("company"):
         return False
@@ -1316,6 +1372,32 @@ def _self_test_korean_optics_alerts() -> None:
     assert signal_score(cpo_pkg_yield, "TrendForce") >= 7
     assert category_for(cpo_pkg_yield, "CPO Packaging & Test") == "CPO 광패키징 기판·수율·열검증"
 
+    # One TrendForce FAU article may match both packaging/test and equipment queries.
+    # It must be one Telegram event with two interpretation axes, never two "new changes".
+    same_article_a = {
+        "company": "CPO Packaging & Test",
+        "ticker": "CPO 패키징·검사",
+        "category": "CPO 광엔진 수율·광결합",
+        "title": "Passive Part, Active Battle: Inside CPO's FAU Coupling Bottleneck - TrendForce",
+        "source": "TrendForce",
+        "link": "https://news.google.com/rss/articles/example?oc=5",
+        "published": "2026-10-07T05:31:28+00:00",
+        "score": 10,
+    }
+    same_article_b = {
+        "company": "CPO Equipment Supply Chain",
+        "ticker": "장비 공급망",
+        "category": "CPO 정밀정렬·광결합 장비",
+        "title": "Passive Part, Active Battle: Inside CPO's FAU Coupling Bottleneck - TrendForce",
+        "source": "TrendForce",
+        "link": "https://news.google.com/rss/articles/example?oc=5",
+        "published": "2026-10-07T05:31:28+00:00",
+        "score": 10,
+    }
+    assert same_article_identity(same_article_a, same_article_b)
+    merged = merge_article_scopes(same_article_a, same_article_b)
+    assert len(merged.get("related_scopes") or []) == 2
+
 
 def load_state() -> dict:
     if not STATE_PATH.exists():
@@ -1509,6 +1591,14 @@ def main() -> None:
     # each headline/source as a separate "new change".
     deduped: list[dict] = []
     for item in all_relevant:
+        exact_index = next(
+            (idx for idx, existing in enumerate(deduped) if same_article_identity(item, existing)),
+            None,
+        )
+        if exact_index is not None:
+            deduped[exact_index] = merge_article_scopes(deduped[exact_index], item)
+            continue
+
         matched_index = next(
             (idx for idx, existing in enumerate(deduped) if same_underlying_story(item, existing)),
             None,
@@ -1517,7 +1607,10 @@ def main() -> None:
             deduped.append(item)
             continue
         if prefer_story_item(item, deduped[matched_index]):
-            deduped[matched_index] = item
+            replacement = dict(item)
+            if deduped[matched_index].get("related_scopes"):
+                replacement["related_scopes"] = list(deduped[matched_index]["related_scopes"])
+            deduped[matched_index] = replacement
 
     initialized = bool(state.get("initialized"))
     dedupe_version = int(state.get("dedupe_version") or 0)
@@ -1534,6 +1627,8 @@ def main() -> None:
         if story_key and story_key in seen_story_keys:
             return True
         for previous in seen_story_records:
+            if same_article_identity(item, previous):
+                return True
             if previous.get("company") != item.get("company"):
                 continue
             # Never let a previously-sent low-quality/market-reaction source suppress
@@ -1563,6 +1658,7 @@ def main() -> None:
         "title": item.get("title"),
         "source": item.get("source"),
         "published": item.get("published"),
+        "link": item.get("link"),
     } for item in deduped if source_priority(item.get("source") or "") >= 65]
 
     # Clean legacy state: remove low-quality reaction sources and collapse
@@ -1571,7 +1667,10 @@ def main() -> None:
     for record in new_story_records + seen_story_records:
         if source_priority(record.get("source") or "") < 65:
             continue
-        if any(same_underlying_story(record, existing) for existing in merged_story_records):
+        if any(
+            same_article_identity(record, existing) or same_underlying_story(record, existing)
+            for existing in merged_story_records
+        ):
             continue
         merged_story_records.append(record)
         if len(merged_story_records) >= 500:
@@ -1579,7 +1678,7 @@ def main() -> None:
 
     pending = {
         "initialized": True,
-        "dedupe_version": 2,
+        "dedupe_version": 3,
         "quality_version": 3,
         "photonic_compute_version": 6,
         "optical_material_version": 1,
@@ -1665,6 +1764,13 @@ def main() -> None:
     if ALERT_PATH.exists():
         ALERT_PATH.unlink()
 
+    for i, first in enumerate(alert_items):
+        for second in alert_items[i + 1:]:
+            if same_article_identity(first, second):
+                raise RuntimeError(
+                    "Duplicate article identity reached Telegram alert stage; refusing to send"
+                )
+
     if alert_items:
         policy_only = all(item.get("company") == "US Optical Policy" for item in alert_items)
         korea_optics_only = all(item.get("company") in {"Opticore", "OE Solutions"} for item in alert_items)
@@ -1697,6 +1803,15 @@ def main() -> None:
                 f"• 단계: {html.escape(item['stage'])}",
                 f"• 원문 제목: {html.escape(item['title'])}",
                 f"• 출처·시각: {html.escape(item.get('source') or '미표기')} / {html.escape(pub or '시각 미표기')}",
+            ])
+            related_categories = []
+            for scope in item.get("related_scopes") or []:
+                related = str(scope.get("category") or "")
+                if related and related != category and related not in related_categories:
+                    related_categories.append(related)
+            if related_categories:
+                lines.append(f"• 연관 감시축: {html.escape(' + '.join(related_categories))}")
+            lines.extend([
                 f"• 투자 의미: {html.escape(meaning_for(category))}",
                 f"• 역풍 확인: {html.escape(risk_for(category))}",
                 f"• <a href=\"{html.escape(item['link'], quote=True)}\">원문 링크</a>",
@@ -1704,7 +1819,9 @@ def main() -> None:
             ])
         lines.extend([
             "<b>감시 기준</b>",
-            "1.6T 대량출하·고객 채택 / 3.2T 고객 인증·양산 / AAOI 800G·1.6T·3.2T 생산능력·고객·출하 / 볼란티스 Series A 자금조달·공식 금액 정정·A-1 고객샘플·2027 인도·실리콘·독립벤치마크·광메모리 대역폭·용량·토큰속도 / 라이트매터·아야르 랩스·엑스케이프 광인터커넥트 자금조달·고용량 생산·고객검증·생산·배치 / 마벨 Celestial AI Photonic Fabric 고객·출하·FY28 매출 램프 / ECOC·OFC는 전시·데모만으로 알림하지 않고 고객·수주·출하·생산능력·가이던스 변화만 알림 / 파브리넷 800G·1.6T 광모듈 제조·패키징 고객·출하·가동률 / CPO 패키지 기판·인터포저의 양산·고객인증·수율·휨·열팽창계수·삽입손실·저손실 특성 / CPO COUPE·첨단패키징 생산능력·광엔진 수율·검사 처리량·번인·고출력 소켓 / 200G/lane 수동구리 약 1m 도달거리·ACC/CPC 연장·400G/lane 구리 한계 / Coherent·Lumentum ELS/ELSFP 출력·온도·수명·고객·양산 / ELSFP 블라인드메이트 커넥터 삽입손실·OIF 규격·고객 채택 / TFLN 200G·400G/lane 고객검증·파운드리·양산 / POET ELS·Optical Interposer 고객검증·양산 / 성호전자 자회사 ADST CPO 정렬·검사 신규 PO·검수·양산 / VCSEL 광메모리 공급망·패키징·수율 / FCC 중국산 광트랜시버 최종규칙·3.2T 적용세대·미국산 콘텐츠 65%·75%·예외·시행일 / 상원·의회 국가안보시스템 광트랜시버 법안 범위 / InP 기판 공급부족·수출허가·증설·가격 / 옵티코어 400G·800G 신규 PO·계약금액·검수·납기변경 / 오이솔루션 1.6T ELSFP·EML 샘플·고객검증·양산 PO / 엔비디아 CPO 실제 배치 / 코히런트 포톤링크 고객·장기계약·양산·콘텐츠 가치 / CPO 제조장비 수주·2027년 2분기 가시성·생산능력 증설·가동률·OSAT 검증·광결합 정렬장비 출하 / CPO·NPO 수직통합과 외부 부품 대체 / 특수광섬유·InP 증설 / 칩 간 광연결 2029~2030년 / 삼성전자 SiPh 파운드리 고객 실명·양산 물량 / 광부품·DSP·레이저·리타이머 병목·가격 / 하이퍼스케일러 네트워크 수주·수주잔고 / 코닝 광통신·유리기판 신규 AI 매출 경로",
+            "• 고객·수주·양산: 1.6T·3.2T·CPO·광컴퓨팅의 고객인증, PO, 출하, 생산능력, 매출 가이던스 변화",
+            "• 병목·정책: 수율·광결합·InP·ELS·장비·가격·납기·FCC/의회 규제 변화",
+            "• 제외: 전시·데모·단순 주가반응·기존 기사 재탕은 알림하지 않음",
         ])
         ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
 
@@ -1716,7 +1833,7 @@ def main() -> None:
         f"- 관련 신규 사건 후보: {len(new_items)}건",
         f"- Telegram 발송 사건: {len(alert_items)}건",
         f"- 중복 기사 통합 후 사건 기준선: {len(deduped)}건",
-        f"- 중복 제거 방식: 동일 사건 의미 클러스터 + PhotonLink 사건키 v2",
+        f"- 중복 제거 방식: 동일 원문 URL·제목/출처 통합 + 동일 사건 의미 클러스터 + 사건키 v3",
         f"- 소스 오류: {len(errors)}건",
     ]
     if errors:
