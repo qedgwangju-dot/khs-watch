@@ -1,6 +1,6 @@
 {
   "status": "ok",
-  "checked_at_kst": "2026-10-08T06:33:41+09:00",
+  "checked_at_kst": "2026-10-08T07:49:28+09:00",
   "route_source": "encrypted-route",
   "telegram_route_ok": true,
   "qlex_collector_rc": 0,
@@ -26,6 +26,9 @@
   "jemperli_state_persisted": true,
   "enhertu_state_persisted": true,
   "halozyme_state_persisted": true,
+  "halozyme_source_health": "ok",
+  "halozyme_search_failed_tasks": 0,
+  "halozyme_search_task_count": 72,
   "intismeran_retry_pending": false,
   "last_health_notice_date": "2026-10-07",
   "errors": [],
