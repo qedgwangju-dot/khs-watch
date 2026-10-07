@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-07T05:27:21+09:00",
+  "updated_at_kst": "2026-10-07T09:51:45+09:00",
   "seen_ids": [
     "00315ac822df3f19f0f17bfd",
     "01899de42b17bb25951592cf",
@@ -154,19 +154,17 @@
     "rubin_ultra_spec_192gb_288gb_1tb",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 8,
+  "last_unseen_raw_count": 0,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
-    "rate": 1342.774629,
-    "date": "2026-10-06 일일 기준 · ExchangeRate-API https://www.exchangerate-api.com · 조회 2026-10-07 05:27 KST · 단일 API 확인 · 독립 교차검증 미완료",
-    "source": "ExchangeRate-API https://www.exchangerate-api.com",
+    "rate": 1338.78,
+    "date": "2026-10-06 일일 기준 · ECB/Frankfurter · 조회 2026-10-07 09:51 KST · 보조 API 2026-10-07 · 차이 0.01% · 일중 기준시각 차이 가능",
+    "source": "ECB/Frankfurter",
     "error": ""
   },
-  "errors": [
-    "원문 URL 확인 실패: AD HOC NEWS | Micron's Pricing Power Play: 2027 HBM Surcharges, Record Guidance, and a Patent Storm Brewing - AD HOC NEWS"
-  ],
+  "errors": [],
   "ai_component_leadtime": {
     "as_of": "2026-10-05",
     "source": "https://insights.trendforce.com/p/weekly-radar-004",
@@ -289,13 +287,13 @@
       "https://insights.trendforce.com/p/weekly-radar-004",
       "https://www.trendforce.com/news/"
     ],
-    "last_checked_at_kst": "2026-10-07T05:27:48+09:00",
+    "last_checked_at_kst": "2026-10-07T09:51:59+09:00",
     "candidate_count": 3,
     "errors": []
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-07T05:28:24+09:00",
+    "checked_at_kst": "2026-10-07T09:52:38+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-06T18:05:16+09:00",
@@ -363,7 +361,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-10-07",
-    "last_checked_at_kst": "2026-10-07T05:28:15+09:00"
+    "last_checked_at_kst": "2026-10-07T09:52:30+09:00"
   },
   "samsung_electromechanics_cpu_realization": {
     "as_of": "2026-09-23",
@@ -399,7 +397,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-10-07",
-    "last_checked_at_kst": "2026-10-07T05:28:18+09:00",
+    "last_checked_at_kst": "2026-10-07T09:52:33+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -443,7 +441,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-07T05:28:19+09:00",
+    "last_checked_at_kst": "2026-10-07T09:52:34+09:00",
     "candidate_count": 0,
     "event_count": 0,
     "area_structure": {
