@@ -1253,6 +1253,12 @@ def parse_glass_substrate_records(item, body):
             elif re.search(r'(?:MOU|memorandum\s+of\s+understanding|양해각서)', text, re.I):
                 jv_stage = 'mou'
 
+            if jv_stage == 'jv_established' and re.search(
+                r'\b(?:is|are)\s+being\s+established\b|설립\s*(?:중|추진)', text, re.I
+            ):
+                # A JV that is still "being established" is not yet an established entity.
+                jv_stage = 'share_acquisition_decided'
+
             investment = None
             for pat in (
                 r'(?:acquisition\s+cost|취득\s*(?:금액|가액)|출자\s*금액)[^0-9]{0,40}(319,?100,?000,?000)\s*(?:KRW|원)?',
