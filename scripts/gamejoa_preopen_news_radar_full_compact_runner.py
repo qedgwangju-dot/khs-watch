@@ -2597,6 +2597,31 @@ def source_headline_event_fact(title: str, body: str) -> str:
     focus = market_materiality.focus_kind(title)
     source = market_materiality.source_reported_body(body)
     rows = market_materiality.source_sentences(source)
+    if 'LG전자' in title and re.search(r'3분기.*누적.*(?:매출|영업)', title):
+        quarter = re.search(r'3분기\s+연결기준\s+매출액\s+(\d+조\d+억원),\s+영업이익\s+(\d+억원)의\s+잠정실적', source)
+        cumulative = re.search(r'1[~∼-]3분기\s+누적\s+매출액은\s+(\d+조\d+억원)', source)
+        cumulative_profit = re.search(r'누적\s+영업이익은\s+(\d+조\d+억원)', source)
+        consensus = re.search(r'시장\s+전망치인\s+매출\s+(\d+조\d+억원),\s+영업이익\s+(\d+조\d+억원)을\s+밑돌', source)
+        if quarter and cumulative and cumulative_profit and consensus:
+            fact = (f'LG전자 3분기 잠정 매출 {quarter[1]}·영업이익 {quarter[2]}은 '
+                    f'시장 전망치({consensus[1]}·{consensus[2]})를 밑돌았다. '
+                    f'1~3분기 누적 매출 {cumulative[1]}·영업이익 {cumulative_profit[1]}은 처음 동시 돌파했다.')
+            return fact if core_sentence_is_complete(fact) else ''
+    if re.search(r'(?:外人|외인|외국인).*투자.*도착', title):
+        notice = re.search(r'신고기준\)이\s+전년동기대비\s+([\d.]+%)\s+증가한\s+(\d+억)\s*달러', source)
+        arrival = re.search(r'자금\s+도착은\s+([\d.]+%)\s+증가한\s+(\d+억\d+만)\s*달러', source)
+        if notice and arrival and '산업통상부' in source[:500]:
+            fact = (f'산업통상부에 따르면 3분기 누계 외국인직접투자 자금 도착액은 '
+                    f'전년 대비 {arrival[1]} 증가한 {arrival[2]} 달러다. '
+                    f'신고액은 {notice[2]} 달러로 {notice[1]} 늘었다.')
+            return fact if core_sentence_is_complete(fact) else ''
+    if '애플' in title and 'LG전자' in title and re.search(r'스마트홈.*공동\s*개발', title):
+        reported = re.search(r'블룸버그통신[^.!?\n]{0,100}애플과\s+LG전자는[^.!?\n]{0,100}공동\s*개발\s*중', source)
+        caveat = re.search(r'인증\s+문서에는\s+애플과의\s+협력\s+사실이\s+명시되지\s+않았다', source)
+        if reported and caveat:
+            fact = ('블룸버그가 인용한 소식통에 따르면 애플·LG전자는 스마트홈 기기 공동 개발을 추진 중이다. '
+                    'LG전자 제품 인증 신청은 보도됐지만 인증 문서에 애플 협력은 명시되지 않았다.')
+            return fact if core_sentence_is_complete(fact) else ''
     if re.search(r'가스터빈.*블레이드.*납품\s*개시', title):
         delivery = re.search(
             r'([가-힣]+)\(\d+\)이\s+지난해\s+([가-힣]+)(?:\([^)]+\))?로부터\s+수주한\s+'
@@ -11311,7 +11336,11 @@ def source_core_fact_errors(alert: dict) -> list[str]:
              or (re.search(r'초순수.*(?:E&P|설계.조달).*계약', title, re.I)
                  and '계약을' in expected_observation and '억원' in expected_observation)
              or ('블룸버그' in title and re.search(r'대만.*코스피', title)
-                 and 'BofA 펀드매니저 설문' in expected_observation))
+                 and 'BofA 펀드매니저 설문' in expected_observation)
+             or (re.search(r'(?:外人|외인|외국인).*투자.*도착', title)
+                 and '외국인직접투자 자금 도착액' in expected_observation)
+             or ('애플' in title and 'LG전자' in title and re.search(r'스마트홈.*공동\s*개발', title)
+                 and '인증 문서에 애플 협력은 명시되지 않았다' in expected_observation))
             and source_audit["disposition"] == "keep" and source_audit["priority"] >= 2
             and expected_observation
             and market_materiality.canonical_source_fact(expected_observation) == market_materiality.canonical_source_fact(observation_core)

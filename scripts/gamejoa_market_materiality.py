@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 104
+VERSION = 105
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -3534,6 +3534,25 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
     )
     if foreign_local_country and foreign_local_measure and not korean_exposure:
         result.update(disposition="exclude", priority=0, reason="foreign_local_measure_without_korean_equity_channel")
+        return result
+    regional_production = bool(
+        re.search(r"(?:서울|부산|대구|인천|광주|대전|울산|세종|경기|강원|충북|충남|전북|전남|경북|경남|제주).{0,35}(?:제조업\s*생산|수출)", title)
+        and re.search(r"(?:제조업\s*생산|수출).{0,35}(?:서울|부산|대구|인천|광주|대전|울산|세종|경기|강원|충북|충남|전북|전남|경북|경남|제주)", title)
+    )
+    direct_issuer_change = re.search(r"(?:삼성전자|SK하이닉스|현대차|기아|LG전자|포스코|한국전력|두산에너빌리티).{0,70}(?:매출|영업이익|수주|공급\s*계약|생산량)", body[:2500])
+    if regional_production and not direct_issuer_change:
+        result.update(disposition="exclude", priority=0, reason="regional_production_without_listed_issuer_change")
+        return result
+    routine_enforcement = bool(re.search(r"(?:불법\s*하도급|위법).{0,30}(?:집중\s*단속|현장\s*점검)|(?:집중\s*단속|현장\s*점검).{0,30}(?:불법\s*하도급|위법)", title))
+    new_enforcement_impact = re.search(r"(?:상장사|상장기업|삼성전자|현대건설|대우건설|GS건설).{0,60}(?:과징금|영업정지|입찰제한)|(?:신규|새로운).{0,25}(?:처벌|규정|제재|과징금)", body[:2500])
+    if routine_enforcement and not new_enforcement_impact:
+        result.update(disposition="exclude", priority=0, reason="routine_enforcement_without_named_issuer_or_new_penalty")
+        return result
+    foreign_brand_local_sales = bool(re.search(r"^(?:폴스타|루시드|리비안).{0,35}(?:판매|등록)", title)
+                                     and re.search(r"(?:국내|한국|수입자동차협회|KAIDA).{0,45}(?:판매|등록)|(?:판매|등록).{0,45}(?:국내|한국|수입자동차협회|KAIDA)", body[:1800]))
+    global_issuer_change = re.search(r"(?:글로벌|세계|미국|유럽).{0,45}(?:분기|연간).{0,35}(?:매출|판매|영업이익)|(?:현대차|기아|삼성전자|LG전자).{0,40}(?:점유율|매출|판매량)", body[:2500])
+    if foreign_brand_local_sales and not global_issuer_change:
+        result.update(disposition="exclude", priority=0, reason="foreign_brand_local_sales_without_market_wide_effect")
         return result
     local_facility = (
         re.match(r"^(?:서울|부산|대구|인천|광주|대전|울산|세종|경기|강원|충북|충남|전북|전남|경북|경남|제주)(?:시|도|군|구)[,\s]", title)

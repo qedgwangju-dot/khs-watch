@@ -24,6 +24,7 @@ def main() -> None:
     parser.add_argument("--artifact-dir", type=Path, required=True)
     parser.add_argument("--market-scope-artifact-dir", type=Path)
     parser.add_argument("--follow-on-artifact-dir", type=Path)
+    parser.add_argument("--dry-run-artifact-dir", type=Path)
     args = parser.parse_args()
     report_path = args.artifact_dir / "out/gamejoa_preopen_news_radar.json"
     delivery_path = args.artifact_dir / "out/gamejoa_preopen_news_radar_delivery.json"
@@ -147,6 +148,40 @@ def main() -> None:
         follow_on = {"acknowledged_message_id": 2389, "source_bodies_checked": 7,
                      "selected_after_fix": 5, "roundup_and_award_withheld": 2,
                      "retained_cores_source_bound": 5}
+    dry_run = None
+    if args.dry_run_artifact_dir:
+        dry_out = args.dry_run_artifact_dir / "out"
+        dry_report = json.loads((dry_out / "gamejoa_preopen_news_radar.json").read_text(encoding="utf-8"))
+        assert not (dry_out / "gamejoa_preopen_news_radar_delivery.json").exists()
+        assert len(dry_report["alerts"]) == 7
+        assert all(item.get("body_verified") and item.get("source_body") for item in dry_report["alerts"])
+        dry_now = dt.datetime.fromisoformat(dry_report["query_time_kst"])
+        with patch.object(radar.base, "kst_now", return_value=dry_now), patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}):
+            dry_selected = radar.quality_display_alerts(dry_report["alerts"], 20)
+        assert len(dry_selected) == 4, [item["source_title"] for item in dry_selected]
+        dry_kept = {item["source_title"]: item["telegram_core_fact"] for item in dry_selected}
+        assert any("LG전자, 3분기 누적" in title and "시장 전망치" in core and "4조346억원" in core
+                   for title, core in dry_kept.items())
+        assert any("外人투자 도착" in title and "148억7000만 달러" in core and "신고액은 229억 달러" in core
+                   for title, core in dry_kept.items())
+        assert any("애플·LG전자" in title and "블룸버그가 인용한 소식통" in core
+                   and "명시되지 않았다" in core for title, core in dry_kept.items())
+        assert any("삼성전자, 자사주" in title for title in dry_kept)
+        dry_rejected = {item["source_title"]: item.get("_exclusion_reason", "")
+                        for item in dry_report["alerts"] if item["link"] not in
+                        {kept["link"] for kept in dry_selected}}
+        assert len(dry_rejected) == 3, dry_rejected
+        assert any("대구 제조업" in title and "regional_production_without_listed_issuer_change" in reason
+                   for title, reason in dry_rejected.items())
+        assert any("불법하도급" in title and "routine_enforcement_without_named_issuer_or_new_penalty" in reason
+                   for title, reason in dry_rejected.items())
+        assert any("폴스타" in title and "foreign_brand_local_sales_without_market_wide_effect" in reason
+                   for title, reason in dry_rejected.items())
+        assert all(not radar.source_core_fact_errors(item) for item in dry_selected)
+        assert not generated_guard.duplicate_event_errors(dry_selected, radar)
+        dry_run = {"remote_dry_run": True, "source_bodies_checked": 7, "selected_after_fix": 4,
+                   "weak_market_impact_withheld": 3, "retained_cores_source_bound": 4,
+                   "external_delivery_proven": False}
     print(json.dumps({
         "acknowledged_message_id": 2373,
         "source_bodies_checked": len(report["alerts"]),
@@ -158,6 +193,7 @@ def main() -> None:
         "boston_weak_market_change_withheld": True,
         "market_scope_replay": market_scope,
         "follow_on_replay": follow_on,
+        "dry_run_replay": dry_run,
     }, ensure_ascii=False))
 
 

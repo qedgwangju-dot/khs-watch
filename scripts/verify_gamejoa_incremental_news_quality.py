@@ -4318,6 +4318,55 @@ class IncrementalNewsTests(unittest.TestCase):
         self.assertIn('20만 1000t', radar.source_headline_event_fact(
             title, body.replace('17만 6000t', '20만 1000t')))
 
+    def test_regional_output_enforcement_and_small_foreign_brand_sales_are_not_equity_alerts(self):
+        regional = '8월 대구 제조업 생산 4.8% 증가·경북 3.2% 감소…수출 동반 증가'
+        regional_body = '한국은행 대구경북본부는 8월 대구 제조업 생산이 증가했고 경북은 감소했다고 밝혔다.'
+        self.assertEqual(materiality.assess(regional, regional_body)['reason'],
+                         'regional_production_without_listed_issuer_change')
+        enforcement = '건설현장 불법하도급 연말까지 집중단속…공공현장 275곳 점검'
+        enforcement_body = '국토교통부는 기존 불법하도급 의심 공공현장 275곳을 점검한다고 밝혔다.'
+        self.assertEqual(materiality.assess(enforcement, enforcement_body)['reason'],
+                         'routine_enforcement_without_named_issuer_or_new_penalty')
+        brand = '폴스타, 9월 역대 최대 판매…연간 목표 달성 성큼'
+        brand_body = '폴스타코리아는 한국수입자동차협회 기준 국내 9월 신규 등록대수가 769대라고 밝혔다.'
+        self.assertEqual(materiality.assess(brand, brand_body)['reason'],
+                         'foreign_brand_local_sales_without_market_wide_effect')
+        global_sales = brand_body + ' 글로벌 분기 판매량과 매출도 전년 대비 늘었다.'
+        self.assertNotEqual(materiality.assess(brand, global_sales)['reason'],
+                            'foreign_brand_local_sales_without_market_wide_effect')
+
+    def test_earnings_fdi_and_unconfirmed_partnership_follow_source_not_sector_templates(self):
+        lg_title = 'LG전자, 3분기 누적 매출 70조·영업익 4조 첫 돌파'
+        lg_body = ('LG전자는 2026년 3분기 연결기준 매출액 23조8270억원, 영업이익 7818억원의 잠정실적을 '
+                   '기록했다고 7일 밝혔다. 올해 1~3분기 누적 매출액은 71조3807억원으로 증가했다. '
+                   '누적 영업이익은 4조346억원으로 늘었다. 시장 전망치인 매출 24조2150억원, '
+                   '영업이익 1조301억원을 밑돌았다.')
+        lg_core = radar.source_headline_event_fact(lg_title, lg_body)
+        self.assertIn('7818억원', lg_core)
+        self.assertIn('시장 전망치', lg_core)
+        self.assertIn('4조346억원', lg_core)
+        self.assertIn('8000억원', radar.source_headline_event_fact(
+            lg_title, lg_body.replace('7818억원', '8000억원')))
+        fdi_title = '3분기 外人투자 도착 148.7억弗 전년比 30.6% 증가'
+        fdi_body = ('산업통상부는 3분기 누계 외국인 직접투자(신고기준)이 전년동기대비 10.8% 증가한 '
+                    '229억 달러를 기록했다고 밝혔다. 자금 도착은 30.6% 증가한 148억7000만 달러를 기록했다. '
+                    '정보통신 분야 신고액은 24억3000만 달러다.')
+        fdi_core = radar.source_headline_event_fact(fdi_title, fdi_body)
+        for token in ('자금 도착액', '148억7000만 달러', '신고액', '229억 달러'):
+            self.assertIn(token, fdi_core)
+        self.assertNotIn('24억3000만', fdi_core)
+        self.assertIn('160억7000만', radar.source_headline_event_fact(
+            fdi_title, fdi_body.replace('148억7000만', '160억7000만')))
+        partnership_title = '애플·LG전자, AI 스마트홈 기기 공동 개발…도어락 출시 추진'
+        partnership_body = ('블룸버그통신에 따르면 애플과 LG전자는 스마트 도어락 등 스마트홈 기기를 '
+                            '공동 개발 중이다. LG전자는 FCC에 제품 인증을 신청했다. '
+                            '다만 인증 문서에는 애플과의 협력 사실이 명시되지 않았다.')
+        partnership_core = radar.source_headline_event_fact(partnership_title, partnership_body)
+        self.assertIn('소식통', partnership_core)
+        self.assertIn('명시되지 않았다', partnership_core)
+        self.assertFalse(radar.source_headline_event_fact(
+            partnership_title, partnership_body.replace('명시되지 않았다', '명시됐다')))
+
 
 if __name__ == "__main__":
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(IncrementalNewsTests)
