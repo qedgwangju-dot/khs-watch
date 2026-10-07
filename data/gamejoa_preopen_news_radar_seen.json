@@ -3320,6 +3320,27 @@
       "source_published_kst": "2026-10-07T14:04+09:00",
       "title": "MS·아마존 이어 구글까지…AI 전력 병목 해결에 '원전' 뜬다"
     },
+    "core:66bd3b4601b2ce9fc7a6ece1": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.hankyung.com/article/202610089567i",
+      "source": "한국경제",
+      "source_body_digest": "9cfb27592ac407b90d1295f82034a63fab38613b4b064f3e5412c0b6d648d142",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2fb072eed861740c567747a443e2cace6ec3c0f8463d19266c412a5776855ae",
+      "source_fact_keys": [
+        "source_fact:v1:225efac09973c14d0aeb3b24f98bed1910a5da86fe6554c8ca0466aa7c31044b",
+        "source_fact:v1:6903ece1a2235e3cf7060f7e36204c16a7b422d09e60ef0e12c34cbf77d96763",
+        "source_fact:v1:817a71e077196a7bb8b69e422a409285957abf2dc8678ccbd828b324bf7fec7a"
+      ],
+      "source_published_kst": "2026-10-08T07:50+09:00",
+      "source_title": "삼성전자 3분기 영업이익 107조…반도체 슈퍼사이클에 4분기 연속 역대 최대",
+      "telegram_core_fact": "삼성전자는 3분기 영업이익이 107조4000억원으로 전년비 782.5% 증가한 것으로 잠정 집계됐다고 8일 발표했다.",
+      "title": "삼성전자 3분기 영업이익 107조…반도체 슈퍼사이클에 4분기 연속 역대 최대"
+    },
     "core:6716e48f08af0e03bbdbfc26": {
       "first_seen_kst": "2026-10-07T20:05:17+09:00",
       "lanes": {
@@ -4138,6 +4159,29 @@
       "telegram_core_fact": "AI가 행정·복지·교통·교육 등 시민 일상으로 깊숙이 들어오면서 공정성·투명성과 같은 원칙을 선언하는 데 그치지 않고 AI 도입 전 위험을 살피고 운영 과정에서 문제를 감시하며, 이를 다시 제도 개선으로 연결하는 거버넌스가 필요하다는 목소리가 나왔다.",
       "title": "“AI 도입보다 중요한 건 신뢰”…서울형 AI 윤리 해법 찾는다"
     },
+    "core:7f1c17ee56464a8004d54d4e": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008019500002",
+      "source": "연합뉴스",
+      "source_body_digest": "69996ee13d3f5d67dafb37b25de479bb264c37716c61358c365d483650e037be",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:103114e0a5c7db4e2662c1b3adcfd16d0eee74afb85f3cd5f751513b86e633b9",
+      "source_fact_keys": [
+        "source_fact:v1:2324f176794be4303c59b5a881ccced4a14b735ec4d98c85aa343a8da71b533b",
+        "source_fact:v1:4330b5a63f086831545d99a4341d9f5e85f30a2c36be7207fdf98c6f677bc0c0",
+        "source_fact:v1:67a7a0793d91410d104e8e4fecfe6cb5a4b6258c4ca6c8c78bc725bebe60b3a0",
+        "source_fact:v1:a155ef8819c98dfd95be5ebabeae6082e7c045c252db482391308f66c5eb11bd",
+        "source_fact:v1:c41519d06f2126c754016a248c41fcc6165a06d16d64e279d773e7c6729a396e"
+      ],
+      "source_published_kst": "2026-10-08T08:00+09:00",
+      "source_title": "8월 경상수지 461.1억달러 흑자, 역대 2위…반도체 수출 호조 | 연합뉴스",
+      "telegram_core_fact": "운송수지는 최근 수출운임 상승 영향으로 흑자 규모가 전월 6천만달러에서 8월 5억2천만달러로 늘었고, 지식재산권사용료수지는 전월 5억4천만달러 적자에서 8월 3억9천만달러로 적자 규모가 줄었다.",
+      "title": "8월 경상수지 461.1억달러 흑자, 역대 2위…반도체 수출 호조 | 연합뉴스"
+    },
     "core:7ffc32d579d4d94e703d21ac": {
       "first_seen_kst": "2026-10-07T22:24:07+09:00",
       "lanes": {
@@ -4210,6 +4254,30 @@
       "source_title": "고고로, 6200만 달러 증자..주당 2.48달러 신주 발행",
       "telegram_core_fact": "배터리 교환 생태계 기업 고고로(GGR)가 이사 Chung-Yao Yin이 지배하는 법인과 전략적 투자자를 대상으로 보통주 2493만6057주를 주당 2.48달러에 발행해 약 6180만 달러 두 번째 신규 지분투자를 유치한다고 7일(현지시간) 발표했다.",
       "title": "고고로, 6200만 달러 증자..주당 2.48달러 신주 발행"
+    },
+    "core:83963ad235f87b650adb75ba": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02427206645610952",
+      "source": "이데일리",
+      "source_body_digest": "9d06faa48c2f49c5c22ee8976ca3ffe6e1783cc831eac23fd7f80e250e3a25b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02ef56c1a0eb820b4641c522aba2b7106223a0568233630d19013760a9054e21",
+      "source_fact_keys": [
+        "source_fact:v1:030d1680e207d7fca3de1669e1a41d44228e2e6c9774b390117de8a66f488cd4",
+        "source_fact:v1:0d8264648045edd9a5d2b68e5c57c131f7515cf2d242521724900a6c6c20fee6",
+        "source_fact:v1:2557b32e686bda672b0375e7df69d31f511be3e42f87594fdc5062b81f0de62d",
+        "source_fact:v1:3f66e7177924907d30db5752dc7debbb2c4d15b1d68d4d0b0bf56db05433218f",
+        "source_fact:v1:40a969373a4eb82d2f38723122e68ab97658fb66a182d2e1b0ce27ade5c1f8be",
+        "source_fact:v1:67bf89a871c1c20f62ea4ed9bfc7ac80e88b7a541330696753750fe89d2ef96f"
+      ],
+      "source_published_kst": "2026-10-08T07:52+09:00",
+      "source_title": "NAVER, 하반기 실적 기대치 낮춰야…결국 수익 증명이 관건-메리츠",
+      "telegram_core_fact": "이효진 메리츠증권 연구원은 8일 보고서에서 NAVER의 3분기 연결 매출액을 전년비 11.0% 증가한 3조4844억원, 영업이익을 14.9% 감소한 4858억원으로 추정했다.",
+      "title": "NAVER, 하반기 실적 기대치 낮춰야…결국 수익 증명이 관건-메리츠"
     },
     "core:852ceb0d9b6148e9748d90ef": {
       "first_seen_kst": "2026-10-08T06:57:59+09:00",
@@ -5281,6 +5349,33 @@
       "source_published_kst": "2026-10-07T11:16+09:00",
       "title": "“삼성전기, 한번 더”...DS證 “실적 서프라이즈” [오늘, 이 종목]- 매경ECONOMY"
     },
+    "core:a591331285b631ecbf3b5b4a": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6313654",
+      "source": "뉴스1",
+      "source_body_digest": "a307f1b57f0fa5492ed35dfbfaded8ea3190c213a88e024d64d695fb2779b9f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:536335c3313b67d94e5583143650314837039913348d14940482a73be2a5be3b",
+      "source_fact_keys": [
+        "source_fact:v1:1fc3cae8fcb9d7a041be4841001f966313ae97e180ff818e4205ca12af6b96ac",
+        "source_fact:v1:400a719d6f784662fcee175bee8541d491094db687c78dec1e1a1fb09f93d3d7",
+        "source_fact:v1:6819787513ba8801295e797a461bfce8bddc0b7c22c9f90f9fd9850b3dac407d",
+        "source_fact:v1:87855019130da2b291f64b987ef1ca6e9087c21846374ecaff5c8976c5407139",
+        "source_fact:v1:abb863f5202688e38fb582ac081ce4da88db652c364c7dcedaa80f75557d14e3",
+        "source_fact:v1:c78f5812096b1fe5a7291797888058c5217d28a71f67acaf28fa6f8fa76c5d07",
+        "source_fact:v1:cf2127e6fcb7385ae1f20d4a79b9845e429346cba67c945f4dad50c66c1b1c39",
+        "source_fact:v1:d1698dd611a71823a80420cc17db537bf370a01797fc32b71af49e541fd84bd2",
+        "source_fact:v1:f1858e4d8845699f5fd22e54f8326833892079d21b509ceb77879b1139bf46fd"
+      ],
+      "source_published_kst": "2026-10-08T06:28+09:00",
+      "source_title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\"",
+      "telegram_core_fact": "스콧 베선트 미국 재무장관이 최근 물가와 장기 국채금리 급등의 주된 원인을 이란전쟁에 따른 에너지 충격으로 진단하며 전쟁이 끝나면 유가와 물가, 국채금리가 함께 내려갈 것이라고 전망했다.",
+      "title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\""
+    },
     "core:a6ab8402372e26472f5a41f6": {
       "first_seen_kst": "2026-10-08T02:26:35+09:00",
       "lanes": {
@@ -5952,6 +6047,26 @@
       "source_published_kst": "2026-10-07T14:21+09:00",
       "title": "리사 수 방한 계기로 韓ㆍAMD 반도체 협력 확대⋯정부, 내년 실증사업 속도 [종합]"
     },
+    "core:b641e22e85f08f8a941a735c": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008019700527",
+      "source": "연합뉴스",
+      "source_body_digest": "2051279c82c42ee4566aabf5543489fae0b704ebfa7578bf87880a66f503d720",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:48c1c1cd8feaf8d423533e09f6c4735f819176cb773cbed88253d9dc3542418c",
+      "source_fact_identity": "source_facts:v1:4808f7f033cbd16695646a569e28b8e3cedbd8ddadbbded7b732d44b12830e70",
+      "source_fact_keys": [
+        "source_fact:v1:53b21f727ee99e675b27b0956151ab479d8021145826c657aa830a9c1e8176c8",
+        "source_fact:v1:7e367b785b27be7ebccf403d48e3e27b5f03f30904efb18626854a6d7a9b2fe8"
+      ],
+      "source_published_kst": "2026-10-08T07:47+09:00",
+      "source_title": "[1보] 삼성전자 3분기 영업이익 107조4천억원…작년 대비 782.5%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 삼성전자[005930]는 연결 기준 올해 3분기 영업이익이 107조4천억원으로 지난해 동기보다 782.5% 증가한 것으로 잠정 집계됐다고 8일 공시했다.",
+      "title": "[1보] 삼성전자 3분기 영업이익 107조4천억원…작년 대비 782.5%↑ | 연합뉴스"
+    },
     "core:b714df4a48f59c84f55c0109": {
       "first_seen_kst": "2026-10-07T13:13:19+09:00",
       "lanes": {
@@ -6533,6 +6648,28 @@
       ],
       "source_published_kst": "2026-10-07T15:16+09:00",
       "title": "외국인 투자 늘었지만…제조업 '새 투자' 줄고 M&A에 몰렸다"
+    },
+    "core:c6177e6c2b485ff2e7e88418": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818270",
+      "source": "뉴시스",
+      "source_body_digest": "27f2770c5684f98603fbef84ef2899fd3928b7eede69840f416d8fdb9110e7c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d0daeba3ef0544251998731768e1c47b2d874de46d2e3e251b80ca7b6ab182bf",
+      "source_fact_keys": [
+        "source_fact:v1:15beafa511c1152b41715891da182e0f6f7f5daad71b4adb18b1adace1c8f582",
+        "source_fact:v1:240d12a05875dcb5a614849fdeffd5862026fb137f6e9e8ca8fe24371937494a",
+        "source_fact:v1:61ec01817645aae5287ede6db8f25bc74202993aa2495d1c1c9e2af20d368836",
+        "source_fact:v1:c6aa51d7cc599fe825bfd75cd3be9ee8d282eec67525dc8e7c6c151a8a2c213b"
+      ],
+      "source_published_kst": "2026-10-08T08:05+09:00",
+      "source_title": "삼성전자, 3Q 매출 195조·영업익 107조…대한민국 기업史 신기록 썼다",
+      "telegram_core_fact": "삼성전자가 올해 3분기 사상 처음으로 분기 영업이익 100조원을 돌파하며 한국 기업 역사를 새로 썼다.",
+      "title": "삼성전자, 3Q 매출 195조·영업익 107조…대한민국 기업史 신기록 썼다"
     },
     "core:c742a19dfc389209534ca38f": {
       "first_seen_kst": "2026-10-08T02:57:10+09:00",
@@ -7580,6 +7717,35 @@
       "source_title": "리사 수 AMD CEO, 韓 AI·반도체·게임 생태계 잇달아 접촉",
       "telegram_core_fact": "그는 한국을 단순한 메모리 공급처가 아닌 AMD의 AI 생태계를 함께 구축할 주요 파트너로 평가했다.",
       "title": "리사 수 AMD CEO, 韓 AI·반도체·게임 생태계 잇달아 접촉"
+    },
+    "core:e186a3e0ddbb2f8e5680a8c6": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008022400008",
+      "source": "연합뉴스",
+      "source_body_digest": "50712f4ba29b8dd1abf1b7da61fe5edb321a915412ec801e6197cf4a039c4886",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fca83cab886d6e1cde5b23697197024c8da94cbe2eefe78b417e96bdd315228a",
+      "source_fact_keys": [
+        "source_fact:v1:13cb50cec986b514df8a63e5a93cbf337c4d12d3455206a93c9288385a286e1c",
+        "source_fact:v1:1c9e2968ccba9e50c51dea9236395371db53a1e8d06b3785a4cc14ffffed8005",
+        "source_fact:v1:537274a15229e949482d0adcc2aecd4f752ca2713c2630e69e1552b722d243f7",
+        "source_fact:v1:63994cd6ae829bcc82dba2cbe6554b3c4c94bb6299040ac223d50508a32637ce",
+        "source_fact:v1:71fa4a7370e7ccd6f5b3eeb41dfaf3570f63c7804865dd29e48c8b4d202dc9a1",
+        "source_fact:v1:7c7209870fc49ddd5a730bc7f6874b0643d6c9e26e50ffc26024e44a0243ee35",
+        "source_fact:v1:7e367b785b27be7ebccf403d48e3e27b5f03f30904efb18626854a6d7a9b2fe8",
+        "source_fact:v1:80567dea27aeeb5e6dd48bdef433b48764a5a5c47503bbd4f86db961950a3be8",
+        "source_fact:v1:b3d0b08d90776db8f476fca6e2b4c8a138812dc601a7d561e58fbb5f7a51dcc9",
+        "source_fact:v1:d14cd60fbeda5142a95dd2fa51de8e0f895d52f2b65519af87c901f1d7a62ca7",
+        "source_fact:v1:f1922ecf5a1d704574bf3ef5e2d81f3b2817223836e384d587c1d00806734559"
+      ],
+      "source_published_kst": "2026-10-08T08:03+09:00",
+      "source_title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스",
+      "telegram_core_fact": "일단 삼성전자는 올해 3분기 연결 기준 영업이익이 107조4천억원으로 지난해 동기보다 782.5% 증가한 것으로 잠정 집계됐다고 공시했다.",
+      "title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스"
     },
     "core:e2d2896c7e9d1bee314a1add": {
       "first_seen_kst": "2026-10-08T01:26:16+09:00",
@@ -9269,21 +9435,31 @@
     "event:18ba35859ed93ea3445f36aa": {
       "first_seen_kst": "2026-10-08T06:10:43+09:00",
       "lanes": {
-        "live": "2026-10-08T07:50:51+09:00"
+        "live": "2026-10-08T08:12:34+09:00"
       },
-      "last_seen_kst": "2026-10-08T07:50:51+09:00",
-      "link": "https://www.fnnews.com/news/202610080532392425",
-      "source": "파이낸셜뉴스",
-      "source_body_digest": "94aee9f501a7bce05b393c3e73b4803b6c436c04367f7cb17a07081f4b5f5d15",
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008022400008",
+      "source": "연합뉴스",
+      "source_body_digest": "50712f4ba29b8dd1abf1b7da61fe5edb321a915412ec801e6197cf4a039c4886",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:5fcb02438e42b904af6d5c867a98fc34ce26296585c6595484ffd3c7df5e5b94",
+      "source_fact_identity": "source_facts:v1:fca83cab886d6e1cde5b23697197024c8da94cbe2eefe78b417e96bdd315228a",
       "source_fact_keys": [
-        "source_fact:v1:724f516f6ae26159fb787efb090c8382b2a2207b4fb4b0977369a00632399451"
+        "source_fact:v1:13cb50cec986b514df8a63e5a93cbf337c4d12d3455206a93c9288385a286e1c",
+        "source_fact:v1:1c9e2968ccba9e50c51dea9236395371db53a1e8d06b3785a4cc14ffffed8005",
+        "source_fact:v1:537274a15229e949482d0adcc2aecd4f752ca2713c2630e69e1552b722d243f7",
+        "source_fact:v1:63994cd6ae829bcc82dba2cbe6554b3c4c94bb6299040ac223d50508a32637ce",
+        "source_fact:v1:71fa4a7370e7ccd6f5b3eeb41dfaf3570f63c7804865dd29e48c8b4d202dc9a1",
+        "source_fact:v1:7c7209870fc49ddd5a730bc7f6874b0643d6c9e26e50ffc26024e44a0243ee35",
+        "source_fact:v1:7e367b785b27be7ebccf403d48e3e27b5f03f30904efb18626854a6d7a9b2fe8",
+        "source_fact:v1:80567dea27aeeb5e6dd48bdef433b48764a5a5c47503bbd4f86db961950a3be8",
+        "source_fact:v1:b3d0b08d90776db8f476fca6e2b4c8a138812dc601a7d561e58fbb5f7a51dcc9",
+        "source_fact:v1:d14cd60fbeda5142a95dd2fa51de8e0f895d52f2b65519af87c901f1d7a62ca7",
+        "source_fact:v1:f1922ecf5a1d704574bf3ef5e2d81f3b2817223836e384d587c1d00806734559"
       ],
-      "source_published_kst": "2026-10-08T05:32+09:00",
-      "source_title": "[뉴욕마감]국채금리 급등에 다우 0.66% 하락…S&P·나스닥 사상 최고서 후퇴",
-      "telegram_core_fact": "스탠더드앤드푸어스(S&P)500지수는 17.18포인트(0.22%) 내린 7801.75, 나스닥종합지수는 61.19포인트(0.22%) 떨어진 2만7538.69를 기록했다.",
-      "title": "[뉴욕마감]국채금리 급등에 다우 0.66% 하락…S&P·나스닥 사상 최고서 후퇴"
+      "source_published_kst": "2026-10-08T08:03+09:00",
+      "source_title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스",
+      "telegram_core_fact": "일단 삼성전자는 올해 3분기 연결 기준 영업이익이 107조4천억원으로 지난해 동기보다 782.5% 증가한 것으로 잠정 집계됐다고 공시했다.",
+      "title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스"
     },
     "event:193afa500eebedefe7deed86": {
       "first_seen_kst": "2026-10-02T10:55:46+09:00",
@@ -9996,6 +10172,30 @@
       "link": "https://busan.fnnews.com/news/202609251049550230",
       "source": "파이낸셜뉴스",
       "title": "\"추석 떡값 100만원 생겼다면…\" 운용사들은 '반도체·월배당·반반' 찍었다"
+    },
+    "event:2e1629e162d8f94bc4a542cc": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02427206645610952",
+      "source": "이데일리",
+      "source_body_digest": "9d06faa48c2f49c5c22ee8976ca3ffe6e1783cc831eac23fd7f80e250e3a25b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02ef56c1a0eb820b4641c522aba2b7106223a0568233630d19013760a9054e21",
+      "source_fact_keys": [
+        "source_fact:v1:030d1680e207d7fca3de1669e1a41d44228e2e6c9774b390117de8a66f488cd4",
+        "source_fact:v1:0d8264648045edd9a5d2b68e5c57c131f7515cf2d242521724900a6c6c20fee6",
+        "source_fact:v1:2557b32e686bda672b0375e7df69d31f511be3e42f87594fdc5062b81f0de62d",
+        "source_fact:v1:3f66e7177924907d30db5752dc7debbb2c4d15b1d68d4d0b0bf56db05433218f",
+        "source_fact:v1:40a969373a4eb82d2f38723122e68ab97658fb66a182d2e1b0ce27ade5c1f8be",
+        "source_fact:v1:67bf89a871c1c20f62ea4ed9bfc7ac80e88b7a541330696753750fe89d2ef96f"
+      ],
+      "source_published_kst": "2026-10-08T07:52+09:00",
+      "source_title": "NAVER, 하반기 실적 기대치 낮춰야…결국 수익 증명이 관건-메리츠",
+      "telegram_core_fact": "이효진 메리츠증권 연구원은 8일 보고서에서 NAVER의 3분기 연결 매출액을 전년비 11.0% 증가한 3조4844억원, 영업이익을 14.9% 감소한 4858억원으로 추정했다.",
+      "title": "NAVER, 하반기 실적 기대치 낮춰야…결국 수익 증명이 관건-메리츠"
     },
     "event:2ec69b63d73a274083c5bfb5": {
       "first_seen_kst": "2026-09-25T10:19:34+09:00",
@@ -13663,24 +13863,24 @@
     "event:a9c0dc518f880d430bbcffd6": {
       "first_seen_kst": "2026-10-08T05:01:11+09:00",
       "lanes": {
-        "live": "2026-10-08T05:17:22+09:00",
+        "live": "2026-10-08T08:12:34+09:00",
         "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-08T06:42:50+09:00",
-      "link": "https://www.newsis.com/view/NISX20261007_0003817414",
-      "source": "뉴시스",
-      "source_body_digest": "bf111c62915ca3cd4a69b2be1f7d27864f9aa5d11c508c32df575c1ef135c0c8",
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.hankyung.com/article/202610089567i",
+      "source": "한국경제",
+      "source_body_digest": "9cfb27592ac407b90d1295f82034a63fab38613b4b064f3e5412c0b6d648d142",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:cc0e240f556672664cf5c159e856da2b20ec61851fb04e3c0e05f53f658b3374",
+      "source_fact_identity": "source_facts:v1:b2fb072eed861740c567747a443e2cace6ec3c0f8463d19266c412a5776855ae",
       "source_fact_keys": [
-        "source_fact:v1:57fe685d52821c6de4b4d26aef16bc52e20107e932286794b61bbe0b3a1d7ed0",
-        "source_fact:v1:6a7264735db5fde9cc2c8c02c528822dc1b29f309c62cebca0cf6ce26678cfc5",
-        "source_fact:v1:b31129746af7a6a6225c75e44292b1b5af4c70eea73fdfb7fe1ede40b4f7b4c1"
+        "source_fact:v1:225efac09973c14d0aeb3b24f98bed1910a5da86fe6554c8ca0466aa7c31044b",
+        "source_fact:v1:6903ece1a2235e3cf7060f7e36204c16a7b422d09e60ef0e12c34cbf77d96763",
+        "source_fact:v1:817a71e077196a7bb8b69e422a409285957abf2dc8678ccbd828b324bf7fec7a"
       ],
-      "source_published_kst": "2026-10-08T05:00+09:00",
-      "source_title": "삼성전자, 올 3분기 실적 오늘 발표…韓기업 사상 첫 영업익 '100조' 달성하나",
-      "telegram_core_fact": "삼성전자가 올해 3분기 성적표를 발표하는 가운데, 메모리 반도체 호황에 힘입어 국내 기업 사상 최초로 분기 영업이익 100조원을 달성할 지 주목된다.",
-      "title": "삼성전자, 올 3분기 실적 오늘 발표…韓기업 사상 첫 영업익 '100조' 달성하나"
+      "source_published_kst": "2026-10-08T07:50+09:00",
+      "source_title": "삼성전자 3분기 영업이익 107조…반도체 슈퍼사이클에 4분기 연속 역대 최대",
+      "telegram_core_fact": "삼성전자는 3분기 영업이익이 107조4000억원으로 전년비 782.5% 증가한 것으로 잠정 집계됐다고 8일 발표했다.",
+      "title": "삼성전자 3분기 영업이익 107조…반도체 슈퍼사이클에 4분기 연속 역대 최대"
     },
     "event:a9dc5b3e4c7e6aef4cecc596": {
       "first_seen_kst": "2026-09-27T19:02:46+09:00",
@@ -13965,6 +14165,29 @@
       "link": "https://www.mk.co.kr/news/stock/12157522",
       "source": "매일경제",
       "title": "주가 상승 챙기고 배당금도 꼬박꼬박 … 고정커버드콜 인기"
+    },
+    "event:b2d66c5ce8ecf2c3067fdd62": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008019500002",
+      "source": "연합뉴스",
+      "source_body_digest": "69996ee13d3f5d67dafb37b25de479bb264c37716c61358c365d483650e037be",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:103114e0a5c7db4e2662c1b3adcfd16d0eee74afb85f3cd5f751513b86e633b9",
+      "source_fact_keys": [
+        "source_fact:v1:2324f176794be4303c59b5a881ccced4a14b735ec4d98c85aa343a8da71b533b",
+        "source_fact:v1:4330b5a63f086831545d99a4341d9f5e85f30a2c36be7207fdf98c6f677bc0c0",
+        "source_fact:v1:67a7a0793d91410d104e8e4fecfe6cb5a4b6258c4ca6c8c78bc725bebe60b3a0",
+        "source_fact:v1:a155ef8819c98dfd95be5ebabeae6082e7c045c252db482391308f66c5eb11bd",
+        "source_fact:v1:c41519d06f2126c754016a248c41fcc6165a06d16d64e279d773e7c6729a396e"
+      ],
+      "source_published_kst": "2026-10-08T08:00+09:00",
+      "source_title": "8월 경상수지 461.1억달러 흑자, 역대 2위…반도체 수출 호조 | 연합뉴스",
+      "telegram_core_fact": "운송수지는 최근 수출운임 상승 영향으로 흑자 규모가 전월 6천만달러에서 8월 5억2천만달러로 늘었고, 지식재산권사용료수지는 전월 5억4천만달러 적자에서 8월 3억9천만달러로 적자 규모가 줄었다.",
+      "title": "8월 경상수지 461.1억달러 흑자, 역대 2위…반도체 수출 호조 | 연합뉴스"
     },
     "event:b366dbd3d64e8fd34ffadf6e": {
       "first_seen_kst": "2026-09-19T07:23:13+09:00",
@@ -14467,30 +14690,24 @@
     "event:c158b090c5d842f8525a5d6f": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
       "lanes": {
-        "live": "2026-10-08T07:27:34+09:00"
+        "live": "2026-10-08T08:12:34+09:00"
       },
-      "last_seen_kst": "2026-10-08T07:27:34+09:00",
-      "link": "https://www.mt.co.kr/stock/2026/10/08/2026100723047088991",
-      "source": "머니투데이",
-      "source_body_digest": "2abf5f5a85c90eb4ac2d469f746e254e00cbeec2fb83cf58a9f1d2b2592f697c",
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818270",
+      "source": "뉴시스",
+      "source_body_digest": "27f2770c5684f98603fbef84ef2899fd3928b7eede69840f416d8fdb9110e7c0",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:d468c7902499c671b6bff1d97f1507f9353eebbd028dd8170feba2fd749cac15",
+      "source_fact_identity": "source_facts:v1:d0daeba3ef0544251998731768e1c47b2d874de46d2e3e251b80ca7b6ab182bf",
       "source_fact_keys": [
-        "source_fact:v1:02c7fcbb553429e4f8e62fffb2c583730ec608ca390f1ded0446836fcd45ab50",
-        "source_fact:v1:0c6ba7a1b85af9aa58269f1b432fca3073c70fc51caac214129f2f3912e1d7c8",
-        "source_fact:v1:0edb840833da40f3710cced4b8bf8694be3f0ffc739810e51c85a15167d3ba81",
-        "source_fact:v1:8451ffe1c2061da4133b3f8d25dcfb6f7fefcb1464d04b35473f2d12ed901bfb",
-        "source_fact:v1:9a867fec83db6cbb54b27d8193eaf5328d22c76f9e2d27c2fd03537089ea9c2e",
-        "source_fact:v1:b336c1ae786778230e567b3992780d6f19f9568bc4087dac26e68e1524543680",
-        "source_fact:v1:cf3c2b184ae2dc4b990472171265450d2b9e1e1875e22a65d743300048f26b2c",
-        "source_fact:v1:d6623c930336adeb300b168d0b9556cfad0be1d9c7673b77b360b7eb0eda75b8",
-        "source_fact:v1:dba40aa2436a5979ce2997a39a750e80a5662c9ee1d2fde6ec0f78b9e9822864",
-        "source_fact:v1:e07bbde473e660a464974e690f3eb7a391fdcc646cdf6bc080aa362d7cfe23dc"
+        "source_fact:v1:15beafa511c1152b41715891da182e0f6f7f5daad71b4adb18b1adace1c8f582",
+        "source_fact:v1:240d12a05875dcb5a614849fdeffd5862026fb137f6e9e8ca8fe24371937494a",
+        "source_fact:v1:61ec01817645aae5287ede6db8f25bc74202993aa2495d1c1c9e2af20d368836",
+        "source_fact:v1:c6aa51d7cc599fe825bfd75cd3be9ee8d282eec67525dc8e7c6c151a8a2c213b"
       ],
-      "source_published_kst": "2026-10-08T07:05+09:00",
-      "source_title": "[고래사냥] '한미반도체·지앤비에스 에코·두산로보틱스! 내일장 고래 종목은?!",
-      "telegram_core_fact": "SK하이닉스의 용인 1기 팹 가동이 임박함에 따라 케이씨텍과 지앤비에스 에코 등 관련 반도체 설비 기업들이 주목받았다. 한미반도체는 TC본더 장비 공급과 8공장 증설을 추진 중이며 곽동신 회장의 장내매수 소식이 전해졌다.",
-      "title": "[고래사냥] '한미반도체·지앤비에스 에코·두산로보틱스! 내일장 고래 종목은?!"
+      "source_published_kst": "2026-10-08T08:05+09:00",
+      "source_title": "삼성전자, 3Q 매출 195조·영업익 107조…대한민국 기업史 신기록 썼다",
+      "telegram_core_fact": "삼성전자가 올해 3분기 사상 처음으로 분기 영업이익 100조원을 돌파하며 한국 기업 역사를 새로 썼다.",
+      "title": "삼성전자, 3Q 매출 195조·영업익 107조…대한민국 기업史 신기록 썼다"
     },
     "event:c1e317ded2d88411e7e58d30": {
       "first_seen_kst": "2026-09-28T05:09:16+09:00",
@@ -15634,6 +15851,26 @@
       "link": "https://www.newsis.com/view/NISX20260923_0003802517",
       "source": "뉴시스",
       "title": "롯데카드, 영업정지 한 달 새 회원 8만명 감소…PLCC로 회복 시동"
+    },
+    "event:e3ccb7930e9125a85315285a": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008019700527",
+      "source": "연합뉴스",
+      "source_body_digest": "2051279c82c42ee4566aabf5543489fae0b704ebfa7578bf87880a66f503d720",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:48c1c1cd8feaf8d423533e09f6c4735f819176cb773cbed88253d9dc3542418c",
+      "source_fact_identity": "source_facts:v1:4808f7f033cbd16695646a569e28b8e3cedbd8ddadbbded7b732d44b12830e70",
+      "source_fact_keys": [
+        "source_fact:v1:53b21f727ee99e675b27b0956151ab479d8021145826c657aa830a9c1e8176c8",
+        "source_fact:v1:7e367b785b27be7ebccf403d48e3e27b5f03f30904efb18626854a6d7a9b2fe8"
+      ],
+      "source_published_kst": "2026-10-08T07:47+09:00",
+      "source_title": "[1보] 삼성전자 3분기 영업이익 107조4천억원…작년 대비 782.5%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 삼성전자[005930]는 연결 기준 올해 3분기 영업이익이 107조4천억원으로 지난해 동기보다 782.5% 증가한 것으로 잠정 집계됐다고 8일 공시했다.",
+      "title": "[1보] 삼성전자 3분기 영업이익 107조4천억원…작년 대비 782.5%↑ | 연합뉴스"
     },
     "event:e418d5497bb7017056156de6": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
@@ -20106,6 +20343,33 @@
       "source_published_kst": "2026-10-06T11:19+09:00",
       "title": "넥스틴 수주공시 - Wafer Inspection System 공급계약 254.4억원 (매출액대비 38.02 %)"
     },
+    "fact:21ddbc7a280bc7d49b5db6d7": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6313654",
+      "source": "뉴스1",
+      "source_body_digest": "a307f1b57f0fa5492ed35dfbfaded8ea3190c213a88e024d64d695fb2779b9f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:536335c3313b67d94e5583143650314837039913348d14940482a73be2a5be3b",
+      "source_fact_keys": [
+        "source_fact:v1:1fc3cae8fcb9d7a041be4841001f966313ae97e180ff818e4205ca12af6b96ac",
+        "source_fact:v1:400a719d6f784662fcee175bee8541d491094db687c78dec1e1a1fb09f93d3d7",
+        "source_fact:v1:6819787513ba8801295e797a461bfce8bddc0b7c22c9f90f9fd9850b3dac407d",
+        "source_fact:v1:87855019130da2b291f64b987ef1ca6e9087c21846374ecaff5c8976c5407139",
+        "source_fact:v1:abb863f5202688e38fb582ac081ce4da88db652c364c7dcedaa80f75557d14e3",
+        "source_fact:v1:c78f5812096b1fe5a7291797888058c5217d28a71f67acaf28fa6f8fa76c5d07",
+        "source_fact:v1:cf2127e6fcb7385ae1f20d4a79b9845e429346cba67c945f4dad50c66c1b1c39",
+        "source_fact:v1:d1698dd611a71823a80420cc17db537bf370a01797fc32b71af49e541fd84bd2",
+        "source_fact:v1:f1858e4d8845699f5fd22e54f8326833892079d21b509ceb77879b1139bf46fd"
+      ],
+      "source_published_kst": "2026-10-08T06:28+09:00",
+      "source_title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\"",
+      "telegram_core_fact": "스콧 베선트 미국 재무장관이 최근 물가와 장기 국채금리 급등의 주된 원인을 이란전쟁에 따른 에너지 충격으로 진단하며 전쟁이 끝나면 유가와 물가, 국채금리가 함께 내려갈 것이라고 전망했다.",
+      "title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\""
+    },
     "fact:2227523b62d4e46ab7d1aa03": {
       "first_seen_kst": "2026-10-07T22:37:58+09:00",
       "lanes": {
@@ -21019,6 +21283,35 @@
       ],
       "source_published_kst": "2026-10-07T11:22+09:00",
       "title": "LG전자 3분기 영업익 7천818억…3분기 누적 첫 4조 넘어(종합)"
+    },
+    "fact:2d42887ca8ac9029a0748320": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008022400008",
+      "source": "연합뉴스",
+      "source_body_digest": "50712f4ba29b8dd1abf1b7da61fe5edb321a915412ec801e6197cf4a039c4886",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fca83cab886d6e1cde5b23697197024c8da94cbe2eefe78b417e96bdd315228a",
+      "source_fact_keys": [
+        "source_fact:v1:13cb50cec986b514df8a63e5a93cbf337c4d12d3455206a93c9288385a286e1c",
+        "source_fact:v1:1c9e2968ccba9e50c51dea9236395371db53a1e8d06b3785a4cc14ffffed8005",
+        "source_fact:v1:537274a15229e949482d0adcc2aecd4f752ca2713c2630e69e1552b722d243f7",
+        "source_fact:v1:63994cd6ae829bcc82dba2cbe6554b3c4c94bb6299040ac223d50508a32637ce",
+        "source_fact:v1:71fa4a7370e7ccd6f5b3eeb41dfaf3570f63c7804865dd29e48c8b4d202dc9a1",
+        "source_fact:v1:7c7209870fc49ddd5a730bc7f6874b0643d6c9e26e50ffc26024e44a0243ee35",
+        "source_fact:v1:7e367b785b27be7ebccf403d48e3e27b5f03f30904efb18626854a6d7a9b2fe8",
+        "source_fact:v1:80567dea27aeeb5e6dd48bdef433b48764a5a5c47503bbd4f86db961950a3be8",
+        "source_fact:v1:b3d0b08d90776db8f476fca6e2b4c8a138812dc601a7d561e58fbb5f7a51dcc9",
+        "source_fact:v1:d14cd60fbeda5142a95dd2fa51de8e0f895d52f2b65519af87c901f1d7a62ca7",
+        "source_fact:v1:f1922ecf5a1d704574bf3ef5e2d81f3b2817223836e384d587c1d00806734559"
+      ],
+      "source_published_kst": "2026-10-08T08:03+09:00",
+      "source_title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스",
+      "telegram_core_fact": "일단 삼성전자는 올해 3분기 연결 기준 영업이익이 107조4천억원으로 지난해 동기보다 782.5% 증가한 것으로 잠정 집계됐다고 공시했다.",
+      "title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스"
     },
     "fact:2d4d3a2ce7768912550af2de": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -23463,6 +23756,29 @@
       ],
       "source_published_kst": "2026-10-06T14:33+09:00",
       "title": "SK이노베이션, 윤활기유·배터리 성장 전망…\"올해 첫 연간 영업익 10조 노린다\""
+    },
+    "fact:447644f0092befe4b75ad3c1": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008019500002",
+      "source": "연합뉴스",
+      "source_body_digest": "69996ee13d3f5d67dafb37b25de479bb264c37716c61358c365d483650e037be",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:103114e0a5c7db4e2662c1b3adcfd16d0eee74afb85f3cd5f751513b86e633b9",
+      "source_fact_keys": [
+        "source_fact:v1:2324f176794be4303c59b5a881ccced4a14b735ec4d98c85aa343a8da71b533b",
+        "source_fact:v1:4330b5a63f086831545d99a4341d9f5e85f30a2c36be7207fdf98c6f677bc0c0",
+        "source_fact:v1:67a7a0793d91410d104e8e4fecfe6cb5a4b6258c4ca6c8c78bc725bebe60b3a0",
+        "source_fact:v1:a155ef8819c98dfd95be5ebabeae6082e7c045c252db482391308f66c5eb11bd",
+        "source_fact:v1:c41519d06f2126c754016a248c41fcc6165a06d16d64e279d773e7c6729a396e"
+      ],
+      "source_published_kst": "2026-10-08T08:00+09:00",
+      "source_title": "8월 경상수지 461.1억달러 흑자, 역대 2위…반도체 수출 호조 | 연합뉴스",
+      "telegram_core_fact": "운송수지는 최근 수출운임 상승 영향으로 흑자 규모가 전월 6천만달러에서 8월 5억2천만달러로 늘었고, 지식재산권사용료수지는 전월 5억4천만달러 적자에서 8월 3억9천만달러로 적자 규모가 줄었다.",
+      "title": "8월 경상수지 461.1억달러 흑자, 역대 2위…반도체 수출 호조 | 연합뉴스"
     },
     "fact:44a3a1982217d28ade8eb5b6": {
       "first_seen_kst": "2026-10-06T19:46:03+09:00",
@@ -26986,6 +27302,28 @@
       "source_published_kst": "2026-10-06T18:28+09:00",
       "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 공급 계약 체결⋯K배터리 핵심 도약"
     },
+    "fact:6aa2dcf0c5986a5531722814": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818270",
+      "source": "뉴시스",
+      "source_body_digest": "27f2770c5684f98603fbef84ef2899fd3928b7eede69840f416d8fdb9110e7c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d0daeba3ef0544251998731768e1c47b2d874de46d2e3e251b80ca7b6ab182bf",
+      "source_fact_keys": [
+        "source_fact:v1:15beafa511c1152b41715891da182e0f6f7f5daad71b4adb18b1adace1c8f582",
+        "source_fact:v1:240d12a05875dcb5a614849fdeffd5862026fb137f6e9e8ca8fe24371937494a",
+        "source_fact:v1:61ec01817645aae5287ede6db8f25bc74202993aa2495d1c1c9e2af20d368836",
+        "source_fact:v1:c6aa51d7cc599fe825bfd75cd3be9ee8d282eec67525dc8e7c6c151a8a2c213b"
+      ],
+      "source_published_kst": "2026-10-08T08:05+09:00",
+      "source_title": "삼성전자, 3Q 매출 195조·영업익 107조…대한민국 기업史 신기록 썼다",
+      "telegram_core_fact": "삼성전자가 올해 3분기 사상 처음으로 분기 영업이익 100조원을 돌파하며 한국 기업 역사를 새로 썼다.",
+      "title": "삼성전자, 3Q 매출 195조·영업익 107조…대한민국 기업史 신기록 썼다"
+    },
     "fact:6b1c4e42c745bf0440d50916": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -28430,6 +28768,30 @@
       ],
       "source_published_kst": "2026-10-06T07:46+09:00",
       "title": "고금리에도 꺾이지 않는 AI 투자…연준 긴축 고민"
+    },
+    "fact:7a3f630f3f020960423c12d0": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02427206645610952",
+      "source": "이데일리",
+      "source_body_digest": "9d06faa48c2f49c5c22ee8976ca3ffe6e1783cc831eac23fd7f80e250e3a25b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02ef56c1a0eb820b4641c522aba2b7106223a0568233630d19013760a9054e21",
+      "source_fact_keys": [
+        "source_fact:v1:030d1680e207d7fca3de1669e1a41d44228e2e6c9774b390117de8a66f488cd4",
+        "source_fact:v1:0d8264648045edd9a5d2b68e5c57c131f7515cf2d242521724900a6c6c20fee6",
+        "source_fact:v1:2557b32e686bda672b0375e7df69d31f511be3e42f87594fdc5062b81f0de62d",
+        "source_fact:v1:3f66e7177924907d30db5752dc7debbb2c4d15b1d68d4d0b0bf56db05433218f",
+        "source_fact:v1:40a969373a4eb82d2f38723122e68ab97658fb66a182d2e1b0ce27ade5c1f8be",
+        "source_fact:v1:67bf89a871c1c20f62ea4ed9bfc7ac80e88b7a541330696753750fe89d2ef96f"
+      ],
+      "source_published_kst": "2026-10-08T07:52+09:00",
+      "source_title": "NAVER, 하반기 실적 기대치 낮춰야…결국 수익 증명이 관건-메리츠",
+      "telegram_core_fact": "이효진 메리츠증권 연구원은 8일 보고서에서 NAVER의 3분기 연결 매출액을 전년비 11.0% 증가한 3조4844억원, 영업이익을 14.9% 감소한 4858억원으로 추정했다.",
+      "title": "NAVER, 하반기 실적 기대치 낮춰야…결국 수익 증명이 관건-메리츠"
     },
     "fact:7a587283917ec7ae1d87e897": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
@@ -34922,6 +35284,26 @@
       "source_published_kst": "2026-10-07T16:12+09:00",
       "title": "파라마운트·워너 합병에 '미디어 공룡' 탄생…107조원 부채 시험대"
     },
+    "fact:bed76973d2877337c4b5f759": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008019700527",
+      "source": "연합뉴스",
+      "source_body_digest": "2051279c82c42ee4566aabf5543489fae0b704ebfa7578bf87880a66f503d720",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:48c1c1cd8feaf8d423533e09f6c4735f819176cb773cbed88253d9dc3542418c",
+      "source_fact_identity": "source_facts:v1:4808f7f033cbd16695646a569e28b8e3cedbd8ddadbbded7b732d44b12830e70",
+      "source_fact_keys": [
+        "source_fact:v1:53b21f727ee99e675b27b0956151ab479d8021145826c657aa830a9c1e8176c8",
+        "source_fact:v1:7e367b785b27be7ebccf403d48e3e27b5f03f30904efb18626854a6d7a9b2fe8"
+      ],
+      "source_published_kst": "2026-10-08T07:47+09:00",
+      "source_title": "[1보] 삼성전자 3분기 영업이익 107조4천억원…작년 대비 782.5%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 삼성전자[005930]는 연결 기준 올해 3분기 영업이익이 107조4천억원으로 지난해 동기보다 782.5% 증가한 것으로 잠정 집계됐다고 8일 공시했다.",
+      "title": "[1보] 삼성전자 3분기 영업이익 107조4천억원…작년 대비 782.5%↑ | 연합뉴스"
+    },
     "fact:bef0ba4c16398a307c496093": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
       "lanes": {
@@ -38581,6 +38963,27 @@
       "telegram_core_fact": "경기 둔화로 기업 이익이 줄어든 데다 법인세율 인하도 세수 감소에 영향을 미쳤다는 설명이었다.",
       "title": "세수 부족해 올린 법인세…63조 초과세수에 고개드는 '인하' 요구"
     },
+    "fact:e25b515931e15786d4441318": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.hankyung.com/article/202610089567i",
+      "source": "한국경제",
+      "source_body_digest": "9cfb27592ac407b90d1295f82034a63fab38613b4b064f3e5412c0b6d648d142",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2fb072eed861740c567747a443e2cace6ec3c0f8463d19266c412a5776855ae",
+      "source_fact_keys": [
+        "source_fact:v1:225efac09973c14d0aeb3b24f98bed1910a5da86fe6554c8ca0466aa7c31044b",
+        "source_fact:v1:6903ece1a2235e3cf7060f7e36204c16a7b422d09e60ef0e12c34cbf77d96763",
+        "source_fact:v1:817a71e077196a7bb8b69e422a409285957abf2dc8678ccbd828b324bf7fec7a"
+      ],
+      "source_published_kst": "2026-10-08T07:50+09:00",
+      "source_title": "삼성전자 3분기 영업이익 107조…반도체 슈퍼사이클에 4분기 연속 역대 최대",
+      "telegram_core_fact": "삼성전자는 3분기 영업이익이 107조4000억원으로 전년비 782.5% 증가한 것으로 잠정 집계됐다고 8일 발표했다.",
+      "title": "삼성전자 3분기 영업이익 107조…반도체 슈퍼사이클에 4분기 연속 역대 최대"
+    },
     "fact:e2e4d56da4cfbda6c40643a9": {
       "first_seen_kst": "2026-10-07T19:32:28+09:00",
       "lanes": {
@@ -41999,6 +42402,35 @@
       "source_published_kst": "2026-10-05T09:00+09:00",
       "title": "우리은행, '우다페' 연계 '다함께 적금'…최고 연 9.0% 금리 | 연합뉴스"
     },
+    "link:03b1b11a311cf37059bd053d": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008022400008",
+      "source": "연합뉴스",
+      "source_body_digest": "50712f4ba29b8dd1abf1b7da61fe5edb321a915412ec801e6197cf4a039c4886",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fca83cab886d6e1cde5b23697197024c8da94cbe2eefe78b417e96bdd315228a",
+      "source_fact_keys": [
+        "source_fact:v1:13cb50cec986b514df8a63e5a93cbf337c4d12d3455206a93c9288385a286e1c",
+        "source_fact:v1:1c9e2968ccba9e50c51dea9236395371db53a1e8d06b3785a4cc14ffffed8005",
+        "source_fact:v1:537274a15229e949482d0adcc2aecd4f752ca2713c2630e69e1552b722d243f7",
+        "source_fact:v1:63994cd6ae829bcc82dba2cbe6554b3c4c94bb6299040ac223d50508a32637ce",
+        "source_fact:v1:71fa4a7370e7ccd6f5b3eeb41dfaf3570f63c7804865dd29e48c8b4d202dc9a1",
+        "source_fact:v1:7c7209870fc49ddd5a730bc7f6874b0643d6c9e26e50ffc26024e44a0243ee35",
+        "source_fact:v1:7e367b785b27be7ebccf403d48e3e27b5f03f30904efb18626854a6d7a9b2fe8",
+        "source_fact:v1:80567dea27aeeb5e6dd48bdef433b48764a5a5c47503bbd4f86db961950a3be8",
+        "source_fact:v1:b3d0b08d90776db8f476fca6e2b4c8a138812dc601a7d561e58fbb5f7a51dcc9",
+        "source_fact:v1:d14cd60fbeda5142a95dd2fa51de8e0f895d52f2b65519af87c901f1d7a62ca7",
+        "source_fact:v1:f1922ecf5a1d704574bf3ef5e2d81f3b2817223836e384d587c1d00806734559"
+      ],
+      "source_published_kst": "2026-10-08T08:03+09:00",
+      "source_title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스",
+      "telegram_core_fact": "일단 삼성전자는 올해 3분기 연결 기준 영업이익이 107조4천억원으로 지난해 동기보다 782.5% 증가한 것으로 잠정 집계됐다고 공시했다.",
+      "title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스"
+    },
     "link:03e3663aa7ae3cf50e8af5eb": {
       "first_seen_kst": "2026-09-30T02:23:41+09:00",
       "lanes": {
@@ -42479,6 +42911,26 @@
       "source_title": "식약처, 한미약품 ‘에페글레나타이드’ 국산 1호 비만치료제로 허가",
       "telegram_core_fact": "한미약품은 지난해 12월 식약처에 허가를 신청했고, 식약처의 글로벌 혁신제품 신속심사(GIFT) 대상에 지정돼 일반 허가 절차보다 심사 기간이 단축돼 이번에 품목허가를 받았다.",
       "title": "식약처, 한미약품 ‘에페글레나타이드’ 국산 1호 비만치료제로 허가"
+    },
+    "link:07541e3ee150a0ab25e7982a": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008019700527",
+      "source": "연합뉴스",
+      "source_body_digest": "2051279c82c42ee4566aabf5543489fae0b704ebfa7578bf87880a66f503d720",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:48c1c1cd8feaf8d423533e09f6c4735f819176cb773cbed88253d9dc3542418c",
+      "source_fact_identity": "source_facts:v1:4808f7f033cbd16695646a569e28b8e3cedbd8ddadbbded7b732d44b12830e70",
+      "source_fact_keys": [
+        "source_fact:v1:53b21f727ee99e675b27b0956151ab479d8021145826c657aa830a9c1e8176c8",
+        "source_fact:v1:7e367b785b27be7ebccf403d48e3e27b5f03f30904efb18626854a6d7a9b2fe8"
+      ],
+      "source_published_kst": "2026-10-08T07:47+09:00",
+      "source_title": "[1보] 삼성전자 3분기 영업이익 107조4천억원…작년 대비 782.5%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 삼성전자[005930]는 연결 기준 올해 3분기 영업이익이 107조4천억원으로 지난해 동기보다 782.5% 증가한 것으로 잠정 집계됐다고 8일 공시했다.",
+      "title": "[1보] 삼성전자 3분기 영업이익 107조4천억원…작년 대비 782.5%↑ | 연합뉴스"
     },
     "link:0768cd14005a818e5a48da6a": {
       "first_seen_kst": "2026-10-06T19:33:48+09:00",
@@ -43249,6 +43701,29 @@
       "link": "https://www.yna.co.kr/view/AKR20261001163900003",
       "source": "연합뉴스",
       "title": "한전·SK하이닉스, 반도체 산단 안정적 전력공급 위해 맞손 | 연합뉴스"
+    },
+    "link:0c2e61cb6a24fbb2801cb72f": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008019500002",
+      "source": "연합뉴스",
+      "source_body_digest": "69996ee13d3f5d67dafb37b25de479bb264c37716c61358c365d483650e037be",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:103114e0a5c7db4e2662c1b3adcfd16d0eee74afb85f3cd5f751513b86e633b9",
+      "source_fact_keys": [
+        "source_fact:v1:2324f176794be4303c59b5a881ccced4a14b735ec4d98c85aa343a8da71b533b",
+        "source_fact:v1:4330b5a63f086831545d99a4341d9f5e85f30a2c36be7207fdf98c6f677bc0c0",
+        "source_fact:v1:67a7a0793d91410d104e8e4fecfe6cb5a4b6258c4ca6c8c78bc725bebe60b3a0",
+        "source_fact:v1:a155ef8819c98dfd95be5ebabeae6082e7c045c252db482391308f66c5eb11bd",
+        "source_fact:v1:c41519d06f2126c754016a248c41fcc6165a06d16d64e279d773e7c6729a396e"
+      ],
+      "source_published_kst": "2026-10-08T08:00+09:00",
+      "source_title": "8월 경상수지 461.1억달러 흑자, 역대 2위…반도체 수출 호조 | 연합뉴스",
+      "telegram_core_fact": "운송수지는 최근 수출운임 상승 영향으로 흑자 규모가 전월 6천만달러에서 8월 5억2천만달러로 늘었고, 지식재산권사용료수지는 전월 5억4천만달러 적자에서 8월 3억9천만달러로 적자 규모가 줄었다.",
+      "title": "8월 경상수지 461.1억달러 흑자, 역대 2위…반도체 수출 호조 | 연합뉴스"
     },
     "link:0c3abc3a45ced3d8eadfd02c": {
       "first_seen_kst": "2026-09-22T05:22:51+09:00",
@@ -45403,6 +45878,30 @@
       ],
       "source_published_kst": "2026-10-05T19:02+09:00",
       "title": "세제·부동산·대미투자… 李정부 2년차 정책 검증 '경제 국감' [국정감사 핫이슈]"
+    },
+    "link:18a6b1aa1e1dcc123d60ea52": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02427206645610952",
+      "source": "이데일리",
+      "source_body_digest": "9d06faa48c2f49c5c22ee8976ca3ffe6e1783cc831eac23fd7f80e250e3a25b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02ef56c1a0eb820b4641c522aba2b7106223a0568233630d19013760a9054e21",
+      "source_fact_keys": [
+        "source_fact:v1:030d1680e207d7fca3de1669e1a41d44228e2e6c9774b390117de8a66f488cd4",
+        "source_fact:v1:0d8264648045edd9a5d2b68e5c57c131f7515cf2d242521724900a6c6c20fee6",
+        "source_fact:v1:2557b32e686bda672b0375e7df69d31f511be3e42f87594fdc5062b81f0de62d",
+        "source_fact:v1:3f66e7177924907d30db5752dc7debbb2c4d15b1d68d4d0b0bf56db05433218f",
+        "source_fact:v1:40a969373a4eb82d2f38723122e68ab97658fb66a182d2e1b0ce27ade5c1f8be",
+        "source_fact:v1:67bf89a871c1c20f62ea4ed9bfc7ac80e88b7a541330696753750fe89d2ef96f"
+      ],
+      "source_published_kst": "2026-10-08T07:52+09:00",
+      "source_title": "NAVER, 하반기 실적 기대치 낮춰야…결국 수익 증명이 관건-메리츠",
+      "telegram_core_fact": "이효진 메리츠증권 연구원은 8일 보고서에서 NAVER의 3분기 연결 매출액을 전년비 11.0% 증가한 3조4844억원, 영업이익을 14.9% 감소한 4858억원으로 추정했다.",
+      "title": "NAVER, 하반기 실적 기대치 낮춰야…결국 수익 증명이 관건-메리츠"
     },
     "link:18b8adeffa2e853897125118": {
       "first_seen_kst": "2026-10-08T01:26:16+09:00",
@@ -58413,6 +58912,28 @@
       "telegram_core_fact": "이처럼 주인 잃은 주식이 발생하는 것은 회사의 유상증자 또는 무상증자, 주식 배당 등으로 발행된 주권이 수령되지 않아서다.",
       "title": "'주인 못찾은 주식' 1.5조원 육박…미수령 주주 2만6천명 | 연합뉴스"
     },
+    "link:65a8ea03feda12146b5ec83c": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818270",
+      "source": "뉴시스",
+      "source_body_digest": "27f2770c5684f98603fbef84ef2899fd3928b7eede69840f416d8fdb9110e7c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d0daeba3ef0544251998731768e1c47b2d874de46d2e3e251b80ca7b6ab182bf",
+      "source_fact_keys": [
+        "source_fact:v1:15beafa511c1152b41715891da182e0f6f7f5daad71b4adb18b1adace1c8f582",
+        "source_fact:v1:240d12a05875dcb5a614849fdeffd5862026fb137f6e9e8ca8fe24371937494a",
+        "source_fact:v1:61ec01817645aae5287ede6db8f25bc74202993aa2495d1c1c9e2af20d368836",
+        "source_fact:v1:c6aa51d7cc599fe825bfd75cd3be9ee8d282eec67525dc8e7c6c151a8a2c213b"
+      ],
+      "source_published_kst": "2026-10-08T08:05+09:00",
+      "source_title": "삼성전자, 3Q 매출 195조·영업익 107조…대한민국 기업史 신기록 썼다",
+      "telegram_core_fact": "삼성전자가 올해 3분기 사상 처음으로 분기 영업이익 100조원을 돌파하며 한국 기업 역사를 새로 썼다.",
+      "title": "삼성전자, 3Q 매출 195조·영업익 107조…대한민국 기업史 신기록 썼다"
+    },
     "link:65c8a95037c4702eff4ac809": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
       "lanes": {
@@ -59126,6 +59647,27 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-03T10:05+09:00",
       "title": "나스닥 1%, 美반도체지수 2% 상승…연휴 뒤 韓증시도 따라 웃을까"
+    },
+    "link:6a2c26eeea5808dd5040d3f1": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.hankyung.com/article/202610089567i",
+      "source": "한국경제",
+      "source_body_digest": "9cfb27592ac407b90d1295f82034a63fab38613b4b064f3e5412c0b6d648d142",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2fb072eed861740c567747a443e2cace6ec3c0f8463d19266c412a5776855ae",
+      "source_fact_keys": [
+        "source_fact:v1:225efac09973c14d0aeb3b24f98bed1910a5da86fe6554c8ca0466aa7c31044b",
+        "source_fact:v1:6903ece1a2235e3cf7060f7e36204c16a7b422d09e60ef0e12c34cbf77d96763",
+        "source_fact:v1:817a71e077196a7bb8b69e422a409285957abf2dc8678ccbd828b324bf7fec7a"
+      ],
+      "source_published_kst": "2026-10-08T07:50+09:00",
+      "source_title": "삼성전자 3분기 영업이익 107조…반도체 슈퍼사이클에 4분기 연속 역대 최대",
+      "telegram_core_fact": "삼성전자는 3분기 영업이익이 107조4000억원으로 전년비 782.5% 증가한 것으로 잠정 집계됐다고 8일 발표했다.",
+      "title": "삼성전자 3분기 영업이익 107조…반도체 슈퍼사이클에 4분기 연속 역대 최대"
     },
     "link:6a3680414cd99602ee0dc434": {
       "first_seen_kst": "2026-10-01T17:59:22+09:00",
@@ -76195,6 +76737,33 @@
       "source_published_kst": "2026-10-03T06:54+09:00",
       "title": "국제유가, G7 비축유 방출에 하락⋯WTI 1.90%↓[상보]"
     },
+    "link:d341f43f3720e3dfcd026f18": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6313654",
+      "source": "뉴스1",
+      "source_body_digest": "a307f1b57f0fa5492ed35dfbfaded8ea3190c213a88e024d64d695fb2779b9f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:536335c3313b67d94e5583143650314837039913348d14940482a73be2a5be3b",
+      "source_fact_keys": [
+        "source_fact:v1:1fc3cae8fcb9d7a041be4841001f966313ae97e180ff818e4205ca12af6b96ac",
+        "source_fact:v1:400a719d6f784662fcee175bee8541d491094db687c78dec1e1a1fb09f93d3d7",
+        "source_fact:v1:6819787513ba8801295e797a461bfce8bddc0b7c22c9f90f9fd9850b3dac407d",
+        "source_fact:v1:87855019130da2b291f64b987ef1ca6e9087c21846374ecaff5c8976c5407139",
+        "source_fact:v1:abb863f5202688e38fb582ac081ce4da88db652c364c7dcedaa80f75557d14e3",
+        "source_fact:v1:c78f5812096b1fe5a7291797888058c5217d28a71f67acaf28fa6f8fa76c5d07",
+        "source_fact:v1:cf2127e6fcb7385ae1f20d4a79b9845e429346cba67c945f4dad50c66c1b1c39",
+        "source_fact:v1:d1698dd611a71823a80420cc17db537bf370a01797fc32b71af49e541fd84bd2",
+        "source_fact:v1:f1858e4d8845699f5fd22e54f8326833892079d21b509ceb77879b1139bf46fd"
+      ],
+      "source_published_kst": "2026-10-08T06:28+09:00",
+      "source_title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\"",
+      "telegram_core_fact": "스콧 베선트 미국 재무장관이 최근 물가와 장기 국채금리 급등의 주된 원인을 이란전쟁에 따른 에너지 충격으로 진단하며 전쟁이 끝나면 유가와 물가, 국채금리가 함께 내려갈 것이라고 전망했다.",
+      "title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\""
+    },
     "link:d346a333d879d2dde5e5a5bf": {
       "first_seen_kst": "2026-10-01T21:43:03+09:00",
       "lanes": {
@@ -84358,6 +84927,57 @@
       "source": "머니투데이",
       "title": "은행 방카슈랑스 '활기'…저축성보험 자금 유입에 생보사도 '반색'"
     },
+    "original:056cc41381d554b21b08ac5f": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008022400008",
+      "source": "연합뉴스",
+      "source_body_digest": "50712f4ba29b8dd1abf1b7da61fe5edb321a915412ec801e6197cf4a039c4886",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fca83cab886d6e1cde5b23697197024c8da94cbe2eefe78b417e96bdd315228a",
+      "source_fact_keys": [
+        "source_fact:v1:13cb50cec986b514df8a63e5a93cbf337c4d12d3455206a93c9288385a286e1c",
+        "source_fact:v1:1c9e2968ccba9e50c51dea9236395371db53a1e8d06b3785a4cc14ffffed8005",
+        "source_fact:v1:537274a15229e949482d0adcc2aecd4f752ca2713c2630e69e1552b722d243f7",
+        "source_fact:v1:63994cd6ae829bcc82dba2cbe6554b3c4c94bb6299040ac223d50508a32637ce",
+        "source_fact:v1:71fa4a7370e7ccd6f5b3eeb41dfaf3570f63c7804865dd29e48c8b4d202dc9a1",
+        "source_fact:v1:7c7209870fc49ddd5a730bc7f6874b0643d6c9e26e50ffc26024e44a0243ee35",
+        "source_fact:v1:7e367b785b27be7ebccf403d48e3e27b5f03f30904efb18626854a6d7a9b2fe8",
+        "source_fact:v1:80567dea27aeeb5e6dd48bdef433b48764a5a5c47503bbd4f86db961950a3be8",
+        "source_fact:v1:b3d0b08d90776db8f476fca6e2b4c8a138812dc601a7d561e58fbb5f7a51dcc9",
+        "source_fact:v1:d14cd60fbeda5142a95dd2fa51de8e0f895d52f2b65519af87c901f1d7a62ca7",
+        "source_fact:v1:f1922ecf5a1d704574bf3ef5e2d81f3b2817223836e384d587c1d00806734559"
+      ],
+      "source_published_kst": "2026-10-08T08:03+09:00",
+      "source_title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스",
+      "telegram_core_fact": "일단 삼성전자는 올해 3분기 연결 기준 영업이익이 107조4천억원으로 지난해 동기보다 782.5% 증가한 것으로 잠정 집계됐다고 공시했다.",
+      "title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스"
+    },
+    "original:0576aafce2578671bf07ae24": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818270",
+      "source": "뉴시스",
+      "source_body_digest": "27f2770c5684f98603fbef84ef2899fd3928b7eede69840f416d8fdb9110e7c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d0daeba3ef0544251998731768e1c47b2d874de46d2e3e251b80ca7b6ab182bf",
+      "source_fact_keys": [
+        "source_fact:v1:15beafa511c1152b41715891da182e0f6f7f5daad71b4adb18b1adace1c8f582",
+        "source_fact:v1:240d12a05875dcb5a614849fdeffd5862026fb137f6e9e8ca8fe24371937494a",
+        "source_fact:v1:61ec01817645aae5287ede6db8f25bc74202993aa2495d1c1c9e2af20d368836",
+        "source_fact:v1:c6aa51d7cc599fe825bfd75cd3be9ee8d282eec67525dc8e7c6c151a8a2c213b"
+      ],
+      "source_published_kst": "2026-10-08T08:05+09:00",
+      "source_title": "삼성전자, 3Q 매출 195조·영업익 107조…대한민국 기업史 신기록 썼다",
+      "telegram_core_fact": "삼성전자가 올해 3분기 사상 처음으로 분기 영업이익 100조원을 돌파하며 한국 기업 역사를 새로 썼다.",
+      "title": "삼성전자, 3Q 매출 195조·영업익 107조…대한민국 기업史 신기록 썼다"
+    },
     "original:05be7cbe6e3a2bb7c9fb054b": {
       "first_seen_kst": "2026-09-18T16:49:31+09:00",
       "lanes": {
@@ -90652,6 +91272,30 @@
       "telegram_core_fact": "김성환 기후에너지환경부 장관이 2030년까지 국내 재생에너지 설비를 100GW로 확대하는 것이 가능하다고 밝혔다. 양사는 별도로 2.7GW 전력을 15년간 공급하는 계약을 맺고 신규 발전설비 개발도 검토하기로 했다.",
       "title": "김성환 “2030년 재생에너지 100GW 가능” [ESG 뉴스 5]"
     },
+    "original:2dd08cf7edf805949ad76c68": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02427206645610952",
+      "source": "이데일리",
+      "source_body_digest": "9d06faa48c2f49c5c22ee8976ca3ffe6e1783cc831eac23fd7f80e250e3a25b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02ef56c1a0eb820b4641c522aba2b7106223a0568233630d19013760a9054e21",
+      "source_fact_keys": [
+        "source_fact:v1:030d1680e207d7fca3de1669e1a41d44228e2e6c9774b390117de8a66f488cd4",
+        "source_fact:v1:0d8264648045edd9a5d2b68e5c57c131f7515cf2d242521724900a6c6c20fee6",
+        "source_fact:v1:2557b32e686bda672b0375e7df69d31f511be3e42f87594fdc5062b81f0de62d",
+        "source_fact:v1:3f66e7177924907d30db5752dc7debbb2c4d15b1d68d4d0b0bf56db05433218f",
+        "source_fact:v1:40a969373a4eb82d2f38723122e68ab97658fb66a182d2e1b0ce27ade5c1f8be",
+        "source_fact:v1:67bf89a871c1c20f62ea4ed9bfc7ac80e88b7a541330696753750fe89d2ef96f"
+      ],
+      "source_published_kst": "2026-10-08T07:52+09:00",
+      "source_title": "NAVER, 하반기 실적 기대치 낮춰야…결국 수익 증명이 관건-메리츠",
+      "telegram_core_fact": "이효진 메리츠증권 연구원은 8일 보고서에서 NAVER의 3분기 연결 매출액을 전년비 11.0% 증가한 3조4844억원, 영업이익을 14.9% 감소한 4858억원으로 추정했다.",
+      "title": "NAVER, 하반기 실적 기대치 낮춰야…결국 수익 증명이 관건-메리츠"
+    },
     "original:2dd59934ad94c981499c20d7": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
       "lanes": {
@@ -95682,6 +96326,29 @@
       ],
       "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
+    },
+    "original:4a1b402af704d43cee714565": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008019500002",
+      "source": "연합뉴스",
+      "source_body_digest": "69996ee13d3f5d67dafb37b25de479bb264c37716c61358c365d483650e037be",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:103114e0a5c7db4e2662c1b3adcfd16d0eee74afb85f3cd5f751513b86e633b9",
+      "source_fact_keys": [
+        "source_fact:v1:2324f176794be4303c59b5a881ccced4a14b735ec4d98c85aa343a8da71b533b",
+        "source_fact:v1:4330b5a63f086831545d99a4341d9f5e85f30a2c36be7207fdf98c6f677bc0c0",
+        "source_fact:v1:67a7a0793d91410d104e8e4fecfe6cb5a4b6258c4ca6c8c78bc725bebe60b3a0",
+        "source_fact:v1:a155ef8819c98dfd95be5ebabeae6082e7c045c252db482391308f66c5eb11bd",
+        "source_fact:v1:c41519d06f2126c754016a248c41fcc6165a06d16d64e279d773e7c6729a396e"
+      ],
+      "source_published_kst": "2026-10-08T08:00+09:00",
+      "source_title": "8월 경상수지 461.1억달러 흑자, 역대 2위…반도체 수출 호조 | 연합뉴스",
+      "telegram_core_fact": "운송수지는 최근 수출운임 상승 영향으로 흑자 규모가 전월 6천만달러에서 8월 5억2천만달러로 늘었고, 지식재산권사용료수지는 전월 5억4천만달러 적자에서 8월 3억9천만달러로 적자 규모가 줄었다.",
+      "title": "8월 경상수지 461.1억달러 흑자, 역대 2위…반도체 수출 호조 | 연합뉴스"
     },
     "original:4a24b14c48d1d8967b0ca16a": {
       "first_seen_kst": "2026-10-08T03:51:03+09:00",
@@ -111284,6 +111951,33 @@
       "telegram_core_fact": "이는 내달 중간선거를 앞두고 기름값 잡기에 골몰 중인 트럼프 미국 대통령이 비축유를 방출하지 않으면 경유 수출을 금지하겠다고 유럽을 압박한 데 따른 것이다.",
       "title": "IEA \"경유 필요하면 추가 방출…비축량 2억 배럴\" | 연합뉴스"
     },
+    "original:ae1fed8c2c93388a51d2e96e": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6313654",
+      "source": "뉴스1",
+      "source_body_digest": "a307f1b57f0fa5492ed35dfbfaded8ea3190c213a88e024d64d695fb2779b9f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:536335c3313b67d94e5583143650314837039913348d14940482a73be2a5be3b",
+      "source_fact_keys": [
+        "source_fact:v1:1fc3cae8fcb9d7a041be4841001f966313ae97e180ff818e4205ca12af6b96ac",
+        "source_fact:v1:400a719d6f784662fcee175bee8541d491094db687c78dec1e1a1fb09f93d3d7",
+        "source_fact:v1:6819787513ba8801295e797a461bfce8bddc0b7c22c9f90f9fd9850b3dac407d",
+        "source_fact:v1:87855019130da2b291f64b987ef1ca6e9087c21846374ecaff5c8976c5407139",
+        "source_fact:v1:abb863f5202688e38fb582ac081ce4da88db652c364c7dcedaa80f75557d14e3",
+        "source_fact:v1:c78f5812096b1fe5a7291797888058c5217d28a71f67acaf28fa6f8fa76c5d07",
+        "source_fact:v1:cf2127e6fcb7385ae1f20d4a79b9845e429346cba67c945f4dad50c66c1b1c39",
+        "source_fact:v1:d1698dd611a71823a80420cc17db537bf370a01797fc32b71af49e541fd84bd2",
+        "source_fact:v1:f1858e4d8845699f5fd22e54f8326833892079d21b509ceb77879b1139bf46fd"
+      ],
+      "source_published_kst": "2026-10-08T06:28+09:00",
+      "source_title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\"",
+      "telegram_core_fact": "스콧 베선트 미국 재무장관이 최근 물가와 장기 국채금리 급등의 주된 원인을 이란전쟁에 따른 에너지 충격으로 진단하며 전쟁이 끝나면 유가와 물가, 국채금리가 함께 내려갈 것이라고 전망했다.",
+      "title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\""
+    },
     "original:ae221660f326e199150f6e9f": {
       "first_seen_kst": "2026-10-02T15:48:44+09:00",
       "lanes": {
@@ -111698,6 +112392,27 @@
       "source_title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표 | 연합뉴스",
       "telegram_core_fact": "반도체 초호황 속 삼성전자가 국내 기업 사상 최초로 분기 영업이익 100조원 달성을 가시권에 두고 있다.",
       "title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표 | 연합뉴스"
+    },
+    "original:b0364b3fe90867ab961f9581": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.hankyung.com/article/202610089567i",
+      "source": "한국경제",
+      "source_body_digest": "9cfb27592ac407b90d1295f82034a63fab38613b4b064f3e5412c0b6d648d142",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2fb072eed861740c567747a443e2cace6ec3c0f8463d19266c412a5776855ae",
+      "source_fact_keys": [
+        "source_fact:v1:225efac09973c14d0aeb3b24f98bed1910a5da86fe6554c8ca0466aa7c31044b",
+        "source_fact:v1:6903ece1a2235e3cf7060f7e36204c16a7b422d09e60ef0e12c34cbf77d96763",
+        "source_fact:v1:817a71e077196a7bb8b69e422a409285957abf2dc8678ccbd828b324bf7fec7a"
+      ],
+      "source_published_kst": "2026-10-08T07:50+09:00",
+      "source_title": "삼성전자 3분기 영업이익 107조…반도체 슈퍼사이클에 4분기 연속 역대 최대",
+      "telegram_core_fact": "삼성전자는 3분기 영업이익이 107조4000억원으로 전년비 782.5% 증가한 것으로 잠정 집계됐다고 8일 발표했다.",
+      "title": "삼성전자 3분기 영업이익 107조…반도체 슈퍼사이클에 4분기 연속 역대 최대"
     },
     "original:b07821602aa1e2546aaa2c75": {
       "first_seen_kst": "2026-10-05T14:04:17+09:00",
@@ -120917,6 +121632,26 @@
       "source": "연합뉴스",
       "title": "CJ제일제당, 미국서 '비비고 김밥' 1∼7월 매출 59% 증가 | 연합뉴스"
     },
+    "original:e9e75f75d9a39574516e66bd": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008019700527",
+      "source": "연합뉴스",
+      "source_body_digest": "2051279c82c42ee4566aabf5543489fae0b704ebfa7578bf87880a66f503d720",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:48c1c1cd8feaf8d423533e09f6c4735f819176cb773cbed88253d9dc3542418c",
+      "source_fact_identity": "source_facts:v1:4808f7f033cbd16695646a569e28b8e3cedbd8ddadbbded7b732d44b12830e70",
+      "source_fact_keys": [
+        "source_fact:v1:53b21f727ee99e675b27b0956151ab479d8021145826c657aa830a9c1e8176c8",
+        "source_fact:v1:7e367b785b27be7ebccf403d48e3e27b5f03f30904efb18626854a6d7a9b2fe8"
+      ],
+      "source_published_kst": "2026-10-08T07:47+09:00",
+      "source_title": "[1보] 삼성전자 3분기 영업이익 107조4천억원…작년 대비 782.5%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 삼성전자[005930]는 연결 기준 올해 3분기 영업이익이 107조4천억원으로 지난해 동기보다 782.5% 증가한 것으로 잠정 집계됐다고 8일 공시했다.",
+      "title": "[1보] 삼성전자 3분기 영업이익 107조4천억원…작년 대비 782.5%↑ | 연합뉴스"
+    },
     "original:e9f3ccbee4f8a19a61967f0e": {
       "first_seen_kst": "2026-10-06T22:21:21+09:00",
       "lanes": {
@@ -128030,6 +128765,30 @@
       "source_published_kst": "2026-10-06T10:09+09:00",
       "title": "씨피시스템 \"글로벌 MLCC 제조사사 장비에 '로보킷' 채택\""
     },
+    "source_fact:0983c10c5ba9f557a5dc9901": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02427206645610952",
+      "source": "이데일리",
+      "source_body_digest": "9d06faa48c2f49c5c22ee8976ca3ffe6e1783cc831eac23fd7f80e250e3a25b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02ef56c1a0eb820b4641c522aba2b7106223a0568233630d19013760a9054e21",
+      "source_fact_keys": [
+        "source_fact:v1:030d1680e207d7fca3de1669e1a41d44228e2e6c9774b390117de8a66f488cd4",
+        "source_fact:v1:0d8264648045edd9a5d2b68e5c57c131f7515cf2d242521724900a6c6c20fee6",
+        "source_fact:v1:2557b32e686bda672b0375e7df69d31f511be3e42f87594fdc5062b81f0de62d",
+        "source_fact:v1:3f66e7177924907d30db5752dc7debbb2c4d15b1d68d4d0b0bf56db05433218f",
+        "source_fact:v1:40a969373a4eb82d2f38723122e68ab97658fb66a182d2e1b0ce27ade5c1f8be",
+        "source_fact:v1:67bf89a871c1c20f62ea4ed9bfc7ac80e88b7a541330696753750fe89d2ef96f"
+      ],
+      "source_published_kst": "2026-10-08T07:52+09:00",
+      "source_title": "NAVER, 하반기 실적 기대치 낮춰야…결국 수익 증명이 관건-메리츠",
+      "telegram_core_fact": "이효진 메리츠증권 연구원은 8일 보고서에서 NAVER의 3분기 연결 매출액을 전년비 11.0% 증가한 3조4844억원, 영업이익을 14.9% 감소한 4858억원으로 추정했다.",
+      "title": "NAVER, 하반기 실적 기대치 낮춰야…결국 수익 증명이 관건-메리츠"
+    },
     "source_fact:09853b076ffc53d6b4467b08": {
       "first_seen_kst": "2026-10-07T07:54:25+09:00",
       "lanes": {
@@ -130083,6 +130842,29 @@
       "source_title": "민트, 아일랜드와 로봇 OEM 계약..최대 300만 유로",
       "telegram_core_fact": "액소넥스는 로봇 키트와 플랫폼 라이선스, 표준 소프트웨어, 플랫폼 기술을 센트리덱스에 공급한다.",
       "title": "민트, 아일랜드와 로봇 OEM 계약..최대 300만 유로"
+    },
+    "source_fact:0e3720c54a2c24bc3295e611": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008019500002",
+      "source": "연합뉴스",
+      "source_body_digest": "69996ee13d3f5d67dafb37b25de479bb264c37716c61358c365d483650e037be",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:103114e0a5c7db4e2662c1b3adcfd16d0eee74afb85f3cd5f751513b86e633b9",
+      "source_fact_keys": [
+        "source_fact:v1:2324f176794be4303c59b5a881ccced4a14b735ec4d98c85aa343a8da71b533b",
+        "source_fact:v1:4330b5a63f086831545d99a4341d9f5e85f30a2c36be7207fdf98c6f677bc0c0",
+        "source_fact:v1:67a7a0793d91410d104e8e4fecfe6cb5a4b6258c4ca6c8c78bc725bebe60b3a0",
+        "source_fact:v1:a155ef8819c98dfd95be5ebabeae6082e7c045c252db482391308f66c5eb11bd",
+        "source_fact:v1:c41519d06f2126c754016a248c41fcc6165a06d16d64e279d773e7c6729a396e"
+      ],
+      "source_published_kst": "2026-10-08T08:00+09:00",
+      "source_title": "8월 경상수지 461.1억달러 흑자, 역대 2위…반도체 수출 호조 | 연합뉴스",
+      "telegram_core_fact": "운송수지는 최근 수출운임 상승 영향으로 흑자 규모가 전월 6천만달러에서 8월 5억2천만달러로 늘었고, 지식재산권사용료수지는 전월 5억4천만달러 적자에서 8월 3억9천만달러로 적자 규모가 줄었다.",
+      "title": "8월 경상수지 461.1억달러 흑자, 역대 2위…반도체 수출 호조 | 연합뉴스"
     },
     "source_fact:0e4497a88145848d20300177": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -133430,6 +134212,33 @@
       "source_published_kst": "2026-10-06T18:09+09:00",
       "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어(종합) | 연합뉴스"
     },
+    "source_fact:164d8ab6fcca626e5a46d8c5": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6313654",
+      "source": "뉴스1",
+      "source_body_digest": "a307f1b57f0fa5492ed35dfbfaded8ea3190c213a88e024d64d695fb2779b9f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:536335c3313b67d94e5583143650314837039913348d14940482a73be2a5be3b",
+      "source_fact_keys": [
+        "source_fact:v1:1fc3cae8fcb9d7a041be4841001f966313ae97e180ff818e4205ca12af6b96ac",
+        "source_fact:v1:400a719d6f784662fcee175bee8541d491094db687c78dec1e1a1fb09f93d3d7",
+        "source_fact:v1:6819787513ba8801295e797a461bfce8bddc0b7c22c9f90f9fd9850b3dac407d",
+        "source_fact:v1:87855019130da2b291f64b987ef1ca6e9087c21846374ecaff5c8976c5407139",
+        "source_fact:v1:abb863f5202688e38fb582ac081ce4da88db652c364c7dcedaa80f75557d14e3",
+        "source_fact:v1:c78f5812096b1fe5a7291797888058c5217d28a71f67acaf28fa6f8fa76c5d07",
+        "source_fact:v1:cf2127e6fcb7385ae1f20d4a79b9845e429346cba67c945f4dad50c66c1b1c39",
+        "source_fact:v1:d1698dd611a71823a80420cc17db537bf370a01797fc32b71af49e541fd84bd2",
+        "source_fact:v1:f1858e4d8845699f5fd22e54f8326833892079d21b509ceb77879b1139bf46fd"
+      ],
+      "source_published_kst": "2026-10-08T06:28+09:00",
+      "source_title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\"",
+      "telegram_core_fact": "스콧 베선트 미국 재무장관이 최근 물가와 장기 국채금리 급등의 주된 원인을 이란전쟁에 따른 에너지 충격으로 진단하며 전쟁이 끝나면 유가와 물가, 국채금리가 함께 내려갈 것이라고 전망했다.",
+      "title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\""
+    },
     "source_fact:164dfb227ae68be6c3fd3ff6": {
       "first_seen_kst": "2026-10-07T08:36:47+09:00",
       "lanes": {
@@ -134961,6 +135770,29 @@
       "telegram_core_fact": "삼성SDI가 내년 양산을 목표로 소재 공급망 구축까지 속도를 내는 반면 LG에너지솔루션(LG엔솔)은 상용화 시점보다는 기술 차별화와 원가 경쟁력 확보에 무게를 두고 있다. 이와 비교해 삼성SDI는 이보다 빠른 내년께 황화물계 전고체 배터리 상용화를 목표로 공급망 구축에 나서고 있다.",
       "title": "전고체 배터리 경쟁 본격화…LG엔솔·삼성SDI 전략 차이는?"
     },
+    "source_fact:1a3ec8331bf1f2bc4933a9e7": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008019500002",
+      "source": "연합뉴스",
+      "source_body_digest": "69996ee13d3f5d67dafb37b25de479bb264c37716c61358c365d483650e037be",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:103114e0a5c7db4e2662c1b3adcfd16d0eee74afb85f3cd5f751513b86e633b9",
+      "source_fact_keys": [
+        "source_fact:v1:2324f176794be4303c59b5a881ccced4a14b735ec4d98c85aa343a8da71b533b",
+        "source_fact:v1:4330b5a63f086831545d99a4341d9f5e85f30a2c36be7207fdf98c6f677bc0c0",
+        "source_fact:v1:67a7a0793d91410d104e8e4fecfe6cb5a4b6258c4ca6c8c78bc725bebe60b3a0",
+        "source_fact:v1:a155ef8819c98dfd95be5ebabeae6082e7c045c252db482391308f66c5eb11bd",
+        "source_fact:v1:c41519d06f2126c754016a248c41fcc6165a06d16d64e279d773e7c6729a396e"
+      ],
+      "source_published_kst": "2026-10-08T08:00+09:00",
+      "source_title": "8월 경상수지 461.1억달러 흑자, 역대 2위…반도체 수출 호조 | 연합뉴스",
+      "telegram_core_fact": "운송수지는 최근 수출운임 상승 영향으로 흑자 규모가 전월 6천만달러에서 8월 5억2천만달러로 늘었고, 지식재산권사용료수지는 전월 5억4천만달러 적자에서 8월 3억9천만달러로 적자 규모가 줄었다.",
+      "title": "8월 경상수지 461.1억달러 흑자, 역대 2위…반도체 수출 호조 | 연합뉴스"
+    },
     "source_fact:1a55d894579f42626cadb1ba": {
       "first_seen_kst": "2026-10-07T18:58:51+09:00",
       "lanes": {
@@ -135152,6 +135984,33 @@
       "source_title": "딥노이드, 충북대병원에 뇌동맥류 AI '딥뉴로' 공급…권역책임의료기관 첫 도입",
       "telegram_core_fact": "딥노이드는 뇌동맥류 진단 보조 AI 솔루션 '딥뉴로'를 충북대학교병원에 공급한다고 7일 밝혔다.",
       "title": "딥노이드, 충북대병원에 뇌동맥류 AI '딥뉴로' 공급…권역책임의료기관 첫 도입"
+    },
+    "source_fact:1ad14a0d8dadd3e0b97172b8": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6313654",
+      "source": "뉴스1",
+      "source_body_digest": "a307f1b57f0fa5492ed35dfbfaded8ea3190c213a88e024d64d695fb2779b9f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:536335c3313b67d94e5583143650314837039913348d14940482a73be2a5be3b",
+      "source_fact_keys": [
+        "source_fact:v1:1fc3cae8fcb9d7a041be4841001f966313ae97e180ff818e4205ca12af6b96ac",
+        "source_fact:v1:400a719d6f784662fcee175bee8541d491094db687c78dec1e1a1fb09f93d3d7",
+        "source_fact:v1:6819787513ba8801295e797a461bfce8bddc0b7c22c9f90f9fd9850b3dac407d",
+        "source_fact:v1:87855019130da2b291f64b987ef1ca6e9087c21846374ecaff5c8976c5407139",
+        "source_fact:v1:abb863f5202688e38fb582ac081ce4da88db652c364c7dcedaa80f75557d14e3",
+        "source_fact:v1:c78f5812096b1fe5a7291797888058c5217d28a71f67acaf28fa6f8fa76c5d07",
+        "source_fact:v1:cf2127e6fcb7385ae1f20d4a79b9845e429346cba67c945f4dad50c66c1b1c39",
+        "source_fact:v1:d1698dd611a71823a80420cc17db537bf370a01797fc32b71af49e541fd84bd2",
+        "source_fact:v1:f1858e4d8845699f5fd22e54f8326833892079d21b509ceb77879b1139bf46fd"
+      ],
+      "source_published_kst": "2026-10-08T06:28+09:00",
+      "source_title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\"",
+      "telegram_core_fact": "스콧 베선트 미국 재무장관이 최근 물가와 장기 국채금리 급등의 주된 원인을 이란전쟁에 따른 에너지 충격으로 진단하며 전쟁이 끝나면 유가와 물가, 국채금리가 함께 내려갈 것이라고 전망했다.",
+      "title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\""
     },
     "source_fact:1ad1b8cb2bff76d8b202f9b4": {
       "first_seen_kst": "2026-10-06T21:54:00+09:00",
@@ -137198,6 +138057,33 @@
       "source_published_kst": "2026-10-05T14:28+09:00",
       "title": "폭스바겐 ‘판매왕’에서 모빌리티 창업가로…차봇, 해외로 영토 확장"
     },
+    "source_fact:1f3c70d8c48c22a80082ce8d": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6313654",
+      "source": "뉴스1",
+      "source_body_digest": "a307f1b57f0fa5492ed35dfbfaded8ea3190c213a88e024d64d695fb2779b9f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:536335c3313b67d94e5583143650314837039913348d14940482a73be2a5be3b",
+      "source_fact_keys": [
+        "source_fact:v1:1fc3cae8fcb9d7a041be4841001f966313ae97e180ff818e4205ca12af6b96ac",
+        "source_fact:v1:400a719d6f784662fcee175bee8541d491094db687c78dec1e1a1fb09f93d3d7",
+        "source_fact:v1:6819787513ba8801295e797a461bfce8bddc0b7c22c9f90f9fd9850b3dac407d",
+        "source_fact:v1:87855019130da2b291f64b987ef1ca6e9087c21846374ecaff5c8976c5407139",
+        "source_fact:v1:abb863f5202688e38fb582ac081ce4da88db652c364c7dcedaa80f75557d14e3",
+        "source_fact:v1:c78f5812096b1fe5a7291797888058c5217d28a71f67acaf28fa6f8fa76c5d07",
+        "source_fact:v1:cf2127e6fcb7385ae1f20d4a79b9845e429346cba67c945f4dad50c66c1b1c39",
+        "source_fact:v1:d1698dd611a71823a80420cc17db537bf370a01797fc32b71af49e541fd84bd2",
+        "source_fact:v1:f1858e4d8845699f5fd22e54f8326833892079d21b509ceb77879b1139bf46fd"
+      ],
+      "source_published_kst": "2026-10-08T06:28+09:00",
+      "source_title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\"",
+      "telegram_core_fact": "스콧 베선트 미국 재무장관이 최근 물가와 장기 국채금리 급등의 주된 원인을 이란전쟁에 따른 에너지 충격으로 진단하며 전쟁이 끝나면 유가와 물가, 국채금리가 함께 내려갈 것이라고 전망했다.",
+      "title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\""
+    },
     "source_fact:1f3ef5fccadbf8af6132ef9a": {
       "first_seen_kst": "2026-10-07T09:44:16+09:00",
       "lanes": {
@@ -139004,6 +139890,28 @@
       "source_published_kst": "2026-10-07T08:02+09:00",
       "title": "[오늘의 증시]실적 앞두고 美증시 강세…코스피, 반도체 훈풍에 반등 전망"
     },
+    "source_fact:2335876da571269e12d656c3": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818270",
+      "source": "뉴시스",
+      "source_body_digest": "27f2770c5684f98603fbef84ef2899fd3928b7eede69840f416d8fdb9110e7c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d0daeba3ef0544251998731768e1c47b2d874de46d2e3e251b80ca7b6ab182bf",
+      "source_fact_keys": [
+        "source_fact:v1:15beafa511c1152b41715891da182e0f6f7f5daad71b4adb18b1adace1c8f582",
+        "source_fact:v1:240d12a05875dcb5a614849fdeffd5862026fb137f6e9e8ca8fe24371937494a",
+        "source_fact:v1:61ec01817645aae5287ede6db8f25bc74202993aa2495d1c1c9e2af20d368836",
+        "source_fact:v1:c6aa51d7cc599fe825bfd75cd3be9ee8d282eec67525dc8e7c6c151a8a2c213b"
+      ],
+      "source_published_kst": "2026-10-08T08:05+09:00",
+      "source_title": "삼성전자, 3Q 매출 195조·영업익 107조…대한민국 기업史 신기록 썼다",
+      "telegram_core_fact": "삼성전자가 올해 3분기 사상 처음으로 분기 영업이익 100조원을 돌파하며 한국 기업 역사를 새로 썼다.",
+      "title": "삼성전자, 3Q 매출 195조·영업익 107조…대한민국 기업史 신기록 썼다"
+    },
     "source_fact:2338295d8dde633ffc2f2e9c": {
       "first_seen_kst": "2026-10-07T22:53:53+09:00",
       "lanes": {
@@ -139929,6 +140837,27 @@
       ],
       "source_published_kst": "2026-10-06T18:09+09:00",
       "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어(종합) | 연합뉴스"
+    },
+    "source_fact:25432ebde4937bba89a0bcf2": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.hankyung.com/article/202610089567i",
+      "source": "한국경제",
+      "source_body_digest": "9cfb27592ac407b90d1295f82034a63fab38613b4b064f3e5412c0b6d648d142",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2fb072eed861740c567747a443e2cace6ec3c0f8463d19266c412a5776855ae",
+      "source_fact_keys": [
+        "source_fact:v1:225efac09973c14d0aeb3b24f98bed1910a5da86fe6554c8ca0466aa7c31044b",
+        "source_fact:v1:6903ece1a2235e3cf7060f7e36204c16a7b422d09e60ef0e12c34cbf77d96763",
+        "source_fact:v1:817a71e077196a7bb8b69e422a409285957abf2dc8678ccbd828b324bf7fec7a"
+      ],
+      "source_published_kst": "2026-10-08T07:50+09:00",
+      "source_title": "삼성전자 3분기 영업이익 107조…반도체 슈퍼사이클에 4분기 연속 역대 최대",
+      "telegram_core_fact": "삼성전자는 3분기 영업이익이 107조4000억원으로 전년비 782.5% 증가한 것으로 잠정 집계됐다고 8일 발표했다.",
+      "title": "삼성전자 3분기 영업이익 107조…반도체 슈퍼사이클에 4분기 연속 역대 최대"
     },
     "source_fact:254370bcaf2510bdec04cd10": {
       "first_seen_kst": "2026-10-07T13:13:19+09:00",
@@ -142078,6 +143007,28 @@
       "source_published_kst": "2026-10-06T10:19+09:00",
       "title": "김정관 장관 “1600조 지방투자 본격화…2030년 AI팩토리 500개 구축”"
     },
+    "source_fact:29c9f06c39344f4a33a83f2d": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818270",
+      "source": "뉴시스",
+      "source_body_digest": "27f2770c5684f98603fbef84ef2899fd3928b7eede69840f416d8fdb9110e7c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d0daeba3ef0544251998731768e1c47b2d874de46d2e3e251b80ca7b6ab182bf",
+      "source_fact_keys": [
+        "source_fact:v1:15beafa511c1152b41715891da182e0f6f7f5daad71b4adb18b1adace1c8f582",
+        "source_fact:v1:240d12a05875dcb5a614849fdeffd5862026fb137f6e9e8ca8fe24371937494a",
+        "source_fact:v1:61ec01817645aae5287ede6db8f25bc74202993aa2495d1c1c9e2af20d368836",
+        "source_fact:v1:c6aa51d7cc599fe825bfd75cd3be9ee8d282eec67525dc8e7c6c151a8a2c213b"
+      ],
+      "source_published_kst": "2026-10-08T08:05+09:00",
+      "source_title": "삼성전자, 3Q 매출 195조·영업익 107조…대한민국 기업史 신기록 썼다",
+      "telegram_core_fact": "삼성전자가 올해 3분기 사상 처음으로 분기 영업이익 100조원을 돌파하며 한국 기업 역사를 새로 썼다.",
+      "title": "삼성전자, 3Q 매출 195조·영업익 107조…대한민국 기업史 신기록 썼다"
+    },
     "source_fact:29d09ee1c65ff13161ce0b4c": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
       "lanes": {
@@ -142706,6 +143657,33 @@
       "source_title": "발코에너지, 가봉 3단계 시추 완료..신규 유정 일 2000배럴 생산",
       "telegram_core_fact": "발코에너지(EGY)가 가봉 해상 3단계(Phase 3) 시추 프로그램의 마지막 유정인 ETSEM-3H에서 총 일일 약 2000배럴(BOPD), 회사 지분 기준 1140배럴의 초기 생산량을 확보하며 시추 캠페인을 마무리했다고 7일 발표했다.",
       "title": "발코에너지, 가봉 3단계 시추 완료..신규 유정 일 2000배럴 생산"
+    },
+    "source_fact:2aedd0bd2de554ebe147fc0b": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6313654",
+      "source": "뉴스1",
+      "source_body_digest": "a307f1b57f0fa5492ed35dfbfaded8ea3190c213a88e024d64d695fb2779b9f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:536335c3313b67d94e5583143650314837039913348d14940482a73be2a5be3b",
+      "source_fact_keys": [
+        "source_fact:v1:1fc3cae8fcb9d7a041be4841001f966313ae97e180ff818e4205ca12af6b96ac",
+        "source_fact:v1:400a719d6f784662fcee175bee8541d491094db687c78dec1e1a1fb09f93d3d7",
+        "source_fact:v1:6819787513ba8801295e797a461bfce8bddc0b7c22c9f90f9fd9850b3dac407d",
+        "source_fact:v1:87855019130da2b291f64b987ef1ca6e9087c21846374ecaff5c8976c5407139",
+        "source_fact:v1:abb863f5202688e38fb582ac081ce4da88db652c364c7dcedaa80f75557d14e3",
+        "source_fact:v1:c78f5812096b1fe5a7291797888058c5217d28a71f67acaf28fa6f8fa76c5d07",
+        "source_fact:v1:cf2127e6fcb7385ae1f20d4a79b9845e429346cba67c945f4dad50c66c1b1c39",
+        "source_fact:v1:d1698dd611a71823a80420cc17db537bf370a01797fc32b71af49e541fd84bd2",
+        "source_fact:v1:f1858e4d8845699f5fd22e54f8326833892079d21b509ceb77879b1139bf46fd"
+      ],
+      "source_published_kst": "2026-10-08T06:28+09:00",
+      "source_title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\"",
+      "telegram_core_fact": "스콧 베선트 미국 재무장관이 최근 물가와 장기 국채금리 급등의 주된 원인을 이란전쟁에 따른 에너지 충격으로 진단하며 전쟁이 끝나면 유가와 물가, 국채금리가 함께 내려갈 것이라고 전망했다.",
+      "title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\""
     },
     "source_fact:2aef304f8f3c8b43424fed7e": {
       "first_seen_kst": "2026-10-06T06:36:31+09:00",
@@ -156385,6 +157363,35 @@
       "source_published_kst": "2026-10-07T09:31+09:00",
       "title": "롯데바이오, '알보텍' 바이오시밀러 생산 수주…美 거점 앞세워 글로벌 공략"
     },
+    "source_fact:48e94ba4fae53756328a054c": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008022400008",
+      "source": "연합뉴스",
+      "source_body_digest": "50712f4ba29b8dd1abf1b7da61fe5edb321a915412ec801e6197cf4a039c4886",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fca83cab886d6e1cde5b23697197024c8da94cbe2eefe78b417e96bdd315228a",
+      "source_fact_keys": [
+        "source_fact:v1:13cb50cec986b514df8a63e5a93cbf337c4d12d3455206a93c9288385a286e1c",
+        "source_fact:v1:1c9e2968ccba9e50c51dea9236395371db53a1e8d06b3785a4cc14ffffed8005",
+        "source_fact:v1:537274a15229e949482d0adcc2aecd4f752ca2713c2630e69e1552b722d243f7",
+        "source_fact:v1:63994cd6ae829bcc82dba2cbe6554b3c4c94bb6299040ac223d50508a32637ce",
+        "source_fact:v1:71fa4a7370e7ccd6f5b3eeb41dfaf3570f63c7804865dd29e48c8b4d202dc9a1",
+        "source_fact:v1:7c7209870fc49ddd5a730bc7f6874b0643d6c9e26e50ffc26024e44a0243ee35",
+        "source_fact:v1:7e367b785b27be7ebccf403d48e3e27b5f03f30904efb18626854a6d7a9b2fe8",
+        "source_fact:v1:80567dea27aeeb5e6dd48bdef433b48764a5a5c47503bbd4f86db961950a3be8",
+        "source_fact:v1:b3d0b08d90776db8f476fca6e2b4c8a138812dc601a7d561e58fbb5f7a51dcc9",
+        "source_fact:v1:d14cd60fbeda5142a95dd2fa51de8e0f895d52f2b65519af87c901f1d7a62ca7",
+        "source_fact:v1:f1922ecf5a1d704574bf3ef5e2d81f3b2817223836e384d587c1d00806734559"
+      ],
+      "source_published_kst": "2026-10-08T08:03+09:00",
+      "source_title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스",
+      "telegram_core_fact": "일단 삼성전자는 올해 3분기 연결 기준 영업이익이 107조4천억원으로 지난해 동기보다 782.5% 증가한 것으로 잠정 집계됐다고 공시했다.",
+      "title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스"
+    },
     "source_fact:48ec99b50750b75e90b0040c": {
       "first_seen_kst": "2026-10-07T08:57:59+09:00",
       "lanes": {
@@ -159942,6 +160949,35 @@
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
+    "source_fact:513d0291466c639862e5c295": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008022400008",
+      "source": "연합뉴스",
+      "source_body_digest": "50712f4ba29b8dd1abf1b7da61fe5edb321a915412ec801e6197cf4a039c4886",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fca83cab886d6e1cde5b23697197024c8da94cbe2eefe78b417e96bdd315228a",
+      "source_fact_keys": [
+        "source_fact:v1:13cb50cec986b514df8a63e5a93cbf337c4d12d3455206a93c9288385a286e1c",
+        "source_fact:v1:1c9e2968ccba9e50c51dea9236395371db53a1e8d06b3785a4cc14ffffed8005",
+        "source_fact:v1:537274a15229e949482d0adcc2aecd4f752ca2713c2630e69e1552b722d243f7",
+        "source_fact:v1:63994cd6ae829bcc82dba2cbe6554b3c4c94bb6299040ac223d50508a32637ce",
+        "source_fact:v1:71fa4a7370e7ccd6f5b3eeb41dfaf3570f63c7804865dd29e48c8b4d202dc9a1",
+        "source_fact:v1:7c7209870fc49ddd5a730bc7f6874b0643d6c9e26e50ffc26024e44a0243ee35",
+        "source_fact:v1:7e367b785b27be7ebccf403d48e3e27b5f03f30904efb18626854a6d7a9b2fe8",
+        "source_fact:v1:80567dea27aeeb5e6dd48bdef433b48764a5a5c47503bbd4f86db961950a3be8",
+        "source_fact:v1:b3d0b08d90776db8f476fca6e2b4c8a138812dc601a7d561e58fbb5f7a51dcc9",
+        "source_fact:v1:d14cd60fbeda5142a95dd2fa51de8e0f895d52f2b65519af87c901f1d7a62ca7",
+        "source_fact:v1:f1922ecf5a1d704574bf3ef5e2d81f3b2817223836e384d587c1d00806734559"
+      ],
+      "source_published_kst": "2026-10-08T08:03+09:00",
+      "source_title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스",
+      "telegram_core_fact": "일단 삼성전자는 올해 3분기 연결 기준 영업이익이 107조4천억원으로 지난해 동기보다 782.5% 증가한 것으로 잠정 집계됐다고 공시했다.",
+      "title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스"
+    },
     "source_fact:514021c69528a8352731f29d": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
@@ -162188,6 +163224,26 @@
       ],
       "source_published_kst": "2026-10-06T17:24+09:00",
       "title": "포스코퓨처엠, 삼성SDI에 LFP 양극재 6조원어치 공급"
+    },
+    "source_fact:564a133a264c7be96b54c3f0": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008019700527",
+      "source": "연합뉴스",
+      "source_body_digest": "2051279c82c42ee4566aabf5543489fae0b704ebfa7578bf87880a66f503d720",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:48c1c1cd8feaf8d423533e09f6c4735f819176cb773cbed88253d9dc3542418c",
+      "source_fact_identity": "source_facts:v1:4808f7f033cbd16695646a569e28b8e3cedbd8ddadbbded7b732d44b12830e70",
+      "source_fact_keys": [
+        "source_fact:v1:53b21f727ee99e675b27b0956151ab479d8021145826c657aa830a9c1e8176c8",
+        "source_fact:v1:7e367b785b27be7ebccf403d48e3e27b5f03f30904efb18626854a6d7a9b2fe8"
+      ],
+      "source_published_kst": "2026-10-08T07:47+09:00",
+      "source_title": "[1보] 삼성전자 3분기 영업이익 107조4천억원…작년 대비 782.5%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 삼성전자[005930]는 연결 기준 올해 3분기 영업이익이 107조4천억원으로 지난해 동기보다 782.5% 증가한 것으로 잠정 집계됐다고 8일 공시했다.",
+      "title": "[1보] 삼성전자 3분기 영업이익 107조4천억원…작년 대비 782.5%↑ | 연합뉴스"
     },
     "source_fact:564deb41c700fe4cdff75aff": {
       "first_seen_kst": "2026-10-07T09:22:01+09:00",
@@ -170877,6 +171933,33 @@
       "source_published_kst": "2026-10-07T11:31+09:00",
       "title": "역외IB, 국내 인가 없인 한국물 영업 제한…당국 의견수렴 | 연합뉴스"
     },
+    "source_fact:6940110d182514771a01cb5a": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6313654",
+      "source": "뉴스1",
+      "source_body_digest": "a307f1b57f0fa5492ed35dfbfaded8ea3190c213a88e024d64d695fb2779b9f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:536335c3313b67d94e5583143650314837039913348d14940482a73be2a5be3b",
+      "source_fact_keys": [
+        "source_fact:v1:1fc3cae8fcb9d7a041be4841001f966313ae97e180ff818e4205ca12af6b96ac",
+        "source_fact:v1:400a719d6f784662fcee175bee8541d491094db687c78dec1e1a1fb09f93d3d7",
+        "source_fact:v1:6819787513ba8801295e797a461bfce8bddc0b7c22c9f90f9fd9850b3dac407d",
+        "source_fact:v1:87855019130da2b291f64b987ef1ca6e9087c21846374ecaff5c8976c5407139",
+        "source_fact:v1:abb863f5202688e38fb582ac081ce4da88db652c364c7dcedaa80f75557d14e3",
+        "source_fact:v1:c78f5812096b1fe5a7291797888058c5217d28a71f67acaf28fa6f8fa76c5d07",
+        "source_fact:v1:cf2127e6fcb7385ae1f20d4a79b9845e429346cba67c945f4dad50c66c1b1c39",
+        "source_fact:v1:d1698dd611a71823a80420cc17db537bf370a01797fc32b71af49e541fd84bd2",
+        "source_fact:v1:f1858e4d8845699f5fd22e54f8326833892079d21b509ceb77879b1139bf46fd"
+      ],
+      "source_published_kst": "2026-10-08T06:28+09:00",
+      "source_title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\"",
+      "telegram_core_fact": "스콧 베선트 미국 재무장관이 최근 물가와 장기 국채금리 급등의 주된 원인을 이란전쟁에 따른 에너지 충격으로 진단하며 전쟁이 끝나면 유가와 물가, 국채금리가 함께 내려갈 것이라고 전망했다.",
+      "title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\""
+    },
     "source_fact:6951b4a7382f9633dc8fb906": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
       "lanes": {
@@ -171887,6 +172970,29 @@
       ],
       "source_published_kst": "2026-10-07T11:06+09:00",
       "title": "[ESGX 이슈 5] 구글, 美 원전 11기 출력 높인다…AI 전력 확보에 43억달러 투자"
+    },
+    "source_fact:6b7424adaf03290f12da5d4c": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008019500002",
+      "source": "연합뉴스",
+      "source_body_digest": "69996ee13d3f5d67dafb37b25de479bb264c37716c61358c365d483650e037be",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:103114e0a5c7db4e2662c1b3adcfd16d0eee74afb85f3cd5f751513b86e633b9",
+      "source_fact_keys": [
+        "source_fact:v1:2324f176794be4303c59b5a881ccced4a14b735ec4d98c85aa343a8da71b533b",
+        "source_fact:v1:4330b5a63f086831545d99a4341d9f5e85f30a2c36be7207fdf98c6f677bc0c0",
+        "source_fact:v1:67a7a0793d91410d104e8e4fecfe6cb5a4b6258c4ca6c8c78bc725bebe60b3a0",
+        "source_fact:v1:a155ef8819c98dfd95be5ebabeae6082e7c045c252db482391308f66c5eb11bd",
+        "source_fact:v1:c41519d06f2126c754016a248c41fcc6165a06d16d64e279d773e7c6729a396e"
+      ],
+      "source_published_kst": "2026-10-08T08:00+09:00",
+      "source_title": "8월 경상수지 461.1억달러 흑자, 역대 2위…반도체 수출 호조 | 연합뉴스",
+      "telegram_core_fact": "운송수지는 최근 수출운임 상승 영향으로 흑자 규모가 전월 6천만달러에서 8월 5억2천만달러로 늘었고, 지식재산권사용료수지는 전월 5억4천만달러 적자에서 8월 3억9천만달러로 적자 규모가 줄었다.",
+      "title": "8월 경상수지 461.1억달러 흑자, 역대 2위…반도체 수출 호조 | 연합뉴스"
     },
     "source_fact:6b793920f1f96136380044a0": {
       "first_seen_kst": "2026-10-08T00:39:44+09:00",
@@ -177625,6 +178731,27 @@
       "source_published_kst": "2026-10-07T05:22+09:00",
       "title": "국제유가 보합…중동 수출 증가·G7 비축유 방출에 공급 우려 완화"
     },
+    "source_fact:7914c9ba8b3d139deae2c5ac": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.hankyung.com/article/202610089567i",
+      "source": "한국경제",
+      "source_body_digest": "9cfb27592ac407b90d1295f82034a63fab38613b4b064f3e5412c0b6d648d142",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2fb072eed861740c567747a443e2cace6ec3c0f8463d19266c412a5776855ae",
+      "source_fact_keys": [
+        "source_fact:v1:225efac09973c14d0aeb3b24f98bed1910a5da86fe6554c8ca0466aa7c31044b",
+        "source_fact:v1:6903ece1a2235e3cf7060f7e36204c16a7b422d09e60ef0e12c34cbf77d96763",
+        "source_fact:v1:817a71e077196a7bb8b69e422a409285957abf2dc8678ccbd828b324bf7fec7a"
+      ],
+      "source_published_kst": "2026-10-08T07:50+09:00",
+      "source_title": "삼성전자 3분기 영업이익 107조…반도체 슈퍼사이클에 4분기 연속 역대 최대",
+      "telegram_core_fact": "삼성전자는 3분기 영업이익이 107조4000억원으로 전년비 782.5% 증가한 것으로 잠정 집계됐다고 8일 발표했다.",
+      "title": "삼성전자 3분기 영업이익 107조…반도체 슈퍼사이클에 4분기 연속 역대 최대"
+    },
     "source_fact:79190f2cf2aea22cb6283162": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
       "lanes": {
@@ -178648,6 +179775,27 @@
       ],
       "source_published_kst": "2026-10-07T08:49+09:00",
       "title": "위스키 인터내셔널 홀딩, 자회사 1000만 달러 PIPE 유치..티커 변경"
+    },
+    "source_fact:7b84f45e4b13d716d3629d7d": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.hankyung.com/article/202610089567i",
+      "source": "한국경제",
+      "source_body_digest": "9cfb27592ac407b90d1295f82034a63fab38613b4b064f3e5412c0b6d648d142",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2fb072eed861740c567747a443e2cace6ec3c0f8463d19266c412a5776855ae",
+      "source_fact_keys": [
+        "source_fact:v1:225efac09973c14d0aeb3b24f98bed1910a5da86fe6554c8ca0466aa7c31044b",
+        "source_fact:v1:6903ece1a2235e3cf7060f7e36204c16a7b422d09e60ef0e12c34cbf77d96763",
+        "source_fact:v1:817a71e077196a7bb8b69e422a409285957abf2dc8678ccbd828b324bf7fec7a"
+      ],
+      "source_published_kst": "2026-10-08T07:50+09:00",
+      "source_title": "삼성전자 3분기 영업이익 107조…반도체 슈퍼사이클에 4분기 연속 역대 최대",
+      "telegram_core_fact": "삼성전자는 3분기 영업이익이 107조4000억원으로 전년비 782.5% 증가한 것으로 잠정 집계됐다고 8일 발표했다.",
+      "title": "삼성전자 3분기 영업이익 107조…반도체 슈퍼사이클에 4분기 연속 역대 최대"
     },
     "source_fact:7b8fd3ca930359619af19a9c": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
@@ -180027,6 +181175,35 @@
       "telegram_core_fact": "은행이 중앙은행에 초과 유동성을 예치할 때 적용하는 상설예금제도(SDF) 금리는 5.25%, 긴급 유동성 지원 창구인 한계대출제도(MSF) 금리는 5.75%로 각각 0.25% 포인트 인상했다.",
       "title": "인도, 기준금리 5.5%로 0.25%P↑…\"인플레 대응 3년8개월 만에 인상\""
     },
+    "source_fact:7e669eb7f089f11445e0885c": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008022400008",
+      "source": "연합뉴스",
+      "source_body_digest": "50712f4ba29b8dd1abf1b7da61fe5edb321a915412ec801e6197cf4a039c4886",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fca83cab886d6e1cde5b23697197024c8da94cbe2eefe78b417e96bdd315228a",
+      "source_fact_keys": [
+        "source_fact:v1:13cb50cec986b514df8a63e5a93cbf337c4d12d3455206a93c9288385a286e1c",
+        "source_fact:v1:1c9e2968ccba9e50c51dea9236395371db53a1e8d06b3785a4cc14ffffed8005",
+        "source_fact:v1:537274a15229e949482d0adcc2aecd4f752ca2713c2630e69e1552b722d243f7",
+        "source_fact:v1:63994cd6ae829bcc82dba2cbe6554b3c4c94bb6299040ac223d50508a32637ce",
+        "source_fact:v1:71fa4a7370e7ccd6f5b3eeb41dfaf3570f63c7804865dd29e48c8b4d202dc9a1",
+        "source_fact:v1:7c7209870fc49ddd5a730bc7f6874b0643d6c9e26e50ffc26024e44a0243ee35",
+        "source_fact:v1:7e367b785b27be7ebccf403d48e3e27b5f03f30904efb18626854a6d7a9b2fe8",
+        "source_fact:v1:80567dea27aeeb5e6dd48bdef433b48764a5a5c47503bbd4f86db961950a3be8",
+        "source_fact:v1:b3d0b08d90776db8f476fca6e2b4c8a138812dc601a7d561e58fbb5f7a51dcc9",
+        "source_fact:v1:d14cd60fbeda5142a95dd2fa51de8e0f895d52f2b65519af87c901f1d7a62ca7",
+        "source_fact:v1:f1922ecf5a1d704574bf3ef5e2d81f3b2817223836e384d587c1d00806734559"
+      ],
+      "source_published_kst": "2026-10-08T08:03+09:00",
+      "source_title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스",
+      "telegram_core_fact": "일단 삼성전자는 올해 3분기 연결 기준 영업이익이 107조4천억원으로 지난해 동기보다 782.5% 증가한 것으로 잠정 집계됐다고 공시했다.",
+      "title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스"
+    },
     "source_fact:7e6773db9c95a04463c62bf5": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
       "lanes": {
@@ -180432,6 +181609,30 @@
       ],
       "source_published_kst": "2026-10-06T13:27+09:00",
       "title": "엠플러스, 유럽 글로벌 배터리 기업서 각형 장비 수주"
+    },
+    "source_fact:7f58fff45762c84abe5963a6": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02427206645610952",
+      "source": "이데일리",
+      "source_body_digest": "9d06faa48c2f49c5c22ee8976ca3ffe6e1783cc831eac23fd7f80e250e3a25b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02ef56c1a0eb820b4641c522aba2b7106223a0568233630d19013760a9054e21",
+      "source_fact_keys": [
+        "source_fact:v1:030d1680e207d7fca3de1669e1a41d44228e2e6c9774b390117de8a66f488cd4",
+        "source_fact:v1:0d8264648045edd9a5d2b68e5c57c131f7515cf2d242521724900a6c6c20fee6",
+        "source_fact:v1:2557b32e686bda672b0375e7df69d31f511be3e42f87594fdc5062b81f0de62d",
+        "source_fact:v1:3f66e7177924907d30db5752dc7debbb2c4d15b1d68d4d0b0bf56db05433218f",
+        "source_fact:v1:40a969373a4eb82d2f38723122e68ab97658fb66a182d2e1b0ce27ade5c1f8be",
+        "source_fact:v1:67bf89a871c1c20f62ea4ed9bfc7ac80e88b7a541330696753750fe89d2ef96f"
+      ],
+      "source_published_kst": "2026-10-08T07:52+09:00",
+      "source_title": "NAVER, 하반기 실적 기대치 낮춰야…결국 수익 증명이 관건-메리츠",
+      "telegram_core_fact": "이효진 메리츠증권 연구원은 8일 보고서에서 NAVER의 3분기 연결 매출액을 전년비 11.0% 증가한 3조4844억원, 영업이익을 14.9% 감소한 4858억원으로 추정했다.",
+      "title": "NAVER, 하반기 실적 기대치 낮춰야…결국 수익 증명이 관건-메리츠"
     },
     "source_fact:7f5d7316fd7228c9f68a042e": {
       "first_seen_kst": "2026-10-07T01:18:00+09:00",
@@ -183104,6 +184305,30 @@
       "source_published_kst": "2026-10-06T06:28+09:00",
       "title": "트럼프, 면세 경유 사용처 제한 완화…기름값 낮추려 안간힘"
     },
+    "source_fact:85aaf2b0120ff7e4a5068554": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02427206645610952",
+      "source": "이데일리",
+      "source_body_digest": "9d06faa48c2f49c5c22ee8976ca3ffe6e1783cc831eac23fd7f80e250e3a25b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02ef56c1a0eb820b4641c522aba2b7106223a0568233630d19013760a9054e21",
+      "source_fact_keys": [
+        "source_fact:v1:030d1680e207d7fca3de1669e1a41d44228e2e6c9774b390117de8a66f488cd4",
+        "source_fact:v1:0d8264648045edd9a5d2b68e5c57c131f7515cf2d242521724900a6c6c20fee6",
+        "source_fact:v1:2557b32e686bda672b0375e7df69d31f511be3e42f87594fdc5062b81f0de62d",
+        "source_fact:v1:3f66e7177924907d30db5752dc7debbb2c4d15b1d68d4d0b0bf56db05433218f",
+        "source_fact:v1:40a969373a4eb82d2f38723122e68ab97658fb66a182d2e1b0ce27ade5c1f8be",
+        "source_fact:v1:67bf89a871c1c20f62ea4ed9bfc7ac80e88b7a541330696753750fe89d2ef96f"
+      ],
+      "source_published_kst": "2026-10-08T07:52+09:00",
+      "source_title": "NAVER, 하반기 실적 기대치 낮춰야…결국 수익 증명이 관건-메리츠",
+      "telegram_core_fact": "이효진 메리츠증권 연구원은 8일 보고서에서 NAVER의 3분기 연결 매출액을 전년비 11.0% 증가한 3조4844억원, 영업이익을 14.9% 감소한 4858억원으로 추정했다.",
+      "title": "NAVER, 하반기 실적 기대치 낮춰야…결국 수익 증명이 관건-메리츠"
+    },
     "source_fact:85aba14a8339d6b9c1d2dbc4": {
       "first_seen_kst": "2026-10-08T06:57:59+09:00",
       "lanes": {
@@ -183712,6 +184937,35 @@
       "source_published_kst": "2026-10-06T11:45+09:00",
       "title": "車 디스플레이 유리 수입 간소화…재생에너지 '다수 대 다수' PPA 허용"
     },
+    "source_fact:8715f8968224392990ea70cf": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008022400008",
+      "source": "연합뉴스",
+      "source_body_digest": "50712f4ba29b8dd1abf1b7da61fe5edb321a915412ec801e6197cf4a039c4886",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fca83cab886d6e1cde5b23697197024c8da94cbe2eefe78b417e96bdd315228a",
+      "source_fact_keys": [
+        "source_fact:v1:13cb50cec986b514df8a63e5a93cbf337c4d12d3455206a93c9288385a286e1c",
+        "source_fact:v1:1c9e2968ccba9e50c51dea9236395371db53a1e8d06b3785a4cc14ffffed8005",
+        "source_fact:v1:537274a15229e949482d0adcc2aecd4f752ca2713c2630e69e1552b722d243f7",
+        "source_fact:v1:63994cd6ae829bcc82dba2cbe6554b3c4c94bb6299040ac223d50508a32637ce",
+        "source_fact:v1:71fa4a7370e7ccd6f5b3eeb41dfaf3570f63c7804865dd29e48c8b4d202dc9a1",
+        "source_fact:v1:7c7209870fc49ddd5a730bc7f6874b0643d6c9e26e50ffc26024e44a0243ee35",
+        "source_fact:v1:7e367b785b27be7ebccf403d48e3e27b5f03f30904efb18626854a6d7a9b2fe8",
+        "source_fact:v1:80567dea27aeeb5e6dd48bdef433b48764a5a5c47503bbd4f86db961950a3be8",
+        "source_fact:v1:b3d0b08d90776db8f476fca6e2b4c8a138812dc601a7d561e58fbb5f7a51dcc9",
+        "source_fact:v1:d14cd60fbeda5142a95dd2fa51de8e0f895d52f2b65519af87c901f1d7a62ca7",
+        "source_fact:v1:f1922ecf5a1d704574bf3ef5e2d81f3b2817223836e384d587c1d00806734559"
+      ],
+      "source_published_kst": "2026-10-08T08:03+09:00",
+      "source_title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스",
+      "telegram_core_fact": "일단 삼성전자는 올해 3분기 연결 기준 영업이익이 107조4천억원으로 지난해 동기보다 782.5% 증가한 것으로 잠정 집계됐다고 공시했다.",
+      "title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스"
+    },
     "source_fact:8718fd78538d1857f464b2cd": {
       "first_seen_kst": "2026-10-07T23:23:06+09:00",
       "lanes": {
@@ -184053,6 +185307,35 @@
       ],
       "source_published_kst": "2026-10-06T18:02+09:00",
       "title": "포스코퓨처엠, 삼성SDI에 양극재 6조 공급"
+    },
+    "source_fact:882ccadcb628ff7ceddac8a4": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008022400008",
+      "source": "연합뉴스",
+      "source_body_digest": "50712f4ba29b8dd1abf1b7da61fe5edb321a915412ec801e6197cf4a039c4886",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fca83cab886d6e1cde5b23697197024c8da94cbe2eefe78b417e96bdd315228a",
+      "source_fact_keys": [
+        "source_fact:v1:13cb50cec986b514df8a63e5a93cbf337c4d12d3455206a93c9288385a286e1c",
+        "source_fact:v1:1c9e2968ccba9e50c51dea9236395371db53a1e8d06b3785a4cc14ffffed8005",
+        "source_fact:v1:537274a15229e949482d0adcc2aecd4f752ca2713c2630e69e1552b722d243f7",
+        "source_fact:v1:63994cd6ae829bcc82dba2cbe6554b3c4c94bb6299040ac223d50508a32637ce",
+        "source_fact:v1:71fa4a7370e7ccd6f5b3eeb41dfaf3570f63c7804865dd29e48c8b4d202dc9a1",
+        "source_fact:v1:7c7209870fc49ddd5a730bc7f6874b0643d6c9e26e50ffc26024e44a0243ee35",
+        "source_fact:v1:7e367b785b27be7ebccf403d48e3e27b5f03f30904efb18626854a6d7a9b2fe8",
+        "source_fact:v1:80567dea27aeeb5e6dd48bdef433b48764a5a5c47503bbd4f86db961950a3be8",
+        "source_fact:v1:b3d0b08d90776db8f476fca6e2b4c8a138812dc601a7d561e58fbb5f7a51dcc9",
+        "source_fact:v1:d14cd60fbeda5142a95dd2fa51de8e0f895d52f2b65519af87c901f1d7a62ca7",
+        "source_fact:v1:f1922ecf5a1d704574bf3ef5e2d81f3b2817223836e384d587c1d00806734559"
+      ],
+      "source_published_kst": "2026-10-08T08:03+09:00",
+      "source_title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스",
+      "telegram_core_fact": "일단 삼성전자는 올해 3분기 연결 기준 영업이익이 107조4천억원으로 지난해 동기보다 782.5% 증가한 것으로 잠정 집계됐다고 공시했다.",
+      "title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스"
     },
     "source_fact:882d1e5fa8c62d0fbc66b2b6": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
@@ -185070,6 +186353,35 @@
       "telegram_core_fact": "반도체 초호황 속 삼성전자가 국내 기업 사상 최초로 분기 영업이익 100조원 달성을 가시권에 두고 있다.",
       "title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표 | 연합뉴스"
     },
+    "source_fact:8a53181518f3f4eb9e4b61e3": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008022400008",
+      "source": "연합뉴스",
+      "source_body_digest": "50712f4ba29b8dd1abf1b7da61fe5edb321a915412ec801e6197cf4a039c4886",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fca83cab886d6e1cde5b23697197024c8da94cbe2eefe78b417e96bdd315228a",
+      "source_fact_keys": [
+        "source_fact:v1:13cb50cec986b514df8a63e5a93cbf337c4d12d3455206a93c9288385a286e1c",
+        "source_fact:v1:1c9e2968ccba9e50c51dea9236395371db53a1e8d06b3785a4cc14ffffed8005",
+        "source_fact:v1:537274a15229e949482d0adcc2aecd4f752ca2713c2630e69e1552b722d243f7",
+        "source_fact:v1:63994cd6ae829bcc82dba2cbe6554b3c4c94bb6299040ac223d50508a32637ce",
+        "source_fact:v1:71fa4a7370e7ccd6f5b3eeb41dfaf3570f63c7804865dd29e48c8b4d202dc9a1",
+        "source_fact:v1:7c7209870fc49ddd5a730bc7f6874b0643d6c9e26e50ffc26024e44a0243ee35",
+        "source_fact:v1:7e367b785b27be7ebccf403d48e3e27b5f03f30904efb18626854a6d7a9b2fe8",
+        "source_fact:v1:80567dea27aeeb5e6dd48bdef433b48764a5a5c47503bbd4f86db961950a3be8",
+        "source_fact:v1:b3d0b08d90776db8f476fca6e2b4c8a138812dc601a7d561e58fbb5f7a51dcc9",
+        "source_fact:v1:d14cd60fbeda5142a95dd2fa51de8e0f895d52f2b65519af87c901f1d7a62ca7",
+        "source_fact:v1:f1922ecf5a1d704574bf3ef5e2d81f3b2817223836e384d587c1d00806734559"
+      ],
+      "source_published_kst": "2026-10-08T08:03+09:00",
+      "source_title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스",
+      "telegram_core_fact": "일단 삼성전자는 올해 3분기 연결 기준 영업이익이 107조4천억원으로 지난해 동기보다 782.5% 증가한 것으로 잠정 집계됐다고 공시했다.",
+      "title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스"
+    },
     "source_fact:8a6102dc5914b72b8e661aa8": {
       "first_seen_kst": "2026-10-08T04:45:20+09:00",
       "lanes": {
@@ -185391,6 +186703,33 @@
       "source_title": "LG전자, 3분기 누적 영업이익 4조 첫 돌파…매출 9% 늘 때 이익 56% 뛰었다",
       "telegram_core_fact": "LG전자는 2026년 3분기 연결기준 매출 23조8270억원, 영업이익 7818억원을 잠정 기록했다고 7일 발표했다.",
       "title": "LG전자, 3분기 누적 영업이익 4조 첫 돌파…매출 9% 늘 때 이익 56% 뛰었다"
+    },
+    "source_fact:8b32130e04c7abf96a9ee94a": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6313654",
+      "source": "뉴스1",
+      "source_body_digest": "a307f1b57f0fa5492ed35dfbfaded8ea3190c213a88e024d64d695fb2779b9f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:536335c3313b67d94e5583143650314837039913348d14940482a73be2a5be3b",
+      "source_fact_keys": [
+        "source_fact:v1:1fc3cae8fcb9d7a041be4841001f966313ae97e180ff818e4205ca12af6b96ac",
+        "source_fact:v1:400a719d6f784662fcee175bee8541d491094db687c78dec1e1a1fb09f93d3d7",
+        "source_fact:v1:6819787513ba8801295e797a461bfce8bddc0b7c22c9f90f9fd9850b3dac407d",
+        "source_fact:v1:87855019130da2b291f64b987ef1ca6e9087c21846374ecaff5c8976c5407139",
+        "source_fact:v1:abb863f5202688e38fb582ac081ce4da88db652c364c7dcedaa80f75557d14e3",
+        "source_fact:v1:c78f5812096b1fe5a7291797888058c5217d28a71f67acaf28fa6f8fa76c5d07",
+        "source_fact:v1:cf2127e6fcb7385ae1f20d4a79b9845e429346cba67c945f4dad50c66c1b1c39",
+        "source_fact:v1:d1698dd611a71823a80420cc17db537bf370a01797fc32b71af49e541fd84bd2",
+        "source_fact:v1:f1858e4d8845699f5fd22e54f8326833892079d21b509ceb77879b1139bf46fd"
+      ],
+      "source_published_kst": "2026-10-08T06:28+09:00",
+      "source_title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\"",
+      "telegram_core_fact": "스콧 베선트 미국 재무장관이 최근 물가와 장기 국채금리 급등의 주된 원인을 이란전쟁에 따른 에너지 충격으로 진단하며 전쟁이 끝나면 유가와 물가, 국채금리가 함께 내려갈 것이라고 전망했다.",
+      "title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\""
     },
     "source_fact:8b342a3530cc8e86b9b29a7e": {
       "first_seen_kst": "2026-10-06T19:46:03+09:00",
@@ -185998,6 +187337,28 @@
       ],
       "source_published_kst": "2026-10-07T06:22+09:00",
       "title": "“러시아 숨통 틔워줬다”…우크라, 韓 ‘석유 공급’ 공개 저격"
+    },
+    "source_fact:8c5390c33373532b24521b71": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818270",
+      "source": "뉴시스",
+      "source_body_digest": "27f2770c5684f98603fbef84ef2899fd3928b7eede69840f416d8fdb9110e7c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d0daeba3ef0544251998731768e1c47b2d874de46d2e3e251b80ca7b6ab182bf",
+      "source_fact_keys": [
+        "source_fact:v1:15beafa511c1152b41715891da182e0f6f7f5daad71b4adb18b1adace1c8f582",
+        "source_fact:v1:240d12a05875dcb5a614849fdeffd5862026fb137f6e9e8ca8fe24371937494a",
+        "source_fact:v1:61ec01817645aae5287ede6db8f25bc74202993aa2495d1c1c9e2af20d368836",
+        "source_fact:v1:c6aa51d7cc599fe825bfd75cd3be9ee8d282eec67525dc8e7c6c151a8a2c213b"
+      ],
+      "source_published_kst": "2026-10-08T08:05+09:00",
+      "source_title": "삼성전자, 3Q 매출 195조·영업익 107조…대한민국 기업史 신기록 썼다",
+      "telegram_core_fact": "삼성전자가 올해 3분기 사상 처음으로 분기 영업이익 100조원을 돌파하며 한국 기업 역사를 새로 썼다.",
+      "title": "삼성전자, 3Q 매출 195조·영업익 107조…대한민국 기업史 신기록 썼다"
     },
     "source_fact:8c551e3dc3840e2d7675c154": {
       "first_seen_kst": "2026-10-07T02:13:12+09:00",
@@ -191046,6 +192407,35 @@
       ],
       "source_published_kst": "2026-10-05T12:37+09:00",
       "title": "\"메가·컴포즈 점주들 돈 많이 벌었겠네\"…실상은 달랐다"
+    },
+    "source_fact:97ffdfa478816e52e9ca5f58": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008022400008",
+      "source": "연합뉴스",
+      "source_body_digest": "50712f4ba29b8dd1abf1b7da61fe5edb321a915412ec801e6197cf4a039c4886",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fca83cab886d6e1cde5b23697197024c8da94cbe2eefe78b417e96bdd315228a",
+      "source_fact_keys": [
+        "source_fact:v1:13cb50cec986b514df8a63e5a93cbf337c4d12d3455206a93c9288385a286e1c",
+        "source_fact:v1:1c9e2968ccba9e50c51dea9236395371db53a1e8d06b3785a4cc14ffffed8005",
+        "source_fact:v1:537274a15229e949482d0adcc2aecd4f752ca2713c2630e69e1552b722d243f7",
+        "source_fact:v1:63994cd6ae829bcc82dba2cbe6554b3c4c94bb6299040ac223d50508a32637ce",
+        "source_fact:v1:71fa4a7370e7ccd6f5b3eeb41dfaf3570f63c7804865dd29e48c8b4d202dc9a1",
+        "source_fact:v1:7c7209870fc49ddd5a730bc7f6874b0643d6c9e26e50ffc26024e44a0243ee35",
+        "source_fact:v1:7e367b785b27be7ebccf403d48e3e27b5f03f30904efb18626854a6d7a9b2fe8",
+        "source_fact:v1:80567dea27aeeb5e6dd48bdef433b48764a5a5c47503bbd4f86db961950a3be8",
+        "source_fact:v1:b3d0b08d90776db8f476fca6e2b4c8a138812dc601a7d561e58fbb5f7a51dcc9",
+        "source_fact:v1:d14cd60fbeda5142a95dd2fa51de8e0f895d52f2b65519af87c901f1d7a62ca7",
+        "source_fact:v1:f1922ecf5a1d704574bf3ef5e2d81f3b2817223836e384d587c1d00806734559"
+      ],
+      "source_published_kst": "2026-10-08T08:03+09:00",
+      "source_title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스",
+      "telegram_core_fact": "일단 삼성전자는 올해 3분기 연결 기준 영업이익이 107조4천억원으로 지난해 동기보다 782.5% 증가한 것으로 잠정 집계됐다고 공시했다.",
+      "title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스"
     },
     "source_fact:981f304ab917c57eeaf4e211": {
       "first_seen_kst": "2026-10-06T01:41:59+09:00",
@@ -207609,6 +208999,35 @@
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "데이터센터 반대여론에도 美건설 계속…2027년 90GW 전망"
     },
+    "source_fact:be6ece917c87a10fd66801b5": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008022400008",
+      "source": "연합뉴스",
+      "source_body_digest": "50712f4ba29b8dd1abf1b7da61fe5edb321a915412ec801e6197cf4a039c4886",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fca83cab886d6e1cde5b23697197024c8da94cbe2eefe78b417e96bdd315228a",
+      "source_fact_keys": [
+        "source_fact:v1:13cb50cec986b514df8a63e5a93cbf337c4d12d3455206a93c9288385a286e1c",
+        "source_fact:v1:1c9e2968ccba9e50c51dea9236395371db53a1e8d06b3785a4cc14ffffed8005",
+        "source_fact:v1:537274a15229e949482d0adcc2aecd4f752ca2713c2630e69e1552b722d243f7",
+        "source_fact:v1:63994cd6ae829bcc82dba2cbe6554b3c4c94bb6299040ac223d50508a32637ce",
+        "source_fact:v1:71fa4a7370e7ccd6f5b3eeb41dfaf3570f63c7804865dd29e48c8b4d202dc9a1",
+        "source_fact:v1:7c7209870fc49ddd5a730bc7f6874b0643d6c9e26e50ffc26024e44a0243ee35",
+        "source_fact:v1:7e367b785b27be7ebccf403d48e3e27b5f03f30904efb18626854a6d7a9b2fe8",
+        "source_fact:v1:80567dea27aeeb5e6dd48bdef433b48764a5a5c47503bbd4f86db961950a3be8",
+        "source_fact:v1:b3d0b08d90776db8f476fca6e2b4c8a138812dc601a7d561e58fbb5f7a51dcc9",
+        "source_fact:v1:d14cd60fbeda5142a95dd2fa51de8e0f895d52f2b65519af87c901f1d7a62ca7",
+        "source_fact:v1:f1922ecf5a1d704574bf3ef5e2d81f3b2817223836e384d587c1d00806734559"
+      ],
+      "source_published_kst": "2026-10-08T08:03+09:00",
+      "source_title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스",
+      "telegram_core_fact": "일단 삼성전자는 올해 3분기 연결 기준 영업이익이 107조4천억원으로 지난해 동기보다 782.5% 증가한 것으로 잠정 집계됐다고 공시했다.",
+      "title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스"
+    },
     "source_fact:be7e9cc0ab7ed20f911026b8": {
       "first_seen_kst": "2026-10-06T21:05:27+09:00",
       "lanes": {
@@ -209390,6 +210809,33 @@
       ],
       "source_published_kst": "2026-10-07T06:22+09:00",
       "title": "“러시아 숨통 틔워줬다”…우크라, 韓 ‘석유 공급’ 공개 저격"
+    },
+    "source_fact:c2a7cdf7bdc5b2889ad767c2": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6313654",
+      "source": "뉴스1",
+      "source_body_digest": "a307f1b57f0fa5492ed35dfbfaded8ea3190c213a88e024d64d695fb2779b9f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:536335c3313b67d94e5583143650314837039913348d14940482a73be2a5be3b",
+      "source_fact_keys": [
+        "source_fact:v1:1fc3cae8fcb9d7a041be4841001f966313ae97e180ff818e4205ca12af6b96ac",
+        "source_fact:v1:400a719d6f784662fcee175bee8541d491094db687c78dec1e1a1fb09f93d3d7",
+        "source_fact:v1:6819787513ba8801295e797a461bfce8bddc0b7c22c9f90f9fd9850b3dac407d",
+        "source_fact:v1:87855019130da2b291f64b987ef1ca6e9087c21846374ecaff5c8976c5407139",
+        "source_fact:v1:abb863f5202688e38fb582ac081ce4da88db652c364c7dcedaa80f75557d14e3",
+        "source_fact:v1:c78f5812096b1fe5a7291797888058c5217d28a71f67acaf28fa6f8fa76c5d07",
+        "source_fact:v1:cf2127e6fcb7385ae1f20d4a79b9845e429346cba67c945f4dad50c66c1b1c39",
+        "source_fact:v1:d1698dd611a71823a80420cc17db537bf370a01797fc32b71af49e541fd84bd2",
+        "source_fact:v1:f1858e4d8845699f5fd22e54f8326833892079d21b509ceb77879b1139bf46fd"
+      ],
+      "source_published_kst": "2026-10-08T06:28+09:00",
+      "source_title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\"",
+      "telegram_core_fact": "스콧 베선트 미국 재무장관이 최근 물가와 장기 국채금리 급등의 주된 원인을 이란전쟁에 따른 에너지 충격으로 진단하며 전쟁이 끝나면 유가와 물가, 국채금리가 함께 내려갈 것이라고 전망했다.",
+      "title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\""
     },
     "source_fact:c2b116f9f7ca568b2ce29312": {
       "first_seen_kst": "2026-10-08T03:51:03+09:00",
@@ -212242,6 +213688,35 @@
       "source_published_kst": "2026-10-05T21:23+09:00",
       "title": "테라울프, 머스키 전력 1GW로 2배 확대..2단계 1년 앞당겨"
     },
+    "source_fact:c8b8f720d8fbefeba288bcad": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008022400008",
+      "source": "연합뉴스",
+      "source_body_digest": "50712f4ba29b8dd1abf1b7da61fe5edb321a915412ec801e6197cf4a039c4886",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fca83cab886d6e1cde5b23697197024c8da94cbe2eefe78b417e96bdd315228a",
+      "source_fact_keys": [
+        "source_fact:v1:13cb50cec986b514df8a63e5a93cbf337c4d12d3455206a93c9288385a286e1c",
+        "source_fact:v1:1c9e2968ccba9e50c51dea9236395371db53a1e8d06b3785a4cc14ffffed8005",
+        "source_fact:v1:537274a15229e949482d0adcc2aecd4f752ca2713c2630e69e1552b722d243f7",
+        "source_fact:v1:63994cd6ae829bcc82dba2cbe6554b3c4c94bb6299040ac223d50508a32637ce",
+        "source_fact:v1:71fa4a7370e7ccd6f5b3eeb41dfaf3570f63c7804865dd29e48c8b4d202dc9a1",
+        "source_fact:v1:7c7209870fc49ddd5a730bc7f6874b0643d6c9e26e50ffc26024e44a0243ee35",
+        "source_fact:v1:7e367b785b27be7ebccf403d48e3e27b5f03f30904efb18626854a6d7a9b2fe8",
+        "source_fact:v1:80567dea27aeeb5e6dd48bdef433b48764a5a5c47503bbd4f86db961950a3be8",
+        "source_fact:v1:b3d0b08d90776db8f476fca6e2b4c8a138812dc601a7d561e58fbb5f7a51dcc9",
+        "source_fact:v1:d14cd60fbeda5142a95dd2fa51de8e0f895d52f2b65519af87c901f1d7a62ca7",
+        "source_fact:v1:f1922ecf5a1d704574bf3ef5e2d81f3b2817223836e384d587c1d00806734559"
+      ],
+      "source_published_kst": "2026-10-08T08:03+09:00",
+      "source_title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스",
+      "telegram_core_fact": "일단 삼성전자는 올해 3분기 연결 기준 영업이익이 107조4천억원으로 지난해 동기보다 782.5% 증가한 것으로 잠정 집계됐다고 공시했다.",
+      "title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스"
+    },
     "source_fact:c8bb6c74c16bcde7d871847b": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
       "lanes": {
@@ -214063,6 +215538,28 @@
       ],
       "source_published_kst": "2026-10-07T15:55+09:00",
       "title": "대구·전남광주, 공장 누비며 부품 나르는 '공정모빌리티' 개발 | 연합뉴스"
+    },
+    "source_fact:cd4d9beecb955f764eaa4326": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818270",
+      "source": "뉴시스",
+      "source_body_digest": "27f2770c5684f98603fbef84ef2899fd3928b7eede69840f416d8fdb9110e7c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d0daeba3ef0544251998731768e1c47b2d874de46d2e3e251b80ca7b6ab182bf",
+      "source_fact_keys": [
+        "source_fact:v1:15beafa511c1152b41715891da182e0f6f7f5daad71b4adb18b1adace1c8f582",
+        "source_fact:v1:240d12a05875dcb5a614849fdeffd5862026fb137f6e9e8ca8fe24371937494a",
+        "source_fact:v1:61ec01817645aae5287ede6db8f25bc74202993aa2495d1c1c9e2af20d368836",
+        "source_fact:v1:c6aa51d7cc599fe825bfd75cd3be9ee8d282eec67525dc8e7c6c151a8a2c213b"
+      ],
+      "source_published_kst": "2026-10-08T08:05+09:00",
+      "source_title": "삼성전자, 3Q 매출 195조·영업익 107조…대한민국 기업史 신기록 썼다",
+      "telegram_core_fact": "삼성전자가 올해 3분기 사상 처음으로 분기 영업이익 100조원을 돌파하며 한국 기업 역사를 새로 썼다.",
+      "title": "삼성전자, 3Q 매출 195조·영업익 107조…대한민국 기업史 신기록 썼다"
     },
     "source_fact:cd53eeea4c461a0f9715aa3e": {
       "first_seen_kst": "2026-10-07T10:23:42+09:00",
@@ -216135,6 +217632,30 @@
       "telegram_core_fact": "맥주 부문 순매출은 전년비 5% 증가한 24억7000만달러를 기록했으며 출하량은 5.5% 늘었다.",
       "title": "[美특징주]컨스텔레이션 브랜즈, 맥주 1위 유지에도 가이던스 하회에 개장전 5%↓"
     },
+    "source_fact:d280cf3a0727d55c331100b7": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02427206645610952",
+      "source": "이데일리",
+      "source_body_digest": "9d06faa48c2f49c5c22ee8976ca3ffe6e1783cc831eac23fd7f80e250e3a25b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02ef56c1a0eb820b4641c522aba2b7106223a0568233630d19013760a9054e21",
+      "source_fact_keys": [
+        "source_fact:v1:030d1680e207d7fca3de1669e1a41d44228e2e6c9774b390117de8a66f488cd4",
+        "source_fact:v1:0d8264648045edd9a5d2b68e5c57c131f7515cf2d242521724900a6c6c20fee6",
+        "source_fact:v1:2557b32e686bda672b0375e7df69d31f511be3e42f87594fdc5062b81f0de62d",
+        "source_fact:v1:3f66e7177924907d30db5752dc7debbb2c4d15b1d68d4d0b0bf56db05433218f",
+        "source_fact:v1:40a969373a4eb82d2f38723122e68ab97658fb66a182d2e1b0ce27ade5c1f8be",
+        "source_fact:v1:67bf89a871c1c20f62ea4ed9bfc7ac80e88b7a541330696753750fe89d2ef96f"
+      ],
+      "source_published_kst": "2026-10-08T07:52+09:00",
+      "source_title": "NAVER, 하반기 실적 기대치 낮춰야…결국 수익 증명이 관건-메리츠",
+      "telegram_core_fact": "이효진 메리츠증권 연구원은 8일 보고서에서 NAVER의 3분기 연결 매출액을 전년비 11.0% 증가한 3조4844억원, 영업이익을 14.9% 감소한 4858억원으로 추정했다.",
+      "title": "NAVER, 하반기 실적 기대치 낮춰야…결국 수익 증명이 관건-메리츠"
+    },
     "source_fact:d2810bfbf38754b60dc065db": {
       "first_seen_kst": "2026-10-08T07:50:51+09:00",
       "lanes": {
@@ -217826,6 +219347,29 @@
       "telegram_core_fact": "10년물 금리는 장 초반 5.36%까지 올라 2002년 이후 최고 수준을 기록했지만 입찰 이후 5.28% 안팎으로 하락했다.",
       "title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'"
     },
+    "source_fact:d612fb174750ef4f5444214b": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008019500002",
+      "source": "연합뉴스",
+      "source_body_digest": "69996ee13d3f5d67dafb37b25de479bb264c37716c61358c365d483650e037be",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:103114e0a5c7db4e2662c1b3adcfd16d0eee74afb85f3cd5f751513b86e633b9",
+      "source_fact_keys": [
+        "source_fact:v1:2324f176794be4303c59b5a881ccced4a14b735ec4d98c85aa343a8da71b533b",
+        "source_fact:v1:4330b5a63f086831545d99a4341d9f5e85f30a2c36be7207fdf98c6f677bc0c0",
+        "source_fact:v1:67a7a0793d91410d104e8e4fecfe6cb5a4b6258c4ca6c8c78bc725bebe60b3a0",
+        "source_fact:v1:a155ef8819c98dfd95be5ebabeae6082e7c045c252db482391308f66c5eb11bd",
+        "source_fact:v1:c41519d06f2126c754016a248c41fcc6165a06d16d64e279d773e7c6729a396e"
+      ],
+      "source_published_kst": "2026-10-08T08:00+09:00",
+      "source_title": "8월 경상수지 461.1억달러 흑자, 역대 2위…반도체 수출 호조 | 연합뉴스",
+      "telegram_core_fact": "운송수지는 최근 수출운임 상승 영향으로 흑자 규모가 전월 6천만달러에서 8월 5억2천만달러로 늘었고, 지식재산권사용료수지는 전월 5억4천만달러 적자에서 8월 3억9천만달러로 적자 규모가 줄었다.",
+      "title": "8월 경상수지 461.1억달러 흑자, 역대 2위…반도체 수출 호조 | 연합뉴스"
+    },
     "source_fact:d61bd6a3f3102ce18d3afc79": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
       "lanes": {
@@ -218498,6 +220042,33 @@
       "source_title": "[올댓차이나] 홍콩 증시, 지분조정 매도로 사흘 만에 반락 마감… H주 0.57%↓",
       "telegram_core_fact": "홍콩 증시 상장 중국기업주 중심의 H주 지수는 전일보다 46.57 포인트, 0.57% 떨어진 8082.40으로 장을 끝냈다. 홍콩 증시는 7일 중국 증시가 국경절 연휴를 끝내고거래 재개를 하루 앞둔 가운데 지분조정 매물이 선행하면서 3거래일 만에 반락 마감했다.",
       "title": "[올댓차이나] 홍콩 증시, 지분조정 매도로 사흘 만에 반락 마감… H주 0.57%↓"
+    },
+    "source_fact:d703f577befab95fdb045767": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6313654",
+      "source": "뉴스1",
+      "source_body_digest": "a307f1b57f0fa5492ed35dfbfaded8ea3190c213a88e024d64d695fb2779b9f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:536335c3313b67d94e5583143650314837039913348d14940482a73be2a5be3b",
+      "source_fact_keys": [
+        "source_fact:v1:1fc3cae8fcb9d7a041be4841001f966313ae97e180ff818e4205ca12af6b96ac",
+        "source_fact:v1:400a719d6f784662fcee175bee8541d491094db687c78dec1e1a1fb09f93d3d7",
+        "source_fact:v1:6819787513ba8801295e797a461bfce8bddc0b7c22c9f90f9fd9850b3dac407d",
+        "source_fact:v1:87855019130da2b291f64b987ef1ca6e9087c21846374ecaff5c8976c5407139",
+        "source_fact:v1:abb863f5202688e38fb582ac081ce4da88db652c364c7dcedaa80f75557d14e3",
+        "source_fact:v1:c78f5812096b1fe5a7291797888058c5217d28a71f67acaf28fa6f8fa76c5d07",
+        "source_fact:v1:cf2127e6fcb7385ae1f20d4a79b9845e429346cba67c945f4dad50c66c1b1c39",
+        "source_fact:v1:d1698dd611a71823a80420cc17db537bf370a01797fc32b71af49e541fd84bd2",
+        "source_fact:v1:f1858e4d8845699f5fd22e54f8326833892079d21b509ceb77879b1139bf46fd"
+      ],
+      "source_published_kst": "2026-10-08T06:28+09:00",
+      "source_title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\"",
+      "telegram_core_fact": "스콧 베선트 미국 재무장관이 최근 물가와 장기 국채금리 급등의 주된 원인을 이란전쟁에 따른 에너지 충격으로 진단하며 전쟁이 끝나면 유가와 물가, 국채금리가 함께 내려갈 것이라고 전망했다.",
+      "title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\""
     },
     "source_fact:d707d4e809aff78a1b8e98e2": {
       "first_seen_kst": "2026-10-07T23:50:27+09:00",
@@ -223566,6 +225137,35 @@
       "source_published_kst": "2026-10-06T14:48+09:00",
       "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
     },
+    "source_fact:e13b6c7998de8fa4b62079e1": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008022400008",
+      "source": "연합뉴스",
+      "source_body_digest": "50712f4ba29b8dd1abf1b7da61fe5edb321a915412ec801e6197cf4a039c4886",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fca83cab886d6e1cde5b23697197024c8da94cbe2eefe78b417e96bdd315228a",
+      "source_fact_keys": [
+        "source_fact:v1:13cb50cec986b514df8a63e5a93cbf337c4d12d3455206a93c9288385a286e1c",
+        "source_fact:v1:1c9e2968ccba9e50c51dea9236395371db53a1e8d06b3785a4cc14ffffed8005",
+        "source_fact:v1:537274a15229e949482d0adcc2aecd4f752ca2713c2630e69e1552b722d243f7",
+        "source_fact:v1:63994cd6ae829bcc82dba2cbe6554b3c4c94bb6299040ac223d50508a32637ce",
+        "source_fact:v1:71fa4a7370e7ccd6f5b3eeb41dfaf3570f63c7804865dd29e48c8b4d202dc9a1",
+        "source_fact:v1:7c7209870fc49ddd5a730bc7f6874b0643d6c9e26e50ffc26024e44a0243ee35",
+        "source_fact:v1:7e367b785b27be7ebccf403d48e3e27b5f03f30904efb18626854a6d7a9b2fe8",
+        "source_fact:v1:80567dea27aeeb5e6dd48bdef433b48764a5a5c47503bbd4f86db961950a3be8",
+        "source_fact:v1:b3d0b08d90776db8f476fca6e2b4c8a138812dc601a7d561e58fbb5f7a51dcc9",
+        "source_fact:v1:d14cd60fbeda5142a95dd2fa51de8e0f895d52f2b65519af87c901f1d7a62ca7",
+        "source_fact:v1:f1922ecf5a1d704574bf3ef5e2d81f3b2817223836e384d587c1d00806734559"
+      ],
+      "source_published_kst": "2026-10-08T08:03+09:00",
+      "source_title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스",
+      "telegram_core_fact": "일단 삼성전자는 올해 3분기 연결 기준 영업이익이 107조4천억원으로 지난해 동기보다 782.5% 증가한 것으로 잠정 집계됐다고 공시했다.",
+      "title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스"
+    },
     "source_fact:e13c1cfc94b8080522feeb59": {
       "first_seen_kst": "2026-10-07T18:00:43+09:00",
       "lanes": {
@@ -226768,6 +228368,30 @@
       "source_published_kst": "2026-10-07T07:43+09:00",
       "title": "“56만전자·320만닉스 간다\"…삼전닉스, 3분기 실적 기대 이상"
     },
+    "source_fact:e7af6ee8163c2f9c5fce1e09": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02427206645610952",
+      "source": "이데일리",
+      "source_body_digest": "9d06faa48c2f49c5c22ee8976ca3ffe6e1783cc831eac23fd7f80e250e3a25b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02ef56c1a0eb820b4641c522aba2b7106223a0568233630d19013760a9054e21",
+      "source_fact_keys": [
+        "source_fact:v1:030d1680e207d7fca3de1669e1a41d44228e2e6c9774b390117de8a66f488cd4",
+        "source_fact:v1:0d8264648045edd9a5d2b68e5c57c131f7515cf2d242521724900a6c6c20fee6",
+        "source_fact:v1:2557b32e686bda672b0375e7df69d31f511be3e42f87594fdc5062b81f0de62d",
+        "source_fact:v1:3f66e7177924907d30db5752dc7debbb2c4d15b1d68d4d0b0bf56db05433218f",
+        "source_fact:v1:40a969373a4eb82d2f38723122e68ab97658fb66a182d2e1b0ce27ade5c1f8be",
+        "source_fact:v1:67bf89a871c1c20f62ea4ed9bfc7ac80e88b7a541330696753750fe89d2ef96f"
+      ],
+      "source_published_kst": "2026-10-08T07:52+09:00",
+      "source_title": "NAVER, 하반기 실적 기대치 낮춰야…결국 수익 증명이 관건-메리츠",
+      "telegram_core_fact": "이효진 메리츠증권 연구원은 8일 보고서에서 NAVER의 3분기 연결 매출액을 전년비 11.0% 증가한 3조4844억원, 영업이익을 14.9% 감소한 4858억원으로 추정했다.",
+      "title": "NAVER, 하반기 실적 기대치 낮춰야…결국 수익 증명이 관건-메리츠"
+    },
     "source_fact:e7b302e2d272697a517e8912": {
       "first_seen_kst": "2026-10-08T05:01:11+09:00",
       "lanes": {
@@ -226810,6 +228434,29 @@
       "source_title": "[데스크시각] 앤트로픽 지분 너머 SKT의 AI 성적표",
       "telegram_core_fact": "블룸버그(Bloomberg)에 따르면 앤트로픽은 이르면 11월 중순 기업공개(IPO)를 추진한다.",
       "title": "[데스크시각] 앤트로픽 지분 너머 SKT의 AI 성적표"
+    },
+    "source_fact:e7ec2254dbf57301c348a06b": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008019500002",
+      "source": "연합뉴스",
+      "source_body_digest": "69996ee13d3f5d67dafb37b25de479bb264c37716c61358c365d483650e037be",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:103114e0a5c7db4e2662c1b3adcfd16d0eee74afb85f3cd5f751513b86e633b9",
+      "source_fact_keys": [
+        "source_fact:v1:2324f176794be4303c59b5a881ccced4a14b735ec4d98c85aa343a8da71b533b",
+        "source_fact:v1:4330b5a63f086831545d99a4341d9f5e85f30a2c36be7207fdf98c6f677bc0c0",
+        "source_fact:v1:67a7a0793d91410d104e8e4fecfe6cb5a4b6258c4ca6c8c78bc725bebe60b3a0",
+        "source_fact:v1:a155ef8819c98dfd95be5ebabeae6082e7c045c252db482391308f66c5eb11bd",
+        "source_fact:v1:c41519d06f2126c754016a248c41fcc6165a06d16d64e279d773e7c6729a396e"
+      ],
+      "source_published_kst": "2026-10-08T08:00+09:00",
+      "source_title": "8월 경상수지 461.1억달러 흑자, 역대 2위…반도체 수출 호조 | 연합뉴스",
+      "telegram_core_fact": "운송수지는 최근 수출운임 상승 영향으로 흑자 규모가 전월 6천만달러에서 8월 5억2천만달러로 늘었고, 지식재산권사용료수지는 전월 5억4천만달러 적자에서 8월 3억9천만달러로 적자 규모가 줄었다.",
+      "title": "8월 경상수지 461.1억달러 흑자, 역대 2위…반도체 수출 호조 | 연합뉴스"
     },
     "source_fact:e814234fb54ab0cdc8fd4601": {
       "first_seen_kst": "2026-10-08T03:26:42+09:00",
@@ -231112,6 +232759,35 @@
       "source_published_kst": "2026-10-06T23:54+09:00",
       "title": "AI 전력난에 기존 원전 영끌…구글, 전력 3.6GW 확보"
     },
+    "source_fact:f0d2550e47fdaf0cbbef9064": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008022400008",
+      "source": "연합뉴스",
+      "source_body_digest": "50712f4ba29b8dd1abf1b7da61fe5edb321a915412ec801e6197cf4a039c4886",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fca83cab886d6e1cde5b23697197024c8da94cbe2eefe78b417e96bdd315228a",
+      "source_fact_keys": [
+        "source_fact:v1:13cb50cec986b514df8a63e5a93cbf337c4d12d3455206a93c9288385a286e1c",
+        "source_fact:v1:1c9e2968ccba9e50c51dea9236395371db53a1e8d06b3785a4cc14ffffed8005",
+        "source_fact:v1:537274a15229e949482d0adcc2aecd4f752ca2713c2630e69e1552b722d243f7",
+        "source_fact:v1:63994cd6ae829bcc82dba2cbe6554b3c4c94bb6299040ac223d50508a32637ce",
+        "source_fact:v1:71fa4a7370e7ccd6f5b3eeb41dfaf3570f63c7804865dd29e48c8b4d202dc9a1",
+        "source_fact:v1:7c7209870fc49ddd5a730bc7f6874b0643d6c9e26e50ffc26024e44a0243ee35",
+        "source_fact:v1:7e367b785b27be7ebccf403d48e3e27b5f03f30904efb18626854a6d7a9b2fe8",
+        "source_fact:v1:80567dea27aeeb5e6dd48bdef433b48764a5a5c47503bbd4f86db961950a3be8",
+        "source_fact:v1:b3d0b08d90776db8f476fca6e2b4c8a138812dc601a7d561e58fbb5f7a51dcc9",
+        "source_fact:v1:d14cd60fbeda5142a95dd2fa51de8e0f895d52f2b65519af87c901f1d7a62ca7",
+        "source_fact:v1:f1922ecf5a1d704574bf3ef5e2d81f3b2817223836e384d587c1d00806734559"
+      ],
+      "source_published_kst": "2026-10-08T08:03+09:00",
+      "source_title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스",
+      "telegram_core_fact": "일단 삼성전자는 올해 3분기 연결 기준 영업이익이 107조4천억원으로 지난해 동기보다 782.5% 증가한 것으로 잠정 집계됐다고 공시했다.",
+      "title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스"
+    },
     "source_fact:f0df11ef80035bdb8d3ab1fe": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
       "lanes": {
@@ -231328,6 +233004,33 @@
       "source_title": "허성무 \"웨스팅하우스 상장시 추가 지분 확보 계획 필요\"",
       "telegram_core_fact": "국회 산업통상자원중소벤처기업위원회 소속 더불어민주당 허성무(경남 창원 성산) 의원은 산업통상부 국정감사에서 김정관 산업통상부 장관에게 윤석열 정부 당시 미국 웨스팅하우스와 체결한 노예계약을 변경하고 원전 수출 주권을 회복하기 위해 웨스팅하우스 지분 확보 계획을 마련해야 한다고 촉구했다.",
       "title": "허성무 \"웨스팅하우스 상장시 추가 지분 확보 계획 필요\""
+    },
+    "source_fact:f194b567af2db8a5fcee519b": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6313654",
+      "source": "뉴스1",
+      "source_body_digest": "a307f1b57f0fa5492ed35dfbfaded8ea3190c213a88e024d64d695fb2779b9f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:536335c3313b67d94e5583143650314837039913348d14940482a73be2a5be3b",
+      "source_fact_keys": [
+        "source_fact:v1:1fc3cae8fcb9d7a041be4841001f966313ae97e180ff818e4205ca12af6b96ac",
+        "source_fact:v1:400a719d6f784662fcee175bee8541d491094db687c78dec1e1a1fb09f93d3d7",
+        "source_fact:v1:6819787513ba8801295e797a461bfce8bddc0b7c22c9f90f9fd9850b3dac407d",
+        "source_fact:v1:87855019130da2b291f64b987ef1ca6e9087c21846374ecaff5c8976c5407139",
+        "source_fact:v1:abb863f5202688e38fb582ac081ce4da88db652c364c7dcedaa80f75557d14e3",
+        "source_fact:v1:c78f5812096b1fe5a7291797888058c5217d28a71f67acaf28fa6f8fa76c5d07",
+        "source_fact:v1:cf2127e6fcb7385ae1f20d4a79b9845e429346cba67c945f4dad50c66c1b1c39",
+        "source_fact:v1:d1698dd611a71823a80420cc17db537bf370a01797fc32b71af49e541fd84bd2",
+        "source_fact:v1:f1858e4d8845699f5fd22e54f8326833892079d21b509ceb77879b1139bf46fd"
+      ],
+      "source_published_kst": "2026-10-08T06:28+09:00",
+      "source_title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\"",
+      "telegram_core_fact": "스콧 베선트 미국 재무장관이 최근 물가와 장기 국채금리 급등의 주된 원인을 이란전쟁에 따른 에너지 충격으로 진단하며 전쟁이 끝나면 유가와 물가, 국채금리가 함께 내려갈 것이라고 전망했다.",
+      "title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\""
     },
     "source_fact:f19fffcab45c6db99b840284": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
@@ -233405,6 +235108,30 @@
       "source_title": "LG전자, 3분기 영업익 7818억… 전년比 13.5% 증가",
       "telegram_core_fact": "LG전자는 연결 기준 올해 3분기 잠정 매출이 23조8270억원, 영업이익이 7818억원으로 집계됐다고 7일 공시했다.",
       "title": "LG전자, 3분기 영업익 7818억… 전년比 13.5% 증가"
+    },
+    "source_fact:f6f7054762c02a73d9aa833c": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02427206645610952",
+      "source": "이데일리",
+      "source_body_digest": "9d06faa48c2f49c5c22ee8976ca3ffe6e1783cc831eac23fd7f80e250e3a25b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02ef56c1a0eb820b4641c522aba2b7106223a0568233630d19013760a9054e21",
+      "source_fact_keys": [
+        "source_fact:v1:030d1680e207d7fca3de1669e1a41d44228e2e6c9774b390117de8a66f488cd4",
+        "source_fact:v1:0d8264648045edd9a5d2b68e5c57c131f7515cf2d242521724900a6c6c20fee6",
+        "source_fact:v1:2557b32e686bda672b0375e7df69d31f511be3e42f87594fdc5062b81f0de62d",
+        "source_fact:v1:3f66e7177924907d30db5752dc7debbb2c4d15b1d68d4d0b0bf56db05433218f",
+        "source_fact:v1:40a969373a4eb82d2f38723122e68ab97658fb66a182d2e1b0ce27ade5c1f8be",
+        "source_fact:v1:67bf89a871c1c20f62ea4ed9bfc7ac80e88b7a541330696753750fe89d2ef96f"
+      ],
+      "source_published_kst": "2026-10-08T07:52+09:00",
+      "source_title": "NAVER, 하반기 실적 기대치 낮춰야…결국 수익 증명이 관건-메리츠",
+      "telegram_core_fact": "이효진 메리츠증권 연구원은 8일 보고서에서 NAVER의 3분기 연결 매출액을 전년비 11.0% 증가한 3조4844억원, 영업이익을 14.9% 감소한 4858억원으로 추정했다.",
+      "title": "NAVER, 하반기 실적 기대치 낮춰야…결국 수익 증명이 관건-메리츠"
     },
     "source_fact:f709790c162e19346e341012": {
       "first_seen_kst": "2026-10-07T07:24:41+09:00",
@@ -238262,6 +239989,57 @@
       "link": "https://www.mt.co.kr/finance/2026/09/20/2026091715274866375",
       "source": "머니투데이",
       "title": "은행 방카슈랑스 '활기'…저축성보험 자금 유입에 생보사도 '반색'"
+    },
+    "title:056cc41381d554b21b08ac5f": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008022400008",
+      "source": "연합뉴스",
+      "source_body_digest": "50712f4ba29b8dd1abf1b7da61fe5edb321a915412ec801e6197cf4a039c4886",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fca83cab886d6e1cde5b23697197024c8da94cbe2eefe78b417e96bdd315228a",
+      "source_fact_keys": [
+        "source_fact:v1:13cb50cec986b514df8a63e5a93cbf337c4d12d3455206a93c9288385a286e1c",
+        "source_fact:v1:1c9e2968ccba9e50c51dea9236395371db53a1e8d06b3785a4cc14ffffed8005",
+        "source_fact:v1:537274a15229e949482d0adcc2aecd4f752ca2713c2630e69e1552b722d243f7",
+        "source_fact:v1:63994cd6ae829bcc82dba2cbe6554b3c4c94bb6299040ac223d50508a32637ce",
+        "source_fact:v1:71fa4a7370e7ccd6f5b3eeb41dfaf3570f63c7804865dd29e48c8b4d202dc9a1",
+        "source_fact:v1:7c7209870fc49ddd5a730bc7f6874b0643d6c9e26e50ffc26024e44a0243ee35",
+        "source_fact:v1:7e367b785b27be7ebccf403d48e3e27b5f03f30904efb18626854a6d7a9b2fe8",
+        "source_fact:v1:80567dea27aeeb5e6dd48bdef433b48764a5a5c47503bbd4f86db961950a3be8",
+        "source_fact:v1:b3d0b08d90776db8f476fca6e2b4c8a138812dc601a7d561e58fbb5f7a51dcc9",
+        "source_fact:v1:d14cd60fbeda5142a95dd2fa51de8e0f895d52f2b65519af87c901f1d7a62ca7",
+        "source_fact:v1:f1922ecf5a1d704574bf3ef5e2d81f3b2817223836e384d587c1d00806734559"
+      ],
+      "source_published_kst": "2026-10-08T08:03+09:00",
+      "source_title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스",
+      "telegram_core_fact": "일단 삼성전자는 올해 3분기 연결 기준 영업이익이 107조4천억원으로 지난해 동기보다 782.5% 증가한 것으로 잠정 집계됐다고 공시했다.",
+      "title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스"
+    },
+    "title:0576aafce2578671bf07ae24": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818270",
+      "source": "뉴시스",
+      "source_body_digest": "27f2770c5684f98603fbef84ef2899fd3928b7eede69840f416d8fdb9110e7c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d0daeba3ef0544251998731768e1c47b2d874de46d2e3e251b80ca7b6ab182bf",
+      "source_fact_keys": [
+        "source_fact:v1:15beafa511c1152b41715891da182e0f6f7f5daad71b4adb18b1adace1c8f582",
+        "source_fact:v1:240d12a05875dcb5a614849fdeffd5862026fb137f6e9e8ca8fe24371937494a",
+        "source_fact:v1:61ec01817645aae5287ede6db8f25bc74202993aa2495d1c1c9e2af20d368836",
+        "source_fact:v1:c6aa51d7cc599fe825bfd75cd3be9ee8d282eec67525dc8e7c6c151a8a2c213b"
+      ],
+      "source_published_kst": "2026-10-08T08:05+09:00",
+      "source_title": "삼성전자, 3Q 매출 195조·영업익 107조…대한민국 기업史 신기록 썼다",
+      "telegram_core_fact": "삼성전자가 올해 3분기 사상 처음으로 분기 영업이익 100조원을 돌파하며 한국 기업 역사를 새로 썼다.",
+      "title": "삼성전자, 3Q 매출 195조·영업익 107조…대한민국 기업史 신기록 썼다"
     },
     "title:05be7cbe6e3a2bb7c9fb054b": {
       "first_seen_kst": "2026-09-18T16:49:31+09:00",
@@ -244654,6 +246432,30 @@
       "telegram_core_fact": "김성환 기후에너지환경부 장관이 2030년까지 국내 재생에너지 설비를 100GW로 확대하는 것이 가능하다고 밝혔다. 양사는 별도로 2.7GW 전력을 15년간 공급하는 계약을 맺고 신규 발전설비 개발도 검토하기로 했다.",
       "title": "김성환 “2030년 재생에너지 100GW 가능” [ESG 뉴스 5]"
     },
+    "title:2dd08cf7edf805949ad76c68": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02427206645610952",
+      "source": "이데일리",
+      "source_body_digest": "9d06faa48c2f49c5c22ee8976ca3ffe6e1783cc831eac23fd7f80e250e3a25b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02ef56c1a0eb820b4641c522aba2b7106223a0568233630d19013760a9054e21",
+      "source_fact_keys": [
+        "source_fact:v1:030d1680e207d7fca3de1669e1a41d44228e2e6c9774b390117de8a66f488cd4",
+        "source_fact:v1:0d8264648045edd9a5d2b68e5c57c131f7515cf2d242521724900a6c6c20fee6",
+        "source_fact:v1:2557b32e686bda672b0375e7df69d31f511be3e42f87594fdc5062b81f0de62d",
+        "source_fact:v1:3f66e7177924907d30db5752dc7debbb2c4d15b1d68d4d0b0bf56db05433218f",
+        "source_fact:v1:40a969373a4eb82d2f38723122e68ab97658fb66a182d2e1b0ce27ade5c1f8be",
+        "source_fact:v1:67bf89a871c1c20f62ea4ed9bfc7ac80e88b7a541330696753750fe89d2ef96f"
+      ],
+      "source_published_kst": "2026-10-08T07:52+09:00",
+      "source_title": "NAVER, 하반기 실적 기대치 낮춰야…결국 수익 증명이 관건-메리츠",
+      "telegram_core_fact": "이효진 메리츠증권 연구원은 8일 보고서에서 NAVER의 3분기 연결 매출액을 전년비 11.0% 증가한 3조4844억원, 영업이익을 14.9% 감소한 4858억원으로 추정했다.",
+      "title": "NAVER, 하반기 실적 기대치 낮춰야…결국 수익 증명이 관건-메리츠"
+    },
     "title:2dd59934ad94c981499c20d7": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
       "lanes": {
@@ -249767,6 +251569,29 @@
       ],
       "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
+    },
+    "title:4a1b402af704d43cee714565": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008019500002",
+      "source": "연합뉴스",
+      "source_body_digest": "69996ee13d3f5d67dafb37b25de479bb264c37716c61358c365d483650e037be",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:103114e0a5c7db4e2662c1b3adcfd16d0eee74afb85f3cd5f751513b86e633b9",
+      "source_fact_keys": [
+        "source_fact:v1:2324f176794be4303c59b5a881ccced4a14b735ec4d98c85aa343a8da71b533b",
+        "source_fact:v1:4330b5a63f086831545d99a4341d9f5e85f30a2c36be7207fdf98c6f677bc0c0",
+        "source_fact:v1:67a7a0793d91410d104e8e4fecfe6cb5a4b6258c4ca6c8c78bc725bebe60b3a0",
+        "source_fact:v1:a155ef8819c98dfd95be5ebabeae6082e7c045c252db482391308f66c5eb11bd",
+        "source_fact:v1:c41519d06f2126c754016a248c41fcc6165a06d16d64e279d773e7c6729a396e"
+      ],
+      "source_published_kst": "2026-10-08T08:00+09:00",
+      "source_title": "8월 경상수지 461.1억달러 흑자, 역대 2위…반도체 수출 호조 | 연합뉴스",
+      "telegram_core_fact": "운송수지는 최근 수출운임 상승 영향으로 흑자 규모가 전월 6천만달러에서 8월 5억2천만달러로 늘었고, 지식재산권사용료수지는 전월 5억4천만달러 적자에서 8월 3억9천만달러로 적자 규모가 줄었다.",
+      "title": "8월 경상수지 461.1억달러 흑자, 역대 2위…반도체 수출 호조 | 연합뉴스"
     },
     "title:4a24b14c48d1d8967b0ca16a": {
       "first_seen_kst": "2026-10-08T03:51:03+09:00",
@@ -265803,6 +267628,33 @@
       "telegram_core_fact": "이는 내달 중간선거를 앞두고 기름값 잡기에 골몰 중인 트럼프 미국 대통령이 비축유를 방출하지 않으면 경유 수출을 금지하겠다고 유럽을 압박한 데 따른 것이다.",
       "title": "IEA \"경유 필요하면 추가 방출…비축량 2억 배럴\" | 연합뉴스"
     },
+    "title:ae1fed8c2c93388a51d2e96e": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6313654",
+      "source": "뉴스1",
+      "source_body_digest": "a307f1b57f0fa5492ed35dfbfaded8ea3190c213a88e024d64d695fb2779b9f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:536335c3313b67d94e5583143650314837039913348d14940482a73be2a5be3b",
+      "source_fact_keys": [
+        "source_fact:v1:1fc3cae8fcb9d7a041be4841001f966313ae97e180ff818e4205ca12af6b96ac",
+        "source_fact:v1:400a719d6f784662fcee175bee8541d491094db687c78dec1e1a1fb09f93d3d7",
+        "source_fact:v1:6819787513ba8801295e797a461bfce8bddc0b7c22c9f90f9fd9850b3dac407d",
+        "source_fact:v1:87855019130da2b291f64b987ef1ca6e9087c21846374ecaff5c8976c5407139",
+        "source_fact:v1:abb863f5202688e38fb582ac081ce4da88db652c364c7dcedaa80f75557d14e3",
+        "source_fact:v1:c78f5812096b1fe5a7291797888058c5217d28a71f67acaf28fa6f8fa76c5d07",
+        "source_fact:v1:cf2127e6fcb7385ae1f20d4a79b9845e429346cba67c945f4dad50c66c1b1c39",
+        "source_fact:v1:d1698dd611a71823a80420cc17db537bf370a01797fc32b71af49e541fd84bd2",
+        "source_fact:v1:f1858e4d8845699f5fd22e54f8326833892079d21b509ceb77879b1139bf46fd"
+      ],
+      "source_published_kst": "2026-10-08T06:28+09:00",
+      "source_title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\"",
+      "telegram_core_fact": "스콧 베선트 미국 재무장관이 최근 물가와 장기 국채금리 급등의 주된 원인을 이란전쟁에 따른 에너지 충격으로 진단하며 전쟁이 끝나면 유가와 물가, 국채금리가 함께 내려갈 것이라고 전망했다.",
+      "title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\""
+    },
     "title:ae221660f326e199150f6e9f": {
       "first_seen_kst": "2026-10-02T15:48:44+09:00",
       "lanes": {
@@ -266234,6 +268086,27 @@
       "source_title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표 | 연합뉴스",
       "telegram_core_fact": "반도체 초호황 속 삼성전자가 국내 기업 사상 최초로 분기 영업이익 100조원 달성을 가시권에 두고 있다.",
       "title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표 | 연합뉴스"
+    },
+    "title:b0364b3fe90867ab961f9581": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.hankyung.com/article/202610089567i",
+      "source": "한국경제",
+      "source_body_digest": "9cfb27592ac407b90d1295f82034a63fab38613b4b064f3e5412c0b6d648d142",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2fb072eed861740c567747a443e2cace6ec3c0f8463d19266c412a5776855ae",
+      "source_fact_keys": [
+        "source_fact:v1:225efac09973c14d0aeb3b24f98bed1910a5da86fe6554c8ca0466aa7c31044b",
+        "source_fact:v1:6903ece1a2235e3cf7060f7e36204c16a7b422d09e60ef0e12c34cbf77d96763",
+        "source_fact:v1:817a71e077196a7bb8b69e422a409285957abf2dc8678ccbd828b324bf7fec7a"
+      ],
+      "source_published_kst": "2026-10-08T07:50+09:00",
+      "source_title": "삼성전자 3분기 영업이익 107조…반도체 슈퍼사이클에 4분기 연속 역대 최대",
+      "telegram_core_fact": "삼성전자는 3분기 영업이익이 107조4000억원으로 전년비 782.5% 증가한 것으로 잠정 집계됐다고 8일 발표했다.",
+      "title": "삼성전자 3분기 영업이익 107조…반도체 슈퍼사이클에 4분기 연속 역대 최대"
     },
     "title:b07821602aa1e2546aaa2c75": {
       "first_seen_kst": "2026-10-05T14:04:17+09:00",
@@ -275626,6 +277499,26 @@
       "source": "연합뉴스",
       "title": "CJ제일제당, 미국서 '비비고 김밥' 1∼7월 매출 59% 증가 | 연합뉴스"
     },
+    "title:e9e75f75d9a39574516e66bd": {
+      "first_seen_kst": "2026-10-08T08:12:34+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:12:34+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:12:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008019700527",
+      "source": "연합뉴스",
+      "source_body_digest": "2051279c82c42ee4566aabf5543489fae0b704ebfa7578bf87880a66f503d720",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:48c1c1cd8feaf8d423533e09f6c4735f819176cb773cbed88253d9dc3542418c",
+      "source_fact_identity": "source_facts:v1:4808f7f033cbd16695646a569e28b8e3cedbd8ddadbbded7b732d44b12830e70",
+      "source_fact_keys": [
+        "source_fact:v1:53b21f727ee99e675b27b0956151ab479d8021145826c657aa830a9c1e8176c8",
+        "source_fact:v1:7e367b785b27be7ebccf403d48e3e27b5f03f30904efb18626854a6d7a9b2fe8"
+      ],
+      "source_published_kst": "2026-10-08T07:47+09:00",
+      "source_title": "[1보] 삼성전자 3분기 영업이익 107조4천억원…작년 대비 782.5%↑ | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 삼성전자[005930]는 연결 기준 올해 3분기 영업이익이 107조4천억원으로 지난해 동기보다 782.5% 증가한 것으로 잠정 집계됐다고 8일 공시했다.",
+      "title": "[1보] 삼성전자 3분기 영업이익 107조4천억원…작년 대비 782.5%↑ | 연합뉴스"
+    },
     "title:e9f3ccbee4f8a19a61967f0e": {
       "first_seen_kst": "2026-10-06T22:21:21+09:00",
       "lanes": {
@@ -279003,5 +280896,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-08T07:50:51+09:00"
+  "updated_at_kst": "2026-10-08T08:12:34+09:00"
 }
