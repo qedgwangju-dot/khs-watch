@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import html
 import json
 import os
 import pathlib
@@ -8,7 +9,21 @@ import sys
 import urllib.parse
 import urllib.request
 
-MAX_CHARS = 3900
+MAX_CHARS = 3600
+
+
+def render_telegram_html(text: str) -> str:
+    """Escape report text and replace long raw source URLs with a compact link."""
+    rendered: list[str] = []
+    prefix = "• 원문: "
+    for line in text.splitlines():
+        if line.startswith(prefix):
+            url = line[len(prefix):].strip()
+            safe_url = html.escape(url, quote=True)
+            rendered.append(f'• 🔗 <a href="{safe_url}">원문 바로가기</a>')
+        else:
+            rendered.append(html.escape(line, quote=False))
+    return "\n".join(rendered)
 
 
 def split_message(text: str) -> list[str]:
@@ -60,9 +75,11 @@ def main() -> int:
 
     message_ids: list[int] = []
     for chunk in split_message(text):
+        rendered_chunk = render_telegram_html(chunk)
         payload = urllib.parse.urlencode({
             "chat_id": chat_id,
-            "text": chunk,
+            "text": rendered_chunk,
+            "parse_mode": "HTML",
             "disable_web_page_preview": "true",
         }).encode("utf-8")
         request = urllib.request.Request(
