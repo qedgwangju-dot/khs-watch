@@ -2,9 +2,11 @@ from __future__ import annotations
 
 import copy
 import html
+import io
 import json
 import pathlib
 import re
+import zipfile
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -24,7 +26,61 @@ PENDING_PATH = ROOT / "out" / "us_ai_grid_bottleneck_pending_state.json"
 ALERT_PATH = ROOT / "out" / "us_ai_grid_bottleneck_alert.txt"
 STATUS_PATH = ROOT / "out" / "us_ai_grid_bottleneck_status.md"
 
-UA = "Mozilla/5.0 (compatible; khs-watch/1.0; +https://github.com/qedgwangju-dot/khs-watch)"
+UA = "Mozilla/5.0 (compatible; khs-watch/1.1; +https://github.com/qedgwangju-dot/khs-watch)"
+
+TRANSFORMER_IMPORT_VERSION = 1
+TRANSFORMER_PRIMARY_HS6 = ("850423",)
+TRANSFORMER_LIQUID_HS6 = ("850421", "850422", "850423")
+TRANSFORMER_OTHER_LARGE_HS6 = ("850434",)
+COUNTRY_NAMES = {
+    "1220": "캐나다",
+    "2010": "멕시코",
+    "3510": "브라질",
+    "4280": "독일",
+    "4330": "오스트리아",
+    "4890": "튀르키예",
+    "5330": "인도",
+    "5520": "베트남",
+    "5700": "중국",
+    "5800": "한국",
+    "5830": "대만",
+    "5880": "일본",
+}
+TRANSFORMER_IMPORT_BASELINE = {
+    "version": TRANSFORMER_IMPORT_VERSION,
+    "source": {
+        "kind": "U.S. Census Bureau Port HS6 monthly general imports",
+        "layout": "https://www.census.gov/foreign-trade/reference/products/layouts/dporths6i.html",
+        "data_products": "https://www.census.gov/foreign-trade/data/dataproducts.html",
+        "country_codes": "https://www.census.gov/foreign-trade/schedules/c/countrycodes.html",
+    },
+    "scope": {
+        "primary": "HS 850423 액체절연 변압기, 10,000kVA 초과",
+        "liquid_total": "HS 850421~850423 액체절연 변압기 전체",
+        "other_large_context": "HS 850434 기타 변압기, 500kVA 초과",
+        "bps_guard": "HTS는 전압·Covered Foreign Entity 여부를 직접 식별하지 못하므로 HS 수입통계를 EO 14421 적용 물량과 동일시하지 않음",
+    },
+    "policy": {
+        "eo": "Executive Order 14421",
+        "date": "2026-08-26",
+        "whitehouse": "https://www.whitehouse.gov/presidential-actions/2026/08/declaring-a-national-emergency-to-secure-the-united-states-bulk-power-system/",
+        "doe": "https://www.energy.gov/ceser/declaring-national-emergency-secure-united-states-bulk-power-system-executive-order",
+        "interpretation": "전면 수입금지가 아니라 DOE가 Covered Foreign Entity 연계와 국가안보 위험을 판단한 거래를 금지·제한할 수 있는 표적형 조치",
+        "causality_guard": "2026-08은 8월 26일 시행 후 월말 5일뿐이므로 정책효과 월로 판정하지 않음. 2026-09 이후 연속 월별 구조 변화와 실제 DOE 조치·기업 수주를 함께 확인",
+    },
+    "historical_context": {
+        "source_kind": "Critical Materials Atlas의 U.S. Census API 재계산치; 경향 확인용 보조자료",
+        "source": "https://criticalmaterialsatlas.org/grid-trade",
+        "liquid_transformers_850421_23": {
+            "2020": {"china_share_pct": 2.8},
+            "2021": {"china_share_pct": 0.7, "korea_share_pct": 10.0},
+        },
+    },
+    "latest_month": "",
+    "history": {},
+    "last_checked_at_kst": "",
+    "last_error": "",
+}
 
 BASELINE = {
     "as_of": "2026-09-27",
@@ -120,6 +176,9 @@ SEARCHES = [
     ("google", 'site:pjm.com data center large load interconnection 2026'),
     ("google", 'site:misoenergy.org large load data center interconnection 2026'),
     ("google", 'site:ercot.com large load data center interconnection 2026'),
+    ("google", 'site:whitehouse.gov "bulk-power system" transformer "Executive Order 14421"'),
+    ("google", 'site:energy.gov "bulk-power system" transformer "Covered Foreign Entity"'),
+    ("google", 'site:federalregister.gov "bulk-power system" transformer foreign equipment 2026'),
     ("google", 'Hitachi Energy transformer factory United States 2026'),
     ("google", 'GE Vernova transformer factory expansion United States 2026'),
     ("google", 'Siemens Energy transformer capacity expansion United States 2026'),
@@ -136,6 +195,8 @@ OFFICIAL_DOMAINS = (
     "siemens-energy.com", "ls-electric.com", "hyosungheavyindustries.com",
     "hd-hyundaielectric.com", "eaton.com", "se.com", "abb.com", "vertiv.com",
     "cat.com", "cummins.com", "rolls-royce.com", "cushmanwakefield.com", "jll.com",
+    "whitehouse.gov", "federalregister.gov", "commerce.gov",
+    "hyosung.com", "hyundai-electric.com", "lsholdings.com",
 )
 
 TRUSTED_DOMAINS = (
@@ -480,6 +541,10 @@ def structural_event(text: str, url: str) -> str:
         return "대형부하·데이터센터 계통접속 규칙 변화"
     if "transmission" in low and any(k in low for k in ("approved", "construction", "in service", "energized")) and any(k in low for k in ("345 kv", "500 kv", "765 kv")):
         return "345kV+ 송전망 승인·착공·준공 변화"
+    if "bulk-power system" in low and any(k in low for k in ("covered foreign entity", "prohibit", "prohibition", "restrict", "restriction", "prequalification", "vendor")):
+        return "미국 BPS 외국산 전력기기 규제·공급사 심사 변화"
+    if any(k in low for k in ("transformer", "power transformer", "substation transformer")) and any(k in low for k in ("contract", "order", "award", "supply agreement", "수주", "공급계약")) and any(k in low for k in ("united states", "u.s.", "north america", "미국", "북미")):
+        return "북미 변압기 신규 수주·공급계약 변화"
     return ""
 
 
@@ -629,6 +694,271 @@ def merge_verified_metrics(previous: dict, observations: list[dict]) -> tuple[di
     return latest, list(dict.fromkeys(evidence))
 
 
+def month_shift(year: int, month: int, delta: int) -> tuple[int, int]:
+    total = year * 12 + (month - 1) + delta
+    return total // 12, total % 12 + 1
+
+
+def month_key(year: int, month: int) -> str:
+    return f"{year:04d}-{month:02d}"
+
+
+def census_port_hs6_zip_url(year: int, month: int) -> str:
+    yy = year % 100
+    return (
+        f"https://www.census.gov/trade/downloads/{year}/Port/im_hs6_m/"
+        f"PORTHS6MM{yy:02d}{month:02d}.ZIP"
+    )
+
+
+def parse_fixed_int(value: str) -> int:
+    value = (value or "").strip()
+    if not value:
+        return 0
+    return int(value)
+
+
+def parse_census_port_hs6_zip(raw: bytes, year: int, month: int) -> dict:
+    target = set(TRANSFORMER_LIQUID_HS6 + TRANSFORMER_OTHER_LARGE_HS6)
+    totals: dict[str, dict[str, int]] = {code: {} for code in target}
+    with zipfile.ZipFile(io.BytesIO(raw)) as zf:
+        suffix = f"DPORTHS6I{year % 100:02d}{month:02d}.TXT"
+        names = [name for name in zf.namelist() if name.upper().endswith(suffix)]
+        if not names:
+            names = [name for name in zf.namelist() if "DPORTHS6I" in name.upper() and name.upper().endswith(".TXT")]
+        if not names:
+            raise ValueError("Census Port HS6 import data file not found in ZIP")
+        with zf.open(names[0]) as fh:
+            for raw_line in fh:
+                line = raw_line.decode("ascii", errors="ignore").rstrip("\r\n")
+                if len(line) < 35:
+                    continue
+                commodity = line[0:6]
+                if commodity not in target:
+                    continue
+                cty_code = line[6:10]
+                rec_year = parse_fixed_int(line[14:18])
+                rec_month = parse_fixed_int(line[18:20])
+                if rec_year != year or rec_month != month:
+                    continue
+                value_mo = parse_fixed_int(line[20:35])
+                if value_mo < 0:
+                    raise ValueError("negative Census import value")
+                totals[commodity][cty_code] = totals[commodity].get(cty_code, 0) + value_mo
+
+    if not any(totals[code] for code in target):
+        raise ValueError("no target transformer HS6 rows found in Census file")
+    return totals
+
+
+def summarize_trade_scope(totals: dict[str, dict[str, int]], codes: tuple[str, ...]) -> dict:
+    by_country: dict[str, int] = {}
+    for code in codes:
+        for cty, value in (totals.get(code) or {}).items():
+            by_country[cty] = by_country.get(cty, 0) + int(value)
+    world = sum(by_country.values())
+    if world <= 0:
+        return {"world_usd": 0, "china_usd": 0, "korea_usd": 0, "china_share_pct": 0.0, "korea_share_pct": 0.0, "top_origins": []}
+    china = by_country.get("5700", 0)
+    korea = by_country.get("5800", 0)
+    top = sorted(by_country.items(), key=lambda kv: kv[1], reverse=True)[:6]
+    return {
+        "world_usd": world,
+        "china_usd": china,
+        "korea_usd": korea,
+        "china_share_pct": china / world * 100.0,
+        "korea_share_pct": korea / world * 100.0,
+        "top_origins": [
+            {
+                "cty_code": cty,
+                "name": COUNTRY_NAMES.get(cty, f"국가코드 {cty}"),
+                "usd": value,
+                "share_pct": value / world * 100.0,
+            }
+            for cty, value in top
+        ],
+    }
+
+
+def fetch_transformer_trade_month(year: int, month: int) -> dict:
+    url = census_port_hs6_zip_url(year, month)
+    raw = fetch(url, timeout=60)
+    totals = parse_census_port_hs6_zip(raw, year, month)
+    return {
+        "month": month_key(year, month),
+        "source_url": url,
+        "source_kind": "U.S. Census Bureau Port HS6 monthly general imports",
+        "primary_850423": summarize_trade_scope(totals, TRANSFORMER_PRIMARY_HS6),
+        "liquid_850421_23": summarize_trade_scope(totals, TRANSFORMER_LIQUID_HS6),
+        "other_large_850434": summarize_trade_scope(totals, TRANSFORMER_OTHER_LARGE_HS6),
+    }
+
+
+def trade_share_delta(current: dict, previous: dict, field: str) -> float | None:
+    if not current or not previous:
+        return None
+    return float(current.get(field) or 0.0) - float(previous.get(field) or 0.0)
+
+
+def trade_substitution_signal(current: dict, previous: dict) -> bool:
+    ch = trade_share_delta(current, previous, "china_share_pct")
+    kr = trade_share_delta(current, previous, "korea_share_pct")
+    return ch is not None and kr is not None and ch <= -1.0 and kr >= 1.0
+
+
+def transformer_policy_effect_status(latest_month: str, history: dict) -> str:
+    if not latest_month:
+        return "수입통계 미확보"
+    if latest_month <= "2026-08":
+        return "정책효과 판단 보류 — EO 14421 시행은 2026-08-26이라 8월 수입과 인과관계를 단정하지 않음"
+    keys = sorted(k for k in history if k >= "2026-09")
+    if len(keys) >= 2:
+        k1, k2 = keys[-2], keys[-1]
+        y1, m1 = map(int, k1.split("-"))
+        py, pm = month_shift(y1, m1, -1)
+        prev0 = history.get(month_key(py, pm), {}).get("liquid_850421_23") or {}
+        cur1 = history.get(k1, {}).get("liquid_850421_23") or {}
+        cur2 = history.get(k2, {}).get("liquid_850421_23") or {}
+        if trade_substitution_signal(cur1, prev0) and trade_substitution_signal(cur2, cur1):
+            return "중국↓·한국↑ 대체 패턴이 2개월 연속 관찰됨 — 정책과 방향은 일치하지만 DOE 개별 조치·기업 수주 확인 전 인과관계는 미확정"
+    return "정책 이후 수입구조 추적 중 — 최소 2개월 연속 중국↓·한국↑와 실제 DOE 조치·기업 수주를 함께 확인"
+
+
+def update_transformer_import_watch(now: datetime, previous: dict) -> tuple[dict, list[dict]]:
+    latest = copy.deepcopy(previous or TRANSFORMER_IMPORT_BASELINE)
+    if int(latest.get("version") or 0) < TRANSFORMER_IMPORT_VERSION:
+        latest = copy.deepcopy(TRANSFORMER_IMPORT_BASELINE)
+    latest.setdefault("history", {})
+    events: list[dict] = []
+    history = latest["history"]
+    prior_latest = str(latest.get("latest_month") or "")
+
+    if prior_latest:
+        y, m = map(int, prior_latest.split("-"))
+        candidates = [month_shift(y, m, 1)]
+    else:
+        candidates = [
+            month_shift(now.year, now.month, -1),
+            month_shift(now.year, now.month, -2),
+            month_shift(now.year, now.month, -3),
+        ]
+
+    new_month: dict | None = None
+    errors = []
+    for y, m in candidates:
+        key = month_key(y, m)
+        if key in history:
+            continue
+        try:
+            new_month = fetch_transformer_trade_month(y, m)
+            history[key] = new_month
+            latest["latest_month"] = key
+            break
+        except Exception as e:
+            errors.append(f"{key}: {type(e).__name__}")
+
+    if new_month and not prior_latest:
+        cy, cm = map(int, new_month["month"].split("-"))
+        for delta in (-1, -2, -12):
+            y, m = month_shift(cy, cm, delta)
+            key = month_key(y, m)
+            if key in history:
+                continue
+            try:
+                history[key] = fetch_transformer_trade_month(y, m)
+            except Exception as e:
+                errors.append(f"{key}: {type(e).__name__}")
+
+    latest["history"] = {k: history[k] for k in sorted(history)[-18:]}
+    latest["last_checked_at_kst"] = now.isoformat(timespec="seconds")
+    latest["last_error"] = "; ".join(errors[-5:])
+
+    if new_month:
+        kind = "bootstrap" if not prior_latest else "monthly_release"
+        events.append({"type": kind, "month": new_month["month"], "source_url": new_month["source_url"]})
+    return latest, events
+
+
+def usdkrw_rate() -> tuple[float | None, str]:
+    try:
+        raw = json.loads(fetch("https://api.frankfurter.app/latest?from=USD&to=KRW", timeout=12).decode("utf-8"))
+        rate = float((raw.get("rates") or {}).get("KRW"))
+        date = str(raw.get("date") or "")
+        if 500 <= rate <= 3000:
+            return rate, date
+    except Exception:
+        pass
+    return None, ""
+
+
+def usd_text(value: float, rate: float | None) -> str:
+    usd_m = float(value) / 1_000_000.0
+    if rate is None:
+        return f"{usd_m:,.1f}백만달러"
+    krw_eok = float(value) * rate / 100_000_000.0
+    if krw_eok >= 10000:
+        jo = int(krw_eok // 10000)
+        rem = int(round(krw_eok - jo * 10000))
+        won = f"약 {jo}조{rem:,}억원" if rem else f"약 {jo}조원"
+    else:
+        won = f"약 {krw_eok:,.0f}억원"
+    return f"{usd_m:,.1f}백만달러({won})"
+
+
+def build_transformer_import_alert(event: dict, trade_state: dict) -> str:
+    history = trade_state.get("history") or {}
+    key = str(event.get("month") or trade_state.get("latest_month") or "")
+    current = history.get(key) or {}
+    if not current:
+        return ""
+    y, m = map(int, key.split("-"))
+    py, pm = month_shift(y, m, -1)
+    yy, ym = month_shift(y, m, -12)
+    prev = history.get(month_key(py, pm)) or {}
+    yoy = history.get(month_key(yy, ym)) or {}
+    cur_large = current.get("primary_850423") or {}
+    cur_liquid = current.get("liquid_850421_23") or {}
+    prev_liquid = prev.get("liquid_850421_23") or {}
+    yoy_liquid = yoy.get("liquid_850421_23") or {}
+    ch_mom = trade_share_delta(cur_liquid, prev_liquid, "china_share_pct")
+    kr_mom = trade_share_delta(cur_liquid, prev_liquid, "korea_share_pct")
+    ch_yoy = trade_share_delta(cur_liquid, yoy_liquid, "china_share_pct")
+    kr_yoy = trade_share_delta(cur_liquid, yoy_liquid, "korea_share_pct")
+    rate, rate_date = usdkrw_rate()
+    top = cur_liquid.get("top_origins") or []
+    top_text = " / ".join(f"{x['name']} {float(x['share_pct']):.1f}%" for x in top[:4])
+    policy_status = transformer_policy_effect_status(key, history)
+
+    lines = [
+        "<b>⚡ 미국 변압기 수입구조 월간 추적 — Census 공식값</b>",
+        "",
+        f"• <b>기준월:</b> {key} / U.S. Census Port HS6 일반수입·원산지 기준",
+        f"• <b>대형 액체절연 변압기 HS 850423:</b> 중국 {float(cur_large.get('china_share_pct') or 0):.1f}%·{usd_text(float(cur_large.get('china_usd') or 0), rate)} / 한국 {float(cur_large.get('korea_share_pct') or 0):.1f}%·{usd_text(float(cur_large.get('korea_usd') or 0), rate)}",
+        f"• <b>액체절연 전체 HS 850421~850423:</b> 중국 {float(cur_liquid.get('china_share_pct') or 0):.1f}%·{usd_text(float(cur_liquid.get('china_usd') or 0), rate)} / 한국 {float(cur_liquid.get('korea_share_pct') or 0):.1f}%·{usd_text(float(cur_liquid.get('korea_usd') or 0), rate)}",
+    ]
+    if ch_mom is not None and kr_mom is not None:
+        lines.append(f"• <b>전월 대비 점유율:</b> 중국 {ch_mom:+.1f}%p / 한국 {kr_mom:+.1f}%p")
+    if ch_yoy is not None and kr_yoy is not None:
+        lines.append(f"• <b>전년동월 대비 점유율:</b> 중국 {ch_yoy:+.1f}%p / 한국 {kr_yoy:+.1f}%p")
+    if top_text:
+        lines.append(f"• <b>상위 원산지:</b> {html.escape(top_text)}")
+    lines += [
+        "",
+        "<b>정책 판정</b>",
+        f"• {html.escape(policy_status)}",
+        "• EO 14421은 모든 중국산 변압기의 일괄 금지가 아닙니다. HTS 통계에는 전압·Covered Foreign Entity·DOE 개별 위험판정이 없어 수입감소를 정책효과로 자동 승격하지 않습니다.",
+        "",
+        "<b>한국 업체 실적 연결</b>",
+        "• 중국 비중↓ + 한국 비중↑가 연속 확인되고 효성중공업·HD현대일렉트릭·LS ELECTRIC의 북미 신규수주·수주잔고·가격·가동률이 함께 증가할 때 실적 전환 신뢰도를 높입니다.",
+        "",
+        f'• <a href="{html.escape(str(current.get("source_url") or ""), quote=True)}">U.S. Census 원자료</a>',
+        f'• <a href="{html.escape(str((trade_state.get("policy") or {}).get("whitehouse") or ""), quote=True)}">EO 14421 원문</a>',
+    ]
+    if rate is not None:
+        lines.append(f"• 환율 기준: 1달러={rate:,.2f}원, {html.escape(rate_date or '최신 확인값')}")
+    return "\n".join(lines).strip() + "\n"
+
+
 def main() -> None:
     now = datetime.now(ZoneInfo("Asia/Seoul"))
     state = load_json(STATE_PATH) or copy.deepcopy(BASELINE)
@@ -640,9 +970,14 @@ def main() -> None:
     observations, events = discover(now, seen_urls)
     new_metrics, evidence_urls = merge_verified_metrics(previous_metrics, observations)
     changes = material_metric_changes(previous_metrics, new_metrics)
+    transformer_imports, trade_events = update_transformer_import_watch(
+        now,
+        state.get("transformer_imports") or {},
+    )
 
     latest = copy.deepcopy(state)
     latest["metrics"] = new_metrics
+    latest["transformer_imports"] = transformer_imports
     latest["seen_urls"] = sorted(seen_urls | {x.get("url") for x in observations + events if x.get("url")})[-300:]
     latest["last_checked_at_kst"] = now.isoformat(timespec="seconds")
     latest["metric_observation_count"] = len(observations)
@@ -651,10 +986,17 @@ def main() -> None:
 
     write_json(PENDING_PATH, latest)
 
-    notify = bool(changes or events)
+    notify = bool(changes or events or trade_events)
     if notify:
         ALERT_PATH.parent.mkdir(parents=True, exist_ok=True)
-        ALERT_PATH.write_text(build_alert(changes, events, latest), encoding="utf-8")
+        blocks = []
+        if changes or events:
+            blocks.append(build_alert(changes, events, latest).strip())
+        for trade_event in trade_events:
+            block = build_transformer_import_alert(trade_event, transformer_imports).strip()
+            if block:
+                blocks.append(block)
+        ALERT_PATH.write_text("\n\n".join(blocks).strip() + "\n", encoding="utf-8")
     else:
         ALERT_PATH.unlink(missing_ok=True)
 
@@ -665,6 +1007,9 @@ def main() -> None:
         f"- 지표 관측: {len(observations)}개\n"
         f"- 구조 이벤트: {len(events)}개\n"
         f"- 중요 변화: {len(changes)}개\n"
+        f"- 변압기 수입 월간 이벤트: {len(trade_events)}개\n"
+        f"- 변압기 최신 기준월: {transformer_imports.get('latest_month') or '확인 불가'}\n"
+        f"- 변압기 원자료 오류: {transformer_imports.get('last_error') or '없음'}\n"
         f"- 알림: {'예' if notify else '아니오'}\n",
         encoding="utf-8",
     )
@@ -672,6 +1017,7 @@ def main() -> None:
     print(
         "us_ai_grid_bottleneck_watch=true "
         f"observations={len(observations)} events={len(events)} changes={len(changes)} "
+        f"transformer_trade_events={len(trade_events)} transformer_latest={transformer_imports.get('latest_month') or 'none'} "
         f"notify={str(notify).lower()}"
     )
 
