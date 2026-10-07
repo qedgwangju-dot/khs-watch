@@ -1,5 +1,171 @@
 {
   "seen": {
+    "core:4a4fa8e0bc3102bddd04dd55": {
+      "core_alias_evidence_message_id": 2373,
+      "core_alias_evidence_run_id": 37539644444,
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.dt.co.kr/article/12087797",
+      "source": "디지털타임스",
+      "source_body_digest": "a1dada6bedd946aac36a42bcb5b9f156caa10c7bfc57a5315588eb103d7265fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ddfcde7302d1a1e0e3833def04e978b2248a2dadc3d88088959c26026d33c262",
+      "source_fact_keys": [
+        "source_fact:v1:5908ae6cf66fa715c12d09ea3fb1d3e31bb718ad8a07c7841ba1839592a90d4c",
+        "source_fact:v1:78459ad314ffc40474011e1d25d1326dc3db72346453263b53fbc82e8668d67f",
+        "source_fact:v1:c9df59a070feec7f284c7539598660a9b20c7c9cb5f309243229dd0dfa73bc7d",
+        "source_fact:v1:f165412f270dacccdb46780d8a9a87d5d719a4bb099828fce03e2ef48baeff5c",
+        "source_fact:v1:f1bb5d27cac91a3bec1e24cb80ac885cb49323249b9b6593112fa4688d4f9a58",
+        "source_fact:v1:ffb0c78f2b372f97cf79a00258ce3add37aff509836bc7f475882b1a1937f5e9"
+      ],
+      "source_published_kst": "2026-10-07T07:20+09:00",
+      "title": "리사 수 “반도체 수요가 공급보다 많아”…AMD 주가 사상 최고"
+    },
+    "core:6c0e7b70b33ec9ec7c3c4b6d": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100617381629210",
+      "source": "머니투데이",
+      "source_body_digest": "8c624787cf1230e693539938be606974453eca21b17025e361e0324301ca6d37",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a4363acec24be803701068ea52abaa9a566f3323e7566db0cdfe469c27f3a77",
+      "source_fact_keys": [
+        "source_fact:v1:04424faa8aad3a2ca605e22315c1eb2a3512b16834dac0b5dd02c2d6feae7519"
+      ],
+      "source_published_kst": "2026-10-07T08:00+09:00",
+      "title": "한성크린텍, 삼성전기 베트남 공장 230억원 초순수 E&P 계약 체결"
+    },
+    "core:8aee52ca216ca98e105c3b32": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=02673206645610624&parentid=03329206645610624&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "0b80dbe90d7a1ed5d143ab58e2b7a1e6697f85d9653a7c6e02d196a95605f8bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4789783573fdc2a13e395182785a270d17bf7fd750e3ef46f5fe2e9af5921b5e",
+      "source_fact_keys": [
+        "source_fact:v1:433bcbf9fb6ca5fa3f070498c01f8a50634394f76b1060537302958e5b851035",
+        "source_fact:v1:4458947c858bef2cb887265adc9ea17c3bf81d1021a1b69c862215f59af283af",
+        "source_fact:v1:4de7cf3a3ac3186d10b7c92554e4bb3537b71f2e60a00d2e73da8282670425ee",
+        "source_fact:v1:542bb1128e8af96ec042db93b29b4f087844c41d063d34c2330008089c875485",
+        "source_fact:v1:7ceecce3386cf41a557819fc35488622e051e3809bfe16703b5b7f13088f5991",
+        "source_fact:v1:bed2c4f55ed8e92509c9180e06d40b89cd9079ce51b151ad0b8264de05ea3cb4",
+        "source_fact:v1:d06f8cf3cfb70d0d581adc68698abae93cca7b0c888ea9bb15449d8e1f759b28",
+        "source_fact:v1:d7f22f0c96d98b775325e5427f40c2ef812cc29e21a9d76141c44a7399aaf8fc",
+        "source_fact:v1:f41ae112634d59a360145025a1e7148dbb1956dc1c0877a84aad492c37ef66d9"
+      ],
+      "source_published_kst": "2026-10-07T07:43+09:00",
+      "title": "“56만전자·320만닉스 간다\"…삼전닉스, 3분기 실적 기대 이상"
+    },
+    "core:979c2cac4e7b6d858f7a5509": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03181606645610624",
+      "source": "이데일리",
+      "source_body_digest": "832f8f7ecdc4aff7b73268bbc1f7e7f09b2f20ce28d7d888581c1812f6d24608",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b03f883b16b12e72a30cff7b3dafa9367cc8092b8e11265b2cfab77200f44c1c",
+      "source_fact_keys": [
+        "source_fact:v1:0425c51f332568491baf19389e69edb1e0b784c546d4fdf36b70f22fd4c2ec12",
+        "source_fact:v1:8c0414d83aea27e1e0c9bcab190be920a4601c61ede2ed9660c03f51702499a0"
+      ],
+      "source_published_kst": "2026-10-07T10:21+09:00",
+      "title": "한화, AI 에너지 관리 기술 美 ‘차세대 신기술’ 선정"
+    },
+    "core:a24477ef484130eb18d58ee1": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170205",
+      "source": "매일경제",
+      "source_body_digest": "3e21cf92fd1399da414756e5d30ee8f5faa18730b71935909673792a27eddd46",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:994ef39684a6f1a695e76497784f2a56aa4ffd8d736ab099fcafcb1591c5cd29",
+      "source_fact_keys": [
+        "source_fact:v1:0432637a86efad084c7c1025fb0623ec2760eb22703602a571ee0a9d3f1585ff",
+        "source_fact:v1:540665fc35aa10055eb3a3fca82c61868cde0b552e7ea8171976042810998c6c",
+        "source_fact:v1:8b7e5f02a2b2f665d98f3d75f7b4d9164afdf0ff9d18a5ce08e755e7dbb49cbe",
+        "source_fact:v1:fcecb12f400db3c180d35a663af87cee9f029bacf3d24d868197eae95c5a8157"
+      ],
+      "source_published_kst": "2026-10-07T11:25+09:00",
+      "title": "블룸버그 “AI 유망 투자처는 대만...코스피는 ‘위험’”"
+    },
+    "core:b714df4a48f59c84f55c0109": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03329206645610624&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "6ff10aeea676c0bca5d2de73a6bd6d99288c7f5f73e08c6dbc08d39a7708816e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ed70dffa5b8eb8fb34cf7b4e02cb01a184a373d84ab7727168512127057cd51b",
+      "source_fact_keys": [
+        "source_fact:v1:79020378515c3b85e5f623c92015ef5ad11af7175e4f1a659b2933f3cf981df2",
+        "source_fact:v1:dff228f5e7197e250560a426f31608f59edf1504976b3a74ce15ad9721c9ff1e"
+      ],
+      "source_published_kst": "2026-10-07T10:47+09:00",
+      "title": "삼미금속, 가스터빈 블레이드 납품 개시"
+    },
+    "core:eac2d36a3a265d823292685a": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03257046645610624",
+      "source": "이데일리",
+      "source_body_digest": "b899fc0c9c8c717e35ed9d99b3b9cc491713b257e9f5d2e5ed513d07db629022",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01ce8183635ea9bfa249ac38e5af8ebe8fa834a89213a9fa278ccda4ba42bd92",
+      "source_fact_keys": [
+        "source_fact:v1:33afe5fa42f95991ba2bdfa528710944ae69e6804abe42324d79a12aac92b18c",
+        "source_fact:v1:96f4fa6bbef67d7d0df6f48f9a00e7015a5e73a81bf33ab915387ee3f864528d",
+        "source_fact:v1:adb268771e185a893434aff5c6ddd8793557bcbf466b8fccc122d8f20e4bdb0b",
+        "source_fact:v1:ae97865afc06953ed9c4b67d98f381ffb6b803823a118a89d7c25b3d90324785",
+        "source_fact:v1:c95d701a4e18357923d6af22ad7a35a26c94b835b81009d3251c9c8a97d89e0f"
+      ],
+      "source_published_kst": "2026-10-07T10:34+09:00",
+      "title": "우크라 \"한국이 러시아에 석유 공급\" 저격"
+    },
+    "core:eeda682e875e037fe55750c5": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.fnnews.com/news/202610071051053638",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "e0be987376d8dec9979e019d8c48843c699a89771e97856f25e5bac47be627e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:274bac2aae7f70952da448d6c0b89aac3709fe10a282a7b2c0e51d24e9c1c0f8",
+      "source_fact_keys": [
+        "source_fact:v1:0c21c639ba2f1a5a9cb3dbcb74e1a9fecec0380cf56a9a87fdc28b3e1bc21981",
+        "source_fact:v1:11957e61c9bdeeee76f685c41834ec11c3bc6939bd772051cf0a1e6f19e7df3b",
+        "source_fact:v1:52de3dd5fdbbe66aee5f7b3c58105c5920684e0742fd898167dfd9da152c4639",
+        "source_fact:v1:5ba72604ee353a705a23b7bfa5b472de9edea435c40e9f53acc8e2f3016d7a92",
+        "source_fact:v1:6409cf8317dfa0aebbec39bc456e57b4556048cb37861e9268f9f7c5f44b0981",
+        "source_fact:v1:b31003635283a1265a34fd522ae496537c1adabfccb82c989923b4cc268a95c0",
+        "source_fact:v1:b8a0d1a41e3252b0e659dadd9a4d5f0716b91dd89d6035da3815ec23b7d8df77"
+      ],
+      "source_published_kst": "2026-10-07T11:21+09:00",
+      "title": "\"흔들리지 마세요, 400만닉스 갑니다\"…\"효성중공업, 실적 하회에도 중장기 이익성장 의심할 여지 없다\" [株토피아]"
+    },
     "event:003f3fec92db8753529b09aa": {
       "first_seen_kst": "2026-10-01T18:06:18+09:00",
       "lanes": {
@@ -3976,20 +4142,27 @@
     "event:9347e62c29e3ede9712d32ef": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
       "lanes": {
-        "live": "2026-10-07T12:06:36+09:00"
+        "live": "2026-10-07T13:13:19+09:00"
       },
-      "last_seen_kst": "2026-10-07T12:06:36+09:00",
-      "link": "https://www.newsis.com/view/NISX20261007_0003817145",
-      "source": "뉴시스",
-      "source_body_digest": "3f577a69b5ed1d58303d8954e0cd9dcad9044e9b93630b76fde1d84d58b27a0d",
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=02673206645610624&parentid=03329206645610624&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "0b80dbe90d7a1ed5d143ab58e2b7a1e6697f85d9653a7c6e02d196a95605f8bb",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:ca4a2a164d9fb63171f4cb68e7d5a838f92b46d86f001f786bba55d89929233f",
+      "source_fact_identity": "source_facts:v1:4789783573fdc2a13e395182785a270d17bf7fd750e3ef46f5fe2e9af5921b5e",
       "source_fact_keys": [
-        "source_fact:v1:1ac373f35abbb5462e09845aa6b57eb283d9e0d5359aabd1fca990348d58bdda",
-        "source_fact:v1:9321a75c9eea17c9b5a41e6d3e9e39922f04c7c76df6d66f2cd094c9a859f397"
+        "source_fact:v1:433bcbf9fb6ca5fa3f070498c01f8a50634394f76b1060537302958e5b851035",
+        "source_fact:v1:4458947c858bef2cb887265adc9ea17c3bf81d1021a1b69c862215f59af283af",
+        "source_fact:v1:4de7cf3a3ac3186d10b7c92554e4bb3537b71f2e60a00d2e73da8282670425ee",
+        "source_fact:v1:542bb1128e8af96ec042db93b29b4f087844c41d063d34c2330008089c875485",
+        "source_fact:v1:7ceecce3386cf41a557819fc35488622e051e3809bfe16703b5b7f13088f5991",
+        "source_fact:v1:bed2c4f55ed8e92509c9180e06d40b89cd9079ce51b151ad0b8264de05ea3cb4",
+        "source_fact:v1:d06f8cf3cfb70d0d581adc68698abae93cca7b0c888ea9bb15449d8e1f759b28",
+        "source_fact:v1:d7f22f0c96d98b775325e5427f40c2ef812cc29e21a9d76141c44a7399aaf8fc",
+        "source_fact:v1:f41ae112634d59a360145025a1e7148dbb1956dc1c0877a84aad492c37ef66d9"
       ],
-      "source_published_kst": "2026-10-07T12:00+09:00",
-      "title": "반도체 호조에 2분기 기업 여윳돈 67.1조…역대 최대"
+      "source_published_kst": "2026-10-07T07:43+09:00",
+      "title": "“56만전자·320만닉스 간다\"…삼전닉스, 3분기 실적 기대 이상"
     },
     "event:938ff2672aac7ad983b6227f": {
       "first_seen_kst": "2026-09-25T17:39:25+09:00",
@@ -4744,6 +4917,29 @@
       "source": "이데일리",
       "title": "SK스퀘어, 자사주 매입 후 추가 주주환원 기대…'매수'-SK"
     },
+    "event:ae0be12c78a308683a9990e5": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.fnnews.com/news/202610071051053638",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "e0be987376d8dec9979e019d8c48843c699a89771e97856f25e5bac47be627e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:274bac2aae7f70952da448d6c0b89aac3709fe10a282a7b2c0e51d24e9c1c0f8",
+      "source_fact_keys": [
+        "source_fact:v1:0c21c639ba2f1a5a9cb3dbcb74e1a9fecec0380cf56a9a87fdc28b3e1bc21981",
+        "source_fact:v1:11957e61c9bdeeee76f685c41834ec11c3bc6939bd772051cf0a1e6f19e7df3b",
+        "source_fact:v1:52de3dd5fdbbe66aee5f7b3c58105c5920684e0742fd898167dfd9da152c4639",
+        "source_fact:v1:5ba72604ee353a705a23b7bfa5b472de9edea435c40e9f53acc8e2f3016d7a92",
+        "source_fact:v1:6409cf8317dfa0aebbec39bc456e57b4556048cb37861e9268f9f7c5f44b0981",
+        "source_fact:v1:b31003635283a1265a34fd522ae496537c1adabfccb82c989923b4cc268a95c0",
+        "source_fact:v1:b8a0d1a41e3252b0e659dadd9a4d5f0716b91dd89d6035da3815ec23b7d8df77"
+      ],
+      "source_published_kst": "2026-10-07T11:21+09:00",
+      "title": "\"흔들리지 마세요, 400만닉스 갑니다\"…\"효성중공업, 실적 하회에도 중장기 이익성장 의심할 여지 없다\" [株토피아]"
+    },
     "event:af2ec9512bbbd323ba22aec9": {
       "first_seen_kst": "2026-10-05T05:10:16+09:00",
       "lanes": {
@@ -5117,20 +5313,20 @@
     "event:bc9f8969d10bf3e0a41fda9f": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
       "lanes": {
-        "live": "2026-10-07T11:25:20+09:00"
+        "live": "2026-10-07T13:13:19+09:00"
       },
-      "last_seen_kst": "2026-10-07T11:25:20+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2633233",
-      "source": "이투데이",
-      "source_body_digest": "733c58e99d6e8b271f4d0a1879e3e54e736804defb468b6621f219c0ba1906d4",
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03181606645610624",
+      "source": "이데일리",
+      "source_body_digest": "832f8f7ecdc4aff7b73268bbc1f7e7f09b2f20ce28d7d888581c1812f6d24608",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:fc5858cf8b6c9dfcfd3576bfab615a330cf3020c4341932c696887e1b28c7893",
+      "source_fact_identity": "source_facts:v1:b03f883b16b12e72a30cff7b3dafa9367cc8092b8e11265b2cfab77200f44c1c",
       "source_fact_keys": [
-        "source_fact:v1:10db4aa96945e1a92d1f213e0c6ca702ddeeb16de06b4e47cf5ca2bd50c3ec6e",
-        "source_fact:v1:cf11de2c3d6e1e59a6a4303a8315503aec6af21133a099bece0dafad3fa5ad6e"
+        "source_fact:v1:0425c51f332568491baf19389e69edb1e0b784c546d4fdf36b70f22fd4c2ec12",
+        "source_fact:v1:8c0414d83aea27e1e0c9bcab190be920a4601c61ede2ed9660c03f51702499a0"
       ],
-      "source_published_kst": "2026-10-07T09:52+09:00",
-      "title": "한화 AI 에너지 관리 시스템, 美 ‘차세대 신기술’ 선정…전력비 최대 25% 절감"
+      "source_published_kst": "2026-10-07T10:21+09:00",
+      "title": "한화, AI 에너지 관리 기술 美 ‘차세대 신기술’ 선정"
     },
     "event:bcf1e6238a30dc31cad96cdb": {
       "event_alias_evidence_message_id": 2330,
@@ -5868,30 +6064,22 @@
     "event:d3f7bb7a19ba6c2f88d9f346": {
       "first_seen_kst": "2026-10-07T05:13:11+09:00",
       "lanes": {
-        "live": "2026-10-07T11:25:20+09:00"
+        "live": "2026-10-07T13:13:19+09:00"
       },
-      "last_seen_kst": "2026-10-07T11:25:20+09:00",
-      "link": "https://www.newsis.com/view/NISX20261007_0003817078",
-      "source": "뉴시스",
-      "source_body_digest": "1ed0c480c132e4d681a9bd78808e21787df835bc98eef869bfee7240092a6a86",
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170205",
+      "source": "매일경제",
+      "source_body_digest": "3e21cf92fd1399da414756e5d30ee8f5faa18730b71935909673792a27eddd46",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:cf614747fe42f60acfdecb7b15dc22d72e70ddc7973d1731d42f96c2afe9a33f",
+      "source_fact_identity": "source_facts:v1:994ef39684a6f1a695e76497784f2a56aa4ffd8d736ab099fcafcb1591c5cd29",
       "source_fact_keys": [
-        "source_fact:v1:15d08148ae2233b292832bf660487db776d1732125fff13b1b05b75f92fe74da",
-        "source_fact:v1:15d8d3e1b1edb7bf3f4afc65d4ffc189038012187eaf279e70a582a49098fa71",
-        "source_fact:v1:1bdb90aabc0c63e1481e0bfb522b0cc29262513cfce8489fb1c32c9d9d5701ba",
-        "source_fact:v1:1dc49904bc2758150520cdc6690211f683c2681b9b92fd1a67e9c52f0a5dc6b3",
-        "source_fact:v1:36d00660ef35512625aaaa5d10753f446ca227b3f1329242161945714ef2e2fc",
-        "source_fact:v1:48ca49b9f81d18e3c30b9be975d7537ac6b40408e392644441b8edf068791de6",
-        "source_fact:v1:4c5a886c5a824f0c11d3f30190a95e535c5aa1f4feb9831920fb97c0b3f5d06d",
-        "source_fact:v1:74afb938a149e5cefe700fccf2cd7a0e622d13193654527b7ab59ba19c3af769",
-        "source_fact:v1:74e87027ac878cf4a8c030583515b810a3c7451bfaa653ad0eae42398be79eab",
-        "source_fact:v1:91651386461ecd9025a61aef745b9022137243e68308e2c302d8179ef2c35082",
-        "source_fact:v1:ae8e39d0260673137d4197041ebd4aba317a4031efed9b489cadfad470d44a8c",
-        "source_fact:v1:f04d298fe9bbb1011e1c441cc9b681a81db99b7b79920bcdc1748800f72c0f1c"
+        "source_fact:v1:0432637a86efad084c7c1025fb0623ec2760eb22703602a571ee0a9d3f1585ff",
+        "source_fact:v1:540665fc35aa10055eb3a3fca82c61868cde0b552e7ea8171976042810998c6c",
+        "source_fact:v1:8b7e5f02a2b2f665d98f3d75f7b4d9164afdf0ff9d18a5ce08e755e7dbb49cbe",
+        "source_fact:v1:fcecb12f400db3c180d35a663af87cee9f029bacf3d24d868197eae95c5a8157"
       ],
-      "source_published_kst": "2026-10-07T11:11+09:00",
-      "title": "골드만삭스 \"삼성전자 8일 변동성 확대…이벤트 3건 동시 발생\""
+      "source_published_kst": "2026-10-07T11:25+09:00",
+      "title": "블룸버그 “AI 유망 투자처는 대만...코스피는 ‘위험’”"
     },
     "event:d43896e2f11c4711cdda0b39": {
       "first_seen_kst": "2026-10-02T13:38:43+09:00",
@@ -5977,19 +6165,19 @@
     "event:d77b6a442ea70a495b6c3b7a": {
       "first_seen_kst": "2026-10-07T10:04:59+09:00",
       "lanes": {
-        "live": "2026-10-07T10:04:59+09:00"
+        "live": "2026-10-07T13:13:19+09:00"
       },
-      "last_seen_kst": "2026-10-07T10:04:59+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2633132",
-      "source": "이투데이",
-      "source_body_digest": "02e0669e719dd357a5816761ec2e4bcfa95dfdb6ef196fc1e684cb65ac966fea",
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100617381629210",
+      "source": "머니투데이",
+      "source_body_digest": "8c624787cf1230e693539938be606974453eca21b17025e361e0324301ca6d37",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:deb9db5a688baca6f7a9dc373641a99a0c4de465860479bcfec79d928be61385",
+      "source_fact_identity": "source_facts:v1:4a4363acec24be803701068ea52abaa9a566f3323e7566db0cdfe469c27f3a77",
       "source_fact_keys": [
-        "source_fact:v1:680de10305bd7b809e4a33ca7a50eea3b319aba695008a7cb93422c61d790585"
+        "source_fact:v1:04424faa8aad3a2ca605e22315c1eb2a3512b16834dac0b5dd02c2d6feae7519"
       ],
-      "source_published_kst": "2026-10-07T08:31+09:00",
-      "title": "한성크린텍, 삼성전기 베트남 공장 초순수 시스템 230억원 수주"
+      "source_published_kst": "2026-10-07T08:00+09:00",
+      "title": "한성크린텍, 삼성전기 베트남 공장 230억원 초순수 E&P 계약 체결"
     },
     "event:d812265cdfa6d6eb53781072": {
       "first_seen_kst": "2026-10-07T06:28:41+09:00",
@@ -9031,6 +9219,23 @@
       "source_published_kst": "2026-10-06T15:28+09:00",
       "title": "한 주에 10% 뛴 광통신 ETF…\"AI 데이터센터 전력난이 복병\""
     },
+    "fact:18c2f38a2703f6f7affcaa66": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100617381629210",
+      "source": "머니투데이",
+      "source_body_digest": "8c624787cf1230e693539938be606974453eca21b17025e361e0324301ca6d37",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a4363acec24be803701068ea52abaa9a566f3323e7566db0cdfe469c27f3a77",
+      "source_fact_keys": [
+        "source_fact:v1:04424faa8aad3a2ca605e22315c1eb2a3512b16834dac0b5dd02c2d6feae7519"
+      ],
+      "source_published_kst": "2026-10-07T08:00+09:00",
+      "title": "한성크린텍, 삼성전기 베트남 공장 230억원 초순수 E&P 계약 체결"
+    },
     "fact:18ed826e5e38a13db5b0e306": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
       "lanes": {
@@ -11786,6 +11991,24 @@
       ],
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
+    },
+    "fact:4260ef81b19356bbc44dce0d": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03181606645610624",
+      "source": "이데일리",
+      "source_body_digest": "832f8f7ecdc4aff7b73268bbc1f7e7f09b2f20ce28d7d888581c1812f6d24608",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b03f883b16b12e72a30cff7b3dafa9367cc8092b8e11265b2cfab77200f44c1c",
+      "source_fact_keys": [
+        "source_fact:v1:0425c51f332568491baf19389e69edb1e0b784c546d4fdf36b70f22fd4c2ec12",
+        "source_fact:v1:8c0414d83aea27e1e0c9bcab190be920a4601c61ede2ed9660c03f51702499a0"
+      ],
+      "source_published_kst": "2026-10-07T10:21+09:00",
+      "title": "한화, AI 에너지 관리 기술 美 ‘차세대 신기술’ 선정"
     },
     "fact:42973bf4dfb13132e26fa031": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
@@ -15594,6 +15817,24 @@
       ],
       "source_published_kst": "2026-10-06T09:00+09:00",
       "title": "넥스팟솔루션, ‘3無 프로젝트’ 통해 정품인증 스티커 MOQ 완전 폐지"
+    },
+    "fact:81609b88773d5f8ecbe2ea9d": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03329206645610624&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "6ff10aeea676c0bca5d2de73a6bd6d99288c7f5f73e08c6dbc08d39a7708816e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ed70dffa5b8eb8fb34cf7b4e02cb01a184a373d84ab7727168512127057cd51b",
+      "source_fact_keys": [
+        "source_fact:v1:79020378515c3b85e5f623c92015ef5ad11af7175e4f1a659b2933f3cf981df2",
+        "source_fact:v1:dff228f5e7197e250560a426f31608f59edf1504976b3a74ce15ad9721c9ff1e"
+      ],
+      "source_published_kst": "2026-10-07T10:47+09:00",
+      "title": "삼미금속, 가스터빈 블레이드 납품 개시"
     },
     "fact:816db047915a9b89e6436cef": {
       "first_seen_kst": "2026-10-07T01:59:08+09:00",
@@ -20891,6 +21132,27 @@
       "source_published_kst": "2026-10-06T10:19+09:00",
       "title": "김정관 장관 “1600조 지방투자 본격화…2030년 AI팩토리 500개 구축”"
     },
+    "fact:cf34c7e3f3d6f97c5e6db015": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03257046645610624",
+      "source": "이데일리",
+      "source_body_digest": "b899fc0c9c8c717e35ed9d99b3b9cc491713b257e9f5d2e5ed513d07db629022",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01ce8183635ea9bfa249ac38e5af8ebe8fa834a89213a9fa278ccda4ba42bd92",
+      "source_fact_keys": [
+        "source_fact:v1:33afe5fa42f95991ba2bdfa528710944ae69e6804abe42324d79a12aac92b18c",
+        "source_fact:v1:96f4fa6bbef67d7d0df6f48f9a00e7015a5e73a81bf33ab915387ee3f864528d",
+        "source_fact:v1:adb268771e185a893434aff5c6ddd8793557bcbf466b8fccc122d8f20e4bdb0b",
+        "source_fact:v1:ae97865afc06953ed9c4b67d98f381ffb6b803823a118a89d7c25b3d90324785",
+        "source_fact:v1:c95d701a4e18357923d6af22ad7a35a26c94b835b81009d3251c9c8a97d89e0f"
+      ],
+      "source_published_kst": "2026-10-07T10:34+09:00",
+      "title": "우크라 \"한국이 러시아에 석유 공급\" 저격"
+    },
     "fact:cf6cffe7eb42c6f0a42321ef": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
       "lanes": {
@@ -21851,6 +22113,54 @@
       ],
       "source_published_kst": "2026-10-06T15:57+09:00",
       "title": "고금리 공포에도…나스닥·엔비디아 '사상 최고가'"
+    },
+    "fact:df427ef4ba51242d7b1fbdfe": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.fnnews.com/news/202610071051053638",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "e0be987376d8dec9979e019d8c48843c699a89771e97856f25e5bac47be627e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:274bac2aae7f70952da448d6c0b89aac3709fe10a282a7b2c0e51d24e9c1c0f8",
+      "source_fact_keys": [
+        "source_fact:v1:0c21c639ba2f1a5a9cb3dbcb74e1a9fecec0380cf56a9a87fdc28b3e1bc21981",
+        "source_fact:v1:11957e61c9bdeeee76f685c41834ec11c3bc6939bd772051cf0a1e6f19e7df3b",
+        "source_fact:v1:52de3dd5fdbbe66aee5f7b3c58105c5920684e0742fd898167dfd9da152c4639",
+        "source_fact:v1:5ba72604ee353a705a23b7bfa5b472de9edea435c40e9f53acc8e2f3016d7a92",
+        "source_fact:v1:6409cf8317dfa0aebbec39bc456e57b4556048cb37861e9268f9f7c5f44b0981",
+        "source_fact:v1:b31003635283a1265a34fd522ae496537c1adabfccb82c989923b4cc268a95c0",
+        "source_fact:v1:b8a0d1a41e3252b0e659dadd9a4d5f0716b91dd89d6035da3815ec23b7d8df77"
+      ],
+      "source_published_kst": "2026-10-07T11:21+09:00",
+      "title": "\"흔들리지 마세요, 400만닉스 갑니다\"…\"효성중공업, 실적 하회에도 중장기 이익성장 의심할 여지 없다\" [株토피아]"
+    },
+    "fact:dfa888bbb3e08cea0198226f": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=02673206645610624&parentid=03329206645610624&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "0b80dbe90d7a1ed5d143ab58e2b7a1e6697f85d9653a7c6e02d196a95605f8bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4789783573fdc2a13e395182785a270d17bf7fd750e3ef46f5fe2e9af5921b5e",
+      "source_fact_keys": [
+        "source_fact:v1:433bcbf9fb6ca5fa3f070498c01f8a50634394f76b1060537302958e5b851035",
+        "source_fact:v1:4458947c858bef2cb887265adc9ea17c3bf81d1021a1b69c862215f59af283af",
+        "source_fact:v1:4de7cf3a3ac3186d10b7c92554e4bb3537b71f2e60a00d2e73da8282670425ee",
+        "source_fact:v1:542bb1128e8af96ec042db93b29b4f087844c41d063d34c2330008089c875485",
+        "source_fact:v1:7ceecce3386cf41a557819fc35488622e051e3809bfe16703b5b7f13088f5991",
+        "source_fact:v1:bed2c4f55ed8e92509c9180e06d40b89cd9079ce51b151ad0b8264de05ea3cb4",
+        "source_fact:v1:d06f8cf3cfb70d0d581adc68698abae93cca7b0c888ea9bb15449d8e1f759b28",
+        "source_fact:v1:d7f22f0c96d98b775325e5427f40c2ef812cc29e21a9d76141c44a7399aaf8fc",
+        "source_fact:v1:f41ae112634d59a360145025a1e7148dbb1956dc1c0877a84aad492c37ef66d9"
+      ],
+      "source_published_kst": "2026-10-07T07:43+09:00",
+      "title": "“56만전자·320만닉스 간다\"…삼전닉스, 3분기 실적 기대 이상"
     },
     "fact:dfe79dc95362d6af01327bd1": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
@@ -22860,6 +23170,26 @@
       ],
       "source_published_kst": "2026-10-06T10:01+09:00",
       "title": "두산로보틱스, '한국형 피지컬 AI' 구현 나선다…국책과제 2건 수주"
+    },
+    "fact:f031863aaed12ca4be87d356": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170205",
+      "source": "매일경제",
+      "source_body_digest": "3e21cf92fd1399da414756e5d30ee8f5faa18730b71935909673792a27eddd46",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:994ef39684a6f1a695e76497784f2a56aa4ffd8d736ab099fcafcb1591c5cd29",
+      "source_fact_keys": [
+        "source_fact:v1:0432637a86efad084c7c1025fb0623ec2760eb22703602a571ee0a9d3f1585ff",
+        "source_fact:v1:540665fc35aa10055eb3a3fca82c61868cde0b552e7ea8171976042810998c6c",
+        "source_fact:v1:8b7e5f02a2b2f665d98f3d75f7b4d9164afdf0ff9d18a5ce08e755e7dbb49cbe",
+        "source_fact:v1:fcecb12f400db3c180d35a663af87cee9f029bacf3d24d868197eae95c5a8157"
+      ],
+      "source_published_kst": "2026-10-07T11:25+09:00",
+      "title": "블룸버그 “AI 유망 투자처는 대만...코스피는 ‘위험’”"
     },
     "fact:f0b2b97b8ab390b891246267": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -27187,6 +27517,24 @@
       "source": "연합뉴스",
       "title": "뉴욕증시, 美국채금리 급등에 약세…나스닥 1%대↓(종합) | 연합뉴스"
     },
+    "link:1b312ccf7bd4602fac713176": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03181606645610624",
+      "source": "이데일리",
+      "source_body_digest": "832f8f7ecdc4aff7b73268bbc1f7e7f09b2f20ce28d7d888581c1812f6d24608",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b03f883b16b12e72a30cff7b3dafa9367cc8092b8e11265b2cfab77200f44c1c",
+      "source_fact_keys": [
+        "source_fact:v1:0425c51f332568491baf19389e69edb1e0b784c546d4fdf36b70f22fd4c2ec12",
+        "source_fact:v1:8c0414d83aea27e1e0c9bcab190be920a4601c61ede2ed9660c03f51702499a0"
+      ],
+      "source_published_kst": "2026-10-07T10:21+09:00",
+      "title": "한화, AI 에너지 관리 기술 美 ‘차세대 신기술’ 선정"
+    },
     "link:1b36127be98847e04435d625": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
@@ -28887,6 +29235,24 @@
       "source_published_kst": "2026-10-04T22:31+09:00",
       "title": "시총 기준 상폐요건 강화에 법원 제동…\"비례 원칙에 어긋나\" | 연합뉴스"
     },
+    "link:2905a2b21ee30ecd8d7d1b5e": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03329206645610624&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "6ff10aeea676c0bca5d2de73a6bd6d99288c7f5f73e08c6dbc08d39a7708816e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ed70dffa5b8eb8fb34cf7b4e02cb01a184a373d84ab7727168512127057cd51b",
+      "source_fact_keys": [
+        "source_fact:v1:79020378515c3b85e5f623c92015ef5ad11af7175e4f1a659b2933f3cf981df2",
+        "source_fact:v1:dff228f5e7197e250560a426f31608f59edf1504976b3a74ce15ad9721c9ff1e"
+      ],
+      "source_published_kst": "2026-10-07T10:47+09:00",
+      "title": "삼미금속, 가스터빈 블레이드 납품 개시"
+    },
     "link:290a32e19d16dc4e3259298f": {
       "first_seen_kst": "2026-10-05T11:14:01+09:00",
       "lanes": {
@@ -30299,6 +30665,29 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T05:50+09:00",
       "title": "올해 5대 은행 가계대출 중도상환 13% 감소…수수료 40% 줄어 | 연합뉴스"
+    },
+    "link:322694b0b989f38b05c4cd22": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.fnnews.com/news/202610071051053638",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "e0be987376d8dec9979e019d8c48843c699a89771e97856f25e5bac47be627e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:274bac2aae7f70952da448d6c0b89aac3709fe10a282a7b2c0e51d24e9c1c0f8",
+      "source_fact_keys": [
+        "source_fact:v1:0c21c639ba2f1a5a9cb3dbcb74e1a9fecec0380cf56a9a87fdc28b3e1bc21981",
+        "source_fact:v1:11957e61c9bdeeee76f685c41834ec11c3bc6939bd772051cf0a1e6f19e7df3b",
+        "source_fact:v1:52de3dd5fdbbe66aee5f7b3c58105c5920684e0742fd898167dfd9da152c4639",
+        "source_fact:v1:5ba72604ee353a705a23b7bfa5b472de9edea435c40e9f53acc8e2f3016d7a92",
+        "source_fact:v1:6409cf8317dfa0aebbec39bc456e57b4556048cb37861e9268f9f7c5f44b0981",
+        "source_fact:v1:b31003635283a1265a34fd522ae496537c1adabfccb82c989923b4cc268a95c0",
+        "source_fact:v1:b8a0d1a41e3252b0e659dadd9a4d5f0716b91dd89d6035da3815ec23b7d8df77"
+      ],
+      "source_published_kst": "2026-10-07T11:21+09:00",
+      "title": "\"흔들리지 마세요, 400만닉스 갑니다\"…\"효성중공업, 실적 하회에도 중장기 이익성장 의심할 여지 없다\" [株토피아]"
     },
     "link:3244f1ef2f22fb69defecd8c": {
       "first_seen_kst": "2026-10-05T09:13:59+09:00",
@@ -32524,6 +32913,24 @@
       "source_published_kst": "2026-10-06T11:09+09:00",
       "title": "재정부담에 재협상까지…고금리에 상업용 부동산 비상"
     },
+    "link:43a218d4a667191e06b36fd3": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03329206645610624&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "6ff10aeea676c0bca5d2de73a6bd6d99288c7f5f73e08c6dbc08d39a7708816e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ed70dffa5b8eb8fb34cf7b4e02cb01a184a373d84ab7727168512127057cd51b",
+      "source_fact_keys": [
+        "source_fact:v1:79020378515c3b85e5f623c92015ef5ad11af7175e4f1a659b2933f3cf981df2",
+        "source_fact:v1:dff228f5e7197e250560a426f31608f59edf1504976b3a74ce15ad9721c9ff1e"
+      ],
+      "source_published_kst": "2026-10-07T10:47+09:00",
+      "title": "삼미금속, 가스터빈 블레이드 납품 개시"
+    },
     "link:43a54b24827847e45a7cffbb": {
       "first_seen_kst": "2026-10-03T08:59:09+09:00",
       "lanes": {
@@ -34099,6 +34506,31 @@
       "source_published_kst": "2026-10-03T18:47+09:00",
       "title": "“나 돌아갈래”…영국, ‘EU 재가입’ 국민 49% 찬성·반대 28.5%"
     },
+    "link:513669392e62485abe76421f": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=02673206645610624&parentid=03329206645610624&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "0b80dbe90d7a1ed5d143ab58e2b7a1e6697f85d9653a7c6e02d196a95605f8bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4789783573fdc2a13e395182785a270d17bf7fd750e3ef46f5fe2e9af5921b5e",
+      "source_fact_keys": [
+        "source_fact:v1:433bcbf9fb6ca5fa3f070498c01f8a50634394f76b1060537302958e5b851035",
+        "source_fact:v1:4458947c858bef2cb887265adc9ea17c3bf81d1021a1b69c862215f59af283af",
+        "source_fact:v1:4de7cf3a3ac3186d10b7c92554e4bb3537b71f2e60a00d2e73da8282670425ee",
+        "source_fact:v1:542bb1128e8af96ec042db93b29b4f087844c41d063d34c2330008089c875485",
+        "source_fact:v1:7ceecce3386cf41a557819fc35488622e051e3809bfe16703b5b7f13088f5991",
+        "source_fact:v1:bed2c4f55ed8e92509c9180e06d40b89cd9079ce51b151ad0b8264de05ea3cb4",
+        "source_fact:v1:d06f8cf3cfb70d0d581adc68698abae93cca7b0c888ea9bb15449d8e1f759b28",
+        "source_fact:v1:d7f22f0c96d98b775325e5427f40c2ef812cc29e21a9d76141c44a7399aaf8fc",
+        "source_fact:v1:f41ae112634d59a360145025a1e7148dbb1956dc1c0877a84aad492c37ef66d9"
+      ],
+      "source_published_kst": "2026-10-07T07:43+09:00",
+      "title": "“56만전자·320만닉스 간다\"…삼전닉스, 3분기 실적 기대 이상"
+    },
     "link:513bf592aad6b53d5af2c865": {
       "first_seen_kst": "2026-10-05T09:34:29+09:00",
       "lanes": {
@@ -34532,6 +34964,27 @@
       "link": "https://www.newsis.com/view/NISX20260918_0003795711",
       "source": "뉴시스",
       "title": "나경원 \"재판 받겠다 이 한마디면 충분했던 기자회견…나머지는 믿거나 말거나\""
+    },
+    "link:5553cd6c808faeb46cc47b43": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03257046645610624",
+      "source": "이데일리",
+      "source_body_digest": "b899fc0c9c8c717e35ed9d99b3b9cc491713b257e9f5d2e5ed513d07db629022",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01ce8183635ea9bfa249ac38e5af8ebe8fa834a89213a9fa278ccda4ba42bd92",
+      "source_fact_keys": [
+        "source_fact:v1:33afe5fa42f95991ba2bdfa528710944ae69e6804abe42324d79a12aac92b18c",
+        "source_fact:v1:96f4fa6bbef67d7d0df6f48f9a00e7015a5e73a81bf33ab915387ee3f864528d",
+        "source_fact:v1:adb268771e185a893434aff5c6ddd8793557bcbf466b8fccc122d8f20e4bdb0b",
+        "source_fact:v1:ae97865afc06953ed9c4b67d98f381ffb6b803823a118a89d7c25b3d90324785",
+        "source_fact:v1:c95d701a4e18357923d6af22ad7a35a26c94b835b81009d3251c9c8a97d89e0f"
+      ],
+      "source_published_kst": "2026-10-07T10:34+09:00",
+      "title": "우크라 \"한국이 러시아에 석유 공급\" 저격"
     },
     "link:55596483089339e9558260b1": {
       "first_seen_kst": "2026-09-22T10:35:36+09:00",
@@ -35591,6 +36044,31 @@
       ],
       "source_published_kst": "2026-10-05T21:32+09:00",
       "title": "에볼루션 메탈스 앤 테크, 포항 희토류 자석공장 12월 17일 개장..연 1만t 확대 추진"
+    },
+    "link:5dd8d4a00e49dcbfb0439be4": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=02673206645610624&parentid=03329206645610624&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "0b80dbe90d7a1ed5d143ab58e2b7a1e6697f85d9653a7c6e02d196a95605f8bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4789783573fdc2a13e395182785a270d17bf7fd750e3ef46f5fe2e9af5921b5e",
+      "source_fact_keys": [
+        "source_fact:v1:433bcbf9fb6ca5fa3f070498c01f8a50634394f76b1060537302958e5b851035",
+        "source_fact:v1:4458947c858bef2cb887265adc9ea17c3bf81d1021a1b69c862215f59af283af",
+        "source_fact:v1:4de7cf3a3ac3186d10b7c92554e4bb3537b71f2e60a00d2e73da8282670425ee",
+        "source_fact:v1:542bb1128e8af96ec042db93b29b4f087844c41d063d34c2330008089c875485",
+        "source_fact:v1:7ceecce3386cf41a557819fc35488622e051e3809bfe16703b5b7f13088f5991",
+        "source_fact:v1:bed2c4f55ed8e92509c9180e06d40b89cd9079ce51b151ad0b8264de05ea3cb4",
+        "source_fact:v1:d06f8cf3cfb70d0d581adc68698abae93cca7b0c888ea9bb15449d8e1f759b28",
+        "source_fact:v1:d7f22f0c96d98b775325e5427f40c2ef812cc29e21a9d76141c44a7399aaf8fc",
+        "source_fact:v1:f41ae112634d59a360145025a1e7148dbb1956dc1c0877a84aad492c37ef66d9"
+      ],
+      "source_published_kst": "2026-10-07T07:43+09:00",
+      "title": "“56만전자·320만닉스 간다\"…삼전닉스, 3분기 실적 기대 이상"
     },
     "link:5de14a4fef3898f693ede3de": {
       "first_seen_kst": "2026-10-05T16:09:26+09:00",
@@ -48963,6 +49441,26 @@
       "source_published_kst": "2026-10-07T11:14+09:00",
       "title": "다이나핏, FW 신상 매출 23%↑…'트레이닝 세트'는 리오더"
     },
+    "link:c6aaeff08d1eafb264b5d98c": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170205",
+      "source": "매일경제",
+      "source_body_digest": "3e21cf92fd1399da414756e5d30ee8f5faa18730b71935909673792a27eddd46",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:994ef39684a6f1a695e76497784f2a56aa4ffd8d736ab099fcafcb1591c5cd29",
+      "source_fact_keys": [
+        "source_fact:v1:0432637a86efad084c7c1025fb0623ec2760eb22703602a571ee0a9d3f1585ff",
+        "source_fact:v1:540665fc35aa10055eb3a3fca82c61868cde0b552e7ea8171976042810998c6c",
+        "source_fact:v1:8b7e5f02a2b2f665d98f3d75f7b4d9164afdf0ff9d18a5ce08e755e7dbb49cbe",
+        "source_fact:v1:fcecb12f400db3c180d35a663af87cee9f029bacf3d24d868197eae95c5a8157"
+      ],
+      "source_published_kst": "2026-10-07T11:25+09:00",
+      "title": "블룸버그 “AI 유망 투자처는 대만...코스피는 ‘위험’”"
+    },
     "link:c6aaf864654fc8f3efd7c294": {
       "first_seen_kst": "2026-10-02T16:20:30+09:00",
       "lanes": {
@@ -52204,6 +52702,23 @@
       ],
       "source_published_kst": "2026-10-06T19:18+09:00",
       "title": "“발전공기업 최초”…남부발전, 한국형 녹색분류체계 기반 녹색여신 약정 체결"
+    },
+    "link:dfeb0290eadc7f113354ca9f": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100617381629210",
+      "source": "머니투데이",
+      "source_body_digest": "8c624787cf1230e693539938be606974453eca21b17025e361e0324301ca6d37",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a4363acec24be803701068ea52abaa9a566f3323e7566db0cdfe469c27f3a77",
+      "source_fact_keys": [
+        "source_fact:v1:04424faa8aad3a2ca605e22315c1eb2a3512b16834dac0b5dd02c2d6feae7519"
+      ],
+      "source_published_kst": "2026-10-07T08:00+09:00",
+      "title": "한성크린텍, 삼성전기 베트남 공장 230억원 초순수 E&P 계약 체결"
     },
     "link:e0093236b73dbe1724e8a1d3": {
       "first_seen_kst": "2026-10-06T23:19:02+09:00",
@@ -59497,6 +60012,27 @@
       "source_published_kst": "2026-10-05T22:57+09:00",
       "title": "[美특징주]RXO, CH 로빈슨에 58억달러 피인수...주가 23%↑"
     },
+    "original:1969936d6f397817ccd15cbd": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03257046645610624",
+      "source": "이데일리",
+      "source_body_digest": "b899fc0c9c8c717e35ed9d99b3b9cc491713b257e9f5d2e5ed513d07db629022",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01ce8183635ea9bfa249ac38e5af8ebe8fa834a89213a9fa278ccda4ba42bd92",
+      "source_fact_keys": [
+        "source_fact:v1:33afe5fa42f95991ba2bdfa528710944ae69e6804abe42324d79a12aac92b18c",
+        "source_fact:v1:96f4fa6bbef67d7d0df6f48f9a00e7015a5e73a81bf33ab915387ee3f864528d",
+        "source_fact:v1:adb268771e185a893434aff5c6ddd8793557bcbf466b8fccc122d8f20e4bdb0b",
+        "source_fact:v1:ae97865afc06953ed9c4b67d98f381ffb6b803823a118a89d7c25b3d90324785",
+        "source_fact:v1:c95d701a4e18357923d6af22ad7a35a26c94b835b81009d3251c9c8a97d89e0f"
+      ],
+      "source_published_kst": "2026-10-07T10:34+09:00",
+      "title": "우크라 \"한국이 러시아에 석유 공급\" 저격"
+    },
     "original:1982c5ea113a6a622e10d03f": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
       "lanes": {
@@ -59830,6 +60366,24 @@
       ],
       "source_published_kst": "2026-10-05T12:37+09:00",
       "title": "\"메가·컴포즈 점주들 돈 많이 벌었겠네\"…실상은 달랐다"
+    },
+    "original:1cd6ca6621ebf6ce399f1e3f": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03329206645610624&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "6ff10aeea676c0bca5d2de73a6bd6d99288c7f5f73e08c6dbc08d39a7708816e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ed70dffa5b8eb8fb34cf7b4e02cb01a184a373d84ab7727168512127057cd51b",
+      "source_fact_keys": [
+        "source_fact:v1:79020378515c3b85e5f623c92015ef5ad11af7175e4f1a659b2933f3cf981df2",
+        "source_fact:v1:dff228f5e7197e250560a426f31608f59edf1504976b3a74ce15ad9721c9ff1e"
+      ],
+      "source_published_kst": "2026-10-07T10:47+09:00",
+      "title": "삼미금속, 가스터빈 블레이드 납품 개시"
     },
     "original:1d0953268493cd34b75116fb": {
       "first_seen_kst": "2026-10-06T00:18:21+09:00",
@@ -60951,6 +61505,26 @@
       ],
       "source_published_kst": "2026-10-06T04:36+09:00",
       "title": "美10년물 국채금리 장중 5.34% 돌파…24년 만에 최고"
+    },
+    "original:25f80ea3854b971745eaa66c": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170205",
+      "source": "매일경제",
+      "source_body_digest": "3e21cf92fd1399da414756e5d30ee8f5faa18730b71935909673792a27eddd46",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:994ef39684a6f1a695e76497784f2a56aa4ffd8d736ab099fcafcb1591c5cd29",
+      "source_fact_keys": [
+        "source_fact:v1:0432637a86efad084c7c1025fb0623ec2760eb22703602a571ee0a9d3f1585ff",
+        "source_fact:v1:540665fc35aa10055eb3a3fca82c61868cde0b552e7ea8171976042810998c6c",
+        "source_fact:v1:8b7e5f02a2b2f665d98f3d75f7b4d9164afdf0ff9d18a5ce08e755e7dbb49cbe",
+        "source_fact:v1:fcecb12f400db3c180d35a663af87cee9f029bacf3d24d868197eae95c5a8157"
+      ],
+      "source_published_kst": "2026-10-07T11:25+09:00",
+      "title": "블룸버그 “AI 유망 투자처는 대만...코스피는 ‘위험’”"
     },
     "original:26339b904f3ce2deb25d0260": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
@@ -67119,6 +67693,24 @@
       "link": "https://www.mk.co.kr/news/stock/12164125",
       "source": "매일경제",
       "title": "AAR, MRO홀딩스 65% 인수..기업가치 40억달러 빅딜"
+    },
+    "original:549792ddc5cb604d8367d4ec": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03181606645610624",
+      "source": "이데일리",
+      "source_body_digest": "832f8f7ecdc4aff7b73268bbc1f7e7f09b2f20ce28d7d888581c1812f6d24608",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b03f883b16b12e72a30cff7b3dafa9367cc8092b8e11265b2cfab77200f44c1c",
+      "source_fact_keys": [
+        "source_fact:v1:0425c51f332568491baf19389e69edb1e0b784c546d4fdf36b70f22fd4c2ec12",
+        "source_fact:v1:8c0414d83aea27e1e0c9bcab190be920a4601c61ede2ed9660c03f51702499a0"
+      ],
+      "source_published_kst": "2026-10-07T10:21+09:00",
+      "title": "한화, AI 에너지 관리 기술 美 ‘차세대 신기술’ 선정"
     },
     "original:54ae2d6337f5303111d69918": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
@@ -79672,6 +80264,29 @@
       "source_published_kst": "2026-10-06T11:31+09:00",
       "title": "[2026 국감]산업부, 대미투자 국익 최우선 추진…호남 반도체 등 1600조 속도전"
     },
+    "original:bbed31793eda34c90a96c516": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.fnnews.com/news/202610071051053638",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "e0be987376d8dec9979e019d8c48843c699a89771e97856f25e5bac47be627e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:274bac2aae7f70952da448d6c0b89aac3709fe10a282a7b2c0e51d24e9c1c0f8",
+      "source_fact_keys": [
+        "source_fact:v1:0c21c639ba2f1a5a9cb3dbcb74e1a9fecec0380cf56a9a87fdc28b3e1bc21981",
+        "source_fact:v1:11957e61c9bdeeee76f685c41834ec11c3bc6939bd772051cf0a1e6f19e7df3b",
+        "source_fact:v1:52de3dd5fdbbe66aee5f7b3c58105c5920684e0742fd898167dfd9da152c4639",
+        "source_fact:v1:5ba72604ee353a705a23b7bfa5b472de9edea435c40e9f53acc8e2f3016d7a92",
+        "source_fact:v1:6409cf8317dfa0aebbec39bc456e57b4556048cb37861e9268f9f7c5f44b0981",
+        "source_fact:v1:b31003635283a1265a34fd522ae496537c1adabfccb82c989923b4cc268a95c0",
+        "source_fact:v1:b8a0d1a41e3252b0e659dadd9a4d5f0716b91dd89d6035da3815ec23b7d8df77"
+      ],
+      "source_published_kst": "2026-10-07T11:21+09:00",
+      "title": "\"흔들리지 마세요, 400만닉스 갑니다\"…\"효성중공업, 실적 하회에도 중장기 이익성장 의심할 여지 없다\" [株토피아]"
+    },
     "original:bbfd1a52d07c86aa948ce6a5": {
       "first_seen_kst": "2026-10-05T14:51:16+09:00",
       "lanes": {
@@ -85685,6 +86300,31 @@
       "source_published_kst": "2026-10-04T06:00+09:00",
       "title": "모빌리티 펀드 돈이 암살자(들)로...자본시장 출자약정·심사 쟁점화"
     },
+    "original:ea8141293721f3aac1f8a3ec": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=02673206645610624&parentid=03329206645610624&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "0b80dbe90d7a1ed5d143ab58e2b7a1e6697f85d9653a7c6e02d196a95605f8bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4789783573fdc2a13e395182785a270d17bf7fd750e3ef46f5fe2e9af5921b5e",
+      "source_fact_keys": [
+        "source_fact:v1:433bcbf9fb6ca5fa3f070498c01f8a50634394f76b1060537302958e5b851035",
+        "source_fact:v1:4458947c858bef2cb887265adc9ea17c3bf81d1021a1b69c862215f59af283af",
+        "source_fact:v1:4de7cf3a3ac3186d10b7c92554e4bb3537b71f2e60a00d2e73da8282670425ee",
+        "source_fact:v1:542bb1128e8af96ec042db93b29b4f087844c41d063d34c2330008089c875485",
+        "source_fact:v1:7ceecce3386cf41a557819fc35488622e051e3809bfe16703b5b7f13088f5991",
+        "source_fact:v1:bed2c4f55ed8e92509c9180e06d40b89cd9079ce51b151ad0b8264de05ea3cb4",
+        "source_fact:v1:d06f8cf3cfb70d0d581adc68698abae93cca7b0c888ea9bb15449d8e1f759b28",
+        "source_fact:v1:d7f22f0c96d98b775325e5427f40c2ef812cc29e21a9d76141c44a7399aaf8fc",
+        "source_fact:v1:f41ae112634d59a360145025a1e7148dbb1956dc1c0877a84aad492c37ef66d9"
+      ],
+      "source_published_kst": "2026-10-07T07:43+09:00",
+      "title": "“56만전자·320만닉스 간다\"…삼전닉스, 3분기 실적 기대 이상"
+    },
     "original:ea8b82e20ff505370b79250e": {
       "first_seen_kst": "2026-10-03T22:33:30+09:00",
       "lanes": {
@@ -85705,6 +86345,23 @@
       "link": "https://www.yna.co.kr/view/AKR20260930158451008",
       "source": "연합뉴스",
       "title": "유가하락·발행 축소 기대에 국고채 금리↓…3년물 연 4.011%(종합) | 연합뉴스"
+    },
+    "original:eae17dbf6a330e5f98ed40b7": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100617381629210",
+      "source": "머니투데이",
+      "source_body_digest": "8c624787cf1230e693539938be606974453eca21b17025e361e0324301ca6d37",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a4363acec24be803701068ea52abaa9a566f3323e7566db0cdfe469c27f3a77",
+      "source_fact_keys": [
+        "source_fact:v1:04424faa8aad3a2ca605e22315c1eb2a3512b16834dac0b5dd02c2d6feae7519"
+      ],
+      "source_published_kst": "2026-10-07T08:00+09:00",
+      "title": "한성크린텍, 삼성전기 베트남 공장 230억원 초순수 E&P 계약 체결"
     },
     "original:eae774133e670956c70e87ca": {
       "first_seen_kst": "2026-10-05T07:03:44+09:00",
@@ -89177,6 +89834,24 @@
       "source_published_kst": "2026-10-05T21:09+09:00",
       "title": "플렉스, 액시엄 20억달러 우선주 유치..가치 375억달러"
     },
+    "source_fact:051a18876ae10a7f877e8032": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03181606645610624",
+      "source": "이데일리",
+      "source_body_digest": "832f8f7ecdc4aff7b73268bbc1f7e7f09b2f20ce28d7d888581c1812f6d24608",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b03f883b16b12e72a30cff7b3dafa9367cc8092b8e11265b2cfab77200f44c1c",
+      "source_fact_keys": [
+        "source_fact:v1:0425c51f332568491baf19389e69edb1e0b784c546d4fdf36b70f22fd4c2ec12",
+        "source_fact:v1:8c0414d83aea27e1e0c9bcab190be920a4601c61ede2ed9660c03f51702499a0"
+      ],
+      "source_published_kst": "2026-10-07T10:21+09:00",
+      "title": "한화, AI 에너지 관리 기술 美 ‘차세대 신기술’ 선정"
+    },
     "source_fact:0520e454c8a85c2767720753": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
       "lanes": {
@@ -90213,6 +90888,24 @@
       "source_published_kst": "2026-10-06T22:58+09:00",
       "title": "우크라, '한국의 러 석유공급' 보도에 韓 비판 | 연합뉴스"
     },
+    "source_fact:07b381e39d5c5e76fbfedfc8": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03329206645610624&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "6ff10aeea676c0bca5d2de73a6bd6d99288c7f5f73e08c6dbc08d39a7708816e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ed70dffa5b8eb8fb34cf7b4e02cb01a184a373d84ab7727168512127057cd51b",
+      "source_fact_keys": [
+        "source_fact:v1:79020378515c3b85e5f623c92015ef5ad11af7175e4f1a659b2933f3cf981df2",
+        "source_fact:v1:dff228f5e7197e250560a426f31608f59edf1504976b3a74ce15ad9721c9ff1e"
+      ],
+      "source_published_kst": "2026-10-07T10:47+09:00",
+      "title": "삼미금속, 가스터빈 블레이드 납품 개시"
+    },
     "source_fact:07e4331bbf3d00f9991f2a9e": {
       "first_seen_kst": "2026-10-07T10:23:42+09:00",
       "lanes": {
@@ -90232,6 +90925,29 @@
       ],
       "source_published_kst": "2026-10-07T09:31+09:00",
       "title": "KT클라우드, 청라 50MW AIDC 구축 참여…수도권 서부 거점 넓힌다"
+    },
+    "source_fact:080be0be957bbf765faa1883": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.fnnews.com/news/202610071051053638",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "e0be987376d8dec9979e019d8c48843c699a89771e97856f25e5bac47be627e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:274bac2aae7f70952da448d6c0b89aac3709fe10a282a7b2c0e51d24e9c1c0f8",
+      "source_fact_keys": [
+        "source_fact:v1:0c21c639ba2f1a5a9cb3dbcb74e1a9fecec0380cf56a9a87fdc28b3e1bc21981",
+        "source_fact:v1:11957e61c9bdeeee76f685c41834ec11c3bc6939bd772051cf0a1e6f19e7df3b",
+        "source_fact:v1:52de3dd5fdbbe66aee5f7b3c58105c5920684e0742fd898167dfd9da152c4639",
+        "source_fact:v1:5ba72604ee353a705a23b7bfa5b472de9edea435c40e9f53acc8e2f3016d7a92",
+        "source_fact:v1:6409cf8317dfa0aebbec39bc456e57b4556048cb37861e9268f9f7c5f44b0981",
+        "source_fact:v1:b31003635283a1265a34fd522ae496537c1adabfccb82c989923b4cc268a95c0",
+        "source_fact:v1:b8a0d1a41e3252b0e659dadd9a4d5f0716b91dd89d6035da3815ec23b7d8df77"
+      ],
+      "source_published_kst": "2026-10-07T11:21+09:00",
+      "title": "\"흔들리지 마세요, 400만닉스 갑니다\"…\"효성중공업, 실적 하회에도 중장기 이익성장 의심할 여지 없다\" [株토피아]"
     },
     "source_fact:080f15552b64650d9c8ebb27": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -98019,6 +98735,29 @@
       "source_published_kst": "2026-10-06T18:09+09:00",
       "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어(종합) | 연합뉴스"
     },
+    "source_fact:254370bcaf2510bdec04cd10": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.fnnews.com/news/202610071051053638",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "e0be987376d8dec9979e019d8c48843c699a89771e97856f25e5bac47be627e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:274bac2aae7f70952da448d6c0b89aac3709fe10a282a7b2c0e51d24e9c1c0f8",
+      "source_fact_keys": [
+        "source_fact:v1:0c21c639ba2f1a5a9cb3dbcb74e1a9fecec0380cf56a9a87fdc28b3e1bc21981",
+        "source_fact:v1:11957e61c9bdeeee76f685c41834ec11c3bc6939bd772051cf0a1e6f19e7df3b",
+        "source_fact:v1:52de3dd5fdbbe66aee5f7b3c58105c5920684e0742fd898167dfd9da152c4639",
+        "source_fact:v1:5ba72604ee353a705a23b7bfa5b472de9edea435c40e9f53acc8e2f3016d7a92",
+        "source_fact:v1:6409cf8317dfa0aebbec39bc456e57b4556048cb37861e9268f9f7c5f44b0981",
+        "source_fact:v1:b31003635283a1265a34fd522ae496537c1adabfccb82c989923b4cc268a95c0",
+        "source_fact:v1:b8a0d1a41e3252b0e659dadd9a4d5f0716b91dd89d6035da3815ec23b7d8df77"
+      ],
+      "source_published_kst": "2026-10-07T11:21+09:00",
+      "title": "\"흔들리지 마세요, 400만닉스 갑니다\"…\"효성중공업, 실적 하회에도 중장기 이익성장 의심할 여지 없다\" [株토피아]"
+    },
     "source_fact:25474b05fa9239f0b9399b3b": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
       "lanes": {
@@ -98620,6 +99359,29 @@
       ],
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
+    },
+    "source_fact:273f60f8f47a016984cce94c": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.fnnews.com/news/202610071051053638",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "e0be987376d8dec9979e019d8c48843c699a89771e97856f25e5bac47be627e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:274bac2aae7f70952da448d6c0b89aac3709fe10a282a7b2c0e51d24e9c1c0f8",
+      "source_fact_keys": [
+        "source_fact:v1:0c21c639ba2f1a5a9cb3dbcb74e1a9fecec0380cf56a9a87fdc28b3e1bc21981",
+        "source_fact:v1:11957e61c9bdeeee76f685c41834ec11c3bc6939bd772051cf0a1e6f19e7df3b",
+        "source_fact:v1:52de3dd5fdbbe66aee5f7b3c58105c5920684e0742fd898167dfd9da152c4639",
+        "source_fact:v1:5ba72604ee353a705a23b7bfa5b472de9edea435c40e9f53acc8e2f3016d7a92",
+        "source_fact:v1:6409cf8317dfa0aebbec39bc456e57b4556048cb37861e9268f9f7c5f44b0981",
+        "source_fact:v1:b31003635283a1265a34fd522ae496537c1adabfccb82c989923b4cc268a95c0",
+        "source_fact:v1:b8a0d1a41e3252b0e659dadd9a4d5f0716b91dd89d6035da3815ec23b7d8df77"
+      ],
+      "source_published_kst": "2026-10-07T11:21+09:00",
+      "title": "\"흔들리지 마세요, 400만닉스 갑니다\"…\"효성중공업, 실적 하회에도 중장기 이익성장 의심할 여지 없다\" [株토피아]"
     },
     "source_fact:275e418ef77df63effba4f64": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
@@ -105436,6 +106198,27 @@
       "source_published_kst": "2026-10-06T08:46+09:00",
       "title": "“코스피, 7100만 찍으면 7700까지 간다”…장밋빛 전망 근거는? [오늘 나온 보고서]"
     },
+    "source_fact:3d66f398540840e6b2f51bb1": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03257046645610624",
+      "source": "이데일리",
+      "source_body_digest": "b899fc0c9c8c717e35ed9d99b3b9cc491713b257e9f5d2e5ed513d07db629022",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01ce8183635ea9bfa249ac38e5af8ebe8fa834a89213a9fa278ccda4ba42bd92",
+      "source_fact_keys": [
+        "source_fact:v1:33afe5fa42f95991ba2bdfa528710944ae69e6804abe42324d79a12aac92b18c",
+        "source_fact:v1:96f4fa6bbef67d7d0df6f48f9a00e7015a5e73a81bf33ab915387ee3f864528d",
+        "source_fact:v1:adb268771e185a893434aff5c6ddd8793557bcbf466b8fccc122d8f20e4bdb0b",
+        "source_fact:v1:ae97865afc06953ed9c4b67d98f381ffb6b803823a118a89d7c25b3d90324785",
+        "source_fact:v1:c95d701a4e18357923d6af22ad7a35a26c94b835b81009d3251c9c8a97d89e0f"
+      ],
+      "source_published_kst": "2026-10-07T10:34+09:00",
+      "title": "우크라 \"한국이 러시아에 석유 공급\" 저격"
+    },
     "source_fact:3d766666d9bae67b153a9d27": {
       "first_seen_kst": "2026-10-07T07:01:10+09:00",
       "lanes": {
@@ -105751,6 +106534,29 @@
       ],
       "source_published_kst": "2026-10-05T22:27+09:00",
       "title": "듀오스 테크놀러지스 그룹, GPU 자회사 매각..4290만 달러 수취·부채 해소"
+    },
+    "source_fact:3ea0393cbd68bd526f18361e": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.fnnews.com/news/202610071051053638",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "e0be987376d8dec9979e019d8c48843c699a89771e97856f25e5bac47be627e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:274bac2aae7f70952da448d6c0b89aac3709fe10a282a7b2c0e51d24e9c1c0f8",
+      "source_fact_keys": [
+        "source_fact:v1:0c21c639ba2f1a5a9cb3dbcb74e1a9fecec0380cf56a9a87fdc28b3e1bc21981",
+        "source_fact:v1:11957e61c9bdeeee76f685c41834ec11c3bc6939bd772051cf0a1e6f19e7df3b",
+        "source_fact:v1:52de3dd5fdbbe66aee5f7b3c58105c5920684e0742fd898167dfd9da152c4639",
+        "source_fact:v1:5ba72604ee353a705a23b7bfa5b472de9edea435c40e9f53acc8e2f3016d7a92",
+        "source_fact:v1:6409cf8317dfa0aebbec39bc456e57b4556048cb37861e9268f9f7c5f44b0981",
+        "source_fact:v1:b31003635283a1265a34fd522ae496537c1adabfccb82c989923b4cc268a95c0",
+        "source_fact:v1:b8a0d1a41e3252b0e659dadd9a4d5f0716b91dd89d6035da3815ec23b7d8df77"
+      ],
+      "source_published_kst": "2026-10-07T11:21+09:00",
+      "title": "\"흔들리지 마세요, 400만닉스 갑니다\"…\"효성중공업, 실적 하회에도 중장기 이익성장 의심할 여지 없다\" [株토피아]"
     },
     "source_fact:3ea08004b5d7ac98c41118de": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
@@ -108163,6 +108969,29 @@
       "source_published_kst": "2026-10-06T09:37+09:00",
       "title": "[제주馬이야기] 국난마다 전마 보탠 제주…김만일에서 레클리스까지"
     },
+    "source_fact:477754e0389952f0d406ff4f": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.fnnews.com/news/202610071051053638",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "e0be987376d8dec9979e019d8c48843c699a89771e97856f25e5bac47be627e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:274bac2aae7f70952da448d6c0b89aac3709fe10a282a7b2c0e51d24e9c1c0f8",
+      "source_fact_keys": [
+        "source_fact:v1:0c21c639ba2f1a5a9cb3dbcb74e1a9fecec0380cf56a9a87fdc28b3e1bc21981",
+        "source_fact:v1:11957e61c9bdeeee76f685c41834ec11c3bc6939bd772051cf0a1e6f19e7df3b",
+        "source_fact:v1:52de3dd5fdbbe66aee5f7b3c58105c5920684e0742fd898167dfd9da152c4639",
+        "source_fact:v1:5ba72604ee353a705a23b7bfa5b472de9edea435c40e9f53acc8e2f3016d7a92",
+        "source_fact:v1:6409cf8317dfa0aebbec39bc456e57b4556048cb37861e9268f9f7c5f44b0981",
+        "source_fact:v1:b31003635283a1265a34fd522ae496537c1adabfccb82c989923b4cc268a95c0",
+        "source_fact:v1:b8a0d1a41e3252b0e659dadd9a4d5f0716b91dd89d6035da3815ec23b7d8df77"
+      ],
+      "source_published_kst": "2026-10-07T11:21+09:00",
+      "title": "\"흔들리지 마세요, 400만닉스 갑니다\"…\"효성중공업, 실적 하회에도 중장기 이익성장 의심할 여지 없다\" [株토피아]"
+    },
     "source_fact:477e21f96d2b33db6f219f99": {
       "first_seen_kst": "2026-10-06T23:19:02+09:00",
       "lanes": {
@@ -108999,6 +109828,31 @@
       ],
       "source_published_kst": "2026-10-06T08:58+09:00",
       "title": "오텍, AI 서버부터 신선배송까지…'열관리'로 성장축 확장"
+    },
+    "source_fact:49b7a658fcd7c4523947c90f": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=02673206645610624&parentid=03329206645610624&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "0b80dbe90d7a1ed5d143ab58e2b7a1e6697f85d9653a7c6e02d196a95605f8bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4789783573fdc2a13e395182785a270d17bf7fd750e3ef46f5fe2e9af5921b5e",
+      "source_fact_keys": [
+        "source_fact:v1:433bcbf9fb6ca5fa3f070498c01f8a50634394f76b1060537302958e5b851035",
+        "source_fact:v1:4458947c858bef2cb887265adc9ea17c3bf81d1021a1b69c862215f59af283af",
+        "source_fact:v1:4de7cf3a3ac3186d10b7c92554e4bb3537b71f2e60a00d2e73da8282670425ee",
+        "source_fact:v1:542bb1128e8af96ec042db93b29b4f087844c41d063d34c2330008089c875485",
+        "source_fact:v1:7ceecce3386cf41a557819fc35488622e051e3809bfe16703b5b7f13088f5991",
+        "source_fact:v1:bed2c4f55ed8e92509c9180e06d40b89cd9079ce51b151ad0b8264de05ea3cb4",
+        "source_fact:v1:d06f8cf3cfb70d0d581adc68698abae93cca7b0c888ea9bb15449d8e1f759b28",
+        "source_fact:v1:d7f22f0c96d98b775325e5427f40c2ef812cc29e21a9d76141c44a7399aaf8fc",
+        "source_fact:v1:f41ae112634d59a360145025a1e7148dbb1956dc1c0877a84aad492c37ef66d9"
+      ],
+      "source_published_kst": "2026-10-07T07:43+09:00",
+      "title": "“56만전자·320만닉스 간다\"…삼전닉스, 3분기 실적 기대 이상"
     },
     "source_fact:49bc96c8338e411a50357773": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
@@ -110316,6 +111170,31 @@
       ],
       "source_published_kst": "2026-10-05T05:18+09:00",
       "title": "“국산 AI반도체, 실험실 넘어 전력현장으로”…K-Perf 첫 적용"
+    },
+    "source_fact:4e45c483429cf761d4ced263": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=02673206645610624&parentid=03329206645610624&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "0b80dbe90d7a1ed5d143ab58e2b7a1e6697f85d9653a7c6e02d196a95605f8bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4789783573fdc2a13e395182785a270d17bf7fd750e3ef46f5fe2e9af5921b5e",
+      "source_fact_keys": [
+        "source_fact:v1:433bcbf9fb6ca5fa3f070498c01f8a50634394f76b1060537302958e5b851035",
+        "source_fact:v1:4458947c858bef2cb887265adc9ea17c3bf81d1021a1b69c862215f59af283af",
+        "source_fact:v1:4de7cf3a3ac3186d10b7c92554e4bb3537b71f2e60a00d2e73da8282670425ee",
+        "source_fact:v1:542bb1128e8af96ec042db93b29b4f087844c41d063d34c2330008089c875485",
+        "source_fact:v1:7ceecce3386cf41a557819fc35488622e051e3809bfe16703b5b7f13088f5991",
+        "source_fact:v1:bed2c4f55ed8e92509c9180e06d40b89cd9079ce51b151ad0b8264de05ea3cb4",
+        "source_fact:v1:d06f8cf3cfb70d0d581adc68698abae93cca7b0c888ea9bb15449d8e1f759b28",
+        "source_fact:v1:d7f22f0c96d98b775325e5427f40c2ef812cc29e21a9d76141c44a7399aaf8fc",
+        "source_fact:v1:f41ae112634d59a360145025a1e7148dbb1956dc1c0877a84aad492c37ef66d9"
+      ],
+      "source_published_kst": "2026-10-07T07:43+09:00",
+      "title": "“56만전자·320만닉스 간다\"…삼전닉스, 3분기 실적 기대 이상"
     },
     "source_fact:4e5d8a380dbf21d4f2aa22e9": {
       "first_seen_kst": "2026-10-06T00:11:03+09:00",
@@ -117077,6 +117956,24 @@
       "source_published_kst": "2026-10-06T22:00+09:00",
       "title": "포스코퓨처엠·삼성SDI … LFP 양극재 6조원 계약"
     },
+    "source_fact:6560d85e8979b5f3b2fdc299": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03181606645610624",
+      "source": "이데일리",
+      "source_body_digest": "832f8f7ecdc4aff7b73268bbc1f7e7f09b2f20ce28d7d888581c1812f6d24608",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b03f883b16b12e72a30cff7b3dafa9367cc8092b8e11265b2cfab77200f44c1c",
+      "source_fact_keys": [
+        "source_fact:v1:0425c51f332568491baf19389e69edb1e0b784c546d4fdf36b70f22fd4c2ec12",
+        "source_fact:v1:8c0414d83aea27e1e0c9bcab190be920a4601c61ede2ed9660c03f51702499a0"
+      ],
+      "source_published_kst": "2026-10-07T10:21+09:00",
+      "title": "한화, AI 에너지 관리 기술 美 ‘차세대 신기술’ 선정"
+    },
     "source_fact:65865c267f9a04bde81b2968": {
       "first_seen_kst": "2026-10-07T07:12:15+09:00",
       "lanes": {
@@ -117157,6 +118054,27 @@
       ],
       "source_published_kst": "2026-10-06T14:48+09:00",
       "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
+    },
+    "source_fact:6633f38ea52e0b06dfc1036a": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03257046645610624",
+      "source": "이데일리",
+      "source_body_digest": "b899fc0c9c8c717e35ed9d99b3b9cc491713b257e9f5d2e5ed513d07db629022",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01ce8183635ea9bfa249ac38e5af8ebe8fa834a89213a9fa278ccda4ba42bd92",
+      "source_fact_keys": [
+        "source_fact:v1:33afe5fa42f95991ba2bdfa528710944ae69e6804abe42324d79a12aac92b18c",
+        "source_fact:v1:96f4fa6bbef67d7d0df6f48f9a00e7015a5e73a81bf33ab915387ee3f864528d",
+        "source_fact:v1:adb268771e185a893434aff5c6ddd8793557bcbf466b8fccc122d8f20e4bdb0b",
+        "source_fact:v1:ae97865afc06953ed9c4b67d98f381ffb6b803823a118a89d7c25b3d90324785",
+        "source_fact:v1:c95d701a4e18357923d6af22ad7a35a26c94b835b81009d3251c9c8a97d89e0f"
+      ],
+      "source_published_kst": "2026-10-07T10:34+09:00",
+      "title": "우크라 \"한국이 러시아에 석유 공급\" 저격"
     },
     "source_fact:6639211f75de9b0af826d046": {
       "first_seen_kst": "2026-10-06T20:37:39+09:00",
@@ -118436,6 +119354,31 @@
       "source_published_kst": "2026-10-05T21:23+09:00",
       "title": "테라울프, 머스키 전력 1GW로 2배 확대..2단계 1년 앞당겨"
     },
+    "source_fact:6a8da7aa730652e0b0bc33da": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=02673206645610624&parentid=03329206645610624&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "0b80dbe90d7a1ed5d143ab58e2b7a1e6697f85d9653a7c6e02d196a95605f8bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4789783573fdc2a13e395182785a270d17bf7fd750e3ef46f5fe2e9af5921b5e",
+      "source_fact_keys": [
+        "source_fact:v1:433bcbf9fb6ca5fa3f070498c01f8a50634394f76b1060537302958e5b851035",
+        "source_fact:v1:4458947c858bef2cb887265adc9ea17c3bf81d1021a1b69c862215f59af283af",
+        "source_fact:v1:4de7cf3a3ac3186d10b7c92554e4bb3537b71f2e60a00d2e73da8282670425ee",
+        "source_fact:v1:542bb1128e8af96ec042db93b29b4f087844c41d063d34c2330008089c875485",
+        "source_fact:v1:7ceecce3386cf41a557819fc35488622e051e3809bfe16703b5b7f13088f5991",
+        "source_fact:v1:bed2c4f55ed8e92509c9180e06d40b89cd9079ce51b151ad0b8264de05ea3cb4",
+        "source_fact:v1:d06f8cf3cfb70d0d581adc68698abae93cca7b0c888ea9bb15449d8e1f759b28",
+        "source_fact:v1:d7f22f0c96d98b775325e5427f40c2ef812cc29e21a9d76141c44a7399aaf8fc",
+        "source_fact:v1:f41ae112634d59a360145025a1e7148dbb1956dc1c0877a84aad492c37ef66d9"
+      ],
+      "source_published_kst": "2026-10-07T07:43+09:00",
+      "title": "“56만전자·320만닉스 간다\"…삼전닉스, 3분기 실적 기대 이상"
+    },
     "source_fact:6ad796ed553763c7fd5ac065": {
       "first_seen_kst": "2026-10-06T15:03:09+09:00",
       "lanes": {
@@ -118700,6 +119643,31 @@
       "source_published_kst": "2026-10-05T22:27+09:00",
       "title": "듀오스 테크놀러지스 그룹, GPU 자회사 매각..4290만 달러 수취·부채 해소"
     },
+    "source_fact:6bf362733ba116ee63351ebd": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=02673206645610624&parentid=03329206645610624&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "0b80dbe90d7a1ed5d143ab58e2b7a1e6697f85d9653a7c6e02d196a95605f8bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4789783573fdc2a13e395182785a270d17bf7fd750e3ef46f5fe2e9af5921b5e",
+      "source_fact_keys": [
+        "source_fact:v1:433bcbf9fb6ca5fa3f070498c01f8a50634394f76b1060537302958e5b851035",
+        "source_fact:v1:4458947c858bef2cb887265adc9ea17c3bf81d1021a1b69c862215f59af283af",
+        "source_fact:v1:4de7cf3a3ac3186d10b7c92554e4bb3537b71f2e60a00d2e73da8282670425ee",
+        "source_fact:v1:542bb1128e8af96ec042db93b29b4f087844c41d063d34c2330008089c875485",
+        "source_fact:v1:7ceecce3386cf41a557819fc35488622e051e3809bfe16703b5b7f13088f5991",
+        "source_fact:v1:bed2c4f55ed8e92509c9180e06d40b89cd9079ce51b151ad0b8264de05ea3cb4",
+        "source_fact:v1:d06f8cf3cfb70d0d581adc68698abae93cca7b0c888ea9bb15449d8e1f759b28",
+        "source_fact:v1:d7f22f0c96d98b775325e5427f40c2ef812cc29e21a9d76141c44a7399aaf8fc",
+        "source_fact:v1:f41ae112634d59a360145025a1e7148dbb1956dc1c0877a84aad492c37ef66d9"
+      ],
+      "source_published_kst": "2026-10-07T07:43+09:00",
+      "title": "“56만전자·320만닉스 간다\"…삼전닉스, 3분기 실적 기대 이상"
+    },
     "source_fact:6c2897364c9ec5f4934da1b2": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
       "lanes": {
@@ -118861,6 +119829,27 @@
       ],
       "source_published_kst": "2026-10-06T17:57+09:00",
       "title": "대학가 주택 '공공기숙사'로…LH, 서울대와 200가구 공급"
+    },
+    "source_fact:6cc5b9b9ff2b33d5d6116005": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03257046645610624",
+      "source": "이데일리",
+      "source_body_digest": "b899fc0c9c8c717e35ed9d99b3b9cc491713b257e9f5d2e5ed513d07db629022",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01ce8183635ea9bfa249ac38e5af8ebe8fa834a89213a9fa278ccda4ba42bd92",
+      "source_fact_keys": [
+        "source_fact:v1:33afe5fa42f95991ba2bdfa528710944ae69e6804abe42324d79a12aac92b18c",
+        "source_fact:v1:96f4fa6bbef67d7d0df6f48f9a00e7015a5e73a81bf33ab915387ee3f864528d",
+        "source_fact:v1:adb268771e185a893434aff5c6ddd8793557bcbf466b8fccc122d8f20e4bdb0b",
+        "source_fact:v1:ae97865afc06953ed9c4b67d98f381ffb6b803823a118a89d7c25b3d90324785",
+        "source_fact:v1:c95d701a4e18357923d6af22ad7a35a26c94b835b81009d3251c9c8a97d89e0f"
+      ],
+      "source_published_kst": "2026-10-07T10:34+09:00",
+      "title": "우크라 \"한국이 러시아에 석유 공급\" 저격"
     },
     "source_fact:6d0c38058d5b5d61e65387ce": {
       "first_seen_kst": "2026-10-06T23:05:07+09:00",
@@ -121570,6 +122559,31 @@
       ],
       "source_published_kst": "2026-10-06T09:18+09:00",
       "title": "정부 GPU 4224장 풀었더니 1만3712장 신청…70%가 못 받아"
+    },
+    "source_fact:75ee7d4d6c8b276d7c0aa392": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=02673206645610624&parentid=03329206645610624&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "0b80dbe90d7a1ed5d143ab58e2b7a1e6697f85d9653a7c6e02d196a95605f8bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4789783573fdc2a13e395182785a270d17bf7fd750e3ef46f5fe2e9af5921b5e",
+      "source_fact_keys": [
+        "source_fact:v1:433bcbf9fb6ca5fa3f070498c01f8a50634394f76b1060537302958e5b851035",
+        "source_fact:v1:4458947c858bef2cb887265adc9ea17c3bf81d1021a1b69c862215f59af283af",
+        "source_fact:v1:4de7cf3a3ac3186d10b7c92554e4bb3537b71f2e60a00d2e73da8282670425ee",
+        "source_fact:v1:542bb1128e8af96ec042db93b29b4f087844c41d063d34c2330008089c875485",
+        "source_fact:v1:7ceecce3386cf41a557819fc35488622e051e3809bfe16703b5b7f13088f5991",
+        "source_fact:v1:bed2c4f55ed8e92509c9180e06d40b89cd9079ce51b151ad0b8264de05ea3cb4",
+        "source_fact:v1:d06f8cf3cfb70d0d581adc68698abae93cca7b0c888ea9bb15449d8e1f759b28",
+        "source_fact:v1:d7f22f0c96d98b775325e5427f40c2ef812cc29e21a9d76141c44a7399aaf8fc",
+        "source_fact:v1:f41ae112634d59a360145025a1e7148dbb1956dc1c0877a84aad492c37ef66d9"
+      ],
+      "source_published_kst": "2026-10-07T07:43+09:00",
+      "title": "“56만전자·320만닉스 간다\"…삼전닉스, 3분기 실적 기대 이상"
     },
     "source_fact:75f69233a2299966ab62a60a": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -125048,6 +126062,27 @@
       "source_published_kst": "2026-10-06T17:18+09:00",
       "title": "국고채 금리, 대외금리 연동하며 혼조세…3년물 3.933%(종합) | 연합뉴스"
     },
+    "source_fact:816cd52e9b9d9a9ec5eefef4": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03257046645610624",
+      "source": "이데일리",
+      "source_body_digest": "b899fc0c9c8c717e35ed9d99b3b9cc491713b257e9f5d2e5ed513d07db629022",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01ce8183635ea9bfa249ac38e5af8ebe8fa834a89213a9fa278ccda4ba42bd92",
+      "source_fact_keys": [
+        "source_fact:v1:33afe5fa42f95991ba2bdfa528710944ae69e6804abe42324d79a12aac92b18c",
+        "source_fact:v1:96f4fa6bbef67d7d0df6f48f9a00e7015a5e73a81bf33ab915387ee3f864528d",
+        "source_fact:v1:adb268771e185a893434aff5c6ddd8793557bcbf466b8fccc122d8f20e4bdb0b",
+        "source_fact:v1:ae97865afc06953ed9c4b67d98f381ffb6b803823a118a89d7c25b3d90324785",
+        "source_fact:v1:c95d701a4e18357923d6af22ad7a35a26c94b835b81009d3251c9c8a97d89e0f"
+      ],
+      "source_published_kst": "2026-10-07T10:34+09:00",
+      "title": "우크라 \"한국이 러시아에 석유 공급\" 저격"
+    },
     "source_fact:8170155869e59ba27d0fb3c0": {
       "first_seen_kst": "2026-10-07T07:54:25+09:00",
       "lanes": {
@@ -126732,6 +127767,31 @@
       ],
       "source_published_kst": "2026-10-06T11:27+09:00",
       "title": "스페이스X, AI 사업 기대감에 날아 올랐다"
+    },
+    "source_fact:87c9104c4180bfcda256dc0a": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=02673206645610624&parentid=03329206645610624&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "0b80dbe90d7a1ed5d143ab58e2b7a1e6697f85d9653a7c6e02d196a95605f8bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4789783573fdc2a13e395182785a270d17bf7fd750e3ef46f5fe2e9af5921b5e",
+      "source_fact_keys": [
+        "source_fact:v1:433bcbf9fb6ca5fa3f070498c01f8a50634394f76b1060537302958e5b851035",
+        "source_fact:v1:4458947c858bef2cb887265adc9ea17c3bf81d1021a1b69c862215f59af283af",
+        "source_fact:v1:4de7cf3a3ac3186d10b7c92554e4bb3537b71f2e60a00d2e73da8282670425ee",
+        "source_fact:v1:542bb1128e8af96ec042db93b29b4f087844c41d063d34c2330008089c875485",
+        "source_fact:v1:7ceecce3386cf41a557819fc35488622e051e3809bfe16703b5b7f13088f5991",
+        "source_fact:v1:bed2c4f55ed8e92509c9180e06d40b89cd9079ce51b151ad0b8264de05ea3cb4",
+        "source_fact:v1:d06f8cf3cfb70d0d581adc68698abae93cca7b0c888ea9bb15449d8e1f759b28",
+        "source_fact:v1:d7f22f0c96d98b775325e5427f40c2ef812cc29e21a9d76141c44a7399aaf8fc",
+        "source_fact:v1:f41ae112634d59a360145025a1e7148dbb1956dc1c0877a84aad492c37ef66d9"
+      ],
+      "source_published_kst": "2026-10-07T07:43+09:00",
+      "title": "“56만전자·320만닉스 간다\"…삼전닉스, 3분기 실적 기대 이상"
     },
     "source_fact:87ce9daca57f3c45915fd07f": {
       "first_seen_kst": "2026-10-05T19:37:20+09:00",
@@ -134368,6 +135428,31 @@
       "source_published_kst": "2026-10-06T11:27+09:00",
       "title": "스페이스X, AI 사업 기대감에 날아 올랐다"
     },
+    "source_fact:a208f3182bb9ee7992ec4ff0": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=02673206645610624&parentid=03329206645610624&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "0b80dbe90d7a1ed5d143ab58e2b7a1e6697f85d9653a7c6e02d196a95605f8bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4789783573fdc2a13e395182785a270d17bf7fd750e3ef46f5fe2e9af5921b5e",
+      "source_fact_keys": [
+        "source_fact:v1:433bcbf9fb6ca5fa3f070498c01f8a50634394f76b1060537302958e5b851035",
+        "source_fact:v1:4458947c858bef2cb887265adc9ea17c3bf81d1021a1b69c862215f59af283af",
+        "source_fact:v1:4de7cf3a3ac3186d10b7c92554e4bb3537b71f2e60a00d2e73da8282670425ee",
+        "source_fact:v1:542bb1128e8af96ec042db93b29b4f087844c41d063d34c2330008089c875485",
+        "source_fact:v1:7ceecce3386cf41a557819fc35488622e051e3809bfe16703b5b7f13088f5991",
+        "source_fact:v1:bed2c4f55ed8e92509c9180e06d40b89cd9079ce51b151ad0b8264de05ea3cb4",
+        "source_fact:v1:d06f8cf3cfb70d0d581adc68698abae93cca7b0c888ea9bb15449d8e1f759b28",
+        "source_fact:v1:d7f22f0c96d98b775325e5427f40c2ef812cc29e21a9d76141c44a7399aaf8fc",
+        "source_fact:v1:f41ae112634d59a360145025a1e7148dbb1956dc1c0877a84aad492c37ef66d9"
+      ],
+      "source_published_kst": "2026-10-07T07:43+09:00",
+      "title": "“56만전자·320만닉스 간다\"…삼전닉스, 3분기 실적 기대 이상"
+    },
     "source_fact:a220a398a508b255cf5cb6f1": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
       "lanes": {
@@ -134591,6 +135676,24 @@
       ],
       "source_published_kst": "2026-10-06T02:28+09:00",
       "title": "아람코 CEO \"세계 석유 공급 이미 압박…비축 최대 2년\""
+    },
+    "source_fact:a30b6482299cdcdac9cbc79b": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03329206645610624&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "6ff10aeea676c0bca5d2de73a6bd6d99288c7f5f73e08c6dbc08d39a7708816e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ed70dffa5b8eb8fb34cf7b4e02cb01a184a373d84ab7727168512127057cd51b",
+      "source_fact_keys": [
+        "source_fact:v1:79020378515c3b85e5f623c92015ef5ad11af7175e4f1a659b2933f3cf981df2",
+        "source_fact:v1:dff228f5e7197e250560a426f31608f59edf1504976b3a74ce15ad9721c9ff1e"
+      ],
+      "source_published_kst": "2026-10-07T10:47+09:00",
+      "title": "삼미금속, 가스터빈 블레이드 납품 개시"
     },
     "source_fact:a3159d90d7aec3bf6d1b7e33": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
@@ -135242,6 +136345,26 @@
       ],
       "source_published_kst": "2026-10-06T16:23+09:00",
       "title": "LIG아큐버, 자회사 통해 전장 사업 외연 넓히나"
+    },
+    "source_fact:a5909834444ded9f012d72f8": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170205",
+      "source": "매일경제",
+      "source_body_digest": "3e21cf92fd1399da414756e5d30ee8f5faa18730b71935909673792a27eddd46",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:994ef39684a6f1a695e76497784f2a56aa4ffd8d736ab099fcafcb1591c5cd29",
+      "source_fact_keys": [
+        "source_fact:v1:0432637a86efad084c7c1025fb0623ec2760eb22703602a571ee0a9d3f1585ff",
+        "source_fact:v1:540665fc35aa10055eb3a3fca82c61868cde0b552e7ea8171976042810998c6c",
+        "source_fact:v1:8b7e5f02a2b2f665d98f3d75f7b4d9164afdf0ff9d18a5ce08e755e7dbb49cbe",
+        "source_fact:v1:fcecb12f400db3c180d35a663af87cee9f029bacf3d24d868197eae95c5a8157"
+      ],
+      "source_published_kst": "2026-10-07T11:25+09:00",
+      "title": "블룸버그 “AI 유망 투자처는 대만...코스피는 ‘위험’”"
     },
     "source_fact:a5a080bff1d92032a2619d1b": {
       "first_seen_kst": "2026-10-07T04:04:43+09:00",
@@ -139863,6 +140986,26 @@
       "source_published_kst": "2026-10-06T09:18+09:00",
       "title": "두산로보틱스, 989억 규모 피지컬 AI 국책과제 수주"
     },
+    "source_fact:b54a0e4361d6a88fd0e3daba": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170205",
+      "source": "매일경제",
+      "source_body_digest": "3e21cf92fd1399da414756e5d30ee8f5faa18730b71935909673792a27eddd46",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:994ef39684a6f1a695e76497784f2a56aa4ffd8d736ab099fcafcb1591c5cd29",
+      "source_fact_keys": [
+        "source_fact:v1:0432637a86efad084c7c1025fb0623ec2760eb22703602a571ee0a9d3f1585ff",
+        "source_fact:v1:540665fc35aa10055eb3a3fca82c61868cde0b552e7ea8171976042810998c6c",
+        "source_fact:v1:8b7e5f02a2b2f665d98f3d75f7b4d9164afdf0ff9d18a5ce08e755e7dbb49cbe",
+        "source_fact:v1:fcecb12f400db3c180d35a663af87cee9f029bacf3d24d868197eae95c5a8157"
+      ],
+      "source_published_kst": "2026-10-07T11:25+09:00",
+      "title": "블룸버그 “AI 유망 투자처는 대만...코스피는 ‘위험’”"
+    },
     "source_fact:b589db2498a13859639e5e15": {
       "first_seen_kst": "2026-10-06T22:21:21+09:00",
       "lanes": {
@@ -141330,6 +142473,26 @@
       ],
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
+    },
+    "source_fact:bb0ebe631ab77faa7fccf115": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170205",
+      "source": "매일경제",
+      "source_body_digest": "3e21cf92fd1399da414756e5d30ee8f5faa18730b71935909673792a27eddd46",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:994ef39684a6f1a695e76497784f2a56aa4ffd8d736ab099fcafcb1591c5cd29",
+      "source_fact_keys": [
+        "source_fact:v1:0432637a86efad084c7c1025fb0623ec2760eb22703602a571ee0a9d3f1585ff",
+        "source_fact:v1:540665fc35aa10055eb3a3fca82c61868cde0b552e7ea8171976042810998c6c",
+        "source_fact:v1:8b7e5f02a2b2f665d98f3d75f7b4d9164afdf0ff9d18a5ce08e755e7dbb49cbe",
+        "source_fact:v1:fcecb12f400db3c180d35a663af87cee9f029bacf3d24d868197eae95c5a8157"
+      ],
+      "source_published_kst": "2026-10-07T11:25+09:00",
+      "title": "블룸버그 “AI 유망 투자처는 대만...코스피는 ‘위험’”"
     },
     "source_fact:bb14a1eb1c8d3c6d4a9c33e2": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
@@ -147627,6 +148790,29 @@
       "source_published_kst": "2026-10-06T11:44+09:00",
       "title": "직스테크놀로지·한신공영·정도, AI 기반 '데이터센터 스마트 건설' 맞손"
     },
+    "source_fact:d18a63d2028e0b2f7ce11ca8": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.fnnews.com/news/202610071051053638",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "e0be987376d8dec9979e019d8c48843c699a89771e97856f25e5bac47be627e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:274bac2aae7f70952da448d6c0b89aac3709fe10a282a7b2c0e51d24e9c1c0f8",
+      "source_fact_keys": [
+        "source_fact:v1:0c21c639ba2f1a5a9cb3dbcb74e1a9fecec0380cf56a9a87fdc28b3e1bc21981",
+        "source_fact:v1:11957e61c9bdeeee76f685c41834ec11c3bc6939bd772051cf0a1e6f19e7df3b",
+        "source_fact:v1:52de3dd5fdbbe66aee5f7b3c58105c5920684e0742fd898167dfd9da152c4639",
+        "source_fact:v1:5ba72604ee353a705a23b7bfa5b472de9edea435c40e9f53acc8e2f3016d7a92",
+        "source_fact:v1:6409cf8317dfa0aebbec39bc456e57b4556048cb37861e9268f9f7c5f44b0981",
+        "source_fact:v1:b31003635283a1265a34fd522ae496537c1adabfccb82c989923b4cc268a95c0",
+        "source_fact:v1:b8a0d1a41e3252b0e659dadd9a4d5f0716b91dd89d6035da3815ec23b7d8df77"
+      ],
+      "source_published_kst": "2026-10-07T11:21+09:00",
+      "title": "\"흔들리지 마세요, 400만닉스 갑니다\"…\"효성중공업, 실적 하회에도 중장기 이익성장 의심할 여지 없다\" [株토피아]"
+    },
     "source_fact:d18b8e9c2f5fae07f3fc8ee5": {
       "first_seen_kst": "2026-10-07T01:18:00+09:00",
       "lanes": {
@@ -151265,6 +152451,23 @@
       "source_published_kst": "2026-10-06T13:15+09:00",
       "title": "트럼프, 면세 경유 도로 차량에 사용 허용⋯농촌 표심 잡기 안간힘"
     },
+    "source_fact:dce2900d1d0203df1377e2ef": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100617381629210",
+      "source": "머니투데이",
+      "source_body_digest": "8c624787cf1230e693539938be606974453eca21b17025e361e0324301ca6d37",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a4363acec24be803701068ea52abaa9a566f3323e7566db0cdfe469c27f3a77",
+      "source_fact_keys": [
+        "source_fact:v1:04424faa8aad3a2ca605e22315c1eb2a3512b16834dac0b5dd02c2d6feae7519"
+      ],
+      "source_published_kst": "2026-10-07T08:00+09:00",
+      "title": "한성크린텍, 삼성전기 베트남 공장 230억원 초순수 E&P 계약 체결"
+    },
     "source_fact:dcee6af1bcf3c512b7ef6ea6": {
       "first_seen_kst": "2026-10-06T19:33:48+09:00",
       "lanes": {
@@ -153252,6 +154455,26 @@
       "source_published_kst": "2026-10-07T09:00+09:00",
       "title": "하나證 “효성중공업, 고마진 매출 이연으로 3분기 실적 하회 …중장기 성장은 유효\""
     },
+    "source_fact:e276cda39e6e629abcdcc268": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170205",
+      "source": "매일경제",
+      "source_body_digest": "3e21cf92fd1399da414756e5d30ee8f5faa18730b71935909673792a27eddd46",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:994ef39684a6f1a695e76497784f2a56aa4ffd8d736ab099fcafcb1591c5cd29",
+      "source_fact_keys": [
+        "source_fact:v1:0432637a86efad084c7c1025fb0623ec2760eb22703602a571ee0a9d3f1585ff",
+        "source_fact:v1:540665fc35aa10055eb3a3fca82c61868cde0b552e7ea8171976042810998c6c",
+        "source_fact:v1:8b7e5f02a2b2f665d98f3d75f7b4d9164afdf0ff9d18a5ce08e755e7dbb49cbe",
+        "source_fact:v1:fcecb12f400db3c180d35a663af87cee9f029bacf3d24d868197eae95c5a8157"
+      ],
+      "source_published_kst": "2026-10-07T11:25+09:00",
+      "title": "블룸버그 “AI 유망 투자처는 대만...코스피는 ‘위험’”"
+    },
     "source_fact:e288e0f1fe6e54928e0d3d30": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
@@ -154885,6 +156108,31 @@
       "source_published_kst": "2026-10-06T17:11+09:00",
       "title": "[영상] '성공률 80% 도전' 누리호 5차 발사…역대 최다 위성 15기 탑재 | 연합뉴스"
     },
+    "source_fact:e7acfa60e08ce52d3be5ba50": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=02673206645610624&parentid=03329206645610624&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "0b80dbe90d7a1ed5d143ab58e2b7a1e6697f85d9653a7c6e02d196a95605f8bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4789783573fdc2a13e395182785a270d17bf7fd750e3ef46f5fe2e9af5921b5e",
+      "source_fact_keys": [
+        "source_fact:v1:433bcbf9fb6ca5fa3f070498c01f8a50634394f76b1060537302958e5b851035",
+        "source_fact:v1:4458947c858bef2cb887265adc9ea17c3bf81d1021a1b69c862215f59af283af",
+        "source_fact:v1:4de7cf3a3ac3186d10b7c92554e4bb3537b71f2e60a00d2e73da8282670425ee",
+        "source_fact:v1:542bb1128e8af96ec042db93b29b4f087844c41d063d34c2330008089c875485",
+        "source_fact:v1:7ceecce3386cf41a557819fc35488622e051e3809bfe16703b5b7f13088f5991",
+        "source_fact:v1:bed2c4f55ed8e92509c9180e06d40b89cd9079ce51b151ad0b8264de05ea3cb4",
+        "source_fact:v1:d06f8cf3cfb70d0d581adc68698abae93cca7b0c888ea9bb15449d8e1f759b28",
+        "source_fact:v1:d7f22f0c96d98b775325e5427f40c2ef812cc29e21a9d76141c44a7399aaf8fc",
+        "source_fact:v1:f41ae112634d59a360145025a1e7148dbb1956dc1c0877a84aad492c37ef66d9"
+      ],
+      "source_published_kst": "2026-10-07T07:43+09:00",
+      "title": "“56만전자·320만닉스 간다\"…삼전닉스, 3분기 실적 기대 이상"
+    },
     "source_fact:e81d2d855516296e26e7741f": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
       "lanes": {
@@ -155230,6 +156478,29 @@
       ],
       "source_published_kst": "2026-10-06T06:10+09:00",
       "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
+    },
+    "source_fact:e9030e132ffd06c155cd48a7": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.fnnews.com/news/202610071051053638",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "e0be987376d8dec9979e019d8c48843c699a89771e97856f25e5bac47be627e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:274bac2aae7f70952da448d6c0b89aac3709fe10a282a7b2c0e51d24e9c1c0f8",
+      "source_fact_keys": [
+        "source_fact:v1:0c21c639ba2f1a5a9cb3dbcb74e1a9fecec0380cf56a9a87fdc28b3e1bc21981",
+        "source_fact:v1:11957e61c9bdeeee76f685c41834ec11c3bc6939bd772051cf0a1e6f19e7df3b",
+        "source_fact:v1:52de3dd5fdbbe66aee5f7b3c58105c5920684e0742fd898167dfd9da152c4639",
+        "source_fact:v1:5ba72604ee353a705a23b7bfa5b472de9edea435c40e9f53acc8e2f3016d7a92",
+        "source_fact:v1:6409cf8317dfa0aebbec39bc456e57b4556048cb37861e9268f9f7c5f44b0981",
+        "source_fact:v1:b31003635283a1265a34fd522ae496537c1adabfccb82c989923b4cc268a95c0",
+        "source_fact:v1:b8a0d1a41e3252b0e659dadd9a4d5f0716b91dd89d6035da3815ec23b7d8df77"
+      ],
+      "source_published_kst": "2026-10-07T11:21+09:00",
+      "title": "\"흔들리지 마세요, 400만닉스 갑니다\"…\"효성중공업, 실적 하회에도 중장기 이익성장 의심할 여지 없다\" [株토피아]"
     },
     "source_fact:e92d050d57c7290f090ed0af": {
       "first_seen_kst": "2026-10-07T04:29:18+09:00",
@@ -158710,6 +159981,27 @@
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "외국인·명품 소비에 비용 절감까지…백화점 3사, 3분기 실적 ‘청신호’"
     },
+    "source_fact:f51536a59f8d76708db44db4": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03257046645610624",
+      "source": "이데일리",
+      "source_body_digest": "b899fc0c9c8c717e35ed9d99b3b9cc491713b257e9f5d2e5ed513d07db629022",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01ce8183635ea9bfa249ac38e5af8ebe8fa834a89213a9fa278ccda4ba42bd92",
+      "source_fact_keys": [
+        "source_fact:v1:33afe5fa42f95991ba2bdfa528710944ae69e6804abe42324d79a12aac92b18c",
+        "source_fact:v1:96f4fa6bbef67d7d0df6f48f9a00e7015a5e73a81bf33ab915387ee3f864528d",
+        "source_fact:v1:adb268771e185a893434aff5c6ddd8793557bcbf466b8fccc122d8f20e4bdb0b",
+        "source_fact:v1:ae97865afc06953ed9c4b67d98f381ffb6b803823a118a89d7c25b3d90324785",
+        "source_fact:v1:c95d701a4e18357923d6af22ad7a35a26c94b835b81009d3251c9c8a97d89e0f"
+      ],
+      "source_published_kst": "2026-10-07T10:34+09:00",
+      "title": "우크라 \"한국이 러시아에 석유 공급\" 저격"
+    },
     "source_fact:f523adb73340759ad9828876": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
       "lanes": {
@@ -159109,6 +160401,31 @@
       ],
       "source_published_kst": "2026-10-06T15:04+09:00",
       "title": "파업에도 한 달 새 약 30% 껑충…반전 쓴 '이 종목'"
+    },
+    "source_fact:f6ae56866d75c04bbc9535ce": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=02673206645610624&parentid=03329206645610624&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "0b80dbe90d7a1ed5d143ab58e2b7a1e6697f85d9653a7c6e02d196a95605f8bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4789783573fdc2a13e395182785a270d17bf7fd750e3ef46f5fe2e9af5921b5e",
+      "source_fact_keys": [
+        "source_fact:v1:433bcbf9fb6ca5fa3f070498c01f8a50634394f76b1060537302958e5b851035",
+        "source_fact:v1:4458947c858bef2cb887265adc9ea17c3bf81d1021a1b69c862215f59af283af",
+        "source_fact:v1:4de7cf3a3ac3186d10b7c92554e4bb3537b71f2e60a00d2e73da8282670425ee",
+        "source_fact:v1:542bb1128e8af96ec042db93b29b4f087844c41d063d34c2330008089c875485",
+        "source_fact:v1:7ceecce3386cf41a557819fc35488622e051e3809bfe16703b5b7f13088f5991",
+        "source_fact:v1:bed2c4f55ed8e92509c9180e06d40b89cd9079ce51b151ad0b8264de05ea3cb4",
+        "source_fact:v1:d06f8cf3cfb70d0d581adc68698abae93cca7b0c888ea9bb15449d8e1f759b28",
+        "source_fact:v1:d7f22f0c96d98b775325e5427f40c2ef812cc29e21a9d76141c44a7399aaf8fc",
+        "source_fact:v1:f41ae112634d59a360145025a1e7148dbb1956dc1c0877a84aad492c37ef66d9"
+      ],
+      "source_published_kst": "2026-10-07T07:43+09:00",
+      "title": "“56만전자·320만닉스 간다\"…삼전닉스, 3분기 실적 기대 이상"
     },
     "source_fact:f709790c162e19346e341012": {
       "first_seen_kst": "2026-10-07T07:24:41+09:00",
@@ -164795,6 +166112,27 @@
       "source_published_kst": "2026-10-05T22:57+09:00",
       "title": "[美특징주]RXO, CH 로빈슨에 58억달러 피인수...주가 23%↑"
     },
+    "title:1969936d6f397817ccd15cbd": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03257046645610624",
+      "source": "이데일리",
+      "source_body_digest": "b899fc0c9c8c717e35ed9d99b3b9cc491713b257e9f5d2e5ed513d07db629022",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01ce8183635ea9bfa249ac38e5af8ebe8fa834a89213a9fa278ccda4ba42bd92",
+      "source_fact_keys": [
+        "source_fact:v1:33afe5fa42f95991ba2bdfa528710944ae69e6804abe42324d79a12aac92b18c",
+        "source_fact:v1:96f4fa6bbef67d7d0df6f48f9a00e7015a5e73a81bf33ab915387ee3f864528d",
+        "source_fact:v1:adb268771e185a893434aff5c6ddd8793557bcbf466b8fccc122d8f20e4bdb0b",
+        "source_fact:v1:ae97865afc06953ed9c4b67d98f381ffb6b803823a118a89d7c25b3d90324785",
+        "source_fact:v1:c95d701a4e18357923d6af22ad7a35a26c94b835b81009d3251c9c8a97d89e0f"
+      ],
+      "source_published_kst": "2026-10-07T10:34+09:00",
+      "title": "우크라 \"한국이 러시아에 석유 공급\" 저격"
+    },
     "title:1982c5ea113a6a622e10d03f": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
       "lanes": {
@@ -165128,6 +166466,24 @@
       ],
       "source_published_kst": "2026-10-05T12:37+09:00",
       "title": "\"메가·컴포즈 점주들 돈 많이 벌었겠네\"…실상은 달랐다"
+    },
+    "title:1cd6ca6621ebf6ce399f1e3f": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03329206645610624&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "6ff10aeea676c0bca5d2de73a6bd6d99288c7f5f73e08c6dbc08d39a7708816e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ed70dffa5b8eb8fb34cf7b4e02cb01a184a373d84ab7727168512127057cd51b",
+      "source_fact_keys": [
+        "source_fact:v1:79020378515c3b85e5f623c92015ef5ad11af7175e4f1a659b2933f3cf981df2",
+        "source_fact:v1:dff228f5e7197e250560a426f31608f59edf1504976b3a74ce15ad9721c9ff1e"
+      ],
+      "source_published_kst": "2026-10-07T10:47+09:00",
+      "title": "삼미금속, 가스터빈 블레이드 납품 개시"
     },
     "title:1d0953268493cd34b75116fb": {
       "first_seen_kst": "2026-10-06T00:18:21+09:00",
@@ -166249,6 +167605,26 @@
       ],
       "source_published_kst": "2026-10-06T04:36+09:00",
       "title": "美10년물 국채금리 장중 5.34% 돌파…24년 만에 최고"
+    },
+    "title:25f80ea3854b971745eaa66c": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170205",
+      "source": "매일경제",
+      "source_body_digest": "3e21cf92fd1399da414756e5d30ee8f5faa18730b71935909673792a27eddd46",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:994ef39684a6f1a695e76497784f2a56aa4ffd8d736ab099fcafcb1591c5cd29",
+      "source_fact_keys": [
+        "source_fact:v1:0432637a86efad084c7c1025fb0623ec2760eb22703602a571ee0a9d3f1585ff",
+        "source_fact:v1:540665fc35aa10055eb3a3fca82c61868cde0b552e7ea8171976042810998c6c",
+        "source_fact:v1:8b7e5f02a2b2f665d98f3d75f7b4d9164afdf0ff9d18a5ce08e755e7dbb49cbe",
+        "source_fact:v1:fcecb12f400db3c180d35a663af87cee9f029bacf3d24d868197eae95c5a8157"
+      ],
+      "source_published_kst": "2026-10-07T11:25+09:00",
+      "title": "블룸버그 “AI 유망 투자처는 대만...코스피는 ‘위험’”"
     },
     "title:26339b904f3ce2deb25d0260": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
@@ -172453,6 +173829,24 @@
       "link": "https://www.mk.co.kr/news/stock/12164125",
       "source": "매일경제",
       "title": "AAR, MRO홀딩스 65% 인수..기업가치 40억달러 빅딜"
+    },
+    "title:549792ddc5cb604d8367d4ec": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03181606645610624",
+      "source": "이데일리",
+      "source_body_digest": "832f8f7ecdc4aff7b73268bbc1f7e7f09b2f20ce28d7d888581c1812f6d24608",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b03f883b16b12e72a30cff7b3dafa9367cc8092b8e11265b2cfab77200f44c1c",
+      "source_fact_keys": [
+        "source_fact:v1:0425c51f332568491baf19389e69edb1e0b784c546d4fdf36b70f22fd4c2ec12",
+        "source_fact:v1:8c0414d83aea27e1e0c9bcab190be920a4601c61ede2ed9660c03f51702499a0"
+      ],
+      "source_published_kst": "2026-10-07T10:21+09:00",
+      "title": "한화, AI 에너지 관리 기술 美 ‘차세대 신기술’ 선정"
     },
     "title:54ae2d6337f5303111d69918": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
@@ -185349,6 +186743,29 @@
       "source_published_kst": "2026-10-06T11:31+09:00",
       "title": "[2026 국감]산업부, 대미투자 국익 최우선 추진…호남 반도체 등 1600조 속도전"
     },
+    "title:bbed31793eda34c90a96c516": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.fnnews.com/news/202610071051053638",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "e0be987376d8dec9979e019d8c48843c699a89771e97856f25e5bac47be627e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:274bac2aae7f70952da448d6c0b89aac3709fe10a282a7b2c0e51d24e9c1c0f8",
+      "source_fact_keys": [
+        "source_fact:v1:0c21c639ba2f1a5a9cb3dbcb74e1a9fecec0380cf56a9a87fdc28b3e1bc21981",
+        "source_fact:v1:11957e61c9bdeeee76f685c41834ec11c3bc6939bd772051cf0a1e6f19e7df3b",
+        "source_fact:v1:52de3dd5fdbbe66aee5f7b3c58105c5920684e0742fd898167dfd9da152c4639",
+        "source_fact:v1:5ba72604ee353a705a23b7bfa5b472de9edea435c40e9f53acc8e2f3016d7a92",
+        "source_fact:v1:6409cf8317dfa0aebbec39bc456e57b4556048cb37861e9268f9f7c5f44b0981",
+        "source_fact:v1:b31003635283a1265a34fd522ae496537c1adabfccb82c989923b4cc268a95c0",
+        "source_fact:v1:b8a0d1a41e3252b0e659dadd9a4d5f0716b91dd89d6035da3815ec23b7d8df77"
+      ],
+      "source_published_kst": "2026-10-07T11:21+09:00",
+      "title": "\"흔들리지 마세요, 400만닉스 갑니다\"…\"효성중공업, 실적 하회에도 중장기 이익성장 의심할 여지 없다\" [株토피아]"
+    },
     "title:bbfd1a52d07c86aa948ce6a5": {
       "first_seen_kst": "2026-10-05T14:51:16+09:00",
       "lanes": {
@@ -191450,6 +192867,31 @@
       "source_published_kst": "2026-10-04T06:00+09:00",
       "title": "모빌리티 펀드 돈이 암살자(들)로...자본시장 출자약정·심사 쟁점화"
     },
+    "title:ea8141293721f3aac1f8a3ec": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=02673206645610624&parentid=03329206645610624&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "0b80dbe90d7a1ed5d143ab58e2b7a1e6697f85d9653a7c6e02d196a95605f8bb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4789783573fdc2a13e395182785a270d17bf7fd750e3ef46f5fe2e9af5921b5e",
+      "source_fact_keys": [
+        "source_fact:v1:433bcbf9fb6ca5fa3f070498c01f8a50634394f76b1060537302958e5b851035",
+        "source_fact:v1:4458947c858bef2cb887265adc9ea17c3bf81d1021a1b69c862215f59af283af",
+        "source_fact:v1:4de7cf3a3ac3186d10b7c92554e4bb3537b71f2e60a00d2e73da8282670425ee",
+        "source_fact:v1:542bb1128e8af96ec042db93b29b4f087844c41d063d34c2330008089c875485",
+        "source_fact:v1:7ceecce3386cf41a557819fc35488622e051e3809bfe16703b5b7f13088f5991",
+        "source_fact:v1:bed2c4f55ed8e92509c9180e06d40b89cd9079ce51b151ad0b8264de05ea3cb4",
+        "source_fact:v1:d06f8cf3cfb70d0d581adc68698abae93cca7b0c888ea9bb15449d8e1f759b28",
+        "source_fact:v1:d7f22f0c96d98b775325e5427f40c2ef812cc29e21a9d76141c44a7399aaf8fc",
+        "source_fact:v1:f41ae112634d59a360145025a1e7148dbb1956dc1c0877a84aad492c37ef66d9"
+      ],
+      "source_published_kst": "2026-10-07T07:43+09:00",
+      "title": "“56만전자·320만닉스 간다\"…삼전닉스, 3분기 실적 기대 이상"
+    },
     "title:ea8b82e20ff505370b79250e": {
       "first_seen_kst": "2026-10-03T22:33:30+09:00",
       "lanes": {
@@ -191470,6 +192912,23 @@
       "link": "https://www.yna.co.kr/view/AKR20260930158451008",
       "source": "연합뉴스",
       "title": "유가하락·발행 축소 기대에 국고채 금리↓…3년물 연 4.011%(종합) | 연합뉴스"
+    },
+    "title:eae17dbf6a330e5f98ed40b7": {
+      "first_seen_kst": "2026-10-07T13:13:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T13:13:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T13:13:19+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100617381629210",
+      "source": "머니투데이",
+      "source_body_digest": "8c624787cf1230e693539938be606974453eca21b17025e361e0324301ca6d37",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a4363acec24be803701068ea52abaa9a566f3323e7566db0cdfe469c27f3a77",
+      "source_fact_keys": [
+        "source_fact:v1:04424faa8aad3a2ca605e22315c1eb2a3512b16834dac0b5dd02c2d6feae7519"
+      ],
+      "source_published_kst": "2026-10-07T08:00+09:00",
+      "title": "한성크린텍, 삼성전기 베트남 공장 230억원 초순수 E&P 계약 체결"
     },
     "title:eae774133e670956c70e87ca": {
       "first_seen_kst": "2026-10-05T07:03:44+09:00",
@@ -193820,5 +195279,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-07T12:49:48+09:00"
+  "updated_at_kst": "2026-10-07T13:13:19+09:00"
 }
