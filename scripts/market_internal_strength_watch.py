@@ -19,7 +19,8 @@ FORCE=os.getenv('FORCE_NOTIFY','0')=='1'
 UA='Mozilla/5.0 (compatible; khs-watch/3.0; +https://github.com/qedgwangju-dot/khs-watch)'
 YAHOO='https://query1.finance.yahoo.com/v8/finance/chart/{}?range=1mo&interval=1d&includePrePost=false'
 CBOE_VIX_CSV='https://cdn.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv'
-METHODOLOGY_VERSION='2026-10-07-v5'
+STOCKANALYSIS_HISTORY='https://stockanalysis.com/etf/{}/history/'
+METHODOLOGY_VERSION='2026-10-07-v6'
 
 SYMBOLS={
     'S&P500':'SPY','동일가중 S&P500':'RSP','중소형주':'IWM','하이일드 회사채':'HYG','VIX':'^VIX',
@@ -108,17 +109,54 @@ def cboe_vix_series():
         raise RuntimeError('Cboe VIX official history too short')
     return rows
 
+def stockanalysis_latest(symbol, adjusted=False):
+    raw=fetch(STOCKANALYSIS_HISTORY.format(symbol.lower()))
+    plain=html.unescape(re.sub(r'<[^>]+>',' ',raw))
+    plain=re.sub(r'\s+',' ',plain)
+    m=re.search(
+        r'([A-Z][a-z]{2}\s+\d{1,2},\s+20\d{2})\s+'
+        r'([\d.]+)\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)',
+        plain
+    )
+    if not m:
+        raise RuntimeError(f'{symbol} StockAnalysis final-history row unavailable')
+    d=datetime.strptime(m.group(1),'%b %d, %Y').date().isoformat()
+    close=float(m.group(5))
+    adj=float(m.group(6))
+    return d,(adj if adjusted else close)
+
 def ret(rows,n): return (rows[-1][1]/rows[-1-n][1]-1)*100.0
 
 def snapshot():
     data={}
+    final_rows={}
     for name,symbol in SYMBOLS.items():
         if name == '하이일드 회사채':
             # HYG is monthly-distributing. Use adjusted close so ex-dividend drops
             # are not misread as credit deterioration.
             data[name]=series(symbol, adjusted=True)
+            final_rows[name]=stockanalysis_latest(symbol, adjusted=True)
+        elif name == 'VIX':
+            data[name]=series(symbol)
         else:
             data[name]=series(symbol)
+            final_rows[name]=stockanalysis_latest(symbol)
+
+    # Require every ETF lane to have the same independently settled daily close.
+    # StockAnalysis states its history is sourced from S&P Global Market Intelligence.
+    final_dates={d for d,_ in final_rows.values()}
+    if len(final_dates) != 1:
+        raise RuntimeError(f'ETF final-close source dates are not aligned: {sorted(final_dates)}')
+    final_date=next(iter(final_dates))
+    settlement_overrides={}
+    for name,(d,v) in final_rows.items():
+        m={x:y for x,y in data[name]}
+        old=m.get(d)
+        if old is None or abs(old-v) > 1e-8:
+            settlement_overrides[name]={'yahoo':old,'final':v}
+        m[d]=v
+        data[name]=sorted(m.items())
+
     cboe_vix=cboe_vix_series()
 
     # 일부 ETF/지수의 Yahoo 종가 반영이 하루 늦을 수 있다.
@@ -171,7 +209,10 @@ def snapshot():
          'vix_official_crosscheck_date':official_check_date,
          'vix_official_same_day':official_same_day,
          'vix_official_lag_days':lag_days,
-         'vix_crosscheck_max_abs_diff':official_diff}
+         'vix_crosscheck_max_abs_diff':official_diff,
+         'etf_final_close_source':'StockAnalysis / S&P Global Market Intelligence',
+         'etf_final_close_date':final_date,
+         'settlement_overrides':settlement_overrides}
     for name,m in maps.items():
         for d in (common_date,d1,d3,d5):
             if d not in m:
@@ -279,6 +320,7 @@ def message(s, correction=False, old_date=None, correction_reason=None):
            '<b>왜 보나</b>',
            '• RSP가 SPY보다 강하면 몇몇 초대형주만 오르는 게 아니라 종목 전체로 상승이 퍼지는지 보는 대용지표입니다.',
            '• HYG(하이일드 회사채)는 월별 분배금 때문에 단순 가격수익률이 왜곡될 수 있어 분배금을 반영한 조정종가 총수익으로 봅니다.',
+           '• ETF 종가는 Yahoo 일봉만 믿지 않고 StockAnalysis의 S&P Global Market Intelligence 마감 종가로 확정합니다. Yahoo 일봉이 장중값 또는 지연값이면 마감값으로 교정합니다.',
            '• VIX는 같은 완료 거래일의 종가를 쓰고, Cboe 공식 일별자료가 같은 날까지 갱신됐으면 당일값을 직접 검산합니다. 공식 파일이 하루 늦으면 최신 겹치는 날짜를 검산하고 지수 전체 기준일은 뒤로 돌리지 않습니다.', '',
            '<b>판정이 나빠지는 조건</b>',
            '• RSP 또는 IWM 중 하나라도 S&P보다 5거래일 기준 1%포인트 이상 더 약해지면 시장 폭 경고',
@@ -321,6 +363,9 @@ def main():
             'vix_official_same_day':s.get('vix_official_same_day'),
             'vix_official_lag_days':s.get('vix_official_lag_days'),
             'vix_crosscheck_max_abs_diff':s.get('vix_crosscheck_max_abs_diff'),
+            'etf_final_close_source':s.get('etf_final_close_source'),
+            'etf_final_close_date':s.get('etf_final_close_date'),
+            'settlement_overrides':s.get('settlement_overrides'),
             'breadth_warning':s.get('breadth_warning'),'rsp_warning':s.get('rsp_warning'),'iwm_warning':s.get('iwm_warning'),
             'rsp_rel_5d':s['rsp_rel_5d'],'iwm_rel_5d':s['iwm_rel_5d'],
             'sector_up_1d':s['sector_up_1d'],'sector_up_5d':s['sector_up_5d'],'returns':s['returns']
@@ -331,6 +376,9 @@ def main():
         'vix_source':s.get('vix_source'),'vix_official_crosscheck_date':s.get('vix_official_crosscheck_date'),
         'vix_official_same_day':s.get('vix_official_same_day'),'vix_official_lag_days':s.get('vix_official_lag_days'),
         'vix_crosscheck_max_abs_diff':s.get('vix_crosscheck_max_abs_diff'),
+        'etf_final_close_source':s.get('etf_final_close_source'),
+        'etf_final_close_date':s.get('etf_final_close_date'),
+        'settlement_overrides':s.get('settlement_overrides'),
         'rsp_rel_5d':s['rsp_rel_5d'],'iwm_rel_5d':s['iwm_rel_5d'],
         'rsp_warning':s.get('rsp_warning'),'iwm_warning':s.get('iwm_warning'),
         'sector_up_5d':s['sector_up_5d'],'correction':correction,'sent':should
