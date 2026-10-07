@@ -157,7 +157,13 @@ class AgenticCpuStructureTests(unittest.TestCase):
             w.cpu_structure_changes(old, {"market_2030_usd_bn": 250}, "bnpp_public"),
             ["BNP 공개자료의 AMD 인용 CPU 시장 전망: 220→250십억달러"],
         )
-        self.assertEqual(w.cpu_structure_changes(old, {"market_2030_usd_bn": 245}, "bnpp_analyst"), [])
+        self.assertEqual(
+            w.cpu_structure_changes(
+                w.CPU_STRUCTURE_BASELINE["bnpp_analyst"],
+                {"market_2030_usd_bn": 245}, "bnpp_analyst"
+            ),
+            [],
+        )
 
     def test_secondary_bnp_target_requires_exact_issuer_and_company(self):
         url = "https://www.marketscreener.com/news/bnp-paribas-adjusts-pt-on-advanced-micro-devices-to-960-from-600-keeps-outperform-rating-ce785ddbd08af222"
