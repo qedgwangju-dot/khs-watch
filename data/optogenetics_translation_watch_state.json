@@ -1,11 +1,15 @@
 {
   "initialized": true,
   "version": 1,
-  "source_version": 5,
+  "source_version": 6,
   "ray_official_index_verified": true,
-  "last_checked_kst": "2026-10-07T11:42:45+09:00",
+  "maplight_optogenetics_bridge_verified": true,
+  "last_checked_kst": "2026-10-07T16:46:20+09:00",
   "nobel_2026_verified": true,
   "seen_event_keys": [
+    "f9150ec8a2689f8d887bf8b4",
+    "7068d58d13d508a32621ac78",
+    "c5b07942c2f87f613c2d6534",
     "d3e43c74900cbe45ced82930",
     "b1cc89521f331c60687c52a6",
     "04e42a53cc7c2d6238d6b466",
@@ -188,7 +192,105 @@
     "target_sample_size": 45,
     "last_modified": "June. 05, 2026"
   },
+  "maplight_trial_snapshots": {
+    "NCT07038876": {
+      "brief_title": "A Study to Assess the Efficacy and Safety of ML-007C-MA for the Treatment of Inpatient Adults With Schizophrenia",
+      "overall_status": "COMPLETED",
+      "phases": [
+        "PHASE2"
+      ],
+      "enrollment": 307,
+      "start_date": "2025-06-27",
+      "primary_completion": "2026-06-04",
+      "study_completion": "2026-06-11",
+      "last_update": "2026-07-09",
+      "conditions": [
+        "Schizophrenia"
+      ],
+      "locations": 24
+    },
+    "NCT07459660": {
+      "brief_title": "An Open-Label Study of ML-007C-MA in Adults With Alzheimer's Disease Psychosis",
+      "overall_status": "ENROLLING_BY_INVITATION",
+      "phases": [
+        "PHASE2"
+      ],
+      "enrollment": 210,
+      "start_date": "2026-03-25",
+      "primary_completion": "2029-03",
+      "study_completion": "2029-03",
+      "last_update": "2026-08-07",
+      "conditions": [
+        "Psychosis Associated With Alzheimer's Disease"
+      ],
+      "locations": 8
+    },
+    "NCT05081245": {
+      "brief_title": "ML-004 in Adolescents and Adults With Autism Spectrum Disorders (ASD)",
+      "overall_status": "COMPLETED",
+      "phases": [
+        "PHASE2"
+      ],
+      "enrollment": 168,
+      "start_date": "2022-09-13",
+      "primary_completion": "2026-03-10",
+      "study_completion": "2026-04-17",
+      "last_update": "2026-05-19",
+      "conditions": [
+        "Autism Spectrum Disorder"
+      ],
+      "locations": 29
+    },
+    "NCT05889273": {
+      "brief_title": "ML-004 Open-Label Extension Study in Adults and Adolescents With Autism Spectrum Disorders (ASD)",
+      "overall_status": "ACTIVE_NOT_RECRUITING",
+      "phases": [
+        "PHASE2"
+      ],
+      "enrollment": 120,
+      "start_date": "2023-06-01",
+      "primary_completion": "2027-11",
+      "study_completion": "2027-12",
+      "last_update": "2026-07-20",
+      "conditions": [
+        "Autism Spectrum Disorder"
+      ],
+      "locations": 21
+    },
+    "NCT07459647": {
+      "brief_title": "A Long-Term Open-Label Study of ML-007C-MA in Adults With Schizophrenia",
+      "overall_status": "RECRUITING",
+      "phases": [
+        "PHASE2"
+      ],
+      "enrollment": 500,
+      "start_date": "2026-03-31",
+      "primary_completion": "2030-02",
+      "study_completion": "2030-02",
+      "last_update": "2026-09-01",
+      "conditions": [
+        "Schizophrenia"
+      ],
+      "locations": 42
+    },
+    "NCT06887192": {
+      "brief_title": "A Study to Assess the Efficacy and Safety of ML-007C-MA for the Treatment of Alzheimer's Disease Psychosis",
+      "overall_status": "RECRUITING",
+      "phases": [
+        "PHASE2"
+      ],
+      "enrollment": 300,
+      "start_date": "2025-08-15",
+      "primary_completion": "2027-12",
+      "study_completion": "2027-12",
+      "last_update": "2026-09-30",
+      "conditions": [
+        "Psychosis Associated With Alzheimer's Disease"
+      ],
+      "locations": 62
+    }
+  },
   "cns_trial_ids": [],
-  "relevant_press_events": 12,
+  "relevant_press_events": 15,
   "source_errors": []
 }
