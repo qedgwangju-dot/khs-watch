@@ -19,7 +19,7 @@ FORCE=os.getenv('FORCE_NOTIFY','0')=='1'
 UA='Mozilla/5.0 (compatible; khs-watch/3.0; +https://github.com/qedgwangju-dot/khs-watch)'
 YAHOO='https://query1.finance.yahoo.com/v8/finance/chart/{}?range=1mo&interval=1d&includePrePost=false'
 CBOE_VIX_CSV='https://cdn.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv'
-METHODOLOGY_VERSION='2026-10-07-v4'
+METHODOLOGY_VERSION='2026-10-07-v5'
 
 SYMBOLS={
     'S&P500':'SPY','동일가중 S&P500':'RSP','중소형주':'IWM','하이일드 회사채':'HYG','VIX':'^VIX',
@@ -34,7 +34,8 @@ def fetch(url):
     with urllib.request.urlopen(req,timeout=25) as r:return r.read().decode('utf-8','replace')
 
 def series(symbol, adjusted=False):
-    d=json.loads(fetch(YAHOO.format(urllib.parse.quote(symbol,safe=''))))
+    yahoo_url=YAHOO.format(urllib.parse.quote(symbol,safe='')) + f'&cb={int(time.time())}'
+    d=json.loads(fetch(yahoo_url))
     r=((d.get('chart') or {}).get('result') or [None])[0]
     if not r: raise RuntimeError(f'{symbol} unavailable')
     ts=r.get('timestamp') or []
