@@ -651,9 +651,9 @@
       "first_seen_kst": "2026-10-07T18:37:51+09:00"
     }
   },
-  "updated_at_kst": "2026-10-07T18:37:51+09:00",
+  "updated_at_kst": "2026-10-07T18:40:55+09:00",
   "last_scan_count": 43,
-  "last_new_count": 2,
+  "last_new_count": 0,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
@@ -700,6 +700,8 @@
     "trendforce_nand_easing_half": "2H",
     "secondary_industry_new_fab_earliest_year": 2028,
     "secondary_industry_new_fab_timeline_official": false,
+    "secondary_fab_timeline_source_kind": "뉴시스 업계 관계자 익명 발언 · TrendForce 공식 가이던스 아님",
+    "secondary_fab_timeline_source_url": "https://www.newsis.com/view/NISX20261002_0003812363",
     "source": "TrendForce",
     "source_url": "https://www.trendforce.com/presscenter/news/20260930-13258.html",
     "research_url": "https://www.trendforce.com/research/download/RP260924PL",
