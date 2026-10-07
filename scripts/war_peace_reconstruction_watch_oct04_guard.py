@@ -932,7 +932,10 @@ def item_id(row):
         key = f"iran-south|unattributed-explosions|{_published_day(row)}"
         return hashlib.sha256(("event|" + key).encode()).hexdigest()[:20]
     if _saudi_houthi_airport_refinery_cluster(row):
-        key = f"saudi-houthi|airport-refinery-attack|{_cluster_day(row, 12)}"
+        if _saudi_oct06_attack_signature(row):
+            key = "saudi-houthi|airport-refinery-attack|2026-10-06"
+        else:
+            key = f"saudi-houthi|airport-refinery-attack|{_cluster_day(row, 12)}"
         if _new_saudi_houthi_attack_variant(row):
             norm = re.sub(r"\W+", " ", _title(row)).strip()
             key += "|additional|" + norm[:80]
