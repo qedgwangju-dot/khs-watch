@@ -863,6 +863,7 @@ def update_transformer_import_watch(now: datetime, previous: dict) -> tuple[dict
 
     new_month: dict | None = None
     errors = []
+    pending_month = ""
     for y, m in candidates:
         key = month_key(y, m)
         if key in history:
@@ -871,8 +872,12 @@ def update_transformer_import_watch(now: datetime, previous: dict) -> tuple[dict
             new_month = fetch_transformer_trade_month(y, m)
             history[key] = new_month
             latest["latest_month"] = key
+            pending_month = ""
             break
         except Exception as e:
+            if getattr(e, "code", None) == 404:
+                pending_month = key
+                continue
             errors.append(f"{key}: {type(e).__name__}: {str(e)[:180]}")
 
     if new_month and not prior_latest:
@@ -888,6 +893,7 @@ def update_transformer_import_watch(now: datetime, previous: dict) -> tuple[dict
                 errors.append(f"{key}: {type(e).__name__}")
 
     latest["history"] = {k: history[k] for k in sorted(history)[-18:]}
+    latest["pending_month"] = pending_month
     latest["last_checked_at_kst"] = now.isoformat(timespec="seconds")
     latest["last_error"] = "; ".join(errors[-5:])
 
@@ -1037,6 +1043,7 @@ def main() -> None:
         f"- 중요 변화: {len(changes)}개\n"
         f"- 변압기 수입 월간 이벤트: {len(trade_events)}개\n"
         f"- 변압기 최신 기준월: {transformer_imports.get('latest_month') or '확인 불가'}\n"
+        f"- 다음 공개 대기월: {transformer_imports.get('pending_month') or '없음'}\n"
         f"- 변압기 원자료 오류: {transformer_imports.get('last_error') or '없음'}\n"
         f"- 알림: {'예' if notify else '아니오'}\n",
         encoding="utf-8",
