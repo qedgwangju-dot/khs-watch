@@ -55,6 +55,20 @@ def translate_ko(title):
     ):
         return "러시아 교통부, 흑해에서 무인수상정 공격으로 화재가 난 유조선 승무원 23명 전원 구조됐다고 발표"
     if (
+        ("iran must" in low or "iran" in low)
+        and "enrichment" in low
+        and any(x in low for x in ("vice president", "jd vance", "vance"))
+        and any(x in low for x in ("end war", "end the war", "ending the war"))
+    ):
+        return "미국 부통령 JD Vance, 이란이 전쟁 종식을 원하면 우라늄 농축 능력을 의미 있게 감축해야 한다고 제시 — 미국 측 협상 조건, 합의 진전 아님"
+    if (
+        any(x in low for x in ("saudi-led coalition", "saudi coalition", "사우디 주도 연합군"))
+        and any(x in low for x in ("riyadh", "리야드"))
+        and any(x in low for x in ("intercepted", "intercept", "destroyed", "요격"))
+        and any(x in low for x in ("houthi", "후티"))
+    ):
+        return "사우디 주도 연합군, 리야드 북쪽 상공서 후티 탄도미사일 요격 확인 — 후티의 리야드 공항 등 타격 주장은 사우디 확인 전"
+    if (
         any(x in low for x in ("houthi", "후티"))
         and any(x in low for x in ("saudi", "사우디"))
         and any(x in low for x in ("rabigh", "라빅"))
@@ -316,6 +330,34 @@ def _israel_oct7_abroad_warning(row):
     return israel and anniversary and warning and not actual
 
 
+def _vance_iran_enrichment_condition(row):
+    src = " ".join([str(row.get("source", "")), str(row.get("link", "")), str(row.get("resolved_url", ""))]).lower()
+    t = _text(row).lower()
+    exact = "2198519" in src
+    iran = any(x in t for x in ("iran", "iranian", "이란"))
+    enrichment = any(x in t for x in ("enrichment", "uranium enrichment", "농축", "우라늄 농축"))
+    vp = any(x in t for x in ("jd vance", "vance", "vice president", "미국 부통령", "밴스"))
+    end_war = any(x in t for x in ("end war", "end the war", "ending the war", "전쟁 종식", "전쟁을 끝", "종전"))
+    return (exact or (iran and enrichment and vp and end_war))
+
+
+def _saudi_riyadh_intercept_vs_claim(row):
+    t = _text(row).lower()
+    saudi = any(x in t for x in ("saudi", "사우디"))
+    houthi = any(x in t for x in ("houthi", "houthis", "후티"))
+    riyadh = any(x in t for x in ("riyadh", "리야드"))
+    intercept = any(x in t for x in (
+        "intercepted", "intercept", "destroyed north of riyadh", "north of riyadh",
+        "요격", "격추", "리야드 북쪽", "리야드 북부",
+    ))
+    missile = any(x in t for x in ("ballistic missile", "missile", "탄도미사일", "미사일"))
+    claimed_target = any(x in t for x in (
+        "king khalid", "king khalid international airport", "킹칼리드", "킹 칼리드",
+        "claimed", "claims", "주장",
+    ))
+    return saudi and houthi and riyadh and intercept and missile and claimed_target
+
+
 def _tass_turkmenistan_visit_noise(row):
     src = " ".join([str(row.get("source", "")), str(row.get("link", ""))]).lower()
     t = _text(row).lower()
@@ -476,6 +518,10 @@ def marks(row):
         out.append("사우디동서송유관회복")
     if _israel_oct7_abroad_warning(row):
         out.append("이스라엘10월7일해외공격위험경고")
+    if _vance_iran_enrichment_condition(row):
+        out.append("미국부통령이란농축종전조건")
+    if _saudi_riyadh_intercept_vs_claim(row):
+        out.append("사우디리야드후티미사일요격확인")
     if _saudi_houthi_airport_refinery_cluster(row):
         out.append("사우디후티공항정유시설공격클러스터")
     if _mokha_counteroffensive_context(row):
@@ -512,6 +558,10 @@ def korean_title(ms):
         return "호르무즈 유조선 피격 지속 — 미확인 발사체·선박 피해를 실제 해상안보 사건으로 추적"
     if "이스라엘10월7일해외공격위험경고" in ms:
         return "이스라엘 국가안보회의, 10월 7일 3주년 전후 해외의 이스라엘인·유대인 대상 공격 위험 증가 경고 — 실제 공격 발생 아님"
+    if "미국부통령이란농축종전조건" in ms:
+        return "미국 부통령 JD Vance, 이란이 전쟁 종식을 원하면 우라늄 농축 능력을 의미 있게 감축해야 한다고 제시 — 미국 측 협상 조건, 합의 진전 아님"
+    if "사우디리야드후티미사일요격확인" in ms:
+        return "사우디 주도 연합군, 리야드 북쪽 상공서 후티 탄도미사일 요격 확인 — 후티의 리야드 공항 등 타격 주장은 사우디 확인 전"
     if "목하탈환공세" in ms:
         return "사우디 지원 예멘군, 후티가 장악했던 목하·바브엘만데브 일대 탈환 공세 — 후티의 9월 점령은 배경"
     if "러시아국방부타격주장" in ms:
@@ -546,6 +596,10 @@ def signals(ms):
         out.append("🟢 사우디 동서 송유관 원유 수송이 하루 580만배럴 수준으로 회복 — 과거 공격의 현재 신규 확전이 아니라 실물 공급 복구 신호")
     if "이스라엘10월7일해외공격위험경고" in ms:
         out.append("🟡 이스라엘 국가안보회의가 10월 7일 3주년 전후 해외 공격 위험 증가를 경고 — 실제 공격 발생과는 구분")
+    if "미국부통령이란농축종전조건" in ms:
+        out.append("🟡 미국 부통령 JD Vance가 이란의 우라늄 농축 능력 감축을 전쟁 종식 조건으로 제시 — 미국 측 협상 조건이며 합의 진전 자체는 아님")
+    if "사우디리야드후티미사일요격확인" in ms:
+        out.append("🔴 사우디 주도 연합군이 리야드 북쪽에서 후티 탄도미사일 요격을 확인 — 후티의 킹칼리드 국제공항 등 타격 주장은 사우디 확인 전")
     if "목하탈환공세" in ms:
         out.append("🔴 현재 변화는 사우디 지원 예멘군의 목하·바브엘만데브 탈환 공세 — 후티의 9월 목하 점령을 신규 속보로 재사용하지 않음")
     if "러시아국방부타격주장" in ms:
@@ -560,6 +614,7 @@ def signals(ms):
         "러정유시설보복공격확대예고", "러시아종전조건입장표명",
         "루코일종전협상연계상업거래", "호르무즈유조선피격클러스터",
         "이스라엘10월7일해외공격위험경고", "호르무즈온피스유조선피격",
+        "미국부통령이란농축종전조건", "사우디리야드후티미사일요격확인",
         "이란남부폭발원인미확정", "사우디동서송유관회복",
         "목하탈환공세", "러시아국방부타격주장", "TASS러시아최대드론공격집계",
     }
@@ -614,6 +669,18 @@ def score_item(row, now):
         tags = [t for t in tags if t not in ("확전", "휴전·평화", "재건", "종전·협상")]
         tags += ["이스라엘", "해외안보경고", "실제공격아님"]
         score = max(score, 98)
+    if "미국부통령이란농축종전조건" in ms:
+        row["title_ko"] = korean_title(ms)
+        row["signals_ko"] = []
+        tags = [t for t in tags if t not in ("확전", "휴전·평화", "재건", "종전·협상")]
+        tags += ["미국·이란", "협상조건", "합의진전아님", "JD Vance"]
+        score = max(score, 98)
+    if "사우디리야드후티미사일요격확인" in ms:
+        row["title_ko"] = korean_title(ms)
+        row["signals_ko"] = []
+        tags = [t for t in tags if t not in ("휴전·평화", "재건", "종전·협상")]
+        tags += ["사우디·후티", "확전", "미사일요격확인", "공항타격주장미확인"]
+        score = max(score, 100)
     if "이란남부폭발원인미확정" in ms:
         row["title_ko"] = korean_title(ms)
         row["signals_ko"] = []
@@ -680,6 +747,10 @@ def _stable_source_url(row):
 
 
 def item_id(row):
+    if _vance_iran_enrichment_condition(row):
+        return hashlib.sha256(("event|us-iran|vance-enrichment-condition|" + _published_day(row)).encode()).hexdigest()[:20]
+    if _saudi_riyadh_intercept_vs_claim(row):
+        return hashlib.sha256(("event|saudi-houthi|riyadh-missile-intercept|" + _published_day(row)).encode()).hexdigest()[:20]
     if _saudi_east_west_pipeline_recovery(row):
         return hashlib.sha256("event|saudi|east-west-pipeline-recovery|2026-10-06".encode()).hexdigest()[:20]
     if _hormuz_on_peace_attack(row):
@@ -739,6 +810,10 @@ def topic_label(row):
         return "이란·호르무즈 · 유조선 피격"
     if "이스라엘10월7일해외공격위험경고" in ms:
         return "이스라엘 · 10월 7일 해외 공격 위험 경고"
+    if "미국부통령이란농축종전조건" in ms:
+        return "미국·이란 · 종전 협상 조건"
+    if "사우디리야드후티미사일요격확인" in ms:
+        return "사우디·후티 · 리야드 미사일 요격"
     if "사우디동서송유관회복" in ms:
         return "사우디 · 동서 송유관 공급회복"
     if "사우디후티공항정유시설공격클러스터" in ms:
@@ -765,6 +840,10 @@ def final_color(row):
         return "green"
     if "후티리야드아람코공격주장" in ms:
         return "red"
+    if "사우디리야드후티미사일요격확인" in ms:
+        return "red"
+    if "미국부통령이란농축종전조건" in ms:
+        return "yellow"
     if ms & {
         "러정유시설보복공격확대예고", "리야드아람코화재원인미확정",
         "러시아종전조건입장표명", "루코일종전협상연계상업거래",
@@ -952,6 +1031,10 @@ def verify_alert(test_mode=False):
         issues.append("라빅 정유시설 공격을 후티 주장 단계와 사우디 확인 피해로 분리하지 않음")
     if "tass.com/politics/2198439" in low:
         issues.append("투르크메니스탄 CIS·카스피 정상 일정 기사를 종전·협상 신규 변화로 표시")
+    if "2198519" in low and ("미국 부통령" not in text or "협상 조건" not in text):
+        issues.append("이란 농축 조건 발언의 미국 부통령 JD Vance 귀속 또는 협상조건 성격 누락")
+    if "후티의 리야드 탄도미사일 공격·요격 신호" in text:
+        issues.append("리야드 미사일 요격 확인과 후티의 공항 타격 주장을 혼합 표시")
     if "승무원이 선박에 불을 붙였" in text:
         issues.append("Reuters 유조선 제목 문법을 오역해 승무원이 방화한 것으로 표시")
     if "10월을 앞두고 해외 공격 위험 경고 7주년" in text:
