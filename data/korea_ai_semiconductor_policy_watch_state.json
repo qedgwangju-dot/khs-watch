@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-09-27T18:11:08+09:00",
-  "last_checked_kst": "2026-10-08T01:40:11+09:00",
+  "last_checked_kst": "2026-10-08T07:05:31+09:00",
   "seen": {
     "2b31306619b190498e7f41c7": {
       "title": "[입찰공고] 2026년 AI반도체 지원사업 성과조사분석 및 우수사례 발굴 용역 - 정보통신산업진흥원(NIPA)",
@@ -463,6 +463,15 @@
       "category": "해외진출 지원",
       "first_seen_kst": "2026-10-07T17:53:01+09:00",
       "alerted": true
+    },
+    "48799814c7e09bd744d24702": {
+      "title": "K-NPU, 정부 품 떠나 국내외 시장으로…리벨리온·퓨리오사·딥엑스 수주전 - 서울이코노미뉴스",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE83aHpmcVNoT1VzMUd1eDRQRkRMLVVSUzRxVk5TWnNVRS1FVlcxNWlKeTYxRFQ4VHJWR2liUkxtd191dDRtUC1JX1Vac3puR2hNMmFMcHRkdFQyQzJWNXgzTWdTSWRRSWFjLWg3Y0Rn?oc=5",
+      "event_signature": "리벨리온+딥엑스|실제 수주·구매|일반",
+      "stage": 5,
+      "category": "실제 수주·구매",
+      "first_seen_kst": "2026-10-08T07:05:31+09:00",
+      "suppressed_stale": true
     }
   }
 }
