@@ -111,8 +111,11 @@ jobs:
           assert "timeout-minutes: 359" in s, "afternoon close coverage timeout missing"
           assert "--until 15:32" in s, "KOSPI closing-auction coverage missing"
           assert "date +%H%M)\" -lt 1532" in s, "shift supervisor does not run through closing auction"
+          assert 'cron: "13,23,33,43,53 8 * * 1-5"' in s, "preopen KOSPI retry schedule missing"
           assert 'cron: "3,13,23,33,43,53 9-14 * * 1-5"' in s, "intraday KOSPI self-recovery schedule missing"
           assert 'cron: "3,13,23 15 * * 1-5"' in s, "late-session KOSPI recovery schedule missing"
+          assert "workflow_run:" in s and "Wonyotti 90D Thesis Telegram Watch" in s, "event-driven KOSPI fallback missing"
+          assert 'session["open"]-dt.timedelta(minutes=60) <= now' in s, "KOSPI gate must be eligible one hour before open"
           assert "production_jobs" in s and "age_minutes<=3" in s, "job-level KOSPI leader health gate missing"
           assert "session_state" in s and "session[\"close\"]+dt.timedelta(minutes=2)" in s, "KOSPI gate does not follow XKRX close"
           collector=Path("scripts/kospi_unified_industry_collector.py").read_text(encoding="utf-8")
