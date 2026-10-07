@@ -127,7 +127,7 @@ class TransformerImportWatchTests(unittest.TestCase):
         ]
         buf = io.BytesIO()
         with zipfile.ZipFile(buf, "w") as zf:
-            zf.writestr("DPORTHS6I2608.TXT", "\n".join(rows) + "\n")
+            zf.writestr("PORTHS6MM2608.TXT", "\n".join(rows) + "\n")
         parsed = w.parse_census_port_hs6_zip(buf.getvalue(), 2026, 8)
         large = w.summarize_trade_scope(parsed, w.TRANSFORMER_PRIMARY_HS6)
         liquid = w.summarize_trade_scope(parsed, w.TRANSFORMER_LIQUID_HS6)
