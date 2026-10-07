@@ -231,7 +231,7 @@ def format_alert(snapshot, previous, fx, fx_date, reasons):
         oi = row.get("open_interest") or 0
         oi_source = row.get("oi_source") or "CME 공식 OI"
         block_lines.append(f"• {LABELS[symbol]}: 가격 {row.get('last'):.5f} ({pct_text}) · OI {oi:,} [{oi_source}]")
-    evidence = squeeze_evidence(snapshot, previous)
+    evidence = official.official_squeeze_evidence(snapshot, previous)
     source_note = (
         "※ CME 공식 Daily Bulletin 기준"
         if source_is_official else
