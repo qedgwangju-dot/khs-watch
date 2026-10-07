@@ -236,6 +236,39 @@ def maxcapture_google_news(query):
     else:
         return _prev_google_news(query)
 
+    # 직접 원천이 차단되면 같은 축의 대체 공개 경로로 즉시 전환한다.
+    # 대체 경로가 정상 응답하면 원천 장애를 전체 감시 오류로 승격하지 않는다.
+    if err:
+        fallback_rows, fallback_err = [], err
+        if query in (DIRECT_KREMLIN_NEWS, DIRECT_KREMLIN_TRANSCRIPTS):
+            fallback_rows, fallback_err = _kremlin_telegram()
+            if fallback_err:
+                fallback_rows, fallback_err = _prev_google_news(
+                    'site:kremlin.ru (Putin OR Peskov) (Ukraine OR peace OR negotiations OR ceasefire OR strike) when:1d'
+                )
+        elif query == DIRECT_KREMLIN_TELEGRAM:
+            fallback_rows, fallback_err = _prev_google_news(
+                'site:kremlin.ru (Putin OR Peskov) (Ukraine OR peace OR negotiations OR ceasefire OR strike) when:1d'
+            )
+        elif query == DIRECT_INTERFAX_TOP:
+            fallback_rows, fallback_err = _prev_google_news(
+                'site:interfax.com (Russia OR Ukraine OR Iran OR Middle East) (war OR talks OR strike OR ceasefire) when:12h'
+            )
+        elif query == DIRECT_TASS_HOME:
+            fallback_rows, fallback_err = _prev_google_news(
+                'site:tass.com (Russia OR Ukraine OR Iran OR Houthi) (war OR strike OR talks OR ceasefire) when:12h'
+            )
+        elif query == DIRECT_GDELT_UA:
+            fallback_rows, fallback_err = _bing_news(
+                'Putin Peskov Zelensky Witkoff Kushner Ukraine Russia Kyiv Moscow'
+            )
+        elif query == DIRECT_GDELT_IRAN:
+            fallback_rows, fallback_err = _bing_news(
+                'Iran Hormuz Tehran Trump ceasefire peace strike war'
+            )
+        if fallback_err is None:
+            rows, err = fallback_rows, None
+
     # 직접 소스도 기존 심층 신호 판정 체인을 그대로 거치게 한다.
     for row in rows:
         signals, marks = prev._pause_signals(row)
