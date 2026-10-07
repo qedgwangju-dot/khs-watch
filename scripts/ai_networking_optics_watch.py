@@ -323,7 +323,8 @@ TRUSTED_SOURCES = {
     "TrendForce", "MoneyDJ", "Economic Daily News", "UDN", "經濟日報",
     "GMT GLOBAL INC.", "TOYO Automation", "Chieftek Precision",
     "Open Compute Project", "OCP", "iPronics", "Lumotive", "nEye",
-    "HUBER+SUHNER", "POLATIS", "Huawei", "华为", "Open AI Infra",
+    "HUBER+SUHNER", "POLATIS", "Huawei", "华为", "Huawei Cloud", "华为云",
+    "Open AI Infra", "Open AI Infra Community",
 }
 
 HIGH_SIGNAL_PATTERNS = [
@@ -446,7 +447,8 @@ SOURCE_PRIORITY = {
     "TrendForce": 92, "GMT GLOBAL INC.": 100, "TOYO Automation": 100,
     "Open Compute Project": 100, "OCP": 100, "iPronics": 100,
     "Lumotive": 100, "nEye": 100, "POLATIS": 100, "HUBER+SUHNER": 100,
-    "Huawei": 100, "华为": 100, "Open AI Infra": 100,
+    "Huawei": 100, "华为": 100, "Huawei Cloud": 100, "华为云": 100,
+    "Huawei Computing": 100, "Open AI Infra": 100,
     "Chieftek Precision": 100, "Economic Daily News": 82, "UDN": 82,
     "經濟日報": 82, "MoneyDJ": 78,
     "HPCwire": 70, "Compound Semiconductor": 70, "Investing.com": 65,
@@ -729,9 +731,19 @@ OCS_PRIMARY_SOURCES = {
     "Open Compute Project", "OCP", "NVIDIA Newsroom", "NVIDIA Blog",
     "NVIDIA", "Lumentum", "iPronics", "Lumotive", "nEye", "HUBER+SUHNER",
     "POLATIS", "Google", "Google Cloud", "Microsoft",
+    "OCP Foundation", "Open Compute Project Foundation",
 }
-NPO_PRIMARY_SOURCES = {"Huawei", "华为", "Open AI Infra", "Global Computing Consortium"}
-STRUCTURAL_OPTICS_VERSION = 1
+NPO_PRIMARY_SOURCES = {
+    "Huawei", "华为", "Huawei Cloud", "华为云", "Huawei Computing",
+    "Open AI Infra", "Open AI Infra Community", "Global Computing Consortium",
+}
+STRUCTURAL_PRIMARY_DOMAINS = {
+    "opencompute.org", "nvidia.com", "lumentum.com", "ipronics.com",
+    "lumotive.com", "neye.com", "huber-suhner.com", "google.com",
+    "microsoft.com", "huawei.com", "huaweicloud.com",
+    "openaiinfra.org",
+}
+STRUCTURAL_OPTICS_VERSION = 2
 
 # Only true new milestones may alert. Historical 2025 OCS OCP membership and
 # July-2026 NPO MSA launch become baseline. Roadmap numbers are not shipments.
@@ -753,14 +765,37 @@ def meaningful_fau_milestone(title: str) -> bool:
         r"(?:coupling|insertion) loss.{0,20}\d+(?:\.\d+)?\s*dB|"
         r"test(?:ing)? time.{0,20}\d+(?:\.\d+)?\s*(?:s|seconds?|ms)|"
         r"\d+(?:\.\d+)?\s*%\s*(?:yield|pass)|\d+\s*nm|"
-        r"qualification|qualified|customer validation|"
-        r"產能|量產|出貨|訂單|驗證|认证|订单|量产|出货",
+        r"(?:passes?|completes?|wins?) (?:customer )?(?:qualification|validation)|qualified|"
+        r"產能|量產|出貨|訂單|驗證完成|认证完成|订单|量产|出货",
         text, re.I
     ))
 
 
+def _explicit_completion_verb(text: str) -> bool:
+    return bool(re.search(
+        r"sign(?:s|ed)?|secur(?:es|ed)|awarded|receiv(?:es|ed)|beg(?:ins|an)|"
+        r"start(?:s|ed)?|complet(?:es|ed)|shipp(?:ed|ing)|deliver(?:s|ed)|"
+        r"deploy(?:s|ed)|installs?|validated|qualif(?:ied|ies)|"
+        r"发布|签署|获批|量产开始|正式交付|订单落地|完成",
+        text, re.I,
+    ))
+
+
+def _headline_plan_only(text: str) -> bool:
+    planned = bool(re.search(
+        r"plans? to|expected to|expects? to|aims? to|could|may |"
+        r"targets? |eyes? |prepar(?:es?|ing) to|wants? to|"
+        r"seeks? to|mulls?|reportedly|considers?|"
+        r"拟|计划|预计|有望|考虑|目标是",
+        text, re.I,
+    ))
+    return planned and not _explicit_completion_verb(text)
+
+
 def classify_structural_axis(company: str, title: str) -> str | None:
     text = html.unescape(title or "").strip()
+    if company in NEW_STRUCTURE_AXES and _headline_plan_only(text):
+        return None
     if company == "OCS Optical Circuit Switching":
         # "NVIDIA's CPO Ethernet Photonics" is NOT an optical circuit switch.
         if not re.search(
@@ -829,13 +864,25 @@ def structural_stage(company: str, category: str, title: str) -> str:
     return stage_for(title)
 
 
+def _is_official_structural_source(item: dict) -> bool:
+    company = item.get("company") or ""
+    name = normalize_text(item.get("source") or "").lower()
+    primary = OCS_PRIMARY_SOURCES if company == "OCS Optical Circuit Switching" else NPO_PRIMARY_SOURCES
+    if not any(name == a.lower() for a in primary):
+        return False
+    address = normalize_text(item.get("source_url") or "")
+    host = urllib.parse.urlparse(address).hostname or ""
+    # A claimed source name alone is not sufficient for a confirmed official
+    # story; validate the publisher's actual source domain.
+    return any(host == domain or host.endswith("." + domain) for domain in STRUCTURAL_PRIMARY_DOMAINS)
+
+
 def credible_structural_source(item: dict, all_items: list[dict]) -> bool:
     company = item.get("company") or ""
     if company not in NEW_STRUCTURE_AXES:
         return True
     name = normalize_text(item.get("source") or "").lower()
-    primary = OCS_PRIMARY_SOURCES if company == "OCS Optical Circuit Switching" else NPO_PRIMARY_SOURCES
-    if any(name == a.lower() for a in primary):
+    if _is_official_structural_source(item):
         return True
     # A third-party headline about NVIDIA OCS deployment / Huawei mass
     # production is not automatically a verified shipment. Require a second
@@ -847,7 +894,7 @@ def credible_structural_source(item: dict, all_items: list[dict]) -> bool:
         and source_priority(other.get("source") or "") >= 65
         and (
             same_underlying_story(other, item)
-            or same_article_identity(other, item)
+            and not same_article_identity(other, item)
         )
         for other in all_items
     )
@@ -857,9 +904,7 @@ def evidence_label(item: dict) -> str:
     company = item.get("company")
     if company not in NEW_STRUCTURE_AXES:
         return "공식 확인 수준은 원문별 재검증 필요"
-    name = normalize_text(item.get("source") or "").lower()
-    sources = OCS_PRIMARY_SOURCES if company == "OCS Optical Circuit Switching" else NPO_PRIMARY_SOURCES
-    if any(name == primary.lower() for primary in sources):
+    if _is_official_structural_source(item):
         return "당사자·표준단체 발표 — 계약·양산은 문구별 구분"
     return "독립된 신뢰매체 교차확인 — 공식 계약·양산 여부 별도 확인"
 
@@ -870,7 +915,10 @@ def structural_story_key(company: str, title: str) -> str | None:
         if re.search(r"ocp|open compute project", text, re.I) and re.search(r"launch|establish|form", text, re.I) and re.search(r"2025|initial|founding", text, re.I):
             return "ocs|ocp|founding-2025"
     if company == "Huawei OPEN NPO":
-        if re.search(r"launch|first|inaugural|发起|启动|首个", text, re.I) and re.search(r"msa|多源协议", text, re.I) and not re.search(r"2\.0|revision|升级|update|revised", text, re.I):
+        if re.search(r"msa|multi[- ]source agreement|多源协议", text, re.I) and not re.search(
+            r"2\.0|revision|升级|修订|update|revised|ratif(?:ied|y)|新版|new version",
+            text, re.I
+        ) and re.search(r"launch|first|inaugural|发起|启动|首个|initial|initially|publish|releas", text, re.I):
             return "huawei|open-npo|msa-initial-2026-07"
     return None
 
@@ -1624,6 +1672,14 @@ def _self_test_korean_optics_alerts() -> None:
     assert "OCS" not in category_for(cpo_not_ocs, "NVIDIA")
     assert source_priority("Open Compute Project") == 100
     assert evidence_label({"company": "Huawei OPEN NPO", "source": "TrendForce"}).startswith("독립된")
+    assert classify_structural_axis("Huawei OPEN NPO", "Huawei plans to begin OPEN NPO mass production in 2027") is None
+    assert classify_structural_axis("OCS Optical Circuit Switching", "NVIDIA reportedly considers deploying OCS optical circuit switches") is None
+    assert _is_official_structural_source({
+        "company": "Huawei OPEN NPO", "source": "Huawei Cloud", "source_url": "https://www.huaweicloud.com"
+    })
+    assert not _is_official_structural_source({
+        "company": "Huawei OPEN NPO", "source": "Huawei", "source_url": "https://example.com"
+    })
 
 
 def load_state() -> dict:
