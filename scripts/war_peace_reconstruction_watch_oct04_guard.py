@@ -739,6 +739,8 @@ def topic_label(row):
         return "이란·호르무즈 · 유조선 피격"
     if "이스라엘10월7일해외공격위험경고" in ms:
         return "이스라엘 · 10월 7일 해외 공격 위험 경고"
+    if "사우디동서송유관회복" in ms:
+        return "사우디 · 동서 송유관 공급회복"
     if "사우디후티공항정유시설공격클러스터" in ms:
         return "사우디·후티"
     if "목하탈환공세" in ms:
