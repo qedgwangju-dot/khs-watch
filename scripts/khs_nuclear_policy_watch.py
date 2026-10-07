@@ -73,7 +73,7 @@ SMR_FIXED_EVENT_BASELINES = {
 
 # 미국 TVA Clinch River BWRX-300은 국내 SMR 정책축과 분리한 독립 사건축으로 추적한다.
 # 2026-09-28 CPAR-2 건설허가는 이미 알림된 기준선이며 재발송하지 않는다.
-BWRX_US_STATE_MODEL_VERSION = 1
+BWRX_US_STATE_MODEL_VERSION = 3
 BWRX_NRC_RELEASE = "https://www.nrc.gov/about-nrc/news-releases/2026/26-079"
 BWRX_NRC_PROJECT = "https://www.nrc.gov/facilities-safety/new-reactors/advanced-reactors/who-were-working-with/advanced-reactor-application-projects/tva-clinch-river-cpa"
 BWRX_TVA_MEDIA = "https://www.tva.com/news-media"
@@ -2030,6 +2030,31 @@ def main() -> int:
     # 그 이후 실제 실행단계가 공식적으로 상승할 때만 새 알림을 만든다.
     seen["bwrx300_us_state_model_version"] = BWRX_US_STATE_MODEL_VERSION
     previous_bwrx = seen.get("bwrx300_us_state") or {}
+
+    # v1/v2에서 NRC 프로젝트 소개 페이지의 미래 'commissioning' 문구를
+    # 실제 시운전으로 오인해 저장한 상태를 복구한다. 실제 실행 증거가 없는
+    # 저장값은 2026-09-29 건설허가 발급 기준선으로 되돌리고 재발송하지 않는다.
+    previous_bwrx_model_version = int(seen.get("bwrx300_us_state_model_version") or 0)
+    stored_stage = str(previous_bwrx.get("stage") or "")
+    stored_link = str(previous_bwrx.get("link") or "")
+    if (
+        previous_bwrx_model_version < BWRX_US_STATE_MODEL_VERSION
+        and stored_stage in {"commissioning", "fuel_load", "commercial_operation"}
+        and stored_link == BWRX_NRC_PROJECT
+    ):
+        seen["bwrx300_us_state"] = {
+            **BWRX_FIXED_BASELINE,
+            "first_seen_kst": previous_bwrx.get("first_seen_kst") or now.isoformat(timespec="seconds"),
+            "correction_note": "프로젝트 소개 페이지의 미래 milestone 문구 오인 상태 자동 교정",
+        }
+        milestones = seen.setdefault("bwrx300_us_milestones", {})
+        milestones.pop("commissioning", None)
+        milestones.pop("fuel_load", None)
+        milestones.pop("commercial_operation", None)
+        previous_bwrx = seen["bwrx300_us_state"]
+        print("bwrx300_false_future_milestone_state_corrected=true")
+
+    seen["bwrx300_us_state_model_version"] = BWRX_US_STATE_MODEL_VERSION
     if not previous_bwrx:
         seen["bwrx300_us_state"] = {
             **BWRX_FIXED_BASELINE,
