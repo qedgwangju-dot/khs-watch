@@ -110,15 +110,15 @@
       "first_seen_kst": "2026-09-27T00:10:35+09:00"
     },
     "151d45f322185e990de7ee8b": {
-      "title": "NAND Flash Market Bulletin - Sep. 30, 2026",
+      "title": "NAND Flash Market Bulletin - Oct. 7, 2026",
       "source": "TrendForce Research",
-      "published_kst": "2026-09-30T09:00:00+09:00",
+      "published_kst": "2026-10-07T09:00:00+09:00",
       "first_seen_kst": "2026-09-27T00:10:35+09:00"
     },
     "4634b7d554050c4406f1a803": {
-      "title": "DRAM Market Bulletin - Sep. 30, 2026",
+      "title": "DRAM Market Bulletin - Oct. 7, 2026",
       "source": "TrendForce Research",
-      "published_kst": "2026-09-30T09:00:00+09:00",
+      "published_kst": "2026-10-07T09:00:00+09:00",
       "first_seen_kst": "2026-09-27T00:10:35+09:00"
     },
     "7f775cdafa333a3587426d98": {
@@ -625,16 +625,28 @@
       "source": "글로벌이코노믹",
       "published_kst": "2026-10-07T03:45:00+09:00",
       "first_seen_kst": "2026-10-07T06:01:41+09:00"
+    },
+    "9244eb6d2c30b00bf30067dd": {
+      "title": "Nanya Technology Said to Raise DRAM Contract Prices by Up to 20% as Shortage Deepens - BigGo Finance",
+      "source": "BigGo Finance",
+      "published_kst": "2026-10-07T10:05:00+09:00",
+      "first_seen_kst": "2026-10-07T14:43:31+09:00"
+    },
+    "a1df114093a24e7b8b8cd4f6": {
+      "title": "메모리 빅3 신규 팹 2028년에야 문 연다…공급 절벽 덮치자 발등에 불 떨어진 삼성·SK하이닉스 - 글로벌이코노믹",
+      "source": "글로벌이코노믹",
+      "published_kst": "2026-10-07T03:45:00+09:00",
+      "first_seen_kst": "2026-10-07T14:43:31+09:00"
     }
   },
-  "updated_at_kst": "2026-10-07T09:41:48+09:00",
-  "last_scan_count": 39,
-  "last_new_count": 0,
+  "updated_at_kst": "2026-10-07T14:43:31+09:00",
+  "last_scan_count": 41,
+  "last_new_count": 2,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
     "period": "2027",
-    "blended_asp_yoy_pct": 121,
+    "blended_asp_yoy_pct": 121.0,
     "eight_hi_premium_min_pct": 10,
     "eight_hi_premium_max_pct": 20,
     "mainstream_layers": 8,
@@ -665,7 +677,7 @@
     "enterprise_ssd_q4_max_pct": 28,
     "overall_nand_q4_min_pct": 15,
     "overall_nand_q4_max_pct": 20,
-    "essd_bit_demand_yoy_min_pct": 80,
+    "essd_bit_demand_yoy_min_pct": 80.0,
     "incremental_supply_mostly_committed": true,
     "qlc_capacity_expansion": true,
     "pcie6_adoption_ramping": true,
@@ -683,26 +695,24 @@
     "easing_source_url": "https://www.trendforce.com/presscenter/news/20260721-13148.html",
     "secondary_source_url": "https://www.trendforce.com/presscenter/news/20260921-13246.html",
     "source_rank": 3,
-    "as_of": "2026-09-30",
-    "secondary_fab_timeline_source_kind": "뉴시스 업계 관계자 익명 발언 · TrendForce 공식 가이던스 아님",
-    "secondary_fab_timeline_source_url": "https://www.newsis.com/view/NISX20261002_0003812363"
+    "as_of": "2026-09-30"
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-10-07T06:01:49+09:00",
+  "last_successful_delivery_kst": "2026-10-07T14:43:38+09:00",
   "telegram_message_ids": [
-    249
+    251
   ],
-  "telegram_message_id": 249,
+  "telegram_message_id": 251,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      249
+      251
     ],
-    "confirmed_at_kst": "2026-10-07T06:01:49+09:00",
-    "alert_signature": "d2d48dfde0de2b91ace1dab6008f56df6774f1791ea1724654d5e127f7787c65"
+    "confirmed_at_kst": "2026-10-07T14:43:38+09:00",
+    "alert_signature": "d745f4f4522200a4d831a7a91b566eee35e840f07132813e649dbe7394d2482e"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
@@ -864,9 +874,9 @@
     "consumer_nand_supply_short": true,
     "trendforce_nand_easing_year": 2027,
     "trendforce_nand_easing_half": "2H",
-    "trendforce_2026_nand_deficit_min_pct": 4,
-    "trendforce_2026_nand_deficit_max_pct": 5,
-    "trendforce_china_nand_bit_output_share_2027_pct": 19,
+    "trendforce_2026_nand_deficit_min_pct": 4.0,
+    "trendforce_2026_nand_deficit_max_pct": 5.0,
+    "trendforce_china_nand_bit_output_share_2027_pct": 19.0,
     "micron_memory_tight_through_year": 2028,
     "source": "The Wire China / YMTC 익명 직원",
     "source_kind": "The Wire China 원문 제목·공개영역 + 복수 2차 재인용; 회사 공식 가이던스 아님",
