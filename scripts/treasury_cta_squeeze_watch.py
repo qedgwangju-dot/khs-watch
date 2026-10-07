@@ -48,6 +48,7 @@ FORMAT_REVISION = 1
 
 CFTC_TFF = "https://www.cftc.gov/dea/futures/financial_lf.htm"
 CFTC_TFF_HISTORY = "https://www.cftc.gov/files/dea/history/fut_fin_txt_{year}.zip"
+CFTC_TFF_SOCRATA = "https://publicreporting.cftc.gov/resource/gpe5-46if.json"
 TREASURY_YIELD_XML = "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve"
 TREASURY_YIELD_XML_YEAR = TREASURY_YIELD_XML + "&field_tdr_date_value={year}"
 NYFED_SOFR_API = "https://markets.newyorkfed.org/api/rates/secured/sofr/last/1.json"
@@ -286,6 +287,76 @@ def _download_bytes(url: str) -> bytes:
     )
 
 
+def _socrata_cftc_snapshot(live_error: Exception | None = None) -> dict:
+    """Official CFTC Public Reporting fallback for current Treasury TFF rows."""
+    codes = list(CFTC_TREASURY_CODES.values())
+    where = "cftc_contract_market_code in (" + ",".join(f"'{x}'" for x in codes) + ")"
+    query = urllib.parse.urlencode({
+        "$where": where,
+        "$order": "report_date_as_yyyy_mm_dd DESC",
+        "$limit": "500",
+    })
+    url = CFTC_TFF_SOCRATA + "?" + query
+    rows = fetch_json(url)
+    if not isinstance(rows, list) or not rows:
+        raise RuntimeError("CFTC Public Reporting response empty")
+
+    reverse = {v: k for k, v in CFTC_TREASURY_CODES.items()}
+
+    def code(row):
+        return str(row.get("cftc_contract_market_code") or "").replace('"', "").strip()
+
+    def dkey(row):
+        return str(row.get("report_date_as_yyyy_mm_dd") or "")[:10]
+
+    latest_by_key = {}
+    for row in rows:
+        key = reverse.get(code(row))
+        if not key:
+            continue
+        if key not in latest_by_key or dkey(row) > dkey(latest_by_key[key]):
+            latest_by_key[key] = row
+
+    missing = [k for k in CFTC_TREASURY_CODES if k not in latest_by_key]
+    if missing:
+        raise RuntimeError("CFTC Public Reporting missing markets: " + ",".join(missing))
+
+    dates = {k: dkey(v) for k, v in latest_by_key.items()}
+    latest_date = dates["10Y"]
+    mismatch = {k: v for k, v in dates.items() if v != latest_date}
+    if mismatch:
+        raise RuntimeError(f"CFTC Public Reporting latest-date mismatch: {mismatch}")
+
+    def iv(row, field):
+        raw = str(row.get(field) or "").replace(",", "").strip()
+        if raw in ("", "."):
+            raise RuntimeError(f"CFTC Public Reporting missing {field}")
+        return int(float(raw))
+
+    result = {
+        "report_date": datetime.strptime(latest_date, "%Y-%m-%d").strftime("%B %d, %Y").replace(" 0", " "),
+        "markets": {},
+        "source_mode": "CFTC Public Reporting Socrata gpe5-46if",
+        "source_url": CFTC_TFF_SOCRATA,
+    }
+    for key, row in latest_by_key.items():
+        oi = iv(row, "open_interest_all")
+        lev_long = iv(row, "lev_money_positions_long")
+        lev_short = iv(row, "lev_money_positions_short")
+        lev_spread = iv(row, "lev_money_positions_spread")
+        result["markets"][key] = {
+            "open_interest": oi,
+            "leveraged_long": lev_long,
+            "leveraged_short": lev_short,
+            "leveraged_spreading": lev_spread,
+            "leveraged_net": lev_long - lev_short,
+            "short_share_oi_pct": lev_short / oi * 100 if oi else None,
+        }
+    if live_error is not None:
+        result["live_source_error"] = f"{type(live_error).__name__}: {live_error}"
+    return result
+
+
 def _history_cftc_snapshot(live_error: Exception | None = None) -> dict:
     """Official annual TFF compressed fallback for Treasury positioning.
 
@@ -376,13 +447,20 @@ def _history_cftc_snapshot(live_error: Exception | None = None) -> dict:
 
 
 def cftc_snapshot() -> dict:
+    live_exc = None
     try:
         result = _cftc_snapshot_live()
         result["source_mode"] = "CFTC TFF live HTML"
         result["source_url"] = CFTC_TFF
         return result
-    except Exception as live_exc:
-        return _history_cftc_snapshot(live_exc)
+    except Exception as exc:
+        live_exc = exc
+    try:
+        return _socrata_cftc_snapshot(live_exc)
+    except Exception as socrata_exc:
+        result = _history_cftc_snapshot(live_exc)
+        result["socrata_error"] = f"{type(socrata_exc).__name__}: {socrata_exc}"
+        return result
 
 
 def treasury_10y_snapshot() -> dict:
