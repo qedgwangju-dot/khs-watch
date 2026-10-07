@@ -9,7 +9,9 @@ on:
     - cron: "3,13,23 15 * * 1-5"
       timezone: "Asia/Seoul"
   workflow_run:
-    workflows: ["Wonyotti 90D Thesis Telegram Watch"]
+    workflows:
+      - "Wonyotti 90D Thesis Telegram Watch"
+      - "Korea Market Stress and Global Wave Telegram Watch"
     types: [completed]
   workflow_dispatch:
     inputs:
