@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-07T21:56:33+09:00",
+  "updated_at_kst": "2026-10-07T23:39:34+09:00",
   "seen_ids": [
     "00315ac822df3f19f0f17bfd",
     "01899de42b17bb25951592cf",
@@ -48,6 +48,7 @@
     "508271da4f03e4e64f5e8e39",
     "51472fa7253bfc2a1683afa7",
     "522f97838fde7703c1842a9e",
+    "55091923d90dc0ed8d04d739",
     "56e8f0eca1d1bc92b2236a78",
     "59dea53db71c13bdf6c120ef",
     "5a97726e2e93fc7408e02754",
@@ -129,6 +130,7 @@
     "e9cfa9f618010bad720140bb",
     "e9d025e15967b9bfaa912ef4",
     "e9f1478bb2d4988d9cb80d94",
+    "ea2caba6fe4c8f6761890aac",
     "ec0854ae5cc1e577d7a21818",
     "eed867761a24cbad33b1c104",
     "f07ec9c4d4039ee24a7a82d9",
@@ -159,17 +161,19 @@
     "rubin_ultra_spec_192gb_288gb_1tb",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 0,
+  "last_unseen_raw_count": 2,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
-    "rate": 1338.78,
-    "date": "2026-10-06 일일 기준 · ECB/Frankfurter · 조회 2026-10-07 21:56 KST · 보조 API 2026-10-07 · 차이 0.01% · 일중 기준시각 차이 가능",
+    "rate": 1338.69,
+    "date": "2026-10-07 일일 기준 · ECB/Frankfurter · 조회 2026-10-07 23:39 KST · 보조 API 2026-10-07 · 차이 0.02% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
-  "errors": [],
+  "errors": [
+    "원문 URL 확인 실패: Wccftech | Samsung’s 12-Hi HBM4E Reportedly Passes NVIDIA Qualification, Paving Way For Next-Gen AI GPU Supply - Wccftech"
+  ],
   "ai_component_leadtime": {
     "as_of": "2026-10-05",
     "source": "https://insights.trendforce.com/p/weekly-radar-004",
@@ -293,13 +297,13 @@
       "https://www.trendforce.com/news/",
       "https://www.trendforce.com/research"
     ],
-    "last_checked_at_kst": "2026-10-07T21:56:46+09:00",
-    "candidate_count": 3,
+    "last_checked_at_kst": "2026-10-07T23:39:48+09:00",
+    "candidate_count": 7,
     "errors": []
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-07T21:56:56+09:00",
+    "checked_at_kst": "2026-10-07T23:40:31+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-06T18:05:16+09:00",
@@ -367,7 +371,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-10-07",
-    "last_checked_at_kst": "2026-10-07T21:56:48+09:00"
+    "last_checked_at_kst": "2026-10-07T23:40:22+09:00"
   },
   "samsung_electromechanics_cpu_realization": {
     "as_of": "2026-09-23",
@@ -403,7 +407,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-10-07",
-    "last_checked_at_kst": "2026-10-07T21:56:50+09:00",
+    "last_checked_at_kst": "2026-10-07T23:40:25+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -447,7 +451,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-07T21:56:52+09:00",
+    "last_checked_at_kst": "2026-10-07T23:40:27+09:00",
     "candidate_count": 0,
     "event_count": 0,
     "area_structure": {
