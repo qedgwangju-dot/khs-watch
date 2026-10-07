@@ -12,6 +12,7 @@ class ECBPolicyWatchTests(unittest.TestCase):
         The conflict in the Middle East continues to generate inflation pressures.
         """
         parsed = watch.parse_decision(text)
+        self.assertTrue(parsed["valid"])
         self.assertEqual(parsed["action"], "인상")
         self.assertEqual(parsed["bp"], 25.0)
         self.assertEqual(parsed["deposit"], 2.50)
@@ -19,19 +20,42 @@ class ECBPolicyWatchTests(unittest.TestCase):
         self.assertEqual(parsed["main_refi"], 2.65)
         self.assertEqual(parsed["marginal"], 2.90)
 
-    def test_statement_separates_indirect_and_second_round(self):
+    def test_invalid_decision_fails_closed(self):
+        parsed = watch.parse_decision("The Governing Council discussed monetary policy.")
+        self.assertFalse(parsed["valid"])
+
+    def test_statement_current_vs_risk_is_separated(self):
         text = """
-        The duration of the energy shock matters. Higher energy costs can feed into food prices.
-        We monitor indirect and second-round effects, wage growth and inflation expectations. Gas prices also matter.
+        Because energy inflation did not rise as much as anticipated, we are not really seeing much of the indirect effects.
+        Some are visible, but it is still contained. Second-round effects, we're not seeing.
+        We are taking into account higher food prices in the future.
+        If we continue to have this longer-than-anticipated energy shock, it would impact food prices.
+        Gas prices could also increase if supply is disrupted.
         """
         parsed = watch.parse_statement(text)
         self.assertTrue(parsed["energy"])
         self.assertTrue(parsed["food"])
         self.assertTrue(parsed["indirect"])
         self.assertTrue(parsed["second_round"])
-        self.assertTrue(parsed["wages"])
-        self.assertTrue(parsed["expectations"])
+        self.assertTrue(parsed["indirect_contained"])
+        self.assertTrue(parsed["second_round_not_seen"])
+        self.assertTrue(parsed["food_future"])
+        self.assertTrue(parsed["longer_energy"])
         self.assertTrue(parsed["gas"])
+
+    def test_extract_official_links_from_index(self):
+        html = """
+        <a href="/press/pr/date/2026/html/ecb.mp260910~abc.en.html">Monetary policy decisions</a>
+        <a href="/press/press_conference/monetary-policy-statement/2026/html/ecb.is260910~def.en.html">
+          Monetary policy statement
+        </a>
+        """
+        rows = watch.extract_official_links(html, "https://www.ecb.europa.eu/press/press_conference/html/index.en.html")
+        self.assertEqual(len(rows), 2)
+        self.assertEqual(rows[0]["kind"], "decision")
+        self.assertEqual(rows[0]["date"], "2026-09-10")
+        self.assertEqual(rows[1]["kind"], "statement")
+        self.assertEqual(rows[1]["date"], "2026-09-10")
 
     def test_alert_is_readable_and_explains_ecb(self):
         item = {"date": "2026-09-10", "link": "https://www.ecb.europa.eu/example"}
@@ -59,15 +83,24 @@ class ECBPolicyWatchTests(unittest.TestCase):
             "gas": True,
             "fertil": True,
             "transport": True,
+            "indirect_contained": True,
+            "second_round_not_seen": True,
+            "food_future": True,
+            "longer_energy": True,
         }
-        _, body, _ = watch.build_main_alert(item, decision, item, statement)
+        _, body, detail = watch.build_main_alert(item, decision, item, statement)
         self.assertIn("ECB는?", body)
-        self.assertIn("유럽중앙은행", body)
+        self.assertIn("21개국", body)
         self.assertIn("2.25% → 2.50%", body)
-        self.assertIn("간접 파급", body)
-        self.assertIn("2차 파급", body)
+        self.assertIn("간접 파급은 아직 제한적", body)
+        self.assertIn("2차 파급은 아직 관측되지 않았", body)
+        self.assertIn("식료품 가격 상승 자체는 간접 파급", body)
         self.assertIn("시장에서 볼 것", body)
         self.assertIn("다음 확인", body)
+        self.assertTrue(detail["signature"])
+
+    def test_signature_is_deterministic(self):
+        self.assertEqual(watch.signature({"b": 2, "a": 1}), watch.signature({"a": 1, "b": 2}))
 
 
 if __name__ == "__main__":
