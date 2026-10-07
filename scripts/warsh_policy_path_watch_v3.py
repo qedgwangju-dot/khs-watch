@@ -65,6 +65,7 @@ def message_v3(snap, cls):
     lines = [
         '<b>[Warsh 금리경로·대차대조표 종합]</b>',
         '',
+        f"• <b>시장자료 기준</b>: {html.escape(str(snap.get('market_data_basis') or snap.get('source_kind') or '연방기금금리 선물 기반 경로'))}",
         '<b>핵심 판정</b>',
         f"• <b>시장 경로</b>: {html.escape(cls['verdict'])}",
         f"• <b>현재 공식 기준</b>: {cls['baseline_rate']:.3f}% ({html.escape(cls['baseline_kind'])})",
@@ -98,7 +99,7 @@ def message_v3(snap, cls):
         '<b>원천</b>',
     ]
     src = [
-        base.link('연방기금금리 선물 기반 경로', snap['url']),
+        base.link('연방기금금리 선물 결제값·경로', snap['url']),
         base.link('CME FedWatch 방법론', base.CME_URL),
         base.link('연준 FOMC 일정', base.FED_CALENDAR),
     ]
@@ -196,7 +197,7 @@ def main():
         'meetings': snap['meetings'],
         'classification': cls,
         'source': snap['url'],
-        'source_status': '실시간 조회·연준 공식범위 교차검증 통과',
+        'source_status': '시장원천 최신성·연준 공식범위 교차검증 통과',
         'source_error': None,
         'source_error_streak': 0,
         'source_health_alerted': False,
