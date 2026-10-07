@@ -34,7 +34,7 @@ OFFICIAL_UNPUBLISHED_POLL_HOURS = 3
 OFFICIAL_PUBLISHED_POLL_HOURS = 24
 OFFICIAL_PUBLICATION_EXPECTED_DAY = 15
 OFFICIAL_SOURCE_HEALTH_VERSION = 2
-COMPARE_VERSION = 4
+COMPARE_VERSION = 5
 EVENT_STATE_VERSION = 2
 SHARE_TRACK_VERSION = 1
 BROKER_FORECAST_TRACK_VERSION = 3
@@ -619,9 +619,12 @@ def fetch_data_go_sido_month(month: str, sido_cd: str) -> tuple[dict | None, str
             continue
         if period and not period.startswith(month):
             continue
-        amt = _number(_xml_text(item, "expUsdAmt", "expDlr"))
-        if amt is None:
+        raw_thousand_usd = _number(_xml_text(item, "expUsdAmt", "expDlr"))
+        if raw_thousand_usd is None:
             continue
+        # The regional API field expUsdAmt is expressed in thousand USD
+        # even though the portal label is easy to read as plain dollars.
+        amt = raw_thousand_usd * 1000.0
         return {
             "month": month,
             "amount_usd": amt,
@@ -630,6 +633,7 @@ def fetch_data_go_sido_month(month: str, sido_cd: str) -> tuple[dict | None, str
             "source": "공공데이터포털 관세청 시도별 품목별 수출입실적 API",
             "api": True,
             "scope": "regional_hsk10_exact",
+            "raw_amount_unit": "thousand_usd",
         }, ""
     return None, f"공공데이터포털 시도 API {sido_cd} {month} HSK {HBM_HSK10} 데이터 없음"
 
@@ -810,7 +814,8 @@ def fetch_kcs_region_month(month: str, region: dict, session=None) -> tuple[dict
         if target is None:
             continue
 
-        amt = _normalize_export_usd(_number(target.get("expUsdAmt")))
+        raw_thousand_usd = _number(target.get("expUsdAmt"))
+        amt = raw_thousand_usd * 1000.0 if raw_thousand_usd is not None else None
         weight = _number(target.get("expTtwg"))
         if amt is None:
             continue
@@ -2605,7 +2610,10 @@ def _official_poll_due(state: dict, now: datetime) -> tuple[bool, int]:
         if state.get("last_successful_official_month") == target_month
         else OFFICIAL_UNPUBLISHED_POLL_HOURS
     )
-    if int(state.get("official_source_health_version") or 0) < OFFICIAL_SOURCE_HEALTH_VERSION:
+    if (
+        int(state.get("official_source_health_version") or 0) < OFFICIAL_SOURCE_HEALTH_VERSION
+        or int(state.get("compare_version") or 0) < COMPARE_VERSION
+    ):
         return True, interval
     raw = state.get("last_official_poll_attempt_kst") or ""
     try:
@@ -3322,14 +3330,38 @@ def main() -> None:
         )
     )
 
+    regional_unit_correction_due = bool(
+        official
+        and int(state.get("compare_version") or 0) < COMPARE_VERSION
+        and state.get("last_official_alert_month") == official_month
+    )
+
     if monthly_due and official:
         monthly_text = build_monthly(now, rate, fx_basis, official)
+        if regional_unit_correction_due:
+            monthly_text = "\n".join([
+                "⚠️ <b>정정 — 삼성·SK하이닉스 지역 수출금액 단위</b>",
+                "• 관세청 시도별 API의 <b>expUsdAmt는 천 달러 단위</b>입니다.",
+                "• 이전 파서가 이를 달러로 읽을 수 있던 경로를 제거하고 <b>×1,000</b>으로 원 단위를 복원했습니다.",
+                "• 아래 수치는 원자료를 다시 조회해 계산한 교정값이며, 과거 잘못 표시된 지역 금액은 최신 기준선으로 사용하지 않습니다.",
+                "",
+            ]) + monthly_text
         if source_health_alert and previous_source_health.get("status") == "error":
             monthly_text = source_health_alert + "\n<<<TELEGRAM_MESSAGE_BREAK>>>\n\n" + monthly_text
         ALERT.write_text(monthly_text, encoding="utf-8")
         state["last_monthly_digest"] = month_key
         state["last_official_alert_month"] = official_month
         state["compare_version"] = COMPARE_VERSION
+        if regional_unit_correction_due:
+            corrections = list(state.get("state_corrections") or [])
+            corrections.append({
+                "type": "regional_export_amount_unit",
+                "from": "expUsdAmt treated as USD",
+                "to": "expUsdAmt thousand USD × 1000",
+                "corrected_at_kst": now.isoformat(timespec="seconds"),
+                "official_month": official_month,
+            })
+            state["state_corrections"] = corrections[-20:]
         # Do not consume pending topic-state changes behind a monthly alert.
         # They remain eligible on the next run.
     elif source_health_alert:
