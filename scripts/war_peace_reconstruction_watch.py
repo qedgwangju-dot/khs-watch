@@ -315,6 +315,16 @@ def run(test=False):
     gathered, errors = [], []
     for q in QUERIES:
         rows, err = google_news(q)
+        # 일시적 RSS/검색 오류는 같은 실행 안에서 한 번 즉시 재시도한다.
+        # 첫 시도보다 재시도 결과가 더 완전하면 더 많은 결과를 보존한다.
+        if err:
+            retry_rows, retry_err = google_news(q)
+            if retry_rows and len(retry_rows) > len(rows):
+                rows = retry_rows
+            if retry_err is None:
+                err = None
+            else:
+                err = retry_err
         if err:
             errors.append(err)
         gathered.extend(rows)
@@ -362,6 +372,8 @@ def run(test=False):
     ]
     if errors:
         summary.append(f"- 소스 오류: {len(errors)}개")
+        for err in list(dict.fromkeys(errors))[:5]:
+            summary.append(f"  - {err}")
     SUMMARY.write_text("\n".join(summary) + "\n", encoding="utf-8")
 
 
