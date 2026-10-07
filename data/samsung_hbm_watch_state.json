@@ -310,11 +310,11 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-10",
-  "updated_at_kst": "2026-10-07T20:05:38+09:00",
+  "updated_at_kst": "2026-10-07T20:09:59+09:00",
   "last_event_count": 0,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
-  "monthly_due": true,
+  "monthly_due": false,
   "compare_version": 5,
   "official_month": "202608",
   "official_data_ok": true,
@@ -2306,7 +2306,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-10-07T20:05:38+09:00",
+      "last_checked_at_kst": "2026-10-07T20:09:59+09:00",
       "gaps": [
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
@@ -2378,8 +2378,8 @@
     "payload_hash": "a97ec36db166a73cf20244523b7f242b7bc7a7239bcd9fa7e4f7d5cab584eafa"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-07T20:07:04+09:00",
-    "status": "confirmed"
+    "checked_at_kst": "2026-10-07T20:10:51+09:00",
+    "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
   "state_corrections": [
