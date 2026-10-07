@@ -25,6 +25,7 @@ def main() -> None:
     parser.add_argument("--market-scope-artifact-dir", type=Path)
     parser.add_argument("--follow-on-artifact-dir", type=Path)
     parser.add_argument("--dry-run-artifact-dir", type=Path)
+    parser.add_argument("--final-dry-run-artifact-dir", type=Path)
     args = parser.parse_args()
     report_path = args.artifact_dir / "out/gamejoa_preopen_news_radar.json"
     delivery_path = args.artifact_dir / "out/gamejoa_preopen_news_radar_delivery.json"
@@ -182,6 +183,67 @@ def main() -> None:
         dry_run = {"remote_dry_run": True, "source_bodies_checked": 7, "selected_after_fix": 4,
                    "weak_market_impact_withheld": 3, "retained_cores_source_bound": 4,
                    "external_delivery_proven": False}
+    final_dry_run = None
+    if args.final_dry_run_artifact_dir:
+        final_root = args.final_dry_run_artifact_dir
+        final_out = final_root / "out"
+        final_report = json.loads((final_out / "gamejoa_preopen_news_radar.json").read_text(encoding="utf-8"))
+        assert not (final_out / "gamejoa_preopen_news_radar_delivery.json").exists()
+        assert len(final_report["alerts"]) == 7
+        assert all(item.get("body_verified") and item.get("source_body") for item in final_report["alerts"])
+        lg_proof = next(item for item in json.loads(radar.telegram.VERIFIED_EVENT_ALIAS_PATH.read_text(
+            encoding="utf-8"))["entries"] if item.get("message_id") == 2388
+            and item["source_title"].startswith("LG전자 3분기"))
+        assert market_scope is not None
+        sent_lg = next(item for item in scope_report["alerts"] if item["link"] == lg_proof["link"])
+        assert sent_lg["source_title"] == lg_proof["source_title"]
+        assert sent_lg["published"] == lg_proof["source_published_kst"]
+        assert hashlib.sha256(sent_lg["source_body"].encode("utf-8")).hexdigest() == lg_proof["source_body_sha256"]
+        assert radar.market_materiality.verified_source_body_digest(sent_lg) == lg_proof["source_body_digest"]
+        assert lg_proof["link"] in scope_markdown.decode("utf-8")
+        later_lg = next(item for item in final_report["alerts"] if "LG전자 3분기 영업익" in item["source_title"])
+        assert later_lg["link"] != sent_lg["link"]
+        assert radar.market_materiality.source_event_identity(later_lg) == lg_proof["source_event_identity"]
+        final_now = dt.datetime.fromisoformat(final_report["query_time_kst"])
+        with patch.object(radar.telegram, "SEEN_PATH", final_root / "data/gamejoa_preopen_news_radar_seen.json"):
+            final_seen = radar.telegram.load_seen_state()
+            event_key = "event:" + radar.telegram.digest_seen(lg_proof["source_event_identity"])
+            assert final_seen["seen"][event_key]["event_alias_evidence_message_id"] == 2388
+            with patch.object(radar.telegram, "load_seen_state", return_value=final_seen):
+                fresh, skipped = radar.telegram.filter_previously_seen_alerts(
+                    final_report["alerts"], final_now, "live")
+        assert len(fresh) == 6 and len(skipped) == 1
+        assert skipped[0]["source_title"] == later_lg["source_title"]
+        rate = {"value": 1338.78, "status": "일일 기준", "reference_time_kst": "2026-10-06",
+                "source": "archived FX", "url": "https://example.com/fx"}
+        fx_snapshot = {"rates": {"USD": rate}}
+        with patch.object(radar.base, "kst_now", return_value=final_now), \
+                patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}), \
+                patch.object(radar, "collect_fx_snapshot", return_value=fx_snapshot):
+            final_selected = radar.compact_quality_final_alerts(fresh, 7)
+        assert len(final_selected) == 3, [item["source_title"] for item in final_selected]
+        selected_titles = [item["source_title"] for item in final_selected]
+        assert any("파라마운트" in title for title in selected_titles)
+        assert any("파라택시스" in title for title in selected_titles)
+        assert any("포스코" in title for title in selected_titles)
+        rejected = {item["source_title"]: item.get("_exclusion_reason", "") for item in fresh
+                    if item["link"] not in {kept["link"] for kept in final_selected}}
+        assert len(rejected) == 3, rejected
+        for token, reason in (("오세훈", "housing_credit_dispute_without_new_policy_or_project"),
+                              ("남해관광", "anonymous_municipal_vendor_dispute_without_listed_issuer"),
+                              ("365mc", "biomedical_mou_without_funding_clinical_result_or_approval")):
+            assert any(token in title and reason in exclusion for title, exclusion in rejected.items()), rejected
+        assert all(not radar.source_core_fact_errors(item) for item in final_selected)
+        assert not generated_guard.duplicate_event_errors(final_selected, radar)
+        for index, item in enumerate(final_selected, 1):
+            block = radar.compact_alert(item, index, final_now, {}, {})
+            assert not radar.compact_alert_block_errors(block), block
+            assert item["link"] in block
+        final_dry_run = {"remote_dry_run": True, "source_bodies_checked": 7,
+                         "prior_acknowledged_repeat_blocked": 1,
+                         "weak_market_impact_withheld": 3,
+                         "selected_after_fix": 3, "source_bound_rendered": 3,
+                         "external_delivery_proven": False}
     print(json.dumps({
         "acknowledged_message_id": 2373,
         "source_bodies_checked": len(report["alerts"]),
@@ -194,6 +256,7 @@ def main() -> None:
         "market_scope_replay": market_scope,
         "follow_on_replay": follow_on,
         "dry_run_replay": dry_run,
+        "final_dry_run_replay": final_dry_run,
     }, ensure_ascii=False))
 
 

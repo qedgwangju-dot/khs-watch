@@ -4377,6 +4377,62 @@ class IncrementalNewsTests(unittest.TestCase):
         self.assertFalse(radar.source_headline_event_fact(
             partnership_title, partnership_body.replace('명시되지 않았다', '명시됐다')))
 
+    def test_municipal_dispute_political_credit_and_exploratory_mou_are_withheld(self):
+        cases = (
+            ('시장, 인허가 성과 놓고 정부와 공방',
+             '시장은 인허가 성과가 정부 아닌 시의 성과라고 정면 반박했다.',
+             'housing_credit_dispute_without_new_policy_or_project'),
+            ('남해 관광재단, 업체 선정 특혜 논란',
+             '남해군 관광재단은 A업체 선정 특혜 논란에 대해 해명했다.',
+             'anonymous_municipal_vendor_dispute_without_listed_issuer'),
+            ('의료기업, 바이오 신약 공동개발 추진',
+             '의료기업은 신약 공동개발 업무협약(MOU)을 맺고 협력 가능성을 검토한다.',
+             'biomedical_mou_without_funding_clinical_result_or_approval'),
+        )
+        for title, body, reason in cases:
+            with self.subTest(title=title):
+                self.assertEqual(materiality.assess(title, body)['reason'], reason)
+        self.assertNotEqual(materiality.assess(
+            cases[0][0], cases[0][1] + ' 신규 택지 10만 가구 공급을 확정 발표했다.')['reason'],
+            cases[0][2])
+        self.assertNotEqual(materiality.assess(
+            cases[2][0], cases[2][1] + ' 임상 2상 결과가 발표됐다.')['reason'],
+            cases[2][2])
+
+    def test_quarterly_earnings_identity_matches_outlets_but_preserves_revision(self):
+        published = '2026-10-07T11:22+09:00'
+        first = {'source_title': 'LG전자 3분기 영업익 7천818억…3분기 누적 첫 4조 넘어(종합)',
+                 'published': published, 'body_verified': True,
+                 'source_body': 'LG전자는 연결 기준 올해 3분기 영업이익이 7천818억원으로 잠정 집계됐다고 공시했다.'}
+        second = {**first, 'source_title': '[속보] LG전자 3분기 영업이익 7천818억원…전년보다 증가'}
+        identity = materiality.source_event_identity(first)
+        self.assertTrue(identity.startswith('source_event:v2:issuer_quarterly_earnings:'))
+        self.assertEqual(identity, materiality.source_event_identity(second))
+        self.assertNotEqual(identity, materiality.source_event_identity({
+            **second, 'source_body': second['source_body'].replace('7천818억원', '8천100억원')}))
+        self.assertNotEqual(identity, materiality.source_event_identity({
+            **second, 'published': '2027-10-07T11:22+09:00'}))
+        self.assertEqual(materiality.quarterly_earnings_release_observation({
+            **second, 'body_verified': False}), {})
+
+    def test_verified_quarterly_earnings_alias_requires_matching_prior_receipt(self):
+        proof = next(item for item in json.loads(telegram.VERIFIED_EVENT_ALIAS_PATH.read_text(encoding='utf-8'))['entries']
+                     if item['message_id'] == 2388 and item['source_title'].startswith('LG전자 3분기'))
+        receipt = {'link': proof['link'], 'title': proof['source_title'],
+                   'first_seen_kst': '2026-10-07T12:49:00+09:00',
+                   'source_body_digest': proof['source_body_digest'],
+                   'lanes': {'live': '2026-10-07T12:49:00+09:00'}}
+        key = 'event:' + telegram.digest_seen(proof['source_event_identity'])
+        for original, expected in ((receipt, True),
+                                   ({**receipt, 'source_body_digest': '0' * 64}, False),
+                                   ({**receipt, 'link': 'https://example.com/other'}, False)):
+            with self.subTest(expected=expected, original=original):
+                state = {'seen': {'link:prior': dict(original)}}
+                telegram.migrate_seen_verified_event_aliases(state)
+                self.assertEqual(key in state['seen'], expected)
+                if expected:
+                    self.assertEqual(state['seen'][key]['event_alias_evidence_message_id'], 2388)
+
 
 if __name__ == "__main__":
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(IncrementalNewsTests)

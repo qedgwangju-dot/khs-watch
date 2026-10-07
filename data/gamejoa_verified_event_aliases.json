@@ -620,6 +620,16 @@
       "source_event_identity": "source_event:v1:us:equity_close:2026-10-05:nasdaq=27477.31:change=1.05",
       "run_id": 37480540629,
       "message_id": 2343
+    },
+    {
+      "source_title": "LG전자 3분기 영업익 7천818억…3분기 누적 첫 4조 넘어(종합)",
+      "link": "https://www.fnnews.com/news/202610071122082165",
+      "source_published_kst": "2026-10-07T11:22+09:00",
+      "source_body_sha256": "58dbfbe9222080f82044d0ed1130430be972241c42250a77f23cda7df485dee5",
+      "source_body_digest": "11cd496d784bab32d7f85c932250abd21e68d0f4507d93102e44311180cf7a7c",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:e2acfca755fa0f0c638b15ca1cf389ba52ff33f8df246288f3149c1e0a1e123e",
+      "run_id": 37568006684,
+      "message_id": 2388
     }
   ]
 }

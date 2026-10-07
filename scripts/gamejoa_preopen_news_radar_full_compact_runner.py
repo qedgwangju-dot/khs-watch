@@ -2604,6 +2604,39 @@ def source_headline_event_fact(title: str, body: str) -> str:
     focus = market_materiality.focus_kind(title)
     source = market_materiality.source_reported_body(body)
     rows = market_materiality.source_sentences(source)
+    if 'LG전자' in title and re.search(r'3분기\s*영업익', title):
+        profit = re.search(r'3분기\s+영업이익이\s+(\S+억원)으로\s+작년\s+동기보다\s+([\d.]+%)\s+증가', source)
+        consensus = re.search(r'시장\s+전망치\s+(\S+억원)을\s+([\d.]+%)\s+하회', source)
+        sales = re.search(r'매출은\s+(\S+억원)으로\s+작년\s+동기\s+대비\s+([\d.]+%)\s+증가', source)
+        if profit and consensus and sales:
+            fact = (f'LG전자 3분기 잠정 영업이익은 {profit[1]}으로 전년 대비 {profit[2]} 증가했지만 '
+                    f'시장 전망치 {consensus[1]}을 {consensus[2]} 밑돌았다. '
+                    f'매출은 {sales[1]}으로 {sales[2]} 증가했다.')
+            return fact if core_sentence_is_complete(fact) else ''
+    if re.search(r'파라마운트.*워너.*인수\s*완료', title):
+        acquisition = re.search(r'파라마운트스카이댄스가[^.!?\n]{0,55}?(\d+억\s*달러)\s+규모의\s+워너브러더스디스커버리\s+인수를\s+완료', source)
+        listing = re.search(r'통합회사의\s+주식은[^.!?\n]{0,100}?[‘\'](SKYD)[’\']라는\s+종목코드로\s+거래를\s+시작', source)
+        if acquisition and listing:
+            fact = (f'로이터 인용 보도에 따르면 파라마운트스카이댄스가 워너브러더스디스커버리 '
+                    f'{acquisition[1]} 인수를 완료했다. 통합회사는 뉴욕증권거래소에서 {listing[1]}로 거래를 시작했다.')
+            return fact if core_sentence_is_complete(fact) else ''
+    if re.search(r'파라택시스.*합병\s*무산', title):
+        withdrawal = re.search(r'파라택시스이더리움은[^.!?\n]{0,75}?파라택시스코리아와의\s+흡수합병\s+결정을\s+철회했다', source)
+        delisting = re.search(r'파라택시스코리아의\s+상장폐지\s+리스크|합병\s+상대방의\s+상장폐지\s+문제', source)
+        if withdrawal and delisting:
+            fact = ('파라택시스이더리움이 파라택시스코리아 흡수합병 결정을 철회했다. '
+                    '상대 회사의 상장폐지 리스크로 합병계약이 해제되고 예정된 임시주총도 철회됐다.')
+            return fact if core_sentence_is_complete(fact) else ''
+    if '포스코' in title and '아르헨티나' in title and '리튬' in title:
+        completed = re.search(r'포스코홀딩스는[^.!?\n]{0,170}?염수리튬\s+2공장\s+상공정\s+준공식을\s+개최했다고', source)
+        second = re.search(r'2공장\s+상공정은\s+연간\s+([\d만천백십]+t)의\s+탄산리튬\s+생산능력을\s+갖췄다', source)
+        total = re.search(r'아르헨티나\s+현지\s+생산능력은\s+연간\s+([\d만천백십]+t)으로\s+늘어난다', source)
+        downstream = re.search(r'2027년[^.!?\n]{0,70}?하공정과\s+연계', source)
+        if completed and second and total and downstream:
+            fact = (f'포스코홀딩스가 아르헨티나 염수리튬 2공장 상공정을 준공했다. '
+                    f'2공장 탄산리튬 연산 {second[1]}, 현지 합산 연산 {total[1]}이며 '
+                    '수산화리튬 5만t 체제는 국내 하공정 연계 이후 목표다.')
+            return fact if core_sentence_is_complete(fact) else ''
     if 'LG전자' in title and re.search(r'3분기.*누적.*(?:매출|영업)', title):
         quarter = re.search(r'3분기\s+연결기준\s+매출액\s+(\d+조\d+억원),\s+영업이익\s+(\d+억원)의\s+잠정실적', source)
         cumulative = re.search(r'1[~∼-]3분기\s+누적\s+매출액은\s+(\d+조\d+억원)', source)
@@ -11347,7 +11380,13 @@ def source_core_fact_errors(alert: dict) -> list[str]:
              or (re.search(r'(?:外人|외인|외국인).*투자.*도착', title)
                  and '외국인직접투자 자금 도착액' in expected_observation)
              or ('애플' in title and 'LG전자' in title and re.search(r'스마트홈.*공동\s*개발', title)
-                 and '인증 문서에 애플 협력은 명시되지 않았다' in expected_observation))
+                 and '인증 문서에 애플 협력은 명시되지 않았다' in expected_observation)
+             or (re.search(r'파라택시스.*합병\s*무산', title)
+                 and '흡수합병 결정을 철회했다' in expected_observation
+                 and '상장폐지 리스크' in expected_observation)
+             or ('포스코' in title and '아르헨티나' in title and '리튬' in title
+                 and '2공장 상공정을 준공했다' in expected_observation
+                 and '현지 합산 연산' in expected_observation))
             and source_audit["disposition"] == "keep" and source_audit["priority"] >= 2
             and expected_observation
             and market_materiality.canonical_source_fact(expected_observation) == market_materiality.canonical_source_fact(observation_core)

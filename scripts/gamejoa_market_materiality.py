@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 105
+VERSION = 106
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -2453,6 +2453,35 @@ def macro_model_report_observation(title: str, body: str) -> dict[str, str]:
             'revision': canonical_source_fact(revision)}
 
 
+def quarterly_earnings_release_observation(alert: dict) -> dict[str, str]:
+    """Key a filed preliminary result by issuer, fiscal period and reported profit."""
+    if not alert.get('body_verified') or not alert.get('source_body'):
+        return {}
+    published = str(alert.get('published') or '')
+    if not re.match(r'20\d{2}-\d{2}-\d{2}', published):
+        return {}
+    title = re.sub(r'^\s*(?:\[(?:\d+보|속보|상보|종합)\]\s*)+', '',
+                   str(alert.get('source_title') or alert.get('original_news') or ''))
+    headline = re.match(r'(?P<issuer>[가-힣A-Za-z0-9&·]{2,30}).{0,30}?(?P<quarter>[1-4])분기.{0,25}?영업(?:이익|익)', title)
+    if not headline:
+        return {}
+    issuer, quarter = headline['issuer'], headline['quarter']
+    source = source_reported_body(str(alert['source_body']))
+    release = re.search(
+        rf'{re.escape(issuer)}(?:\[\d{{6}}\])?(?:은|는|가)?[^.!?\n]{{0,75}}?'
+        rf'연결\s+기준\s+올해\s+{quarter}분기\s+영업이익이\s+'
+        rf'(?P<profit>\d[\d,천백십만억조]*원)[^!?\n]{{0,150}}?'
+        r'잠정\s*(?:집계|실적)[^!?\n]{0,30}?공시했다',
+        source,
+    )
+    if not release:
+        return {}
+    return {'issuer': issuer, 'fiscal_year': published[:4], 'quarter': quarter,
+            'metric': 'consolidated_operating_profit',
+            'amount_won': korean_amount_value(release['profit'].removesuffix('원')),
+            'stage': 'preliminary_filing'}
+
+
 def source_event_identity(alert: dict) -> str:
     """Identify a sourced action and its terms, not a company-wide theme.
 
@@ -2461,6 +2490,10 @@ def source_event_identity(alert: dict) -> str:
     """
     title = str(alert.get('source_title') or alert.get('original_news') or alert.get('news') or '')
     body = str(alert.get('source_body') or '') if alert.get('body_verified') else ''
+    quarterly_earnings = quarterly_earnings_release_observation(alert)
+    if quarterly_earnings:
+        digest = hashlib.sha256(json.dumps(quarterly_earnings, ensure_ascii=False, sort_keys=True).encode('utf-8')).hexdigest()
+        return f'source_event:v2:issuer_quarterly_earnings:{digest}'
     annual_contract = anonymous_annual_mlcc_terms(title, body, str(alert.get('published') or ''))
     if annual_contract:
         for proof in verified_event_aliases():
@@ -3553,6 +3586,25 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
     global_issuer_change = re.search(r"(?:글로벌|세계|미국|유럽).{0,45}(?:분기|연간).{0,35}(?:매출|판매|영업이익)|(?:현대차|기아|삼성전자|LG전자).{0,40}(?:점유율|매출|판매량)", body[:2500])
     if foreign_brand_local_sales and not global_issuer_change:
         result.update(disposition="exclude", priority=0, reason="foreign_brand_local_sales_without_market_wide_effect")
+        return result
+    housing_credit_dispute = bool(re.search(r"(?:인허가|착공).{0,25}(?:정부\s*아닌|성과|공방)|(?:정부\s*아닌|성과\s*공방).{0,25}(?:인허가|착공)", title)
+                                  and re.search(r"정면\s*반박|정부의\s*속도전|정부가.{0,35}도와주었", body[:1800]))
+    new_housing_action = re.search(r"(?:신규|새로운).{0,20}(?:택지|인허가\s*규제|착공\s*승인).{0,25}(?:확정|발표|시행)|(?:공급|착공)\s*계약.{0,25}체결", body[:1800])
+    if housing_credit_dispute and not new_housing_action:
+        result.update(disposition="exclude", priority=0, reason="housing_credit_dispute_without_new_policy_or_project")
+        return result
+    local_vendor_dispute = bool(re.search(r"(?:특혜|선정).{0,20}(?:논란|의혹)|(?:특혜\s*논란)", title)
+                                and re.search(r"(?:군|시|구).{0,15}(?:관광|문화|체육).{0,10}재단", body[:1400])
+                                and re.search(r"[AB]업체|특정\s*업체", body[:1400]))
+    listed_vendor = re.search(r"(?:상장사|상장기업|코스피|코스닥).{0,65}(?:수주|입찰|계약|제재)|(?:수주|계약).{0,65}(?:상장사|상장기업|코스피|코스닥)", body[:1800])
+    if local_vendor_dispute and not listed_vendor:
+        result.update(disposition="exclude", priority=0, reason="anonymous_municipal_vendor_dispute_without_listed_issuer")
+        return result
+    exploratory_biomedical_mou = bool(re.search(r"(?:신약|건기식|GLP-1|바이오).{0,35}(?:공동개발|공동연구)|(?:공동개발|공동연구).{0,35}(?:신약|건기식|GLP-1|바이오)", title, re.I)
+                                    and re.search(r"업무협약\s*\(MOU\)|양해각서", body[:1800], re.I))
+    binding_biomedical_evidence = re.search(r"(?:계약금|마일스톤|보조금|확정\s*투자).{0,25}\d[\d,]*(?:억|조)\s*원|(?:임상\s*[1-3]상|품목허가).{0,40}(?:결과|승인)|(?:공급|판매)\s*계약.{0,25}체결", body[:2400])
+    if exploratory_biomedical_mou and not binding_biomedical_evidence:
+        result.update(disposition="exclude", priority=0, reason="biomedical_mou_without_funding_clinical_result_or_approval")
         return result
     local_facility = (
         re.match(r"^(?:서울|부산|대구|인천|광주|대전|울산|세종|경기|강원|충북|충남|전북|전남|경북|경남|제주)(?:시|도|군|구)[,\s]", title)
