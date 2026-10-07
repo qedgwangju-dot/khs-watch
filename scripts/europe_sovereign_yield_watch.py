@@ -81,6 +81,7 @@ class Obs:
     date: str
     value: float
     source: str
+    daily_bp: float | None = None
 
 
 def fetch(url: str, tries: int = 3, timeout: int = 30) -> str:
@@ -377,7 +378,18 @@ def parse_market_page(text: str, key: str, label: str, source: str) -> list[Obs]
         raise ValueError(f"Trading Economics current quote parse failed: {key}")
     value = float(m.group(1))
     d = dt.datetime.strptime(m.group(2), "%B %d, %Y").date().isoformat()
-    return [Obs(key, label, d, value, source)]
+    daily_bp = None
+    move = re.search(
+        r"marking a\s+([0-9]+(?:\.[0-9]+)?)\s+percentage points\s+"
+        r"(increase|decrease)\s+from the previous session",
+        plain,
+        re.I,
+    )
+    if move:
+        daily_bp = float(move.group(1)) * 100.0
+        if move.group(2).lower() == "decrease":
+            daily_bp = -daily_bp
+    return [Obs(key, label, d, value, source, daily_bp=daily_bp)]
 
 
 def fetch_market_history(key: str, label: str) -> list[Obs]:
@@ -478,8 +490,9 @@ def build_alert(latest: dict[str, Obs], changes: dict, spread_bp: float | None, 
         "• 유로: 프랑스-독일 금리차가 더 벌어지면 유로존 분절 위험이 커질 수 있습니다.",
         "",
         "■ 다음 경계",
-        "• 프랑스 10년 5.00% / 영국 10년 5.50% / 프랑스-독일 150bp.",
+        "• 감시 기준: 프랑스 TEC10 5.00% / 영국 10년 5.50% / 프랑스-독일 동일 시장자료 금리차 150bp.",
         "• 하루 +10bp 또는 최근 5개 관측치 +25bp면 속도 경보를 별도로 냅니다.",
+        "• 위 숫자는 ECB·BoE의 공식 위기선이 아니라 변동성 확대를 빨리 잡기 위한 내부 감시 기준입니다.",
         "",
         "■ 출처",
     ]
@@ -586,6 +599,8 @@ def main() -> int:
             if old:
                 prev[key] = old
                 changes[f"{key}_day_bp"] = bp(cur.value, old.value)
+            elif cur.daily_bp is not None:
+                changes[f"{key}_day_bp"] = cur.daily_bp
             if len(rows) >= 5:
                 changes[f"{key}_5obs_bp"] = bp(rows[-1].value, rows[-5].value)
 
@@ -605,7 +620,6 @@ def main() -> int:
     # does not publish a timely daily benchmark 10Y series.
     for key, levels, label in (
         ("fr10", FR_LEVELS, "프랑스 TEC10"),
-        ("uk10", UK_LEVELS, "영국 10년(BoE)"),
         ("de10", DE_LEVELS, "독일 10년(Bundesbank)"),
         ("it10", IT_LEVELS, "이탈리아 10년 시장수익률"),
     ):
@@ -621,6 +635,29 @@ def main() -> int:
         d5 = changes.get(f"{key}_5obs_bp")
         if d5 is not None:
             mark_event(events, active, state, f"{key}:5obs:{FIVE_OBS_MOVE_BP}", d5 >= FIVE_OBS_MOVE_BP, f"{label} 최근 5개 관측치 +{FIVE_OBS_MOVE_BP:.0f}bp 이상 ({d5:+.1f}bp)", clear_summary=f"{label} 5개 관측치 급등 속도 정상화 ({d5:+.1f}bp)")
+
+    # UK official curve is sometimes published with a lag. Use the official BoE
+    # series when fresh, otherwise the same-day market fallback, but keep one
+    # logical alert key so source switching cannot create duplicate threshold alerts.
+    uk_source_key = "uk10" if fresh("uk10") else "uk_mkt" if fresh("uk_mkt") else None
+    if uk_source_key:
+        uk_value = latest[uk_source_key].value
+        uk_label = "영국 10년(BoE)" if uk_source_key == "uk10" else "영국 10년 시장수익률"
+        for level in UK_LEVELS:
+            k = f"uk10:above:{level}"
+            mark_event(
+                events, active, state, k, uk_value >= level,
+                f"{uk_label} {level:.2f}% 이상 ({uk_value:.3f}%)",
+                clear_summary=f"{uk_label} {level:.2f}% 아래로 하락 ({uk_value:.3f}%)",
+            )
+        uk_day = changes.get(f"{uk_source_key}_day_bp")
+        if uk_day is not None:
+            mark_event(
+                events, active, state, f"uk10:daymove:{DAILY_MOVE_BP}",
+                uk_day >= DAILY_MOVE_BP,
+                f"{uk_label} 하루 +{DAILY_MOVE_BP:.0f}bp 이상 급등 ({uk_day:+.1f}bp)",
+                clear_summary=f"{uk_label} 하루 급등 속도 정상화 ({uk_day:+.1f}bp)",
+            )
 
     # Comparable spread must use the same market-data methodology/provider.
     # Do NOT mix Banque de France TEC10 with a Bundesbank benchmark and call the
