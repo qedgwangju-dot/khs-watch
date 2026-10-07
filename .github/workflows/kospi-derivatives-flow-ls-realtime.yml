@@ -2,12 +2,15 @@ name: KOSPI LS Realtime Derivatives Flow Watch
 
 on:
   schedule:
-    - cron: "23,33,43,53 8 * * 1-5"
+    - cron: "13,23,33,43,53 8 * * 1-5"
       timezone: "Asia/Seoul"
     - cron: "3,13,23,33,43,53 9-14 * * 1-5"
       timezone: "Asia/Seoul"
     - cron: "3,13,23 15 * * 1-5"
       timezone: "Asia/Seoul"
+  workflow_run:
+    workflows: ["Wonyotti 90D Thesis Telegram Watch"]
+    types: [completed]
   workflow_dispatch:
     inputs:
       mode:
@@ -63,7 +66,7 @@ jobs:
               session["is_session"]
               and session["open"] is not None
               and session["close"] is not None
-              and session["open"]-dt.timedelta(minutes=45) <= now
+              and session["open"]-dt.timedelta(minutes=60) <= now
               and now <= session["close"]+dt.timedelta(minutes=2)
           )
           should_run=False
