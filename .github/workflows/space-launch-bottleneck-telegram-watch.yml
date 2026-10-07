@@ -50,7 +50,7 @@ jobs:
 
       - name: Run space launch bottleneck watch
         env:
-          FORCE_NOTIFY: "true"
+          FORCE_NOTIFY: ${{ inputs.force_notify }}
         run: python scripts/space_launch_bottleneck_watch.py
 
       - name: Publish watcher summary
