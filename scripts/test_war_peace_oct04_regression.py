@@ -549,4 +549,44 @@ check("oct07-aden-cross-source-same-id", mod.item_id(aden_yonhap) == mod.item_id
 check("oct07-aden-topic", mod.topic_label(aden_yonhap) == "예멘·후티 · 아덴 국제공항 공격")
 check("oct07-aden-red", mod.final_color(aden_yonhap) == "red")
 
+
+# 18) 공개시각 미확인 기사와 전망성 종전 발언은 신규 속보로 오염시키지 않는다.
+unknown_time = {
+    "title": "Russia kills 11 in one of its biggest strikes on Ukraine",
+    "title_original": "Russia kills 11 in one of its biggest strikes on Ukraine",
+    "title_ko": "",
+    "description": "Major attack on Ukraine energy infrastructure",
+    "article_text": "",
+    "source": "Reuters",
+    "link": "https://www.reuters.com/world/europe/example-2026-10-07/",
+    "published": "",
+    "signals_ko": [],
+    "forced_tags": [],
+}
+s, tags = mod.score_item(unknown_time, dt.datetime.now(mod.watch.KST))
+check("oct07-unknown-time-suppressed", s == 0 and tags == [])
+
+rhetoric = row(
+    "US president believes Ukraine conflict is nearing its end",
+    source="TASS",
+    description="The president said he believes the Ukraine conflict is nearly over, without announcing a ceasefire agreement or resumed talks.",
+)
+check("oct07-endgame-rhetoric-detected", mod._non_concrete_endgame_rhetoric(rhetoric))
+s, tags = mod.score_item(rhetoric, dt.datetime.now(mod.watch.KST))
+check("oct07-endgame-rhetoric-yellow", mod.final_color(rhetoric) == "yellow")
+check("oct07-endgame-rhetoric-no-peace-tag", "종전·협상" not in tags and "합의진전아님" in tags)
+check("oct07-endgame-rhetoric-topic", mod.topic_label(rhetoric) == "전쟁·외교 · 종전 전망성 발언")
+
+bad_time = """<b>전쟁·종전·재건 웹감시</b>
+[신규] <b>1. 우크라이나·러시아</b>
+기사
+공개시각 확인 필요 · 확전
+"""
+mod.watch.ALERT.write_text(bad_time, encoding="utf-8")
+try:
+    mod.verify_alert(False)
+    raise AssertionError("oct07-quality-gate-unknown-time")
+except RuntimeError as e:
+    check("oct07-quality-gate-unknown-time", "공개시각" in str(e))
+
 print("WAR_PEACE_OCT04_REGRESSION_OK")
