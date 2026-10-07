@@ -189,9 +189,6 @@ jobs:
           git config user.email "us-ai-grid-bottleneck-watch[bot]@users.noreply.github.com"
           git add data/us_ai_grid_bottleneck_state.json
           git add -f out/us_ai_grid_bottleneck_status.md 2>/dev/null || true
-          if [ -f out/us_ai_grid_bottleneck_telegram_confirmed.json ]; then
-            git add -f out/us_ai_grid_bottleneck_telegram_confirmed.json
-          fi
           if ! git diff --cached --quiet; then
             git commit -m "chore: update US AI grid bottleneck state"
             for attempt in 1 2 3; do
