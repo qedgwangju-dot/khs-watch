@@ -6195,28 +6195,19 @@
     "event:dd87cc13e30f19c890aebcd1": {
       "first_seen_kst": "2026-10-07T03:30:59+09:00",
       "lanes": {
-        "live": "2026-10-07T07:39:19+09:00"
+        "live": "2026-10-07T11:43:24+09:00"
       },
-      "last_seen_kst": "2026-10-07T07:39:19+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2633084",
-      "source": "이투데이",
-      "source_body_digest": "a27514aeb1f57f21474134e8c3bd8c6d1b14a997ed51695369bb5d87f7b41cbf",
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://www.dt.co.kr/article/12087843",
+      "source": "디지털타임스",
+      "source_body_digest": "84816b2c69a1dc329abfe50e5f88c0831f13b6928d1e40b87a4e7835b18238bd",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:f3bca3fb94f11db744b7dbf9c490d0841a2020bf1bb3b57d03bbe21c252ad813",
+      "source_fact_identity": "source_facts:v1:a75ef0c80c44b92c3775cf47eb7c73a1b7c5b6b2e3e8deb9fe37942c6585597f",
       "source_fact_keys": [
-        "source_fact:v1:05204566be500c3aa32592f6ef0fab67c3a497e0c7966563916e8cd38fe581f7",
-        "source_fact:v1:0f5b14bfdf27c0de054c33259b4dfefb19426485f14f60c839075907b8b3041d",
-        "source_fact:v1:143d43d068273f004ae258bc90630a82d7017b8854c016f7c59b010d5a7e4c4a",
-        "source_fact:v1:46c6a2e3cd8eab13ab5b6899d991a3b255c1fd791cbf2b1e60abb62da9dd631a",
-        "source_fact:v1:49f1bf7aafd290e37b2ee6d9f2889184c41e93400421089aaeab1fa835a649c6",
-        "source_fact:v1:5ace00ba506bfca45e8ba07ecf148ae6f24adda0a89101f0b53df9646a90f1e2",
-        "source_fact:v1:5cf6a68d6050840a84790285f73f53aaf9c0e08f76cbe8cfe02a49050aaaafce",
-        "source_fact:v1:616d38a8c77f1cdbc5db9c3b15b6baadc59e0cf793e706bdc9f0d930208794c4",
-        "source_fact:v1:d29275e95423a57f138bfa9108b74b222e374e0bad90139a22988c0c8898874a",
-        "source_fact:v1:f49f838422dcbbdf7e40c2d9d5782055b2ccfa08c17cd297df801688a6db8988"
+        "source_fact:v1:25ba6429a6c2c2e3f7b9554effc02a13cd8d62ac66e53f936d8491eb00852c18"
       ],
-      "source_published_kst": "2026-10-07T07:35+09:00",
-      "title": "KB證 “삼성전자, HBM4 업계 최고가 기대…주주환원도 4배 확대 가능”"
+      "source_published_kst": "2026-10-07T10:15+09:00",
+      "title": "인구 절벽 시대에도 ‘나 홀로 우상향’ 천안… 삼성 투자 타고 ‘더샵 천안라크원’ 분양"
     },
     "event:de0944201f01ab6356bb27a3": {
       "first_seen_kst": "2026-10-07T09:44:16+09:00",
@@ -9642,6 +9633,24 @@
       "source_published_kst": "2026-10-06T14:09+09:00",
       "title": "신협자산관리회사, 부실채권 매입 가능해진다…건전성 강화"
     },
+    "fact:2336b45b2b86c4e5d6ae041d": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007075000527",
+      "source": "연합뉴스",
+      "source_body_digest": "49ffe0e329e822449e3617991ea41dd18d88a2de1785d4fa748f81e9d7ca4a05",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3fe154a2a6f6c458c548bec3dfab7ee7a0c5e9177186be9107c93c0aa3ce8370",
+      "source_fact_keys": [
+        "source_fact:v1:7dbd7c5e4692c5e940dff31c67e7decac6a664a57430a4c935ffcf50de853f09",
+        "source_fact:v1:a80871e604fbda3adc5dcc6a310cf86682a26ac284419f54f31a137ca4f602e2"
+      ],
+      "source_published_kst": "2026-10-07T11:01+09:00",
+      "title": "[1보] LG전자 3분기 영업익 7천818억원…작년 동기 대비 13.5%↑ | 연합뉴스"
+    },
     "fact:235f88bb912a082271973ba3": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
       "lanes": {
@@ -11301,6 +11310,26 @@
       ],
       "source_published_kst": "2026-10-06T10:59+09:00",
       "title": "한독 파트너사 레졸루트, 선천성 고인슐린증 치료제 FDA 허가 전 미팅 권고"
+    },
+    "fact:3d34904b2c1625845ded9d7a": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170643",
+      "source": "매일경제",
+      "source_body_digest": "20a26bc19c61e60c3d91621ab52abd0b3e63eb1b429d776cc888da495e83b575",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:da31bdd90ed0c8b5522997fe9bb9c4522c5b5c59fc09d40a5d59ec315d5dbb72",
+      "source_fact_keys": [
+        "source_fact:v1:06cd011ae0d679149f744297a9afa35f803f9558465eba2ba9c19308cadb3227",
+        "source_fact:v1:17381682ca1f83e2545b8f0f7210bd04bcc295c2dd7e8e89e5c907e0afcf4628",
+        "source_fact:v1:b719f4ec6b15a09e1224821cad5c93c039cff598ebcf0c59ba89aab31e1447f7",
+        "source_fact:v1:dcadcd7c22cb3840c9f83ac0c1ac32d39ff42ccba26a9c12e2c1ad3bab0afb6f"
+      ],
+      "source_published_kst": "2026-10-07T08:51+09:00",
+      "title": "비욘드스프링, 중국 자회사 매각 완료..처분이익 5400만 달러"
     },
     "fact:3d35ef161f804c5c5094d8bc": {
       "first_seen_kst": "2026-10-07T05:33:37+09:00",
@@ -13727,6 +13756,25 @@
       ],
       "source_published_kst": "2026-10-06T18:10+09:00",
       "title": "\"알래스카 LNG 전략적 가치 생겼지만… 상업성이 전제\" [李정부 2년차 국감]"
+    },
+    "fact:6765b7469ae0cf53376be41e": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817098",
+      "source": "뉴시스",
+      "source_body_digest": "a582d5685ace36bf0d298c6bb87d7dd3001bd9b8af3c6fceaa4495882764afc9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47346c072a56c960d654f5a0c968d94b04d9f0df338fc0b8392a4fd3a6da280e",
+      "source_fact_keys": [
+        "source_fact:v1:39c8d3359eb8d5216965b6953bdd8f403fabdaaeadfb7ecd8a2fc598c99142bf",
+        "source_fact:v1:bd6573b0945cda64949963c69f25f7b9f7f9ba61a321caf49715dd0c2ee80d00",
+        "source_fact:v1:f1a98708981963adc371c122d0987059e52d94e11e44c3fe6b7c6b85e9dd3ecf"
+      ],
+      "source_published_kst": "2026-10-07T11:14+09:00",
+      "title": "다이나핏, FW 신상 매출 23%↑…'트레이닝 세트'는 리오더"
     },
     "fact:6784e420295326ed0f250a2f": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
@@ -20823,6 +20871,23 @@
       ],
       "source_published_kst": "2026-10-06T08:57+09:00",
       "title": "스틸리언 '웹수트', AI 에이전트 기반 웹·API 공격 차단 검증"
+    },
+    "fact:d55c119b5d26c11719f9585b": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://www.dt.co.kr/article/12087843",
+      "source": "디지털타임스",
+      "source_body_digest": "84816b2c69a1dc329abfe50e5f88c0831f13b6928d1e40b87a4e7835b18238bd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a75ef0c80c44b92c3775cf47eb7c73a1b7c5b6b2e3e8deb9fe37942c6585597f",
+      "source_fact_keys": [
+        "source_fact:v1:25ba6429a6c2c2e3f7b9554effc02a13cd8d62ac66e53f936d8491eb00852c18"
+      ],
+      "source_published_kst": "2026-10-07T10:15+09:00",
+      "title": "인구 절벽 시대에도 ‘나 홀로 우상향’ 천안… 삼성 투자 타고 ‘더샵 천안라크원’ 분양"
     },
     "fact:d56a1b8e561418054bde6408": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
@@ -32958,6 +33023,21 @@
       "source": "머니투데이",
       "title": "화웨이, \"자체개발 AI칩 중국 내 점유율 엔비디아 추월\""
     },
+    "link:4be3fb347a3cc28a0c87474f": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007008000071",
+      "source": "연합뉴스",
+      "source_body_digest": "9feb1b8fa1b7e434b9975f4853d3e8ae11d2aa5544ef9a4a6fd7652b937ead78",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T06:40+09:00",
+      "title": "트럼프 \"한국에 관세 낮추려면 대가 지불해야 한다고 말해\" | 연합뉴스"
+    },
     "link:4c09e5a0753b7a6ef6a13836": {
       "first_seen_kst": "2026-10-02T19:35:18+09:00",
       "lanes": {
@@ -33848,6 +33928,26 @@
       "link": "https://www.mt.co.kr/politics/2026/09/28/2026092816432952073",
       "source": "머니투데이",
       "title": "정무위, 국감 증인 채택 또 불발...野 \"레버리지 ETF 김용범 불러야\""
+    },
+    "link:544e101e59c8a3832783fd18": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170643",
+      "source": "매일경제",
+      "source_body_digest": "20a26bc19c61e60c3d91621ab52abd0b3e63eb1b429d776cc888da495e83b575",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:da31bdd90ed0c8b5522997fe9bb9c4522c5b5c59fc09d40a5d59ec315d5dbb72",
+      "source_fact_keys": [
+        "source_fact:v1:06cd011ae0d679149f744297a9afa35f803f9558465eba2ba9c19308cadb3227",
+        "source_fact:v1:17381682ca1f83e2545b8f0f7210bd04bcc295c2dd7e8e89e5c907e0afcf4628",
+        "source_fact:v1:b719f4ec6b15a09e1224821cad5c93c039cff598ebcf0c59ba89aab31e1447f7",
+        "source_fact:v1:dcadcd7c22cb3840c9f83ac0c1ac32d39ff42ccba26a9c12e2c1ad3bab0afb6f"
+      ],
+      "source_published_kst": "2026-10-07T08:51+09:00",
+      "title": "비욘드스프링, 중국 자회사 매각 완료..처분이익 5400만 달러"
     },
     "link:544e6eebc746e040aaf972a5": {
       "first_seen_kst": "2026-10-02T05:28:13+09:00",
@@ -35332,6 +35432,24 @@
       "source_published_kst": "2026-10-05T08:55+09:00",
       "title": "매크로 공백+SEC 규제완화 효과…8.6만달러 회복[코인 모닝콜]"
     },
+    "link:5f8cac9383303216ea8d3e20": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007075000527",
+      "source": "연합뉴스",
+      "source_body_digest": "49ffe0e329e822449e3617991ea41dd18d88a2de1785d4fa748f81e9d7ca4a05",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3fe154a2a6f6c458c548bec3dfab7ee7a0c5e9177186be9107c93c0aa3ce8370",
+      "source_fact_keys": [
+        "source_fact:v1:7dbd7c5e4692c5e940dff31c67e7decac6a664a57430a4c935ffcf50de853f09",
+        "source_fact:v1:a80871e604fbda3adc5dcc6a310cf86682a26ac284419f54f31a137ca4f602e2"
+      ],
+      "source_published_kst": "2026-10-07T11:01+09:00",
+      "title": "[1보] LG전자 3분기 영업익 7천818억원…작년 동기 대비 13.5%↑ | 연합뉴스"
+    },
     "link:5f92b9af6f4ece1c9eb770ef": {
       "first_seen_kst": "2026-10-03T21:21:44+09:00",
       "lanes": {
@@ -35573,6 +35691,23 @@
       ],
       "source_published_kst": "2026-10-07T08:41+09:00",
       "title": "튀르키예, 사우디에 특수부대·전투기 보낸다…‘메카 방위동맹’ 가동"
+    },
+    "link:61f2bae5d38479a97f81d697": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://www.dt.co.kr/article/12087843",
+      "source": "디지털타임스",
+      "source_body_digest": "84816b2c69a1dc329abfe50e5f88c0831f13b6928d1e40b87a4e7835b18238bd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a75ef0c80c44b92c3775cf47eb7c73a1b7c5b6b2e3e8deb9fe37942c6585597f",
+      "source_fact_keys": [
+        "source_fact:v1:25ba6429a6c2c2e3f7b9554effc02a13cd8d62ac66e53f936d8491eb00852c18"
+      ],
+      "source_published_kst": "2026-10-07T10:15+09:00",
+      "title": "인구 절벽 시대에도 ‘나 홀로 우상향’ 천안… 삼성 투자 타고 ‘더샵 천안라크원’ 분양"
     },
     "link:61f5a307f79bbef9aba3f50b": {
       "first_seen_kst": "2026-10-02T13:04:47+09:00",
@@ -41050,6 +41185,21 @@
       ],
       "source_published_kst": "2026-10-06T16:09+09:00",
       "title": "롯데백화점 외국인 매출 1조 돌파…신세계·현대도 '목전'(종합)"
+    },
+    "link:8d243a4e94c2e5309ff319fe": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://www.fnnews.com/news/202610070826299125",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "3f3e7033ec803f4880233acc58402db655536b592de5654b640107c9178c8b6e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T08:26+09:00",
+      "title": "롯데바이오, 밀라노의 낭보…\"알보텍과 생산계약\""
     },
     "link:8d41d86c04bd168595fe741c": {
       "first_seen_kst": "2026-10-02T09:01:13+09:00",
@@ -48149,6 +48299,25 @@
       "source_published_kst": "2026-10-05T05:00+09:00",
       "title": "삼성전자, 이번주 3분기 성적표 나온다…韓기업 최초 '영업익 100조' 돌파 여부 주목"
     },
+    "link:c67722da2c54553af9d71757": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817098",
+      "source": "뉴시스",
+      "source_body_digest": "a582d5685ace36bf0d298c6bb87d7dd3001bd9b8af3c6fceaa4495882764afc9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47346c072a56c960d654f5a0c968d94b04d9f0df338fc0b8392a4fd3a6da280e",
+      "source_fact_keys": [
+        "source_fact:v1:39c8d3359eb8d5216965b6953bdd8f403fabdaaeadfb7ecd8a2fc598c99142bf",
+        "source_fact:v1:bd6573b0945cda64949963c69f25f7b9f7f9ba61a321caf49715dd0c2ee80d00",
+        "source_fact:v1:f1a98708981963adc371c122d0987059e52d94e11e44c3fe6b7c6b85e9dd3ecf"
+      ],
+      "source_published_kst": "2026-10-07T11:14+09:00",
+      "title": "다이나핏, FW 신상 매출 23%↑…'트레이닝 세트'는 리오더"
+    },
     "link:c6aaf864654fc8f3efd7c294": {
       "first_seen_kst": "2026-10-02T16:20:30+09:00",
       "lanes": {
@@ -54538,6 +54707,21 @@
       "source_published_kst": "2026-10-06T03:00+09:00",
       "title": "美부통령 \"알래스카 LNG 사업, 한국과 세부사항 협의해야\" | 연합뉴스"
     },
+    "link:f88cc466df6d1b3ceb7ed4d0": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://biz.chosun.com/industry/car/2026/10/07/LPB7BEZ3YNALRIWJ2Y4BAEPG5Y/",
+      "source": "조선비즈",
+      "source_body_digest": "43ef42641c5a44750da09fa917fc275ad0b82eb7fde0ff4af6af5035f3fa373a",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T09:37+09:00",
+      "title": "넥센타이어, 호주 퍼스에 4번째 물류센터… 현지 유통망 확대"
+    },
     "link:f89781b9b216b7d2030a2b3f": {
       "first_seen_kst": "2026-10-03T06:13:51+09:00",
       "lanes": {
@@ -58564,6 +58748,24 @@
       "link": "https://www.yna.co.kr/view/AKR20261001030100030",
       "source": "연합뉴스",
       "title": "홈플러스익스프레스, 'NS홈쇼핑 인수 100일' 떡 증정 이벤트 | 연합뉴스"
+    },
+    "original:1aa07593611e9b5f233d28f6": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007075000527",
+      "source": "연합뉴스",
+      "source_body_digest": "49ffe0e329e822449e3617991ea41dd18d88a2de1785d4fa748f81e9d7ca4a05",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3fe154a2a6f6c458c548bec3dfab7ee7a0c5e9177186be9107c93c0aa3ce8370",
+      "source_fact_keys": [
+        "source_fact:v1:7dbd7c5e4692c5e940dff31c67e7decac6a664a57430a4c935ffcf50de853f09",
+        "source_fact:v1:a80871e604fbda3adc5dcc6a310cf86682a26ac284419f54f31a137ca4f602e2"
+      ],
+      "source_published_kst": "2026-10-07T11:01+09:00",
+      "title": "[1보] LG전자 3분기 영업익 7천818억원…작년 동기 대비 13.5%↑ | 연합뉴스"
     },
     "original:1b3ce221f9b8d52fc53526cc": {
       "first_seen_kst": "2026-10-01T16:14:13+09:00",
@@ -65057,6 +65259,21 @@
       ],
       "source_published_kst": "2026-10-05T21:02+09:00",
       "title": "라디오팜 테라노스틱스, RAD101 2상 종료미팅 완료..3상 준비 착수"
+    },
+    "original:4cdc6397c1bfd332483891c0": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://www.fnnews.com/news/202610070826299125",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "3f3e7033ec803f4880233acc58402db655536b592de5654b640107c9178c8b6e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T08:26+09:00",
+      "title": "롯데바이오, 밀라노의 낭보…\"알보텍과 생산계약\""
     },
     "original:4cebaaf6abe846de5dcae602": {
       "first_seen_kst": "2026-10-07T02:24:39+09:00",
@@ -71894,6 +72111,26 @@
       "source": "뉴시스",
       "title": "나무AX 子 에스케이팩, 피지컬 AI 자율제조 R&D 과제 선정"
     },
+    "original:86a59cf7c234997c9e3215b2": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170643",
+      "source": "매일경제",
+      "source_body_digest": "20a26bc19c61e60c3d91621ab52abd0b3e63eb1b429d776cc888da495e83b575",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:da31bdd90ed0c8b5522997fe9bb9c4522c5b5c59fc09d40a5d59ec315d5dbb72",
+      "source_fact_keys": [
+        "source_fact:v1:06cd011ae0d679149f744297a9afa35f803f9558465eba2ba9c19308cadb3227",
+        "source_fact:v1:17381682ca1f83e2545b8f0f7210bd04bcc295c2dd7e8e89e5c907e0afcf4628",
+        "source_fact:v1:b719f4ec6b15a09e1224821cad5c93c039cff598ebcf0c59ba89aab31e1447f7",
+        "source_fact:v1:dcadcd7c22cb3840c9f83ac0c1ac32d39ff42ccba26a9c12e2c1ad3bab0afb6f"
+      ],
+      "source_published_kst": "2026-10-07T08:51+09:00",
+      "title": "비욘드스프링, 중국 자회사 매각 완료..처분이익 5400만 달러"
+    },
     "original:86c03d4ca17b9a68254d4741": {
       "first_seen_kst": "2026-10-06T16:30:27+09:00",
       "lanes": {
@@ -72765,6 +73002,21 @@
       "link": "https://www.edaily.co.kr/news/read?newsid=01082406645608984&parentid=05100406645608984&gubun=E",
       "source": "이데일리",
       "title": "[단독]'적색수배' KOK 자금총책 지갑 보니…국내외 거래소로 1050억대 현금화"
+    },
+    "original:8c68499b15c3aa138e48815b": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://biz.chosun.com/industry/car/2026/10/07/LPB7BEZ3YNALRIWJ2Y4BAEPG5Y/",
+      "source": "조선비즈",
+      "source_body_digest": "43ef42641c5a44750da09fa917fc275ad0b82eb7fde0ff4af6af5035f3fa373a",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T09:37+09:00",
+      "title": "넥센타이어, 호주 퍼스에 4번째 물류센터… 현지 유통망 확대"
     },
     "original:8c6a14b95aced43f9ddcdbbe": {
       "first_seen_kst": "2026-10-02T06:33:23+09:00",
@@ -82698,6 +82950,25 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "KAIST, 데이터 추가·삭제에도 검색 정확도 유지하는 'CONDA' 개발"
     },
+    "original:dec3b872d7936f5c3da6cf3a": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817098",
+      "source": "뉴시스",
+      "source_body_digest": "a582d5685ace36bf0d298c6bb87d7dd3001bd9b8af3c6fceaa4495882764afc9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47346c072a56c960d654f5a0c968d94b04d9f0df338fc0b8392a4fd3a6da280e",
+      "source_fact_keys": [
+        "source_fact:v1:39c8d3359eb8d5216965b6953bdd8f403fabdaaeadfb7ecd8a2fc598c99142bf",
+        "source_fact:v1:bd6573b0945cda64949963c69f25f7b9f7f9ba61a321caf49715dd0c2ee80d00",
+        "source_fact:v1:f1a98708981963adc371c122d0987059e52d94e11e44c3fe6b7c6b85e9dd3ecf"
+      ],
+      "source_published_kst": "2026-10-07T11:14+09:00",
+      "title": "다이나핏, FW 신상 매출 23%↑…'트레이닝 세트'는 리오더"
+    },
     "original:defa3a8ff3d427e95b19e17b": {
       "first_seen_kst": "2026-10-05T12:29:58+09:00",
       "lanes": {
@@ -82758,6 +83029,21 @@
       "link": "https://www.dt.co.kr/article/12087050",
       "source": "디지털타임스",
       "title": "오텍캐리어, 엔비디아 인증 CDU 확보…AI 데이터센터 냉각시장 정조준"
+    },
+    "original:df0f733321c34571f554785d": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007008000071",
+      "source": "연합뉴스",
+      "source_body_digest": "9feb1b8fa1b7e434b9975f4853d3e8ae11d2aa5544ef9a4a6fd7652b937ead78",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T06:40+09:00",
+      "title": "트럼프 \"한국에 관세 낮추려면 대가 지불해야 한다고 말해\" | 연합뉴스"
     },
     "original:df48bdc01dd389daaaf0687c": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -85326,6 +85612,23 @@
       ],
       "source_published_kst": "2026-10-06T15:42+09:00",
       "title": "MSDI, 구미시와 7천억 규모 미사일 방산단지 조성 MOU | 연합뉴스"
+    },
+    "original:f4ffca5fbaccd2579df85e78": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://www.dt.co.kr/article/12087843",
+      "source": "디지털타임스",
+      "source_body_digest": "84816b2c69a1dc329abfe50e5f88c0831f13b6928d1e40b87a4e7835b18238bd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a75ef0c80c44b92c3775cf47eb7c73a1b7c5b6b2e3e8deb9fe37942c6585597f",
+      "source_fact_keys": [
+        "source_fact:v1:25ba6429a6c2c2e3f7b9554effc02a13cd8d62ac66e53f936d8491eb00852c18"
+      ],
+      "source_published_kst": "2026-10-07T10:15+09:00",
+      "title": "인구 절벽 시대에도 ‘나 홀로 우상향’ 천안… 삼성 투자 타고 ‘더샵 천안라크원’ 분양"
     },
     "original:f55020fe1e537d7f028841cd": {
       "first_seen_kst": "2026-09-30T23:32:53+09:00",
@@ -92619,6 +92922,25 @@
       "source_published_kst": "2026-10-05T22:06+09:00",
       "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
     },
+    "source_fact:1778ace232634ccc722abe8f": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817098",
+      "source": "뉴시스",
+      "source_body_digest": "a582d5685ace36bf0d298c6bb87d7dd3001bd9b8af3c6fceaa4495882764afc9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47346c072a56c960d654f5a0c968d94b04d9f0df338fc0b8392a4fd3a6da280e",
+      "source_fact_keys": [
+        "source_fact:v1:39c8d3359eb8d5216965b6953bdd8f403fabdaaeadfb7ecd8a2fc598c99142bf",
+        "source_fact:v1:bd6573b0945cda64949963c69f25f7b9f7f9ba61a321caf49715dd0c2ee80d00",
+        "source_fact:v1:f1a98708981963adc371c122d0987059e52d94e11e44c3fe6b7c6b85e9dd3ecf"
+      ],
+      "source_published_kst": "2026-10-07T11:14+09:00",
+      "title": "다이나핏, FW 신상 매출 23%↑…'트레이닝 세트'는 리오더"
+    },
     "source_fact:178c9d393047ff224ad37fae": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
       "lanes": {
@@ -93547,6 +93869,24 @@
       ],
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
+    "source_fact:1b6f6182a4c53ef3d5688b2a": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007075000527",
+      "source": "연합뉴스",
+      "source_body_digest": "49ffe0e329e822449e3617991ea41dd18d88a2de1785d4fa748f81e9d7ca4a05",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3fe154a2a6f6c458c548bec3dfab7ee7a0c5e9177186be9107c93c0aa3ce8370",
+      "source_fact_keys": [
+        "source_fact:v1:7dbd7c5e4692c5e940dff31c67e7decac6a664a57430a4c935ffcf50de853f09",
+        "source_fact:v1:a80871e604fbda3adc5dcc6a310cf86682a26ac284419f54f31a137ca4f602e2"
+      ],
+      "source_published_kst": "2026-10-07T11:01+09:00",
+      "title": "[1보] LG전자 3분기 영업익 7천818억원…작년 동기 대비 13.5%↑ | 연합뉴스"
     },
     "source_fact:1b87c0c8f02ddf03ac85a1c1": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -101865,6 +102205,23 @@
       "source_published_kst": "2026-10-06T12:29+09:00",
       "title": "권대영 \"레버리지 ETF 도입, 금융위가 최종 결정…투자자 손실 송구\""
     },
+    "source_fact:37265bccdae8ddb33241d162": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://www.dt.co.kr/article/12087843",
+      "source": "디지털타임스",
+      "source_body_digest": "84816b2c69a1dc329abfe50e5f88c0831f13b6928d1e40b87a4e7835b18238bd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a75ef0c80c44b92c3775cf47eb7c73a1b7c5b6b2e3e8deb9fe37942c6585597f",
+      "source_fact_keys": [
+        "source_fact:v1:25ba6429a6c2c2e3f7b9554effc02a13cd8d62ac66e53f936d8491eb00852c18"
+      ],
+      "source_published_kst": "2026-10-07T10:15+09:00",
+      "title": "인구 절벽 시대에도 ‘나 홀로 우상향’ 천안… 삼성 투자 타고 ‘더샵 천안라크원’ 분양"
+    },
     "source_fact:3729a70273a9c17887c84b0b": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -102876,6 +103233,26 @@
       "source_published_kst": "2026-10-06T10:00+09:00",
       "title": "LG전자, 르노 '유럽 첫 상용 SDV'에 통합 콕핏 솔루션 공급"
     },
+    "source_fact:3b0dbdecd7814907e8fb3fa0": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170643",
+      "source": "매일경제",
+      "source_body_digest": "20a26bc19c61e60c3d91621ab52abd0b3e63eb1b429d776cc888da495e83b575",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:da31bdd90ed0c8b5522997fe9bb9c4522c5b5c59fc09d40a5d59ec315d5dbb72",
+      "source_fact_keys": [
+        "source_fact:v1:06cd011ae0d679149f744297a9afa35f803f9558465eba2ba9c19308cadb3227",
+        "source_fact:v1:17381682ca1f83e2545b8f0f7210bd04bcc295c2dd7e8e89e5c907e0afcf4628",
+        "source_fact:v1:b719f4ec6b15a09e1224821cad5c93c039cff598ebcf0c59ba89aab31e1447f7",
+        "source_fact:v1:dcadcd7c22cb3840c9f83ac0c1ac32d39ff42ccba26a9c12e2c1ad3bab0afb6f"
+      ],
+      "source_published_kst": "2026-10-07T08:51+09:00",
+      "title": "비욘드스프링, 중국 자회사 매각 완료..처분이익 5400만 달러"
+    },
     "source_fact:3b23df54d853d2440d34ca39": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
       "lanes": {
@@ -102899,6 +103276,25 @@
       ],
       "source_published_kst": "2026-10-06T17:02+09:00",
       "title": "엠투클라우드 \"백신 유통 이력 '디지털 관리' 의료기관까지 확대\""
+    },
+    "source_fact:3b28e77d5826f2f4f9cc91df": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817098",
+      "source": "뉴시스",
+      "source_body_digest": "a582d5685ace36bf0d298c6bb87d7dd3001bd9b8af3c6fceaa4495882764afc9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47346c072a56c960d654f5a0c968d94b04d9f0df338fc0b8392a4fd3a6da280e",
+      "source_fact_keys": [
+        "source_fact:v1:39c8d3359eb8d5216965b6953bdd8f403fabdaaeadfb7ecd8a2fc598c99142bf",
+        "source_fact:v1:bd6573b0945cda64949963c69f25f7b9f7f9ba61a321caf49715dd0c2ee80d00",
+        "source_fact:v1:f1a98708981963adc371c122d0987059e52d94e11e44c3fe6b7c6b85e9dd3ecf"
+      ],
+      "source_published_kst": "2026-10-07T11:14+09:00",
+      "title": "다이나핏, FW 신상 매출 23%↑…'트레이닝 세트'는 리오더"
     },
     "source_fact:3b37ba6a4e49f1e0701fee0b": {
       "first_seen_kst": "2026-10-07T02:13:12+09:00",
@@ -103270,6 +103666,26 @@
       ],
       "source_published_kst": "2026-10-07T09:27+09:00",
       "title": "\"화장품株 주가 조정 과도\"…아모레퍼시픽 5%·한국콜마 5%대 상승"
+    },
+    "source_fact:3ccb2c9628ba07e05384ff64": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170643",
+      "source": "매일경제",
+      "source_body_digest": "20a26bc19c61e60c3d91621ab52abd0b3e63eb1b429d776cc888da495e83b575",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:da31bdd90ed0c8b5522997fe9bb9c4522c5b5c59fc09d40a5d59ec315d5dbb72",
+      "source_fact_keys": [
+        "source_fact:v1:06cd011ae0d679149f744297a9afa35f803f9558465eba2ba9c19308cadb3227",
+        "source_fact:v1:17381682ca1f83e2545b8f0f7210bd04bcc295c2dd7e8e89e5c907e0afcf4628",
+        "source_fact:v1:b719f4ec6b15a09e1224821cad5c93c039cff598ebcf0c59ba89aab31e1447f7",
+        "source_fact:v1:dcadcd7c22cb3840c9f83ac0c1ac32d39ff42ccba26a9c12e2c1ad3bab0afb6f"
+      ],
+      "source_published_kst": "2026-10-07T08:51+09:00",
+      "title": "비욘드스프링, 중국 자회사 매각 완료..처분이익 5400만 달러"
     },
     "source_fact:3ce34e9acf3b2062cb313959": {
       "first_seen_kst": "2026-10-06T17:24:43+09:00",
@@ -122037,6 +122453,26 @@
       ],
       "source_published_kst": "2026-10-06T13:24+09:00",
       "title": "통합항공사 뜨자 남은 10.58%…산은, 한진칼 지분 '엑시트 셈법' 관심집중 [fn마켓워치]"
+    },
+    "source_fact:7f15cd11b026b000c43a5c5a": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170643",
+      "source": "매일경제",
+      "source_body_digest": "20a26bc19c61e60c3d91621ab52abd0b3e63eb1b429d776cc888da495e83b575",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:da31bdd90ed0c8b5522997fe9bb9c4522c5b5c59fc09d40a5d59ec315d5dbb72",
+      "source_fact_keys": [
+        "source_fact:v1:06cd011ae0d679149f744297a9afa35f803f9558465eba2ba9c19308cadb3227",
+        "source_fact:v1:17381682ca1f83e2545b8f0f7210bd04bcc295c2dd7e8e89e5c907e0afcf4628",
+        "source_fact:v1:b719f4ec6b15a09e1224821cad5c93c039cff598ebcf0c59ba89aab31e1447f7",
+        "source_fact:v1:dcadcd7c22cb3840c9f83ac0c1ac32d39ff42ccba26a9c12e2c1ad3bab0afb6f"
+      ],
+      "source_published_kst": "2026-10-07T08:51+09:00",
+      "title": "비욘드스프링, 중국 자회사 매각 완료..처분이익 5400만 달러"
     },
     "source_fact:7f2a290d19da61216222c4ba": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
@@ -146305,6 +146741,26 @@
       "source_published_kst": "2026-10-05T20:25+09:00",
       "title": "피티씨, 슈나이더에 피인수..주당 205달러·프리미엄 42%"
     },
+    "source_fact:d6265d358025b634cbd6c6c9": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170643",
+      "source": "매일경제",
+      "source_body_digest": "20a26bc19c61e60c3d91621ab52abd0b3e63eb1b429d776cc888da495e83b575",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:da31bdd90ed0c8b5522997fe9bb9c4522c5b5c59fc09d40a5d59ec315d5dbb72",
+      "source_fact_keys": [
+        "source_fact:v1:06cd011ae0d679149f744297a9afa35f803f9558465eba2ba9c19308cadb3227",
+        "source_fact:v1:17381682ca1f83e2545b8f0f7210bd04bcc295c2dd7e8e89e5c907e0afcf4628",
+        "source_fact:v1:b719f4ec6b15a09e1224821cad5c93c039cff598ebcf0c59ba89aab31e1447f7",
+        "source_fact:v1:dcadcd7c22cb3840c9f83ac0c1ac32d39ff42ccba26a9c12e2c1ad3bab0afb6f"
+      ],
+      "source_published_kst": "2026-10-07T08:51+09:00",
+      "title": "비욘드스프링, 중국 자회사 매각 완료..처분이익 5400만 달러"
+    },
     "source_fact:d638f09dcb3f97f8336f51de": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -153362,6 +153818,24 @@
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
+    "source_fact:ecedccc7c55b61864182d9dd": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007075000527",
+      "source": "연합뉴스",
+      "source_body_digest": "49ffe0e329e822449e3617991ea41dd18d88a2de1785d4fa748f81e9d7ca4a05",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3fe154a2a6f6c458c548bec3dfab7ee7a0c5e9177186be9107c93c0aa3ce8370",
+      "source_fact_keys": [
+        "source_fact:v1:7dbd7c5e4692c5e940dff31c67e7decac6a664a57430a4c935ffcf50de853f09",
+        "source_fact:v1:a80871e604fbda3adc5dcc6a310cf86682a26ac284419f54f31a137ca4f602e2"
+      ],
+      "source_published_kst": "2026-10-07T11:01+09:00",
+      "title": "[1보] LG전자 3분기 영업익 7천818억원…작년 동기 대비 13.5%↑ | 연합뉴스"
+    },
     "source_fact:ed0d2c8836489d036c4d87bd": {
       "first_seen_kst": "2026-10-07T00:23:09+09:00",
       "lanes": {
@@ -158470,6 +158944,25 @@
       "source_published_kst": "2026-10-06T10:00+09:00",
       "title": "LG전자, 르노 '유럽 첫 상용 SDV'에 통합 콕핏 솔루션 공급"
     },
+    "source_fact:ffd0e070bb627b2bd1f68e62": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817098",
+      "source": "뉴시스",
+      "source_body_digest": "a582d5685ace36bf0d298c6bb87d7dd3001bd9b8af3c6fceaa4495882764afc9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47346c072a56c960d654f5a0c968d94b04d9f0df338fc0b8392a4fd3a6da280e",
+      "source_fact_keys": [
+        "source_fact:v1:39c8d3359eb8d5216965b6953bdd8f403fabdaaeadfb7ecd8a2fc598c99142bf",
+        "source_fact:v1:bd6573b0945cda64949963c69f25f7b9f7f9ba61a321caf49715dd0c2ee80d00",
+        "source_fact:v1:f1a98708981963adc371c122d0987059e52d94e11e44c3fe6b7c6b85e9dd3ecf"
+      ],
+      "source_published_kst": "2026-10-07T11:14+09:00",
+      "title": "다이나핏, FW 신상 매출 23%↑…'트레이닝 세트'는 리오더"
+    },
     "title:0020a67428c76c73508654b2": {
       "first_seen_kst": "2026-10-01T21:33:24+09:00",
       "lanes": {
@@ -161629,6 +162122,24 @@
       "link": "https://www.yna.co.kr/view/AKR20261001030100030",
       "source": "연합뉴스",
       "title": "홈플러스익스프레스, 'NS홈쇼핑 인수 100일' 떡 증정 이벤트 | 연합뉴스"
+    },
+    "title:1aa07593611e9b5f233d28f6": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007075000527",
+      "source": "연합뉴스",
+      "source_body_digest": "49ffe0e329e822449e3617991ea41dd18d88a2de1785d4fa748f81e9d7ca4a05",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3fe154a2a6f6c458c548bec3dfab7ee7a0c5e9177186be9107c93c0aa3ce8370",
+      "source_fact_keys": [
+        "source_fact:v1:7dbd7c5e4692c5e940dff31c67e7decac6a664a57430a4c935ffcf50de853f09",
+        "source_fact:v1:a80871e604fbda3adc5dcc6a310cf86682a26ac284419f54f31a137ca4f602e2"
+      ],
+      "source_published_kst": "2026-10-07T11:01+09:00",
+      "title": "[1보] LG전자 3분기 영업익 7천818억원…작년 동기 대비 13.5%↑ | 연합뉴스"
     },
     "title:1b3ce221f9b8d52fc53526cc": {
       "first_seen_kst": "2026-10-01T16:14:13+09:00",
@@ -168158,6 +168669,21 @@
       ],
       "source_published_kst": "2026-10-05T21:02+09:00",
       "title": "라디오팜 테라노스틱스, RAD101 2상 종료미팅 완료..3상 준비 착수"
+    },
+    "title:4cdc6397c1bfd332483891c0": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://www.fnnews.com/news/202610070826299125",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "3f3e7033ec803f4880233acc58402db655536b592de5654b640107c9178c8b6e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T08:26+09:00",
+      "title": "롯데바이오, 밀라노의 낭보…\"알보텍과 생산계약\""
     },
     "title:4cebaaf6abe846de5dcae602": {
       "first_seen_kst": "2026-10-07T02:24:39+09:00",
@@ -175126,6 +175652,26 @@
       "source": "뉴시스",
       "title": "나무AX 子 에스케이팩, 피지컬 AI 자율제조 R&D 과제 선정"
     },
+    "title:86a59cf7c234997c9e3215b2": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170643",
+      "source": "매일경제",
+      "source_body_digest": "20a26bc19c61e60c3d91621ab52abd0b3e63eb1b429d776cc888da495e83b575",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:da31bdd90ed0c8b5522997fe9bb9c4522c5b5c59fc09d40a5d59ec315d5dbb72",
+      "source_fact_keys": [
+        "source_fact:v1:06cd011ae0d679149f744297a9afa35f803f9558465eba2ba9c19308cadb3227",
+        "source_fact:v1:17381682ca1f83e2545b8f0f7210bd04bcc295c2dd7e8e89e5c907e0afcf4628",
+        "source_fact:v1:b719f4ec6b15a09e1224821cad5c93c039cff598ebcf0c59ba89aab31e1447f7",
+        "source_fact:v1:dcadcd7c22cb3840c9f83ac0c1ac32d39ff42ccba26a9c12e2c1ad3bab0afb6f"
+      ],
+      "source_published_kst": "2026-10-07T08:51+09:00",
+      "title": "비욘드스프링, 중국 자회사 매각 완료..처분이익 5400만 달러"
+    },
     "title:86c03d4ca17b9a68254d4741": {
       "first_seen_kst": "2026-10-06T16:30:27+09:00",
       "lanes": {
@@ -176014,6 +176560,21 @@
       "link": "https://www.edaily.co.kr/news/read?newsid=01082406645608984&parentid=05100406645608984&gubun=E",
       "source": "이데일리",
       "title": "[단독]'적색수배' KOK 자금총책 지갑 보니…국내외 거래소로 1050억대 현금화"
+    },
+    "title:8c68499b15c3aa138e48815b": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://biz.chosun.com/industry/car/2026/10/07/LPB7BEZ3YNALRIWJ2Y4BAEPG5Y/",
+      "source": "조선비즈",
+      "source_body_digest": "43ef42641c5a44750da09fa917fc275ad0b82eb7fde0ff4af6af5035f3fa373a",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T09:37+09:00",
+      "title": "넥센타이어, 호주 퍼스에 4번째 물류센터… 현지 유통망 확대"
     },
     "title:8c6a14b95aced43f9ddcdbbe": {
       "first_seen_kst": "2026-10-02T06:33:23+09:00",
@@ -186163,6 +186724,25 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "KAIST, 데이터 추가·삭제에도 검색 정확도 유지하는 'CONDA' 개발"
     },
+    "title:dec3b872d7936f5c3da6cf3a": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817098",
+      "source": "뉴시스",
+      "source_body_digest": "a582d5685ace36bf0d298c6bb87d7dd3001bd9b8af3c6fceaa4495882764afc9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47346c072a56c960d654f5a0c968d94b04d9f0df338fc0b8392a4fd3a6da280e",
+      "source_fact_keys": [
+        "source_fact:v1:39c8d3359eb8d5216965b6953bdd8f403fabdaaeadfb7ecd8a2fc598c99142bf",
+        "source_fact:v1:bd6573b0945cda64949963c69f25f7b9f7f9ba61a321caf49715dd0c2ee80d00",
+        "source_fact:v1:f1a98708981963adc371c122d0987059e52d94e11e44c3fe6b7c6b85e9dd3ecf"
+      ],
+      "source_published_kst": "2026-10-07T11:14+09:00",
+      "title": "다이나핏, FW 신상 매출 23%↑…'트레이닝 세트'는 리오더"
+    },
     "title:defa3a8ff3d427e95b19e17b": {
       "first_seen_kst": "2026-10-05T12:29:58+09:00",
       "lanes": {
@@ -186223,6 +186803,21 @@
       "link": "https://www.dt.co.kr/article/12087050",
       "source": "디지털타임스",
       "title": "오텍캐리어, 엔비디아 인증 CDU 확보…AI 데이터센터 냉각시장 정조준"
+    },
+    "title:df0f733321c34571f554785d": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007008000071",
+      "source": "연합뉴스",
+      "source_body_digest": "9feb1b8fa1b7e434b9975f4853d3e8ae11d2aa5544ef9a4a6fd7652b937ead78",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T06:40+09:00",
+      "title": "트럼프 \"한국에 관세 낮추려면 대가 지불해야 한다고 말해\" | 연합뉴스"
     },
     "title:df48bdc01dd389daaaf0687c": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -188869,6 +189464,23 @@
       "source_published_kst": "2026-10-06T15:42+09:00",
       "title": "MSDI, 구미시와 7천억 규모 미사일 방산단지 조성 MOU | 연합뉴스"
     },
+    "title:f4ffca5fbaccd2579df85e78": {
+      "first_seen_kst": "2026-10-07T11:43:24+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:43:24+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:43:24+09:00",
+      "link": "https://www.dt.co.kr/article/12087843",
+      "source": "디지털타임스",
+      "source_body_digest": "84816b2c69a1dc329abfe50e5f88c0831f13b6928d1e40b87a4e7835b18238bd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a75ef0c80c44b92c3775cf47eb7c73a1b7c5b6b2e3e8deb9fe37942c6585597f",
+      "source_fact_keys": [
+        "source_fact:v1:25ba6429a6c2c2e3f7b9554effc02a13cd8d62ac66e53f936d8491eb00852c18"
+      ],
+      "source_published_kst": "2026-10-07T10:15+09:00",
+      "title": "인구 절벽 시대에도 ‘나 홀로 우상향’ 천안… 삼성 투자 타고 ‘더샵 천안라크원’ 분양"
+    },
     "title:f55020fe1e537d7f028841cd": {
       "first_seen_kst": "2026-09-30T23:32:53+09:00",
       "lanes": {
@@ -190078,5 +190690,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-07T11:25:20+09:00"
+  "updated_at_kst": "2026-10-07T11:43:24+09:00"
 }
