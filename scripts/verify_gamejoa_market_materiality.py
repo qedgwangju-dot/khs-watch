@@ -5,11 +5,13 @@ import argparse
 import copy
 import datetime as dt
 import json
+import sys
 import unittest
 import zipfile
 from pathlib import Path
 from unittest.mock import patch
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 import gamejoa_market_materiality as materiality
 import gamejoa_preopen_news_radar_fda_quality_runner as production
 
