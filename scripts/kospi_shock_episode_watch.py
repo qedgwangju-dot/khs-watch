@@ -1055,6 +1055,7 @@ class Watch:
             "saved_at_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
             "flows": [x for x in self.flows if float(x.get("ts", 0)) >= cutoff],
             "episode": self.episode,
+            "opening_gap_sent": self.opening_gap_sent,
             "msg_ids": self.msg_ids[-20:],
             "enrichment_msg_ids": self.enrichment_msg_ids[-20:],
         }
@@ -1090,6 +1091,7 @@ class Watch:
             ep = data.get("episode")
             if isinstance(ep, dict) and ep.get("start_ts") and ep.get("start_price"):
                 self.episode = ep
+            self.opening_gap_sent = bool(data.get("opening_gap_sent", False))
             self.msg_ids.extend(int(x) for x in (data.get("msg_ids") or []) if str(x).isdigit())
             self.enrichment_msg_ids.extend(int(x) for x in (data.get("enrichment_msg_ids") or []) if str(x).isdigit())
             if self.flows:
