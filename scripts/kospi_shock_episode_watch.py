@@ -746,13 +746,26 @@ class Watch:
     def build_alert(self, stage: str, ep: dict[str, Any], end_ts: float, end_price: float) -> str:
         att = self.attribution(float(ep["start_ts"]), end_ts)
         drop = pct(float(ep["start_price"]), end_price) or 0.0
-        title = "🚨 <b>코스피 급락 사건구간 포착</b>" if stage == "start" else "🔴 <b>코스피 급락 사건구간 확대</b>"
+        if ep.get("price_only"):
+            title = (
+                "⚠️ <b>코스피 급락 가격구간 포착 · 수급 원인 보류</b>"
+                if stage == "start" else
+                "🔴 <b>코스피 급락 가격구간 확대 · 수급 원인 보류</b>"
+            )
+        else:
+            title = "🚨 <b>코스피 급락 사건구간 포착</b>" if stage == "start" else "🔴 <b>코스피 급락 사건구간 확대</b>"
         lines = [title, f"<code>{dt.datetime.now(KST):%Y-%m-%d %H:%M:%S} KST</code>", "",
                  "<b>급락 구간</b>",
                  f"• 시작 <b>{fmt_clock(ep['start_ts'])}</b> → 현재 <b>{fmt_clock(end_ts)}</b> · {fmt_duration(end_ts-float(ep['start_ts']))}",
                  f"• KOSPI <b>{float(ep['start_price']):,.2f}</b> → <b>{end_price:,.2f}</b> · <b>{drop:+.2f}%</b>",
-                 f"• 현재 구간 저점 <b>{float(ep['low_price']):,.2f}</b> ({fmt_clock(ep['low_ts'])})", "",
-                 "<b>그 구간에서 누가 팔았나</b>"]
+                 f"• 현재 구간 저점 <b>{float(ep['low_price']):,.2f}</b> ({fmt_clock(ep['low_ts'])})", ""]
+        if ep.get("price_only"):
+            lines += [
+                "⚠️ <b>감시 공백 또는 수급 기준점 부족</b> — 가격 급락은 확인됐지만",
+                "• 사건 시작 이전의 정확한 현물·선물·프로그램 기준점이 없어 매도주체는 소급 추정하지 않습니다.",
+                "",
+            ]
+        lines += ["<b>그 구간에서 누가 팔았나</b>"]
         if att.get("available"):
             s, f, p = att["spot"], att["futures"], att["program"]
             cross = ", ".join(att.get("cross_sellers") or []) or "없음"
@@ -790,11 +803,18 @@ class Watch:
         att = self.attribution(float(ep["start_ts"]), float(ep["low_ts"]))
         drop = pct(float(ep["start_price"]), float(ep["low_price"])) or 0.0
         rebound = pct(float(ep["low_price"]), end_price) or 0.0
-        title = (
-            "🟣 <b>코스피 급락 사건구간 장마감 확정</b>"
-            if session_close else
-            "🟢 <b>코스피 급락 사건구간 종료·복원 확인</b>"
-        )
+        if ep.get("price_only"):
+            title = (
+                "🟣 <b>코스피 급락 가격구간 장마감 확정 · 수급 원인 보류</b>"
+                if session_close else
+                "🟢 <b>코스피 급락 가격구간 종료·복원 확인 · 수급 원인 보류</b>"
+            )
+        else:
+            title = (
+                "🟣 <b>코스피 급락 사건구간 장마감 확정</b>"
+                if session_close else
+                "🟢 <b>코스피 급락 사건구간 종료·복원 확인</b>"
+            )
         lines = [title, f"<code>{dt.datetime.now(KST):%Y-%m-%d %H:%M:%S} KST</code>", "",
                  "<b>확정된 급락 구간</b>",
                  f"• <b>{fmt_clock(ep['start_ts'])} → {fmt_clock(ep['low_ts'])}</b> · {fmt_duration(float(ep['low_ts'])-float(ep['start_ts']))}",
@@ -886,22 +906,45 @@ class Watch:
                 for key in ("현물", "선물", "프로그램")
             }
             if any(start_channels[key] is None for key in ("현물", "선물", "프로그램")):
-                # 재기동 전에 시작된 사건은 정확한 시작 수급이 없으므로 원인 알림을 소급 생성하지 않는다.
-                self.raw["suppressed_historical_trigger"] = {
+                # 재기동 전에 시작된 사건도 가격 급락 자체는 숨기지 않는다.
+                # 정확한 시작 수급이 없으므로 매도주체는 소급 추정하지 않고 가격구간만 알린다.
+                self.raw["historical_price_only_trigger"] = {
                     "peak_ts": info["peak_ts"], "peak": info["peak"],
                     "cur_ts": info["cur_ts"], "cur": info["cur"],
                     "drop": info["drop"], "reason": "missing channel snapshot at/before event start",
                 }
+                self.episode = {
+                    "start_ts": info["peak_ts"], "start_price": info["peak"],
+                    "low_ts": now_t, "low_price": cur, "sent_drop": abs(float(info["drop"])),
+                    "alerted": True, "trigger": info, "price_only": True,
+                    "price_only_reason": "missing channel snapshot at/before event start",
+                }
+                msg_id = await asyncio.to_thread(
+                    telegram_send, self.build_alert("start", self.episode, now_t, cur)
+                )
+                self.msg_ids.append(msg_id)
+                self._record_delivery("price_only_start", msg_id, self.episode, now_t)
                 return
             channel_gaps = {
                 key: start_ts - float(start_channels[key][1])
                 for key in ("현물", "선물", "프로그램")
             }
             if any(gap > MAX_FLOW_ALIGNMENT_SEC for gap in channel_gaps.values()):
-                self.raw["suppressed_stale_flow_trigger"] = {
+                self.raw["stale_flow_price_only_trigger"] = {
                     "peak_ts": info["peak_ts"], "channel_alignment_sec": channel_gaps,
                     "reason": f"start channel alignment exceeds {MAX_FLOW_ALIGNMENT_SEC}s",
                 }
+                self.episode = {
+                    "start_ts": info["peak_ts"], "start_price": info["peak"],
+                    "low_ts": now_t, "low_price": cur, "sent_drop": abs(float(info["drop"])),
+                    "alerted": True, "trigger": info, "price_only": True,
+                    "price_only_reason": f"start channel alignment exceeds {MAX_FLOW_ALIGNMENT_SEC}s",
+                }
+                msg_id = await asyncio.to_thread(
+                    telegram_send, self.build_alert("start", self.episode, now_t, cur)
+                )
+                self.msg_ids.append(msg_id)
+                self._record_delivery("price_only_start", msg_id, self.episode, now_t)
                 return
 
             self.episode = {"start_ts": info["peak_ts"], "start_price": info["peak"],
