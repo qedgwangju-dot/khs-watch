@@ -1623,6 +1623,21 @@ def _ppa_merge(prev: dict | None, new: dict):
     prev_rank = PPA_STAGE_RANK.get(prev_stage, 0)
     new_rank = PPA_STAGE_RANK.get(new_stage, 0)
 
+    # Do not overwrite an already verified first-party signed PPA with a
+    # secondary Google News RSS wrapper or an unofficial partial article.
+    # RSS titles can omit "uprate" and wrongly set asset_mode="unknown".
+    # Official first-party modifications or real cancellations still proceed.
+    if (
+        prev_stage == "signed_official"
+        and bool(prev.get("official"))
+        and not new_stage.startswith("cancelled")
+        and (
+            not bool(new.get("official"))
+            or "news.google.com/rss/" in str(new.get("url") or "").lower()
+        )
+    ):
+        return out
+
     allow_stage = False
     if new_stage.startswith("cancelled"):
         allow_stage = True
