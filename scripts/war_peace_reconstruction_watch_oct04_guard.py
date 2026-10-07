@@ -449,7 +449,7 @@ def _regional_recap_without_discrete_event(row):
     """여러 전선을 한 제목에 묶은 종합·재가공 기사는 구체적 신규 사건이 없으면 속보에서 제외한다."""
     title = _title(row).lower()
     saudi_houthi = any(x in title for x in ("saudi", "사우디")) and any(x in title for x in ("houthi", "houthis", "후티"))
-    iran_us = any(x in title for x in ("iran", "이란")) and any(x in title for x in ("u.s.", "us ", "미국"))
+    iran_us = any(x in title for x in ("iran", "이란")) and any(x in title for x in ("u.s.", "us ", "미국", "미-이란", "미·이란", "미 이란"))
     mixed_recap = (
         saudi_houthi and iran_us
         and any(x in title for x in ("충돌 격화", "교전 격화", "hostilities escalate", "clashes escalate"))
