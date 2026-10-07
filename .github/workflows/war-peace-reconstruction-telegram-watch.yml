@@ -7,8 +7,8 @@ on:
     paths:
       - ".github/war-peace-telegram-test-trigger.txt"
       - ".github/workflows/war-peace-reconstruction-telegram-watch.yml"
-      - "scripts/war_peace_reconstruction_watch_oct04_guard.py"
-      - "scripts/test_war_peace_oct04_regression.py"
+      - "scripts/war_peace_reconstruction_watch*.py"
+      - "scripts/test_war_peace*.py"
   workflow_dispatch:
     inputs:
       telegram_test:
