@@ -110,13 +110,15 @@
   },
   "_delivery": {
     "id": "f1c9d39d44b684324482b0ac14f872b19ca4f244a6455eef5b99a03aa770ba43",
-    "status": "in_flight",
+    "status": "partial",
     "created_at_kst": "2026-10-08T08:28:59+09:00",
     "chunks": [
       "🚨 <b>Solidigm IPO 상태 변화</b>\n━━━━━━━━━━━━━━━━\n• 현재 단계: <b>대표주관사·주관단 선정</b>\n• 확인 수준: <b>Reuters·Bloomberg 등 신뢰 보도 단계(회사 미확정)</b>\n• 목표 시점: <b>이르면 2027년</b>\n• 거론 기업가치: <b>최대 1,000억달러(약 133조8,690억원)</b>\n• 조달 가능 규모: <b>100억달러(약 13조3,869억원)</b>\n• 선행 보도상 별도 상장 전 자금조달 검토액: 36억달러(약 4조8,193억원) (이번 기사에서 재확인된 확정액 아님)\n• 대표주관사(블룸버그 보도): <b>Goldman Sachs, Morgan Stanley</b>\n• 추가 참여 주관단(보도): JPMorgan Chase, Citigroup, UBS\n• 출처 계보: Bloomberg 원보도 → 연합뉴스·이데일리·Investing.com 재인용. 별개 독립 확인 3건이 아닙니다.\n• 신주·구주 매출 비율 및 자금이 어느 회사에 귀속될지: <b>미확정</b>\n• 이번 변화: <b>알림 표시 보강: 대표주관사·참여은행을 분리하고 기존 주주 희석·회사 미확정 상태를 명시 (기존 주관사 선정 소식의 정확한 재표시, 새로운 IPO 진척 아님)</b>\n• 보도 추정치 비교: Reuters(9월 25일) 조달 150억달러(약 20조804억원)·기업가치 1,500억달러(약 200조8,035억원) ↔ Bloomberg(10월 8일) 조달 100억달러(약 13조3,869억원)·기업가치 1,000억달러(약 133조8,690억원)\n• 확정 공모금액 감액이 아니라 서로 다른 보도상 추정치의 비교입니다.\n• 다음 확인: 대표주관사 선정 · SEC 비공개/공개 신고 · 공모가 밴드 · 신주/구주 비중 · SK하이닉스 잔여지분 · 자금용도\n• 근거: Bloomberg 보도(이데일리·연합뉴스·Investing.com 재인용) · <a href=\"https://www.edaily.co.kr/News/Read?mediaCodeNo=257&amp;newsId=02407526645610952\">원문</a>\n• 사용자 원문: 연합뉴스 <a href=\"https://www.yna.co.kr/view/AKR20261008022500009\">원문</a>\n• SK하이닉스 공식 입장(10월 1일): 구체적인 자금조달 방안 미확정. 기존 주주 경제적 가치·희석 위험 검토 <a href=\"https://news.skhynix.com/en/fact-11/\">원문</a>\n• 확인 대기: SEC 신고, 신주·구주 비율, SK하이닉스 상장 후 지분, 자금 유입처, 이사회 승인.\n• 주의: 이번 주관사·조달액·기업가치·일정은 보도 단계이며 회사나 SEC 확정 사실이 아닙니다.\n• 환율: 2026-10-07 일일 기준 · ECB/Frankfurter · 조회 2026-10-08 08:28 KST · 보조 API 2026-10-07 · 차이 0.02% · 일중 기준시각 차이 가능\n• 조회: 2026-10-08 08:28 KST"
     ],
-    "next_chunk": 0,
-    "message_ids": [],
+    "next_chunk": 1,
+    "message_ids": [
+      260
+    ],
     "candidate": {
       "watch_version": 4,
       "topic": "Solidigm IPO + eSSD manufacturing",
