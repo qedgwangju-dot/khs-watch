@@ -28,6 +28,7 @@ spec.loader.exec_module(strict)
 base = strict.base
 SEEN_PATH = base.ROOT / "data" / "gamejoa_preopen_news_radar_seen.json"
 VERIFIED_EVENT_ALIAS_PATH = base.ROOT / "data" / "gamejoa_verified_event_aliases.json"
+VERIFIED_CORE_RECEIPTS_PATH = base.ROOT / "data" / "gamejoa_verified_core_receipts.json"
 DELIVERY_PATH = base.OUT / "gamejoa_preopen_news_radar_delivery.json"
 
 
@@ -43,6 +44,7 @@ def load_seen_state() -> dict:
     payload.setdefault("seen", {})
     migrate_seen_title_aliases(payload)
     migrate_seen_verified_event_aliases(payload)
+    migrate_seen_verified_core_receipts(payload)
     return payload
 
 
@@ -207,6 +209,13 @@ def canonical_edition_title(title: str) -> str:
     return re.sub(r"\s*[\[(](?:종합(?:\s*\d+보)?|\d+보|상보|속보)[\])]\s*$", "", title).strip()
 
 
+def normalized_telegram_core(alert: dict) -> str:
+    if not alert.get("body_verified"):
+        return ""
+    core = base.norm(alert.get("telegram_core_fact"))
+    return core if len(core) >= 50 and not core.startswith("공개된 제목에 따르면") else ""
+
+
 def alert_seen_keys(alert: dict) -> list[str]:
     try:
         canonical = canonical_alert_for_seen(alert)
@@ -234,6 +243,7 @@ def alert_seen_keys(alert: dict) -> list[str]:
     add("fact", market_materiality.verified_source_fact_identity(canonical))
     for fact_key in market_materiality.verified_source_fact_keys(canonical):
         add("source_fact", fact_key)
+    add("core", normalized_telegram_core(canonical))
     add("title", str(canonical.get("news") or alert.get("news") or ""))
     add("original", str(canonical.get("original_news") or alert.get("original_news") or ""))
     for value in (canonical.get("news"), canonical.get("source_title"), canonical.get("original_news")):
@@ -334,6 +344,39 @@ def migrate_seen_verified_event_aliases(state: dict) -> None:
             })
 
 
+def migrate_seen_verified_core_receipts(state: dict) -> None:
+    """Restore a core key only for an independently audited Telegram receipt."""
+    if not VERIFIED_CORE_RECEIPTS_PATH.exists():
+        return
+    proofs = json.loads(VERIFIED_CORE_RECEIPTS_PATH.read_text(encoding="utf-8"))
+    seen = state.setdefault("seen", {})
+    for proof in proofs.get("entries", []):
+        published = parse_seen_time(proof.get("source_published_kst"))
+        core = base.norm(proof.get("telegram_core_fact"))
+        if not (published and proof.get("run_id") and proof.get("message_id")
+                and len(core) >= 50 and core.endswith(".")
+                and re.fullmatch(r"[0-9a-f]{64}", str(proof.get("source_body_sha256") or ""))
+                and re.fullmatch(r"[0-9a-f]{64}", str(proof.get("source_body_digest") or ""))):
+            raise ValueError("Invalid verified core-receipt evidence")
+        for entry in list(seen.values()):
+            first_seen = parse_seen_time(entry.get("first_seen_kst")) if isinstance(entry, dict) else None
+            if not first_seen or first_seen < published:
+                continue
+            if canonical_article_url(str(entry.get("link") or "")) != canonical_article_url(proof["link"]):
+                continue
+            if base.norm(canonical_edition_title(str(entry.get("title") or ""))) != base.norm(
+                canonical_edition_title(proof["source_title"])
+            ):
+                continue
+            if entry.get("source_body_digest") != proof["source_body_digest"]:
+                continue
+            seen.setdefault(f"core:{digest_seen(core)}", {
+                **entry,
+                "core_alias_evidence_run_id": proof["run_id"],
+                "core_alias_evidence_message_id": proof["message_id"],
+            })
+
+
 def prune_seen_state(state: dict, now) -> None:
     ttl_days = max(1, int(os.getenv("GAMEJOA_RADAR_SEEN_TTL_DAYS", "14")))
     cutoff = now - dt.timedelta(days=ttl_days)
@@ -378,6 +421,7 @@ def filter_previously_seen_alerts(
         # Its structured identity must outrank older coarse title/link keys.
         match_keys = ([f"event:{digest_seen(identity)}"] if identity else
                       [f"fact:{digest_seen(fact_identity)}"] if fact_identity else keys)
+        match_keys += [key for key in keys if key.startswith("core:")]
         matching_entries = [seen[key] for key in match_keys if key in seen]
         coarse_entries = [seen[key] for key in keys if key in seen
                           and key.startswith(("link:", "title:", "original:"))

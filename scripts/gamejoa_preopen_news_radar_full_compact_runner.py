@@ -2597,6 +2597,15 @@ def source_headline_event_fact(title: str, body: str) -> str:
     focus = market_materiality.focus_kind(title)
     source = market_materiality.source_reported_body(body)
     rows = market_materiality.source_sentences(source)
+    if '보스턴다이나믹스' in title and re.search(r'지휘|CEO|영입', title, re.I):
+        appointment = re.search(
+            r'보스턴다이나믹스가\s+아마존의[^.!?\n]{0,75}?이끌어온\s+'
+            r'(로히트\s+프라사드)를\s+신임\s+최고경영자\(CEO\)로\s+영입했다', source,
+        )
+        if appointment:
+            fact = (f'현대차그룹 산하 보스턴다이나믹스가 아마존 AI 사업을 이끈 '
+                    f'{appointment.group(1)}를 신임 CEO로 영입했다.')
+            return fact if core_sentence_is_complete(fact) else ''
     if re.search(r'한국.*러.*석유\s*공급|한국의\s*러\s*석유공급', title):
         shipping = next((row for row in rows if '가디언' in row and '선박 추적' in row
                          and '석유제품' in row and '보도했다' in row), '')
@@ -10651,6 +10660,7 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
     selected: list[dict] = []
     seen: set[tuple[str, str]] = set()
     seen_facts: set[str] = set()
+    seen_cores: set[str] = set()
     for alert in candidates:
         if alert["market_materiality"]["disposition"] == "exclude":
             alert["_exclusion_reason"] = "market_materiality:" + alert["market_materiality"]["reason"]
@@ -10719,7 +10729,9 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
             continue
         key = alert_dedup_key(normalized)
         fact_keys = market_materiality.verified_source_fact_keys(normalized)
-        if key in seen or (fact_keys and all(fact in seen_facts for fact in fact_keys)):
+        core_key = telegram.normalized_telegram_core(normalized)
+        if (key in seen or (fact_keys and all(fact in seen_facts for fact in fact_keys))
+                or (core_key and core_key in seen_cores)):
             alert.setdefault("_exclusion_reason", "semantic_duplicate")
             continue
         if is_low_impact_admin_alert(normalized):
@@ -10751,6 +10763,8 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
         selected.append(normalized)
         seen.add(key)
         seen_facts.update(fact_keys)
+        if core_key:
+            seen_cores.add(core_key)
         if len(selected) >= limit:
             break
     return selected

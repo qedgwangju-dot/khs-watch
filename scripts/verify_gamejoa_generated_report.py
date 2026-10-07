@@ -91,14 +91,18 @@ def value_after(line: str, marker: str) -> str:
 def duplicate_event_errors(alerts: list[dict], runner) -> list[str]:
     seen = set()
     seen_facts = set()
+    seen_cores = set()
     errors = []
     for alert in alerts:
         key = runner.alert_dedup_key(alert)
         facts = runner.market_materiality.verified_source_fact_keys(alert)
-        if key in seen or (facts and all(fact in seen_facts for fact in facts)):
+        core = runner.telegram.normalized_telegram_core(alert)
+        if key in seen or (facts and all(fact in seen_facts for fact in facts)) or (core and core in seen_cores):
             errors.append(f"duplicate source event in generated report: {alert.get('news')}")
         seen.add(key)
         seen_facts.update(facts)
+        if core:
+            seen_cores.add(core)
     return errors
 
 

@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 101
+VERSION = 102
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -3518,6 +3518,14 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
     political_poll = bool(re.search(r"지지율|국정\s*수행|정당\s*지지|political approval|approval rating", title, re.I)
                           and re.search(r"여론조사|응답자|유권자|poll|respondents|voters", body[:1600], re.I))
     primary_rows = ' '.join(source_sentences(body)[:6])
+    professional_opinion = bool(re.search(r'\[[^\]]{0,100}(?:인사이트|칼럼|기고|사설)[^\]]*\]', title)
+                                and re.search(r'살려야|해야|필요|제언', title))
+    foreground_action = any(current_event_sentence(row) and not PAST_ACTION.search(row)
+                            and (FORMAL_POLICY_EXECUTION.search(row) or NEW_EXECUTION.search(row))
+                            for row in source_sentences(body)[:6])
+    if professional_opinion and not foreground_action:
+        result.update(disposition='exclude', priority=0, reason='professional_opinion_without_new_market_action')
+        return result
     quoted_diplomatic_criticism = re.search(r'(?:기사|보도).{0,25}인용.{0,25}비판', title)
     new_trade_restriction = re.search(
         r'(?:신규|새로운|추가).{0,15}(?:제재|수입\s*금지|수출\s*금지|관세)|'

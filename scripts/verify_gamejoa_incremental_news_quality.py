@@ -4155,6 +4155,60 @@ class IncrementalNewsTests(unittest.TestCase):
             selected = radar.quality_display_alerts([first, second], 30)
         self.assertEqual(len(selected), 1)
 
+    def test_identical_verified_core_blocks_distinct_body_fingerprints(self):
+        first = alert()
+        second = {**first, "source_body": CONTRACT_BODY + ADDITIONAL_FACT,
+                  "source_abstract": CONTRACT_BODY + ADDITIONAL_FACT,
+                  "link": "https://www.mk.co.kr/news/business/9999002", "publisher": "매일경제"}
+        self.assertNotEqual(materiality.verified_source_body_digest(first),
+                            materiality.verified_source_body_digest(second))
+        self.assertIn("core:", " ".join(telegram.alert_seen_keys(first)))
+        self.assertEqual(len(generated_guard.duplicate_event_errors([first, second], radar)), 1)
+        with tempfile.TemporaryDirectory() as folder, patch.object(telegram, 'SEEN_PATH', Path(folder) / 'seen.json'):
+            telegram.record_seen_alerts([first], NOW)
+            fresh, skipped = telegram.filter_previously_seen_alerts([second], NOW + dt.timedelta(minutes=5), 'live')
+        self.assertFalse(fresh)
+        self.assertEqual(len(skipped), 1)
+
+    def test_core_receipt_migration_needs_original_seen_body_digest(self):
+        proof = json.loads(telegram.VERIFIED_CORE_RECEIPTS_PATH.read_text(encoding='utf-8'))['entries'][0]
+        seen = {
+            'link': proof['link'], 'title': proof['source_title'],
+            'first_seen_kst': '2026-10-07T07:39:19+09:00',
+            'source_body_digest': proof['source_body_digest'],
+            'lanes': {'live': '2026-10-07T07:39:19+09:00'},
+        }
+        key = 'core:' + telegram.digest_seen(telegram.base.norm(proof['telegram_core_fact']))
+        for original, expected in ((seen, True), ({**seen, 'source_body_digest': '0' * 64}, False),
+                                   ({**seen, 'first_seen_kst': '2026-10-06T07:39:19+09:00'}, False)):
+            with self.subTest(expected=expected, original=original):
+                state = {'seen': {'link:original': dict(original)}}
+                telegram.migrate_seen_verified_core_receipts(state)
+                self.assertEqual(key in state['seen'], expected)
+                if expected:
+                    self.assertEqual(state['seen'][key]['core_alias_evidence_message_id'], proof['message_id'])
+
+    def test_opinion_is_not_a_new_market_action(self):
+        title = '경영권 인수 넘어 성장자본으로…PEF 순기능 살려야 [김앤장 금융·핀테크·가상자산 인사이트]'
+        body = 'PEF는 기업 성장에 기여할 수 있다. 2021년 제도 변화로 성장자본의 역할이 확대됐다.'
+        self.assertEqual(materiality.assess(title, body)['reason'], 'professional_opinion_without_new_market_action')
+        current_action = '삼성전자는 7일 반도체 장비업체와 100억원 규모의 공급 계약을 체결했다고 공시했다.'
+        self.assertNotEqual(materiality.assess('반도체 투자 필요 [칼럼]', current_action)['reason'],
+                            'professional_opinion_without_new_market_action')
+
+    def test_ceo_appointment_does_not_become_generic_strategy_summary(self):
+        title = "'알렉사 주역' 보스턴다이나믹스 지휘한다 …현대차 피지컬 AI 속도"
+        body = ('현대차그룹 산하 보스턴다이나믹스가 아마존의 인공지능(AI) 사업을 이끌어온 '
+                '로히트 프라사드를 신임 최고경영자(CEO)로 영입했다. '
+                '현대차그룹 제조 현장에 로봇을 적용할 것으로 기대된다.')
+        fact = radar.source_headline_event_fact(title, body)
+        self.assertIn('로히트 프라사드', fact)
+        self.assertIn('신임 CEO로 영입했다', fact)
+        candidate = alert(title=title, body=body)
+        candidate['telegram_core_fact'] = '현대차그룹 제조 현장에 AI를 도입하는 전략이 중요하다.'
+        self.assertIn('headline_actor_population_period_or_standard_mismatch',
+                      radar.source_core_fact_errors(candidate))
+
 
 if __name__ == "__main__":
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(IncrementalNewsTests)
