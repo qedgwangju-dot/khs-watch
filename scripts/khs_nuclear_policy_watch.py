@@ -127,7 +127,11 @@ HANUL4_NSSC_PRESS_LIST = "https://www.nssc.go.kr/ko/cms/FR_BBS_CON/BoardList.do?
 HANUL4_POLICY_BRIEFING_APPROVAL = "https://m.korea.kr/briefing/pressReleaseView.do?newsId=156784522&pWise=mSub&pWiseSub=C4"
 HANUL4_RESTART_APPROVAL_PRIMARY = HANUL4_POLICY_BRIEFING_APPROVAL
 HANUL4_RESTART_APPROVAL_SECONDARY = "https://www.newsis.com/view/NISX20261007_0003817361"
-HANUL4_FACILITY_CAPACITY_LABEL = "100만 kW급(1,000 MW급)"
+# 공식기관별 표기 기준을 보존한다. KHNP 시설현황은 '100만 kW급',
+# NSSC 한울3·4호기 PSR 자료는 전기출력 '각 1,050 MWe'로 명시한다.
+HANUL4_FACILITY_CAPACITY_LABEL = "100만 kW급"
+HANUL4_NSSC_CAPACITY_LABEL = "1,050 MWe"
+HANUL4_NSSC_CAPACITY_SOURCE = "https://www.nssc.go.kr/attach/namo/files/000004/20260528165153915_JPYQQ6WS.pdf"
 HANUL4_KHNP_MAIN_FRESH_HOURS = 12
 HANUL4_USER_SOURCE = "https://www.electimes.com/news/articleView.html?idxno=373171"
 HANUL4_FIXED_BASELINE = {
@@ -1343,10 +1347,12 @@ def _hanul4_operating_verified(
     main_ramp: bool,
     main_fresh: bool,
 ) -> bool:
-    # 본사 공식 운영현황의 호기별 행이 '운전'이고, 한울본부 페이지의
-    # 측정시각이 최신이면 운전 전환으로 인정한다. 한울본부 동적 문구가
-    # null/미렌더링 상태여도 공식 호기별 행 자체를 무효화하지 않는다.
-    return status_main == "운전" and main_fresh
+    # '운전' 승격은 단일 표면만으로 확정하지 않는다.
+    # 본사 호기별 행이 '운전'이고 한울본부의 최신 공식 표면에서도
+    # 동일 '운전' 또는 해당 4호기의 명시적 출력상승이 함께 확인돼야 한다.
+    if status_main != "운전" or not main_fresh:
+        return False
+    return main_status == "운전" or main_ramp
 
 
 def _hanul4_official_source(outlet: str, link: str = "") -> bool:
@@ -1746,8 +1752,8 @@ def _self_test_hanul4_operating_event_model() -> None:
         raise RuntimeError("Hanul4 dual-official operating verification regression")
     if not _hanul4_operating_verified("운전", None, True, True):
         raise RuntimeError("Hanul4 fresh-ramp operating verification regression")
-    if not _hanul4_operating_verified("운전", None, False, True):
-        raise RuntimeError("Hanul4 exact-corporate-row operating verification regression")
+    if _hanul4_operating_verified("운전", None, False, True):
+        raise RuntimeError("Hanul4 single-surface operating false-positive regression")
     if _hanul4_operating_verified("정비", "운전", True, True):
         raise RuntimeError("Hanul4 maintenance false-positive operating regression")
     if _hanul4_operating_verified("운전", "운전", True, False):
@@ -1832,10 +1838,12 @@ def _self_test_hanul4_operating_event_model() -> None:
     sample["live_status"] = "정비"
     sample["live_status_source"] = HANUL4_KHNP_MAIN
     rendered = "\n".join(_render_hanul4_operation(sample, 1, now_kst()))
-    if "1,050MWe" in rendered:
-        raise RuntimeError("Hanul4 obsolete 1,050MWe capacity regression")
+    if "약 1,050MWe" in rendered or "약 1,050 MWe" in rendered:
+        raise RuntimeError("Hanul4 approximate-capacity regression")
     if HANUL4_FACILITY_CAPACITY_LABEL not in rendered:
-        raise RuntimeError("Hanul4 official facility-capacity label regression")
+        raise RuntimeError("Hanul4 KHNP facility-capacity label regression")
+    if HANUL4_NSSC_CAPACITY_LABEL not in rendered:
+        raise RuntimeError("Hanul4 NSSC electric-capacity label regression")
     for marker in (
         "- 핵심 변화:", "- 숫자:", "- 한국 기업·매출 연결:",
         "- 병목·실패모드:", "- 출처:",
@@ -1872,14 +1880,14 @@ def _render_hanul4_operation(item: dict, idx: int, now: dt.datetime) -> list[str
         return [
             f"## {idx}. [{verification_label}] 한울 4호기 재가동",
             f"- 핵심 변화: {label}. 규제 관문은 통과했지만 재가동 승인 ≠ 실제 발전재개입니다.",
-            f"- 숫자: 8월 19일 자동정지 → 10월 7일 재가동 승인(49일) · 설비용량 {HANUL4_FACILITY_CAPACITY_LABEL} · 현재 한국수력원자력 실시간 상태 {live_status}.",
+            f"- 숫자: 8월 19일 자동정지 → 10월 7일 재가동 승인(49일) · 설비용량 한수원 {HANUL4_FACILITY_CAPACITY_LABEL}, 원안위 PSR 전기출력 {HANUL4_NSSC_CAPACITY_LABEL} · 현재 한국수력원자력 실시간 상태 {live_status}.",
             "- 한국 기업·매출 연결: 한국수력원자력의 기존 한울4호기 운전 복귀 이슈이며 신규 원전 수주가 아닙니다. 발전재개·계통병입과 출력상승이 확인돼야 실제 공급 회복으로 봅니다.",
             "- 정지 원인: 발전기 차단기 단로기 접속부 전기적 결함과 원자로출력급감발계통(RPCS) 미작동이 복합 작용했습니다. RPCS 계측기 내부 이물질 유입 영향도 확인됐습니다.",
             "- 조치: 고장 기기 교체·건전성 시험과 설비 관리체계 개선 등 종합 재발방지대책 확인 후 원안위가 재가동을 승인했습니다.",
             "- 병목·실패모드: 승인 뒤에도 RPCS·발전기 차단기 계통 이상 재발, 출력상승 시험 이상, 계통병입 지연이 생기면 전력공급 정상화가 늦어질 수 있습니다.",
             f"- 출처: [{item.get('source')}]({item.get('link')}) · {item.get('published_kst')}",
             f"- 운영상태 확인: [한국수력원자력]({item.get('live_status_source') or HANUL4_KHNP_MAIN})",
-            f"- 설비용량 확인: [한국수력원자력 시설현황]({HANUL4_KHNP_FACILITY})",
+            f"- 설비용량 확인: [한국수력원자력 시설현황]({HANUL4_KHNP_FACILITY}) / [원안위 한울3·4호기 PSR]({HANUL4_NSSC_CAPACITY_SOURCE})",
             "- 다음 확인: 한국수력원자력 실시간 '운전' 전환 → 발전재개/계통병입 시각 → 출력상승 → 100% 출력 도달 → 재발방지대책 이행",
             "",
         ]
@@ -1900,12 +1908,12 @@ def _render_hanul4_operation(item: dict, idx: int, now: dt.datetime) -> list[str
     return [
         f"## {idx}. [{verification_label}] 한울 4호기 운전상태",
         f"- 핵심 변화: {change}",
-        f"- 숫자: 설비용량 {HANUL4_FACILITY_CAPACITY_LABEL} · 현재 운영상태 {live_status}.",
+        f"- 숫자: 설비용량 한수원 {HANUL4_FACILITY_CAPACITY_LABEL}, 원안위 PSR 전기출력 {HANUL4_NSSC_CAPACITY_LABEL} · 현재 운영상태 {live_status}.",
         "- 한국 기업·매출 연결: 한국수력원자력 기존 발전설비의 가동률·전력판매 정상화와 연결되는 운전 이슈이며 신규 원전 수주로 계산하지 않습니다.",
         f"- 단계 구분: {caveat}",
         "- 병목·실패모드: 발전기 차단기·RPCS 계통 재고장, 출력상승 시험 이상, 재발방지대책 미이행이 확인되면 재정지 위험이 있습니다.",
         f"- 출처: [{item.get('source')}]({item.get('link')}) · {item.get('published_kst')}",
-        f"- 설비용량 확인: [한국수력원자력 시설현황]({HANUL4_KHNP_FACILITY})",
+        f"- 설비용량 확인: [한국수력원자력 시설현황]({HANUL4_KHNP_FACILITY}) / [원안위 한울3·4호기 PSR]({HANUL4_NSSC_CAPACITY_SOURCE})",
         "- 다음 확인: 실시간 운전상태 → 발전재개/계통병입 → 출력률 → 100% 출력 → 재정지 여부",
         "",
     ]
