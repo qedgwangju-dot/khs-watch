@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 109
+VERSION = 110
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -934,6 +934,69 @@ def canonical_source_fact(text: str) -> str:
     text = re.sub(r"최고경영자\s*\(CEO\)|최고경영자", "ceo", text, flags=re.I)
     text = re.sub(r"(?<![가-힣])이번\s+", "", text)
     return re.sub(r"[^a-z0-9가-힣.%+\-]", "", text.casefold()).rstrip(".")
+
+
+def same_headline_event(title_a: str, title_b: str, fact_a: str = "", fact_b: str = "") -> bool:
+    """Conservatively match same-day headline variants without merging new stages."""
+    stop = {
+        "속보", "종합", "단독", "오늘", "이날", "올해", "내년", "관련", "시장", "기자",
+        "전망", "예상", "가능성", "밝혔다", "한다", "했다", "한다는", "위해", "대한",
+        "news", "update", "exclusive", "report", "says", "said",
+    }
+
+    def tokens(value: str) -> set[str]:
+        cleaned = re.sub(r"\s*[|｜]\s*(?:연합뉴스|뉴스1|뉴시스|한국경제|매일경제|Reuters|AP News)\s*$", "", value or "", flags=re.I)
+        cleaned = re.sub(r"\[[^\]]{1,12}\]|\([^)]{1,20}\)", " ", cleaned)
+        found = re.findall(
+            r"\d+(?:[,.]\d+)*(?:조원|억원|만원|원|달러|유로|위안|%포인트|%|MW|GW|톤|명|대|개비|개|주|일|개월|년)?"
+            r"|[a-z]{2,}[a-z0-9]*|[가-힣]{2,}",
+            cleaned.casefold(),
+            flags=re.I,
+        )
+        return {word for word in found if word not in stop and len(word) > 1}
+
+    left, right = tokens(f"{title_a} {fact_a}"), tokens(f"{title_b} {fact_b}")
+    if min(len(left), len(right)) < 5:
+        return False
+    common = left & right
+    overlap = len(common) / min(len(left), len(right))
+    jaccard = len(common) / len(left | right)
+    if len(common) < 5 or overlap < 0.45 or jaccard < 0.32:
+        return False
+
+    quantity = (
+        r"\d[\d,.]*\s*조\s*\d[\d,.]*\s*억(?:\s*\d[\d,.]*\s*만)?\s*원?"
+        r"|\d[\d,.]*\s*(?:조원|억원|만원|원|달러|유로|위안|USD|EUR|CNY|%포인트|%|MW|GW|톤|명|대|개비|개월|년|billion|million|bn|mn|B|M)"
+    )
+    title_measures_a = set(re.findall(quantity, title_a, re.I))
+    title_measures_b = set(re.findall(quantity, title_b, re.I))
+    fact_measures_a = set(re.findall(quantity, fact_a, re.I))
+    fact_measures_b = set(re.findall(quantity, fact_b, re.I))
+    if title_measures_a and title_measures_b and title_measures_a != title_measures_b:
+        return False
+    if not title_measures_a and not title_measures_b and fact_measures_a and fact_measures_b and fact_measures_a != fact_measures_b:
+        return False
+
+    early = re.compile(r"검토|논의|협상|추진|예정|계획|가능|전망|consider|discuss|negotiat|plan|propos", re.I)
+    completed = re.compile(
+        r"체결|서명|(?:수주|발주|낙찰|선정)(?:했다|했다는|완료|확정|공시)|"
+        r"가동(?:을\s*시작|했다|개시)|출시(?:했다|를\s*시작)|승인(?:됐다|받았다)|확정했다|공시했다|시행했다|완료했다|"
+        r"매각(?:을\s*)?(?:완료|마쳤|했다)|인수(?:를\s*)?(?:완료|마쳤|했다)|흑자전환|적자전환|상향했다|하향했다|"
+        r"signed|launched|approved|filed|started|completed|closed", re.I,
+    )
+
+    def stage(text: str) -> str:
+        if completed.search(text):
+            return "executed"
+        if early.search(text):
+            return "early"
+        return "unstated"
+
+    left_stage = stage(f"{title_a} {fact_a}")
+    right_stage = stage(f"{title_b} {fact_b}")
+    if left_stage != right_stage and "unstated" not in {left_stage, right_stage}:
+        return False
+    return True
 
 
 def verified_source_fact_identity(alert: dict) -> str:
@@ -2953,6 +3016,12 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
     """Do not promote service descriptions or event support into transactions."""
     if not current_event_sentence(sentence) or ACCOUNTING_NOTE.search(sentence):
         return False
+    quoted_label = re.fullmatch(r"[\"“‘][^\"”’]{2,60}[\"”’]", sentence.strip())
+    if quoted_label and not re.search(
+        r"체결|서명|수주|계약|투자|출시|가동|승인|확정|발표|기록|집계|" + QUANTITY.pattern,
+        quoted_label.group(0), re.I,
+    ):
+        return False
     if kind == "hardware_procurement_commitment":
         return bool(re.search(r"\d[\d,.]*\s*(?:억|만|million)?\s*(?:개|대|units)|\d[\d,.]*\s*(?:억달러|조원|billion)", sentence, re.I)
                     and not re.search(r"확보해야|구매해야|도입해야|필요하다|예를\s*들어|가정하면", sentence))
@@ -3245,7 +3314,8 @@ def equity_publication_assessment(title: str, evidence: list[dict], *, body: str
     if not kinds:
         return {'eligible': False, 'reason': 'no_verified_economic_change'}
     execution = any(NEW_EXECUTION.search(item['source_excerpt']) for item in evidence)
-    lead = " ".join(source_sentences(source_reported_body(body))[:5])
+    source_rows = source_sentences(source_reported_body(body))
+    lead = " ".join(source_rows[:5])
     if (kinds == {'model_operating_specification'}
             and re.search(r'개인용|로컬|데스크톱|desktop|personal', title + ' ' + lead, re.I)
             and not re.search(r'수주|공급\s*계약|납품\s*계약|판매량|연결\s*매출|영업이익|commercial order|revenue',
@@ -3259,6 +3329,35 @@ def equity_publication_assessment(title: str, evidence: list[dict], *, body: str
         } and (NEW_EXECUTION.search(item['source_excerpt']) or FORMAL_POLICY_EXECUTION.search(item['source_excerpt']))
         for item in evidence
     )
+    partnership_claim = re.search(r"파트너십|제휴|맞손|업무협약|\bMOU\b|partnership|collaboration", title, re.I)
+    exploratory_partnership = bool(
+        partnership_claim
+        and any(item["kind"] == "customer_discussions" for item in evidence)
+        and all(item["stage"] == "early_signal" for item in evidence)
+        and not any(re.search(
+            r"(?:업무협약|협약|계약|MOU)[^.!?]{0,55}(?:체결|서명|맺었)|"
+            r"(?:체결|서명|맺었)[^.!?]{0,55}(?:업무협약|협약|계약|MOU)|"
+            r"(?:상품|서비스)[^.!?]{0,35}(?:정식\s*)?(?:출시했다|판매를 시작했다|공급을 시작했다)|"
+            r"(?:상품|서비스)\s*(?:등록|인가)를\s*(?:완료|승인받)",
+            row, re.I,
+        ) for row in source_rows)
+    )
+    if exploratory_partnership:
+        return {'eligible': False, 'reason': 'exploratory_partnership_talk_without_committed_launch_or_terms'}
+    nuriho_support = bool(
+        re.search(r"누리호", title)
+        and re.search(r"누리호\s*5차\s*발사", " ".join(source_rows[:8]))
+        and re.search(r"HD현대중공업", lead)
+        and re.search(r"발사대시스템.{0,45}(?:운용|지원)|(?:운용|지원).{0,45}발사대시스템", lead)
+    )
+    new_nuriho_business_award = any(
+        current_event_sentence(row) and not PAST_ACTION.search(row)
+        and re.search(r"(?:신규|차세대)?(?:사업|발사대|발사체)?[^.!?]{0,35}(?:수주|계약|발주|낙찰|선정)", row)
+        and re.search(r"(?:수주|계약|발주|낙찰|선정)[^.!?]{0,30}(?:체결|따냈|확정|공시|선정됐다|수주했다|계약했다)", row)
+        for row in source_rows
+    )
+    if nuriho_support and not new_nuriho_business_award:
+        return {'eligible': False, 'reason': 'existing_launch_support_without_new_award_or_financial_catalyst'}
     crypto_history = bool(
         re.search(r"가상자산|비트코인|암호화폐|crypto", title, re.I)
         and re.search(r"경제\s*(?:규모|\d)|도입\s*보고서|adoption report", title + " " + lead, re.I)
@@ -3269,7 +3368,6 @@ def equity_publication_assessment(title: str, evidence: list[dict], *, body: str
         r"(?:상장사|주식|매출|영업이익|실적|주주환원|관세|수출통제)", title, re.I,
     ):
         return {'eligible': False, 'reason': 'annual_crypto_adoption_survey_without_equity_catalyst'}
-    source_rows = source_sentences(source_reported_body(body))
     maintained_broker_view = (re.search(r'증권|골드만|모건|애널리스트|analyst|Goldman|Morgan', lead, re.I)
                               and re.search(r'(?:목표(?:주가|가)|투자의견).{0,90}유지했다', lead))
     forecast_revision = any(current_event_sentence(row) and not PAST_ACTION.search(row)
@@ -3593,6 +3691,39 @@ def source_sentences(text: str) -> list[str]:
         if value := paragraph[start:].strip():
             sentences.append(value)
     return sentences
+
+
+def google_constellation_ppa_observation(title: str, body: str) -> dict[str, str] | None:
+    """Keep the current Google PPA separate from competitor deals in background."""
+    if not re.search(r"구글|알파벳|google|alphabet", title, re.I):
+        return None
+    source = source_reported_body(body)
+    if not re.search(r"콘스텔레이션", source, re.I):
+        return None
+    required = (
+        re.search(r"20\s*년(?:간)?[^.!?\n]{0,70}(?:전력|PPA)[^.!?\n]{0,50}(?:계약|체결|맺)|전력구매계약\s*\(\s*PPA\s*\)", source, re.I),
+        re.search(r"(?:원자로|원전)\s*11\s*기", source),
+        re.search(r"890\s*(?:메가와트|MW)", source, re.I),
+        re.search(r"(?:43\s*억\s*달러|4[.]3\s*billion\s*dollars?)[^.!?\n]{0,35}이상|(?:more\s*than\s*)?\$?4[.]3\s*billion", source, re.I),
+        re.search(r"2028\s*년(?:부터)?[^.!?\n]{0,50}공급|supply[^.!?\n]{0,50}2028", source, re.I),
+        re.search(r"2[.]7\s*(?:기가와트|GW)[^.!?\n]{0,45}15\s*년|15\s*년[^.!?\n]{0,45}2[.]7\s*(?:기가와트|GW)", source, re.I),
+    )
+    if not all(required):
+        return None
+    current_rows = [
+        row for row in source_sentences(source)
+        if re.search(r"구글|알파벳|콘스텔레이션", row, re.I)
+        and re.search(r"PPA|전력구매계약|20\s*년|11\s*기|890|43\s*억|2028", row, re.I)
+    ]
+    current_rows.extend(
+        row for row in source_sentences(source)
+        if re.search(r"2[.]7\s*(?:기가와트|GW)", row, re.I)
+        and re.search(r"15\s*년", row)
+    )
+    excerpt = " ".join(dict.fromkeys(current_rows))
+    if not excerpt:
+        return None
+    return {"stage": "contracted_capacity_expansion", "source_excerpt": excerpt}
 
 
 def assess(title: str, body: str, *, source_url: str = "") -> dict:
@@ -4053,6 +4184,7 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
     routine = bool(ROUTINE_HEADLINE.search(title) and not HARD_HEADLINE.search(title))
     soft = bool(SOFT_HEADLINE.search(title) and not HARD_HEADLINE.search(title))
     matches = []
+    google_ppa = google_constellation_ppa_observation(title, body)
     consensus = annual_earnings_consensus_observation(title, body)
     if consensus:
         matches.append((3, 90, 0, ['earnings'], {
@@ -4421,6 +4553,12 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
                 focus += 20
             matches.append((priority, focus, -index, evidence_axes,
                             {"kind": kind, "stage": "early_signal" if early else "reported_change", "source_excerpt": sentence}))
+    if google_ppa:
+        matches = [(3, 100, 0, ["earnings", "timeline"], {
+            "kind": "physical_supply_or_capacity",
+            "stage": google_ppa["stage"],
+            "source_excerpt": google_ppa["source_excerpt"],
+        })]
     if matches:
         matches.sort(key=lambda item: item[:3], reverse=True)
         result["priority"] = matches[0][0]

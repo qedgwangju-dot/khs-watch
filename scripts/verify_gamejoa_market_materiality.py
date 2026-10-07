@@ -2951,6 +2951,222 @@ class MaterialityChecks(unittest.TestCase):
 
 
 class ForegroundAndEventIdentityTests(unittest.TestCase):
+    def test_exploratory_aqr_meeting_is_not_promoted_to_a_signed_partnership(self):
+        title = "한투증권, 글로벌 퀀트 운용사 AQR과 파트너십"
+        body = (
+            '"글로벌 상품 공급 확대" 한국투자증권은 전날 서울 여의도 본사에서 글로벌 퀀트 자산운용사 '
+            'AQR Capital Management(AQR)와 만나 국내 투자자를 위한 글로벌 투자상품 공급 등 비즈니스 협력 방안을 논의했다고 밝혔다. '
+            '현재 한투증권은 AQR의 글로벌 투자상품 국내 등록과 출시 일정을 협의 중이다. '
+            '향후 퀀트 및 대체투자 등 글로벌 상품 라인업을 단계적으로 확대할 계획이다.'
+        )
+        audit = materiality.assess(title, body)
+        self.assertFalse(audit["equity_publication"]["eligible"], audit)
+        self.assertEqual(
+            audit["equity_publication"]["reason"],
+            "exploratory_partnership_talk_without_committed_launch_or_terms",
+        )
+        self.assertFalse(materiality.evidence_is_new_event("physical_supply_or_capacity", '"글로벌 상품 공급 확대"'))
+
+    def test_signed_partnership_with_terms_remains_eligible(self):
+        title = "AQR과 국내 투자상품 공급 계약 체결"
+        body = "한국투자증권은 AQR과 500억원 규모의 글로벌 투자상품 공급 계약을 체결했다고 발표했다."
+        audit = materiality.assess(title, body)
+        self.assertTrue(audit["equity_publication"]["eligible"], audit)
+
+    def test_live_radar_core_summaries_follow_the_current_article_event(self):
+        cases = (
+            (
+                "MS·아마존 이어 구글까지…AI 전력 병목 해결에 원전",
+                "구글이 콘스텔레이션에너지와 20년간 전력을 공급받는 계약을 체결했다. "
+                "알파벳과 콘스텔레이션은 전력구매계약(PPA)을 체결하고 원자로 11기의 설비를 개선해 총 890메가와트(MW)의 발전용량을 추가한다. "
+                "콘스텔레이션은 이를 위해 43억 달러 이상을 투자하며 전력은 2028년부터 PJM에 공급된다. "
+                "양사는 별도로 2.7기가와트의 전력을 공급하는 15년 계약도 체결했다.",
+                ("구글", "20년", "890MW", "2028년", "2.7GW"),
+            ),
+            (
+                "KT&G, 인니 신공장 가동 시작…글로벌 5각 생산체제",
+                "KT&G가 인도네시아 신공장을 본격 가동하며 글로벌 5각 생산체제를 구축했다. "
+                "신공장에는 향후 궐련 제조 설비 9대가 설치돼 연간 최대 210억 개비를 생산할 수 있게 된다. "
+                "기존 인도네시아 공장의 연간 140억 개비 생산능력을 더하면 현지 총 생산능력은 연간 최대 350억 개비로 확대된다.",
+                ("신공장을 가동", "9대", "210억", "350억"),
+            ),
+            (
+                "삼보산업, 알루미늄 판가 인상에 수익성 개선",
+                "알루미늄 합금 전문기업 삼보산업이 2분기 원재료 가격 상승분을 판매가격에 반영했다. "
+                "삼보산업의 알루미늄 합금 부문은 2024년 69억2000만원의 영업손실을 냈고 2025년에도 "
+                "1억4500만원의 영업손실을 기록했으나 "
+                "올해 상반기에는 118억5800만원의 영업이익을 거뒀다. 올해 상반기 알루미늄 합금 수출 매출은 82억7900만원이었다.",
+                ("흑자 전환", "118억5800만원", "82억7900만원"),
+            ),
+        )
+        for title, body, expected in cases:
+            with self.subTest(title=title):
+                core = radar.source_headline_event_fact(title, body)
+                self.assertTrue(core, title)
+                self.assertTrue(radar.core_sentence_is_complete(core), core)
+                for phrase in expected:
+                    self.assertIn(phrase, core)
+                self.assertNotIn("아마존은", core)
+                self.assertNotIn("마이크로소프트", core)
+
+    def test_google_constellation_ppa_uses_current_deal_not_competitor_background(self):
+        title = "MS·아마존 이어 구글까지…AI 전력 병목 해결에 '원전' 뜬다"
+        body = (
+            "구글이 미국 최대 원전 운영업체 콘스텔레이션에너지와 20년간 전력을 공급받는 계약을 체결했다. "
+            "인공지능(AI) 데이터센터의 막대한 전력 수요를 감당하기 위해서다. "
+            "6일(현지시간) 블룸버그에 따르면 구글 모회사 알파벳과 콘스텔레이션은 전력구매계약(PPA)을 체결하고 "
+            "일리노이·펜실베이니아·뉴저지주 원자로 11기의 설비를 개선해 총 890메가와트(MW)의 발전용량을 추가한다. "
+            "콘스텔레이션은 이를 위해 43억 달러(약 5조7500억 원) 이상을 투자하며 전력은 2028년부터 "
+            "미국 최대 전력망인 PJM 인터커넥션에 공급된다. "
+            "양사는 별도로 PJM 지역에서 2.7기가와트(GW)의 전력을 공급하는 15년 계약도 체결하고 신규 발전시설 개발 가능성도 모색하기로 했다. "
+            "구글은 이미 여러 원자력 발전 회사와 계약을 맺고 있다. 지난해에는 넥스트에라 에너지로부터 전력을 구매하기로 합의했다. "
+            "이는 2020년부터 가동이 중단된 아이오와주의 듀안 아놀드 원자로 재가동 계획을 지원하기 위한 것이었다. "
+            "또한 지난달에는 서던 컴퍼니의 원자력 발전소 두 곳의 시설 개선에 자금을 지원해 새로운 전력 공급 용량을 확보했다. "
+            "아마존은 지난주 콘스텔레이션과 690MW 규모의 유사한 전력 계약을 맺었고, "
+            "마이크로소프트(MS)는 2024년 폐쇄된 펜실베이니아주 스리마일섬 원전을 재가동해 생산하는 전력을 공급받기로 했다. "
+            "월마트 또한 지난 6월 일리노이주 원자력 발전소 개선을 통해 공급되는 핵분열 발전 전력 구매 계약을 체결했다."
+        )
+        core = radar.source_headline_event_fact(title, body)
+        self.assertIn("구글과 콘스텔레이션", core)
+        self.assertIn("890MW", core)
+        self.assertIn("43억달러 이상", core)
+        self.assertIn("2.7GW", core)
+        self.assertNotIn("아마존", core)
+        self.assertNotIn("마이크로소프트", core)
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["disposition"], "keep", audit)
+        self.assertEqual(audit["priority"], 3, audit)
+        self.assertEqual([item["kind"] for item in audit["evidence"]], ["physical_supply_or_capacity"])
+        excerpt = audit["evidence"][0]["source_excerpt"]
+        self.assertNotIn("아마존", excerpt)
+        self.assertNotIn("마이크로소프트", excerpt)
+        errors = radar.source_core_fact_errors({
+            **alert(title, body), "telegram_core_fact": core,
+        })
+        self.assertEqual(errors, [])
+
+    def test_existing_nuriho_launch_support_without_new_award_is_not_a_market_catalyst(self):
+        title = "HD현대중공업, 누리호 성공에 기여…발사대시스템 총괄 지원 | 연합뉴스"
+        body = (
+            "HD현대중공업, 누리호 5차 발사 성공 기여\n"
+            "발사대시스템 총괄 운용…국산화율 100% 달성\n"
+            "차세대발사체·제2우주센터로 사업 확대 추진\n"
+            "(울산=연합뉴스) HD현대중공업은 한국형발사체 누리호(KSLV-II) 5차 발사에서 발사대시스템을 안정적으로 운용하며 성공에 기여했다고 밝혔다.\n"
+            "HD현대중공업은 이날 누리호 5차 발사에서 발사 전 점검과 테스트를 비롯해 발사대시스템 운용을 지원했다.\n"
+            "HD현대중공업은 누리호 발사대시스템을 총괄 설계·제작·구축했으며, 1~4차 발사에서도 운용을 지원했다.\n"
+            "HD현대중공업은 이번 발사를 앞두고 4차 발사 과정에서 화염과 고온에 노출된 발사패드와 발사체 지상 고정장치 등 주요 설비를 보수했다.\n"
+            "HD현대중공업은 2016년 한국항공우주연구원으로부터 누리호 발사대시스템을 수주했다.\n"
+            "HD현대중공업은 나로호와 누리호 사업을 통해 축적한 역량을 차세대발사체 사업으로 확대하고 있다.\n"
+            "HD현대중공업은 향후 차세대 발사대시스템 제작·구축 사업 수주와 제2 우주센터 개발 참여를 추진할 계획이다."
+        )
+        core = radar.source_headline_event_fact(title, body)
+        self.assertIn("누리호 5차 발사", core)
+        self.assertIn("발사대시스템 운용을 지원", core)
+        audit = materiality.assess(title, body)
+        self.assertFalse(audit["equity_publication"]["eligible"], audit)
+        item = {**alert(title, body), "telegram_core_fact": core}
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            selected = radar.quality_display_alerts([item], 7)
+        self.assertEqual(selected, [])
+        self.assertEqual(
+            audit["equity_publication"]["reason"],
+            "existing_launch_support_without_new_award_or_financial_catalyst",
+        )
+        new_award = body.replace(
+            "HD현대중공업은 향후 차세대 발사대시스템 제작·구축 사업 수주와 제2 우주센터 개발 참여를 추진할 계획이다.",
+            "HD현대중공업은 차세대 발사대 사업 3000억원 계약을 새로 체결했다고 밝혔다.",
+        )
+        updated = materiality.assess(title, new_award)
+        self.assertNotEqual(
+            updated["equity_publication"].get("reason"),
+            "existing_launch_support_without_new_award_or_financial_catalyst",
+            updated,
+        )
+
+    def test_headline_event_dedup_preserves_changed_amount_and_execution_stage(self):
+        old_title = "SK하이닉스, 중국 충칭 공장 지분 매각 검토"
+        alias_title = "SK하이닉스, 충칭 패키징 공장 지분 매각 방안 검토"
+        old_fact = "SK하이닉스가 중국 충칭 후공정 공장의 지분 매각 방안을 검토 중이다."
+        alias_fact = "SK하이닉스는 중국 충칭 패키징 공장 지분 매각을 검토하고 있다."
+        self.assertTrue(materiality.same_headline_event(old_title, alias_title, old_fact, alias_fact))
+        self.assertFalse(materiality.same_headline_event(
+            "SK하이닉스, 3조원 충칭 공장 지분 매각 검토",
+            "SK하이닉스, 4조원 충칭 공장 지분 매각 검토",
+            "중국 충칭 공장 지분 매각을 검토 중이며 예상 가치는 3조원이다.",
+            "중국 충칭 공장 지분 매각을 검토 중이며 예상 가치는 4조원이다.",
+        ))
+        self.assertFalse(materiality.same_headline_event(
+            old_title, "SK하이닉스, 중국 충칭 공장 지분 매각 완료",
+            old_fact, "SK하이닉스가 중국 충칭 공장 지분 매각을 완료했다.",
+        ))
+
+    def test_same_day_batch_sends_one_cross_publisher_version_of_the_same_flow(self):
+        first = alert(
+            "외국인, 삼성전자·SK하이닉스 4조5000억원 순매수",
+            "한국거래소는 7일 외국인 투자자가 삼성전자와 SK하이닉스 주식 4조5000억원을 순매수했다고 집계했다. "
+            "외국인 매수는 반도체 업종으로 집중됐다.",
+        )
+        second = alert(
+            "외국인, 삼성전자·SK하이닉스 4조5000억원 순매수",
+            "한국거래소는 7일 외국인 투자자가 삼성전자와 SK하이닉스 주식 4조5000억원을 순매수했다고 집계했다. "
+            "외국인 매수세가 반도체 업종으로 집중됐다.",
+        )
+        second["link"] = "https://www.etnews.com/20261007000001"
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            selected = radar.quality_display_alerts([first, second], 7)
+        self.assertEqual(len(selected), 1)
+        self.assertIn(
+            second.get("_exclusion_reason"),
+            {"semantic_duplicate", "same_day_duplicate_headline_event"},
+        )
+
+    def test_persistent_cross_publisher_dedup_stores_verified_title_and_core(self):
+        first = alert(
+            "SK하이닉스, 중국 충칭 공장 지분 매각 검토",
+            "SK하이닉스가 중국 충칭 후공정 공장의 지분 매각 방안을 검토 중이다.",
+        )
+        first["link"] = "https://news.example.com/first"
+        first["telegram_core_fact"] = "SK하이닉스가 중국 충칭 후공정 공장의 지분 매각 방안을 검토 중이다."
+        second = alert(
+            "SK하이닉스, 충칭 패키징 공장 지분 매각 방안 검토",
+            "중국 충칭에 있는 SK하이닉스 패키징 공장의 지분 매각 가능성이 거론된다.",
+        )
+        second["link"] = "https://news.example.net/second"
+        second["telegram_core_fact"] = "SK하이닉스는 중국 충칭 패키징 공장 지분 매각을 검토하고 있다."
+        state = {"seen": {}}
+        with patch.dict("os.environ", {"RADAR_RUN_MODE": "live"}), \
+                patch.object(radar.telegram, "load_seen_state", return_value=state), \
+                patch.object(radar.telegram, "save_seen_state", side_effect=lambda *_args: None):
+            radar.telegram.record_seen_alerts([first], NOW)
+            stored = next(iter(state["seen"].values()))
+            fresh, skipped = radar.telegram.filter_previously_seen_alerts([second], NOW, "live")
+        self.assertEqual(stored["source_title"], first["source_title"])
+        self.assertEqual(stored["telegram_core_fact"], first["telegram_core_fact"])
+        self.assertEqual(fresh, [])
+        self.assertEqual(len(skipped), 1)
+
+    def test_preopen_digest_still_bypasses_only_live_lane_fuzzy_duplicate(self):
+        first = alert(
+            "SK하이닉스, 중국 충칭 공장 지분 매각 검토",
+            "SK하이닉스가 중국 충칭 후공정 공장의 지분 매각 방안을 검토 중이다.",
+        )
+        first["link"] = "https://news.example.com/live"
+        first["telegram_core_fact"] = "SK하이닉스가 중국 충칭 후공정 공장의 지분 매각 방안을 검토 중이다."
+        second = alert(
+            "SK하이닉스, 충칭 패키징 공장 지분 매각 방안 검토",
+            "중국 충칭에 있는 SK하이닉스 패키징 공장의 지분 매각 가능성이 거론된다.",
+        )
+        second["link"] = "https://news.example.net/preopen"
+        second["telegram_core_fact"] = "SK하이닉스는 중국 충칭 패키징 공장 지분 매각을 검토하고 있다."
+        state = {"seen": {}}
+        with patch.dict("os.environ", {"RADAR_RUN_MODE": "live"}), \
+                patch.object(radar.telegram, "load_seen_state", return_value=state), \
+                patch.object(radar.telegram, "save_seen_state", side_effect=lambda *_args: None):
+            radar.telegram.record_seen_alerts([first], NOW)
+            digest, skipped = radar.telegram.filter_previously_seen_alerts([second], NOW, "preopen")
+        self.assertEqual(len(digest), 1)
+        self.assertEqual(skipped, [])
+
     def test_economic_fact_alone_does_not_fill_stock_market_news_slots(self):
         cases = (
             ("'친환경·고부가'로 체질 바꾼다…K철강·화학, 반등 채비[초격차 코리아]",
