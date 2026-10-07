@@ -2527,7 +2527,7 @@ def _merge_typed_state(old: dict, obs: dict) -> dict:
 def _extract_nand_divergence(item: dict) -> dict | None:
     text = _clean(f"{item.get('title','')} {item.get('description','')}")
     low = text.lower()
-    enterprise = "enterprise ssd" in low or "essd" in low or "기업용 ssd" in text
+    enterprise = "enterprise ssd" in low or "essd" in low or "기업용 ssd" in low
     divergence_context = any(k in low or k in text for k in (
         "consumer", "client", "ufs", "mobile", "소비자", "클라이언트", "모바일",
         "bit demand", "incremental supply", "committed", "agentic ai", "qlc", "pcie 6.0",
