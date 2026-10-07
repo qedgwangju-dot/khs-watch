@@ -4357,6 +4357,16 @@ class IncrementalNewsTests(unittest.TestCase):
         self.assertNotIn('24억3000만', fdi_core)
         self.assertIn('160억7000만', radar.source_headline_event_fact(
             fdi_title, fdi_body.replace('148억7000만', '160억7000만')))
+        fx_alert = {"source_title": fdi_title, "telegram_core_fact": fdi_core}
+        fx_now = dt.datetime(2026, 10, 7, 13, 22, tzinfo=dt.timezone(dt.timedelta(hours=9)))
+        fx_rate = {"value": 1338.78, "status": "일일 기준", "reference_time_kst": "2026-10-06",
+                   "source": "test rate", "url": "https://example.com/fx"}
+        conversion = radar.build_alert_fx_conversion(fx_alert, {"rates": {"USD": fx_rate}}, fx_now)
+        converted_title = radar.apply_krw_conversions(radar.clean_article_summary_text(fdi_title), conversion)
+        converted_core = radar.compact_converted_core(fdi_core, conversion)
+        self.assertIn('148.7억달러(약 ', converted_title)
+        self.assertIn('148억7000만 달러(약 ', converted_core)
+        self.assertIn('229억 달러(약 ', converted_core)
         partnership_title = '애플·LG전자, AI 스마트홈 기기 공동 개발…도어락 출시 추진'
         partnership_body = ('블룸버그통신에 따르면 애플과 LG전자는 스마트 도어락 등 스마트홈 기기를 '
                             '공동 개발 중이다. LG전자는 FCC에 제품 인증을 신청했다. '

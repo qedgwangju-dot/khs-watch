@@ -2031,8 +2031,8 @@ def format_krw_amount(value: float) -> str:
 
 
 def build_alert_fx_conversion(alert: dict, snapshot: dict, now) -> dict:
-    source_text = " ".join(
-        str(alert.get(key) or "")
+    source_parts = [
+        clean_article_summary_text(str(alert.get(key) or ""))
         for key in (
             "policy_plain_summary",
             "telegram_core_fact",
@@ -2040,8 +2040,15 @@ def build_alert_fx_conversion(alert: dict, snapshot: dict, now) -> dict:
             "original_news",
             "news",
         )
-    )
-    amounts = extract_foreign_amounts(source_text)
+    ]
+    amounts: list[dict] = []
+    seen_spellings: set[tuple[str, str]] = set()
+    for part in source_parts:
+        for amount in extract_foreign_amounts(part):
+            spelling = (amount["code"], amount["raw"])
+            if spelling not in seen_spellings:
+                seen_spellings.add(spelling)
+                amounts.append(amount)
     converted: list[dict] = []
     rates = snapshot.get("rates") or {}
     for amount in amounts:
