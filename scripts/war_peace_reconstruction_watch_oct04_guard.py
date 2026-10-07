@@ -353,6 +353,25 @@ def _non_concrete_endgame_rhetoric(row):
     return theater and rhetoric and not concrete
 
 
+def _trump_ukraine_peace_rhetoric(row):
+    """전망·수사성 종전 발언을 실제 협상 진전과 분리한다."""
+    src = " ".join([str(row.get("source", "")), str(row.get("link", "")), str(row.get("resolved_url", ""))]).lower()
+    t = _text(row).lower()
+    exact = "2198491" in src
+    trump = any(x in t for x in ("trump", "트럼프"))
+    ukraine = any(x in t for x in ("ukraine", "russia-ukraine", "우크라이나", "러시아-우크라이나"))
+    rhetoric = any(x in t for x in (
+        "believes the conflict is almost over", "conflict is almost over",
+        "peace is getting closer", "peace is actually getting closer",
+        "nearing its end", "almost over", "분쟁이 거의 끝", "평화가 가까워", "종전이 가까워",
+    ))
+    concrete = any(x in t for x in (
+        "signed agreement", "ceasefire agreement signed", "official ceasefire",
+        "합의문 서명", "휴전 합의 체결", "공식 휴전",
+    ))
+    return (exact or (trump and ukraine and rhetoric)) and not concrete
+
+
 def _vance_iran_enrichment_condition(row):
     src = " ".join([str(row.get("source", "")), str(row.get("link", "")), str(row.get("resolved_url", ""))]).lower()
     t = _text(row).lower()
