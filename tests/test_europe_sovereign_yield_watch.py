@@ -49,10 +49,16 @@ class EuropeSovereignYieldWatchTests(unittest.TestCase):
         watch.mark_event(events2, active2, state2, "fr10:above:4.75", True, "프랑스 경계")
         self.assertEqual(events2, [])
 
-    def test_stale_age(self):
-        now = dt.datetime(2026, 10, 7, 23, 0, tzinfo=ZoneInfo("Asia/Seoul"))
-        obs = watch.Obs("uk10", "영국 10년", "2026-10-02", 5.2, "x")
-        self.assertEqual(watch.age_days(obs, now), 5)
+    def test_business_lag(self):
+        now = dt.datetime(2026, 10, 8, 0, 35, tzinfo=ZoneInfo("Asia/Seoul"))
+        obs = watch.Obs("uk10", "영국 10년", "2026-10-05", 5.2, "x")
+        self.assertEqual(watch.business_lag_days(obs, now, watch.LONDON), 2)
+
+    def test_parse_investing_history(self):
+        text = "Date Price Open High Low Change % Oct 07, 2026 4.688 4.564 4.704 4.559 +3.37% Oct 06, 2026 4.535 4.620 4.620 4.500 -2.21%"
+        rows = watch.parse_investing_history(text, "it10", "이탈리아 10년 시장수익률", "https://example")
+        self.assertEqual(rows[-1].date, "2026-10-07")
+        self.assertAlmostEqual(rows[-1].value, 4.688)
 
     def test_alert_explains_policy_vs_market_rate(self):
         latest = {
@@ -69,7 +75,7 @@ class EuropeSovereignYieldWatchTests(unittest.TestCase):
             dt.datetime(2026, 10, 7, 23, 0, tzinfo=ZoneInfo("Asia/Seoul")),
         )
         self.assertIn("ECB 정책금리와 별개", body)
-        self.assertIn("프랑스 위험프리미엄", body)
+        self.assertIn("동일 시장자료", body)
         self.assertIn("프랑스 10년 5.00%", body)
         self.assertIn("유럽 국채금리 경보", title)
         self.assertTrue(detail["signature"])
