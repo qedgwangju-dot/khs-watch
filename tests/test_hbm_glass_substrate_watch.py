@@ -92,7 +92,7 @@ class GlassSubstrateWatchTests(unittest.TestCase):
         self.assertEqual(rec["value"]["sample_process"], "existing_method")
         self.assertEqual(rec["value"]["new_metal_fill_stage"], "development")
         self.assertFalse(rec["value"]["new_metal_fill_sample_delivered"])
-        self.assertFalse(rec["value"]["mass_production_supply_confirmed"])
+        self.assertIsNone(rec["value"]["mass_production_supply_confirmed"])
 
     def test_digitimes_dealsite_republication_is_not_independent_cross_verification(self):
         item = {
