@@ -137,6 +137,7 @@ HANUL4_FIXED_BASELINE = {
     "rank": 0,
     "status": "2026-08-19 자동정지·정비",
     "published_utc": "2026-08-18T23:50:00+00:00",
+    "cycle_started_utc": "2026-08-18T23:50:00+00:00",
     "published_kst": "2026-08-19T08:50:00+09:00",
     "title": "한울4호기 터빈발전기 정지 후 원자로 자동정지",
     "source": "한국수력원자력·한울원전환경감시센터",
@@ -1641,8 +1642,20 @@ def _sync_hanul4_live_observation(previous: dict, items: list[dict], now: dt.dat
 
 def _select_hanul4_transition(previous: dict, items: list[dict]) -> dict | None:
     prev_stage = str(previous.get("stage") or "automatic_trip")
-    prev_rank = int(previous.get("rank") if previous.get("rank") is not None else HANUL4_STAGE_RANK.get(prev_stage, 0))
+    prev_rank = int(
+        previous.get("rank")
+        if previous.get("rank") is not None
+        else HANUL4_STAGE_RANK.get(prev_stage, 0)
+    )
     prev_pub = str(previous.get("published_utc") or HANUL4_FIXED_BASELINE["published_utc"])
+    cycle_started = str(
+        previous.get("cycle_started_utc")
+        or (
+            prev_pub
+            if prev_stage == "automatic_trip"
+            else HANUL4_FIXED_BASELINE["cycle_started_utc"]
+        )
+    )
 
     # 재정지는 순위가 낮아져도 가장 중요한 실패 이벤트다.
     trip_candidates = [
@@ -1653,27 +1666,47 @@ def _select_hanul4_transition(previous: dict, items: list[dict]) -> dict | None:
         and bool(item.get("verified"))
     ]
     if trip_candidates:
-        return max(trip_candidates, key=lambda x: str(x.get("published_utc") or ""))
+        selected = dict(max(trip_candidates, key=lambda x: str(x.get("published_utc") or "")))
+        selected["cycle_started_utc"] = str(selected.get("published_utc") or "")
+        return selected
 
-    forward = []
+    # 중간 단계를 건너뛰지 않는다. 같은 재가동 사이클에서 공식 증거의
+    # 게시 시각이 관측 시각보다 앞설 수 있으므로 prev_pub보다 늦다는 조건 대신
+    # cycle_started_utc 이후인지와 정확히 다음 rank인지로 판정한다.
+    target_rank = prev_rank + 1
+    if target_rank > max(HANUL4_STAGE_RANK.values()):
+        return None
+
+    forward: list[dict] = []
     for item in items:
         stage = str(item.get("stage") or "")
-        rank = int(item.get("rank") if item.get("rank") is not None else HANUL4_STAGE_RANK.get(stage, -1))
+        rank = int(
+            item.get("rank")
+            if item.get("rank") is not None
+            else HANUL4_STAGE_RANK.get(stage, -1)
+        )
         published = str(item.get("published_utc") or "")
         if not item.get("verified"):
             continue
-        if published <= prev_pub:
+        if rank != target_rank:
             continue
-        if rank > prev_rank:
-            forward.append(item)
+        if published <= cycle_started:
+            continue
+        candidate = dict(item)
+        candidate["cycle_started_utc"] = cycle_started
+        forward.append(candidate)
+
     if not forward:
         return None
 
-    # 한 실행에서 승인→운전→계통병입→100% 출력이 동시에 보이더라도
-    # 중간 규제/운전 단계를 건너뛰지 않는다. 다음 한 단계만 확정해 저장한다.
-    next_rank = min(int(x.get("rank") or 0) for x in forward)
-    same_rank = [x for x in forward if int(x.get("rank") or 0) == next_rank]
-    return max(same_rank, key=lambda x: str(x.get("published_utc") or ""))
+    return max(
+        forward,
+        key=lambda x: (
+            1 if x.get("official") else 0,
+            int(x.get("evidence_count") or 0),
+            str(x.get("published_utc") or ""),
+        ),
+    )
 
 
 def _self_test_hanul4_operating_event_model() -> None:
@@ -1753,6 +1786,42 @@ def _self_test_hanul4_operating_event_model() -> None:
     selected = _select_hanul4_transition(HANUL4_FIXED_BASELINE, [resumed, operating, approval])
     if not selected or selected.get("stage") != "restart_approved":
         raise RuntimeError(f"Hanul4 sequential-stage regression: {selected}")
+
+    # 같은 사이클 안에서는 후속 공식 증거의 게시시각이 직전 상태 관측시각보다
+    # 앞서도 정확한 다음 단계면 놓치지 않는다.
+    previous_operating = {
+        **operating,
+        "published_utc": "2026-10-07T07:00:00+00:00",
+        "cycle_started_utc": HANUL4_FIXED_BASELINE["cycle_started_utc"],
+    }
+    delayed_resumed = {
+        **resumed,
+        "published_utc": "2026-10-07T06:10:00+00:00",
+    }
+    selected_delayed = _select_hanul4_transition(previous_operating, [delayed_resumed])
+    if not selected_delayed or selected_delayed.get("stage") != "generation_resumed":
+        raise RuntimeError(f"Hanul4 delayed-evidence transition regression: {selected_delayed}")
+
+    # 다음 rank가 빠졌는데 더 높은 단계만 보이면 절대 건너뛰지 않는다.
+    previous_approval = {
+        **approval,
+        "cycle_started_utc": HANUL4_FIXED_BASELINE["cycle_started_utc"],
+    }
+    if _select_hanul4_transition(previous_approval, [resumed]) is not None:
+        raise RuntimeError("Hanul4 skipped-intermediate-stage false-positive regression")
+
+    # 새 재정지 이후에는 이전 사이클의 오래된 증거를 재사용하지 않는다.
+    post_retrip = {
+        **HANUL4_FIXED_BASELINE,
+        "published_utc": "2026-10-07T10:00:00+00:00",
+        "cycle_started_utc": "2026-10-07T10:00:00+00:00",
+    }
+    stale_approval = {
+        **approval,
+        "published_utc": "2026-10-07T09:59:59+00:00",
+    }
+    if _select_hanul4_transition(post_retrip, [stale_approval]) is not None:
+        raise RuntimeError("Hanul4 previous-cycle evidence reuse regression")
 
     # 실제 Telegram nuclear lane의 필수 필드와도 호환되는지 회귀검사한다.
     if "korea.kr" not in HANUL4_RESTART_APPROVAL_PRIMARY:
@@ -2053,6 +2122,15 @@ def main() -> int:
             alerts.append(latest_hanul4)
             seen["hanul4_operation_state"] = {
                 **latest_hanul4,
+                "cycle_started_utc": (
+                    str(latest_hanul4.get("published_utc") or "")
+                    if latest_hanul4.get("stage") == "automatic_trip"
+                    else str(
+                        latest_hanul4.get("cycle_started_utc")
+                        or previous_hanul4.get("cycle_started_utc")
+                        or HANUL4_FIXED_BASELINE["cycle_started_utc"]
+                    )
+                ),
                 "first_seen_kst": now.isoformat(timespec="seconds"),
             }
             print(
@@ -2328,6 +2406,15 @@ def main() -> int:
         alerts.append(latest_hanul4)
         seen["hanul4_operation_state"] = {
             **latest_hanul4,
+            "cycle_started_utc": (
+                str(latest_hanul4.get("published_utc") or "")
+                if latest_hanul4.get("stage") == "automatic_trip"
+                else str(
+                    latest_hanul4.get("cycle_started_utc")
+                    or previous_hanul4.get("cycle_started_utc")
+                    or HANUL4_FIXED_BASELINE["cycle_started_utc"]
+                )
+            ),
             "first_seen_kst": now.isoformat(timespec="seconds"),
         }
         print(
