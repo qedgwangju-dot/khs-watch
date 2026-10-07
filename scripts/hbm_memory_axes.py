@@ -1285,9 +1285,14 @@ def parse_glass_substrate_records(item, body):
                 in_kind_investment = 80_000_000_000
 
             equity = None
-            m = re.search(r'(?:shareholding\s+ratio|지분율)[^0-9]{0,30}(66\.2)\s*%', text, re.I)
-            if m:
-                equity = float(m.group(1))
+            for pat in (
+                r'(?:shareholding\s+ratio|지분율)[^0-9]{0,30}(66\.2)\s*%',
+                r'(?:shareholding\s+ratio|지분율)[^0-9]{0,30}(?:\(\s*%\s*\)|%)[^0-9]{0,10}(66\.2)',
+            ):
+                m = re.search(pat, text, re.I)
+                if m:
+                    equity = float(m.group(1))
+                    break
 
             date = ''
             m = re.search(r'(?:scheduled\s+acquisition\s+date|취득\s*예정일|출자\s*예정일)[^0-9]{0,30}(2026[-./]0?9[-./]0?1)', text, re.I)
