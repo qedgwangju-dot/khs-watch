@@ -250,7 +250,11 @@ def format_alert(snapshot, previous, fx, fx_date, reasons):
 
 
 watcher.cme_snapshot = resilient_snapshot
-watcher.squeeze_evidence = squeeze_evidence
+# Production confirmation must use the official same-trade-date CME Daily Bulletin
+# point-change + OI-change fields. If the official bulletin is unavailable and the
+# resilient snapshot falls back to Yahoo/CFTC context, official_squeeze_evidence()
+# returns no confirmation signal (fail closed).
+watcher.squeeze_evidence = official.official_squeeze_evidence
 watcher.format_alert = format_alert
 
 if __name__ == "__main__":
