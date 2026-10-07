@@ -100,6 +100,31 @@
       "source_published_kst": "2026-10-07T09:47+09:00",
       "title": "8월 공장·창고 거래 규모 대폭 증가…거래량은 감소"
     },
+    "core:05b010da02981bc857bb0e84": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817940",
+      "source": "뉴시스",
+      "source_body_digest": "c1155d923ee4cc0435f3c92c2a520029d27137bf981e400b0db8cbfcf944711a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3ee9563c77b64a5c6e532a38a4319d733faaa8f8ca630cb890ce9b2bb883c88",
+      "source_fact_keys": [
+        "source_fact:v1:0c2a868656518d9ea865ec1efabe12723f1ddf472c8f2cabd0c932310d2086ff",
+        "source_fact:v1:3d2b56c80ad4027dad812ab69301e5218bb98cfee3a8d69b8f2732e535898a39",
+        "source_fact:v1:74b6560da6864d186cad35ff87beaf0f61eeff77e5d512db16d6ac4f7e9b2bb1",
+        "source_fact:v1:b69f23e7c3bacba9dcbeb1d726bc4aca9025903d1aa9541f299583c5df9bd92f",
+        "source_fact:v1:c12c83ee261a8edb84ba9877eb39cff489a18426b3fea457256fdc04c2a2f2cf",
+        "source_fact:v1:cd71a6c09c5264e076eee2935c7e4ef205606309448b9b8ad361e35f3d1f1cdf",
+        "source_fact:v1:fdf3bb89e6dbe1e8b9007618c57c3167e9e923589637b4ed35fd811cfcf56585"
+      ],
+      "source_published_kst": "2026-10-07T17:11+09:00",
+      "source_title": "인도, 기준금리 5.5%로 0.25%P↑…\"인플레 대응 3년8개월 만에 인상\"",
+      "telegram_core_fact": "은행이 중앙은행에 초과 유동성을 예치할 때 적용하는 상설예금제도(SDF) 금리는 5.25%, 긴급 유동성 지원 창구인 한계대출제도(MSF) 금리는 5.75%로 각각 0.25% 포인트 인상했다.",
+      "title": "인도, 기준금리 5.5%로 0.25%P↑…\"인플레 대응 3년8개월 만에 인상\""
+    },
     "core:061a22bbb0a6e6a6a33a6802": {
       "first_seen_kst": "2026-10-07T18:30:29+09:00",
       "lanes": {
@@ -680,6 +705,25 @@
       "telegram_core_fact": "지난달 30일 서울 태평로에 있는 규제합리화위원회 사무실에서 만난 그는 “규제 차르에게 대통령이 권한을 주고, 국무회의에도 참관할 수 있도록 해서 낡은 규제를 풀어야 한다”고 제안했다.",
       "title": "박용진 “부처간 꼬여있는 규제, 풀려면 ‘차르’ 필요” | 중앙일보"
     },
+    "core:19d3e537b2671b013a2c6b41": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/08/2026100719572534624",
+      "source": "머니투데이",
+      "source_body_digest": "a1cf370b60efc9edf9dd8563838115d8f4a130cf02b65e182be566464b5adeb0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3b244de8ef414102cccbd401f0e92e29cc7d73e655e171f1070479d4e7c1ad67",
+      "source_fact_keys": [
+        "source_fact:v1:1e0c165c058f76e75a300d8a0776b82ae2503a3190a95ebad5cdc7a4d62a0de8"
+      ],
+      "source_published_kst": "2026-10-08T03:58+09:00",
+      "source_title": "개인정보유출 보상은 없다는 '듀오' 수천억 과징금 쿠팡과 역차별 논란",
+      "telegram_core_fact": "개인정보보호위원회(이하 개보위)에 따르면 지난해 1월 듀오에서 개인정보를 취급하는 직원의 업무용 PC가 해킹돼 정회원 42만7464명의 개인정보가 유출됐다.",
+      "title": "개인정보유출 보상은 없다는 '듀오' 수천억 과징금 쿠팡과 역차별 논란"
+    },
     "core:1a2592ea4f59aa8eea38b325": {
       "first_seen_kst": "2026-10-07T18:00:43+09:00",
       "lanes": {
@@ -1207,6 +1251,29 @@
       "source_title": "[AI프리즘] 국내 AI기업들 \"개방형 생태계로\"…리사 수 \"함께 가자\"(종합2보) | 연합뉴스",
       "telegram_core_fact": "김주영 하이퍼엑셀 대표는 가속기와 네트워크, 소프트웨어 기업이 한자리에 모인 만큼 국내에 부족한 CPU와 학습용 GPU를 AMD와의 개방형 생태계로 채우는 '소버린 AI 인프라' 구축을 함께 추진하자고 제안했다.",
       "title": "[AI프리즘] 국내 AI기업들 \"개방형 생태계로\"…리사 수 \"함께 가자\"(종합2보) | 연합뉴스"
+    },
+    "core:290de3240004c0db98a6eebb": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817375",
+      "source": "뉴시스",
+      "source_body_digest": "23b94a3e046bc6d45d5dc1f671cc535d43e4806b28c227edde47cd1c3dcf47fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fd6f2a4490bb28b5c63e01021ab21d3800e35ba7259b670c4423882a00cd251",
+      "source_fact_keys": [
+        "source_fact:v1:062713e17ee54baf8f92d11140983966480a014aba8dfd7ac545ac8acc489245",
+        "source_fact:v1:066cb330736a0b9c220304fcb710c632c8dca715fe297e83b42743677fe01632",
+        "source_fact:v1:09e9c17ff194dd3bbd90c0b8bc3fea61f2f878ead433c174e51fe48d15f9d2d9",
+        "source_fact:v1:49bd0a1c536916f8731d1bf3c61d4af51c6c30b54a716ba7bdbb084b191fe15f",
+        "source_fact:v1:fbd0b422540aeaaac4db5b8588fa870fc9813481bba79a39077a129e232fbe68"
+      ],
+      "source_published_kst": "2026-10-08T00:02+09:00",
+      "source_title": "1년간 810% 오른 지캐시…윙클보스 형제, 현물 ETF 신청",
+      "telegram_core_fact": "그레이스케일은 지난 8월 지캐시 트러스트를 현물 ETF로 전환했고, 21셰어스는 유럽 최초의 지캐시 상장지수상품(ETP)을 출시했다.",
+      "title": "1년간 810% 오른 지캐시…윙클보스 형제, 현물 ETF 신청"
     },
     "core:2986f13d2c2fe918d35bc351": {
       "first_seen_kst": "2026-10-07T23:10:06+09:00",
@@ -2365,6 +2432,25 @@
       "source_title": "보스턴다이나믹스, 신임 CEO에 '아마존 AI 리더' 로히트 프라사드",
       "telegram_core_fact": "보스턴다이나믹스가 인공지능 전문가 로히트 프라사드를 신임 최고경영자(CEO)로 영입하고 피지컬 AI 기술 상용화에 속도를 낸다.",
       "title": "보스턴다이나믹스, 신임 CEO에 '아마존 AI 리더' 로히트 프라사드"
+    },
+    "core:5fcd1ffa61328ef436f2ba66": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007171100001",
+      "source": "연합뉴스",
+      "source_body_digest": "ba127c1db050558c91ed414aee3bc8c4dbe1455d8137d83adac37cfcc84e57a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3da6f0f0e7bf590400f10af11fb16db93192189a368c3d7271b143aaa8fc1e6d",
+      "source_fact_keys": [
+        "source_fact:v1:6fd6aa8e706f800b3a5689aee1cd84d8304582745bb681ea6440046ee737140d"
+      ],
+      "source_published_kst": "2026-10-07T17:27+09:00",
+      "source_title": "[누리호 성공] 李대통령, 발사 장면 생중계로 시청…\"정부 지원 성과\" | 연합뉴스",
+      "telegram_core_fact": "이후 누리호가 이륙한 뒤 약 20분간 위성 사출이 완전히 끝날 때까지 숨죽여 지켜보던 이 대통령은 발사 성공이 확인되고 항공우주연구원 관계자들이 환호하는 모습이 화면에 나오자 함께 박수를 치며 기쁨을 표시했다고 한다.",
+      "title": "[누리호 성공] 李대통령, 발사 장면 생중계로 시청…\"정부 지원 성과\" | 연합뉴스"
     },
     "core:60021d5be1c62719f5f3b9fa": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
@@ -5551,6 +5637,28 @@
       "telegram_core_fact": "스포츠레이더 그룹(SRAD)이 자회사 시너지 스포츠(Synergy Sports)의 코칭·스카우팅 사업부인 아트리움 스포츠(Atrium Sports)를 팀웍스 이노베이션스(Teamworks Innovations)에 현금 1억7000만 달러를 받고 매각하는 확정 계약을 체결했다고 7일 발표했다.",
       "title": "스포츠레이더 그룹, 코칭사업 1억7000만 달러 매각…핵심 집중"
     },
+    "core:d2dae1848b5d801fd4aa85c1": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01433366645610952&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "21508d60b9e9900a63f7c08b97b1d0148c160f1c08ef817f332c3b7f80ceaef3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:762163ab0a93ea9efe288584c39ac2efdf9ca01f2845364047e1a5ccdc233e3f",
+      "source_fact_keys": [
+        "source_fact:v1:0bd2354f837b0b9eca4255011b006b67469d762007c9a4aca7436bb101cb65dc",
+        "source_fact:v1:d110cd416797959a29931a30ee90b09e23fa0987bbaf5dab1356c349cab0187e",
+        "source_fact:v1:e9ad043dc62fc861e1ad63224eeea92e7de300bc22a547f9f060aabcec18250a",
+        "source_fact:v1:f398073df75096cc9523f83b6752691572efe31570d179dab0fbb3c4074e3cd2"
+      ],
+      "source_published_kst": "2026-10-08T03:59+09:00",
+      "source_title": "AI칩 사려 53조원 차입 추진…스페이스X 신용위험 '사상 최고'",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 일론 머스크의 스페이스X가 엔비디아의 인공지능(AI) 칩 구매를 위해 400억달러(약 53조5560억원) 신규 차입을 추진하는 가운데 스페이스X의 신용위험 지표가 사상 최고치로 치솟았다.",
+      "title": "AI칩 사려 53조원 차입 추진…스페이스X 신용위험 '사상 최고'"
+    },
     "core:d31da6be0e0c1e29be783b2a": {
       "first_seen_kst": "2026-10-07T22:00:35+09:00",
       "lanes": {
@@ -6446,6 +6554,25 @@
       ],
       "source_published_kst": "2026-10-07T10:00+09:00",
       "title": "홍지선 국토장관 “수도권 주택 충분히 공급…국민 주거 불안 해소”"
+    },
+    "core:f2f281e15a63b17f054a45e9": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003818001",
+      "source": "뉴시스",
+      "source_body_digest": "390d7b8627d68c6a3dbd742aa5928bcca77f405fe2f2fa6cd36985cb5058a9d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f0795391e6724d78abf4757d91b57a51b90be875e0f9495f0d36d2c765c479bb",
+      "source_fact_keys": [
+        "source_fact:v1:aa5984b196946c71be58ca3ae52ff6cd9d3892d7fccf30ae0933d205cf4c9e55"
+      ],
+      "source_published_kst": "2026-10-07T20:48+09:00",
+      "source_title": "누리호 5차 발사…대전 기업 개발 '대전샛' 교신 성공할까",
+      "telegram_core_fact": "대전지역 업체들이 개발한 초소형 위성 '대전샛'이 한국형 발사체 누리호에 실려 우주로 향한 가운데 위성의 교신 성공 여부에 관심이 높아지고 있다.",
+      "title": "누리호 5차 발사…대전 기업 개발 '대전샛' 교신 성공할까"
     },
     "core:f380560ff67f8237c5f008cc": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
@@ -10843,6 +10970,31 @@
       "source": "연합뉴스",
       "title": "\"집사겠단 사람 없다\"…美주담대 7.28%로 주간상승폭 4년만 최대 | 연합뉴스"
     },
+    "event:8cd7f11d4f560457c41b7453": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675185",
+      "source": "블로터",
+      "source_body_digest": "7ee5a39ea152ad9168853de824ed3ac1898aaae81a7d1c5ff5656665d877acdf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f449e9a06ebcb07642554e5e2a2995a97f5c4d6270347c075d7e6cd792893cfc",
+      "source_fact_keys": [
+        "source_fact:v1:731b952e75985582be2f2532aded5daee93cb6ee88b2f77f5350c519542d6c3f",
+        "source_fact:v1:8a9d91841015ef07f03d3cc7bcf2bfc5363b22b77118c54920d9afa78eba7520",
+        "source_fact:v1:95b3c1b3ef788339bf4b3bf9da078afff7166bb437b54a0208ac7a2a5e625d80",
+        "source_fact:v1:9f545c71c46b323a15b242dc75f736faa5b950e3bbffb9b1ae96b94ba2d2961c",
+        "source_fact:v1:cdf46f15affef72b534fa23e597fe52947971064646c4540e3cfa5ed0cb533ff",
+        "source_fact:v1:cfd870c4ab690298ea199a891a20a8aa5c19924587f3bd221f709002ef7eb0c7",
+        "source_fact:v1:d08776aadbbe358e4b5437355674f99a6d24db138003a6a2486dbaa958944359"
+      ],
+      "source_published_kst": "2026-10-07T13:43+09:00",
+      "source_title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배",
+      "telegram_core_fact": "파라다이스가 공모 회사채 수요예측에서 모집액의 3.4배에 달하는 투자 수요를 확보하며 2년 연속 흥행에 성공했다. 파라다이스에 따르면 회사는 지난 6일 총 600억원 공모 회사채 발행을 위한 수요예측을 실시한 결과 모집액의 3.42배인 총 2050억원의 주문이 접수됐다.",
+      "title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배"
+    },
     "event:8d9f7b0390d2b512ce4403bb": {
       "first_seen_kst": "2026-09-21T15:04:09+09:00",
       "lanes": {
@@ -13226,6 +13378,28 @@
       "source": "연합뉴스",
       "title": "마이크론, 2030년 매출 3분의1 장기계약 확보…\"수급 빠듯\" | 연합뉴스"
     },
+    "event:d8590b1f93c2ff8931b9355c": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01433366645610952&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "21508d60b9e9900a63f7c08b97b1d0148c160f1c08ef817f332c3b7f80ceaef3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:762163ab0a93ea9efe288584c39ac2efdf9ca01f2845364047e1a5ccdc233e3f",
+      "source_fact_keys": [
+        "source_fact:v1:0bd2354f837b0b9eca4255011b006b67469d762007c9a4aca7436bb101cb65dc",
+        "source_fact:v1:d110cd416797959a29931a30ee90b09e23fa0987bbaf5dab1356c349cab0187e",
+        "source_fact:v1:e9ad043dc62fc861e1ad63224eeea92e7de300bc22a547f9f060aabcec18250a",
+        "source_fact:v1:f398073df75096cc9523f83b6752691572efe31570d179dab0fbb3c4074e3cd2"
+      ],
+      "source_published_kst": "2026-10-08T03:59+09:00",
+      "source_title": "AI칩 사려 53조원 차입 추진…스페이스X 신용위험 '사상 최고'",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 일론 머스크의 스페이스X가 엔비디아의 인공지능(AI) 칩 구매를 위해 400억달러(약 53조5560억원) 신규 차입을 추진하는 가운데 스페이스X의 신용위험 지표가 사상 최고치로 치솟았다.",
+      "title": "AI칩 사려 53조원 차입 추진…스페이스X 신용위험 '사상 최고'"
+    },
     "event:d88b0eac57260dfdb7556995": {
       "first_seen_kst": "2026-09-27T00:25:22+09:00",
       "lanes": {
@@ -13955,6 +14129,29 @@
       "link": "https://biz.heraldcorp.com/article/10885877",
       "source": "헤럴드경제",
       "title": "삼성전자, B2B AI 구독 서비스 론칭…“최소한의 운영비용로 최대한의 혜택”"
+    },
+    "event:f10f698cf4e062e133597b4b": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817375",
+      "source": "뉴시스",
+      "source_body_digest": "23b94a3e046bc6d45d5dc1f671cc535d43e4806b28c227edde47cd1c3dcf47fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fd6f2a4490bb28b5c63e01021ab21d3800e35ba7259b670c4423882a00cd251",
+      "source_fact_keys": [
+        "source_fact:v1:062713e17ee54baf8f92d11140983966480a014aba8dfd7ac545ac8acc489245",
+        "source_fact:v1:066cb330736a0b9c220304fcb710c632c8dca715fe297e83b42743677fe01632",
+        "source_fact:v1:09e9c17ff194dd3bbd90c0b8bc3fea61f2f878ead433c174e51fe48d15f9d2d9",
+        "source_fact:v1:49bd0a1c536916f8731d1bf3c61d4af51c6c30b54a716ba7bdbb084b191fe15f",
+        "source_fact:v1:fbd0b422540aeaaac4db5b8588fa870fc9813481bba79a39077a129e232fbe68"
+      ],
+      "source_published_kst": "2026-10-08T00:02+09:00",
+      "source_title": "1년간 810% 오른 지캐시…윙클보스 형제, 현물 ETF 신청",
+      "telegram_core_fact": "그레이스케일은 지난 8월 지캐시 트러스트를 현물 ETF로 전환했고, 21셰어스는 유럽 최초의 지캐시 상장지수상품(ETP)을 출시했다.",
+      "title": "1년간 810% 오른 지캐시…윙클보스 형제, 현물 ETF 신청"
     },
     "event:f113d7b17c1c7e546a0cef59": {
       "first_seen_kst": "2026-09-22T09:27:58+09:00",
@@ -19865,6 +20062,25 @@
       "source_published_kst": "2026-10-07T06:00+09:00",
       "title": "최수진 \"강원랜드, 영업이익 급감에도 성과급 195％…방만경영\" | 연합뉴스"
     },
+    "fact:37a08255c6429d3b5092a8b6": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003818001",
+      "source": "뉴시스",
+      "source_body_digest": "390d7b8627d68c6a3dbd742aa5928bcca77f405fe2f2fa6cd36985cb5058a9d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f0795391e6724d78abf4757d91b57a51b90be875e0f9495f0d36d2c765c479bb",
+      "source_fact_keys": [
+        "source_fact:v1:aa5984b196946c71be58ca3ae52ff6cd9d3892d7fccf30ae0933d205cf4c9e55"
+      ],
+      "source_published_kst": "2026-10-07T20:48+09:00",
+      "source_title": "누리호 5차 발사…대전 기업 개발 '대전샛' 교신 성공할까",
+      "telegram_core_fact": "대전지역 업체들이 개발한 초소형 위성 '대전샛'이 한국형 발사체 누리호에 실려 우주로 향한 가운데 위성의 교신 성공 여부에 관심이 높아지고 있다.",
+      "title": "누리호 5차 발사…대전 기업 개발 '대전샛' 교신 성공할까"
+    },
     "fact:37bbfcafd80af7d65503125b": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
       "lanes": {
@@ -20158,6 +20374,25 @@
       ],
       "source_published_kst": "2026-10-05T16:20+09:00",
       "title": "'해킹 사태' 은행장 국감 줄줄이 소환될듯..연말 CEO 연임 '브레이크'"
+    },
+    "fact:3b0855de96908069776515a1": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/08/2026100719572534624",
+      "source": "머니투데이",
+      "source_body_digest": "a1cf370b60efc9edf9dd8563838115d8f4a130cf02b65e182be566464b5adeb0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3b244de8ef414102cccbd401f0e92e29cc7d73e655e171f1070479d4e7c1ad67",
+      "source_fact_keys": [
+        "source_fact:v1:1e0c165c058f76e75a300d8a0776b82ae2503a3190a95ebad5cdc7a4d62a0de8"
+      ],
+      "source_published_kst": "2026-10-08T03:58+09:00",
+      "source_title": "개인정보유출 보상은 없다는 '듀오' 수천억 과징금 쿠팡과 역차별 논란",
+      "telegram_core_fact": "개인정보보호위원회(이하 개보위)에 따르면 지난해 1월 듀오에서 개인정보를 취급하는 직원의 업무용 PC가 해킹돼 정회원 42만7464명의 개인정보가 유출됐다.",
+      "title": "개인정보유출 보상은 없다는 '듀오' 수천억 과징금 쿠팡과 역차별 논란"
     },
     "fact:3b4a994f8dfa598d9e2024db": {
       "first_seen_kst": "2026-10-08T01:43:44+09:00",
@@ -21791,6 +22026,28 @@
       "source_published_kst": "2026-10-06T15:03+09:00",
       "title": "“연봉 최대 2배” 중국행 삼전닉스 기술인재의 결말"
     },
+    "fact:4da98f122d56811e4bb50bf3": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007163200008",
+      "source": "연합뉴스",
+      "source_body_digest": "c9b9cc4990f3330598a2769e1ed1bc3999e3df169d1f550b0146bcc7c79fec98",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ad2e13e75833655ee4df47ce27b2662ae63956876fa815c1ec840687df0fc914",
+      "source_fact_keys": [
+        "source_fact:v1:0a41fd200c6993efceb41f5c4d0d4f7d37c502bf211dc87ed63502b0f7507ee8",
+        "source_fact:v1:32ad1c0681a259f7fbda18f04563198b869463939cb86114719e4528916d87be",
+        "source_fact:v1:6141c446866a542e87c2d59bc1485a0f0fba53337e5c679d11ec4225b537a6ba",
+        "source_fact:v1:61af372e393ab2b948b77831649da0b5ee4b556d31e5ca66b7ce94bbb25787ed"
+      ],
+      "source_published_kst": "2026-10-07T16:40+09:00",
+      "source_title": "국고채 금리 대체로 상승…3년물 연 3.961% | 연합뉴스",
+      "telegram_core_fact": "10년물 금리는 연 4.376%로 0.7bp 상승했다.",
+      "title": "국고채 금리 대체로 상승…3년물 연 3.961% | 연합뉴스"
+    },
     "fact:4de4d13f1d2c0092b4c713c7": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
@@ -21808,6 +22065,29 @@
       ],
       "source_published_kst": "2026-10-05T19:24+09:00",
       "title": "[TODAY엔비디아]개장전 '상승'…월가, 신고가 경신에도 여전히 \"밸류 매력\""
+    },
+    "fact:4e1cecf16ea45690d011c42d": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817375",
+      "source": "뉴시스",
+      "source_body_digest": "23b94a3e046bc6d45d5dc1f671cc535d43e4806b28c227edde47cd1c3dcf47fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fd6f2a4490bb28b5c63e01021ab21d3800e35ba7259b670c4423882a00cd251",
+      "source_fact_keys": [
+        "source_fact:v1:062713e17ee54baf8f92d11140983966480a014aba8dfd7ac545ac8acc489245",
+        "source_fact:v1:066cb330736a0b9c220304fcb710c632c8dca715fe297e83b42743677fe01632",
+        "source_fact:v1:09e9c17ff194dd3bbd90c0b8bc3fea61f2f878ead433c174e51fe48d15f9d2d9",
+        "source_fact:v1:49bd0a1c536916f8731d1bf3c61d4af51c6c30b54a716ba7bdbb084b191fe15f",
+        "source_fact:v1:fbd0b422540aeaaac4db5b8588fa870fc9813481bba79a39077a129e232fbe68"
+      ],
+      "source_published_kst": "2026-10-08T00:02+09:00",
+      "source_title": "1년간 810% 오른 지캐시…윙클보스 형제, 현물 ETF 신청",
+      "telegram_core_fact": "그레이스케일은 지난 8월 지캐시 트러스트를 현물 ETF로 전환했고, 21셰어스는 유럽 최초의 지캐시 상장지수상품(ETP)을 출시했다.",
+      "title": "1년간 810% 오른 지캐시…윙클보스 형제, 현물 ETF 신청"
     },
     "fact:4e676bf6a7538b5366b5cddd": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
@@ -31291,6 +31571,28 @@
       "source_published_kst": "2026-10-06T17:45+09:00",
       "title": "삼성전기, MLCC 또 장기계약"
     },
+    "fact:b9a207ec5555f71cc19deabb": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01433366645610952&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "21508d60b9e9900a63f7c08b97b1d0148c160f1c08ef817f332c3b7f80ceaef3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:762163ab0a93ea9efe288584c39ac2efdf9ca01f2845364047e1a5ccdc233e3f",
+      "source_fact_keys": [
+        "source_fact:v1:0bd2354f837b0b9eca4255011b006b67469d762007c9a4aca7436bb101cb65dc",
+        "source_fact:v1:d110cd416797959a29931a30ee90b09e23fa0987bbaf5dab1356c349cab0187e",
+        "source_fact:v1:e9ad043dc62fc861e1ad63224eeea92e7de300bc22a547f9f060aabcec18250a",
+        "source_fact:v1:f398073df75096cc9523f83b6752691572efe31570d179dab0fbb3c4074e3cd2"
+      ],
+      "source_published_kst": "2026-10-08T03:59+09:00",
+      "source_title": "AI칩 사려 53조원 차입 추진…스페이스X 신용위험 '사상 최고'",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 일론 머스크의 스페이스X가 엔비디아의 인공지능(AI) 칩 구매를 위해 400억달러(약 53조5560억원) 신규 차입을 추진하는 가운데 스페이스X의 신용위험 지표가 사상 최고치로 치솟았다.",
+      "title": "AI칩 사려 53조원 차입 추진…스페이스X 신용위험 '사상 최고'"
+    },
     "fact:b9ec6c51cb70081a9a596be6": {
       "first_seen_kst": "2026-10-05T23:05:12+09:00",
       "lanes": {
@@ -34814,6 +35116,25 @@
       "source_published_kst": "2026-10-06T14:42+09:00",
       "title": "中, 첫 해저 CO₂ 주입 플랫폼 건설…연 100만t 해저 저장"
     },
+    "fact:e0a9be528295f9285e758e6d": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007171100001",
+      "source": "연합뉴스",
+      "source_body_digest": "ba127c1db050558c91ed414aee3bc8c4dbe1455d8137d83adac37cfcc84e57a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3da6f0f0e7bf590400f10af11fb16db93192189a368c3d7271b143aaa8fc1e6d",
+      "source_fact_keys": [
+        "source_fact:v1:6fd6aa8e706f800b3a5689aee1cd84d8304582745bb681ea6440046ee737140d"
+      ],
+      "source_published_kst": "2026-10-07T17:27+09:00",
+      "source_title": "[누리호 성공] 李대통령, 발사 장면 생중계로 시청…\"정부 지원 성과\" | 연합뉴스",
+      "telegram_core_fact": "이후 누리호가 이륙한 뒤 약 20분간 위성 사출이 완전히 끝날 때까지 숨죽여 지켜보던 이 대통령은 발사 성공이 확인되고 항공우주연구원 관계자들이 환호하는 모습이 화면에 나오자 함께 박수를 치며 기쁨을 표시했다고 한다.",
+      "title": "[누리호 성공] 李대통령, 발사 장면 생중계로 시청…\"정부 지원 성과\" | 연합뉴스"
+    },
     "fact:e0bfa893245037f47e78f90b": {
       "first_seen_kst": "2026-10-07T20:43:18+09:00",
       "lanes": {
@@ -36135,6 +36456,31 @@
       ],
       "source_published_kst": "2026-10-06T16:11+09:00",
       "title": "[속보] “해리포터를 스타필드로?”…신세계, 워너브라더스 인수에 1.4조 베팅"
+    },
+    "fact:ef24fb62610e0b4972188fcd": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817940",
+      "source": "뉴시스",
+      "source_body_digest": "c1155d923ee4cc0435f3c92c2a520029d27137bf981e400b0db8cbfcf944711a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3ee9563c77b64a5c6e532a38a4319d733faaa8f8ca630cb890ce9b2bb883c88",
+      "source_fact_keys": [
+        "source_fact:v1:0c2a868656518d9ea865ec1efabe12723f1ddf472c8f2cabd0c932310d2086ff",
+        "source_fact:v1:3d2b56c80ad4027dad812ab69301e5218bb98cfee3a8d69b8f2732e535898a39",
+        "source_fact:v1:74b6560da6864d186cad35ff87beaf0f61eeff77e5d512db16d6ac4f7e9b2bb1",
+        "source_fact:v1:b69f23e7c3bacba9dcbeb1d726bc4aca9025903d1aa9541f299583c5df9bd92f",
+        "source_fact:v1:c12c83ee261a8edb84ba9877eb39cff489a18426b3fea457256fdc04c2a2f2cf",
+        "source_fact:v1:cd71a6c09c5264e076eee2935c7e4ef205606309448b9b8ad361e35f3d1f1cdf",
+        "source_fact:v1:fdf3bb89e6dbe1e8b9007618c57c3167e9e923589637b4ed35fd811cfcf56585"
+      ],
+      "source_published_kst": "2026-10-07T17:11+09:00",
+      "source_title": "인도, 기준금리 5.5%로 0.25%P↑…\"인플레 대응 3년8개월 만에 인상\"",
+      "telegram_core_fact": "은행이 중앙은행에 초과 유동성을 예치할 때 적용하는 상설예금제도(SDF) 금리는 5.25%, 긴급 유동성 지원 창구인 한계대출제도(MSF) 금리는 5.75%로 각각 0.25% 포인트 인상했다.",
+      "title": "인도, 기준금리 5.5%로 0.25%P↑…\"인플레 대응 3년8개월 만에 인상\""
     },
     "fact:ef26f5ac047c3dee8e204ecb": {
       "first_seen_kst": "2026-10-07T10:04:59+09:00",
@@ -41632,6 +41978,31 @@
       "link": "https://www.etnews.com/20260923000014",
       "source": "전자신문",
       "title": "증시 떠받친 삼전닉스 자사주 매입 막바지…추석 후 '수급 절벽' 어쩌나"
+    },
+    "link:19acef0633438ed1db6ce378": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817940",
+      "source": "뉴시스",
+      "source_body_digest": "c1155d923ee4cc0435f3c92c2a520029d27137bf981e400b0db8cbfcf944711a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3ee9563c77b64a5c6e532a38a4319d733faaa8f8ca630cb890ce9b2bb883c88",
+      "source_fact_keys": [
+        "source_fact:v1:0c2a868656518d9ea865ec1efabe12723f1ddf472c8f2cabd0c932310d2086ff",
+        "source_fact:v1:3d2b56c80ad4027dad812ab69301e5218bb98cfee3a8d69b8f2732e535898a39",
+        "source_fact:v1:74b6560da6864d186cad35ff87beaf0f61eeff77e5d512db16d6ac4f7e9b2bb1",
+        "source_fact:v1:b69f23e7c3bacba9dcbeb1d726bc4aca9025903d1aa9541f299583c5df9bd92f",
+        "source_fact:v1:c12c83ee261a8edb84ba9877eb39cff489a18426b3fea457256fdc04c2a2f2cf",
+        "source_fact:v1:cd71a6c09c5264e076eee2935c7e4ef205606309448b9b8ad361e35f3d1f1cdf",
+        "source_fact:v1:fdf3bb89e6dbe1e8b9007618c57c3167e9e923589637b4ed35fd811cfcf56585"
+      ],
+      "source_published_kst": "2026-10-07T17:11+09:00",
+      "source_title": "인도, 기준금리 5.5%로 0.25%P↑…\"인플레 대응 3년8개월 만에 인상\"",
+      "telegram_core_fact": "은행이 중앙은행에 초과 유동성을 예치할 때 적용하는 상설예금제도(SDF) 금리는 5.25%, 긴급 유동성 지원 창구인 한계대출제도(MSF) 금리는 5.75%로 각각 0.25% 포인트 인상했다.",
+      "title": "인도, 기준금리 5.5%로 0.25%P↑…\"인플레 대응 3년8개월 만에 인상\""
     },
     "link:19deb7743bd3688095e86b25": {
       "first_seen_kst": "2026-10-07T18:00:43+09:00",
@@ -48913,6 +49284,25 @@
       "source": "뉴시스",
       "title": "[미중정상회담]시진핑, 11년만 국빈 방미…'부상하는 중국'서 美 경쟁상대로"
     },
+    "link:472d0603f928ec065a8733c4": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003818001",
+      "source": "뉴시스",
+      "source_body_digest": "390d7b8627d68c6a3dbd742aa5928bcca77f405fe2f2fa6cd36985cb5058a9d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f0795391e6724d78abf4757d91b57a51b90be875e0f9495f0d36d2c765c479bb",
+      "source_fact_keys": [
+        "source_fact:v1:aa5984b196946c71be58ca3ae52ff6cd9d3892d7fccf30ae0933d205cf4c9e55"
+      ],
+      "source_published_kst": "2026-10-07T20:48+09:00",
+      "source_title": "누리호 5차 발사…대전 기업 개발 '대전샛' 교신 성공할까",
+      "telegram_core_fact": "대전지역 업체들이 개발한 초소형 위성 '대전샛'이 한국형 발사체 누리호에 실려 우주로 향한 가운데 위성의 교신 성공 여부에 관심이 높아지고 있다.",
+      "title": "누리호 5차 발사…대전 기업 개발 '대전샛' 교신 성공할까"
+    },
     "link:4745b98705b35f5608e88fbd": {
       "first_seen_kst": "2026-09-27T12:02:47+09:00",
       "lanes": {
@@ -51458,6 +51848,25 @@
       "link": "https://www.yna.co.kr/view/AKR20260928125000001",
       "source": "연합뉴스",
       "title": "국회 재경위, 배민·구글코리아 대표 등 국감 증인 채택 | 연합뉴스"
+    },
+    "link:58c471aba1e57035c74a8268": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/08/2026100719572534624",
+      "source": "머니투데이",
+      "source_body_digest": "a1cf370b60efc9edf9dd8563838115d8f4a130cf02b65e182be566464b5adeb0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3b244de8ef414102cccbd401f0e92e29cc7d73e655e171f1070479d4e7c1ad67",
+      "source_fact_keys": [
+        "source_fact:v1:1e0c165c058f76e75a300d8a0776b82ae2503a3190a95ebad5cdc7a4d62a0de8"
+      ],
+      "source_published_kst": "2026-10-08T03:58+09:00",
+      "source_title": "개인정보유출 보상은 없다는 '듀오' 수천억 과징금 쿠팡과 역차별 논란",
+      "telegram_core_fact": "개인정보보호위원회(이하 개보위)에 따르면 지난해 1월 듀오에서 개인정보를 취급하는 직원의 업무용 PC가 해킹돼 정회원 42만7464명의 개인정보가 유출됐다.",
+      "title": "개인정보유출 보상은 없다는 '듀오' 수천억 과징금 쿠팡과 역차별 논란"
     },
     "link:58d72d70b1004d6b99f76d92": {
       "first_seen_kst": "2026-10-04T17:14:34+09:00",
@@ -58220,6 +58629,28 @@
       "source_published_kst": "2026-10-05T19:24+09:00",
       "title": "ZTO 익스프레스, 자사주 14만주 매입..268만 달러 규모"
     },
+    "link:81e1a47ccd03b8663b8c286c": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01433366645610952&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "21508d60b9e9900a63f7c08b97b1d0148c160f1c08ef817f332c3b7f80ceaef3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:762163ab0a93ea9efe288584c39ac2efdf9ca01f2845364047e1a5ccdc233e3f",
+      "source_fact_keys": [
+        "source_fact:v1:0bd2354f837b0b9eca4255011b006b67469d762007c9a4aca7436bb101cb65dc",
+        "source_fact:v1:d110cd416797959a29931a30ee90b09e23fa0987bbaf5dab1356c349cab0187e",
+        "source_fact:v1:e9ad043dc62fc861e1ad63224eeea92e7de300bc22a547f9f060aabcec18250a",
+        "source_fact:v1:f398073df75096cc9523f83b6752691572efe31570d179dab0fbb3c4074e3cd2"
+      ],
+      "source_published_kst": "2026-10-08T03:59+09:00",
+      "source_title": "AI칩 사려 53조원 차입 추진…스페이스X 신용위험 '사상 최고'",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 일론 머스크의 스페이스X가 엔비디아의 인공지능(AI) 칩 구매를 위해 400억달러(약 53조5560억원) 신규 차입을 추진하는 가운데 스페이스X의 신용위험 지표가 사상 최고치로 치솟았다.",
+      "title": "AI칩 사려 53조원 차입 추진…스페이스X 신용위험 '사상 최고'"
+    },
     "link:81ec601be4c70ac6e4258d6e": {
       "first_seen_kst": "2026-10-01T16:31:12+09:00",
       "lanes": {
@@ -60242,6 +60673,29 @@
       "source": "뉴시스",
       "title": "이천시·한전, 전력 공급 안정화 맞손…\"이천변전소 옥내화\""
     },
+    "link:8f7a60312ddd4c805862ec9f": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817375",
+      "source": "뉴시스",
+      "source_body_digest": "23b94a3e046bc6d45d5dc1f671cc535d43e4806b28c227edde47cd1c3dcf47fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fd6f2a4490bb28b5c63e01021ab21d3800e35ba7259b670c4423882a00cd251",
+      "source_fact_keys": [
+        "source_fact:v1:062713e17ee54baf8f92d11140983966480a014aba8dfd7ac545ac8acc489245",
+        "source_fact:v1:066cb330736a0b9c220304fcb710c632c8dca715fe297e83b42743677fe01632",
+        "source_fact:v1:09e9c17ff194dd3bbd90c0b8bc3fea61f2f878ead433c174e51fe48d15f9d2d9",
+        "source_fact:v1:49bd0a1c536916f8731d1bf3c61d4af51c6c30b54a716ba7bdbb084b191fe15f",
+        "source_fact:v1:fbd0b422540aeaaac4db5b8588fa870fc9813481bba79a39077a129e232fbe68"
+      ],
+      "source_published_kst": "2026-10-08T00:02+09:00",
+      "source_title": "1년간 810% 오른 지캐시…윙클보스 형제, 현물 ETF 신청",
+      "telegram_core_fact": "그레이스케일은 지난 8월 지캐시 트러스트를 현물 ETF로 전환했고, 21셰어스는 유럽 최초의 지캐시 상장지수상품(ETP)을 출시했다.",
+      "title": "1년간 810% 오른 지캐시…윙클보스 형제, 현물 ETF 신청"
+    },
     "link:8f9e4de87d2620ec980bc1a6": {
       "first_seen_kst": "2026-10-07T23:36:14+09:00",
       "lanes": {
@@ -60802,6 +61256,25 @@
       "link": "https://www.mk.co.kr/news/stock/12159387",
       "source": "매일경제",
       "title": "미 금리 인상에도 7000선 고지 회복한 국장…“변동성 줄고 기초체력 양호”"
+    },
+    "link:931fd5544a36c1ed92080a04": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007171100001",
+      "source": "연합뉴스",
+      "source_body_digest": "ba127c1db050558c91ed414aee3bc8c4dbe1455d8137d83adac37cfcc84e57a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3da6f0f0e7bf590400f10af11fb16db93192189a368c3d7271b143aaa8fc1e6d",
+      "source_fact_keys": [
+        "source_fact:v1:6fd6aa8e706f800b3a5689aee1cd84d8304582745bb681ea6440046ee737140d"
+      ],
+      "source_published_kst": "2026-10-07T17:27+09:00",
+      "source_title": "[누리호 성공] 李대통령, 발사 장면 생중계로 시청…\"정부 지원 성과\" | 연합뉴스",
+      "telegram_core_fact": "이후 누리호가 이륙한 뒤 약 20분간 위성 사출이 완전히 끝날 때까지 숨죽여 지켜보던 이 대통령은 발사 성공이 확인되고 항공우주연구원 관계자들이 환호하는 모습이 화면에 나오자 함께 박수를 치며 기쁨을 표시했다고 한다.",
+      "title": "[누리호 성공] 李대통령, 발사 장면 생중계로 시청…\"정부 지원 성과\" | 연합뉴스"
     },
     "link:9344034e2b05baf96db0b003": {
       "first_seen_kst": "2026-09-24T00:18:03+09:00",
@@ -63171,6 +63644,28 @@
       "link": "https://www.mk.co.kr/news/business/12167167",
       "source": "매일경제",
       "title": "타임월드 매각설…한화갤러리아에 무슨 일- 매경ECONOMY"
+    },
+    "link:a234402250cc505ba63a5f40": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01433366645610952&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "21508d60b9e9900a63f7c08b97b1d0148c160f1c08ef817f332c3b7f80ceaef3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:762163ab0a93ea9efe288584c39ac2efdf9ca01f2845364047e1a5ccdc233e3f",
+      "source_fact_keys": [
+        "source_fact:v1:0bd2354f837b0b9eca4255011b006b67469d762007c9a4aca7436bb101cb65dc",
+        "source_fact:v1:d110cd416797959a29931a30ee90b09e23fa0987bbaf5dab1356c349cab0187e",
+        "source_fact:v1:e9ad043dc62fc861e1ad63224eeea92e7de300bc22a547f9f060aabcec18250a",
+        "source_fact:v1:f398073df75096cc9523f83b6752691572efe31570d179dab0fbb3c4074e3cd2"
+      ],
+      "source_published_kst": "2026-10-08T03:59+09:00",
+      "source_title": "AI칩 사려 53조원 차입 추진…스페이스X 신용위험 '사상 최고'",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 일론 머스크의 스페이스X가 엔비디아의 인공지능(AI) 칩 구매를 위해 400억달러(약 53조5560억원) 신규 차입을 추진하는 가운데 스페이스X의 신용위험 지표가 사상 최고치로 치솟았다.",
+      "title": "AI칩 사려 53조원 차입 추진…스페이스X 신용위험 '사상 최고'"
     },
     "link:a25720d432757aa0d15c78aa": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
@@ -71263,6 +71758,28 @@
       ],
       "source_published_kst": "2026-10-07T11:11+09:00",
       "title": "골드만삭스 \"삼성전자 8일 변동성 확대…이벤트 3건 동시 발생\""
+    },
+    "link:d64332872965b4fbc02454a1": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007163200008",
+      "source": "연합뉴스",
+      "source_body_digest": "c9b9cc4990f3330598a2769e1ed1bc3999e3df169d1f550b0146bcc7c79fec98",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ad2e13e75833655ee4df47ce27b2662ae63956876fa815c1ec840687df0fc914",
+      "source_fact_keys": [
+        "source_fact:v1:0a41fd200c6993efceb41f5c4d0d4f7d37c502bf211dc87ed63502b0f7507ee8",
+        "source_fact:v1:32ad1c0681a259f7fbda18f04563198b869463939cb86114719e4528916d87be",
+        "source_fact:v1:6141c446866a542e87c2d59bc1485a0f0fba53337e5c679d11ec4225b537a6ba",
+        "source_fact:v1:61af372e393ab2b948b77831649da0b5ee4b556d31e5ca66b7ce94bbb25787ed"
+      ],
+      "source_published_kst": "2026-10-07T16:40+09:00",
+      "source_title": "국고채 금리 대체로 상승…3년물 연 3.961% | 연합뉴스",
+      "telegram_core_fact": "10년물 금리는 연 4.376%로 0.7bp 상승했다.",
+      "title": "국고채 금리 대체로 상승…3년물 연 3.961% | 연합뉴스"
     },
     "link:d6499c4d352a57c48ae5c469": {
       "first_seen_kst": "2026-09-18T21:48:27+09:00",
@@ -82547,6 +83064,28 @@
       "source": "머니투데이",
       "title": "김민석 \"이제는 '정주 여건'…메가프로젝트, 교육·문화 ·의료 갖춰야\""
     },
+    "original:219b032b93176493698b1b09": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007163200008",
+      "source": "연합뉴스",
+      "source_body_digest": "c9b9cc4990f3330598a2769e1ed1bc3999e3df169d1f550b0146bcc7c79fec98",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ad2e13e75833655ee4df47ce27b2662ae63956876fa815c1ec840687df0fc914",
+      "source_fact_keys": [
+        "source_fact:v1:0a41fd200c6993efceb41f5c4d0d4f7d37c502bf211dc87ed63502b0f7507ee8",
+        "source_fact:v1:32ad1c0681a259f7fbda18f04563198b869463939cb86114719e4528916d87be",
+        "source_fact:v1:6141c446866a542e87c2d59bc1485a0f0fba53337e5c679d11ec4225b537a6ba",
+        "source_fact:v1:61af372e393ab2b948b77831649da0b5ee4b556d31e5ca66b7ce94bbb25787ed"
+      ],
+      "source_published_kst": "2026-10-07T16:40+09:00",
+      "source_title": "국고채 금리 대체로 상승…3년물 연 3.961% | 연합뉴스",
+      "telegram_core_fact": "10년물 금리는 연 4.376%로 0.7bp 상승했다.",
+      "title": "국고채 금리 대체로 상승…3년물 연 3.961% | 연합뉴스"
+    },
     "original:21a4a825345cab774b3393ea": {
       "first_seen_kst": "2026-10-04T19:34:44+09:00",
       "lanes": {
@@ -84331,6 +84870,31 @@
       "source": "매일경제",
       "source_event_identity": "",
       "title": "액소젠, 바이오서킷 인수 완료에도 통합 부담 부각"
+    },
+    "original:2c80e138b5a37f172301314a": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817940",
+      "source": "뉴시스",
+      "source_body_digest": "c1155d923ee4cc0435f3c92c2a520029d27137bf981e400b0db8cbfcf944711a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3ee9563c77b64a5c6e532a38a4319d733faaa8f8ca630cb890ce9b2bb883c88",
+      "source_fact_keys": [
+        "source_fact:v1:0c2a868656518d9ea865ec1efabe12723f1ddf472c8f2cabd0c932310d2086ff",
+        "source_fact:v1:3d2b56c80ad4027dad812ab69301e5218bb98cfee3a8d69b8f2732e535898a39",
+        "source_fact:v1:74b6560da6864d186cad35ff87beaf0f61eeff77e5d512db16d6ac4f7e9b2bb1",
+        "source_fact:v1:b69f23e7c3bacba9dcbeb1d726bc4aca9025903d1aa9541f299583c5df9bd92f",
+        "source_fact:v1:c12c83ee261a8edb84ba9877eb39cff489a18426b3fea457256fdc04c2a2f2cf",
+        "source_fact:v1:cd71a6c09c5264e076eee2935c7e4ef205606309448b9b8ad361e35f3d1f1cdf",
+        "source_fact:v1:fdf3bb89e6dbe1e8b9007618c57c3167e9e923589637b4ed35fd811cfcf56585"
+      ],
+      "source_published_kst": "2026-10-07T17:11+09:00",
+      "source_title": "인도, 기준금리 5.5%로 0.25%P↑…\"인플레 대응 3년8개월 만에 인상\"",
+      "telegram_core_fact": "은행이 중앙은행에 초과 유동성을 예치할 때 적용하는 상설예금제도(SDF) 금리는 5.25%, 긴급 유동성 지원 창구인 한계대출제도(MSF) 금리는 5.75%로 각각 0.25% 포인트 인상했다.",
+      "title": "인도, 기준금리 5.5%로 0.25%P↑…\"인플레 대응 3년8개월 만에 인상\""
     },
     "original:2cb6489856ccb2f8405dbc16": {
       "first_seen_kst": "2026-10-06T20:37:39+09:00",
@@ -86475,6 +87039,25 @@
       "source": "연합뉴스",
       "title": "美국무부, '알래스카 LNG' 한미간극에 \"대미투자 합의 이룬게 중요\" | 연합뉴스"
     },
+    "original:3a128a7f1b901c1755d49ac9": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/08/2026100719572534624",
+      "source": "머니투데이",
+      "source_body_digest": "a1cf370b60efc9edf9dd8563838115d8f4a130cf02b65e182be566464b5adeb0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3b244de8ef414102cccbd401f0e92e29cc7d73e655e171f1070479d4e7c1ad67",
+      "source_fact_keys": [
+        "source_fact:v1:1e0c165c058f76e75a300d8a0776b82ae2503a3190a95ebad5cdc7a4d62a0de8"
+      ],
+      "source_published_kst": "2026-10-08T03:58+09:00",
+      "source_title": "개인정보유출 보상은 없다는 '듀오' 수천억 과징금 쿠팡과 역차별 논란",
+      "telegram_core_fact": "개인정보보호위원회(이하 개보위)에 따르면 지난해 1월 듀오에서 개인정보를 취급하는 직원의 업무용 PC가 해킹돼 정회원 42만7464명의 개인정보가 유출됐다.",
+      "title": "개인정보유출 보상은 없다는 '듀오' 수천억 과징금 쿠팡과 역차별 논란"
+    },
     "original:3a1a0211683158b5b9a28ea0": {
       "first_seen_kst": "2026-10-04T07:39:13+09:00",
       "lanes": {
@@ -87068,6 +87651,28 @@
       ],
       "source_published_kst": "2026-10-07T08:00+09:00",
       "title": "반도체가 끌어올린 한국 성장률 ‘눈높이’…해외 IB 전망 한달 새 3.3%→3.5%"
+    },
+    "original:3da6682a82570db5c41ab3da": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01433366645610952&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "21508d60b9e9900a63f7c08b97b1d0148c160f1c08ef817f332c3b7f80ceaef3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:762163ab0a93ea9efe288584c39ac2efdf9ca01f2845364047e1a5ccdc233e3f",
+      "source_fact_keys": [
+        "source_fact:v1:0bd2354f837b0b9eca4255011b006b67469d762007c9a4aca7436bb101cb65dc",
+        "source_fact:v1:d110cd416797959a29931a30ee90b09e23fa0987bbaf5dab1356c349cab0187e",
+        "source_fact:v1:e9ad043dc62fc861e1ad63224eeea92e7de300bc22a547f9f060aabcec18250a",
+        "source_fact:v1:f398073df75096cc9523f83b6752691572efe31570d179dab0fbb3c4074e3cd2"
+      ],
+      "source_published_kst": "2026-10-08T03:59+09:00",
+      "source_title": "AI칩 사려 53조원 차입 추진…스페이스X 신용위험 '사상 최고'",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 일론 머스크의 스페이스X가 엔비디아의 인공지능(AI) 칩 구매를 위해 400억달러(약 53조5560억원) 신규 차입을 추진하는 가운데 스페이스X의 신용위험 지표가 사상 최고치로 치솟았다.",
+      "title": "AI칩 사려 53조원 차입 추진…스페이스X 신용위험 '사상 최고'"
     },
     "original:3dc0cc1d2e4e458033b9a8a6": {
       "first_seen_kst": "2026-09-21T21:50:35+09:00",
@@ -91498,6 +92103,25 @@
       ],
       "source_published_kst": "2026-10-07T09:28+09:00",
       "title": "현대엔지니어링, 군산 이어 인천 데이터센터 수주…8700억 규모"
+    },
+    "original:58b9ecbad436fe8a587f1083": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007171100001",
+      "source": "연합뉴스",
+      "source_body_digest": "ba127c1db050558c91ed414aee3bc8c4dbe1455d8137d83adac37cfcc84e57a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3da6f0f0e7bf590400f10af11fb16db93192189a368c3d7271b143aaa8fc1e6d",
+      "source_fact_keys": [
+        "source_fact:v1:6fd6aa8e706f800b3a5689aee1cd84d8304582745bb681ea6440046ee737140d"
+      ],
+      "source_published_kst": "2026-10-07T17:27+09:00",
+      "source_title": "[누리호 성공] 李대통령, 발사 장면 생중계로 시청…\"정부 지원 성과\" | 연합뉴스",
+      "telegram_core_fact": "이후 누리호가 이륙한 뒤 약 20분간 위성 사출이 완전히 끝날 때까지 숨죽여 지켜보던 이 대통령은 발사 성공이 확인되고 항공우주연구원 관계자들이 환호하는 모습이 화면에 나오자 함께 박수를 치며 기쁨을 표시했다고 한다.",
+      "title": "[누리호 성공] 李대통령, 발사 장면 생중계로 시청…\"정부 지원 성과\" | 연합뉴스"
     },
     "original:58ec5ba67aa9e7d7a1cc63d4": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
@@ -100158,6 +100782,29 @@
       "source_published_kst": "2026-10-05T18:18+09:00",
       "title": "美금리 올라도 달러 약세 전망…나랏빚 불안이 변수[글로벌 view]"
     },
+    "original:91db4d51dd6e44b6399393a0": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817375",
+      "source": "뉴시스",
+      "source_body_digest": "23b94a3e046bc6d45d5dc1f671cc535d43e4806b28c227edde47cd1c3dcf47fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fd6f2a4490bb28b5c63e01021ab21d3800e35ba7259b670c4423882a00cd251",
+      "source_fact_keys": [
+        "source_fact:v1:062713e17ee54baf8f92d11140983966480a014aba8dfd7ac545ac8acc489245",
+        "source_fact:v1:066cb330736a0b9c220304fcb710c632c8dca715fe297e83b42743677fe01632",
+        "source_fact:v1:09e9c17ff194dd3bbd90c0b8bc3fea61f2f878ead433c174e51fe48d15f9d2d9",
+        "source_fact:v1:49bd0a1c536916f8731d1bf3c61d4af51c6c30b54a716ba7bdbb084b191fe15f",
+        "source_fact:v1:fbd0b422540aeaaac4db5b8588fa870fc9813481bba79a39077a129e232fbe68"
+      ],
+      "source_published_kst": "2026-10-08T00:02+09:00",
+      "source_title": "1년간 810% 오른 지캐시…윙클보스 형제, 현물 ETF 신청",
+      "telegram_core_fact": "그레이스케일은 지난 8월 지캐시 트러스트를 현물 ETF로 전환했고, 21셰어스는 유럽 최초의 지캐시 상장지수상품(ETP)을 출시했다.",
+      "title": "1년간 810% 오른 지캐시…윙클보스 형제, 현물 ETF 신청"
+    },
     "original:924e9e0ba641e4be47f21798": {
       "first_seen_kst": "2026-10-07T17:23:27+09:00",
       "lanes": {
@@ -102174,6 +102821,25 @@
       ],
       "source_published_kst": "2026-10-06T23:38+09:00",
       "title": "8월 독일 산업생산 10.6% 급감…\"대형수주 기저효과\""
+    },
+    "original:a14b1d09126f298e2f27974d": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003818001",
+      "source": "뉴시스",
+      "source_body_digest": "390d7b8627d68c6a3dbd742aa5928bcca77f405fe2f2fa6cd36985cb5058a9d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f0795391e6724d78abf4757d91b57a51b90be875e0f9495f0d36d2c765c479bb",
+      "source_fact_keys": [
+        "source_fact:v1:aa5984b196946c71be58ca3ae52ff6cd9d3892d7fccf30ae0933d205cf4c9e55"
+      ],
+      "source_published_kst": "2026-10-07T20:48+09:00",
+      "source_title": "누리호 5차 발사…대전 기업 개발 '대전샛' 교신 성공할까",
+      "telegram_core_fact": "대전지역 업체들이 개발한 초소형 위성 '대전샛'이 한국형 발사체 누리호에 실려 우주로 향한 가운데 위성의 교신 성공 여부에 관심이 높아지고 있다.",
+      "title": "누리호 5차 발사…대전 기업 개발 '대전샛' 교신 성공할까"
     },
     "original:a16078cf44dc24bf792d75f3": {
       "first_seen_kst": "2026-10-07T10:49:23+09:00",
@@ -119659,6 +120325,28 @@
       "telegram_core_fact": "GS ITM이 삼성SDS·LG CNS와 다른 규제를 받는 이유는 상호출자제한기업집단 소속 여부에 있다.",
       "title": "[공공SW전략] 기업마다 다른 규제…참여제한 갈린다 | GS ITM㊦"
     },
+    "source_fact:082adff0c9beb8d86ac46203": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01433366645610952&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "21508d60b9e9900a63f7c08b97b1d0148c160f1c08ef817f332c3b7f80ceaef3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:762163ab0a93ea9efe288584c39ac2efdf9ca01f2845364047e1a5ccdc233e3f",
+      "source_fact_keys": [
+        "source_fact:v1:0bd2354f837b0b9eca4255011b006b67469d762007c9a4aca7436bb101cb65dc",
+        "source_fact:v1:d110cd416797959a29931a30ee90b09e23fa0987bbaf5dab1356c349cab0187e",
+        "source_fact:v1:e9ad043dc62fc861e1ad63224eeea92e7de300bc22a547f9f060aabcec18250a",
+        "source_fact:v1:f398073df75096cc9523f83b6752691572efe31570d179dab0fbb3c4074e3cd2"
+      ],
+      "source_published_kst": "2026-10-08T03:59+09:00",
+      "source_title": "AI칩 사려 53조원 차입 추진…스페이스X 신용위험 '사상 최고'",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 일론 머스크의 스페이스X가 엔비디아의 인공지능(AI) 칩 구매를 위해 400억달러(약 53조5560억원) 신규 차입을 추진하는 가운데 스페이스X의 신용위험 지표가 사상 최고치로 치솟았다.",
+      "title": "AI칩 사려 53조원 차입 추진…스페이스X 신용위험 '사상 최고'"
+    },
     "source_fact:085f153d78395d2020da7619": {
       "first_seen_kst": "2026-10-07T01:33:00+09:00",
       "lanes": {
@@ -121905,6 +122593,31 @@
       "source_published_kst": "2026-10-07T16:35+09:00",
       "title": "AMD 리사 수, 삼성전자-SK하이닉스 반도체 수장 만나..AI 협력 행보 강화"
     },
+    "source_fact:0eb01d0de18c98ba4084d844": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817940",
+      "source": "뉴시스",
+      "source_body_digest": "c1155d923ee4cc0435f3c92c2a520029d27137bf981e400b0db8cbfcf944711a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3ee9563c77b64a5c6e532a38a4319d733faaa8f8ca630cb890ce9b2bb883c88",
+      "source_fact_keys": [
+        "source_fact:v1:0c2a868656518d9ea865ec1efabe12723f1ddf472c8f2cabd0c932310d2086ff",
+        "source_fact:v1:3d2b56c80ad4027dad812ab69301e5218bb98cfee3a8d69b8f2732e535898a39",
+        "source_fact:v1:74b6560da6864d186cad35ff87beaf0f61eeff77e5d512db16d6ac4f7e9b2bb1",
+        "source_fact:v1:b69f23e7c3bacba9dcbeb1d726bc4aca9025903d1aa9541f299583c5df9bd92f",
+        "source_fact:v1:c12c83ee261a8edb84ba9877eb39cff489a18426b3fea457256fdc04c2a2f2cf",
+        "source_fact:v1:cd71a6c09c5264e076eee2935c7e4ef205606309448b9b8ad361e35f3d1f1cdf",
+        "source_fact:v1:fdf3bb89e6dbe1e8b9007618c57c3167e9e923589637b4ed35fd811cfcf56585"
+      ],
+      "source_published_kst": "2026-10-07T17:11+09:00",
+      "source_title": "인도, 기준금리 5.5%로 0.25%P↑…\"인플레 대응 3년8개월 만에 인상\"",
+      "telegram_core_fact": "은행이 중앙은행에 초과 유동성을 예치할 때 적용하는 상설예금제도(SDF) 금리는 5.25%, 긴급 유동성 지원 창구인 한계대출제도(MSF) 금리는 5.75%로 각각 0.25% 포인트 인상했다.",
+      "title": "인도, 기준금리 5.5%로 0.25%P↑…\"인플레 대응 3년8개월 만에 인상\""
+    },
     "source_fact:0ebad2fb2d13da53d0a0aecb": {
       "first_seen_kst": "2026-10-06T17:59:23+09:00",
       "lanes": {
@@ -123981,6 +124694,28 @@
       "telegram_core_fact": "네이버가 공시한 ‘주식교환·이전 결정’ 정정공시에 따르면 네이버파이낸셜과 두나무의 주식교환일은 기존 올해 12월 31일에서 내년 3월 31일로 변경됐다. 주식교환 비율은 네이버파이낸셜 1주당 두나무 2.5422618주다.",
       "title": "두나무·네이버파이낸셜 빅딜 내년 3월로 또 연기"
     },
+    "source_fact:13a163a006fd96bf399a60e3": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007163200008",
+      "source": "연합뉴스",
+      "source_body_digest": "c9b9cc4990f3330598a2769e1ed1bc3999e3df169d1f550b0146bcc7c79fec98",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ad2e13e75833655ee4df47ce27b2662ae63956876fa815c1ec840687df0fc914",
+      "source_fact_keys": [
+        "source_fact:v1:0a41fd200c6993efceb41f5c4d0d4f7d37c502bf211dc87ed63502b0f7507ee8",
+        "source_fact:v1:32ad1c0681a259f7fbda18f04563198b869463939cb86114719e4528916d87be",
+        "source_fact:v1:6141c446866a542e87c2d59bc1485a0f0fba53337e5c679d11ec4225b537a6ba",
+        "source_fact:v1:61af372e393ab2b948b77831649da0b5ee4b556d31e5ca66b7ce94bbb25787ed"
+      ],
+      "source_published_kst": "2026-10-07T16:40+09:00",
+      "source_title": "국고채 금리 대체로 상승…3년물 연 3.961% | 연합뉴스",
+      "telegram_core_fact": "10년물 금리는 연 4.376%로 0.7bp 상승했다.",
+      "title": "국고채 금리 대체로 상승…3년물 연 3.961% | 연합뉴스"
+    },
     "source_fact:13b67fcc26cb52faa09c8fc6": {
       "first_seen_kst": "2026-10-06T10:04:04+09:00",
       "lanes": {
@@ -125925,6 +126660,28 @@
       ],
       "source_published_kst": "2026-10-06T10:57+09:00",
       "title": "오텍캐리어, AI 데이터센터용 CDU 제품 라인업 강화"
+    },
+    "source_fact:193ad5e391290fa25fa72ba5": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007163200008",
+      "source": "연합뉴스",
+      "source_body_digest": "c9b9cc4990f3330598a2769e1ed1bc3999e3df169d1f550b0146bcc7c79fec98",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ad2e13e75833655ee4df47ce27b2662ae63956876fa815c1ec840687df0fc914",
+      "source_fact_keys": [
+        "source_fact:v1:0a41fd200c6993efceb41f5c4d0d4f7d37c502bf211dc87ed63502b0f7507ee8",
+        "source_fact:v1:32ad1c0681a259f7fbda18f04563198b869463939cb86114719e4528916d87be",
+        "source_fact:v1:6141c446866a542e87c2d59bc1485a0f0fba53337e5c679d11ec4225b537a6ba",
+        "source_fact:v1:61af372e393ab2b948b77831649da0b5ee4b556d31e5ca66b7ce94bbb25787ed"
+      ],
+      "source_published_kst": "2026-10-07T16:40+09:00",
+      "source_title": "국고채 금리 대체로 상승…3년물 연 3.961% | 연합뉴스",
+      "telegram_core_fact": "10년물 금리는 연 4.376%로 0.7bp 상승했다.",
+      "title": "국고채 금리 대체로 상승…3년물 연 3.961% | 연합뉴스"
     },
     "source_fact:1945668b4f68458255a0b7f6": {
       "first_seen_kst": "2026-10-06T22:37:02+09:00",
@@ -134070,6 +134827,31 @@
       "source_published_kst": "2026-10-06T02:28+09:00",
       "title": "아람코 CEO \"세계 석유 공급 이미 압박…비축 최대 2년\""
     },
+    "source_fact:2ccf296a2513a54704d5c332": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817940",
+      "source": "뉴시스",
+      "source_body_digest": "c1155d923ee4cc0435f3c92c2a520029d27137bf981e400b0db8cbfcf944711a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3ee9563c77b64a5c6e532a38a4319d733faaa8f8ca630cb890ce9b2bb883c88",
+      "source_fact_keys": [
+        "source_fact:v1:0c2a868656518d9ea865ec1efabe12723f1ddf472c8f2cabd0c932310d2086ff",
+        "source_fact:v1:3d2b56c80ad4027dad812ab69301e5218bb98cfee3a8d69b8f2732e535898a39",
+        "source_fact:v1:74b6560da6864d186cad35ff87beaf0f61eeff77e5d512db16d6ac4f7e9b2bb1",
+        "source_fact:v1:b69f23e7c3bacba9dcbeb1d726bc4aca9025903d1aa9541f299583c5df9bd92f",
+        "source_fact:v1:c12c83ee261a8edb84ba9877eb39cff489a18426b3fea457256fdc04c2a2f2cf",
+        "source_fact:v1:cd71a6c09c5264e076eee2935c7e4ef205606309448b9b8ad361e35f3d1f1cdf",
+        "source_fact:v1:fdf3bb89e6dbe1e8b9007618c57c3167e9e923589637b4ed35fd811cfcf56585"
+      ],
+      "source_published_kst": "2026-10-07T17:11+09:00",
+      "source_title": "인도, 기준금리 5.5%로 0.25%P↑…\"인플레 대응 3년8개월 만에 인상\"",
+      "telegram_core_fact": "은행이 중앙은행에 초과 유동성을 예치할 때 적용하는 상설예금제도(SDF) 금리는 5.25%, 긴급 유동성 지원 창구인 한계대출제도(MSF) 금리는 5.75%로 각각 0.25% 포인트 인상했다.",
+      "title": "인도, 기준금리 5.5%로 0.25%P↑…\"인플레 대응 3년8개월 만에 인상\""
+    },
     "source_fact:2cd8ae9bc2607eca9dc9c918": {
       "first_seen_kst": "2026-10-06T19:33:48+09:00",
       "lanes": {
@@ -137329,6 +138111,28 @@
       "source_published_kst": "2026-10-06T14:21+09:00",
       "title": "IPARK현대산업개발, 부산 연산13구역 재개발 수주…2812억 규모"
     },
+    "source_fact:34a26fb89f68c4f2883ab6f1": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007163200008",
+      "source": "연합뉴스",
+      "source_body_digest": "c9b9cc4990f3330598a2769e1ed1bc3999e3df169d1f550b0146bcc7c79fec98",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ad2e13e75833655ee4df47ce27b2662ae63956876fa815c1ec840687df0fc914",
+      "source_fact_keys": [
+        "source_fact:v1:0a41fd200c6993efceb41f5c4d0d4f7d37c502bf211dc87ed63502b0f7507ee8",
+        "source_fact:v1:32ad1c0681a259f7fbda18f04563198b869463939cb86114719e4528916d87be",
+        "source_fact:v1:6141c446866a542e87c2d59bc1485a0f0fba53337e5c679d11ec4225b537a6ba",
+        "source_fact:v1:61af372e393ab2b948b77831649da0b5ee4b556d31e5ca66b7ce94bbb25787ed"
+      ],
+      "source_published_kst": "2026-10-07T16:40+09:00",
+      "source_title": "국고채 금리 대체로 상승…3년물 연 3.961% | 연합뉴스",
+      "telegram_core_fact": "10년물 금리는 연 4.376%로 0.7bp 상승했다.",
+      "title": "국고채 금리 대체로 상승…3년물 연 3.961% | 연합뉴스"
+    },
     "source_fact:34b13b49bfe8792dc5745109": {
       "first_seen_kst": "2026-10-06T23:05:07+09:00",
       "lanes": {
@@ -140474,6 +141278,29 @@
       ],
       "source_published_kst": "2026-10-07T15:31+09:00",
       "title": "스페이스X, 엔비디아 칩 사려고 400억달러 조달 추진"
+    },
+    "source_fact:3bee2732c34b02281680e9c2": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817375",
+      "source": "뉴시스",
+      "source_body_digest": "23b94a3e046bc6d45d5dc1f671cc535d43e4806b28c227edde47cd1c3dcf47fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fd6f2a4490bb28b5c63e01021ab21d3800e35ba7259b670c4423882a00cd251",
+      "source_fact_keys": [
+        "source_fact:v1:062713e17ee54baf8f92d11140983966480a014aba8dfd7ac545ac8acc489245",
+        "source_fact:v1:066cb330736a0b9c220304fcb710c632c8dca715fe297e83b42743677fe01632",
+        "source_fact:v1:09e9c17ff194dd3bbd90c0b8bc3fea61f2f878ead433c174e51fe48d15f9d2d9",
+        "source_fact:v1:49bd0a1c536916f8731d1bf3c61d4af51c6c30b54a716ba7bdbb084b191fe15f",
+        "source_fact:v1:fbd0b422540aeaaac4db5b8588fa870fc9813481bba79a39077a129e232fbe68"
+      ],
+      "source_published_kst": "2026-10-08T00:02+09:00",
+      "source_title": "1년간 810% 오른 지캐시…윙클보스 형제, 현물 ETF 신청",
+      "telegram_core_fact": "그레이스케일은 지난 8월 지캐시 트러스트를 현물 ETF로 전환했고, 21셰어스는 유럽 최초의 지캐시 상장지수상품(ETP)을 출시했다.",
+      "title": "1년간 810% 오른 지캐시…윙클보스 형제, 현물 ETF 신청"
     },
     "source_fact:3c0399aabca169474b976a3c": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
@@ -149253,6 +150080,31 @@
       "source_published_kst": "2026-10-07T08:44+09:00",
       "title": "LS에코에너지, 베트남서 AIDC용 버스덕트 생산능력 2배 확대"
     },
+    "source_fact:51772f4c0d99b4a45fbb8bd6": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817940",
+      "source": "뉴시스",
+      "source_body_digest": "c1155d923ee4cc0435f3c92c2a520029d27137bf981e400b0db8cbfcf944711a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3ee9563c77b64a5c6e532a38a4319d733faaa8f8ca630cb890ce9b2bb883c88",
+      "source_fact_keys": [
+        "source_fact:v1:0c2a868656518d9ea865ec1efabe12723f1ddf472c8f2cabd0c932310d2086ff",
+        "source_fact:v1:3d2b56c80ad4027dad812ab69301e5218bb98cfee3a8d69b8f2732e535898a39",
+        "source_fact:v1:74b6560da6864d186cad35ff87beaf0f61eeff77e5d512db16d6ac4f7e9b2bb1",
+        "source_fact:v1:b69f23e7c3bacba9dcbeb1d726bc4aca9025903d1aa9541f299583c5df9bd92f",
+        "source_fact:v1:c12c83ee261a8edb84ba9877eb39cff489a18426b3fea457256fdc04c2a2f2cf",
+        "source_fact:v1:cd71a6c09c5264e076eee2935c7e4ef205606309448b9b8ad361e35f3d1f1cdf",
+        "source_fact:v1:fdf3bb89e6dbe1e8b9007618c57c3167e9e923589637b4ed35fd811cfcf56585"
+      ],
+      "source_published_kst": "2026-10-07T17:11+09:00",
+      "source_title": "인도, 기준금리 5.5%로 0.25%P↑…\"인플레 대응 3년8개월 만에 인상\"",
+      "telegram_core_fact": "은행이 중앙은행에 초과 유동성을 예치할 때 적용하는 상설예금제도(SDF) 금리는 5.25%, 긴급 유동성 지원 창구인 한계대출제도(MSF) 금리는 5.75%로 각각 0.25% 포인트 인상했다.",
+      "title": "인도, 기준금리 5.5%로 0.25%P↑…\"인플레 대응 3년8개월 만에 인상\""
+    },
     "source_fact:5182efcbbe7c27dd3c2a3ac3": {
       "first_seen_kst": "2026-10-07T05:13:11+09:00",
       "lanes": {
@@ -155352,6 +156204,28 @@
       "source_published_kst": "2026-10-07T03:50+09:00",
       "title": "美국채 금리 급등하자…핌코 \"투자매력 매우 높아졌다\""
     },
+    "source_fact:5fd25c167963391be7ef9f7a": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007163200008",
+      "source": "연합뉴스",
+      "source_body_digest": "c9b9cc4990f3330598a2769e1ed1bc3999e3df169d1f550b0146bcc7c79fec98",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ad2e13e75833655ee4df47ce27b2662ae63956876fa815c1ec840687df0fc914",
+      "source_fact_keys": [
+        "source_fact:v1:0a41fd200c6993efceb41f5c4d0d4f7d37c502bf211dc87ed63502b0f7507ee8",
+        "source_fact:v1:32ad1c0681a259f7fbda18f04563198b869463939cb86114719e4528916d87be",
+        "source_fact:v1:6141c446866a542e87c2d59bc1485a0f0fba53337e5c679d11ec4225b537a6ba",
+        "source_fact:v1:61af372e393ab2b948b77831649da0b5ee4b556d31e5ca66b7ce94bbb25787ed"
+      ],
+      "source_published_kst": "2026-10-07T16:40+09:00",
+      "source_title": "국고채 금리 대체로 상승…3년물 연 3.961% | 연합뉴스",
+      "telegram_core_fact": "10년물 금리는 연 4.376%로 0.7bp 상승했다.",
+      "title": "국고채 금리 대체로 상승…3년물 연 3.961% | 연합뉴스"
+    },
     "source_fact:5fd9f4315049ef8f56f06d7a": {
       "first_seen_kst": "2026-10-07T10:49:23+09:00",
       "lanes": {
@@ -160000,6 +160874,31 @@
       "source_published_kst": "2026-10-06T14:33+09:00",
       "title": "SK이노베이션, 윤활기유·배터리 성장 전망…\"올해 첫 연간 영업익 10조 노린다\""
     },
+    "source_fact:6b477c79569315ecb5279dca": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817940",
+      "source": "뉴시스",
+      "source_body_digest": "c1155d923ee4cc0435f3c92c2a520029d27137bf981e400b0db8cbfcf944711a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3ee9563c77b64a5c6e532a38a4319d733faaa8f8ca630cb890ce9b2bb883c88",
+      "source_fact_keys": [
+        "source_fact:v1:0c2a868656518d9ea865ec1efabe12723f1ddf472c8f2cabd0c932310d2086ff",
+        "source_fact:v1:3d2b56c80ad4027dad812ab69301e5218bb98cfee3a8d69b8f2732e535898a39",
+        "source_fact:v1:74b6560da6864d186cad35ff87beaf0f61eeff77e5d512db16d6ac4f7e9b2bb1",
+        "source_fact:v1:b69f23e7c3bacba9dcbeb1d726bc4aca9025903d1aa9541f299583c5df9bd92f",
+        "source_fact:v1:c12c83ee261a8edb84ba9877eb39cff489a18426b3fea457256fdc04c2a2f2cf",
+        "source_fact:v1:cd71a6c09c5264e076eee2935c7e4ef205606309448b9b8ad361e35f3d1f1cdf",
+        "source_fact:v1:fdf3bb89e6dbe1e8b9007618c57c3167e9e923589637b4ed35fd811cfcf56585"
+      ],
+      "source_published_kst": "2026-10-07T17:11+09:00",
+      "source_title": "인도, 기준금리 5.5%로 0.25%P↑…\"인플레 대응 3년8개월 만에 인상\"",
+      "telegram_core_fact": "은행이 중앙은행에 초과 유동성을 예치할 때 적용하는 상설예금제도(SDF) 금리는 5.25%, 긴급 유동성 지원 창구인 한계대출제도(MSF) 금리는 5.75%로 각각 0.25% 포인트 인상했다.",
+      "title": "인도, 기준금리 5.5%로 0.25%P↑…\"인플레 대응 3년8개월 만에 인상\""
+    },
     "source_fact:6b5cd9dd07d34fc8d3756e66": {
       "first_seen_kst": "2026-10-07T22:53:53+09:00",
       "lanes": {
@@ -162624,6 +163523,25 @@
       ],
       "source_published_kst": "2026-10-05T22:07+09:00",
       "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
+    },
+    "source_fact:724d31eed766d5ff8828a75d": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007171100001",
+      "source": "연합뉴스",
+      "source_body_digest": "ba127c1db050558c91ed414aee3bc8c4dbe1455d8137d83adac37cfcc84e57a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3da6f0f0e7bf590400f10af11fb16db93192189a368c3d7271b143aaa8fc1e6d",
+      "source_fact_keys": [
+        "source_fact:v1:6fd6aa8e706f800b3a5689aee1cd84d8304582745bb681ea6440046ee737140d"
+      ],
+      "source_published_kst": "2026-10-07T17:27+09:00",
+      "source_title": "[누리호 성공] 李대통령, 발사 장면 생중계로 시청…\"정부 지원 성과\" | 연합뉴스",
+      "telegram_core_fact": "이후 누리호가 이륙한 뒤 약 20분간 위성 사출이 완전히 끝날 때까지 숨죽여 지켜보던 이 대통령은 발사 성공이 확인되고 항공우주연구원 관계자들이 환호하는 모습이 화면에 나오자 함께 박수를 치며 기쁨을 표시했다고 한다.",
+      "title": "[누리호 성공] 李대통령, 발사 장면 생중계로 시청…\"정부 지원 성과\" | 연합뉴스"
     },
     "source_fact:72648ae63cf231333c588559": {
       "first_seen_kst": "2026-10-07T00:09:35+09:00",
@@ -167616,6 +168534,31 @@
       ],
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
+    },
+    "source_fact:7e64b037b3a55b7531062f48": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817940",
+      "source": "뉴시스",
+      "source_body_digest": "c1155d923ee4cc0435f3c92c2a520029d27137bf981e400b0db8cbfcf944711a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3ee9563c77b64a5c6e532a38a4319d733faaa8f8ca630cb890ce9b2bb883c88",
+      "source_fact_keys": [
+        "source_fact:v1:0c2a868656518d9ea865ec1efabe12723f1ddf472c8f2cabd0c932310d2086ff",
+        "source_fact:v1:3d2b56c80ad4027dad812ab69301e5218bb98cfee3a8d69b8f2732e535898a39",
+        "source_fact:v1:74b6560da6864d186cad35ff87beaf0f61eeff77e5d512db16d6ac4f7e9b2bb1",
+        "source_fact:v1:b69f23e7c3bacba9dcbeb1d726bc4aca9025903d1aa9541f299583c5df9bd92f",
+        "source_fact:v1:c12c83ee261a8edb84ba9877eb39cff489a18426b3fea457256fdc04c2a2f2cf",
+        "source_fact:v1:cd71a6c09c5264e076eee2935c7e4ef205606309448b9b8ad361e35f3d1f1cdf",
+        "source_fact:v1:fdf3bb89e6dbe1e8b9007618c57c3167e9e923589637b4ed35fd811cfcf56585"
+      ],
+      "source_published_kst": "2026-10-07T17:11+09:00",
+      "source_title": "인도, 기준금리 5.5%로 0.25%P↑…\"인플레 대응 3년8개월 만에 인상\"",
+      "telegram_core_fact": "은행이 중앙은행에 초과 유동성을 예치할 때 적용하는 상설예금제도(SDF) 금리는 5.25%, 긴급 유동성 지원 창구인 한계대출제도(MSF) 금리는 5.75%로 각각 0.25% 포인트 인상했다.",
+      "title": "인도, 기준금리 5.5%로 0.25%P↑…\"인플레 대응 3년8개월 만에 인상\""
     },
     "source_fact:7e6773db9c95a04463c62bf5": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
@@ -176459,6 +177402,25 @@
       "source_published_kst": "2026-10-06T17:18+09:00",
       "title": "국고채 금리, 대외금리 연동하며 혼조세…3년물 3.933%(종합) | 연합뉴스"
     },
+    "source_fact:95c77fac3a7408dbba014e49": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003818001",
+      "source": "뉴시스",
+      "source_body_digest": "390d7b8627d68c6a3dbd742aa5928bcca77f405fe2f2fa6cd36985cb5058a9d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f0795391e6724d78abf4757d91b57a51b90be875e0f9495f0d36d2c765c479bb",
+      "source_fact_keys": [
+        "source_fact:v1:aa5984b196946c71be58ca3ae52ff6cd9d3892d7fccf30ae0933d205cf4c9e55"
+      ],
+      "source_published_kst": "2026-10-07T20:48+09:00",
+      "source_title": "누리호 5차 발사…대전 기업 개발 '대전샛' 교신 성공할까",
+      "telegram_core_fact": "대전지역 업체들이 개발한 초소형 위성 '대전샛'이 한국형 발사체 누리호에 실려 우주로 향한 가운데 위성의 교신 성공 여부에 관심이 높아지고 있다.",
+      "title": "누리호 5차 발사…대전 기업 개발 '대전샛' 교신 성공할까"
+    },
     "source_fact:95c8b3a20d5a0ff6ab4eb450": {
       "first_seen_kst": "2026-10-07T05:13:11+09:00",
       "lanes": {
@@ -179216,6 +180178,31 @@
       ],
       "source_published_kst": "2026-10-07T14:38+09:00",
       "title": "삼보산업, 중동 전쟁에 알루미늄 판가 상승…장기화 땐 수익성 개선 긍정"
+    },
+    "source_fact:9bf9804a3eafc7ee53359e6f": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817940",
+      "source": "뉴시스",
+      "source_body_digest": "c1155d923ee4cc0435f3c92c2a520029d27137bf981e400b0db8cbfcf944711a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3ee9563c77b64a5c6e532a38a4319d733faaa8f8ca630cb890ce9b2bb883c88",
+      "source_fact_keys": [
+        "source_fact:v1:0c2a868656518d9ea865ec1efabe12723f1ddf472c8f2cabd0c932310d2086ff",
+        "source_fact:v1:3d2b56c80ad4027dad812ab69301e5218bb98cfee3a8d69b8f2732e535898a39",
+        "source_fact:v1:74b6560da6864d186cad35ff87beaf0f61eeff77e5d512db16d6ac4f7e9b2bb1",
+        "source_fact:v1:b69f23e7c3bacba9dcbeb1d726bc4aca9025903d1aa9541f299583c5df9bd92f",
+        "source_fact:v1:c12c83ee261a8edb84ba9877eb39cff489a18426b3fea457256fdc04c2a2f2cf",
+        "source_fact:v1:cd71a6c09c5264e076eee2935c7e4ef205606309448b9b8ad361e35f3d1f1cdf",
+        "source_fact:v1:fdf3bb89e6dbe1e8b9007618c57c3167e9e923589637b4ed35fd811cfcf56585"
+      ],
+      "source_published_kst": "2026-10-07T17:11+09:00",
+      "source_title": "인도, 기준금리 5.5%로 0.25%P↑…\"인플레 대응 3년8개월 만에 인상\"",
+      "telegram_core_fact": "은행이 중앙은행에 초과 유동성을 예치할 때 적용하는 상설예금제도(SDF) 금리는 5.25%, 긴급 유동성 지원 창구인 한계대출제도(MSF) 금리는 5.75%로 각각 0.25% 포인트 인상했다.",
+      "title": "인도, 기준금리 5.5%로 0.25%P↑…\"인플레 대응 3년8개월 만에 인상\""
     },
     "source_fact:9bfbd930b335bd90f12d7f83": {
       "first_seen_kst": "2026-10-08T01:43:44+09:00",
@@ -183912,6 +184899,25 @@
       "telegram_core_fact": "RTT 뉴스와 마켓워치, dpa 통신에 따르면 독일 연방통계청은 7일 2026년 8월 산업생산이 계절 조정치로 전월 대비 2.0% 증대했다고 발표했다. 유럽 최대 경제국 독일의 8월 산업생산은 건설과 기계·설비 생산 호조에 힘입어 17개월 만에 가장 큰 폭으로 증가했다.",
       "title": "8월 유로존 산업생산 2.0%↑…\"건설 호조에 17개월 만에 최대폭\""
     },
+    "source_fact:a7ce112779b8a4e6b743d26a": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/08/2026100719572534624",
+      "source": "머니투데이",
+      "source_body_digest": "a1cf370b60efc9edf9dd8563838115d8f4a130cf02b65e182be566464b5adeb0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3b244de8ef414102cccbd401f0e92e29cc7d73e655e171f1070479d4e7c1ad67",
+      "source_fact_keys": [
+        "source_fact:v1:1e0c165c058f76e75a300d8a0776b82ae2503a3190a95ebad5cdc7a4d62a0de8"
+      ],
+      "source_published_kst": "2026-10-08T03:58+09:00",
+      "source_title": "개인정보유출 보상은 없다는 '듀오' 수천억 과징금 쿠팡과 역차별 논란",
+      "telegram_core_fact": "개인정보보호위원회(이하 개보위)에 따르면 지난해 1월 듀오에서 개인정보를 취급하는 직원의 업무용 PC가 해킹돼 정회원 42만7464명의 개인정보가 유출됐다.",
+      "title": "개인정보유출 보상은 없다는 '듀오' 수천억 과징금 쿠팡과 역차별 논란"
+    },
     "source_fact:a7dd67939f3d3808f4d34975": {
       "first_seen_kst": "2026-10-08T02:57:10+09:00",
       "lanes": {
@@ -188391,6 +189397,29 @@
       "source_published_kst": "2026-10-06T11:39+09:00",
       "title": "'엔비디아發 훈풍' AI·반도체 강세…닛케이, 0.19%↑[Asia오전]"
     },
+    "source_fact:b27ece904bb99d6ead71feff": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817375",
+      "source": "뉴시스",
+      "source_body_digest": "23b94a3e046bc6d45d5dc1f671cc535d43e4806b28c227edde47cd1c3dcf47fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fd6f2a4490bb28b5c63e01021ab21d3800e35ba7259b670c4423882a00cd251",
+      "source_fact_keys": [
+        "source_fact:v1:062713e17ee54baf8f92d11140983966480a014aba8dfd7ac545ac8acc489245",
+        "source_fact:v1:066cb330736a0b9c220304fcb710c632c8dca715fe297e83b42743677fe01632",
+        "source_fact:v1:09e9c17ff194dd3bbd90c0b8bc3fea61f2f878ead433c174e51fe48d15f9d2d9",
+        "source_fact:v1:49bd0a1c536916f8731d1bf3c61d4af51c6c30b54a716ba7bdbb084b191fe15f",
+        "source_fact:v1:fbd0b422540aeaaac4db5b8588fa870fc9813481bba79a39077a129e232fbe68"
+      ],
+      "source_published_kst": "2026-10-08T00:02+09:00",
+      "source_title": "1년간 810% 오른 지캐시…윙클보스 형제, 현물 ETF 신청",
+      "telegram_core_fact": "그레이스케일은 지난 8월 지캐시 트러스트를 현물 ETF로 전환했고, 21셰어스는 유럽 최초의 지캐시 상장지수상품(ETP)을 출시했다.",
+      "title": "1년간 810% 오른 지캐시…윙클보스 형제, 현물 ETF 신청"
+    },
     "source_fact:b295142e86a61de5b952ce0e": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
       "lanes": {
@@ -189328,6 +190357,29 @@
       ],
       "source_published_kst": "2026-10-06T17:47+09:00",
       "title": "치킨업계 “산지 닭값 내려도 매입단가는 달라”…담합 조사에 비용 부담 강조"
+    },
+    "source_fact:b4d7c4589e20e6cdbfbd8964": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817375",
+      "source": "뉴시스",
+      "source_body_digest": "23b94a3e046bc6d45d5dc1f671cc535d43e4806b28c227edde47cd1c3dcf47fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fd6f2a4490bb28b5c63e01021ab21d3800e35ba7259b670c4423882a00cd251",
+      "source_fact_keys": [
+        "source_fact:v1:062713e17ee54baf8f92d11140983966480a014aba8dfd7ac545ac8acc489245",
+        "source_fact:v1:066cb330736a0b9c220304fcb710c632c8dca715fe297e83b42743677fe01632",
+        "source_fact:v1:09e9c17ff194dd3bbd90c0b8bc3fea61f2f878ead433c174e51fe48d15f9d2d9",
+        "source_fact:v1:49bd0a1c536916f8731d1bf3c61d4af51c6c30b54a716ba7bdbb084b191fe15f",
+        "source_fact:v1:fbd0b422540aeaaac4db5b8588fa870fc9813481bba79a39077a129e232fbe68"
+      ],
+      "source_published_kst": "2026-10-08T00:02+09:00",
+      "source_title": "1년간 810% 오른 지캐시…윙클보스 형제, 현물 ETF 신청",
+      "telegram_core_fact": "그레이스케일은 지난 8월 지캐시 트러스트를 현물 ETF로 전환했고, 21셰어스는 유럽 최초의 지캐시 상장지수상품(ETP)을 출시했다.",
+      "title": "1년간 810% 오른 지캐시…윙클보스 형제, 현물 ETF 신청"
     },
     "source_fact:b4f8d3d21828f9064155ba15": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
@@ -195963,6 +197015,29 @@
       "source_published_kst": "2026-10-05T19:06+09:00",
       "title": "HDFC 은행, 분기 평균 예수금 32조 루피·17% 증가"
     },
+    "source_fact:c5dea2a0432b1d8b3c8dd3d3": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817375",
+      "source": "뉴시스",
+      "source_body_digest": "23b94a3e046bc6d45d5dc1f671cc535d43e4806b28c227edde47cd1c3dcf47fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fd6f2a4490bb28b5c63e01021ab21d3800e35ba7259b670c4423882a00cd251",
+      "source_fact_keys": [
+        "source_fact:v1:062713e17ee54baf8f92d11140983966480a014aba8dfd7ac545ac8acc489245",
+        "source_fact:v1:066cb330736a0b9c220304fcb710c632c8dca715fe297e83b42743677fe01632",
+        "source_fact:v1:09e9c17ff194dd3bbd90c0b8bc3fea61f2f878ead433c174e51fe48d15f9d2d9",
+        "source_fact:v1:49bd0a1c536916f8731d1bf3c61d4af51c6c30b54a716ba7bdbb084b191fe15f",
+        "source_fact:v1:fbd0b422540aeaaac4db5b8588fa870fc9813481bba79a39077a129e232fbe68"
+      ],
+      "source_published_kst": "2026-10-08T00:02+09:00",
+      "source_title": "1년간 810% 오른 지캐시…윙클보스 형제, 현물 ETF 신청",
+      "telegram_core_fact": "그레이스케일은 지난 8월 지캐시 트러스트를 현물 ETF로 전환했고, 21셰어스는 유럽 최초의 지캐시 상장지수상품(ETP)을 출시했다.",
+      "title": "1년간 810% 오른 지캐시…윙클보스 형제, 현물 ETF 신청"
+    },
     "source_fact:c5deae53c398e316bc277604": {
       "first_seen_kst": "2026-10-07T03:30:59+09:00",
       "lanes": {
@@ -197733,6 +198808,29 @@
       ],
       "source_published_kst": "2026-10-06T18:00+09:00",
       "title": "박스피 갇힌 코스피, 11월 연말 랠리 올까?"
+    },
+    "source_fact:ca61231d3639a376f0382f80": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817375",
+      "source": "뉴시스",
+      "source_body_digest": "23b94a3e046bc6d45d5dc1f671cc535d43e4806b28c227edde47cd1c3dcf47fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fd6f2a4490bb28b5c63e01021ab21d3800e35ba7259b670c4423882a00cd251",
+      "source_fact_keys": [
+        "source_fact:v1:062713e17ee54baf8f92d11140983966480a014aba8dfd7ac545ac8acc489245",
+        "source_fact:v1:066cb330736a0b9c220304fcb710c632c8dca715fe297e83b42743677fe01632",
+        "source_fact:v1:09e9c17ff194dd3bbd90c0b8bc3fea61f2f878ead433c174e51fe48d15f9d2d9",
+        "source_fact:v1:49bd0a1c536916f8731d1bf3c61d4af51c6c30b54a716ba7bdbb084b191fe15f",
+        "source_fact:v1:fbd0b422540aeaaac4db5b8588fa870fc9813481bba79a39077a129e232fbe68"
+      ],
+      "source_published_kst": "2026-10-08T00:02+09:00",
+      "source_title": "1년간 810% 오른 지캐시…윙클보스 형제, 현물 ETF 신청",
+      "telegram_core_fact": "그레이스케일은 지난 8월 지캐시 트러스트를 현물 ETF로 전환했고, 21셰어스는 유럽 최초의 지캐시 상장지수상품(ETP)을 출시했다.",
+      "title": "1년간 810% 오른 지캐시…윙클보스 형제, 현물 ETF 신청"
     },
     "source_fact:ca9073e641c42995a90692fc": {
       "first_seen_kst": "2026-10-05T20:38:34+09:00",
@@ -214253,6 +215351,28 @@
       "source_published_kst": "2026-10-06T22:58+09:00",
       "title": "우크라, '한국의 러 석유공급' 보도에 韓 비판 | 연합뉴스"
     },
+    "source_fact:ef646dc0ccb34c6850e04d24": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01433366645610952&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "21508d60b9e9900a63f7c08b97b1d0148c160f1c08ef817f332c3b7f80ceaef3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:762163ab0a93ea9efe288584c39ac2efdf9ca01f2845364047e1a5ccdc233e3f",
+      "source_fact_keys": [
+        "source_fact:v1:0bd2354f837b0b9eca4255011b006b67469d762007c9a4aca7436bb101cb65dc",
+        "source_fact:v1:d110cd416797959a29931a30ee90b09e23fa0987bbaf5dab1356c349cab0187e",
+        "source_fact:v1:e9ad043dc62fc861e1ad63224eeea92e7de300bc22a547f9f060aabcec18250a",
+        "source_fact:v1:f398073df75096cc9523f83b6752691572efe31570d179dab0fbb3c4074e3cd2"
+      ],
+      "source_published_kst": "2026-10-08T03:59+09:00",
+      "source_title": "AI칩 사려 53조원 차입 추진…스페이스X 신용위험 '사상 최고'",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 일론 머스크의 스페이스X가 엔비디아의 인공지능(AI) 칩 구매를 위해 400억달러(약 53조5560억원) 신규 차입을 추진하는 가운데 스페이스X의 신용위험 지표가 사상 최고치로 치솟았다.",
+      "title": "AI칩 사려 53조원 차입 추진…스페이스X 신용위험 '사상 최고'"
+    },
     "source_fact:ef6e59a9b1cea673be9ee03e": {
       "first_seen_kst": "2026-10-06T16:30:27+09:00",
       "lanes": {
@@ -214302,6 +215422,28 @@
       ],
       "source_published_kst": "2026-10-06T15:34+09:00",
       "title": "\"세계 3위 車시장서 월 최대 판매\" 현대차, 푸네공장 앞세워 '인도 공략' 속도"
+    },
+    "source_fact:ef8568398810a5fa263acf68": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01433366645610952&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "21508d60b9e9900a63f7c08b97b1d0148c160f1c08ef817f332c3b7f80ceaef3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:762163ab0a93ea9efe288584c39ac2efdf9ca01f2845364047e1a5ccdc233e3f",
+      "source_fact_keys": [
+        "source_fact:v1:0bd2354f837b0b9eca4255011b006b67469d762007c9a4aca7436bb101cb65dc",
+        "source_fact:v1:d110cd416797959a29931a30ee90b09e23fa0987bbaf5dab1356c349cab0187e",
+        "source_fact:v1:e9ad043dc62fc861e1ad63224eeea92e7de300bc22a547f9f060aabcec18250a",
+        "source_fact:v1:f398073df75096cc9523f83b6752691572efe31570d179dab0fbb3c4074e3cd2"
+      ],
+      "source_published_kst": "2026-10-08T03:59+09:00",
+      "source_title": "AI칩 사려 53조원 차입 추진…스페이스X 신용위험 '사상 최고'",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 일론 머스크의 스페이스X가 엔비디아의 인공지능(AI) 칩 구매를 위해 400억달러(약 53조5560억원) 신규 차입을 추진하는 가운데 스페이스X의 신용위험 지표가 사상 최고치로 치솟았다.",
+      "title": "AI칩 사려 53조원 차입 추진…스페이스X 신용위험 '사상 최고'"
     },
     "source_fact:ef9f392ebc9fda69daddce0b": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
@@ -218290,6 +219432,28 @@
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
+    "source_fact:fb23d2d28275899b57137741": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01433366645610952&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "21508d60b9e9900a63f7c08b97b1d0148c160f1c08ef817f332c3b7f80ceaef3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:762163ab0a93ea9efe288584c39ac2efdf9ca01f2845364047e1a5ccdc233e3f",
+      "source_fact_keys": [
+        "source_fact:v1:0bd2354f837b0b9eca4255011b006b67469d762007c9a4aca7436bb101cb65dc",
+        "source_fact:v1:d110cd416797959a29931a30ee90b09e23fa0987bbaf5dab1356c349cab0187e",
+        "source_fact:v1:e9ad043dc62fc861e1ad63224eeea92e7de300bc22a547f9f060aabcec18250a",
+        "source_fact:v1:f398073df75096cc9523f83b6752691572efe31570d179dab0fbb3c4074e3cd2"
+      ],
+      "source_published_kst": "2026-10-08T03:59+09:00",
+      "source_title": "AI칩 사려 53조원 차입 추진…스페이스X 신용위험 '사상 최고'",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 일론 머스크의 스페이스X가 엔비디아의 인공지능(AI) 칩 구매를 위해 400억달러(약 53조5560억원) 신규 차입을 추진하는 가운데 스페이스X의 신용위험 지표가 사상 최고치로 치솟았다.",
+      "title": "AI칩 사려 53조원 차입 추진…스페이스X 신용위험 '사상 최고'"
+    },
     "source_fact:fb2d9400a76e36f3bbe6fa03": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
       "lanes": {
@@ -218652,6 +219816,31 @@
       ],
       "source_published_kst": "2026-10-05T12:57+09:00",
       "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
+    },
+    "source_fact:fc229d6a176da151fcc8f0dd": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817940",
+      "source": "뉴시스",
+      "source_body_digest": "c1155d923ee4cc0435f3c92c2a520029d27137bf981e400b0db8cbfcf944711a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3ee9563c77b64a5c6e532a38a4319d733faaa8f8ca630cb890ce9b2bb883c88",
+      "source_fact_keys": [
+        "source_fact:v1:0c2a868656518d9ea865ec1efabe12723f1ddf472c8f2cabd0c932310d2086ff",
+        "source_fact:v1:3d2b56c80ad4027dad812ab69301e5218bb98cfee3a8d69b8f2732e535898a39",
+        "source_fact:v1:74b6560da6864d186cad35ff87beaf0f61eeff77e5d512db16d6ac4f7e9b2bb1",
+        "source_fact:v1:b69f23e7c3bacba9dcbeb1d726bc4aca9025903d1aa9541f299583c5df9bd92f",
+        "source_fact:v1:c12c83ee261a8edb84ba9877eb39cff489a18426b3fea457256fdc04c2a2f2cf",
+        "source_fact:v1:cd71a6c09c5264e076eee2935c7e4ef205606309448b9b8ad361e35f3d1f1cdf",
+        "source_fact:v1:fdf3bb89e6dbe1e8b9007618c57c3167e9e923589637b4ed35fd811cfcf56585"
+      ],
+      "source_published_kst": "2026-10-07T17:11+09:00",
+      "source_title": "인도, 기준금리 5.5%로 0.25%P↑…\"인플레 대응 3년8개월 만에 인상\"",
+      "telegram_core_fact": "은행이 중앙은행에 초과 유동성을 예치할 때 적용하는 상설예금제도(SDF) 금리는 5.25%, 긴급 유동성 지원 창구인 한계대출제도(MSF) 금리는 5.75%로 각각 0.25% 포인트 인상했다.",
+      "title": "인도, 기준금리 5.5%로 0.25%P↑…\"인플레 대응 3년8개월 만에 인상\""
     },
     "source_fact:fc2c348cf1d2a5b2a9790212": {
       "first_seen_kst": "2026-10-06T06:36:31+09:00",
@@ -225255,6 +226444,28 @@
       "source": "머니투데이",
       "title": "김민석 \"이제는 '정주 여건'…메가프로젝트, 교육·문화 ·의료 갖춰야\""
     },
+    "title:219b032b93176493698b1b09": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007163200008",
+      "source": "연합뉴스",
+      "source_body_digest": "c9b9cc4990f3330598a2769e1ed1bc3999e3df169d1f550b0146bcc7c79fec98",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ad2e13e75833655ee4df47ce27b2662ae63956876fa815c1ec840687df0fc914",
+      "source_fact_keys": [
+        "source_fact:v1:0a41fd200c6993efceb41f5c4d0d4f7d37c502bf211dc87ed63502b0f7507ee8",
+        "source_fact:v1:32ad1c0681a259f7fbda18f04563198b869463939cb86114719e4528916d87be",
+        "source_fact:v1:6141c446866a542e87c2d59bc1485a0f0fba53337e5c679d11ec4225b537a6ba",
+        "source_fact:v1:61af372e393ab2b948b77831649da0b5ee4b556d31e5ca66b7ce94bbb25787ed"
+      ],
+      "source_published_kst": "2026-10-07T16:40+09:00",
+      "source_title": "국고채 금리 대체로 상승…3년물 연 3.961% | 연합뉴스",
+      "telegram_core_fact": "10년물 금리는 연 4.376%로 0.7bp 상승했다.",
+      "title": "국고채 금리 대체로 상승…3년물 연 3.961% | 연합뉴스"
+    },
     "title:21a4a825345cab774b3393ea": {
       "first_seen_kst": "2026-10-04T19:34:44+09:00",
       "lanes": {
@@ -227068,6 +228279,31 @@
       "source": "매일경제",
       "source_event_identity": "",
       "title": "액소젠, 바이오서킷 인수 완료에도 통합 부담 부각"
+    },
+    "title:2c80e138b5a37f172301314a": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817940",
+      "source": "뉴시스",
+      "source_body_digest": "c1155d923ee4cc0435f3c92c2a520029d27137bf981e400b0db8cbfcf944711a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3ee9563c77b64a5c6e532a38a4319d733faaa8f8ca630cb890ce9b2bb883c88",
+      "source_fact_keys": [
+        "source_fact:v1:0c2a868656518d9ea865ec1efabe12723f1ddf472c8f2cabd0c932310d2086ff",
+        "source_fact:v1:3d2b56c80ad4027dad812ab69301e5218bb98cfee3a8d69b8f2732e535898a39",
+        "source_fact:v1:74b6560da6864d186cad35ff87beaf0f61eeff77e5d512db16d6ac4f7e9b2bb1",
+        "source_fact:v1:b69f23e7c3bacba9dcbeb1d726bc4aca9025903d1aa9541f299583c5df9bd92f",
+        "source_fact:v1:c12c83ee261a8edb84ba9877eb39cff489a18426b3fea457256fdc04c2a2f2cf",
+        "source_fact:v1:cd71a6c09c5264e076eee2935c7e4ef205606309448b9b8ad361e35f3d1f1cdf",
+        "source_fact:v1:fdf3bb89e6dbe1e8b9007618c57c3167e9e923589637b4ed35fd811cfcf56585"
+      ],
+      "source_published_kst": "2026-10-07T17:11+09:00",
+      "source_title": "인도, 기준금리 5.5%로 0.25%P↑…\"인플레 대응 3년8개월 만에 인상\"",
+      "telegram_core_fact": "은행이 중앙은행에 초과 유동성을 예치할 때 적용하는 상설예금제도(SDF) 금리는 5.25%, 긴급 유동성 지원 창구인 한계대출제도(MSF) 금리는 5.75%로 각각 0.25% 포인트 인상했다.",
+      "title": "인도, 기준금리 5.5%로 0.25%P↑…\"인플레 대응 3년8개월 만에 인상\""
     },
     "title:2cb6489856ccb2f8405dbc16": {
       "first_seen_kst": "2026-10-06T20:37:39+09:00",
@@ -229270,6 +230506,25 @@
       "source": "연합뉴스",
       "title": "美국무부, '알래스카 LNG' 한미간극에 \"대미투자 합의 이룬게 중요\" | 연합뉴스"
     },
+    "title:3a128a7f1b901c1755d49ac9": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/08/2026100719572534624",
+      "source": "머니투데이",
+      "source_body_digest": "a1cf370b60efc9edf9dd8563838115d8f4a130cf02b65e182be566464b5adeb0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3b244de8ef414102cccbd401f0e92e29cc7d73e655e171f1070479d4e7c1ad67",
+      "source_fact_keys": [
+        "source_fact:v1:1e0c165c058f76e75a300d8a0776b82ae2503a3190a95ebad5cdc7a4d62a0de8"
+      ],
+      "source_published_kst": "2026-10-08T03:58+09:00",
+      "source_title": "개인정보유출 보상은 없다는 '듀오' 수천억 과징금 쿠팡과 역차별 논란",
+      "telegram_core_fact": "개인정보보호위원회(이하 개보위)에 따르면 지난해 1월 듀오에서 개인정보를 취급하는 직원의 업무용 PC가 해킹돼 정회원 42만7464명의 개인정보가 유출됐다.",
+      "title": "개인정보유출 보상은 없다는 '듀오' 수천억 과징금 쿠팡과 역차별 논란"
+    },
     "title:3a1a0211683158b5b9a28ea0": {
       "first_seen_kst": "2026-10-04T07:39:13+09:00",
       "lanes": {
@@ -229863,6 +231118,28 @@
       ],
       "source_published_kst": "2026-10-07T08:00+09:00",
       "title": "반도체가 끌어올린 한국 성장률 ‘눈높이’…해외 IB 전망 한달 새 3.3%→3.5%"
+    },
+    "title:3da6682a82570db5c41ab3da": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01433366645610952&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "21508d60b9e9900a63f7c08b97b1d0148c160f1c08ef817f332c3b7f80ceaef3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:762163ab0a93ea9efe288584c39ac2efdf9ca01f2845364047e1a5ccdc233e3f",
+      "source_fact_keys": [
+        "source_fact:v1:0bd2354f837b0b9eca4255011b006b67469d762007c9a4aca7436bb101cb65dc",
+        "source_fact:v1:d110cd416797959a29931a30ee90b09e23fa0987bbaf5dab1356c349cab0187e",
+        "source_fact:v1:e9ad043dc62fc861e1ad63224eeea92e7de300bc22a547f9f060aabcec18250a",
+        "source_fact:v1:f398073df75096cc9523f83b6752691572efe31570d179dab0fbb3c4074e3cd2"
+      ],
+      "source_published_kst": "2026-10-08T03:59+09:00",
+      "source_title": "AI칩 사려 53조원 차입 추진…스페이스X 신용위험 '사상 최고'",
+      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 일론 머스크의 스페이스X가 엔비디아의 인공지능(AI) 칩 구매를 위해 400억달러(약 53조5560억원) 신규 차입을 추진하는 가운데 스페이스X의 신용위험 지표가 사상 최고치로 치솟았다.",
+      "title": "AI칩 사려 53조원 차입 추진…스페이스X 신용위험 '사상 최고'"
     },
     "title:3dc0cc1d2e4e458033b9a8a6": {
       "first_seen_kst": "2026-09-21T21:50:35+09:00",
@@ -234339,6 +235616,25 @@
       ],
       "source_published_kst": "2026-10-07T09:28+09:00",
       "title": "현대엔지니어링, 군산 이어 인천 데이터센터 수주…8700억 규모"
+    },
+    "title:58b9ecbad436fe8a587f1083": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007171100001",
+      "source": "연합뉴스",
+      "source_body_digest": "ba127c1db050558c91ed414aee3bc8c4dbe1455d8137d83adac37cfcc84e57a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3da6f0f0e7bf590400f10af11fb16db93192189a368c3d7271b143aaa8fc1e6d",
+      "source_fact_keys": [
+        "source_fact:v1:6fd6aa8e706f800b3a5689aee1cd84d8304582745bb681ea6440046ee737140d"
+      ],
+      "source_published_kst": "2026-10-07T17:27+09:00",
+      "source_title": "[누리호 성공] 李대통령, 발사 장면 생중계로 시청…\"정부 지원 성과\" | 연합뉴스",
+      "telegram_core_fact": "이후 누리호가 이륙한 뒤 약 20분간 위성 사출이 완전히 끝날 때까지 숨죽여 지켜보던 이 대통령은 발사 성공이 확인되고 항공우주연구원 관계자들이 환호하는 모습이 화면에 나오자 함께 박수를 치며 기쁨을 표시했다고 한다.",
+      "title": "[누리호 성공] 李대통령, 발사 장면 생중계로 시청…\"정부 지원 성과\" | 연합뉴스"
     },
     "title:58ec5ba67aa9e7d7a1cc63d4": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
@@ -243230,6 +244526,29 @@
       "source_published_kst": "2026-10-05T18:18+09:00",
       "title": "美금리 올라도 달러 약세 전망…나랏빚 불안이 변수[글로벌 view]"
     },
+    "title:91db4d51dd6e44b6399393a0": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817375",
+      "source": "뉴시스",
+      "source_body_digest": "23b94a3e046bc6d45d5dc1f671cc535d43e4806b28c227edde47cd1c3dcf47fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fd6f2a4490bb28b5c63e01021ab21d3800e35ba7259b670c4423882a00cd251",
+      "source_fact_keys": [
+        "source_fact:v1:062713e17ee54baf8f92d11140983966480a014aba8dfd7ac545ac8acc489245",
+        "source_fact:v1:066cb330736a0b9c220304fcb710c632c8dca715fe297e83b42743677fe01632",
+        "source_fact:v1:09e9c17ff194dd3bbd90c0b8bc3fea61f2f878ead433c174e51fe48d15f9d2d9",
+        "source_fact:v1:49bd0a1c536916f8731d1bf3c61d4af51c6c30b54a716ba7bdbb084b191fe15f",
+        "source_fact:v1:fbd0b422540aeaaac4db5b8588fa870fc9813481bba79a39077a129e232fbe68"
+      ],
+      "source_published_kst": "2026-10-08T00:02+09:00",
+      "source_title": "1년간 810% 오른 지캐시…윙클보스 형제, 현물 ETF 신청",
+      "telegram_core_fact": "그레이스케일은 지난 8월 지캐시 트러스트를 현물 ETF로 전환했고, 21셰어스는 유럽 최초의 지캐시 상장지수상품(ETP)을 출시했다.",
+      "title": "1년간 810% 오른 지캐시…윙클보스 형제, 현물 ETF 신청"
+    },
     "title:924e9e0ba641e4be47f21798": {
       "first_seen_kst": "2026-10-07T17:23:27+09:00",
       "lanes": {
@@ -245345,6 +246664,25 @@
       ],
       "source_published_kst": "2026-10-06T23:38+09:00",
       "title": "8월 독일 산업생산 10.6% 급감…\"대형수주 기저효과\""
+    },
+    "title:a14b1d09126f298e2f27974d": {
+      "first_seen_kst": "2026-10-08T04:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003818001",
+      "source": "뉴시스",
+      "source_body_digest": "390d7b8627d68c6a3dbd742aa5928bcca77f405fe2f2fa6cd36985cb5058a9d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f0795391e6724d78abf4757d91b57a51b90be875e0f9495f0d36d2c765c479bb",
+      "source_fact_keys": [
+        "source_fact:v1:aa5984b196946c71be58ca3ae52ff6cd9d3892d7fccf30ae0933d205cf4c9e55"
+      ],
+      "source_published_kst": "2026-10-07T20:48+09:00",
+      "source_title": "누리호 5차 발사…대전 기업 개발 '대전샛' 교신 성공할까",
+      "telegram_core_fact": "대전지역 업체들이 개발한 초소형 위성 '대전샛'이 한국형 발사체 누리호에 실려 우주로 향한 가운데 위성의 교신 성공 여부에 관심이 높아지고 있다.",
+      "title": "누리호 5차 발사…대전 기업 개발 '대전샛' 교신 성공할까"
     },
     "title:a16078cf44dc24bf792d75f3": {
       "first_seen_kst": "2026-10-07T10:49:23+09:00",
@@ -259967,5 +261305,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-08T04:14:15+09:00"
+  "updated_at_kst": "2026-10-08T04:26:05+09:00"
 }
