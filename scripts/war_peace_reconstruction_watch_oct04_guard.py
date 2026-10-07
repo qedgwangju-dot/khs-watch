@@ -1189,6 +1189,10 @@ def verify_alert(test_mode=False):
         issues.append("과거 러시아 연료위기·한국 수출 배경기사를 신규 확전으로 표시")
     if "드론이 불가리아에서 침몰" in text:
         issues.append("Reuters 불가리아 흑해 선박 드론 공격 제목을 문법 오역")
+    if "AMRY" in text or "amry" in low:
+        issues.append("Iran Army 원문 오탈자를 번역 과정에서 그대로 노출")
+    if re.search(r"(?ms)^🔴\s+\[(?:속보|신규|후속)\].*?(?:선제공격|선제 공격).*?(?:필요한 경우|필요할 경우|필요시|조건부)", text):
+        issues.append("조건부 선제공격 경고를 실제 공격·확전으로 표시")
     if "공개시각 확인 필요" in text:
         issues.append("공개시각을 확인하지 못한 기사를 신규·속보 알림으로 송출")
     stale_ages = [int(x) for x in re.findall(r"(\d{3,})분 전", text)]
