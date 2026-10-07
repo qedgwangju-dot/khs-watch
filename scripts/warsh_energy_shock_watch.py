@@ -199,14 +199,18 @@ def policy_snapshot():
     meetings=state.get('meetings') or []
     cls=state.get('classification') or {}
     first=meetings[0] if meetings else {}
+    status=state.get('source_status') or ''
+    # 공식 CME 결제값·EFFR 최신성 검증 실패 시 직전 숫자 재사용 금지.
+    fresh=status=='시장원천 최신성·연준 공식범위 교차검증 통과'
     return {
         'date':state.get('updated_at_utc'),
         'meeting_date':first.get('date'),
-        'hike25_prob':first.get('hike25_prob'),
-        'extra_bp':cls.get('extra_bp'),
-        'verdict':cls.get('verdict'),
-        'source':state.get('source'),
-        'source_status':state.get('source_status'),
+        'hike25_prob':first.get('hike25_prob') if fresh else None,
+        'extra_bp':cls.get('extra_bp') if fresh else None,
+        'verdict':cls.get('verdict') if fresh else '시장원천 최신성 미확인 — 정책경로 판정 유보',
+        'source':state.get('source') if fresh else None,
+        'source_status':status,
+        'fresh':fresh,
     }
 
 
@@ -220,6 +224,8 @@ def oil_rates_verdict(orate,policy):
     if oil is not None and yld is not None and oil < 0 and yld > 0:
         return '유가와 10년물 분리 — 재정·실질금리·기간프리미엄 등 비유가 요인 우세'
     aligned_up=(oil is not None and yld is not None and oil > 0 and yld > 0)
+    if corr>=OIL10Y_CORR_STRONG and aligned_up and prob is None:
+        return '유가·10년물 동반 상승 — 추가인상 기대 원천 검증 불가'
     policy_hawk=(prob is not None and float(prob) >= 60.0)
     if corr>=OIL10Y_CORR_STRONG and aligned_up and policy_hawk:
         if orate.get('beta_hot'):
@@ -382,6 +388,10 @@ def main():
         orate=(old.get('oil_rates') or {})
     policy=policy_snapshot()
     oil_v=oil_rates_verdict(orate,policy) if orate else '유가·10년물 연결 확인 불가'
+    stale_market_correction=bool(
+        old and not policy.get('fresh')
+        and '시장 추가인상 기대 동시 확인' in str(old.get('oil_rates_verdict') or '')
+    )
 
     new={'schema_version':6,'brent':br,'macro':ma,'verdict':v,'oil_rates':orate,'policy':policy,'oil_rates_verdict':oil_v}; first=not bool(old)
     changed=(old.get('brent',{}).get('active') not in (None,br['active']) or old.get('verdict') not in (None,v))
@@ -407,7 +417,7 @@ def main():
             correction=True
 
     sent_message_id=None
-    if FORCE_NOTIFY or correction or upgrade_signal or (not first and changed):
+    if FORCE_NOTIFY or correction or stale_market_correction or upgrade_signal or (not first and changed):
         if correction:
             oldv=old_br.get('value')
             oldtxt=f'{float(oldv):.2f}달러' if isinstance(oldv,(int,float)) else '이전값'
@@ -419,6 +429,16 @@ def main():
                 ''
             ])
             sent_message_id=send(correction_head+message(br,ma,v,orate,policy,oil_v))
+        elif stale_market_correction:
+            old_prob=(old.get('policy') or {}).get('hike25_prob')
+            old_label=f'{float(old_prob):.0f}%' if isinstance(old_prob,(int,float)) else '이전 확률'
+            correction_head='\n'.join([
+                '<b>[정정 · Warsh 유가·금리 알림]</b>',
+                f'• 이전 알림의 추가인상 확률 {old_label}는 최신 공식 원천 검증 실패 이후 재사용된 과거 값입니다.',
+                '• 해당 확률과 정책 동반 긴축 판정을 철회하고, 검증 가능한 유가·국채금리 사실만 유지합니다.',
+                ''
+            ])
+            sent_message_id=send(correction_head+message(br,ma,v,orate,policy,oil_v))
         else:
             sent_message_id=send(message(br,ma,v,orate,policy,oil_v))
 
@@ -427,7 +447,7 @@ def main():
         'first_run':first,'sent':bool(sent_message_id),'message_id':sent_message_id,
         'data_valid':True,'date':br['date'],'active':br['active'],'brent':br['value'],
         'd20_pct':br['d20_pct'],'verdict':v,'basis':br.get('measurement_basis'),
-        'correction':correction,'upgrade_signal':bool(upgrade_signal),'oil_rates_verdict':oil_v,
+        'correction':correction,'stale_market_correction':stale_market_correction,'upgrade_signal':bool(upgrade_signal),'oil_rates_verdict':oil_v,
         'oil_rates':orate,'policy':policy
     },ensure_ascii=False))
 
