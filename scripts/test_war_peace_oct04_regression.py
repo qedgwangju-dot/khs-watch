@@ -474,4 +474,28 @@ check(
     and "드론이 불가리아에서 침몰" not in bulgaria_ko,
 )
 
+# 15) 10/7 07:58 실제 오송출 재발 방지: 9/6 네팔 재건 의향 기사를 한 달 뒤 신규/후속으로 재송출 금지.
+nepal_old = row(
+    "South Korea pledges support for Nepal's post-flood reconstruction",
+    source="Bing News",
+    description="South Korea expressed willingness to support Nepal's post-disaster reconstruction efforts.",
+    minutes_ago=44398,
+    link="https://www.msn.com/en-in/news/other/south-korea-pledges-support-for-nepals-post-flood-reconstruction/ar-AA2bFfkU",
+)
+s, tags = mod.score_item(nepal_old, dt.datetime.now(mod.watch.KST))
+check("oct07-nepal-month-old-news-suppressed", s == 0 and tags == [])
+
+bad_stale_alert = """<b>재난·재건 웹감시</b>
+<b>핵심 변화</b>
+[후속] <b>1. 네팔</b>
+영문 기사 번역이 일시적으로 지연됨 — 원문 확인 필요
+12:00 KST · 🟥 <b>44398분 전</b> · 재건·복구 · 재난 · 한국
+"""
+mod.watch.ALERT.write_text(bad_stale_alert, encoding="utf-8")
+try:
+    mod.verify_alert(False)
+    raise AssertionError("oct07-quality-gate-stale-nepal")
+except RuntimeError as e:
+    check("oct07-quality-gate-stale-nepal", "3시간을 초과" in str(e))
+
 print("WAR_PEACE_OCT04_REGRESSION_OK")
