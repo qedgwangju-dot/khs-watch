@@ -19,6 +19,9 @@ on:
   schedule:
     - cron: "7,22,37,52 * * * *"
     - cron: "14,29,44,59 * * * *"
+    # 정규장 개장 직후 독립 안전망. GitHub 고부하 정각은 피하고 09:04 KST에 확인.
+    - cron: "4 9 * * 1-5"
+      timezone: "Asia/Seoul"
   workflow_dispatch:
     inputs:
       send_test:
@@ -201,8 +204,11 @@ jobs:
           )
           with urllib.request.urlopen(req,timeout=20) as r:
               print(f"kospi_rollout=dispatched_latest status={r.status}")
+          # dispatch 접수만으로 production 생존을 확정하지 않는다.
+          # 바로 다음 watchdog이 실제 morning/afternoon job을 확인하며,
+          # 확인 전까지는 rapid fallback을 억제하지 않는다.
           with open(os.environ["GITHUB_ENV"],"a",encoding="utf-8") as fp:
-              fp.write("KOSPI_REALTIME_WATCH_ACTIVE=1\n")
+              fp.write("KOSPI_REALTIME_WATCH_ACTIVE=0\n")
           PY
 
       - name: Ensure KOSPI realtime watcher is alive
@@ -211,13 +217,13 @@ jobs:
           REPOSITORY: ${{ github.repository }}
         run: |
           python - <<'PY'
-          import datetime as dt, json, os, sys, urllib.request
+          import datetime as dt, json, os, sys, time, urllib.request
           from zoneinfo import ZoneInfo
           sys.path.insert(0, "scripts")
           from krx_session_calendar import session_state
 
           if os.getenv("KOSPI_REALTIME_WATCH_ACTIVE") == "1":
-              print("kospi_realtime_watchdog=rollout_already_dispatched")
+              print("kospi_realtime_watchdog=rollout_verified_active")
               raise SystemExit(0)
 
           now = dt.datetime.now(ZoneInfo("Asia/Seoul"))
@@ -244,51 +250,84 @@ jobs:
               with urllib.request.urlopen(req, timeout=20) as r:
                   return json.loads(r.read().decode("utf-8")).get("workflow_runs", [])
 
-          active = get("in_progress") + get("queued")
-          healthy = []
-          startup = []
-          for run in active:
-              created = dt.datetime.fromisoformat(run["created_at"].replace("Z", "+00:00")).astimezone(ZoneInfo("Asia/Seoul"))
-              if created.date() != now.date():
-                  continue
-              run_id = int(run.get("id"))
-              age_minutes = (now - created).total_seconds() / 60.0
-              jobs_req = urllib.request.Request(
-                  f"https://api.github.com/repos/{repo}/actions/runs/{run_id}/jobs?per_page=100",
-                  headers=headers,
-              )
-              try:
-                  with urllib.request.urlopen(jobs_req, timeout=20) as r:
-                      jobs = json.loads(r.read().decode("utf-8")).get("jobs", [])
-              except Exception:
-                  jobs = []
-              production_jobs = [
-                  j for j in jobs
-                  if str(j.get("name") or "") in {"watch", "morning", "afternoon"}
-                  and j.get("status") in {"queued", "in_progress"}
-              ]
-              if production_jobs:
-                  healthy.append((
-                      run_id, created.strftime("%H:%M:%S"), run.get("status"),
-                      [(j.get("name"), j.get("status")) for j in production_jobs],
-                  ))
-              elif age_minutes <= 3:
-                  startup.append((run_id, created.strftime("%H:%M:%S"), run.get("status")))
+          def classify_active():
+              active = get("in_progress") + get("queued")
+              healthy = []
+              startup = []
+              for run in active:
+                  created = dt.datetime.fromisoformat(run["created_at"].replace("Z", "+00:00")).astimezone(ZoneInfo("Asia/Seoul"))
+                  if created.date() != dt.datetime.now(ZoneInfo("Asia/Seoul")).date():
+                      continue
+                  run_id = int(run.get("id"))
+                  age_minutes = (dt.datetime.now(ZoneInfo("Asia/Seoul")) - created).total_seconds() / 60.0
+                  jobs_req = urllib.request.Request(
+                      f"https://api.github.com/repos/{repo}/actions/runs/{run_id}/jobs?per_page=100",
+                      headers=headers,
+                  )
+                  try:
+                      with urllib.request.urlopen(jobs_req, timeout=20) as r:
+                          jobs = json.loads(r.read().decode("utf-8")).get("jobs", [])
+                  except Exception:
+                      jobs = []
+                  production_jobs = [
+                      j for j in jobs
+                      if str(j.get("name") or "") in {"watch", "morning", "afternoon"}
+                      and j.get("status") in {"queued", "in_progress"}
+                  ]
+                  if production_jobs:
+                      healthy.append((
+                          run_id, created.strftime("%H:%M:%S"), run.get("status"),
+                          [(j.get("name"), j.get("status")) for j in production_jobs],
+                      ))
+                  elif age_minutes <= 3:
+                      startup.append((run_id, created.strftime("%H:%M:%S"), run.get("status")))
+              return healthy, startup
 
-          if healthy or startup:
-              print(f"kospi_realtime_watchdog=alive production={healthy} startup_grace={startup}")
+          healthy, startup = classify_active()
+          if healthy:
+              print(f"kospi_realtime_watchdog=alive production={healthy}")
               with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as f:
                   f.write("KOSPI_REALTIME_WATCH_ACTIVE=1\n")
               raise SystemExit(0)
 
+          if startup:
+              # run 자체만 생성되고 production job이 아직 없으면 살아 있다고 보지 않는다.
+              # 중복 dispatch는 피하되 같은 회차 rapid fallback은 계속 허용한다.
+              print(f"kospi_realtime_watchdog=startup_unverified fallback_kept_active startup={startup}")
+              with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as f:
+                  f.write("KOSPI_REALTIME_WATCH_ACTIVE=0\n")
+              raise SystemExit(0)
+
           body = json.dumps({"ref": "main", "inputs": {"mode": "production"}}).encode("utf-8")
-          req = urllib.request.Request(f"{base}/dispatches", data=body, headers={**headers, "Content-Type": "application/json"}, method="POST")
+          req = urllib.request.Request(
+              f"{base}/dispatches",
+              data=body,
+              headers={**headers, "Content-Type": "application/json"},
+              method="POST",
+          )
           with urllib.request.urlopen(req, timeout=20) as r:
               print(f"kospi_realtime_watchdog=dispatched status={r.status}")
-          # dispatch 성공 직후 같은 회차의 fallback이 중복 경보를 보내지 않게 한다.
-          # 다음 시장감시 회차에서 production이 실제로 죽었으면 다시 감지된다.
+
+          # HTTP 204 dispatch는 '요청 접수'일 뿐이다. 실제 production job이 뜬 뒤에만
+          # rapid fallback을 억제한다. 최대 90초 확인 후 실패하면 fallback을 그대로 실행한다.
+          deadline=time.time()+90
+          verified=[]
+          startup_after=[]
+          while time.time() < deadline and not verified:
+              time.sleep(5)
+              verified, startup_after = classify_active()
           with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as f:
-              f.write("KOSPI_REALTIME_WATCH_ACTIVE=1\n")
+              if verified:
+                  f.write("KOSPI_REALTIME_WATCH_ACTIVE=1\n")
+              else:
+                  f.write("KOSPI_REALTIME_WATCH_ACTIVE=0\n")
+          if verified:
+              print(f"kospi_realtime_watchdog=verified_production production={verified}")
+          else:
+              print(
+                  "kospi_realtime_watchdog=production_unverified_fallback_enabled "
+                  f"startup={startup_after}"
+              )
           PY
 
       - name: Run market stress and FX sector rotation watchers
@@ -310,7 +349,7 @@ jobs:
           fi
 
       - name: Build manual connection test
-        if: github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true'
+        if: (github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true') || (github.event_name == 'push' && contains(github.event.head_commit.message, '[telegram-test]'))
         run: |
           cat > out/korea_market_stress_connection_test.html <<'EOF'
           ✅ <b>한국 시장 스트레스·환율 민감 업종 로테이션 감시 연결 정상</b>
