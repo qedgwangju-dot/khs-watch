@@ -781,29 +781,22 @@
     "event:2059562a028cff35e70b8453": {
       "first_seen_kst": "2026-10-07T09:44:16+09:00",
       "lanes": {
-        "live": "2026-10-07T09:44:16+09:00"
+        "live": "2026-10-07T10:49:23+09:00"
       },
-      "last_seen_kst": "2026-10-07T09:44:16+09:00",
-      "link": "https://magazine.hankyung.com/business/article/202610077179b",
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.hankyung.com/article/202610077425Y",
       "source": "한국경제",
-      "source_body_digest": "846991d7d43f8ed67f275cdd63305570df6cc83c8a0dbf24e440bf5912100f12",
+      "source_body_digest": "7bea919f5c69346f33b1c7d877e080f91f6d882a511549ea7578f8e8b684498d",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:d42d902a5e19f58d95d2a4378d53c080311bc0137dd02f694580741341a05799",
+      "source_fact_identity": "source_facts:v1:6bf8dd2fcad192ec22ad4d0398bb2749c83de6444e985babfb18989e3e854d9c",
       "source_fact_keys": [
-        "source_fact:v1:017e24ab16d9198f13bb758c3a7d002fe05a6e91507ea04abf3dcc36a4ac856f",
-        "source_fact:v1:0d52fbb44bc845f51f725414c6a66522d33c6beff577ac07b38521c6bf446d59",
-        "source_fact:v1:6cb3bd8c1ff233c057dba77b9fbffff0b29a12ded097d6fd7ea4f5455a05d3ef",
-        "source_fact:v1:8dd404cf18ec48bd777d167877f3be7a15be51ed25528f72f4a0aa4c7ed2ee14",
-        "source_fact:v1:95901ee65b80f7534ce42e49b24ff5f3c1fe8190ee98ca0b14edfc6ad3c4de28",
-        "source_fact:v1:a1f48f657069ccaa4953debd75443981481d0686935db39ce945d06d3ab78f50",
-        "source_fact:v1:ae35066b0843af2f59abe7fc8dec476d0425a46d70b7b271c8f04d5bb039fc03",
-        "source_fact:v1:c804908a8ffe81d38520637c98a9b5ee6d4cbbb731f8cf9ce9125a3caedee8dc",
-        "source_fact:v1:cd7b85a243041bff12a8c9e13a2df7eb8da9ca60c61234815157adcf87517d64",
-        "source_fact:v1:d01bdc6abf147062cf08e77f16d81dc54002ce80d69b81aa079eb15fd92f0b9c",
-        "source_fact:v1:e355ded6781ad789919da1fc504fd9f77dd95aa56daa68cf2355e01b0e716029"
+        "source_fact:v1:161d4157e80388c985e271ced553dfc4bf9b7600390ac1a6c0a02c85d51b5fa7",
+        "source_fact:v1:bb9ff406e4a7af77786af50dbecef460f3501ba405311a282eb52aec30cee753",
+        "source_fact:v1:f0493e0baaf363a512ea4f8bb590c5980f7a1e67fe56b3f0afcfdbc4b7c003e6",
+        "source_fact:v1:f5adc4affb9378b814b8573d6af88b4d21d56bd51583741c2bd21305b6c7f4c2"
       ],
-      "source_published_kst": "2026-10-07T08:53+09:00",
-      "title": "“100조 넘긴다” 삼성전자 신기록 전망"
+      "source_published_kst": "2026-10-07T09:56+09:00",
+      "title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표"
     },
     "event:206e8e1b875f49dacbec7399": {
       "first_seen_kst": "2026-10-02T12:31:36+09:00",
@@ -7645,6 +7638,27 @@
       "source_published_kst": "2026-10-06T07:26+09:00",
       "title": "\"리노공업, CPO 수혜주…목표가 10만원으로 상향\"-DS"
     },
+    "fact:0a7535808f6fef3e07cf7094": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007055400063",
+      "source": "연합뉴스",
+      "source_body_digest": "8478062a2c203d5e464109923c6e23f961cadf371ef868baddb7fe4fb0ad22b0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c842e0dd3714433c9def86c506cae98bd4e167316f3419f87d4c7520dca7555d",
+      "source_fact_keys": [
+        "source_fact:v1:a4a756e4eb70d435327cc0e93dcd5a402e3f7359066bc4b8b878d3ddd9f22404",
+        "source_fact:v1:ab24f0d66ef49b5d0698d75c48dcc33c9c2bcb10fdf85348f235ee37e3de9d4c",
+        "source_fact:v1:c917b16511492dc30a930c02905b613fab3fd6f467117c5257e2a67ad88cfb33",
+        "source_fact:v1:db94ac7b3bb72af7d95c502e77eeaab8a4e11a824bdae0139b4cbdc996366e3d",
+        "source_fact:v1:f0768110cc63e4b9bff58e2f7b92660bd9e57d0d965c5a8ada88828e44d5b7bf"
+      ],
+      "source_published_kst": "2026-10-07T09:57+09:00",
+      "title": "세종 국가산단에 100㎿ 데이터센터…1조8천억원 투자 계획 | 연합뉴스"
+    },
     "fact:0a758ed4788b9546eb82ce4d": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
       "lanes": {
@@ -12243,6 +12257,30 @@
       ],
       "source_published_kst": "2026-10-06T07:30+09:00",
       "title": "원화 강세의 그늘…실적시즌 앞두고 이익전망 '뒷걸음질'"
+    },
+    "fact:5120c00ea66448a23358e3b5": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633231",
+      "source": "이투데이",
+      "source_body_digest": "ef29a30c6993aa0ab7d6db1ffdba05a4e809834f9077f5a500380bbe29425e26",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a391c6d5c66f828f657974df7b97f7e5ae8f3056b56e133b532ad7fdfc321ab2",
+      "source_fact_keys": [
+        "source_fact:v1:0c0810f4261b3c89f89f57fe11771a317fef6229dbbef2dc4935a6bbb5c6c894",
+        "source_fact:v1:20f4f2ff50d8e220b54e7a5bae6396ff5fa3d158ce1887a5f6d8aa86c6c8b7fa",
+        "source_fact:v1:2baa3b00ac057672cc9247b92e25a703ea3d56813af333a1d47892f03bdbf4c0",
+        "source_fact:v1:303d7941513eada9b95f88e061c030807e05c625684954d34171ea0a64c82cfa",
+        "source_fact:v1:35ed873bb4690da676beb8c890aa1b2d759387751ae64b09c99b8a388ace8aba",
+        "source_fact:v1:7fbb7fbcb383dbd980063a51c6b684a02a974186a14ff67b597ee91388aafbc7",
+        "source_fact:v1:c5c17523c8c20822cf9f1ab2630d64f1bf4c54b2225dbcab96cfeb670b256099",
+        "source_fact:v1:e4a4a278d737aed96a346f21b532ea991494f6a38be9f36394812a7eeb3376b7"
+      ],
+      "source_published_kst": "2026-10-07T09:51+09:00",
+      "title": "삼미금속, 한화파워에 ‘가스터빈 블레이드’ 납품 개시…후속 수주 논의"
     },
     "fact:5185b8e00ff0bd3e5e0f2bfa": {
       "first_seen_kst": "2026-10-06T00:41:11+09:00",
@@ -18798,6 +18836,24 @@
       "source_published_kst": "2026-10-05T21:50+09:00",
       "title": "크리티컬메탈스, 유러피언리튬 조건부 주식 지급의무 소멸 합의에 투자자 주목"
     },
+    "fact:ba3adf922da492db3e182e2e": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.hankyung.com/article/202610077601L",
+      "source": "한국경제",
+      "source_body_digest": "978ab17d8a2b8305dff06339caba6de2d284ce7608e8d0df3cf263e0f07c76d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22f1f7af4282f5d2f0a0b9696a118245aba7ea436a0d330a87e74b434c76c5b3",
+      "source_fact_keys": [
+        "source_fact:v1:80f05cc148398654804d79de18552ca0aaf273f3329b4eb615fb9d8ef3da5dc2",
+        "source_fact:v1:e3fd4d8ef619e191c846aa444dbe153275405a001a956ab4fd373f043902b80b"
+      ],
+      "source_published_kst": "2026-10-07T10:15+09:00",
+      "title": "윤성에프앤씨 수주공시 - 2차전지 믹싱시스템 482.3억원 (매출액대비 48.14 %)"
+    },
     "fact:ba4d034cfa08450e32f9610a": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
       "lanes": {
@@ -18819,6 +18875,30 @@
       ],
       "source_published_kst": "2026-10-06T11:23+09:00",
       "title": "삼성전기, 반년도 안 돼 컴포넌트 연매출 75% 채웠다⋯AI부품 수주 ‘4조 클럽’"
+    },
+    "fact:ba6314e2d4c23541cedc21cb": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633209",
+      "source": "이투데이",
+      "source_body_digest": "754db964e280e8cd5ad8c2904236c3dfade8b62fc7ad1ea564765873d7e21f1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:28e994b34144b67b4a9e155e98132f244011e103cd5c90ab3cd679d80a4f434b",
+      "source_fact_keys": [
+        "source_fact:v1:05dab1f6d25071f041d7becb0ce334d5a4a09e2877c13f5d90a95ed16208e6b2",
+        "source_fact:v1:55ead78b59d53c3fafb54baaafa6dfa2c52bd37eb52cbdbacc41c4204629d7fa",
+        "source_fact:v1:7b55ed326a981161724b0a31d60d64f12972e8d4f3b6f4ef4fceb9610bd028c0",
+        "source_fact:v1:9bd3f073d3817093ce096f176b4131056e0423dde443954174a59664ae21ac0d",
+        "source_fact:v1:a96c907b429cef3d7a968d6026b01eb89dd7f328f566cd1d793879fe19563491",
+        "source_fact:v1:b02650f40e0929b4c47c54ef910f6c4733a8d23894f3c99a04448e8a6036841a",
+        "source_fact:v1:d37765cf9e30af1147c1e3aa794eb091d58920bdb13106780a3617fd16d95f89",
+        "source_fact:v1:fa0736b0a7749b017967a59c4288b1d1e55083badd4193e56c59bff8762620c9"
+      ],
+      "source_published_kst": "2026-10-07T09:35+09:00",
+      "title": "KT클라우드, ‘청라 AI 데이터센터’ 구축 참여…50MW급 규모로 수도권 확장"
     },
     "fact:bb24caa20019ff78c58b503e": {
       "first_seen_kst": "2026-10-07T08:57:59+09:00",
@@ -21595,6 +21675,26 @@
       "source_published_kst": "2026-10-06T09:07+09:00",
       "title": "사우디 연합군, 주요 지역 탈환…후티는 사우디 공항 공습 반격 | 연합뉴스"
     },
+    "fact:e9f2609a962cf609d31e4377": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.hankyung.com/article/202610077425Y",
+      "source": "한국경제",
+      "source_body_digest": "7bea919f5c69346f33b1c7d877e080f91f6d882a511549ea7578f8e8b684498d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6bf8dd2fcad192ec22ad4d0398bb2749c83de6444e985babfb18989e3e854d9c",
+      "source_fact_keys": [
+        "source_fact:v1:161d4157e80388c985e271ced553dfc4bf9b7600390ac1a6c0a02c85d51b5fa7",
+        "source_fact:v1:bb9ff406e4a7af77786af50dbecef460f3501ba405311a282eb52aec30cee753",
+        "source_fact:v1:f0493e0baaf363a512ea4f8bb590c5980f7a1e67fe56b3f0afcfdbc4b7c003e6",
+        "source_fact:v1:f5adc4affb9378b814b8573d6af88b4d21d56bd51583741c2bd21305b6c7f4c2"
+      ],
+      "source_published_kst": "2026-10-07T09:56+09:00",
+      "title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표"
+    },
     "fact:ea5cd986d5cd7934dc7c9a29": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
       "lanes": {
@@ -21883,6 +21983,25 @@
       ],
       "source_published_kst": "2026-10-06T17:57+09:00",
       "title": "대학가 주택 '공공기숙사'로…LH, 서울대와 200가구 공급"
+    },
+    "fact:eec955ad04dc475b25ada7a5": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816765",
+      "source": "뉴시스",
+      "source_body_digest": "409aa845e8d3e02eec193bc62c9bf910510dc88055b4e92ae8d4f82d314e6a4a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99b068a8d90a4fe9205b0e47849ecc3d39d7ca15eb9dedd05abb83f4dab0e191",
+      "source_fact_keys": [
+        "source_fact:v1:0956c4ba2c31881b66f80435750e6e0faff9fad19747cbfbfa0ad4cc37f152d1",
+        "source_fact:v1:aac2588b64c2e45e665f4d744426862645fd2ad56756c6bbbca5795dbacaf65f",
+        "source_fact:v1:c04c7b846c682aa7af88e3e1699f803f3e2b232a97de424b2d674febbf9eef3c"
+      ],
+      "source_published_kst": "2026-10-07T09:28+09:00",
+      "title": "현대엔지니어링, 군산 이어 인천 데이터센터 수주…8700억 규모"
     },
     "fact:ef0700843a9a48d1e5b4a79e": {
       "first_seen_kst": "2026-10-06T23:29:45+09:00",
@@ -22431,6 +22550,26 @@
       ],
       "source_published_kst": "2026-10-06T11:35+09:00",
       "title": "日 ‘신중’ 알래스카 LNG 프로젝트…밴스 부통령 “韓과 조율…결국 이뤄질 일” [대미투자]"
+    },
+    "fact:f8886d8c9ebef6a68973d4b7": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etnews.com/20261007000053",
+      "source": "전자신문",
+      "source_body_digest": "9d7eec9558753e47db6707e4a2b896a389871aeeb6a2dc67d72d3fe0e68284a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:17aedd7233eacff5a8a04562887d20ecfbc7cfb62063317788c42e3b0e37d2e3",
+      "source_fact_keys": [
+        "source_fact:v1:22811750c26dfa98f6a85ff12e6be60cc6d1a3521dd71a62d6569d3228fe2336",
+        "source_fact:v1:2bd52ce764475455e0ce16bba02c6007d77a4772f7d05391dd05cd733e81f285",
+        "source_fact:v1:a1e8f3d98cb8d26872f34479e35bdd145fbf3fe8449816e11f9dbebdac55709d",
+        "source_fact:v1:a821c57833d63302c2a88049af24c7dadbae4b47a7f94af7cfc080f370b2f15f"
+      ],
+      "source_published_kst": "2026-10-07T09:31+09:00",
+      "title": "롯데바이오, '알보텍' 바이오시밀러 생산 수주…美 거점 앞세워 글로벌 공략"
     },
     "fact:f8c2ae53550499cbfe01ff63": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
@@ -27710,6 +27849,26 @@
       "source_event_identity": "",
       "title": "모기 보이면 '레이저 발사'...中서 나온 134만원짜리 기계"
     },
+    "link:27fac4bef58e2d80e82f8d0e": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etnews.com/20261007000053",
+      "source": "전자신문",
+      "source_body_digest": "9d7eec9558753e47db6707e4a2b896a389871aeeb6a2dc67d72d3fe0e68284a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:17aedd7233eacff5a8a04562887d20ecfbc7cfb62063317788c42e3b0e37d2e3",
+      "source_fact_keys": [
+        "source_fact:v1:22811750c26dfa98f6a85ff12e6be60cc6d1a3521dd71a62d6569d3228fe2336",
+        "source_fact:v1:2bd52ce764475455e0ce16bba02c6007d77a4772f7d05391dd05cd733e81f285",
+        "source_fact:v1:a1e8f3d98cb8d26872f34479e35bdd145fbf3fe8449816e11f9dbebdac55709d",
+        "source_fact:v1:a821c57833d63302c2a88049af24c7dadbae4b47a7f94af7cfc080f370b2f15f"
+      ],
+      "source_published_kst": "2026-10-07T09:31+09:00",
+      "title": "롯데바이오, '알보텍' 바이오시밀러 생산 수주…美 거점 앞세워 글로벌 공략"
+    },
     "link:28086a6dfaf560cc452ea77f": {
       "first_seen_kst": "2026-10-07T08:36:47+09:00",
       "lanes": {
@@ -30433,6 +30592,27 @@
       "link": "https://biz.heraldcorp.com/article/10891069",
       "source": "헤럴드경제",
       "title": "제4대 대한당구연맹 회장 선거, 강진모 후보 당선"
+    },
+    "link:3c56967c3466ddd0b8fa334b": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007055400063",
+      "source": "연합뉴스",
+      "source_body_digest": "8478062a2c203d5e464109923c6e23f961cadf371ef868baddb7fe4fb0ad22b0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c842e0dd3714433c9def86c506cae98bd4e167316f3419f87d4c7520dca7555d",
+      "source_fact_keys": [
+        "source_fact:v1:a4a756e4eb70d435327cc0e93dcd5a402e3f7359066bc4b8b878d3ddd9f22404",
+        "source_fact:v1:ab24f0d66ef49b5d0698d75c48dcc33c9c2bcb10fdf85348f235ee37e3de9d4c",
+        "source_fact:v1:c917b16511492dc30a930c02905b613fab3fd6f467117c5257e2a67ad88cfb33",
+        "source_fact:v1:db94ac7b3bb72af7d95c502e77eeaab8a4e11a824bdae0139b4cbdc996366e3d",
+        "source_fact:v1:f0768110cc63e4b9bff58e2f7b92660bd9e57d0d965c5a8ada88828e44d5b7bf"
+      ],
+      "source_published_kst": "2026-10-07T09:57+09:00",
+      "title": "세종 국가산단에 100㎿ 데이터센터…1조8천억원 투자 계획 | 연합뉴스"
     },
     "link:3c5c0c726d53eb5eebcd3721": {
       "first_seen_kst": "2026-09-29T03:48:26+09:00",
@@ -36021,6 +36201,26 @@
       "source_published_kst": "2026-10-06T09:37+09:00",
       "title": "[제주馬이야기] 국난마다 전마 보탠 제주…김만일에서 레클리스까지"
     },
+    "link:6862fc835bcfc1ed8c98d4a1": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.hankyung.com/article/202610077425Y",
+      "source": "한국경제",
+      "source_body_digest": "7bea919f5c69346f33b1c7d877e080f91f6d882a511549ea7578f8e8b684498d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6bf8dd2fcad192ec22ad4d0398bb2749c83de6444e985babfb18989e3e854d9c",
+      "source_fact_keys": [
+        "source_fact:v1:161d4157e80388c985e271ced553dfc4bf9b7600390ac1a6c0a02c85d51b5fa7",
+        "source_fact:v1:bb9ff406e4a7af77786af50dbecef460f3501ba405311a282eb52aec30cee753",
+        "source_fact:v1:f0493e0baaf363a512ea4f8bb590c5980f7a1e67fe56b3f0afcfdbc4b7c003e6",
+        "source_fact:v1:f5adc4affb9378b814b8573d6af88b4d21d56bd51583741c2bd21305b6c7f4c2"
+      ],
+      "source_published_kst": "2026-10-07T09:56+09:00",
+      "title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표"
+    },
     "link:686ef5a64628b8389f1081f3": {
       "first_seen_kst": "2026-10-05T17:16:33+09:00",
       "lanes": {
@@ -36725,6 +36925,25 @@
       "link": "https://www.fnnews.com/news/202609230501157341",
       "source": "파이낸셜뉴스",
       "title": "[속보][뉴욕증시] 나스닥지수, 이틀 연속 사상 최고…다우지수, 0.4% 하락"
+    },
+    "link:6e855a501e80648e54b3167f": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816765",
+      "source": "뉴시스",
+      "source_body_digest": "409aa845e8d3e02eec193bc62c9bf910510dc88055b4e92ae8d4f82d314e6a4a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99b068a8d90a4fe9205b0e47849ecc3d39d7ca15eb9dedd05abb83f4dab0e191",
+      "source_fact_keys": [
+        "source_fact:v1:0956c4ba2c31881b66f80435750e6e0faff9fad19747cbfbfa0ad4cc37f152d1",
+        "source_fact:v1:aac2588b64c2e45e665f4d744426862645fd2ad56756c6bbbca5795dbacaf65f",
+        "source_fact:v1:c04c7b846c682aa7af88e3e1699f803f3e2b232a97de424b2d674febbf9eef3c"
+      ],
+      "source_published_kst": "2026-10-07T09:28+09:00",
+      "title": "현대엔지니어링, 군산 이어 인천 데이터센터 수주…8700억 규모"
     },
     "link:6e9dac46d69637786bc0be35": {
       "first_seen_kst": "2026-10-07T07:39:19+09:00",
@@ -39532,6 +39751,30 @@
       "link": "https://www.etoday.co.kr/news/view/2632210",
       "source": "이투데이",
       "title": "김성호 포스코 노조위원장 ‘3선’ 성공…멈췄던 임금협상 다시 테이블로"
+    },
+    "link:87a2245959b1866b30efb430": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633209",
+      "source": "이투데이",
+      "source_body_digest": "754db964e280e8cd5ad8c2904236c3dfade8b62fc7ad1ea564765873d7e21f1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:28e994b34144b67b4a9e155e98132f244011e103cd5c90ab3cd679d80a4f434b",
+      "source_fact_keys": [
+        "source_fact:v1:05dab1f6d25071f041d7becb0ce334d5a4a09e2877c13f5d90a95ed16208e6b2",
+        "source_fact:v1:55ead78b59d53c3fafb54baaafa6dfa2c52bd37eb52cbdbacc41c4204629d7fa",
+        "source_fact:v1:7b55ed326a981161724b0a31d60d64f12972e8d4f3b6f4ef4fceb9610bd028c0",
+        "source_fact:v1:9bd3f073d3817093ce096f176b4131056e0423dde443954174a59664ae21ac0d",
+        "source_fact:v1:a96c907b429cef3d7a968d6026b01eb89dd7f328f566cd1d793879fe19563491",
+        "source_fact:v1:b02650f40e0929b4c47c54ef910f6c4733a8d23894f3c99a04448e8a6036841a",
+        "source_fact:v1:d37765cf9e30af1147c1e3aa794eb091d58920bdb13106780a3617fd16d95f89",
+        "source_fact:v1:fa0736b0a7749b017967a59c4288b1d1e55083badd4193e56c59bff8762620c9"
+      ],
+      "source_published_kst": "2026-10-07T09:35+09:00",
+      "title": "KT클라우드, ‘청라 AI 데이터센터’ 구축 참여…50MW급 규모로 수도권 확장"
     },
     "link:87abb8feb43948ec9ad6d760": {
       "first_seen_kst": "2026-09-27T00:25:22+09:00",
@@ -44389,6 +44632,30 @@
       "source_published_kst": "2026-10-06T23:43+09:00",
       "title": "에이로봇, 방산혁신기업 선정…휴머노이드 군 시범운용 추진"
     },
+    "link:af4671a23e1f0f201babe338": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633231",
+      "source": "이투데이",
+      "source_body_digest": "ef29a30c6993aa0ab7d6db1ffdba05a4e809834f9077f5a500380bbe29425e26",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a391c6d5c66f828f657974df7b97f7e5ae8f3056b56e133b532ad7fdfc321ab2",
+      "source_fact_keys": [
+        "source_fact:v1:0c0810f4261b3c89f89f57fe11771a317fef6229dbbef2dc4935a6bbb5c6c894",
+        "source_fact:v1:20f4f2ff50d8e220b54e7a5bae6396ff5fa3d158ce1887a5f6d8aa86c6c8b7fa",
+        "source_fact:v1:2baa3b00ac057672cc9247b92e25a703ea3d56813af333a1d47892f03bdbf4c0",
+        "source_fact:v1:303d7941513eada9b95f88e061c030807e05c625684954d34171ea0a64c82cfa",
+        "source_fact:v1:35ed873bb4690da676beb8c890aa1b2d759387751ae64b09c99b8a388ace8aba",
+        "source_fact:v1:7fbb7fbcb383dbd980063a51c6b684a02a974186a14ff67b597ee91388aafbc7",
+        "source_fact:v1:c5c17523c8c20822cf9f1ab2630d64f1bf4c54b2225dbcab96cfeb670b256099",
+        "source_fact:v1:e4a4a278d737aed96a346f21b532ea991494f6a38be9f36394812a7eeb3376b7"
+      ],
+      "source_published_kst": "2026-10-07T09:51+09:00",
+      "title": "삼미금속, 한화파워에 ‘가스터빈 블레이드’ 납품 개시…후속 수주 논의"
+    },
     "link:af575f3a35694e1f709c1399": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
       "lanes": {
@@ -45460,6 +45727,24 @@
       "link": "https://www.yna.co.kr/view/MYH20261002009500038",
       "source": "연합뉴스",
       "title": "美경윳값 폭등에…트럼프, 유럽에 폭탄돌리기 | 연합뉴스"
+    },
+    "link:b8123af68d9125ea8df71b23": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.hankyung.com/article/202610077601L",
+      "source": "한국경제",
+      "source_body_digest": "978ab17d8a2b8305dff06339caba6de2d284ce7608e8d0df3cf263e0f07c76d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22f1f7af4282f5d2f0a0b9696a118245aba7ea436a0d330a87e74b434c76c5b3",
+      "source_fact_keys": [
+        "source_fact:v1:80f05cc148398654804d79de18552ca0aaf273f3329b4eb615fb9d8ef3da5dc2",
+        "source_fact:v1:e3fd4d8ef619e191c846aa444dbe153275405a001a956ab4fd373f043902b80b"
+      ],
+      "source_published_kst": "2026-10-07T10:15+09:00",
+      "title": "윤성에프앤씨 수주공시 - 2차전지 믹싱시스템 482.3억원 (매출액대비 48.14 %)"
     },
     "link:b8239ce271ebd01d6fa67360": {
       "first_seen_kst": "2026-09-19T11:08:27+09:00",
@@ -62386,6 +62671,26 @@
       "source_published_kst": "2026-10-05T13:22+09:00",
       "title": "다음주 어닝시즌 개막, AI주 강세 확산될까…재료 공백 속 국채 금리 주목"
     },
+    "original:4111fc6d3624d9f2ab9db358": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etnews.com/20261007000053",
+      "source": "전자신문",
+      "source_body_digest": "9d7eec9558753e47db6707e4a2b896a389871aeeb6a2dc67d72d3fe0e68284a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:17aedd7233eacff5a8a04562887d20ecfbc7cfb62063317788c42e3b0e37d2e3",
+      "source_fact_keys": [
+        "source_fact:v1:22811750c26dfa98f6a85ff12e6be60cc6d1a3521dd71a62d6569d3228fe2336",
+        "source_fact:v1:2bd52ce764475455e0ce16bba02c6007d77a4772f7d05391dd05cd733e81f285",
+        "source_fact:v1:a1e8f3d98cb8d26872f34479e35bdd145fbf3fe8449816e11f9dbebdac55709d",
+        "source_fact:v1:a821c57833d63302c2a88049af24c7dadbae4b47a7f94af7cfc080f370b2f15f"
+      ],
+      "source_published_kst": "2026-10-07T09:31+09:00",
+      "title": "롯데바이오, '알보텍' 바이오시밀러 생산 수주…美 거점 앞세워 글로벌 공략"
+    },
     "original:411b7ed7f2612015686fe48f": {
       "first_seen_kst": "2026-10-02T16:26:14+09:00",
       "lanes": {
@@ -65346,6 +65651,25 @@
       "link": "https://www.newsis.com/view/NISX20260918_0003796280",
       "source": "뉴시스",
       "title": "\"집값 올라 '풀대출' 받아야 하는데\"…금리 8% 눈앞에 발동동[긴축이 온다①]"
+    },
+    "original:58afbfb6f88d532cf17f5ee7": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816765",
+      "source": "뉴시스",
+      "source_body_digest": "409aa845e8d3e02eec193bc62c9bf910510dc88055b4e92ae8d4f82d314e6a4a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99b068a8d90a4fe9205b0e47849ecc3d39d7ca15eb9dedd05abb83f4dab0e191",
+      "source_fact_keys": [
+        "source_fact:v1:0956c4ba2c31881b66f80435750e6e0faff9fad19747cbfbfa0ad4cc37f152d1",
+        "source_fact:v1:aac2588b64c2e45e665f4d744426862645fd2ad56756c6bbbca5795dbacaf65f",
+        "source_fact:v1:c04c7b846c682aa7af88e3e1699f803f3e2b232a97de424b2d674febbf9eef3c"
+      ],
+      "source_published_kst": "2026-10-07T09:28+09:00",
+      "title": "현대엔지니어링, 군산 이어 인천 데이터센터 수주…8700억 규모"
     },
     "original:58ec5ba67aa9e7d7a1cc63d4": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
@@ -72571,6 +72895,27 @@
       "source_published_kst": "2026-10-06T11:00+09:00",
       "title": "규제합리화추진단 \"디스플레이 규제 개선…수입 간소화·AI 보안가이드 마련\""
     },
+    "original:93eef4629a663be0ce5fe41c": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007055400063",
+      "source": "연합뉴스",
+      "source_body_digest": "8478062a2c203d5e464109923c6e23f961cadf371ef868baddb7fe4fb0ad22b0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c842e0dd3714433c9def86c506cae98bd4e167316f3419f87d4c7520dca7555d",
+      "source_fact_keys": [
+        "source_fact:v1:a4a756e4eb70d435327cc0e93dcd5a402e3f7359066bc4b8b878d3ddd9f22404",
+        "source_fact:v1:ab24f0d66ef49b5d0698d75c48dcc33c9c2bcb10fdf85348f235ee37e3de9d4c",
+        "source_fact:v1:c917b16511492dc30a930c02905b613fab3fd6f467117c5257e2a67ad88cfb33",
+        "source_fact:v1:db94ac7b3bb72af7d95c502e77eeaab8a4e11a824bdae0139b4cbdc996366e3d",
+        "source_fact:v1:f0768110cc63e4b9bff58e2f7b92660bd9e57d0d965c5a8ada88828e44d5b7bf"
+      ],
+      "source_published_kst": "2026-10-07T09:57+09:00",
+      "title": "세종 국가산단에 100㎿ 데이터센터…1조8천억원 투자 계획 | 연합뉴스"
+    },
     "original:93f3d9e538ce32378b80275c": {
       "first_seen_kst": "2026-10-06T20:54:05+09:00",
       "lanes": {
@@ -73924,6 +74269,30 @@
       ],
       "source_published_kst": "2026-10-06T23:38+09:00",
       "title": "8월 독일 산업생산 10.6% 급감…\"대형수주 기저효과\""
+    },
+    "original:a16078cf44dc24bf792d75f3": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633209",
+      "source": "이투데이",
+      "source_body_digest": "754db964e280e8cd5ad8c2904236c3dfade8b62fc7ad1ea564765873d7e21f1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:28e994b34144b67b4a9e155e98132f244011e103cd5c90ab3cd679d80a4f434b",
+      "source_fact_keys": [
+        "source_fact:v1:05dab1f6d25071f041d7becb0ce334d5a4a09e2877c13f5d90a95ed16208e6b2",
+        "source_fact:v1:55ead78b59d53c3fafb54baaafa6dfa2c52bd37eb52cbdbacc41c4204629d7fa",
+        "source_fact:v1:7b55ed326a981161724b0a31d60d64f12972e8d4f3b6f4ef4fceb9610bd028c0",
+        "source_fact:v1:9bd3f073d3817093ce096f176b4131056e0423dde443954174a59664ae21ac0d",
+        "source_fact:v1:a96c907b429cef3d7a968d6026b01eb89dd7f328f566cd1d793879fe19563491",
+        "source_fact:v1:b02650f40e0929b4c47c54ef910f6c4733a8d23894f3c99a04448e8a6036841a",
+        "source_fact:v1:d37765cf9e30af1147c1e3aa794eb091d58920bdb13106780a3617fd16d95f89",
+        "source_fact:v1:fa0736b0a7749b017967a59c4288b1d1e55083badd4193e56c59bff8762620c9"
+      ],
+      "source_published_kst": "2026-10-07T09:35+09:00",
+      "title": "KT클라우드, ‘청라 AI 데이터센터’ 구축 참여…50MW급 규모로 수도권 확장"
     },
     "original:a1a0359eafaa61f23484f55e": {
       "first_seen_kst": "2026-09-19T00:36:11+09:00",
@@ -78623,6 +78992,26 @@
       "source_published_kst": "2026-10-04T02:21+09:00",
       "title": "美, 기존 합의 토대로 핵 협상 조기 추진…이란 \"약속 이행 먼저\""
     },
+    "original:ca795b956cc9baeeff75e0ef": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.hankyung.com/article/202610077425Y",
+      "source": "한국경제",
+      "source_body_digest": "7bea919f5c69346f33b1c7d877e080f91f6d882a511549ea7578f8e8b684498d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6bf8dd2fcad192ec22ad4d0398bb2749c83de6444e985babfb18989e3e854d9c",
+      "source_fact_keys": [
+        "source_fact:v1:161d4157e80388c985e271ced553dfc4bf9b7600390ac1a6c0a02c85d51b5fa7",
+        "source_fact:v1:bb9ff406e4a7af77786af50dbecef460f3501ba405311a282eb52aec30cee753",
+        "source_fact:v1:f0493e0baaf363a512ea4f8bb590c5980f7a1e67fe56b3f0afcfdbc4b7c003e6",
+        "source_fact:v1:f5adc4affb9378b814b8573d6af88b4d21d56bd51583741c2bd21305b6c7f4c2"
+      ],
+      "source_published_kst": "2026-10-07T09:56+09:00",
+      "title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표"
+    },
     "original:caa3643882e5e0ac8836639b": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -79220,6 +79609,30 @@
       "link": "https://www.yna.co.kr/view/AKR20260918130700054",
       "source": "연합뉴스",
       "title": "전남광주시·장성군, 앰코 폐수처리시설 확충 협력 | 연합뉴스"
+    },
+    "original:cf875a3ca4aae768df242f49": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633231",
+      "source": "이투데이",
+      "source_body_digest": "ef29a30c6993aa0ab7d6db1ffdba05a4e809834f9077f5a500380bbe29425e26",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a391c6d5c66f828f657974df7b97f7e5ae8f3056b56e133b532ad7fdfc321ab2",
+      "source_fact_keys": [
+        "source_fact:v1:0c0810f4261b3c89f89f57fe11771a317fef6229dbbef2dc4935a6bbb5c6c894",
+        "source_fact:v1:20f4f2ff50d8e220b54e7a5bae6396ff5fa3d158ce1887a5f6d8aa86c6c8b7fa",
+        "source_fact:v1:2baa3b00ac057672cc9247b92e25a703ea3d56813af333a1d47892f03bdbf4c0",
+        "source_fact:v1:303d7941513eada9b95f88e061c030807e05c625684954d34171ea0a64c82cfa",
+        "source_fact:v1:35ed873bb4690da676beb8c890aa1b2d759387751ae64b09c99b8a388ace8aba",
+        "source_fact:v1:7fbb7fbcb383dbd980063a51c6b684a02a974186a14ff67b597ee91388aafbc7",
+        "source_fact:v1:c5c17523c8c20822cf9f1ab2630d64f1bf4c54b2225dbcab96cfeb670b256099",
+        "source_fact:v1:e4a4a278d737aed96a346f21b532ea991494f6a38be9f36394812a7eeb3376b7"
+      ],
+      "source_published_kst": "2026-10-07T09:51+09:00",
+      "title": "삼미금속, 한화파워에 ‘가스터빈 블레이드’ 납품 개시…후속 수주 논의"
     },
     "original:cfa6187fb153b6adf7ae6402": {
       "first_seen_kst": "2026-09-19T11:34:06+09:00",
@@ -83096,6 +83509,24 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03204566645582416",
       "source": "이데일리",
       "title": "고려아연, 기후산업국제박람회 참여…트로이카 성과 선봬"
+    },
+    "original:ec14d00d5717c912fc3bb2ad": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.hankyung.com/article/202610077601L",
+      "source": "한국경제",
+      "source_body_digest": "978ab17d8a2b8305dff06339caba6de2d284ce7608e8d0df3cf263e0f07c76d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22f1f7af4282f5d2f0a0b9696a118245aba7ea436a0d330a87e74b434c76c5b3",
+      "source_fact_keys": [
+        "source_fact:v1:80f05cc148398654804d79de18552ca0aaf273f3329b4eb615fb9d8ef3da5dc2",
+        "source_fact:v1:e3fd4d8ef619e191c846aa444dbe153275405a001a956ab4fd373f043902b80b"
+      ],
+      "source_published_kst": "2026-10-07T10:15+09:00",
+      "title": "윤성에프앤씨 수주공시 - 2차전지 믹싱시스템 482.3억원 (매출액대비 48.14 %)"
     },
     "original:ec222577933fee7bbefb0c94": {
       "first_seen_kst": "2026-10-05T12:09:30+09:00",
@@ -87320,6 +87751,30 @@
       "source_published_kst": "2026-10-06T16:23+09:00",
       "title": "日증시, AI·반도체 강세에 상승 마감…닛케이 1.05%↑"
     },
+    "source_fact:087c302fe1c08cb48723982e": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633209",
+      "source": "이투데이",
+      "source_body_digest": "754db964e280e8cd5ad8c2904236c3dfade8b62fc7ad1ea564765873d7e21f1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:28e994b34144b67b4a9e155e98132f244011e103cd5c90ab3cd679d80a4f434b",
+      "source_fact_keys": [
+        "source_fact:v1:05dab1f6d25071f041d7becb0ce334d5a4a09e2877c13f5d90a95ed16208e6b2",
+        "source_fact:v1:55ead78b59d53c3fafb54baaafa6dfa2c52bd37eb52cbdbacc41c4204629d7fa",
+        "source_fact:v1:7b55ed326a981161724b0a31d60d64f12972e8d4f3b6f4ef4fceb9610bd028c0",
+        "source_fact:v1:9bd3f073d3817093ce096f176b4131056e0423dde443954174a59664ae21ac0d",
+        "source_fact:v1:a96c907b429cef3d7a968d6026b01eb89dd7f328f566cd1d793879fe19563491",
+        "source_fact:v1:b02650f40e0929b4c47c54ef910f6c4733a8d23894f3c99a04448e8a6036841a",
+        "source_fact:v1:d37765cf9e30af1147c1e3aa794eb091d58920bdb13106780a3617fd16d95f89",
+        "source_fact:v1:fa0736b0a7749b017967a59c4288b1d1e55083badd4193e56c59bff8762620c9"
+      ],
+      "source_published_kst": "2026-10-07T09:35+09:00",
+      "title": "KT클라우드, ‘청라 AI 데이터센터’ 구축 참여…50MW급 규모로 수도권 확장"
+    },
     "source_fact:08986bd9bb22a90964311dc8": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -88159,6 +88614,30 @@
       ],
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "외국인·명품 소비에 비용 절감까지…백화점 3사, 3분기 실적 ‘청신호’"
+    },
+    "source_fact:0bdb39a3e0b9e19d60e13fb0": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633209",
+      "source": "이투데이",
+      "source_body_digest": "754db964e280e8cd5ad8c2904236c3dfade8b62fc7ad1ea564765873d7e21f1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:28e994b34144b67b4a9e155e98132f244011e103cd5c90ab3cd679d80a4f434b",
+      "source_fact_keys": [
+        "source_fact:v1:05dab1f6d25071f041d7becb0ce334d5a4a09e2877c13f5d90a95ed16208e6b2",
+        "source_fact:v1:55ead78b59d53c3fafb54baaafa6dfa2c52bd37eb52cbdbacc41c4204629d7fa",
+        "source_fact:v1:7b55ed326a981161724b0a31d60d64f12972e8d4f3b6f4ef4fceb9610bd028c0",
+        "source_fact:v1:9bd3f073d3817093ce096f176b4131056e0423dde443954174a59664ae21ac0d",
+        "source_fact:v1:a96c907b429cef3d7a968d6026b01eb89dd7f328f566cd1d793879fe19563491",
+        "source_fact:v1:b02650f40e0929b4c47c54ef910f6c4733a8d23894f3c99a04448e8a6036841a",
+        "source_fact:v1:d37765cf9e30af1147c1e3aa794eb091d58920bdb13106780a3617fd16d95f89",
+        "source_fact:v1:fa0736b0a7749b017967a59c4288b1d1e55083badd4193e56c59bff8762620c9"
+      ],
+      "source_published_kst": "2026-10-07T09:35+09:00",
+      "title": "KT클라우드, ‘청라 AI 데이터센터’ 구축 참여…50MW급 규모로 수도권 확장"
     },
     "source_fact:0bde296e78fc55049bc3e39d": {
       "first_seen_kst": "2026-10-06T17:24:43+09:00",
@@ -94368,6 +94847,30 @@
       "source_published_kst": "2026-10-07T03:11+09:00",
       "title": "\"지금 폰 바꿀까?\" AI 서버가 D램 싹쓸이…스마트폰값 더 비싸진다"
     },
+    "source_fact:2486d8b16e2e71ec86ee7932": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633209",
+      "source": "이투데이",
+      "source_body_digest": "754db964e280e8cd5ad8c2904236c3dfade8b62fc7ad1ea564765873d7e21f1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:28e994b34144b67b4a9e155e98132f244011e103cd5c90ab3cd679d80a4f434b",
+      "source_fact_keys": [
+        "source_fact:v1:05dab1f6d25071f041d7becb0ce334d5a4a09e2877c13f5d90a95ed16208e6b2",
+        "source_fact:v1:55ead78b59d53c3fafb54baaafa6dfa2c52bd37eb52cbdbacc41c4204629d7fa",
+        "source_fact:v1:7b55ed326a981161724b0a31d60d64f12972e8d4f3b6f4ef4fceb9610bd028c0",
+        "source_fact:v1:9bd3f073d3817093ce096f176b4131056e0423dde443954174a59664ae21ac0d",
+        "source_fact:v1:a96c907b429cef3d7a968d6026b01eb89dd7f328f566cd1d793879fe19563491",
+        "source_fact:v1:b02650f40e0929b4c47c54ef910f6c4733a8d23894f3c99a04448e8a6036841a",
+        "source_fact:v1:d37765cf9e30af1147c1e3aa794eb091d58920bdb13106780a3617fd16d95f89",
+        "source_fact:v1:fa0736b0a7749b017967a59c4288b1d1e55083badd4193e56c59bff8762620c9"
+      ],
+      "source_published_kst": "2026-10-07T09:35+09:00",
+      "title": "KT클라우드, ‘청라 AI 데이터센터’ 구축 참여…50MW급 규모로 수도권 확장"
+    },
     "source_fact:2495cb81d74e9f85db76142e": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
       "lanes": {
@@ -97344,6 +97847,26 @@
       "source_published_kst": "2026-10-06T23:31+09:00",
       "title": "우크라, '한국의 러 석유공급' 기사 인용해 韓 비판(종합) | 연합뉴스"
     },
+    "source_fact:2f50cacf48c13c947dcaddb9": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.hankyung.com/article/202610077425Y",
+      "source": "한국경제",
+      "source_body_digest": "7bea919f5c69346f33b1c7d877e080f91f6d882a511549ea7578f8e8b684498d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6bf8dd2fcad192ec22ad4d0398bb2749c83de6444e985babfb18989e3e854d9c",
+      "source_fact_keys": [
+        "source_fact:v1:161d4157e80388c985e271ced553dfc4bf9b7600390ac1a6c0a02c85d51b5fa7",
+        "source_fact:v1:bb9ff406e4a7af77786af50dbecef460f3501ba405311a282eb52aec30cee753",
+        "source_fact:v1:f0493e0baaf363a512ea4f8bb590c5980f7a1e67fe56b3f0afcfdbc4b7c003e6",
+        "source_fact:v1:f5adc4affb9378b814b8573d6af88b4d21d56bd51583741c2bd21305b6c7f4c2"
+      ],
+      "source_published_kst": "2026-10-07T09:56+09:00",
+      "title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표"
+    },
     "source_fact:2f5d60f6f2b72d5813918e02": {
       "first_seen_kst": "2026-10-07T06:28:41+09:00",
       "lanes": {
@@ -97407,6 +97930,30 @@
       ],
       "source_published_kst": "2026-10-05T10:59+09:00",
       "title": "“국내서 접하기 힘든 해외 AI 한곳 에”…LG유플러스가 ‘유독’으로 들여온다"
+    },
+    "source_fact:2f93c765fe1ec7faed0765c2": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633231",
+      "source": "이투데이",
+      "source_body_digest": "ef29a30c6993aa0ab7d6db1ffdba05a4e809834f9077f5a500380bbe29425e26",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a391c6d5c66f828f657974df7b97f7e5ae8f3056b56e133b532ad7fdfc321ab2",
+      "source_fact_keys": [
+        "source_fact:v1:0c0810f4261b3c89f89f57fe11771a317fef6229dbbef2dc4935a6bbb5c6c894",
+        "source_fact:v1:20f4f2ff50d8e220b54e7a5bae6396ff5fa3d158ce1887a5f6d8aa86c6c8b7fa",
+        "source_fact:v1:2baa3b00ac057672cc9247b92e25a703ea3d56813af333a1d47892f03bdbf4c0",
+        "source_fact:v1:303d7941513eada9b95f88e061c030807e05c625684954d34171ea0a64c82cfa",
+        "source_fact:v1:35ed873bb4690da676beb8c890aa1b2d759387751ae64b09c99b8a388ace8aba",
+        "source_fact:v1:7fbb7fbcb383dbd980063a51c6b684a02a974186a14ff67b597ee91388aafbc7",
+        "source_fact:v1:c5c17523c8c20822cf9f1ab2630d64f1bf4c54b2225dbcab96cfeb670b256099",
+        "source_fact:v1:e4a4a278d737aed96a346f21b532ea991494f6a38be9f36394812a7eeb3376b7"
+      ],
+      "source_published_kst": "2026-10-07T09:51+09:00",
+      "title": "삼미금속, 한화파워에 ‘가스터빈 블레이드’ 납품 개시…후속 수주 논의"
     },
     "source_fact:2f9670fa314084215e098d4b": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -101268,6 +101815,30 @@
       "source_published_kst": "2026-10-07T06:15+09:00",
       "title": "AI 에이전트 뜨자 CPU도 부활…AMD 시총 1조달러 돌파"
     },
+    "source_fact:3dc2e3a2e2dc7bac52510857": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633231",
+      "source": "이투데이",
+      "source_body_digest": "ef29a30c6993aa0ab7d6db1ffdba05a4e809834f9077f5a500380bbe29425e26",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a391c6d5c66f828f657974df7b97f7e5ae8f3056b56e133b532ad7fdfc321ab2",
+      "source_fact_keys": [
+        "source_fact:v1:0c0810f4261b3c89f89f57fe11771a317fef6229dbbef2dc4935a6bbb5c6c894",
+        "source_fact:v1:20f4f2ff50d8e220b54e7a5bae6396ff5fa3d158ce1887a5f6d8aa86c6c8b7fa",
+        "source_fact:v1:2baa3b00ac057672cc9247b92e25a703ea3d56813af333a1d47892f03bdbf4c0",
+        "source_fact:v1:303d7941513eada9b95f88e061c030807e05c625684954d34171ea0a64c82cfa",
+        "source_fact:v1:35ed873bb4690da676beb8c890aa1b2d759387751ae64b09c99b8a388ace8aba",
+        "source_fact:v1:7fbb7fbcb383dbd980063a51c6b684a02a974186a14ff67b597ee91388aafbc7",
+        "source_fact:v1:c5c17523c8c20822cf9f1ab2630d64f1bf4c54b2225dbcab96cfeb670b256099",
+        "source_fact:v1:e4a4a278d737aed96a346f21b532ea991494f6a38be9f36394812a7eeb3376b7"
+      ],
+      "source_published_kst": "2026-10-07T09:51+09:00",
+      "title": "삼미금속, 한화파워에 ‘가스터빈 블레이드’ 납품 개시…후속 수주 논의"
+    },
     "source_fact:3de24c0b41613838c8b3b8a4": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
       "lanes": {
@@ -101311,6 +101882,26 @@
       ],
       "source_published_kst": "2026-10-06T18:50+09:00",
       "title": "여야, 외통위 국정감사서 北지뢰 대응·포로 송환 등 설전(종합)"
+    },
+    "source_fact:3e0ee791d3e8fb5ad6892ccc": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etnews.com/20261007000053",
+      "source": "전자신문",
+      "source_body_digest": "9d7eec9558753e47db6707e4a2b896a389871aeeb6a2dc67d72d3fe0e68284a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:17aedd7233eacff5a8a04562887d20ecfbc7cfb62063317788c42e3b0e37d2e3",
+      "source_fact_keys": [
+        "source_fact:v1:22811750c26dfa98f6a85ff12e6be60cc6d1a3521dd71a62d6569d3228fe2336",
+        "source_fact:v1:2bd52ce764475455e0ce16bba02c6007d77a4772f7d05391dd05cd733e81f285",
+        "source_fact:v1:a1e8f3d98cb8d26872f34479e35bdd145fbf3fe8449816e11f9dbebdac55709d",
+        "source_fact:v1:a821c57833d63302c2a88049af24c7dadbae4b47a7f94af7cfc080f370b2f15f"
+      ],
+      "source_published_kst": "2026-10-07T09:31+09:00",
+      "title": "롯데바이오, '알보텍' 바이오시밀러 생산 수주…美 거점 앞세워 글로벌 공략"
     },
     "source_fact:3e11f48d56b390a31413a947": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
@@ -103195,6 +103786,25 @@
       "source_published_kst": "2026-10-07T08:37+09:00",
       "title": "LS에코에너지, AI데이터센터용 대용량 버스덕트에 80억원 투자 | 연합뉴스"
     },
+    "source_fact:4588d389457a209f60e5e5f3": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816765",
+      "source": "뉴시스",
+      "source_body_digest": "409aa845e8d3e02eec193bc62c9bf910510dc88055b4e92ae8d4f82d314e6a4a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99b068a8d90a4fe9205b0e47849ecc3d39d7ca15eb9dedd05abb83f4dab0e191",
+      "source_fact_keys": [
+        "source_fact:v1:0956c4ba2c31881b66f80435750e6e0faff9fad19747cbfbfa0ad4cc37f152d1",
+        "source_fact:v1:aac2588b64c2e45e665f4d744426862645fd2ad56756c6bbbca5795dbacaf65f",
+        "source_fact:v1:c04c7b846c682aa7af88e3e1699f803f3e2b232a97de424b2d674febbf9eef3c"
+      ],
+      "source_published_kst": "2026-10-07T09:28+09:00",
+      "title": "현대엔지니어링, 군산 이어 인천 데이터센터 수주…8700억 규모"
+    },
     "source_fact:45943a7b2560dd61c0b52981": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
       "lanes": {
@@ -104219,6 +104829,26 @@
       ],
       "source_published_kst": "2026-10-07T05:31+09:00",
       "title": "LG전자, AI 냉각사업 공략 가속…북미 대형 계약에 버지니아 공장 신설까지"
+    },
+    "source_fact:48e06cd6bea696fc13d36de7": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etnews.com/20261007000053",
+      "source": "전자신문",
+      "source_body_digest": "9d7eec9558753e47db6707e4a2b896a389871aeeb6a2dc67d72d3fe0e68284a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:17aedd7233eacff5a8a04562887d20ecfbc7cfb62063317788c42e3b0e37d2e3",
+      "source_fact_keys": [
+        "source_fact:v1:22811750c26dfa98f6a85ff12e6be60cc6d1a3521dd71a62d6569d3228fe2336",
+        "source_fact:v1:2bd52ce764475455e0ce16bba02c6007d77a4772f7d05391dd05cd733e81f285",
+        "source_fact:v1:a1e8f3d98cb8d26872f34479e35bdd145fbf3fe8449816e11f9dbebdac55709d",
+        "source_fact:v1:a821c57833d63302c2a88049af24c7dadbae4b47a7f94af7cfc080f370b2f15f"
+      ],
+      "source_published_kst": "2026-10-07T09:31+09:00",
+      "title": "롯데바이오, '알보텍' 바이오시밀러 생산 수주…美 거점 앞세워 글로벌 공략"
     },
     "source_fact:48ec99b50750b75e90b0040c": {
       "first_seen_kst": "2026-10-07T08:57:59+09:00",
@@ -110985,6 +111615,30 @@
       "source_published_kst": "2026-10-07T03:50+09:00",
       "title": "美국채 금리 급등하자…핌코 \"투자매력 매우 높아졌다\""
     },
+    "source_fact:5fd9f4315049ef8f56f06d7a": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633231",
+      "source": "이투데이",
+      "source_body_digest": "ef29a30c6993aa0ab7d6db1ffdba05a4e809834f9077f5a500380bbe29425e26",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a391c6d5c66f828f657974df7b97f7e5ae8f3056b56e133b532ad7fdfc321ab2",
+      "source_fact_keys": [
+        "source_fact:v1:0c0810f4261b3c89f89f57fe11771a317fef6229dbbef2dc4935a6bbb5c6c894",
+        "source_fact:v1:20f4f2ff50d8e220b54e7a5bae6396ff5fa3d158ce1887a5f6d8aa86c6c8b7fa",
+        "source_fact:v1:2baa3b00ac057672cc9247b92e25a703ea3d56813af333a1d47892f03bdbf4c0",
+        "source_fact:v1:303d7941513eada9b95f88e061c030807e05c625684954d34171ea0a64c82cfa",
+        "source_fact:v1:35ed873bb4690da676beb8c890aa1b2d759387751ae64b09c99b8a388ace8aba",
+        "source_fact:v1:7fbb7fbcb383dbd980063a51c6b684a02a974186a14ff67b597ee91388aafbc7",
+        "source_fact:v1:c5c17523c8c20822cf9f1ab2630d64f1bf4c54b2225dbcab96cfeb670b256099",
+        "source_fact:v1:e4a4a278d737aed96a346f21b532ea991494f6a38be9f36394812a7eeb3376b7"
+      ],
+      "source_published_kst": "2026-10-07T09:51+09:00",
+      "title": "삼미금속, 한화파워에 ‘가스터빈 블레이드’ 납품 개시…후속 수주 논의"
+    },
     "source_fact:5fda86c7624ee5c4c5cbe9fb": {
       "first_seen_kst": "2026-10-07T02:13:12+09:00",
       "lanes": {
@@ -114747,6 +115401,25 @@
       "source_published_kst": "2026-10-06T10:00+09:00",
       "title": "LG전자, '유럽 첫 상용 SDV' 르노그룹 신차에 통합 콕핏 솔루션 공급"
     },
+    "source_fact:6ec44c1593f6e2cb85492eee": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816765",
+      "source": "뉴시스",
+      "source_body_digest": "409aa845e8d3e02eec193bc62c9bf910510dc88055b4e92ae8d4f82d314e6a4a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99b068a8d90a4fe9205b0e47849ecc3d39d7ca15eb9dedd05abb83f4dab0e191",
+      "source_fact_keys": [
+        "source_fact:v1:0956c4ba2c31881b66f80435750e6e0faff9fad19747cbfbfa0ad4cc37f152d1",
+        "source_fact:v1:aac2588b64c2e45e665f4d744426862645fd2ad56756c6bbbca5795dbacaf65f",
+        "source_fact:v1:c04c7b846c682aa7af88e3e1699f803f3e2b232a97de424b2d674febbf9eef3c"
+      ],
+      "source_published_kst": "2026-10-07T09:28+09:00",
+      "title": "현대엔지니어링, 군산 이어 인천 데이터센터 수주…8700억 규모"
+    },
     "source_fact:6ef2f3b6f5deeab99d84e4f8": {
       "first_seen_kst": "2026-10-06T18:16:47+09:00",
       "lanes": {
@@ -114798,6 +115471,24 @@
       ],
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
+    },
+    "source_fact:6f1b5c458c1b1e6a389fcd86": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.hankyung.com/article/202610077601L",
+      "source": "한국경제",
+      "source_body_digest": "978ab17d8a2b8305dff06339caba6de2d284ce7608e8d0df3cf263e0f07c76d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22f1f7af4282f5d2f0a0b9696a118245aba7ea436a0d330a87e74b434c76c5b3",
+      "source_fact_keys": [
+        "source_fact:v1:80f05cc148398654804d79de18552ca0aaf273f3329b4eb615fb9d8ef3da5dc2",
+        "source_fact:v1:e3fd4d8ef619e191c846aa444dbe153275405a001a956ab4fd373f043902b80b"
+      ],
+      "source_published_kst": "2026-10-07T10:15+09:00",
+      "title": "윤성에프앤씨 수주공시 - 2차전지 믹싱시스템 482.3억원 (매출액대비 48.14 %)"
     },
     "source_fact:6f45ac469d760259154fe047": {
       "first_seen_kst": "2026-10-06T19:33:48+09:00",
@@ -115696,6 +116387,27 @@
       ],
       "source_published_kst": "2026-10-06T22:01+09:00",
       "title": "中화웨이, 美퀄컴과 5G·AI 등 '특허 상호사용' 계약 | 연합뉴스"
+    },
+    "source_fact:727ab50cd73fa00275c4dac6": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007055400063",
+      "source": "연합뉴스",
+      "source_body_digest": "8478062a2c203d5e464109923c6e23f961cadf371ef868baddb7fe4fb0ad22b0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c842e0dd3714433c9def86c506cae98bd4e167316f3419f87d4c7520dca7555d",
+      "source_fact_keys": [
+        "source_fact:v1:a4a756e4eb70d435327cc0e93dcd5a402e3f7359066bc4b8b878d3ddd9f22404",
+        "source_fact:v1:ab24f0d66ef49b5d0698d75c48dcc33c9c2bcb10fdf85348f235ee37e3de9d4c",
+        "source_fact:v1:c917b16511492dc30a930c02905b613fab3fd6f467117c5257e2a67ad88cfb33",
+        "source_fact:v1:db94ac7b3bb72af7d95c502e77eeaab8a4e11a824bdae0139b4cbdc996366e3d",
+        "source_fact:v1:f0768110cc63e4b9bff58e2f7b92660bd9e57d0d965c5a8ada88828e44d5b7bf"
+      ],
+      "source_published_kst": "2026-10-07T09:57+09:00",
+      "title": "세종 국가산단에 100㎿ 데이터센터…1조8천억원 투자 계획 | 연합뉴스"
     },
     "source_fact:72a7062bd98c025611188f54": {
       "first_seen_kst": "2026-10-06T18:16:47+09:00",
@@ -117000,6 +117712,25 @@
       ],
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
+    },
+    "source_fact:76bccb828ecc420f5bfea387": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816765",
+      "source": "뉴시스",
+      "source_body_digest": "409aa845e8d3e02eec193bc62c9bf910510dc88055b4e92ae8d4f82d314e6a4a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99b068a8d90a4fe9205b0e47849ecc3d39d7ca15eb9dedd05abb83f4dab0e191",
+      "source_fact_keys": [
+        "source_fact:v1:0956c4ba2c31881b66f80435750e6e0faff9fad19747cbfbfa0ad4cc37f152d1",
+        "source_fact:v1:aac2588b64c2e45e665f4d744426862645fd2ad56756c6bbbca5795dbacaf65f",
+        "source_fact:v1:c04c7b846c682aa7af88e3e1699f803f3e2b232a97de424b2d674febbf9eef3c"
+      ],
+      "source_published_kst": "2026-10-07T09:28+09:00",
+      "title": "현대엔지니어링, 군산 이어 인천 데이터센터 수주…8700억 규모"
     },
     "source_fact:76cd047b00a04ccd1b3faeb3": {
       "first_seen_kst": "2026-10-06T19:33:48+09:00",
@@ -120188,6 +120919,24 @@
       "source_published_kst": "2026-10-07T07:55+09:00",
       "title": "삼성전기, 3분기 ‘깜짝 실적’ 전망…목표가 160만→260만원"
     },
+    "source_fact:81df6570f674c6201f6d2e5a": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.hankyung.com/article/202610077601L",
+      "source": "한국경제",
+      "source_body_digest": "978ab17d8a2b8305dff06339caba6de2d284ce7608e8d0df3cf263e0f07c76d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22f1f7af4282f5d2f0a0b9696a118245aba7ea436a0d330a87e74b434c76c5b3",
+      "source_fact_keys": [
+        "source_fact:v1:80f05cc148398654804d79de18552ca0aaf273f3329b4eb615fb9d8ef3da5dc2",
+        "source_fact:v1:e3fd4d8ef619e191c846aa444dbe153275405a001a956ab4fd373f043902b80b"
+      ],
+      "source_published_kst": "2026-10-07T10:15+09:00",
+      "title": "윤성에프앤씨 수주공시 - 2차전지 믹싱시스템 482.3억원 (매출액대비 48.14 %)"
+    },
     "source_fact:81f2568c854462b48c31cc43": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -121405,6 +122154,30 @@
       "source_published_kst": "2026-10-06T16:45+09:00",
       "title": "알테오젠, 2000억 투자 유치…연구부터 판매까지 한 회사로"
     },
+    "source_fact:8687c0a3b5568626d87d1ee7": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633209",
+      "source": "이투데이",
+      "source_body_digest": "754db964e280e8cd5ad8c2904236c3dfade8b62fc7ad1ea564765873d7e21f1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:28e994b34144b67b4a9e155e98132f244011e103cd5c90ab3cd679d80a4f434b",
+      "source_fact_keys": [
+        "source_fact:v1:05dab1f6d25071f041d7becb0ce334d5a4a09e2877c13f5d90a95ed16208e6b2",
+        "source_fact:v1:55ead78b59d53c3fafb54baaafa6dfa2c52bd37eb52cbdbacc41c4204629d7fa",
+        "source_fact:v1:7b55ed326a981161724b0a31d60d64f12972e8d4f3b6f4ef4fceb9610bd028c0",
+        "source_fact:v1:9bd3f073d3817093ce096f176b4131056e0423dde443954174a59664ae21ac0d",
+        "source_fact:v1:a96c907b429cef3d7a968d6026b01eb89dd7f328f566cd1d793879fe19563491",
+        "source_fact:v1:b02650f40e0929b4c47c54ef910f6c4733a8d23894f3c99a04448e8a6036841a",
+        "source_fact:v1:d37765cf9e30af1147c1e3aa794eb091d58920bdb13106780a3617fd16d95f89",
+        "source_fact:v1:fa0736b0a7749b017967a59c4288b1d1e55083badd4193e56c59bff8762620c9"
+      ],
+      "source_published_kst": "2026-10-07T09:35+09:00",
+      "title": "KT클라우드, ‘청라 AI 데이터센터’ 구축 참여…50MW급 규모로 수도권 확장"
+    },
     "source_fact:868cc9b13672339281a056bb": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -121931,6 +122704,30 @@
       "source_published_kst": "2026-10-07T07:44+09:00",
       "title": "“효성중공업, 매출 이연으로 단기 실적 변동성 확대”"
     },
+    "source_fact:88dffc9c73d5741eac3e5766": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633209",
+      "source": "이투데이",
+      "source_body_digest": "754db964e280e8cd5ad8c2904236c3dfade8b62fc7ad1ea564765873d7e21f1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:28e994b34144b67b4a9e155e98132f244011e103cd5c90ab3cd679d80a4f434b",
+      "source_fact_keys": [
+        "source_fact:v1:05dab1f6d25071f041d7becb0ce334d5a4a09e2877c13f5d90a95ed16208e6b2",
+        "source_fact:v1:55ead78b59d53c3fafb54baaafa6dfa2c52bd37eb52cbdbacc41c4204629d7fa",
+        "source_fact:v1:7b55ed326a981161724b0a31d60d64f12972e8d4f3b6f4ef4fceb9610bd028c0",
+        "source_fact:v1:9bd3f073d3817093ce096f176b4131056e0423dde443954174a59664ae21ac0d",
+        "source_fact:v1:a96c907b429cef3d7a968d6026b01eb89dd7f328f566cd1d793879fe19563491",
+        "source_fact:v1:b02650f40e0929b4c47c54ef910f6c4733a8d23894f3c99a04448e8a6036841a",
+        "source_fact:v1:d37765cf9e30af1147c1e3aa794eb091d58920bdb13106780a3617fd16d95f89",
+        "source_fact:v1:fa0736b0a7749b017967a59c4288b1d1e55083badd4193e56c59bff8762620c9"
+      ],
+      "source_published_kst": "2026-10-07T09:35+09:00",
+      "title": "KT클라우드, ‘청라 AI 데이터센터’ 구축 참여…50MW급 규모로 수도권 확장"
+    },
     "source_fact:891d579bdf5de04ae9466369": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
       "lanes": {
@@ -122182,6 +122979,26 @@
       ],
       "source_published_kst": "2026-10-06T16:53+09:00",
       "title": "신세계그룹, 워너브라더스 인수에 10억달러…\"유통·엔터 결합\"(종합) | 연합뉴스"
+    },
+    "source_fact:8a3facdde4313c59bb77dfe1": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.hankyung.com/article/202610077425Y",
+      "source": "한국경제",
+      "source_body_digest": "7bea919f5c69346f33b1c7d877e080f91f6d882a511549ea7578f8e8b684498d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6bf8dd2fcad192ec22ad4d0398bb2749c83de6444e985babfb18989e3e854d9c",
+      "source_fact_keys": [
+        "source_fact:v1:161d4157e80388c985e271ced553dfc4bf9b7600390ac1a6c0a02c85d51b5fa7",
+        "source_fact:v1:bb9ff406e4a7af77786af50dbecef460f3501ba405311a282eb52aec30cee753",
+        "source_fact:v1:f0493e0baaf363a512ea4f8bb590c5980f7a1e67fe56b3f0afcfdbc4b7c003e6",
+        "source_fact:v1:f5adc4affb9378b814b8573d6af88b4d21d56bd51583741c2bd21305b6c7f4c2"
+      ],
+      "source_published_kst": "2026-10-07T09:56+09:00",
+      "title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표"
     },
     "source_fact:8a6d7931a9d3e9a3ff494d96": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -122734,6 +123551,30 @@
       ],
       "source_published_kst": "2026-10-07T09:06+09:00",
       "title": "LS일렉트릭, 대만 최대 석화그룹과 합작법인…전력사업 수주 확대"
+    },
+    "source_fact:8c349a0468729701a345be64": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633209",
+      "source": "이투데이",
+      "source_body_digest": "754db964e280e8cd5ad8c2904236c3dfade8b62fc7ad1ea564765873d7e21f1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:28e994b34144b67b4a9e155e98132f244011e103cd5c90ab3cd679d80a4f434b",
+      "source_fact_keys": [
+        "source_fact:v1:05dab1f6d25071f041d7becb0ce334d5a4a09e2877c13f5d90a95ed16208e6b2",
+        "source_fact:v1:55ead78b59d53c3fafb54baaafa6dfa2c52bd37eb52cbdbacc41c4204629d7fa",
+        "source_fact:v1:7b55ed326a981161724b0a31d60d64f12972e8d4f3b6f4ef4fceb9610bd028c0",
+        "source_fact:v1:9bd3f073d3817093ce096f176b4131056e0423dde443954174a59664ae21ac0d",
+        "source_fact:v1:a96c907b429cef3d7a968d6026b01eb89dd7f328f566cd1d793879fe19563491",
+        "source_fact:v1:b02650f40e0929b4c47c54ef910f6c4733a8d23894f3c99a04448e8a6036841a",
+        "source_fact:v1:d37765cf9e30af1147c1e3aa794eb091d58920bdb13106780a3617fd16d95f89",
+        "source_fact:v1:fa0736b0a7749b017967a59c4288b1d1e55083badd4193e56c59bff8762620c9"
+      ],
+      "source_published_kst": "2026-10-07T09:35+09:00",
+      "title": "KT클라우드, ‘청라 AI 데이터센터’ 구축 참여…50MW급 규모로 수도권 확장"
     },
     "source_fact:8c4a807a2cd0aaa84aa8b518": {
       "first_seen_kst": "2026-10-06T20:54:05+09:00",
@@ -123310,6 +124151,26 @@
       ],
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
+    },
+    "source_fact:8e32f6c3cb3de4bfec94b7a1": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etnews.com/20261007000053",
+      "source": "전자신문",
+      "source_body_digest": "9d7eec9558753e47db6707e4a2b896a389871aeeb6a2dc67d72d3fe0e68284a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:17aedd7233eacff5a8a04562887d20ecfbc7cfb62063317788c42e3b0e37d2e3",
+      "source_fact_keys": [
+        "source_fact:v1:22811750c26dfa98f6a85ff12e6be60cc6d1a3521dd71a62d6569d3228fe2336",
+        "source_fact:v1:2bd52ce764475455e0ce16bba02c6007d77a4772f7d05391dd05cd733e81f285",
+        "source_fact:v1:a1e8f3d98cb8d26872f34479e35bdd145fbf3fe8449816e11f9dbebdac55709d",
+        "source_fact:v1:a821c57833d63302c2a88049af24c7dadbae4b47a7f94af7cfc080f370b2f15f"
+      ],
+      "source_published_kst": "2026-10-07T09:31+09:00",
+      "title": "롯데바이오, '알보텍' 바이오시밀러 생산 수주…美 거점 앞세워 글로벌 공략"
     },
     "source_fact:8e3876cfda8cc3634b0055c3": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
@@ -128337,6 +129198,27 @@
       "source_published_kst": "2026-10-06T19:14+09:00",
       "title": "이형일, 서울 집값 86주 상승에 \"무겁게 느껴…주택공급 확대 집중\""
     },
+    "source_fact:a086bc2f80beb1710084c710": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007055400063",
+      "source": "연합뉴스",
+      "source_body_digest": "8478062a2c203d5e464109923c6e23f961cadf371ef868baddb7fe4fb0ad22b0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c842e0dd3714433c9def86c506cae98bd4e167316f3419f87d4c7520dca7555d",
+      "source_fact_keys": [
+        "source_fact:v1:a4a756e4eb70d435327cc0e93dcd5a402e3f7359066bc4b8b878d3ddd9f22404",
+        "source_fact:v1:ab24f0d66ef49b5d0698d75c48dcc33c9c2bcb10fdf85348f235ee37e3de9d4c",
+        "source_fact:v1:c917b16511492dc30a930c02905b613fab3fd6f467117c5257e2a67ad88cfb33",
+        "source_fact:v1:db94ac7b3bb72af7d95c502e77eeaab8a4e11a824bdae0139b4cbdc996366e3d",
+        "source_fact:v1:f0768110cc63e4b9bff58e2f7b92660bd9e57d0d965c5a8ada88828e44d5b7bf"
+      ],
+      "source_published_kst": "2026-10-07T09:57+09:00",
+      "title": "세종 국가산단에 100㎿ 데이터센터…1조8천억원 투자 계획 | 연합뉴스"
+    },
     "source_fact:a0887924bfe47bf90d6fb37a": {
       "first_seen_kst": "2026-10-06T00:57:01+09:00",
       "lanes": {
@@ -129016,6 +129898,26 @@
       "source_published_kst": "2026-10-07T07:49+09:00",
       "title": "\"삼성전자 HBM 가격 2배 뛴다…D램 3사 중 가장 높은 가격 전망\""
     },
+    "source_fact:a2e2b836fd4df239fd468762": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.hankyung.com/article/202610077425Y",
+      "source": "한국경제",
+      "source_body_digest": "7bea919f5c69346f33b1c7d877e080f91f6d882a511549ea7578f8e8b684498d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6bf8dd2fcad192ec22ad4d0398bb2749c83de6444e985babfb18989e3e854d9c",
+      "source_fact_keys": [
+        "source_fact:v1:161d4157e80388c985e271ced553dfc4bf9b7600390ac1a6c0a02c85d51b5fa7",
+        "source_fact:v1:bb9ff406e4a7af77786af50dbecef460f3501ba405311a282eb52aec30cee753",
+        "source_fact:v1:f0493e0baaf363a512ea4f8bb590c5980f7a1e67fe56b3f0afcfdbc4b7c003e6",
+        "source_fact:v1:f5adc4affb9378b814b8573d6af88b4d21d56bd51583741c2bd21305b6c7f4c2"
+      ],
+      "source_published_kst": "2026-10-07T09:56+09:00",
+      "title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표"
+    },
     "source_fact:a2fc4dcc5792360af44e9d07": {
       "first_seen_kst": "2026-10-06T02:31:07+09:00",
       "lanes": {
@@ -129356,6 +130258,26 @@
       ],
       "source_published_kst": "2026-10-06T17:52+09:00",
       "title": "코스닥, 석달 만에 900 뚫었다…소부장·바이오·배터리주 강세"
+    },
+    "source_fact:a425a6cf9df061fb1d6a4f74": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etnews.com/20261007000053",
+      "source": "전자신문",
+      "source_body_digest": "9d7eec9558753e47db6707e4a2b896a389871aeeb6a2dc67d72d3fe0e68284a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:17aedd7233eacff5a8a04562887d20ecfbc7cfb62063317788c42e3b0e37d2e3",
+      "source_fact_keys": [
+        "source_fact:v1:22811750c26dfa98f6a85ff12e6be60cc6d1a3521dd71a62d6569d3228fe2336",
+        "source_fact:v1:2bd52ce764475455e0ce16bba02c6007d77a4772f7d05391dd05cd733e81f285",
+        "source_fact:v1:a1e8f3d98cb8d26872f34479e35bdd145fbf3fe8449816e11f9dbebdac55709d",
+        "source_fact:v1:a821c57833d63302c2a88049af24c7dadbae4b47a7f94af7cfc080f370b2f15f"
+      ],
+      "source_published_kst": "2026-10-07T09:31+09:00",
+      "title": "롯데바이오, '알보텍' 바이오시밀러 생산 수주…美 거점 앞세워 글로벌 공략"
     },
     "source_fact:a425e8a8661f3da8624b38c7": {
       "first_seen_kst": "2026-10-07T07:01:10+09:00",
@@ -133006,6 +133928,30 @@
       "source_published_kst": "2026-10-06T08:15+09:00",
       "title": "[오늘의 투자전략] 코스피, 금리ㆍ삼성전자 실적 주목⋯“반도체 이익 상향 재개 여부 관건”"
     },
+    "source_fact:b22e9584c4853866b17f73a0": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633231",
+      "source": "이투데이",
+      "source_body_digest": "ef29a30c6993aa0ab7d6db1ffdba05a4e809834f9077f5a500380bbe29425e26",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a391c6d5c66f828f657974df7b97f7e5ae8f3056b56e133b532ad7fdfc321ab2",
+      "source_fact_keys": [
+        "source_fact:v1:0c0810f4261b3c89f89f57fe11771a317fef6229dbbef2dc4935a6bbb5c6c894",
+        "source_fact:v1:20f4f2ff50d8e220b54e7a5bae6396ff5fa3d158ce1887a5f6d8aa86c6c8b7fa",
+        "source_fact:v1:2baa3b00ac057672cc9247b92e25a703ea3d56813af333a1d47892f03bdbf4c0",
+        "source_fact:v1:303d7941513eada9b95f88e061c030807e05c625684954d34171ea0a64c82cfa",
+        "source_fact:v1:35ed873bb4690da676beb8c890aa1b2d759387751ae64b09c99b8a388ace8aba",
+        "source_fact:v1:7fbb7fbcb383dbd980063a51c6b684a02a974186a14ff67b597ee91388aafbc7",
+        "source_fact:v1:c5c17523c8c20822cf9f1ab2630d64f1bf4c54b2225dbcab96cfeb670b256099",
+        "source_fact:v1:e4a4a278d737aed96a346f21b532ea991494f6a38be9f36394812a7eeb3376b7"
+      ],
+      "source_published_kst": "2026-10-07T09:51+09:00",
+      "title": "삼미금속, 한화파워에 ‘가스터빈 블레이드’ 납품 개시…후속 수주 논의"
+    },
     "source_fact:b2347c09adca76104cbadc07": {
       "first_seen_kst": "2026-10-05T19:37:20+09:00",
       "lanes": {
@@ -136563,6 +137509,27 @@
       "source_published_kst": "2026-10-07T08:42+09:00",
       "title": "셰브론, 헤스 미드스트림 지분 넘기고 바켄 비용 50% 절감"
     },
+    "source_fact:bfed98c3a189df2620e9d339": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007055400063",
+      "source": "연합뉴스",
+      "source_body_digest": "8478062a2c203d5e464109923c6e23f961cadf371ef868baddb7fe4fb0ad22b0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c842e0dd3714433c9def86c506cae98bd4e167316f3419f87d4c7520dca7555d",
+      "source_fact_keys": [
+        "source_fact:v1:a4a756e4eb70d435327cc0e93dcd5a402e3f7359066bc4b8b878d3ddd9f22404",
+        "source_fact:v1:ab24f0d66ef49b5d0698d75c48dcc33c9c2bcb10fdf85348f235ee37e3de9d4c",
+        "source_fact:v1:c917b16511492dc30a930c02905b613fab3fd6f467117c5257e2a67ad88cfb33",
+        "source_fact:v1:db94ac7b3bb72af7d95c502e77eeaab8a4e11a824bdae0139b4cbdc996366e3d",
+        "source_fact:v1:f0768110cc63e4b9bff58e2f7b92660bd9e57d0d965c5a8ada88828e44d5b7bf"
+      ],
+      "source_published_kst": "2026-10-07T09:57+09:00",
+      "title": "세종 국가산단에 100㎿ 데이터센터…1조8천억원 투자 계획 | 연합뉴스"
+    },
     "source_fact:bffca875101bbb30435a743b": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
       "lanes": {
@@ -136708,6 +137675,30 @@
       ],
       "source_published_kst": "2026-10-07T07:55+09:00",
       "title": "삼성전기, 3분기 ‘깜짝 실적’ 전망…목표가 160만→260만원"
+    },
+    "source_fact:c0767f639422346390ebcc94": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633231",
+      "source": "이투데이",
+      "source_body_digest": "ef29a30c6993aa0ab7d6db1ffdba05a4e809834f9077f5a500380bbe29425e26",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a391c6d5c66f828f657974df7b97f7e5ae8f3056b56e133b532ad7fdfc321ab2",
+      "source_fact_keys": [
+        "source_fact:v1:0c0810f4261b3c89f89f57fe11771a317fef6229dbbef2dc4935a6bbb5c6c894",
+        "source_fact:v1:20f4f2ff50d8e220b54e7a5bae6396ff5fa3d158ce1887a5f6d8aa86c6c8b7fa",
+        "source_fact:v1:2baa3b00ac057672cc9247b92e25a703ea3d56813af333a1d47892f03bdbf4c0",
+        "source_fact:v1:303d7941513eada9b95f88e061c030807e05c625684954d34171ea0a64c82cfa",
+        "source_fact:v1:35ed873bb4690da676beb8c890aa1b2d759387751ae64b09c99b8a388ace8aba",
+        "source_fact:v1:7fbb7fbcb383dbd980063a51c6b684a02a974186a14ff67b597ee91388aafbc7",
+        "source_fact:v1:c5c17523c8c20822cf9f1ab2630d64f1bf4c54b2225dbcab96cfeb670b256099",
+        "source_fact:v1:e4a4a278d737aed96a346f21b532ea991494f6a38be9f36394812a7eeb3376b7"
+      ],
+      "source_published_kst": "2026-10-07T09:51+09:00",
+      "title": "삼미금속, 한화파워에 ‘가스터빈 블레이드’ 납품 개시…후속 수주 논의"
     },
     "source_fact:c08201de2a1e763edbeb1894": {
       "first_seen_kst": "2026-10-06T15:14:29+09:00",
@@ -138382,6 +139373,30 @@
       "source_published_kst": "2026-10-06T23:38+09:00",
       "title": "8월 독일 산업생산 10.6% 급감…\"대형수주 기저효과\""
     },
+    "source_fact:c6968e08e61ca30c976ffcd2": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633231",
+      "source": "이투데이",
+      "source_body_digest": "ef29a30c6993aa0ab7d6db1ffdba05a4e809834f9077f5a500380bbe29425e26",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a391c6d5c66f828f657974df7b97f7e5ae8f3056b56e133b532ad7fdfc321ab2",
+      "source_fact_keys": [
+        "source_fact:v1:0c0810f4261b3c89f89f57fe11771a317fef6229dbbef2dc4935a6bbb5c6c894",
+        "source_fact:v1:20f4f2ff50d8e220b54e7a5bae6396ff5fa3d158ce1887a5f6d8aa86c6c8b7fa",
+        "source_fact:v1:2baa3b00ac057672cc9247b92e25a703ea3d56813af333a1d47892f03bdbf4c0",
+        "source_fact:v1:303d7941513eada9b95f88e061c030807e05c625684954d34171ea0a64c82cfa",
+        "source_fact:v1:35ed873bb4690da676beb8c890aa1b2d759387751ae64b09c99b8a388ace8aba",
+        "source_fact:v1:7fbb7fbcb383dbd980063a51c6b684a02a974186a14ff67b597ee91388aafbc7",
+        "source_fact:v1:c5c17523c8c20822cf9f1ab2630d64f1bf4c54b2225dbcab96cfeb670b256099",
+        "source_fact:v1:e4a4a278d737aed96a346f21b532ea991494f6a38be9f36394812a7eeb3376b7"
+      ],
+      "source_published_kst": "2026-10-07T09:51+09:00",
+      "title": "삼미금속, 한화파워에 ‘가스터빈 블레이드’ 납품 개시…후속 수주 논의"
+    },
     "source_fact:c697cedce66945bccb505c91": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
       "lanes": {
@@ -139483,6 +140498,30 @@
       ],
       "source_published_kst": "2026-10-07T06:01+09:00",
       "title": "글로벌 공급기지 된 K-제약사들…잇단 수출계약"
+    },
+    "source_fact:caec129344b932cd5b75f792": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633209",
+      "source": "이투데이",
+      "source_body_digest": "754db964e280e8cd5ad8c2904236c3dfade8b62fc7ad1ea564765873d7e21f1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:28e994b34144b67b4a9e155e98132f244011e103cd5c90ab3cd679d80a4f434b",
+      "source_fact_keys": [
+        "source_fact:v1:05dab1f6d25071f041d7becb0ce334d5a4a09e2877c13f5d90a95ed16208e6b2",
+        "source_fact:v1:55ead78b59d53c3fafb54baaafa6dfa2c52bd37eb52cbdbacc41c4204629d7fa",
+        "source_fact:v1:7b55ed326a981161724b0a31d60d64f12972e8d4f3b6f4ef4fceb9610bd028c0",
+        "source_fact:v1:9bd3f073d3817093ce096f176b4131056e0423dde443954174a59664ae21ac0d",
+        "source_fact:v1:a96c907b429cef3d7a968d6026b01eb89dd7f328f566cd1d793879fe19563491",
+        "source_fact:v1:b02650f40e0929b4c47c54ef910f6c4733a8d23894f3c99a04448e8a6036841a",
+        "source_fact:v1:d37765cf9e30af1147c1e3aa794eb091d58920bdb13106780a3617fd16d95f89",
+        "source_fact:v1:fa0736b0a7749b017967a59c4288b1d1e55083badd4193e56c59bff8762620c9"
+      ],
+      "source_published_kst": "2026-10-07T09:35+09:00",
+      "title": "KT클라우드, ‘청라 AI 데이터센터’ 구축 참여…50MW급 규모로 수도권 확장"
     },
     "source_fact:cb0e0170c4dd1e430e858b49": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -144671,6 +145710,27 @@
       "source_published_kst": "2026-10-06T09:10+09:00",
       "title": "강남구, 급식 조리로봇 고도화…\"뜨거운 튀김기름 자동배출\" | 연합뉴스"
     },
+    "source_fact:dcd98012fd681999eaffb236": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007055400063",
+      "source": "연합뉴스",
+      "source_body_digest": "8478062a2c203d5e464109923c6e23f961cadf371ef868baddb7fe4fb0ad22b0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c842e0dd3714433c9def86c506cae98bd4e167316f3419f87d4c7520dca7555d",
+      "source_fact_keys": [
+        "source_fact:v1:a4a756e4eb70d435327cc0e93dcd5a402e3f7359066bc4b8b878d3ddd9f22404",
+        "source_fact:v1:ab24f0d66ef49b5d0698d75c48dcc33c9c2bcb10fdf85348f235ee37e3de9d4c",
+        "source_fact:v1:c917b16511492dc30a930c02905b613fab3fd6f467117c5257e2a67ad88cfb33",
+        "source_fact:v1:db94ac7b3bb72af7d95c502e77eeaab8a4e11a824bdae0139b4cbdc996366e3d",
+        "source_fact:v1:f0768110cc63e4b9bff58e2f7b92660bd9e57d0d965c5a8ada88828e44d5b7bf"
+      ],
+      "source_published_kst": "2026-10-07T09:57+09:00",
+      "title": "세종 국가산단에 100㎿ 데이터센터…1조8천억원 투자 계획 | 연합뉴스"
+    },
     "source_fact:dcd9d9aea7b0f9083d57b5c3": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
       "lanes": {
@@ -144926,6 +145986,30 @@
       ],
       "source_published_kst": "2026-10-06T14:13+09:00",
       "title": "中 장악 태양광 시장에 美 '탠덤 패널' 승부수 | 연합뉴스"
+    },
+    "source_fact:ddd0bf7536e72928970e0e9a": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633231",
+      "source": "이투데이",
+      "source_body_digest": "ef29a30c6993aa0ab7d6db1ffdba05a4e809834f9077f5a500380bbe29425e26",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a391c6d5c66f828f657974df7b97f7e5ae8f3056b56e133b532ad7fdfc321ab2",
+      "source_fact_keys": [
+        "source_fact:v1:0c0810f4261b3c89f89f57fe11771a317fef6229dbbef2dc4935a6bbb5c6c894",
+        "source_fact:v1:20f4f2ff50d8e220b54e7a5bae6396ff5fa3d158ce1887a5f6d8aa86c6c8b7fa",
+        "source_fact:v1:2baa3b00ac057672cc9247b92e25a703ea3d56813af333a1d47892f03bdbf4c0",
+        "source_fact:v1:303d7941513eada9b95f88e061c030807e05c625684954d34171ea0a64c82cfa",
+        "source_fact:v1:35ed873bb4690da676beb8c890aa1b2d759387751ae64b09c99b8a388ace8aba",
+        "source_fact:v1:7fbb7fbcb383dbd980063a51c6b684a02a974186a14ff67b597ee91388aafbc7",
+        "source_fact:v1:c5c17523c8c20822cf9f1ab2630d64f1bf4c54b2225dbcab96cfeb670b256099",
+        "source_fact:v1:e4a4a278d737aed96a346f21b532ea991494f6a38be9f36394812a7eeb3376b7"
+      ],
+      "source_published_kst": "2026-10-07T09:51+09:00",
+      "title": "삼미금속, 한화파워에 ‘가스터빈 블레이드’ 납품 개시…후속 수주 논의"
     },
     "source_fact:dddbf8f84ea97bbfcafce4fb": {
       "first_seen_kst": "2026-10-06T02:31:07+09:00",
@@ -146609,6 +147693,30 @@
       "source_published_kst": "2026-10-07T03:11+09:00",
       "title": "\"지금 폰 바꿀까?\" AI 서버가 D램 싹쓸이…스마트폰값 더 비싸진다"
     },
+    "source_fact:e2a5bacc3584438fa2b74cb3": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633209",
+      "source": "이투데이",
+      "source_body_digest": "754db964e280e8cd5ad8c2904236c3dfade8b62fc7ad1ea564765873d7e21f1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:28e994b34144b67b4a9e155e98132f244011e103cd5c90ab3cd679d80a4f434b",
+      "source_fact_keys": [
+        "source_fact:v1:05dab1f6d25071f041d7becb0ce334d5a4a09e2877c13f5d90a95ed16208e6b2",
+        "source_fact:v1:55ead78b59d53c3fafb54baaafa6dfa2c52bd37eb52cbdbacc41c4204629d7fa",
+        "source_fact:v1:7b55ed326a981161724b0a31d60d64f12972e8d4f3b6f4ef4fceb9610bd028c0",
+        "source_fact:v1:9bd3f073d3817093ce096f176b4131056e0423dde443954174a59664ae21ac0d",
+        "source_fact:v1:a96c907b429cef3d7a968d6026b01eb89dd7f328f566cd1d793879fe19563491",
+        "source_fact:v1:b02650f40e0929b4c47c54ef910f6c4733a8d23894f3c99a04448e8a6036841a",
+        "source_fact:v1:d37765cf9e30af1147c1e3aa794eb091d58920bdb13106780a3617fd16d95f89",
+        "source_fact:v1:fa0736b0a7749b017967a59c4288b1d1e55083badd4193e56c59bff8762620c9"
+      ],
+      "source_published_kst": "2026-10-07T09:35+09:00",
+      "title": "KT클라우드, ‘청라 AI 데이터센터’ 구축 참여…50MW급 규모로 수도권 확장"
+    },
     "source_fact:e2c43dfc710e918dd5a32d70": {
       "first_seen_kst": "2026-10-05T22:57:49+09:00",
       "lanes": {
@@ -146927,6 +148035,27 @@
       ],
       "source_published_kst": "2026-10-06T14:46+09:00",
       "title": "두산에너빌, 스페이스XAI에 가스터빈 1호 출하…첫 해외 수출 | 연합뉴스"
+    },
+    "source_fact:e38e219037e4ee8193c0352c": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007055400063",
+      "source": "연합뉴스",
+      "source_body_digest": "8478062a2c203d5e464109923c6e23f961cadf371ef868baddb7fe4fb0ad22b0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c842e0dd3714433c9def86c506cae98bd4e167316f3419f87d4c7520dca7555d",
+      "source_fact_keys": [
+        "source_fact:v1:a4a756e4eb70d435327cc0e93dcd5a402e3f7359066bc4b8b878d3ddd9f22404",
+        "source_fact:v1:ab24f0d66ef49b5d0698d75c48dcc33c9c2bcb10fdf85348f235ee37e3de9d4c",
+        "source_fact:v1:c917b16511492dc30a930c02905b613fab3fd6f467117c5257e2a67ad88cfb33",
+        "source_fact:v1:db94ac7b3bb72af7d95c502e77eeaab8a4e11a824bdae0139b4cbdc996366e3d",
+        "source_fact:v1:f0768110cc63e4b9bff58e2f7b92660bd9e57d0d965c5a8ada88828e44d5b7bf"
+      ],
+      "source_published_kst": "2026-10-07T09:57+09:00",
+      "title": "세종 국가산단에 100㎿ 데이터센터…1조8천억원 투자 계획 | 연합뉴스"
     },
     "source_fact:e38f755382dc56c656140915": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
@@ -151825,6 +152954,30 @@
       "source_published_kst": "2026-10-06T13:52+09:00",
       "title": "거래소 “코스닥 체질 개선 노력⋯법원 제동 건 ‘시총 미달 상폐’ 후속 조치 예정”"
     },
+    "source_fact:f62fe409f57cf1d10aa61a50": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633231",
+      "source": "이투데이",
+      "source_body_digest": "ef29a30c6993aa0ab7d6db1ffdba05a4e809834f9077f5a500380bbe29425e26",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a391c6d5c66f828f657974df7b97f7e5ae8f3056b56e133b532ad7fdfc321ab2",
+      "source_fact_keys": [
+        "source_fact:v1:0c0810f4261b3c89f89f57fe11771a317fef6229dbbef2dc4935a6bbb5c6c894",
+        "source_fact:v1:20f4f2ff50d8e220b54e7a5bae6396ff5fa3d158ce1887a5f6d8aa86c6c8b7fa",
+        "source_fact:v1:2baa3b00ac057672cc9247b92e25a703ea3d56813af333a1d47892f03bdbf4c0",
+        "source_fact:v1:303d7941513eada9b95f88e061c030807e05c625684954d34171ea0a64c82cfa",
+        "source_fact:v1:35ed873bb4690da676beb8c890aa1b2d759387751ae64b09c99b8a388ace8aba",
+        "source_fact:v1:7fbb7fbcb383dbd980063a51c6b684a02a974186a14ff67b597ee91388aafbc7",
+        "source_fact:v1:c5c17523c8c20822cf9f1ab2630d64f1bf4c54b2225dbcab96cfeb670b256099",
+        "source_fact:v1:e4a4a278d737aed96a346f21b532ea991494f6a38be9f36394812a7eeb3376b7"
+      ],
+      "source_published_kst": "2026-10-07T09:51+09:00",
+      "title": "삼미금속, 한화파워에 ‘가스터빈 블레이드’ 납품 개시…후속 수주 논의"
+    },
     "source_fact:f630ba43378433d3bee8bd3c": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
@@ -152755,6 +153908,26 @@
       ],
       "source_published_kst": "2026-10-06T23:54+09:00",
       "title": "AI 전력난에 기존 원전 영끌…구글, 전력 3.6GW 확보"
+    },
+    "source_fact:fad2954b58d19384ce643787": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.hankyung.com/article/202610077425Y",
+      "source": "한국경제",
+      "source_body_digest": "7bea919f5c69346f33b1c7d877e080f91f6d882a511549ea7578f8e8b684498d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6bf8dd2fcad192ec22ad4d0398bb2749c83de6444e985babfb18989e3e854d9c",
+      "source_fact_keys": [
+        "source_fact:v1:161d4157e80388c985e271ced553dfc4bf9b7600390ac1a6c0a02c85d51b5fa7",
+        "source_fact:v1:bb9ff406e4a7af77786af50dbecef460f3501ba405311a282eb52aec30cee753",
+        "source_fact:v1:f0493e0baaf363a512ea4f8bb590c5980f7a1e67fe56b3f0afcfdbc4b7c003e6",
+        "source_fact:v1:f5adc4affb9378b814b8573d6af88b4d21d56bd51583741c2bd21305b6c7f4c2"
+      ],
+      "source_published_kst": "2026-10-07T09:56+09:00",
+      "title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표"
     },
     "source_fact:fae50f7dd324a419496b2527": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
@@ -162388,6 +163561,26 @@
       "source_published_kst": "2026-10-05T13:22+09:00",
       "title": "다음주 어닝시즌 개막, AI주 강세 확산될까…재료 공백 속 국채 금리 주목"
     },
+    "title:4111fc6d3624d9f2ab9db358": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etnews.com/20261007000053",
+      "source": "전자신문",
+      "source_body_digest": "9d7eec9558753e47db6707e4a2b896a389871aeeb6a2dc67d72d3fe0e68284a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:17aedd7233eacff5a8a04562887d20ecfbc7cfb62063317788c42e3b0e37d2e3",
+      "source_fact_keys": [
+        "source_fact:v1:22811750c26dfa98f6a85ff12e6be60cc6d1a3521dd71a62d6569d3228fe2336",
+        "source_fact:v1:2bd52ce764475455e0ce16bba02c6007d77a4772f7d05391dd05cd733e81f285",
+        "source_fact:v1:a1e8f3d98cb8d26872f34479e35bdd145fbf3fe8449816e11f9dbebdac55709d",
+        "source_fact:v1:a821c57833d63302c2a88049af24c7dadbae4b47a7f94af7cfc080f370b2f15f"
+      ],
+      "source_published_kst": "2026-10-07T09:31+09:00",
+      "title": "롯데바이오, '알보텍' 바이오시밀러 생산 수주…美 거점 앞세워 글로벌 공략"
+    },
     "title:411b7ed7f2612015686fe48f": {
       "first_seen_kst": "2026-10-02T16:26:14+09:00",
       "lanes": {
@@ -165369,6 +166562,25 @@
       "link": "https://www.newsis.com/view/NISX20260918_0003796280",
       "source": "뉴시스",
       "title": "\"집값 올라 '풀대출' 받아야 하는데\"…금리 8% 눈앞에 발동동[긴축이 온다①]"
+    },
+    "title:58afbfb6f88d532cf17f5ee7": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816765",
+      "source": "뉴시스",
+      "source_body_digest": "409aa845e8d3e02eec193bc62c9bf910510dc88055b4e92ae8d4f82d314e6a4a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99b068a8d90a4fe9205b0e47849ecc3d39d7ca15eb9dedd05abb83f4dab0e191",
+      "source_fact_keys": [
+        "source_fact:v1:0956c4ba2c31881b66f80435750e6e0faff9fad19747cbfbfa0ad4cc37f152d1",
+        "source_fact:v1:aac2588b64c2e45e665f4d744426862645fd2ad56756c6bbbca5795dbacaf65f",
+        "source_fact:v1:c04c7b846c682aa7af88e3e1699f803f3e2b232a97de424b2d674febbf9eef3c"
+      ],
+      "source_published_kst": "2026-10-07T09:28+09:00",
+      "title": "현대엔지니어링, 군산 이어 인천 데이터센터 수주…8700억 규모"
     },
     "title:58ec5ba67aa9e7d7a1cc63d4": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
@@ -172749,6 +173961,27 @@
       "source_published_kst": "2026-10-06T11:00+09:00",
       "title": "규제합리화추진단 \"디스플레이 규제 개선…수입 간소화·AI 보안가이드 마련\""
     },
+    "title:93eef4629a663be0ce5fe41c": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007055400063",
+      "source": "연합뉴스",
+      "source_body_digest": "8478062a2c203d5e464109923c6e23f961cadf371ef868baddb7fe4fb0ad22b0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c842e0dd3714433c9def86c506cae98bd4e167316f3419f87d4c7520dca7555d",
+      "source_fact_keys": [
+        "source_fact:v1:a4a756e4eb70d435327cc0e93dcd5a402e3f7359066bc4b8b878d3ddd9f22404",
+        "source_fact:v1:ab24f0d66ef49b5d0698d75c48dcc33c9c2bcb10fdf85348f235ee37e3de9d4c",
+        "source_fact:v1:c917b16511492dc30a930c02905b613fab3fd6f467117c5257e2a67ad88cfb33",
+        "source_fact:v1:db94ac7b3bb72af7d95c502e77eeaab8a4e11a824bdae0139b4cbdc996366e3d",
+        "source_fact:v1:f0768110cc63e4b9bff58e2f7b92660bd9e57d0d965c5a8ada88828e44d5b7bf"
+      ],
+      "source_published_kst": "2026-10-07T09:57+09:00",
+      "title": "세종 국가산단에 100㎿ 데이터센터…1조8천억원 투자 계획 | 연합뉴스"
+    },
     "title:93f3d9e538ce32378b80275c": {
       "first_seen_kst": "2026-10-06T20:54:05+09:00",
       "lanes": {
@@ -174124,6 +175357,30 @@
       ],
       "source_published_kst": "2026-10-06T23:38+09:00",
       "title": "8월 독일 산업생산 10.6% 급감…\"대형수주 기저효과\""
+    },
+    "title:a16078cf44dc24bf792d75f3": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633209",
+      "source": "이투데이",
+      "source_body_digest": "754db964e280e8cd5ad8c2904236c3dfade8b62fc7ad1ea564765873d7e21f1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:28e994b34144b67b4a9e155e98132f244011e103cd5c90ab3cd679d80a4f434b",
+      "source_fact_keys": [
+        "source_fact:v1:05dab1f6d25071f041d7becb0ce334d5a4a09e2877c13f5d90a95ed16208e6b2",
+        "source_fact:v1:55ead78b59d53c3fafb54baaafa6dfa2c52bd37eb52cbdbacc41c4204629d7fa",
+        "source_fact:v1:7b55ed326a981161724b0a31d60d64f12972e8d4f3b6f4ef4fceb9610bd028c0",
+        "source_fact:v1:9bd3f073d3817093ce096f176b4131056e0423dde443954174a59664ae21ac0d",
+        "source_fact:v1:a96c907b429cef3d7a968d6026b01eb89dd7f328f566cd1d793879fe19563491",
+        "source_fact:v1:b02650f40e0929b4c47c54ef910f6c4733a8d23894f3c99a04448e8a6036841a",
+        "source_fact:v1:d37765cf9e30af1147c1e3aa794eb091d58920bdb13106780a3617fd16d95f89",
+        "source_fact:v1:fa0736b0a7749b017967a59c4288b1d1e55083badd4193e56c59bff8762620c9"
+      ],
+      "source_published_kst": "2026-10-07T09:35+09:00",
+      "title": "KT클라우드, ‘청라 AI 데이터센터’ 구축 참여…50MW급 규모로 수도권 확장"
     },
     "title:a1a0359eafaa61f23484f55e": {
       "first_seen_kst": "2026-09-19T00:36:11+09:00",
@@ -178968,6 +180225,26 @@
       "source_published_kst": "2026-10-04T02:21+09:00",
       "title": "美, 기존 합의 토대로 핵 협상 조기 추진…이란 \"약속 이행 먼저\""
     },
+    "title:ca795b956cc9baeeff75e0ef": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.hankyung.com/article/202610077425Y",
+      "source": "한국경제",
+      "source_body_digest": "7bea919f5c69346f33b1c7d877e080f91f6d882a511549ea7578f8e8b684498d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6bf8dd2fcad192ec22ad4d0398bb2749c83de6444e985babfb18989e3e854d9c",
+      "source_fact_keys": [
+        "source_fact:v1:161d4157e80388c985e271ced553dfc4bf9b7600390ac1a6c0a02c85d51b5fa7",
+        "source_fact:v1:bb9ff406e4a7af77786af50dbecef460f3501ba405311a282eb52aec30cee753",
+        "source_fact:v1:f0493e0baaf363a512ea4f8bb590c5980f7a1e67fe56b3f0afcfdbc4b7c003e6",
+        "source_fact:v1:f5adc4affb9378b814b8573d6af88b4d21d56bd51583741c2bd21305b6c7f4c2"
+      ],
+      "source_published_kst": "2026-10-07T09:56+09:00",
+      "title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표"
+    },
     "title:caa3643882e5e0ac8836639b": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -179576,6 +180853,30 @@
       "link": "https://www.yna.co.kr/view/AKR20260918130700054",
       "source": "연합뉴스",
       "title": "전남광주시·장성군, 앰코 폐수처리시설 확충 협력 | 연합뉴스"
+    },
+    "title:cf875a3ca4aae768df242f49": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633231",
+      "source": "이투데이",
+      "source_body_digest": "ef29a30c6993aa0ab7d6db1ffdba05a4e809834f9077f5a500380bbe29425e26",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a391c6d5c66f828f657974df7b97f7e5ae8f3056b56e133b532ad7fdfc321ab2",
+      "source_fact_keys": [
+        "source_fact:v1:0c0810f4261b3c89f89f57fe11771a317fef6229dbbef2dc4935a6bbb5c6c894",
+        "source_fact:v1:20f4f2ff50d8e220b54e7a5bae6396ff5fa3d158ce1887a5f6d8aa86c6c8b7fa",
+        "source_fact:v1:2baa3b00ac057672cc9247b92e25a703ea3d56813af333a1d47892f03bdbf4c0",
+        "source_fact:v1:303d7941513eada9b95f88e061c030807e05c625684954d34171ea0a64c82cfa",
+        "source_fact:v1:35ed873bb4690da676beb8c890aa1b2d759387751ae64b09c99b8a388ace8aba",
+        "source_fact:v1:7fbb7fbcb383dbd980063a51c6b684a02a974186a14ff67b597ee91388aafbc7",
+        "source_fact:v1:c5c17523c8c20822cf9f1ab2630d64f1bf4c54b2225dbcab96cfeb670b256099",
+        "source_fact:v1:e4a4a278d737aed96a346f21b532ea991494f6a38be9f36394812a7eeb3376b7"
+      ],
+      "source_published_kst": "2026-10-07T09:51+09:00",
+      "title": "삼미금속, 한화파워에 ‘가스터빈 블레이드’ 납품 개시…후속 수주 논의"
     },
     "title:cfa6187fb153b6adf7ae6402": {
       "first_seen_kst": "2026-09-19T11:34:06+09:00",
@@ -183540,6 +184841,24 @@
       "source": "이데일리",
       "title": "고려아연, 기후산업국제박람회 참여…트로이카 성과 선봬"
     },
+    "title:ec14d00d5717c912fc3bb2ad": {
+      "first_seen_kst": "2026-10-07T10:49:23+09:00",
+      "lanes": {
+        "live": "2026-10-07T10:49:23+09:00"
+      },
+      "last_seen_kst": "2026-10-07T10:49:23+09:00",
+      "link": "https://www.hankyung.com/article/202610077601L",
+      "source": "한국경제",
+      "source_body_digest": "978ab17d8a2b8305dff06339caba6de2d284ce7608e8d0df3cf263e0f07c76d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22f1f7af4282f5d2f0a0b9696a118245aba7ea436a0d330a87e74b434c76c5b3",
+      "source_fact_keys": [
+        "source_fact:v1:80f05cc148398654804d79de18552ca0aaf273f3329b4eb615fb9d8ef3da5dc2",
+        "source_fact:v1:e3fd4d8ef619e191c846aa444dbe153275405a001a956ab4fd373f043902b80b"
+      ],
+      "source_published_kst": "2026-10-07T10:15+09:00",
+      "title": "윤성에프앤씨 수주공시 - 2차전지 믹싱시스템 482.3억원 (매출액대비 48.14 %)"
+    },
     "title:ec222577933fee7bbefb0c94": {
       "first_seen_kst": "2026-10-05T12:09:30+09:00",
       "lanes": {
@@ -185574,5 +186893,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-07T10:23:42+09:00"
+  "updated_at_kst": "2026-10-07T10:49:23+09:00"
 }
