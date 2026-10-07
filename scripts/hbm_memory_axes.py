@@ -1229,7 +1229,7 @@ def parse_glass_substrate_records(item, body):
                 value.update({
                     'customer': 'Samsung Electronics',
                     'product': 'glass_interposer',
-                    'sample_delivered': bool(re.search(r'(?:샘플)[^.]{0,40}?(?:납품|공급|전달)|(?:sample)[^.]{0,50}?(?:delivered|supplied|shipped)', text, re.I)),
+                    'sample_delivered': bool(re.search(r'(?:샘플)[^.]{0,40}?(?:납품|공급|전달)|(?:sample)[^.]{0,50}?(?:delivered|supplied|shipped)|(?:delivered|supplied|shipped)[^.]{0,60}?(?:sample|samples)', text, re.I)),
                     'evaluation_ongoing': bool(re.search(r'(?:평가|검증)[^.]{0,40}?(?:이어|진행|계속)|(?:evaluation|validation)[^.]{0,50}?(?:ongoing|continues?|underway)', text, re.I)),
                     'issue_response_ongoing': bool(re.search(r'(?:이슈|문제)[^.]{0,50}?(?:대응|보완)|(?:issue|problem)[^.]{0,50}?(?:address|remediat|respond|fix)', text, re.I)),
                     'sample_process': 'existing_method' if re.search(r'(?:기존\s*방식|existing\s+(?:method|process))', text, re.I) else None,

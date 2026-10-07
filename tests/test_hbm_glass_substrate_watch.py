@@ -301,7 +301,7 @@ class GlassSubstrateWatchTests(unittest.TestCase):
             "coverage": {},
         }
         state = w.update_state(old_state, [], __import__("datetime").datetime(2026,10,6,19,0,0), seeds)
-        self.assertEqual(state["glass_substrate_track_version"], 4)
+        self.assertEqual(state["glass_substrate_track_version"], 5)
         self.assertEqual(state["latest"]["glass_hvm_stage|jntc|current"]["value"]["paid_sample_customer_count"], 7)
         self.assertEqual(state["latest"]["glass_process_cycle_time|jntc|current"]["value"]["process_name"], "copper_fill_metallization")
         self.assertEqual(state["latest"]["glass_capex|jntc|gimcheon"]["value"]["investment_krw"], 347000000000)
