@@ -81,7 +81,7 @@ class HBMExportSourceGuardTests(unittest.TestCase):
         ]
         out = w.build_official_source_health_alert(self.now, "202609", errors)
         self.assertIn("원자료 조회 장애", out)
-        self.assertIn("과거 월 수치", out)
+        self.assertIn("이전 월 수치", out)
         self.assertIn("대체 사용하지 않습니다", out)
         self.assertIn("연결시간초과", out)
 
