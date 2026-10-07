@@ -8,6 +8,9 @@ on:
       - ".github/workflows/space-launch-bottleneck-telegram-watch.yml"
       - "scripts/space_launch_bottleneck_watch.py"
       - "scripts/space_launch_telegram_send.py"
+      - "scripts/merge_space_launch_state.py"
+      - "scripts/validate_space_launch_korean.py"
+      - ".github/prompts/space-launch-korean.prompt.yml"
   schedule:
     - cron: "6,21,36,51 * * * *"
   workflow_dispatch:
@@ -20,6 +23,7 @@ on:
 
 permissions:
   contents: write
+  models: read
 
 concurrency:
   group: space-launch-bottleneck-telegram-watch
