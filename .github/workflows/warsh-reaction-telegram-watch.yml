@@ -43,6 +43,7 @@ on:
       - 'scripts/warsh_policy_path_watch.py'
       - 'scripts/warsh_policy_path_watch_v2.py'
       - 'scripts/warsh_policy_path_watch_v3.py'
+      - 'scripts/warsh_policy_path_watch_v4.py'
       - 'scripts/warsh_balance_sheet_watch.py'
       - 'scripts/warsh_balance_sheet_watch_v2.py'
       - 'scripts/warsh_sep_path_watch.py'
@@ -70,7 +71,7 @@ concurrency:
 jobs:
   monitor:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -139,6 +140,7 @@ jobs:
           PY
           python -m py_compile \
             scripts/warsh_policy_path_watch_v3.py \
+            scripts/warsh_policy_path_watch_v4.py \
             scripts/warsh_fomc_event_watch_v4.py \
             scripts/warsh_fomc_minutes_watch.py \
             scripts/warsh_press_conference_watch_v3.py
@@ -147,11 +149,25 @@ jobs:
           run_watch() {
             WATCH="$1"
             echo "::group::${WATCH}"
-            python "$WATCH" || {
-              RC=$?
-              echo "::error::${WATCH} failed with exit code ${RC}; remaining Warsh watchers will continue."
+            if ! python -m py_compile "$WATCH"; then
+              echo "::error::${WATCH} compile failed; remaining Warsh watchers will continue."
               MACRO_RC=1
-            }
+              echo "::endgroup::"
+              return 0
+            fi
+            OK=0
+            for ATTEMPT in 1 2; do
+              if timeout 150 python "$WATCH"; then
+                OK=1
+                break
+              fi
+              echo "::warning::${WATCH} attempt ${ATTEMPT}/2 failed; retrying independently."
+              sleep $((ATTEMPT * 3))
+            done
+            if [ "$OK" -ne 1 ]; then
+              echo "::error::${WATCH} failed after 2 attempts; remaining Warsh watchers will continue."
+              MACRO_RC=1
+            fi
             echo "::endgroup::"
           }
 
@@ -167,7 +183,7 @@ jobs:
           run_watch scripts/warsh_energy_shock_watch.py
           run_watch scripts/warsh_balance_sheet_watch_v2.py
           run_watch scripts/warsh_sep_path_watch_v2.py
-          run_watch scripts/warsh_policy_path_watch_v3.py
+          run_watch scripts/warsh_policy_path_watch_v4.py
           run_watch scripts/warsh_ib_consensus_watch.py
           run_watch scripts/warsh_post_fomc_ib_reaction_watch.py
           run_watch scripts/warsh_fomc_event_watch_v4.py
