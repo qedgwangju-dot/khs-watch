@@ -399,6 +399,26 @@ def seen_entry_has_lane(entry: object, lane: str) -> bool:
     return True
 
 
+def recent_seen_event_entries(seen: dict, now, lane: str) -> list[dict]:
+    cutoff = now - dt.timedelta(hours=36)
+    unique: dict[tuple[str, str, str], dict] = {}
+    for entry in seen.values():
+        if not isinstance(entry, dict) or (lane != "live" and not seen_entry_has_lane(entry, lane)):
+            continue
+        if not entry.get("source_body_digest"):
+            continue
+        last_seen = parse_seen_time(entry.get("last_seen_kst"))
+        if not last_seen or last_seen < cutoff or last_seen > now + dt.timedelta(minutes=5):
+            continue
+        title = str(entry.get("source_title") or "").strip()
+        fact = str(entry.get("telegram_core_fact") or "").strip()
+        if not title or not fact:
+            continue
+        key = (base.norm(title), base.norm(fact), str(entry.get("source_published_kst") or ""))
+        unique.setdefault(key, entry)
+    return sorted(unique.values(), key=lambda row: str(row.get("last_seen_kst") or ""), reverse=True)[:250]
+
+
 def filter_previously_seen_alerts(
     alerts: list[dict],
     now,
@@ -415,14 +435,18 @@ def filter_previously_seen_alerts(
         identity = market_materiality.source_event_identity(alert)
         fact_identity = market_materiality.verified_source_fact_identity(canonical)
         body_digest = market_materiality.verified_source_body_digest(canonical)
-        fact_keys = [f"source_fact:{digest_seen(key)}" for key in
-                     market_materiality.verified_source_fact_keys(canonical)]
+        verified_fact_keys = market_materiality.verified_source_fact_keys(canonical)
+        fact_keys = [f"source_fact:{digest_seen(key)}" for key in verified_fact_keys]
+        candidate_core = normalized_telegram_core(canonical)
         # A sourced change of amount/stage may keep the same title or URL.
         # Its structured identity must outrank older coarse title/link keys.
-        match_keys = ([f"event:{digest_seen(identity)}"] if identity else
-                      [f"fact:{digest_seen(fact_identity)}"] if fact_identity else keys)
-        match_keys += [key for key in keys if key.startswith("core:")]
-        matching_entries = [seen[key] for key in match_keys if key in seen]
+        structured_match_keys = ([f"event:{digest_seen(identity)}"] if identity else
+                                 [f"fact:{digest_seen(fact_identity)}"] if fact_identity else [])
+        core_match_keys = [key for key in keys if key.startswith("core:")]
+        matching_entries = [seen[key] for key in structured_match_keys if key in seen]
+        if not structured_match_keys:
+            matching_entries = [seen[key] for key in keys if key in seen]
+        core_matching_entries = [seen[key] for key in core_match_keys if key in seen]
         coarse_entries = [seen[key] for key in keys if key in seen
                           and key.startswith(("link:", "title:", "original:"))
                           and isinstance(seen[key], dict)]
@@ -445,9 +469,62 @@ def filter_previously_seen_alerts(
                                      == canonical_article_url(str(canonical.get("link") or "")))
                                 and not (entry.get("source_event_identity")
                                          or market_materiality.source_event_identity({"source_title": entry.get("title", "")}))]
+        structured_revision = False
+        if not matching_entries and coarse_entries:
+            candidate_fact_keys = set(verified_fact_keys)
+            for entry in coarse_entries:
+                entry_event_identity = str(entry.get("source_event_identity") or "")
+                entry_fact_identity = str(entry.get("source_fact_identity") or "")
+                entry_fact_keys = set(entry.get("source_fact_keys") or [])
+                entry_core = base.norm(str(entry.get("telegram_core_fact") or ""))
+                core_reflects_revision = bool(candidate_core and entry_core and candidate_core != entry_core)
+                if identity and entry_event_identity:
+                    if identity != entry_event_identity and core_reflects_revision:
+                        structured_revision = True
+                        break
+                    # A stable event identity is stronger than incidental
+                    # extraction differences between two versions.
+                    continue
+                if (fact_identity and entry_fact_identity and fact_identity != entry_fact_identity
+                        and core_reflects_revision):
+                    structured_revision = True
+                    break
+                if (candidate_fact_keys and entry_fact_keys and candidate_fact_keys > entry_fact_keys
+                        and core_reflects_revision):
+                    structured_revision = True
+                    break
+        if not matching_entries and not structured_revision:
+            # A verified body revision outranks a stale generated summary.
+            # Otherwise an identical core remains a useful duplicate receipt
+            # for publisher rewrites that lack a common URL or event identity.
+            matching_entries = core_matching_entries
+        fuzzy_duplicate = False
+        if (not matching_entries and not structured_revision
+                and body_digest and alert.get("body_verified")):
+            candidate_title = str(
+                canonical.get("source_title") or canonical.get("original_news") or canonical.get("news") or ""
+            )
+            candidate_fact = str(canonical.get("telegram_core_fact") or "")
+            for entry in recent_seen_event_entries(seen, now, lane):
+                if not market_materiality.same_headline_event(
+                    candidate_title,
+                    str(entry.get("source_title") or ""),
+                    candidate_fact,
+                    str(entry.get("telegram_core_fact") or ""),
+                ):
+                    continue
+                entry_event_identity = str(entry.get("source_event_identity") or "")
+                if identity and entry_event_identity and identity != entry_event_identity:
+                    # Similar headlines may describe a later deadline, stage,
+                    # counterparty, quantity, or other source-backed revision.
+                    if candidate_core != base.norm(str(entry.get("telegram_core_fact") or "")):
+                        continue
+                fuzzy_duplicate = True
+                break
         already_seen = bool(matching_entries) if lane == "live" else any(
             seen_entry_has_lane(entry, lane) for entry in matching_entries
         )
+        already_seen = already_seen or fuzzy_duplicate
         if already_seen:
             skipped.append(alert)
             continue
@@ -503,6 +580,8 @@ def record_seen_alerts(alerts: list[dict], now) -> None:
                 "last_seen_kst": seen_at,
                 "lanes": lanes,
                 "title": alert.get("news") or alert.get("original_news") or "",
+                "source_title": alert.get("source_title") or alert.get("original_news") or alert.get("news") or "",
+                "telegram_core_fact": alert.get("telegram_core_fact") or "",
                 "source": alert.get("publisher") or alert.get("source") or "",
                 "link": alert.get("link") or "",
                 "source_event_identity": market_materiality.source_event_identity(alert),
