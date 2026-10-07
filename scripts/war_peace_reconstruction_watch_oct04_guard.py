@@ -330,6 +330,29 @@ def _israel_oct7_abroad_warning(row):
     return israel and anniversary and warning and not actual
 
 
+def _non_concrete_endgame_rhetoric(row):
+    """종전이 임박했다는 전망·평가를 실제 휴전/협상 진전과 분리한다."""
+    t = _text(row).lower()
+    theater = any(x in t for x in (
+        "ukraine", "russia", "iran", "israel", "gaza", "yemen",
+        "우크라이나", "러시아", "이란", "이스라엘", "가자", "예멘",
+    ))
+    rhetoric = any(x in t for x in (
+        "nearing its end", "nearly over", "almost over", "peace is getting closer",
+        "peace getting closer", "end is near", "could end soon", "will end soon",
+        "believes the conflict", "thinks the conflict", "expects the war",
+        "분쟁이 거의 끝", "전쟁이 거의 끝", "종전이 가까워", "평화가 가까워",
+        "곧 끝날 것", "끝이 가까워",
+    ))
+    concrete = any(x in t for x in (
+        "ceasefire agreement signed", "peace agreement signed", "signed ceasefire",
+        "talks resumed", "negotiations resumed", "meeting date set", "summit date set",
+        "휴전 합의 체결", "평화협정 체결", "협상 재개", "회담 재개",
+        "회담 날짜 확정", "정상회담 날짜 확정",
+    ))
+    return theater and rhetoric and not concrete
+
+
 def _vance_iran_enrichment_condition(row):
     src = " ".join([str(row.get("source", "")), str(row.get("link", "")), str(row.get("resolved_url", ""))]).lower()
     t = _text(row).lower()
@@ -533,6 +556,8 @@ def marks(row):
         out.append("이스라엘10월7일해외공격위험경고")
     if _vance_iran_enrichment_condition(row):
         out.append("미국부통령이란농축종전조건")
+    if _non_concrete_endgame_rhetoric(row):
+        out.append("종전전망성발언")
     if _saudi_riyadh_intercept_vs_claim(row):
         out.append("사우디리야드후티미사일요격확인")
     if _saudi_houthi_airport_refinery_cluster(row):
@@ -575,6 +600,8 @@ def korean_title(ms):
         return "이스라엘 국가안보회의, 10월 7일 3주년 전후 해외의 이스라엘인·유대인 대상 공격 위험 증가 경고 — 실제 공격 발생 아님"
     if "미국부통령이란농축종전조건" in ms:
         return "미국 부통령 JD Vance, 이란이 전쟁 종식을 원하면 우라늄 농축 능력을 의미 있게 감축해야 한다고 제시 — 미국 측 협상 조건, 합의 진전 아님"
+    if "종전전망성발언" in ms:
+        return "전쟁·분쟁 종식이 가까워졌다는 전망성 발언 — 구체적 휴전 합의·협상 재개·일정 확정 전에는 실제 진전으로 보지 않음"
     if "사우디리야드후티미사일요격확인" in ms:
         return "사우디 주도 연합군, 리야드 북쪽 상공서 후티 탄도미사일 요격 확인 — 후티의 리야드 공항 등 타격 주장은 사우디 확인 전"
     if "예멘아덴공항후티공격클러스터" in ms:
@@ -615,6 +642,8 @@ def signals(ms):
         out.append("🟡 이스라엘 국가안보회의가 10월 7일 3주년 전후 해외 공격 위험 증가를 경고 — 실제 공격 발생과는 구분")
     if "미국부통령이란농축종전조건" in ms:
         out.append("🟡 미국 부통령 JD Vance가 이란의 우라늄 농축 능력 감축을 전쟁 종식 조건으로 제시 — 미국 측 협상 조건이며 합의 진전 자체는 아님")
+    if "종전전망성발언" in ms:
+        out.append("🟡 종전이 가까워졌다는 평가·전망 — 구체적 합의문, 협상 재개, 회담 일정이 확인되기 전에는 실제 종전 진전으로 승격하지 않음")
     if "사우디리야드후티미사일요격확인" in ms:
         out.append("🔴 사우디 주도 연합군이 리야드 북쪽에서 후티 탄도미사일 요격을 확인 — 후티의 킹칼리드 국제공항 등 타격 주장은 사우디 확인 전")
     if "예멘아덴공항후티공격클러스터" in ms:
@@ -636,7 +665,7 @@ def signals(ms):
         "미국부통령이란농축종전조건", "사우디리야드후티미사일요격확인",
         "이란남부폭발원인미확정", "사우디동서송유관회복",
         "목하탈환공세", "러시아국방부타격주장", "TASS러시아최대드론공격집계",
-        "예멘아덴공항후티공격클러스터",
+        "예멘아덴공항후티공격클러스터", "종전전망성발언",
     }
     if set(ms) & custom:
         return out
@@ -648,10 +677,12 @@ prev._signals = signals
 
 def score_item(row, now):
     # 송출 직전 품질게이트(3시간)와 후보 선별 기준을 동일하게 맞춘다.
-    # 3시간을 넘긴 기사를 후보로 뽑았다가 매 실행마다 전체 작업을 실패시키는 경로를 차단한다.
+    # 공개시각을 확인하지 못한 기사는 "신규/속보"로 승격하지 않는다.
     age = watch.age_minutes(row, now)
     fresh_limit = int(getattr(prev, "FRESH_NEWS_MAX_MINUTES", 3 * 60))
-    if age is not None and age > fresh_limit:
+    if age is None:
+        return 0, []
+    if age > fresh_limit:
         return 0, []
     if (
         _trump_la_sd_hypothetical(row)
@@ -667,6 +698,7 @@ def score_item(row, now):
         "러정유시설보복공격확대예고", "리야드아람코화재원인미확정",
         "러시아종전조건입장표명", "루코일종전협상연계상업거래",
         "이스라엘10월7일해외공격위험경고", "이란남부폭발원인미확정",
+        "종전전망성발언",
     }
     if ms & yellow:
         tags = [t for t in tags if t not in ("확전", "휴전·평화", "재건", "종전·협상")]
@@ -694,6 +726,12 @@ def score_item(row, now):
         row["signals_ko"] = []
         tags = [t for t in tags if t not in ("확전", "휴전·평화", "재건", "종전·협상")]
         tags += ["미국·이란", "협상조건", "합의진전아님", "JD Vance"]
+        score = max(score, 98)
+    if "종전전망성발언" in ms:
+        row["title_ko"] = korean_title(ms)
+        row["signals_ko"] = []
+        tags = [t for t in tags if t not in ("확전", "휴전·평화", "재건", "종전·협상")]
+        tags += ["전망성발언", "합의진전아님"]
         score = max(score, 98)
     if "사우디리야드후티미사일요격확인" in ms:
         row["title_ko"] = korean_title(ms)
@@ -773,6 +811,8 @@ def _stable_source_url(row):
 
 
 def item_id(row):
+    if _non_concrete_endgame_rhetoric(row):
+        return hashlib.sha256(("event|endgame-rhetoric|" + _published_day(row)).encode()).hexdigest()[:20]
     if _aden_airport_attack_cluster(row):
         return hashlib.sha256(("event|yemen-houthi|aden-airport-attack|" + _published_day(row)).encode()).hexdigest()[:20]
     if _vance_iran_enrichment_condition(row):
@@ -840,6 +880,8 @@ def topic_label(row):
         return "이스라엘 · 10월 7일 해외 공격 위험 경고"
     if "미국부통령이란농축종전조건" in ms:
         return "미국·이란 · 종전 협상 조건"
+    if "종전전망성발언" in ms:
+        return "전쟁·외교 · 종전 전망성 발언"
     if "사우디리야드후티미사일요격확인" in ms:
         return "사우디·후티 · 리야드 미사일 요격"
     if "예멘아덴공항후티공격클러스터" in ms:
@@ -875,6 +917,8 @@ def final_color(row):
     if "예멘아덴공항후티공격클러스터" in ms:
         return "red"
     if "미국부통령이란농축종전조건" in ms:
+        return "yellow"
+    if "종전전망성발언" in ms:
         return "yellow"
     if ms & {
         "러정유시설보복공격확대예고", "리야드아람코화재원인미확정",
@@ -1081,6 +1125,8 @@ def verify_alert(test_mode=False):
         issues.append("과거 러시아 연료위기·한국 수출 배경기사를 신규 확전으로 표시")
     if "드론이 불가리아에서 침몰" in text:
         issues.append("Reuters 불가리아 흑해 선박 드론 공격 제목을 문법 오역")
+    if "공개시각 확인 필요" in text:
+        issues.append("공개시각을 확인하지 못한 기사를 신규·속보 알림으로 송출")
     stale_ages = [int(x) for x in re.findall(r"(\d{3,})분 전", text)]
     if any(x > int(getattr(prev, "FRESH_NEWS_MAX_MINUTES", 3 * 60)) for x in stale_ages):
         issues.append("3시간을 초과한 오래된 기사가 신규·후속 알림으로 송출됨")
