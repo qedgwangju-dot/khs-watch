@@ -32,6 +32,8 @@ RAY_GOOGLE_QUERY = '"Ray Therapeutics" (RTx-015 OR RTx-021 OR optogenetic) (FDA 
 GENSIGHT_NEWS = "https://www.gensight-biologics.com/subject/gs030/"
 RESTORE_VISION_NEWS = "https://restore-vis.com/en/news/2026/"
 AUGELUX_NEWS = "https://www.augeluxtherapeutics.com/en/news/"
+MAPLIGHT_NEWS = "https://ir.maplightrx.com/news-events/news-releases"
+MAPLIGHT_NOBEL = "https://ir.maplightrx.com/news-releases/news-release-details/maplight-therapeutics-celebrates-co-founder-dr-karl-deisseroth"
 JRCT_RV001 = "https://jrct.mhlw.go.jp/en-latest-detail/jRCT2033240611"
 
 TRIALS = {
@@ -51,6 +53,7 @@ COMPANY_SOURCES = [
     ("GenSight Biologics", GENSIGHT_NEWS, ("gs030", "optogen")),
     ("Restore Vision", RESTORE_VISION_NEWS, ("rv-001", "optogen", "chimeric rhodopsin")),
     ("Augelux Therapeutics", AUGELUX_NEWS, ("zm-02", "optogen", "moon", "prism")),
+    ("MapLight Therapeutics", MAPLIGHT_NEWS, ("ml-007c-ma", "ml-004", "ml-055", "zephyr", "iris", "vista")),
 ]
 
 ACTION_TERMS = (
@@ -62,6 +65,7 @@ ACTION_TERMS = (
     "first patient", "first-in-human", "interim", "52-week", "52 week", "ind clearance", "ind cleared",
     "orphan drug", "grant", "cgmp", "commercial supply", "priority review", "late-stage", "late stage",
     "advisory committee", "adcom", "clinical hold", "hold lifted", "serious adverse event", "sae",
+    "fast track", "end-of-phase 2", "end of phase 2", "eop2", "registrational",
     "dose-limiting toxicity", "dlt", "inspection", "pre-approval inspection", "cmc", "validation",
 )
 
@@ -132,6 +136,10 @@ def save_json(path: pathlib.Path, obj: dict) -> None:
 
 def classify_press(title: str) -> tuple[str, str]:
     low = title.lower()
+    if "end-of-phase 2" in low or "end of phase 2" in low or "eop2" in low:
+        return "FDA 임상2상 종료 미팅", "FDA와 후기임상 설계·허가 경로를 조율하는 임상2상 종료 미팅 단계 변화"
+    if "fast track" in low:
+        return "FDA Fast Track", "FDA 신속개발·심사 지원 지정으로 규제 시간표가 구체화"
     if "clinical hold" in low:
         return "임상 보류", "규제기관 임상 보류로 개발 일정·안전성 위험이 확대"
     if "hold lifted" in low:
@@ -179,6 +187,26 @@ def classify_press(title: str) -> tuple[str, str]:
     return "광유전학 임상", "광유전학 임상·규제 단계 변화"
 
 
+def program_label(company: str, low_title: str) -> str:
+    if company == "MapLight Therapeutics":
+        if "ml-007c-ma" in low_title or "zephyr" in low_title or "vista" in low_title:
+            return "ML-007C-MA · 광유전학 기반 약물발굴(간접)"
+        if "ml-004" in low_title or "iris" in low_title:
+            return "ML-004 · 광유전학 기반 약물발굴(간접)"
+        if "ml-055" in low_title:
+            return "ML-055 · 광유전학 기반 약물발굴(간접)"
+        return "회로지도 기반 약물발굴 · 광유전학 간접 상용화"
+    if company == "Ray Therapeutics":
+        return "RTx-015/RTx-021"
+    if "mogenry" in low_title or "mco-010" in low_title:
+        return "MOGENRY/MCO-010"
+    if "rtx-015" in low_title or "rtx-021" in low_title:
+        return "RTx-015/RTx-021"
+    if "gs030" in low_title:
+        return "GS030"
+    return "광유전학"
+
+
 def meaningful_rss_links(company: str, feed_url: str, program_terms: tuple[str, ...]) -> list[dict]:
     xml = fetch_text(feed_url)
     root = ET.fromstring(xml)
@@ -202,7 +230,7 @@ def meaningful_rss_links(company: str, feed_url: str, program_terms: tuple[str, 
         out.append({
             "key": k,
             "company": company,
-            "program": "RTx-015/RTx-021" if company == "Ray Therapeutics" else "광유전학",
+            "program": program_label(company, low),
             "stage": stage,
             "meaning": meaning,
             "title": title,
@@ -279,11 +307,7 @@ def meaningful_press_links(company: str, base_url: str, program_terms: tuple[str
         out.append({
             "key": k,
             "company": company,
-            "program": next((p for p in ("MOGENRY/MCO-010", "RTx-015/RTx-021", "GS030") if (
-                ("mogenry" in low or "mco-010" in low) and p == "MOGENRY/MCO-010"
-                or ("rtx-015" in low or "rtx-021" in low) and p == "RTx-015/RTx-021"
-                or "gs030" in low and p == "GS030"
-            )), "광유전학"),
+            "program": program_label(company, low),
             "stage": stage,
             "meaning": meaning,
             "title": title,
@@ -410,13 +434,78 @@ def discover_nonretinal_trials() -> list[dict]:
     return out
 
 
+def discover_maplight_trials() -> list[dict]:
+    url = "https://clinicaltrials.gov/api/v2/studies?" + urllib.parse.urlencode({
+        "format": "json",
+        "pageSize": 100,
+        "query.term": '"MapLight Therapeutics"',
+    })
+    data = fetch_json(url)
+    out: list[dict] = []
+    for row in data.get("studies") or []:
+        p = row.get("protocolSection") or {}
+        sponsor = ((p.get("sponsorCollaboratorsModule") or {}).get("leadSponsor") or {}).get("name") or ""
+        if "maplight therapeutics" not in sponsor.lower():
+            continue
+        blob = json.dumps(row, ensure_ascii=False).lower()
+        if "ml-007c-ma" in blob:
+            program = "ML-007C-MA"
+        elif "ml-004" in blob:
+            program = "ML-004"
+        elif "ml-055" in blob:
+            program = "ML-055"
+        else:
+            continue
+        ident = p.get("identificationModule") or {}
+        status = p.get("statusModule") or {}
+        design = p.get("designModule") or {}
+        contacts = p.get("contactsLocationsModule") or {}
+        conds = (p.get("conditionsModule") or {}).get("conditions") or []
+        nct = ident.get("nctId") or ""
+        if not nct:
+            continue
+        snapshot = {
+            "brief_title": clean(ident.get("briefTitle") or ""),
+            "overall_status": status.get("overallStatus") or "",
+            "phases": design.get("phases") or [],
+            "enrollment": (design.get("enrollmentInfo") or {}).get("count"),
+            "start_date": (status.get("startDateStruct") or {}).get("date") or "",
+            "primary_completion": (status.get("primaryCompletionDateStruct") or {}).get("date") or "",
+            "study_completion": (status.get("completionDateStruct") or {}).get("date") or "",
+            "last_update": (status.get("lastUpdatePostDateStruct") or {}).get("date") or "",
+            "conditions": conds,
+            "locations": len(contacts.get("locations") or []),
+        }
+        out.append({
+            "nct": nct,
+            "program": program,
+            "title": snapshot["brief_title"],
+            "snapshot": snapshot,
+        })
+    return out
+
+
 def validate_nobel() -> bool:
     text = clean(re.sub(r"<[^>]+>", " ", fetch_text(KI_NOBEL))).lower()
     required = ("2026", "peter hegemann", "georg nagel", "karl deisseroth", "optogenetics", "channelrhodopsin")
     return all(x in text for x in required)
 
 
-def render_alert(items: list[dict], trial_updates: list[dict], registry_updates: list[dict], new_cns_trials: list[dict], now: dt.datetime) -> str:
+def validate_maplight_bridge() -> bool:
+    text = clean(re.sub(r"<[^>]+>", " ", fetch_text(MAPLIGHT_NOBEL))).lower()
+    required = ("maplight", "karl deisseroth", "optogenetics", "circuit", "ml-007c-ma")
+    return all(x in text for x in required)
+
+
+def render_alert(
+    items: list[dict],
+    trial_updates: list[dict],
+    registry_updates: list[dict],
+    maplight_updates: list[dict],
+    new_maplight_trials: list[dict],
+    new_cns_trials: list[dict],
+    now: dt.datetime,
+) -> str:
     lines = [
         "[바이오 감시] 광유전학 임상·허가 구조 변화",
         f"조회 시각: {now.strftime('%Y-%m-%d %H:%M')} 한국시간",
@@ -455,6 +544,28 @@ def render_alert(items: list[dict], trial_updates: list[dict], registry_updates:
             f"- 원문: {JRCT_RV001}",
         ]
         idx += 1
+    for item in maplight_updates:
+        lines += [
+            "",
+            f"{idx}. MapLight Therapeutics · {item['program']} · {item['nct']}",
+            "- 단계: 광유전학 기반 회로지도 → 경구 CNS 약물의 간접 상용화",
+            f"- 변화: {' / '.join(item['changes'])}",
+            "- 확인 수준: ClinicalTrials.gov 공식 등록",
+            "- 구분: 직접 광치료가 아니라 광유전학으로 찾은 회로·표적을 약물로 번역하는 간접 사업",
+            f"- 원문: https://clinicaltrials.gov/study/{item['nct']}",
+        ]
+        idx += 1
+    for item in new_maplight_trials:
+        lines += [
+            "",
+            f"{idx}. MapLight Therapeutics · {item['program']} · {item['nct']}",
+            "- 단계: 신규 인간 임상 등록",
+            f"- 변화: 광유전학 기반 회로지도에서 도출된 약물 후보의 신규 임상 등록 · 상태 {item['snapshot']['overall_status']} · 임상단계 {item['snapshot']['phases']}",
+            "- 확인 수준: ClinicalTrials.gov 공식 등록",
+            "- 구분: 직접 광치료가 아니라 광유전학 기반 약물발굴의 간접 상용화",
+            f"- 원문: https://clinicaltrials.gov/study/{item['nct']}",
+        ]
+        idx += 1
     for item in new_cns_trials:
         lines += [
             "",
@@ -472,6 +583,7 @@ def render_alert(items: list[dict], trial_updates: list[dict], registry_updates:
         "- 망막 광유전학: MOGENRY 허가결정·RTx-015 후기임상 전환이 가장 가까운 상용화 검증 신호입니다.",
         "- 뇌·BCI: 아직 인간 치료의 중심은 전기식 BCI·DBS이며, 일반 BCI 뉴스를 광유전학 수혜로 묶지 않습니다. 비망막 인간 광유전학 임상 등록·IND·첫 환자투여가 생길 때만 별도 핵심 알림으로 올립니다.",
         "- 시각복원: MOGENRY·RTx-015/021·GS030·BS01·ZM-02·RV-001은 opsin·표적세포·보조광학장치 의존성이 서로 달라 한 묶음으로 보지 않습니다.",
+        "- MapLight(MPLT): 직접 광치료 기업으로 분류하지 않습니다. optogenetics·회로지도에서 발굴한 표적을 ML-007C-MA·ML-004 같은 경구 약물로 번역하는 간접 상용화이며, 신규 임상등록·등록임상 전환·FDA 후기임상 경로·핵심 유효성 변화만 알립니다.",
         "- 연구장비: Bruker/Inscopix·레이저·광섬유 같은 연구도구는 직접 임상·상용화 매출과 분리하며, 단순 노벨상 테마 뉴스에는 알림하지 않습니다.",
     ]
     return "\n".join(lines).strip() + "\n"
@@ -484,6 +596,11 @@ def self_test() -> None:
     assert stage == "FDA RMAT"
     stage, _ = classify_press("MOGENRY PDUFA Date Announced")
     assert stage == "FDA 심사기한"
+    stage, _ = classify_press("MapLight ML-007C-MA End-of-Phase 2 Meeting with FDA")
+    assert stage == "FDA 임상2상 종료 미팅"
+    stage, _ = classify_press("MapLight Therapeutics Receives Fast Track Designation for ML-007C-MA")
+    assert stage == "FDA Fast Track"
+    assert program_label("MapLight Therapeutics", "positive zephyr results for ml-007c-ma").startswith("ML-007C-MA")
     assert not any(x in "2026 nobel prize for optogenetics".lower() for x in ("pdufa", "approval", "phase 3"))
 
 
@@ -499,6 +616,7 @@ def main() -> int:
     old_seen = set(old.get("seen_event_keys") or [])
     old_trials = old.get("trial_snapshots") or {}
     old_rv001 = old.get("rv001_registry_snapshot") or {}
+    old_maplight = old.get("maplight_trial_snapshots") or {}
     old_cns = set(old.get("cns_trial_ids") or [])
 
     errors: list[str] = []
@@ -513,6 +631,15 @@ def main() -> int:
             errors.append("Karolinska Institutet 노벨상 공식문구 검증 실패")
     except Exception as exc:
         errors.append(f"Karolinska Institutet: {type(exc).__name__}")
+
+    maplight_bridge_ok = False
+    try:
+        maplight_bridge_ok = validate_maplight_bridge()
+        successful += 1
+        if not maplight_bridge_ok:
+            errors.append("MapLight 광유전학→회로지도→약물발굴 공식 연결 검증 실패")
+    except Exception as exc:
+        errors.append(f"MapLight 광유전학 연결: {type(exc).__name__}")
 
     for company, url, terms in COMPANY_SOURCES:
         try:
@@ -561,6 +688,30 @@ def main() -> int:
     except Exception as exc:
         errors.append(f"jRCT RV-001: {type(exc).__name__}")
 
+    maplight_trials: list[dict] = []
+    maplight_snapshots: dict[str, dict] = {}
+    maplight_updates: list[dict] = []
+    new_maplight_trials: list[dict] = []
+    try:
+        maplight_trials = discover_maplight_trials()
+        maplight_snapshots = {item["nct"]: item["snapshot"] for item in maplight_trials}
+        successful += 1
+        if initialized:
+            for item in maplight_trials:
+                nct = item["nct"]
+                if nct not in old_maplight:
+                    new_maplight_trials.append(item)
+                    continue
+                changes = trial_changes(old_maplight[nct], item["snapshot"])
+                if changes:
+                    maplight_updates.append({
+                        "nct": nct,
+                        "program": item["program"],
+                        "changes": changes,
+                    })
+    except Exception as exc:
+        errors.append(f"ClinicalTrials MapLight discovery: {type(exc).__name__}")
+
     cns_trials: list[dict] = []
     try:
         cns_trials = discover_nonretinal_trials()
@@ -568,13 +719,14 @@ def main() -> int:
     except Exception as exc:
         errors.append(f"ClinicalTrials optogenetics discovery: {type(exc).__name__}")
 
-    expected_sources = 1 + len(COMPANY_SOURCES) + 1 + len(TRIALS) + 1 + 1
+    expected_sources = 1 + 1 + len(COMPANY_SOURCES) + 1 + len(TRIALS) + 1 + 1 + 1
     minimum_successful = max(8, (expected_sources * 2 + 2) // 3)
-    if successful < minimum_successful or not nobel_ok:
+    if successful < minimum_successful or not nobel_ok or not maplight_bridge_ok:
         STATUS.write_text(
             "# 광유전학 임상·허가 감시 상태\n\n"
             f"- 공식 소스 정상 조회: {successful}/{expected_sources} · 최소 통과 {minimum_successful}\n"
             f"- 노벨상 공식 검증: {'성공' if nobel_ok else '실패'}\n"
+            f"- MapLight 광유전학 기반 약물발굴 연결: {'성공' if maplight_bridge_ok else '실패'}\n"
             "- 상태 기준선: 갱신하지 않음\n"
             "- Telegram: 송출하지 않음\n"
             + ("\n".join(f"- 오류: {e}" for e in errors) + "\n" if errors else ""),
@@ -588,22 +740,26 @@ def main() -> int:
     new_cns = [x for x in cns_trials if x["nct"] not in old_cns] if initialized else []
 
     source_version = int(old.get("source_version") or 0)
-    if initialized and source_version < 5:
+    if initialized and source_version < 6:
         # Source coverage expanded after the first baseline. Do not replay
-        # historical GS030/Nanoscope/Ray/Restore Vision/Augelux items as new events.
+        # historical GS030/Nanoscope/Ray/Restore Vision/Augelux/MapLight items as new events.
         new_items = []
         rv001_updates = []
+        maplight_updates = []
+        new_maplight_trials = []
 
     pending = {
         "initialized": True,
         "version": 1,
-        "source_version": 5,
+        "source_version": 6,
         "ray_official_index_verified": ray_official_index_ok,
+        "maplight_optogenetics_bridge_verified": maplight_bridge_ok,
         "last_checked_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
         "nobel_2026_verified": nobel_ok,
         "seen_event_keys": current_keys,
         "trial_snapshots": snapshots,
         "rv001_registry_snapshot": rv001_snapshot,
+        "maplight_trial_snapshots": maplight_snapshots,
         "cns_trial_ids": cns_ids,
         "relevant_press_events": len(events),
         "source_errors": errors,
@@ -614,25 +770,39 @@ def main() -> int:
     save_json(PENDING, pending)
 
     now = dt.datetime.now(KST)
-    if initialized and (new_items or trial_updates or rv001_updates or new_cns):
-        ALERT.write_text(render_alert(new_items[:8], trial_updates[:8], rv001_updates[:4], new_cns[:4], now), encoding="utf-8")
+    if initialized and (new_items or trial_updates or rv001_updates or maplight_updates or new_maplight_trials or new_cns):
+        ALERT.write_text(
+            render_alert(
+                new_items[:8],
+                trial_updates[:8],
+                rv001_updates[:4],
+                maplight_updates[:8],
+                new_maplight_trials[:4],
+                new_cns[:4],
+                now,
+            ),
+            encoding="utf-8",
+        )
 
     STATUS.write_text(
         "# 광유전학 임상·허가 감시 상태\n\n"
         f"- 노벨상 공식 검증: **{'성공' if nobel_ok else '실패'}**\n"
+        f"- MapLight 광유전학 기반 약물발굴 연결: **{'성공' if maplight_bridge_ok else '실패'}**\n"
         f"- 공식 소스 정상 조회: **{successful}/{expected_sources}** · 최소 통과 **{minimum_successful}**\n"
         f"- 공식 기업 이벤트 기준선: **{len(events)}건**\n"
         f"- 추적 ClinicalTrials.gov 임상: **{len(snapshots)}건**\n"
         f"- 일본 jRCT RV-001 등록: **{'확인' if rv001_snapshot else '확인 실패'}**\n"
+        f"- MapLight 광유전학 기반 약물발굴 임상: **{len(maplight_trials)}건**\n"
         f"- 비망막 중추신경계 광유전학 임상: **{len(cns_trials)}건**\n"
-        f"- 신규 알림: **{len(new_items) + len(trial_updates) + len(rv001_updates) + len(new_cns)}건**\n"
+        f"- 신규 알림: **{len(new_items) + len(trial_updates) + len(rv001_updates) + len(maplight_updates) + len(new_maplight_trials) + len(new_cns)}건**\n"
         f"- 오류: **{len(errors)}건**\n",
         encoding="utf-8",
     )
 
     print(
         f"optogenetics_watch initialized_before={initialized} press={len(events)} "
-        f"trial_updates={len(trial_updates)} rv001_updates={len(rv001_updates)} cns_new={len(new_cns)} "
+        f"trial_updates={len(trial_updates)} rv001_updates={len(rv001_updates)} "
+        f"maplight_updates={len(maplight_updates)} maplight_new={len(new_maplight_trials)} cns_new={len(new_cns)} "
         f"alert={int(ALERT.exists())} errors={len(errors)}"
     )
     if errors:
