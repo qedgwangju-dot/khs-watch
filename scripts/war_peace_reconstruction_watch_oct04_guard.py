@@ -427,6 +427,43 @@ def _trump_ukraine_peace_rhetoric(row):
     return (exact or (trump and ukraine and rhetoric)) and not concrete
 
 
+def _iran_direct_talks_denial_only(row):
+    """직접 대면협상 부인을 전체 외교채널 결렬·군사확전으로 오인하지 않는다."""
+    t = _text(row).lower()
+    iran = any(x in t for x in ("iran", "iranian", "tehran", "이란", "테헤란"))
+    us = any(x in t for x in ("u.s.", "us ", "united states", "america", "미국", "워싱턴"))
+    direct_denial = any(x in t for x in (
+        "denied direct talks", "denies direct talks", "no direct talks", "not in direct talks",
+        "no direct negotiations", "not in direct negotiations",
+        "직접 협상 부인", "직접협상 부인", "직접 접촉 부인", "직접협상은 부인",
+    ))
+    true_breakdown = any(x in t for x in (
+        "talks collapsed", "negotiations collapsed", "walked away from talks",
+        "talks broke down", "rejects all talks", "will not negotiate at all",
+        "협상 결렬", "대화 결렬", "모든 협상 거부", "협상에서 이탈",
+    ))
+    return iran and us and direct_denial and not true_breakdown
+
+
+def _regional_recap_without_discrete_event(row):
+    """여러 전선을 한 제목에 묶은 종합·재가공 기사는 구체적 신규 사건이 없으면 속보에서 제외한다."""
+    title = _title(row).lower()
+    saudi_houthi = any(x in title for x in ("saudi", "사우디")) and any(x in title for x in ("houthi", "houthis", "후티"))
+    iran_us = any(x in title for x in ("iran", "이란")) and any(x in title for x in ("u.s.", "us ", "미국"))
+    mixed_recap = (
+        saudi_houthi and iran_us
+        and any(x in title for x in ("충돌 격화", "교전 격화", "hostilities escalate", "clashes escalate"))
+        and any(x in title for x in ("대화 지속", "협상 지속", "talks continue", "dialogue continues"))
+    )
+    discrete = any(x in title for x in (
+        "airport", "refinery", "aramco", "riyadh", "jazan", "najran", "aden",
+        "공항", "정유", "아람코", "리야드", "지잔", "나지란", "아덴",
+        "missile", "drone", "intercept", "killed", "injured", "damage",
+        "미사일", "드론", "요격", "사망", "부상", "피해",
+    ))
+    return mixed_recap and not discrete
+
+
 def _vance_iran_enrichment_condition(row):
     src = " ".join([str(row.get("source", "")), str(row.get("link", "")), str(row.get("resolved_url", ""))]).lower()
     t = _text(row).lower()
