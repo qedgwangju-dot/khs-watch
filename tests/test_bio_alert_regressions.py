@@ -102,6 +102,18 @@ class BioAlertRegressionTests(unittest.TestCase):
         self.assertIn("[바이오 감시] 오류 복구 확인", source)
         self.assertIn("동일 원인이 반복되면 중복 오류 알림은 보내지 않고", source)
 
+    def test_existing_bio_watchdog_covers_full_integrated_route(self):
+        source = (ROOT / ".github" / "workflows" / "qlex-sc-bio-fallback.yml").read_text(encoding="utf-8")
+        self.assertIn(
+            'Bio QLEX, Intismeran, Jemperli, Enhertu & Halozyme PTAB Telegram Watch',
+            source,
+        )
+        self.assertIn('cron: "2,17,32,47 * * * *"', source)
+        self.assertIn("data/bio_watch_heartbeat.json", source)
+        self.assertIn("data/halozyme_ptab_watch_state.json", source)
+        self.assertIn("python scripts/bio_single_runner_v3.py", source)
+        self.assertIn("QLEX 전환율·월간 WAC·Intismeran·Jemperli·Enhertu·Halozyme 특허분쟁", source)
+
     def test_bio_runner_exposes_failed_status_to_actions(self):
         source = (ROOT / "scripts" / "bio_single_runner.py").read_text(encoding="utf-8")
         self.assertIn('return 0 if hb.get("status") == "ok" else 1', source)
