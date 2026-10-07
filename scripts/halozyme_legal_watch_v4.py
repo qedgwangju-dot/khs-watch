@@ -70,6 +70,12 @@ base.SEARCHES = [
 for case in base.KNOWN_CASES:
     base.SEARCHES.append(f'"{case}" Halozyme Merck')
 
+base.SEARCHES.extend([
+    '"C/09/695432" Halozyme Merck Keytruda SC',
+    '"EP 2 797 622" Halozyme Merck Keytruda SC appeal',
+    '"EP 3 130 347" Halozyme Merck Keytruda SC UK',
+])
+
 
 _CURRENT_BATCH_SOURCE = "http://the-biz.co.kr/news/articleView.html?idxno=728392"
 ALTEOGEN_IR_INDEX = "https://www.alteogen.com/kr/sub/ir/information.php?bid=2"
@@ -121,6 +127,45 @@ PTAB_VERIFIED_PORTFOLIO_SCORECARD = {
         "patents": ["12,264,345", "12,091,692"],
     },
 }
+
+DUTCH_VRO_CASE = "NL-VRO-C09-695432"
+GERMAN_EP622_CASE = "DE-EP622-KEYTRUDA"
+UK_EP347_CASE = "UK-EP347-KEYTRUDA"
+DUTCH_VRO_PATENT = "EP 2,797,622"
+HALOZYME_DUTCH_INJUNCTION_URL = (
+    "https://ir.halozyme.com/news/news-details/2026/"
+    "Halozyme-Wins-Injunction-Stopping-Manufacture-and-Sale-of-Mercks-Keytruda-SC-in-Multiple-European-Markets/default.aspx"
+)
+REUTERS_DUTCH_INJUNCTION_URL = (
+    "https://www.reuters.com/legal/litigation/"
+    "halozyme-wins-court-order-block-mercks-injected-keytruda-select-european-markets-2026-10-07/"
+)
+DUTCH_JULY_RULING_URL = (
+    "https://www.uitspraken.nl/uitspraak/rechtbank-den-haag/civiel-recht/"
+    "intellectueel-eigendomsrecht/kort-geding/ecli-nl-rbdha-2026-18266"
+)
+MERCK_2Q26_DISCLOSURES_URL = (
+    "https://www.merck.com/wp-content/uploads/sites/124/2026/08/2Q26-Merck-Other-Financial-Disclosures.pdf"
+)
+MERCK_2Q26_10Q_URL = "https://www.merck.com/wp-content/uploads/sites/124/2026/08/MRK-06.30.2026-10Q-FINAL.pdf"
+UK_EP347_COURT_URL = "https://www.bailii.org/ew/cases/EWHC/Patents/2026/1838.html"
+
+VERIFIED_EUROPE_DECISIONS = [
+    {
+        "engine": "Halozyme 공식 IR + Reuters 교차확인",
+        "title": "Dutch court finds EP622 valid and Keytruda SC infringing; injunction in eight European markets",
+        "url": HALOZYME_DUTCH_INJUNCTION_URL,
+        "description": (
+            "Halozyme Merck MSD Keytruda SC C/09/695432 Dutch Netherlands The Hague EP 2 797 622 EP622. "
+            "October 7 2026 specialized Dutch patent court found Merck infringing Halozyme MDASE EP622, "
+            "rejected invalidity arguments and granted injunction stopping manufacture, having manufactured, "
+            "offering, placing on the market, using, importing or stocking Keytruda SC in Belgium Denmark France "
+            "Ireland Italy Sweden Switzerland Netherlands; also forbids MSD BV facilitating affiliates through "
+            "the European Marketing Authorization."
+        ),
+        "published": "Wed, 07 Oct 2026 00:00:00 GMT",
+    },
+]
 
 
 def _strip_tags(value: str) -> str:
@@ -209,6 +254,7 @@ def rss(query: str, engine: str) -> list[dict]:
             },
         ])
         out.extend(VERIFIED_CURRENT_DECISIONS)
+        out.extend(VERIFIED_EUROPE_DECISIONS)
     global _official_portfolio_cache
     if engine == "Bing 웹" and query == base.SEARCHES[0]:
         if _official_portfolio_cache is None:
@@ -264,6 +310,19 @@ CASE_TIMELINES = {
         ("2026-07-23", "공동 구술심리"),
         ("2026-10-01", "최종서면결정"),
     ),
+    DUTCH_VRO_CASE: (
+        ("2026-07-03", "별도 가처분 기각 — EP622 유효성·침해 본안 판단 아님"),
+        ("2026-07-31", "VRO 본안 구술심리"),
+        ("2026-10-07", "VRO 본안 — EP622 유효·Keytruda SC 침해·8개 유럽시장 금지명령"),
+    ),
+    GERMAN_EP622_CASE: (
+        ("2025-12-04", "독일 Keytruda SC 판매금지 가처분"),
+        ("2026-11-19", "독일 가처분 항소심 예정"),
+    ),
+    UK_EP347_CASE: (
+        ("2026-07-20", "영국 EP347 절차판단 EWHC 1838"),
+        ("2026-11-23", "영국 EP347 본안 심리 시작 예정"),
+    ),
 }
 
 
@@ -276,6 +335,12 @@ TIMELINE_EVENT_LABELS = {
     "appeal": "연방순회항소법원 항소",
     "termination": "종결·합의",
     "disclaimer": "청구항 포기",
+    "nl_injunction": "VRO 본안 — EP622 유효·침해·8개 유럽시장 금지명령",
+    "nl_appeal": "네덜란드 항소 제기",
+    "nl_stay": "네덜란드 집행정지 절차 변화",
+    "nl_appeal_decision": "네덜란드 항소심 결정",
+    "de_appeal_decision": "독일 가처분 항소심 결정",
+    "uk_judgment": "영국 EP347 본안 판단",
 }
 
 _successful_timeline_events: list[dict] = []
@@ -298,7 +363,7 @@ def _event_date(item: dict) -> str:
 
 
 def _timeline_event(case: str, kind: str, item: dict) -> dict | None:
-    if not case.startswith(("PGR", "IPR")):
+    if not (case.startswith(("PGR", "IPR")) or case in CASE_TIMELINES):
         return None
     label = TIMELINE_EVENT_LABELS.get(kind)
     if not label:
@@ -368,6 +433,31 @@ def classify(text: str, case: str) -> str:
     if case == base.DISTRICT_CASE:
         return "district_order"
 
+    if case == DUTCH_VRO_CASE:
+        appeal_decision_terms = ("appeal court", "court of appeal", "appeal judgment", "appeal decision", "upheld", "overturned", "reversed", "vacated", "gerechtshof")
+        if any(term in low for term in appeal_decision_terms) and any(term in low for term in ("appeal", "hoger beroep", "gerechtshof")):
+            return "nl_appeal_decision"
+        if any(term in low for term in ("stay of injunction", "stay pending appeal", "suspend the injunction", "schorsing", "집행정지")):
+            return "nl_stay"
+        if any(term in low for term in ("notice of appeal", "filed an appeal", "has appealed", "appeals the", "hoger beroep", "항소")):
+            return "nl_appeal"
+        has_infringement = any(term in low for term in ("found merck to be infringing", "found merck infringing", "infringes", "infringement"))
+        has_injunction = any(term in low for term in ("granted injunction", "injunction stopping", "ordered merck", "refrain from manufacturing", "halt", "block merck"))
+        has_validity = any(term in low for term in ("rejected merck's arguments that ep622 patent is invalid", "recognized the validity", "ep622 is valid", "patent is valid"))
+        if has_infringement and has_injunction and has_validity:
+            return "nl_injunction"
+        return ""
+
+    if case == GERMAN_EP622_CASE:
+        if any(term in low for term in ("upheld", "overturned", "reversed", "vacated", "appeal decision", "appeal judgment", "appeal court ruled", "oberlandesgericht")):
+            return "de_appeal_decision"
+        return ""
+
+    if case == UK_EP347_CASE:
+        if any(term in low for term in ("judgment", "judgement", "court ruled", "held that", "patents court decided")):
+            return "uk_judgment"
+        return ""
+
     # 최종서면결정 이후의 재검토·재심·항소 서류는 본문에 기존 FWD 문구를
     # 반복 인용하는 경우가 많다. 최신 판세 사건은 후속 절차를 FWD보다
     # 먼저 판정해 타임라인 변화가 기존 최종결정으로 오분류되어 누락되지 않게 한다.
@@ -398,7 +488,7 @@ def classify(text: str, case: str) -> str:
 
 
 def timeline_line(case: str, kind: str, item: dict) -> str:
-    if case.startswith(("PGR", "IPR")):
+    if case.startswith(("PGR", "IPR")) or case in CASE_TIMELINES:
         rows: list[tuple[str, str]] = list(CASE_TIMELINES.get(case) or ())
         for row in _persisted_timeline_rows(case):
             rows.append((str(row.get("date") or ""), str(row.get("label") or "")))
@@ -483,6 +573,49 @@ def alert(case: str, patent: str, kind: str, item: dict) -> str:
 
     _pending_timeline_event = _timeline_event(case, kind, item)
 
+    if case == DUTCH_VRO_CASE and kind == "nl_injunction":
+        source_url = html.escape(item["url"], quote=True)
+        reuters_url = html.escape(REUTERS_DUTCH_INJUNCTION_URL, quote=True)
+        merck_sales_url = html.escape(MERCK_2Q26_DISCLOSURES_URL, quote=True)
+        july_url = html.escape(DUTCH_JULY_RULING_URL, quote=True)
+        return (
+            "<b>[바이오 감시] Halozyme 유럽 특허분쟁 — 판단 하향</b>\n\n"
+            "<b>네덜란드 VRO 본안: EP622 유효 + Keytruda SC 침해 인정, 8개 유럽시장 금지명령</b>\n\n"
+            f"- <b>사건:</b> C/09/695432 · MDASE {html.escape(DUTCH_VRO_PATENT)}\n"
+            f"- <b>타임라인:</b>\n{timeline_html(case, kind, item)}\n"
+            "- <b>금지 범위:</b> 벨기에·덴마크·프랑스·아일랜드·이탈리아·스웨덴·스위스·네덜란드에서 제조·위탁제조·판매제안·판매·사용·수입·재고보유를 금지하고, MSD B.V.가 유럽 판매허가를 이용해 계열사 침해를 돕는 것도 금지했습니다.\n"
+            "- <b>특허 층:</b> 이번 특허는 ENHANZE 핵심특허가 아니라 별도 MDASE EP622이며, 네덜란드 법원 공개자료 기준 2032년 12월 27일까지 존속합니다.\n"
+            "- <b>현재 숫자:</b> Merck 공식 2Q26 Keytruda Qlex 매출은 글로벌 US$463M, 미국 US$395M, 미국 외 US$68M입니다. 공개 지역분류상 이번 8개국 직접 판매 노출은 미국 외 US$68M의 일부입니다.\n"
+            "- <b>알테오젠 의미:</b> 현재 매출의 즉시 훼손보다 유럽 확장·판매 마일스톤·향후 로열티의 시간표와 법률 할인율 훼손이 더 중요합니다.\n"
+            "- <b>반대축:</b> 미국 PTAB에서는 현재 확인 기준 MSD가 14건 중 9건에서 심판대상 청구항 특허성 부정 결정을 확보했습니다. 유럽 패소를 미국 패소로 동일시하면 안 됩니다.\n"
+            "- <b>다른 ALT-B4 파트너:</b> GSK·Biogen·Novartis 제품이 자동으로 EP622 침해가 되는 것은 아닙니다. 제품별 제형·PH20 변형·청구항 매핑을 별도로 확인합니다.\n"
+            "- <b>다음 확인:</b> 네덜란드 판결문 전체·ECLI 공개 → 항소·집행정지 여부 → <b>2026년 11월 19일</b> 독일 가처분 항소심 → <b>2026년 11월 23일</b> 영국 EP347 본안 심리 시작 예정\n"
+            "- <b>원문 상태:</b> 현재 VRO 본안의 유효성·침해·8개국 금지명령은 Halozyme 공식 발표와 Reuters로 교차확인했습니다. 공개 검색에서 본안 판결문 전체 ECLI는 아직 직접 확보하지 못해 구체적 이행기한·벌금·집행정지 효과는 확정하지 않습니다.\n"
+            f'- <a href="{source_url}">Halozyme 공식 발표</a>\n'
+            f'- <a href="{reuters_url}">Reuters 보도</a>\n'
+            f'- <a href="{merck_sales_url}">Merck 2Q26 공식 매출자료</a>\n'
+            f'- <a href="{july_url}">7월 네덜란드 가처분 판결</a>'
+        )
+
+    if case in {DUTCH_VRO_CASE, GERMAN_EP622_CASE, UK_EP347_CASE}:
+        source_url = html.escape(item["url"], quote=True)
+        title_map = {
+            "nl_appeal": "네덜란드 EP622 항소 제기",
+            "nl_stay": "네덜란드 EP622 집행정지 절차 변화",
+            "nl_appeal_decision": "네덜란드 EP622 항소심 결정",
+            "de_appeal_decision": "독일 EP622 가처분 항소심 결정",
+            "uk_judgment": "영국 EP347 본안 판단",
+        }
+        if kind in title_map:
+            return (
+                "<b>[바이오 감시] Halozyme 유럽 특허분쟁 후속</b>\n\n"
+                f"<b>{html.escape(title_map[kind])}</b>\n\n"
+                f"- <b>타임라인:</b>\n{timeline_html(case, kind, item)}\n"
+                "- <b>의미:</b> Keytruda SC의 유럽 자유실시 가능성과 알테오젠의 유럽 판매 마일스톤·향후 로열티 시간표를 다시 평가해야 하는 후속 절차입니다.\n"
+                "- <b>주의:</b> 유럽 개별국 결과를 미국 PTAB·뉴저지 소송 또는 다른 ALT-B4 파트너 제품에 자동 확대하지 않습니다.\n"
+                f'- <a href="{source_url}">원문 뉴스보기</a>'
+            )
+
     if kind != "final_decision":
         message = _original_alert(case, patent, kind, item)
         timeline = timeline_html(case, kind, item)
@@ -525,6 +658,26 @@ def get_case(text: str) -> tuple[str, str]:
         return case, patent
 
     low = text.lower()
+    normalized = re.sub(r"[,\s]", "", low)
+    if "c/09/695432" in low or (
+        ("ep622" in normalized or "ep2797622" in normalized)
+        and "keytruda" in low
+        and any(term in low for term in ("netherlands", "dutch", "the hague", "den haag", "네덜란드"))
+    ):
+        return DUTCH_VRO_CASE, DUTCH_VRO_PATENT
+    if (
+        ("ep622" in normalized or "ep2797622" in normalized)
+        and "keytruda" in low
+        and any(term in low for term in ("germany", "german", "deutschland", "독일"))
+    ):
+        return GERMAN_EP622_CASE, DUTCH_VRO_PATENT
+    if (
+        ("ep347" in normalized or "ep3130347" in normalized)
+        and "keytruda" in low
+        and any(term in low for term in ("united kingdom", "uk", "england", "britain", "영국"))
+    ):
+        return UK_EP347_CASE, "EP 3,130,347"
+
     # 2026-09-25에 동시에 최종서면결정이 확인된 두 사건을 다룬
     # "PH20 특허 2건" 기사 중 사건번호가 RSS 요약에서 빠진 경우의 식별 보조.
     if (

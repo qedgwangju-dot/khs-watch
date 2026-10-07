@@ -124,6 +124,49 @@ class BioAlertRegressionTests(unittest.TestCase):
         source = (ROOT / "scripts" / "bio_single_runner_v3.py").read_text(encoding="utf-8")
         self.assertIn("max(timeout, 300)", source)
 
+    def test_halozyme_europe_searches_are_bounded_and_present(self):
+        searches = halo.base.SEARCHES
+        self.assertLessEqual(len(searches), 40)
+        self.assertTrue(any("C/09/695432" in query for query in searches))
+        self.assertTrue(any("EP 2 797 622" in query for query in searches))
+        self.assertTrue(any("EP 3 130 347" in query for query in searches))
+
+    def test_halozyme_dutch_vro_event_is_detected_conservatively(self):
+        text = (
+            "Halozyme Merck Keytruda SC C/09/695432 Dutch court recognized the validity of EP 2,797,622 "
+            "and found Merck to be infringing and granted injunction stopping manufacture and sale"
+        )
+        case, patent = halo.get_case(text)
+        self.assertEqual(case, halo.DUTCH_VRO_CASE)
+        self.assertEqual(patent, halo.DUTCH_VRO_PATENT)
+        self.assertEqual(halo.classify(text, case), "nl_injunction")
+        old_text = (
+            "Halozyme Merck Keytruda SC C/09/695432 counterclaimed for infringement of EP 2,797,622 "
+            "and the hearing was set for July 31, 2026"
+        )
+        self.assertEqual(halo.classify(old_text, halo.DUTCH_VRO_CASE), "")
+
+    def test_halozyme_dutch_vro_alert_has_bold_timeline_and_caveats(self):
+        item = halo.VERIFIED_EUROPE_DECISIONS[0]
+        rendered = halo.alert(halo.DUTCH_VRO_CASE, halo.DUTCH_VRO_PATENT, "nl_injunction", item)
+        self.assertIn("• <b>2026년 7월 3일</b>", rendered)
+        self.assertIn("• <b>2026년 7월 31일</b>", rendered)
+        self.assertIn("• <b>2026년 10월 7일</b>", rendered)
+        self.assertIn("2032년 12월 27일", rendered)
+        self.assertIn("US$463M", rendered)
+        self.assertIn("미국 외 US$68M의 일부", rendered)
+        self.assertIn("GSK·Biogen·Novartis 제품이 자동으로 EP622 침해가 되는 것은 아닙니다", rendered)
+        self.assertIn("<b>2026년 11월 19일</b>", rendered)
+        self.assertIn("<b>2026년 11월 23일</b>", rendered)
+        self.assertIn("판결문 전체 ECLI는 아직 직접 확보하지 못해", rendered)
+
+    def test_halozyme_dutch_appeal_beats_old_injunction_language(self):
+        text = (
+            "Halozyme Merck Keytruda SC C/09/695432 notice of appeal filed after the Dutch court "
+            "recognized the validity of EP622 and granted injunction stopping sale"
+        )
+        self.assertEqual(halo.classify(text, halo.DUTCH_VRO_CASE), "nl_appeal")
+
     def test_halozyme_two_patent_article_without_case_number_is_not_dropped(self):
         text = "알테오젠 파트너 MSD, 할로자임 PH20 특허 2건 청구항 특허성 없음"
         case, patent = halo.get_case(text)
