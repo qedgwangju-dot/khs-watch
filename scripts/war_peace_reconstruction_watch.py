@@ -77,14 +77,15 @@ def req(url, timeout=20):
     last = None
     for attempt, headers in enumerate(headers_list):
         try:
-            attempt_timeout = timeout if attempt == 0 else min(timeout, 8)
+            # 개별 외부 소스가 느리거나 멈춰도 5분 감시 주기 전체를 붙잡지 않도록 상한을 둔다.
+            attempt_timeout = min(timeout, 10) if attempt == 0 else min(timeout, 5)
             request = urllib.request.Request(url, headers=headers)
             with urllib.request.urlopen(request, timeout=attempt_timeout) as r:
                 return r.read()
         except Exception as exc:
             last = exc
             if attempt == 0:
-                time.sleep(0.6)
+                time.sleep(0.3)
     raise last
 
 
