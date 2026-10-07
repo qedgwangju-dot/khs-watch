@@ -50,6 +50,12 @@ def translate_ko(title):
     ):
         return "이스라엘 국가안보회의, 10월 7일 3주년 전후 해외의 이스라엘인·유대인 대상 공격 위험 증가 경고 — 실제 공격 발생 아님"
     if (
+        any(x in low for x in ("iran army", "iran amry", "이란군"))
+        and any(x in low for x in ("preemptive attack", "preemptive strike", "선제 공격", "선제공격"))
+        and any(x in low for x in ("if necessary", "if needed", "necessary", "필요한 경우", "필요시"))
+    ):
+        return "이란군, 필요할 경우 선제공격에 나설 수 있다고 경고 — 실제 공격 발생이 아닌 조건부 군사위협"
+    if (
         "tanker crew rescued in black sea" in low
         and "attack set ship ablaze" in low
     ):
