@@ -86,6 +86,13 @@ class GridEventTests(unittest.TestCase):
         text = "New transformer factory expansion announced."
         self.assertEqual(w.structural_event(text, "https://example.com/foo"), "")
 
+    def test_bps_policy_change_is_structural_event(self):
+        text = (
+            "Bulk-Power System rule for a Covered Foreign Entity may prohibit "
+            "foreign electric equipment transactions."
+        )
+        event = w.structural_event(text, "https://www.whitehouse.gov/example")
+        self.assertIn("BPS", event)
 
     def test_switchgear_factory_production_event(self):
         text = "Eaton opens new factory and production begins for medium-voltage switchgear serving data centers."
@@ -138,6 +145,8 @@ class TransformerImportWatchTests(unittest.TestCase):
         self.assertEqual(liquid["world_usd"], 200_000_000)
         self.assertEqual(liquid["china_usd"], 35_000_000)
         self.assertEqual(liquid["korea_usd"], 40_000_000)
+        self.assertEqual(w.COUNTRY_NAMES["5490"], "태국")
+        self.assertEqual(w.COUNTRY_NAMES["4791"], "크로아티아")
 
     def test_substitution_signal_requires_china_down_and_korea_up(self):
         prev = {"china_share_pct": 8.0, "korea_share_pct": 18.0}
@@ -198,6 +207,38 @@ class TransformerImportWatchTests(unittest.TestCase):
         self.assertIn("EO 14421", alert)
         self.assertIn("일괄 금지가 아닙니다", alert)
         self.assertIn("효성중공업·HD현대일렉트릭·LS ELECTRIC", alert)
+
+    def test_trade_alert_does_not_overclaim_large_transformer_substitution(self):
+        trade_state = {
+            **w.TRANSFORMER_IMPORT_BASELINE,
+            "latest_month": "2026-08",
+            "history": {
+                "2026-07": {
+                    "primary_850423": {"china_share_pct": 10.2, "korea_share_pct": 17.0},
+                    "liquid_850421_23": {"china_share_pct": 8.1, "korea_share_pct": 16.6},
+                },
+                "2025-08": {
+                    "liquid_850421_23": {"china_share_pct": 7.2, "korea_share_pct": 21.5},
+                },
+                "2026-08": {
+                    "source_url": "https://www.census.gov/example.zip",
+                    "primary_850423": {
+                        "china_share_pct": 4.3, "korea_share_pct": 14.3,
+                        "china_usd": 16_000_000, "korea_usd": 53_000_000,
+                    },
+                    "liquid_850421_23": {
+                        "china_share_pct": 5.5, "korea_share_pct": 18.3,
+                        "china_usd": 35_000_000, "korea_usd": 116_000_000,
+                        "top_origins": [],
+                    },
+                },
+            },
+        }
+        alert = w.build_transformer_import_alert({"type": "bootstrap", "month": "2026-08"}, trade_state)
+        self.assertIn("HS 850423 전월 대비", alert)
+        self.assertIn("HS 850421~850423 전월 대비", alert)
+        self.assertIn("10,000kVA 초과 HS 850423에서는 같은 대체 패턴이 확인되지 않아", alert)
+        self.assertIn("확대해석하지 않습니다", alert)
 
 
 class GridAlertTests(unittest.TestCase):
