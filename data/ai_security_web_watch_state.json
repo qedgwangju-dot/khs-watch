@@ -3,11 +3,11 @@
   "direct_official_version": 3,
   "initialized": true,
   "last_collection": {
-    "direct_official_items": 15,
+    "direct_official_items": 27,
     "errors": [],
-    "material_items": 2,
-    "new_material_items": 0,
-    "raw_items": 36
+    "material_items": 4,
+    "new_material_items": 2,
+    "raw_items": 72
   },
   "seen": {
     "027ea08934406a07812d619d": {
@@ -150,6 +150,16 @@
       "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOajFqRHlNMUttN0pzY014QnFwZTlIeDhnaUpuZU9XMjFicHNVUXpOTUFZWUM2Uk94NFdsbVVuNjNWMzNNM29mN3JITnNZY1cydThONGJnZk55dnh0VUNtSHlDSFhGVlpGSFZUVV9iSmpxVUVGejVwUWhVOGstc2FDSWtSSzM2RkJxWkFxS3pqemVKMlFRZDR0SGNERTM1TW1DSmZZcWFXZzNELUZoeDNsc3ZnVUjSAbQBQVVfeXFMTmoxakR5TTFLbTdKc2NNeEJxcGU5SHg4Z2lKbmVPVzIxYnBzVVF6Tk1BWVlDNlJPeDRXbG1VbjYzVjMzTTNvZjdySE5zWWNXMnU4TjRiZ2ZOeXZ4dFVDbUh5Q0hYRlZaRkhWVFVfYkpqcVVFRno1cFFoVThrLXNhQ0lrUkszNkZCcVpBcUt6anplSjJRUWQ0dEhjREUzNU1tQ0pmWXFhV2czRC1GaHgzbHN2Z1VI?oc=5",
       "vendor": "OpenAI"
     },
+    "7a6370340c8995f59a18b5f9": {
+      "category": "프런티어 모델 사이버 역량·접근 확대",
+      "first_seen_at": "2026-10-07T00:02:25.544576+00:00",
+      "published_at": null,
+      "severity": 1,
+      "source": "Anthropic News",
+      "title": "Anthropic News: cyber verification program",
+      "url": "https://www.anthropic.com/news/cyber-verification-program",
+      "vendor": "Anthropic"
+    },
     "7e91336b9e3264ee5af31584": {
       "category": "취약점·패치",
       "first_seen_at": "2026-09-29T01:48:27.859797+00:00",
@@ -239,7 +249,17 @@
       "title": "OpenAI Calls Off GPT-6.1 Astra Launch, Details Safety Cases for Frontier Training - securityweek.com",
       "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOajFqRHlNMUttN0pzY014QnFwZTlIeDhnaUpuZU9XMjFicHNVUXpOTUFZWUM2Uk94NFdsbVVuNjNWMzNNM29mN3JITnNZY1cydThONGJnZk55dnh0VUNtSHlDSFhGVlpGSFZUVV9iSmpxVUVGejVwUWhVOGstc2FDSWtSSzM2RkJxWkFxS3pqemVKMlFRZDR0SGNERTM1TW1DSmZZcWFXZzNELUZoeDNsc3ZnVUjSAbQBQVVfeXFMTmoxakR5TTFLbTdKc2NNeEJxcGU5SHg4Z2lKbmVPVzIxYnBzVVF6Tk1BWVlDNlJPeDRXbG1VbjYzVjMzTTNvZjdySE5zWWNXMnU4TjRiZ2ZOeXZ4dFVDbUh5Q0hYRlZaRkhWVFVfYkpqcVVFRno1cFFoVThrLXNhQ0lrUkszNkZCcVpBcUt6anplSjJRUWQ0dEhjREUzNU1tQ0pmWXFhV2czRC1GaHgzbHN2Z1VI?oc=5",
       "vendor": "OpenAI"
+    },
+    "f4bea67992f69289910c8f4c": {
+      "category": "취약점·패치",
+      "first_seen_at": "2026-10-07T00:02:25.544576+00:00",
+      "published_at": null,
+      "severity": 1,
+      "source": "Anthropic News",
+      "title": "Anthropic News: improving alignment security efforts",
+      "url": "https://www.anthropic.com/news/improving-alignment-security-efforts",
+      "vendor": "Anthropic"
     }
   },
-  "updated_at_kst": "2026-10-07T08:44:14+09:00"
+  "updated_at_kst": "2026-10-07T09:02:25+09:00"
 }
