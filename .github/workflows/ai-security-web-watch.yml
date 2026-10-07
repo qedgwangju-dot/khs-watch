@@ -127,6 +127,18 @@ jobs:
 
           cases = [
               (
+                  "JPMorgan CEO Jamie Dimon said risks from AI went up 10-fold after Anthropic Mythos, raising financial sector cyber risk",
+                  "금융·핵심인프라 AI 사이버 위험 경보",
+              ),
+              (
+                  "Anthropic expanded the Cyber Verification Program with Claude Mythos and reduced blocking classifiers for vetted red teams",
+                  "프런티어 모델 사이버 역량·접근 확대",
+              ),
+              (
+                  "Project Glasswing identified 129,000 verified software vulnerabilities including 33,000 critical or high severity",
+                  "대규모 취약점 발굴·검증",
+              ),
+              (
                   "White House Accord on Super Intelligence external audit found security control failure and unauthorized access",
                   "공동서약·외부감사 보안실패",
               ),
