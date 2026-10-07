@@ -105,15 +105,7 @@ jobs:
           print("nuclear_regression_tests=passed")
           PY
 
-      - name: One-time live verification for Hanul 4 restart state
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh api --method PUT "/repos/${GITHUB_REPOSITORY}/actions/workflows/khs-policy-watch.yml/enable"
-          gh workflow run khs-policy-watch.yml --ref main -f telegram_test=false -f telegram_dry_run=false
-          echo "hanul4_live_verification_dispatch=created"
-
-      # This one-time dispatch step will be removed immediately after the live run is created.
+      # Maintenance pushes validate only; they do not enable, resume, or dispatch the live watch.
 
   watch:
     if: github.event_name != 'push'
