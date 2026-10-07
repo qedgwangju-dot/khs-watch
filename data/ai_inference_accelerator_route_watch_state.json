@@ -2,13 +2,13 @@
   "initialized": true,
   "last_collection": {
     "errors": [],
-    "material_items": 1,
-    "new_articles": 0,
-    "new_events": 0,
-    "raw_items": 36,
+    "material_items": 0,
+    "new_articles": 1,
+    "new_events": 1,
+    "raw_items": 35,
     "stale_backfill_suppressed": 0
   },
-  "news_watermark_utc": "2026-10-06T21:46:29.083320+00:00",
+  "news_watermark_utc": "2026-10-07T01:41:15.196259+00:00",
   "official_pages": {
     "OpenAI GPT-5.6 Sol Ultrafast 미리보기": {
       "candidate_count": 0,
@@ -49,10 +49,12 @@
       "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol"
     },
     "OpenAI Ultrafast 모드": {
-      "candidate_count": 1,
-      "candidate_digest": "e03a66b0a6fedeac421d1ef155a23fec7958b80f29600d204b54828bd6b66dff",
-      "candidate_first_seen_at": "2026-10-06T21:46:29.083320+00:00",
-      "candidate_semantic": {
+      "candidate_count": 0,
+      "candidate_digest": null,
+      "candidate_first_seen_at": null,
+      "candidate_semantic": null,
+      "digest": "e03a66b0a6fedeac421d1ef155a23fec7958b80f29600d204b54828bd6b66dff",
+      "semantic": {
         "eu_regional_supported": false,
         "gpt_5_6_sol_preview": true,
         "gpt_6_1_sol_mentioned": false,
@@ -65,21 +67,7 @@
         "tier_5_tpm": null,
         "us_data_residency": true
       },
-      "digest": "d61ae1f794633bc64323435a704f77844f2dd6fd8691d663d909894d0eb8e2c1",
-      "semantic": {
-        "eu_regional_supported": false,
-        "gpt_5_6_sol_preview": true,
-        "gpt_6_1_sol_mentioned": false,
-        "gpt_6_astra_supported": true,
-        "kind": "openai_ultrafast",
-        "max_speed_x": 8.0,
-        "service_tier_ultrafast": true,
-        "tier_1_3_tpm": 500000,
-        "tier_4_tpm": 1000000,
-        "tier_5_tpm": 5000000,
-        "us_data_residency": true
-      },
-      "updated_at": "2026-10-04T00:19:23.713969+00:00",
+      "updated_at": "2026-10-07T01:41:15.196259+00:00",
       "url": "https://developers.openai.com/api/docs/guides/ultrafast-mode"
     },
     "OpenAI·Cerebras 750MW 계약": {
@@ -160,5 +148,5 @@
       "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9KcU1JWEFGdV96M2o5aF9HdU14SzRNTU5PVWh3RnRQUUJTa3RZT05YZkJNTHZ0RnpveXBhODdoSnNxcU1DSmg2dUFpWGV6c2FPR1FoV3B4QnB2MWJkXzhNbWdTdjVZaW5adDV2SlFYWXAwQQ?oc=5"
     }
   },
-  "updated_at_kst": "2026-10-07T06:46:29+09:00"
+  "updated_at_kst": "2026-10-07T10:41:15+09:00"
 }
