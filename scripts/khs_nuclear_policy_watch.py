@@ -123,7 +123,8 @@ HANUL4_KHNP_MAIN = "https://www.khnp.co.kr/hanul/index.do"
 HANUL4_KHNP_MOBILE = "https://m.khnp.co.kr/main/index.do"
 HANUL4_KHNP_NPP = "https://npp.khnp.co.kr/"
 HANUL4_RESTART_APPROVAL_PRIMARY = "https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=04014726645610624"
-HANUL4_RESTART_APPROVAL_SECONDARY = "https://www.electimes.com/news/articleView.html?idxno=373171"
+HANUL4_RESTART_APPROVAL_SECONDARY = "https://mobile.newsis.com/view/NISX20261007_0003817361"
+HANUL4_USER_SOURCE = "https://www.electimes.com/news/articleView.html?idxno=373171"
 HANUL4_FIXED_BASELINE = {
     "kind": "domestic_reactor_operation",
     "reactor": "한울4호기",
@@ -147,7 +148,7 @@ HANUL4_VERIFIED_APPROVAL = {
     "published_utc": "2026-10-07T05:10:39+00:00",
     "published_kst": "2026-10-07T14:10:39+09:00",
     "title": "원안위, 한울4호기 재가동 승인",
-    "source": "원안위 발표 인용 · 이데일리/전기신문 교차확인",
+    "source": "원안위 발표 인용 · 이데일리/뉴시스 교차확인",
     "link": HANUL4_RESTART_APPROVAL_PRIMARY,
     "secondary_link": HANUL4_RESTART_APPROVAL_SECONDARY,
     "official": False,
