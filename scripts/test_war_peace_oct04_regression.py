@@ -672,4 +672,45 @@ check("oct07-aden-alias-detected", mod._aden_airport_attack_cluster(aden_alias))
 check("oct07-aden-alias-same-id", mod.item_id(aden_alias) == mod.item_id(aden_yonhap))
 check("oct07-aden-alias-topic", mod.topic_label(aden_alias) == "예멘·후티 · 아덴 국제공항 공격")
 
+
+# 22) 이란의 직접협상 부인은 전체 외교채널 결렬·군사확전으로 승격하지 않는다.
+iran_direct_denial = row(
+    "Iran denies direct talks with U.S. but says messages continue through mediators",
+    source="Walter Bloomberg",
+    description=(
+        "Iranian officials denied direct negotiations with the United States, "
+        "while saying messages continue to be exchanged through intermediaries."
+    ),
+    link="https://t.me/WalterBloomberg/36522",
+)
+check("oct07-iran-direct-denial-detected", mod._iran_direct_talks_denial_only(iran_direct_denial))
+s, tags = mod.score_item(iran_direct_denial, dt.datetime.now(mod.watch.KST))
+check("oct07-iran-direct-denial-yellow", mod.final_color(iran_direct_denial) == "yellow")
+check("oct07-iran-direct-denial-no-red-tags", "확전" not in tags and "확전위험" not in tags and "재확전위험" not in tags)
+check("oct07-iran-direct-denial-topic", mod.topic_label(iran_direct_denial) == "이란·미국 · 직접협상 부인·간접접촉 구분")
+check("oct07-iran-direct-denial-title", "전체 협상 결렬" in iran_direct_denial["title_ko"])
+
+bad_direct_denial = """<b>전쟁·종전·재건 웹감시</b>
+🔴 [신규] <b>1. 이란·미국</b>
+이란 측 직접협상 부인
+"""
+mod.watch.ALERT.write_text(bad_direct_denial, encoding="utf-8")
+try:
+    mod.verify_alert(False)
+    raise AssertionError("oct07-quality-gate-direct-denial")
+except RuntimeError as e:
+    check("oct07-quality-gate-direct-denial", "직접협상 부인" in str(e))
+
+
+# 23) 구체적 신규 사건 없는 '사우디-후티 격화 + 미-이란 대화 지속' 종합기사는 별도 속보로 보내지 않는다.
+regional_recap = row(
+    '사우디-후티 충돌 격화…"미-이란 대화 지속"',
+    source="OBS경인TV",
+    description="사우디-후티 충돌과 미-이란 외교 상황을 함께 정리한 지역 종합 기사.",
+    link="https://news.google.com/rss/articles/obs-regional-recap",
+)
+check("oct07-regional-recap-detected", mod._regional_recap_without_discrete_event(regional_recap))
+s, tags = mod.score_item(regional_recap, dt.datetime.now(mod.watch.KST))
+check("oct07-regional-recap-suppressed", s == 0 and tags == [])
+
 print("WAR_PEACE_OCT04_REGRESSION_OK")
