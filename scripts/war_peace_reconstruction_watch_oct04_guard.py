@@ -494,6 +494,12 @@ def _aden_airport_attack_cluster(row):
     """같은 아덴 국제공항 탄도미사일·드론 공격의 매체별 재보도를 하나로 묶는다."""
     t = _text(row).lower()
     aden = any(x in t for x in ("aden", "아덴"))
+    # 국내 재게시 제목에서 지명이 빠져 "예멘 핵심공항"으로 축약되는 동일 사건도 식별한다.
+    aden_alias = (
+        any(x in t for x in ("예멘 핵심공항", "예멘 핵심 공항", "yemen key airport"))
+        and any(x in t for x in ("착륙 직전", "긴급 회항", "회항", "runway", "활주로"))
+    )
+    aden = aden or aden_alias
     airport = any(x in t for x in ("international airport", "airport", "국제공항", "공항"))
     houthi = any(x in t for x in ("houthi", "houthis", "후티"))
     attack = any(x in t for x in (
