@@ -1,5 +1,5 @@
 {
-  "last_checked_kst": "2026-10-08T00:37:51+09:00",
+  "last_checked_kst": "2026-10-08T00:41:10+09:00",
   "active": {
     "fr10:above:4.5": true,
     "fr10:above:4.75": true,
@@ -18,7 +18,13 @@
     "uk10:above:5.25": true,
     "uk10:above:5.5": false,
     "uk10:daymove:10.0": false,
-    "uk10:5obs:25.0": false
+    "uk10:5obs:25.0": false,
+    "it10:above:4.5": true,
+    "it10:above:4.75": false,
+    "it10:above:5.0": false,
+    "fr_de_market_spread:above:100.0": true,
+    "fr_de_market_spread:above:125.0": true,
+    "fr_de_market_spread:above:150.0": false
   },
   "history": {
     "fr10": [
@@ -38,18 +44,50 @@
         "date": "2026-10-05",
         "value": 5.3634
       }
+    ],
+    "fr_mkt": [
+      {
+        "date": "2026-10-07",
+        "value": 4.89
+      }
+    ],
+    "de_mkt": [
+      {
+        "date": "2026-10-07",
+        "value": 3.47
+      }
+    ],
+    "it10": [
+      {
+        "date": "2026-10-07",
+        "value": 4.64
+      }
+    ],
+    "uk_mkt": [
+      {
+        "date": "2026-10-07",
+        "value": 5.44
+      }
     ]
   },
   "source_fail_streak": 0,
   "last_source_dates": {
     "fr10": "2026-10-07",
     "de10": "2026-10-07",
-    "uk10": "2026-10-05"
+    "uk10": "2026-10-05",
+    "fr_mkt": "2026-10-07",
+    "de_mkt": "2026-10-07",
+    "it10": "2026-10-07",
+    "uk_mkt": "2026-10-07"
   },
   "last_values": {
     "fr10": 4.834,
     "de10": 3.49,
-    "uk10": 5.3634
+    "uk10": 5.3634,
+    "fr_mkt": 4.89,
+    "de_mkt": 3.47,
+    "it10": 4.64,
+    "uk_mkt": 5.44
   },
   "stale": [
     "uk10"
