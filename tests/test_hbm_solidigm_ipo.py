@@ -66,7 +66,8 @@ class SolidigmIPOTests(unittest.TestCase):
         self.assertEqual(upgraded["source_url"], w.REPORT_EDAILY_URL)
         self.assertIn("대표주관사", " / ".join(w.material_changes(old, upgraded)))
         self.assertEqual(w.material_changes(upgraded, w.merge_state(upgraded, patch_data)), [])
-        alert = w.alert_text(old, upgraded, w.material_changes(old, upgraded), w.now_kst())
+        with patch.object(w, "fx_quote", return_value=(1340.0, "테스트 환율")):
+            alert = w.alert_text(old, upgraded, w.material_changes(old, upgraded), w.now_kst())
         self.assertIn("대표주관사(블룸버그 보도)", alert)
         self.assertIn("확정 공모금액 감액이 아니라", alert)
         self.assertIn("별개 독립 확인 3건이 아닙니다", alert)
