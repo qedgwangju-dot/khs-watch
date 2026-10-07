@@ -3,17 +3,17 @@
   "source_dates": {
     "auction10": "10/6/2026",
     "auction30": "9/3/2026",
-    "jgb10": "2026/10/5",
+    "jgb10": "2026/10/6",
     "mof_week": "2026-09-20~09-26"
   },
-  "updated_at_kst": "2026-10-07T07:57:28+09:00",
+  "updated_at_kst": "2026-10-07T17:43:11+09:00",
   "values": {
     "auction10_bid_to_cover": 3.764355831341234,
     "auction10_tail_bp": 0.20000000000002238,
     "auction30_bid_to_cover": 3.788031565103025,
     "auction30_tail_bp": 2.0999999999999908,
-    "jgb10": 3.085,
-    "jgb10_consecutive_days_ge_3": 3,
+    "jgb10": 3.103,
+    "jgb10_consecutive_days_ge_3": 4,
     "jgb10_ge_3": true,
     "mof_equity_2w_trillion_yen": 0.2701,
     "mof_lt_debt_2w_trillion_yen": -2.5894,
