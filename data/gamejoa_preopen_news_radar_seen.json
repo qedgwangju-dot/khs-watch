@@ -1748,6 +1748,27 @@
       "source": "이투데이",
       "title": "[속보] 국제유가, 급등⋯브렌트유 4.37%↑"
     },
+    "event:45c6b921c1baca4ddfc51495": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261007102808",
+      "source": "지디넷코리아",
+      "source_body_digest": "4d3ab6f29185a97e1cbef149035cfb6490dff632e6a9827f3dfadf2aef49f4b9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8f8c9fbae11339aa6064beb82849cf09fba86556ff0cc35728ffde333cf2177",
+      "source_fact_keys": [
+        "source_fact:v1:30f20bfed3ce5b3cecf05a88f775f3aba8e013c032bc2485040777b7cff60f37",
+        "source_fact:v1:72175fb8cde3dc1bc3226fb6245636a50dd1bfc67a422b60e5e3d412f894e0c8",
+        "source_fact:v1:80fb421d2f0727257bdcb30fe9a510552e17319863c6a09519344930eb9ea644",
+        "source_fact:v1:94d43dbbce38199a597e859f5b9e36a982c7bca87703e16f73c6daa8bf851c34",
+        "source_fact:v1:ba673fe341e230a7878efb31c0a395ddc6071828df5d86a19fc81ff350d4f4f9"
+      ],
+      "source_published_kst": "2026-10-07T10:47+09:00",
+      "title": "곽동신 한미반도체 회장, 자사주 누적 702억원 취득"
+    },
     "event:46ab606853d611e62fa2cdc3": {
       "first_seen_kst": "2026-09-25T15:40:29+09:00",
       "lanes": {
@@ -4538,20 +4559,24 @@
     "event:a6ba43054333cc97a61ee4ca": {
       "first_seen_kst": "2026-10-07T08:36:47+09:00",
       "lanes": {
-        "live": "2026-10-07T08:36:47+09:00"
+        "live": "2026-10-07T11:11:31+09:00"
       },
-      "last_seen_kst": "2026-10-07T08:36:47+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02745366645610624&mediaCodeNo=257",
-      "source": "이데일리",
-      "source_body_digest": "c5336bf8b9163b9236607ab5f039f0908e3c121aaa952226551d908d01ce4be7",
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.hankyung.com/article/202610076983i",
+      "source": "한국경제",
+      "source_body_digest": "42192b33ff7ed14483f6e23ed9b775f4b11fb4ffeacf198a05b87b8c3a66d3df",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:18ed91363a2546ebeed12c30e7c71c6a70295b1b425a43a2eafe9910828c1d0a",
+      "source_fact_identity": "source_facts:v1:f8911846093b0c3aa483c0bd64a2100d132745aa3868b9b4d596117d3c1b35c0",
       "source_fact_keys": [
-        "source_fact:v1:5b8dcc10dd92cd5751fe8d12014028a84441bbff7cec9cd95c591921442f49b3",
-        "source_fact:v1:d2a9c85f489ce22f224e08d638f8313913f13cbde592dbdf91c384a237553965"
+        "source_fact:v1:10979abaa2618d88396c2dead3029ba56437b7587204eebad5263d3974b0edfd",
+        "source_fact:v1:2bc1cfa9212252cad38b5a9e0f59b249eb818df94d9942b13b473a73b920568d",
+        "source_fact:v1:915c2632ad05c33ec2b612a0cca740c94183658c2653f144e62e2fb51f07848e",
+        "source_fact:v1:d8a16d737c6c47fa9b7b5d943a053b882d3acfa6816e0341e8fa069e374bbafc",
+        "source_fact:v1:ee7acc0d71e9d73b8e941f8c263ce0c40454505be5a672f1f9ebe1d9a51ac186",
+        "source_fact:v1:f97af669e008b5a9462954403b7c2677b7c2bdeafdf36bf3892470bcf4aea1e3"
       ],
-      "source_published_kst": "2026-10-07T08:06+09:00",
-      "title": "\"호르무즈 건너면 월 2억원\"…유조선 선장 '목숨값' 폭등"
+      "source_published_kst": "2026-10-07T08:08+09:00",
+      "title": "선장에 월 10만달러·보너스까지…호르무즈 '위험수당' 급등"
     },
     "event:a7b45cbdb5eac421b1f35805": {
       "first_seen_kst": "2026-09-26T20:15:20+09:00",
@@ -6923,32 +6948,25 @@
     "event:febefe7c470ae5912214fadc": {
       "first_seen_kst": "2026-10-07T03:04:14+09:00",
       "lanes": {
-        "live": "2026-10-07T08:15:28+09:00"
+        "live": "2026-10-07T11:11:31+09:00"
       },
-      "last_seen_kst": "2026-10-07T08:15:28+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2633109",
-      "source": "이투데이",
-      "source_body_digest": "9680c124dd50f544b5d9cbbe2c8a708f850cc292cffea17093e6c8caa5e11b30",
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.etnews.com/20261007000126",
+      "source": "전자신문",
+      "source_body_digest": "c14df3762821c77e1457188bc65a1d3454f5d0dc5cf9c6ad7e598ac29a93189c",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:9bddc17b26e5c69ab27b8fdbb2f023329ff1b0af57973648c46f4319c1e20ebf",
+      "source_fact_identity": "source_facts:v1:d3f2d0307101aa9f773045a9f4a75ee6cef0835b1f28ac891c37250ba2355af8",
       "source_fact_keys": [
-        "source_fact:v1:05dd550fd70dddbbe216c23dde689a825899a69ea8044525ec9189332c62ad27",
-        "source_fact:v1:075f37bb5e541b42db4c746c8db6d9af8c4421c164b2bc047f372e5126a18f85",
-        "source_fact:v1:1ac5bcad8c988c283b56fa924073166c35fcb75d909513c46e727a383fbc33be",
-        "source_fact:v1:357d0c8e5f3378154ce7874311876eadf691282727c592f7ccca6e6174d1aaa1",
-        "source_fact:v1:3a1bc438af2146154aa11fa83780f50a119e88865f72242ddbdf25e247870ab4",
-        "source_fact:v1:4116725223d0777cd91bc7e755f926438f24868551a28e2beef320d5a6db79bd",
-        "source_fact:v1:745f6c1eb3ae9ed92557436fc5846901bd48c30e746e047d5a742d7bcd8f2583",
-        "source_fact:v1:832cddf8ecf3780d3d4c73db24df1f5397222c711386827440f2c40f92b1fd2b",
-        "source_fact:v1:92d59f8cb7c7c8bc0854c980f77ce3282b84562c2aa69f4cd473881922fc27e6",
-        "source_fact:v1:93ab5f2a7321455e7e6e1c4f4cd88aad3ed9ad697fcdaab10d0042efb165c658",
-        "source_fact:v1:a65d65222848c79b7e23ffb87dfab4d033e93cc36419eedad486e69d5e443565",
-        "source_fact:v1:ce21b59535856fde141bce96afb2aac892a41dcfcc2501cd086a7e714da0180e",
-        "source_fact:v1:db8e47e4def8e86b3d7269a3717b74a62c146c4b3e7d0c458be29b91e6278893",
-        "source_fact:v1:dbae52a547b4e8d4c459eb588b5c12df0c4b7846ca299d93efde92a510662311"
+        "source_fact:v1:0609894b679db695b6bc6b2a1f7553fe30a96eec315a6debe84ea11cd87ecc79",
+        "source_fact:v1:19417bbe7d3cce91db65448a0827bef3f8af351287180a5c48ad1b9cdbaed724",
+        "source_fact:v1:63a4ec3b26de058277501cb1cc8d0234a8e0e0ad8867ed7def116a52561a3982",
+        "source_fact:v1:7adf3269e9a1149900d545cbe517a632597d3b6857d722a392b52070df183617",
+        "source_fact:v1:c5136c48bdebe30f95693886748252441fb45ec438acf3b07a1904829352382d",
+        "source_fact:v1:db8fc1e08906d65f66bfbffcd7fd92a16a74e5b4cdb7c965c3ba823a73af6434",
+        "source_fact:v1:ee43e6f3172cb26afca25bb7f3e11959ec8320d6f1c4b178d50ed75435310f85"
       ],
-      "source_published_kst": "2026-10-07T08:08+09:00",
-      "title": "AMD “반도체 수요, 공급 크게 앞질러”⋯CEO 움직이자 주가는 최고치"
+      "source_published_kst": "2026-10-07T10:31+09:00",
+      "title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력"
     },
     "event:fffe737ddd6fae97fd31728a": {
       "first_seen_kst": "2026-10-01T16:03:27+09:00",
@@ -9289,6 +9307,27 @@
       ],
       "source_published_kst": "2026-10-05T17:19+09:00",
       "title": "4대 과기원 수시 지원자 최다 … AI·반도체 열풍에 3만명 몰려"
+    },
+    "fact:1e9411ef94f4d2158042c064": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261007102808",
+      "source": "지디넷코리아",
+      "source_body_digest": "4d3ab6f29185a97e1cbef149035cfb6490dff632e6a9827f3dfadf2aef49f4b9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8f8c9fbae11339aa6064beb82849cf09fba86556ff0cc35728ffde333cf2177",
+      "source_fact_keys": [
+        "source_fact:v1:30f20bfed3ce5b3cecf05a88f775f3aba8e013c032bc2485040777b7cff60f37",
+        "source_fact:v1:72175fb8cde3dc1bc3226fb6245636a50dd1bfc67a422b60e5e3d412f894e0c8",
+        "source_fact:v1:80fb421d2f0727257bdcb30fe9a510552e17319863c6a09519344930eb9ea644",
+        "source_fact:v1:94d43dbbce38199a597e859f5b9e36a982c7bca87703e16f73c6daa8bf851c34",
+        "source_fact:v1:ba673fe341e230a7878efb31c0a395ddc6071828df5d86a19fc81ff350d4f4f9"
+      ],
+      "source_published_kst": "2026-10-07T10:47+09:00",
+      "title": "곽동신 한미반도체 회장, 자사주 누적 702억원 취득"
     },
     "fact:1ea43ed29780a9a792d9ca3a": {
       "first_seen_kst": "2026-10-07T07:01:10+09:00",
@@ -12857,6 +12896,28 @@
       "source_published_kst": "2026-10-05T17:00+09:00",
       "title": "금호석유화학, LFP 전지용 CNT 개발 본격화…내년 상업화 추진"
     },
+    "fact:58a577e80351aebe578d94da": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.hankyung.com/article/202610076983i",
+      "source": "한국경제",
+      "source_body_digest": "42192b33ff7ed14483f6e23ed9b775f4b11fb4ffeacf198a05b87b8c3a66d3df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8911846093b0c3aa483c0bd64a2100d132745aa3868b9b4d596117d3c1b35c0",
+      "source_fact_keys": [
+        "source_fact:v1:10979abaa2618d88396c2dead3029ba56437b7587204eebad5263d3974b0edfd",
+        "source_fact:v1:2bc1cfa9212252cad38b5a9e0f59b249eb818df94d9942b13b473a73b920568d",
+        "source_fact:v1:915c2632ad05c33ec2b612a0cca740c94183658c2653f144e62e2fb51f07848e",
+        "source_fact:v1:d8a16d737c6c47fa9b7b5d943a053b882d3acfa6816e0341e8fa069e374bbafc",
+        "source_fact:v1:ee7acc0d71e9d73b8e941f8c263ce0c40454505be5a672f1f9ebe1d9a51ac186",
+        "source_fact:v1:f97af669e008b5a9462954403b7c2677b7c2bdeafdf36bf3892470bcf4aea1e3"
+      ],
+      "source_published_kst": "2026-10-07T08:08+09:00",
+      "title": "선장에 월 10만달러·보너스까지…호르무즈 '위험수당' 급등"
+    },
     "fact:58cbf9a65f5aa36a64588e58": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
       "lanes": {
@@ -13102,6 +13163,27 @@
       ],
       "source_published_kst": "2026-10-05T22:51+09:00",
       "title": "[美특징주]PTC, 슈나이더 일렉트릭 피인수 소식에 주가 '급등'"
+    },
+    "fact:5e8fd94e72a7ff20fee7b295": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816808",
+      "source": "뉴시스",
+      "source_body_digest": "8346de7ca49bc8f77cefda767f4f4a6a1e84941c41fd06162e3c0837c35a1900",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:91764af32daf2808404e9cd50106a499b2b461080d841386f37abeda4859dee2",
+      "source_fact_keys": [
+        "source_fact:v1:573404d4541f1bdeb7303df26862d69871d2962cc5a8fc4317bbdd3c8155bc33",
+        "source_fact:v1:8314add40526b119aaf33a9b092db57c385a49dd44828eb8e4852d5e2ab408e0",
+        "source_fact:v1:84acdc22262c69cf703b8f3999398f86d11c0885d6f63a96a9e846c29aa363a3",
+        "source_fact:v1:a67737f72053b38962149ba9d143dc71c2458c5fea4a5644726061c5a14fc00b",
+        "source_fact:v1:b3faf84fa840f59e99bf9884d0a3fa2cf41cf5c62116f5e55f690f53bf045548"
+      ],
+      "source_published_kst": "2026-10-07T09:48+09:00",
+      "title": "KT클라우드, 50MW급 '청라 AI 데이터센터' 구축…2030년 준공"
     },
     "fact:5f6dfaf6a3d3f53eff8a55e0": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -14952,6 +15034,29 @@
       ],
       "source_published_kst": "2026-10-05T19:24+09:00",
       "title": "ZTO 익스프레스, 자사주 14만주 매입..268만 달러 규모"
+    },
+    "fact:7bf044c7498763a4f237fedb": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.etnews.com/20261007000126",
+      "source": "전자신문",
+      "source_body_digest": "c14df3762821c77e1457188bc65a1d3454f5d0dc5cf9c6ad7e598ac29a93189c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d3f2d0307101aa9f773045a9f4a75ee6cef0835b1f28ac891c37250ba2355af8",
+      "source_fact_keys": [
+        "source_fact:v1:0609894b679db695b6bc6b2a1f7553fe30a96eec315a6debe84ea11cd87ecc79",
+        "source_fact:v1:19417bbe7d3cce91db65448a0827bef3f8af351287180a5c48ad1b9cdbaed724",
+        "source_fact:v1:63a4ec3b26de058277501cb1cc8d0234a8e0e0ad8867ed7def116a52561a3982",
+        "source_fact:v1:7adf3269e9a1149900d545cbe517a632597d3b6857d722a392b52070df183617",
+        "source_fact:v1:c5136c48bdebe30f95693886748252441fb45ec438acf3b07a1904829352382d",
+        "source_fact:v1:db8fc1e08906d65f66bfbffcd7fd92a16a74e5b4cdb7c965c3ba823a73af6434",
+        "source_fact:v1:ee43e6f3172cb26afca25bb7f3e11959ec8320d6f1c4b178d50ed75435310f85"
+      ],
+      "source_published_kst": "2026-10-07T10:31+09:00",
+      "title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력"
     },
     "fact:7c397f84e4d36a800a7caa98": {
       "first_seen_kst": "2026-10-06T16:20:22+09:00",
@@ -16984,6 +17089,23 @@
       ],
       "source_published_kst": "2026-10-06T11:30+09:00",
       "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
+    },
+    "fact:98c8a43fc8f95b9232ef4a94": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007049600017",
+      "source": "연합뉴스",
+      "source_body_digest": "54d1cdb0c4daca9cece9f379b766ac9c5bc62577efd803b140c4af60d8f17b74",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9be1af79750287510a2df393a853afde5605ab5ea0ca8b92d355de82bb9b42be",
+      "source_fact_keys": [
+        "source_fact:v1:52a391f992e4302f8126f053c7ecb7a33bf0059e72733a11f75c674d0e701041"
+      ],
+      "source_published_kst": "2026-10-07T09:42+09:00",
+      "title": "kt클라우드, 50MW급 청라 AI 데이터센터 구축 사업 참여 | 연합뉴스"
     },
     "fact:98cebbf938575312e1f5ff5b": {
       "first_seen_kst": "2026-10-07T00:09:35+09:00",
@@ -19085,6 +19207,29 @@
       "source_published_kst": "2026-10-06T17:50+09:00",
       "title": "태성, 69억 규모 FC-BGA용 기계장치 수주"
     },
+    "fact:bef0ba4c16398a307c496093": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817014",
+      "source": "뉴시스",
+      "source_body_digest": "df5711940dc0b29c881b42c34c5f503377e64657ff8d01ef603e04ab60c640c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c1e26f3edf85fe5c0b124f90ac810a422a842f6c4ea1d7baf9230c72da4eaa9",
+      "source_fact_keys": [
+        "source_fact:v1:25500ebd7dcfdc739f2941ee2f0e81c594f8516226623bc36d45f7fd2c9df912",
+        "source_fact:v1:6c22c99eca9532819b9fd06f7064c1777c550baeeafdab06d3926b90152bffa5",
+        "source_fact:v1:9f860d73a9f77ffb6d7ebc2dec1bee714cf17e6eeacafea8b59e60e849a6b663",
+        "source_fact:v1:c968e0d819ade607b285eb2be617c1fd6898b29888ea129d4c0252aef06c9320",
+        "source_fact:v1:cae542c0e02bd140b0c4bb967a6327d0c7076f4eeca4862a9159f82a26e14fb0",
+        "source_fact:v1:d03e5630ab99d83c66626159df593fd87a4bee27a163ba729ba94d589b4a0f8a",
+        "source_fact:v1:deaa6162135d5d1c6453143a68e714b8a76e9a954fc7c3468e429ddf10d7e61a"
+      ],
+      "source_published_kst": "2026-10-07T11:07+09:00",
+      "title": "LG전자, 올 3Q 누적 영업익 '4조' 최초 달성…연간 최대 실적 '청신호'"
+    },
     "fact:bf245850838f50e6e842b180": {
       "first_seen_kst": "2026-10-05T22:57:49+09:00",
       "lanes": {
@@ -20151,6 +20296,26 @@
       ],
       "source_published_kst": "2026-10-05T18:18+09:00",
       "title": "환율·채권, 국고채 발행 축소…금리 3%대 머물듯"
+    },
+    "fact:ce24df71449bbeb4aaf0a4d6": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816968",
+      "source": "뉴시스",
+      "source_body_digest": "ef9a5927535bb29f665978b248ee3df39f70bfb6f4bff4e1a83a0ba604644ddf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f96006e6b7857c2db9d9fbe4db1db73697ccad2cbb4b9864a0f78c65ccf02e1",
+      "source_fact_keys": [
+        "source_fact:v1:0f749b46e358693c75dfce20eb6c8fc80da0d3467c0380a897d9f7c15a72e9f9",
+        "source_fact:v1:24ac5329e2e220953ce8698bc7415fea736a87a08f66d4e677f477652614b342",
+        "source_fact:v1:4409bbf06b3ab67217633f8efbb372e179903ffb1851155ccf74776f3e4caa51",
+        "source_fact:v1:5a8651726fa4687c451fa200c6843e4b3dfdc174ea3011ce2b9e48b70adca9b9"
+      ],
+      "source_published_kst": "2026-10-07T11:05+09:00",
+      "title": "\"가전·전장 끌고 TV도 반등\"…LG전자, 3Q 영업익 7818억원…전년比 13.5% 증가"
     },
     "fact:ce96f63a496910f0350e6699": {
       "first_seen_kst": "2026-10-06T22:51:44+09:00",
@@ -27912,6 +28077,23 @@
       "source": "이데일리",
       "title": "[속보]뉴욕증시, 장기금리 급등에 이틀째 약세…30년물 24년來 최고"
     },
+    "link:2859548afe206fc151c78174": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007049600017",
+      "source": "연합뉴스",
+      "source_body_digest": "54d1cdb0c4daca9cece9f379b766ac9c5bc62577efd803b140c4af60d8f17b74",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9be1af79750287510a2df393a853afde5605ab5ea0ca8b92d355de82bb9b42be",
+      "source_fact_keys": [
+        "source_fact:v1:52a391f992e4302f8126f053c7ecb7a33bf0059e72733a11f75c674d0e701041"
+      ],
+      "source_published_kst": "2026-10-07T09:42+09:00",
+      "title": "kt클라우드, 50MW급 청라 AI 데이터센터 구축 사업 참여 | 연합뉴스"
+    },
     "link:288d4eea0b8726d83cf59139": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
       "lanes": {
@@ -28638,6 +28820,28 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=02164806645608984",
       "source": "이데일리",
       "title": "[바이오맥짚기] '로열티·기술이전·독점권' 모멘텀 장착…헬릭스미스·지놈앤컴퍼니 급등"
+    },
+    "link:2ce7bd1d23847574147e255e": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.hankyung.com/article/202610076983i",
+      "source": "한국경제",
+      "source_body_digest": "42192b33ff7ed14483f6e23ed9b775f4b11fb4ffeacf198a05b87b8c3a66d3df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8911846093b0c3aa483c0bd64a2100d132745aa3868b9b4d596117d3c1b35c0",
+      "source_fact_keys": [
+        "source_fact:v1:10979abaa2618d88396c2dead3029ba56437b7587204eebad5263d3974b0edfd",
+        "source_fact:v1:2bc1cfa9212252cad38b5a9e0f59b249eb818df94d9942b13b473a73b920568d",
+        "source_fact:v1:915c2632ad05c33ec2b612a0cca740c94183658c2653f144e62e2fb51f07848e",
+        "source_fact:v1:d8a16d737c6c47fa9b7b5d943a053b882d3acfa6816e0341e8fa069e374bbafc",
+        "source_fact:v1:ee7acc0d71e9d73b8e941f8c263ce0c40454505be5a672f1f9ebe1d9a51ac186",
+        "source_fact:v1:f97af669e008b5a9462954403b7c2677b7c2bdeafdf36bf3892470bcf4aea1e3"
+      ],
+      "source_published_kst": "2026-10-07T08:08+09:00",
+      "title": "선장에 월 10만달러·보너스까지…호르무즈 '위험수당' 급등"
     },
     "link:2cf2b1a303c37515f127b0ab": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
@@ -33306,6 +33510,27 @@
       "source": "헤럴드경제",
       "title": "경영자문 성패가 회계법인 ‘빅4’ 실적 갈랐다"
     },
+    "link:52ab41930ac536d5b6ded1f7": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261007102808",
+      "source": "지디넷코리아",
+      "source_body_digest": "4d3ab6f29185a97e1cbef149035cfb6490dff632e6a9827f3dfadf2aef49f4b9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8f8c9fbae11339aa6064beb82849cf09fba86556ff0cc35728ffde333cf2177",
+      "source_fact_keys": [
+        "source_fact:v1:30f20bfed3ce5b3cecf05a88f775f3aba8e013c032bc2485040777b7cff60f37",
+        "source_fact:v1:72175fb8cde3dc1bc3226fb6245636a50dd1bfc67a422b60e5e3d412f894e0c8",
+        "source_fact:v1:80fb421d2f0727257bdcb30fe9a510552e17319863c6a09519344930eb9ea644",
+        "source_fact:v1:94d43dbbce38199a597e859f5b9e36a982c7bca87703e16f73c6daa8bf851c34",
+        "source_fact:v1:ba673fe341e230a7878efb31c0a395ddc6071828df5d86a19fc81ff350d4f4f9"
+      ],
+      "source_published_kst": "2026-10-07T10:47+09:00",
+      "title": "곽동신 한미반도체 회장, 자사주 누적 702억원 취득"
+    },
     "link:52c3f57a252b0eae30d987bb": {
       "first_seen_kst": "2026-09-21T03:48:22+09:00",
       "lanes": {
@@ -35280,6 +35505,29 @@
       ],
       "source_published_kst": "2026-10-07T00:00+09:00",
       "title": "우크라 '韓, 러 석유공급' 보도에 비판…\"제재 정책과 어긋나\""
+    },
+    "link:62e056130de9c592ec470c91": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.etnews.com/20261007000126",
+      "source": "전자신문",
+      "source_body_digest": "c14df3762821c77e1457188bc65a1d3454f5d0dc5cf9c6ad7e598ac29a93189c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d3f2d0307101aa9f773045a9f4a75ee6cef0835b1f28ac891c37250ba2355af8",
+      "source_fact_keys": [
+        "source_fact:v1:0609894b679db695b6bc6b2a1f7553fe30a96eec315a6debe84ea11cd87ecc79",
+        "source_fact:v1:19417bbe7d3cce91db65448a0827bef3f8af351287180a5c48ad1b9cdbaed724",
+        "source_fact:v1:63a4ec3b26de058277501cb1cc8d0234a8e0e0ad8867ed7def116a52561a3982",
+        "source_fact:v1:7adf3269e9a1149900d545cbe517a632597d3b6857d722a392b52070df183617",
+        "source_fact:v1:c5136c48bdebe30f95693886748252441fb45ec438acf3b07a1904829352382d",
+        "source_fact:v1:db8fc1e08906d65f66bfbffcd7fd92a16a74e5b4cdb7c965c3ba823a73af6434",
+        "source_fact:v1:ee43e6f3172cb26afca25bb7f3e11959ec8320d6f1c4b178d50ed75435310f85"
+      ],
+      "source_published_kst": "2026-10-07T10:31+09:00",
+      "title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력"
     },
     "link:630d6bb588e179406f1ad0b1": {
       "first_seen_kst": "2026-09-26T08:04:36+09:00",
@@ -38328,6 +38576,29 @@
       ],
       "source_published_kst": "2026-10-05T08:08+09:00",
       "title": "한반도 감시부터 우주의약품 실험까지…K-우주영토 넓힌다[누리호 5차 下]"
+    },
+    "link:7a8a6d10d3ae5d6bb5b2d89b": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817014",
+      "source": "뉴시스",
+      "source_body_digest": "df5711940dc0b29c881b42c34c5f503377e64657ff8d01ef603e04ab60c640c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c1e26f3edf85fe5c0b124f90ac810a422a842f6c4ea1d7baf9230c72da4eaa9",
+      "source_fact_keys": [
+        "source_fact:v1:25500ebd7dcfdc739f2941ee2f0e81c594f8516226623bc36d45f7fd2c9df912",
+        "source_fact:v1:6c22c99eca9532819b9fd06f7064c1777c550baeeafdab06d3926b90152bffa5",
+        "source_fact:v1:9f860d73a9f77ffb6d7ebc2dec1bee714cf17e6eeacafea8b59e60e849a6b663",
+        "source_fact:v1:c968e0d819ade607b285eb2be617c1fd6898b29888ea129d4c0252aef06c9320",
+        "source_fact:v1:cae542c0e02bd140b0c4bb967a6327d0c7076f4eeca4862a9159f82a26e14fb0",
+        "source_fact:v1:d03e5630ab99d83c66626159df593fd87a4bee27a163ba729ba94d589b4a0f8a",
+        "source_fact:v1:deaa6162135d5d1c6453143a68e714b8a76e9a954fc7c3468e429ddf10d7e61a"
+      ],
+      "source_published_kst": "2026-10-07T11:07+09:00",
+      "title": "LG전자, 올 3Q 누적 영업익 '4조' 최초 달성…연간 최대 실적 '청신호'"
     },
     "link:7aa2c1e050efb6bd5a316769": {
       "first_seen_kst": "2026-09-18T20:38:14+09:00",
@@ -46124,6 +46395,27 @@
       "source_event_identity": "",
       "title": "美대기업, CEO 붙잡으려 '특별 보상' 급증…작년만 2조원대"
     },
+    "link:bba1002ac4f3798538d80db1": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816808",
+      "source": "뉴시스",
+      "source_body_digest": "8346de7ca49bc8f77cefda767f4f4a6a1e84941c41fd06162e3c0837c35a1900",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:91764af32daf2808404e9cd50106a499b2b461080d841386f37abeda4859dee2",
+      "source_fact_keys": [
+        "source_fact:v1:573404d4541f1bdeb7303df26862d69871d2962cc5a8fc4317bbdd3c8155bc33",
+        "source_fact:v1:8314add40526b119aaf33a9b092db57c385a49dd44828eb8e4852d5e2ab408e0",
+        "source_fact:v1:84acdc22262c69cf703b8f3999398f86d11c0885d6f63a96a9e846c29aa363a3",
+        "source_fact:v1:a67737f72053b38962149ba9d143dc71c2458c5fea4a5644726061c5a14fc00b",
+        "source_fact:v1:b3faf84fa840f59e99bf9884d0a3fa2cf41cf5c62116f5e55f690f53bf045548"
+      ],
+      "source_published_kst": "2026-10-07T09:48+09:00",
+      "title": "KT클라우드, 50MW급 '청라 AI 데이터센터' 구축…2030년 준공"
+    },
     "link:bbc6fc503b05a4b7e567e175": {
       "first_seen_kst": "2026-10-05T12:50:14+09:00",
       "lanes": {
@@ -51203,6 +51495,26 @@
       "source": "연합뉴스",
       "title": "[머니플로우] 금리 고공행진에 CD·채권 관련 ETF 인기 '쑥' | 연합뉴스"
     },
+    "link:e3a93ce52184b0fabc1e0523": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816968",
+      "source": "뉴시스",
+      "source_body_digest": "ef9a5927535bb29f665978b248ee3df39f70bfb6f4bff4e1a83a0ba604644ddf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f96006e6b7857c2db9d9fbe4db1db73697ccad2cbb4b9864a0f78c65ccf02e1",
+      "source_fact_keys": [
+        "source_fact:v1:0f749b46e358693c75dfce20eb6c8fc80da0d3467c0380a897d9f7c15a72e9f9",
+        "source_fact:v1:24ac5329e2e220953ce8698bc7415fea736a87a08f66d4e677f477652614b342",
+        "source_fact:v1:4409bbf06b3ab67217633f8efbb372e179903ffb1851155ccf74776f3e4caa51",
+        "source_fact:v1:5a8651726fa4687c451fa200c6843e4b3dfdc174ea3011ce2b9e48b70adca9b9"
+      ],
+      "source_published_kst": "2026-10-07T11:05+09:00",
+      "title": "\"가전·전장 끌고 TV도 반등\"…LG전자, 3Q 영업익 7818억원…전년比 13.5% 증가"
+    },
     "link:e427eb8fc45974679089951a": {
       "first_seen_kst": "2026-10-07T04:29:18+09:00",
       "lanes": {
@@ -55253,6 +55565,29 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T10:12+09:00",
       "title": "버거킹, 아침 메뉴 매장 70곳 추가…전국 190곳으로 확대 | 연합뉴스"
+    },
+    "original:03d33c40e226ec613fa237d4": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817014",
+      "source": "뉴시스",
+      "source_body_digest": "df5711940dc0b29c881b42c34c5f503377e64657ff8d01ef603e04ab60c640c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c1e26f3edf85fe5c0b124f90ac810a422a842f6c4ea1d7baf9230c72da4eaa9",
+      "source_fact_keys": [
+        "source_fact:v1:25500ebd7dcfdc739f2941ee2f0e81c594f8516226623bc36d45f7fd2c9df912",
+        "source_fact:v1:6c22c99eca9532819b9fd06f7064c1777c550baeeafdab06d3926b90152bffa5",
+        "source_fact:v1:9f860d73a9f77ffb6d7ebc2dec1bee714cf17e6eeacafea8b59e60e849a6b663",
+        "source_fact:v1:c968e0d819ade607b285eb2be617c1fd6898b29888ea129d4c0252aef06c9320",
+        "source_fact:v1:cae542c0e02bd140b0c4bb967a6327d0c7076f4eeca4862a9159f82a26e14fb0",
+        "source_fact:v1:d03e5630ab99d83c66626159df593fd87a4bee27a163ba729ba94d589b4a0f8a",
+        "source_fact:v1:deaa6162135d5d1c6453143a68e714b8a76e9a954fc7c3468e429ddf10d7e61a"
+      ],
+      "source_published_kst": "2026-10-07T11:07+09:00",
+      "title": "LG전자, 올 3Q 누적 영업익 '4조' 최초 달성…연간 최대 실적 '청신호'"
     },
     "original:03e342fb60f42e119dd7b6ea": {
       "first_seen_kst": "2026-09-21T09:18:44+09:00",
@@ -64645,6 +64980,29 @@
       "source": "매일경제",
       "title": "미 금리 인상에도 7000선 고지 회복한 국장…“변동성 줄고 기초체력 양호”"
     },
+    "original:4f201c835aacc882b9dff716": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.etnews.com/20261007000126",
+      "source": "전자신문",
+      "source_body_digest": "c14df3762821c77e1457188bc65a1d3454f5d0dc5cf9c6ad7e598ac29a93189c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d3f2d0307101aa9f773045a9f4a75ee6cef0835b1f28ac891c37250ba2355af8",
+      "source_fact_keys": [
+        "source_fact:v1:0609894b679db695b6bc6b2a1f7553fe30a96eec315a6debe84ea11cd87ecc79",
+        "source_fact:v1:19417bbe7d3cce91db65448a0827bef3f8af351287180a5c48ad1b9cdbaed724",
+        "source_fact:v1:63a4ec3b26de058277501cb1cc8d0234a8e0e0ad8867ed7def116a52561a3982",
+        "source_fact:v1:7adf3269e9a1149900d545cbe517a632597d3b6857d722a392b52070df183617",
+        "source_fact:v1:c5136c48bdebe30f95693886748252441fb45ec438acf3b07a1904829352382d",
+        "source_fact:v1:db8fc1e08906d65f66bfbffcd7fd92a16a74e5b4cdb7c965c3ba823a73af6434",
+        "source_fact:v1:ee43e6f3172cb26afca25bb7f3e11959ec8320d6f1c4b178d50ed75435310f85"
+      ],
+      "source_published_kst": "2026-10-07T10:31+09:00",
+      "title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력"
+    },
     "original:4f3a7905919bf737c48990c3": {
       "first_seen_kst": "2026-10-06T22:51:44+09:00",
       "lanes": {
@@ -64774,6 +65132,27 @@
       ],
       "source_published_kst": "2026-10-05T19:02+09:00",
       "title": "세제·부동산·대미투자… 李정부 2년차 정책 검증 '경제 국감' [국정감사 핫이슈]"
+    },
+    "original:5086881ba976d4d47b73bb43": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261007102808",
+      "source": "지디넷코리아",
+      "source_body_digest": "4d3ab6f29185a97e1cbef149035cfb6490dff632e6a9827f3dfadf2aef49f4b9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8f8c9fbae11339aa6064beb82849cf09fba86556ff0cc35728ffde333cf2177",
+      "source_fact_keys": [
+        "source_fact:v1:30f20bfed3ce5b3cecf05a88f775f3aba8e013c032bc2485040777b7cff60f37",
+        "source_fact:v1:72175fb8cde3dc1bc3226fb6245636a50dd1bfc67a422b60e5e3d412f894e0c8",
+        "source_fact:v1:80fb421d2f0727257bdcb30fe9a510552e17319863c6a09519344930eb9ea644",
+        "source_fact:v1:94d43dbbce38199a597e859f5b9e36a982c7bca87703e16f73c6daa8bf851c34",
+        "source_fact:v1:ba673fe341e230a7878efb31c0a395ddc6071828df5d86a19fc81ff350d4f4f9"
+      ],
+      "source_published_kst": "2026-10-07T10:47+09:00",
+      "title": "곽동신 한미반도체 회장, 자사주 누적 702억원 취득"
     },
     "original:510167e9f1e99e9b05a4b07c": {
       "first_seen_kst": "2026-10-07T02:13:12+09:00",
@@ -71896,6 +72275,28 @@
       "source_published_kst": "2026-10-04T18:14+09:00",
       "title": "\"러시아군 우크라戰 누적 전상자 154만명\"…3일 하루 1750명"
     },
+    "original:8c3e20f0912c8619b5bf1be9": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.hankyung.com/article/202610076983i",
+      "source": "한국경제",
+      "source_body_digest": "42192b33ff7ed14483f6e23ed9b775f4b11fb4ffeacf198a05b87b8c3a66d3df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8911846093b0c3aa483c0bd64a2100d132745aa3868b9b4d596117d3c1b35c0",
+      "source_fact_keys": [
+        "source_fact:v1:10979abaa2618d88396c2dead3029ba56437b7587204eebad5263d3974b0edfd",
+        "source_fact:v1:2bc1cfa9212252cad38b5a9e0f59b249eb818df94d9942b13b473a73b920568d",
+        "source_fact:v1:915c2632ad05c33ec2b612a0cca740c94183658c2653f144e62e2fb51f07848e",
+        "source_fact:v1:d8a16d737c6c47fa9b7b5d943a053b882d3acfa6816e0341e8fa069e374bbafc",
+        "source_fact:v1:ee7acc0d71e9d73b8e941f8c263ce0c40454505be5a672f1f9ebe1d9a51ac186",
+        "source_fact:v1:f97af669e008b5a9462954403b7c2677b7c2bdeafdf36bf3892470bcf4aea1e3"
+      ],
+      "source_published_kst": "2026-10-07T08:08+09:00",
+      "title": "선장에 월 10만달러·보너스까지…호르무즈 '위험수당' 급등"
+    },
     "original:8c438d30d59fc39576222b59": {
       "first_seen_kst": "2026-10-02T21:04:53+09:00",
       "lanes": {
@@ -73296,6 +73697,26 @@
       "link": "https://www.etoday.co.kr/news/view/2631511",
       "source": "이투데이",
       "title": "트럼프 “뉴욕서 李대통령과 2000억달러 대미투자 시작 합의”"
+    },
+    "original:97abfb52a735bb9643088f78": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816968",
+      "source": "뉴시스",
+      "source_body_digest": "ef9a5927535bb29f665978b248ee3df39f70bfb6f4bff4e1a83a0ba604644ddf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f96006e6b7857c2db9d9fbe4db1db73697ccad2cbb4b9864a0f78c65ccf02e1",
+      "source_fact_keys": [
+        "source_fact:v1:0f749b46e358693c75dfce20eb6c8fc80da0d3467c0380a897d9f7c15a72e9f9",
+        "source_fact:v1:24ac5329e2e220953ce8698bc7415fea736a87a08f66d4e677f477652614b342",
+        "source_fact:v1:4409bbf06b3ab67217633f8efbb372e179903ffb1851155ccf74776f3e4caa51",
+        "source_fact:v1:5a8651726fa4687c451fa200c6843e4b3dfdc174ea3011ce2b9e48b70adca9b9"
+      ],
+      "source_published_kst": "2026-10-07T11:05+09:00",
+      "title": "\"가전·전장 끌고 TV도 반등\"…LG전자, 3Q 영업익 7818억원…전년比 13.5% 증가"
     },
     "original:97b1b9c7d3d696534713d858": {
       "first_seen_kst": "2026-10-03T21:43:46+09:00",
@@ -78595,6 +79016,23 @@
       "source": "머니투데이",
       "title": "진양곤 HLB 의장, 후속 파이프라인 자신감...각막염·CAR-T에도 베팅"
     },
+    "original:c6c5e5e79eb0a5dcc84078e8": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007049600017",
+      "source": "연합뉴스",
+      "source_body_digest": "54d1cdb0c4daca9cece9f379b766ac9c5bc62577efd803b140c4af60d8f17b74",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9be1af79750287510a2df393a853afde5605ab5ea0ca8b92d355de82bb9b42be",
+      "source_fact_keys": [
+        "source_fact:v1:52a391f992e4302f8126f053c7ecb7a33bf0059e72733a11f75c674d0e701041"
+      ],
+      "source_published_kst": "2026-10-07T09:42+09:00",
+      "title": "kt클라우드, 50MW급 청라 AI 데이터센터 구축 사업 참여 | 연합뉴스"
+    },
     "original:c6f1ffc31d6b36f94f4bbe64": {
       "first_seen_kst": "2026-10-04T00:00:47+09:00",
       "lanes": {
@@ -79655,6 +80093,27 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-03T07:08+09:00",
       "title": "전국 주유소 기름값 20주 연속 하락…휘발유 L당 1857원"
+    },
+    "original:cfcc0ee4f1a0eecea60e6c02": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816808",
+      "source": "뉴시스",
+      "source_body_digest": "8346de7ca49bc8f77cefda767f4f4a6a1e84941c41fd06162e3c0837c35a1900",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:91764af32daf2808404e9cd50106a499b2b461080d841386f37abeda4859dee2",
+      "source_fact_keys": [
+        "source_fact:v1:573404d4541f1bdeb7303df26862d69871d2962cc5a8fc4317bbdd3c8155bc33",
+        "source_fact:v1:8314add40526b119aaf33a9b092db57c385a49dd44828eb8e4852d5e2ab408e0",
+        "source_fact:v1:84acdc22262c69cf703b8f3999398f86d11c0885d6f63a96a9e846c29aa363a3",
+        "source_fact:v1:a67737f72053b38962149ba9d143dc71c2458c5fea4a5644726061c5a14fc00b",
+        "source_fact:v1:b3faf84fa840f59e99bf9884d0a3fa2cf41cf5c62116f5e55f690f53bf045548"
+      ],
+      "source_published_kst": "2026-10-07T09:48+09:00",
+      "title": "KT클라우드, 50MW급 '청라 AI 데이터센터' 구축…2030년 준공"
     },
     "original:cfd651274fea295b7644e355": {
       "first_seen_kst": "2026-09-25T14:18:58+09:00",
@@ -86465,6 +86924,29 @@
       "source_published_kst": "2026-10-06T17:02+09:00",
       "title": "엠투클라우드 \"백신 유통 이력 '디지털 관리' 의료기관까지 확대\""
     },
+    "source_fact:039c8e526a6f28684b3880e0": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817014",
+      "source": "뉴시스",
+      "source_body_digest": "df5711940dc0b29c881b42c34c5f503377e64657ff8d01ef603e04ab60c640c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c1e26f3edf85fe5c0b124f90ac810a422a842f6c4ea1d7baf9230c72da4eaa9",
+      "source_fact_keys": [
+        "source_fact:v1:25500ebd7dcfdc739f2941ee2f0e81c594f8516226623bc36d45f7fd2c9df912",
+        "source_fact:v1:6c22c99eca9532819b9fd06f7064c1777c550baeeafdab06d3926b90152bffa5",
+        "source_fact:v1:9f860d73a9f77ffb6d7ebc2dec1bee714cf17e6eeacafea8b59e60e849a6b663",
+        "source_fact:v1:c968e0d819ade607b285eb2be617c1fd6898b29888ea129d4c0252aef06c9320",
+        "source_fact:v1:cae542c0e02bd140b0c4bb967a6327d0c7076f4eeca4862a9159f82a26e14fb0",
+        "source_fact:v1:d03e5630ab99d83c66626159df593fd87a4bee27a163ba729ba94d589b4a0f8a",
+        "source_fact:v1:deaa6162135d5d1c6453143a68e714b8a76e9a954fc7c3468e429ddf10d7e61a"
+      ],
+      "source_published_kst": "2026-10-07T11:07+09:00",
+      "title": "LG전자, 올 3Q 누적 영업익 '4조' 최초 달성…연간 최대 실적 '청신호'"
+    },
     "source_fact:039e3bf47e53a7e2b4cf6c37": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
       "lanes": {
@@ -88329,6 +88811,28 @@
       "source_published_kst": "2026-10-05T22:06+09:00",
       "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
     },
+    "source_fact:0af1a3588821dc6fa1cf5a8a": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.hankyung.com/article/202610076983i",
+      "source": "한국경제",
+      "source_body_digest": "42192b33ff7ed14483f6e23ed9b775f4b11fb4ffeacf198a05b87b8c3a66d3df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8911846093b0c3aa483c0bd64a2100d132745aa3868b9b4d596117d3c1b35c0",
+      "source_fact_keys": [
+        "source_fact:v1:10979abaa2618d88396c2dead3029ba56437b7587204eebad5263d3974b0edfd",
+        "source_fact:v1:2bc1cfa9212252cad38b5a9e0f59b249eb818df94d9942b13b473a73b920568d",
+        "source_fact:v1:915c2632ad05c33ec2b612a0cca740c94183658c2653f144e62e2fb51f07848e",
+        "source_fact:v1:d8a16d737c6c47fa9b7b5d943a053b882d3acfa6816e0341e8fa069e374bbafc",
+        "source_fact:v1:ee7acc0d71e9d73b8e941f8c263ce0c40454505be5a672f1f9ebe1d9a51ac186",
+        "source_fact:v1:f97af669e008b5a9462954403b7c2677b7c2bdeafdf36bf3892470bcf4aea1e3"
+      ],
+      "source_published_kst": "2026-10-07T08:08+09:00",
+      "title": "선장에 월 10만달러·보너스까지…호르무즈 '위험수당' 급등"
+    },
     "source_fact:0afaf32b328eb05818a62262": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
@@ -89465,6 +89969,27 @@
       ],
       "source_published_kst": "2026-10-06T06:15+09:00",
       "title": "[AI프리즘] '3대 메가프로젝트' 피지컬AI…전체 AI 예산 5%도 안돼"
+    },
+    "source_fact:0f512290e1df5384f5ea9d5f": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816808",
+      "source": "뉴시스",
+      "source_body_digest": "8346de7ca49bc8f77cefda767f4f4a6a1e84941c41fd06162e3c0837c35a1900",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:91764af32daf2808404e9cd50106a499b2b461080d841386f37abeda4859dee2",
+      "source_fact_keys": [
+        "source_fact:v1:573404d4541f1bdeb7303df26862d69871d2962cc5a8fc4317bbdd3c8155bc33",
+        "source_fact:v1:8314add40526b119aaf33a9b092db57c385a49dd44828eb8e4852d5e2ab408e0",
+        "source_fact:v1:84acdc22262c69cf703b8f3999398f86d11c0885d6f63a96a9e846c29aa363a3",
+        "source_fact:v1:a67737f72053b38962149ba9d143dc71c2458c5fea4a5644726061c5a14fc00b",
+        "source_fact:v1:b3faf84fa840f59e99bf9884d0a3fa2cf41cf5c62116f5e55f690f53bf045548"
+      ],
+      "source_published_kst": "2026-10-07T09:48+09:00",
+      "title": "KT클라우드, 50MW급 '청라 AI 데이터센터' 구축…2030년 준공"
     },
     "source_fact:0f68b077db6f1663f24cf0ab": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
@@ -90742,6 +91267,29 @@
       ],
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "[ETF업&다운]3분기 엇갈린 반도체…삼전닉스 빠지고 소부장 버텼다"
+    },
+    "source_fact:1436f1fac1464a65bccb9dbb": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817014",
+      "source": "뉴시스",
+      "source_body_digest": "df5711940dc0b29c881b42c34c5f503377e64657ff8d01ef603e04ab60c640c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c1e26f3edf85fe5c0b124f90ac810a422a842f6c4ea1d7baf9230c72da4eaa9",
+      "source_fact_keys": [
+        "source_fact:v1:25500ebd7dcfdc739f2941ee2f0e81c594f8516226623bc36d45f7fd2c9df912",
+        "source_fact:v1:6c22c99eca9532819b9fd06f7064c1777c550baeeafdab06d3926b90152bffa5",
+        "source_fact:v1:9f860d73a9f77ffb6d7ebc2dec1bee714cf17e6eeacafea8b59e60e849a6b663",
+        "source_fact:v1:c968e0d819ade607b285eb2be617c1fd6898b29888ea129d4c0252aef06c9320",
+        "source_fact:v1:cae542c0e02bd140b0c4bb967a6327d0c7076f4eeca4862a9159f82a26e14fb0",
+        "source_fact:v1:d03e5630ab99d83c66626159df593fd87a4bee27a163ba729ba94d589b4a0f8a",
+        "source_fact:v1:deaa6162135d5d1c6453143a68e714b8a76e9a954fc7c3468e429ddf10d7e61a"
+      ],
+      "source_published_kst": "2026-10-07T11:07+09:00",
+      "title": "LG전자, 올 3Q 누적 영업익 '4조' 최초 달성…연간 최대 실적 '청신호'"
     },
     "source_fact:1457e1df4db9abe9a771ddaa": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
@@ -96564,6 +97112,28 @@
       "source_published_kst": "2026-10-06T08:30+09:00",
       "title": "환율 12% 빠지자…순이익 쇼크 주의보 떴다"
     },
+    "source_fact:2a62fdf5a5300ef6988cdfde": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.hankyung.com/article/202610076983i",
+      "source": "한국경제",
+      "source_body_digest": "42192b33ff7ed14483f6e23ed9b775f4b11fb4ffeacf198a05b87b8c3a66d3df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8911846093b0c3aa483c0bd64a2100d132745aa3868b9b4d596117d3c1b35c0",
+      "source_fact_keys": [
+        "source_fact:v1:10979abaa2618d88396c2dead3029ba56437b7587204eebad5263d3974b0edfd",
+        "source_fact:v1:2bc1cfa9212252cad38b5a9e0f59b249eb818df94d9942b13b473a73b920568d",
+        "source_fact:v1:915c2632ad05c33ec2b612a0cca740c94183658c2653f144e62e2fb51f07848e",
+        "source_fact:v1:d8a16d737c6c47fa9b7b5d943a053b882d3acfa6816e0341e8fa069e374bbafc",
+        "source_fact:v1:ee7acc0d71e9d73b8e941f8c263ce0c40454505be5a672f1f9ebe1d9a51ac186",
+        "source_fact:v1:f97af669e008b5a9462954403b7c2677b7c2bdeafdf36bf3892470bcf4aea1e3"
+      ],
+      "source_published_kst": "2026-10-07T08:08+09:00",
+      "title": "선장에 월 10만달러·보너스까지…호르무즈 '위험수당' 급등"
+    },
     "source_fact:2a804bddf15cdd34f5fe629a": {
       "first_seen_kst": "2026-10-07T06:12:17+09:00",
       "lanes": {
@@ -96879,6 +97449,29 @@
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
     },
+    "source_fact:2b82994dfeaaa290d4a5cc5b": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.etnews.com/20261007000126",
+      "source": "전자신문",
+      "source_body_digest": "c14df3762821c77e1457188bc65a1d3454f5d0dc5cf9c6ad7e598ac29a93189c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d3f2d0307101aa9f773045a9f4a75ee6cef0835b1f28ac891c37250ba2355af8",
+      "source_fact_keys": [
+        "source_fact:v1:0609894b679db695b6bc6b2a1f7553fe30a96eec315a6debe84ea11cd87ecc79",
+        "source_fact:v1:19417bbe7d3cce91db65448a0827bef3f8af351287180a5c48ad1b9cdbaed724",
+        "source_fact:v1:63a4ec3b26de058277501cb1cc8d0234a8e0e0ad8867ed7def116a52561a3982",
+        "source_fact:v1:7adf3269e9a1149900d545cbe517a632597d3b6857d722a392b52070df183617",
+        "source_fact:v1:c5136c48bdebe30f95693886748252441fb45ec438acf3b07a1904829352382d",
+        "source_fact:v1:db8fc1e08906d65f66bfbffcd7fd92a16a74e5b4cdb7c965c3ba823a73af6434",
+        "source_fact:v1:ee43e6f3172cb26afca25bb7f3e11959ec8320d6f1c4b178d50ed75435310f85"
+      ],
+      "source_published_kst": "2026-10-07T10:31+09:00",
+      "title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력"
+    },
     "source_fact:2b91c1a306edffc39cc1b153": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
       "lanes": {
@@ -96969,6 +97562,27 @@
       ],
       "source_published_kst": "2026-10-07T07:20+09:00",
       "title": "리사 수 “반도체 수요가 공급보다 많아”…AMD 주가 사상 최고"
+    },
+    "source_fact:2bf87ff2173893f6c7b6c5fd": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261007102808",
+      "source": "지디넷코리아",
+      "source_body_digest": "4d3ab6f29185a97e1cbef149035cfb6490dff632e6a9827f3dfadf2aef49f4b9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8f8c9fbae11339aa6064beb82849cf09fba86556ff0cc35728ffde333cf2177",
+      "source_fact_keys": [
+        "source_fact:v1:30f20bfed3ce5b3cecf05a88f775f3aba8e013c032bc2485040777b7cff60f37",
+        "source_fact:v1:72175fb8cde3dc1bc3226fb6245636a50dd1bfc67a422b60e5e3d412f894e0c8",
+        "source_fact:v1:80fb421d2f0727257bdcb30fe9a510552e17319863c6a09519344930eb9ea644",
+        "source_fact:v1:94d43dbbce38199a597e859f5b9e36a982c7bca87703e16f73c6daa8bf851c34",
+        "source_fact:v1:ba673fe341e230a7878efb31c0a395ddc6071828df5d86a19fc81ff350d4f4f9"
+      ],
+      "source_published_kst": "2026-10-07T10:47+09:00",
+      "title": "곽동신 한미반도체 회장, 자사주 누적 702억원 취득"
     },
     "source_fact:2c05639283aeaa293a1cc713": {
       "first_seen_kst": "2026-10-06T20:54:05+09:00",
@@ -98602,6 +99216,29 @@
       "source_published_kst": "2026-10-06T10:11+09:00",
       "title": "세아베스틸, 로봇 감속기용 특수강 국산화…양산 본격화"
     },
+    "source_fact:31809ab388cd393cbca8b5b1": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817014",
+      "source": "뉴시스",
+      "source_body_digest": "df5711940dc0b29c881b42c34c5f503377e64657ff8d01ef603e04ab60c640c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c1e26f3edf85fe5c0b124f90ac810a422a842f6c4ea1d7baf9230c72da4eaa9",
+      "source_fact_keys": [
+        "source_fact:v1:25500ebd7dcfdc739f2941ee2f0e81c594f8516226623bc36d45f7fd2c9df912",
+        "source_fact:v1:6c22c99eca9532819b9fd06f7064c1777c550baeeafdab06d3926b90152bffa5",
+        "source_fact:v1:9f860d73a9f77ffb6d7ebc2dec1bee714cf17e6eeacafea8b59e60e849a6b663",
+        "source_fact:v1:c968e0d819ade607b285eb2be617c1fd6898b29888ea129d4c0252aef06c9320",
+        "source_fact:v1:cae542c0e02bd140b0c4bb967a6327d0c7076f4eeca4862a9159f82a26e14fb0",
+        "source_fact:v1:d03e5630ab99d83c66626159df593fd87a4bee27a163ba729ba94d589b4a0f8a",
+        "source_fact:v1:deaa6162135d5d1c6453143a68e714b8a76e9a954fc7c3468e429ddf10d7e61a"
+      ],
+      "source_published_kst": "2026-10-07T11:07+09:00",
+      "title": "LG전자, 올 3Q 누적 영업익 '4조' 최초 달성…연간 최대 실적 '청신호'"
+    },
     "source_fact:318c597c60dad344f593c6db": {
       "first_seen_kst": "2026-10-07T07:01:10+09:00",
       "lanes": {
@@ -98878,6 +99515,29 @@
       ],
       "source_published_kst": "2026-10-06T14:42+09:00",
       "title": "中, 첫 해저 CO₂ 주입 플랫폼 건설…연 100만t 해저 저장"
+    },
+    "source_fact:3255b57dfbcfa0418c3702b6": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.etnews.com/20261007000126",
+      "source": "전자신문",
+      "source_body_digest": "c14df3762821c77e1457188bc65a1d3454f5d0dc5cf9c6ad7e598ac29a93189c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d3f2d0307101aa9f773045a9f4a75ee6cef0835b1f28ac891c37250ba2355af8",
+      "source_fact_keys": [
+        "source_fact:v1:0609894b679db695b6bc6b2a1f7553fe30a96eec315a6debe84ea11cd87ecc79",
+        "source_fact:v1:19417bbe7d3cce91db65448a0827bef3f8af351287180a5c48ad1b9cdbaed724",
+        "source_fact:v1:63a4ec3b26de058277501cb1cc8d0234a8e0e0ad8867ed7def116a52561a3982",
+        "source_fact:v1:7adf3269e9a1149900d545cbe517a632597d3b6857d722a392b52070df183617",
+        "source_fact:v1:c5136c48bdebe30f95693886748252441fb45ec438acf3b07a1904829352382d",
+        "source_fact:v1:db8fc1e08906d65f66bfbffcd7fd92a16a74e5b4cdb7c965c3ba823a73af6434",
+        "source_fact:v1:ee43e6f3172cb26afca25bb7f3e11959ec8320d6f1c4b178d50ed75435310f85"
+      ],
+      "source_published_kst": "2026-10-07T10:31+09:00",
+      "title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력"
     },
     "source_fact:326e396ec98d030a40da0828": {
       "first_seen_kst": "2026-10-06T23:46:46+09:00",
@@ -101470,6 +102130,29 @@
       "source_published_kst": "2026-10-06T17:53+09:00",
       "title": "[단독] 2년前 문제 된 공사방식 또 꺼낸 대우건설…업계 \"안전성 우려\""
     },
+    "source_fact:3b9f5ed601354d1e6770e7d7": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.etnews.com/20261007000126",
+      "source": "전자신문",
+      "source_body_digest": "c14df3762821c77e1457188bc65a1d3454f5d0dc5cf9c6ad7e598ac29a93189c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d3f2d0307101aa9f773045a9f4a75ee6cef0835b1f28ac891c37250ba2355af8",
+      "source_fact_keys": [
+        "source_fact:v1:0609894b679db695b6bc6b2a1f7553fe30a96eec315a6debe84ea11cd87ecc79",
+        "source_fact:v1:19417bbe7d3cce91db65448a0827bef3f8af351287180a5c48ad1b9cdbaed724",
+        "source_fact:v1:63a4ec3b26de058277501cb1cc8d0234a8e0e0ad8867ed7def116a52561a3982",
+        "source_fact:v1:7adf3269e9a1149900d545cbe517a632597d3b6857d722a392b52070df183617",
+        "source_fact:v1:c5136c48bdebe30f95693886748252441fb45ec438acf3b07a1904829352382d",
+        "source_fact:v1:db8fc1e08906d65f66bfbffcd7fd92a16a74e5b4cdb7c965c3ba823a73af6434",
+        "source_fact:v1:ee43e6f3172cb26afca25bb7f3e11959ec8320d6f1c4b178d50ed75435310f85"
+      ],
+      "source_published_kst": "2026-10-07T10:31+09:00",
+      "title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력"
+    },
     "source_fact:3bbd07b26876825aacb354ed": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
       "lanes": {
@@ -101882,6 +102565,27 @@
       ],
       "source_published_kst": "2026-10-06T18:50+09:00",
       "title": "여야, 외통위 국정감사서 北지뢰 대응·포로 송환 등 설전(종합)"
+    },
+    "source_fact:3e099ea5a6eb2be050d01326": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816808",
+      "source": "뉴시스",
+      "source_body_digest": "8346de7ca49bc8f77cefda767f4f4a6a1e84941c41fd06162e3c0837c35a1900",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:91764af32daf2808404e9cd50106a499b2b461080d841386f37abeda4859dee2",
+      "source_fact_keys": [
+        "source_fact:v1:573404d4541f1bdeb7303df26862d69871d2962cc5a8fc4317bbdd3c8155bc33",
+        "source_fact:v1:8314add40526b119aaf33a9b092db57c385a49dd44828eb8e4852d5e2ab408e0",
+        "source_fact:v1:84acdc22262c69cf703b8f3999398f86d11c0885d6f63a96a9e846c29aa363a3",
+        "source_fact:v1:a67737f72053b38962149ba9d143dc71c2458c5fea4a5644726061c5a14fc00b",
+        "source_fact:v1:b3faf84fa840f59e99bf9884d0a3fa2cf41cf5c62116f5e55f690f53bf045548"
+      ],
+      "source_published_kst": "2026-10-07T09:48+09:00",
+      "title": "KT클라우드, 50MW급 '청라 AI 데이터센터' 구축…2030년 준공"
     },
     "source_fact:3e0ee791d3e8fb5ad6892ccc": {
       "first_seen_kst": "2026-10-07T10:49:23+09:00",
@@ -102750,6 +103454,27 @@
       ],
       "source_published_kst": "2026-10-05T12:57+09:00",
       "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
+    },
+    "source_fact:416a71b847230c25b944dad1": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816808",
+      "source": "뉴시스",
+      "source_body_digest": "8346de7ca49bc8f77cefda767f4f4a6a1e84941c41fd06162e3c0837c35a1900",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:91764af32daf2808404e9cd50106a499b2b461080d841386f37abeda4859dee2",
+      "source_fact_keys": [
+        "source_fact:v1:573404d4541f1bdeb7303df26862d69871d2962cc5a8fc4317bbdd3c8155bc33",
+        "source_fact:v1:8314add40526b119aaf33a9b092db57c385a49dd44828eb8e4852d5e2ab408e0",
+        "source_fact:v1:84acdc22262c69cf703b8f3999398f86d11c0885d6f63a96a9e846c29aa363a3",
+        "source_fact:v1:a67737f72053b38962149ba9d143dc71c2458c5fea4a5644726061c5a14fc00b",
+        "source_fact:v1:b3faf84fa840f59e99bf9884d0a3fa2cf41cf5c62116f5e55f690f53bf045548"
+      ],
+      "source_published_kst": "2026-10-07T09:48+09:00",
+      "title": "KT클라우드, 50MW급 '청라 AI 데이터센터' 구축…2030년 준공"
     },
     "source_fact:4188e8fa710747c0864da177": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
@@ -105325,6 +106050,29 @@
       "source_published_kst": "2026-10-06T17:22+09:00",
       "title": "김성환 \"호남 반도체 팹 9개 되면 전력 약 14GW 필요\""
     },
+    "source_fact:49f29719a69d2040971a70f8": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817014",
+      "source": "뉴시스",
+      "source_body_digest": "df5711940dc0b29c881b42c34c5f503377e64657ff8d01ef603e04ab60c640c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c1e26f3edf85fe5c0b124f90ac810a422a842f6c4ea1d7baf9230c72da4eaa9",
+      "source_fact_keys": [
+        "source_fact:v1:25500ebd7dcfdc739f2941ee2f0e81c594f8516226623bc36d45f7fd2c9df912",
+        "source_fact:v1:6c22c99eca9532819b9fd06f7064c1777c550baeeafdab06d3926b90152bffa5",
+        "source_fact:v1:9f860d73a9f77ffb6d7ebc2dec1bee714cf17e6eeacafea8b59e60e849a6b663",
+        "source_fact:v1:c968e0d819ade607b285eb2be617c1fd6898b29888ea129d4c0252aef06c9320",
+        "source_fact:v1:cae542c0e02bd140b0c4bb967a6327d0c7076f4eeca4862a9159f82a26e14fb0",
+        "source_fact:v1:d03e5630ab99d83c66626159df593fd87a4bee27a163ba729ba94d589b4a0f8a",
+        "source_fact:v1:deaa6162135d5d1c6453143a68e714b8a76e9a954fc7c3468e429ddf10d7e61a"
+      ],
+      "source_published_kst": "2026-10-07T11:07+09:00",
+      "title": "LG전자, 올 3Q 누적 영업익 '4조' 최초 달성…연간 최대 실적 '청신호'"
+    },
     "source_fact:4a0f793738da597ec14bbb40": {
       "first_seen_kst": "2026-10-06T15:14:29+09:00",
       "lanes": {
@@ -106034,6 +106782,27 @@
       "source_published_kst": "2026-10-06T15:03+09:00",
       "title": "“연봉 최대 2배” 중국행 삼전닉스 기술인재의 결말"
     },
+    "source_fact:4d75bc61cf8fe2b816ffb83a": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261007102808",
+      "source": "지디넷코리아",
+      "source_body_digest": "4d3ab6f29185a97e1cbef149035cfb6490dff632e6a9827f3dfadf2aef49f4b9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8f8c9fbae11339aa6064beb82849cf09fba86556ff0cc35728ffde333cf2177",
+      "source_fact_keys": [
+        "source_fact:v1:30f20bfed3ce5b3cecf05a88f775f3aba8e013c032bc2485040777b7cff60f37",
+        "source_fact:v1:72175fb8cde3dc1bc3226fb6245636a50dd1bfc67a422b60e5e3d412f894e0c8",
+        "source_fact:v1:80fb421d2f0727257bdcb30fe9a510552e17319863c6a09519344930eb9ea644",
+        "source_fact:v1:94d43dbbce38199a597e859f5b9e36a982c7bca87703e16f73c6daa8bf851c34",
+        "source_fact:v1:ba673fe341e230a7878efb31c0a395ddc6071828df5d86a19fc81ff350d4f4f9"
+      ],
+      "source_published_kst": "2026-10-07T10:47+09:00",
+      "title": "곽동신 한미반도체 회장, 자사주 누적 702억원 취득"
+    },
     "source_fact:4d7e32e4cc0cb47cee7b469b": {
       "first_seen_kst": "2026-10-07T07:39:19+09:00",
       "lanes": {
@@ -106678,6 +107447,26 @@
       ],
       "source_published_kst": "2026-10-06T15:09+09:00",
       "title": "AI팩토리에 승부 건 엔비디아 \"생산성·수명·범용성이 수익 좌우\""
+    },
+    "source_fact:4f1e750dbad60429ecb559dd": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816968",
+      "source": "뉴시스",
+      "source_body_digest": "ef9a5927535bb29f665978b248ee3df39f70bfb6f4bff4e1a83a0ba604644ddf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f96006e6b7857c2db9d9fbe4db1db73697ccad2cbb4b9864a0f78c65ccf02e1",
+      "source_fact_keys": [
+        "source_fact:v1:0f749b46e358693c75dfce20eb6c8fc80da0d3467c0380a897d9f7c15a72e9f9",
+        "source_fact:v1:24ac5329e2e220953ce8698bc7415fea736a87a08f66d4e677f477652614b342",
+        "source_fact:v1:4409bbf06b3ab67217633f8efbb372e179903ffb1851155ccf74776f3e4caa51",
+        "source_fact:v1:5a8651726fa4687c451fa200c6843e4b3dfdc174ea3011ce2b9e48b70adca9b9"
+      ],
+      "source_published_kst": "2026-10-07T11:05+09:00",
+      "title": "\"가전·전장 끌고 TV도 반등\"…LG전자, 3Q 영업익 7818억원…전년比 13.5% 증가"
     },
     "source_fact:4f29f98196f9f4aa058ff422": {
       "first_seen_kst": "2026-10-06T23:46:46+09:00",
@@ -111703,6 +112492,29 @@
       "source_published_kst": "2026-10-06T15:25+09:00",
       "title": "임귀현 완주군의원, 친환경 액비 자원화 확대 점검 나서"
     },
+    "source_fact:6032c4589b9383941fb13a1b": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.etnews.com/20261007000126",
+      "source": "전자신문",
+      "source_body_digest": "c14df3762821c77e1457188bc65a1d3454f5d0dc5cf9c6ad7e598ac29a93189c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d3f2d0307101aa9f773045a9f4a75ee6cef0835b1f28ac891c37250ba2355af8",
+      "source_fact_keys": [
+        "source_fact:v1:0609894b679db695b6bc6b2a1f7553fe30a96eec315a6debe84ea11cd87ecc79",
+        "source_fact:v1:19417bbe7d3cce91db65448a0827bef3f8af351287180a5c48ad1b9cdbaed724",
+        "source_fact:v1:63a4ec3b26de058277501cb1cc8d0234a8e0e0ad8867ed7def116a52561a3982",
+        "source_fact:v1:7adf3269e9a1149900d545cbe517a632597d3b6857d722a392b52070df183617",
+        "source_fact:v1:c5136c48bdebe30f95693886748252441fb45ec438acf3b07a1904829352382d",
+        "source_fact:v1:db8fc1e08906d65f66bfbffcd7fd92a16a74e5b4cdb7c965c3ba823a73af6434",
+        "source_fact:v1:ee43e6f3172cb26afca25bb7f3e11959ec8320d6f1c4b178d50ed75435310f85"
+      ],
+      "source_published_kst": "2026-10-07T10:31+09:00",
+      "title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력"
+    },
     "source_fact:603b98bf43d7c397e75fb017": {
       "first_seen_kst": "2026-10-06T19:10:36+09:00",
       "lanes": {
@@ -112184,6 +112996,27 @@
       ],
       "source_published_kst": "2026-10-07T08:46+09:00",
       "title": "스카이월드와이드, AI 인프라 사업 확대…조선·방산·제조로 고객군 넓힌다"
+    },
+    "source_fact:62a82ab6deede557de761522": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261007102808",
+      "source": "지디넷코리아",
+      "source_body_digest": "4d3ab6f29185a97e1cbef149035cfb6490dff632e6a9827f3dfadf2aef49f4b9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8f8c9fbae11339aa6064beb82849cf09fba86556ff0cc35728ffde333cf2177",
+      "source_fact_keys": [
+        "source_fact:v1:30f20bfed3ce5b3cecf05a88f775f3aba8e013c032bc2485040777b7cff60f37",
+        "source_fact:v1:72175fb8cde3dc1bc3226fb6245636a50dd1bfc67a422b60e5e3d412f894e0c8",
+        "source_fact:v1:80fb421d2f0727257bdcb30fe9a510552e17319863c6a09519344930eb9ea644",
+        "source_fact:v1:94d43dbbce38199a597e859f5b9e36a982c7bca87703e16f73c6daa8bf851c34",
+        "source_fact:v1:ba673fe341e230a7878efb31c0a395ddc6071828df5d86a19fc81ff350d4f4f9"
+      ],
+      "source_published_kst": "2026-10-07T10:47+09:00",
+      "title": "곽동신 한미반도체 회장, 자사주 누적 702억원 취득"
     },
     "source_fact:62ba1ae6cac4bde9703d4eff": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
@@ -118225,6 +119058,23 @@
       "source_published_kst": "2026-10-07T08:00+09:00",
       "title": "롯데하이마트, 산업 특화 '휴머노이드 로봇' 실증 추진…국책 과제 선정"
     },
+    "source_fact:7882b69904242cc3fff456b0": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007049600017",
+      "source": "연합뉴스",
+      "source_body_digest": "54d1cdb0c4daca9cece9f379b766ac9c5bc62577efd803b140c4af60d8f17b74",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9be1af79750287510a2df393a853afde5605ab5ea0ca8b92d355de82bb9b42be",
+      "source_fact_keys": [
+        "source_fact:v1:52a391f992e4302f8126f053c7ecb7a33bf0059e72733a11f75c674d0e701041"
+      ],
+      "source_published_kst": "2026-10-07T09:42+09:00",
+      "title": "kt클라우드, 50MW급 청라 AI 데이터센터 구축 사업 참여 | 연합뉴스"
+    },
     "source_fact:78bef282f8b77ba45a50c8f3": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -122154,6 +123004,29 @@
       "source_published_kst": "2026-10-06T16:45+09:00",
       "title": "알테오젠, 2000억 투자 유치…연구부터 판매까지 한 회사로"
     },
+    "source_fact:866a246139247eb81bec1458": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817014",
+      "source": "뉴시스",
+      "source_body_digest": "df5711940dc0b29c881b42c34c5f503377e64657ff8d01ef603e04ab60c640c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c1e26f3edf85fe5c0b124f90ac810a422a842f6c4ea1d7baf9230c72da4eaa9",
+      "source_fact_keys": [
+        "source_fact:v1:25500ebd7dcfdc739f2941ee2f0e81c594f8516226623bc36d45f7fd2c9df912",
+        "source_fact:v1:6c22c99eca9532819b9fd06f7064c1777c550baeeafdab06d3926b90152bffa5",
+        "source_fact:v1:9f860d73a9f77ffb6d7ebc2dec1bee714cf17e6eeacafea8b59e60e849a6b663",
+        "source_fact:v1:c968e0d819ade607b285eb2be617c1fd6898b29888ea129d4c0252aef06c9320",
+        "source_fact:v1:cae542c0e02bd140b0c4bb967a6327d0c7076f4eeca4862a9159f82a26e14fb0",
+        "source_fact:v1:d03e5630ab99d83c66626159df593fd87a4bee27a163ba729ba94d589b4a0f8a",
+        "source_fact:v1:deaa6162135d5d1c6453143a68e714b8a76e9a954fc7c3468e429ddf10d7e61a"
+      ],
+      "source_published_kst": "2026-10-07T11:07+09:00",
+      "title": "LG전자, 올 3Q 누적 영업익 '4조' 최초 달성…연간 최대 실적 '청신호'"
+    },
     "source_fact:8687c0a3b5568626d87d1ee7": {
       "first_seen_kst": "2026-10-07T10:49:23+09:00",
       "lanes": {
@@ -122618,6 +123491,29 @@
       ],
       "source_published_kst": "2026-10-06T15:02+09:00",
       "title": "전남광주시, '장성 데이터센터' 첫 출자…48억 지분투자"
+    },
+    "source_fact:88ae9bf597d868c8114a42c6": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.etnews.com/20261007000126",
+      "source": "전자신문",
+      "source_body_digest": "c14df3762821c77e1457188bc65a1d3454f5d0dc5cf9c6ad7e598ac29a93189c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d3f2d0307101aa9f773045a9f4a75ee6cef0835b1f28ac891c37250ba2355af8",
+      "source_fact_keys": [
+        "source_fact:v1:0609894b679db695b6bc6b2a1f7553fe30a96eec315a6debe84ea11cd87ecc79",
+        "source_fact:v1:19417bbe7d3cce91db65448a0827bef3f8af351287180a5c48ad1b9cdbaed724",
+        "source_fact:v1:63a4ec3b26de058277501cb1cc8d0234a8e0e0ad8867ed7def116a52561a3982",
+        "source_fact:v1:7adf3269e9a1149900d545cbe517a632597d3b6857d722a392b52070df183617",
+        "source_fact:v1:c5136c48bdebe30f95693886748252441fb45ec438acf3b07a1904829352382d",
+        "source_fact:v1:db8fc1e08906d65f66bfbffcd7fd92a16a74e5b4cdb7c965c3ba823a73af6434",
+        "source_fact:v1:ee43e6f3172cb26afca25bb7f3e11959ec8320d6f1c4b178d50ed75435310f85"
+      ],
+      "source_published_kst": "2026-10-07T10:31+09:00",
+      "title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력"
     },
     "source_fact:88b6d15a55f50cf35efc9134": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
@@ -123298,6 +124194,29 @@
       ],
       "source_published_kst": "2026-10-07T08:08+09:00",
       "title": "AMD “반도체 수요, 공급 크게 앞질러”⋯CEO 움직이자 주가는 최고치"
+    },
+    "source_fact:8b8fc36c01cb80b7b78a55c0": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.etnews.com/20261007000126",
+      "source": "전자신문",
+      "source_body_digest": "c14df3762821c77e1457188bc65a1d3454f5d0dc5cf9c6ad7e598ac29a93189c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d3f2d0307101aa9f773045a9f4a75ee6cef0835b1f28ac891c37250ba2355af8",
+      "source_fact_keys": [
+        "source_fact:v1:0609894b679db695b6bc6b2a1f7553fe30a96eec315a6debe84ea11cd87ecc79",
+        "source_fact:v1:19417bbe7d3cce91db65448a0827bef3f8af351287180a5c48ad1b9cdbaed724",
+        "source_fact:v1:63a4ec3b26de058277501cb1cc8d0234a8e0e0ad8867ed7def116a52561a3982",
+        "source_fact:v1:7adf3269e9a1149900d545cbe517a632597d3b6857d722a392b52070df183617",
+        "source_fact:v1:c5136c48bdebe30f95693886748252441fb45ec438acf3b07a1904829352382d",
+        "source_fact:v1:db8fc1e08906d65f66bfbffcd7fd92a16a74e5b4cdb7c965c3ba823a73af6434",
+        "source_fact:v1:ee43e6f3172cb26afca25bb7f3e11959ec8320d6f1c4b178d50ed75435310f85"
+      ],
+      "source_published_kst": "2026-10-07T10:31+09:00",
+      "title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력"
     },
     "source_fact:8b96c74abdc781b5acff1e73": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
@@ -126069,6 +126988,28 @@
       "source_published_kst": "2026-10-07T05:30+09:00",
       "title": "“주가 일희일비할 것 없어, 반도체 공급난 지속은 명확한 사실”"
     },
+    "source_fact:953e84b88bd183bf3cd73845": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.hankyung.com/article/202610076983i",
+      "source": "한국경제",
+      "source_body_digest": "42192b33ff7ed14483f6e23ed9b775f4b11fb4ffeacf198a05b87b8c3a66d3df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8911846093b0c3aa483c0bd64a2100d132745aa3868b9b4d596117d3c1b35c0",
+      "source_fact_keys": [
+        "source_fact:v1:10979abaa2618d88396c2dead3029ba56437b7587204eebad5263d3974b0edfd",
+        "source_fact:v1:2bc1cfa9212252cad38b5a9e0f59b249eb818df94d9942b13b473a73b920568d",
+        "source_fact:v1:915c2632ad05c33ec2b612a0cca740c94183658c2653f144e62e2fb51f07848e",
+        "source_fact:v1:d8a16d737c6c47fa9b7b5d943a053b882d3acfa6816e0341e8fa069e374bbafc",
+        "source_fact:v1:ee7acc0d71e9d73b8e941f8c263ce0c40454505be5a672f1f9ebe1d9a51ac186",
+        "source_fact:v1:f97af669e008b5a9462954403b7c2677b7c2bdeafdf36bf3892470bcf4aea1e3"
+      ],
+      "source_published_kst": "2026-10-07T08:08+09:00",
+      "title": "선장에 월 10만달러·보너스까지…호르무즈 '위험수당' 급등"
+    },
     "source_fact:9542b5ce249dd7bb0528c379": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
@@ -128490,6 +129431,29 @@
       "source_published_kst": "2026-10-06T11:25+09:00",
       "title": "[속보]삼성전기, 2900억 규모 AI 서버용 MLCC 공급계약 체결"
     },
+    "source_fact:9d825023b4410b25430e6e4b": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.etnews.com/20261007000126",
+      "source": "전자신문",
+      "source_body_digest": "c14df3762821c77e1457188bc65a1d3454f5d0dc5cf9c6ad7e598ac29a93189c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d3f2d0307101aa9f773045a9f4a75ee6cef0835b1f28ac891c37250ba2355af8",
+      "source_fact_keys": [
+        "source_fact:v1:0609894b679db695b6bc6b2a1f7553fe30a96eec315a6debe84ea11cd87ecc79",
+        "source_fact:v1:19417bbe7d3cce91db65448a0827bef3f8af351287180a5c48ad1b9cdbaed724",
+        "source_fact:v1:63a4ec3b26de058277501cb1cc8d0234a8e0e0ad8867ed7def116a52561a3982",
+        "source_fact:v1:7adf3269e9a1149900d545cbe517a632597d3b6857d722a392b52070df183617",
+        "source_fact:v1:c5136c48bdebe30f95693886748252441fb45ec438acf3b07a1904829352382d",
+        "source_fact:v1:db8fc1e08906d65f66bfbffcd7fd92a16a74e5b4cdb7c965c3ba823a73af6434",
+        "source_fact:v1:ee43e6f3172cb26afca25bb7f3e11959ec8320d6f1c4b178d50ed75435310f85"
+      ],
+      "source_published_kst": "2026-10-07T10:31+09:00",
+      "title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력"
+    },
     "source_fact:9d83afd569d95e02a2c62f33": {
       "first_seen_kst": "2026-10-07T07:01:10+09:00",
       "lanes": {
@@ -130368,6 +131332,26 @@
       "source_published_kst": "2026-10-05T18:43+09:00",
       "title": "JEDEC, 첫 '실리콘 포토닉스' 신뢰성 표준 발표…AI인프라 변혁 예고"
     },
+    "source_fact:a48ef4c656ae031153593667": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816968",
+      "source": "뉴시스",
+      "source_body_digest": "ef9a5927535bb29f665978b248ee3df39f70bfb6f4bff4e1a83a0ba604644ddf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f96006e6b7857c2db9d9fbe4db1db73697ccad2cbb4b9864a0f78c65ccf02e1",
+      "source_fact_keys": [
+        "source_fact:v1:0f749b46e358693c75dfce20eb6c8fc80da0d3467c0380a897d9f7c15a72e9f9",
+        "source_fact:v1:24ac5329e2e220953ce8698bc7415fea736a87a08f66d4e677f477652614b342",
+        "source_fact:v1:4409bbf06b3ab67217633f8efbb372e179903ffb1851155ccf74776f3e4caa51",
+        "source_fact:v1:5a8651726fa4687c451fa200c6843e4b3dfdc174ea3011ce2b9e48b70adca9b9"
+      ],
+      "source_published_kst": "2026-10-07T11:05+09:00",
+      "title": "\"가전·전장 끌고 TV도 반등\"…LG전자, 3Q 영업익 7818억원…전년比 13.5% 증가"
+    },
     "source_fact:a51314e80703bc8e7e62a4f9": {
       "first_seen_kst": "2026-10-06T22:21:21+09:00",
       "lanes": {
@@ -131272,6 +132256,28 @@
       "source_published_kst": "2026-10-07T05:00+09:00",
       "title": "\"삼성 따라 미국 간다?\"…몸값 뛴 국내 OSAT, 테일러행은 ‘좁은 문’"
     },
+    "source_fact:a83ee6fe688536ba916b2978": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.hankyung.com/article/202610076983i",
+      "source": "한국경제",
+      "source_body_digest": "42192b33ff7ed14483f6e23ed9b775f4b11fb4ffeacf198a05b87b8c3a66d3df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8911846093b0c3aa483c0bd64a2100d132745aa3868b9b4d596117d3c1b35c0",
+      "source_fact_keys": [
+        "source_fact:v1:10979abaa2618d88396c2dead3029ba56437b7587204eebad5263d3974b0edfd",
+        "source_fact:v1:2bc1cfa9212252cad38b5a9e0f59b249eb818df94d9942b13b473a73b920568d",
+        "source_fact:v1:915c2632ad05c33ec2b612a0cca740c94183658c2653f144e62e2fb51f07848e",
+        "source_fact:v1:d8a16d737c6c47fa9b7b5d943a053b882d3acfa6816e0341e8fa069e374bbafc",
+        "source_fact:v1:ee7acc0d71e9d73b8e941f8c263ce0c40454505be5a672f1f9ebe1d9a51ac186",
+        "source_fact:v1:f97af669e008b5a9462954403b7c2677b7c2bdeafdf36bf3892470bcf4aea1e3"
+      ],
+      "source_published_kst": "2026-10-07T08:08+09:00",
+      "title": "선장에 월 10만달러·보너스까지…호르무즈 '위험수당' 급등"
+    },
     "source_fact:a8443956bf0777a4a89408fb": {
       "first_seen_kst": "2026-10-06T01:51:09+09:00",
       "lanes": {
@@ -132046,6 +133052,28 @@
       "source_published_kst": "2026-10-05T18:17+09:00",
       "title": "뉴욕·상하이 증시, FOMC 의사록 공개…'S공포' 커지나"
     },
+    "source_fact:abb7c7a3751682c385f5de48": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.hankyung.com/article/202610076983i",
+      "source": "한국경제",
+      "source_body_digest": "42192b33ff7ed14483f6e23ed9b775f4b11fb4ffeacf198a05b87b8c3a66d3df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8911846093b0c3aa483c0bd64a2100d132745aa3868b9b4d596117d3c1b35c0",
+      "source_fact_keys": [
+        "source_fact:v1:10979abaa2618d88396c2dead3029ba56437b7587204eebad5263d3974b0edfd",
+        "source_fact:v1:2bc1cfa9212252cad38b5a9e0f59b249eb818df94d9942b13b473a73b920568d",
+        "source_fact:v1:915c2632ad05c33ec2b612a0cca740c94183658c2653f144e62e2fb51f07848e",
+        "source_fact:v1:d8a16d737c6c47fa9b7b5d943a053b882d3acfa6816e0341e8fa069e374bbafc",
+        "source_fact:v1:ee7acc0d71e9d73b8e941f8c263ce0c40454505be5a672f1f9ebe1d9a51ac186",
+        "source_fact:v1:f97af669e008b5a9462954403b7c2677b7c2bdeafdf36bf3892470bcf4aea1e3"
+      ],
+      "source_published_kst": "2026-10-07T08:08+09:00",
+      "title": "선장에 월 10만달러·보너스까지…호르무즈 '위험수당' 급등"
+    },
     "source_fact:abb7f6bed5e5aeb20d47000c": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
       "lanes": {
@@ -132486,6 +133514,28 @@
       ],
       "source_published_kst": "2026-10-06T08:57+09:00",
       "title": "LH, 서울대에 기숙사형 전세임대 200가구 공급…전국 500가구 공모"
+    },
+    "source_fact:acebcbf41893c1f1024da181": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.hankyung.com/article/202610076983i",
+      "source": "한국경제",
+      "source_body_digest": "42192b33ff7ed14483f6e23ed9b775f4b11fb4ffeacf198a05b87b8c3a66d3df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8911846093b0c3aa483c0bd64a2100d132745aa3868b9b4d596117d3c1b35c0",
+      "source_fact_keys": [
+        "source_fact:v1:10979abaa2618d88396c2dead3029ba56437b7587204eebad5263d3974b0edfd",
+        "source_fact:v1:2bc1cfa9212252cad38b5a9e0f59b249eb818df94d9942b13b473a73b920568d",
+        "source_fact:v1:915c2632ad05c33ec2b612a0cca740c94183658c2653f144e62e2fb51f07848e",
+        "source_fact:v1:d8a16d737c6c47fa9b7b5d943a053b882d3acfa6816e0341e8fa069e374bbafc",
+        "source_fact:v1:ee7acc0d71e9d73b8e941f8c263ce0c40454505be5a672f1f9ebe1d9a51ac186",
+        "source_fact:v1:f97af669e008b5a9462954403b7c2677b7c2bdeafdf36bf3892470bcf4aea1e3"
+      ],
+      "source_published_kst": "2026-10-07T08:08+09:00",
+      "title": "선장에 월 10만달러·보너스까지…호르무즈 '위험수당' 급등"
     },
     "source_fact:acfb6a18b87e1502ad09eaa1": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
@@ -134928,6 +135978,29 @@
       ],
       "source_published_kst": "2026-10-06T15:11+09:00",
       "title": "\"중국 문샷, 내년 1분기 홍콩 상장 추진\" | 연합뉴스"
+    },
+    "source_fact:b534e4c588e9058e4b7546e7": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817014",
+      "source": "뉴시스",
+      "source_body_digest": "df5711940dc0b29c881b42c34c5f503377e64657ff8d01ef603e04ab60c640c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c1e26f3edf85fe5c0b124f90ac810a422a842f6c4ea1d7baf9230c72da4eaa9",
+      "source_fact_keys": [
+        "source_fact:v1:25500ebd7dcfdc739f2941ee2f0e81c594f8516226623bc36d45f7fd2c9df912",
+        "source_fact:v1:6c22c99eca9532819b9fd06f7064c1777c550baeeafdab06d3926b90152bffa5",
+        "source_fact:v1:9f860d73a9f77ffb6d7ebc2dec1bee714cf17e6eeacafea8b59e60e849a6b663",
+        "source_fact:v1:c968e0d819ade607b285eb2be617c1fd6898b29888ea129d4c0252aef06c9320",
+        "source_fact:v1:cae542c0e02bd140b0c4bb967a6327d0c7076f4eeca4862a9159f82a26e14fb0",
+        "source_fact:v1:d03e5630ab99d83c66626159df593fd87a4bee27a163ba729ba94d589b4a0f8a",
+        "source_fact:v1:deaa6162135d5d1c6453143a68e714b8a76e9a954fc7c3468e429ddf10d7e61a"
+      ],
+      "source_published_kst": "2026-10-07T11:07+09:00",
+      "title": "LG전자, 올 3Q 누적 영업익 '4조' 최초 달성…연간 최대 실적 '청신호'"
     },
     "source_fact:b536b64b63b2868a162719ec": {
       "first_seen_kst": "2026-10-06T23:46:46+09:00",
@@ -143362,6 +144435,27 @@
       "source_published_kst": "2026-10-07T01:50+09:00",
       "title": "C.H.로빈슨, RXO 대규모 인수 재무 부담 우려에 약세"
     },
+    "source_fact:d5126dca657cd2314b1f29f4": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816808",
+      "source": "뉴시스",
+      "source_body_digest": "8346de7ca49bc8f77cefda767f4f4a6a1e84941c41fd06162e3c0837c35a1900",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:91764af32daf2808404e9cd50106a499b2b461080d841386f37abeda4859dee2",
+      "source_fact_keys": [
+        "source_fact:v1:573404d4541f1bdeb7303df26862d69871d2962cc5a8fc4317bbdd3c8155bc33",
+        "source_fact:v1:8314add40526b119aaf33a9b092db57c385a49dd44828eb8e4852d5e2ab408e0",
+        "source_fact:v1:84acdc22262c69cf703b8f3999398f86d11c0885d6f63a96a9e846c29aa363a3",
+        "source_fact:v1:a67737f72053b38962149ba9d143dc71c2458c5fea4a5644726061c5a14fc00b",
+        "source_fact:v1:b3faf84fa840f59e99bf9884d0a3fa2cf41cf5c62116f5e55f690f53bf045548"
+      ],
+      "source_published_kst": "2026-10-07T09:48+09:00",
+      "title": "KT클라우드, 50MW급 '청라 AI 데이터센터' 구축…2030년 준공"
+    },
     "source_fact:d52930b22ded98ef1a353d34": {
       "first_seen_kst": "2026-10-06T17:59:23+09:00",
       "lanes": {
@@ -145352,6 +146446,27 @@
       "source_published_kst": "2026-10-06T12:52+09:00",
       "title": "술·약물 복용 후 수상레저기구 운전 '철퇴'…주취 조종 첫 적발, 최대 5년 징역"
     },
+    "source_fact:db4ff3972d645521959378f7": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261007102808",
+      "source": "지디넷코리아",
+      "source_body_digest": "4d3ab6f29185a97e1cbef149035cfb6490dff632e6a9827f3dfadf2aef49f4b9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8f8c9fbae11339aa6064beb82849cf09fba86556ff0cc35728ffde333cf2177",
+      "source_fact_keys": [
+        "source_fact:v1:30f20bfed3ce5b3cecf05a88f775f3aba8e013c032bc2485040777b7cff60f37",
+        "source_fact:v1:72175fb8cde3dc1bc3226fb6245636a50dd1bfc67a422b60e5e3d412f894e0c8",
+        "source_fact:v1:80fb421d2f0727257bdcb30fe9a510552e17319863c6a09519344930eb9ea644",
+        "source_fact:v1:94d43dbbce38199a597e859f5b9e36a982c7bca87703e16f73c6daa8bf851c34",
+        "source_fact:v1:ba673fe341e230a7878efb31c0a395ddc6071828df5d86a19fc81ff350d4f4f9"
+      ],
+      "source_published_kst": "2026-10-07T10:47+09:00",
+      "title": "곽동신 한미반도체 회장, 자사주 누적 702억원 취득"
+    },
     "source_fact:db5b33c4b7461d30d4d4a32b": {
       "first_seen_kst": "2026-10-06T21:05:27+09:00",
       "lanes": {
@@ -145371,6 +146486,26 @@
       ],
       "source_published_kst": "2026-10-06T17:29+09:00",
       "title": "삼성전자 '꿈의 영업이익' 눈앞 … 100조 훌쩍 넘나, 살짝 넘나"
+    },
+    "source_fact:db6fcc8d631417ce6b777b82": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816968",
+      "source": "뉴시스",
+      "source_body_digest": "ef9a5927535bb29f665978b248ee3df39f70bfb6f4bff4e1a83a0ba604644ddf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f96006e6b7857c2db9d9fbe4db1db73697ccad2cbb4b9864a0f78c65ccf02e1",
+      "source_fact_keys": [
+        "source_fact:v1:0f749b46e358693c75dfce20eb6c8fc80da0d3467c0380a897d9f7c15a72e9f9",
+        "source_fact:v1:24ac5329e2e220953ce8698bc7415fea736a87a08f66d4e677f477652614b342",
+        "source_fact:v1:4409bbf06b3ab67217633f8efbb372e179903ffb1851155ccf74776f3e4caa51",
+        "source_fact:v1:5a8651726fa4687c451fa200c6843e4b3dfdc174ea3011ce2b9e48b70adca9b9"
+      ],
+      "source_published_kst": "2026-10-07T11:05+09:00",
+      "title": "\"가전·전장 끌고 TV도 반등\"…LG전자, 3Q 영업익 7818억원…전년比 13.5% 증가"
     },
     "source_fact:db7a955b9c12004f0c6158ca": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
@@ -145610,6 +146745,27 @@
       ],
       "source_published_kst": "2026-10-06T11:01+09:00",
       "title": "자동차 화면용 강화유리 수입승인 없앤다…디스플레이 규제 개선"
+    },
+    "source_fact:dc72ce969ac348e0c021f0ac": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816808",
+      "source": "뉴시스",
+      "source_body_digest": "8346de7ca49bc8f77cefda767f4f4a6a1e84941c41fd06162e3c0837c35a1900",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:91764af32daf2808404e9cd50106a499b2b461080d841386f37abeda4859dee2",
+      "source_fact_keys": [
+        "source_fact:v1:573404d4541f1bdeb7303df26862d69871d2962cc5a8fc4317bbdd3c8155bc33",
+        "source_fact:v1:8314add40526b119aaf33a9b092db57c385a49dd44828eb8e4852d5e2ab408e0",
+        "source_fact:v1:84acdc22262c69cf703b8f3999398f86d11c0885d6f63a96a9e846c29aa363a3",
+        "source_fact:v1:a67737f72053b38962149ba9d143dc71c2458c5fea4a5644726061c5a14fc00b",
+        "source_fact:v1:b3faf84fa840f59e99bf9884d0a3fa2cf41cf5c62116f5e55f690f53bf045548"
+      ],
+      "source_published_kst": "2026-10-07T09:48+09:00",
+      "title": "KT클라우드, 50MW급 '청라 AI 데이터센터' 구축…2030년 준공"
     },
     "source_fact:dc7dfb88e4aa009358a81100": {
       "first_seen_kst": "2026-10-06T10:04:04+09:00",
@@ -146462,6 +147618,29 @@
       ],
       "source_published_kst": "2026-10-06T17:02+09:00",
       "title": "엠투클라우드 \"백신 유통 이력 '디지털 관리' 의료기관까지 확대\""
+    },
+    "source_fact:df0b9b4504248e1fe12133a3": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817014",
+      "source": "뉴시스",
+      "source_body_digest": "df5711940dc0b29c881b42c34c5f503377e64657ff8d01ef603e04ab60c640c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c1e26f3edf85fe5c0b124f90ac810a422a842f6c4ea1d7baf9230c72da4eaa9",
+      "source_fact_keys": [
+        "source_fact:v1:25500ebd7dcfdc739f2941ee2f0e81c594f8516226623bc36d45f7fd2c9df912",
+        "source_fact:v1:6c22c99eca9532819b9fd06f7064c1777c550baeeafdab06d3926b90152bffa5",
+        "source_fact:v1:9f860d73a9f77ffb6d7ebc2dec1bee714cf17e6eeacafea8b59e60e849a6b663",
+        "source_fact:v1:c968e0d819ade607b285eb2be617c1fd6898b29888ea129d4c0252aef06c9320",
+        "source_fact:v1:cae542c0e02bd140b0c4bb967a6327d0c7076f4eeca4862a9159f82a26e14fb0",
+        "source_fact:v1:d03e5630ab99d83c66626159df593fd87a4bee27a163ba729ba94d589b4a0f8a",
+        "source_fact:v1:deaa6162135d5d1c6453143a68e714b8a76e9a954fc7c3468e429ddf10d7e61a"
+      ],
+      "source_published_kst": "2026-10-07T11:07+09:00",
+      "title": "LG전자, 올 3Q 누적 영업익 '4조' 최초 달성…연간 최대 실적 '청신호'"
     },
     "source_fact:df0fe82c4950a5124b21bc19": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
@@ -149512,6 +150691,26 @@
       "source_published_kst": "2026-10-06T11:41+09:00",
       "title": "삼성전기, 글로벌 기업과 MLCC 공급계약… 1년간 2856억원 규모"
     },
+    "source_fact:e97d3c1d56ab57f9ebe351f3": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816968",
+      "source": "뉴시스",
+      "source_body_digest": "ef9a5927535bb29f665978b248ee3df39f70bfb6f4bff4e1a83a0ba604644ddf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f96006e6b7857c2db9d9fbe4db1db73697ccad2cbb4b9864a0f78c65ccf02e1",
+      "source_fact_keys": [
+        "source_fact:v1:0f749b46e358693c75dfce20eb6c8fc80da0d3467c0380a897d9f7c15a72e9f9",
+        "source_fact:v1:24ac5329e2e220953ce8698bc7415fea736a87a08f66d4e677f477652614b342",
+        "source_fact:v1:4409bbf06b3ab67217633f8efbb372e179903ffb1851155ccf74776f3e4caa51",
+        "source_fact:v1:5a8651726fa4687c451fa200c6843e4b3dfdc174ea3011ce2b9e48b70adca9b9"
+      ],
+      "source_published_kst": "2026-10-07T11:05+09:00",
+      "title": "\"가전·전장 끌고 TV도 반등\"…LG전자, 3Q 영업익 7818억원…전년比 13.5% 증가"
+    },
     "source_fact:e98c0f4202cf299eda9489d7": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
@@ -151959,6 +153158,27 @@
       ],
       "source_published_kst": "2026-10-06T16:35+09:00",
       "title": "신세계, 콘텐츠 기업으로 키운다...워너브라더스 인수 1.4조 투자"
+    },
+    "source_fact:f24494f5e9c5c9cf547eebe3": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261007102808",
+      "source": "지디넷코리아",
+      "source_body_digest": "4d3ab6f29185a97e1cbef149035cfb6490dff632e6a9827f3dfadf2aef49f4b9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8f8c9fbae11339aa6064beb82849cf09fba86556ff0cc35728ffde333cf2177",
+      "source_fact_keys": [
+        "source_fact:v1:30f20bfed3ce5b3cecf05a88f775f3aba8e013c032bc2485040777b7cff60f37",
+        "source_fact:v1:72175fb8cde3dc1bc3226fb6245636a50dd1bfc67a422b60e5e3d412f894e0c8",
+        "source_fact:v1:80fb421d2f0727257bdcb30fe9a510552e17319863c6a09519344930eb9ea644",
+        "source_fact:v1:94d43dbbce38199a597e859f5b9e36a982c7bca87703e16f73c6daa8bf851c34",
+        "source_fact:v1:ba673fe341e230a7878efb31c0a395ddc6071828df5d86a19fc81ff350d4f4f9"
+      ],
+      "source_published_kst": "2026-10-07T10:47+09:00",
+      "title": "곽동신 한미반도체 회장, 자사주 누적 702억원 취득"
     },
     "source_fact:f24dc15a69baafab48334efe": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -156089,6 +157309,29 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T10:12+09:00",
       "title": "버거킹, 아침 메뉴 매장 70곳 추가…전국 190곳으로 확대 | 연합뉴스"
+    },
+    "title:03d33c40e226ec613fa237d4": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817014",
+      "source": "뉴시스",
+      "source_body_digest": "df5711940dc0b29c881b42c34c5f503377e64657ff8d01ef603e04ab60c640c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c1e26f3edf85fe5c0b124f90ac810a422a842f6c4ea1d7baf9230c72da4eaa9",
+      "source_fact_keys": [
+        "source_fact:v1:25500ebd7dcfdc739f2941ee2f0e81c594f8516226623bc36d45f7fd2c9df912",
+        "source_fact:v1:6c22c99eca9532819b9fd06f7064c1777c550baeeafdab06d3926b90152bffa5",
+        "source_fact:v1:9f860d73a9f77ffb6d7ebc2dec1bee714cf17e6eeacafea8b59e60e849a6b663",
+        "source_fact:v1:c968e0d819ade607b285eb2be617c1fd6898b29888ea129d4c0252aef06c9320",
+        "source_fact:v1:cae542c0e02bd140b0c4bb967a6327d0c7076f4eeca4862a9159f82a26e14fb0",
+        "source_fact:v1:d03e5630ab99d83c66626159df593fd87a4bee27a163ba729ba94d589b4a0f8a",
+        "source_fact:v1:deaa6162135d5d1c6453143a68e714b8a76e9a954fc7c3468e429ddf10d7e61a"
+      ],
+      "source_published_kst": "2026-10-07T11:07+09:00",
+      "title": "LG전자, 올 3Q 누적 영업익 '4조' 최초 달성…연간 최대 실적 '청신호'"
     },
     "title:03e342fb60f42e119dd7b6ea": {
       "first_seen_kst": "2026-09-21T09:18:44+09:00",
@@ -165535,6 +166778,29 @@
       "source": "매일경제",
       "title": "미 금리 인상에도 7000선 고지 회복한 국장…“변동성 줄고 기초체력 양호”"
     },
+    "title:4f201c835aacc882b9dff716": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.etnews.com/20261007000126",
+      "source": "전자신문",
+      "source_body_digest": "c14df3762821c77e1457188bc65a1d3454f5d0dc5cf9c6ad7e598ac29a93189c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d3f2d0307101aa9f773045a9f4a75ee6cef0835b1f28ac891c37250ba2355af8",
+      "source_fact_keys": [
+        "source_fact:v1:0609894b679db695b6bc6b2a1f7553fe30a96eec315a6debe84ea11cd87ecc79",
+        "source_fact:v1:19417bbe7d3cce91db65448a0827bef3f8af351287180a5c48ad1b9cdbaed724",
+        "source_fact:v1:63a4ec3b26de058277501cb1cc8d0234a8e0e0ad8867ed7def116a52561a3982",
+        "source_fact:v1:7adf3269e9a1149900d545cbe517a632597d3b6857d722a392b52070df183617",
+        "source_fact:v1:c5136c48bdebe30f95693886748252441fb45ec438acf3b07a1904829352382d",
+        "source_fact:v1:db8fc1e08906d65f66bfbffcd7fd92a16a74e5b4cdb7c965c3ba823a73af6434",
+        "source_fact:v1:ee43e6f3172cb26afca25bb7f3e11959ec8320d6f1c4b178d50ed75435310f85"
+      ],
+      "source_published_kst": "2026-10-07T10:31+09:00",
+      "title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력"
+    },
     "title:4f3a7905919bf737c48990c3": {
       "first_seen_kst": "2026-10-06T22:51:44+09:00",
       "lanes": {
@@ -165664,6 +166930,27 @@
       ],
       "source_published_kst": "2026-10-05T19:02+09:00",
       "title": "세제·부동산·대미투자… 李정부 2년차 정책 검증 '경제 국감' [국정감사 핫이슈]"
+    },
+    "title:5086881ba976d4d47b73bb43": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261007102808",
+      "source": "지디넷코리아",
+      "source_body_digest": "4d3ab6f29185a97e1cbef149035cfb6490dff632e6a9827f3dfadf2aef49f4b9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8f8c9fbae11339aa6064beb82849cf09fba86556ff0cc35728ffde333cf2177",
+      "source_fact_keys": [
+        "source_fact:v1:30f20bfed3ce5b3cecf05a88f775f3aba8e013c032bc2485040777b7cff60f37",
+        "source_fact:v1:72175fb8cde3dc1bc3226fb6245636a50dd1bfc67a422b60e5e3d412f894e0c8",
+        "source_fact:v1:80fb421d2f0727257bdcb30fe9a510552e17319863c6a09519344930eb9ea644",
+        "source_fact:v1:94d43dbbce38199a597e859f5b9e36a982c7bca87703e16f73c6daa8bf851c34",
+        "source_fact:v1:ba673fe341e230a7878efb31c0a395ddc6071828df5d86a19fc81ff350d4f4f9"
+      ],
+      "source_published_kst": "2026-10-07T10:47+09:00",
+      "title": "곽동신 한미반도체 회장, 자사주 누적 702억원 취득"
     },
     "title:510167e9f1e99e9b05a4b07c": {
       "first_seen_kst": "2026-10-07T02:13:12+09:00",
@@ -172934,6 +174221,28 @@
       "source_published_kst": "2026-10-04T18:14+09:00",
       "title": "\"러시아군 우크라戰 누적 전상자 154만명\"…3일 하루 1750명"
     },
+    "title:8c3e20f0912c8619b5bf1be9": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.hankyung.com/article/202610076983i",
+      "source": "한국경제",
+      "source_body_digest": "42192b33ff7ed14483f6e23ed9b775f4b11fb4ffeacf198a05b87b8c3a66d3df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f8911846093b0c3aa483c0bd64a2100d132745aa3868b9b4d596117d3c1b35c0",
+      "source_fact_keys": [
+        "source_fact:v1:10979abaa2618d88396c2dead3029ba56437b7587204eebad5263d3974b0edfd",
+        "source_fact:v1:2bc1cfa9212252cad38b5a9e0f59b249eb818df94d9942b13b473a73b920568d",
+        "source_fact:v1:915c2632ad05c33ec2b612a0cca740c94183658c2653f144e62e2fb51f07848e",
+        "source_fact:v1:d8a16d737c6c47fa9b7b5d943a053b882d3acfa6816e0341e8fa069e374bbafc",
+        "source_fact:v1:ee7acc0d71e9d73b8e941f8c263ce0c40454505be5a672f1f9ebe1d9a51ac186",
+        "source_fact:v1:f97af669e008b5a9462954403b7c2677b7c2bdeafdf36bf3892470bcf4aea1e3"
+      ],
+      "source_published_kst": "2026-10-07T08:08+09:00",
+      "title": "선장에 월 10만달러·보너스까지…호르무즈 '위험수당' 급등"
+    },
     "title:8c438d30d59fc39576222b59": {
       "first_seen_kst": "2026-10-02T21:04:53+09:00",
       "lanes": {
@@ -174362,6 +175671,26 @@
       "link": "https://www.etoday.co.kr/news/view/2631511",
       "source": "이투데이",
       "title": "트럼프 “뉴욕서 李대통령과 2000억달러 대미투자 시작 합의”"
+    },
+    "title:97abfb52a735bb9643088f78": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816968",
+      "source": "뉴시스",
+      "source_body_digest": "ef9a5927535bb29f665978b248ee3df39f70bfb6f4bff4e1a83a0ba604644ddf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f96006e6b7857c2db9d9fbe4db1db73697ccad2cbb4b9864a0f78c65ccf02e1",
+      "source_fact_keys": [
+        "source_fact:v1:0f749b46e358693c75dfce20eb6c8fc80da0d3467c0380a897d9f7c15a72e9f9",
+        "source_fact:v1:24ac5329e2e220953ce8698bc7415fea736a87a08f66d4e677f477652614b342",
+        "source_fact:v1:4409bbf06b3ab67217633f8efbb372e179903ffb1851155ccf74776f3e4caa51",
+        "source_fact:v1:5a8651726fa4687c451fa200c6843e4b3dfdc174ea3011ce2b9e48b70adca9b9"
+      ],
+      "source_published_kst": "2026-10-07T11:05+09:00",
+      "title": "\"가전·전장 끌고 TV도 반등\"…LG전자, 3Q 영업익 7818억원…전년比 13.5% 증가"
     },
     "title:97b1b9c7d3d696534713d858": {
       "first_seen_kst": "2026-10-03T21:43:46+09:00",
@@ -179828,6 +181157,23 @@
       "source": "머니투데이",
       "title": "진양곤 HLB 의장, 후속 파이프라인 자신감...각막염·CAR-T에도 베팅"
     },
+    "title:c6c5e5e79eb0a5dcc84078e8": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007049600017",
+      "source": "연합뉴스",
+      "source_body_digest": "54d1cdb0c4daca9cece9f379b766ac9c5bc62577efd803b140c4af60d8f17b74",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9be1af79750287510a2df393a853afde5605ab5ea0ca8b92d355de82bb9b42be",
+      "source_fact_keys": [
+        "source_fact:v1:52a391f992e4302f8126f053c7ecb7a33bf0059e72733a11f75c674d0e701041"
+      ],
+      "source_published_kst": "2026-10-07T09:42+09:00",
+      "title": "kt클라우드, 50MW급 청라 AI 데이터센터 구축 사업 참여 | 연합뉴스"
+    },
     "title:c6f1ffc31d6b36f94f4bbe64": {
       "first_seen_kst": "2026-10-04T00:00:47+09:00",
       "lanes": {
@@ -180899,6 +182245,27 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-03T07:08+09:00",
       "title": "전국 주유소 기름값 20주 연속 하락…휘발유 L당 1857원"
+    },
+    "title:cfcc0ee4f1a0eecea60e6c02": {
+      "first_seen_kst": "2026-10-07T11:11:31+09:00",
+      "lanes": {
+        "live": "2026-10-07T11:11:31+09:00"
+      },
+      "last_seen_kst": "2026-10-07T11:11:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816808",
+      "source": "뉴시스",
+      "source_body_digest": "8346de7ca49bc8f77cefda767f4f4a6a1e84941c41fd06162e3c0837c35a1900",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:91764af32daf2808404e9cd50106a499b2b461080d841386f37abeda4859dee2",
+      "source_fact_keys": [
+        "source_fact:v1:573404d4541f1bdeb7303df26862d69871d2962cc5a8fc4317bbdd3c8155bc33",
+        "source_fact:v1:8314add40526b119aaf33a9b092db57c385a49dd44828eb8e4852d5e2ab408e0",
+        "source_fact:v1:84acdc22262c69cf703b8f3999398f86d11c0885d6f63a96a9e846c29aa363a3",
+        "source_fact:v1:a67737f72053b38962149ba9d143dc71c2458c5fea4a5644726061c5a14fc00b",
+        "source_fact:v1:b3faf84fa840f59e99bf9884d0a3fa2cf41cf5c62116f5e55f690f53bf045548"
+      ],
+      "source_published_kst": "2026-10-07T09:48+09:00",
+      "title": "KT클라우드, 50MW급 '청라 AI 데이터센터' 구축…2030년 준공"
     },
     "title:cfd651274fea295b7644e355": {
       "first_seen_kst": "2026-09-25T14:18:58+09:00",
@@ -186893,5 +188260,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-07T10:49:23+09:00"
+  "updated_at_kst": "2026-10-07T11:11:31+09:00"
 }
