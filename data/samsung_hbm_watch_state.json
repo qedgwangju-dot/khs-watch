@@ -310,27 +310,29 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-10-07T19:21:29+09:00",
+  "updated_at_kst": "2026-10-07T19:33:44+09:00",
   "last_event_count": 0,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
   "monthly_due": false,
   "compare_version": 4,
-  "official_month": "",
-  "official_data_ok": false,
+  "official_month": "202608",
+  "official_data_ok": true,
   "official_errors": [
-    "관세청 세션 초기화 실패: ConnectTimeout",
-    "공공데이터포털 전국 API 실패: ConnectTimeout; fallback=전국 202609 KCS 조회 실패: ConnectTimeout",
-    "공공데이터포털 시도 API 실패: ConnectTimeout; fallback=충남 202609 KCS 조회 실패: ConnectTimeout",
-    "공공데이터포털 시도 API 실패: ConnectTimeout; fallback=충북 202609 KCS 조회 실패: ConnectTimeout",
-    "공공데이터포털 국가별 품목 API MY 실패: ConnectTimeout",
-    "이천 202609 KCS 조회 실패: ConnectTimeout"
+    "공공데이터포털 국가별 품목 API MY 응답형식 확인 필요: SERVICE_KEY_IS_NOT_REGISTERED_ERROR 등록되지 않은 서비스키 30",
+    "이천 202608 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
+    "공공데이터포털 국가별 품목 API MY 응답형식 확인 필요: SERVICE_KEY_IS_NOT_REGISTERED_ERROR 등록되지 않은 서비스키 30",
+    "이천 202607 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
+    "공공데이터포털 국가별 품목 API MY 응답형식 확인 필요: SERVICE_KEY_IS_NOT_REGISTERED_ERROR 등록되지 않은 서비스키 30",
+    "이천 202605 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
+    "공공데이터포털 국가별 품목 API MY 응답형식 확인 필요: SERVICE_KEY_IS_NOT_REGISTERED_ERROR 등록되지 않은 서비스키 30",
+    "이천 202508 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}"
   ],
   "last_official_alert_month": "202608",
   "official_api_key_configured": true,
-  "official_api_used": false,
+  "official_api_used": true,
   "last_successful_official_month": "202608",
-  "last_successful_official_at_kst": "2026-09-30T21:59:38+09:00",
+  "last_successful_official_at_kst": "2026-10-07T19:33:44+09:00",
   "malaysia_official_month": "202608",
   "malaysia_hsk10_amount_usd": null,
   "malaysia_public_available": false,
@@ -2313,7 +2315,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-10-07T19:21:29+09:00",
+      "last_checked_at_kst": "2026-10-07T19:33:44+09:00",
       "gaps": [
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
@@ -2385,7 +2387,7 @@
     "payload_hash": "9349c5f56a103cdf0c4057067982fe1d19e3f6c79c48a163d0f37f2b5e61d00f"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-07T19:24:05+09:00",
+    "checked_at_kst": "2026-10-07T19:35:03+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
@@ -2464,5 +2466,15 @@
     "note": "3배 이상은 2027 HBM4 제시가격을 현재 주력 HBM3E 약 1.5달러/Gb와 비교한 제품간 가격배수다. 전년 대비 HBM4 가격상승률로 해석하지 않으며, 4달러대 중후반은 제시·협상 가격이지 체결가격이 아니다."
   },
   "last_samsung_hbm4_price_observation_count": 0,
-  "last_samsung_hbm4_price_alert_count": 0
+  "last_samsung_hbm4_price_alert_count": 0,
+  "official_source_health": {
+    "version": 1,
+    "status": "ok",
+    "target_month": "202609",
+    "last_checked_at_kst": "2026-10-07T19:33:44+09:00",
+    "selected_official_month": "202608"
+  },
+  "official_source_health_version": 1,
+  "official_poll_interval_hours": 3,
+  "last_official_poll_attempt_kst": "2026-10-07T19:33:44+09:00"
 }
