@@ -295,16 +295,16 @@ def message(stmt_date, minutes_link, press_link, rel, sig):
         '<b>확정 당사자·발언 강도</b>',
         '• 정책 지지: 모든 참석자(회의 의견) / FOMC 표결 12대 0(의결)' if sig['all_support'] else
             '• 정책 지지: 전원 여부 확인 필요',
-        '• 연말 추가 인상 전망: 대부분(most) · 10월 인상 확정 아님' if sig['most_yearend'] else
+        '• 연말 추가 인상 전망: 대부분의 참석자 · 10월 인상 확정 아님' if sig['most_yearend'] else
             '• 연말 추가 인상 전망: 자동 판독 보류',
-        '• 추가긴축 근거: 많은 참석자(many)는 위험관리, 상당수(a number of)는 기본 전망' if
+        '• 추가긴축 근거: 많은 참석자는 위험관리, 상당수는 기본 전망' if
             sig['many_risk'] and sig['number_modal'] else
             '• 추가긴축 근거: 참가자별 차이 재검증 필요',
     ]
     if sig['several_not_restrictive']:
-        lines.append('• 제약 수준: 여러 명(several)은 금리가 비제약적 또는 약한 제약이라고 평가')
+        lines.append('• 제약 수준: 여러 명은 금리가 비제약적 또는 약한 제약이라고 평가')
     if sig['couple_neutral']:
-        lines.append('• 중립금리: 두어 명(a couple)은 추정치를 상향')
+        lines.append('• 중립금리: 두어 명은 추정치를 상향')
     if sep:
         lines.append(f"• 공식 점도표(당시 전망): 2026년 말 {sep['yearend']:.1f}% · 2027년 말 {sep['nextyear']:.1f}%")
     else:
@@ -316,7 +316,7 @@ def message(stmt_date, minutes_link, press_link, rel, sig):
     if sig['ai_inflation'] or sig['ai_core_goods']:
         lines.append('• AI 인프라 설비투자·유가가 물가 압력에 기여. 핵심 제품가격·투입비·전력 병목 관찰')
     if sig['ai_private_debt_term_premium']:
-        lines.append('• AI 투자용 민간채권 대량 발행 → 자본조달 경쟁·국채 기간프리미엄 상승 우려')
+        lines.append('• 의사록 시장보고: AI 투자용 민간채권 발행 확대가 국채 기간프리미엄 상승 요인으로 언급')
     if sig['pce_3m_warning']:
         lines.append('• 몇몇은 근원 PCE 3개월 상승률의 하반기 과소평가 가능성을 경고')
     if sig['pce_methodology']:
