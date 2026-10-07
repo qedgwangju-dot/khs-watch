@@ -118,16 +118,17 @@ BWRX_RSS_QUERIES = [
 # 국내 가동원전의 '규제 재가동 승인 → 실제 운전 → 발전재개/계통병입 → 100% 출력'
 # 상태를 기사 신규 여부가 아니라 운전 단계로 추적한다. 한울4호기는 2026-08-19
 # 자동정지를 기준선으로 잡고, 2026-10-07 재가동 승인은 교차검증된 첫 상승단계다.
-HANUL4_STATE_MODEL_VERSION = 1
+HANUL4_STATE_MODEL_VERSION = 2
 HANUL4_KHNP_MAIN = "https://www.khnp.co.kr/hanul/index.do"
-HANUL4_KHNP_MOBILE = "https://m.khnp.co.kr/hanul/index.do"
+HANUL4_KHNP_MOBILE = "https://m.khnp.co.kr/main/index.do"
 HANUL4_KHNP_NPP = "https://npp.khnp.co.kr/"
 HANUL4_KHNP_FACILITY = "https://www.khnp.co.kr/hanul/contents.do?key=1744"
 HANUL4_NSSC_PRESS_LIST = "https://www.nssc.go.kr/ko/cms/FR_BBS_CON/BoardList.do?MENU_ID=190"
-HANUL4_NSSC_PRESS_RELEASE = "https://www.nssc.go.kr/ko/cms/FR_BBS_CON/BoardView.do?BBS_SEQ=47051&BOARD_SEQ=5&CONTENTS_NO=1&MENU_ID=190&SITE_NO=2"
-HANUL4_RESTART_APPROVAL_PRIMARY = HANUL4_NSSC_PRESS_RELEASE
-HANUL4_RESTART_APPROVAL_SECONDARY = "https://mobile.newsis.com/view/NISX20261007_0003817361"
+HANUL4_POLICY_BRIEFING_APPROVAL = "https://m.korea.kr/briefing/pressReleaseView.do?newsId=156784522&pWise=mSub&pWiseSub=C4"
+HANUL4_RESTART_APPROVAL_PRIMARY = HANUL4_POLICY_BRIEFING_APPROVAL
+HANUL4_RESTART_APPROVAL_SECONDARY = "https://www.newsis.com/view/NISX20261007_0003817361"
 HANUL4_FACILITY_CAPACITY_LABEL = "100만 kW급(1,000 MW급)"
+HANUL4_KHNP_MAIN_FRESH_HOURS = 12
 HANUL4_USER_SOURCE = "https://www.electimes.com/news/articleView.html?idxno=373171"
 HANUL4_FIXED_BASELINE = {
     "kind": "domestic_reactor_operation",
@@ -1286,6 +1287,37 @@ def _hanul4_explicit_output_ramp(text: str) -> bool:
     return reactor_match and ramp_match
 
 
+def _hanul4_measurement_time(text: str) -> dt.datetime | None:
+    normalized = clean_text(text)
+    match = re.search(
+        r"측정시간\s*(20\d{2})[-./년]\s*(\d{1,2})[-./월]\s*(\d{1,2})(?:일)?\s+"
+        r"(\d{1,2}):(\d{2})(?::(\d{2}))?",
+        normalized,
+    )
+    if not match:
+        return None
+    try:
+        return dt.datetime(
+            int(match.group(1)),
+            int(match.group(2)),
+            int(match.group(3)),
+            int(match.group(4)),
+            int(match.group(5)),
+            int(match.group(6) or 0),
+            tzinfo=KST,
+        )
+    except ValueError:
+        return None
+
+
+def _hanul4_main_is_fresh(text: str, now: dt.datetime) -> bool:
+    measured = _hanul4_measurement_time(text)
+    if measured is None:
+        return False
+    age = (now.astimezone(KST) - measured).total_seconds() / 3600
+    return -0.25 <= age <= HANUL4_KHNP_MAIN_FRESH_HOURS
+
+
 def _hanul4_live_status(text: str) -> str | None:
     normalized = clean_text(text)
     if _hanul4_explicit_output_ramp(normalized):
@@ -1348,60 +1380,56 @@ def _hanul4_parse_pub(pub_text: str, now: dt.datetime) -> dt.datetime:
 
 
 def collect_hanul4_operation_items(now: dt.datetime) -> list[dict]:
-    # 현재 승인 사실은 사용자가 제시한 전기신문과 독립적인 이데일리 보도로
-    # 원안위 발표 내용이 교차 확인돼 있으며, 실제 발전재개 여부는 KHNP 실시간
-    # 운영상태와 분리한다.
+    # 재가동 승인은 정부 공식 보도자료로 고정한다. 실제 운전·발전재개·100% 출력은
+    # 사업자 KHNP의 최신 상태/운영소식과 분리해 단계별로 확인한다.
     rows: list[dict] = [dict(HANUL4_VERIFIED_APPROVAL)]
     live_status = None
     live_source = None
-    live_observations: list[tuple[str, str, str]] = []
-    explicit_output_ramp_rows: list[tuple[str, str, str]] = []
 
-    # 실제 운전 여부는 사업자인 KHNP 공식 실시간 페이지를 최우선으로 본다.
-    # 한 화면의 stale/cache 문구로 '운전 전환'을 오인하지 않도록 서로 다른
-    # 공식 표면 2곳 이상이 같은 상태를 보여줄 때만 운전단계를 승격한다.
-    for source_name, url in (
-        ("한국수력원자력 한울본부", HANUL4_KHNP_MAIN),
-        ("한국수력원자력", HANUL4_KHNP_MOBILE),
-        ("열린원전운영정보", HANUL4_KHNP_NPP),
-    ):
-        try:
-            body = clean_text(fetch_text(url))
-        except Exception as exc:
-            print(f"hanul4_khnp_status_error={source_name} {type(exc).__name__}")
-            continue
-        status = _hanul4_live_status(body)
-        if status:
-            live_observations.append((source_name, url, status))
-        if _hanul4_explicit_output_ramp(body):
-            explicit_output_ramp_rows.append((source_name, url, "운전"))
-
-    by_status: dict[str, list[tuple[str, str, str]]] = {}
-    for observation in live_observations:
-        by_status.setdefault(observation[2], []).append(observation)
-
-    if by_status:
-        ranked = sorted(by_status.items(), key=lambda kv: (len(kv[1]), kv[0] == "운전"), reverse=True)
-        top_status, top_rows = ranked[0]
-        if len(top_rows) >= 2:
-            live_status = top_status
-            live_source = top_rows[0][1]
+    main_body = ""
+    main_status = None
+    main_fresh = False
+    main_ramp = False
+    try:
+        main_body = clean_text(fetch_text(HANUL4_KHNP_MAIN))
+        main_fresh = _hanul4_main_is_fresh(main_body, now)
+        if main_fresh:
+            main_status = _hanul4_live_status(main_body)
+            main_ramp = _hanul4_explicit_output_ramp(main_body)
         else:
-            live_status = f"{top_status}(공식 1개 화면·교차확인 대기)"
-            live_source = top_rows[0][1]
+            measured = _hanul4_measurement_time(main_body)
+            print(
+                "hanul4_khnp_main_stale=true "
+                f"measured={measured.isoformat() if measured else 'missing'}"
+            )
+    except Exception as exc:
+        print(f"hanul4_khnp_status_error=한국수력원자력 한울본부 {type(exc).__name__}")
 
-    operating_rows = by_status.get("운전") or []
-    operating_verified = len(operating_rows) >= 2 or bool(explicit_output_ramp_rows)
+    mobile_status = None
+    try:
+        mobile_body = clean_text(fetch_text(HANUL4_KHNP_MOBILE))
+        mobile_status = _hanul4_live_status(mobile_body)
+    except Exception as exc:
+        print(f"hanul4_khnp_status_error=한국수력원자력 모바일 {type(exc).__name__}")
+
+    # 현재 표시값은 호기별 상태를 명시하는 모바일 표면을 우선 사용한다.
+    # 메인 페이지는 측정시각이 신선한 경우에만 보조 증거로 사용한다.
+    if mobile_status:
+        live_status = mobile_status
+        live_source = HANUL4_KHNP_MOBILE
+    elif main_fresh and main_status:
+        live_status = main_status
+        live_source = HANUL4_KHNP_MAIN
+
+    # '운전 전환'은 한 화면의 캐시/오래된 문구로 승격하지 않는다.
+    # 모바일 호기별 상태가 '운전'이고, 측정시각이 신선한 메인 공식 표면에서도
+    # 운전 또는 명시적 출력상승이 확인될 때만 운영단계로 승격한다.
+    operating_verified = (
+        mobile_status == "운전"
+        and main_fresh
+        and (main_status == "운전" or main_ramp)
+    )
     if operating_verified:
-        evidence_rows = explicit_output_ramp_rows or operating_rows
-        if explicit_output_ramp_rows:
-            live_status = "운전"
-            live_source = explicit_output_ramp_rows[0][1]
-            title = "한국수력원자력 실시간 운영정보에서 한울4호기 출력 상승 중 확인"
-            source = explicit_output_ramp_rows[0][0]
-        else:
-            title = "한국수력원자력 공식 운영현황 2개 표면에서 한울4호기 '운전' 상태 교차확인"
-            source = "·".join(row[0] for row in operating_rows[:2])
         rows.append({
             "kind": "domestic_reactor_operation",
             "reactor": "한울4호기",
@@ -1410,15 +1438,16 @@ def collect_hanul4_operation_items(now: dt.datetime) -> list[dict]:
             "status": HANUL4_STAGE_LABELS["operating_status"],
             "published_utc": now.astimezone(UTC).isoformat(timespec="seconds"),
             "published_kst": now.isoformat(timespec="seconds"),
-            "title": title,
-            "source": source,
-            "link": evidence_rows[0][1],
+            "title": "한국수력원자력 공식 최신 운영정보 2개 표면에서 한울4호기 운전 전환 확인",
+            "source": "한국수력원자력 모바일·한울본부",
+            "link": HANUL4_KHNP_MOBILE,
+            "secondary_link": HANUL4_KHNP_MAIN,
             "official": True,
             "verified": True,
-            "evidence_count": max(len(operating_rows), len(explicit_output_ramp_rows)),
+            "evidence_count": 2,
             "live_status": "운전",
-            "live_status_source": evidence_rows[0][1],
-            "verification": "한국수력원자력 실시간 운영정보의 명시적 출력 상승 문구 또는 공식 운영표면 2곳 일치",
+            "live_status_source": HANUL4_KHNP_MOBILE,
+            "verification": "모바일 호기별 운전 상태 + 측정시각이 신선한 한울본부 공식 표면 일치",
         })
 
     # 원안위 보도자료 목록도 직접 확인한다. 검색엔진·언론 색인보다 늦더라도
@@ -1434,8 +1463,8 @@ def collect_hanul4_operation_items(now: dt.datetime) -> list[dict]:
                 "stage": "restart_approved",
                 "rank": HANUL4_STAGE_RANK["restart_approved"],
                 "status": HANUL4_STAGE_LABELS["restart_approved"],
-                "published_utc": now.astimezone(UTC).isoformat(timespec="seconds"),
-                "published_kst": now.isoformat(timespec="seconds"),
+                "published_utc": HANUL4_VERIFIED_APPROVAL["published_utc"],
+                "published_kst": HANUL4_VERIFIED_APPROVAL["published_kst"],
                 "title": "원자력안전위원회 보도자료 목록에서 한울4호기 재가동 승인 확인",
                 "source": "원자력안전위원회",
                 "link": HANUL4_NSSC_PRESS_LIST,
@@ -1446,8 +1475,9 @@ def collect_hanul4_operation_items(now: dt.datetime) -> list[dict]:
     except Exception as exc:
         print(f"hanul4_nssc_direct_error={type(exc).__name__}")
 
-    # RSS는 규제 승인·발전재개·100% 출력·재정지의 보조 탐색면이다.
-    # 공식 출처 1곳 또는 서로 다른 신뢰매체 2곳이 같은 단계만 지지할 때 채택한다.
+    # 뉴스 RSS는 보조 탐색면이다. 승인/재정지는 공식 1차자료 또는 독립 신뢰매체
+    # 2곳으로 교차검증할 수 있지만 발전재개·100% 출력 같은 실제 운전단계는
+    # KHNP/원안위 등 공식 출처가 확인된 경우에만 상태 전이 후보로 채택한다.
     support: dict[str, list[dict]] = {}
     for source_name, query in HANUL4_RSS_QUERIES:
         try:
@@ -1466,7 +1496,6 @@ def collect_hanul4_operation_items(now: dt.datetime) -> list[dict]:
             published = _hanul4_parse_pub(clean_text(node.findtext("pubDate") or ""), now)
             if (now.astimezone(UTC) - published).total_seconds() / 86400 > 14:
                 continue
-            # 8월 자동정지 과거기사는 현재 승인을 뒤집는 신규사건으로 취급하지 않는다.
             support.setdefault(stage, []).append({
                 "title": title,
                 "link": link,
@@ -1484,8 +1513,13 @@ def collect_hanul4_operation_items(now: dt.datetime) -> list[dict]:
         }
         official_rows = [item for item in evidence if item.get("official")]
         trusted_rows = [item for item in evidence if item.get("trusted")]
-        if not official_rows and len(source_keys) < 2:
+
+        if stage in {"generation_resumed", "full_power"}:
+            if not official_rows:
+                continue
+        elif not official_rows and len(source_keys) < 2:
             continue
+
         best = max(
             official_rows or trusted_rows or evidence,
             key=lambda item: item.get("published") or now.astimezone(UTC),
@@ -1508,14 +1542,18 @@ def collect_hanul4_operation_items(now: dt.datetime) -> list[dict]:
             "link": best["link"],
             "official": bool(official_rows),
             "verified": True,
-            "verification": "공식 1차자료 1건 이상 또는 독립 신뢰매체 2곳 이상",
+            "verification": (
+                "공식 1차자료 확인"
+                if official_rows
+                else "독립 신뢰매체 2곳 이상 교차확인"
+            ),
             "evidence_count": len(source_keys),
         })
 
     # 모든 후보에 현재 KHNP 운영상태를 함께 붙여 '승인'과 '실제 가동'을 섞지 않는다.
     for item in rows:
         item.setdefault("live_status", live_status or "미확인")
-        item.setdefault("live_status_source", live_source or HANUL4_KHNP_MAIN)
+        item.setdefault("live_status_source", live_source or HANUL4_KHNP_MOBILE)
 
     # 같은 단계는 가장 신뢰도가 높은 최신 증거 1건만 유지한다.
     dedup: dict[str, dict] = {}
@@ -1604,6 +1642,13 @@ def _self_test_hanul4_operating_event_model() -> None:
         raise RuntimeError("Hanul4 live-output-ramp parser regression")
     if not _hanul4_explicit_output_ramp(live_ramp_fixture):
         raise RuntimeError("Hanul4 explicit-output-ramp evidence regression")
+    fresh_main_fixture = live_ramp_fixture + " 한울원자력본부 측정시간 2026-10-07 19:55:00"
+    stale_main_fixture = live_ramp_fixture + " 한울원자력본부 측정시간 2026-08-11 00:03:00"
+    fixture_now = dt.datetime(2026, 10, 7, 20, 0, tzinfo=KST)
+    if not _hanul4_main_is_fresh(fresh_main_fixture, fixture_now):
+        raise RuntimeError("Hanul4 fresh-main timestamp regression")
+    if _hanul4_main_is_fresh(stale_main_fixture, fixture_now):
+        raise RuntimeError("Hanul4 stale-main timestamp false-positive regression")
 
     approval = dict(HANUL4_VERIFIED_APPROVAL)
     operating = {
@@ -1623,6 +1668,10 @@ def _self_test_hanul4_operating_event_model() -> None:
         raise RuntimeError(f"Hanul4 sequential-stage regression: {selected}")
 
     # 실제 Telegram nuclear lane의 필수 필드와도 호환되는지 회귀검사한다.
+    if "korea.kr" not in HANUL4_RESTART_APPROVAL_PRIMARY:
+        raise RuntimeError("Hanul4 official approval source regression")
+    if HANUL4_KHNP_MOBILE != "https://m.khnp.co.kr/main/index.do":
+        raise RuntimeError("Hanul4 mobile status source regression")
     sample = dict(HANUL4_VERIFIED_APPROVAL)
     sample["live_status"] = "정비"
     sample["live_status_source"] = HANUL4_KHNP_MAIN
