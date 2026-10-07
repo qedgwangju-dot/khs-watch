@@ -82,21 +82,28 @@ jobs:
               url=f"https://api.github.com/repos/{repo}/actions/workflows/kospi-derivatives-flow-ls-realtime.yml/runs?per_page=50"
               with urllib.request.urlopen(urllib.request.Request(url,headers=headers),timeout=20) as r:
                   runs=json.loads(r.read().decode("utf-8")).get("workflow_runs",[])
+              current_created=now
+              startup_candidates=[]
               for run in runs:
                   if run.get("status") not in {"queued","in_progress"}:
                       continue
                   created=dt.datetime.fromisoformat(str(run["created_at"]).replace("Z","+00:00")).astimezone(ZoneInfo("Asia/Seoul"))
                   run_id=int(run["id"])
-                  if created.date()!=now.date() or run_id==current:
+                  if created.date()!=now.date():
                       continue
                   active.append((created,run_id,run.get("status")))
                   age_minutes=(now-created).total_seconds()/60.0
+                  if run_id==current:
+                      current_created=created
+                      startup_candidates.append((created,run_id,run.get("status")))
+                      continue
                   jobs_url=f"https://api.github.com/repos/{repo}/actions/runs/{run_id}/jobs?per_page=100"
                   try:
                       with urllib.request.urlopen(urllib.request.Request(jobs_url,headers=headers),timeout=20) as r:
                           jobs=json.loads(r.read().decode("utf-8")).get("jobs",[])
                   except Exception as exc:
-                      unknown.append((run_id,run.get("status"),type(exc).__name__))
+                      if age_minutes<=3:
+                          unknown.append((run_id,run.get("status"),type(exc).__name__))
                       continue
                   production_jobs=[
                       j for j in jobs
@@ -110,7 +117,16 @@ jobs:
                       ))
                   elif age_minutes<=3:
                       startup.append((run_id,run.get("status")))
-              should_run=not healthy and not startup and not unknown
+                      startup_candidates.append((created,run_id,run.get("status")))
+
+              if healthy or unknown:
+                  should_run=False
+              else:
+                  if not any(x[1]==current for x in startup_candidates):
+                      startup_candidates.append((current_created,current,"current"))
+                  startup_candidates.sort(key=lambda x:(x[0],x[1]))
+                  startup_leader=startup_candidates[0][1]
+                  should_run=(startup_leader==current)
           run_morning=bool(should_run and now.time()<dt.time(12,15))
 
           # 장 시작 뒤 감시가 비어 있다가 뒤늦게 복구되는 경우 침묵하지 않는다.
