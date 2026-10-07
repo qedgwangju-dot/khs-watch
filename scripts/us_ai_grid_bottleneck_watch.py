@@ -810,7 +810,7 @@ def transformer_policy_effect_status(latest_month: str, history: dict) -> str:
     if not latest_month:
         return "수입통계 미확보"
     if latest_month <= "2026-08":
-        return "정책효과 판단 보류 — EO 14421 시행은 2026-08-26이라 8월 수입과 인과관계를 단정하지 않음"
+        return "정책효과 판단 보류 — EO 14421 시행은 2026년 8월 26일이라 8월 수입과 인과관계를 단정하지 않음"
     keys = sorted(k for k in history if k >= "2026-09")
     if len(keys) >= 2:
         k1, k2 = keys[-2], keys[-1]
