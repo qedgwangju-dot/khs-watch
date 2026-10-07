@@ -106,6 +106,13 @@ def h41_snapshot():
     raw,final=fetch(H41_URL); p=TableParser(); p.feed(raw); text=clean(raw)
     d=re.search(r'Wednesday\s+([A-Z][a-z]{2})\s+(\d{1,2}),\s+(20\d{2})',text)
     date=f"{d.group(3)}-{datetime.strptime(d.group(1),'%b').month:02d}-{int(d.group(2)):02d}" if d else None
+    if not date:
+        raise RuntimeError('H.4.1 기준일 파싱 실패')
+    # H.4.1 is weekly. If the official page is abnormally stale, fail closed
+    # rather than classifying an old balance sheet as current policy.
+    age_days=(datetime.now(timezone.utc).date()-datetime.strptime(date,'%Y-%m-%d').date()).days
+    if age_days>10:
+        raise RuntimeError(f'H.4.1 공식자료 오래됨: {date} ({age_days}일 전)')
 
     # Use one consistent stock basis: Wednesday levels from table 5.
     cond=_condition_table(p.tables)
