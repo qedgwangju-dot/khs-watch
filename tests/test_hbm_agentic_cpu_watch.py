@@ -100,5 +100,81 @@ class AgenticCpuAlertTests(unittest.TestCase):
         self.assertIn("+14.0%", block)
 
 
+class AgenticCpuStructureTests(unittest.TestCase):
+    def test_baselines_preserve_institution_and_source_scope(self):
+        sources = w.CPU_STRUCTURE_BASELINE
+        self.assertEqual(sources["bnpp_public"]["market_2025_usd_bn"], 26.0)
+        self.assertEqual(sources["bnpp_public"]["market_2030_usd_bn"], 220.0)
+        self.assertIn("AMD 추정치", sources["bnpp_public"]["source_kind"])
+        self.assertEqual(sources["bnpp_analyst"]["market_2030_usd_bn"], 245.0)
+        self.assertFalse(sources["bnpp_analyst"]["market_2025_official_confirmed"])
+        self.assertEqual(sources["bnpp_analyst"]["amd_target_usd"], 960.0)
+        self.assertFalse(sources["bnpp_analyst"]["arm_target_confirmed"])
+        self.assertEqual(sources["digitimes"]["ai_server_cpu_2027_million"], 9.845)
+        self.assertEqual(sources["digitimes"]["arm_all_server_cpu_2027_share_pct"], 32.5)
+        self.assertEqual(sources["amd_system"]["helios_venice_cpus"], 18)
+        self.assertEqual(sources["amd_system"]["helios_mi455x_gpus"], 72)
+
+    def test_other_market_republication_cannot_overwrite_bnp_public(self):
+        url = "https://example.org/2026/bnp-says-cpu-300b"
+        provider, value = w.cpu_structure_observation(
+            "BNP Paribas agentic CPUs market", "from USD30 billion in 2025 to USD245 billion in 2030",
+            url,
+        )
+        self.assertEqual((provider, value), ("", {}))
+        provider, value = w.cpu_structure_observation(
+            "BNP Paribas agentic CPUs market",
+            "AMD estimates suggest the data centre CPU market could rise from around USD26 billion in 2025 to around USD220 billion in 2030.",
+            w.CPU_STRUCTURE_BASELINE["bnpp_public"]["source_url"],
+        )
+        self.assertEqual(provider, "bnpp_public")
+        self.assertEqual(value["market_2025_usd_bn"], 26.0)
+        self.assertEqual(value["market_2030_usd_bn"], 220.0)
+
+    def test_digitimes_typed_nearly_double_is_not_exact_socket_ratio(self):
+        url = w.CPU_STRUCTURE_BASELINE["digitimes"]["per_accelerator_source_url"]
+        provider, value = w.cpu_structure_observation(
+            "AI servers will carry nearly twice as many CPUs per accelerator by 2027",
+            "",
+            url,
+        )
+        self.assertEqual(provider, "digitimes")
+        self.assertEqual(value["per_accelerator_cpu_2027"], "nearly_double")
+        self.assertEqual(w.cpu_structure_changes(w.CPU_STRUCTURE_BASELINE["digitimes"], value, provider), [])
+        provider, value = w.cpu_structure_observation(
+            "AI servers will carry three times as many CPUs per accelerator by 2027",
+            "",
+            url,
+        )
+        self.assertEqual(w.cpu_structure_changes(w.CPU_STRUCTURE_BASELINE["digitimes"], value, provider), [
+            "DIGITIMES 2027 가속기당 CPU 전망 변경: nearly_double→triple"
+        ])
+
+    def test_bnp_2030_revision_only_compares_same_provider(self):
+        old = w.CPU_STRUCTURE_BASELINE["bnpp_public"]
+        self.assertEqual(w.cpu_structure_changes(old, {"market_2030_usd_bn": 235}, "bnpp_public"), [])
+        self.assertEqual(
+            w.cpu_structure_changes(old, {"market_2030_usd_bn": 250}, "bnpp_public"),
+            ["BNP 공개자료의 AMD 인용 CPU 시장 전망: 220→250십억달러"],
+        )
+        self.assertEqual(w.cpu_structure_changes(old, {"market_2030_usd_bn": 245}, "bnpp_analyst"), [])
+
+    def test_one_shot_cpu_alert_has_separate_official_and_broker_provenance(self):
+        a = w.cpu_structure_block(w.CPU_STRUCTURE_BASELINE, 1400.0, [])
+        self.assertIn("260억달러(약", a)
+        self.assertIn("2,200억달러(약", a)
+        self.assertIn("2,450억달러(약", a)
+        self.assertIn("BNP 애널리스트 별도 보도", a)
+        self.assertIn("AMD 목표주가", a)
+        self.assertIn("Arm 목표주가 $405", a)
+        self.assertIn("가속기당 CPU 거의 2배 전망", a)
+        self.assertIn("984.5만개(+84.1%", a)
+        self.assertIn("Arm 계열 전체 서버 CPU 1,580만개(32.5%)", a)
+        self.assertIn("Venice CPU 18개·MI455X GPU 72개(물리 1:4)", a)
+        self.assertNotIn("목표주가 $405(공식 확인)", a)
+        self.assertIn("2nm 수율·ABF", a)
+        self.assertLess(len(a), 2600)
+
+
 if __name__ == "__main__":
     unittest.main()
