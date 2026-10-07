@@ -1513,6 +1513,24 @@ def _self_test_hanul4_operating_event_model() -> None:
         if marker not in rendered:
             raise RuntimeError(f"Hanul4 Telegram contract regression: missing {marker}")
 
+    try:
+        from scripts.khs_policy_telegram_formatter import (
+            format_policy_message,
+            validate_final_policy_message,
+        )
+    except ModuleNotFoundError:
+        from khs_policy_telegram_formatter import (
+            format_policy_message,
+            validate_final_policy_message,
+        )
+    title, body = format_policy_message(
+        "국내 원전 운전·재가동 웹감시: 확인된 상태 변화",
+        rendered,
+    )
+    errors = validate_final_policy_message(title, body)
+    if errors:
+        raise RuntimeError(f"Hanul4 Telegram formatter regression: {errors}")
+
 
 def _render_hanul4_operation(item: dict, idx: int, now: dt.datetime) -> list[str]:
     stage = str(item.get("stage") or "")
