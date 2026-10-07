@@ -81,8 +81,20 @@ def _pause_signals(row):
 def google_news_with_confirmations(query):
     if query == DIRECT_AP_WORLD:
         rows, err = _ap_rss("https://apnews.com/hub/world-news?format=rss")
+        if err:
+            fallback_rows, fallback_err = _prev_google_news(
+                'site:apnews.com (Iran OR Hormuz OR Ukraine OR Russia OR Houthi) (war OR strike OR ceasefire OR peace OR talks) when:6h'
+            )
+            if fallback_err is None:
+                rows, err = fallback_rows, None
     elif query == DIRECT_AP_TOP:
         rows, err = _ap_rss("https://apnews.com/hub/ap-top-news?format=rss")
+        if err:
+            fallback_rows, fallback_err = _prev_google_news(
+                'site:apnews.com (Trump OR Iran OR Ukraine OR Russia OR Saudi) (war OR strike OR negotiations OR ceasefire) when:6h'
+            )
+            if fallback_err is None:
+                rows, err = fallback_rows, None
     else:
         rows, err = _prev_google_news(query)
 
