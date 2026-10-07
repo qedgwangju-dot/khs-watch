@@ -275,3 +275,22 @@ assert "장마감 확정" in close_text, close_text
 assert "복원 여부는 확정하지 않습니다" in close_text, close_text
 assert "종료·복원 확인" not in close_text, close_text
 print("session_close_render_regression=true")
+
+
+# Regression: 감시 공백 중 가격 급락은 침묵하지 않고 수급 원인 보류로 표시한다.
+w10 = Watch.__new__(Watch)
+w10.flows = deque(maxlen=2500)
+w10.put_defs = []
+w10.puts = {}
+ep10 = {
+    "start_ts": time.time() - 300,
+    "start_price": 7000.0,
+    "low_ts": time.time() - 30,
+    "low_price": 6950.0,
+    "price_only": True,
+}
+txt10 = Watch.build_alert(w10, "start", ep10, time.time(), 6960.0)
+assert "수급 원인 보류" in txt10, txt10
+assert "소급 추정하지 않습니다" in txt10, txt10
+assert "주도 가능성 높음" not in txt10, txt10
+print("price_only_gap_alert_regression=true")
