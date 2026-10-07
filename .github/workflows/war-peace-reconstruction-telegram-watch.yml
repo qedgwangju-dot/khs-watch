@@ -138,24 +138,51 @@ jobs:
               raise RuntimeError(f"Telegram bot mismatch: expected @{expected}, got @{actual or 'unknown'}")
 
           text = pathlib.Path("out/war_peace_reconstruction_alert.txt").read_text(encoding="utf-8").strip()
-          if len(text) > 4096:
-              raise RuntimeError(f"Telegram message too long after fit gate: {len(text)}")
-          payload = urllib.parse.urlencode({
-              "chat_id": chat_id,
-              "text": text,
-              "parse_mode": "HTML",
-              "disable_web_page_preview": "true",
-          }).encode()
-          req = urllib.request.Request(
-              f"https://api.telegram.org/bot{token}/sendMessage",
-              data=payload,
-              method="POST",
+
+          def split_messages(src, limit=3900):
+              if len(src) <= limit:
+                  return [src]
+              chunks, current = [], ""
+              for line in src.splitlines():
+                  candidate = line if not current else current + "\n" + line
+                  if len(candidate) <= limit:
+                      current = candidate
+                      continue
+                  if current:
+                      chunks.append(current)
+                      current = ""
+                  if len(line) > limit:
+                      raise RuntimeError(f"Telegram single line too long: {len(line)}")
+                  current = line
+              if current:
+                  chunks.append(current)
+              return chunks
+
+          message_ids = []
+          chunks = split_messages(text)
+          for idx, chunk in enumerate(chunks, 1):
+              payload = urllib.parse.urlencode({
+                  "chat_id": chat_id,
+                  "text": chunk,
+                  "parse_mode": "HTML",
+                  "disable_web_page_preview": "true",
+              }).encode()
+              req = urllib.request.Request(
+                  f"https://api.telegram.org/bot{token}/sendMessage",
+                  data=payload,
+                  method="POST",
+              )
+              result = request_json(req)
+              if not result.get("ok"): raise RuntimeError(f"Telegram rejected: {result}")
+              message_id = result.get("result", {}).get("message_id")
+              if not message_id: raise RuntimeError(f"Telegram response missing message_id: {result}")
+              message_ids.append(message_id)
+              print(f"telegram_chunk_confirmed={idx}/{len(chunks)} message_id={message_id}")
+
+          print(
+              f"telegram_delivery_confirmed=true bot=@{actual} "
+              f"message_ids={','.join(map(str, message_ids))}"
           )
-          result = request_json(req)
-          if not result.get("ok"): raise RuntimeError(f"Telegram rejected: {result}")
-          message_id = result.get("result", {}).get("message_id")
-          if not message_id: raise RuntimeError(f"Telegram response missing message_id: {result}")
-          print(f"telegram_delivery_confirmed=true bot=@{actual} message_id={message_id}")
           PY
       - name: Finalize state after confirmed delivery
         if: success() && env.DRY_RUN != 'true' && hashFiles('out/war_peace_reconstruction_alert.txt') != ''
