@@ -102,9 +102,25 @@ def send(msg):
         if not x.get('ok'):raise RuntimeError('Telegram 전송 실패')
 
 def market_dec():
+    """Return a year-end market rate only when the futures source is fresh.
+
+    A stale/failing market-path state must never be compared with a new SEP,
+    because that would manufacture a false market-vs-Fed gap.
+    """
     p=load(PATH_STATE,{})
-    ms=[m for m in p.get('meetings',[]) if str(m.get('date','')).startswith('2026-')]
-    return sorted(ms,key=lambda x:x['date'])[-1].get('post_rate') if ms else None
+    status=str(p.get('source_status') or '')
+    cls=p.get('classification') or {}
+    if ('실패' in status or '오래' in status or cls.get('market_source_stale')
+            or p.get('source_error')):
+        return None
+    snap=load(STATE,{}).get('snapshot') or {}
+    date=str(snap.get('date') or '')
+    year=date[:4] if len(date)>=4 and date[:4].isdigit() else str(datetime.now(timezone.utc).year)
+    ms=[m for m in p.get('meetings',[]) if str(m.get('date','')).startswith(year+'-')]
+    if not ms:
+        return None
+    # Compare the SEP year-end median with the last scheduled meeting of the same year.
+    return sorted(ms,key=lambda x:x['date'])[-1].get('post_rate')
 
 def d(cur,prev,idx):
     if not cur or not prev or idx>=len(cur) or idx>=len(prev) or cur[idx] is None or prev[idx] is None:return None
