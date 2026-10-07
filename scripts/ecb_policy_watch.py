@@ -559,10 +559,16 @@ def main() -> int:
         statement,
     )
     main_sig = main_tuple[2]["signature"]
-    new_decision = bool(current_decision_date and (
-        current_decision_date != state.get("last_decision_date")
-        or main_sig != state.get("last_decision_signature")
-    ))
+    # Delivery dedupe is keyed to the official event identity, not to our
+    # derived parser signature. A formatter/parser code change must never resend
+    # an already delivered historical ECB decision.
+    new_decision = bool(
+        current_decision_date
+        and (
+            current_decision_date != state.get("last_decision_date")
+            or decision_item.get("link") != state.get("last_decision_url")
+        )
+    )
 
     alert_tuple = None
     if new_decision:
@@ -578,9 +584,12 @@ def main() -> int:
     elif statement_item and current_statement_date == current_decision_date and statement is not None:
         stmt_tuple = build_statement_update(statement_item, statement)
         stmt_sig = stmt_tuple[2]["signature"]
+        # Same rule for the press conference: use the official document
+        # identity. Derived signal/signature changes are analysis changes, not a
+        # new ECB event.
         new_statement = bool(
             current_statement_date != state.get("last_statement_date")
-            or stmt_sig != state.get("last_statement_signature")
+            or statement_item.get("link") != state.get("last_statement_url")
         )
         if new_statement:
             alert_tuple = stmt_tuple
