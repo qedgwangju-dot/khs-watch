@@ -159,7 +159,8 @@ def main() -> int:
     original = original_path.read_text(encoding="utf-8")
     translated = clean_model_output(translated_path.read_text(encoding="utf-8"))
     urls = extract_source_urls(original)
-    translated = restore_source_urls(translated, urls)
+    if SOURCE_TOKEN_RE.search(translated):
+        translated = restore_source_urls(translated, urls)
     validate_korean_translation(original, translated)
 
     destination_path.write_text(translated.rstrip() + "\n", encoding="utf-8")
