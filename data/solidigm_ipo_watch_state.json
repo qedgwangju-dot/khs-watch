@@ -105,5 +105,128 @@
     "as_of": "2026-10-05",
     "note": "Solidigm 공식 DMS는 PCN 0000048112-00과 'all Solidigm Datacenter SSDs' 대상 추가 제조거점을 확인. 대만·ODM·12월 출하·Pegatron은 아주경제/서울경제 보도 단계. PTI는 과거 PTI 공식 IR에서 Solidigm 파트너 관계가 확인됨. 신규 거점의 생산능력 수치는 미공개이며 NAND 웨이퍼 팹 증설로 해석하지 않음."
   },
-  "ipo_alert_format_version": 2
+  "ipo_alert_format_version": 2,
+  "_delivery": {
+    "id": "47d30acc12be765f6d3023c4d21ffbea226d7050535d3cb3f784b066ea10024f",
+    "status": "queued",
+    "created_at_kst": "2026-10-08T08:36:09+09:00",
+    "chunks": [
+      "🚨 <b>Solidigm IPO 상태 변화</b>\n━━━━━━━━━━━━━━━━\n• 현재 단계: <b>대표주관사·주관단 선정</b>\n• 확인 수준: <b>Reuters·Bloomberg 등 신뢰 보도 단계(회사 미확정)</b>\n• 목표 시점: <b>이르면 2027년</b>\n• 거론 기업가치: <b>최대 1,000억달러(약 133조8,690억원)</b>\n• 조달 가능 규모: <b>100억달러(약 13조3,869억원)</b>\n• 선행 보도상 별도 상장 전 자금조달 검토액: 36억달러(약 4조8,193억원) (이번 기사에서 재확인된 확정액 아님)\n• 대표주관사(블룸버그 보도): <b>Goldman Sachs, Morgan Stanley</b>\n• 추가 참여 주관단(보도): JPMorgan Chase, Citigroup, UBS\n• 출처 계보: Bloomberg 원보도 → 연합뉴스·이데일리·Investing.com 재인용. 별개 독립 확인 3건이 아닙니다.\n• 신주·구주 매출 비율 및 자금이 어느 회사에 귀속될지: <b>미확정</b>\n• 이번 변화: <b>Bloomberg 원문 주소 추가 및 재인용 출처 구분 (기존 10월 8일 주관사 선정 보도의 출처 보강, 신규 IPO 진행 아님)</b>\n• 다음 확인: 대표주관사 선정 · SEC 비공개/공개 신고 · 공모가 밴드 · 신주/구주 비중 · SK하이닉스 잔여지분 · 자금용도\n• Bloomberg 원문(사용자 제공 주소): <a href=\"https://www.bloomberg.com/news/articles/2026-10-07/sk-hynix-s-solidigm-is-said-to-pick-banks-for-us-ipo-next-year\">원문 보기</a>\n• Bloomberg 본문은 직접 열람 제한. 은행 명단·추정금액은 Bloomberg 인용 보도로 대조했으며 공식 확정으로 해석하지 않습니다.\n• 재인용 확인: Bloomberg 보도(이데일리·연합뉴스·Investing.com 재인용) · <a href=\"https://www.edaily.co.kr/News/Read?mediaCodeNo=257&amp;newsId=02407526645610952\">원문</a>\n• 추가 재인용: <a href=\"https://www.investing.com/news/stock-market-news/solidigm-selects-lead-banks-for-blockbuster-us-ipo-bloomberg-reports-4937618\">원문</a>\n• 사용자 원문: 연합뉴스 <a href=\"https://www.yna.co.kr/view/AKR20261008022500009\">원문</a>\n• SK하이닉스 공식 입장(10월 1일): 구체적인 자금조달 방안 미확정. 기존 주주 경제적 가치·희석 위험 검토 <a href=\"https://news.skhynix.com/en/fact-11/\">원문</a>\n• 확인 대기: SEC 신고, 신주·구주 비율, SK하이닉스 상장 후 지분, 자금 유입처, 이사회 승인.\n• 주의: 이번 주관사·조달액·기업가치·일정은 보도 단계이며 회사나 SEC 확정 사실이 아닙니다.\n• 환율: 2026-10-07 일일 기준 · ECB/Frankfurter · 조회 2026-10-08 08:36 KST · 보조 API 2026-10-07 · 차이 0.02% · 일중 기준시각 차이 가능\n• 조회: 2026-10-08 08:35 KST"
+    ],
+    "next_chunk": 0,
+    "message_ids": [],
+    "candidate": {
+      "watch_version": 4,
+      "topic": "Solidigm IPO + eSSD manufacturing",
+      "baseline_as_of": "2026-09-25",
+      "current_state": {
+        "stage": "underwriters_selected",
+        "target_year": 2027,
+        "valuation_max_usd": 100000000000.0,
+        "raise_target_usd": 10000000000.0,
+        "evidence_state": "top_tier_report",
+        "source_url": "https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=02407526645610952",
+        "source_name": "Bloomberg 보도(이데일리·연합뉴스·Investing.com 재인용)",
+        "source_published_at_kst": "2026-10-08T07:48:01+09:00",
+        "underwriters": [
+          "Citigroup",
+          "Goldman Sachs",
+          "JPMorgan Chase",
+          "Morgan Stanley",
+          "UBS"
+        ],
+        "primary_secondary_mix": "primary_included",
+        "parent_post_ipo_stake_pct": null,
+        "use_of_proceeds": [],
+        "us_fab_link": "considering",
+        "pre_ipo_raise_usd": 3600000000,
+        "lead_underwriters": [
+          "Goldman Sachs",
+          "Morgan Stanley"
+        ],
+        "other_syndicate_banks": [
+          "JPMorgan Chase",
+          "Citigroup",
+          "UBS"
+        ],
+        "reported_original": "Bloomberg",
+        "independent_origin_count": 1,
+        "ipo_officially_confirmed": false,
+        "underwriter_officially_confirmed": false,
+        "user_original_url": "https://www.yna.co.kr/view/AKR20261008022500009",
+        "crosscheck_url": "https://www.investing.com/news/stock-market-news/solidigm-selects-lead-banks-for-blockbuster-us-ipo-bloomberg-reports-4937618",
+        "bloomberg_original_url": "https://www.bloomberg.com/news/articles/2026-10-07/sk-hynix-s-solidigm-is-said-to-pick-banks-for-us-ipo-next-year",
+        "bloomberg_original_title": "SK Hynix’s Solidigm Is Said to Pick Banks for US IPO Next Year",
+        "bloomberg_original_body_directly_verified": false
+      },
+      "last_checked_at_kst": "2026-10-08T08:35:55+09:00",
+      "last_alert_at_kst": "2026-10-08T08:35:55+09:00",
+      "last_alert_reasons": [
+        "Bloomberg 원문 주소 추가 및 재인용 출처 구분 (기존 10월 8일 주관사 선정 보도의 출처 보강, 신규 IPO 진행 아님)"
+      ],
+      "delivery_check": {
+        "checked_at_kst": "2026-10-08T08:29:03+09:00",
+        "status": "confirmed"
+      },
+      "false_positive_audit": {
+        "message_id": 149,
+        "observed_stage": "postponed",
+        "cause": "secondary-page text contamination and lower-tier evidence overwrite",
+        "corrected": true
+      },
+      "last_successful_delivery_kst": "2026-10-08T08:29:03+09:00",
+      "telegram_message_ids": [
+        260
+      ],
+      "telegram_message_id": 260,
+      "bot_username": "khs88798879887988798879_bot",
+      "delivery_receipt": {
+        "status": "confirmed",
+        "bot_username": "khs88798879887988798879_bot",
+        "message_ids": [
+          260
+        ],
+        "confirmed_at_kst": "2026-10-08T08:29:03+09:00",
+        "payload_hash": "bce25e7b3173fc1a866685e32656654307034e2f2fcb59e9a7f1840bf692ad1e"
+      },
+      "last_evidence_url": "https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=02407526645610952",
+      "last_evidence_published_at_kst": "2026-10-08T07:48:01+09:00",
+      "historical_context": {
+        "pre_ipo_raise_usd": 3600000000,
+        "note": "별도 선행 보도에서 검토된 Pre-IPO 규모. 현재 IPO 본공모 조달액과 합산하지 않음."
+      },
+      "manufacturing_state": {
+        "stage": "pcn_announced",
+        "pcn_number": "0000048112-00",
+        "pcn_publish_date": "2026-09-25",
+        "pcn_change_title": "Additional Manufacturing Site for all Solidigm Datacenter SSDs",
+        "official_pcn_verified": true,
+        "affected_scope": "all_solidigm_datacenter_ssds",
+        "manufacturing_scope": "ssd_manufacturing_not_nand_wafer_fab",
+        "reported_site_country": "Taiwan",
+        "reported_manufacturing_model": "ODM",
+        "reported_ship_start_month": "2026-12",
+        "reported_quality_standard_unchanged": true,
+        "quality_issue_status": "not_reported",
+        "customer_qualification_stage": "not_reported",
+        "reported_existing_odm_partners": [
+          "PTI",
+          "Pegatron"
+        ],
+        "pti_partnership_officially_supported": true,
+        "pegatron_partnership_evidence": "reported",
+        "confirmed_direct_server_customers": [],
+        "capacity_units_per_month": null,
+        "capacity_eb_per_year": null,
+        "official_source_url": "https://www.solidigm.com/products/document-management-system.html",
+        "reported_source_url": "https://www.ajunews.com/view/20261005160404868",
+        "secondary_reported_source_url": "https://en.sedaily.com/finance/2026/10/05/solidigm-to-expand-ssd-production-sites-in-taiwan",
+        "pti_official_source_url": "https://www.pti.com.tw/Handlers/ConferenceDownload.ashx?col=briefing&id=1ddf8d0a-0ca9-4271-ad0e-71812b1beadb&lang=en",
+        "as_of": "2026-10-05",
+        "note": "Solidigm 공식 DMS는 PCN 0000048112-00과 'all Solidigm Datacenter SSDs' 대상 추가 제조거점을 확인. 대만·ODM·12월 출하·Pegatron은 아주경제/서울경제 보도 단계. PTI는 과거 PTI 공식 IR에서 Solidigm 파트너 관계가 확인됨. 신규 거점의 생산능력 수치는 미공개이며 NAND 웨이퍼 팹 증설로 해석하지 않음."
+      },
+      "ipo_alert_format_version": 2,
+      "ipo_source_link_version": 1
+    }
+  }
 }
