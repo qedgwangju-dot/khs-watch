@@ -1,5 +1,66 @@
 {
   "seen": {
+    "core:027285ebf773e19c9a4fec4d": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007075051527",
+      "source": "연합뉴스",
+      "source_body_digest": "d7e2c941a007f4323053155fd1fd3d1da27fe02496a74557746304689967e906",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c671d97fa26fc6ee2a7d2ac125e8010f484044b109c02db292780dcca5f63c9",
+      "source_fact_keys": [
+        "source_fact:v1:33334ffc8d69891bd650d0b6c0160204e3e88bb356cf2a49e42aea9e321b3b83",
+        "source_fact:v1:a80871e604fbda3adc5dcc6a310cf86682a26ac284419f54f31a137ca4f602e2"
+      ],
+      "source_published_kst": "2026-10-07T11:07+09:00",
+      "title": "[2보] LG전자 3분기 영업익 7천818억…작년비 13.5% 증가 | 연합뉴스"
+    },
+    "core:07222f1d75b1ad0ff9e7eca1": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03270166645610624",
+      "source": "이데일리",
+      "source_body_digest": "046dc414c405763107a74b22d86615735a4cd901888707555d293379cf0bcc31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e11125a85182becf7dfbe0edf317a68cbb36af3f526e0e2bce1d7afc5447eee",
+      "source_fact_keys": [
+        "source_fact:v1:31e3ada3b7a1a41ac9aeb9d0a1966a04c62ac3d061ce23b667945b6934c36002",
+        "source_fact:v1:4d7fe89fb35e3156a904a21000c12448577358627667a141a70d1f973c03c079",
+        "source_fact:v1:c7f7e4d72050b7db34c9df3610d6d73024c800307b573f625790c1e95f5ff4d6"
+      ],
+      "source_published_kst": "2026-10-07T10:36+09:00",
+      "title": "파라택시스 합병 무산…코리아-상폐 대응, 이더리움-독자 경영"
+    },
+    "core:2305347a7ab5207bd7b0ce36": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03138966645610624",
+      "source": "이데일리",
+      "source_body_digest": "79d5da5fcdf6ff12d654e92ae92b2d521016df210a84a04fc35d72005f540cdb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f51cae063251c1d9012755f1e3a8889add47f415937f95559c522273376f725",
+      "source_fact_keys": [
+        "source_fact:v1:1873ad591ba9d657ea759bc49525bf3294bbc4f6c250de0bfbaa256dbafa9872",
+        "source_fact:v1:2ffb369bf2f292e882147d741c240f07baaa823a506ee473b3e7bbb904598e5d",
+        "source_fact:v1:51c742650d7b22cd0473bc17286774ae326acdeba8e74ddd1315627499ca597d",
+        "source_fact:v1:7e8733da22c00179b99932fcff14468997fece3546d1624b570a7f956332772d",
+        "source_fact:v1:a6931d91a2641705d023df5ddba7a74532805c450e452e6597a6bf44486d6564",
+        "source_fact:v1:b2cacb1810a2a78932f773eab7406af5a6a6e827d0dc9708bf2eb538f17758e7",
+        "source_fact:v1:caf0e00beb331e1217185218909c8c562f474f6ba3ca68f04ad30f8124a5e1f7",
+        "source_fact:v1:d338998121a8f030ead0920ce254911b8a95eec3c923858c2e1dc1557d2a70f4"
+      ],
+      "source_published_kst": "2026-10-07T10:08+09:00",
+      "title": "365mc·GC녹십자웰빙, 국소지방 신약·GLP-1 건기식 공동개발"
+    },
     "core:4a4fa8e0bc3102bddd04dd55": {
       "core_alias_evidence_message_id": 2373,
       "core_alias_evidence_run_id": 37539644444,
@@ -23,6 +84,23 @@
       ],
       "source_published_kst": "2026-10-07T07:20+09:00",
       "title": "리사 수 “반도체 수요가 공급보다 많아”…AMD 주가 사상 최고"
+    },
+    "core:4ad84b46e88229eeb6c7de1c": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633225",
+      "source": "이투데이",
+      "source_body_digest": "5d13da361293dbeca7dd4335bc75a0183a0104f8d7cb9f4f18c5dcde8974cfab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a6f8bfd2548f24da093d567653cd9405a06382eb2cc07e92cf3776bdc3692143",
+      "source_fact_keys": [
+        "source_fact:v1:84f0132eeb50e6b47bfee087194d208ab06ef74e009c4797786c4fdf5b6c4b3c"
+      ],
+      "source_published_kst": "2026-10-07T09:59+09:00",
+      "title": "파라마운트, 워너 인수 완료⋯미디어공룡 ‘스카이댄스’ 출범"
     },
     "core:6913086c19e2db51cb425e8b": {
       "first_seen_kst": "2026-10-07T13:41:41+09:00",
@@ -185,6 +263,27 @@
       "source_published_kst": "2026-10-07T10:47+09:00",
       "title": "삼미금속, 가스터빈 블레이드 납품 개시"
     },
+    "core:c9166e81f4c29f3ea0916ea2": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633205",
+      "source": "이투데이",
+      "source_body_digest": "d4b7e441e4a7a6502fb53c776cb75158ab19541b0ef77d7168c03a4848f76aaf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7500b5758d482627648edd2c2a5316c4e37b7358b52c2e9f0cd1944012ddb007",
+      "source_fact_keys": [
+        "source_fact:v1:2daad0a819d1cdb442d7a5805f7e2daa4fa07970f904a8c929b5af4e0a3878f7",
+        "source_fact:v1:755c3b325673c1d6b461d9e9275356e6b711a5c3cfe54e7d0268995724164d43",
+        "source_fact:v1:9b11cf1ccf9ad51bb6f195ea53e3e240970801be4a06099685e21d509ca5fa89",
+        "source_fact:v1:c1935290351731dbb8e05d23b833d578cd05967666a83b5c88a18760261e3774",
+        "source_fact:v1:df576bbe4ecda903ed58b8f63bbc75448446b7f3fabd39d999b4dcd09a9f3844"
+      ],
+      "source_published_kst": "2026-10-07T09:30+09:00",
+      "title": "포스코, 아르헨티나서 리튬 5만t 생산체제 구축 눈앞"
+    },
     "core:d04a547b28988102b15e1cbd": {
       "first_seen_kst": "2026-10-07T13:41:41+09:00",
       "lanes": {
@@ -237,6 +336,25 @@
       ],
       "source_published_kst": "2026-10-07T10:34+09:00",
       "title": "우크라 \"한국이 러시아에 석유 공급\" 저격"
+    },
+    "core:eaf7474beac99619aa2f3a95": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895353",
+      "source": "헤럴드경제",
+      "source_body_digest": "171f2f88ad6bc5e5e9209d317d1baecc202ccfbc76368573f799254ca6115ebd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2cd3a3da7ae2f37e0e0d617228d31f0db04ae8bd4ce733b6b1d9b3eb9e353e83",
+      "source_fact_keys": [
+        "source_fact:v1:3bb3baab971c0ebd12023358fc2f296c7abf2f38f311a27aa585c07ca03a972f",
+        "source_fact:v1:419979f920add66eaa4508a9058dfcc53eefe22443a410995b9ece84397e4382",
+        "source_fact:v1:d154371f852c725195dd0f643a6f7beae088fec9e221c828208290351d359fa8"
+      ],
+      "source_published_kst": "2026-10-07T10:47+09:00",
+      "title": "오세훈 “인허가 증가는 정부 아닌 서울시 성과”…2031년 31만호 착공"
     },
     "core:eeda682e875e037fe55750c5": {
       "first_seen_kst": "2026-10-07T13:13:19+09:00",
@@ -7472,6 +7590,30 @@
       "source_published_kst": "2026-10-05T23:29+09:00",
       "title": "[단독] 조원태 한진 회장 ‘배임’ 혐의 경찰 수사 본격화"
     },
+    "fact:029fa146440a9671f99a020d": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03138966645610624",
+      "source": "이데일리",
+      "source_body_digest": "79d5da5fcdf6ff12d654e92ae92b2d521016df210a84a04fc35d72005f540cdb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f51cae063251c1d9012755f1e3a8889add47f415937f95559c522273376f725",
+      "source_fact_keys": [
+        "source_fact:v1:1873ad591ba9d657ea759bc49525bf3294bbc4f6c250de0bfbaa256dbafa9872",
+        "source_fact:v1:2ffb369bf2f292e882147d741c240f07baaa823a506ee473b3e7bbb904598e5d",
+        "source_fact:v1:51c742650d7b22cd0473bc17286774ae326acdeba8e74ddd1315627499ca597d",
+        "source_fact:v1:7e8733da22c00179b99932fcff14468997fece3546d1624b570a7f956332772d",
+        "source_fact:v1:a6931d91a2641705d023df5ddba7a74532805c450e452e6597a6bf44486d6564",
+        "source_fact:v1:b2cacb1810a2a78932f773eab7406af5a6a6e827d0dc9708bf2eb538f17758e7",
+        "source_fact:v1:caf0e00beb331e1217185218909c8c562f474f6ba3ca68f04ad30f8124a5e1f7",
+        "source_fact:v1:d338998121a8f030ead0920ce254911b8a95eec3c923858c2e1dc1557d2a70f4"
+      ],
+      "source_published_kst": "2026-10-07T10:08+09:00",
+      "title": "365mc·GC녹십자웰빙, 국소지방 신약·GLP-1 건기식 공동개발"
+    },
     "fact:02b89c310e6e69307a576b85": {
       "first_seen_kst": "2026-10-07T01:59:08+09:00",
       "lanes": {
@@ -7904,6 +8046,23 @@
       ],
       "source_published_kst": "2026-10-06T13:15+09:00",
       "title": "트럼프, 면세 경유 도로 차량에 사용 허용⋯농촌 표심 잡기 안간힘"
+    },
+    "fact:089899d97e73a7fd0f9d1f85": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633225",
+      "source": "이투데이",
+      "source_body_digest": "5d13da361293dbeca7dd4335bc75a0183a0104f8d7cb9f4f18c5dcde8974cfab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a6f8bfd2548f24da093d567653cd9405a06382eb2cc07e92cf3776bdc3692143",
+      "source_fact_keys": [
+        "source_fact:v1:84f0132eeb50e6b47bfee087194d208ab06ef74e009c4797786c4fdf5b6c4b3c"
+      ],
+      "source_published_kst": "2026-10-07T09:59+09:00",
+      "title": "파라마운트, 워너 인수 완료⋯미디어공룡 ‘스카이댄스’ 출범"
     },
     "fact:08d90ad3e4e8fd92cae52e08": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
@@ -17260,6 +17419,27 @@
       "source_published_kst": "2026-10-07T07:02+09:00",
       "title": "뉴욕증시 상승...S&P500·나스닥 사상 최고치 경신"
     },
+    "fact:9350fc8eaf1ef95764abb6b1": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633205",
+      "source": "이투데이",
+      "source_body_digest": "d4b7e441e4a7a6502fb53c776cb75158ab19541b0ef77d7168c03a4848f76aaf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7500b5758d482627648edd2c2a5316c4e37b7358b52c2e9f0cd1944012ddb007",
+      "source_fact_keys": [
+        "source_fact:v1:2daad0a819d1cdb442d7a5805f7e2daa4fa07970f904a8c929b5af4e0a3878f7",
+        "source_fact:v1:755c3b325673c1d6b461d9e9275356e6b711a5c3cfe54e7d0268995724164d43",
+        "source_fact:v1:9b11cf1ccf9ad51bb6f195ea53e3e240970801be4a06099685e21d509ca5fa89",
+        "source_fact:v1:c1935290351731dbb8e05d23b833d578cd05967666a83b5c88a18760261e3774",
+        "source_fact:v1:df576bbe4ecda903ed58b8f63bbc75448446b7f3fabd39d999b4dcd09a9f3844"
+      ],
+      "source_published_kst": "2026-10-07T09:30+09:00",
+      "title": "포스코, 아르헨티나서 리튬 5만t 생산체제 구축 눈앞"
+    },
     "fact:936e05cc02bbce9e0ef6b010": {
       "first_seen_kst": "2026-10-06T17:24:43+09:00",
       "lanes": {
@@ -20801,6 +20981,25 @@
       "source_published_kst": "2026-10-06T09:35+09:00",
       "title": "iM증권, 국내 주식 소수점 거래 서비스 개시"
     },
+    "fact:c89eabea5c77203b651222bd": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895353",
+      "source": "헤럴드경제",
+      "source_body_digest": "171f2f88ad6bc5e5e9209d317d1baecc202ccfbc76368573f799254ca6115ebd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2cd3a3da7ae2f37e0e0d617228d31f0db04ae8bd4ce733b6b1d9b3eb9e353e83",
+      "source_fact_keys": [
+        "source_fact:v1:3bb3baab971c0ebd12023358fc2f296c7abf2f38f311a27aa585c07ca03a972f",
+        "source_fact:v1:419979f920add66eaa4508a9058dfcc53eefe22443a410995b9ece84397e4382",
+        "source_fact:v1:d154371f852c725195dd0f643a6f7beae088fec9e221c828208290351d359fa8"
+      ],
+      "source_published_kst": "2026-10-07T10:47+09:00",
+      "title": "오세훈 “인허가 증가는 정부 아닌 서울시 성과”…2031년 31만호 착공"
+    },
     "fact:c8f3bae7353731e446e66337": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
       "lanes": {
@@ -22631,6 +22830,25 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "산업부 국감 돌입…대미투자·호남 반도체·메가특구 '도마'"
     },
+    "fact:e582e59041d52c90c91012ef": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03270166645610624",
+      "source": "이데일리",
+      "source_body_digest": "046dc414c405763107a74b22d86615735a4cd901888707555d293379cf0bcc31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e11125a85182becf7dfbe0edf317a68cbb36af3f526e0e2bce1d7afc5447eee",
+      "source_fact_keys": [
+        "source_fact:v1:31e3ada3b7a1a41ac9aeb9d0a1966a04c62ac3d061ce23b667945b6934c36002",
+        "source_fact:v1:4d7fe89fb35e3156a904a21000c12448577358627667a141a70d1f973c03c079",
+        "source_fact:v1:c7f7e4d72050b7db34c9df3610d6d73024c800307b573f625790c1e95f5ff4d6"
+      ],
+      "source_published_kst": "2026-10-07T10:36+09:00",
+      "title": "파라택시스 합병 무산…코리아-상폐 대응, 이더리움-독자 경영"
+    },
     "fact:e58601b09cd1e4a46b8a599f": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -23120,6 +23338,24 @@
       ],
       "source_published_kst": "2026-10-06T11:45+09:00",
       "title": "車 디스플레이 유리 수입 간소화…재생에너지 '다수 대 다수' PPA 허용"
+    },
+    "fact:ecbb96b8e6132c75e2c93623": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007075051527",
+      "source": "연합뉴스",
+      "source_body_digest": "d7e2c941a007f4323053155fd1fd3d1da27fe02496a74557746304689967e906",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c671d97fa26fc6ee2a7d2ac125e8010f484044b109c02db292780dcca5f63c9",
+      "source_fact_keys": [
+        "source_fact:v1:33334ffc8d69891bd650d0b6c0160204e3e88bb356cf2a49e42aea9e321b3b83",
+        "source_fact:v1:a80871e604fbda3adc5dcc6a310cf86682a26ac284419f54f31a137ca4f602e2"
+      ],
+      "source_published_kst": "2026-10-07T11:07+09:00",
+      "title": "[2보] LG전자 3분기 영업익 7천818억…작년비 13.5% 증가 | 연합뉴스"
     },
     "fact:ed2a4f20e1835c85d00d1b6d": {
       "first_seen_kst": "2026-10-05T20:38:34+09:00",
@@ -25600,6 +25836,30 @@
       ],
       "source_published_kst": "2026-10-06T18:32+09:00",
       "title": "알테오젠, 바이오로직스 흡수합병…연구·판매 전주기 '통합'"
+    },
+    "link:0aa7951c391186b97cf438d3": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03138966645610624",
+      "source": "이데일리",
+      "source_body_digest": "79d5da5fcdf6ff12d654e92ae92b2d521016df210a84a04fc35d72005f540cdb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f51cae063251c1d9012755f1e3a8889add47f415937f95559c522273376f725",
+      "source_fact_keys": [
+        "source_fact:v1:1873ad591ba9d657ea759bc49525bf3294bbc4f6c250de0bfbaa256dbafa9872",
+        "source_fact:v1:2ffb369bf2f292e882147d741c240f07baaa823a506ee473b3e7bbb904598e5d",
+        "source_fact:v1:51c742650d7b22cd0473bc17286774ae326acdeba8e74ddd1315627499ca597d",
+        "source_fact:v1:7e8733da22c00179b99932fcff14468997fece3546d1624b570a7f956332772d",
+        "source_fact:v1:a6931d91a2641705d023df5ddba7a74532805c450e452e6597a6bf44486d6564",
+        "source_fact:v1:b2cacb1810a2a78932f773eab7406af5a6a6e827d0dc9708bf2eb538f17758e7",
+        "source_fact:v1:caf0e00beb331e1217185218909c8c562f474f6ba3ca68f04ad30f8124a5e1f7",
+        "source_fact:v1:d338998121a8f030ead0920ce254911b8a95eec3c923858c2e1dc1557d2a70f4"
+      ],
+      "source_published_kst": "2026-10-07T10:08+09:00",
+      "title": "365mc·GC녹십자웰빙, 국소지방 신약·GLP-1 건기식 공동개발"
     },
     "link:0aa8d0aafff506ec59c395b8": {
       "first_seen_kst": "2026-10-06T22:08:07+09:00",
@@ -34945,6 +35205,23 @@
       "source": "연합뉴스",
       "title": "이란 협상단장 \"우리 조건 이행안되면 호르무즈 계속 폐쇄\" | 연합뉴스"
     },
+    "link:52d5dcd8ba6fd5156e0038ee": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633225",
+      "source": "이투데이",
+      "source_body_digest": "5d13da361293dbeca7dd4335bc75a0183a0104f8d7cb9f4f18c5dcde8974cfab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a6f8bfd2548f24da093d567653cd9405a06382eb2cc07e92cf3776bdc3692143",
+      "source_fact_keys": [
+        "source_fact:v1:84f0132eeb50e6b47bfee087194d208ab06ef74e009c4797786c4fdf5b6c4b3c"
+      ],
+      "source_published_kst": "2026-10-07T09:59+09:00",
+      "title": "파라마운트, 워너 인수 완료⋯미디어공룡 ‘스카이댄스’ 출범"
+    },
     "link:52ee510a7f40410ac47ecda0": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
       "lanes": {
@@ -38810,6 +39087,21 @@
       "source": "연합뉴스",
       "title": "SK하이닉스 임단협 수정안 가결…성과급 현금 50%·주식 50%(종합) | 연합뉴스"
     },
+    "link:6f35eb80e86eaf36f0814e1d": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816957",
+      "source": "뉴시스",
+      "source_body_digest": "5499f29296bd31995378f9712e0c7be206f6c49bba28dfbfae057c8e1301bd2b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T10:28+09:00",
+      "title": "남해관광문화재단 사업 ‘특혜 논란’…같은 대표 업체 잇단 선정"
+    },
     "link:6f93e6137bbbb2b926a30e61": {
       "first_seen_kst": "2026-10-01T17:14:46+09:00",
       "lanes": {
@@ -40101,6 +40393,25 @@
       ],
       "source_published_kst": "2026-10-06T15:44+09:00",
       "title": "원·달러 환율, 0.4원 내린 1343.6원 마감"
+    },
+    "link:79857a961d46bf6f5df6dfda": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895353",
+      "source": "헤럴드경제",
+      "source_body_digest": "171f2f88ad6bc5e5e9209d317d1baecc202ccfbc76368573f799254ca6115ebd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2cd3a3da7ae2f37e0e0d617228d31f0db04ae8bd4ce733b6b1d9b3eb9e353e83",
+      "source_fact_keys": [
+        "source_fact:v1:3bb3baab971c0ebd12023358fc2f296c7abf2f38f311a27aa585c07ca03a972f",
+        "source_fact:v1:419979f920add66eaa4508a9058dfcc53eefe22443a410995b9ece84397e4382",
+        "source_fact:v1:d154371f852c725195dd0f643a6f7beae088fec9e221c828208290351d359fa8"
+      ],
+      "source_published_kst": "2026-10-07T10:47+09:00",
+      "title": "오세훈 “인허가 증가는 정부 아닌 서울시 성과”…2031년 31만호 착공"
     },
     "link:79c71b2fe821e43f2b765290": {
       "first_seen_kst": "2026-09-28T10:16:02+09:00",
@@ -43498,6 +43809,27 @@
       "source": "이투데이",
       "title": "트럼프 “한국과 합의 더욱 좋아져⋯석유 프로젝트에 84억달러 투자”"
     },
+    "link:95baaf6df7fae01e9add8a86": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633205",
+      "source": "이투데이",
+      "source_body_digest": "d4b7e441e4a7a6502fb53c776cb75158ab19541b0ef77d7168c03a4848f76aaf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7500b5758d482627648edd2c2a5316c4e37b7358b52c2e9f0cd1944012ddb007",
+      "source_fact_keys": [
+        "source_fact:v1:2daad0a819d1cdb442d7a5805f7e2daa4fa07970f904a8c929b5af4e0a3878f7",
+        "source_fact:v1:755c3b325673c1d6b461d9e9275356e6b711a5c3cfe54e7d0268995724164d43",
+        "source_fact:v1:9b11cf1ccf9ad51bb6f195ea53e3e240970801be4a06099685e21d509ca5fa89",
+        "source_fact:v1:c1935290351731dbb8e05d23b833d578cd05967666a83b5c88a18760261e3774",
+        "source_fact:v1:df576bbe4ecda903ed58b8f63bbc75448446b7f3fabd39d999b4dcd09a9f3844"
+      ],
+      "source_published_kst": "2026-10-07T09:30+09:00",
+      "title": "포스코, 아르헨티나서 리튬 5만t 생산체제 구축 눈앞"
+    },
     "link:95cd4ff78ad8a677c60af62e": {
       "first_seen_kst": "2026-09-25T10:19:34+09:00",
       "lanes": {
@@ -44276,6 +44608,25 @@
       "link": "https://www.yna.co.kr/view/MYH20261001007900038",
       "source": "연합뉴스",
       "title": "\"알래스카 LNG 투자 확정 안돼\"…'상업적 합리성' 확보 관건 | 연합뉴스"
+    },
+    "link:9ce842d07027b3fb722b6fab": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03270166645610624",
+      "source": "이데일리",
+      "source_body_digest": "046dc414c405763107a74b22d86615735a4cd901888707555d293379cf0bcc31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e11125a85182becf7dfbe0edf317a68cbb36af3f526e0e2bce1d7afc5447eee",
+      "source_fact_keys": [
+        "source_fact:v1:31e3ada3b7a1a41ac9aeb9d0a1966a04c62ac3d061ce23b667945b6934c36002",
+        "source_fact:v1:4d7fe89fb35e3156a904a21000c12448577358627667a141a70d1f973c03c079",
+        "source_fact:v1:c7f7e4d72050b7db34c9df3610d6d73024c800307b573f625790c1e95f5ff4d6"
+      ],
+      "source_published_kst": "2026-10-07T10:36+09:00",
+      "title": "파라택시스 합병 무산…코리아-상폐 대응, 이더리움-독자 경영"
     },
     "link:9d0fc893972a830e917d8e4f": {
       "first_seen_kst": "2026-10-03T22:33:30+09:00",
@@ -54354,6 +54705,24 @@
       "source_published_kst": "2026-10-06T09:21+09:00",
       "title": "CPTPP, 농산물 관세만의 문제 아니다…농가 지원·검역도 '시험대'"
     },
+    "link:e90c14b6b992a54d0da31a13": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007075051527",
+      "source": "연합뉴스",
+      "source_body_digest": "d7e2c941a007f4323053155fd1fd3d1da27fe02496a74557746304689967e906",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c671d97fa26fc6ee2a7d2ac125e8010f484044b109c02db292780dcca5f63c9",
+      "source_fact_keys": [
+        "source_fact:v1:33334ffc8d69891bd650d0b6c0160204e3e88bb356cf2a49e42aea9e321b3b83",
+        "source_fact:v1:a80871e604fbda3adc5dcc6a310cf86682a26ac284419f54f31a137ca4f602e2"
+      ],
+      "source_published_kst": "2026-10-07T11:07+09:00",
+      "title": "[2보] LG전자 3분기 영업익 7천818억…작년비 13.5% 증가 | 연합뉴스"
+    },
     "link:e90eedf602937e3e75001693": {
       "first_seen_kst": "2026-10-07T10:04:59+09:00",
       "lanes": {
@@ -58045,6 +58414,25 @@
       "source": "연합뉴스",
       "title": "SK그룹 전문경영인 부회장 3명 SK하이닉스로 보임 | 연합뉴스"
     },
+    "original:05f6a6811eac866cc83f553c": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03270166645610624",
+      "source": "이데일리",
+      "source_body_digest": "046dc414c405763107a74b22d86615735a4cd901888707555d293379cf0bcc31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e11125a85182becf7dfbe0edf317a68cbb36af3f526e0e2bce1d7afc5447eee",
+      "source_fact_keys": [
+        "source_fact:v1:31e3ada3b7a1a41ac9aeb9d0a1966a04c62ac3d061ce23b667945b6934c36002",
+        "source_fact:v1:4d7fe89fb35e3156a904a21000c12448577358627667a141a70d1f973c03c079",
+        "source_fact:v1:c7f7e4d72050b7db34c9df3610d6d73024c800307b573f625790c1e95f5ff4d6"
+      ],
+      "source_published_kst": "2026-10-07T10:36+09:00",
+      "title": "파라택시스 합병 무산…코리아-상폐 대응, 이더리움-독자 경영"
+    },
     "original:062303f7a8ea75bcb890da21": {
       "first_seen_kst": "2026-10-07T01:59:08+09:00",
       "lanes": {
@@ -60495,6 +60883,30 @@
       "source": "연합뉴스",
       "title": "홈플러스익스프레스, 'NS홈쇼핑 인수 100일' 떡 증정 이벤트 | 연합뉴스"
     },
+    "original:1a914bd7b6e7c965c2728fbe": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03138966645610624",
+      "source": "이데일리",
+      "source_body_digest": "79d5da5fcdf6ff12d654e92ae92b2d521016df210a84a04fc35d72005f540cdb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f51cae063251c1d9012755f1e3a8889add47f415937f95559c522273376f725",
+      "source_fact_keys": [
+        "source_fact:v1:1873ad591ba9d657ea759bc49525bf3294bbc4f6c250de0bfbaa256dbafa9872",
+        "source_fact:v1:2ffb369bf2f292e882147d741c240f07baaa823a506ee473b3e7bbb904598e5d",
+        "source_fact:v1:51c742650d7b22cd0473bc17286774ae326acdeba8e74ddd1315627499ca597d",
+        "source_fact:v1:7e8733da22c00179b99932fcff14468997fece3546d1624b570a7f956332772d",
+        "source_fact:v1:a6931d91a2641705d023df5ddba7a74532805c450e452e6597a6bf44486d6564",
+        "source_fact:v1:b2cacb1810a2a78932f773eab7406af5a6a6e827d0dc9708bf2eb538f17758e7",
+        "source_fact:v1:caf0e00beb331e1217185218909c8c562f474f6ba3ca68f04ad30f8124a5e1f7",
+        "source_fact:v1:d338998121a8f030ead0920ce254911b8a95eec3c923858c2e1dc1557d2a70f4"
+      ],
+      "source_published_kst": "2026-10-07T10:08+09:00",
+      "title": "365mc·GC녹십자웰빙, 국소지방 신약·GLP-1 건기식 공동개발"
+    },
     "original:1aa07593611e9b5f233d28f6": {
       "first_seen_kst": "2026-10-07T11:43:24+09:00",
       "lanes": {
@@ -60973,6 +61385,25 @@
       ],
       "source_published_kst": "2026-10-06T15:34+09:00",
       "title": "\"세계 3위 車시장서 월 최대 판매\" 현대차, 푸네공장 앞세워 '인도 공략' 속도"
+    },
+    "original:1ee970bf16927592fba9659f": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895353",
+      "source": "헤럴드경제",
+      "source_body_digest": "171f2f88ad6bc5e5e9209d317d1baecc202ccfbc76368573f799254ca6115ebd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2cd3a3da7ae2f37e0e0d617228d31f0db04ae8bd4ce733b6b1d9b3eb9e353e83",
+      "source_fact_keys": [
+        "source_fact:v1:3bb3baab971c0ebd12023358fc2f296c7abf2f38f311a27aa585c07ca03a972f",
+        "source_fact:v1:419979f920add66eaa4508a9058dfcc53eefe22443a410995b9ece84397e4382",
+        "source_fact:v1:d154371f852c725195dd0f643a6f7beae088fec9e221c828208290351d359fa8"
+      ],
+      "source_published_kst": "2026-10-07T10:47+09:00",
+      "title": "오세훈 “인허가 증가는 정부 아닌 서울시 성과”…2031년 31만호 착공"
     },
     "original:1ef2d6a32f5508c02ec4cfa9": {
       "first_seen_kst": "2026-10-01T21:12:25+09:00",
@@ -67164,6 +67595,23 @@
       "source_published_kst": "2026-10-05T21:02+09:00",
       "title": "라디오팜 테라노스틱스, RAD101 2상 종료미팅 완료..3상 준비 착수"
     },
+    "original:4cd52ea384684234af4f47c0": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633225",
+      "source": "이투데이",
+      "source_body_digest": "5d13da361293dbeca7dd4335bc75a0183a0104f8d7cb9f4f18c5dcde8974cfab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a6f8bfd2548f24da093d567653cd9405a06382eb2cc07e92cf3776bdc3692143",
+      "source_fact_keys": [
+        "source_fact:v1:84f0132eeb50e6b47bfee087194d208ab06ef74e009c4797786c4fdf5b6c4b3c"
+      ],
+      "source_published_kst": "2026-10-07T09:59+09:00",
+      "title": "파라마운트, 워너 인수 완료⋯미디어공룡 ‘스카이댄스’ 출범"
+    },
     "original:4cdc6397c1bfd332483891c0": {
       "first_seen_kst": "2026-10-07T11:43:24+09:00",
       "lanes": {
@@ -68311,6 +68759,24 @@
       "link": "https://www.etoday.co.kr/news/view/2622056",
       "source": "이투데이",
       "title": "예선테크, 전기차 배터리 열폭주 방지 ‘화염차단제’ 개발…고객사와 대체품 협의"
+    },
+    "original:56381610da1e957fadffd0fc": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007075051527",
+      "source": "연합뉴스",
+      "source_body_digest": "d7e2c941a007f4323053155fd1fd3d1da27fe02496a74557746304689967e906",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c671d97fa26fc6ee2a7d2ac125e8010f484044b109c02db292780dcca5f63c9",
+      "source_fact_keys": [
+        "source_fact:v1:33334ffc8d69891bd650d0b6c0160204e3e88bb356cf2a49e42aea9e321b3b83",
+        "source_fact:v1:a80871e604fbda3adc5dcc6a310cf86682a26ac284419f54f31a137ca4f602e2"
+      ],
+      "source_published_kst": "2026-10-07T11:07+09:00",
+      "title": "[2보] LG전자 3분기 영업익 7천818억…작년비 13.5% 증가 | 연합뉴스"
     },
     "original:565aa7d7516a7238e149bb0e": {
       "first_seen_kst": "2026-10-04T06:09:53+09:00",
@@ -74324,6 +74790,27 @@
       "source_published_kst": "2026-10-05T18:32+09:00",
       "title": "[단독] 개정 상법에 한전 '소송 리스크'"
     },
+    "original:87b7712380b7f39364850cb9": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633205",
+      "source": "이투데이",
+      "source_body_digest": "d4b7e441e4a7a6502fb53c776cb75158ab19541b0ef77d7168c03a4848f76aaf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7500b5758d482627648edd2c2a5316c4e37b7358b52c2e9f0cd1944012ddb007",
+      "source_fact_keys": [
+        "source_fact:v1:2daad0a819d1cdb442d7a5805f7e2daa4fa07970f904a8c929b5af4e0a3878f7",
+        "source_fact:v1:755c3b325673c1d6b461d9e9275356e6b711a5c3cfe54e7d0268995724164d43",
+        "source_fact:v1:9b11cf1ccf9ad51bb6f195ea53e3e240970801be4a06099685e21d509ca5fa89",
+        "source_fact:v1:c1935290351731dbb8e05d23b833d578cd05967666a83b5c88a18760261e3774",
+        "source_fact:v1:df576bbe4ecda903ed58b8f63bbc75448446b7f3fabd39d999b4dcd09a9f3844"
+      ],
+      "source_published_kst": "2026-10-07T09:30+09:00",
+      "title": "포스코, 아르헨티나서 리튬 5만t 생산체제 구축 눈앞"
+    },
     "original:87bd4c9811afad11a06a6002": {
       "first_seen_kst": "2026-09-28T06:22:53+09:00",
       "lanes": {
@@ -79930,6 +80417,21 @@
       "link": "https://www.mk.co.kr/news/stock/12161196",
       "source": "매일경제",
       "title": "코스트코 홀세일, 4분기 매출 939억 달러..전년비 11% 증가"
+    },
+    "original:b64f06a6a1df64bf67a37134": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816957",
+      "source": "뉴시스",
+      "source_body_digest": "5499f29296bd31995378f9712e0c7be206f6c49bba28dfbfae057c8e1301bd2b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T10:28+09:00",
+      "title": "남해관광문화재단 사업 ‘특혜 논란’…같은 대표 업체 잇단 선정"
     },
     "original:b64f83d86afd05c31da81e94": {
       "first_seen_kst": "2026-09-27T01:53:16+09:00",
@@ -89482,6 +89984,30 @@
       "source_published_kst": "2026-10-06T14:14+09:00",
       "title": "\"이종이식 사업화 속도\"…옵티팜, cGMP 시설인수"
     },
+    "source_fact:01a9cdbfe5f3f0e17b220dde": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03138966645610624",
+      "source": "이데일리",
+      "source_body_digest": "79d5da5fcdf6ff12d654e92ae92b2d521016df210a84a04fc35d72005f540cdb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f51cae063251c1d9012755f1e3a8889add47f415937f95559c522273376f725",
+      "source_fact_keys": [
+        "source_fact:v1:1873ad591ba9d657ea759bc49525bf3294bbc4f6c250de0bfbaa256dbafa9872",
+        "source_fact:v1:2ffb369bf2f292e882147d741c240f07baaa823a506ee473b3e7bbb904598e5d",
+        "source_fact:v1:51c742650d7b22cd0473bc17286774ae326acdeba8e74ddd1315627499ca597d",
+        "source_fact:v1:7e8733da22c00179b99932fcff14468997fece3546d1624b570a7f956332772d",
+        "source_fact:v1:a6931d91a2641705d023df5ddba7a74532805c450e452e6597a6bf44486d6564",
+        "source_fact:v1:b2cacb1810a2a78932f773eab7406af5a6a6e827d0dc9708bf2eb538f17758e7",
+        "source_fact:v1:caf0e00beb331e1217185218909c8c562f474f6ba3ca68f04ad30f8124a5e1f7",
+        "source_fact:v1:d338998121a8f030ead0920ce254911b8a95eec3c923858c2e1dc1557d2a70f4"
+      ],
+      "source_published_kst": "2026-10-07T10:08+09:00",
+      "title": "365mc·GC녹십자웰빙, 국소지방 신약·GLP-1 건기식 공동개발"
+    },
     "source_fact:01b79a2115556923db42a886": {
       "first_seen_kst": "2026-10-07T06:12:17+09:00",
       "lanes": {
@@ -95790,6 +96316,25 @@
       "source_published_kst": "2026-10-06T09:55+09:00",
       "title": "어기구 \"5년간 2천억원 썼는데 연간 조류 정전 2배로\" | 연합뉴스"
     },
+    "source_fact:1866c259b79027acb42c2123": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895353",
+      "source": "헤럴드경제",
+      "source_body_digest": "171f2f88ad6bc5e5e9209d317d1baecc202ccfbc76368573f799254ca6115ebd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2cd3a3da7ae2f37e0e0d617228d31f0db04ae8bd4ce733b6b1d9b3eb9e353e83",
+      "source_fact_keys": [
+        "source_fact:v1:3bb3baab971c0ebd12023358fc2f296c7abf2f38f311a27aa585c07ca03a972f",
+        "source_fact:v1:419979f920add66eaa4508a9058dfcc53eefe22443a410995b9ece84397e4382",
+        "source_fact:v1:d154371f852c725195dd0f643a6f7beae088fec9e221c828208290351d359fa8"
+      ],
+      "source_published_kst": "2026-10-07T10:47+09:00",
+      "title": "오세훈 “인허가 증가는 정부 아닌 서울시 성과”…2031년 31만호 착공"
+    },
     "source_fact:187a4eea1668abf41108c19c": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
       "lanes": {
@@ -99304,6 +99849,30 @@
       "source_published_kst": "2026-10-06T09:21+09:00",
       "title": "CPTPP, 농산물 관세만의 문제 아니다…농가 지원·검역도 '시험대'"
     },
+    "source_fact:256331231457c1abfb7238d2": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03138966645610624",
+      "source": "이데일리",
+      "source_body_digest": "79d5da5fcdf6ff12d654e92ae92b2d521016df210a84a04fc35d72005f540cdb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f51cae063251c1d9012755f1e3a8889add47f415937f95559c522273376f725",
+      "source_fact_keys": [
+        "source_fact:v1:1873ad591ba9d657ea759bc49525bf3294bbc4f6c250de0bfbaa256dbafa9872",
+        "source_fact:v1:2ffb369bf2f292e882147d741c240f07baaa823a506ee473b3e7bbb904598e5d",
+        "source_fact:v1:51c742650d7b22cd0473bc17286774ae326acdeba8e74ddd1315627499ca597d",
+        "source_fact:v1:7e8733da22c00179b99932fcff14468997fece3546d1624b570a7f956332772d",
+        "source_fact:v1:a6931d91a2641705d023df5ddba7a74532805c450e452e6597a6bf44486d6564",
+        "source_fact:v1:b2cacb1810a2a78932f773eab7406af5a6a6e827d0dc9708bf2eb538f17758e7",
+        "source_fact:v1:caf0e00beb331e1217185218909c8c562f474f6ba3ca68f04ad30f8124a5e1f7",
+        "source_fact:v1:d338998121a8f030ead0920ce254911b8a95eec3c923858c2e1dc1557d2a70f4"
+      ],
+      "source_published_kst": "2026-10-07T10:08+09:00",
+      "title": "365mc·GC녹십자웰빙, 국소지방 신약·GLP-1 건기식 공동개발"
+    },
     "source_fact:256c050c3f501749932a77a1": {
       "first_seen_kst": "2026-10-06T19:10:36+09:00",
       "lanes": {
@@ -99647,6 +100216,25 @@
       ],
       "source_published_kst": "2026-10-07T08:08+09:00",
       "title": "AMD “반도체 수요, 공급 크게 앞질러”⋯CEO 움직이자 주가는 최고치"
+    },
+    "source_fact:26828471e34b8c5cdf95ffb7": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03270166645610624",
+      "source": "이데일리",
+      "source_body_digest": "046dc414c405763107a74b22d86615735a4cd901888707555d293379cf0bcc31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e11125a85182becf7dfbe0edf317a68cbb36af3f526e0e2bce1d7afc5447eee",
+      "source_fact_keys": [
+        "source_fact:v1:31e3ada3b7a1a41ac9aeb9d0a1966a04c62ac3d061ce23b667945b6934c36002",
+        "source_fact:v1:4d7fe89fb35e3156a904a21000c12448577358627667a141a70d1f973c03c079",
+        "source_fact:v1:c7f7e4d72050b7db34c9df3610d6d73024c800307b573f625790c1e95f5ff4d6"
+      ],
+      "source_published_kst": "2026-10-07T10:36+09:00",
+      "title": "파라택시스 합병 무산…코리아-상폐 대응, 이더리움-독자 경영"
     },
     "source_fact:26bb954e1df4205b78cf9ec6": {
       "first_seen_kst": "2026-10-06T21:40:57+09:00",
@@ -103453,6 +104041,24 @@
       ],
       "source_published_kst": "2026-10-07T10:31+09:00",
       "title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력"
+    },
+    "source_fact:32579f8b96fe4efeb4023085": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007075051527",
+      "source": "연합뉴스",
+      "source_body_digest": "d7e2c941a007f4323053155fd1fd3d1da27fe02496a74557746304689967e906",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c671d97fa26fc6ee2a7d2ac125e8010f484044b109c02db292780dcca5f63c9",
+      "source_fact_keys": [
+        "source_fact:v1:33334ffc8d69891bd650d0b6c0160204e3e88bb356cf2a49e42aea9e321b3b83",
+        "source_fact:v1:a80871e604fbda3adc5dcc6a310cf86682a26ac284419f54f31a137ca4f602e2"
+      ],
+      "source_published_kst": "2026-10-07T11:07+09:00",
+      "title": "[2보] LG전자 3분기 영업익 7천818억…작년비 13.5% 증가 | 연합뉴스"
     },
     "source_fact:326e396ec98d030a40da0828": {
       "first_seen_kst": "2026-10-06T23:46:46+09:00",
@@ -111116,6 +111722,25 @@
       "source_published_kst": "2026-10-07T08:51+09:00",
       "title": "트럼프 “한국에 관세 인하 ‘대가’ 요구했다”…대미 투자 거듭 압박"
     },
+    "source_fact:4c5c9f5088fc32e5b2b67b5f": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895353",
+      "source": "헤럴드경제",
+      "source_body_digest": "171f2f88ad6bc5e5e9209d317d1baecc202ccfbc76368573f799254ca6115ebd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2cd3a3da7ae2f37e0e0d617228d31f0db04ae8bd4ce733b6b1d9b3eb9e353e83",
+      "source_fact_keys": [
+        "source_fact:v1:3bb3baab971c0ebd12023358fc2f296c7abf2f38f311a27aa585c07ca03a972f",
+        "source_fact:v1:419979f920add66eaa4508a9058dfcc53eefe22443a410995b9ece84397e4382",
+        "source_fact:v1:d154371f852c725195dd0f643a6f7beae088fec9e221c828208290351d359fa8"
+      ],
+      "source_published_kst": "2026-10-07T10:47+09:00",
+      "title": "오세훈 “인허가 증가는 정부 아닌 서울시 성과”…2031년 31만호 착공"
+    },
     "source_fact:4c928bc7ab9a9b7922a02bdc": {
       "first_seen_kst": "2026-10-07T02:24:39+09:00",
       "lanes": {
@@ -111158,6 +111783,25 @@
       ],
       "source_published_kst": "2026-10-06T05:43+09:00",
       "title": "美 부통령 \"알래스카 LNG 사업 투자, 한국과 세부사항 조율해야\""
+    },
+    "source_fact:4cb808ea4db1740b70192ba4": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03270166645610624",
+      "source": "이데일리",
+      "source_body_digest": "046dc414c405763107a74b22d86615735a4cd901888707555d293379cf0bcc31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e11125a85182becf7dfbe0edf317a68cbb36af3f526e0e2bce1d7afc5447eee",
+      "source_fact_keys": [
+        "source_fact:v1:31e3ada3b7a1a41ac9aeb9d0a1966a04c62ac3d061ce23b667945b6934c36002",
+        "source_fact:v1:4d7fe89fb35e3156a904a21000c12448577358627667a141a70d1f973c03c079",
+        "source_fact:v1:c7f7e4d72050b7db34c9df3610d6d73024c800307b573f625790c1e95f5ff4d6"
+      ],
+      "source_published_kst": "2026-10-07T10:36+09:00",
+      "title": "파라택시스 합병 무산…코리아-상폐 대응, 이더리움-독자 경영"
     },
     "source_fact:4cf62f3dfa97de63d36c1f0b": {
       "first_seen_kst": "2026-10-06T23:19:02+09:00",
@@ -115986,6 +116630,23 @@
       ],
       "source_published_kst": "2026-10-05T12:57+09:00",
       "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
+    },
+    "source_fact:5c89835e9dadb36e5bcf4edf": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633225",
+      "source": "이투데이",
+      "source_body_digest": "5d13da361293dbeca7dd4335bc75a0183a0104f8d7cb9f4f18c5dcde8974cfab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a6f8bfd2548f24da093d567653cd9405a06382eb2cc07e92cf3776bdc3692143",
+      "source_fact_keys": [
+        "source_fact:v1:84f0132eeb50e6b47bfee087194d208ab06ef74e009c4797786c4fdf5b6c4b3c"
+      ],
+      "source_published_kst": "2026-10-07T09:59+09:00",
+      "title": "파라마운트, 워너 인수 완료⋯미디어공룡 ‘스카이댄스’ 출범"
     },
     "source_fact:5c8f58fd2cc7ca5793800352": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
@@ -129073,6 +129734,25 @@
       "source_published_kst": "2026-10-06T09:44+09:00",
       "title": "[특징주] LG전자 5%대 강세⋯북미 AI 데이터센터 냉각 솔루션 공급 호재"
     },
+    "source_fact:8a1e2434aa83770d1d91fb75": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895353",
+      "source": "헤럴드경제",
+      "source_body_digest": "171f2f88ad6bc5e5e9209d317d1baecc202ccfbc76368573f799254ca6115ebd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2cd3a3da7ae2f37e0e0d617228d31f0db04ae8bd4ce733b6b1d9b3eb9e353e83",
+      "source_fact_keys": [
+        "source_fact:v1:3bb3baab971c0ebd12023358fc2f296c7abf2f38f311a27aa585c07ca03a972f",
+        "source_fact:v1:419979f920add66eaa4508a9058dfcc53eefe22443a410995b9ece84397e4382",
+        "source_fact:v1:d154371f852c725195dd0f643a6f7beae088fec9e221c828208290351d359fa8"
+      ],
+      "source_published_kst": "2026-10-07T10:47+09:00",
+      "title": "오세훈 “인허가 증가는 정부 아닌 서울시 성과”…2031년 31만호 착공"
+    },
     "source_fact:8a2393d5be5e73e079c37cc8": {
       "first_seen_kst": "2026-10-07T00:38:27+09:00",
       "lanes": {
@@ -131722,6 +132402,27 @@
       "source_published_kst": "2026-10-06T17:56+09:00",
       "title": "월가, 앤트로픽 81.5조원 대출 신디케이션 착수…반도체 금융 최대 규모"
     },
+    "source_fact:9319e1ac74ca801b0574d158": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633205",
+      "source": "이투데이",
+      "source_body_digest": "d4b7e441e4a7a6502fb53c776cb75158ab19541b0ef77d7168c03a4848f76aaf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7500b5758d482627648edd2c2a5316c4e37b7358b52c2e9f0cd1944012ddb007",
+      "source_fact_keys": [
+        "source_fact:v1:2daad0a819d1cdb442d7a5805f7e2daa4fa07970f904a8c929b5af4e0a3878f7",
+        "source_fact:v1:755c3b325673c1d6b461d9e9275356e6b711a5c3cfe54e7d0268995724164d43",
+        "source_fact:v1:9b11cf1ccf9ad51bb6f195ea53e3e240970801be4a06099685e21d509ca5fa89",
+        "source_fact:v1:c1935290351731dbb8e05d23b833d578cd05967666a83b5c88a18760261e3774",
+        "source_fact:v1:df576bbe4ecda903ed58b8f63bbc75448446b7f3fabd39d999b4dcd09a9f3844"
+      ],
+      "source_published_kst": "2026-10-07T09:30+09:00",
+      "title": "포스코, 아르헨티나서 리튬 5만t 생산체제 구축 눈앞"
+    },
     "source_fact:931b24d19605855cdc648696": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
@@ -131926,6 +132627,27 @@
       ],
       "source_published_kst": "2026-10-06T12:19+09:00",
       "title": "이형일, 레버리지 ETF 논란에 \"투자자 손실 확대, 무겁게 생각\""
+    },
+    "source_fact:93e2df184ef46b34788e7469": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633205",
+      "source": "이투데이",
+      "source_body_digest": "d4b7e441e4a7a6502fb53c776cb75158ab19541b0ef77d7168c03a4848f76aaf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7500b5758d482627648edd2c2a5316c4e37b7358b52c2e9f0cd1944012ddb007",
+      "source_fact_keys": [
+        "source_fact:v1:2daad0a819d1cdb442d7a5805f7e2daa4fa07970f904a8c929b5af4e0a3878f7",
+        "source_fact:v1:755c3b325673c1d6b461d9e9275356e6b711a5c3cfe54e7d0268995724164d43",
+        "source_fact:v1:9b11cf1ccf9ad51bb6f195ea53e3e240970801be4a06099685e21d509ca5fa89",
+        "source_fact:v1:c1935290351731dbb8e05d23b833d578cd05967666a83b5c88a18760261e3774",
+        "source_fact:v1:df576bbe4ecda903ed58b8f63bbc75448446b7f3fabd39d999b4dcd09a9f3844"
+      ],
+      "source_published_kst": "2026-10-07T09:30+09:00",
+      "title": "포스코, 아르헨티나서 리튬 5만t 생산체제 구축 눈앞"
     },
     "source_fact:940f235d897aafb96fc62c92": {
       "first_seen_kst": "2026-10-06T00:03:48+09:00",
@@ -138957,6 +139679,27 @@
       "source_published_kst": "2026-10-06T08:48+09:00",
       "title": "키움운용, '미국AI테크하이베타 ETF' 마이크론·스페이스X 신규 편입"
     },
+    "source_fact:ac413209f41b1b08ae7fa37f": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633205",
+      "source": "이투데이",
+      "source_body_digest": "d4b7e441e4a7a6502fb53c776cb75158ab19541b0ef77d7168c03a4848f76aaf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7500b5758d482627648edd2c2a5316c4e37b7358b52c2e9f0cd1944012ddb007",
+      "source_fact_keys": [
+        "source_fact:v1:2daad0a819d1cdb442d7a5805f7e2daa4fa07970f904a8c929b5af4e0a3878f7",
+        "source_fact:v1:755c3b325673c1d6b461d9e9275356e6b711a5c3cfe54e7d0268995724164d43",
+        "source_fact:v1:9b11cf1ccf9ad51bb6f195ea53e3e240970801be4a06099685e21d509ca5fa89",
+        "source_fact:v1:c1935290351731dbb8e05d23b833d578cd05967666a83b5c88a18760261e3774",
+        "source_fact:v1:df576bbe4ecda903ed58b8f63bbc75448446b7f3fabd39d999b4dcd09a9f3844"
+      ],
+      "source_published_kst": "2026-10-07T09:30+09:00",
+      "title": "포스코, 아르헨티나서 리튬 5만t 생산체제 구축 눈앞"
+    },
     "source_fact:ac43c8e579c1f42786d71a00": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
@@ -139280,6 +140023,27 @@
       ],
       "source_published_kst": "2026-10-07T07:10+09:00",
       "title": "리사 수 \"수요가 공급보다 많아\"…AMD 주가 사상 최고"
+    },
+    "source_fact:adcb4c000d1d0c5d360ae034": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633205",
+      "source": "이투데이",
+      "source_body_digest": "d4b7e441e4a7a6502fb53c776cb75158ab19541b0ef77d7168c03a4848f76aaf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7500b5758d482627648edd2c2a5316c4e37b7358b52c2e9f0cd1944012ddb007",
+      "source_fact_keys": [
+        "source_fact:v1:2daad0a819d1cdb442d7a5805f7e2daa4fa07970f904a8c929b5af4e0a3878f7",
+        "source_fact:v1:755c3b325673c1d6b461d9e9275356e6b711a5c3cfe54e7d0268995724164d43",
+        "source_fact:v1:9b11cf1ccf9ad51bb6f195ea53e3e240970801be4a06099685e21d509ca5fa89",
+        "source_fact:v1:c1935290351731dbb8e05d23b833d578cd05967666a83b5c88a18760261e3774",
+        "source_fact:v1:df576bbe4ecda903ed58b8f63bbc75448446b7f3fabd39d999b4dcd09a9f3844"
+      ],
+      "source_published_kst": "2026-10-07T09:30+09:00",
+      "title": "포스코, 아르헨티나서 리튬 5만t 생산체제 구축 눈앞"
     },
     "source_fact:add4fc3a3ad824be02527115": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
@@ -141845,6 +142609,25 @@
       "source_published_kst": "2026-10-06T17:00+09:00",
       "title": "금감원, '2.5만명 정보유출' 신한은행 현장검사 전환…점검 착수 엿새 만(종합)"
     },
+    "source_fact:b68068a0055df998ae0cc4d6": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03270166645610624",
+      "source": "이데일리",
+      "source_body_digest": "046dc414c405763107a74b22d86615735a4cd901888707555d293379cf0bcc31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e11125a85182becf7dfbe0edf317a68cbb36af3f526e0e2bce1d7afc5447eee",
+      "source_fact_keys": [
+        "source_fact:v1:31e3ada3b7a1a41ac9aeb9d0a1966a04c62ac3d061ce23b667945b6934c36002",
+        "source_fact:v1:4d7fe89fb35e3156a904a21000c12448577358627667a141a70d1f973c03c079",
+        "source_fact:v1:c7f7e4d72050b7db34c9df3610d6d73024c800307b573f625790c1e95f5ff4d6"
+      ],
+      "source_published_kst": "2026-10-07T10:36+09:00",
+      "title": "파라택시스 합병 무산…코리아-상폐 대응, 이더리움-독자 경영"
+    },
     "source_fact:b6a905d1e32f3a78e69916ee": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
       "lanes": {
@@ -143642,6 +144425,30 @@
       "source_published_kst": "2026-10-06T19:00+09:00",
       "title": "9월 유로존 종합 PMI 53.1·1.1P↑…\"3년5개월 만에 최고\""
     },
+    "source_fact:bd2b789af2de2b1ed43543f5": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03138966645610624",
+      "source": "이데일리",
+      "source_body_digest": "79d5da5fcdf6ff12d654e92ae92b2d521016df210a84a04fc35d72005f540cdb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f51cae063251c1d9012755f1e3a8889add47f415937f95559c522273376f725",
+      "source_fact_keys": [
+        "source_fact:v1:1873ad591ba9d657ea759bc49525bf3294bbc4f6c250de0bfbaa256dbafa9872",
+        "source_fact:v1:2ffb369bf2f292e882147d741c240f07baaa823a506ee473b3e7bbb904598e5d",
+        "source_fact:v1:51c742650d7b22cd0473bc17286774ae326acdeba8e74ddd1315627499ca597d",
+        "source_fact:v1:7e8733da22c00179b99932fcff14468997fece3546d1624b570a7f956332772d",
+        "source_fact:v1:a6931d91a2641705d023df5ddba7a74532805c450e452e6597a6bf44486d6564",
+        "source_fact:v1:b2cacb1810a2a78932f773eab7406af5a6a6e827d0dc9708bf2eb538f17758e7",
+        "source_fact:v1:caf0e00beb331e1217185218909c8c562f474f6ba3ca68f04ad30f8124a5e1f7",
+        "source_fact:v1:d338998121a8f030ead0920ce254911b8a95eec3c923858c2e1dc1557d2a70f4"
+      ],
+      "source_published_kst": "2026-10-07T10:08+09:00",
+      "title": "365mc·GC녹십자웰빙, 국소지방 신약·GLP-1 건기식 공동개발"
+    },
     "source_fact:bd5883464545745a6b4e7aac": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
       "lanes": {
@@ -144677,6 +145484,30 @@
       ],
       "source_published_kst": "2026-10-05T18:35+09:00",
       "title": "서학개미 '속도조절'… 반도체 팔고 초단기 국채 샀다"
+    },
+    "source_fact:c0ff64f59c867cf2c9a58914": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03138966645610624",
+      "source": "이데일리",
+      "source_body_digest": "79d5da5fcdf6ff12d654e92ae92b2d521016df210a84a04fc35d72005f540cdb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f51cae063251c1d9012755f1e3a8889add47f415937f95559c522273376f725",
+      "source_fact_keys": [
+        "source_fact:v1:1873ad591ba9d657ea759bc49525bf3294bbc4f6c250de0bfbaa256dbafa9872",
+        "source_fact:v1:2ffb369bf2f292e882147d741c240f07baaa823a506ee473b3e7bbb904598e5d",
+        "source_fact:v1:51c742650d7b22cd0473bc17286774ae326acdeba8e74ddd1315627499ca597d",
+        "source_fact:v1:7e8733da22c00179b99932fcff14468997fece3546d1624b570a7f956332772d",
+        "source_fact:v1:a6931d91a2641705d023df5ddba7a74532805c450e452e6597a6bf44486d6564",
+        "source_fact:v1:b2cacb1810a2a78932f773eab7406af5a6a6e827d0dc9708bf2eb538f17758e7",
+        "source_fact:v1:caf0e00beb331e1217185218909c8c562f474f6ba3ca68f04ad30f8124a5e1f7",
+        "source_fact:v1:d338998121a8f030ead0920ce254911b8a95eec3c923858c2e1dc1557d2a70f4"
+      ],
+      "source_published_kst": "2026-10-07T10:08+09:00",
+      "title": "365mc·GC녹십자웰빙, 국소지방 신약·GLP-1 건기식 공동개발"
     },
     "source_fact:c1091d6efceeda8706bc445c": {
       "first_seen_kst": "2026-10-06T06:36:31+09:00",
@@ -150499,6 +151330,30 @@
       "source_published_kst": "2026-10-05T17:19+09:00",
       "title": "4대 과기원 수시 지원자 최다 … AI·반도체 열풍에 3만명 몰려"
     },
+    "source_fact:d475eef0970138dbb354b700": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03138966645610624",
+      "source": "이데일리",
+      "source_body_digest": "79d5da5fcdf6ff12d654e92ae92b2d521016df210a84a04fc35d72005f540cdb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f51cae063251c1d9012755f1e3a8889add47f415937f95559c522273376f725",
+      "source_fact_keys": [
+        "source_fact:v1:1873ad591ba9d657ea759bc49525bf3294bbc4f6c250de0bfbaa256dbafa9872",
+        "source_fact:v1:2ffb369bf2f292e882147d741c240f07baaa823a506ee473b3e7bbb904598e5d",
+        "source_fact:v1:51c742650d7b22cd0473bc17286774ae326acdeba8e74ddd1315627499ca597d",
+        "source_fact:v1:7e8733da22c00179b99932fcff14468997fece3546d1624b570a7f956332772d",
+        "source_fact:v1:a6931d91a2641705d023df5ddba7a74532805c450e452e6597a6bf44486d6564",
+        "source_fact:v1:b2cacb1810a2a78932f773eab7406af5a6a6e827d0dc9708bf2eb538f17758e7",
+        "source_fact:v1:caf0e00beb331e1217185218909c8c562f474f6ba3ca68f04ad30f8124a5e1f7",
+        "source_fact:v1:d338998121a8f030ead0920ce254911b8a95eec3c923858c2e1dc1557d2a70f4"
+      ],
+      "source_published_kst": "2026-10-07T10:08+09:00",
+      "title": "365mc·GC녹십자웰빙, 국소지방 신약·GLP-1 건기식 공동개발"
+    },
     "source_fact:d47fc7f659b20ebfc76c9fd9": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
       "lanes": {
@@ -151856,6 +152711,27 @@
       ],
       "source_published_kst": "2026-10-06T06:27+09:00",
       "title": "뉴욕 증시, 국채 금리 급등에도 나스닥 사상 최고치"
+    },
+    "source_fact:d7f9381b29477f27c0748420": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633205",
+      "source": "이투데이",
+      "source_body_digest": "d4b7e441e4a7a6502fb53c776cb75158ab19541b0ef77d7168c03a4848f76aaf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7500b5758d482627648edd2c2a5316c4e37b7358b52c2e9f0cd1944012ddb007",
+      "source_fact_keys": [
+        "source_fact:v1:2daad0a819d1cdb442d7a5805f7e2daa4fa07970f904a8c929b5af4e0a3878f7",
+        "source_fact:v1:755c3b325673c1d6b461d9e9275356e6b711a5c3cfe54e7d0268995724164d43",
+        "source_fact:v1:9b11cf1ccf9ad51bb6f195ea53e3e240970801be4a06099685e21d509ca5fa89",
+        "source_fact:v1:c1935290351731dbb8e05d23b833d578cd05967666a83b5c88a18760261e3774",
+        "source_fact:v1:df576bbe4ecda903ed58b8f63bbc75448446b7f3fabd39d999b4dcd09a9f3844"
+      ],
+      "source_published_kst": "2026-10-07T09:30+09:00",
+      "title": "포스코, 아르헨티나서 리튬 5만t 생산체제 구축 눈앞"
     },
     "source_fact:d7ffdc4dcd450bf6c3dfeb60": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
@@ -156181,6 +157057,30 @@
       "source_published_kst": "2026-10-06T09:01+09:00",
       "title": "“코스피, 11월부터 연말 랠리…외국인 돌아온다”"
     },
+    "source_fact:e5cefc9a29fd33a774cf7afb": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03138966645610624",
+      "source": "이데일리",
+      "source_body_digest": "79d5da5fcdf6ff12d654e92ae92b2d521016df210a84a04fc35d72005f540cdb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f51cae063251c1d9012755f1e3a8889add47f415937f95559c522273376f725",
+      "source_fact_keys": [
+        "source_fact:v1:1873ad591ba9d657ea759bc49525bf3294bbc4f6c250de0bfbaa256dbafa9872",
+        "source_fact:v1:2ffb369bf2f292e882147d741c240f07baaa823a506ee473b3e7bbb904598e5d",
+        "source_fact:v1:51c742650d7b22cd0473bc17286774ae326acdeba8e74ddd1315627499ca597d",
+        "source_fact:v1:7e8733da22c00179b99932fcff14468997fece3546d1624b570a7f956332772d",
+        "source_fact:v1:a6931d91a2641705d023df5ddba7a74532805c450e452e6597a6bf44486d6564",
+        "source_fact:v1:b2cacb1810a2a78932f773eab7406af5a6a6e827d0dc9708bf2eb538f17758e7",
+        "source_fact:v1:caf0e00beb331e1217185218909c8c562f474f6ba3ca68f04ad30f8124a5e1f7",
+        "source_fact:v1:d338998121a8f030ead0920ce254911b8a95eec3c923858c2e1dc1557d2a70f4"
+      ],
+      "source_published_kst": "2026-10-07T10:08+09:00",
+      "title": "365mc·GC녹십자웰빙, 국소지방 신약·GLP-1 건기식 공동개발"
+    },
     "source_fact:e5e311d9da97acbe0e83fa04": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
       "lanes": {
@@ -158461,20 +159361,20 @@
     "source_fact:ecedccc7c55b61864182d9dd": {
       "first_seen_kst": "2026-10-07T11:43:24+09:00",
       "lanes": {
-        "live": "2026-10-07T11:43:24+09:00"
+        "live": "2026-10-07T14:18:25+09:00"
       },
-      "last_seen_kst": "2026-10-07T11:43:24+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261007075000527",
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007075051527",
       "source": "연합뉴스",
-      "source_body_digest": "49ffe0e329e822449e3617991ea41dd18d88a2de1785d4fa748f81e9d7ca4a05",
+      "source_body_digest": "d7e2c941a007f4323053155fd1fd3d1da27fe02496a74557746304689967e906",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:3fe154a2a6f6c458c548bec3dfab7ee7a0c5e9177186be9107c93c0aa3ce8370",
+      "source_fact_identity": "source_facts:v1:2c671d97fa26fc6ee2a7d2ac125e8010f484044b109c02db292780dcca5f63c9",
       "source_fact_keys": [
-        "source_fact:v1:7dbd7c5e4692c5e940dff31c67e7decac6a664a57430a4c935ffcf50de853f09",
+        "source_fact:v1:33334ffc8d69891bd650d0b6c0160204e3e88bb356cf2a49e42aea9e321b3b83",
         "source_fact:v1:a80871e604fbda3adc5dcc6a310cf86682a26ac284419f54f31a137ca4f602e2"
       ],
-      "source_published_kst": "2026-10-07T11:01+09:00",
-      "title": "[1보] LG전자 3분기 영업익 7천818억원…작년 동기 대비 13.5%↑ | 연합뉴스"
+      "source_published_kst": "2026-10-07T11:07+09:00",
+      "title": "[2보] LG전자 3분기 영업익 7천818억…작년비 13.5% 증가 | 연합뉴스"
     },
     "source_fact:ed0d2c8836489d036c4d87bd": {
       "first_seen_kst": "2026-10-07T00:23:09+09:00",
@@ -158946,6 +159846,30 @@
       ],
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "외국인·명품 소비에 비용 절감까지…백화점 3사, 3분기 실적 ‘청신호’"
+    },
+    "source_fact:ee35f8e316c62d5d53e24fce": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03138966645610624",
+      "source": "이데일리",
+      "source_body_digest": "79d5da5fcdf6ff12d654e92ae92b2d521016df210a84a04fc35d72005f540cdb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f51cae063251c1d9012755f1e3a8889add47f415937f95559c522273376f725",
+      "source_fact_keys": [
+        "source_fact:v1:1873ad591ba9d657ea759bc49525bf3294bbc4f6c250de0bfbaa256dbafa9872",
+        "source_fact:v1:2ffb369bf2f292e882147d741c240f07baaa823a506ee473b3e7bbb904598e5d",
+        "source_fact:v1:51c742650d7b22cd0473bc17286774ae326acdeba8e74ddd1315627499ca597d",
+        "source_fact:v1:7e8733da22c00179b99932fcff14468997fece3546d1624b570a7f956332772d",
+        "source_fact:v1:a6931d91a2641705d023df5ddba7a74532805c450e452e6597a6bf44486d6564",
+        "source_fact:v1:b2cacb1810a2a78932f773eab7406af5a6a6e827d0dc9708bf2eb538f17758e7",
+        "source_fact:v1:caf0e00beb331e1217185218909c8c562f474f6ba3ca68f04ad30f8124a5e1f7",
+        "source_fact:v1:d338998121a8f030ead0920ce254911b8a95eec3c923858c2e1dc1557d2a70f4"
+      ],
+      "source_published_kst": "2026-10-07T10:08+09:00",
+      "title": "365mc·GC녹십자웰빙, 국소지방 신약·GLP-1 건기식 공동개발"
     },
     "source_fact:ee3d5908d53afaab1b916f4f": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -162469,6 +163393,30 @@
       "source_published_kst": "2026-10-06T04:36+09:00",
       "title": "美10년물 국채금리 장중 5.34% 돌파…24년 만에 최고"
     },
+    "source_fact:fbc1de3face8c0d644130ff5": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03138966645610624",
+      "source": "이데일리",
+      "source_body_digest": "79d5da5fcdf6ff12d654e92ae92b2d521016df210a84a04fc35d72005f540cdb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f51cae063251c1d9012755f1e3a8889add47f415937f95559c522273376f725",
+      "source_fact_keys": [
+        "source_fact:v1:1873ad591ba9d657ea759bc49525bf3294bbc4f6c250de0bfbaa256dbafa9872",
+        "source_fact:v1:2ffb369bf2f292e882147d741c240f07baaa823a506ee473b3e7bbb904598e5d",
+        "source_fact:v1:51c742650d7b22cd0473bc17286774ae326acdeba8e74ddd1315627499ca597d",
+        "source_fact:v1:7e8733da22c00179b99932fcff14468997fece3546d1624b570a7f956332772d",
+        "source_fact:v1:a6931d91a2641705d023df5ddba7a74532805c450e452e6597a6bf44486d6564",
+        "source_fact:v1:b2cacb1810a2a78932f773eab7406af5a6a6e827d0dc9708bf2eb538f17758e7",
+        "source_fact:v1:caf0e00beb331e1217185218909c8c562f474f6ba3ca68f04ad30f8124a5e1f7",
+        "source_fact:v1:d338998121a8f030ead0920ce254911b8a95eec3c923858c2e1dc1557d2a70f4"
+      ],
+      "source_published_kst": "2026-10-07T10:08+09:00",
+      "title": "365mc·GC녹십자웰빙, 국소지방 신약·GLP-1 건기식 공동개발"
+    },
     "source_fact:fbc29d2fb64a7c8808e92d7a": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -164615,6 +165563,25 @@
       "link": "https://www.yna.co.kr/view/AKR20260918027100003",
       "source": "연합뉴스",
       "title": "SK그룹 전문경영인 부회장 3명 SK하이닉스로 보임 | 연합뉴스"
+    },
+    "title:05f6a6811eac866cc83f553c": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03270166645610624",
+      "source": "이데일리",
+      "source_body_digest": "046dc414c405763107a74b22d86615735a4cd901888707555d293379cf0bcc31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e11125a85182becf7dfbe0edf317a68cbb36af3f526e0e2bce1d7afc5447eee",
+      "source_fact_keys": [
+        "source_fact:v1:31e3ada3b7a1a41ac9aeb9d0a1966a04c62ac3d061ce23b667945b6934c36002",
+        "source_fact:v1:4d7fe89fb35e3156a904a21000c12448577358627667a141a70d1f973c03c079",
+        "source_fact:v1:c7f7e4d72050b7db34c9df3610d6d73024c800307b573f625790c1e95f5ff4d6"
+      ],
+      "source_published_kst": "2026-10-07T10:36+09:00",
+      "title": "파라택시스 합병 무산…코리아-상폐 대응, 이더리움-독자 경영"
     },
     "title:062303f7a8ea75bcb890da21": {
       "first_seen_kst": "2026-10-07T01:59:08+09:00",
@@ -167084,6 +168051,30 @@
       "source": "연합뉴스",
       "title": "홈플러스익스프레스, 'NS홈쇼핑 인수 100일' 떡 증정 이벤트 | 연합뉴스"
     },
+    "title:1a914bd7b6e7c965c2728fbe": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03138966645610624",
+      "source": "이데일리",
+      "source_body_digest": "79d5da5fcdf6ff12d654e92ae92b2d521016df210a84a04fc35d72005f540cdb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f51cae063251c1d9012755f1e3a8889add47f415937f95559c522273376f725",
+      "source_fact_keys": [
+        "source_fact:v1:1873ad591ba9d657ea759bc49525bf3294bbc4f6c250de0bfbaa256dbafa9872",
+        "source_fact:v1:2ffb369bf2f292e882147d741c240f07baaa823a506ee473b3e7bbb904598e5d",
+        "source_fact:v1:51c742650d7b22cd0473bc17286774ae326acdeba8e74ddd1315627499ca597d",
+        "source_fact:v1:7e8733da22c00179b99932fcff14468997fece3546d1624b570a7f956332772d",
+        "source_fact:v1:a6931d91a2641705d023df5ddba7a74532805c450e452e6597a6bf44486d6564",
+        "source_fact:v1:b2cacb1810a2a78932f773eab7406af5a6a6e827d0dc9708bf2eb538f17758e7",
+        "source_fact:v1:caf0e00beb331e1217185218909c8c562f474f6ba3ca68f04ad30f8124a5e1f7",
+        "source_fact:v1:d338998121a8f030ead0920ce254911b8a95eec3c923858c2e1dc1557d2a70f4"
+      ],
+      "source_published_kst": "2026-10-07T10:08+09:00",
+      "title": "365mc·GC녹십자웰빙, 국소지방 신약·GLP-1 건기식 공동개발"
+    },
     "title:1aa07593611e9b5f233d28f6": {
       "first_seen_kst": "2026-10-07T11:43:24+09:00",
       "lanes": {
@@ -167562,6 +168553,25 @@
       ],
       "source_published_kst": "2026-10-06T15:34+09:00",
       "title": "\"세계 3위 車시장서 월 최대 판매\" 현대차, 푸네공장 앞세워 '인도 공략' 속도"
+    },
+    "title:1ee970bf16927592fba9659f": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895353",
+      "source": "헤럴드경제",
+      "source_body_digest": "171f2f88ad6bc5e5e9209d317d1baecc202ccfbc76368573f799254ca6115ebd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2cd3a3da7ae2f37e0e0d617228d31f0db04ae8bd4ce733b6b1d9b3eb9e353e83",
+      "source_fact_keys": [
+        "source_fact:v1:3bb3baab971c0ebd12023358fc2f296c7abf2f38f311a27aa585c07ca03a972f",
+        "source_fact:v1:419979f920add66eaa4508a9058dfcc53eefe22443a410995b9ece84397e4382",
+        "source_fact:v1:d154371f852c725195dd0f643a6f7beae088fec9e221c828208290351d359fa8"
+      ],
+      "source_published_kst": "2026-10-07T10:47+09:00",
+      "title": "오세훈 “인허가 증가는 정부 아닌 서울시 성과”…2031년 31만호 착공"
     },
     "title:1ef2d6a32f5508c02ec4cfa9": {
       "first_seen_kst": "2026-10-01T21:12:25+09:00",
@@ -173789,6 +174799,23 @@
       "source_published_kst": "2026-10-05T21:02+09:00",
       "title": "라디오팜 테라노스틱스, RAD101 2상 종료미팅 완료..3상 준비 착수"
     },
+    "title:4cd52ea384684234af4f47c0": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633225",
+      "source": "이투데이",
+      "source_body_digest": "5d13da361293dbeca7dd4335bc75a0183a0104f8d7cb9f4f18c5dcde8974cfab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a6f8bfd2548f24da093d567653cd9405a06382eb2cc07e92cf3776bdc3692143",
+      "source_fact_keys": [
+        "source_fact:v1:84f0132eeb50e6b47bfee087194d208ab06ef74e009c4797786c4fdf5b6c4b3c"
+      ],
+      "source_published_kst": "2026-10-07T09:59+09:00",
+      "title": "파라마운트, 워너 인수 완료⋯미디어공룡 ‘스카이댄스’ 출범"
+    },
     "title:4cdc6397c1bfd332483891c0": {
       "first_seen_kst": "2026-10-07T11:43:24+09:00",
       "lanes": {
@@ -174957,6 +175984,24 @@
       "link": "https://www.etoday.co.kr/news/view/2622056",
       "source": "이투데이",
       "title": "예선테크, 전기차 배터리 열폭주 방지 ‘화염차단제’ 개발…고객사와 대체품 협의"
+    },
+    "title:56381610da1e957fadffd0fc": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007075051527",
+      "source": "연합뉴스",
+      "source_body_digest": "d7e2c941a007f4323053155fd1fd3d1da27fe02496a74557746304689967e906",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c671d97fa26fc6ee2a7d2ac125e8010f484044b109c02db292780dcca5f63c9",
+      "source_fact_keys": [
+        "source_fact:v1:33334ffc8d69891bd650d0b6c0160204e3e88bb356cf2a49e42aea9e321b3b83",
+        "source_fact:v1:a80871e604fbda3adc5dcc6a310cf86682a26ac284419f54f31a137ca4f602e2"
+      ],
+      "source_published_kst": "2026-10-07T11:07+09:00",
+      "title": "[2보] LG전자 3분기 영업익 7천818억…작년비 13.5% 증가 | 연합뉴스"
     },
     "title:565aa7d7516a7238e149bb0e": {
       "first_seen_kst": "2026-10-04T06:09:53+09:00",
@@ -181080,6 +182125,27 @@
       "source_published_kst": "2026-10-05T18:32+09:00",
       "title": "[단독] 개정 상법에 한전 '소송 리스크'"
     },
+    "title:87b7712380b7f39364850cb9": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633205",
+      "source": "이투데이",
+      "source_body_digest": "d4b7e441e4a7a6502fb53c776cb75158ab19541b0ef77d7168c03a4848f76aaf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7500b5758d482627648edd2c2a5316c4e37b7358b52c2e9f0cd1944012ddb007",
+      "source_fact_keys": [
+        "source_fact:v1:2daad0a819d1cdb442d7a5805f7e2daa4fa07970f904a8c929b5af4e0a3878f7",
+        "source_fact:v1:755c3b325673c1d6b461d9e9275356e6b711a5c3cfe54e7d0268995724164d43",
+        "source_fact:v1:9b11cf1ccf9ad51bb6f195ea53e3e240970801be4a06099685e21d509ca5fa89",
+        "source_fact:v1:c1935290351731dbb8e05d23b833d578cd05967666a83b5c88a18760261e3774",
+        "source_fact:v1:df576bbe4ecda903ed58b8f63bbc75448446b7f3fabd39d999b4dcd09a9f3844"
+      ],
+      "source_published_kst": "2026-10-07T09:30+09:00",
+      "title": "포스코, 아르헨티나서 리튬 5만t 생산체제 구축 눈앞"
+    },
     "title:87bd4c9811afad11a06a6002": {
       "first_seen_kst": "2026-09-28T06:22:53+09:00",
       "lanes": {
@@ -186888,6 +187954,21 @@
       "link": "https://www.mk.co.kr/news/stock/12161196",
       "source": "매일경제",
       "title": "코스트코 홀세일, 4분기 매출 939억 달러..전년비 11% 증가"
+    },
+    "title:b64f06a6a1df64bf67a37134": {
+      "first_seen_kst": "2026-10-07T14:18:25+09:00",
+      "lanes": {
+        "live": "2026-10-07T14:18:25+09:00"
+      },
+      "last_seen_kst": "2026-10-07T14:18:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816957",
+      "source": "뉴시스",
+      "source_body_digest": "5499f29296bd31995378f9712e0c7be206f6c49bba28dfbfae057c8e1301bd2b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T10:28+09:00",
+      "title": "남해관광문화재단 사업 ‘특혜 논란’…같은 대표 업체 잇단 선정"
     },
     "title:b64f83d86afd05c31da81e94": {
       "first_seen_kst": "2026-09-27T01:53:16+09:00",
@@ -196196,5 +197277,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-07T13:41:41+09:00"
+  "updated_at_kst": "2026-10-07T14:18:25+09:00"
 }
