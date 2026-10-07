@@ -121,6 +121,7 @@ jobs:
           assert 'cron: "3,13,23,33,43,53 9-14 * * 1-5"' in s, "intraday KOSPI self-recovery schedule missing"
           assert 'cron: "3,13,23 15 * * 1-5"' in s, "late-session KOSPI recovery schedule missing"
           assert "workflow_run:" in s and "Wonyotti 90D Thesis Telegram Watch" in s, "event-driven KOSPI fallback missing"
+          assert "Korea Market Stress and Global Wave Telegram Watch" in s, "independent KOSPI preopen fallback missing"
           assert 'session["open"]-dt.timedelta(minutes=60) <= now' in s, "KOSPI gate must be eligible one hour before open"
           assert "코스피 급락 감시 공백 감지·자동 복구" in s, "late-start Telegram gap alert missing"
           assert "kospi_gap_recovery_alert=true" in s, "gap-recovery delivery audit missing"
@@ -133,6 +134,7 @@ jobs:
           assert "session_state" in collector, "UBM collector does not use XKRX session calendar"
           watcher=Path("scripts/kospi_shock_episode_watch.py").read_text(encoding="utf-8")
           assert "session_state" in watcher and "XKRX non-session day" in watcher, "KOSPI watcher does not use XKRX session calendar"
+          assert "price_only_start" in watcher and "수급 원인 보류" in watcher, "monitoring-gap price shock fallback missing"
           assert "exchange_calendars" in s, "production XKRX calendar dependency missing"
           assert '"ts": received_ts' in collector, "UBM event alignment must use payload receive time"
           assert '"source_ts": source_ts' in collector, "UBM source time must be preserved separately"
