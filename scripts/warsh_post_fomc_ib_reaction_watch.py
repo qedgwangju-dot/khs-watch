@@ -117,12 +117,26 @@ def easy_extra_read(bp):
 
 def market_path():
     p = load(PATH_STATE, {})
+    status = str(p.get('source_status') or '')
+    fresh = status.startswith('실시간 조회')
+    # Never turn a cached/failing futures source into a fresh policy-path signal.
+    # Keep IB research tracking alive, but suppress market-vs-IB divergence until
+    # the dedicated policy-path watcher has passed its freshness validation.
+    if not fresh:
+        return {
+            'year_end': None, 'extra_bp': None, 'source': p.get('source'),
+            'fresh': False, 'source_status': status or '최신성 확인 불가',
+            'source_error': p.get('source_error'),
+        }
     ms = [m for m in p.get('meetings', []) if str(m.get('date', '')).startswith('2026-')]
     year_end = None
     if ms:
         year_end = float(sorted(ms, key=lambda x: x['date'])[-1].get('post_rate'))
     extra_bp = ((p.get('classification') or {}).get('extra_bp'))
-    return {'year_end': year_end, 'extra_bp': extra_bp, 'source': p.get('source')}
+    return {
+        'year_end': year_end, 'extra_bp': extra_bp, 'source': p.get('source'),
+        'fresh': True, 'source_status': status, 'source_error': None,
+    }
 
 
 def rss_rows(inst):
@@ -251,6 +265,8 @@ def snapshot_message(confirmed, tracking, market, title='기준선'):
              f"• 공개 확인된 3곳: 추가 0회 {cc[0]}곳 · 1회 {cc[1]}곳 · 2회 {cc[2]}곳",
              '• 연준 공식 점도표: 추가 0회 2명 · 1회 12명 · 2회 4명',
              '• 정책금리 중간값 기준: 추가 0회 3.875% · 1회 4.125% · 2회 4.375%']
+    if not market.get('fresh', True):
+        lines.append("• 선물시장 경로: <b>원천 최신성 검증 실패로 판정 유보</b> — 직전 값은 새 신호로 사용하지 않습니다.")
     if market.get('year_end') is not None:
         lines.append(f"• 선물시장 2026년 말 확률가중 경로: 약 {market['year_end']:.3f}%")
     if market.get('extra_bp') is not None:
