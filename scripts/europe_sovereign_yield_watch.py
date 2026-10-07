@@ -305,7 +305,11 @@ def parse_germany(text: str, source: str) -> list[Obs]:
 
 def fetch_germany() -> list[Obs]:
     raw = fetch(DE_CSV)
-    rows = parse_germany(raw, DE_CSV)
+    try:
+        rows = parse_germany(raw, DE_CSV)
+    except Exception:
+        (OUT / "europe_sovereign_debug_de.txt").write_text(raw[:30000], encoding="utf-8")
+        raise
     if not rows:
         (OUT / "europe_sovereign_debug_de.txt").write_text(raw[:30000], encoding="utf-8")
         raise RuntimeError("Bundesbank 10Y CSV parse failed")
