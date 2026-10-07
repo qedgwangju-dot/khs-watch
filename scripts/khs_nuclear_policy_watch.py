@@ -1342,11 +1342,10 @@ def _hanul4_operating_verified(
     main_ramp: bool,
     main_fresh: bool,
 ) -> bool:
-    return (
-        status_main == "운전"
-        and main_fresh
-        and (main_status == "운전" or main_ramp)
-    )
+    # 본사 공식 운영현황의 호기별 행이 '운전'이고, 한울본부 페이지의
+    # 측정시각이 최신이면 운전 전환으로 인정한다. 한울본부 동적 문구가
+    # null/미렌더링 상태여도 공식 호기별 행 자체를 무효화하지 않는다.
+    return status_main == "운전" and main_fresh
 
 
 def _hanul4_official_source(outlet: str, link: str = "") -> bool:
@@ -1470,7 +1469,7 @@ def collect_hanul4_operation_items(now: dt.datetime) -> list[dict]:
             "evidence_count": 2,
             "live_status": "운전",
             "live_status_source": HANUL4_KHNP_STATUS_MAIN,
-            "verification": "본사 호기별 운전 상태 + 측정시각이 신선한 한울본부 공식 표면 일치",
+            "verification": "한국수력원자력 본사 호기별 운영현황 '운전' + 한울본부 공식 페이지 최신 측정시각 확인",
         })
 
     # 원안위 보도자료 목록도 직접 확인한다. 검색엔진·언론 색인보다 늦더라도
@@ -1682,6 +1681,8 @@ def _self_test_hanul4_operating_event_model() -> None:
         raise RuntimeError("Hanul4 dual-official operating verification regression")
     if not _hanul4_operating_verified("운전", None, True, True):
         raise RuntimeError("Hanul4 fresh-ramp operating verification regression")
+    if not _hanul4_operating_verified("운전", None, False, True):
+        raise RuntimeError("Hanul4 exact-corporate-row operating verification regression")
     if _hanul4_operating_verified("정비", "운전", True, True):
         raise RuntimeError("Hanul4 maintenance false-positive operating regression")
     if _hanul4_operating_verified("운전", "운전", True, False):
