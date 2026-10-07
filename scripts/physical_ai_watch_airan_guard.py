@@ -225,10 +225,16 @@ def _finalize_airan_criteria() -> None:
     if not base.ALERT_PATH.exists():
         return
     text = base.ALERT_PATH.read_text(encoding='utf-8')
-    old = '공식 사전예고·신규 AI 모델/성능 공개·천 단위 공급망 발주·공급업체 심사·수주·고객 실명·배치 발주·양산/출하·생산 수율·생산능력·현장 배치·대당 부품 탑재가치·배터리 소재 채택·촉각/데이터 사업화·기관 지분 변화처럼 돈 버는 능력·기술 재평가·수급·시간표를 바꾸는 내용만 알림.'
-    new = '공식 사전예고·신규 AI 모델/성능 공개·천 단위 공급망 발주·공급업체 심사·수주·고객 실명·배치 발주·양산/출하·생산 수율·생산능력·현장 배치·관절·감속기·모터·인코더·힘/토크·촉각·비전 센서의 고객선정·수주·양산·수율·납기·가격 변화·정부 로봇 조달공고·낙찰·실제 보급·특화단지 설비집행·삼성전자 로봇 공장배치·산업 신뢰성·인간영상 스케일링·학습비 절감·미 AUTOWARCOM 법제화·예산·정식창설·획득권한·Project Agincourt 계약·Project Meridian 보고서·자율전력 실제배치·대당 부품 탑재가치·배터리 소재 채택·촉각/데이터 사업화·AI-RAN Physical AI 실증·상용계약·피지컬AI 메모리의 로봇 고객 샘플·검증·디자인윈·본계약·대당 탑재량·양산출하·단가·신뢰성 변화·Morgan Stanley 휴머노이드 장기전망·Humanoid 100 공식 개정·파나소닉 휴머노이드의 실물 시제품·성능수치·자사공장/창고 실증·액추에이터/배터리 실제 통합·생산설비투자·외부고객 본계약·양산출하·2029 일정변경·NVIDIA·Foxconn 실제 생산공정 로봇 작업 성공률·사이클타임·목표달성 변화·NVIDIA AI Day Seoul·매디슨 황 신뢰매체 참석확정 보도·NVIDIA/매디슨 1차자료 공식 확인·한국기업 실명 미팅·업무협약·실증·기술통합·배치·일정변경·기관 지분 변화처럼 돈 버는 능력·기술 재평가·수급·시간표를 바꾸는 내용만 알림.'
-    text = text.replace(old, new)
-    base.ALERT_PATH.write_text(text, encoding='utf-8')
+    marker = '<b>판정 기준</b>'
+    if marker in text:
+        body = text.split(marker, 1)[0].rstrip()
+        text = (
+            body
+            + '\n'
+            + '<b>판정 기준</b>  실적·수급·시간표를 바꾸는 새 사실만 알림. '
+              '단순 주가·ETF·테마 반복은 제외.'
+        )
+    base.ALERT_PATH.write_text(text.strip(), encoding='utf-8')
 
 
 if __name__ == '__main__':
