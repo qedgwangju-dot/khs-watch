@@ -1500,6 +1500,18 @@ def _self_test_hanul4_operating_event_model() -> None:
     if _hanul4_live_status("한울 4호기 운전 4호기") != "운전":
         raise RuntimeError("Hanul4 live-operating parser regression")
 
+    # 실제 Telegram nuclear lane의 필수 필드와도 호환되는지 회귀검사한다.
+    sample = dict(HANUL4_VERIFIED_APPROVAL)
+    sample["live_status"] = "정비"
+    sample["live_status_source"] = HANUL4_KHNP_MAIN
+    rendered = "\n".join(_render_hanul4_operation(sample, 1, now_kst()))
+    for marker in (
+        "- 핵심 변화:", "- 숫자:", "- 한국 기업·매출 연결:",
+        "- 병목·실패모드:", "- 출처:",
+    ):
+        if marker not in rendered:
+            raise RuntimeError(f"Hanul4 Telegram contract regression: missing {marker}")
+
 
 def _render_hanul4_operation(item: dict, idx: int, now: dt.datetime) -> list[str]:
     stage = str(item.get("stage") or "")
@@ -1511,13 +1523,14 @@ def _render_hanul4_operation(item: dict, idx: int, now: dt.datetime) -> list[str
         return [
             f"## {idx}. [{verification_label}] 한울 4호기 재가동",
             f"- 핵심 변화: {label}. 규제 관문은 통과했지만 재가동 승인 ≠ 실제 발전재개입니다.",
-            f"- 현재 운영상태: 한국수력원자력 실시간 페이지 기준 {live_status}. '운전' 전환·계통병입·출력 회복은 별도 확인합니다.",
-            "- 정지 원인: 발전기 차단기 단로기 접속부의 전기적 결함과 원자로출력급감발계통(RPCS) 미작동이 복합 작용했습니다. RPCS 계측기 내부 이물질 유입 영향도 조사됐습니다.",
-            "- 조치: 고장 기기 교체·건전성 시험과 설비 관리체계 개선 등 종합 재발방지대책을 확인한 뒤 원안위가 재가동을 승인했습니다.",
-            "- 실패모드: 승인 후에도 RPCS·발전기 차단기 계통 이상이 재발하거나 출력상승 시험에서 이상이 나오면 계통병입·100% 출력 일정이 다시 밀릴 수 있습니다.",
-            f"- 근거: [{item.get('source')}]({item.get('link')}) · {item.get('published_kst')}",
+            f"- 숫자: 8월 19일 자동정지 → 10월 7일 재가동 승인(49일) · 설비용량 약 1,050MWe · 현재 한국수력원자력 실시간 상태 {live_status}.",
+            "- 한국 기업·매출 연결: 한국수력원자력의 기존 한울4호기 운전 복귀 이슈이며 신규 원전 수주가 아닙니다. 발전재개·계통병입과 출력상승이 확인돼야 실제 공급 회복으로 봅니다.",
+            "- 정지 원인: 발전기 차단기 단로기 접속부 전기적 결함과 원자로출력급감발계통(RPCS) 미작동이 복합 작용했습니다. RPCS 계측기 내부 이물질 유입 영향도 확인됐습니다.",
+            "- 조치: 고장 기기 교체·건전성 시험과 설비 관리체계 개선 등 종합 재발방지대책 확인 후 원안위가 재가동을 승인했습니다.",
+            "- 병목·실패모드: 승인 뒤에도 RPCS·발전기 차단기 계통 이상 재발, 출력상승 시험 이상, 계통병입 지연이 생기면 전력공급 정상화가 늦어질 수 있습니다.",
+            f"- 출처: [{item.get('source')}]({item.get('link')}) · {item.get('published_kst')}",
             f"- 운영상태 확인: [한국수력원자력]({item.get('live_status_source') or HANUL4_KHNP_MAIN})",
-            "- 다음 확인: KHNP 실시간 '운전' 전환 → 발전재개/계통병입 시각 → 출력상승 → 100% 출력 도달 → 재발방지대책 이행",
+            "- 다음 확인: 한국수력원자력 실시간 '운전' 전환 → 발전재개/계통병입 시각 → 출력상승 → 100% 출력 도달 → 재발방지대책 이행",
             "",
         ]
 
@@ -1537,10 +1550,10 @@ def _render_hanul4_operation(item: dict, idx: int, now: dt.datetime) -> list[str
     return [
         f"## {idx}. [{verification_label}] 한울 4호기 운전상태",
         f"- 핵심 변화: {change}",
-        f"- 현재 운영상태: {live_status}",
+        f"- 숫자: 설비용량 약 1,050MWe · 현재 운영상태 {live_status}.",
+        "- 한국 기업·매출 연결: 한국수력원자력 기존 발전설비의 가동률·전력판매 정상화와 연결되는 운전 이슈이며 신규 원전 수주로 계산하지 않습니다.",
         f"- 단계 구분: {caveat}",
-        "- 설비 기준: 한울4호기는 약 1,050MWe급 가압경수로이며, 실제 발전량은 운전상태·출력률 확인 뒤 판단합니다.",
-        "- 실패모드: 발전기 차단기·RPCS 계통 재고장, 출력상승 시험 이상, 재발방지대책 미이행이 확인되면 재정지 위험이 있습니다.",
+        "- 병목·실패모드: 발전기 차단기·RPCS 계통 재고장, 출력상승 시험 이상, 재발방지대책 미이행이 확인되면 재정지 위험이 있습니다.",
         f"- 출처: [{item.get('source')}]({item.get('link')}) · {item.get('published_kst')}",
         "- 다음 확인: 실시간 운전상태 → 발전재개/계통병입 → 출력률 → 100% 출력 → 재정지 여부",
         "",
