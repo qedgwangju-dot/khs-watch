@@ -32,7 +32,8 @@ FRESH_HOURS = 96
 MONTHLY_DAY = 1
 OFFICIAL_UNPUBLISHED_POLL_HOURS = 3
 OFFICIAL_PUBLISHED_POLL_HOURS = 24
-OFFICIAL_SOURCE_HEALTH_VERSION = 1
+OFFICIAL_PUBLICATION_EXPECTED_DAY = 15
+OFFICIAL_SOURCE_HEALTH_VERSION = 2
 COMPARE_VERSION = 4
 EVENT_STATE_VERSION = 2
 SHARE_TRACK_VERSION = 1
@@ -839,6 +840,8 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
     disclosure from 2026-09-01; city/county HS6 weight is also non-public.
     """
     errors: list[str] = []
+    optional_errors: list[str] = []
+    availability_notes: list[str] = []
     current = _previous_month(now)
     data: dict[str, dict[str, dict]] = {}
     selected = None
@@ -881,25 +884,29 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
         if malaysia:
             rows["malaysia_hsk10"] = malaysia
         elif merr:
-            local_errors.append(merr)
+            optional_errors.append(merr)
 
         row, err = fetch_kcs_region_month(candidate, REGIONS["hynix_icheon"], session=session)
         if row:
             rows["hynix_icheon"] = row
-        else:
-            local_errors.append(err)
+        elif err:
+            optional_errors.append(err)
 
+        transient = [item for item in local_errors if _is_transient_source_error(item)]
+        missing = [item for item in local_errors if not _is_transient_source_error(item)]
         if all(k in rows for k in required_keys):
             selected = candidate
             data[candidate] = rows
-            errors.extend(local_errors)
+            errors.extend(transient)
+            availability_notes.extend(missing)
             break
-        errors.extend(local_errors)
+        errors.extend(transient)
+        availability_notes.extend(missing)
 
         # Do not fall back to an older month when the newest candidate failed
         # because of a network/API error. Older months are only considered when
         # the current candidate explicitly has no published data.
-        if any(_is_transient_source_error(item) for item in local_errors):
+        if transient:
             return None, errors
 
     if not selected:
@@ -938,13 +945,13 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
         if malaysia:
             rows["malaysia_hsk10"] = malaysia
         elif merr:
-            errors.append(merr)
+            optional_errors.append(merr)
 
         row, err = fetch_kcs_region_month(month, REGIONS["hynix_icheon"], session=session)
         if row:
             rows["hynix_icheon"] = row
-        else:
-            errors.append(err)
+        elif err:
+            optional_errors.append(err)
         data[month] = rows
 
     # Newest, prior month and 3-month comparison must all have exact national
@@ -990,6 +997,8 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
         "malaysia_source_url": "https://www.data.go.kr/data/15100475/openapi.do",
         "official_api_key_configured": bool(DATA_GO_KEY),
         "official_api_used": bool(data.get(selected, {}).get("national_hsk10", {}).get("api")),
+        "availability_notes": availability_notes,
+        "optional_errors": optional_errors,
         "errors": errors,
     }, errors
 
@@ -2596,6 +2605,8 @@ def _official_poll_due(state: dict, now: datetime) -> tuple[bool, int]:
         if state.get("last_successful_official_month") == target_month
         else OFFICIAL_UNPUBLISHED_POLL_HOURS
     )
+    if int(state.get("official_source_health_version") or 0) < OFFICIAL_SOURCE_HEALTH_VERSION:
+        return True, interval
     raw = state.get("last_official_poll_attempt_kst") or ""
     try:
         last = datetime.fromisoformat(raw)
@@ -3272,9 +3283,10 @@ def main() -> None:
                 )
         elif official is not None:
             was_error = previous_source_health.get("status") == "error"
+            waiting_publication = official_month != official_target_month
             source_health_state = {
                 "version": OFFICIAL_SOURCE_HEALTH_VERSION,
-                "status": "ok",
+                "status": "waiting_publication" if waiting_publication else "ok",
                 "target_month": official_target_month,
                 "last_checked_at_kst": now.isoformat(timespec="seconds"),
                 "selected_official_month": official_month,
@@ -3283,6 +3295,23 @@ def main() -> None:
                 source_health_alert = build_official_source_health_alert(
                     now, official_target_month, [], recovered=True
                 )
+            elif (
+                waiting_publication
+                and now.day > OFFICIAL_PUBLICATION_EXPECTED_DAY
+                and (
+                    previous_source_health.get("status") != "waiting_publication"
+                    or previous_source_health.get("target_month") != official_target_month
+                )
+            ):
+                source_health_alert = "\n".join([
+                    "⚠️ <b>삼성·SK하이닉스 HBM 수출 새 확정월 게시 지연</b>",
+                    "━━━━━━━━━━━━━━━━",
+                    f"• 대상월: <b>{official_target_month[:4]}년 {int(official_target_month[4:])}월</b>",
+                    f"• 현재 공식 API 최신월: <b>{official_month[:4]}년 {int(official_month[4:])}월</b>",
+                    "• 관세청 시도별 품목 통계는 통상 매월 15일경 전월 자료를 현행화합니다.",
+                    "• 새 확정월이 게시되기 전까지 이전 월 값을 최신값으로 재사용하지 않습니다.",
+                    f"• 확인: {now.strftime('%Y-%m-%d %H:%M KST')}",
+                ]) + "\n"
 
     monthly_due = bool(
         official
@@ -3418,6 +3447,16 @@ def main() -> None:
         "malaysia_public_available": bool(official and official.get("malaysia_public_available")),
         "malaysia_revision_due": malaysia_revision_due,
         "official_errors": [re.sub(r"serviceKey=[^&\s]+", "serviceKey=<redacted>", str(x)) for x in official_errors[-8:]],
+        "official_availability_notes": (
+            (official.get("availability_notes") or [])[-8:]
+            if official_poll_attempted and official
+            else state.get("official_availability_notes", [])
+        ),
+        "optional_source_errors": (
+            [re.sub(r"serviceKey=[^&\s]+", "serviceKey=<redacted>", str(x)) for x in (official.get("optional_errors") or [])[-8:]]
+            if official_poll_attempted and official
+            else state.get("optional_source_errors", [])
+        ),
     })
     if official:
         state["last_successful_official_month"] = official_month
@@ -3465,6 +3504,8 @@ def main() -> None:
         f"- malaysia_hsk10_weight_kg: {current_malaysia_weight if current_malaysia_weight is not None else 'none'}\n"
         f"- malaysia_revision_due: {str(malaysia_revision_due).lower()}\n"
         f"- official_errors: {len(official_errors)}\n"
+        f"- official_availability_notes: {len(official.get('availability_notes') or []) if official else 0}\n"
+        f"- optional_source_errors: {len(official.get('optional_errors') or []) if official else 0}\n"
         f"- alert_generated: {str(monthly_due or bool(send_events) or bool(source_health_alert)).lower()}\n",
         encoding="utf-8",
     )
