@@ -6,6 +6,9 @@ on:
   push:
     paths:
       - ".github/war-peace-telegram-test-trigger.txt"
+      - ".github/workflows/war-peace-reconstruction-telegram-watch.yml"
+      - "scripts/war_peace_reconstruction_watch_oct04_guard.py"
+      - "scripts/test_war_peace_oct04_regression.py"
   workflow_dispatch:
     inputs:
       telegram_test:
@@ -103,20 +106,56 @@ jobs:
           EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900_bot"
         run: |
           python - <<'PY'
-          import json, os, pathlib, urllib.parse, urllib.request
+          import json, os, pathlib, time, urllib.error, urllib.parse, urllib.request
+
+          def request_json(req, retries=3):
+              last = None
+              for attempt in range(1, retries + 1):
+                  try:
+                      with urllib.request.urlopen(req, timeout=25) as r:
+                          return json.loads(r.read().decode())
+                  except urllib.error.HTTPError as e:
+                      last = e
+                      if e.code not in (429, 500, 502, 503, 504) or attempt == retries:
+                          raise
+                      retry_after = e.headers.get("Retry-After")
+                      time.sleep(float(retry_after) if retry_after else 2 * attempt)
+                  except urllib.error.URLError as e:
+                      last = e
+                      if attempt == retries:
+                          raise
+                      time.sleep(2 * attempt)
+              raise RuntimeError(f"Telegram request failed: {last}")
+
           token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
           chat_id = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
           expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
           if not token or not chat_id: raise RuntimeError("WAR_PEACE Telegram secret missing")
-          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r: identity = json.loads(r.read().decode())
+
+          identity = request_json(f"https://api.telegram.org/bot{token}/getMe")
           actual = identity.get("result", {}).get("username", "")
-          if not identity.get("ok") or actual != expected: raise RuntimeError(f"Telegram bot mismatch: expected @{expected}, got @{actual or 'unknown'}")
-          text = pathlib.Path("out/war_peace_reconstruction_alert.txt").read_text(encoding="utf-8").strip()[:4096]
-          payload = urllib.parse.urlencode({"chat_id": chat_id, "text": text, "parse_mode": "HTML", "disable_web_page_preview": "true"}).encode()
-          req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST")
-          with urllib.request.urlopen(req, timeout=25) as r: result = json.loads(r.read().decode())
+          if not identity.get("ok") or actual != expected:
+              raise RuntimeError(f"Telegram bot mismatch: expected @{expected}, got @{actual or 'unknown'}")
+
+          text = pathlib.Path("out/war_peace_reconstruction_alert.txt").read_text(encoding="utf-8").strip()
+          if len(text) > 4096:
+              raise RuntimeError(f"Telegram message too long after fit gate: {len(text)}")
+          payload = urllib.parse.urlencode({
+              "chat_id": chat_id,
+              "text": text,
+              "parse_mode": "HTML",
+              "disable_web_page_preview": "true",
+          }).encode()
+          req = urllib.request.Request(
+              f"https://api.telegram.org/bot{token}/sendMessage",
+              data=payload,
+              method="POST",
+          )
+          result = request_json(req)
           if not result.get("ok"): raise RuntimeError(f"Telegram rejected: {result}")
-          print(f"telegram_delivery_confirmed=true bot=@{actual} message_id={result.get('result',{}).get('message_id')}")
+          message_id = result.get("result", {}).get("message_id")
+          if not message_id: raise RuntimeError(f"Telegram response missing message_id: {result}")
+          print(f"telegram_delivery_confirmed=true bot=@{actual} message_id={message_id}")
           PY
       - name: Finalize state after confirmed delivery
         if: success() && env.DRY_RUN != 'true' && hashFiles('out/war_peace_reconstruction_alert.txt') != ''
@@ -127,7 +166,19 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/war_peace_reconstruction_watch_state.json
-          if ! git diff --cached --quiet; then git commit -m "Update war peace reconstruction watch state"; git pull --rebase origin main; git push; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "Update war peace reconstruction watch state"
+            ok=false
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push; then ok=true; break; fi
+              git rebase --abort >/dev/null 2>&1 || true
+              sleep $((attempt * 2))
+            done
+            if [ "$ok" != "true" ]; then
+              echo "state_push_failed_after_retries=true"
+              exit 1
+            fi
+          fi
       - name: Upload verification artifacts
         if: always()
         uses: actions/upload-artifact@v4
