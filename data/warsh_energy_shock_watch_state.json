@@ -28,21 +28,21 @@
     "real_pce_3m_ann": 4.130494340236046,
     "real_pce_date": "2026-08-01",
     "bei5y": 2.37,
-    "bei5y_10d_bp": 5.000000000000027,
-    "bei_date": "2026-10-06"
+    "bei5y_10d_bp": 3.000000000000025,
+    "bei_date": "2026-10-07"
   },
   "verdict": "판정 유보 — 유가 충격은 크지만 물가 전이와 수요 파괴의 우열 불명확",
   "oil_rates": {
-    "date": "2026-10-05",
+    "date": "2026-10-06",
     "observations": 63,
-    "corr_3m": 0.6899059271019728,
+    "corr_3m": 0.6672175367508691,
     "corr_band": "강한 경보",
-    "beta_bp_per_1pct": 0.6757380310623488,
+    "beta_bp_per_1pct": 0.6725951318797347,
     "beta_hot": false,
-    "wti": 89.43000030517578,
-    "wti_move_pct": -3.42332421293855,
-    "dgs10": 5.31,
-    "dgs10_move_bp": 6.99999999999994,
+    "wti": 89.44000244140625,
+    "wti_move_pct": 0.06713491813850059,
+    "dgs10": 5.27,
+    "dgs10_move_bp": 0.9999999999999787,
     "move_days": 5,
     "measurement_basis": "WTI 선물 완료 일봉·FRED DGS10 공통 거래일 자체 계산",
     "wti_url": "https://finance.yahoo.com/quote/CL=F/",
@@ -58,6 +58,6 @@
     "source": "https://www.frenzycap.com/fedwatch",
     "source_status": "최신성 검증 실패 — 직전 정상값 보존"
   },
-  "oil_rates_verdict": "유가와 10년물 분리 — 재정·실질금리·기간프리미엄 등 비유가 요인 우세",
-  "updated_at_utc": "2026-10-07T14:55:28.238317+00:00"
+  "oil_rates_verdict": "유가발 긴축 강경보 — 상관·방향·시장 추가인상 기대 동시 확인",
+  "updated_at_utc": "2026-10-07T22:06:46.333272+00:00"
 }
