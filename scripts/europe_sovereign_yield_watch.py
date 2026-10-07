@@ -194,25 +194,87 @@ def parse_uk(text: str, source: str) -> list[Obs]:
     return sorted(dedup.values(), key=lambda x: x.date)
 
 
+def uk_csv_url(now: dt.datetime) -> str:
+    end = now.astimezone(LONDON).date()
+    start = end - dt.timedelta(days=45)
+    params = {
+        "csv.x": "yes",
+        "Datefrom": start.strftime("%d/%b/%Y"),
+        "Dateto": end.strftime("%d/%b/%Y"),
+        "SeriesCodes": UK_SERIES,
+        "UsingCodes": "Y",
+        "CSVF": "TN",
+    }
+    return UK_CSV + "?" + urllib.parse.urlencode(params)
+
+
+def parse_uk_csv(text: str, source: str) -> list[Obs]:
+    rows = []
+    # Accept both CSV and tab-delimited exports and several official date styles.
+    for line in text.replace("\\ufeff", "").splitlines():
+        m = re.search(r"(\\d{1,2}[ /-][A-Za-z]{3}[ /-]\\d{2,4}|\\d{4}-\\d{2}-\\d{2})[^0-9+-]+([+-]?\\d+(?:[.,]\\d+)?)\\s*$", line.strip())
+        if not m:
+            continue
+        ds, raw = m.groups()
+        parsed = None
+        for form in ("%d/%b/%Y", "%d %b %Y", "%d %b %y", "%d-%b-%Y", "%Y-%m-%d"):
+            try:
+                parsed = dt.datetime.strptime(ds, form).date()
+                break
+            except Exception:
+                pass
+        if parsed is None:
+            continue
+        try:
+            rows.append(Obs("uk10", "영국 10년", parsed.isoformat(), float(raw.replace(",", ".")), source))
+        except Exception:
+            pass
+    dedup = {x.date: x for x in rows}
+    return sorted(dedup.values(), key=lambda x: x.date)
+
+
 def fetch_uk(now: dt.datetime) -> list[Obs]:
+    errors = []
+    csv_url = uk_csv_url(now)
+    try:
+        raw = fetch(csv_url)
+        rows = parse_uk_csv(raw, csv_url)
+        if rows:
+            return rows[-30:]
+        (OUT / "europe_sovereign_debug_uk.txt").write_text(raw[:20000], encoding="utf-8")
+        errors.append("CSV parse empty")
+    except Exception as exc:
+        errors.append(f"CSV {type(exc).__name__}: {exc}")
+
     url = uk_url(now)
-    rows = parse_uk(fetch(url), url)
-    if not rows:
-        raise RuntimeError("Bank of England IUDMNPY parse failed")
-    return rows[-30:]
+    try:
+        raw = fetch(url)
+        rows = parse_uk(raw, url)
+        if rows:
+            return rows[-30:]
+        (OUT / "europe_sovereign_debug_uk_html.txt").write_text(raw[:20000], encoding="utf-8")
+        errors.append("HTML parse empty")
+    except Exception as exc:
+        errors.append(f"HTML {type(exc).__name__}: {exc}")
+    raise RuntimeError("Bank of England IUDMNPY parse failed; " + " | ".join(errors))
 
 
 def parse_delimited(text: str) -> list[dict[str, str]]:
-    sample = text[:5000]
+    lines = text.replace("\\ufeff", "").splitlines()
     for delimiter in (";", ",", "\t"):
-        try:
-            reader = csv.DictReader(io.StringIO(text), delimiter=delimiter)
-            rows = list(reader)
-            if reader.fieldnames and len(reader.fieldnames) >= 2 and rows:
-                return [{str(k or "").strip(): str(v or "").strip() for k, v in row.items()} for row in rows]
-        except Exception:
-            pass
-    raise RuntimeError("CSV delimiter/header not recognized")
+        for start in range(min(120, len(lines))):
+            header = [x.strip().strip('"') for x in lines[start].split(delimiter)]
+            normalized = {re.sub(r"[^A-Z0-9_]", "", x.upper()) for x in header}
+            if not ({"TIME_PERIOD", "OBS_VALUE"} <= normalized or {"DATE", "IUDMNPY"} <= normalized):
+                continue
+            try:
+                reader = csv.DictReader(io.StringIO("\\n".join(lines[start:])), delimiter=delimiter)
+                rows = list(reader)
+                if reader.fieldnames and rows:
+                    return [{str(k or "").strip().strip('"'): str(v or "").strip().strip('"') for k, v in row.items()} for row in rows]
+            except Exception:
+                continue
+    raise RuntimeError("CSV header not recognized")
 
 
 def parse_germany(text: str, source: str) -> list[Obs]:
@@ -242,8 +304,10 @@ def parse_germany(text: str, source: str) -> list[Obs]:
 
 
 def fetch_germany() -> list[Obs]:
-    rows = parse_germany(fetch(DE_CSV), DE_CSV)
+    raw = fetch(DE_CSV)
+    rows = parse_germany(raw, DE_CSV)
     if not rows:
+        (OUT / "europe_sovereign_debug_de.txt").write_text(raw[:30000], encoding="utf-8")
         raise RuntimeError("Bundesbank 10Y CSV parse failed")
     return rows[-30:]
 
