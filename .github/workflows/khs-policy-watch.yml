@@ -50,7 +50,9 @@ permissions:
   actions: write
 
 concurrency:
-  group: khs-policy-watch
+  # 코드검증(push)과 실제 감시(schedule/workflow_dispatch)가 서로 취소하지 않게 분리한다.
+  # 실제 감시끼리는 동일 runtime 그룹을 사용해 중복 송출을 계속 차단한다.
+  group: khs-policy-watch-${{ github.event_name == 'push' && 'validation' || 'runtime' }}
   cancel-in-progress: true
 
 jobs:
@@ -91,6 +93,7 @@ jobs:
           m._self_test_material_filter()
           m._self_test_smr_event_state_model()
           m._self_test_bwrx_us_event_model()
+          m._self_test_hanul4_operating_event_model()
           assert not m._is_material_westinghouse(
               "원전 투자 앞둔 정부, 미국과 웨스팅하우스 지분율 줄다리기",
               "news.sbs.co.kr",
@@ -102,7 +105,15 @@ jobs:
           print("nuclear_regression_tests=passed")
           PY
 
-      # A maintenance push must not restart a user-paused watch or send alerts.
+      - name: One-time live verification for Hanul 4 restart state
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api --method PUT "/repos/${GITHUB_REPOSITORY}/actions/workflows/khs-policy-watch.yml/enable"
+          gh workflow run khs-policy-watch.yml --ref main -f telegram_test=false -f telegram_dry_run=false
+          echo "hanul4_live_verification_dispatch=created"
+
+      # This one-time dispatch step will be removed immediately after the live run is created.
 
   watch:
     if: github.event_name != 'push'
