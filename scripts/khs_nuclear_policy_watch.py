@@ -1607,6 +1607,38 @@ def collect_hanul4_operation_items(now: dt.datetime) -> list[dict]:
     )
 
 
+def _sync_hanul4_live_observation(previous: dict, items: list[dict], now: dt.datetime) -> bool:
+    # 현재 호기 상태는 단계 전이와 별개로 같은 state 객체에 보존한다.
+    # 공식 조회 실패/미확인은 직전 확정값을 지우지 않는다.
+    observed = next(
+        (
+            item for item in items
+            if str(item.get("live_status") or "") in {"운전", "정비", "정지"}
+        ),
+        None,
+    )
+    if not observed:
+        return False
+
+    status = str(observed.get("live_status") or "")
+    source = str(observed.get("live_status_source") or HANUL4_KHNP_STATUS_MAIN)
+    if (
+        str(previous.get("live_status") or "") == status
+        and str(previous.get("live_status_source") or "") == source
+    ):
+        return False
+
+    previous["live_status"] = status
+    previous["live_status_source"] = source
+    previous["live_status_verified"] = True
+    previous["live_status_first_confirmed_kst"] = now.astimezone(KST).isoformat(timespec="seconds")
+    print(
+        "hanul4_live_status_state_sync=true "
+        f"status={status} source={source}"
+    )
+    return True
+
+
 def _select_hanul4_transition(previous: dict, items: list[dict]) -> dict | None:
     prev_stage = str(previous.get("stage") or "automatic_trip")
     prev_rank = int(previous.get("rank") if previous.get("rank") is not None else HANUL4_STAGE_RANK.get(prev_stage, 0))
@@ -1687,6 +1719,23 @@ def _self_test_hanul4_operating_event_model() -> None:
         raise RuntimeError("Hanul4 maintenance false-positive operating regression")
     if _hanul4_operating_verified("운전", "운전", True, False):
         raise RuntimeError("Hanul4 stale-main operating false-positive regression")
+
+    sync_state = {"stage": "restart_approved", "live_status": "미확인"}
+    sync_item = {
+        **HANUL4_VERIFIED_APPROVAL,
+        "live_status": "정비",
+        "live_status_source": HANUL4_KHNP_STATUS_MAIN,
+    }
+    if not _sync_hanul4_live_observation(sync_state, [sync_item], fixture_now):
+        raise RuntimeError("Hanul4 live-status state sync regression")
+    if sync_state.get("live_status") != "정비":
+        raise RuntimeError("Hanul4 live-status persisted value regression")
+    unchanged = dict(sync_state)
+    unknown_item = {**HANUL4_VERIFIED_APPROVAL, "live_status": "미확인"}
+    if _sync_hanul4_live_observation(sync_state, [unknown_item], fixture_now):
+        raise RuntimeError("Hanul4 unknown live-status must not overwrite confirmed state")
+    if sync_state != unchanged:
+        raise RuntimeError("Hanul4 unknown live-status overwrote confirmed state")
 
     approval = dict(HANUL4_VERIFIED_APPROVAL)
     operating = {
@@ -1997,6 +2046,7 @@ def main() -> int:
             print("hanul4_operation_baseline_restored=automatic_trip_2026-08-19")
 
         hanul4_items = collect_hanul4_operation_items(now)
+        _sync_hanul4_live_observation(previous_hanul4, hanul4_items, now)
         latest_hanul4 = _select_hanul4_transition(previous_hanul4, hanul4_items)
         if latest_hanul4:
             latest_hanul4["trigger"] = "verified_domestic_reactor_operation_stage_change"
@@ -2271,6 +2321,7 @@ def main() -> int:
         print("hanul4_operation_baseline_restored=automatic_trip_2026-08-19")
 
     hanul4_items = collect_hanul4_operation_items(now)
+    _sync_hanul4_live_observation(previous_hanul4, hanul4_items, now)
     latest_hanul4 = _select_hanul4_transition(previous_hanul4, hanul4_items)
     if latest_hanul4:
         latest_hanul4["trigger"] = "verified_domestic_reactor_operation_stage_change"
