@@ -129,6 +129,7 @@ class GlassSubstrateWatchTests(unittest.TestCase):
                     "value":{
                         "stage":"customer_evaluation","customer":"Samsung Electronics",
                         "sample_delivered":True,"evaluation_ongoing":True,
+                        "issue_response_ongoing":True,"mass_production_supply_confirmed":False,
                         "fact_origin_source":"DealSite","fact_origin_sources":["DealSite"],
                         "independent_source_count":1,"independent_cross_verified":False,
                     },
@@ -166,6 +167,7 @@ class GlassSubstrateWatchTests(unittest.TestCase):
                     "value":{
                         "stage":"customer_evaluation","customer":"Samsung Electronics",
                         "sample_delivered":True,"evaluation_ongoing":True,
+                        "issue_response_ongoing":True,"mass_production_supply_confirmed":False,
                         "fact_origin_source":"DealSite","fact_origin_sources":["DealSite"],
                         "independent_source_count":1,"independent_cross_verified":False,
                     },
