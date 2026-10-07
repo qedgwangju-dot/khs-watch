@@ -216,6 +216,7 @@ MATERIAL_TERMS = (
     "transformer", "bushing", "transmission", "interconnection", "grid", "substation",
     "energization", "energized", "large load", "data center", "datacenter",
     "switchgear", "generator", "ups", "pdu", "power distribution", "electrical equipment",
+    "bulk-power system", "covered foreign entity", "executive order 14421",
     "변압기", "부싱", "송전", "계통", "변전소", "전원", "배전반", "발전기", "무정전전원",
 )
 
@@ -937,6 +938,9 @@ def build_transformer_import_alert(event: dict, trade_state: dict) -> str:
     cur_liquid = current.get("liquid_850421_23") or {}
     prev_liquid = prev.get("liquid_850421_23") or {}
     yoy_liquid = yoy.get("liquid_850421_23") or {}
+    prev_large = prev.get("primary_850423") or {}
+    ch_large_mom = trade_share_delta(cur_large, prev_large, "china_share_pct")
+    kr_large_mom = trade_share_delta(cur_large, prev_large, "korea_share_pct")
     ch_mom = trade_share_delta(cur_liquid, prev_liquid, "china_share_pct")
     kr_mom = trade_share_delta(cur_liquid, prev_liquid, "korea_share_pct")
     ch_yoy = trade_share_delta(cur_liquid, yoy_liquid, "china_share_pct")
@@ -953,8 +957,15 @@ def build_transformer_import_alert(event: dict, trade_state: dict) -> str:
         f"• <b>대형 액체절연 변압기 HS 850423:</b> 중국 {float(cur_large.get('china_share_pct') or 0):.1f}%·{usd_text(float(cur_large.get('china_usd') or 0), rate)} / 한국 {float(cur_large.get('korea_share_pct') or 0):.1f}%·{usd_text(float(cur_large.get('korea_usd') or 0), rate)}",
         f"• <b>액체절연 전체 HS 850421~850423:</b> 중국 {float(cur_liquid.get('china_share_pct') or 0):.1f}%·{usd_text(float(cur_liquid.get('china_usd') or 0), rate)} / 한국 {float(cur_liquid.get('korea_share_pct') or 0):.1f}%·{usd_text(float(cur_liquid.get('korea_usd') or 0), rate)}",
     ]
+    if ch_large_mom is not None and kr_large_mom is not None:
+        lines.append(f"• <b>HS 850423 전월 대비:</b> 중국 {ch_large_mom:+.1f}%p / 한국 {kr_large_mom:+.1f}%p")
     if ch_mom is not None and kr_mom is not None:
-        lines.append(f"• <b>전월 대비 점유율:</b> 중국 {ch_mom:+.1f}%p / 한국 {kr_mom:+.1f}%p")
+        lines.append(f"• <b>HS 850421~850423 전월 대비:</b> 중국 {ch_mom:+.1f}%p / 한국 {kr_mom:+.1f}%p")
+        if ch_mom <= -1.0 and kr_mom >= 1.0:
+            if ch_large_mom is not None and kr_large_mom is not None and not (ch_large_mom <= -1.0 and kr_large_mom >= 1.0):
+                lines.append("• <b>현재 판정:</b> 액체절연 전체에서는 중국↓·한국↑가 보이지만, 10,000kVA 초과 HS 850423에서는 같은 대체 패턴이 확인되지 않아 ‘대형변압기 한국 대체’로 확대해석하지 않습니다.")
+            else:
+                lines.append("• <b>현재 판정:</b> 중국↓·한국↑ 대체 방향이 관찰됐지만 한 달 자료만으로 구조적 전환이나 정책 인과관계를 확정하지 않습니다.")
     if ch_yoy is not None and kr_yoy is not None:
         lines.append(f"• <b>전년동월 대비 점유율:</b> 중국 {ch_yoy:+.1f}%p / 한국 {kr_yoy:+.1f}%p")
     if top_text:
