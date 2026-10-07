@@ -722,10 +722,20 @@ def parse_census_port_hs6_zip(raw: bytes, year: int, month: int) -> dict:
     target = set(TRANSFORMER_LIQUID_HS6 + TRANSFORMER_OTHER_LARGE_HS6)
     totals: dict[str, dict[str, int]] = {code: {} for code in target}
     with zipfile.ZipFile(io.BytesIO(raw)) as zf:
-        suffix = f"DPORTHS6I{year % 100:02d}{month:02d}.TXT"
-        names = [name for name in zf.namelist() if name.upper().endswith(suffix)]
+        suffixes = (
+            f"PORTHS6MM{year % 100:02d}{month:02d}.TXT",
+            f"DPORTHS6I{year % 100:02d}{month:02d}.TXT",
+        )
+        names = [
+            name for name in zf.namelist()
+            if any(name.upper().endswith(sfx) for sfx in suffixes)
+        ]
         if not names:
-            names = [name for name in zf.namelist() if "DPORTHS6I" in name.upper() and name.upper().endswith(".TXT")]
+            names = [
+                name for name in zf.namelist()
+                if name.upper().endswith(".TXT")
+                and any(k in name.upper() for k in ("PORTHS6MM", "DPORTHS6I"))
+            ]
         if not names:
             raise ValueError(f"Census Port HS6 import data file not found in ZIP; names={zf.namelist()[:20]}")
         with zf.open(names[0]) as fh:
