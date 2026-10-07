@@ -31,9 +31,11 @@ UA = "Mozilla/5.0 (compatible; khs-watch/1.0; +https://github.com/qedgwangju-dot
 FRESH_HOURS = 96
 MONTHLY_DAY = 1
 OFFICIAL_UNPUBLISHED_POLL_HOURS = 3
+OFFICIAL_ERROR_POLL_HOURS = 1
 OFFICIAL_PUBLISHED_POLL_HOURS = 24
+OFFICIAL_ERROR_RENOTIFY_HOURS = 6
 OFFICIAL_PUBLICATION_EXPECTED_DAY = 15
-OFFICIAL_SOURCE_HEALTH_VERSION = 2
+OFFICIAL_SOURCE_HEALTH_VERSION = 3
 COMPARE_VERSION = 5
 EVENT_STATE_VERSION = 2
 SHARE_TRACK_VERSION = 1
@@ -2605,11 +2607,15 @@ def event_summary(e: dict) -> list[str]:
 
 def _official_poll_due(state: dict, now: datetime) -> tuple[bool, int]:
     target_month = _previous_month(now)
-    interval = (
-        OFFICIAL_PUBLISHED_POLL_HOURS
-        if state.get("last_successful_official_month") == target_month
-        else OFFICIAL_UNPUBLISHED_POLL_HOURS
-    )
+    health = state.get("official_source_health") or {}
+    if health.get("status") == "error":
+        interval = OFFICIAL_ERROR_POLL_HOURS
+    else:
+        interval = (
+            OFFICIAL_PUBLISHED_POLL_HOURS
+            if state.get("last_successful_official_month") == target_month
+            else OFFICIAL_UNPUBLISHED_POLL_HOURS
+        )
     if (
         int(state.get("official_source_health_version") or 0) < OFFICIAL_SOURCE_HEALTH_VERSION
         or int(state.get("compare_version") or 0) < COMPARE_VERSION
