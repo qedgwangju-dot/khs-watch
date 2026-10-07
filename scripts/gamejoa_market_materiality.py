@@ -593,8 +593,24 @@ def focus_matches(title: str, sentence: str) -> bool:
         product = next((term for term in ("친환경", "전기차", "하이브리드") if term in title), "")
         return bool((not product or product in sentence or (product == "친환경" and "하이브리드" in sentence and "전기차" in sentence))
                     and re.search(r"판매(?:량|대수|비중)?.{0,100}(?:차지|비중|%)", sentence))
-    if kind == "fx" and re.search(r"\bndf\b", title, re.I):
-        return bool(re.search(r"\bndf\b|차액결제선물환|역외환율", sentence, re.I))
+    if kind == "fx":
+        title_has_won_dollar = bool(
+            re.search(r"원\s*[·/:-]\s*달러|달러\s*[·/:-]\s*원", title)
+            or re.search(r"환율\s*1,?\d{3}(?:\.\d+)?\s*원대", title)
+        )
+        title_has_euro_dollar = bool(re.search(r"유로\s*[·/:-]\s*달러|달러\s*[·/:-]\s*유로", title))
+        won_dollar_source = re.search(
+            r"원\s*[·/:-]\s*달러|달러\s*[·/:-]\s*원|"
+            r"(?:미국\s*)?달러화?\s*대비\s*원화\s*환율|"
+            r"원화\s*대비\s*(?:미국\s*)?달러화?",
+            sentence,
+        )
+        if title_has_won_dollar and not won_dollar_source:
+            return False
+        if title_has_euro_dollar and not re.search(r"유로\s*[·/:-]\s*달러|달러\s*[·/:-]\s*유로", sentence):
+            return False
+        if re.search(r"\bndf\b", title, re.I):
+            return bool(re.search(r"\bndf\b|차액결제선물환|역외환율", sentence, re.I))
     if kind == "energy_supply" and re.search(r"브렌트|\bbrent\b", title, re.I):
         return bool(re.search(r"브렌트|\bbrent\b", sentence, re.I))
     if kind == "fund_result":
@@ -3893,7 +3909,7 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
         result["reason"] = "us_equity_close_session_unverified"
         return result
     foreign_local_country = re.match(
-        r"^(?:인도네시아|파키스탄|말레이시아|필리핀|베트남|브라질|멕시코|튀르키예|태국|인도)(?:의)?(?=[,\s])",
+        r"^(?:인도네시아|인니|파키스탄|말레이시아|필리핀|베트남|브라질|멕시코|튀르키예|태국|인도)(?:의)?(?=[,\s])",
         title,
     )
     foreign_local_measure = re.search(
@@ -3911,6 +3927,28 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
     )
     if foreign_local_country and foreign_local_measure and not korean_exposure:
         result.update(disposition="exclude", priority=0, reason="foreign_local_measure_without_korean_equity_channel")
+        return result
+    foreign_local_agriculture = bool(
+        re.search(
+            r"(?:인도네시아|인니|파키스탄|말레이시아|필리핀|베트남|브라질|멕시코|튀르키예|태국|인도)\s*"
+            r"(?:정부|당국)",
+            body[:3000],
+        )
+        and re.search(r"쌀|벼|농지|농업|산림|개간", title + " " + body[:2500])
+    )
+    cross_border_food_market_link = re.search(
+        r"수출\s*(?:금지|제한|중단)|수입\s*(?:금지|제한|중단)|"
+        r"국제\s*(?:쌀|곡물)\s*가격|세계\s*(?:쌀|곡물)\s*(?:공급|가격)|"
+        r"글로벌\s*(?:쌀|곡물)\s*(?:공급|가격)|rice exports?|global rice (?:supply|prices?)",
+        title + " " + body[:5000],
+        re.I,
+    )
+    if foreign_local_agriculture and not korean_exposure and not cross_border_food_market_link:
+        result.update(
+            disposition="exclude",
+            priority=0,
+            reason="foreign_local_agriculture_policy_without_cross_border_or_korean_equity_channel",
+        )
         return result
     regional_production = bool(re.search(
         r"(?:서울|부산|대구|인천|광주|대전|울산|세종|경기|강원|충북|충남|전북|전남|경북|경남|제주)"
@@ -4331,6 +4369,22 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
     routine = bool(ROUTINE_HEADLINE.search(title) and not HARD_HEADLINE.search(title))
     soft = bool(SOFT_HEADLINE.search(title) and not HARD_HEADLINE.search(title))
     matches = []
+    fixing = won_dollar_fixing_observation(title, body)
+    if fixing:
+        fixing_sentence = next(
+            (row for row in sentences if re.search(r"미국\s*달러화\s*대비\s*원화\s*환율의", row)),
+            "",
+        )
+        change_sentence = next(
+            (row for row in sentences if re.search(r"전일\s*오후\s*\d시\s*\d{1,2}분\s*기준가보다", row)),
+            "",
+        )
+        if fixing_sentence and change_sentence:
+            matches.append((3, 90, 0, ["discount_rate"], {
+                "kind": "rates_fx_or_macro",
+                "stage": "reported_change",
+                "source_excerpt": f"{fixing_sentence} {change_sentence}",
+            }))
     google_ppa = google_constellation_ppa_observation(title, body)
     consensus = annual_earnings_consensus_observation(title, body)
     if consensus:

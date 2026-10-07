@@ -3732,6 +3732,74 @@ class PostMergeLiveArtifactQualityChecks(unittest.TestCase):
         self.assertTrue(radar.core_sentence_is_complete(core), core)
         self.assert_source_aligned(title, body, core, "https://www.fnnews.com/news/202610071554200943")
 
+    def test_fx_headline_core_cannot_substitute_euro_dollar_for_won_dollar(self):
+        title = "달러 약세에 수출 네고까지…환율 1330원대로 하락 시도[외환브리핑]"
+        body = (
+            "원·달러 환율은 1330원대 중반으로 하락을 시도할 것으로 전망된다. "
+            "프랑스 재정 불안 완화에 글로벌 달러가 약세로 돌아선 가운데 수출업체 네고 물량이 환율 하락에 힘을 보탤 것으로 예상된다. "
+            "다만 수입업체 결제와 해외주식 투자 관련 달러 매수 수요는 하단을 지지할 것으로 보인다. "
+            "유로·달러 환율은 1.12597달러로 0.35% 상승했다."
+        )
+        wrong_core = "유로·달러 환율은 1.12597달러로 0.35% 상승했다."
+        self.assertIn("fx_headline_pair_or_driver_mismatch", radar.source_core_fact_errors({
+            "source_title": title, "source_body": body, "telegram_core_fact": wrong_core,
+            "body_verified": True, "korean_business_news": True,
+        }))
+        core = radar.detailed_article_core(title, body)
+        for value in ("원·달러", "1330원대 중반", "수출업체 네고", "수입업체 결제", "해외주식"):
+            self.assertIn(value, core)
+        self.assertNotIn("유로·달러", core)
+        self.assert_source_aligned(title, body, core, "https://www.edaily.co.kr/news/read/fx-headline-fixture")
+
+    def test_won_dollar_fixing_spanning_two_source_sentences_is_market_evidence(self):
+        title = "원/달러 환율 보합 움직임…0.4원 내린 1,343.6원"
+        body = (
+            "(서울=연합뉴스) 김지연 기자 = 원/달러 환율은 6일 1,340원대 보합권에서 움직였다. "
+            "이날 서울 외환시장에서 미국 달러화 대비 원화 환율의 오후 3시 30분 기준가는 "
+            "1,343.6원으로 집계됐다. 전일 오후 3시 30분 기준가보다 0.4원 내렸다. "
+            "엔/달러 환율은 158.24엔으로 0.33엔 올랐다."
+        )
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["disposition"], "keep", audit)
+        self.assertTrue(audit["evidence"], audit)
+        excerpt = audit["evidence"][0]["source_excerpt"]
+        self.assertIn("미국 달러화 대비 원화 환율", excerpt)
+        self.assertIn("1,343.6원", excerpt)
+        self.assertIn("0.4원 내렸다", excerpt)
+
+    def test_covered_call_market_core_uses_category_assets_not_one_fund(self):
+        title = "'순자산 30조' 커버드콜 ETF 변동장에 꾸준히 인기"
+        body = (
+            "증시 변동성이 커지는 가운데 옵션 프리미엄을 활용해 하방 위험을 낮추고 월 현금흐름을 추구하는 "
+            "커버드콜 상장지수펀드(ETF) 시장이 빠르게 커지고 있다. "
+            "지난 2일 기준 국내 상장 커버드콜 ETF 순자산총액은 29조575억원으로 연초 15조1087억원보다 "
+            "약 14조원 증가했다. 상품 수도 같은 기간 52개에서 62개로 늘었다. "
+            "지난 6월 상장한 ACE 고배당주Plus커버드콜액티브 ETF도 순자산 1445억원 규모로 성장했다."
+        )
+        wrong_core = "지난 6월 상장한 ACE 고배당주Plus커버드콜액티브 ETF도 순자산 1445억원 규모로 성장했다."
+        self.assertIn("covered_call_market_size_or_population_mismatch", radar.source_core_fact_errors({
+            "source_title": title, "source_body": body, "telegram_core_fact": wrong_core,
+            "body_verified": True, "korean_business_news": True,
+        }))
+        core = radar.detailed_article_core(title, body)
+        for value in ("29조575억원", "15조1087억원", "약14조원", "52개에서 62개"):
+            self.assertIn(value, core)
+        self.assertNotIn("1445억원", core)
+        self.assert_source_aligned(title, body, core, "https://www.mk.co.kr/news/market/covered-call-assets-fixture")
+
+    def test_foreign_local_rice_land_policy_needs_a_cross_border_or_korean_equity_channel(self):
+        title = "'쌀 자급 달성' 인니, '산림→농지' 개간사업 중단"
+        body = "인도네시아 정부가 쌀 자급자족을 달성해 쌀 생산지 확보를 위한 대규모 산림 개간 사업을 중단하기로 했다."
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["disposition"], "exclude", audit)
+        self.assertEqual(
+            audit["reason"],
+            "foreign_local_agriculture_policy_without_cross_border_or_korean_equity_channel",
+        )
+        export_shock = body + " 인도네시아는 세계 주요 쌀 수출국이며, 사업 중단이 글로벌 쌀 공급을 줄일 수 있다."
+        export_audit = materiality.assess(title, export_shock)
+        self.assertNotEqual(export_audit["reason"], audit["reason"], export_audit)
+
 
 def audit_saved_runs(paths):
     results = []

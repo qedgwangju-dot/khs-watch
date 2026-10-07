@@ -3713,10 +3713,69 @@ def source_headline_event_fact(title: str, body: str) -> str:
     return ""
 
 
+def won_dollar_fx_article_core(title: str, source: str) -> str:
+    if market_materiality.focus_kind(title) != "fx" or not re.search(
+        r"환율\s*1,?\d{3}(?:\.\d+)?\s*원대", title,
+    ):
+        return ""
+    rows = market_materiality.source_sentences(article_summary_body(source))
+    headline = next((row for row in rows if market_materiality.focus_matches(title, row)
+                     and re.search(r"환율.{0,30}하락.{0,12}(?:시도|전망)|하락을\s*시도", row)), "")
+    if not headline:
+        return ""
+    rate = re.search(r"1,?\d{3}(?:\.\d+)?\s*원대(?:\s*중반)?", headline)
+    if not rate:
+        return normalized_article_sentence(headline)
+    drivers = " ".join(rows[:4])
+    if re.search(r"달러가\s*약세", drivers) and re.search(r"수출업체\s*네고", drivers):
+        rate_text = rate.group(0).strip()
+        fact = f"원·달러 환율은 달러 약세와 수출업체 네고에 {rate_text} 하락을 시도"
+        if re.search(r"수입업체\s*결제", drivers) and re.search(r"해외주식.{0,35}달러\s*매수", drivers):
+            fact += "하나, 수입업체 결제·해외주식 달러 매수가 하단을 지지할 전망이다."
+        else:
+            fact += "할 전망이다."
+        return fact if core_sentence_is_complete(fact) else ""
+    return normalized_article_sentence(headline)
+
+
+def covered_call_market_assets_fact(title: str, source: str) -> str:
+    if not (
+        re.search(r"커버드콜", title, re.I)
+        and re.search(r"ETF", title, re.I)
+        and re.search(r"순자산|자산총액|\d+\s*조", title)
+    ):
+        return ""
+    text = " ".join(market_materiality.source_sentences(article_summary_body(source)))
+    match = re.search(
+        r"(?:지난\s*)?(\d{1,2})일\s*기준\s*국내\s*상장\s*커버드콜\s*ETF\s*순자산총액은\s*"
+        r"(?P<current>\d[\d,]*조\s*\d[\d,]*억\s*원)\s*으로\s*연초\s*"
+        r"(?P<base>\d[\d,]*조\s*\d[\d,]*억\s*원)\s*보다\s*"
+        r"(?P<increase>약\s*\d[\d,]*조\s*원)\s*(?:증가했다|늘었다)",
+        text,
+    )
+    if not match:
+        return ""
+    day = match.group(1)
+    current = re.sub(r"\s+", "", match.group("current"))
+    base = re.sub(r"\s+", "", match.group("base"))
+    increase = re.sub(r"\s+", "", match.group("increase"))
+    fact = f"국내 상장 커버드콜 ETF 순자산은 {day}일 기준 {current}으로, 연초 {base}보다 {increase} 늘었다."
+    count = re.search(r"상품\s*수도\s*같은\s*기간\s*(\d+)개에서\s*(\d+)개로\s*(?:늘었다|증가했다)", text)
+    if count:
+        fact = fact[:-1] + f" 상품 수도 {count.group(1)}개에서 {count.group(2)}개로 증가했다."
+    return fact if len(fact) <= GAMEJOA_CORE_MAX_CHARS and core_sentence_is_complete(fact) else ""
+
+
 def source_focused_article_core(title: str, sentences: list[str]) -> str:
     """Prefer a complete source fact about the headline, never an unrelated number."""
     focus = market_materiality.focus_kind(title)
     source = " ".join(sentences)
+    fx_fact = won_dollar_fx_article_core(title, source)
+    if fx_fact:
+        return fx_fact
+    covered_call_fact = covered_call_market_assets_fact(title, source)
+    if covered_call_fact:
+        return covered_call_fact
     observed = source_headline_event_fact(title, "\n".join(sentences))
     if observed:
         return observed
@@ -5186,6 +5245,12 @@ def detailed_article_core(title: str, body: str) -> str:
             if body_tail.strip():
                 raw_body = body_tail
     body = article_summary_body(raw_body)
+    fx_headline_fact = won_dollar_fx_article_core(title, body)
+    if fx_headline_fact:
+        return fx_headline_fact
+    covered_call_fact = covered_call_market_assets_fact(title, body)
+    if covered_call_fact:
+        return covered_call_fact
     entry_fact = conditional_financial_market_entry_fact(title, body)
     if entry_fact:
         return entry_fact
@@ -11773,6 +11838,12 @@ def source_core_fact_errors(alert: dict) -> list[str]:
     if not source or not core:
         return []
     errors = []
+    expected_fx = won_dollar_fx_article_core(title, source)
+    if expected_fx and re.sub(r"\s+", "", expected_fx) != re.sub(r"\s+", "", core):
+        errors.append("fx_headline_pair_or_driver_mismatch")
+    expected_covered_call = covered_call_market_assets_fact(title, source)
+    if expected_covered_call and re.sub(r"\s+", "", expected_covered_call) != re.sub(r"\s+", "", core):
+        errors.append("covered_call_market_size_or_population_mismatch")
     if any(market_materiality.HISTORICAL_ACTION.search(row) for row in market_materiality.source_sentences(core)):
         errors.append('historical_action_replaces_current_headline_event')
     expected_observation = source_headline_event_fact(title, source)
