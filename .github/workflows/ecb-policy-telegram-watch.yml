@@ -16,7 +16,7 @@ permissions:
 
 concurrency:
   group: ecb-policy-telegram-watch
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   monitor:
