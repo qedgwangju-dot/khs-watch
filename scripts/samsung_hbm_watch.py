@@ -2639,6 +2639,7 @@ def _official_poll_due(state: dict, now: datetime) -> tuple[bool, int]:
     if (
         int(state.get("official_source_health_version") or 0) < OFFICIAL_SOURCE_HEALTH_VERSION
         or int(state.get("compare_version") or 0) < COMPARE_VERSION
+        or int(state.get("export_alert_format_version") or 0) < EXPORT_ALERT_FORMAT_VERSION
     ):
         return True, interval
     raw = state.get("last_official_poll_attempt_kst") or ""
