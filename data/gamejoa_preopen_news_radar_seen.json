@@ -703,6 +703,26 @@
       "source_published_kst": "2026-10-07T15:40+09:00",
       "title": "유가·금리 반등에 실적 경계감…코스피, 6800선 마감"
     },
+    "core:1d3e5ef4133da3f33d6354bc": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817733",
+      "source": "뉴시스",
+      "source_body_digest": "db75db321e32e2ee1f1d83911633ad72576f0e0e114a68752cad32b135799e1a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:788f3b8af74fdd292a21bc691199edc7d0bb774e63e5583409783a6d416812d0",
+      "source_fact_keys": [
+        "source_fact:v1:0ea111f77d1921dcb186ca9595e289a6d84bccf2d15ec5c4b61f3f516d817645",
+        "source_fact:v1:cd9ac60452ef715812879e52398b0311ae58a0c1f18220053fafe1fac88a0207"
+      ],
+      "source_published_kst": "2026-10-07T16:00+09:00",
+      "source_title": "위성 개발·제조 넘어 AI서비스로…한화시스템, 우주사업 키운다[누리호 5차 발사]",
+      "telegram_core_fact": "한화시스템은 향후 초저궤도 SAR 위성과 우주 AI 데이터센터, 위성통신망 등에 약 20조원을 투자할 계획이다.",
+      "title": "위성 개발·제조 넘어 AI서비스로…한화시스템, 우주사업 키운다[누리호 5차 발사]"
+    },
     "core:1d6bfaca991e0f217be2c402": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
       "lanes": {
@@ -1512,6 +1532,25 @@
       "telegram_core_fact": "두나무는 네이버 종속회사인 네이버파이낸셜과 자사의 주식교환일이 내년 3월 31일로 변경됐다고 오늘(7일) 공시했습니다. 네이버파이낸셜의 두나무 완전자회사 편입을 위한 포괄적 주식교환 일정이 다시 연기됐습니다.",
       "title": "두나무·네이버파이낸셜 주식교환 다시 연기…내년 3월 예정"
     },
+    "core:371e7e7f7f1e4bc53e71846a": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171226",
+      "source": "매일경제",
+      "source_body_digest": "c01f5f58f2498ac9186e3c39eb438c437eda3a063ea2727dfa1955384b9e2db3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d09f41926ebcd728416ceefe316790eeb038fd37bcf92a5f23dd6bfbf7e95439",
+      "source_fact_keys": [
+        "source_fact:v1:cb6080b6bce9d016b0e86b40c68185ec5fd7f2bbc4442111a29ec5afa3d3851b"
+      ],
+      "source_published_kst": "2026-10-07T17:43+09:00",
+      "source_title": "\"코리아 디스카운트 해소, 주주환원 지속에 답 있다\"",
+      "telegram_core_fact": "주주환원이 꾸준히 이어지는지, 실제로 벌어들인 현금 흐름을 바탕으로 하는지, 발표에 그치지 않고 자사주 소각 등 실제 행동으로 연결되는지를 본다는 것이다.",
+      "title": "\"코리아 디스카운트 해소, 주주환원 지속에 답 있다\""
+    },
     "core:38516ab0ff2022516cee54f7": {
       "first_seen_kst": "2026-10-07T16:15:21+09:00",
       "lanes": {
@@ -1714,6 +1753,28 @@
       "source_title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이",
       "telegram_core_fact": "코스피가 외국인의 거센 매도 폭탄과 미국 국채금리 반등, 주요 기업 실적에 대한 경계감에 밀려 2% 가까이 급락하며 간신히 6,800선을 지켜냈다.",
       "title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이"
+    },
+    "core:3e9b54fbf72b0d5f99454901": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.hankyung.com/article/202610078343i",
+      "source": "한국경제",
+      "source_body_digest": "7d6d003dbda7eb0e48d398e98f12fc11054047219df3d8300d2b077e11b48086",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b1aed08e506d138a7a91d04a0896c2f85968eaaeb325e9bdc0472723176a539",
+      "source_fact_keys": [
+        "source_fact:v1:273c9a1df30ef1067edd9a8e7ba65d10f24859353adce4287581d33ef5705b0f",
+        "source_fact:v1:33226455cf53c77672f96c86030cb157b8930256ff7cc33c278488141e41a2df",
+        "source_fact:v1:678731c00f355126c614526b56eda3664b830b6fdd1fe829ec0f16b68c07cb45",
+        "source_fact:v1:9ebb8b818ddbc2a3c801762123a614d478fdf013e9fd55765888af401aa51c11"
+      ],
+      "source_published_kst": "2026-10-07T14:31+09:00",
+      "source_title": "바이젠셀, ‘바이오재팬 2026’서 日 재생의료 시장 공략…기술이전·직접진출 추진",
+      "telegram_core_fact": "이번 행사에서 바이젠셀은 재생의료 분야의 임상 및 사업화 경험이 축적된 일본 시장을 중심으로 글로벌 제약·바이오 기업들과 파트너링 미팅을 진행하고, 주요 파이프라인의 기술이전 및 공동개발 등 다양한 사업협력 가능성을 모색할 계획이다.",
+      "title": "바이젠셀, ‘바이오재팬 2026’서 日 재생의료 시장 공략…기술이전·직접진출 추진"
     },
     "core:3f0351a8d1b239556f5f7404": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
@@ -2296,6 +2357,37 @@
       ],
       "source_published_kst": "2026-10-07T16:16+09:00",
       "title": "'선박왕' 권혁, 15년 만에 체납세금 3938억 완납 의사…1000억 우선 납부(종합)"
+    },
+    "core:617f9e80abb32d8c405523d3": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171373",
+      "source": "매일경제",
+      "source_body_digest": "3abc2530816c6acd69d1374566c3e49c3eb0e15dfc6cf3ecdb79d2a3ae00f160",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:537c3402530ea3720590531ae82a8b5fd41420ddb9230f8e08c9f7741ea090d8",
+      "source_fact_keys": [
+        "source_fact:v1:03bd9925d6bd77a5e7a8db9d4f48a63e6cb8743fafc03e76f937aa808f738fcc",
+        "source_fact:v1:0d00c25d4ecedc0ac3b41f7d1edc2b48fca4453545947a48baf3a9a81cb4970f",
+        "source_fact:v1:0fd8239873ece2f3c332bbdd17417c241925cda66613a1109d33ec33707df7c1",
+        "source_fact:v1:1f3e7896eba2c246119e5e4cbefcad5ddaf9ac587fb86ec933997b3e0e4c7e16",
+        "source_fact:v1:2f83009f7427e06dafaab12030c86b07c78656b049dfe3061233ad661021c7b2",
+        "source_fact:v1:3b9dc0ab80a00ef0ea1915b1a33b2b0b3b3fab56fc0bb3c4eb8ddfcbc47f4393",
+        "source_fact:v1:46eb3f445a058da7d10863d1a82de2541157671ea71df6731134816f40ac950c",
+        "source_fact:v1:634f2e16e1f5a0b98ef9e01e394b98caf6d684357e4f22a863daa0d3b08d306a",
+        "source_fact:v1:8d8052c1ee4e2e1285933bd2bd9dda3713deb0e7a72179785db2b05bc5876708",
+        "source_fact:v1:953131ead8da7e3c45fabe297da1c2777606a004dd254f251a2b2133d61a75da",
+        "source_fact:v1:b9d005e008a6726021b7d6095c1aa06c7a26316a1f2a4a15898c80afe44f693d",
+        "source_fact:v1:d1872f91c1de54ac43459549d73d7a00a3b3bebcea4d6e5b0a18b36db3815bbd",
+        "source_fact:v1:ed57ff658e56782a27990f26b02f17e09c0435ec9f76add691f9526347217f73"
+      ],
+      "source_published_kst": "2026-10-08T02:47+09:00",
+      "source_title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소",
+      "telegram_core_fact": "포르투나 마이닝(FSM)은 3분기 금환산온스(GEO) 기준 생산량이 6만9665온스로 전년 동기(7만2462온스) 대비 3.9%, 전분기(7만2217온스) 대비 3.5% 감소했다고 10월 7일 발표했다.",
+      "title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소"
     },
     "core:622e7b0fcc07b4fbc860d886": {
       "first_seen_kst": "2026-10-08T01:43:44+09:00",
@@ -3586,6 +3678,26 @@
       "source_published_kst": "2026-10-07T10:21+09:00",
       "title": "한화, AI 에너지 관리 기술 美 ‘차세대 신기술’ 선정"
     },
+    "core:97a68ef44ddec580f3040749": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170783",
+      "source": "매일경제",
+      "source_body_digest": "0a8cebf1fcfc440212a3d9cc465033a5279e42427dcf2d853073bf5d2b22d633",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c999e85af9a871d9046f16a385ae22ae342698778738b986ab70a195b6cb837",
+      "source_fact_keys": [
+        "source_fact:v1:1e09c286b3701f7dd123655017099bbd86ad0d1588f13db53c9ee379895a136f",
+        "source_fact:v1:2bd0c1f82b9afac4ca8961ac6051ca893c48a1ddf9c038476a06e440163a9e26"
+      ],
+      "source_published_kst": "2026-10-07T17:57+09:00",
+      "source_title": "워너브라더스 투자 나선 신세계프라퍼티, 메리츠서 1조 조달",
+      "telegram_core_fact": "투자은행(IB) 업계에 따르면 신세계프라퍼티는 메리츠증권을 상대로 약 1조원 사모사채를 발행할 예정인 것으로 알려졌다. 이마트는 지난 6일 종속회사를 통해 파라마운트 스카이댄스와 WBD 합병 과정에서 발행되는 신주에 10억달러(약 1조3596억원)를 간접 투자한다고 공시했다.",
+      "title": "워너브라더스 투자 나선 신세계프라퍼티, 메리츠서 1조 조달"
+    },
     "core:97b0350472356ecc5615798d": {
       "first_seen_kst": "2026-10-07T16:57:09+09:00",
       "lanes": {
@@ -4290,6 +4402,32 @@
       "source_published_kst": "2026-10-07T15:40+09:00",
       "title": "두나무·네파 주식교환 세 번째 연기…내년 3월로(종합) | 연합뉴스"
     },
+    "core:b0e7292bbfc3320de8fb2ed1": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01269366645610952",
+      "source": "이데일리",
+      "source_body_digest": "cd1c37c20b14dc82cff8d33e0c90e6e1cf810910ab44ac9bb42527af8ddc56e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74d7bbe04338476dee421a6e004e5da7bb727b84b2133a2dc78c4316a9ead3bb",
+      "source_fact_keys": [
+        "source_fact:v1:0d8e56148229a139a60060c4358bb0ecd3a8cec4838df9469ee04c494cb23bd4",
+        "source_fact:v1:1a39e528eefc906f9174772ee530a520ab7a348bf7417579e789eed7a80913db",
+        "source_fact:v1:2c3f6c22e391dbf930fa553fb1d1783365bac9b8af96882a02085fd5c6f6b556",
+        "source_fact:v1:6db4db0238cdbf18fdce4b9047f49e7db6dc4b077d1f00523da8ef4cd21c65bd",
+        "source_fact:v1:9161df509b7d611f85482ca4ee48ac2732a24e3bc2a789c10e488c4f5a5acbd4",
+        "source_fact:v1:980bf442464375c61f0b810ef0a9f7dc33095bfee9785ad0838068ed96e7df60",
+        "source_fact:v1:ea979fd36c65e3b4eba6399d922562fe1321e40b35968e67913b86fc5443895d",
+        "source_fact:v1:fbe1e4c8b2703292cc7f91ba5a81107ace7fb2bc4aa465946c7cdaaec9247716"
+      ],
+      "source_published_kst": "2026-10-08T03:00+09:00",
+      "source_title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'",
+      "telegram_core_fact": "10년물 금리는 장 초반 5.36%까지 올라 2002년 이후 최고 수준을 기록했지만 입찰 이후 5.28% 안팎으로 하락했다.",
+      "title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'"
+    },
     "core:b10b91f7c90d6125b12b2b7a": {
       "first_seen_kst": "2026-10-07T22:37:58+09:00",
       "lanes": {
@@ -4358,6 +4496,23 @@
       "source_title": "李대통령 \"적자기업에 先보조금 검토하라\"",
       "telegram_core_fact": "이 대통령은 보고회에서 “생산세액공제는 이익이 발생하지 않으면 의미가 없다”며 “보조금을 일부 지급한 다음 나중에 이익이 나면 세액공제에서 차감하는 방법을 검토해보라”고 했다.",
       "title": "李대통령 \"적자기업에 先보조금 검토하라\""
+    },
+    "core:b45adbecbf9d5e5ac03eba95": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171376",
+      "source": "매일경제",
+      "source_body_digest": "553eb8e7af0b72e40cf071c5f6a4fe56b3876377fe9262bad184bc6abab89e80",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T03:00+09:00",
+      "source_title": "포르투나마이닝, 3분기 금 생산 감소와 세구엘라 광산 차질 부각에 약세",
+      "telegram_core_fact": "세구엘라 광산의 광부 봉쇄와 장비 문제로 생산에 차질이 생긴 점이 부담으로 작용했습니다. 3분기 금환산 생산량이 6만9665온스로 전년보다 3.9%, 전분기보다 3.5% 줄었습니다.",
+      "title": "포르투나마이닝, 3분기 금 생산 감소와 세구엘라 광산 차질 부각에 약세"
     },
     "core:b4bbc6c9a006a8712d2a58e8": {
       "first_seen_kst": "2026-10-07T18:00:43+09:00",
@@ -8613,22 +8768,22 @@
     "event:4ba92d539128333cf55740c9": {
       "first_seen_kst": "2026-10-07T06:12:17+09:00",
       "lanes": {
-        "live": "2026-10-07T23:23:06+09:00"
+        "live": "2026-10-08T03:51:03+09:00"
       },
-      "last_seen_kst": "2026-10-07T23:23:06+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1171205",
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170783",
       "source": "매일경제",
-      "source_body_digest": "78ee1b6275e6eeba2870ec79c43e13b68535048d16d0afa9bf12ada8b31aac4d",
+      "source_body_digest": "0a8cebf1fcfc440212a3d9cc465033a5279e42427dcf2d853073bf5d2b22d633",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:d8116106f335eb86f76973949e3838557f9cc62dd63fedf78db8cd401a04d0a3",
+      "source_fact_identity": "source_facts:v1:9c999e85af9a871d9046f16a385ae22ae342698778738b986ab70a195b6cb837",
       "source_fact_keys": [
-        "source_fact:v1:4858c4fcb9306142dca180035bdfa1bbbd8ba951737e756c97288de871d5bff1",
-        "source_fact:v1:9c6441593b73fc8b0533721edb44e82d5331412ffbe60729f70a32df40ed269c"
+        "source_fact:v1:1e09c286b3701f7dd123655017099bbd86ad0d1588f13db53c9ee379895a136f",
+        "source_fact:v1:2bd0c1f82b9afac4ca8961ac6051ca893c48a1ddf9c038476a06e440163a9e26"
       ],
-      "source_published_kst": "2026-10-07T17:27+09:00",
-      "source_title": "예보, OK금융그룹과 예별손보 주식매매계약서 체결",
-      "telegram_core_fact": "지난 7월 OK금융그룹이 예별손보 공개매각 우선협상대상자로 선정된 지 약 3개월 만이다.",
-      "title": "예보, OK금융그룹과 예별손보 주식매매계약서 체결"
+      "source_published_kst": "2026-10-07T17:57+09:00",
+      "source_title": "워너브라더스 투자 나선 신세계프라퍼티, 메리츠서 1조 조달",
+      "telegram_core_fact": "투자은행(IB) 업계에 따르면 신세계프라퍼티는 메리츠증권을 상대로 약 1조원 사모사채를 발행할 예정인 것으로 알려졌다. 이마트는 지난 6일 종속회사를 통해 파라마운트 스카이댄스와 WBD 합병 과정에서 발행되는 신주에 10억달러(약 1조3596억원)를 간접 투자한다고 공시했다.",
+      "title": "워너브라더스 투자 나선 신세계프라퍼티, 메리츠서 1조 조달"
     },
     "event:4c60ef5885703c4873ef90e7": {
       "first_seen_kst": "2026-10-05T07:03:44+09:00",
@@ -17819,6 +17974,28 @@
       "source_published_kst": "2026-10-06T15:58+09:00",
       "title": "금감원 노조 \"감독기구 '행정부 통제' 부적절…독립성·전문성 훼손 우려\""
     },
+    "fact:257b25343bb229645ab7168c": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.hankyung.com/article/202610078343i",
+      "source": "한국경제",
+      "source_body_digest": "7d6d003dbda7eb0e48d398e98f12fc11054047219df3d8300d2b077e11b48086",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b1aed08e506d138a7a91d04a0896c2f85968eaaeb325e9bdc0472723176a539",
+      "source_fact_keys": [
+        "source_fact:v1:273c9a1df30ef1067edd9a8e7ba65d10f24859353adce4287581d33ef5705b0f",
+        "source_fact:v1:33226455cf53c77672f96c86030cb157b8930256ff7cc33c278488141e41a2df",
+        "source_fact:v1:678731c00f355126c614526b56eda3664b830b6fdd1fe829ec0f16b68c07cb45",
+        "source_fact:v1:9ebb8b818ddbc2a3c801762123a614d478fdf013e9fd55765888af401aa51c11"
+      ],
+      "source_published_kst": "2026-10-07T14:31+09:00",
+      "source_title": "바이젠셀, ‘바이오재팬 2026’서 日 재생의료 시장 공략…기술이전·직접진출 추진",
+      "telegram_core_fact": "이번 행사에서 바이젠셀은 재생의료 분야의 임상 및 사업화 경험이 축적된 일본 시장을 중심으로 글로벌 제약·바이오 기업들과 파트너링 미팅을 진행하고, 주요 파이프라인의 기술이전 및 공동개발 등 다양한 사업협력 가능성을 모색할 계획이다.",
+      "title": "바이젠셀, ‘바이오재팬 2026’서 日 재생의료 시장 공략…기술이전·직접진출 추진"
+    },
     "fact:2582d0d7696924c8f3689b53": {
       "first_seen_kst": "2026-10-07T22:00:35+09:00",
       "lanes": {
@@ -20857,6 +21034,26 @@
       "source_published_kst": "2026-10-07T12:00+09:00",
       "title": "반도체 호황에 기업 여윳돈 67조…역대 최대"
     },
+    "fact:48f9982fab73395228f04fa8": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170783",
+      "source": "매일경제",
+      "source_body_digest": "0a8cebf1fcfc440212a3d9cc465033a5279e42427dcf2d853073bf5d2b22d633",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c999e85af9a871d9046f16a385ae22ae342698778738b986ab70a195b6cb837",
+      "source_fact_keys": [
+        "source_fact:v1:1e09c286b3701f7dd123655017099bbd86ad0d1588f13db53c9ee379895a136f",
+        "source_fact:v1:2bd0c1f82b9afac4ca8961ac6051ca893c48a1ddf9c038476a06e440163a9e26"
+      ],
+      "source_published_kst": "2026-10-07T17:57+09:00",
+      "source_title": "워너브라더스 투자 나선 신세계프라퍼티, 메리츠서 1조 조달",
+      "telegram_core_fact": "투자은행(IB) 업계에 따르면 신세계프라퍼티는 메리츠증권을 상대로 약 1조원 사모사채를 발행할 예정인 것으로 알려졌다. 이마트는 지난 6일 종속회사를 통해 파라마운트 스카이댄스와 WBD 합병 과정에서 발행되는 신주에 10억달러(약 1조3596억원)를 간접 투자한다고 공시했다.",
+      "title": "워너브라더스 투자 나선 신세계프라퍼티, 메리츠서 1조 조달"
+    },
     "fact:4913aa99c90153d2bc3abc6d": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
       "lanes": {
@@ -22117,6 +22314,32 @@
       ],
       "source_published_kst": "2026-10-06T16:18+09:00",
       "title": "파라다이스, 회사채 수요예측에 3.4배 몰려…2·3년물 온도차 | 연합뉴스"
+    },
+    "fact:56c7a5d3f7e2b3533b5eaa06": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01269366645610952",
+      "source": "이데일리",
+      "source_body_digest": "cd1c37c20b14dc82cff8d33e0c90e6e1cf810910ab44ac9bb42527af8ddc56e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74d7bbe04338476dee421a6e004e5da7bb727b84b2133a2dc78c4316a9ead3bb",
+      "source_fact_keys": [
+        "source_fact:v1:0d8e56148229a139a60060c4358bb0ecd3a8cec4838df9469ee04c494cb23bd4",
+        "source_fact:v1:1a39e528eefc906f9174772ee530a520ab7a348bf7417579e789eed7a80913db",
+        "source_fact:v1:2c3f6c22e391dbf930fa553fb1d1783365bac9b8af96882a02085fd5c6f6b556",
+        "source_fact:v1:6db4db0238cdbf18fdce4b9047f49e7db6dc4b077d1f00523da8ef4cd21c65bd",
+        "source_fact:v1:9161df509b7d611f85482ca4ee48ac2732a24e3bc2a789c10e488c4f5a5acbd4",
+        "source_fact:v1:980bf442464375c61f0b810ef0a9f7dc33095bfee9785ad0838068ed96e7df60",
+        "source_fact:v1:ea979fd36c65e3b4eba6399d922562fe1321e40b35968e67913b86fc5443895d",
+        "source_fact:v1:fbe1e4c8b2703292cc7f91ba5a81107ace7fb2bc4aa465946c7cdaaec9247716"
+      ],
+      "source_published_kst": "2026-10-08T03:00+09:00",
+      "source_title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'",
+      "telegram_core_fact": "10년물 금리는 장 초반 5.36%까지 올라 2002년 이후 최고 수준을 기록했지만 입찰 이후 5.28% 안팎으로 하락했다.",
+      "title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'"
     },
     "fact:56df80aafc5cd69f3ee35887": {
       "first_seen_kst": "2026-10-06T23:46:46+09:00",
@@ -28261,6 +28484,37 @@
       "source_published_kst": "2026-10-06T09:07+09:00",
       "title": "'MSVP 세계 1위' 한미반도체, 삼성전기 245억 장비 수주"
     },
+    "fact:9bb10e8b8b5722e8032fcc1c": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171373",
+      "source": "매일경제",
+      "source_body_digest": "3abc2530816c6acd69d1374566c3e49c3eb0e15dfc6cf3ecdb79d2a3ae00f160",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:537c3402530ea3720590531ae82a8b5fd41420ddb9230f8e08c9f7741ea090d8",
+      "source_fact_keys": [
+        "source_fact:v1:03bd9925d6bd77a5e7a8db9d4f48a63e6cb8743fafc03e76f937aa808f738fcc",
+        "source_fact:v1:0d00c25d4ecedc0ac3b41f7d1edc2b48fca4453545947a48baf3a9a81cb4970f",
+        "source_fact:v1:0fd8239873ece2f3c332bbdd17417c241925cda66613a1109d33ec33707df7c1",
+        "source_fact:v1:1f3e7896eba2c246119e5e4cbefcad5ddaf9ac587fb86ec933997b3e0e4c7e16",
+        "source_fact:v1:2f83009f7427e06dafaab12030c86b07c78656b049dfe3061233ad661021c7b2",
+        "source_fact:v1:3b9dc0ab80a00ef0ea1915b1a33b2b0b3b3fab56fc0bb3c4eb8ddfcbc47f4393",
+        "source_fact:v1:46eb3f445a058da7d10863d1a82de2541157671ea71df6731134816f40ac950c",
+        "source_fact:v1:634f2e16e1f5a0b98ef9e01e394b98caf6d684357e4f22a863daa0d3b08d306a",
+        "source_fact:v1:8d8052c1ee4e2e1285933bd2bd9dda3713deb0e7a72179785db2b05bc5876708",
+        "source_fact:v1:953131ead8da7e3c45fabe297da1c2777606a004dd254f251a2b2133d61a75da",
+        "source_fact:v1:b9d005e008a6726021b7d6095c1aa06c7a26316a1f2a4a15898c80afe44f693d",
+        "source_fact:v1:d1872f91c1de54ac43459549d73d7a00a3b3bebcea4d6e5b0a18b36db3815bbd",
+        "source_fact:v1:ed57ff658e56782a27990f26b02f17e09c0435ec9f76add691f9526347217f73"
+      ],
+      "source_published_kst": "2026-10-08T02:47+09:00",
+      "source_title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소",
+      "telegram_core_fact": "포르투나 마이닝(FSM)은 3분기 금환산온스(GEO) 기준 생산량이 6만9665온스로 전년 동기(7만2462온스) 대비 3.9%, 전분기(7만2217온스) 대비 3.5% 감소했다고 10월 7일 발표했다.",
+      "title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소"
+    },
     "fact:9c3471672917f1680af6e735": {
       "first_seen_kst": "2026-10-08T01:26:16+09:00",
       "lanes": {
@@ -31784,6 +32038,26 @@
       "source_published_kst": "2026-10-06T15:25+09:00",
       "title": "유류세 5년 인하…“온실가스 400만t 감축 기회 놓쳤다”"
     },
+    "fact:c7ad58b795bd56ca1e25d94b": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817733",
+      "source": "뉴시스",
+      "source_body_digest": "db75db321e32e2ee1f1d83911633ad72576f0e0e114a68752cad32b135799e1a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:788f3b8af74fdd292a21bc691199edc7d0bb774e63e5583409783a6d416812d0",
+      "source_fact_keys": [
+        "source_fact:v1:0ea111f77d1921dcb186ca9595e289a6d84bccf2d15ec5c4b61f3f516d817645",
+        "source_fact:v1:cd9ac60452ef715812879e52398b0311ae58a0c1f18220053fafe1fac88a0207"
+      ],
+      "source_published_kst": "2026-10-07T16:00+09:00",
+      "source_title": "위성 개발·제조 넘어 AI서비스로…한화시스템, 우주사업 키운다[누리호 5차 발사]",
+      "telegram_core_fact": "한화시스템은 향후 초저궤도 SAR 위성과 우주 AI 데이터센터, 위성통신망 등에 약 20조원을 투자할 계획이다.",
+      "title": "위성 개발·제조 넘어 AI서비스로…한화시스템, 우주사업 키운다[누리호 5차 발사]"
+    },
     "fact:c7e16853380b11ddd7a27683": {
       "first_seen_kst": "2026-10-07T02:24:39+09:00",
       "lanes": {
@@ -35276,6 +35550,25 @@
       "source_published_kst": "2026-10-07T11:07+09:00",
       "title": "[2보] LG전자 3분기 영업익 7천818억…작년비 13.5% 증가 | 연합뉴스"
     },
+    "fact:ed24e1bdcb733e378fab93af": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171226",
+      "source": "매일경제",
+      "source_body_digest": "c01f5f58f2498ac9186e3c39eb438c437eda3a063ea2727dfa1955384b9e2db3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d09f41926ebcd728416ceefe316790eeb038fd37bcf92a5f23dd6bfbf7e95439",
+      "source_fact_keys": [
+        "source_fact:v1:cb6080b6bce9d016b0e86b40c68185ec5fd7f2bbc4442111a29ec5afa3d3851b"
+      ],
+      "source_published_kst": "2026-10-07T17:43+09:00",
+      "source_title": "\"코리아 디스카운트 해소, 주주환원 지속에 답 있다\"",
+      "telegram_core_fact": "주주환원이 꾸준히 이어지는지, 실제로 벌어들인 현금 흐름을 바탕으로 하는지, 발표에 그치지 않고 자사주 소각 등 실제 행동으로 연결되는지를 본다는 것이다.",
+      "title": "\"코리아 디스카운트 해소, 주주환원 지속에 답 있다\""
+    },
     "fact:ed2a4f20e1835c85d00d1b6d": {
       "first_seen_kst": "2026-10-05T20:38:34+09:00",
       "lanes": {
@@ -37553,6 +37846,25 @@
       ],
       "source_published_kst": "2026-10-06T13:28+09:00",
       "title": "전세사기 피해 보증금 3분의 1 회복 보장…지원금 산정기준 마련 | 연합뉴스"
+    },
+    "link:043d85e5895f3387bb780867": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171226",
+      "source": "매일경제",
+      "source_body_digest": "c01f5f58f2498ac9186e3c39eb438c437eda3a063ea2727dfa1955384b9e2db3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d09f41926ebcd728416ceefe316790eeb038fd37bcf92a5f23dd6bfbf7e95439",
+      "source_fact_keys": [
+        "source_fact:v1:cb6080b6bce9d016b0e86b40c68185ec5fd7f2bbc4442111a29ec5afa3d3851b"
+      ],
+      "source_published_kst": "2026-10-07T17:43+09:00",
+      "source_title": "\"코리아 디스카운트 해소, 주주환원 지속에 답 있다\"",
+      "telegram_core_fact": "주주환원이 꾸준히 이어지는지, 실제로 벌어들인 현금 흐름을 바탕으로 하는지, 발표에 그치지 않고 자사주 소각 등 실제 행동으로 연결되는지를 본다는 것이다.",
+      "title": "\"코리아 디스카운트 해소, 주주환원 지속에 답 있다\""
     },
     "link:0480a813f28dbf534ca8c0d3": {
       "first_seen_kst": "2026-10-04T06:09:53+09:00",
@@ -43690,6 +44002,26 @@
       "source_published_kst": "2026-10-06T04:55+09:00",
       "title": "[美특징주]세레브라스, 올트먼 “긴밀한 파트너” 발언에 주가10%↑…엔비디아 우려 완화"
     },
+    "link:2b0f8c1df1d23728b7a531dd": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170783",
+      "source": "매일경제",
+      "source_body_digest": "0a8cebf1fcfc440212a3d9cc465033a5279e42427dcf2d853073bf5d2b22d633",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c999e85af9a871d9046f16a385ae22ae342698778738b986ab70a195b6cb837",
+      "source_fact_keys": [
+        "source_fact:v1:1e09c286b3701f7dd123655017099bbd86ad0d1588f13db53c9ee379895a136f",
+        "source_fact:v1:2bd0c1f82b9afac4ca8961ac6051ca893c48a1ddf9c038476a06e440163a9e26"
+      ],
+      "source_published_kst": "2026-10-07T17:57+09:00",
+      "source_title": "워너브라더스 투자 나선 신세계프라퍼티, 메리츠서 1조 조달",
+      "telegram_core_fact": "투자은행(IB) 업계에 따르면 신세계프라퍼티는 메리츠증권을 상대로 약 1조원 사모사채를 발행할 예정인 것으로 알려졌다. 이마트는 지난 6일 종속회사를 통해 파라마운트 스카이댄스와 WBD 합병 과정에서 발행되는 신주에 10억달러(약 1조3596억원)를 간접 투자한다고 공시했다.",
+      "title": "워너브라더스 투자 나선 신세계프라퍼티, 메리츠서 1조 조달"
+    },
     "link:2b10c0d59c6e1e640a843b13": {
       "first_seen_kst": "2026-10-02T15:48:44+09:00",
       "lanes": {
@@ -45181,6 +45513,37 @@
       "source": "매일경제",
       "title": "순자산 144조원…인도 갑부 제치고 아시아 최고 부자 된 40대남의 정체"
     },
+    "link:34279ceb004581ddcf5affea": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171373",
+      "source": "매일경제",
+      "source_body_digest": "3abc2530816c6acd69d1374566c3e49c3eb0e15dfc6cf3ecdb79d2a3ae00f160",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:537c3402530ea3720590531ae82a8b5fd41420ddb9230f8e08c9f7741ea090d8",
+      "source_fact_keys": [
+        "source_fact:v1:03bd9925d6bd77a5e7a8db9d4f48a63e6cb8743fafc03e76f937aa808f738fcc",
+        "source_fact:v1:0d00c25d4ecedc0ac3b41f7d1edc2b48fca4453545947a48baf3a9a81cb4970f",
+        "source_fact:v1:0fd8239873ece2f3c332bbdd17417c241925cda66613a1109d33ec33707df7c1",
+        "source_fact:v1:1f3e7896eba2c246119e5e4cbefcad5ddaf9ac587fb86ec933997b3e0e4c7e16",
+        "source_fact:v1:2f83009f7427e06dafaab12030c86b07c78656b049dfe3061233ad661021c7b2",
+        "source_fact:v1:3b9dc0ab80a00ef0ea1915b1a33b2b0b3b3fab56fc0bb3c4eb8ddfcbc47f4393",
+        "source_fact:v1:46eb3f445a058da7d10863d1a82de2541157671ea71df6731134816f40ac950c",
+        "source_fact:v1:634f2e16e1f5a0b98ef9e01e394b98caf6d684357e4f22a863daa0d3b08d306a",
+        "source_fact:v1:8d8052c1ee4e2e1285933bd2bd9dda3713deb0e7a72179785db2b05bc5876708",
+        "source_fact:v1:953131ead8da7e3c45fabe297da1c2777606a004dd254f251a2b2133d61a75da",
+        "source_fact:v1:b9d005e008a6726021b7d6095c1aa06c7a26316a1f2a4a15898c80afe44f693d",
+        "source_fact:v1:d1872f91c1de54ac43459549d73d7a00a3b3bebcea4d6e5b0a18b36db3815bbd",
+        "source_fact:v1:ed57ff658e56782a27990f26b02f17e09c0435ec9f76add691f9526347217f73"
+      ],
+      "source_published_kst": "2026-10-08T02:47+09:00",
+      "source_title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소",
+      "telegram_core_fact": "포르투나 마이닝(FSM)은 3분기 금환산온스(GEO) 기준 생산량이 6만9665온스로 전년 동기(7만2462온스) 대비 3.9%, 전분기(7만2217온스) 대비 3.5% 감소했다고 10월 7일 발표했다.",
+      "title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소"
+    },
     "link:3436be3d15c4a132f1bc3a56": {
       "first_seen_kst": "2026-10-05T06:25:21+09:00",
       "lanes": {
@@ -45796,6 +46159,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T09:22+09:00",
       "title": "보조금 1억여원 부정수급 어린이집…법원 “폐쇄·명단 공표 정당”"
+    },
+    "link:383e399bfe75d6d4e33e687f": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171376",
+      "source": "매일경제",
+      "source_body_digest": "553eb8e7af0b72e40cf071c5f6a4fe56b3876377fe9262bad184bc6abab89e80",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T03:00+09:00",
+      "source_title": "포르투나마이닝, 3분기 금 생산 감소와 세구엘라 광산 차질 부각에 약세",
+      "telegram_core_fact": "세구엘라 광산의 광부 봉쇄와 장비 문제로 생산에 차질이 생긴 점이 부담으로 작용했습니다. 3분기 금환산 생산량이 6만9665온스로 전년보다 3.9%, 전분기보다 3.5% 줄었습니다.",
+      "title": "포르투나마이닝, 3분기 금 생산 감소와 세구엘라 광산 차질 부각에 약세"
     },
     "link:384a35ac815a6ff179c48824": {
       "first_seen_kst": "2026-10-05T10:24:46+09:00",
@@ -56171,6 +56551,28 @@
       "source_published_kst": "2026-10-06T15:44+09:00",
       "title": "원·달러 환율, 0.4원 내린 1343.6원 마감"
     },
+    "link:796b34dfd7d99e6cd9596ed2": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.hankyung.com/article/202610078343i",
+      "source": "한국경제",
+      "source_body_digest": "7d6d003dbda7eb0e48d398e98f12fc11054047219df3d8300d2b077e11b48086",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b1aed08e506d138a7a91d04a0896c2f85968eaaeb325e9bdc0472723176a539",
+      "source_fact_keys": [
+        "source_fact:v1:273c9a1df30ef1067edd9a8e7ba65d10f24859353adce4287581d33ef5705b0f",
+        "source_fact:v1:33226455cf53c77672f96c86030cb157b8930256ff7cc33c278488141e41a2df",
+        "source_fact:v1:678731c00f355126c614526b56eda3664b830b6fdd1fe829ec0f16b68c07cb45",
+        "source_fact:v1:9ebb8b818ddbc2a3c801762123a614d478fdf013e9fd55765888af401aa51c11"
+      ],
+      "source_published_kst": "2026-10-07T14:31+09:00",
+      "source_title": "바이젠셀, ‘바이오재팬 2026’서 日 재생의료 시장 공략…기술이전·직접진출 추진",
+      "telegram_core_fact": "이번 행사에서 바이젠셀은 재생의료 분야의 임상 및 사업화 경험이 축적된 일본 시장을 중심으로 글로벌 제약·바이오 기업들과 파트너링 미팅을 진행하고, 주요 파이프라인의 기술이전 및 공동개발 등 다양한 사업협력 가능성을 모색할 계획이다.",
+      "title": "바이젠셀, ‘바이오재팬 2026’서 日 재생의료 시장 공략…기술이전·직접진출 추진"
+    },
     "link:79857a961d46bf6f5df6dfda": {
       "first_seen_kst": "2026-10-07T14:18:25+09:00",
       "lanes": {
@@ -60144,6 +60546,32 @@
       ],
       "source_published_kst": "2026-10-05T22:55+09:00",
       "title": "美국채금리 5.3%에 다우 ‘주춤’… 뉴욕증시 혼조 출발"
+    },
+    "link:94523b264157eb7d86720496": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01269366645610952",
+      "source": "이데일리",
+      "source_body_digest": "cd1c37c20b14dc82cff8d33e0c90e6e1cf810910ab44ac9bb42527af8ddc56e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74d7bbe04338476dee421a6e004e5da7bb727b84b2133a2dc78c4316a9ead3bb",
+      "source_fact_keys": [
+        "source_fact:v1:0d8e56148229a139a60060c4358bb0ecd3a8cec4838df9469ee04c494cb23bd4",
+        "source_fact:v1:1a39e528eefc906f9174772ee530a520ab7a348bf7417579e789eed7a80913db",
+        "source_fact:v1:2c3f6c22e391dbf930fa553fb1d1783365bac9b8af96882a02085fd5c6f6b556",
+        "source_fact:v1:6db4db0238cdbf18fdce4b9047f49e7db6dc4b077d1f00523da8ef4cd21c65bd",
+        "source_fact:v1:9161df509b7d611f85482ca4ee48ac2732a24e3bc2a789c10e488c4f5a5acbd4",
+        "source_fact:v1:980bf442464375c61f0b810ef0a9f7dc33095bfee9785ad0838068ed96e7df60",
+        "source_fact:v1:ea979fd36c65e3b4eba6399d922562fe1321e40b35968e67913b86fc5443895d",
+        "source_fact:v1:fbe1e4c8b2703292cc7f91ba5a81107ace7fb2bc4aa465946c7cdaaec9247716"
+      ],
+      "source_published_kst": "2026-10-08T03:00+09:00",
+      "source_title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'",
+      "telegram_core_fact": "10년물 금리는 장 초반 5.36%까지 올라 2002년 이후 최고 수준을 기록했지만 입찰 이후 5.28% 안팎으로 하락했다.",
+      "title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'"
     },
     "link:947b5606d36c0268572e436d": {
       "first_seen_kst": "2026-10-08T01:26:16+09:00",
@@ -69215,6 +69643,26 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=04598566645581432",
       "source": "이데일리",
       "title": "151조원 파라마운트·워너 합병 한고비 넘었다…美 FCC 승인"
+    },
+    "link:cfeea6a67a09971632758425": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817733",
+      "source": "뉴시스",
+      "source_body_digest": "db75db321e32e2ee1f1d83911633ad72576f0e0e114a68752cad32b135799e1a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:788f3b8af74fdd292a21bc691199edc7d0bb774e63e5583409783a6d416812d0",
+      "source_fact_keys": [
+        "source_fact:v1:0ea111f77d1921dcb186ca9595e289a6d84bccf2d15ec5c4b61f3f516d817645",
+        "source_fact:v1:cd9ac60452ef715812879e52398b0311ae58a0c1f18220053fafe1fac88a0207"
+      ],
+      "source_published_kst": "2026-10-07T16:00+09:00",
+      "source_title": "위성 개발·제조 넘어 AI서비스로…한화시스템, 우주사업 키운다[누리호 5차 발사]",
+      "telegram_core_fact": "한화시스템은 향후 초저궤도 SAR 위성과 우주 AI 데이터센터, 위성통신망 등에 약 20조원을 투자할 계획이다.",
+      "title": "위성 개발·제조 넘어 AI서비스로…한화시스템, 우주사업 키운다[누리호 5차 발사]"
     },
     "link:cffd233123b7753efb337a4f": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
@@ -81700,6 +82148,26 @@
       "source": "머니투데이",
       "title": "수출 1조달러 눈앞…한국 수출 어디서 얼마나 벌었나"
     },
+    "original:22fbef94a308c03c03f5cf2b": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817733",
+      "source": "뉴시스",
+      "source_body_digest": "db75db321e32e2ee1f1d83911633ad72576f0e0e114a68752cad32b135799e1a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:788f3b8af74fdd292a21bc691199edc7d0bb774e63e5583409783a6d416812d0",
+      "source_fact_keys": [
+        "source_fact:v1:0ea111f77d1921dcb186ca9595e289a6d84bccf2d15ec5c4b61f3f516d817645",
+        "source_fact:v1:cd9ac60452ef715812879e52398b0311ae58a0c1f18220053fafe1fac88a0207"
+      ],
+      "source_published_kst": "2026-10-07T16:00+09:00",
+      "source_title": "위성 개발·제조 넘어 AI서비스로…한화시스템, 우주사업 키운다[누리호 5차 발사]",
+      "telegram_core_fact": "한화시스템은 향후 초저궤도 SAR 위성과 우주 AI 데이터센터, 위성통신망 등에 약 20조원을 투자할 계획이다.",
+      "title": "위성 개발·제조 넘어 AI서비스로…한화시스템, 우주사업 키운다[누리호 5차 발사]"
+    },
     "original:2306e2235aa295b391f4ac05": {
       "first_seen_kst": "2026-10-01T18:06:18+09:00",
       "lanes": {
@@ -88225,6 +88693,32 @@
       "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
     },
+    "original:4a24b14c48d1d8967b0ca16a": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01269366645610952",
+      "source": "이데일리",
+      "source_body_digest": "cd1c37c20b14dc82cff8d33e0c90e6e1cf810910ab44ac9bb42527af8ddc56e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74d7bbe04338476dee421a6e004e5da7bb727b84b2133a2dc78c4316a9ead3bb",
+      "source_fact_keys": [
+        "source_fact:v1:0d8e56148229a139a60060c4358bb0ecd3a8cec4838df9469ee04c494cb23bd4",
+        "source_fact:v1:1a39e528eefc906f9174772ee530a520ab7a348bf7417579e789eed7a80913db",
+        "source_fact:v1:2c3f6c22e391dbf930fa553fb1d1783365bac9b8af96882a02085fd5c6f6b556",
+        "source_fact:v1:6db4db0238cdbf18fdce4b9047f49e7db6dc4b077d1f00523da8ef4cd21c65bd",
+        "source_fact:v1:9161df509b7d611f85482ca4ee48ac2732a24e3bc2a789c10e488c4f5a5acbd4",
+        "source_fact:v1:980bf442464375c61f0b810ef0a9f7dc33095bfee9785ad0838068ed96e7df60",
+        "source_fact:v1:ea979fd36c65e3b4eba6399d922562fe1321e40b35968e67913b86fc5443895d",
+        "source_fact:v1:fbe1e4c8b2703292cc7f91ba5a81107ace7fb2bc4aa465946c7cdaaec9247716"
+      ],
+      "source_published_kst": "2026-10-08T03:00+09:00",
+      "source_title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'",
+      "telegram_core_fact": "10년물 금리는 장 초반 5.36%까지 올라 2002년 이후 최고 수준을 기록했지만 입찰 이후 5.28% 안팎으로 하락했다.",
+      "title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'"
+    },
     "original:4a4a5450c6fdbb8cf28286df": {
       "first_seen_kst": "2026-10-07T22:00:35+09:00",
       "lanes": {
@@ -89176,6 +89670,28 @@
       ],
       "source_published_kst": "2026-10-05T19:02+09:00",
       "title": "세제·부동산·대미투자… 李정부 2년차 정책 검증 '경제 국감' [국정감사 핫이슈]"
+    },
+    "original:508379d9c158c27843f946f0": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.hankyung.com/article/202610078343i",
+      "source": "한국경제",
+      "source_body_digest": "7d6d003dbda7eb0e48d398e98f12fc11054047219df3d8300d2b077e11b48086",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b1aed08e506d138a7a91d04a0896c2f85968eaaeb325e9bdc0472723176a539",
+      "source_fact_keys": [
+        "source_fact:v1:273c9a1df30ef1067edd9a8e7ba65d10f24859353adce4287581d33ef5705b0f",
+        "source_fact:v1:33226455cf53c77672f96c86030cb157b8930256ff7cc33c278488141e41a2df",
+        "source_fact:v1:678731c00f355126c614526b56eda3664b830b6fdd1fe829ec0f16b68c07cb45",
+        "source_fact:v1:9ebb8b818ddbc2a3c801762123a614d478fdf013e9fd55765888af401aa51c11"
+      ],
+      "source_published_kst": "2026-10-07T14:31+09:00",
+      "source_title": "바이젠셀, ‘바이오재팬 2026’서 日 재생의료 시장 공략…기술이전·직접진출 추진",
+      "telegram_core_fact": "이번 행사에서 바이젠셀은 재생의료 분야의 임상 및 사업화 경험이 축적된 일본 시장을 중심으로 글로벌 제약·바이오 기업들과 파트너링 미팅을 진행하고, 주요 파이프라인의 기술이전 및 공동개발 등 다양한 사업협력 가능성을 모색할 계획이다.",
+      "title": "바이젠셀, ‘바이오재팬 2026’서 日 재생의료 시장 공략…기술이전·직접진출 추진"
     },
     "original:5086881ba976d4d47b73bb43": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
@@ -101884,6 +102400,37 @@
       "source": "뉴시스",
       "title": "[속보]뉴욕증시, 혼조 출발…연준 금리 인상 속 나스닥 0.3%↑"
     },
+    "original:a83e6464097d3a542a33cb3a": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171373",
+      "source": "매일경제",
+      "source_body_digest": "3abc2530816c6acd69d1374566c3e49c3eb0e15dfc6cf3ecdb79d2a3ae00f160",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:537c3402530ea3720590531ae82a8b5fd41420ddb9230f8e08c9f7741ea090d8",
+      "source_fact_keys": [
+        "source_fact:v1:03bd9925d6bd77a5e7a8db9d4f48a63e6cb8743fafc03e76f937aa808f738fcc",
+        "source_fact:v1:0d00c25d4ecedc0ac3b41f7d1edc2b48fca4453545947a48baf3a9a81cb4970f",
+        "source_fact:v1:0fd8239873ece2f3c332bbdd17417c241925cda66613a1109d33ec33707df7c1",
+        "source_fact:v1:1f3e7896eba2c246119e5e4cbefcad5ddaf9ac587fb86ec933997b3e0e4c7e16",
+        "source_fact:v1:2f83009f7427e06dafaab12030c86b07c78656b049dfe3061233ad661021c7b2",
+        "source_fact:v1:3b9dc0ab80a00ef0ea1915b1a33b2b0b3b3fab56fc0bb3c4eb8ddfcbc47f4393",
+        "source_fact:v1:46eb3f445a058da7d10863d1a82de2541157671ea71df6731134816f40ac950c",
+        "source_fact:v1:634f2e16e1f5a0b98ef9e01e394b98caf6d684357e4f22a863daa0d3b08d306a",
+        "source_fact:v1:8d8052c1ee4e2e1285933bd2bd9dda3713deb0e7a72179785db2b05bc5876708",
+        "source_fact:v1:953131ead8da7e3c45fabe297da1c2777606a004dd254f251a2b2133d61a75da",
+        "source_fact:v1:b9d005e008a6726021b7d6095c1aa06c7a26316a1f2a4a15898c80afe44f693d",
+        "source_fact:v1:d1872f91c1de54ac43459549d73d7a00a3b3bebcea4d6e5b0a18b36db3815bbd",
+        "source_fact:v1:ed57ff658e56782a27990f26b02f17e09c0435ec9f76add691f9526347217f73"
+      ],
+      "source_published_kst": "2026-10-08T02:47+09:00",
+      "source_title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소",
+      "telegram_core_fact": "포르투나 마이닝(FSM)은 3분기 금환산온스(GEO) 기준 생산량이 6만9665온스로 전년 동기(7만2462온스) 대비 3.9%, 전분기(7만2217온스) 대비 3.5% 감소했다고 10월 7일 발표했다.",
+      "title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소"
+    },
     "original:a8457464c19a6b717f7ea1b8": {
       "first_seen_kst": "2026-10-01T22:45:00+09:00",
       "lanes": {
@@ -103268,6 +103815,26 @@
       "link": "https://www.mk.co.kr/news/stock/12155616",
       "source": "매일경제",
       "title": "수주 실적·사업 다변화 부각 … 주춤했던 조선株 상승세"
+    },
+    "original:b10b8c93a0751f853a890f6b": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170783",
+      "source": "매일경제",
+      "source_body_digest": "0a8cebf1fcfc440212a3d9cc465033a5279e42427dcf2d853073bf5d2b22d633",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c999e85af9a871d9046f16a385ae22ae342698778738b986ab70a195b6cb837",
+      "source_fact_keys": [
+        "source_fact:v1:1e09c286b3701f7dd123655017099bbd86ad0d1588f13db53c9ee379895a136f",
+        "source_fact:v1:2bd0c1f82b9afac4ca8961ac6051ca893c48a1ddf9c038476a06e440163a9e26"
+      ],
+      "source_published_kst": "2026-10-07T17:57+09:00",
+      "source_title": "워너브라더스 투자 나선 신세계프라퍼티, 메리츠서 1조 조달",
+      "telegram_core_fact": "투자은행(IB) 업계에 따르면 신세계프라퍼티는 메리츠증권을 상대로 약 1조원 사모사채를 발행할 예정인 것으로 알려졌다. 이마트는 지난 6일 종속회사를 통해 파라마운트 스카이댄스와 WBD 합병 과정에서 발행되는 신주에 10억달러(약 1조3596억원)를 간접 투자한다고 공시했다.",
+      "title": "워너브라더스 투자 나선 신세계프라퍼티, 메리츠서 1조 조달"
     },
     "original:b115e070a67bc90e8b5ffe20": {
       "first_seen_kst": "2026-10-02T10:30:30+09:00",
@@ -105529,6 +106096,25 @@
       "source_title": "KT&G, 인도네시아 신공장 가동…5개국 생산체제 구축 | 연합뉴스",
       "telegram_core_fact": "KT&G가 인도네시아 신공장을 가동해 글로벌 5각 생산체제를 구축했다. 설비 9대 설치 후 연산 210억 개비, 기존 공장 포함 현지 생산능력은 350억 개비로 확대될 전망이다.",
       "title": "KT&G, 인도네시아 신공장 가동…5개국 생산체제 구축 | 연합뉴스"
+    },
+    "original:c0b06089c48e4c8a1858f748": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171226",
+      "source": "매일경제",
+      "source_body_digest": "c01f5f58f2498ac9186e3c39eb438c437eda3a063ea2727dfa1955384b9e2db3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d09f41926ebcd728416ceefe316790eeb038fd37bcf92a5f23dd6bfbf7e95439",
+      "source_fact_keys": [
+        "source_fact:v1:cb6080b6bce9d016b0e86b40c68185ec5fd7f2bbc4442111a29ec5afa3d3851b"
+      ],
+      "source_published_kst": "2026-10-07T17:43+09:00",
+      "source_title": "\"코리아 디스카운트 해소, 주주환원 지속에 답 있다\"",
+      "telegram_core_fact": "주주환원이 꾸준히 이어지는지, 실제로 벌어들인 현금 흐름을 바탕으로 하는지, 발표에 그치지 않고 자사주 소각 등 실제 행동으로 연결되는지를 본다는 것이다.",
+      "title": "\"코리아 디스카운트 해소, 주주환원 지속에 답 있다\""
     },
     "original:c0f6ef5fa25415d45ba2143b": {
       "first_seen_kst": "2026-09-26T20:59:22+09:00",
@@ -110825,6 +111411,23 @@
       "link": "https://www.yna.co.kr/view/AKR20260930156351008",
       "source": "연합뉴스",
       "title": "상품공급 부족했나…'조각투자' 신종증권시장 개장 연기(종합) | 연합뉴스"
+    },
+    "original:e32270cb96f0350c6ea7ae9b": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171376",
+      "source": "매일경제",
+      "source_body_digest": "553eb8e7af0b72e40cf071c5f6a4fe56b3876377fe9262bad184bc6abab89e80",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T03:00+09:00",
+      "source_title": "포르투나마이닝, 3분기 금 생산 감소와 세구엘라 광산 차질 부각에 약세",
+      "telegram_core_fact": "세구엘라 광산의 광부 봉쇄와 장비 문제로 생산에 차질이 생긴 점이 부담으로 작용했습니다. 3분기 금환산 생산량이 6만9665온스로 전년보다 3.9%, 전분기보다 3.5% 줄었습니다.",
+      "title": "포르투나마이닝, 3분기 금 생산 감소와 세구엘라 광산 차질 부각에 약세"
     },
     "original:e33aa41b41522817544ba9aa": {
       "first_seen_kst": "2026-10-03T02:58:32+09:00",
@@ -116290,6 +116893,37 @@
       "source_published_kst": "2026-10-06T18:00+09:00",
       "title": "\"美 투자 ETF 사고 미국 가자\"…한투운용, 美대표지수 ETF 매수 이벤트"
     },
+    "source_fact:02e80b76975528c33dde220a": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171373",
+      "source": "매일경제",
+      "source_body_digest": "3abc2530816c6acd69d1374566c3e49c3eb0e15dfc6cf3ecdb79d2a3ae00f160",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:537c3402530ea3720590531ae82a8b5fd41420ddb9230f8e08c9f7741ea090d8",
+      "source_fact_keys": [
+        "source_fact:v1:03bd9925d6bd77a5e7a8db9d4f48a63e6cb8743fafc03e76f937aa808f738fcc",
+        "source_fact:v1:0d00c25d4ecedc0ac3b41f7d1edc2b48fca4453545947a48baf3a9a81cb4970f",
+        "source_fact:v1:0fd8239873ece2f3c332bbdd17417c241925cda66613a1109d33ec33707df7c1",
+        "source_fact:v1:1f3e7896eba2c246119e5e4cbefcad5ddaf9ac587fb86ec933997b3e0e4c7e16",
+        "source_fact:v1:2f83009f7427e06dafaab12030c86b07c78656b049dfe3061233ad661021c7b2",
+        "source_fact:v1:3b9dc0ab80a00ef0ea1915b1a33b2b0b3b3fab56fc0bb3c4eb8ddfcbc47f4393",
+        "source_fact:v1:46eb3f445a058da7d10863d1a82de2541157671ea71df6731134816f40ac950c",
+        "source_fact:v1:634f2e16e1f5a0b98ef9e01e394b98caf6d684357e4f22a863daa0d3b08d306a",
+        "source_fact:v1:8d8052c1ee4e2e1285933bd2bd9dda3713deb0e7a72179785db2b05bc5876708",
+        "source_fact:v1:953131ead8da7e3c45fabe297da1c2777606a004dd254f251a2b2133d61a75da",
+        "source_fact:v1:b9d005e008a6726021b7d6095c1aa06c7a26316a1f2a4a15898c80afe44f693d",
+        "source_fact:v1:d1872f91c1de54ac43459549d73d7a00a3b3bebcea4d6e5b0a18b36db3815bbd",
+        "source_fact:v1:ed57ff658e56782a27990f26b02f17e09c0435ec9f76add691f9526347217f73"
+      ],
+      "source_published_kst": "2026-10-08T02:47+09:00",
+      "source_title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소",
+      "telegram_core_fact": "포르투나 마이닝(FSM)은 3분기 금환산온스(GEO) 기준 생산량이 6만9665온스로 전년 동기(7만2462온스) 대비 3.9%, 전분기(7만2217온스) 대비 3.5% 감소했다고 10월 7일 발표했다.",
+      "title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소"
+    },
     "source_fact:030c0a2a90fa6a0f366c103c": {
       "first_seen_kst": "2026-10-07T06:41:04+09:00",
       "lanes": {
@@ -120069,6 +120703,28 @@
       "telegram_core_fact": "라이프존 메탈스(LZM)는 탄자니아 카방가 니켈 프로젝트의 주민 이주 실행계획(RAP)이 국제금융공사(IFC) 성능표준 5(PS5)에 중대한 측면에서 계속 부합한다는 독립 전문가 검토 결과가 나오면서, 호주 광산업체 BHP에 지급할 인수 대가의 상한이 800만 달러 자동 감액됐다고 7일 발표했다.",
       "title": "라이프존 메탈스, BHP 인수대가 800만달러 감액..이주계획 검증 통과"
     },
+    "source_fact:0d81bc224bd3312bff818212": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.hankyung.com/article/202610078343i",
+      "source": "한국경제",
+      "source_body_digest": "7d6d003dbda7eb0e48d398e98f12fc11054047219df3d8300d2b077e11b48086",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b1aed08e506d138a7a91d04a0896c2f85968eaaeb325e9bdc0472723176a539",
+      "source_fact_keys": [
+        "source_fact:v1:273c9a1df30ef1067edd9a8e7ba65d10f24859353adce4287581d33ef5705b0f",
+        "source_fact:v1:33226455cf53c77672f96c86030cb157b8930256ff7cc33c278488141e41a2df",
+        "source_fact:v1:678731c00f355126c614526b56eda3664b830b6fdd1fe829ec0f16b68c07cb45",
+        "source_fact:v1:9ebb8b818ddbc2a3c801762123a614d478fdf013e9fd55765888af401aa51c11"
+      ],
+      "source_published_kst": "2026-10-07T14:31+09:00",
+      "source_title": "바이젠셀, ‘바이오재팬 2026’서 日 재생의료 시장 공략…기술이전·직접진출 추진",
+      "telegram_core_fact": "이번 행사에서 바이젠셀은 재생의료 분야의 임상 및 사업화 경험이 축적된 일본 시장을 중심으로 글로벌 제약·바이오 기업들과 파트너링 미팅을 진행하고, 주요 파이프라인의 기술이전 및 공동개발 등 다양한 사업협력 가능성을 모색할 계획이다.",
+      "title": "바이젠셀, ‘바이오재팬 2026’서 日 재생의료 시장 공략…기술이전·직접진출 추진"
+    },
     "source_fact:0d858bf830e1a4d0bbacec25": {
       "first_seen_kst": "2026-10-07T01:59:08+09:00",
       "lanes": {
@@ -123717,6 +124373,37 @@
       ],
       "source_published_kst": "2026-10-07T10:06+09:00",
       "title": "골드만삭스 “삼성전자 8일 요동친다”…매도 요인 3개나 겹쳤다는데"
+    },
+    "source_fact:174704f5a76b3d3ac6181d07": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171373",
+      "source": "매일경제",
+      "source_body_digest": "3abc2530816c6acd69d1374566c3e49c3eb0e15dfc6cf3ecdb79d2a3ae00f160",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:537c3402530ea3720590531ae82a8b5fd41420ddb9230f8e08c9f7741ea090d8",
+      "source_fact_keys": [
+        "source_fact:v1:03bd9925d6bd77a5e7a8db9d4f48a63e6cb8743fafc03e76f937aa808f738fcc",
+        "source_fact:v1:0d00c25d4ecedc0ac3b41f7d1edc2b48fca4453545947a48baf3a9a81cb4970f",
+        "source_fact:v1:0fd8239873ece2f3c332bbdd17417c241925cda66613a1109d33ec33707df7c1",
+        "source_fact:v1:1f3e7896eba2c246119e5e4cbefcad5ddaf9ac587fb86ec933997b3e0e4c7e16",
+        "source_fact:v1:2f83009f7427e06dafaab12030c86b07c78656b049dfe3061233ad661021c7b2",
+        "source_fact:v1:3b9dc0ab80a00ef0ea1915b1a33b2b0b3b3fab56fc0bb3c4eb8ddfcbc47f4393",
+        "source_fact:v1:46eb3f445a058da7d10863d1a82de2541157671ea71df6731134816f40ac950c",
+        "source_fact:v1:634f2e16e1f5a0b98ef9e01e394b98caf6d684357e4f22a863daa0d3b08d306a",
+        "source_fact:v1:8d8052c1ee4e2e1285933bd2bd9dda3713deb0e7a72179785db2b05bc5876708",
+        "source_fact:v1:953131ead8da7e3c45fabe297da1c2777606a004dd254f251a2b2133d61a75da",
+        "source_fact:v1:b9d005e008a6726021b7d6095c1aa06c7a26316a1f2a4a15898c80afe44f693d",
+        "source_fact:v1:d1872f91c1de54ac43459549d73d7a00a3b3bebcea4d6e5b0a18b36db3815bbd",
+        "source_fact:v1:ed57ff658e56782a27990f26b02f17e09c0435ec9f76add691f9526347217f73"
+      ],
+      "source_published_kst": "2026-10-08T02:47+09:00",
+      "source_title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소",
+      "telegram_core_fact": "포르투나 마이닝(FSM)은 3분기 금환산온스(GEO) 기준 생산량이 6만9665온스로 전년 동기(7만2462온스) 대비 3.9%, 전분기(7만2217온스) 대비 3.5% 감소했다고 10월 7일 발표했다.",
+      "title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소"
     },
     "source_fact:174c12f611a35d57c7c73b57": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -128963,6 +129650,37 @@
       "source_published_kst": "2026-10-07T09:35+09:00",
       "title": "KT클라우드, ‘청라 AI 데이터센터’ 구축 참여…50MW급 규모로 수도권 확장"
     },
+    "source_fact:249372558525ba2da0da5e10": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171373",
+      "source": "매일경제",
+      "source_body_digest": "3abc2530816c6acd69d1374566c3e49c3eb0e15dfc6cf3ecdb79d2a3ae00f160",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:537c3402530ea3720590531ae82a8b5fd41420ddb9230f8e08c9f7741ea090d8",
+      "source_fact_keys": [
+        "source_fact:v1:03bd9925d6bd77a5e7a8db9d4f48a63e6cb8743fafc03e76f937aa808f738fcc",
+        "source_fact:v1:0d00c25d4ecedc0ac3b41f7d1edc2b48fca4453545947a48baf3a9a81cb4970f",
+        "source_fact:v1:0fd8239873ece2f3c332bbdd17417c241925cda66613a1109d33ec33707df7c1",
+        "source_fact:v1:1f3e7896eba2c246119e5e4cbefcad5ddaf9ac587fb86ec933997b3e0e4c7e16",
+        "source_fact:v1:2f83009f7427e06dafaab12030c86b07c78656b049dfe3061233ad661021c7b2",
+        "source_fact:v1:3b9dc0ab80a00ef0ea1915b1a33b2b0b3b3fab56fc0bb3c4eb8ddfcbc47f4393",
+        "source_fact:v1:46eb3f445a058da7d10863d1a82de2541157671ea71df6731134816f40ac950c",
+        "source_fact:v1:634f2e16e1f5a0b98ef9e01e394b98caf6d684357e4f22a863daa0d3b08d306a",
+        "source_fact:v1:8d8052c1ee4e2e1285933bd2bd9dda3713deb0e7a72179785db2b05bc5876708",
+        "source_fact:v1:953131ead8da7e3c45fabe297da1c2777606a004dd254f251a2b2133d61a75da",
+        "source_fact:v1:b9d005e008a6726021b7d6095c1aa06c7a26316a1f2a4a15898c80afe44f693d",
+        "source_fact:v1:d1872f91c1de54ac43459549d73d7a00a3b3bebcea4d6e5b0a18b36db3815bbd",
+        "source_fact:v1:ed57ff658e56782a27990f26b02f17e09c0435ec9f76add691f9526347217f73"
+      ],
+      "source_published_kst": "2026-10-08T02:47+09:00",
+      "source_title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소",
+      "telegram_core_fact": "포르투나 마이닝(FSM)은 3분기 금환산온스(GEO) 기준 생산량이 6만9665온스로 전년 동기(7만2462온스) 대비 3.9%, 전분기(7만2217온스) 대비 3.5% 감소했다고 10월 7일 발표했다.",
+      "title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소"
+    },
     "source_fact:24942dbf356088dfb8bcc83a": {
       "first_seen_kst": "2026-10-07T22:24:07+09:00",
       "lanes": {
@@ -131972,6 +132690,37 @@
       "source_published_kst": "2026-10-07T00:00+09:00",
       "title": "우크라 '韓, 러 석유공급' 보도에 비판…\"제재 정책과 어긋나\""
     },
+    "source_fact:2bce8ac6ef3056ae14ddb465": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171373",
+      "source": "매일경제",
+      "source_body_digest": "3abc2530816c6acd69d1374566c3e49c3eb0e15dfc6cf3ecdb79d2a3ae00f160",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:537c3402530ea3720590531ae82a8b5fd41420ddb9230f8e08c9f7741ea090d8",
+      "source_fact_keys": [
+        "source_fact:v1:03bd9925d6bd77a5e7a8db9d4f48a63e6cb8743fafc03e76f937aa808f738fcc",
+        "source_fact:v1:0d00c25d4ecedc0ac3b41f7d1edc2b48fca4453545947a48baf3a9a81cb4970f",
+        "source_fact:v1:0fd8239873ece2f3c332bbdd17417c241925cda66613a1109d33ec33707df7c1",
+        "source_fact:v1:1f3e7896eba2c246119e5e4cbefcad5ddaf9ac587fb86ec933997b3e0e4c7e16",
+        "source_fact:v1:2f83009f7427e06dafaab12030c86b07c78656b049dfe3061233ad661021c7b2",
+        "source_fact:v1:3b9dc0ab80a00ef0ea1915b1a33b2b0b3b3fab56fc0bb3c4eb8ddfcbc47f4393",
+        "source_fact:v1:46eb3f445a058da7d10863d1a82de2541157671ea71df6731134816f40ac950c",
+        "source_fact:v1:634f2e16e1f5a0b98ef9e01e394b98caf6d684357e4f22a863daa0d3b08d306a",
+        "source_fact:v1:8d8052c1ee4e2e1285933bd2bd9dda3713deb0e7a72179785db2b05bc5876708",
+        "source_fact:v1:953131ead8da7e3c45fabe297da1c2777606a004dd254f251a2b2133d61a75da",
+        "source_fact:v1:b9d005e008a6726021b7d6095c1aa06c7a26316a1f2a4a15898c80afe44f693d",
+        "source_fact:v1:d1872f91c1de54ac43459549d73d7a00a3b3bebcea4d6e5b0a18b36db3815bbd",
+        "source_fact:v1:ed57ff658e56782a27990f26b02f17e09c0435ec9f76add691f9526347217f73"
+      ],
+      "source_published_kst": "2026-10-08T02:47+09:00",
+      "source_title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소",
+      "telegram_core_fact": "포르투나 마이닝(FSM)은 3분기 금환산온스(GEO) 기준 생산량이 6만9665온스로 전년 동기(7만2462온스) 대비 3.9%, 전분기(7만2217온스) 대비 3.5% 감소했다고 10월 7일 발표했다.",
+      "title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소"
+    },
     "source_fact:2bdba5a300ae1d0c493614fe": {
       "first_seen_kst": "2026-10-06T22:08:07+09:00",
       "lanes": {
@@ -134334,6 +135083,32 @@
       ],
       "source_published_kst": "2026-10-07T11:07+09:00",
       "title": "LG전자, 올 3Q 누적 영업익 '4조' 최초 달성…연간 최대 실적 '청신호'"
+    },
+    "source_fact:318302d618faab3c31995456": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01269366645610952",
+      "source": "이데일리",
+      "source_body_digest": "cd1c37c20b14dc82cff8d33e0c90e6e1cf810910ab44ac9bb42527af8ddc56e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74d7bbe04338476dee421a6e004e5da7bb727b84b2133a2dc78c4316a9ead3bb",
+      "source_fact_keys": [
+        "source_fact:v1:0d8e56148229a139a60060c4358bb0ecd3a8cec4838df9469ee04c494cb23bd4",
+        "source_fact:v1:1a39e528eefc906f9174772ee530a520ab7a348bf7417579e789eed7a80913db",
+        "source_fact:v1:2c3f6c22e391dbf930fa553fb1d1783365bac9b8af96882a02085fd5c6f6b556",
+        "source_fact:v1:6db4db0238cdbf18fdce4b9047f49e7db6dc4b077d1f00523da8ef4cd21c65bd",
+        "source_fact:v1:9161df509b7d611f85482ca4ee48ac2732a24e3bc2a789c10e488c4f5a5acbd4",
+        "source_fact:v1:980bf442464375c61f0b810ef0a9f7dc33095bfee9785ad0838068ed96e7df60",
+        "source_fact:v1:ea979fd36c65e3b4eba6399d922562fe1321e40b35968e67913b86fc5443895d",
+        "source_fact:v1:fbe1e4c8b2703292cc7f91ba5a81107ace7fb2bc4aa465946c7cdaaec9247716"
+      ],
+      "source_published_kst": "2026-10-08T03:00+09:00",
+      "source_title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'",
+      "telegram_core_fact": "10년물 금리는 장 초반 5.36%까지 올라 2002년 이후 최고 수준을 기록했지만 입찰 이후 5.28% 안팎으로 하락했다.",
+      "title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'"
     },
     "source_fact:318c597c60dad344f593c6db": {
       "first_seen_kst": "2026-10-07T07:01:10+09:00",
@@ -136966,6 +137741,37 @@
       ],
       "source_published_kst": "2026-10-06T11:18+09:00",
       "title": "디스플레이 규제합리화 브리핑하는 김민성 부단장 | 연합뉴스"
+    },
+    "source_fact:376e191586ce69f6848aec44": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171373",
+      "source": "매일경제",
+      "source_body_digest": "3abc2530816c6acd69d1374566c3e49c3eb0e15dfc6cf3ecdb79d2a3ae00f160",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:537c3402530ea3720590531ae82a8b5fd41420ddb9230f8e08c9f7741ea090d8",
+      "source_fact_keys": [
+        "source_fact:v1:03bd9925d6bd77a5e7a8db9d4f48a63e6cb8743fafc03e76f937aa808f738fcc",
+        "source_fact:v1:0d00c25d4ecedc0ac3b41f7d1edc2b48fca4453545947a48baf3a9a81cb4970f",
+        "source_fact:v1:0fd8239873ece2f3c332bbdd17417c241925cda66613a1109d33ec33707df7c1",
+        "source_fact:v1:1f3e7896eba2c246119e5e4cbefcad5ddaf9ac587fb86ec933997b3e0e4c7e16",
+        "source_fact:v1:2f83009f7427e06dafaab12030c86b07c78656b049dfe3061233ad661021c7b2",
+        "source_fact:v1:3b9dc0ab80a00ef0ea1915b1a33b2b0b3b3fab56fc0bb3c4eb8ddfcbc47f4393",
+        "source_fact:v1:46eb3f445a058da7d10863d1a82de2541157671ea71df6731134816f40ac950c",
+        "source_fact:v1:634f2e16e1f5a0b98ef9e01e394b98caf6d684357e4f22a863daa0d3b08d306a",
+        "source_fact:v1:8d8052c1ee4e2e1285933bd2bd9dda3713deb0e7a72179785db2b05bc5876708",
+        "source_fact:v1:953131ead8da7e3c45fabe297da1c2777606a004dd254f251a2b2133d61a75da",
+        "source_fact:v1:b9d005e008a6726021b7d6095c1aa06c7a26316a1f2a4a15898c80afe44f693d",
+        "source_fact:v1:d1872f91c1de54ac43459549d73d7a00a3b3bebcea4d6e5b0a18b36db3815bbd",
+        "source_fact:v1:ed57ff658e56782a27990f26b02f17e09c0435ec9f76add691f9526347217f73"
+      ],
+      "source_published_kst": "2026-10-08T02:47+09:00",
+      "source_title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소",
+      "telegram_core_fact": "포르투나 마이닝(FSM)은 3분기 금환산온스(GEO) 기준 생산량이 6만9665온스로 전년 동기(7만2462온스) 대비 3.9%, 전분기(7만2217온스) 대비 3.5% 감소했다고 10월 7일 발표했다.",
+      "title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소"
     },
     "source_fact:378fd3b9e44e29ba4e4b31e1": {
       "first_seen_kst": "2026-10-08T02:26:35+09:00",
@@ -142824,6 +143630,37 @@
       "telegram_core_fact": "헬머리치 & 페인(HP)이 2026 회계연도 4분기(7~9월) 북미·국제·해상 솔루션 3개 부문의 직접마진(비GAAP 기준)이 기존 가이던스 범위 상단 또는 그 근처에 이를 것으로 예상하며, 국제 솔루션 부문 직접마진은 약 4500만 달러에 달할 전망이라고 10월 7일 발표했다.",
       "title": "헬머리치 & 페인, 4분기 직접마진 가이던스 상단 근접..국제 4500만 달러"
     },
+    "source_fact:46c89c10181dcb9ce7ec866a": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171373",
+      "source": "매일경제",
+      "source_body_digest": "3abc2530816c6acd69d1374566c3e49c3eb0e15dfc6cf3ecdb79d2a3ae00f160",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:537c3402530ea3720590531ae82a8b5fd41420ddb9230f8e08c9f7741ea090d8",
+      "source_fact_keys": [
+        "source_fact:v1:03bd9925d6bd77a5e7a8db9d4f48a63e6cb8743fafc03e76f937aa808f738fcc",
+        "source_fact:v1:0d00c25d4ecedc0ac3b41f7d1edc2b48fca4453545947a48baf3a9a81cb4970f",
+        "source_fact:v1:0fd8239873ece2f3c332bbdd17417c241925cda66613a1109d33ec33707df7c1",
+        "source_fact:v1:1f3e7896eba2c246119e5e4cbefcad5ddaf9ac587fb86ec933997b3e0e4c7e16",
+        "source_fact:v1:2f83009f7427e06dafaab12030c86b07c78656b049dfe3061233ad661021c7b2",
+        "source_fact:v1:3b9dc0ab80a00ef0ea1915b1a33b2b0b3b3fab56fc0bb3c4eb8ddfcbc47f4393",
+        "source_fact:v1:46eb3f445a058da7d10863d1a82de2541157671ea71df6731134816f40ac950c",
+        "source_fact:v1:634f2e16e1f5a0b98ef9e01e394b98caf6d684357e4f22a863daa0d3b08d306a",
+        "source_fact:v1:8d8052c1ee4e2e1285933bd2bd9dda3713deb0e7a72179785db2b05bc5876708",
+        "source_fact:v1:953131ead8da7e3c45fabe297da1c2777606a004dd254f251a2b2133d61a75da",
+        "source_fact:v1:b9d005e008a6726021b7d6095c1aa06c7a26316a1f2a4a15898c80afe44f693d",
+        "source_fact:v1:d1872f91c1de54ac43459549d73d7a00a3b3bebcea4d6e5b0a18b36db3815bbd",
+        "source_fact:v1:ed57ff658e56782a27990f26b02f17e09c0435ec9f76add691f9526347217f73"
+      ],
+      "source_published_kst": "2026-10-08T02:47+09:00",
+      "source_title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소",
+      "telegram_core_fact": "포르투나 마이닝(FSM)은 3분기 금환산온스(GEO) 기준 생산량이 6만9665온스로 전년 동기(7만2462온스) 대비 3.9%, 전분기(7만2217온스) 대비 3.5% 감소했다고 10월 7일 발표했다.",
+      "title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소"
+    },
     "source_fact:46e12503854a52112ca09451": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
       "lanes": {
@@ -145397,6 +146234,32 @@
       "source_title": "김성환 “2030년 재생에너지 100GW 가능” [ESG 뉴스 5]",
       "telegram_core_fact": "김성환 기후에너지환경부 장관이 2030년까지 국내 재생에너지 설비를 100GW로 확대하는 것이 가능하다고 밝혔다. 양사는 별도로 2.7GW 전력을 15년간 공급하는 계약을 맺고 신규 발전설비 개발도 검토하기로 했다.",
       "title": "김성환 “2030년 재생에너지 100GW 가능” [ESG 뉴스 5]"
+    },
+    "source_fact:4c96e5c88990b85e7755c3e8": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01269366645610952",
+      "source": "이데일리",
+      "source_body_digest": "cd1c37c20b14dc82cff8d33e0c90e6e1cf810910ab44ac9bb42527af8ddc56e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74d7bbe04338476dee421a6e004e5da7bb727b84b2133a2dc78c4316a9ead3bb",
+      "source_fact_keys": [
+        "source_fact:v1:0d8e56148229a139a60060c4358bb0ecd3a8cec4838df9469ee04c494cb23bd4",
+        "source_fact:v1:1a39e528eefc906f9174772ee530a520ab7a348bf7417579e789eed7a80913db",
+        "source_fact:v1:2c3f6c22e391dbf930fa553fb1d1783365bac9b8af96882a02085fd5c6f6b556",
+        "source_fact:v1:6db4db0238cdbf18fdce4b9047f49e7db6dc4b077d1f00523da8ef4cd21c65bd",
+        "source_fact:v1:9161df509b7d611f85482ca4ee48ac2732a24e3bc2a789c10e488c4f5a5acbd4",
+        "source_fact:v1:980bf442464375c61f0b810ef0a9f7dc33095bfee9785ad0838068ed96e7df60",
+        "source_fact:v1:ea979fd36c65e3b4eba6399d922562fe1321e40b35968e67913b86fc5443895d",
+        "source_fact:v1:fbe1e4c8b2703292cc7f91ba5a81107ace7fb2bc4aa465946c7cdaaec9247716"
+      ],
+      "source_published_kst": "2026-10-08T03:00+09:00",
+      "source_title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'",
+      "telegram_core_fact": "10년물 금리는 장 초반 5.36%까지 올라 2002년 이후 최고 수준을 기록했지만 입찰 이후 5.28% 안팎으로 하락했다.",
+      "title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'"
     },
     "source_fact:4c9fd6281c75b5b70c6b5c7f": {
       "first_seen_kst": "2026-10-07T20:59:13+09:00",
@@ -148491,6 +149354,37 @@
       "source_published_kst": "2026-10-06T23:43+09:00",
       "title": "에이로봇, 방산혁신기업 선정…휴머노이드 군 시범운용 추진"
     },
+    "source_fact:54622ec9c67cb8be25080ad9": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171373",
+      "source": "매일경제",
+      "source_body_digest": "3abc2530816c6acd69d1374566c3e49c3eb0e15dfc6cf3ecdb79d2a3ae00f160",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:537c3402530ea3720590531ae82a8b5fd41420ddb9230f8e08c9f7741ea090d8",
+      "source_fact_keys": [
+        "source_fact:v1:03bd9925d6bd77a5e7a8db9d4f48a63e6cb8743fafc03e76f937aa808f738fcc",
+        "source_fact:v1:0d00c25d4ecedc0ac3b41f7d1edc2b48fca4453545947a48baf3a9a81cb4970f",
+        "source_fact:v1:0fd8239873ece2f3c332bbdd17417c241925cda66613a1109d33ec33707df7c1",
+        "source_fact:v1:1f3e7896eba2c246119e5e4cbefcad5ddaf9ac587fb86ec933997b3e0e4c7e16",
+        "source_fact:v1:2f83009f7427e06dafaab12030c86b07c78656b049dfe3061233ad661021c7b2",
+        "source_fact:v1:3b9dc0ab80a00ef0ea1915b1a33b2b0b3b3fab56fc0bb3c4eb8ddfcbc47f4393",
+        "source_fact:v1:46eb3f445a058da7d10863d1a82de2541157671ea71df6731134816f40ac950c",
+        "source_fact:v1:634f2e16e1f5a0b98ef9e01e394b98caf6d684357e4f22a863daa0d3b08d306a",
+        "source_fact:v1:8d8052c1ee4e2e1285933bd2bd9dda3713deb0e7a72179785db2b05bc5876708",
+        "source_fact:v1:953131ead8da7e3c45fabe297da1c2777606a004dd254f251a2b2133d61a75da",
+        "source_fact:v1:b9d005e008a6726021b7d6095c1aa06c7a26316a1f2a4a15898c80afe44f693d",
+        "source_fact:v1:d1872f91c1de54ac43459549d73d7a00a3b3bebcea4d6e5b0a18b36db3815bbd",
+        "source_fact:v1:ed57ff658e56782a27990f26b02f17e09c0435ec9f76add691f9526347217f73"
+      ],
+      "source_published_kst": "2026-10-08T02:47+09:00",
+      "source_title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소",
+      "telegram_core_fact": "포르투나 마이닝(FSM)은 3분기 금환산온스(GEO) 기준 생산량이 6만9665온스로 전년 동기(7만2462온스) 대비 3.9%, 전분기(7만2217온스) 대비 3.5% 감소했다고 10월 7일 발표했다.",
+      "title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소"
+    },
     "source_fact:5463ff28392ba2179fff05c1": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
       "lanes": {
@@ -150115,6 +151009,32 @@
       ],
       "source_published_kst": "2026-10-07T06:26+09:00",
       "title": "美 3년물 국채 입찰금리 4.932%…2006년 이후 최고"
+    },
+    "source_fact:588cb4f08fda23091aeeefb5": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01269366645610952",
+      "source": "이데일리",
+      "source_body_digest": "cd1c37c20b14dc82cff8d33e0c90e6e1cf810910ab44ac9bb42527af8ddc56e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74d7bbe04338476dee421a6e004e5da7bb727b84b2133a2dc78c4316a9ead3bb",
+      "source_fact_keys": [
+        "source_fact:v1:0d8e56148229a139a60060c4358bb0ecd3a8cec4838df9469ee04c494cb23bd4",
+        "source_fact:v1:1a39e528eefc906f9174772ee530a520ab7a348bf7417579e789eed7a80913db",
+        "source_fact:v1:2c3f6c22e391dbf930fa553fb1d1783365bac9b8af96882a02085fd5c6f6b556",
+        "source_fact:v1:6db4db0238cdbf18fdce4b9047f49e7db6dc4b077d1f00523da8ef4cd21c65bd",
+        "source_fact:v1:9161df509b7d611f85482ca4ee48ac2732a24e3bc2a789c10e488c4f5a5acbd4",
+        "source_fact:v1:980bf442464375c61f0b810ef0a9f7dc33095bfee9785ad0838068ed96e7df60",
+        "source_fact:v1:ea979fd36c65e3b4eba6399d922562fe1321e40b35968e67913b86fc5443895d",
+        "source_fact:v1:fbe1e4c8b2703292cc7f91ba5a81107ace7fb2bc4aa465946c7cdaaec9247716"
+      ],
+      "source_published_kst": "2026-10-08T03:00+09:00",
+      "source_title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'",
+      "telegram_core_fact": "10년물 금리는 장 초반 5.36%까지 올라 2002년 이후 최고 수준을 기록했지만 입찰 이후 5.28% 안팎으로 하락했다.",
+      "title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'"
     },
     "source_fact:588fa73fd27833477188df1a": {
       "first_seen_kst": "2026-10-07T03:17:01+09:00",
@@ -159502,6 +160422,32 @@
       "source_published_kst": "2026-10-06T10:44+09:00",
       "title": "엑시나, 포트래이와 CXL 기반 바이오 데이터 인프라 구축 '맞손'"
     },
+    "source_fact:6f72b771e5e50648b5cdd43b": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01269366645610952",
+      "source": "이데일리",
+      "source_body_digest": "cd1c37c20b14dc82cff8d33e0c90e6e1cf810910ab44ac9bb42527af8ddc56e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74d7bbe04338476dee421a6e004e5da7bb727b84b2133a2dc78c4316a9ead3bb",
+      "source_fact_keys": [
+        "source_fact:v1:0d8e56148229a139a60060c4358bb0ecd3a8cec4838df9469ee04c494cb23bd4",
+        "source_fact:v1:1a39e528eefc906f9174772ee530a520ab7a348bf7417579e789eed7a80913db",
+        "source_fact:v1:2c3f6c22e391dbf930fa553fb1d1783365bac9b8af96882a02085fd5c6f6b556",
+        "source_fact:v1:6db4db0238cdbf18fdce4b9047f49e7db6dc4b077d1f00523da8ef4cd21c65bd",
+        "source_fact:v1:9161df509b7d611f85482ca4ee48ac2732a24e3bc2a789c10e488c4f5a5acbd4",
+        "source_fact:v1:980bf442464375c61f0b810ef0a9f7dc33095bfee9785ad0838068ed96e7df60",
+        "source_fact:v1:ea979fd36c65e3b4eba6399d922562fe1321e40b35968e67913b86fc5443895d",
+        "source_fact:v1:fbe1e4c8b2703292cc7f91ba5a81107ace7fb2bc4aa465946c7cdaaec9247716"
+      ],
+      "source_published_kst": "2026-10-08T03:00+09:00",
+      "source_title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'",
+      "telegram_core_fact": "10년물 금리는 장 초반 5.36%까지 올라 2002년 이후 최고 수준을 기록했지만 입찰 이후 5.28% 안팎으로 하락했다.",
+      "title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'"
+    },
     "source_fact:6f7b8f9b7a258e7ad1ba2ed1": {
       "first_seen_kst": "2026-10-06T06:44:01+09:00",
       "lanes": {
@@ -162254,6 +163200,32 @@
       ],
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
+    },
+    "source_fact:76ba435a56be46e59d825d3f": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01269366645610952",
+      "source": "이데일리",
+      "source_body_digest": "cd1c37c20b14dc82cff8d33e0c90e6e1cf810910ab44ac9bb42527af8ddc56e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74d7bbe04338476dee421a6e004e5da7bb727b84b2133a2dc78c4316a9ead3bb",
+      "source_fact_keys": [
+        "source_fact:v1:0d8e56148229a139a60060c4358bb0ecd3a8cec4838df9469ee04c494cb23bd4",
+        "source_fact:v1:1a39e528eefc906f9174772ee530a520ab7a348bf7417579e789eed7a80913db",
+        "source_fact:v1:2c3f6c22e391dbf930fa553fb1d1783365bac9b8af96882a02085fd5c6f6b556",
+        "source_fact:v1:6db4db0238cdbf18fdce4b9047f49e7db6dc4b077d1f00523da8ef4cd21c65bd",
+        "source_fact:v1:9161df509b7d611f85482ca4ee48ac2732a24e3bc2a789c10e488c4f5a5acbd4",
+        "source_fact:v1:980bf442464375c61f0b810ef0a9f7dc33095bfee9785ad0838068ed96e7df60",
+        "source_fact:v1:ea979fd36c65e3b4eba6399d922562fe1321e40b35968e67913b86fc5443895d",
+        "source_fact:v1:fbe1e4c8b2703292cc7f91ba5a81107ace7fb2bc4aa465946c7cdaaec9247716"
+      ],
+      "source_published_kst": "2026-10-08T03:00+09:00",
+      "source_title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'",
+      "telegram_core_fact": "10년물 금리는 장 초반 5.36%까지 올라 2002년 이후 최고 수준을 기록했지만 입찰 이후 5.28% 안팎으로 하락했다.",
+      "title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'"
     },
     "source_fact:76bccb828ecc420f5bfea387": {
       "first_seen_kst": "2026-10-07T10:49:23+09:00",
@@ -166975,6 +167947,37 @@
       ],
       "source_published_kst": "2026-10-07T07:00+09:00",
       "title": "경영권 인수 넘어 성장자본으로…PEF 순기능 살려야 [김앤장 금융·핀테크·가상자산 인사이트]"
+    },
+    "source_fact:823413c81e5f35ff99de1891": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171373",
+      "source": "매일경제",
+      "source_body_digest": "3abc2530816c6acd69d1374566c3e49c3eb0e15dfc6cf3ecdb79d2a3ae00f160",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:537c3402530ea3720590531ae82a8b5fd41420ddb9230f8e08c9f7741ea090d8",
+      "source_fact_keys": [
+        "source_fact:v1:03bd9925d6bd77a5e7a8db9d4f48a63e6cb8743fafc03e76f937aa808f738fcc",
+        "source_fact:v1:0d00c25d4ecedc0ac3b41f7d1edc2b48fca4453545947a48baf3a9a81cb4970f",
+        "source_fact:v1:0fd8239873ece2f3c332bbdd17417c241925cda66613a1109d33ec33707df7c1",
+        "source_fact:v1:1f3e7896eba2c246119e5e4cbefcad5ddaf9ac587fb86ec933997b3e0e4c7e16",
+        "source_fact:v1:2f83009f7427e06dafaab12030c86b07c78656b049dfe3061233ad661021c7b2",
+        "source_fact:v1:3b9dc0ab80a00ef0ea1915b1a33b2b0b3b3fab56fc0bb3c4eb8ddfcbc47f4393",
+        "source_fact:v1:46eb3f445a058da7d10863d1a82de2541157671ea71df6731134816f40ac950c",
+        "source_fact:v1:634f2e16e1f5a0b98ef9e01e394b98caf6d684357e4f22a863daa0d3b08d306a",
+        "source_fact:v1:8d8052c1ee4e2e1285933bd2bd9dda3713deb0e7a72179785db2b05bc5876708",
+        "source_fact:v1:953131ead8da7e3c45fabe297da1c2777606a004dd254f251a2b2133d61a75da",
+        "source_fact:v1:b9d005e008a6726021b7d6095c1aa06c7a26316a1f2a4a15898c80afe44f693d",
+        "source_fact:v1:d1872f91c1de54ac43459549d73d7a00a3b3bebcea4d6e5b0a18b36db3815bbd",
+        "source_fact:v1:ed57ff658e56782a27990f26b02f17e09c0435ec9f76add691f9526347217f73"
+      ],
+      "source_published_kst": "2026-10-08T02:47+09:00",
+      "source_title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소",
+      "telegram_core_fact": "포르투나 마이닝(FSM)은 3분기 금환산온스(GEO) 기준 생산량이 6만9665온스로 전년 동기(7만2462온스) 대비 3.9%, 전분기(7만2217온스) 대비 3.5% 감소했다고 10월 7일 발표했다.",
+      "title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소"
     },
     "source_fact:823d5d825b0cfe23eb1bacd0": {
       "first_seen_kst": "2026-10-05T19:37:20+09:00",
@@ -174836,6 +175839,37 @@
       "source_published_kst": "2026-10-06T05:55+09:00",
       "title": "금리 공포 누른 AI…나스닥 사상 최고치[뉴욕마감]"
     },
+    "source_fact:96d21cc0294aeb40fe553fec": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171373",
+      "source": "매일경제",
+      "source_body_digest": "3abc2530816c6acd69d1374566c3e49c3eb0e15dfc6cf3ecdb79d2a3ae00f160",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:537c3402530ea3720590531ae82a8b5fd41420ddb9230f8e08c9f7741ea090d8",
+      "source_fact_keys": [
+        "source_fact:v1:03bd9925d6bd77a5e7a8db9d4f48a63e6cb8743fafc03e76f937aa808f738fcc",
+        "source_fact:v1:0d00c25d4ecedc0ac3b41f7d1edc2b48fca4453545947a48baf3a9a81cb4970f",
+        "source_fact:v1:0fd8239873ece2f3c332bbdd17417c241925cda66613a1109d33ec33707df7c1",
+        "source_fact:v1:1f3e7896eba2c246119e5e4cbefcad5ddaf9ac587fb86ec933997b3e0e4c7e16",
+        "source_fact:v1:2f83009f7427e06dafaab12030c86b07c78656b049dfe3061233ad661021c7b2",
+        "source_fact:v1:3b9dc0ab80a00ef0ea1915b1a33b2b0b3b3fab56fc0bb3c4eb8ddfcbc47f4393",
+        "source_fact:v1:46eb3f445a058da7d10863d1a82de2541157671ea71df6731134816f40ac950c",
+        "source_fact:v1:634f2e16e1f5a0b98ef9e01e394b98caf6d684357e4f22a863daa0d3b08d306a",
+        "source_fact:v1:8d8052c1ee4e2e1285933bd2bd9dda3713deb0e7a72179785db2b05bc5876708",
+        "source_fact:v1:953131ead8da7e3c45fabe297da1c2777606a004dd254f251a2b2133d61a75da",
+        "source_fact:v1:b9d005e008a6726021b7d6095c1aa06c7a26316a1f2a4a15898c80afe44f693d",
+        "source_fact:v1:d1872f91c1de54ac43459549d73d7a00a3b3bebcea4d6e5b0a18b36db3815bbd",
+        "source_fact:v1:ed57ff658e56782a27990f26b02f17e09c0435ec9f76add691f9526347217f73"
+      ],
+      "source_published_kst": "2026-10-08T02:47+09:00",
+      "source_title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소",
+      "telegram_core_fact": "포르투나 마이닝(FSM)은 3분기 금환산온스(GEO) 기준 생산량이 6만9665온스로 전년 동기(7만2462온스) 대비 3.9%, 전분기(7만2217온스) 대비 3.5% 감소했다고 10월 7일 발표했다.",
+      "title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소"
+    },
     "source_fact:96f329b492081378ea5203cb": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
@@ -179352,6 +180386,37 @@
       ],
       "source_published_kst": "2026-10-07T07:43+09:00",
       "title": "“56만전자·320만닉스 간다\"…삼전닉스, 3분기 실적 기대 이상"
+    },
+    "source_fact:a21253e927c301e1228546b0": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171373",
+      "source": "매일경제",
+      "source_body_digest": "3abc2530816c6acd69d1374566c3e49c3eb0e15dfc6cf3ecdb79d2a3ae00f160",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:537c3402530ea3720590531ae82a8b5fd41420ddb9230f8e08c9f7741ea090d8",
+      "source_fact_keys": [
+        "source_fact:v1:03bd9925d6bd77a5e7a8db9d4f48a63e6cb8743fafc03e76f937aa808f738fcc",
+        "source_fact:v1:0d00c25d4ecedc0ac3b41f7d1edc2b48fca4453545947a48baf3a9a81cb4970f",
+        "source_fact:v1:0fd8239873ece2f3c332bbdd17417c241925cda66613a1109d33ec33707df7c1",
+        "source_fact:v1:1f3e7896eba2c246119e5e4cbefcad5ddaf9ac587fb86ec933997b3e0e4c7e16",
+        "source_fact:v1:2f83009f7427e06dafaab12030c86b07c78656b049dfe3061233ad661021c7b2",
+        "source_fact:v1:3b9dc0ab80a00ef0ea1915b1a33b2b0b3b3fab56fc0bb3c4eb8ddfcbc47f4393",
+        "source_fact:v1:46eb3f445a058da7d10863d1a82de2541157671ea71df6731134816f40ac950c",
+        "source_fact:v1:634f2e16e1f5a0b98ef9e01e394b98caf6d684357e4f22a863daa0d3b08d306a",
+        "source_fact:v1:8d8052c1ee4e2e1285933bd2bd9dda3713deb0e7a72179785db2b05bc5876708",
+        "source_fact:v1:953131ead8da7e3c45fabe297da1c2777606a004dd254f251a2b2133d61a75da",
+        "source_fact:v1:b9d005e008a6726021b7d6095c1aa06c7a26316a1f2a4a15898c80afe44f693d",
+        "source_fact:v1:d1872f91c1de54ac43459549d73d7a00a3b3bebcea4d6e5b0a18b36db3815bbd",
+        "source_fact:v1:ed57ff658e56782a27990f26b02f17e09c0435ec9f76add691f9526347217f73"
+      ],
+      "source_published_kst": "2026-10-08T02:47+09:00",
+      "source_title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소",
+      "telegram_core_fact": "포르투나 마이닝(FSM)은 3분기 금환산온스(GEO) 기준 생산량이 6만9665온스로 전년 동기(7만2462온스) 대비 3.9%, 전분기(7만2217온스) 대비 3.5% 감소했다고 10월 7일 발표했다.",
+      "title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소"
     },
     "source_fact:a21af9ae54ed1e51825cc3f7": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
@@ -184288,6 +185353,32 @@
       "source_published_kst": "2026-10-07T15:16+09:00",
       "title": "외국인 투자 늘었지만…제조업 '새 투자' 줄고 M&A에 몰렸다"
     },
+    "source_fact:af04f70aa9e3928b5f5043d8": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01269366645610952",
+      "source": "이데일리",
+      "source_body_digest": "cd1c37c20b14dc82cff8d33e0c90e6e1cf810910ab44ac9bb42527af8ddc56e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74d7bbe04338476dee421a6e004e5da7bb727b84b2133a2dc78c4316a9ead3bb",
+      "source_fact_keys": [
+        "source_fact:v1:0d8e56148229a139a60060c4358bb0ecd3a8cec4838df9469ee04c494cb23bd4",
+        "source_fact:v1:1a39e528eefc906f9174772ee530a520ab7a348bf7417579e789eed7a80913db",
+        "source_fact:v1:2c3f6c22e391dbf930fa553fb1d1783365bac9b8af96882a02085fd5c6f6b556",
+        "source_fact:v1:6db4db0238cdbf18fdce4b9047f49e7db6dc4b077d1f00523da8ef4cd21c65bd",
+        "source_fact:v1:9161df509b7d611f85482ca4ee48ac2732a24e3bc2a789c10e488c4f5a5acbd4",
+        "source_fact:v1:980bf442464375c61f0b810ef0a9f7dc33095bfee9785ad0838068ed96e7df60",
+        "source_fact:v1:ea979fd36c65e3b4eba6399d922562fe1321e40b35968e67913b86fc5443895d",
+        "source_fact:v1:fbe1e4c8b2703292cc7f91ba5a81107ace7fb2bc4aa465946c7cdaaec9247716"
+      ],
+      "source_published_kst": "2026-10-08T03:00+09:00",
+      "source_title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'",
+      "telegram_core_fact": "10년물 금리는 장 초반 5.36%까지 올라 2002년 이후 최고 수준을 기록했지만 입찰 이후 5.28% 안팎으로 하락했다.",
+      "title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'"
+    },
     "source_fact:af45012d539c2ff45401ed91": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
       "lanes": {
@@ -186145,6 +187236,26 @@
       "source_published_kst": "2026-10-06T11:30+09:00",
       "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
     },
+    "source_fact:b33fbd2f51e35e9dc06041dd": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170783",
+      "source": "매일경제",
+      "source_body_digest": "0a8cebf1fcfc440212a3d9cc465033a5279e42427dcf2d853073bf5d2b22d633",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c999e85af9a871d9046f16a385ae22ae342698778738b986ab70a195b6cb837",
+      "source_fact_keys": [
+        "source_fact:v1:1e09c286b3701f7dd123655017099bbd86ad0d1588f13db53c9ee379895a136f",
+        "source_fact:v1:2bd0c1f82b9afac4ca8961ac6051ca893c48a1ddf9c038476a06e440163a9e26"
+      ],
+      "source_published_kst": "2026-10-07T17:57+09:00",
+      "source_title": "워너브라더스 투자 나선 신세계프라퍼티, 메리츠서 1조 조달",
+      "telegram_core_fact": "투자은행(IB) 업계에 따르면 신세계프라퍼티는 메리츠증권을 상대로 약 1조원 사모사채를 발행할 예정인 것으로 알려졌다. 이마트는 지난 6일 종속회사를 통해 파라마운트 스카이댄스와 WBD 합병 과정에서 발행되는 신주에 10억달러(약 1조3596억원)를 간접 투자한다고 공시했다.",
+      "title": "워너브라더스 투자 나선 신세계프라퍼티, 메리츠서 1조 조달"
+    },
     "source_fact:b344b6fce3ec5c44af5736b2": {
       "first_seen_kst": "2026-10-07T22:24:07+09:00",
       "lanes": {
@@ -187627,6 +188738,28 @@
       ],
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "외국인·명품 소비에 비용 절감까지…백화점 3사, 3분기 실적 ‘청신호’"
+    },
+    "source_fact:b79f81bb3e9fa96a42888915": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.hankyung.com/article/202610078343i",
+      "source": "한국경제",
+      "source_body_digest": "7d6d003dbda7eb0e48d398e98f12fc11054047219df3d8300d2b077e11b48086",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b1aed08e506d138a7a91d04a0896c2f85968eaaeb325e9bdc0472723176a539",
+      "source_fact_keys": [
+        "source_fact:v1:273c9a1df30ef1067edd9a8e7ba65d10f24859353adce4287581d33ef5705b0f",
+        "source_fact:v1:33226455cf53c77672f96c86030cb157b8930256ff7cc33c278488141e41a2df",
+        "source_fact:v1:678731c00f355126c614526b56eda3664b830b6fdd1fe829ec0f16b68c07cb45",
+        "source_fact:v1:9ebb8b818ddbc2a3c801762123a614d478fdf013e9fd55765888af401aa51c11"
+      ],
+      "source_published_kst": "2026-10-07T14:31+09:00",
+      "source_title": "바이젠셀, ‘바이오재팬 2026’서 日 재생의료 시장 공략…기술이전·직접진출 추진",
+      "telegram_core_fact": "이번 행사에서 바이젠셀은 재생의료 분야의 임상 및 사업화 경험이 축적된 일본 시장을 중심으로 글로벌 제약·바이오 기업들과 파트너링 미팅을 진행하고, 주요 파이프라인의 기술이전 및 공동개발 등 다양한 사업협력 가능성을 모색할 계획이다.",
+      "title": "바이젠셀, ‘바이오재팬 2026’서 日 재생의료 시장 공략…기술이전·직접진출 추진"
     },
     "source_fact:b7ae04c0d7e9803089d5b377": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
@@ -191888,6 +193021,45 @@
       "source_published_kst": "2026-10-07T06:22+09:00",
       "title": "“러시아 숨통 틔워줬다”…우크라, 韓 ‘석유 공급’ 공개 저격"
     },
+    "source_fact:c2b116f9f7ca568b2ce29312": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171226",
+      "source": "매일경제",
+      "source_body_digest": "c01f5f58f2498ac9186e3c39eb438c437eda3a063ea2727dfa1955384b9e2db3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d09f41926ebcd728416ceefe316790eeb038fd37bcf92a5f23dd6bfbf7e95439",
+      "source_fact_keys": [
+        "source_fact:v1:cb6080b6bce9d016b0e86b40c68185ec5fd7f2bbc4442111a29ec5afa3d3851b"
+      ],
+      "source_published_kst": "2026-10-07T17:43+09:00",
+      "source_title": "\"코리아 디스카운트 해소, 주주환원 지속에 답 있다\"",
+      "telegram_core_fact": "주주환원이 꾸준히 이어지는지, 실제로 벌어들인 현금 흐름을 바탕으로 하는지, 발표에 그치지 않고 자사주 소각 등 실제 행동으로 연결되는지를 본다는 것이다.",
+      "title": "\"코리아 디스카운트 해소, 주주환원 지속에 답 있다\""
+    },
+    "source_fact:c2b285c2ce544abac327bd92": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817733",
+      "source": "뉴시스",
+      "source_body_digest": "db75db321e32e2ee1f1d83911633ad72576f0e0e114a68752cad32b135799e1a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:788f3b8af74fdd292a21bc691199edc7d0bb774e63e5583409783a6d416812d0",
+      "source_fact_keys": [
+        "source_fact:v1:0ea111f77d1921dcb186ca9595e289a6d84bccf2d15ec5c4b61f3f516d817645",
+        "source_fact:v1:cd9ac60452ef715812879e52398b0311ae58a0c1f18220053fafe1fac88a0207"
+      ],
+      "source_published_kst": "2026-10-07T16:00+09:00",
+      "source_title": "위성 개발·제조 넘어 AI서비스로…한화시스템, 우주사업 키운다[누리호 5차 발사]",
+      "telegram_core_fact": "한화시스템은 향후 초저궤도 SAR 위성과 우주 AI 데이터센터, 위성통신망 등에 약 20조원을 투자할 계획이다.",
+      "title": "위성 개발·제조 넘어 AI서비스로…한화시스템, 우주사업 키운다[누리호 5차 발사]"
+    },
     "source_fact:c2c48154aab9d1735719fd76": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
       "lanes": {
@@ -194070,6 +195242,26 @@
       "source_published_kst": "2026-10-06T11:08+09:00",
       "title": "현대차그룹, 1~8월 글로벌 전기차 판매 20%↑…\"亞·유럽서 지속 성장\""
     },
+    "source_fact:c7858078a33e9f72e1ad1777": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817733",
+      "source": "뉴시스",
+      "source_body_digest": "db75db321e32e2ee1f1d83911633ad72576f0e0e114a68752cad32b135799e1a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:788f3b8af74fdd292a21bc691199edc7d0bb774e63e5583409783a6d416812d0",
+      "source_fact_keys": [
+        "source_fact:v1:0ea111f77d1921dcb186ca9595e289a6d84bccf2d15ec5c4b61f3f516d817645",
+        "source_fact:v1:cd9ac60452ef715812879e52398b0311ae58a0c1f18220053fafe1fac88a0207"
+      ],
+      "source_published_kst": "2026-10-07T16:00+09:00",
+      "source_title": "위성 개발·제조 넘어 AI서비스로…한화시스템, 우주사업 키운다[누리호 5차 발사]",
+      "telegram_core_fact": "한화시스템은 향후 초저궤도 SAR 위성과 우주 AI 데이터센터, 위성통신망 등에 약 20조원을 투자할 계획이다.",
+      "title": "위성 개발·제조 넘어 AI서비스로…한화시스템, 우주사업 키운다[누리호 5차 발사]"
+    },
     "source_fact:c787103e7de4d0a8b78cce6a": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
       "lanes": {
@@ -196044,6 +197236,28 @@
       ],
       "source_published_kst": "2026-10-05T19:06+09:00",
       "title": "HDFC 은행, 분기 평균 예수금 32조 루피·17% 증가"
+    },
+    "source_fact:cd243b41c9765fd801da0f6e": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.hankyung.com/article/202610078343i",
+      "source": "한국경제",
+      "source_body_digest": "7d6d003dbda7eb0e48d398e98f12fc11054047219df3d8300d2b077e11b48086",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b1aed08e506d138a7a91d04a0896c2f85968eaaeb325e9bdc0472723176a539",
+      "source_fact_keys": [
+        "source_fact:v1:273c9a1df30ef1067edd9a8e7ba65d10f24859353adce4287581d33ef5705b0f",
+        "source_fact:v1:33226455cf53c77672f96c86030cb157b8930256ff7cc33c278488141e41a2df",
+        "source_fact:v1:678731c00f355126c614526b56eda3664b830b6fdd1fe829ec0f16b68c07cb45",
+        "source_fact:v1:9ebb8b818ddbc2a3c801762123a614d478fdf013e9fd55765888af401aa51c11"
+      ],
+      "source_published_kst": "2026-10-07T14:31+09:00",
+      "source_title": "바이젠셀, ‘바이오재팬 2026’서 日 재생의료 시장 공략…기술이전·직접진출 추진",
+      "telegram_core_fact": "이번 행사에서 바이젠셀은 재생의료 분야의 임상 및 사업화 경험이 축적된 일본 시장을 중심으로 글로벌 제약·바이오 기업들과 파트너링 미팅을 진행하고, 주요 파이프라인의 기술이전 및 공동개발 등 다양한 사업협력 가능성을 모색할 계획이다.",
+      "title": "바이젠셀, ‘바이오재팬 2026’서 日 재생의료 시장 공략…기술이전·직접진출 추진"
     },
     "source_fact:cd2be43205ef1ed0cba9c494": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
@@ -199533,6 +200747,32 @@
       ],
       "source_published_kst": "2026-10-06T14:55+09:00",
       "title": "대전시 아이들 밥상 챙긴다…학교급식 식품비 15% 인상"
+    },
+    "source_fact:d5ff92d6f58a0bd508df7b82": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01269366645610952",
+      "source": "이데일리",
+      "source_body_digest": "cd1c37c20b14dc82cff8d33e0c90e6e1cf810910ab44ac9bb42527af8ddc56e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74d7bbe04338476dee421a6e004e5da7bb727b84b2133a2dc78c4316a9ead3bb",
+      "source_fact_keys": [
+        "source_fact:v1:0d8e56148229a139a60060c4358bb0ecd3a8cec4838df9469ee04c494cb23bd4",
+        "source_fact:v1:1a39e528eefc906f9174772ee530a520ab7a348bf7417579e789eed7a80913db",
+        "source_fact:v1:2c3f6c22e391dbf930fa553fb1d1783365bac9b8af96882a02085fd5c6f6b556",
+        "source_fact:v1:6db4db0238cdbf18fdce4b9047f49e7db6dc4b077d1f00523da8ef4cd21c65bd",
+        "source_fact:v1:9161df509b7d611f85482ca4ee48ac2732a24e3bc2a789c10e488c4f5a5acbd4",
+        "source_fact:v1:980bf442464375c61f0b810ef0a9f7dc33095bfee9785ad0838068ed96e7df60",
+        "source_fact:v1:ea979fd36c65e3b4eba6399d922562fe1321e40b35968e67913b86fc5443895d",
+        "source_fact:v1:fbe1e4c8b2703292cc7f91ba5a81107ace7fb2bc4aa465946c7cdaaec9247716"
+      ],
+      "source_published_kst": "2026-10-08T03:00+09:00",
+      "source_title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'",
+      "telegram_core_fact": "10년물 금리는 장 초반 5.36%까지 올라 2002년 이후 최고 수준을 기록했지만 입찰 이후 5.28% 안팎으로 하락했다.",
+      "title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'"
     },
     "source_fact:d61bd6a3f3102ce18d3afc79": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
@@ -204467,6 +205707,37 @@
       "source_published_kst": "2026-10-07T07:38+09:00",
       "title": "NAVER, 3분기 실적은 부진...AI팩토리·두나무 합병 주목-유진"
     },
+    "source_fact:e0b1872e68cbb6b36ac6d045": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171373",
+      "source": "매일경제",
+      "source_body_digest": "3abc2530816c6acd69d1374566c3e49c3eb0e15dfc6cf3ecdb79d2a3ae00f160",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:537c3402530ea3720590531ae82a8b5fd41420ddb9230f8e08c9f7741ea090d8",
+      "source_fact_keys": [
+        "source_fact:v1:03bd9925d6bd77a5e7a8db9d4f48a63e6cb8743fafc03e76f937aa808f738fcc",
+        "source_fact:v1:0d00c25d4ecedc0ac3b41f7d1edc2b48fca4453545947a48baf3a9a81cb4970f",
+        "source_fact:v1:0fd8239873ece2f3c332bbdd17417c241925cda66613a1109d33ec33707df7c1",
+        "source_fact:v1:1f3e7896eba2c246119e5e4cbefcad5ddaf9ac587fb86ec933997b3e0e4c7e16",
+        "source_fact:v1:2f83009f7427e06dafaab12030c86b07c78656b049dfe3061233ad661021c7b2",
+        "source_fact:v1:3b9dc0ab80a00ef0ea1915b1a33b2b0b3b3fab56fc0bb3c4eb8ddfcbc47f4393",
+        "source_fact:v1:46eb3f445a058da7d10863d1a82de2541157671ea71df6731134816f40ac950c",
+        "source_fact:v1:634f2e16e1f5a0b98ef9e01e394b98caf6d684357e4f22a863daa0d3b08d306a",
+        "source_fact:v1:8d8052c1ee4e2e1285933bd2bd9dda3713deb0e7a72179785db2b05bc5876708",
+        "source_fact:v1:953131ead8da7e3c45fabe297da1c2777606a004dd254f251a2b2133d61a75da",
+        "source_fact:v1:b9d005e008a6726021b7d6095c1aa06c7a26316a1f2a4a15898c80afe44f693d",
+        "source_fact:v1:d1872f91c1de54ac43459549d73d7a00a3b3bebcea4d6e5b0a18b36db3815bbd",
+        "source_fact:v1:ed57ff658e56782a27990f26b02f17e09c0435ec9f76add691f9526347217f73"
+      ],
+      "source_published_kst": "2026-10-08T02:47+09:00",
+      "source_title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소",
+      "telegram_core_fact": "포르투나 마이닝(FSM)은 3분기 금환산온스(GEO) 기준 생산량이 6만9665온스로 전년 동기(7만2462온스) 대비 3.9%, 전분기(7만2217온스) 대비 3.5% 감소했다고 10월 7일 발표했다.",
+      "title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소"
+    },
     "source_fact:e0b9d36e4e38409eb1a00dd4": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -204623,6 +205894,32 @@
       "source_title": "셀리드, 코로나19 백신 적용 항원 플랫폼 기술…중국·인도 특허 등록",
       "telegram_core_fact": "\"셀리드의 기술력을 바탕으로 국산 코로나19 백신 상용화를 달성하고 백신 주권 확보에 기여하겠다\"고 덧붙였다.",
       "title": "셀리드, 코로나19 백신 적용 항원 플랫폼 기술…중국·인도 특허 등록"
+    },
+    "source_fact:e0d9f2f6ed0d7658c3936ac5": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01269366645610952",
+      "source": "이데일리",
+      "source_body_digest": "cd1c37c20b14dc82cff8d33e0c90e6e1cf810910ab44ac9bb42527af8ddc56e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74d7bbe04338476dee421a6e004e5da7bb727b84b2133a2dc78c4316a9ead3bb",
+      "source_fact_keys": [
+        "source_fact:v1:0d8e56148229a139a60060c4358bb0ecd3a8cec4838df9469ee04c494cb23bd4",
+        "source_fact:v1:1a39e528eefc906f9174772ee530a520ab7a348bf7417579e789eed7a80913db",
+        "source_fact:v1:2c3f6c22e391dbf930fa553fb1d1783365bac9b8af96882a02085fd5c6f6b556",
+        "source_fact:v1:6db4db0238cdbf18fdce4b9047f49e7db6dc4b077d1f00523da8ef4cd21c65bd",
+        "source_fact:v1:9161df509b7d611f85482ca4ee48ac2732a24e3bc2a789c10e488c4f5a5acbd4",
+        "source_fact:v1:980bf442464375c61f0b810ef0a9f7dc33095bfee9785ad0838068ed96e7df60",
+        "source_fact:v1:ea979fd36c65e3b4eba6399d922562fe1321e40b35968e67913b86fc5443895d",
+        "source_fact:v1:fbe1e4c8b2703292cc7f91ba5a81107ace7fb2bc4aa465946c7cdaaec9247716"
+      ],
+      "source_published_kst": "2026-10-08T03:00+09:00",
+      "source_title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'",
+      "telegram_core_fact": "10년물 금리는 장 초반 5.36%까지 올라 2002년 이후 최고 수준을 기록했지만 입찰 이후 5.28% 안팎으로 하락했다.",
+      "title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'"
     },
     "source_fact:e0de7bcd8f507ea7d39d4f7c": {
       "first_seen_kst": "2026-10-06T21:05:27+09:00",
@@ -211137,6 +212434,26 @@
       "source_published_kst": "2026-10-07T07:38+09:00",
       "title": "NAVER, 3분기 실적은 부진...AI팩토리·두나무 합병 주목-유진"
     },
+    "source_fact:ef1b18eff5c077e022d0e066": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170783",
+      "source": "매일경제",
+      "source_body_digest": "0a8cebf1fcfc440212a3d9cc465033a5279e42427dcf2d853073bf5d2b22d633",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c999e85af9a871d9046f16a385ae22ae342698778738b986ab70a195b6cb837",
+      "source_fact_keys": [
+        "source_fact:v1:1e09c286b3701f7dd123655017099bbd86ad0d1588f13db53c9ee379895a136f",
+        "source_fact:v1:2bd0c1f82b9afac4ca8961ac6051ca893c48a1ddf9c038476a06e440163a9e26"
+      ],
+      "source_published_kst": "2026-10-07T17:57+09:00",
+      "source_title": "워너브라더스 투자 나선 신세계프라퍼티, 메리츠서 1조 조달",
+      "telegram_core_fact": "투자은행(IB) 업계에 따르면 신세계프라퍼티는 메리츠증권을 상대로 약 1조원 사모사채를 발행할 예정인 것으로 알려졌다. 이마트는 지난 6일 종속회사를 통해 파라마운트 스카이댄스와 WBD 합병 과정에서 발행되는 신주에 10억달러(약 1조3596억원)를 간접 투자한다고 공시했다.",
+      "title": "워너브라더스 투자 나선 신세계프라퍼티, 메리츠서 1조 조달"
+    },
     "source_fact:ef402e514c69b758444f8164": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
       "lanes": {
@@ -211576,6 +212893,37 @@
       ],
       "source_published_kst": "2026-10-06T11:44+09:00",
       "title": "직스테크놀로지·한신공영·정도, AI 기반 '데이터센터 스마트 건설' 맞손"
+    },
+    "source_fact:f090f03a4cc65c4ba2ef5fe9": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171373",
+      "source": "매일경제",
+      "source_body_digest": "3abc2530816c6acd69d1374566c3e49c3eb0e15dfc6cf3ecdb79d2a3ae00f160",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:537c3402530ea3720590531ae82a8b5fd41420ddb9230f8e08c9f7741ea090d8",
+      "source_fact_keys": [
+        "source_fact:v1:03bd9925d6bd77a5e7a8db9d4f48a63e6cb8743fafc03e76f937aa808f738fcc",
+        "source_fact:v1:0d00c25d4ecedc0ac3b41f7d1edc2b48fca4453545947a48baf3a9a81cb4970f",
+        "source_fact:v1:0fd8239873ece2f3c332bbdd17417c241925cda66613a1109d33ec33707df7c1",
+        "source_fact:v1:1f3e7896eba2c246119e5e4cbefcad5ddaf9ac587fb86ec933997b3e0e4c7e16",
+        "source_fact:v1:2f83009f7427e06dafaab12030c86b07c78656b049dfe3061233ad661021c7b2",
+        "source_fact:v1:3b9dc0ab80a00ef0ea1915b1a33b2b0b3b3fab56fc0bb3c4eb8ddfcbc47f4393",
+        "source_fact:v1:46eb3f445a058da7d10863d1a82de2541157671ea71df6731134816f40ac950c",
+        "source_fact:v1:634f2e16e1f5a0b98ef9e01e394b98caf6d684357e4f22a863daa0d3b08d306a",
+        "source_fact:v1:8d8052c1ee4e2e1285933bd2bd9dda3713deb0e7a72179785db2b05bc5876708",
+        "source_fact:v1:953131ead8da7e3c45fabe297da1c2777606a004dd254f251a2b2133d61a75da",
+        "source_fact:v1:b9d005e008a6726021b7d6095c1aa06c7a26316a1f2a4a15898c80afe44f693d",
+        "source_fact:v1:d1872f91c1de54ac43459549d73d7a00a3b3bebcea4d6e5b0a18b36db3815bbd",
+        "source_fact:v1:ed57ff658e56782a27990f26b02f17e09c0435ec9f76add691f9526347217f73"
+      ],
+      "source_published_kst": "2026-10-08T02:47+09:00",
+      "source_title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소",
+      "telegram_core_fact": "포르투나 마이닝(FSM)은 3분기 금환산온스(GEO) 기준 생산량이 6만9665온스로 전년 동기(7만2462온스) 대비 3.9%, 전분기(7만2217온스) 대비 3.5% 감소했다고 10월 7일 발표했다.",
+      "title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소"
     },
     "source_fact:f091c66219b40ebf83967c2d": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
@@ -212722,6 +214070,28 @@
       ],
       "source_published_kst": "2026-10-06T17:52+09:00",
       "title": "코스닥, 석달 만에 900 뚫었다…소부장·바이오·배터리주 강세"
+    },
+    "source_fact:f3bbbf57fc253179589b3a6e": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.hankyung.com/article/202610078343i",
+      "source": "한국경제",
+      "source_body_digest": "7d6d003dbda7eb0e48d398e98f12fc11054047219df3d8300d2b077e11b48086",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b1aed08e506d138a7a91d04a0896c2f85968eaaeb325e9bdc0472723176a539",
+      "source_fact_keys": [
+        "source_fact:v1:273c9a1df30ef1067edd9a8e7ba65d10f24859353adce4287581d33ef5705b0f",
+        "source_fact:v1:33226455cf53c77672f96c86030cb157b8930256ff7cc33c278488141e41a2df",
+        "source_fact:v1:678731c00f355126c614526b56eda3664b830b6fdd1fe829ec0f16b68c07cb45",
+        "source_fact:v1:9ebb8b818ddbc2a3c801762123a614d478fdf013e9fd55765888af401aa51c11"
+      ],
+      "source_published_kst": "2026-10-07T14:31+09:00",
+      "source_title": "바이젠셀, ‘바이오재팬 2026’서 日 재생의료 시장 공략…기술이전·직접진출 추진",
+      "telegram_core_fact": "이번 행사에서 바이젠셀은 재생의료 분야의 임상 및 사업화 경험이 축적된 일본 시장을 중심으로 글로벌 제약·바이오 기업들과 파트너링 미팅을 진행하고, 주요 파이프라인의 기술이전 및 공동개발 등 다양한 사업협력 가능성을 모색할 계획이다.",
+      "title": "바이젠셀, ‘바이오재팬 2026’서 日 재생의료 시장 공략…기술이전·직접진출 추진"
     },
     "source_fact:f3c7774714f7d9d839e5b83f": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
@@ -216734,6 +218104,37 @@
       ],
       "source_published_kst": "2026-10-06T11:30+09:00",
       "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
+    },
+    "source_fact:ff2befa2164c149b385dfe9e": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171373",
+      "source": "매일경제",
+      "source_body_digest": "3abc2530816c6acd69d1374566c3e49c3eb0e15dfc6cf3ecdb79d2a3ae00f160",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:537c3402530ea3720590531ae82a8b5fd41420ddb9230f8e08c9f7741ea090d8",
+      "source_fact_keys": [
+        "source_fact:v1:03bd9925d6bd77a5e7a8db9d4f48a63e6cb8743fafc03e76f937aa808f738fcc",
+        "source_fact:v1:0d00c25d4ecedc0ac3b41f7d1edc2b48fca4453545947a48baf3a9a81cb4970f",
+        "source_fact:v1:0fd8239873ece2f3c332bbdd17417c241925cda66613a1109d33ec33707df7c1",
+        "source_fact:v1:1f3e7896eba2c246119e5e4cbefcad5ddaf9ac587fb86ec933997b3e0e4c7e16",
+        "source_fact:v1:2f83009f7427e06dafaab12030c86b07c78656b049dfe3061233ad661021c7b2",
+        "source_fact:v1:3b9dc0ab80a00ef0ea1915b1a33b2b0b3b3fab56fc0bb3c4eb8ddfcbc47f4393",
+        "source_fact:v1:46eb3f445a058da7d10863d1a82de2541157671ea71df6731134816f40ac950c",
+        "source_fact:v1:634f2e16e1f5a0b98ef9e01e394b98caf6d684357e4f22a863daa0d3b08d306a",
+        "source_fact:v1:8d8052c1ee4e2e1285933bd2bd9dda3713deb0e7a72179785db2b05bc5876708",
+        "source_fact:v1:953131ead8da7e3c45fabe297da1c2777606a004dd254f251a2b2133d61a75da",
+        "source_fact:v1:b9d005e008a6726021b7d6095c1aa06c7a26316a1f2a4a15898c80afe44f693d",
+        "source_fact:v1:d1872f91c1de54ac43459549d73d7a00a3b3bebcea4d6e5b0a18b36db3815bbd",
+        "source_fact:v1:ed57ff658e56782a27990f26b02f17e09c0435ec9f76add691f9526347217f73"
+      ],
+      "source_published_kst": "2026-10-08T02:47+09:00",
+      "source_title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소",
+      "telegram_core_fact": "포르투나 마이닝(FSM)은 3분기 금환산온스(GEO) 기준 생산량이 6만9665온스로 전년 동기(7만2462온스) 대비 3.9%, 전분기(7만2217온스) 대비 3.5% 감소했다고 10월 7일 발표했다.",
+      "title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소"
     },
     "source_fact:ff2c2bce81d94b2d2aaefe5e": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -222275,6 +223676,26 @@
       "link": "https://www.mt.co.kr/economy/2026/10/01/2026100115285954103",
       "source": "머니투데이",
       "title": "수출 1조달러 눈앞…한국 수출 어디서 얼마나 벌었나"
+    },
+    "title:22fbef94a308c03c03f5cf2b": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817733",
+      "source": "뉴시스",
+      "source_body_digest": "db75db321e32e2ee1f1d83911633ad72576f0e0e114a68752cad32b135799e1a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:788f3b8af74fdd292a21bc691199edc7d0bb774e63e5583409783a6d416812d0",
+      "source_fact_keys": [
+        "source_fact:v1:0ea111f77d1921dcb186ca9595e289a6d84bccf2d15ec5c4b61f3f516d817645",
+        "source_fact:v1:cd9ac60452ef715812879e52398b0311ae58a0c1f18220053fafe1fac88a0207"
+      ],
+      "source_published_kst": "2026-10-07T16:00+09:00",
+      "source_title": "위성 개발·제조 넘어 AI서비스로…한화시스템, 우주사업 키운다[누리호 5차 발사]",
+      "telegram_core_fact": "한화시스템은 향후 초저궤도 SAR 위성과 우주 AI 데이터센터, 위성통신망 등에 약 20조원을 투자할 계획이다.",
+      "title": "위성 개발·제조 넘어 AI서비스로…한화시스템, 우주사업 키운다[누리호 5차 발사]"
     },
     "title:2306e2235aa295b391f4ac05": {
       "first_seen_kst": "2026-10-01T18:06:18+09:00",
@@ -228913,6 +230334,32 @@
       "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
     },
+    "title:4a24b14c48d1d8967b0ca16a": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01269366645610952",
+      "source": "이데일리",
+      "source_body_digest": "cd1c37c20b14dc82cff8d33e0c90e6e1cf810910ab44ac9bb42527af8ddc56e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74d7bbe04338476dee421a6e004e5da7bb727b84b2133a2dc78c4316a9ead3bb",
+      "source_fact_keys": [
+        "source_fact:v1:0d8e56148229a139a60060c4358bb0ecd3a8cec4838df9469ee04c494cb23bd4",
+        "source_fact:v1:1a39e528eefc906f9174772ee530a520ab7a348bf7417579e789eed7a80913db",
+        "source_fact:v1:2c3f6c22e391dbf930fa553fb1d1783365bac9b8af96882a02085fd5c6f6b556",
+        "source_fact:v1:6db4db0238cdbf18fdce4b9047f49e7db6dc4b077d1f00523da8ef4cd21c65bd",
+        "source_fact:v1:9161df509b7d611f85482ca4ee48ac2732a24e3bc2a789c10e488c4f5a5acbd4",
+        "source_fact:v1:980bf442464375c61f0b810ef0a9f7dc33095bfee9785ad0838068ed96e7df60",
+        "source_fact:v1:ea979fd36c65e3b4eba6399d922562fe1321e40b35968e67913b86fc5443895d",
+        "source_fact:v1:fbe1e4c8b2703292cc7f91ba5a81107ace7fb2bc4aa465946c7cdaaec9247716"
+      ],
+      "source_published_kst": "2026-10-08T03:00+09:00",
+      "source_title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'",
+      "telegram_core_fact": "10년물 금리는 장 초반 5.36%까지 올라 2002년 이후 최고 수준을 기록했지만 입찰 이후 5.28% 안팎으로 하락했다.",
+      "title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'"
+    },
     "title:4a4a5450c6fdbb8cf28286df": {
       "first_seen_kst": "2026-10-07T22:00:35+09:00",
       "lanes": {
@@ -229864,6 +231311,28 @@
       ],
       "source_published_kst": "2026-10-05T19:02+09:00",
       "title": "세제·부동산·대미투자… 李정부 2년차 정책 검증 '경제 국감' [국정감사 핫이슈]"
+    },
+    "title:508379d9c158c27843f946f0": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.hankyung.com/article/202610078343i",
+      "source": "한국경제",
+      "source_body_digest": "7d6d003dbda7eb0e48d398e98f12fc11054047219df3d8300d2b077e11b48086",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b1aed08e506d138a7a91d04a0896c2f85968eaaeb325e9bdc0472723176a539",
+      "source_fact_keys": [
+        "source_fact:v1:273c9a1df30ef1067edd9a8e7ba65d10f24859353adce4287581d33ef5705b0f",
+        "source_fact:v1:33226455cf53c77672f96c86030cb157b8930256ff7cc33c278488141e41a2df",
+        "source_fact:v1:678731c00f355126c614526b56eda3664b830b6fdd1fe829ec0f16b68c07cb45",
+        "source_fact:v1:9ebb8b818ddbc2a3c801762123a614d478fdf013e9fd55765888af401aa51c11"
+      ],
+      "source_published_kst": "2026-10-07T14:31+09:00",
+      "source_title": "바이젠셀, ‘바이오재팬 2026’서 日 재생의료 시장 공략…기술이전·직접진출 추진",
+      "telegram_core_fact": "이번 행사에서 바이젠셀은 재생의료 분야의 임상 및 사업화 경험이 축적된 일본 시장을 중심으로 글로벌 제약·바이오 기업들과 파트너링 미팅을 진행하고, 주요 파이프라인의 기술이전 및 공동개발 등 다양한 사업협력 가능성을 모색할 계획이다.",
+      "title": "바이젠셀, ‘바이오재팬 2026’서 日 재생의료 시장 공략…기술이전·직접진출 추진"
     },
     "title:5086881ba976d4d47b73bb43": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
@@ -242995,6 +244464,37 @@
       "source": "뉴시스",
       "title": "[속보]뉴욕증시, 혼조 출발…연준 금리 인상 속 나스닥 0.3%↑"
     },
+    "title:a83e6464097d3a542a33cb3a": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171373",
+      "source": "매일경제",
+      "source_body_digest": "3abc2530816c6acd69d1374566c3e49c3eb0e15dfc6cf3ecdb79d2a3ae00f160",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:537c3402530ea3720590531ae82a8b5fd41420ddb9230f8e08c9f7741ea090d8",
+      "source_fact_keys": [
+        "source_fact:v1:03bd9925d6bd77a5e7a8db9d4f48a63e6cb8743fafc03e76f937aa808f738fcc",
+        "source_fact:v1:0d00c25d4ecedc0ac3b41f7d1edc2b48fca4453545947a48baf3a9a81cb4970f",
+        "source_fact:v1:0fd8239873ece2f3c332bbdd17417c241925cda66613a1109d33ec33707df7c1",
+        "source_fact:v1:1f3e7896eba2c246119e5e4cbefcad5ddaf9ac587fb86ec933997b3e0e4c7e16",
+        "source_fact:v1:2f83009f7427e06dafaab12030c86b07c78656b049dfe3061233ad661021c7b2",
+        "source_fact:v1:3b9dc0ab80a00ef0ea1915b1a33b2b0b3b3fab56fc0bb3c4eb8ddfcbc47f4393",
+        "source_fact:v1:46eb3f445a058da7d10863d1a82de2541157671ea71df6731134816f40ac950c",
+        "source_fact:v1:634f2e16e1f5a0b98ef9e01e394b98caf6d684357e4f22a863daa0d3b08d306a",
+        "source_fact:v1:8d8052c1ee4e2e1285933bd2bd9dda3713deb0e7a72179785db2b05bc5876708",
+        "source_fact:v1:953131ead8da7e3c45fabe297da1c2777606a004dd254f251a2b2133d61a75da",
+        "source_fact:v1:b9d005e008a6726021b7d6095c1aa06c7a26316a1f2a4a15898c80afe44f693d",
+        "source_fact:v1:d1872f91c1de54ac43459549d73d7a00a3b3bebcea4d6e5b0a18b36db3815bbd",
+        "source_fact:v1:ed57ff658e56782a27990f26b02f17e09c0435ec9f76add691f9526347217f73"
+      ],
+      "source_published_kst": "2026-10-08T02:47+09:00",
+      "source_title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소",
+      "telegram_core_fact": "포르투나 마이닝(FSM)은 3분기 금환산온스(GEO) 기준 생산량이 6만9665온스로 전년 동기(7만2462온스) 대비 3.9%, 전분기(7만2217온스) 대비 3.5% 감소했다고 10월 7일 발표했다.",
+      "title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소"
+    },
     "title:a8457464c19a6b717f7ea1b8": {
       "first_seen_kst": "2026-10-01T22:45:00+09:00",
       "lanes": {
@@ -244407,6 +245907,26 @@
       "link": "https://www.mk.co.kr/news/stock/12155616",
       "source": "매일경제",
       "title": "수주 실적·사업 다변화 부각 … 주춤했던 조선株 상승세"
+    },
+    "title:b10b8c93a0751f853a890f6b": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170783",
+      "source": "매일경제",
+      "source_body_digest": "0a8cebf1fcfc440212a3d9cc465033a5279e42427dcf2d853073bf5d2b22d633",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c999e85af9a871d9046f16a385ae22ae342698778738b986ab70a195b6cb837",
+      "source_fact_keys": [
+        "source_fact:v1:1e09c286b3701f7dd123655017099bbd86ad0d1588f13db53c9ee379895a136f",
+        "source_fact:v1:2bd0c1f82b9afac4ca8961ac6051ca893c48a1ddf9c038476a06e440163a9e26"
+      ],
+      "source_published_kst": "2026-10-07T17:57+09:00",
+      "source_title": "워너브라더스 투자 나선 신세계프라퍼티, 메리츠서 1조 조달",
+      "telegram_core_fact": "투자은행(IB) 업계에 따르면 신세계프라퍼티는 메리츠증권을 상대로 약 1조원 사모사채를 발행할 예정인 것으로 알려졌다. 이마트는 지난 6일 종속회사를 통해 파라마운트 스카이댄스와 WBD 합병 과정에서 발행되는 신주에 10억달러(약 1조3596억원)를 간접 투자한다고 공시했다.",
+      "title": "워너브라더스 투자 나선 신세계프라퍼티, 메리츠서 1조 조달"
     },
     "title:b115e070a67bc90e8b5ffe20": {
       "first_seen_kst": "2026-10-02T10:30:30+09:00",
@@ -246732,6 +248252,25 @@
       "source_title": "KT&G, 인도네시아 신공장 가동…5개국 생산체제 구축 | 연합뉴스",
       "telegram_core_fact": "KT&G가 인도네시아 신공장을 가동해 글로벌 5각 생산체제를 구축했다. 설비 9대 설치 후 연산 210억 개비, 기존 공장 포함 현지 생산능력은 350억 개비로 확대될 전망이다.",
       "title": "KT&G, 인도네시아 신공장 가동…5개국 생산체제 구축 | 연합뉴스"
+    },
+    "title:c0b06089c48e4c8a1858f748": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171226",
+      "source": "매일경제",
+      "source_body_digest": "c01f5f58f2498ac9186e3c39eb438c437eda3a063ea2727dfa1955384b9e2db3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d09f41926ebcd728416ceefe316790eeb038fd37bcf92a5f23dd6bfbf7e95439",
+      "source_fact_keys": [
+        "source_fact:v1:cb6080b6bce9d016b0e86b40c68185ec5fd7f2bbc4442111a29ec5afa3d3851b"
+      ],
+      "source_published_kst": "2026-10-07T17:43+09:00",
+      "source_title": "\"코리아 디스카운트 해소, 주주환원 지속에 답 있다\"",
+      "telegram_core_fact": "주주환원이 꾸준히 이어지는지, 실제로 벌어들인 현금 흐름을 바탕으로 하는지, 발표에 그치지 않고 자사주 소각 등 실제 행동으로 연결되는지를 본다는 것이다.",
+      "title": "\"코리아 디스카운트 해소, 주주환원 지속에 답 있다\""
     },
     "title:c0f6ef5fa25415d45ba2143b": {
       "first_seen_kst": "2026-09-26T20:59:22+09:00",
@@ -252076,6 +253615,23 @@
       "source": "연합뉴스",
       "title": "상품공급 부족했나…'조각투자' 신종증권시장 개장 연기(종합) | 연합뉴스"
     },
+    "title:e32270cb96f0350c6ea7ae9b": {
+      "first_seen_kst": "2026-10-08T03:51:03+09:00",
+      "lanes": {
+        "live": "2026-10-08T03:51:03+09:00"
+      },
+      "last_seen_kst": "2026-10-08T03:51:03+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171376",
+      "source": "매일경제",
+      "source_body_digest": "553eb8e7af0b72e40cf071c5f6a4fe56b3876377fe9262bad184bc6abab89e80",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T03:00+09:00",
+      "source_title": "포르투나마이닝, 3분기 금 생산 감소와 세구엘라 광산 차질 부각에 약세",
+      "telegram_core_fact": "세구엘라 광산의 광부 봉쇄와 장비 문제로 생산에 차질이 생긴 점이 부담으로 작용했습니다. 3분기 금환산 생산량이 6만9665온스로 전년보다 3.9%, 전분기보다 3.5% 줄었습니다.",
+      "title": "포르투나마이닝, 3분기 금 생산 감소와 세구엘라 광산 차질 부각에 약세"
+    },
     "title:e33aa41b41522817544ba9aa": {
       "first_seen_kst": "2026-10-03T02:58:32+09:00",
       "lanes": {
@@ -256531,5 +258087,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-08T03:26:42+09:00"
+  "updated_at_kst": "2026-10-08T03:51:03+09:00"
 }
