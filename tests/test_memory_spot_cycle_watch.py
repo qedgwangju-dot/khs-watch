@@ -296,6 +296,27 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         self.assertEqual(b["secondary_industry_new_fab_earliest_year"], 2028)
         self.assertFalse(b["secondary_industry_new_fab_timeline_official"])
 
+    def test_nand_2028_fab_timeline_keeps_secondary_source_separate_from_trendforce(self):
+        item = {
+            "title": "글로벌 낸드 제조사, 캐파 확대 위한 증설 검토",
+            "description": (
+                "업계 관계자는 신규 공장이 완공되려면 최소 2028년은 돼야 한다고 밝혔다. "
+                "기업용 SSD 수요 증가와 추가 공급량 계약도 이어지고 있다."
+            ),
+            "source": "뉴시스",
+            "link": "https://www.newsis.com/view/NISX20261002_0003812363",
+            "published_kst": "2026-10-04T17:00:00+09:00",
+        }
+        obs = w._extract_nand_divergence(item)
+        self.assertIsNotNone(obs)
+        self.assertEqual(obs["secondary_industry_new_fab_earliest_year"], 2028)
+        self.assertFalse(obs["secondary_industry_new_fab_timeline_official"])
+        self.assertIn("뉴시스", obs["secondary_fab_timeline_source_kind"])
+        self.assertEqual(
+            obs["secondary_fab_timeline_source_url"],
+            "https://www.newsis.com/view/NISX20261002_0003812363",
+        )
+
     def test_essd_bit_demand_only_alerts_on_material_revision(self):
         old = dict(w.NAND_DIVERGENCE_BASELINE)
         small = dict(old, essd_bit_demand_yoy_min_pct=85.0)
