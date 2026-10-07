@@ -388,6 +388,23 @@
       "telegram_core_fact": "HD건설기계는 미국 발전 인프라 솔루션 업체 이록(ERock)과 가스 발전용 엔진 롱블록(Long Block) 공급 계약을 체결했다고 7일 공시했다.",
       "title": "HD건설기계, 美 데이터센터에 3900억 규모 발전용 엔진 공급"
     },
+    "core:31944b1a393bd6253b5813cb": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007121100030",
+      "source": "연합뉴스",
+      "source_body_digest": "00fcabad452880216934f273b7b58ebfcac244187501e9d2ecfda3a544292d38",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T14:18+09:00",
+      "source_title": "KT&G, 인도네시아 신공장 가동…5개국 생산체제 구축 | 연합뉴스",
+      "telegram_core_fact": "KT&G가 인도네시아 신공장을 가동해 글로벌 5각 생산체제를 구축했다. 설비 9대 설치 후 연산 210억 개비, 기존 공장 포함 현지 생산능력은 350억 개비로 확대될 전망이다.",
+      "title": "KT&G, 인도네시아 신공장 가동…5개국 생산체제 구축 | 연합뉴스"
+    },
     "core:346bd48ea2d948c67455ac47": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
       "lanes": {
@@ -1307,6 +1324,27 @@
       "source_published_kst": "2026-10-07T14:20+09:00",
       "title": "기업 순자금운용 67조 ‘사상 최대’…반도체 호황에 여윳돈 쌓였다 [머니뭐니]"
     },
+    "core:7dba1dfce02926d1be4022f5": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etnews.com/20261007000171",
+      "source": "전자신문",
+      "source_body_digest": "0cab143d09caf2e575949d231ace76738ab59b1e713e28510a636a74dcc2decb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53453ba04c29f5baef74f4b5aee00f9c64df251bccd13fb8b9eba608889f042a",
+      "source_fact_keys": [
+        "source_fact:v1:10fb00574d6b91c7abb917362ad5adadcd7aef029ccd139920326029d40f78f0",
+        "source_fact:v1:cd3e19959ec91b39b7b74830bfc76a059031f0ec1f67e9d735a908a572539836",
+        "source_fact:v1:fff58af81c4a4ecab5e189df7ffd60be9f9735228dff0f1279ae0add3319a8e0"
+      ],
+      "source_published_kst": "2026-10-07T16:30+09:00",
+      "source_title": "“AI 도입보다 중요한 건 신뢰”…서울형 AI 윤리 해법 찾는다",
+      "telegram_core_fact": "AI가 행정·복지·교통·교육 등 시민 일상으로 깊숙이 들어오면서 공정성·투명성과 같은 원칙을 선언하는 데 그치지 않고 AI 도입 전 위험을 살피고 운영 과정에서 문제를 감시하며, 이를 다시 제도 개선으로 연결하는 거버넌스가 필요하다는 목소리가 나왔다.",
+      "title": "“AI 도입보다 중요한 건 신뢰”…서울형 AI 윤리 해법 찾는다"
+    },
     "core:8736f1c738f8824b57664d9a": {
       "first_seen_kst": "2026-10-07T17:23:27+09:00",
       "lanes": {
@@ -1456,6 +1494,28 @@
       ],
       "source_published_kst": "2026-10-07T07:43+09:00",
       "title": "“56만전자·320만닉스 간다\"…삼전닉스, 3분기 실적 기대 이상"
+    },
+    "core:8c4456d317b7bbbf4fae8677": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633515",
+      "source": "이투데이",
+      "source_body_digest": "e2c4323852a2d494a3da05579af90cfd3e3fe5c6638234c6f29d5b7cee528df0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:34221929d0ca0a8d6d18997b0ab2c5390a60c49ee843c324fc3c7b8d2ddfdff2",
+      "source_fact_keys": [
+        "source_fact:v1:14638b88811fb5b893e4d5cc9acbe5d67f6977ce8711d65d6d46754432984f5c",
+        "source_fact:v1:861fc4b6943b13cac4f80120295872a2cc6aa7260c5f5c6bbeb69f1c64449acf",
+        "source_fact:v1:8b87c3e80fbcb567291c281199afd0a82bdaf1ae31942377c52838ec1280cd3b",
+        "source_fact:v1:90ad977e4a4b43a14b83b65a242a471027b0238951c7ed0856347904d3f42360"
+      ],
+      "source_published_kst": "2026-10-07T16:28+09:00",
+      "source_title": "포스코, K-GX ‘철강 GX’ 참여…2028년 포항에 하이렉스 실증설비",
+      "telegram_core_fact": "2028년까지 연산 30만t(톤) 하이렉스 실증설비를 구축하고 청정수소 공급망과 포항·울산 산업단지를 연계한다.",
+      "title": "포스코, K-GX ‘철강 GX’ 참여…2028년 포항에 하이렉스 실증설비"
     },
     "core:8e652f47025f24f4e38be653": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
@@ -1668,6 +1728,30 @@
       "source_published_kst": "2026-10-07T16:01+09:00",
       "title": "6800선으로 내려온 코스피…삼전 실적·FOMC 의사록 등 변동성↑"
     },
+    "core:9f021d0d94fff0fbff8dfd72": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633477",
+      "source": "이투데이",
+      "source_body_digest": "592f09123a21eebc609372d6d871af91ad0a440cd71dd869fdcee1bfc291a844",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7304907aae5244050b3403db3812e74fb347144aff14013b840fd96823a99aa9",
+      "source_fact_keys": [
+        "source_fact:v1:02f8010911a5454904fa6907e96f8df3d8b93b710c56641a5e5459f52e6a280d",
+        "source_fact:v1:08e3a9847b9d22b2fe3b0532598b514f3ff7ee6ff5686f8ce0e27299621994c9",
+        "source_fact:v1:5d57d94d47a852ae90f8fd33547f4ca99b5011b2c72ce65b46ad9848e1983f49",
+        "source_fact:v1:5f28567c04fad8fb6a1b08d7e0d6272987ed78de55e5deed2372ca07dde2b468",
+        "source_fact:v1:62108d3c04dc2dfcc262168415df51dbfc65a93c5d7ea015d3781c7110ba74a5",
+        "source_fact:v1:d61a9f9cd7b80f6db953794f2ca1d1e055da7b3a4a8aef985983c38ea4c88058"
+      ],
+      "source_published_kst": "2026-10-07T16:22+09:00",
+      "source_title": "홍지선 국토장관 “수도권 주택 착공 목표 달성 어려워…80~88% 전망” [국감] [종합]",
+      "telegram_core_fact": "정부는 착공 실적 부진을 만회하기 위해 신규택지와 공공택지를 중심으로 공급 속도를 높인다는 방침이다.",
+      "title": "홍지선 국토장관 “수도권 주택 착공 목표 달성 어려워…80~88% 전망” [국감] [종합]"
+    },
     "core:9f2ea44266a0d6a71af1eaeb": {
       "first_seen_kst": "2026-10-07T16:44:58+09:00",
       "lanes": {
@@ -1828,6 +1912,23 @@
       ],
       "source_published_kst": "2026-10-07T11:03+09:00",
       "title": "美 최대 원전기업 콘스텔레이션, 구글에 전력 공급…12% 급등"
+    },
+    "core:ada1d2a7c57b4bcc1a381329": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.mk.co.kr/news/business/12170465",
+      "source": "매일경제",
+      "source_body_digest": "444f36a43ab860b7becd19018beb5add01c76e2d117558f28d3d6f4310c081fc",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T15:23+09:00",
+      "source_title": "장금상선, 한진 지분 5.58% 확보…20년 물류동맹 더 끈끈해지나",
+      "telegram_core_fact": "국내 중견 해운사 장금상선이 종합물류기업 (주)한진 지분을 5% 이상 확보하면서 투자 배경에 관심이 쏠리고 있다.",
+      "title": "장금상선, 한진 지분 5.58% 확보…20년 물류동맹 더 끈끈해지나"
     },
     "core:aeac5b3f8e6f164757c3ac50": {
       "first_seen_kst": "2026-10-07T13:41:41+09:00",
@@ -2055,6 +2156,26 @@
       ],
       "source_published_kst": "2026-10-07T14:00+09:00",
       "title": "“확전에는 확전으로” 사우디 vs 후티 전면 격화…韓 기업 진출 지역도 영향권"
+    },
+    "core:bfb21a6f5bb4a9fe6115f909": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633203",
+      "source": "이투데이",
+      "source_body_digest": "4f0198f2876d2a0745dd5c51901916e511dd0c1654132a0f2e64e830c7597f14",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f52565cda7a5a97591f336bbd47cd7041c9f6c2a1599f3c910f5ef3383c6a97e",
+      "source_fact_keys": [
+        "source_fact:v1:4e11e1ac3cec9d46e6f37f0acff69e5ab0deac0179769c917cbf51219eb62f27",
+        "source_fact:v1:ec190b56bcba5cb590c3cfddea4c22e16ae21617a393edac66029056a4ce3bb5"
+      ],
+      "source_published_kst": "2026-10-07T12:00+09:00",
+      "source_title": "중동 전쟁에도 44조 기름값 담합 의혹…SK에너지·HD현대오일뱅크 ‘공정위 심판대’",
+      "telegram_core_fact": "공정위 심사관은 SK에너지·현대오일뱅크가 약 4년간 유류 가격정보를 교환하고 올해 3월 두 차례 가격을 담합했다는 혐의로 심의에 넘겼다. 관련 매출은 약 44.1조원이며 최종 위법 여부와 제재는 미확정이다.",
+      "title": "중동 전쟁에도 44조 기름값 담합 의혹…SK에너지·HD현대오일뱅크 ‘공정위 심판대’"
     },
     "core:bff26ba2e09ffa2a1227478d": {
       "first_seen_kst": "2026-10-07T18:30:29+09:00",
@@ -2488,6 +2609,29 @@
       "source_title": "\"대만 반도체업체 난야, D램 가격 최대 20% 인상 전망\" | 연합뉴스",
       "telegram_core_fact": "업계 관계자는 난야가 D램 계약가격을 올리면 평균판매단가(ASP)가 상승하면서 실적 호조로 이어질 것으로 봤다.",
       "title": "\"대만 반도체업체 난야, D램 가격 최대 20% 인상 전망\" | 연합뉴스"
+    },
+    "core:e9df38e1a6173206ca9e7400": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633520",
+      "source": "이투데이",
+      "source_body_digest": "b919e31eabc9af503bc7e0e8f265e24a052ec99304eb60c12a13b4c72b1b7bf0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29cfb5b7c6291c48faf41955215aa6b01fabca177805d79597ee499c67a9f78c",
+      "source_fact_keys": [
+        "source_fact:v1:4483440459b6f2701864d1a01d93f3762ca2cacf97c66bc755125f949d39432c",
+        "source_fact:v1:9ab6584e121475fa8a2a2175266d0a108a54028f39affea62cbdd9737e95969a",
+        "source_fact:v1:b278ef68b8dcfdfd9bf1494009f0b4e6b77e84a78b7c0389f9004f421b21605e",
+        "source_fact:v1:df93f5f736653ba190362701811082878339df339990da2eadd91bd351a746f5",
+        "source_fact:v1:f8b196f65b59720bb0d8598f9547450c2d37953588e9dcf025256a839486e027"
+      ],
+      "source_published_kst": "2026-10-07T16:34+09:00",
+      "source_title": "포항시-아모지, 영일만산단 ‘무탄소 분산발전’ 가속화… 글로벌 투자사·대기업 총출동",
+      "telegram_core_fact": "참석자들은 ▲영일만 무탄소 분산발전 프로젝트의 속도감 있는 추진 ▲원활한 사업 진행을 위한 부지 및 인허가 행정 지원 ▲안정적인 청정 암모니아 수입·저장·공급망 구축 ▲영일만산단 입주기업들의 무탄소 전력 공급 확대 방안 등을 논의했다.",
+      "title": "포항시-아모지, 영일만산단 ‘무탄소 분산발전’ 가속화… 글로벌 투자사·대기업 총출동"
     },
     "core:eab0d308a04b717f901bfac7": {
       "first_seen_kst": "2026-10-07T13:41:41+09:00",
@@ -10053,6 +10197,26 @@
       "source_published_kst": "2026-10-07T15:05+09:00",
       "title": "AMD 리사수, 삼성전자 전영현·SK하이닉스 곽노정과 회동 | 연합뉴스"
     },
+    "event:ff5ac051a53f599db6640777": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633203",
+      "source": "이투데이",
+      "source_body_digest": "4f0198f2876d2a0745dd5c51901916e511dd0c1654132a0f2e64e830c7597f14",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f52565cda7a5a97591f336bbd47cd7041c9f6c2a1599f3c910f5ef3383c6a97e",
+      "source_fact_keys": [
+        "source_fact:v1:4e11e1ac3cec9d46e6f37f0acff69e5ab0deac0179769c917cbf51219eb62f27",
+        "source_fact:v1:ec190b56bcba5cb590c3cfddea4c22e16ae21617a393edac66029056a4ce3bb5"
+      ],
+      "source_published_kst": "2026-10-07T12:00+09:00",
+      "source_title": "중동 전쟁에도 44조 기름값 담합 의혹…SK에너지·HD현대오일뱅크 ‘공정위 심판대’",
+      "telegram_core_fact": "공정위 심사관은 SK에너지·현대오일뱅크가 약 4년간 유류 가격정보를 교환하고 올해 3월 두 차례 가격을 담합했다는 혐의로 심의에 넘겼다. 관련 매출은 약 44.1조원이며 최종 위법 여부와 제재는 미확정이다.",
+      "title": "중동 전쟁에도 44조 기름값 담합 의혹…SK에너지·HD현대오일뱅크 ‘공정위 심판대’"
+    },
     "event:fffe737ddd6fae97fd31728a": {
       "first_seen_kst": "2026-10-01T16:03:27+09:00",
       "lanes": {
@@ -11974,6 +12138,30 @@
       ],
       "source_published_kst": "2026-10-06T11:46+09:00",
       "title": "삼성전기, 글로벌 기업과 2천900억 AI 서버용 MLCC 공급계약 | 연합뉴스"
+    },
+    "fact:1523ee51b566eb19abd8e33e": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633477",
+      "source": "이투데이",
+      "source_body_digest": "592f09123a21eebc609372d6d871af91ad0a440cd71dd869fdcee1bfc291a844",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7304907aae5244050b3403db3812e74fb347144aff14013b840fd96823a99aa9",
+      "source_fact_keys": [
+        "source_fact:v1:02f8010911a5454904fa6907e96f8df3d8b93b710c56641a5e5459f52e6a280d",
+        "source_fact:v1:08e3a9847b9d22b2fe3b0532598b514f3ff7ee6ff5686f8ce0e27299621994c9",
+        "source_fact:v1:5d57d94d47a852ae90f8fd33547f4ca99b5011b2c72ce65b46ad9848e1983f49",
+        "source_fact:v1:5f28567c04fad8fb6a1b08d7e0d6272987ed78de55e5deed2372ca07dde2b468",
+        "source_fact:v1:62108d3c04dc2dfcc262168415df51dbfc65a93c5d7ea015d3781c7110ba74a5",
+        "source_fact:v1:d61a9f9cd7b80f6db953794f2ca1d1e055da7b3a4a8aef985983c38ea4c88058"
+      ],
+      "source_published_kst": "2026-10-07T16:22+09:00",
+      "source_title": "홍지선 국토장관 “수도권 주택 착공 목표 달성 어려워…80~88% 전망” [국감] [종합]",
+      "telegram_core_fact": "정부는 착공 실적 부진을 만회하기 위해 신규택지와 공공택지를 중심으로 공급 속도를 높인다는 방침이다.",
+      "title": "홍지선 국토장관 “수도권 주택 착공 목표 달성 어려워…80~88% 전망” [국감] [종합]"
     },
     "fact:153db7a0d141c1f2be1a9e92": {
       "first_seen_kst": "2026-10-07T02:49:10+09:00",
@@ -15140,6 +15328,27 @@
       "source_published_kst": "2026-10-07T15:40+09:00",
       "title": "유가·금리 반등에 실적 경계감…코스피, 6800선 마감"
     },
+    "fact:3c2eb80536f307def5a17160": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etnews.com/20261007000171",
+      "source": "전자신문",
+      "source_body_digest": "0cab143d09caf2e575949d231ace76738ab59b1e713e28510a636a74dcc2decb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53453ba04c29f5baef74f4b5aee00f9c64df251bccd13fb8b9eba608889f042a",
+      "source_fact_keys": [
+        "source_fact:v1:10fb00574d6b91c7abb917362ad5adadcd7aef029ccd139920326029d40f78f0",
+        "source_fact:v1:cd3e19959ec91b39b7b74830bfc76a059031f0ec1f67e9d735a908a572539836",
+        "source_fact:v1:fff58af81c4a4ecab5e189df7ffd60be9f9735228dff0f1279ae0add3319a8e0"
+      ],
+      "source_published_kst": "2026-10-07T16:30+09:00",
+      "source_title": "“AI 도입보다 중요한 건 신뢰”…서울형 AI 윤리 해법 찾는다",
+      "telegram_core_fact": "AI가 행정·복지·교통·교육 등 시민 일상으로 깊숙이 들어오면서 공정성·투명성과 같은 원칙을 선언하는 데 그치지 않고 AI 도입 전 위험을 살피고 운영 과정에서 문제를 감시하며, 이를 다시 제도 개선으로 연결하는 거버넌스가 필요하다는 목소리가 나왔다.",
+      "title": "“AI 도입보다 중요한 건 신뢰”…서울형 AI 윤리 해법 찾는다"
+    },
     "fact:3d34904b2c1625845ded9d7a": {
       "first_seen_kst": "2026-10-07T11:43:24+09:00",
       "lanes": {
@@ -15351,6 +15560,26 @@
       "source_published_kst": "2026-10-05T15:17+09:00",
       "title": "자사주 '버팀목' 빠지는 삼성전자… 100조원대 영업익으로 극복할까?"
     },
+    "fact:3f1251b4d99c90e238f15c8f": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633203",
+      "source": "이투데이",
+      "source_body_digest": "4f0198f2876d2a0745dd5c51901916e511dd0c1654132a0f2e64e830c7597f14",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f52565cda7a5a97591f336bbd47cd7041c9f6c2a1599f3c910f5ef3383c6a97e",
+      "source_fact_keys": [
+        "source_fact:v1:4e11e1ac3cec9d46e6f37f0acff69e5ab0deac0179769c917cbf51219eb62f27",
+        "source_fact:v1:ec190b56bcba5cb590c3cfddea4c22e16ae21617a393edac66029056a4ce3bb5"
+      ],
+      "source_published_kst": "2026-10-07T12:00+09:00",
+      "source_title": "중동 전쟁에도 44조 기름값 담합 의혹…SK에너지·HD현대오일뱅크 ‘공정위 심판대’",
+      "telegram_core_fact": "공정위 심사관은 SK에너지·현대오일뱅크가 약 4년간 유류 가격정보를 교환하고 올해 3월 두 차례 가격을 담합했다는 혐의로 심의에 넘겼다. 관련 매출은 약 44.1조원이며 최종 위법 여부와 제재는 미확정이다.",
+      "title": "중동 전쟁에도 44조 기름값 담합 의혹…SK에너지·HD현대오일뱅크 ‘공정위 심판대’"
+    },
     "fact:3f50086d401163e2720061e2": {
       "first_seen_kst": "2026-10-07T18:00:43+09:00",
       "lanes": {
@@ -15391,6 +15620,28 @@
       ],
       "source_published_kst": "2026-10-06T11:00+09:00",
       "title": "규제합리화추진단 \"디스플레이 규제 개선…수입 간소화·AI 보안가이드 마련\""
+    },
+    "fact:3f63b355dba7ab5d1e95ba9a": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633515",
+      "source": "이투데이",
+      "source_body_digest": "e2c4323852a2d494a3da05579af90cfd3e3fe5c6638234c6f29d5b7cee528df0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:34221929d0ca0a8d6d18997b0ab2c5390a60c49ee843c324fc3c7b8d2ddfdff2",
+      "source_fact_keys": [
+        "source_fact:v1:14638b88811fb5b893e4d5cc9acbe5d67f6977ce8711d65d6d46754432984f5c",
+        "source_fact:v1:861fc4b6943b13cac4f80120295872a2cc6aa7260c5f5c6bbeb69f1c64449acf",
+        "source_fact:v1:8b87c3e80fbcb567291c281199afd0a82bdaf1ae31942377c52838ec1280cd3b",
+        "source_fact:v1:90ad977e4a4b43a14b83b65a242a471027b0238951c7ed0856347904d3f42360"
+      ],
+      "source_published_kst": "2026-10-07T16:28+09:00",
+      "source_title": "포스코, K-GX ‘철강 GX’ 참여…2028년 포항에 하이렉스 실증설비",
+      "telegram_core_fact": "2028년까지 연산 30만t(톤) 하이렉스 실증설비를 구축하고 청정수소 공급망과 포항·울산 산업단지를 연계한다.",
+      "title": "포스코, K-GX ‘철강 GX’ 참여…2028년 포항에 하이렉스 실증설비"
     },
     "fact:3fcfa6a062aa5a077aeb7be4": {
       "first_seen_kst": "2026-10-07T17:34:38+09:00",
@@ -27207,6 +27458,29 @@
       "source_published_kst": "2026-10-06T14:42+09:00",
       "title": "中, 첫 해저 CO₂ 주입 플랫폼 건설…연 100만t 해저 저장"
     },
+    "fact:e0bfa893245037f47e78f90b": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633520",
+      "source": "이투데이",
+      "source_body_digest": "b919e31eabc9af503bc7e0e8f265e24a052ec99304eb60c12a13b4c72b1b7bf0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29cfb5b7c6291c48faf41955215aa6b01fabca177805d79597ee499c67a9f78c",
+      "source_fact_keys": [
+        "source_fact:v1:4483440459b6f2701864d1a01d93f3762ca2cacf97c66bc755125f949d39432c",
+        "source_fact:v1:9ab6584e121475fa8a2a2175266d0a108a54028f39affea62cbdd9737e95969a",
+        "source_fact:v1:b278ef68b8dcfdfd9bf1494009f0b4e6b77e84a78b7c0389f9004f421b21605e",
+        "source_fact:v1:df93f5f736653ba190362701811082878339df339990da2eadd91bd351a746f5",
+        "source_fact:v1:f8b196f65b59720bb0d8598f9547450c2d37953588e9dcf025256a839486e027"
+      ],
+      "source_published_kst": "2026-10-07T16:34+09:00",
+      "source_title": "포항시-아모지, 영일만산단 ‘무탄소 분산발전’ 가속화… 글로벌 투자사·대기업 총출동",
+      "telegram_core_fact": "참석자들은 ▲영일만 무탄소 분산발전 프로젝트의 속도감 있는 추진 ▲원활한 사업 진행을 위한 부지 및 인허가 행정 지원 ▲안정적인 청정 암모니아 수입·저장·공급망 구축 ▲영일만산단 입주기업들의 무탄소 전력 공급 확대 방안 등을 논의했다.",
+      "title": "포항시-아모지, 영일만산단 ‘무탄소 분산발전’ 가속화… 글로벌 투자사·대기업 총출동"
+    },
     "fact:e0fe57cd5e71adc9d4715d7e": {
       "first_seen_kst": "2026-10-06T18:16:47+09:00",
       "lanes": {
@@ -32310,6 +32584,30 @@
       "source": "머니투데이",
       "title": "신한운용, 오는 7일 'SOL 글로벌DRAM반도체플러스' ETF 출시"
     },
+    "link:1447e174e51e90682a647b05": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633477",
+      "source": "이투데이",
+      "source_body_digest": "592f09123a21eebc609372d6d871af91ad0a440cd71dd869fdcee1bfc291a844",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7304907aae5244050b3403db3812e74fb347144aff14013b840fd96823a99aa9",
+      "source_fact_keys": [
+        "source_fact:v1:02f8010911a5454904fa6907e96f8df3d8b93b710c56641a5e5459f52e6a280d",
+        "source_fact:v1:08e3a9847b9d22b2fe3b0532598b514f3ff7ee6ff5686f8ce0e27299621994c9",
+        "source_fact:v1:5d57d94d47a852ae90f8fd33547f4ca99b5011b2c72ce65b46ad9848e1983f49",
+        "source_fact:v1:5f28567c04fad8fb6a1b08d7e0d6272987ed78de55e5deed2372ca07dde2b468",
+        "source_fact:v1:62108d3c04dc2dfcc262168415df51dbfc65a93c5d7ea015d3781c7110ba74a5",
+        "source_fact:v1:d61a9f9cd7b80f6db953794f2ca1d1e055da7b3a4a8aef985983c38ea4c88058"
+      ],
+      "source_published_kst": "2026-10-07T16:22+09:00",
+      "source_title": "홍지선 국토장관 “수도권 주택 착공 목표 달성 어려워…80~88% 전망” [국감] [종합]",
+      "telegram_core_fact": "정부는 착공 실적 부진을 만회하기 위해 신규택지와 공공택지를 중심으로 공급 속도를 높인다는 방침이다.",
+      "title": "홍지선 국토장관 “수도권 주택 착공 목표 달성 어려워…80~88% 전망” [국감] [종합]"
+    },
     "link:1459c1eb4cf326bf0b605491": {
       "first_seen_kst": "2026-10-02T19:18:49+09:00",
       "lanes": {
@@ -33208,6 +33506,27 @@
       "link": "https://www.edaily.co.kr/news/read?newsid=03906486645608984&parentid=04257446645608984&gubun=E",
       "source": "이데일리",
       "title": "개인·외인·기관 팔자 vs 삼전닉스 자사주 실탄…7000피 공방전"
+    },
+    "link:1a8b53fe3725c429c02e44a4": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etnews.com/20261007000171",
+      "source": "전자신문",
+      "source_body_digest": "0cab143d09caf2e575949d231ace76738ab59b1e713e28510a636a74dcc2decb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53453ba04c29f5baef74f4b5aee00f9c64df251bccd13fb8b9eba608889f042a",
+      "source_fact_keys": [
+        "source_fact:v1:10fb00574d6b91c7abb917362ad5adadcd7aef029ccd139920326029d40f78f0",
+        "source_fact:v1:cd3e19959ec91b39b7b74830bfc76a059031f0ec1f67e9d735a908a572539836",
+        "source_fact:v1:fff58af81c4a4ecab5e189df7ffd60be9f9735228dff0f1279ae0add3319a8e0"
+      ],
+      "source_published_kst": "2026-10-07T16:30+09:00",
+      "source_title": "“AI 도입보다 중요한 건 신뢰”…서울형 AI 윤리 해법 찾는다",
+      "telegram_core_fact": "AI가 행정·복지·교통·교육 등 시민 일상으로 깊숙이 들어오면서 공정성·투명성과 같은 원칙을 선언하는 데 그치지 않고 AI 도입 전 위험을 살피고 운영 과정에서 문제를 감시하며, 이를 다시 제도 개선으로 연결하는 거버넌스가 필요하다는 목소리가 나왔다.",
+      "title": "“AI 도입보다 중요한 건 신뢰”…서울형 AI 윤리 해법 찾는다"
     },
     "link:1aa0411d7cef95d7b6c1badc": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
@@ -34468,6 +34787,29 @@
       "source": "뉴시스",
       "title": "금감원-금융권, 전통시장 방문…생필품 구매 후 취약층 전달"
     },
+    "link:24fa646d93000dcc911ed856": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633520",
+      "source": "이투데이",
+      "source_body_digest": "b919e31eabc9af503bc7e0e8f265e24a052ec99304eb60c12a13b4c72b1b7bf0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29cfb5b7c6291c48faf41955215aa6b01fabca177805d79597ee499c67a9f78c",
+      "source_fact_keys": [
+        "source_fact:v1:4483440459b6f2701864d1a01d93f3762ca2cacf97c66bc755125f949d39432c",
+        "source_fact:v1:9ab6584e121475fa8a2a2175266d0a108a54028f39affea62cbdd9737e95969a",
+        "source_fact:v1:b278ef68b8dcfdfd9bf1494009f0b4e6b77e84a78b7c0389f9004f421b21605e",
+        "source_fact:v1:df93f5f736653ba190362701811082878339df339990da2eadd91bd351a746f5",
+        "source_fact:v1:f8b196f65b59720bb0d8598f9547450c2d37953588e9dcf025256a839486e027"
+      ],
+      "source_published_kst": "2026-10-07T16:34+09:00",
+      "source_title": "포항시-아모지, 영일만산단 ‘무탄소 분산발전’ 가속화… 글로벌 투자사·대기업 총출동",
+      "telegram_core_fact": "참석자들은 ▲영일만 무탄소 분산발전 프로젝트의 속도감 있는 추진 ▲원활한 사업 진행을 위한 부지 및 인허가 행정 지원 ▲안정적인 청정 암모니아 수입·저장·공급망 구축 ▲영일만산단 입주기업들의 무탄소 전력 공급 확대 방안 등을 논의했다.",
+      "title": "포항시-아모지, 영일만산단 ‘무탄소 분산발전’ 가속화… 글로벌 투자사·대기업 총출동"
+    },
     "link:2507c21c3687f56696a661ad": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
       "lanes": {
@@ -35047,6 +35389,28 @@
       ],
       "source_published_kst": "2026-10-07T09:31+09:00",
       "title": "롯데바이오, '알보텍' 바이오시밀러 생산 수주…美 거점 앞세워 글로벌 공략"
+    },
+    "link:28002d17d7b5344386293ccb": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633515",
+      "source": "이투데이",
+      "source_body_digest": "e2c4323852a2d494a3da05579af90cfd3e3fe5c6638234c6f29d5b7cee528df0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:34221929d0ca0a8d6d18997b0ab2c5390a60c49ee843c324fc3c7b8d2ddfdff2",
+      "source_fact_keys": [
+        "source_fact:v1:14638b88811fb5b893e4d5cc9acbe5d67f6977ce8711d65d6d46754432984f5c",
+        "source_fact:v1:861fc4b6943b13cac4f80120295872a2cc6aa7260c5f5c6bbeb69f1c64449acf",
+        "source_fact:v1:8b87c3e80fbcb567291c281199afd0a82bdaf1ae31942377c52838ec1280cd3b",
+        "source_fact:v1:90ad977e4a4b43a14b83b65a242a471027b0238951c7ed0856347904d3f42360"
+      ],
+      "source_published_kst": "2026-10-07T16:28+09:00",
+      "source_title": "포스코, K-GX ‘철강 GX’ 참여…2028년 포항에 하이렉스 실증설비",
+      "telegram_core_fact": "2028년까지 연산 30만t(톤) 하이렉스 실증설비를 구축하고 청정수소 공급망과 포항·울산 산업단지를 연계한다.",
+      "title": "포스코, K-GX ‘철강 GX’ 참여…2028년 포항에 하이렉스 실증설비"
     },
     "link:28086a6dfaf560cc452ea77f": {
       "first_seen_kst": "2026-10-07T08:36:47+09:00",
@@ -46367,6 +46731,23 @@
       "source": "이데일리",
       "title": "[美특징주]인수가 낮췄는데 주가는 올랐다…온세미컨덕터·시냅틱스, 개장전 '급등'"
     },
+    "link:765633c11a2f20f0b48e638a": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.mk.co.kr/news/business/12170465",
+      "source": "매일경제",
+      "source_body_digest": "444f36a43ab860b7becd19018beb5add01c76e2d117558f28d3d6f4310c081fc",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T15:23+09:00",
+      "source_title": "장금상선, 한진 지분 5.58% 확보…20년 물류동맹 더 끈끈해지나",
+      "telegram_core_fact": "국내 중견 해운사 장금상선이 종합물류기업 (주)한진 지분을 5% 이상 확보하면서 투자 배경에 관심이 쏠리고 있다.",
+      "title": "장금상선, 한진 지분 5.58% 확보…20년 물류동맹 더 끈끈해지나"
+    },
     "link:765fffb0650ff73a69103699": {
       "first_seen_kst": "2026-09-24T14:05:07+09:00",
       "lanes": {
@@ -55525,6 +55906,23 @@
       "source_published_kst": "2026-10-07T19:06+09:00",
       "title": "발사대부터 총조립까지…HD현대·KAI·현대로템, 누리호 5차 성공 이끌었다"
     },
+    "link:b986a9b2c9ed422ac5d3f057": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007121100030",
+      "source": "연합뉴스",
+      "source_body_digest": "00fcabad452880216934f273b7b58ebfcac244187501e9d2ecfda3a544292d38",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T14:18+09:00",
+      "source_title": "KT&G, 인도네시아 신공장 가동…5개국 생산체제 구축 | 연합뉴스",
+      "telegram_core_fact": "KT&G가 인도네시아 신공장을 가동해 글로벌 5각 생산체제를 구축했다. 설비 9대 설치 후 연산 210억 개비, 기존 공장 포함 현지 생산능력은 350억 개비로 확대될 전망이다.",
+      "title": "KT&G, 인도네시아 신공장 가동…5개국 생산체제 구축 | 연합뉴스"
+    },
     "link:b9a98d8f26e3d7167c1dbc8d": {
       "first_seen_kst": "2026-09-25T00:00:00+09:00",
       "lanes": {
@@ -58754,6 +59152,26 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T12:13+09:00",
       "title": "고금리·고유가에도 나스닥100 굳건한 이유- 매경ECONOMY"
+    },
+    "link:d1304f673cd7383a9a8ca077": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633203",
+      "source": "이투데이",
+      "source_body_digest": "4f0198f2876d2a0745dd5c51901916e511dd0c1654132a0f2e64e830c7597f14",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f52565cda7a5a97591f336bbd47cd7041c9f6c2a1599f3c910f5ef3383c6a97e",
+      "source_fact_keys": [
+        "source_fact:v1:4e11e1ac3cec9d46e6f37f0acff69e5ab0deac0179769c917cbf51219eb62f27",
+        "source_fact:v1:ec190b56bcba5cb590c3cfddea4c22e16ae21617a393edac66029056a4ce3bb5"
+      ],
+      "source_published_kst": "2026-10-07T12:00+09:00",
+      "source_title": "중동 전쟁에도 44조 기름값 담합 의혹…SK에너지·HD현대오일뱅크 ‘공정위 심판대’",
+      "telegram_core_fact": "공정위 심사관은 SK에너지·현대오일뱅크가 약 4년간 유류 가격정보를 교환하고 올해 3월 두 차례 가격을 담합했다는 혐의로 심의에 넘겼다. 관련 매출은 약 44.1조원이며 최종 위법 여부와 제재는 미확정이다.",
+      "title": "중동 전쟁에도 44조 기름값 담합 의혹…SK에너지·HD현대오일뱅크 ‘공정위 심판대’"
     },
     "link:d135ba65232f922d98fd3b3d": {
       "first_seen_kst": "2026-10-06T01:05:54+09:00",
@@ -67805,6 +68223,28 @@
       "source_published_kst": "2026-10-06T09:18+09:00",
       "title": "정부 GPU 4224장 풀었더니 1만3712장 신청…70%가 못 받아"
     },
+    "original:141cef73c5f69336fe1d2d16": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633515",
+      "source": "이투데이",
+      "source_body_digest": "e2c4323852a2d494a3da05579af90cfd3e3fe5c6638234c6f29d5b7cee528df0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:34221929d0ca0a8d6d18997b0ab2c5390a60c49ee843c324fc3c7b8d2ddfdff2",
+      "source_fact_keys": [
+        "source_fact:v1:14638b88811fb5b893e4d5cc9acbe5d67f6977ce8711d65d6d46754432984f5c",
+        "source_fact:v1:861fc4b6943b13cac4f80120295872a2cc6aa7260c5f5c6bbeb69f1c64449acf",
+        "source_fact:v1:8b87c3e80fbcb567291c281199afd0a82bdaf1ae31942377c52838ec1280cd3b",
+        "source_fact:v1:90ad977e4a4b43a14b83b65a242a471027b0238951c7ed0856347904d3f42360"
+      ],
+      "source_published_kst": "2026-10-07T16:28+09:00",
+      "source_title": "포스코, K-GX ‘철강 GX’ 참여…2028년 포항에 하이렉스 실증설비",
+      "telegram_core_fact": "2028년까지 연산 30만t(톤) 하이렉스 실증설비를 구축하고 청정수소 공급망과 포항·울산 산업단지를 연계한다.",
+      "title": "포스코, K-GX ‘철강 GX’ 참여…2028년 포항에 하이렉스 실증설비"
+    },
     "original:142feff57a1ea3dbe6459ee2": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
       "lanes": {
@@ -69720,6 +70160,29 @@
       "source_published_kst": "2026-10-06T00:04+09:00",
       "title": "엔진·배터리·공조… AI 데이터센터, 제조업 신시장을 열다"
     },
+    "original:220e84ca36b536901b4172cc": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633520",
+      "source": "이투데이",
+      "source_body_digest": "b919e31eabc9af503bc7e0e8f265e24a052ec99304eb60c12a13b4c72b1b7bf0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29cfb5b7c6291c48faf41955215aa6b01fabca177805d79597ee499c67a9f78c",
+      "source_fact_keys": [
+        "source_fact:v1:4483440459b6f2701864d1a01d93f3762ca2cacf97c66bc755125f949d39432c",
+        "source_fact:v1:9ab6584e121475fa8a2a2175266d0a108a54028f39affea62cbdd9737e95969a",
+        "source_fact:v1:b278ef68b8dcfdfd9bf1494009f0b4e6b77e84a78b7c0389f9004f421b21605e",
+        "source_fact:v1:df93f5f736653ba190362701811082878339df339990da2eadd91bd351a746f5",
+        "source_fact:v1:f8b196f65b59720bb0d8598f9547450c2d37953588e9dcf025256a839486e027"
+      ],
+      "source_published_kst": "2026-10-07T16:34+09:00",
+      "source_title": "포항시-아모지, 영일만산단 ‘무탄소 분산발전’ 가속화… 글로벌 투자사·대기업 총출동",
+      "telegram_core_fact": "참석자들은 ▲영일만 무탄소 분산발전 프로젝트의 속도감 있는 추진 ▲원활한 사업 진행을 위한 부지 및 인허가 행정 지원 ▲안정적인 청정 암모니아 수입·저장·공급망 구축 ▲영일만산단 입주기업들의 무탄소 전력 공급 확대 방안 등을 논의했다.",
+      "title": "포항시-아모지, 영일만산단 ‘무탄소 분산발전’ 가속화… 글로벌 투자사·대기업 총출동"
+    },
     "original:22532471b5b750da4d55a26b": {
       "first_seen_kst": "2026-10-04T06:34:33+09:00",
       "lanes": {
@@ -71451,6 +71914,26 @@
       ],
       "source_published_kst": "2026-10-05T17:00+09:00",
       "title": "금호석유화학, LFP 전지용 CNT 개발 본격화…내년 상업화 추진"
+    },
+    "original:2db826a617d6f630918a6ef4": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633203",
+      "source": "이투데이",
+      "source_body_digest": "4f0198f2876d2a0745dd5c51901916e511dd0c1654132a0f2e64e830c7597f14",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f52565cda7a5a97591f336bbd47cd7041c9f6c2a1599f3c910f5ef3383c6a97e",
+      "source_fact_keys": [
+        "source_fact:v1:4e11e1ac3cec9d46e6f37f0acff69e5ab0deac0179769c917cbf51219eb62f27",
+        "source_fact:v1:ec190b56bcba5cb590c3cfddea4c22e16ae21617a393edac66029056a4ce3bb5"
+      ],
+      "source_published_kst": "2026-10-07T12:00+09:00",
+      "source_title": "중동 전쟁에도 44조 기름값 담합 의혹…SK에너지·HD현대오일뱅크 ‘공정위 심판대’",
+      "telegram_core_fact": "공정위 심사관은 SK에너지·현대오일뱅크가 약 4년간 유류 가격정보를 교환하고 올해 3월 두 차례 가격을 담합했다는 혐의로 심의에 넘겼다. 관련 매출은 약 44.1조원이며 최종 위법 여부와 제재는 미확정이다.",
+      "title": "중동 전쟁에도 44조 기름값 담합 의혹…SK에너지·HD현대오일뱅크 ‘공정위 심판대’"
     },
     "original:2db8e523e8739044011f1164": {
       "first_seen_kst": "2026-10-03T21:21:44+09:00",
@@ -78173,6 +78656,23 @@
       "source_event_identity": "",
       "title": "英 총리 다시 꺼낸 EU 재가입론…찬성 49%·반대 28.5%"
     },
+    "original:5bfe3bfb4727d922e796e0b0": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.mk.co.kr/news/business/12170465",
+      "source": "매일경제",
+      "source_body_digest": "444f36a43ab860b7becd19018beb5add01c76e2d117558f28d3d6f4310c081fc",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T15:23+09:00",
+      "source_title": "장금상선, 한진 지분 5.58% 확보…20년 물류동맹 더 끈끈해지나",
+      "telegram_core_fact": "국내 중견 해운사 장금상선이 종합물류기업 (주)한진 지분을 5% 이상 확보하면서 투자 배경에 관심이 쏠리고 있다.",
+      "title": "장금상선, 한진 지분 5.58% 확보…20년 물류동맹 더 끈끈해지나"
+    },
     "original:5c817ef4d8caff7959e0e713": {
       "first_seen_kst": "2026-10-02T10:30:30+09:00",
       "lanes": {
@@ -78797,6 +79297,27 @@
       ],
       "source_published_kst": "2026-10-07T08:31+09:00",
       "title": "한성크린텍, 삼성전기 베트남 공장 초순수 시스템 230억원 수주"
+    },
+    "original:6136763b55f8c637248ec89f": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etnews.com/20261007000171",
+      "source": "전자신문",
+      "source_body_digest": "0cab143d09caf2e575949d231ace76738ab59b1e713e28510a636a74dcc2decb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53453ba04c29f5baef74f4b5aee00f9c64df251bccd13fb8b9eba608889f042a",
+      "source_fact_keys": [
+        "source_fact:v1:10fb00574d6b91c7abb917362ad5adadcd7aef029ccd139920326029d40f78f0",
+        "source_fact:v1:cd3e19959ec91b39b7b74830bfc76a059031f0ec1f67e9d735a908a572539836",
+        "source_fact:v1:fff58af81c4a4ecab5e189df7ffd60be9f9735228dff0f1279ae0add3319a8e0"
+      ],
+      "source_published_kst": "2026-10-07T16:30+09:00",
+      "source_title": "“AI 도입보다 중요한 건 신뢰”…서울형 AI 윤리 해법 찾는다",
+      "telegram_core_fact": "AI가 행정·복지·교통·교육 등 시민 일상으로 깊숙이 들어오면서 공정성·투명성과 같은 원칙을 선언하는 데 그치지 않고 AI 도입 전 위험을 살피고 운영 과정에서 문제를 감시하며, 이를 다시 제도 개선으로 연결하는 거버넌스가 필요하다는 목소리가 나왔다.",
+      "title": "“AI 도입보다 중요한 건 신뢰”…서울형 AI 윤리 해법 찾는다"
     },
     "original:614b2104bc41a75509d41a3f": {
       "first_seen_kst": "2026-09-17T20:51:45+09:00",
@@ -83610,6 +84131,30 @@
       ],
       "source_published_kst": "2026-10-05T12:57+09:00",
       "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
+    },
+    "original:85ead6259fbdb0119e8d094d": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633477",
+      "source": "이투데이",
+      "source_body_digest": "592f09123a21eebc609372d6d871af91ad0a440cd71dd869fdcee1bfc291a844",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7304907aae5244050b3403db3812e74fb347144aff14013b840fd96823a99aa9",
+      "source_fact_keys": [
+        "source_fact:v1:02f8010911a5454904fa6907e96f8df3d8b93b710c56641a5e5459f52e6a280d",
+        "source_fact:v1:08e3a9847b9d22b2fe3b0532598b514f3ff7ee6ff5686f8ce0e27299621994c9",
+        "source_fact:v1:5d57d94d47a852ae90f8fd33547f4ca99b5011b2c72ce65b46ad9848e1983f49",
+        "source_fact:v1:5f28567c04fad8fb6a1b08d7e0d6272987ed78de55e5deed2372ca07dde2b468",
+        "source_fact:v1:62108d3c04dc2dfcc262168415df51dbfc65a93c5d7ea015d3781c7110ba74a5",
+        "source_fact:v1:d61a9f9cd7b80f6db953794f2ca1d1e055da7b3a4a8aef985983c38ea4c88058"
+      ],
+      "source_published_kst": "2026-10-07T16:22+09:00",
+      "source_title": "홍지선 국토장관 “수도권 주택 착공 목표 달성 어려워…80~88% 전망” [국감] [종합]",
+      "telegram_core_fact": "정부는 착공 실적 부진을 만회하기 위해 신규택지와 공공택지를 중심으로 공급 속도를 높인다는 방침이다.",
+      "title": "홍지선 국토장관 “수도권 주택 착공 목표 달성 어려워…80~88% 전망” [국감] [종합]"
     },
     "original:861adbda6e13c6466c6dadbe": {
       "first_seen_kst": "2026-10-05T22:49:24+09:00",
@@ -91476,6 +92021,23 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003812482",
       "source": "뉴시스",
       "title": "한전, 변전소 AI 감시에 국산 AI 반도체 활용…현장 성능검증 착수"
+    },
+    "original:c0941fb8319c4ed16fb109ef": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007121100030",
+      "source": "연합뉴스",
+      "source_body_digest": "00fcabad452880216934f273b7b58ebfcac244187501e9d2ecfda3a544292d38",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T14:18+09:00",
+      "source_title": "KT&G, 인도네시아 신공장 가동…5개국 생산체제 구축 | 연합뉴스",
+      "telegram_core_fact": "KT&G가 인도네시아 신공장을 가동해 글로벌 5각 생산체제를 구축했다. 설비 9대 설치 후 연산 210억 개비, 기존 공장 포함 현지 생산능력은 350억 개비로 확대될 전망이다.",
+      "title": "KT&G, 인도네시아 신공장 가동…5개국 생산체제 구축 | 연합뉴스"
     },
     "original:c0f6ef5fa25415d45ba2143b": {
       "first_seen_kst": "2026-09-26T20:59:22+09:00",
@@ -110648,6 +111210,28 @@
       "source_published_kst": "2026-10-06T12:07+09:00",
       "title": "'악수하고 춤까지' 中 휴머노이드 국감장 떴다...\"韓 투자 턱없이 부족\""
     },
+    "source_fact:22a103c8204f830635bf6967": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633515",
+      "source": "이투데이",
+      "source_body_digest": "e2c4323852a2d494a3da05579af90cfd3e3fe5c6638234c6f29d5b7cee528df0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:34221929d0ca0a8d6d18997b0ab2c5390a60c49ee843c324fc3c7b8d2ddfdff2",
+      "source_fact_keys": [
+        "source_fact:v1:14638b88811fb5b893e4d5cc9acbe5d67f6977ce8711d65d6d46754432984f5c",
+        "source_fact:v1:861fc4b6943b13cac4f80120295872a2cc6aa7260c5f5c6bbeb69f1c64449acf",
+        "source_fact:v1:8b87c3e80fbcb567291c281199afd0a82bdaf1ae31942377c52838ec1280cd3b",
+        "source_fact:v1:90ad977e4a4b43a14b83b65a242a471027b0238951c7ed0856347904d3f42360"
+      ],
+      "source_published_kst": "2026-10-07T16:28+09:00",
+      "source_title": "포스코, K-GX ‘철강 GX’ 참여…2028년 포항에 하이렉스 실증설비",
+      "telegram_core_fact": "2028년까지 연산 30만t(톤) 하이렉스 실증설비를 구축하고 청정수소 공급망과 포항·울산 산업단지를 연계한다.",
+      "title": "포스코, K-GX ‘철강 GX’ 참여…2028년 포항에 하이렉스 실증설비"
+    },
     "source_fact:22b9ddfe483345998eba05be": {
       "first_seen_kst": "2026-10-07T03:30:59+09:00",
       "lanes": {
@@ -113051,6 +113635,26 @@
       ],
       "source_published_kst": "2026-10-06T08:33+09:00",
       "title": "“광고·커머스 매출 성장 둔화, AI 비용 증가”…대신증권, NAVER 목표가↓"
+    },
+    "source_fact:29b7123584fa1a8f27a63b69": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633203",
+      "source": "이투데이",
+      "source_body_digest": "4f0198f2876d2a0745dd5c51901916e511dd0c1654132a0f2e64e830c7597f14",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f52565cda7a5a97591f336bbd47cd7041c9f6c2a1599f3c910f5ef3383c6a97e",
+      "source_fact_keys": [
+        "source_fact:v1:4e11e1ac3cec9d46e6f37f0acff69e5ab0deac0179769c917cbf51219eb62f27",
+        "source_fact:v1:ec190b56bcba5cb590c3cfddea4c22e16ae21617a393edac66029056a4ce3bb5"
+      ],
+      "source_published_kst": "2026-10-07T12:00+09:00",
+      "source_title": "중동 전쟁에도 44조 기름값 담합 의혹…SK에너지·HD현대오일뱅크 ‘공정위 심판대’",
+      "telegram_core_fact": "공정위 심사관은 SK에너지·현대오일뱅크가 약 4년간 유류 가격정보를 교환하고 올해 3월 두 차례 가격을 담합했다는 혐의로 심의에 넘겼다. 관련 매출은 약 44.1조원이며 최종 위법 여부와 제재는 미확정이다.",
+      "title": "중동 전쟁에도 44조 기름값 담합 의혹…SK에너지·HD현대오일뱅크 ‘공정위 심판대’"
     },
     "source_fact:29c7add3714f8a0c290213b9": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
@@ -118692,6 +119296,28 @@
       "source_published_kst": "2026-10-07T11:06+09:00",
       "title": "[ESGX 이슈 5] 구글, 美 원전 11기 출력 높인다…AI 전력 확보에 43억달러 투자"
     },
+    "source_fact:39609c2a00295533b8f38bc6": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633515",
+      "source": "이투데이",
+      "source_body_digest": "e2c4323852a2d494a3da05579af90cfd3e3fe5c6638234c6f29d5b7cee528df0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:34221929d0ca0a8d6d18997b0ab2c5390a60c49ee843c324fc3c7b8d2ddfdff2",
+      "source_fact_keys": [
+        "source_fact:v1:14638b88811fb5b893e4d5cc9acbe5d67f6977ce8711d65d6d46754432984f5c",
+        "source_fact:v1:861fc4b6943b13cac4f80120295872a2cc6aa7260c5f5c6bbeb69f1c64449acf",
+        "source_fact:v1:8b87c3e80fbcb567291c281199afd0a82bdaf1ae31942377c52838ec1280cd3b",
+        "source_fact:v1:90ad977e4a4b43a14b83b65a242a471027b0238951c7ed0856347904d3f42360"
+      ],
+      "source_published_kst": "2026-10-07T16:28+09:00",
+      "source_title": "포스코, K-GX ‘철강 GX’ 참여…2028년 포항에 하이렉스 실증설비",
+      "telegram_core_fact": "2028년까지 연산 30만t(톤) 하이렉스 실증설비를 구축하고 청정수소 공급망과 포항·울산 산업단지를 연계한다.",
+      "title": "포스코, K-GX ‘철강 GX’ 참여…2028년 포항에 하이렉스 실증설비"
+    },
     "source_fact:396a9b9748dff25f0b6bd2c3": {
       "first_seen_kst": "2026-10-07T03:30:59+09:00",
       "lanes": {
@@ -121863,6 +122489,29 @@
       "source_published_kst": "2026-10-05T08:05+09:00",
       "title": "씨이앤에스, ‘AI 서버 폭발적 발열’ 미스트 정밀 분사로 잡는다"
     },
+    "source_fact:42cbf6d01ba245e30ea828d3": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633520",
+      "source": "이투데이",
+      "source_body_digest": "b919e31eabc9af503bc7e0e8f265e24a052ec99304eb60c12a13b4c72b1b7bf0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29cfb5b7c6291c48faf41955215aa6b01fabca177805d79597ee499c67a9f78c",
+      "source_fact_keys": [
+        "source_fact:v1:4483440459b6f2701864d1a01d93f3762ca2cacf97c66bc755125f949d39432c",
+        "source_fact:v1:9ab6584e121475fa8a2a2175266d0a108a54028f39affea62cbdd9737e95969a",
+        "source_fact:v1:b278ef68b8dcfdfd9bf1494009f0b4e6b77e84a78b7c0389f9004f421b21605e",
+        "source_fact:v1:df93f5f736653ba190362701811082878339df339990da2eadd91bd351a746f5",
+        "source_fact:v1:f8b196f65b59720bb0d8598f9547450c2d37953588e9dcf025256a839486e027"
+      ],
+      "source_published_kst": "2026-10-07T16:34+09:00",
+      "source_title": "포항시-아모지, 영일만산단 ‘무탄소 분산발전’ 가속화… 글로벌 투자사·대기업 총출동",
+      "telegram_core_fact": "참석자들은 ▲영일만 무탄소 분산발전 프로젝트의 속도감 있는 추진 ▲원활한 사업 진행을 위한 부지 및 인허가 행정 지원 ▲안정적인 청정 암모니아 수입·저장·공급망 구축 ▲영일만산단 입주기업들의 무탄소 전력 공급 확대 방안 등을 논의했다.",
+      "title": "포항시-아모지, 영일만산단 ‘무탄소 분산발전’ 가속화… 글로벌 투자사·대기업 총출동"
+    },
     "source_fact:42d505a2a7ff1a026ee73c9f": {
       "first_seen_kst": "2026-10-06T21:54:00+09:00",
       "lanes": {
@@ -123663,6 +124312,29 @@
       "source_published_kst": "2026-10-06T08:45+09:00",
       "title": "한미반도체, 삼성전기에 패키징 장비 공급…245억원 규모"
     },
+    "source_fact:4808cbda441b778ca810f2c7": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633520",
+      "source": "이투데이",
+      "source_body_digest": "b919e31eabc9af503bc7e0e8f265e24a052ec99304eb60c12a13b4c72b1b7bf0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29cfb5b7c6291c48faf41955215aa6b01fabca177805d79597ee499c67a9f78c",
+      "source_fact_keys": [
+        "source_fact:v1:4483440459b6f2701864d1a01d93f3762ca2cacf97c66bc755125f949d39432c",
+        "source_fact:v1:9ab6584e121475fa8a2a2175266d0a108a54028f39affea62cbdd9737e95969a",
+        "source_fact:v1:b278ef68b8dcfdfd9bf1494009f0b4e6b77e84a78b7c0389f9004f421b21605e",
+        "source_fact:v1:df93f5f736653ba190362701811082878339df339990da2eadd91bd351a746f5",
+        "source_fact:v1:f8b196f65b59720bb0d8598f9547450c2d37953588e9dcf025256a839486e027"
+      ],
+      "source_published_kst": "2026-10-07T16:34+09:00",
+      "source_title": "포항시-아모지, 영일만산단 ‘무탄소 분산발전’ 가속화… 글로벌 투자사·대기업 총출동",
+      "telegram_core_fact": "참석자들은 ▲영일만 무탄소 분산발전 프로젝트의 속도감 있는 추진 ▲원활한 사업 진행을 위한 부지 및 인허가 행정 지원 ▲안정적인 청정 암모니아 수입·저장·공급망 구축 ▲영일만산단 입주기업들의 무탄소 전력 공급 확대 방안 등을 논의했다.",
+      "title": "포항시-아모지, 영일만산단 ‘무탄소 분산발전’ 가속화… 글로벌 투자사·대기업 총출동"
+    },
     "source_fact:48104937943cf0e593207e52": {
       "first_seen_kst": "2026-10-07T01:59:08+09:00",
       "lanes": {
@@ -123857,6 +124529,27 @@
       ],
       "source_published_kst": "2026-10-06T11:23+09:00",
       "title": "삼성전기, 반년도 안 돼 컴포넌트 연매출 75% 채웠다⋯AI부품 수주 ‘4조 클럽’"
+    },
+    "source_fact:48b0a26b4ae1a7d03e8ccca7": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etnews.com/20261007000171",
+      "source": "전자신문",
+      "source_body_digest": "0cab143d09caf2e575949d231ace76738ab59b1e713e28510a636a74dcc2decb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53453ba04c29f5baef74f4b5aee00f9c64df251bccd13fb8b9eba608889f042a",
+      "source_fact_keys": [
+        "source_fact:v1:10fb00574d6b91c7abb917362ad5adadcd7aef029ccd139920326029d40f78f0",
+        "source_fact:v1:cd3e19959ec91b39b7b74830bfc76a059031f0ec1f67e9d735a908a572539836",
+        "source_fact:v1:fff58af81c4a4ecab5e189df7ffd60be9f9735228dff0f1279ae0add3319a8e0"
+      ],
+      "source_published_kst": "2026-10-07T16:30+09:00",
+      "source_title": "“AI 도입보다 중요한 건 신뢰”…서울형 AI 윤리 해법 찾는다",
+      "telegram_core_fact": "AI가 행정·복지·교통·교육 등 시민 일상으로 깊숙이 들어오면서 공정성·투명성과 같은 원칙을 선언하는 데 그치지 않고 AI 도입 전 위험을 살피고 운영 과정에서 문제를 감시하며, 이를 다시 제도 개선으로 연결하는 거버넌스가 필요하다는 목소리가 나왔다.",
+      "title": "“AI 도입보다 중요한 건 신뢰”…서울형 AI 윤리 해법 찾는다"
     },
     "source_fact:48d74d9422d80734151ec829": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
@@ -132882,6 +133575,28 @@
       "source_published_kst": "2026-10-06T23:54+09:00",
       "title": "AI 전력난에 기존 원전 영끌…구글, 전력 3.6GW 확보"
     },
+    "source_fact:6372e55914d3db47bc8c69c4": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633515",
+      "source": "이투데이",
+      "source_body_digest": "e2c4323852a2d494a3da05579af90cfd3e3fe5c6638234c6f29d5b7cee528df0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:34221929d0ca0a8d6d18997b0ab2c5390a60c49ee843c324fc3c7b8d2ddfdff2",
+      "source_fact_keys": [
+        "source_fact:v1:14638b88811fb5b893e4d5cc9acbe5d67f6977ce8711d65d6d46754432984f5c",
+        "source_fact:v1:861fc4b6943b13cac4f80120295872a2cc6aa7260c5f5c6bbeb69f1c64449acf",
+        "source_fact:v1:8b87c3e80fbcb567291c281199afd0a82bdaf1ae31942377c52838ec1280cd3b",
+        "source_fact:v1:90ad977e4a4b43a14b83b65a242a471027b0238951c7ed0856347904d3f42360"
+      ],
+      "source_published_kst": "2026-10-07T16:28+09:00",
+      "source_title": "포스코, K-GX ‘철강 GX’ 참여…2028년 포항에 하이렉스 실증설비",
+      "telegram_core_fact": "2028년까지 연산 30만t(톤) 하이렉스 실증설비를 구축하고 청정수소 공급망과 포항·울산 산업단지를 연계한다.",
+      "title": "포스코, K-GX ‘철강 GX’ 참여…2028년 포항에 하이렉스 실증설비"
+    },
     "source_fact:6373af9080839cb66156ba01": {
       "first_seen_kst": "2026-10-07T10:23:42+09:00",
       "lanes": {
@@ -133731,6 +134446,28 @@
       ],
       "source_published_kst": "2026-10-06T14:48+09:00",
       "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
+    },
+    "source_fact:662949545dd6da534f098636": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633515",
+      "source": "이투데이",
+      "source_body_digest": "e2c4323852a2d494a3da05579af90cfd3e3fe5c6638234c6f29d5b7cee528df0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:34221929d0ca0a8d6d18997b0ab2c5390a60c49ee843c324fc3c7b8d2ddfdff2",
+      "source_fact_keys": [
+        "source_fact:v1:14638b88811fb5b893e4d5cc9acbe5d67f6977ce8711d65d6d46754432984f5c",
+        "source_fact:v1:861fc4b6943b13cac4f80120295872a2cc6aa7260c5f5c6bbeb69f1c64449acf",
+        "source_fact:v1:8b87c3e80fbcb567291c281199afd0a82bdaf1ae31942377c52838ec1280cd3b",
+        "source_fact:v1:90ad977e4a4b43a14b83b65a242a471027b0238951c7ed0856347904d3f42360"
+      ],
+      "source_published_kst": "2026-10-07T16:28+09:00",
+      "source_title": "포스코, K-GX ‘철강 GX’ 참여…2028년 포항에 하이렉스 실증설비",
+      "telegram_core_fact": "2028년까지 연산 30만t(톤) 하이렉스 실증설비를 구축하고 청정수소 공급망과 포항·울산 산업단지를 연계한다.",
+      "title": "포스코, K-GX ‘철강 GX’ 참여…2028년 포항에 하이렉스 실증설비"
     },
     "source_fact:6633f38ea52e0b06dfc1036a": {
       "first_seen_kst": "2026-10-07T13:13:19+09:00",
@@ -135166,6 +135903,30 @@
       ],
       "source_published_kst": "2026-10-05T21:23+09:00",
       "title": "테라울프, 머스키 전력 1GW로 2배 확대..2단계 1년 앞당겨"
+    },
+    "source_fact:6a87974c8adf447d8c53f7dd": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633477",
+      "source": "이투데이",
+      "source_body_digest": "592f09123a21eebc609372d6d871af91ad0a440cd71dd869fdcee1bfc291a844",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7304907aae5244050b3403db3812e74fb347144aff14013b840fd96823a99aa9",
+      "source_fact_keys": [
+        "source_fact:v1:02f8010911a5454904fa6907e96f8df3d8b93b710c56641a5e5459f52e6a280d",
+        "source_fact:v1:08e3a9847b9d22b2fe3b0532598b514f3ff7ee6ff5686f8ce0e27299621994c9",
+        "source_fact:v1:5d57d94d47a852ae90f8fd33547f4ca99b5011b2c72ce65b46ad9848e1983f49",
+        "source_fact:v1:5f28567c04fad8fb6a1b08d7e0d6272987ed78de55e5deed2372ca07dde2b468",
+        "source_fact:v1:62108d3c04dc2dfcc262168415df51dbfc65a93c5d7ea015d3781c7110ba74a5",
+        "source_fact:v1:d61a9f9cd7b80f6db953794f2ca1d1e055da7b3a4a8aef985983c38ea4c88058"
+      ],
+      "source_published_kst": "2026-10-07T16:22+09:00",
+      "source_title": "홍지선 국토장관 “수도권 주택 착공 목표 달성 어려워…80~88% 전망” [국감] [종합]",
+      "telegram_core_fact": "정부는 착공 실적 부진을 만회하기 위해 신규택지와 공공택지를 중심으로 공급 속도를 높인다는 방침이다.",
+      "title": "홍지선 국토장관 “수도권 주택 착공 목표 달성 어려워…80~88% 전망” [국감] [종합]"
     },
     "source_fact:6a8da7aa730652e0b0bc33da": {
       "first_seen_kst": "2026-10-07T13:13:19+09:00",
@@ -139808,6 +140569,27 @@
       "source_published_kst": "2026-10-07T10:13+09:00",
       "title": "포스코홀딩스, 아르헨티나 리튬 2공장 준공…“2033년 10만톤 체제 완성”"
     },
+    "source_fact:78e8db286df069756a9e83ec": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etnews.com/20261007000171",
+      "source": "전자신문",
+      "source_body_digest": "0cab143d09caf2e575949d231ace76738ab59b1e713e28510a636a74dcc2decb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53453ba04c29f5baef74f4b5aee00f9c64df251bccd13fb8b9eba608889f042a",
+      "source_fact_keys": [
+        "source_fact:v1:10fb00574d6b91c7abb917362ad5adadcd7aef029ccd139920326029d40f78f0",
+        "source_fact:v1:cd3e19959ec91b39b7b74830bfc76a059031f0ec1f67e9d735a908a572539836",
+        "source_fact:v1:fff58af81c4a4ecab5e189df7ffd60be9f9735228dff0f1279ae0add3319a8e0"
+      ],
+      "source_published_kst": "2026-10-07T16:30+09:00",
+      "source_title": "“AI 도입보다 중요한 건 신뢰”…서울형 AI 윤리 해법 찾는다",
+      "telegram_core_fact": "AI가 행정·복지·교통·교육 등 시민 일상으로 깊숙이 들어오면서 공정성·투명성과 같은 원칙을 선언하는 데 그치지 않고 AI 도입 전 위험을 살피고 운영 과정에서 문제를 감시하며, 이를 다시 제도 개선으로 연결하는 거버넌스가 필요하다는 목소리가 나왔다.",
+      "title": "“AI 도입보다 중요한 건 신뢰”…서울형 AI 윤리 해법 찾는다"
+    },
     "source_fact:78fe1f25dbf6588ba22d29cc": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
       "lanes": {
@@ -144034,6 +144816,27 @@
       ],
       "source_published_kst": "2026-10-06T06:28+09:00",
       "title": "트럼프, 면세 경유 사용처 제한 완화…기름값 낮추려 안간힘"
+    },
+    "source_fact:85ac4bc2cecf81bbde13a7ba": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etnews.com/20261007000171",
+      "source": "전자신문",
+      "source_body_digest": "0cab143d09caf2e575949d231ace76738ab59b1e713e28510a636a74dcc2decb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53453ba04c29f5baef74f4b5aee00f9c64df251bccd13fb8b9eba608889f042a",
+      "source_fact_keys": [
+        "source_fact:v1:10fb00574d6b91c7abb917362ad5adadcd7aef029ccd139920326029d40f78f0",
+        "source_fact:v1:cd3e19959ec91b39b7b74830bfc76a059031f0ec1f67e9d735a908a572539836",
+        "source_fact:v1:fff58af81c4a4ecab5e189df7ffd60be9f9735228dff0f1279ae0add3319a8e0"
+      ],
+      "source_published_kst": "2026-10-07T16:30+09:00",
+      "source_title": "“AI 도입보다 중요한 건 신뢰”…서울형 AI 윤리 해법 찾는다",
+      "telegram_core_fact": "AI가 행정·복지·교통·교육 등 시민 일상으로 깊숙이 들어오면서 공정성·투명성과 같은 원칙을 선언하는 데 그치지 않고 AI 도입 전 위험을 살피고 운영 과정에서 문제를 감시하며, 이를 다시 제도 개선으로 연결하는 거버넌스가 필요하다는 목소리가 나왔다.",
+      "title": "“AI 도입보다 중요한 건 신뢰”…서울형 AI 윤리 해법 찾는다"
     },
     "source_fact:85bb168eb482a0835126a24f": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
@@ -151264,6 +152067,26 @@
       "source_published_kst": "2026-10-06T09:54+09:00",
       "title": "올해 청약 경쟁률 작년 절반으로 '뚝'…서울·3기신도시는 100대1"
     },
+    "source_fact:9ba3de66aa2cb49d0a3c5fce": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633203",
+      "source": "이투데이",
+      "source_body_digest": "4f0198f2876d2a0745dd5c51901916e511dd0c1654132a0f2e64e830c7597f14",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f52565cda7a5a97591f336bbd47cd7041c9f6c2a1599f3c910f5ef3383c6a97e",
+      "source_fact_keys": [
+        "source_fact:v1:4e11e1ac3cec9d46e6f37f0acff69e5ab0deac0179769c917cbf51219eb62f27",
+        "source_fact:v1:ec190b56bcba5cb590c3cfddea4c22e16ae21617a393edac66029056a4ce3bb5"
+      ],
+      "source_published_kst": "2026-10-07T12:00+09:00",
+      "source_title": "중동 전쟁에도 44조 기름값 담합 의혹…SK에너지·HD현대오일뱅크 ‘공정위 심판대’",
+      "telegram_core_fact": "공정위 심사관은 SK에너지·현대오일뱅크가 약 4년간 유류 가격정보를 교환하고 올해 3월 두 차례 가격을 담합했다는 혐의로 심의에 넘겼다. 관련 매출은 약 44.1조원이며 최종 위법 여부와 제재는 미확정이다.",
+      "title": "중동 전쟁에도 44조 기름값 담합 의혹…SK에너지·HD현대오일뱅크 ‘공정위 심판대’"
+    },
     "source_fact:9bbe63567f29a3bf8e64c9e3": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
       "lanes": {
@@ -152812,6 +153635,29 @@
       "source_published_kst": "2026-10-06T19:14+09:00",
       "title": "이형일, 서울 집값 86주 상승에 \"무겁게 느껴…주택공급 확대 집중\""
     },
+    "source_fact:a04a530be6da9b22dcacad47": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633520",
+      "source": "이투데이",
+      "source_body_digest": "b919e31eabc9af503bc7e0e8f265e24a052ec99304eb60c12a13b4c72b1b7bf0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29cfb5b7c6291c48faf41955215aa6b01fabca177805d79597ee499c67a9f78c",
+      "source_fact_keys": [
+        "source_fact:v1:4483440459b6f2701864d1a01d93f3762ca2cacf97c66bc755125f949d39432c",
+        "source_fact:v1:9ab6584e121475fa8a2a2175266d0a108a54028f39affea62cbdd9737e95969a",
+        "source_fact:v1:b278ef68b8dcfdfd9bf1494009f0b4e6b77e84a78b7c0389f9004f421b21605e",
+        "source_fact:v1:df93f5f736653ba190362701811082878339df339990da2eadd91bd351a746f5",
+        "source_fact:v1:f8b196f65b59720bb0d8598f9547450c2d37953588e9dcf025256a839486e027"
+      ],
+      "source_published_kst": "2026-10-07T16:34+09:00",
+      "source_title": "포항시-아모지, 영일만산단 ‘무탄소 분산발전’ 가속화… 글로벌 투자사·대기업 총출동",
+      "telegram_core_fact": "참석자들은 ▲영일만 무탄소 분산발전 프로젝트의 속도감 있는 추진 ▲원활한 사업 진행을 위한 부지 및 인허가 행정 지원 ▲안정적인 청정 암모니아 수입·저장·공급망 구축 ▲영일만산단 입주기업들의 무탄소 전력 공급 확대 방안 등을 논의했다.",
+      "title": "포항시-아모지, 영일만산단 ‘무탄소 분산발전’ 가속화… 글로벌 투자사·대기업 총출동"
+    },
     "source_fact:a064dd20689b4e5140d42a28": {
       "first_seen_kst": "2026-10-07T18:00:43+09:00",
       "lanes": {
@@ -154273,6 +155119,29 @@
       ],
       "source_published_kst": "2026-10-05T18:43+09:00",
       "title": "JEDEC, 첫 '실리콘 포토닉스' 신뢰성 표준 발표…AI인프라 변혁 예고"
+    },
+    "source_fact:a47b03cee57ae812d2e43a7e": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633520",
+      "source": "이투데이",
+      "source_body_digest": "b919e31eabc9af503bc7e0e8f265e24a052ec99304eb60c12a13b4c72b1b7bf0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29cfb5b7c6291c48faf41955215aa6b01fabca177805d79597ee499c67a9f78c",
+      "source_fact_keys": [
+        "source_fact:v1:4483440459b6f2701864d1a01d93f3762ca2cacf97c66bc755125f949d39432c",
+        "source_fact:v1:9ab6584e121475fa8a2a2175266d0a108a54028f39affea62cbdd9737e95969a",
+        "source_fact:v1:b278ef68b8dcfdfd9bf1494009f0b4e6b77e84a78b7c0389f9004f421b21605e",
+        "source_fact:v1:df93f5f736653ba190362701811082878339df339990da2eadd91bd351a746f5",
+        "source_fact:v1:f8b196f65b59720bb0d8598f9547450c2d37953588e9dcf025256a839486e027"
+      ],
+      "source_published_kst": "2026-10-07T16:34+09:00",
+      "source_title": "포항시-아모지, 영일만산단 ‘무탄소 분산발전’ 가속화… 글로벌 투자사·대기업 총출동",
+      "telegram_core_fact": "참석자들은 ▲영일만 무탄소 분산발전 프로젝트의 속도감 있는 추진 ▲원활한 사업 진행을 위한 부지 및 인허가 행정 지원 ▲안정적인 청정 암모니아 수입·저장·공급망 구축 ▲영일만산단 입주기업들의 무탄소 전력 공급 확대 방안 등을 논의했다.",
+      "title": "포항시-아모지, 영일만산단 ‘무탄소 분산발전’ 가속화… 글로벌 투자사·대기업 총출동"
     },
     "source_fact:a48ef4c656ae031153593667": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
@@ -168131,6 +169000,30 @@
       "source_published_kst": "2026-10-06T11:00+09:00",
       "title": "규제합리화추진단 \"디스플레이 규제 개선…수입 간소화·AI 보안가이드 마련\""
     },
+    "source_fact:cf2f6eec8227bce53e8abbaf": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633477",
+      "source": "이투데이",
+      "source_body_digest": "592f09123a21eebc609372d6d871af91ad0a440cd71dd869fdcee1bfc291a844",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7304907aae5244050b3403db3812e74fb347144aff14013b840fd96823a99aa9",
+      "source_fact_keys": [
+        "source_fact:v1:02f8010911a5454904fa6907e96f8df3d8b93b710c56641a5e5459f52e6a280d",
+        "source_fact:v1:08e3a9847b9d22b2fe3b0532598b514f3ff7ee6ff5686f8ce0e27299621994c9",
+        "source_fact:v1:5d57d94d47a852ae90f8fd33547f4ca99b5011b2c72ce65b46ad9848e1983f49",
+        "source_fact:v1:5f28567c04fad8fb6a1b08d7e0d6272987ed78de55e5deed2372ca07dde2b468",
+        "source_fact:v1:62108d3c04dc2dfcc262168415df51dbfc65a93c5d7ea015d3781c7110ba74a5",
+        "source_fact:v1:d61a9f9cd7b80f6db953794f2ca1d1e055da7b3a4a8aef985983c38ea4c88058"
+      ],
+      "source_published_kst": "2026-10-07T16:22+09:00",
+      "source_title": "홍지선 국토장관 “수도권 주택 착공 목표 달성 어려워…80~88% 전망” [국감] [종합]",
+      "telegram_core_fact": "정부는 착공 실적 부진을 만회하기 위해 신규택지와 공공택지를 중심으로 공급 속도를 높인다는 방침이다.",
+      "title": "홍지선 국토장관 “수도권 주택 착공 목표 달성 어려워…80~88% 전망” [국감] [종합]"
+    },
     "source_fact:cf30d708bf1ea4e262e4867d": {
       "first_seen_kst": "2026-10-06T01:51:09+09:00",
       "lanes": {
@@ -169026,6 +169919,29 @@
       ],
       "source_published_kst": "2026-10-06T11:09+09:00",
       "title": "재정부담에 재협상까지…고금리에 상업용 부동산 비상"
+    },
+    "source_fact:d1ce32bdb058d9510fb740b6": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633520",
+      "source": "이투데이",
+      "source_body_digest": "b919e31eabc9af503bc7e0e8f265e24a052ec99304eb60c12a13b4c72b1b7bf0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29cfb5b7c6291c48faf41955215aa6b01fabca177805d79597ee499c67a9f78c",
+      "source_fact_keys": [
+        "source_fact:v1:4483440459b6f2701864d1a01d93f3762ca2cacf97c66bc755125f949d39432c",
+        "source_fact:v1:9ab6584e121475fa8a2a2175266d0a108a54028f39affea62cbdd9737e95969a",
+        "source_fact:v1:b278ef68b8dcfdfd9bf1494009f0b4e6b77e84a78b7c0389f9004f421b21605e",
+        "source_fact:v1:df93f5f736653ba190362701811082878339df339990da2eadd91bd351a746f5",
+        "source_fact:v1:f8b196f65b59720bb0d8598f9547450c2d37953588e9dcf025256a839486e027"
+      ],
+      "source_published_kst": "2026-10-07T16:34+09:00",
+      "source_title": "포항시-아모지, 영일만산단 ‘무탄소 분산발전’ 가속화… 글로벌 투자사·대기업 총출동",
+      "telegram_core_fact": "참석자들은 ▲영일만 무탄소 분산발전 프로젝트의 속도감 있는 추진 ▲원활한 사업 진행을 위한 부지 및 인허가 행정 지원 ▲안정적인 청정 암모니아 수입·저장·공급망 구축 ▲영일만산단 입주기업들의 무탄소 전력 공급 확대 방안 등을 논의했다.",
+      "title": "포항시-아모지, 영일만산단 ‘무탄소 분산발전’ 가속화… 글로벌 투자사·대기업 총출동"
     },
     "source_fact:d1cfde93ca8c0bc946917ec3": {
       "first_seen_kst": "2026-10-06T15:03:09+09:00",
@@ -174751,6 +175667,30 @@
       "source_published_kst": "2026-10-06T21:16+09:00",
       "title": "[개장전특징주]AMD, TSMC, 마벨, 씨게이트"
     },
+    "source_fact:e0fc29153b16e0a9fafb4417": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633477",
+      "source": "이투데이",
+      "source_body_digest": "592f09123a21eebc609372d6d871af91ad0a440cd71dd869fdcee1bfc291a844",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7304907aae5244050b3403db3812e74fb347144aff14013b840fd96823a99aa9",
+      "source_fact_keys": [
+        "source_fact:v1:02f8010911a5454904fa6907e96f8df3d8b93b710c56641a5e5459f52e6a280d",
+        "source_fact:v1:08e3a9847b9d22b2fe3b0532598b514f3ff7ee6ff5686f8ce0e27299621994c9",
+        "source_fact:v1:5d57d94d47a852ae90f8fd33547f4ca99b5011b2c72ce65b46ad9848e1983f49",
+        "source_fact:v1:5f28567c04fad8fb6a1b08d7e0d6272987ed78de55e5deed2372ca07dde2b468",
+        "source_fact:v1:62108d3c04dc2dfcc262168415df51dbfc65a93c5d7ea015d3781c7110ba74a5",
+        "source_fact:v1:d61a9f9cd7b80f6db953794f2ca1d1e055da7b3a4a8aef985983c38ea4c88058"
+      ],
+      "source_published_kst": "2026-10-07T16:22+09:00",
+      "source_title": "홍지선 국토장관 “수도권 주택 착공 목표 달성 어려워…80~88% 전망” [국감] [종합]",
+      "telegram_core_fact": "정부는 착공 실적 부진을 만회하기 위해 신규택지와 공공택지를 중심으로 공급 속도를 높인다는 방침이다.",
+      "title": "홍지선 국토장관 “수도권 주택 착공 목표 달성 어려워…80~88% 전망” [국감] [종합]"
+    },
     "source_fact:e11f53b0b64c3ccce8b44c84": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
       "lanes": {
@@ -174768,6 +175708,30 @@
       ],
       "source_published_kst": "2026-10-06T18:04+09:00",
       "title": "노벨티노빌리티, 7443억 기술 수출"
+    },
+    "source_fact:e12cc538b0a1c8f6f2cb6a57": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633477",
+      "source": "이투데이",
+      "source_body_digest": "592f09123a21eebc609372d6d871af91ad0a440cd71dd869fdcee1bfc291a844",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7304907aae5244050b3403db3812e74fb347144aff14013b840fd96823a99aa9",
+      "source_fact_keys": [
+        "source_fact:v1:02f8010911a5454904fa6907e96f8df3d8b93b710c56641a5e5459f52e6a280d",
+        "source_fact:v1:08e3a9847b9d22b2fe3b0532598b514f3ff7ee6ff5686f8ce0e27299621994c9",
+        "source_fact:v1:5d57d94d47a852ae90f8fd33547f4ca99b5011b2c72ce65b46ad9848e1983f49",
+        "source_fact:v1:5f28567c04fad8fb6a1b08d7e0d6272987ed78de55e5deed2372ca07dde2b468",
+        "source_fact:v1:62108d3c04dc2dfcc262168415df51dbfc65a93c5d7ea015d3781c7110ba74a5",
+        "source_fact:v1:d61a9f9cd7b80f6db953794f2ca1d1e055da7b3a4a8aef985983c38ea4c88058"
+      ],
+      "source_published_kst": "2026-10-07T16:22+09:00",
+      "source_title": "홍지선 국토장관 “수도권 주택 착공 목표 달성 어려워…80~88% 전망” [국감] [종합]",
+      "telegram_core_fact": "정부는 착공 실적 부진을 만회하기 위해 신규택지와 공공택지를 중심으로 공급 속도를 높인다는 방침이다.",
+      "title": "홍지선 국토장관 “수도권 주택 착공 목표 달성 어려워…80~88% 전망” [국감] [종합]"
     },
     "source_fact:e12eabd87e3d5de7799c10c1": {
       "first_seen_kst": "2026-10-06T15:03:09+09:00",
@@ -174914,6 +175878,30 @@
       ],
       "source_published_kst": "2026-10-06T07:07+09:00",
       "title": "스페이스X 주가 급등에 머스크 다시 조만장자 [마켓핫]"
+    },
+    "source_fact:e193d8ad59ad7594041e1322": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633477",
+      "source": "이투데이",
+      "source_body_digest": "592f09123a21eebc609372d6d871af91ad0a440cd71dd869fdcee1bfc291a844",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7304907aae5244050b3403db3812e74fb347144aff14013b840fd96823a99aa9",
+      "source_fact_keys": [
+        "source_fact:v1:02f8010911a5454904fa6907e96f8df3d8b93b710c56641a5e5459f52e6a280d",
+        "source_fact:v1:08e3a9847b9d22b2fe3b0532598b514f3ff7ee6ff5686f8ce0e27299621994c9",
+        "source_fact:v1:5d57d94d47a852ae90f8fd33547f4ca99b5011b2c72ce65b46ad9848e1983f49",
+        "source_fact:v1:5f28567c04fad8fb6a1b08d7e0d6272987ed78de55e5deed2372ca07dde2b468",
+        "source_fact:v1:62108d3c04dc2dfcc262168415df51dbfc65a93c5d7ea015d3781c7110ba74a5",
+        "source_fact:v1:d61a9f9cd7b80f6db953794f2ca1d1e055da7b3a4a8aef985983c38ea4c88058"
+      ],
+      "source_published_kst": "2026-10-07T16:22+09:00",
+      "source_title": "홍지선 국토장관 “수도권 주택 착공 목표 달성 어려워…80~88% 전망” [국감] [종합]",
+      "telegram_core_fact": "정부는 착공 실적 부진을 만회하기 위해 신규택지와 공공택지를 중심으로 공급 속도를 높인다는 방침이다.",
+      "title": "홍지선 국토장관 “수도권 주택 착공 목표 달성 어려워…80~88% 전망” [국감] [종합]"
     },
     "source_fact:e1b6dc4f9c920e162c50f9db": {
       "first_seen_kst": "2026-10-07T08:57:59+09:00",
@@ -182075,6 +183063,30 @@
       "source_published_kst": "2026-10-06T11:02+09:00",
       "title": "메드팩토, 뼈질환 치료제 ‘MP2021’ 호주 임상 1상 승인"
     },
+    "source_fact:f5bbd6bdad268a37d0347445": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633477",
+      "source": "이투데이",
+      "source_body_digest": "592f09123a21eebc609372d6d871af91ad0a440cd71dd869fdcee1bfc291a844",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7304907aae5244050b3403db3812e74fb347144aff14013b840fd96823a99aa9",
+      "source_fact_keys": [
+        "source_fact:v1:02f8010911a5454904fa6907e96f8df3d8b93b710c56641a5e5459f52e6a280d",
+        "source_fact:v1:08e3a9847b9d22b2fe3b0532598b514f3ff7ee6ff5686f8ce0e27299621994c9",
+        "source_fact:v1:5d57d94d47a852ae90f8fd33547f4ca99b5011b2c72ce65b46ad9848e1983f49",
+        "source_fact:v1:5f28567c04fad8fb6a1b08d7e0d6272987ed78de55e5deed2372ca07dde2b468",
+        "source_fact:v1:62108d3c04dc2dfcc262168415df51dbfc65a93c5d7ea015d3781c7110ba74a5",
+        "source_fact:v1:d61a9f9cd7b80f6db953794f2ca1d1e055da7b3a4a8aef985983c38ea4c88058"
+      ],
+      "source_published_kst": "2026-10-07T16:22+09:00",
+      "source_title": "홍지선 국토장관 “수도권 주택 착공 목표 달성 어려워…80~88% 전망” [국감] [종합]",
+      "telegram_core_fact": "정부는 착공 실적 부진을 만회하기 위해 신규택지와 공공택지를 중심으로 공급 속도를 높인다는 방침이다.",
+      "title": "홍지선 국토장관 “수도권 주택 착공 목표 달성 어려워…80~88% 전망” [국감] [종합]"
+    },
     "source_fact:f5e7eeafc2d4de69c4036f97": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
       "lanes": {
@@ -187653,6 +188665,28 @@
       "source_published_kst": "2026-10-06T09:18+09:00",
       "title": "정부 GPU 4224장 풀었더니 1만3712장 신청…70%가 못 받아"
     },
+    "title:141cef73c5f69336fe1d2d16": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633515",
+      "source": "이투데이",
+      "source_body_digest": "e2c4323852a2d494a3da05579af90cfd3e3fe5c6638234c6f29d5b7cee528df0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:34221929d0ca0a8d6d18997b0ab2c5390a60c49ee843c324fc3c7b8d2ddfdff2",
+      "source_fact_keys": [
+        "source_fact:v1:14638b88811fb5b893e4d5cc9acbe5d67f6977ce8711d65d6d46754432984f5c",
+        "source_fact:v1:861fc4b6943b13cac4f80120295872a2cc6aa7260c5f5c6bbeb69f1c64449acf",
+        "source_fact:v1:8b87c3e80fbcb567291c281199afd0a82bdaf1ae31942377c52838ec1280cd3b",
+        "source_fact:v1:90ad977e4a4b43a14b83b65a242a471027b0238951c7ed0856347904d3f42360"
+      ],
+      "source_published_kst": "2026-10-07T16:28+09:00",
+      "source_title": "포스코, K-GX ‘철강 GX’ 참여…2028년 포항에 하이렉스 실증설비",
+      "telegram_core_fact": "2028년까지 연산 30만t(톤) 하이렉스 실증설비를 구축하고 청정수소 공급망과 포항·울산 산업단지를 연계한다.",
+      "title": "포스코, K-GX ‘철강 GX’ 참여…2028년 포항에 하이렉스 실증설비"
+    },
     "title:142feff57a1ea3dbe6459ee2": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
       "lanes": {
@@ -189588,6 +190622,29 @@
       "source_published_kst": "2026-10-06T00:04+09:00",
       "title": "엔진·배터리·공조… AI 데이터센터, 제조업 신시장을 열다"
     },
+    "title:220e84ca36b536901b4172cc": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633520",
+      "source": "이투데이",
+      "source_body_digest": "b919e31eabc9af503bc7e0e8f265e24a052ec99304eb60c12a13b4c72b1b7bf0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29cfb5b7c6291c48faf41955215aa6b01fabca177805d79597ee499c67a9f78c",
+      "source_fact_keys": [
+        "source_fact:v1:4483440459b6f2701864d1a01d93f3762ca2cacf97c66bc755125f949d39432c",
+        "source_fact:v1:9ab6584e121475fa8a2a2175266d0a108a54028f39affea62cbdd9737e95969a",
+        "source_fact:v1:b278ef68b8dcfdfd9bf1494009f0b4e6b77e84a78b7c0389f9004f421b21605e",
+        "source_fact:v1:df93f5f736653ba190362701811082878339df339990da2eadd91bd351a746f5",
+        "source_fact:v1:f8b196f65b59720bb0d8598f9547450c2d37953588e9dcf025256a839486e027"
+      ],
+      "source_published_kst": "2026-10-07T16:34+09:00",
+      "source_title": "포항시-아모지, 영일만산단 ‘무탄소 분산발전’ 가속화… 글로벌 투자사·대기업 총출동",
+      "telegram_core_fact": "참석자들은 ▲영일만 무탄소 분산발전 프로젝트의 속도감 있는 추진 ▲원활한 사업 진행을 위한 부지 및 인허가 행정 지원 ▲안정적인 청정 암모니아 수입·저장·공급망 구축 ▲영일만산단 입주기업들의 무탄소 전력 공급 확대 방안 등을 논의했다.",
+      "title": "포항시-아모지, 영일만산단 ‘무탄소 분산발전’ 가속화… 글로벌 투자사·대기업 총출동"
+    },
     "title:22532471b5b750da4d55a26b": {
       "first_seen_kst": "2026-10-04T06:34:33+09:00",
       "lanes": {
@@ -191319,6 +192376,26 @@
       ],
       "source_published_kst": "2026-10-05T17:00+09:00",
       "title": "금호석유화학, LFP 전지용 CNT 개발 본격화…내년 상업화 추진"
+    },
+    "title:2db826a617d6f630918a6ef4": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633203",
+      "source": "이투데이",
+      "source_body_digest": "4f0198f2876d2a0745dd5c51901916e511dd0c1654132a0f2e64e830c7597f14",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f52565cda7a5a97591f336bbd47cd7041c9f6c2a1599f3c910f5ef3383c6a97e",
+      "source_fact_keys": [
+        "source_fact:v1:4e11e1ac3cec9d46e6f37f0acff69e5ab0deac0179769c917cbf51219eb62f27",
+        "source_fact:v1:ec190b56bcba5cb590c3cfddea4c22e16ae21617a393edac66029056a4ce3bb5"
+      ],
+      "source_published_kst": "2026-10-07T12:00+09:00",
+      "source_title": "중동 전쟁에도 44조 기름값 담합 의혹…SK에너지·HD현대오일뱅크 ‘공정위 심판대’",
+      "telegram_core_fact": "공정위 심사관은 SK에너지·현대오일뱅크가 약 4년간 유류 가격정보를 교환하고 올해 3월 두 차례 가격을 담합했다는 혐의로 심의에 넘겼다. 관련 매출은 약 44.1조원이며 최종 위법 여부와 제재는 미확정이다.",
+      "title": "중동 전쟁에도 44조 기름값 담합 의혹…SK에너지·HD현대오일뱅크 ‘공정위 심판대’"
     },
     "title:2db8e523e8739044011f1164": {
       "first_seen_kst": "2026-10-03T21:21:44+09:00",
@@ -198113,6 +199190,23 @@
       "source_event_identity": "",
       "title": "英 총리 다시 꺼낸 EU 재가입론…찬성 49%·반대 28.5%"
     },
+    "title:5bfe3bfb4727d922e796e0b0": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.mk.co.kr/news/business/12170465",
+      "source": "매일경제",
+      "source_body_digest": "444f36a43ab860b7becd19018beb5add01c76e2d117558f28d3d6f4310c081fc",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T15:23+09:00",
+      "source_title": "장금상선, 한진 지분 5.58% 확보…20년 물류동맹 더 끈끈해지나",
+      "telegram_core_fact": "국내 중견 해운사 장금상선이 종합물류기업 (주)한진 지분을 5% 이상 확보하면서 투자 배경에 관심이 쏠리고 있다.",
+      "title": "장금상선, 한진 지분 5.58% 확보…20년 물류동맹 더 끈끈해지나"
+    },
     "title:5c817ef4d8caff7959e0e713": {
       "first_seen_kst": "2026-10-02T10:30:30+09:00",
       "lanes": {
@@ -198737,6 +199831,27 @@
       ],
       "source_published_kst": "2026-10-07T08:31+09:00",
       "title": "한성크린텍, 삼성전기 베트남 공장 초순수 시스템 230억원 수주"
+    },
+    "title:6136763b55f8c637248ec89f": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etnews.com/20261007000171",
+      "source": "전자신문",
+      "source_body_digest": "0cab143d09caf2e575949d231ace76738ab59b1e713e28510a636a74dcc2decb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53453ba04c29f5baef74f4b5aee00f9c64df251bccd13fb8b9eba608889f042a",
+      "source_fact_keys": [
+        "source_fact:v1:10fb00574d6b91c7abb917362ad5adadcd7aef029ccd139920326029d40f78f0",
+        "source_fact:v1:cd3e19959ec91b39b7b74830bfc76a059031f0ec1f67e9d735a908a572539836",
+        "source_fact:v1:fff58af81c4a4ecab5e189df7ffd60be9f9735228dff0f1279ae0add3319a8e0"
+      ],
+      "source_published_kst": "2026-10-07T16:30+09:00",
+      "source_title": "“AI 도입보다 중요한 건 신뢰”…서울형 AI 윤리 해법 찾는다",
+      "telegram_core_fact": "AI가 행정·복지·교통·교육 등 시민 일상으로 깊숙이 들어오면서 공정성·투명성과 같은 원칙을 선언하는 데 그치지 않고 AI 도입 전 위험을 살피고 운영 과정에서 문제를 감시하며, 이를 다시 제도 개선으로 연결하는 거버넌스가 필요하다는 목소리가 나왔다.",
+      "title": "“AI 도입보다 중요한 건 신뢰”…서울형 AI 윤리 해법 찾는다"
     },
     "title:614b2104bc41a75509d41a3f": {
       "first_seen_kst": "2026-09-17T20:51:45+09:00",
@@ -203661,6 +204776,30 @@
       "source_published_kst": "2026-10-05T12:57+09:00",
       "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
     },
+    "title:85ead6259fbdb0119e8d094d": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633477",
+      "source": "이투데이",
+      "source_body_digest": "592f09123a21eebc609372d6d871af91ad0a440cd71dd869fdcee1bfc291a844",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7304907aae5244050b3403db3812e74fb347144aff14013b840fd96823a99aa9",
+      "source_fact_keys": [
+        "source_fact:v1:02f8010911a5454904fa6907e96f8df3d8b93b710c56641a5e5459f52e6a280d",
+        "source_fact:v1:08e3a9847b9d22b2fe3b0532598b514f3ff7ee6ff5686f8ce0e27299621994c9",
+        "source_fact:v1:5d57d94d47a852ae90f8fd33547f4ca99b5011b2c72ce65b46ad9848e1983f49",
+        "source_fact:v1:5f28567c04fad8fb6a1b08d7e0d6272987ed78de55e5deed2372ca07dde2b468",
+        "source_fact:v1:62108d3c04dc2dfcc262168415df51dbfc65a93c5d7ea015d3781c7110ba74a5",
+        "source_fact:v1:d61a9f9cd7b80f6db953794f2ca1d1e055da7b3a4a8aef985983c38ea4c88058"
+      ],
+      "source_published_kst": "2026-10-07T16:22+09:00",
+      "source_title": "홍지선 국토장관 “수도권 주택 착공 목표 달성 어려워…80~88% 전망” [국감] [종합]",
+      "telegram_core_fact": "정부는 착공 실적 부진을 만회하기 위해 신규택지와 공공택지를 중심으로 공급 속도를 높인다는 방침이다.",
+      "title": "홍지선 국토장관 “수도권 주택 착공 목표 달성 어려워…80~88% 전망” [국감] [종합]"
+    },
     "title:861adbda6e13c6466c6dadbe": {
       "first_seen_kst": "2026-10-05T22:49:24+09:00",
       "lanes": {
@@ -204262,6 +205401,30 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T17:00+09:00",
       "title": "KPCA, 첨단 패키징 실무인력 양성 위한 교육센터 설립한다"
+    },
+    "title:89f83aca57a7ba4b36eb0a3d": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633477",
+      "source": "이투데이",
+      "source_body_digest": "592f09123a21eebc609372d6d871af91ad0a440cd71dd869fdcee1bfc291a844",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7304907aae5244050b3403db3812e74fb347144aff14013b840fd96823a99aa9",
+      "source_fact_keys": [
+        "source_fact:v1:02f8010911a5454904fa6907e96f8df3d8b93b710c56641a5e5459f52e6a280d",
+        "source_fact:v1:08e3a9847b9d22b2fe3b0532598b514f3ff7ee6ff5686f8ce0e27299621994c9",
+        "source_fact:v1:5d57d94d47a852ae90f8fd33547f4ca99b5011b2c72ce65b46ad9848e1983f49",
+        "source_fact:v1:5f28567c04fad8fb6a1b08d7e0d6272987ed78de55e5deed2372ca07dde2b468",
+        "source_fact:v1:62108d3c04dc2dfcc262168415df51dbfc65a93c5d7ea015d3781c7110ba74a5",
+        "source_fact:v1:d61a9f9cd7b80f6db953794f2ca1d1e055da7b3a4a8aef985983c38ea4c88058"
+      ],
+      "source_published_kst": "2026-10-07T16:22+09:00",
+      "source_title": "홍지선 국토장관 “수도권 주택 착공 목표 달성 어려워…80~88% 전망” [국감] [종합]",
+      "telegram_core_fact": "정부는 착공 실적 부진을 만회하기 위해 신규택지와 공공택지를 중심으로 공급 속도를 높인다는 방침이다.",
+      "title": "홍지선 국토장관 “수도권 주택 착공 목표 달성 어려워…80~88% 전망” [국감] [종합]"
     },
     "title:8a08e8dd20f91cdd83dc5538": {
       "first_seen_kst": "2026-10-05T07:03:44+09:00",
@@ -211756,6 +212919,23 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003812482",
       "source": "뉴시스",
       "title": "한전, 변전소 AI 감시에 국산 AI 반도체 활용…현장 성능검증 착수"
+    },
+    "title:c0941fb8319c4ed16fb109ef": {
+      "first_seen_kst": "2026-10-07T20:43:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T20:43:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T20:43:18+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007121100030",
+      "source": "연합뉴스",
+      "source_body_digest": "00fcabad452880216934f273b7b58ebfcac244187501e9d2ecfda3a544292d38",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T14:18+09:00",
+      "source_title": "KT&G, 인도네시아 신공장 가동…5개국 생산체제 구축 | 연합뉴스",
+      "telegram_core_fact": "KT&G가 인도네시아 신공장을 가동해 글로벌 5각 생산체제를 구축했다. 설비 9대 설치 후 연산 210억 개비, 기존 공장 포함 현지 생산능력은 350억 개비로 확대될 전망이다.",
+      "title": "KT&G, 인도네시아 신공장 가동…5개국 생산체제 구축 | 연합뉴스"
     },
     "title:c0f6ef5fa25415d45ba2143b": {
       "first_seen_kst": "2026-09-26T20:59:22+09:00",
@@ -220413,5 +221593,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-07T20:28:48+09:00"
+  "updated_at_kst": "2026-10-07T20:43:18+09:00"
 }
