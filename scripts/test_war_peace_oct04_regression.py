@@ -529,4 +529,24 @@ check("oct07-vance-condition-yellow", mod.final_color(vance_condition) == "yello
 check("oct07-vance-condition-topic", mod.topic_label(vance_condition) == "미국·이란 · 종전 협상 조건")
 check("oct07-vance-condition-attribution", "미국 부통령 JD Vance" in vance_condition["title_ko"] and "합의 진전 아님" in vance_condition["title_ko"] and "종전·협상" not in tags)
 
+
+# 17) 10/7 동일 아덴 국제공항 공격의 매체별 재보도는 1개 사건으로 묶는다.
+aden_yonhap = row(
+    "후티, '외부통로 핵심' 예멘 아덴 국제공항 미사일 공격",
+    source="연합뉴스TV",
+    description="예멘 교통부는 후티가 탄도미사일과 폭발물 탑재 드론으로 아덴 국제공항을 공격했다고 밝혔다.",
+    link="https://news.google.com/rss/articles/aden-yonhap",
+)
+aden_kbs = row(
+    "후티, 예멘 아덴 국제공항에 미사일 공습…항공기 회항",
+    source="KBS 뉴스",
+    description="후티가 아덴 국제공항을 미사일과 드론으로 공격해 카이로발 항공기가 회항했다.",
+    link="https://news.google.com/rss/articles/aden-kbs",
+)
+check("oct07-aden-cluster-yh", mod._aden_airport_attack_cluster(aden_yonhap))
+check("oct07-aden-cluster-kbs", mod._aden_airport_attack_cluster(aden_kbs))
+check("oct07-aden-cross-source-same-id", mod.item_id(aden_yonhap) == mod.item_id(aden_kbs))
+check("oct07-aden-topic", mod.topic_label(aden_yonhap) == "예멘·후티 · 아덴 국제공항 공격")
+check("oct07-aden-red", mod.final_color(aden_yonhap) == "red")
+
 print("WAR_PEACE_OCT04_REGRESSION_OK")
