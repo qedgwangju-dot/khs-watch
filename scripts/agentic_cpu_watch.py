@@ -62,6 +62,65 @@ BASELINE = {
     "last_validation_cutoff": "2026-09-25",
 }
 
+# Independent institutional forecasts must not overwrite Bank of America's series.
+# Values below are locked with their exact source class, not a blended consensus.
+CPU_STRUCTURE_TRACK_VERSION = 1
+CPU_STRUCTURE_BASELINE = {
+    "bnpp_public": {
+        "as_of": "2026-10-05",
+        "market_2025_usd_bn": 26.0,
+        "market_2030_usd_bn": 220.0,
+        "source_kind": "BNP Paribas 공개 글에 인용된 AMD 추정치 · BNP 자체 전망과 구분",
+        "source_url": "https://cib.bnpparibas/ai-infrastructure-investment-2026/",
+    },
+    "bnpp_analyst": {
+        "as_of": "2026-10-05",
+        "market_2030_usd_bn": 245.0,
+        "market_2025_user_claim_usd_bn": 30.0,
+        "market_2025_official_confirmed": False,
+        "amd_target_usd": 960.0,
+        "amd_prior_target_usd": 600.0,
+        "arm_target_user_claim_usd": 405.0,
+        "arm_target_confirmed": False,
+        "source_kind": "BNP Paribas Karl Ackerman 애널리스트 의견의 2차 보도 · 보고서 원문 미열람",
+        "source_url": "https://finance.yahoo.com/markets/stocks/articles/bnp-paribas-revamps-amd-stock-191959150.html",
+        "target_source_url": "https://www.marketscreener.com/news/bnp-paribas-adjusts-pt-on-advanced-micro-devices-to-960-from-600-keeps-outperform-rating-ce785ddbd08af222",
+    },
+    "digitimes": {
+        "as_of": "2026-10-07",
+        "per_accelerator_cpu_2027": "nearly_double",
+        "per_accelerator_source_kind": "DIGITIMES 10월 7일 원문 표제 확인 · 구독 제한으로 상세 계산 기준 미열람",
+        "per_accelerator_source_url": "https://www.digitimes.com/news/a20261005PD216/cpu-demand-commercial-llm-market.html",
+        "shipments_as_of": "2026-07-29",
+        "ai_server_cpu_2025_million": 3.793,
+        "ai_server_cpu_2026_million": 5.349,
+        "ai_server_cpu_2027_million": 9.845,
+        "ai_server_cpu_2027_yoy_pct": 84.1,
+        "all_server_cpu_2027_million": 48.574,
+        "arm_all_server_cpu_2027_million": 15.8,
+        "arm_all_server_cpu_2027_share_pct": 32.5,
+        "shipments_source_kind": "DIGITIMES 7월 29일 직접 발표 자료 · 예측치, 실제 출하 아님",
+        "shipments_source_url": "https://gb-www.digitimes.com.tw/about_us/article.asp?news_key=1150023",
+    },
+    "amd_system": {
+        "as_of": "2026-07-23",
+        "helios_venice_cpus": 18,
+        "helios_mi455x_gpus": 72,
+        "official_design_not_global_ratio": True,
+        "source_url": AMD_AAI_URL,
+        "customer_validation": "Meta 6세대 EPYC 실험실 검증; OpenAI 2026년 4분기 Helios 가동 시작 전망",
+    },
+    "seen_source_urls": [],
+}
+CPU_STRUCTURE_SEARCHES = [
+    ("google", 'site:cib.bnpparibas/ai-infrastructure agentic CPU 2030'),
+    ("bing", 'site:cib.bnpparibas "data centre CPU" "2030"'),
+    ("google", 'site:digitimes.com/news CPU accelerator 2027 agentic'),
+    ("bing", 'site:digitimes.com "CPU" "per accelerator" "2027"'),
+    ("google", '"BNP Paribas" "AMD" "price target" "CPU"'),
+    ("bing", 'site:marketscreener.com "BNP Paribas" "AMD" "price target"'),
+]
+
 FORECAST_SEARCHES = [
     ("bing", 'site:finvaulta.com/research/bank-of-america "server CPU TAM" agentic AI'),
     ("google", '"Bank of America" "server CPU TAM" agentic AI 2030'),
@@ -366,6 +425,132 @@ def bn_label(value: float, rate: float | None) -> str:
     return usd + (f"({krw})" if krw else "")
 
 
+def cpu_structure_observation(title: str, text: str, url: str) -> tuple[str, dict]:
+    """Strict publisher-specific extraction. Never compare different issuers."""
+    host = (urlparse(url).hostname or "").lower()
+    low = (title + " " + text).lower()
+    if host == "cib.bnpparibas" or host.endswith(".cib.bnpparibas"):
+        if "cpu" not in low or "agentic" not in low:
+            return "", {}
+        pattern = (
+            r"(?:usd|us\$|\$)\s*(\d{1,3}(?:\.\d+)?)\s*billion\s+in\s+2025"
+            r"[^.]{0,180}?"
+            r"(?:usd|us\$|\$)\s*(\d{1,3}(?:\.\d+)?)\s*billion\s+in\s+2030"
+        )
+        m = re.search(pattern, low, re.I)
+        if m and 10 <= float(m.group(1)) <= 100 and 100 <= float(m.group(2)) <= 600:
+            return "bnpp_public", {
+                "market_2025_usd_bn": float(m.group(1)),
+                "market_2030_usd_bn": float(m.group(2)),
+            }
+        return "", {}
+    if host == "digitimes.com" or host.endswith(".digitimes.com"):
+        if "cpu" not in low or "accelerator" not in low or "2027" not in low:
+            return "", {}
+        if re.search(r"(?:nearly|almost)\s+(?:twice|double)|nearly\s+twofold", low):
+            return "digitimes", {"per_accelerator_cpu_2027": "nearly_double"}
+        if re.search(r"(?:threefold|three[- ]?times|triple)\s+(?:as many\s+)?cpus?\s+per\s+accelerator", low):
+            return "digitimes", {"per_accelerator_cpu_2027": "triple"}
+        if re.search(r"(?:half|1\.5)\s+(?:as many\s+)?cpus?\s+per\s+accelerator", low):
+            return "digitimes", {"per_accelerator_cpu_2027": "one_point_five"}
+    return "", {}
+
+
+def cpu_structure_changes(old: dict, observed: dict, issuer: str) -> list[str]:
+    """A forecast is comparable only to its own issuer's prior forecast."""
+    changes: list[str] = []
+    if issuer == "bnpp_public" and "market_2030_usd_bn" in observed:
+        before = float(old.get("market_2030_usd_bn") or 0)
+        after = float(observed["market_2030_usd_bn"])
+        if before and abs(after / before - 1) >= 0.10:
+            changes.append(f"BNP 공개자료의 AMD 인용 CPU 시장 전망: {before:.0f}→{after:.0f}십억달러")
+    if issuer == "digitimes" and "per_accelerator_cpu_2027" in observed:
+        before = str(old.get("per_accelerator_cpu_2027") or "")
+        after = str(observed["per_accelerator_cpu_2027"])
+        if before and after != before:
+            changes.append(f"DIGITIMES 2027 가속기당 CPU 전망 변경: {before}→{after}")
+    return changes
+
+
+def discover_cpu_structure(now: datetime, previous: dict) -> list[dict]:
+    """Inspect only the original BNP/DIGITIMES domains, not republishers."""
+    results: list[dict] = []
+    seen: set[str] = set(previous.get("seen_source_urls") or [])
+    fetched = 0
+    for kind, query in CPU_STRUCTURE_SEARCHES:
+        try:
+            items = read_rss(kind, query)
+        except Exception:
+            continue
+        for item in items:
+            url = direct_url(item)
+            if not url or url in seen:
+                continue
+            host = (urlparse(url).hostname or "").lower()
+            issuer = (
+                "bnpp_public" if host == "cib.bnpparibas" or host.endswith(".cib.bnpparibas")
+                else "digitimes" if host == "digitimes.com" or host.endswith(".digitimes.com")
+                else ""
+            )
+            if not issuer:
+                continue
+            published = str(item.get("published_at_kst") or "")[:10]
+            baseline_date = str((previous.get(issuer) or {}).get("as_of") or "")
+            if not published or (baseline_date and published <= baseline_date):
+                continue
+            if fetched >= 6:
+                continue
+            fetched += 1
+            body = article_text(url)
+            provider, obs = cpu_structure_observation(item.get("title") or "", body or item.get("description") or "", url)
+            seen.add(url)
+            if provider and obs:
+                results.append({"issuer": provider, "metrics": obs, "url": url, "as_of": published})
+    previous["seen_source_urls"] = sorted(seen)[-100:]
+    return results
+
+
+def cpu_structure_block(state: dict, fx: float, changes: list[str]) -> str:
+    bp = state["bnpp_public"]
+    ba = state["bnpp_analyst"]
+    di = state["digitimes"]
+    am = state["amd_system"]
+    fmt = lambda x: html.escape(bn_label(float(x), fx))
+    def usd_shares(n: float) -> str:
+        return f"\${n:,.0f}(약 {n*fx:,.0f}원)".replace("\\$", "$")
+    lines = ["<b>에이전틱 AI·데이터센터 CPU 수요 구조 감시</b>"]
+    if changes:
+        lines += ["• 신규 변화: " + html.escape("; ".join(changes))]
+    else:
+        lines += ["• 신규 기준선: 시장 전망과 실제 CPU 공급·양산 검증을 분리"]
+    lines += [
+        "• BNP 공개자료의 AMD 추정 인용: 2025년 " + fmt(bp["market_2025_usd_bn"])
+        + " → 2030년 " + fmt(bp["market_2030_usd_bn"]),
+        "• BNP 애널리스트 별도 보도: 2030년 " + fmt(ba["market_2030_usd_bn"])
+        + " · 원문 리포트 미열람 / 2025년 300억달러는 사용자 제공치로 공식 확인 전",
+        "• AMD 목표주가: BNP 보도상 " + usd_shares(ba["amd_prior_target_usd"])
+        + "→" + usd_shares(ba["amd_target_usd"])
+        + " · Arm 목표주가 $405는 원문 근거 확인 전이므로 확정 알림에서 제외",
+        "• DIGITIMES: 2027년 가속기당 CPU 거의 2배 전망(유료 기사 표제)"
+        + " · <b>코어 수·소켓 수·실제 출하가 각각 2배라는 의미는 아님</b>",
+        "• DIGITIMES 공개 출하 전망: 2027년 AI 서버 CPU "
+        + f"{float(di['ai_server_cpu_2027_million'])*100:,.1f}만개(+{float(di['ai_server_cpu_2027_yoy_pct']):.1f}% 전년 대비)"
+        + f" / 전체 서버 CPU {float(di['all_server_cpu_2027_million'])*100:,.1f}만개"
+        + f" / Arm 계열 전체 서버 CPU {float(di['arm_all_server_cpu_2027_million'])*100:,.0f}만개({float(di['arm_all_server_cpu_2027_share_pct']):.1f}%)",
+        "• 실제 설계 검증: AMD Helios 1랙당 Venice CPU "
+        + str(am["helios_venice_cpus"]) + "개·MI455X GPU " + str(am["helios_mi455x_gpus"])
+        + "개(물리 1:4). 별도 CPU 전용 랙 수요와 혼동 금지",
+        "• 후속 확인: CPU 발주·소켓·실출하→DDR5 RDIMM·서버용 FC-BGA/ABF·eSSD 주문 연결"
+        + " · 2nm 수율·ABF·전원·냉각 병목 및 가상화 최적화에 따른 수요 미달 점검",
+        '• <a href="' + html.escape(bp["source_url"], quote=True) + '">BNP 공식 공개자료</a>'
+        + ' · <a href="' + html.escape(ba["source_url"], quote=True) + '">BNP 애널리스트 2차 보도</a>'
+        + ' · <a href="' + html.escape(di["per_accelerator_source_url"], quote=True) + '">DIGITIMES 가속기당 전망</a>'
+        + ' · <a href="' + html.escape(di["shipments_source_url"], quote=True) + '">DIGITIMES 출하 전망</a>'
+        + ' · <a href="' + html.escape(am["source_url"], quote=True) + '">AMD 실제 설계 자료</a>',
+    ]
+    return "\n".join(lines) + "\n"
+
+
 def snapshot_block(state: dict, fx: float | None, fx_date: str, changed: list[dict], ratio_change: tuple[str, str] | None, validation: list[dict], standalone: bool) -> str:
     m = state.get("metrics") or {}
 
@@ -483,6 +668,9 @@ def discover_forecasts(now: datetime, cutoff: str) -> list[dict]:
             base_low = base.lower()
             if not ("server cpu" in base_low and ("agentic" in base_low or "agents" in base_low)):
                 continue
+            # This legacy series is BofA-only: never replace BofA with BNP, Citi or DIGITIMES.
+            if not ("bofa" in base_low or "bank of america" in base_low):
+                continue
             if fetched >= fetch_budget:
                 continue
             fetched += 1
@@ -592,13 +780,42 @@ def main() -> None:
     latest["last_validation_cutoff"] = now.date().isoformat()
     latest["last_checked_at_kst"] = now.isoformat(timespec="seconds")
 
+    # Source-separated agentic CPU evidence is stored inside the existing Rubin
+    # pending state; a first-install baseline is one-shot and not a fake revision.
+    structure_old = previous.get("cpu_structure") or {}
+    structure_first_install = int(previous.get("cpu_structure_track_version") or 0) < CPU_STRUCTURE_TRACK_VERSION
+    structure_latest = json.loads(json.dumps(CPU_STRUCTURE_BASELINE))
+    for provider in ("bnpp_public", "bnpp_analyst", "digitimes", "amd_system"):
+        structure_latest[provider].update(structure_old.get(provider) or {})
+    structure_latest["seen_source_urls"] = list(structure_old.get("seen_source_urls") or [])
+    structure_events: list[str] = []
+    for entry in discover_cpu_structure(now, structure_latest):
+        provider = entry["issuer"]
+        new_metrics = entry["metrics"]
+        changes = cpu_structure_changes(structure_latest.get(provider) or {}, new_metrics, provider)
+        if not changes:
+            continue
+        structure_latest[provider].update(new_metrics)
+        structure_latest[provider]["as_of"] = entry["as_of"]
+        structure_latest[provider]["source_url"] = entry["url"]
+        structure_events.extend(changes)
+    latest["cpu_structure"] = structure_latest
+    latest["cpu_structure_track_version"] = CPU_STRUCTURE_TRACK_VERSION
+
     fx, fx_date = get_fx()
     existing_alert = ALERT_PATH.read_text(encoding="utf-8").strip() if ALERT_PATH.exists() else ""
-    cpu_material = bool(forecast_changes or ratio_change or validation)
+    cpu_material = bool(forecast_changes or ratio_change or validation or structure_first_install or structure_events)
+    if (structure_first_install or structure_events) and fx is None:
+        # Fail closed; neither USD figures nor an unacknowledged baseline may leak.
+        raise RuntimeError("CPU structure alert requires verified USD/KRW conversion")
 
     if cpu_material:
-        block = snapshot_block(latest, fx, fx_date, forecast_changes, ratio_change, validation, standalone=not bool(existing_alert))
-        merged = (existing_alert + "\n\n" + block.strip()).strip() if existing_alert else block.strip()
+        blocks = []
+        if forecast_changes or ratio_change or validation:
+            blocks.append(snapshot_block(latest, fx, fx_date, forecast_changes, ratio_change, validation, standalone=not bool(existing_alert)))
+        if structure_first_install or structure_events:
+            blocks.append(cpu_structure_block(structure_latest, fx, structure_events))
+        merged = "\n\n".join([part for part in (existing_alert, *blocks) if part]).strip()
         ALERT_PATH.write_text(merged + "\n", encoding="utf-8")
     # 다른 부품 알림이 이미 있어도 CPU 쪽에 새 사건이 없으면 BofA 기준선을 반복 첨부하지 않는다.
 
@@ -607,7 +824,8 @@ def main() -> None:
     print(
         "agentic_cpu_watch=true "
         f"forecast_changes={len(forecast_changes)} ratio_change={str(bool(ratio_change)).lower()} "
-        f"validation_signals={len(validation)} alert={str(cpu_material or bool(existing_alert)).lower()}"
+        f"validation_signals={len(validation)} structure_initial={str(structure_first_install).lower()} "
+        f"structure_changes={len(structure_events)} alert={str(cpu_material or bool(existing_alert)).lower()}"
     )
 
 
