@@ -12,6 +12,7 @@ if str(SCRIPTS) not in sys.path:
     sys.path.insert(0, str(SCRIPTS))
 
 import treasury_cta_squeeze_equity_watch as equity  # noqa: E402
+import treasury_cta_squeeze_watch as base_watch  # noqa: E402
 
 
 def _snapshot(*, z20=-0.5, zn_pct=0.0):
@@ -262,3 +263,95 @@ def test_cross_alert_latch_resets_only_after_fresh_fuel_disappears():
     assert base == 0
     assert next_alerted == 1
     assert reset is False
+
+
+def test_tff_fixed_parser_preserves_confidential_placeholder_columns():
+    fields = base_watch._tff_fields(
+        "1 2 3 4 5 6 7 . 9 10 11 12 13 14"
+    )
+    assert len(fields) == 14
+    assert fields[6] == 7
+    assert fields[7] is None
+    assert fields[8] == 9
+
+
+def test_active_treasury_squeeze_evidence_requires_fresh_official_same_day_oi():
+    current = {
+        "cme": {
+            "ZN": {
+                "display_symbol": "TY/ZN",
+                "fresh_for_confirmation": True,
+                "trade_date_iso": "2026-10-06",
+                "change": 0.5,
+                "oi_change": -100,
+            }
+        }
+    }
+    previous = {
+        "cme": {
+            "ZN": {
+                "trade_date_iso": "2026-10-05",
+            }
+        }
+    }
+    signals = equity.watcher.squeeze_evidence(current, previous)
+    assert any("ZN" in s and "같은 거래일" in s for s in signals)
+
+    stale = {
+        "cme": {
+            "ZN": {
+                "display_symbol": "TY/ZN",
+                "fresh_for_confirmation": False,
+                "trade_date_iso": "2026-10-06",
+                "change": 0.5,
+                "oi_change": -100,
+            }
+        }
+    }
+    assert equity.watcher.squeeze_evidence(stale, previous) == []
+
+    same_bulletin = {
+        "cme": {
+            "ZN": {
+                "display_symbol": "TY/ZN",
+                "fresh_for_confirmation": True,
+                "trade_date_iso": "2026-10-06",
+                "change": 0.5,
+                "oi_change": -100,
+            }
+        }
+    }
+    assert equity.watcher.squeeze_evidence(
+        same_bulletin,
+        {"cme": {"ZN": {"trade_date_iso": "2026-10-06"}}},
+    ) == []
+
+
+def test_compact_event_body_stays_under_telegram_limit(monkeypatch):
+    raw = _raw(
+        net_wow=5_000,
+        net_pct=95.0,
+        gross_pct=95.0,
+        trade_date="2026-09-30",
+    )
+    _patch_common(monkeypatch, raw, evidence=["TY/ZN 공식 CME 같은 거래일 가격↑ + OI↓"])
+    snapshot = _snapshot(z20=-1.2, zn_pct=0.3)
+    snapshot["checked_kst"] = "2026-10-01T07:00:00+09:00"
+    snapshot["repo"] = {
+        "SOFR": {"rate": 3.64, "date": "2026-09-30"},
+        "BGCR": {"rate": 3.62, "date": "2026-09-30"},
+        "TGCR": {"rate": 3.62, "date": "2026-09-30"},
+    }
+    snapshot["cftc"]["report_date"] = "September 29, 2026"
+    snapshot["cme"]["ZB"] = {"pct_change": 0.1, "open_interest": 100}
+    snapshot["cme"]["UB"] = {"pct_change": 0.1, "open_interest": 100}
+    snapshot["yield10"].update({"yield": 4.8, "mean20": 4.7, "distance_to_4_3_bp": 50.0})
+
+    body = equity._compact_event_body(
+        snapshot,
+        {},
+        1400.0,
+        "2026-09-30",
+        ["테스트 사유 " * 30],
+    )
+    assert len("테스트 제목") + 2 + len(body) < 4096
