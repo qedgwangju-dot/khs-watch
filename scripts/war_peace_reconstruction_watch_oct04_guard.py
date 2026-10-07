@@ -1317,6 +1317,13 @@ def verify_alert(test_mode=False):
         issues.append("조건부 선제공격 경고를 실제 공격·확전으로 표시")
     if "공개시각 확인 필요" in text:
         issues.append("공개시각을 확인하지 못한 기사를 신규·속보 알림으로 송출")
+    if "영문 기사 번역이 일시적으로 지연됨" in text:
+        issues.append("번역 실패·지연 placeholder를 실제 알림 본문으로 송출")
+    if re.search(r"(?ms)^🔴\s+\[(?:속보|신규|후속)\].{0,360}(?:원인 미확정|원인·공격 주체 미확정|공식 확인 전|독립 확인 전)", text):
+        issues.append("확인 수준이 미확정인 사건을 실제 공격·확전으로 표시")
+    item_urls = re.findall(r'<a href="([^"]+)">[^<]+ 원문</a>', text)
+    if len(item_urls) != len(set(item_urls)):
+        issues.append("동일 원문 URL이 여러 신규·속보 항목으로 중복 송출")
     stale_ages = [int(x) for x in re.findall(r"(\d{3,})분 전", text)]
     if any(x > int(getattr(prev, "FRESH_NEWS_MAX_MINUTES", 3 * 60)) for x in stale_ages):
         issues.append("3시간을 초과한 오래된 기사가 신규·후속 알림으로 송출됨")
