@@ -682,6 +682,8 @@ def marks(row):
         out.append("이스라엘10월7일해외공격위험경고")
     if _vance_iran_enrichment_condition(row):
         out.append("미국부통령이란농축종전조건")
+    if _iran_direct_talks_denial_only(row):
+        out.append("이란직접협상부인")
     if _non_concrete_endgame_rhetoric(row):
         out.append("종전전망성발언")
     if _conditional_military_threat(row):
@@ -730,6 +732,8 @@ def korean_title(ms):
         return "이스라엘 국가안보회의, 10월 7일 3주년 전후 해외의 이스라엘인·유대인 대상 공격 위험 증가 경고 — 실제 공격 발생 아님"
     if "미국부통령이란농축종전조건" in ms:
         return "미국 부통령 JD Vance, 이란이 전쟁 종식을 원하면 우라늄 농축 능력을 의미 있게 감축해야 한다고 제시 — 미국 측 협상 조건, 합의 진전 아님"
+    if "이란직접협상부인" in ms:
+        return "이란 측, 미국과 직접협상은 부인 — 중재국 메시지 교환·간접 접촉 가능성과 전체 협상 결렬을 구분"
     if "종전전망성발언" in ms:
         return "전쟁·분쟁 종식이 가까워졌다는 전망성 발언 — 구체적 휴전 합의·협상 재개·일정 확정 전에는 실제 진전으로 보지 않음"
     if "조건부군사위협" in ms:
@@ -774,6 +778,8 @@ def signals(ms):
         out.append("🟡 이스라엘 국가안보회의가 10월 7일 3주년 전후 해외 공격 위험 증가를 경고 — 실제 공격 발생과는 구분")
     if "미국부통령이란농축종전조건" in ms:
         out.append("🟡 미국 부통령 JD Vance가 이란의 우라늄 농축 능력 감축을 전쟁 종식 조건으로 제시 — 미국 측 협상 조건이며 합의 진전 자체는 아님")
+    if "이란직접협상부인" in ms:
+        out.append("🟡 이란 측의 직접협상 부인은 대면협상 부재 확인 — 중재국을 통한 메시지 교환·간접 접촉까지 결렬됐다는 뜻은 아님")
     if "종전전망성발언" in ms:
         out.append("🟡 종전이 가까워졌다는 평가·전망 — 구체적 합의문, 협상 재개, 회담 일정이 확인되기 전에는 실제 종전 진전으로 승격하지 않음")
     if "조건부군사위협" in ms:
@@ -800,6 +806,7 @@ def signals(ms):
         "이란남부폭발원인미확정", "사우디동서송유관회복",
         "목하탈환공세", "러시아국방부타격주장", "TASS러시아최대드론공격집계",
         "예멘아덴공항후티공격클러스터", "종전전망성발언", "조건부군사위협",
+        "이란직접협상부인",
     }
     if set(ms) & custom:
         return out
@@ -817,6 +824,8 @@ def score_item(row, now):
     if age is None:
         return 0, []
     if age > fresh_limit:
+        return 0, []
+    if _regional_recap_without_discrete_event(row):
         return 0, []
     if (
         _trump_la_sd_hypothetical(row)
@@ -861,6 +870,12 @@ def score_item(row, now):
         row["signals_ko"] = []
         tags = [t for t in tags if t not in ("확전", "휴전·평화", "재건", "종전·협상")]
         tags += ["미국·이란", "협상조건", "합의진전아님", "JD Vance"]
+        score = max(score, 98)
+    if "이란직접협상부인" in ms:
+        row["title_ko"] = korean_title(ms)
+        row["signals_ko"] = []
+        tags = [t for t in tags if t not in ("확전", "확전위험", "재확전위험", "휴전·평화", "재건")]
+        tags += ["이란·미국", "직접협상부인", "간접접촉별도확인", "군사확전아님"]
         score = max(score, 98)
     if "종전전망성발언" in ms:
         row["title_ko"] = korean_title(ms)
@@ -957,6 +972,8 @@ def _stable_source_url(row):
 
 
 def item_id(row):
+    if _iran_direct_talks_denial_only(row):
+        return hashlib.sha256(("event|iran-us|direct-talks-denial|" + _published_day(row)).encode()).hexdigest()[:20]
     if _conditional_military_threat(row):
         return hashlib.sha256(("event|conditional-military-threat|" + _published_day(row)).encode()).hexdigest()[:20]
     if _non_concrete_endgame_rhetoric(row):
@@ -1031,6 +1048,8 @@ def topic_label(row):
         return "이스라엘 · 10월 7일 해외 공격 위험 경고"
     if "미국부통령이란농축종전조건" in ms:
         return "미국·이란 · 종전 협상 조건"
+    if "이란직접협상부인" in ms:
+        return "이란·미국 · 직접협상 부인·간접접촉 구분"
     if "종전전망성발언" in ms:
         return "전쟁·외교 · 종전 전망성 발언"
     if "조건부군사위협" in ms:
@@ -1072,6 +1091,8 @@ def final_color(row):
     if "예멘아덴공항후티공격클러스터" in ms:
         return "red"
     if "미국부통령이란농축종전조건" in ms:
+        return "yellow"
+    if "이란직접협상부인" in ms:
         return "yellow"
     if "종전전망성발언" in ms:
         return "yellow"
@@ -1194,6 +1215,8 @@ def semantic_fix(text):
             marker, topic = "🟡", "우크라이나·러시아 · 종전 조건 입장"
         elif any(x in block for x in ("루코일 해외자산 매각", "휴전 진전과 별개의 상업거래")):
             marker, topic = "🟡", "우크라이나·러시아 · 종전협상 연계 상업거래"
+        elif any(x in block for x in ("직접협상은 부인", "직접협상 부인", "no direct talks", "denies direct talks")):
+            marker, topic = "🟡", "이란·미국 · 직접협상 부인·간접접촉 구분"
         elif any(x in block for x in ("10월 7일 3주년 전후 해외", "oct. 7 anniversary", "october 7 anniversary")):
             marker, topic = "🟡", "이스라엘 · 10월 7일 해외 공격 위험 경고"
         elif (
@@ -1268,6 +1291,10 @@ def verify_alert(test_mode=False):
         issues.append("투르크메니스탄 CIS·카스피 정상 일정 기사를 종전·협상 신규 변화로 표시")
     if "2198519" in low and ("미국 부통령" not in text or "협상 조건" not in text):
         issues.append("이란 농축 조건 발언의 미국 부통령 JD Vance 귀속 또는 협상조건 성격 누락")
+    if re.search(r"(?ms)^🔴\s+\[(?:속보|신규|후속)\].{0,260}(?:직접협상 부인|직접협상은 부인|no direct talks|denies direct talks)", text, re.I):
+        issues.append("이란의 직접협상 부인을 실제 군사 확전으로 표시")
+    if ("사우디-후티" in text or "사우디·후티" in text) and ("미-이란 대화 지속" in text or "미·이란 대화 지속" in text):
+        issues.append("구체적 신규 사건 없는 중동 종합 재가공 기사를 별도 속보로 표시")
     if "후티의 리야드 탄도미사일 공격·요격 신호" in text:
         issues.append("리야드 미사일 요격 확인과 후티의 공항 타격 주장을 혼합 표시")
     if "승무원이 선박에 불을 붙였" in text:
