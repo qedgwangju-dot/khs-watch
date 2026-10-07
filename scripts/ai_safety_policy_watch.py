@@ -109,6 +109,10 @@ NEWS_QUERIES = [
     'site:whitehouse.gov "Super Intelligence" safety regulation accord',
     'site:federalregister.gov "Super Intelligence" executive order regulation',
     'site:congress.gov "Super Intelligence" AI safety bill',
+    '"Thomas Lind" OpenAI ONCD cyber strategic risk',
+    '"Dean Ball" OpenAI OSTP Strategic Futures AI Action Plan',
+    '(OpenAI OR Anthropic OR Google DeepMind OR xAI OR Meta) (ONCD OR OSTP OR NSA OR NSC OR Pentagon) (hire OR hired OR joins OR joined OR appoint OR appointed) "national security"',
+    '(OpenAI OR Anthropic OR Google DeepMind OR xAI OR Meta) former White House cyber AI policy official national security hire',
 ]
 
 OFFICIAL_SOURCE_HINTS = (
@@ -170,6 +174,10 @@ ACTION_TERMS = (
     "joint commitment", "accord", "signatory", "signatories", "oversight board",
     "board committee", "independent board", "self-police", "self-regulation",
     "codify", "codified", "best practices", "common standards",
+    "hire", "hired", "joins", "joined", "appoint", "appointed",
+    "national security policy", "strategic risk", "head of policy",
+    "oncd", "office of the national cyber director", "ostp",
+    "office of science and technology policy", "nsa", "national security agency",
     # Korean.
     "표준", "의무", "규제", "법안", "법률", "사고보고", "감사", "인증",
     "평가", "벤치마크", "프레임워크", "예산", "지원", "gpu", "선정",
@@ -183,6 +191,7 @@ ACTION_TERMS = (
     "외부 평가", "거버넌스 게이트", "조달 요건", "보험 요건",
     "공동 서약", "공동 합의", "서명 기업", "서명자", "감독위원회",
     "이사회 위원회", "독립 이사회", "공통 표준", "모범 사례", "성문화",
+    "영입", "합류", "임명", "국가안보 정책", "전략적 리스크", "사이버 정책",
 )
 
 LOW_VALUE_SPEECH_TERMS = (
@@ -203,11 +212,22 @@ CONCRETE_ACTION_TERMS = (
     "joint commitment", "accord", "signed", "signatory", "oversight board",
     "board committee", "independent board", "common standards", "best practices",
     "codified", "codify", "법제화", "성문화", "감독위원회", "이사회 위원회",
+    "hired", "joined", "appointed", "national security policy", "strategic risk",
+    "영입", "합류", "임명", "국가안보 정책", "전략적 리스크",
     "표준 제정", "공고", "선정", "계약", "수주", "조달", "입찰",
     "예산", "지원", "실증", "착수", "중간평가", "상용화",
 )
 
 CATEGORY_PATTERNS = [
+    ("프런티어 AI 국가안보·정책 핵심인사 이동", (
+        "thomas lind", "dean ball",
+        "office of the national cyber director", " oncd",
+        "office of science and technology policy", " ostp",
+        "national security policy", "cyber and strategic risk",
+        "head of strategic futures", "former white house",
+        "former nsa", "national security agency",
+        "국가안보 정책", "전략적 리스크", "백악관 출신", "정부 인사 영입",
+    )),
     ("백악관 Super Intelligence 정책·법제화", (
         "inaugurating the era of super intelligence",
         "super intelligence executive order",
@@ -340,6 +360,9 @@ WATCH_ENTITIES = (
     "openai", "anthropic", "google", "meta", "microsoft", "nvidia", "xai",
     "white house", "trump", "joint commitment on frontier responsibilities",
     "white house accord on super intelligence",
+    "oncd", "office of the national cyber director", "ostp",
+    "office of science and technology policy", "nsa", "national security agency",
+    "thomas lind", "dean ball",
     "palo alto", "unit 42", "crowdstrike", "ibm", "openshell",
     "nemoclaw", "sentry", "sap", "canonical", "red hat",
     "naver", "네이버클라우드", "lg cns", "lg ai", "s2w", "샌즈랩",
@@ -540,6 +563,10 @@ def detect_entity(text: str) -> str:
             "joint commitment on frontier responsibilities",
             "white house accord on super intelligence",
             "morally binding", "signed accord", "공동 서약", "공동 합의",
+        )),
+        ("OpenAI 국가안보 정책팀", (
+            "thomas lind", "dean ball", "national security policy team",
+            "cyber and strategic risk", "strategic futures",
         )),
         ("백악관 Super Intelligence 정책", (
             "super intelligence", "superintelligence", "white house", "백악관",
@@ -939,7 +966,9 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
             f"<b>{idx}. {html.escape(rep['entity'])} · {html.escape(rep['category'])}</b>",
             f"• {html.escape(concise_fact(rep))}",
         ]
-        if rep["category"] == "백악관 Super Intelligence 정책·법제화":
+        if rep["category"] == "프런티어 AI 국가안보·정책 핵심인사 이동":
+            lines.append("• <b>의미</b>: 정부의 AI·사이버·정보기관 정책 설계자가 프런티어 AI 기업의 국가안보 조직으로 이동해 규제 대응·정부 사전검토·사이버 전략과 기업 의사결정의 연결이 강화되는지 확인")
+        elif rep["category"] == "백악관 Super Intelligence 정책·법제화":
             lines.append("• <b>의미</b>: Super Intelligence 공식 정의·연방 후속조치·입법 문구가 바뀌어 자율 안전협약이 실제 법·규제 체계로 이동하는지 확인")
         elif rep["category"] == "프런티어 AI 공동 서약·서명기업 변화":
             lines.append("• <b>의미</b>: 자율 서약의 참여 범위가 넓어지거나 축소되는지, 특정 기업의 가입·탈퇴가 공동 안전기준의 사실상 적용 범위를 바꾸는지 확인")
@@ -987,7 +1016,7 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
         ]
         if links:
             lines.append("🔗 " + " · ".join(links))
-    lines += ["", "<b>다음 확인</b>: 공동서약 서명기업 가입·탈퇴 · 첫 공동 안전표준·모범사례 · 외부감사기관 자격/접근권/주기/범위 · 독립 이사회·감독위원회 설치 · 법률·규정·연방조달·보험·인증 성문화 · Safety Case 실제 학습 승인 · 파트너→유료고객 전환 · OpenShell/Sentry/BlueField 실사용·수익화"]
+    lines += ["", "<b>다음 확인</b>: 프런티어 AI 기업의 ONCD·OSTP·NSA·국방부 출신 핵심인사 영입 및 직무범위 · 공동서약 서명기업 가입·탈퇴 · 첫 공동 안전표준·모범사례 · 외부감사기관 자격/접근권/주기/범위 · 독립 이사회·감독위원회 설치 · 법률·규정·연방조달·보험·인증 성문화 · Safety Case 실제 학습 승인 · 파트너→유료고객 전환 · OpenShell/Sentry/BlueField 실사용·수익화"]
     return title, "\n".join(lines)
 
 
