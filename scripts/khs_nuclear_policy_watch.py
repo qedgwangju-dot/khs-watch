@@ -1320,17 +1320,32 @@ def _hanul4_main_is_fresh(text: str, now: dt.datetime) -> bool:
 
 def _hanul4_live_status(text: str) -> str | None:
     normalized = clean_text(text)
-    if _hanul4_explicit_output_ramp(normalized):
-        return "운전"
+    # 호기별 표에 명시된 상태를 최우선으로 사용한다. 페이지 다른 영역의
+    # 오래된 설명 문구가 동시에 남아 있어도 '정비/정지'를 '운전'으로 덮지 않는다.
     patterns = (
-        r"한울\s*(?:원자력\s*)?4호기\s*(?:현재\s*)?(운전|정비|정지)",
-        r"한울\s*4호기.{0,24}?\b(운전|정비|정지)\b",
+        r"한울\s*(?:원자력\s*)?4호기\s*(운전|정비|정지)\s*4호기",
+        r"한울\s*(?:원자력\s*)?4호기\s*(운전|정비|정지)\b",
     )
     for pattern in patterns:
         match = re.search(pattern, normalized, re.I)
         if match:
             return match.group(1)
+    if _hanul4_explicit_output_ramp(normalized):
+        return "운전"
     return None
+
+
+def _hanul4_operating_verified(
+    mobile_status: str | None,
+    main_status: str | None,
+    main_ramp: bool,
+    main_fresh: bool,
+) -> bool:
+    return (
+        mobile_status == "운전"
+        and main_fresh
+        and (main_status == "운전" or main_ramp)
+    )
 
 
 def _hanul4_official_source(outlet: str, link: str = "") -> bool:
@@ -1424,10 +1439,8 @@ def collect_hanul4_operation_items(now: dt.datetime) -> list[dict]:
     # '운전 전환'은 한 화면의 캐시/오래된 문구로 승격하지 않는다.
     # 모바일 호기별 상태가 '운전'이고, 측정시각이 신선한 메인 공식 표면에서도
     # 운전 또는 명시적 출력상승이 확인될 때만 운영단계로 승격한다.
-    operating_verified = (
-        mobile_status == "운전"
-        and main_fresh
-        and (main_status == "운전" or main_ramp)
+    operating_verified = _hanul4_operating_verified(
+        mobile_status, main_status, main_ramp, main_fresh
     )
     if operating_verified:
         rows.append({
@@ -1642,6 +1655,12 @@ def _self_test_hanul4_operating_event_model() -> None:
         raise RuntimeError("Hanul4 live-output-ramp parser regression")
     if not _hanul4_explicit_output_ramp(live_ramp_fixture):
         raise RuntimeError("Hanul4 explicit-output-ramp evidence regression")
+    mixed_fixture = (
+        "한울 4호기 정비 4호기 "
+        "한울 원자력 4호기는 현재 계획예방정비를 완료하고 출력을 올리고 있습니다."
+    )
+    if _hanul4_live_status(mixed_fixture) != "정비":
+        raise RuntimeError("Hanul4 explicit unit-status priority regression")
     fresh_main_fixture = live_ramp_fixture + " 한울원자력본부 측정시간 2026-10-07 19:55:00"
     stale_main_fixture = live_ramp_fixture + " 한울원자력본부 측정시간 2026-08-11 00:03:00"
     fixture_now = dt.datetime(2026, 10, 7, 20, 0, tzinfo=KST)
@@ -1649,6 +1668,14 @@ def _self_test_hanul4_operating_event_model() -> None:
         raise RuntimeError("Hanul4 fresh-main timestamp regression")
     if _hanul4_main_is_fresh(stale_main_fixture, fixture_now):
         raise RuntimeError("Hanul4 stale-main timestamp false-positive regression")
+    if not _hanul4_operating_verified("운전", "운전", False, True):
+        raise RuntimeError("Hanul4 dual-official operating verification regression")
+    if not _hanul4_operating_verified("운전", None, True, True):
+        raise RuntimeError("Hanul4 fresh-ramp operating verification regression")
+    if _hanul4_operating_verified("정비", "운전", True, True):
+        raise RuntimeError("Hanul4 maintenance false-positive operating regression")
+    if _hanul4_operating_verified("운전", "운전", True, False):
+        raise RuntimeError("Hanul4 stale-main operating false-positive regression")
 
     approval = dict(HANUL4_VERIFIED_APPROVAL)
     operating = {
