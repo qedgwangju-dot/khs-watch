@@ -778,6 +778,33 @@
       "source": "이데일리",
       "title": "자회사 상장, 누구를 위한 것인가…카카오가 던진 '주주가치'"
     },
+    "event:2059562a028cff35e70b8453": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610077179b",
+      "source": "한국경제",
+      "source_body_digest": "846991d7d43f8ed67f275cdd63305570df6cc83c8a0dbf24e440bf5912100f12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d42d902a5e19f58d95d2a4378d53c080311bc0137dd02f694580741341a05799",
+      "source_fact_keys": [
+        "source_fact:v1:017e24ab16d9198f13bb758c3a7d002fe05a6e91507ea04abf3dcc36a4ac856f",
+        "source_fact:v1:0d52fbb44bc845f51f725414c6a66522d33c6beff577ac07b38521c6bf446d59",
+        "source_fact:v1:6cb3bd8c1ff233c057dba77b9fbffff0b29a12ded097d6fd7ea4f5455a05d3ef",
+        "source_fact:v1:8dd404cf18ec48bd777d167877f3be7a15be51ed25528f72f4a0aa4c7ed2ee14",
+        "source_fact:v1:95901ee65b80f7534ce42e49b24ff5f3c1fe8190ee98ca0b14edfc6ad3c4de28",
+        "source_fact:v1:a1f48f657069ccaa4953debd75443981481d0686935db39ce945d06d3ab78f50",
+        "source_fact:v1:ae35066b0843af2f59abe7fc8dec476d0425a46d70b7b271c8f04d5bb039fc03",
+        "source_fact:v1:c804908a8ffe81d38520637c98a9b5ee6d4cbbb731f8cf9ce9125a3caedee8dc",
+        "source_fact:v1:cd7b85a243041bff12a8c9e13a2df7eb8da9ca60c61234815157adcf87517d64",
+        "source_fact:v1:d01bdc6abf147062cf08e77f16d81dc54002ce80d69b81aa079eb15fd92f0b9c",
+        "source_fact:v1:e355ded6781ad789919da1fc504fd9f77dd95aa56daa68cf2355e01b0e716029"
+      ],
+      "source_published_kst": "2026-10-07T08:53+09:00",
+      "title": "“100조 넘긴다” 삼성전자 신기록 전망"
+    },
     "event:206e8e1b875f49dacbec7399": {
       "first_seen_kst": "2026-10-02T12:31:36+09:00",
       "lanes": {
@@ -2621,21 +2648,20 @@
     "event:695102b941e71506d24b4e08": {
       "first_seen_kst": "2026-10-07T04:49:54+09:00",
       "lanes": {
-        "live": "2026-10-07T08:57:59+09:00"
+        "live": "2026-10-07T09:44:16+09:00"
       },
-      "last_seen_kst": "2026-10-07T08:57:59+09:00",
-      "link": "https://biz.heraldcorp.com/article/10894978",
-      "source": "헤럴드경제",
-      "source_body_digest": "3e4a5aeed90b794e01e1cd0b7cdfb28f288d42317c5ad9a7bdcc12d551a735db",
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170595",
+      "source": "매일경제",
+      "source_body_digest": "121737cc9d7798f7101c6bb6605bba647f45880aeea957c7799c252f58f832ec",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:a13dd638f6d228c7ab36f8963ba0b1a22ac4fc547b773610127067c2decb30aa",
+      "source_fact_identity": "source_facts:v1:9745995a753f41120d44ab43a6e185ca1566aa1bc0421e0b181cd4dc4df33054",
       "source_fact_keys": [
-        "source_fact:v1:3bd0a6145146178f8657272a790b61a1d5e006d8de88e85fd131f6671e0cda07",
-        "source_fact:v1:5cc73772796cd8bcbed2cd90b3e9df6d0ca766cd3c9372692f076b43ad16f756",
-        "source_fact:v1:7953912e7d285c76ea36b52f495d2397202ac3b4ec6f018d6be9c7671c0fc011"
+        "source_fact:v1:495c66fc205fb2fc15911b140f5c2b6bbd8108d7b82f0b05102e4a86ac76e8b3",
+        "source_fact:v1:a542d840ff1833203ff1bdfb72f3fb050c8dafd1426b04e2050e96228ecacc08"
       ],
-      "source_published_kst": "2026-10-07T08:41+09:00",
-      "title": "튀르키예, 사우디에 특수부대·전투기 보낸다…‘메카 방위동맹’ 가동"
+      "source_published_kst": "2026-10-07T08:42+09:00",
+      "title": "네이처 우드 그룹, 상반기 매출 64% 급감..174만달러 순손실"
     },
     "event:6994ec3ec51f16c535c2ebd5": {
       "first_seen_kst": "2026-09-28T15:47:59+09:00",
@@ -6098,6 +6124,28 @@
       "source_published_kst": "2026-10-07T07:35+09:00",
       "title": "KB證 “삼성전자, HBM4 업계 최고가 기대…주주환원도 4배 확대 가능”"
     },
+    "event:de0944201f01ab6356bb27a3": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169962",
+      "source": "매일경제",
+      "source_body_digest": "138890f73f7c3e94457e146aa3bdee2a6a283748bcd87c3b45a6ae7358cee63e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b097c9f533e90a2dd662b9271c46e5ae706cf2e74c39348158e7db1ec05aadc",
+      "source_fact_keys": [
+        "source_fact:v1:38ddfb3f76c83fd4c31178d2b71e56bf89526ab802a9cb8fe2714f7ec0b20944",
+        "source_fact:v1:5bc4741d9366d8c0ff3afc0d9a0b464c634dcf2777559f53b9f342001cff2a7c",
+        "source_fact:v1:669b85b777034564320795647335fa97e494158f256286e94474b62cad3dbcd8",
+        "source_fact:v1:8cc3811666d11e237fdf700b57a43a51edf13d2e6868b4dc11e3514bf23cc5af",
+        "source_fact:v1:a3b5d009f581e5a4e53fe75653a84a00fd487342c35b0d34b68e6ae0fe217ad8",
+        "source_fact:v1:ab616894c923d75d695718859c01d93189d3bf4b7d666d1ed4d49dc11879bba4"
+      ],
+      "source_published_kst": "2026-10-07T08:49+09:00",
+      "title": "블랙 힐스, 구글 데이터센터 전력 계약..18억 달러 투자"
+    },
     "event:de5909e789cfafa27b6823bd": {
       "first_seen_kst": "2026-09-19T07:23:13+09:00",
       "lanes": {
@@ -9357,6 +9405,23 @@
       ],
       "source_published_kst": "2026-10-05T12:32+09:00",
       "title": "엔씨 '아이온2' 글로벌 정식 출시... 얼리액세스 동접 17만명"
+    },
+    "fact:22b91be219391098f9945ce3": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170593",
+      "source": "매일경제",
+      "source_body_digest": "8b1db8bdd5628f2878ec106fcb379614e770b489a66e1943720415a246b44c34",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9aae4f4ccce08020e818296e404e0cb58c9e1a5408f0a4509e1ea0a23b055b10",
+      "source_fact_keys": [
+        "source_fact:v1:cc8690521e4398db630a890b30dd04cc8399353e9197da4c81e019736a76bccd"
+      ],
+      "source_published_kst": "2026-10-07T08:41+09:00",
+      "title": "로켓 파마슈티컬스, 1억5000만 달러 신용한도..현금 2028년 3분기까지"
     },
     "fact:22c0160496e60883ce1056ed": {
       "first_seen_kst": "2026-10-06T01:51:09+09:00",
@@ -15901,6 +15966,24 @@
       "source_published_kst": "2026-10-06T17:38+09:00",
       "title": "[미국 주식 돋보기] 데이터센터 전력 구원투수 '비코' 고공행진"
     },
+    "fact:902af95803a854ed9b1e9ebf": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170595",
+      "source": "매일경제",
+      "source_body_digest": "121737cc9d7798f7101c6bb6605bba647f45880aeea957c7799c252f58f832ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9745995a753f41120d44ab43a6e185ca1566aa1bc0421e0b181cd4dc4df33054",
+      "source_fact_keys": [
+        "source_fact:v1:495c66fc205fb2fc15911b140f5c2b6bbd8108d7b82f0b05102e4a86ac76e8b3",
+        "source_fact:v1:a542d840ff1833203ff1bdfb72f3fb050c8dafd1426b04e2050e96228ecacc08"
+      ],
+      "source_published_kst": "2026-10-07T08:42+09:00",
+      "title": "네이처 우드 그룹, 상반기 매출 64% 급감..174만달러 순손실"
+    },
     "fact:9074070d6c1bd41507b90289": {
       "first_seen_kst": "2026-10-07T01:18:00+09:00",
       "lanes": {
@@ -18650,6 +18733,33 @@
       "source_published_kst": "2026-10-07T07:00+09:00",
       "title": "후티 공습, 사우디 진출 韓 기업 인근까지⋯현장·직원 피해는 아직"
     },
+    "fact:bc7415d2e2af8d2b817c78ef": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633143",
+      "source": "이투데이",
+      "source_body_digest": "1335edfc349eec3c61785b54a0fd48c63a327745fefec59cb880a8c308b88dd9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:850a7f92a846916d9113af801e44f0a49f9417b1cb2b8a309d9e774c0a3836cc",
+      "source_fact_keys": [
+        "source_fact:v1:150d1a0546e2cea0a4569246ffd018d82ebfebc60a0a686d5caba79bd7f8104d",
+        "source_fact:v1:24fcdb9c286921027c4b4fe4bbd76043275d4c693dca90949365029c23bee2ec",
+        "source_fact:v1:3a9f4a93f1ae2857d93f7f9c48adad96647b3ec031ce7ab9bccf79dc4ddbcc9f",
+        "source_fact:v1:5607474ca42bac28368225027e0b48b4aac32e23bfad7d97b9c6a37548c69732",
+        "source_fact:v1:75a28a529694518e888420affa3061cc8ec4ea7cb4693b4b08f3cf6db2d3446a",
+        "source_fact:v1:a70627431ffc37d7ca95c335b19446cb1e87b7dfff3622ebc57de88c8f611a9f",
+        "source_fact:v1:a9d494aecfcc74a2c9e5a28f8505533b63c75a9da4af3e8b6161aee369ffecfc",
+        "source_fact:v1:bceac98593ee6044bdadf7f1ff6c43eb6c1d66380a4b77499ef33f50af785e94",
+        "source_fact:v1:c03feac83bcbcf3fb5baa173c2e12a57b7d535f9ca95318af1bde9846ed7718b",
+        "source_fact:v1:d80f048d8a2ac1ecf11bce7765d3caeb784ef8c5e5e6706958b23a8500285e6d",
+        "source_fact:v1:f54acd46bfdfed3cdc2f21e23a109237821e856276afbbbfd1f24acb9a2ac33b"
+      ],
+      "source_published_kst": "2026-10-07T08:46+09:00",
+      "title": "스카이월드와이드, AI 인프라 사업 확대…조선·방산·제조로 고객군 넓힌다"
+    },
     "fact:bc85136925d58cef831fe67e": {
       "first_seen_kst": "2026-10-06T23:29:45+09:00",
       "lanes": {
@@ -18889,6 +18999,24 @@
       ],
       "source_published_kst": "2026-10-06T08:57+09:00",
       "title": "LH, 서울대에 기숙사형 전세임대 200가구 공급…전국 500가구 공모"
+    },
+    "fact:c031e2b596a1c4ccf6b39321": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.mk.co.kr/news/politics/12169980",
+      "source": "매일경제",
+      "source_body_digest": "c5b8c3b0fb188ff953116ef0947642627b22cb1018670613326dc992735f3565",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d6dc9febed407d06c30d221cdb86dd62c30257e75872ddba48053abc18978395",
+      "source_fact_keys": [
+        "source_fact:v1:0952c89aa048a97fb02489a401f3cde5cfad44d2cb6b7e9f3cd102921bcdd2ef",
+        "source_fact:v1:845a7f662ff0168329333c5cff1fcbe30dfdc2d5030487478809f8613b1f4adf"
+      ],
+      "source_published_kst": "2026-10-07T08:51+09:00",
+      "title": "트럼프 “한국에 관세 인하 ‘대가’ 요구했다”…대미 투자 거듭 압박"
     },
     "fact:c10bad0897aebae10cd3e44b": {
       "first_seen_kst": "2026-10-06T12:10:48+09:00",
@@ -19631,6 +19759,33 @@
       "source_published_kst": "2026-10-06T11:20+09:00",
       "title": "엠플러스, 유럽 배터리 기업 각형 노칭·스태킹 장비 수주"
     },
+    "fact:cd91baa6168d4315827cf6ca": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610077179b",
+      "source": "한국경제",
+      "source_body_digest": "846991d7d43f8ed67f275cdd63305570df6cc83c8a0dbf24e440bf5912100f12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d42d902a5e19f58d95d2a4378d53c080311bc0137dd02f694580741341a05799",
+      "source_fact_keys": [
+        "source_fact:v1:017e24ab16d9198f13bb758c3a7d002fe05a6e91507ea04abf3dcc36a4ac856f",
+        "source_fact:v1:0d52fbb44bc845f51f725414c6a66522d33c6beff577ac07b38521c6bf446d59",
+        "source_fact:v1:6cb3bd8c1ff233c057dba77b9fbffff0b29a12ded097d6fd7ea4f5455a05d3ef",
+        "source_fact:v1:8dd404cf18ec48bd777d167877f3be7a15be51ed25528f72f4a0aa4c7ed2ee14",
+        "source_fact:v1:95901ee65b80f7534ce42e49b24ff5f3c1fe8190ee98ca0b14edfc6ad3c4de28",
+        "source_fact:v1:a1f48f657069ccaa4953debd75443981481d0686935db39ce945d06d3ab78f50",
+        "source_fact:v1:ae35066b0843af2f59abe7fc8dec476d0425a46d70b7b271c8f04d5bb039fc03",
+        "source_fact:v1:c804908a8ffe81d38520637c98a9b5ee6d4cbbb731f8cf9ce9125a3caedee8dc",
+        "source_fact:v1:cd7b85a243041bff12a8c9e13a2df7eb8da9ca60c61234815157adcf87517d64",
+        "source_fact:v1:d01bdc6abf147062cf08e77f16d81dc54002ce80d69b81aa079eb15fd92f0b9c",
+        "source_fact:v1:e355ded6781ad789919da1fc504fd9f77dd95aa56daa68cf2355e01b0e716029"
+      ],
+      "source_published_kst": "2026-10-07T08:53+09:00",
+      "title": "“100조 넘긴다” 삼성전자 신기록 전망"
+    },
     "fact:cda9172ae5e29fd73abf728f": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
@@ -20276,6 +20431,27 @@
       ],
       "source_published_kst": "2026-10-06T08:45+09:00",
       "title": "나스닥 사상 최고치…엔비디아 시총 6조달러 눈앞 | 연합뉴스"
+    },
+    "fact:d867d705e05743f52fc0bf19": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633141",
+      "source": "이투데이",
+      "source_body_digest": "62b0a7a64317cfc00725cf4ff035d223eca42ef20c9ecd93323f129c2993969e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bd81c0b40b861dfe4de155ff245fc892e14db0b85fc573577729fb2ff77e434",
+      "source_fact_keys": [
+        "source_fact:v1:054ab477dd8682b28dda5351ae4ed919aeab2781879d8a5f80dea7d2cde41f5f",
+        "source_fact:v1:50109569d1ee094f7297189ffd895f13bda38a57ec51bb704841666779783571",
+        "source_fact:v1:5252049099b4e7a4427c8ea23c6d89860f9670396762f05e47a507613c196179",
+        "source_fact:v1:64bd8e287072f4f5f35b31d7719458b27cfa40657341ca4bb18792535097bed1",
+        "source_fact:v1:80ac12d28832773a6a9acb3f929fd6ad19ec492b9d1292f471e96a329af942a7"
+      ],
+      "source_published_kst": "2026-10-07T08:44+09:00",
+      "title": "LS에코에너지, 베트남서 AIDC용 버스덕트 생산능력 2배 확대"
     },
     "fact:d8ab5e2126d0dfa38b61ca0d": {
       "first_seen_kst": "2026-10-06T16:09:23+09:00",
@@ -22223,6 +22399,28 @@
       "source_published_kst": "2026-10-04T22:38+09:00",
       "title": "\"사우디, 2034 월드컵 경기장 '네옴 스타디움' 건설 계획 보류\" | 연합뉴스"
     },
+    "fact:fb80fc2ad1a2438914fc0c4b": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169962",
+      "source": "매일경제",
+      "source_body_digest": "138890f73f7c3e94457e146aa3bdee2a6a283748bcd87c3b45a6ae7358cee63e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b097c9f533e90a2dd662b9271c46e5ae706cf2e74c39348158e7db1ec05aadc",
+      "source_fact_keys": [
+        "source_fact:v1:38ddfb3f76c83fd4c31178d2b71e56bf89526ab802a9cb8fe2714f7ec0b20944",
+        "source_fact:v1:5bc4741d9366d8c0ff3afc0d9a0b464c634dcf2777559f53b9f342001cff2a7c",
+        "source_fact:v1:669b85b777034564320795647335fa97e494158f256286e94474b62cad3dbcd8",
+        "source_fact:v1:8cc3811666d11e237fdf700b57a43a51edf13d2e6868b4dc11e3514bf23cc5af",
+        "source_fact:v1:a3b5d009f581e5a4e53fe75653a84a00fd487342c35b0d34b68e6ae0fe217ad8",
+        "source_fact:v1:ab616894c923d75d695718859c01d93189d3bf4b7d666d1ed4d49dc11879bba4"
+      ],
+      "source_published_kst": "2026-10-07T08:49+09:00",
+      "title": "블랙 힐스, 구글 데이터센터 전력 계약..18억 달러 투자"
+    },
     "fact:fbe43331b9b0e86c38115fcd": {
       "first_seen_kst": "2026-10-07T01:59:08+09:00",
       "lanes": {
@@ -22800,6 +22998,33 @@
       "source_published_kst": "2026-10-06T15:04+09:00",
       "title": "파업에도 한 달 새 약 30% 껑충…반전 쓴 '이 종목'"
     },
+    "link:0296f40a8028a3efcfbb62b4": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633143",
+      "source": "이투데이",
+      "source_body_digest": "1335edfc349eec3c61785b54a0fd48c63a327745fefec59cb880a8c308b88dd9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:850a7f92a846916d9113af801e44f0a49f9417b1cb2b8a309d9e774c0a3836cc",
+      "source_fact_keys": [
+        "source_fact:v1:150d1a0546e2cea0a4569246ffd018d82ebfebc60a0a686d5caba79bd7f8104d",
+        "source_fact:v1:24fcdb9c286921027c4b4fe4bbd76043275d4c693dca90949365029c23bee2ec",
+        "source_fact:v1:3a9f4a93f1ae2857d93f7f9c48adad96647b3ec031ce7ab9bccf79dc4ddbcc9f",
+        "source_fact:v1:5607474ca42bac28368225027e0b48b4aac32e23bfad7d97b9c6a37548c69732",
+        "source_fact:v1:75a28a529694518e888420affa3061cc8ec4ea7cb4693b4b08f3cf6db2d3446a",
+        "source_fact:v1:a70627431ffc37d7ca95c335b19446cb1e87b7dfff3622ebc57de88c8f611a9f",
+        "source_fact:v1:a9d494aecfcc74a2c9e5a28f8505533b63c75a9da4af3e8b6161aee369ffecfc",
+        "source_fact:v1:bceac98593ee6044bdadf7f1ff6c43eb6c1d66380a4b77499ef33f50af785e94",
+        "source_fact:v1:c03feac83bcbcf3fb5baa173c2e12a57b7d535f9ca95318af1bde9846ed7718b",
+        "source_fact:v1:d80f048d8a2ac1ecf11bce7765d3caeb784ef8c5e5e6706958b23a8500285e6d",
+        "source_fact:v1:f54acd46bfdfed3cdc2f21e23a109237821e856276afbbbfd1f24acb9a2ac33b"
+      ],
+      "source_published_kst": "2026-10-07T08:46+09:00",
+      "title": "스카이월드와이드, AI 인프라 사업 확대…조선·방산·제조로 고객군 넓힌다"
+    },
     "link:02b19282c5b111edc77c651b": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
       "lanes": {
@@ -23110,6 +23335,23 @@
       ],
       "source_published_kst": "2026-10-06T06:30+09:00",
       "title": "[속보] 예멘 후티군, 사우디 전역 미사일 ·드론 공습했다 발표"
+    },
+    "link:062428e45331b003cb6a7ca7": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170593",
+      "source": "매일경제",
+      "source_body_digest": "8b1db8bdd5628f2878ec106fcb379614e770b489a66e1943720415a246b44c34",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9aae4f4ccce08020e818296e404e0cb58c9e1a5408f0a4509e1ea0a23b055b10",
+      "source_fact_keys": [
+        "source_fact:v1:cc8690521e4398db630a890b30dd04cc8399353e9197da4c81e019736a76bccd"
+      ],
+      "source_published_kst": "2026-10-07T08:41+09:00",
+      "title": "로켓 파마슈티컬스, 1억5000만 달러 신용한도..현금 2028년 3분기까지"
     },
     "link:06592aea7424db91d02ed0fd": {
       "first_seen_kst": "2026-10-04T15:04:58+09:00",
@@ -38923,6 +39165,33 @@
       "source": "전자신문",
       "title": "화성시, 삼성전자와 '성장 동맹'…1조7000억원 투자계획 본격 추진"
     },
+    "link:86f4d21057ead7354bec541f": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610077179b",
+      "source": "한국경제",
+      "source_body_digest": "846991d7d43f8ed67f275cdd63305570df6cc83c8a0dbf24e440bf5912100f12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d42d902a5e19f58d95d2a4378d53c080311bc0137dd02f694580741341a05799",
+      "source_fact_keys": [
+        "source_fact:v1:017e24ab16d9198f13bb758c3a7d002fe05a6e91507ea04abf3dcc36a4ac856f",
+        "source_fact:v1:0d52fbb44bc845f51f725414c6a66522d33c6beff577ac07b38521c6bf446d59",
+        "source_fact:v1:6cb3bd8c1ff233c057dba77b9fbffff0b29a12ded097d6fd7ea4f5455a05d3ef",
+        "source_fact:v1:8dd404cf18ec48bd777d167877f3be7a15be51ed25528f72f4a0aa4c7ed2ee14",
+        "source_fact:v1:95901ee65b80f7534ce42e49b24ff5f3c1fe8190ee98ca0b14edfc6ad3c4de28",
+        "source_fact:v1:a1f48f657069ccaa4953debd75443981481d0686935db39ce945d06d3ab78f50",
+        "source_fact:v1:ae35066b0843af2f59abe7fc8dec476d0425a46d70b7b271c8f04d5bb039fc03",
+        "source_fact:v1:c804908a8ffe81d38520637c98a9b5ee6d4cbbb731f8cf9ce9125a3caedee8dc",
+        "source_fact:v1:cd7b85a243041bff12a8c9e13a2df7eb8da9ca60c61234815157adcf87517d64",
+        "source_fact:v1:d01bdc6abf147062cf08e77f16d81dc54002ce80d69b81aa079eb15fd92f0b9c",
+        "source_fact:v1:e355ded6781ad789919da1fc504fd9f77dd95aa56daa68cf2355e01b0e716029"
+      ],
+      "source_published_kst": "2026-10-07T08:53+09:00",
+      "title": "“100조 넘긴다” 삼성전자 신기록 전망"
+    },
     "link:87057524e4c77289388301d9": {
       "first_seen_kst": "2026-10-02T15:40:35+09:00",
       "lanes": {
@@ -41173,6 +41442,24 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=02633846645585368",
       "source": "이데일리",
       "title": "SK스퀘어, 자사주 매입 후 추가 주주환원 기대…'매수'-SK"
+    },
+    "link:9a513af4c1a6cfa465da5554": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170595",
+      "source": "매일경제",
+      "source_body_digest": "121737cc9d7798f7101c6bb6605bba647f45880aeea957c7799c252f58f832ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9745995a753f41120d44ab43a6e185ca1566aa1bc0421e0b181cd4dc4df33054",
+      "source_fact_keys": [
+        "source_fact:v1:495c66fc205fb2fc15911b140f5c2b6bbd8108d7b82f0b05102e4a86ac76e8b3",
+        "source_fact:v1:a542d840ff1833203ff1bdfb72f3fb050c8dafd1426b04e2050e96228ecacc08"
+      ],
+      "source_published_kst": "2026-10-07T08:42+09:00",
+      "title": "네이처 우드 그룹, 상반기 매출 64% 급감..174만달러 순손실"
     },
     "link:9a5c0eba88fa6ad483a931d5": {
       "first_seen_kst": "2026-10-01T21:28:22+09:00",
@@ -44161,6 +44448,28 @@
       "link": "https://www.news1.kr/world/international-economy/6301450",
       "source": "뉴스1",
       "title": "호르무즈 재개 협상에 유가 상승폭 축소…브렌트 3.4% ↑"
+    },
+    "link:b30492b8849901e8cfdf04b8": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169962",
+      "source": "매일경제",
+      "source_body_digest": "138890f73f7c3e94457e146aa3bdee2a6a283748bcd87c3b45a6ae7358cee63e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b097c9f533e90a2dd662b9271c46e5ae706cf2e74c39348158e7db1ec05aadc",
+      "source_fact_keys": [
+        "source_fact:v1:38ddfb3f76c83fd4c31178d2b71e56bf89526ab802a9cb8fe2714f7ec0b20944",
+        "source_fact:v1:5bc4741d9366d8c0ff3afc0d9a0b464c634dcf2777559f53b9f342001cff2a7c",
+        "source_fact:v1:669b85b777034564320795647335fa97e494158f256286e94474b62cad3dbcd8",
+        "source_fact:v1:8cc3811666d11e237fdf700b57a43a51edf13d2e6868b4dc11e3514bf23cc5af",
+        "source_fact:v1:a3b5d009f581e5a4e53fe75653a84a00fd487342c35b0d34b68e6ae0fe217ad8",
+        "source_fact:v1:ab616894c923d75d695718859c01d93189d3bf4b7d666d1ed4d49dc11879bba4"
+      ],
+      "source_published_kst": "2026-10-07T08:49+09:00",
+      "title": "블랙 힐스, 구글 데이터센터 전력 계약..18억 달러 투자"
     },
     "link:b30d7857aab9cbd60052debe": {
       "first_seen_kst": "2026-10-01T17:59:22+09:00",
@@ -49644,6 +49953,24 @@
       "source_published_kst": "2026-10-07T05:22+09:00",
       "title": "국제유가 보합…중동 수출 증가·G7 비축유 방출에 공급 우려 완화"
     },
+    "link:df58b31acd0280b6cbd736b9": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.mk.co.kr/news/politics/12169980",
+      "source": "매일경제",
+      "source_body_digest": "c5b8c3b0fb188ff953116ef0947642627b22cb1018670613326dc992735f3565",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d6dc9febed407d06c30d221cdb86dd62c30257e75872ddba48053abc18978395",
+      "source_fact_keys": [
+        "source_fact:v1:0952c89aa048a97fb02489a401f3cde5cfad44d2cb6b7e9f3cd102921bcdd2ef",
+        "source_fact:v1:845a7f662ff0168329333c5cff1fcbe30dfdc2d5030487478809f8613b1f4adf"
+      ],
+      "source_published_kst": "2026-10-07T08:51+09:00",
+      "title": "트럼프 “한국에 관세 인하 ‘대가’ 요구했다”…대미 투자 거듭 압박"
+    },
     "link:dfaa8101c9738b2e5f43489a": {
       "first_seen_kst": "2026-10-05T16:39:19+09:00",
       "lanes": {
@@ -50391,6 +50718,27 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "환경영향평가 공탁제 첫 시범사업…제3기관이 대행업체 선정"
+    },
+    "link:e53164612be9c48e0d37c6df": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633141",
+      "source": "이투데이",
+      "source_body_digest": "62b0a7a64317cfc00725cf4ff035d223eca42ef20c9ecd93323f129c2993969e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bd81c0b40b861dfe4de155ff245fc892e14db0b85fc573577729fb2ff77e434",
+      "source_fact_keys": [
+        "source_fact:v1:054ab477dd8682b28dda5351ae4ed919aeab2781879d8a5f80dea7d2cde41f5f",
+        "source_fact:v1:50109569d1ee094f7297189ffd895f13bda38a57ec51bb704841666779783571",
+        "source_fact:v1:5252049099b4e7a4427c8ea23c6d89860f9670396762f05e47a507613c196179",
+        "source_fact:v1:64bd8e287072f4f5f35b31d7719458b27cfa40657341ca4bb18792535097bed1",
+        "source_fact:v1:80ac12d28832773a6a9acb3f929fd6ad19ec492b9d1292f471e96a329af942a7"
+      ],
+      "source_published_kst": "2026-10-07T08:44+09:00",
+      "title": "LS에코에너지, 베트남서 AIDC용 버스덕트 생산능력 2배 확대"
     },
     "link:e53716508c9f8b422e32fc49": {
       "first_seen_kst": "2026-09-27T08:28:35+09:00",
@@ -60128,6 +60476,28 @@
       "source": "연합뉴스",
       "title": "한국금융지주, 수요예측에 모집액 7배 몰려…고려아연도 3배(종합) | 연합뉴스"
     },
+    "original:36e1bb51a9ad93b3f80cde40": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169962",
+      "source": "매일경제",
+      "source_body_digest": "138890f73f7c3e94457e146aa3bdee2a6a283748bcd87c3b45a6ae7358cee63e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b097c9f533e90a2dd662b9271c46e5ae706cf2e74c39348158e7db1ec05aadc",
+      "source_fact_keys": [
+        "source_fact:v1:38ddfb3f76c83fd4c31178d2b71e56bf89526ab802a9cb8fe2714f7ec0b20944",
+        "source_fact:v1:5bc4741d9366d8c0ff3afc0d9a0b464c634dcf2777559f53b9f342001cff2a7c",
+        "source_fact:v1:669b85b777034564320795647335fa97e494158f256286e94474b62cad3dbcd8",
+        "source_fact:v1:8cc3811666d11e237fdf700b57a43a51edf13d2e6868b4dc11e3514bf23cc5af",
+        "source_fact:v1:a3b5d009f581e5a4e53fe75653a84a00fd487342c35b0d34b68e6ae0fe217ad8",
+        "source_fact:v1:ab616894c923d75d695718859c01d93189d3bf4b7d666d1ed4d49dc11879bba4"
+      ],
+      "source_published_kst": "2026-10-07T08:49+09:00",
+      "title": "블랙 힐스, 구글 데이터센터 전력 계약..18억 달러 투자"
+    },
     "original:36e9de29a7108fb28e073bdd": {
       "first_seen_kst": "2026-10-01T15:33:35+09:00",
       "lanes": {
@@ -64849,6 +65219,24 @@
       "source": "뉴시스",
       "title": "[올댓차이나] 대만 증시, 韓美 반도체 호조에 0.86%↑ 상승 마감…1주 만에 사상최고 경신"
     },
+    "original:5d0606284326da19dcc13337": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.mk.co.kr/news/politics/12169980",
+      "source": "매일경제",
+      "source_body_digest": "c5b8c3b0fb188ff953116ef0947642627b22cb1018670613326dc992735f3565",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d6dc9febed407d06c30d221cdb86dd62c30257e75872ddba48053abc18978395",
+      "source_fact_keys": [
+        "source_fact:v1:0952c89aa048a97fb02489a401f3cde5cfad44d2cb6b7e9f3cd102921bcdd2ef",
+        "source_fact:v1:845a7f662ff0168329333c5cff1fcbe30dfdc2d5030487478809f8613b1f4adf"
+      ],
+      "source_published_kst": "2026-10-07T08:51+09:00",
+      "title": "트럼프 “한국에 관세 인하 ‘대가’ 요구했다”…대미 투자 거듭 압박"
+    },
     "original:5d60d56e51a39cd1d3549a8c": {
       "first_seen_kst": "2026-10-06T22:51:44+09:00",
       "lanes": {
@@ -67437,6 +67825,24 @@
       "link": "https://www.mk.co.kr/news/stock/12155669",
       "source": "매일경제",
       "title": "2800조 굴리는 日연기금 \"국민연금 노하우 배우고파\""
+    },
+    "original:7261ebab85a7b4bd1a887582": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170595",
+      "source": "매일경제",
+      "source_body_digest": "121737cc9d7798f7101c6bb6605bba647f45880aeea957c7799c252f58f832ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9745995a753f41120d44ab43a6e185ca1566aa1bc0421e0b181cd4dc4df33054",
+      "source_fact_keys": [
+        "source_fact:v1:495c66fc205fb2fc15911b140f5c2b6bbd8108d7b82f0b05102e4a86ac76e8b3",
+        "source_fact:v1:a542d840ff1833203ff1bdfb72f3fb050c8dafd1426b04e2050e96228ecacc08"
+      ],
+      "source_published_kst": "2026-10-07T08:42+09:00",
+      "title": "네이처 우드 그룹, 상반기 매출 64% 급감..174만달러 순손실"
     },
     "original:726906523c98733cfd852a11": {
       "first_seen_kst": "2026-09-25T19:49:36+09:00",
@@ -73928,6 +74334,33 @@
       "source_published_kst": "2026-10-05T17:23+09:00",
       "title": "AI 해킹 확산에 'AI 방패' 꺼낸 금융당국…'망분리 완화' 해법 될 수 있나"
     },
+    "original:aa8c6db788d9cad4f2bcd838": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633143",
+      "source": "이투데이",
+      "source_body_digest": "1335edfc349eec3c61785b54a0fd48c63a327745fefec59cb880a8c308b88dd9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:850a7f92a846916d9113af801e44f0a49f9417b1cb2b8a309d9e774c0a3836cc",
+      "source_fact_keys": [
+        "source_fact:v1:150d1a0546e2cea0a4569246ffd018d82ebfebc60a0a686d5caba79bd7f8104d",
+        "source_fact:v1:24fcdb9c286921027c4b4fe4bbd76043275d4c693dca90949365029c23bee2ec",
+        "source_fact:v1:3a9f4a93f1ae2857d93f7f9c48adad96647b3ec031ce7ab9bccf79dc4ddbcc9f",
+        "source_fact:v1:5607474ca42bac28368225027e0b48b4aac32e23bfad7d97b9c6a37548c69732",
+        "source_fact:v1:75a28a529694518e888420affa3061cc8ec4ea7cb4693b4b08f3cf6db2d3446a",
+        "source_fact:v1:a70627431ffc37d7ca95c335b19446cb1e87b7dfff3622ebc57de88c8f611a9f",
+        "source_fact:v1:a9d494aecfcc74a2c9e5a28f8505533b63c75a9da4af3e8b6161aee369ffecfc",
+        "source_fact:v1:bceac98593ee6044bdadf7f1ff6c43eb6c1d66380a4b77499ef33f50af785e94",
+        "source_fact:v1:c03feac83bcbcf3fb5baa173c2e12a57b7d535f9ca95318af1bde9846ed7718b",
+        "source_fact:v1:d80f048d8a2ac1ecf11bce7765d3caeb784ef8c5e5e6706958b23a8500285e6d",
+        "source_fact:v1:f54acd46bfdfed3cdc2f21e23a109237821e856276afbbbfd1f24acb9a2ac33b"
+      ],
+      "source_published_kst": "2026-10-07T08:46+09:00",
+      "title": "스카이월드와이드, AI 인프라 사업 확대…조선·방산·제조로 고객군 넓힌다"
+    },
     "original:aaa21192024df06d98861797": {
       "first_seen_kst": "2026-10-03T07:58:14+09:00",
       "lanes": {
@@ -74729,6 +75162,27 @@
       ],
       "source_published_kst": "2026-10-06T14:46+09:00",
       "title": "두산에너빌, 스페이스XAI에 가스터빈 1호 출하…첫 해외 수출 | 연합뉴스"
+    },
+    "original:b0ceec16ac3bf80cc0d85cff": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633141",
+      "source": "이투데이",
+      "source_body_digest": "62b0a7a64317cfc00725cf4ff035d223eca42ef20c9ecd93323f129c2993969e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bd81c0b40b861dfe4de155ff245fc892e14db0b85fc573577729fb2ff77e434",
+      "source_fact_keys": [
+        "source_fact:v1:054ab477dd8682b28dda5351ae4ed919aeab2781879d8a5f80dea7d2cde41f5f",
+        "source_fact:v1:50109569d1ee094f7297189ffd895f13bda38a57ec51bb704841666779783571",
+        "source_fact:v1:5252049099b4e7a4427c8ea23c6d89860f9670396762f05e47a507613c196179",
+        "source_fact:v1:64bd8e287072f4f5f35b31d7719458b27cfa40657341ca4bb18792535097bed1",
+        "source_fact:v1:80ac12d28832773a6a9acb3f929fd6ad19ec492b9d1292f471e96a329af942a7"
+      ],
+      "source_published_kst": "2026-10-07T08:44+09:00",
+      "title": "LS에코에너지, 베트남서 AIDC용 버스덕트 생산능력 2배 확대"
     },
     "original:b0de35a5fb74989ad1ee8aaa": {
       "first_seen_kst": "2026-09-18T16:58:33+09:00",
@@ -77750,6 +78204,33 @@
       "source_published_kst": "2026-10-05T09:47+09:00",
       "title": "운문댐 가뭄 장기화…대구시"
     },
+    "original:cbd7b142d44dd1fbe370e7cc": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610077179b",
+      "source": "한국경제",
+      "source_body_digest": "846991d7d43f8ed67f275cdd63305570df6cc83c8a0dbf24e440bf5912100f12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d42d902a5e19f58d95d2a4378d53c080311bc0137dd02f694580741341a05799",
+      "source_fact_keys": [
+        "source_fact:v1:017e24ab16d9198f13bb758c3a7d002fe05a6e91507ea04abf3dcc36a4ac856f",
+        "source_fact:v1:0d52fbb44bc845f51f725414c6a66522d33c6beff577ac07b38521c6bf446d59",
+        "source_fact:v1:6cb3bd8c1ff233c057dba77b9fbffff0b29a12ded097d6fd7ea4f5455a05d3ef",
+        "source_fact:v1:8dd404cf18ec48bd777d167877f3be7a15be51ed25528f72f4a0aa4c7ed2ee14",
+        "source_fact:v1:95901ee65b80f7534ce42e49b24ff5f3c1fe8190ee98ca0b14edfc6ad3c4de28",
+        "source_fact:v1:a1f48f657069ccaa4953debd75443981481d0686935db39ce945d06d3ab78f50",
+        "source_fact:v1:ae35066b0843af2f59abe7fc8dec476d0425a46d70b7b271c8f04d5bb039fc03",
+        "source_fact:v1:c804908a8ffe81d38520637c98a9b5ee6d4cbbb731f8cf9ce9125a3caedee8dc",
+        "source_fact:v1:cd7b85a243041bff12a8c9e13a2df7eb8da9ca60c61234815157adcf87517d64",
+        "source_fact:v1:d01bdc6abf147062cf08e77f16d81dc54002ce80d69b81aa079eb15fd92f0b9c",
+        "source_fact:v1:e355ded6781ad789919da1fc504fd9f77dd95aa56daa68cf2355e01b0e716029"
+      ],
+      "source_published_kst": "2026-10-07T08:53+09:00",
+      "title": "“100조 넘긴다” 삼성전자 신기록 전망"
+    },
     "original:cbe681124174be61eccc315b": {
       "first_seen_kst": "2026-09-30T16:46:52+09:00",
       "lanes": {
@@ -79539,6 +80020,23 @@
       "link": "https://www.yna.co.kr/view/AKR20260923089300054",
       "source": "연합뉴스",
       "title": "SK는 '넓은 부지'·삼성은 '속도전'…호남 반도체 투자의지 | 연합뉴스"
+    },
+    "original:d8c2b18db1e0f1d2ae16249f": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170593",
+      "source": "매일경제",
+      "source_body_digest": "8b1db8bdd5628f2878ec106fcb379614e770b489a66e1943720415a246b44c34",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9aae4f4ccce08020e818296e404e0cb58c9e1a5408f0a4509e1ea0a23b055b10",
+      "source_fact_keys": [
+        "source_fact:v1:cc8690521e4398db630a890b30dd04cc8399353e9197da4c81e019736a76bccd"
+      ],
+      "source_published_kst": "2026-10-07T08:41+09:00",
+      "title": "로켓 파마슈티컬스, 1억5000만 달러 신용한도..현금 2028년 3분기까지"
     },
     "original:d8c91e8079c28c48fbd050f4": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
@@ -86428,6 +86926,33 @@
       "source_published_kst": "2026-10-06T04:36+09:00",
       "title": "美10년물 국채금리 장중 5.34% 돌파…24년 만에 최고"
     },
+    "source_fact:097d7eefc12bc1820d25cff1": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610077179b",
+      "source": "한국경제",
+      "source_body_digest": "846991d7d43f8ed67f275cdd63305570df6cc83c8a0dbf24e440bf5912100f12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d42d902a5e19f58d95d2a4378d53c080311bc0137dd02f694580741341a05799",
+      "source_fact_keys": [
+        "source_fact:v1:017e24ab16d9198f13bb758c3a7d002fe05a6e91507ea04abf3dcc36a4ac856f",
+        "source_fact:v1:0d52fbb44bc845f51f725414c6a66522d33c6beff577ac07b38521c6bf446d59",
+        "source_fact:v1:6cb3bd8c1ff233c057dba77b9fbffff0b29a12ded097d6fd7ea4f5455a05d3ef",
+        "source_fact:v1:8dd404cf18ec48bd777d167877f3be7a15be51ed25528f72f4a0aa4c7ed2ee14",
+        "source_fact:v1:95901ee65b80f7534ce42e49b24ff5f3c1fe8190ee98ca0b14edfc6ad3c4de28",
+        "source_fact:v1:a1f48f657069ccaa4953debd75443981481d0686935db39ce945d06d3ab78f50",
+        "source_fact:v1:ae35066b0843af2f59abe7fc8dec476d0425a46d70b7b271c8f04d5bb039fc03",
+        "source_fact:v1:c804908a8ffe81d38520637c98a9b5ee6d4cbbb731f8cf9ce9125a3caedee8dc",
+        "source_fact:v1:cd7b85a243041bff12a8c9e13a2df7eb8da9ca60c61234815157adcf87517d64",
+        "source_fact:v1:d01bdc6abf147062cf08e77f16d81dc54002ce80d69b81aa079eb15fd92f0b9c",
+        "source_fact:v1:e355ded6781ad789919da1fc504fd9f77dd95aa56daa68cf2355e01b0e716029"
+      ],
+      "source_published_kst": "2026-10-07T08:53+09:00",
+      "title": "“100조 넘긴다” 삼성전자 신기록 전망"
+    },
     "source_fact:0983319f642e2de024f6562d": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
       "lanes": {
@@ -91668,6 +92193,28 @@
       ],
       "source_published_kst": "2026-10-05T14:28+09:00",
       "title": "폭스바겐 ‘판매왕’에서 모빌리티 창업가로…차봇, 해외로 영토 확장"
+    },
+    "source_fact:1f3ef5fccadbf8af6132ef9a": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169962",
+      "source": "매일경제",
+      "source_body_digest": "138890f73f7c3e94457e146aa3bdee2a6a283748bcd87c3b45a6ae7358cee63e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b097c9f533e90a2dd662b9271c46e5ae706cf2e74c39348158e7db1ec05aadc",
+      "source_fact_keys": [
+        "source_fact:v1:38ddfb3f76c83fd4c31178d2b71e56bf89526ab802a9cb8fe2714f7ec0b20944",
+        "source_fact:v1:5bc4741d9366d8c0ff3afc0d9a0b464c634dcf2777559f53b9f342001cff2a7c",
+        "source_fact:v1:669b85b777034564320795647335fa97e494158f256286e94474b62cad3dbcd8",
+        "source_fact:v1:8cc3811666d11e237fdf700b57a43a51edf13d2e6868b4dc11e3514bf23cc5af",
+        "source_fact:v1:a3b5d009f581e5a4e53fe75653a84a00fd487342c35b0d34b68e6ae0fe217ad8",
+        "source_fact:v1:ab616894c923d75d695718859c01d93189d3bf4b7d666d1ed4d49dc11879bba4"
+      ],
+      "source_published_kst": "2026-10-07T08:49+09:00",
+      "title": "블랙 힐스, 구글 데이터센터 전력 계약..18억 달러 투자"
     },
     "source_fact:1f532be4ca4bda8b21363d0a": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -97660,6 +98207,33 @@
       "source_published_kst": "2026-10-06T11:42+09:00",
       "title": "대전급식비 전국 꼴찌수준…허태정 시장 \"15%까지 인상\""
     },
+    "source_fact:3491f64f1eebf93b204cc340": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610077179b",
+      "source": "한국경제",
+      "source_body_digest": "846991d7d43f8ed67f275cdd63305570df6cc83c8a0dbf24e440bf5912100f12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d42d902a5e19f58d95d2a4378d53c080311bc0137dd02f694580741341a05799",
+      "source_fact_keys": [
+        "source_fact:v1:017e24ab16d9198f13bb758c3a7d002fe05a6e91507ea04abf3dcc36a4ac856f",
+        "source_fact:v1:0d52fbb44bc845f51f725414c6a66522d33c6beff577ac07b38521c6bf446d59",
+        "source_fact:v1:6cb3bd8c1ff233c057dba77b9fbffff0b29a12ded097d6fd7ea4f5455a05d3ef",
+        "source_fact:v1:8dd404cf18ec48bd777d167877f3be7a15be51ed25528f72f4a0aa4c7ed2ee14",
+        "source_fact:v1:95901ee65b80f7534ce42e49b24ff5f3c1fe8190ee98ca0b14edfc6ad3c4de28",
+        "source_fact:v1:a1f48f657069ccaa4953debd75443981481d0686935db39ce945d06d3ab78f50",
+        "source_fact:v1:ae35066b0843af2f59abe7fc8dec476d0425a46d70b7b271c8f04d5bb039fc03",
+        "source_fact:v1:c804908a8ffe81d38520637c98a9b5ee6d4cbbb731f8cf9ce9125a3caedee8dc",
+        "source_fact:v1:cd7b85a243041bff12a8c9e13a2df7eb8da9ca60c61234815157adcf87517d64",
+        "source_fact:v1:d01bdc6abf147062cf08e77f16d81dc54002ce80d69b81aa079eb15fd92f0b9c",
+        "source_fact:v1:e355ded6781ad789919da1fc504fd9f77dd95aa56daa68cf2355e01b0e716029"
+      ],
+      "source_published_kst": "2026-10-07T08:53+09:00",
+      "title": "“100조 넘긴다” 삼성전자 신기록 전망"
+    },
     "source_fact:34936bfd947d64ce86a210f3": {
       "first_seen_kst": "2026-10-06T16:30:27+09:00",
       "lanes": {
@@ -100133,6 +100707,33 @@
       "source_published_kst": "2026-10-05T22:27+09:00",
       "title": "듀오스 테크놀러지스 그룹, GPU 자회사 매각..4290만 달러 수취·부채 해소"
     },
+    "source_fact:3eb5d96f776d1804ad83ab4a": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610077179b",
+      "source": "한국경제",
+      "source_body_digest": "846991d7d43f8ed67f275cdd63305570df6cc83c8a0dbf24e440bf5912100f12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d42d902a5e19f58d95d2a4378d53c080311bc0137dd02f694580741341a05799",
+      "source_fact_keys": [
+        "source_fact:v1:017e24ab16d9198f13bb758c3a7d002fe05a6e91507ea04abf3dcc36a4ac856f",
+        "source_fact:v1:0d52fbb44bc845f51f725414c6a66522d33c6beff577ac07b38521c6bf446d59",
+        "source_fact:v1:6cb3bd8c1ff233c057dba77b9fbffff0b29a12ded097d6fd7ea4f5455a05d3ef",
+        "source_fact:v1:8dd404cf18ec48bd777d167877f3be7a15be51ed25528f72f4a0aa4c7ed2ee14",
+        "source_fact:v1:95901ee65b80f7534ce42e49b24ff5f3c1fe8190ee98ca0b14edfc6ad3c4de28",
+        "source_fact:v1:a1f48f657069ccaa4953debd75443981481d0686935db39ce945d06d3ab78f50",
+        "source_fact:v1:ae35066b0843af2f59abe7fc8dec476d0425a46d70b7b271c8f04d5bb039fc03",
+        "source_fact:v1:c804908a8ffe81d38520637c98a9b5ee6d4cbbb731f8cf9ce9125a3caedee8dc",
+        "source_fact:v1:cd7b85a243041bff12a8c9e13a2df7eb8da9ca60c61234815157adcf87517d64",
+        "source_fact:v1:d01bdc6abf147062cf08e77f16d81dc54002ce80d69b81aa079eb15fd92f0b9c",
+        "source_fact:v1:e355ded6781ad789919da1fc504fd9f77dd95aa56daa68cf2355e01b0e716029"
+      ],
+      "source_published_kst": "2026-10-07T08:53+09:00",
+      "title": "“100조 넘긴다” 삼성전자 신기록 전망"
+    },
     "source_fact:3eb6017675c11d270d44580f": {
       "first_seen_kst": "2026-10-05T20:04:01+09:00",
       "lanes": {
@@ -100488,6 +101089,28 @@
       ],
       "source_published_kst": "2026-10-06T10:21+09:00",
       "title": "원프레딕트, 7368억 피지컬AI 사업 참여…제조 AI 총괄"
+    },
+    "source_fact:4058a3ddcc182b9148cb6b04": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169962",
+      "source": "매일경제",
+      "source_body_digest": "138890f73f7c3e94457e146aa3bdee2a6a283748bcd87c3b45a6ae7358cee63e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b097c9f533e90a2dd662b9271c46e5ae706cf2e74c39348158e7db1ec05aadc",
+      "source_fact_keys": [
+        "source_fact:v1:38ddfb3f76c83fd4c31178d2b71e56bf89526ab802a9cb8fe2714f7ec0b20944",
+        "source_fact:v1:5bc4741d9366d8c0ff3afc0d9a0b464c634dcf2777559f53b9f342001cff2a7c",
+        "source_fact:v1:669b85b777034564320795647335fa97e494158f256286e94474b62cad3dbcd8",
+        "source_fact:v1:8cc3811666d11e237fdf700b57a43a51edf13d2e6868b4dc11e3514bf23cc5af",
+        "source_fact:v1:a3b5d009f581e5a4e53fe75653a84a00fd487342c35b0d34b68e6ae0fe217ad8",
+        "source_fact:v1:ab616894c923d75d695718859c01d93189d3bf4b7d666d1ed4d49dc11879bba4"
+      ],
+      "source_published_kst": "2026-10-07T08:49+09:00",
+      "title": "블랙 힐스, 구글 데이터센터 전력 계약..18억 달러 투자"
     },
     "source_fact:40684002525688d13fc41c0b": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
@@ -102593,6 +103216,27 @@
       "source_published_kst": "2026-10-07T07:55+09:00",
       "title": "삼성전기, 3분기 ‘깜짝 실적’ 전망…목표가 160만→260만원"
     },
+    "source_fact:47f200e54c75aa4c4057eedb": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633141",
+      "source": "이투데이",
+      "source_body_digest": "62b0a7a64317cfc00725cf4ff035d223eca42ef20c9ecd93323f129c2993969e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bd81c0b40b861dfe4de155ff245fc892e14db0b85fc573577729fb2ff77e434",
+      "source_fact_keys": [
+        "source_fact:v1:054ab477dd8682b28dda5351ae4ed919aeab2781879d8a5f80dea7d2cde41f5f",
+        "source_fact:v1:50109569d1ee094f7297189ffd895f13bda38a57ec51bb704841666779783571",
+        "source_fact:v1:5252049099b4e7a4427c8ea23c6d89860f9670396762f05e47a507613c196179",
+        "source_fact:v1:64bd8e287072f4f5f35b31d7719458b27cfa40657341ca4bb18792535097bed1",
+        "source_fact:v1:80ac12d28832773a6a9acb3f929fd6ad19ec492b9d1292f471e96a329af942a7"
+      ],
+      "source_published_kst": "2026-10-07T08:44+09:00",
+      "title": "LS에코에너지, 베트남서 AIDC용 버스덕트 생산능력 2배 확대"
+    },
     "source_fact:4807f47a309e1bc32d9b7a60": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
       "lanes": {
@@ -102932,6 +103576,33 @@
       ],
       "source_published_kst": "2026-10-06T05:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
+    },
+    "source_fact:491f0441c9dd0667bb754efc": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633143",
+      "source": "이투데이",
+      "source_body_digest": "1335edfc349eec3c61785b54a0fd48c63a327745fefec59cb880a8c308b88dd9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:850a7f92a846916d9113af801e44f0a49f9417b1cb2b8a309d9e774c0a3836cc",
+      "source_fact_keys": [
+        "source_fact:v1:150d1a0546e2cea0a4569246ffd018d82ebfebc60a0a686d5caba79bd7f8104d",
+        "source_fact:v1:24fcdb9c286921027c4b4fe4bbd76043275d4c693dca90949365029c23bee2ec",
+        "source_fact:v1:3a9f4a93f1ae2857d93f7f9c48adad96647b3ec031ce7ab9bccf79dc4ddbcc9f",
+        "source_fact:v1:5607474ca42bac28368225027e0b48b4aac32e23bfad7d97b9c6a37548c69732",
+        "source_fact:v1:75a28a529694518e888420affa3061cc8ec4ea7cb4693b4b08f3cf6db2d3446a",
+        "source_fact:v1:a70627431ffc37d7ca95c335b19446cb1e87b7dfff3622ebc57de88c8f611a9f",
+        "source_fact:v1:a9d494aecfcc74a2c9e5a28f8505533b63c75a9da4af3e8b6161aee369ffecfc",
+        "source_fact:v1:bceac98593ee6044bdadf7f1ff6c43eb6c1d66380a4b77499ef33f50af785e94",
+        "source_fact:v1:c03feac83bcbcf3fb5baa173c2e12a57b7d535f9ca95318af1bde9846ed7718b",
+        "source_fact:v1:d80f048d8a2ac1ecf11bce7765d3caeb784ef8c5e5e6706958b23a8500285e6d",
+        "source_fact:v1:f54acd46bfdfed3cdc2f21e23a109237821e856276afbbbfd1f24acb9a2ac33b"
+      ],
+      "source_published_kst": "2026-10-07T08:46+09:00",
+      "title": "스카이월드와이드, AI 인프라 사업 확대…조선·방산·제조로 고객군 넓힌다"
     },
     "source_fact:493412ce5223c5195164e1c8": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
@@ -103767,6 +104438,24 @@
       "source_published_kst": "2026-10-05T22:19+09:00",
       "title": "세노버스 에너지, 아사바스카오일 57억 캐나다달러 인수 합의"
     },
+    "source_fact:4c398aa42bdb9101aa79ca63": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.mk.co.kr/news/politics/12169980",
+      "source": "매일경제",
+      "source_body_digest": "c5b8c3b0fb188ff953116ef0947642627b22cb1018670613326dc992735f3565",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d6dc9febed407d06c30d221cdb86dd62c30257e75872ddba48053abc18978395",
+      "source_fact_keys": [
+        "source_fact:v1:0952c89aa048a97fb02489a401f3cde5cfad44d2cb6b7e9f3cd102921bcdd2ef",
+        "source_fact:v1:845a7f662ff0168329333c5cff1fcbe30dfdc2d5030487478809f8613b1f4adf"
+      ],
+      "source_published_kst": "2026-10-07T08:51+09:00",
+      "title": "트럼프 “한국에 관세 인하 ‘대가’ 요구했다”…대미 투자 거듭 압박"
+    },
     "source_fact:4c928bc7ab9a9b7922a02bdc": {
       "first_seen_kst": "2026-10-07T02:24:39+09:00",
       "lanes": {
@@ -104033,6 +104722,33 @@
       ],
       "source_published_kst": "2026-10-05T23:10+09:00",
       "title": "LG전자, 북미서 5GW 대형 AIDC 칠러 장기 공급계약"
+    },
+    "source_fact:4dafd0cc42316b7e14379712": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633143",
+      "source": "이투데이",
+      "source_body_digest": "1335edfc349eec3c61785b54a0fd48c63a327745fefec59cb880a8c308b88dd9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:850a7f92a846916d9113af801e44f0a49f9417b1cb2b8a309d9e774c0a3836cc",
+      "source_fact_keys": [
+        "source_fact:v1:150d1a0546e2cea0a4569246ffd018d82ebfebc60a0a686d5caba79bd7f8104d",
+        "source_fact:v1:24fcdb9c286921027c4b4fe4bbd76043275d4c693dca90949365029c23bee2ec",
+        "source_fact:v1:3a9f4a93f1ae2857d93f7f9c48adad96647b3ec031ce7ab9bccf79dc4ddbcc9f",
+        "source_fact:v1:5607474ca42bac28368225027e0b48b4aac32e23bfad7d97b9c6a37548c69732",
+        "source_fact:v1:75a28a529694518e888420affa3061cc8ec4ea7cb4693b4b08f3cf6db2d3446a",
+        "source_fact:v1:a70627431ffc37d7ca95c335b19446cb1e87b7dfff3622ebc57de88c8f611a9f",
+        "source_fact:v1:a9d494aecfcc74a2c9e5a28f8505533b63c75a9da4af3e8b6161aee369ffecfc",
+        "source_fact:v1:bceac98593ee6044bdadf7f1ff6c43eb6c1d66380a4b77499ef33f50af785e94",
+        "source_fact:v1:c03feac83bcbcf3fb5baa173c2e12a57b7d535f9ca95318af1bde9846ed7718b",
+        "source_fact:v1:d80f048d8a2ac1ecf11bce7765d3caeb784ef8c5e5e6706958b23a8500285e6d",
+        "source_fact:v1:f54acd46bfdfed3cdc2f21e23a109237821e856276afbbbfd1f24acb9a2ac33b"
+      ],
+      "source_published_kst": "2026-10-07T08:46+09:00",
+      "title": "스카이월드와이드, AI 인프라 사업 확대…조선·방산·제조로 고객군 넓힌다"
     },
     "source_fact:4db64c98713100c386a36a7b": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
@@ -105124,20 +105840,23 @@
     "source_fact:5156da78667ef5682280b6b7": {
       "first_seen_kst": "2026-10-07T09:22:01+09:00",
       "lanes": {
-        "live": "2026-10-07T09:22:01+09:00"
+        "live": "2026-10-07T09:44:16+09:00"
       },
-      "last_seen_kst": "2026-10-07T09:22:01+09:00",
-      "link": "https://biz.heraldcorp.com/article/10895014",
-      "source": "헤럴드경제",
-      "source_body_digest": "7341c35f1a9c13ac3bf393eb4516872deeb5e2834d92a72ae5454da53b532d6c",
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633141",
+      "source": "이투데이",
+      "source_body_digest": "62b0a7a64317cfc00725cf4ff035d223eca42ef20c9ecd93323f129c2993969e",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:b8da69ec3046293c39a05c10952e5becf80b30b70cd4041a9bff992631fcfd52",
+      "source_fact_identity": "source_facts:v1:9bd81c0b40b861dfe4de155ff245fc892e14db0b85fc573577729fb2ff77e434",
       "source_fact_keys": [
-        "source_fact:v1:80ac12d28832773a6a9acb3f929fd6ad19ec492b9d1292f471e96a329af942a7",
-        "source_fact:v1:f24f86193dcae4250b87e0cc8171c2d03bfb877a9f213367594da92bf2072315"
+        "source_fact:v1:054ab477dd8682b28dda5351ae4ed919aeab2781879d8a5f80dea7d2cde41f5f",
+        "source_fact:v1:50109569d1ee094f7297189ffd895f13bda38a57ec51bb704841666779783571",
+        "source_fact:v1:5252049099b4e7a4427c8ea23c6d89860f9670396762f05e47a507613c196179",
+        "source_fact:v1:64bd8e287072f4f5f35b31d7719458b27cfa40657341ca4bb18792535097bed1",
+        "source_fact:v1:80ac12d28832773a6a9acb3f929fd6ad19ec492b9d1292f471e96a329af942a7"
       ],
-      "source_published_kst": "2026-10-07T08:53+09:00",
-      "title": "LS에코에너지, AI 데이터센터용 버스덕트 설비 투자…생산능력 2배 늘린다"
+      "source_published_kst": "2026-10-07T08:44+09:00",
+      "title": "LS에코에너지, 베트남서 AIDC용 버스덕트 생산능력 2배 확대"
     },
     "source_fact:5182efcbbe7c27dd3c2a3ac3": {
       "first_seen_kst": "2026-10-07T05:13:11+09:00",
@@ -108154,6 +108873,33 @@
       "source_published_kst": "2026-10-06T15:28+09:00",
       "title": "한 주에 10% 뛴 광통신 ETF…\"AI 데이터센터 전력난이 복병\""
     },
+    "source_fact:5bdf42a7b12d48b24d6826a0": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633143",
+      "source": "이투데이",
+      "source_body_digest": "1335edfc349eec3c61785b54a0fd48c63a327745fefec59cb880a8c308b88dd9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:850a7f92a846916d9113af801e44f0a49f9417b1cb2b8a309d9e774c0a3836cc",
+      "source_fact_keys": [
+        "source_fact:v1:150d1a0546e2cea0a4569246ffd018d82ebfebc60a0a686d5caba79bd7f8104d",
+        "source_fact:v1:24fcdb9c286921027c4b4fe4bbd76043275d4c693dca90949365029c23bee2ec",
+        "source_fact:v1:3a9f4a93f1ae2857d93f7f9c48adad96647b3ec031ce7ab9bccf79dc4ddbcc9f",
+        "source_fact:v1:5607474ca42bac28368225027e0b48b4aac32e23bfad7d97b9c6a37548c69732",
+        "source_fact:v1:75a28a529694518e888420affa3061cc8ec4ea7cb4693b4b08f3cf6db2d3446a",
+        "source_fact:v1:a70627431ffc37d7ca95c335b19446cb1e87b7dfff3622ebc57de88c8f611a9f",
+        "source_fact:v1:a9d494aecfcc74a2c9e5a28f8505533b63c75a9da4af3e8b6161aee369ffecfc",
+        "source_fact:v1:bceac98593ee6044bdadf7f1ff6c43eb6c1d66380a4b77499ef33f50af785e94",
+        "source_fact:v1:c03feac83bcbcf3fb5baa173c2e12a57b7d535f9ca95318af1bde9846ed7718b",
+        "source_fact:v1:d80f048d8a2ac1ecf11bce7765d3caeb784ef8c5e5e6706958b23a8500285e6d",
+        "source_fact:v1:f54acd46bfdfed3cdc2f21e23a109237821e856276afbbbfd1f24acb9a2ac33b"
+      ],
+      "source_published_kst": "2026-10-07T08:46+09:00",
+      "title": "스카이월드와이드, AI 인프라 사업 확대…조선·방산·제조로 고객군 넓힌다"
+    },
     "source_fact:5c1f6a7b890642b1eba7d2ae": {
       "first_seen_kst": "2026-10-07T05:13:11+09:00",
       "lanes": {
@@ -109914,6 +110660,33 @@
       ],
       "source_published_kst": "2026-10-05T20:58+09:00",
       "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
+    },
+    "source_fact:629ce35998ce15366f1424b8": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633143",
+      "source": "이투데이",
+      "source_body_digest": "1335edfc349eec3c61785b54a0fd48c63a327745fefec59cb880a8c308b88dd9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:850a7f92a846916d9113af801e44f0a49f9417b1cb2b8a309d9e774c0a3836cc",
+      "source_fact_keys": [
+        "source_fact:v1:150d1a0546e2cea0a4569246ffd018d82ebfebc60a0a686d5caba79bd7f8104d",
+        "source_fact:v1:24fcdb9c286921027c4b4fe4bbd76043275d4c693dca90949365029c23bee2ec",
+        "source_fact:v1:3a9f4a93f1ae2857d93f7f9c48adad96647b3ec031ce7ab9bccf79dc4ddbcc9f",
+        "source_fact:v1:5607474ca42bac28368225027e0b48b4aac32e23bfad7d97b9c6a37548c69732",
+        "source_fact:v1:75a28a529694518e888420affa3061cc8ec4ea7cb4693b4b08f3cf6db2d3446a",
+        "source_fact:v1:a70627431ffc37d7ca95c335b19446cb1e87b7dfff3622ebc57de88c8f611a9f",
+        "source_fact:v1:a9d494aecfcc74a2c9e5a28f8505533b63c75a9da4af3e8b6161aee369ffecfc",
+        "source_fact:v1:bceac98593ee6044bdadf7f1ff6c43eb6c1d66380a4b77499ef33f50af785e94",
+        "source_fact:v1:c03feac83bcbcf3fb5baa173c2e12a57b7d535f9ca95318af1bde9846ed7718b",
+        "source_fact:v1:d80f048d8a2ac1ecf11bce7765d3caeb784ef8c5e5e6706958b23a8500285e6d",
+        "source_fact:v1:f54acd46bfdfed3cdc2f21e23a109237821e856276afbbbfd1f24acb9a2ac33b"
+      ],
+      "source_published_kst": "2026-10-07T08:46+09:00",
+      "title": "스카이월드와이드, AI 인프라 사업 확대…조선·방산·제조로 고객군 넓힌다"
     },
     "source_fact:62ba1ae6cac4bde9703d4eff": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
@@ -112103,6 +112876,28 @@
       "source_published_kst": "2026-10-06T12:08+09:00",
       "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
     },
+    "source_fact:6aeb8b49e7efc97a2df5feaf": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169962",
+      "source": "매일경제",
+      "source_body_digest": "138890f73f7c3e94457e146aa3bdee2a6a283748bcd87c3b45a6ae7358cee63e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b097c9f533e90a2dd662b9271c46e5ae706cf2e74c39348158e7db1ec05aadc",
+      "source_fact_keys": [
+        "source_fact:v1:38ddfb3f76c83fd4c31178d2b71e56bf89526ab802a9cb8fe2714f7ec0b20944",
+        "source_fact:v1:5bc4741d9366d8c0ff3afc0d9a0b464c634dcf2777559f53b9f342001cff2a7c",
+        "source_fact:v1:669b85b777034564320795647335fa97e494158f256286e94474b62cad3dbcd8",
+        "source_fact:v1:8cc3811666d11e237fdf700b57a43a51edf13d2e6868b4dc11e3514bf23cc5af",
+        "source_fact:v1:a3b5d009f581e5a4e53fe75653a84a00fd487342c35b0d34b68e6ae0fe217ad8",
+        "source_fact:v1:ab616894c923d75d695718859c01d93189d3bf4b7d666d1ed4d49dc11879bba4"
+      ],
+      "source_published_kst": "2026-10-07T08:49+09:00",
+      "title": "블랙 힐스, 구글 데이터센터 전력 계약..18억 달러 투자"
+    },
     "source_fact:6af975749066721a43d2cef2": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
       "lanes": {
@@ -112269,6 +113064,33 @@
       ],
       "source_published_kst": "2026-10-06T07:46+09:00",
       "title": "고금리에도 꺾이지 않는 AI 투자…연준 긴축 고민"
+    },
+    "source_fact:6bdf2d755900d0273be548d4": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610077179b",
+      "source": "한국경제",
+      "source_body_digest": "846991d7d43f8ed67f275cdd63305570df6cc83c8a0dbf24e440bf5912100f12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d42d902a5e19f58d95d2a4378d53c080311bc0137dd02f694580741341a05799",
+      "source_fact_keys": [
+        "source_fact:v1:017e24ab16d9198f13bb758c3a7d002fe05a6e91507ea04abf3dcc36a4ac856f",
+        "source_fact:v1:0d52fbb44bc845f51f725414c6a66522d33c6beff577ac07b38521c6bf446d59",
+        "source_fact:v1:6cb3bd8c1ff233c057dba77b9fbffff0b29a12ded097d6fd7ea4f5455a05d3ef",
+        "source_fact:v1:8dd404cf18ec48bd777d167877f3be7a15be51ed25528f72f4a0aa4c7ed2ee14",
+        "source_fact:v1:95901ee65b80f7534ce42e49b24ff5f3c1fe8190ee98ca0b14edfc6ad3c4de28",
+        "source_fact:v1:a1f48f657069ccaa4953debd75443981481d0686935db39ce945d06d3ab78f50",
+        "source_fact:v1:ae35066b0843af2f59abe7fc8dec476d0425a46d70b7b271c8f04d5bb039fc03",
+        "source_fact:v1:c804908a8ffe81d38520637c98a9b5ee6d4cbbb731f8cf9ce9125a3caedee8dc",
+        "source_fact:v1:cd7b85a243041bff12a8c9e13a2df7eb8da9ca60c61234815157adcf87517d64",
+        "source_fact:v1:d01bdc6abf147062cf08e77f16d81dc54002ce80d69b81aa079eb15fd92f0b9c",
+        "source_fact:v1:e355ded6781ad789919da1fc504fd9f77dd95aa56daa68cf2355e01b0e716029"
+      ],
+      "source_published_kst": "2026-10-07T08:53+09:00",
+      "title": "“100조 넘긴다” 삼성전자 신기록 전망"
     },
     "source_fact:6be07b4c46b9f8eb9b6e2692": {
       "first_seen_kst": "2026-10-05T22:49:24+09:00",
@@ -117418,6 +118240,33 @@
       "source_published_kst": "2026-10-06T15:07+09:00",
       "title": "[2026 국감] 호남 반도체 놓고 여야 격돌…김성환 기후부 장관 “전력·용수 공급 가능”"
     },
+    "source_fact:7e217679efc0de8a5886c80b": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610077179b",
+      "source": "한국경제",
+      "source_body_digest": "846991d7d43f8ed67f275cdd63305570df6cc83c8a0dbf24e440bf5912100f12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d42d902a5e19f58d95d2a4378d53c080311bc0137dd02f694580741341a05799",
+      "source_fact_keys": [
+        "source_fact:v1:017e24ab16d9198f13bb758c3a7d002fe05a6e91507ea04abf3dcc36a4ac856f",
+        "source_fact:v1:0d52fbb44bc845f51f725414c6a66522d33c6beff577ac07b38521c6bf446d59",
+        "source_fact:v1:6cb3bd8c1ff233c057dba77b9fbffff0b29a12ded097d6fd7ea4f5455a05d3ef",
+        "source_fact:v1:8dd404cf18ec48bd777d167877f3be7a15be51ed25528f72f4a0aa4c7ed2ee14",
+        "source_fact:v1:95901ee65b80f7534ce42e49b24ff5f3c1fe8190ee98ca0b14edfc6ad3c4de28",
+        "source_fact:v1:a1f48f657069ccaa4953debd75443981481d0686935db39ce945d06d3ab78f50",
+        "source_fact:v1:ae35066b0843af2f59abe7fc8dec476d0425a46d70b7b271c8f04d5bb039fc03",
+        "source_fact:v1:c804908a8ffe81d38520637c98a9b5ee6d4cbbb731f8cf9ce9125a3caedee8dc",
+        "source_fact:v1:cd7b85a243041bff12a8c9e13a2df7eb8da9ca60c61234815157adcf87517d64",
+        "source_fact:v1:d01bdc6abf147062cf08e77f16d81dc54002ce80d69b81aa079eb15fd92f0b9c",
+        "source_fact:v1:e355ded6781ad789919da1fc504fd9f77dd95aa56daa68cf2355e01b0e716029"
+      ],
+      "source_published_kst": "2026-10-07T08:53+09:00",
+      "title": "“100조 넘긴다” 삼성전자 신기록 전망"
+    },
     "source_fact:7e3b3dbc9540b122a673069d": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
       "lanes": {
@@ -117936,6 +118785,33 @@
       ],
       "source_published_kst": "2026-10-06T08:50+09:00",
       "title": "외식 프랜차이즈, 가맹점 매출 줄 때 본사 매출은 늘었다"
+    },
+    "source_fact:800fbd0b1fcee9cd61efd92f": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633143",
+      "source": "이투데이",
+      "source_body_digest": "1335edfc349eec3c61785b54a0fd48c63a327745fefec59cb880a8c308b88dd9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:850a7f92a846916d9113af801e44f0a49f9417b1cb2b8a309d9e774c0a3836cc",
+      "source_fact_keys": [
+        "source_fact:v1:150d1a0546e2cea0a4569246ffd018d82ebfebc60a0a686d5caba79bd7f8104d",
+        "source_fact:v1:24fcdb9c286921027c4b4fe4bbd76043275d4c693dca90949365029c23bee2ec",
+        "source_fact:v1:3a9f4a93f1ae2857d93f7f9c48adad96647b3ec031ce7ab9bccf79dc4ddbcc9f",
+        "source_fact:v1:5607474ca42bac28368225027e0b48b4aac32e23bfad7d97b9c6a37548c69732",
+        "source_fact:v1:75a28a529694518e888420affa3061cc8ec4ea7cb4693b4b08f3cf6db2d3446a",
+        "source_fact:v1:a70627431ffc37d7ca95c335b19446cb1e87b7dfff3622ebc57de88c8f611a9f",
+        "source_fact:v1:a9d494aecfcc74a2c9e5a28f8505533b63c75a9da4af3e8b6161aee369ffecfc",
+        "source_fact:v1:bceac98593ee6044bdadf7f1ff6c43eb6c1d66380a4b77499ef33f50af785e94",
+        "source_fact:v1:c03feac83bcbcf3fb5baa173c2e12a57b7d535f9ca95318af1bde9846ed7718b",
+        "source_fact:v1:d80f048d8a2ac1ecf11bce7765d3caeb784ef8c5e5e6706958b23a8500285e6d",
+        "source_fact:v1:f54acd46bfdfed3cdc2f21e23a109237821e856276afbbbfd1f24acb9a2ac33b"
+      ],
+      "source_published_kst": "2026-10-07T08:46+09:00",
+      "title": "스카이월드와이드, AI 인프라 사업 확대…조선·방산·제조로 고객군 넓힌다"
     },
     "source_fact:8046db2dd63aa64cd343bf9b": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
@@ -121393,6 +122269,33 @@
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
     },
+    "source_fact:8dab6744f63d116dc7c11e3f": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610077179b",
+      "source": "한국경제",
+      "source_body_digest": "846991d7d43f8ed67f275cdd63305570df6cc83c8a0dbf24e440bf5912100f12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d42d902a5e19f58d95d2a4378d53c080311bc0137dd02f694580741341a05799",
+      "source_fact_keys": [
+        "source_fact:v1:017e24ab16d9198f13bb758c3a7d002fe05a6e91507ea04abf3dcc36a4ac856f",
+        "source_fact:v1:0d52fbb44bc845f51f725414c6a66522d33c6beff577ac07b38521c6bf446d59",
+        "source_fact:v1:6cb3bd8c1ff233c057dba77b9fbffff0b29a12ded097d6fd7ea4f5455a05d3ef",
+        "source_fact:v1:8dd404cf18ec48bd777d167877f3be7a15be51ed25528f72f4a0aa4c7ed2ee14",
+        "source_fact:v1:95901ee65b80f7534ce42e49b24ff5f3c1fe8190ee98ca0b14edfc6ad3c4de28",
+        "source_fact:v1:a1f48f657069ccaa4953debd75443981481d0686935db39ce945d06d3ab78f50",
+        "source_fact:v1:ae35066b0843af2f59abe7fc8dec476d0425a46d70b7b271c8f04d5bb039fc03",
+        "source_fact:v1:c804908a8ffe81d38520637c98a9b5ee6d4cbbb731f8cf9ce9125a3caedee8dc",
+        "source_fact:v1:cd7b85a243041bff12a8c9e13a2df7eb8da9ca60c61234815157adcf87517d64",
+        "source_fact:v1:d01bdc6abf147062cf08e77f16d81dc54002ce80d69b81aa079eb15fd92f0b9c",
+        "source_fact:v1:e355ded6781ad789919da1fc504fd9f77dd95aa56daa68cf2355e01b0e716029"
+      ],
+      "source_published_kst": "2026-10-07T08:53+09:00",
+      "title": "“100조 넘긴다” 삼성전자 신기록 전망"
+    },
     "source_fact:8dc489b1b18f0d31e34abf55": {
       "first_seen_kst": "2026-10-06T23:29:45+09:00",
       "lanes": {
@@ -121966,6 +122869,23 @@
       ],
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "S&K폴리텍, 선진엔지니어링 합병 마무리"
+    },
+    "source_fact:8fcd4473ea201c6621566618": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170593",
+      "source": "매일경제",
+      "source_body_digest": "8b1db8bdd5628f2878ec106fcb379614e770b489a66e1943720415a246b44c34",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9aae4f4ccce08020e818296e404e0cb58c9e1a5408f0a4509e1ea0a23b055b10",
+      "source_fact_keys": [
+        "source_fact:v1:cc8690521e4398db630a890b30dd04cc8399353e9197da4c81e019736a76bccd"
+      ],
+      "source_published_kst": "2026-10-07T08:41+09:00",
+      "title": "로켓 파마슈티컬스, 1억5000만 달러 신용한도..현금 2028년 3분기까지"
     },
     "source_fact:8fd0477496dd73c83e4faa32": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
@@ -123159,6 +124079,28 @@
       "source_published_kst": "2026-10-05T21:46+09:00",
       "title": "재규어 헬스, 특별 주식배당..우선주 1주 보통주 5주 전환"
     },
+    "source_fact:947dbac373cb1c9723f265e0": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169962",
+      "source": "매일경제",
+      "source_body_digest": "138890f73f7c3e94457e146aa3bdee2a6a283748bcd87c3b45a6ae7358cee63e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b097c9f533e90a2dd662b9271c46e5ae706cf2e74c39348158e7db1ec05aadc",
+      "source_fact_keys": [
+        "source_fact:v1:38ddfb3f76c83fd4c31178d2b71e56bf89526ab802a9cb8fe2714f7ec0b20944",
+        "source_fact:v1:5bc4741d9366d8c0ff3afc0d9a0b464c634dcf2777559f53b9f342001cff2a7c",
+        "source_fact:v1:669b85b777034564320795647335fa97e494158f256286e94474b62cad3dbcd8",
+        "source_fact:v1:8cc3811666d11e237fdf700b57a43a51edf13d2e6868b4dc11e3514bf23cc5af",
+        "source_fact:v1:a3b5d009f581e5a4e53fe75653a84a00fd487342c35b0d34b68e6ae0fe217ad8",
+        "source_fact:v1:ab616894c923d75d695718859c01d93189d3bf4b7d666d1ed4d49dc11879bba4"
+      ],
+      "source_published_kst": "2026-10-07T08:49+09:00",
+      "title": "블랙 힐스, 구글 데이터센터 전력 계약..18억 달러 투자"
+    },
     "source_fact:94afd19b15c436125639a242": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
       "lanes": {
@@ -123762,6 +124704,33 @@
       ],
       "source_published_kst": "2026-10-06T13:44+09:00",
       "title": "완성차 불황에 '군용차'로 눈 돌린다…기아·포드·GM·르노 방산 공략"
+    },
+    "source_fact:96b057d83872f6e35b5eefa1": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633143",
+      "source": "이투데이",
+      "source_body_digest": "1335edfc349eec3c61785b54a0fd48c63a327745fefec59cb880a8c308b88dd9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:850a7f92a846916d9113af801e44f0a49f9417b1cb2b8a309d9e774c0a3836cc",
+      "source_fact_keys": [
+        "source_fact:v1:150d1a0546e2cea0a4569246ffd018d82ebfebc60a0a686d5caba79bd7f8104d",
+        "source_fact:v1:24fcdb9c286921027c4b4fe4bbd76043275d4c693dca90949365029c23bee2ec",
+        "source_fact:v1:3a9f4a93f1ae2857d93f7f9c48adad96647b3ec031ce7ab9bccf79dc4ddbcc9f",
+        "source_fact:v1:5607474ca42bac28368225027e0b48b4aac32e23bfad7d97b9c6a37548c69732",
+        "source_fact:v1:75a28a529694518e888420affa3061cc8ec4ea7cb4693b4b08f3cf6db2d3446a",
+        "source_fact:v1:a70627431ffc37d7ca95c335b19446cb1e87b7dfff3622ebc57de88c8f611a9f",
+        "source_fact:v1:a9d494aecfcc74a2c9e5a28f8505533b63c75a9da4af3e8b6161aee369ffecfc",
+        "source_fact:v1:bceac98593ee6044bdadf7f1ff6c43eb6c1d66380a4b77499ef33f50af785e94",
+        "source_fact:v1:c03feac83bcbcf3fb5baa173c2e12a57b7d535f9ca95318af1bde9846ed7718b",
+        "source_fact:v1:d80f048d8a2ac1ecf11bce7765d3caeb784ef8c5e5e6706958b23a8500285e6d",
+        "source_fact:v1:f54acd46bfdfed3cdc2f21e23a109237821e856276afbbbfd1f24acb9a2ac33b"
+      ],
+      "source_published_kst": "2026-10-07T08:46+09:00",
+      "title": "스카이월드와이드, AI 인프라 사업 확대…조선·방산·제조로 고객군 넓힌다"
     },
     "source_fact:96b5f1fac025d83e79e0330a": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
@@ -124452,6 +125421,27 @@
       ],
       "source_published_kst": "2026-10-06T17:46+09:00",
       "title": "메모리 반도체 호황 속 삼성전자 완제품은 '고전'…DX부문 3분기 실적 어떻게"
+    },
+    "source_fact:98c841222b0d39f4974e5048": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633141",
+      "source": "이투데이",
+      "source_body_digest": "62b0a7a64317cfc00725cf4ff035d223eca42ef20c9ecd93323f129c2993969e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bd81c0b40b861dfe4de155ff245fc892e14db0b85fc573577729fb2ff77e434",
+      "source_fact_keys": [
+        "source_fact:v1:054ab477dd8682b28dda5351ae4ed919aeab2781879d8a5f80dea7d2cde41f5f",
+        "source_fact:v1:50109569d1ee094f7297189ffd895f13bda38a57ec51bb704841666779783571",
+        "source_fact:v1:5252049099b4e7a4427c8ea23c6d89860f9670396762f05e47a507613c196179",
+        "source_fact:v1:64bd8e287072f4f5f35b31d7719458b27cfa40657341ca4bb18792535097bed1",
+        "source_fact:v1:80ac12d28832773a6a9acb3f929fd6ad19ec492b9d1292f471e96a329af942a7"
+      ],
+      "source_published_kst": "2026-10-07T08:44+09:00",
+      "title": "LS에코에너지, 베트남서 AIDC용 버스덕트 생산능력 2배 확대"
     },
     "source_fact:98cc67c7b7905ee3843a5d6c": {
       "first_seen_kst": "2026-10-07T07:01:10+09:00",
@@ -125560,6 +126550,33 @@
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "\"일주일새 12% 올랐다\"…전고체 ETF 뛰는데 뭉칫돈 향한 곳은"
     },
+    "source_fact:9d2eed660278eaaaf864b1b6": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610077179b",
+      "source": "한국경제",
+      "source_body_digest": "846991d7d43f8ed67f275cdd63305570df6cc83c8a0dbf24e440bf5912100f12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d42d902a5e19f58d95d2a4378d53c080311bc0137dd02f694580741341a05799",
+      "source_fact_keys": [
+        "source_fact:v1:017e24ab16d9198f13bb758c3a7d002fe05a6e91507ea04abf3dcc36a4ac856f",
+        "source_fact:v1:0d52fbb44bc845f51f725414c6a66522d33c6beff577ac07b38521c6bf446d59",
+        "source_fact:v1:6cb3bd8c1ff233c057dba77b9fbffff0b29a12ded097d6fd7ea4f5455a05d3ef",
+        "source_fact:v1:8dd404cf18ec48bd777d167877f3be7a15be51ed25528f72f4a0aa4c7ed2ee14",
+        "source_fact:v1:95901ee65b80f7534ce42e49b24ff5f3c1fe8190ee98ca0b14edfc6ad3c4de28",
+        "source_fact:v1:a1f48f657069ccaa4953debd75443981481d0686935db39ce945d06d3ab78f50",
+        "source_fact:v1:ae35066b0843af2f59abe7fc8dec476d0425a46d70b7b271c8f04d5bb039fc03",
+        "source_fact:v1:c804908a8ffe81d38520637c98a9b5ee6d4cbbb731f8cf9ce9125a3caedee8dc",
+        "source_fact:v1:cd7b85a243041bff12a8c9e13a2df7eb8da9ca60c61234815157adcf87517d64",
+        "source_fact:v1:d01bdc6abf147062cf08e77f16d81dc54002ce80d69b81aa079eb15fd92f0b9c",
+        "source_fact:v1:e355ded6781ad789919da1fc504fd9f77dd95aa56daa68cf2355e01b0e716029"
+      ],
+      "source_published_kst": "2026-10-07T08:53+09:00",
+      "title": "“100조 넘긴다” 삼성전자 신기록 전망"
+    },
     "source_fact:9d5e97d7c069237d39e27ed8": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
       "lanes": {
@@ -126452,6 +127469,27 @@
       "source_published_kst": "2026-10-05T21:41+09:00",
       "title": "ESS 테크, NYSE 거래정지·상장폐지 개시..OTC서 GWHT 거래"
     },
+    "source_fact:a0a5545fcf63e9722133fe81": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633141",
+      "source": "이투데이",
+      "source_body_digest": "62b0a7a64317cfc00725cf4ff035d223eca42ef20c9ecd93323f129c2993969e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bd81c0b40b861dfe4de155ff245fc892e14db0b85fc573577729fb2ff77e434",
+      "source_fact_keys": [
+        "source_fact:v1:054ab477dd8682b28dda5351ae4ed919aeab2781879d8a5f80dea7d2cde41f5f",
+        "source_fact:v1:50109569d1ee094f7297189ffd895f13bda38a57ec51bb704841666779783571",
+        "source_fact:v1:5252049099b4e7a4427c8ea23c6d89860f9670396762f05e47a507613c196179",
+        "source_fact:v1:64bd8e287072f4f5f35b31d7719458b27cfa40657341ca4bb18792535097bed1",
+        "source_fact:v1:80ac12d28832773a6a9acb3f929fd6ad19ec492b9d1292f471e96a329af942a7"
+      ],
+      "source_published_kst": "2026-10-07T08:44+09:00",
+      "title": "LS에코에너지, 베트남서 AIDC용 버스덕트 생산능력 2배 확대"
+    },
     "source_fact:a0a6d3b75f0ac56a12f653a0": {
       "first_seen_kst": "2026-10-05T22:49:24+09:00",
       "lanes": {
@@ -126811,6 +127849,27 @@
       ],
       "source_published_kst": "2026-10-07T05:00+09:00",
       "title": "개미는 반도체 ‘팔자’…美 지수·파킹형에 몰린 돈 [ETF 지형도 변화]①"
+    },
+    "source_fact:a1e264fe16ccf7bd6fbeadcc": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633141",
+      "source": "이투데이",
+      "source_body_digest": "62b0a7a64317cfc00725cf4ff035d223eca42ef20c9ecd93323f129c2993969e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bd81c0b40b861dfe4de155ff245fc892e14db0b85fc573577729fb2ff77e434",
+      "source_fact_keys": [
+        "source_fact:v1:054ab477dd8682b28dda5351ae4ed919aeab2781879d8a5f80dea7d2cde41f5f",
+        "source_fact:v1:50109569d1ee094f7297189ffd895f13bda38a57ec51bb704841666779783571",
+        "source_fact:v1:5252049099b4e7a4427c8ea23c6d89860f9670396762f05e47a507613c196179",
+        "source_fact:v1:64bd8e287072f4f5f35b31d7719458b27cfa40657341ca4bb18792535097bed1",
+        "source_fact:v1:80ac12d28832773a6a9acb3f929fd6ad19ec492b9d1292f471e96a329af942a7"
+      ],
+      "source_published_kst": "2026-10-07T08:44+09:00",
+      "title": "LS에코에너지, 베트남서 AIDC용 버스덕트 생산능력 2배 확대"
     },
     "source_fact:a1e6151ab329182e0e4ee334": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
@@ -127404,6 +128463,33 @@
       ],
       "source_published_kst": "2026-10-06T09:47+09:00",
       "title": "중간선거 앞두고 전전긍긍…트럼프 \"농업용 면세유 車사용 한시 유예\""
+    },
+    "source_fact:a44b60bc95cd70b85fddfea3": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633143",
+      "source": "이투데이",
+      "source_body_digest": "1335edfc349eec3c61785b54a0fd48c63a327745fefec59cb880a8c308b88dd9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:850a7f92a846916d9113af801e44f0a49f9417b1cb2b8a309d9e774c0a3836cc",
+      "source_fact_keys": [
+        "source_fact:v1:150d1a0546e2cea0a4569246ffd018d82ebfebc60a0a686d5caba79bd7f8104d",
+        "source_fact:v1:24fcdb9c286921027c4b4fe4bbd76043275d4c693dca90949365029c23bee2ec",
+        "source_fact:v1:3a9f4a93f1ae2857d93f7f9c48adad96647b3ec031ce7ab9bccf79dc4ddbcc9f",
+        "source_fact:v1:5607474ca42bac28368225027e0b48b4aac32e23bfad7d97b9c6a37548c69732",
+        "source_fact:v1:75a28a529694518e888420affa3061cc8ec4ea7cb4693b4b08f3cf6db2d3446a",
+        "source_fact:v1:a70627431ffc37d7ca95c335b19446cb1e87b7dfff3622ebc57de88c8f611a9f",
+        "source_fact:v1:a9d494aecfcc74a2c9e5a28f8505533b63c75a9da4af3e8b6161aee369ffecfc",
+        "source_fact:v1:bceac98593ee6044bdadf7f1ff6c43eb6c1d66380a4b77499ef33f50af785e94",
+        "source_fact:v1:c03feac83bcbcf3fb5baa173c2e12a57b7d535f9ca95318af1bde9846ed7718b",
+        "source_fact:v1:d80f048d8a2ac1ecf11bce7765d3caeb784ef8c5e5e6706958b23a8500285e6d",
+        "source_fact:v1:f54acd46bfdfed3cdc2f21e23a109237821e856276afbbbfd1f24acb9a2ac33b"
+      ],
+      "source_published_kst": "2026-10-07T08:46+09:00",
+      "title": "스카이월드와이드, AI 인프라 사업 확대…조선·방산·제조로 고객군 넓힌다"
     },
     "source_fact:a45561b846dab7bbe1c3d240": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -128282,6 +129368,28 @@
       ],
       "source_published_kst": "2026-10-06T11:36+09:00",
       "title": "신보·부산은행, K-콘텐츠 기업에 100억원 협약보증 공급"
+    },
+    "source_fact:a83171a2a9ecd05f673c4131": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169962",
+      "source": "매일경제",
+      "source_body_digest": "138890f73f7c3e94457e146aa3bdee2a6a283748bcd87c3b45a6ae7358cee63e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b097c9f533e90a2dd662b9271c46e5ae706cf2e74c39348158e7db1ec05aadc",
+      "source_fact_keys": [
+        "source_fact:v1:38ddfb3f76c83fd4c31178d2b71e56bf89526ab802a9cb8fe2714f7ec0b20944",
+        "source_fact:v1:5bc4741d9366d8c0ff3afc0d9a0b464c634dcf2777559f53b9f342001cff2a7c",
+        "source_fact:v1:669b85b777034564320795647335fa97e494158f256286e94474b62cad3dbcd8",
+        "source_fact:v1:8cc3811666d11e237fdf700b57a43a51edf13d2e6868b4dc11e3514bf23cc5af",
+        "source_fact:v1:a3b5d009f581e5a4e53fe75653a84a00fd487342c35b0d34b68e6ae0fe217ad8",
+        "source_fact:v1:ab616894c923d75d695718859c01d93189d3bf4b7d666d1ed4d49dc11879bba4"
+      ],
+      "source_published_kst": "2026-10-07T08:49+09:00",
+      "title": "블랙 힐스, 구글 데이터센터 전력 계약..18억 달러 투자"
     },
     "source_fact:a8323b3284cdbca596cef5b0": {
       "first_seen_kst": "2026-10-07T05:13:11+09:00",
@@ -130067,6 +131175,24 @@
       ],
       "source_published_kst": "2026-10-05T22:29+09:00",
       "title": "토스뱅크서도 해킹 시도…일부 보험사도 공격 흔적 포착"
+    },
+    "source_fact:af96d4b589ce86377bb1207d": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170595",
+      "source": "매일경제",
+      "source_body_digest": "121737cc9d7798f7101c6bb6605bba647f45880aeea957c7799c252f58f832ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9745995a753f41120d44ab43a6e185ca1566aa1bc0421e0b181cd4dc4df33054",
+      "source_fact_keys": [
+        "source_fact:v1:495c66fc205fb2fc15911b140f5c2b6bbd8108d7b82f0b05102e4a86ac76e8b3",
+        "source_fact:v1:a542d840ff1833203ff1bdfb72f3fb050c8dafd1426b04e2050e96228ecacc08"
+      ],
+      "source_published_kst": "2026-10-07T08:42+09:00",
+      "title": "네이처 우드 그룹, 상반기 매출 64% 급감..174만달러 순손실"
     },
     "source_fact:afc6f5d2b1f2daf88302667d": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
@@ -136473,6 +137599,24 @@
       "source_published_kst": "2026-10-06T06:04+09:00",
       "title": "[속보] 국제유가, 하락⋯WTI 1.84% ↓"
     },
+    "source_fact:c70944de4bc55cb7d032e468": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170595",
+      "source": "매일경제",
+      "source_body_digest": "121737cc9d7798f7101c6bb6605bba647f45880aeea957c7799c252f58f832ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9745995a753f41120d44ab43a6e185ca1566aa1bc0421e0b181cd4dc4df33054",
+      "source_fact_keys": [
+        "source_fact:v1:495c66fc205fb2fc15911b140f5c2b6bbd8108d7b82f0b05102e4a86ac76e8b3",
+        "source_fact:v1:a542d840ff1833203ff1bdfb72f3fb050c8dafd1426b04e2050e96228ecacc08"
+      ],
+      "source_published_kst": "2026-10-07T08:42+09:00",
+      "title": "네이처 우드 그룹, 상반기 매출 64% 급감..174만달러 순손실"
+    },
     "source_fact:c70b866c792b6da32e397b30": {
       "first_seen_kst": "2026-10-06T21:54:00+09:00",
       "lanes": {
@@ -138088,6 +139232,33 @@
       "source_published_kst": "2026-10-06T13:02+09:00",
       "title": "안성 바우덕이축제 60만명 찾았다…농특산물 장터 22억 매출"
     },
+    "source_fact:cdf58e939a9cc7b70aaf35c4": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633143",
+      "source": "이투데이",
+      "source_body_digest": "1335edfc349eec3c61785b54a0fd48c63a327745fefec59cb880a8c308b88dd9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:850a7f92a846916d9113af801e44f0a49f9417b1cb2b8a309d9e774c0a3836cc",
+      "source_fact_keys": [
+        "source_fact:v1:150d1a0546e2cea0a4569246ffd018d82ebfebc60a0a686d5caba79bd7f8104d",
+        "source_fact:v1:24fcdb9c286921027c4b4fe4bbd76043275d4c693dca90949365029c23bee2ec",
+        "source_fact:v1:3a9f4a93f1ae2857d93f7f9c48adad96647b3ec031ce7ab9bccf79dc4ddbcc9f",
+        "source_fact:v1:5607474ca42bac28368225027e0b48b4aac32e23bfad7d97b9c6a37548c69732",
+        "source_fact:v1:75a28a529694518e888420affa3061cc8ec4ea7cb4693b4b08f3cf6db2d3446a",
+        "source_fact:v1:a70627431ffc37d7ca95c335b19446cb1e87b7dfff3622ebc57de88c8f611a9f",
+        "source_fact:v1:a9d494aecfcc74a2c9e5a28f8505533b63c75a9da4af3e8b6161aee369ffecfc",
+        "source_fact:v1:bceac98593ee6044bdadf7f1ff6c43eb6c1d66380a4b77499ef33f50af785e94",
+        "source_fact:v1:c03feac83bcbcf3fb5baa173c2e12a57b7d535f9ca95318af1bde9846ed7718b",
+        "source_fact:v1:d80f048d8a2ac1ecf11bce7765d3caeb784ef8c5e5e6706958b23a8500285e6d",
+        "source_fact:v1:f54acd46bfdfed3cdc2f21e23a109237821e856276afbbbfd1f24acb9a2ac33b"
+      ],
+      "source_published_kst": "2026-10-07T08:46+09:00",
+      "title": "스카이월드와이드, AI 인프라 사업 확대…조선·방산·제조로 고객군 넓힌다"
+    },
     "source_fact:ce04befeee50c1e29109a7cc": {
       "first_seen_kst": "2026-10-07T00:54:50+09:00",
       "lanes": {
@@ -138539,6 +139710,33 @@
       "source_published_kst": "2026-10-06T14:13+09:00",
       "title": "이형일 \"텍사스 발전소에 24억弗 송금…상업적 합리성 충족\"(종합)"
     },
+    "source_fact:cf82d2333787b671767bd776": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633143",
+      "source": "이투데이",
+      "source_body_digest": "1335edfc349eec3c61785b54a0fd48c63a327745fefec59cb880a8c308b88dd9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:850a7f92a846916d9113af801e44f0a49f9417b1cb2b8a309d9e774c0a3836cc",
+      "source_fact_keys": [
+        "source_fact:v1:150d1a0546e2cea0a4569246ffd018d82ebfebc60a0a686d5caba79bd7f8104d",
+        "source_fact:v1:24fcdb9c286921027c4b4fe4bbd76043275d4c693dca90949365029c23bee2ec",
+        "source_fact:v1:3a9f4a93f1ae2857d93f7f9c48adad96647b3ec031ce7ab9bccf79dc4ddbcc9f",
+        "source_fact:v1:5607474ca42bac28368225027e0b48b4aac32e23bfad7d97b9c6a37548c69732",
+        "source_fact:v1:75a28a529694518e888420affa3061cc8ec4ea7cb4693b4b08f3cf6db2d3446a",
+        "source_fact:v1:a70627431ffc37d7ca95c335b19446cb1e87b7dfff3622ebc57de88c8f611a9f",
+        "source_fact:v1:a9d494aecfcc74a2c9e5a28f8505533b63c75a9da4af3e8b6161aee369ffecfc",
+        "source_fact:v1:bceac98593ee6044bdadf7f1ff6c43eb6c1d66380a4b77499ef33f50af785e94",
+        "source_fact:v1:c03feac83bcbcf3fb5baa173c2e12a57b7d535f9ca95318af1bde9846ed7718b",
+        "source_fact:v1:d80f048d8a2ac1ecf11bce7765d3caeb784ef8c5e5e6706958b23a8500285e6d",
+        "source_fact:v1:f54acd46bfdfed3cdc2f21e23a109237821e856276afbbbfd1f24acb9a2ac33b"
+      ],
+      "source_published_kst": "2026-10-07T08:46+09:00",
+      "title": "스카이월드와이드, AI 인프라 사업 확대…조선·방산·제조로 고객군 넓힌다"
+    },
     "source_fact:cf8dbb3e1d1c9cb6bfd3e22c": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
       "lanes": {
@@ -138829,6 +140027,28 @@
       ],
       "source_published_kst": "2026-10-06T14:33+09:00",
       "title": "SK이노베이션, 윤활기유·배터리 성장 전망…\"올해 첫 연간 영업익 10조 노린다\""
+    },
+    "source_fact:d0b46616637fb1ed0855b0fa": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169962",
+      "source": "매일경제",
+      "source_body_digest": "138890f73f7c3e94457e146aa3bdee2a6a283748bcd87c3b45a6ae7358cee63e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b097c9f533e90a2dd662b9271c46e5ae706cf2e74c39348158e7db1ec05aadc",
+      "source_fact_keys": [
+        "source_fact:v1:38ddfb3f76c83fd4c31178d2b71e56bf89526ab802a9cb8fe2714f7ec0b20944",
+        "source_fact:v1:5bc4741d9366d8c0ff3afc0d9a0b464c634dcf2777559f53b9f342001cff2a7c",
+        "source_fact:v1:669b85b777034564320795647335fa97e494158f256286e94474b62cad3dbcd8",
+        "source_fact:v1:8cc3811666d11e237fdf700b57a43a51edf13d2e6868b4dc11e3514bf23cc5af",
+        "source_fact:v1:a3b5d009f581e5a4e53fe75653a84a00fd487342c35b0d34b68e6ae0fe217ad8",
+        "source_fact:v1:ab616894c923d75d695718859c01d93189d3bf4b7d666d1ed4d49dc11879bba4"
+      ],
+      "source_published_kst": "2026-10-07T08:49+09:00",
+      "title": "블랙 힐스, 구글 데이터센터 전력 계약..18억 달러 투자"
     },
     "source_fact:d0d5b004758895172349426b": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
@@ -139372,6 +140592,33 @@
       ],
       "source_published_kst": "2026-10-05T21:32+09:00",
       "title": "에볼루션 메탈스 앤 테크, 포항 희토류 자석공장 12월 17일 개장..연 1만t 확대 추진"
+    },
+    "source_fact:d2da942799a879a054394b5d": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633143",
+      "source": "이투데이",
+      "source_body_digest": "1335edfc349eec3c61785b54a0fd48c63a327745fefec59cb880a8c308b88dd9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:850a7f92a846916d9113af801e44f0a49f9417b1cb2b8a309d9e774c0a3836cc",
+      "source_fact_keys": [
+        "source_fact:v1:150d1a0546e2cea0a4569246ffd018d82ebfebc60a0a686d5caba79bd7f8104d",
+        "source_fact:v1:24fcdb9c286921027c4b4fe4bbd76043275d4c693dca90949365029c23bee2ec",
+        "source_fact:v1:3a9f4a93f1ae2857d93f7f9c48adad96647b3ec031ce7ab9bccf79dc4ddbcc9f",
+        "source_fact:v1:5607474ca42bac28368225027e0b48b4aac32e23bfad7d97b9c6a37548c69732",
+        "source_fact:v1:75a28a529694518e888420affa3061cc8ec4ea7cb4693b4b08f3cf6db2d3446a",
+        "source_fact:v1:a70627431ffc37d7ca95c335b19446cb1e87b7dfff3622ebc57de88c8f611a9f",
+        "source_fact:v1:a9d494aecfcc74a2c9e5a28f8505533b63c75a9da4af3e8b6161aee369ffecfc",
+        "source_fact:v1:bceac98593ee6044bdadf7f1ff6c43eb6c1d66380a4b77499ef33f50af785e94",
+        "source_fact:v1:c03feac83bcbcf3fb5baa173c2e12a57b7d535f9ca95318af1bde9846ed7718b",
+        "source_fact:v1:d80f048d8a2ac1ecf11bce7765d3caeb784ef8c5e5e6706958b23a8500285e6d",
+        "source_fact:v1:f54acd46bfdfed3cdc2f21e23a109237821e856276afbbbfd1f24acb9a2ac33b"
+      ],
+      "source_published_kst": "2026-10-07T08:46+09:00",
+      "title": "스카이월드와이드, AI 인프라 사업 확대…조선·방산·제조로 고객군 넓힌다"
     },
     "source_fact:d2e0b2dec413abb5db45ab01": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
@@ -140266,6 +141513,33 @@
       ],
       "source_published_kst": "2026-10-05T17:23+09:00",
       "title": "AI 해킹 확산에 'AI 방패' 꺼낸 금융당국…'망분리 완화' 해법 될 수 있나"
+    },
+    "source_fact:d5bf6f7acda6505379b11856": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610077179b",
+      "source": "한국경제",
+      "source_body_digest": "846991d7d43f8ed67f275cdd63305570df6cc83c8a0dbf24e440bf5912100f12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d42d902a5e19f58d95d2a4378d53c080311bc0137dd02f694580741341a05799",
+      "source_fact_keys": [
+        "source_fact:v1:017e24ab16d9198f13bb758c3a7d002fe05a6e91507ea04abf3dcc36a4ac856f",
+        "source_fact:v1:0d52fbb44bc845f51f725414c6a66522d33c6beff577ac07b38521c6bf446d59",
+        "source_fact:v1:6cb3bd8c1ff233c057dba77b9fbffff0b29a12ded097d6fd7ea4f5455a05d3ef",
+        "source_fact:v1:8dd404cf18ec48bd777d167877f3be7a15be51ed25528f72f4a0aa4c7ed2ee14",
+        "source_fact:v1:95901ee65b80f7534ce42e49b24ff5f3c1fe8190ee98ca0b14edfc6ad3c4de28",
+        "source_fact:v1:a1f48f657069ccaa4953debd75443981481d0686935db39ce945d06d3ab78f50",
+        "source_fact:v1:ae35066b0843af2f59abe7fc8dec476d0425a46d70b7b271c8f04d5bb039fc03",
+        "source_fact:v1:c804908a8ffe81d38520637c98a9b5ee6d4cbbb731f8cf9ce9125a3caedee8dc",
+        "source_fact:v1:cd7b85a243041bff12a8c9e13a2df7eb8da9ca60c61234815157adcf87517d64",
+        "source_fact:v1:d01bdc6abf147062cf08e77f16d81dc54002ce80d69b81aa079eb15fd92f0b9c",
+        "source_fact:v1:e355ded6781ad789919da1fc504fd9f77dd95aa56daa68cf2355e01b0e716029"
+      ],
+      "source_published_kst": "2026-10-07T08:53+09:00",
+      "title": "“100조 넘긴다” 삼성전자 신기록 전망"
     },
     "source_fact:d5bf7235a4102bee26617954": {
       "first_seen_kst": "2026-10-06T21:17:11+09:00",
@@ -143229,6 +144503,33 @@
       "source_published_kst": "2026-10-06T13:22+09:00",
       "title": "[오늘 이 종목] 피노 지분 인수 · LFP 확장…코스모신소재 '주목'"
     },
+    "source_fact:dfb27bb7404a7fca45c6439a": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610077179b",
+      "source": "한국경제",
+      "source_body_digest": "846991d7d43f8ed67f275cdd63305570df6cc83c8a0dbf24e440bf5912100f12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d42d902a5e19f58d95d2a4378d53c080311bc0137dd02f694580741341a05799",
+      "source_fact_keys": [
+        "source_fact:v1:017e24ab16d9198f13bb758c3a7d002fe05a6e91507ea04abf3dcc36a4ac856f",
+        "source_fact:v1:0d52fbb44bc845f51f725414c6a66522d33c6beff577ac07b38521c6bf446d59",
+        "source_fact:v1:6cb3bd8c1ff233c057dba77b9fbffff0b29a12ded097d6fd7ea4f5455a05d3ef",
+        "source_fact:v1:8dd404cf18ec48bd777d167877f3be7a15be51ed25528f72f4a0aa4c7ed2ee14",
+        "source_fact:v1:95901ee65b80f7534ce42e49b24ff5f3c1fe8190ee98ca0b14edfc6ad3c4de28",
+        "source_fact:v1:a1f48f657069ccaa4953debd75443981481d0686935db39ce945d06d3ab78f50",
+        "source_fact:v1:ae35066b0843af2f59abe7fc8dec476d0425a46d70b7b271c8f04d5bb039fc03",
+        "source_fact:v1:c804908a8ffe81d38520637c98a9b5ee6d4cbbb731f8cf9ce9125a3caedee8dc",
+        "source_fact:v1:cd7b85a243041bff12a8c9e13a2df7eb8da9ca60c61234815157adcf87517d64",
+        "source_fact:v1:d01bdc6abf147062cf08e77f16d81dc54002ce80d69b81aa079eb15fd92f0b9c",
+        "source_fact:v1:e355ded6781ad789919da1fc504fd9f77dd95aa56daa68cf2355e01b0e716029"
+      ],
+      "source_published_kst": "2026-10-07T08:53+09:00",
+      "title": "“100조 넘긴다” 삼성전자 신기록 전망"
+    },
     "source_fact:dfb2d2bda1121f8c34bc2812": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
       "lanes": {
@@ -144055,6 +145356,33 @@
       ],
       "source_published_kst": "2026-10-06T11:25+09:00",
       "title": "[속보]삼성전기, 2900억 규모 AI 서버용 MLCC 공급계약 체결"
+    },
+    "source_fact:e219b9104acc569aed48d88c": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633143",
+      "source": "이투데이",
+      "source_body_digest": "1335edfc349eec3c61785b54a0fd48c63a327745fefec59cb880a8c308b88dd9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:850a7f92a846916d9113af801e44f0a49f9417b1cb2b8a309d9e774c0a3836cc",
+      "source_fact_keys": [
+        "source_fact:v1:150d1a0546e2cea0a4569246ffd018d82ebfebc60a0a686d5caba79bd7f8104d",
+        "source_fact:v1:24fcdb9c286921027c4b4fe4bbd76043275d4c693dca90949365029c23bee2ec",
+        "source_fact:v1:3a9f4a93f1ae2857d93f7f9c48adad96647b3ec031ce7ab9bccf79dc4ddbcc9f",
+        "source_fact:v1:5607474ca42bac28368225027e0b48b4aac32e23bfad7d97b9c6a37548c69732",
+        "source_fact:v1:75a28a529694518e888420affa3061cc8ec4ea7cb4693b4b08f3cf6db2d3446a",
+        "source_fact:v1:a70627431ffc37d7ca95c335b19446cb1e87b7dfff3622ebc57de88c8f611a9f",
+        "source_fact:v1:a9d494aecfcc74a2c9e5a28f8505533b63c75a9da4af3e8b6161aee369ffecfc",
+        "source_fact:v1:bceac98593ee6044bdadf7f1ff6c43eb6c1d66380a4b77499ef33f50af785e94",
+        "source_fact:v1:c03feac83bcbcf3fb5baa173c2e12a57b7d535f9ca95318af1bde9846ed7718b",
+        "source_fact:v1:d80f048d8a2ac1ecf11bce7765d3caeb784ef8c5e5e6706958b23a8500285e6d",
+        "source_fact:v1:f54acd46bfdfed3cdc2f21e23a109237821e856276afbbbfd1f24acb9a2ac33b"
+      ],
+      "source_published_kst": "2026-10-07T08:46+09:00",
+      "title": "스카이월드와이드, AI 인프라 사업 확대…조선·방산·제조로 고객군 넓힌다"
     },
     "source_fact:e2212463951d9d25eef3aa9d": {
       "first_seen_kst": "2026-10-06T21:17:11+09:00",
@@ -147103,6 +148431,24 @@
       ],
       "source_published_kst": "2026-10-06T17:10+09:00",
       "title": "퓨처드라이브, KES 2026서 '텔레드라이브' 전시…AI 보조 원격주행으로 차량·무인장비 운영 지원"
+    },
+    "source_fact:ed22102fb941aaad719e7c7f": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.mk.co.kr/news/politics/12169980",
+      "source": "매일경제",
+      "source_body_digest": "c5b8c3b0fb188ff953116ef0947642627b22cb1018670613326dc992735f3565",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d6dc9febed407d06c30d221cdb86dd62c30257e75872ddba48053abc18978395",
+      "source_fact_keys": [
+        "source_fact:v1:0952c89aa048a97fb02489a401f3cde5cfad44d2cb6b7e9f3cd102921bcdd2ef",
+        "source_fact:v1:845a7f662ff0168329333c5cff1fcbe30dfdc2d5030487478809f8613b1f4adf"
+      ],
+      "source_published_kst": "2026-10-07T08:51+09:00",
+      "title": "트럼프 “한국에 관세 인하 ‘대가’ 요구했다”…대미 투자 거듭 압박"
     },
     "source_fact:ed3548bb2cbdea54e4bcf389": {
       "first_seen_kst": "2026-10-07T05:33:37+09:00",
@@ -150614,6 +151960,33 @@
       "source_published_kst": "2026-10-06T18:28+09:00",
       "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 공급 계약 체결⋯K배터리 핵심 도약"
     },
+    "source_fact:fb8b1b7f2573984d5bd838a8": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610077179b",
+      "source": "한국경제",
+      "source_body_digest": "846991d7d43f8ed67f275cdd63305570df6cc83c8a0dbf24e440bf5912100f12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d42d902a5e19f58d95d2a4378d53c080311bc0137dd02f694580741341a05799",
+      "source_fact_keys": [
+        "source_fact:v1:017e24ab16d9198f13bb758c3a7d002fe05a6e91507ea04abf3dcc36a4ac856f",
+        "source_fact:v1:0d52fbb44bc845f51f725414c6a66522d33c6beff577ac07b38521c6bf446d59",
+        "source_fact:v1:6cb3bd8c1ff233c057dba77b9fbffff0b29a12ded097d6fd7ea4f5455a05d3ef",
+        "source_fact:v1:8dd404cf18ec48bd777d167877f3be7a15be51ed25528f72f4a0aa4c7ed2ee14",
+        "source_fact:v1:95901ee65b80f7534ce42e49b24ff5f3c1fe8190ee98ca0b14edfc6ad3c4de28",
+        "source_fact:v1:a1f48f657069ccaa4953debd75443981481d0686935db39ce945d06d3ab78f50",
+        "source_fact:v1:ae35066b0843af2f59abe7fc8dec476d0425a46d70b7b271c8f04d5bb039fc03",
+        "source_fact:v1:c804908a8ffe81d38520637c98a9b5ee6d4cbbb731f8cf9ce9125a3caedee8dc",
+        "source_fact:v1:cd7b85a243041bff12a8c9e13a2df7eb8da9ca60c61234815157adcf87517d64",
+        "source_fact:v1:d01bdc6abf147062cf08e77f16d81dc54002ce80d69b81aa079eb15fd92f0b9c",
+        "source_fact:v1:e355ded6781ad789919da1fc504fd9f77dd95aa56daa68cf2355e01b0e716029"
+      ],
+      "source_published_kst": "2026-10-07T08:53+09:00",
+      "title": "“100조 넘긴다” 삼성전자 신기록 전망"
+    },
     "source_fact:fb9e783de8a74bd4b9826398": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
       "lanes": {
@@ -151550,6 +152923,33 @@
       ],
       "source_published_kst": "2026-10-05T06:17+09:00",
       "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
+    },
+    "source_fact:febdbd3f0536e780cf957361": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610077179b",
+      "source": "한국경제",
+      "source_body_digest": "846991d7d43f8ed67f275cdd63305570df6cc83c8a0dbf24e440bf5912100f12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d42d902a5e19f58d95d2a4378d53c080311bc0137dd02f694580741341a05799",
+      "source_fact_keys": [
+        "source_fact:v1:017e24ab16d9198f13bb758c3a7d002fe05a6e91507ea04abf3dcc36a4ac856f",
+        "source_fact:v1:0d52fbb44bc845f51f725414c6a66522d33c6beff577ac07b38521c6bf446d59",
+        "source_fact:v1:6cb3bd8c1ff233c057dba77b9fbffff0b29a12ded097d6fd7ea4f5455a05d3ef",
+        "source_fact:v1:8dd404cf18ec48bd777d167877f3be7a15be51ed25528f72f4a0aa4c7ed2ee14",
+        "source_fact:v1:95901ee65b80f7534ce42e49b24ff5f3c1fe8190ee98ca0b14edfc6ad3c4de28",
+        "source_fact:v1:a1f48f657069ccaa4953debd75443981481d0686935db39ce945d06d3ab78f50",
+        "source_fact:v1:ae35066b0843af2f59abe7fc8dec476d0425a46d70b7b271c8f04d5bb039fc03",
+        "source_fact:v1:c804908a8ffe81d38520637c98a9b5ee6d4cbbb731f8cf9ce9125a3caedee8dc",
+        "source_fact:v1:cd7b85a243041bff12a8c9e13a2df7eb8da9ca60c61234815157adcf87517d64",
+        "source_fact:v1:d01bdc6abf147062cf08e77f16d81dc54002ce80d69b81aa079eb15fd92f0b9c",
+        "source_fact:v1:e355ded6781ad789919da1fc504fd9f77dd95aa56daa68cf2355e01b0e716029"
+      ],
+      "source_published_kst": "2026-10-07T08:53+09:00",
+      "title": "“100조 넘긴다” 삼성전자 신기록 전망"
     },
     "source_fact:fecf42527222525c7b08ccd1": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
@@ -158444,6 +159844,28 @@
       "source": "연합뉴스",
       "title": "한국금융지주, 수요예측에 모집액 7배 몰려…고려아연도 3배(종합) | 연합뉴스"
     },
+    "title:36e1bb51a9ad93b3f80cde40": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169962",
+      "source": "매일경제",
+      "source_body_digest": "138890f73f7c3e94457e146aa3bdee2a6a283748bcd87c3b45a6ae7358cee63e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b097c9f533e90a2dd662b9271c46e5ae706cf2e74c39348158e7db1ec05aadc",
+      "source_fact_keys": [
+        "source_fact:v1:38ddfb3f76c83fd4c31178d2b71e56bf89526ab802a9cb8fe2714f7ec0b20944",
+        "source_fact:v1:5bc4741d9366d8c0ff3afc0d9a0b464c634dcf2777559f53b9f342001cff2a7c",
+        "source_fact:v1:669b85b777034564320795647335fa97e494158f256286e94474b62cad3dbcd8",
+        "source_fact:v1:8cc3811666d11e237fdf700b57a43a51edf13d2e6868b4dc11e3514bf23cc5af",
+        "source_fact:v1:a3b5d009f581e5a4e53fe75653a84a00fd487342c35b0d34b68e6ae0fe217ad8",
+        "source_fact:v1:ab616894c923d75d695718859c01d93189d3bf4b7d666d1ed4d49dc11879bba4"
+      ],
+      "source_published_kst": "2026-10-07T08:49+09:00",
+      "title": "블랙 힐스, 구글 데이터센터 전력 계약..18억 달러 투자"
+    },
     "title:36e9de29a7108fb28e073bdd": {
       "first_seen_kst": "2026-10-01T15:33:35+09:00",
       "lanes": {
@@ -163210,6 +164632,24 @@
       "source": "뉴시스",
       "title": "[올댓차이나] 대만 증시, 韓美 반도체 호조에 0.86%↑ 상승 마감…1주 만에 사상최고 경신"
     },
+    "title:5d0606284326da19dcc13337": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.mk.co.kr/news/politics/12169980",
+      "source": "매일경제",
+      "source_body_digest": "c5b8c3b0fb188ff953116ef0947642627b22cb1018670613326dc992735f3565",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d6dc9febed407d06c30d221cdb86dd62c30257e75872ddba48053abc18978395",
+      "source_fact_keys": [
+        "source_fact:v1:0952c89aa048a97fb02489a401f3cde5cfad44d2cb6b7e9f3cd102921bcdd2ef",
+        "source_fact:v1:845a7f662ff0168329333c5cff1fcbe30dfdc2d5030487478809f8613b1f4adf"
+      ],
+      "source_published_kst": "2026-10-07T08:51+09:00",
+      "title": "트럼프 “한국에 관세 인하 ‘대가’ 요구했다”…대미 투자 거듭 압박"
+    },
     "title:5d60d56e51a39cd1d3549a8c": {
       "first_seen_kst": "2026-10-06T22:51:44+09:00",
       "lanes": {
@@ -165808,6 +167248,24 @@
       "link": "https://www.mk.co.kr/news/stock/12155669",
       "source": "매일경제",
       "title": "2800조 굴리는 日연기금 \"국민연금 노하우 배우고파\""
+    },
+    "title:7261ebab85a7b4bd1a887582": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170595",
+      "source": "매일경제",
+      "source_body_digest": "121737cc9d7798f7101c6bb6605bba647f45880aeea957c7799c252f58f832ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9745995a753f41120d44ab43a6e185ca1566aa1bc0421e0b181cd4dc4df33054",
+      "source_fact_keys": [
+        "source_fact:v1:495c66fc205fb2fc15911b140f5c2b6bbd8108d7b82f0b05102e4a86ac76e8b3",
+        "source_fact:v1:a542d840ff1833203ff1bdfb72f3fb050c8dafd1426b04e2050e96228ecacc08"
+      ],
+      "source_published_kst": "2026-10-07T08:42+09:00",
+      "title": "네이처 우드 그룹, 상반기 매출 64% 급감..174만달러 순손실"
     },
     "title:726906523c98733cfd852a11": {
       "first_seen_kst": "2026-09-25T19:49:36+09:00",
@@ -172519,6 +173977,33 @@
       "source_published_kst": "2026-10-05T17:23+09:00",
       "title": "AI 해킹 확산에 'AI 방패' 꺼낸 금융당국…'망분리 완화' 해법 될 수 있나"
     },
+    "title:aa8c6db788d9cad4f2bcd838": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633143",
+      "source": "이투데이",
+      "source_body_digest": "1335edfc349eec3c61785b54a0fd48c63a327745fefec59cb880a8c308b88dd9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:850a7f92a846916d9113af801e44f0a49f9417b1cb2b8a309d9e774c0a3836cc",
+      "source_fact_keys": [
+        "source_fact:v1:150d1a0546e2cea0a4569246ffd018d82ebfebc60a0a686d5caba79bd7f8104d",
+        "source_fact:v1:24fcdb9c286921027c4b4fe4bbd76043275d4c693dca90949365029c23bee2ec",
+        "source_fact:v1:3a9f4a93f1ae2857d93f7f9c48adad96647b3ec031ce7ab9bccf79dc4ddbcc9f",
+        "source_fact:v1:5607474ca42bac28368225027e0b48b4aac32e23bfad7d97b9c6a37548c69732",
+        "source_fact:v1:75a28a529694518e888420affa3061cc8ec4ea7cb4693b4b08f3cf6db2d3446a",
+        "source_fact:v1:a70627431ffc37d7ca95c335b19446cb1e87b7dfff3622ebc57de88c8f611a9f",
+        "source_fact:v1:a9d494aecfcc74a2c9e5a28f8505533b63c75a9da4af3e8b6161aee369ffecfc",
+        "source_fact:v1:bceac98593ee6044bdadf7f1ff6c43eb6c1d66380a4b77499ef33f50af785e94",
+        "source_fact:v1:c03feac83bcbcf3fb5baa173c2e12a57b7d535f9ca95318af1bde9846ed7718b",
+        "source_fact:v1:d80f048d8a2ac1ecf11bce7765d3caeb784ef8c5e5e6706958b23a8500285e6d",
+        "source_fact:v1:f54acd46bfdfed3cdc2f21e23a109237821e856276afbbbfd1f24acb9a2ac33b"
+      ],
+      "source_published_kst": "2026-10-07T08:46+09:00",
+      "title": "스카이월드와이드, AI 인프라 사업 확대…조선·방산·제조로 고객군 넓힌다"
+    },
     "title:aaa21192024df06d98861797": {
       "first_seen_kst": "2026-10-03T07:58:14+09:00",
       "lanes": {
@@ -173348,6 +174833,27 @@
       ],
       "source_published_kst": "2026-10-06T14:46+09:00",
       "title": "두산에너빌, 스페이스XAI에 가스터빈 1호 출하…첫 해외 수출 | 연합뉴스"
+    },
+    "title:b0ceec16ac3bf80cc0d85cff": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633141",
+      "source": "이투데이",
+      "source_body_digest": "62b0a7a64317cfc00725cf4ff035d223eca42ef20c9ecd93323f129c2993969e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bd81c0b40b861dfe4de155ff245fc892e14db0b85fc573577729fb2ff77e434",
+      "source_fact_keys": [
+        "source_fact:v1:054ab477dd8682b28dda5351ae4ed919aeab2781879d8a5f80dea7d2cde41f5f",
+        "source_fact:v1:50109569d1ee094f7297189ffd895f13bda38a57ec51bb704841666779783571",
+        "source_fact:v1:5252049099b4e7a4427c8ea23c6d89860f9670396762f05e47a507613c196179",
+        "source_fact:v1:64bd8e287072f4f5f35b31d7719458b27cfa40657341ca4bb18792535097bed1",
+        "source_fact:v1:80ac12d28832773a6a9acb3f929fd6ad19ec492b9d1292f471e96a329af942a7"
+      ],
+      "source_published_kst": "2026-10-07T08:44+09:00",
+      "title": "LS에코에너지, 베트남서 AIDC용 버스덕트 생산능력 2배 확대"
     },
     "title:b0de35a5fb74989ad1ee8aaa": {
       "first_seen_kst": "2026-09-18T16:58:33+09:00",
@@ -176445,6 +177951,33 @@
       "source_published_kst": "2026-10-05T09:47+09:00",
       "title": "운문댐 가뭄 장기화…대구시"
     },
+    "title:cbd7b142d44dd1fbe370e7cc": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610077179b",
+      "source": "한국경제",
+      "source_body_digest": "846991d7d43f8ed67f275cdd63305570df6cc83c8a0dbf24e440bf5912100f12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d42d902a5e19f58d95d2a4378d53c080311bc0137dd02f694580741341a05799",
+      "source_fact_keys": [
+        "source_fact:v1:017e24ab16d9198f13bb758c3a7d002fe05a6e91507ea04abf3dcc36a4ac856f",
+        "source_fact:v1:0d52fbb44bc845f51f725414c6a66522d33c6beff577ac07b38521c6bf446d59",
+        "source_fact:v1:6cb3bd8c1ff233c057dba77b9fbffff0b29a12ded097d6fd7ea4f5455a05d3ef",
+        "source_fact:v1:8dd404cf18ec48bd777d167877f3be7a15be51ed25528f72f4a0aa4c7ed2ee14",
+        "source_fact:v1:95901ee65b80f7534ce42e49b24ff5f3c1fe8190ee98ca0b14edfc6ad3c4de28",
+        "source_fact:v1:a1f48f657069ccaa4953debd75443981481d0686935db39ce945d06d3ab78f50",
+        "source_fact:v1:ae35066b0843af2f59abe7fc8dec476d0425a46d70b7b271c8f04d5bb039fc03",
+        "source_fact:v1:c804908a8ffe81d38520637c98a9b5ee6d4cbbb731f8cf9ce9125a3caedee8dc",
+        "source_fact:v1:cd7b85a243041bff12a8c9e13a2df7eb8da9ca60c61234815157adcf87517d64",
+        "source_fact:v1:d01bdc6abf147062cf08e77f16d81dc54002ce80d69b81aa079eb15fd92f0b9c",
+        "source_fact:v1:e355ded6781ad789919da1fc504fd9f77dd95aa56daa68cf2355e01b0e716029"
+      ],
+      "source_published_kst": "2026-10-07T08:53+09:00",
+      "title": "“100조 넘긴다” 삼성전자 신기록 전망"
+    },
     "title:cbe681124174be61eccc315b": {
       "first_seen_kst": "2026-09-30T16:46:52+09:00",
       "lanes": {
@@ -178233,6 +179766,23 @@
       "link": "https://www.yna.co.kr/view/AKR20260923089300054",
       "source": "연합뉴스",
       "title": "SK는 '넓은 부지'·삼성은 '속도전'…호남 반도체 투자의지 | 연합뉴스"
+    },
+    "title:d8c2b18db1e0f1d2ae16249f": {
+      "first_seen_kst": "2026-10-07T09:44:16+09:00",
+      "lanes": {
+        "live": "2026-10-07T09:44:16+09:00"
+      },
+      "last_seen_kst": "2026-10-07T09:44:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170593",
+      "source": "매일경제",
+      "source_body_digest": "8b1db8bdd5628f2878ec106fcb379614e770b489a66e1943720415a246b44c34",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9aae4f4ccce08020e818296e404e0cb58c9e1a5408f0a4509e1ea0a23b055b10",
+      "source_fact_keys": [
+        "source_fact:v1:cc8690521e4398db630a890b30dd04cc8399353e9197da4c81e019736a76bccd"
+      ],
+      "source_published_kst": "2026-10-07T08:41+09:00",
+      "title": "로켓 파마슈티컬스, 1억5000만 달러 신용한도..현금 2028년 3분기까지"
     },
     "title:d8c91e8079c28c48fbd050f4": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
@@ -182737,5 +184287,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-07T09:22:01+09:00"
+  "updated_at_kst": "2026-10-07T09:44:16+09:00"
 }
