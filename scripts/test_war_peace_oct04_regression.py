@@ -504,10 +504,10 @@ except RuntimeError as e:
 
 # 16) 10/7 실운영 추가 교정: 리야드 요격 사실/주장 분리와 JD Vance 귀속.
 riyadh_intercept = row(
-    "Saudi-led coalition intercepts Houthi projectile north of Riyadh; Houthis claim airport strike",
+    "Saudi-led coalition intercepts Houthi ballistic missile north of Riyadh; Houthis claim airport strike",
     source="연합뉴스",
     description=(
-        "The Saudi-led coalition said it intercepted a Houthi projectile north of Riyadh. "
+        "The Saudi-led coalition said it intercepted one Houthi ballistic missile north of Riyadh. "
         "Separately, the Houthis claimed an airport strike; Saudi authorities did not immediately confirm that claimed hit."
     ),
 )
