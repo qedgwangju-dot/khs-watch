@@ -120,11 +120,14 @@ BWRX_RSS_QUERIES = [
 # 자동정지를 기준선으로 잡고, 2026-10-07 재가동 승인은 교차검증된 첫 상승단계다.
 HANUL4_STATE_MODEL_VERSION = 1
 HANUL4_KHNP_MAIN = "https://www.khnp.co.kr/hanul/index.do"
-HANUL4_KHNP_MOBILE = "https://m.khnp.co.kr/main/index.do"
+HANUL4_KHNP_MOBILE = "https://m.khnp.co.kr/hanul/index.do"
 HANUL4_KHNP_NPP = "https://npp.khnp.co.kr/"
+HANUL4_KHNP_FACILITY = "https://www.khnp.co.kr/hanul/contents.do?key=1744"
 HANUL4_NSSC_PRESS_LIST = "https://www.nssc.go.kr/ko/cms/FR_BBS_CON/BoardList.do?MENU_ID=190"
-HANUL4_RESTART_APPROVAL_PRIMARY = "https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=04014726645610624"
+HANUL4_NSSC_PRESS_RELEASE = "https://www.nssc.go.kr/ko/cms/FR_BBS_CON/BoardView.do?BBS_SEQ=47051&BOARD_SEQ=5&CONTENTS_NO=1&MENU_ID=190&SITE_NO=2"
+HANUL4_RESTART_APPROVAL_PRIMARY = HANUL4_NSSC_PRESS_RELEASE
 HANUL4_RESTART_APPROVAL_SECONDARY = "https://mobile.newsis.com/view/NISX20261007_0003817361"
+HANUL4_FACILITY_CAPACITY_LABEL = "100만 kW급(1,000 MW급)"
 HANUL4_USER_SOURCE = "https://www.electimes.com/news/articleView.html?idxno=373171"
 HANUL4_FIXED_BASELINE = {
     "kind": "domestic_reactor_operation",
@@ -149,12 +152,12 @@ HANUL4_VERIFIED_APPROVAL = {
     "published_utc": "2026-10-07T05:10:39+00:00",
     "published_kst": "2026-10-07T14:10:39+09:00",
     "title": "원안위, 한울4호기 재가동 승인",
-    "source": "원안위 발표 인용 · 이데일리/뉴시스 교차확인",
+    "source": "원자력안전위원회 보도자료 · 뉴시스 교차확인",
     "link": HANUL4_RESTART_APPROVAL_PRIMARY,
     "secondary_link": HANUL4_RESTART_APPROVAL_SECONDARY,
-    "official": False,
+    "official": True,
     "verified": True,
-    "verification": "독립 언론 2곳이 원안위 2026-10-07 재가동 승인 발표를 동일하게 보도",
+    "verification": "원자력안전위원회 2026-10-07 보도자료 직접 확인 + 독립 언론 교차확인",
 }
 HANUL4_STAGE_RANK = {
     "automatic_trip": 0,
@@ -1267,8 +1270,26 @@ def _hanul4_stage(text: str) -> str | None:
     return None
 
 
+def _hanul4_explicit_output_ramp(text: str) -> bool:
+    normalized = clean_text(text)
+    compact = re.sub(r"\s+", "", normalized)
+    reactor_match = "한울원자력4호기" in compact or "한울4호기" in compact
+    ramp_match = any(
+        term in compact
+        for term in (
+            "출력을올리고있습니다",
+            "출력을올리고있다",
+            "출력상승중",
+            "출력상승하고있",
+        )
+    )
+    return reactor_match and ramp_match
+
+
 def _hanul4_live_status(text: str) -> str | None:
     normalized = clean_text(text)
+    if _hanul4_explicit_output_ramp(normalized):
+        return "운전"
     patterns = (
         r"한울\s*(?:원자력\s*)?4호기\s*(?:현재\s*)?(운전|정비|정지)",
         r"한울\s*4호기.{0,24}?\b(운전|정비|정지)\b",
@@ -1334,6 +1355,7 @@ def collect_hanul4_operation_items(now: dt.datetime) -> list[dict]:
     live_status = None
     live_source = None
     live_observations: list[tuple[str, str, str]] = []
+    explicit_output_ramp_rows: list[tuple[str, str, str]] = []
 
     # 실제 운전 여부는 사업자인 KHNP 공식 실시간 페이지를 최우선으로 본다.
     # 한 화면의 stale/cache 문구로 '운전 전환'을 오인하지 않도록 서로 다른
@@ -1351,6 +1373,8 @@ def collect_hanul4_operation_items(now: dt.datetime) -> list[dict]:
         status = _hanul4_live_status(body)
         if status:
             live_observations.append((source_name, url, status))
+        if _hanul4_explicit_output_ramp(body):
+            explicit_output_ramp_rows.append((source_name, url, "운전"))
 
     by_status: dict[str, list[tuple[str, str, str]]] = {}
     for observation in live_observations:
@@ -1367,7 +1391,17 @@ def collect_hanul4_operation_items(now: dt.datetime) -> list[dict]:
             live_source = top_rows[0][1]
 
     operating_rows = by_status.get("운전") or []
-    if len(operating_rows) >= 2:
+    operating_verified = len(operating_rows) >= 2 or bool(explicit_output_ramp_rows)
+    if operating_verified:
+        evidence_rows = explicit_output_ramp_rows or operating_rows
+        if explicit_output_ramp_rows:
+            live_status = "운전"
+            live_source = explicit_output_ramp_rows[0][1]
+            title = "한국수력원자력 실시간 운영정보에서 한울4호기 출력 상승 중 확인"
+            source = explicit_output_ramp_rows[0][0]
+        else:
+            title = "한국수력원자력 공식 운영현황 2개 표면에서 한울4호기 '운전' 상태 교차확인"
+            source = "·".join(row[0] for row in operating_rows[:2])
         rows.append({
             "kind": "domestic_reactor_operation",
             "reactor": "한울4호기",
@@ -1376,14 +1410,15 @@ def collect_hanul4_operation_items(now: dt.datetime) -> list[dict]:
             "status": HANUL4_STAGE_LABELS["operating_status"],
             "published_utc": now.astimezone(UTC).isoformat(timespec="seconds"),
             "published_kst": now.isoformat(timespec="seconds"),
-            "title": "한국수력원자력 공식 운영현황 2개 표면에서 한울4호기 '운전' 상태 교차확인",
-            "source": "·".join(row[0] for row in operating_rows[:2]),
-            "link": operating_rows[0][1],
+            "title": title,
+            "source": source,
+            "link": evidence_rows[0][1],
             "official": True,
             "verified": True,
-            "evidence_count": len(operating_rows),
+            "evidence_count": max(len(operating_rows), len(explicit_output_ramp_rows)),
             "live_status": "운전",
-            "live_status_source": operating_rows[0][1],
+            "live_status_source": evidence_rows[0][1],
+            "verification": "한국수력원자력 실시간 운영정보의 명시적 출력 상승 문구 또는 공식 운영표면 2곳 일치",
         })
 
     # 원안위 보도자료 목록도 직접 확인한다. 검색엔진·언론 색인보다 늦더라도
@@ -1564,6 +1599,11 @@ def _self_test_hanul4_operating_event_model() -> None:
         raise RuntimeError("Hanul4 live-maintenance parser regression")
     if _hanul4_live_status("한울 4호기 운전 4호기") != "운전":
         raise RuntimeError("Hanul4 live-operating parser regression")
+    live_ramp_fixture = "한울 원자력 4호기는 현재 계획예방정비를 완료하고 출력을 올리고 있습니다."
+    if _hanul4_live_status(live_ramp_fixture) != "운전":
+        raise RuntimeError("Hanul4 live-output-ramp parser regression")
+    if not _hanul4_explicit_output_ramp(live_ramp_fixture):
+        raise RuntimeError("Hanul4 explicit-output-ramp evidence regression")
 
     approval = dict(HANUL4_VERIFIED_APPROVAL)
     operating = {
@@ -1587,6 +1627,10 @@ def _self_test_hanul4_operating_event_model() -> None:
     sample["live_status"] = "정비"
     sample["live_status_source"] = HANUL4_KHNP_MAIN
     rendered = "\n".join(_render_hanul4_operation(sample, 1, now_kst()))
+    if "1,050MWe" in rendered:
+        raise RuntimeError("Hanul4 obsolete 1,050MWe capacity regression")
+    if HANUL4_FACILITY_CAPACITY_LABEL not in rendered:
+        raise RuntimeError("Hanul4 official facility-capacity label regression")
     for marker in (
         "- 핵심 변화:", "- 숫자:", "- 한국 기업·매출 연결:",
         "- 병목·실패모드:", "- 출처:",
@@ -1623,13 +1667,14 @@ def _render_hanul4_operation(item: dict, idx: int, now: dt.datetime) -> list[str
         return [
             f"## {idx}. [{verification_label}] 한울 4호기 재가동",
             f"- 핵심 변화: {label}. 규제 관문은 통과했지만 재가동 승인 ≠ 실제 발전재개입니다.",
-            f"- 숫자: 8월 19일 자동정지 → 10월 7일 재가동 승인(49일) · 설비용량 약 1,050MWe · 현재 한국수력원자력 실시간 상태 {live_status}.",
+            f"- 숫자: 8월 19일 자동정지 → 10월 7일 재가동 승인(49일) · 설비용량 {HANUL4_FACILITY_CAPACITY_LABEL} · 현재 한국수력원자력 실시간 상태 {live_status}.",
             "- 한국 기업·매출 연결: 한국수력원자력의 기존 한울4호기 운전 복귀 이슈이며 신규 원전 수주가 아닙니다. 발전재개·계통병입과 출력상승이 확인돼야 실제 공급 회복으로 봅니다.",
             "- 정지 원인: 발전기 차단기 단로기 접속부 전기적 결함과 원자로출력급감발계통(RPCS) 미작동이 복합 작용했습니다. RPCS 계측기 내부 이물질 유입 영향도 확인됐습니다.",
             "- 조치: 고장 기기 교체·건전성 시험과 설비 관리체계 개선 등 종합 재발방지대책 확인 후 원안위가 재가동을 승인했습니다.",
             "- 병목·실패모드: 승인 뒤에도 RPCS·발전기 차단기 계통 이상 재발, 출력상승 시험 이상, 계통병입 지연이 생기면 전력공급 정상화가 늦어질 수 있습니다.",
             f"- 출처: [{item.get('source')}]({item.get('link')}) · {item.get('published_kst')}",
             f"- 운영상태 확인: [한국수력원자력]({item.get('live_status_source') or HANUL4_KHNP_MAIN})",
+            f"- 설비용량 확인: [한국수력원자력 시설현황]({HANUL4_KHNP_FACILITY})",
             "- 다음 확인: 한국수력원자력 실시간 '운전' 전환 → 발전재개/계통병입 시각 → 출력상승 → 100% 출력 도달 → 재발방지대책 이행",
             "",
         ]
@@ -1650,11 +1695,12 @@ def _render_hanul4_operation(item: dict, idx: int, now: dt.datetime) -> list[str
     return [
         f"## {idx}. [{verification_label}] 한울 4호기 운전상태",
         f"- 핵심 변화: {change}",
-        f"- 숫자: 설비용량 약 1,050MWe · 현재 운영상태 {live_status}.",
+        f"- 숫자: 설비용량 {HANUL4_FACILITY_CAPACITY_LABEL} · 현재 운영상태 {live_status}.",
         "- 한국 기업·매출 연결: 한국수력원자력 기존 발전설비의 가동률·전력판매 정상화와 연결되는 운전 이슈이며 신규 원전 수주로 계산하지 않습니다.",
         f"- 단계 구분: {caveat}",
         "- 병목·실패모드: 발전기 차단기·RPCS 계통 재고장, 출력상승 시험 이상, 재발방지대책 미이행이 확인되면 재정지 위험이 있습니다.",
         f"- 출처: [{item.get('source')}]({item.get('link')}) · {item.get('published_kst')}",
+        f"- 설비용량 확인: [한국수력원자력 시설현황]({HANUL4_KHNP_FACILITY})",
         "- 다음 확인: 실시간 운전상태 → 발전재개/계통병입 → 출력률 → 100% 출력 → 재정지 여부",
         "",
     ]
