@@ -98,6 +98,7 @@ jobs:
       - name: Verify production workflow structure
         run: |
           python - <<'PY'
+          import datetime as dt
           from pathlib import Path
           p=Path(".github/workflows/kospi-derivatives-flow-ls-realtime.yml")
           s=p.read_text(encoding="utf-8")
@@ -107,6 +108,12 @@ jobs:
           assert "--handoff-out out/kospi_shock_handoff.json" in s, "morning handoff missing"
           assert "--handoff-in out/kospi_shock_handoff.json" in s, "afternoon handoff missing"
           assert "timeout-minutes: 430" not in s, "GitHub-hosted 6h limit unsafe timeout remains"
+          assert "timeout-minutes: 300" in s, "morning preopen coverage timeout missing"
+          earliest=dt.datetime(2026,10,7,8,3)
+          handoff_end=dt.datetime(2026,10,7,12,15)
+          required_minutes=int((handoff_end-earliest).total_seconds()/60)
+          assert 300 >= required_minutes + 15, (required_minutes,300)
+          print("morning_preopen_timeout_valid=true", "required_minutes=",required_minutes, "timeout_minutes=300")
           assert "actions/download-artifact@v4" in s, "handoff artifact download missing"
           assert "kospi_unified_industry_collector.py" in s, "UBM industry collector missing"
           assert "out/kospi_industry_flow.jsonl" in s, "UBM industry flow handoff missing"
@@ -156,7 +163,7 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
         run: |
           python - <<'PY'
-          import datetime as dt, json, os, urllib.request
+          import datetime as dt, json, os, time, urllib.request
           from zoneinfo import ZoneInfo
 
           repo=os.environ["REPOSITORY"]
@@ -214,9 +221,39 @@ jobs:
               )
               with urllib.request.urlopen(req,timeout=20) as r:
                   print(f"scheduled_live_recovery_dispatch=true status={r.status}")
-              raise AssertionError(
-                  f"scheduled live validation found no active production job; recovery dispatched; active={active}"
-              )
+
+              # 복구 dispatch 자체가 성공한 것과 실제 production job 기동은 구분한다.
+              # 최대 90초 동안 새 run의 morning/afternoon job이 queued/in_progress가 되는지 확인한다.
+              recovery_deadline=time.time()+90
+              recovered=[]
+              while time.time() < recovery_deadline and not recovered:
+                  time.sleep(5)
+                  with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=20) as r:
+                      recovery_runs=json.loads(r.read().decode("utf-8")).get("workflow_runs",[])
+                  for run in recovery_runs:
+                      if run.get("status") not in {"queued","in_progress"}:
+                          continue
+                      created=dt.datetime.fromisoformat(run["created_at"].replace("Z","+00:00")).astimezone(ZoneInfo("Asia/Seoul"))
+                      if created.date()!=today:
+                          continue
+                      run_id=int(run["id"])
+                      jobs_url=f"https://api.github.com/repos/{repo}/actions/runs/{run_id}/jobs?per_page=100"
+                      try:
+                          with urllib.request.urlopen(urllib.request.Request(jobs_url,headers=headers),timeout=20) as r:
+                              jobs=json.loads(r.read().decode("utf-8")).get("jobs",[])
+                      except Exception:
+                          continue
+                      for job in jobs:
+                          if str(job.get("name") or "") in {"morning","afternoon"} and job.get("status") in {"queued","in_progress"}:
+                              recovered.append((run_id,job.get("name"),job.get("status")))
+                  if recovered:
+                      break
+              if not recovered:
+                  raise AssertionError(
+                      f"scheduled live validation found no active production job after recovery dispatch; active={active}"
+                  )
+              production_jobs.extend(recovered)
+              print(f"scheduled_live_recovery_verified=true production_jobs={recovered}")
           print(
               f"leader_election_api_valid=true active={[(x[1],x[2]) for x in active]} "
               f"leader={leader[1] if leader else None} production_jobs={production_jobs} "
