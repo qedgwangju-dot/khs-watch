@@ -86,7 +86,6 @@ jobs:
           python scripts/verify_khs_policy_delivery_contract.py
           python scripts/verify_gamejoa_delivery_contract.py
           python scripts/verify_khs_policy_readability.py --write-previews
-          python scripts/patch_bwrx300_independent_milestones.py
           python -m py_compile scripts/khs_nuclear_policy_watch.py
           PYTHONPATH=. python - <<'PY'
           import scripts.khs_nuclear_policy_watch as m
@@ -151,7 +150,6 @@ jobs:
       - name: Prepare policy watch runtime patches
         run: |
           python scripts/khs_policy_runtime_patch.py
-          python scripts/patch_bwrx300_independent_milestones.py
 
       - name: Validate policy watch scripts
         run: |
