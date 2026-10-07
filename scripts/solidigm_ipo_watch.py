@@ -667,6 +667,18 @@ def manufacturing_alert_text(old, new, reasons, checked):
     lines.append("• 공정 구분: 대만 SSD 제조·조립 거점 확대이며 NAND 웨이퍼 팹 증설과 분리합니다.")
     lines.append("• 이번 변화: <b>" + html.escape(" · ".join(reasons)) + "</b>")
     if new.get("reported_original") == "Bloomberg" and (
+        old.get("source_name") == "Reuters" or "알림 표시 보강" in " ".join(reasons)
+    ):
+        lines.append(
+            "• 보도 추정치 비교: Reuters(9월 25일) 조달 "
+            + usd_display(15_000_000_000, rate)
+            + "·기업가치 " + usd_display(150_000_000_000, rate)
+            + " ↔ Bloomberg(10월 8일) 조달 "
+            + usd_display(new.get("raise_target_usd"), rate)
+            + "·기업가치 " + usd_display(new.get("valuation_max_usd"), rate)
+        )
+        lines.append("• 확정 공모금액 감액이 아니라 두 시점 보도의 추정치 차이입니다.")
+    if new.get("reported_original") == "Bloomberg" and (
         old.get("source_name") == "Reuters"
         or "알림 표시 보강" in " ".join(reasons)
     ):
