@@ -7,9 +7,10 @@ import sys
 from urllib.parse import urlsplit
 
 SOURCE_PREFIX = "• 원문: "
-TAG_RE = re.compile(r"^\\[(신규병목|계약|개발|증권사|발사슬롯)\\]")
-ASCII_WORD_RE = re.compile(r"\\b[A-Za-z][A-Za-z'-]*\\b")
+TAG_RE = re.compile(r"^\[(신규병목|계약|개발|증권사|발사슬롯)\]")
+ASCII_WORD_RE = re.compile(r"\b[A-Za-z][A-Za-z'-]*\b")
 HANGUL_RE = re.compile(r"[가-힣]")
+SOURCE_TOKEN_RE = re.compile(r"__SOURCE_URL_\d{4}__")
 
 
 def clean_model_output(text: str) -> str:
@@ -21,7 +22,7 @@ def clean_model_output(text: str) -> str:
             lines = lines[1:]
         if lines and lines[-1].strip() == fence:
             lines = lines[:-1]
-        value = "\\n".join(lines).strip()
+        value = "\n".join(lines).strip()
     return value
 
 
@@ -56,7 +57,7 @@ def restore_source_urls(translated: str, urls: list[str]) -> str:
         if token not in restored:
             raise ValueError(f"source URL placeholder missing after translation: {token}")
         restored = restored.replace(token, url, 1)
-    if re.search(r"__SOURCE_URL_\\d{4}__", restored):
+    if SOURCE_TOKEN_RE.search(restored):
         raise ValueError("unexpected source URL placeholder remains")
     return restored
 
@@ -116,34 +117,30 @@ def main() -> int:
         output_path = pathlib.Path(sys.argv[3])
         original = original_path.read_text(encoding="utf-8")
         prepared, _ = prepare_for_translation(original)
-        output_path.write_text(prepared.rstrip() + "\\n", encoding="utf-8")
+        output_path.write_text(prepared.rstrip() + "\n", encoding="utf-8")
         print("space_launch_translation_prepared=true")
         return 0
 
     if len(sys.argv) == 2 and sys.argv[1] == "--self-test":
         original = (
-            "🚀 우주 발사 병목 웹감시\\n"
-            "기준: 2026-10-07 18:23 KST\\n\\n"
-            "[계약] Rocket Lab Electron·Neutron 발사 공급\\n"
-            "• How Investors May Respond To Rocket Lab Winning A Record Contract\\n"
-            "• 검증: 공식자료 | 출처: Rocket Lab\\n"
-            "• 원문: https://example.com/a?x=1&y=2\\n"
+            "🚀 우주 발사 병목 웹감시\n"
+            "기준: 2026-10-07 18:23 KST\n\n"
+            "[계약] Rocket Lab Electron·Neutron 발사 공급\n"
+            "• How Investors May Respond To Rocket Lab Winning A Record Contract\n"
+            "• 검증: 공식자료 | 출처: Rocket Lab\n"
+            "• 원문: https://example.com/a?x=1&y=2\n"
         )
         translated = (
-            "🚀 우주 발사 병목 웹감시\\n"
-            "기준: 2026-10-07 18:23 KST\\n\\n"
-            "[계약] Rocket Lab Electron·Neutron 발사 공급\\n"
-            "• Rocket Lab의 기록적인 계약 체결에 투자자들이 어떻게 반응할 수 있는가\\n"
-            "• 검증: 공식자료 | 출처: Rocket Lab\\n"
-            "• 원문: https://example.com/a?x=1&y=2\\n"
+            "🚀 우주 발사 병목 웹감시\n"
+            "기준: 2026-10-07 18:23 KST\n\n"
+            "[계약] Rocket Lab Electron·Neutron 발사 공급\n"
+            "• Rocket Lab의 기록적인 계약 체결에 투자자들이 어떻게 반응할 수 있는가\n"
+            "• 검증: 공식자료 | 출처: Rocket Lab\n"
+            "• 원문: __SOURCE_URL_0001__\n"
         )
         prepared, urls = prepare_for_translation(original)
         assert "__SOURCE_URL_0001__" in prepared
-        translated_prepared = translated.replace(
-            "https://example.com/a?x=1&y=2",
-            "__SOURCE_URL_0001__",
-        )
-        restored = restore_source_urls(translated_prepared, urls)
+        restored = restore_source_urls(translated, urls)
         validate_korean_translation(original, restored)
         print("space_launch_korean_translation_self_test=ok")
         return 0
@@ -165,7 +162,7 @@ def main() -> int:
     translated = restore_source_urls(translated, urls)
     validate_korean_translation(original, translated)
 
-    destination_path.write_text(translated.rstrip() + "\\n", encoding="utf-8")
+    destination_path.write_text(translated.rstrip() + "\n", encoding="utf-8")
     print("space_launch_korean_translation_validated=true")
     return 0
 
