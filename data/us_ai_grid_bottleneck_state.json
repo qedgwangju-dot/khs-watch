@@ -74,8 +74,48 @@
     "https://www.jll.com/content/dam/jllcom/en/global/documents/reports/research-reports/26-research-global-data-center-outlook-new.pdf",
     "https://www.se.com/us/en/about-us/newsroom/news/press-releases/schneider-electric-and-digital-realty-announce-373m-supply-capacity-agreement-to-meet-rising-data-center-demand-691d192005c0c16f5902ca3c/"
   ],
-  "last_checked_at_kst": "2026-10-07T10:47:20+09:00",
+  "last_checked_at_kst": "2026-10-07T12:24:19+09:00",
   "metric_observation_count": 0,
   "event_count": 0,
-  "latest_evidence_urls": []
+  "latest_evidence_urls": [],
+  "transformer_imports": {
+    "version": 1,
+    "source": {
+      "kind": "U.S. Census Bureau Port HS6 monthly general imports",
+      "layout": "https://www.census.gov/foreign-trade/reference/products/layouts/dporths6i.html",
+      "data_products": "https://www.census.gov/foreign-trade/data/dataproducts.html",
+      "country_codes": "https://www.census.gov/foreign-trade/schedules/c/countrycodes.html"
+    },
+    "scope": {
+      "primary": "HS 850423 액체절연 변압기, 10,000kVA 초과",
+      "liquid_total": "HS 850421~850423 액체절연 변압기 전체",
+      "other_large_context": "HS 850434 기타 변압기, 500kVA 초과",
+      "bps_guard": "HTS는 전압·Covered Foreign Entity 여부를 직접 식별하지 못하므로 HS 수입통계를 EO 14421 적용 물량과 동일시하지 않음"
+    },
+    "policy": {
+      "eo": "Executive Order 14421",
+      "date": "2026-08-26",
+      "whitehouse": "https://www.whitehouse.gov/presidential-actions/2026/08/declaring-a-national-emergency-to-secure-the-united-states-bulk-power-system/",
+      "doe": "https://www.energy.gov/ceser/declaring-national-emergency-secure-united-states-bulk-power-system-executive-order",
+      "interpretation": "전면 수입금지가 아니라 DOE가 Covered Foreign Entity 연계와 국가안보 위험을 판단한 거래를 금지·제한할 수 있는 표적형 조치",
+      "causality_guard": "2026-08은 8월 26일 시행 후 월말 5일뿐이므로 정책효과 월로 판정하지 않음. 2026-09 이후 연속 월별 구조 변화와 실제 DOE 조치·기업 수주를 함께 확인"
+    },
+    "historical_context": {
+      "source_kind": "Critical Materials Atlas의 U.S. Census API 재계산치; 경향 확인용 보조자료",
+      "source": "https://criticalmaterialsatlas.org/grid-trade",
+      "liquid_transformers_850421_23": {
+        "2020": {
+          "china_share_pct": 2.8
+        },
+        "2021": {
+          "china_share_pct": 0.7,
+          "korea_share_pct": 10.0
+        }
+      }
+    },
+    "latest_month": "",
+    "history": {},
+    "last_checked_at_kst": "2026-10-07T12:24:19+09:00",
+    "last_error": "2026-09: HTTPError; 2026-08: ValueError; 2026-07: ValueError"
+  }
 }
