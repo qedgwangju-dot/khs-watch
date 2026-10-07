@@ -20,6 +20,7 @@ FORCE=os.getenv('FORCE_NOTIFY','0')=='1'
 UA='Mozilla/5.0 (compatible; khs-watch/3.0; +https://github.com/qedgwangju-dot/khs-watch)'
 YAHOO='https://query1.finance.yahoo.com/v8/finance/chart/{}?range=1mo&interval=1d&includePrePost=false'
 CBOE_VIX_CSV='https://cdn.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv'
+CBOE_VIX_QUOTE='https://cdn.cboe.com/api/global/delayed_quotes/quotes/_VIX.json'
 STOCKANALYSIS_HISTORY='https://stockanalysis.com/etf/{}/history/'
 METHODOLOGY_VERSION='2026-10-07-v7'
 SECTOR_MOVE_EPS_PCT=0.01
@@ -110,6 +111,27 @@ def cboe_vix_series():
     if len(rows)<7:
         raise RuntimeError('Cboe VIX official history too short')
     return rows
+
+def cboe_vix_quote():
+    j=json.loads(fetch(CBOE_VIX_QUOTE))
+    d=j.get('data') or {}
+    price=d.get('close')
+    if not isinstance(price,(int,float)):
+        price=d.get('current_price')
+    stamp=str(j.get('timestamp') or d.get('last_trade_time') or '').strip()
+    if not isinstance(price,(int,float)) or not stamp:
+        raise RuntimeError('Cboe VIX delayed quote missing price/timestamp')
+    parsed=None
+    for fmt in ('%Y-%m-%d %H:%M:%S','%Y-%m-%dT%H:%M:%S'):
+        try:
+            parsed=datetime.strptime(stamp[:19],fmt)
+            break
+        except Exception:
+            pass
+    if parsed is None:
+        raise RuntimeError(f'Cboe VIX delayed quote timestamp parse failed: {stamp}')
+    return {'date':parsed.date().isoformat(),'close':float(price),'timestamp':stamp}
+
 
 def stockanalysis_latest(symbol, adjusted=False):
     raw=fetch(STOCKANALYSIS_HISTORY.format(symbol.lower()))
@@ -211,13 +233,29 @@ def snapshot():
             f'Cboe VIX official history lag too large: market={common_date} official={official_check_date}'
         )
 
+    # Cboe's delayed quote endpoint is an additional same-session check when its
+    # daily-history CSV has not rolled forward yet.
+    quote=cboe_vix_quote()
+    quote_same_day=(quote['date']==common_date)
+    quote_diff=None
+    if quote_same_day:
+        quote_diff=abs(float(quote['close'])-float(maps['VIX'][common_date]))
+        if quote_diff > 0.05:
+            raise RuntimeError(
+                f'VIX Cboe delayed-quote/Yahoo mismatch {common_date}: '
+                f'Cboe={quote["close"]:.2f} Yahoo={maps["VIX"][common_date]:.2f}'
+            )
+
     out={'date':common_date,'window':{'1d':d1,'3d':d3,'5d':d5},'returns':{},
          'methodology_version':METHODOLOGY_VERSION,
          'hyg_basis':'Yahoo adjusted close total return',
-         'vix_source':'Yahoo completed close with Cboe official overlap validation',
+         'vix_source':'Yahoo completed close with Cboe official history/quote validation',
          'vix_official_crosscheck_date':official_check_date,
          'vix_official_same_day':official_same_day,
          'vix_official_lag_days':lag_days,
+         'vix_cboe_quote_date':quote['date'],
+         'vix_cboe_quote_same_day':quote_same_day,
+         'vix_cboe_quote_diff':quote_diff,
          'vix_crosscheck_max_abs_diff':official_diff,
          'etf_final_close_source':'StockAnalysis / S&P Global Market Intelligence',
          'etf_final_close_date':final_date,
@@ -365,7 +403,12 @@ def main():
     should=FORCE or correction or (not first and (changed or (shock and not old_shock)))
     if should:
         send(message(s, correction=correction, old_date=old.get('date'), correction_reason=correction_reason))
-    if first or new_day or changed or shock!=old_shock or method_changed:
+    validation_changed=(
+        old.get('vix_cboe_quote_date') != s.get('vix_cboe_quote_date')
+        or old.get('vix_cboe_quote_same_day') != s.get('vix_cboe_quote_same_day')
+        or old.get('vix_cboe_quote_diff') != s.get('vix_cboe_quote_diff')
+    )
+    if first or new_day or changed or shock!=old_shock or method_changed or validation_changed:
         save_state({
             'date':s['date'],'window':s.get('window'),'verdict':s['verdict'],'shock':shock,
             'methodology_version':METHODOLOGY_VERSION,
@@ -373,6 +416,9 @@ def main():
             'vix_official_crosscheck_date':s.get('vix_official_crosscheck_date'),
             'vix_official_same_day':s.get('vix_official_same_day'),
             'vix_official_lag_days':s.get('vix_official_lag_days'),
+            'vix_cboe_quote_date':s.get('vix_cboe_quote_date'),
+            'vix_cboe_quote_same_day':s.get('vix_cboe_quote_same_day'),
+            'vix_cboe_quote_diff':s.get('vix_cboe_quote_diff'),
             'vix_crosscheck_max_abs_diff':s.get('vix_crosscheck_max_abs_diff'),
             'etf_final_close_source':s.get('etf_final_close_source'),
             'etf_final_close_date':s.get('etf_final_close_date'),
@@ -386,6 +432,8 @@ def main():
         'methodology_version':METHODOLOGY_VERSION,'hyg_basis':s.get('hyg_basis'),
         'vix_source':s.get('vix_source'),'vix_official_crosscheck_date':s.get('vix_official_crosscheck_date'),
         'vix_official_same_day':s.get('vix_official_same_day'),'vix_official_lag_days':s.get('vix_official_lag_days'),
+        'vix_cboe_quote_date':s.get('vix_cboe_quote_date'),'vix_cboe_quote_same_day':s.get('vix_cboe_quote_same_day'),
+        'vix_cboe_quote_diff':s.get('vix_cboe_quote_diff'),
         'vix_crosscheck_max_abs_diff':s.get('vix_crosscheck_max_abs_diff'),
         'etf_final_close_source':s.get('etf_final_close_source'),
         'etf_final_close_date':s.get('etf_final_close_date'),
