@@ -107,10 +107,11 @@ jobs:
       # Maintenance pushes validate only; they do not enable, resume, or dispatch the live watch.
 
   watch:
-    if: github.event_name != 'push'
+    if: github.event_name != 'push' || contains(github.event.head_commit.message, '[hanul4-live]')
     runs-on: ubuntu-latest
     env:
-      CREATE_GITHUB_ISSUE: "true"
+      HANUL4_ONE_SHOT: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, '[hanul4-live]') && 'true' || 'false' }}
+      CREATE_GITHUB_ISSUE: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, '[hanul4-live]') && 'false' || 'true' }}
       KHS_WATCH_MAX_ALERTS: "5"
       KHS_SOURCE_MAX_AGE_HOURS: "72"
       KHS_WHITEHOUSE_MAX_AGE_HOURS: "120"
@@ -129,7 +130,8 @@ jobs:
       KHS_TELEGRAM_DEDUPE_HOURS: "48"
       SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT || 'KHS-policy-watch contact=please-set-secret' }}
       TELEGRAM_TEST: ${{ github.event.inputs.telegram_test || 'false' }}
-      TELEGRAM_DRY_RUN: ${{ github.event_name == 'push' && 'true' || github.event.inputs.telegram_dry_run || 'false' }}
+      TELEGRAM_DRY_RUN: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, '[hanul4-live]') && 'false' || github.event_name == 'push' && 'true' || github.event.inputs.telegram_dry_run || 'false' }}
+      KHS_HANUL4_ONLY: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, '[hanul4-live]') && 'true' || 'false' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -189,35 +191,36 @@ jobs:
           python scripts/verify_high_impact_news_self_audit.py
 
       - name: Run policy watch
+        if: env.HANUL4_ONE_SHOT != 'true'
         timeout-minutes: 10
         run: python scripts/khs_policy_watch.py
 
       - name: Run trusted policy news watch
-        if: always()
+        if: always() && env.HANUL4_ONE_SHOT != 'true'
         timeout-minutes: 8
         continue-on-error: true
         run: python scripts/khs_trusted_policy_news_watch.py
 
       - name: Run domestic telecom policy watch
-        if: always()
+        if: always() && env.HANUL4_ONE_SHOT != 'true'
         timeout-minutes: 5
         continue-on-error: true
         run: python scripts/khs_domestic_telecom_policy_watch.py
 
       - name: Run domestic stablecoin policy watch
-        if: always()
+        if: always() && env.HANUL4_ONE_SHOT != 'true'
         timeout-minutes: 6
         continue-on-error: true
         run: python scripts/khs_domestic_stablecoin_policy_watch.py
 
       - name: Run domestic nuclear siting policy watch
-        if: always()
+        if: always() && env.HANUL4_ONE_SHOT != 'true'
         timeout-minutes: 4
         continue-on-error: true
         run: python scripts/khs_korea_nuclear_siting_policy_watch.py
 
       - name: Run transformer tariff policy watch
-        if: always()
+        if: always() && env.HANUL4_ONE_SHOT != 'true'
         timeout-minutes: 4
         continue-on-error: true
         run: python scripts/khs_transformer_tariff_policy_watch.py
@@ -233,11 +236,11 @@ jobs:
         run: python scripts/khs_policy_alert_guardrails.py
 
       - name: Apply transformer tariff alert postprocess
-        if: always()
+        if: always() && env.HANUL4_ONE_SHOT != 'true'
         run: python scripts/khs_transformer_tariff_postprocess.py
 
       - name: Apply domestic nuclear siting alert postprocess
-        if: always()
+        if: always() && env.HANUL4_ONE_SHOT != 'true'
         run: python scripts/khs_domestic_nuclear_siting_postprocess.py
 
       - name: Route policy alerts by lane
@@ -264,7 +267,7 @@ jobs:
         run: python scripts/khs_telegram_delivery_guard.py
 
       - name: Build source status alert
-        if: always()
+        if: always() && env.HANUL4_ONE_SHOT != 'true'
         run: python scripts/khs_policy_source_status_alert.py
 
       - name: Publish step summary
