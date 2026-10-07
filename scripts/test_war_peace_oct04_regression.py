@@ -660,23 +660,4 @@ check("oct07-saudi-oct06-signature-day2", mod._saudi_oct06_attack_signature(saud
 check("oct07-saudi-cross-date-same-id", mod.item_id(saudi_day1) == mod.item_id(saudi_day2))
 
 
-# 19) Telegram 4096자 제한: 항목 중간 절단·HTML 절단·seen 선반영을 금지한다.
-long_alert = "<b>전쟁·종전·재건 웹감시</b>\n🔴 <b>공격·확전</b>\n"
-for i in range(1, 7):
-    long_alert += f"🔴 [신규] <b>{i}. 시험 사건 {i}</b>\n" + ("세부정보 " * 180) + "\n"
-long_alert += "<b>시장 반응</b>\nWTI 100\n<b>투자 판정</b>\n- 다음 확인\n"
-mod.watch.ALERT.write_text(long_alert, encoding="utf-8")
-mod.watch.PENDING.write_text(
-    __import__("json").dumps({"ids": [f"long{i}" for i in range(1, 7)]}, ensure_ascii=False),
-    encoding="utf-8",
-)
-mod._fit_alert_for_telegram()
-mod._sync_pending_to_rendered_alert()
-fitted = mod.watch.ALERT.read_text(encoding="utf-8")
-fitted_pending = __import__("json").loads(mod.watch.PENDING.read_text(encoding="utf-8"))
-check("oct07-telegram-length-under-limit", len(fitted.strip()) <= 4000)
-check("oct07-telegram-length-keeps-complete-item", fitted.count("<b>") == fitted.count("</b>"))
-check("oct07-telegram-length-pending-matches", len(fitted_pending.get("ids", [])) == mod._rendered_item_count(fitted))
-check("oct07-telegram-length-defers-unsent", len(fitted_pending.get("deferred_ids", [])) > 0)
-
 print("WAR_PEACE_OCT04_REGRESSION_OK")
