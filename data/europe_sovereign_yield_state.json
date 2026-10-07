@@ -1,5 +1,5 @@
 {
-  "last_checked_kst": "2026-10-08T00:01:08+09:00",
+  "last_checked_kst": "2026-10-08T00:35:09+09:00",
   "active": {
     "fr10:above:4.5": true,
     "fr10:above:4.75": true,
@@ -13,7 +13,12 @@
     "de10:5obs:25.0": false,
     "fr_de_spread:above:100.0": true,
     "fr_de_spread:above:125.0": true,
-    "fr_de_spread:above:150.0": false
+    "fr_de_spread:above:150.0": false,
+    "uk10:above:5.0": true,
+    "uk10:above:5.25": true,
+    "uk10:above:5.5": false,
+    "uk10:daymove:10.0": false,
+    "uk10:5obs:25.0": false
   },
   "history": {
     "fr10": [
@@ -27,16 +32,24 @@
         "date": "2026-10-07",
         "value": 3.49
       }
+    ],
+    "uk10": [
+      {
+        "date": "2026-10-05",
+        "value": 5.3634
+      }
     ]
   },
   "source_fail_streak": 0,
   "last_source_dates": {
     "fr10": "2026-10-07",
-    "de10": "2026-10-07"
+    "de10": "2026-10-07",
+    "uk10": "2026-10-05"
   },
   "last_values": {
     "fr10": 4.834,
-    "de10": 3.49
+    "de10": 3.49,
+    "uk10": 5.3634
   },
   "stale": []
 }
