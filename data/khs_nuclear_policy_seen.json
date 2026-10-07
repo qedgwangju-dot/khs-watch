@@ -42,6 +42,27 @@
     "trigger": "official_bwrx300_execution_milestone"
   },
   "bwrx300_us_state_model_version": 2,
+  "hanul4_operation_state": {
+    "first_seen_kst": "2026-10-07T20:10:25+09:00",
+    "kind": "domestic_reactor_operation",
+    "link": "https://m.korea.kr/briefing/pressReleaseView.do?newsId=156784522&pWise=mSub&pWiseSub=C4",
+    "live_status": "미확인",
+    "live_status_source": "https://m.khnp.co.kr/main/index.do",
+    "official": true,
+    "published_kst": "2026-10-07T14:10:39+09:00",
+    "published_utc": "2026-10-07T05:10:39+00:00",
+    "rank": 1,
+    "reactor": "한울4호기",
+    "secondary_link": "https://www.newsis.com/view/NISX20261007_0003817361",
+    "source": "원자력안전위원회 보도자료 · 뉴시스 교차확인",
+    "stage": "restart_approved",
+    "status": "원안위 재가동 승인",
+    "title": "원안위, 한울4호기 재가동 승인",
+    "trigger": "verified_domestic_reactor_operation_stage_change",
+    "verification": "원자력안전위원회 2026-10-07 보도자료 직접 확인 + 독립 언론 교차확인",
+    "verified": true
+  },
+  "hanul4_operation_state_model_version": 2,
   "seen": {
     "083ab82f426da9f7": {
       "first_seen_kst": "2026-06-24T07:10:16+09:00",
@@ -77,7 +98,7 @@
     }
   },
   "smr_state_model_version": 3,
-  "updated_at_kst": "2026-10-07T02:16:35+09:00",
+  "updated_at_kst": "2026-10-07T20:10:25+09:00",
   "westinghouse_issue_state": {
     "correction_note": "2026-10-03 IT조선 이사회 진입 추진 보도는 신규 확정 상태가 아니므로 기준선에서 제외",
     "first_seen_kst": "2026-10-04T09:38:05+09:00",
