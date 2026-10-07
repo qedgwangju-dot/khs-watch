@@ -3066,3 +3066,196 @@ s = s.replace(state_policy_links_old, state_policy_links_new, 1)
 
 p.write_text(s, encoding="utf-8")
 print("US time-to-power flexible-load + 800V SiC/GaN + state-policy guard inserted")
+
+
+# OCT2026_EIA_ESS_PROVENANCE_GUARD
+# Patch only the active generation watcher. A research chart is not a backlog.
+g = Path("scripts/us_data_center_generation_buildout_watch.py")
+t = g.read_text(encoding="utf-8")
+eia_func_anchor = "\ndef detect_power_changes(old: dict, now: dict) -> list[str]:\n"
+eia_func = r'''
+EIA_OCT2026_VERIFIED = {
+    "eia_verified_release": "2026-10-06",
+    "eia_consumption_2025_twh": 4195.0,
+    "eia_consumption_2026_twh": 4288.0,
+    "eia_consumption_2027_twh": 4356.0,
+    "eia_sales_2025_twh": 4058.0,
+    "eia_sales_2026_twh": 4152.0,
+    "eia_sales_2027_twh": 4217.0,
+    "eia_wholesale_2026_usd_mwh": 52.0,
+    "eia_wholesale_2027_usd_mwh": 49.0,
+    "eia_pjm_2026_yoy_pct": 41.0,
+    "eia_northwest_2026_yoy_pct": -23.0,
+}
+ESS_RESEARCH_SERIES = {
+    "source": "사용자 제공 Morgan Stanley Exhibit 7 · 연구 전망, 확정 수주 아님",
+    "unit": "연간 GWh",
+    "2025": {"non_dc": 57, "dc": 0, "total": 57},
+    "2026": {"non_dc": 80, "dc": 14, "total": 94},
+    "2027": {"non_dc": 95, "dc": 31, "total": 126},
+    "2028": {"non_dc": 103, "dc": 62, "total": 165},
+    "2029": {"non_dc": 109, "dc": 108, "total": 217},
+    "2030": {"non_dc": 110, "dc": 169, "total": 279},
+}
+
+def _check_eia_and_ess_provenance():
+    for year in (2025, 2026, 2027):
+        if not (3500 < EIA_OCT2026_VERIFIED[f"eia_sales_{year}_twh"]
+                < EIA_OCT2026_VERIFIED[f"eia_consumption_{year}_twh"] < 6000):
+            raise RuntimeError("EIA annual sales/consumption unit regression")
+    for year in range(2025, 2031):
+        series = ESS_RESEARCH_SERIES[str(year)]
+        if series["non_dc"] + series["dc"] != series["total"]:
+            raise RuntimeError(f"ESS chart annual stacked sum failed: {year}")
+    if round(100 * 169 / 279, 1) != 60.6:
+        raise RuntimeError("ESS 2030 mix checksum failed")
+
+
+def _parse_eia_7a_archive(book_bytes):
+    # EIA official archive Excel, Table 7a: quarterly cells then annual values.
+    from io import BytesIO
+    from openpyxl import load_workbook
+    workbook = load_workbook(BytesIO(book_bytes), read_only=True, data_only=True)
+    found = {}
+    for sheet in workbook.worksheets:
+        if "7a" not in sheet.title.lower().replace(" ", ""):
+            continue
+        for row in sheet.iter_rows(min_row=1, max_row=min(sheet.max_row, 160), values_only=True):
+            label = " ".join(str(x or "").lower() for x in row[:3])
+            key = "consumption" if "total consumption" in label else (
+                "sales" if "sales to ultimate customers" in label else "")
+            if not key:
+                continue
+            values = []
+            for cell in row[1:]:
+                try:
+                    value = float(str(cell).replace(",", ""))
+                    if 3000 < value < 6000:
+                        values.append(value)
+                except (TypeError, ValueError):
+                    pass
+            if len(values) >= 3:
+                found[key] = values[-3:]
+        if len(found) == 2:
+            break
+    if set(found) != {"consumption", "sales"}:
+        raise ValueError("official EIA Table 7a annual rows unavailable")
+    result = {}
+    for index, year in enumerate((2025, 2026, 2027)):
+        a, b = found["consumption"][index], found["sales"][index]
+        if not (3500 < b <= a < 6000 and 50 <= a - b <= 350):
+            raise ValueError(f"electricity sector/units mismatch for {year}")
+        result[f"eia_consumption_{year}_twh"] = a
+        result[f"eia_sales_{year}_twh"] = b
+    return result
+
+
+def enrich_eia_steo_metrics(metrics, previous):
+    _check_eia_and_ess_provenance()
+    now = dict(metrics)
+    errors = []
+    saved_release = str(previous.get("eia_verified_release") or "")
+    if saved_release > "2026-10-06":
+        now.update({k: v for k, v in previous.items()
+                    if k in EIA_OCT2026_VERIFIED and v is not None})
+    else:
+        now.update(EIA_OCT2026_VERIFIED)
+
+    # Source date must be confirmed before any newer monthly values are claimed.
+    try:
+        import datetime
+        url = "https://www.eia.gov/outlooks/steo/report/"
+        page = normalize(BeautifulSoup(fetch(url, 16).text, "html.parser").get_text(" "))
+        m = re.search(
+            r"Release Date:\s*((?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},\s+20\d{2})",
+            page, re.I,
+        )
+        if not m:
+            errors.append("EIA 공식 신판 날짜 확인 불가; 검증된 기존 기준 유지")
+            return now, errors
+        pub_date = datetime.datetime.strptime(m.group(1), "%B %d, %Y")
+        release = pub_date.strftime("%Y-%m-%d")
+        now["eia_latest_release_checked"] = release
+        if release <= now["eia_verified_release"]:
+            return now, errors
+        suffix = pub_date.strftime("%b%y").lower()
+        try:
+            book = fetch(
+                f"https://www.eia.gov/outlooks/steo/archives/{suffix}_base.xlsx", 22
+            ).content
+            parsed = _parse_eia_7a_archive(book)
+            now.update(parsed)
+            now["eia_verified_release"] = release
+            now["eia_unverified_new_release"] = ""
+        except Exception as exc:
+            now["eia_unverified_new_release"] = release
+            errors.append(f"EIA {release} 발간, 새 원표 아직 검증 불가: {type(exc).__name__}")
+    except Exception as exc:
+        errors.append(f"EIA 실시간 조회 불가, 기존 검증 수치 유지: {type(exc).__name__}")
+    return now, errors
+
+'''
+if(!t.includes(eia_func_anchor)) throw Error("EIA function anchor missing");
+t=t.replace(eia_func_anchor,"\n"+eia_func+eia_func_anchor);
+function change(oldText,newText,label) {if(!t.includes(oldText))throw Error(label+" missing");t=t.replace(oldText,newText)}
+change(
+  'power_metrics, power_errors = parse_power_metrics(old.get("power_metrics") or {})\n',
+  'power_metrics, power_errors = parse_power_metrics(old.get("power_metrics") or {})\n'+
+  'power_metrics, eia_parse_errors = enrich_eia_steo_metrics(power_metrics, old.get("power_metrics") or {})\n'+
+  'power_errors.extend(eia_parse_errors)\n'+
+  'ms_ess_annual = ESS_RESEARCH_SERIES\n',
+  "runtime");
+change(
+  '("eia_sales_2026_twh", 10.0, "EIA 미국 2026 전력판매 전망", "TWh"),',
+  '("eia_sales_2026_twh", 10.0, "EIA 미국 2026 전력판매 전망", "TWh"),\n'+
+  '        ("eia_consumption_2026_twh", 10.0, "EIA 2026 전체 전력소비 전망", "TWh"),\n'+
+  '        ("eia_consumption_2027_twh", 10.0, "EIA 2027 전체 전력소비 전망", "TWh"),\n'+
+  '        ("eia_pjm_2026_yoy_pct", 5.0, "EIA PJM 2026 도매가격 전년비", "%"),',
+  "change thresholds");
+change(
+  '    "power_metrics": power_metrics,\n    "power_source_errors": power_errors,\n',
+  '    "power_metrics": power_metrics,\n    "power_source_errors": power_errors,\n    "ms_ess_annual_forecast": ms_ess_annual,\n',
+  "existing state");
+change(
+  '    msg += ["", "<b>⚡ Morgan Stanley·Goldman Sachs 전력 병목 기준선</b>"]\n',
+  '    msg += ["", "<b>⚡ Morgan Stanley·Goldman Sachs 전력 병목 기준선</b>"]\n'+
+  '    msg.append(\n'+
+  '        f"• <b>EIA 공식 전력소비·판매</b> │ 2025~2027 소비 "\n'+
+  '        f"{power_metrics[\'eia_consumption_2025_twh\']:,.0f}→{power_metrics[\'eia_consumption_2026_twh\']:,.0f}→{power_metrics[\'eia_consumption_2027_twh\']:,.0f}TWh "\n'+
+  '        f"· 판매 {power_metrics[\'eia_sales_2025_twh\']:,.0f}→{power_metrics[\'eia_sales_2026_twh\']:,.0f}→{power_metrics[\'eia_sales_2027_twh\']:,.0f}TWh "\n'+
+  '        f"│ 검증판 {power_metrics[\'eia_verified_release\']}"\n'+
+  '    )\n'+
+  '    msg.append(\n'+
+  '        f"• <b>EIA 도매전력가격</b> │ 2026 평균 {power_metrics[\'eia_wholesale_2026_usd_mwh\']:g}달러/MWh "\n'+
+  '        f"· PJM +{power_metrics[\'eia_pjm_2026_yoy_pct\']:g}% · 북서부 {power_metrics[\'eia_northwest_2026_yoy_pct\']:g}%"\n'+
+  '    )\n',
+  "message official stats");
+change(
+  'f"• <b>Morgan Stanley ESS</b> │ 미국 연간 설치 2025 ',
+  'f"• <b>Morgan Stanley ESS</b> │ 미국 연간 수요 전망 2025 ',
+  "ESS forecast not delivered");
+change(
+  'f"· 데이터센터 <b>{b[\'ms_ess_dc_2030_gwh\']:g}GWh</b> │ Morgan Stanley 전망을 인용한 2차 공개자료 기준"',
+  'f"· 데이터센터 2026 14→2027 31→2028 62→2029 108→2030 <b>{b[\'ms_ess_dc_2030_gwh\']:g}GWh</b> "\n'+
+  '        f"(2030 비중 {b[\'ms_ess_dc_2030_gwh\']/b[\'ms_ess_us_2030_gwh\']*100:.1f}%) │ 사용자 제공 연구 그래프·확정수주 아님"',
+  "ESS year series");
+change(
+  '        "• Goldman Sachs 2026~2027 미국 용량",',
+  '        "• EIA 공식 전력소비·판매",\n        "• EIA 도매전력가격",\n        "• Goldman Sachs 2026~2027 미국 용량",',
+  "compact headline");
+change(
+  'out += ["", "<b>📡 최신 수요·분산전원</b>"] + research_keep[:4]',
+  'out += ["", "<b>📡 최신 수요·분산전원</b>"] + research_keep[:6]',
+  "compact items");
+change(
+  '    f"- EIA 2027 전력판매 전망: **{power_metrics[\'eia_sales_2027_twh\']} TWh**\\n"',
+  '    f"- EIA 2027 전력판매 전망: **{power_metrics[\'eia_sales_2027_twh\']} TWh**\\n"\n'+
+  '    f"- EIA 검증 기준일: **{power_metrics[\'eia_verified_release\']}**\\n"\n'+
+  '    f"- EIA 2026/2027 전체 소비량: **{power_metrics[\'eia_consumption_2026_twh\']}/{power_metrics[\'eia_consumption_2027_twh\']} TWh**\\n"\n'+
+  '    f"- EIA 2026/2027 판매량: **{power_metrics[\'eia_sales_2026_twh\']}/{power_metrics[\'eia_sales_2027_twh\']} TWh**\\n"\n'+
+  '    f"- MS ESS 연간 2030 전체/DC: **{ms_ess_annual[\'2030\'][\'total\']}/{ms_ess_annual[\'2030\'][\'dc\']} GWh**\\n"',
+  "status source provenance");
+if(t.split("FORMAT_VERSION = 8").length!==2)throw Error("unexpected generation version count");
+t=t.replace("FORMAT_VERSION = 8","FORMAT_VERSION = 9");
+g.write_text(t,encoding="utf-8")
+print("EIA verified consumption-sales and Morgan Stanley annual ESS chart applied")
