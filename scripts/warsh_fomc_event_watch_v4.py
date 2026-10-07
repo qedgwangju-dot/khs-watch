@@ -101,8 +101,12 @@ def main():
         previous_statement = state.get('current_statement')
         previous_sep = state.get('current_sep')
         cur_market = base.market_snapshot()
+        # Only treat SEP as a fresh event input when projections belong to this
+        # exact meeting. On non-projection meetings, the previous SEP remains
+        # background context and must not be presented as a newly issued dot plot.
+        event_sep = sep if sep and sep.get('date') == stmt.get('date') else None
         msg = base.decision_message(
-            previous_statement, stmt, previous_sep, sep,
+            previous_statement, stmt, previous_sep, event_sep,
             state.get('pre_event_market'), cur_market
         )
         base.send(msg)
@@ -119,7 +123,7 @@ def main():
         if event_date:
             base.EVENT_DATE = event_date
             persistence.base.EVENT_DATE = event_date
-        if sep:
+        if sep and sep.get('date') == stmt.get('date'):
             state['current_sep'] = sep
             state['last_sep_url'] = sep_url
 
