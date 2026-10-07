@@ -1436,6 +1436,15 @@ def collect_hanul4_operation_items(now: dt.datetime) -> list[dict]:
         live_status = main_status
         live_source = HANUL4_KHNP_MAIN
 
+    print(
+        "hanul4_khnp_observation "
+        f"status_main={status_main or 'none'} "
+        f"main_status={main_status or 'none'} "
+        f"main_fresh={str(main_fresh).lower()} "
+        f"main_ramp={str(main_ramp).lower()} "
+        f"resolved={live_status or '미확인'}"
+    )
+
     # '운전 전환'은 한 화면의 캐시/오래된 문구로 승격하지 않는다.
     # 본사 호기별 상태가 '운전'이고, 측정시각이 신선한 메인 공식 표면에서도
     # 운전 또는 명시적 출력상승이 확인될 때만 운영단계로 승격한다.
