@@ -1838,20 +1838,24 @@
     "event:4a590bdc13d1d923cb292664": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
       "lanes": {
-        "live": "2026-10-07T08:15:28+09:00"
+        "live": "2026-10-07T08:57:59+09:00"
       },
-      "last_seen_kst": "2026-10-07T08:15:28+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2633059",
-      "source": "이투데이",
-      "source_body_digest": "e4d6dc4f61e5a29046a52dc52dcafef879891d1e1cd4cd2d33f20586c89d93b7",
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://www.hankyung.com/article/2026100769256",
+      "source": "한국경제",
+      "source_body_digest": "3a5b821c5b025b17b4d4c4e6c99667b38e0dcaf55fa416c55eb04ef58578fd95",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:a633b4a7903cac3473f1efd7080093e5e9d638d259c5b0494e666d619025213b",
+      "source_fact_identity": "source_facts:v1:5307857d74651a8665f162e656b1432494b8e9d15a0c2d4bf472e73a01d69a5e",
       "source_fact_keys": [
-        "source_fact:v1:926b60dae527e455c39723cd99743ff6fb5cb6af96749f03e7d6fa27cc579364",
-        "source_fact:v1:ac4d1d5abc57642d5a716181014fae7a1da50c12d85044376076d01c765ad858"
+        "source_fact:v1:218a9ee0c95efa37e5a658533266c59446dd7fa1425a6c1f8255c24ca2187306",
+        "source_fact:v1:8c5cc95f0805fd4f4499d73b57d4f97efa61af7562c129a9fd3e1563a9e7c337",
+        "source_fact:v1:b93e4f9ec9e4d199ab8a38ce07dc659a70bedcdb187c9944c2ea8d70f7a9ee98",
+        "source_fact:v1:bcc0d08ddada121358f98394c451eb2a9613c91d0cf0d28ae80bad5da3fa1ffa",
+        "source_fact:v1:d31a3ac60e74c1facbe57c5a4f8ccdbfaab7f44c8fd860e9077ac8b42604fb5f",
+        "source_fact:v1:f6bf6819c2fdf2078928f787ee989cfe23ba7eb8826497fb6b988d9bc8bd6780"
       ],
-      "source_published_kst": "2026-10-07T06:04+09:00",
-      "title": "[속보] 국제유가, 강보합⋯WTI 0.01% ↑"
+      "source_published_kst": "2026-10-07T07:49+09:00",
+      "title": "\"삼성전자 HBM 가격 2배 뛴다…D램 3사 중 가장 높은 가격 전망\""
     },
     "event:4aa13fe7e5d51c0930b88592": {
       "first_seen_kst": "2026-09-21T10:52:59+09:00",
@@ -2617,20 +2621,21 @@
     "event:695102b941e71506d24b4e08": {
       "first_seen_kst": "2026-10-07T04:49:54+09:00",
       "lanes": {
-        "live": "2026-10-07T08:36:47+09:00"
+        "live": "2026-10-07T08:57:59+09:00"
       },
-      "last_seen_kst": "2026-10-07T08:36:47+09:00",
-      "link": "https://www.mt.co.kr/index.php/world/2026/10/07/2026100707045428535",
-      "source": "머니투데이",
-      "source_body_digest": "bd0028d627646d51213964d33b2183b7278ab29d493480d7c7b7b4b64f5f41d1",
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894978",
+      "source": "헤럴드경제",
+      "source_body_digest": "3e4a5aeed90b794e01e1cd0b7cdfb28f288d42317c5ad9a7bdcc12d551a735db",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:d7193646cb9c38a62d108049e754c13f494d4de4040ea4c6d8cd2b1530b63094",
+      "source_fact_identity": "source_facts:v1:a13dd638f6d228c7ab36f8963ba0b1a22ac4fc547b773610127067c2decb30aa",
       "source_fact_keys": [
-        "source_fact:v1:4e745276373dc1c6ad455bf98ed5c6e3f108f74db2e82091b8185969870986ce",
-        "source_fact:v1:58a0e08e6bbf4e8ca6c0c31a4cc0e7318edf719321755af26208d1576999ecdc"
+        "source_fact:v1:3bd0a6145146178f8657272a790b61a1d5e006d8de88e85fd131f6671e0cda07",
+        "source_fact:v1:5cc73772796cd8bcbed2cd90b3e9df6d0ca766cd3c9372692f076b43ad16f756",
+        "source_fact:v1:7953912e7d285c76ea36b52f495d2397202ac3b4ec6f018d6be9c7671c0fc011"
       ],
-      "source_published_kst": "2026-10-07T07:34+09:00",
-      "title": "\"한국, 관세 낮추려 대가 치렀다\"…트럼프, 대미 투자 성과 재차 부각"
+      "source_published_kst": "2026-10-07T08:41+09:00",
+      "title": "튀르키예, 사우디에 특수부대·전투기 보낸다…‘메카 방위동맹’ 가동"
     },
     "event:6994ec3ec51f16c535c2ebd5": {
       "first_seen_kst": "2026-09-28T15:47:59+09:00",
@@ -8987,6 +8992,26 @@
       "source_published_kst": "2026-10-06T18:31+09:00",
       "title": "김정관 “전쟁 후 알래스카 LNG 전략적 가치 생겨”…‘상업성 검토’ 착수"
     },
+    "fact:1b0a2b036c6821e08021c8ac": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170610",
+      "source": "매일경제",
+      "source_body_digest": "fa37dcec44da7e026227f4a1d6439ec40b24d61ab8516f0c3618dcc056d7e5fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb1f78080edcc202e388294b1630c9015d28e2b5ebace132e0b3d3004590393f",
+      "source_fact_keys": [
+        "source_fact:v1:282fb17238d12207cd442125e82739427dd62ba224b1f9837673d90359733a3d",
+        "source_fact:v1:5d3510a27c7119a6b573a48f3881d7e0cb2117d7a5bbb15d726b6c72c4b04083",
+        "source_fact:v1:9d2491e8318c4a6e039db20ef5bfa6099e70b60bcd4fff1cf9a0eb2cafc26c66",
+        "source_fact:v1:dc25e2d8f88575f1ea0a324ee997226bbc61a55aa269e17331a9698db407da36"
+      ],
+      "source_published_kst": "2026-10-07T08:45+09:00",
+      "title": "멜라르 애퀴지션 I, 에벌리 합병 SEC 효력 발생..22일 주총 표결"
+    },
     "fact:1b1b7db2ad5c3891394ad35f": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
       "lanes": {
@@ -11626,6 +11651,26 @@
       "source_published_kst": "2026-10-07T05:09+09:00",
       "title": "[속보]美국채금리 숨고르자 S&P·나스닥 '사상 최고'"
     },
+    "fact:48753517d03c032216fafc7e": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816625",
+      "source": "뉴시스",
+      "source_body_digest": "9db52abcf63b6f0cd7d4904afaf7cbd378bdb765cc7b89ce19a56a566a1bb74b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:235aff39ae8d48e0ef4e55cb04b7a25fbc8b673a30398ac2b0e8581752c2b0bb",
+      "source_fact_keys": [
+        "source_fact:v1:1d177bfad20005bd10d300a092df66a0052e6fa01549d4a3226bd9237925df78",
+        "source_fact:v1:73bb2bbaef106625cbc4afaef7f9bc1256e9dfb94c278ca74771de94b3b71a24",
+        "source_fact:v1:7cf05e0687df6810d9481494544cd0f4ad37fff231fbc9053c79d9ae7106d3e9",
+        "source_fact:v1:81d317ec59088e1b53ec1c6d49f847dc97d8c92c6f3edfcd8cb2959670d3ed79"
+      ],
+      "source_published_kst": "2026-10-07T08:35+09:00",
+      "title": "유니온바이오메트릭스, 172억 규모 육군 사업 수주"
+    },
     "fact:4913aa99c90153d2bc3abc6d": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
       "lanes": {
@@ -11839,6 +11884,24 @@
       ],
       "source_published_kst": "2026-10-07T07:38+09:00",
       "title": "NAVER, 3분기 실적은 부진...AI팩토리·두나무 합병 주목-유진"
+    },
+    "fact:4cacff002b85c353e21837de": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170594",
+      "source": "매일경제",
+      "source_body_digest": "222fdf90ec699e6c0a605e1bdb6fb9129c165602e636ab43f130430cc1e39e36",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:69f4a369c6f7bd3c3b98471e4d11c2a38c96848fbb96ec1e10b794380f241672",
+      "source_fact_keys": [
+        "source_fact:v1:337cb1c133ca8cdf4929291c59ff54ade337ef7524c07f371738ec3a6f9c79fa",
+        "source_fact:v1:e2a6bb8f1eb69065d67c8a3fd9d90ec806492ec59c1ef26b37d3fb82c4a911d6"
+      ],
+      "source_published_kst": "2026-10-07T08:42+09:00",
+      "title": "토요, 2분기 매출 1억1800만 달러…영업이익 2배"
     },
     "fact:4cbaae6970c4c5a19676fdcf": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
@@ -16655,6 +16718,28 @@
       "source_published_kst": "2026-10-05T21:20+09:00",
       "title": "디파이 디벨롭먼트, 3분기 주당 NAV 2배 이상 전망..SOL 보유 11%↑"
     },
+    "fact:990604129c75a9a0e7928048": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://www.hankyung.com/article/2026100769256",
+      "source": "한국경제",
+      "source_body_digest": "3a5b821c5b025b17b4d4c4e6c99667b38e0dcaf55fa416c55eb04ef58578fd95",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5307857d74651a8665f162e656b1432494b8e9d15a0c2d4bf472e73a01d69a5e",
+      "source_fact_keys": [
+        "source_fact:v1:218a9ee0c95efa37e5a658533266c59446dd7fa1425a6c1f8255c24ca2187306",
+        "source_fact:v1:8c5cc95f0805fd4f4499d73b57d4f97efa61af7562c129a9fd3e1563a9e7c337",
+        "source_fact:v1:b93e4f9ec9e4d199ab8a38ce07dc659a70bedcdb187c9944c2ea8d70f7a9ee98",
+        "source_fact:v1:bcc0d08ddada121358f98394c451eb2a9613c91d0cf0d28ae80bad5da3fa1ffa",
+        "source_fact:v1:d31a3ac60e74c1facbe57c5a4f8ccdbfaab7f44c8fd860e9077ac8b42604fb5f",
+        "source_fact:v1:f6bf6819c2fdf2078928f787ee989cfe23ba7eb8826497fb6b988d9bc8bd6780"
+      ],
+      "source_published_kst": "2026-10-07T07:49+09:00",
+      "title": "\"삼성전자 HBM 가격 2배 뛴다…D램 3사 중 가장 높은 가격 전망\""
+    },
     "fact:9a08496138a5c99015cf7150": {
       "first_seen_kst": "2026-10-06T15:44:02+09:00",
       "lanes": {
@@ -18413,6 +18498,25 @@
       "source_published_kst": "2026-10-06T11:23+09:00",
       "title": "삼성전기, 반년도 안 돼 컴포넌트 연매출 75% 채웠다⋯AI부품 수주 ‘4조 클럽’"
     },
+    "fact:bb24caa20019ff78c58b503e": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894978",
+      "source": "헤럴드경제",
+      "source_body_digest": "3e4a5aeed90b794e01e1cd0b7cdfb28f288d42317c5ad9a7bdcc12d551a735db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a13dd638f6d228c7ab36f8963ba0b1a22ac4fc547b773610127067c2decb30aa",
+      "source_fact_keys": [
+        "source_fact:v1:3bd0a6145146178f8657272a790b61a1d5e006d8de88e85fd131f6671e0cda07",
+        "source_fact:v1:5cc73772796cd8bcbed2cd90b3e9df6d0ca766cd3c9372692f076b43ad16f756",
+        "source_fact:v1:7953912e7d285c76ea36b52f495d2397202ac3b4ec6f018d6be9c7671c0fc011"
+      ],
+      "source_published_kst": "2026-10-07T08:41+09:00",
+      "title": "튀르키예, 사우디에 특수부대·전투기 보낸다…‘메카 방위동맹’ 가동"
+    },
     "fact:bb3c3dd1a21e5de07ad46b4d": {
       "first_seen_kst": "2026-10-06T19:10:36+09:00",
       "lanes": {
@@ -18785,6 +18889,26 @@
       ],
       "source_published_kst": "2026-10-05T22:29+09:00",
       "title": "유나이티드 마이크로일렉, 18억 달러 전환사채 발행 확정..쿠폰 0%"
+    },
+    "fact:c2352cbb658c31dad25aa29c": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170596",
+      "source": "매일경제",
+      "source_body_digest": "0e5c86ca1ad1bdc95e7ad7408009c904d443d70fd87525bfa08deb5886c10366",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c0d1e0f5fc9c023d606acef244f4e19d319d5ff591b2a7e9559c183b8b6a92c",
+      "source_fact_keys": [
+        "source_fact:v1:48dac005f5f80f4e713b4ad88c48684afcb8fe67662463e751dfa75e23dcb431",
+        "source_fact:v1:af9d6f34080c66a7794bb3c5e952e6ad2258f84f26870a91f41c11355c7a6ced",
+        "source_fact:v1:d0fc8cbed936117aefae011277cb153a0dfe870673204a597a88cb46167acc44",
+        "source_fact:v1:df828eb125658a50705e34be85b6dd889f1e9750dfdd4782e242ab59f067be4f"
+      ],
+      "source_published_kst": "2026-10-07T08:42+09:00",
+      "title": "셰브론, 헤스 미드스트림 지분 넘기고 바켄 비용 50% 절감"
     },
     "fact:c27a22978ff96f23fdc574fe": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
@@ -19207,6 +19331,30 @@
       ],
       "source_published_kst": "2026-10-06T16:07+09:00",
       "title": "불광5구역 21년 만에 철거 시작…2406가구 들어선다"
+    },
+    "fact:cb20ab3a1ed5e924377c7f58": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170608",
+      "source": "매일경제",
+      "source_body_digest": "5ace3d2a3969a5b694d7800a7128d2427752806d652d369dca4eaf327643b3ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b87812747495ba775506abae240342a42cd426e8691837ab85d60d1e353d7cd",
+      "source_fact_keys": [
+        "source_fact:v1:2646401e533d49528271f0bb37702ad73769bb7964a7a50df76e9d60257d5f03",
+        "source_fact:v1:567b8eb32a26936f6b9f874111814de538fcfaf22072d70a60c687f4b0b30aa2",
+        "source_fact:v1:6c7dddc56a64899438b3cd9ed3607ae8436e5d6dfc0f54e9ccb7e32bf4241850",
+        "source_fact:v1:89220ebd67ca73939251b703f82c0e11530c4458b0453924249a879bb764c847",
+        "source_fact:v1:8c300ee3a9df418e01839983c3ec1b06737c7dcfb888f54202f4df22925dca08",
+        "source_fact:v1:a501eee0f309f6a49715a49f6a0e0de4cd89be846ff25ecb928eff1fb74dbf09",
+        "source_fact:v1:c758264e72f526c491c45e0230dadf69a4385e7f2e5fbdd70b131dc3ff478d79",
+        "source_fact:v1:ec51adcc352352ee413331d521ee912a4b1fa6efe02dbf064a3eb438fc24b836"
+      ],
+      "source_published_kst": "2026-10-07T08:45+09:00",
+      "title": "더 루비콘 프로젝트, MR탱커 3호선 인수..잠재 수주잔고 3억7500만 달러"
     },
     "fact:cb59d0741bc76e5bceedb9ce": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
@@ -30090,6 +30238,26 @@
       "source": "매일경제",
       "title": "주가 빠진 오리온, 지금이 기회?…“배당 4%대·저점 매수 유효”"
     },
+    "link:3ee56e7ece98254c7737954e": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170610",
+      "source": "매일경제",
+      "source_body_digest": "fa37dcec44da7e026227f4a1d6439ec40b24d61ab8516f0c3618dcc056d7e5fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb1f78080edcc202e388294b1630c9015d28e2b5ebace132e0b3d3004590393f",
+      "source_fact_keys": [
+        "source_fact:v1:282fb17238d12207cd442125e82739427dd62ba224b1f9837673d90359733a3d",
+        "source_fact:v1:5d3510a27c7119a6b573a48f3881d7e0cb2117d7a5bbb15d726b6c72c4b04083",
+        "source_fact:v1:9d2491e8318c4a6e039db20ef5bfa6099e70b60bcd4fff1cf9a0eb2cafc26c66",
+        "source_fact:v1:dc25e2d8f88575f1ea0a324ee997226bbc61a55aa269e17331a9698db407da36"
+      ],
+      "source_published_kst": "2026-10-07T08:45+09:00",
+      "title": "멜라르 애퀴지션 I, 에벌리 합병 SEC 효력 발생..22일 주총 표결"
+    },
     "link:3f04b5b129b0d77e710002a3": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
       "lanes": {
@@ -34010,6 +34178,26 @@
       "source": "머니투데이",
       "title": "내년부터 해외 개미도 직접 '한국 ETF' 투자…'역직구' 시장 커지나"
     },
+    "link:60f43538235a4b8b7ed10f1b": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170596",
+      "source": "매일경제",
+      "source_body_digest": "0e5c86ca1ad1bdc95e7ad7408009c904d443d70fd87525bfa08deb5886c10366",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c0d1e0f5fc9c023d606acef244f4e19d319d5ff591b2a7e9559c183b8b6a92c",
+      "source_fact_keys": [
+        "source_fact:v1:48dac005f5f80f4e713b4ad88c48684afcb8fe67662463e751dfa75e23dcb431",
+        "source_fact:v1:af9d6f34080c66a7794bb3c5e952e6ad2258f84f26870a91f41c11355c7a6ced",
+        "source_fact:v1:d0fc8cbed936117aefae011277cb153a0dfe870673204a597a88cb46167acc44",
+        "source_fact:v1:df828eb125658a50705e34be85b6dd889f1e9750dfdd4782e242ab59f067be4f"
+      ],
+      "source_published_kst": "2026-10-07T08:42+09:00",
+      "title": "셰브론, 헤스 미드스트림 지분 넘기고 바켄 비용 50% 절감"
+    },
     "link:612866c0b4a185e0ed033409": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
       "lanes": {
@@ -34110,6 +34298,25 @@
       ],
       "source_published_kst": "2026-10-06T09:18+09:00",
       "title": "두산로보틱스, 989억 규모 피지컬 AI 국책과제 수주"
+    },
+    "link:61e9746e3da854a8821fd7e6": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894978",
+      "source": "헤럴드경제",
+      "source_body_digest": "3e4a5aeed90b794e01e1cd0b7cdfb28f288d42317c5ad9a7bdcc12d551a735db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a13dd638f6d228c7ab36f8963ba0b1a22ac4fc547b773610127067c2decb30aa",
+      "source_fact_keys": [
+        "source_fact:v1:3bd0a6145146178f8657272a790b61a1d5e006d8de88e85fd131f6671e0cda07",
+        "source_fact:v1:5cc73772796cd8bcbed2cd90b3e9df6d0ca766cd3c9372692f076b43ad16f756",
+        "source_fact:v1:7953912e7d285c76ea36b52f495d2397202ac3b4ec6f018d6be9c7671c0fc011"
+      ],
+      "source_published_kst": "2026-10-07T08:41+09:00",
+      "title": "튀르키예, 사우디에 특수부대·전투기 보낸다…‘메카 방위동맹’ 가동"
     },
     "link:61f5a307f79bbef9aba3f50b": {
       "first_seen_kst": "2026-10-02T13:04:47+09:00",
@@ -44396,6 +44603,28 @@
       "source_published_kst": "2026-10-06T17:45+09:00",
       "title": "한미반도체, 삼성서 첫 대형계약 따냈다"
     },
+    "link:b7aadff24fec1b4714642cb0": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://www.hankyung.com/article/2026100769256",
+      "source": "한국경제",
+      "source_body_digest": "3a5b821c5b025b17b4d4c4e6c99667b38e0dcaf55fa416c55eb04ef58578fd95",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5307857d74651a8665f162e656b1432494b8e9d15a0c2d4bf472e73a01d69a5e",
+      "source_fact_keys": [
+        "source_fact:v1:218a9ee0c95efa37e5a658533266c59446dd7fa1425a6c1f8255c24ca2187306",
+        "source_fact:v1:8c5cc95f0805fd4f4499d73b57d4f97efa61af7562c129a9fd3e1563a9e7c337",
+        "source_fact:v1:b93e4f9ec9e4d199ab8a38ce07dc659a70bedcdb187c9944c2ea8d70f7a9ee98",
+        "source_fact:v1:bcc0d08ddada121358f98394c451eb2a9613c91d0cf0d28ae80bad5da3fa1ffa",
+        "source_fact:v1:d31a3ac60e74c1facbe57c5a4f8ccdbfaab7f44c8fd860e9077ac8b42604fb5f",
+        "source_fact:v1:f6bf6819c2fdf2078928f787ee989cfe23ba7eb8826497fb6b988d9bc8bd6780"
+      ],
+      "source_published_kst": "2026-10-07T07:49+09:00",
+      "title": "\"삼성전자 HBM 가격 2배 뛴다…D램 3사 중 가장 높은 가격 전망\""
+    },
     "link:b7ce1c6e4511729c2191de79": {
       "first_seen_kst": "2026-10-02T18:02:38+09:00",
       "lanes": {
@@ -51608,6 +51837,30 @@
       "source_published_kst": "2026-10-04T06:33+09:00",
       "title": "[발사D-3] 누리호, 7일 우주로…15개 위성 어떻게 올리나"
     },
+    "link:f2ac5a31ac758162640a5d42": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170608",
+      "source": "매일경제",
+      "source_body_digest": "5ace3d2a3969a5b694d7800a7128d2427752806d652d369dca4eaf327643b3ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b87812747495ba775506abae240342a42cd426e8691837ab85d60d1e353d7cd",
+      "source_fact_keys": [
+        "source_fact:v1:2646401e533d49528271f0bb37702ad73769bb7964a7a50df76e9d60257d5f03",
+        "source_fact:v1:567b8eb32a26936f6b9f874111814de538fcfaf22072d70a60c687f4b0b30aa2",
+        "source_fact:v1:6c7dddc56a64899438b3cd9ed3607ae8436e5d6dfc0f54e9ccb7e32bf4241850",
+        "source_fact:v1:89220ebd67ca73939251b703f82c0e11530c4458b0453924249a879bb764c847",
+        "source_fact:v1:8c300ee3a9df418e01839983c3ec1b06737c7dcfb888f54202f4df22925dca08",
+        "source_fact:v1:a501eee0f309f6a49715a49f6a0e0de4cd89be846ff25ecb928eff1fb74dbf09",
+        "source_fact:v1:c758264e72f526c491c45e0230dadf69a4385e7f2e5fbdd70b131dc3ff478d79",
+        "source_fact:v1:ec51adcc352352ee413331d521ee912a4b1fa6efe02dbf064a3eb438fc24b836"
+      ],
+      "source_published_kst": "2026-10-07T08:45+09:00",
+      "title": "더 루비콘 프로젝트, MR탱커 3호선 인수..잠재 수주잔고 3억7500만 달러"
+    },
     "link:f2c395d1df1d4f9529edf161": {
       "first_seen_kst": "2026-10-05T23:37:00+09:00",
       "lanes": {
@@ -51644,6 +51897,24 @@
       "link": "https://www.mk.co.kr/news/stock/12164037",
       "source": "매일경제",
       "title": "자사주 거의 다 샀고 … 삼전닉스 주가는요?"
+    },
+    "link:f2ef4635c141e7079088779c": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170594",
+      "source": "매일경제",
+      "source_body_digest": "222fdf90ec699e6c0a605e1bdb6fb9129c165602e636ab43f130430cc1e39e36",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:69f4a369c6f7bd3c3b98471e4d11c2a38c96848fbb96ec1e10b794380f241672",
+      "source_fact_keys": [
+        "source_fact:v1:337cb1c133ca8cdf4929291c59ff54ade337ef7524c07f371738ec3a6f9c79fa",
+        "source_fact:v1:e2a6bb8f1eb69065d67c8a3fd9d90ec806492ec59c1ef26b37d3fb82c4a911d6"
+      ],
+      "source_published_kst": "2026-10-07T08:42+09:00",
+      "title": "토요, 2분기 매출 1억1800만 달러…영업이익 2배"
     },
     "link:f2fb2bf068ac245981f4883b": {
       "first_seen_kst": "2026-10-06T22:21:21+09:00",
@@ -52566,6 +52837,26 @@
       "link": "https://www.yna.co.kr/view/AKR20260928104700003",
       "source": "연합뉴스",
       "title": "SK하이닉스, TSMC 행사서 AI 메모리 공개…2년 연속 파트너상 | 연합뉴스"
+    },
+    "link:fa2a39c1f32867ea33d1180a": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816625",
+      "source": "뉴시스",
+      "source_body_digest": "9db52abcf63b6f0cd7d4904afaf7cbd378bdb765cc7b89ce19a56a566a1bb74b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:235aff39ae8d48e0ef4e55cb04b7a25fbc8b673a30398ac2b0e8581752c2b0bb",
+      "source_fact_keys": [
+        "source_fact:v1:1d177bfad20005bd10d300a092df66a0052e6fa01549d4a3226bd9237925df78",
+        "source_fact:v1:73bb2bbaef106625cbc4afaef7f9bc1256e9dfb94c278ca74771de94b3b71a24",
+        "source_fact:v1:7cf05e0687df6810d9481494544cd0f4ad37fff231fbc9053c79d9ae7106d3e9",
+        "source_fact:v1:81d317ec59088e1b53ec1c6d49f847dc97d8c92c6f3edfcd8cb2959670d3ed79"
+      ],
+      "source_published_kst": "2026-10-07T08:35+09:00",
+      "title": "유니온바이오메트릭스, 172억 규모 육군 사업 수주"
     },
     "link:fa528304c647a2da9571537e": {
       "first_seen_kst": "2026-10-07T01:59:08+09:00",
@@ -57282,6 +57573,28 @@
       "source": "이데일리",
       "title": "[美특징주]샌디스크, 마이크론 실적 통해 업황 개선 전망…개장전 1%↑"
     },
+    "original:24375c26de3a415997ffbf1f": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://www.hankyung.com/article/2026100769256",
+      "source": "한국경제",
+      "source_body_digest": "3a5b821c5b025b17b4d4c4e6c99667b38e0dcaf55fa416c55eb04ef58578fd95",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5307857d74651a8665f162e656b1432494b8e9d15a0c2d4bf472e73a01d69a5e",
+      "source_fact_keys": [
+        "source_fact:v1:218a9ee0c95efa37e5a658533266c59446dd7fa1425a6c1f8255c24ca2187306",
+        "source_fact:v1:8c5cc95f0805fd4f4499d73b57d4f97efa61af7562c129a9fd3e1563a9e7c337",
+        "source_fact:v1:b93e4f9ec9e4d199ab8a38ce07dc659a70bedcdb187c9944c2ea8d70f7a9ee98",
+        "source_fact:v1:bcc0d08ddada121358f98394c451eb2a9613c91d0cf0d28ae80bad5da3fa1ffa",
+        "source_fact:v1:d31a3ac60e74c1facbe57c5a4f8ccdbfaab7f44c8fd860e9077ac8b42604fb5f",
+        "source_fact:v1:f6bf6819c2fdf2078928f787ee989cfe23ba7eb8826497fb6b988d9bc8bd6780"
+      ],
+      "source_published_kst": "2026-10-07T07:49+09:00",
+      "title": "\"삼성전자 HBM 가격 2배 뛴다…D램 3사 중 가장 높은 가격 전망\""
+    },
     "original:244c7a7efa46e496388430e1": {
       "first_seen_kst": "2026-10-07T07:39:19+09:00",
       "lanes": {
@@ -58389,6 +58702,26 @@
       ],
       "source_published_kst": "2026-10-06T17:56+09:00",
       "title": "월가, 앤트로픽 81.5조원 대출 신디케이션 착수…반도체 금융 최대 규모"
+    },
+    "original:2cc6fc8d07655a82a13f4acd": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170610",
+      "source": "매일경제",
+      "source_body_digest": "fa37dcec44da7e026227f4a1d6439ec40b24d61ab8516f0c3618dcc056d7e5fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb1f78080edcc202e388294b1630c9015d28e2b5ebace132e0b3d3004590393f",
+      "source_fact_keys": [
+        "source_fact:v1:282fb17238d12207cd442125e82739427dd62ba224b1f9837673d90359733a3d",
+        "source_fact:v1:5d3510a27c7119a6b573a48f3881d7e0cb2117d7a5bbb15d726b6c72c4b04083",
+        "source_fact:v1:9d2491e8318c4a6e039db20ef5bfa6099e70b60bcd4fff1cf9a0eb2cafc26c66",
+        "source_fact:v1:dc25e2d8f88575f1ea0a324ee997226bbc61a55aa269e17331a9698db407da36"
+      ],
+      "source_published_kst": "2026-10-07T08:45+09:00",
+      "title": "멜라르 애퀴지션 I, 에벌리 합병 SEC 효력 발생..22일 주총 표결"
     },
     "original:2ce2383dc3ef9d07cf173c7e": {
       "first_seen_kst": "2026-10-03T07:28:32+09:00",
@@ -68076,6 +68409,25 @@
       "source_published_kst": "2026-10-06T20:59+09:00",
       "title": "AI가 부의 지형 바꿨다…세계 500대 부자 미국 IT에 집중"
     },
+    "original:7c1cb115fb83ce219b4a8a83": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894978",
+      "source": "헤럴드경제",
+      "source_body_digest": "3e4a5aeed90b794e01e1cd0b7cdfb28f288d42317c5ad9a7bdcc12d551a735db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a13dd638f6d228c7ab36f8963ba0b1a22ac4fc547b773610127067c2decb30aa",
+      "source_fact_keys": [
+        "source_fact:v1:3bd0a6145146178f8657272a790b61a1d5e006d8de88e85fd131f6671e0cda07",
+        "source_fact:v1:5cc73772796cd8bcbed2cd90b3e9df6d0ca766cd3c9372692f076b43ad16f756",
+        "source_fact:v1:7953912e7d285c76ea36b52f495d2397202ac3b4ec6f018d6be9c7671c0fc011"
+      ],
+      "source_published_kst": "2026-10-07T08:41+09:00",
+      "title": "튀르키예, 사우디에 특수부대·전투기 보낸다…‘메카 방위동맹’ 가동"
+    },
     "original:7c279e78009ef708a0ed36d4": {
       "first_seen_kst": "2026-10-01T21:28:22+09:00",
       "lanes": {
@@ -69140,6 +69492,26 @@
       ],
       "source_published_kst": "2026-10-06T14:13+09:00",
       "title": "中 장악 태양광 시장에 美 '탠덤 패널' 승부수 | 연합뉴스"
+    },
+    "original:86d5627080a1d73c1f42dd07": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816625",
+      "source": "뉴시스",
+      "source_body_digest": "9db52abcf63b6f0cd7d4904afaf7cbd378bdb765cc7b89ce19a56a566a1bb74b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:235aff39ae8d48e0ef4e55cb04b7a25fbc8b673a30398ac2b0e8581752c2b0bb",
+      "source_fact_keys": [
+        "source_fact:v1:1d177bfad20005bd10d300a092df66a0052e6fa01549d4a3226bd9237925df78",
+        "source_fact:v1:73bb2bbaef106625cbc4afaef7f9bc1256e9dfb94c278ca74771de94b3b71a24",
+        "source_fact:v1:7cf05e0687df6810d9481494544cd0f4ad37fff231fbc9053c79d9ae7106d3e9",
+        "source_fact:v1:81d317ec59088e1b53ec1c6d49f847dc97d8c92c6f3edfcd8cb2959670d3ed79"
+      ],
+      "source_published_kst": "2026-10-07T08:35+09:00",
+      "title": "유니온바이오메트릭스, 172억 규모 육군 사업 수주"
     },
     "original:86f0f09098236c2d4eea346e": {
       "first_seen_kst": "2026-09-21T14:40:43+09:00",
@@ -72888,6 +73260,26 @@
       "source": "이데일리",
       "title": "[美특징주]인수가 낮췄는데 주가는 올랐다…온세미컨덕터·시냅틱스, 개장전 '급등'"
     },
+    "original:a80ae90d77c60cd602c9a777": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170596",
+      "source": "매일경제",
+      "source_body_digest": "0e5c86ca1ad1bdc95e7ad7408009c904d443d70fd87525bfa08deb5886c10366",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c0d1e0f5fc9c023d606acef244f4e19d319d5ff591b2a7e9559c183b8b6a92c",
+      "source_fact_keys": [
+        "source_fact:v1:48dac005f5f80f4e713b4ad88c48684afcb8fe67662463e751dfa75e23dcb431",
+        "source_fact:v1:af9d6f34080c66a7794bb3c5e952e6ad2258f84f26870a91f41c11355c7a6ced",
+        "source_fact:v1:d0fc8cbed936117aefae011277cb153a0dfe870673204a597a88cb46167acc44",
+        "source_fact:v1:df828eb125658a50705e34be85b6dd889f1e9750dfdd4782e242ab59f067be4f"
+      ],
+      "source_published_kst": "2026-10-07T08:42+09:00",
+      "title": "셰브론, 헤스 미드스트림 지분 넘기고 바켄 비용 50% 절감"
+    },
     "original:a810eadd3a3aaf1406ed9be7": {
       "first_seen_kst": "2026-10-06T23:05:07+09:00",
       "lanes": {
@@ -75556,6 +75948,48 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T06:01+09:00",
       "title": "‘미토스 쇼크'가 경고한 AI 해킹 현실화…금융권 공격서 드러난 흔적"
+    },
+    "original:be7bb97ba7474501d64adac9": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170608",
+      "source": "매일경제",
+      "source_body_digest": "5ace3d2a3969a5b694d7800a7128d2427752806d652d369dca4eaf327643b3ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b87812747495ba775506abae240342a42cd426e8691837ab85d60d1e353d7cd",
+      "source_fact_keys": [
+        "source_fact:v1:2646401e533d49528271f0bb37702ad73769bb7964a7a50df76e9d60257d5f03",
+        "source_fact:v1:567b8eb32a26936f6b9f874111814de538fcfaf22072d70a60c687f4b0b30aa2",
+        "source_fact:v1:6c7dddc56a64899438b3cd9ed3607ae8436e5d6dfc0f54e9ccb7e32bf4241850",
+        "source_fact:v1:89220ebd67ca73939251b703f82c0e11530c4458b0453924249a879bb764c847",
+        "source_fact:v1:8c300ee3a9df418e01839983c3ec1b06737c7dcfb888f54202f4df22925dca08",
+        "source_fact:v1:a501eee0f309f6a49715a49f6a0e0de4cd89be846ff25ecb928eff1fb74dbf09",
+        "source_fact:v1:c758264e72f526c491c45e0230dadf69a4385e7f2e5fbdd70b131dc3ff478d79",
+        "source_fact:v1:ec51adcc352352ee413331d521ee912a4b1fa6efe02dbf064a3eb438fc24b836"
+      ],
+      "source_published_kst": "2026-10-07T08:45+09:00",
+      "title": "더 루비콘 프로젝트, MR탱커 3호선 인수..잠재 수주잔고 3억7500만 달러"
+    },
+    "original:be85de1a9fa57020af801ef8": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170594",
+      "source": "매일경제",
+      "source_body_digest": "222fdf90ec699e6c0a605e1bdb6fb9129c165602e636ab43f130430cc1e39e36",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:69f4a369c6f7bd3c3b98471e4d11c2a38c96848fbb96ec1e10b794380f241672",
+      "source_fact_keys": [
+        "source_fact:v1:337cb1c133ca8cdf4929291c59ff54ade337ef7524c07f371738ec3a6f9c79fa",
+        "source_fact:v1:e2a6bb8f1eb69065d67c8a3fd9d90ec806492ec59c1ef26b37d3fb82c4a911d6"
+      ],
+      "source_published_kst": "2026-10-07T08:42+09:00",
+      "title": "토요, 2분기 매출 1억1800만 달러…영업이익 2배"
     },
     "original:beb344e1f05ce929460e4dbe": {
       "first_seen_kst": "2026-09-20T19:20:28+09:00",
@@ -87765,6 +88199,30 @@
       "source_published_kst": "2026-10-06T20:59+09:00",
       "title": "AI가 부의 지형 바꿨다…세계 500대 부자 미국 IT에 집중"
     },
+    "source_fact:1292309ef8d6ea32d475aae9": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170608",
+      "source": "매일경제",
+      "source_body_digest": "5ace3d2a3969a5b694d7800a7128d2427752806d652d369dca4eaf327643b3ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b87812747495ba775506abae240342a42cd426e8691837ab85d60d1e353d7cd",
+      "source_fact_keys": [
+        "source_fact:v1:2646401e533d49528271f0bb37702ad73769bb7964a7a50df76e9d60257d5f03",
+        "source_fact:v1:567b8eb32a26936f6b9f874111814de538fcfaf22072d70a60c687f4b0b30aa2",
+        "source_fact:v1:6c7dddc56a64899438b3cd9ed3607ae8436e5d6dfc0f54e9ccb7e32bf4241850",
+        "source_fact:v1:89220ebd67ca73939251b703f82c0e11530c4458b0453924249a879bb764c847",
+        "source_fact:v1:8c300ee3a9df418e01839983c3ec1b06737c7dcfb888f54202f4df22925dca08",
+        "source_fact:v1:a501eee0f309f6a49715a49f6a0e0de4cd89be846ff25ecb928eff1fb74dbf09",
+        "source_fact:v1:c758264e72f526c491c45e0230dadf69a4385e7f2e5fbdd70b131dc3ff478d79",
+        "source_fact:v1:ec51adcc352352ee413331d521ee912a4b1fa6efe02dbf064a3eb438fc24b836"
+      ],
+      "source_published_kst": "2026-10-07T08:45+09:00",
+      "title": "더 루비콘 프로젝트, MR탱커 3호선 인수..잠재 수주잔고 3억7500만 달러"
+    },
     "source_fact:12b70517195b31b38ee58bd3": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
       "lanes": {
@@ -92723,6 +93181,25 @@
       "source_published_kst": "2026-10-06T14:48+09:00",
       "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
     },
+    "source_fact:26358b0f4543b3f829774067": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894978",
+      "source": "헤럴드경제",
+      "source_body_digest": "3e4a5aeed90b794e01e1cd0b7cdfb28f288d42317c5ad9a7bdcc12d551a735db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a13dd638f6d228c7ab36f8963ba0b1a22ac4fc547b773610127067c2decb30aa",
+      "source_fact_keys": [
+        "source_fact:v1:3bd0a6145146178f8657272a790b61a1d5e006d8de88e85fd131f6671e0cda07",
+        "source_fact:v1:5cc73772796cd8bcbed2cd90b3e9df6d0ca766cd3c9372692f076b43ad16f756",
+        "source_fact:v1:7953912e7d285c76ea36b52f495d2397202ac3b4ec6f018d6be9c7671c0fc011"
+      ],
+      "source_published_kst": "2026-10-07T08:41+09:00",
+      "title": "튀르키예, 사우디에 특수부대·전투기 보낸다…‘메카 방위동맹’ 가동"
+    },
     "source_fact:264e3c10539ef3710f0a0875": {
       "first_seen_kst": "2026-10-07T07:01:10+09:00",
       "lanes": {
@@ -95561,6 +96038,28 @@
       "source_published_kst": "2026-10-07T07:15+09:00",
       "title": "'알렉사 주역' 보스턴다이나믹스 지휘한다 …현대차 피지컬 AI 속도"
     },
+    "source_fact:306e02fe03a3586e748819b8": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://www.hankyung.com/article/2026100769256",
+      "source": "한국경제",
+      "source_body_digest": "3a5b821c5b025b17b4d4c4e6c99667b38e0dcaf55fa416c55eb04ef58578fd95",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5307857d74651a8665f162e656b1432494b8e9d15a0c2d4bf472e73a01d69a5e",
+      "source_fact_keys": [
+        "source_fact:v1:218a9ee0c95efa37e5a658533266c59446dd7fa1425a6c1f8255c24ca2187306",
+        "source_fact:v1:8c5cc95f0805fd4f4499d73b57d4f97efa61af7562c129a9fd3e1563a9e7c337",
+        "source_fact:v1:b93e4f9ec9e4d199ab8a38ce07dc659a70bedcdb187c9944c2ea8d70f7a9ee98",
+        "source_fact:v1:bcc0d08ddada121358f98394c451eb2a9613c91d0cf0d28ae80bad5da3fa1ffa",
+        "source_fact:v1:d31a3ac60e74c1facbe57c5a4f8ccdbfaab7f44c8fd860e9077ac8b42604fb5f",
+        "source_fact:v1:f6bf6819c2fdf2078928f787ee989cfe23ba7eb8826497fb6b988d9bc8bd6780"
+      ],
+      "source_published_kst": "2026-10-07T07:49+09:00",
+      "title": "\"삼성전자 HBM 가격 2배 뛴다…D램 3사 중 가장 높은 가격 전망\""
+    },
     "source_fact:307cb9848bbe8e5e954e3268": {
       "first_seen_kst": "2026-10-06T00:11:03+09:00",
       "lanes": {
@@ -97801,6 +98300,26 @@
       ],
       "source_published_kst": "2026-10-05T19:04+09:00",
       "title": "니우 테크놀러지스, 3분기 판매 54만대..전년비 15% 증가·해외 3배 확대"
+    },
+    "source_fact:385a83dd092cd3a121a33707": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816625",
+      "source": "뉴시스",
+      "source_body_digest": "9db52abcf63b6f0cd7d4904afaf7cbd378bdb765cc7b89ce19a56a566a1bb74b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:235aff39ae8d48e0ef4e55cb04b7a25fbc8b673a30398ac2b0e8581752c2b0bb",
+      "source_fact_keys": [
+        "source_fact:v1:1d177bfad20005bd10d300a092df66a0052e6fa01549d4a3226bd9237925df78",
+        "source_fact:v1:73bb2bbaef106625cbc4afaef7f9bc1256e9dfb94c278ca74771de94b3b71a24",
+        "source_fact:v1:7cf05e0687df6810d9481494544cd0f4ad37fff231fbc9053c79d9ae7106d3e9",
+        "source_fact:v1:81d317ec59088e1b53ec1c6d49f847dc97d8c92c6f3edfcd8cb2959670d3ed79"
+      ],
+      "source_published_kst": "2026-10-07T08:35+09:00",
+      "title": "유니온바이오메트릭스, 172억 규모 육군 사업 수주"
     },
     "source_fact:38720f7078707b78f7f0cc75": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
@@ -101256,6 +101775,28 @@
       "source_published_kst": "2026-10-06T10:35+09:00",
       "title": "거버넌스포럼, 최태원 회장 SK 지분 매각에 '3%룰 회피' 비판"
     },
+    "source_fact:46b8d0b8ffe83d4e14349ee5": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://www.hankyung.com/article/2026100769256",
+      "source": "한국경제",
+      "source_body_digest": "3a5b821c5b025b17b4d4c4e6c99667b38e0dcaf55fa416c55eb04ef58578fd95",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5307857d74651a8665f162e656b1432494b8e9d15a0c2d4bf472e73a01d69a5e",
+      "source_fact_keys": [
+        "source_fact:v1:218a9ee0c95efa37e5a658533266c59446dd7fa1425a6c1f8255c24ca2187306",
+        "source_fact:v1:8c5cc95f0805fd4f4499d73b57d4f97efa61af7562c129a9fd3e1563a9e7c337",
+        "source_fact:v1:b93e4f9ec9e4d199ab8a38ce07dc659a70bedcdb187c9944c2ea8d70f7a9ee98",
+        "source_fact:v1:bcc0d08ddada121358f98394c451eb2a9613c91d0cf0d28ae80bad5da3fa1ffa",
+        "source_fact:v1:d31a3ac60e74c1facbe57c5a4f8ccdbfaab7f44c8fd860e9077ac8b42604fb5f",
+        "source_fact:v1:f6bf6819c2fdf2078928f787ee989cfe23ba7eb8826497fb6b988d9bc8bd6780"
+      ],
+      "source_published_kst": "2026-10-07T07:49+09:00",
+      "title": "\"삼성전자 HBM 가격 2배 뛴다…D램 3사 중 가장 높은 가격 전망\""
+    },
     "source_fact:4706d5896b1b275ec89c6230": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
       "lanes": {
@@ -101836,6 +102377,26 @@
       ],
       "source_published_kst": "2026-10-07T05:31+09:00",
       "title": "LG전자, AI 냉각사업 공략 가속…북미 대형 계약에 버지니아 공장 신설까지"
+    },
+    "source_fact:48ec99b50750b75e90b0040c": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170610",
+      "source": "매일경제",
+      "source_body_digest": "fa37dcec44da7e026227f4a1d6439ec40b24d61ab8516f0c3618dcc056d7e5fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb1f78080edcc202e388294b1630c9015d28e2b5ebace132e0b3d3004590393f",
+      "source_fact_keys": [
+        "source_fact:v1:282fb17238d12207cd442125e82739427dd62ba224b1f9837673d90359733a3d",
+        "source_fact:v1:5d3510a27c7119a6b573a48f3881d7e0cb2117d7a5bbb15d726b6c72c4b04083",
+        "source_fact:v1:9d2491e8318c4a6e039db20ef5bfa6099e70b60bcd4fff1cf9a0eb2cafc26c66",
+        "source_fact:v1:dc25e2d8f88575f1ea0a324ee997226bbc61a55aa269e17331a9698db407da36"
+      ],
+      "source_published_kst": "2026-10-07T08:45+09:00",
+      "title": "멜라르 애퀴지션 I, 에벌리 합병 SEC 효력 발생..22일 주총 표결"
     },
     "source_fact:48fb2d6a2906ab32372b97e6": {
       "first_seen_kst": "2026-10-06T20:54:05+09:00",
@@ -102894,6 +103455,30 @@
       ],
       "source_published_kst": "2026-10-06T18:04+09:00",
       "title": "HLB, 간암 신약 '4수' 도전"
+    },
+    "source_fact:4d42ddd917344712506e6a7c": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170608",
+      "source": "매일경제",
+      "source_body_digest": "5ace3d2a3969a5b694d7800a7128d2427752806d652d369dca4eaf327643b3ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b87812747495ba775506abae240342a42cd426e8691837ab85d60d1e353d7cd",
+      "source_fact_keys": [
+        "source_fact:v1:2646401e533d49528271f0bb37702ad73769bb7964a7a50df76e9d60257d5f03",
+        "source_fact:v1:567b8eb32a26936f6b9f874111814de538fcfaf22072d70a60c687f4b0b30aa2",
+        "source_fact:v1:6c7dddc56a64899438b3cd9ed3607ae8436e5d6dfc0f54e9ccb7e32bf4241850",
+        "source_fact:v1:89220ebd67ca73939251b703f82c0e11530c4458b0453924249a879bb764c847",
+        "source_fact:v1:8c300ee3a9df418e01839983c3ec1b06737c7dcfb888f54202f4df22925dca08",
+        "source_fact:v1:a501eee0f309f6a49715a49f6a0e0de4cd89be846ff25ecb928eff1fb74dbf09",
+        "source_fact:v1:c758264e72f526c491c45e0230dadf69a4385e7f2e5fbdd70b131dc3ff478d79",
+        "source_fact:v1:ec51adcc352352ee413331d521ee912a4b1fa6efe02dbf064a3eb438fc24b836"
+      ],
+      "source_published_kst": "2026-10-07T08:45+09:00",
+      "title": "더 루비콘 프로젝트, MR탱커 3호선 인수..잠재 수주잔고 3억7500만 달러"
     },
     "source_fact:4d45a05ac4a815641728397d": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
@@ -105912,6 +106497,30 @@
       "source_published_kst": "2026-10-06T11:12+09:00",
       "title": "LG전자, 5GW 북미 냉각 설루션 장기 계약"
     },
+    "source_fact:582a72d700d4ea44643612d4": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170608",
+      "source": "매일경제",
+      "source_body_digest": "5ace3d2a3969a5b694d7800a7128d2427752806d652d369dca4eaf327643b3ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b87812747495ba775506abae240342a42cd426e8691837ab85d60d1e353d7cd",
+      "source_fact_keys": [
+        "source_fact:v1:2646401e533d49528271f0bb37702ad73769bb7964a7a50df76e9d60257d5f03",
+        "source_fact:v1:567b8eb32a26936f6b9f874111814de538fcfaf22072d70a60c687f4b0b30aa2",
+        "source_fact:v1:6c7dddc56a64899438b3cd9ed3607ae8436e5d6dfc0f54e9ccb7e32bf4241850",
+        "source_fact:v1:89220ebd67ca73939251b703f82c0e11530c4458b0453924249a879bb764c847",
+        "source_fact:v1:8c300ee3a9df418e01839983c3ec1b06737c7dcfb888f54202f4df22925dca08",
+        "source_fact:v1:a501eee0f309f6a49715a49f6a0e0de4cd89be846ff25ecb928eff1fb74dbf09",
+        "source_fact:v1:c758264e72f526c491c45e0230dadf69a4385e7f2e5fbdd70b131dc3ff478d79",
+        "source_fact:v1:ec51adcc352352ee413331d521ee912a4b1fa6efe02dbf064a3eb438fc24b836"
+      ],
+      "source_published_kst": "2026-10-07T08:45+09:00",
+      "title": "더 루비콘 프로젝트, MR탱커 3호선 인수..잠재 수주잔고 3억7500만 달러"
+    },
     "source_fact:58329eb101f941970e8be3e3": {
       "first_seen_kst": "2026-10-07T01:33:00+09:00",
       "lanes": {
@@ -106141,6 +106750,28 @@
       ],
       "source_published_kst": "2026-10-07T01:30+09:00",
       "title": "이더리움 20개 중 1개 쓸어가…비트마인 '5% 확보' 눈앞"
+    },
+    "source_fact:58a2d0b79e1b6f255083439f": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://www.hankyung.com/article/2026100769256",
+      "source": "한국경제",
+      "source_body_digest": "3a5b821c5b025b17b4d4c4e6c99667b38e0dcaf55fa416c55eb04ef58578fd95",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5307857d74651a8665f162e656b1432494b8e9d15a0c2d4bf472e73a01d69a5e",
+      "source_fact_keys": [
+        "source_fact:v1:218a9ee0c95efa37e5a658533266c59446dd7fa1425a6c1f8255c24ca2187306",
+        "source_fact:v1:8c5cc95f0805fd4f4499d73b57d4f97efa61af7562c129a9fd3e1563a9e7c337",
+        "source_fact:v1:b93e4f9ec9e4d199ab8a38ce07dc659a70bedcdb187c9944c2ea8d70f7a9ee98",
+        "source_fact:v1:bcc0d08ddada121358f98394c451eb2a9613c91d0cf0d28ae80bad5da3fa1ffa",
+        "source_fact:v1:d31a3ac60e74c1facbe57c5a4f8ccdbfaab7f44c8fd860e9077ac8b42604fb5f",
+        "source_fact:v1:f6bf6819c2fdf2078928f787ee989cfe23ba7eb8826497fb6b988d9bc8bd6780"
+      ],
+      "source_published_kst": "2026-10-07T07:49+09:00",
+      "title": "\"삼성전자 HBM 가격 2배 뛴다…D램 3사 중 가장 높은 가격 전망\""
     },
     "source_fact:58a88d815647f2d45f6b16f1": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -107760,6 +108391,26 @@
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
     },
+    "source_fact:5debcb7fdc8c6e01b0f8aa48": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170596",
+      "source": "매일경제",
+      "source_body_digest": "0e5c86ca1ad1bdc95e7ad7408009c904d443d70fd87525bfa08deb5886c10366",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c0d1e0f5fc9c023d606acef244f4e19d319d5ff591b2a7e9559c183b8b6a92c",
+      "source_fact_keys": [
+        "source_fact:v1:48dac005f5f80f4e713b4ad88c48684afcb8fe67662463e751dfa75e23dcb431",
+        "source_fact:v1:af9d6f34080c66a7794bb3c5e952e6ad2258f84f26870a91f41c11355c7a6ced",
+        "source_fact:v1:d0fc8cbed936117aefae011277cb153a0dfe870673204a597a88cb46167acc44",
+        "source_fact:v1:df828eb125658a50705e34be85b6dd889f1e9750dfdd4782e242ab59f067be4f"
+      ],
+      "source_published_kst": "2026-10-07T08:42+09:00",
+      "title": "셰브론, 헤스 미드스트림 지분 넘기고 바켄 비용 50% 절감"
+    },
     "source_fact:5dfc527cef5237deaf1f5495": {
       "first_seen_kst": "2026-10-07T08:36:47+09:00",
       "lanes": {
@@ -108428,6 +109079,28 @@
       "source_published_kst": "2026-10-06T17:02+09:00",
       "title": "엠투클라우드 \"백신 유통 이력 '디지털 관리' 의료기관까지 확대\""
     },
+    "source_fact:60b8ca92d721e8eafcd8c800": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://www.hankyung.com/article/2026100769256",
+      "source": "한국경제",
+      "source_body_digest": "3a5b821c5b025b17b4d4c4e6c99667b38e0dcaf55fa416c55eb04ef58578fd95",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5307857d74651a8665f162e656b1432494b8e9d15a0c2d4bf472e73a01d69a5e",
+      "source_fact_keys": [
+        "source_fact:v1:218a9ee0c95efa37e5a658533266c59446dd7fa1425a6c1f8255c24ca2187306",
+        "source_fact:v1:8c5cc95f0805fd4f4499d73b57d4f97efa61af7562c129a9fd3e1563a9e7c337",
+        "source_fact:v1:b93e4f9ec9e4d199ab8a38ce07dc659a70bedcdb187c9944c2ea8d70f7a9ee98",
+        "source_fact:v1:bcc0d08ddada121358f98394c451eb2a9613c91d0cf0d28ae80bad5da3fa1ffa",
+        "source_fact:v1:d31a3ac60e74c1facbe57c5a4f8ccdbfaab7f44c8fd860e9077ac8b42604fb5f",
+        "source_fact:v1:f6bf6819c2fdf2078928f787ee989cfe23ba7eb8826497fb6b988d9bc8bd6780"
+      ],
+      "source_published_kst": "2026-10-07T07:49+09:00",
+      "title": "\"삼성전자 HBM 가격 2배 뛴다…D램 3사 중 가장 높은 가격 전망\""
+    },
     "source_fact:60c016f1339616aa91bd6025": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -108568,6 +109241,30 @@
       ],
       "source_published_kst": "2026-10-06T13:44+09:00",
       "title": "완성차 불황에 '군용차'로 눈 돌린다…기아·포드·GM·르노 방산 공략"
+    },
+    "source_fact:6192b2ca3778b52b1a14900c": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170608",
+      "source": "매일경제",
+      "source_body_digest": "5ace3d2a3969a5b694d7800a7128d2427752806d652d369dca4eaf327643b3ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b87812747495ba775506abae240342a42cd426e8691837ab85d60d1e353d7cd",
+      "source_fact_keys": [
+        "source_fact:v1:2646401e533d49528271f0bb37702ad73769bb7964a7a50df76e9d60257d5f03",
+        "source_fact:v1:567b8eb32a26936f6b9f874111814de538fcfaf22072d70a60c687f4b0b30aa2",
+        "source_fact:v1:6c7dddc56a64899438b3cd9ed3607ae8436e5d6dfc0f54e9ccb7e32bf4241850",
+        "source_fact:v1:89220ebd67ca73939251b703f82c0e11530c4458b0453924249a879bb764c847",
+        "source_fact:v1:8c300ee3a9df418e01839983c3ec1b06737c7dcfb888f54202f4df22925dca08",
+        "source_fact:v1:a501eee0f309f6a49715a49f6a0e0de4cd89be846ff25ecb928eff1fb74dbf09",
+        "source_fact:v1:c758264e72f526c491c45e0230dadf69a4385e7f2e5fbdd70b131dc3ff478d79",
+        "source_fact:v1:ec51adcc352352ee413331d521ee912a4b1fa6efe02dbf064a3eb438fc24b836"
+      ],
+      "source_published_kst": "2026-10-07T08:45+09:00",
+      "title": "더 루비콘 프로젝트, MR탱커 3호선 인수..잠재 수주잔고 3억7500만 달러"
     },
     "source_fact:61ac83ec4b0b4abbd7554865": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
@@ -111974,6 +112671,25 @@
       "source_published_kst": "2026-10-06T11:00+09:00",
       "title": "규제합리화추진단 \"디스플레이 규제 개선…수입 간소화·AI 보안가이드 마련\""
     },
+    "source_fact:6f69e28481a0ab984e5d6d55": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894978",
+      "source": "헤럴드경제",
+      "source_body_digest": "3e4a5aeed90b794e01e1cd0b7cdfb28f288d42317c5ad9a7bdcc12d551a735db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a13dd638f6d228c7ab36f8963ba0b1a22ac4fc547b773610127067c2decb30aa",
+      "source_fact_keys": [
+        "source_fact:v1:3bd0a6145146178f8657272a790b61a1d5e006d8de88e85fd131f6671e0cda07",
+        "source_fact:v1:5cc73772796cd8bcbed2cd90b3e9df6d0ca766cd3c9372692f076b43ad16f756",
+        "source_fact:v1:7953912e7d285c76ea36b52f495d2397202ac3b4ec6f018d6be9c7671c0fc011"
+      ],
+      "source_published_kst": "2026-10-07T08:41+09:00",
+      "title": "튀르키예, 사우디에 특수부대·전투기 보낸다…‘메카 방위동맹’ 가동"
+    },
     "source_fact:6f705927f09e740fa9bc2d70": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
       "lanes": {
@@ -113204,6 +113920,30 @@
       ],
       "source_published_kst": "2026-10-05T15:21+09:00",
       "title": "“영끌했는데 매달 이자 어쩌죠”...치솟는 주담대 금리- 매경ECONOMY"
+    },
+    "source_fact:73f54ca8ab31d41f28388c7c": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170608",
+      "source": "매일경제",
+      "source_body_digest": "5ace3d2a3969a5b694d7800a7128d2427752806d652d369dca4eaf327643b3ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b87812747495ba775506abae240342a42cd426e8691837ab85d60d1e353d7cd",
+      "source_fact_keys": [
+        "source_fact:v1:2646401e533d49528271f0bb37702ad73769bb7964a7a50df76e9d60257d5f03",
+        "source_fact:v1:567b8eb32a26936f6b9f874111814de538fcfaf22072d70a60c687f4b0b30aa2",
+        "source_fact:v1:6c7dddc56a64899438b3cd9ed3607ae8436e5d6dfc0f54e9ccb7e32bf4241850",
+        "source_fact:v1:89220ebd67ca73939251b703f82c0e11530c4458b0453924249a879bb764c847",
+        "source_fact:v1:8c300ee3a9df418e01839983c3ec1b06737c7dcfb888f54202f4df22925dca08",
+        "source_fact:v1:a501eee0f309f6a49715a49f6a0e0de4cd89be846ff25ecb928eff1fb74dbf09",
+        "source_fact:v1:c758264e72f526c491c45e0230dadf69a4385e7f2e5fbdd70b131dc3ff478d79",
+        "source_fact:v1:ec51adcc352352ee413331d521ee912a4b1fa6efe02dbf064a3eb438fc24b836"
+      ],
+      "source_published_kst": "2026-10-07T08:45+09:00",
+      "title": "더 루비콘 프로젝트, MR탱커 3호선 인수..잠재 수주잔고 3억7500만 달러"
     },
     "source_fact:73fcd0c6b47fc70fcb8e0bf5": {
       "first_seen_kst": "2026-10-06T18:16:47+09:00",
@@ -115100,6 +115840,26 @@
       "source_published_kst": "2026-10-06T11:30+09:00",
       "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
     },
+    "source_fact:7a8c1ac626805a56b50e6f21": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170596",
+      "source": "매일경제",
+      "source_body_digest": "0e5c86ca1ad1bdc95e7ad7408009c904d443d70fd87525bfa08deb5886c10366",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c0d1e0f5fc9c023d606acef244f4e19d319d5ff591b2a7e9559c183b8b6a92c",
+      "source_fact_keys": [
+        "source_fact:v1:48dac005f5f80f4e713b4ad88c48684afcb8fe67662463e751dfa75e23dcb431",
+        "source_fact:v1:af9d6f34080c66a7794bb3c5e952e6ad2258f84f26870a91f41c11355c7a6ced",
+        "source_fact:v1:d0fc8cbed936117aefae011277cb153a0dfe870673204a597a88cb46167acc44",
+        "source_fact:v1:df828eb125658a50705e34be85b6dd889f1e9750dfdd4782e242ab59f067be4f"
+      ],
+      "source_published_kst": "2026-10-07T08:42+09:00",
+      "title": "셰브론, 헤스 미드스트림 지분 넘기고 바켄 비용 50% 절감"
+    },
     "source_fact:7a92316c520d8a2bb81c2032": {
       "first_seen_kst": "2026-10-07T03:30:59+09:00",
       "lanes": {
@@ -115592,6 +116352,26 @@
       ],
       "source_published_kst": "2026-10-05T11:20+09:00",
       "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
+    },
+    "source_fact:7c6b0ddcaa9fc5b0dae99aa5": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170596",
+      "source": "매일경제",
+      "source_body_digest": "0e5c86ca1ad1bdc95e7ad7408009c904d443d70fd87525bfa08deb5886c10366",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c0d1e0f5fc9c023d606acef244f4e19d319d5ff591b2a7e9559c183b8b6a92c",
+      "source_fact_keys": [
+        "source_fact:v1:48dac005f5f80f4e713b4ad88c48684afcb8fe67662463e751dfa75e23dcb431",
+        "source_fact:v1:af9d6f34080c66a7794bb3c5e952e6ad2258f84f26870a91f41c11355c7a6ced",
+        "source_fact:v1:d0fc8cbed936117aefae011277cb153a0dfe870673204a597a88cb46167acc44",
+        "source_fact:v1:df828eb125658a50705e34be85b6dd889f1e9750dfdd4782e242ab59f067be4f"
+      ],
+      "source_published_kst": "2026-10-07T08:42+09:00",
+      "title": "셰브론, 헤스 미드스트림 지분 넘기고 바켄 비용 50% 절감"
     },
     "source_fact:7c804b5ef6f238b0f26b0f78": {
       "first_seen_kst": "2026-10-07T01:33:00+09:00",
@@ -125666,6 +126446,28 @@
       "source_published_kst": "2026-10-06T08:10+09:00",
       "title": "현대차證 \"동국제강, 견조한 실적…목표가 1만3800원↑\""
     },
+    "source_fact:a2c96037f8e068553ac021cb": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://www.hankyung.com/article/2026100769256",
+      "source": "한국경제",
+      "source_body_digest": "3a5b821c5b025b17b4d4c4e6c99667b38e0dcaf55fa416c55eb04ef58578fd95",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5307857d74651a8665f162e656b1432494b8e9d15a0c2d4bf472e73a01d69a5e",
+      "source_fact_keys": [
+        "source_fact:v1:218a9ee0c95efa37e5a658533266c59446dd7fa1425a6c1f8255c24ca2187306",
+        "source_fact:v1:8c5cc95f0805fd4f4499d73b57d4f97efa61af7562c129a9fd3e1563a9e7c337",
+        "source_fact:v1:b93e4f9ec9e4d199ab8a38ce07dc659a70bedcdb187c9944c2ea8d70f7a9ee98",
+        "source_fact:v1:bcc0d08ddada121358f98394c451eb2a9613c91d0cf0d28ae80bad5da3fa1ffa",
+        "source_fact:v1:d31a3ac60e74c1facbe57c5a4f8ccdbfaab7f44c8fd860e9077ac8b42604fb5f",
+        "source_fact:v1:f6bf6819c2fdf2078928f787ee989cfe23ba7eb8826497fb6b988d9bc8bd6780"
+      ],
+      "source_published_kst": "2026-10-07T07:49+09:00",
+      "title": "\"삼성전자 HBM 가격 2배 뛴다…D램 3사 중 가장 높은 가격 전망\""
+    },
     "source_fact:a2fc4dcc5792360af44e9d07": {
       "first_seen_kst": "2026-10-06T02:31:07+09:00",
       "lanes": {
@@ -125838,6 +126640,24 @@
       ],
       "source_published_kst": "2026-10-05T21:32+09:00",
       "title": "에볼루션 메탈스 앤 테크, 포항 희토류 자석공장 12월 17일 개장..연 1만t 확대 추진"
+    },
+    "source_fact:a3645af4914c2b68f8c76551": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170594",
+      "source": "매일경제",
+      "source_body_digest": "222fdf90ec699e6c0a605e1bdb6fb9129c165602e636ab43f130430cc1e39e36",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:69f4a369c6f7bd3c3b98471e4d11c2a38c96848fbb96ec1e10b794380f241672",
+      "source_fact_keys": [
+        "source_fact:v1:337cb1c133ca8cdf4929291c59ff54ade337ef7524c07f371738ec3a6f9c79fa",
+        "source_fact:v1:e2a6bb8f1eb69065d67c8a3fd9d90ec806492ec59c1ef26b37d3fb82c4a911d6"
+      ],
+      "source_published_kst": "2026-10-07T08:42+09:00",
+      "title": "토요, 2분기 매출 1억1800만 달러…영업이익 2배"
     },
     "source_fact:a38b9ed96b7063f7f8775b0c": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
@@ -129729,6 +130549,26 @@
       "source_published_kst": "2026-10-06T08:46+09:00",
       "title": "한미반도체, 삼성전기서 245억원 규모 MSVP 수주…“삼성그룹 환영”"
     },
+    "source_fact:b2f13b324c4c6c4a4e118ec9": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816625",
+      "source": "뉴시스",
+      "source_body_digest": "9db52abcf63b6f0cd7d4904afaf7cbd378bdb765cc7b89ce19a56a566a1bb74b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:235aff39ae8d48e0ef4e55cb04b7a25fbc8b673a30398ac2b0e8581752c2b0bb",
+      "source_fact_keys": [
+        "source_fact:v1:1d177bfad20005bd10d300a092df66a0052e6fa01549d4a3226bd9237925df78",
+        "source_fact:v1:73bb2bbaef106625cbc4afaef7f9bc1256e9dfb94c278ca74771de94b3b71a24",
+        "source_fact:v1:7cf05e0687df6810d9481494544cd0f4ad37fff231fbc9053c79d9ae7106d3e9",
+        "source_fact:v1:81d317ec59088e1b53ec1c6d49f847dc97d8c92c6f3edfcd8cb2959670d3ed79"
+      ],
+      "source_published_kst": "2026-10-07T08:35+09:00",
+      "title": "유니온바이오메트릭스, 172억 규모 육군 사업 수주"
+    },
     "source_fact:b2f1a221addf8dc503fe2d36": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
       "lanes": {
@@ -131235,6 +132075,24 @@
       "source_published_kst": "2026-10-06T09:44+09:00",
       "title": "[특징주] LG전자 5%대 강세⋯북미 AI 데이터센터 냉각 솔루션 공급 호재"
     },
+    "source_fact:b84bffa1300db4e5bd6fd98a": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170594",
+      "source": "매일경제",
+      "source_body_digest": "222fdf90ec699e6c0a605e1bdb6fb9129c165602e636ab43f130430cc1e39e36",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:69f4a369c6f7bd3c3b98471e4d11c2a38c96848fbb96ec1e10b794380f241672",
+      "source_fact_keys": [
+        "source_fact:v1:337cb1c133ca8cdf4929291c59ff54ade337ef7524c07f371738ec3a6f9c79fa",
+        "source_fact:v1:e2a6bb8f1eb69065d67c8a3fd9d90ec806492ec59c1ef26b37d3fb82c4a911d6"
+      ],
+      "source_published_kst": "2026-10-07T08:42+09:00",
+      "title": "토요, 2분기 매출 1억1800만 달러…영업이익 2배"
+    },
     "source_fact:b8898128418adb0ed512d717": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
       "lanes": {
@@ -131410,6 +132268,26 @@
       ],
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "외국인·명품 소비에 비용 절감까지…백화점 3사, 3분기 실적 ‘청신호’"
+    },
+    "source_fact:b8dcf6fc68cd613e3123a219": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170610",
+      "source": "매일경제",
+      "source_body_digest": "fa37dcec44da7e026227f4a1d6439ec40b24d61ab8516f0c3618dcc056d7e5fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb1f78080edcc202e388294b1630c9015d28e2b5ebace132e0b3d3004590393f",
+      "source_fact_keys": [
+        "source_fact:v1:282fb17238d12207cd442125e82739427dd62ba224b1f9837673d90359733a3d",
+        "source_fact:v1:5d3510a27c7119a6b573a48f3881d7e0cb2117d7a5bbb15d726b6c72c4b04083",
+        "source_fact:v1:9d2491e8318c4a6e039db20ef5bfa6099e70b60bcd4fff1cf9a0eb2cafc26c66",
+        "source_fact:v1:dc25e2d8f88575f1ea0a324ee997226bbc61a55aa269e17331a9698db407da36"
+      ],
+      "source_published_kst": "2026-10-07T08:45+09:00",
+      "title": "멜라르 애퀴지션 I, 에벌리 합병 SEC 효력 발생..22일 주총 표결"
     },
     "source_fact:b8fe029ff1bbc685be59ae4f": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
@@ -132976,6 +133854,26 @@
       ],
       "source_published_kst": "2026-10-06T18:37+09:00",
       "title": "지하수 부족하다면서 농업용수 사용대금 부과에 손 놓은 제주"
+    },
+    "source_fact:bfe26da985e361dc1fca04c3": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170596",
+      "source": "매일경제",
+      "source_body_digest": "0e5c86ca1ad1bdc95e7ad7408009c904d443d70fd87525bfa08deb5886c10366",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c0d1e0f5fc9c023d606acef244f4e19d319d5ff591b2a7e9559c183b8b6a92c",
+      "source_fact_keys": [
+        "source_fact:v1:48dac005f5f80f4e713b4ad88c48684afcb8fe67662463e751dfa75e23dcb431",
+        "source_fact:v1:af9d6f34080c66a7794bb3c5e952e6ad2258f84f26870a91f41c11355c7a6ced",
+        "source_fact:v1:d0fc8cbed936117aefae011277cb153a0dfe870673204a597a88cb46167acc44",
+        "source_fact:v1:df828eb125658a50705e34be85b6dd889f1e9750dfdd4782e242ab59f067be4f"
+      ],
+      "source_published_kst": "2026-10-07T08:42+09:00",
+      "title": "셰브론, 헤스 미드스트림 지분 넘기고 바켄 비용 50% 절감"
     },
     "source_fact:bffca875101bbb30435a743b": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
@@ -135201,6 +136099,26 @@
       "source_published_kst": "2026-10-06T10:23+09:00",
       "title": "산업장관 \"지방투자 1600조…3대 메가프로젝트 차질없이 추진\""
     },
+    "source_fact:c7e551671fc6a6ba5f804d54": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170610",
+      "source": "매일경제",
+      "source_body_digest": "fa37dcec44da7e026227f4a1d6439ec40b24d61ab8516f0c3618dcc056d7e5fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb1f78080edcc202e388294b1630c9015d28e2b5ebace132e0b3d3004590393f",
+      "source_fact_keys": [
+        "source_fact:v1:282fb17238d12207cd442125e82739427dd62ba224b1f9837673d90359733a3d",
+        "source_fact:v1:5d3510a27c7119a6b573a48f3881d7e0cb2117d7a5bbb15d726b6c72c4b04083",
+        "source_fact:v1:9d2491e8318c4a6e039db20ef5bfa6099e70b60bcd4fff1cf9a0eb2cafc26c66",
+        "source_fact:v1:dc25e2d8f88575f1ea0a324ee997226bbc61a55aa269e17331a9698db407da36"
+      ],
+      "source_published_kst": "2026-10-07T08:45+09:00",
+      "title": "멜라르 애퀴지션 I, 에벌리 합병 SEC 효력 발생..22일 주총 표결"
+    },
     "source_fact:c800083cfb9a5e05002b3855": {
       "first_seen_kst": "2026-10-06T15:14:29+09:00",
       "lanes": {
@@ -136951,6 +137869,26 @@
       "source_published_kst": "2026-10-06T11:27+09:00",
       "title": "스페이스X, AI 사업 기대감에 날아 올랐다"
     },
+    "source_fact:cf535436fcaf3020ef5eea89": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170610",
+      "source": "매일경제",
+      "source_body_digest": "fa37dcec44da7e026227f4a1d6439ec40b24d61ab8516f0c3618dcc056d7e5fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb1f78080edcc202e388294b1630c9015d28e2b5ebace132e0b3d3004590393f",
+      "source_fact_keys": [
+        "source_fact:v1:282fb17238d12207cd442125e82739427dd62ba224b1f9837673d90359733a3d",
+        "source_fact:v1:5d3510a27c7119a6b573a48f3881d7e0cb2117d7a5bbb15d726b6c72c4b04083",
+        "source_fact:v1:9d2491e8318c4a6e039db20ef5bfa6099e70b60bcd4fff1cf9a0eb2cafc26c66",
+        "source_fact:v1:dc25e2d8f88575f1ea0a324ee997226bbc61a55aa269e17331a9698db407da36"
+      ],
+      "source_published_kst": "2026-10-07T08:45+09:00",
+      "title": "멜라르 애퀴지션 I, 에벌리 합병 SEC 효력 발생..22일 주총 표결"
+    },
     "source_fact:cf66f1c30aeacf5a1b72d1af": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
       "lanes": {
@@ -137058,6 +137996,30 @@
       ],
       "source_published_kst": "2026-10-06T03:34+09:00",
       "title": "[美특징주]백사이트, 폐렴구균 백신 3상 긍정적 결과에 주가 32%↑"
+    },
+    "source_fact:cfd76ae01e98b8736a8d6f1d": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170608",
+      "source": "매일경제",
+      "source_body_digest": "5ace3d2a3969a5b694d7800a7128d2427752806d652d369dca4eaf327643b3ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b87812747495ba775506abae240342a42cd426e8691837ab85d60d1e353d7cd",
+      "source_fact_keys": [
+        "source_fact:v1:2646401e533d49528271f0bb37702ad73769bb7964a7a50df76e9d60257d5f03",
+        "source_fact:v1:567b8eb32a26936f6b9f874111814de538fcfaf22072d70a60c687f4b0b30aa2",
+        "source_fact:v1:6c7dddc56a64899438b3cd9ed3607ae8436e5d6dfc0f54e9ccb7e32bf4241850",
+        "source_fact:v1:89220ebd67ca73939251b703f82c0e11530c4458b0453924249a879bb764c847",
+        "source_fact:v1:8c300ee3a9df418e01839983c3ec1b06737c7dcfb888f54202f4df22925dca08",
+        "source_fact:v1:a501eee0f309f6a49715a49f6a0e0de4cd89be846ff25ecb928eff1fb74dbf09",
+        "source_fact:v1:c758264e72f526c491c45e0230dadf69a4385e7f2e5fbdd70b131dc3ff478d79",
+        "source_fact:v1:ec51adcc352352ee413331d521ee912a4b1fa6efe02dbf064a3eb438fc24b836"
+      ],
+      "source_published_kst": "2026-10-07T08:45+09:00",
+      "title": "더 루비콘 프로젝트, MR탱커 3호선 인수..잠재 수주잔고 3억7500만 달러"
     },
     "source_fact:cfe3d6f761a473b012d942fb": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -138363,6 +139325,28 @@
       "source_published_kst": "2026-10-06T17:52+09:00",
       "title": "코스닥, 석달 만에 900 뚫었다…소부장·바이오·배터리주 강세"
     },
+    "source_fact:d49012d260113aab6214d78e": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://www.hankyung.com/article/2026100769256",
+      "source": "한국경제",
+      "source_body_digest": "3a5b821c5b025b17b4d4c4e6c99667b38e0dcaf55fa416c55eb04ef58578fd95",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5307857d74651a8665f162e656b1432494b8e9d15a0c2d4bf472e73a01d69a5e",
+      "source_fact_keys": [
+        "source_fact:v1:218a9ee0c95efa37e5a658533266c59446dd7fa1425a6c1f8255c24ca2187306",
+        "source_fact:v1:8c5cc95f0805fd4f4499d73b57d4f97efa61af7562c129a9fd3e1563a9e7c337",
+        "source_fact:v1:b93e4f9ec9e4d199ab8a38ce07dc659a70bedcdb187c9944c2ea8d70f7a9ee98",
+        "source_fact:v1:bcc0d08ddada121358f98394c451eb2a9613c91d0cf0d28ae80bad5da3fa1ffa",
+        "source_fact:v1:d31a3ac60e74c1facbe57c5a4f8ccdbfaab7f44c8fd860e9077ac8b42604fb5f",
+        "source_fact:v1:f6bf6819c2fdf2078928f787ee989cfe23ba7eb8826497fb6b988d9bc8bd6780"
+      ],
+      "source_published_kst": "2026-10-07T07:49+09:00",
+      "title": "\"삼성전자 HBM 가격 2배 뛴다…D램 3사 중 가장 높은 가격 전망\""
+    },
     "source_fact:d4b1ecb76c40c0a295a94f12": {
       "first_seen_kst": "2026-10-06T21:54:00+09:00",
       "lanes": {
@@ -138718,6 +139702,26 @@
       ],
       "source_published_kst": "2026-10-07T07:35+09:00",
       "title": "KB證 “삼성전자, HBM4 업계 최고가 기대…주주환원도 4배 확대 가능”"
+    },
+    "source_fact:d5dcfb58b0a8f267254cd0e3": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816625",
+      "source": "뉴시스",
+      "source_body_digest": "9db52abcf63b6f0cd7d4904afaf7cbd378bdb765cc7b89ce19a56a566a1bb74b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:235aff39ae8d48e0ef4e55cb04b7a25fbc8b673a30398ac2b0e8581752c2b0bb",
+      "source_fact_keys": [
+        "source_fact:v1:1d177bfad20005bd10d300a092df66a0052e6fa01549d4a3226bd9237925df78",
+        "source_fact:v1:73bb2bbaef106625cbc4afaef7f9bc1256e9dfb94c278ca74771de94b3b71a24",
+        "source_fact:v1:7cf05e0687df6810d9481494544cd0f4ad37fff231fbc9053c79d9ae7106d3e9",
+        "source_fact:v1:81d317ec59088e1b53ec1c6d49f847dc97d8c92c6f3edfcd8cb2959670d3ed79"
+      ],
+      "source_published_kst": "2026-10-07T08:35+09:00",
+      "title": "유니온바이오메트릭스, 172억 규모 육군 사업 수주"
     },
     "source_fact:d5fc4cb1818be7eb0fcefc01": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
@@ -142205,6 +143209,26 @@
       "source_published_kst": "2026-10-06T07:07+09:00",
       "title": "스페이스X 주가 급등에 머스크 다시 조만장자 [마켓핫]"
     },
+    "source_fact:e1b6dc4f9c920e162c50f9db": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816625",
+      "source": "뉴시스",
+      "source_body_digest": "9db52abcf63b6f0cd7d4904afaf7cbd378bdb765cc7b89ce19a56a566a1bb74b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:235aff39ae8d48e0ef4e55cb04b7a25fbc8b673a30398ac2b0e8581752c2b0bb",
+      "source_fact_keys": [
+        "source_fact:v1:1d177bfad20005bd10d300a092df66a0052e6fa01549d4a3226bd9237925df78",
+        "source_fact:v1:73bb2bbaef106625cbc4afaef7f9bc1256e9dfb94c278ca74771de94b3b71a24",
+        "source_fact:v1:7cf05e0687df6810d9481494544cd0f4ad37fff231fbc9053c79d9ae7106d3e9",
+        "source_fact:v1:81d317ec59088e1b53ec1c6d49f847dc97d8c92c6f3edfcd8cb2959670d3ed79"
+      ],
+      "source_published_kst": "2026-10-07T08:35+09:00",
+      "title": "유니온바이오메트릭스, 172억 규모 육군 사업 수주"
+    },
     "source_fact:e1bbddd3d19fc0b18e9716d5": {
       "first_seen_kst": "2026-10-07T01:18:00+09:00",
       "lanes": {
@@ -144787,6 +145811,25 @@
       "source_published_kst": "2026-10-07T05:31+09:00",
       "title": "LG전자, AI 냉각사업 공략 가속…북미 대형 계약에 버지니아 공장 신설까지"
     },
+    "source_fact:eac13be3cd6898a4cc67116d": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894978",
+      "source": "헤럴드경제",
+      "source_body_digest": "3e4a5aeed90b794e01e1cd0b7cdfb28f288d42317c5ad9a7bdcc12d551a735db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a13dd638f6d228c7ab36f8963ba0b1a22ac4fc547b773610127067c2decb30aa",
+      "source_fact_keys": [
+        "source_fact:v1:3bd0a6145146178f8657272a790b61a1d5e006d8de88e85fd131f6671e0cda07",
+        "source_fact:v1:5cc73772796cd8bcbed2cd90b3e9df6d0ca766cd3c9372692f076b43ad16f756",
+        "source_fact:v1:7953912e7d285c76ea36b52f495d2397202ac3b4ec6f018d6be9c7671c0fc011"
+      ],
+      "source_published_kst": "2026-10-07T08:41+09:00",
+      "title": "튀르키예, 사우디에 특수부대·전투기 보낸다…‘메카 방위동맹’ 가동"
+    },
     "source_fact:eb0978ae83ebde68e3a38ca7": {
       "first_seen_kst": "2026-10-06T07:30:15+09:00",
       "lanes": {
@@ -145486,6 +146529,30 @@
       ],
       "source_published_kst": "2026-10-06T15:43+09:00",
       "title": "李대통령, 알시시 이집트 대통령과 정상회담…인프라·공급망 협력 확대"
+    },
+    "source_fact:ed3d251fe95be570932bb40c": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170608",
+      "source": "매일경제",
+      "source_body_digest": "5ace3d2a3969a5b694d7800a7128d2427752806d652d369dca4eaf327643b3ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b87812747495ba775506abae240342a42cd426e8691837ab85d60d1e353d7cd",
+      "source_fact_keys": [
+        "source_fact:v1:2646401e533d49528271f0bb37702ad73769bb7964a7a50df76e9d60257d5f03",
+        "source_fact:v1:567b8eb32a26936f6b9f874111814de538fcfaf22072d70a60c687f4b0b30aa2",
+        "source_fact:v1:6c7dddc56a64899438b3cd9ed3607ae8436e5d6dfc0f54e9ccb7e32bf4241850",
+        "source_fact:v1:89220ebd67ca73939251b703f82c0e11530c4458b0453924249a879bb764c847",
+        "source_fact:v1:8c300ee3a9df418e01839983c3ec1b06737c7dcfb888f54202f4df22925dca08",
+        "source_fact:v1:a501eee0f309f6a49715a49f6a0e0de4cd89be846ff25ecb928eff1fb74dbf09",
+        "source_fact:v1:c758264e72f526c491c45e0230dadf69a4385e7f2e5fbdd70b131dc3ff478d79",
+        "source_fact:v1:ec51adcc352352ee413331d521ee912a4b1fa6efe02dbf064a3eb438fc24b836"
+      ],
+      "source_published_kst": "2026-10-07T08:45+09:00",
+      "title": "더 루비콘 프로젝트, MR탱커 3호선 인수..잠재 수주잔고 3억7500만 달러"
     },
     "source_fact:ed3d5603240bd03d80e7474f": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
@@ -147071,6 +148138,30 @@
       ],
       "source_published_kst": "2026-10-05T15:17+09:00",
       "title": "자사주 '버팀목' 빠지는 삼성전자… 100조원대 영업익으로 극복할까?"
+    },
+    "source_fact:f38be16e8b05997b7cd4813d": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170608",
+      "source": "매일경제",
+      "source_body_digest": "5ace3d2a3969a5b694d7800a7128d2427752806d652d369dca4eaf327643b3ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b87812747495ba775506abae240342a42cd426e8691837ab85d60d1e353d7cd",
+      "source_fact_keys": [
+        "source_fact:v1:2646401e533d49528271f0bb37702ad73769bb7964a7a50df76e9d60257d5f03",
+        "source_fact:v1:567b8eb32a26936f6b9f874111814de538fcfaf22072d70a60c687f4b0b30aa2",
+        "source_fact:v1:6c7dddc56a64899438b3cd9ed3607ae8436e5d6dfc0f54e9ccb7e32bf4241850",
+        "source_fact:v1:89220ebd67ca73939251b703f82c0e11530c4458b0453924249a879bb764c847",
+        "source_fact:v1:8c300ee3a9df418e01839983c3ec1b06737c7dcfb888f54202f4df22925dca08",
+        "source_fact:v1:a501eee0f309f6a49715a49f6a0e0de4cd89be846ff25ecb928eff1fb74dbf09",
+        "source_fact:v1:c758264e72f526c491c45e0230dadf69a4385e7f2e5fbdd70b131dc3ff478d79",
+        "source_fact:v1:ec51adcc352352ee413331d521ee912a4b1fa6efe02dbf064a3eb438fc24b836"
+      ],
+      "source_published_kst": "2026-10-07T08:45+09:00",
+      "title": "더 루비콘 프로젝트, MR탱커 3호선 인수..잠재 수주잔고 3억7500만 달러"
     },
     "source_fact:f398f0aa5a099d3307a54b26": {
       "first_seen_kst": "2026-10-06T18:16:47+09:00",
@@ -154354,6 +155445,28 @@
       "source": "이데일리",
       "title": "[美특징주]샌디스크, 마이크론 실적 통해 업황 개선 전망…개장전 1%↑"
     },
+    "title:24375c26de3a415997ffbf1f": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://www.hankyung.com/article/2026100769256",
+      "source": "한국경제",
+      "source_body_digest": "3a5b821c5b025b17b4d4c4e6c99667b38e0dcaf55fa416c55eb04ef58578fd95",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5307857d74651a8665f162e656b1432494b8e9d15a0c2d4bf472e73a01d69a5e",
+      "source_fact_keys": [
+        "source_fact:v1:218a9ee0c95efa37e5a658533266c59446dd7fa1425a6c1f8255c24ca2187306",
+        "source_fact:v1:8c5cc95f0805fd4f4499d73b57d4f97efa61af7562c129a9fd3e1563a9e7c337",
+        "source_fact:v1:b93e4f9ec9e4d199ab8a38ce07dc659a70bedcdb187c9944c2ea8d70f7a9ee98",
+        "source_fact:v1:bcc0d08ddada121358f98394c451eb2a9613c91d0cf0d28ae80bad5da3fa1ffa",
+        "source_fact:v1:d31a3ac60e74c1facbe57c5a4f8ccdbfaab7f44c8fd860e9077ac8b42604fb5f",
+        "source_fact:v1:f6bf6819c2fdf2078928f787ee989cfe23ba7eb8826497fb6b988d9bc8bd6780"
+      ],
+      "source_published_kst": "2026-10-07T07:49+09:00",
+      "title": "\"삼성전자 HBM 가격 2배 뛴다…D램 3사 중 가장 높은 가격 전망\""
+    },
     "title:244c7a7efa46e496388430e1": {
       "first_seen_kst": "2026-10-07T07:39:19+09:00",
       "lanes": {
@@ -155461,6 +156574,26 @@
       ],
       "source_published_kst": "2026-10-06T17:56+09:00",
       "title": "월가, 앤트로픽 81.5조원 대출 신디케이션 착수…반도체 금융 최대 규모"
+    },
+    "title:2cc6fc8d07655a82a13f4acd": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170610",
+      "source": "매일경제",
+      "source_body_digest": "fa37dcec44da7e026227f4a1d6439ec40b24d61ab8516f0c3618dcc056d7e5fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb1f78080edcc202e388294b1630c9015d28e2b5ebace132e0b3d3004590393f",
+      "source_fact_keys": [
+        "source_fact:v1:282fb17238d12207cd442125e82739427dd62ba224b1f9837673d90359733a3d",
+        "source_fact:v1:5d3510a27c7119a6b573a48f3881d7e0cb2117d7a5bbb15d726b6c72c4b04083",
+        "source_fact:v1:9d2491e8318c4a6e039db20ef5bfa6099e70b60bcd4fff1cf9a0eb2cafc26c66",
+        "source_fact:v1:dc25e2d8f88575f1ea0a324ee997226bbc61a55aa269e17331a9698db407da36"
+      ],
+      "source_published_kst": "2026-10-07T08:45+09:00",
+      "title": "멜라르 애퀴지션 I, 에벌리 합병 SEC 효력 발생..22일 주총 표결"
     },
     "title:2ce2383dc3ef9d07cf173c7e": {
       "first_seen_kst": "2026-10-03T07:28:32+09:00",
@@ -165269,6 +166402,25 @@
       "source_published_kst": "2026-10-06T20:59+09:00",
       "title": "AI가 부의 지형 바꿨다…세계 500대 부자 미국 IT에 집중"
     },
+    "title:7c1cb115fb83ce219b4a8a83": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894978",
+      "source": "헤럴드경제",
+      "source_body_digest": "3e4a5aeed90b794e01e1cd0b7cdfb28f288d42317c5ad9a7bdcc12d551a735db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a13dd638f6d228c7ab36f8963ba0b1a22ac4fc547b773610127067c2decb30aa",
+      "source_fact_keys": [
+        "source_fact:v1:3bd0a6145146178f8657272a790b61a1d5e006d8de88e85fd131f6671e0cda07",
+        "source_fact:v1:5cc73772796cd8bcbed2cd90b3e9df6d0ca766cd3c9372692f076b43ad16f756",
+        "source_fact:v1:7953912e7d285c76ea36b52f495d2397202ac3b4ec6f018d6be9c7671c0fc011"
+      ],
+      "source_published_kst": "2026-10-07T08:41+09:00",
+      "title": "튀르키예, 사우디에 특수부대·전투기 보낸다…‘메카 방위동맹’ 가동"
+    },
     "title:7c279e78009ef708a0ed36d4": {
       "first_seen_kst": "2026-10-01T21:28:22+09:00",
       "lanes": {
@@ -166379,6 +167531,26 @@
       ],
       "source_published_kst": "2026-10-06T14:13+09:00",
       "title": "中 장악 태양광 시장에 美 '탠덤 패널' 승부수 | 연합뉴스"
+    },
+    "title:86d5627080a1d73c1f42dd07": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816625",
+      "source": "뉴시스",
+      "source_body_digest": "9db52abcf63b6f0cd7d4904afaf7cbd378bdb765cc7b89ce19a56a566a1bb74b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:235aff39ae8d48e0ef4e55cb04b7a25fbc8b673a30398ac2b0e8581752c2b0bb",
+      "source_fact_keys": [
+        "source_fact:v1:1d177bfad20005bd10d300a092df66a0052e6fa01549d4a3226bd9237925df78",
+        "source_fact:v1:73bb2bbaef106625cbc4afaef7f9bc1256e9dfb94c278ca74771de94b3b71a24",
+        "source_fact:v1:7cf05e0687df6810d9481494544cd0f4ad37fff231fbc9053c79d9ae7106d3e9",
+        "source_fact:v1:81d317ec59088e1b53ec1c6d49f847dc97d8c92c6f3edfcd8cb2959670d3ed79"
+      ],
+      "source_published_kst": "2026-10-07T08:35+09:00",
+      "title": "유니온바이오메트릭스, 172억 규모 육군 사업 수주"
     },
     "title:86f0f09098236c2d4eea346e": {
       "first_seen_kst": "2026-09-21T14:40:43+09:00",
@@ -170247,6 +171419,26 @@
       "source": "이데일리",
       "title": "[美특징주]인수가 낮췄는데 주가는 올랐다…온세미컨덕터·시냅틱스, 개장전 '급등'"
     },
+    "title:a80ae90d77c60cd602c9a777": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170596",
+      "source": "매일경제",
+      "source_body_digest": "0e5c86ca1ad1bdc95e7ad7408009c904d443d70fd87525bfa08deb5886c10366",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c0d1e0f5fc9c023d606acef244f4e19d319d5ff591b2a7e9559c183b8b6a92c",
+      "source_fact_keys": [
+        "source_fact:v1:48dac005f5f80f4e713b4ad88c48684afcb8fe67662463e751dfa75e23dcb431",
+        "source_fact:v1:af9d6f34080c66a7794bb3c5e952e6ad2258f84f26870a91f41c11355c7a6ced",
+        "source_fact:v1:d0fc8cbed936117aefae011277cb153a0dfe870673204a597a88cb46167acc44",
+        "source_fact:v1:df828eb125658a50705e34be85b6dd889f1e9750dfdd4782e242ab59f067be4f"
+      ],
+      "source_published_kst": "2026-10-07T08:42+09:00",
+      "title": "셰브론, 헤스 미드스트림 지분 넘기고 바켄 비용 50% 절감"
+    },
     "title:a810eadd3a3aaf1406ed9be7": {
       "first_seen_kst": "2026-10-06T23:05:07+09:00",
       "lanes": {
@@ -173007,6 +174199,48 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T06:01+09:00",
       "title": "‘미토스 쇼크'가 경고한 AI 해킹 현실화…금융권 공격서 드러난 흔적"
+    },
+    "title:be7bb97ba7474501d64adac9": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170608",
+      "source": "매일경제",
+      "source_body_digest": "5ace3d2a3969a5b694d7800a7128d2427752806d652d369dca4eaf327643b3ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b87812747495ba775506abae240342a42cd426e8691837ab85d60d1e353d7cd",
+      "source_fact_keys": [
+        "source_fact:v1:2646401e533d49528271f0bb37702ad73769bb7964a7a50df76e9d60257d5f03",
+        "source_fact:v1:567b8eb32a26936f6b9f874111814de538fcfaf22072d70a60c687f4b0b30aa2",
+        "source_fact:v1:6c7dddc56a64899438b3cd9ed3607ae8436e5d6dfc0f54e9ccb7e32bf4241850",
+        "source_fact:v1:89220ebd67ca73939251b703f82c0e11530c4458b0453924249a879bb764c847",
+        "source_fact:v1:8c300ee3a9df418e01839983c3ec1b06737c7dcfb888f54202f4df22925dca08",
+        "source_fact:v1:a501eee0f309f6a49715a49f6a0e0de4cd89be846ff25ecb928eff1fb74dbf09",
+        "source_fact:v1:c758264e72f526c491c45e0230dadf69a4385e7f2e5fbdd70b131dc3ff478d79",
+        "source_fact:v1:ec51adcc352352ee413331d521ee912a4b1fa6efe02dbf064a3eb438fc24b836"
+      ],
+      "source_published_kst": "2026-10-07T08:45+09:00",
+      "title": "더 루비콘 프로젝트, MR탱커 3호선 인수..잠재 수주잔고 3억7500만 달러"
+    },
+    "title:be85de1a9fa57020af801ef8": {
+      "first_seen_kst": "2026-10-07T08:57:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T08:57:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T08:57:59+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170594",
+      "source": "매일경제",
+      "source_body_digest": "222fdf90ec699e6c0a605e1bdb6fb9129c165602e636ab43f130430cc1e39e36",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:69f4a369c6f7bd3c3b98471e4d11c2a38c96848fbb96ec1e10b794380f241672",
+      "source_fact_keys": [
+        "source_fact:v1:337cb1c133ca8cdf4929291c59ff54ade337ef7524c07f371738ec3a6f9c79fa",
+        "source_fact:v1:e2a6bb8f1eb69065d67c8a3fd9d90ec806492ec59c1ef26b37d3fb82c4a911d6"
+      ],
+      "source_published_kst": "2026-10-07T08:42+09:00",
+      "title": "토요, 2분기 매출 1억1800만 달러…영업이익 2배"
     },
     "title:beb344e1f05ce929460e4dbe": {
       "first_seen_kst": "2026-09-20T19:20:28+09:00",
@@ -180726,5 +181960,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-07T08:36:47+09:00"
+  "updated_at_kst": "2026-10-07T08:57:59+09:00"
 }
