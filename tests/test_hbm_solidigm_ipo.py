@@ -166,12 +166,14 @@ class SolidigmIPOTests(unittest.TestCase):
             memory["value"] = copy.deepcopy(value)
         with tempfile.TemporaryDirectory() as tmp:
             alert = pathlib.Path(tmp) / "solidigm_alert.html"
-            with patch.object(w, "ALERT", alert), \\
-                 patch.object(w, "load_state", side_effect=fetch_state), \\
-                 patch.object(w, "save_state", side_effect=record_state), \\
-                 patch.object(w, "read_events", return_value=[]), \\
-                 patch.object(w, "read_manufacturing_events", return_value=[]), \\
-                 patch.object(w, "fx_quote", return_value=(1340.0, "테스트 환율")):
+            with (
+                patch.object(w, "ALERT", alert),
+                patch.object(w, "load_state", side_effect=fetch_state),
+                patch.object(w, "save_state", side_effect=record_state),
+                patch.object(w, "read_events", return_value=[]),
+                patch.object(w, "read_manufacturing_events", return_value=[]),
+                patch.object(w, "fx_quote", return_value=(1340.0, "테스트 환율")),
+            ):
                 w.main()
                 self.assertTrue(alert.exists())
                 text = alert.read_text(encoding="utf-8")
