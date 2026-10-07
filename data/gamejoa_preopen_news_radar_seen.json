@@ -448,6 +448,31 @@
       "source_published_kst": "2026-10-07T17:12+09:00",
       "title": "8월 공장·창고 거래액 1.4조원…거래 줄어도 금액은 연중 최고"
     },
+    "core:0dd4ead789043c79a903face": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.fnnews.com/news/202610080555583112",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "14012a4d55c33e0e085866f00e55ee045d64830690651b98e33648051e2974e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47cbc725095964b1f422e20ac40de617a5ae04537fe3862aaef37fe2d3d5520a",
+      "source_fact_keys": [
+        "source_fact:v1:2d40bf7e2b450cf4312342682c742dae84e39e1aba0ff526a6337f19162b058e",
+        "source_fact:v1:4a8a929cb4ee61e7a0a99321044a32288b4ee2447d3c17f8e6b456b0e1a8403c",
+        "source_fact:v1:60e2d87e98fb21f43a4ac286a50eff6680acc92401a519a9778da59137ff8b4a",
+        "source_fact:v1:64811a2148e5a3d0fc80cc3308162de2cbfce77b94fadae11ff874d3c7c1b04c",
+        "source_fact:v1:874bebaaca3f94120de791bcb28e2da9b692f98876f1bc3283b7b551d7513c8e",
+        "source_fact:v1:bd08613da6079eebc8a6c82a853cbadecd14d5ea3758085e38bd744a9e3d5cf0",
+        "source_fact:v1:fb3039afc649a42eaba369286e282357f81e2307e932f199d051a6f6bd15deef"
+      ],
+      "source_published_kst": "2026-10-08T05:55+09:00",
+      "source_title": "美 AI 반도체주 혼조…국채금리 급등에 엔비디아·AMD↓, 마이크론 4%↑",
+      "telegram_core_fact": "미국 인공지능(AI) 반도체주가 장기 국채금리 급등에 대체로 하락했지만 마이크론테크놀로지는 4% 넘게 뛰는 등 종목별로 엇갈렸다.",
+      "title": "美 AI 반도체주 혼조…국채금리 급등에 엔비디아·AMD↓, 마이크론 4%↑"
+    },
     "core:0ddb7cf660201c50a1110839": {
       "first_seen_kst": "2026-10-08T03:13:06+09:00",
       "lanes": {
@@ -540,6 +565,28 @@
       ],
       "source_published_kst": "2026-10-07T11:36+09:00",
       "title": "우상호 지사 \"취임 100일, 강원 변화 시작…기업 투자 가시화\" | 연합뉴스"
+    },
+    "core:0f41f75516c48bcb4c6bb18f": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171058",
+      "source": "매일경제",
+      "source_body_digest": "699fcf6219dddfec1694363a6bc8eb6bf1c49705c67dbb19061553f2843b608a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1c8b9e94aba27f5a95eb8388593ad2b1b39552fbb8f5c7ce7af56a9a8672787b",
+      "source_fact_keys": [
+        "source_fact:v1:35bfc27b805ad393e71507d8856cdbebb6e2fc44ccf3eef2fbaaa1a0bd9edde8",
+        "source_fact:v1:592d4dbbbd03491e3f6d0fbd964c723750e25e708159ae7b900b9d78c09a8d07",
+        "source_fact:v1:78e64553f296cd9415aa76b5b65385f2b854fc9aae3047fa034757fd83620ea1",
+        "source_fact:v1:8ef7c05608917ab1713bac5f5c63a46fb2a8585dc1146c9cbee4eb343540fe92"
+      ],
+      "source_published_kst": "2026-10-08T06:22+09:00",
+      "source_title": "아줄, 아메리칸항공 1억 달러 투자 CADE 승인..지분 8% 확보",
+      "telegram_core_fact": "브라질 최대 항공사 아줄(AZUL)은 브라질 경제방어행정위원회(CADE) 심결 재판부가 아메리칸항공(American Airlines)의 아줄 1억 달러 투자를 만장일치로 승인했다고 현지시간 7일 발표했다.",
+      "title": "아줄, 아메리칸항공 1억 달러 투자 CADE 승인..지분 8% 확보"
     },
     "core:100a35e414ae86e15835ff69": {
       "first_seen_kst": "2026-10-07T17:47:45+09:00",
@@ -3341,6 +3388,23 @@
       "telegram_core_fact": "행안부는 선정된 마을이 실제 태양광 발전사업에 신속하게 나설 수 있도록 발전사업 허가 등 인허가 절차와 최대 85%의 금융지원, 사업부지 확보 등 사업 추진 과정에서 발생하는 문제 해소를 위해 관계기관·지방정부와 협력해 지원한다.",
       "title": "2차 햇빛소득마을 436개 선정…인허가·금융·부지확보 지원 | 연합뉴스"
     },
+    "core:74b0a2b9ff44f44054a9842d": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007163300030",
+      "source": "연합뉴스",
+      "source_body_digest": "d46e635d244c909fe2eb1bb2fcb7239d8c6dd9c3ad82bf634714e707eac220cd",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T06:00+09:00",
+      "source_title": "롯데百, LA서 K뷰티 팝업…국내 브랜드 해외 진출 지원 | 연합뉴스",
+      "telegram_core_fact": "롯데백화점은 미국 로스앤젤레스에서 K-뷰티 팝업을 열고 국내 뷰티 브랜드의 해외 진출 지원에 나선다고 8일 밝혔다. 롯데백화점의 K-뷰티 상품군 외국인 매출은 최근 3개월간 전년 대비 110% 증가했으며, 북미 고객 매출은 120% 늘었다.",
+      "title": "롯데百, LA서 K뷰티 팝업…국내 브랜드 해외 진출 지원 | 연합뉴스"
+    },
     "core:752d2314678cd6163d628a7b": {
       "first_seen_kst": "2026-10-07T15:44:50+09:00",
       "lanes": {
@@ -5933,6 +5997,25 @@
       "telegram_core_fact": "이 평가는 중앙행정, 지방정부, 공공기관을 대상으로 국가 공간정보(토지이용규제정보 등) 품질 수준을 진단 평가해 오류 수준 개선을 위해 이뤄진다.",
       "title": "예산군, 국토부 공간정보 품질관리 수준 평가서 '만점'"
     },
+    "core:c36372d89b474f0579a9c4bb": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.etnews.com/20261007000256",
+      "source": "전자신문",
+      "source_body_digest": "5aa3f413c73135954a2d1462b6f191719f45370b45a909ee9aa00d26d1adfdce",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a2b0a9eacd648f58bbb98f40e486363cbf978bf00ff90f44d0f5e3ae051bfebd",
+      "source_fact_keys": [
+        "source_fact:v1:1ca9558523cf029986d476debf6c3901c736cb30473d98677e63f3b840bda1fa"
+      ],
+      "source_published_kst": "2026-10-08T06:00+09:00",
+      "source_title": "금융지주, 상반기 순익 17.6조원…비은행 성장 속 건전성은 악화",
+      "telegram_core_fact": "올해 상반기 금융지주회사 순이익이 금융투자 등 비은행 부문 호조에 힘입어 전년 동기보다 13.7% 증가했다.",
+      "title": "금융지주, 상반기 순익 17.6조원…비은행 성장 속 건전성은 악화"
+    },
     "core:c498c716330e5ebeb078d699": {
       "first_seen_kst": "2026-10-07T19:13:29+09:00",
       "lanes": {
@@ -6690,6 +6773,33 @@
       "source_title": "LG전자, 3분기 영업익 7818억… 전년比 13.5% 증가",
       "telegram_core_fact": "LG전자는 연결 기준 올해 3분기 잠정 매출이 23조8270억원, 영업이익이 7818억원으로 집계됐다고 7일 공시했다.",
       "title": "LG전자, 3분기 영업익 7818억… 전년比 13.5% 증가"
+    },
+    "core:d91d7afe5b4b89d78e04a5d0": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171040",
+      "source": "매일경제",
+      "source_body_digest": "fbceb410b3d5140a4d947e01b92cd347d953ec116612b0010c2fa05d1968658f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d999dc4418b7c4140d43406eba28ce5f2ae20635a6ab8c5fcc2c3ff2b76961cb",
+      "source_fact_keys": [
+        "source_fact:v1:05e66469997739a2ec0ad13bb379d497434aaa103ab7b6fcdf04a80a43ff1852",
+        "source_fact:v1:0a0db75433d19cf752a0f797dfe369e893d67142fa111645449aca0ce846c253",
+        "source_fact:v1:2d10561d6b0cc9a1691ec732b88e6696ecf9c9686571f070e100144ab5b17a71",
+        "source_fact:v1:50cde90fc65d09dd1b64f9cff85f042455decd36b58961f0c8f7df03f8d312a1",
+        "source_fact:v1:5c61335dfdc246c646df2576b2a62582d2dfc53bf551dd61b665da03615ea4bc",
+        "source_fact:v1:80bca33600877ac076cdab698916e195874a04dc4ff49af3d4e29e0230725ecd",
+        "source_fact:v1:a669ea3bb5d083628fe53e4582179e1c394fbf68141b907004af0594c988ae25",
+        "source_fact:v1:b215767673ae9591ed673462ae8ebf4943dac2adb1950852bf72e318418e0b5a",
+        "source_fact:v1:d3ccb3a8e3b62fa9854a8efeede0c92c762486bdf00217055fc74bb040f5819f"
+      ],
+      "source_published_kst": "2026-10-08T05:57+09:00",
+      "source_title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓",
+      "telegram_core_fact": "유럽·태평양 선진시장 순매출은 9억3500만 달러로 3.3% 감소했고, 부문 조정 영업이익은 1억3700만 달러로 8.9% 감소했다.",
+      "title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓"
     },
     "core:d9ee72d5a903d2ad3319aee5": {
       "first_seen_kst": "2026-10-08T03:26:42+09:00",
@@ -7574,6 +7684,26 @@
       ],
       "source_published_kst": "2026-10-07T09:22+09:00",
       "title": "상한가 유도한 AI 공급계약, 금액 반토막…플리토 7% 급락"
+    },
+    "core:f5740b9d7e1413818781b6ee": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02023766645610952",
+      "source": "이데일리",
+      "source_body_digest": "52b6b92fcd93e381a27afe75e7b8cd1117f72843e3941c518e335cd0e1288e27",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05731eebb2d7713a1e5090e2d2a1f6212be413f5b8d9f48cfa214bbb64ca6e19",
+      "source_fact_keys": [
+        "source_fact:v1:36873c4e4c91c09f2995433139a267e68c69aae601d1871f957226836e4a8def",
+        "source_fact:v1:ce2f4a04637e72ab9ecceecbce4d8f075d6dd8d4a981cb1cc3b7f81656e95ffc"
+      ],
+      "source_published_kst": "2026-10-08T06:00+09:00",
+      "source_title": "금융지주 상반기 순익 17.6조 ‘역대급’…증권이 끌고 은행은 주춤",
+      "telegram_core_fact": "7일 금융감독원이 발표한 ‘2026년 상반기 금융지주회사 경영실적(잠정)’에 따르면 10개 금융지주의 상반기 연결 당기순이익은 17조6000억원으로 지난해 같은 기간 15조4000억원보다 2조2000억원(13.7%) 증가했다.",
+      "title": "금융지주 상반기 순익 17.6조 ‘역대급’…증권이 끌고 은행은 주춤"
     },
     "core:f796226fa73142c79add5d0d": {
       "first_seen_kst": "2026-10-07T22:00:35+09:00",
@@ -10199,6 +10329,31 @@
       "link": "https://www.dt.co.kr/article/12087050",
       "source": "디지털타임스",
       "title": "오텍캐리어, 엔비디아 인증 CDU 확보…AI 데이터센터 냉각시장 정조준"
+    },
+    "event:52c701e2fa04f331cac6e6ea": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.fnnews.com/news/202610080555583112",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "14012a4d55c33e0e085866f00e55ee045d64830690651b98e33648051e2974e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47cbc725095964b1f422e20ac40de617a5ae04537fe3862aaef37fe2d3d5520a",
+      "source_fact_keys": [
+        "source_fact:v1:2d40bf7e2b450cf4312342682c742dae84e39e1aba0ff526a6337f19162b058e",
+        "source_fact:v1:4a8a929cb4ee61e7a0a99321044a32288b4ee2447d3c17f8e6b456b0e1a8403c",
+        "source_fact:v1:60e2d87e98fb21f43a4ac286a50eff6680acc92401a519a9778da59137ff8b4a",
+        "source_fact:v1:64811a2148e5a3d0fc80cc3308162de2cbfce77b94fadae11ff874d3c7c1b04c",
+        "source_fact:v1:874bebaaca3f94120de791bcb28e2da9b692f98876f1bc3283b7b551d7513c8e",
+        "source_fact:v1:bd08613da6079eebc8a6c82a853cbadecd14d5ea3758085e38bd744a9e3d5cf0",
+        "source_fact:v1:fb3039afc649a42eaba369286e282357f81e2307e932f199d051a6f6bd15deef"
+      ],
+      "source_published_kst": "2026-10-08T05:55+09:00",
+      "source_title": "美 AI 반도체주 혼조…국채금리 급등에 엔비디아·AMD↓, 마이크론 4%↑",
+      "telegram_core_fact": "미국 인공지능(AI) 반도체주가 장기 국채금리 급등에 대체로 하락했지만 마이크론테크놀로지는 4% 넘게 뛰는 등 종목별로 엇갈렸다.",
+      "title": "美 AI 반도체주 혼조…국채금리 급등에 엔비디아·AMD↓, 마이크론 4%↑"
     },
     "event:546589931273131d7222dc33": {
       "first_seen_kst": "2026-09-22T10:35:36+09:00",
@@ -24814,6 +24969,25 @@
       "telegram_core_fact": "금융정보업체 에프앤가이드에 따르면 삼성전자의 올해 3분기 연결 기준 매출 컨센서스(증권사 평균 전망치)는 200조6417억원, 영업이익은 106조6401억원으로 집계됐다.",
       "title": "삼성전자, 오늘 3분기 실적 발표…사상 첫 영업익 100조 넘나"
     },
+    "fact:5e88c75d268d4c1895a55f5b": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.etnews.com/20261007000256",
+      "source": "전자신문",
+      "source_body_digest": "5aa3f413c73135954a2d1462b6f191719f45370b45a909ee9aa00d26d1adfdce",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a2b0a9eacd648f58bbb98f40e486363cbf978bf00ff90f44d0f5e3ae051bfebd",
+      "source_fact_keys": [
+        "source_fact:v1:1ca9558523cf029986d476debf6c3901c736cb30473d98677e63f3b840bda1fa"
+      ],
+      "source_published_kst": "2026-10-08T06:00+09:00",
+      "source_title": "금융지주, 상반기 순익 17.6조원…비은행 성장 속 건전성은 악화",
+      "telegram_core_fact": "올해 상반기 금융지주회사 순이익이 금융투자 등 비은행 부문 호조에 힘입어 전년 동기보다 13.7% 증가했다.",
+      "title": "금융지주, 상반기 순익 17.6조원…비은행 성장 속 건전성은 악화"
+    },
     "fact:5e8fd94e72a7ff20fee7b295": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
       "lanes": {
@@ -27942,6 +28116,26 @@
       "source_title": "헬머리치 & 페인, 4분기 직접마진 가이던스 상단 근접..국제 4500만 달러",
       "telegram_core_fact": "헬머리치 & 페인(HP)이 2026 회계연도 4분기(7~9월) 북미·국제·해상 솔루션 3개 부문의 직접마진(비GAAP 기준)이 기존 가이던스 범위 상단 또는 그 근처에 이를 것으로 예상하며, 국제 솔루션 부문 직접마진은 약 4500만 달러에 달할 전망이라고 10월 7일 발표했다.",
       "title": "헬머리치 & 페인, 4분기 직접마진 가이던스 상단 근접..국제 4500만 달러"
+    },
+    "fact:8455581166cec5040a449034": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02023766645610952",
+      "source": "이데일리",
+      "source_body_digest": "52b6b92fcd93e381a27afe75e7b8cd1117f72843e3941c518e335cd0e1288e27",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05731eebb2d7713a1e5090e2d2a1f6212be413f5b8d9f48cfa214bbb64ca6e19",
+      "source_fact_keys": [
+        "source_fact:v1:36873c4e4c91c09f2995433139a267e68c69aae601d1871f957226836e4a8def",
+        "source_fact:v1:ce2f4a04637e72ab9ecceecbce4d8f075d6dd8d4a981cb1cc3b7f81656e95ffc"
+      ],
+      "source_published_kst": "2026-10-08T06:00+09:00",
+      "source_title": "금융지주 상반기 순익 17.6조 ‘역대급’…증권이 끌고 은행은 주춤",
+      "telegram_core_fact": "7일 금융감독원이 발표한 ‘2026년 상반기 금융지주회사 경영실적(잠정)’에 따르면 10개 금융지주의 상반기 연결 당기순이익은 17조6000억원으로 지난해 같은 기간 15조4000억원보다 2조2000억원(13.7%) 증가했다.",
+      "title": "금융지주 상반기 순익 17.6조 ‘역대급’…증권이 끌고 은행은 주춤"
     },
     "fact:84754fac91f7f5e5fc33006e": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
@@ -31216,6 +31410,31 @@
       "telegram_core_fact": "로보AI(AIIO)가 9월 한 달 잠정 매출(미감사)이 1억 달러를 넘어섰으며, 연초 이후 실적을 토대로 2026년 연간 매출을 약 6억 달러로 예상한다고 7일 발표했다.",
       "title": "로보AI, 9월 매출 1억달러 돌파..올 매출 6억달러 전망"
     },
+    "fact:a56a41195c68e4a95084f9f1": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.fnnews.com/news/202610080555583112",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "14012a4d55c33e0e085866f00e55ee045d64830690651b98e33648051e2974e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47cbc725095964b1f422e20ac40de617a5ae04537fe3862aaef37fe2d3d5520a",
+      "source_fact_keys": [
+        "source_fact:v1:2d40bf7e2b450cf4312342682c742dae84e39e1aba0ff526a6337f19162b058e",
+        "source_fact:v1:4a8a929cb4ee61e7a0a99321044a32288b4ee2447d3c17f8e6b456b0e1a8403c",
+        "source_fact:v1:60e2d87e98fb21f43a4ac286a50eff6680acc92401a519a9778da59137ff8b4a",
+        "source_fact:v1:64811a2148e5a3d0fc80cc3308162de2cbfce77b94fadae11ff874d3c7c1b04c",
+        "source_fact:v1:874bebaaca3f94120de791bcb28e2da9b692f98876f1bc3283b7b551d7513c8e",
+        "source_fact:v1:bd08613da6079eebc8a6c82a853cbadecd14d5ea3758085e38bd744a9e3d5cf0",
+        "source_fact:v1:fb3039afc649a42eaba369286e282357f81e2307e932f199d051a6f6bd15deef"
+      ],
+      "source_published_kst": "2026-10-08T05:55+09:00",
+      "source_title": "美 AI 반도체주 혼조…국채금리 급등에 엔비디아·AMD↓, 마이크론 4%↑",
+      "telegram_core_fact": "미국 인공지능(AI) 반도체주가 장기 국채금리 급등에 대체로 하락했지만 마이크론테크놀로지는 4% 넘게 뛰는 등 종목별로 엇갈렸다.",
+      "title": "美 AI 반도체주 혼조…국채금리 급등에 엔비디아·AMD↓, 마이크론 4%↑"
+    },
     "fact:a58ec64d626496e1ff50f582": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
       "lanes": {
@@ -31679,6 +31898,28 @@
       ],
       "source_published_kst": "2026-10-06T12:58+09:00",
       "title": "전세사기 피해 보증금 3분의 1 최소 보장⋯11월 13일 시행"
+    },
+    "fact:aac672c458a119d21a45fcda": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171058",
+      "source": "매일경제",
+      "source_body_digest": "699fcf6219dddfec1694363a6bc8eb6bf1c49705c67dbb19061553f2843b608a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1c8b9e94aba27f5a95eb8388593ad2b1b39552fbb8f5c7ce7af56a9a8672787b",
+      "source_fact_keys": [
+        "source_fact:v1:35bfc27b805ad393e71507d8856cdbebb6e2fc44ccf3eef2fbaaa1a0bd9edde8",
+        "source_fact:v1:592d4dbbbd03491e3f6d0fbd964c723750e25e708159ae7b900b9d78c09a8d07",
+        "source_fact:v1:78e64553f296cd9415aa76b5b65385f2b854fc9aae3047fa034757fd83620ea1",
+        "source_fact:v1:8ef7c05608917ab1713bac5f5c63a46fb2a8585dc1146c9cbee4eb343540fe92"
+      ],
+      "source_published_kst": "2026-10-08T06:22+09:00",
+      "source_title": "아줄, 아메리칸항공 1억 달러 투자 CADE 승인..지분 8% 확보",
+      "telegram_core_fact": "브라질 최대 항공사 아줄(AZUL)은 브라질 경제방어행정위원회(CADE) 심결 재판부가 아메리칸항공(American Airlines)의 아줄 1억 달러 투자를 만장일치로 승인했다고 현지시간 7일 발표했다.",
+      "title": "아줄, 아메리칸항공 1억 달러 투자 CADE 승인..지분 8% 확보"
     },
     "fact:aacab0c3f36c015934820c47": {
       "first_seen_kst": "2026-10-08T00:39:44+09:00",
@@ -39106,6 +39347,33 @@
       "source_published_kst": "2026-10-06T10:17+09:00",
       "title": "LG전자, 르노 SDV에 차세대 통합 콕핏 공급"
     },
+    "fact:f9498e57a7ed773ec8612c47": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171040",
+      "source": "매일경제",
+      "source_body_digest": "fbceb410b3d5140a4d947e01b92cd347d953ec116612b0010c2fa05d1968658f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d999dc4418b7c4140d43406eba28ce5f2ae20635a6ab8c5fcc2c3ff2b76961cb",
+      "source_fact_keys": [
+        "source_fact:v1:05e66469997739a2ec0ad13bb379d497434aaa103ab7b6fcdf04a80a43ff1852",
+        "source_fact:v1:0a0db75433d19cf752a0f797dfe369e893d67142fa111645449aca0ce846c253",
+        "source_fact:v1:2d10561d6b0cc9a1691ec732b88e6696ecf9c9686571f070e100144ab5b17a71",
+        "source_fact:v1:50cde90fc65d09dd1b64f9cff85f042455decd36b58961f0c8f7df03f8d312a1",
+        "source_fact:v1:5c61335dfdc246c646df2576b2a62582d2dfc53bf551dd61b665da03615ea4bc",
+        "source_fact:v1:80bca33600877ac076cdab698916e195874a04dc4ff49af3d4e29e0230725ecd",
+        "source_fact:v1:a669ea3bb5d083628fe53e4582179e1c394fbf68141b907004af0594c988ae25",
+        "source_fact:v1:b215767673ae9591ed673462ae8ebf4943dac2adb1950852bf72e318418e0b5a",
+        "source_fact:v1:d3ccb3a8e3b62fa9854a8efeede0c92c762486bdf00217055fc74bb040f5819f"
+      ],
+      "source_published_kst": "2026-10-08T05:57+09:00",
+      "source_title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓",
+      "telegram_core_fact": "유럽·태평양 선진시장 순매출은 9억3500만 달러로 3.3% 감소했고, 부문 조정 영업이익은 1억3700만 달러로 8.9% 감소했다.",
+      "title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓"
+    },
     "fact:f9686883dbf697d437cf6012": {
       "first_seen_kst": "2026-10-07T16:44:58+09:00",
       "lanes": {
@@ -39766,6 +40034,23 @@
       ],
       "source_published_kst": "2026-10-05T21:21+09:00",
       "title": "레드 로빈 고메 버거, 1억1500만 달러 대출 재융자 완료..2031년 만기"
+    },
+    "link:000fa08bfa3e5b60606f3847": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171053",
+      "source": "매일경제",
+      "source_body_digest": "02683504d26d974d6df8e6e470b9032d7ea0862e3707415ccdfc44771cbc9857",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T06:13+09:00",
+      "source_title": "TORM, RSU 행사로 신주 6만주 발행..총 1억271만주",
+      "telegram_core_fact": "임직원 RSU 행사에 따른 정기적 신주 발행이며 지분 희석률도 0.06% 수준에 그쳐요.",
+      "title": "TORM, RSU 행사로 신주 6만주 발행..총 1억271만주"
     },
     "link:001486db5393e03af8cdd080": {
       "first_seen_kst": "2026-09-22T13:18:41+09:00",
@@ -41358,6 +41643,33 @@
       ],
       "source_published_kst": "2026-10-06T18:35+09:00",
       "title": "오텍캐리어, 글로벌 캐리어와 협력...\"대용량 냉각수 라인업 확대\""
+    },
+    "link:0ac2627c321cbb44f88c27dd": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171040",
+      "source": "매일경제",
+      "source_body_digest": "fbceb410b3d5140a4d947e01b92cd347d953ec116612b0010c2fa05d1968658f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d999dc4418b7c4140d43406eba28ce5f2ae20635a6ab8c5fcc2c3ff2b76961cb",
+      "source_fact_keys": [
+        "source_fact:v1:05e66469997739a2ec0ad13bb379d497434aaa103ab7b6fcdf04a80a43ff1852",
+        "source_fact:v1:0a0db75433d19cf752a0f797dfe369e893d67142fa111645449aca0ce846c253",
+        "source_fact:v1:2d10561d6b0cc9a1691ec732b88e6696ecf9c9686571f070e100144ab5b17a71",
+        "source_fact:v1:50cde90fc65d09dd1b64f9cff85f042455decd36b58961f0c8f7df03f8d312a1",
+        "source_fact:v1:5c61335dfdc246c646df2576b2a62582d2dfc53bf551dd61b665da03615ea4bc",
+        "source_fact:v1:80bca33600877ac076cdab698916e195874a04dc4ff49af3d4e29e0230725ecd",
+        "source_fact:v1:a669ea3bb5d083628fe53e4582179e1c394fbf68141b907004af0594c988ae25",
+        "source_fact:v1:b215767673ae9591ed673462ae8ebf4943dac2adb1950852bf72e318418e0b5a",
+        "source_fact:v1:d3ccb3a8e3b62fa9854a8efeede0c92c762486bdf00217055fc74bb040f5819f"
+      ],
+      "source_published_kst": "2026-10-08T05:57+09:00",
+      "source_title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓",
+      "telegram_core_fact": "유럽·태평양 선진시장 순매출은 9억3500만 달러로 3.3% 감소했고, 부문 조정 영업이익은 1억3700만 달러로 8.9% 감소했다.",
+      "title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓"
     },
     "link:0acf4bf3553d20c74624a261": {
       "first_seen_kst": "2026-09-26T11:28:46+09:00",
@@ -49545,6 +49857,28 @@
       "source_published_kst": "2026-10-07T09:04+09:00",
       "title": "세븐일레븐, 가을 레드와인 공략…‘반 고흐 와인’ 3주 만에 15만병"
     },
+    "link:3ba4e94647593067fff58217": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171058",
+      "source": "매일경제",
+      "source_body_digest": "699fcf6219dddfec1694363a6bc8eb6bf1c49705c67dbb19061553f2843b608a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1c8b9e94aba27f5a95eb8388593ad2b1b39552fbb8f5c7ce7af56a9a8672787b",
+      "source_fact_keys": [
+        "source_fact:v1:35bfc27b805ad393e71507d8856cdbebb6e2fc44ccf3eef2fbaaa1a0bd9edde8",
+        "source_fact:v1:592d4dbbbd03491e3f6d0fbd964c723750e25e708159ae7b900b9d78c09a8d07",
+        "source_fact:v1:78e64553f296cd9415aa76b5b65385f2b854fc9aae3047fa034757fd83620ea1",
+        "source_fact:v1:8ef7c05608917ab1713bac5f5c63a46fb2a8585dc1146c9cbee4eb343540fe92"
+      ],
+      "source_published_kst": "2026-10-08T06:22+09:00",
+      "source_title": "아줄, 아메리칸항공 1억 달러 투자 CADE 승인..지분 8% 확보",
+      "telegram_core_fact": "브라질 최대 항공사 아줄(AZUL)은 브라질 경제방어행정위원회(CADE) 심결 재판부가 아메리칸항공(American Airlines)의 아줄 1억 달러 투자를 만장일치로 승인했다고 현지시간 7일 발표했다.",
+      "title": "아줄, 아메리칸항공 1억 달러 투자 CADE 승인..지분 8% 확보"
+    },
     "link:3bea90d22af800a9216f2ecb": {
       "first_seen_kst": "2026-10-06T18:16:47+09:00",
       "lanes": {
@@ -56606,6 +56940,23 @@
       "source": "머니투데이",
       "title": "방탄소년단, 단일 투어 매출 6800억…팝그룹 최고·최초"
     },
+    "link:667337071cb3878d255193ef": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007163300030",
+      "source": "연합뉴스",
+      "source_body_digest": "d46e635d244c909fe2eb1bb2fcb7239d8c6dd9c3ad82bf634714e707eac220cd",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T06:00+09:00",
+      "source_title": "롯데百, LA서 K뷰티 팝업…국내 브랜드 해외 진출 지원 | 연합뉴스",
+      "telegram_core_fact": "롯데백화점은 미국 로스앤젤레스에서 K-뷰티 팝업을 열고 국내 뷰티 브랜드의 해외 진출 지원에 나선다고 8일 밝혔다. 롯데백화점의 K-뷰티 상품군 외국인 매출은 최근 3개월간 전년 대비 110% 증가했으며, 북미 고객 매출은 120% 늘었다.",
+      "title": "롯데百, LA서 K뷰티 팝업…국내 브랜드 해외 진출 지원 | 연합뉴스"
+    },
     "link:66af8686130b7b0191c96f2a": {
       "first_seen_kst": "2026-10-05T14:04:17+09:00",
       "lanes": {
@@ -58631,6 +58982,26 @@
       ],
       "source_published_kst": "2026-10-06T22:01+09:00",
       "title": "中화웨이, 美퀄컴과 5G·AI 등 '특허 상호사용' 계약 | 연합뉴스"
+    },
+    "link:75125a4a60e046a436472a2d": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02023766645610952",
+      "source": "이데일리",
+      "source_body_digest": "52b6b92fcd93e381a27afe75e7b8cd1117f72843e3941c518e335cd0e1288e27",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05731eebb2d7713a1e5090e2d2a1f6212be413f5b8d9f48cfa214bbb64ca6e19",
+      "source_fact_keys": [
+        "source_fact:v1:36873c4e4c91c09f2995433139a267e68c69aae601d1871f957226836e4a8def",
+        "source_fact:v1:ce2f4a04637e72ab9ecceecbce4d8f075d6dd8d4a981cb1cc3b7f81656e95ffc"
+      ],
+      "source_published_kst": "2026-10-08T06:00+09:00",
+      "source_title": "금융지주 상반기 순익 17.6조 ‘역대급’…증권이 끌고 은행은 주춤",
+      "telegram_core_fact": "7일 금융감독원이 발표한 ‘2026년 상반기 금융지주회사 경영실적(잠정)’에 따르면 10개 금융지주의 상반기 연결 당기순이익은 17조6000억원으로 지난해 같은 기간 15조4000억원보다 2조2000억원(13.7%) 증가했다.",
+      "title": "금융지주 상반기 순익 17.6조 ‘역대급’…증권이 끌고 은행은 주춤"
     },
     "link:7519f1924fa094ec4eb69f74": {
       "first_seen_kst": "2026-10-04T12:31:20+09:00",
@@ -64467,6 +64838,31 @@
       "source_title": "네온샛 5기 모두 교신 성공…'하루 3번' 한반도 관측 군집위성 첫발(종합)",
       "telegram_core_fact": "한국형발사체 '누리호' 5차 발사로 우주에 오른 초소형군집위성 '네온샛' 2~6호 5기가 모두 지상국과 초기 교신에 성공했다.",
       "title": "네온샛 5기 모두 교신 성공…'하루 3번' 한반도 관측 군집위성 첫발(종합)"
+    },
+    "link:98bc418e4b040ae3cb4908ef": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.fnnews.com/news/202610080555583112",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "14012a4d55c33e0e085866f00e55ee045d64830690651b98e33648051e2974e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47cbc725095964b1f422e20ac40de617a5ae04537fe3862aaef37fe2d3d5520a",
+      "source_fact_keys": [
+        "source_fact:v1:2d40bf7e2b450cf4312342682c742dae84e39e1aba0ff526a6337f19162b058e",
+        "source_fact:v1:4a8a929cb4ee61e7a0a99321044a32288b4ee2447d3c17f8e6b456b0e1a8403c",
+        "source_fact:v1:60e2d87e98fb21f43a4ac286a50eff6680acc92401a519a9778da59137ff8b4a",
+        "source_fact:v1:64811a2148e5a3d0fc80cc3308162de2cbfce77b94fadae11ff874d3c7c1b04c",
+        "source_fact:v1:874bebaaca3f94120de791bcb28e2da9b692f98876f1bc3283b7b551d7513c8e",
+        "source_fact:v1:bd08613da6079eebc8a6c82a853cbadecd14d5ea3758085e38bd744a9e3d5cf0",
+        "source_fact:v1:fb3039afc649a42eaba369286e282357f81e2307e932f199d051a6f6bd15deef"
+      ],
+      "source_published_kst": "2026-10-08T05:55+09:00",
+      "source_title": "美 AI 반도체주 혼조…국채금리 급등에 엔비디아·AMD↓, 마이크론 4%↑",
+      "telegram_core_fact": "미국 인공지능(AI) 반도체주가 장기 국채금리 급등에 대체로 하락했지만 마이크론테크놀로지는 4% 넘게 뛰는 등 종목별로 엇갈렸다.",
+      "title": "美 AI 반도체주 혼조…국채금리 급등에 엔비디아·AMD↓, 마이크론 4%↑"
     },
     "link:98f34fefb7203c2b2fade838": {
       "first_seen_kst": "2026-09-19T08:53:16+09:00",
@@ -77580,6 +77976,25 @@
       "telegram_core_fact": "하지만 막대한 자본과 데이터를 보유한 글로벌 빅파마가 AI 투자를 확대하면서 중소 바이오벤처와의 R&D 격차가 더욱 벌어질 수 있다는 전망도 나온다.",
       "title": "“신약도 AI로 만든다”…빅파마·바이오텍, 커지는 R&D 격차[AI 新계급사회]"
     },
+    "link:ea2bd0b7160d7047c2c17fc7": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.etnews.com/20261007000256",
+      "source": "전자신문",
+      "source_body_digest": "5aa3f413c73135954a2d1462b6f191719f45370b45a909ee9aa00d26d1adfdce",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a2b0a9eacd648f58bbb98f40e486363cbf978bf00ff90f44d0f5e3ae051bfebd",
+      "source_fact_keys": [
+        "source_fact:v1:1ca9558523cf029986d476debf6c3901c736cb30473d98677e63f3b840bda1fa"
+      ],
+      "source_published_kst": "2026-10-08T06:00+09:00",
+      "source_title": "금융지주, 상반기 순익 17.6조원…비은행 성장 속 건전성은 악화",
+      "telegram_core_fact": "올해 상반기 금융지주회사 순이익이 금융투자 등 비은행 부문 호조에 힘입어 전년 동기보다 13.7% 증가했다.",
+      "title": "금융지주, 상반기 순익 17.6조원…비은행 성장 속 건전성은 악화"
+    },
     "link:ea50ca2282bd4fa3c992be44": {
       "first_seen_kst": "2026-10-07T03:04:14+09:00",
       "lanes": {
@@ -82537,6 +82952,23 @@
       "link": "https://www.edaily.co.kr/news/read?newsid=06281206645608656&parentid=06320566645608656&gubun=E",
       "source": "이데일리",
       "title": "\"짜장면 308그릇 주문이요\"...중식당 '시진핑', 중국인 테러 그 후"
+    },
+    "original:0b116ea01096b78fc40b09b9": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007163300030",
+      "source": "연합뉴스",
+      "source_body_digest": "d46e635d244c909fe2eb1bb2fcb7239d8c6dd9c3ad82bf634714e707eac220cd",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T06:00+09:00",
+      "source_title": "롯데百, LA서 K뷰티 팝업…국내 브랜드 해외 진출 지원 | 연합뉴스",
+      "telegram_core_fact": "롯데백화점은 미국 로스앤젤레스에서 K-뷰티 팝업을 열고 국내 뷰티 브랜드의 해외 진출 지원에 나선다고 8일 밝혔다. 롯데백화점의 K-뷰티 상품군 외국인 매출은 최근 3개월간 전년 대비 110% 증가했으며, 북미 고객 매출은 120% 늘었다.",
+      "title": "롯데百, LA서 K뷰티 팝업…국내 브랜드 해외 진출 지원 | 연합뉴스"
     },
     "original:0b19826886e007e1d4ac91fb": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
@@ -88987,6 +89419,23 @@
       "source": "연합뉴스",
       "title": "전세계 가솔린차 판매비중 사상 처음 50% 깨졌다…\"고유가 영향\" | 연합뉴스"
     },
+    "original:3418ba81604007e30e0ddd8b": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171053",
+      "source": "매일경제",
+      "source_body_digest": "02683504d26d974d6df8e6e470b9032d7ea0862e3707415ccdfc44771cbc9857",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T06:13+09:00",
+      "source_title": "TORM, RSU 행사로 신주 6만주 발행..총 1억271만주",
+      "telegram_core_fact": "임직원 RSU 행사에 따른 정기적 신주 발행이며 지분 희석률도 0.06% 수준에 그쳐요.",
+      "title": "TORM, RSU 행사로 신주 6만주 발행..총 1억271만주"
+    },
     "original:342e9c30c372a026179045ab": {
       "first_seen_kst": "2026-10-02T13:15:57+09:00",
       "lanes": {
@@ -94615,6 +95064,28 @@
       "source": "파이낸셜뉴스",
       "title": "美·英·佛 장기금리 동반 급등…글로벌 국채 투매 심화"
     },
+    "original:55ba0718814d86ae466e012a": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171058",
+      "source": "매일경제",
+      "source_body_digest": "699fcf6219dddfec1694363a6bc8eb6bf1c49705c67dbb19061553f2843b608a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1c8b9e94aba27f5a95eb8388593ad2b1b39552fbb8f5c7ce7af56a9a8672787b",
+      "source_fact_keys": [
+        "source_fact:v1:35bfc27b805ad393e71507d8856cdbebb6e2fc44ccf3eef2fbaaa1a0bd9edde8",
+        "source_fact:v1:592d4dbbbd03491e3f6d0fbd964c723750e25e708159ae7b900b9d78c09a8d07",
+        "source_fact:v1:78e64553f296cd9415aa76b5b65385f2b854fc9aae3047fa034757fd83620ea1",
+        "source_fact:v1:8ef7c05608917ab1713bac5f5c63a46fb2a8585dc1146c9cbee4eb343540fe92"
+      ],
+      "source_published_kst": "2026-10-08T06:22+09:00",
+      "source_title": "아줄, 아메리칸항공 1억 달러 투자 CADE 승인..지분 8% 확보",
+      "telegram_core_fact": "브라질 최대 항공사 아줄(AZUL)은 브라질 경제방어행정위원회(CADE) 심결 재판부가 아메리칸항공(American Airlines)의 아줄 1억 달러 투자를 만장일치로 승인했다고 현지시간 7일 발표했다.",
+      "title": "아줄, 아메리칸항공 1억 달러 투자 CADE 승인..지분 8% 확보"
+    },
     "original:55cb21c0a429f184c051b461": {
       "first_seen_kst": "2026-10-06T19:33:48+09:00",
       "lanes": {
@@ -95598,6 +96069,26 @@
       ],
       "source_published_kst": "2026-10-07T06:33+09:00",
       "title": "3주 파업 예고한 삼성바이오 노조…생산·수주 불확실성 커진다"
+    },
+    "original:5b6ff2e74afba5d280bcd479": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02023766645610952",
+      "source": "이데일리",
+      "source_body_digest": "52b6b92fcd93e381a27afe75e7b8cd1117f72843e3941c518e335cd0e1288e27",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05731eebb2d7713a1e5090e2d2a1f6212be413f5b8d9f48cfa214bbb64ca6e19",
+      "source_fact_keys": [
+        "source_fact:v1:36873c4e4c91c09f2995433139a267e68c69aae601d1871f957226836e4a8def",
+        "source_fact:v1:ce2f4a04637e72ab9ecceecbce4d8f075d6dd8d4a981cb1cc3b7f81656e95ffc"
+      ],
+      "source_published_kst": "2026-10-08T06:00+09:00",
+      "source_title": "금융지주 상반기 순익 17.6조 ‘역대급’…증권이 끌고 은행은 주춤",
+      "telegram_core_fact": "7일 금융감독원이 발표한 ‘2026년 상반기 금융지주회사 경영실적(잠정)’에 따르면 10개 금융지주의 상반기 연결 당기순이익은 17조6000억원으로 지난해 같은 기간 15조4000억원보다 2조2000억원(13.7%) 증가했다.",
+      "title": "금융지주 상반기 순익 17.6조 ‘역대급’…증권이 끌고 은행은 주춤"
     },
     "original:5bbc87d40beb00fd926d5816": {
       "first_seen_kst": "2026-10-06T22:51:44+09:00",
@@ -98278,6 +98769,31 @@
       "link": "https://www.newsis.com/view/NISX20260930_0003809551",
       "source": "뉴시스",
       "title": "버스파업에 놀란 서울시, 2030년 자율주행버스 500대 도입"
+    },
+    "original:6e3e26cdf67dbec878507144": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.fnnews.com/news/202610080555583112",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "14012a4d55c33e0e085866f00e55ee045d64830690651b98e33648051e2974e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47cbc725095964b1f422e20ac40de617a5ae04537fe3862aaef37fe2d3d5520a",
+      "source_fact_keys": [
+        "source_fact:v1:2d40bf7e2b450cf4312342682c742dae84e39e1aba0ff526a6337f19162b058e",
+        "source_fact:v1:4a8a929cb4ee61e7a0a99321044a32288b4ee2447d3c17f8e6b456b0e1a8403c",
+        "source_fact:v1:60e2d87e98fb21f43a4ac286a50eff6680acc92401a519a9778da59137ff8b4a",
+        "source_fact:v1:64811a2148e5a3d0fc80cc3308162de2cbfce77b94fadae11ff874d3c7c1b04c",
+        "source_fact:v1:874bebaaca3f94120de791bcb28e2da9b692f98876f1bc3283b7b551d7513c8e",
+        "source_fact:v1:bd08613da6079eebc8a6c82a853cbadecd14d5ea3758085e38bd744a9e3d5cf0",
+        "source_fact:v1:fb3039afc649a42eaba369286e282357f81e2307e932f199d051a6f6bd15deef"
+      ],
+      "source_published_kst": "2026-10-08T05:55+09:00",
+      "source_title": "美 AI 반도체주 혼조…국채금리 급등에 엔비디아·AMD↓, 마이크론 4%↑",
+      "telegram_core_fact": "미국 인공지능(AI) 반도체주가 장기 국채금리 급등에 대체로 하락했지만 마이크론테크놀로지는 4% 넘게 뛰는 등 종목별로 엇갈렸다.",
+      "title": "美 AI 반도체주 혼조…국채금리 급등에 엔비디아·AMD↓, 마이크론 4%↑"
     },
     "original:6e45335482885ec580589e3a": {
       "first_seen_kst": "2026-10-02T11:10:58+09:00",
@@ -105161,6 +105677,33 @@
       ],
       "source_published_kst": "2026-10-06T15:07+09:00",
       "title": "\"K-콘텐츠 금융지원\"…부산은행·신보, 100억원 보증지원"
+    },
+    "original:9a66f887b6b982a9e4cc82b9": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171040",
+      "source": "매일경제",
+      "source_body_digest": "fbceb410b3d5140a4d947e01b92cd347d953ec116612b0010c2fa05d1968658f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d999dc4418b7c4140d43406eba28ce5f2ae20635a6ab8c5fcc2c3ff2b76961cb",
+      "source_fact_keys": [
+        "source_fact:v1:05e66469997739a2ec0ad13bb379d497434aaa103ab7b6fcdf04a80a43ff1852",
+        "source_fact:v1:0a0db75433d19cf752a0f797dfe369e893d67142fa111645449aca0ce846c253",
+        "source_fact:v1:2d10561d6b0cc9a1691ec732b88e6696ecf9c9686571f070e100144ab5b17a71",
+        "source_fact:v1:50cde90fc65d09dd1b64f9cff85f042455decd36b58961f0c8f7df03f8d312a1",
+        "source_fact:v1:5c61335dfdc246c646df2576b2a62582d2dfc53bf551dd61b665da03615ea4bc",
+        "source_fact:v1:80bca33600877ac076cdab698916e195874a04dc4ff49af3d4e29e0230725ecd",
+        "source_fact:v1:a669ea3bb5d083628fe53e4582179e1c394fbf68141b907004af0594c988ae25",
+        "source_fact:v1:b215767673ae9591ed673462ae8ebf4943dac2adb1950852bf72e318418e0b5a",
+        "source_fact:v1:d3ccb3a8e3b62fa9854a8efeede0c92c762486bdf00217055fc74bb040f5819f"
+      ],
+      "source_published_kst": "2026-10-08T05:57+09:00",
+      "source_title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓",
+      "telegram_core_fact": "유럽·태평양 선진시장 순매출은 9억3500만 달러로 3.3% 감소했고, 부문 조정 영업이익은 1억3700만 달러로 8.9% 감소했다.",
+      "title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓"
     },
     "original:9a6749dd7e4d22882817d49e": {
       "first_seen_kst": "2026-10-07T07:39:19+09:00",
@@ -119905,6 +120448,25 @@
       "source_published_kst": "2026-10-06T10:24+09:00",
       "title": "슈나이더, 미 소프트웨어 업체 20조원에 인수 | 연합뉴스"
     },
+    "original:fac427f18fb783429342cc22": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.etnews.com/20261007000256",
+      "source": "전자신문",
+      "source_body_digest": "5aa3f413c73135954a2d1462b6f191719f45370b45a909ee9aa00d26d1adfdce",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a2b0a9eacd648f58bbb98f40e486363cbf978bf00ff90f44d0f5e3ae051bfebd",
+      "source_fact_keys": [
+        "source_fact:v1:1ca9558523cf029986d476debf6c3901c736cb30473d98677e63f3b840bda1fa"
+      ],
+      "source_published_kst": "2026-10-08T06:00+09:00",
+      "source_title": "금융지주, 상반기 순익 17.6조원…비은행 성장 속 건전성은 악화",
+      "telegram_core_fact": "올해 상반기 금융지주회사 순이익이 금융투자 등 비은행 부문 호조에 힘입어 전년 동기보다 13.7% 증가했다.",
+      "title": "금융지주, 상반기 순익 17.6조원…비은행 성장 속 건전성은 악화"
+    },
     "original:fae515231126d515383fb973": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -122340,6 +122902,33 @@
       ],
       "source_published_kst": "2026-10-05T18:17+09:00",
       "title": "'전고체 배터리' 기대감…한주새 ETF 12% 뛰어"
+    },
+    "source_fact:04ff9a8225b0cb8e18e8b541": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171040",
+      "source": "매일경제",
+      "source_body_digest": "fbceb410b3d5140a4d947e01b92cd347d953ec116612b0010c2fa05d1968658f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d999dc4418b7c4140d43406eba28ce5f2ae20635a6ab8c5fcc2c3ff2b76961cb",
+      "source_fact_keys": [
+        "source_fact:v1:05e66469997739a2ec0ad13bb379d497434aaa103ab7b6fcdf04a80a43ff1852",
+        "source_fact:v1:0a0db75433d19cf752a0f797dfe369e893d67142fa111645449aca0ce846c253",
+        "source_fact:v1:2d10561d6b0cc9a1691ec732b88e6696ecf9c9686571f070e100144ab5b17a71",
+        "source_fact:v1:50cde90fc65d09dd1b64f9cff85f042455decd36b58961f0c8f7df03f8d312a1",
+        "source_fact:v1:5c61335dfdc246c646df2576b2a62582d2dfc53bf551dd61b665da03615ea4bc",
+        "source_fact:v1:80bca33600877ac076cdab698916e195874a04dc4ff49af3d4e29e0230725ecd",
+        "source_fact:v1:a669ea3bb5d083628fe53e4582179e1c394fbf68141b907004af0594c988ae25",
+        "source_fact:v1:b215767673ae9591ed673462ae8ebf4943dac2adb1950852bf72e318418e0b5a",
+        "source_fact:v1:d3ccb3a8e3b62fa9854a8efeede0c92c762486bdf00217055fc74bb040f5819f"
+      ],
+      "source_published_kst": "2026-10-08T05:57+09:00",
+      "source_title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓",
+      "telegram_core_fact": "유럽·태평양 선진시장 순매출은 9억3500만 달러로 3.3% 감소했고, 부문 조정 영업이익은 1억3700만 달러로 8.9% 감소했다.",
+      "title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓"
     },
     "source_fact:05050cd454ac5fbd332b9d87": {
       "first_seen_kst": "2026-10-06T10:04:04+09:00",
@@ -125506,6 +126095,33 @@
       ],
       "source_published_kst": "2026-10-07T05:00+09:00",
       "title": "개미는 반도체 ‘팔자’…美 지수·파킹형에 몰린 돈 [ETF 지형도 변화]①"
+    },
+    "source_fact:0c5b8b3b2254a7eb103a2550": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171040",
+      "source": "매일경제",
+      "source_body_digest": "fbceb410b3d5140a4d947e01b92cd347d953ec116612b0010c2fa05d1968658f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d999dc4418b7c4140d43406eba28ce5f2ae20635a6ab8c5fcc2c3ff2b76961cb",
+      "source_fact_keys": [
+        "source_fact:v1:05e66469997739a2ec0ad13bb379d497434aaa103ab7b6fcdf04a80a43ff1852",
+        "source_fact:v1:0a0db75433d19cf752a0f797dfe369e893d67142fa111645449aca0ce846c253",
+        "source_fact:v1:2d10561d6b0cc9a1691ec732b88e6696ecf9c9686571f070e100144ab5b17a71",
+        "source_fact:v1:50cde90fc65d09dd1b64f9cff85f042455decd36b58961f0c8f7df03f8d312a1",
+        "source_fact:v1:5c61335dfdc246c646df2576b2a62582d2dfc53bf551dd61b665da03615ea4bc",
+        "source_fact:v1:80bca33600877ac076cdab698916e195874a04dc4ff49af3d4e29e0230725ecd",
+        "source_fact:v1:a669ea3bb5d083628fe53e4582179e1c394fbf68141b907004af0594c988ae25",
+        "source_fact:v1:b215767673ae9591ed673462ae8ebf4943dac2adb1950852bf72e318418e0b5a",
+        "source_fact:v1:d3ccb3a8e3b62fa9854a8efeede0c92c762486bdf00217055fc74bb040f5819f"
+      ],
+      "source_published_kst": "2026-10-08T05:57+09:00",
+      "source_title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓",
+      "telegram_core_fact": "유럽·태평양 선진시장 순매출은 9억3500만 달러로 3.3% 감소했고, 부문 조정 영업이익은 1억3700만 달러로 8.9% 감소했다.",
+      "title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓"
     },
     "source_fact:0c662b41e4a48c57fa484c95": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
@@ -130274,6 +130890,31 @@
       "source_published_kst": "2026-10-05T22:45+09:00",
       "title": "[美특징주]PTC, 슈나이더일렉트릭에 피인수 소식에 급등"
     },
+    "source_fact:17fcb9406b27a37177ce9d18": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.fnnews.com/news/202610080555583112",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "14012a4d55c33e0e085866f00e55ee045d64830690651b98e33648051e2974e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47cbc725095964b1f422e20ac40de617a5ae04537fe3862aaef37fe2d3d5520a",
+      "source_fact_keys": [
+        "source_fact:v1:2d40bf7e2b450cf4312342682c742dae84e39e1aba0ff526a6337f19162b058e",
+        "source_fact:v1:4a8a929cb4ee61e7a0a99321044a32288b4ee2447d3c17f8e6b456b0e1a8403c",
+        "source_fact:v1:60e2d87e98fb21f43a4ac286a50eff6680acc92401a519a9778da59137ff8b4a",
+        "source_fact:v1:64811a2148e5a3d0fc80cc3308162de2cbfce77b94fadae11ff874d3c7c1b04c",
+        "source_fact:v1:874bebaaca3f94120de791bcb28e2da9b692f98876f1bc3283b7b551d7513c8e",
+        "source_fact:v1:bd08613da6079eebc8a6c82a853cbadecd14d5ea3758085e38bd744a9e3d5cf0",
+        "source_fact:v1:fb3039afc649a42eaba369286e282357f81e2307e932f199d051a6f6bd15deef"
+      ],
+      "source_published_kst": "2026-10-08T05:55+09:00",
+      "source_title": "美 AI 반도체주 혼조…국채금리 급등에 엔비디아·AMD↓, 마이크론 4%↑",
+      "telegram_core_fact": "미국 인공지능(AI) 반도체주가 장기 국채금리 급등에 대체로 하락했지만 마이크론테크놀로지는 4% 넘게 뛰는 등 종목별로 엇갈렸다.",
+      "title": "美 AI 반도체주 혼조…국채금리 급등에 엔비디아·AMD↓, 마이크론 4%↑"
+    },
     "source_fact:1815c8779a28072e57905897": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
       "lanes": {
@@ -130317,6 +130958,31 @@
       ],
       "source_published_kst": "2026-10-06T09:42+09:00",
       "title": "레디로버스트머신 '리마스터 하이브리드 굴착기' 베트남 상륙…현지기업 RCE와 맞손"
+    },
+    "source_fact:1824881d724c18d13aeb4ebd": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.fnnews.com/news/202610080555583112",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "14012a4d55c33e0e085866f00e55ee045d64830690651b98e33648051e2974e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47cbc725095964b1f422e20ac40de617a5ae04537fe3862aaef37fe2d3d5520a",
+      "source_fact_keys": [
+        "source_fact:v1:2d40bf7e2b450cf4312342682c742dae84e39e1aba0ff526a6337f19162b058e",
+        "source_fact:v1:4a8a929cb4ee61e7a0a99321044a32288b4ee2447d3c17f8e6b456b0e1a8403c",
+        "source_fact:v1:60e2d87e98fb21f43a4ac286a50eff6680acc92401a519a9778da59137ff8b4a",
+        "source_fact:v1:64811a2148e5a3d0fc80cc3308162de2cbfce77b94fadae11ff874d3c7c1b04c",
+        "source_fact:v1:874bebaaca3f94120de791bcb28e2da9b692f98876f1bc3283b7b551d7513c8e",
+        "source_fact:v1:bd08613da6079eebc8a6c82a853cbadecd14d5ea3758085e38bd744a9e3d5cf0",
+        "source_fact:v1:fb3039afc649a42eaba369286e282357f81e2307e932f199d051a6f6bd15deef"
+      ],
+      "source_published_kst": "2026-10-08T05:55+09:00",
+      "source_title": "美 AI 반도체주 혼조…국채금리 급등에 엔비디아·AMD↓, 마이크론 4%↑",
+      "telegram_core_fact": "미국 인공지능(AI) 반도체주가 장기 국채금리 급등에 대체로 하락했지만 마이크론테크놀로지는 4% 넘게 뛰는 등 종목별로 엇갈렸다.",
+      "title": "美 AI 반도체주 혼조…국채금리 급등에 엔비디아·AMD↓, 마이크론 4%↑"
     },
     "source_fact:182f11908e20291b3e22312a": {
       "first_seen_kst": "2026-10-07T07:24:41+09:00",
@@ -138924,6 +139590,33 @@
       "telegram_core_fact": "포르투나 마이닝(FSM)은 3분기 금환산온스(GEO) 기준 생산량이 6만9665온스로 전년 동기(7만2462온스) 대비 3.9%, 전분기(7만2217온스) 대비 3.5% 감소했다고 10월 7일 발표했다.",
       "title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소"
     },
+    "source_fact:2bd8da5a8ad49cce00e0253d": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171040",
+      "source": "매일경제",
+      "source_body_digest": "fbceb410b3d5140a4d947e01b92cd347d953ec116612b0010c2fa05d1968658f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d999dc4418b7c4140d43406eba28ce5f2ae20635a6ab8c5fcc2c3ff2b76961cb",
+      "source_fact_keys": [
+        "source_fact:v1:05e66469997739a2ec0ad13bb379d497434aaa103ab7b6fcdf04a80a43ff1852",
+        "source_fact:v1:0a0db75433d19cf752a0f797dfe369e893d67142fa111645449aca0ce846c253",
+        "source_fact:v1:2d10561d6b0cc9a1691ec732b88e6696ecf9c9686571f070e100144ab5b17a71",
+        "source_fact:v1:50cde90fc65d09dd1b64f9cff85f042455decd36b58961f0c8f7df03f8d312a1",
+        "source_fact:v1:5c61335dfdc246c646df2576b2a62582d2dfc53bf551dd61b665da03615ea4bc",
+        "source_fact:v1:80bca33600877ac076cdab698916e195874a04dc4ff49af3d4e29e0230725ecd",
+        "source_fact:v1:a669ea3bb5d083628fe53e4582179e1c394fbf68141b907004af0594c988ae25",
+        "source_fact:v1:b215767673ae9591ed673462ae8ebf4943dac2adb1950852bf72e318418e0b5a",
+        "source_fact:v1:d3ccb3a8e3b62fa9854a8efeede0c92c762486bdf00217055fc74bb040f5819f"
+      ],
+      "source_published_kst": "2026-10-08T05:57+09:00",
+      "source_title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓",
+      "telegram_core_fact": "유럽·태평양 선진시장 순매출은 9억3500만 달러로 3.3% 감소했고, 부문 조정 영업이익은 1억3700만 달러로 8.9% 감소했다.",
+      "title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓"
+    },
     "source_fact:2bdba5a300ae1d0c493614fe": {
       "first_seen_kst": "2026-10-06T22:08:07+09:00",
       "lanes": {
@@ -142803,6 +143496,31 @@
       "source_published_kst": "2026-10-06T09:04+09:00",
       "title": "현대글로비스, 美 LGL과 원자력 자동차운반선 한·미 운항 검토"
     },
+    "source_fact:34c62e1253284506f30b0e13": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.fnnews.com/news/202610080555583112",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "14012a4d55c33e0e085866f00e55ee045d64830690651b98e33648051e2974e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47cbc725095964b1f422e20ac40de617a5ae04537fe3862aaef37fe2d3d5520a",
+      "source_fact_keys": [
+        "source_fact:v1:2d40bf7e2b450cf4312342682c742dae84e39e1aba0ff526a6337f19162b058e",
+        "source_fact:v1:4a8a929cb4ee61e7a0a99321044a32288b4ee2447d3c17f8e6b456b0e1a8403c",
+        "source_fact:v1:60e2d87e98fb21f43a4ac286a50eff6680acc92401a519a9778da59137ff8b4a",
+        "source_fact:v1:64811a2148e5a3d0fc80cc3308162de2cbfce77b94fadae11ff874d3c7c1b04c",
+        "source_fact:v1:874bebaaca3f94120de791bcb28e2da9b692f98876f1bc3283b7b551d7513c8e",
+        "source_fact:v1:bd08613da6079eebc8a6c82a853cbadecd14d5ea3758085e38bd744a9e3d5cf0",
+        "source_fact:v1:fb3039afc649a42eaba369286e282357f81e2307e932f199d051a6f6bd15deef"
+      ],
+      "source_published_kst": "2026-10-08T05:55+09:00",
+      "source_title": "美 AI 반도체주 혼조…국채금리 급등에 엔비디아·AMD↓, 마이크론 4%↑",
+      "telegram_core_fact": "미국 인공지능(AI) 반도체주가 장기 국채금리 급등에 대체로 하락했지만 마이크론테크놀로지는 4% 넘게 뛰는 등 종목별로 엇갈렸다.",
+      "title": "美 AI 반도체주 혼조…국채금리 급등에 엔비디아·AMD↓, 마이크론 4%↑"
+    },
     "source_fact:34d1837e44ff8ae929466d67": {
       "first_seen_kst": "2026-10-07T16:15:21+09:00",
       "lanes": {
@@ -144773,6 +145491,33 @@
       "source_published_kst": "2026-10-06T08:57+09:00",
       "title": "반려동물 조회 간편하게···쿠콘 현대해상 펫보험에 API 공급"
     },
+    "source_fact:3929980b653182334da98f43": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171040",
+      "source": "매일경제",
+      "source_body_digest": "fbceb410b3d5140a4d947e01b92cd347d953ec116612b0010c2fa05d1968658f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d999dc4418b7c4140d43406eba28ce5f2ae20635a6ab8c5fcc2c3ff2b76961cb",
+      "source_fact_keys": [
+        "source_fact:v1:05e66469997739a2ec0ad13bb379d497434aaa103ab7b6fcdf04a80a43ff1852",
+        "source_fact:v1:0a0db75433d19cf752a0f797dfe369e893d67142fa111645449aca0ce846c253",
+        "source_fact:v1:2d10561d6b0cc9a1691ec732b88e6696ecf9c9686571f070e100144ab5b17a71",
+        "source_fact:v1:50cde90fc65d09dd1b64f9cff85f042455decd36b58961f0c8f7df03f8d312a1",
+        "source_fact:v1:5c61335dfdc246c646df2576b2a62582d2dfc53bf551dd61b665da03615ea4bc",
+        "source_fact:v1:80bca33600877ac076cdab698916e195874a04dc4ff49af3d4e29e0230725ecd",
+        "source_fact:v1:a669ea3bb5d083628fe53e4582179e1c394fbf68141b907004af0594c988ae25",
+        "source_fact:v1:b215767673ae9591ed673462ae8ebf4943dac2adb1950852bf72e318418e0b5a",
+        "source_fact:v1:d3ccb3a8e3b62fa9854a8efeede0c92c762486bdf00217055fc74bb040f5819f"
+      ],
+      "source_published_kst": "2026-10-08T05:57+09:00",
+      "source_title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓",
+      "telegram_core_fact": "유럽·태평양 선진시장 순매출은 9억3500만 달러로 3.3% 감소했고, 부문 조정 영업이익은 1억3700만 달러로 8.9% 감소했다.",
+      "title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓"
+    },
     "source_fact:392fb2e590f1e89fbae0ca8c": {
       "first_seen_kst": "2026-10-06T15:03:09+09:00",
       "lanes": {
@@ -146707,6 +147452,26 @@
       ],
       "source_published_kst": "2026-10-06T10:59+09:00",
       "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 공급"
+    },
+    "source_fact:3e06def2f0ba31c9d8828b93": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02023766645610952",
+      "source": "이데일리",
+      "source_body_digest": "52b6b92fcd93e381a27afe75e7b8cd1117f72843e3941c518e335cd0e1288e27",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05731eebb2d7713a1e5090e2d2a1f6212be413f5b8d9f48cfa214bbb64ca6e19",
+      "source_fact_keys": [
+        "source_fact:v1:36873c4e4c91c09f2995433139a267e68c69aae601d1871f957226836e4a8def",
+        "source_fact:v1:ce2f4a04637e72ab9ecceecbce4d8f075d6dd8d4a981cb1cc3b7f81656e95ffc"
+      ],
+      "source_published_kst": "2026-10-08T06:00+09:00",
+      "source_title": "금융지주 상반기 순익 17.6조 ‘역대급’…증권이 끌고 은행은 주춤",
+      "telegram_core_fact": "7일 금융감독원이 발표한 ‘2026년 상반기 금융지주회사 경영실적(잠정)’에 따르면 10개 금융지주의 상반기 연결 당기순이익은 17조6000억원으로 지난해 같은 기간 15조4000억원보다 2조2000억원(13.7%) 증가했다.",
+      "title": "금융지주 상반기 순익 17.6조 ‘역대급’…증권이 끌고 은행은 주춤"
     },
     "source_fact:3e07d3ec65915dccc01a3af9": {
       "first_seen_kst": "2026-10-06T23:29:45+09:00",
@@ -149787,6 +150552,28 @@
       ],
       "source_published_kst": "2026-10-06T13:06+09:00",
       "title": "美 소비자신뢰지수 12년 최저인데 가계지출 6.1%↑…실질소비도 늘었다"
+    },
+    "source_fact:45c803181bf518e43692ea0e": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171058",
+      "source": "매일경제",
+      "source_body_digest": "699fcf6219dddfec1694363a6bc8eb6bf1c49705c67dbb19061553f2843b608a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1c8b9e94aba27f5a95eb8388593ad2b1b39552fbb8f5c7ce7af56a9a8672787b",
+      "source_fact_keys": [
+        "source_fact:v1:35bfc27b805ad393e71507d8856cdbebb6e2fc44ccf3eef2fbaaa1a0bd9edde8",
+        "source_fact:v1:592d4dbbbd03491e3f6d0fbd964c723750e25e708159ae7b900b9d78c09a8d07",
+        "source_fact:v1:78e64553f296cd9415aa76b5b65385f2b854fc9aae3047fa034757fd83620ea1",
+        "source_fact:v1:8ef7c05608917ab1713bac5f5c63a46fb2a8585dc1146c9cbee4eb343540fe92"
+      ],
+      "source_published_kst": "2026-10-08T06:22+09:00",
+      "source_title": "아줄, 아메리칸항공 1억 달러 투자 CADE 승인..지분 8% 확보",
+      "telegram_core_fact": "브라질 최대 항공사 아줄(AZUL)은 브라질 경제방어행정위원회(CADE) 심결 재판부가 아메리칸항공(American Airlines)의 아줄 1억 달러 투자를 만장일치로 승인했다고 현지시간 7일 발표했다.",
+      "title": "아줄, 아메리칸항공 1억 달러 투자 CADE 승인..지분 8% 확보"
     },
     "source_fact:45d6ba0067bbf23ed00f1eb2": {
       "first_seen_kst": "2026-10-06T23:05:07+09:00",
@@ -154452,6 +155239,28 @@
       ],
       "source_published_kst": "2026-10-06T11:31+09:00",
       "title": "[2026 국감]산업부, 대미투자 국익 최우선 추진…호남 반도체 등 1600조 속도전"
+    },
+    "source_fact:5040a42c346cb8010a9c8074": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171058",
+      "source": "매일경제",
+      "source_body_digest": "699fcf6219dddfec1694363a6bc8eb6bf1c49705c67dbb19061553f2843b608a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1c8b9e94aba27f5a95eb8388593ad2b1b39552fbb8f5c7ce7af56a9a8672787b",
+      "source_fact_keys": [
+        "source_fact:v1:35bfc27b805ad393e71507d8856cdbebb6e2fc44ccf3eef2fbaaa1a0bd9edde8",
+        "source_fact:v1:592d4dbbbd03491e3f6d0fbd964c723750e25e708159ae7b900b9d78c09a8d07",
+        "source_fact:v1:78e64553f296cd9415aa76b5b65385f2b854fc9aae3047fa034757fd83620ea1",
+        "source_fact:v1:8ef7c05608917ab1713bac5f5c63a46fb2a8585dc1146c9cbee4eb343540fe92"
+      ],
+      "source_published_kst": "2026-10-08T06:22+09:00",
+      "source_title": "아줄, 아메리칸항공 1억 달러 투자 CADE 승인..지분 8% 확보",
+      "telegram_core_fact": "브라질 최대 항공사 아줄(AZUL)은 브라질 경제방어행정위원회(CADE) 심결 재판부가 아메리칸항공(American Airlines)의 아줄 1억 달러 투자를 만장일치로 승인했다고 현지시간 7일 발표했다.",
+      "title": "아줄, 아메리칸항공 1억 달러 투자 CADE 승인..지분 8% 확보"
     },
     "source_fact:506066fa355780febc8cd3b7": {
       "first_seen_kst": "2026-10-07T07:24:41+09:00",
@@ -161494,6 +162303,33 @@
       ],
       "source_published_kst": "2026-10-06T07:42+09:00",
       "title": "리노공업, 중장기 주목할 부분은 CPO…목표가↑-DS"
+    },
+    "source_fact:5fe3e3adfdb98d1268d7bc83": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171040",
+      "source": "매일경제",
+      "source_body_digest": "fbceb410b3d5140a4d947e01b92cd347d953ec116612b0010c2fa05d1968658f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d999dc4418b7c4140d43406eba28ce5f2ae20635a6ab8c5fcc2c3ff2b76961cb",
+      "source_fact_keys": [
+        "source_fact:v1:05e66469997739a2ec0ad13bb379d497434aaa103ab7b6fcdf04a80a43ff1852",
+        "source_fact:v1:0a0db75433d19cf752a0f797dfe369e893d67142fa111645449aca0ce846c253",
+        "source_fact:v1:2d10561d6b0cc9a1691ec732b88e6696ecf9c9686571f070e100144ab5b17a71",
+        "source_fact:v1:50cde90fc65d09dd1b64f9cff85f042455decd36b58961f0c8f7df03f8d312a1",
+        "source_fact:v1:5c61335dfdc246c646df2576b2a62582d2dfc53bf551dd61b665da03615ea4bc",
+        "source_fact:v1:80bca33600877ac076cdab698916e195874a04dc4ff49af3d4e29e0230725ecd",
+        "source_fact:v1:a669ea3bb5d083628fe53e4582179e1c394fbf68141b907004af0594c988ae25",
+        "source_fact:v1:b215767673ae9591ed673462ae8ebf4943dac2adb1950852bf72e318418e0b5a",
+        "source_fact:v1:d3ccb3a8e3b62fa9854a8efeede0c92c762486bdf00217055fc74bb040f5819f"
+      ],
+      "source_published_kst": "2026-10-08T05:57+09:00",
+      "source_title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓",
+      "telegram_core_fact": "유럽·태평양 선진시장 순매출은 9억3500만 달러로 3.3% 감소했고, 부문 조정 영업이익은 1억3700만 달러로 8.9% 감소했다.",
+      "title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓"
     },
     "source_fact:5fefdb1273e82adb8399d9e5": {
       "first_seen_kst": "2026-10-08T03:13:06+09:00",
@@ -169016,6 +169852,33 @@
       "source_published_kst": "2026-10-06T22:01+09:00",
       "title": "中화웨이, 美퀄컴과 5G·AI 등 '특허 상호사용' 계약 | 연합뉴스"
     },
+    "source_fact:726e39872c9043c58066b612": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171040",
+      "source": "매일경제",
+      "source_body_digest": "fbceb410b3d5140a4d947e01b92cd347d953ec116612b0010c2fa05d1968658f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d999dc4418b7c4140d43406eba28ce5f2ae20635a6ab8c5fcc2c3ff2b76961cb",
+      "source_fact_keys": [
+        "source_fact:v1:05e66469997739a2ec0ad13bb379d497434aaa103ab7b6fcdf04a80a43ff1852",
+        "source_fact:v1:0a0db75433d19cf752a0f797dfe369e893d67142fa111645449aca0ce846c253",
+        "source_fact:v1:2d10561d6b0cc9a1691ec732b88e6696ecf9c9686571f070e100144ab5b17a71",
+        "source_fact:v1:50cde90fc65d09dd1b64f9cff85f042455decd36b58961f0c8f7df03f8d312a1",
+        "source_fact:v1:5c61335dfdc246c646df2576b2a62582d2dfc53bf551dd61b665da03615ea4bc",
+        "source_fact:v1:80bca33600877ac076cdab698916e195874a04dc4ff49af3d4e29e0230725ecd",
+        "source_fact:v1:a669ea3bb5d083628fe53e4582179e1c394fbf68141b907004af0594c988ae25",
+        "source_fact:v1:b215767673ae9591ed673462ae8ebf4943dac2adb1950852bf72e318418e0b5a",
+        "source_fact:v1:d3ccb3a8e3b62fa9854a8efeede0c92c762486bdf00217055fc74bb040f5819f"
+      ],
+      "source_published_kst": "2026-10-08T05:57+09:00",
+      "source_title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓",
+      "telegram_core_fact": "유럽·태평양 선진시장 순매출은 9억3500만 달러로 3.3% 감소했고, 부문 조정 영업이익은 1억3700만 달러로 8.9% 감소했다.",
+      "title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓"
+    },
     "source_fact:727ab50cd73fa00275c4dac6": {
       "first_seen_kst": "2026-10-07T10:49:23+09:00",
       "lanes": {
@@ -169188,6 +170051,25 @@
       ],
       "source_published_kst": "2026-10-05T21:07+09:00",
       "title": "텔라 바이오, 완전 흡수성 메시 '리오라' FDA 허가 획득"
+    },
+    "source_fact:72f49f2aa967a0f692dab3e0": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.etnews.com/20261007000256",
+      "source": "전자신문",
+      "source_body_digest": "5aa3f413c73135954a2d1462b6f191719f45370b45a909ee9aa00d26d1adfdce",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a2b0a9eacd648f58bbb98f40e486363cbf978bf00ff90f44d0f5e3ae051bfebd",
+      "source_fact_keys": [
+        "source_fact:v1:1ca9558523cf029986d476debf6c3901c736cb30473d98677e63f3b840bda1fa"
+      ],
+      "source_published_kst": "2026-10-08T06:00+09:00",
+      "source_title": "금융지주, 상반기 순익 17.6조원…비은행 성장 속 건전성은 악화",
+      "telegram_core_fact": "올해 상반기 금융지주회사 순이익이 금융투자 등 비은행 부문 호조에 힘입어 전년 동기보다 13.7% 증가했다.",
+      "title": "금융지주, 상반기 순익 17.6조원…비은행 성장 속 건전성은 악화"
     },
     "source_fact:73034d51a1a6dbeb128140c3": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -170184,6 +171066,26 @@
       ],
       "source_published_kst": "2026-10-06T22:37+09:00",
       "title": "美 8월 무역적자 142조원…트럼프 관세 폭탄 이후 최대"
+    },
+    "source_fact:756c28bb1d467abf75270d13": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02023766645610952",
+      "source": "이데일리",
+      "source_body_digest": "52b6b92fcd93e381a27afe75e7b8cd1117f72843e3941c518e335cd0e1288e27",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05731eebb2d7713a1e5090e2d2a1f6212be413f5b8d9f48cfa214bbb64ca6e19",
+      "source_fact_keys": [
+        "source_fact:v1:36873c4e4c91c09f2995433139a267e68c69aae601d1871f957226836e4a8def",
+        "source_fact:v1:ce2f4a04637e72ab9ecceecbce4d8f075d6dd8d4a981cb1cc3b7f81656e95ffc"
+      ],
+      "source_published_kst": "2026-10-08T06:00+09:00",
+      "source_title": "금융지주 상반기 순익 17.6조 ‘역대급’…증권이 끌고 은행은 주춤",
+      "telegram_core_fact": "7일 금융감독원이 발표한 ‘2026년 상반기 금융지주회사 경영실적(잠정)’에 따르면 10개 금융지주의 상반기 연결 당기순이익은 17조6000억원으로 지난해 같은 기간 15조4000억원보다 2조2000억원(13.7%) 증가했다.",
+      "title": "금융지주 상반기 순익 17.6조 ‘역대급’…증권이 끌고 은행은 주춤"
     },
     "source_fact:756fba67ddaaaa993b29015f": {
       "first_seen_kst": "2026-10-06T23:46:46+09:00",
@@ -173699,6 +174601,31 @@
       "source_published_kst": "2026-10-06T08:34+09:00",
       "title": "한투증권, 산일전기 목표가↑…\"美·유럽, 중국산 규제 수혜\" | 연합뉴스"
     },
+    "source_fact:7d4a0e3f76caf5863fadbbbc": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.fnnews.com/news/202610080555583112",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "14012a4d55c33e0e085866f00e55ee045d64830690651b98e33648051e2974e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47cbc725095964b1f422e20ac40de617a5ae04537fe3862aaef37fe2d3d5520a",
+      "source_fact_keys": [
+        "source_fact:v1:2d40bf7e2b450cf4312342682c742dae84e39e1aba0ff526a6337f19162b058e",
+        "source_fact:v1:4a8a929cb4ee61e7a0a99321044a32288b4ee2447d3c17f8e6b456b0e1a8403c",
+        "source_fact:v1:60e2d87e98fb21f43a4ac286a50eff6680acc92401a519a9778da59137ff8b4a",
+        "source_fact:v1:64811a2148e5a3d0fc80cc3308162de2cbfce77b94fadae11ff874d3c7c1b04c",
+        "source_fact:v1:874bebaaca3f94120de791bcb28e2da9b692f98876f1bc3283b7b551d7513c8e",
+        "source_fact:v1:bd08613da6079eebc8a6c82a853cbadecd14d5ea3758085e38bd744a9e3d5cf0",
+        "source_fact:v1:fb3039afc649a42eaba369286e282357f81e2307e932f199d051a6f6bd15deef"
+      ],
+      "source_published_kst": "2026-10-08T05:55+09:00",
+      "source_title": "美 AI 반도체주 혼조…국채금리 급등에 엔비디아·AMD↓, 마이크론 4%↑",
+      "telegram_core_fact": "미국 인공지능(AI) 반도체주가 장기 국채금리 급등에 대체로 하락했지만 마이크론테크놀로지는 4% 넘게 뛰는 등 종목별로 엇갈렸다.",
+      "title": "美 AI 반도체주 혼조…국채금리 급등에 엔비디아·AMD↓, 마이크론 4%↑"
+    },
     "source_fact:7d55b564eb13e13788f3118e": {
       "first_seen_kst": "2026-10-07T16:15:21+09:00",
       "lanes": {
@@ -176341,6 +177268,33 @@
       "source_title": "\"반도체는 팀 스포츠\"…리사 수 \"삼성·SK와 HBM4 협력…전 세계 수백억달러 투자\"",
       "telegram_core_fact": "수 회장은 차세대 인공지능(AI) 가속기 제품군에 6세대 고대역폭메모리(HBM4)를 탑재하고 있음을 공식화하며, 한국 핵심 파트너사들과 5년 이상 장기 공급망을 구축할 계획이라고 밝혔다.",
       "title": "\"반도체는 팀 스포츠\"…리사 수 \"삼성·SK와 HBM4 협력…전 세계 수백억달러 투자\""
+    },
+    "source_fact:834f1857fa9e6d0f7f7b6d85": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171040",
+      "source": "매일경제",
+      "source_body_digest": "fbceb410b3d5140a4d947e01b92cd347d953ec116612b0010c2fa05d1968658f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d999dc4418b7c4140d43406eba28ce5f2ae20635a6ab8c5fcc2c3ff2b76961cb",
+      "source_fact_keys": [
+        "source_fact:v1:05e66469997739a2ec0ad13bb379d497434aaa103ab7b6fcdf04a80a43ff1852",
+        "source_fact:v1:0a0db75433d19cf752a0f797dfe369e893d67142fa111645449aca0ce846c253",
+        "source_fact:v1:2d10561d6b0cc9a1691ec732b88e6696ecf9c9686571f070e100144ab5b17a71",
+        "source_fact:v1:50cde90fc65d09dd1b64f9cff85f042455decd36b58961f0c8f7df03f8d312a1",
+        "source_fact:v1:5c61335dfdc246c646df2576b2a62582d2dfc53bf551dd61b665da03615ea4bc",
+        "source_fact:v1:80bca33600877ac076cdab698916e195874a04dc4ff49af3d4e29e0230725ecd",
+        "source_fact:v1:a669ea3bb5d083628fe53e4582179e1c394fbf68141b907004af0594c988ae25",
+        "source_fact:v1:b215767673ae9591ed673462ae8ebf4943dac2adb1950852bf72e318418e0b5a",
+        "source_fact:v1:d3ccb3a8e3b62fa9854a8efeede0c92c762486bdf00217055fc74bb040f5819f"
+      ],
+      "source_published_kst": "2026-10-08T05:57+09:00",
+      "source_title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓",
+      "telegram_core_fact": "유럽·태평양 선진시장 순매출은 9억3500만 달러로 3.3% 감소했고, 부문 조정 영업이익은 1억3700만 달러로 8.9% 감소했다.",
+      "title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓"
     },
     "source_fact:83a7f2d38ed45e8d35582d3e": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
@@ -187498,6 +188452,31 @@
       "source_published_kst": "2026-10-06T13:44+09:00",
       "title": "완성차 불황에 '군용차'로 눈 돌린다…기아·포드·GM·르노 방산 공략"
     },
+    "source_fact:9ef15575cb9c8e1970e59550": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.fnnews.com/news/202610080555583112",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "14012a4d55c33e0e085866f00e55ee045d64830690651b98e33648051e2974e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47cbc725095964b1f422e20ac40de617a5ae04537fe3862aaef37fe2d3d5520a",
+      "source_fact_keys": [
+        "source_fact:v1:2d40bf7e2b450cf4312342682c742dae84e39e1aba0ff526a6337f19162b058e",
+        "source_fact:v1:4a8a929cb4ee61e7a0a99321044a32288b4ee2447d3c17f8e6b456b0e1a8403c",
+        "source_fact:v1:60e2d87e98fb21f43a4ac286a50eff6680acc92401a519a9778da59137ff8b4a",
+        "source_fact:v1:64811a2148e5a3d0fc80cc3308162de2cbfce77b94fadae11ff874d3c7c1b04c",
+        "source_fact:v1:874bebaaca3f94120de791bcb28e2da9b692f98876f1bc3283b7b551d7513c8e",
+        "source_fact:v1:bd08613da6079eebc8a6c82a853cbadecd14d5ea3758085e38bd744a9e3d5cf0",
+        "source_fact:v1:fb3039afc649a42eaba369286e282357f81e2307e932f199d051a6f6bd15deef"
+      ],
+      "source_published_kst": "2026-10-08T05:55+09:00",
+      "source_title": "美 AI 반도체주 혼조…국채금리 급등에 엔비디아·AMD↓, 마이크론 4%↑",
+      "telegram_core_fact": "미국 인공지능(AI) 반도체주가 장기 국채금리 급등에 대체로 하락했지만 마이크론테크놀로지는 4% 넘게 뛰는 등 종목별로 엇갈렸다.",
+      "title": "美 AI 반도체주 혼조…국채금리 급등에 엔비디아·AMD↓, 마이크론 4%↑"
+    },
     "source_fact:9ef38610adb525562cf6e983": {
       "first_seen_kst": "2026-10-07T12:49:48+09:00",
       "lanes": {
@@ -193248,6 +194227,28 @@
       "source_published_kst": "2026-10-07T08:08+09:00",
       "title": "선장에 월 10만달러·보너스까지…호르무즈 '위험수당' 급등"
     },
+    "source_fact:acee2ff592ebd2941f6b6323": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171058",
+      "source": "매일경제",
+      "source_body_digest": "699fcf6219dddfec1694363a6bc8eb6bf1c49705c67dbb19061553f2843b608a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1c8b9e94aba27f5a95eb8388593ad2b1b39552fbb8f5c7ce7af56a9a8672787b",
+      "source_fact_keys": [
+        "source_fact:v1:35bfc27b805ad393e71507d8856cdbebb6e2fc44ccf3eef2fbaaa1a0bd9edde8",
+        "source_fact:v1:592d4dbbbd03491e3f6d0fbd964c723750e25e708159ae7b900b9d78c09a8d07",
+        "source_fact:v1:78e64553f296cd9415aa76b5b65385f2b854fc9aae3047fa034757fd83620ea1",
+        "source_fact:v1:8ef7c05608917ab1713bac5f5c63a46fb2a8585dc1146c9cbee4eb343540fe92"
+      ],
+      "source_published_kst": "2026-10-08T06:22+09:00",
+      "source_title": "아줄, 아메리칸항공 1억 달러 투자 CADE 승인..지분 8% 확보",
+      "telegram_core_fact": "브라질 최대 항공사 아줄(AZUL)은 브라질 경제방어행정위원회(CADE) 심결 재판부가 아메리칸항공(American Airlines)의 아줄 1억 달러 투자를 만장일치로 승인했다고 현지시간 7일 발표했다.",
+      "title": "아줄, 아메리칸항공 1억 달러 투자 CADE 승인..지분 8% 확보"
+    },
     "source_fact:acf2288ff923eb3576be30f1": {
       "first_seen_kst": "2026-10-07T16:57:09+09:00",
       "lanes": {
@@ -195181,6 +196182,28 @@
       ],
       "source_published_kst": "2026-10-07T16:01+09:00",
       "title": "6800선으로 내려온 코스피…삼전 실적·FOMC 의사록 등 변동성↑"
+    },
+    "source_fact:b1645a61dd671e6d920ec91b": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171058",
+      "source": "매일경제",
+      "source_body_digest": "699fcf6219dddfec1694363a6bc8eb6bf1c49705c67dbb19061553f2843b608a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1c8b9e94aba27f5a95eb8388593ad2b1b39552fbb8f5c7ce7af56a9a8672787b",
+      "source_fact_keys": [
+        "source_fact:v1:35bfc27b805ad393e71507d8856cdbebb6e2fc44ccf3eef2fbaaa1a0bd9edde8",
+        "source_fact:v1:592d4dbbbd03491e3f6d0fbd964c723750e25e708159ae7b900b9d78c09a8d07",
+        "source_fact:v1:78e64553f296cd9415aa76b5b65385f2b854fc9aae3047fa034757fd83620ea1",
+        "source_fact:v1:8ef7c05608917ab1713bac5f5c63a46fb2a8585dc1146c9cbee4eb343540fe92"
+      ],
+      "source_published_kst": "2026-10-08T06:22+09:00",
+      "source_title": "아줄, 아메리칸항공 1억 달러 투자 CADE 승인..지분 8% 확보",
+      "telegram_core_fact": "브라질 최대 항공사 아줄(AZUL)은 브라질 경제방어행정위원회(CADE) 심결 재판부가 아메리칸항공(American Airlines)의 아줄 1억 달러 투자를 만장일치로 승인했다고 현지시간 7일 발표했다.",
+      "title": "아줄, 아메리칸항공 1억 달러 투자 CADE 승인..지분 8% 확보"
     },
     "source_fact:b167e51ae9a6821bb73dd8fc": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -199109,6 +200132,33 @@
       "source_published_kst": "2026-10-07T11:31+09:00",
       "title": "역외IB, 국내 인가 없인 한국물 영업 제한…당국 의견수렴 | 연합뉴스"
     },
+    "source_fact:bb01a2d8bf69e87803463aaf": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171040",
+      "source": "매일경제",
+      "source_body_digest": "fbceb410b3d5140a4d947e01b92cd347d953ec116612b0010c2fa05d1968658f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d999dc4418b7c4140d43406eba28ce5f2ae20635a6ab8c5fcc2c3ff2b76961cb",
+      "source_fact_keys": [
+        "source_fact:v1:05e66469997739a2ec0ad13bb379d497434aaa103ab7b6fcdf04a80a43ff1852",
+        "source_fact:v1:0a0db75433d19cf752a0f797dfe369e893d67142fa111645449aca0ce846c253",
+        "source_fact:v1:2d10561d6b0cc9a1691ec732b88e6696ecf9c9686571f070e100144ab5b17a71",
+        "source_fact:v1:50cde90fc65d09dd1b64f9cff85f042455decd36b58961f0c8f7df03f8d312a1",
+        "source_fact:v1:5c61335dfdc246c646df2576b2a62582d2dfc53bf551dd61b665da03615ea4bc",
+        "source_fact:v1:80bca33600877ac076cdab698916e195874a04dc4ff49af3d4e29e0230725ecd",
+        "source_fact:v1:a669ea3bb5d083628fe53e4582179e1c394fbf68141b907004af0594c988ae25",
+        "source_fact:v1:b215767673ae9591ed673462ae8ebf4943dac2adb1950852bf72e318418e0b5a",
+        "source_fact:v1:d3ccb3a8e3b62fa9854a8efeede0c92c762486bdf00217055fc74bb040f5819f"
+      ],
+      "source_published_kst": "2026-10-08T05:57+09:00",
+      "source_title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓",
+      "telegram_core_fact": "유럽·태평양 선진시장 순매출은 9억3500만 달러로 3.3% 감소했고, 부문 조정 영업이익은 1억3700만 달러로 8.9% 감소했다.",
+      "title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓"
+    },
     "source_fact:bb0ebe631ab77faa7fccf115": {
       "first_seen_kst": "2026-10-07T13:13:19+09:00",
       "lanes": {
@@ -200391,6 +201441,31 @@
       ],
       "source_published_kst": "2026-10-05T20:58+09:00",
       "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
+    },
+    "source_fact:be4c20e0c60f5db9b54e3ec7": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.fnnews.com/news/202610080555583112",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "14012a4d55c33e0e085866f00e55ee045d64830690651b98e33648051e2974e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47cbc725095964b1f422e20ac40de617a5ae04537fe3862aaef37fe2d3d5520a",
+      "source_fact_keys": [
+        "source_fact:v1:2d40bf7e2b450cf4312342682c742dae84e39e1aba0ff526a6337f19162b058e",
+        "source_fact:v1:4a8a929cb4ee61e7a0a99321044a32288b4ee2447d3c17f8e6b456b0e1a8403c",
+        "source_fact:v1:60e2d87e98fb21f43a4ac286a50eff6680acc92401a519a9778da59137ff8b4a",
+        "source_fact:v1:64811a2148e5a3d0fc80cc3308162de2cbfce77b94fadae11ff874d3c7c1b04c",
+        "source_fact:v1:874bebaaca3f94120de791bcb28e2da9b692f98876f1bc3283b7b551d7513c8e",
+        "source_fact:v1:bd08613da6079eebc8a6c82a853cbadecd14d5ea3758085e38bd744a9e3d5cf0",
+        "source_fact:v1:fb3039afc649a42eaba369286e282357f81e2307e932f199d051a6f6bd15deef"
+      ],
+      "source_published_kst": "2026-10-08T05:55+09:00",
+      "source_title": "美 AI 반도체주 혼조…국채금리 급등에 엔비디아·AMD↓, 마이크론 4%↑",
+      "telegram_core_fact": "미국 인공지능(AI) 반도체주가 장기 국채금리 급등에 대체로 하락했지만 마이크론테크놀로지는 4% 넘게 뛰는 등 종목별로 엇갈렸다.",
+      "title": "美 AI 반도체주 혼조…국채금리 급등에 엔비디아·AMD↓, 마이크론 4%↑"
     },
     "source_fact:be5b20f40d4deb55163cc6d5": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
@@ -223671,6 +224746,33 @@
       "source_published_kst": "2026-10-07T08:30+09:00",
       "title": "인천시, 글로벌캠퍼스에 피지컬 AI 실증센터 구축 | 연합뉴스"
     },
+    "source_fact:f28666c453614b1713a948ae": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171040",
+      "source": "매일경제",
+      "source_body_digest": "fbceb410b3d5140a4d947e01b92cd347d953ec116612b0010c2fa05d1968658f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d999dc4418b7c4140d43406eba28ce5f2ae20635a6ab8c5fcc2c3ff2b76961cb",
+      "source_fact_keys": [
+        "source_fact:v1:05e66469997739a2ec0ad13bb379d497434aaa103ab7b6fcdf04a80a43ff1852",
+        "source_fact:v1:0a0db75433d19cf752a0f797dfe369e893d67142fa111645449aca0ce846c253",
+        "source_fact:v1:2d10561d6b0cc9a1691ec732b88e6696ecf9c9686571f070e100144ab5b17a71",
+        "source_fact:v1:50cde90fc65d09dd1b64f9cff85f042455decd36b58961f0c8f7df03f8d312a1",
+        "source_fact:v1:5c61335dfdc246c646df2576b2a62582d2dfc53bf551dd61b665da03615ea4bc",
+        "source_fact:v1:80bca33600877ac076cdab698916e195874a04dc4ff49af3d4e29e0230725ecd",
+        "source_fact:v1:a669ea3bb5d083628fe53e4582179e1c394fbf68141b907004af0594c988ae25",
+        "source_fact:v1:b215767673ae9591ed673462ae8ebf4943dac2adb1950852bf72e318418e0b5a",
+        "source_fact:v1:d3ccb3a8e3b62fa9854a8efeede0c92c762486bdf00217055fc74bb040f5819f"
+      ],
+      "source_published_kst": "2026-10-08T05:57+09:00",
+      "source_title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓",
+      "telegram_core_fact": "유럽·태평양 선진시장 순매출은 9억3500만 달러로 3.3% 감소했고, 부문 조정 영업이익은 1억3700만 달러로 8.9% 감소했다.",
+      "title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓"
+    },
     "source_fact:f2a41e098093763dfb6c5caf": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
       "lanes": {
@@ -226305,6 +227407,31 @@
       "source_title": "美국채 10년물 장중 5.36%까지 치솟아…24년 만에 최고",
       "telegram_core_fact": "미국 10년물 국채 금리는 장중 5.36%를 넘어 2002년 이후 최고치를 새로 썼고, 30년물 금리도 5.73%까지 치솟았다. 7일(현지 시각) 미국 국채시장에서 10년물 금리는 장중 전장보다 약 8bp(1bp=0.01%포인트) 오른 5.3640%까지 상승했다.",
       "title": "美국채 10년물 장중 5.36%까지 치솟아…24년 만에 최고"
+    },
+    "source_fact:fa40b5ed86e8cd4aad4d1e99": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.fnnews.com/news/202610080555583112",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "14012a4d55c33e0e085866f00e55ee045d64830690651b98e33648051e2974e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47cbc725095964b1f422e20ac40de617a5ae04537fe3862aaef37fe2d3d5520a",
+      "source_fact_keys": [
+        "source_fact:v1:2d40bf7e2b450cf4312342682c742dae84e39e1aba0ff526a6337f19162b058e",
+        "source_fact:v1:4a8a929cb4ee61e7a0a99321044a32288b4ee2447d3c17f8e6b456b0e1a8403c",
+        "source_fact:v1:60e2d87e98fb21f43a4ac286a50eff6680acc92401a519a9778da59137ff8b4a",
+        "source_fact:v1:64811a2148e5a3d0fc80cc3308162de2cbfce77b94fadae11ff874d3c7c1b04c",
+        "source_fact:v1:874bebaaca3f94120de791bcb28e2da9b692f98876f1bc3283b7b551d7513c8e",
+        "source_fact:v1:bd08613da6079eebc8a6c82a853cbadecd14d5ea3758085e38bd744a9e3d5cf0",
+        "source_fact:v1:fb3039afc649a42eaba369286e282357f81e2307e932f199d051a6f6bd15deef"
+      ],
+      "source_published_kst": "2026-10-08T05:55+09:00",
+      "source_title": "美 AI 반도체주 혼조…국채금리 급등에 엔비디아·AMD↓, 마이크론 4%↑",
+      "telegram_core_fact": "미국 인공지능(AI) 반도체주가 장기 국채금리 급등에 대체로 하락했지만 마이크론테크놀로지는 4% 넘게 뛰는 등 종목별로 엇갈렸다.",
+      "title": "美 AI 반도체주 혼조…국채금리 급등에 엔비디아·AMD↓, 마이크론 4%↑"
     },
     "source_fact:fa5a79c292035a14f0a79bfa": {
       "first_seen_kst": "2026-10-06T01:16:46+09:00",
@@ -230643,6 +231770,23 @@
       "link": "https://www.edaily.co.kr/news/read?newsid=06281206645608656&parentid=06320566645608656&gubun=E",
       "source": "이데일리",
       "title": "\"짜장면 308그릇 주문이요\"...중식당 '시진핑', 중국인 테러 그 후"
+    },
+    "title:0b116ea01096b78fc40b09b9": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007163300030",
+      "source": "연합뉴스",
+      "source_body_digest": "d46e635d244c909fe2eb1bb2fcb7239d8c6dd9c3ad82bf634714e707eac220cd",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T06:00+09:00",
+      "source_title": "롯데百, LA서 K뷰티 팝업…국내 브랜드 해외 진출 지원 | 연합뉴스",
+      "telegram_core_fact": "롯데백화점은 미국 로스앤젤레스에서 K-뷰티 팝업을 열고 국내 뷰티 브랜드의 해외 진출 지원에 나선다고 8일 밝혔다. 롯데백화점의 K-뷰티 상품군 외국인 매출은 최근 3개월간 전년 대비 110% 증가했으며, 북미 고객 매출은 120% 늘었다.",
+      "title": "롯데百, LA서 K뷰티 팝업…국내 브랜드 해외 진출 지원 | 연합뉴스"
     },
     "title:0b19826886e007e1d4ac91fb": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
@@ -237204,6 +238348,23 @@
       "source": "연합뉴스",
       "title": "전세계 가솔린차 판매비중 사상 처음 50% 깨졌다…\"고유가 영향\" | 연합뉴스"
     },
+    "title:3418ba81604007e30e0ddd8b": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171053",
+      "source": "매일경제",
+      "source_body_digest": "02683504d26d974d6df8e6e470b9032d7ea0862e3707415ccdfc44771cbc9857",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T06:13+09:00",
+      "source_title": "TORM, RSU 행사로 신주 6만주 발행..총 1억271만주",
+      "telegram_core_fact": "임직원 RSU 행사에 따른 정기적 신주 발행이며 지분 희석률도 0.06% 수준에 그쳐요.",
+      "title": "TORM, RSU 행사로 신주 6만주 발행..총 1억271만주"
+    },
     "title:342e9c30c372a026179045ab": {
       "first_seen_kst": "2026-10-02T13:15:57+09:00",
       "lanes": {
@@ -242904,6 +244065,28 @@
       "source_published_kst": "2026-10-06T14:13+09:00",
       "title": "이형일 \"텍사스 발전소에 24억弗 송금…상업적 합리성 충족\"(종합)"
     },
+    "title:55ba0718814d86ae466e012a": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171058",
+      "source": "매일경제",
+      "source_body_digest": "699fcf6219dddfec1694363a6bc8eb6bf1c49705c67dbb19061553f2843b608a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1c8b9e94aba27f5a95eb8388593ad2b1b39552fbb8f5c7ce7af56a9a8672787b",
+      "source_fact_keys": [
+        "source_fact:v1:35bfc27b805ad393e71507d8856cdbebb6e2fc44ccf3eef2fbaaa1a0bd9edde8",
+        "source_fact:v1:592d4dbbbd03491e3f6d0fbd964c723750e25e708159ae7b900b9d78c09a8d07",
+        "source_fact:v1:78e64553f296cd9415aa76b5b65385f2b854fc9aae3047fa034757fd83620ea1",
+        "source_fact:v1:8ef7c05608917ab1713bac5f5c63a46fb2a8585dc1146c9cbee4eb343540fe92"
+      ],
+      "source_published_kst": "2026-10-08T06:22+09:00",
+      "source_title": "아줄, 아메리칸항공 1억 달러 투자 CADE 승인..지분 8% 확보",
+      "telegram_core_fact": "브라질 최대 항공사 아줄(AZUL)은 브라질 경제방어행정위원회(CADE) 심결 재판부가 아메리칸항공(American Airlines)의 아줄 1억 달러 투자를 만장일치로 승인했다고 현지시간 7일 발표했다.",
+      "title": "아줄, 아메리칸항공 1억 달러 투자 CADE 승인..지분 8% 확보"
+    },
     "title:55cb21c0a429f184c051b461": {
       "first_seen_kst": "2026-10-06T19:33:48+09:00",
       "lanes": {
@@ -243913,6 +245096,26 @@
       ],
       "source_published_kst": "2026-10-07T06:33+09:00",
       "title": "3주 파업 예고한 삼성바이오 노조…생산·수주 불확실성 커진다"
+    },
+    "title:5b6ff2e74afba5d280bcd479": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02023766645610952",
+      "source": "이데일리",
+      "source_body_digest": "52b6b92fcd93e381a27afe75e7b8cd1117f72843e3941c518e335cd0e1288e27",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05731eebb2d7713a1e5090e2d2a1f6212be413f5b8d9f48cfa214bbb64ca6e19",
+      "source_fact_keys": [
+        "source_fact:v1:36873c4e4c91c09f2995433139a267e68c69aae601d1871f957226836e4a8def",
+        "source_fact:v1:ce2f4a04637e72ab9ecceecbce4d8f075d6dd8d4a981cb1cc3b7f81656e95ffc"
+      ],
+      "source_published_kst": "2026-10-08T06:00+09:00",
+      "source_title": "금융지주 상반기 순익 17.6조 ‘역대급’…증권이 끌고 은행은 주춤",
+      "telegram_core_fact": "7일 금융감독원이 발표한 ‘2026년 상반기 금융지주회사 경영실적(잠정)’에 따르면 10개 금융지주의 상반기 연결 당기순이익은 17조6000억원으로 지난해 같은 기간 15조4000억원보다 2조2000억원(13.7%) 증가했다.",
+      "title": "금융지주 상반기 순익 17.6조 ‘역대급’…증권이 끌고 은행은 주춤"
     },
     "title:5bbc87d40beb00fd926d5816": {
       "first_seen_kst": "2026-10-06T22:51:44+09:00",
@@ -246622,6 +247825,31 @@
       "link": "https://www.newsis.com/view/NISX20260930_0003809551",
       "source": "뉴시스",
       "title": "버스파업에 놀란 서울시, 2030년 자율주행버스 500대 도입"
+    },
+    "title:6e3e26cdf67dbec878507144": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.fnnews.com/news/202610080555583112",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "14012a4d55c33e0e085866f00e55ee045d64830690651b98e33648051e2974e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47cbc725095964b1f422e20ac40de617a5ae04537fe3862aaef37fe2d3d5520a",
+      "source_fact_keys": [
+        "source_fact:v1:2d40bf7e2b450cf4312342682c742dae84e39e1aba0ff526a6337f19162b058e",
+        "source_fact:v1:4a8a929cb4ee61e7a0a99321044a32288b4ee2447d3c17f8e6b456b0e1a8403c",
+        "source_fact:v1:60e2d87e98fb21f43a4ac286a50eff6680acc92401a519a9778da59137ff8b4a",
+        "source_fact:v1:64811a2148e5a3d0fc80cc3308162de2cbfce77b94fadae11ff874d3c7c1b04c",
+        "source_fact:v1:874bebaaca3f94120de791bcb28e2da9b692f98876f1bc3283b7b551d7513c8e",
+        "source_fact:v1:bd08613da6079eebc8a6c82a853cbadecd14d5ea3758085e38bd744a9e3d5cf0",
+        "source_fact:v1:fb3039afc649a42eaba369286e282357f81e2307e932f199d051a6f6bd15deef"
+      ],
+      "source_published_kst": "2026-10-08T05:55+09:00",
+      "source_title": "美 AI 반도체주 혼조…국채금리 급등에 엔비디아·AMD↓, 마이크론 4%↑",
+      "telegram_core_fact": "미국 인공지능(AI) 반도체주가 장기 국채금리 급등에 대체로 하락했지만 마이크론테크놀로지는 4% 넘게 뛰는 등 종목별로 엇갈렸다.",
+      "title": "美 AI 반도체주 혼조…국채금리 급등에 엔비디아·AMD↓, 마이크론 4%↑"
     },
     "title:6e45335482885ec580589e3a": {
       "first_seen_kst": "2026-10-02T11:10:58+09:00",
@@ -253720,6 +254948,33 @@
       ],
       "source_published_kst": "2026-10-06T15:07+09:00",
       "title": "\"K-콘텐츠 금융지원\"…부산은행·신보, 100억원 보증지원"
+    },
+    "title:9a66f887b6b982a9e4cc82b9": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171040",
+      "source": "매일경제",
+      "source_body_digest": "fbceb410b3d5140a4d947e01b92cd347d953ec116612b0010c2fa05d1968658f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d999dc4418b7c4140d43406eba28ce5f2ae20635a6ab8c5fcc2c3ff2b76961cb",
+      "source_fact_keys": [
+        "source_fact:v1:05e66469997739a2ec0ad13bb379d497434aaa103ab7b6fcdf04a80a43ff1852",
+        "source_fact:v1:0a0db75433d19cf752a0f797dfe369e893d67142fa111645449aca0ce846c253",
+        "source_fact:v1:2d10561d6b0cc9a1691ec732b88e6696ecf9c9686571f070e100144ab5b17a71",
+        "source_fact:v1:50cde90fc65d09dd1b64f9cff85f042455decd36b58961f0c8f7df03f8d312a1",
+        "source_fact:v1:5c61335dfdc246c646df2576b2a62582d2dfc53bf551dd61b665da03615ea4bc",
+        "source_fact:v1:80bca33600877ac076cdab698916e195874a04dc4ff49af3d4e29e0230725ecd",
+        "source_fact:v1:a669ea3bb5d083628fe53e4582179e1c394fbf68141b907004af0594c988ae25",
+        "source_fact:v1:b215767673ae9591ed673462ae8ebf4943dac2adb1950852bf72e318418e0b5a",
+        "source_fact:v1:d3ccb3a8e3b62fa9854a8efeede0c92c762486bdf00217055fc74bb040f5819f"
+      ],
+      "source_published_kst": "2026-10-08T05:57+09:00",
+      "source_title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓",
+      "telegram_core_fact": "유럽·태평양 선진시장 순매출은 9억3500만 달러로 3.3% 감소했고, 부문 조정 영업이익은 1억3700만 달러로 8.9% 감소했다.",
+      "title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓"
     },
     "title:9a6749dd7e4d22882817d49e": {
       "first_seen_kst": "2026-10-07T07:39:19+09:00",
@@ -268821,6 +270076,25 @@
       "source_published_kst": "2026-10-06T10:24+09:00",
       "title": "슈나이더, 미 소프트웨어 업체 20조원에 인수 | 연합뉴스"
     },
+    "title:fac427f18fb783429342cc22": {
+      "first_seen_kst": "2026-10-08T06:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-08T06:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-08T06:27:52+09:00",
+      "link": "https://www.etnews.com/20261007000256",
+      "source": "전자신문",
+      "source_body_digest": "5aa3f413c73135954a2d1462b6f191719f45370b45a909ee9aa00d26d1adfdce",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a2b0a9eacd648f58bbb98f40e486363cbf978bf00ff90f44d0f5e3ae051bfebd",
+      "source_fact_keys": [
+        "source_fact:v1:1ca9558523cf029986d476debf6c3901c736cb30473d98677e63f3b840bda1fa"
+      ],
+      "source_published_kst": "2026-10-08T06:00+09:00",
+      "source_title": "금융지주, 상반기 순익 17.6조원…비은행 성장 속 건전성은 악화",
+      "telegram_core_fact": "올해 상반기 금융지주회사 순이익이 금융투자 등 비은행 부문 호조에 힘입어 전년 동기보다 13.7% 증가했다.",
+      "title": "금융지주, 상반기 순익 17.6조원…비은행 성장 속 건전성은 악화"
+    },
     "title:fae515231126d515383fb973": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -269694,5 +270968,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-08T06:10:43+09:00"
+  "updated_at_kst": "2026-10-08T06:27:52+09:00"
 }
