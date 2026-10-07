@@ -4,6 +4,7 @@ import html
 import json
 import os
 import re
+import time
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
@@ -40,9 +41,18 @@ class TableParser(HTMLParser):
         elif tag=='table' and self.table is not None:
             self.tables.append(self.table); self.table=None
 
-def fetch(url):
-    q=urllib.request.Request(url,headers={'User-Agent':UA,'Accept-Language':'en-US,en;q=0.9'})
-    with urllib.request.urlopen(q,timeout=30) as r:return r.read().decode('utf-8','replace'),r.geturl()
+def fetch(url,retries=3):
+    last=None
+    for attempt in range(1,retries+1):
+        try:
+            q=urllib.request.Request(url,headers={'User-Agent':UA,'Accept-Language':'en-US,en;q=0.9'})
+            with urllib.request.urlopen(q,timeout=30) as r:
+                return r.read().decode('utf-8','replace'),r.geturl()
+        except Exception as exc:
+            last=exc
+            if attempt<retries:
+                time.sleep(attempt*2)
+    raise last
 
 def clean(raw):
     raw=re.sub(r'(?is)<script.*?>.*?</script>|<style.*?>.*?</style>',' ',raw)
@@ -179,7 +189,18 @@ def save_state(s):
     STATE_PATH.write_text(json.dumps(s,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 
 def botname():
-    with urllib.request.urlopen(f'https://api.telegram.org/bot{TOKEN}/getMe',timeout=20) as r:return json.loads(r.read().decode())['result']['username']
+    last=None
+    for attempt in range(1,4):
+        try:
+            with urllib.request.urlopen(f'https://api.telegram.org/bot{TOKEN}/getMe',timeout=20) as r:
+                data=json.loads(r.read().decode())
+            if data.get('ok') and (data.get('result') or {}).get('username'):
+                return data['result']['username']
+            raise RuntimeError('Telegram getMe 응답 오류')
+        except Exception as exc:
+            last=exc
+            if attempt<3: time.sleep(attempt*2)
+    raise last
 def link(label,url):return f'<a href="{html.escape(url,quote=True)}">{html.escape(label)}</a>'
 def send(msg):
     if not TOKEN or not CHAT:raise RuntimeError('Telegram 비밀값 없음')
