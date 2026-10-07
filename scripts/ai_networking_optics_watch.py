@@ -783,7 +783,7 @@ def _explicit_completion_verb(text: str) -> bool:
 
 def _headline_plan_only(text: str) -> bool:
     planned = bool(re.search(
-        r"plans? to|expected to|expects? to|aims? to|could|may |"
+        r"plans? to|expected to|expects? to|aims? to|could|may |will deploy|to deploy|"
         r"targets? |eyes? |prepar(?:es?|ing) to|wants? to|"
         r"seeks? to|mulls?|reportedly|considers?|"
         r"拟|计划|预计|有望|考虑|目标是",
@@ -842,7 +842,9 @@ def classify_structural_axis(company: str, title: str) -> str | None:
             r".{0,60}(?:MSA|spec(?:ification)?|standard|interop)|"
             r"(?:MSA|spec(?:ification)?|standard|interop).{0,60}"
             r"(?:final|updated?|revis(?:ed|ion)|approved?|ratif(?:ied|y)|published?|released?)|"
-            r"标准发布|标准修订|互操作测试|多源协议升级|标准升级",
+            r"标准发布|标准修订|互操作测试|多源协议升级|标准升级|"
+            r"(?:MSA|多源协议).{0,30}(?:2\.0|v2|第二版|修订版).{0,20}(?:发布|获批|发布通过)|"
+            r"(?:发布|批准).{0,20}(?:MSA|多源协议).{0,20}(?:2\.0|v2|第二版)",
             text, re.I
         ):
             return "NPO 표준 제·개정"
@@ -1674,6 +1676,8 @@ def _self_test_korean_optics_alerts() -> None:
     assert evidence_label({"company": "Huawei OPEN NPO", "source": "TrendForce"}).startswith("독립된")
     assert classify_structural_axis("Huawei OPEN NPO", "Huawei plans to begin OPEN NPO mass production in 2027") is None
     assert classify_structural_axis("OCS Optical Circuit Switching", "NVIDIA reportedly considers deploying OCS optical circuit switches") is None
+    assert classify_structural_axis("OCS Optical Circuit Switching", "NVIDIA to deploy optical circuit switching OCS switches in 2027") is None
+    assert classify_structural_axis("Huawei OPEN NPO", "华为OPEN NPO MSA 2.0发布") == "NPO 표준 제·개정"
     assert _is_official_structural_source({
         "company": "Huawei OPEN NPO", "source": "Huawei Cloud", "source_url": "https://www.huaweicloud.com"
     })
