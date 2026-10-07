@@ -16,7 +16,7 @@ permissions:
 
 concurrency:
   group: europe-sovereign-yield-telegram-watch
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   monitor:
@@ -180,7 +180,7 @@ jobs:
             echo "유럽 국채금리 상태 변경 없음"
           else
             git commit -m "Update European sovereign yield state"
-            for attempt in 1 2 3; do
+            for attempt in 1 2 3 4 5; do
               if git pull --rebase origin main && git push; then exit 0; fi
               git rebase --abort 2>/dev/null || true
               sleep $((attempt * 3))
