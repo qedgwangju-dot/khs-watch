@@ -40,7 +40,8 @@ CONFIRMED = OUT / "ecb_policy_watch_telegram_confirmed.json"
 
 RSS = "https://www.ecb.europa.eu/rss/press.html"
 PRESS_CONFERENCE_INDEX = "https://www.ecb.europa.eu/press/press_conference/html/index.en.html"
-PRESS_RELEASE_INDEX = "https://www.ecb.europa.eu/press/pr/date/{year}/html/index.en.html"
+ECB_HOME = "https://www.ecb.europa.eu/home/html/index.en.html"
+MONETARY_POLICY_RELEASES = "https://www.ecb.europa.eu/press/pr/activities/mopo/html/index.en.html"
 MEETINGS = "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html"
 UA = "khs-watch-ecb-policy/2.0"
 
@@ -168,14 +169,16 @@ def collect_latest_documents(now: dt.datetime) -> tuple[dict | None, dict | None
     except Exception as exc:
         errors.append(f"ECB 기자회견 인덱스: {type(exc).__name__}: {exc}")
 
-    for year in sorted({now.year, now.year - 1}, reverse=True):
-        url = PRESS_RELEASE_INDEX.format(year=year)
+    for label, url in [
+        ("ECB 홈페이지", ECB_HOME),
+        ("ECB 통화정책 보도자료 인덱스", MONETARY_POLICY_RELEASES),
+    ]:
         try:
             text = fetch(url)
             candidates.extend(extract_official_links(text, url))
-            sources_ok.append(f"ECB 보도자료 {year}")
+            sources_ok.append(label)
         except Exception as exc:
-            errors.append(f"ECB 보도자료 {year}: {type(exc).__name__}: {exc}")
+            errors.append(f"{label}: {type(exc).__name__}: {exc}")
 
     dedup: dict[tuple[str, str], dict] = {}
     for c in candidates:
