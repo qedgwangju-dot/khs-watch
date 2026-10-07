@@ -58,16 +58,28 @@ class HBMExportSourceGuardTests(unittest.TestCase):
         self.assertTrue(due)
         self.assertEqual(interval, 3)
 
+    def test_compare_version_upgrade_forces_repoll(self):
+        state = {
+            "official_source_health_version": w.OFFICIAL_SOURCE_HEALTH_VERSION,
+            "compare_version": w.COMPARE_VERSION - 1,
+            "last_successful_official_month": "202608",
+            "last_official_poll_attempt_kst": self.now.isoformat(),
+        }
+        due, interval = w._official_poll_due(state, self.now)
+        self.assertTrue(due)
+        self.assertEqual(interval, 3)
+
     def test_regional_data_go_row_is_exact_hsk10(self):
         xml = """<response><header><resultCode>00</resultCode><resultMsg>OK</resultMsg></header>
         <body><items><item><priodTitle>2026.09</priodTitle><hsSgn>8542323000</hsSgn>
-        <expUsdAmt>123456789</expUsdAmt></item></items></body></response>"""
+        <expUsdAmt>2234567</expUsdAmt></item></items></body></response>"""
         with patch.object(w, "_request_with_retry", return_value=_Resp(xml)):
             row, err = w.fetch_data_go_sido_month("202609", "44")
         self.assertEqual(err, "")
         self.assertEqual(row["hs"], "8542323000")
         self.assertEqual(row["scope"], "regional_hsk10_exact")
-        self.assertEqual(row["amount_usd"], 123456789)
+        self.assertEqual(row["amount_usd"], 2234567000)
+        self.assertEqual(row["raw_amount_unit"], "thousand_usd")
 
     def test_hs6_fallback_cannot_be_promoted_to_exact_regional_metric(self):
         national = {
