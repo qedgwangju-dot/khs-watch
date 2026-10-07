@@ -2286,25 +2286,36 @@ assert g == "nvidia_robotics_exec", (g, s, c)
 assert c.endswith("AI Day Seoul 피지컬AI 행사 기준선"), c
 assert s < 11, s
 
-madison_report = make(
-    "Madison Huang November Korea visit confirmed",
-    "Industry sources say Madison Huang will attend NVIDIA AI Day Seoul on November 9-10 for physical AI and robotics.",
+madison_discussion = make(
+    "Madison Huang Korea visit under discussion",
+    "Industry sources say NVIDIA is discussing Madison Huang attending NVIDIA AI Day Seoul on November 9-10 for physical AI and robotics.",
     "MoneyToday",
 )
-g, s, c, k = classify(madison_report)
+g, s, c, k = classify(madison_discussion)
 assert g == "nvidia_robotics_exec", (g, s, c)
 assert c.endswith("매디슨 황 AI Day Seoul 참석 시간표"), c
 assert s < 11, s
+
+madison_report = make(
+    "Madison Huang November Korea visit confirmed",
+    "Industry sources say Madison Huang will attend NVIDIA AI Day Seoul on November 9-10 for physical AI and robotics, with attendance now confirmed.",
+    "MoneyToday",
+)
+g, s, c, k_report = classify(madison_report)
+assert g == "nvidia_robotics_exec", (g, s, c)
+assert c.endswith("매디슨 황 AI Day Seoul 참석 시간표"), c
+assert s >= 11, s
 
 madison_official = make(
     "NVIDIA confirms Madison Huang at AI Day Seoul",
     "NVIDIA confirmed Madison Huang will attend NVIDIA AI Day Seoul 2026 in Seoul on November 9-10 for physical AI and robotics.",
     "NVIDIA",
 )
-g, s, c, k = classify(madison_official)
+g, s, c, k_official = classify(madison_official)
 assert g == "nvidia_robotics_exec", (g, s, c)
 assert c.endswith("매디슨 황 AI Day Seoul 참석 시간표"), c
 assert s >= 11, s
+assert k_official != k_report, "NVIDIA first-party confirmation must upgrade beyond trusted-media confirmation"
 
 madison_mou = make(
     "NVIDIA and LG Electronics sign physical AI MOU",
