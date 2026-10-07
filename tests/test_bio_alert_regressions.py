@@ -131,6 +131,14 @@ class BioAlertRegressionTests(unittest.TestCase):
         self.assertTrue(any("EP 2 797 622" in query for query in searches))
         self.assertTrue(any("EP 3 130 347" in query for query in searches))
 
+    def test_halozyme_verified_europe_event_reaches_live_classifier(self):
+        item = halo.VERIFIED_EUROPE_DECISIONS[0]
+        blob = f"{item['title']} {item['description']} {item['url']}"
+        case, patent = halo.get_case(blob)
+        self.assertEqual(case, halo.DUTCH_VRO_CASE)
+        self.assertEqual(patent, halo.DUTCH_VRO_PATENT)
+        self.assertEqual(halo.classify(blob, case), "nl_injunction")
+
     def test_halozyme_dutch_vro_event_is_detected_conservatively(self):
         text = (
             "Halozyme Merck Keytruda SC C/09/695432 Dutch court recognized the validity of EP 2,797,622 "

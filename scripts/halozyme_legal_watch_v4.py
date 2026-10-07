@@ -443,7 +443,7 @@ def classify(text: str, case: str) -> str:
             return "nl_appeal"
         has_infringement = any(term in low for term in ("found merck to be infringing", "found merck infringing", "infringes", "infringement"))
         has_injunction = any(term in low for term in ("granted injunction", "injunction stopping", "ordered merck", "refrain from manufacturing", "halt", "block merck"))
-        has_validity = any(term in low for term in ("rejected merck's arguments that ep622 patent is invalid", "recognized the validity", "ep622 is valid", "patent is valid"))
+        has_validity = any(term in low for term in ("rejected merck's arguments that ep622 patent is invalid", "rejected invalidity arguments", "recognized the validity", "ep622 is valid", "patent is valid"))
         if has_infringement and has_injunction and has_validity:
             return "nl_injunction"
         return ""
