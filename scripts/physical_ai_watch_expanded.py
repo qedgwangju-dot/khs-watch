@@ -56,18 +56,24 @@ base.QUERIES.extend([
 
 def _gb300_factory_kpi_recovery() -> list[dict]:
     return [{
-        'title': 'NVIDIA·Foxconn, GB300 NVL72 로봇 조립 작업 성공률 첫 정량 공개',
+        'title': '정정: NVIDIA·Foxconn, GB300 테스터트레이 로봇 조립 KPI 첫 정량 공개',
         'link': 'https://focustaiwan.tw/sci-tech/202610050008',
         'description': (
-            'NVIDIA and Foxconn reported live-production GB300 NVL72 tester-tray robot assembly results in Houston. '
-            'Busbar assembly task success exceeded 95%, multi-connector insertion reached 90-95%. '
-            'Focus Taiwan/CNA report the busbar target below 124 seconds and both tasks target 99.5% success; '
-            'Tech Times separately reports current busbar cycle time at about 160 seconds. '
-            'These are task-level robot assembly success metrics, not overall GB300 manufacturing yield.'
+            'NVIDIA Seattle Robotics Lab and Isaac engineering teams, working with NVIDIA operations and Foxconn, '
+            'reported quantified robot performance for GB300 NVL72 tester-tray assembly tasks. '
+            'Busbar assembly task success exceeded 95%, while multi-connector insertion reached 90-95%. '
+            'Focus Taiwan/CNA report a busbar target below 124 seconds and 99.5% task-success targets; '
+            'TechNews/Anue report current busbar execution at about 160 seconds. '
+            'Public primary/high-trust sources reviewed here do not establish that these exact KPI measurements '
+            'were taken on a live Houston production line; Houston is separately announced as a Foxconn-NVIDIA '
+            'smart-factory deployment site. These are task-level assembly success metrics, not overall GB300 manufacturing yield. '
+            'The 780,000 trajectories in 11 hours figure is a previously disclosed 2025 NVIDIA synthetic-data baseline, '
+            'not a new Houston-factory result.'
         ),
         'published': '2026-10-05T05:15:00+00:00',
         'source': 'Focus Taiwan',
         'direct_recovery': True,
+        'factory_location_correction': True,
     }]
 
 
@@ -84,7 +90,7 @@ base.TRUSTED.update({
     '이데일리', 'EDAILY', '뉴스핌', 'Investors Business Daily', 'Reuters',
     'The Robot Report', '澎湃新闻', 'The Paper', '第一财经', 'IT之家',
     'Business Insider', '조선비즈', 'ChosunBiz', '연합뉴스', '전자신문',
-    'Orange County Business Journal', 'Focus Taiwan', 'Central News Agency', 'CNA', 'Tech Times',
+    'Orange County Business Journal', 'Focus Taiwan', 'Central News Agency', 'CNA', 'TechNews', 'Anue', '鉅亨網', 'Tech Times',
     '머니투데이', 'MoneyToday', 'News1', '뉴스1',
 })
 base.OFFICIAL_OR_PRIMARY.update({
@@ -336,7 +342,7 @@ NVIDIA_FACTORY_KPI_CHANGE = re.compile(
     re.I,
 )
 NVIDIA_FACTORY_SOURCE_OK = re.compile(
-    r'NVIDIA|NVIDIA\s*Developer|NVIDIA\s*Technical\s*Blog|Focus\s*Taiwan|Central\s*News\s*Agency|\bCNA\b|Tech\s*Times',
+    r'NVIDIA|NVIDIA\s*Developer|NVIDIA\s*Technical\s*Blog|Focus\s*Taiwan|Central\s*News\s*Agency|\bCNA\b|TechNews|Anue|鉅亨網|Tech\s*Times',
     re.I,
 )
 
@@ -841,7 +847,7 @@ def _raw_cat(text: str, group: str) -> str:
             'timeline_unverified': '로보틱스 변곡점 시간표 변경',
             'general_brain_execution': '범용 로봇 두뇌 실행지표',
             'quantified_deployment': '로봇 배치·생산·고객 정량 확대',
-            'factory_kpi_initial': '폭스콘 GB300 실제 조립 KPI 첫 정량화',
+            'factory_kpi_initial': 'NVIDIA·Foxconn GB300 조립 KPI 첫 정량화',
             'factory_kpi_measured': '폭스콘 GB300 로봇 조립 KPI 정량 공개',
             'factory_kpi_change': '폭스콘 GB300 로봇 조립 KPI 개선·악화',
             'factory_target_achieved': '폭스콘 GB300 로봇 조립 99.5%·사이클타임 목표 달성',
@@ -953,7 +959,7 @@ def meaning(cat: str) -> str:
         '로보틱스 시간표 미확인': '구체적인 시간표가 비공개 전언이나 출처 불명 상태라면 참고만 하고 알림하지 않습니다.',
         '범용 로봇 두뇌 실행지표': '범용 로봇 두뇌가 수사에서 실제 모델·고객·작업수·현장배치 숫자로 내려오는 신호입니다. 지원 로봇 종류, 작업 성공률, 사람 개입률, 추론지연과 온디바이스 연산구성을 확인합니다.',
         '로봇 배치·생산·고객 정량 확대': 'NVIDIA 생태계 로봇이 실제 배치·생산·고객 숫자로 확대되는 단계입니다. 데모 숫자와 유료 생산배치, 파트너 발표와 실출하를 구분합니다.',
-        '폭스콘 GB300 실제 조립 KPI 첫 정량화': '데모가 아니라 Foxconn 휴스턴의 GB300 NVL72 테스터 트레이 실제 제조공정에서 로봇 성능이 수치로 내려온 단계입니다. 버스바 조립 작업 성공률 95% 초과, 멀티커넥터 삽입 90~95%, 버스바 사이클타임 약 160초를 기준선으로 고정하고 99.5% 성공률·124초 목표와의 격차를 추적합니다. 이 수치는 GB300 전체 생산수율이 아니라 개별 조립작업 성공률입니다. 78만 궤적·11시간은 2025년 NVIDIA가 공개한 기존 GR00T 합성 궤적 생성 기준선으로, 이번 휴스턴 공장 KPI에서 새로 측정된 수치로 취급하지 않습니다.',
+        'NVIDIA·Foxconn GB300 조립 KPI 첫 정량화': 'NVIDIA Seattle Robotics Lab·Isaac 엔지니어링팀이 NVIDIA 운영팀·Foxconn과 함께 GB300 NVL72 테스터 트레이의 버스바·멀티커넥터 조립 작업을 정량화한 단계입니다. 버스바 작업 성공률 95% 초과, 멀티커넥터 90~95%, 버스바 약 160초를 기준선으로 두고 99.5% 작업 성공률·124초 및 커넥터 72초 목표와의 격차를 추적합니다. 공개된 1차·고신뢰 자료만으로 이 KPI가 휴스턴 양산라인에서 직접 측정됐다고 단정하지 않으며, 휴스턴은 별도로 발표된 스마트팩토리·로봇 도입 거점으로 구분합니다. 이 수치는 GB300 전체 생산수율이 아니라 개별 조립작업 성공률입니다. 78만 궤적·11시간은 2025년 NVIDIA가 공개한 기존 합성데이터 기준선입니다.',
         '폭스콘 GB300 로봇 조립 KPI 정량 공개': 'NVIDIA·Foxconn 제조현장의 로봇 자동화가 작업 성공률·사이클타임으로 정량화되는 단계입니다. 제품 전체 수율과 로봇 작업 성공률을 분리하고 재작업·처리량·사람 개입률을 함께 확인합니다.',
         '폭스콘 GB300 로봇 조립 KPI 개선·악화': '초기 95%+·160초 기준선에서 성공률이나 사이클타임이 실제로 변하는 후속 신호입니다. 99.5%와 124초에 얼마나 가까워지는지, 커넥터 72초 목표까지 포함해 생산성 개선 속도를 봅니다.',
         '폭스콘 GB300 로봇 조립 99.5%·사이클타임 목표 달성': '작업 성공률과 처리량이 전자 제조 목표 수준에 도달해 유연 자동화의 상업적 확장성이 한 단계 올라가는 신호입니다. 다른 GB300 공정·타 공장·차세대 랙으로 복제되는지와 실제 인력·원가 절감 폭을 확인합니다.',
@@ -1026,7 +1032,7 @@ def risk(cat: str) -> str:
         '로보틱스 시간표 미확인': '비공개 코멘트 재전파만으로 모델·하드웨어 공급망 수혜를 확정하지 않습니다.',
         '범용 로봇 두뇌 실행지표': '벤치마크 개선이 실환경 반복작업으로 그대로 이어지지 않을 수 있습니다. 작업 분포, 실패복구, 연속가동시간, 안전성과 로봇별 미세조정량을 확인합니다.',
         '로봇 배치·생산·고객 정량 확대': '파트너가 늘어도 NVIDIA 매출은 Jetson·DGX·Omniverse·소프트웨어 사용량에 따라 다릅니다. 로봇 대수와 NVIDIA 콘텐츠 비중을 곱해 실제 매출경로를 확인합니다.',
-        '폭스콘 GB300 실제 조립 KPI 첫 정량화': '가장 큰 오판은 95%를 GB300 전체 제조수율로 읽는 것입니다. 이는 특정 조립작업 성공률입니다. 95%에서 99.5%로 가려면 실패율을 약 5%에서 0.5%로 낮춰 약 10분의 1로 줄여야 하며, 버스바 160초는 124초 목표보다 약 29% 느립니다. 현재 수치는 NVIDIA 내부 보고 기반이며 제3자 독립 감사가 확인되지 않았습니다. 또한 78만 궤적·11시간은 2025년 공개된 기존 합성데이터 생성 실적이며, 이를 GR00T-Dreams의 이번 휴스턴 현장 신규 성과로 재분류하지 않습니다.',
+        'NVIDIA·Foxconn GB300 조립 KPI 첫 정량화': '가장 큰 오판은 세 가지입니다. 첫째 95%는 GB300 전체 제조수율이 아니라 특정 조립작업 성공률입니다. 둘째 공개된 고신뢰 자료만으로 이 KPI 측정장소를 휴스턴 실가동 라인으로 확정할 수 없습니다. 셋째 78만 궤적·11시간은 2025년 공개된 기존 합성데이터 생성 실적입니다. 작업 성공률 95%에서 목표 99.5%로 가려면 실패율을 약 5%에서 0.5%로 낮춰 약 10분의 1로 줄여야 하고, 버스바 약 160초는 124초 목표보다 약 29% 느립니다. 제3자 독립 감사도 아직 확인되지 않았습니다.',
         '폭스콘 GB300 로봇 조립 KPI 정량 공개': '성공률만 높고 사이클타임이 느리면 같은 생산량을 맞추기 위해 병렬화·추가 설비·사람 재작업이 필요할 수 있습니다. 나사 체결·고정밀 커넥터 삽입의 위치오차·힘제어·충돌 손상이 먼저 드러날 병목입니다.',
         '폭스콘 GB300 로봇 조립 KPI 개선·악화': '단일 작업 개선이 전체 랙 조립 생산성 향상을 보장하지 않습니다. 다른 공정으로 병목이 이동하거나 제품 설계 변경 때 재학습·재검증 시간이 늘 수 있습니다.',
         '폭스콘 GB300 로봇 조립 99.5%·사이클타임 목표 달성': '목표 달성도 한 라인·한 제품에서의 결과일 수 있습니다. 다른 공장·Vera Rubin 세대·다른 커넥터 형상에서 같은 성공률과 처리량이 재현되는지를 확인해야 합니다.',
@@ -1101,12 +1107,12 @@ def verification(item: dict, group: str, text: str) -> str:
             return 'NVIDIA/Jensen 직접 인용이 포함된 신뢰 자료 · 기존 near-term 기준선 대비 시간표 변경'
         if stage in {'factory_kpi_initial','factory_kpi_measured','factory_kpi_change','factory_target_achieved'}:
             if item.get('direct_recovery'):
-                return 'Focus Taiwan/CNA의 작업 성공률·목표 수치 + Tech Times의 현재 버스바 약 160초 교차확인 · 제3자 감사 아님 · 전체 제조수율과 구분'
+                return 'Focus Taiwan/CNA의 작업 성공률·목표 + TechNews/Anue의 현재 버스바 약 160초 교차확인 · KPI 측정장소의 휴스턴 실가동 여부는 미확정 · 제3자 감사 아님 · 전체 제조수율과 구분'
             if source in base.OFFICIAL_OR_PRIMARY or re.search(r'NVIDIA', source, re.I):
                 return 'NVIDIA 기술자료 기반 · Foxconn GB300 테스터트레이 작업 성공률·사이클타임 확인 · 전체 제조수율과 구분'
             if re.search(r'Focus\s*Taiwan|Central\s*News\s*Agency|\bCNA\b', source, re.I):
                 return 'Focus Taiwan/CNA가 NVIDIA 10월 2일 기술보고서를 인용 · 작업 성공률·사이클타임 교차확인 · 제3자 감사 아님'
-            return 'Tech Times 등 2차 보도 · Focus Taiwan/CNA와 NVIDIA 기술자료 인용 내용 교차확인 · 작업 성공률을 전체 제조수율로 해석 금지'
+            return 'TechNews/Anue/Tech Times 등 2차 보도 · Focus Taiwan/CNA와 NVIDIA 기술자료 인용 내용 교차확인 · 작업 성공률을 전체 제조수율로 해석 금지 · KPI 측정장소는 별도 확인'
         if stage in {'general_brain_execution','quantified_deployment'}:
             if source in base.OFFICIAL_OR_PRIMARY:
                 return 'NVIDIA 공식자료 · 범용 로봇 두뇌/배치/생산 정량지표 직접 확인'
@@ -1265,7 +1271,7 @@ def key(item: dict) -> str:
         if stage == 'roadshow_within_year_unverified':
             return hashlib.sha256(b'nvidia-robotics|roadshow|within-a-year|unverified-user-baseline').hexdigest()
         if stage == 'factory_kpi_initial':
-            return hashlib.sha256(b'nvidia-foxconn|gb300-nvl72|tester-tray|robot-assembly-kpi|2026-10|95plus|90-95|160s|124s|72s|99.5target|corrected-v2').hexdigest()
+            return hashlib.sha256(b'nvidia-foxconn|gb300-nvl72|tester-tray|robot-assembly-kpi|2026-10|95plus|90-95|160s|124s|72s|99.5target|location-corrected-v3').hexdigest()
         if stage == 'korea_event_baseline':
             return hashlib.sha256(b'nvidia-korea|ai-day-seoul-2026|2026-11-09-10|physical-ai').hexdigest()
         if stage == 'korea_prior_contact_baseline':
