@@ -703,6 +703,61 @@
       "source_published_kst": "2026-10-07T15:40+09:00",
       "title": "유가·금리 반등에 실적 경계감…코스피, 6800선 마감"
     },
+    "core:1a9f8767a32b08d1c2e79c3e": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01302166645610952",
+      "source": "이데일리",
+      "source_body_digest": "b34bbe668ea15b10c08868434da1d7eb34739d9fafd28f2eb1c2c3ac00495615",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5619b99f4bda6dd065b55663ef46a6121c64daf9335a279223ca54368755398c",
+      "source_fact_keys": [
+        "source_fact:v1:0cd784221c665990a3e7e6f10e0e5418dabb426fc4d8b9a2b770e86661858551",
+        "source_fact:v1:1d45edaf371d81cc044387aeb005974e9c53d63b32d71dfe6185fba4a9904687",
+        "source_fact:v1:25f27dab6f79ca3191ec3588cef0339d7e3058c1cc1721ee2544c36c72aea91b",
+        "source_fact:v1:323103442fc5acc1717aeb40e1a6f28a487a28c2149263361196fde329326768",
+        "source_fact:v1:3bedeb6d1ff1f1225af1db2b6d3924ce7aefca7b2af3595baf0c64fd4664e6e8",
+        "source_fact:v1:405e88213b2250718da19bc49279984f6c8a33c61f9c712c7a946c119ef79be5",
+        "source_fact:v1:446055178f80f1311956e4d25a2b4c6e46746dc4505b9f60d01a228b98bb413d",
+        "source_fact:v1:804613ab67a8ae29466265065c2be2444eefc7bf71dc44aa7fc0cf5c2d73c8bd",
+        "source_fact:v1:841dfa70de052bd84690b0eec657c00d32a00746c8f411fa8a7a9a0ab4473330",
+        "source_fact:v1:c343e2c82bab37ae62be7507c20f8128257f2d86dbb20bc91f85f39d06e8acbf",
+        "source_fact:v1:e441008ce6e85cbfb739745ebc30962cd692a480f8f0765a5758d05b05121f18",
+        "source_fact:v1:fdc4a9041764b65f4fb64dbb82f1758f61804796d2f445eb4f5b61ecaa2d507b"
+      ],
+      "source_published_kst": "2026-10-08T03:10+09:00",
+      "source_title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\"",
+      "telegram_core_fact": "연준이 7일(현지시간) 공개한 9월 15~16일 연방공개시장위원회(FOMC) 의사록에 따르면 참석자 대부분은 향후 통화정책과 관련해 “연말까지 기준금리 목표범위를 한 차례 더 인상하는 것이 적절할 가능성이 높다”고 평가했다.",
+      "title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\""
+    },
+    "core:1b36ed09494b3d8d1195fca0": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675185",
+      "source": "블로터",
+      "source_body_digest": "7ee5a39ea152ad9168853de824ed3ac1898aaae81a7d1c5ff5656665d877acdf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f449e9a06ebcb07642554e5e2a2995a97f5c4d6270347c075d7e6cd792893cfc",
+      "source_fact_keys": [
+        "source_fact:v1:731b952e75985582be2f2532aded5daee93cb6ee88b2f77f5350c519542d6c3f",
+        "source_fact:v1:8a9d91841015ef07f03d3cc7bcf2bfc5363b22b77118c54920d9afa78eba7520",
+        "source_fact:v1:95b3c1b3ef788339bf4b3bf9da078afff7166bb437b54a0208ac7a2a5e625d80",
+        "source_fact:v1:9f545c71c46b323a15b242dc75f736faa5b950e3bbffb9b1ae96b94ba2d2961c",
+        "source_fact:v1:cdf46f15affef72b534fa23e597fe52947971064646c4540e3cfa5ed0cb533ff",
+        "source_fact:v1:cfd870c4ab690298ea199a891a20a8aa5c19924587f3bd221f709002ef7eb0c7",
+        "source_fact:v1:d08776aadbbe358e4b5437355674f99a6d24db138003a6a2486dbaa958944359"
+      ],
+      "source_published_kst": "2026-10-07T13:43+09:00",
+      "source_title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배",
+      "telegram_core_fact": "파라다이스가 공모 회사채 수요예측에서 모집액의 3.4배에 달하는 투자 수요를 확보하며 2년 연속 흥행에 성공했다. 파라다이스에 따르면 회사는 지난 6일 총 600억원 공모 회사채 발행을 위한 수요예측을 실시한 결과 모집액의 3.42배인 총 2050억원의 주문이 접수됐다.",
+      "title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배"
+    },
     "core:1d3e5ef4133da3f33d6354bc": {
       "first_seen_kst": "2026-10-08T03:51:03+09:00",
       "lanes": {
@@ -2240,6 +2295,30 @@
       ],
       "source_published_kst": "2026-10-07T15:13+09:00",
       "title": "日유가보조금 10조원 넘게 투입…\"재정압박·현실왜곡 부작용\" | 연합뉴스"
+    },
+    "core:5e4d49a2a3e49fb5ec273f8c": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633582",
+      "source": "이투데이",
+      "source_body_digest": "1ca7eb2cac17c36b9b558d8d67af0dd4623e63425a6a6e10995312ae188b5fc7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f536ebc461e62fcfcd99cf9c229928cb0fc329e662288bcc6780a9c4bca44992",
+      "source_fact_keys": [
+        "source_fact:v1:1ed086871b6d966f9828426c96a6321d4470a40ae876806734b8998e4834fc29",
+        "source_fact:v1:3b12eafcb3155a94716a356e10527eb0ebf600eb1618ec9ea75e6ac8698fd359",
+        "source_fact:v1:64486ca8a34af119f907efece4b3b0317fbde93fabe16c703677bd936c721cbb",
+        "source_fact:v1:b718169f6a338d864f2780345562ef388c45cfb7655f4295e8d4f17ee8fe87d8",
+        "source_fact:v1:d70b3a2120c42ece24483be5f07b8875b7a58ac1a9fdec176f7579d264ddd60c",
+        "source_fact:v1:e8539b94567508b2ffd446525bcb95454f4a049411d1ddcebdc9e2dbcdaf9ff7"
+      ],
+      "source_published_kst": "2026-10-07T18:01+09:00",
+      "source_title": "“현대지에프홀딩스, 자사주 소각‧배당수익 확대로 주주환원 강화”",
+      "telegram_core_fact": "현대지에프홀딩스는 이달 중 자사주 잔여 물량을 집중적으로 매입한 뒤 1000억원 규모, 발행주식의 약 4.0%에 해당하는 자사주를 11~12월 중 전량 소각다.",
+      "title": "“현대지에프홀딩스, 자사주 소각‧배당수익 확대로 주주환원 강화”"
     },
     "core:5efdb468f3642d8149d36d05": {
       "first_seen_kst": "2026-10-07T18:12:46+09:00",
@@ -4104,6 +4183,23 @@
       "source_published_kst": "2026-10-07T13:37+09:00",
       "title": "대구·경북 제조업 생산 엇갈려…소비는 동반 감소"
     },
+    "core:a84fc95439d0231018e76097": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170996",
+      "source": "매일경제",
+      "source_body_digest": "b2320332c6cdc4466ce107b5889e21b686a55bcfc2fa9787c056293f93551d98",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T01:50+09:00",
+      "source_title": "고고로, 6200만 달러 규모 신주 발행 소식에 지분 희석 우려 부각",
+      "telegram_core_fact": "주당 2.48달러에 약 6180만 달러 신주 발행이 추진되면서 기존 주주의 지분 희석 우려가 커졌습니다. 발행가가 직전 주가보다 낮은 점도 부담이며, 이사 지배 법인 등 최대주주 의존도 높아졌습니다.",
+      "title": "고고로, 6200만 달러 규모 신주 발행 소식에 지분 희석 우려 부각"
+    },
     "core:a8f313428509ed0018243c5b": {
       "first_seen_kst": "2026-10-07T18:58:51+09:00",
       "lanes": {
@@ -4468,6 +4564,28 @@
       "source_title": "송미령 “CPTPP 가입 결정된 것 없어…쌀 최우선 보호” [국감]",
       "telegram_core_fact": "이 의원이 2014년 쌀 관세화 발표 당시 추가적인 양허 협상은 하지 않겠다는 정부 약속을 거론하자 송 장관은 “쌀은 우리로서는 정말 초민감 품목이라고 생각한다”며 “최우선으로 보호해야 한다는 입장”이라고 밝혔다.",
       "title": "송미령 “CPTPP 가입 결정된 것 없어…쌀 최우선 보호” [국감]"
+    },
+    "core:b2b69aadf377e2b87d009f9a": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008001751099",
+      "source": "연합뉴스",
+      "source_body_digest": "f239b79f24727ec4475ba2e3f5e13c0724e26b71a3da743bcd00d2d00c84d324",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d08fe7fe283d2233afd1c3303d216f71d9703bb353ebbee712b37e31339aaa94",
+      "source_fact_keys": [
+        "source_fact:v1:04aa94072d3dcec4d3e60948d5a1088f35ed231bb7713617e3208423e92bbf19",
+        "source_fact:v1:357c29abbdc710e4740dae7a17b0f9652864c354dc87fd4d120496f2c6d25508",
+        "source_fact:v1:9b406dbedfd35360dd0180560c9604ba5f8a7d3768ad402c8aea80e7297c3a31",
+        "source_fact:v1:cce36d3ae7f4795af22f0b25c12cd8aca25f0e97367a8c021cfdb666d6921ede"
+      ],
+      "source_published_kst": "2026-10-08T03:39+09:00",
+      "source_title": "사우디 \"리야드·아브하 공항서 3명 사망\"…후티 잇단 공습 주장(종합) | 연합뉴스",
+      "telegram_core_fact": "예멘 정부군과 사우디 주도 연합군이 지난 4일 후티가 장악한 영토를 탈환하기 위한 '예멘의 새벽' 작전을 선언하고 대규모 공세에 나서자 후티는 이후 사우디 본토의 공항과 정유시설을 탄도미사일과 드론으로 잇달아 공격했다고 밝히고 있다.",
+      "title": "사우디 \"리야드·아브하 공항서 3명 사망\"…후티 잇단 공습 주장(종합) | 연합뉴스"
     },
     "core:b33a36a1154cde9d833dd0fc": {
       "first_seen_kst": "2026-10-07T23:50:27+09:00",
@@ -5193,6 +5311,26 @@
       "telegram_core_fact": "증권가 컨센서스에 따르면 리졸브 AI의 2026년 연간 매출액은 3억5995만 달러로 전년 대비 669.12% 증가할 전망이다.",
       "title": "리졸브 AI, 상반기 매출 1억3100만 달러·전년비 20배 급증"
     },
+    "core:cb9d638241d1b26e93c1ec90": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170953",
+      "source": "매일경제",
+      "source_body_digest": "86273171042b5706eb61b5393201675744bd5917c3fc2630512e767ee29fda2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cadb7ce343a93620cae885a902b014a92506c1d9bb16b3bc4f69ad99f9f7ffe9",
+      "source_fact_keys": [
+        "source_fact:v1:0cb91f6e5fe76ddfa8c0d23652ec0798d27941cef5175749de9027f3681b7c4a",
+        "source_fact:v1:4c87a830172707c511d29f673d792782ded4a6f980f6d57cdc166c77155f6c36"
+      ],
+      "source_published_kst": "2026-10-07T22:21+09:00",
+      "source_title": "그린서클디카보나이즈, AI 데이터센터 냉각 진출 발표에도 구체성 부족 부각",
+      "telegram_core_fact": "AI 데이터센터 액체냉각 시장 진출 계획을 발표했지만 계약, 투자 규모, 출시 일정이 공개되지 않았고 초기 협의 단계에 머물러 있습니다. 매출 기여 시점이 불확실해 실적 영향이 제한적이라는 평가가 나오며 실망 매물이 나온 것으로 보입니다.",
+      "title": "그린서클디카보나이즈, AI 데이터센터 냉각 진출 발표에도 구체성 부족 부각"
+    },
     "core:cf26a067a7548a43d5edb592": {
       "first_seen_kst": "2026-10-08T02:41:45+09:00",
       "lanes": {
@@ -5735,6 +5873,32 @@
       ],
       "source_published_kst": "2026-10-07T12:59+09:00",
       "title": "[2026 국감]홍지선, 주택공급 '속도전'…“연말 집값 상승폭 줄어들 것”"
+    },
+    "core:dc7fb3baa3d7b9388ac86c19": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895232",
+      "source": "헤럴드경제",
+      "source_body_digest": "df995e11642fc7707a2306fe55bd16bfb3c16f28a8da435c2d2587802513b494",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d5099adef4f7a8360d8e05288b6fb55bd68cfd1a747a45529b853026f3b09db",
+      "source_fact_keys": [
+        "source_fact:v1:594961b2dfe60fefb0cba8c81f4b57d92a22d8145b729c744bbc3564e3885452",
+        "source_fact:v1:8576288dd9824545078526fef9b98699a48703f4204f75867847fd40d8c0ae10",
+        "source_fact:v1:979cc8609a71f27cd5a60dfd378f781d1d3133ca59c6821893b2e57ef0e97bcb",
+        "source_fact:v1:d370488cb6da369d701e512ad4bdfc8298c69e525c522d5ceb19aa5d5aee6e21",
+        "source_fact:v1:d8c2cdfbf3688d00f45a686c3489ff204ee43b186d7457062bbd13dc3014c5ac",
+        "source_fact:v1:dc6145d91dce8523a7632cff49b5c43a1358ac2a316ceb3fbf8aa59c99af3a6f",
+        "source_fact:v1:dc6183e2452024b2c8372e398276ea3bd50fbb4ded61a699fc8b0c072f80a051",
+        "source_fact:v1:e9212f03a3876e75dbfc0b593ce138e70f5dcfeeb46290a1bec3964445abd86b"
+      ],
+      "source_published_kst": "2026-10-07T18:40+09:00",
+      "source_title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]",
+      "telegram_core_fact": "김세빈 유안타증권 연구원은 “지수 전체의 이익추정치 개선보다 반도체 소부장과 기판, 통신장비 등 일부 IT 업종과 테마 중심의 상승”이라며 “지수 추격보다 실적과 매출 추정치가 실제로 올라오는 업종으로 압축할 필요가 있다”고 조언했다.",
+      "title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]"
     },
     "core:ddb1677e5bcbb3c11957d176": {
       "first_seen_kst": "2026-10-08T00:39:44+09:00",
@@ -10339,22 +10503,24 @@
     "event:7fb12baca26427e75de41ba7": {
       "first_seen_kst": "2026-10-08T03:13:06+09:00",
       "lanes": {
-        "live": "2026-10-08T03:13:06+09:00"
+        "live": "2026-10-08T04:14:15+09:00"
       },
-      "last_seen_kst": "2026-10-08T03:13:06+09:00",
-      "link": "https://www.newsis.com/view/NISX20261008_0003818218",
-      "source": "뉴시스",
-      "source_body_digest": "debc2b5ae9a8e36c5a0d0e7a88011db75df4553b7aad16b318f29c3025290f2b",
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008001751099",
+      "source": "연합뉴스",
+      "source_body_digest": "f239b79f24727ec4475ba2e3f5e13c0724e26b71a3da743bcd00d2d00c84d324",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:8a501e1450059761b2361779e4034709916118abe0fb7ef150d90b0ca311ada6",
+      "source_fact_identity": "source_facts:v1:d08fe7fe283d2233afd1c3303d216f71d9703bb353ebbee712b37e31339aaa94",
       "source_fact_keys": [
-        "source_fact:v1:5391ae4e02b17d0b41f6a19d2de05ebb609a4cc74ce334406e24f8f4f2ec7cda",
-        "source_fact:v1:89ad7a68324289a9154a45feb4417f4174eee85b69715dcb5d80f0a1101f1a6d"
+        "source_fact:v1:04aa94072d3dcec4d3e60948d5a1088f35ed231bb7713617e3208423e92bbf19",
+        "source_fact:v1:357c29abbdc710e4740dae7a17b0f9652864c354dc87fd4d120496f2c6d25508",
+        "source_fact:v1:9b406dbedfd35360dd0180560c9604ba5f8a7d3768ad402c8aea80e7297c3a31",
+        "source_fact:v1:cce36d3ae7f4795af22f0b25c12cd8aca25f0e97367a8c021cfdb666d6921ede"
       ],
-      "source_published_kst": "2026-10-08T01:45+09:00",
-      "source_title": "\"이란, 헤즈볼라에 2억달러 지원…피란민 5만가구에 지급\"",
-      "telegram_core_fact": "이란은 미국의 강력한 제재 속에서도 헤즈볼라에 대한 재정 지원을 지속해온 것으로 알려졌다.",
-      "title": "\"이란, 헤즈볼라에 2억달러 지원…피란민 5만가구에 지급\""
+      "source_published_kst": "2026-10-08T03:39+09:00",
+      "source_title": "사우디 \"리야드·아브하 공항서 3명 사망\"…후티 잇단 공습 주장(종합) | 연합뉴스",
+      "telegram_core_fact": "예멘 정부군과 사우디 주도 연합군이 지난 4일 후티가 장악한 영토를 탈환하기 위한 '예멘의 새벽' 작전을 선언하고 대규모 공세에 나서자 후티는 이후 사우디 본토의 공항과 정유시설을 탄도미사일과 드론으로 잇달아 공격했다고 밝히고 있다.",
+      "title": "사우디 \"리야드·아브하 공항서 3명 사망\"…후티 잇단 공습 주장(종합) | 연합뉴스"
     },
     "event:805f3f743bb1dcc747449d9a": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
@@ -10858,23 +11024,28 @@
     "event:9347e62c29e3ede9712d32ef": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
       "lanes": {
-        "live": "2026-10-08T02:26:35+09:00"
+        "live": "2026-10-08T04:14:15+09:00"
       },
-      "last_seen_kst": "2026-10-08T02:26:35+09:00",
-      "link": "https://www.news1.kr/economy/trend/6312737",
-      "source": "뉴스1",
-      "source_body_digest": "c62e30f7303141df2cc580c85e8d858b26f87e00a70dcb4d67033aec9ebf0c00",
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895232",
+      "source": "헤럴드경제",
+      "source_body_digest": "df995e11642fc7707a2306fe55bd16bfb3c16f28a8da435c2d2587802513b494",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:023ff3a2f8d932c03302c64e8d38c7db58e369abc8187b26d318a43710233646",
+      "source_fact_identity": "source_facts:v1:7d5099adef4f7a8360d8e05288b6fb55bd68cfd1a747a45529b853026f3b09db",
       "source_fact_keys": [
-        "source_fact:v1:33fbbb0a6d6e9da5b3c39a877e9b648f2060478d007cc1ba8b11efc235f1a158",
-        "source_fact:v1:4bbf074d0acc76e40cc3eed5e34cd9117d39cea4d758e1bf4e3b078c36471586",
-        "source_fact:v1:9ba217f299264a9f00a4ce3ac7482c19227b6396de21b738c7a9bfe30705d6a9"
+        "source_fact:v1:594961b2dfe60fefb0cba8c81f4b57d92a22d8145b729c744bbc3564e3885452",
+        "source_fact:v1:8576288dd9824545078526fef9b98699a48703f4204f75867847fd40d8c0ae10",
+        "source_fact:v1:979cc8609a71f27cd5a60dfd378f781d1d3133ca59c6821893b2e57ef0e97bcb",
+        "source_fact:v1:d370488cb6da369d701e512ad4bdfc8298c69e525c522d5ceb19aa5d5aee6e21",
+        "source_fact:v1:d8c2cdfbf3688d00f45a686c3489ff204ee43b186d7457062bbd13dc3014c5ac",
+        "source_fact:v1:dc6145d91dce8523a7632cff49b5c43a1358ac2a316ceb3fbf8aa59c99af3a6f",
+        "source_fact:v1:dc6183e2452024b2c8372e398276ea3bd50fbb4ded61a699fc8b0c072f80a051",
+        "source_fact:v1:e9212f03a3876e75dbfc0b593ce138e70f5dcfeeb46290a1bec3964445abd86b"
       ],
-      "source_published_kst": "2026-10-07T12:00+09:00",
-      "source_title": "넘치는 기업 곳간…여윳돈 석달 새 3배 늘어 67조 '최대'",
-      "telegram_core_fact": "전례 없는 반도체 호황에 국내 기업이 2분기(4~6월)에만 67조 원 넘는 여윳돈을 쌓았다.",
-      "title": "넘치는 기업 곳간…여윳돈 석달 새 3배 늘어 67조 '최대'"
+      "source_published_kst": "2026-10-07T18:40+09:00",
+      "source_title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]",
+      "telegram_core_fact": "김세빈 유안타증권 연구원은 “지수 전체의 이익추정치 개선보다 반도체 소부장과 기판, 통신장비 등 일부 IT 업종과 테마 중심의 상승”이라며 “지수 추격보다 실적과 매출 추정치가 실제로 올라오는 업종으로 압축할 필요가 있다”고 조언했다.",
+      "title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]"
     },
     "event:938ff2672aac7ad983b6227f": {
       "first_seen_kst": "2026-09-25T17:39:25+09:00",
@@ -13426,6 +13597,31 @@
       "source": "전자신문",
       "title": "슈퍼마이크로 'Vera Rubin NVL72' 출하 개시…디에스앤지, 국내 공급 준비 본격화"
     },
+    "event:e4b3e6095039ea8e7ee1ed3d": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675185",
+      "source": "블로터",
+      "source_body_digest": "7ee5a39ea152ad9168853de824ed3ac1898aaae81a7d1c5ff5656665d877acdf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f449e9a06ebcb07642554e5e2a2995a97f5c4d6270347c075d7e6cd792893cfc",
+      "source_fact_keys": [
+        "source_fact:v1:731b952e75985582be2f2532aded5daee93cb6ee88b2f77f5350c519542d6c3f",
+        "source_fact:v1:8a9d91841015ef07f03d3cc7bcf2bfc5363b22b77118c54920d9afa78eba7520",
+        "source_fact:v1:95b3c1b3ef788339bf4b3bf9da078afff7166bb437b54a0208ac7a2a5e625d80",
+        "source_fact:v1:9f545c71c46b323a15b242dc75f736faa5b950e3bbffb9b1ae96b94ba2d2961c",
+        "source_fact:v1:cdf46f15affef72b534fa23e597fe52947971064646c4540e3cfa5ed0cb533ff",
+        "source_fact:v1:cfd870c4ab690298ea199a891a20a8aa5c19924587f3bd221f709002ef7eb0c7",
+        "source_fact:v1:d08776aadbbe358e4b5437355674f99a6d24db138003a6a2486dbaa958944359"
+      ],
+      "source_published_kst": "2026-10-07T13:43+09:00",
+      "source_title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배",
+      "telegram_core_fact": "파라다이스가 공모 회사채 수요예측에서 모집액의 3.4배에 달하는 투자 수요를 확보하며 2년 연속 흥행에 성공했다. 파라다이스에 따르면 회사는 지난 6일 총 600억원 공모 회사채 발행을 위한 수요예측을 실시한 결과 모집액의 3.42배인 총 2050억원의 주문이 접수됐다.",
+      "title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배"
+    },
     "event:e4ecfb8df28ec73c30f580e0": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
       "lanes": {
@@ -13893,6 +14089,36 @@
       "link": "https://www.mk.co.kr/news/business/12159064",
       "source": "매일경제",
       "title": "‘최윤범號’ 고려아연 美 제련소 사업 순항…환경영향 평가 통과"
+    },
+    "event:f5b0143b56634dd6a6788dff": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01302166645610952",
+      "source": "이데일리",
+      "source_body_digest": "b34bbe668ea15b10c08868434da1d7eb34739d9fafd28f2eb1c2c3ac00495615",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5619b99f4bda6dd065b55663ef46a6121c64daf9335a279223ca54368755398c",
+      "source_fact_keys": [
+        "source_fact:v1:0cd784221c665990a3e7e6f10e0e5418dabb426fc4d8b9a2b770e86661858551",
+        "source_fact:v1:1d45edaf371d81cc044387aeb005974e9c53d63b32d71dfe6185fba4a9904687",
+        "source_fact:v1:25f27dab6f79ca3191ec3588cef0339d7e3058c1cc1721ee2544c36c72aea91b",
+        "source_fact:v1:323103442fc5acc1717aeb40e1a6f28a487a28c2149263361196fde329326768",
+        "source_fact:v1:3bedeb6d1ff1f1225af1db2b6d3924ce7aefca7b2af3595baf0c64fd4664e6e8",
+        "source_fact:v1:405e88213b2250718da19bc49279984f6c8a33c61f9c712c7a946c119ef79be5",
+        "source_fact:v1:446055178f80f1311956e4d25a2b4c6e46746dc4505b9f60d01a228b98bb413d",
+        "source_fact:v1:804613ab67a8ae29466265065c2be2444eefc7bf71dc44aa7fc0cf5c2d73c8bd",
+        "source_fact:v1:841dfa70de052bd84690b0eec657c00d32a00746c8f411fa8a7a9a0ab4473330",
+        "source_fact:v1:c343e2c82bab37ae62be7507c20f8128257f2d86dbb20bc91f85f39d06e8acbf",
+        "source_fact:v1:e441008ce6e85cbfb739745ebc30962cd692a480f8f0765a5758d05b05121f18",
+        "source_fact:v1:fdc4a9041764b65f4fb64dbb82f1758f61804796d2f445eb4f5b61ecaa2d507b"
+      ],
+      "source_published_kst": "2026-10-08T03:10+09:00",
+      "source_title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\"",
+      "telegram_core_fact": "연준이 7일(현지시간) 공개한 9월 15~16일 연방공개시장위원회(FOMC) 의사록에 따르면 참석자 대부분은 향후 통화정책과 관련해 “연말까지 기준금리 목표범위를 한 차례 더 인상하는 것이 적절할 가능성이 높다”고 평가했다.",
+      "title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\""
     },
     "event:f621b4d31b03cf678d2c0aa7": {
       "first_seen_kst": "2026-09-23T09:05:43+09:00",
@@ -15234,6 +15460,30 @@
       "source_published_kst": "2026-10-06T09:13+09:00",
       "title": "제주항공, 中 노선 LCC 1위 굳힌다…베이징·창사 운수권 추가 확보"
     },
+    "fact:0a9853689cf028e11afb8b50": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633582",
+      "source": "이투데이",
+      "source_body_digest": "1ca7eb2cac17c36b9b558d8d67af0dd4623e63425a6a6e10995312ae188b5fc7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f536ebc461e62fcfcd99cf9c229928cb0fc329e662288bcc6780a9c4bca44992",
+      "source_fact_keys": [
+        "source_fact:v1:1ed086871b6d966f9828426c96a6321d4470a40ae876806734b8998e4834fc29",
+        "source_fact:v1:3b12eafcb3155a94716a356e10527eb0ebf600eb1618ec9ea75e6ac8698fd359",
+        "source_fact:v1:64486ca8a34af119f907efece4b3b0317fbde93fabe16c703677bd936c721cbb",
+        "source_fact:v1:b718169f6a338d864f2780345562ef388c45cfb7655f4295e8d4f17ee8fe87d8",
+        "source_fact:v1:d70b3a2120c42ece24483be5f07b8875b7a58ac1a9fdec176f7579d264ddd60c",
+        "source_fact:v1:e8539b94567508b2ffd446525bcb95454f4a049411d1ddcebdc9e2dbcdaf9ff7"
+      ],
+      "source_published_kst": "2026-10-07T18:01+09:00",
+      "source_title": "“현대지에프홀딩스, 자사주 소각‧배당수익 확대로 주주환원 강화”",
+      "telegram_core_fact": "현대지에프홀딩스는 이달 중 자사주 잔여 물량을 집중적으로 매입한 뒤 1000억원 규모, 발행주식의 약 4.0%에 해당하는 자사주를 11~12월 중 전량 소각다.",
+      "title": "“현대지에프홀딩스, 자사주 소각‧배당수익 확대로 주주환원 강화”"
+    },
     "fact:0ab213b523ea402059ddbbf2": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
       "lanes": {
@@ -15270,6 +15520,31 @@
       ],
       "source_published_kst": "2026-10-06T21:38+09:00",
       "title": "이형일 \"대미투자 MOU '45영업일 후', 우리에 유리해 수정 요구 안 해\"(종합)"
+    },
+    "fact:0b5dbe1a52f611ed6db16ac1": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675185",
+      "source": "블로터",
+      "source_body_digest": "7ee5a39ea152ad9168853de824ed3ac1898aaae81a7d1c5ff5656665d877acdf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f449e9a06ebcb07642554e5e2a2995a97f5c4d6270347c075d7e6cd792893cfc",
+      "source_fact_keys": [
+        "source_fact:v1:731b952e75985582be2f2532aded5daee93cb6ee88b2f77f5350c519542d6c3f",
+        "source_fact:v1:8a9d91841015ef07f03d3cc7bcf2bfc5363b22b77118c54920d9afa78eba7520",
+        "source_fact:v1:95b3c1b3ef788339bf4b3bf9da078afff7166bb437b54a0208ac7a2a5e625d80",
+        "source_fact:v1:9f545c71c46b323a15b242dc75f736faa5b950e3bbffb9b1ae96b94ba2d2961c",
+        "source_fact:v1:cdf46f15affef72b534fa23e597fe52947971064646c4540e3cfa5ed0cb533ff",
+        "source_fact:v1:cfd870c4ab690298ea199a891a20a8aa5c19924587f3bd221f709002ef7eb0c7",
+        "source_fact:v1:d08776aadbbe358e4b5437355674f99a6d24db138003a6a2486dbaa958944359"
+      ],
+      "source_published_kst": "2026-10-07T13:43+09:00",
+      "source_title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배",
+      "telegram_core_fact": "파라다이스가 공모 회사채 수요예측에서 모집액의 3.4배에 달하는 투자 수요를 확보하며 2년 연속 흥행에 성공했다. 파라다이스에 따르면 회사는 지난 6일 총 600억원 공모 회사채 발행을 위한 수요예측을 실시한 결과 모집액의 3.42배인 총 2050억원의 주문이 접수됐다.",
+      "title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배"
     },
     "fact:0b670f3a60b5040252cedab8": {
       "first_seen_kst": "2026-10-07T00:38:27+09:00",
@@ -15869,6 +16144,28 @@
       "source_title": "李 1000조 지원·최태원 220조 투자…녹색전환 ‘감사 족쇄’ 푼다",
       "telegram_core_fact": "정부가 약 1000조원의 재정·기후금융을 공급하고 산업계가 220조원 투자를 추진하는 한국형 녹색대전환(K-GX) 전략을 본격화했다. 이재명 대통령은 투자 규모를 키우는 데서 한발 더 나아가 공무원의 감사·처벌 부담과 에너지 정책의 불확실성도 해소해야 한다고 주문했다.",
       "title": "李 1000조 지원·최태원 220조 투자…녹색전환 ‘감사 족쇄’ 푼다"
+    },
+    "fact:1150fffc2de395c8c95be3e4": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008001751099",
+      "source": "연합뉴스",
+      "source_body_digest": "f239b79f24727ec4475ba2e3f5e13c0724e26b71a3da743bcd00d2d00c84d324",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d08fe7fe283d2233afd1c3303d216f71d9703bb353ebbee712b37e31339aaa94",
+      "source_fact_keys": [
+        "source_fact:v1:04aa94072d3dcec4d3e60948d5a1088f35ed231bb7713617e3208423e92bbf19",
+        "source_fact:v1:357c29abbdc710e4740dae7a17b0f9652864c354dc87fd4d120496f2c6d25508",
+        "source_fact:v1:9b406dbedfd35360dd0180560c9604ba5f8a7d3768ad402c8aea80e7297c3a31",
+        "source_fact:v1:cce36d3ae7f4795af22f0b25c12cd8aca25f0e97367a8c021cfdb666d6921ede"
+      ],
+      "source_published_kst": "2026-10-08T03:39+09:00",
+      "source_title": "사우디 \"리야드·아브하 공항서 3명 사망\"…후티 잇단 공습 주장(종합) | 연합뉴스",
+      "telegram_core_fact": "예멘 정부군과 사우디 주도 연합군이 지난 4일 후티가 장악한 영토를 탈환하기 위한 '예멘의 새벽' 작전을 선언하고 대규모 공세에 나서자 후티는 이후 사우디 본토의 공항과 정유시설을 탄도미사일과 드론으로 잇달아 공격했다고 밝히고 있다.",
+      "title": "사우디 \"리야드·아브하 공항서 3명 사망\"…후티 잇단 공습 주장(종합) | 연합뉴스"
     },
     "fact:115d943816b8ff3175a28883": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
@@ -16883,6 +17180,32 @@
       ],
       "source_published_kst": "2026-10-06T08:25+09:00",
       "title": "\"LG전자, AI 데이터센터 냉각·로보틱스 사업 기대…목표가↑\"-메리츠"
+    },
+    "fact:1952cfc36930b7cb3e26368b": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895232",
+      "source": "헤럴드경제",
+      "source_body_digest": "df995e11642fc7707a2306fe55bd16bfb3c16f28a8da435c2d2587802513b494",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d5099adef4f7a8360d8e05288b6fb55bd68cfd1a747a45529b853026f3b09db",
+      "source_fact_keys": [
+        "source_fact:v1:594961b2dfe60fefb0cba8c81f4b57d92a22d8145b729c744bbc3564e3885452",
+        "source_fact:v1:8576288dd9824545078526fef9b98699a48703f4204f75867847fd40d8c0ae10",
+        "source_fact:v1:979cc8609a71f27cd5a60dfd378f781d1d3133ca59c6821893b2e57ef0e97bcb",
+        "source_fact:v1:d370488cb6da369d701e512ad4bdfc8298c69e525c522d5ceb19aa5d5aee6e21",
+        "source_fact:v1:d8c2cdfbf3688d00f45a686c3489ff204ee43b186d7457062bbd13dc3014c5ac",
+        "source_fact:v1:dc6145d91dce8523a7632cff49b5c43a1358ac2a316ceb3fbf8aa59c99af3a6f",
+        "source_fact:v1:dc6183e2452024b2c8372e398276ea3bd50fbb4ded61a699fc8b0c072f80a051",
+        "source_fact:v1:e9212f03a3876e75dbfc0b593ce138e70f5dcfeeb46290a1bec3964445abd86b"
+      ],
+      "source_published_kst": "2026-10-07T18:40+09:00",
+      "source_title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]",
+      "telegram_core_fact": "김세빈 유안타증권 연구원은 “지수 전체의 이익추정치 개선보다 반도체 소부장과 기판, 통신장비 등 일부 IT 업종과 테마 중심의 상승”이라며 “지수 추격보다 실적과 매출 추정치가 실제로 올라오는 업종으로 압축할 필요가 있다”고 조언했다.",
+      "title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]"
     },
     "fact:1991a9a0e4a93598ca56f9f7": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
@@ -20273,6 +20596,26 @@
       "source_title": "日 토픽스 지수 56년만에 대수술…종목 40% 줄이는 이유",
       "telegram_core_fact": "일본거래소그룹(JPX)은 일본 대표 주가지수 토픽스(TOPIX) 편입 종목 수를 약 40% 줄이는 대규모 개편안을 발표했다. 니혼게이자이(닛케이)신문에 따르면 도쿄증권거래소를 운영하는 JPX는 10월 말부터 토픽스의 편입 종목 수를 현재 1636개사에서 986개사로 줄이는 대규모 개편 계획을 밝혔다.",
       "title": "日 토픽스 지수 56년만에 대수술…종목 40% 줄이는 이유"
+    },
+    "fact:3fcce3d913b1d933357ca6a6": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170953",
+      "source": "매일경제",
+      "source_body_digest": "86273171042b5706eb61b5393201675744bd5917c3fc2630512e767ee29fda2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cadb7ce343a93620cae885a902b014a92506c1d9bb16b3bc4f69ad99f9f7ffe9",
+      "source_fact_keys": [
+        "source_fact:v1:0cb91f6e5fe76ddfa8c0d23652ec0798d27941cef5175749de9027f3681b7c4a",
+        "source_fact:v1:4c87a830172707c511d29f673d792782ded4a6f980f6d57cdc166c77155f6c36"
+      ],
+      "source_published_kst": "2026-10-07T22:21+09:00",
+      "source_title": "그린서클디카보나이즈, AI 데이터센터 냉각 진출 발표에도 구체성 부족 부각",
+      "telegram_core_fact": "AI 데이터센터 액체냉각 시장 진출 계획을 발표했지만 계약, 투자 규모, 출시 일정이 공개되지 않았고 초기 협의 단계에 머물러 있습니다. 매출 기여 시점이 불확실해 실적 영향이 제한적이라는 평가가 나오며 실망 매물이 나온 것으로 보입니다.",
+      "title": "그린서클디카보나이즈, AI 데이터센터 냉각 진출 발표에도 구체성 부족 부각"
     },
     "fact:3fcfa6a062aa5a077aeb7be4": {
       "first_seen_kst": "2026-10-07T17:34:38+09:00",
@@ -26416,6 +26759,36 @@
       ],
       "source_published_kst": "2026-10-07T12:00+09:00",
       "title": "SK에너지·현대오일뱅크 44조 정유 담합 심의 착수…과징금 최대 4.6조"
+    },
+    "fact:890e3b8e22998e24096f74ab": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01302166645610952",
+      "source": "이데일리",
+      "source_body_digest": "b34bbe668ea15b10c08868434da1d7eb34739d9fafd28f2eb1c2c3ac00495615",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5619b99f4bda6dd065b55663ef46a6121c64daf9335a279223ca54368755398c",
+      "source_fact_keys": [
+        "source_fact:v1:0cd784221c665990a3e7e6f10e0e5418dabb426fc4d8b9a2b770e86661858551",
+        "source_fact:v1:1d45edaf371d81cc044387aeb005974e9c53d63b32d71dfe6185fba4a9904687",
+        "source_fact:v1:25f27dab6f79ca3191ec3588cef0339d7e3058c1cc1721ee2544c36c72aea91b",
+        "source_fact:v1:323103442fc5acc1717aeb40e1a6f28a487a28c2149263361196fde329326768",
+        "source_fact:v1:3bedeb6d1ff1f1225af1db2b6d3924ce7aefca7b2af3595baf0c64fd4664e6e8",
+        "source_fact:v1:405e88213b2250718da19bc49279984f6c8a33c61f9c712c7a946c119ef79be5",
+        "source_fact:v1:446055178f80f1311956e4d25a2b4c6e46746dc4505b9f60d01a228b98bb413d",
+        "source_fact:v1:804613ab67a8ae29466265065c2be2444eefc7bf71dc44aa7fc0cf5c2d73c8bd",
+        "source_fact:v1:841dfa70de052bd84690b0eec657c00d32a00746c8f411fa8a7a9a0ab4473330",
+        "source_fact:v1:c343e2c82bab37ae62be7507c20f8128257f2d86dbb20bc91f85f39d06e8acbf",
+        "source_fact:v1:e441008ce6e85cbfb739745ebc30962cd692a480f8f0765a5758d05b05121f18",
+        "source_fact:v1:fdc4a9041764b65f4fb64dbb82f1758f61804796d2f445eb4f5b61ecaa2d507b"
+      ],
+      "source_published_kst": "2026-10-08T03:10+09:00",
+      "source_title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\"",
+      "telegram_core_fact": "연준이 7일(현지시간) 공개한 9월 15~16일 연방공개시장위원회(FOMC) 의사록에 따르면 참석자 대부분은 향후 통화정책과 관련해 “연말까지 기준금리 목표범위를 한 차례 더 인상하는 것이 적절할 가능성이 높다”고 평가했다.",
+      "title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\""
     },
     "fact:89150a99a4dd083aadeb8296": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
@@ -40414,6 +40787,32 @@
       ],
       "source_published_kst": "2026-10-07T12:02+09:00",
       "title": "우크라 \"한국이 러시아 도왔다\"…외신 인용 韓비판 | 연합뉴스"
+    },
+    "link:14f80bc4387a31b3e220a8f1": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895232",
+      "source": "헤럴드경제",
+      "source_body_digest": "df995e11642fc7707a2306fe55bd16bfb3c16f28a8da435c2d2587802513b494",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d5099adef4f7a8360d8e05288b6fb55bd68cfd1a747a45529b853026f3b09db",
+      "source_fact_keys": [
+        "source_fact:v1:594961b2dfe60fefb0cba8c81f4b57d92a22d8145b729c744bbc3564e3885452",
+        "source_fact:v1:8576288dd9824545078526fef9b98699a48703f4204f75867847fd40d8c0ae10",
+        "source_fact:v1:979cc8609a71f27cd5a60dfd378f781d1d3133ca59c6821893b2e57ef0e97bcb",
+        "source_fact:v1:d370488cb6da369d701e512ad4bdfc8298c69e525c522d5ceb19aa5d5aee6e21",
+        "source_fact:v1:d8c2cdfbf3688d00f45a686c3489ff204ee43b186d7457062bbd13dc3014c5ac",
+        "source_fact:v1:dc6145d91dce8523a7632cff49b5c43a1358ac2a316ceb3fbf8aa59c99af3a6f",
+        "source_fact:v1:dc6183e2452024b2c8372e398276ea3bd50fbb4ded61a699fc8b0c072f80a051",
+        "source_fact:v1:e9212f03a3876e75dbfc0b593ce138e70f5dcfeeb46290a1bec3964445abd86b"
+      ],
+      "source_published_kst": "2026-10-07T18:40+09:00",
+      "source_title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]",
+      "telegram_core_fact": "김세빈 유안타증권 연구원은 “지수 전체의 이익추정치 개선보다 반도체 소부장과 기판, 통신장비 등 일부 IT 업종과 테마 중심의 상승”이라며 “지수 추격보다 실적과 매출 추정치가 실제로 올라오는 업종으로 압축할 필요가 있다”고 조언했다.",
+      "title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]"
     },
     "link:1504c6c750a0f57fb06d1e30": {
       "first_seen_kst": "2026-10-07T17:47:45+09:00",
@@ -60721,6 +61120,26 @@
       "source_event_identity": "",
       "title": "스노우플레이크, 35억달러 전환사채 발행 추진..2027년물 환매"
     },
+    "link:94f2547684190aa367c53c10": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170953",
+      "source": "매일경제",
+      "source_body_digest": "86273171042b5706eb61b5393201675744bd5917c3fc2630512e767ee29fda2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cadb7ce343a93620cae885a902b014a92506c1d9bb16b3bc4f69ad99f9f7ffe9",
+      "source_fact_keys": [
+        "source_fact:v1:0cb91f6e5fe76ddfa8c0d23652ec0798d27941cef5175749de9027f3681b7c4a",
+        "source_fact:v1:4c87a830172707c511d29f673d792782ded4a6f980f6d57cdc166c77155f6c36"
+      ],
+      "source_published_kst": "2026-10-07T22:21+09:00",
+      "source_title": "그린서클디카보나이즈, AI 데이터센터 냉각 진출 발표에도 구체성 부족 부각",
+      "telegram_core_fact": "AI 데이터센터 액체냉각 시장 진출 계획을 발표했지만 계약, 투자 규모, 출시 일정이 공개되지 않았고 초기 협의 단계에 머물러 있습니다. 매출 기여 시점이 불확실해 실적 영향이 제한적이라는 평가가 나오며 실망 매물이 나온 것으로 보입니다.",
+      "title": "그린서클디카보나이즈, AI 데이터센터 냉각 진출 발표에도 구체성 부족 부각"
+    },
     "link:94fc2d79f7abeabcb2d07434": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
       "lanes": {
@@ -61951,6 +62370,36 @@
       ],
       "source_published_kst": "2026-10-07T06:22+09:00",
       "title": "“러시아 숨통 틔워줬다”…우크라, 韓 ‘석유 공급’ 공개 저격"
+    },
+    "link:9d4c3db300d1431e7f970afc": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01302166645610952",
+      "source": "이데일리",
+      "source_body_digest": "b34bbe668ea15b10c08868434da1d7eb34739d9fafd28f2eb1c2c3ac00495615",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5619b99f4bda6dd065b55663ef46a6121c64daf9335a279223ca54368755398c",
+      "source_fact_keys": [
+        "source_fact:v1:0cd784221c665990a3e7e6f10e0e5418dabb426fc4d8b9a2b770e86661858551",
+        "source_fact:v1:1d45edaf371d81cc044387aeb005974e9c53d63b32d71dfe6185fba4a9904687",
+        "source_fact:v1:25f27dab6f79ca3191ec3588cef0339d7e3058c1cc1721ee2544c36c72aea91b",
+        "source_fact:v1:323103442fc5acc1717aeb40e1a6f28a487a28c2149263361196fde329326768",
+        "source_fact:v1:3bedeb6d1ff1f1225af1db2b6d3924ce7aefca7b2af3595baf0c64fd4664e6e8",
+        "source_fact:v1:405e88213b2250718da19bc49279984f6c8a33c61f9c712c7a946c119ef79be5",
+        "source_fact:v1:446055178f80f1311956e4d25a2b4c6e46746dc4505b9f60d01a228b98bb413d",
+        "source_fact:v1:804613ab67a8ae29466265065c2be2444eefc7bf71dc44aa7fc0cf5c2d73c8bd",
+        "source_fact:v1:841dfa70de052bd84690b0eec657c00d32a00746c8f411fa8a7a9a0ab4473330",
+        "source_fact:v1:c343e2c82bab37ae62be7507c20f8128257f2d86dbb20bc91f85f39d06e8acbf",
+        "source_fact:v1:e441008ce6e85cbfb739745ebc30962cd692a480f8f0765a5758d05b05121f18",
+        "source_fact:v1:fdc4a9041764b65f4fb64dbb82f1758f61804796d2f445eb4f5b61ecaa2d507b"
+      ],
+      "source_published_kst": "2026-10-08T03:10+09:00",
+      "source_title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\"",
+      "telegram_core_fact": "연준이 7일(현지시간) 공개한 9월 15~16일 연방공개시장위원회(FOMC) 의사록에 따르면 참석자 대부분은 향후 통화정책과 관련해 “연말까지 기준금리 목표범위를 한 차례 더 인상하는 것이 적절할 가능성이 높다”고 평가했다.",
+      "title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\""
     },
     "link:9d525d9c9a8c21b37875669c": {
       "first_seen_kst": "2026-09-22T06:33:14+09:00",
@@ -69720,6 +70169,30 @@
       "telegram_core_fact": "맥주 부문 순매출은 전년비 5% 증가한 24억7000만달러를 기록했으며 출하량은 5.5% 늘었다.",
       "title": "[美특징주]컨스텔레이션 브랜즈, 맥주 1위 유지에도 가이던스 하회에 개장전 5%↓"
     },
+    "link:d012f65cf9268c4c629a8fab": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633582",
+      "source": "이투데이",
+      "source_body_digest": "1ca7eb2cac17c36b9b558d8d67af0dd4623e63425a6a6e10995312ae188b5fc7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f536ebc461e62fcfcd99cf9c229928cb0fc329e662288bcc6780a9c4bca44992",
+      "source_fact_keys": [
+        "source_fact:v1:1ed086871b6d966f9828426c96a6321d4470a40ae876806734b8998e4834fc29",
+        "source_fact:v1:3b12eafcb3155a94716a356e10527eb0ebf600eb1618ec9ea75e6ac8698fd359",
+        "source_fact:v1:64486ca8a34af119f907efece4b3b0317fbde93fabe16c703677bd936c721cbb",
+        "source_fact:v1:b718169f6a338d864f2780345562ef388c45cfb7655f4295e8d4f17ee8fe87d8",
+        "source_fact:v1:d70b3a2120c42ece24483be5f07b8875b7a58ac1a9fdec176f7579d264ddd60c",
+        "source_fact:v1:e8539b94567508b2ffd446525bcb95454f4a049411d1ddcebdc9e2dbcdaf9ff7"
+      ],
+      "source_published_kst": "2026-10-07T18:01+09:00",
+      "source_title": "“현대지에프홀딩스, 자사주 소각‧배당수익 확대로 주주환원 강화”",
+      "telegram_core_fact": "현대지에프홀딩스는 이달 중 자사주 잔여 물량을 집중적으로 매입한 뒤 1000억원 규모, 발행주식의 약 4.0%에 해당하는 자사주를 11~12월 중 전량 소각다.",
+      "title": "“현대지에프홀딩스, 자사주 소각‧배당수익 확대로 주주환원 강화”"
+    },
     "link:d015fcba5e971af647e83887": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
       "lanes": {
@@ -71519,6 +71992,28 @@
       "source_published_kst": "2026-10-06T10:11+09:00",
       "title": "세아베스틸, 로봇 감속기용 특수강 국산화…양산 본격화"
     },
+    "link:db3023f05243ce3eb2adda8b": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008001751099",
+      "source": "연합뉴스",
+      "source_body_digest": "f239b79f24727ec4475ba2e3f5e13c0724e26b71a3da743bcd00d2d00c84d324",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d08fe7fe283d2233afd1c3303d216f71d9703bb353ebbee712b37e31339aaa94",
+      "source_fact_keys": [
+        "source_fact:v1:04aa94072d3dcec4d3e60948d5a1088f35ed231bb7713617e3208423e92bbf19",
+        "source_fact:v1:357c29abbdc710e4740dae7a17b0f9652864c354dc87fd4d120496f2c6d25508",
+        "source_fact:v1:9b406dbedfd35360dd0180560c9604ba5f8a7d3768ad402c8aea80e7297c3a31",
+        "source_fact:v1:cce36d3ae7f4795af22f0b25c12cd8aca25f0e97367a8c021cfdb666d6921ede"
+      ],
+      "source_published_kst": "2026-10-08T03:39+09:00",
+      "source_title": "사우디 \"리야드·아브하 공항서 3명 사망\"…후티 잇단 공습 주장(종합) | 연합뉴스",
+      "telegram_core_fact": "예멘 정부군과 사우디 주도 연합군이 지난 4일 후티가 장악한 영토를 탈환하기 위한 '예멘의 새벽' 작전을 선언하고 대규모 공세에 나서자 후티는 이후 사우디 본토의 공항과 정유시설을 탄도미사일과 드론으로 잇달아 공격했다고 밝히고 있다.",
+      "title": "사우디 \"리야드·아브하 공항서 3명 사망\"…후티 잇단 공습 주장(종합) | 연합뉴스"
+    },
     "link:db3c1793085e7e44a05015e8": {
       "first_seen_kst": "2026-10-07T18:58:51+09:00",
       "lanes": {
@@ -72215,6 +72710,31 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T12:53+09:00",
       "title": "K-항공우주, 글로벌 공급망 올라탄다… KOTRA 상담회 성황"
+    },
+    "link:e0820d4dc8d4ed80cefd9b69": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675185",
+      "source": "블로터",
+      "source_body_digest": "7ee5a39ea152ad9168853de824ed3ac1898aaae81a7d1c5ff5656665d877acdf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f449e9a06ebcb07642554e5e2a2995a97f5c4d6270347c075d7e6cd792893cfc",
+      "source_fact_keys": [
+        "source_fact:v1:731b952e75985582be2f2532aded5daee93cb6ee88b2f77f5350c519542d6c3f",
+        "source_fact:v1:8a9d91841015ef07f03d3cc7bcf2bfc5363b22b77118c54920d9afa78eba7520",
+        "source_fact:v1:95b3c1b3ef788339bf4b3bf9da078afff7166bb437b54a0208ac7a2a5e625d80",
+        "source_fact:v1:9f545c71c46b323a15b242dc75f736faa5b950e3bbffb9b1ae96b94ba2d2961c",
+        "source_fact:v1:cdf46f15affef72b534fa23e597fe52947971064646c4540e3cfa5ed0cb533ff",
+        "source_fact:v1:cfd870c4ab690298ea199a891a20a8aa5c19924587f3bd221f709002ef7eb0c7",
+        "source_fact:v1:d08776aadbbe358e4b5437355674f99a6d24db138003a6a2486dbaa958944359"
+      ],
+      "source_published_kst": "2026-10-07T13:43+09:00",
+      "source_title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배",
+      "telegram_core_fact": "파라다이스가 공모 회사채 수요예측에서 모집액의 3.4배에 달하는 투자 수요를 확보하며 2년 연속 흥행에 성공했다. 파라다이스에 따르면 회사는 지난 6일 총 600억원 공모 회사채 발행을 위한 수요예측을 실시한 결과 모집액의 3.42배인 총 2050억원의 주문이 접수됐다.",
+      "title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배"
     },
     "link:e098afc2c28d6c5037f98f9c": {
       "first_seen_kst": "2026-10-07T00:38:27+09:00",
@@ -75210,6 +75730,23 @@
       "source": "이데일리",
       "title": "[美특징주]브로드컴, 앤스로픽에 최대 420억달러 금융 지원...AI 동맹 강화"
     },
+    "link:f332682ab685642bdbd24391": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170996",
+      "source": "매일경제",
+      "source_body_digest": "b2320332c6cdc4466ce107b5889e21b686a55bcfc2fa9787c056293f93551d98",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T01:50+09:00",
+      "source_title": "고고로, 6200만 달러 규모 신주 발행 소식에 지분 희석 우려 부각",
+      "telegram_core_fact": "주당 2.48달러에 약 6180만 달러 신주 발행이 추진되면서 기존 주주의 지분 희석 우려가 커졌습니다. 발행가가 직전 주가보다 낮은 점도 부담이며, 이사 지배 법인 등 최대주주 의존도 높아졌습니다.",
+      "title": "고고로, 6200만 달러 규모 신주 발행 소식에 지분 희석 우려 부각"
+    },
     "link:f34865a26ff043467684eec4": {
       "first_seen_kst": "2026-09-30T23:32:53+09:00",
       "lanes": {
@@ -77680,6 +78217,28 @@
       "link": "https://www.mk.co.kr/news/economy/12166434",
       "source": "매일경제",
       "title": "“긴축의 시대 투자로 정면돌파” … 서울머니쇼+에 초대합니다"
+    },
+    "original:037553d13b952e29aa7c3e21": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008001751099",
+      "source": "연합뉴스",
+      "source_body_digest": "f239b79f24727ec4475ba2e3f5e13c0724e26b71a3da743bcd00d2d00c84d324",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d08fe7fe283d2233afd1c3303d216f71d9703bb353ebbee712b37e31339aaa94",
+      "source_fact_keys": [
+        "source_fact:v1:04aa94072d3dcec4d3e60948d5a1088f35ed231bb7713617e3208423e92bbf19",
+        "source_fact:v1:357c29abbdc710e4740dae7a17b0f9652864c354dc87fd4d120496f2c6d25508",
+        "source_fact:v1:9b406dbedfd35360dd0180560c9604ba5f8a7d3768ad402c8aea80e7297c3a31",
+        "source_fact:v1:cce36d3ae7f4795af22f0b25c12cd8aca25f0e97367a8c021cfdb666d6921ede"
+      ],
+      "source_published_kst": "2026-10-08T03:39+09:00",
+      "source_title": "사우디 \"리야드·아브하 공항서 3명 사망\"…후티 잇단 공습 주장(종합) | 연합뉴스",
+      "telegram_core_fact": "예멘 정부군과 사우디 주도 연합군이 지난 4일 후티가 장악한 영토를 탈환하기 위한 '예멘의 새벽' 작전을 선언하고 대규모 공세에 나서자 후티는 이후 사우디 본토의 공항과 정유시설을 탄도미사일과 드론으로 잇달아 공격했다고 밝히고 있다.",
+      "title": "사우디 \"리야드·아브하 공항서 3명 사망\"…후티 잇단 공습 주장(종합) | 연합뉴스"
     },
     "original:03a5c15e8c5f1bf6ade7ecf9": {
       "first_seen_kst": "2026-10-06T19:10:36+09:00",
@@ -83046,6 +83605,30 @@
       "source_published_kst": "2026-10-06T09:35+09:00",
       "title": "iM증권, 국내 주식 소수점 거래 서비스 개시"
     },
+    "original:2863d7720a68c06d9db82f68": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633582",
+      "source": "이투데이",
+      "source_body_digest": "1ca7eb2cac17c36b9b558d8d67af0dd4623e63425a6a6e10995312ae188b5fc7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f536ebc461e62fcfcd99cf9c229928cb0fc329e662288bcc6780a9c4bca44992",
+      "source_fact_keys": [
+        "source_fact:v1:1ed086871b6d966f9828426c96a6321d4470a40ae876806734b8998e4834fc29",
+        "source_fact:v1:3b12eafcb3155a94716a356e10527eb0ebf600eb1618ec9ea75e6ac8698fd359",
+        "source_fact:v1:64486ca8a34af119f907efece4b3b0317fbde93fabe16c703677bd936c721cbb",
+        "source_fact:v1:b718169f6a338d864f2780345562ef388c45cfb7655f4295e8d4f17ee8fe87d8",
+        "source_fact:v1:d70b3a2120c42ece24483be5f07b8875b7a58ac1a9fdec176f7579d264ddd60c",
+        "source_fact:v1:e8539b94567508b2ffd446525bcb95454f4a049411d1ddcebdc9e2dbcdaf9ff7"
+      ],
+      "source_published_kst": "2026-10-07T18:01+09:00",
+      "source_title": "“현대지에프홀딩스, 자사주 소각‧배당수익 확대로 주주환원 강화”",
+      "telegram_core_fact": "현대지에프홀딩스는 이달 중 자사주 잔여 물량을 집중적으로 매입한 뒤 1000억원 규모, 발행주식의 약 4.0%에 해당하는 자사주를 11~12월 중 전량 소각다.",
+      "title": "“현대지에프홀딩스, 자사주 소각‧배당수익 확대로 주주환원 강화”"
+    },
     "original:2873f2703bb1cee392f31568": {
       "first_seen_kst": "2026-10-04T17:14:34+09:00",
       "lanes": {
@@ -83354,6 +83937,36 @@
       ],
       "source_published_kst": "2026-10-06T11:01+09:00",
       "title": "자동차 화면용 강화유리 수입승인 없앤다…디스플레이 규제 개선"
+    },
+    "original:2af2ec21ca8a1cd2073f239d": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01302166645610952",
+      "source": "이데일리",
+      "source_body_digest": "b34bbe668ea15b10c08868434da1d7eb34739d9fafd28f2eb1c2c3ac00495615",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5619b99f4bda6dd065b55663ef46a6121c64daf9335a279223ca54368755398c",
+      "source_fact_keys": [
+        "source_fact:v1:0cd784221c665990a3e7e6f10e0e5418dabb426fc4d8b9a2b770e86661858551",
+        "source_fact:v1:1d45edaf371d81cc044387aeb005974e9c53d63b32d71dfe6185fba4a9904687",
+        "source_fact:v1:25f27dab6f79ca3191ec3588cef0339d7e3058c1cc1721ee2544c36c72aea91b",
+        "source_fact:v1:323103442fc5acc1717aeb40e1a6f28a487a28c2149263361196fde329326768",
+        "source_fact:v1:3bedeb6d1ff1f1225af1db2b6d3924ce7aefca7b2af3595baf0c64fd4664e6e8",
+        "source_fact:v1:405e88213b2250718da19bc49279984f6c8a33c61f9c712c7a946c119ef79be5",
+        "source_fact:v1:446055178f80f1311956e4d25a2b4c6e46746dc4505b9f60d01a228b98bb413d",
+        "source_fact:v1:804613ab67a8ae29466265065c2be2444eefc7bf71dc44aa7fc0cf5c2d73c8bd",
+        "source_fact:v1:841dfa70de052bd84690b0eec657c00d32a00746c8f411fa8a7a9a0ab4473330",
+        "source_fact:v1:c343e2c82bab37ae62be7507c20f8128257f2d86dbb20bc91f85f39d06e8acbf",
+        "source_fact:v1:e441008ce6e85cbfb739745ebc30962cd692a480f8f0765a5758d05b05121f18",
+        "source_fact:v1:fdc4a9041764b65f4fb64dbb82f1758f61804796d2f445eb4f5b61ecaa2d507b"
+      ],
+      "source_published_kst": "2026-10-08T03:10+09:00",
+      "source_title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\"",
+      "telegram_core_fact": "연준이 7일(현지시간) 공개한 9월 15~16일 연방공개시장위원회(FOMC) 의사록에 따르면 참석자 대부분은 향후 통화정책과 관련해 “연말까지 기준금리 목표범위를 한 차례 더 인상하는 것이 적절할 가능성이 높다”고 평가했다.",
+      "title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\""
     },
     "original:2afcb84164e1b9610918773c": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
@@ -84006,6 +84619,32 @@
       "link": "https://www.hankyung.com/article/2026100210481",
       "source": "한국경제",
       "title": "中 '한 자녀 정책' 부메랑…고령층 돌봄 구멍 뚫렸다"
+    },
+    "original:2e139b3d931b63ab0af53594": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895232",
+      "source": "헤럴드경제",
+      "source_body_digest": "df995e11642fc7707a2306fe55bd16bfb3c16f28a8da435c2d2587802513b494",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d5099adef4f7a8360d8e05288b6fb55bd68cfd1a747a45529b853026f3b09db",
+      "source_fact_keys": [
+        "source_fact:v1:594961b2dfe60fefb0cba8c81f4b57d92a22d8145b729c744bbc3564e3885452",
+        "source_fact:v1:8576288dd9824545078526fef9b98699a48703f4204f75867847fd40d8c0ae10",
+        "source_fact:v1:979cc8609a71f27cd5a60dfd378f781d1d3133ca59c6821893b2e57ef0e97bcb",
+        "source_fact:v1:d370488cb6da369d701e512ad4bdfc8298c69e525c522d5ceb19aa5d5aee6e21",
+        "source_fact:v1:d8c2cdfbf3688d00f45a686c3489ff204ee43b186d7457062bbd13dc3014c5ac",
+        "source_fact:v1:dc6145d91dce8523a7632cff49b5c43a1358ac2a316ceb3fbf8aa59c99af3a6f",
+        "source_fact:v1:dc6183e2452024b2c8372e398276ea3bd50fbb4ded61a699fc8b0c072f80a051",
+        "source_fact:v1:e9212f03a3876e75dbfc0b593ce138e70f5dcfeeb46290a1bec3964445abd86b"
+      ],
+      "source_published_kst": "2026-10-07T18:40+09:00",
+      "source_title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]",
+      "telegram_core_fact": "김세빈 유안타증권 연구원은 “지수 전체의 이익추정치 개선보다 반도체 소부장과 기판, 통신장비 등 일부 IT 업종과 테마 중심의 상승”이라며 “지수 추격보다 실적과 매출 추정치가 실제로 올라오는 업종으로 압축할 필요가 있다”고 조언했다.",
+      "title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]"
     },
     "original:2e443c9635203e428e0306af": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
@@ -90814,6 +91453,23 @@
       "source_published_kst": "2026-10-05T08:57+09:00",
       "title": "토스인슈, 6개월 만에 작년 순이익 넘었다…성장세 가속"
     },
+    "original:58a041faeafda11a028de7f8": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170996",
+      "source": "매일경제",
+      "source_body_digest": "b2320332c6cdc4466ce107b5889e21b686a55bcfc2fa9787c056293f93551d98",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T01:50+09:00",
+      "source_title": "고고로, 6200만 달러 규모 신주 발행 소식에 지분 희석 우려 부각",
+      "telegram_core_fact": "주당 2.48달러에 약 6180만 달러 신주 발행이 추진되면서 기존 주주의 지분 희석 우려가 커졌습니다. 발행가가 직전 주가보다 낮은 점도 부담이며, 이사 지배 법인 등 최대주주 의존도 높아졌습니다.",
+      "title": "고고로, 6200만 달러 규모 신주 발행 소식에 지분 희석 우려 부각"
+    },
     "original:58a76e05b35cd14b423a792b": {
       "first_seen_kst": "2026-09-19T07:23:13+09:00",
       "lanes": {
@@ -91387,6 +92043,26 @@
       "link": "https://www.newsis.com/view/NISX20261001_0003811534",
       "source": "뉴시스",
       "title": "[올댓차이나] 대만 증시, 韓美 반도체 호조에 0.86%↑ 상승 마감…1주 만에 사상최고 경신"
+    },
+    "original:5cf26c767da76cc137688684": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170953",
+      "source": "매일경제",
+      "source_body_digest": "86273171042b5706eb61b5393201675744bd5917c3fc2630512e767ee29fda2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cadb7ce343a93620cae885a902b014a92506c1d9bb16b3bc4f69ad99f9f7ffe9",
+      "source_fact_keys": [
+        "source_fact:v1:0cb91f6e5fe76ddfa8c0d23652ec0798d27941cef5175749de9027f3681b7c4a",
+        "source_fact:v1:4c87a830172707c511d29f673d792782ded4a6f980f6d57cdc166c77155f6c36"
+      ],
+      "source_published_kst": "2026-10-07T22:21+09:00",
+      "source_title": "그린서클디카보나이즈, AI 데이터센터 냉각 진출 발표에도 구체성 부족 부각",
+      "telegram_core_fact": "AI 데이터센터 액체냉각 시장 진출 계획을 발표했지만 계약, 투자 규모, 출시 일정이 공개되지 않았고 초기 협의 단계에 머물러 있습니다. 매출 기여 시점이 불확실해 실적 영향이 제한적이라는 평가가 나오며 실망 매물이 나온 것으로 보입니다.",
+      "title": "그린서클디카보나이즈, AI 데이터센터 냉각 진출 발표에도 구체성 부족 부각"
     },
     "original:5d0606284326da19dcc13337": {
       "first_seen_kst": "2026-10-07T09:44:16+09:00",
@@ -93655,6 +94331,31 @@
       ],
       "source_published_kst": "2026-10-06T17:50+09:00",
       "title": "고금리 덮치자 … 국민연금, 보험株 사고 증권株 팔아"
+    },
+    "original:6d4effd573d3921dd735d7fa": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675185",
+      "source": "블로터",
+      "source_body_digest": "7ee5a39ea152ad9168853de824ed3ac1898aaae81a7d1c5ff5656665d877acdf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f449e9a06ebcb07642554e5e2a2995a97f5c4d6270347c075d7e6cd792893cfc",
+      "source_fact_keys": [
+        "source_fact:v1:731b952e75985582be2f2532aded5daee93cb6ee88b2f77f5350c519542d6c3f",
+        "source_fact:v1:8a9d91841015ef07f03d3cc7bcf2bfc5363b22b77118c54920d9afa78eba7520",
+        "source_fact:v1:95b3c1b3ef788339bf4b3bf9da078afff7166bb437b54a0208ac7a2a5e625d80",
+        "source_fact:v1:9f545c71c46b323a15b242dc75f736faa5b950e3bbffb9b1ae96b94ba2d2961c",
+        "source_fact:v1:cdf46f15affef72b534fa23e597fe52947971064646c4540e3cfa5ed0cb533ff",
+        "source_fact:v1:cfd870c4ab690298ea199a891a20a8aa5c19924587f3bd221f709002ef7eb0c7",
+        "source_fact:v1:d08776aadbbe358e4b5437355674f99a6d24db138003a6a2486dbaa958944359"
+      ],
+      "source_published_kst": "2026-10-07T13:43+09:00",
+      "source_title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배",
+      "telegram_core_fact": "파라다이스가 공모 회사채 수요예측에서 모집액의 3.4배에 달하는 투자 수요를 확보하며 2년 연속 흥행에 성공했다. 파라다이스에 따르면 회사는 지난 6일 총 600억원 공모 회사채 발행을 위한 수요예측을 실시한 결과 모집액의 3.42배인 총 2050억원의 주문이 접수됐다.",
+      "title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배"
     },
     "original:6d6c51e6fffe2b5a4326de96": {
       "first_seen_kst": "2026-09-27T12:02:47+09:00",
@@ -115969,6 +116670,36 @@
       "source_published_kst": "2026-10-05T20:21+09:00",
       "title": "퀀티넘과 서호주대학교, 호주의 양자 역량 강화를 위한 파트너십 체결"
     },
+    "source_fact:0093ddd3e89a48579a458351": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01302166645610952",
+      "source": "이데일리",
+      "source_body_digest": "b34bbe668ea15b10c08868434da1d7eb34739d9fafd28f2eb1c2c3ac00495615",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5619b99f4bda6dd065b55663ef46a6121c64daf9335a279223ca54368755398c",
+      "source_fact_keys": [
+        "source_fact:v1:0cd784221c665990a3e7e6f10e0e5418dabb426fc4d8b9a2b770e86661858551",
+        "source_fact:v1:1d45edaf371d81cc044387aeb005974e9c53d63b32d71dfe6185fba4a9904687",
+        "source_fact:v1:25f27dab6f79ca3191ec3588cef0339d7e3058c1cc1721ee2544c36c72aea91b",
+        "source_fact:v1:323103442fc5acc1717aeb40e1a6f28a487a28c2149263361196fde329326768",
+        "source_fact:v1:3bedeb6d1ff1f1225af1db2b6d3924ce7aefca7b2af3595baf0c64fd4664e6e8",
+        "source_fact:v1:405e88213b2250718da19bc49279984f6c8a33c61f9c712c7a946c119ef79be5",
+        "source_fact:v1:446055178f80f1311956e4d25a2b4c6e46746dc4505b9f60d01a228b98bb413d",
+        "source_fact:v1:804613ab67a8ae29466265065c2be2444eefc7bf71dc44aa7fc0cf5c2d73c8bd",
+        "source_fact:v1:841dfa70de052bd84690b0eec657c00d32a00746c8f411fa8a7a9a0ab4473330",
+        "source_fact:v1:c343e2c82bab37ae62be7507c20f8128257f2d86dbb20bc91f85f39d06e8acbf",
+        "source_fact:v1:e441008ce6e85cbfb739745ebc30962cd692a480f8f0765a5758d05b05121f18",
+        "source_fact:v1:fdc4a9041764b65f4fb64dbb82f1758f61804796d2f445eb4f5b61ecaa2d507b"
+      ],
+      "source_published_kst": "2026-10-08T03:10+09:00",
+      "source_title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\"",
+      "telegram_core_fact": "연준이 7일(현지시간) 공개한 9월 15~16일 연방공개시장위원회(FOMC) 의사록에 따르면 참석자 대부분은 향후 통화정책과 관련해 “연말까지 기준금리 목표범위를 한 차례 더 인상하는 것이 적절할 가능성이 높다”고 평가했다.",
+      "title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\""
+    },
     "source_fact:00a38795a99bba74a6e4c7ba": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
@@ -116127,6 +116858,30 @@
       ],
       "source_published_kst": "2026-10-06T07:10+09:00",
       "title": "5만 가구 ‘한강2’ 연계 5호선 2034년 개통할까 [교통지옥 김포 ③]"
+    },
+    "source_fact:00f9439a774fc6c971f99d1e": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633582",
+      "source": "이투데이",
+      "source_body_digest": "1ca7eb2cac17c36b9b558d8d67af0dd4623e63425a6a6e10995312ae188b5fc7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f536ebc461e62fcfcd99cf9c229928cb0fc329e662288bcc6780a9c4bca44992",
+      "source_fact_keys": [
+        "source_fact:v1:1ed086871b6d966f9828426c96a6321d4470a40ae876806734b8998e4834fc29",
+        "source_fact:v1:3b12eafcb3155a94716a356e10527eb0ebf600eb1618ec9ea75e6ac8698fd359",
+        "source_fact:v1:64486ca8a34af119f907efece4b3b0317fbde93fabe16c703677bd936c721cbb",
+        "source_fact:v1:b718169f6a338d864f2780345562ef388c45cfb7655f4295e8d4f17ee8fe87d8",
+        "source_fact:v1:d70b3a2120c42ece24483be5f07b8875b7a58ac1a9fdec176f7579d264ddd60c",
+        "source_fact:v1:e8539b94567508b2ffd446525bcb95454f4a049411d1ddcebdc9e2dbcdaf9ff7"
+      ],
+      "source_published_kst": "2026-10-07T18:01+09:00",
+      "source_title": "“현대지에프홀딩스, 자사주 소각‧배당수익 확대로 주주환원 강화”",
+      "telegram_core_fact": "현대지에프홀딩스는 이달 중 자사주 잔여 물량을 집중적으로 매입한 뒤 1000억원 규모, 발행주식의 약 4.0%에 해당하는 자사주를 11~12월 중 전량 소각다.",
+      "title": "“현대지에프홀딩스, 자사주 소각‧배당수익 확대로 주주환원 강화”"
     },
     "source_fact:0129ade90352cbacb570a83b": {
       "first_seen_kst": "2026-10-07T17:10:43+09:00",
@@ -122813,6 +123568,26 @@
       "source_published_kst": "2026-10-07T12:19+09:00",
       "title": "SK에너지·현대오일뱅크 44조 정유 담합 심의…과징금 최대 4.6조 가능(종합)"
     },
+    "source_fact:12ec72f8a53aeddd96cb9865": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170953",
+      "source": "매일경제",
+      "source_body_digest": "86273171042b5706eb61b5393201675744bd5917c3fc2630512e767ee29fda2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cadb7ce343a93620cae885a902b014a92506c1d9bb16b3bc4f69ad99f9f7ffe9",
+      "source_fact_keys": [
+        "source_fact:v1:0cb91f6e5fe76ddfa8c0d23652ec0798d27941cef5175749de9027f3681b7c4a",
+        "source_fact:v1:4c87a830172707c511d29f673d792782ded4a6f980f6d57cdc166c77155f6c36"
+      ],
+      "source_published_kst": "2026-10-07T22:21+09:00",
+      "source_title": "그린서클디카보나이즈, AI 데이터센터 냉각 진출 발표에도 구체성 부족 부각",
+      "telegram_core_fact": "AI 데이터센터 액체냉각 시장 진출 계획을 발표했지만 계약, 투자 규모, 출시 일정이 공개되지 않았고 초기 협의 단계에 머물러 있습니다. 매출 기여 시점이 불확실해 실적 영향이 제한적이라는 평가가 나오며 실망 매물이 나온 것으로 보입니다.",
+      "title": "그린서클디카보나이즈, AI 데이터센터 냉각 진출 발표에도 구체성 부족 부각"
+    },
     "source_fact:12fa82c25d07743762141083": {
       "first_seen_kst": "2026-10-07T14:56:20+09:00",
       "lanes": {
@@ -124474,6 +125249,32 @@
       "source_published_kst": "2026-10-06T12:05+09:00",
       "title": "[2026 국감]호남반도체 결정 주체, 자료 불일치…김정관 “확인하겠다”"
     },
+    "source_fact:175f357247ecb4245683aa6e": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895232",
+      "source": "헤럴드경제",
+      "source_body_digest": "df995e11642fc7707a2306fe55bd16bfb3c16f28a8da435c2d2587802513b494",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d5099adef4f7a8360d8e05288b6fb55bd68cfd1a747a45529b853026f3b09db",
+      "source_fact_keys": [
+        "source_fact:v1:594961b2dfe60fefb0cba8c81f4b57d92a22d8145b729c744bbc3564e3885452",
+        "source_fact:v1:8576288dd9824545078526fef9b98699a48703f4204f75867847fd40d8c0ae10",
+        "source_fact:v1:979cc8609a71f27cd5a60dfd378f781d1d3133ca59c6821893b2e57ef0e97bcb",
+        "source_fact:v1:d370488cb6da369d701e512ad4bdfc8298c69e525c522d5ceb19aa5d5aee6e21",
+        "source_fact:v1:d8c2cdfbf3688d00f45a686c3489ff204ee43b186d7457062bbd13dc3014c5ac",
+        "source_fact:v1:dc6145d91dce8523a7632cff49b5c43a1358ac2a316ceb3fbf8aa59c99af3a6f",
+        "source_fact:v1:dc6183e2452024b2c8372e398276ea3bd50fbb4ded61a699fc8b0c072f80a051",
+        "source_fact:v1:e9212f03a3876e75dbfc0b593ce138e70f5dcfeeb46290a1bec3964445abd86b"
+      ],
+      "source_published_kst": "2026-10-07T18:40+09:00",
+      "source_title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]",
+      "telegram_core_fact": "김세빈 유안타증권 연구원은 “지수 전체의 이익추정치 개선보다 반도체 소부장과 기판, 통신장비 등 일부 IT 업종과 테마 중심의 상승”이라며 “지수 추격보다 실적과 매출 추정치가 실제로 올라오는 업종으로 압축할 필요가 있다”고 조언했다.",
+      "title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]"
+    },
     "source_fact:1767eca38ceb232ffdc8f0fd": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
       "lanes": {
@@ -124498,6 +125299,31 @@
       ],
       "source_published_kst": "2026-10-05T22:06+09:00",
       "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
+    },
+    "source_fact:176f59af77db64506feaaf04": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675185",
+      "source": "블로터",
+      "source_body_digest": "7ee5a39ea152ad9168853de824ed3ac1898aaae81a7d1c5ff5656665d877acdf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f449e9a06ebcb07642554e5e2a2995a97f5c4d6270347c075d7e6cd792893cfc",
+      "source_fact_keys": [
+        "source_fact:v1:731b952e75985582be2f2532aded5daee93cb6ee88b2f77f5350c519542d6c3f",
+        "source_fact:v1:8a9d91841015ef07f03d3cc7bcf2bfc5363b22b77118c54920d9afa78eba7520",
+        "source_fact:v1:95b3c1b3ef788339bf4b3bf9da078afff7166bb437b54a0208ac7a2a5e625d80",
+        "source_fact:v1:9f545c71c46b323a15b242dc75f736faa5b950e3bbffb9b1ae96b94ba2d2961c",
+        "source_fact:v1:cdf46f15affef72b534fa23e597fe52947971064646c4540e3cfa5ed0cb533ff",
+        "source_fact:v1:cfd870c4ab690298ea199a891a20a8aa5c19924587f3bd221f709002ef7eb0c7",
+        "source_fact:v1:d08776aadbbe358e4b5437355674f99a6d24db138003a6a2486dbaa958944359"
+      ],
+      "source_published_kst": "2026-10-07T13:43+09:00",
+      "source_title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배",
+      "telegram_core_fact": "파라다이스가 공모 회사채 수요예측에서 모집액의 3.4배에 달하는 투자 수요를 확보하며 2년 연속 흥행에 성공했다. 파라다이스에 따르면 회사는 지난 6일 총 600억원 공모 회사채 발행을 위한 수요예측을 실시한 결과 모집액의 3.42배인 총 2050억원의 주문이 접수됐다.",
+      "title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배"
     },
     "source_fact:1778ace232634ccc722abe8f": {
       "first_seen_kst": "2026-10-07T11:43:24+09:00",
@@ -126004,6 +126830,32 @@
       ],
       "source_published_kst": "2026-10-06T14:04+09:00",
       "title": "세아베스틸, 로봇 감속기 소재 시장 진출…휴머노이드까지 확대"
+    },
+    "source_fact:1ba77729c7a117737952f0ef": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895232",
+      "source": "헤럴드경제",
+      "source_body_digest": "df995e11642fc7707a2306fe55bd16bfb3c16f28a8da435c2d2587802513b494",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d5099adef4f7a8360d8e05288b6fb55bd68cfd1a747a45529b853026f3b09db",
+      "source_fact_keys": [
+        "source_fact:v1:594961b2dfe60fefb0cba8c81f4b57d92a22d8145b729c744bbc3564e3885452",
+        "source_fact:v1:8576288dd9824545078526fef9b98699a48703f4204f75867847fd40d8c0ae10",
+        "source_fact:v1:979cc8609a71f27cd5a60dfd378f781d1d3133ca59c6821893b2e57ef0e97bcb",
+        "source_fact:v1:d370488cb6da369d701e512ad4bdfc8298c69e525c522d5ceb19aa5d5aee6e21",
+        "source_fact:v1:d8c2cdfbf3688d00f45a686c3489ff204ee43b186d7457062bbd13dc3014c5ac",
+        "source_fact:v1:dc6145d91dce8523a7632cff49b5c43a1358ac2a316ceb3fbf8aa59c99af3a6f",
+        "source_fact:v1:dc6183e2452024b2c8372e398276ea3bd50fbb4ded61a699fc8b0c072f80a051",
+        "source_fact:v1:e9212f03a3876e75dbfc0b593ce138e70f5dcfeeb46290a1bec3964445abd86b"
+      ],
+      "source_published_kst": "2026-10-07T18:40+09:00",
+      "source_title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]",
+      "telegram_core_fact": "김세빈 유안타증권 연구원은 “지수 전체의 이익추정치 개선보다 반도체 소부장과 기판, 통신장비 등 일부 IT 업종과 테마 중심의 상승”이라며 “지수 추격보다 실적과 매출 추정치가 실제로 올라오는 업종으로 압축할 필요가 있다”고 조언했다.",
+      "title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]"
     },
     "source_fact:1badefcf865de0f1011a1b26": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
@@ -127693,6 +128545,31 @@
       "source_published_kst": "2026-10-06T04:55+09:00",
       "title": "[美특징주]세레브라스, 올트먼 “긴밀한 파트너” 발언에 주가10%↑…엔비디아 우려 완화"
     },
+    "source_fact:200e31e62a26a3a6155b4a4c": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675185",
+      "source": "블로터",
+      "source_body_digest": "7ee5a39ea152ad9168853de824ed3ac1898aaae81a7d1c5ff5656665d877acdf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f449e9a06ebcb07642554e5e2a2995a97f5c4d6270347c075d7e6cd792893cfc",
+      "source_fact_keys": [
+        "source_fact:v1:731b952e75985582be2f2532aded5daee93cb6ee88b2f77f5350c519542d6c3f",
+        "source_fact:v1:8a9d91841015ef07f03d3cc7bcf2bfc5363b22b77118c54920d9afa78eba7520",
+        "source_fact:v1:95b3c1b3ef788339bf4b3bf9da078afff7166bb437b54a0208ac7a2a5e625d80",
+        "source_fact:v1:9f545c71c46b323a15b242dc75f736faa5b950e3bbffb9b1ae96b94ba2d2961c",
+        "source_fact:v1:cdf46f15affef72b534fa23e597fe52947971064646c4540e3cfa5ed0cb533ff",
+        "source_fact:v1:cfd870c4ab690298ea199a891a20a8aa5c19924587f3bd221f709002ef7eb0c7",
+        "source_fact:v1:d08776aadbbe358e4b5437355674f99a6d24db138003a6a2486dbaa958944359"
+      ],
+      "source_published_kst": "2026-10-07T13:43+09:00",
+      "source_title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배",
+      "telegram_core_fact": "파라다이스가 공모 회사채 수요예측에서 모집액의 3.4배에 달하는 투자 수요를 확보하며 2년 연속 흥행에 성공했다. 파라다이스에 따르면 회사는 지난 6일 총 600억원 공모 회사채 발행을 위한 수요예측을 실시한 결과 모집액의 3.42배인 총 2050억원의 주문이 접수됐다.",
+      "title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배"
+    },
     "source_fact:201e92dffeb2d828d1f1a5c2": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
       "lanes": {
@@ -128418,6 +129295,31 @@
       "source_title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이",
       "telegram_core_fact": "코스피가 외국인의 거센 매도 폭탄과 미국 국채금리 반등, 주요 기업 실적에 대한 경계감에 밀려 2% 가까이 급락하며 간신히 6,800선을 지켜냈다.",
       "title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이"
+    },
+    "source_fact:21e8a509de294c020c9a40fe": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675185",
+      "source": "블로터",
+      "source_body_digest": "7ee5a39ea152ad9168853de824ed3ac1898aaae81a7d1c5ff5656665d877acdf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f449e9a06ebcb07642554e5e2a2995a97f5c4d6270347c075d7e6cd792893cfc",
+      "source_fact_keys": [
+        "source_fact:v1:731b952e75985582be2f2532aded5daee93cb6ee88b2f77f5350c519542d6c3f",
+        "source_fact:v1:8a9d91841015ef07f03d3cc7bcf2bfc5363b22b77118c54920d9afa78eba7520",
+        "source_fact:v1:95b3c1b3ef788339bf4b3bf9da078afff7166bb437b54a0208ac7a2a5e625d80",
+        "source_fact:v1:9f545c71c46b323a15b242dc75f736faa5b950e3bbffb9b1ae96b94ba2d2961c",
+        "source_fact:v1:cdf46f15affef72b534fa23e597fe52947971064646c4540e3cfa5ed0cb533ff",
+        "source_fact:v1:cfd870c4ab690298ea199a891a20a8aa5c19924587f3bd221f709002ef7eb0c7",
+        "source_fact:v1:d08776aadbbe358e4b5437355674f99a6d24db138003a6a2486dbaa958944359"
+      ],
+      "source_published_kst": "2026-10-07T13:43+09:00",
+      "source_title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배",
+      "telegram_core_fact": "파라다이스가 공모 회사채 수요예측에서 모집액의 3.4배에 달하는 투자 수요를 확보하며 2년 연속 흥행에 성공했다. 파라다이스에 따르면 회사는 지난 6일 총 600억원 공모 회사채 발행을 위한 수요예측을 실시한 결과 모집액의 3.42배인 총 2050억원의 주문이 접수됐다.",
+      "title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배"
     },
     "source_fact:21fe3124d3191eb2d6b09b84": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
@@ -131820,6 +132722,36 @@
       "source_title": "네온샛 5기 모두 교신 성공…'하루 3번' 한반도 관측 군집위성 첫발(종합)",
       "telegram_core_fact": "한국형발사체 '누리호' 5차 발사로 우주에 오른 초소형군집위성 '네온샛' 2~6호 5기가 모두 지상국과 초기 교신에 성공했다.",
       "title": "네온샛 5기 모두 교신 성공…'하루 3번' 한반도 관측 군집위성 첫발(종합)"
+    },
+    "source_fact:29e5e5d1ffb96396e267b5c7": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01302166645610952",
+      "source": "이데일리",
+      "source_body_digest": "b34bbe668ea15b10c08868434da1d7eb34739d9fafd28f2eb1c2c3ac00495615",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5619b99f4bda6dd065b55663ef46a6121c64daf9335a279223ca54368755398c",
+      "source_fact_keys": [
+        "source_fact:v1:0cd784221c665990a3e7e6f10e0e5418dabb426fc4d8b9a2b770e86661858551",
+        "source_fact:v1:1d45edaf371d81cc044387aeb005974e9c53d63b32d71dfe6185fba4a9904687",
+        "source_fact:v1:25f27dab6f79ca3191ec3588cef0339d7e3058c1cc1721ee2544c36c72aea91b",
+        "source_fact:v1:323103442fc5acc1717aeb40e1a6f28a487a28c2149263361196fde329326768",
+        "source_fact:v1:3bedeb6d1ff1f1225af1db2b6d3924ce7aefca7b2af3595baf0c64fd4664e6e8",
+        "source_fact:v1:405e88213b2250718da19bc49279984f6c8a33c61f9c712c7a946c119ef79be5",
+        "source_fact:v1:446055178f80f1311956e4d25a2b4c6e46746dc4505b9f60d01a228b98bb413d",
+        "source_fact:v1:804613ab67a8ae29466265065c2be2444eefc7bf71dc44aa7fc0cf5c2d73c8bd",
+        "source_fact:v1:841dfa70de052bd84690b0eec657c00d32a00746c8f411fa8a7a9a0ab4473330",
+        "source_fact:v1:c343e2c82bab37ae62be7507c20f8128257f2d86dbb20bc91f85f39d06e8acbf",
+        "source_fact:v1:e441008ce6e85cbfb739745ebc30962cd692a480f8f0765a5758d05b05121f18",
+        "source_fact:v1:fdc4a9041764b65f4fb64dbb82f1758f61804796d2f445eb4f5b61ecaa2d507b"
+      ],
+      "source_published_kst": "2026-10-08T03:10+09:00",
+      "source_title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\"",
+      "telegram_core_fact": "연준이 7일(현지시간) 공개한 9월 15~16일 연방공개시장위원회(FOMC) 의사록에 따르면 참석자 대부분은 향후 통화정책과 관련해 “연말까지 기준금리 목표범위를 한 차례 더 인상하는 것이 적절할 가능성이 높다”고 평가했다.",
+      "title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\""
     },
     "source_fact:29e9fb0ac085302fc5b8ddc1": {
       "first_seen_kst": "2026-10-07T05:13:11+09:00",
@@ -140100,6 +141032,36 @@
       "source_published_kst": "2026-10-06T08:46+09:00",
       "title": "“코스피, 7100만 찍으면 7700까지 간다”…장밋빛 전망 근거는? [오늘 나온 보고서]"
     },
+    "source_fact:3d666004f476e7e7201223ba": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01302166645610952",
+      "source": "이데일리",
+      "source_body_digest": "b34bbe668ea15b10c08868434da1d7eb34739d9fafd28f2eb1c2c3ac00495615",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5619b99f4bda6dd065b55663ef46a6121c64daf9335a279223ca54368755398c",
+      "source_fact_keys": [
+        "source_fact:v1:0cd784221c665990a3e7e6f10e0e5418dabb426fc4d8b9a2b770e86661858551",
+        "source_fact:v1:1d45edaf371d81cc044387aeb005974e9c53d63b32d71dfe6185fba4a9904687",
+        "source_fact:v1:25f27dab6f79ca3191ec3588cef0339d7e3058c1cc1721ee2544c36c72aea91b",
+        "source_fact:v1:323103442fc5acc1717aeb40e1a6f28a487a28c2149263361196fde329326768",
+        "source_fact:v1:3bedeb6d1ff1f1225af1db2b6d3924ce7aefca7b2af3595baf0c64fd4664e6e8",
+        "source_fact:v1:405e88213b2250718da19bc49279984f6c8a33c61f9c712c7a946c119ef79be5",
+        "source_fact:v1:446055178f80f1311956e4d25a2b4c6e46746dc4505b9f60d01a228b98bb413d",
+        "source_fact:v1:804613ab67a8ae29466265065c2be2444eefc7bf71dc44aa7fc0cf5c2d73c8bd",
+        "source_fact:v1:841dfa70de052bd84690b0eec657c00d32a00746c8f411fa8a7a9a0ab4473330",
+        "source_fact:v1:c343e2c82bab37ae62be7507c20f8128257f2d86dbb20bc91f85f39d06e8acbf",
+        "source_fact:v1:e441008ce6e85cbfb739745ebc30962cd692a480f8f0765a5758d05b05121f18",
+        "source_fact:v1:fdc4a9041764b65f4fb64dbb82f1758f61804796d2f445eb4f5b61ecaa2d507b"
+      ],
+      "source_published_kst": "2026-10-08T03:10+09:00",
+      "source_title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\"",
+      "telegram_core_fact": "연준이 7일(현지시간) 공개한 9월 15~16일 연방공개시장위원회(FOMC) 의사록에 따르면 참석자 대부분은 향후 통화정책과 관련해 “연말까지 기준금리 목표범위를 한 차례 더 인상하는 것이 적절할 가능성이 높다”고 평가했다.",
+      "title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\""
+    },
     "source_fact:3d66f398540840e6b2f51bb1": {
       "first_seen_kst": "2026-10-07T13:13:19+09:00",
       "lanes": {
@@ -142574,6 +143536,31 @@
       ],
       "source_published_kst": "2026-10-06T17:45+09:00",
       "title": "삼성전기, MLCC 또 장기계약"
+    },
+    "source_fact:43905302dd83672aafe43658": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675185",
+      "source": "블로터",
+      "source_body_digest": "7ee5a39ea152ad9168853de824ed3ac1898aaae81a7d1c5ff5656665d877acdf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f449e9a06ebcb07642554e5e2a2995a97f5c4d6270347c075d7e6cd792893cfc",
+      "source_fact_keys": [
+        "source_fact:v1:731b952e75985582be2f2532aded5daee93cb6ee88b2f77f5350c519542d6c3f",
+        "source_fact:v1:8a9d91841015ef07f03d3cc7bcf2bfc5363b22b77118c54920d9afa78eba7520",
+        "source_fact:v1:95b3c1b3ef788339bf4b3bf9da078afff7166bb437b54a0208ac7a2a5e625d80",
+        "source_fact:v1:9f545c71c46b323a15b242dc75f736faa5b950e3bbffb9b1ae96b94ba2d2961c",
+        "source_fact:v1:cdf46f15affef72b534fa23e597fe52947971064646c4540e3cfa5ed0cb533ff",
+        "source_fact:v1:cfd870c4ab690298ea199a891a20a8aa5c19924587f3bd221f709002ef7eb0c7",
+        "source_fact:v1:d08776aadbbe358e4b5437355674f99a6d24db138003a6a2486dbaa958944359"
+      ],
+      "source_published_kst": "2026-10-07T13:43+09:00",
+      "source_title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배",
+      "telegram_core_fact": "파라다이스가 공모 회사채 수요예측에서 모집액의 3.4배에 달하는 투자 수요를 확보하며 2년 연속 흥행에 성공했다. 파라다이스에 따르면 회사는 지난 6일 총 600억원 공모 회사채 발행을 위한 수요예측을 실시한 결과 모집액의 3.42배인 총 2050억원의 주문이 접수됐다.",
+      "title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배"
     },
     "source_fact:4391882c16da4a919ef54c7b": {
       "first_seen_kst": "2026-10-07T07:54:25+09:00",
@@ -146322,6 +147309,28 @@
       ],
       "source_published_kst": "2026-10-07T10:36+09:00",
       "title": "파라택시스 합병 무산…코리아-상폐 대응, 이더리움-독자 경영"
+    },
+    "source_fact:4cc443c79e5c8f5d6772b4f1": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008001751099",
+      "source": "연합뉴스",
+      "source_body_digest": "f239b79f24727ec4475ba2e3f5e13c0724e26b71a3da743bcd00d2d00c84d324",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d08fe7fe283d2233afd1c3303d216f71d9703bb353ebbee712b37e31339aaa94",
+      "source_fact_keys": [
+        "source_fact:v1:04aa94072d3dcec4d3e60948d5a1088f35ed231bb7713617e3208423e92bbf19",
+        "source_fact:v1:357c29abbdc710e4740dae7a17b0f9652864c354dc87fd4d120496f2c6d25508",
+        "source_fact:v1:9b406dbedfd35360dd0180560c9604ba5f8a7d3768ad402c8aea80e7297c3a31",
+        "source_fact:v1:cce36d3ae7f4795af22f0b25c12cd8aca25f0e97367a8c021cfdb666d6921ede"
+      ],
+      "source_published_kst": "2026-10-08T03:39+09:00",
+      "source_title": "사우디 \"리야드·아브하 공항서 3명 사망\"…후티 잇단 공습 주장(종합) | 연합뉴스",
+      "telegram_core_fact": "예멘 정부군과 사우디 주도 연합군이 지난 4일 후티가 장악한 영토를 탈환하기 위한 '예멘의 새벽' 작전을 선언하고 대규모 공세에 나서자 후티는 이후 사우디 본토의 공항과 정유시설을 탄도미사일과 드론으로 잇달아 공격했다고 밝히고 있다.",
+      "title": "사우디 \"리야드·아브하 공항서 3명 사망\"…후티 잇단 공습 주장(종합) | 연합뉴스"
     },
     "source_fact:4cf62f3dfa97de63d36c1f0b": {
       "first_seen_kst": "2026-10-06T23:19:02+09:00",
@@ -151750,6 +152759,36 @@
       "source_published_kst": "2026-10-06T11:09+09:00",
       "title": "폭염·AI에 日 전력난 비상… 노후 화력발전 수명연장 검토 | 연합뉴스"
     },
+    "source_fact:59e999b63e22312ef25e0d3c": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01302166645610952",
+      "source": "이데일리",
+      "source_body_digest": "b34bbe668ea15b10c08868434da1d7eb34739d9fafd28f2eb1c2c3ac00495615",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5619b99f4bda6dd065b55663ef46a6121c64daf9335a279223ca54368755398c",
+      "source_fact_keys": [
+        "source_fact:v1:0cd784221c665990a3e7e6f10e0e5418dabb426fc4d8b9a2b770e86661858551",
+        "source_fact:v1:1d45edaf371d81cc044387aeb005974e9c53d63b32d71dfe6185fba4a9904687",
+        "source_fact:v1:25f27dab6f79ca3191ec3588cef0339d7e3058c1cc1721ee2544c36c72aea91b",
+        "source_fact:v1:323103442fc5acc1717aeb40e1a6f28a487a28c2149263361196fde329326768",
+        "source_fact:v1:3bedeb6d1ff1f1225af1db2b6d3924ce7aefca7b2af3595baf0c64fd4664e6e8",
+        "source_fact:v1:405e88213b2250718da19bc49279984f6c8a33c61f9c712c7a946c119ef79be5",
+        "source_fact:v1:446055178f80f1311956e4d25a2b4c6e46746dc4505b9f60d01a228b98bb413d",
+        "source_fact:v1:804613ab67a8ae29466265065c2be2444eefc7bf71dc44aa7fc0cf5c2d73c8bd",
+        "source_fact:v1:841dfa70de052bd84690b0eec657c00d32a00746c8f411fa8a7a9a0ab4473330",
+        "source_fact:v1:c343e2c82bab37ae62be7507c20f8128257f2d86dbb20bc91f85f39d06e8acbf",
+        "source_fact:v1:e441008ce6e85cbfb739745ebc30962cd692a480f8f0765a5758d05b05121f18",
+        "source_fact:v1:fdc4a9041764b65f4fb64dbb82f1758f61804796d2f445eb4f5b61ecaa2d507b"
+      ],
+      "source_published_kst": "2026-10-08T03:10+09:00",
+      "source_title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\"",
+      "telegram_core_fact": "연준이 7일(현지시간) 공개한 9월 15~16일 연방공개시장위원회(FOMC) 의사록에 따르면 참석자 대부분은 향후 통화정책과 관련해 “연말까지 기준금리 목표범위를 한 차례 더 인상하는 것이 적절할 가능성이 높다”고 평가했다.",
+      "title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\""
+    },
     "source_fact:59ef06fd324a8e8278b8133b": {
       "first_seen_kst": "2026-10-05T23:56:11+09:00",
       "lanes": {
@@ -151898,6 +152937,32 @@
       "source_title": "펩트론 \"릴리 본계약 없이 기술평가 종료\"…애프터마켓서 28% 급락",
       "telegram_core_fact": "시장은 이를 사실상의 본계약 불발로 해석해 펩트론 주가는 장 마감을 앞두고 애프터마켓에서 28% 넘게 급락했다.",
       "title": "펩트론 \"릴리 본계약 없이 기술평가 종료\"…애프터마켓서 28% 급락"
+    },
+    "source_fact:5a60e938dd33848281a47b89": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895232",
+      "source": "헤럴드경제",
+      "source_body_digest": "df995e11642fc7707a2306fe55bd16bfb3c16f28a8da435c2d2587802513b494",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d5099adef4f7a8360d8e05288b6fb55bd68cfd1a747a45529b853026f3b09db",
+      "source_fact_keys": [
+        "source_fact:v1:594961b2dfe60fefb0cba8c81f4b57d92a22d8145b729c744bbc3564e3885452",
+        "source_fact:v1:8576288dd9824545078526fef9b98699a48703f4204f75867847fd40d8c0ae10",
+        "source_fact:v1:979cc8609a71f27cd5a60dfd378f781d1d3133ca59c6821893b2e57ef0e97bcb",
+        "source_fact:v1:d370488cb6da369d701e512ad4bdfc8298c69e525c522d5ceb19aa5d5aee6e21",
+        "source_fact:v1:d8c2cdfbf3688d00f45a686c3489ff204ee43b186d7457062bbd13dc3014c5ac",
+        "source_fact:v1:dc6145d91dce8523a7632cff49b5c43a1358ac2a316ceb3fbf8aa59c99af3a6f",
+        "source_fact:v1:dc6183e2452024b2c8372e398276ea3bd50fbb4ded61a699fc8b0c072f80a051",
+        "source_fact:v1:e9212f03a3876e75dbfc0b593ce138e70f5dcfeeb46290a1bec3964445abd86b"
+      ],
+      "source_published_kst": "2026-10-07T18:40+09:00",
+      "source_title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]",
+      "telegram_core_fact": "김세빈 유안타증권 연구원은 “지수 전체의 이익추정치 개선보다 반도체 소부장과 기판, 통신장비 등 일부 IT 업종과 테마 중심의 상승”이라며 “지수 추격보다 실적과 매출 추정치가 실제로 올라오는 업종으로 압축할 필요가 있다”고 조언했다.",
+      "title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]"
     },
     "source_fact:5a654d24d0edb865241ce5c7": {
       "first_seen_kst": "2026-10-05T19:37:20+09:00",
@@ -155408,6 +156473,32 @@
       "telegram_core_fact": "주주환원 정책 공시 이후 한섬 보고서를 낸 증권사 5곳은 모두 ‘매수’ 의견을 냈고, 이 가운데 4곳이 목표주가를 올렸다.",
       "title": "3주 만에 32% 뛰어올라…한섬 주가 들썩이는 이유"
     },
+    "source_fact:62e0810681a89075fca05a5d": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895232",
+      "source": "헤럴드경제",
+      "source_body_digest": "df995e11642fc7707a2306fe55bd16bfb3c16f28a8da435c2d2587802513b494",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d5099adef4f7a8360d8e05288b6fb55bd68cfd1a747a45529b853026f3b09db",
+      "source_fact_keys": [
+        "source_fact:v1:594961b2dfe60fefb0cba8c81f4b57d92a22d8145b729c744bbc3564e3885452",
+        "source_fact:v1:8576288dd9824545078526fef9b98699a48703f4204f75867847fd40d8c0ae10",
+        "source_fact:v1:979cc8609a71f27cd5a60dfd378f781d1d3133ca59c6821893b2e57ef0e97bcb",
+        "source_fact:v1:d370488cb6da369d701e512ad4bdfc8298c69e525c522d5ceb19aa5d5aee6e21",
+        "source_fact:v1:d8c2cdfbf3688d00f45a686c3489ff204ee43b186d7457062bbd13dc3014c5ac",
+        "source_fact:v1:dc6145d91dce8523a7632cff49b5c43a1358ac2a316ceb3fbf8aa59c99af3a6f",
+        "source_fact:v1:dc6183e2452024b2c8372e398276ea3bd50fbb4ded61a699fc8b0c072f80a051",
+        "source_fact:v1:e9212f03a3876e75dbfc0b593ce138e70f5dcfeeb46290a1bec3964445abd86b"
+      ],
+      "source_published_kst": "2026-10-07T18:40+09:00",
+      "source_title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]",
+      "telegram_core_fact": "김세빈 유안타증권 연구원은 “지수 전체의 이익추정치 개선보다 반도체 소부장과 기판, 통신장비 등 일부 IT 업종과 테마 중심의 상승”이라며 “지수 추격보다 실적과 매출 추정치가 실제로 올라오는 업종으로 압축할 필요가 있다”고 조언했다.",
+      "title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]"
+    },
     "source_fact:62eff89ef18cfeefc4c3b3f3": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
@@ -156550,6 +157641,30 @@
       ],
       "source_published_kst": "2026-10-07T06:31+09:00",
       "title": "실적 기대에 힘받은 뉴욕증시…S&P500·나스닥 또 최고치(종합)"
+    },
+    "source_fact:65dc52b01e28feda25951b15": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633582",
+      "source": "이투데이",
+      "source_body_digest": "1ca7eb2cac17c36b9b558d8d67af0dd4623e63425a6a6e10995312ae188b5fc7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f536ebc461e62fcfcd99cf9c229928cb0fc329e662288bcc6780a9c4bca44992",
+      "source_fact_keys": [
+        "source_fact:v1:1ed086871b6d966f9828426c96a6321d4470a40ae876806734b8998e4834fc29",
+        "source_fact:v1:3b12eafcb3155a94716a356e10527eb0ebf600eb1618ec9ea75e6ac8698fd359",
+        "source_fact:v1:64486ca8a34af119f907efece4b3b0317fbde93fabe16c703677bd936c721cbb",
+        "source_fact:v1:b718169f6a338d864f2780345562ef388c45cfb7655f4295e8d4f17ee8fe87d8",
+        "source_fact:v1:d70b3a2120c42ece24483be5f07b8875b7a58ac1a9fdec176f7579d264ddd60c",
+        "source_fact:v1:e8539b94567508b2ffd446525bcb95454f4a049411d1ddcebdc9e2dbcdaf9ff7"
+      ],
+      "source_published_kst": "2026-10-07T18:01+09:00",
+      "source_title": "“현대지에프홀딩스, 자사주 소각‧배당수익 확대로 주주환원 강화”",
+      "telegram_core_fact": "현대지에프홀딩스는 이달 중 자사주 잔여 물량을 집중적으로 매입한 뒤 1000억원 규모, 발행주식의 약 4.0%에 해당하는 자사주를 11~12월 중 전량 소각다.",
+      "title": "“현대지에프홀딩스, 자사주 소각‧배당수익 확대로 주주환원 강화”"
     },
     "source_fact:65de55b0c8db41c08cdb212a": {
       "first_seen_kst": "2026-10-07T23:10:06+09:00",
@@ -162568,6 +163683,36 @@
       "source_published_kst": "2026-10-06T07:35+09:00",
       "title": "다올투자證 \"아모레퍼시픽, 마케팅비 선집행에 3분기 주춤…미주·국내 성장 지속\""
     },
+    "source_fact:74d494a3096fe45e423a7649": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01302166645610952",
+      "source": "이데일리",
+      "source_body_digest": "b34bbe668ea15b10c08868434da1d7eb34739d9fafd28f2eb1c2c3ac00495615",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5619b99f4bda6dd065b55663ef46a6121c64daf9335a279223ca54368755398c",
+      "source_fact_keys": [
+        "source_fact:v1:0cd784221c665990a3e7e6f10e0e5418dabb426fc4d8b9a2b770e86661858551",
+        "source_fact:v1:1d45edaf371d81cc044387aeb005974e9c53d63b32d71dfe6185fba4a9904687",
+        "source_fact:v1:25f27dab6f79ca3191ec3588cef0339d7e3058c1cc1721ee2544c36c72aea91b",
+        "source_fact:v1:323103442fc5acc1717aeb40e1a6f28a487a28c2149263361196fde329326768",
+        "source_fact:v1:3bedeb6d1ff1f1225af1db2b6d3924ce7aefca7b2af3595baf0c64fd4664e6e8",
+        "source_fact:v1:405e88213b2250718da19bc49279984f6c8a33c61f9c712c7a946c119ef79be5",
+        "source_fact:v1:446055178f80f1311956e4d25a2b4c6e46746dc4505b9f60d01a228b98bb413d",
+        "source_fact:v1:804613ab67a8ae29466265065c2be2444eefc7bf71dc44aa7fc0cf5c2d73c8bd",
+        "source_fact:v1:841dfa70de052bd84690b0eec657c00d32a00746c8f411fa8a7a9a0ab4473330",
+        "source_fact:v1:c343e2c82bab37ae62be7507c20f8128257f2d86dbb20bc91f85f39d06e8acbf",
+        "source_fact:v1:e441008ce6e85cbfb739745ebc30962cd692a480f8f0765a5758d05b05121f18",
+        "source_fact:v1:fdc4a9041764b65f4fb64dbb82f1758f61804796d2f445eb4f5b61ecaa2d507b"
+      ],
+      "source_published_kst": "2026-10-08T03:10+09:00",
+      "source_title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\"",
+      "telegram_core_fact": "연준이 7일(현지시간) 공개한 9월 15~16일 연방공개시장위원회(FOMC) 의사록에 따르면 참석자 대부분은 향후 통화정책과 관련해 “연말까지 기준금리 목표범위를 한 차례 더 인상하는 것이 적절할 가능성이 높다”고 평가했다.",
+      "title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\""
+    },
     "source_fact:74ea067556d5e3fa11d784bb": {
       "first_seen_kst": "2026-10-07T19:13:29+09:00",
       "lanes": {
@@ -164753,6 +165898,31 @@
       "source_published_kst": "2026-10-06T11:30+09:00",
       "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
     },
+    "source_fact:7a846b38b31c77c23cf6a045": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675185",
+      "source": "블로터",
+      "source_body_digest": "7ee5a39ea152ad9168853de824ed3ac1898aaae81a7d1c5ff5656665d877acdf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f449e9a06ebcb07642554e5e2a2995a97f5c4d6270347c075d7e6cd792893cfc",
+      "source_fact_keys": [
+        "source_fact:v1:731b952e75985582be2f2532aded5daee93cb6ee88b2f77f5350c519542d6c3f",
+        "source_fact:v1:8a9d91841015ef07f03d3cc7bcf2bfc5363b22b77118c54920d9afa78eba7520",
+        "source_fact:v1:95b3c1b3ef788339bf4b3bf9da078afff7166bb437b54a0208ac7a2a5e625d80",
+        "source_fact:v1:9f545c71c46b323a15b242dc75f736faa5b950e3bbffb9b1ae96b94ba2d2961c",
+        "source_fact:v1:cdf46f15affef72b534fa23e597fe52947971064646c4540e3cfa5ed0cb533ff",
+        "source_fact:v1:cfd870c4ab690298ea199a891a20a8aa5c19924587f3bd221f709002ef7eb0c7",
+        "source_fact:v1:d08776aadbbe358e4b5437355674f99a6d24db138003a6a2486dbaa958944359"
+      ],
+      "source_published_kst": "2026-10-07T13:43+09:00",
+      "source_title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배",
+      "telegram_core_fact": "파라다이스가 공모 회사채 수요예측에서 모집액의 3.4배에 달하는 투자 수요를 확보하며 2년 연속 흥행에 성공했다. 파라다이스에 따르면 회사는 지난 6일 총 600억원 공모 회사채 발행을 위한 수요예측을 실시한 결과 모집액의 3.42배인 총 2050억원의 주문이 접수됐다.",
+      "title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배"
+    },
     "source_fact:7a8c1ac626805a56b50e6f21": {
       "first_seen_kst": "2026-10-07T08:57:59+09:00",
       "lanes": {
@@ -165937,6 +167107,28 @@
       "source_published_kst": "2026-10-06T07:48+09:00",
       "title": "본사 곳간 찰 때 점주는 울었다…프랜차이즈 매출 양극화 심화"
     },
+    "source_fact:7d2bd08eed036c5dc088d711": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008001751099",
+      "source": "연합뉴스",
+      "source_body_digest": "f239b79f24727ec4475ba2e3f5e13c0724e26b71a3da743bcd00d2d00c84d324",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d08fe7fe283d2233afd1c3303d216f71d9703bb353ebbee712b37e31339aaa94",
+      "source_fact_keys": [
+        "source_fact:v1:04aa94072d3dcec4d3e60948d5a1088f35ed231bb7713617e3208423e92bbf19",
+        "source_fact:v1:357c29abbdc710e4740dae7a17b0f9652864c354dc87fd4d120496f2c6d25508",
+        "source_fact:v1:9b406dbedfd35360dd0180560c9604ba5f8a7d3768ad402c8aea80e7297c3a31",
+        "source_fact:v1:cce36d3ae7f4795af22f0b25c12cd8aca25f0e97367a8c021cfdb666d6921ede"
+      ],
+      "source_published_kst": "2026-10-08T03:39+09:00",
+      "source_title": "사우디 \"리야드·아브하 공항서 3명 사망\"…후티 잇단 공습 주장(종합) | 연합뉴스",
+      "telegram_core_fact": "예멘 정부군과 사우디 주도 연합군이 지난 4일 후티가 장악한 영토를 탈환하기 위한 '예멘의 새벽' 작전을 선언하고 대규모 공세에 나서자 후티는 이후 사우디 본토의 공항과 정유시설을 탄도미사일과 드론으로 잇달아 공격했다고 밝히고 있다.",
+      "title": "사우디 \"리야드·아브하 공항서 3명 사망\"…후티 잇단 공습 주장(종합) | 연합뉴스"
+    },
     "source_fact:7d3b739b4fc3916f2c709ac3": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
       "lanes": {
@@ -166888,6 +168080,31 @@
       "source_title": "美국채 10년물 장중 5.36%까지 치솟아…24년 만에 최고",
       "telegram_core_fact": "미국 10년물 국채 금리는 장중 5.36%를 넘어 2002년 이후 최고치를 새로 썼고, 30년물 금리도 5.73%까지 치솟았다. 7일(현지 시각) 미국 국채시장에서 10년물 금리는 장중 전장보다 약 8bp(1bp=0.01%포인트) 오른 5.3640%까지 상승했다.",
       "title": "美국채 10년물 장중 5.36%까지 치솟아…24년 만에 최고"
+    },
+    "source_fact:7f98c26219c9e4839d5a7af3": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675185",
+      "source": "블로터",
+      "source_body_digest": "7ee5a39ea152ad9168853de824ed3ac1898aaae81a7d1c5ff5656665d877acdf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f449e9a06ebcb07642554e5e2a2995a97f5c4d6270347c075d7e6cd792893cfc",
+      "source_fact_keys": [
+        "source_fact:v1:731b952e75985582be2f2532aded5daee93cb6ee88b2f77f5350c519542d6c3f",
+        "source_fact:v1:8a9d91841015ef07f03d3cc7bcf2bfc5363b22b77118c54920d9afa78eba7520",
+        "source_fact:v1:95b3c1b3ef788339bf4b3bf9da078afff7166bb437b54a0208ac7a2a5e625d80",
+        "source_fact:v1:9f545c71c46b323a15b242dc75f736faa5b950e3bbffb9b1ae96b94ba2d2961c",
+        "source_fact:v1:cdf46f15affef72b534fa23e597fe52947971064646c4540e3cfa5ed0cb533ff",
+        "source_fact:v1:cfd870c4ab690298ea199a891a20a8aa5c19924587f3bd221f709002ef7eb0c7",
+        "source_fact:v1:d08776aadbbe358e4b5437355674f99a6d24db138003a6a2486dbaa958944359"
+      ],
+      "source_published_kst": "2026-10-07T13:43+09:00",
+      "source_title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배",
+      "telegram_core_fact": "파라다이스가 공모 회사채 수요예측에서 모집액의 3.4배에 달하는 투자 수요를 확보하며 2년 연속 흥행에 성공했다. 파라다이스에 따르면 회사는 지난 6일 총 600억원 공모 회사채 발행을 위한 수요예측을 실시한 결과 모집액의 3.42배인 총 2050억원의 주문이 접수됐다.",
+      "title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배"
     },
     "source_fact:7f9b41b938ff651c9f13fd76": {
       "first_seen_kst": "2026-10-06T23:29:45+09:00",
@@ -170827,6 +172044,30 @@
       "source_published_kst": "2026-10-05T08:55+09:00",
       "title": "매크로 공백+SEC 규제완화 효과…8.6만달러 회복[코인 모닝콜]"
     },
+    "source_fact:8a1588dbd17d92b21ac5208e": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633582",
+      "source": "이투데이",
+      "source_body_digest": "1ca7eb2cac17c36b9b558d8d67af0dd4623e63425a6a6e10995312ae188b5fc7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f536ebc461e62fcfcd99cf9c229928cb0fc329e662288bcc6780a9c4bca44992",
+      "source_fact_keys": [
+        "source_fact:v1:1ed086871b6d966f9828426c96a6321d4470a40ae876806734b8998e4834fc29",
+        "source_fact:v1:3b12eafcb3155a94716a356e10527eb0ebf600eb1618ec9ea75e6ac8698fd359",
+        "source_fact:v1:64486ca8a34af119f907efece4b3b0317fbde93fabe16c703677bd936c721cbb",
+        "source_fact:v1:b718169f6a338d864f2780345562ef388c45cfb7655f4295e8d4f17ee8fe87d8",
+        "source_fact:v1:d70b3a2120c42ece24483be5f07b8875b7a58ac1a9fdec176f7579d264ddd60c",
+        "source_fact:v1:e8539b94567508b2ffd446525bcb95454f4a049411d1ddcebdc9e2dbcdaf9ff7"
+      ],
+      "source_published_kst": "2026-10-07T18:01+09:00",
+      "source_title": "“현대지에프홀딩스, 자사주 소각‧배당수익 확대로 주주환원 강화”",
+      "telegram_core_fact": "현대지에프홀딩스는 이달 중 자사주 잔여 물량을 집중적으로 매입한 뒤 1000억원 규모, 발행주식의 약 4.0%에 해당하는 자사주를 11~12월 중 전량 소각다.",
+      "title": "“현대지에프홀딩스, 자사주 소각‧배당수익 확대로 주주환원 강화”"
+    },
     "source_fact:8a1b135dada93b9130771585": {
       "first_seen_kst": "2026-10-07T09:22:01+09:00",
       "lanes": {
@@ -174759,6 +176000,32 @@
       "source_published_kst": "2026-10-07T08:49+09:00",
       "title": "블랙 힐스, 구글 데이터센터 전력 계약..18억 달러 투자"
     },
+    "source_fact:949f54a4b38849de621d5b95": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895232",
+      "source": "헤럴드경제",
+      "source_body_digest": "df995e11642fc7707a2306fe55bd16bfb3c16f28a8da435c2d2587802513b494",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d5099adef4f7a8360d8e05288b6fb55bd68cfd1a747a45529b853026f3b09db",
+      "source_fact_keys": [
+        "source_fact:v1:594961b2dfe60fefb0cba8c81f4b57d92a22d8145b729c744bbc3564e3885452",
+        "source_fact:v1:8576288dd9824545078526fef9b98699a48703f4204f75867847fd40d8c0ae10",
+        "source_fact:v1:979cc8609a71f27cd5a60dfd378f781d1d3133ca59c6821893b2e57ef0e97bcb",
+        "source_fact:v1:d370488cb6da369d701e512ad4bdfc8298c69e525c522d5ceb19aa5d5aee6e21",
+        "source_fact:v1:d8c2cdfbf3688d00f45a686c3489ff204ee43b186d7457062bbd13dc3014c5ac",
+        "source_fact:v1:dc6145d91dce8523a7632cff49b5c43a1358ac2a316ceb3fbf8aa59c99af3a6f",
+        "source_fact:v1:dc6183e2452024b2c8372e398276ea3bd50fbb4ded61a699fc8b0c072f80a051",
+        "source_fact:v1:e9212f03a3876e75dbfc0b593ce138e70f5dcfeeb46290a1bec3964445abd86b"
+      ],
+      "source_published_kst": "2026-10-07T18:40+09:00",
+      "source_title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]",
+      "telegram_core_fact": "김세빈 유안타증권 연구원은 “지수 전체의 이익추정치 개선보다 반도체 소부장과 기판, 통신장비 등 일부 IT 업종과 테마 중심의 상승”이라며 “지수 추격보다 실적과 매출 추정치가 실제로 올라오는 업종으로 압축할 필요가 있다”고 조언했다.",
+      "title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]"
+    },
     "source_fact:94afd19b15c436125639a242": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
       "lanes": {
@@ -178307,6 +179574,36 @@
       "source_published_kst": "2026-10-05T21:54+09:00",
       "title": "비트마인 이머전 테크놀로, ETH 602만개 보유..총자산 174억 달러"
     },
+    "source_fact:9cf9dfe13eb59bca49ec7682": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01302166645610952",
+      "source": "이데일리",
+      "source_body_digest": "b34bbe668ea15b10c08868434da1d7eb34739d9fafd28f2eb1c2c3ac00495615",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5619b99f4bda6dd065b55663ef46a6121c64daf9335a279223ca54368755398c",
+      "source_fact_keys": [
+        "source_fact:v1:0cd784221c665990a3e7e6f10e0e5418dabb426fc4d8b9a2b770e86661858551",
+        "source_fact:v1:1d45edaf371d81cc044387aeb005974e9c53d63b32d71dfe6185fba4a9904687",
+        "source_fact:v1:25f27dab6f79ca3191ec3588cef0339d7e3058c1cc1721ee2544c36c72aea91b",
+        "source_fact:v1:323103442fc5acc1717aeb40e1a6f28a487a28c2149263361196fde329326768",
+        "source_fact:v1:3bedeb6d1ff1f1225af1db2b6d3924ce7aefca7b2af3595baf0c64fd4664e6e8",
+        "source_fact:v1:405e88213b2250718da19bc49279984f6c8a33c61f9c712c7a946c119ef79be5",
+        "source_fact:v1:446055178f80f1311956e4d25a2b4c6e46746dc4505b9f60d01a228b98bb413d",
+        "source_fact:v1:804613ab67a8ae29466265065c2be2444eefc7bf71dc44aa7fc0cf5c2d73c8bd",
+        "source_fact:v1:841dfa70de052bd84690b0eec657c00d32a00746c8f411fa8a7a9a0ab4473330",
+        "source_fact:v1:c343e2c82bab37ae62be7507c20f8128257f2d86dbb20bc91f85f39d06e8acbf",
+        "source_fact:v1:e441008ce6e85cbfb739745ebc30962cd692a480f8f0765a5758d05b05121f18",
+        "source_fact:v1:fdc4a9041764b65f4fb64dbb82f1758f61804796d2f445eb4f5b61ecaa2d507b"
+      ],
+      "source_published_kst": "2026-10-08T03:10+09:00",
+      "source_title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\"",
+      "telegram_core_fact": "연준이 7일(현지시간) 공개한 9월 15~16일 연방공개시장위원회(FOMC) 의사록에 따르면 참석자 대부분은 향후 통화정책과 관련해 “연말까지 기준금리 목표범위를 한 차례 더 인상하는 것이 적절할 가능성이 높다”고 평가했다.",
+      "title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\""
+    },
     "source_fact:9d0d78af72e148c795c51672": {
       "first_seen_kst": "2026-10-07T17:10:43+09:00",
       "lanes": {
@@ -181189,6 +182486,28 @@
       "telegram_core_fact": "한국지식재산서비스협회(회장 고기석)는 '정시 3회 IP중개사(ITA) 자격시험'을 오는 11월 7일 시행한다고 밝혔다. IP중개사는 특허·상표 등 IP 권리 확보를 넘어 기술과 시장을 연결하고, 기술이전과 라이선스 계약, 사업화 전략 수립 등을 지원하는 실무형 전문인력을 양성하기 위한 전문자격이다.",
       "title": "기술사업화 전문인력 수요 확대…한국지식재산서비스협회, 'IP중개사' 양성교육·자격시험 운영"
     },
+    "source_fact:a3f1790dc28f1e6870ea8f28": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008001751099",
+      "source": "연합뉴스",
+      "source_body_digest": "f239b79f24727ec4475ba2e3f5e13c0724e26b71a3da743bcd00d2d00c84d324",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d08fe7fe283d2233afd1c3303d216f71d9703bb353ebbee712b37e31339aaa94",
+      "source_fact_keys": [
+        "source_fact:v1:04aa94072d3dcec4d3e60948d5a1088f35ed231bb7713617e3208423e92bbf19",
+        "source_fact:v1:357c29abbdc710e4740dae7a17b0f9652864c354dc87fd4d120496f2c6d25508",
+        "source_fact:v1:9b406dbedfd35360dd0180560c9604ba5f8a7d3768ad402c8aea80e7297c3a31",
+        "source_fact:v1:cce36d3ae7f4795af22f0b25c12cd8aca25f0e97367a8c021cfdb666d6921ede"
+      ],
+      "source_published_kst": "2026-10-08T03:39+09:00",
+      "source_title": "사우디 \"리야드·아브하 공항서 3명 사망\"…후티 잇단 공습 주장(종합) | 연합뉴스",
+      "telegram_core_fact": "예멘 정부군과 사우디 주도 연합군이 지난 4일 후티가 장악한 영토를 탈환하기 위한 '예멘의 새벽' 작전을 선언하고 대규모 공세에 나서자 후티는 이후 사우디 본토의 공항과 정유시설을 탄도미사일과 드론으로 잇달아 공격했다고 밝히고 있다.",
+      "title": "사우디 \"리야드·아브하 공항서 3명 사망\"…후티 잇단 공습 주장(종합) | 연합뉴스"
+    },
     "source_fact:a3f4c04b37c8cd5d155f0dd4": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
       "lanes": {
@@ -181862,6 +183181,30 @@
       ],
       "source_published_kst": "2026-10-06T02:28+09:00",
       "title": "아람코 CEO \"세계 석유 공급 이미 압박…비축 최대 2년\""
+    },
+    "source_fact:a5f6bfaa54d257505f41aaed": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633582",
+      "source": "이투데이",
+      "source_body_digest": "1ca7eb2cac17c36b9b558d8d67af0dd4623e63425a6a6e10995312ae188b5fc7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f536ebc461e62fcfcd99cf9c229928cb0fc329e662288bcc6780a9c4bca44992",
+      "source_fact_keys": [
+        "source_fact:v1:1ed086871b6d966f9828426c96a6321d4470a40ae876806734b8998e4834fc29",
+        "source_fact:v1:3b12eafcb3155a94716a356e10527eb0ebf600eb1618ec9ea75e6ac8698fd359",
+        "source_fact:v1:64486ca8a34af119f907efece4b3b0317fbde93fabe16c703677bd936c721cbb",
+        "source_fact:v1:b718169f6a338d864f2780345562ef388c45cfb7655f4295e8d4f17ee8fe87d8",
+        "source_fact:v1:d70b3a2120c42ece24483be5f07b8875b7a58ac1a9fdec176f7579d264ddd60c",
+        "source_fact:v1:e8539b94567508b2ffd446525bcb95454f4a049411d1ddcebdc9e2dbcdaf9ff7"
+      ],
+      "source_published_kst": "2026-10-07T18:01+09:00",
+      "source_title": "“현대지에프홀딩스, 자사주 소각‧배당수익 확대로 주주환원 강화”",
+      "telegram_core_fact": "현대지에프홀딩스는 이달 중 자사주 잔여 물량을 집중적으로 매입한 뒤 1000억원 규모, 발행주식의 약 4.0%에 해당하는 자사주를 11~12월 중 전량 소각다.",
+      "title": "“현대지에프홀딩스, 자사주 소각‧배당수익 확대로 주주환원 강화”"
     },
     "source_fact:a60616183ef3cb50e26960c5": {
       "first_seen_kst": "2026-10-06T22:21:21+09:00",
@@ -185139,6 +186482,28 @@
       "source_published_kst": "2026-10-06T15:22+09:00",
       "title": "“中 AI 굴기 또 온다”…문샷, 기업가치 68조원 찍고 홍콩 상장 추진"
     },
+    "source_fact:ae8d26097a8fba1a4d85d3cb": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008001751099",
+      "source": "연합뉴스",
+      "source_body_digest": "f239b79f24727ec4475ba2e3f5e13c0724e26b71a3da743bcd00d2d00c84d324",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d08fe7fe283d2233afd1c3303d216f71d9703bb353ebbee712b37e31339aaa94",
+      "source_fact_keys": [
+        "source_fact:v1:04aa94072d3dcec4d3e60948d5a1088f35ed231bb7713617e3208423e92bbf19",
+        "source_fact:v1:357c29abbdc710e4740dae7a17b0f9652864c354dc87fd4d120496f2c6d25508",
+        "source_fact:v1:9b406dbedfd35360dd0180560c9604ba5f8a7d3768ad402c8aea80e7297c3a31",
+        "source_fact:v1:cce36d3ae7f4795af22f0b25c12cd8aca25f0e97367a8c021cfdb666d6921ede"
+      ],
+      "source_published_kst": "2026-10-08T03:39+09:00",
+      "source_title": "사우디 \"리야드·아브하 공항서 3명 사망\"…후티 잇단 공습 주장(종합) | 연합뉴스",
+      "telegram_core_fact": "예멘 정부군과 사우디 주도 연합군이 지난 4일 후티가 장악한 영토를 탈환하기 위한 '예멘의 새벽' 작전을 선언하고 대규모 공세에 나서자 후티는 이후 사우디 본토의 공항과 정유시설을 탄도미사일과 드론으로 잇달아 공격했다고 밝히고 있다.",
+      "title": "사우디 \"리야드·아브하 공항서 3명 사망\"…후티 잇단 공습 주장(종합) | 연합뉴스"
+    },
     "source_fact:ae94d1f00b8e261f5ccff56f": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
       "lanes": {
@@ -186977,6 +188342,36 @@
       ],
       "source_published_kst": "2026-10-06T08:55+09:00",
       "title": "현대글로비스, SMR 추진 자동차운반선 한미 항로 운항 검토 | 연합뉴스"
+    },
+    "source_fact:b277af7f89d2d051334e0489": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01302166645610952",
+      "source": "이데일리",
+      "source_body_digest": "b34bbe668ea15b10c08868434da1d7eb34739d9fafd28f2eb1c2c3ac00495615",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5619b99f4bda6dd065b55663ef46a6121c64daf9335a279223ca54368755398c",
+      "source_fact_keys": [
+        "source_fact:v1:0cd784221c665990a3e7e6f10e0e5418dabb426fc4d8b9a2b770e86661858551",
+        "source_fact:v1:1d45edaf371d81cc044387aeb005974e9c53d63b32d71dfe6185fba4a9904687",
+        "source_fact:v1:25f27dab6f79ca3191ec3588cef0339d7e3058c1cc1721ee2544c36c72aea91b",
+        "source_fact:v1:323103442fc5acc1717aeb40e1a6f28a487a28c2149263361196fde329326768",
+        "source_fact:v1:3bedeb6d1ff1f1225af1db2b6d3924ce7aefca7b2af3595baf0c64fd4664e6e8",
+        "source_fact:v1:405e88213b2250718da19bc49279984f6c8a33c61f9c712c7a946c119ef79be5",
+        "source_fact:v1:446055178f80f1311956e4d25a2b4c6e46746dc4505b9f60d01a228b98bb413d",
+        "source_fact:v1:804613ab67a8ae29466265065c2be2444eefc7bf71dc44aa7fc0cf5c2d73c8bd",
+        "source_fact:v1:841dfa70de052bd84690b0eec657c00d32a00746c8f411fa8a7a9a0ab4473330",
+        "source_fact:v1:c343e2c82bab37ae62be7507c20f8128257f2d86dbb20bc91f85f39d06e8acbf",
+        "source_fact:v1:e441008ce6e85cbfb739745ebc30962cd692a480f8f0765a5758d05b05121f18",
+        "source_fact:v1:fdc4a9041764b65f4fb64dbb82f1758f61804796d2f445eb4f5b61ecaa2d507b"
+      ],
+      "source_published_kst": "2026-10-08T03:10+09:00",
+      "source_title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\"",
+      "telegram_core_fact": "연준이 7일(현지시간) 공개한 9월 15~16일 연방공개시장위원회(FOMC) 의사록에 따르면 참석자 대부분은 향후 통화정책과 관련해 “연말까지 기준금리 목표범위를 한 차례 더 인상하는 것이 적절할 가능성이 높다”고 평가했다.",
+      "title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\""
     },
     "source_fact:b278138209d100e798c66f3e": {
       "first_seen_kst": "2026-10-07T03:43:49+09:00",
@@ -192133,6 +193528,30 @@
       "source_published_kst": "2026-10-07T05:00+09:00",
       "title": "\"삼성 따라 미국 간다?\"…몸값 뛴 국내 OSAT, 테일러행은 ‘좁은 문’"
     },
+    "source_fact:c0cba40ab7acade13c17e9cc": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633582",
+      "source": "이투데이",
+      "source_body_digest": "1ca7eb2cac17c36b9b558d8d67af0dd4623e63425a6a6e10995312ae188b5fc7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f536ebc461e62fcfcd99cf9c229928cb0fc329e662288bcc6780a9c4bca44992",
+      "source_fact_keys": [
+        "source_fact:v1:1ed086871b6d966f9828426c96a6321d4470a40ae876806734b8998e4834fc29",
+        "source_fact:v1:3b12eafcb3155a94716a356e10527eb0ebf600eb1618ec9ea75e6ac8698fd359",
+        "source_fact:v1:64486ca8a34af119f907efece4b3b0317fbde93fabe16c703677bd936c721cbb",
+        "source_fact:v1:b718169f6a338d864f2780345562ef388c45cfb7655f4295e8d4f17ee8fe87d8",
+        "source_fact:v1:d70b3a2120c42ece24483be5f07b8875b7a58ac1a9fdec176f7579d264ddd60c",
+        "source_fact:v1:e8539b94567508b2ffd446525bcb95454f4a049411d1ddcebdc9e2dbcdaf9ff7"
+      ],
+      "source_published_kst": "2026-10-07T18:01+09:00",
+      "source_title": "“현대지에프홀딩스, 자사주 소각‧배당수익 확대로 주주환원 강화”",
+      "telegram_core_fact": "현대지에프홀딩스는 이달 중 자사주 잔여 물량을 집중적으로 매입한 뒤 1000억원 규모, 발행주식의 약 4.0%에 해당하는 자사주를 11~12월 중 전량 소각다.",
+      "title": "“현대지에프홀딩스, 자사주 소각‧배당수익 확대로 주주환원 강화”"
+    },
     "source_fact:c0d26384155975a05c1108f1": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
       "lanes": {
@@ -193463,6 +194882,32 @@
       ],
       "source_published_kst": "2026-10-07T05:00+09:00",
       "title": "헬스케어 제2의 먹거리…디지털 사업 키우는 제약사들"
+    },
+    "source_fact:c39b7e236845d4a1eb8fe709": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895232",
+      "source": "헤럴드경제",
+      "source_body_digest": "df995e11642fc7707a2306fe55bd16bfb3c16f28a8da435c2d2587802513b494",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d5099adef4f7a8360d8e05288b6fb55bd68cfd1a747a45529b853026f3b09db",
+      "source_fact_keys": [
+        "source_fact:v1:594961b2dfe60fefb0cba8c81f4b57d92a22d8145b729c744bbc3564e3885452",
+        "source_fact:v1:8576288dd9824545078526fef9b98699a48703f4204f75867847fd40d8c0ae10",
+        "source_fact:v1:979cc8609a71f27cd5a60dfd378f781d1d3133ca59c6821893b2e57ef0e97bcb",
+        "source_fact:v1:d370488cb6da369d701e512ad4bdfc8298c69e525c522d5ceb19aa5d5aee6e21",
+        "source_fact:v1:d8c2cdfbf3688d00f45a686c3489ff204ee43b186d7457062bbd13dc3014c5ac",
+        "source_fact:v1:dc6145d91dce8523a7632cff49b5c43a1358ac2a316ceb3fbf8aa59c99af3a6f",
+        "source_fact:v1:dc6183e2452024b2c8372e398276ea3bd50fbb4ded61a699fc8b0c072f80a051",
+        "source_fact:v1:e9212f03a3876e75dbfc0b593ce138e70f5dcfeeb46290a1bec3964445abd86b"
+      ],
+      "source_published_kst": "2026-10-07T18:40+09:00",
+      "source_title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]",
+      "telegram_core_fact": "김세빈 유안타증권 연구원은 “지수 전체의 이익추정치 개선보다 반도체 소부장과 기판, 통신장비 등 일부 IT 업종과 테마 중심의 상승”이라며 “지수 추격보다 실적과 매출 추정치가 실제로 올라오는 업종으로 압축할 필요가 있다”고 조언했다.",
+      "title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]"
     },
     "source_fact:c3b40d689100b2398072542d": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
@@ -197378,6 +198823,31 @@
       "source_published_kst": "2026-10-07T08:10+09:00",
       "title": "\"관세 깎아줄게, 돈 더 내놔\" 트럼프, 韓 관세 또 압박"
     },
+    "source_fact:cd55686dc0220614364fbab8": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675185",
+      "source": "블로터",
+      "source_body_digest": "7ee5a39ea152ad9168853de824ed3ac1898aaae81a7d1c5ff5656665d877acdf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f449e9a06ebcb07642554e5e2a2995a97f5c4d6270347c075d7e6cd792893cfc",
+      "source_fact_keys": [
+        "source_fact:v1:731b952e75985582be2f2532aded5daee93cb6ee88b2f77f5350c519542d6c3f",
+        "source_fact:v1:8a9d91841015ef07f03d3cc7bcf2bfc5363b22b77118c54920d9afa78eba7520",
+        "source_fact:v1:95b3c1b3ef788339bf4b3bf9da078afff7166bb437b54a0208ac7a2a5e625d80",
+        "source_fact:v1:9f545c71c46b323a15b242dc75f736faa5b950e3bbffb9b1ae96b94ba2d2961c",
+        "source_fact:v1:cdf46f15affef72b534fa23e597fe52947971064646c4540e3cfa5ed0cb533ff",
+        "source_fact:v1:cfd870c4ab690298ea199a891a20a8aa5c19924587f3bd221f709002ef7eb0c7",
+        "source_fact:v1:d08776aadbbe358e4b5437355674f99a6d24db138003a6a2486dbaa958944359"
+      ],
+      "source_published_kst": "2026-10-07T13:43+09:00",
+      "source_title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배",
+      "telegram_core_fact": "파라다이스가 공모 회사채 수요예측에서 모집액의 3.4배에 달하는 투자 수요를 확보하며 2년 연속 흥행에 성공했다. 파라다이스에 따르면 회사는 지난 6일 총 600억원 공모 회사채 발행을 위한 수요예측을 실시한 결과 모집액의 3.42배인 총 2050억원의 주문이 접수됐다.",
+      "title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배"
+    },
     "source_fact:cd77761e5d0af7bcd8ca350b": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -197706,6 +199176,30 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "산업부 국감 돌입…대미투자·호남 반도체·메가특구 '도마'"
     },
+    "source_fact:ce56a6032a26861701414f70": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633582",
+      "source": "이투데이",
+      "source_body_digest": "1ca7eb2cac17c36b9b558d8d67af0dd4623e63425a6a6e10995312ae188b5fc7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f536ebc461e62fcfcd99cf9c229928cb0fc329e662288bcc6780a9c4bca44992",
+      "source_fact_keys": [
+        "source_fact:v1:1ed086871b6d966f9828426c96a6321d4470a40ae876806734b8998e4834fc29",
+        "source_fact:v1:3b12eafcb3155a94716a356e10527eb0ebf600eb1618ec9ea75e6ac8698fd359",
+        "source_fact:v1:64486ca8a34af119f907efece4b3b0317fbde93fabe16c703677bd936c721cbb",
+        "source_fact:v1:b718169f6a338d864f2780345562ef388c45cfb7655f4295e8d4f17ee8fe87d8",
+        "source_fact:v1:d70b3a2120c42ece24483be5f07b8875b7a58ac1a9fdec176f7579d264ddd60c",
+        "source_fact:v1:e8539b94567508b2ffd446525bcb95454f4a049411d1ddcebdc9e2dbcdaf9ff7"
+      ],
+      "source_published_kst": "2026-10-07T18:01+09:00",
+      "source_title": "“현대지에프홀딩스, 자사주 소각‧배당수익 확대로 주주환원 강화”",
+      "telegram_core_fact": "현대지에프홀딩스는 이달 중 자사주 잔여 물량을 집중적으로 매입한 뒤 1000억원 규모, 발행주식의 약 4.0%에 해당하는 자사주를 11~12월 중 전량 소각다.",
+      "title": "“현대지에프홀딩스, 자사주 소각‧배당수익 확대로 주주환원 강화”"
+    },
     "source_fact:ce5c0241e03248f40ed1b6b3": {
       "first_seen_kst": "2026-10-06T15:44:02+09:00",
       "lanes": {
@@ -197905,6 +199399,36 @@
       ],
       "source_published_kst": "2026-10-07T06:01+09:00",
       "title": "글로벌 공급기지 된 K-제약사들…잇단 수출계약"
+    },
+    "source_fact:cee20318b7d48f42a71968ff": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01302166645610952",
+      "source": "이데일리",
+      "source_body_digest": "b34bbe668ea15b10c08868434da1d7eb34739d9fafd28f2eb1c2c3ac00495615",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5619b99f4bda6dd065b55663ef46a6121c64daf9335a279223ca54368755398c",
+      "source_fact_keys": [
+        "source_fact:v1:0cd784221c665990a3e7e6f10e0e5418dabb426fc4d8b9a2b770e86661858551",
+        "source_fact:v1:1d45edaf371d81cc044387aeb005974e9c53d63b32d71dfe6185fba4a9904687",
+        "source_fact:v1:25f27dab6f79ca3191ec3588cef0339d7e3058c1cc1721ee2544c36c72aea91b",
+        "source_fact:v1:323103442fc5acc1717aeb40e1a6f28a487a28c2149263361196fde329326768",
+        "source_fact:v1:3bedeb6d1ff1f1225af1db2b6d3924ce7aefca7b2af3595baf0c64fd4664e6e8",
+        "source_fact:v1:405e88213b2250718da19bc49279984f6c8a33c61f9c712c7a946c119ef79be5",
+        "source_fact:v1:446055178f80f1311956e4d25a2b4c6e46746dc4505b9f60d01a228b98bb413d",
+        "source_fact:v1:804613ab67a8ae29466265065c2be2444eefc7bf71dc44aa7fc0cf5c2d73c8bd",
+        "source_fact:v1:841dfa70de052bd84690b0eec657c00d32a00746c8f411fa8a7a9a0ab4473330",
+        "source_fact:v1:c343e2c82bab37ae62be7507c20f8128257f2d86dbb20bc91f85f39d06e8acbf",
+        "source_fact:v1:e441008ce6e85cbfb739745ebc30962cd692a480f8f0765a5758d05b05121f18",
+        "source_fact:v1:fdc4a9041764b65f4fb64dbb82f1758f61804796d2f445eb4f5b61ecaa2d507b"
+      ],
+      "source_published_kst": "2026-10-08T03:10+09:00",
+      "source_title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\"",
+      "telegram_core_fact": "연준이 7일(현지시간) 공개한 9월 15~16일 연방공개시장위원회(FOMC) 의사록에 따르면 참석자 대부분은 향후 통화정책과 관련해 “연말까지 기준금리 목표범위를 한 차례 더 인상하는 것이 적절할 가능성이 높다”고 평가했다.",
+      "title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\""
     },
     "source_fact:cef8cc9ae2b54a36ad66fea9": {
       "first_seen_kst": "2026-10-08T00:24:24+09:00",
@@ -198395,6 +199919,32 @@
       "telegram_core_fact": "한국투자신탁운용은 7일 ACE 미국빅테크TOP7Plus 상장지수펀드(ETF)의 순자산액이 1조2000억원을 돌파했다고 밝혔다. ACE 미국빅테크TOP7Plus ETF는 미국 나스닥 시장에 상장된 빅테크 기업에 집중적으로 투자하는 상품으로 2023년 9월 상장했다.",
       "title": "한투운용, 미국 빅테크 집중 ETF 순자산 1조2000억 돌파"
     },
+    "source_fact:d02cfa92adfb6fc914e7737a": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895232",
+      "source": "헤럴드경제",
+      "source_body_digest": "df995e11642fc7707a2306fe55bd16bfb3c16f28a8da435c2d2587802513b494",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d5099adef4f7a8360d8e05288b6fb55bd68cfd1a747a45529b853026f3b09db",
+      "source_fact_keys": [
+        "source_fact:v1:594961b2dfe60fefb0cba8c81f4b57d92a22d8145b729c744bbc3564e3885452",
+        "source_fact:v1:8576288dd9824545078526fef9b98699a48703f4204f75867847fd40d8c0ae10",
+        "source_fact:v1:979cc8609a71f27cd5a60dfd378f781d1d3133ca59c6821893b2e57ef0e97bcb",
+        "source_fact:v1:d370488cb6da369d701e512ad4bdfc8298c69e525c522d5ceb19aa5d5aee6e21",
+        "source_fact:v1:d8c2cdfbf3688d00f45a686c3489ff204ee43b186d7457062bbd13dc3014c5ac",
+        "source_fact:v1:dc6145d91dce8523a7632cff49b5c43a1358ac2a316ceb3fbf8aa59c99af3a6f",
+        "source_fact:v1:dc6183e2452024b2c8372e398276ea3bd50fbb4ded61a699fc8b0c072f80a051",
+        "source_fact:v1:e9212f03a3876e75dbfc0b593ce138e70f5dcfeeb46290a1bec3964445abd86b"
+      ],
+      "source_published_kst": "2026-10-07T18:40+09:00",
+      "source_title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]",
+      "telegram_core_fact": "김세빈 유안타증권 연구원은 “지수 전체의 이익추정치 개선보다 반도체 소부장과 기판, 통신장비 등 일부 IT 업종과 테마 중심의 상승”이라며 “지수 추격보다 실적과 매출 추정치가 실제로 올라오는 업종으로 압축할 필요가 있다”고 조언했다.",
+      "title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]"
+    },
     "source_fact:d0489de4a74dcda0489b1260": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
       "lanes": {
@@ -198465,6 +200015,32 @@
       ],
       "source_published_kst": "2026-10-06T09:41+09:00",
       "title": "HLB그룹주 연일 강세…리픽투 FDA 품목허가 효과"
+    },
+    "source_fact:d070382f771896247f54d49e": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895232",
+      "source": "헤럴드경제",
+      "source_body_digest": "df995e11642fc7707a2306fe55bd16bfb3c16f28a8da435c2d2587802513b494",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d5099adef4f7a8360d8e05288b6fb55bd68cfd1a747a45529b853026f3b09db",
+      "source_fact_keys": [
+        "source_fact:v1:594961b2dfe60fefb0cba8c81f4b57d92a22d8145b729c744bbc3564e3885452",
+        "source_fact:v1:8576288dd9824545078526fef9b98699a48703f4204f75867847fd40d8c0ae10",
+        "source_fact:v1:979cc8609a71f27cd5a60dfd378f781d1d3133ca59c6821893b2e57ef0e97bcb",
+        "source_fact:v1:d370488cb6da369d701e512ad4bdfc8298c69e525c522d5ceb19aa5d5aee6e21",
+        "source_fact:v1:d8c2cdfbf3688d00f45a686c3489ff204ee43b186d7457062bbd13dc3014c5ac",
+        "source_fact:v1:dc6145d91dce8523a7632cff49b5c43a1358ac2a316ceb3fbf8aa59c99af3a6f",
+        "source_fact:v1:dc6183e2452024b2c8372e398276ea3bd50fbb4ded61a699fc8b0c072f80a051",
+        "source_fact:v1:e9212f03a3876e75dbfc0b593ce138e70f5dcfeeb46290a1bec3964445abd86b"
+      ],
+      "source_published_kst": "2026-10-07T18:40+09:00",
+      "source_title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]",
+      "telegram_core_fact": "김세빈 유안타증권 연구원은 “지수 전체의 이익추정치 개선보다 반도체 소부장과 기판, 통신장비 등 일부 IT 업종과 테마 중심의 상승”이라며 “지수 추격보다 실적과 매출 추정치가 실제로 올라오는 업종으로 압축할 필요가 있다”고 조언했다.",
+      "title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]"
     },
     "source_fact:d07541f99330a78473dc6e57": {
       "first_seen_kst": "2026-10-05T20:38:34+09:00",
@@ -200406,6 +201982,26 @@
       "source_published_kst": "2026-10-06T08:46+09:00",
       "title": "“코스피, 7100만 찍으면 7700까지 간다”…장밋빛 전망 근거는? [오늘 나온 보고서]"
     },
+    "source_fact:d53dba984afd86f9760bac21": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170953",
+      "source": "매일경제",
+      "source_body_digest": "86273171042b5706eb61b5393201675744bd5917c3fc2630512e767ee29fda2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cadb7ce343a93620cae885a902b014a92506c1d9bb16b3bc4f69ad99f9f7ffe9",
+      "source_fact_keys": [
+        "source_fact:v1:0cb91f6e5fe76ddfa8c0d23652ec0798d27941cef5175749de9027f3681b7c4a",
+        "source_fact:v1:4c87a830172707c511d29f673d792782ded4a6f980f6d57cdc166c77155f6c36"
+      ],
+      "source_published_kst": "2026-10-07T22:21+09:00",
+      "source_title": "그린서클디카보나이즈, AI 데이터센터 냉각 진출 발표에도 구체성 부족 부각",
+      "telegram_core_fact": "AI 데이터센터 액체냉각 시장 진출 계획을 발표했지만 계약, 투자 규모, 출시 일정이 공개되지 않았고 초기 협의 단계에 머물러 있습니다. 매출 기여 시점이 불확실해 실적 영향이 제한적이라는 평가가 나오며 실망 매물이 나온 것으로 보입니다.",
+      "title": "그린서클디카보나이즈, AI 데이터센터 냉각 진출 발표에도 구체성 부족 부각"
+    },
     "source_fact:d54f7c0a9ebf057c1fe91a5d": {
       "first_seen_kst": "2026-10-05T22:49:24+09:00",
       "lanes": {
@@ -202206,6 +203802,36 @@
       ],
       "source_published_kst": "2026-10-06T10:59+09:00",
       "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 공급"
+    },
+    "source_fact:d8a748003ad36bd83f4d1621": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01302166645610952",
+      "source": "이데일리",
+      "source_body_digest": "b34bbe668ea15b10c08868434da1d7eb34739d9fafd28f2eb1c2c3ac00495615",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5619b99f4bda6dd065b55663ef46a6121c64daf9335a279223ca54368755398c",
+      "source_fact_keys": [
+        "source_fact:v1:0cd784221c665990a3e7e6f10e0e5418dabb426fc4d8b9a2b770e86661858551",
+        "source_fact:v1:1d45edaf371d81cc044387aeb005974e9c53d63b32d71dfe6185fba4a9904687",
+        "source_fact:v1:25f27dab6f79ca3191ec3588cef0339d7e3058c1cc1721ee2544c36c72aea91b",
+        "source_fact:v1:323103442fc5acc1717aeb40e1a6f28a487a28c2149263361196fde329326768",
+        "source_fact:v1:3bedeb6d1ff1f1225af1db2b6d3924ce7aefca7b2af3595baf0c64fd4664e6e8",
+        "source_fact:v1:405e88213b2250718da19bc49279984f6c8a33c61f9c712c7a946c119ef79be5",
+        "source_fact:v1:446055178f80f1311956e4d25a2b4c6e46746dc4505b9f60d01a228b98bb413d",
+        "source_fact:v1:804613ab67a8ae29466265065c2be2444eefc7bf71dc44aa7fc0cf5c2d73c8bd",
+        "source_fact:v1:841dfa70de052bd84690b0eec657c00d32a00746c8f411fa8a7a9a0ab4473330",
+        "source_fact:v1:c343e2c82bab37ae62be7507c20f8128257f2d86dbb20bc91f85f39d06e8acbf",
+        "source_fact:v1:e441008ce6e85cbfb739745ebc30962cd692a480f8f0765a5758d05b05121f18",
+        "source_fact:v1:fdc4a9041764b65f4fb64dbb82f1758f61804796d2f445eb4f5b61ecaa2d507b"
+      ],
+      "source_published_kst": "2026-10-08T03:10+09:00",
+      "source_title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\"",
+      "telegram_core_fact": "연준이 7일(현지시간) 공개한 9월 15~16일 연방공개시장위원회(FOMC) 의사록에 따르면 참석자 대부분은 향후 통화정책과 관련해 “연말까지 기준금리 목표범위를 한 차례 더 인상하는 것이 적절할 가능성이 높다”고 평가했다.",
+      "title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\""
     },
     "source_fact:d8afbbda30404e9db093b88b": {
       "first_seen_kst": "2026-10-06T15:14:29+09:00",
@@ -204040,6 +205666,36 @@
       "source_published_kst": "2026-10-07T09:19+09:00",
       "title": "[더벨]레이저쎌, '글로벌 톱' 메모리 프로브카드 기업에 LPB 공급"
     },
+    "source_fact:dd34d235d68afdcf43a1f750": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01302166645610952",
+      "source": "이데일리",
+      "source_body_digest": "b34bbe668ea15b10c08868434da1d7eb34739d9fafd28f2eb1c2c3ac00495615",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5619b99f4bda6dd065b55663ef46a6121c64daf9335a279223ca54368755398c",
+      "source_fact_keys": [
+        "source_fact:v1:0cd784221c665990a3e7e6f10e0e5418dabb426fc4d8b9a2b770e86661858551",
+        "source_fact:v1:1d45edaf371d81cc044387aeb005974e9c53d63b32d71dfe6185fba4a9904687",
+        "source_fact:v1:25f27dab6f79ca3191ec3588cef0339d7e3058c1cc1721ee2544c36c72aea91b",
+        "source_fact:v1:323103442fc5acc1717aeb40e1a6f28a487a28c2149263361196fde329326768",
+        "source_fact:v1:3bedeb6d1ff1f1225af1db2b6d3924ce7aefca7b2af3595baf0c64fd4664e6e8",
+        "source_fact:v1:405e88213b2250718da19bc49279984f6c8a33c61f9c712c7a946c119ef79be5",
+        "source_fact:v1:446055178f80f1311956e4d25a2b4c6e46746dc4505b9f60d01a228b98bb413d",
+        "source_fact:v1:804613ab67a8ae29466265065c2be2444eefc7bf71dc44aa7fc0cf5c2d73c8bd",
+        "source_fact:v1:841dfa70de052bd84690b0eec657c00d32a00746c8f411fa8a7a9a0ab4473330",
+        "source_fact:v1:c343e2c82bab37ae62be7507c20f8128257f2d86dbb20bc91f85f39d06e8acbf",
+        "source_fact:v1:e441008ce6e85cbfb739745ebc30962cd692a480f8f0765a5758d05b05121f18",
+        "source_fact:v1:fdc4a9041764b65f4fb64dbb82f1758f61804796d2f445eb4f5b61ecaa2d507b"
+      ],
+      "source_published_kst": "2026-10-08T03:10+09:00",
+      "source_title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\"",
+      "telegram_core_fact": "연준이 7일(현지시간) 공개한 9월 15~16일 연방공개시장위원회(FOMC) 의사록에 따르면 참석자 대부분은 향후 통화정책과 관련해 “연말까지 기준금리 목표범위를 한 차례 더 인상하는 것이 적절할 가능성이 높다”고 평가했다.",
+      "title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\""
+    },
     "source_fact:dd55e7c34fc1cbac7d9e04db": {
       "first_seen_kst": "2026-10-06T03:45:53+09:00",
       "lanes": {
@@ -204753,6 +206409,36 @@
       ],
       "source_published_kst": "2026-10-06T15:10+09:00",
       "title": "파운드리發 반도체값 도미노 인상 예고…TSMC, 내년 파운드리 단가 10% 올린다"
+    },
+    "source_fact:dea78b53f91e57a8d24ae19e": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01302166645610952",
+      "source": "이데일리",
+      "source_body_digest": "b34bbe668ea15b10c08868434da1d7eb34739d9fafd28f2eb1c2c3ac00495615",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5619b99f4bda6dd065b55663ef46a6121c64daf9335a279223ca54368755398c",
+      "source_fact_keys": [
+        "source_fact:v1:0cd784221c665990a3e7e6f10e0e5418dabb426fc4d8b9a2b770e86661858551",
+        "source_fact:v1:1d45edaf371d81cc044387aeb005974e9c53d63b32d71dfe6185fba4a9904687",
+        "source_fact:v1:25f27dab6f79ca3191ec3588cef0339d7e3058c1cc1721ee2544c36c72aea91b",
+        "source_fact:v1:323103442fc5acc1717aeb40e1a6f28a487a28c2149263361196fde329326768",
+        "source_fact:v1:3bedeb6d1ff1f1225af1db2b6d3924ce7aefca7b2af3595baf0c64fd4664e6e8",
+        "source_fact:v1:405e88213b2250718da19bc49279984f6c8a33c61f9c712c7a946c119ef79be5",
+        "source_fact:v1:446055178f80f1311956e4d25a2b4c6e46746dc4505b9f60d01a228b98bb413d",
+        "source_fact:v1:804613ab67a8ae29466265065c2be2444eefc7bf71dc44aa7fc0cf5c2d73c8bd",
+        "source_fact:v1:841dfa70de052bd84690b0eec657c00d32a00746c8f411fa8a7a9a0ab4473330",
+        "source_fact:v1:c343e2c82bab37ae62be7507c20f8128257f2d86dbb20bc91f85f39d06e8acbf",
+        "source_fact:v1:e441008ce6e85cbfb739745ebc30962cd692a480f8f0765a5758d05b05121f18",
+        "source_fact:v1:fdc4a9041764b65f4fb64dbb82f1758f61804796d2f445eb4f5b61ecaa2d507b"
+      ],
+      "source_published_kst": "2026-10-08T03:10+09:00",
+      "source_title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\"",
+      "telegram_core_fact": "연준이 7일(현지시간) 공개한 9월 15~16일 연방공개시장위원회(FOMC) 의사록에 따르면 참석자 대부분은 향후 통화정책과 관련해 “연말까지 기준금리 목표범위를 한 차례 더 인상하는 것이 적절할 가능성이 높다”고 평가했다.",
+      "title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\""
     },
     "source_fact:dea9ba23aa8614bcbbe9fac0": {
       "first_seen_kst": "2026-10-07T17:23:27+09:00",
@@ -209572,6 +211258,36 @@
       "source_title": "폐배터리서 리튬 캔다…웰크론한텍, ‘이차전지 자원회수’ 사업 확장",
       "telegram_core_fact": "실제 웰크론한텍 중국법인은 현지 주요 리튬이온배터리 분리막 생산시설을 대상으로 총 4건의 에너지 설비 프로젝트를 따내며 올해 3분기 누적 수주액 242억원을 달성했다.",
       "title": "폐배터리서 리튬 캔다…웰크론한텍, ‘이차전지 자원회수’ 사업 확장"
+    },
+    "source_fact:e8f6b26720b0ce06d6a3feac": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01302166645610952",
+      "source": "이데일리",
+      "source_body_digest": "b34bbe668ea15b10c08868434da1d7eb34739d9fafd28f2eb1c2c3ac00495615",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5619b99f4bda6dd065b55663ef46a6121c64daf9335a279223ca54368755398c",
+      "source_fact_keys": [
+        "source_fact:v1:0cd784221c665990a3e7e6f10e0e5418dabb426fc4d8b9a2b770e86661858551",
+        "source_fact:v1:1d45edaf371d81cc044387aeb005974e9c53d63b32d71dfe6185fba4a9904687",
+        "source_fact:v1:25f27dab6f79ca3191ec3588cef0339d7e3058c1cc1721ee2544c36c72aea91b",
+        "source_fact:v1:323103442fc5acc1717aeb40e1a6f28a487a28c2149263361196fde329326768",
+        "source_fact:v1:3bedeb6d1ff1f1225af1db2b6d3924ce7aefca7b2af3595baf0c64fd4664e6e8",
+        "source_fact:v1:405e88213b2250718da19bc49279984f6c8a33c61f9c712c7a946c119ef79be5",
+        "source_fact:v1:446055178f80f1311956e4d25a2b4c6e46746dc4505b9f60d01a228b98bb413d",
+        "source_fact:v1:804613ab67a8ae29466265065c2be2444eefc7bf71dc44aa7fc0cf5c2d73c8bd",
+        "source_fact:v1:841dfa70de052bd84690b0eec657c00d32a00746c8f411fa8a7a9a0ab4473330",
+        "source_fact:v1:c343e2c82bab37ae62be7507c20f8128257f2d86dbb20bc91f85f39d06e8acbf",
+        "source_fact:v1:e441008ce6e85cbfb739745ebc30962cd692a480f8f0765a5758d05b05121f18",
+        "source_fact:v1:fdc4a9041764b65f4fb64dbb82f1758f61804796d2f445eb4f5b61ecaa2d507b"
+      ],
+      "source_published_kst": "2026-10-08T03:10+09:00",
+      "source_title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\"",
+      "telegram_core_fact": "연준이 7일(현지시간) 공개한 9월 15~16일 연방공개시장위원회(FOMC) 의사록에 따르면 참석자 대부분은 향후 통화정책과 관련해 “연말까지 기준금리 목표범위를 한 차례 더 인상하는 것이 적절할 가능성이 높다”고 평가했다.",
+      "title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\""
     },
     "source_fact:e8fcfdb5dd31fca11bb40af6": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
@@ -219142,6 +220858,28 @@
       "source": "매일경제",
       "title": "“긴축의 시대 투자로 정면돌파” … 서울머니쇼+에 초대합니다"
     },
+    "title:037553d13b952e29aa7c3e21": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008001751099",
+      "source": "연합뉴스",
+      "source_body_digest": "f239b79f24727ec4475ba2e3f5e13c0724e26b71a3da743bcd00d2d00c84d324",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d08fe7fe283d2233afd1c3303d216f71d9703bb353ebbee712b37e31339aaa94",
+      "source_fact_keys": [
+        "source_fact:v1:04aa94072d3dcec4d3e60948d5a1088f35ed231bb7713617e3208423e92bbf19",
+        "source_fact:v1:357c29abbdc710e4740dae7a17b0f9652864c354dc87fd4d120496f2c6d25508",
+        "source_fact:v1:9b406dbedfd35360dd0180560c9604ba5f8a7d3768ad402c8aea80e7297c3a31",
+        "source_fact:v1:cce36d3ae7f4795af22f0b25c12cd8aca25f0e97367a8c021cfdb666d6921ede"
+      ],
+      "source_published_kst": "2026-10-08T03:39+09:00",
+      "source_title": "사우디 \"리야드·아브하 공항서 3명 사망\"…후티 잇단 공습 주장(종합) | 연합뉴스",
+      "telegram_core_fact": "예멘 정부군과 사우디 주도 연합군이 지난 4일 후티가 장악한 영토를 탈환하기 위한 '예멘의 새벽' 작전을 선언하고 대규모 공세에 나서자 후티는 이후 사우디 본토의 공항과 정유시설을 탄도미사일과 드론으로 잇달아 공격했다고 밝히고 있다.",
+      "title": "사우디 \"리야드·아브하 공항서 3명 사망\"…후티 잇단 공습 주장(종합) | 연합뉴스"
+    },
     "title:03a5c15e8c5f1bf6ade7ecf9": {
       "first_seen_kst": "2026-10-06T19:10:36+09:00",
       "lanes": {
@@ -224604,6 +226342,30 @@
       "source_published_kst": "2026-10-06T09:35+09:00",
       "title": "iM증권, 국내 주식 소수점 거래 서비스 개시"
     },
+    "title:2863d7720a68c06d9db82f68": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633582",
+      "source": "이투데이",
+      "source_body_digest": "1ca7eb2cac17c36b9b558d8d67af0dd4623e63425a6a6e10995312ae188b5fc7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f536ebc461e62fcfcd99cf9c229928cb0fc329e662288bcc6780a9c4bca44992",
+      "source_fact_keys": [
+        "source_fact:v1:1ed086871b6d966f9828426c96a6321d4470a40ae876806734b8998e4834fc29",
+        "source_fact:v1:3b12eafcb3155a94716a356e10527eb0ebf600eb1618ec9ea75e6ac8698fd359",
+        "source_fact:v1:64486ca8a34af119f907efece4b3b0317fbde93fabe16c703677bd936c721cbb",
+        "source_fact:v1:b718169f6a338d864f2780345562ef388c45cfb7655f4295e8d4f17ee8fe87d8",
+        "source_fact:v1:d70b3a2120c42ece24483be5f07b8875b7a58ac1a9fdec176f7579d264ddd60c",
+        "source_fact:v1:e8539b94567508b2ffd446525bcb95454f4a049411d1ddcebdc9e2dbcdaf9ff7"
+      ],
+      "source_published_kst": "2026-10-07T18:01+09:00",
+      "source_title": "“현대지에프홀딩스, 자사주 소각‧배당수익 확대로 주주환원 강화”",
+      "telegram_core_fact": "현대지에프홀딩스는 이달 중 자사주 잔여 물량을 집중적으로 매입한 뒤 1000억원 규모, 발행주식의 약 4.0%에 해당하는 자사주를 11~12월 중 전량 소각다.",
+      "title": "“현대지에프홀딩스, 자사주 소각‧배당수익 확대로 주주환원 강화”"
+    },
     "title:2873f2703bb1cee392f31568": {
       "first_seen_kst": "2026-10-04T17:14:34+09:00",
       "lanes": {
@@ -224912,6 +226674,36 @@
       ],
       "source_published_kst": "2026-10-06T11:01+09:00",
       "title": "자동차 화면용 강화유리 수입승인 없앤다…디스플레이 규제 개선"
+    },
+    "title:2af2ec21ca8a1cd2073f239d": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01302166645610952",
+      "source": "이데일리",
+      "source_body_digest": "b34bbe668ea15b10c08868434da1d7eb34739d9fafd28f2eb1c2c3ac00495615",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5619b99f4bda6dd065b55663ef46a6121c64daf9335a279223ca54368755398c",
+      "source_fact_keys": [
+        "source_fact:v1:0cd784221c665990a3e7e6f10e0e5418dabb426fc4d8b9a2b770e86661858551",
+        "source_fact:v1:1d45edaf371d81cc044387aeb005974e9c53d63b32d71dfe6185fba4a9904687",
+        "source_fact:v1:25f27dab6f79ca3191ec3588cef0339d7e3058c1cc1721ee2544c36c72aea91b",
+        "source_fact:v1:323103442fc5acc1717aeb40e1a6f28a487a28c2149263361196fde329326768",
+        "source_fact:v1:3bedeb6d1ff1f1225af1db2b6d3924ce7aefca7b2af3595baf0c64fd4664e6e8",
+        "source_fact:v1:405e88213b2250718da19bc49279984f6c8a33c61f9c712c7a946c119ef79be5",
+        "source_fact:v1:446055178f80f1311956e4d25a2b4c6e46746dc4505b9f60d01a228b98bb413d",
+        "source_fact:v1:804613ab67a8ae29466265065c2be2444eefc7bf71dc44aa7fc0cf5c2d73c8bd",
+        "source_fact:v1:841dfa70de052bd84690b0eec657c00d32a00746c8f411fa8a7a9a0ab4473330",
+        "source_fact:v1:c343e2c82bab37ae62be7507c20f8128257f2d86dbb20bc91f85f39d06e8acbf",
+        "source_fact:v1:e441008ce6e85cbfb739745ebc30962cd692a480f8f0765a5758d05b05121f18",
+        "source_fact:v1:fdc4a9041764b65f4fb64dbb82f1758f61804796d2f445eb4f5b61ecaa2d507b"
+      ],
+      "source_published_kst": "2026-10-08T03:10+09:00",
+      "source_title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\"",
+      "telegram_core_fact": "연준이 7일(현지시간) 공개한 9월 15~16일 연방공개시장위원회(FOMC) 의사록에 따르면 참석자 대부분은 향후 통화정책과 관련해 “연말까지 기준금리 목표범위를 한 차례 더 인상하는 것이 적절할 가능성이 높다”고 평가했다.",
+      "title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\""
     },
     "title:2afcb84164e1b9610918773c": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
@@ -225564,6 +227356,32 @@
       "link": "https://www.hankyung.com/article/2026100210481",
       "source": "한국경제",
       "title": "中 '한 자녀 정책' 부메랑…고령층 돌봄 구멍 뚫렸다"
+    },
+    "title:2e139b3d931b63ab0af53594": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895232",
+      "source": "헤럴드경제",
+      "source_body_digest": "df995e11642fc7707a2306fe55bd16bfb3c16f28a8da435c2d2587802513b494",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d5099adef4f7a8360d8e05288b6fb55bd68cfd1a747a45529b853026f3b09db",
+      "source_fact_keys": [
+        "source_fact:v1:594961b2dfe60fefb0cba8c81f4b57d92a22d8145b729c744bbc3564e3885452",
+        "source_fact:v1:8576288dd9824545078526fef9b98699a48703f4204f75867847fd40d8c0ae10",
+        "source_fact:v1:979cc8609a71f27cd5a60dfd378f781d1d3133ca59c6821893b2e57ef0e97bcb",
+        "source_fact:v1:d370488cb6da369d701e512ad4bdfc8298c69e525c522d5ceb19aa5d5aee6e21",
+        "source_fact:v1:d8c2cdfbf3688d00f45a686c3489ff204ee43b186d7457062bbd13dc3014c5ac",
+        "source_fact:v1:dc6145d91dce8523a7632cff49b5c43a1358ac2a316ceb3fbf8aa59c99af3a6f",
+        "source_fact:v1:dc6183e2452024b2c8372e398276ea3bd50fbb4ded61a699fc8b0c072f80a051",
+        "source_fact:v1:e9212f03a3876e75dbfc0b593ce138e70f5dcfeeb46290a1bec3964445abd86b"
+      ],
+      "source_published_kst": "2026-10-07T18:40+09:00",
+      "source_title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]",
+      "telegram_core_fact": "김세빈 유안타증권 연구원은 “지수 전체의 이익추정치 개선보다 반도체 소부장과 기판, 통신장비 등 일부 IT 업종과 테마 중심의 상승”이라며 “지수 추격보다 실적과 매출 추정치가 실제로 올라오는 업종으로 압축할 필요가 있다”고 조언했다.",
+      "title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]"
     },
     "title:2e443c9635203e428e0306af": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
@@ -232476,6 +234294,23 @@
       "source_published_kst": "2026-10-05T08:57+09:00",
       "title": "토스인슈, 6개월 만에 작년 순이익 넘었다…성장세 가속"
     },
+    "title:58a041faeafda11a028de7f8": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170996",
+      "source": "매일경제",
+      "source_body_digest": "b2320332c6cdc4466ce107b5889e21b686a55bcfc2fa9787c056293f93551d98",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T01:50+09:00",
+      "source_title": "고고로, 6200만 달러 규모 신주 발행 소식에 지분 희석 우려 부각",
+      "telegram_core_fact": "주당 2.48달러에 약 6180만 달러 신주 발행이 추진되면서 기존 주주의 지분 희석 우려가 커졌습니다. 발행가가 직전 주가보다 낮은 점도 부담이며, 이사 지배 법인 등 최대주주 의존도 높아졌습니다.",
+      "title": "고고로, 6200만 달러 규모 신주 발행 소식에 지분 희석 우려 부각"
+    },
     "title:58a76e05b35cd14b423a792b": {
       "first_seen_kst": "2026-09-19T07:23:13+09:00",
       "lanes": {
@@ -233075,6 +234910,26 @@
       "link": "https://www.newsis.com/view/NISX20261001_0003811534",
       "source": "뉴시스",
       "title": "[올댓차이나] 대만 증시, 韓美 반도체 호조에 0.86%↑ 상승 마감…1주 만에 사상최고 경신"
+    },
+    "title:5cf26c767da76cc137688684": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170953",
+      "source": "매일경제",
+      "source_body_digest": "86273171042b5706eb61b5393201675744bd5917c3fc2630512e767ee29fda2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cadb7ce343a93620cae885a902b014a92506c1d9bb16b3bc4f69ad99f9f7ffe9",
+      "source_fact_keys": [
+        "source_fact:v1:0cb91f6e5fe76ddfa8c0d23652ec0798d27941cef5175749de9027f3681b7c4a",
+        "source_fact:v1:4c87a830172707c511d29f673d792782ded4a6f980f6d57cdc166c77155f6c36"
+      ],
+      "source_published_kst": "2026-10-07T22:21+09:00",
+      "source_title": "그린서클디카보나이즈, AI 데이터센터 냉각 진출 발표에도 구체성 부족 부각",
+      "telegram_core_fact": "AI 데이터센터 액체냉각 시장 진출 계획을 발표했지만 계약, 투자 규모, 출시 일정이 공개되지 않았고 초기 협의 단계에 머물러 있습니다. 매출 기여 시점이 불확실해 실적 영향이 제한적이라는 평가가 나오며 실망 매물이 나온 것으로 보입니다.",
+      "title": "그린서클디카보나이즈, AI 데이터센터 냉각 진출 발표에도 구체성 부족 부각"
     },
     "title:5d0606284326da19dcc13337": {
       "first_seen_kst": "2026-10-07T09:44:16+09:00",
@@ -235353,6 +237208,31 @@
       ],
       "source_published_kst": "2026-10-06T17:50+09:00",
       "title": "고금리 덮치자 … 국민연금, 보험株 사고 증권株 팔아"
+    },
+    "title:6d4effd573d3921dd735d7fa": {
+      "first_seen_kst": "2026-10-08T04:14:15+09:00",
+      "lanes": {
+        "live": "2026-10-08T04:14:15+09:00"
+      },
+      "last_seen_kst": "2026-10-08T04:14:15+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675185",
+      "source": "블로터",
+      "source_body_digest": "7ee5a39ea152ad9168853de824ed3ac1898aaae81a7d1c5ff5656665d877acdf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f449e9a06ebcb07642554e5e2a2995a97f5c4d6270347c075d7e6cd792893cfc",
+      "source_fact_keys": [
+        "source_fact:v1:731b952e75985582be2f2532aded5daee93cb6ee88b2f77f5350c519542d6c3f",
+        "source_fact:v1:8a9d91841015ef07f03d3cc7bcf2bfc5363b22b77118c54920d9afa78eba7520",
+        "source_fact:v1:95b3c1b3ef788339bf4b3bf9da078afff7166bb437b54a0208ac7a2a5e625d80",
+        "source_fact:v1:9f545c71c46b323a15b242dc75f736faa5b950e3bbffb9b1ae96b94ba2d2961c",
+        "source_fact:v1:cdf46f15affef72b534fa23e597fe52947971064646c4540e3cfa5ed0cb533ff",
+        "source_fact:v1:cfd870c4ab690298ea199a891a20a8aa5c19924587f3bd221f709002ef7eb0c7",
+        "source_fact:v1:d08776aadbbe358e4b5437355674f99a6d24db138003a6a2486dbaa958944359"
+      ],
+      "source_published_kst": "2026-10-07T13:43+09:00",
+      "source_title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배",
+      "telegram_core_fact": "파라다이스가 공모 회사채 수요예측에서 모집액의 3.4배에 달하는 투자 수요를 확보하며 2년 연속 흥행에 성공했다. 파라다이스에 따르면 회사는 지난 6일 총 600억원 공모 회사채 발행을 위한 수요예측을 실시한 결과 모집액의 3.42배인 총 2050억원의 주문이 접수됐다.",
+      "title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배"
     },
     "title:6d6c51e6fffe2b5a4326de96": {
       "first_seen_kst": "2026-09-27T12:02:47+09:00",
@@ -258087,5 +259967,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-08T03:51:03+09:00"
+  "updated_at_kst": "2026-10-08T04:14:15+09:00"
 }
