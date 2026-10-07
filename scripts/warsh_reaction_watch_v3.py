@@ -97,13 +97,17 @@ def _next_fomc_meeting():
                 continue
             end = text.find(f"{year + 1} FOMC Meetings", start + 1)
             section = text[start:end if end >= 0 else None]
+            # Regular FOMC meetings in the official calendar are shown as
+            # two-day ranges (for example, October 27-28). Requiring the range
+            # prevents minutes-release dates such as October 7 from being
+            # misidentified as the next policy meeting.
             for m in re.finditer(
-                rf"\b({month_re})\s+(\d{{1,2}})(?:-(\d{{1,2}}))?\*?",
+                rf"\b({month_re})\s+(\d{{1,2}})-(\d{{1,2}})\*?",
                 section,
                 re.I,
             ):
                 month = list(calendar.month_name).index(m.group(1).capitalize())
-                day = int(m.group(3) or m.group(2))
+                day = int(m.group(3))
                 try:
                     d = datetime(year, month, day).date()
                 except ValueError:
