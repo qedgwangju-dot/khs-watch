@@ -1,5 +1,6 @@
 import copy
 import pathlib
+import tempfile
 import sys
 import unittest
 from unittest.mock import patch
@@ -137,6 +138,50 @@ class SolidigmIPOTests(unittest.TestCase):
             rec = w.extract_patch(event)
         self.assertEqual(rec.get("stage"), "exploring")
         self.assertNotIn("valuation_max_usd", rec)
+
+
+    def test_one_time_bank_roles_correction_never_repeats(self):
+        state = {
+            "watch_version": w.WATCH_VERSION,
+            "current_state": {
+                "stage": "underwriters_selected",
+                "target_year": 2027,
+                "source_name": "Bloomberg",
+                "source_url": w.REPORT_EDAILY_URL,
+                "reported_original": "Bloomberg",
+                "evidence_state": "top_tier_report",
+                "valuation_max_usd": 100_000_000_000,
+                "raise_target_usd": 10_000_000_000,
+                "lead_underwriters": ["Goldman Sachs", "Morgan Stanley"],
+                "other_syndicate_banks": ["JPMorgan Chase", "Citigroup", "UBS"],
+                "user_original_url": w.REPORT_YONHAP_URL,
+                "ipo_officially_confirmed": False,
+            },
+            "manufacturing_state": dict(w.MANUFACTURING_BASELINE),
+        }
+        memory = {"value": state}
+        def fetch_state():
+            return copy.deepcopy(memory["value"])
+        def record_state(value):
+            memory["value"] = copy.deepcopy(value)
+        with tempfile.TemporaryDirectory() as tmp:
+            alert = pathlib.Path(tmp) / "solidigm_alert.html"
+            with patch.object(w, "ALERT", alert), \\
+                 patch.object(w, "load_state", side_effect=fetch_state), \\
+                 patch.object(w, "save_state", side_effect=record_state), \\
+                 patch.object(w, "read_events", return_value=[]), \\
+                 patch.object(w, "read_manufacturing_events", return_value=[]), \\
+                 patch.object(w, "fx_quote", return_value=(1340.0, "테스트 환율")):
+                w.main()
+                self.assertTrue(alert.exists())
+                text = alert.read_text(encoding="utf-8")
+                self.assertIn("알림 표시 보강", text)
+                self.assertIn("신주·구주 매출 비율", text)
+                self.assertIn("Goldman Sachs, Morgan Stanley", text)
+                self.assertIn("확정 공모금액 감액이 아니라", text)
+                self.assertEqual(memory["value"]["ipo_alert_format_version"], w.IPO_ALERT_FORMAT_VERSION)
+                w.main()
+                self.assertFalse(alert.exists())
 
     def test_reuters_baseline_stage_and_amounts(self):
         text = (
