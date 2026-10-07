@@ -9610,6 +9610,28 @@ def alert_dedup_key(alert: dict) -> tuple[str, str]:
     return (canonical, str(alert.get("published") or "")[:10])
 
 
+def delivery_batch_project_key(alert: dict) -> str:
+    """Collapse same-site, same-capacity data-center coverage within one report."""
+    title = str(alert.get("source_title") or alert.get("original_news") or alert.get("news") or "")
+    body = article_summary_body(str(alert.get("source_body") or "")) if alert.get("body_verified") else ""
+    data_center = re.compile(r"데이터\s*센터|데이터센터|\bAIDC\b|\bIDC\b|data\s*cent(?:er|re)", re.I)
+    capacity = re.compile(r"(?P<value>\d+(?:[.,]\d+)?)\s*(?:MW|㎿|메가와트)", re.I)
+    site_aliases = (
+        ("incheon_cheongna", re.compile(r"청라|원창동|인천\s*서해구|cheongna|wonchang[- ]?dong", re.I)),
+    )
+    for sentence in [title, *market_materiality.source_sentences(body)]:
+        if not data_center.search(sentence):
+            continue
+        match = capacity.search(sentence)
+        if not match:
+            continue
+        for site, alias in site_aliases:
+            if alias.search(sentence):
+                normalized_capacity = match.group("value").replace(",", ".")
+                return f"data-center:{site}:{normalized_capacity}mw"
+    return ""
+
+
 def has_term(text: str, terms: list[str]) -> bool:
     return any(term.lower() in text for term in terms)
 
@@ -11047,6 +11069,7 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
     seen: set[tuple[str, str]] = set()
     seen_facts: set[str] = set()
     seen_cores: set[str] = set()
+    seen_projects: set[str] = set()
     for alert in candidates:
         if alert["market_materiality"]["disposition"] == "exclude":
             alert["_exclusion_reason"] = "market_materiality:" + alert["market_materiality"]["reason"]
@@ -11124,6 +11147,10 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
                 or (core_key and core_key in seen_cores)):
             alert.setdefault("_exclusion_reason", "semantic_duplicate")
             continue
+        project_key = delivery_batch_project_key(normalized)
+        if project_key and project_key in seen_projects:
+            alert["_exclusion_reason"] = "same_project_in_delivery_batch"
+            continue
         if is_low_impact_admin_alert(normalized):
             alert["_exclusion_reason"] = "low_impact_admin_document"
             continue
@@ -11153,6 +11180,8 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
         selected.append(normalized)
         seen.add(key)
         seen_facts.update(fact_keys)
+        if project_key:
+            seen_projects.add(project_key)
         if core_key:
             seen_cores.add(core_key)
         if len(selected) >= limit:

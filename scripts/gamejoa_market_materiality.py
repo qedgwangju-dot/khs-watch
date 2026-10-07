@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 108
+VERSION = 109
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -3516,6 +3516,54 @@ def equity_publication_assessment(title: str, evidence: list[dict], *, body: str
         for item in evidence
     ):
         return {'eligible': False, 'reason': 'roadmap_overview_without_incremental_execution'}
+    regional_pair = re.search(r"대구\s*[·ㆍ,/]\s*경북|부산\s*[·ㆍ,/]\s*울산|전북\s*[·ㆍ,/]\s*전남|충북\s*[·ㆍ,/]\s*충남", title)
+    regional_indicator = re.search(r"제조업\s*생산|지역\s*실물경제|대형소매점\s*판매|승용차\s*신규등록", title)
+    regional_issuer_event = any(
+        item['kind'] in {'commercial_order', 'earnings_or_guidance', 'corporate_ownership_execution',
+                         'capital_or_shareholder_action', 'procurement_execution_stage'}
+        and NEW_EXECUTION.search(item['source_excerpt'])
+        for item in evidence
+    )
+    if regional_pair and regional_indicator and not regional_issuer_event:
+        return {'eligible': False, 'reason': 'regional_activity_report_without_listed_issuer_catalyst'}
+    housing_auction_recap = re.search(r"낙찰가율|아파트\s*경매|경매동향", title)
+    housing_equity_link = re.search(r"리츠|건설사|건설주|은행주|주택금융|주택담보대출|모기지|주택공급\s*정책", title, re.I)
+    if housing_auction_recap and not housing_equity_link:
+        return {'eligible': False, 'reason': 'housing_auction_metric_without_equity_catalyst'}
+    reaction_headline = re.search(r"협회|協|association|업계", title, re.I) and re.search(
+        r"환영|촉구|요청|건의|반발|비판|우려|제언", title,
+    )
+    headline_market_action = re.search(
+        r"시행|의결|확정|공표|발표|공시|금지|제한|수주|계약\s*체결|매입|매각|상향|하향|인상|인하|증액|감액", title,
+    )
+    if reaction_headline and not headline_market_action:
+        return {'eligible': False, 'reason': 'industry_reaction_without_headlined_market_action'}
+    scenario_headline = re.search(r"가능성|우려|전망|예상|potential|could|may", title, re.I)
+    # Publisher chrome and short subheads can occupy the first parsed rows.
+    # Use the first complete prose sentences so later, unrelated statements do
+    # not turn an attributed scenario into an official market event.
+    prose_lead_rows = [
+        row for row in source_rows
+        if len(row) >= 35 and re.search(r'[.!?。][”’"\']?$', row)
+    ][:5]
+    prose_lead = " ".join(prose_lead_rows)
+    think_tank_attribution = re.search(
+        r"CSIS|ISW|CFR|전략국제문제연구소|싱크탱크|think\s*tank|"
+        r"(?:전쟁)?연구소.{0,40}(?:연구원|분석가|국장|director|fellow)|"
+        r"(?:연구원|분석가|국장|director|fellow).{0,30}(?:전망|말했다|밝혔다|분석|가능성)|"
+        r"전문가.{0,30}(?:전망|말했다|밝혔다|분석)",
+        prose_lead,
+        re.I,
+    )
+    official_action = re.search(
+        r"(?:대통령|총리|장관|정부|상무부|재무부|중앙은행|금융위|FCC|당국|규제기관).{0,70}"
+        r"(?:발표|공표|의결|확정|명령|서명|시행|금지|제한|인상|인하|말했다|밝혔다)",
+        prose_lead,
+        re.I,
+    )
+    if (scenario_headline and think_tank_attribution and not official_action
+            and all(item.get('stage') == 'early_signal' for item in evidence)):
+        return {'eligible': False, 'reason': 'expert_scenario_without_official_action_or_market_data'}
     return {
         'eligible': True,
         'reason': 'foreground_source_market_change',
@@ -3586,10 +3634,13 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
     if foreign_local_country and foreign_local_measure and not korean_exposure:
         result.update(disposition="exclude", priority=0, reason="foreign_local_measure_without_korean_equity_channel")
         return result
-    regional_production = bool(
-        re.search(r"(?:서울|부산|대구|인천|광주|대전|울산|세종|경기|강원|충북|충남|전북|전남|경북|경남|제주).{0,35}(?:제조업\s*생산|수출)", title)
-        and re.search(r"(?:제조업\s*생산|수출).{0,35}(?:서울|부산|대구|인천|광주|대전|울산|세종|경기|강원|충북|충남|전북|전남|경북|경남|제주)", title)
-    )
+    regional_production = bool(re.search(
+        r"(?:서울|부산|대구|인천|광주|대전|울산|세종|경기|강원|충북|충남|전북|전남|경북|경남|제주)"
+        r"(?:[·ㆍ,/]\s*(?:서울|부산|대구|인천|광주|대전|울산|세종|경기|강원|충북|충남|전북|전남|경북|경남|제주))?"
+        r".{0,45}(?:제조업\s*생산|수출)|(?:제조업\s*생산|수출).{0,45}"
+        r"(?:서울|부산|대구|인천|광주|대전|울산|세종|경기|강원|충북|충남|전북|전남|경북|경남|제주)",
+        title,
+    ))
     direct_issuer_change = re.search(r"(?:삼성전자|SK하이닉스|현대차|기아|LG전자|포스코|한국전력|두산에너빌리티).{0,70}(?:매출|영업이익|수주|공급\s*계약|생산량)", body[:2500])
     if regional_production and not direct_issuer_change:
         result.update(disposition="exclude", priority=0, reason="regional_production_without_listed_issuer_change")

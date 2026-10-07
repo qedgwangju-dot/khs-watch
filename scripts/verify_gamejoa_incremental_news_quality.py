@@ -4752,6 +4752,114 @@ class IncrementalNewsTests(unittest.TestCase):
         with patch.dict(os.environ, {'RADAR_RUN_MODE': 'preopen'}):
             self.assertEqual(radar.low_impact_live_publication_reason(cases[0][1], now), '')
 
+    def test_oct07_market_radar_rejects_low_equity_signal_and_collapses_same_project(self):
+        now = dt.datetime(2026, 10, 7, 17, 30, tzinfo=dt.timezone(dt.timedelta(hours=9)))
+        hdec_title = '현대엔지니어링, 인천 데이터센터 공사 수주…총 8700억원 규모'
+        hdec_body = (
+            '현대엔지니어링이 군산에 이어 인천에서도 데이터센터 신축사업 수주에 성공했다. '
+            '이도테라원이 설립한 청라 IDC PFV가 발주한 이번 사업은 인천 서해구 원창동 일원에 '
+            '50MW급 데이터센터를 구축하는 프로젝트로 총 사업규모는 약 8700억원이다.'
+        )
+        kt_title = "KT클라우드, 50㎿급 '청라 AIDC' 구축 참여…수도권 AI 인프라 수요 대응"
+        kt_body = (
+            'KT클라우드는 인천 청라 지역에 구축되는 50메가와트급 인공지능 데이터센터 사업에 참여한다고 밝혔다. '
+            'KT클라우드는 설계·구축·운영 파트너로 참여하고 현대엔지니어링은 공동 시공을 담당한다.'
+        )
+        goldman_title = '골드만삭스, 삼성전자 3분기 이익 전망 112조원에서 106조원으로 하향'
+        goldman_body = (
+            '골드만삭스는 원·달러 환율 가정을 반영해 삼성전자의 3분기 영업이익 전망을 '
+            '112조원에서 106조원으로 약 5% 낮췄다.'
+        )
+        regional_title = '대구·경북 제조업 생산 엇갈려…소비는 동반 감소'
+        regional_body = (
+            '한국은행 대구경북본부가 최근 지역 실물경제 동향을 발표했다. '
+            '8월 제조업 생산은 대구에서 4.8% 증가하고 경북에서 3.2% 감소했다. '
+            '두 지역 모두 출하가 감소하고 재고가 증가했다.'
+        )
+        reaction_title = '디스플레이協, “디스플레이 산업 규제 개선 환영”'
+        reaction_body = (
+            '한국디스플레이산업협회가 규제합리화위원회가 발표한 현장규제 개선방안에 환영 뜻을 밝혔다. '
+            '위원회는 자동차 디스플레이 강화유리 수입승인 제외, 재생에너지 PPA 방식 확대, '
+            '국가핵심기술에 대한 생성형 AI 활용기준 마련을 발표했다.'
+        )
+        speculation_title = '러 북한에 제트 드론 기술 대거 이전 가능성'
+        speculation_body = (
+            '러 북한에 제트 드론 기술 대거 이전 가능성\n'
+            '등록 2026.10.07 06:35:52수정 2026.10.07 09:48:25\n'
+            '구글에서 선호하는 매체로 추가\n작게\n크게\n'
+            '우크라에서 일반 드론 요격률의 절반 수준\n북 대량 생산 능력 갖추면 한국 방어 큰 부담\n'
+            '저렴한 요격 수단 확보 서둘러야\n'
+            '[서울=뉴시스] 강영진 기자 = 러시아가 북한에 제트추진 드론 기술을 이전해 북한의 드론 공격 능력이 강화됐을 '
+            '가능성이 있다는 분석이 제기됐다고 미국의 소리(VOA)가 6일(현지시각) 보도했다.\n'
+            '전문가들은 값싼 제트추진 드론을 대량으로 투입할 경우 한국에게 요격 수단 소진 등 방공망에 상당한 부담을 줄 수 있다고 평가했다.\n'
+            '미 전쟁연구소(ISW)의 조지 바로스 혁신·오픈소스 분석기법 국장은 제트추진 드론의 상대적으로 낮은 비용과 빠른 속도, '
+            '대량생산 가능성에 주목하며 북한에 관련 기술이 이전됐다면 상당한 군사적 의미가 있다고 밝혔다.\n'
+            '바로스는 “제트추진 드론은 다양한 용도를 가진 저렴한 타격 수단이며 대량생산이 가능하고 요격하기도 매우 어렵다”고 지적했다.\n'
+            '바로스는 특히 북한이 탄도미사일과 순항미사일, 기존 저속 드론에 제트추진 드론까지 결합해 대량으로 투입할 경우 '
+            '서로 다른 속도와 비행 특성을 가진 무기들이 동시에 날아들면서 방공망에 상당한 부담을 줄 수 있다고 분석했다.\n'
+            '앞서 볼로디미르 젤렌스키 우크라이나 대통령은 지난 4일 러시아가 북한에 제트추진 드론 기술을 이전한 것으로 믿는다고 밝혔다. '
+            '다만 젤렌스키는 제트추진 드론 기술 이전에 대한 구체적인 증거는 공개하지 않았다.'
+        )
+        housing_title = '서울 아파트 낙찰가율 1년 7개월 만에 최저…중저가로 실수요 몰려'
+        housing_body = (
+            '지난달 서울 아파트 낙찰가율은 94.7%로 전월보다 2.3%포인트 하락했다. '
+            '서울 도봉구 한 아파트에는 26명이 입찰해 감정가의 95%에 낙찰됐다.'
+        )
+
+        for title, body, expected_reason in (
+            (regional_title, regional_body, 'regional_production_without_listed_issuer_change'),
+            (reaction_title, reaction_body, 'industry_reaction_without_headlined_market_action'),
+            (speculation_title, speculation_body, 'expert_scenario_without_official_action_or_market_data'),
+            (housing_title, housing_body, 'housing_auction_metric_without_equity_catalyst'),
+        ):
+            with self.subTest(rejected=title):
+                assessment = materiality.assess(title, body)
+                if expected_reason == 'expert_scenario_without_official_action_or_market_data':
+                    publication = materiality.equity_publication_assessment(
+                        title,
+                        [
+                            {'kind': 'physical_supply_or_capacity', 'stage': 'early_signal',
+                             'source_excerpt': '전문가가 북한의 드론 대량생산 가능성을 전망했다.'},
+                            {'kind': 'customer_discussions', 'stage': 'early_signal',
+                             'source_excerpt': '전문가가 부품 공급망과 기술 이전 가능성을 말했다.'},
+                            {'kind': 'technology_or_clinical_stage', 'stage': 'early_signal',
+                             'source_excerpt': '연구소 분석가는 실제 배치 가능성을 전망했다.'},
+                        ],
+                        body=body,
+                    )
+                    self.assertFalse(publication['eligible'], assessment)
+                    self.assertEqual(publication['reason'], expected_reason)
+                    continue
+                if assessment['disposition'] == 'exclude':
+                    self.assertIn(expected_reason, assessment['reason'])
+                elif 'equity_publication' not in assessment:
+                    self.assertNotEqual(assessment['disposition'], 'keep', assessment)
+                else:
+                    self.assertFalse(assessment['equity_publication']['eligible'])
+                    self.assertEqual(assessment['equity_publication']['reason'], expected_reason)
+
+        hdec = alert(hdec_title, hdec_body)
+        hdec['telegram_core_fact'] = '현대엔지니어링이 인천 원창동 50MW 데이터센터 신축사업을 8700억원 규모로 수주했다.'
+        kt = alert(kt_title, kt_body, 'https://www.etnews.com/20261007000002')
+        kt['telegram_core_fact'] = 'KT클라우드는 청라 50MW 인공지능 데이터센터의 설계·구축·운영에 참여한다.'
+        goldman = alert(goldman_title, goldman_body, 'https://www.etnews.com/20261007000003')
+        goldman['telegram_core_fact'] = goldman_body
+        candidates = [
+            hdec,
+            kt,
+            goldman,
+            alert(regional_title, regional_body, 'https://www.newsis.com/view/NISX20261007_0000001'),
+            alert(reaction_title, reaction_body, 'https://www.etnews.com/20261007000004'),
+            alert(speculation_title, speculation_body, 'https://www.newsis.com/view/NISX20261007_0000005'),
+            alert(housing_title, housing_body, 'https://www.etnews.com/20261007000006'),
+        ]
+        for item in candidates:
+            item['published'] = now.isoformat()
+        with patch.object(radar.base, 'kst_now', return_value=now):
+            selected = radar.quality_display_alerts(candidates, 7)
+        self.assertEqual({item['source_title'] for item in selected}, {hdec_title, goldman_title})
+        self.assertEqual(kt.get('_exclusion_reason'), 'same_project_in_delivery_batch')
+
 
 if __name__ == "__main__":
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(IncrementalNewsTests)
@@ -4770,7 +4878,7 @@ if __name__ == "__main__":
     output["broker_report_articles"] = len(BROKER_CASES)
     output["final_runtime_run_id"] = FINAL_RUNTIME_FIXTURE["run_id"]
     output["final_runtime_articles"] = len(FINAL_RUNTIME_CASES)
-    path = ROOT / "out/gamejoa_incremental_news_verification.json"
+    path = Path(os.environ.get("GAMEJOA_INCREMENTAL_NEWS_VERIFICATION_PATH", ROOT / "out/gamejoa_incremental_news_verification.json"))
     path.parent.mkdir(exist_ok=True)
     path.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     if not result.wasSuccessful():
