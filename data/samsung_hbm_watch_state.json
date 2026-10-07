@@ -310,7 +310,7 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-10-07T09:52:56+09:00",
+  "updated_at_kst": "2026-10-07T13:24:34+09:00",
   "last_event_count": 0,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
@@ -1319,6 +1319,77 @@
         "source": "SKC",
         "scope": "absolics_customer_validation_not_mass_production",
         "excerpt": "SKC 공식: Embedding 제품은 예비평가를 통과하고 신뢰성 평가 단계, Non-Embedding은 공급사 선정 프로젝트 및 연내 PoC 준비 단계."
+      },
+      "glass_hvm_stage|samsung_electromechanics|current": {
+        "key": "glass_hvm_stage|samsung_electromechanics|current",
+        "axis": "glass_hvm_stage",
+        "value": {
+          "stage": "pilot",
+          "mass_production_target_year": null,
+          "pilot_line_location": "Sejong",
+          "prototype_production": true,
+          "mass_production_earliest_year": 2028,
+          "glass_core_metal_fill_showcased": true,
+          "precision_surface_processing_showcased": true
+        },
+        "unit": "stage,year",
+        "period": "current",
+        "as_of": "2026-09-10",
+        "evidence": "official",
+        "source_url": "https://samsungsem.com/global/newsroom/news/view.do?id=10522",
+        "source_title": "삼성전기 KPCA Show 2026 유리기판 핵심기술 공개",
+        "source": "삼성전기 공식자료",
+        "scope": "official_pilot_and_post_2027_mass_production_plan_not_customer_contract",
+        "excerpt": "세종 파일럿 라인에서 글라스 패키지기판 시제품을 생산 중이며 2027년 이후 합작법인과 본격 양산 추진. 2026 KPCA에서 미세 연결통로·금속 충진·정밀 표면가공 기술 공개.",
+        "secondary_source_url": "https://www.samsungsem.com/global/newsroom/news/view.do?id=9850"
+      },
+      "glass_jv_stage|samsung_electromechanics|glassem": {
+        "key": "glass_jv_stage|samsung_electromechanics|glassem",
+        "axis": "glass_jv_stage",
+        "value": {
+          "stage": "share_acquisition_decided",
+          "jv_name": "GlaSSEM",
+          "main_business": "Glass Core manufacturing and sales",
+          "investment_krw": 319100000000,
+          "equity_pct": 66.2,
+          "scheduled_acquisition_date": "2026-09-01",
+          "cash_investment_krw": 239100000000,
+          "in_kind_investment_krw": 80000000000,
+          "partner": "Dongwoo Fine-Chem"
+        },
+        "unit": "KRW,pct,stage",
+        "period": "current",
+        "as_of": "2026-07-02",
+        "evidence": "official",
+        "source_url": "https://m.samsungsem.com/global/about-us/investor-relations/disclosure/view.do?id=332",
+        "source_title": "삼성전기 GlaSSEM 타법인 주식·출자증권 취득 결정",
+        "source": "삼성전기 공시",
+        "scope": "official_jv_investment_decision_not_mass_production_revenue",
+        "excerpt": "가칭 GlaSSEM의 주사업은 Glass Core 제조·판매. 삼성전기 취득금액 3,191억원, 취득 후 지분 66.2%, 예정일 2026-09-01. 현금 2,391억원+현물 800억원. JV 설립 과정에서 변경 가능."
+      },
+      "glass_hvm_stage|lg_innotek|current": {
+        "key": "glass_hvm_stage|lg_innotek|current",
+        "axis": "glass_hvm_stage",
+        "value": {
+          "stage": "pilot",
+          "mass_production_target_year": 2028,
+          "pilot_line_location": "Gumi",
+          "prototype_production": true,
+          "commercialization_target_start_year": 2027,
+          "commercialization_target_end_year": 2028,
+          "uti_collaboration": true
+        },
+        "unit": "stage,year",
+        "period": "current",
+        "as_of": "2026-09-09",
+        "evidence": "official",
+        "source_url": "https://www.lginnotek.com/news/pressView.do?idx=6600",
+        "source_title": "LG이노텍 KPCA show 2026 유리기판 2028년 양산 목표",
+        "source": "LG이노텍 공식자료",
+        "scope": "official_gumi_pilot_uti_collaboration_and_2028_mass_production_target_not_customer_contract",
+        "excerpt": "구미 파일럿 라인을 기반으로 유리기판 기술을 개발하고 있으며 2028년 양산 목표. 공식 인사이트는 2027~2028년 상용화 체계 구축을 제시했고 UTI와 유리 정밀가공 연구개발 협력 중.",
+        "secondary_source_url": "https://www.lginnotek.com/news/insightsView.do?idx=236&locale=en&rowSize=9",
+        "collaboration_source_url": "https://www.lginnotek.com/news/pressView.do?idx=6572&locale=ko"
       }
     },
     "latest": {
@@ -1483,7 +1554,7 @@
         "value": 58.167,
         "unit": "USD/chip",
         "period": "2026-10",
-        "as_of": "2026-10-06",
+        "as_of": "2026-10-07",
         "evidence": "research",
         "source_url": "https://www.dramexchange.com/",
         "source_title": "DDR5 16Gb (2Gx8) 4800/5600 공개 현물가격",
@@ -2146,11 +2217,82 @@
         "source": "SKC",
         "scope": "absolics_customer_validation_not_mass_production",
         "excerpt": "SKC 공식: Embedding 제품은 예비평가를 통과하고 신뢰성 평가 단계, Non-Embedding은 공급사 선정 프로젝트 및 연내 PoC 준비 단계."
+      },
+      "glass_hvm_stage|samsung_electromechanics|current": {
+        "key": "glass_hvm_stage|samsung_electromechanics|current",
+        "axis": "glass_hvm_stage",
+        "value": {
+          "stage": "pilot",
+          "mass_production_target_year": null,
+          "pilot_line_location": "Sejong",
+          "prototype_production": true,
+          "mass_production_earliest_year": 2028,
+          "glass_core_metal_fill_showcased": true,
+          "precision_surface_processing_showcased": true
+        },
+        "unit": "stage,year",
+        "period": "current",
+        "as_of": "2026-09-10",
+        "evidence": "official",
+        "source_url": "https://samsungsem.com/global/newsroom/news/view.do?id=10522",
+        "source_title": "삼성전기 KPCA Show 2026 유리기판 핵심기술 공개",
+        "source": "삼성전기 공식자료",
+        "scope": "official_pilot_and_post_2027_mass_production_plan_not_customer_contract",
+        "excerpt": "세종 파일럿 라인에서 글라스 패키지기판 시제품을 생산 중이며 2027년 이후 합작법인과 본격 양산 추진. 2026 KPCA에서 미세 연결통로·금속 충진·정밀 표면가공 기술 공개.",
+        "secondary_source_url": "https://www.samsungsem.com/global/newsroom/news/view.do?id=9850"
+      },
+      "glass_jv_stage|samsung_electromechanics|glassem": {
+        "key": "glass_jv_stage|samsung_electromechanics|glassem",
+        "axis": "glass_jv_stage",
+        "value": {
+          "stage": "share_acquisition_decided",
+          "jv_name": "GlaSSEM",
+          "main_business": "Glass Core manufacturing and sales",
+          "investment_krw": 319100000000,
+          "equity_pct": 66.2,
+          "scheduled_acquisition_date": "2026-09-01",
+          "cash_investment_krw": 239100000000,
+          "in_kind_investment_krw": 80000000000,
+          "partner": "Dongwoo Fine-Chem"
+        },
+        "unit": "KRW,pct,stage",
+        "period": "current",
+        "as_of": "2026-07-02",
+        "evidence": "official",
+        "source_url": "https://m.samsungsem.com/global/about-us/investor-relations/disclosure/view.do?id=332",
+        "source_title": "삼성전기 GlaSSEM 타법인 주식·출자증권 취득 결정",
+        "source": "삼성전기 공시",
+        "scope": "official_jv_investment_decision_not_mass_production_revenue",
+        "excerpt": "가칭 GlaSSEM의 주사업은 Glass Core 제조·판매. 삼성전기 취득금액 3,191억원, 취득 후 지분 66.2%, 예정일 2026-09-01. 현금 2,391억원+현물 800억원. JV 설립 과정에서 변경 가능."
+      },
+      "glass_hvm_stage|lg_innotek|current": {
+        "key": "glass_hvm_stage|lg_innotek|current",
+        "axis": "glass_hvm_stage",
+        "value": {
+          "stage": "pilot",
+          "mass_production_target_year": 2028,
+          "pilot_line_location": "Gumi",
+          "prototype_production": true,
+          "commercialization_target_start_year": 2027,
+          "commercialization_target_end_year": 2028,
+          "uti_collaboration": true
+        },
+        "unit": "stage,year",
+        "period": "current",
+        "as_of": "2026-09-09",
+        "evidence": "official",
+        "source_url": "https://www.lginnotek.com/news/pressView.do?idx=6600",
+        "source_title": "LG이노텍 KPCA show 2026 유리기판 2028년 양산 목표",
+        "source": "LG이노텍 공식자료",
+        "scope": "official_gumi_pilot_uti_collaboration_and_2028_mass_production_target_not_customer_contract",
+        "excerpt": "구미 파일럿 라인을 기반으로 유리기판 기술을 개발하고 있으며 2028년 양산 목표. 공식 인사이트는 2027~2028년 상용화 체계 구축을 제시했고 UTI와 유리 정밀가공 연구개발 협력 중.",
+        "secondary_source_url": "https://www.lginnotek.com/news/insightsView.do?idx=236&locale=en&rowSize=9",
+        "collaboration_source_url": "https://www.lginnotek.com/news/pressView.do?idx=6572&locale=ko"
       }
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-10-07T09:52:56+09:00",
+      "last_checked_at_kst": "2026-10-07T13:24:34+09:00",
       "gaps": [
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
@@ -2222,7 +2364,7 @@
     "payload_hash": "9349c5f56a103cdf0c4057067982fe1d19e3f6c79c48a163d0f37f2b5e61d00f"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-07T09:53:42+09:00",
+    "checked_at_kst": "2026-10-07T13:25:34+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
