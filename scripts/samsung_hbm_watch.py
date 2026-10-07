@@ -36,6 +36,7 @@ OFFICIAL_PUBLISHED_POLL_HOURS = 24
 OFFICIAL_ERROR_RENOTIFY_HOURS = 6
 OFFICIAL_PUBLICATION_EXPECTED_DAY = 15
 OFFICIAL_SOURCE_HEALTH_VERSION = 3
+EXPORT_ALERT_FORMAT_VERSION = 2
 COMPARE_VERSION = 5
 EVENT_STATE_VERSION = 2
 SHARE_TRACK_VERSION = 1
@@ -3387,12 +3388,18 @@ def main() -> None:
                     f"• 확인: {now.strftime('%Y-%m-%d %H:%M KST')}",
                 ]) + "\n"
 
+    format_upgrade_due = bool(
+        official
+        and state.get("last_official_alert_month") == official_month
+        and int(state.get("export_alert_format_version") or 0) < EXPORT_ALERT_FORMAT_VERSION
+    )
     monthly_due = bool(
         official
         and (
             state.get("last_official_alert_month") != official_month
             or int(state.get("compare_version") or 0) < COMPARE_VERSION
             or malaysia_revision_due
+            or format_upgrade_due
         )
     )
 
@@ -3404,6 +3411,13 @@ def main() -> None:
 
     if monthly_due and official:
         monthly_text = build_monthly(now, rate, fx_basis, official)
+        if format_upgrade_due:
+            monthly_text = "\n".join([
+                "🛠 <b>표시 방식 개선 재표시 — 신규 수치 아님</b>",
+                f"• 같은 <b>{official_month[:4]}년 {int(official_month[4:])}월</b> 공식 원자료를 삼성전자·SK하이닉스가 첫 화면에서 바로 구분되도록 다시 표시합니다.",
+                "• 금액·증감률의 기준월은 그대로이며, 이번 재표시는 가독성·오해방지 형식 개선입니다.",
+                "",
+            ]) + monthly_text
         if regional_unit_correction_due:
             monthly_text = "\n".join([
                 "⚠️ <b>정정 — 삼성·SK하이닉스 지역 수출금액 단위</b>",
@@ -3523,6 +3537,11 @@ def main() -> None:
         "last_fresh_new_count": len(fresh_new),
         "last_send_event_count": len(send_events),
         "monthly_due": monthly_due,
+        "export_alert_format_version": (
+            EXPORT_ALERT_FORMAT_VERSION
+            if monthly_due and official
+            else int(state.get("export_alert_format_version") or 0)
+        ),
         "official_month": official_month if official_poll_attempted else state.get("official_month", ""),
         "official_data_ok": bool(official) if official_poll_attempted else state.get("official_data_ok", False),
         "official_source_health": source_health_state,
