@@ -22,6 +22,7 @@ import json
 import math
 import re
 import statistics
+import time
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -43,7 +44,8 @@ STATUS = OUT / "treasury_cta_squeeze_status.md"
 FORMAT_REVISION = 1
 
 CFTC_TFF = "https://www.cftc.gov/dea/futures/financial_lf.htm"
-TREASURY_YIELD_XML = "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve&field_tdr_date_value=2026"
+TREASURY_YIELD_XML = "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve"
+TREASURY_YIELD_XML_YEAR = TREASURY_YIELD_XML + "&field_tdr_date_value={year}"
 NYFED_SOFR_API = "https://markets.newyorkfed.org/api/rates/secured/sofr/last/1.json"
 NYFED_BGCR_API = "https://markets.newyorkfed.org/api/rates/secured/bgcr/last/1.json"
 NYFED_TGCR_API = "https://markets.newyorkfed.org/api/rates/secured/tgcr/last/1.json"
@@ -72,12 +74,23 @@ TRUSTED_OR_EXPLICIT_SECONDARY = (
 
 
 def fetch(url: str) -> str:
-    req = urllib.request.Request(url, headers={
-        "User-Agent": "Mozilla/5.0 khs-watch/cta-squeeze",
-        "Accept": "*/*",
-    })
-    with urllib.request.urlopen(req, timeout=25) as r:
-        return r.read().decode("utf-8", errors="replace")
+    """Network fetch with bounded retries; never reuse a stale cached answer."""
+    errors = []
+    for attempt in range(3):
+        try:
+            req = urllib.request.Request(url, headers={
+                "User-Agent": "Mozilla/5.0 khs-watch/cta-squeeze",
+                "Accept": "*/*",
+                "Cache-Control": "no-cache",
+                "Pragma": "no-cache",
+            })
+            with urllib.request.urlopen(req, timeout=25) as r:
+                return r.read().decode("utf-8", errors="replace")
+        except Exception as exc:
+            errors.append(f"{type(exc).__name__}: {exc}")
+            if attempt < 2:
+                time.sleep(1.5 * (attempt + 1))
+    raise RuntimeError(f"자료 조회 3회 실패: {url} / {' | '.join(errors)}")
 
 
 def fetch_json(url: str):
@@ -151,10 +164,21 @@ def cta_news() -> dict | None:
     return found[0]
 
 
+def _tff_fields(text: str, expected: int = 14) -> list[int | None]:
+    """Parse a fixed CFTC TFF row without shifting columns on confidential '.' cells."""
+    tokens = re.findall(r"[-+]?(?:\d{1,3}(?:,\d{3})+|\d+)|\.", text or "")
+    if len(tokens) < expected:
+        raise RuntimeError(f"CFTC TFF row too short: {len(tokens)} < {expected}")
+    out: list[int | None] = []
+    for token in tokens[:expected]:
+        out.append(None if token == "." else int(token.replace(",", "")))
+    return out
+
+
 def cftc_snapshot() -> dict:
     raw = fetch(CFTC_TFF)
     text = strip_tags(raw)
-    date_match = re.search(r"Positions\s+as\s+of\s+([A-Za-z]+\s+\d{1,2},\s+2026)", text, re.I)
+    date_match = re.search(r"Positions\s+as\s+of\s+([A-Za-z]+\s+\d{1,2},\s+20\d{2})", text, re.I)
     report_date = date_match.group(1) if date_match else "확인 불가"
 
     markets = {
@@ -167,14 +191,24 @@ def cftc_snapshot() -> dict:
     }
     result = {"report_date": report_date, "markets": {}}
     for key, pat in markets.items():
-        m = re.search(pat + r".*?Open Interest is\s+([0-9,]+).*?Positions\s*\n\s*([^\n]+)", text, flags=re.I | re.S)
+        m = re.search(
+            pat + r".*?Open Interest is\s+([0-9,]+).*?Positions\s*\n\s*([^\n]+)",
+            text,
+            flags=re.I | re.S,
+        )
         if not m:
             continue
-        nums = [int(x.replace(",", "")) for x in re.findall(r"-?[0-9][0-9,]*", m.group(2))]
-        if len(nums) < 14:
+        try:
+            fields = _tff_fields(m.group(2))
+        except RuntimeError:
+            continue
+        # Dealer(0:3), Asset Manager(3:6), Leveraged Funds(6:9), ...
+        if any(fields[i] is None for i in (6, 7, 8)):
             continue
         oi = int(m.group(1).replace(",", ""))
-        lev_long, lev_short, lev_spread = nums[6], nums[7], nums[8]
+        lev_long = int(fields[6])
+        lev_short = int(fields[7])
+        lev_spread = int(fields[8])
         result["markets"][key] = {
             "open_interest": oi,
             "leveraged_long": lev_long,
@@ -183,28 +217,41 @@ def cftc_snapshot() -> dict:
             "leveraged_net": lev_long - lev_short,
             "short_share_oi_pct": lev_short / oi * 100 if oi else None,
         }
+    if "10Y" not in result["markets"]:
+        raise RuntimeError("CFTC TFF 10Y Leveraged Funds 파싱 실패")
     return result
 
 
 def treasury_10y_snapshot() -> dict:
-    raw = fetch(TREASURY_YIELD_XML)
-    values = []
-    for entry in re.findall(r"<entry>(.*?)</entry>", raw, flags=re.S | re.I):
-        dm = re.search(r"<d:NEW_DATE[^>]*>([^<]+)</d:NEW_DATE>", entry, re.I)
-        ym = re.search(r"<d:BC_10YEAR[^>]*>([^<]+)</d:BC_10YEAR>", entry, re.I)
-        if not dm or not ym:
-            continue
+    """Fetch current + prior calendar year so the 20-day window survives New Year."""
+    now = datetime.now(KST)
+    values_by_date: dict[str, float] = {}
+    errors = []
+    for year in (now.year - 1, now.year):
         try:
-            values.append((dm.group(1)[:10], float(ym.group(1))))
-        except Exception:
-            pass
-    if not values:
-        raise RuntimeError("Treasury 10Y XML 파싱 실패")
-    values.sort(key=lambda x: x[0])
+            raw = fetch(TREASURY_YIELD_XML_YEAR.format(year=year))
+        except Exception as exc:
+            errors.append(f"{year}:{type(exc).__name__}:{exc}")
+            continue
+        for entry in re.findall(r"<entry>(.*?)</entry>", raw, flags=re.S | re.I):
+            dm = re.search(r"<d:NEW_DATE[^>]*>([^<]+)</d:NEW_DATE>", entry, re.I)
+            ym = re.search(r"<d:BC_10YEAR[^>]*>([^<]+)</d:BC_10YEAR>", entry, re.I)
+            if not dm or not ym:
+                continue
+            try:
+                values_by_date[dm.group(1)[:10]] = float(ym.group(1))
+            except Exception:
+                continue
+
+    values = sorted(values_by_date.items())
+    if len(values) < 20:
+        raise RuntimeError(
+            f"Treasury 10Y XML 관측치 부족: {len(values)}개 / 오류={errors}"
+        )
     latest_date, latest = values[-1]
     window = [v for _, v in values[-20:]]
     mean20 = statistics.mean(window)
-    sd20 = statistics.pstdev(window) if len(window) > 1 else 0.0
+    sd20 = statistics.pstdev(window)
     z20 = (latest - mean20) / sd20 if sd20 > 0 else 0.0
     return {
         "date": latest_date,
@@ -213,6 +260,8 @@ def treasury_10y_snapshot() -> dict:
         "sd20": sd20,
         "z20": z20,
         "distance_to_4_3_bp": (latest - 4.30) * 100,
+        "window_n": len(window),
+        "source_years": [now.year - 1, now.year],
     }
 
 
