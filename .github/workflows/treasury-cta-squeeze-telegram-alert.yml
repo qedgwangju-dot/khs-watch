@@ -50,6 +50,37 @@ jobs:
       - name: Install validation dependencies
         run: python -m pip install --disable-pip-version-check -q pypdf pytest
 
+      - name: Verify exact Telegram route
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TREASURY_FOREIGN_DEMAND_TELEGRAM_BOT_TOKEN }}
+          PRIMARY_CHAT_ID: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+          FALLBACK_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+        run: |
+          TELEGRAM_CHAT_ID="${PRIMARY_CHAT_ID:-$FALLBACK_CHAT_ID}"
+          export TELEGRAM_CHAT_ID
+          test -n "${TELEGRAM_BOT_TOKEN:-}" || { echo "CTA Telegram token missing"; exit 1; }
+          test -n "${TELEGRAM_CHAT_ID:-}" || { echo "CTA Telegram chat id missing"; exit 1; }
+          python - <<'PY'
+          import json, os, time, urllib.request
+          token=os.environ["TELEGRAM_BOT_TOKEN"].strip()
+          expected=os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
+          last=None
+          for attempt in range(3):
+              try:
+                  with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe",timeout=25) as r:
+                      j=json.loads(r.read().decode())
+                  actual=str((j.get("result") or {}).get("username") or "")
+                  if not j.get("ok") or actual.lower()!=expected.lower():
+                      raise RuntimeError(f"Wrong CTA Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
+                  print(f"telegram_route_valid=true bot=@{actual} chat_id_present=true")
+                  break
+              except Exception as exc:
+                  last=exc
+                  if attempt == 2:
+                      raise
+                  time.sleep(2*(attempt+1))
+          PY
+
       - name: Validate CTA squeeze watcher
         run: |
           python -m py_compile scripts/treasury_cta_squeeze_watch.py
@@ -60,7 +91,17 @@ jobs:
           pytest -q tests/test_treasury_cta_nasdaq_squeeze.py
 
       - name: Check CTA squeeze chain
-        run: python scripts/treasury_cta_squeeze_equity_watch.py
+        run: |
+          rm -f out/treasury_cta_squeeze_alert.html out/treasury_cta_squeeze_title.txt out/treasury_cta_squeeze_detail.json out/treasury_cta_squeeze_telegram_confirmed.json
+          for attempt in 1 2 3; do
+            if python scripts/treasury_cta_squeeze_equity_watch.py; then
+              exit 0
+            fi
+            echo "CTA chain transient failure; retry $attempt/3" >&2
+            rm -f out/treasury_cta_squeeze_alert.html out/treasury_cta_squeeze_title.txt out/treasury_cta_squeeze_detail.json out/treasury_cta_squeeze_telegram_confirmed.json
+            sleep $((attempt * 4))
+          done
+          exit 1
 
       - name: Send interpreted Telegram alert
         if: hashFiles('out/treasury_cta_squeeze_alert.html') != ''
