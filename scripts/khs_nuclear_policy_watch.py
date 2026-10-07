@@ -118,7 +118,7 @@ BWRX_RSS_QUERIES = [
 # 국내 가동원전의 '규제 재가동 승인 → 실제 운전 → 발전재개/계통병입 → 100% 출력'
 # 상태를 기사 신규 여부가 아니라 운전 단계로 추적한다. 한울4호기는 2026-08-19
 # 자동정지를 기준선으로 잡고, 2026-10-07 재가동 승인은 교차검증된 첫 상승단계다.
-HANUL4_STATE_MODEL_VERSION = 2
+HANUL4_STATE_MODEL_VERSION = 3
 HANUL4_KHNP_MAIN = "https://www.khnp.co.kr/hanul/index.do"
 HANUL4_KHNP_STATUS_MAIN = "https://www.khnp.co.kr/main/index.do"
 HANUL4_KHNP_NPP = "https://npp.khnp.co.kr/"
