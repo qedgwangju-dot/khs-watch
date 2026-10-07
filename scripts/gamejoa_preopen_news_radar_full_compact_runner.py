@@ -2604,6 +2604,62 @@ def source_headline_event_fact(title: str, body: str) -> str:
     focus = market_materiality.focus_kind(title)
     source = market_materiality.source_reported_body(body)
     rows = market_materiality.source_sentences(source)
+    if ('GI-301' in title and re.search(r'일본.*임상\s*2상|임상\s*2상.*일본', title)):
+        first_dose = re.search(r'일본\s*임상\s*2상\s*첫\s*환자\s*투약이\s*(?P<period>10월\s*중)\s*시작될\s*예정', source)
+        ind = re.search(r'마루호는[^.!?\n]{0,180}?임상\s*2상\s*IND를\s*(?:지난\s*)?5월\s*일본\s*PMDA에\s*제출', source)
+        milestone = re.search(r'지아이이노베이션은\s+계약상\s+개발\s+마일스톤을\s+수령할\s+예정', source)
+        if first_dose and ind and milestone:
+            fact = (f'마루호는 GI-301 일본 임상 2상 IND를 5월 PMDA에 제출했고, '
+                    f'{first_dose["period"]} 첫 환자 투약을 목표로 한다. '
+                    '지아이이노베이션은 계약상 개발 마일스톤을 받을 예정이다.')
+            return fact if core_sentence_is_complete(fact) else ''
+    if ('오텍캐리어' in title and re.search(r'CDU|냉각수|냉각.*라인업', title, re.I)
+            and '65LC' in source and '65LL' in source
+            and re.search(r'NVIDIA\s*Marketplace[^\n]{0,80}Product\s*Qualified', source, re.I)):
+        certification = re.search(r'2[.]6\s*(?:㎿|MW|메가와트)[^.!?\n]{0,60}?(?:연내\s*)?인증(?:을|도)?\s*(?:추진|목표)', source)
+        if certification:
+            fact = ('오텍캐리어는 글로벌 캐리어의 프리쿨링형 CDU 65LC를 국내 라인업에 추가한다. '
+                    '기존 65LL은 엔비디아 Product Qualified 등록을 마쳤고, 2.6MW급 제품 인증은 연내 추진 중이다. '
+                    '이번 확대의 신규 수주·매출액은 기사에 공개되지 않았다.')
+            return fact if core_sentence_is_complete(fact) else ''
+    if ('삼성전기' in title and 'DS투자증권' in source
+            and re.search(r'2026년[·ㆍ, ]+2027년\s+영업이익\s+추정치', source)):
+        estimates = re.search(
+            r'2026년.{0,8}2027년\s+영업이익\s+추정치를\s+각각\s*'
+            r'(?P<year26>\d+조[\d,]+억원)[·ㆍ, ]+(?P<year27>\d+조[\d,]+억원)', source,
+        )
+        estimate_changes = re.search(
+            r'기존\s+추정치보다\s+각각\s*(?P<up26>\d+(?:\.\d+)?%)·'
+            r'(?P<up27>\d+(?:\.\d+)?%)\s*(?:올렸|올린)', source,
+        )
+        q3 = re.search(r'3분기\s+매출액·영업이익은[\s\S]{0,130}?'
+                       r'(?P<revenue>\d조\d+억원)·(?P<profit>\d+억원)을\s+기록할\s+전망', source)
+        consensus = re.search(r'영업이익은\s+시장\s+전망치인\s+(?P<amount>\d+억원)을\s+웃(?:도|돌|돈)', source)
+        target = re.search(r'목표주가를\s+(?P<amount>\d+만원)으로\s+올려\s+잡았다', source)
+        if estimates and estimate_changes and q3 and consensus and target:
+            fact = (f'DS투자증권은 삼성전기 목표주가를 {target["amount"]}으로 올리고, '
+                    f'2026·2027년 영업이익 추정치를 {estimates["year26"]}·{estimates["year27"]}으로 '
+                    f'각각 {estimate_changes["up26"]}·{estimate_changes["up27"]} 상향했다. '
+                    f'3분기 영업이익 {q3["profit"]} 전망은 컨센서스 {consensus["amount"]}을 웃돈다.')
+            return fact if core_sentence_is_complete(fact) else ''
+    if ('삼성전자' in source and 'SK하이닉스' in source
+            and re.search(r'추정치.*상향|영업이익.*전망', title)):
+        quarter = re.search(
+            r'삼성전자[·ㆍ, ]+SK하이닉스의\s*3분기\s*영업이익\s*전망치를\s*기존\s*'
+            r'(?P<sam_old>\d+조원)과\s*(?P<sk_old>\d+조원)에서\s*'
+            r'(?P<sam_new>\d+조원)과\s*(?P<sk_new>\d+조원)으로\s*각각\s*상향', source,
+        )
+        next_year = re.search(
+            r'(?:내년|2027년)\s*(?:영업이익\s*)?추정치를\s*기존\s*'
+            r'(?P<sam_old>\d+조원)과\s*(?P<sk_old>\d+조원)에서\s*'
+            r'(?P<sam_new>\d+조원)과\s*(?P<sk_new>\d+조원)으로\s*각각\s*상향', source,
+        )
+        if quarter and next_year:
+            fact = (f'대신증권은 3분기 영업이익 추정치를 삼성전자 {quarter["sam_old"]}→{quarter["sam_new"]}, '
+                    f'SK하이닉스 {quarter["sk_old"]}→{quarter["sk_new"]}으로 높였다. '
+                    f'내년 추정치도 각각 {next_year["sam_old"]}→{next_year["sam_new"]}, '
+                    f'{next_year["sk_old"]}→{next_year["sk_new"]}으로 상향했다.')
+            return fact if core_sentence_is_complete(fact) else ''
     if re.search(r'기업\s*여윳돈|기업.*순자금\s*운용', title) and re.search(r'반도체\s*호황|반도체\s*경기\s*호조', source):
         cash_flow = re.search(
             r'2분기\s*비금융\s*기업의\s*순(?:자금)?\s*운용(?:은|액은)?\s*'
@@ -10662,6 +10718,16 @@ def low_impact_live_publication_reason(alert: dict, now) -> str:
         if not re.search(r'(?:매입\s*(?:완료|종료)|취득\s*완료)[^.!?\n]{0,30}?공시|공시[^.!?\n]{0,30}?(?:매입\s*(?:완료|종료)|취득\s*완료)', body):
             return 'unconfirmed_buyback_completion_commentary'
     combined = f'{title} {body}'
+    if (re.search(r'감사원', title) and re.search(r'KBS|한국방송공사', f'{title} {body}')
+            and re.search(r'드라마\s*외주제작', body) and 'A업체' in body and 'B업체' in body
+            and re.search(r'제작비\s*95억원', body) and re.search(r'선급금\s*20억원', body)):
+        return 'public_broadcaster_drama_audit_anonymized_counterparties'
+    if (re.search(r'위스키\s*인터내셔널\s*홀딩|WISeKey|WISeQey|\bWKEY\b|\bWQEY\b', combined, re.I)
+            and re.search(r'티커\s*변경|새\s*티커|티커.{0,15}거래', title, re.I)
+            and re.search(r'PIPE', body, re.I) and re.search(r'계열사', body)
+            and re.search(r'가격\s*보호', body)
+            and re.search(r'추가\s*보통주|주주\s*지분\s*희석|희석\s*가능성', body)):
+        return 'foreign_affiliate_pipe_ticker_change_with_dilution_risk'
     if ('산란계협회' in title and re.search(r'국정감사|농해수위 국감', body)
             and '설립허가 취소' in body and re.search(r'지난해\s+6월\s*15일|올해\s+5월\s*14일', body)
             and not re.search(r'(?:가격|수입|공급|수급)\s*(?:대책|조치|한도|물량).{0,35}(?:확정|발표|시행|결정)', body)):

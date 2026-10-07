@@ -4564,6 +4564,49 @@ class IncrementalNewsTests(unittest.TestCase):
         self.assertIn('320억 달러(약 ', emera_converted)
         self.assertTrue(radar.core_sentence_is_complete(emera_converted))
 
+        gi_title = '지아이이노베이션 GI-301, 일본 임상 2상 진입…10월 첫 환자 투약'
+        gi_body = ('지아이이노베이션은 2023년 일본 마루호에 기술이전한 알레르기 치료제 GI-301의 일본 임상 2상 첫 환자 투약이 '
+                   '10월 중 시작될 예정이라고 7일 밝혔다. 이에 따라 지아이이노베이션은 계약상 개발 마일스톤을 수령할 예정이다. '
+                   '마루호는 만성특발성 두드러기 환자를 대상으로 한 임상 2상 IND를 지난 5월 일본 PMDA에 제출했으며, '
+                   '양사는 2023년 기술이전 계약 체결 이후 정기적인 공동개발위원회를 통해 일본 개발 전략을 협의해왔다.')
+        gi_core = radar.source_headline_event_fact(gi_title, gi_body)
+        for fact in ('마루호', '5월 PMDA', '10월 중 첫 환자 투약', '개발 마일스톤'):
+            self.assertIn(fact, gi_core)
+        self.assertNotIn('2023년 협의', gi_core)
+        self.assertTrue(radar.core_sentence_is_complete(gi_core))
+
+        otec_title = '오텍캐리어, 글로벌 캐리어와 협력…AI 데이터센터 CDU 라인업 확대'
+        otec_body = ('오텍캐리어는 글로벌 캐리어의 1.3메가와트급 65LL, 2.6㎿급 제품에 이어 프리쿨링 기능을 갖춘 65LC를 '
+                     '국내 시장에 추가한다고 밝혔다. 2.6㎿급 제품 연내 인증도 추진하고 있다. '
+                     "65LL은 엔비디아 마켓플레이스(NVIDIA Marketplace)에 'Product Qualified'로 등록됐다. "
+                     '지난 8월 수도권 48㎿급 하이퍼스케일 데이터센터 공급사로 선정된 이력도 있다.')
+        otec_core = radar.source_headline_event_fact(otec_title, otec_body)
+        for fact in ('프리쿨링형 CDU 65LC', '65LL', 'Product Qualified', '2.6MW급', '신규 수주·매출액은 기사에 공개되지 않았다'):
+            self.assertIn(fact, otec_core)
+        self.assertNotIn('48㎿', otec_core)
+        self.assertTrue(radar.core_sentence_is_complete(otec_core))
+
+        semco_title = '삼성전기, 목표주가 상향…MLCC·FC-BGA 실적 개선 기대'
+        semco_body = ('DS투자증권은 7일 삼성전기 목표주가를 260만원으로 올려 잡았다. '
+                      '2026년·2027년 영업이익 추정치를 각각 2조1062억원·3조8362억원으로 높였다. '
+                      '기존 추정치보다 각각 6.7%·23.7% 올린 수치다. '
+                      'DS투자증권에 따르면 삼성전기 3분기 매출액·영업이익은 전년 동기보다 각각 34.1%·150.3% 늘어난 '
+                      '3조8728억원·6516억원을 기록할 전망이다. 영업이익은 시장 전망치인 6214억원을 웃도는 수준이다.')
+        semco_core = radar.source_headline_event_fact(semco_title, semco_body)
+        for fact in ('목표주가를 260만원', '2조1062억원·3조8362억원', '6.7%·23.7%', '6516억원', '6214억원'):
+            self.assertIn(fact, semco_core)
+        self.assertTrue(radar.core_sentence_is_complete(semco_core))
+
+        memory_title = '삼전닉스 3분기 실적 추정치 상향…우려보다 견조할 것'
+        memory_body = ('대신증권은 삼성전자·SK하이닉스의 3분기 영업이익 전망치를 기존 106조원과 74조원에서 '
+                       '110조원과 78조원으로 각각 상향 조정했다. 또한 삼성전자·SK하이닉스의 내년 영업이익 추정치를 '
+                       '기존 549조원과 426조원에서 586조원과 449조원으로 각각 상향 조정했다.')
+        memory_core = radar.source_headline_event_fact(memory_title, memory_body)
+        for fact in ('삼성전자 106조원→110조원', 'SK하이닉스 74조원→78조원',
+                     '549조원→586조원', '426조원→449조원'):
+            self.assertIn(fact, memory_core)
+        self.assertTrue(radar.core_sentence_is_complete(memory_core))
+
         gs_title = '골드만삭스 “삼성전자 8일 요동친다”…매도 요인 3개나 겹쳤다는데'
         gs_body = ('골드만삭스는 3분기 영업이익 전망치를 기존 112조원에서 106조원으로 약 5% 낮췄다. '
                    '반도체 ETF 7종이 8일 리밸런싱에 나선다. 삼성전자의 15조원 규모 자사주 매입은 '
@@ -4663,6 +4706,14 @@ class IncrementalNewsTests(unittest.TestCase):
             ('single_vehicle_municipal_pilot_without_priced_order',
              alert('에이투지, 광명시 자율주행 버스 시범운행…철산역 연결',
                    '투입 차량은 자율주행 버스 1대로, 올해 12월까지 시범운행한다.')),
+            ('public_broadcaster_drama_audit_anonymized_counterparties',
+             alert('감사원 "KBS, 드라마 제작비 집행 확인 안 해…출연료 부풀려 차액 빼돌려"',
+                   '한국방송공사(KBS)는 A업체 등 2개 업체와 드라마 외주제작 계약(KBS 지급 제작비 95억원)을 체결한 후 '
+                   'A업체에 선급금 20억원을 지급했다. B업체는 제작비 정산 과정에 등장했다.')),
+            ('foreign_affiliate_pipe_ticker_change_with_dilution_risk',
+             alert('위스키 인터내셔널 홀딩, 자회사 PIPE 유치…새 티커 WQEY로 거래',
+                   'WISeKey(WKEY)는 티커를 변경했다. 자회사 WISeSat.Space가 계열사 SEALSQ로부터 1000만 달러 PIPE를 '
+                   '유치했고, 계약에는 가격 보호 조항과 추가 보통주 발행 가능성이 포함돼 기존 주주 지분 희석 우려가 있다.')),
         )
         with patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}):
             for reason, item in cases:
@@ -4690,6 +4741,10 @@ class IncrementalNewsTests(unittest.TestCase):
                       '지역의 AI·반도체 기업에 1조원 규모의 금융·투자를 집행한다.'),
                 alert('에이투지, 광명시 자율주행 사업 500억원 계약 수주',
                       '광명시와 500억원 규모의 자율주행 버스 공급 계약을 체결했다.'),
+                alert('감사원, KBS 재난방송시스템 개선 권고',
+                      '한국방송공사 기관정기감사에서 재난방송시스템 개선 사항을 지적했으나 드라마 외주제작이나 익명 계약사는 다루지 않았다.'),
+                alert('WISeKey, 외부 투자자로부터 1억달러 PIPE 유치',
+                      'WISeKey는 계열사와의 거래가 아닌 외부 투자자로부터 1억달러 PIPE를 조달해 위성사업을 확장한다.'),
             )
             for item in positives:
                 with self.subTest(positive=item['source_title']):
