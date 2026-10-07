@@ -56,6 +56,7 @@ on:
       - 'scripts/warsh_fomc_event_watch_v3.py'
       - 'scripts/warsh_fomc_event_watch_v4.py'
       - 'scripts/warsh_fomc_minutes_watch.py'
+      - 'tests/test_warsh_fomc_minutes_watch.py'
       - 'scripts/warsh_press_conference_watch.py'
       - 'scripts/warsh_press_conference_watch_v2.py'
       - 'scripts/warsh_press_conference_watch_v3.py'
@@ -189,7 +190,12 @@ jobs:
           run_watch scripts/warsh_ib_consensus_watch.py
           run_watch scripts/warsh_post_fomc_ib_reaction_watch.py
           run_watch scripts/warsh_fomc_event_watch_v4.py
-          run_watch scripts/warsh_fomc_minutes_watch.py
+          if python -m unittest discover -s tests -p 'test_warsh_fomc_minutes_watch.py' -v; then
+            run_watch scripts/warsh_fomc_minutes_watch.py
+          else
+            echo '::error::FOMC 의사록 회귀검증 실패 — 해당 감시는 중단하고 나머지는 유지'
+            MACRO_RC=1
+          fi
           run_watch scripts/warsh_press_conference_watch_v3.py
           exit "$MACRO_RC"
 
