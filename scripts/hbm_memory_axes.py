@@ -1049,13 +1049,20 @@ def _glass_entity(text):
         ('chemtronics', (r'Chemtronics', r'켐트로닉스')),
     )
     found = [name for name, pats in pairs if any(re.search(p, text, re.I) for p in pats)]
+    # GlaSSEM is Samsung Electro-Mechanics' glass-core JV context in official
+    # Samsung disclosures. Treat that pair as Samsung's JV lane rather than
+    # rejecting it as an ambiguous multi-company industry article.
+    if set(found) == {'samsung_electromechanics', 'glassem'} and re.search(
+        r'GlaSSEM|joint\s+venture|합작\s*법인|합작법인', text, re.I
+    ):
+        return 'samsung_electromechanics'
     return found[0] if len(found) == 1 else ''
 
 
 def parse_glass_substrate_records(item, body):
     text = re.sub(r'\s+', ' ', body or '')
     low = text.lower()
-    if not re.search(r'glass\s*(?:substrate|core|panel|interposer)|through[- ]?glass\s+via|\bTGV\b|유리\s*(?:기판|인터포저)|글라스\s*코어', text, re.I):
+    if not re.search(r'glass\s*(?:package\s*)?(?:substrate|core|panel|interposer)|through[- ]?glass\s+via|\bTGV\b|유리\s*(?:패키지\s*)?(?:기판|인터포저)|글라스\s*코어', text, re.I):
         return []
     asof = (item.get('published_at_kst') or '')[:10]
     rows = []
