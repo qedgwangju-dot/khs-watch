@@ -74,7 +74,7 @@
     "https://www.jll.com/content/dam/jllcom/en/global/documents/reports/research-reports/26-research-global-data-center-outlook-new.pdf",
     "https://www.se.com/us/en/about-us/newsroom/news/press-releases/schneider-electric-and-digital-realty-announce-373m-supply-capacity-agreement-to-meet-rising-data-center-demand-691d192005c0c16f5902ca3c/"
   ],
-  "last_checked_at_kst": "2026-10-07T12:27:03+09:00",
+  "last_checked_at_kst": "2026-10-07T12:28:00+09:00",
   "metric_observation_count": 0,
   "event_count": 0,
   "latest_evidence_urls": [],
@@ -115,11 +115,11 @@
     },
     "latest_month": "",
     "history": {},
-    "last_checked_at_kst": "2026-10-07T12:27:03+09:00",
-    "last_error": "2026-09: HTTPError: HTTP Error 404: Not Found; 2026-08: ValueError: Census Port HS6 import data file not found in ZIP; 2026-07: ValueError: Census Port HS6 import data file not found in ZIP"
+    "last_checked_at_kst": "2026-10-07T12:28:00+09:00",
+    "last_error": "2026-09: HTTPError: HTTP Error 404: Not Found; 2026-08: ValueError: Census Port HS6 import data file not found in ZIP; names=['PORTHS6MM2608.TXT']; 2026-07: ValueError: Census Port HS6 import data file not found in ZIP; names=['PORTHS6MM2607.TXT']"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-07T12:27:19+09:00",
+    "checked_at_kst": "2026-10-07T12:28:41+09:00",
     "status": "no_message_due"
   }
 }
