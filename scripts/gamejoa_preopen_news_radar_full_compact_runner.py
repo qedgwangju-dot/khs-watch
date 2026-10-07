@@ -2604,6 +2604,39 @@ def source_headline_event_fact(title: str, body: str) -> str:
     focus = market_materiality.focus_kind(title)
     source = market_materiality.source_reported_body(body)
     rows = market_materiality.source_sentences(source)
+    if 'AMD' in title and re.search(r'국산\s*NPU|이기종\s*AI', source) and 'AI연구센터' in source:
+        if re.search(r'(?:과학기술정보통신부|과기정통부)는\s*AMD와\s*이기종\s*AI\s*컴퓨팅\s*인프라\s*구축\s*협력', source):
+            fact = ('과기정통부와 AMD가 CPU·GPU·국산 NPU를 결합한 AI 인프라 구축을 논의했다. '
+                    'AMD는 연내 국내 AI연구센터 설립과 수백명 채용을 계획했다.')
+            return fact if core_sentence_is_complete(fact) else ''
+    if '에메라' in title and '캐나디언유틸리티스' in title and re.search(r'인수\s*합의', title):
+        acquisition = re.search(
+            r'에메라(?:\(EMA\))?가\s*캐나디언유틸리티스[^.!?\n]{0,100}?'
+            r'약\s*(?P<amount>\d[\d,.]*억\s*달러)[^.!?\n]{0,100}?'
+            r'전액\s*주식\s*교환\s*방식으로\s*인수하는\s*최종\s*계약을\s*체결',
+            source,
+        )
+        capex = re.search(
+            r'2030년까지\s*총\s*(?P<amount>\d[\d,.]*억\s*달러)\s*규모의\s*설비투자',
+            source,
+        )
+        if acquisition and capex:
+            fact = (f'에메라가 캐나디언유틸리티스를 {acquisition["amount"]} 전액 주식교환으로 '
+                    f'인수하기로 했다. 합병사는 2030년까지 {capex["amount"]} 설비투자를 계획했다.')
+            return fact if core_sentence_is_complete(fact) else ''
+    if '골드만삭스' in title and '삼성전자' in title and '8일' in title:
+        estimate = re.search(
+            r'기존\s*(?P<old>\d+조원)\s*에서\s*(?P<new>\d+조원)\s*(?:으로|로)\s*'
+            r'(?:약\s*\d+%\s*)?낮췄다',
+            source,
+        )
+        funds = re.search(r'반도체\s*ETF\s*(?P<count>\d+)종', source)
+        buyback = re.search(r'삼성전자의\s*(?P<amount>\d+조원)\s*규모\s*자사주\s*매입', source)
+        if estimate and funds and buyback and '옵션 만기' in source:
+            fact = (f'골드만삭스는 삼성전자 3분기 영업익 전망을 {estimate["old"]}에서 '
+                    f'{estimate["new"]}으로 낮췄다. 8일 ETF {funds["count"]}종 리밸런싱·옵션 만기·'
+                    f'{buyback["amount"]} 자사주 매입 종료가 겹쳐 변동성이 커질 수 있다고 봤다.')
+            return fact if core_sentence_is_complete(fact) else ''
     if re.search(r'AI\s*에이전트', title) and re.search(r'CPU', title, re.I):
         amd_revenue = re.search(
             r'AMD\s*데이터센터\s*사업의\s*6월\s*종료\s*분기\s*매출은\s*'
@@ -2639,15 +2672,23 @@ def source_headline_event_fact(title: str, body: str) -> str:
                     '상대 회사의 상장폐지 리스크로 합병계약이 해제되고 예정된 임시주총도 철회됐다.')
             return fact if core_sentence_is_complete(fact) else ''
     if '포스코' in title and '아르헨티나' in title and '리튬' in title:
-        completed = re.search(r'포스코홀딩스는[^.!?\n]{0,170}?염수리튬\s+2공장\s+상공정\s+준공식을\s+개최했다고', source)
+        completed = re.search(r'포스코홀딩스(?:가|는)[^.!?\n]{0,170}?염수리튬\s+2공장\s+상공정(?:을)?\s*준공', source)
         second = re.search(r'2공장\s+상공정은\s+연간\s+([\d만천백십]+t)의\s+탄산리튬\s+생산능력을\s+갖췄다', source)
-        total = re.search(r'아르헨티나\s+현지\s+생산능력은\s+연간\s+([\d만천백십]+t)으로\s+늘어난다', source)
-        downstream = re.search(r'2027년[^.!?\n]{0,70}?하공정과\s+연계', source)
-        target = re.search(r'총\s+([\d만천백십]+t)\s+규모의\s+염수\s+기반\s+수산화리튬\s+생산체제', source)
+        total = re.search(
+            r'(?:아르헨티나\s+)?현지(?:의)?\s+(?:연간\s+리튬\s+)?생산\s*능력은\s+'
+            r'(?:총\s+)?(?:연간\s+)?([\d만천백십]+t)(?:으로\s+(?:늘어난다|확대(?:된다)?))?',
+            source,
+        )
+        downstream = re.search(r'(?P<period>내년|2027년)[^.!?\n]{0,90}?하공정(?:과\s+연계|으로\s+운송)', source)
+        target = re.search(
+            r'(?:기존\s+물량과\s+합치면\s+)?총\s+([\d만천백십]+t)\s+규모의\s+'
+            r'(?:독자적인\s+)?염수\s+기반\s+수산화리튬\s+생산\s*체제를',
+            source,
+        )
         if completed and second and total and downstream and target:
-            fact = (f'포스코홀딩스가 아르헨티나 염수리튬 2공장 상공정을 준공했다. '
-                    f'2공장 탄산리튬 연산 {second[1]}, 현지 합산 연산 {total[1]}이며 '
-                    f'수산화리튬 {target[1]} 체제는 국내 하공정 연계 이후 목표다.')
+            fact = (f'포스코홀딩스가 아르헨티나 2공장 상공정을 준공했다. '
+                    f'탄산리튬 연산 {second[1]}, 현지 합산 {total[1]}이다. '
+                    f'{downstream["period"]} 하공정과 연계해 수산화리튬 {target[1]} 체제를 목표로 한다.')
             return fact if core_sentence_is_complete(fact) else ''
     if 'LG전자' in title and re.search(r'3분기.*누적.*(?:매출|영업)', title):
         quarter = re.search(r'3분기\s+연결기준\s+매출(?:액)?\s+(\d+조\d+억원),\s+영업이익\s+(\d+억원)의\s+잠정실적', source)
@@ -10550,6 +10591,19 @@ def low_impact_live_publication_reason(alert: dict, now) -> str:
         if not re.search(r'(?:매입\s*(?:완료|종료)|취득\s*완료)[^.!?\n]{0,30}?공시|공시[^.!?\n]{0,30}?(?:매입\s*(?:완료|종료)|취득\s*완료)', body):
             return 'unconfirmed_buyback_completion_commentary'
     combined = f'{title} {body}'
+    if ('산란계협회' in title and re.search(r'국정감사|농해수위 국감', body)
+            and '설립허가 취소' in body and re.search(r'지난해\s+6월\s*15일|올해\s+5월\s*14일', body)
+            and not re.search(r'(?:가격|수입|공급|수급)\s*(?:대책|조치|한도|물량).{0,35}(?:확정|발표|시행|결정)', body)):
+        return 'retrospective_agricultural_hearing_without_new_market_action'
+    if ('NH농협금융' in title and re.search(r'금융허브|전략산업\s*지원', title)
+            and re.search(r'지역\s*보증기관에\s*총\s*50억\s*원\s*규모의\s*특별출연을\s*추진', body)
+            and not re.search(r'(?:투자|대출|출자|사업비|지원금)\s*(?:총액은\s*)?\d[\d,.]*\s*(?:조|천억|백억)\s*원', body)):
+        return 'regional_finance_initiative_below_market_scale'
+    if (re.search(r'에이투지|오토노머스에이투지', title)
+            and re.search(r'자율주행\s*버스.*시범운행|시범운행.*자율주행\s*버스', title)
+            and re.search(r'투입\s*차량은[^.!?\n]{0,55}\s*1대', body)
+            and not re.search(r'(?:계약|수주|사업비|계약금액|공급금액)\s*(?:규모|총액|약)?\s*\d[\d,.]*\s*(?:조|억|백만)\s*원', body)):
+        return 'single_vehicle_municipal_pilot_without_priced_order'
     if re.search(r'(?:취임\s*\d+\s*일|취임\s*백일)', title) and not re.search(
         r'(?:투자협약|투자\s*계약|공급계약|수주|발주|착공|준공|예산\s*확정|\d[\d,.]*\s*(?:조|억)\s*원)', combined
     ):

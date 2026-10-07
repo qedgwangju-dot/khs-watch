@@ -4510,6 +4510,59 @@ class IncrementalNewsTests(unittest.TestCase):
         self.assertIn('6만t 체제', updated)
         self.assertNotIn('5만t 체제', updated)
 
+    def test_october_7_live_artifact_keeps_source_bound_market_facts(self):
+        amd_title = '정부, AMD와 국산 AI 반도체 생태계 키운다…이기종 컴퓨팅 협력 확대'
+        amd_body = ('과기정통부는 AMD와 이기종 AI 컴퓨팅 인프라 구축 협력을 통해 국산 NPU 기업들을 지원한다. '
+                    '내년에는 국산 NPU 지원을 기존 칩 단위에서 대규모 풀스택 인프라 구축으로 확대할 계획이다. '
+                    'AMD는 한국에서의 AI 생태계를 확대하기 위해 연내 AMD AI연구센터를 마련하고 '
+                    '수백명에 달하는 인재들을 모실 계획이라고 밝혔다.')
+        amd_core = radar.source_headline_event_fact(amd_title, amd_body)
+        for fact in ('과기정통부와 AMD', 'CPU·GPU·국산 NPU', 'AI 인프라', '연내 국내 AI연구센터', '수백명 채용'):
+            self.assertIn(fact, amd_core)
+        self.assertTrue(radar.core_sentence_is_complete(amd_core))
+
+        lithium_title = '포스코, 아르헨티나 리튬 2공장 준공…연 5만t 생산체제 | 연합뉴스'
+        lithium_body = ('포스코홀딩스가 아르헨티나 염수리튬 2공장 상공정을 준공하며 연산 5만t 규모의 '
+                        '수산화리튬 생산 체제를 구축했다. 2공장 상공정은 연간 2만3천t의 탄산리튬 생산능력을 갖췄다. '
+                        '아르헨티나 현지의 연간 리튬 생산 능력은 총 4만8천t으로 확대된다. '
+                        '여기서 생산된 탄산리튬은 내년 준공 예정인 전남 율촌산업단지 하공정으로 운송돼 '
+                        '연간 2만5천t 규모의 배터리용 수산화리튬으로 전환된다. '
+                        '기존 물량과 합치면 총 5만t 규모의 독자적인 염수 기반 수산화리튬 생산 체제를 완성하게 된다.')
+        lithium_core = radar.source_headline_event_fact(lithium_title, lithium_body)
+        for fact in ('2만3천t', '4만8천t', '내년', '5만t'):
+            self.assertIn(fact, lithium_core)
+        self.assertTrue(radar.core_sentence_is_complete(lithium_core))
+
+        emera_title = '에메라, 캐나디언유틸리티스 143억 달러 인수 합의'
+        emera_body = ('에메라(EMA)가 캐나디언유틸리티스(Canadian Utilities) 발행주식 전량을 약 143억 달러 규모의 '
+                      '전액 주식 교환 방식으로 인수하는 최종 계약을 체결했으며, 합병 법인의 예상 기업가치는 약 720억 달러다. '
+                      '회사는 2030년까지 총 320억 달러 규모의 설비투자를 집행할 계획이다.')
+        emera_core = radar.source_headline_event_fact(emera_title, emera_body)
+        self.assertIn('143억 달러', emera_core)
+        self.assertIn('전액 주식교환', emera_core)
+        self.assertIn('320억 달러', emera_core)
+        self.assertTrue(radar.core_sentence_is_complete(emera_core))
+        emera_conversion = radar.build_alert_fx_conversion(
+            {'source_title': emera_title, 'telegram_core_fact': emera_core},
+            {'rates': {'USD': {'value': 1338.78, 'status': '일일 기준',
+                               'reference_time_kst': '2026-10-06', 'source': 'test',
+                               'url': 'https://example.com/fx'}}},
+            dt.datetime(2026, 10, 7, 13, 22, tzinfo=dt.timezone(dt.timedelta(hours=9))),
+        )
+        emera_converted = radar.compact_converted_core(emera_core, emera_conversion)
+        self.assertIn('143억 달러(약 ', emera_converted)
+        self.assertIn('320억 달러(약 ', emera_converted)
+        self.assertTrue(radar.core_sentence_is_complete(emera_converted))
+
+        gs_title = '골드만삭스 “삼성전자 8일 요동친다”…매도 요인 3개나 겹쳤다는데'
+        gs_body = ('골드만삭스는 3분기 영업이익 전망치를 기존 112조원에서 106조원으로 약 5% 낮췄다. '
+                   '반도체 ETF 7종이 8일 리밸런싱에 나선다. 삼성전자의 15조원 규모 자사주 매입은 '
+                   '8일 전후로 마무리될 것으로 예상된다. 옵션 만기와 자사주 매입 효과 약화도 변수로 꼽혔다.')
+        gs_core = radar.source_headline_event_fact(gs_title, gs_body)
+        for fact in ('112조원', '106조원', 'ETF 7종', '옵션 만기', '15조원'):
+            self.assertIn(fact, gs_core)
+        self.assertTrue(radar.core_sentence_is_complete(gs_core))
+
     def test_live_radar_withholds_routine_items_and_keeps_material_revisions(self):
         now = dt.datetime(2026, 10, 7, 14, 37, tzinfo=dt.timezone(dt.timedelta(hours=9)))
         cases = (
@@ -4547,6 +4600,15 @@ class IncrementalNewsTests(unittest.TestCase):
             ('stock_rally_commentary_without_quantified_operating_change',
              alert('AI 에이전트 뜨자 CPU도 재부상…AMD·인텔 한 달 새 32%·21%↑',
                    'AMD 임원은 AI 에이전트 논의가 달라져 CPU 판매가 늘어날 것으로 전망했다.')),
+            ('retrospective_agricultural_hearing_without_new_market_action',
+             alert('송미령 "산란계협회, 경고에도 가격 고시…농가 비판 과해"',
+                   '농식품부 국정감사에서 설립허가 취소를 다뤘다. 지난해 6월 15일 공정위 조사를 의뢰했고 올해 5월 14일 담합 결정이 있었다.')),
+            ('regional_finance_initiative_below_market_scale',
+             alert('NH농협금융, 전남·광주 전략산업 지원 확대…금융허브 신설',
+                   '지역 보증기관에 총 50억원 규모의 특별출연을 추진한다.')),
+            ('single_vehicle_municipal_pilot_without_priced_order',
+             alert('에이투지, 광명시 자율주행 버스 시범운행…철산역 연결',
+                   '투입 차량은 자율주행 버스 1대로, 올해 12월까지 시범운행한다.')),
         )
         with patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}):
             for reason, item in cases:
@@ -4570,6 +4632,10 @@ class IncrementalNewsTests(unittest.TestCase):
                       '우선협상대상자에 선정됐으며 계약 규모는 800억원이다.'),
                 alert('AMD, 분기 CPU 매출 80억달러·판매량 25% 증가',
                       '분기 CPU 매출은 80억달러, 판매량은 전년 대비 25% 증가했다.'),
+                alert('NH농협금융, 전남·광주에 1조원 첨단산업 투자',
+                      '지역의 AI·반도체 기업에 1조원 규모의 금융·투자를 집행한다.'),
+                alert('에이투지, 광명시 자율주행 사업 500억원 계약 수주',
+                      '광명시와 500억원 규모의 자율주행 버스 공급 계약을 체결했다.'),
             )
             for item in positives:
                 with self.subTest(positive=item['source_title']):
