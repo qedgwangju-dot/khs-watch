@@ -727,7 +727,7 @@ def parse_census_port_hs6_zip(raw: bytes, year: int, month: int) -> dict:
         if not names:
             names = [name for name in zf.namelist() if "DPORTHS6I" in name.upper() and name.upper().endswith(".TXT")]
         if not names:
-            raise ValueError("Census Port HS6 import data file not found in ZIP")
+            raise ValueError(f"Census Port HS6 import data file not found in ZIP; names={zf.namelist()[:20]}")
         with zf.open(names[0]) as fh:
             for raw_line in fh:
                 line = raw_line.decode("ascii", errors="ignore").rstrip("\r\n")
