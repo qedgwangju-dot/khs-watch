@@ -2597,6 +2597,31 @@ def source_headline_event_fact(title: str, body: str) -> str:
     focus = market_materiality.focus_kind(title)
     source = market_materiality.source_reported_body(body)
     rows = market_materiality.source_sentences(source)
+    if re.search(r'국토.*(?:주택\s*공급|신규택지)|신규택지.*(?:발표|공급)', title):
+        supply = re.search(
+            r'([가-힣]{2,4}\s*국토교통부\s*장관이[^.!?\n]{0,210}?신규택지[^.!?\n]{0,90}?추가\s*발표하겠다고\s*밝혔다\.)',
+            source,
+        )
+        if supply and re.search(r'\d+만\s*가구', supply.group(1)):
+            return supply.group(1) if core_sentence_is_complete(supply.group(1)) else ''
+    if '리튬' in title and re.search(r'2공장.*준공', title):
+        facility = re.search(r'([가-힣A-Za-z]+)가\s+아르헨티나\s+염수리튬\s+2공장\s+상공정을\s+준공했다', source)
+        new_capacity = re.search(r'2공장\s+상공정은\s+연간\s+([\d,만]+톤)의\s+탄산리튬\s+생산능력을\s+갖췄다', source)
+        total_capacity = re.search(r'총\s+([\d,만]+톤)까지\s+상업생산\s+능력을\s+확대했다', source)
+        if facility and new_capacity and total_capacity:
+            fact = (f'{facility.group(1)}가 아르헨티나 염수리튬 2공장 상공정을 준공했다. '
+                    f'이 설비는 연간 탄산리튬 {new_capacity.group(1)} 생산능력을 갖췄으며, '
+                    f'현지 합산 생산능력은 {total_capacity.group(1)}으로 확대됐다.')
+            return fact if core_sentence_is_complete(fact) else ''
+    if '효성중공업' in title and re.search(r'고마진.*이연|실적\s*하회', title):
+        broker = re.search(r'([가-힣]+증권)이\s+\d+일\s+효성중공업[^.!?\n]{0,85}?고마진\s+물량의\s+매출\s+인식\s+이연', source)
+        revenue = re.search(r'효성중공업의\s+3분기\s+매출액이[^!?\n]{0,75}?([\d,]+조[\d,]*억원|[\d,]+억원)으로\s+전망했다', source)
+        profit = re.search(r'영업이익은[^!?\n]{0,75}?([\d,]+억원)으로\s+전망했다', source)
+        if broker and revenue and profit:
+            fact = (f'{broker.group(1)}은 효성중공업의 고마진 물량 매출 인식 이연으로 '
+                    f'3분기 실적이 기대치를 밑돌 것으로 봤다. '
+                    f'3분기 매출 {revenue.group(1)}, 영업이익 {profit.group(1)}을 전망했다.')
+            return fact if core_sentence_is_complete(fact) else ''
     if '보스턴다이나믹스' in title and re.search(r'지휘|CEO|영입', title, re.I):
         appointment = re.search(
             r'보스턴다이나믹스가\s+아마존의[^.!?\n]{0,75}?이끌어온\s+'

@@ -4209,6 +4209,57 @@ class IncrementalNewsTests(unittest.TestCase):
         self.assertIn('headline_actor_population_period_or_standard_mismatch',
                       radar.source_core_fact_errors(candidate))
 
+    def test_foreign_local_indicator_and_household_aid_need_korean_equity_channel(self):
+        india = '인도 9월 서비스업 PMI 55.2·1.1P↑'
+        pmi_body = '인도 서비스업 구매관리자지수는 9월 55.2를 기록해 전월 54.1에서 상승했다.'
+        pakistan = '파키스탄, 저소득층 900만여명에 연료보조금 지급'
+        aid_body = '파키스탄 정부는 지난달 저소득층 900만명에게 연료보조금 지급을 승인했다.'
+        for title, body in ((india, pmi_body), (pakistan, aid_body)):
+            with self.subTest(title=title):
+                self.assertEqual(materiality.assess(title, body)['reason'],
+                                 'foreign_local_measure_without_korean_equity_channel')
+        linked = pmi_body + ' 한국 자동차 부품 수출 주문이 이 지표에 맞춰 증가했다고 발표했다.'
+        self.assertNotEqual(materiality.assess(india, linked)['reason'],
+                            'foreign_local_measure_without_korean_equity_channel')
+
+    def test_regional_pilot_without_funding_or_orders_is_not_equity_news(self):
+        title = '인천시, 글로벌캠퍼스에 피지컬 AI 실증센터 구축'
+        bare = '인천시는 AI 실증센터를 구축한다고 밝혔다. 내년 4월까지 시설을 조성할 계획이다.'
+        funded = bare + ' 인천시는 관련 인프라 구축을 위해 120억원 규모 사업을 발주했다고 밝혔다.'
+        self.assertEqual(materiality.assess(title, bare)['reason'],
+                         'regional_pilot_facility_without_material_commitment')
+        self.assertNotEqual(materiality.assess(title, funded)['reason'],
+                            'regional_pilot_facility_without_material_commitment')
+
+    def test_repaired_market_cores_keep_current_supply_capacity_and_broker_basis(self):
+        housing = '국토장관, 연내 신규택지 7.3만 가구 발표'
+        housing_body = ('홍지선 국토교통부 장관이 수도권 주택 공급 확대를 위해 공공택지 착공 물량을 '
+                        '16만 가구 이상 확충하고 연내 7만3000가구+α 규모의 신규택지 입지를 추가 발표하겠다고 밝혔다.')
+        housing_core = radar.source_headline_event_fact(housing, housing_body)
+        self.assertIn('7만3000가구+α', housing_core)
+        self.assertIn('16만 가구', housing_core)
+        self.assertIn('8만2000가구', radar.source_headline_event_fact(
+            housing, housing_body.replace('7만3000가구', '8만2000가구')))
+        lithium = '포스코홀딩스, 아르헨티나 리튬 2공장 준공'
+        lithium_body = ('포스코홀딩스가 아르헨티나 염수리튬 2공장 상공정을 준공했다. '
+                        '2공장 상공정은 연간 2만3000톤의 탄산리튬 생산능력을 갖췄다. '
+                        '기존 1공장을 포함해 총 4만8000톤까지 상업생산 능력을 확대했다.')
+        lithium_core = radar.source_headline_event_fact(lithium, lithium_body)
+        for token in ('준공했다', '2만3000톤', '4만8000톤'):
+            self.assertIn(token, lithium_core)
+        self.assertIn('3만1000톤', radar.source_headline_event_fact(
+            lithium, lithium_body.replace('2만3000톤', '3만1000톤')))
+        broker = '하나證 “효성중공업, 고마진 매출 이연으로 3분기 실적 하회”'
+        broker_body = ('하나증권이 7일 효성중공업(298040)에 대해 고마진 물량의 매출 인식 이연으로 '
+                       '단기 실적이 기대치를 하회할 것으로 전망했다. '
+                       '유 연구원은 효성중공업의 3분기 매출액이 전년 대비 11.6% 증가한 1조3000억원으로 전망했다. '
+                       '영업이익은 전년 대비 34.7% 증가한 2961억원으로 전망했다.')
+        broker_core = radar.source_headline_event_fact(broker, broker_body)
+        for token in ('하나증권', '매출 인식 이연', '1조3000억원', '2961억원'):
+            self.assertIn(token, broker_core)
+        self.assertIn('3100억원', radar.source_headline_event_fact(
+            broker, broker_body.replace('2961억원', '3100억원')))
+
 
 if __name__ == "__main__":
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(IncrementalNewsTests)

@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 102
+VERSION = 103
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -3514,6 +3514,39 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
             and re.search(r"나스닥[^!?]{0,120}마감|마감[^!?]{0,120}나스닥", body[:2000])
             and not re.search(r"\d{1,2}일\s*\(현지(?:시간)?\)", body[:3000])):
         result["reason"] = "us_equity_close_session_unverified"
+        return result
+    foreign_local_country = re.match(
+        r"^(?:인도네시아|파키스탄|말레이시아|필리핀|베트남|브라질|멕시코|튀르키예|태국|인도)(?:의)?(?=[,\s])",
+        title,
+    )
+    foreign_local_measure = re.search(
+        r"(?:서비스업|제조업|종합)\s*(?:구매관리자(?:지수)?|PMI)|"
+        r"(?:저소득층|가계|서민층).{0,30}(?:연료|생계|생활비).{0,30}(?:보조금|지원금)|"
+        r"(?:저소득층|가계|서민층).{0,30}(?:보조금|지원금)",
+        title,
+        re.I,
+    )
+    korean_exposure = re.search(
+        r"한국.{0,35}?(?:기업|증시|수출|업체|시장)|대한민국|코스피|코스닥|"
+        r"삼성전자|SK하이닉스|현대차|기아|LG전자|포스코|한국전력|두산에너빌리티",
+        body[:6000],
+        re.I,
+    )
+    if foreign_local_country and foreign_local_measure and not korean_exposure:
+        result.update(disposition="exclude", priority=0, reason="foreign_local_measure_without_korean_equity_channel")
+        return result
+    local_facility = (
+        re.match(r"^(?:서울|부산|대구|인천|광주|대전|울산|세종|경기|강원|충북|충남|전북|전남|경북|경남|제주)(?:시|도|군|구)[,\s]", title)
+        and re.search(r"(?:실증|시험|교육|지원|연구)\s*(?:센터|단지).{0,20}(?:구축|조성|설립|개소)", title)
+    )
+    substantial_commitment = any(
+        re.search(r"(?:\d{3,}(?:,\d{3})*\s*억|\d+\s*조)\s*원", row)
+        and re.search(r"(?:예산|투자).{0,35}(?:확정|집행)|(?:발주|수주)(?:했|됐|할)|계약.{0,15}체결|착공했", row)
+        and current_event_sentence(row) and not PAST_ACTION.search(row)
+        for row in source_sentences(body)[:8]
+    )
+    if local_facility and not substantial_commitment:
+        result.update(disposition="exclude", priority=0, reason="regional_pilot_facility_without_material_commitment")
         return result
     political_poll = bool(re.search(r"지지율|국정\s*수행|정당\s*지지|political approval|approval rating", title, re.I)
                           and re.search(r"여론조사|응답자|유권자|poll|respondents|voters", body[:1600], re.I))

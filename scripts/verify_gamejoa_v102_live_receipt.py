@@ -22,6 +22,7 @@ PROOF_PATH = ROOT / "data/gamejoa_verified_core_receipts.json"
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--artifact-dir", type=Path, required=True)
+    parser.add_argument("--market-scope-artifact-dir", type=Path)
     args = parser.parse_args()
     report_path = args.artifact_dir / "out/gamejoa_preopen_news_radar.json"
     delivery_path = args.artifact_dir / "out/gamejoa_preopen_news_radar_delivery.json"
@@ -70,6 +71,43 @@ def main() -> None:
     with patch.object(radar.telegram, "load_seen_state", return_value={"seen": {core_key: state["seen"][core_key]}}):
         fresh, skipped = radar.telegram.filter_previously_seen_alerts([replay], now + dt.timedelta(minutes=5), "live")
     assert not fresh and len(skipped) == 1
+    market_scope = None
+    if args.market_scope_artifact_dir:
+        scope_out = args.market_scope_artifact_dir / "out"
+        scope_report = json.loads((scope_out / "gamejoa_preopen_news_radar.json").read_text(encoding="utf-8"))
+        scope_delivery = json.loads((scope_out / "gamejoa_preopen_news_radar_delivery.json").read_text(encoding="utf-8"))
+        scope_markdown = (scope_out / "gamejoa_preopen_news_radar.md").read_bytes()
+        assert scope_delivery["status"] == "sent" and scope_delivery["message_id"] == 2388
+        assert hashlib.sha256(scope_markdown).hexdigest() == scope_delivery["report_sha256"]
+        assert len(scope_report["alerts"]) == 7
+        assert all(item.get("body_verified") and item.get("source_body") for item in scope_report["alerts"])
+        scope_now = dt.datetime.fromisoformat(scope_report["query_time_kst"])
+        with patch.object(radar.base, "kst_now", return_value=scope_now), patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}):
+            scope_selected = radar.quality_display_alerts(scope_report["alerts"], 20)
+        assert len(scope_selected) == 4, [item["source_title"] for item in scope_selected]
+        selected_links = {item["link"] for item in scope_selected}
+        rejected = {item["source_title"]: item.get("_exclusion_reason", "") for item in scope_report["alerts"]
+                    if item["link"] not in selected_links}
+        assert len(rejected) == 3, rejected
+        assert any("인도 9월 서비스업 PMI" in title and "foreign_local_measure" in reason
+                   for title, reason in rejected.items())
+        assert any("파키스탄, 저소득층" in title and "foreign_local_measure" in reason
+                   for title, reason in rejected.items())
+        assert any("인천시, 글로벌캠퍼스" in title and "regional_pilot_facility" in reason
+                   for title, reason in rejected.items())
+        kept = {item["source_title"]: item["telegram_core_fact"] for item in scope_selected}
+        assert any("LG전자" in title and "7천818억원" in core for title, core in kept.items())
+        assert any("신규택지" in title and "7만3000가구" in core and "16만 가구" in core
+                   for title, core in kept.items())
+        assert any("포스코홀딩스" in title and "준공했다" in core and "2만3000톤" in core
+                   and "4만8000톤" in core for title, core in kept.items())
+        assert any("효성중공업" in title and "매출 인식 이연" in core and "2961억원" in core
+                   for title, core in kept.items())
+        assert not generated_guard.duplicate_event_errors(scope_selected, radar)
+        assert all(not radar.source_core_fact_errors(item) for item in scope_selected)
+        market_scope = {"acknowledged_message_id": 2388, "source_bodies_checked": 7,
+                        "selected_after_fix": 4, "foreign_local_and_regional_pilot_withheld": 3,
+                        "retained_cores_source_bound": 4}
     print(json.dumps({
         "acknowledged_message_id": 2373,
         "source_bodies_checked": len(report["alerts"]),
@@ -79,6 +117,7 @@ def main() -> None:
         "opinion_excluded": True,
         "prior_receipt_blocks_new_url": True,
         "boston_weak_market_change_withheld": True,
+        "market_scope_replay": market_scope,
     }, ensure_ascii=False))
 
 
