@@ -29,7 +29,7 @@ STATUS = OUT / "samsung_hbm_status.md"
 
 UA = "Mozilla/5.0 (compatible; khs-watch/1.0; +https://github.com/qedgwangju-dot/khs-watch)"
 FRESH_HOURS = 96
-MONTHLY_DAY = 15
+MONTHLY_DAY = 1
 COMPARE_VERSION = 4
 EVENT_STATE_VERSION = 2
 SHARE_TRACK_VERSION = 1
