@@ -713,4 +713,45 @@ check("oct07-regional-recap-detected", mod._regional_recap_without_discrete_even
 s, tags = mod.score_item(regional_recap, dt.datetime.now(mod.watch.KST))
 check("oct07-regional-recap-suppressed", s == 0 and tags == [])
 
+
+# 24) 최종 fail-closed 품질게이트: 번역 placeholder·미확정 빨강·동일 원문 중복을 차단한다.
+bad_placeholder = """<b>전쟁·종전·재건 웹감시</b>
+[신규] <b>1. 네팔</b>
+영문 기사 번역이 일시적으로 지연됨 — 원문 확인 필요
+07:50 KST · 9분 전 · 재건
+"""
+mod.watch.ALERT.write_text(bad_placeholder, encoding="utf-8")
+try:
+    mod.verify_alert(False)
+    raise AssertionError("oct07-quality-gate-translation-placeholder")
+except RuntimeError as e:
+    check("oct07-quality-gate-translation-placeholder", "번역 실패" in str(e))
+
+bad_uncertain_red = """<b>전쟁·종전·재건 웹감시</b>
+🔴 [속보] <b>1. 중동</b>
+복수 폭발음 — 원인 미확정, 공격 주체 공식 확인 전
+07:50 KST · 9분 전
+"""
+mod.watch.ALERT.write_text(bad_uncertain_red, encoding="utf-8")
+try:
+    mod.verify_alert(False)
+    raise AssertionError("oct07-quality-gate-uncertain-red")
+except RuntimeError as e:
+    check("oct07-quality-gate-uncertain-red", "확인 수준이 미확정" in str(e))
+
+bad_duplicate_url = """<b>전쟁·종전·재건 웹감시</b>
+🔴 [신규] <b>1. 예멘</b>
+첫 보도
+<a href="https://example.com/same">매체A 원문</a>
+🔴 [신규] <b>2. 예멘</b>
+재보도
+<a href="https://example.com/same">매체A 원문</a>
+"""
+mod.watch.ALERT.write_text(bad_duplicate_url, encoding="utf-8")
+try:
+    mod.verify_alert(False)
+    raise AssertionError("oct07-quality-gate-duplicate-url")
+except RuntimeError as e:
+    check("oct07-quality-gate-duplicate-url", "동일 원문 URL" in str(e))
+
 print("WAR_PEACE_OCT04_REGRESSION_OK")
