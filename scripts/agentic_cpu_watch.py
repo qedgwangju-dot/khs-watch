@@ -451,14 +451,17 @@ def cpu_structure_observation(title: str, text: str, url: str) -> tuple[str, dic
         if "bnp paribas" not in low or not any(s in low for s in ("amd", "advanced micro devices")):
             return "", {}
         obs = {}
-        m = re.search(
+        target_patterns = (
             r"bnp paribas[^.!?]{0,180}?(?:amd|advanced micro devices)[^.!?]{0,120}?"
-            r"(?:price\s+target|target|pt)[^.!?]{0,70}?\bto\s*\$?\s*(\d{3,4})(?:\b|[^0-9])",
-            low,
-            re.I,
+            r"(?:price\s+target|target|pt)[^.!?]{0,70}?\bto\s*\$?\s*(\d{1,2},\d{3}|\d{3,4})\b",
+            r"bnp paribas[^.!?]{0,100}?(?:price\s+target|target|pt)[^.!?]{0,90}?"
+            r"(?:amd|advanced micro devices)[^.!?]{0,70}?\bto\s*\$?\s*(\d{1,2},\d{3}|\d{3,4})\b",
         )
-        if m and 100 <= float(m.group(1)) <= 2000:
-            obs["amd_target_usd"] = float(m.group(1))
+        m = next((found for p in target_patterns if (found := re.search(p, low, re.I))), None)
+        if m:
+            target = float(m.group(1).replace(",", ""))
+            if 100 <= target <= 2000:
+                obs["amd_target_usd"] = target
         market = re.search(
             r"bnp paribas[^.!?]{0,180}?(?:agentic\s+cpu\s+market|cpu\s+market)[^.!?]{0,130}?"
             r"(?:\$|usd\s*)?(\d{2,3}(?:\.\d+)?)\s*(?:billion|bn)[^.!?]{0,40}?(?:by\s+)?2030",
