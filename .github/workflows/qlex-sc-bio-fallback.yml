@@ -3,9 +3,11 @@ name: QLEX SC Bio Watchdog Fallback
 on:
   workflow_run:
     workflows:
-      - "Bio QLEX & Intismeran Telegram Watch"
+      - "Bio QLEX, Intismeran, Jemperli, Enhertu & Halozyme PTAB Telegram Watch"
     types:
       - completed
+  schedule:
+    - cron: "2,17,32,47 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -19,6 +21,11 @@ jobs:
   recover-if-stale:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "hs887988798879887988798879_bot"
+      BIO_TELEGRAM_BOT_TOKEN: ${{ secrets.BIO_TELEGRAM_BOT_TOKEN }}
+      BIO_TELEGRAM_CHAT_ID: ${{ secrets.BIO_TELEGRAM_CHAT_ID }}
+
     steps:
       - name: Checkout latest main
         uses: actions/checkout@v4
@@ -31,147 +38,179 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Decide whether dedicated bio watcher is stale
+      - name: Decide whether integrated bio watcher is stale
         id: stale
         shell: bash
         run: |
           python - <<'PY'
-          import datetime as dt, json, os, pathlib
+          import datetime as dt
+          import json
+          import os
+          import pathlib
           from zoneinfo import ZoneInfo
-          now=dt.datetime.now(ZoneInfo('Asia/Seoul'))
-          checks=[]
-          for path_str in ('data/qlex_sc_conversion_watch_state.json','data/intismeran_qlex_watch_state.json'):
-              path=pathlib.Path(path_str)
-              last='missing'; age=None
-              if path.exists():
-                  try:
-                      state=json.loads(path.read_text(encoding='utf-8'))
-                      last=str(state.get('last_check_kst') or '')
-                      if last:
-                          stamp=dt.datetime.fromisoformat(last)
-                          if stamp.tzinfo is None:
-                              stamp=stamp.replace(tzinfo=ZoneInfo('Asia/Seoul'))
-                          age=(now-stamp.astimezone(ZoneInfo('Asia/Seoul'))).total_seconds()/60
-                  except Exception as exc:
-                      print(f'state_parse_error {path_str}: {exc}')
-              checks.append((path_str,last,age))
-          stale=any(age is None or age >= 70 for _,_,age in checks)
-          oldest=max([age for _,_,age in checks if age is not None], default=None)
-          with open(os.environ['GITHUB_OUTPUT'],'a',encoding='utf-8') as f:
-              f.write(f'run_bio={"true" if stale else "false"}\n')
-              f.write(f'age_minutes={"unknown" if oldest is None else round(oldest,1)}\n')
-              f.write('last_checks=' + ' | '.join(f'{p}:{last}' for p,last,_ in checks).replace('\n',' ') + '\n')
-          print(f'dedicated_bio_fallback_stale={stale} checks={checks}')
+
+          KST = ZoneInfo("Asia/Seoul")
+          now = dt.datetime.now(KST)
+
+          def load(path_str):
+              path = pathlib.Path(path_str)
+              if not path.exists():
+                  return {}, None, "missing"
+              try:
+                  data = json.loads(path.read_text(encoding="utf-8"))
+              except Exception as exc:
+                  return {}, None, f"parse_error:{type(exc).__name__}"
+              stamp_text = str(data.get("checked_at_kst") or data.get("last_check_kst") or "")
+              if not stamp_text:
+                  return data, None, "timestamp_missing"
+              try:
+                  stamp = dt.datetime.fromisoformat(stamp_text)
+                  if stamp.tzinfo is None:
+                      stamp = stamp.replace(tzinfo=KST)
+                  age = (now - stamp.astimezone(KST)).total_seconds() / 60
+              except Exception as exc:
+                  return data, None, f"timestamp_error:{type(exc).__name__}"
+              return data, age, stamp_text
+
+          heartbeat, heartbeat_age, heartbeat_stamp = load("data/bio_watch_heartbeat.json")
+          halozyme, halozyme_age, halozyme_stamp = load("data/halozyme_ptab_watch_state.json")
+          previous_status = str(heartbeat.get("status") or "missing")
+
+          stale = (
+              previous_status != "ok"
+              or heartbeat_age is None
+              or heartbeat_age >= 25
+              or halozyme_age is None
+              or halozyme_age >= 25
+          )
+
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
+              out.write(f'run_bio={"true" if stale else "false"}\n')
+              out.write(f'previous_status={previous_status}\n')
+              out.write(f'heartbeat_age={"unknown" if heartbeat_age is None else round(heartbeat_age, 1)}\n')
+              out.write(f'halozyme_age={"unknown" if halozyme_age is None else round(halozyme_age, 1)}\n')
+              out.write(f'heartbeat_stamp={heartbeat_stamp}\n')
+              out.write(f'halozyme_stamp={halozyme_stamp}\n')
+
+          print(
+              "bio_watchdog "
+              f"stale={stale} status={previous_status} "
+              f"heartbeat_age={heartbeat_age} halozyme_age={halozyme_age}"
+          )
           PY
 
-      - name: Verify Telegram route for recovery
+      - name: Run integrated bio recovery
         if: steps.stale.outputs.run_bio == 'true'
-        id: telegram
-        env:
-          EXPECTED_TELEGRAM_BOT_USERNAME: "hs887988798879887988798879_bot"
-          BIO_TELEGRAM_BOT_TOKEN: ${{ secrets.BIO_TELEGRAM_BOT_TOKEN }}
-          CONFIGURED_BIO_TELEGRAM_CHAT_ID: ${{ secrets.BIO_TELEGRAM_CHAT_ID }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=scripts python -m unittest tests/test_bio_alert_regressions.py -v
+          python scripts/bio_single_runner_v3.py
+
+      - name: Persist recovered bio states
+        if: steps.stale.outputs.run_bio == 'true' && always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          files=(
+            data/qlex_sc_conversion_watch_state.json
+            data/qlex_wac_ir_watch_state.json
+            data/intismeran_qlex_watch_state.json
+            data/jemperli_altb4_watch_state.json
+            data/enhertu_altb4_watch_state.json
+            data/halozyme_ptab_watch_state.json
+            data/bio_watch_heartbeat.json
+          )
+
+          tmpdir=$(mktemp -d)
+          for file in "${files[@]}"; do
+            if [ -f "$file" ]; then
+              mkdir -p "$tmpdir/$(dirname "$file")"
+              cp "$file" "$tmpdir/$file"
+            fi
+          done
+
+          git config user.name "bio-watchdog[bot]"
+          git config user.email "bio-watchdog[bot]@users.noreply.github.com"
+
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            for file in "${files[@]}"; do
+              if [ -f "$tmpdir/$file" ]; then
+                mkdir -p "$(dirname "$file")"
+                cp "$tmpdir/$file" "$file"
+              fi
+            done
+            git add "${files[@]}" 2>/dev/null || true
+            if git diff --cached --quiet; then
+              echo "Bio watchdog states unchanged"
+              exit 0
+            fi
+            git commit -m "Recover stale integrated bio watch"
+            if git push origin HEAD:main; then
+              echo "Bio watchdog states persisted"
+              exit 0
+            fi
+            echo "Bio watchdog state push raced; retrying on latest main (attempt $attempt)"
+            sleep $((attempt * 3))
+          done
+
+          echo "Failed to persist bio watchdog states after retries" >&2
+          exit 1
+
+      - name: Notify stale-heartbeat recovery
+        if: steps.stale.outputs.run_bio == 'true' && steps.stale.outputs.previous_status == 'ok' && success()
         shell: bash
         run: |
           python - <<'PY'
-          import json, os, pathlib, urllib.request
-          token=(os.environ.get('BIO_TELEGRAM_BOT_TOKEN') or '').strip()
-          expected=(os.environ.get('EXPECTED_TELEGRAM_BOT_USERNAME') or '').strip().lstrip('@')
-          chat_id=(os.environ.get('CONFIGURED_BIO_TELEGRAM_CHAT_ID') or '').strip()
-          if not token or not chat_id:
-              raise RuntimeError('BIO Telegram secret missing')
-          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe', timeout=25) as r:
-              identity=json.loads(r.read().decode('utf-8'))
-          actual=str((identity.get('result') or {}).get('username') or '')
-          if not identity.get('ok') or actual.lower()!=expected.lower():
-              raise RuntimeError(f'Wrong Telegram bot: expected @{expected}, got @{actual or "unknown"}')
-          out=pathlib.Path(os.environ['GITHUB_OUTPUT'])
-          with out.open('a', encoding='utf-8') as f:
-              f.write(f'chat_id={chat_id}\n')
-          print(f'dedicated_bio_fallback_telegram_verified=@{actual}')
+          import os
+          import sys
+
+          sys.path.insert(0, "scripts")
+          import bio_single_runner
+
+          token, chat_id, source = bio_single_runner.verify_route()
+          message_id = bio_single_runner.send_text(
+              token,
+              chat_id,
+              "[바이오 감시] 자동 복구 확인\n\n"
+              "- 원인: 정기 heartbeat가 기준 시간을 초과해 기존 watchdog이 통합 감시를 재실행했습니다.\n"
+              "- 복구 범위: QLEX 전환율·월간 WAC·Intismeran·Jemperli·Enhertu·Halozyme 특허분쟁\n"
+              f"- Telegram 경로: {source}\n"
+              "- 현재 통합 감시 재실행 성공",
+          )
+          print(f"bio_watchdog_recovery_message_id={message_id}")
           PY
 
-      - name: Run QLEX and Intismeran recovery check
-        if: steps.stale.outputs.run_bio == 'true'
-        run: |
-          rm -f out/qlex_sc_conversion_alert.md out/intismeran_qlex_alert.md
-          python -m py_compile scripts/qlex_sc_conversion_watch.py scripts/intismeran_qlex_watch.py scripts/qlex_telegram_send.py
-          python scripts/qlex_sc_conversion_watch.py --mode check
-          python scripts/intismeran_qlex_watch.py
-
-      - name: Send recovered QLEX alert if new data exists
-        if: steps.stale.outputs.run_bio == 'true' && hashFiles('out/qlex_sc_conversion_alert.md') != ''
-        env:
-          BIO_TELEGRAM_BOT_TOKEN: ${{ secrets.BIO_TELEGRAM_BOT_TOKEN }}
-          BIO_TELEGRAM_CHAT_ID: ${{ steps.telegram.outputs.chat_id }}
-        run: python scripts/qlex_telegram_send.py out/qlex_sc_conversion_alert.md
-
-      - name: Send recovered Intismeran alert if new data exists
-        if: steps.stale.outputs.run_bio == 'true' && hashFiles('out/intismeran_qlex_alert.md') != ''
-        env:
-          BIO_TELEGRAM_BOT_TOKEN: ${{ secrets.BIO_TELEGRAM_BOT_TOKEN }}
-          BIO_TELEGRAM_CHAT_ID: ${{ steps.telegram.outputs.chat_id }}
-        run: python scripts/qlex_telegram_send.py out/intismeran_qlex_alert.md
-
-      - name: Persist recovered bio states
-        if: steps.stale.outputs.run_bio == 'true' && success()
-        run: |
-          test ! -f out/qlex_sc_conversion_watch_state_pending.json || cp out/qlex_sc_conversion_watch_state_pending.json data/qlex_sc_conversion_watch_state.json
-          test ! -f out/intismeran_qlex_watch_state_pending.json || cp out/intismeran_qlex_watch_state_pending.json data/intismeran_qlex_watch_state.json
-
-      - name: Commit recovered bio state
-        if: steps.stale.outputs.run_bio == 'true' && success()
-        run: |
-          git config user.name "bio-watchdog[bot]"
-          git config user.email "bio-watchdog[bot]@users.noreply.github.com"
-          git add data/qlex_sc_conversion_watch_state.json data/intismeran_qlex_watch_state.json 2>/dev/null || true
-          if git diff --cached --quiet; then
-            echo "Bio fallback found no state change"
-          else
-            git commit -m "Recover QLEX and Intismeran heartbeat"
-            for attempt in 1 2 3; do
-              if git pull --rebase origin main && git push; then
-                exit 0
-              fi
-              git rebase --abort 2>/dev/null || true
-              sleep $((attempt * 3))
-            done
-            exit 1
-          fi
-
-      - name: Notify successful automatic recovery
-        if: steps.stale.outputs.run_bio == 'true' && success()
-        env:
-          BIO_TELEGRAM_BOT_TOKEN: ${{ secrets.BIO_TELEGRAM_BOT_TOKEN }}
-          BIO_TELEGRAM_CHAT_ID: ${{ steps.telegram.outputs.chat_id }}
-        run: |
-          mkdir -p out
-          cat > out/bio_watchdog_recovery.md <<EOF
-          [바이오 감시] 자동 복구
-
-          QLEX·Intismeran 전용 감시 heartbeat가 기준 시간을 넘겨 watchdog이 자동 복구했습니다.
-          - 정체 시간: 약 ${{ steps.stale.outputs.age_minutes }}분
-          - 복구 후 두 감시 모두 계속 진행
-          EOF
-          python scripts/qlex_telegram_send.py out/bio_watchdog_recovery.md
-
-      - name: Notify recovery failure
+      - name: Notify watchdog recovery failure
         if: steps.stale.outputs.run_bio == 'true' && failure()
-        env:
-          BIO_TELEGRAM_BOT_TOKEN: ${{ secrets.BIO_TELEGRAM_BOT_TOKEN }}
-          BIO_TELEGRAM_CHAT_ID: ${{ secrets.BIO_TELEGRAM_CHAT_ID }}
+        shell: bash
         run: |
-          mkdir -p out
-          cat > out/bio_watchdog_failure.md <<EOF
-          [바이오 감시] 자동 복구 실패
+          python - <<'PY'
+          import sys
 
-          QLEX·Intismeran 전용 감시가 기준 시간을 넘겨 watchdog이 복구를 시도했지만 실패했습니다.
-          - GitHub Actions 점검 필요
-          EOF
-          python scripts/qlex_telegram_send.py out/bio_watchdog_failure.md || true
+          sys.path.insert(0, "scripts")
+          import bio_single_runner
+
+          try:
+              token, chat_id, source = bio_single_runner.verify_route()
+              message_id = bio_single_runner.send_text(
+                  token,
+                  chat_id,
+                  "[바이오 감시] 자동 복구 실패\n\n"
+                  "- 기존 watchdog이 통합 감시를 재실행했지만 정상 복구를 확인하지 못했습니다.\n"
+                  "- GitHub Actions와 외부 데이터 소스 상태를 확인합니다.",
+              )
+              print(f"bio_watchdog_failure_message_id={message_id}")
+          except Exception as exc:
+              print(f"bio_watchdog_failure_notice_error={type(exc).__name__}:{exc}")
+          PY
 
       - name: Publish fallback status
         if: always()
         run: |
-          echo "Dedicated bio fallback run=${{ steps.stale.outputs.run_bio }}" >> "$GITHUB_STEP_SUMMARY"
-          echo "age_minutes=${{ steps.stale.outputs.age_minutes }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "Integrated bio fallback run=${{ steps.stale.outputs.run_bio }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "previous_status=${{ steps.stale.outputs.previous_status }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "heartbeat_age_minutes=${{ steps.stale.outputs.heartbeat_age }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "halozyme_age_minutes=${{ steps.stale.outputs.halozyme_age }}" >> "$GITHUB_STEP_SUMMARY"
