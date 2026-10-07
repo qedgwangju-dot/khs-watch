@@ -423,7 +423,11 @@ jobs:
                           ],
                           [
                               {"text": "⚡ IEA 전력수요", "url": "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai"},
-                              {"text": "⛽ EIA 가스발전", "url": "https://www.eia.gov/todayinenergy/detail.php?id=67344"},
+                              {"text": "📊 EIA 최신 STEO", "url": "https://www.eia.gov/outlooks/steo/report/"},
+                          ],
+                          [
+                              {"text": "📄 EIA 10월 원표", "url": "https://www.eia.gov/outlooks/steo/archives/oct26.pdf"},
+                              {"text": "💰 EIA 도매가격", "url": "https://www.eia.gov/outlooks/steo/report/elec_coal_renew.php"},
                           ],
                           [
                               {"text": "📡 Morgan Stanley 현장전원", "url": "https://www.morganstanley.com/insights/podcasts/thoughts-on-the-market/ai-meets-real-economy-michelle-weaver-ravi-shanker-dave-arcaro"},
