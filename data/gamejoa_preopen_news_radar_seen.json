@@ -299,6 +299,23 @@
       "source_published_kst": "2026-10-07T11:04+09:00",
       "title": "LG전자, 3분기 영업이익 전년 比 13.5% ↑"
     },
+    "core:53a99dab6f30a55364851675": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817220",
+      "source": "뉴시스",
+      "source_body_digest": "f1e61c4231bbcf0bcd489a7304c0f7c41e8904b4513ac64615f6c002f7710a24",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b476bdfc486ffe7b426cc94c204ac3d13f3996097aba43cef08d4577430f9df",
+      "source_fact_keys": [
+        "source_fact:v1:7c66c9a86e54b9f3b6419a5ad792c57590505d77ad8f06b1226bae2e9d187c8c"
+      ],
+      "source_published_kst": "2026-10-07T15:02+09:00",
+      "title": "감사원 \"KBS, 드라마 제작비 집행 확인 안 해…출연료 부풀려 차액 빼돌려\""
+    },
     "core:60021d5be1c62719f5f3b9fa": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
       "lanes": {
@@ -330,6 +347,49 @@
       ],
       "source_published_kst": "2026-10-07T10:52+09:00",
       "title": "고흐 와인 3주간 15만병…세븐일레븐, 가을 레드와인 연이어 공략"
+    },
+    "core:63c513506a5c32b63605b69b": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169966",
+      "source": "매일경제",
+      "source_body_digest": "310b3bb7e818d7977fc57de5b22426ca406bd334be2048df61609f5eac6d0025",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15d32ee70e6ab2621c2fbbdc90604c593e99c7e152523ce573fe83d8a74ce1f2",
+      "source_fact_keys": [
+        "source_fact:v1:1b4b1545613f5a573c2ef370a6ad50b641bd8e30d6dd27d31ea6543ea8451bf6",
+        "source_fact:v1:224ac6e0b2628cf4de82c15d4d77531b4a1b2227098c1020ddf57bb7fb8f7f20",
+        "source_fact:v1:46b1e453e1453ae54df9508b80554f2923bb0c46acd49266983b4fed02312207",
+        "source_fact:v1:9eb07cc4be8c596fc5bbe94e3b5527be0758aced7c9f9b6607f03394b9f10560",
+        "source_fact:v1:a637de30788c1fc43e30af12d72e695d51c2873775fdc5f37e653e88bf97e68f",
+        "source_fact:v1:d68bce8b0bd50d2b35eeec06588755bf04bd2254416968aedc54c60bd01db902",
+        "source_fact:v1:e1cb26b344a8d4831ec8aa65c1551e3a4a34debc887592d813cfbd449a7e9b4c"
+      ],
+      "source_published_kst": "2026-10-07T08:49+09:00",
+      "title": "위스키 인터내셔널 홀딩, 자회사 1000만 달러 PIPE 유치..티커 변경"
+    },
+    "core:6843d6f553f095ce0c5788b1": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.hankyung.com/article/2026100770476",
+      "source": "한국경제",
+      "source_body_digest": "372117d67d6a2c71fbfc299a1bb21c929eea61b189346479b6e22a244b1cded9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:df1ce2ca5bbd99b076fa7b52d32a8bdcce3cec621413ee149bd56489ce8c013c",
+      "source_fact_keys": [
+        "source_fact:v1:aab3d6fe5f211b54b6cbf20d23f9add84d7b7e5788ca6a87dbb2dab113fa9fdf",
+        "source_fact:v1:b7115df67363610622d47b64c653df35e090e8010cfbe1ce538f136fe8747147",
+        "source_fact:v1:c3b2dc166f8b5378fe574c616dea138b69f986c36a759b6064a6786cd4eacf44",
+        "source_fact:v1:e70f6a457699c60f2ed873e02db12dce82396244ecefa87f2194be071b699c71"
+      ],
+      "source_published_kst": "2026-10-07T08:23+09:00",
+      "title": "\"삼전닉스 3분기 실적 추정치 상향…우려보다 견조할 것\""
     },
     "core:6913086c19e2db51cb425e8b": {
       "first_seen_kst": "2026-10-07T13:41:41+09:00",
@@ -497,6 +557,25 @@
       "source_published_kst": "2026-10-07T09:18+09:00",
       "title": "미래에셋 'TIGER 미국 타겟데일리커버드콜' 3종, 연초 이후 개인 순매수 1조 돌파"
     },
+    "core:8ac8d132d7c01569463499e0": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mt.co.kr/index.php/living/2026/10/06/2026100618330229805",
+      "source": "머니투데이",
+      "source_body_digest": "a27c73da8cef0d8a4f4a5af915aae3cbdc6ba7c66c47cd862326590ba82d799b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:692c60bccbf0608cc6faa6537b4158285eca532337dcb7701854269ce316ed00",
+      "source_fact_keys": [
+        "source_fact:v1:8627db50744e7c6bf940c18a5648e745b85e974b652fed6be25a6a35d9932b3e",
+        "source_fact:v1:b3e71080d81b96c553db15209c8703e19e2851cd3a680fe942e5a2bc450fdc0e",
+        "source_fact:v1:de7abc95a2861945b0eed6049cf4871b9a14376e44fc1ed9921c130c228653b5"
+      ],
+      "source_published_kst": "2026-10-06T18:35+09:00",
+      "title": "오텍캐리어, 글로벌 캐리어와 협력...\"대용량 냉각수 라인업 확대\""
+    },
     "core:8aee52ca216ca98e105c3b32": {
       "first_seen_kst": "2026-10-07T13:13:19+09:00",
       "lanes": {
@@ -579,6 +658,30 @@
       "source_published_kst": "2026-10-07T10:21+09:00",
       "title": "한화, AI 에너지 관리 기술 美 ‘차세대 신기술’ 선정"
     },
+    "core:97b0350472356ecc5615798d": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100709179686711",
+      "source": "머니투데이",
+      "source_body_digest": "ad1a0803b657634e6e91ffad8de82b84adc79e46c9df92e6c5bbe3af349d6abc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a662321c958d54e018ee4eca74afa3f8b45d1f79366792f63ab4087816c7727",
+      "source_fact_keys": [
+        "source_fact:v1:287ef08f7141093d671efde0f6cee080385d26c87ab0f2003410eff755755757",
+        "source_fact:v1:41cd36912c7a8f54088b197131fa5bb4e6891411a0df5f62cc51c00b56b593cf",
+        "source_fact:v1:651744d61a2fa9bb31cd0c34124b2963e89e9c02a18f27c1667416e9cbf64d76",
+        "source_fact:v1:990f945928753c7388fce8348ce07caa2403d22a9c6831becd002506970795ab",
+        "source_fact:v1:a418527af4503c83711e6f5185d01a791ad514b53047dcfe582e70d132a56628",
+        "source_fact:v1:c6424fed27799e62510cff653105a4d549da5f96fd9c1ecc0ef0ca9bd8e25293",
+        "source_fact:v1:e6da67d93def2e0b868a9e16658cc2d11ce4b92ddf02b4a50e1ae48afdd279fd",
+        "source_fact:v1:f1bffe7801bdeebbf9ac096c248bbb76a4d84df52285b45c1cef3199ddc6d43f"
+      ],
+      "source_published_kst": "2026-10-07T09:19+09:00",
+      "title": "[더벨]레이저쎌, '글로벌 톱' 메모리 프로브카드 기업에 LPB 공급"
+    },
     "core:9f2ea44266a0d6a71af1eaeb": {
       "first_seen_kst": "2026-10-07T16:44:58+09:00",
       "lanes": {
@@ -623,6 +726,28 @@
       ],
       "source_published_kst": "2026-10-07T11:25+09:00",
       "title": "블룸버그 “AI 유망 투자처는 대만...코스피는 ‘위험’”"
+    },
+    "core:a53abe06b95c62ffe77117ab": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12170187",
+      "source": "매일경제",
+      "source_body_digest": "3931303a5d9df7b86d4a5fb973a079edf32c8ac044c3cf6bb93af4cd57795521",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5dfafa70187d69b7e7d4eea674573ba6883b430de386a11c0788187683d59139",
+      "source_fact_keys": [
+        "source_fact:v1:38e6e5d546c15dfb27fe8070400f51599c818f4dd74acb97d3eec192c72b6847",
+        "source_fact:v1:3b3b2b0328f197987a9a4850927ec411844a2f19bfbfb8e0eac181e7a023101f",
+        "source_fact:v1:43b96e61ac4602f0057f0fa7359da0e693dde888b90eedd64d461f37a88eb25c",
+        "source_fact:v1:46df9d38a7a627acef5f5a22a147664e1b72ccfce592eef092c7ed000e3d9df8",
+        "source_fact:v1:4c88f14aa9c3be6c9c3abfca0d8d1800f9782084348f4a662060bd52af393e37",
+        "source_fact:v1:f1509bd17a8c70ad0da006291dd3d213a745d3b0d8fc7620dd7c2752888a4102"
+      ],
+      "source_published_kst": "2026-10-07T11:16+09:00",
+      "title": "“삼성전기, 한번 더”...DS證 “실적 서프라이즈” [오늘, 이 종목]- 매경ECONOMY"
     },
     "core:a963b5b9dff89c6f8f87f9c9": {
       "first_seen_kst": "2026-10-07T15:44:50+09:00",
@@ -869,6 +994,25 @@
       ],
       "source_published_kst": "2026-10-07T11:25+09:00",
       "title": "KGM 액티언, 하이브리드 선택률 82%…\"전 연령층서 인기\""
+    },
+    "core:d3f11b8b7cd33cc3bbc083ac": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.hankyung.com/article/202610077024i",
+      "source": "한국경제",
+      "source_body_digest": "509e8a34c588226bee6a29ffc16043521bfb9c3644780973bea39215994d7485",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8a3c31ed1e321c7c1849bd7496222c5d0e05517eeb4d694f738afa23087c728",
+      "source_fact_keys": [
+        "source_fact:v1:006004794fd56216f27e7c02d0c3a400a5d39f8e248b94ce1fa5bab902607b72",
+        "source_fact:v1:09b72bc550980d2bfc5e7159818681dc5a6084fd07973162bce362a8031b3845",
+        "source_fact:v1:2b2aa37e552a26343e8723fd6b285e27a65bec6f5da92174089f3907677050fa"
+      ],
+      "source_published_kst": "2026-10-07T08:17+09:00",
+      "title": "지아이이노베이션 GI-301, 일본 임상 2상 진입 … 10월 첫 환자 투약"
     },
     "core:dfdadbd4b5498b3d0b534944": {
       "first_seen_kst": "2026-10-07T14:56:20+09:00",
@@ -5569,28 +5713,24 @@
     "event:a5aa0a1891120ec81e235503": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
       "lanes": {
-        "live": "2026-10-07T08:15:28+09:00"
+        "live": "2026-10-07T16:57:09+09:00"
       },
-      "last_seen_kst": "2026-10-07T08:15:28+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02709286645610624&mediaCodeNo=257",
-      "source": "이데일리",
-      "source_body_digest": "75b19acb2608c8cee97be2e9bf1dfb20e96d93f014a002e2e6a9595ed6c15811",
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12170187",
+      "source": "매일경제",
+      "source_body_digest": "3931303a5d9df7b86d4a5fb973a079edf32c8ac044c3cf6bb93af4cd57795521",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:febbff5d6ed712520314eea87e850abe3dc84015e1c35df39c2b7f90e9cda0c3",
+      "source_fact_identity": "source_facts:v1:5dfafa70187d69b7e7d4eea674573ba6883b430de386a11c0788187683d59139",
       "source_fact_keys": [
-        "source_fact:v1:09d36cc61b7c31f0e748c4fe26f4f854cfbe1fa13aa9d15c5a1f2a498a026050",
-        "source_fact:v1:1d3a51a6cef9a1ff0c3f5235d164a7e134660045e92b978f098e96d64fa6c798",
-        "source_fact:v1:212a2e7dd8c06db80d6f8e02c2ffb09a5a8f7e99d9d5038d7474168285ef41e0",
-        "source_fact:v1:627060bee3bf7a304743ed0972dcc269f7312503e9850577bec7bcc0b430e069",
-        "source_fact:v1:9093852b6a51cfc7c957d8e31e1ffc4d7910afcf9d09b6e6e772b8b91f4ee5b6",
-        "source_fact:v1:979313b08e82a2b9f50c2697e8a0f24c07daeebdf1496dc3c1d1591d5dc70e10",
-        "source_fact:v1:e16ed527e135e185aa884f057d185fc2c2849f6e1e316fe92eb92e31d9f59b96",
-        "source_fact:v1:e96517cbefa1f547be7626f87c675f6436e67b35cbe5cde34026ea4cd4d8929a",
-        "source_fact:v1:f7a19ab48e508b065bddefbdcf27b3ec7c1e68d73ca71b4d3cbb1a825bd4539c",
-        "source_fact:v1:ffc755ab47ce3a740b89e4a66a2f2e4f688d4d4ca0ac7bf3a7ed8b661f8f850e"
+        "source_fact:v1:38e6e5d546c15dfb27fe8070400f51599c818f4dd74acb97d3eec192c72b6847",
+        "source_fact:v1:3b3b2b0328f197987a9a4850927ec411844a2f19bfbfb8e0eac181e7a023101f",
+        "source_fact:v1:43b96e61ac4602f0057f0fa7359da0e693dde888b90eedd64d461f37a88eb25c",
+        "source_fact:v1:46df9d38a7a627acef5f5a22a147664e1b72ccfce592eef092c7ed000e3d9df8",
+        "source_fact:v1:4c88f14aa9c3be6c9c3abfca0d8d1800f9782084348f4a662060bd52af393e37",
+        "source_fact:v1:f1509bd17a8c70ad0da006291dd3d213a745d3b0d8fc7620dd7c2752888a4102"
       ],
-      "source_published_kst": "2026-10-07T07:55+09:00",
-      "title": "삼성전기, 3분기 ‘깜짝 실적’ 전망…목표가 160만→260만원"
+      "source_published_kst": "2026-10-07T11:16+09:00",
+      "title": "“삼성전기, 한번 더”...DS證 “실적 서프라이즈” [오늘, 이 종목]- 매경ECONOMY"
     },
     "event:a5e70bed46ff1c59654808e5": {
       "first_seen_kst": "2026-09-24T10:55:51+09:00",
@@ -5737,6 +5877,30 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003811815",
       "source": "뉴시스",
       "title": "\"압도적 우위인데 왜 안 끝나나\"…이란 전쟁 길어지는 이유는"
+    },
+    "event:ac06d2ab851779b9f4aeb637": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100709179686711",
+      "source": "머니투데이",
+      "source_body_digest": "ad1a0803b657634e6e91ffad8de82b84adc79e46c9df92e6c5bbe3af349d6abc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a662321c958d54e018ee4eca74afa3f8b45d1f79366792f63ab4087816c7727",
+      "source_fact_keys": [
+        "source_fact:v1:287ef08f7141093d671efde0f6cee080385d26c87ab0f2003410eff755755757",
+        "source_fact:v1:41cd36912c7a8f54088b197131fa5bb4e6891411a0df5f62cc51c00b56b593cf",
+        "source_fact:v1:651744d61a2fa9bb31cd0c34124b2963e89e9c02a18f27c1667416e9cbf64d76",
+        "source_fact:v1:990f945928753c7388fce8348ce07caa2403d22a9c6831becd002506970795ab",
+        "source_fact:v1:a418527af4503c83711e6f5185d01a791ad514b53047dcfe582e70d132a56628",
+        "source_fact:v1:c6424fed27799e62510cff653105a4d549da5f96fd9c1ecc0ef0ca9bd8e25293",
+        "source_fact:v1:e6da67d93def2e0b868a9e16658cc2d11ce4b92ddf02b4a50e1ae48afdd279fd",
+        "source_fact:v1:f1bffe7801bdeebbf9ac096c248bbb76a4d84df52285b45c1cef3199ddc6d43f"
+      ],
+      "source_published_kst": "2026-10-07T09:19+09:00",
+      "title": "[더벨]레이저쎌, '글로벌 톱' 메모리 프로브카드 기업에 LPB 공급"
     },
     "event:ad69d6ca37fccb0fcc40113f": {
       "first_seen_kst": "2026-09-25T01:40:40+09:00",
@@ -7269,19 +7433,22 @@
     "event:dd87cc13e30f19c890aebcd1": {
       "first_seen_kst": "2026-10-07T03:30:59+09:00",
       "lanes": {
-        "live": "2026-10-07T11:43:24+09:00"
+        "live": "2026-10-07T16:57:09+09:00"
       },
-      "last_seen_kst": "2026-10-07T11:43:24+09:00",
-      "link": "https://www.dt.co.kr/article/12087843",
-      "source": "디지털타임스",
-      "source_body_digest": "84816b2c69a1dc329abfe50e5f88c0831f13b6928d1e40b87a4e7835b18238bd",
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.hankyung.com/article/2026100770476",
+      "source": "한국경제",
+      "source_body_digest": "372117d67d6a2c71fbfc299a1bb21c929eea61b189346479b6e22a244b1cded9",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:a75ef0c80c44b92c3775cf47eb7c73a1b7c5b6b2e3e8deb9fe37942c6585597f",
+      "source_fact_identity": "source_facts:v1:df1ce2ca5bbd99b076fa7b52d32a8bdcce3cec621413ee149bd56489ce8c013c",
       "source_fact_keys": [
-        "source_fact:v1:25ba6429a6c2c2e3f7b9554effc02a13cd8d62ac66e53f936d8491eb00852c18"
+        "source_fact:v1:aab3d6fe5f211b54b6cbf20d23f9add84d7b7e5788ca6a87dbb2dab113fa9fdf",
+        "source_fact:v1:b7115df67363610622d47b64c653df35e090e8010cfbe1ce538f136fe8747147",
+        "source_fact:v1:c3b2dc166f8b5378fe574c616dea138b69f986c36a759b6064a6786cd4eacf44",
+        "source_fact:v1:e70f6a457699c60f2ed873e02db12dce82396244ecefa87f2194be071b699c71"
       ],
-      "source_published_kst": "2026-10-07T10:15+09:00",
-      "title": "인구 절벽 시대에도 ‘나 홀로 우상향’ 천안… 삼성 투자 타고 ‘더샵 천안라크원’ 분양"
+      "source_published_kst": "2026-10-07T08:23+09:00",
+      "title": "\"삼전닉스 3분기 실적 추정치 상향…우려보다 견조할 것\""
     },
     "event:de0944201f01ab6356bb27a3": {
       "first_seen_kst": "2026-10-07T09:44:16+09:00",
@@ -9062,6 +9229,28 @@
       ],
       "source_published_kst": "2026-10-06T07:32+09:00",
       "title": "\"공급이 못 따라간다\"…수퍼사이클 탄 AI반도체 기판 3인방 비교분석"
+    },
+    "fact:0b7f706c5ae1f0b22d608f92": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12170187",
+      "source": "매일경제",
+      "source_body_digest": "3931303a5d9df7b86d4a5fb973a079edf32c8ac044c3cf6bb93af4cd57795521",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5dfafa70187d69b7e7d4eea674573ba6883b430de386a11c0788187683d59139",
+      "source_fact_keys": [
+        "source_fact:v1:38e6e5d546c15dfb27fe8070400f51599c818f4dd74acb97d3eec192c72b6847",
+        "source_fact:v1:3b3b2b0328f197987a9a4850927ec411844a2f19bfbfb8e0eac181e7a023101f",
+        "source_fact:v1:43b96e61ac4602f0057f0fa7359da0e693dde888b90eedd64d461f37a88eb25c",
+        "source_fact:v1:46df9d38a7a627acef5f5a22a147664e1b72ccfce592eef092c7ed000e3d9df8",
+        "source_fact:v1:4c88f14aa9c3be6c9c3abfca0d8d1800f9782084348f4a662060bd52af393e37",
+        "source_fact:v1:f1509bd17a8c70ad0da006291dd3d213a745d3b0d8fc7620dd7c2752888a4102"
+      ],
+      "source_published_kst": "2026-10-07T11:16+09:00",
+      "title": "“삼성전기, 한번 더”...DS證 “실적 서프라이즈” [오늘, 이 종목]- 매경ECONOMY"
     },
     "fact:0b86784b7697f8df13b56b51": {
       "first_seen_kst": "2026-10-06T07:30:15+09:00",
@@ -11849,6 +12038,30 @@
       ],
       "source_published_kst": "2026-10-06T11:01+09:00",
       "title": "자동차 화면용 강화유리 수입승인 없앤다…디스플레이 규제 개선"
+    },
+    "fact:31c4a3af8f621341e85d2b4a": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100709179686711",
+      "source": "머니투데이",
+      "source_body_digest": "ad1a0803b657634e6e91ffad8de82b84adc79e46c9df92e6c5bbe3af349d6abc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a662321c958d54e018ee4eca74afa3f8b45d1f79366792f63ab4087816c7727",
+      "source_fact_keys": [
+        "source_fact:v1:287ef08f7141093d671efde0f6cee080385d26c87ab0f2003410eff755755757",
+        "source_fact:v1:41cd36912c7a8f54088b197131fa5bb4e6891411a0df5f62cc51c00b56b593cf",
+        "source_fact:v1:651744d61a2fa9bb31cd0c34124b2963e89e9c02a18f27c1667416e9cbf64d76",
+        "source_fact:v1:990f945928753c7388fce8348ce07caa2403d22a9c6831becd002506970795ab",
+        "source_fact:v1:a418527af4503c83711e6f5185d01a791ad514b53047dcfe582e70d132a56628",
+        "source_fact:v1:c6424fed27799e62510cff653105a4d549da5f96fd9c1ecc0ef0ca9bd8e25293",
+        "source_fact:v1:e6da67d93def2e0b868a9e16658cc2d11ce4b92ddf02b4a50e1ae48afdd279fd",
+        "source_fact:v1:f1bffe7801bdeebbf9ac096c248bbb76a4d84df52285b45c1cef3199ddc6d43f"
+      ],
+      "source_published_kst": "2026-10-07T09:19+09:00",
+      "title": "[더벨]레이저쎌, '글로벌 톱' 메모리 프로브카드 기업에 LPB 공급"
     },
     "fact:31c60dc05bfbb7f37ea8cd1f": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
@@ -16577,6 +16790,25 @@
       "source_published_kst": "2026-10-07T07:16+09:00",
       "title": "앞서가는 트럼프 \"韓, 최근 美조선업에 1500억불 줬다\""
     },
+    "fact:77771574eed7816daefcc9cf": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mt.co.kr/index.php/living/2026/10/06/2026100618330229805",
+      "source": "머니투데이",
+      "source_body_digest": "a27c73da8cef0d8a4f4a5af915aae3cbdc6ba7c66c47cd862326590ba82d799b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:692c60bccbf0608cc6faa6537b4158285eca532337dcb7701854269ce316ed00",
+      "source_fact_keys": [
+        "source_fact:v1:8627db50744e7c6bf940c18a5648e745b85e974b652fed6be25a6a35d9932b3e",
+        "source_fact:v1:b3e71080d81b96c553db15209c8703e19e2851cd3a680fe942e5a2bc450fdc0e",
+        "source_fact:v1:de7abc95a2861945b0eed6049cf4871b9a14376e44fc1ed9921c130c228653b5"
+      ],
+      "source_published_kst": "2026-10-06T18:35+09:00",
+      "title": "오텍캐리어, 글로벌 캐리어와 협력...\"대용량 냉각수 라인업 확대\""
+    },
     "fact:7783fe8de0ad56edc7448968": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
       "lanes": {
@@ -17006,6 +17238,23 @@
       ],
       "source_published_kst": "2026-10-05T17:54+09:00",
       "title": "24년來 최고 금리도 AI 기세 못막아…나스닥 사상 최고[월스트리트in]"
+    },
+    "fact:7e5f460033e0451a226888e8": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817220",
+      "source": "뉴시스",
+      "source_body_digest": "f1e61c4231bbcf0bcd489a7304c0f7c41e8904b4513ac64615f6c002f7710a24",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b476bdfc486ffe7b426cc94c204ac3d13f3996097aba43cef08d4577430f9df",
+      "source_fact_keys": [
+        "source_fact:v1:7c66c9a86e54b9f3b6419a5ad792c57590505d77ad8f06b1226bae2e9d187c8c"
+      ],
+      "source_published_kst": "2026-10-07T15:02+09:00",
+      "title": "감사원 \"KBS, 드라마 제작비 집행 확인 안 해…출연료 부풀려 차액 빼돌려\""
     },
     "fact:7e6cc31dd306bcb3a869efa3": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -18914,6 +19163,29 @@
       ],
       "source_published_kst": "2026-10-07T09:16+09:00",
       "title": "덕산넵코어스, 누리호 5차 발사 위성항법수신기·안테나 공급"
+    },
+    "fact:972e87345fd2cb5b200c7c72": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169966",
+      "source": "매일경제",
+      "source_body_digest": "310b3bb7e818d7977fc57de5b22426ca406bd334be2048df61609f5eac6d0025",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15d32ee70e6ab2621c2fbbdc90604c593e99c7e152523ce573fe83d8a74ce1f2",
+      "source_fact_keys": [
+        "source_fact:v1:1b4b1545613f5a573c2ef370a6ad50b641bd8e30d6dd27d31ea6543ea8451bf6",
+        "source_fact:v1:224ac6e0b2628cf4de82c15d4d77531b4a1b2227098c1020ddf57bb7fb8f7f20",
+        "source_fact:v1:46b1e453e1453ae54df9508b80554f2923bb0c46acd49266983b4fed02312207",
+        "source_fact:v1:9eb07cc4be8c596fc5bbe94e3b5527be0758aced7c9f9b6607f03394b9f10560",
+        "source_fact:v1:a637de30788c1fc43e30af12d72e695d51c2873775fdc5f37e653e88bf97e68f",
+        "source_fact:v1:d68bce8b0bd50d2b35eeec06588755bf04bd2254416968aedc54c60bd01db902",
+        "source_fact:v1:e1cb26b344a8d4831ec8aa65c1551e3a4a34debc887592d813cfbd449a7e9b4c"
+      ],
+      "source_published_kst": "2026-10-07T08:49+09:00",
+      "title": "위스키 인터내셔널 홀딩, 자회사 1000만 달러 PIPE 유치..티커 변경"
     },
     "fact:975d78e94fdd6f2c8b96692b": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -21750,6 +22022,26 @@
       "source_published_kst": "2026-10-06T08:17+09:00",
       "title": "나스닥 사상 최고…비트코인 8만5000달러대[코인 모닝콜]"
     },
+    "fact:c37964fe9a97932a95fa60ba": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.hankyung.com/article/2026100770476",
+      "source": "한국경제",
+      "source_body_digest": "372117d67d6a2c71fbfc299a1bb21c929eea61b189346479b6e22a244b1cded9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:df1ce2ca5bbd99b076fa7b52d32a8bdcce3cec621413ee149bd56489ce8c013c",
+      "source_fact_keys": [
+        "source_fact:v1:aab3d6fe5f211b54b6cbf20d23f9add84d7b7e5788ca6a87dbb2dab113fa9fdf",
+        "source_fact:v1:b7115df67363610622d47b64c653df35e090e8010cfbe1ce538f136fe8747147",
+        "source_fact:v1:c3b2dc166f8b5378fe574c616dea138b69f986c36a759b6064a6786cd4eacf44",
+        "source_fact:v1:e70f6a457699c60f2ed873e02db12dce82396244ecefa87f2194be071b699c71"
+      ],
+      "source_published_kst": "2026-10-07T08:23+09:00",
+      "title": "\"삼전닉스 3분기 실적 추정치 상향…우려보다 견조할 것\""
+    },
     "fact:c389139f2b9b9e16ed215d95": {
       "first_seen_kst": "2026-10-07T12:06:36+09:00",
       "lanes": {
@@ -24133,6 +24425,25 @@
       ],
       "source_published_kst": "2026-10-05T22:31+09:00",
       "title": "메틀렌: 일본 주요 화학 기업과 신규 갈륨 공급 계약 체결"
+    },
+    "fact:e70122df9e74adf79da0f2a2": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.hankyung.com/article/202610077024i",
+      "source": "한국경제",
+      "source_body_digest": "509e8a34c588226bee6a29ffc16043521bfb9c3644780973bea39215994d7485",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8a3c31ed1e321c7c1849bd7496222c5d0e05517eeb4d694f738afa23087c728",
+      "source_fact_keys": [
+        "source_fact:v1:006004794fd56216f27e7c02d0c3a400a5d39f8e248b94ce1fa5bab902607b72",
+        "source_fact:v1:09b72bc550980d2bfc5e7159818681dc5a6084fd07973162bce362a8031b3845",
+        "source_fact:v1:2b2aa37e552a26343e8723fd6b285e27a65bec6f5da92174089f3907677050fa"
+      ],
+      "source_published_kst": "2026-10-07T08:17+09:00",
+      "title": "지아이이노베이션 GI-301, 일본 임상 2상 진입 … 10월 첫 환자 투약"
     },
     "fact:e74cfd13ce7522a617419190": {
       "first_seen_kst": "2026-10-05T22:49:24+09:00",
@@ -27632,6 +27943,25 @@
       "source": "연합뉴스",
       "title": "뉴욕증시, 비농업 고용지표 소화하며 상승 출발 | 연합뉴스"
     },
+    "link:0deeae61722471d563faa701": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.hankyung.com/article/202610077024i",
+      "source": "한국경제",
+      "source_body_digest": "509e8a34c588226bee6a29ffc16043521bfb9c3644780973bea39215994d7485",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8a3c31ed1e321c7c1849bd7496222c5d0e05517eeb4d694f738afa23087c728",
+      "source_fact_keys": [
+        "source_fact:v1:006004794fd56216f27e7c02d0c3a400a5d39f8e248b94ce1fa5bab902607b72",
+        "source_fact:v1:09b72bc550980d2bfc5e7159818681dc5a6084fd07973162bce362a8031b3845",
+        "source_fact:v1:2b2aa37e552a26343e8723fd6b285e27a65bec6f5da92174089f3907677050fa"
+      ],
+      "source_published_kst": "2026-10-07T08:17+09:00",
+      "title": "지아이이노베이션 GI-301, 일본 임상 2상 진입 … 10월 첫 환자 투약"
+    },
     "link:0e17eb19cfa0c664b14f6e05": {
       "first_seen_kst": "2026-10-06T19:46:03+09:00",
       "lanes": {
@@ -28600,6 +28930,29 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T13:27+09:00",
       "title": "외국인 1.2조 매도에 코스피 7000선 하회…코스닥은 2%대 강세"
+    },
+    "link:157d6206904ed58dd2dde991": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169966",
+      "source": "매일경제",
+      "source_body_digest": "310b3bb7e818d7977fc57de5b22426ca406bd334be2048df61609f5eac6d0025",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15d32ee70e6ab2621c2fbbdc90604c593e99c7e152523ce573fe83d8a74ce1f2",
+      "source_fact_keys": [
+        "source_fact:v1:1b4b1545613f5a573c2ef370a6ad50b641bd8e30d6dd27d31ea6543ea8451bf6",
+        "source_fact:v1:224ac6e0b2628cf4de82c15d4d77531b4a1b2227098c1020ddf57bb7fb8f7f20",
+        "source_fact:v1:46b1e453e1453ae54df9508b80554f2923bb0c46acd49266983b4fed02312207",
+        "source_fact:v1:9eb07cc4be8c596fc5bbe94e3b5527be0758aced7c9f9b6607f03394b9f10560",
+        "source_fact:v1:a637de30788c1fc43e30af12d72e695d51c2873775fdc5f37e653e88bf97e68f",
+        "source_fact:v1:d68bce8b0bd50d2b35eeec06588755bf04bd2254416968aedc54c60bd01db902",
+        "source_fact:v1:e1cb26b344a8d4831ec8aa65c1551e3a4a34debc887592d813cfbd449a7e9b4c"
+      ],
+      "source_published_kst": "2026-10-07T08:49+09:00",
+      "title": "위스키 인터내셔널 홀딩, 자회사 1000만 달러 PIPE 유치..티커 변경"
     },
     "link:158971b1b91032fb86686d09": {
       "first_seen_kst": "2026-10-01T04:48:27+09:00",
@@ -30564,6 +30917,23 @@
       "source": "이투데이",
       "title": "[주간증시전망] 다음주 코스피 6500~7500 전망⋯‘삼성전자 실적’이 분수령"
     },
+    "link:261ccad0dcfcc2c428801030": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817220",
+      "source": "뉴시스",
+      "source_body_digest": "f1e61c4231bbcf0bcd489a7304c0f7c41e8904b4513ac64615f6c002f7710a24",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b476bdfc486ffe7b426cc94c204ac3d13f3996097aba43cef08d4577430f9df",
+      "source_fact_keys": [
+        "source_fact:v1:7c66c9a86e54b9f3b6419a5ad792c57590505d77ad8f06b1226bae2e9d187c8c"
+      ],
+      "source_published_kst": "2026-10-07T15:02+09:00",
+      "title": "감사원 \"KBS, 드라마 제작비 집행 확인 안 해…출연료 부풀려 차액 빼돌려\""
+    },
     "link:2639213e47601cc0f1ad457a": {
       "first_seen_kst": "2026-10-02T16:53:54+09:00",
       "lanes": {
@@ -30904,6 +31274,26 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-05T22:22+09:00",
       "title": "뉴로원 메디컬 테크놀러지, 4분기 잠정 제품매출 380만달러..38% 증가"
+    },
+    "link:27d212bad9e58d8eff7046da": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.hankyung.com/article/2026100770476",
+      "source": "한국경제",
+      "source_body_digest": "372117d67d6a2c71fbfc299a1bb21c929eea61b189346479b6e22a244b1cded9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:df1ce2ca5bbd99b076fa7b52d32a8bdcce3cec621413ee149bd56489ce8c013c",
+      "source_fact_keys": [
+        "source_fact:v1:aab3d6fe5f211b54b6cbf20d23f9add84d7b7e5788ca6a87dbb2dab113fa9fdf",
+        "source_fact:v1:b7115df67363610622d47b64c653df35e090e8010cfbe1ce538f136fe8747147",
+        "source_fact:v1:c3b2dc166f8b5378fe574c616dea138b69f986c36a759b6064a6786cd4eacf44",
+        "source_fact:v1:e70f6a457699c60f2ed873e02db12dce82396244ecefa87f2194be071b699c71"
+      ],
+      "source_published_kst": "2026-10-07T08:23+09:00",
+      "title": "\"삼전닉스 3분기 실적 추정치 상향…우려보다 견조할 것\""
     },
     "link:27e5802236f1f31e8056a29d": {
       "first_seen_kst": "2026-10-03T21:21:44+09:00",
@@ -50469,6 +50859,30 @@
       "source_published_kst": "2026-10-05T22:17+09:00",
       "title": "컨스트럭션 파트너스, 텍사스 아스팔트업체 인수..플랜트 2곳 확보"
     },
+    "link:bb6a6d9121b33449e1c902ed": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100709179686711",
+      "source": "머니투데이",
+      "source_body_digest": "ad1a0803b657634e6e91ffad8de82b84adc79e46c9df92e6c5bbe3af349d6abc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a662321c958d54e018ee4eca74afa3f8b45d1f79366792f63ab4087816c7727",
+      "source_fact_keys": [
+        "source_fact:v1:287ef08f7141093d671efde0f6cee080385d26c87ab0f2003410eff755755757",
+        "source_fact:v1:41cd36912c7a8f54088b197131fa5bb4e6891411a0df5f62cc51c00b56b593cf",
+        "source_fact:v1:651744d61a2fa9bb31cd0c34124b2963e89e9c02a18f27c1667416e9cbf64d76",
+        "source_fact:v1:990f945928753c7388fce8348ce07caa2403d22a9c6831becd002506970795ab",
+        "source_fact:v1:a418527af4503c83711e6f5185d01a791ad514b53047dcfe582e70d132a56628",
+        "source_fact:v1:c6424fed27799e62510cff653105a4d549da5f96fd9c1ecc0ef0ca9bd8e25293",
+        "source_fact:v1:e6da67d93def2e0b868a9e16658cc2d11ce4b92ddf02b4a50e1ae48afdd279fd",
+        "source_fact:v1:f1bffe7801bdeebbf9ac096c248bbb76a4d84df52285b45c1cef3199ddc6d43f"
+      ],
+      "source_published_kst": "2026-10-07T09:19+09:00",
+      "title": "[더벨]레이저쎌, '글로벌 톱' 메모리 프로브카드 기업에 LPB 공급"
+    },
     "link:bb712decd1f1b74d57684379": {
       "first_seen_kst": "2026-10-02T10:55:46+09:00",
       "lanes": {
@@ -54962,6 +55376,25 @@
       "source_published_kst": "2026-10-05T07:11+09:00",
       "title": "명절에 지방 간 10대들, 올리브영서 '질렀다'…비수도권 매출↑ | 연합뉴스"
     },
+    "link:dc9099ccc7600abc905ef590": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mt.co.kr/index.php/living/2026/10/06/2026100618330229805",
+      "source": "머니투데이",
+      "source_body_digest": "a27c73da8cef0d8a4f4a5af915aae3cbdc6ba7c66c47cd862326590ba82d799b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:692c60bccbf0608cc6faa6537b4158285eca532337dcb7701854269ce316ed00",
+      "source_fact_keys": [
+        "source_fact:v1:8627db50744e7c6bf940c18a5648e745b85e974b652fed6be25a6a35d9932b3e",
+        "source_fact:v1:b3e71080d81b96c553db15209c8703e19e2851cd3a680fe942e5a2bc450fdc0e",
+        "source_fact:v1:de7abc95a2861945b0eed6049cf4871b9a14376e44fc1ed9921c130c228653b5"
+      ],
+      "source_published_kst": "2026-10-06T18:35+09:00",
+      "title": "오텍캐리어, 글로벌 캐리어와 협력...\"대용량 냉각수 라인업 확대\""
+    },
     "link:dc9bb3990a3d1ea83961fa47": {
       "first_seen_kst": "2026-09-24T06:34:46+09:00",
       "lanes": {
@@ -57184,6 +57617,28 @@
       "source": "매일경제",
       "source_event_identity": "",
       "title": "포드 자동차, 3분기 미국 판매 51만대..전년비 6.6% 감소"
+    },
+    "link:ed7c3f8d5ffcd7a47a930094": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12170187",
+      "source": "매일경제",
+      "source_body_digest": "3931303a5d9df7b86d4a5fb973a079edf32c8ac044c3cf6bb93af4cd57795521",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5dfafa70187d69b7e7d4eea674573ba6883b430de386a11c0788187683d59139",
+      "source_fact_keys": [
+        "source_fact:v1:38e6e5d546c15dfb27fe8070400f51599c818f4dd74acb97d3eec192c72b6847",
+        "source_fact:v1:3b3b2b0328f197987a9a4850927ec411844a2f19bfbfb8e0eac181e7a023101f",
+        "source_fact:v1:43b96e61ac4602f0057f0fa7359da0e693dde888b90eedd64d461f37a88eb25c",
+        "source_fact:v1:46df9d38a7a627acef5f5a22a147664e1b72ccfce592eef092c7ed000e3d9df8",
+        "source_fact:v1:4c88f14aa9c3be6c9c3abfca0d8d1800f9782084348f4a662060bd52af393e37",
+        "source_fact:v1:f1509bd17a8c70ad0da006291dd3d213a745d3b0d8fc7620dd7c2752888a4102"
+      ],
+      "source_published_kst": "2026-10-07T11:16+09:00",
+      "title": "“삼성전기, 한번 더”...DS證 “실적 서프라이즈” [오늘, 이 종목]- 매경ECONOMY"
     },
     "link:edb01fb20f868433638f1df1": {
       "first_seen_kst": "2026-10-02T08:38:38+09:00",
@@ -65275,6 +65730,28 @@
       "source_published_kst": "2026-10-06T17:12+09:00",
       "title": "유로화 17개월 최저…프랑스 재정불안에 스페인 조기총선까지(종합)"
     },
+    "original:2c58a50471e5f80a76d1ad17": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12170187",
+      "source": "매일경제",
+      "source_body_digest": "3931303a5d9df7b86d4a5fb973a079edf32c8ac044c3cf6bb93af4cd57795521",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5dfafa70187d69b7e7d4eea674573ba6883b430de386a11c0788187683d59139",
+      "source_fact_keys": [
+        "source_fact:v1:38e6e5d546c15dfb27fe8070400f51599c818f4dd74acb97d3eec192c72b6847",
+        "source_fact:v1:3b3b2b0328f197987a9a4850927ec411844a2f19bfbfb8e0eac181e7a023101f",
+        "source_fact:v1:43b96e61ac4602f0057f0fa7359da0e693dde888b90eedd64d461f37a88eb25c",
+        "source_fact:v1:46df9d38a7a627acef5f5a22a147664e1b72ccfce592eef092c7ed000e3d9df8",
+        "source_fact:v1:4c88f14aa9c3be6c9c3abfca0d8d1800f9782084348f4a662060bd52af393e37",
+        "source_fact:v1:f1509bd17a8c70ad0da006291dd3d213a745d3b0d8fc7620dd7c2752888a4102"
+      ],
+      "source_published_kst": "2026-10-07T11:16+09:00",
+      "title": "“삼성전기, 한번 더”...DS證 “실적 서프라이즈” [오늘, 이 종목]- 매경ECONOMY"
+    },
     "original:2c73d84a7050f95040fbe697": {
       "first_seen_kst": "2026-10-02T13:15:57+09:00",
       "lanes": {
@@ -65638,6 +66115,30 @@
       ],
       "source_published_kst": "2026-10-06T09:26+09:00",
       "title": "한투운용, 미국 대표지수 ETF 4종 이벤트⋯대한항공 기프트카드 제공"
+    },
+    "original:2f0fc45ccad272d8511c562a": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100709179686711",
+      "source": "머니투데이",
+      "source_body_digest": "ad1a0803b657634e6e91ffad8de82b84adc79e46c9df92e6c5bbe3af349d6abc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a662321c958d54e018ee4eca74afa3f8b45d1f79366792f63ab4087816c7727",
+      "source_fact_keys": [
+        "source_fact:v1:287ef08f7141093d671efde0f6cee080385d26c87ab0f2003410eff755755757",
+        "source_fact:v1:41cd36912c7a8f54088b197131fa5bb4e6891411a0df5f62cc51c00b56b593cf",
+        "source_fact:v1:651744d61a2fa9bb31cd0c34124b2963e89e9c02a18f27c1667416e9cbf64d76",
+        "source_fact:v1:990f945928753c7388fce8348ce07caa2403d22a9c6831becd002506970795ab",
+        "source_fact:v1:a418527af4503c83711e6f5185d01a791ad514b53047dcfe582e70d132a56628",
+        "source_fact:v1:c6424fed27799e62510cff653105a4d549da5f96fd9c1ecc0ef0ca9bd8e25293",
+        "source_fact:v1:e6da67d93def2e0b868a9e16658cc2d11ce4b92ddf02b4a50e1ae48afdd279fd",
+        "source_fact:v1:f1bffe7801bdeebbf9ac096c248bbb76a4d84df52285b45c1cef3199ddc6d43f"
+      ],
+      "source_published_kst": "2026-10-07T09:19+09:00",
+      "title": "[더벨]레이저쎌, '글로벌 톱' 메모리 프로브카드 기업에 LPB 공급"
     },
     "original:2f117f65146d517ca138498c": {
       "first_seen_kst": "2026-10-07T07:24:41+09:00",
@@ -67758,6 +68259,23 @@
       ],
       "source_published_kst": "2026-10-06T15:55+09:00",
       "title": "디앤디파마텍, '지방간 신약' 2상 결과 내달 발표…\"기술이전에 총력\""
+    },
+    "original:3f050f6642193b177b11b16f": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817220",
+      "source": "뉴시스",
+      "source_body_digest": "f1e61c4231bbcf0bcd489a7304c0f7c41e8904b4513ac64615f6c002f7710a24",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b476bdfc486ffe7b426cc94c204ac3d13f3996097aba43cef08d4577430f9df",
+      "source_fact_keys": [
+        "source_fact:v1:7c66c9a86e54b9f3b6419a5ad792c57590505d77ad8f06b1226bae2e9d187c8c"
+      ],
+      "source_published_kst": "2026-10-07T15:02+09:00",
+      "title": "감사원 \"KBS, 드라마 제작비 집행 확인 안 해…출연료 부풀려 차액 빼돌려\""
     },
     "original:3f257c09a74d9a3ebfe93729": {
       "first_seen_kst": "2026-10-02T12:58:52+09:00",
@@ -71947,6 +72465,26 @@
       "source_published_kst": "2026-10-04T08:00+09:00",
       "title": "삼성전자, 용인 과학축제서 '반도체가 만드는 지역 미래' 소개"
     },
+    "original:5e2984965356a8eb960a52df": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.hankyung.com/article/2026100770476",
+      "source": "한국경제",
+      "source_body_digest": "372117d67d6a2c71fbfc299a1bb21c929eea61b189346479b6e22a244b1cded9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:df1ce2ca5bbd99b076fa7b52d32a8bdcce3cec621413ee149bd56489ce8c013c",
+      "source_fact_keys": [
+        "source_fact:v1:aab3d6fe5f211b54b6cbf20d23f9add84d7b7e5788ca6a87dbb2dab113fa9fdf",
+        "source_fact:v1:b7115df67363610622d47b64c653df35e090e8010cfbe1ce538f136fe8747147",
+        "source_fact:v1:c3b2dc166f8b5378fe574c616dea138b69f986c36a759b6064a6786cd4eacf44",
+        "source_fact:v1:e70f6a457699c60f2ed873e02db12dce82396244ecefa87f2194be071b699c71"
+      ],
+      "source_published_kst": "2026-10-07T08:23+09:00",
+      "title": "\"삼전닉스 3분기 실적 추정치 상향…우려보다 견조할 것\""
+    },
     "original:5e5609aa487d8e24ca679aa3": {
       "first_seen_kst": "2026-10-05T09:13:59+09:00",
       "lanes": {
@@ -72999,18 +73537,18 @@
     "original:67230f64b9cff7529829585d": {
       "first_seen_kst": "2026-10-06T21:17:11+09:00",
       "lanes": {
-        "live": "2026-10-06T21:17:11+09:00"
+        "live": "2026-10-07T16:57:09+09:00"
       },
-      "last_seen_kst": "2026-10-06T21:17:11+09:00",
-      "link": "https://www.mt.co.kr/living/2026/10/06/2026100618330229805",
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mt.co.kr/index.php/living/2026/10/06/2026100618330229805",
       "source": "머니투데이",
-      "source_body_digest": "0c92a839fd9ea4d1a738c488295fff9a9b1254e97af55491dfe2956d7dcefd9b",
+      "source_body_digest": "a27c73da8cef0d8a4f4a5af915aae3cbdc6ba7c66c47cd862326590ba82d799b",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:f633a823d158d3a1dee3b76ce668996dd555b06ba19b744f193361bc50d7ea37",
+      "source_fact_identity": "source_facts:v1:692c60bccbf0608cc6faa6537b4158285eca532337dcb7701854269ce316ed00",
       "source_fact_keys": [
-        "source_fact:v1:823ec51beda1c92541f8ab218d1f7fde6db555001c407db08ceccf64525b9658",
+        "source_fact:v1:8627db50744e7c6bf940c18a5648e745b85e974b652fed6be25a6a35d9932b3e",
         "source_fact:v1:b3e71080d81b96c553db15209c8703e19e2851cd3a680fe942e5a2bc450fdc0e",
-        "source_fact:v1:eee5e70e46aea654e297735420acc5923b70ddb8ce4f1980df146b0e8ad11de1"
+        "source_fact:v1:de7abc95a2861945b0eed6049cf4871b9a14376e44fc1ed9921c130c228653b5"
       ],
       "source_published_kst": "2026-10-06T18:35+09:00",
       "title": "오텍캐리어, 글로벌 캐리어와 협력...\"대용량 냉각수 라인업 확대\""
@@ -80165,6 +80703,29 @@
       ],
       "source_published_kst": "2026-10-05T11:20+09:00",
       "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
+    },
+    "original:9f71532dc985e7f25b9c8116": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169966",
+      "source": "매일경제",
+      "source_body_digest": "310b3bb7e818d7977fc57de5b22426ca406bd334be2048df61609f5eac6d0025",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15d32ee70e6ab2621c2fbbdc90604c593e99c7e152523ce573fe83d8a74ce1f2",
+      "source_fact_keys": [
+        "source_fact:v1:1b4b1545613f5a573c2ef370a6ad50b641bd8e30d6dd27d31ea6543ea8451bf6",
+        "source_fact:v1:224ac6e0b2628cf4de82c15d4d77531b4a1b2227098c1020ddf57bb7fb8f7f20",
+        "source_fact:v1:46b1e453e1453ae54df9508b80554f2923bb0c46acd49266983b4fed02312207",
+        "source_fact:v1:9eb07cc4be8c596fc5bbe94e3b5527be0758aced7c9f9b6607f03394b9f10560",
+        "source_fact:v1:a637de30788c1fc43e30af12d72e695d51c2873775fdc5f37e653e88bf97e68f",
+        "source_fact:v1:d68bce8b0bd50d2b35eeec06588755bf04bd2254416968aedc54c60bd01db902",
+        "source_fact:v1:e1cb26b344a8d4831ec8aa65c1551e3a4a34debc887592d813cfbd449a7e9b4c"
+      ],
+      "source_published_kst": "2026-10-07T08:49+09:00",
+      "title": "위스키 인터내셔널 홀딩, 자회사 1000만 달러 PIPE 유치..티커 변경"
     },
     "original:9f799a4954310a3bff55f0f4": {
       "first_seen_kst": "2026-10-07T09:22:01+09:00",
@@ -90719,6 +91280,25 @@
       "source_published_kst": "2026-10-05T06:01+09:00",
       "title": "내일 행안부 국감…중수청 개문발차·미래기금 교부세 '쟁점'"
     },
+    "original:f2b7564a9581bd0f8a53057a": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.hankyung.com/article/202610077024i",
+      "source": "한국경제",
+      "source_body_digest": "509e8a34c588226bee6a29ffc16043521bfb9c3644780973bea39215994d7485",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8a3c31ed1e321c7c1849bd7496222c5d0e05517eeb4d694f738afa23087c728",
+      "source_fact_keys": [
+        "source_fact:v1:006004794fd56216f27e7c02d0c3a400a5d39f8e248b94ce1fa5bab902607b72",
+        "source_fact:v1:09b72bc550980d2bfc5e7159818681dc5a6084fd07973162bce362a8031b3845",
+        "source_fact:v1:2b2aa37e552a26343e8723fd6b285e27a65bec6f5da92174089f3907677050fa"
+      ],
+      "source_published_kst": "2026-10-07T08:17+09:00",
+      "title": "지아이이노베이션 GI-301, 일본 임상 2상 진입 … 10월 첫 환자 투약"
+    },
     "original:f2bc165b512a7226d322cf79": {
       "first_seen_kst": "2026-10-06T04:08:54+09:00",
       "lanes": {
@@ -96652,6 +97232,26 @@
       "source_published_kst": "2026-10-06T16:57+09:00",
       "title": "[BioS]알테오젠, 국민성장펀드 등 2000억 유치..\"新동력 확보\""
     },
+    "source_fact:0f6a02fe5794ba044a0cf2f4": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.hankyung.com/article/2026100770476",
+      "source": "한국경제",
+      "source_body_digest": "372117d67d6a2c71fbfc299a1bb21c929eea61b189346479b6e22a244b1cded9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:df1ce2ca5bbd99b076fa7b52d32a8bdcce3cec621413ee149bd56489ce8c013c",
+      "source_fact_keys": [
+        "source_fact:v1:aab3d6fe5f211b54b6cbf20d23f9add84d7b7e5788ca6a87dbb2dab113fa9fdf",
+        "source_fact:v1:b7115df67363610622d47b64c653df35e090e8010cfbe1ce538f136fe8747147",
+        "source_fact:v1:c3b2dc166f8b5378fe574c616dea138b69f986c36a759b6064a6786cd4eacf44",
+        "source_fact:v1:e70f6a457699c60f2ed873e02db12dce82396244ecefa87f2194be071b699c71"
+      ],
+      "source_published_kst": "2026-10-07T08:23+09:00",
+      "title": "\"삼전닉스 3분기 실적 추정치 상향…우려보다 견조할 것\""
+    },
     "source_fact:0f6f4f5e55720ceb5b762faf": {
       "first_seen_kst": "2026-10-07T07:01:10+09:00",
       "lanes": {
@@ -97969,6 +98569,29 @@
       ],
       "source_published_kst": "2026-10-05T10:35+09:00",
       "title": "삼성바이오·SK바이오팜·한미약품, 아태 바이오 ‘10대 거래’ 선정"
+    },
+    "source_fact:13ebdd002f9b625ebf530695": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169966",
+      "source": "매일경제",
+      "source_body_digest": "310b3bb7e818d7977fc57de5b22426ca406bd334be2048df61609f5eac6d0025",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15d32ee70e6ab2621c2fbbdc90604c593e99c7e152523ce573fe83d8a74ce1f2",
+      "source_fact_keys": [
+        "source_fact:v1:1b4b1545613f5a573c2ef370a6ad50b641bd8e30d6dd27d31ea6543ea8451bf6",
+        "source_fact:v1:224ac6e0b2628cf4de82c15d4d77531b4a1b2227098c1020ddf57bb7fb8f7f20",
+        "source_fact:v1:46b1e453e1453ae54df9508b80554f2923bb0c46acd49266983b4fed02312207",
+        "source_fact:v1:9eb07cc4be8c596fc5bbe94e3b5527be0758aced7c9f9b6607f03394b9f10560",
+        "source_fact:v1:a637de30788c1fc43e30af12d72e695d51c2873775fdc5f37e653e88bf97e68f",
+        "source_fact:v1:d68bce8b0bd50d2b35eeec06588755bf04bd2254416968aedc54c60bd01db902",
+        "source_fact:v1:e1cb26b344a8d4831ec8aa65c1551e3a4a34debc887592d813cfbd449a7e9b4c"
+      ],
+      "source_published_kst": "2026-10-07T08:49+09:00",
+      "title": "위스키 인터내셔널 홀딩, 자회사 1000만 달러 PIPE 유치..티커 변경"
     },
     "source_fact:13f18ccbe3fe23d667b3980b": {
       "first_seen_kst": "2026-10-07T06:41:04+09:00",
@@ -104559,6 +105182,30 @@
       "source_published_kst": "2026-10-06T15:07+09:00",
       "title": "[2026 국감] 호남 반도체 놓고 여야 격돌…김성환 기후부 장관 “전력·용수 공급 가능”"
     },
+    "source_fact:2b2d7e2b282c24b36f4c2a49": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100709179686711",
+      "source": "머니투데이",
+      "source_body_digest": "ad1a0803b657634e6e91ffad8de82b84adc79e46c9df92e6c5bbe3af349d6abc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a662321c958d54e018ee4eca74afa3f8b45d1f79366792f63ab4087816c7727",
+      "source_fact_keys": [
+        "source_fact:v1:287ef08f7141093d671efde0f6cee080385d26c87ab0f2003410eff755755757",
+        "source_fact:v1:41cd36912c7a8f54088b197131fa5bb4e6891411a0df5f62cc51c00b56b593cf",
+        "source_fact:v1:651744d61a2fa9bb31cd0c34124b2963e89e9c02a18f27c1667416e9cbf64d76",
+        "source_fact:v1:990f945928753c7388fce8348ce07caa2403d22a9c6831becd002506970795ab",
+        "source_fact:v1:a418527af4503c83711e6f5185d01a791ad514b53047dcfe582e70d132a56628",
+        "source_fact:v1:c6424fed27799e62510cff653105a4d549da5f96fd9c1ecc0ef0ca9bd8e25293",
+        "source_fact:v1:e6da67d93def2e0b868a9e16658cc2d11ce4b92ddf02b4a50e1ae48afdd279fd",
+        "source_fact:v1:f1bffe7801bdeebbf9ac096c248bbb76a4d84df52285b45c1cef3199ddc6d43f"
+      ],
+      "source_published_kst": "2026-10-07T09:19+09:00",
+      "title": "[더벨]레이저쎌, '글로벌 톱' 메모리 프로브카드 기업에 LPB 공급"
+    },
     "source_fact:2b3715dd2c91cdb636bf37da": {
       "first_seen_kst": "2026-10-06T20:37:39+09:00",
       "lanes": {
@@ -106321,6 +106968,29 @@
       "source_published_kst": "2026-10-05T09:39+09:00",
       "title": "“20좌 안 되면 못 파나”…단일종목 레버리지 ‘단주 출구’ 만든다"
     },
+    "source_fact:308a5c1522d731d6608e8094": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169966",
+      "source": "매일경제",
+      "source_body_digest": "310b3bb7e818d7977fc57de5b22426ca406bd334be2048df61609f5eac6d0025",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15d32ee70e6ab2621c2fbbdc90604c593e99c7e152523ce573fe83d8a74ce1f2",
+      "source_fact_keys": [
+        "source_fact:v1:1b4b1545613f5a573c2ef370a6ad50b641bd8e30d6dd27d31ea6543ea8451bf6",
+        "source_fact:v1:224ac6e0b2628cf4de82c15d4d77531b4a1b2227098c1020ddf57bb7fb8f7f20",
+        "source_fact:v1:46b1e453e1453ae54df9508b80554f2923bb0c46acd49266983b4fed02312207",
+        "source_fact:v1:9eb07cc4be8c596fc5bbe94e3b5527be0758aced7c9f9b6607f03394b9f10560",
+        "source_fact:v1:a637de30788c1fc43e30af12d72e695d51c2873775fdc5f37e653e88bf97e68f",
+        "source_fact:v1:d68bce8b0bd50d2b35eeec06588755bf04bd2254416968aedc54c60bd01db902",
+        "source_fact:v1:e1cb26b344a8d4831ec8aa65c1551e3a4a34debc887592d813cfbd449a7e9b4c"
+      ],
+      "source_published_kst": "2026-10-07T08:49+09:00",
+      "title": "위스키 인터내셔널 홀딩, 자회사 1000만 달러 PIPE 유치..티커 변경"
+    },
     "source_fact:30a675576c431bb7327f5fcb": {
       "first_seen_kst": "2026-10-06T21:40:57+09:00",
       "lanes": {
@@ -107153,6 +107823,26 @@
       "source_published_kst": "2026-10-05T18:35+09:00",
       "title": "서학개미 '속도조절'… 반도체 팔고 초단기 국채 샀다"
     },
+    "source_fact:32fbdae735031a18513541b0": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.hankyung.com/article/2026100770476",
+      "source": "한국경제",
+      "source_body_digest": "372117d67d6a2c71fbfc299a1bb21c929eea61b189346479b6e22a244b1cded9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:df1ce2ca5bbd99b076fa7b52d32a8bdcce3cec621413ee149bd56489ce8c013c",
+      "source_fact_keys": [
+        "source_fact:v1:aab3d6fe5f211b54b6cbf20d23f9add84d7b7e5788ca6a87dbb2dab113fa9fdf",
+        "source_fact:v1:b7115df67363610622d47b64c653df35e090e8010cfbe1ce538f136fe8747147",
+        "source_fact:v1:c3b2dc166f8b5378fe574c616dea138b69f986c36a759b6064a6786cd4eacf44",
+        "source_fact:v1:e70f6a457699c60f2ed873e02db12dce82396244ecefa87f2194be071b699c71"
+      ],
+      "source_published_kst": "2026-10-07T08:23+09:00",
+      "title": "\"삼전닉스 3분기 실적 추정치 상향…우려보다 견조할 것\""
+    },
     "source_fact:33037c65346b1203ada47f44": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
       "lanes": {
@@ -107591,6 +108281,29 @@
       ],
       "source_published_kst": "2026-10-05T22:50+09:00",
       "title": "유나이티드 마이크로일렉, 18억 달러 해외CB 가격 확정..표면금리 0%"
+    },
+    "source_fact:347440a5dec12297727044d9": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169966",
+      "source": "매일경제",
+      "source_body_digest": "310b3bb7e818d7977fc57de5b22426ca406bd334be2048df61609f5eac6d0025",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15d32ee70e6ab2621c2fbbdc90604c593e99c7e152523ce573fe83d8a74ce1f2",
+      "source_fact_keys": [
+        "source_fact:v1:1b4b1545613f5a573c2ef370a6ad50b641bd8e30d6dd27d31ea6543ea8451bf6",
+        "source_fact:v1:224ac6e0b2628cf4de82c15d4d77531b4a1b2227098c1020ddf57bb7fb8f7f20",
+        "source_fact:v1:46b1e453e1453ae54df9508b80554f2923bb0c46acd49266983b4fed02312207",
+        "source_fact:v1:9eb07cc4be8c596fc5bbe94e3b5527be0758aced7c9f9b6607f03394b9f10560",
+        "source_fact:v1:a637de30788c1fc43e30af12d72e695d51c2873775fdc5f37e653e88bf97e68f",
+        "source_fact:v1:d68bce8b0bd50d2b35eeec06588755bf04bd2254416968aedc54c60bd01db902",
+        "source_fact:v1:e1cb26b344a8d4831ec8aa65c1551e3a4a34debc887592d813cfbd449a7e9b4c"
+      ],
+      "source_published_kst": "2026-10-07T08:49+09:00",
+      "title": "위스키 인터내셔널 홀딩, 자회사 1000만 달러 PIPE 유치..티커 변경"
     },
     "source_fact:3474714be5455d4d5826416a": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
@@ -108307,6 +109020,28 @@
       ],
       "source_published_kst": "2026-10-07T12:00+09:00",
       "title": "NH농협금융, 전남ㆍ광주 전략산업 지원 확대…‘금융허브’ 신설"
+    },
+    "source_fact:36828c6a669c36135a316da1": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12170187",
+      "source": "매일경제",
+      "source_body_digest": "3931303a5d9df7b86d4a5fb973a079edf32c8ac044c3cf6bb93af4cd57795521",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5dfafa70187d69b7e7d4eea674573ba6883b430de386a11c0788187683d59139",
+      "source_fact_keys": [
+        "source_fact:v1:38e6e5d546c15dfb27fe8070400f51599c818f4dd74acb97d3eec192c72b6847",
+        "source_fact:v1:3b3b2b0328f197987a9a4850927ec411844a2f19bfbfb8e0eac181e7a023101f",
+        "source_fact:v1:43b96e61ac4602f0057f0fa7359da0e693dde888b90eedd64d461f37a88eb25c",
+        "source_fact:v1:46df9d38a7a627acef5f5a22a147664e1b72ccfce592eef092c7ed000e3d9df8",
+        "source_fact:v1:4c88f14aa9c3be6c9c3abfca0d8d1800f9782084348f4a662060bd52af393e37",
+        "source_fact:v1:f1509bd17a8c70ad0da006291dd3d213a745d3b0d8fc7620dd7c2752888a4102"
+      ],
+      "source_published_kst": "2026-10-07T11:16+09:00",
+      "title": "“삼성전기, 한번 더”...DS證 “실적 서프라이즈” [오늘, 이 종목]- 매경ECONOMY"
     },
     "source_fact:36880bd023dad2554b204286": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
@@ -109975,6 +110710,29 @@
       "source_published_kst": "2026-10-06T08:57+09:00",
       "title": "JW중외제약, EASD 2026서 당뇨병 치료제 ‘엠파가드’ 임상 3상 결과 발표"
     },
+    "source_fact:3b942e8e6533b6956b6e7243": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169966",
+      "source": "매일경제",
+      "source_body_digest": "310b3bb7e818d7977fc57de5b22426ca406bd334be2048df61609f5eac6d0025",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15d32ee70e6ab2621c2fbbdc90604c593e99c7e152523ce573fe83d8a74ce1f2",
+      "source_fact_keys": [
+        "source_fact:v1:1b4b1545613f5a573c2ef370a6ad50b641bd8e30d6dd27d31ea6543ea8451bf6",
+        "source_fact:v1:224ac6e0b2628cf4de82c15d4d77531b4a1b2227098c1020ddf57bb7fb8f7f20",
+        "source_fact:v1:46b1e453e1453ae54df9508b80554f2923bb0c46acd49266983b4fed02312207",
+        "source_fact:v1:9eb07cc4be8c596fc5bbe94e3b5527be0758aced7c9f9b6607f03394b9f10560",
+        "source_fact:v1:a637de30788c1fc43e30af12d72e695d51c2873775fdc5f37e653e88bf97e68f",
+        "source_fact:v1:d68bce8b0bd50d2b35eeec06588755bf04bd2254416968aedc54c60bd01db902",
+        "source_fact:v1:e1cb26b344a8d4831ec8aa65c1551e3a4a34debc887592d813cfbd449a7e9b4c"
+      ],
+      "source_published_kst": "2026-10-07T08:49+09:00",
+      "title": "위스키 인터내셔널 홀딩, 자회사 1000만 달러 PIPE 유치..티커 변경"
+    },
     "source_fact:3b945d877efe0c444cb25f14": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
       "lanes": {
@@ -110471,6 +111229,28 @@
       ],
       "source_published_kst": "2026-10-05T21:50+09:00",
       "title": "크리티컬메탈스, 유러피언리튬 조건부 주식 지급의무 소멸 합의에 투자자 주목"
+    },
+    "source_fact:3d43f3dc3fc36df659dc34fe": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12170187",
+      "source": "매일경제",
+      "source_body_digest": "3931303a5d9df7b86d4a5fb973a079edf32c8ac044c3cf6bb93af4cd57795521",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5dfafa70187d69b7e7d4eea674573ba6883b430de386a11c0788187683d59139",
+      "source_fact_keys": [
+        "source_fact:v1:38e6e5d546c15dfb27fe8070400f51599c818f4dd74acb97d3eec192c72b6847",
+        "source_fact:v1:3b3b2b0328f197987a9a4850927ec411844a2f19bfbfb8e0eac181e7a023101f",
+        "source_fact:v1:43b96e61ac4602f0057f0fa7359da0e693dde888b90eedd64d461f37a88eb25c",
+        "source_fact:v1:46df9d38a7a627acef5f5a22a147664e1b72ccfce592eef092c7ed000e3d9df8",
+        "source_fact:v1:4c88f14aa9c3be6c9c3abfca0d8d1800f9782084348f4a662060bd52af393e37",
+        "source_fact:v1:f1509bd17a8c70ad0da006291dd3d213a745d3b0d8fc7620dd7c2752888a4102"
+      ],
+      "source_published_kst": "2026-10-07T11:16+09:00",
+      "title": "“삼성전기, 한번 더”...DS證 “실적 서프라이즈” [오늘, 이 종목]- 매경ECONOMY"
     },
     "source_fact:3d6531dd16dc5c86a0c72da9": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
@@ -111847,6 +112627,30 @@
       ],
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
+    },
+    "source_fact:41eb0f55714770fbb1c857ac": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100709179686711",
+      "source": "머니투데이",
+      "source_body_digest": "ad1a0803b657634e6e91ffad8de82b84adc79e46c9df92e6c5bbe3af349d6abc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a662321c958d54e018ee4eca74afa3f8b45d1f79366792f63ab4087816c7727",
+      "source_fact_keys": [
+        "source_fact:v1:287ef08f7141093d671efde0f6cee080385d26c87ab0f2003410eff755755757",
+        "source_fact:v1:41cd36912c7a8f54088b197131fa5bb4e6891411a0df5f62cc51c00b56b593cf",
+        "source_fact:v1:651744d61a2fa9bb31cd0c34124b2963e89e9c02a18f27c1667416e9cbf64d76",
+        "source_fact:v1:990f945928753c7388fce8348ce07caa2403d22a9c6831becd002506970795ab",
+        "source_fact:v1:a418527af4503c83711e6f5185d01a791ad514b53047dcfe582e70d132a56628",
+        "source_fact:v1:c6424fed27799e62510cff653105a4d549da5f96fd9c1ecc0ef0ca9bd8e25293",
+        "source_fact:v1:e6da67d93def2e0b868a9e16658cc2d11ce4b92ddf02b4a50e1ae48afdd279fd",
+        "source_fact:v1:f1bffe7801bdeebbf9ac096c248bbb76a4d84df52285b45c1cef3199ddc6d43f"
+      ],
+      "source_published_kst": "2026-10-07T09:19+09:00",
+      "title": "[더벨]레이저쎌, '글로벌 톱' 메모리 프로브카드 기업에 LPB 공급"
     },
     "source_fact:41f376e4b65cb9bdf40eed92": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -113626,6 +114430,28 @@
       "source_published_kst": "2026-10-07T07:55+09:00",
       "title": "삼성전기, 3분기 ‘깜짝 실적’ 전망…목표가 160만→260만원"
     },
+    "source_fact:47f1ce9d5fa7ea0105a58b30": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12170187",
+      "source": "매일경제",
+      "source_body_digest": "3931303a5d9df7b86d4a5fb973a079edf32c8ac044c3cf6bb93af4cd57795521",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5dfafa70187d69b7e7d4eea674573ba6883b430de386a11c0788187683d59139",
+      "source_fact_keys": [
+        "source_fact:v1:38e6e5d546c15dfb27fe8070400f51599c818f4dd74acb97d3eec192c72b6847",
+        "source_fact:v1:3b3b2b0328f197987a9a4850927ec411844a2f19bfbfb8e0eac181e7a023101f",
+        "source_fact:v1:43b96e61ac4602f0057f0fa7359da0e693dde888b90eedd64d461f37a88eb25c",
+        "source_fact:v1:46df9d38a7a627acef5f5a22a147664e1b72ccfce592eef092c7ed000e3d9df8",
+        "source_fact:v1:4c88f14aa9c3be6c9c3abfca0d8d1800f9782084348f4a662060bd52af393e37",
+        "source_fact:v1:f1509bd17a8c70ad0da006291dd3d213a745d3b0d8fc7620dd7c2752888a4102"
+      ],
+      "source_published_kst": "2026-10-07T11:16+09:00",
+      "title": "“삼성전기, 한번 더”...DS證 “실적 서프라이즈” [오늘, 이 종목]- 매경ECONOMY"
+    },
     "source_fact:47f200e54c75aa4c4057eedb": {
       "first_seen_kst": "2026-10-07T09:44:16+09:00",
       "lanes": {
@@ -114096,6 +114922,28 @@
       ],
       "source_published_kst": "2026-10-06T08:41+09:00",
       "title": "AI 데이터센터 늘자 전력 수요도 급증…ETF 투자처도 '전력 인프라'로"
+    },
+    "source_fact:494d240caee53b2a31679ab6": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12170187",
+      "source": "매일경제",
+      "source_body_digest": "3931303a5d9df7b86d4a5fb973a079edf32c8ac044c3cf6bb93af4cd57795521",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5dfafa70187d69b7e7d4eea674573ba6883b430de386a11c0788187683d59139",
+      "source_fact_keys": [
+        "source_fact:v1:38e6e5d546c15dfb27fe8070400f51599c818f4dd74acb97d3eec192c72b6847",
+        "source_fact:v1:3b3b2b0328f197987a9a4850927ec411844a2f19bfbfb8e0eac181e7a023101f",
+        "source_fact:v1:43b96e61ac4602f0057f0fa7359da0e693dde888b90eedd64d461f37a88eb25c",
+        "source_fact:v1:46df9d38a7a627acef5f5a22a147664e1b72ccfce592eef092c7ed000e3d9df8",
+        "source_fact:v1:4c88f14aa9c3be6c9c3abfca0d8d1800f9782084348f4a662060bd52af393e37",
+        "source_fact:v1:f1509bd17a8c70ad0da006291dd3d213a745d3b0d8fc7620dd7c2752888a4102"
+      ],
+      "source_published_kst": "2026-10-07T11:16+09:00",
+      "title": "“삼성전기, 한번 더”...DS證 “실적 서프라이즈” [오늘, 이 종목]- 매경ECONOMY"
     },
     "source_fact:49656ecc24504531e17dc7e1": {
       "first_seen_kst": "2026-10-06T21:17:11+09:00",
@@ -116034,6 +116882,30 @@
       ],
       "source_published_kst": "2026-10-06T14:47+09:00",
       "title": "당진시, 경제회복지원금 내년 설 지급 추진…1인 30만원"
+    },
+    "source_fact:4fbfd7d167de2ad43a37f8cb": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100709179686711",
+      "source": "머니투데이",
+      "source_body_digest": "ad1a0803b657634e6e91ffad8de82b84adc79e46c9df92e6c5bbe3af349d6abc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a662321c958d54e018ee4eca74afa3f8b45d1f79366792f63ab4087816c7727",
+      "source_fact_keys": [
+        "source_fact:v1:287ef08f7141093d671efde0f6cee080385d26c87ab0f2003410eff755755757",
+        "source_fact:v1:41cd36912c7a8f54088b197131fa5bb4e6891411a0df5f62cc51c00b56b593cf",
+        "source_fact:v1:651744d61a2fa9bb31cd0c34124b2963e89e9c02a18f27c1667416e9cbf64d76",
+        "source_fact:v1:990f945928753c7388fce8348ce07caa2403d22a9c6831becd002506970795ab",
+        "source_fact:v1:a418527af4503c83711e6f5185d01a791ad514b53047dcfe582e70d132a56628",
+        "source_fact:v1:c6424fed27799e62510cff653105a4d549da5f96fd9c1ecc0ef0ca9bd8e25293",
+        "source_fact:v1:e6da67d93def2e0b868a9e16658cc2d11ce4b92ddf02b4a50e1ae48afdd279fd",
+        "source_fact:v1:f1bffe7801bdeebbf9ac096c248bbb76a4d84df52285b45c1cef3199ddc6d43f"
+      ],
+      "source_published_kst": "2026-10-07T09:19+09:00",
+      "title": "[더벨]레이저쎌, '글로벌 톱' 메모리 프로브카드 기업에 LPB 공급"
     },
     "source_fact:501c7597dbc8e986c4124867": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
@@ -119133,6 +120005,30 @@
       "source_published_kst": "2026-10-07T05:00+09:00",
       "title": "개미는 반도체 ‘팔자’…美 지수·파킹형에 몰린 돈 [ETF 지형도 변화]①"
     },
+    "source_fact:5998d8fc785a74383f70f740": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100709179686711",
+      "source": "머니투데이",
+      "source_body_digest": "ad1a0803b657634e6e91ffad8de82b84adc79e46c9df92e6c5bbe3af349d6abc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a662321c958d54e018ee4eca74afa3f8b45d1f79366792f63ab4087816c7727",
+      "source_fact_keys": [
+        "source_fact:v1:287ef08f7141093d671efde0f6cee080385d26c87ab0f2003410eff755755757",
+        "source_fact:v1:41cd36912c7a8f54088b197131fa5bb4e6891411a0df5f62cc51c00b56b593cf",
+        "source_fact:v1:651744d61a2fa9bb31cd0c34124b2963e89e9c02a18f27c1667416e9cbf64d76",
+        "source_fact:v1:990f945928753c7388fce8348ce07caa2403d22a9c6831becd002506970795ab",
+        "source_fact:v1:a418527af4503c83711e6f5185d01a791ad514b53047dcfe582e70d132a56628",
+        "source_fact:v1:c6424fed27799e62510cff653105a4d549da5f96fd9c1ecc0ef0ca9bd8e25293",
+        "source_fact:v1:e6da67d93def2e0b868a9e16658cc2d11ce4b92ddf02b4a50e1ae48afdd279fd",
+        "source_fact:v1:f1bffe7801bdeebbf9ac096c248bbb76a4d84df52285b45c1cef3199ddc6d43f"
+      ],
+      "source_published_kst": "2026-10-07T09:19+09:00",
+      "title": "[더벨]레이저쎌, '글로벌 톱' 메모리 프로브카드 기업에 LPB 공급"
+    },
     "source_fact:59ad6f96de77aae6f5d51f79": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -119455,18 +120351,18 @@
     "source_fact:5ac4d551a0f86cf9b852403e": {
       "first_seen_kst": "2026-10-06T21:17:11+09:00",
       "lanes": {
-        "live": "2026-10-06T21:17:11+09:00"
+        "live": "2026-10-07T16:57:09+09:00"
       },
-      "last_seen_kst": "2026-10-06T21:17:11+09:00",
-      "link": "https://www.mt.co.kr/living/2026/10/06/2026100618330229805",
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mt.co.kr/index.php/living/2026/10/06/2026100618330229805",
       "source": "머니투데이",
-      "source_body_digest": "0c92a839fd9ea4d1a738c488295fff9a9b1254e97af55491dfe2956d7dcefd9b",
+      "source_body_digest": "a27c73da8cef0d8a4f4a5af915aae3cbdc6ba7c66c47cd862326590ba82d799b",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:f633a823d158d3a1dee3b76ce668996dd555b06ba19b744f193361bc50d7ea37",
+      "source_fact_identity": "source_facts:v1:692c60bccbf0608cc6faa6537b4158285eca532337dcb7701854269ce316ed00",
       "source_fact_keys": [
-        "source_fact:v1:823ec51beda1c92541f8ab218d1f7fde6db555001c407db08ceccf64525b9658",
+        "source_fact:v1:8627db50744e7c6bf940c18a5648e745b85e974b652fed6be25a6a35d9932b3e",
         "source_fact:v1:b3e71080d81b96c553db15209c8703e19e2851cd3a680fe942e5a2bc450fdc0e",
-        "source_fact:v1:eee5e70e46aea654e297735420acc5923b70ddb8ce4f1980df146b0e8ad11de1"
+        "source_fact:v1:de7abc95a2861945b0eed6049cf4871b9a14376e44fc1ed9921c130c228653b5"
       ],
       "source_published_kst": "2026-10-06T18:35+09:00",
       "title": "오텍캐리어, 글로벌 캐리어와 협력...\"대용량 냉각수 라인업 확대\""
@@ -120452,6 +121348,25 @@
       ],
       "source_published_kst": "2026-10-06T16:17+09:00",
       "title": "신세계, 美 워너브라더스 인수에 10억달러 투자"
+    },
+    "source_fact:5d2fb7e5a99473615ab4b7f0": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mt.co.kr/index.php/living/2026/10/06/2026100618330229805",
+      "source": "머니투데이",
+      "source_body_digest": "a27c73da8cef0d8a4f4a5af915aae3cbdc6ba7c66c47cd862326590ba82d799b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:692c60bccbf0608cc6faa6537b4158285eca532337dcb7701854269ce316ed00",
+      "source_fact_keys": [
+        "source_fact:v1:8627db50744e7c6bf940c18a5648e745b85e974b652fed6be25a6a35d9932b3e",
+        "source_fact:v1:b3e71080d81b96c553db15209c8703e19e2851cd3a680fe942e5a2bc450fdc0e",
+        "source_fact:v1:de7abc95a2861945b0eed6049cf4871b9a14376e44fc1ed9921c130c228653b5"
+      ],
+      "source_published_kst": "2026-10-06T18:35+09:00",
+      "title": "오텍캐리어, 글로벌 캐리어와 협력...\"대용량 냉각수 라인업 확대\""
     },
     "source_fact:5d443c62382d020e43acba17": {
       "first_seen_kst": "2026-10-07T16:15:21+09:00",
@@ -121771,6 +122686,25 @@
       ],
       "source_published_kst": "2026-10-05T20:58+09:00",
       "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
+    },
+    "source_fact:6291b620d5e6b58c0050eb4d": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.hankyung.com/article/202610077024i",
+      "source": "한국경제",
+      "source_body_digest": "509e8a34c588226bee6a29ffc16043521bfb9c3644780973bea39215994d7485",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8a3c31ed1e321c7c1849bd7496222c5d0e05517eeb4d694f738afa23087c728",
+      "source_fact_keys": [
+        "source_fact:v1:006004794fd56216f27e7c02d0c3a400a5d39f8e248b94ce1fa5bab902607b72",
+        "source_fact:v1:09b72bc550980d2bfc5e7159818681dc5a6084fd07973162bce362a8031b3845",
+        "source_fact:v1:2b2aa37e552a26343e8723fd6b285e27a65bec6f5da92174089f3907677050fa"
+      ],
+      "source_published_kst": "2026-10-07T08:17+09:00",
+      "title": "지아이이노베이션 GI-301, 일본 임상 2상 진입 … 10월 첫 환자 투약"
     },
     "source_fact:629ce35998ce15366f1424b8": {
       "first_seen_kst": "2026-10-07T09:44:16+09:00",
@@ -129105,6 +130039,28 @@
       "source_published_kst": "2026-10-07T00:55+09:00",
       "title": "국제 유가·美 국채 수익률 동반 하락…뉴욕 증시 사상 최고"
     },
+    "source_fact:7b1853a6892f6d838688d535": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12170187",
+      "source": "매일경제",
+      "source_body_digest": "3931303a5d9df7b86d4a5fb973a079edf32c8ac044c3cf6bb93af4cd57795521",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5dfafa70187d69b7e7d4eea674573ba6883b430de386a11c0788187683d59139",
+      "source_fact_keys": [
+        "source_fact:v1:38e6e5d546c15dfb27fe8070400f51599c818f4dd74acb97d3eec192c72b6847",
+        "source_fact:v1:3b3b2b0328f197987a9a4850927ec411844a2f19bfbfb8e0eac181e7a023101f",
+        "source_fact:v1:43b96e61ac4602f0057f0fa7359da0e693dde888b90eedd64d461f37a88eb25c",
+        "source_fact:v1:46df9d38a7a627acef5f5a22a147664e1b72ccfce592eef092c7ed000e3d9df8",
+        "source_fact:v1:4c88f14aa9c3be6c9c3abfca0d8d1800f9782084348f4a662060bd52af393e37",
+        "source_fact:v1:f1509bd17a8c70ad0da006291dd3d213a745d3b0d8fc7620dd7c2752888a4102"
+      ],
+      "source_published_kst": "2026-10-07T11:16+09:00",
+      "title": "“삼성전기, 한번 더”...DS證 “실적 서프라이즈” [오늘, 이 종목]- 매경ECONOMY"
+    },
     "source_fact:7b1b9b854c74f9def8817b09": {
       "first_seen_kst": "2026-10-06T15:44:02+09:00",
       "lanes": {
@@ -129217,6 +130173,29 @@
       ],
       "source_published_kst": "2026-10-06T05:00+09:00",
       "title": "서울에는 GPU, 지방에는 공장…AI가 벌리는 ‘산업 수도권 격차’ [AI 신계급사회]"
+    },
+    "source_fact:7b4cc4d792dcb9a026037d3c": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169966",
+      "source": "매일경제",
+      "source_body_digest": "310b3bb7e818d7977fc57de5b22426ca406bd334be2048df61609f5eac6d0025",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15d32ee70e6ab2621c2fbbdc90604c593e99c7e152523ce573fe83d8a74ce1f2",
+      "source_fact_keys": [
+        "source_fact:v1:1b4b1545613f5a573c2ef370a6ad50b641bd8e30d6dd27d31ea6543ea8451bf6",
+        "source_fact:v1:224ac6e0b2628cf4de82c15d4d77531b4a1b2227098c1020ddf57bb7fb8f7f20",
+        "source_fact:v1:46b1e453e1453ae54df9508b80554f2923bb0c46acd49266983b4fed02312207",
+        "source_fact:v1:9eb07cc4be8c596fc5bbe94e3b5527be0758aced7c9f9b6607f03394b9f10560",
+        "source_fact:v1:a637de30788c1fc43e30af12d72e695d51c2873775fdc5f37e653e88bf97e68f",
+        "source_fact:v1:d68bce8b0bd50d2b35eeec06588755bf04bd2254416968aedc54c60bd01db902",
+        "source_fact:v1:e1cb26b344a8d4831ec8aa65c1551e3a4a34debc887592d813cfbd449a7e9b4c"
+      ],
+      "source_published_kst": "2026-10-07T08:49+09:00",
+      "title": "위스키 인터내셔널 홀딩, 자회사 1000만 달러 PIPE 유치..티커 변경"
     },
     "source_fact:7b8fd3ca930359619af19a9c": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
@@ -134153,6 +135132,26 @@
       "source_published_kst": "2026-10-06T16:00+09:00",
       "title": "롯데백화점, 업계 사상 첫 외국인 매출 1조 돌파…\"상징적 성과\""
     },
+    "source_fact:8c10cfab47e339bfb8cd7ac5": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.hankyung.com/article/2026100770476",
+      "source": "한국경제",
+      "source_body_digest": "372117d67d6a2c71fbfc299a1bb21c929eea61b189346479b6e22a244b1cded9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:df1ce2ca5bbd99b076fa7b52d32a8bdcce3cec621413ee149bd56489ce8c013c",
+      "source_fact_keys": [
+        "source_fact:v1:aab3d6fe5f211b54b6cbf20d23f9add84d7b7e5788ca6a87dbb2dab113fa9fdf",
+        "source_fact:v1:b7115df67363610622d47b64c653df35e090e8010cfbe1ce538f136fe8747147",
+        "source_fact:v1:c3b2dc166f8b5378fe574c616dea138b69f986c36a759b6064a6786cd4eacf44",
+        "source_fact:v1:e70f6a457699c60f2ed873e02db12dce82396244ecefa87f2194be071b699c71"
+      ],
+      "source_published_kst": "2026-10-07T08:23+09:00",
+      "title": "\"삼전닉스 3분기 실적 추정치 상향…우려보다 견조할 것\""
+    },
     "source_fact:8c174da5d2f005f7679ad91a": {
       "first_seen_kst": "2026-10-07T00:09:35+09:00",
       "lanes": {
@@ -135288,6 +136287,28 @@
       ],
       "source_published_kst": "2026-10-05T11:25+09:00",
       "title": "사우디, 11월 아시아 공급용 원유가 대폭 인하 | 연합뉴스"
+    },
+    "source_fact:8f7b68717176b97d219f4e6f": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12170187",
+      "source": "매일경제",
+      "source_body_digest": "3931303a5d9df7b86d4a5fb973a079edf32c8ac044c3cf6bb93af4cd57795521",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5dfafa70187d69b7e7d4eea674573ba6883b430de386a11c0788187683d59139",
+      "source_fact_keys": [
+        "source_fact:v1:38e6e5d546c15dfb27fe8070400f51599c818f4dd74acb97d3eec192c72b6847",
+        "source_fact:v1:3b3b2b0328f197987a9a4850927ec411844a2f19bfbfb8e0eac181e7a023101f",
+        "source_fact:v1:43b96e61ac4602f0057f0fa7359da0e693dde888b90eedd64d461f37a88eb25c",
+        "source_fact:v1:46df9d38a7a627acef5f5a22a147664e1b72ccfce592eef092c7ed000e3d9df8",
+        "source_fact:v1:4c88f14aa9c3be6c9c3abfca0d8d1800f9782084348f4a662060bd52af393e37",
+        "source_fact:v1:f1509bd17a8c70ad0da006291dd3d213a745d3b0d8fc7620dd7c2752888a4102"
+      ],
+      "source_published_kst": "2026-10-07T11:16+09:00",
+      "title": "“삼성전기, 한번 더”...DS證 “실적 서프라이즈” [오늘, 이 종목]- 매경ECONOMY"
     },
     "source_fact:8f8f5c6cc8a1212a827089ff": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
@@ -136514,6 +137535,25 @@
       "source_published_kst": "2026-10-06T06:38+09:00",
       "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
     },
+    "source_fact:9395c23bdc3d45e159b716aa": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mt.co.kr/index.php/living/2026/10/06/2026100618330229805",
+      "source": "머니투데이",
+      "source_body_digest": "a27c73da8cef0d8a4f4a5af915aae3cbdc6ba7c66c47cd862326590ba82d799b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:692c60bccbf0608cc6faa6537b4158285eca532337dcb7701854269ce316ed00",
+      "source_fact_keys": [
+        "source_fact:v1:8627db50744e7c6bf940c18a5648e745b85e974b652fed6be25a6a35d9932b3e",
+        "source_fact:v1:b3e71080d81b96c553db15209c8703e19e2851cd3a680fe942e5a2bc450fdc0e",
+        "source_fact:v1:de7abc95a2861945b0eed6049cf4871b9a14376e44fc1ed9921c130c228653b5"
+      ],
+      "source_published_kst": "2026-10-06T18:35+09:00",
+      "title": "오텍캐리어, 글로벌 캐리어와 협력...\"대용량 냉각수 라인업 확대\""
+    },
     "source_fact:93b0fbde6fc2bfafce80475f": {
       "first_seen_kst": "2026-10-07T06:28:41+09:00",
       "lanes": {
@@ -136572,6 +137612,29 @@
       ],
       "source_published_kst": "2026-10-06T12:19+09:00",
       "title": "이형일, 레버리지 ETF 논란에 \"투자자 손실 확대, 무겁게 생각\""
+    },
+    "source_fact:93cfab5aa2e58c246961e836": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169966",
+      "source": "매일경제",
+      "source_body_digest": "310b3bb7e818d7977fc57de5b22426ca406bd334be2048df61609f5eac6d0025",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15d32ee70e6ab2621c2fbbdc90604c593e99c7e152523ce573fe83d8a74ce1f2",
+      "source_fact_keys": [
+        "source_fact:v1:1b4b1545613f5a573c2ef370a6ad50b641bd8e30d6dd27d31ea6543ea8451bf6",
+        "source_fact:v1:224ac6e0b2628cf4de82c15d4d77531b4a1b2227098c1020ddf57bb7fb8f7f20",
+        "source_fact:v1:46b1e453e1453ae54df9508b80554f2923bb0c46acd49266983b4fed02312207",
+        "source_fact:v1:9eb07cc4be8c596fc5bbe94e3b5527be0758aced7c9f9b6607f03394b9f10560",
+        "source_fact:v1:a637de30788c1fc43e30af12d72e695d51c2873775fdc5f37e653e88bf97e68f",
+        "source_fact:v1:d68bce8b0bd50d2b35eeec06588755bf04bd2254416968aedc54c60bd01db902",
+        "source_fact:v1:e1cb26b344a8d4831ec8aa65c1551e3a4a34debc887592d813cfbd449a7e9b4c"
+      ],
+      "source_published_kst": "2026-10-07T08:49+09:00",
+      "title": "위스키 인터내셔널 홀딩, 자회사 1000만 달러 PIPE 유치..티커 변경"
     },
     "source_fact:93e2df184ef46b34788e7469": {
       "first_seen_kst": "2026-10-07T14:18:25+09:00",
@@ -141490,6 +142553,23 @@
       "source_published_kst": "2026-10-07T07:00+09:00",
       "title": "후티 공습, 사우디 진출 韓 기업 인근까지⋯현장·직원 피해는 아직"
     },
+    "source_fact:a436586b9431e782ea70445b": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817220",
+      "source": "뉴시스",
+      "source_body_digest": "f1e61c4231bbcf0bcd489a7304c0f7c41e8904b4513ac64615f6c002f7710a24",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b476bdfc486ffe7b426cc94c204ac3d13f3996097aba43cef08d4577430f9df",
+      "source_fact_keys": [
+        "source_fact:v1:7c66c9a86e54b9f3b6419a5ad792c57590505d77ad8f06b1226bae2e9d187c8c"
+      ],
+      "source_published_kst": "2026-10-07T15:02+09:00",
+      "title": "감사원 \"KBS, 드라마 제작비 집행 확인 안 해…출연료 부풀려 차액 빼돌려\""
+    },
     "source_fact:a445e40ed2eefe4d9e45cfd8": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
       "lanes": {
@@ -143989,6 +145069,25 @@
       "source_published_kst": "2026-10-07T08:08+09:00",
       "title": "선장에 월 10만달러·보너스까지…호르무즈 '위험수당' 급등"
     },
+    "source_fact:acf2288ff923eb3576be30f1": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.hankyung.com/article/202610077024i",
+      "source": "한국경제",
+      "source_body_digest": "509e8a34c588226bee6a29ffc16043521bfb9c3644780973bea39215994d7485",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8a3c31ed1e321c7c1849bd7496222c5d0e05517eeb4d694f738afa23087c728",
+      "source_fact_keys": [
+        "source_fact:v1:006004794fd56216f27e7c02d0c3a400a5d39f8e248b94ce1fa5bab902607b72",
+        "source_fact:v1:09b72bc550980d2bfc5e7159818681dc5a6084fd07973162bce362a8031b3845",
+        "source_fact:v1:2b2aa37e552a26343e8723fd6b285e27a65bec6f5da92174089f3907677050fa"
+      ],
+      "source_published_kst": "2026-10-07T08:17+09:00",
+      "title": "지아이이노베이션 GI-301, 일본 임상 2상 진입 … 10월 첫 환자 투약"
+    },
     "source_fact:acfb6a18b87e1502ad09eaa1": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
       "lanes": {
@@ -144701,6 +145800,25 @@
       ],
       "source_published_kst": "2026-10-07T08:44+09:00",
       "title": "에메라, 캐나디언유틸리티스 143억 달러 인수 합의"
+    },
+    "source_fact:aff91c25147147998e4afc75": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.hankyung.com/article/202610077024i",
+      "source": "한국경제",
+      "source_body_digest": "509e8a34c588226bee6a29ffc16043521bfb9c3644780973bea39215994d7485",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8a3c31ed1e321c7c1849bd7496222c5d0e05517eeb4d694f738afa23087c728",
+      "source_fact_keys": [
+        "source_fact:v1:006004794fd56216f27e7c02d0c3a400a5d39f8e248b94ce1fa5bab902607b72",
+        "source_fact:v1:09b72bc550980d2bfc5e7159818681dc5a6084fd07973162bce362a8031b3845",
+        "source_fact:v1:2b2aa37e552a26343e8723fd6b285e27a65bec6f5da92174089f3907677050fa"
+      ],
+      "source_published_kst": "2026-10-07T08:17+09:00",
+      "title": "지아이이노베이션 GI-301, 일본 임상 2상 진입 … 10월 첫 환자 투약"
     },
     "source_fact:b00d4410eaafa189ec7f3616": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -146734,6 +147852,30 @@
       ],
       "source_published_kst": "2026-10-05T13:25+09:00",
       "title": "'北 책임 추궁'과 '한반도 긴장 완화'…DMZ 지뢰사고 대응 딜레마"
+    },
+    "source_fact:b62d20121b2cccb5cdab9903": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100709179686711",
+      "source": "머니투데이",
+      "source_body_digest": "ad1a0803b657634e6e91ffad8de82b84adc79e46c9df92e6c5bbe3af349d6abc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a662321c958d54e018ee4eca74afa3f8b45d1f79366792f63ab4087816c7727",
+      "source_fact_keys": [
+        "source_fact:v1:287ef08f7141093d671efde0f6cee080385d26c87ab0f2003410eff755755757",
+        "source_fact:v1:41cd36912c7a8f54088b197131fa5bb4e6891411a0df5f62cc51c00b56b593cf",
+        "source_fact:v1:651744d61a2fa9bb31cd0c34124b2963e89e9c02a18f27c1667416e9cbf64d76",
+        "source_fact:v1:990f945928753c7388fce8348ce07caa2403d22a9c6831becd002506970795ab",
+        "source_fact:v1:a418527af4503c83711e6f5185d01a791ad514b53047dcfe582e70d132a56628",
+        "source_fact:v1:c6424fed27799e62510cff653105a4d549da5f96fd9c1ecc0ef0ca9bd8e25293",
+        "source_fact:v1:e6da67d93def2e0b868a9e16658cc2d11ce4b92ddf02b4a50e1ae48afdd279fd",
+        "source_fact:v1:f1bffe7801bdeebbf9ac096c248bbb76a4d84df52285b45c1cef3199ddc6d43f"
+      ],
+      "source_published_kst": "2026-10-07T09:19+09:00",
+      "title": "[더벨]레이저쎌, '글로벌 톱' 메모리 프로브카드 기업에 LPB 공급"
     },
     "source_fact:b641a08c01357a1dedbe09bc": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
@@ -148936,6 +150078,29 @@
       "source_published_kst": "2026-10-06T03:54+09:00",
       "title": "[美특징주]웰스파고, 모건스탠리 ‘매수’ 상향에 주가 2%↑"
     },
+    "source_fact:bda2243bf74f98a56254cc37": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169966",
+      "source": "매일경제",
+      "source_body_digest": "310b3bb7e818d7977fc57de5b22426ca406bd334be2048df61609f5eac6d0025",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15d32ee70e6ab2621c2fbbdc90604c593e99c7e152523ce573fe83d8a74ce1f2",
+      "source_fact_keys": [
+        "source_fact:v1:1b4b1545613f5a573c2ef370a6ad50b641bd8e30d6dd27d31ea6543ea8451bf6",
+        "source_fact:v1:224ac6e0b2628cf4de82c15d4d77531b4a1b2227098c1020ddf57bb7fb8f7f20",
+        "source_fact:v1:46b1e453e1453ae54df9508b80554f2923bb0c46acd49266983b4fed02312207",
+        "source_fact:v1:9eb07cc4be8c596fc5bbe94e3b5527be0758aced7c9f9b6607f03394b9f10560",
+        "source_fact:v1:a637de30788c1fc43e30af12d72e695d51c2873775fdc5f37e653e88bf97e68f",
+        "source_fact:v1:d68bce8b0bd50d2b35eeec06588755bf04bd2254416968aedc54c60bd01db902",
+        "source_fact:v1:e1cb26b344a8d4831ec8aa65c1551e3a4a34debc887592d813cfbd449a7e9b4c"
+      ],
+      "source_published_kst": "2026-10-07T08:49+09:00",
+      "title": "위스키 인터내셔널 홀딩, 자회사 1000만 달러 PIPE 유치..티커 변경"
+    },
     "source_fact:bdc87b2d555f987a68140c7c": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -150631,6 +151796,30 @@
       ],
       "source_published_kst": "2026-10-05T23:11+09:00",
       "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
+    },
+    "source_fact:c34ac3fc58532d12bf90512a": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100709179686711",
+      "source": "머니투데이",
+      "source_body_digest": "ad1a0803b657634e6e91ffad8de82b84adc79e46c9df92e6c5bbe3af349d6abc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a662321c958d54e018ee4eca74afa3f8b45d1f79366792f63ab4087816c7727",
+      "source_fact_keys": [
+        "source_fact:v1:287ef08f7141093d671efde0f6cee080385d26c87ab0f2003410eff755755757",
+        "source_fact:v1:41cd36912c7a8f54088b197131fa5bb4e6891411a0df5f62cc51c00b56b593cf",
+        "source_fact:v1:651744d61a2fa9bb31cd0c34124b2963e89e9c02a18f27c1667416e9cbf64d76",
+        "source_fact:v1:990f945928753c7388fce8348ce07caa2403d22a9c6831becd002506970795ab",
+        "source_fact:v1:a418527af4503c83711e6f5185d01a791ad514b53047dcfe582e70d132a56628",
+        "source_fact:v1:c6424fed27799e62510cff653105a4d549da5f96fd9c1ecc0ef0ca9bd8e25293",
+        "source_fact:v1:e6da67d93def2e0b868a9e16658cc2d11ce4b92ddf02b4a50e1ae48afdd279fd",
+        "source_fact:v1:f1bffe7801bdeebbf9ac096c248bbb76a4d84df52285b45c1cef3199ddc6d43f"
+      ],
+      "source_published_kst": "2026-10-07T09:19+09:00",
+      "title": "[더벨]레이저쎌, '글로벌 톱' 메모리 프로브카드 기업에 LPB 공급"
     },
     "source_fact:c34b75068ff1d9486099d477": {
       "first_seen_kst": "2026-10-07T05:33:37+09:00",
@@ -158702,6 +159891,30 @@
       "source_published_kst": "2026-10-06T19:27+09:00",
       "title": "[美특징주]TSMC, 미국 내 반도체 생산 확대 검토…개장전 '약보합'"
     },
+    "source_fact:dd2522eed82139d1208ef239": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100709179686711",
+      "source": "머니투데이",
+      "source_body_digest": "ad1a0803b657634e6e91ffad8de82b84adc79e46c9df92e6c5bbe3af349d6abc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a662321c958d54e018ee4eca74afa3f8b45d1f79366792f63ab4087816c7727",
+      "source_fact_keys": [
+        "source_fact:v1:287ef08f7141093d671efde0f6cee080385d26c87ab0f2003410eff755755757",
+        "source_fact:v1:41cd36912c7a8f54088b197131fa5bb4e6891411a0df5f62cc51c00b56b593cf",
+        "source_fact:v1:651744d61a2fa9bb31cd0c34124b2963e89e9c02a18f27c1667416e9cbf64d76",
+        "source_fact:v1:990f945928753c7388fce8348ce07caa2403d22a9c6831becd002506970795ab",
+        "source_fact:v1:a418527af4503c83711e6f5185d01a791ad514b53047dcfe582e70d132a56628",
+        "source_fact:v1:c6424fed27799e62510cff653105a4d549da5f96fd9c1ecc0ef0ca9bd8e25293",
+        "source_fact:v1:e6da67d93def2e0b868a9e16658cc2d11ce4b92ddf02b4a50e1ae48afdd279fd",
+        "source_fact:v1:f1bffe7801bdeebbf9ac096c248bbb76a4d84df52285b45c1cef3199ddc6d43f"
+      ],
+      "source_published_kst": "2026-10-07T09:19+09:00",
+      "title": "[더벨]레이저쎌, '글로벌 톱' 메모리 프로브카드 기업에 LPB 공급"
+    },
     "source_fact:dd55e7c34fc1cbac7d9e04db": {
       "first_seen_kst": "2026-10-06T03:45:53+09:00",
       "lanes": {
@@ -161220,6 +162433,26 @@
       ],
       "source_published_kst": "2026-10-06T16:45+09:00",
       "title": "알테오젠, 2000억 투자 유치…연구부터 판매까지 한 회사로"
+    },
+    "source_fact:e38c7beca3678a3223d4330e": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.hankyung.com/article/2026100770476",
+      "source": "한국경제",
+      "source_body_digest": "372117d67d6a2c71fbfc299a1bb21c929eea61b189346479b6e22a244b1cded9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:df1ce2ca5bbd99b076fa7b52d32a8bdcce3cec621413ee149bd56489ce8c013c",
+      "source_fact_keys": [
+        "source_fact:v1:aab3d6fe5f211b54b6cbf20d23f9add84d7b7e5788ca6a87dbb2dab113fa9fdf",
+        "source_fact:v1:b7115df67363610622d47b64c653df35e090e8010cfbe1ce538f136fe8747147",
+        "source_fact:v1:c3b2dc166f8b5378fe574c616dea138b69f986c36a759b6064a6786cd4eacf44",
+        "source_fact:v1:e70f6a457699c60f2ed873e02db12dce82396244ecefa87f2194be071b699c71"
+      ],
+      "source_published_kst": "2026-10-07T08:23+09:00",
+      "title": "\"삼전닉스 3분기 실적 추정치 상향…우려보다 견조할 것\""
     },
     "source_fact:e38d572b5cbb3306dd03b4bb": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
@@ -167573,6 +168806,30 @@
       ],
       "source_published_kst": "2026-10-06T13:55+09:00",
       "title": "제약바이오협회, 'R&D·임상·RA 역량강화' 세미나"
+    },
+    "source_fact:f96cf33b7a4fcedb2ebf3951": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100709179686711",
+      "source": "머니투데이",
+      "source_body_digest": "ad1a0803b657634e6e91ffad8de82b84adc79e46c9df92e6c5bbe3af349d6abc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a662321c958d54e018ee4eca74afa3f8b45d1f79366792f63ab4087816c7727",
+      "source_fact_keys": [
+        "source_fact:v1:287ef08f7141093d671efde0f6cee080385d26c87ab0f2003410eff755755757",
+        "source_fact:v1:41cd36912c7a8f54088b197131fa5bb4e6891411a0df5f62cc51c00b56b593cf",
+        "source_fact:v1:651744d61a2fa9bb31cd0c34124b2963e89e9c02a18f27c1667416e9cbf64d76",
+        "source_fact:v1:990f945928753c7388fce8348ce07caa2403d22a9c6831becd002506970795ab",
+        "source_fact:v1:a418527af4503c83711e6f5185d01a791ad514b53047dcfe582e70d132a56628",
+        "source_fact:v1:c6424fed27799e62510cff653105a4d549da5f96fd9c1ecc0ef0ca9bd8e25293",
+        "source_fact:v1:e6da67d93def2e0b868a9e16658cc2d11ce4b92ddf02b4a50e1ae48afdd279fd",
+        "source_fact:v1:f1bffe7801bdeebbf9ac096c248bbb76a4d84df52285b45c1cef3199ddc6d43f"
+      ],
+      "source_published_kst": "2026-10-07T09:19+09:00",
+      "title": "[더벨]레이저쎌, '글로벌 톱' 메모리 프로브카드 기업에 LPB 공급"
     },
     "source_fact:f9835ebe212751609c3a6556": {
       "first_seen_kst": "2026-10-07T00:54:50+09:00",
@@ -175408,6 +176665,28 @@
       "source_published_kst": "2026-10-06T17:12+09:00",
       "title": "유로화 17개월 최저…프랑스 재정불안에 스페인 조기총선까지(종합)"
     },
+    "title:2c58a50471e5f80a76d1ad17": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12170187",
+      "source": "매일경제",
+      "source_body_digest": "3931303a5d9df7b86d4a5fb973a079edf32c8ac044c3cf6bb93af4cd57795521",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5dfafa70187d69b7e7d4eea674573ba6883b430de386a11c0788187683d59139",
+      "source_fact_keys": [
+        "source_fact:v1:38e6e5d546c15dfb27fe8070400f51599c818f4dd74acb97d3eec192c72b6847",
+        "source_fact:v1:3b3b2b0328f197987a9a4850927ec411844a2f19bfbfb8e0eac181e7a023101f",
+        "source_fact:v1:43b96e61ac4602f0057f0fa7359da0e693dde888b90eedd64d461f37a88eb25c",
+        "source_fact:v1:46df9d38a7a627acef5f5a22a147664e1b72ccfce592eef092c7ed000e3d9df8",
+        "source_fact:v1:4c88f14aa9c3be6c9c3abfca0d8d1800f9782084348f4a662060bd52af393e37",
+        "source_fact:v1:f1509bd17a8c70ad0da006291dd3d213a745d3b0d8fc7620dd7c2752888a4102"
+      ],
+      "source_published_kst": "2026-10-07T11:16+09:00",
+      "title": "“삼성전기, 한번 더”...DS證 “실적 서프라이즈” [오늘, 이 종목]- 매경ECONOMY"
+    },
     "title:2c73d84a7050f95040fbe697": {
       "first_seen_kst": "2026-10-02T13:15:57+09:00",
       "lanes": {
@@ -175771,6 +177050,30 @@
       ],
       "source_published_kst": "2026-10-06T09:26+09:00",
       "title": "한투운용, 미국 대표지수 ETF 4종 이벤트⋯대한항공 기프트카드 제공"
+    },
+    "title:2f0fc45ccad272d8511c562a": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100709179686711",
+      "source": "머니투데이",
+      "source_body_digest": "ad1a0803b657634e6e91ffad8de82b84adc79e46c9df92e6c5bbe3af349d6abc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a662321c958d54e018ee4eca74afa3f8b45d1f79366792f63ab4087816c7727",
+      "source_fact_keys": [
+        "source_fact:v1:287ef08f7141093d671efde0f6cee080385d26c87ab0f2003410eff755755757",
+        "source_fact:v1:41cd36912c7a8f54088b197131fa5bb4e6891411a0df5f62cc51c00b56b593cf",
+        "source_fact:v1:651744d61a2fa9bb31cd0c34124b2963e89e9c02a18f27c1667416e9cbf64d76",
+        "source_fact:v1:990f945928753c7388fce8348ce07caa2403d22a9c6831becd002506970795ab",
+        "source_fact:v1:a418527af4503c83711e6f5185d01a791ad514b53047dcfe582e70d132a56628",
+        "source_fact:v1:c6424fed27799e62510cff653105a4d549da5f96fd9c1ecc0ef0ca9bd8e25293",
+        "source_fact:v1:e6da67d93def2e0b868a9e16658cc2d11ce4b92ddf02b4a50e1ae48afdd279fd",
+        "source_fact:v1:f1bffe7801bdeebbf9ac096c248bbb76a4d84df52285b45c1cef3199ddc6d43f"
+      ],
+      "source_published_kst": "2026-10-07T09:19+09:00",
+      "title": "[더벨]레이저쎌, '글로벌 톱' 메모리 프로브카드 기업에 LPB 공급"
     },
     "title:2f117f65146d517ca138498c": {
       "first_seen_kst": "2026-10-07T07:24:41+09:00",
@@ -177912,6 +179215,23 @@
       ],
       "source_published_kst": "2026-10-06T15:55+09:00",
       "title": "디앤디파마텍, '지방간 신약' 2상 결과 내달 발표…\"기술이전에 총력\""
+    },
+    "title:3f050f6642193b177b11b16f": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817220",
+      "source": "뉴시스",
+      "source_body_digest": "f1e61c4231bbcf0bcd489a7304c0f7c41e8904b4513ac64615f6c002f7710a24",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7b476bdfc486ffe7b426cc94c204ac3d13f3996097aba43cef08d4577430f9df",
+      "source_fact_keys": [
+        "source_fact:v1:7c66c9a86e54b9f3b6419a5ad792c57590505d77ad8f06b1226bae2e9d187c8c"
+      ],
+      "source_published_kst": "2026-10-07T15:02+09:00",
+      "title": "감사원 \"KBS, 드라마 제작비 집행 확인 안 해…출연료 부풀려 차액 빼돌려\""
     },
     "title:3f257c09a74d9a3ebfe93729": {
       "first_seen_kst": "2026-10-02T12:58:52+09:00",
@@ -182137,6 +183457,26 @@
       "source_published_kst": "2026-10-04T08:00+09:00",
       "title": "삼성전자, 용인 과학축제서 '반도체가 만드는 지역 미래' 소개"
     },
+    "title:5e2984965356a8eb960a52df": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.hankyung.com/article/2026100770476",
+      "source": "한국경제",
+      "source_body_digest": "372117d67d6a2c71fbfc299a1bb21c929eea61b189346479b6e22a244b1cded9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:df1ce2ca5bbd99b076fa7b52d32a8bdcce3cec621413ee149bd56489ce8c013c",
+      "source_fact_keys": [
+        "source_fact:v1:aab3d6fe5f211b54b6cbf20d23f9add84d7b7e5788ca6a87dbb2dab113fa9fdf",
+        "source_fact:v1:b7115df67363610622d47b64c653df35e090e8010cfbe1ce538f136fe8747147",
+        "source_fact:v1:c3b2dc166f8b5378fe574c616dea138b69f986c36a759b6064a6786cd4eacf44",
+        "source_fact:v1:e70f6a457699c60f2ed873e02db12dce82396244ecefa87f2194be071b699c71"
+      ],
+      "source_published_kst": "2026-10-07T08:23+09:00",
+      "title": "\"삼전닉스 3분기 실적 추정치 상향…우려보다 견조할 것\""
+    },
     "title:5e5609aa487d8e24ca679aa3": {
       "first_seen_kst": "2026-10-05T09:13:59+09:00",
       "lanes": {
@@ -183189,18 +184529,18 @@
     "title:67230f64b9cff7529829585d": {
       "first_seen_kst": "2026-10-06T21:17:11+09:00",
       "lanes": {
-        "live": "2026-10-06T21:17:11+09:00"
+        "live": "2026-10-07T16:57:09+09:00"
       },
-      "last_seen_kst": "2026-10-06T21:17:11+09:00",
-      "link": "https://www.mt.co.kr/living/2026/10/06/2026100618330229805",
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mt.co.kr/index.php/living/2026/10/06/2026100618330229805",
       "source": "머니투데이",
-      "source_body_digest": "0c92a839fd9ea4d1a738c488295fff9a9b1254e97af55491dfe2956d7dcefd9b",
+      "source_body_digest": "a27c73da8cef0d8a4f4a5af915aae3cbdc6ba7c66c47cd862326590ba82d799b",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:f633a823d158d3a1dee3b76ce668996dd555b06ba19b744f193361bc50d7ea37",
+      "source_fact_identity": "source_facts:v1:692c60bccbf0608cc6faa6537b4158285eca532337dcb7701854269ce316ed00",
       "source_fact_keys": [
-        "source_fact:v1:823ec51beda1c92541f8ab218d1f7fde6db555001c407db08ceccf64525b9658",
+        "source_fact:v1:8627db50744e7c6bf940c18a5648e745b85e974b652fed6be25a6a35d9932b3e",
         "source_fact:v1:b3e71080d81b96c553db15209c8703e19e2851cd3a680fe942e5a2bc450fdc0e",
-        "source_fact:v1:eee5e70e46aea654e297735420acc5923b70ddb8ce4f1980df146b0e8ad11de1"
+        "source_fact:v1:de7abc95a2861945b0eed6049cf4871b9a14376e44fc1ed9921c130c228653b5"
       ],
       "source_published_kst": "2026-10-06T18:35+09:00",
       "title": "오텍캐리어, 글로벌 캐리어와 협력...\"대용량 냉각수 라인업 확대\""
@@ -190550,6 +191890,29 @@
       ],
       "source_published_kst": "2026-10-05T11:20+09:00",
       "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
+    },
+    "title:9f71532dc985e7f25b9c8116": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169966",
+      "source": "매일경제",
+      "source_body_digest": "310b3bb7e818d7977fc57de5b22426ca406bd334be2048df61609f5eac6d0025",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:15d32ee70e6ab2621c2fbbdc90604c593e99c7e152523ce573fe83d8a74ce1f2",
+      "source_fact_keys": [
+        "source_fact:v1:1b4b1545613f5a573c2ef370a6ad50b641bd8e30d6dd27d31ea6543ea8451bf6",
+        "source_fact:v1:224ac6e0b2628cf4de82c15d4d77531b4a1b2227098c1020ddf57bb7fb8f7f20",
+        "source_fact:v1:46b1e453e1453ae54df9508b80554f2923bb0c46acd49266983b4fed02312207",
+        "source_fact:v1:9eb07cc4be8c596fc5bbe94e3b5527be0758aced7c9f9b6607f03394b9f10560",
+        "source_fact:v1:a637de30788c1fc43e30af12d72e695d51c2873775fdc5f37e653e88bf97e68f",
+        "source_fact:v1:d68bce8b0bd50d2b35eeec06588755bf04bd2254416968aedc54c60bd01db902",
+        "source_fact:v1:e1cb26b344a8d4831ec8aa65c1551e3a4a34debc887592d813cfbd449a7e9b4c"
+      ],
+      "source_published_kst": "2026-10-07T08:49+09:00",
+      "title": "위스키 인터내셔널 홀딩, 자회사 1000만 달러 PIPE 유치..티커 변경"
     },
     "title:9f799a4954310a3bff55f0f4": {
       "first_seen_kst": "2026-10-07T09:22:01+09:00",
@@ -201347,6 +202710,25 @@
       "source_published_kst": "2026-10-05T06:01+09:00",
       "title": "내일 행안부 국감…중수청 개문발차·미래기금 교부세 '쟁점'"
     },
+    "title:f2b7564a9581bd0f8a53057a": {
+      "first_seen_kst": "2026-10-07T16:57:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T16:57:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T16:57:09+09:00",
+      "link": "https://www.hankyung.com/article/202610077024i",
+      "source": "한국경제",
+      "source_body_digest": "509e8a34c588226bee6a29ffc16043521bfb9c3644780973bea39215994d7485",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8a3c31ed1e321c7c1849bd7496222c5d0e05517eeb4d694f738afa23087c728",
+      "source_fact_keys": [
+        "source_fact:v1:006004794fd56216f27e7c02d0c3a400a5d39f8e248b94ce1fa5bab902607b72",
+        "source_fact:v1:09b72bc550980d2bfc5e7159818681dc5a6084fd07973162bce362a8031b3845",
+        "source_fact:v1:2b2aa37e552a26343e8723fd6b285e27a65bec6f5da92174089f3907677050fa"
+      ],
+      "source_published_kst": "2026-10-07T08:17+09:00",
+      "title": "지아이이노베이션 GI-301, 일본 임상 2상 진입 … 10월 첫 환자 투약"
+    },
     "title:f2bc165b512a7226d322cf79": {
       "first_seen_kst": "2026-10-06T04:08:54+09:00",
       "lanes": {
@@ -202905,5 +204287,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-07T16:44:58+09:00"
+  "updated_at_kst": "2026-10-07T16:57:09+09:00"
 }
