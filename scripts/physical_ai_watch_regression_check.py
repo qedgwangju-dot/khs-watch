@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import hashlib
 import sys
+import tempfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -2335,5 +2336,23 @@ assert watcher.base.risk(render_cat), "GB300 risk rendering must not fail"
 render_korea_cat = "NVIDIA 로보틱스 · NVIDIA·한국기업 피지컬AI 협력계약·업무협약"
 assert "협약" in watcher.base.meaning(render_korea_cat), watcher.base.meaning(render_korea_cat)
 assert watcher.base.risk(render_korea_cat), "NVIDIA Korea risk rendering must not fail"
+
+# 45) User-facing criteria must remain compact even if an upstream wrapper
+# accidentally expands the internal rule list.
+_original_alert_path = base.ALERT_PATH
+try:
+    with tempfile.TemporaryDirectory() as td:
+        base.ALERT_PATH = Path(td) / "criteria.txt"
+        base.ALERT_PATH.write_text(
+            "본문 한 줄\n<b>판정 기준</b>\n" + ("긴 내부 규칙·" * 120),
+            encoding="utf-8",
+        )
+        watcher._finalize_airan_criteria()
+        rendered = base.ALERT_PATH.read_text(encoding="utf-8")
+        criteria = rendered.split("<b>판정 기준</b>", 1)[1].strip()
+        assert criteria == "실적·수급·시간표를 바꾸는 새 사실만 알림. 단순 주가·ETF·테마 반복은 제외.", criteria
+        assert len(criteria) < 60, criteria
+finally:
+    base.ALERT_PATH = _original_alert_path
 
 print("Physical-AI watcher regression guards: PASS")
