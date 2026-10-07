@@ -54,11 +54,11 @@ class EuropeSovereignYieldWatchTests(unittest.TestCase):
         obs = watch.Obs("uk10", "영국 10년", "2026-10-05", 5.2, "x")
         self.assertEqual(watch.business_lag_days(obs, now, watch.LONDON), 2)
 
-    def test_parse_investing_history(self):
-        text = "Date Price Open High Low Change % Oct 07, 2026 4.688 4.564 4.704 4.559 +3.37% Oct 06, 2026 4.535 4.620 4.620 4.500 -2.21%"
-        rows = watch.parse_investing_history(text, "it10", "이탈리아 10년 시장수익률", "https://example")
+    def test_parse_market_page(self):
+        text = "The yield on Italy 10Y Bond Yield rose to 4.69% on October 7, 2026, marking a 0.15 percentage points increase from the previous session."
+        rows = watch.parse_market_page(text, "it10", "이탈리아 10년 시장수익률", "https://example")
         self.assertEqual(rows[-1].date, "2026-10-07")
-        self.assertAlmostEqual(rows[-1].value, 4.688)
+        self.assertAlmostEqual(rows[-1].value, 4.69)
 
     def test_alert_explains_policy_vs_market_rate(self):
         latest = {
