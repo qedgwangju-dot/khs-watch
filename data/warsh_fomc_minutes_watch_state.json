@@ -1,33 +1,36 @@
 {
+  "schema_version": 2,
   "last_statement_date": "2026-09-16",
   "last_minutes_url": "https://www.federalreserve.gov/monetarypolicy/fomcminutes20260916.htm",
-  "last_release_date": null,
+  "last_release_date": "2026-10-07",
+  "last_sent_key": "2026-09-16|2026-10-07",
+  "message_id": 64,
   "classification": {
-    "rate": "추가인상 옵션 유지",
-    "balance": "충분한 준비금 유지·재투자/구성 전환 논의 확인",
-    "hike": [
-      [
-        "참가자",
-        "Committee Policy Actions In support of the Committee's dual-mandate goals, all members agreed to raise the target range for the federal funds rate 1/4 percentage point to 3-3/4 to 4 percent and reaffirmed the FOMC's policy of maintaining ample reserves in the banking system."
-      ]
-    ],
-    "wait": [],
-    "balance_hits": [
-      [
-        "참가자",
-        "Main Menu Toggle Button Sections Search Toggle Button Search Search Submit Button Submit About the Fed Structure of the Federal Reserve System The Fed Explained Board Members Advisory Councils Federal Reserve Banks Federal Reserve Bank and Branch Directors Federal Reserve Act Currency Board Meetings Board Votes Careers Do Business with the Board Holidays Observed - K.8 Ethics & Values Contact Requesting Information (FOIA) FAQs Economic Education Fed Financial Statements Financial Innovation News & Events Press Releases Speeches & Testimony Calendar Videos Photo Gallery Conferences Monetary Policy Federal Open Market Committee About the FOMC Meeting calendars and information Transcripts and other historical materials FAQs Monetary Policy Principles and Practice Notes Policy Implementation Policy Normalization Policy Tools Reports Monetary Policy Report Beige Book Federal Reserve Balance Sheet Developments Review of Monetary Policy Strategy, Tools, and Communications Overview Supervision & Regulation Supervision Community Banks Regional Banks and Foreign Banks with U.S."
-      ],
-      [
-        "소수 참가자",
-        "Regarding balance sheet policy, a few participants observed that Treasury markets had been functioning smoothly but noted the importance of planning for market stress."
-      ],
-      [
-        "참가자",
-        "Committee Policy Actions In support of the Committee's dual-mandate goals, all members agreed to raise the target range for the federal funds rate 1/4 percentage point to 3-3/4 to 4 percent and reaffirmed the FOMC's policy of maintaining ample reserves in the banking system."
-      ]
-    ]
+    "all_support": true,
+    "most_yearend": true,
+    "many_risk": true,
+    "number_modal": true,
+    "several_not_restrictive": true,
+    "couple_neutral": true,
+    "almost_all_risks": true,
+    "few_treasury": true,
+    "limit_footprint": true,
+    "ai_inflation": true,
+    "ai_core_goods": true,
+    "pce_methodology": true,
+    "pce_3m_warning": true,
+    "ai_private_debt_term_premium": true,
+    "unanimous_vote": true
   },
-  "sent": false,
-  "status": "공식 의사록 확인",
-  "updated_at_utc": "2026-10-07T22:23:45.057598+00:00"
+  "status": "공식 공개·본문·보도자료 확인",
+  "sent": true,
+  "source": {
+    "minutes": "https://www.federalreserve.gov/monetarypolicy/fomcminutes20260916.htm",
+    "announcement": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261007a.htm",
+    "calendar": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+  },
+  "pending_key": null,
+  "delivery_status": "confirmed",
+  "updated_at_utc": "2026-10-07T22:49:20.164794+00:00",
+  "sent_at_utc": "2026-10-07T22:49:20.164712+00:00"
 }
