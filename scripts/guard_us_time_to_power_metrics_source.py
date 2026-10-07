@@ -3195,67 +3195,107 @@ def enrich_eia_steo_metrics(metrics, previous):
     return now, errors
 
 '''
-if(!t.includes(eia_func_anchor)) throw Error("EIA function anchor missing");
-t=t.replace(eia_func_anchor,"\n"+eia_func+eia_func_anchor);
-function change(oldText,newText,label) {if(!t.includes(oldText))throw Error(label+" missing");t=t.replace(oldText,newText)}
-change(
-  'power_metrics, power_errors = parse_power_metrics(old.get("power_metrics") or {})\n',
-  'power_metrics, power_errors = parse_power_metrics(old.get("power_metrics") or {})\n'+
-  'power_metrics, eia_parse_errors = enrich_eia_steo_metrics(power_metrics, old.get("power_metrics") or {})\n'+
-  'power_errors.extend(eia_parse_errors)\n'+
-  'ms_ess_annual = ESS_RESEARCH_SERIES\n',
-  "runtime");
-change(
-  '("eia_sales_2026_twh", 10.0, "EIA 미국 2026 전력판매 전망", "TWh"),',
-  '("eia_sales_2026_twh", 10.0, "EIA 미국 2026 전력판매 전망", "TWh"),\n'+
-  '        ("eia_consumption_2026_twh", 10.0, "EIA 2026 전체 전력소비 전망", "TWh"),\n'+
-  '        ("eia_consumption_2027_twh", 10.0, "EIA 2027 전체 전력소비 전망", "TWh"),\n'+
-  '        ("eia_pjm_2026_yoy_pct", 5.0, "EIA PJM 2026 도매가격 전년비", "%"),',
-  "change thresholds");
-change(
-  '    "power_metrics": power_metrics,\n    "power_source_errors": power_errors,\n',
-  '    "power_metrics": power_metrics,\n    "power_source_errors": power_errors,\n    "ms_ess_annual_forecast": ms_ess_annual,\n',
-  "existing state");
-change(
-  '    msg += ["", "<b>⚡ Morgan Stanley·Goldman Sachs 전력 병목 기준선</b>"]\n',
-  '    msg += ["", "<b>⚡ Morgan Stanley·Goldman Sachs 전력 병목 기준선</b>"]\n'+
-  '    msg.append(\n'+
-  '        f"• <b>EIA 공식 전력소비·판매</b> │ 2025~2027 소비 "\n'+
-  '        f"{power_metrics[\'eia_consumption_2025_twh\']:,.0f}→{power_metrics[\'eia_consumption_2026_twh\']:,.0f}→{power_metrics[\'eia_consumption_2027_twh\']:,.0f}TWh "\n'+
-  '        f"· 판매 {power_metrics[\'eia_sales_2025_twh\']:,.0f}→{power_metrics[\'eia_sales_2026_twh\']:,.0f}→{power_metrics[\'eia_sales_2027_twh\']:,.0f}TWh "\n'+
-  '        f"│ 검증판 {power_metrics[\'eia_verified_release\']}"\n'+
-  '    )\n'+
-  '    msg.append(\n'+
-  '        f"• <b>EIA 도매전력가격</b> │ 2026 평균 {power_metrics[\'eia_wholesale_2026_usd_mwh\']:g}달러/MWh "\n'+
-  '        f"· PJM +{power_metrics[\'eia_pjm_2026_yoy_pct\']:g}% · 북서부 {power_metrics[\'eia_northwest_2026_yoy_pct\']:g}%"\n'+
-  '    )\n',
-  "message official stats");
-change(
-  'f"• <b>Morgan Stanley ESS</b> │ 미국 연간 설치 2025 ',
-  'f"• <b>Morgan Stanley ESS</b> │ 미국 연간 수요 전망 2025 ',
-  "ESS forecast not delivered");
-change(
-  'f"· 데이터센터 <b>{b[\'ms_ess_dc_2030_gwh\']:g}GWh</b> │ Morgan Stanley 전망을 인용한 2차 공개자료 기준"',
-  'f"· 데이터센터 2026 14→2027 31→2028 62→2029 108→2030 <b>{b[\'ms_ess_dc_2030_gwh\']:g}GWh</b> "\n'+
-  '        f"(2030 비중 {b[\'ms_ess_dc_2030_gwh\']/b[\'ms_ess_us_2030_gwh\']*100:.1f}%) │ 사용자 제공 연구 그래프·확정수주 아님"',
-  "ESS year series");
-change(
-  '        "• Goldman Sachs 2026~2027 미국 용량",',
-  '        "• EIA 공식 전력소비·판매",\n        "• EIA 도매전력가격",\n        "• Goldman Sachs 2026~2027 미국 용량",',
-  "compact headline");
-change(
-  'out += ["", "<b>📡 최신 수요·분산전원</b>"] + research_keep[:4]',
-  'out += ["", "<b>📡 최신 수요·분산전원</b>"] + research_keep[:6]',
-  "compact items");
-change(
-  '    f"- EIA 2027 전력판매 전망: **{power_metrics[\'eia_sales_2027_twh\']} TWh**\\n"',
-  '    f"- EIA 2027 전력판매 전망: **{power_metrics[\'eia_sales_2027_twh\']} TWh**\\n"\n'+
-  '    f"- EIA 검증 기준일: **{power_metrics[\'eia_verified_release\']}**\\n"\n'+
-  '    f"- EIA 2026/2027 전체 소비량: **{power_metrics[\'eia_consumption_2026_twh\']}/{power_metrics[\'eia_consumption_2027_twh\']} TWh**\\n"\n'+
-  '    f"- EIA 2026/2027 판매량: **{power_metrics[\'eia_sales_2026_twh\']}/{power_metrics[\'eia_sales_2027_twh\']} TWh**\\n"\n'+
-  '    f"- MS ESS 연간 2030 전체/DC: **{ms_ess_annual[\'2030\'][\'total\']}/{ms_ess_annual[\'2030\'][\'dc\']} GWh**\\n"',
-  "status source provenance");
-if(t.split("FORMAT_VERSION = 8").length!==2)throw Error("unexpected generation version count");
-t=t.replace("FORMAT_VERSION = 8","FORMAT_VERSION = 9");
-g.write_text(t,encoding="utf-8")
-print("EIA verified consumption-sales and Morgan Stanley annual ESS chart applied")
+
+if eia_func_anchor not in t:
+    raise SystemExit("EIA/ESS function anchor changed; no unsafe patch")
+t = t.replace(eia_func_anchor, "\n" + eia_func + eia_func_anchor, 1)
+
+
+def _eia_put(old, new, label):
+    global t
+    if old not in t:
+        raise SystemExit(f"EIA/ESS {label} anchor changed; no unsafe patch")
+    t = t.replace(old, new, 1)
+
+
+_eia_put(
+    'power_metrics, power_errors = parse_power_metrics(old.get("power_metrics") or {})\n',
+    '''power_metrics, power_errors = parse_power_metrics(old.get("power_metrics") or {})
+power_metrics, eia_errors = enrich_eia_steo_metrics(power_metrics, old.get("power_metrics") or {})
+power_errors.extend(eia_errors)
+ms_ess_annual = ESS_RESEARCH_SERIES
+''',
+    "runtime",
+)
+
+_eia_put(
+    '("eia_sales_2026_twh", 10.0, "EIA 미국 2026 전력판매 전망", "TWh"),',
+    '''("eia_sales_2026_twh", 10.0, "EIA 미국 2026 전력판매 전망", "TWh"),
+        ("eia_consumption_2026_twh", 10.0, "EIA 2026 전체 전력소비 전망", "TWh"),
+        ("eia_consumption_2027_twh", 10.0, "EIA 2027 전체 전력소비 전망", "TWh"),
+        ("eia_pjm_2026_yoy_pct", 5.0, "EIA PJM 도매가격 전년비", "%"),''',
+    "change-detector",
+)
+
+_eia_put(
+    '''    "power_metrics": power_metrics,
+    "power_source_errors": power_errors,
+''',
+    '''    "power_metrics": power_metrics,
+    "power_source_errors": power_errors,
+    "ms_ess_annual_forecast": ms_ess_annual,
+''',
+    "state",
+)
+
+_eia_put(
+    '''    msg += ["", "<b>⚡ Morgan Stanley·Goldman Sachs 전력 병목 기준선</b>"]
+''',
+    '''    msg += ["", "<b>⚡ Morgan Stanley·Goldman Sachs 전력 병목 기준선</b>"]
+    msg.append(
+        f"• <b>EIA 공식 전력소비·판매</b> │ 2025~2027 전체 "
+        f"{power_metrics['eia_consumption_2025_twh']:,.0f}→{power_metrics['eia_consumption_2026_twh']:,.0f}→{power_metrics['eia_consumption_2027_twh']:,.0f}TWh "
+        f"· 최종판매 {power_metrics['eia_sales_2025_twh']:,.0f}→{power_metrics['eia_sales_2026_twh']:,.0f}→{power_metrics['eia_sales_2027_twh']:,.0f}TWh "
+        f"│ EIA 검증 {power_metrics['eia_verified_release']}"
+    )
+    msg.append(
+        f"• <b>EIA 도매전력가격</b> │ 2026 평균 {power_metrics['eia_wholesale_2026_usd_mwh']:g}달러/MWh "
+        f"· PJM 전년비 +{power_metrics['eia_pjm_2026_yoy_pct']:g}% "
+        f"· 미 북서부 {power_metrics['eia_northwest_2026_yoy_pct']:g}%"
+    )
+''',
+    "alert",
+)
+
+_eia_put(
+    '''f"• <b>Morgan Stanley ESS</b> │ 미국 연간 설치 2025 ''',
+    '''f"• <b>Morgan Stanley ESS</b> │ 미국 연간 수요 전망 2025 ''',
+    "ESS-forecast-label",
+)
+
+_eia_put(
+    '''f"· 데이터센터 <b>{b['ms_ess_dc_2030_gwh']:g}GWh</b> │ Morgan Stanley 전망을 인용한 2차 공개자료 기준"''',
+    '''f"· 데이터센터 2026 14→2027 31→2028 62→2029 108→2030 <b>{b['ms_ess_dc_2030_gwh']:g}GWh</b> "
+        f"(2030 비중 {b['ms_ess_dc_2030_gwh']/b['ms_ess_us_2030_gwh']*100:.1f}%) · 연구 그래프 전망, 확정 매출 아님"''',
+    "ESS-annual-path",
+)
+
+_eia_put(
+    '''        "• Goldman Sachs 2026~2027 미국 용량",''',
+    '''        "• EIA 공식 전력소비·판매",
+        "• EIA 도매전력가격",
+        "• Goldman Sachs 2026~2027 미국 용량",''',
+    "short-headings",
+)
+
+_eia_put(
+    '''out += ["", "<b>📡 최신 수요·분산전원</b>"] + research_keep[:4]''',
+    '''out += ["", "<b>📡 최신 수요·분산전원</b>"] + research_keep[:6]''',
+    "short-max-six",
+)
+
+_eia_put(
+    r'''    f"- EIA 2027 전력판매 전망: **{power_metrics['eia_sales_2027_twh']} TWh**\n"''',
+    r'''    f"- EIA 2027 전력판매 전망: **{power_metrics['eia_sales_2027_twh']} TWh**\n"
+    f"- EIA 검증판 발행일: **{power_metrics['eia_verified_release']}**\n"
+    f"- EIA 전체 소비량 2026/2027: **{power_metrics['eia_consumption_2026_twh']}/{power_metrics['eia_consumption_2027_twh']} TWh**\n"
+    f"- EIA 최종판매량 2026/2027: **{power_metrics['eia_sales_2026_twh']}/{power_metrics['eia_sales_2027_twh']} TWh**\n"
+    f"- Morgan Stanley 연구전망 2030 전체/DC ESS: **{ms_ess_annual['2030']['total']}/{ms_ess_annual['2030']['dc']} GWh/년**\n"''',
+    "status",
+)
+
+if t.count("FORMAT_VERSION = 8") != 1:
+    raise SystemExit("EIA generation version anchor changed; not touching runtime")
+t = t.replace("FORMAT_VERSION = 8", "FORMAT_VERSION = 9", 1)
+g.write_text(t, encoding="utf-8")
+print("EIA verified sales/consumption and annual Morgan Stanley ESS research graph guard inserted")
