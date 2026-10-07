@@ -37,6 +37,7 @@ NEW_LOW_CONFIRM_SEC = 240
 MAX_EPISODE_SEC = 3 * 60 * 60
 MAX_FLOW_ALIGNMENT_SEC = 30
 MAX_PROGRAM_SNAPSHOT_SKEW_SEC = 8.0
+OPEN_GAP_ALERT_PCT = -1.0
 
 
 def fnum(v: Any) -> float | None:
@@ -373,6 +374,10 @@ def fetch_index_quote(token: str) -> dict[str, Any]:
         raise RuntimeError(f"t1511 KOSPI price missing: {row}")
     return {
         "price": price,
+        "prev_close": fnum(row.get("jniljisu")),
+        "day_pct": fnum(row.get("diffjisu")),
+        "open_pct": fnum(row.get("opendiff")),
+        "open_time": str(row.get("opentime") or ""),
         "high": fnum(row.get("highjisu")),
         "low": fnum(row.get("lowjisu")),
         "open": fnum(row.get("openjisu")),
@@ -488,6 +493,8 @@ class Watch:
         self.last_fut_tick_ts: float | None = None
         self.last_flow_success_ts: float | None = None
         self.last_option_poll = 0.0
+        self.session_open_ts: float | None = None
+        self.opening_gap_sent = False
 
     @staticmethod
     def _nearest(buf: deque[tuple[float, float]], ts: float) -> tuple[float, float] | None:
@@ -743,6 +750,28 @@ class Watch:
                 best = (opt["name"], mult)
         return best
 
+    def build_open_gap_alert(self, snap: dict[str, Any]) -> str:
+        idx = snap.get("KOSPI") or {}
+        prev = fnum(idx.get("prev_close"))
+        opn = fnum(idx.get("open"))
+        opct = fnum(idx.get("open_pct"))
+        if opct is None:
+            opct = pct(prev, opn)
+        lines = [
+            "⚠️ <b>코스피 개장 갭다운</b>",
+            f"<code>{dt.datetime.now(KST):%Y-%m-%d %H:%M:%S} KST</code>",
+            "",
+            f"• 전일 종가 <b>{prev:,.2f}</b>" if prev is not None else "• 전일 종가 확인 불가",
+            f"• 시가 <b>{opn:,.2f}</b>" if opn is not None else "• 시가 확인 불가",
+            f"• 개장 갭 <b>{opct:+.2f}%</b>" if opct is not None else "• 개장 갭 확인 불가",
+            "",
+            "• 전일 종가→시가 구간에는 동일한 장중 수급 기준점이 없으므로 특정 매도주체를 단정하지 않습니다.",
+            "• 개장 이후의 현물·선물·프로그램 급락 사건은 별도 사건구간으로 계속 추적합니다.",
+            "",
+            "• " + " · ".join([link(KOSPI_URL,"KOSPI"), link(LS_URL,"LS OpenAPI")]),
+        ]
+        return "\n".join(lines)
+
     def build_alert(self, stage: str, ep: dict[str, Any], end_ts: float, end_price: float) -> str:
         att = self.attribution(float(ep["start_ts"]), end_ts)
         drop = pct(float(ep["start_price"]), end_price) or 0.0
@@ -895,6 +924,22 @@ class Watch:
         if not self.idx:
             return
         now_t, cur = self.idx[-1]
+
+        if (
+            not self.opening_gap_sent
+            and self.session_open_ts is not None
+            and self.session_open_ts <= now_t <= self.session_open_ts + 15 * 60
+        ):
+            snap = self.raw.get("last_price_snapshot") or {}
+            opct = fnum((snap.get("KOSPI") or {}).get("open_pct"))
+            if opct is not None and opct <= OPEN_GAP_ALERT_PCT:
+                msg_id = await asyncio.to_thread(telegram_send, self.build_open_gap_alert(snap))
+                self.msg_ids.append(msg_id)
+                self.opening_gap_sent = True
+                self.raw["opening_gap_alert"] = {
+                    "message_id": msg_id, "open_pct": opct,
+                    "sent_at_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
+                }
         if self.episode is None:
             hit, info = self._trigger()
             if not hit:
@@ -1089,7 +1134,7 @@ class Watch:
 
         snap = {
             "ts": now_ts,
-            "KOSPI": {k: idx.get(k) for k in ("price","high","low","open","high_time","low_time")},
+            "KOSPI": {k: idx.get(k) for k in ("price","prev_close","day_pct","open_pct","open_time","high","low","open","high_time","low_time")},
             "선물": {k: fut.get(k) for k in ("price","kpi200","basis","market_basis","time")},
         }
         self.raw["last_price_snapshot"] = snap
@@ -1118,6 +1163,7 @@ class Watch:
 
         open_dt = session["open"]
         close_dt = session["close"]
+        self.session_open_ts = open_dt.timestamp() if open_dt is not None else None
         poll_start_dt = (
             open_dt - dt.timedelta(seconds=90)
             if open_dt is not None else initial_now
