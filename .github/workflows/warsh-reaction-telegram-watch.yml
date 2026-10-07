@@ -3,10 +3,13 @@ name: Warsh Reaction Function Telegram Watch
 on:
   schedule:
     - cron: '26 * * * *'
-    # 2026-09-16 FOMC event window. Scripts self-gate by event date/state.
-    - cron: '50 17 16 9 *'
-    - cron: '3,18,33,48 18 16 9 *'
-    - cron: '15,45 19 16 9 *'
+    # Generic Wednesday FOMC event window. The watcher cross-checks the official
+    # FOMC calendar before capturing/sending, so non-meeting Wednesdays stay silent.
+    # Covers both U.S. daylight-saving and standard-time 2:00 p.m. ET decisions.
+    - cron: '50 17 * * 3'
+    - cron: '5,20,35,50 18 * * 3'
+    - cron: '5,20,35,50 19 * * 3'
+    - cron: '15,45 20 * * 3'
   workflow_dispatch:
     inputs:
       force_notify:
@@ -39,6 +42,7 @@ on:
       - 'scripts/warsh_ai_rotation_watch.py'
       - 'scripts/warsh_policy_path_watch.py'
       - 'scripts/warsh_policy_path_watch_v2.py'
+      - 'scripts/warsh_policy_path_watch_v3.py'
       - 'scripts/warsh_balance_sheet_watch.py'
       - 'scripts/warsh_balance_sheet_watch_v2.py'
       - 'scripts/warsh_sep_path_watch.py'
@@ -48,8 +52,11 @@ on:
       - 'scripts/warsh_fomc_event_watch.py'
       - 'scripts/warsh_fomc_event_watch_v2.py'
       - 'scripts/warsh_fomc_event_watch_v3.py'
+      - 'scripts/warsh_fomc_event_watch_v4.py'
+      - 'scripts/warsh_fomc_minutes_watch.py'
       - 'scripts/warsh_press_conference_watch.py'
       - 'scripts/warsh_press_conference_watch_v2.py'
+      - 'scripts/warsh_press_conference_watch_v3.py'
       - 'scripts/market_internal_strength_watch.py'
       - '.github/workflows/warsh-reaction-telegram-watch.yml'
 
@@ -130,23 +137,43 @@ jobs:
               raise RuntimeError(f'Wrong Warsh Telegram bot: expected @{expected}, got @{username or "unknown"}')
           print(f'warsh_macro_route_valid=true bot=@{username} chat_id_present=true')
           PY
-          python scripts/warsh_reaction_watch_v4.py
-          python scripts/warsh_speech_watch.py
-          python scripts/warsh_inflation_market_watch.py
-          python scripts/warsh_market_watch_v2.py
-          python scripts/warsh_ai_taskforce_watch_v2.py
-          python scripts/warsh_new_axes_watch_v4.py
-          python scripts/warsh_pce_trend_watch.py
-          python scripts/warsh_curve_ownership_watch_v2.py
-          python scripts/warsh_credibility_pretightening_watch_v2.py
-          python scripts/warsh_energy_shock_watch.py
-          python scripts/warsh_balance_sheet_watch_v2.py
-          python scripts/warsh_sep_path_watch_v2.py
-          python scripts/warsh_policy_path_watch_v2.py
-          python scripts/warsh_ib_consensus_watch.py
-          python scripts/warsh_post_fomc_ib_reaction_watch.py
-          python scripts/warsh_fomc_event_watch_v3.py
-          python scripts/warsh_press_conference_watch_v2.py
+          python -m py_compile \
+            scripts/warsh_policy_path_watch_v3.py \
+            scripts/warsh_fomc_event_watch_v4.py \
+            scripts/warsh_fomc_minutes_watch.py \
+            scripts/warsh_press_conference_watch_v3.py
+
+          MACRO_RC=0
+          run_watch() {
+            WATCH="$1"
+            echo "::group::${WATCH}"
+            if ! python "$WATCH"; then
+              RC=$?
+              echo "::error::${WATCH} failed with exit code ${RC}; remaining Warsh watchers will continue."
+              MACRO_RC=1
+            fi
+            echo "::endgroup::"
+          }
+
+          run_watch scripts/warsh_reaction_watch_v4.py
+          run_watch scripts/warsh_speech_watch.py
+          run_watch scripts/warsh_inflation_market_watch.py
+          run_watch scripts/warsh_market_watch_v2.py
+          run_watch scripts/warsh_ai_taskforce_watch_v2.py
+          run_watch scripts/warsh_new_axes_watch_v4.py
+          run_watch scripts/warsh_pce_trend_watch.py
+          run_watch scripts/warsh_curve_ownership_watch_v2.py
+          run_watch scripts/warsh_credibility_pretightening_watch_v2.py
+          run_watch scripts/warsh_energy_shock_watch.py
+          run_watch scripts/warsh_balance_sheet_watch_v2.py
+          run_watch scripts/warsh_sep_path_watch_v2.py
+          run_watch scripts/warsh_policy_path_watch_v3.py
+          run_watch scripts/warsh_ib_consensus_watch.py
+          run_watch scripts/warsh_post_fomc_ib_reaction_watch.py
+          run_watch scripts/warsh_fomc_event_watch_v4.py
+          run_watch scripts/warsh_fomc_minutes_watch.py
+          run_watch scripts/warsh_press_conference_watch_v3.py
+          exit "$MACRO_RC"
 
       - name: Check AI rotation and US market internal strength on exact Telegram
         if: ${{ always() && !cancelled() }}
@@ -211,6 +238,7 @@ jobs:
               pathlib.Path('data/warsh_ib_consensus_watch_state.json'),
               pathlib.Path('data/warsh_post_fomc_ib_reaction_watch_state.json'),
               pathlib.Path('data/warsh_fomc_event_watch_state.json'),
+              pathlib.Path('data/warsh_fomc_minutes_watch_state.json'),
               pathlib.Path('data/warsh_press_conference_watch_state.json'),
               pathlib.Path('data/market_internal_strength_watch_state.json'),
           ]
@@ -232,14 +260,14 @@ jobs:
       - name: Persist deduplication baselines
         if: ${{ always() && !cancelled() }}
         run: |
-          CHANGED="$(git status --porcelain -- data/warsh_reaction_watch_state.json data/warsh_speech_watch_state.json data/warsh_inflation_market_watch_state.json data/warsh_market_watch_state.json data/warsh_ai_taskforce_watch_state.json data/warsh_new_axes_watch_state.json data/warsh_pce_trend_watch_state.json data/warsh_curve_ownership_watch_state.json data/warsh_credibility_pretightening_watch_state.json data/warsh_energy_shock_watch_state.json data/warsh_ai_rotation_watch_state.json data/warsh_policy_path_watch_state.json data/warsh_balance_sheet_watch_state.json data/warsh_sep_path_watch_state.json data/warsh_ib_consensus_watch_state.json data/warsh_post_fomc_ib_reaction_watch_state.json data/warsh_fomc_event_watch_state.json data/warsh_press_conference_watch_state.json data/market_internal_strength_watch_state.json)"
+          CHANGED="$(git status --porcelain -- data/warsh_reaction_watch_state.json data/warsh_speech_watch_state.json data/warsh_inflation_market_watch_state.json data/warsh_market_watch_state.json data/warsh_ai_taskforce_watch_state.json data/warsh_new_axes_watch_state.json data/warsh_pce_trend_watch_state.json data/warsh_curve_ownership_watch_state.json data/warsh_credibility_pretightening_watch_state.json data/warsh_energy_shock_watch_state.json data/warsh_ai_rotation_watch_state.json data/warsh_policy_path_watch_state.json data/warsh_balance_sheet_watch_state.json data/warsh_sep_path_watch_state.json data/warsh_ib_consensus_watch_state.json data/warsh_post_fomc_ib_reaction_watch_state.json data/warsh_fomc_event_watch_state.json data/warsh_fomc_minutes_watch_state.json data/warsh_press_conference_watch_state.json data/market_internal_strength_watch_state.json)"
           if [ -z "$CHANGED" ]; then
             echo 'No meaningful state change to commit.'
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/warsh_reaction_watch_state.json data/warsh_speech_watch_state.json data/warsh_inflation_market_watch_state.json data/warsh_market_watch_state.json data/warsh_ai_taskforce_watch_state.json data/warsh_new_axes_watch_state.json data/warsh_pce_trend_watch_state.json data/warsh_curve_ownership_watch_state.json data/warsh_credibility_pretightening_watch_state.json data/warsh_energy_shock_watch_state.json data/warsh_ai_rotation_watch_state.json data/warsh_policy_path_watch_state.json data/warsh_balance_sheet_watch_state.json data/warsh_sep_path_watch_state.json data/warsh_ib_consensus_watch_state.json data/warsh_post_fomc_ib_reaction_watch_state.json data/warsh_fomc_event_watch_state.json data/warsh_press_conference_watch_state.json data/market_internal_strength_watch_state.json
+          git add data/warsh_reaction_watch_state.json data/warsh_speech_watch_state.json data/warsh_inflation_market_watch_state.json data/warsh_market_watch_state.json data/warsh_ai_taskforce_watch_state.json data/warsh_new_axes_watch_state.json data/warsh_pce_trend_watch_state.json data/warsh_curve_ownership_watch_state.json data/warsh_credibility_pretightening_watch_state.json data/warsh_energy_shock_watch_state.json data/warsh_ai_rotation_watch_state.json data/warsh_policy_path_watch_state.json data/warsh_balance_sheet_watch_state.json data/warsh_sep_path_watch_state.json data/warsh_ib_consensus_watch_state.json data/warsh_post_fomc_ib_reaction_watch_state.json data/warsh_fomc_event_watch_state.json data/warsh_fomc_minutes_watch_state.json data/warsh_press_conference_watch_state.json data/market_internal_strength_watch_state.json
           git commit -m 'Update Warsh reaction watch state'
           for ATTEMPT in 1 2 3 4; do
             git pull --rebase -X theirs origin main || { git rebase --abort || true; }
