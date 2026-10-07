@@ -1,6 +1,6 @@
 {
   "initialized": true,
-  "format_version": 8,
+  "format_version": 9,
   "baseline": {
     "need_generation_gw": 45.0,
     "gas_min_gw": 30.0,
@@ -76,8 +76,8 @@
     "dc_orders_ytd_usd_b": 5.0
   },
   "power_metrics": {
-    "eia_sales_2026_twh": 4135.0,
-    "eia_sales_2027_twh": 4211.0,
+    "eia_sales_2026_twh": 4152.0,
+    "eia_sales_2027_twh": 4217.0,
     "iea_us_dc_2030_twh_est": 426.8,
     "iea_us_demand_growth_5y_twh": 420.0,
     "iea_dc_share_us_growth_pct": 50.0,
@@ -92,7 +92,17 @@
     "grid_build_low_years": 5.0,
     "grid_build_high_years": 15.0,
     "data_center_build_low_years": 1.0,
-    "data_center_build_high_years": 3.0
+    "data_center_build_high_years": 3.0,
+    "eia_verified_release": "2026-10-06",
+    "eia_consumption_2025_twh": 4195.0,
+    "eia_consumption_2026_twh": 4288.0,
+    "eia_consumption_2027_twh": 4356.0,
+    "eia_sales_2025_twh": 4058.0,
+    "eia_wholesale_2026_usd_mwh": 52.0,
+    "eia_wholesale_2027_usd_mwh": 49.0,
+    "eia_pjm_2026_yoy_pct": 41.0,
+    "eia_northwest_2026_yoy_pct": -23.0,
+    "eia_latest_release_checked": "2026-10-06"
   },
   "power_source_errors": [
     "IEA DC: HTTPError",
@@ -102,6 +112,40 @@
     "IEA Electricity 2026 executive: HTTPError",
     "IEA Electricity 2026 grids: HTTPError"
   ],
+  "ms_ess_annual_forecast": {
+    "source": "사용자 제공 Morgan Stanley Exhibit 7 · 연구 전망, 확정 수주 아님",
+    "unit": "연간 GWh",
+    "2025": {
+      "non_dc": 57,
+      "dc": 0,
+      "total": 57
+    },
+    "2026": {
+      "non_dc": 80,
+      "dc": 14,
+      "total": 94
+    },
+    "2027": {
+      "non_dc": 95,
+      "dc": 31,
+      "total": 126
+    },
+    "2028": {
+      "non_dc": 103,
+      "dc": 62,
+      "total": 165
+    },
+    "2029": {
+      "non_dc": 109,
+      "dc": 108,
+      "total": 217
+    },
+    "2030": {
+      "non_dc": 110,
+      "dc": 169,
+      "total": 279
+    }
+  },
   "pwc_metrics": {
     "pwc_total_2026_2050_usd_t": 31.6,
     "pwc_upside_usd_t": 50.0,
@@ -122,10 +166,10 @@
     "394b88027aa4cb3c5917",
     "644835b9ff0f6ea97163"
   ],
-  "last_fx_krw_per_usd": 1342.774629,
+  "last_fx_krw_per_usd": 1338.924224,
   "fx_source": "ER-API",
-  "fx_checked_utc": "2026-10-06T12:29:58+00:00",
-  "updated_at_utc": "2026-10-06T12:30:17+00:00",
+  "fx_checked_utc": "2026-10-07T23:56:08+00:00",
+  "updated_at_utc": "2026-10-07T23:56:44+00:00",
   "hyperscaler_nuclear_ppa": {
     "version": 7,
     "states": {
@@ -200,7 +244,7 @@
     "source_errors": [
       "Constellation IR newsroom: ReadTimeout"
     ],
-    "last_checked_utc": "2026-10-06T12:30:44+00:00",
+    "last_checked_utc": "2026-10-07T23:57:12+00:00",
     "alert_change_count": 0,
     "google_constellation_official_ack": true
   }
