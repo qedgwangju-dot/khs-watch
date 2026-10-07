@@ -53,7 +53,8 @@ FR_BASE_FR = "https://www.banque-france.fr/fr/statistiques/taux-et-cours/indices
 DE_CSV = "https://api.statistiken.bundesbank.de/rest/data/BBSSY/D.REN.EUR.A630.000000WT1010.A?format=csv&lang=en"
 DE_PAGE = "https://www.bundesbank.de/en/statistics/money-and-capital-markets/interest-rates-and-yields/daily-yields-of-current-federal-securities-772220"
 UK_SERIES = "IUDMNPY"
-UK_VIEW = "https://www.bankofengland.co.uk/boeapps/database/fromshowcolumns.asp"\nUK_CSV = "https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp"
+UK_VIEW = "https://www.bankofengland.co.uk/boeapps/database/fromshowcolumns.asp"
+UK_CSV = "https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp"
 UA = "khs-watch-europe-sovereign-yield/1.0"
 
 FR_LEVELS = [4.50, 4.75, 5.00]
