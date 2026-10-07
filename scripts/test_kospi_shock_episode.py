@@ -150,6 +150,7 @@ w6.episode = {
     "sent_drop": 0.57,
     "alerted": True,
 }
+w6.opening_gap_sent = True
 with tempfile.TemporaryDirectory() as td:
     hp = Path(td) / "handoff.json"
     w6.save_handoff(hp)
@@ -157,6 +158,7 @@ with tempfile.TemporaryDirectory() as td:
     w7.load_handoff(hp)
     assert len(w7.flows) == 1, len(w7.flows)
     assert w7.episode and w7.episode["start_price"] == 7000.0, w7.episode
+    assert w7.opening_gap_sent is True, w7.opening_gap_sent
 print("handoff_regression=true")
 
 
