@@ -336,6 +336,27 @@ def _israel_oct7_abroad_warning(row):
     return israel and anniversary and warning and not actual
 
 
+def _conditional_military_threat(row):
+    """조건부·미래형 군사위협을 실제 공격과 분리한다."""
+    t = _text(row).lower()
+    military = any(x in t for x in (
+        "army", "military", "armed forces", "군", "군대", "군부",
+    ))
+    threat = any(x in t for x in (
+        "preemptive attack", "preemptive strike", "launch a preemptive", "start a preemptive",
+        "선제 공격", "선제공격", "선제 타격", "선제타격",
+    ))
+    conditional = any(x in t for x in (
+        "if necessary", "if needed", "if required", "when necessary", "could launch", "may launch",
+        "필요한 경우", "필요할 경우", "필요시", "필요하면", "할 수 있다", "나설 수",
+    ))
+    actual = any(x in t for x in (
+        "launched a preemptive attack", "carried out a preemptive strike", "struck today",
+        "공격을 개시했다", "선제 공격을 감행", "선제타격을 실시", "실제 공격",
+    ))
+    return military and threat and conditional and not actual
+
+
 def _non_concrete_endgame_rhetoric(row):
     """종전이 임박했다는 전망·평가를 실제 휴전/협상 진전과 분리한다."""
     t = _text(row).lower()
