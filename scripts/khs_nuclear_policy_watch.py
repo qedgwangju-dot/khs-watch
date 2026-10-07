@@ -120,7 +120,7 @@ BWRX_RSS_QUERIES = [
 # 자동정지를 기준선으로 잡고, 2026-10-07 재가동 승인은 교차검증된 첫 상승단계다.
 HANUL4_STATE_MODEL_VERSION = 2
 HANUL4_KHNP_MAIN = "https://www.khnp.co.kr/hanul/index.do"
-HANUL4_KHNP_MOBILE = "https://m.khnp.co.kr/main/index.do"
+HANUL4_KHNP_STATUS_MAIN = "https://www.khnp.co.kr/main/index.do"
 HANUL4_KHNP_NPP = "https://npp.khnp.co.kr/"
 HANUL4_KHNP_FACILITY = "https://www.khnp.co.kr/hanul/contents.do?key=1744"
 HANUL4_NSSC_PRESS_LIST = "https://www.nssc.go.kr/ko/cms/FR_BBS_CON/BoardList.do?MENU_ID=190"
@@ -1336,13 +1336,13 @@ def _hanul4_live_status(text: str) -> str | None:
 
 
 def _hanul4_operating_verified(
-    mobile_status: str | None,
+    status_main: str | None,
     main_status: str | None,
     main_ramp: bool,
     main_fresh: bool,
 ) -> bool:
     return (
-        mobile_status == "운전"
+        status_main == "운전"
         and main_fresh
         and (main_status == "운전" or main_ramp)
     )
@@ -1418,29 +1418,29 @@ def collect_hanul4_operation_items(now: dt.datetime) -> list[dict]:
                 f"measured={measured.isoformat() if measured else 'missing'}"
             )
     except Exception as exc:
-        print(f"hanul4_khnp_status_error=한국수력원자력 한울본부 {type(exc).__name__}")
+        print(f"hanul4_khnp_status_error=한국수력원자력 한울본부 {type(exc).__name__}: {str(exc)[:400]}")
 
-    mobile_status = None
+    status_main = None
     try:
-        mobile_body = clean_text(fetch_text(HANUL4_KHNP_MOBILE))
-        mobile_status = _hanul4_live_status(mobile_body)
+        status_body = clean_text(fetch_text(HANUL4_KHNP_STATUS_MAIN))
+        status_main = _hanul4_live_status(status_body)
     except Exception as exc:
-        print(f"hanul4_khnp_status_error=한국수력원자력 모바일 {type(exc).__name__}")
+        print(f"hanul4_khnp_status_error=한국수력원자력 본사 운영현황 {type(exc).__name__}: {str(exc)[:400]}")
 
     # 현재 표시값은 호기별 상태를 명시하는 모바일 표면을 우선 사용한다.
     # 메인 페이지는 측정시각이 신선한 경우에만 보조 증거로 사용한다.
-    if mobile_status:
-        live_status = mobile_status
-        live_source = HANUL4_KHNP_MOBILE
+    if status_main:
+        live_status = status_main
+        live_source = HANUL4_KHNP_STATUS_MAIN
     elif main_fresh and main_status:
         live_status = main_status
         live_source = HANUL4_KHNP_MAIN
 
     # '운전 전환'은 한 화면의 캐시/오래된 문구로 승격하지 않는다.
-    # 모바일 호기별 상태가 '운전'이고, 측정시각이 신선한 메인 공식 표면에서도
+    # 본사 호기별 상태가 '운전'이고, 측정시각이 신선한 메인 공식 표면에서도
     # 운전 또는 명시적 출력상승이 확인될 때만 운영단계로 승격한다.
     operating_verified = _hanul4_operating_verified(
-        mobile_status, main_status, main_ramp, main_fresh
+        status_main, main_status, main_ramp, main_fresh
     )
     if operating_verified:
         rows.append({
@@ -1452,15 +1452,15 @@ def collect_hanul4_operation_items(now: dt.datetime) -> list[dict]:
             "published_utc": now.astimezone(UTC).isoformat(timespec="seconds"),
             "published_kst": now.isoformat(timespec="seconds"),
             "title": "한국수력원자력 공식 최신 운영정보 2개 표면에서 한울4호기 운전 전환 확인",
-            "source": "한국수력원자력 모바일·한울본부",
-            "link": HANUL4_KHNP_MOBILE,
+            "source": "한국수력원자력 본사 운영현황·한울본부",
+            "link": HANUL4_KHNP_STATUS_MAIN,
             "secondary_link": HANUL4_KHNP_MAIN,
             "official": True,
             "verified": True,
             "evidence_count": 2,
             "live_status": "운전",
-            "live_status_source": HANUL4_KHNP_MOBILE,
-            "verification": "모바일 호기별 운전 상태 + 측정시각이 신선한 한울본부 공식 표면 일치",
+            "live_status_source": HANUL4_KHNP_STATUS_MAIN,
+            "verification": "본사 호기별 운전 상태 + 측정시각이 신선한 한울본부 공식 표면 일치",
         })
 
     # 원안위 보도자료 목록도 직접 확인한다. 검색엔진·언론 색인보다 늦더라도
@@ -1566,7 +1566,7 @@ def collect_hanul4_operation_items(now: dt.datetime) -> list[dict]:
     # 모든 후보에 현재 KHNP 운영상태를 함께 붙여 '승인'과 '실제 가동'을 섞지 않는다.
     for item in rows:
         item.setdefault("live_status", live_status or "미확인")
-        item.setdefault("live_status_source", live_source or HANUL4_KHNP_MOBILE)
+        item.setdefault("live_status_source", live_source or HANUL4_KHNP_STATUS_MAIN)
 
     # 같은 단계는 가장 신뢰도가 높은 최신 증거 1건만 유지한다.
     dedup: dict[str, dict] = {}
@@ -1697,8 +1697,8 @@ def _self_test_hanul4_operating_event_model() -> None:
     # 실제 Telegram nuclear lane의 필수 필드와도 호환되는지 회귀검사한다.
     if "korea.kr" not in HANUL4_RESTART_APPROVAL_PRIMARY:
         raise RuntimeError("Hanul4 official approval source regression")
-    if HANUL4_KHNP_MOBILE != "https://m.khnp.co.kr/main/index.do":
-        raise RuntimeError("Hanul4 mobile status source regression")
+    if HANUL4_KHNP_STATUS_MAIN != "https://www.khnp.co.kr/main/index.do":
+        raise RuntimeError("Hanul4 corporate status source regression")
     sample = dict(HANUL4_VERIFIED_APPROVAL)
     sample["live_status"] = "정비"
     sample["live_status_source"] = HANUL4_KHNP_MAIN
