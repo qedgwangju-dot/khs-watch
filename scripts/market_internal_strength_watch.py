@@ -21,7 +21,8 @@ UA='Mozilla/5.0 (compatible; khs-watch/3.0; +https://github.com/qedgwangju-dot/k
 YAHOO='https://query1.finance.yahoo.com/v8/finance/chart/{}?range=1mo&interval=1d&includePrePost=false'
 CBOE_VIX_CSV='https://cdn.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv'
 STOCKANALYSIS_HISTORY='https://stockanalysis.com/etf/{}/history/'
-METHODOLOGY_VERSION='2026-10-07-v6'
+METHODOLOGY_VERSION='2026-10-07-v7'
+SECTOR_MOVE_EPS_PCT=0.01
 
 SYMBOLS={
     'S&P500':'SPY','동일가중 S&P500':'RSP','중소형주':'IWM','하이일드 회사채':'HYG','VIX':'^VIX',
@@ -225,8 +226,10 @@ def snapshot():
         }
     spy=out['returns']['S&P500']; rsp=out['returns']['동일가중 S&P500']; iwm=out['returns']['중소형주']; hyg=out['returns']['하이일드 회사채']; vix=out['returns']['VIX']
     out['rsp_rel_5d']=rsp['5d']-spy['5d']; out['iwm_rel_5d']=iwm['5d']-spy['5d']
-    out['sector_up_1d']=sum(1 for s in SECTORS if out['returns'][s]['1d']>0)
-    out['sector_up_5d']=sum(1 for s in SECTORS if out['returns'][s]['5d']>0)
+    # Treat sub-1bp floating-point noise as flat. This prevents an unchanged ETF
+    # (e.g. same cent-level close at both endpoints) from being counted as "up".
+    out['sector_up_1d']=sum(1 for s in SECTORS if out['returns'][s]['1d']>SECTOR_MOVE_EPS_PCT)
+    out['sector_up_5d']=sum(1 for s in SECTORS if out['returns'][s]['5d']>SECTOR_MOVE_EPS_PCT)
     rsp_warn=out['rsp_rel_5d']<=-1.0
     iwm_warn=out['iwm_rel_5d']<=-1.0
     breadth_warn=rsp_warn or iwm_warn
@@ -314,7 +317,7 @@ def message(s, correction=False, old_date=None, correction_reason=None):
            f"• S&P 500(SPY): 5거래일 {spy['5d']:+.1f}%",
            f"• 동일가중 S&P 500(RSP): 5거래일 {rsp['5d']:+.1f}% · S&P 대비 {s['rsp_rel_5d']:+.1f}%p",
            f"• 중소형주(IWM): 5거래일 {iwm['5d']:+.1f}% · S&P 대비 {s['iwm_rel_5d']:+.1f}%p",
-           f"• 11개 업종 중 상승: 1거래일 {s['sector_up_1d']}개 · 5거래일 {s['sector_up_5d']}개",
+           f"• 11개 업종 중 상승: 1거래일 {s['sector_up_1d']}개 · 5거래일 {s['sector_up_5d']}개 (±0.01% 이내는 보합 처리)",
            f"• 하이일드 회사채(HYG, 분배금 반영 총수익): 5거래일 {hyg['5d']:+.1f}% · VIX(주식시장 공포·변동성 지수): 5거래일 {vix['5d']:+.1f}%",'',
            f"• 시장 폭 경고: RSP {'예' if s.get('rsp_warning') else '아니오'} · IWM {'예' if s.get('iwm_warning') else '아니오'}",'',
            '<b>쉽게 말하면</b>',f"• {easy_read(s)}",'',
