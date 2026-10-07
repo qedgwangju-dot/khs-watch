@@ -67,10 +67,10 @@ FIVE_OBS_MOVE_BP = 25.0
 MAX_BUSINESS_LAG = 1
 
 MARKET_URLS = {
-    "fr_mkt": "https://www.investing.com/rates-bonds/france-10-year-bond-yield-historical-data",
-    "de_mkt": "https://www.investing.com/rates-bonds/germany-10-year-bond-yield-historical-data",
-    "it10": "https://www.investing.com/rates-bonds/italy-10-year-bond-yield-historical-data",
-    "uk_mkt": "https://www.investing.com/rates-bonds/uk-10-year-bond-yield-historical-data",
+    "fr_mkt": "https://tradingeconomics.com/france/government-bond-yield",
+    "de_mkt": "https://tradingeconomics.com/germany/government-bond-yield",
+    "it10": "https://tradingeconomics.com/italy/government-bond-yield",
+    "uk_mkt": "https://tradingeconomics.com/united-kingdom/government-bond-yield",
 }
 
 
@@ -355,29 +355,34 @@ def business_lag_days(obs: Obs, now: dt.datetime, tz=PARIS) -> int:
     return lag
 
 
-def parse_investing_history(text: str, key: str, label: str, source: str) -> list[Obs]:
+def parse_market_page(text: str, key: str, label: str, source: str) -> list[Obs]:
     plain = strip_html(text)
-    out: list[Obs] = []
-    # Historical table rows are rendered as "Oct 07, 2026 4.688 ...".
-    pat = re.compile(
-        r"\b([A-Z][a-z]{2}\s+\d{2},\s+20\d{2})\s+([0-9]+(?:\.[0-9]+)?)"
+    # Trading Economics summary, e.g.
+    # "The yield on Italy 10Y Bond Yield rose to 4.69% on October 7, 2026..."
+    m = re.search(
+        r"The yield on\s+.+?(?:10Y|10 Year|10-Year).+?(?:rose|fell|declined|increased|decreased|was|held steady)\s+(?:to|at)?\s*"
+        r"([0-9]+(?:\.[0-9]+)?)%\s+on\s+([A-Z][a-z]+\s+\d{1,2},\s+20\d{2})",
+        plain,
+        re.I,
     )
-    for ds, raw in pat.findall(plain):
-        try:
-            d = dt.datetime.strptime(ds, "%b %d, %Y").date().isoformat()
-            out.append(Obs(key, label, d, float(raw), source))
-        except Exception:
-            pass
-    dedup = {x.date: x for x in out}
-    return sorted(dedup.values(), key=lambda x: x.date)
+    if not m:
+        # More tolerant fallback: any first current-yield/date sentence.
+        m = re.search(
+            r"(?:yield|Bond Yield)[^\.]{0,160}?([0-9]+(?:\.[0-9]+)?)%\s+on\s+"
+            r"([A-Z][a-z]+\s+\d{1,2},\s+20\d{2})",
+            plain,
+            re.I,
+        )
+    if not m:
+        raise ValueError(f"Trading Economics current quote parse failed: {key}")
+    value = float(m.group(1))
+    d = dt.datetime.strptime(m.group(2), "%B %d, %Y").date().isoformat()
+    return [Obs(key, label, d, value, source)]
 
 
 def fetch_market_history(key: str, label: str) -> list[Obs]:
     url = MARKET_URLS[key]
-    rows = parse_investing_history(fetch(url), key, label, url)
-    if not rows:
-        raise RuntimeError(f"Investing historical parse failed: {key}")
-    return rows[-30:]
+    return parse_market_page(fetch(url), key, label, url)
 
 
 def bp(new: float, old: float) -> float:
@@ -441,18 +446,18 @@ def build_alert(latest: dict[str, Obs], changes: dict, spread_bp: float | None, 
     if fr:
         lines.append(f"🇫🇷 Banque de France TEC10 {fr.value:.3f}% / 전일 {signed_bp(changes.get('fr10_day_bp'))} / 기준일 {fr.date}")
     if fr_mkt and "fr_mkt" not in stale:
-        lines.append(f"   ↳ 프랑스 10년 시장수익률 {fr_mkt.value:.3f}% / 기준일 {fr_mkt.date} (보조 시장자료)")
+        lines.append(f"   ↳ 프랑스 10년 시장수익률 {fr_mkt.value:.3f}% / 기준일 {fr_mkt.date} (Trading Economics 보조 시장자료)")
     if it and "it10" not in stale:
         lines.append(f"🇮🇹 이탈리아 10년 시장수익률 {it.value:.3f}% / 전일 {signed_bp(changes.get('it10_day_bp'))} / 기준일 {it.date}")
     if uk and "uk10" not in stale:
         lines.append(f"🇬🇧 BoE 10년 명목 파수익률 {uk.value:.3f}% / 전일 {signed_bp(changes.get('uk10_day_bp'))} / 기준일 {uk.date}")
     elif uk_mkt and "uk_mkt" not in stale:
-        lines.append(f"🇬🇧 영국 10년 시장수익률 {uk_mkt.value:.3f}% / 전일 {signed_bp(changes.get('uk_mkt_day_bp'))} / 기준일 {uk_mkt.date} (BoE 공식값 후행으로 보조 시장자료 사용)")
+        lines.append(f"🇬🇧 영국 10년 시장수익률 {uk_mkt.value:.3f}% / 전일 {signed_bp(changes.get('uk_mkt_day_bp'))} / 기준일 {uk_mkt.date} (BoE 공식값 후행으로 Trading Economics 보조 시장자료 사용)")
     if de:
         suffix = " ⚠️ 후행값" if "de10" in stale else ""
         lines.append(f"🇩🇪 Bundesbank 10년 {de.value:.3f}% / 전일 {signed_bp(changes.get('de10_day_bp'))} / 기준일 {de.date}{suffix}")
     if de_mkt and "de_mkt" not in stale:
-        lines.append(f"   ↳ 독일 10년 시장수익률 {de_mkt.value:.3f}% / 기준일 {de_mkt.date} (보조 시장자료)")
+        lines.append(f"   ↳ 독일 10년 시장수익률 {de_mkt.value:.3f}% / 기준일 {de_mkt.date} (Trading Economics 보조 시장자료)")
     if spread_bp is not None:
         lines.append(f"🇫🇷-🇩🇪 동일 시장자료 기준 금리차 {spread_bp:.1f}bp")
 
@@ -485,13 +490,13 @@ def build_alert(latest: dict[str, Obs], changes: dict, spread_bp: float | None, 
     if uk:
         lines.append(f"• Bank of England IUDMNPY: {uk.source}")
     if it:
-        lines.append(f"• Italy 10Y 보조 시장자료: {it.source}")
+        lines.append(f"• Italy 10Y Trading Economics 보조 시장자료: {it.source}")
     if fr_mkt:
-        lines.append(f"• France 10Y 보조 시장자료: {fr_mkt.source}")
+        lines.append(f"• France 10Y Trading Economics 보조 시장자료: {fr_mkt.source}")
     if de_mkt:
-        lines.append(f"• Germany 10Y 보조 시장자료: {de_mkt.source}")
+        lines.append(f"• Germany 10Y Trading Economics 보조 시장자료: {de_mkt.source}")
     if uk_mkt:
-        lines.append(f"• UK 10Y 보조 시장자료: {uk_mkt.source}")
+        lines.append(f"• UK 10Y Trading Economics 보조 시장자료: {uk_mkt.source}")
     if stale:
         lines += ["", "※ 후행 데이터는 신규 경계 판정에서 제외했습니다: " + ", ".join(stale)]
     if errors:
