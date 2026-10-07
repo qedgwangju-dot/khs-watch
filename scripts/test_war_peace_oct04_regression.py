@@ -501,4 +501,32 @@ except RuntimeError as e:
         ("3시간을 초과" in str(e)) or ("노후 기사 재등장" in str(e)),
     )
 
+
+# 16) 10/7 실운영 추가 교정: 리야드 요격 사실/주장 분리와 JD Vance 귀속.
+riyadh_intercept = row(
+    "Saudi-led coalition intercepts Houthi projectile north of Riyadh; Houthis claim airport strike",
+    source="연합뉴스",
+    description=(
+        "The Saudi-led coalition said it intercepted a Houthi projectile north of Riyadh. "
+        "Separately, the Houthis claimed an airport strike; Saudi authorities did not immediately confirm that claimed hit."
+    ),
+)
+s, tags = mod.score_item(riyadh_intercept, dt.datetime.now(mod.watch.KST))
+check("oct07-riyadh-intercept-detected", mod._saudi_riyadh_intercept_vs_claim(riyadh_intercept))
+check("oct07-riyadh-intercept-red", mod.final_color(riyadh_intercept) == "red")
+check("oct07-riyadh-intercept-topic", mod.topic_label(riyadh_intercept) == "사우디·후티 · 리야드 미사일 요격")
+check("oct07-riyadh-intercept-attribution", "요격 확인" in riyadh_intercept["title_ko"] and "사우디 확인 전" in riyadh_intercept["title_ko"])
+
+vance_condition = row(
+    "Iran must reduce uranium enrichment capacity to end war with US — vice president",
+    source="TASS",
+    description="US Vice President JD Vance said Iran must meaningfully reduce uranium enrichment capacity to end the war.",
+    link="https://tass.com/world/2198519",
+)
+s, tags = mod.score_item(vance_condition, dt.datetime.now(mod.watch.KST))
+check("oct07-vance-condition-detected", mod._vance_iran_enrichment_condition(vance_condition))
+check("oct07-vance-condition-yellow", mod.final_color(vance_condition) == "yellow")
+check("oct07-vance-condition-topic", mod.topic_label(vance_condition) == "미국·이란 · 종전 협상 조건")
+check("oct07-vance-condition-attribution", "미국 부통령 JD Vance" in vance_condition["title_ko"] and "합의 진전 아님" in vance_condition["title_ko"] and "종전·협상" not in tags)
+
 print("WAR_PEACE_OCT04_REGRESSION_OK")
