@@ -23,6 +23,7 @@ ALERT = ROOT / "out" / "solidigm_ipo_alert.html"
 UA = "Mozilla/5.0 (compatible; khs-watch/2.0; +https://github.com/qedgwangju-dot/khs-watch)"
 WATCH_VERSION = 4
 IPO_ALERT_FORMAT_VERSION = 2
+IPO_SOURCE_LINK_VERSION = 1
 CANONICAL_REUTERS_URL = "https://www.reuters.com/world/sk-hynixs-solidigm-weighs-ipo-that-could-value-the-unit-up-150-billion-sources-2026-09-25/"
 SOLIDIGM_DMS_URL = "https://www.solidigm.com/products/document-management-system.html"
 OFFICIAL_SK_REPLY = "https://news.skhynix.com/en/fact-11/"
@@ -30,6 +31,11 @@ REPORT_YONHAP_URL = "https://www.yna.co.kr/view/AKR20261008022500009"
 REPORT_EDAILY_URL = "https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=02407526645610952"
 REPORT_INVESTING_URL = "https://www.investing.com/news/stock-market-news/solidigm-selects-lead-banks-for-blockbuster-us-ipo-bloomberg-reports-4937618"
 BLOOMBERG_BANK_EVENT_KST = "2026-10-08T07:48:01+09:00"
+# User-supplied Bloomberg article URL. The full Bloomberg body is not
+# independently accessible via the collector; its headline and facts have
+# been compared with Bloomberg-attributed Reuters/Investing.com coverage.
+BLOOMBERG_ORIGINAL_URL = "https://www.bloomberg.com/news/articles/2026-10-07/sk-hynix-s-solidigm-is-said-to-pick-banks-for-us-ipo-next-year"
+BLOOMBERG_ORIGINAL_TITLE = "SK Hynix’s Solidigm Is Said to Pick Banks for US IPO Next Year"
 MANUFACTURING_BASELINE = {
     "stage": "pcn_announced",
     "pcn_number": "0000048112-00",
@@ -244,6 +250,9 @@ def read_events():
         "direct_link": REPORT_EDAILY_URL,
         "origin_republication": REPORT_YONHAP_URL,
         "crosscheck_republication": REPORT_INVESTING_URL,
+        "reported_original_url": BLOOMBERG_ORIGINAL_URL,
+        "reported_original_title": BLOOMBERG_ORIGINAL_TITLE,
+        "reported_original_body_directly_verified": False,
         "rank": 96,
         "is_curated_reported_milestone": True,
     }
@@ -459,6 +468,9 @@ def extract_patch(event):
     if event.get("is_curated_reported_milestone"):
         patch["user_original_url"] = REPORT_YONHAP_URL
         patch["crosscheck_url"] = REPORT_INVESTING_URL
+        patch["bloomberg_original_url"] = BLOOMBERG_ORIGINAL_URL
+        patch["bloomberg_original_title"] = BLOOMBERG_ORIGINAL_TITLE
+        patch["bloomberg_original_body_directly_verified"] = False
     patch["source_published_at_kst"] = event.get("published_at_kst") or ""
     return patch
 
@@ -829,8 +841,17 @@ def alert_text(old, new, reasons, checked):
         )
         lines.append("• 확정 공모금액 감액이 아니라 서로 다른 보도상 추정치의 비교입니다.")
     lines.append("• 다음 확인: 대표주관사 선정 · SEC 비공개/공개 신고 · 공모가 밴드 · 신주/구주 비중 · SK하이닉스 잔여지분 · 자금용도")
+    if new.get("bloomberg_original_url"):
+        lines.append(
+            "• Bloomberg 원문(사용자 제공 주소): "
+            + href(new["bloomberg_original_url"], "원문 보기")
+        )
+        if new.get("bloomberg_original_body_directly_verified") is False:
+            lines.append("• Bloomberg 본문은 직접 열람 제한. 은행 명단·추정금액은 Bloomberg 인용 보도로 대조했으며 공식 확정으로 해석하지 않습니다.")
     if new.get("source_url"):
-        lines.append(f"• 근거: {html.escape(new.get('source_name') or '출처')} · {href(new['source_url'])}")
+        lines.append(f"• 재인용 확인: {html.escape(new.get('source_name') or '출처')} · {href(new['source_url'])}")
+    if new.get("crosscheck_url"):
+        lines.append("• 추가 재인용: " + href(new["crosscheck_url"]))
     if new.get("user_original_url"):
         lines.append("• 사용자 원문: 연합뉴스 " + href(new["user_original_url"]))
     lines.append("• SK하이닉스 공식 입장(10월 1일): 구체적인 자금조달 방안 미확정. 기존 주주 경제적 가치·희석 위험 검토 " + href(OFFICIAL_SK_REPLY))
@@ -876,6 +897,17 @@ def main():
             "알림 표시 보강: 대표주관사·참여은행을 분리하고 기존 주주 희석·회사 미확정 상태를 명시 "
             "(기존 주관사 선정 소식의 정확한 재표시, 새로운 IPO 진척 아님)"
         ]
+    ipo_primary_link_refresh = bool(
+        candidate.get("stage") == "underwriters_selected"
+        and candidate.get("reported_original") == "Bloomberg"
+        and candidate.get("bloomberg_original_url") == BLOOMBERG_ORIGINAL_URL
+        and int(state.get("ipo_source_link_version") or 0) < IPO_SOURCE_LINK_VERSION
+    )
+    if ipo_primary_link_refresh and not ipo_reasons:
+        ipo_reasons = [
+            "Bloomberg 원문 주소 추가 및 재인용 출처 구분"
+            " (기존 10월 8일 주관사 선정 보도의 출처 보강, 신규 IPO 진행 아님)"
+        ]
 
     # --- Manufacturing / Taiwan ODM lane (new, same existing route) ---
     if int(state.get("watch_version") or 0) < WATCH_VERSION or not state.get("manufacturing_state"):
@@ -906,6 +938,8 @@ def main():
     state["watch_version"] = WATCH_VERSION
     if ipo_format_refresh:
         state["ipo_alert_format_version"] = IPO_ALERT_FORMAT_VERSION
+    if ipo_primary_link_refresh:
+        state["ipo_source_link_version"] = IPO_SOURCE_LINK_VERSION
     state["last_checked_at_kst"] = checked.isoformat(timespec="seconds")
     state["current_state"] = candidate
     state["manufacturing_state"] = manufacturing_candidate
