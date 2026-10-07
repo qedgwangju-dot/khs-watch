@@ -3644,6 +3644,62 @@ class PostMergeLiveArtifactQualityChecks(unittest.TestCase):
         self.assertTrue(radar.core_sentence_is_complete(core), core)
         self.assert_source_aligned(title, body, core, "https://www.fnnews.com/news/202610071554200943")
 
+    def test_live_duplicate_event_pairs_are_collapsed_but_distinct_company_news_survive(self):
+        duplicate_pairs = (
+            (
+                "두나무·네이버파이낸셜 주식교환 다시 연기…내년 3월 예정",
+                "두나무-네이버파이낸셜 주식교환, 해 넘긴다…내년 3월로 연기 [크립토360]",
+                "두나무는 네이버 종속회사인 네이버파이낸셜과 자사의 주식교환일이 내년 3월 31일로 변경됐다고 오늘(7일) 공시했습니다.",
+                "7일 네이버파이낸셜과 두나무는 양사의 포괄적 주식교환 일정을 올해 12월31일에서 내년 3월31일로 변경하는 정정공시를 냈다.",
+            ),
+            (
+                "삼성전자, 아파트 냉난방 전기화 나선다…2028년 히트펌프 전국 보급",
+                "삼성전자, '올인원 히트펌프'로 아파트까지 난방 전기화 승부",
+                "내년까지 국내 공급 기반을 구축하고 2028년부터 전국 단위 보급을 본격화한다는 계획이다.",
+                "삼성전자는 한국형 녹색대전환 전략 국민보고회에서 EHS 올인원 히트펌프의 국내 공급 기반 구축과 단계별 사업 확대 계획을 발표했다.",
+            ),
+        )
+        for title_a, title_b, fact_a, fact_b in duplicate_pairs:
+            with self.subTest(title=title_a):
+                self.assertTrue(materiality.same_headline_event(title_a, title_b, fact_a, fact_b))
+                first = {**alert(title_a, fact_a), "telegram_core_fact": fact_a}
+                second = {**alert(title_b, fact_b), "telegram_core_fact": fact_b,
+                          "link": "https://www.etnews.com/live-duplicate-fixture"}
+                with patch.object(radar.base, "kst_now", return_value=NOW):
+                    selected = radar.quality_display_alerts([first, second], 7)
+                self.assertEqual(len(selected), 1, [item.get("_exclusion_reason") for item in (first, second)])
+
+        self.assertFalse(materiality.same_headline_event(
+            duplicate_pairs[1][0],
+            "삼성전자, HBM4 공급계약 확대…2028년 생산능력 증설",
+            duplicate_pairs[1][2],
+            "삼성전자는 고객사와 HBM4 공급계약을 확대하고 2028년 생산능력을 증설한다고 발표했다.",
+        ))
+        self.assertFalse(materiality.same_headline_event(
+            "삼성전자, TSMC와 HBM4 공급계약 확대",
+            "삼성전자, 엔비디아와 HBM4 공급계약 확대",
+            "삼성전자는 TSMC와 HBM4 공급계약을 확대한다고 발표했다.",
+            "삼성전자는 엔비디아와 HBM4 공급계약을 확대한다고 발표했다.",
+        ))
+
+    def test_ceremonial_consumable_supply_without_commercial_scale_is_not_market_news(self):
+        title = "한국 천주교, 50년만 미사주 교체…호주 '세븐힐'·伊 '알라냐 비니'"
+        body = (
+            "한국천주교주교회의는 50년간 사용해 온 미사주를 교체해 호주 예수회 세븐힐과 "
+            "이탈리아 알라냐 비니의 와인을 새 공식 미사주로 선정했다고 밝혔다. "
+            "주교회의는 오는 19일 수입·유통 전담 기업 동원와인플러스와 공급 계약을 체결한다. "
+            "해당 와인은 전국 본당 미사에서 사용되며 일반 시중에는 유통되지 않는다."
+        )
+        audit = materiality.assess(title, body)
+        self.assertFalse(audit["equity_publication"]["eligible"], audit)
+        self.assertEqual(
+            audit["equity_publication"]["reason"],
+            "ceremonial_consumable_supply_without_disclosed_commercial_scale",
+        )
+        item = alert(title, body)
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(radar.quality_display_alerts([item], 7), [])
+
 
 def audit_saved_runs(paths):
     results = []

@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 111
+VERSION = 112
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -944,27 +944,83 @@ def same_headline_event(title_a: str, title_b: str, fact_a: str = "", fact_b: st
     stop = {
         "속보", "종합", "단독", "오늘", "이날", "올해", "내년", "관련", "시장", "기자",
         "전망", "예상", "가능성", "밝혔다", "한다", "했다", "한다는", "위해", "대한",
+        "다시", "또", "나선다", "보급", "승부", "본격", "속도", "확산", "올인원",
         "news", "update", "exclusive", "report", "says", "said",
     }
+    particle_suffixes = (
+        "으로부터", "에서부터", "에게서", "께서는", "으로는", "에서는", "에게는",
+        "까지", "부터", "처럼", "보다", "으로", "에서", "에게", "께서",
+        "은", "는", "이", "가", "을", "를", "과", "와", "의", "에", "로", "도", "만",
+    )
 
     def tokens(value: str) -> set[str]:
         cleaned = re.sub(r"\s*[|｜]\s*(?:연합뉴스|뉴스1|뉴시스|한국경제|매일경제|Reuters|AP News)\s*$", "", value or "", flags=re.I)
         cleaned = re.sub(r"\[[^\]]{1,12}\]|\([^)]{1,20}\)", " ", cleaned)
+        cleaned = re.sub(r"포괄적\s*주식교환|주식교환[·ㆍ]이전|주식교환\s*(?:일정|일|날짜)", "주식교환", cleaned)
+        cleaned = re.sub(r"냉난방", "냉방 난방", cleaned)
+        cleaned = re.sub(r"전국\s*단위", "전국", cleaned)
         found = re.findall(
             r"\d+(?:[,.]\d+)*(?:조원|억원|만원|원|달러|유로|위안|%포인트|%|MW|GW|톤|명|대|개비|개|주|일|개월|년)?"
             r"|[a-z]{2,}[a-z0-9]*|[가-힣]{2,}",
             cleaned.casefold(),
             flags=re.I,
         )
-        return {word for word in found if word not in stop and len(word) > 1}
+        normalized = set()
+        for word in found:
+            for suffix in particle_suffixes:
+                if word.endswith(suffix) and len(word) - len(suffix) >= 2:
+                    word = word[:-len(suffix)]
+                    break
+            if word == "냉난방":
+                normalized.update(("냉방", "난방"))
+            elif word not in stop and len(word) > 1:
+                normalized.add(word)
+        return normalized
 
-    left, right = tokens(f"{title_a} {fact_a}"), tokens(f"{title_b} {fact_b}")
-    if min(len(left), len(right)) < 5:
+    def close_match(left: set[str], right: set[str], *, minimum_common: int, minimum_overlap: float,
+                    minimum_jaccard: float) -> bool:
+        if not left or not right:
+            return False
+        common = left & right
+        return (
+            len(common) >= minimum_common
+            and len(common) / min(len(left), len(right)) >= minimum_overlap
+            and len(common) / len(left | right) >= minimum_jaccard
+        )
+
+    title_match = close_match(
+        tokens(title_a), tokens(title_b), minimum_common=4,
+        minimum_overlap=0.55, minimum_jaccard=0.32,
+    )
+    combined_match = close_match(
+        tokens(f"{title_a} {fact_a}"), tokens(f"{title_b} {fact_b}"), minimum_common=5,
+        minimum_overlap=0.45, minimum_jaccard=0.32,
+    )
+    if not title_match and not combined_match:
         return False
-    common = left & right
-    overlap = len(common) / min(len(left), len(right))
-    jaccard = len(common) / len(left | right)
-    if len(common) < 5 or overlap < 0.45 or jaccard < 0.32:
+
+    party_aliases = {
+        "삼성전자", "삼성sdi", "삼성생명", "sk", "하이닉스", "현대차", "기아", "lg",
+        "포스코", "한국전력", "두산에너빌리티", "네이버", "네이버파이낸셜", "두나무", "카카오",
+        "한화오션", "한화에어로스페이스", "엔비디아", "마이크론", "퀄컴", "인텔", "마이크로소프트",
+        "구글", "아마존", "브로드컴", "앤트로픽", "테슬라", "애플", "메타", "오라클", "시스코", "델",
+        "nvidia", "tsmc", "micron", "qualcomm", "amd", "intel", "microsoft", "alphabet", "google",
+        "amazon", "broadcom", "anthropic", "tesla", "apple", "meta", "oracle", "cisco", "dell", "hp",
+        "hpe", "openai", "spacex",
+    }
+    party_suffixes = ("전자", "파이낸셜", "하이닉스", "그룹", "홀딩스", "에너빌리티", "항공", "중공업", "제약", "건설", "증권", "은행", "카드", "통신", "모빌리티")
+
+    def named_parties(title: str) -> set[str]:
+        words = tokens(title)
+        return {
+            word for word in words
+            if word in party_aliases or any(word.endswith(suffix) and len(word) > len(suffix) for suffix in party_suffixes)
+        }
+
+    title_parties_a, title_parties_b = named_parties(title_a), named_parties(title_b)
+    if (title_parties_a & title_parties_b
+            and title_parties_a - title_parties_b
+            and title_parties_b - title_parties_a):
         return False
 
     quantity = (
@@ -3352,6 +3408,20 @@ def equity_publication_assessment(title: str, evidence: list[dict], *, body: str
     execution = any(NEW_EXECUTION.search(item['source_excerpt']) for item in evidence)
     source_rows = source_sentences(source_reported_body(body))
     lead = " ".join(source_rows[:5])
+    ceremonial_supply = bool(
+        re.search(r"미사주|성찬주|성찬용|제례용|종교\s*(?:의식|행사)\s*(?:용품|식품)", title + " " + lead)
+        and re.search(r"주교회의|천주교|교구|성당|교회|사찰|종교단체|church|diocese|parish|temple", title + " " + lead, re.I)
+    )
+    disclosed_supply_scale = any(
+        re.search(r"공급|납품|계약|매출|구매|수입|판매", row)
+        and re.search(r"\d[\d,.]*\s*(?:%|bp\b|조\s*원|억\s*원|만\s*원|달러|유로|억원|조원|억달러|billion|million|만\s*(?:병|개|리터|톤)|천\s*(?:병|개|리터|톤)|(?:병|개|리터|톤))", row, re.I)
+        for row in source_rows[:10]
+    )
+    if ceremonial_supply and not disclosed_supply_scale:
+        return {
+            'eligible': False,
+            'reason': 'ceremonial_consumable_supply_without_disclosed_commercial_scale',
+        }
     if (kinds == {'model_operating_specification'}
             and re.search(r'개인용|로컬|데스크톱|desktop|personal', title + ' ' + lead, re.I)
             and not re.search(r'수주|공급\s*계약|납품\s*계약|판매량|연결\s*매출|영업이익|commercial order|revenue',
