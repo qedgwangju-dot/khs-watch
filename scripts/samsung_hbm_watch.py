@@ -30,6 +30,9 @@ STATUS = OUT / "samsung_hbm_status.md"
 UA = "Mozilla/5.0 (compatible; khs-watch/1.0; +https://github.com/qedgwangju-dot/khs-watch)"
 FRESH_HOURS = 96
 MONTHLY_DAY = 1
+OFFICIAL_UNPUBLISHED_POLL_HOURS = 3
+OFFICIAL_PUBLISHED_POLL_HOURS = 24
+OFFICIAL_SOURCE_HEALTH_VERSION = 1
 COMPARE_VERSION = 4
 EVENT_STATE_VERSION = 2
 SHARE_TRACK_VERSION = 1
@@ -499,23 +502,36 @@ def _is_transient_source_error(message: str) -> bool:
     )
 
 
-def _request_with_retry(method: str, url: str, *, params=None, data=None, headers=None, attempts: int = 2):
+def _request_with_retry(method: str, url: str, *, params=None, data=None, headers=None, attempts: int = 3, session=None):
+    """Bounded retry for official endpoints.
+
+    Network/service failures are retried, but permanent 4xx/auth errors are
+    returned to the caller so they can be classified explicitly.  Never
+    retries forever and never substitutes stale data after a failure.
+    """
     last_exc = None
+    client = session or requests
     for attempt in range(1, attempts + 1):
         try:
-            return requests.request(
+            response = client.request(
                 method,
                 url,
                 params=params,
                 data=data,
                 headers=headers,
-                timeout=(5, 12),
+                timeout=(5, 15),
             )
-        except (requests.Timeout, requests.ConnectionError) as exc:
+            if response.status_code in (429, 500, 502, 503, 504):
+                if attempt < attempts:
+                    time.sleep(1.5 * attempt)
+                    continue
+                response.raise_for_status()
+            return response
+        except (requests.Timeout, requests.ConnectionError, requests.HTTPError) as exc:
             last_exc = exc
             if attempt < attempts:
                 time.sleep(1.5 * attempt)
-        except Exception as exc:
+        except Exception:
             raise
     raise last_exc or RuntimeError("request failed")
 
@@ -612,6 +628,7 @@ def fetch_data_go_sido_month(month: str, sido_cd: str) -> tuple[dict | None, str
             "hs": HBM_HSK10,
             "source": "공공데이터포털 관세청 시도별 품목별 수출입실적 API",
             "api": True,
+            "scope": "regional_hsk10_exact",
         }, ""
     return None, f"공공데이터포털 시도 API {sido_cd} {month} HSK {HBM_HSK10} 데이터 없음"
 
@@ -696,7 +713,7 @@ def fetch_kcs_item_month(month: str, session) -> tuple[dict | None, str]:
         "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
     }
     try:
-        r = _request_with_retry("POST", KCS_ITEM_URL, headers=headers, data=params)
+        r = _request_with_retry("POST", KCS_ITEM_URL, headers=headers, data=params, session=session)
         if r.status_code != 200:
             return None, f"전국 {month} KCS HTTP {r.status_code}"
         data = r.json()
@@ -767,7 +784,7 @@ def fetch_kcs_region_month(month: str, region: dict, session=None) -> tuple[dict
         params = dict(base)
         params["sidosggKind"] = kind
         try:
-            r = _request_with_retry("POST", KCS_REGION_URL, headers=headers, data=params)
+            r = _request_with_retry("POST", KCS_REGION_URL, headers=headers, data=params, session=sess)
             if r.status_code != 200:
                 continue
             data = r.json()
@@ -827,10 +844,6 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
     selected = None
     session = requests.Session()
     session.headers.update({"User-Agent": UA})
-    try:
-        session.get(KCS_SOURCE_PAGE, timeout=(5, 10))
-    except Exception as exc:
-        errors.append(_safe_error("관세청 세션 초기화 실패", exc))
 
     required_keys = ("national_hsk10", "samsung_chungnam", "hynix_chungbuk")
 
@@ -851,14 +864,18 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
         for key in ("samsung_chungnam", "hynix_chungbuk"):
             region = REGIONS[key]
             row, err = fetch_data_go_sido_month(candidate, region["sido"])
-            if not row:
-                row, err2 = fetch_kcs_region_month(candidate, region, session=session)
-                if err2:
-                    err = f"{err}; fallback={err2}"
             if row:
                 rows[key] = row
             else:
+                # KCS website fallback is HS6, not the same metric as the
+                # Data.go regional HSK10 series. Keep it as diagnostics only;
+                # never silently substitute it for the exact company proxy.
                 local_errors.append(err)
+                fallback, fallback_err = fetch_kcs_region_month(candidate, region, session=session)
+                if fallback:
+                    rows[key + "_hs6_fallback"] = fallback
+                elif fallback_err:
+                    local_errors.append(fallback_err)
 
         malaysia, merr = fetch_data_go_country_item_month(candidate)
         if malaysia:
@@ -907,14 +924,15 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
         for key in ("samsung_chungnam", "hynix_chungbuk"):
             region = REGIONS[key]
             row, err = fetch_data_go_sido_month(month, region["sido"])
-            if not row:
-                row, err2 = fetch_kcs_region_month(month, region, session=session)
-                if err2:
-                    err = f"{err}; fallback={err2}"
             if row:
                 rows[key] = row
             else:
                 errors.append(err)
+                fallback, fallback_err = fetch_kcs_region_month(month, region, session=session)
+                if fallback:
+                    rows[key + "_hs6_fallback"] = fallback
+                elif fallback_err:
+                    errors.append(fallback_err)
 
         malaysia, merr = fetch_data_go_country_item_month(month)
         if malaysia:
@@ -963,7 +981,9 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
         "month": selected,
         "series": series,
         "hs": HBM_HSK10,
-        "region_hs": REGION_HS6,
+        "region_hs": HBM_HSK10,
+        "icheon_hs": REGION_HS6,
+        "region_metric_scope": "official_sido_hsk10_exact",
         "source_url": KCS_SOURCE_PAGE,
         "icheon_public_available": "hynix_icheon" in data.get(selected, {}),
         "malaysia_public_available": "malaysia_hsk10" in data.get(selected, {}),
@@ -2569,6 +2589,74 @@ def event_summary(e: dict) -> list[str]:
     return lines
 
 
+def _official_poll_due(state: dict, now: datetime) -> tuple[bool, int]:
+    target_month = _previous_month(now)
+    interval = (
+        OFFICIAL_PUBLISHED_POLL_HOURS
+        if state.get("last_successful_official_month") == target_month
+        else OFFICIAL_UNPUBLISHED_POLL_HOURS
+    )
+    raw = state.get("last_official_poll_attempt_kst") or ""
+    try:
+        last = datetime.fromisoformat(raw)
+        if last.tzinfo is None:
+            last = last.replace(tzinfo=ZoneInfo("Asia/Seoul"))
+    except Exception:
+        return True, interval
+    return (now - last >= timedelta(hours=interval)), interval
+
+
+def _official_error_classes(errors: list[str]) -> list[str]:
+    classes = set()
+    for error in errors:
+        low = (error or "").lower()
+        if "connecttimeout" in low or "connection" in low:
+            classes.add("연결시간초과")
+        elif "readtimeout" in low or "timeout" in low or "오류 05" in low:
+            classes.add("응답시간초과")
+        elif "오류 22" in low or "오류 23" in low or "429" in low:
+            classes.add("호출한도")
+        elif "오류 20" in low or "오류 30" in low or "오류 31" in low or "키 미설정" in low:
+            classes.add("인증·권한")
+        elif "오류 10" in low:
+            classes.add("요청값")
+        elif "http " in low:
+            classes.add("HTTP")
+        elif "실패" in low or "오류" in low:
+            classes.add("기타원천오류")
+    return sorted(classes)
+
+
+def _official_health_signature(target_month: str, errors: list[str]) -> str:
+    payload = target_month + "|" + "|".join(_official_error_classes(errors))
+    return hashlib.sha256(payload.encode()).hexdigest()[:16]
+
+
+def build_official_source_health_alert(now: datetime, target_month: str, errors: list[str], *, recovered: bool = False) -> str:
+    classes = _official_error_classes(errors)
+    if recovered:
+        return "\n".join([
+            "✅ <b>삼성·SK하이닉스 HBM 수출 원자료 조회 복구</b>",
+            "━━━━━━━━━━━━━━━━",
+            f"• 대상월: <b>{target_month[:4]}년 {int(target_month[4:])}월</b>",
+            "• 관세청·공공데이터 공식 조회 경로가 다시 정상 응답합니다.",
+            "• 장애 중에는 과거 월 값을 최신값으로 재사용하지 않았습니다.",
+            "• 새 확정월이 확인되면 월간 수출 비교 알림을 별도로 전송합니다.",
+            f"• 복구 확인: {now.strftime('%Y-%m-%d %H:%M KST')}",
+        ]) + "\n"
+    err_text = " · ".join(classes) if classes else "공식 원자료 조회 실패"
+    return "\n".join([
+        "⚠️ <b>삼성·SK하이닉스 HBM 수출 원자료 조회 장애</b>",
+        "━━━━━━━━━━━━━━━━",
+        f"• 대상월: <b>{target_month[:4]}년 {int(target_month[4:])}월</b>",
+        f"• 상태: <b>{html.escape(err_text)}</b>",
+        "• 전국 HSK10·충남 HSK10·충북 HSK10을 모두 공식 원자료로 잠그기 전에는 새 수치를 만들지 않습니다.",
+        "• 이전 월 수치·지역 HS6·기사 숫자를 최신 확정치로 대체 사용하지 않습니다.",
+        "• 기존 HBM 워크플로가 자동 재조회하며, 원자료 복구 또는 새 확정월 확인 시 다시 알립니다.",
+        f"• 장애 확인: {now.strftime('%Y-%m-%d %H:%M KST')}",
+    ]) + "\n"
+
+
 def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: dict) -> str:
     month = official["month"]
     cur = official["series"][month]
@@ -2618,16 +2706,16 @@ def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: di
 
     lines += [
         "",
-        "<b>[2. 지역 방향 — 공개 가능한 HS6]</b>",
-        f"• <b>충남</b> HS {official['region_hs']} 메모리 집적회로: <b>{_fmt_usd(cur['samsung_region_amount'])} · {sam_krw}</b> | 전월 {_fmt_pct(sam_mom)} | 3개월 전 {_fmt_pct(sam_q)}",
-        "  → 삼성 HBM 생산·출하 방향을 보는 <b>보조 지역지표</b>",
-        f"• <b>충북</b> HS {official['region_hs']} 메모리 집적회로: <b>{_fmt_usd(cur['hynix_chungbuk_amount'])} · {cb_krw}</b> | 전월 {_fmt_pct(cb_mom)} | 3개월 전 {_fmt_pct(cb_q)}",
-        "  → SK하이닉스 청주 방향을 보는 <b>보조 지역지표</b>",
+        "<b>[2. 지역 방향 — 관세청 시도별 HSK10]</b>",
+        f"• <b>충남</b> HSK {official['region_hs']} 복합구조칩 집적회로(HBM 포함): <b>{_fmt_usd(cur['samsung_region_amount'])} · {sam_krw}</b> | 전월 {_fmt_pct(sam_mom)} | 3개월 전 {_fmt_pct(sam_q)}",
+        "  → 삼성전자 생산지역 방향을 보는 <b>정밀 지역 대용지표</b>이며 회사 직접 수출액과 동일하지 않습니다.",
+        f"• <b>충북</b> HSK {official['region_hs']} 복합구조칩 집적회로(HBM 포함): <b>{_fmt_usd(cur['hynix_chungbuk_amount'])} · {cb_krw}</b> | 전월 {_fmt_pct(cb_mom)} | 3개월 전 {_fmt_pct(cb_q)}",
+        "  → SK하이닉스 청주 생산지역 방향을 보는 <b>정밀 지역 대용지표</b>이며 회사 직접 수출액과 동일하지 않습니다.",
     ]
 
     if official.get("icheon_public_available") and cur.get("icheon_amount") is not None:
         lines += [
-            f"• <b>이천</b> HS {official['region_hs']}: {_fmt_usd(cur['icheon_amount'])}",
+            f"• <b>이천</b> HS {official.get('icheon_hs', REGION_HS6)} 보조치: {_fmt_usd(cur['icheon_amount'])}",
             "  → 공개 원자료가 확인된 경우에만 충북과 함께 표시합니다.",
         ]
     else:
@@ -2669,7 +2757,7 @@ def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: di
         "",
         "<b>[판정]</b>",
         "• <b>전국 HSK10</b>은 HBM 포함 MCP 업황의 가장 정밀한 공개 공식 월간축입니다.",
-        "• <b>지역 HS6</b>은 메모리 전체 범주여서 삼성·SK하이닉스 HBM 매출과 1:1 대응하지 않습니다.",
+        "• <b>충남·충북 시도별 HSK10</b>은 HBM 포함 복합구조칩 지역 대용지표이며 삼성·SK하이닉스 회사 직접 수출액과 1:1 대응하지 않습니다.",
         "• 따라서 HBM 방향 판정은 전국 HSK10 + 지역 방향 + HBM4/HBM4E 제품혼합 + 고객 인증·실제 출하를 함께 봅니다.",
         "",
         "<b>[다음 알림]</b>",
@@ -3136,7 +3224,12 @@ def main() -> None:
     )
 
     rate, fx_basis = fx_quote()
-    official, official_errors = fetch_official_hbm_pack(now) if now.day >= MONTHLY_DAY else (None, [])
+    official_poll_attempted, official_poll_interval_hours = _official_poll_due(state, now)
+    official_target_month = _previous_month(now)
+    if now.day >= MONTHLY_DAY and official_poll_attempted:
+        official, official_errors = fetch_official_hbm_pack(now)
+    else:
+        official, official_errors = None, []
     official_month = official.get("month") if official else ""
     current_malaysia_amount = (
         official.get("series", {}).get(official_month, {}).get("malaysia_amount")
@@ -3154,6 +3247,43 @@ def main() -> None:
         and current_malaysia_amount is not None
         and abs(current_malaysia_amount / previous_malaysia_amount - 1.0) >= 0.10
     )
+    previous_source_health = dict(state.get("official_source_health") or {})
+    source_health_alert = ""
+    source_health_state = previous_source_health
+    if official_poll_attempted:
+        if official is None and official_errors:
+            sig = _official_health_signature(official_target_month, official_errors)
+            source_health_state = {
+                "version": OFFICIAL_SOURCE_HEALTH_VERSION,
+                "status": "error",
+                "target_month": official_target_month,
+                "signature": sig,
+                "classes": _official_error_classes(official_errors),
+                "last_checked_at_kst": now.isoformat(timespec="seconds"),
+                "first_seen_at_kst": (
+                    previous_source_health.get("first_seen_at_kst")
+                    if previous_source_health.get("signature") == sig
+                    else now.isoformat(timespec="seconds")
+                ),
+            }
+            if previous_source_health.get("signature") != sig or previous_source_health.get("status") != "error":
+                source_health_alert = build_official_source_health_alert(
+                    now, official_target_month, official_errors
+                )
+        elif official is not None:
+            was_error = previous_source_health.get("status") == "error"
+            source_health_state = {
+                "version": OFFICIAL_SOURCE_HEALTH_VERSION,
+                "status": "ok",
+                "target_month": official_target_month,
+                "last_checked_at_kst": now.isoformat(timespec="seconds"),
+                "selected_official_month": official_month,
+            }
+            if was_error:
+                source_health_alert = build_official_source_health_alert(
+                    now, official_target_month, [], recovered=True
+                )
+
     monthly_due = bool(
         official
         and (
@@ -3164,12 +3294,20 @@ def main() -> None:
     )
 
     if monthly_due and official:
-        ALERT.write_text(build_monthly(now, rate, fx_basis, official), encoding="utf-8")
+        monthly_text = build_monthly(now, rate, fx_basis, official)
+        if source_health_alert and previous_source_health.get("status") == "error":
+            monthly_text = source_health_alert + "\n<<<TELEGRAM_MESSAGE_BREAK>>>\n\n" + monthly_text
+        ALERT.write_text(monthly_text, encoding="utf-8")
         state["last_monthly_digest"] = month_key
         state["last_official_alert_month"] = official_month
         state["compare_version"] = COMPARE_VERSION
         # Do not consume pending topic-state changes behind a monthly alert.
         # They remain eligible on the next run.
+    elif source_health_alert:
+        text = source_health_alert
+        if send_events:
+            text += "\n<<<TELEGRAM_MESSAGE_BREAK>>>\n\n" + build_event_alert(send_events, now)
+        ALERT.write_text(text, encoding="utf-8")
     elif send_events:
         ALERT.write_text(build_event_alert(send_events, now), encoding="utf-8")
         for e in send_events:
@@ -3258,10 +3396,22 @@ def main() -> None:
         "last_fresh_new_count": len(fresh_new),
         "last_send_event_count": len(send_events),
         "monthly_due": monthly_due,
-        "official_month": official_month,
-        "official_data_ok": bool(official),
+        "official_month": official_month if official_poll_attempted else state.get("official_month", ""),
+        "official_data_ok": bool(official) if official_poll_attempted else state.get("official_data_ok", False),
+        "official_source_health": source_health_state,
+        "official_source_health_version": OFFICIAL_SOURCE_HEALTH_VERSION,
+        "official_poll_interval_hours": official_poll_interval_hours,
+        "last_official_poll_attempt_kst": (
+            now.isoformat(timespec="seconds")
+            if official_poll_attempted
+            else state.get("last_official_poll_attempt_kst", "")
+        ),
         "official_api_key_configured": bool(DATA_GO_KEY),
-        "official_api_used": bool(official and official.get("official_api_used")),
+        "official_api_used": (
+            bool(official and official.get("official_api_used"))
+            if official_poll_attempted
+            else state.get("official_api_used", False)
+        ),
         "malaysia_official_month": official_month if official else state.get("malaysia_official_month", ""),
         "malaysia_hsk10_amount_usd": current_malaysia_amount,
         "malaysia_hsk10_weight_kg": current_malaysia_weight,
@@ -3302,7 +3452,11 @@ def main() -> None:
         f"- share_alerts: {len([e for e in send_events if e.get('share_change')])}\n"
         f"- fresh_new: {len(fresh_new)}\n"
         f"- monthly_due: {str(monthly_due).lower()}\n"
-        f"- official_month: {official_month or 'none'}\n"
+        f"- official_poll_attempted: {str(official_poll_attempted).lower()}\n"
+        f"- official_poll_interval_hours: {official_poll_interval_hours}\n"
+        f"- official_target_month: {official_target_month}\n"
+        f"- official_source_health: {source_health_state.get('status', 'unknown')}\n"
+        f"- official_month: {official_month or state.get('official_month') or 'none'}\n"
         f"- official_data_ok: {str(bool(official)).lower()}\n"
         f"- official_api_key_configured: {str(bool(DATA_GO_KEY)).lower()}\n"
         f"- official_api_used: {str(bool(official and official.get('official_api_used'))).lower()}\n"
@@ -3311,7 +3465,7 @@ def main() -> None:
         f"- malaysia_hsk10_weight_kg: {current_malaysia_weight if current_malaysia_weight is not None else 'none'}\n"
         f"- malaysia_revision_due: {str(malaysia_revision_due).lower()}\n"
         f"- official_errors: {len(official_errors)}\n"
-        f"- alert_generated: {str(monthly_due or bool(send_events)).lower()}\n",
+        f"- alert_generated: {str(monthly_due or bool(send_events) or bool(source_health_alert)).lower()}\n",
         encoding="utf-8",
     )
 
