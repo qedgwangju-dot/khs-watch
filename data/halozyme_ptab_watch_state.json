@@ -22,7 +22,7 @@
     "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557766",
     "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557959"
   ],
-  "last_check_kst": "2026-10-08T00:32:09+09:00",
+  "last_check_kst": "2026-10-08T00:45:06+09:00",
   "tracked_cases": {
     "PGR2025-00003": "11,952,600",
     "PGR2025-00004": "12,018,298",
@@ -178,10 +178,51 @@
         "kind": "",
         "label": "최종서면결정"
       }
+    ],
+    "NL-VRO-C09-695432": [
+      {
+        "date": "2026-07-03",
+        "kind": "",
+        "label": "별도 가처분 기각 — EP622 유효성·침해 본안 판단 아님"
+      },
+      {
+        "date": "2026-07-31",
+        "kind": "",
+        "label": "VRO 본안 구술심리"
+      },
+      {
+        "date": "2026-10-07",
+        "kind": "",
+        "label": "VRO 본안 — EP622 유효·Keytruda SC 침해·8개 유럽시장 금지명령"
+      }
+    ],
+    "DE-EP622-KEYTRUDA": [
+      {
+        "date": "2025-12-04",
+        "kind": "",
+        "label": "독일 Keytruda SC 판매금지 가처분"
+      },
+      {
+        "date": "2026-11-19",
+        "kind": "",
+        "label": "독일 가처분 항소심 예정"
+      }
+    ],
+    "UK-EP347-KEYTRUDA": [
+      {
+        "date": "2026-07-20",
+        "kind": "",
+        "label": "영국 EP347 절차판단 EWHC 1838"
+      },
+      {
+        "date": "2026-11-23",
+        "kind": "",
+        "label": "영국 EP347 본안 심리 시작 예정"
+      }
     ]
   },
-  "search_query_count": 33,
-  "search_task_count": 66,
+  "search_query_count": 36,
+  "search_task_count": 72,
   "search_workers": 8,
-  "search_elapsed_seconds": 3.53
+  "search_elapsed_seconds": 4.279
 }
