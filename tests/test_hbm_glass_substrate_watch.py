@@ -241,6 +241,128 @@ class GlassSubstrateWatchTests(unittest.TestCase):
         rec = next(x for x in rows if x["axis"] == "glass_process_cycle_time")
         self.assertEqual(rec["value"]["process_name"], "unverified_core_process")
 
+    def test_samsung_official_glass_pilot_post_2027_plan(self):
+        item = {
+            "title":"Samsung Electro-Mechanics glass core pilot and JV",
+            "description":"","source":"Samsung Electro-Mechanics",
+            "published_at_kst":"2026-09-10T09:00:00+09:00",
+            "direct_link":"https://samsungsem.com/global/newsroom/news/view.do?id=10522",
+        }
+        body = (
+            "Samsung Electro-Mechanics is producing glass package substrate prototypes at its Sejong plant pilot line. "
+            "Mass production is planned after 2027. At KPCA Show 2026 it showcased glass fine connection channels, "
+            "metal filling and precision surface processing technologies."
+        )
+        rows = w.parse_glass_substrate_records(item, body)
+        rec = next(x for x in rows if x["key"] == "glass_hvm_stage|samsung_electromechanics|current")
+        v = rec["value"]
+        self.assertEqual(v["stage"], "pilot")
+        self.assertEqual(v["pilot_line_location"], "Sejong")
+        self.assertTrue(v["prototype_production"])
+        self.assertIsNone(v["mass_production_target_year"])
+        self.assertEqual(v["mass_production_earliest_year"], 2028)
+        self.assertTrue(v["glass_core_metal_fill_showcased"])
+        self.assertTrue(v["precision_surface_processing_showcased"])
+
+    def test_samsung_glassem_official_acquisition_decision_parses_exactly(self):
+        item = {
+            "title":"Decision on Acquisition of Shares or Investment Certificates of Other Corporations",
+            "description":"","source":"Samsung Electro-Mechanics",
+            "published_at_kst":"2026-07-02T09:00:00+09:00",
+            "direct_link":"https://m.samsungsem.com/global/about-us/investor-relations/disclosure/view.do?id=332",
+        }
+        body = (
+            "Samsung Electro-Mechanics Decision on Acquisition. (provisional title) GlaSSEM Co., Ltd. "
+            "Main business Glass Core Manufacturing and Sales. Acquisition cost (KRW) 319,100,000,000. "
+            "Shareholding ratio (%) 66.2. The joint venture is being established with Dongwoo Fine-Chem. "
+            "Scheduled acquisition date 2026-09-01. Cash investment is KRW 239.1 billion, "
+            "and In-Kind investment is KRW 80 billion."
+        )
+        rows = w.parse_glass_substrate_records(item, body)
+        rec = next(x for x in rows if x["axis"] == "glass_jv_stage")
+        v = rec["value"]
+        self.assertEqual(v["stage"], "share_acquisition_decided")
+        self.assertEqual(v["investment_krw"], 319100000000)
+        self.assertEqual(v["equity_pct"], 66.2)
+        self.assertEqual(v["scheduled_acquisition_date"], "2026-09-01")
+        self.assertEqual(v["cash_investment_krw"], 239100000000)
+        self.assertEqual(v["in_kind_investment_krw"], 80000000000)
+        self.assertEqual(v["partner"], "Dongwoo Fine-Chem")
+
+    def test_samsung_jv_establishment_is_material_but_not_mass_production(self):
+        old = {
+            "axis":"glass_jv_stage",
+            "value":{"stage":"share_acquisition_decided","investment_krw":319100000000,"equity_pct":66.2}
+        }
+        new = {
+            "axis":"glass_jv_stage",
+            "value":{"stage":"jv_established","investment_krw":319100000000,"equity_pct":66.2}
+        }
+        reasons = w.comparison(old,new)
+        self.assertTrue(any("share_acquisition_decided→jv_established" in x for x in reasons))
+        rec = {
+            "key":"glass_jv_stage|samsung_electromechanics|glassem","axis":"glass_jv_stage",
+            "value":{"stage":"share_acquisition_decided","investment_krw":319100000000,"equity_pct":66.2,
+                     "scheduled_acquisition_date":"2026-09-01","partner":"Dongwoo Fine-Chem"},
+            "unit":"KRW,pct,stage","period":"current","as_of":"2026-07-02","evidence":"official",
+            "source_url":"https://m.samsungsem.com/global/about-us/investor-relations/disclosure/view.do?id=332",
+            "source_title":"삼성전기 GlaSSEM 출자 결정",
+        }
+        out=w.render({"record":rec,"old":None,"reasons":["기준선"]})
+        self.assertIn("양산 개시나 고객 매출 발생과 같은 뜻이 아닙니다", out)
+
+    def test_lg_innotek_gumi_pilot_and_2028_target(self):
+        item = {
+            "title":"LG Innotek KPCA show 2026 glass substrate",
+            "description":"","source":"LG Innotek",
+            "published_at_kst":"2026-09-09T09:00:00+09:00",
+            "direct_link":"https://www.lginnotek.com/news/pressView.do?idx=6600",
+        }
+        body = (
+            "LG Innotek has established a glass substrate pilot line at the Gumi site. "
+            "It is targeting mass production in 2028 and commercialization in 2027-2028. "
+            "LG Innotek is collaborating with UTI on glass substrate research and development. "
+            "Prototype production is underway."
+        )
+        rows=w.parse_glass_substrate_records(item,body)
+        rec=next(x for x in rows if x["key"]=="glass_hvm_stage|lg_innotek|current")
+        v=rec["value"]
+        self.assertEqual(v["stage"],"pilot")
+        self.assertEqual(v["pilot_line_location"],"Gumi")
+        self.assertEqual(v["mass_production_target_year"],2028)
+        self.assertEqual(v["commercialization_target_start_year"],2027)
+        self.assertEqual(v["commercialization_target_end_year"],2028)
+        self.assertTrue(v["uti_collaboration"])
+
+    def test_old_sk_samsung_lg_theme_article_does_not_invent_company_stage(self):
+        item = {
+            "title":"반도체 게임체인저 잡아라 SK 삼성 LG 유리기판 각축",
+            "description":"","source":"국민일보",
+            "published_at_kst":"2025-12-11T00:50:00+09:00",
+            "direct_link":"https://www.kmib.co.kr/article/view.asp?arcid=1765278382",
+        }
+        body = (
+            "SKC 삼성전기 LG이노텍이 유리기판 시장을 놓고 경쟁하고 있다. "
+            "유리기판 시장은 향후 성장할 것으로 예상된다."
+        )
+        rows=w.parse_glass_substrate_records(item,body)
+        self.assertFalse(any(x["axis"] in ("glass_hvm_stage","glass_jv_stage") for x in rows))
+
+    def test_new_official_competitor_baselines_seed_without_retro_alert(self):
+        data=__import__("json").loads(
+            (pathlib.Path(__file__).resolve().parents[1]/"data"/"hbm_memory_baselines.json").read_text(encoding="utf-8")
+        )
+        keys={
+            "glass_hvm_stage|samsung_electromechanics|current",
+            "glass_jv_stage|samsung_electromechanics|glassem",
+            "glass_hvm_stage|lg_innotek|current",
+        }
+        seeds=[x for x in data["records"] if x["key"] in keys]
+        old_state={"glass_substrate_track_version":4,"last_notified":{},"latest":{},"pending":{},"coverage":{}}
+        state=w.update_state(old_state,[],__import__("datetime").datetime(2026,10,7,12,0,0),seeds)
+        self.assertEqual(set(state["latest"]) & keys, keys)
+        self.assertEqual(state["pending"], {})
+
     def test_yield_crossing_90_alerts(self):
         old = {"axis":"glass_panel_yield","value":{"yield_pct":88.0}}
         new = {"axis":"glass_panel_yield","value":{"yield_pct":92.0}}

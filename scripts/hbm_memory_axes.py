@@ -1028,6 +1028,14 @@ GLASS_HVM_STAGE_RANK = {
     'pilot': 4,
     'mass_production': 5,
 }
+GLASS_JV_STAGE_RANK = {
+    'mou': 0,
+    'share_acquisition_decided': 1,
+    'jv_established': 2,
+    'construction': 3,
+    'pilot': 4,
+    'mass_production': 5,
+}
 
 
 def _glass_entity(text):
@@ -1178,6 +1186,31 @@ def parse_glass_substrate_records(item, body):
                     'non_embedding_poc_target_year': 2026 if re.search(r'non[- ]?embedding[^.]{0,160}?(?:PoC|proof\s+of\s+concept)[^.]{0,60}?(?:within\s+the\s+year|연내)', text, re.I) else None,
                 })
                 scope = 'absolics_customer_validation_not_mass_production'
+            if entity == 'samsung_electromechanics':
+                after_2027 = bool(re.search(r'(?:after\s+2027|2027\s*년?\s*이후)', text, re.I))
+                if after_2027:
+                    # "after 2027" means 2028 or later; do not store 2027 as a fixed mass-production year.
+                    value['mass_production_target_year'] = None
+                value.update({
+                    'pilot_line_location': 'Sejong' if re.search(r'\bSejong\b|세종', text, re.I) and re.search(r'pilot\s*line|파일럿\s*라인|시범\s*생산', text, re.I) else None,
+                    'prototype_production': bool(re.search(r'producing[^.]{0,60}?prototype|prototype\s+production|시제품[^.]{0,40}?(?:생산|제작)', text, re.I)),
+                    'mass_production_earliest_year': 2028 if after_2027 else None,
+                    'glass_core_metal_fill_showcased': bool(re.search(r'(?:glass|유리)[^.]{0,120}?(?:metal\s*fill|metal\s*filling|금속[^.]{0,20}?채우|금속\s*충진)', text, re.I)),
+                    'precision_surface_processing_showcased': bool(re.search(r'precision\s+surface\s+processing|표면[^.]{0,30}?정밀[^.]{0,20}?가공|정밀\s*표면\s*가공', text, re.I)),
+                })
+                scope = 'samsung_electromechanics_official_pilot_and_post_2027_glass_mass_production_plan'
+            if entity == 'lg_innotek':
+                comm = re.search(r'(2027)\s*(?:년)?\s*[~～\-–]\s*(2028)\s*(?:년)?[^.]{0,80}?(?:commercial|상용|양산)', text, re.I)
+                if not comm:
+                    comm = re.search(r'(?:commercial|상용|양산)[^.]{0,80}?(2027)\s*(?:년)?\s*[~～\-–]\s*(2028)', text, re.I)
+                value.update({
+                    'pilot_line_location': 'Gumi' if re.search(r'\bGumi\b|구미', text, re.I) and re.search(r'pilot\s*line|파일럿\s*라인|시범\s*생산', text, re.I) else None,
+                    'prototype_production': bool(re.search(r'prototype\s+production|시제품[^.]{0,40}?(?:생산|준비)', text, re.I)),
+                    'commercialization_target_start_year': int(comm.group(1)) if comm else None,
+                    'commercialization_target_end_year': int(comm.group(2)) if comm else None,
+                    'uti_collaboration': bool(re.search(r'\bUTI\b|유티아이', text, re.I) and re.search(r'collaborat|cooperat|협력|공동\s*개발', text, re.I)),
+                })
+                scope = 'lg_innotek_official_gumi_pilot_and_2027_2028_glass_commercialization'
             if entity == 'chemtronics' and re.search(r'(?:삼성전자|Samsung(?: Electronics)?)', text, re.I):
                 value.update({
                     'customer': 'Samsung Electronics',
@@ -1197,6 +1230,75 @@ def parse_glass_substrate_records(item, body):
                 'stage,year', 'current', item,
                 '유리기판·유리 인터포저 고객검증·장비발주·파일럿·양산 단계',
                 as_of=asof, scope=scope))
+
+        if entity == 'samsung_electromechanics' and re.search(r'GlaSSEM|글라스셈|joint\s+venture|합작\s*법인|합작법인', text, re.I):
+            jv_stage = ''
+            if re.search(r'(?:mass\s*production\s*(?:begins?|starts?)|양산\s*(?:시작|개시))', text, re.I):
+                jv_stage = 'mass_production'
+            elif re.search(r'(?:pilot\s*(?:production|line)|파일럿\s*(?:생산|라인)|시험\s*생산)', text, re.I):
+                jv_stage = 'pilot'
+            elif re.search(r'(?:construction|groundbreak|착공|공장\s*건설)', text, re.I):
+                jv_stage = 'construction'
+            elif re.search(r'(?:joint\s+venture|JV|합작\s*법인|합작법인)[^.]{0,80}?(?:established|launched|incorporated|설립\s*완료|출범)', text, re.I):
+                jv_stage = 'jv_established'
+            elif re.search(r'(?:decision\s+on\s+acquisition|acquisition\s+cost|board\s+resolution|취득\s*결정|출자\s*결정|이사회\s*결의)', text, re.I):
+                jv_stage = 'share_acquisition_decided'
+            elif re.search(r'(?:MOU|memorandum\s+of\s+understanding|양해각서)', text, re.I):
+                jv_stage = 'mou'
+
+            investment = None
+            for pat in (
+                r'(?:acquisition\s+cost|취득\s*(?:금액|가액)|출자\s*금액)[^0-9]{0,40}(319,?100,?000,?000)\s*(?:KRW|원)?',
+                r'(3,?191)\s*억\s*원',
+            ):
+                m = re.search(pat, text, re.I)
+                if m:
+                    raw = m.group(1).replace(',', '')
+                    investment = float(raw) if len(raw) > 6 else float(raw) * 100_000_000
+                    break
+
+            cash_investment = None
+            m = re.search(r'(?:cash\s+investment|현금\s*출자)[^0-9]{0,30}(239(?:\.1)?)\s*(?:billion|십억)', text, re.I)
+            if m:
+                cash_investment = float(m.group(1)) * 1_000_000_000
+            elif re.search(r'2,?391\s*억\s*원', text):
+                cash_investment = 239_100_000_000
+
+            in_kind_investment = None
+            m = re.search(r'(?:in[- ]?kind\s+investment|현물\s*출자)[^0-9]{0,30}(80(?:\.0)?)\s*(?:billion|십억)', text, re.I)
+            if m:
+                in_kind_investment = float(m.group(1)) * 1_000_000_000
+            elif re.search(r'800\s*억\s*원', text):
+                in_kind_investment = 80_000_000_000
+
+            equity = None
+            m = re.search(r'(?:shareholding\s+ratio|지분율)[^0-9]{0,30}(66\.2)\s*%', text, re.I)
+            if m:
+                equity = float(m.group(1))
+
+            date = ''
+            m = re.search(r'(?:scheduled\s+acquisition\s+date|취득\s*예정일|출자\s*예정일)[^0-9]{0,30}(2026[-./]0?9[-./]0?1)', text, re.I)
+            if m:
+                date = re.sub(r'[./]', '-', m.group(1))
+
+            if jv_stage or investment is not None or equity is not None or date:
+                rows.append(make_record(
+                    'glass_jv_stage', ['samsung_electromechanics','glassem'],
+                    {
+                        'stage': jv_stage or 'mou',
+                        'jv_name': 'GlaSSEM',
+                        'main_business': 'Glass Core manufacturing and sales',
+                        'investment_krw': investment,
+                        'equity_pct': equity,
+                        'scheduled_acquisition_date': date or None,
+                        'cash_investment_krw': cash_investment,
+                        'in_kind_investment_krw': in_kind_investment,
+                        'partner': 'Dongwoo Fine-Chem' if re.search(r'Dongwoo\s+Fine[- ]?Chem|동우화인켐', text, re.I) else None,
+                    },
+                    'KRW,pct,stage', 'current', item,
+                    '삼성전기 GlaSSEM 글라스코어 합작법인·출자 단계',
+                    as_of=asof, scope='official_jv_investment_stage_not_glass_substrate_mass_production_revenue'
+                ))
 
         if entity == 'jntc' and re.search(r'12\s*시간|12\s*hours?|720\s*분|분\s*단위|cycle\s*time|공정\s*시간', text, re.I):
             cycle_sentences = [
@@ -1538,6 +1640,36 @@ def comparison(old, new):
         if a.get('stage') != b.get('stage') and b.get('stage'):
             reasons.append(f"설비투자 단계 {a.get('stage') or '미확인'}→{b.get('stage')}")
         return reasons
+    if new['axis'] == 'glass_jv_stage':
+        reasons = []
+        old_stage, new_stage = a.get('stage','mou'), b.get('stage','mou')
+        if old_stage != new_stage:
+            reasons.append(f"글라스코어 JV 단계 {old_stage}→{new_stage}")
+        av, bv = a.get('investment_krw'), b.get('investment_krw')
+        if av and bv:
+            pct = (float(bv)/float(av)-1.0)*100
+            if abs(pct) >= 10:
+                reasons.append(f"JV 출자금 {float(av)/1e8:,.0f}→{float(bv)/1e8:,.0f}억원 ({pct:+.1f}%)")
+        elif av is None and bv is not None:
+            reasons.append(f"JV 출자금 {float(bv)/1e8:,.0f}억원 최초 확인")
+        av, bv = a.get('equity_pct'), b.get('equity_pct')
+        if av is not None and bv is not None and abs(float(bv)-float(av)) >= 1:
+            reasons.append(f"삼성전기 JV 지분율 {float(av):.1f}%→{float(bv):.1f}%")
+        elif av is None and bv is not None:
+            reasons.append(f"삼성전기 JV 지분율 {float(bv):.1f}% 최초 확인")
+        av, bv = a.get('scheduled_acquisition_date'), b.get('scheduled_acquisition_date')
+        if av != bv and bv:
+            reasons.append(f"JV 출자 예정일 {av or '미확인'}→{bv}")
+        for field, label in (
+            ('cash_investment_krw','현금 출자'),
+            ('in_kind_investment_krw','현물 출자'),
+        ):
+            av, bv = a.get(field), b.get(field)
+            if av is not None and bv is not None and float(av) != float(bv):
+                reasons.append(f"{label} {float(av)/1e8:,.0f}→{float(bv)/1e8:,.0f}억원")
+            elif av is None and bv is not None:
+                reasons.append(f"{label} {float(bv)/1e8:,.0f}억원 최초 확인")
+        return reasons
     if new['axis'] == 'glass_hvm_stage':
         reasons = []
         old_stage, new_stage = a.get('stage','sample'), b.get('stage','sample')
@@ -1583,6 +1715,7 @@ def comparison(old, new):
         for field, label in (
             ('gimcheon_groundbreaking_period','김천 착공 시점'),
             ('initial_customer_commercialization_period','고객 초기 상용화 시점'),
+            ('pilot_line_location','파일럿 라인 위치'),
         ):
             av, bv = a.get(field), b.get(field)
             if av != bv and bv:
@@ -1595,12 +1728,26 @@ def comparison(old, new):
             ('embedding_preliminary_evaluation_passed','Embedding 예비평가 통과'),
             ('embedding_reliability_evaluation_ongoing','Embedding 신뢰성 평가 진행'),
             ('non_embedding_supplier_selection_ongoing','Non-Embedding 공급사 선정 진행'),
+            ('prototype_production','시제품 생산'),
+            ('glass_core_metal_fill_showcased','글라스코어 금속 충진 기술 공개'),
+            ('precision_surface_processing_showcased','글라스코어 정밀 표면가공 기술 공개'),
+            ('uti_collaboration','UTI 유리기판 연구개발 협력'),
         ):
             if a.get(field) != b.get(field) and b.get(field) is True:
                 reasons.append(label)
         av, bv = a.get('non_embedding_poc_target_year'), b.get('non_embedding_poc_target_year')
         if av != bv and bv:
             reasons.append(f"Non-Embedding PoC 목표 {av or '미확인'}→{bv}년")
+        for field, label in (
+            ('mass_production_earliest_year','양산 가능 최조 연도'),
+            ('commercialization_target_start_year','상용화 목표 시작'),
+            ('commercialization_target_end_year','상용화 목표 종료'),
+        ):
+            av, bv = a.get(field), b.get(field)
+            if av is not None and bv is not None and int(av) != int(bv):
+                reasons.append(f"{label} {int(av)}→{int(bv)}년")
+            elif av is None and bv is not None:
+                reasons.append(f"{label} {int(bv)}년 신규 확인")
         return reasons
     if new['axis'] == 'foundry_loss_outlook':
         reasons = []
@@ -1809,7 +1956,7 @@ def update_state(state, records, now, seeds=None):
             state['foundry_pricing_range_track_version'] = FOUNDRY_PRICING_RANGE_TRACK_VERSION
         if int(state.get('glass_substrate_track_version') or 0) < GLASS_SUBSTRATE_TRACK_VERSION:
             for r in seeds:
-                if r.get('axis') in ('glass_panel_standard','glass_tsmc_roadmap','glass_panel_yield','glass_hvm_stage','glass_process_cycle_time','glass_capex'):
+                if r.get('axis') in ('glass_panel_standard','glass_tsmc_roadmap','glass_panel_yield','glass_hvm_stage','glass_process_cycle_time','glass_capex','glass_jv_stage'):
                     state['last_notified'][r['key']] = copy.deepcopy(r)
                     state['latest'][r['key']] = copy.deepcopy(r)
                     state['pending'].pop(r['key'], None)
@@ -1836,7 +1983,7 @@ def update_state(state, records, now, seeds=None):
         if r['as_of'][:10] > now.date().isoformat():
             continue
         grouped.setdefault(r['key'], []).append(r)
-    sparse_axes = {'foundry_base_die_allocation', 'foundry_pricing', 'foundry_hbm5_2nm', 'foundry_loss_outlook', 'foundry_external_2nm', 'foundry_taylor_schedule', 'glass_panel_standard', 'glass_tsmc_roadmap', 'glass_panel_yield', 'glass_hvm_stage', 'glass_process_cycle_time', 'glass_capex', 'hbm_generation_pricing', 'hbm_market_pricing'}
+    sparse_axes = {'foundry_base_die_allocation', 'foundry_pricing', 'foundry_hbm5_2nm', 'foundry_loss_outlook', 'foundry_external_2nm', 'foundry_taylor_schedule', 'glass_panel_standard', 'glass_tsmc_roadmap', 'glass_panel_yield', 'glass_hvm_stage', 'glass_process_cycle_time', 'glass_capex', 'glass_jv_stage', 'hbm_generation_pricing', 'hbm_market_pricing'}
     for key, rows in grouped.items():
         rows.sort(key=lambda x: (x['as_of'], RANK.get(x['evidence'], 0)))
         prior = state['latest'].get(key) or state['last_notified'].get(key)
@@ -1903,6 +2050,7 @@ def render(change, rate=None):
              'glass_hvm_stage': '유리기판 고객검증→발주→HVM 전환 단계',
              'glass_process_cycle_time': '제이앤티씨 TGV 핵심공정 시간 단축',
              'glass_capex': '제이앤티씨 김천 TGV 설비투자',
+             'glass_jv_stage': '삼성전기 GlaSSEM 글라스코어 합작법인·출자 단계',
              'foundry_loss_outlook': '삼성 파운드리+System LSI 손실 축소 전망',
              'foundry_external_2nm': '삼성 외부 2나노 AI·HPC 수주·양산 전환',
              'foundry_taylor_schedule': '삼성 Taylor Fab1 양산 일정·외부 고객 협상',
@@ -1990,6 +2138,22 @@ def render(change, rate=None):
                 parts.append(f"고용 {int(v['employees']):,}명")
             parts.append(f"생산능력 월 {float(v['capacity_panels_per_month']):,.0f}장" if v.get('capacity_panels_per_month') is not None else "실제 물량 생산능력 미공개")
             return " / ".join(parts)
+        if record['axis'] == 'glass_jv_stage':
+            labels = {
+                'mou':'합작 검토 MOU','share_acquisition_decided':'출자·주식취득 결정',
+                'jv_established':'합작법인 설립 완료','construction':'공장 착공',
+                'pilot':'파일럿','mass_production':'양산'
+            }
+            parts = [labels.get(v.get('stage'), v.get('stage',''))]
+            if v.get('investment_krw') is not None:
+                parts.append(f"출자 {float(v['investment_krw'])/1e8:,.0f}억원")
+            if v.get('equity_pct') is not None:
+                parts.append(f"삼성전기 지분 {float(v['equity_pct']):.1f}%")
+            if v.get('scheduled_acquisition_date'):
+                parts.append(f"출자 예정일 {v['scheduled_acquisition_date']}")
+            if v.get('partner'):
+                parts.append(f"파트너 {v['partner']}")
+            return " / ".join(parts)
         if record['axis'] == 'glass_hvm_stage':
             labels = {'sample':'샘플','customer_evaluation':'고객 검증','po_pending':'정식 발주 대기','po_signed':'정식 수주','pilot':'파일럿','mass_production':'양산'}
             text = labels.get(v.get('stage'),v.get('stage',''))
@@ -2015,6 +2179,14 @@ def render(change, rate=None):
                 text += " / 대만 최종 고객 2mm 검증 중"
             if v.get('additional_us_bigtech_collaboration_requested'):
                 text += " / 추가 미국 빅테크 기술협력 요청"
+            if v.get('pilot_line_location'):
+                text += f" / 파일럿 {v['pilot_line_location']}"
+            if v.get('mass_production_earliest_year'):
+                text += f" / 양산 최조 {int(v['mass_production_earliest_year'])}년 이후"
+            if v.get('commercialization_target_start_year') is not None and v.get('commercialization_target_end_year') is not None:
+                text += f" / 상용화 목표 {int(v['commercialization_target_start_year'])}~{int(v['commercialization_target_end_year'])}년"
+            if v.get('uti_collaboration'):
+                text += " / UTI 협력"
             return text
         if record['axis'] == 'foundry_loss_outlook':
             parts = []
@@ -2179,6 +2351,9 @@ def render(change, rate=None):
     if r['axis'] == 'glass_capex':
         lines.append('• 설비투자 총액과 라인 수를 실제 월 생산장수로 치환하지 않습니다. 토지·건물·기계장치·공통설비가 섞일 수 있습니다.')
         lines.append('• 투자액·라인수와 실제 양산 수율·월 생산능력·고객 매출은 별도 상태로 추적합니다.')
+    if r['axis'] == 'glass_jv_stage':
+        lines.append('• 합작법인 출자·주식취득 결정은 유리기판 양산 개시나 고객 매출 발생과 같은 뜻이 아닙니다.')
+        lines.append('• 합작법인 설립 완료→공장·장비→파일럿→고객 검증→양산을 각각 별도 단계로 추적합니다.')
     if r['axis'] == 'glass_hvm_stage':
         lines.append('• 샘플→고객 검증→정식 발주 대기→정식 수주→파일럿→양산을 구분하며 기사상 기대감을 양산매출로 승격하지 않습니다.')
         v = r['value']
@@ -2414,7 +2589,7 @@ def main():
     if chosen:
         rate, basis = legacy.fx_quote()
         foundry_axes = {'foundry_loss_outlook','foundry_external_2nm','foundry_taylor_schedule','foundry_base_die_allocation','foundry_node_expansion','foundry_pricing','foundry_hbm5_2nm'}
-        glass_axes = {'glass_panel_standard','glass_tsmc_roadmap','glass_panel_yield','glass_hvm_stage','glass_process_cycle_time','glass_capex'}
+        glass_axes = {'glass_panel_standard','glass_tsmc_roadmap','glass_panel_yield','glass_hvm_stage','glass_process_cycle_time','glass_capex','glass_jv_stage'}
         generation_price_axes = {'hbm_generation_pricing'}
         regular = [k for k in chosen if state['pending'][k]['record']['axis'] not in foundry_axes | glass_axes | generation_price_axes]
         foundry = [k for k in chosen if state['pending'][k]['record']['axis'] in foundry_axes]
