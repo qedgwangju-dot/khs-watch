@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-10-07T23:37:55+09:00",
+  "last_checked_kst": "2026-10-07T23:39:10+09:00",
   "media_id": null,
   "cftc_date": "September 29, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-10-07T23:37:55+09:00",
+    "checked_kst": "2026-10-07T23:39:10+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "September 29, 2026",
@@ -57,7 +57,9 @@
           "leveraged_net": -808870,
           "short_share_oi_pct": 35.66219223314909
         }
-      }
+      },
+      "source_mode": "CFTC TFF live HTML",
+      "source_url": "https://www.cftc.gov/dea/futures/financial_lf.htm"
     },
     "cme": {
       "ZN": {
@@ -83,10 +85,10 @@
         "display_symbol": "US/ZB",
         "ticker": "ZB=F",
         "month": "",
-        "last": 101.6875,
-        "settlement": 101.6875,
-        "change": -0.84375,
-        "pct_change": -0.8229198415117378,
+        "last": 101.65625,
+        "settlement": 101.65625,
+        "change": -0.875,
+        "pct_change": -0.8533983541603174,
         "open_interest": 1879173,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 29, 2026)",
         "volume": 0,
@@ -101,10 +103,10 @@
         "display_symbol": "WN/UB",
         "ticker": "UB=F",
         "month": "",
-        "last": 102.625,
-        "settlement": 102.625,
-        "change": -0.84375,
-        "pct_change": -0.8154636061612819,
+        "last": 102.59375,
+        "settlement": 102.59375,
+        "change": -0.875,
+        "pct_change": -0.8456659619450302,
         "open_interest": 2507580,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 29, 2026)",
         "volume": 0,
