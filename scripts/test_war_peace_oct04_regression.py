@@ -618,4 +618,26 @@ try:
 except RuntimeError as e:
     check("oct07-quality-gate-conditional-threat", "조건부 선제공격" in str(e))
 
+
+# 20) 재인용된 이란 대통령 '전면전/저항' 발언은 신규 공격으로 재송출하지 않는다.
+iran_full_war_repost = row(
+    "IRAN PRESIDENT SAYS COUNTRY IS IN 'FULL-SCALE WAR'; REPEATS IRAN WILL 'RESIST' ENEMY: FARS",
+    source="Walter Bloomberg",
+    description="Iran president says country is in full-scale war and repeats that Iran will resist the enemy.",
+    link="https://t.me/WalterBloomberg/36509",
+)
+check("oct07-recycled-iran-full-war-detected", mod._recycled_iran_full_scale_war_rhetoric(iran_full_war_repost))
+s, tags = mod.score_item(iran_full_war_repost, dt.datetime.now(mod.watch.KST))
+check("oct07-recycled-iran-full-war-suppressed", s == 0 and tags == [])
+
+quote_only = row(
+    "IRAN OFFICIAL SAYS MILITARY RESPONSE REMAINS AN OPTION: FARS",
+    source="Walter Bloomberg",
+    description="Iran official says a military response remains an option.",
+)
+check("oct07-quote-only-detected", mod._statement_only_no_action(quote_only))
+s, tags = mod.score_item(quote_only, dt.datetime.now(mod.watch.KST))
+check("oct07-quote-only-yellow", mod.final_color(quote_only) == "yellow")
+check("oct07-quote-only-no-red-tag", "확전" not in tags and "실제행동미확인" in tags)
+
 print("WAR_PEACE_OCT04_REGRESSION_OK")
