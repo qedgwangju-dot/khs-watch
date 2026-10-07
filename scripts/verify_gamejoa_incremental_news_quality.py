@@ -136,6 +136,79 @@ class IncrementalNewsTests(unittest.TestCase):
         return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],
                 'telegram_core_fact': case['old_core']}
 
+    def assert_source_bound_core(self, title, body, expected_terms):
+        item = alert(title, body)
+        core = radar.verified_alert_core(item, title)
+        self.assertTrue(core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        self.assertLessEqual(len(core), radar.GAMEJOA_CORE_MAX_CHARS, core)
+        self.assertFalse(radar.source_core_fact_errors({**item, 'telegram_core_fact': core}), core)
+        for term in expected_terms:
+            self.assertIn(term, core)
+        return core
+
+    def test_live_core_keeps_ck_solution_contract_mix_and_revenue_scale(self):
+        body = (
+            '씨케이솔루션은 미국 인디애나에서 전기차 배터리 생산라인을 에너지저장장치(ESS)용으로 전환하는 사업을 약 571억원에 수주했다. '
+            '반도체에서는 SK하이닉스 인디애나 팹 관련 제조 인프라 구축 사업을 약 1477억원에 확보했다. '
+            '두 계약만 약 2048억원으로 지난해 연결 매출의 70% 수준이다. '
+            '올해 신규 수주에서는 반도체 비중이 약 3분의 1까지 확대됐다.'
+        )
+        self.assert_source_bound_core('안근표 씨케이솔루션 대표, 성장축 확대', body,
+                                      ('씨케이솔루션', '571억원', '1477억원', '2048억원', '70%', '3분의 1'))
+
+    def test_live_core_keeps_bgf_share_count_amount_post_deal_holding_and_purpose(self):
+        body = (
+            'BGF[027410]는 자동차 신품 부품 제조업 계열사 케이엔더블유의 주식 911만3천891주를 약 818억원에 취득한다고 7일 공시했다. '
+            '주식 취득 뒤 지분율은 56.9%가 된다. 주식 취득 예정일은 12일이다. '
+            'BGF는 이번 주식 취득의 목적을 "지배구조 개편을 통한 경영효율성 제고"라고 밝혔다.'
+        )
+        self.assert_source_bound_core('BGF, 케이엔더블유 지분 확대', body,
+                                      ('BGF', '케이엔더블유', '911만3천891주', '818억원', '56.9%', '12일', '경영효율성'))
+
+    def test_live_core_summarizes_cizimedtech_regulatory_approval_not_executive_quote(self):
+        body = (
+            "시지메드텍은 척추 고정 시스템 '이노버스 스파이널 시스템'이 지난달 30일 콜롬비아 식품의약품감시원(INVIMA)으로부터 "
+            'Class IIb 의료기기 허가를 받았다고 7일 밝혔다. '
+            '시지메드텍은 2024년 미국 식품의약국(FDA) 510(k) 클리어런스를 획득한 데 이어 과테말라·페루·에콰도르에서도 허가를 확보했다. '
+            "회사는 현지 파트너 '임플라멕(IMPLAMEQ)'와 제품 공급을 추진하고 의료진 대상 제품 교육과 학술 활동도 진행할 예정이다."
+        )
+        core = self.assert_source_bound_core('시지메드텍, 척추 고정 시스템 콜롬비아 허가', body,
+                                             ('시지메드텍', '이노버스 스파이널 시스템', '30일', '콜롬비아', 'Class IIb', '임플라멕'))
+        self.assertNotIn('대표는', core)
+        self.assertNotIn('장기적인 공급 체계를 구축하겠다', core)
+
+    def test_live_core_uses_samsung_ds_bonus_terms_not_union_profit_forecast(self):
+        body = (
+            '삼성전자가 반도체 사업을 담당하는 디바이스솔루션(DS)부문의 2026년도 특별성과급을 내년 3월 말에서 4월 초 지급한다. '
+            '특별성과급 재원은 2026년도 DS부문 영업이익의 10.5%다. '
+            '지급 시점은 내년 정기 주주총회가 끝난 뒤인 3월 말에서 4월 초로 정했다. '
+            '성과급은 세금과 보험료 등을 공제한 뒤 삼성전자 자사주로 지급한다. '
+            '주주총회에서 자사주 지급 관련 안건이 부결될 경우 적용할 별도 지급 방식은 이번 세부안에 포함되지 않은 것으로 알려졌다. '
+            '노조는 증권가 전망을 토대로 올해 영업이익이 약 370조원에 이를 것으로 추산했다.'
+        )
+        core = self.assert_source_bound_core('삼성전자 DS 특별성과급, 영업익 10.5% 지급', body,
+                                             ('삼성전자 DS부문', '10.5%', '자사주', '3월 말', '4월 초', '대체 방식은 미정'))
+        self.assertNotIn('370조원', core)
+
+    def test_live_filter_excludes_ytd_market_cap_recap_without_company_execution_only(self):
+        title = '올해 680% 뛴 가온전선, 장중 시총 10조 돌파'
+        recap = alert(title, '가온전선은 장중 시가총액 10조원을 넘었지만 종가에는 6.27% 하락했다.')
+        execution = alert(title, '가온전선은 북미 데이터센터 배전망 공급계약 500억원을 체결했다.')
+        with patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}):
+            self.assertEqual(radar.low_impact_live_publication_reason(recap, NOW),
+                             'year_to_date_rally_and_market_cap_recap_without_company_execution')
+            self.assertEqual(radar.low_impact_live_publication_reason(execution, NOW), '')
+
+    def test_live_filter_excludes_nonghyup_life_internal_target_without_public_equity_event(self):
+        item = alert(
+            'NH농협생명, 신계약 CSM 1조원 목표 선포',
+            'NH농협생명은 신계약 CSM 1조원 추진 선포식을 열고 전사적 목표를 공유했다. 올해 9월까지 8500억원을 기록했다.',
+        )
+        with patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}):
+            self.assertEqual(radar.low_impact_live_publication_reason(item, NOW),
+                             'unlisted_insurer_internal_target_without_public_equity_catalyst')
+
     def test_v98_all_seven_bodies_replay_without_new_delivery(self):
         now = dt.datetime.fromisoformat(HEADLINE_ANCHOR_FIXTURE['query_time_kst'])
         originals, selected = [], []
