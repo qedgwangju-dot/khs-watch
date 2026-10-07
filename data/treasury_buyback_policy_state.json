@@ -1,5 +1,5 @@
 {
-  "last_checked_kst": "2026-10-07T07:12:13+09:00",
+  "last_checked_kst": "2026-10-08T03:19:28+09:00",
   "schedule_sha256": "3461c9a9822dec08b3059d2dd367baadd0d0967193913ce8fe95702f000366d7",
   "long_end_max_bn": {
     "10Y to 20Y": 6.0,
@@ -11,19 +11,19 @@
   "bessent_causal_verdict_key": "mixed",
   "bessent_causal_verdict": "⚪ 혼조 — 현재 하루 움직임만으로 에너지·인플레이션 또는 재정·기간프리미엄 단일 원인을 확정하기 어려움",
   "bessent_causal_snapshot": {
-    "common_prev_date": "2026-09-28",
-    "common_date": "2026-09-29",
+    "common_prev_date": "2026-10-05",
+    "common_date": "2026-10-06",
     "common_values": {
-      "brent": 113.96,
-      "nom10": 5.26,
+      "brent": 125.44,
+      "nom10": 5.27,
       "real10": 2.91,
-      "bei10": 2.3499999999999996
+      "bei10": 2.3599999999999994
     },
     "common_changes": {
-      "brent_pct": -5.009585729765775,
-      "bei_bp": 0.9999999999999343,
-      "real_bp": 1.000000000000023,
-      "nom_bp": 1.9999999999999574,
+      "brent_pct": -0.055772448410496,
+      "bei_bp": 0.0,
+      "real_bp": -4.0000000000000036,
+      "nom_bp": -4.0000000000000036,
       "term_bp": null
     },
     "term_latest": {
@@ -34,12 +34,12 @@
       "value": null,
       "change_bp": null,
       "source": "https://www.newyorkfed.org/research/data_indicators/term-premia-tabs",
-      "error": "RuntimeError: FRED THREEFYTP10 조회 실패: txt: RuntimeError: 자료 다운로드 실패: https://fred.stlouisfed.org/data/THREEFYTP10.txt / TimeoutError: The read operation timed out | csv: RuntimeError: 자료 다운로드 실패: https://fred.stlouisfed.org/graph/fredgraph.csv?id=THREEFYTP10&cosd=2026-06-08 / TimeoutError: The read operation timed out"
+      "error": "RuntimeError: FRED THREEFYTP10 조회 실패: txt: RuntimeError: 자료 다운로드 실패: https://fred.stlouisfed.org/data/THREEFYTP10.txt / TimeoutError: The read operation timed out | csv: RuntimeError: 자료 다운로드 실패: https://fred.stlouisfed.org/graph/fredgraph.csv?id=THREEFYTP10&cosd=2026-06-09 / TimeoutError: The read operation timed out"
     },
     "latest": {
       "brent": {
-        "date": "2026-09-29",
-        "value": 113.96
+        "date": "2026-10-06",
+        "value": 125.44
       },
       "nom10": {
         "date": "2026-10-06",
