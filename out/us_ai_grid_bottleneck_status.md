@@ -1,10 +1,10 @@
 # 미국 AI 전력망 병목 감시
 
-- 확인시각: 2026-10-07T12:28:00+09:00
+- 확인시각: 2026-10-07T12:29:52+09:00
 - 지표 관측: 0개
 - 구조 이벤트: 0개
 - 중요 변화: 0개
-- 변압기 수입 월간 이벤트: 0개
-- 변압기 최신 기준월: 확인 불가
-- 변압기 원자료 오류: 2026-09: HTTPError: HTTP Error 404: Not Found; 2026-08: ValueError: Census Port HS6 import data file not found in ZIP; names=['PORTHS6MM2608.TXT']; 2026-07: ValueError: Census Port HS6 import data file not found in ZIP; names=['PORTHS6MM2607.TXT']
-- 알림: 아니오
+- 변압기 수입 월간 이벤트: 1개
+- 변압기 최신 기준월: 2026-08
+- 변압기 원자료 오류: 2026-09: HTTPError: HTTP Error 404: Not Found
+- 알림: 예

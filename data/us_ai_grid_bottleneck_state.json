@@ -74,7 +74,7 @@
     "https://www.jll.com/content/dam/jllcom/en/global/documents/reports/research-reports/26-research-global-data-center-outlook-new.pdf",
     "https://www.se.com/us/en/about-us/newsroom/news/press-releases/schneider-electric-and-digital-realty-announce-373m-supply-capacity-agreement-to-meet-rising-data-center-demand-691d192005c0c16f5902ca3c/"
   ],
-  "last_checked_at_kst": "2026-10-07T12:28:00+09:00",
+  "last_checked_at_kst": "2026-10-07T12:29:52+09:00",
   "metric_observation_count": 0,
   "event_count": 0,
   "latest_evidence_urls": [],
@@ -113,13 +113,586 @@
         }
       }
     },
-    "latest_month": "",
-    "history": {},
-    "last_checked_at_kst": "2026-10-07T12:28:00+09:00",
-    "last_error": "2026-09: HTTPError: HTTP Error 404: Not Found; 2026-08: ValueError: Census Port HS6 import data file not found in ZIP; names=['PORTHS6MM2608.TXT']; 2026-07: ValueError: Census Port HS6 import data file not found in ZIP; names=['PORTHS6MM2607.TXT']"
+    "latest_month": "2026-08",
+    "history": {
+      "2025-08": {
+        "month": "2025-08",
+        "source_url": "https://www.census.gov/trade/downloads/2025/Port/im_hs6_m/PORTHS6MM2508.ZIP",
+        "source_kind": "U.S. Census Bureau Port HS6 monthly general imports",
+        "primary_850423": {
+          "world_usd": 330356993,
+          "china_usd": 20084748,
+          "korea_usd": 59500242,
+          "china_share_pct": 6.07971026059073,
+          "korea_share_pct": 18.01089223499501,
+          "top_origins": [
+            {
+              "cty_code": "5800",
+              "name": "한국",
+              "usd": 59500242,
+              "share_pct": 18.01089223499501
+            },
+            {
+              "cty_code": "2010",
+              "name": "멕시코",
+              "usd": 51543592,
+              "share_pct": 15.602391682987621
+            },
+            {
+              "cty_code": "3510",
+              "name": "브라질",
+              "usd": 46342072,
+              "share_pct": 14.027876806591468
+            },
+            {
+              "cty_code": "4330",
+              "name": "오스트리아",
+              "usd": 38455048,
+              "share_pct": 11.640452242522985
+            },
+            {
+              "cty_code": "5830",
+              "name": "대만",
+              "usd": 35715812,
+              "share_pct": 10.811277725850955
+            },
+            {
+              "cty_code": "1220",
+              "name": "캐나다",
+              "usd": 26811568,
+              "share_pct": 8.115937778862154
+            }
+          ]
+        },
+        "liquid_850421_23": {
+          "world_usd": 636480606,
+          "china_usd": 45924839,
+          "korea_usd": 137155282,
+          "china_share_pct": 7.215434149457808,
+          "korea_share_pct": 21.54901197413704,
+          "top_origins": [
+            {
+              "cty_code": "2010",
+              "name": "멕시코",
+              "usd": 179199343,
+              "share_pct": 28.154721653844078
+            },
+            {
+              "cty_code": "5800",
+              "name": "한국",
+              "usd": 137155282,
+              "share_pct": 21.54901197413704
+            },
+            {
+              "cty_code": "3510",
+              "name": "브라질",
+              "usd": 52193606,
+              "share_pct": 8.20034507068704
+            },
+            {
+              "cty_code": "1220",
+              "name": "캐나다",
+              "usd": 46001673,
+              "share_pct": 7.2275058448520895
+            },
+            {
+              "cty_code": "5700",
+              "name": "중국",
+              "usd": 45924839,
+              "share_pct": 7.215434149457808
+            },
+            {
+              "cty_code": "4330",
+              "name": "오스트리아",
+              "usd": 38862430,
+              "share_pct": 6.105830976411557
+            }
+          ]
+        },
+        "other_large_850434": {
+          "world_usd": 56395950,
+          "china_usd": 2673034,
+          "korea_usd": 10123836,
+          "china_share_pct": 4.7397623410900955,
+          "korea_share_pct": 17.951352889702186,
+          "top_origins": [
+            {
+              "cty_code": "2010",
+              "name": "멕시코",
+              "usd": 15175525,
+              "share_pct": 26.90889150728022
+            },
+            {
+              "cty_code": "4280",
+              "name": "독일",
+              "usd": 13612148,
+              "share_pct": 24.136747408280204
+            },
+            {
+              "cty_code": "5800",
+              "name": "한국",
+              "usd": 10123836,
+              "share_pct": 17.951352889702186
+            },
+            {
+              "cty_code": "1220",
+              "name": "캐나다",
+              "usd": 5100517,
+              "share_pct": 9.044119302893204
+            },
+            {
+              "cty_code": "4759",
+              "name": "국가코드 4759",
+              "usd": 2885933,
+              "share_pct": 5.117269945802846
+            },
+            {
+              "cty_code": "5700",
+              "name": "중국",
+              "usd": 2673034,
+              "share_pct": 4.7397623410900955
+            }
+          ]
+        }
+      },
+      "2026-06": {
+        "month": "2026-06",
+        "source_url": "https://www.census.gov/trade/downloads/2026/Port/im_hs6_m/PORTHS6MM2606.ZIP",
+        "source_kind": "U.S. Census Bureau Port HS6 monthly general imports",
+        "primary_850423": {
+          "world_usd": 423512700,
+          "china_usd": 19363916,
+          "korea_usd": 79180913,
+          "china_share_pct": 4.572216134250519,
+          "korea_share_pct": 18.696231069339834,
+          "top_origins": [
+            {
+              "cty_code": "5800",
+              "name": "한국",
+              "usd": 79180913,
+              "share_pct": 18.696231069339834
+            },
+            {
+              "cty_code": "2010",
+              "name": "멕시코",
+              "usd": 71364376,
+              "share_pct": 16.850587007190104
+            },
+            {
+              "cty_code": "3510",
+              "name": "브라질",
+              "usd": 69643683,
+              "share_pct": 16.44429623952245
+            },
+            {
+              "cty_code": "4330",
+              "name": "오스트리아",
+              "usd": 42792938,
+              "share_pct": 10.104286837207006
+            },
+            {
+              "cty_code": "4210",
+              "name": "국가코드 4210",
+              "usd": 27726201,
+              "share_pct": 6.546722447756584
+            },
+            {
+              "cty_code": "5700",
+              "name": "중국",
+              "usd": 19363916,
+              "share_pct": 4.572216134250519
+            }
+          ]
+        },
+        "liquid_850421_23": {
+          "world_usd": 692819103,
+          "china_usd": 29271781,
+          "korea_usd": 118641522,
+          "china_share_pct": 4.2250251000945624,
+          "korea_share_pct": 17.12445882139598,
+          "top_origins": [
+            {
+              "cty_code": "2010",
+              "name": "멕시코",
+              "usd": 193580067,
+              "share_pct": 27.94092515084706
+            },
+            {
+              "cty_code": "5800",
+              "name": "한국",
+              "usd": 118641522,
+              "share_pct": 17.12445882139598
+            },
+            {
+              "cty_code": "3510",
+              "name": "브라질",
+              "usd": 78284197,
+              "share_pct": 11.2993704505287
+            },
+            {
+              "cty_code": "4330",
+              "name": "오스트리아",
+              "usd": 43201724,
+              "share_pct": 6.235642725919467
+            },
+            {
+              "cty_code": "1220",
+              "name": "캐나다",
+              "usd": 39687510,
+              "share_pct": 5.728408732979177
+            },
+            {
+              "cty_code": "5700",
+              "name": "중국",
+              "usd": 29271781,
+              "share_pct": 4.2250251000945624
+            }
+          ]
+        },
+        "other_large_850434": {
+          "world_usd": 106097200,
+          "china_usd": 11567822,
+          "korea_usd": 7652059,
+          "china_share_pct": 10.903041739084538,
+          "korea_share_pct": 7.212310032687008,
+          "top_origins": [
+            {
+              "cty_code": "2010",
+              "name": "멕시코",
+              "usd": 52630031,
+              "share_pct": 49.60548534739843
+            },
+            {
+              "cty_code": "5700",
+              "name": "중국",
+              "usd": 11567822,
+              "share_pct": 10.903041739084538
+            },
+            {
+              "cty_code": "1220",
+              "name": "캐나다",
+              "usd": 9648051,
+              "share_pct": 9.093596249476894
+            },
+            {
+              "cty_code": "4280",
+              "name": "독일",
+              "usd": 7874984,
+              "share_pct": 7.422423965948206
+            },
+            {
+              "cty_code": "5800",
+              "name": "한국",
+              "usd": 7652059,
+              "share_pct": 7.212310032687008
+            },
+            {
+              "cty_code": "4700",
+              "name": "국가코드 4700",
+              "usd": 4243720,
+              "share_pct": 3.9998416546336757
+            }
+          ]
+        }
+      },
+      "2026-07": {
+        "month": "2026-07",
+        "source_url": "https://www.census.gov/trade/downloads/2026/Port/im_hs6_m/PORTHS6MM2607.ZIP",
+        "source_kind": "U.S. Census Bureau Port HS6 monthly general imports",
+        "primary_850423": {
+          "world_usd": 474015864,
+          "china_usd": 48455713,
+          "korea_usd": 80531378,
+          "china_share_pct": 10.222382135294948,
+          "korea_share_pct": 16.98917359440949,
+          "top_origins": [
+            {
+              "cty_code": "5800",
+              "name": "한국",
+              "usd": 80531378,
+              "share_pct": 16.98917359440949
+            },
+            {
+              "cty_code": "2010",
+              "name": "멕시코",
+              "usd": 73059958,
+              "share_pct": 15.412977401954631
+            },
+            {
+              "cty_code": "3510",
+              "name": "브라질",
+              "usd": 63930556,
+              "share_pct": 13.487007683776591
+            },
+            {
+              "cty_code": "5700",
+              "name": "중국",
+              "usd": 48455713,
+              "share_pct": 10.222382135294948
+            },
+            {
+              "cty_code": "4791",
+              "name": "국가코드 4791",
+              "usd": 44614442,
+              "share_pct": 9.412014531226744
+            },
+            {
+              "cty_code": "5830",
+              "name": "대만",
+              "usd": 32025607,
+              "share_pct": 6.756231053060283
+            }
+          ]
+        },
+        "liquid_850421_23": {
+          "world_usd": 733538520,
+          "china_usd": 59600121,
+          "korea_usd": 121649000,
+          "china_share_pct": 8.125015847838501,
+          "korea_share_pct": 16.583859836017883,
+          "top_origins": [
+            {
+              "cty_code": "2010",
+              "name": "멕시코",
+              "usd": 189324737,
+              "share_pct": 25.809788012223272
+            },
+            {
+              "cty_code": "5800",
+              "name": "한국",
+              "usd": 121649000,
+              "share_pct": 16.583859836017883
+            },
+            {
+              "cty_code": "3510",
+              "name": "브라질",
+              "usd": 82566356,
+              "share_pct": 11.25589914487381
+            },
+            {
+              "cty_code": "5700",
+              "name": "중국",
+              "usd": 59600121,
+              "share_pct": 8.125015847838501
+            },
+            {
+              "cty_code": "4791",
+              "name": "국가코드 4791",
+              "usd": 44614442,
+              "share_pct": 6.0820857778539015
+            },
+            {
+              "cty_code": "4890",
+              "name": "튀르키예",
+              "usd": 41397569,
+              "share_pct": 5.643543981848424
+            }
+          ]
+        },
+        "other_large_850434": {
+          "world_usd": 84933442,
+          "china_usd": 5181595,
+          "korea_usd": 4004696,
+          "china_share_pct": 6.100771236846848,
+          "korea_share_pct": 4.715099147871578,
+          "top_origins": [
+            {
+              "cty_code": "2010",
+              "name": "멕시코",
+              "usd": 45862305,
+              "share_pct": 53.99793523027125
+            },
+            {
+              "cty_code": "1220",
+              "name": "캐나다",
+              "usd": 8839688,
+              "share_pct": 10.407782602287567
+            },
+            {
+              "cty_code": "4280",
+              "name": "독일",
+              "usd": 6558732,
+              "share_pct": 7.722202050871788
+            },
+            {
+              "cty_code": "5700",
+              "name": "중국",
+              "usd": 5181595,
+              "share_pct": 6.100771236846848
+            },
+            {
+              "cty_code": "5800",
+              "name": "한국",
+              "usd": 4004696,
+              "share_pct": 4.715099147871578
+            },
+            {
+              "cty_code": "4370",
+              "name": "국가코드 4370",
+              "usd": 3867243,
+              "share_pct": 4.553263012701169
+            }
+          ]
+        }
+      },
+      "2026-08": {
+        "month": "2026-08",
+        "source_url": "https://www.census.gov/trade/downloads/2026/Port/im_hs6_m/PORTHS6MM2608.ZIP",
+        "source_kind": "U.S. Census Bureau Port HS6 monthly general imports",
+        "primary_850423": {
+          "world_usd": 370016711,
+          "china_usd": 16073983,
+          "korea_usd": 52783904,
+          "china_share_pct": 4.344123527977632,
+          "korea_share_pct": 14.265275710750263,
+          "top_origins": [
+            {
+              "cty_code": "2010",
+              "name": "멕시코",
+              "usd": 90442006,
+              "share_pct": 24.442681455000557
+            },
+            {
+              "cty_code": "3510",
+              "name": "브라질",
+              "usd": 89529264,
+              "share_pct": 24.196005569056585
+            },
+            {
+              "cty_code": "5800",
+              "name": "한국",
+              "usd": 52783904,
+              "share_pct": 14.265275710750263
+            },
+            {
+              "cty_code": "4330",
+              "name": "오스트리아",
+              "usd": 29862176,
+              "share_pct": 8.070493875613094
+            },
+            {
+              "cty_code": "5490",
+              "name": "국가코드 5490",
+              "usd": 19939964,
+              "share_pct": 5.388936068890143
+            },
+            {
+              "cty_code": "5700",
+              "name": "중국",
+              "usd": 16073983,
+              "share_pct": 4.344123527977632
+            }
+          ]
+        },
+        "liquid_850421_23": {
+          "world_usd": 631008047,
+          "china_usd": 34899697,
+          "korea_usd": 115683541,
+          "china_share_pct": 5.53078477618844,
+          "korea_share_pct": 18.333132445773707,
+          "top_origins": [
+            {
+              "cty_code": "2010",
+              "name": "멕시코",
+              "usd": 203814830,
+              "share_pct": 32.299878102822355
+            },
+            {
+              "cty_code": "5800",
+              "name": "한국",
+              "usd": 115683541,
+              "share_pct": 18.333132445773707
+            },
+            {
+              "cty_code": "3510",
+              "name": "브라질",
+              "usd": 96071966,
+              "share_pct": 15.225157025612384
+            },
+            {
+              "cty_code": "5700",
+              "name": "중국",
+              "usd": 34899697,
+              "share_pct": 5.53078477618844
+            },
+            {
+              "cty_code": "4330",
+              "name": "오스트리아",
+              "usd": 30411786,
+              "share_pct": 4.819555969941537
+            },
+            {
+              "cty_code": "1220",
+              "name": "캐나다",
+              "usd": 28764092,
+              "share_pct": 4.558435052730793
+            }
+          ]
+        },
+        "other_large_850434": {
+          "world_usd": 103187547,
+          "china_usd": 3048853,
+          "korea_usd": 9542806,
+          "china_share_pct": 2.9546714585627276,
+          "korea_share_pct": 9.24802098454768,
+          "top_origins": [
+            {
+              "cty_code": "2010",
+              "name": "멕시코",
+              "usd": 46492811,
+              "share_pct": 45.05661036791581
+            },
+            {
+              "cty_code": "4280",
+              "name": "독일",
+              "usd": 10964022,
+              "share_pct": 10.625334469865825
+            },
+            {
+              "cty_code": "5800",
+              "name": "한국",
+              "usd": 9542806,
+              "share_pct": 9.24802098454768
+            },
+            {
+              "cty_code": "1220",
+              "name": "캐나다",
+              "usd": 8291890,
+              "share_pct": 8.035746794135925
+            },
+            {
+              "cty_code": "4419",
+              "name": "국가코드 4419",
+              "usd": 6083044,
+              "share_pct": 5.895133838194642
+            },
+            {
+              "cty_code": "4700",
+              "name": "국가코드 4700",
+              "usd": 5833280,
+              "share_pct": 5.653085250684367
+            }
+          ]
+        }
+      }
+    },
+    "last_checked_at_kst": "2026-10-07T12:29:52+09:00",
+    "last_error": "2026-09: HTTPError: HTTP Error 404: Not Found"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-07T12:28:41+09:00",
-    "status": "no_message_due"
+    "checked_at_kst": "2026-10-07T12:31:11+09:00",
+    "status": "confirmed"
+  },
+  "last_successful_delivery_kst": "2026-10-07T12:31:11+09:00",
+  "telegram_message_ids": [
+    155
+  ],
+  "telegram_message_id": 155,
+  "delivery_receipt": {
+    "status": "confirmed",
+    "message_ids": [
+      155
+    ],
+    "confirmed_at_kst": "2026-10-07T12:31:11+09:00"
   }
 }
