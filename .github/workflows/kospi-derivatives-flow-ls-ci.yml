@@ -136,6 +136,7 @@ jobs:
           watcher=Path("scripts/kospi_shock_episode_watch.py").read_text(encoding="utf-8")
           assert "session_state" in watcher and "XKRX non-session day" in watcher, "KOSPI watcher does not use XKRX session calendar"
           assert "price_only_start" in watcher and "수급 원인 보류" in watcher, "monitoring-gap price shock fallback missing"
+          assert "OPEN_GAP_ALERT_PCT = -1.0" in watcher and "코스피 개장 갭다운" in watcher, "opening gap-down alert missing"
           assert "exchange_calendars" in s, "production XKRX calendar dependency missing"
           assert '"ts": received_ts' in collector, "UBM event alignment must use payload receive time"
           assert '"source_ts": source_ts' in collector, "UBM source time must be preserved separately"
