@@ -393,6 +393,19 @@ def _saudi_houthi_airport_refinery_cluster(row):
     return saudi and houthi and attack and ((airport and refinery) or airport_damage or (airport and named_targets))
 
 
+def _aden_airport_attack_cluster(row):
+    """같은 아덴 국제공항 탄도미사일·드론 공격의 매체별 재보도를 하나로 묶는다."""
+    t = _text(row).lower()
+    aden = any(x in t for x in ("aden", "아덴"))
+    airport = any(x in t for x in ("international airport", "airport", "국제공항", "공항"))
+    houthi = any(x in t for x in ("houthi", "houthis", "후티"))
+    attack = any(x in t for x in (
+        "ballistic missile", "missile", "drone", "attack", "attacked", "strike", "struck",
+        "탄도미사일", "미사일", "드론", "공격", "공습", "피격",
+    ))
+    return aden and airport and houthi and attack
+
+
 def _new_saudi_houthi_attack_variant(row):
     t = _text(row).lower()
     return any(x in t for x in (
@@ -524,6 +537,8 @@ def marks(row):
         out.append("사우디리야드후티미사일요격확인")
     if _saudi_houthi_airport_refinery_cluster(row):
         out.append("사우디후티공항정유시설공격클러스터")
+    if _aden_airport_attack_cluster(row):
+        out.append("예멘아덴공항후티공격클러스터")
     if _mokha_counteroffensive_context(row):
         out.append("목하탈환공세")
     if _tass_russian_strike_claim(row):
@@ -562,6 +577,8 @@ def korean_title(ms):
         return "미국 부통령 JD Vance, 이란이 전쟁 종식을 원하면 우라늄 농축 능력을 의미 있게 감축해야 한다고 제시 — 미국 측 협상 조건, 합의 진전 아님"
     if "사우디리야드후티미사일요격확인" in ms:
         return "사우디 주도 연합군, 리야드 북쪽 상공서 후티 탄도미사일 요격 확인 — 후티의 리야드 공항 등 타격 주장은 사우디 확인 전"
+    if "예멘아덴공항후티공격클러스터" in ms:
+        return "후티, 예멘 아덴 국제공항에 탄도미사일·드론 공격 — 동일 사건의 매체별 재보도는 1건으로 묶음"
     if "목하탈환공세" in ms:
         return "사우디 지원 예멘군, 후티가 장악했던 목하·바브엘만데브 일대 탈환 공세 — 후티의 9월 점령은 배경"
     if "러시아국방부타격주장" in ms:
@@ -600,6 +617,8 @@ def signals(ms):
         out.append("🟡 미국 부통령 JD Vance가 이란의 우라늄 농축 능력 감축을 전쟁 종식 조건으로 제시 — 미국 측 협상 조건이며 합의 진전 자체는 아님")
     if "사우디리야드후티미사일요격확인" in ms:
         out.append("🔴 사우디 주도 연합군이 리야드 북쪽에서 후티 탄도미사일 요격을 확인 — 후티의 킹칼리드 국제공항 등 타격 주장은 사우디 확인 전")
+    if "예멘아덴공항후티공격클러스터" in ms:
+        out.append("🔴 예멘 교통부 기준 후티가 아덴 국제공항을 탄도미사일·드론으로 공격 — 동일 사건의 연합뉴스TV·KBS 등 재보도는 중복 송출하지 않음")
     if "목하탈환공세" in ms:
         out.append("🔴 현재 변화는 사우디 지원 예멘군의 목하·바브엘만데브 탈환 공세 — 후티의 9월 목하 점령을 신규 속보로 재사용하지 않음")
     if "러시아국방부타격주장" in ms:
@@ -617,6 +636,7 @@ def signals(ms):
         "미국부통령이란농축종전조건", "사우디리야드후티미사일요격확인",
         "이란남부폭발원인미확정", "사우디동서송유관회복",
         "목하탈환공세", "러시아국방부타격주장", "TASS러시아최대드론공격집계",
+        "예멘아덴공항후티공격클러스터",
     }
     if set(ms) & custom:
         return out
@@ -680,6 +700,12 @@ def score_item(row, now):
         row["signals_ko"] = []
         tags = [t for t in tags if t not in ("휴전·평화", "재건", "종전·협상")]
         tags += ["사우디·후티", "확전", "미사일요격확인", "공항타격주장미확인"]
+        score = max(score, 100)
+    if "예멘아덴공항후티공격클러스터" in ms:
+        row["title_ko"] = korean_title(ms)
+        row["signals_ko"] = []
+        tags = [t for t in tags if t not in ("휴전·평화", "재건", "종전·협상")]
+        tags += ["예멘·후티", "확전", "아덴국제공항", "민간항공위험"]
         score = max(score, 100)
     if "이란남부폭발원인미확정" in ms:
         row["title_ko"] = korean_title(ms)
@@ -747,6 +773,8 @@ def _stable_source_url(row):
 
 
 def item_id(row):
+    if _aden_airport_attack_cluster(row):
+        return hashlib.sha256(("event|yemen-houthi|aden-airport-attack|" + _published_day(row)).encode()).hexdigest()[:20]
     if _vance_iran_enrichment_condition(row):
         return hashlib.sha256(("event|us-iran|vance-enrichment-condition|" + _published_day(row)).encode()).hexdigest()[:20]
     if _saudi_riyadh_intercept_vs_claim(row):
@@ -814,6 +842,8 @@ def topic_label(row):
         return "미국·이란 · 종전 협상 조건"
     if "사우디리야드후티미사일요격확인" in ms:
         return "사우디·후티 · 리야드 미사일 요격"
+    if "예멘아덴공항후티공격클러스터" in ms:
+        return "예멘·후티 · 아덴 국제공항 공격"
     if "사우디동서송유관회복" in ms:
         return "사우디 · 동서 송유관 공급회복"
     if "사우디후티공항정유시설공격클러스터" in ms:
@@ -841,6 +871,8 @@ def final_color(row):
     if "후티리야드아람코공격주장" in ms:
         return "red"
     if "사우디리야드후티미사일요격확인" in ms:
+        return "red"
+    if "예멘아덴공항후티공격클러스터" in ms:
         return "red"
     if "미국부통령이란농축종전조건" in ms:
         return "yellow"
@@ -1054,6 +1086,9 @@ def verify_alert(test_mode=False):
         issues.append("3시간을 초과한 오래된 기사가 신규·후속 알림으로 송출됨")
     if re.search(r"(?ms)^🔴\s+\[(?:속보|신규|후속)\]\s+<b>\d+\.[^<]*</b>\n[^\n]*(?:동서 송유관|580만배럴)[^\n]*(?:회복|재가동)", text):
         issues.append("사우디 동서 송유관 공급회복을 신규 확전으로 표시")
+    aden_blocks = re.findall(r"(?ms)^[🔴🟢🟡]?\s*\[(?:속보|신규|후속)\]\s+<b>\d+\.[^<]*</b>\n[^\n]*(?:아덴 국제공항|aden international airport)[^\n]*(?:미사일|공격|공습|missile|attack)", text, flags=re.I)
+    if len(aden_blocks) > 1:
+        issues.append("동일 아덴 국제공항 공격을 매체별 재보도로 중복 송출")
     if issues:
         raise RuntimeError("WAR_OCT04_QUALITY_GATE: " + " | ".join(issues))
 
