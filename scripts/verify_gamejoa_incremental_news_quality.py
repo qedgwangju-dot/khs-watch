@@ -4347,6 +4347,41 @@ class IncrementalNewsTests(unittest.TestCase):
         self.assertIn('4조346억원', lg_core)
         self.assertIn('8000억원', radar.source_headline_event_fact(
             lg_title, lg_body.replace('7818억원', '8000억원')))
+        lg_full_body = ('LG전자는 2026년 3분기 연결기준 매출 23조8270억원, 영업이익 7818억원의 '
+                        '잠정실적을 7일 발표했다. 전년 동기 대비 매출은 8.9%, 영업이익은 13.5% 늘었다. '
+                        '3분기 누적 매출은 71조3807억원으로 전년보다 9.2%, 누적 영업이익은 '
+                        '4조346억원으로 55.9% 증가했다. 3분기 누적 기준으로 매출 70조원, '
+                        '영업이익 4조원을 넘긴 것은 올해가 처음이다.')
+        lg_full_title = 'LG전자, 3분기 누적 영업이익 4조 첫 돌파…가전·전장 캐시카우가 끌었다'
+        lg_full_core = radar.source_headline_event_fact(lg_full_title, lg_full_body)
+        self.assertIn('7818억원', lg_full_core)
+        self.assertIn('4조346억원', lg_full_core)
+        self.assertIn('넘었다', lg_full_core)
+        self.assertLessEqual(len(lg_full_core), 50)
+        self.assertTrue(radar.core_sentence_is_complete(lg_full_core))
+        self.assertFalse(radar.source_core_fact_errors({
+            'source_title': lg_full_title, 'source_body': lg_full_body,
+            'body_verified': True, 'telegram_core_fact': lg_full_core,
+        }))
+        amd_title = 'AI 에이전트 뜨자 CPU도 재부상…AMD·인텔 한 달 새 32%·21%↑'
+        amd_body = ('CPU와 GPU 매출을 모두 포함하는 AMD 데이터센터 사업의 6월 종료 분기 매출은 '
+                    '67억 달러로 전년 동기보다 두 배 이상 늘어 전체 매출의 약 60%를 차지했다.')
+        amd_core = radar.source_headline_event_fact(amd_title, amd_body)
+        self.assertIn('AMD 데이터센터 매출', amd_core)
+        self.assertIn('67억달러', amd_core)
+        self.assertIn('2배', amd_core)
+        self.assertLessEqual(len(amd_core), 50)
+        self.assertTrue(radar.core_sentence_is_complete(amd_core))
+        amd_conversion = radar.build_alert_fx_conversion(
+            {'source_title': amd_title, 'telegram_core_fact': amd_core},
+            {'rates': {'USD': {'value': 1400.0, 'status': '일일 기준',
+                               'reference_time_kst': '2026-10-06', 'source': 'test',
+                               'url': 'https://example.com/fx'}}},
+            dt.datetime(2026, 10, 7, 13, 22, tzinfo=dt.timezone(dt.timedelta(hours=9))),
+        )
+        amd_converted_core = radar.compact_converted_core(amd_core, amd_conversion)
+        self.assertRegex(amd_converted_core, r'67억달러\(약\s*\d[\d,]*조\d[\d,]*억원\)')
+        self.assertTrue(radar.core_sentence_is_complete(amd_converted_core))
         fdi_title = '3분기 外人투자 도착 148.7억弗 전년比 30.6% 증가'
         fdi_body = ('산업통상부는 3분기 누계 외국인 직접투자(신고기준)이 전년동기대비 10.8% 증가한 '
                     '229억 달러를 기록했다고 밝혔다. 자금 도착은 30.6% 증가한 148억7000만 달러를 기록했다. '
@@ -4419,6 +4454,28 @@ class IncrementalNewsTests(unittest.TestCase):
                          'source_body': ('LG전자가 2026년 3분기 연결기준 매출액 23조 8,270억 원(YoY +8.9%), '
                                          '영업이익 7,818억 원(YoY +13.5%)의 잠정실적을 발표했다.')}
         self.assertEqual(materiality.source_event_identity(press_release), identity)
+        article_variant = {
+            'source_title': 'LG전자, 3분기 누적 영업이익 4조 첫 돌파…가전·전장 캐시카우가 끌었다',
+            'published': published, 'body_verified': True,
+            'source_body': ('LG전자는 2026년 3분기 연결기준 매출 23조8270억원, 영업이익 7818억원의 '
+                            '잠정실적을 7일 발표했다. 전년 동기 대비 매출은 8.9%, 영업이익은 13.5% 늘었다. '
+                            '3분기 누적 영업이익은 4조346억원이다.'),
+            'link': 'https://www.etnews.com/20261007000161',
+        }
+        self.assertEqual(materiality.source_event_identity(article_variant), identity)
+        with tempfile.TemporaryDirectory() as folder, patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}):
+            seen_path = Path(folder) / 'seen.json'
+            event_key = 'event:' + telegram.digest_seen(identity)
+            seen_path.write_text(json.dumps({'seen': {event_key: {
+                'first_seen_kst': published, 'lanes': {'live': published},
+                'source_event_identity': identity,
+            }}}), encoding='utf-8')
+            with patch.object(telegram, 'SEEN_PATH', seen_path):
+                fresh, skipped = telegram.filter_previously_seen_alerts(
+                    [article_variant], dt.datetime.fromisoformat(published), 'live'
+                )
+            self.assertFalse(fresh)
+            self.assertEqual(len(skipped), 1)
 
     def test_verified_quarterly_earnings_alias_requires_matching_prior_receipt(self):
         proof = next(item for item in json.loads(telegram.VERIFIED_EVENT_ALIAS_PATH.read_text(encoding='utf-8'))['entries']
@@ -4475,6 +4532,21 @@ class IncrementalNewsTests(unittest.TestCase):
             ('unconfirmed_buyback_completion_commentary',
              alert("삼성전자, 자사주 매입 '일단 종료'…주가는 어떻게 되나",
                    '자사주 매입이 마무리된 것으로 알려지면서 단기 변동성이 커질 수 있다.')),
+            ('local_official_milestone_without_business_execution',
+             alert('우상호 지사 "취임 100일, 강원 변화 시작…기업 투자 가시화"',
+                   '지사는 취임 100일 성과로 대기업 투자 유치와 관광 인프라 확충을 꼽았다.')),
+            ('industry_member_survey_without_formal_regulatory_action',
+             alert('역외IB, 국내 인가 없인 한국물 영업 제한…당국 의견수렴',
+                   '금융투자협회가 회원사 의견을 취합한 결과 규제 강화에 반대하는 목소리는 없었다.')),
+            ('standalone_customer_spend_kpi_without_business_scale',
+             alert('엔키AX, AI챗 이용 확대…플랫폼 결제자당 평균 결제액 약 18% 상승',
+                   '회사는 플랫폼 전체 결제단가 상승과 AI챗 이용 확대가 함께 나타나고 있다고 설명했다.')),
+            ('minor_provisional_contract_without_award_value',
+             alert('삼성SDS 합류한 LIG 컨소, KJCCS 우협 선정…내년 KCCS 수주전 채비',
+                   'LIG시스템 컨소시엄이 방사청의 KJCCS 경미한 성능개량 사업 우선협상대상자로 선정됐다.')),
+            ('stock_rally_commentary_without_quantified_operating_change',
+             alert('AI 에이전트 뜨자 CPU도 재부상…AMD·인텔 한 달 새 32%·21%↑',
+                   'AMD 임원은 AI 에이전트 논의가 달라져 CPU 판매가 늘어날 것으로 전망했다.')),
         )
         with patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}):
             for reason, item in cases:
@@ -4488,6 +4560,16 @@ class IncrementalNewsTests(unittest.TestCase):
                 {**alert('코스피 마감, 외국인 순매수 확대', '오늘 코스피가 상승 마감했다.'),
                  'published': '2026-10-07T15:31:00+09:00'},
                 alert('삼성전자, 자사주 취득 완료 공시', '삼성전자는 자사주 매입 완료를 공시했다.'),
+                alert('강원도, 삼성전자와 2조원 데이터센터 투자계약 체결',
+                      '강원도와 삼성전자는 2조원 규모 투자계약을 체결했다.'),
+                alert('역외 IB 인가 의무 2027년 시행',
+                      '금융위원회는 역외 IB 인가 요건과 2027년 시행 일정을 공식 발표했다.'),
+                alert('네이버웹툰, 3분기 매출 1조원·결제자당 평균 결제액 증가',
+                      '분기 매출은 1조원, 유료 결제자 수는 500만명으로 집계됐다.'),
+                alert('KJCCS 사업 우선협상대상자 선정…사업비 800억원',
+                      '우선협상대상자에 선정됐으며 계약 규모는 800억원이다.'),
+                alert('AMD, 분기 CPU 매출 80억달러·판매량 25% 증가',
+                      '분기 CPU 매출은 80억달러, 판매량은 전년 대비 25% 증가했다.'),
             )
             for item in positives:
                 with self.subTest(positive=item['source_title']):

@@ -2604,6 +2604,17 @@ def source_headline_event_fact(title: str, body: str) -> str:
     focus = market_materiality.focus_kind(title)
     source = market_materiality.source_reported_body(body)
     rows = market_materiality.source_sentences(source)
+    if re.search(r'AI\s*에이전트', title) and re.search(r'CPU', title, re.I):
+        amd_revenue = re.search(
+            r'AMD\s*데이터센터\s*사업의\s*6월\s*종료\s*분기\s*매출은\s*'
+            r'(?P<amount>\d[\d,.]*억\s*달러)\s*로\s*전년\s*동기보다\s*두\s*배\s*이상\s*늘',
+            source,
+        )
+        if amd_revenue:
+            amount = re.sub(r'\s+', '', amd_revenue['amount'])
+            fact = (f'AMD 데이터센터 매출 {amount}, '
+                    '전년비 2배 늘었다.')
+            return fact if core_sentence_is_complete(fact) else ''
     if 'LG전자' in title and re.search(r'3분기\s*영업익', title):
         profit = re.search(r'3분기\s+영업이익이\s+(\S+억원)으로\s+작년\s+동기보다\s+([\d.]+%)\s+증가', source)
         consensus = re.search(r'시장\s+전망치\s+(\S+억원)을\s+([\d.]+%)\s+하회', source)
@@ -2639,14 +2650,18 @@ def source_headline_event_fact(title: str, body: str) -> str:
                     f'수산화리튬 {target[1]} 체제는 국내 하공정 연계 이후 목표다.')
             return fact if core_sentence_is_complete(fact) else ''
     if 'LG전자' in title and re.search(r'3분기.*누적.*(?:매출|영업)', title):
-        quarter = re.search(r'3분기\s+연결기준\s+매출액\s+(\d+조\d+억원),\s+영업이익\s+(\d+억원)의\s+잠정실적', source)
-        cumulative = re.search(r'1[~∼-]3분기\s+누적\s+매출액은\s+(\d+조\d+억원)', source)
+        quarter = re.search(r'3분기\s+연결기준\s+매출(?:액)?\s+(\d+조\d+억원),\s+영업이익\s+(\d+억원)의\s+잠정실적', source)
+        cumulative = re.search(r'(?:1[~∼-]3분기\s+|3분기\s+)?누적\s+매출(?:액)?은\s+(\d+조\d+억원)', source)
         cumulative_profit = re.search(r'누적\s+영업이익은\s+(\d+조\d+억원)', source)
         consensus = re.search(r'시장\s+전망치인\s+매출\s+(\d+조\d+억원),\s+영업이익\s+(\d+조\d+억원)을\s+밑돌', source)
-        if quarter and cumulative and cumulative_profit and consensus:
-            fact = (f'LG전자 3분기 잠정 매출 {quarter[1]}·영업이익 {quarter[2]}은 '
-                    f'시장 전망치({consensus[1]}·{consensus[2]})를 밑돌았다. '
-                    f'1~3분기 누적 매출 {cumulative[1]}·영업이익 {cumulative_profit[1]}은 처음 동시 돌파했다.')
+        if quarter and cumulative_profit:
+            if consensus and cumulative:
+                fact = (f'LG전자 3분기 잠정 매출 {quarter[1]}·영업이익 {quarter[2]}은 '
+                        f'시장 전망치({consensus[1]}·{consensus[2]})를 밑돌았다. '
+                        f'1~3분기 누적 매출 {cumulative[1]}·영업이익 {cumulative_profit[1]}은 처음 동시 돌파했다.')
+            else:
+                fact = (f'LG전자 3Q 영업익 {quarter[2]}, '
+                        f'누적 영업익 {cumulative_profit[1]}으로 첫 4조를 넘었다.')
             return fact if core_sentence_is_complete(fact) else ''
     if re.search(r'(?:外人|외인|외국인).*투자.*도착', title):
         notice = re.search(r'신고기준\)이\s+전년동기대비\s+([\d.]+%)\s+증가한\s+(\d+억)\s*달러', source)
@@ -10534,6 +10549,32 @@ def low_impact_live_publication_reason(alert: dict, now) -> str:
     if re.search(r'자사주\s*매입[^\n]{0,18}?(?:종료|마무리)', title) and re.search(r'알려지면서|것으로\s+알려', body):
         if not re.search(r'(?:매입\s*(?:완료|종료)|취득\s*완료)[^.!?\n]{0,30}?공시|공시[^.!?\n]{0,30}?(?:매입\s*(?:완료|종료)|취득\s*완료)', body):
             return 'unconfirmed_buyback_completion_commentary'
+    combined = f'{title} {body}'
+    if re.search(r'(?:취임\s*\d+\s*일|취임\s*백일)', title) and not re.search(
+        r'(?:투자협약|투자\s*계약|공급계약|수주|발주|착공|준공|예산\s*확정|\d[\d,.]*\s*(?:조|억)\s*원)', combined
+    ):
+        return 'local_official_milestone_without_business_execution'
+    if re.search(r'역외\s*IB|해외\s*IB', title, re.I) and re.search(r'인가|영업\s*제한', title) and re.search(
+        r'(?:금융투자협회|회원사).{0,80}(?:의견|반대|찬성)|(?:의견|반대|찬성).{0,80}(?:회원사|회원사들)', body
+    ) and not re.search(r'(?:금융위원회|금융위|금감원|정부).{0,80}(?:입법예고|행정예고|규정\s*개정|의결|시행|인가\s*요건\s*확정)', body):
+        return 'industry_member_survey_without_formal_regulatory_action'
+    if re.search(r'(?:결제자당|이용자당|구매자당).{0,24}(?:평균\s*)?결제액', title) and not re.search(
+        r'(?:매출|영업이익|순이익|거래액|이용자\s*수|결제자\s*수|가입자\s*수)[^.!?\n]{0,60}\d[\d,.]*\s*(?:조|억|만|천)?\s*(?:원|명|건)', body
+    ):
+        return 'standalone_customer_spend_kpi_without_business_scale'
+    if re.search(r'(?:우선협상대상자|우협)', title) and re.search(r'경미한\s*성능개량', combined) and not re.search(
+        r'\d[\d,.]*\s*(?:조|억)\s*원|사업비\s*\d[\d,.]*|계약금액\s*\d[\d,.]*', combined
+    ):
+        return 'minor_provisional_contract_without_award_value'
+    stock_rally_commentary = bool(
+        re.search(r'(?:한\s*달\s*새|한달\s*새|최근\s*한\s*달).{0,35}\d+(?:\.\d+)?\s*%|\d+(?:\.\d+)?\s*%[^\n]{0,35}(?:한\s*달|한달)', title)
+        and re.search(r'(?:재부상|부상|주목|기대|전망)', title)
+    )
+    source_has_quantified_operations = bool(re.search(
+        r'(?:매출|영업이익|순이익|판매량|출하량|수주잔고|설비투자|가이던스|시장점유율)[^.!?\n]{0,45}\d[\d,.]*\s*(?:조|억|만|천)?\s*(?:원|달러|대|개|%)', body
+    ))
+    if stock_rally_commentary and not source_has_quantified_operations:
+        return 'stock_rally_commentary_without_quantified_operating_change'
     return ''
 
 
