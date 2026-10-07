@@ -1951,21 +1951,23 @@
     "event:4ba92d539128333cf55740c9": {
       "first_seen_kst": "2026-10-07T06:12:17+09:00",
       "lanes": {
-        "live": "2026-10-07T12:06:36+09:00"
+        "live": "2026-10-07T12:28:05+09:00"
       },
-      "last_seen_kst": "2026-10-07T12:06:36+09:00",
-      "link": "https://www.newsis.com/view/NISX20261007_0003817010",
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816942",
       "source": "뉴시스",
-      "source_body_digest": "8673e1c6be7b87df7b54b3df897275251c3323a8aea9fd87a8fc2407031d9224",
+      "source_body_digest": "32e01659c8e4aff0affe8d735beae92392f6b14a52f473e2ce92bb3b7d824c64",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:7c1986ce0dda3d0059612f7820b7fe1be18d10e7a24f26ec1e1a25ad90ff8f68",
+      "source_fact_identity": "source_facts:v1:8cecddf47506e99584ffc6145a95f4db43f3d1d77b51f5c283776b3501e0f924",
       "source_fact_keys": [
-        "source_fact:v1:21c4483ce114d1dc88c632100699ddb91fd606f6c5f3c39c8012a27ea175e6a1",
-        "source_fact:v1:8958d7187b7d71f3503d960bc8fdb38aa0fe9a24bdada14365403f9c790e4244",
-        "source_fact:v1:b543b50a90b3b58dbe9763378a7c9707563d06daf0ca221dff2fe2ab9bca1c3a"
+        "source_fact:v1:336c01612b98faf493d04831ff112eca1f960203bf9f72ddff8f1d729b3ea0f9",
+        "source_fact:v1:445f37418bc762e2886d6c5554ba1e96d5b6b08153ff0cd3c557f51a9b322f3e",
+        "source_fact:v1:5b5c12d3b21b0a05fa45d6dcb19731058a4897c12e9fec1bed8ad54875f4bb9a",
+        "source_fact:v1:aaf1f16f499fca56d296b261c24816ccc98debca9066475afff2ad8fcdf05396",
+        "source_fact:v1:e887a4dc63390dbe83d6f86642ce3e364bf26f709b4dd95af965c897397e53ca"
       ],
-      "source_published_kst": "2026-10-07T11:52+09:00",
-      "title": "美안두릴, 66억불 첨단 잠수함 조선소 계획…트럼프 \"2차대전 이후 최대\""
+      "source_published_kst": "2026-10-07T10:21+09:00",
+      "title": "MBK, 2조5000억 규모 홈플러스 보통주 전량 무상소각"
     },
     "event:4c60ef5885703c4873ef90e7": {
       "first_seen_kst": "2026-10-05T07:03:44+09:00",
@@ -8781,6 +8783,24 @@
       "source_published_kst": "2026-10-06T09:10+09:00",
       "title": "호르무즈 셔틀운항 특수…\"1회 왕복 500억에 선원도 3400만원씩\""
     },
+    "fact:15ff4fb48061f044d516c7ce": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261007091848",
+      "source": "지디넷코리아",
+      "source_body_digest": "aec888ab4cc8e89b31026cad98939334b07525bf82e07c7c75060da3424f03c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ab05528d11467b42d9e6d45672ffe4299270646f27aa0b217186c0e93c5d0d59",
+      "source_fact_keys": [
+        "source_fact:v1:b8dfbd495a0c34a3800768dcb58f3da891dcfc2d645fc5ecde8acca9d8dc2583",
+        "source_fact:v1:fd80ea1912ecac0fdcd74d80031df64a4ec7422f10e428b4ec52aa5d993b8742"
+      ],
+      "source_published_kst": "2026-10-07T10:29+09:00",
+      "title": "'바다 위 원전' 개발 시동…HD현대중공업, 기술 실증 착수"
+    },
     "fact:166307aa8f235687f0b80891": {
       "first_seen_kst": "2026-10-05T23:56:11+09:00",
       "lanes": {
@@ -12109,6 +12129,25 @@
       "source_published_kst": "2026-10-06T10:00+09:00",
       "title": "LG전자, 르노 '유럽 첫 상용 SDV'에 통합 콕핏 솔루션 공급"
     },
+    "fact:4ace1fe4f74fcd65228875af": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816927",
+      "source": "뉴시스",
+      "source_body_digest": "eea402c4637a1d6e62a51f257b2c4d1a0dc246fa1b4b14a9f45294c93ffeefef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1549d14d1f0608d92423f60efe8b741800c53d57aa68e6c60036cb64d4a12318",
+      "source_fact_keys": [
+        "source_fact:v1:0a0b88a2fb0558d6b2a5d57adfdedf24bffb6c23760fa6556f5538f81297d403",
+        "source_fact:v1:39187afd8634830aa47c549e975eafeff6b60ce2149fb34cbdaa16779778ce92",
+        "source_fact:v1:b1457fc3e6ff5032f152c17780c8f16b333d4163e2618acdfc5d551d5de5b969"
+      ],
+      "source_published_kst": "2026-10-07T10:19+09:00",
+      "title": "\"출생아 늘자 분유 시장도 확대\" 일동후디스, 상반기 분유 매출 35%↑"
+    },
     "fact:4b7f9f611cff68387e734425": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
       "lanes": {
@@ -12819,6 +12858,27 @@
       ],
       "source_published_kst": "2026-10-06T22:37+09:00",
       "title": "美 8월 무역적자 142조원…트럼프 관세 폭탄 이후 최대"
+    },
+    "fact:5627757dc4885bc260a41af0": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816942",
+      "source": "뉴시스",
+      "source_body_digest": "32e01659c8e4aff0affe8d735beae92392f6b14a52f473e2ce92bb3b7d824c64",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8cecddf47506e99584ffc6145a95f4db43f3d1d77b51f5c283776b3501e0f924",
+      "source_fact_keys": [
+        "source_fact:v1:336c01612b98faf493d04831ff112eca1f960203bf9f72ddff8f1d729b3ea0f9",
+        "source_fact:v1:445f37418bc762e2886d6c5554ba1e96d5b6b08153ff0cd3c557f51a9b322f3e",
+        "source_fact:v1:5b5c12d3b21b0a05fa45d6dcb19731058a4897c12e9fec1bed8ad54875f4bb9a",
+        "source_fact:v1:aaf1f16f499fca56d296b261c24816ccc98debca9066475afff2ad8fcdf05396",
+        "source_fact:v1:e887a4dc63390dbe83d6f86642ce3e364bf26f709b4dd95af965c897397e53ca"
+      ],
+      "source_published_kst": "2026-10-07T10:21+09:00",
+      "title": "MBK, 2조5000억 규모 홈플러스 보통주 전량 무상소각"
     },
     "fact:568cdc9a64080125401e4d75": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
@@ -19530,6 +19590,24 @@
       "source_published_kst": "2026-10-07T11:07+09:00",
       "title": "LG전자, 올 3Q 누적 영업익 '4조' 최초 달성…연간 최대 실적 '청신호'"
     },
+    "fact:bf1e44f34733de66c14e79e4": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816949",
+      "source": "뉴시스",
+      "source_body_digest": "f1192ec045b1d2fb2fee799d0a7dc59d5c16c0155cb011640a4cab3c0af7ca63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:84a41d781c43b12b3aca63c3347562c85610f5716be7c7cff050d33032914452",
+      "source_fact_keys": [
+        "source_fact:v1:3bca0bc9bc67d273fd76cabd7011cbda178ba17d050f4b14128430f1ef3070a6",
+        "source_fact:v1:85f47e5c623bb490cdd17efae8c70b04feb107aa7da6f480cfd326cf0c67b3eb"
+      ],
+      "source_published_kst": "2026-10-07T10:22+09:00",
+      "title": "경기도, 생산단계 수산물 안전성검사 확대…‘95→167항목’"
+    },
     "fact:bf245850838f50e6e842b180": {
       "first_seen_kst": "2026-10-05T22:57:49+09:00",
       "lanes": {
@@ -20156,6 +20234,27 @@
       ],
       "source_published_kst": "2026-10-06T08:56+09:00",
       "title": "서상덕 S2W 대표, 韓-英 공급망 보안 협력 제안"
+    },
+    "fact:c7ee3f5767cfbe1f6fc18a23": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895156",
+      "source": "헤럴드경제",
+      "source_body_digest": "2a0095aee99f7b89dfec4a5dba5d9aaa8f010e22417496b6085130f8127bcbe7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:38e116f46f4c1ddaa25d305beed4b968343296621dc77a5c7bfb3af2f62ca19b",
+      "source_fact_keys": [
+        "source_fact:v1:19ad71eb0dda596b862d3a0d361a98a88bfe0f6237f7885001e742a1bb4cf941",
+        "source_fact:v1:2b48090fe7a6d28007256f3aa7d2bf6680b4c70ecf33efff7dcbd2a7da17e1db",
+        "source_fact:v1:cf737973592a400959305b06969a581d6e912a1cd6b903ea08ac5247e584cfae",
+        "source_fact:v1:d1fcd5d588001e3bb1bf6debfa0754942131eb5cd1615d7ccb640f61a7ab2eea",
+        "source_fact:v1:d9e2258272fd4a5a723d7b68a899b885040c796566cb40444e3877e9468cd870"
+      ],
+      "source_published_kst": "2026-10-07T09:49+09:00",
+      "title": "HD현대重 등 산학 12개 기관, ‘SMR 해양 기술 실증센터’ 출범"
     },
     "fact:c830770ed4b7f6b699d0bcfd": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -32996,6 +33095,25 @@
       "source_published_kst": "2026-10-06T17:34+09:00",
       "title": "기업 DB, 계열사에만 제공…조사協, 한국평가데이터 공정위 신고"
     },
+    "link:4a247a1a1821ad8b85ee09b9": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816927",
+      "source": "뉴시스",
+      "source_body_digest": "eea402c4637a1d6e62a51f257b2c4d1a0dc246fa1b4b14a9f45294c93ffeefef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1549d14d1f0608d92423f60efe8b741800c53d57aa68e6c60036cb64d4a12318",
+      "source_fact_keys": [
+        "source_fact:v1:0a0b88a2fb0558d6b2a5d57adfdedf24bffb6c23760fa6556f5538f81297d403",
+        "source_fact:v1:39187afd8634830aa47c549e975eafeff6b60ce2149fb34cbdaa16779778ce92",
+        "source_fact:v1:b1457fc3e6ff5032f152c17780c8f16b333d4163e2618acdfc5d551d5de5b969"
+      ],
+      "source_published_kst": "2026-10-07T10:19+09:00",
+      "title": "\"출생아 늘자 분유 시장도 확대\" 일동후디스, 상반기 분유 매출 35%↑"
+    },
     "link:4a366f8d05f62a0247275783": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
@@ -38748,6 +38866,24 @@
       "source": "이데일리",
       "title": "英, 한국 러시아산 LNG 제재 면제…연 150만t 도입 차질 우려 해소"
     },
+    "link:7794c8d8ec12f54710d30f98": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261007091848",
+      "source": "지디넷코리아",
+      "source_body_digest": "aec888ab4cc8e89b31026cad98939334b07525bf82e07c7c75060da3424f03c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ab05528d11467b42d9e6d45672ffe4299270646f27aa0b217186c0e93c5d0d59",
+      "source_fact_keys": [
+        "source_fact:v1:b8dfbd495a0c34a3800768dcb58f3da891dcfc2d645fc5ecde8acca9d8dc2583",
+        "source_fact:v1:fd80ea1912ecac0fdcd74d80031df64a4ec7422f10e428b4ec52aa5d993b8742"
+      ],
+      "source_published_kst": "2026-10-07T10:29+09:00",
+      "title": "'바다 위 원전' 개발 시동…HD현대중공업, 기술 실증 착수"
+    },
     "link:77bd5c712c962a5cbbed09c7": {
       "first_seen_kst": "2026-09-23T21:31:09+09:00",
       "lanes": {
@@ -41759,6 +41895,24 @@
       "source": "뉴시스",
       "title": "\"부산대 작년 지역 생산유발 1.5조원, 일자리 창출 1.2만명\""
     },
+    "link:90462e2ef34978e95b8aae05": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816949",
+      "source": "뉴시스",
+      "source_body_digest": "f1192ec045b1d2fb2fee799d0a7dc59d5c16c0155cb011640a4cab3c0af7ca63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:84a41d781c43b12b3aca63c3347562c85610f5716be7c7cff050d33032914452",
+      "source_fact_keys": [
+        "source_fact:v1:3bca0bc9bc67d273fd76cabd7011cbda178ba17d050f4b14128430f1ef3070a6",
+        "source_fact:v1:85f47e5c623bb490cdd17efae8c70b04feb107aa7da6f480cfd326cf0c67b3eb"
+      ],
+      "source_published_kst": "2026-10-07T10:22+09:00",
+      "title": "경기도, 생산단계 수산물 안전성검사 확대…‘95→167항목’"
+    },
     "link:90597130adc7d546ee998c8a": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
       "lanes": {
@@ -44058,6 +44212,27 @@
       "link": "https://www.newsis.com/view/NISX20260923_0003802517",
       "source": "뉴시스",
       "title": "롯데카드, 영업정지 한 달 새 회원 8만명 감소…PLCC로 회복 시동"
+    },
+    "link:a34f5c15b33c4ff2d5db35f6": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816942",
+      "source": "뉴시스",
+      "source_body_digest": "32e01659c8e4aff0affe8d735beae92392f6b14a52f473e2ce92bb3b7d824c64",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8cecddf47506e99584ffc6145a95f4db43f3d1d77b51f5c283776b3501e0f924",
+      "source_fact_keys": [
+        "source_fact:v1:336c01612b98faf493d04831ff112eca1f960203bf9f72ddff8f1d729b3ea0f9",
+        "source_fact:v1:445f37418bc762e2886d6c5554ba1e96d5b6b08153ff0cd3c557f51a9b322f3e",
+        "source_fact:v1:5b5c12d3b21b0a05fa45d6dcb19731058a4897c12e9fec1bed8ad54875f4bb9a",
+        "source_fact:v1:aaf1f16f499fca56d296b261c24816ccc98debca9066475afff2ad8fcdf05396",
+        "source_fact:v1:e887a4dc63390dbe83d6f86642ce3e364bf26f709b4dd95af965c897397e53ca"
+      ],
+      "source_published_kst": "2026-10-07T10:21+09:00",
+      "title": "MBK, 2조5000억 규모 홈플러스 보통주 전량 무상소각"
     },
     "link:a35cbbf4e5a8a4dd6af3f16f": {
       "first_seen_kst": "2026-10-03T22:08:29+09:00",
@@ -52266,6 +52441,27 @@
       "source_published_kst": "2026-10-07T11:05+09:00",
       "title": "\"가전·전장 끌고 TV도 반등\"…LG전자, 3Q 영업익 7818억원…전년比 13.5% 증가"
     },
+    "link:e3d735b61e2dc9b433fc734f": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895156",
+      "source": "헤럴드경제",
+      "source_body_digest": "2a0095aee99f7b89dfec4a5dba5d9aaa8f010e22417496b6085130f8127bcbe7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:38e116f46f4c1ddaa25d305beed4b968343296621dc77a5c7bfb3af2f62ca19b",
+      "source_fact_keys": [
+        "source_fact:v1:19ad71eb0dda596b862d3a0d361a98a88bfe0f6237f7885001e742a1bb4cf941",
+        "source_fact:v1:2b48090fe7a6d28007256f3aa7d2bf6680b4c70ecf33efff7dcbd2a7da17e1db",
+        "source_fact:v1:cf737973592a400959305b06969a581d6e912a1cd6b903ea08ac5247e584cfae",
+        "source_fact:v1:d1fcd5d588001e3bb1bf6debfa0754942131eb5cd1615d7ccb640f61a7ab2eea",
+        "source_fact:v1:d9e2258272fd4a5a723d7b68a899b885040c796566cb40444e3877e9468cd870"
+      ],
+      "source_published_kst": "2026-10-07T09:49+09:00",
+      "title": "HD현대重 등 산학 12개 기관, ‘SMR 해양 기술 실증센터’ 출범"
+    },
     "link:e427eb8fc45974679089951a": {
       "first_seen_kst": "2026-10-07T04:29:18+09:00",
       "lanes": {
@@ -52492,6 +52688,21 @@
       ],
       "source_published_kst": "2026-10-07T08:44+09:00",
       "title": "LS에코에너지, 베트남서 AIDC용 버스덕트 생산능력 2배 확대"
+    },
+    "link:e533fbfa78a96472a09ef580": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://www.mt.co.kr/thebio/2026/10/07/2026100710032369386",
+      "source": "머니투데이",
+      "source_body_digest": "c1e847dccb9562e8c5381639946d4fe184756bda164ae292b7ee13c62499bdb6",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T10:27+09:00",
+      "title": "지아이이노베이션, '알레르기 신약' 日 임상 2상 진입…\"마일스톤 수령\""
     },
     "link:e53716508c9f8b422e32fc49": {
       "first_seen_kst": "2026-09-27T08:28:35+09:00",
@@ -52736,6 +52947,21 @@
       ],
       "source_published_kst": "2026-10-06T13:40+09:00",
       "title": "두산에너빌리티, 국산 가스터빈 美 첫 수출…스페이스XAI에 공급"
+    },
+    "link:e707b6216da924966268606d": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100709239664162",
+      "source": "머니투데이",
+      "source_body_digest": "90f0a24ca753a231ab6550e686863cc0defa7e88f281b297d05d4a613275c028",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T09:29+09:00",
+      "title": "[더벨]서동춘 컨텍 사장 “글로벌 지상국 매출 시작, 흑자 전환”"
     },
     "link:e71f89fa550f2fc0b21d02d6": {
       "first_seen_kst": "2026-10-05T07:24:39+09:00",
@@ -58612,6 +58838,27 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003812772",
       "source": "뉴시스",
       "title": "이천시·한전, 전력 공급 안정화 맞손…\"이천변전소 옥내화\""
+    },
+    "original:16a6a356d1dff83e91739bd6": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816942",
+      "source": "뉴시스",
+      "source_body_digest": "32e01659c8e4aff0affe8d735beae92392f6b14a52f473e2ce92bb3b7d824c64",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8cecddf47506e99584ffc6145a95f4db43f3d1d77b51f5c283776b3501e0f924",
+      "source_fact_keys": [
+        "source_fact:v1:336c01612b98faf493d04831ff112eca1f960203bf9f72ddff8f1d729b3ea0f9",
+        "source_fact:v1:445f37418bc762e2886d6c5554ba1e96d5b6b08153ff0cd3c557f51a9b322f3e",
+        "source_fact:v1:5b5c12d3b21b0a05fa45d6dcb19731058a4897c12e9fec1bed8ad54875f4bb9a",
+        "source_fact:v1:aaf1f16f499fca56d296b261c24816ccc98debca9066475afff2ad8fcdf05396",
+        "source_fact:v1:e887a4dc63390dbe83d6f86642ce3e364bf26f709b4dd95af965c897397e53ca"
+      ],
+      "source_published_kst": "2026-10-07T10:21+09:00",
+      "title": "MBK, 2조5000억 규모 홈플러스 보통주 전량 무상소각"
     },
     "original:173106b7163fe6c42ee0415c": {
       "first_seen_kst": "2026-10-05T12:50:14+09:00",
@@ -67252,6 +67499,21 @@
       "source_published_kst": "2026-10-06T03:00+09:00",
       "title": "美부통령 \"알래스카 LNG 사업, 한국과 세부사항 협의해야\" | 연합뉴스"
     },
+    "original:59eca1e2f794d83da366ac2e": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://www.mt.co.kr/thebio/2026/10/07/2026100710032369386",
+      "source": "머니투데이",
+      "source_body_digest": "c1e847dccb9562e8c5381639946d4fe184756bda164ae292b7ee13c62499bdb6",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T10:27+09:00",
+      "title": "지아이이노베이션, '알레르기 신약' 日 임상 2상 진입…\"마일스톤 수령\""
+    },
     "original:5a1601210dfb4395c1cbb82a": {
       "first_seen_kst": "2026-10-03T21:06:13+09:00",
       "lanes": {
@@ -67262,6 +67524,27 @@
       "source": "이데일리",
       "source_event_identity": "",
       "title": "트럼프 압박에 G7 비축유 푼다…경유 중심 최대 1억배럴"
+    },
+    "original:5a17c6864ee0dbcdde669544": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895156",
+      "source": "헤럴드경제",
+      "source_body_digest": "2a0095aee99f7b89dfec4a5dba5d9aaa8f010e22417496b6085130f8127bcbe7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:38e116f46f4c1ddaa25d305beed4b968343296621dc77a5c7bfb3af2f62ca19b",
+      "source_fact_keys": [
+        "source_fact:v1:19ad71eb0dda596b862d3a0d361a98a88bfe0f6237f7885001e742a1bb4cf941",
+        "source_fact:v1:2b48090fe7a6d28007256f3aa7d2bf6680b4c70ecf33efff7dcbd2a7da17e1db",
+        "source_fact:v1:cf737973592a400959305b06969a581d6e912a1cd6b903ea08ac5247e584cfae",
+        "source_fact:v1:d1fcd5d588001e3bb1bf6debfa0754942131eb5cd1615d7ccb640f61a7ab2eea",
+        "source_fact:v1:d9e2258272fd4a5a723d7b68a899b885040c796566cb40444e3877e9468cd870"
+      ],
+      "source_published_kst": "2026-10-07T09:49+09:00",
+      "title": "HD현대重 등 산학 12개 기관, ‘SMR 해양 기술 실증센터’ 출범"
     },
     "original:5a4b8b0c98d7eb847b2b0fb6": {
       "first_seen_kst": "2026-10-01T21:17:39+09:00",
@@ -70769,6 +71052,25 @@
       "source": "연합뉴스",
       "title": "키움운용, 'KIWOOM 200TR' ETF 총보수율 인하 | 연합뉴스"
     },
+    "original:76a5639451e08690782b6318": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816927",
+      "source": "뉴시스",
+      "source_body_digest": "eea402c4637a1d6e62a51f257b2c4d1a0dc246fa1b4b14a9f45294c93ffeefef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1549d14d1f0608d92423f60efe8b741800c53d57aa68e6c60036cb64d4a12318",
+      "source_fact_keys": [
+        "source_fact:v1:0a0b88a2fb0558d6b2a5d57adfdedf24bffb6c23760fa6556f5538f81297d403",
+        "source_fact:v1:39187afd8634830aa47c549e975eafeff6b60ce2149fb34cbdaa16779778ce92",
+        "source_fact:v1:b1457fc3e6ff5032f152c17780c8f16b333d4163e2618acdfc5d551d5de5b969"
+      ],
+      "source_published_kst": "2026-10-07T10:19+09:00",
+      "title": "\"출생아 늘자 분유 시장도 확대\" 일동후디스, 상반기 분유 매출 35%↑"
+    },
     "original:76affdcdd5799ca8625fd88a": {
       "first_seen_kst": "2026-10-07T10:04:59+09:00",
       "lanes": {
@@ -73785,6 +74087,24 @@
       "link": "https://www.etnews.com/20260929000120",
       "source": "전자신문",
       "title": "中 CXMT, D램 추격에 7조원 베팅…후공정 역량 확대"
+    },
+    "original:8f5a4886ac7eaf6306cc7b36": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816949",
+      "source": "뉴시스",
+      "source_body_digest": "f1192ec045b1d2fb2fee799d0a7dc59d5c16c0155cb011640a4cab3c0af7ca63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:84a41d781c43b12b3aca63c3347562c85610f5716be7c7cff050d33032914452",
+      "source_fact_keys": [
+        "source_fact:v1:3bca0bc9bc67d273fd76cabd7011cbda178ba17d050f4b14128430f1ef3070a6",
+        "source_fact:v1:85f47e5c623bb490cdd17efae8c70b04feb107aa7da6f480cfd326cf0c67b3eb"
+      ],
+      "source_published_kst": "2026-10-07T10:22+09:00",
+      "title": "경기도, 생산단계 수산물 안전성검사 확대…‘95→167항목’"
     },
     "original:8f61d0ed1b075b50c6e29386": {
       "first_seen_kst": "2026-10-07T06:28:41+09:00",
@@ -78572,6 +78892,24 @@
       "link": "https://www.newsis.com/view/NISX20261003_0003813488",
       "source": "뉴시스",
       "title": "김상욱 울산시장 \"성매매 의혹? 근거 없는 마타도어\""
+    },
+    "original:b981e079d6e6d574775ba1c9": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261007091848",
+      "source": "지디넷코리아",
+      "source_body_digest": "aec888ab4cc8e89b31026cad98939334b07525bf82e07c7c75060da3424f03c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ab05528d11467b42d9e6d45672ffe4299270646f27aa0b217186c0e93c5d0d59",
+      "source_fact_keys": [
+        "source_fact:v1:b8dfbd495a0c34a3800768dcb58f3da891dcfc2d645fc5ecde8acca9d8dc2583",
+        "source_fact:v1:fd80ea1912ecac0fdcd74d80031df64a4ec7422f10e428b4ec52aa5d993b8742"
+      ],
+      "source_published_kst": "2026-10-07T10:29+09:00",
+      "title": "'바다 위 원전' 개발 시동…HD현대중공업, 기술 실증 착수"
     },
     "original:b9b180f1df6fd18505c8e8bf": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
@@ -85560,6 +85898,21 @@
       ],
       "source_published_kst": "2026-10-05T23:29+09:00",
       "title": "[단독] 조원태 한진 회장 ‘배임’ 혐의 경찰 수사 본격화"
+    },
+    "original:f0e04751f8493987d172f99a": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100709239664162",
+      "source": "머니투데이",
+      "source_body_digest": "90f0a24ca753a231ab6550e686863cc0defa7e88f281b297d05d4a613275c028",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T09:29+09:00",
+      "title": "[더벨]서동춘 컨텍 사장 “글로벌 지상국 매출 시작, 흑자 전환”"
     },
     "original:f0f8525c4a903e99994386be": {
       "first_seen_kst": "2026-10-07T04:04:43+09:00",
@@ -99377,6 +99730,24 @@
       "source_published_kst": "2026-10-07T05:00+09:00",
       "title": "테마 쪼개고 채권 섞고…ETF 신상품 설계 다변화 [ETF 지형도 변화]②"
     },
+    "source_fact:2c807fca16a173d1d3c125ef": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816949",
+      "source": "뉴시스",
+      "source_body_digest": "f1192ec045b1d2fb2fee799d0a7dc59d5c16c0155cb011640a4cab3c0af7ca63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:84a41d781c43b12b3aca63c3347562c85610f5716be7c7cff050d33032914452",
+      "source_fact_keys": [
+        "source_fact:v1:3bca0bc9bc67d273fd76cabd7011cbda178ba17d050f4b14128430f1ef3070a6",
+        "source_fact:v1:85f47e5c623bb490cdd17efae8c70b04feb107aa7da6f480cfd326cf0c67b3eb"
+      ],
+      "source_published_kst": "2026-10-07T10:22+09:00",
+      "title": "경기도, 생산단계 수산물 안전성검사 확대…‘95→167항목’"
+    },
     "source_fact:2c8cb62a296cddfaf27d8ecc": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
@@ -100012,6 +100383,27 @@
       ],
       "source_published_kst": "2026-10-06T11:09+09:00",
       "title": "폭염·AI에 日 전력난 비상… 노후 화력발전 수명연장 검토 | 연합뉴스"
+    },
+    "source_fact:2ee444ec7d7579526529ff8e": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895156",
+      "source": "헤럴드경제",
+      "source_body_digest": "2a0095aee99f7b89dfec4a5dba5d9aaa8f010e22417496b6085130f8127bcbe7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:38e116f46f4c1ddaa25d305beed4b968343296621dc77a5c7bfb3af2f62ca19b",
+      "source_fact_keys": [
+        "source_fact:v1:19ad71eb0dda596b862d3a0d361a98a88bfe0f6237f7885001e742a1bb4cf941",
+        "source_fact:v1:2b48090fe7a6d28007256f3aa7d2bf6680b4c70ecf33efff7dcbd2a7da17e1db",
+        "source_fact:v1:cf737973592a400959305b06969a581d6e912a1cd6b903ea08ac5247e584cfae",
+        "source_fact:v1:d1fcd5d588001e3bb1bf6debfa0754942131eb5cd1615d7ccb640f61a7ab2eea",
+        "source_fact:v1:d9e2258272fd4a5a723d7b68a899b885040c796566cb40444e3877e9468cd870"
+      ],
+      "source_published_kst": "2026-10-07T09:49+09:00",
+      "title": "HD현대重 등 산학 12개 기관, ‘SMR 해양 기술 실증센터’ 출범"
     },
     "source_fact:2ee74be49de2fe4372dea99f": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
@@ -105446,6 +105838,27 @@
       ],
       "source_published_kst": "2026-10-05T12:57+09:00",
       "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
+    },
+    "source_fact:415d5c15e1134846a2e76143": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895156",
+      "source": "헤럴드경제",
+      "source_body_digest": "2a0095aee99f7b89dfec4a5dba5d9aaa8f010e22417496b6085130f8127bcbe7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:38e116f46f4c1ddaa25d305beed4b968343296621dc77a5c7bfb3af2f62ca19b",
+      "source_fact_keys": [
+        "source_fact:v1:19ad71eb0dda596b862d3a0d361a98a88bfe0f6237f7885001e742a1bb4cf941",
+        "source_fact:v1:2b48090fe7a6d28007256f3aa7d2bf6680b4c70ecf33efff7dcbd2a7da17e1db",
+        "source_fact:v1:cf737973592a400959305b06969a581d6e912a1cd6b903ea08ac5247e584cfae",
+        "source_fact:v1:d1fcd5d588001e3bb1bf6debfa0754942131eb5cd1615d7ccb640f61a7ab2eea",
+        "source_fact:v1:d9e2258272fd4a5a723d7b68a899b885040c796566cb40444e3877e9468cd870"
+      ],
+      "source_published_kst": "2026-10-07T09:49+09:00",
+      "title": "HD현대重 등 산학 12개 기관, ‘SMR 해양 기술 실증센터’ 출범"
     },
     "source_fact:416a71b847230c25b944dad1": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
@@ -111681,6 +112094,27 @@
       ],
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
+    },
+    "source_fact:56fc96347481c0a57054f65e": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895156",
+      "source": "헤럴드경제",
+      "source_body_digest": "2a0095aee99f7b89dfec4a5dba5d9aaa8f010e22417496b6085130f8127bcbe7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:38e116f46f4c1ddaa25d305beed4b968343296621dc77a5c7bfb3af2f62ca19b",
+      "source_fact_keys": [
+        "source_fact:v1:19ad71eb0dda596b862d3a0d361a98a88bfe0f6237f7885001e742a1bb4cf941",
+        "source_fact:v1:2b48090fe7a6d28007256f3aa7d2bf6680b4c70ecf33efff7dcbd2a7da17e1db",
+        "source_fact:v1:cf737973592a400959305b06969a581d6e912a1cd6b903ea08ac5247e584cfae",
+        "source_fact:v1:d1fcd5d588001e3bb1bf6debfa0754942131eb5cd1615d7ccb640f61a7ab2eea",
+        "source_fact:v1:d9e2258272fd4a5a723d7b68a899b885040c796566cb40444e3877e9468cd870"
+      ],
+      "source_published_kst": "2026-10-07T09:49+09:00",
+      "title": "HD현대重 등 산학 12개 기관, ‘SMR 해양 기술 실증센터’ 출범"
     },
     "source_fact:570c20228748fc33c34b5a09": {
       "first_seen_kst": "2026-10-06T19:10:36+09:00",
@@ -128801,6 +129235,27 @@
       "source_published_kst": "2026-10-06T08:00+09:00",
       "title": "큐리옥스바이오시스템즈, 글로벌 '톱5' CRO가 찍었다 ... 첫 주문부터 7억 수주"
     },
+    "source_fact:9322ca692ed3f85f2c09bece": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895156",
+      "source": "헤럴드경제",
+      "source_body_digest": "2a0095aee99f7b89dfec4a5dba5d9aaa8f010e22417496b6085130f8127bcbe7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:38e116f46f4c1ddaa25d305beed4b968343296621dc77a5c7bfb3af2f62ca19b",
+      "source_fact_keys": [
+        "source_fact:v1:19ad71eb0dda596b862d3a0d361a98a88bfe0f6237f7885001e742a1bb4cf941",
+        "source_fact:v1:2b48090fe7a6d28007256f3aa7d2bf6680b4c70ecf33efff7dcbd2a7da17e1db",
+        "source_fact:v1:cf737973592a400959305b06969a581d6e912a1cd6b903ea08ac5247e584cfae",
+        "source_fact:v1:d1fcd5d588001e3bb1bf6debfa0754942131eb5cd1615d7ccb640f61a7ab2eea",
+        "source_fact:v1:d9e2258272fd4a5a723d7b68a899b885040c796566cb40444e3877e9468cd870"
+      ],
+      "source_published_kst": "2026-10-07T09:49+09:00",
+      "title": "HD현대重 등 산학 12개 기관, ‘SMR 해양 기술 실증센터’ 출범"
+    },
     "source_fact:934e3123c7a703b48f45ffd4": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
       "lanes": {
@@ -135628,6 +136083,25 @@
       "source_published_kst": "2026-10-06T10:09+09:00",
       "title": "씨피시스템 \"글로벌 MLCC 제조사사 장비에 '로보킷' 채택\""
     },
+    "source_fact:abf9032d71c33da5e25d9684": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816927",
+      "source": "뉴시스",
+      "source_body_digest": "eea402c4637a1d6e62a51f257b2c4d1a0dc246fa1b4b14a9f45294c93ffeefef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1549d14d1f0608d92423f60efe8b741800c53d57aa68e6c60036cb64d4a12318",
+      "source_fact_keys": [
+        "source_fact:v1:0a0b88a2fb0558d6b2a5d57adfdedf24bffb6c23760fa6556f5538f81297d403",
+        "source_fact:v1:39187afd8634830aa47c549e975eafeff6b60ce2149fb34cbdaa16779778ce92",
+        "source_fact:v1:b1457fc3e6ff5032f152c17780c8f16b333d4163e2618acdfc5d551d5de5b969"
+      ],
+      "source_published_kst": "2026-10-07T10:19+09:00",
+      "title": "\"출생아 늘자 분유 시장도 확대\" 일동후디스, 상반기 분유 매출 35%↑"
+    },
     "source_fact:abf942a098423ae6812f6571": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -136139,6 +136613,24 @@
       ],
       "source_published_kst": "2026-10-06T10:33+09:00",
       "title": "브라질 대선 '우파' 보우소나루 약진에…증시 단숨에 사상 최고치"
+    },
+    "source_fact:ade723c2dbd6af50317e1f7d": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816949",
+      "source": "뉴시스",
+      "source_body_digest": "f1192ec045b1d2fb2fee799d0a7dc59d5c16c0155cb011640a4cab3c0af7ca63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:84a41d781c43b12b3aca63c3347562c85610f5716be7c7cff050d33032914452",
+      "source_fact_keys": [
+        "source_fact:v1:3bca0bc9bc67d273fd76cabd7011cbda178ba17d050f4b14128430f1ef3070a6",
+        "source_fact:v1:85f47e5c623bb490cdd17efae8c70b04feb107aa7da6f480cfd326cf0c67b3eb"
+      ],
+      "source_published_kst": "2026-10-07T10:22+09:00",
+      "title": "경기도, 생산단계 수산물 안전성검사 확대…‘95→167항목’"
     },
     "source_fact:adf2fa5b0acd61c420a372ef": {
       "first_seen_kst": "2026-10-07T07:54:25+09:00",
@@ -139211,6 +139703,27 @@
       "source_published_kst": "2026-10-07T08:42+09:00",
       "title": "토요, 2분기 매출 1억1800만 달러…영업이익 2배"
     },
+    "source_fact:b86cbbb1f9eff96e2e8c84c8": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816942",
+      "source": "뉴시스",
+      "source_body_digest": "32e01659c8e4aff0affe8d735beae92392f6b14a52f473e2ce92bb3b7d824c64",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8cecddf47506e99584ffc6145a95f4db43f3d1d77b51f5c283776b3501e0f924",
+      "source_fact_keys": [
+        "source_fact:v1:336c01612b98faf493d04831ff112eca1f960203bf9f72ddff8f1d729b3ea0f9",
+        "source_fact:v1:445f37418bc762e2886d6c5554ba1e96d5b6b08153ff0cd3c557f51a9b322f3e",
+        "source_fact:v1:5b5c12d3b21b0a05fa45d6dcb19731058a4897c12e9fec1bed8ad54875f4bb9a",
+        "source_fact:v1:aaf1f16f499fca56d296b261c24816ccc98debca9066475afff2ad8fcdf05396",
+        "source_fact:v1:e887a4dc63390dbe83d6f86642ce3e364bf26f709b4dd95af965c897397e53ca"
+      ],
+      "source_published_kst": "2026-10-07T10:21+09:00",
+      "title": "MBK, 2조5000억 규모 홈플러스 보통주 전량 무상소각"
+    },
     "source_fact:b8898128418adb0ed512d717": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
       "lanes": {
@@ -141295,6 +141808,24 @@
       "source_published_kst": "2026-10-06T17:03+09:00",
       "title": "\"미래 성장동력 확보\"…알테오젠, 2천억 투자유치"
     },
+    "source_fact:c0e7967fa243b3211f9fbf19": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261007091848",
+      "source": "지디넷코리아",
+      "source_body_digest": "aec888ab4cc8e89b31026cad98939334b07525bf82e07c7c75060da3424f03c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ab05528d11467b42d9e6d45672ffe4299270646f27aa0b217186c0e93c5d0d59",
+      "source_fact_keys": [
+        "source_fact:v1:b8dfbd495a0c34a3800768dcb58f3da891dcfc2d645fc5ecde8acca9d8dc2583",
+        "source_fact:v1:fd80ea1912ecac0fdcd74d80031df64a4ec7422f10e428b4ec52aa5d993b8742"
+      ],
+      "source_published_kst": "2026-10-07T10:29+09:00",
+      "title": "'바다 위 원전' 개발 시동…HD현대중공업, 기술 실증 착수"
+    },
     "source_fact:c0f2c9c8f77a70e651c53df9": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
@@ -141423,6 +141954,27 @@
       ],
       "source_published_kst": "2026-10-06T11:09+09:00",
       "title": "재정부담에 재협상까지…고금리에 상업용 부동산 비상"
+    },
+    "source_fact:c19d204822ff7a0507969aa4": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816942",
+      "source": "뉴시스",
+      "source_body_digest": "32e01659c8e4aff0affe8d735beae92392f6b14a52f473e2ce92bb3b7d824c64",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8cecddf47506e99584ffc6145a95f4db43f3d1d77b51f5c283776b3501e0f924",
+      "source_fact_keys": [
+        "source_fact:v1:336c01612b98faf493d04831ff112eca1f960203bf9f72ddff8f1d729b3ea0f9",
+        "source_fact:v1:445f37418bc762e2886d6c5554ba1e96d5b6b08153ff0cd3c557f51a9b322f3e",
+        "source_fact:v1:5b5c12d3b21b0a05fa45d6dcb19731058a4897c12e9fec1bed8ad54875f4bb9a",
+        "source_fact:v1:aaf1f16f499fca56d296b261c24816ccc98debca9066475afff2ad8fcdf05396",
+        "source_fact:v1:e887a4dc63390dbe83d6f86642ce3e364bf26f709b4dd95af965c897397e53ca"
+      ],
+      "source_published_kst": "2026-10-07T10:21+09:00",
+      "title": "MBK, 2조5000억 규모 홈플러스 보통주 전량 무상소각"
     },
     "source_fact:c1ae5818fcbc34f11bffc431": {
       "first_seen_kst": "2026-10-07T12:06:36+09:00",
@@ -142185,6 +142737,24 @@
       ],
       "source_published_kst": "2026-10-06T04:02+09:00",
       "title": "美부통령 \"韓 알래스카 투자 이뤄질것…세부협상은 남아\""
+    },
+    "source_fact:c3d80735e6997e86d07aee3a": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261007091848",
+      "source": "지디넷코리아",
+      "source_body_digest": "aec888ab4cc8e89b31026cad98939334b07525bf82e07c7c75060da3424f03c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ab05528d11467b42d9e6d45672ffe4299270646f27aa0b217186c0e93c5d0d59",
+      "source_fact_keys": [
+        "source_fact:v1:b8dfbd495a0c34a3800768dcb58f3da891dcfc2d645fc5ecde8acca9d8dc2583",
+        "source_fact:v1:fd80ea1912ecac0fdcd74d80031df64a4ec7422f10e428b4ec52aa5d993b8742"
+      ],
+      "source_published_kst": "2026-10-07T10:29+09:00",
+      "title": "'바다 위 원전' 개발 시동…HD현대중공업, 기술 실증 착수"
     },
     "source_fact:c3ea62f32c35315efd635da5": {
       "first_seen_kst": "2026-10-07T12:06:36+09:00",
@@ -144357,6 +144927,25 @@
       ],
       "source_published_kst": "2026-10-06T18:04+09:00",
       "title": "가을에만 파는데 3000만잔…스타벅스 ‘블글라’ 8년째 흥행"
+    },
+    "source_fact:cb9f3f9ae05648922db994e4": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816927",
+      "source": "뉴시스",
+      "source_body_digest": "eea402c4637a1d6e62a51f257b2c4d1a0dc246fa1b4b14a9f45294c93ffeefef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1549d14d1f0608d92423f60efe8b741800c53d57aa68e6c60036cb64d4a12318",
+      "source_fact_keys": [
+        "source_fact:v1:0a0b88a2fb0558d6b2a5d57adfdedf24bffb6c23760fa6556f5538f81297d403",
+        "source_fact:v1:39187afd8634830aa47c549e975eafeff6b60ce2149fb34cbdaa16779778ce92",
+        "source_fact:v1:b1457fc3e6ff5032f152c17780c8f16b333d4163e2618acdfc5d551d5de5b969"
+      ],
+      "source_published_kst": "2026-10-07T10:19+09:00",
+      "title": "\"출생아 늘자 분유 시장도 확대\" 일동후디스, 상반기 분유 매출 35%↑"
     },
     "source_fact:cba2cf682b6d83cfb9b946d1": {
       "first_seen_kst": "2026-10-06T01:41:59+09:00",
@@ -149429,6 +150018,27 @@
       "source_published_kst": "2026-10-06T17:52+09:00",
       "title": "코스닥, 석달 만에 900 뚫었다…소부장·바이오·배터리주 강세"
     },
+    "source_fact:dc02cf4c4be4c569e3fef483": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816942",
+      "source": "뉴시스",
+      "source_body_digest": "32e01659c8e4aff0affe8d735beae92392f6b14a52f473e2ce92bb3b7d824c64",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8cecddf47506e99584ffc6145a95f4db43f3d1d77b51f5c283776b3501e0f924",
+      "source_fact_keys": [
+        "source_fact:v1:336c01612b98faf493d04831ff112eca1f960203bf9f72ddff8f1d729b3ea0f9",
+        "source_fact:v1:445f37418bc762e2886d6c5554ba1e96d5b6b08153ff0cd3c557f51a9b322f3e",
+        "source_fact:v1:5b5c12d3b21b0a05fa45d6dcb19731058a4897c12e9fec1bed8ad54875f4bb9a",
+        "source_fact:v1:aaf1f16f499fca56d296b261c24816ccc98debca9066475afff2ad8fcdf05396",
+        "source_fact:v1:e887a4dc63390dbe83d6f86642ce3e364bf26f709b4dd95af965c897397e53ca"
+      ],
+      "source_published_kst": "2026-10-07T10:21+09:00",
+      "title": "MBK, 2조5000억 규모 홈플러스 보통주 전량 무상소각"
+    },
     "source_fact:dc0c17479cb7819c61d81c43": {
       "first_seen_kst": "2026-10-07T07:24:41+09:00",
       "lanes": {
@@ -149979,6 +150589,27 @@
       ],
       "source_published_kst": "2026-10-06T02:28+09:00",
       "title": "아람코 CEO \"세계 석유 공급 이미 압박…비축 최대 2년\""
+    },
+    "source_fact:ddf2a11ba48f047d1af0e0ed": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895156",
+      "source": "헤럴드경제",
+      "source_body_digest": "2a0095aee99f7b89dfec4a5dba5d9aaa8f010e22417496b6085130f8127bcbe7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:38e116f46f4c1ddaa25d305beed4b968343296621dc77a5c7bfb3af2f62ca19b",
+      "source_fact_keys": [
+        "source_fact:v1:19ad71eb0dda596b862d3a0d361a98a88bfe0f6237f7885001e742a1bb4cf941",
+        "source_fact:v1:2b48090fe7a6d28007256f3aa7d2bf6680b4c70ecf33efff7dcbd2a7da17e1db",
+        "source_fact:v1:cf737973592a400959305b06969a581d6e912a1cd6b903ea08ac5247e584cfae",
+        "source_fact:v1:d1fcd5d588001e3bb1bf6debfa0754942131eb5cd1615d7ccb640f61a7ab2eea",
+        "source_fact:v1:d9e2258272fd4a5a723d7b68a899b885040c796566cb40444e3877e9468cd870"
+      ],
+      "source_published_kst": "2026-10-07T09:49+09:00",
+      "title": "HD현대重 등 산학 12개 기관, ‘SMR 해양 기술 실증센터’ 출범"
     },
     "source_fact:de12933d8a69baa4de80b61e": {
       "first_seen_kst": "2026-10-06T00:57:01+09:00",
@@ -151788,6 +152419,27 @@
       "source_published_kst": "2026-10-06T17:12+09:00",
       "title": "포스코퓨처엠, 삼성SDI와 6조 계약…LFP 물량 두 배 넘게 확대"
     },
+    "source_fact:e2c805463d45807129729097": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816942",
+      "source": "뉴시스",
+      "source_body_digest": "32e01659c8e4aff0affe8d735beae92392f6b14a52f473e2ce92bb3b7d824c64",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8cecddf47506e99584ffc6145a95f4db43f3d1d77b51f5c283776b3501e0f924",
+      "source_fact_keys": [
+        "source_fact:v1:336c01612b98faf493d04831ff112eca1f960203bf9f72ddff8f1d729b3ea0f9",
+        "source_fact:v1:445f37418bc762e2886d6c5554ba1e96d5b6b08153ff0cd3c557f51a9b322f3e",
+        "source_fact:v1:5b5c12d3b21b0a05fa45d6dcb19731058a4897c12e9fec1bed8ad54875f4bb9a",
+        "source_fact:v1:aaf1f16f499fca56d296b261c24816ccc98debca9066475afff2ad8fcdf05396",
+        "source_fact:v1:e887a4dc63390dbe83d6f86642ce3e364bf26f709b4dd95af965c897397e53ca"
+      ],
+      "source_published_kst": "2026-10-07T10:21+09:00",
+      "title": "MBK, 2조5000억 규모 홈플러스 보통주 전량 무상소각"
+    },
     "source_fact:e2ce82a5ae98534d1e4a9ca1": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -152233,6 +152885,25 @@
       ],
       "source_published_kst": "2026-10-06T10:00+09:00",
       "title": "LG전자, 유럽 첫 상용 SDV에 통합 콕핏 솔루션 공급"
+    },
+    "source_fact:e3f938bc4261b6a271b5c8e3": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816927",
+      "source": "뉴시스",
+      "source_body_digest": "eea402c4637a1d6e62a51f257b2c4d1a0dc246fa1b4b14a9f45294c93ffeefef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1549d14d1f0608d92423f60efe8b741800c53d57aa68e6c60036cb64d4a12318",
+      "source_fact_keys": [
+        "source_fact:v1:0a0b88a2fb0558d6b2a5d57adfdedf24bffb6c23760fa6556f5538f81297d403",
+        "source_fact:v1:39187afd8634830aa47c549e975eafeff6b60ce2149fb34cbdaa16779778ce92",
+        "source_fact:v1:b1457fc3e6ff5032f152c17780c8f16b333d4163e2618acdfc5d551d5de5b969"
+      ],
+      "source_published_kst": "2026-10-07T10:19+09:00",
+      "title": "\"출생아 늘자 분유 시장도 확대\" 일동후디스, 상반기 분유 매출 35%↑"
     },
     "source_fact:e3fbc3d391c4139fa69264e7": {
       "first_seen_kst": "2026-10-06T23:46:46+09:00",
@@ -158425,6 +159096,27 @@
       "source_published_kst": "2026-10-05T10:42+09:00",
       "title": "삼성전자, 코스피 ‘구원투수’ 될까…7000선 안착 시험대[주간증시전망]"
     },
+    "source_fact:fb6d8f699a4424d6f7d7e6cf": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816942",
+      "source": "뉴시스",
+      "source_body_digest": "32e01659c8e4aff0affe8d735beae92392f6b14a52f473e2ce92bb3b7d824c64",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8cecddf47506e99584ffc6145a95f4db43f3d1d77b51f5c283776b3501e0f924",
+      "source_fact_keys": [
+        "source_fact:v1:336c01612b98faf493d04831ff112eca1f960203bf9f72ddff8f1d729b3ea0f9",
+        "source_fact:v1:445f37418bc762e2886d6c5554ba1e96d5b6b08153ff0cd3c557f51a9b322f3e",
+        "source_fact:v1:5b5c12d3b21b0a05fa45d6dcb19731058a4897c12e9fec1bed8ad54875f4bb9a",
+        "source_fact:v1:aaf1f16f499fca56d296b261c24816ccc98debca9066475afff2ad8fcdf05396",
+        "source_fact:v1:e887a4dc63390dbe83d6f86642ce3e364bf26f709b4dd95af965c897397e53ca"
+      ],
+      "source_published_kst": "2026-10-07T10:21+09:00",
+      "title": "MBK, 2조5000억 규모 홈플러스 보통주 전량 무상소각"
+    },
     "source_fact:fb8011f1bb65bfae903a147d": {
       "first_seen_kst": "2026-10-07T07:54:25+09:00",
       "lanes": {
@@ -162626,6 +163318,27 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003812772",
       "source": "뉴시스",
       "title": "이천시·한전, 전력 공급 안정화 맞손…\"이천변전소 옥내화\""
+    },
+    "title:16a6a356d1dff83e91739bd6": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816942",
+      "source": "뉴시스",
+      "source_body_digest": "32e01659c8e4aff0affe8d735beae92392f6b14a52f473e2ce92bb3b7d824c64",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8cecddf47506e99584ffc6145a95f4db43f3d1d77b51f5c283776b3501e0f924",
+      "source_fact_keys": [
+        "source_fact:v1:336c01612b98faf493d04831ff112eca1f960203bf9f72ddff8f1d729b3ea0f9",
+        "source_fact:v1:445f37418bc762e2886d6c5554ba1e96d5b6b08153ff0cd3c557f51a9b322f3e",
+        "source_fact:v1:5b5c12d3b21b0a05fa45d6dcb19731058a4897c12e9fec1bed8ad54875f4bb9a",
+        "source_fact:v1:aaf1f16f499fca56d296b261c24816ccc98debca9066475afff2ad8fcdf05396",
+        "source_fact:v1:e887a4dc63390dbe83d6f86642ce3e364bf26f709b4dd95af965c897397e53ca"
+      ],
+      "source_published_kst": "2026-10-07T10:21+09:00",
+      "title": "MBK, 2조5000억 규모 홈플러스 보통주 전량 무상소각"
     },
     "title:173106b7163fe6c42ee0415c": {
       "first_seen_kst": "2026-10-05T12:50:14+09:00",
@@ -171323,6 +172036,21 @@
       "source_published_kst": "2026-10-06T03:00+09:00",
       "title": "美부통령 \"알래스카 LNG 사업, 한국과 세부사항 협의해야\" | 연합뉴스"
     },
+    "title:59eca1e2f794d83da366ac2e": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://www.mt.co.kr/thebio/2026/10/07/2026100710032369386",
+      "source": "머니투데이",
+      "source_body_digest": "c1e847dccb9562e8c5381639946d4fe184756bda164ae292b7ee13c62499bdb6",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T10:27+09:00",
+      "title": "지아이이노베이션, '알레르기 신약' 日 임상 2상 진입…\"마일스톤 수령\""
+    },
     "title:5a1601210dfb4395c1cbb82a": {
       "first_seen_kst": "2026-10-03T21:06:13+09:00",
       "lanes": {
@@ -171333,6 +172061,27 @@
       "source": "이데일리",
       "source_event_identity": "",
       "title": "트럼프 압박에 G7 비축유 푼다…경유 중심 최대 1억배럴"
+    },
+    "title:5a17c6864ee0dbcdde669544": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://biz.heraldcorp.com/article/10895156",
+      "source": "헤럴드경제",
+      "source_body_digest": "2a0095aee99f7b89dfec4a5dba5d9aaa8f010e22417496b6085130f8127bcbe7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:38e116f46f4c1ddaa25d305beed4b968343296621dc77a5c7bfb3af2f62ca19b",
+      "source_fact_keys": [
+        "source_fact:v1:19ad71eb0dda596b862d3a0d361a98a88bfe0f6237f7885001e742a1bb4cf941",
+        "source_fact:v1:2b48090fe7a6d28007256f3aa7d2bf6680b4c70ecf33efff7dcbd2a7da17e1db",
+        "source_fact:v1:cf737973592a400959305b06969a581d6e912a1cd6b903ea08ac5247e584cfae",
+        "source_fact:v1:d1fcd5d588001e3bb1bf6debfa0754942131eb5cd1615d7ccb640f61a7ab2eea",
+        "source_fact:v1:d9e2258272fd4a5a723d7b68a899b885040c796566cb40444e3877e9468cd870"
+      ],
+      "source_published_kst": "2026-10-07T09:49+09:00",
+      "title": "HD현대重 등 산학 12개 기관, ‘SMR 해양 기술 실증센터’ 출범"
     },
     "title:5a4b8b0c98d7eb847b2b0fb6": {
       "first_seen_kst": "2026-10-01T21:17:39+09:00",
@@ -174904,6 +175653,25 @@
       "source": "연합뉴스",
       "title": "키움운용, 'KIWOOM 200TR' ETF 총보수율 인하 | 연합뉴스"
     },
+    "title:76a5639451e08690782b6318": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816927",
+      "source": "뉴시스",
+      "source_body_digest": "eea402c4637a1d6e62a51f257b2c4d1a0dc246fa1b4b14a9f45294c93ffeefef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1549d14d1f0608d92423f60efe8b741800c53d57aa68e6c60036cb64d4a12318",
+      "source_fact_keys": [
+        "source_fact:v1:0a0b88a2fb0558d6b2a5d57adfdedf24bffb6c23760fa6556f5538f81297d403",
+        "source_fact:v1:39187afd8634830aa47c549e975eafeff6b60ce2149fb34cbdaa16779778ce92",
+        "source_fact:v1:b1457fc3e6ff5032f152c17780c8f16b333d4163e2618acdfc5d551d5de5b969"
+      ],
+      "source_published_kst": "2026-10-07T10:19+09:00",
+      "title": "\"출생아 늘자 분유 시장도 확대\" 일동후디스, 상반기 분유 매출 35%↑"
+    },
     "title:76affdcdd5799ca8625fd88a": {
       "first_seen_kst": "2026-10-07T10:04:59+09:00",
       "lanes": {
@@ -178000,6 +178768,24 @@
       "link": "https://www.etnews.com/20260929000120",
       "source": "전자신문",
       "title": "中 CXMT, D램 추격에 7조원 베팅…후공정 역량 확대"
+    },
+    "title:8f5a4886ac7eaf6306cc7b36": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816949",
+      "source": "뉴시스",
+      "source_body_digest": "f1192ec045b1d2fb2fee799d0a7dc59d5c16c0155cb011640a4cab3c0af7ca63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:84a41d781c43b12b3aca63c3347562c85610f5716be7c7cff050d33032914452",
+      "source_fact_keys": [
+        "source_fact:v1:3bca0bc9bc67d273fd76cabd7011cbda178ba17d050f4b14128430f1ef3070a6",
+        "source_fact:v1:85f47e5c623bb490cdd17efae8c70b04feb107aa7da6f480cfd326cf0c67b3eb"
+      ],
+      "source_published_kst": "2026-10-07T10:22+09:00",
+      "title": "경기도, 생산단계 수산물 안전성검사 확대…‘95→167항목’"
     },
     "title:8f61d0ed1b075b50c6e29386": {
       "first_seen_kst": "2026-10-07T06:28:41+09:00",
@@ -182965,6 +183751,24 @@
       "link": "https://www.newsis.com/view/NISX20261003_0003813488",
       "source": "뉴시스",
       "title": "김상욱 울산시장 \"성매매 의혹? 근거 없는 마타도어\""
+    },
+    "title:b981e079d6e6d574775ba1c9": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261007091848",
+      "source": "지디넷코리아",
+      "source_body_digest": "aec888ab4cc8e89b31026cad98939334b07525bf82e07c7c75060da3424f03c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ab05528d11467b42d9e6d45672ffe4299270646f27aa0b217186c0e93c5d0d59",
+      "source_fact_keys": [
+        "source_fact:v1:b8dfbd495a0c34a3800768dcb58f3da891dcfc2d645fc5ecde8acca9d8dc2583",
+        "source_fact:v1:fd80ea1912ecac0fdcd74d80031df64a4ec7422f10e428b4ec52aa5d993b8742"
+      ],
+      "source_published_kst": "2026-10-07T10:29+09:00",
+      "title": "'바다 위 원전' 개발 시동…HD현대중공업, 기술 실증 착수"
     },
     "title:b9b180f1df6fd18505c8e8bf": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
@@ -190052,6 +190856,21 @@
       "source_published_kst": "2026-10-05T23:29+09:00",
       "title": "[단독] 조원태 한진 회장 ‘배임’ 혐의 경찰 수사 본격화"
     },
+    "title:f0e04751f8493987d172f99a": {
+      "first_seen_kst": "2026-10-07T12:28:05+09:00",
+      "lanes": {
+        "live": "2026-10-07T12:28:05+09:00"
+      },
+      "last_seen_kst": "2026-10-07T12:28:05+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/07/2026100709239664162",
+      "source": "머니투데이",
+      "source_body_digest": "90f0a24ca753a231ab6550e686863cc0defa7e88f281b297d05d4a613275c028",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T09:29+09:00",
+      "title": "[더벨]서동춘 컨텍 사장 “글로벌 지상국 매출 시작, 흑자 전환”"
+    },
     "title:f0f8525c4a903e99994386be": {
       "first_seen_kst": "2026-10-07T04:04:43+09:00",
       "lanes": {
@@ -191734,5 +192553,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-07T12:06:36+09:00"
+  "updated_at_kst": "2026-10-07T12:28:05+09:00"
 }
