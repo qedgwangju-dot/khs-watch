@@ -1,5 +1,4 @@
 name: Space Launch Bottleneck Telegram Watch
-# dedicated bot secret verification
 
 on:
   push:
@@ -10,7 +9,7 @@ on:
       - "scripts/space_launch_telegram_send.py"
       - "scripts/merge_space_launch_state.py"
       - "scripts/validate_space_launch_korean.py"
-      - ".github/prompts/space-launch-korean.prompt.yml"
+      - "scripts/space_launch_translate_local.py"
   schedule:
     - cron: "6,21,36,51 * * * *"
   workflow_dispatch:
@@ -23,7 +22,6 @@ on:
 
 permissions:
   contents: write
-  models: read
 
 concurrency:
   group: space-launch-bottleneck-telegram-watch
@@ -53,67 +51,28 @@ jobs:
           python -m py_compile scripts/space_launch_telegram_send.py
           python -m py_compile scripts/merge_space_launch_state.py
           python -m py_compile scripts/validate_space_launch_korean.py
+          python -m py_compile scripts/space_launch_translate_local.py
           python scripts/space_launch_telegram_send.py --self-test
           python scripts/merge_space_launch_state.py --self-test
           python scripts/validate_space_launch_korean.py --self-test
+          python scripts/space_launch_translate_local.py --self-test
 
       - name: Run space launch bottleneck watch
         env:
-          FORCE_NOTIFY: "true"
+          FORCE_NOTIFY: ${{ inputs.force_notify }}
         run: python scripts/space_launch_bottleneck_watch.py
 
-      - name: Prepare alert for Korean translation
+      - name: Translate English alert text to Korean
         if: hashFiles('out/space_launch_bottleneck_watch_telegram.txt') != ''
         run: |
-          python scripts/validate_space_launch_korean.py \
-            --prepare \
-            out/space_launch_bottleneck_watch_telegram.txt \
-            out/space_launch_bottleneck_translation_input.txt
-
-      - name: Translate alert to Korean (primary)
-        if: hashFiles('out/space_launch_bottleneck_translation_input.txt') != ''
-        id: translate_korean_primary
-        continue-on-error: true
-        uses: actions/ai-inference@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          prompt-file: ./.github/prompts/space-launch-korean.prompt.yml
-          file_input: |
-            report: ./out/space_launch_bottleneck_translation_input.txt
-
-      - name: Validate primary Korean translation
-        if: steps.translate_korean_primary.outcome == 'success'
-        id: validate_korean_primary
-        continue-on-error: true
-        run: |
-          python scripts/validate_space_launch_korean.py \
-            out/space_launch_bottleneck_watch_telegram.txt \
-            "${{ steps.translate_korean_primary.outputs.response-file }}" \
+          cp out/space_launch_bottleneck_watch_telegram.txt out/space_launch_bottleneck_watch_original.txt
+          python scripts/space_launch_translate_local.py \
+            out/space_launch_bottleneck_watch_original.txt \
             out/space_launch_bottleneck_watch_korean.txt
-
-      - name: Translate alert to Korean (retry)
-        if: hashFiles('out/space_launch_bottleneck_translation_input.txt') != '' && (steps.translate_korean_primary.outcome != 'success' || steps.validate_korean_primary.outcome != 'success')
-        id: translate_korean_retry
-        uses: actions/ai-inference@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          prompt-file: ./.github/prompts/space-launch-korean.prompt.yml
-          file_input: |
-            report: ./out/space_launch_bottleneck_translation_input.txt
-
-      - name: Validate retry Korean translation
-        if: steps.translate_korean_retry.outcome == 'success'
-        run: |
           python scripts/validate_space_launch_korean.py \
-            out/space_launch_bottleneck_watch_telegram.txt \
-            "${{ steps.translate_korean_retry.outputs.response-file }}" \
-            out/space_launch_bottleneck_watch_korean.txt
-
-      - name: Install Korean-only Telegram alert
-        if: hashFiles('out/space_launch_bottleneck_watch_telegram.txt') != ''
-        run: |
-          test -s out/space_launch_bottleneck_watch_korean.txt
-          cp out/space_launch_bottleneck_watch_korean.txt out/space_launch_bottleneck_watch_telegram.txt
+            out/space_launch_bottleneck_watch_original.txt \
+            out/space_launch_bottleneck_watch_korean.txt \
+            out/space_launch_bottleneck_watch_telegram.txt
 
       - name: Publish watcher summary
         if: always()
