@@ -21,9 +21,14 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 STATE = ROOT / "data" / "solidigm_ipo_watch_state.json"
 ALERT = ROOT / "out" / "solidigm_ipo_alert.html"
 UA = "Mozilla/5.0 (compatible; khs-watch/2.0; +https://github.com/qedgwangju-dot/khs-watch)"
-WATCH_VERSION = 3
+WATCH_VERSION = 4
 CANONICAL_REUTERS_URL = "https://www.reuters.com/world/sk-hynixs-solidigm-weighs-ipo-that-could-value-the-unit-up-150-billion-sources-2026-09-25/"
 SOLIDIGM_DMS_URL = "https://www.solidigm.com/products/document-management-system.html"
+OFFICIAL_SK_REPLY = "https://news.skhynix.com/en/fact-11/"
+REPORT_YONHAP_URL = "https://www.yna.co.kr/view/AKR20261008022500009"
+REPORT_EDAILY_URL = "https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=02407526645610952"
+REPORT_INVESTING_URL = "https://www.investing.com/news/stock-market-news/solidigm-selects-lead-banks-for-blockbuster-us-ipo-bloomberg-reports-4937618"
+BLOOMBERG_BANK_EVENT_KST = "2026-10-08T07:48:01+09:00"
 MANUFACTURING_BASELINE = {
     "stage": "pcn_announced",
     "pcn_number": "0000048112-00",
@@ -65,6 +70,9 @@ QUERIES = [
     '"Solidigm" IPO',
     '"Solidigm" Reuters IPO',
     '"Solidigm" underwriters IPO',
+    '"Solidigm" Goldman Sachs Morgan Stanley IPO',
+    '"솔리다임" IPO 주관사 골드만삭스 모건스탠리',
+    '"솔리다임" "주관사 선정" 블룸버그',
     '"Solidigm" "confidential filing" IPO',
     '"Solidigm" "S-1" IPO',
     '"Solidigm" valuation IPO SK hynix',
@@ -77,7 +85,7 @@ TRUSTED = (
     "reuters", "bloomberg", "financial times", "ft.com", "wall street journal", "wsj",
     "cnbc", "business times", "korea times", "investing.com", "seoul economic",
     "서울경제", "seoul economic", "아주경제", "ajunews", "sk hynix", "sk하이닉스", "solidigm", "sec",
-    "powertech", "pti",
+    "powertech", "pti", "연합뉴스", "yonhap", "yna.co.kr", "이데일리", "edaily",
 )
 
 EVIDENCE_RANK = {"reported": 1, "top_tier_report": 2, "official": 3}
@@ -164,9 +172,9 @@ def source_rank(source, url):
     text = ((source or "") + " " + (url or "")).lower()
     if "sec.gov" in text or "solidigm.com" in text or "skhynix.com" in text or "sk hynix" in text or "sk하이닉스" in text:
         return 100
-    if "reuters" in text:
+    if "reuters" in text or "bloomberg" in text:
         return 95
-    if "bloomberg" in text or "ft.com" in text or "financial times" in text or "wsj" in text:
+    if "ft.com" in text or "financial times" in text or "wsj" in text:
         return 90
     if "cnbc" in text or "business times" in text or "korea times" in text:
         return 80
@@ -178,7 +186,7 @@ def evidence_state(source, url):
     text = ((source or "") + " " + (url or "")).lower()
     if "sec.gov" in text or "solidigm.com" in text or "skhynix.com" in text or "sk hynix" in text or "sk하이닉스" in text:
         return "official"
-    if "reuters" in text:
+    if "reuters" in text or "bloomberg" in text:
         return "top_tier_report"
     return "reported"
 
@@ -198,7 +206,7 @@ def read_events():
                 source = clean(source_node.text if source_node is not None and source_node.text else "")
                 pub = parse_pub(clean(item.findtext("pubDate") or ""))
                 text = (title + " " + desc).lower()
-                if "solidigm" not in text:
+                if "solidigm" not in text and "솔리다임" not in text:
                     continue
                 if not any(k in text for k in ("ipo", "initial public offering", "상장", "공모", "pre-ipo", "underwriter", "주관사", "s-1", "sec")):
                     continue
@@ -215,6 +223,31 @@ def read_events():
                     "published_at_kst": pub.isoformat(timespec="seconds") if pub else "",
                     "direct_link": direct, "rank": source_rank(source, direct),
                 }
+    # User-supplied Yonhap story was independently checked against the dated
+    # EDaily article and an Investing.com Bloomberg republication. They all
+    # repeat ONE original Bloomberg report, not multiple original sources.
+    # This one-time explicit event expires after ten days; the existing state
+    # transition deduplicator prevents repeat Telegram deliveries.
+    event = {
+        "id": "solidigm_bloomberg_banks_20261008",
+        "title": "Bloomberg: Solidigm selected Goldman Sachs and Morgan Stanley to lead IPO",
+        "description": (
+            "Solidigm selected Goldman Sachs and Morgan Stanley as lead underwriters "
+            "for its potential US IPO. JPMorgan Chase, Citigroup and UBS join the syndicate. "
+            "The IPO could raise $10 billion and value Solidigm at up to $100 billion. "
+            "It could happen as soon as 2027. Pre-IPO financing being considered, "
+            "its precise amount unconfirmed; no company IPO decision confirmed."
+        ),
+        "source": "Bloomberg 보도(이데일리·연합뉴스·Investing.com 재인용)",
+        "published_at_kst": BLOOMBERG_BANK_EVENT_KST,
+        "direct_link": REPORT_EDAILY_URL,
+        "origin_republication": REPORT_YONHAP_URL,
+        "crosscheck_republication": REPORT_INVESTING_URL,
+        "rank": 96,
+        "is_curated_reported_milestone": True,
+    }
+    if now_kst().date().isoformat() >= "2026-10-08" and now_kst().date().isoformat() <= "2026-10-18":
+        rows[event["id"]] = event
     return sorted(rows.values(), key=lambda x: (x.get("published_at_kst") or "", x.get("rank", 0)))
 
 
@@ -301,7 +334,14 @@ def stage_from_text(text):
         return "public_filing"
     if re.search(r"confidential(?:ly)?\s+(?:filed|submitted)|draft registration statement|비공개[^.]{0,30}?(?:제출|신고)", text, re.I):
         return "confidential_filing"
-    if re.search(r"selected[^.]{0,60}?(?:banks|underwriters)|appointed[^.]{0,60}?(?:banks|underwriters)|대표주관사[^.]{0,30}?(?:선정|확정)|주관사[^.]{0,30}?(?:선정|확정)", text, re.I):
+    if re.search(
+        r"(?:selected|appointed|tapped|picked)[^.]{0,140}?"
+        r"(?:banks|underwriters|Goldman Sachs|Morgan Stanley)|"
+        r"(?:banks|underwriters)[^.]{0,100}?(?:selected|appointed)|"
+        r"(?:대표\\s*주관사|주관사)[^.]{0,45}?(?:선정|낙점|확정)|"
+        r"(?:선정|낙점)[^.]{0,60}?(?:골드만삭스|모건스탠리)",
+        text, re.I,
+    ):
         return "underwriters_selected"
     if re.search(r"bake[- ]?off|pitch meetings?|주관사[^.]{0,60}?(?:피치|경쟁|선정 절차)", text, re.I):
         return "bank_bakeoff"
@@ -314,13 +354,16 @@ def extract_patch(event):
     page = article_text(event)
     text = (base + " " + page).strip()
     low = text.lower()
-    if "solidigm" not in low:
+    if "solidigm" not in low and "솔리다임" not in low:
         return {}
 
     patch = {}
-    stage = stage_from_text(text)
-    if stage:
-        patch["stage"] = stage
+    # Only the news summary can promote an IPO stage. General web-page text
+    # (menus/related stories) previously caused an incorrect postponement.
+    stage = stage_from_text(base)
+    if not stage:
+        return {}
+    patch["stage"] = stage
 
     y = re.search(r"(?:as early as|earliest|이르면)\s*(20\d{2})", text, re.I)
     if y:
@@ -347,12 +390,25 @@ def extract_patch(event):
     if stake:
         patch["parent_post_ipo_stake_pct"] = float(stake[1])
 
-    underwriters = []
-    for bank in ("Goldman Sachs", "Morgan Stanley", "J.P. Morgan", "JPMorgan", "Bank of America", "BofA", "Citi", "Citigroup", "Barclays", "UBS"):
-        if bank.lower() in low:
-            underwriters.append(bank)
-    if underwriters and stage in ("underwriters_selected", "confidential_filing", "public_filing", "roadshow", "price_range", "priced"):
-        patch["underwriters"] = sorted(set(underwriters))
+    # Distinguish the two lead banks from participating syndicate banks.
+    # Do not mine unrelated website navigation for underwriter names.
+    bank_text = base.lower()[:1500]
+    bank_aliases = {
+        "Goldman Sachs": ("goldman sachs", "골드만삭스"),
+        "Morgan Stanley": ("morgan stanley", "모건스탠리"),
+        "JPMorgan Chase": ("jpmorgan chase", "jpmorgan", "jp모건", "제이피모건"),
+        "Citigroup": ("citigroup", "씨티그룹"),
+        "UBS": ("ubs", "유비에스"),
+    }
+    present = sorted(name for name, aliases in bank_aliases.items()
+                     if any(re.search(r"(?<![a-z])" + re.escape(a) + r"(?![a-z])", bank_text) for a in aliases))
+    if present and stage in ("underwriters_selected", "confidential_filing", "public_filing", "roadshow", "price_range", "priced"):
+        patch["underwriters"] = present
+        if "Goldman Sachs" in present and "Morgan Stanley" in present:
+            patch["lead_underwriters"] = ["Goldman Sachs", "Morgan Stanley"]
+        syndicate = [name for name in ("JPMorgan Chase", "Citigroup", "UBS") if name in present]
+        if syndicate:
+            patch["other_syndicate_banks"] = syndicate
 
     use = []
     proceeds_sentences = [
@@ -367,7 +423,19 @@ def extract_patch(event):
     if use:
         patch["use_of_proceeds"] = sorted(set(use))
 
-    patch["evidence_state"] = evidence_state(event.get("source"), event.get("direct_link"))
+    # Bloomberg remains ONE anonymously sourced news report, not official.
+    attributed_bloomberg = (
+        event.get("is_curated_reported_milestone")
+        or "bloomberg" in (event.get("source") or "").lower()
+        or ("블룸버그" in base and "주관사" in base)
+    )
+    patch["evidence_state"] = ("top_tier_report" if attributed_bloomberg
+                               else evidence_state(event.get("source"), event.get("direct_link")))
+    if attributed_bloomberg:
+        patch["reported_original"] = "Bloomberg"
+        patch["independent_origin_count"] = 1
+        patch["ipo_officially_confirmed"] = False
+        patch["underwriter_officially_confirmed"] = False
     source_url = event.get("direct_link") or ""
     source_name = event.get("source") or ""
     # Reuters syndication pages can be the accessible evidence copy. Keep Reuters
@@ -387,6 +455,9 @@ def extract_patch(event):
         source_name = "Reuters"
     patch["source_url"] = source_url
     patch["source_name"] = source_name
+    if event.get("is_curated_reported_milestone"):
+        patch["user_original_url"] = REPORT_YONHAP_URL
+        patch["crosscheck_url"] = REPORT_INVESTING_URL
     patch["source_published_at_kst"] = event.get("published_at_kst") or ""
     return patch
 
