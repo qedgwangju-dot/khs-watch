@@ -714,7 +714,10 @@
         "independent_cross_verified": false,
         "independent_source_count": 1,
         "samsung_official_confirmation": false,
-        "chemtronics_official_customer_confirmation": false
+        "chemtronics_official_customer_confirmation": false,
+        "fact_origin_sources": [
+          "DealSite"
+        ]
       },
       "unit": "stage,year",
       "period": "current",

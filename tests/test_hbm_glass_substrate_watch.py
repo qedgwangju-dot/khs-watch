@@ -116,8 +116,99 @@ class GlassSubstrateWatchTests(unittest.TestCase):
         self.assertEqual(v["fact_origin_source"], "DealSite")
         self.assertEqual(v["independent_source_count"], 1)
         self.assertFalse(v["independent_cross_verified"])
+        self.assertEqual(v["fact_origin_sources"], ["DealSite"])
         self.assertIsNone(v.get("samsung_official_confirmation"))
         self.assertIsNone(v.get("chemtronics_official_customer_confirmation"))
+
+    def test_independent_digitimes_followup_can_raise_origin_count_to_two(self):
+        old = {
+            "glass_substrate_track_version": 5,
+            "last_notified": {
+                "glass_hvm_stage|chemtronics|current": {
+                    "key":"glass_hvm_stage|chemtronics|current","axis":"glass_hvm_stage",
+                    "value":{
+                        "stage":"customer_evaluation","customer":"Samsung Electronics",
+                        "sample_delivered":True,"evaluation_ongoing":True,
+                        "fact_origin_source":"DealSite","fact_origin_sources":["DealSite"],
+                        "independent_source_count":1,"independent_cross_verified":False,
+                    },
+                    "unit":"stage,year","period":"current","as_of":"2026-10-07","evidence":"reported",
+                    "source_url":"https://dealsite.co.kr/example","source_title":"DealSite"
+                }
+            },
+            "latest": {}, "pending": {}, "coverage": {},
+        }
+        item = {
+            "title":"Samsung tests Chemtronics glass interposer samples independently",
+            "description":"","source":"DIGITIMES",
+            "published_at_kst":"2026-10-08T08:37:00+09:00",
+            "direct_link":"https://www.digitimes.com/news/independent-chemtronics.html",
+        }
+        body = (
+            "DIGITIMES supply-chain checks found Chemtronics delivered glass interposer samples "
+            "to Samsung Electronics and customer evaluation is ongoing."
+        )
+        rec = next(x for x in w.parse_glass_substrate_records(item, body) if x["axis"]=="glass_hvm_stage")
+        self.assertEqual(rec["value"]["fact_origin_source"], "DIGITIMES")
+        state = w.update_state(old, [rec], __import__("datetime").datetime(2026,10,8,10,0,0), [])
+        v = state["latest"]["glass_hvm_stage|chemtronics|current"]["value"]
+        self.assertEqual(set(v["fact_origin_sources"]), {"DealSite","DIGITIMES"})
+        self.assertEqual(v["independent_source_count"], 2)
+        self.assertTrue(v["independent_cross_verified"])
+        self.assertTrue(any("독립 출처 2곳 이상" in x for x in state["pending"]["glass_hvm_stage|chemtronics|current"]["reasons"]))
+
+    def test_digitimes_republisher_never_inflates_origin_count(self):
+        old = {
+            "glass_substrate_track_version": 5,
+            "last_notified": {
+                "glass_hvm_stage|chemtronics|current": {
+                    "key":"glass_hvm_stage|chemtronics|current","axis":"glass_hvm_stage",
+                    "value":{
+                        "stage":"customer_evaluation","customer":"Samsung Electronics",
+                        "sample_delivered":True,"evaluation_ongoing":True,
+                        "fact_origin_source":"DealSite","fact_origin_sources":["DealSite"],
+                        "independent_source_count":1,"independent_cross_verified":False,
+                    },
+                    "unit":"stage,year","period":"current","as_of":"2026-10-07","evidence":"reported",
+                    "source_url":"https://dealsite.co.kr/example","source_title":"DealSite"
+                }
+            },
+            "latest": {}, "pending": {}, "coverage": {},
+        }
+        item = {
+            "title":"Samsung tests Chemtronics glass interposer samples",
+            "description":"","source":"DIGITIMES",
+            "published_at_kst":"2026-10-08T08:37:00+09:00",
+            "direct_link":"https://www.digitimes.com/news/republication.html",
+        }
+        body = (
+            "Chemtronics delivered glass interposer samples to Samsung Electronics, with evaluation underway, "
+            "according to Korean business outlet DealSite."
+        )
+        rec = next(x for x in w.parse_glass_substrate_records(item, body) if x["axis"]=="glass_hvm_stage")
+        state = w.update_state(old, [rec], __import__("datetime").datetime(2026,10,8,10,0,0), [])
+        v = state["latest"]["glass_hvm_stage|chemtronics|current"]["value"]
+        self.assertEqual(v["fact_origin_sources"], ["DealSite"])
+        self.assertEqual(v["independent_source_count"], 1)
+        self.assertFalse(v["independent_cross_verified"])
+        self.assertNotIn("glass_hvm_stage|chemtronics|current", state["pending"])
+
+    def test_official_domain_without_customer_fact_does_not_fake_confirmation(self):
+        item = {
+            "title":"Samsung advanced packaging overview mentions Chemtronics",
+            "description":"","source":"Samsung",
+            "published_at_kst":"2026-10-08T08:00:00+09:00",
+            "direct_link":"https://semiconductor.samsung.com/news/packaging-example",
+        }
+        body = "Samsung Electronics describes glass interposer technology. Chemtronics is mentioned as an ecosystem company."
+        rows = w.parse_glass_substrate_records(item, body)
+        # No sample/evaluation/contract transition exists, so no HVM record should be created at all.
+        self.assertFalse(any(x["key"]=="glass_hvm_stage|chemtronics|current" for x in rows))
+
+    def test_korean_glass_company_names_pass_axis_gate(self):
+        self.assertTrue(w.is_axis_text("제이앤티씨 유리기판 TGV 공정시간 12시간을 분 단위로 단축"))
+        self.assertTrue(w.is_axis_text("LG이노텍 유리기판 파일럿 양산 검토"))
+        self.assertTrue(w.is_axis_text("SKC 앱솔릭스 유리기판 고객 검증"))
 
     def test_chemtronics_official_customer_confirmation_is_material(self):
         old = {"axis":"glass_hvm_stage","value":{

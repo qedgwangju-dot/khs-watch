@@ -211,7 +211,7 @@ def is_axis_text(text):
         r'(?:삼성|Samsung).*(?:Taylor|테일러).*(?:foundry|파운드리|mass\s*production|양산|customer|contract|수주|negotiation|협상)|'
         r'(?:510\s*[x×]\s*515|515\s*[x×]\s*510).*(?:glass\s*(?:substrate|core|panel)|TGV|유리\s*기판)|'
         r'(?:TSMC|CoPoS).*(?:glass\s*(?:substrate|core)|유리\s*기판).*(?:310\s*[x×]\s*310|510\s*[x×]\s*515|2030|pilot|mass\s*production|양산)|'
-        r'(?:Philoptics|필옵틱스|JNTC|Absolics|GlaSSEM|삼성전기|Chemtronics|켐트로닉스).*(?:TGV|glass\s*(?:substrate|core|interposer)|유리\s*(?:기판|인터포저)).*(?:yield|수율|sample|샘플|customer\s*(?:evaluation|validation)|고객\s*(?:평가|검증)|purchase\s*order|\bPO\b|pilot|mass\s*production|양산|검증|Samsung|삼성전자)|'
+        r'(?:Philoptics|필옵틱스|JNTC|제이앤티씨|Absolics|앱솔릭스|SKC|GlaSSEM|삼성전기|LG\s*Innotek|LG이노텍|Chemtronics|켐트로닉스).*(?:TGV|glass\s*(?:substrate|core|interposer)|유리\s*(?:기판|인터포저)).*(?:yield|수율|sample|샘플|customer\s*(?:evaluation|validation)|고객\s*(?:평가|검증)|purchase\s*order|\bPO\b|pilot|mass\s*production|양산|검증|Samsung|삼성전자|설비투자|공정\s*시간|12\s*시간|분\s*단위)|'
         r'(?:SemiAnalysis|TrendForce|Micron|Citi|J[.]?P[.]?\s*Morgan|BofA).*(?:2027|27E).*(?:HBM3E|HBM4|HBM4E).*(?:price|pricing|ASP|\$/Gb|per\s+Gb|가격)',
         text, re.I))
 
@@ -1221,27 +1221,46 @@ def parse_glass_substrate_records(item, body):
                 scope = 'lg_innotek_official_gumi_pilot_and_2027_2028_glass_commercialization'
             if entity == 'chemtronics' and re.search(r'(?:삼성전자|Samsung(?: Electronics)?)', text, re.I):
                 src_host = host(item.get('direct_link',''))
-                src_name = (item.get('source') or '').lower()
+                src_name_raw = item.get('source') or ''
+                src_name = src_name_raw.lower()
                 is_digitimes = 'digitimes' in src_host or 'digitimes' in src_name
                 cites_dealsite = bool(re.search(r'(?:according\s+to|citing|via)\s+(?:korean\s+business\s+outlet\s+)?DealSite|DealSite[^.]{0,50}?(?:보도|reported)', text, re.I))
                 is_chemtronics_official = src_host in ('chemtronics.co.kr','www.chemtronics.co.kr')
                 is_samsung_official = src_host in ('news.samsung.com','semiconductor.samsung.com','www.samsung.com','samsung.com')
+
+                sample_delivered = bool(re.search(r'(?:샘플)[^.]{0,40}?(?:납품|공급|전달)|(?:sample)[^.]{0,50}?(?:delivered|supplied|shipped)|(?:delivered|supplied|shipped)[^.]{0,60}?(?:sample|samples)', text, re.I))
+                evaluation_ongoing = bool(re.search(r'(?:평가|검증)[^.]{0,40}?(?:이어|진행|계속)|(?:evaluation|validation)[^.]{0,50}?(?:ongoing|continues?|underway)', text, re.I))
+                mass_supply_confirmed = bool(re.search(r'(?:양산\s*(?:공급|계약)\s*(?:확정|체결)|mass\s*production\s+supply\s+(?:confirmed|contracted))', text, re.I))
+                customer_fact_present = sample_delivered or evaluation_ongoing or mass_supply_confirmed
+
+                if cites_dealsite:
+                    origin_source = 'DealSite'
+                elif is_samsung_official and customer_fact_present:
+                    origin_source = 'Samsung Electronics'
+                elif is_chemtronics_official and customer_fact_present:
+                    origin_source = 'Chemtronics'
+                elif is_digitimes:
+                    origin_source = 'DIGITIMES'
+                else:
+                    origin_source = src_name_raw.strip() or src_host or None
+
                 value.update({
                     'customer': 'Samsung Electronics',
                     'product': 'glass_interposer',
-                    'sample_delivered': bool(re.search(r'(?:샘플)[^.]{0,40}?(?:납품|공급|전달)|(?:sample)[^.]{0,50}?(?:delivered|supplied|shipped)|(?:delivered|supplied|shipped)[^.]{0,60}?(?:sample|samples)', text, re.I)),
-                    'evaluation_ongoing': bool(re.search(r'(?:평가|검증)[^.]{0,40}?(?:이어|진행|계속)|(?:evaluation|validation)[^.]{0,50}?(?:ongoing|continues?|underway)', text, re.I)),
+                    'sample_delivered': sample_delivered,
+                    'evaluation_ongoing': evaluation_ongoing,
                     'issue_response_ongoing': bool(re.search(r'(?:이슈|문제)[^.]{0,50}?(?:대응|보완)|(?:issue|problem)[^.]{0,50}?(?:address|remediat|respond|fix)', text, re.I)),
                     'sample_process': 'existing_method' if re.search(r'(?:기존\s*방식|existing\s+(?:method|process))', text, re.I) else None,
                     'new_metal_fill_stage': 'development' if re.search(r'(?:새롭게|신규|new)[^.]{0,80}?(?:금속\s*충진|metal\s*fill)', text, re.I) else None,
                     'new_metal_fill_sample_delivered': False if re.search(r'(?:새롭게|신규|new)[^.]{0,100}?(?:금속\s*충진|metal\s*fill)[^.]{0,120}?(?:샘플)[^.]{0,60}?(?:나가지는\s*않|미공급|아직\s*.*않)|(?:new)[^.]{0,100}?(?:metal\s*fill)[^.]{0,120}?(?:sample)[^.]{0,60}?(?:not\s+(?:yet\s+)?(?:delivered|shipped|supplied))', text, re.I) else None,
-                    'mass_production_supply_confirmed': bool(re.search(r'(?:양산\s*(?:공급|계약)\s*(?:확정|체결)|mass\s*production\s+supply\s+(?:confirmed|contracted))', text, re.I)),
-                    'fact_origin_source': 'DealSite' if cites_dealsite or is_digitimes else None,
+                    'mass_production_supply_confirmed': mass_supply_confirmed,
+                    'fact_origin_source': origin_source,
+                    'fact_origin_sources': [origin_source] if origin_source else None,
                     'digitimes_republisher': True if is_digitimes and cites_dealsite else None,
-                    'independent_cross_verified': False if is_digitimes and cites_dealsite else None,
-                    'independent_source_count': 1 if is_digitimes and cites_dealsite else None,
-                    'samsung_official_confirmation': True if is_samsung_official else None,
-                    'chemtronics_official_customer_confirmation': True if is_chemtronics_official else None,
+                    'independent_cross_verified': False,
+                    'independent_source_count': 1 if origin_source else None,
+                    'samsung_official_confirmation': True if is_samsung_official and customer_fact_present else None,
+                    'chemtronics_official_customer_confirmation': True if is_chemtronics_official and customer_fact_present else None,
                 })
                 scope = 'chemtronics_samsung_glass_interposer_reported_customer_evaluation_not_mass_production'
             rows.append(make_record(
@@ -2031,9 +2050,23 @@ def update_state(state, records, now, seeds=None):
             for row in rows:
                 merged = copy.deepcopy(row)
                 merged_value = copy.deepcopy(prior.get('value') or {})
-                for field, value in (row.get('value') or {}).items():
+                incoming_value = row.get('value') or {}
+                for field, value in incoming_value.items():
                     if value is not None:
                         merged_value[field] = value
+                if row.get('key') == 'glass_hvm_stage|chemtronics|current':
+                    origins = set(merged_value.get('fact_origin_sources') or [])
+                    if not origins and merged_value.get('fact_origin_source'):
+                        origins.add(merged_value['fact_origin_source'])
+                    origins.update(incoming_value.get('fact_origin_sources') or [])
+                    if incoming_value.get('fact_origin_source'):
+                        origins.add(incoming_value['fact_origin_source'])
+                    origins.discard(None)
+                    origins.discard('')
+                    if origins:
+                        merged_value['fact_origin_sources'] = sorted(origins)
+                        merged_value['independent_source_count'] = len(origins)
+                        merged_value['independent_cross_verified'] = len(origins) >= 2
                 merged['value'] = merged_value
                 normalized.append(merged)
             rows = normalized
@@ -2399,7 +2432,9 @@ def render(change, rate=None):
         if v.get('customer') == 'Samsung Electronics':
             lines.append('• 고객 실명 삼성전자는 보도 단계로 저장합니다. 켐트로닉스·삼성전자 공식 확인 전에는 확정 공급계약·양산매출로 승격하지 않습니다.')
             if v.get('digitimes_republisher'):
-                lines.append('• 출처 계보: DealSite 원보도 → DIGITIMES 재인용. 독립된 2개 검증 출처로 계산하지 않습니다.')
+                lines.append('• 출처 계보: DealSite 원보도 → DIGITIMES 재인용. 기사 수가 2개여도 독립된 2개 검증 출처로 계산하지 않습니다.')
+            if v.get('fact_origin_sources'):
+                lines.append('• 독립 사실 원천: ' + ', '.join(v.get('fact_origin_sources') or []) + f" · {int(v.get('independent_source_count') or 0)}곳")
             lines.append(
                 '• 회사 공식 확인: 삼성전자 ' + ('확인' if v.get('samsung_official_confirmation') else '미확인')
                 + ' · 켐트로닉스 ' + ('확인' if v.get('chemtronics_official_customer_confirmation') else '미확인')
