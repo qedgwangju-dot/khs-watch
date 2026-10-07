@@ -832,6 +832,86 @@ jobs:
           echo "KHS confirmed watch state was not persisted after eight attempts." >&2
           exit 1
 
+      - name: Commit silent Hanul observation state
+        if: always() && hashFiles('out/khs_nuclear_policy_alert.md') == ''
+        run: |
+          if git diff --quiet -- data/khs_nuclear_policy_seen.json; then
+            echo "Hanul silent state unchanged."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          pending="$RUNNER_TEMP/khs_nuclear_policy_seen.silent.json"
+          cp data/khs_nuclear_policy_seen.json "$pending"
+
+          for attempt in 1 2 3 4 5 6 7 8; do
+            git fetch origin main
+            git reset --hard origin/main
+
+            python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          pending = Path(os.environ["RUNNER_TEMP"]) / "khs_nuclear_policy_seen.silent.json"
+          target = Path("data/khs_nuclear_policy_seen.json")
+
+          try:
+              incoming = json.loads(pending.read_text(encoding="utf-8"))
+          except Exception as exc:
+              raise SystemExit(f"invalid pending nuclear state: {exc}")
+
+          try:
+              base = json.loads(target.read_text(encoding="utf-8")) if target.exists() else {}
+          except Exception:
+              base = {}
+
+          def merge(left, right, key=""):
+              if isinstance(left, dict) and isinstance(right, dict):
+                  out = dict(left)
+                  for child_key, value in right.items():
+                      out[child_key] = merge(out.get(child_key), value, child_key)
+                  return out
+              if isinstance(left, list) and isinstance(right, list):
+                  out = list(left)
+                  for value in right:
+                      if value not in out:
+                          out.append(value)
+                  return out
+              if (
+                  isinstance(left, str)
+                  and isinstance(right, str)
+                  and (key.endswith("_at_kst") or key.endswith("_at_utc"))
+              ):
+                  return max(left, right)
+              return right
+
+          target.write_text(
+              json.dumps(merge(base, incoming), ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          PY
+
+            git add data/khs_nuclear_policy_seen.json
+            if git diff --cached --quiet; then
+              echo "Hanul silent state already present on main."
+              exit 0
+            fi
+
+            git commit -m "Persist silent Hanul operation state [skip ci]"
+            if git push origin HEAD:main; then
+              echo "hanul4_silent_state_push=success attempt=$attempt"
+              exit 0
+            fi
+            echo "Hanul silent-state push raced with main; retry=$attempt"
+            sleep "$attempt"
+          done
+
+          echo "Hanul silent state was not persisted after eight attempts." >&2
+          exit 1
+
       - name: Record manual runtime verification
         if: github.event_name == 'workflow_dispatch' && success()
         run: |
