@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 106
+VERSION = 107
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -2475,10 +2475,20 @@ def quarterly_earnings_release_observation(alert: dict) -> dict[str, str]:
         source,
     )
     if not release:
+        release = re.search(
+            rf'{re.escape(issuer)}(?:\[\d{{6}}\])?(?:은|는|가)?[^\n]{{0,40}}?'
+            rf'(?P<year>20\d{{2}})년\s+{quarter}분기\s+연결\s*기준\s+매출액\s+'
+            rf'[^\n]{{0,85}}?영업이익\s+(?P<profit>\d[\d,천백십만억조]*\s*원)'
+            rf'[^\n]{{0,90}}?잠정\s*실적을\s+발표했다',
+            source,
+        )
+    if not release:
+        return {}
+    if release.groupdict().get('year') and release['year'] != published[:4]:
         return {}
     return {'issuer': issuer, 'fiscal_year': published[:4], 'quarter': quarter,
             'metric': 'consolidated_operating_profit',
-            'amount_won': korean_amount_value(release['profit'].removesuffix('원')),
+            'amount_won': korean_amount_value(release['profit'].removesuffix('원').replace(' ', '')),
             'stage': 'preliminary_filing'}
 
 

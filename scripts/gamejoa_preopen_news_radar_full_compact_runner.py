@@ -10505,6 +10505,38 @@ def is_low_value_market_commentary(alert: dict) -> bool:
     return not has_term(title, hard_facts)
 
 
+def low_impact_live_publication_reason(alert: dict, now) -> str:
+    if os.getenv('RADAR_RUN_MODE', '').strip().lower() != 'live':
+        return ''
+    title = str(alert.get('source_title') or alert.get('news') or '')
+    body = market_materiality.source_reported_body(
+        str(alert.get('source_body') or '') if alert.get('body_verified') else ''
+    )
+    if re.search(r'하이브리드\s*(?:선택률|선택\s*비율)', title) and not re.search(
+        r'(?:판매량|판매대수|판매실적|매출|영업이익)[^.!?\n]{0,35}?\d[\d,]*\s*(?:대|억원|조원)', body
+    ):
+        return 'model_mix_without_sales_volume_or_earnings'
+    if re.search(r'(?:TIGER|KODEX|ACE|SOL|RISE)[^\n]{0,75}?(?:ETF|커버드콜)', title, re.I):
+        if re.search(r'(?:연초\s*이후|누적)[^\n]{0,45}?개인\s*순매수|개인\s*순매수[^\n]{0,45}?(?:연초\s*이후|누적)', title):
+            return 'single_sponsor_cumulative_etf_promotion'
+        if re.search(r'(?:ETF|상장지수펀드)[^\n]{0,25}?(?:신규\s*)?상장|(?:신규\s*)?상장[^\n]{0,25}?(?:ETF|상장지수펀드)', title) and not re.search(
+            r'(?:설정액|운용자산|상장액|첫날\s*거래대금)[^.!?\n]{0,35}?\d[\d,]*\s*(?:억|조)\s*원', body
+        ):
+            return 'routine_etf_product_listing_without_market_flow'
+    if re.match(r'^[가-힣A-Za-z]+(?:證|증권)\s*[“"\']', title) and title.count('·') >= 2:
+        if not re.search(r'목표주가[^.!?\n]{0,50}?(?:상향|하향)|(?:상향|하향)[^.!?\n]{0,50}?목표주가', body):
+            return 'multi_issuer_broker_opinion_without_revision'
+    published = detail_queue.parse_time(alert.get('published'))
+    if published and published.astimezone(now.tzinfo).date() < now.date() and re.search(
+        r'마감시황|마감\s*시황|\[.*마감.*\]', title
+    ):
+        return 'previous_session_market_close_recap'
+    if re.search(r'자사주\s*매입[^\n]{0,18}?(?:종료|마무리)', title) and re.search(r'알려지면서|것으로\s+알려', body):
+        if not re.search(r'(?:매입\s*(?:완료|종료)|취득\s*완료)[^.!?\n]{0,30}?공시|공시[^.!?\n]{0,30}?(?:매입\s*(?:완료|종료)|취득\s*완료)', body):
+            return 'unconfirmed_buyback_completion_commentary'
+    return ''
+
+
 def is_stale_opening_market_report(alert: dict, now) -> bool:
     if os.getenv("RADAR_RUN_MODE", "").strip().lower() != "live" or now.hour < 12:
         return False
@@ -10789,6 +10821,10 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
             continue
         if alert["market_materiality"]["disposition"] != "keep" or alert["market_materiality"]["priority"] < 2:
             alert["_exclusion_reason"] = "no_source_market_change_evidence:" + alert["market_materiality"].get("scope_note", alert["market_materiality"]["reason"])
+            continue
+        routine_reason = low_impact_live_publication_reason(alert, now)
+        if routine_reason:
+            alert['_exclusion_reason'] = 'low_impact_live_publication:' + routine_reason
             continue
         if is_dedicated_fcc_optical_transceiver_policy(alert):
             alert["_exclusion_reason"] = "dedicated_khs_policy_owner:fcc_optical_transceiver"

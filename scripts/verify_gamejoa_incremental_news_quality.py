@@ -4414,6 +4414,11 @@ class IncrementalNewsTests(unittest.TestCase):
             **second, 'published': '2027-10-07T11:22+09:00'}))
         self.assertEqual(materiality.quarterly_earnings_release_observation({
             **second, 'body_verified': False}), {})
+        press_release = {'source_title': 'LG전자, 3분기 영업이익 전년 比 13.5% ↑',
+                         'published': published, 'body_verified': True,
+                         'source_body': ('LG전자가 2026년 3분기 연결기준 매출액 23조 8,270억 원(YoY +8.9%), '
+                                         '영업이익 7,818억 원(YoY +13.5%)의 잠정실적을 발표했다.')}
+        self.assertEqual(materiality.source_event_identity(press_release), identity)
 
     def test_verified_quarterly_earnings_alias_requires_matching_prior_receipt(self):
         proof = next(item for item in json.loads(telegram.VERIFIED_EVENT_ALIAS_PATH.read_text(encoding='utf-8'))['entries']
@@ -4447,6 +4452,48 @@ class IncrementalNewsTests(unittest.TestCase):
         updated = radar.source_headline_event_fact(title, body.replace('총 5만t 규모', '총 6만t 규모'))
         self.assertIn('6만t 체제', updated)
         self.assertNotIn('5만t 체제', updated)
+
+    def test_live_radar_withholds_routine_items_and_keeps_material_revisions(self):
+        now = dt.datetime(2026, 10, 7, 14, 37, tzinfo=dt.timezone(dt.timedelta(hours=9)))
+        cases = (
+            ('model_mix_without_sales_volume_or_earnings',
+             alert('KGM 액티언, 하이브리드 선택률 82%',
+                   '구매 고객 가운데 하이브리드 선택률이 82%로 집계됐다.')),
+            ('single_sponsor_cumulative_etf_promotion',
+             alert("미래에셋 TIGER 미국 ETF, 연초 이후 개인 순매수 1조 돌파",
+                   '세 ETF의 연초 이후 개인 순매수 합계가 1조원을 돌파했다고 밝혔다.')),
+            ('routine_etf_product_listing_without_market_flow',
+             alert("신한운용, 'SOL 글로벌DRAM반도체플러스 ETF' 신규 상장",
+                   '신한자산운용은 글로벌 메모리 반도체 ETF를 유가증권시장에 상장했다고 밝혔다.')),
+            ('multi_issuer_broker_opinion_without_revision',
+             alert('SK證 “KB·신한·하나금융, 주주환원 50%대…금리 상승 수혜”',
+                   'SK증권은 세 금융지주의 투자 매력이 높다고 평가했다.')),
+            ('previous_session_market_close_recap',
+             {**alert('코스피, 삼전·하닉 자사주 매입 종료 경계감에 약세[fn마감시황]',
+                      '전 거래일 코스피가 약세로 마감했다.'),
+              'published': '2026-10-06T15:30:00+09:00'}),
+            ('unconfirmed_buyback_completion_commentary',
+             alert("삼성전자, 자사주 매입 '일단 종료'…주가는 어떻게 되나",
+                   '자사주 매입이 마무리된 것으로 알려지면서 단기 변동성이 커질 수 있다.')),
+        )
+        with patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}):
+            for reason, item in cases:
+                with self.subTest(reason=reason):
+                    self.assertEqual(radar.low_impact_live_publication_reason(item, now), reason)
+            positives = (
+                alert('자동차사, 하이브리드 판매 확대', '하이브리드 판매량은 8만대로 전년 대비 증가했다.'),
+                alert('국내 ETF 개인 순매수 70조원 육박', '개인투자자 순매수 규모가 70조원에 육박했다.'),
+                alert('반도체 ETF 5000억원 유입', '이번 달 해당 ETF에 5000억원이 순유입됐다.'),
+                alert('SK證, 반도체사 목표주가 상향', '목표주가를 5만원에서 7만원으로 상향했다.'),
+                {**alert('코스피 마감, 외국인 순매수 확대', '오늘 코스피가 상승 마감했다.'),
+                 'published': '2026-10-07T15:31:00+09:00'},
+                alert('삼성전자, 자사주 취득 완료 공시', '삼성전자는 자사주 매입 완료를 공시했다.'),
+            )
+            for item in positives:
+                with self.subTest(positive=item['source_title']):
+                    self.assertEqual(radar.low_impact_live_publication_reason(item, now), '')
+        with patch.dict(os.environ, {'RADAR_RUN_MODE': 'preopen'}):
+            self.assertEqual(radar.low_impact_live_publication_reason(cases[0][1], now), '')
 
 
 if __name__ == "__main__":
