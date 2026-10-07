@@ -2632,10 +2632,11 @@ def source_headline_event_fact(title: str, body: str) -> str:
         second = re.search(r'2공장\s+상공정은\s+연간\s+([\d만천백십]+t)의\s+탄산리튬\s+생산능력을\s+갖췄다', source)
         total = re.search(r'아르헨티나\s+현지\s+생산능력은\s+연간\s+([\d만천백십]+t)으로\s+늘어난다', source)
         downstream = re.search(r'2027년[^.!?\n]{0,70}?하공정과\s+연계', source)
-        if completed and second and total and downstream:
+        target = re.search(r'총\s+([\d만천백십]+t)\s+규모의\s+염수\s+기반\s+수산화리튬\s+생산체제', source)
+        if completed and second and total and downstream and target:
             fact = (f'포스코홀딩스가 아르헨티나 염수리튬 2공장 상공정을 준공했다. '
                     f'2공장 탄산리튬 연산 {second[1]}, 현지 합산 연산 {total[1]}이며 '
-                    '수산화리튬 5만t 체제는 국내 하공정 연계 이후 목표다.')
+                    f'수산화리튬 {target[1]} 체제는 국내 하공정 연계 이후 목표다.')
             return fact if core_sentence_is_complete(fact) else ''
     if 'LG전자' in title and re.search(r'3분기.*누적.*(?:매출|영업)', title):
         quarter = re.search(r'3분기\s+연결기준\s+매출액\s+(\d+조\d+억원),\s+영업이익\s+(\d+억원)의\s+잠정실적', source)

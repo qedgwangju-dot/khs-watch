@@ -4433,6 +4433,21 @@ class IncrementalNewsTests(unittest.TestCase):
                 if expected:
                     self.assertEqual(state['seen'][key]['event_alias_evidence_message_id'], 2388)
 
+    def test_lithium_downstream_target_is_read_from_the_source(self):
+        title = '포스코, 아르헨티나서 리튬 5만t 생산체제 구축 눈앞'
+        body = ('포스코홀딩스는 6일 아르헨티나 염수리튬 2공장 상공정 준공식을 개최했다고 밝혔다. '
+                '2공장 상공정은 연간 2만3000t의 탄산리튬 생산능력을 갖췄다. '
+                '아르헨티나 현지 생산능력은 연간 4만8000t으로 늘어난다. '
+                '2027년 국내 하공정과 연계한다. '
+                '총 5만t 규모의 염수 기반 수산화리튬 생산체제를 구축하게 된다.')
+        core = radar.source_headline_event_fact(title, body)
+        self.assertIn('2만3000t', core)
+        self.assertIn('4만8000t', core)
+        self.assertIn('5만t 체제', core)
+        updated = radar.source_headline_event_fact(title, body.replace('총 5만t 규모', '총 6만t 규모'))
+        self.assertIn('6만t 체제', updated)
+        self.assertNotIn('5만t 체제', updated)
+
 
 if __name__ == "__main__":
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(IncrementalNewsTests)
