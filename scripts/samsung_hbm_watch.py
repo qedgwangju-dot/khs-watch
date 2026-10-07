@@ -1029,6 +1029,25 @@ def _fmt_usd(value: float | None) -> str:
     return f"{value/1_000_000:.1f}백만달러"
 
 
+def _regional_direction(mom: float | None, qoq3: float | None) -> str:
+    """Readable direction label without turning a regional proxy into company sales."""
+    if mom is None:
+        return "판정 보류"
+    if mom >= 20 and (qoq3 is None or qoq3 >= 0):
+        return "▲ 강한 증가"
+    if mom >= 5:
+        if qoq3 is not None and qoq3 <= -5:
+            return "▲ 단기 반등"
+        return "▲ 증가"
+    if mom <= -20 and (qoq3 is None or qoq3 <= 0):
+        return "▼ 강한 감소"
+    if mom <= -5:
+        if qoq3 is not None and qoq3 >= 5:
+            return "▼ 단기 둔화"
+        return "▼ 감소"
+    return "→ 보합"
+
+
 def _unit_value(amount: float | None, weight: float | None) -> float | None:
     if amount is None or weight in (None, 0):
         return None
@@ -2683,6 +2702,12 @@ def build_official_source_health_alert(now: datetime, target_month: str, errors:
 
 
 def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: dict) -> str:
+    """Render company-first HBM export direction, then the market/technical appendix.
+
+    Chungnam/Chungbuk are exact official regional HSK10 proxy series, not company
+    export ledgers. Icheon is never imputed, and different HS granularities are
+    never summed.
+    """
     month = official["month"]
     cur = official["series"][month]
     prev_m = _month_shift(month, -1)
@@ -2691,6 +2716,7 @@ def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: di
     prev = official["series"].get(prev_m, {})
     qbase = official["series"].get(prev_q, {})
     ybase = official["series"].get(prev_y, {})
+    target_month = _previous_month(now)
 
     nat_mom = _pct(cur["national_amount"], prev.get("national_amount"))
     nat_q = _pct(cur["national_amount"], qbase.get("national_amount"))
@@ -2700,8 +2726,11 @@ def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: di
 
     sam_mom = _pct(cur["samsung_region_amount"], prev.get("samsung_region_amount"))
     sam_q = _pct(cur["samsung_region_amount"], qbase.get("samsung_region_amount"))
+    sam_y = _pct(cur["samsung_region_amount"], ybase.get("samsung_region_amount"))
     cb_mom = _pct(cur["hynix_chungbuk_amount"], prev.get("hynix_chungbuk_amount"))
     cb_q = _pct(cur["hynix_chungbuk_amount"], qbase.get("hynix_chungbuk_amount"))
+    cb_y = _pct(cur["hynix_chungbuk_amount"], ybase.get("hynix_chungbuk_amount"))
+
     my_mom = _pct(cur.get("malaysia_amount"), prev.get("malaysia_amount"))
     my_q = _pct(cur.get("malaysia_amount"), qbase.get("malaysia_amount"))
     my_y = _pct(cur.get("malaysia_amount"), ybase.get("malaysia_amount"))
@@ -2713,86 +2742,117 @@ def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: di
     cb_krw = krw_large(cur["hynix_chungbuk_amount"], rate)
     my_krw = krw_large(cur.get("malaysia_amount"), rate) if cur.get("malaysia_amount") is not None else "확인 불가"
 
+    sam_direction = _regional_direction(sam_mom, sam_q)
+    hynix_direction = _regional_direction(cb_mom, cb_q)
+
     lines = [
-        "🚨 <b>삼성·SK하이닉스 HBM 월간 비교</b>",
+        "🚨 <b>삼성전자 vs SK하이닉스 HBM 수출 방향</b>",
         "━━━━━━━━━━━━━━━━",
-        "<b>[공식 원자료 최신월]</b>",
-        f"• 관세청 확정치 <b>{month[:4]}년 {int(month[4:])}월</b>을 직접 재조회했습니다.",
-        "• 과거 숫자를 최신값으로 재사용하지 않고, 새 확정월이 생긴 경우에만 월간 알림을 갱신합니다.",
-        "",
-        "<b>[1. 전국 HBM 포함 MCP — 정확한 HSK10]</b>",
-        f"• HSK <b>{official['hs']}</b> 복합구조칩 집적회로(HBM 포함): <b>{_fmt_usd(cur['national_amount'])} · {nat_krw}</b>",
-        f"• 변화: 전월 <b>{_fmt_pct(nat_mom)}</b> · 3개월 전 대비 <b>{_fmt_pct(nat_q)}</b> · 전년동월 <b>{_fmt_pct(nat_y)}</b>",
+        f"📅 <b>공식 지역 원자료 최신 확인월: {month[:4]}년 {int(month[4:])}월</b>",
     ]
-    if nat_uv is not None:
-        lines.append(f"• 중량당 단가: <b>\${nat_uv:,.0f}/kg</b> · 전월 <b>{_fmt_pct(_pct(nat_uv, nat_prev_uv))}</b>")
+    if month != target_month:
+        lines.append(
+            f"• {target_month[:4]}년 {int(target_month[4:])}월 시도별 HSK10은 아직 이 감시 경로의 공식 최신월로 확인되지 않아 "
+            f"<b>{month[:4]}년 {int(month[4:])}월</b>을 최신 기준으로 표시합니다."
+        )
+    lines += [
+        "• 아래 금액은 <b>회사 직접 수출액이 아니라 관세청 지역 HSK10 대용지표</b>입니다.",
+        "",
+        "<b>[한눈에]</b>",
+        f"🔵 <b>삼성전자 방향(충남)</b>: <b>{sam_direction}</b> · 전월 {_fmt_pct(sam_mom)} · 3개월 {_fmt_pct(sam_q)}",
+        f"🟠 <b>SK하이닉스 방향(충북·청주)</b>: <b>{hynix_direction}</b> · 전월 {_fmt_pct(cb_mom)} · 3개월 {_fmt_pct(cb_q)}",
+    ]
+    if official.get("icheon_public_available") and cur.get("icheon_amount") is not None:
+        lines.append("⚪ <b>SK하이닉스 이천</b>: 공개 보조치 확인 · 충북 HSK10과 코드 단위가 다르면 <b>합산하지 않습니다.</b>")
     else:
-        lines.append("• 중량당 단가: <b>관세청 중량값 확인 불가</b> — 추정하지 않음")
+        lines.append("⚪ <b>SK하이닉스 이천</b>: 공개 HSK10 확인 불가 · <b>SK하이닉스 전체값으로 합산하지 않습니다.</b>")
 
     lines += [
         "",
-        "<b>[2. 지역 방향 — 관세청 시도별 HSK10]</b>",
-        f"• <b>충남</b> HSK {official['region_hs']} 복합구조칩 집적회로(HBM 포함): <b>{_fmt_usd(cur['samsung_region_amount'])} · {sam_krw}</b> | 전월 {_fmt_pct(sam_mom)} | 3개월 전 {_fmt_pct(sam_q)}",
-        "  → 삼성전자 생산지역 방향을 보는 <b>정밀 지역 대용지표</b>이며 회사 직접 수출액과 동일하지 않습니다.",
-        f"• <b>충북</b> HSK {official['region_hs']} 복합구조칩 집적회로(HBM 포함): <b>{_fmt_usd(cur['hynix_chungbuk_amount'])} · {cb_krw}</b> | 전월 {_fmt_pct(cb_mom)} | 3개월 전 {_fmt_pct(cb_q)}",
-        "  → SK하이닉스 청주 생산지역 방향을 보는 <b>정밀 지역 대용지표</b>이며 회사 직접 수출액과 동일하지 않습니다.",
+        "🔵 <b>[삼성전자 방향 — 충남]</b>",
+        f"• HSK10 <b>{official['region_hs']}</b>: <b>{_fmt_usd(cur['samsung_region_amount'])} · {sam_krw}</b>",
+        f"• 변화: 전월 <b>{_fmt_pct(sam_mom)}</b> · 3개월 <b>{_fmt_pct(sam_q)}</b> · 전년동월 <b>{_fmt_pct(sam_y)}</b>",
+        f"• 판정: <b>{sam_direction}</b>",
+        "• 의미: 삼성전자 생산지역 방향을 보는 정밀 대용지표입니다. <b>삼성전자 직접 수출액·HBM 매출·점유율로 치환하지 않습니다.</b>",
+        "",
+        "🟠 <b>[SK하이닉스 방향 — 충북·청주]</b>",
+        f"• HSK10 <b>{official['region_hs']}</b>: <b>{_fmt_usd(cur['hynix_chungbuk_amount'])} · {cb_krw}</b>",
+        f"• 변화: 전월 <b>{_fmt_pct(cb_mom)}</b> · 3개월 <b>{_fmt_pct(cb_q)}</b> · 전년동월 <b>{_fmt_pct(cb_y)}</b>",
+        f"• 판정: <b>{hynix_direction}</b>",
+        "• 의미: SK하이닉스 청주 생산지역 방향을 보는 정밀 대용지표입니다. <b>SK하이닉스 전체 직접 수출액으로 치환하지 않습니다.</b>",
     ]
 
     if official.get("icheon_public_available") and cur.get("icheon_amount") is not None:
         lines += [
-            f"• <b>이천</b> HS {official.get('icheon_hs', REGION_HS6)} 보조치: {_fmt_usd(cur['icheon_amount'])}",
-            "  → 공개 원자료가 확인된 경우에만 충북과 함께 표시합니다.",
+            f"• 이천 보조치(HS {official.get('icheon_hs', REGION_HS6)}): <b>{_fmt_usd(cur['icheon_amount'])}</b>",
+            "• 이천 보조치는 충북 HSK10과 코드 단위가 다르면 <b>병기만 하고 합산하지 않습니다.</b>",
         ]
     else:
         lines += [
-            "• <b>이천</b>: 현재 공개 원자료 자동조회에서 수치를 확인하지 못해 <b>0으로 처리하거나 추정하지 않습니다.</b>",
-            "  → 2026년 9월 1일부터 K-stat의 시·군·구 HSK 10단위 품목통계는 전체 비공개이며, HS 2·4·6 중량도 비공개입니다.",
+            "• 이천: <b>공개 HSK10 확인 불가</b> — 0으로 두거나 충북 값에 추정 합산하지 않습니다.",
+            "• K-stat은 2026-09-01부터 시·군·구 HSK 10단위 품목통계를 전체 비공개로 전환했습니다.",
         ]
 
     lines += [
         "",
-        "<b>[3. 말레이시아 HSK10 — 첨단패키징 이동 보조축]</b>",
+        "<b>[핵심 판정]</b>",
+        f"• 공개 지역 대용지표 기준: <b>삼성전자 방향은 {sam_direction.replace('▲ ', '').replace('▼ ', '').replace('→ ', '')}</b>, "
+        f"<b>SK하이닉스 청주 방향은 {hynix_direction.replace('▲ ', '').replace('▼ ', '').replace('→ ', '')}</b>입니다.",
+        "• 다만 <b>이천 HSK10이 공개되지 않고 지역통계는 회사 직접 수출액이 아니므로</b> "
+        "‘삼성전자 수출이 SK하이닉스보다 몇 배’ 또는 회사 점유율로 해석하지 않습니다.",
+        "",
+        "<<<TELEGRAM_MESSAGE_BREAK>>>",
+        "",
+        "📊 <b>HBM 수출 원자료 세부</b>",
+        "━━━━━━━━━━━━━━━━",
+        "<b>[1. 전국 HBM 포함 MCP]</b>",
+        f"• HSK10 <b>{official['hs']}</b>: <b>{_fmt_usd(cur['national_amount'])} · {nat_krw}</b>",
+        f"• 변화: 전월 <b>{_fmt_pct(nat_mom)}</b> · 3개월 <b>{_fmt_pct(nat_q)}</b> · 전년동월 <b>{_fmt_pct(nat_y)}</b>",
+    ]
+    if nat_uv is not None:
+        nat_uv_krw = f"약 {nat_uv * rate:,.0f}원/kg" if rate else "원화 환산 확인 불가"
+        lines.append(
+            f"• 중량당 단가: <b>&#36;{nat_uv:,.0f}/kg · {nat_uv_krw}</b> · 전월 <b>{_fmt_pct(_pct(nat_uv, nat_prev_uv))}</b>"
+        )
+    else:
+        lines.append("• 중량당 단가: <b>관세청 중량값 확인 불가</b> — 추정하지 않음")
+    lines += [
+        "• 주의: 전국 HSK10 8542323000은 <b>HBM을 포함하는 MCP 통계</b>이며 HBM 전용 수출액은 아닙니다.",
+        "",
+        "<b>[2. 말레이시아 HSK10 — 첨단패키징 보조축]</b>",
     ]
     if official.get("malaysia_public_available") and cur.get("malaysia_amount") is not None:
         lines += [
-            f"• 한국→말레이시아 HSK <b>{official['hs']}</b>: <b>{_fmt_usd(cur.get('malaysia_amount'))} · {my_krw}</b>",
-            f"• 변화: 전월 <b>{_fmt_pct(my_mom)}</b> · 3개월 전 <b>{_fmt_pct(my_q)}</b> · 전년동월 <b>{_fmt_pct(my_y)}</b>",
+            f"• 한국→말레이시아 HSK10 <b>{official['hs']}</b>: <b>{_fmt_usd(cur.get('malaysia_amount'))} · {my_krw}</b>",
+            f"• 변화: 전월 <b>{_fmt_pct(my_mom)}</b> · 3개월 <b>{_fmt_pct(my_q)}</b> · 전년동월 <b>{_fmt_pct(my_y)}</b>",
         ]
         if my_uv is not None:
-            lines.append(f"• 중량당 단가: <b>\${my_uv:,.0f}/kg</b> · 전월 <b>{_fmt_pct(_pct(my_uv, my_prev_uv))}</b>")
+            my_uv_krw = f"약 {my_uv * rate:,.0f}원/kg" if rate else "원화 환산 확인 불가"
+            lines.append(f"• 중량당 단가: <b>&#36;{my_uv:,.0f}/kg · {my_uv_krw}</b> · 전월 <b>{_fmt_pct(_pct(my_uv, my_prev_uv))}</b>")
         else:
             lines.append("• 중량당 단가: <b>확인 불가</b> — 추정하지 않음")
         lines += [
-            "• 의미: 말레이시아 첨단패키징·조립 거점으로의 HBM 포함 복합메모리 이동을 보는 <b>보조 신호</b>",
-            "• 주의: 말레이시아향 HSK 8542323000 전체가 HBM 또는 Intel EMIB용이라는 뜻은 아닙니다.",
+            "• Intel Malaysia·EMIB 등 첨단패키징 이동을 보는 보조 신호이며, 전체가 HBM 또는 Intel 물량이라는 뜻은 아닙니다.",
             f"• Intel EMIB {href(INTEL_EMIB_OFFICIAL)} · Intel Malaysia {href(INTEL_MALAYSIA_OFFICIAL)}",
         ]
     else:
         lines += [
             "• 관세청 국가별 HSK10 직접값을 확인하지 못했습니다. <b>0으로 처리하거나 추정하지 않습니다.</b>",
-            "• 이 경우 Intel Malaysia·EMIB·HBM 관련 공식자료와 신뢰 보도를 보조 감시합니다.",
+            "• Intel Malaysia·EMIB·HBM 관련 공식자료와 신뢰 보도를 보조 감시합니다.",
         ]
 
     lines += [
         "",
-        "<b>[4. 회사별 정밀 대용지표]</b>",
-        "• 회사별 HBM 정밀 비교는 <b>충남 HSK10 vs 충북+이천 HSK10</b>을 사용한 Bernstein 등 신뢰 리서치가 새로 공개될 때 별도로 갱신합니다.",
-        "• 마지막 확인 기준선(2026년 7월): 충남은 4월 대비 <b>+122%</b>, 충북+이천은 약 <b>-27%</b>였습니다.",
-        "• 이 기준선을 8월·9월 현재값처럼 재사용하지 않습니다.",
-        "",
-        "<b>[판정]</b>",
-        "• <b>전국 HSK10</b>은 HBM 포함 MCP 업황의 가장 정밀한 공개 공식 월간축입니다.",
-        "• <b>충남·충북 시도별 HSK10</b>은 HBM 포함 복합구조칩 지역 대용지표이며 삼성·SK하이닉스 회사 직접 수출액과 1:1 대응하지 않습니다.",
-        "• 따라서 HBM 방향 판정은 전국 HSK10 + 지역 방향 + HBM4/HBM4E 제품혼합 + 고객 인증·실제 출하를 함께 봅니다.",
+        "<b>[3. 회사별 정밀 비교 기준선]</b>",
+        "• 과거 Bernstein 기준선(2026년 7월): 충남은 4월 대비 <b>+122%</b>, 충북+이천은 약 <b>-27%</b>.",
+        "• 이 수치는 <b>과거 동일 리서치 기준선</b>으로만 보존하며 8월·9월 현재값으로 재사용하지 않습니다.",
         "",
         "<b>[다음 알림]</b>",
-        "• 관세청에 새 월 HSK 8542323000 확정치가 생기는 즉시",
-        "• 전국 HBM 포함 MCP 수출액·중량당 단가의 방향이 크게 바뀔 때",
-        "• 충남·충북 지역 메모리 방향이 반전할 때",
-        "• 한국→말레이시아 HSK10 수출액·중량당 단가 방향이 크게 바뀔 때",
-        "• Intel Malaysia의 EMIB·HBM 첨단패키징 생산능력·투자·양산 상태가 바뀔 때",
-        "• Bernstein 등에서 충남 vs 충북+이천 HSK10 정밀 비교가 새로 확인될 때",
-        "• 삼성·SK하이닉스 HBM 매출·점유율·NVIDIA 공급물량이 새로 확인될 때",
+        "• 새 월 전국·충남·충북 HSK10이 공식 원자료로 모두 확인될 때",
+        "• 삼성전자 방향(충남) 또는 SK하이닉스 방향(충북·청주)이 반전할 때",
+        "• 이천 공개 가능 자료·Bernstein 등 회사별 정밀 대용지표가 새로 확인될 때",
+        "• 한국→말레이시아 HSK10 방향이 크게 바뀌거나 Intel Malaysia 첨단패키징 상태가 바뀔 때",
+        "• 삼성·SK하이닉스 HBM 실제 매출·점유율·NVIDIA 공급물량이 새로 확인될 때",
         "",
         f"<b>환율</b>: {html.escape(fx_basis)}",
         f"<b>조회</b>: {now.strftime('%Y-%m-%d %H:%M KST')}",
