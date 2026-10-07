@@ -78,6 +78,8 @@ NAND_DIVERGENCE_BASELINE = {
     "trendforce_nand_easing_half": "2H",
     "secondary_industry_new_fab_earliest_year": 2028,
     "secondary_industry_new_fab_timeline_official": False,
+    "secondary_fab_timeline_source_kind": "뉴시스 업계 관계자 익명 발언 · TrendForce 공식 가이던스 아님",
+    "secondary_fab_timeline_source_url": "https://www.newsis.com/view/NISX20261002_0003812363",
     "source": "TrendForce",
     "source_url": "https://www.trendforce.com/presscenter/news/20260930-13258.html",
     "research_url": "https://www.trendforce.com/research/download/RP260924PL",
@@ -2604,6 +2606,8 @@ def _extract_nand_divergence(item: dict) -> dict | None:
     ):
         obs["secondary_industry_new_fab_earliest_year"] = 2028
         obs["secondary_industry_new_fab_timeline_official"] = False
+        obs["secondary_fab_timeline_source_kind"] = "뉴시스 업계 관계자 익명 발언 · TrendForce 공식 가이던스 아님"
+        obs["secondary_fab_timeline_source_url"] = item.get("link") or ""
 
     if not obs:
         return None
@@ -3554,13 +3558,16 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             lines.append('  <a href="' + html.escape(divergence_source_url, quote=True) + '">TrendForce 4Q26 공식자료</a>')
         cap_url = divergence_state.get("capacity_source_url") or NAND_DIVERGENCE_BASELINE.get("capacity_source_url")
         ease_url = divergence_state.get("easing_source_url") or NAND_DIVERGENCE_BASELINE.get("easing_source_url")
-        secondary_url = divergence_state.get("secondary_source_url") or NAND_DIVERGENCE_BASELINE.get("secondary_source_url")
+        secondary_url = (
+            divergence_state.get("secondary_fab_timeline_source_url")
+            or NAND_DIVERGENCE_BASELINE.get("secondary_fab_timeline_source_url")
+        )
         if cap_url:
             lines.append('  <a href="' + html.escape(str(cap_url), quote=True) + '">NAND 신규 생산능력 2027~2028</a>')
         if ease_url:
             lines.append('  <a href="' + html.escape(str(ease_url), quote=True) + '">2H27 수급 완화 반대축</a>')
         if secondary_url:
-            lines.append('  <a href="' + html.escape(str(secondary_url), quote=True) + '">국내 기사·업계발언</a>')
+            lines.append('  <a href="' + html.escape(str(secondary_url), quote=True) + '">뉴시스 업계 관계자 발언</a>')
 
     emitted = 0
     for prepared in prepared_items:
