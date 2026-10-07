@@ -86,7 +86,7 @@
   },
   "_delivery": {
     "id": "aef53349071cd4d9c58b40d4e0c42366bb106338fcf081ed663194c6bd79ac19",
-    "status": "queued",
+    "status": "in_flight",
     "created_at_kst": "2026-10-08T08:21:55+09:00",
     "chunks": [
       "🚨 <b>Solidigm IPO 상태 변화</b>\n━━━━━━━━━━━━━━━━\n• 현재 단계: <b>대표주관사·주관단 선정</b>\n• 확인 수준: <b>Reuters 복수 관계자 보도 단계</b>\n• 목표 시점: <b>이르면 2027년</b>\n• 거론 기업가치: <b>최대 1,000억달러(약 133조8,690억원)</b>\n• 조달 가능 규모: <b>100억달러(약 13조3,869억원)</b>\n• Pre-IPO 별도 검토액: 36억달러(약 4조8,193억원)\n• 주관사: Citigroup, Goldman Sachs, JPMorgan Chase, Morgan Stanley, UBS\n• 공모 구조: 신주 포함\n• 이번 변화: <b>상장 단계 주관사 선정 경쟁(피치 미팅)→대표주관사·주관단 선정 · 기업가치 -33.3% · 조달 규모 -33.3% · 대표주관사·주관단 확인</b>\n• 다음 확인: 대표주관사 선정 · SEC 비공개/공개 신고 · 공모가 밴드 · 신주/구주 비중 · SK하이닉스 잔여지분 · 자금용도\n• 근거: Bloomberg 보도(이데일리·연합뉴스·Investing.com 재인용) · <a href=\"https://www.edaily.co.kr/News/Read?mediaCodeNo=257&amp;newsId=02407526645610952\">원문</a>\n• 주의: 기업가치·조달액·일정은 현재 확정값이 아니라 보도 단계이며 시장 상황에 따라 변경될 수 있습니다.\n• 환율: 2026-10-07 일일 기준 · ECB/Frankfurter · 조회 2026-10-08 08:21 KST · 보조 API 2026-10-07 · 차이 0.02% · 일중 기준시각 차이 가능\n• 조회: 2026-10-08 08:21 KST"
@@ -203,6 +203,7 @@
         "as_of": "2026-10-05",
         "note": "Solidigm 공식 DMS는 PCN 0000048112-00과 'all Solidigm Datacenter SSDs' 대상 추가 제조거점을 확인. 대만·ODM·12월 출하·Pegatron은 아주경제/서울경제 보도 단계. PTI는 과거 PTI 공식 IR에서 Solidigm 파트너 관계가 확인됨. 신규 거점의 생산능력 수치는 미공개이며 NAND 웨이퍼 팹 증설로 해석하지 않음."
       }
-    }
+    },
+    "attempt_at_kst": "2026-10-08T08:21:56+09:00"
   }
 }
