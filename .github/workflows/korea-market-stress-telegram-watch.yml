@@ -173,7 +173,7 @@ jobs:
               session["is_session"]
               and session["open"] is not None
               and session["close"] is not None
-              and session["open"]-dt.timedelta(minutes=40) <= now
+              and session["open"]-dt.timedelta(minutes=60) <= now
               and now <= session["close"]+dt.timedelta(minutes=2)
           )
           active=[x for x in list_runs() if x.get("status") in {"queued","in_progress"}]
@@ -226,7 +226,7 @@ jobs:
               session["is_session"]
               and session["open"] is not None
               and session["close"] is not None
-              and session["open"]-dt.timedelta(minutes=40) <= now
+              and session["open"]-dt.timedelta(minutes=60) <= now
               and now <= session["close"]+dt.timedelta(minutes=2)
           )
           if not market_window:
