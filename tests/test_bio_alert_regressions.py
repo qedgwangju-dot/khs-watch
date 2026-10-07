@@ -160,6 +160,7 @@ class BioAlertRegressionTests(unittest.TestCase):
         self.assertIn("• <b>2026년 7월 3일</b>", rendered)
         self.assertIn("• <b>2026년 7월 31일</b>", rendered)
         self.assertIn("• <b>2026년 10월 7일</b>", rendered)
+        self.assertEqual(rendered.count("<b>2026년 10월 7일</b>"), 1)
         self.assertIn("2032년 12월 27일", rendered)
         self.assertIn("US$463M", rendered)
         self.assertIn("미국 외 US$68M의 일부", rendered)

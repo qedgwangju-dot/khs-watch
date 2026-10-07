@@ -335,7 +335,7 @@ TIMELINE_EVENT_LABELS = {
     "appeal": "연방순회항소법원 항소",
     "termination": "종결·합의",
     "disclaimer": "청구항 포기",
-    "nl_injunction": "VRO 본안 — EP622 유효·침해·8개 유럽시장 금지명령",
+    "nl_injunction": "VRO 본안 — EP622 유효·Keytruda SC 침해·8개 유럽시장 금지명령",
     "nl_appeal": "네덜란드 항소 제기",
     "nl_stay": "네덜란드 집행정지 절차 변화",
     "nl_appeal_decision": "네덜란드 항소심 결정",
@@ -382,11 +382,39 @@ def _persisted_timeline_rows(case: str) -> list[dict]:
     except Exception:
         return []
     rows = (state.get("case_event_timelines") or {}).get(case) or []
-    return [row for row in rows if isinstance(row, dict)]
+    out: list[dict] = []
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        copy = dict(row)
+        if case == DUTCH_VRO_CASE and copy.get("label") == "VRO 본안 — EP622 유효·침해·8개 유럽시장 금지명령":
+            copy["label"] = TIMELINE_EVENT_LABELS["nl_injunction"]
+        out.append(copy)
+    return out
 
 
 def _merged_case_timelines(state: dict) -> dict:
     timelines = dict(state.get("case_event_timelines") or {})
+
+    # 과거 버전의 표현 차이로 같은 날짜·같은 사건이 두 줄이 되는 것을 정리한다.
+    old_nl_label = "VRO 본안 — EP622 유효·침해·8개 유럽시장 금지명령"
+    canonical_nl_label = TIMELINE_EVENT_LABELS["nl_injunction"]
+    for case, rows in list(timelines.items()):
+        cleaned: list[dict] = []
+        seen_rows: set[tuple[str, str]] = set()
+        for row in rows or []:
+            if not isinstance(row, dict):
+                continue
+            date = str(row.get("date") or "")
+            label = str(row.get("label") or "")
+            if case == DUTCH_VRO_CASE and label == old_nl_label:
+                label = canonical_nl_label
+            key = (date, label)
+            if key in seen_rows:
+                continue
+            seen_rows.add(key)
+            cleaned.append({**row, "date": date, "label": label})
+        timelines[case] = cleaned
 
     def add(case: str, date: str, label: str, kind: str = "") -> None:
         rows = [row for row in (timelines.get(case) or []) if isinstance(row, dict)]
