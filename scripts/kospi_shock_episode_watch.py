@@ -9,6 +9,7 @@ import json
 import os
 import re
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from collections import defaultdict, deque
@@ -111,23 +112,70 @@ def telegram_send(text: str) -> int:
     expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
     if not token or not chat_id:
         raise RuntimeError("Telegram token/chat id missing")
-    with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=20) as r:
-        ident = json.loads(r.read().decode("utf-8"))
-    actual = str((ident.get("result") or {}).get("username") or "")
-    if not ident.get("ok") or (expected and actual.lower() != expected.lower()):
-        raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
+
+    actual = ""
+    last_error = ""
+    for attempt in range(5):
+        try:
+            with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=20) as r:
+                ident = json.loads(r.read().decode("utf-8"))
+            actual = str((ident.get("result") or {}).get("username") or "")
+            if not ident.get("ok") or (expected and actual.lower() != expected.lower()):
+                raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
+            break
+        except RuntimeError:
+            raise
+        except Exception as exc:
+            last_error = f"Telegram getMe transport error: {type(exc).__name__}: {exc}"
+            if attempt >= 4:
+                raise RuntimeError(last_error) from exc
+            time.sleep(min(8.0, 1.0 * (2 ** attempt)))
+
     payload = urllib.parse.urlencode({
         "chat_id": chat_id, "text": text, "parse_mode": "HTML",
         "disable_web_page_preview": "true",
     }).encode("utf-8")
-    req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method="POST")
-    with urllib.request.urlopen(req, timeout=30) as r:
-        out = json.loads(r.read().decode("utf-8"))
-    if not out.get("ok"):
-        raise RuntimeError(f"Telegram rejected message: {out}")
-    message_id = int(out["result"]["message_id"])
-    print(f"telegram_delivery_confirmed=true bot=@{actual} message_id={message_id}", flush=True)
-    return message_id
+
+    for attempt in range(6):
+        try:
+            req = urllib.request.Request(
+                f"https://api.telegram.org/bot{token}/sendMessage",
+                data=payload, method="POST",
+            )
+            with urllib.request.urlopen(req, timeout=30) as r:
+                out = json.loads(r.read().decode("utf-8"))
+            if out.get("ok"):
+                message_id = int(out["result"]["message_id"])
+                print(
+                    f"telegram_delivery_confirmed=true bot=@{actual} message_id={message_id}",
+                    flush=True,
+                )
+                return message_id
+            code = int(out.get("error_code") or 0)
+            last_error = f"Telegram rejected message: {out}"
+            if code == 429 or code >= 500:
+                retry_after = fnum(((out.get("parameters") or {}).get("retry_after")))
+                time.sleep(min(30.0, retry_after if retry_after is not None else 1.5 * (2 ** attempt)))
+                continue
+            raise RuntimeError(last_error)
+        except urllib.error.HTTPError as exc:
+            try:
+                body = exc.read().decode("utf-8", errors="replace")
+            except Exception:
+                body = ""
+            last_error = f"Telegram HTTP {exc.code}: {body[:300]}"
+            if attempt < 5 and (exc.code == 429 or 500 <= exc.code < 600):
+                time.sleep(min(30.0, 1.5 * (2 ** attempt)))
+                continue
+            raise RuntimeError(last_error) from exc
+        except RuntimeError:
+            raise
+        except Exception as exc:
+            last_error = f"Telegram send transport error: {type(exc).__name__}: {exc}"
+            if attempt >= 5:
+                raise RuntimeError(last_error) from exc
+            time.sleep(min(30.0, 1.5 * (2 ** attempt)))
+    raise RuntimeError(last_error or "Telegram send failed after retries")
 
 
 def get_token() -> str:
