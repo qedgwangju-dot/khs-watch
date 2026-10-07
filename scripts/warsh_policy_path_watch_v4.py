@@ -142,7 +142,7 @@ def official_fomc_dates():
         # 의사록 공개일(예: October 7)을 정책회의로 오인하지 않도록
         # 반드시 '월 일-일' 범위만 회의일로 인정한다.
         for m in re.finditer(
-            rf"\\b({month_re})\\s+(\\d{{1,2}})-(\\d{{1,2}})\\*?",
+            rf"\b({month_re})\s+(\d{{1,2}})-(\d{{1,2}})\*?",
             section,
             re.I,
         ):
