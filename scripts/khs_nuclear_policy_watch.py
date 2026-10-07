@@ -122,6 +122,7 @@ HANUL4_STATE_MODEL_VERSION = 1
 HANUL4_KHNP_MAIN = "https://www.khnp.co.kr/hanul/index.do"
 HANUL4_KHNP_MOBILE = "https://m.khnp.co.kr/main/index.do"
 HANUL4_KHNP_NPP = "https://npp.khnp.co.kr/"
+HANUL4_NSSC_PRESS_LIST = "https://www.nssc.go.kr/ko/cms/FR_BBS_CON/BoardList.do?MENU_ID=190"
 HANUL4_RESTART_APPROVAL_PRIMARY = "https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=04014726645610624"
 HANUL4_RESTART_APPROVAL_SECONDARY = "https://mobile.newsis.com/view/NISX20261007_0003817361"
 HANUL4_USER_SOURCE = "https://www.electimes.com/news/articleView.html?idxno=373171"
@@ -1100,30 +1101,45 @@ def _bwrx_stage(text: str) -> str | None:
     if not (("bwrx-300" in low or "bwrx 300" in low) and ("clinch river" in low or "tva" in low)):
         return None
 
+    # 공식 프로젝트 페이지에는 향후 절차 설명으로 commissioning/fuel loading/
+    # construction start 같은 단어가 함께 등장할 수 있다. 단어 존재만으로 현재
+    # 단계로 승격하지 않고 '실행 완료/착수'를 뜻하는 동사 결합만 인정한다.
     checks = [
         ("commercial_operation", (
-            "commercial operation", "commercially operating", "begins commercial operation",
-            "상업운전 개시", "상업 운전 개시",
+            "begins commercial operation", "began commercial operation",
+            "entered commercial operation", "is now commercially operating",
+            "상업운전 개시", "상업 운전을 개시", "상업운전 시작",
         )),
-        ("commissioning", ("commissioning", "시운전", "grid synchronization", "계통연계")),
-        ("fuel_load", ("fuel loading", "fuel load", "연료장전", "연료 장전")),
+        ("commissioning", (
+            "commissioning has begun", "commissioning began", "commissioning started",
+            "begins commissioning", "entered commissioning",
+            "grid synchronization completed", "connected to the grid",
+            "시운전 착수", "시운전 시작", "계통연계 완료", "계통병입",
+        )),
+        ("fuel_load", (
+            "fuel loading has begun", "fuel loading began", "fuel loading started",
+            "begins fuel loading", "initial fuel loading",
+            "연료장전 착수", "연료장전 시작", "초기 연료장전",
+        )),
         ("operating_license_issued", (
             "operating license issued", "operating license granted", "operating license approved",
             "운영허가 발급", "운영허가 승인", "운전허가 발급",
         )),
         ("construction_start", (
-            "construction starts", "construction started", "begins construction",
-            "groundbreaking", "breaks ground", "착공", "건설 착수",
+            "construction starts", "construction started", "construction has started",
+            "begins construction", "broke ground", "breaks ground",
+            "실제 착공", "착공했다", "건설 착수", "건설을 시작",
         )),
         ("major_equipment_order", (
-            "purchase order", "major equipment order", "long-lead equipment order",
-            "reactor pressure vessel order", "주기기 발주", "장주기 기자재 발주",
-            "구매주문", "본발주",
+            "purchase order issued", "major equipment order placed",
+            "long-lead equipment order placed", "reactor pressure vessel ordered",
+            "주기기 본발주", "장주기 기자재 본발주", "구매주문 발행",
         )),
         ("capital_approval", (
-            "final investment decision", "board approves construction", "board approved construction",
-            "board authorizes construction", "capital approval", "final capital approval",
-            "최종투자결정", "이사회 건설 승인", "자본승인",
+            "final investment decision approved", "board approves construction",
+            "board approved construction", "board authorizes construction",
+            "final capital approval granted", "최종투자결정 승인",
+            "이사회 건설 승인", "최종 자본승인",
         )),
         ("operating_license_application", (
             "operating license application submitted", "operating license application filed",
@@ -1133,7 +1149,7 @@ def _bwrx_stage(text: str) -> str | None:
         ("construction_permit_issued", (
             "construction permit issued", "construction permit granted",
             "approves construction permit", "approved construction permit",
-            "건설허가 발급", "건설허가 승인", "건설 허가",
+            "건설허가 발급", "건설허가 승인",
         )),
     ]
     for stage, terms in checks:
@@ -1317,8 +1333,11 @@ def collect_hanul4_operation_items(now: dt.datetime) -> list[dict]:
     rows: list[dict] = [dict(HANUL4_VERIFIED_APPROVAL)]
     live_status = None
     live_source = None
+    live_observations: list[tuple[str, str, str]] = []
 
     # 실제 운전 여부는 사업자인 KHNP 공식 실시간 페이지를 최우선으로 본다.
+    # 한 화면의 stale/cache 문구로 '운전 전환'을 오인하지 않도록 서로 다른
+    # 공식 표면 2곳 이상이 같은 상태를 보여줄 때만 운전단계를 승격한다.
     for source_name, url in (
         ("한국수력원자력 한울본부", HANUL4_KHNP_MAIN),
         ("한국수력원자력", HANUL4_KHNP_MOBILE),
@@ -1330,27 +1349,67 @@ def collect_hanul4_operation_items(now: dt.datetime) -> list[dict]:
             print(f"hanul4_khnp_status_error={source_name} {type(exc).__name__}")
             continue
         status = _hanul4_live_status(body)
-        if status and live_status is None:
-            live_status = status
-            live_source = url
-        if status == "운전":
+        if status:
+            live_observations.append((source_name, url, status))
+
+    by_status: dict[str, list[tuple[str, str, str]]] = {}
+    for observation in live_observations:
+        by_status.setdefault(observation[2], []).append(observation)
+
+    if by_status:
+        ranked = sorted(by_status.items(), key=lambda kv: (len(kv[1]), kv[0] == "운전"), reverse=True)
+        top_status, top_rows = ranked[0]
+        if len(top_rows) >= 2:
+            live_status = top_status
+            live_source = top_rows[0][1]
+        else:
+            live_status = f"{top_status}(공식 1개 화면·교차확인 대기)"
+            live_source = top_rows[0][1]
+
+    operating_rows = by_status.get("운전") or []
+    if len(operating_rows) >= 2:
+        rows.append({
+            "kind": "domestic_reactor_operation",
+            "reactor": "한울4호기",
+            "stage": "operating_status",
+            "rank": HANUL4_STAGE_RANK["operating_status"],
+            "status": HANUL4_STAGE_LABELS["operating_status"],
+            "published_utc": now.astimezone(UTC).isoformat(timespec="seconds"),
+            "published_kst": now.isoformat(timespec="seconds"),
+            "title": "한국수력원자력 공식 운영현황 2개 표면에서 한울4호기 '운전' 상태 교차확인",
+            "source": "·".join(row[0] for row in operating_rows[:2]),
+            "link": operating_rows[0][1],
+            "official": True,
+            "verified": True,
+            "evidence_count": len(operating_rows),
+            "live_status": "운전",
+            "live_status_source": operating_rows[0][1],
+        })
+
+    # 원안위 보도자료 목록도 직접 확인한다. 검색엔진·언론 색인보다 늦더라도
+    # 공식 원문이 올라오면 동일 restart_approved 단계의 증거등급만 올리고
+    # 같은 승인 사실을 Telegram으로 재발송하지 않는다.
+    try:
+        nssc_body = clean_text(fetch_text(HANUL4_NSSC_PRESS_LIST))
+        nssc_compact = re.sub(r"\s+", "", nssc_body)
+        if "한울4호기" in nssc_compact and "재가동승인" in nssc_compact:
             rows.append({
                 "kind": "domestic_reactor_operation",
                 "reactor": "한울4호기",
-                "stage": "operating_status",
-                "rank": HANUL4_STAGE_RANK["operating_status"],
-                "status": HANUL4_STAGE_LABELS["operating_status"],
+                "stage": "restart_approved",
+                "rank": HANUL4_STAGE_RANK["restart_approved"],
+                "status": HANUL4_STAGE_LABELS["restart_approved"],
                 "published_utc": now.astimezone(UTC).isoformat(timespec="seconds"),
                 "published_kst": now.isoformat(timespec="seconds"),
-                "title": "한국수력원자력 실시간 운영현황에서 한울4호기 '운전' 상태 확인",
-                "source": source_name,
-                "link": url,
+                "title": "원자력안전위원회 보도자료 목록에서 한울4호기 재가동 승인 확인",
+                "source": "원자력안전위원회",
+                "link": HANUL4_NSSC_PRESS_LIST,
                 "official": True,
                 "verified": True,
-                "live_status": "운전",
-                "live_status_source": url,
+                "evidence_count": 1,
             })
-            break
+    except Exception as exc:
+        print(f"hanul4_nssc_direct_error={type(exc).__name__}")
 
     # RSS는 규제 승인·발전재개·100% 출력·재정지의 보조 탐색면이다.
     # 공식 출처 1곳 또는 서로 다른 신뢰매체 2곳이 같은 단계만 지지할 때 채택한다.
@@ -1482,7 +1541,12 @@ def _select_hanul4_transition(previous: dict, items: list[dict]) -> dict | None:
             forward.append(item)
     if not forward:
         return None
-    return max(forward, key=lambda x: (int(x.get("rank") or 0), str(x.get("published_utc") or "")))
+
+    # 한 실행에서 승인→운전→계통병입→100% 출력이 동시에 보이더라도
+    # 중간 규제/운전 단계를 건너뛰지 않는다. 다음 한 단계만 확정해 저장한다.
+    next_rank = min(int(x.get("rank") or 0) for x in forward)
+    same_rank = [x for x in forward if int(x.get("rank") or 0) == next_rank]
+    return max(same_rank, key=lambda x: str(x.get("published_utc") or ""))
 
 
 def _self_test_hanul4_operating_event_model() -> None:
@@ -1500,6 +1564,23 @@ def _self_test_hanul4_operating_event_model() -> None:
         raise RuntimeError("Hanul4 live-maintenance parser regression")
     if _hanul4_live_status("한울 4호기 운전 4호기") != "운전":
         raise RuntimeError("Hanul4 live-operating parser regression")
+
+    approval = dict(HANUL4_VERIFIED_APPROVAL)
+    operating = {
+        **approval,
+        "stage": "operating_status",
+        "rank": HANUL4_STAGE_RANK["operating_status"],
+        "published_utc": "2026-10-07T06:00:00+00:00",
+    }
+    resumed = {
+        **approval,
+        "stage": "generation_resumed",
+        "rank": HANUL4_STAGE_RANK["generation_resumed"],
+        "published_utc": "2026-10-07T06:10:00+00:00",
+    }
+    selected = _select_hanul4_transition(HANUL4_FIXED_BASELINE, [resumed, operating, approval])
+    if not selected or selected.get("stage") != "restart_approved":
+        raise RuntimeError(f"Hanul4 sequential-stage regression: {selected}")
 
     # 실제 Telegram nuclear lane의 필수 필드와도 호환되는지 회귀검사한다.
     sample = dict(HANUL4_VERIFIED_APPROVAL)
@@ -1599,6 +1680,14 @@ def _self_test_bwrx_us_event_model() -> None:
     # 허가 '신청 검토' 문구는 허가 발급으로 오인하지 않는다.
     if _bwrx_stage("NRC reviews TVA Clinch River BWRX-300 construction permit application") is not None:
         raise RuntimeError("BWRX permit-application false-positive regression")
+
+    # 프로젝트 소개 페이지의 향후 milestone 목록은 현재 실행단계가 아니다.
+    generic = (
+        "TVA Clinch River BWRX-300 project milestones include future construction, "
+        "fuel loading, commissioning and commercial operation."
+    )
+    if _bwrx_stage(generic) is not None:
+        raise RuntimeError("BWRX generic-future-milestone false-positive regression")
 
 
 def _render_bwrx_us(item: dict, idx: int, now: dt.datetime) -> list[str]:
