@@ -191,6 +191,17 @@ if (
     ))
     _google_official_ack = True
 
+# The official signed baseline is independently verified: never drop the
+# acknowledgement just because an earlier runtime write omitted this flag.
+# Verify the contract identity, first-party source and 890-MW exact capacity.
+if (
+    _google_now.get("stage") == "signed_official"
+    and _google_now.get("official") is True
+    and str(_google_now.get("url") or "") == PPA_GOOGLE_CONSTELLATION_OFFICIAL
+    and float(_google_now.get("ppa_mw") or 0) == 890.0
+):
+    _google_official_ack = True
+
 _ppa_pending = load_json(PENDING)
 _ppa_pending["hyperscaler_nuclear_ppa"] = {
     "version": PPA_STATE_VERSION,
