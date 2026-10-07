@@ -4260,6 +4260,64 @@ class IncrementalNewsTests(unittest.TestCase):
         self.assertIn('3100억원', radar.source_headline_event_fact(
             broker, broker_body.replace('2961억원', '3100억원')))
 
+    def test_media_award_and_multi_issuer_roundup_are_not_new_orders(self):
+        award_title = '한화, AI 에너지 관리 기술 미국 차세대 신기술 선정'
+        award_body = ('한화 자회사의 AI 에너지 관리 기술이 미국 경제·경영 혁신 전문 매체 '
+                      '패스트 컴퍼니의 차세대 신기술에 선정됐다고 7일 밝혔다.')
+        self.assertEqual(materiality.assess(award_title, award_body)['reason'],
+                         'media_recognition_without_new_commercial_action')
+        funded_award = award_body + ' 한화는 프라임그룹과 150억원 규모 공급 계약을 체결했다고 7일 밝혔다.'
+        self.assertNotEqual(materiality.assess(award_title, funded_award)['reason'],
+                            'media_recognition_without_new_commercial_action')
+        roundup_title = '반도체·전력기기 3종목 목표가 모음 [株토피아]'
+        roundup_body = ('오늘 오전 주요 증권사 리포트를 정리해드립니다. '
+                        'A증권은 SK하이닉스 목표주가를 유지했다. B증권은 효성중공업 목표주가를 유지했다.')
+        self.assertEqual(materiality.assess(roundup_title, roundup_body)['reason'],
+                         'multi_issuer_analyst_roundup_without_single_event')
+        standalone = '하나증권은 효성중공업 영업이익 전망치를 3000억원으로 상향했다고 밝혔다.'
+        self.assertNotEqual(materiality.assess('효성중공업, 이익 전망 상향', standalone)['reason'],
+                            'multi_issuer_analyst_roundup_without_single_event')
+
+    def test_delivery_contract_and_foreign_allocation_cores_track_source_values(self):
+        delivery_title = '삼미금속, 가스터빈 블레이드 납품 개시'
+        delivery_body = ('삼미금속(012210)이 지난해 한화파워(구 PSM)로부터 수주한 '
+                         '가스터빈용 블레이드 제품의 본격적인 공급을 시작했다고 7일 밝혔다.')
+        delivery_core = radar.source_headline_event_fact(delivery_title, delivery_body)
+        self.assertIn('한화파워', delivery_core)
+        self.assertIn('본격 공급을 시작', delivery_core)
+        self.assertIn('다른파워', radar.source_headline_event_fact(
+            delivery_title, delivery_body.replace('한화파워', '다른파워')))
+        contract_title = '한성크린텍, 삼성전기 베트남 공장 230억원 초순수 E&P 계약 체결'
+        contract_body = ('한성크린텍은 삼성이앤에이와 230억원 규모의 삼성전기 베트남 공장 '
+                         '초순수 처리 시스템 설계·조달(E&P) 계약을 체결했다고 밝혔다. '
+                         '계약기간은 2027년 6월 30일까지다.')
+        contract_core = radar.source_headline_event_fact(contract_title, contract_body)
+        for value in ('삼성이앤에이', '삼성전기', '230억원', '2027년 6월 30일'):
+            self.assertIn(value, contract_core)
+        self.assertIn('250억원', radar.source_headline_event_fact(
+            contract_title, contract_body.replace('230억원', '250억원')))
+        allocation_title = '블룸버그 AI 투자처는 대만...코스피 위험'
+        allocation_body = ('블룸버그에 따르면 대만 자취엔지수는 지난 분기 코스피 수익률을 약 23%포인트 웃돌았다. '
+                           '지난달 펀드매니저 87명을 대상으로 실시된 BofA 조사에서 이들 중 40%가 '
+                           '대만 주식 비중을 확대하고 있다고 답한 반면, 한국 주식의 경우 25%에 불과했다.')
+        allocation_core = radar.source_headline_event_fact(allocation_title, allocation_body)
+        for value in ('23%포인트', '40%', '25%'):
+            self.assertIn(value, allocation_core)
+        self.assertIn('30%포인트', radar.source_headline_event_fact(
+            allocation_title, allocation_body.replace('23%포인트', '30%포인트')))
+
+    def test_reported_oil_shipments_are_not_replaced_by_diplomatic_quote(self):
+        title = '우크라 "한국이 러시아에 석유 공급" 저격'
+        body = ('우크라이나 대통령실 제재정 담당 보좌관은 한국의 제재 정책과 극명한 대조를 이룬다고 비판했다. '
+                '가디언은 항만 기록과 선박 추적 데이터를 분석한 결과 지난 7~8월 한국 항구에서 '
+                '총 17만 6000t이 넘는 석유제품을 싣고 러시아로 운송했다고 보도했다.')
+        core = radar.source_headline_event_fact(title, body)
+        self.assertIn('17만 6000t', core)
+        self.assertIn('7~8월', core)
+        self.assertIn('가디언', core)
+        self.assertIn('20만 1000t', radar.source_headline_event_fact(
+            title, body.replace('17만 6000t', '20만 1000t')))
+
 
 if __name__ == "__main__":
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(IncrementalNewsTests)

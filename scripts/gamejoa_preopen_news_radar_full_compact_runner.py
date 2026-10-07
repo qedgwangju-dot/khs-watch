@@ -2597,6 +2597,37 @@ def source_headline_event_fact(title: str, body: str) -> str:
     focus = market_materiality.focus_kind(title)
     source = market_materiality.source_reported_body(body)
     rows = market_materiality.source_sentences(source)
+    if re.search(r'가스터빈.*블레이드.*납품\s*개시', title):
+        delivery = re.search(
+            r'([가-힣]+)\(\d+\)이\s+지난해\s+([가-힣]+)(?:\([^)]+\))?로부터\s+수주한\s+'
+            r'([^.!?\n]{0,70}?)의\s+본격적인\s+공급을\s+시작했다고\s+(\d+일)\s+밝혔다',
+            source,
+        )
+        if delivery:
+            fact = (f'{delivery.group(1)}은 지난해 {delivery.group(2)}로부터 수주한 '
+                    f'{delivery.group(3)}의 본격 공급을 시작했다고 {delivery.group(4)} 밝혔다.')
+            return fact if core_sentence_is_complete(fact) else ''
+    if re.search(r'초순수.*(?:E&P|설계.조달).*계약', title, re.I):
+        contract = re.search(
+            r'([가-힣]+)은\s+([가-힣]+)와\s+([\d,]+억원)\s+규모의\s+'
+            r'([가-힣]+)\s+베트남\s+공장\s+초순수\s+처리\s+시스템\s+'
+            r'설계.조달\(E&P\)\s+계약을\s+체결했다고\s+밝혔다', source,
+        )
+        end = re.search(r'계약기간은\s+(\d{4}년\s+\d{1,2}월\s+\d{1,2}일)까지다', source)
+        if contract and end:
+            fact = (f'{contract.group(1)}은 {contract.group(2)}와 {contract.group(4)} 베트남 공장 '
+                    f'초순수 시스템 설계·조달(E&P) 계약을 {contract.group(3)}에 체결했다. '
+                    f'계약기간은 {end.group(1)}까지다.')
+            return fact if core_sentence_is_complete(fact) else ''
+    if '블룸버그' in title and re.search(r'대만.*코스피', title):
+        spread = re.search(r'대만\s*자취엔지수는\s*지난\s*분기\s*코스피\s*수익률을\s*약\s*([\d.]+%포인트)\s*웃돌', source)
+        survey = re.search(r'대만\s*주식\s*비중을\s*확대하고\s*있다고\s*답한\s*반면,?\s*한국\s*주식의\s*경우\s*([\d.]+%)에\s*불과', source)
+        taiwan = re.search(r'이들\s*중\s*([\d.]+%)가\s*대만\s*주식\s*비중을\s*확대', source)
+        if spread and survey and taiwan:
+            fact = (f'블룸버그 인용 보도에 따르면 지난 분기 대만 증시 수익률은 코스피를 '
+                    f'약 {spread.group(1)} 웃돌았다. 지난달 BofA 펀드매니저 설문에서 '
+                    f'대만 비중 확대 응답은 {taiwan.group(1)}, 한국은 {survey.group(1)}였다.')
+            return fact if core_sentence_is_complete(fact) else ''
     if re.search(r'국토.*(?:주택\s*공급|신규택지)|신규택지.*(?:발표|공급)', title):
         supply = re.search(
             r'([가-힣]{2,4}\s*국토교통부\s*장관이[^.!?\n]{0,210}?신규택지[^.!?\n]{0,90}?추가\s*발표하겠다고\s*밝혔다\.)',
@@ -2635,12 +2666,12 @@ def source_headline_event_fact(title: str, body: str) -> str:
         shipping = next((row for row in rows if '가디언' in row and '선박 추적' in row
                          and '석유제품' in row and '보도했다' in row), '')
         period = re.search(r'지난\s*(\d{1,2}\s*[∼~\-]\s*\d{1,2}월)', shipping)
-        volume = re.search(r'총\s*(\d[\d만천백십]*t)\s*이상의\s*석유제품', shipping)
-        if (period and volume and re.search(r'우크라이나 대통령실 제재 담당 보좌관', source)
-                and re.search(r'제재\s*정책과\s*극명하게\s*대비', source)):
+        volume = re.search(r'총\s*(\d[\d만천백십\s]*t)\s*(?:이\s*넘는|이상의)\s*석유제품', shipping)
+        if (period and volume and re.search(r'우크라이나 대통령실 제재.{0,3}\s*담당 보좌관', source)
+                and re.search(r'제재\s*정책과\s*극명(?:한\s*대조|하게\s*대비)', source)):
             fact = (f"가디언은 항만·선박 추적 자료를 토대로 지난 {period[1]} 한국 항구에서 "
                     f"러시아로 석유제품 {volume[1]} 이상이 운송됐다고 보도했다. "
-                    "우크라이나 대통령실 제재 담당 보좌관은 이를 한국의 대러 제재정책과 대비된다며 비판했다.")
+                    "우크라이나 대통령실 보좌관은 이를 한국의 대러 제재정책과 대비된다며 비판했다.")
             return fact if core_sentence_is_complete(fact) else ''
     # Render and validate the same source observation used for event identity.
     fixing = market_materiality.won_dollar_fixing_observation(title, source)
@@ -11275,7 +11306,12 @@ def source_core_fact_errors(alert: dict) -> list[str]:
             (market_materiality.focus_kind(title) == "military_reinforcement"
              or market_materiality.declared_capital_participation_observation(title, source)
              or market_materiality.quantified_oil_shipping_constraints_observation(title, source)
-             or market_materiality.procurement_lead_time_observation(title, source))
+             or market_materiality.procurement_lead_time_observation(title, source)
+             or (re.search(r'가스터빈.*블레이드.*납품\s*개시', title) and '본격 공급을 시작' in expected_observation)
+             or (re.search(r'초순수.*(?:E&P|설계.조달).*계약', title, re.I)
+                 and '계약을' in expected_observation and '억원' in expected_observation)
+             or ('블룸버그' in title and re.search(r'대만.*코스피', title)
+                 and 'BofA 펀드매니저 설문' in expected_observation))
             and source_audit["disposition"] == "keep" and source_audit["priority"] >= 2
             and expected_observation
             and market_materiality.canonical_source_fact(expected_observation) == market_materiality.canonical_source_fact(observation_core)

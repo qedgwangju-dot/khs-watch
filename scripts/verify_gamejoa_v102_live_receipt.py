@@ -23,6 +23,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--artifact-dir", type=Path, required=True)
     parser.add_argument("--market-scope-artifact-dir", type=Path)
+    parser.add_argument("--follow-on-artifact-dir", type=Path)
     args = parser.parse_args()
     report_path = args.artifact_dir / "out/gamejoa_preopen_news_radar.json"
     delivery_path = args.artifact_dir / "out/gamejoa_preopen_news_radar_delivery.json"
@@ -108,6 +109,44 @@ def main() -> None:
         market_scope = {"acknowledged_message_id": 2388, "source_bodies_checked": 7,
                         "selected_after_fix": 4, "foreign_local_and_regional_pilot_withheld": 3,
                         "retained_cores_source_bound": 4}
+    follow_on = None
+    if args.follow_on_artifact_dir:
+        follow_out = args.follow_on_artifact_dir / "out"
+        follow_report = json.loads((follow_out / "gamejoa_preopen_news_radar.json").read_text(encoding="utf-8"))
+        follow_delivery = json.loads((follow_out / "gamejoa_preopen_news_radar_delivery.json").read_text(encoding="utf-8"))
+        follow_markdown = (follow_out / "gamejoa_preopen_news_radar.md").read_bytes()
+        assert follow_delivery["status"] == "sent" and follow_delivery["message_id"] == 2389
+        assert hashlib.sha256(follow_markdown).hexdigest() == follow_delivery["report_sha256"]
+        assert len(follow_report["alerts"]) == 7
+        assert all(item.get("body_verified") and item.get("source_body") for item in follow_report["alerts"])
+        follow_now = dt.datetime.fromisoformat(follow_report["query_time_kst"])
+        with patch.object(radar.base, "kst_now", return_value=follow_now), patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}):
+            follow_selected = radar.quality_display_alerts(follow_report["alerts"], 20)
+        assert len(follow_selected) == 5, [item["source_title"] for item in follow_selected]
+        follow_kept = {item["source_title"]: item["telegram_core_fact"] for item in follow_selected}
+        assert any("우크라" in title and "17만 6000t" in core and "가디언" in core
+                   for title, core in follow_kept.items())
+        assert any("삼미금속" in title and "한화파워" in core and "본격 공급을 시작" in core
+                   for title, core in follow_kept.items())
+        assert any("한성크린텍" in title and "삼성이앤에이" in core and "230억원" in core
+                   and "2027년 6월 30일" in core for title, core in follow_kept.items())
+        assert any("삼전닉스" in title and "대신증권" in core and "110조원" in core
+                   for title, core in follow_kept.items())
+        assert any("블룸버그" in title and "23%포인트" in core and "40%" in core
+                   and "25%" in core for title, core in follow_kept.items())
+        follow_rejected = {item["source_title"]: item.get("_exclusion_reason", "")
+                           for item in follow_report["alerts"] if item["link"] not in
+                           {kept["link"] for kept in follow_selected}}
+        assert len(follow_rejected) == 2, follow_rejected
+        assert any("한화, AI 에너지" in title and "media_recognition" in reason
+                   for title, reason in follow_rejected.items())
+        assert any("[株토피아]" in title and "multi_issuer_analyst_roundup" in reason
+                   for title, reason in follow_rejected.items())
+        assert not generated_guard.duplicate_event_errors(follow_selected, radar)
+        assert all(not radar.source_core_fact_errors(item) for item in follow_selected)
+        follow_on = {"acknowledged_message_id": 2389, "source_bodies_checked": 7,
+                     "selected_after_fix": 5, "roundup_and_award_withheld": 2,
+                     "retained_cores_source_bound": 5}
     print(json.dumps({
         "acknowledged_message_id": 2373,
         "source_bodies_checked": len(report["alerts"]),
@@ -118,6 +157,7 @@ def main() -> None:
         "prior_receipt_blocks_new_url": True,
         "boston_weak_market_change_withheld": True,
         "market_scope_replay": market_scope,
+        "follow_on_replay": follow_on,
     }, ensure_ascii=False))
 
 

@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 103
+VERSION = 104
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -3547,6 +3547,19 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
     )
     if local_facility and not substantial_commitment:
         result.update(disposition="exclude", priority=0, reason="regional_pilot_facility_without_material_commitment")
+        return result
+    if re.search(r"주요\s*증권사\s*리포트를\s*정리|리포트\s*브리핑\s*콘텐츠", body[:6000]):
+        result.update(disposition="exclude", priority=0, reason="multi_issuer_analyst_roundup_without_single_event")
+        return result
+    media_award = (re.search(r"(?:기술|혁신|제품).{0,25}(?:선정|수상)|(?:선정|수상).{0,25}(?:기술|혁신|제품)", title)
+                   and re.search(r"패스트\s*컴퍼니|(?:전문|경제|경영)\s*매체.{0,60}(?:선정|수상)", body[:1500]))
+    new_commercial_award = any(
+        current_event_sentence(row) and not PAST_ACTION.search(row)
+        and re.search(r"(?:공급|납품|구축|구매)\s*계약.{0,25}체결|(?:수주|발주)(?:했|됐)|(?:보조금|예산).{0,20}확정", row)
+        for row in source_sentences(body)[:8]
+    )
+    if media_award and not new_commercial_award:
+        result.update(disposition="exclude", priority=0, reason="media_recognition_without_new_commercial_action")
         return result
     political_poll = bool(re.search(r"지지율|국정\s*수행|정당\s*지지|political approval|approval rating", title, re.I)
                           and re.search(r"여론조사|응답자|유권자|poll|respondents|voters", body[:1600], re.I))
