@@ -47,7 +47,9 @@ jobs:
         run: |
           python -m py_compile scripts/space_launch_bottleneck_watch.py
           python -m py_compile scripts/space_launch_telegram_send.py
+          python -m py_compile scripts/merge_space_launch_state.py
           python scripts/space_launch_telegram_send.py --self-test
+          python scripts/merge_space_launch_state.py --self-test
 
       - name: Run space launch bottleneck watch
         env:
@@ -75,24 +77,33 @@ jobs:
       - name: Persist deduplication state
         if: success() && hashFiles('out/space_launch_bottleneck_dedicated_pending_state.json') != ''
         run: |
-          mkdir -p data
-          cp out/space_launch_bottleneck_dedicated_pending_state.json data/space_launch_bottleneck_dedicated_state.json
+          cp out/space_launch_bottleneck_dedicated_pending_state.json /tmp/space_launch_pending_state.json
 
           git config user.name "space-launch-bottleneck-watch[bot]"
           git config user.email "space-launch-bottleneck-watch[bot]@users.noreply.github.com"
-          git add data/space_launch_bottleneck_dedicated_state.json
 
-          if git diff --cached --quiet; then
-            echo "Space launch watch state unchanged"
-            exit 0
-          fi
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git reset --hard origin/main
 
-          git commit -m "chore: update space launch bottleneck watch state"
-          for attempt in 1 2 3; do
-            if git pull --rebase origin main && git push origin HEAD:main; then
+            python scripts/merge_space_launch_state.py \
+              data/space_launch_bottleneck_dedicated_state.json \
+              /tmp/space_launch_pending_state.json \
+              data/space_launch_bottleneck_dedicated_state.json
+
+            git add data/space_launch_bottleneck_dedicated_state.json
+
+            if git diff --cached --quiet; then
+              echo "Space launch watch state already merged"
               exit 0
             fi
-            git rebase --abort 2>/dev/null || true
+
+            git commit -m "chore: update space launch bottleneck watch state"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+
             sleep $((attempt * 3))
           done
+
           exit 1
