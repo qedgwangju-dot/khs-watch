@@ -115,6 +115,73 @@ BWRX_RSS_QUERIES = [
     ("TVA Clinch River 실행", '"Clinch River" TVA "construction start" OR "operating license" OR "purchase order" OR "board approval" when:30d'),
 ]
 
+# 국내 가동원전의 '규제 재가동 승인 → 실제 운전 → 발전재개/계통병입 → 100% 출력'
+# 상태를 기사 신규 여부가 아니라 운전 단계로 추적한다. 한울4호기는 2026-08-19
+# 자동정지를 기준선으로 잡고, 2026-10-07 재가동 승인은 교차검증된 첫 상승단계다.
+HANUL4_STATE_MODEL_VERSION = 1
+HANUL4_KHNP_MAIN = "https://www.khnp.co.kr/hanul/index.do"
+HANUL4_KHNP_MOBILE = "https://m.khnp.co.kr/main/index.do"
+HANUL4_KHNP_NPP = "https://npp.khnp.co.kr/"
+HANUL4_RESTART_APPROVAL_PRIMARY = "https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=04014726645610624"
+HANUL4_RESTART_APPROVAL_SECONDARY = "https://www.electimes.com/news/articleView.html?idxno=373171"
+HANUL4_FIXED_BASELINE = {
+    "kind": "domestic_reactor_operation",
+    "reactor": "한울4호기",
+    "stage": "automatic_trip",
+    "rank": 0,
+    "status": "2026-08-19 자동정지·정비",
+    "published_utc": "2026-08-18T23:50:00+00:00",
+    "published_kst": "2026-08-19T08:50:00+09:00",
+    "title": "한울4호기 터빈발전기 정지 후 원자로 자동정지",
+    "source": "한국수력원자력·한울원전환경감시센터",
+    "link": HANUL4_KHNP_NPP,
+    "official": True,
+    "verified": True,
+}
+HANUL4_VERIFIED_APPROVAL = {
+    "kind": "domestic_reactor_operation",
+    "reactor": "한울4호기",
+    "stage": "restart_approved",
+    "rank": 1,
+    "status": "원안위 재가동 승인",
+    "published_utc": "2026-10-07T05:10:39+00:00",
+    "published_kst": "2026-10-07T14:10:39+09:00",
+    "title": "원안위, 한울4호기 재가동 승인",
+    "source": "원안위 발표 인용 · 이데일리/전기신문 교차확인",
+    "link": HANUL4_RESTART_APPROVAL_PRIMARY,
+    "secondary_link": HANUL4_RESTART_APPROVAL_SECONDARY,
+    "official": False,
+    "verified": True,
+    "verification": "독립 언론 2곳이 원안위 2026-10-07 재가동 승인 발표를 동일하게 보도",
+}
+HANUL4_STAGE_RANK = {
+    "automatic_trip": 0,
+    "restart_approved": 1,
+    "operating_status": 2,
+    "generation_resumed": 3,
+    "full_power": 4,
+}
+HANUL4_STAGE_LABELS = {
+    "automatic_trip": "원자로 자동정지·정비",
+    "restart_approved": "원안위 재가동 승인",
+    "operating_status": "한국수력원자력 실시간 운영상태 '운전' 전환",
+    "generation_resumed": "발전재개·계통병입 확인",
+    "full_power": "100% 출력 도달",
+}
+HANUL4_RSS_QUERIES = [
+    ("한울4호기 재가동 승인", '"한울 4호기" "재가동 승인" 원안위 when:7d'),
+    ("한울4호기 발전재개", '"한울4호기" 발전재개 계통병입 when:14d'),
+    ("한울4호기 출력회복", '"한울4호기" "100% 출력" OR "전출력" when:14d'),
+    ("한울4호기 재정지", '"한울4호기" 자동정지 재정지 원자로 정지 when:14d'),
+]
+HANUL4_TRUSTED_OUTLETS = (
+    "연합뉴스", "뉴시스", "뉴스1", "이데일리", "전기신문", "파이낸셜뉴스",
+    "머니투데이", "서울경제", "한국경제", "전자신문", "조선비즈", "헤럴드경제",
+)
+HANUL4_OFFICIAL_OUTLETS = (
+    "원자력안전위원회", "원안위", "한국수력원자력", "한수원", "정책브리핑",
+)
+
 SOURCES = [
     {"name": "Westinghouse strategic partnership", "url": "https://westinghousenuclear.com/strategic-partnership/press-releases/brookfield/"},
     {"name": "DOE Nuclear Energy", "url": "https://www.energy.gov/ne/articles/9-key-takeaways-president-trumps-executive-orders-nuclear-energy"},
@@ -1156,6 +1223,330 @@ def collect_bwrx_us_items(now: dt.datetime) -> list[dict]:
     return rows
 
 
+def _hanul4_stage(text: str) -> str | None:
+    normalized = clean_text(text)
+    low = normalized.lower()
+    compact = re.sub(r"\s+", "", low)
+    if not ("한울4호기" in compact or "hanul4" in compact or "hanulunit4" in compact):
+        return None
+
+    # 가장 높은 실제 운전단계를 먼저 판정한다.
+    if any(term in compact for term in ("100%출력", "전출력도달", "100%전출력")):
+        return "full_power"
+    if any(term in compact for term in ("발전재개", "계통병입", "계통연결")):
+        return "generation_resumed"
+
+    # '승인 검토/예정/가능'을 실제 승인으로 오인하지 않는다.
+    if "재가동승인" in compact:
+        pending = any(term in compact for term in (
+            "승인검토", "승인예정", "승인가능", "승인전망", "승인기대",
+            "승인할수", "승인할것", "승인할예정",
+        ))
+        if not pending:
+            return "restart_approved"
+
+    if any(term in compact for term in ("원자로자동정지", "자동정지", "재정지")):
+        return "automatic_trip"
+    return None
+
+
+def _hanul4_live_status(text: str) -> str | None:
+    normalized = clean_text(text)
+    patterns = (
+        r"한울\s*(?:원자력\s*)?4호기\s*(?:현재\s*)?(운전|정비|정지)",
+        r"한울\s*4호기.{0,24}?\b(운전|정비|정지)\b",
+    )
+    for pattern in patterns:
+        match = re.search(pattern, normalized, re.I)
+        if match:
+            return match.group(1)
+    return None
+
+
+def _hanul4_official_source(outlet: str, link: str = "") -> bool:
+    low = f"{outlet} {link}".lower()
+    return (
+        any(term.lower() in low for term in HANUL4_OFFICIAL_OUTLETS)
+        or "nssc.go.kr" in low
+        or "khnp.co.kr" in low
+    )
+
+
+def _hanul4_trusted_source(outlet: str) -> bool:
+    low = (outlet or "").lower()
+    return any(term.lower() in low for term in HANUL4_TRUSTED_OUTLETS)
+
+
+def _hanul4_source_key(outlet: str, link: str = "") -> str:
+    low = f"{outlet} {link}".lower()
+    aliases = (
+        (("연합뉴스", "yna.co.kr"), "연합뉴스"),
+        (("뉴시스", "newsis.com"), "뉴시스"),
+        (("뉴스1", "news1.kr"), "뉴스1"),
+        (("이데일리", "edaily.co.kr"), "이데일리"),
+        (("전기신문", "electimes.com"), "전기신문"),
+        (("파이낸셜뉴스", "fnnews.com"), "파이낸셜뉴스"),
+        (("머니투데이", "mt.co.kr"), "머니투데이"),
+        (("서울경제", "sedaily.com"), "서울경제"),
+        (("한국경제", "hankyung.com"), "한국경제"),
+        (("전자신문", "etnews.com"), "전자신문"),
+        (("원자력안전위원회", "nssc.go.kr"), "원자력안전위원회"),
+        (("한국수력원자력", "한수원", "khnp.co.kr"), "한국수력원자력"),
+    )
+    for tokens, canonical in aliases:
+        if any(token in low for token in tokens):
+            return canonical
+    return (outlet or link or "unknown").strip().lower()
+
+
+def _hanul4_parse_pub(pub_text: str, now: dt.datetime) -> dt.datetime:
+    try:
+        published = parsedate_to_datetime(pub_text)
+        if published.tzinfo is None:
+            published = published.replace(tzinfo=UTC)
+        return published.astimezone(UTC)
+    except Exception:
+        return now.astimezone(UTC)
+
+
+def collect_hanul4_operation_items(now: dt.datetime) -> list[dict]:
+    # 현재 승인 사실은 사용자가 제시한 전기신문과 독립적인 이데일리 보도로
+    # 원안위 발표 내용이 교차 확인돼 있으며, 실제 발전재개 여부는 KHNP 실시간
+    # 운영상태와 분리한다.
+    rows: list[dict] = [dict(HANUL4_VERIFIED_APPROVAL)]
+    live_status = None
+    live_source = None
+
+    # 실제 운전 여부는 사업자인 KHNP 공식 실시간 페이지를 최우선으로 본다.
+    for source_name, url in (
+        ("한국수력원자력 한울본부", HANUL4_KHNP_MAIN),
+        ("한국수력원자력", HANUL4_KHNP_MOBILE),
+        ("열린원전운영정보", HANUL4_KHNP_NPP),
+    ):
+        try:
+            body = clean_text(fetch_text(url))
+        except Exception as exc:
+            print(f"hanul4_khnp_status_error={source_name} {type(exc).__name__}")
+            continue
+        status = _hanul4_live_status(body)
+        if status and live_status is None:
+            live_status = status
+            live_source = url
+        if status == "운전":
+            rows.append({
+                "kind": "domestic_reactor_operation",
+                "reactor": "한울4호기",
+                "stage": "operating_status",
+                "rank": HANUL4_STAGE_RANK["operating_status"],
+                "status": HANUL4_STAGE_LABELS["operating_status"],
+                "published_utc": now.astimezone(UTC).isoformat(timespec="seconds"),
+                "published_kst": now.isoformat(timespec="seconds"),
+                "title": "한국수력원자력 실시간 운영현황에서 한울4호기 '운전' 상태 확인",
+                "source": source_name,
+                "link": url,
+                "official": True,
+                "verified": True,
+                "live_status": "운전",
+                "live_status_source": url,
+            })
+            break
+
+    # RSS는 규제 승인·발전재개·100% 출력·재정지의 보조 탐색면이다.
+    # 공식 출처 1곳 또는 서로 다른 신뢰매체 2곳이 같은 단계만 지지할 때 채택한다.
+    support: dict[str, list[dict]] = {}
+    for source_name, query in HANUL4_RSS_QUERIES:
+        try:
+            root = ET.fromstring(fetch_text(_google_news_url(query)))
+        except Exception as exc:
+            print(f"hanul4_rss_error={source_name} {type(exc).__name__}")
+            continue
+        for node in root.findall(".//item"):
+            title = _clean_rss_title(node.findtext("title") or "")
+            link = clean_text(node.findtext("link") or "")
+            source_node = node.find("source")
+            outlet = clean_text(source_node.text if source_node is not None and source_node.text else source_name)
+            stage = _hanul4_stage(title)
+            if not title or not link or not stage:
+                continue
+            published = _hanul4_parse_pub(clean_text(node.findtext("pubDate") or ""), now)
+            if (now.astimezone(UTC) - published).total_seconds() / 86400 > 14:
+                continue
+            # 8월 자동정지 과거기사는 현재 승인을 뒤집는 신규사건으로 취급하지 않는다.
+            support.setdefault(stage, []).append({
+                "title": title,
+                "link": link,
+                "source": outlet or source_name,
+                "published": published,
+                "official": _hanul4_official_source(outlet, link),
+                "trusted": _hanul4_trusted_source(outlet),
+            })
+
+    for stage, evidence in support.items():
+        source_keys = {
+            _hanul4_source_key(item.get("source") or "", item.get("link") or "")
+            for item in evidence
+            if item.get("trusted") or item.get("official")
+        }
+        official_rows = [item for item in evidence if item.get("official")]
+        trusted_rows = [item for item in evidence if item.get("trusted")]
+        if not official_rows and len(source_keys) < 2:
+            continue
+        best = max(
+            official_rows or trusted_rows or evidence,
+            key=lambda item: item.get("published") or now.astimezone(UTC),
+        )
+        source_names = []
+        for item in sorted(evidence, key=lambda x: str(x.get("source") or "")):
+            key = _hanul4_source_key(item.get("source") or "", item.get("link") or "")
+            if key not in source_names and (item.get("official") or item.get("trusted")):
+                source_names.append(key)
+        rows.append({
+            "kind": "domestic_reactor_operation",
+            "reactor": "한울4호기",
+            "stage": stage,
+            "rank": HANUL4_STAGE_RANK[stage],
+            "status": HANUL4_STAGE_LABELS[stage],
+            "published_utc": best["published"].isoformat(timespec="seconds"),
+            "published_kst": best["published"].astimezone(KST).isoformat(timespec="seconds"),
+            "title": best["title"],
+            "source": "·".join(source_names[:3]) + (" 교차확인" if not official_rows else ""),
+            "link": best["link"],
+            "official": bool(official_rows),
+            "verified": True,
+            "verification": "공식 1차자료 1건 이상 또는 독립 신뢰매체 2곳 이상",
+            "evidence_count": len(source_keys),
+        })
+
+    # 모든 후보에 현재 KHNP 운영상태를 함께 붙여 '승인'과 '실제 가동'을 섞지 않는다.
+    for item in rows:
+        item.setdefault("live_status", live_status or "미확인")
+        item.setdefault("live_status_source", live_source or HANUL4_KHNP_MAIN)
+
+    # 같은 단계는 가장 신뢰도가 높은 최신 증거 1건만 유지한다.
+    dedup: dict[str, dict] = {}
+    for item in rows:
+        stage = str(item.get("stage") or "")
+        prev = dedup.get(stage)
+        score = (
+            1 if item.get("official") else 0,
+            1 if item.get("verified") else 0,
+            int(item.get("evidence_count") or 0),
+            str(item.get("published_utc") or ""),
+        )
+        if prev is None:
+            dedup[stage] = item
+            continue
+        prev_score = (
+            1 if prev.get("official") else 0,
+            1 if prev.get("verified") else 0,
+            int(prev.get("evidence_count") or 0),
+            str(prev.get("published_utc") or ""),
+        )
+        if score > prev_score:
+            dedup[stage] = item
+
+    return sorted(
+        dedup.values(),
+        key=lambda x: (str(x.get("published_utc") or ""), int(x.get("rank") or 0)),
+        reverse=True,
+    )
+
+
+def _select_hanul4_transition(previous: dict, items: list[dict]) -> dict | None:
+    prev_stage = str(previous.get("stage") or "automatic_trip")
+    prev_rank = int(previous.get("rank") if previous.get("rank") is not None else HANUL4_STAGE_RANK.get(prev_stage, 0))
+    prev_pub = str(previous.get("published_utc") or HANUL4_FIXED_BASELINE["published_utc"])
+
+    # 재정지는 순위가 낮아져도 가장 중요한 실패 이벤트다.
+    trip_candidates = [
+        item for item in items
+        if item.get("stage") == "automatic_trip"
+        and str(item.get("published_utc") or "") > prev_pub
+        and prev_stage != "automatic_trip"
+        and bool(item.get("verified"))
+    ]
+    if trip_candidates:
+        return max(trip_candidates, key=lambda x: str(x.get("published_utc") or ""))
+
+    forward = []
+    for item in items:
+        stage = str(item.get("stage") or "")
+        rank = int(item.get("rank") if item.get("rank") is not None else HANUL4_STAGE_RANK.get(stage, -1))
+        published = str(item.get("published_utc") or "")
+        if not item.get("verified"):
+            continue
+        if published <= prev_pub:
+            continue
+        if rank > prev_rank:
+            forward.append(item)
+    if not forward:
+        return None
+    return max(forward, key=lambda x: (int(x.get("rank") or 0), str(x.get("published_utc") or "")))
+
+
+def _self_test_hanul4_operating_event_model() -> None:
+    if _hanul4_stage("원안위, 한울 4호기 재가동 승인…자동정지 49일 만") != "restart_approved":
+        raise RuntimeError("Hanul4 restart-approval parser regression")
+    if _hanul4_stage("한울4호기 재가동 승인 검토 예정") is not None:
+        raise RuntimeError("Hanul4 restart-approval pending false-positive regression")
+    if _hanul4_stage("한울4호기 발전재개 및 계통병입") != "generation_resumed":
+        raise RuntimeError("Hanul4 generation-resumed parser regression")
+    if _hanul4_stage("한울4호기 100% 출력 도달") != "full_power":
+        raise RuntimeError("Hanul4 full-power parser regression")
+    if _hanul4_stage("한울4호기 원자로 자동정지") != "automatic_trip":
+        raise RuntimeError("Hanul4 automatic-trip parser regression")
+    if _hanul4_live_status("한울 4호기 정비 4호기") != "정비":
+        raise RuntimeError("Hanul4 live-maintenance parser regression")
+    if _hanul4_live_status("한울 4호기 운전 4호기") != "운전":
+        raise RuntimeError("Hanul4 live-operating parser regression")
+
+
+def _render_hanul4_operation(item: dict, idx: int, now: dt.datetime) -> list[str]:
+    stage = str(item.get("stage") or "")
+    label = HANUL4_STAGE_LABELS.get(stage, item.get("status") or "운전 상태 변화")
+    live_status = str(item.get("live_status") or "미확인")
+    verification_label = "공식" if item.get("official") else "교차확인"
+
+    if stage == "restart_approved":
+        return [
+            f"## {idx}. [{verification_label}] 한울 4호기 재가동",
+            f"- 핵심 변화: {label}. 규제 관문은 통과했지만 재가동 승인 ≠ 실제 발전재개입니다.",
+            f"- 현재 운영상태: 한국수력원자력 실시간 페이지 기준 {live_status}. '운전' 전환·계통병입·출력 회복은 별도 확인합니다.",
+            "- 정지 원인: 발전기 차단기 단로기 접속부의 전기적 결함과 원자로출력급감발계통(RPCS) 미작동이 복합 작용했습니다. RPCS 계측기 내부 이물질 유입 영향도 조사됐습니다.",
+            "- 조치: 고장 기기 교체·건전성 시험과 설비 관리체계 개선 등 종합 재발방지대책을 확인한 뒤 원안위가 재가동을 승인했습니다.",
+            "- 실패모드: 승인 후에도 RPCS·발전기 차단기 계통 이상이 재발하거나 출력상승 시험에서 이상이 나오면 계통병입·100% 출력 일정이 다시 밀릴 수 있습니다.",
+            f"- 근거: [{item.get('source')}]({item.get('link')}) · {item.get('published_kst')}",
+            f"- 운영상태 확인: [한국수력원자력]({item.get('live_status_source') or HANUL4_KHNP_MAIN})",
+            "- 다음 확인: KHNP 실시간 '운전' 전환 → 발전재개/계통병입 시각 → 출력상승 → 100% 출력 도달 → 재발방지대책 이행",
+            "",
+        ]
+
+    if stage == "operating_status":
+        change = "한국수력원자력 실시간 운영현황에서 한울4호기가 '운전' 상태로 전환됐습니다."
+        caveat = "실제 운전 전환은 확인됐지만 계통병입 시각과 현재 출력률은 별도 공식자료로 확인합니다."
+    elif stage == "generation_resumed":
+        change = "한울4호기의 발전재개·계통병입이 확인됐습니다."
+        caveat = "발전재개는 100% 출력 복귀와 다르므로 이후 출력상승을 별도로 추적합니다."
+    elif stage == "full_power":
+        change = "한울4호기가 100% 출력에 도달해 8월 자동정지 이후 출력 회복 단계까지 완료됐습니다."
+        caveat = "향후에는 동일 고장 재발과 원안위 재발방지대책 이행 여부를 추적합니다."
+    else:
+        change = "한울4호기가 재가동 과정 이후 다시 자동정지·정지 상태로 전환됐습니다."
+        caveat = "원인 확인 전에는 기존 8월 고장 재발로 단정하지 않습니다."
+
+    return [
+        f"## {idx}. [{verification_label}] 한울 4호기 운전상태",
+        f"- 핵심 변화: {change}",
+        f"- 현재 운영상태: {live_status}",
+        f"- 단계 구분: {caveat}",
+        "- 설비 기준: 한울4호기는 약 1,050MWe급 가압경수로이며, 실제 발전량은 운전상태·출력률 확인 뒤 판단합니다.",
+        "- 실패모드: 발전기 차단기·RPCS 계통 재고장, 출력상승 시험 이상, 재발방지대책 미이행이 확인되면 재정지 위험이 있습니다.",
+        f"- 출처: [{item.get('source')}]({item.get('link')}) · {item.get('published_kst')}",
+        "- 다음 확인: 실시간 운전상태 → 발전재개/계통병입 → 출력률 → 100% 출력 → 재정지 여부",
+        "",
+    ]
+
+
 def _self_test_bwrx_us_event_model() -> None:
     permit = _bwrx_stage("TVA Clinch River BWRX-300 construction permit issued by NRC")
     if permit != "construction_permit_issued":
@@ -1308,6 +1699,8 @@ def render(alerts: list[dict], now: dt.datetime) -> str:
             block = _render_smr_policy(item, idx, now)
         elif kind == "bwrx300_us":
             block = _render_bwrx_us(item, idx, now)
+        elif kind == "domestic_reactor_operation":
+            block = _render_hanul4_operation(item, idx, now)
         else:
             block = _render_direct(item, idx, now)
         if len(alerts) == 1 and block and block[0].startswith("## 1. "):
@@ -1327,6 +1720,7 @@ def main() -> int:
     _self_test_material_filter()
     _self_test_smr_event_state_model()
     _self_test_bwrx_us_event_model()
+    _self_test_hanul4_operating_event_model()
     now = now_kst()
     seen = load_seen()
     initial_seen_snapshot = json.dumps(seen, ensure_ascii=False, sort_keys=True)
@@ -1536,6 +1930,32 @@ def main() -> int:
                 "first_seen_kst": now.isoformat(timespec="seconds"),
             }
 
+    # 한울4호기 운전상태는 규제 승인과 실제 발전재개를 분리해 추적한다.
+    seen["hanul4_operation_state_model_version"] = HANUL4_STATE_MODEL_VERSION
+    previous_hanul4 = seen.get("hanul4_operation_state") or {}
+    if not previous_hanul4:
+        seen["hanul4_operation_state"] = {
+            **HANUL4_FIXED_BASELINE,
+            "first_seen_kst": now.isoformat(timespec="seconds"),
+        }
+        previous_hanul4 = seen["hanul4_operation_state"]
+        print("hanul4_operation_baseline_restored=automatic_trip_2026-08-19")
+
+    hanul4_items = collect_hanul4_operation_items(now)
+    latest_hanul4 = _select_hanul4_transition(previous_hanul4, hanul4_items)
+    if latest_hanul4:
+        latest_hanul4["trigger"] = "verified_domestic_reactor_operation_stage_change"
+        alerts.append(latest_hanul4)
+        seen["hanul4_operation_state"] = {
+            **latest_hanul4,
+            "first_seen_kst": now.isoformat(timespec="seconds"),
+        }
+        print(
+            "hanul4_operation_state_change=true "
+            f"stage={latest_hanul4.get('stage')} "
+            f"live_status={latest_hanul4.get('live_status')}"
+        )
+
     if not alerts:
         # 기준선 복구·상태모델 전환 같은 내부 상태 변화는 알림이 없어도 반드시 저장한다.
         current_seen_snapshot = json.dumps(seen, ensure_ascii=False, sort_keys=True)
@@ -1551,10 +1971,16 @@ def main() -> int:
     ALERTS_JSON_PATH.write_text(json.dumps(alerts, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     if all(item.get("kind") == "smr_policy" for item in alerts):
         TITLE_PATH.write_text("한국 SMR 특별법·i-SMR 웹감시: 공식 상태 변화\n", encoding="utf-8")
+    elif all(item.get("kind") == "domestic_reactor_operation" for item in alerts):
+        TITLE_PATH.write_text("국내 원전 운전·재가동 웹감시: 확인된 상태 변화\n", encoding="utf-8")
     else:
         TITLE_PATH.write_text("원전·Westinghouse·SMR 웹감시: 물질적 상태 변화\n", encoding="utf-8")
     save_seen(seen, now)
-    print(f"nuclear_policy_alerts={len(alerts)} westinghouse_material={len(stake_items)} smr_material={len(smr_items)}")
+    print(
+        f"nuclear_policy_alerts={len(alerts)} "
+        f"westinghouse_material={len(stake_items)} smr_material={len(smr_items)} "
+        f"hanul4_candidates={len(hanul4_items)}"
+    )
     return 0
 
 
