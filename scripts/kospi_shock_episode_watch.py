@@ -495,6 +495,8 @@ class Watch:
         self.last_option_poll = 0.0
         self.session_open_ts: float | None = None
         self.opening_gap_sent = False
+        self.handoff_path: str | None = None
+        self.last_handoff_save_ts = 0.0
 
     @staticmethod
     def _nearest(buf: deque[tuple[float, float]], ts: float) -> tuple[float, float] | None:
@@ -1029,6 +1031,15 @@ class Watch:
             task.add_done_callback(self.enrichment_tasks.discard)
             self.episode = None
 
+    def _checkpoint_handoff(self, force: bool = False) -> None:
+        if not self.handoff_path:
+            return
+        now = time.time()
+        if not force and now - self.last_handoff_save_ts < 30:
+            return
+        self.save_handoff(self.handoff_path)
+        self.last_handoff_save_ts = now
+
     def _record_delivery(self, stage: str, message_id: int, ep: dict[str, Any], observed_ts: float) -> None:
         DELIVERY_LOG.parent.mkdir(parents=True, exist_ok=True)
         record = {
@@ -1044,6 +1055,7 @@ class Watch:
         }
         with DELIVERY_LOG.open("a", encoding="utf-8") as fp:
             fp.write(json.dumps(record, ensure_ascii=False) + "\n")
+        self._checkpoint_handoff(force=True)
 
     def save_handoff(self, path: str | Path | None) -> None:
         if not path:
@@ -1197,6 +1209,7 @@ class Watch:
                 self.raw["last_price_poll_error"] = last_poll_error
 
             await self.evaluate()
+            self._checkpoint_handoff()
 
             # XKRX 실제 세션 기준으로만 stale 검사를 적용한다.
             if (
@@ -1292,6 +1305,7 @@ async def amain(
     puts = await asyncio.to_thread(get_weekly_puts, token, current200)
 
     w = Watch(token, puts, front, test)
+    w.handoff_path = handoff_out
     w.load_handoff(handoff_in)
     started = dt.datetime.now(KST)
     try:
