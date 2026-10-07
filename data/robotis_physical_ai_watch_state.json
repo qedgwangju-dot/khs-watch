@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-10-07T01:55:10.967735+00:00",
+  "updated_at": "2026-10-07T01:58:50.751504+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -488,9 +488,12 @@
     "6f2d0a295907cb69a0ef52a9b09808b46c83f06270166d7119241c510f465278",
     "cdc7336269b93233457940a9eea6b2b974f3e1a102f654c0ed73c7e0e2c22cea",
     "3f10b7b564f391866786fef177660589264217e66155db8e183428a9a714cc54",
-    "d9c8e5e3acd5b8dd9c6479f37a8e5e19fec73bec6be3cbf48c5c3e1b562069c2"
+    "d9c8e5e3acd5b8dd9c6479f37a8e5e19fec73bec6be3cbf48c5c3e1b562069c2",
+    "36ed28b7e25d9eb4f5b5be2b7a93de89c61a0ef3e82477467607e2676622161b"
   ],
-  "last_selected": [],
+  "last_selected": [
+    "36ed28b7e25d9eb4f5b5be2b7a93de89c61a0ef3e82477467607e2676622161b"
+  ],
   "groups": [
     "ess_battery",
     "humanoid_supply_bottleneck",
