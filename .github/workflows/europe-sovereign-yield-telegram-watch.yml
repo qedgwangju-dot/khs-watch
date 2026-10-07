@@ -1,0 +1,203 @@
+name: Europe sovereign yield Telegram watch
+
+on:
+  schedule:
+    # GitHub cron is UTC. Secondary-market yields can move independently of ECB policy rates.
+    - cron: "7,22,37,52 * * * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/europe-sovereign-yield-telegram-watch.yml"
+      - "scripts/europe_sovereign_yield_watch.py"
+      - "tests/test_europe_sovereign_yield_watch.py"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: europe-sovereign-yield-telegram-watch
+  cancel-in-progress: true
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "hs88798879887988798879_bot"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate European yield watcher
+        run: |
+          python -m py_compile scripts/europe_sovereign_yield_watch.py
+          python -m unittest tests/test_europe_sovereign_yield_watch.py -v
+
+      - name: Check official sovereign-yield sources
+        run: python scripts/europe_sovereign_yield_watch.py
+
+      - name: Publish status summary
+        if: always()
+        run: |
+          if [ -f out/europe_sovereign_yield_status.md ]; then
+            cat out/europe_sovereign_yield_status.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "유럽 국채금리 감시 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/europe_sovereign_yield_alert.md ]; then
+            printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/europe_sovereign_yield_alert.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Send European yield alert to requested Telegram bot
+        if: hashFiles('out/europe_sovereign_yield_alert.md') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TREASURY_FOREIGN_DEMAND_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -z "$TELEGRAM_BOT_TOKEN" ]; then
+            echo "TREASURY_FOREIGN_DEMAND_TELEGRAM_BOT_TOKEN이 없습니다." >&2
+            exit 1
+          fi
+          if [ -z "$TELEGRAM_CHAT_ID" ]; then
+            echo "KHS_POLICY_TELEGRAM_CHAT_ID가 없습니다." >&2
+            exit 1
+          fi
+
+          python - <<'PY'
+          import datetime as dt
+          import html
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
+          chat_id = os.environ["TELEGRAM_CHAT_ID"].strip()
+          expected = os.environ["EXPECTED_TELEGRAM_BOT_USERNAME"].strip().lstrip("@")
+
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
+              identity = json.loads(r.read().decode("utf-8"))
+          actual = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or actual.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot configured: expected @{expected}, got @{actual or 'unknown'}")
+
+          title = pathlib.Path("out/europe_sovereign_yield_alert_title.txt").read_text(encoding="utf-8").strip()
+          body = pathlib.Path("out/europe_sovereign_yield_alert.md").read_text(encoding="utf-8").strip()
+          raw = f"{title}\n\n{body}".strip()
+
+          rendered = []
+          for line in raw.splitlines():
+              if line.startswith("• Banque de France TEC10: "):
+                  url = line.split(": ", 1)[1].strip()
+                  rendered.append(f'• <a href="{html.escape(url, quote=True)}">Banque de France TEC10 원문</a>')
+              elif line.startswith("• Deutsche Bundesbank 10Y: "):
+                  url = line.split(": ", 1)[1].strip()
+                  rendered.append(f'• <a href="{html.escape(url, quote=True)}">Deutsche Bundesbank 10년 원문</a>')
+              elif line.startswith("• Bank of England IUDMNPY: "):
+                  url = line.split(": ", 1)[1].strip()
+                  rendered.append(f'• <a href="{html.escape(url, quote=True)}">Bank of England 10년 원문</a>')
+              else:
+                  rendered.append(html.escape(line))
+          text = "\n".join(rendered)
+
+          def split_message(value, limit=3900):
+              chunks, current = [], ""
+              for paragraph in value.split("\n\n"):
+                  candidate = paragraph if not current else current + "\n\n" + paragraph
+                  if len(candidate) <= limit:
+                      current = candidate
+                      continue
+                  if current:
+                      chunks.append(current)
+                      current = ""
+                  while len(paragraph) > limit:
+                      cut = paragraph.rfind("\n", 0, limit)
+                      if cut < 1:
+                          cut = limit
+                      chunks.append(paragraph[:cut])
+                      paragraph = paragraph[cut:].lstrip()
+                  current = paragraph
+              if current:
+                  chunks.append(current)
+              return chunks
+
+          ids = []
+          for idx, chunk in enumerate(split_message(text), start=1):
+              if idx > 1:
+                  chunk = f"유럽 국채금리 경보 (계속 {idx})\n\n{chunk}"
+              payload = urllib.parse.urlencode({
+                  "chat_id": chat_id,
+                  "text": chunk,
+                  "parse_mode": "HTML",
+                  "disable_web_page_preview": "true",
+              }).encode("utf-8")
+              req = urllib.request.Request(
+                  f"https://api.telegram.org/bot{token}/sendMessage",
+                  data=payload,
+                  method="POST",
+              )
+              with urllib.request.urlopen(req, timeout=25) as r:
+                  result = json.loads(r.read().decode("utf-8"))
+              if not result.get("ok"):
+                  raise RuntimeError(f"Telegram rejected European yield message: {result}")
+              ids.append((result.get("result") or {}).get("message_id"))
+
+          confirmed = {
+              "status": "confirmed",
+              "lane": "europe_sovereign_yields",
+              "bot_username": actual,
+              "message_ids": ids,
+              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+          }
+          pathlib.Path("out/europe_sovereign_yield_telegram_confirmed.json").write_text(
+              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+          )
+          print(f"telegram_delivery_confirmed=true lane=europe_sovereign_yields bot=@{actual} message_ids={ids}")
+          PY
+
+      - name: Finalize state only after safe run or confirmed delivery
+        if: always()
+        run: python scripts/europe_sovereign_yield_watch.py --finalize
+
+      - name: Commit European yield state
+        if: always() && hashFiles('data/europe_sovereign_yield_state.json') != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/europe_sovereign_yield_state.json
+          if git diff --cached --quiet; then
+            echo "유럽 국채금리 상태 변경 없음"
+          else
+            git commit -m "Update European sovereign yield state"
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push; then exit 0; fi
+              git rebase --abort 2>/dev/null || true
+              sleep $((attempt * 3))
+            done
+            exit 1
+          fi
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: europe-sovereign-yield-${{ github.run_id }}
+          path: |
+            out/europe_sovereign_yield_status.md
+            out/europe_sovereign_yield_alert.md
+            out/europe_sovereign_yield_alert.json
+            out/europe_sovereign_yield_pending_state.json
+            out/europe_sovereign_yield_telegram_confirmed.json
+          if-no-files-found: ignore
+          retention-days: 14
