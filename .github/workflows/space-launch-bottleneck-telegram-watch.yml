@@ -47,6 +47,7 @@ jobs:
         run: |
           python -m py_compile scripts/space_launch_bottleneck_watch.py
           python -m py_compile scripts/space_launch_telegram_send.py
+          python scripts/space_launch_telegram_send.py --self-test
 
       - name: Run space launch bottleneck watch
         env:
