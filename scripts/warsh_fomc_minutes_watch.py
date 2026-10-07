@@ -195,6 +195,7 @@ def section(text, start, end):
 
 
 def extract_signals(text, stmt_date):
+    text = ' '.join(text.split())
     views = section(
         text, "Participants' Views on Current Conditions and the Economic Outlook",
         'Committee Policy Actions',
