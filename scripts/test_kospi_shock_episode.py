@@ -312,3 +312,12 @@ assert "-1.11%" in gap_text, gap_text
 assert "매도주체를 단정하지 않습니다" in gap_text, gap_text
 assert "주도 가능성 높음" not in gap_text, gap_text
 print("opening_gap_alert_regression=true")
+
+
+# Regression: 장중 프로세스 강제종료에 대비해 handoff를 30초 주기로 저장하고
+# 텔레그램 발송 직후에는 즉시 체크포인트한다.
+run_src = inspect.getsource(ks.Watch.run)
+delivery_src = inspect.getsource(ks.Watch._record_delivery)
+assert "self._checkpoint_handoff()" in run_src, run_src
+assert "self._checkpoint_handoff(force=True)" in delivery_src, delivery_src
+print("periodic_handoff_checkpoint_regression=true")
