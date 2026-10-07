@@ -460,7 +460,7 @@ def cpu_structure_observation(title: str, text: str, url: str) -> tuple[str, dic
         if m and 100 <= float(m.group(1)) <= 2000:
             obs["amd_target_usd"] = float(m.group(1))
         market = re.search(
-            r"(?:agentic\s+cpu\s+market|cpu\s+market)[^.!?]{0,130}?"
+            r"bnp paribas[^.!?]{0,180}?(?:agentic\s+cpu\s+market|cpu\s+market)[^.!?]{0,130}?"
             r"(?:\$|usd\s*)?(\d{2,3}(?:\.\d+)?)\s*(?:billion|bn)[^.!?]{0,40}?(?:by\s+)?2030",
             low,
             re.I,
@@ -852,6 +852,8 @@ def main() -> None:
         changes = cpu_structure_changes(structure_latest.get(provider) or {}, new_metrics, provider)
         if not changes:
             continue
+        if provider == "bnpp_analyst" and "amd_target_usd" in new_metrics:
+            structure_latest[provider]["amd_prior_target_usd"] = structure_latest[provider]["amd_target_usd"]
         structure_latest[provider].update(new_metrics)
         structure_latest[provider]["as_of"] = entry["as_of"]
         structure_latest[provider]["source_url"] = entry["url"]
