@@ -359,6 +359,12 @@ NVIDIA_KOREA_ATTENDANCE = re.compile(
     r'방한|참석|방문|일정\s*확정|참석\s*확정',
     re.I,
 )
+NVIDIA_KOREA_ATTENDANCE_REPORTED_CONFIRMED = re.compile(
+    r'confirmed(?:\\s+attendance|\\s+visit)?|attendance.{0,30}confirmed|visit.{0,30}confirmed|'
+    r'참석.{0,24}확정|방한.{0,24}확정|참석을\\s*확정|방한을\\s*확정|최근.{0,24}참석.{0,24}확정',
+    re.I,
+)
+
 NVIDIA_KOREA_COMPANY = re.compile(
     r'Samsung\s*Electronics|삼성전자|SK\s*hynix|SK하이닉스|LG\s*Electronics|LG전자|'
     r'Hyundai\s*Motor|Hyundai|현대자동차|현대차|Doosan\s*Robotics|두산로보틱스|'
@@ -391,6 +397,15 @@ NVIDIA_KOREA_PRIOR_CONTACT = re.compile(
     r'(?:Samsung|삼성전자|SK\s*hynix|SK하이닉스|LG\s*Electronics|LG전자|Hyundai|현대차|Doosan\s*Robotics|두산로보틱스)',
     re.I | re.S,
 )
+
+
+def _nvidia_korea_attendance_tier(text: str, source: str) -> str:
+    source = source or ''
+    if source in base.OFFICIAL_OR_PRIMARY or re.search(r'NVIDIA', source, re.I):
+        return 'official'
+    if source in base.TRUSTED and NVIDIA_KOREA_ATTENDANCE_REPORTED_CONFIRMED.search(text):
+        return 'trusted_report'
+    return 'unverified'
 
 
 def _nvidia_exec_source_ok(source: str) -> bool:
@@ -688,11 +703,14 @@ def score(item: dict) -> int:
             'timeline_unverified','background','korea_event_baseline','korea_prior_contact_baseline'
         }:
             return 0
-        if stage == 'korea_madison_attendance' and source not in base.OFFICIAL_OR_PRIMARY and not re.search(r'NVIDIA', source, re.I):
-            # MoneyToday/industry-source confirmation is a useful date catalyst,
-            # but keep it as a silent user-surfaced baseline until NVIDIA or
-            # Madison directly confirms attendance.
-            return 0
+        if stage == 'korea_madison_attendance':
+            attendance_tier = _nvidia_korea_attendance_tier(text, source)
+            # A trusted-media report that explicitly says attendance/visit is
+            # confirmed is a real schedule upgrade from the prior discussion
+            # baseline. Keep it distinct from NVIDIA/Madison first-party
+            # confirmation so a later official confirmation can alert again.
+            if attendance_tier == 'unverified':
+                return 0
         if stage in {'factory_kpi_initial','factory_kpi_measured','factory_kpi_change','factory_target_achieved'} and not _nvidia_factory_source_ok(source):
             return 0
         s = 20
@@ -965,7 +983,7 @@ def meaning(cat: str) -> str:
         '폭스콘 GB300 로봇 조립 99.5%·사이클타임 목표 달성': '작업 성공률과 처리량이 전자 제조 목표 수준에 도달해 유연 자동화의 상업적 확장성이 한 단계 올라가는 신호입니다. 다른 GB300 공정·타 공장·차세대 랙으로 복제되는지와 실제 인력·원가 절감 폭을 확인합니다.',
         'AI Day Seoul 피지컬AI 행사 기준선': 'NVIDIA 공식 일정상 2026년 11월 9~10일 서울 코엑스에서 AI Day Seoul이 열리고 피지컬AI·로보틱스가 핵심 트랙입니다. 행사 자체 반복 홍보는 새 신호가 아닙니다.',
         '매디슨 황 기존 한국 기업 접점 기준선': '2026년 4·6·8월의 기존 방한·미팅은 기준선으로 고정합니다. 과거 접점 재서술만으로 신규 협력으로 승격하지 않습니다.',
-        '매디슨 황 AI Day Seoul 참석 시간표': 'NVIDIA 로보틱스·Omniverse 제품마케팅 책임자의 한국 일정이 공식 확인되는 시간표 신호입니다. 다음 단계는 기업별 실명 미팅, 기술범위, 공동개발·실증·계약 여부입니다.',
+        '매디슨 황 AI Day Seoul 참석 시간표': 'NVIDIA 로보틱스·Omniverse 제품마케팅 책임자의 11월 한국 일정이 확정 단계로 올라가는 시간표 신호입니다. 신뢰매체의 업계소식통 확정보도와 NVIDIA·매디슨 황 1차자료의 직접 확인을 분리하고, 다음 단계는 기업별 실명 미팅·기술범위·공동개발·실증·계약 여부입니다.',
         '매디슨 황 한국기업 피지컬AI 미팅': '일정 예고가 실제 삼성전자·SK하이닉스·LG전자·현대차·두산로보틱스 등과의 구체적 피지컬AI 협의로 내려온 단계입니다. 단순 면담과 공동개발·수주를 분리합니다.',
         'NVIDIA·한국기업 피지컬AI 협력계약·업무협약': '관계 강화가 실제 협약·공동개발·계약으로 전환되는 단계입니다. Isaac·GR00T·Omniverse·Jetson 적용 범위, 고객·공장, 계약금액과 반복매출 구조를 확인합니다.',
         'NVIDIA·한국기업 피지컬AI 실증·통합·배치': '협력 논의가 실제 로봇·공장·데이터팩토리의 기술 통합·현장 실증·생산배치로 전환되는 직접 실행 신호입니다. 로봇 대수·사이트·성공률·사람 개입률·가동시간을 추적합니다.',
@@ -1198,9 +1216,11 @@ def same_event(a: dict, b: dict) -> bool:
         sa, sb = _nvidia_robotics_exec_stage(ta, a.get('source') or ''), _nvidia_robotics_exec_stage(tb, b.get('source') or '')
         if sa != sb:
             return False
+        if sa == 'korea_madison_attendance':
+            return _nvidia_korea_attendance_tier(ta, a.get('source') or '') == _nvidia_korea_attendance_tier(tb, b.get('source') or '')
         if sa in {
             'official_rhetoric_baseline','roadshow_within_year_unverified','within_year_unverified',
-            'korea_event_baseline','korea_prior_contact_baseline','korea_madison_attendance'
+            'korea_event_baseline','korea_prior_contact_baseline'
         }:
             return True
         nums_a = set(re.findall(r'\d[\d,.]*\s*(?:months?|years?|robots?|units?|customers?|sites?|%|seconds?|sec|s|대|개|곳|개월|년|초)', ta, re.I))
@@ -1277,7 +1297,8 @@ def key(item: dict) -> str:
         if stage == 'korea_prior_contact_baseline':
             return hashlib.sha256(b'nvidia-korea|madison-huang|2026-prior-contacts|april-june-august').hexdigest()
         if stage == 'korea_madison_attendance':
-            return hashlib.sha256(b'nvidia-korea|madison-huang|ai-day-seoul-2026|attendance').hexdigest()
+            tier = _nvidia_korea_attendance_tier(text, item.get('source') or '')
+            return hashlib.sha256(f'nvidia-korea|madison-huang|ai-day-seoul-2026|attendance|{tier}'.encode()).hexdigest()
         if stage in {'korea_named_meeting','korea_partnership','korea_deployment'}:
             partners = '-'.join(sorted(set(re.findall(
                 r'Samsung\s*Electronics|삼성전자|SK\s*hynix|SK하이닉스|LG\s*Electronics|LG전자|'
