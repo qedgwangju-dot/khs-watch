@@ -1286,6 +1286,33 @@
       "source_published_kst": "2026-10-07T11:13+09:00",
       "title": "부산항 이용 선박 위치 실시간 확인…BPA, '글로벌 AIS' 도입"
     },
+    "core:3e8c4080f4b1058265cf21b7": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171187",
+      "source": "매일경제",
+      "source_body_digest": "526f76d6453dd2fe20b910f681bb900968299c765a04f6b919f971476426c3cc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ef09531d2026ff824ba72fd8796f9dda8092e34c63d196d6f89901146fd891b",
+      "source_fact_keys": [
+        "source_fact:v1:00c1f5db75decf8e75738ba31927973b7a40e9c44a0e54364ff48f73b3fb004d",
+        "source_fact:v1:11c231aeeb3a6de4abf90fd15eca886f2b8809dad702e444748e3f3d5458b36d",
+        "source_fact:v1:1d9849347aaee4ff2af2ca78610a4e3b67abdc35a72492295b81b571a2f9a6b0",
+        "source_fact:v1:479787342ddbac7b7b9dda12ff47cc4d29ffeeb69c7f6e1a5d7e41760850488b",
+        "source_fact:v1:632ac4b24afb36221cda64681c103fce9ab1b19fc5ec53245dc4e2c056a17c8f",
+        "source_fact:v1:9fd78201dd8de6280d6dd51b8c2c3d0f889fb702f1921e448407d1b004bb1f34",
+        "source_fact:v1:a0c5797953ded811934bd29bfb00e44aeceb34e78fdec289a957c9ffecbbdd43",
+        "source_fact:v1:effb069b68280c7a9cc677d860bf798f66675e4de0e57b9132fcbcb0070026c8",
+        "source_fact:v1:f53429523fcd54eca679431149158d77ffe56b7c39e5a3e1d8d23e24ad6ef21d"
+      ],
+      "source_published_kst": "2026-10-07T17:12+09:00",
+      "source_title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이",
+      "telegram_core_fact": "코스피가 외국인의 거센 매도 폭탄과 미국 국채금리 반등, 주요 기업 실적에 대한 경계감에 밀려 2% 가까이 급락하며 간신히 6,800선을 지켜냈다.",
+      "title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이"
+    },
     "core:3f0351a8d1b239556f5f7404": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
       "lanes": {
@@ -2421,6 +2448,27 @@
       "telegram_core_fact": "배터리 교환 생태계 기업 고고로(GGR)가 이사 Chung-Yao Yin이 지배하는 법인과 전략적 투자자를 대상으로 보통주 2493만6057주를 주당 2.48달러에 발행해 약 6180만 달러 두 번째 신규 지분투자를 유치한다고 7일(현지시간) 발표했다.",
       "title": "고고로, 6200만 달러 증자..주당 2.48달러 신주 발행"
     },
+    "core:861c66cfc5ef028198b988d2": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.hankyung.com/article/202610079441i",
+      "source": "한국경제",
+      "source_body_digest": "a337f5873b851ca5c199b4cc1d64b92435690278a7c64996da4a11ba7dd06951",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9c2bc021f1b2207a31f99e463ab7db8588623de07168f337e7bd1c18bd6c440",
+      "source_fact_keys": [
+        "source_fact:v1:7ebba2aad4e71bd90c3d10e8cf0833596dd55243d77cf788b8cefd781ffb7c07",
+        "source_fact:v1:80a93970f1d126d66cfe7d22ddfd181f6415132cd0ecf88ce44038c6e60ac535",
+        "source_fact:v1:8a2f8dfe9ef26a0b128a7626d48050e34c2dacf83e458876637e34667e811cfd"
+      ],
+      "source_published_kst": "2026-10-07T20:47+09:00",
+      "source_title": "\"엔비디아칩 사려고 54조원 빚낸다\"…스페이스X, 400억달러 조달 추진",
+      "telegram_core_fact": "일론 머스크가 이끄는 스페이스X가 엔비디아의 칩을 사기 위해 약 300억달러 회사채를 포함, 400억달러(약 54조원)의 자금 조달에 나설 계획이다. 마켓워치에 따르면, 400억달러는 스페이스X의 올해 예상 매출 445억달러에 거의 맞먹는 규모이다.",
+      "title": "\"엔비디아칩 사려고 54조원 빚낸다\"…스페이스X, 400억달러 조달 추진"
+    },
     "core:8736f1c738f8824b57664d9a": {
       "first_seen_kst": "2026-10-07T17:23:27+09:00",
       "lanes": {
@@ -3098,6 +3146,23 @@
       "source_published_kst": "2026-10-07T11:25+09:00",
       "title": "블룸버그 “AI 유망 투자처는 대만...코스피는 ‘위험’”"
     },
+    "core:a315fed80d2ca59e948160e1": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170803",
+      "source": "매일경제",
+      "source_body_digest": "7dcc7187abeae5b51501a76335437b508f13d80fa2c146a189540187fa01c52c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T18:50+09:00",
+      "source_title": "컨스텔레이션브랜드, 연간 EPS 가이던스 시장 기대 하회에 투자심리 위축",
+      "telegram_core_fact": "2분기 실적은 예상치를 웃돌았지만, 연간 비GAAP EPS 가이던스를 11.20~11.90달러로 제시해 시장 예상치 11.71달러를 밑돌며 실망감이 커졌습니다.",
+      "title": "컨스텔레이션브랜드, 연간 EPS 가이던스 시장 기대 하회에 투자심리 위축"
+    },
     "core:a42bd94b3c576fd3da1804f5": {
       "first_seen_kst": "2026-10-07T21:47:30+09:00",
       "lanes": {
@@ -3319,6 +3384,30 @@
       "source_title": "\"미래기금으로 한전·관사·공연관람·농어촌 기본소득 지원\"(종합)",
       "telegram_core_fact": "반도체 산업 호황에 따른 추가 세수를 미래 세대를 위한 투자 재원으로 활용하는 정부의 미래대응기금의 사용 계획에 한국전력[015760] 지원 등의 내용이 포함돼 있다고 국회 재정경제기획위원회 소속 국민의힘 박수영 의원이 7일 밝혔다.",
       "title": "\"미래기금으로 한전·관사·공연관람·농어촌 기본소득 지원\"(종합)"
+    },
+    "core:abe1f9d007dee5040a6bb4ce": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05710486645610624",
+      "source": "이데일리",
+      "source_body_digest": "79434e528aef9c3736075e83ba93423d072caa6b21f292ffa9e1458078a1c61c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dad74f37ed7a4196d44b3bccc06d4eea71b803e6ee9e9259ab8a6d6811869b7f",
+      "source_fact_keys": [
+        "source_fact:v1:1b368dc03cc4d454c34833dbe24e1bafdfd433822fd8bfe0c261cc8a09c33f75",
+        "source_fact:v1:628b3d9eff660600787b85b8df4a04cfd3382ad241105d56ff0300c8085b8a15",
+        "source_fact:v1:6f2c44c068c65670225194a94dfd4a68f7d735e7442283068586466e9dfd7747",
+        "source_fact:v1:baf05800d0b06a08edf240fd8edc67587a2bb320e8d17467d32ae1c395daeab5",
+        "source_fact:v1:ce8d6b6d3a2f703450acf2c6711cb00b827dc37bdeac940f2b787bfcfd750611",
+        "source_fact:v1:f78fcaea25a47232f9f6546658d7eaf7b7d16f19e3b34df3436157c238284f2c"
+      ],
+      "source_published_kst": "2026-10-07T20:11+09:00",
+      "source_title": "[美특징주]컨스텔레이션 브랜즈, 맥주 1위 유지에도 가이던스 하회에 개장전 5%↓",
+      "telegram_core_fact": "맥주 부문 순매출은 전년비 5% 증가한 24억7000만달러를 기록했으며 출하량은 5.5% 늘었다.",
+      "title": "[美특징주]컨스텔레이션 브랜즈, 맥주 1위 유지에도 가이던스 하회에 개장전 5%↓"
     },
     "core:ada1d2a7c57b4bcc1a381329": {
       "first_seen_kst": "2026-10-07T20:43:18+09:00",
@@ -3988,6 +4077,30 @@
       "source_published_kst": "2026-10-07T08:27+09:00",
       "title": "LS일렉, 대만 최대 석화사와 합작법인 설립…현지 전력 설루션 시장 본격 공략"
     },
+    "core:c8f5c8dda10d849af9ff0dec": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/07/2026100717474042035",
+      "source": "머니투데이",
+      "source_body_digest": "4d676ba1beeff7e708e70b3bb576e408f75cf4f3beb510f5affa195cdc8d681f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:36139c6a6e3b30fec709e0fa29284b1ba49d1c825927ee5f5bcccf6b6510375c",
+      "source_fact_keys": [
+        "source_fact:v1:5b43f998540751b28334982615c61011b3d84d556e42b93ab53a0c8fae29741f",
+        "source_fact:v1:5f5cd113bc4e4a719bb2ba2d5fdfc3aac1eeac02812f70fa95a125c765bd6ffe",
+        "source_fact:v1:a0fef42c47930a51ad19e66bcdde6e9cea8c53500431cfa5c378b7948de27083",
+        "source_fact:v1:a9754c3eeb91734e57d2cf00a568ce6b42c86ef45c3b9891740ac902e36c187d",
+        "source_fact:v1:b70d66799e00dbfbf27d4fbd2fba5e45ae1e7c787730ff3305992e88c06d3262",
+        "source_fact:v1:c2eb0027564d127ff06d9f42e3cd95d5e92e00f8657dc3e5b2914f4e53a8ec91"
+      ],
+      "source_published_kst": "2026-10-07T18:14+09:00",
+      "source_title": "日 토픽스 지수 56년만에 대수술…종목 40% 줄이는 이유",
+      "telegram_core_fact": "일본거래소그룹(JPX)은 일본 대표 주가지수 토픽스(TOPIX) 편입 종목 수를 약 40% 줄이는 대규모 개편안을 발표했다. 니혼게이자이(닛케이)신문에 따르면 도쿄증권거래소를 운영하는 JPX는 10월 말부터 토픽스의 편입 종목 수를 현재 1636개사에서 986개사로 줄이는 대규모 개편 계획을 밝혔다.",
+      "title": "日 토픽스 지수 56년만에 대수술…종목 40% 줄이는 이유"
+    },
     "core:c910983b95c6fdee20b2d5d2": {
       "first_seen_kst": "2026-10-07T21:47:30+09:00",
       "lanes": {
@@ -4591,6 +4704,29 @@
       "source_title": "리사 수 AMD CEO, 韓 AI·반도체·게임 생태계 잇달아 접촉",
       "telegram_core_fact": "그는 한국을 단순한 메모리 공급처가 아닌 AMD의 AI 생태계를 함께 구축할 주요 파트너로 평가했다.",
       "title": "리사 수 AMD CEO, 韓 AI·반도체·게임 생태계 잇달아 접촉"
+    },
+    "core:e2d2896c7e9d1bee314a1add": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170602",
+      "source": "매일경제",
+      "source_body_digest": "89d1992912abd2c53cd0107202291ddc90e6a9a3509685054886207f096cda67",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:958cdbba0b02a89f54f470f23a915efd4e3f449952c75a31652481360b160d16",
+      "source_fact_keys": [
+        "source_fact:v1:2c6e320618c3989538b7b08fd915ba24e8d2f8c595bfa30ad7e79d4fc9a3eb7e",
+        "source_fact:v1:40c517475d6627c3023c0c636633da2bc6796761be2079c6a180bba016dbc93c",
+        "source_fact:v1:829e54afdac88c734822a00441af836617d4caf643a2948732ea4e59b9494d24",
+        "source_fact:v1:bf9d70c2ec24fc0f8d182f44d9397399132c1a74c951c780532f55cefe9401d1",
+        "source_fact:v1:e6bb1bcef58475ed58340b19d3b60edf38de81acd3e4a393e0fcf8fd85a4788c"
+      ],
+      "source_published_kst": "2026-10-07T08:43+09:00",
+      "source_title": "탑 웰스 그룹 홀딩, 나스닥 1달러 호가 요건 미달 통보..내년 3월 말 시한",
+      "telegram_core_fact": "탑 웰스 그룹 홀딩(TWG)이 나스닥 상장 유지 요건인 최소 매수호가 1달러를 30거래일 연속 밑돌아 10월 2일자로 나스닥으로부터 요건 미충족 통지서를 받았으며, 규정 준수 시한은 2027년 3월 31일이라고 10월 6일 발표했다.",
+      "title": "탑 웰스 그룹 홀딩, 나스닥 1달러 호가 요건 미달 통보..내년 3월 말 시한"
     },
     "core:e5477c20a52b521b6a8cd300": {
       "first_seen_kst": "2026-10-07T18:44:00+09:00",
@@ -5314,6 +5450,29 @@
       ],
       "source_published_kst": "2026-10-07T08:12+09:00",
       "title": "원유 풀려도 배가 없다…비톨 “유가 200달러 갈 수도”"
+    },
+    "core:ff4a8e7bcc4881588667db3e": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633265",
+      "source": "이투데이",
+      "source_body_digest": "e915a7b217a9faff892b4b85b64b6f7ad413742cfaa1a27ad0c4b0b1322a67f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:67593db42d40901bf065dbfcd145545dd011674401bf6e65a926153a6da77085",
+      "source_fact_keys": [
+        "source_fact:v1:19eb43c9e07e2c9eeee9aeb97d5cfa0aee7d2aa7ff5f1b47b8c25857db302d13",
+        "source_fact:v1:1da5d885a1e2fc0805512433a1a5039d92413653bdf7334537079a5b22848d41",
+        "source_fact:v1:85ab522b46617dc1f67bf9967dd85a3addeef75e1075ac7e32c7b3f9355aa482",
+        "source_fact:v1:98ef10b09d28fbe2a0b63c7aecd6d4164aad1628ee7c1a7fdc1f844328bf6b37",
+        "source_fact:v1:efff46dac032448e39b3a3c4789b523cec159e2b618a811978e20a2ca891d0f5"
+      ],
+      "source_published_kst": "2026-10-07T11:00+09:00",
+      "source_title": "3분기 누적 韓도착 외국인직접투자 149억불 '역대 최대'⋯중동 악재 속 30.6%↑",
+      "telegram_core_fact": "같은 기간 투자 도착액은 전년 대비 30.6% 증가한 148억7000만달러로 3분기 누적 기준 역대 1위 실적을 달성했다. 특히 실제 자금이 유입된 투자 도착액은 30% 넘게 증가하며 3분기 누적 기준 역대 최대치를 경신했다.",
+      "title": "3분기 누적 韓도착 외국인직접투자 149억불 '역대 최대'⋯중동 악재 속 30.6%↑"
     },
     "event:003f3fec92db8753529b09aa": {
       "first_seen_kst": "2026-10-01T18:06:18+09:00",
@@ -7371,17 +7530,29 @@
     "event:4eaef40f0c35a83e36ae3ebe": {
       "first_seen_kst": "2026-10-07T05:13:11+09:00",
       "lanes": {
-        "live": "2026-10-07T05:13:11+09:00"
+        "live": "2026-10-08T01:26:16+09:00"
       },
-      "last_seen_kst": "2026-10-07T05:13:11+09:00",
-      "link": "https://www.newsis.com/view/NISX20261006_0003815344",
-      "source": "뉴시스",
-      "source_body_digest": "87147b7018ead5e050ad808babd600bdb6699dfcf54709bfd4ec5a5686f03d4c",
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171187",
+      "source": "매일경제",
+      "source_body_digest": "526f76d6453dd2fe20b910f681bb900968299c765a04f6b919f971476426c3cc",
       "source_event_identity": "",
-      "source_fact_identity": "",
-      "source_fact_keys": [],
-      "source_published_kst": "2026-10-07T05:00+09:00",
-      "title": "LG전자, 오늘 3Q 성적표 발표…사상 첫 분기 매출 24조 돌파하나"
+      "source_fact_identity": "source_facts:v1:9ef09531d2026ff824ba72fd8796f9dda8092e34c63d196d6f89901146fd891b",
+      "source_fact_keys": [
+        "source_fact:v1:00c1f5db75decf8e75738ba31927973b7a40e9c44a0e54364ff48f73b3fb004d",
+        "source_fact:v1:11c231aeeb3a6de4abf90fd15eca886f2b8809dad702e444748e3f3d5458b36d",
+        "source_fact:v1:1d9849347aaee4ff2af2ca78610a4e3b67abdc35a72492295b81b571a2f9a6b0",
+        "source_fact:v1:479787342ddbac7b7b9dda12ff47cc4d29ffeeb69c7f6e1a5d7e41760850488b",
+        "source_fact:v1:632ac4b24afb36221cda64681c103fce9ab1b19fc5ec53245dc4e2c056a17c8f",
+        "source_fact:v1:9fd78201dd8de6280d6dd51b8c2c3d0f889fb702f1921e448407d1b004bb1f34",
+        "source_fact:v1:a0c5797953ded811934bd29bfb00e44aeceb34e78fdec289a957c9ffecbbdd43",
+        "source_fact:v1:effb069b68280c7a9cc677d860bf798f66675e4de0e57b9132fcbcb0070026c8",
+        "source_fact:v1:f53429523fcd54eca679431149158d77ffe56b7c39e5a3e1d8d23e24ad6ef21d"
+      ],
+      "source_published_kst": "2026-10-07T17:12+09:00",
+      "source_title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이",
+      "telegram_core_fact": "코스피가 외국인의 거센 매도 폭탄과 미국 국채금리 반등, 주요 기업 실적에 대한 경계감에 밀려 2% 가까이 급락하며 간신히 6,800선을 지켜냈다.",
+      "title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이"
     },
     "event:4eb4da03fdbff18d26141b50": {
       "event_alias_evidence_message_id": 2287,
@@ -9133,22 +9304,23 @@
     "event:88f963c9ef72bbb16d0015e4": {
       "first_seen_kst": "2026-10-07T00:23:09+09:00",
       "lanes": {
-        "live": "2026-10-07T07:12:15+09:00"
+        "live": "2026-10-08T01:26:16+09:00"
       },
-      "last_seen_kst": "2026-10-07T07:12:15+09:00",
-      "link": "https://www.fnnews.com/news/202610070631319352",
-      "source": "파이낸셜뉴스",
-      "source_body_digest": "959ea76632115146676880fea679fc55d3878c50a546602098a3db82505e07f4",
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.hankyung.com/article/202610079441i",
+      "source": "한국경제",
+      "source_body_digest": "a337f5873b851ca5c199b4cc1d64b92435690278a7c64996da4a11ba7dd06951",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:af46f43b34b8958fa67f9e5e7907679a7377c0d502679119a783358de0382bc2",
+      "source_fact_identity": "source_facts:v1:b9c2bc021f1b2207a31f99e463ab7db8588623de07168f337e7bd1c18bd6c440",
       "source_fact_keys": [
-        "source_fact:v1:05bf905460c3251d9c12bbbfacf5af0d870f731d4efb0189028fcd2452ba2440",
-        "source_fact:v1:3fc2e6e7026b636ac78564ec3ce24cc56f86197d941a584e9a84adc461016897",
-        "source_fact:v1:6f1522eba4c02992114427a57a556c1e1d3a83a7166abfb59a2dbac9189111af",
-        "source_fact:v1:aab345e64daa49ef634661a1728564770059f71d577adb27324dbcda2ae963a3"
+        "source_fact:v1:7ebba2aad4e71bd90c3d10e8cf0833596dd55243d77cf788b8cefd781ffb7c07",
+        "source_fact:v1:80a93970f1d126d66cfe7d22ddfd181f6415132cd0ecf88ce44038c6e60ac535",
+        "source_fact:v1:8a2f8dfe9ef26a0b128a7626d48050e34c2dacf83e458876637e34667e811cfd"
       ],
-      "source_published_kst": "2026-10-07T06:31+09:00",
-      "title": "실적 기대에 힘받은 뉴욕증시…S&P500·나스닥 또 최고치(종합)"
+      "source_published_kst": "2026-10-07T20:47+09:00",
+      "source_title": "\"엔비디아칩 사려고 54조원 빚낸다\"…스페이스X, 400억달러 조달 추진",
+      "telegram_core_fact": "일론 머스크가 이끄는 스페이스X가 엔비디아의 칩을 사기 위해 약 300억달러 회사채를 포함, 400억달러(약 54조원)의 자금 조달에 나설 계획이다. 마켓워치에 따르면, 400억달러는 스페이스X의 올해 예상 매출 445억달러에 거의 맞먹는 규모이다.",
+      "title": "\"엔비디아칩 사려고 54조원 빚낸다\"…스페이스X, 400억달러 조달 추진"
     },
     "event:89a487c8295ea75a26c50b66": {
       "first_seen_kst": "2026-10-02T11:29:29+09:00",
@@ -14172,6 +14344,33 @@
       "source_published_kst": "2026-10-06T01:21+09:00",
       "title": "페라리, 자사주 2600만 유로 매입..3차 한도 41% 소진"
     },
+    "fact:1030f32658f7bee5ddc81569": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171187",
+      "source": "매일경제",
+      "source_body_digest": "526f76d6453dd2fe20b910f681bb900968299c765a04f6b919f971476426c3cc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ef09531d2026ff824ba72fd8796f9dda8092e34c63d196d6f89901146fd891b",
+      "source_fact_keys": [
+        "source_fact:v1:00c1f5db75decf8e75738ba31927973b7a40e9c44a0e54364ff48f73b3fb004d",
+        "source_fact:v1:11c231aeeb3a6de4abf90fd15eca886f2b8809dad702e444748e3f3d5458b36d",
+        "source_fact:v1:1d9849347aaee4ff2af2ca78610a4e3b67abdc35a72492295b81b571a2f9a6b0",
+        "source_fact:v1:479787342ddbac7b7b9dda12ff47cc4d29ffeeb69c7f6e1a5d7e41760850488b",
+        "source_fact:v1:632ac4b24afb36221cda64681c103fce9ab1b19fc5ec53245dc4e2c056a17c8f",
+        "source_fact:v1:9fd78201dd8de6280d6dd51b8c2c3d0f889fb702f1921e448407d1b004bb1f34",
+        "source_fact:v1:a0c5797953ded811934bd29bfb00e44aeceb34e78fdec289a957c9ffecbbdd43",
+        "source_fact:v1:effb069b68280c7a9cc677d860bf798f66675e4de0e57b9132fcbcb0070026c8",
+        "source_fact:v1:f53429523fcd54eca679431149158d77ffe56b7c39e5a3e1d8d23e24ad6ef21d"
+      ],
+      "source_published_kst": "2026-10-07T17:12+09:00",
+      "source_title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이",
+      "telegram_core_fact": "코스피가 외국인의 거센 매도 폭탄과 미국 국채금리 반등, 주요 기업 실적에 대한 경계감에 밀려 2% 가까이 급락하며 간신히 6,800선을 지켜냈다.",
+      "title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이"
+    },
     "fact:10b413cac25d6caf27be6eb0": {
       "first_seen_kst": "2026-10-07T04:49:54+09:00",
       "lanes": {
@@ -18428,6 +18627,30 @@
       "source_title": "포스코, K-GX ‘철강 GX’ 참여…2028년 포항에 하이렉스 실증설비",
       "telegram_core_fact": "2028년까지 연산 30만t(톤) 하이렉스 실증설비를 구축하고 청정수소 공급망과 포항·울산 산업단지를 연계한다.",
       "title": "포스코, K-GX ‘철강 GX’ 참여…2028년 포항에 하이렉스 실증설비"
+    },
+    "fact:3fa821dcc19e194cf5f7461c": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/07/2026100717474042035",
+      "source": "머니투데이",
+      "source_body_digest": "4d676ba1beeff7e708e70b3bb576e408f75cf4f3beb510f5affa195cdc8d681f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:36139c6a6e3b30fec709e0fa29284b1ba49d1c825927ee5f5bcccf6b6510375c",
+      "source_fact_keys": [
+        "source_fact:v1:5b43f998540751b28334982615c61011b3d84d556e42b93ab53a0c8fae29741f",
+        "source_fact:v1:5f5cd113bc4e4a719bb2ba2d5fdfc3aac1eeac02812f70fa95a125c765bd6ffe",
+        "source_fact:v1:a0fef42c47930a51ad19e66bcdde6e9cea8c53500431cfa5c378b7948de27083",
+        "source_fact:v1:a9754c3eeb91734e57d2cf00a568ce6b42c86ef45c3b9891740ac902e36c187d",
+        "source_fact:v1:b70d66799e00dbfbf27d4fbd2fba5e45ae1e7c787730ff3305992e88c06d3262",
+        "source_fact:v1:c2eb0027564d127ff06d9f42e3cd95d5e92e00f8657dc3e5b2914f4e53a8ec91"
+      ],
+      "source_published_kst": "2026-10-07T18:14+09:00",
+      "source_title": "日 토픽스 지수 56년만에 대수술…종목 40% 줄이는 이유",
+      "telegram_core_fact": "일본거래소그룹(JPX)은 일본 대표 주가지수 토픽스(TOPIX) 편입 종목 수를 약 40% 줄이는 대규모 개편안을 발표했다. 니혼게이자이(닛케이)신문에 따르면 도쿄증권거래소를 운영하는 JPX는 10월 말부터 토픽스의 편입 종목 수를 현재 1636개사에서 986개사로 줄이는 대규모 개편 계획을 밝혔다.",
+      "title": "日 토픽스 지수 56년만에 대수술…종목 40% 줄이는 이유"
     },
     "fact:3fcfa6a062aa5a077aeb7be4": {
       "first_seen_kst": "2026-10-07T17:34:38+09:00",
@@ -24508,6 +24731,30 @@
       "source_published_kst": "2026-10-07T07:44+09:00",
       "title": "“효성중공업, 매출 이연으로 단기 실적 변동성 확대”"
     },
+    "fact:8db9701368563c2bce59921a": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05710486645610624",
+      "source": "이데일리",
+      "source_body_digest": "79434e528aef9c3736075e83ba93423d072caa6b21f292ffa9e1458078a1c61c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dad74f37ed7a4196d44b3bccc06d4eea71b803e6ee9e9259ab8a6d6811869b7f",
+      "source_fact_keys": [
+        "source_fact:v1:1b368dc03cc4d454c34833dbe24e1bafdfd433822fd8bfe0c261cc8a09c33f75",
+        "source_fact:v1:628b3d9eff660600787b85b8df4a04cfd3382ad241105d56ff0300c8085b8a15",
+        "source_fact:v1:6f2c44c068c65670225194a94dfd4a68f7d735e7442283068586466e9dfd7747",
+        "source_fact:v1:baf05800d0b06a08edf240fd8edc67587a2bb320e8d17467d32ae1c395daeab5",
+        "source_fact:v1:ce8d6b6d3a2f703450acf2c6711cb00b827dc37bdeac940f2b787bfcfd750611",
+        "source_fact:v1:f78fcaea25a47232f9f6546658d7eaf7b7d16f19e3b34df3436157c238284f2c"
+      ],
+      "source_published_kst": "2026-10-07T20:11+09:00",
+      "source_title": "[美특징주]컨스텔레이션 브랜즈, 맥주 1위 유지에도 가이던스 하회에 개장전 5%↓",
+      "telegram_core_fact": "맥주 부문 순매출은 전년비 5% 증가한 24억7000만달러를 기록했으며 출하량은 5.5% 늘었다.",
+      "title": "[美특징주]컨스텔레이션 브랜즈, 맥주 1위 유지에도 가이던스 하회에 개장전 5%↓"
+    },
     "fact:8dd203a0838ef3752eca2d33": {
       "first_seen_kst": "2026-10-06T22:37:02+09:00",
       "lanes": {
@@ -26118,6 +26365,29 @@
       "source_published_kst": "2026-10-06T09:07+09:00",
       "title": "'MSVP 세계 1위' 한미반도체, 삼성전기 245억 장비 수주"
     },
+    "fact:9c3471672917f1680af6e735": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170602",
+      "source": "매일경제",
+      "source_body_digest": "89d1992912abd2c53cd0107202291ddc90e6a9a3509685054886207f096cda67",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:958cdbba0b02a89f54f470f23a915efd4e3f449952c75a31652481360b160d16",
+      "source_fact_keys": [
+        "source_fact:v1:2c6e320618c3989538b7b08fd915ba24e8d2f8c595bfa30ad7e79d4fc9a3eb7e",
+        "source_fact:v1:40c517475d6627c3023c0c636633da2bc6796761be2079c6a180bba016dbc93c",
+        "source_fact:v1:829e54afdac88c734822a00441af836617d4caf643a2948732ea4e59b9494d24",
+        "source_fact:v1:bf9d70c2ec24fc0f8d182f44d9397399132c1a74c951c780532f55cefe9401d1",
+        "source_fact:v1:e6bb1bcef58475ed58340b19d3b60edf38de81acd3e4a393e0fcf8fd85a4788c"
+      ],
+      "source_published_kst": "2026-10-07T08:43+09:00",
+      "source_title": "탑 웰스 그룹 홀딩, 나스닥 1달러 호가 요건 미달 통보..내년 3월 말 시한",
+      "telegram_core_fact": "탑 웰스 그룹 홀딩(TWG)이 나스닥 상장 유지 요건인 최소 매수호가 1달러를 30거래일 연속 밑돌아 10월 2일자로 나스닥으로부터 요건 미충족 통지서를 받았으며, 규정 준수 시한은 2027년 3월 31일이라고 10월 6일 발표했다.",
+      "title": "탑 웰스 그룹 홀딩, 나스닥 1달러 호가 요건 미달 통보..내년 3월 말 시한"
+    },
     "fact:9c398454b165b150da8b823e": {
       "first_seen_kst": "2026-10-06T14:52:12+09:00",
       "lanes": {
@@ -26705,6 +26975,29 @@
       ],
       "source_published_kst": "2026-10-05T21:22+09:00",
       "title": "테라울프, 머스키 전력 1GW로 2배 확대..2단계 1년 앞당겨"
+    },
+    "fact:a5b93ad4ced3ce003f65ee03": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633265",
+      "source": "이투데이",
+      "source_body_digest": "e915a7b217a9faff892b4b85b64b6f7ad413742cfaa1a27ad0c4b0b1322a67f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:67593db42d40901bf065dbfcd145545dd011674401bf6e65a926153a6da77085",
+      "source_fact_keys": [
+        "source_fact:v1:19eb43c9e07e2c9eeee9aeb97d5cfa0aee7d2aa7ff5f1b47b8c25857db302d13",
+        "source_fact:v1:1da5d885a1e2fc0805512433a1a5039d92413653bdf7334537079a5b22848d41",
+        "source_fact:v1:85ab522b46617dc1f67bf9967dd85a3addeef75e1075ac7e32c7b3f9355aa482",
+        "source_fact:v1:98ef10b09d28fbe2a0b63c7aecd6d4164aad1628ee7c1a7fdc1f844328bf6b37",
+        "source_fact:v1:efff46dac032448e39b3a3c4789b523cec159e2b618a811978e20a2ca891d0f5"
+      ],
+      "source_published_kst": "2026-10-07T11:00+09:00",
+      "source_title": "3분기 누적 韓도착 외국인직접투자 149억불 '역대 최대'⋯중동 악재 속 30.6%↑",
+      "telegram_core_fact": "같은 기간 투자 도착액은 전년 대비 30.6% 증가한 148억7000만달러로 3분기 누적 기준 역대 1위 실적을 달성했다. 특히 실제 자금이 유입된 투자 도착액은 30% 넘게 증가하며 3분기 누적 기준 역대 최대치를 경신했다.",
+      "title": "3분기 누적 韓도착 외국인직접투자 149억불 '역대 최대'⋯중동 악재 속 30.6%↑"
     },
     "fact:a5e06e55dbec75206a36e5d0": {
       "first_seen_kst": "2026-10-06T16:30:27+09:00",
@@ -29255,6 +29548,27 @@
       ],
       "source_published_kst": "2026-10-06T10:16+09:00",
       "title": "엠플러스, 유럽 배터리 기업에 각형 장비 공급…방산·항공우주로 고객군 확대"
+    },
+    "fact:c4148de5f38ca1a9e7f39998": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.hankyung.com/article/202610079441i",
+      "source": "한국경제",
+      "source_body_digest": "a337f5873b851ca5c199b4cc1d64b92435690278a7c64996da4a11ba7dd06951",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9c2bc021f1b2207a31f99e463ab7db8588623de07168f337e7bd1c18bd6c440",
+      "source_fact_keys": [
+        "source_fact:v1:7ebba2aad4e71bd90c3d10e8cf0833596dd55243d77cf788b8cefd781ffb7c07",
+        "source_fact:v1:80a93970f1d126d66cfe7d22ddfd181f6415132cd0ecf88ce44038c6e60ac535",
+        "source_fact:v1:8a2f8dfe9ef26a0b128a7626d48050e34c2dacf83e458876637e34667e811cfd"
+      ],
+      "source_published_kst": "2026-10-07T20:47+09:00",
+      "source_title": "\"엔비디아칩 사려고 54조원 빚낸다\"…스페이스X, 400억달러 조달 추진",
+      "telegram_core_fact": "일론 머스크가 이끄는 스페이스X가 엔비디아의 칩을 사기 위해 약 300억달러 회사채를 포함, 400억달러(약 54조원)의 자금 조달에 나설 계획이다. 마켓워치에 따르면, 400억달러는 스페이스X의 올해 예상 매출 445억달러에 거의 맞먹는 규모이다.",
+      "title": "\"엔비디아칩 사려고 54조원 빚낸다\"…스페이스X, 400억달러 조달 추진"
     },
     "fact:c41f11729bf52ae2ba0a5c05": {
       "first_seen_kst": "2026-10-06T10:04:04+09:00",
@@ -37940,6 +38254,29 @@
       "source_published_kst": "2026-10-05T19:02+09:00",
       "title": "세제·부동산·대미투자… 李정부 2년차 정책 검증 '경제 국감' [국정감사 핫이슈]"
     },
+    "link:18b8adeffa2e853897125118": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633265",
+      "source": "이투데이",
+      "source_body_digest": "e915a7b217a9faff892b4b85b64b6f7ad413742cfaa1a27ad0c4b0b1322a67f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:67593db42d40901bf065dbfcd145545dd011674401bf6e65a926153a6da77085",
+      "source_fact_keys": [
+        "source_fact:v1:19eb43c9e07e2c9eeee9aeb97d5cfa0aee7d2aa7ff5f1b47b8c25857db302d13",
+        "source_fact:v1:1da5d885a1e2fc0805512433a1a5039d92413653bdf7334537079a5b22848d41",
+        "source_fact:v1:85ab522b46617dc1f67bf9967dd85a3addeef75e1075ac7e32c7b3f9355aa482",
+        "source_fact:v1:98ef10b09d28fbe2a0b63c7aecd6d4164aad1628ee7c1a7fdc1f844328bf6b37",
+        "source_fact:v1:efff46dac032448e39b3a3c4789b523cec159e2b618a811978e20a2ca891d0f5"
+      ],
+      "source_published_kst": "2026-10-07T11:00+09:00",
+      "source_title": "3분기 누적 韓도착 외국인직접투자 149억불 '역대 최대'⋯중동 악재 속 30.6%↑",
+      "telegram_core_fact": "같은 기간 투자 도착액은 전년 대비 30.6% 증가한 148억7000만달러로 3분기 누적 기준 역대 1위 실적을 달성했다. 특히 실제 자금이 유입된 투자 도착액은 30% 넘게 증가하며 3분기 누적 기준 역대 최대치를 경신했다.",
+      "title": "3분기 누적 韓도착 외국인직접투자 149억불 '역대 최대'⋯중동 악재 속 30.6%↑"
+    },
     "link:18bb5776a49881c20c801d51": {
       "first_seen_kst": "2026-10-03T22:08:29+09:00",
       "lanes": {
@@ -39697,6 +40034,33 @@
       "source_title": "\"반도체는 팀 스포츠\"…리사 수 \"삼성·SK와 HBM4 협력…전 세계 수백억달러 투자\"",
       "telegram_core_fact": "수 회장은 차세대 인공지능(AI) 가속기 제품군에 6세대 고대역폭메모리(HBM4)를 탑재하고 있음을 공식화하며, 한국 핵심 파트너사들과 5년 이상 장기 공급망을 구축할 계획이라고 밝혔다.",
       "title": "\"반도체는 팀 스포츠\"…리사 수 \"삼성·SK와 HBM4 협력…전 세계 수백억달러 투자\""
+    },
+    "link:25392dc363ba5e90866da068": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171187",
+      "source": "매일경제",
+      "source_body_digest": "526f76d6453dd2fe20b910f681bb900968299c765a04f6b919f971476426c3cc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ef09531d2026ff824ba72fd8796f9dda8092e34c63d196d6f89901146fd891b",
+      "source_fact_keys": [
+        "source_fact:v1:00c1f5db75decf8e75738ba31927973b7a40e9c44a0e54364ff48f73b3fb004d",
+        "source_fact:v1:11c231aeeb3a6de4abf90fd15eca886f2b8809dad702e444748e3f3d5458b36d",
+        "source_fact:v1:1d9849347aaee4ff2af2ca78610a4e3b67abdc35a72492295b81b571a2f9a6b0",
+        "source_fact:v1:479787342ddbac7b7b9dda12ff47cc4d29ffeeb69c7f6e1a5d7e41760850488b",
+        "source_fact:v1:632ac4b24afb36221cda64681c103fce9ab1b19fc5ec53245dc4e2c056a17c8f",
+        "source_fact:v1:9fd78201dd8de6280d6dd51b8c2c3d0f889fb702f1921e448407d1b004bb1f34",
+        "source_fact:v1:a0c5797953ded811934bd29bfb00e44aeceb34e78fdec289a957c9ffecbbdd43",
+        "source_fact:v1:effb069b68280c7a9cc677d860bf798f66675e4de0e57b9132fcbcb0070026c8",
+        "source_fact:v1:f53429523fcd54eca679431149158d77ffe56b7c39e5a3e1d8d23e24ad6ef21d"
+      ],
+      "source_published_kst": "2026-10-07T17:12+09:00",
+      "source_title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이",
+      "telegram_core_fact": "코스피가 외국인의 거센 매도 폭탄과 미국 국채금리 반등, 주요 기업 실적에 대한 경계감에 밀려 2% 가까이 급락하며 간신히 6,800선을 지켜냈다.",
+      "title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이"
     },
     "link:25401c9019c81cd9cf581967": {
       "first_seen_kst": "2026-10-05T22:49:24+09:00",
@@ -56861,6 +57225,27 @@
       "source_published_kst": "2026-10-05T22:55+09:00",
       "title": "美국채금리 5.3%에 다우 ‘주춤’… 뉴욕증시 혼조 출발"
     },
+    "link:947b5606d36c0268572e436d": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.hankyung.com/article/202610079441i",
+      "source": "한국경제",
+      "source_body_digest": "a337f5873b851ca5c199b4cc1d64b92435690278a7c64996da4a11ba7dd06951",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9c2bc021f1b2207a31f99e463ab7db8588623de07168f337e7bd1c18bd6c440",
+      "source_fact_keys": [
+        "source_fact:v1:7ebba2aad4e71bd90c3d10e8cf0833596dd55243d77cf788b8cefd781ffb7c07",
+        "source_fact:v1:80a93970f1d126d66cfe7d22ddfd181f6415132cd0ecf88ce44038c6e60ac535",
+        "source_fact:v1:8a2f8dfe9ef26a0b128a7626d48050e34c2dacf83e458876637e34667e811cfd"
+      ],
+      "source_published_kst": "2026-10-07T20:47+09:00",
+      "source_title": "\"엔비디아칩 사려고 54조원 빚낸다\"…스페이스X, 400억달러 조달 추진",
+      "telegram_core_fact": "일론 머스크가 이끄는 스페이스X가 엔비디아의 칩을 사기 위해 약 300억달러 회사채를 포함, 400억달러(약 54조원)의 자금 조달에 나설 계획이다. 마켓워치에 따르면, 400억달러는 스페이스X의 올해 예상 매출 445억달러에 거의 맞먹는 규모이다.",
+      "title": "\"엔비디아칩 사려고 54조원 빚낸다\"…스페이스X, 400억달러 조달 추진"
+    },
     "link:9488e8438134a0bf094d2e66": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
       "lanes": {
@@ -61453,6 +61838,23 @@
       "source": "파이낸셜뉴스",
       "title": "수익률·개인 매수·연금 활용까지…한투운용, 추석 ETF 4종 제안"
     },
+    "link:b42288651c226a8788f8d137": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170803",
+      "source": "매일경제",
+      "source_body_digest": "7dcc7187abeae5b51501a76335437b508f13d80fa2c146a189540187fa01c52c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T18:50+09:00",
+      "source_title": "컨스텔레이션브랜드, 연간 EPS 가이던스 시장 기대 하회에 투자심리 위축",
+      "telegram_core_fact": "2분기 실적은 예상치를 웃돌았지만, 연간 비GAAP EPS 가이던스를 11.20~11.90달러로 제시해 시장 예상치 11.71달러를 밑돌며 실망감이 커졌습니다.",
+      "title": "컨스텔레이션브랜드, 연간 EPS 가이던스 시장 기대 하회에 투자심리 위축"
+    },
     "link:b434d504c9bd02e837a6fa63": {
       "first_seen_kst": "2026-10-05T09:59:51+09:00",
       "lanes": {
@@ -64346,6 +64748,29 @@
       "source": "이데일리",
       "title": "옥시덴털 페트롤리움, 부채 감축·현금흐름 개선...투자의견 상향-골드만"
     },
+    "link:c795d03b3a6ee87814e5fd66": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170602",
+      "source": "매일경제",
+      "source_body_digest": "89d1992912abd2c53cd0107202291ddc90e6a9a3509685054886207f096cda67",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:958cdbba0b02a89f54f470f23a915efd4e3f449952c75a31652481360b160d16",
+      "source_fact_keys": [
+        "source_fact:v1:2c6e320618c3989538b7b08fd915ba24e8d2f8c595bfa30ad7e79d4fc9a3eb7e",
+        "source_fact:v1:40c517475d6627c3023c0c636633da2bc6796761be2079c6a180bba016dbc93c",
+        "source_fact:v1:829e54afdac88c734822a00441af836617d4caf643a2948732ea4e59b9494d24",
+        "source_fact:v1:bf9d70c2ec24fc0f8d182f44d9397399132c1a74c951c780532f55cefe9401d1",
+        "source_fact:v1:e6bb1bcef58475ed58340b19d3b60edf38de81acd3e4a393e0fcf8fd85a4788c"
+      ],
+      "source_published_kst": "2026-10-07T08:43+09:00",
+      "source_title": "탑 웰스 그룹 홀딩, 나스닥 1달러 호가 요건 미달 통보..내년 3월 말 시한",
+      "telegram_core_fact": "탑 웰스 그룹 홀딩(TWG)이 나스닥 상장 유지 요건인 최소 매수호가 1달러를 30거래일 연속 밑돌아 10월 2일자로 나스닥으로부터 요건 미충족 통지서를 받았으며, 규정 준수 시한은 2027년 3월 31일이라고 10월 6일 발표했다.",
+      "title": "탑 웰스 그룹 홀딩, 나스닥 1달러 호가 요건 미달 통보..내년 3월 말 시한"
+    },
     "link:c7b337e9f65af097204180b0": {
       "first_seen_kst": "2026-09-20T06:23:53+09:00",
       "lanes": {
@@ -65462,6 +65887,30 @@
       "link": "https://www.yna.co.kr/view/AKR20261002000951082",
       "source": "연합뉴스",
       "title": "영국 30년물 국채 금리 장중 6％ 돌파…G7서 14년만(종합) | 연합뉴스"
+    },
+    "link:d00e5eeca28a6099ce83afba": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05710486645610624",
+      "source": "이데일리",
+      "source_body_digest": "79434e528aef9c3736075e83ba93423d072caa6b21f292ffa9e1458078a1c61c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dad74f37ed7a4196d44b3bccc06d4eea71b803e6ee9e9259ab8a6d6811869b7f",
+      "source_fact_keys": [
+        "source_fact:v1:1b368dc03cc4d454c34833dbe24e1bafdfd433822fd8bfe0c261cc8a09c33f75",
+        "source_fact:v1:628b3d9eff660600787b85b8df4a04cfd3382ad241105d56ff0300c8085b8a15",
+        "source_fact:v1:6f2c44c068c65670225194a94dfd4a68f7d735e7442283068586466e9dfd7747",
+        "source_fact:v1:baf05800d0b06a08edf240fd8edc67587a2bb320e8d17467d32ae1c395daeab5",
+        "source_fact:v1:ce8d6b6d3a2f703450acf2c6711cb00b827dc37bdeac940f2b787bfcfd750611",
+        "source_fact:v1:f78fcaea25a47232f9f6546658d7eaf7b7d16f19e3b34df3436157c238284f2c"
+      ],
+      "source_published_kst": "2026-10-07T20:11+09:00",
+      "source_title": "[美특징주]컨스텔레이션 브랜즈, 맥주 1위 유지에도 가이던스 하회에 개장전 5%↓",
+      "telegram_core_fact": "맥주 부문 순매출은 전년비 5% 증가한 24억7000만달러를 기록했으며 출하량은 5.5% 늘었다.",
+      "title": "[美특징주]컨스텔레이션 브랜즈, 맥주 1위 유지에도 가이던스 하회에 개장전 5%↓"
     },
     "link:d015fcba5e971af647e83887": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
@@ -70192,6 +70641,30 @@
       "link": "https://www.yna.co.kr/view/AKR20261002180652072?section=international/all",
       "source": "연합뉴스",
       "title": "美 9월 고용 2만9천명 증가 그쳐…10월 금리인상 베팅 감소(종합) | 연합뉴스"
+    },
+    "link:ef5c8cb54753daea4e0de877": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/07/2026100717474042035",
+      "source": "머니투데이",
+      "source_body_digest": "4d676ba1beeff7e708e70b3bb576e408f75cf4f3beb510f5affa195cdc8d681f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:36139c6a6e3b30fec709e0fa29284b1ba49d1c825927ee5f5bcccf6b6510375c",
+      "source_fact_keys": [
+        "source_fact:v1:5b43f998540751b28334982615c61011b3d84d556e42b93ab53a0c8fae29741f",
+        "source_fact:v1:5f5cd113bc4e4a719bb2ba2d5fdfc3aac1eeac02812f70fa95a125c765bd6ffe",
+        "source_fact:v1:a0fef42c47930a51ad19e66bcdde6e9cea8c53500431cfa5c378b7948de27083",
+        "source_fact:v1:a9754c3eeb91734e57d2cf00a568ce6b42c86ef45c3b9891740ac902e36c187d",
+        "source_fact:v1:b70d66799e00dbfbf27d4fbd2fba5e45ae1e7c787730ff3305992e88c06d3262",
+        "source_fact:v1:c2eb0027564d127ff06d9f42e3cd95d5e92e00f8657dc3e5b2914f4e53a8ec91"
+      ],
+      "source_published_kst": "2026-10-07T18:14+09:00",
+      "source_title": "日 토픽스 지수 56년만에 대수술…종목 40% 줄이는 이유",
+      "telegram_core_fact": "일본거래소그룹(JPX)은 일본 대표 주가지수 토픽스(TOPIX) 편입 종목 수를 약 40% 줄이는 대규모 개편안을 발표했다. 니혼게이자이(닛케이)신문에 따르면 도쿄증권거래소를 운영하는 JPX는 10월 말부터 토픽스의 편입 종목 수를 현재 1636개사에서 986개사로 줄이는 대규모 개편 계획을 밝혔다.",
+      "title": "日 토픽스 지수 56년만에 대수술…종목 40% 줄이는 이유"
     },
     "link:ef8c4f456f30257a0542331b": {
       "first_seen_kst": "2026-10-03T10:53:56+09:00",
@@ -80212,6 +80685,33 @@
       "source_published_kst": "2026-10-07T16:16+09:00",
       "title": "'선박왕' 권혁, 15년 만에 체납세금 3938억 완납 의사…1000억 우선 납부(종합)"
     },
+    "original:336928ed72eee9dff4c5807e": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171187",
+      "source": "매일경제",
+      "source_body_digest": "526f76d6453dd2fe20b910f681bb900968299c765a04f6b919f971476426c3cc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ef09531d2026ff824ba72fd8796f9dda8092e34c63d196d6f89901146fd891b",
+      "source_fact_keys": [
+        "source_fact:v1:00c1f5db75decf8e75738ba31927973b7a40e9c44a0e54364ff48f73b3fb004d",
+        "source_fact:v1:11c231aeeb3a6de4abf90fd15eca886f2b8809dad702e444748e3f3d5458b36d",
+        "source_fact:v1:1d9849347aaee4ff2af2ca78610a4e3b67abdc35a72492295b81b571a2f9a6b0",
+        "source_fact:v1:479787342ddbac7b7b9dda12ff47cc4d29ffeeb69c7f6e1a5d7e41760850488b",
+        "source_fact:v1:632ac4b24afb36221cda64681c103fce9ab1b19fc5ec53245dc4e2c056a17c8f",
+        "source_fact:v1:9fd78201dd8de6280d6dd51b8c2c3d0f889fb702f1921e448407d1b004bb1f34",
+        "source_fact:v1:a0c5797953ded811934bd29bfb00e44aeceb34e78fdec289a957c9ffecbbdd43",
+        "source_fact:v1:effb069b68280c7a9cc677d860bf798f66675e4de0e57b9132fcbcb0070026c8",
+        "source_fact:v1:f53429523fcd54eca679431149158d77ffe56b7c39e5a3e1d8d23e24ad6ef21d"
+      ],
+      "source_published_kst": "2026-10-07T17:12+09:00",
+      "source_title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이",
+      "telegram_core_fact": "코스피가 외국인의 거센 매도 폭탄과 미국 국채금리 반등, 주요 기업 실적에 대한 경계감에 밀려 2% 가까이 급락하며 간신히 6,800선을 지켜냈다.",
+      "title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이"
+    },
     "original:338cbebfe4f096cf89245c2c": {
       "first_seen_kst": "2026-10-07T07:12:15+09:00",
       "lanes": {
@@ -82462,6 +82962,29 @@
       ],
       "source_published_kst": "2026-10-07T11:31+09:00",
       "title": "역외IB, 국내 인가 없인 한국물 영업 제한…당국 의견수렴 | 연합뉴스"
+    },
+    "original:417a8a4e770fcb49f292afb1": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170602",
+      "source": "매일경제",
+      "source_body_digest": "89d1992912abd2c53cd0107202291ddc90e6a9a3509685054886207f096cda67",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:958cdbba0b02a89f54f470f23a915efd4e3f449952c75a31652481360b160d16",
+      "source_fact_keys": [
+        "source_fact:v1:2c6e320618c3989538b7b08fd915ba24e8d2f8c595bfa30ad7e79d4fc9a3eb7e",
+        "source_fact:v1:40c517475d6627c3023c0c636633da2bc6796761be2079c6a180bba016dbc93c",
+        "source_fact:v1:829e54afdac88c734822a00441af836617d4caf643a2948732ea4e59b9494d24",
+        "source_fact:v1:bf9d70c2ec24fc0f8d182f44d9397399132c1a74c951c780532f55cefe9401d1",
+        "source_fact:v1:e6bb1bcef58475ed58340b19d3b60edf38de81acd3e4a393e0fcf8fd85a4788c"
+      ],
+      "source_published_kst": "2026-10-07T08:43+09:00",
+      "source_title": "탑 웰스 그룹 홀딩, 나스닥 1달러 호가 요건 미달 통보..내년 3월 말 시한",
+      "telegram_core_fact": "탑 웰스 그룹 홀딩(TWG)이 나스닥 상장 유지 요건인 최소 매수호가 1달러를 30거래일 연속 밑돌아 10월 2일자로 나스닥으로부터 요건 미충족 통지서를 받았으며, 규정 준수 시한은 2027년 3월 31일이라고 10월 6일 발표했다.",
+      "title": "탑 웰스 그룹 홀딩, 나스닥 1달러 호가 요건 미달 통보..내년 3월 말 시한"
     },
     "original:41875cb990f377f3bd9670ce": {
       "first_seen_kst": "2026-10-06T10:41:31+09:00",
@@ -90729,6 +91252,29 @@
       "source_published_kst": "2026-10-06T11:35+09:00",
       "title": "日 ‘신중’ 알래스카 LNG 프로젝트…밴스 부통령 “韓과 조율…결국 이뤄질 일” [대미투자]"
     },
+    "original:79ac9c43c651529362db7207": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633265",
+      "source": "이투데이",
+      "source_body_digest": "e915a7b217a9faff892b4b85b64b6f7ad413742cfaa1a27ad0c4b0b1322a67f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:67593db42d40901bf065dbfcd145545dd011674401bf6e65a926153a6da77085",
+      "source_fact_keys": [
+        "source_fact:v1:19eb43c9e07e2c9eeee9aeb97d5cfa0aee7d2aa7ff5f1b47b8c25857db302d13",
+        "source_fact:v1:1da5d885a1e2fc0805512433a1a5039d92413653bdf7334537079a5b22848d41",
+        "source_fact:v1:85ab522b46617dc1f67bf9967dd85a3addeef75e1075ac7e32c7b3f9355aa482",
+        "source_fact:v1:98ef10b09d28fbe2a0b63c7aecd6d4164aad1628ee7c1a7fdc1f844328bf6b37",
+        "source_fact:v1:efff46dac032448e39b3a3c4789b523cec159e2b618a811978e20a2ca891d0f5"
+      ],
+      "source_published_kst": "2026-10-07T11:00+09:00",
+      "source_title": "3분기 누적 韓도착 외국인직접투자 149억불 '역대 최대'⋯중동 악재 속 30.6%↑",
+      "telegram_core_fact": "같은 기간 투자 도착액은 전년 대비 30.6% 증가한 148억7000만달러로 3분기 누적 기준 역대 1위 실적을 달성했다. 특히 실제 자금이 유입된 투자 도착액은 30% 넘게 증가하며 3분기 누적 기준 역대 최대치를 경신했다.",
+      "title": "3분기 누적 韓도착 외국인직접투자 149억불 '역대 최대'⋯중동 악재 속 30.6%↑"
+    },
     "original:79ae3fc0c5dbed41c293f074": {
       "first_seen_kst": "2026-10-06T03:45:53+09:00",
       "lanes": {
@@ -94767,6 +95313,23 @@
       "source": "매일경제",
       "title": "“이란전쟁 소풍 끝나면 유가 정상화”…금리발작 못본체하는 트럼프"
     },
+    "original:955b4f7c2b4fc6f050d8f26a": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170803",
+      "source": "매일경제",
+      "source_body_digest": "7dcc7187abeae5b51501a76335437b508f13d80fa2c146a189540187fa01c52c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T18:50+09:00",
+      "source_title": "컨스텔레이션브랜드, 연간 EPS 가이던스 시장 기대 하회에 투자심리 위축",
+      "telegram_core_fact": "2분기 실적은 예상치를 웃돌았지만, 연간 비GAAP EPS 가이던스를 11.20~11.90달러로 제시해 시장 예상치 11.71달러를 밑돌며 실망감이 커졌습니다.",
+      "title": "컨스텔레이션브랜드, 연간 EPS 가이던스 시장 기대 하회에 투자심리 위축"
+    },
     "original:957ab90d1ca078035a91053c": {
       "first_seen_kst": "2026-10-03T21:21:44+09:00",
       "lanes": {
@@ -96990,6 +97553,30 @@
       "source_published_kst": "2026-10-06T11:12+09:00",
       "title": "LG전자, 5GW 북미 냉각 설루션 장기 계약"
     },
+    "original:a71e2433deb5b4772ddca4f4": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/07/2026100717474042035",
+      "source": "머니투데이",
+      "source_body_digest": "4d676ba1beeff7e708e70b3bb576e408f75cf4f3beb510f5affa195cdc8d681f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:36139c6a6e3b30fec709e0fa29284b1ba49d1c825927ee5f5bcccf6b6510375c",
+      "source_fact_keys": [
+        "source_fact:v1:5b43f998540751b28334982615c61011b3d84d556e42b93ab53a0c8fae29741f",
+        "source_fact:v1:5f5cd113bc4e4a719bb2ba2d5fdfc3aac1eeac02812f70fa95a125c765bd6ffe",
+        "source_fact:v1:a0fef42c47930a51ad19e66bcdde6e9cea8c53500431cfa5c378b7948de27083",
+        "source_fact:v1:a9754c3eeb91734e57d2cf00a568ce6b42c86ef45c3b9891740ac902e36c187d",
+        "source_fact:v1:b70d66799e00dbfbf27d4fbd2fba5e45ae1e7c787730ff3305992e88c06d3262",
+        "source_fact:v1:c2eb0027564d127ff06d9f42e3cd95d5e92e00f8657dc3e5b2914f4e53a8ec91"
+      ],
+      "source_published_kst": "2026-10-07T18:14+09:00",
+      "source_title": "日 토픽스 지수 56년만에 대수술…종목 40% 줄이는 이유",
+      "telegram_core_fact": "일본거래소그룹(JPX)은 일본 대표 주가지수 토픽스(TOPIX) 편입 종목 수를 약 40% 줄이는 대규모 개편안을 발표했다. 니혼게이자이(닛케이)신문에 따르면 도쿄증권거래소를 운영하는 JPX는 10월 말부터 토픽스의 편입 종목 수를 현재 1636개사에서 986개사로 줄이는 대규모 개편 계획을 밝혔다.",
+      "title": "日 토픽스 지수 56년만에 대수술…종목 40% 줄이는 이유"
+    },
     "original:a7578c1858fb1315d5bdcb30": {
       "first_seen_kst": "2026-10-03T21:50:02+09:00",
       "lanes": {
@@ -99022,6 +99609,27 @@
       ],
       "source_published_kst": "2026-10-06T09:48+09:00",
       "title": "은평구 불광 5구역, 철거 착수…2046가구 '북한산 자이'로 탈바꿈"
+    },
+    "original:b55aab252ea48f211484312a": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.hankyung.com/article/202610079441i",
+      "source": "한국경제",
+      "source_body_digest": "a337f5873b851ca5c199b4cc1d64b92435690278a7c64996da4a11ba7dd06951",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9c2bc021f1b2207a31f99e463ab7db8588623de07168f337e7bd1c18bd6c440",
+      "source_fact_keys": [
+        "source_fact:v1:7ebba2aad4e71bd90c3d10e8cf0833596dd55243d77cf788b8cefd781ffb7c07",
+        "source_fact:v1:80a93970f1d126d66cfe7d22ddfd181f6415132cd0ecf88ce44038c6e60ac535",
+        "source_fact:v1:8a2f8dfe9ef26a0b128a7626d48050e34c2dacf83e458876637e34667e811cfd"
+      ],
+      "source_published_kst": "2026-10-07T20:47+09:00",
+      "source_title": "\"엔비디아칩 사려고 54조원 빚낸다\"…스페이스X, 400억달러 조달 추진",
+      "telegram_core_fact": "일론 머스크가 이끄는 스페이스X가 엔비디아의 칩을 사기 위해 약 300억달러 회사채를 포함, 400억달러(약 54조원)의 자금 조달에 나설 계획이다. 마켓워치에 따르면, 400억달러는 스페이스X의 올해 예상 매출 445억달러에 거의 맞먹는 규모이다.",
+      "title": "\"엔비디아칩 사려고 54조원 빚낸다\"…스페이스X, 400억달러 조달 추진"
     },
     "original:b5741091ce5981bbfd93d17d": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
@@ -105209,6 +105817,30 @@
       ],
       "source_published_kst": "2026-10-07T11:14+09:00",
       "title": "다이나핏, FW 신상 매출 23%↑…'트레이닝 세트'는 리오더"
+    },
+    "original:dee8ef26ec56368e55f03934": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05710486645610624",
+      "source": "이데일리",
+      "source_body_digest": "79434e528aef9c3736075e83ba93423d072caa6b21f292ffa9e1458078a1c61c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dad74f37ed7a4196d44b3bccc06d4eea71b803e6ee9e9259ab8a6d6811869b7f",
+      "source_fact_keys": [
+        "source_fact:v1:1b368dc03cc4d454c34833dbe24e1bafdfd433822fd8bfe0c261cc8a09c33f75",
+        "source_fact:v1:628b3d9eff660600787b85b8df4a04cfd3382ad241105d56ff0300c8085b8a15",
+        "source_fact:v1:6f2c44c068c65670225194a94dfd4a68f7d735e7442283068586466e9dfd7747",
+        "source_fact:v1:baf05800d0b06a08edf240fd8edc67587a2bb320e8d17467d32ae1c395daeab5",
+        "source_fact:v1:ce8d6b6d3a2f703450acf2c6711cb00b827dc37bdeac940f2b787bfcfd750611",
+        "source_fact:v1:f78fcaea25a47232f9f6546658d7eaf7b7d16f19e3b34df3436157c238284f2c"
+      ],
+      "source_published_kst": "2026-10-07T20:11+09:00",
+      "source_title": "[美특징주]컨스텔레이션 브랜즈, 맥주 1위 유지에도 가이던스 하회에 개장전 5%↓",
+      "telegram_core_fact": "맥주 부문 순매출은 전년비 5% 증가한 24억7000만달러를 기록했으며 출하량은 5.5% 늘었다.",
+      "title": "[美특징주]컨스텔레이션 브랜즈, 맥주 1위 유지에도 가이던스 하회에 개장전 5%↓"
     },
     "original:defa3a8ff3d427e95b19e17b": {
       "first_seen_kst": "2026-10-05T12:29:58+09:00",
@@ -116181,6 +116813,29 @@
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "제이엘케이 \"2대 주주 KB운용 지분 5.09→6.56% 확대\""
     },
+    "source_fact:120fc6a78d8371cc57c075db": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633265",
+      "source": "이투데이",
+      "source_body_digest": "e915a7b217a9faff892b4b85b64b6f7ad413742cfaa1a27ad0c4b0b1322a67f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:67593db42d40901bf065dbfcd145545dd011674401bf6e65a926153a6da77085",
+      "source_fact_keys": [
+        "source_fact:v1:19eb43c9e07e2c9eeee9aeb97d5cfa0aee7d2aa7ff5f1b47b8c25857db302d13",
+        "source_fact:v1:1da5d885a1e2fc0805512433a1a5039d92413653bdf7334537079a5b22848d41",
+        "source_fact:v1:85ab522b46617dc1f67bf9967dd85a3addeef75e1075ac7e32c7b3f9355aa482",
+        "source_fact:v1:98ef10b09d28fbe2a0b63c7aecd6d4164aad1628ee7c1a7fdc1f844328bf6b37",
+        "source_fact:v1:efff46dac032448e39b3a3c4789b523cec159e2b618a811978e20a2ca891d0f5"
+      ],
+      "source_published_kst": "2026-10-07T11:00+09:00",
+      "source_title": "3분기 누적 韓도착 외국인직접투자 149억불 '역대 최대'⋯중동 악재 속 30.6%↑",
+      "telegram_core_fact": "같은 기간 투자 도착액은 전년 대비 30.6% 증가한 148억7000만달러로 3분기 누적 기준 역대 1위 실적을 달성했다. 특히 실제 자금이 유입된 투자 도착액은 30% 넘게 증가하며 3분기 누적 기준 역대 최대치를 경신했다.",
+      "title": "3분기 누적 韓도착 외국인직접투자 149억불 '역대 최대'⋯중동 악재 속 30.6%↑"
+    },
     "source_fact:121658790eff97911acbde67": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
       "lanes": {
@@ -116432,6 +117087,30 @@
       ],
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "외국인·명품 소비에 비용 절감까지…백화점 3사, 3분기 실적 ‘청신호’"
+    },
+    "source_fact:12d809fb0389bc51c78594d5": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/07/2026100717474042035",
+      "source": "머니투데이",
+      "source_body_digest": "4d676ba1beeff7e708e70b3bb576e408f75cf4f3beb510f5affa195cdc8d681f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:36139c6a6e3b30fec709e0fa29284b1ba49d1c825927ee5f5bcccf6b6510375c",
+      "source_fact_keys": [
+        "source_fact:v1:5b43f998540751b28334982615c61011b3d84d556e42b93ab53a0c8fae29741f",
+        "source_fact:v1:5f5cd113bc4e4a719bb2ba2d5fdfc3aac1eeac02812f70fa95a125c765bd6ffe",
+        "source_fact:v1:a0fef42c47930a51ad19e66bcdde6e9cea8c53500431cfa5c378b7948de27083",
+        "source_fact:v1:a9754c3eeb91734e57d2cf00a568ce6b42c86ef45c3b9891740ac902e36c187d",
+        "source_fact:v1:b70d66799e00dbfbf27d4fbd2fba5e45ae1e7c787730ff3305992e88c06d3262",
+        "source_fact:v1:c2eb0027564d127ff06d9f42e3cd95d5e92e00f8657dc3e5b2914f4e53a8ec91"
+      ],
+      "source_published_kst": "2026-10-07T18:14+09:00",
+      "source_title": "日 토픽스 지수 56년만에 대수술…종목 40% 줄이는 이유",
+      "telegram_core_fact": "일본거래소그룹(JPX)은 일본 대표 주가지수 토픽스(TOPIX) 편입 종목 수를 약 40% 줄이는 대규모 개편안을 발표했다. 니혼게이자이(닛케이)신문에 따르면 도쿄증권거래소를 운영하는 JPX는 10월 말부터 토픽스의 편입 종목 수를 현재 1636개사에서 986개사로 줄이는 대규모 개편 계획을 밝혔다.",
+      "title": "日 토픽스 지수 56년만에 대수술…종목 40% 줄이는 이유"
     },
     "source_fact:12e108c412a9fa1539af8227": {
       "first_seen_kst": "2026-10-07T12:06:36+09:00",
@@ -117839,6 +118518,30 @@
       ],
       "source_published_kst": "2026-10-06T17:18+09:00",
       "title": "국고채 금리, 대외금리 연동하며 혼조세…3년물 3.933%(종합) | 연합뉴스"
+    },
+    "source_fact:16d2b9462e8b9e6d96bf85f9": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05710486645610624",
+      "source": "이데일리",
+      "source_body_digest": "79434e528aef9c3736075e83ba93423d072caa6b21f292ffa9e1458078a1c61c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dad74f37ed7a4196d44b3bccc06d4eea71b803e6ee9e9259ab8a6d6811869b7f",
+      "source_fact_keys": [
+        "source_fact:v1:1b368dc03cc4d454c34833dbe24e1bafdfd433822fd8bfe0c261cc8a09c33f75",
+        "source_fact:v1:628b3d9eff660600787b85b8df4a04cfd3382ad241105d56ff0300c8085b8a15",
+        "source_fact:v1:6f2c44c068c65670225194a94dfd4a68f7d735e7442283068586466e9dfd7747",
+        "source_fact:v1:baf05800d0b06a08edf240fd8edc67587a2bb320e8d17467d32ae1c395daeab5",
+        "source_fact:v1:ce8d6b6d3a2f703450acf2c6711cb00b827dc37bdeac940f2b787bfcfd750611",
+        "source_fact:v1:f78fcaea25a47232f9f6546658d7eaf7b7d16f19e3b34df3436157c238284f2c"
+      ],
+      "source_published_kst": "2026-10-07T20:11+09:00",
+      "source_title": "[美특징주]컨스텔레이션 브랜즈, 맥주 1위 유지에도 가이던스 하회에 개장전 5%↓",
+      "telegram_core_fact": "맥주 부문 순매출은 전년비 5% 증가한 24억7000만달러를 기록했으며 출하량은 5.5% 늘었다.",
+      "title": "[美특징주]컨스텔레이션 브랜즈, 맥주 1위 유지에도 가이던스 하회에 개장전 5%↓"
     },
     "source_fact:16e0b0ac8e2ac5b24f984421": {
       "first_seen_kst": "2026-10-07T01:59:08+09:00",
@@ -119854,6 +120557,27 @@
       "source_published_kst": "2026-10-05T18:21+09:00",
       "title": "솔리다임 美상장… \"SK하닉 가치 재평가\" vs \"주주 피해\" [어떻게 생각하십니까]"
     },
+    "source_fact:1ca2a983b4f134d91471aa8a": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.hankyung.com/article/202610079441i",
+      "source": "한국경제",
+      "source_body_digest": "a337f5873b851ca5c199b4cc1d64b92435690278a7c64996da4a11ba7dd06951",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9c2bc021f1b2207a31f99e463ab7db8588623de07168f337e7bd1c18bd6c440",
+      "source_fact_keys": [
+        "source_fact:v1:7ebba2aad4e71bd90c3d10e8cf0833596dd55243d77cf788b8cefd781ffb7c07",
+        "source_fact:v1:80a93970f1d126d66cfe7d22ddfd181f6415132cd0ecf88ce44038c6e60ac535",
+        "source_fact:v1:8a2f8dfe9ef26a0b128a7626d48050e34c2dacf83e458876637e34667e811cfd"
+      ],
+      "source_published_kst": "2026-10-07T20:47+09:00",
+      "source_title": "\"엔비디아칩 사려고 54조원 빚낸다\"…스페이스X, 400억달러 조달 추진",
+      "telegram_core_fact": "일론 머스크가 이끄는 스페이스X가 엔비디아의 칩을 사기 위해 약 300억달러 회사채를 포함, 400억달러(약 54조원)의 자금 조달에 나설 계획이다. 마켓워치에 따르면, 400억달러는 스페이스X의 올해 예상 매출 445억달러에 거의 맞먹는 규모이다.",
+      "title": "\"엔비디아칩 사려고 54조원 빚낸다\"…스페이스X, 400억달러 조달 추진"
+    },
     "source_fact:1ca99c9221692530cc6a5ffd": {
       "first_seen_kst": "2026-10-07T22:53:53+09:00",
       "lanes": {
@@ -121266,6 +121990,33 @@
       "source_published_kst": "2026-10-07T06:01+09:00",
       "title": "글로벌 공급기지 된 K-제약사들…잇단 수출계약"
     },
+    "source_fact:207788a17f8b7f34628ff619": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171187",
+      "source": "매일경제",
+      "source_body_digest": "526f76d6453dd2fe20b910f681bb900968299c765a04f6b919f971476426c3cc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ef09531d2026ff824ba72fd8796f9dda8092e34c63d196d6f89901146fd891b",
+      "source_fact_keys": [
+        "source_fact:v1:00c1f5db75decf8e75738ba31927973b7a40e9c44a0e54364ff48f73b3fb004d",
+        "source_fact:v1:11c231aeeb3a6de4abf90fd15eca886f2b8809dad702e444748e3f3d5458b36d",
+        "source_fact:v1:1d9849347aaee4ff2af2ca78610a4e3b67abdc35a72492295b81b571a2f9a6b0",
+        "source_fact:v1:479787342ddbac7b7b9dda12ff47cc4d29ffeeb69c7f6e1a5d7e41760850488b",
+        "source_fact:v1:632ac4b24afb36221cda64681c103fce9ab1b19fc5ec53245dc4e2c056a17c8f",
+        "source_fact:v1:9fd78201dd8de6280d6dd51b8c2c3d0f889fb702f1921e448407d1b004bb1f34",
+        "source_fact:v1:a0c5797953ded811934bd29bfb00e44aeceb34e78fdec289a957c9ffecbbdd43",
+        "source_fact:v1:effb069b68280c7a9cc677d860bf798f66675e4de0e57b9132fcbcb0070026c8",
+        "source_fact:v1:f53429523fcd54eca679431149158d77ffe56b7c39e5a3e1d8d23e24ad6ef21d"
+      ],
+      "source_published_kst": "2026-10-07T17:12+09:00",
+      "source_title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이",
+      "telegram_core_fact": "코스피가 외국인의 거센 매도 폭탄과 미국 국채금리 반등, 주요 기업 실적에 대한 경계감에 밀려 2% 가까이 급락하며 간신히 6,800선을 지켜냈다.",
+      "title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이"
+    },
     "source_fact:2084c799ee002385bc33804c": {
       "first_seen_kst": "2026-10-07T01:07:29+09:00",
       "lanes": {
@@ -121679,6 +122430,33 @@
       ],
       "source_published_kst": "2026-10-06T16:09+09:00",
       "title": "롯데백화점 외국인 매출 1조 돌파…신세계·현대도 '목전'(종합)"
+    },
+    "source_fact:21d07e08b4dce159d7e70cc2": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171187",
+      "source": "매일경제",
+      "source_body_digest": "526f76d6453dd2fe20b910f681bb900968299c765a04f6b919f971476426c3cc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ef09531d2026ff824ba72fd8796f9dda8092e34c63d196d6f89901146fd891b",
+      "source_fact_keys": [
+        "source_fact:v1:00c1f5db75decf8e75738ba31927973b7a40e9c44a0e54364ff48f73b3fb004d",
+        "source_fact:v1:11c231aeeb3a6de4abf90fd15eca886f2b8809dad702e444748e3f3d5458b36d",
+        "source_fact:v1:1d9849347aaee4ff2af2ca78610a4e3b67abdc35a72492295b81b571a2f9a6b0",
+        "source_fact:v1:479787342ddbac7b7b9dda12ff47cc4d29ffeeb69c7f6e1a5d7e41760850488b",
+        "source_fact:v1:632ac4b24afb36221cda64681c103fce9ab1b19fc5ec53245dc4e2c056a17c8f",
+        "source_fact:v1:9fd78201dd8de6280d6dd51b8c2c3d0f889fb702f1921e448407d1b004bb1f34",
+        "source_fact:v1:a0c5797953ded811934bd29bfb00e44aeceb34e78fdec289a957c9ffecbbdd43",
+        "source_fact:v1:effb069b68280c7a9cc677d860bf798f66675e4de0e57b9132fcbcb0070026c8",
+        "source_fact:v1:f53429523fcd54eca679431149158d77ffe56b7c39e5a3e1d8d23e24ad6ef21d"
+      ],
+      "source_published_kst": "2026-10-07T17:12+09:00",
+      "source_title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이",
+      "telegram_core_fact": "코스피가 외국인의 거센 매도 폭탄과 미국 국채금리 반등, 주요 기업 실적에 대한 경계감에 밀려 2% 가까이 급락하며 간신히 6,800선을 지켜냈다.",
+      "title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이"
     },
     "source_fact:21fe3124d3191eb2d6b09b84": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
@@ -122987,6 +123765,33 @@
       ],
       "source_published_kst": "2026-10-06T13:52+09:00",
       "title": "'KIWOOM 미국AI테크하이베타 ETF', 마이크론·스페이스X 편입"
+    },
+    "source_fact:250e7f43c4ffe45bc36db476": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171187",
+      "source": "매일경제",
+      "source_body_digest": "526f76d6453dd2fe20b910f681bb900968299c765a04f6b919f971476426c3cc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ef09531d2026ff824ba72fd8796f9dda8092e34c63d196d6f89901146fd891b",
+      "source_fact_keys": [
+        "source_fact:v1:00c1f5db75decf8e75738ba31927973b7a40e9c44a0e54364ff48f73b3fb004d",
+        "source_fact:v1:11c231aeeb3a6de4abf90fd15eca886f2b8809dad702e444748e3f3d5458b36d",
+        "source_fact:v1:1d9849347aaee4ff2af2ca78610a4e3b67abdc35a72492295b81b571a2f9a6b0",
+        "source_fact:v1:479787342ddbac7b7b9dda12ff47cc4d29ffeeb69c7f6e1a5d7e41760850488b",
+        "source_fact:v1:632ac4b24afb36221cda64681c103fce9ab1b19fc5ec53245dc4e2c056a17c8f",
+        "source_fact:v1:9fd78201dd8de6280d6dd51b8c2c3d0f889fb702f1921e448407d1b004bb1f34",
+        "source_fact:v1:a0c5797953ded811934bd29bfb00e44aeceb34e78fdec289a957c9ffecbbdd43",
+        "source_fact:v1:effb069b68280c7a9cc677d860bf798f66675e4de0e57b9132fcbcb0070026c8",
+        "source_fact:v1:f53429523fcd54eca679431149158d77ffe56b7c39e5a3e1d8d23e24ad6ef21d"
+      ],
+      "source_published_kst": "2026-10-07T17:12+09:00",
+      "source_title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이",
+      "telegram_core_fact": "코스피가 외국인의 거센 매도 폭탄과 미국 국채금리 반등, 주요 기업 실적에 대한 경계감에 밀려 2% 가까이 급락하며 간신히 6,800선을 지켜냈다.",
+      "title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이"
     },
     "source_fact:2532424d63672d24e9f57b87": {
       "first_seen_kst": "2026-10-07T22:00:35+09:00",
@@ -129022,6 +129827,30 @@
       "source_published_kst": "2026-10-05T22:50+09:00",
       "title": "유나이티드 마이크로일렉, 18억 달러 해외CB 가격 확정..표면금리 0%"
     },
+    "source_fact:347352c75e575a9d0dbc0cf5": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/07/2026100717474042035",
+      "source": "머니투데이",
+      "source_body_digest": "4d676ba1beeff7e708e70b3bb576e408f75cf4f3beb510f5affa195cdc8d681f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:36139c6a6e3b30fec709e0fa29284b1ba49d1c825927ee5f5bcccf6b6510375c",
+      "source_fact_keys": [
+        "source_fact:v1:5b43f998540751b28334982615c61011b3d84d556e42b93ab53a0c8fae29741f",
+        "source_fact:v1:5f5cd113bc4e4a719bb2ba2d5fdfc3aac1eeac02812f70fa95a125c765bd6ffe",
+        "source_fact:v1:a0fef42c47930a51ad19e66bcdde6e9cea8c53500431cfa5c378b7948de27083",
+        "source_fact:v1:a9754c3eeb91734e57d2cf00a568ce6b42c86ef45c3b9891740ac902e36c187d",
+        "source_fact:v1:b70d66799e00dbfbf27d4fbd2fba5e45ae1e7c787730ff3305992e88c06d3262",
+        "source_fact:v1:c2eb0027564d127ff06d9f42e3cd95d5e92e00f8657dc3e5b2914f4e53a8ec91"
+      ],
+      "source_published_kst": "2026-10-07T18:14+09:00",
+      "source_title": "日 토픽스 지수 56년만에 대수술…종목 40% 줄이는 이유",
+      "telegram_core_fact": "일본거래소그룹(JPX)은 일본 대표 주가지수 토픽스(TOPIX) 편입 종목 수를 약 40% 줄이는 대규모 개편안을 발표했다. 니혼게이자이(닛케이)신문에 따르면 도쿄증권거래소를 운영하는 JPX는 10월 말부터 토픽스의 편입 종목 수를 현재 1636개사에서 986개사로 줄이는 대규모 개편 계획을 밝혔다.",
+      "title": "日 토픽스 지수 56년만에 대수술…종목 40% 줄이는 이유"
+    },
     "source_fact:347440a5dec12297727044d9": {
       "first_seen_kst": "2026-10-07T16:57:09+09:00",
       "lanes": {
@@ -132431,6 +133260,29 @@
       ],
       "source_published_kst": "2026-10-07T09:27+09:00",
       "title": "\"화장품株 주가 조정 과도\"…아모레퍼시픽 5%·한국콜마 5%대 상승"
+    },
+    "source_fact:3cb3a42d8d3aa75f759b25c4": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633265",
+      "source": "이투데이",
+      "source_body_digest": "e915a7b217a9faff892b4b85b64b6f7ad413742cfaa1a27ad0c4b0b1322a67f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:67593db42d40901bf065dbfcd145545dd011674401bf6e65a926153a6da77085",
+      "source_fact_keys": [
+        "source_fact:v1:19eb43c9e07e2c9eeee9aeb97d5cfa0aee7d2aa7ff5f1b47b8c25857db302d13",
+        "source_fact:v1:1da5d885a1e2fc0805512433a1a5039d92413653bdf7334537079a5b22848d41",
+        "source_fact:v1:85ab522b46617dc1f67bf9967dd85a3addeef75e1075ac7e32c7b3f9355aa482",
+        "source_fact:v1:98ef10b09d28fbe2a0b63c7aecd6d4164aad1628ee7c1a7fdc1f844328bf6b37",
+        "source_fact:v1:efff46dac032448e39b3a3c4789b523cec159e2b618a811978e20a2ca891d0f5"
+      ],
+      "source_published_kst": "2026-10-07T11:00+09:00",
+      "source_title": "3분기 누적 韓도착 외국인직접투자 149억불 '역대 최대'⋯중동 악재 속 30.6%↑",
+      "telegram_core_fact": "같은 기간 투자 도착액은 전년 대비 30.6% 증가한 148억7000만달러로 3분기 누적 기준 역대 1위 실적을 달성했다. 특히 실제 자금이 유입된 투자 도착액은 30% 넘게 증가하며 3분기 누적 기준 역대 최대치를 경신했다.",
+      "title": "3분기 누적 韓도착 외국인직접투자 149억불 '역대 최대'⋯중동 악재 속 30.6%↑"
     },
     "source_fact:3ccb2c9628ba07e05384ff64": {
       "first_seen_kst": "2026-10-07T11:43:24+09:00",
@@ -140334,6 +141186,33 @@
       "source_published_kst": "2026-10-05T18:17+09:00",
       "title": "뉴욕·상하이 증시, FOMC 의사록 공개…'S공포' 커지나"
     },
+    "source_fact:51d733e100244e49ff9a8cdb": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171187",
+      "source": "매일경제",
+      "source_body_digest": "526f76d6453dd2fe20b910f681bb900968299c765a04f6b919f971476426c3cc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ef09531d2026ff824ba72fd8796f9dda8092e34c63d196d6f89901146fd891b",
+      "source_fact_keys": [
+        "source_fact:v1:00c1f5db75decf8e75738ba31927973b7a40e9c44a0e54364ff48f73b3fb004d",
+        "source_fact:v1:11c231aeeb3a6de4abf90fd15eca886f2b8809dad702e444748e3f3d5458b36d",
+        "source_fact:v1:1d9849347aaee4ff2af2ca78610a4e3b67abdc35a72492295b81b571a2f9a6b0",
+        "source_fact:v1:479787342ddbac7b7b9dda12ff47cc4d29ffeeb69c7f6e1a5d7e41760850488b",
+        "source_fact:v1:632ac4b24afb36221cda64681c103fce9ab1b19fc5ec53245dc4e2c056a17c8f",
+        "source_fact:v1:9fd78201dd8de6280d6dd51b8c2c3d0f889fb702f1921e448407d1b004bb1f34",
+        "source_fact:v1:a0c5797953ded811934bd29bfb00e44aeceb34e78fdec289a957c9ffecbbdd43",
+        "source_fact:v1:effb069b68280c7a9cc677d860bf798f66675e4de0e57b9132fcbcb0070026c8",
+        "source_fact:v1:f53429523fcd54eca679431149158d77ffe56b7c39e5a3e1d8d23e24ad6ef21d"
+      ],
+      "source_published_kst": "2026-10-07T17:12+09:00",
+      "source_title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이",
+      "telegram_core_fact": "코스피가 외국인의 거센 매도 폭탄과 미국 국채금리 반등, 주요 기업 실적에 대한 경계감에 밀려 2% 가까이 급락하며 간신히 6,800선을 지켜냈다.",
+      "title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이"
+    },
     "source_fact:51d93b0236b3d2ba631828e4": {
       "first_seen_kst": "2026-10-07T20:28:48+09:00",
       "lanes": {
@@ -141682,6 +142561,29 @@
       "source_published_kst": "2026-10-06T15:25+09:00",
       "title": "임귀현 완주군의원, 친환경 액비 자원화 확대 점검 나서"
     },
+    "source_fact:55c7d45070d520a56ca9b573": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633265",
+      "source": "이투데이",
+      "source_body_digest": "e915a7b217a9faff892b4b85b64b6f7ad413742cfaa1a27ad0c4b0b1322a67f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:67593db42d40901bf065dbfcd145545dd011674401bf6e65a926153a6da77085",
+      "source_fact_keys": [
+        "source_fact:v1:19eb43c9e07e2c9eeee9aeb97d5cfa0aee7d2aa7ff5f1b47b8c25857db302d13",
+        "source_fact:v1:1da5d885a1e2fc0805512433a1a5039d92413653bdf7334537079a5b22848d41",
+        "source_fact:v1:85ab522b46617dc1f67bf9967dd85a3addeef75e1075ac7e32c7b3f9355aa482",
+        "source_fact:v1:98ef10b09d28fbe2a0b63c7aecd6d4164aad1628ee7c1a7fdc1f844328bf6b37",
+        "source_fact:v1:efff46dac032448e39b3a3c4789b523cec159e2b618a811978e20a2ca891d0f5"
+      ],
+      "source_published_kst": "2026-10-07T11:00+09:00",
+      "source_title": "3분기 누적 韓도착 외국인직접투자 149억불 '역대 최대'⋯중동 악재 속 30.6%↑",
+      "telegram_core_fact": "같은 기간 투자 도착액은 전년 대비 30.6% 증가한 148억7000만달러로 3분기 누적 기준 역대 1위 실적을 달성했다. 특히 실제 자금이 유입된 투자 도착액은 30% 넘게 증가하며 3분기 누적 기준 역대 최대치를 경신했다.",
+      "title": "3분기 누적 韓도착 외국인직접투자 149억불 '역대 최대'⋯중동 악재 속 30.6%↑"
+    },
     "source_fact:55f779e7dd3b9dedbd1dcd5a": {
       "first_seen_kst": "2026-10-07T07:01:10+09:00",
       "lanes": {
@@ -142193,6 +143095,29 @@
       ],
       "source_published_kst": "2026-10-07T09:49+09:00",
       "title": "HD현대重 등 산학 12개 기관, ‘SMR 해양 기술 실증센터’ 출범"
+    },
+    "source_fact:570991db8628c7255cfbafe3": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170602",
+      "source": "매일경제",
+      "source_body_digest": "89d1992912abd2c53cd0107202291ddc90e6a9a3509685054886207f096cda67",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:958cdbba0b02a89f54f470f23a915efd4e3f449952c75a31652481360b160d16",
+      "source_fact_keys": [
+        "source_fact:v1:2c6e320618c3989538b7b08fd915ba24e8d2f8c595bfa30ad7e79d4fc9a3eb7e",
+        "source_fact:v1:40c517475d6627c3023c0c636633da2bc6796761be2079c6a180bba016dbc93c",
+        "source_fact:v1:829e54afdac88c734822a00441af836617d4caf643a2948732ea4e59b9494d24",
+        "source_fact:v1:bf9d70c2ec24fc0f8d182f44d9397399132c1a74c951c780532f55cefe9401d1",
+        "source_fact:v1:e6bb1bcef58475ed58340b19d3b60edf38de81acd3e4a393e0fcf8fd85a4788c"
+      ],
+      "source_published_kst": "2026-10-07T08:43+09:00",
+      "source_title": "탑 웰스 그룹 홀딩, 나스닥 1달러 호가 요건 미달 통보..내년 3월 말 시한",
+      "telegram_core_fact": "탑 웰스 그룹 홀딩(TWG)이 나스닥 상장 유지 요건인 최소 매수호가 1달러를 30거래일 연속 밑돌아 10월 2일자로 나스닥으로부터 요건 미충족 통지서를 받았으며, 규정 준수 시한은 2027년 3월 31일이라고 10월 6일 발표했다.",
+      "title": "탑 웰스 그룹 홀딩, 나스닥 1달러 호가 요건 미달 통보..내년 3월 말 시한"
     },
     "source_fact:570c20228748fc33c34b5a09": {
       "first_seen_kst": "2026-10-06T19:10:36+09:00",
@@ -148897,6 +149822,33 @@
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "어드밴스드 드레니쥐 시스, 스톰트랩 5억3000만 달러 인수..4분기 완료 예정"
     },
+    "source_fact:6856269c93435fc84d44acf7": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171187",
+      "source": "매일경제",
+      "source_body_digest": "526f76d6453dd2fe20b910f681bb900968299c765a04f6b919f971476426c3cc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ef09531d2026ff824ba72fd8796f9dda8092e34c63d196d6f89901146fd891b",
+      "source_fact_keys": [
+        "source_fact:v1:00c1f5db75decf8e75738ba31927973b7a40e9c44a0e54364ff48f73b3fb004d",
+        "source_fact:v1:11c231aeeb3a6de4abf90fd15eca886f2b8809dad702e444748e3f3d5458b36d",
+        "source_fact:v1:1d9849347aaee4ff2af2ca78610a4e3b67abdc35a72492295b81b571a2f9a6b0",
+        "source_fact:v1:479787342ddbac7b7b9dda12ff47cc4d29ffeeb69c7f6e1a5d7e41760850488b",
+        "source_fact:v1:632ac4b24afb36221cda64681c103fce9ab1b19fc5ec53245dc4e2c056a17c8f",
+        "source_fact:v1:9fd78201dd8de6280d6dd51b8c2c3d0f889fb702f1921e448407d1b004bb1f34",
+        "source_fact:v1:a0c5797953ded811934bd29bfb00e44aeceb34e78fdec289a957c9ffecbbdd43",
+        "source_fact:v1:effb069b68280c7a9cc677d860bf798f66675e4de0e57b9132fcbcb0070026c8",
+        "source_fact:v1:f53429523fcd54eca679431149158d77ffe56b7c39e5a3e1d8d23e24ad6ef21d"
+      ],
+      "source_published_kst": "2026-10-07T17:12+09:00",
+      "source_title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이",
+      "telegram_core_fact": "코스피가 외국인의 거센 매도 폭탄과 미국 국채금리 반등, 주요 기업 실적에 대한 경계감에 밀려 2% 가까이 급락하며 간신히 6,800선을 지켜냈다.",
+      "title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이"
+    },
     "source_fact:6866e260949ba097d2efbf53": {
       "first_seen_kst": "2026-10-06T21:05:27+09:00",
       "lanes": {
@@ -151786,6 +152738,29 @@
       ],
       "source_published_kst": "2026-10-06T10:57+09:00",
       "title": "오텍캐리어, AI 데이터센터용 CDU 제품 라인업 강화"
+    },
+    "source_fact:70184689e732de5285950a5f": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170602",
+      "source": "매일경제",
+      "source_body_digest": "89d1992912abd2c53cd0107202291ddc90e6a9a3509685054886207f096cda67",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:958cdbba0b02a89f54f470f23a915efd4e3f449952c75a31652481360b160d16",
+      "source_fact_keys": [
+        "source_fact:v1:2c6e320618c3989538b7b08fd915ba24e8d2f8c595bfa30ad7e79d4fc9a3eb7e",
+        "source_fact:v1:40c517475d6627c3023c0c636633da2bc6796761be2079c6a180bba016dbc93c",
+        "source_fact:v1:829e54afdac88c734822a00441af836617d4caf643a2948732ea4e59b9494d24",
+        "source_fact:v1:bf9d70c2ec24fc0f8d182f44d9397399132c1a74c951c780532f55cefe9401d1",
+        "source_fact:v1:e6bb1bcef58475ed58340b19d3b60edf38de81acd3e4a393e0fcf8fd85a4788c"
+      ],
+      "source_published_kst": "2026-10-07T08:43+09:00",
+      "source_title": "탑 웰스 그룹 홀딩, 나스닥 1달러 호가 요건 미달 통보..내년 3월 말 시한",
+      "telegram_core_fact": "탑 웰스 그룹 홀딩(TWG)이 나스닥 상장 유지 요건인 최소 매수호가 1달러를 30거래일 연속 밑돌아 10월 2일자로 나스닥으로부터 요건 미충족 통지서를 받았으며, 규정 준수 시한은 2027년 3월 31일이라고 10월 6일 발표했다.",
+      "title": "탑 웰스 그룹 홀딩, 나스닥 1달러 호가 요건 미달 통보..내년 3월 말 시한"
     },
     "source_fact:701a32d9a0070267eb330a09": {
       "first_seen_kst": "2026-10-07T21:47:30+09:00",
@@ -156201,6 +157176,30 @@
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
     },
+    "source_fact:7bf8eb86188b175dd17f6346": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05710486645610624",
+      "source": "이데일리",
+      "source_body_digest": "79434e528aef9c3736075e83ba93423d072caa6b21f292ffa9e1458078a1c61c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dad74f37ed7a4196d44b3bccc06d4eea71b803e6ee9e9259ab8a6d6811869b7f",
+      "source_fact_keys": [
+        "source_fact:v1:1b368dc03cc4d454c34833dbe24e1bafdfd433822fd8bfe0c261cc8a09c33f75",
+        "source_fact:v1:628b3d9eff660600787b85b8df4a04cfd3382ad241105d56ff0300c8085b8a15",
+        "source_fact:v1:6f2c44c068c65670225194a94dfd4a68f7d735e7442283068586466e9dfd7747",
+        "source_fact:v1:baf05800d0b06a08edf240fd8edc67587a2bb320e8d17467d32ae1c395daeab5",
+        "source_fact:v1:ce8d6b6d3a2f703450acf2c6711cb00b827dc37bdeac940f2b787bfcfd750611",
+        "source_fact:v1:f78fcaea25a47232f9f6546658d7eaf7b7d16f19e3b34df3436157c238284f2c"
+      ],
+      "source_published_kst": "2026-10-07T20:11+09:00",
+      "source_title": "[美특징주]컨스텔레이션 브랜즈, 맥주 1위 유지에도 가이던스 하회에 개장전 5%↓",
+      "telegram_core_fact": "맥주 부문 순매출은 전년비 5% 증가한 24억7000만달러를 기록했으며 출하량은 5.5% 늘었다.",
+      "title": "[美특징주]컨스텔레이션 브랜즈, 맥주 1위 유지에도 가이던스 하회에 개장전 5%↓"
+    },
     "source_fact:7bfc62738c23ef02447f796c": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
       "lanes": {
@@ -160173,6 +161172,29 @@
       ],
       "source_published_kst": "2026-10-07T11:07+09:00",
       "title": "LG전자, 올 3Q 누적 영업익 '4조' 최초 달성…연간 최대 실적 '청신호'"
+    },
+    "source_fact:866f7fc8f0d8e06136ac2d5d": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170602",
+      "source": "매일경제",
+      "source_body_digest": "89d1992912abd2c53cd0107202291ddc90e6a9a3509685054886207f096cda67",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:958cdbba0b02a89f54f470f23a915efd4e3f449952c75a31652481360b160d16",
+      "source_fact_keys": [
+        "source_fact:v1:2c6e320618c3989538b7b08fd915ba24e8d2f8c595bfa30ad7e79d4fc9a3eb7e",
+        "source_fact:v1:40c517475d6627c3023c0c636633da2bc6796761be2079c6a180bba016dbc93c",
+        "source_fact:v1:829e54afdac88c734822a00441af836617d4caf643a2948732ea4e59b9494d24",
+        "source_fact:v1:bf9d70c2ec24fc0f8d182f44d9397399132c1a74c951c780532f55cefe9401d1",
+        "source_fact:v1:e6bb1bcef58475ed58340b19d3b60edf38de81acd3e4a393e0fcf8fd85a4788c"
+      ],
+      "source_published_kst": "2026-10-07T08:43+09:00",
+      "source_title": "탑 웰스 그룹 홀딩, 나스닥 1달러 호가 요건 미달 통보..내년 3월 말 시한",
+      "telegram_core_fact": "탑 웰스 그룹 홀딩(TWG)이 나스닥 상장 유지 요건인 최소 매수호가 1달러를 30거래일 연속 밑돌아 10월 2일자로 나스닥으로부터 요건 미충족 통지서를 받았으며, 규정 준수 시한은 2027년 3월 31일이라고 10월 6일 발표했다.",
+      "title": "탑 웰스 그룹 홀딩, 나스닥 1달러 호가 요건 미달 통보..내년 3월 말 시한"
     },
     "source_fact:8687c0a3b5568626d87d1ee7": {
       "first_seen_kst": "2026-10-07T10:49:23+09:00",
@@ -165898,6 +166920,29 @@
       ],
       "source_published_kst": "2026-10-05T23:11+09:00",
       "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
+    },
+    "source_fact:96617fed565530ab86fc5992": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170602",
+      "source": "매일경제",
+      "source_body_digest": "89d1992912abd2c53cd0107202291ddc90e6a9a3509685054886207f096cda67",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:958cdbba0b02a89f54f470f23a915efd4e3f449952c75a31652481360b160d16",
+      "source_fact_keys": [
+        "source_fact:v1:2c6e320618c3989538b7b08fd915ba24e8d2f8c595bfa30ad7e79d4fc9a3eb7e",
+        "source_fact:v1:40c517475d6627c3023c0c636633da2bc6796761be2079c6a180bba016dbc93c",
+        "source_fact:v1:829e54afdac88c734822a00441af836617d4caf643a2948732ea4e59b9494d24",
+        "source_fact:v1:bf9d70c2ec24fc0f8d182f44d9397399132c1a74c951c780532f55cefe9401d1",
+        "source_fact:v1:e6bb1bcef58475ed58340b19d3b60edf38de81acd3e4a393e0fcf8fd85a4788c"
+      ],
+      "source_published_kst": "2026-10-07T08:43+09:00",
+      "source_title": "탑 웰스 그룹 홀딩, 나스닥 1달러 호가 요건 미달 통보..내년 3월 말 시한",
+      "telegram_core_fact": "탑 웰스 그룹 홀딩(TWG)이 나스닥 상장 유지 요건인 최소 매수호가 1달러를 30거래일 연속 밑돌아 10월 2일자로 나스닥으로부터 요건 미충족 통지서를 받았으며, 규정 준수 시한은 2027년 3월 31일이라고 10월 6일 발표했다.",
+      "title": "탑 웰스 그룹 홀딩, 나스닥 1달러 호가 요건 미달 통보..내년 3월 말 시한"
     },
     "source_fact:9674e06aa8cdde3ae95cd9de": {
       "first_seen_kst": "2026-10-07T07:39:19+09:00",
@@ -172266,6 +173311,30 @@
       "source_published_kst": "2026-10-06T15:55+09:00",
       "title": "디앤디파마텍, '지방간 신약' 2상 결과 내달 발표…\"기술이전에 총력\""
     },
+    "source_fact:a74f41357f48fa0d1e03710d": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05710486645610624",
+      "source": "이데일리",
+      "source_body_digest": "79434e528aef9c3736075e83ba93423d072caa6b21f292ffa9e1458078a1c61c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dad74f37ed7a4196d44b3bccc06d4eea71b803e6ee9e9259ab8a6d6811869b7f",
+      "source_fact_keys": [
+        "source_fact:v1:1b368dc03cc4d454c34833dbe24e1bafdfd433822fd8bfe0c261cc8a09c33f75",
+        "source_fact:v1:628b3d9eff660600787b85b8df4a04cfd3382ad241105d56ff0300c8085b8a15",
+        "source_fact:v1:6f2c44c068c65670225194a94dfd4a68f7d735e7442283068586466e9dfd7747",
+        "source_fact:v1:baf05800d0b06a08edf240fd8edc67587a2bb320e8d17467d32ae1c395daeab5",
+        "source_fact:v1:ce8d6b6d3a2f703450acf2c6711cb00b827dc37bdeac940f2b787bfcfd750611",
+        "source_fact:v1:f78fcaea25a47232f9f6546658d7eaf7b7d16f19e3b34df3436157c238284f2c"
+      ],
+      "source_published_kst": "2026-10-07T20:11+09:00",
+      "source_title": "[美특징주]컨스텔레이션 브랜즈, 맥주 1위 유지에도 가이던스 하회에 개장전 5%↓",
+      "telegram_core_fact": "맥주 부문 순매출은 전년비 5% 증가한 24억7000만달러를 기록했으며 출하량은 5.5% 늘었다.",
+      "title": "[美특징주]컨스텔레이션 브랜즈, 맥주 1위 유지에도 가이던스 하회에 개장전 5%↓"
+    },
     "source_fact:a751244195989c8fd92e7e59": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
       "lanes": {
@@ -172794,6 +173863,30 @@
       ],
       "source_published_kst": "2026-10-06T04:36+09:00",
       "title": "美10년물 국채금리 장중 5.34% 돌파…24년 만에 최고"
+    },
+    "source_fact:a91012cd4b55c50cdf934e5b": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/07/2026100717474042035",
+      "source": "머니투데이",
+      "source_body_digest": "4d676ba1beeff7e708e70b3bb576e408f75cf4f3beb510f5affa195cdc8d681f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:36139c6a6e3b30fec709e0fa29284b1ba49d1c825927ee5f5bcccf6b6510375c",
+      "source_fact_keys": [
+        "source_fact:v1:5b43f998540751b28334982615c61011b3d84d556e42b93ab53a0c8fae29741f",
+        "source_fact:v1:5f5cd113bc4e4a719bb2ba2d5fdfc3aac1eeac02812f70fa95a125c765bd6ffe",
+        "source_fact:v1:a0fef42c47930a51ad19e66bcdde6e9cea8c53500431cfa5c378b7948de27083",
+        "source_fact:v1:a9754c3eeb91734e57d2cf00a568ce6b42c86ef45c3b9891740ac902e36c187d",
+        "source_fact:v1:b70d66799e00dbfbf27d4fbd2fba5e45ae1e7c787730ff3305992e88c06d3262",
+        "source_fact:v1:c2eb0027564d127ff06d9f42e3cd95d5e92e00f8657dc3e5b2914f4e53a8ec91"
+      ],
+      "source_published_kst": "2026-10-07T18:14+09:00",
+      "source_title": "日 토픽스 지수 56년만에 대수술…종목 40% 줄이는 이유",
+      "telegram_core_fact": "일본거래소그룹(JPX)은 일본 대표 주가지수 토픽스(TOPIX) 편입 종목 수를 약 40% 줄이는 대규모 개편안을 발표했다. 니혼게이자이(닛케이)신문에 따르면 도쿄증권거래소를 운영하는 JPX는 10월 말부터 토픽스의 편입 종목 수를 현재 1636개사에서 986개사로 줄이는 대규모 개편 계획을 밝혔다.",
+      "title": "日 토픽스 지수 56년만에 대수술…종목 40% 줄이는 이유"
     },
     "source_fact:a919bb6bb71b2892d9b0079d": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
@@ -175652,6 +176745,33 @@
       "source_published_kst": "2026-10-07T13:37+09:00",
       "title": "대구·경북 제조업 생산 엇갈려…소비는 동반 감소"
     },
+    "source_fact:b09de3f05233b86aea4ddc15": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171187",
+      "source": "매일경제",
+      "source_body_digest": "526f76d6453dd2fe20b910f681bb900968299c765a04f6b919f971476426c3cc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ef09531d2026ff824ba72fd8796f9dda8092e34c63d196d6f89901146fd891b",
+      "source_fact_keys": [
+        "source_fact:v1:00c1f5db75decf8e75738ba31927973b7a40e9c44a0e54364ff48f73b3fb004d",
+        "source_fact:v1:11c231aeeb3a6de4abf90fd15eca886f2b8809dad702e444748e3f3d5458b36d",
+        "source_fact:v1:1d9849347aaee4ff2af2ca78610a4e3b67abdc35a72492295b81b571a2f9a6b0",
+        "source_fact:v1:479787342ddbac7b7b9dda12ff47cc4d29ffeeb69c7f6e1a5d7e41760850488b",
+        "source_fact:v1:632ac4b24afb36221cda64681c103fce9ab1b19fc5ec53245dc4e2c056a17c8f",
+        "source_fact:v1:9fd78201dd8de6280d6dd51b8c2c3d0f889fb702f1921e448407d1b004bb1f34",
+        "source_fact:v1:a0c5797953ded811934bd29bfb00e44aeceb34e78fdec289a957c9ffecbbdd43",
+        "source_fact:v1:effb069b68280c7a9cc677d860bf798f66675e4de0e57b9132fcbcb0070026c8",
+        "source_fact:v1:f53429523fcd54eca679431149158d77ffe56b7c39e5a3e1d8d23e24ad6ef21d"
+      ],
+      "source_published_kst": "2026-10-07T17:12+09:00",
+      "source_title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이",
+      "telegram_core_fact": "코스피가 외국인의 거센 매도 폭탄과 미국 국채금리 반등, 주요 기업 실적에 대한 경계감에 밀려 2% 가까이 급락하며 간신히 6,800선을 지켜냈다.",
+      "title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이"
+    },
     "source_fact:b09fec03ab1bca2e3b226ae1": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
       "lanes": {
@@ -177916,6 +179036,29 @@
       ],
       "source_published_kst": "2026-10-06T19:08+09:00",
       "title": "국제약품 승계 속도…남영우 회장 지분 전량 3세 증여"
+    },
+    "source_fact:b71f7904c15e335bfd65f431": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633265",
+      "source": "이투데이",
+      "source_body_digest": "e915a7b217a9faff892b4b85b64b6f7ad413742cfaa1a27ad0c4b0b1322a67f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:67593db42d40901bf065dbfcd145545dd011674401bf6e65a926153a6da77085",
+      "source_fact_keys": [
+        "source_fact:v1:19eb43c9e07e2c9eeee9aeb97d5cfa0aee7d2aa7ff5f1b47b8c25857db302d13",
+        "source_fact:v1:1da5d885a1e2fc0805512433a1a5039d92413653bdf7334537079a5b22848d41",
+        "source_fact:v1:85ab522b46617dc1f67bf9967dd85a3addeef75e1075ac7e32c7b3f9355aa482",
+        "source_fact:v1:98ef10b09d28fbe2a0b63c7aecd6d4164aad1628ee7c1a7fdc1f844328bf6b37",
+        "source_fact:v1:efff46dac032448e39b3a3c4789b523cec159e2b618a811978e20a2ca891d0f5"
+      ],
+      "source_published_kst": "2026-10-07T11:00+09:00",
+      "source_title": "3분기 누적 韓도착 외국인직접투자 149억불 '역대 최대'⋯중동 악재 속 30.6%↑",
+      "telegram_core_fact": "같은 기간 투자 도착액은 전년 대비 30.6% 증가한 148억7000만달러로 3분기 누적 기준 역대 1위 실적을 달성했다. 특히 실제 자금이 유입된 투자 도착액은 30% 넘게 증가하며 3분기 누적 기준 역대 최대치를 경신했다.",
+      "title": "3분기 누적 韓도착 외국인직접투자 149억불 '역대 최대'⋯중동 악재 속 30.6%↑"
     },
     "source_fact:b7208c4755763850445255bf": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
@@ -183609,6 +184752,30 @@
       "source_published_kst": "2026-10-06T16:02+09:00",
       "title": "후티 사우디 공격에…현대차"
     },
+    "source_fact:c68c9911202ad5c507e34493": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05710486645610624",
+      "source": "이데일리",
+      "source_body_digest": "79434e528aef9c3736075e83ba93423d072caa6b21f292ffa9e1458078a1c61c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dad74f37ed7a4196d44b3bccc06d4eea71b803e6ee9e9259ab8a6d6811869b7f",
+      "source_fact_keys": [
+        "source_fact:v1:1b368dc03cc4d454c34833dbe24e1bafdfd433822fd8bfe0c261cc8a09c33f75",
+        "source_fact:v1:628b3d9eff660600787b85b8df4a04cfd3382ad241105d56ff0300c8085b8a15",
+        "source_fact:v1:6f2c44c068c65670225194a94dfd4a68f7d735e7442283068586466e9dfd7747",
+        "source_fact:v1:baf05800d0b06a08edf240fd8edc67587a2bb320e8d17467d32ae1c395daeab5",
+        "source_fact:v1:ce8d6b6d3a2f703450acf2c6711cb00b827dc37bdeac940f2b787bfcfd750611",
+        "source_fact:v1:f78fcaea25a47232f9f6546658d7eaf7b7d16f19e3b34df3436157c238284f2c"
+      ],
+      "source_published_kst": "2026-10-07T20:11+09:00",
+      "source_title": "[美특징주]컨스텔레이션 브랜즈, 맥주 1위 유지에도 가이던스 하회에 개장전 5%↓",
+      "telegram_core_fact": "맥주 부문 순매출은 전년비 5% 증가한 24억7000만달러를 기록했으며 출하량은 5.5% 늘었다.",
+      "title": "[美특징주]컨스텔레이션 브랜즈, 맥주 1위 유지에도 가이던스 하회에 개장전 5%↓"
+    },
     "source_fact:c68d71bdc0a649924e06c9b0": {
       "first_seen_kst": "2026-10-06T23:46:46+09:00",
       "lanes": {
@@ -187723,6 +188890,30 @@
       "source_published_kst": "2026-10-06T00:51+09:00",
       "title": "美고용 식었는데 서비스 물가 더 뛰었다…연준 딜레마"
     },
+    "source_fact:d2769a2d1310792cfd8dfd3b": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05710486645610624",
+      "source": "이데일리",
+      "source_body_digest": "79434e528aef9c3736075e83ba93423d072caa6b21f292ffa9e1458078a1c61c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dad74f37ed7a4196d44b3bccc06d4eea71b803e6ee9e9259ab8a6d6811869b7f",
+      "source_fact_keys": [
+        "source_fact:v1:1b368dc03cc4d454c34833dbe24e1bafdfd433822fd8bfe0c261cc8a09c33f75",
+        "source_fact:v1:628b3d9eff660600787b85b8df4a04cfd3382ad241105d56ff0300c8085b8a15",
+        "source_fact:v1:6f2c44c068c65670225194a94dfd4a68f7d735e7442283068586466e9dfd7747",
+        "source_fact:v1:baf05800d0b06a08edf240fd8edc67587a2bb320e8d17467d32ae1c395daeab5",
+        "source_fact:v1:ce8d6b6d3a2f703450acf2c6711cb00b827dc37bdeac940f2b787bfcfd750611",
+        "source_fact:v1:f78fcaea25a47232f9f6546658d7eaf7b7d16f19e3b34df3436157c238284f2c"
+      ],
+      "source_published_kst": "2026-10-07T20:11+09:00",
+      "source_title": "[美특징주]컨스텔레이션 브랜즈, 맥주 1위 유지에도 가이던스 하회에 개장전 5%↓",
+      "telegram_core_fact": "맥주 부문 순매출은 전년비 5% 증가한 24억7000만달러를 기록했으며 출하량은 5.5% 늘었다.",
+      "title": "[美특징주]컨스텔레이션 브랜즈, 맥주 1위 유지에도 가이던스 하회에 개장전 5%↓"
+    },
     "source_fact:d298fd20dec3dbddefaac06c": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -188365,6 +189556,33 @@
       ],
       "source_published_kst": "2026-10-06T08:46+09:00",
       "title": "LIG가 찜한 부품사…“디와이씨, 방산 가치 주가에 안 담겼다”"
+    },
+    "source_fact:d3c1378fbcd92c28958c18f7": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171187",
+      "source": "매일경제",
+      "source_body_digest": "526f76d6453dd2fe20b910f681bb900968299c765a04f6b919f971476426c3cc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ef09531d2026ff824ba72fd8796f9dda8092e34c63d196d6f89901146fd891b",
+      "source_fact_keys": [
+        "source_fact:v1:00c1f5db75decf8e75738ba31927973b7a40e9c44a0e54364ff48f73b3fb004d",
+        "source_fact:v1:11c231aeeb3a6de4abf90fd15eca886f2b8809dad702e444748e3f3d5458b36d",
+        "source_fact:v1:1d9849347aaee4ff2af2ca78610a4e3b67abdc35a72492295b81b571a2f9a6b0",
+        "source_fact:v1:479787342ddbac7b7b9dda12ff47cc4d29ffeeb69c7f6e1a5d7e41760850488b",
+        "source_fact:v1:632ac4b24afb36221cda64681c103fce9ab1b19fc5ec53245dc4e2c056a17c8f",
+        "source_fact:v1:9fd78201dd8de6280d6dd51b8c2c3d0f889fb702f1921e448407d1b004bb1f34",
+        "source_fact:v1:a0c5797953ded811934bd29bfb00e44aeceb34e78fdec289a957c9ffecbbdd43",
+        "source_fact:v1:effb069b68280c7a9cc677d860bf798f66675e4de0e57b9132fcbcb0070026c8",
+        "source_fact:v1:f53429523fcd54eca679431149158d77ffe56b7c39e5a3e1d8d23e24ad6ef21d"
+      ],
+      "source_published_kst": "2026-10-07T17:12+09:00",
+      "source_title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이",
+      "telegram_core_fact": "코스피가 외국인의 거센 매도 폭탄과 미국 국채금리 반등, 주요 기업 실적에 대한 경계감에 밀려 2% 가까이 급락하며 간신히 6,800선을 지켜냈다.",
+      "title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이"
     },
     "source_fact:d3eec9d0b134c405af600be9": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
@@ -189300,6 +190518,29 @@
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "반도체 소부장 랠리 … ETF 출시도 잇따라"
     },
+    "source_fact:d63e2da7af96ef66390bd1c2": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633265",
+      "source": "이투데이",
+      "source_body_digest": "e915a7b217a9faff892b4b85b64b6f7ad413742cfaa1a27ad0c4b0b1322a67f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:67593db42d40901bf065dbfcd145545dd011674401bf6e65a926153a6da77085",
+      "source_fact_keys": [
+        "source_fact:v1:19eb43c9e07e2c9eeee9aeb97d5cfa0aee7d2aa7ff5f1b47b8c25857db302d13",
+        "source_fact:v1:1da5d885a1e2fc0805512433a1a5039d92413653bdf7334537079a5b22848d41",
+        "source_fact:v1:85ab522b46617dc1f67bf9967dd85a3addeef75e1075ac7e32c7b3f9355aa482",
+        "source_fact:v1:98ef10b09d28fbe2a0b63c7aecd6d4164aad1628ee7c1a7fdc1f844328bf6b37",
+        "source_fact:v1:efff46dac032448e39b3a3c4789b523cec159e2b618a811978e20a2ca891d0f5"
+      ],
+      "source_published_kst": "2026-10-07T11:00+09:00",
+      "source_title": "3분기 누적 韓도착 외국인직접투자 149억불 '역대 최대'⋯중동 악재 속 30.6%↑",
+      "telegram_core_fact": "같은 기간 투자 도착액은 전년 대비 30.6% 증가한 148억7000만달러로 3분기 누적 기준 역대 1위 실적을 달성했다. 특히 실제 자금이 유입된 투자 도착액은 30% 넘게 증가하며 3분기 누적 기준 역대 최대치를 경신했다.",
+      "title": "3분기 누적 韓도착 외국인직접투자 149억불 '역대 최대'⋯중동 악재 속 30.6%↑"
+    },
     "source_fact:d6522a8ca8381ae9afba87f8": {
       "first_seen_kst": "2026-10-06T23:56:49+09:00",
       "lanes": {
@@ -189866,6 +191107,30 @@
       ],
       "source_published_kst": "2026-10-06T05:30+09:00",
       "title": "車 부품 보던 AI, 로봇 관절 '가상검증' 나선다"
+    },
+    "source_fact:d750304764ee7b3ba16328d7": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/07/2026100717474042035",
+      "source": "머니투데이",
+      "source_body_digest": "4d676ba1beeff7e708e70b3bb576e408f75cf4f3beb510f5affa195cdc8d681f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:36139c6a6e3b30fec709e0fa29284b1ba49d1c825927ee5f5bcccf6b6510375c",
+      "source_fact_keys": [
+        "source_fact:v1:5b43f998540751b28334982615c61011b3d84d556e42b93ab53a0c8fae29741f",
+        "source_fact:v1:5f5cd113bc4e4a719bb2ba2d5fdfc3aac1eeac02812f70fa95a125c765bd6ffe",
+        "source_fact:v1:a0fef42c47930a51ad19e66bcdde6e9cea8c53500431cfa5c378b7948de27083",
+        "source_fact:v1:a9754c3eeb91734e57d2cf00a568ce6b42c86ef45c3b9891740ac902e36c187d",
+        "source_fact:v1:b70d66799e00dbfbf27d4fbd2fba5e45ae1e7c787730ff3305992e88c06d3262",
+        "source_fact:v1:c2eb0027564d127ff06d9f42e3cd95d5e92e00f8657dc3e5b2914f4e53a8ec91"
+      ],
+      "source_published_kst": "2026-10-07T18:14+09:00",
+      "source_title": "日 토픽스 지수 56년만에 대수술…종목 40% 줄이는 이유",
+      "telegram_core_fact": "일본거래소그룹(JPX)은 일본 대표 주가지수 토픽스(TOPIX) 편입 종목 수를 약 40% 줄이는 대규모 개편안을 발표했다. 니혼게이자이(닛케이)신문에 따르면 도쿄증권거래소를 운영하는 JPX는 10월 말부터 토픽스의 편입 종목 수를 현재 1636개사에서 986개사로 줄이는 대규모 개편 계획을 밝혔다.",
+      "title": "日 토픽스 지수 56년만에 대수술…종목 40% 줄이는 이유"
     },
     "source_fact:d76d9d63d8331cc2b9870f9c": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
@@ -191551,6 +192816,27 @@
       "source_published_kst": "2026-10-06T11:44+09:00",
       "title": "정부 \"11월 원유 90% 이상 확보…나프타도 90% 이상\" | 연합뉴스"
     },
+    "source_fact:db85d7ff505bcc5d2feed641": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.hankyung.com/article/202610079441i",
+      "source": "한국경제",
+      "source_body_digest": "a337f5873b851ca5c199b4cc1d64b92435690278a7c64996da4a11ba7dd06951",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9c2bc021f1b2207a31f99e463ab7db8588623de07168f337e7bd1c18bd6c440",
+      "source_fact_keys": [
+        "source_fact:v1:7ebba2aad4e71bd90c3d10e8cf0833596dd55243d77cf788b8cefd781ffb7c07",
+        "source_fact:v1:80a93970f1d126d66cfe7d22ddfd181f6415132cd0ecf88ce44038c6e60ac535",
+        "source_fact:v1:8a2f8dfe9ef26a0b128a7626d48050e34c2dacf83e458876637e34667e811cfd"
+      ],
+      "source_published_kst": "2026-10-07T20:47+09:00",
+      "source_title": "\"엔비디아칩 사려고 54조원 빚낸다\"…스페이스X, 400억달러 조달 추진",
+      "telegram_core_fact": "일론 머스크가 이끄는 스페이스X가 엔비디아의 칩을 사기 위해 약 300억달러 회사채를 포함, 400억달러(약 54조원)의 자금 조달에 나설 계획이다. 마켓워치에 따르면, 400억달러는 스페이스X의 올해 예상 매출 445억달러에 거의 맞먹는 규모이다.",
+      "title": "\"엔비디아칩 사려고 54조원 빚낸다\"…스페이스X, 400억달러 조달 추진"
+    },
     "source_fact:dba88110cf977d3064feec2b": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
       "lanes": {
@@ -192081,6 +193367,30 @@
       ],
       "source_published_kst": "2026-10-06T19:27+09:00",
       "title": "[美특징주]TSMC, 미국 내 반도체 생산 확대 검토…개장전 '약보합'"
+    },
+    "source_fact:dd1f9267bf9a7448badd938e": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/07/2026100717474042035",
+      "source": "머니투데이",
+      "source_body_digest": "4d676ba1beeff7e708e70b3bb576e408f75cf4f3beb510f5affa195cdc8d681f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:36139c6a6e3b30fec709e0fa29284b1ba49d1c825927ee5f5bcccf6b6510375c",
+      "source_fact_keys": [
+        "source_fact:v1:5b43f998540751b28334982615c61011b3d84d556e42b93ab53a0c8fae29741f",
+        "source_fact:v1:5f5cd113bc4e4a719bb2ba2d5fdfc3aac1eeac02812f70fa95a125c765bd6ffe",
+        "source_fact:v1:a0fef42c47930a51ad19e66bcdde6e9cea8c53500431cfa5c378b7948de27083",
+        "source_fact:v1:a9754c3eeb91734e57d2cf00a568ce6b42c86ef45c3b9891740ac902e36c187d",
+        "source_fact:v1:b70d66799e00dbfbf27d4fbd2fba5e45ae1e7c787730ff3305992e88c06d3262",
+        "source_fact:v1:c2eb0027564d127ff06d9f42e3cd95d5e92e00f8657dc3e5b2914f4e53a8ec91"
+      ],
+      "source_published_kst": "2026-10-07T18:14+09:00",
+      "source_title": "日 토픽스 지수 56년만에 대수술…종목 40% 줄이는 이유",
+      "telegram_core_fact": "일본거래소그룹(JPX)은 일본 대표 주가지수 토픽스(TOPIX) 편입 종목 수를 약 40% 줄이는 대규모 개편안을 발표했다. 니혼게이자이(닛케이)신문에 따르면 도쿄증권거래소를 운영하는 JPX는 10월 말부터 토픽스의 편입 종목 수를 현재 1636개사에서 986개사로 줄이는 대규모 개편 계획을 밝혔다.",
+      "title": "日 토픽스 지수 56년만에 대수술…종목 40% 줄이는 이유"
     },
     "source_fact:dd2522eed82139d1208ef239": {
       "first_seen_kst": "2026-10-07T16:57:09+09:00",
@@ -194378,6 +195688,29 @@
       "source_published_kst": "2026-10-07T09:30+09:00",
       "title": "포스코홀딩스, 8년 투자 결실…아르헨티나 리튬 2공장 준공"
     },
+    "source_fact:e201f67120ebd5152aa6f23e": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170602",
+      "source": "매일경제",
+      "source_body_digest": "89d1992912abd2c53cd0107202291ddc90e6a9a3509685054886207f096cda67",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:958cdbba0b02a89f54f470f23a915efd4e3f449952c75a31652481360b160d16",
+      "source_fact_keys": [
+        "source_fact:v1:2c6e320618c3989538b7b08fd915ba24e8d2f8c595bfa30ad7e79d4fc9a3eb7e",
+        "source_fact:v1:40c517475d6627c3023c0c636633da2bc6796761be2079c6a180bba016dbc93c",
+        "source_fact:v1:829e54afdac88c734822a00441af836617d4caf643a2948732ea4e59b9494d24",
+        "source_fact:v1:bf9d70c2ec24fc0f8d182f44d9397399132c1a74c951c780532f55cefe9401d1",
+        "source_fact:v1:e6bb1bcef58475ed58340b19d3b60edf38de81acd3e4a393e0fcf8fd85a4788c"
+      ],
+      "source_published_kst": "2026-10-07T08:43+09:00",
+      "source_title": "탑 웰스 그룹 홀딩, 나스닥 1달러 호가 요건 미달 통보..내년 3월 말 시한",
+      "telegram_core_fact": "탑 웰스 그룹 홀딩(TWG)이 나스닥 상장 유지 요건인 최소 매수호가 1달러를 30거래일 연속 밑돌아 10월 2일자로 나스닥으로부터 요건 미충족 통지서를 받았으며, 규정 준수 시한은 2027년 3월 31일이라고 10월 6일 발표했다.",
+      "title": "탑 웰스 그룹 홀딩, 나스닥 1달러 호가 요건 미달 통보..내년 3월 말 시한"
+    },
     "source_fact:e20c8ac985ffcdb089c790a5": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
       "lanes": {
@@ -195543,6 +196876,33 @@
       "telegram_core_fact": "홍콩 증시 상장 중국기업주 중심의 H주 지수는 전일보다 46.57 포인트, 0.57% 떨어진 8082.40으로 장을 끝냈다. 홍콩 증시는 7일 중국 증시가 국경절 연휴를 끝내고거래 재개를 하루 앞둔 가운데 지분조정 매물이 선행하면서 3거래일 만에 반락 마감했다.",
       "title": "[올댓차이나] 홍콩 증시, 지분조정 매도로 사흘 만에 반락 마감… H주 0.57%↓"
     },
+    "source_fact:e44b0721433db64c2387ff00": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171187",
+      "source": "매일경제",
+      "source_body_digest": "526f76d6453dd2fe20b910f681bb900968299c765a04f6b919f971476426c3cc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ef09531d2026ff824ba72fd8796f9dda8092e34c63d196d6f89901146fd891b",
+      "source_fact_keys": [
+        "source_fact:v1:00c1f5db75decf8e75738ba31927973b7a40e9c44a0e54364ff48f73b3fb004d",
+        "source_fact:v1:11c231aeeb3a6de4abf90fd15eca886f2b8809dad702e444748e3f3d5458b36d",
+        "source_fact:v1:1d9849347aaee4ff2af2ca78610a4e3b67abdc35a72492295b81b571a2f9a6b0",
+        "source_fact:v1:479787342ddbac7b7b9dda12ff47cc4d29ffeeb69c7f6e1a5d7e41760850488b",
+        "source_fact:v1:632ac4b24afb36221cda64681c103fce9ab1b19fc5ec53245dc4e2c056a17c8f",
+        "source_fact:v1:9fd78201dd8de6280d6dd51b8c2c3d0f889fb702f1921e448407d1b004bb1f34",
+        "source_fact:v1:a0c5797953ded811934bd29bfb00e44aeceb34e78fdec289a957c9ffecbbdd43",
+        "source_fact:v1:effb069b68280c7a9cc677d860bf798f66675e4de0e57b9132fcbcb0070026c8",
+        "source_fact:v1:f53429523fcd54eca679431149158d77ffe56b7c39e5a3e1d8d23e24ad6ef21d"
+      ],
+      "source_published_kst": "2026-10-07T17:12+09:00",
+      "source_title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이",
+      "telegram_core_fact": "코스피가 외국인의 거센 매도 폭탄과 미국 국채금리 반등, 주요 기업 실적에 대한 경계감에 밀려 2% 가까이 급락하며 간신히 6,800선을 지켜냈다.",
+      "title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이"
+    },
     "source_fact:e44fe7d68f6ca61d69d66832": {
       "first_seen_kst": "2026-10-06T15:03:09+09:00",
       "lanes": {
@@ -195821,6 +197181,30 @@
       "source_published_kst": "2026-10-06T13:28+09:00",
       "title": "전세사기 피해 보증금 3분의 1 회복 보장…지원금 산정기준 마련 | 연합뉴스"
     },
+    "source_fact:e50cc4b11429062f034f07d3": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05710486645610624",
+      "source": "이데일리",
+      "source_body_digest": "79434e528aef9c3736075e83ba93423d072caa6b21f292ffa9e1458078a1c61c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dad74f37ed7a4196d44b3bccc06d4eea71b803e6ee9e9259ab8a6d6811869b7f",
+      "source_fact_keys": [
+        "source_fact:v1:1b368dc03cc4d454c34833dbe24e1bafdfd433822fd8bfe0c261cc8a09c33f75",
+        "source_fact:v1:628b3d9eff660600787b85b8df4a04cfd3382ad241105d56ff0300c8085b8a15",
+        "source_fact:v1:6f2c44c068c65670225194a94dfd4a68f7d735e7442283068586466e9dfd7747",
+        "source_fact:v1:baf05800d0b06a08edf240fd8edc67587a2bb320e8d17467d32ae1c395daeab5",
+        "source_fact:v1:ce8d6b6d3a2f703450acf2c6711cb00b827dc37bdeac940f2b787bfcfd750611",
+        "source_fact:v1:f78fcaea25a47232f9f6546658d7eaf7b7d16f19e3b34df3436157c238284f2c"
+      ],
+      "source_published_kst": "2026-10-07T20:11+09:00",
+      "source_title": "[美특징주]컨스텔레이션 브랜즈, 맥주 1위 유지에도 가이던스 하회에 개장전 5%↓",
+      "telegram_core_fact": "맥주 부문 순매출은 전년비 5% 증가한 24억7000만달러를 기록했으며 출하량은 5.5% 늘었다.",
+      "title": "[美특징주]컨스텔레이션 브랜즈, 맥주 1위 유지에도 가이던스 하회에 개장전 5%↓"
+    },
     "source_fact:e5129ca34baed9bbedd0f602": {
       "first_seen_kst": "2026-10-07T22:53:53+09:00",
       "lanes": {
@@ -195981,6 +197365,33 @@
       ],
       "source_published_kst": "2026-10-07T10:08+09:00",
       "title": "365mc·GC녹십자웰빙, 국소지방 신약·GLP-1 건기식 공동개발"
+    },
+    "source_fact:e5d68ce5af5a3a347e14ee2e": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171187",
+      "source": "매일경제",
+      "source_body_digest": "526f76d6453dd2fe20b910f681bb900968299c765a04f6b919f971476426c3cc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ef09531d2026ff824ba72fd8796f9dda8092e34c63d196d6f89901146fd891b",
+      "source_fact_keys": [
+        "source_fact:v1:00c1f5db75decf8e75738ba31927973b7a40e9c44a0e54364ff48f73b3fb004d",
+        "source_fact:v1:11c231aeeb3a6de4abf90fd15eca886f2b8809dad702e444748e3f3d5458b36d",
+        "source_fact:v1:1d9849347aaee4ff2af2ca78610a4e3b67abdc35a72492295b81b571a2f9a6b0",
+        "source_fact:v1:479787342ddbac7b7b9dda12ff47cc4d29ffeeb69c7f6e1a5d7e41760850488b",
+        "source_fact:v1:632ac4b24afb36221cda64681c103fce9ab1b19fc5ec53245dc4e2c056a17c8f",
+        "source_fact:v1:9fd78201dd8de6280d6dd51b8c2c3d0f889fb702f1921e448407d1b004bb1f34",
+        "source_fact:v1:a0c5797953ded811934bd29bfb00e44aeceb34e78fdec289a957c9ffecbbdd43",
+        "source_fact:v1:effb069b68280c7a9cc677d860bf798f66675e4de0e57b9132fcbcb0070026c8",
+        "source_fact:v1:f53429523fcd54eca679431149158d77ffe56b7c39e5a3e1d8d23e24ad6ef21d"
+      ],
+      "source_published_kst": "2026-10-07T17:12+09:00",
+      "source_title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이",
+      "telegram_core_fact": "코스피가 외국인의 거센 매도 폭탄과 미국 국채금리 반등, 주요 기업 실적에 대한 경계감에 밀려 2% 가까이 급락하며 간신히 6,800선을 지켜냈다.",
+      "title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이"
     },
     "source_fact:e5ddaba32393d058175e5f39": {
       "first_seen_kst": "2026-10-07T21:31:57+09:00",
@@ -201641,6 +203052,27 @@
       "source_published_kst": "2026-10-05T17:44+09:00",
       "title": "환율 하락에 영업이익 늘어도 순이익 뚝…외화 자산 평가손익에 영향"
     },
+    "source_fact:f48dd53e1ca6741aeec24327": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.hankyung.com/article/202610079441i",
+      "source": "한국경제",
+      "source_body_digest": "a337f5873b851ca5c199b4cc1d64b92435690278a7c64996da4a11ba7dd06951",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9c2bc021f1b2207a31f99e463ab7db8588623de07168f337e7bd1c18bd6c440",
+      "source_fact_keys": [
+        "source_fact:v1:7ebba2aad4e71bd90c3d10e8cf0833596dd55243d77cf788b8cefd781ffb7c07",
+        "source_fact:v1:80a93970f1d126d66cfe7d22ddfd181f6415132cd0ecf88ce44038c6e60ac535",
+        "source_fact:v1:8a2f8dfe9ef26a0b128a7626d48050e34c2dacf83e458876637e34667e811cfd"
+      ],
+      "source_published_kst": "2026-10-07T20:47+09:00",
+      "source_title": "\"엔비디아칩 사려고 54조원 빚낸다\"…스페이스X, 400억달러 조달 추진",
+      "telegram_core_fact": "일론 머스크가 이끄는 스페이스X가 엔비디아의 칩을 사기 위해 약 300억달러 회사채를 포함, 400억달러(약 54조원)의 자금 조달에 나설 계획이다. 마켓워치에 따르면, 400억달러는 스페이스X의 올해 예상 매출 445억달러에 거의 맞먹는 규모이다.",
+      "title": "\"엔비디아칩 사려고 54조원 빚낸다\"…스페이스X, 400억달러 조달 추진"
+    },
     "source_fact:f4a268b9750e2c290ecde374": {
       "first_seen_kst": "2026-10-06T19:33:48+09:00",
       "lanes": {
@@ -204963,6 +206395,30 @@
       ],
       "source_published_kst": "2026-10-06T07:48+09:00",
       "title": "본사 곳간 찰 때 점주는 울었다…프랜차이즈 매출 양극화 심화"
+    },
+    "source_fact:fef27a4bfc7a70c5f75c94e8": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/07/2026100717474042035",
+      "source": "머니투데이",
+      "source_body_digest": "4d676ba1beeff7e708e70b3bb576e408f75cf4f3beb510f5affa195cdc8d681f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:36139c6a6e3b30fec709e0fa29284b1ba49d1c825927ee5f5bcccf6b6510375c",
+      "source_fact_keys": [
+        "source_fact:v1:5b43f998540751b28334982615c61011b3d84d556e42b93ab53a0c8fae29741f",
+        "source_fact:v1:5f5cd113bc4e4a719bb2ba2d5fdfc3aac1eeac02812f70fa95a125c765bd6ffe",
+        "source_fact:v1:a0fef42c47930a51ad19e66bcdde6e9cea8c53500431cfa5c378b7948de27083",
+        "source_fact:v1:a9754c3eeb91734e57d2cf00a568ce6b42c86ef45c3b9891740ac902e36c187d",
+        "source_fact:v1:b70d66799e00dbfbf27d4fbd2fba5e45ae1e7c787730ff3305992e88c06d3262",
+        "source_fact:v1:c2eb0027564d127ff06d9f42e3cd95d5e92e00f8657dc3e5b2914f4e53a8ec91"
+      ],
+      "source_published_kst": "2026-10-07T18:14+09:00",
+      "source_title": "日 토픽스 지수 56년만에 대수술…종목 40% 줄이는 이유",
+      "telegram_core_fact": "일본거래소그룹(JPX)은 일본 대표 주가지수 토픽스(TOPIX) 편입 종목 수를 약 40% 줄이는 대규모 개편안을 발표했다. 니혼게이자이(닛케이)신문에 따르면 도쿄증권거래소를 운영하는 JPX는 10월 말부터 토픽스의 편입 종목 수를 현재 1636개사에서 986개사로 줄이는 대규모 개편 계획을 밝혔다.",
+      "title": "日 토픽스 지수 56년만에 대수술…종목 40% 줄이는 이유"
     },
     "source_fact:ff010b548e155bb9afe68f97": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
@@ -213158,6 +214614,33 @@
       "source_published_kst": "2026-10-07T16:16+09:00",
       "title": "'선박왕' 권혁, 15년 만에 체납세금 3938억 완납 의사…1000억 우선 납부(종합)"
     },
+    "title:336928ed72eee9dff4c5807e": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171187",
+      "source": "매일경제",
+      "source_body_digest": "526f76d6453dd2fe20b910f681bb900968299c765a04f6b919f971476426c3cc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ef09531d2026ff824ba72fd8796f9dda8092e34c63d196d6f89901146fd891b",
+      "source_fact_keys": [
+        "source_fact:v1:00c1f5db75decf8e75738ba31927973b7a40e9c44a0e54364ff48f73b3fb004d",
+        "source_fact:v1:11c231aeeb3a6de4abf90fd15eca886f2b8809dad702e444748e3f3d5458b36d",
+        "source_fact:v1:1d9849347aaee4ff2af2ca78610a4e3b67abdc35a72492295b81b571a2f9a6b0",
+        "source_fact:v1:479787342ddbac7b7b9dda12ff47cc4d29ffeeb69c7f6e1a5d7e41760850488b",
+        "source_fact:v1:632ac4b24afb36221cda64681c103fce9ab1b19fc5ec53245dc4e2c056a17c8f",
+        "source_fact:v1:9fd78201dd8de6280d6dd51b8c2c3d0f889fb702f1921e448407d1b004bb1f34",
+        "source_fact:v1:a0c5797953ded811934bd29bfb00e44aeceb34e78fdec289a957c9ffecbbdd43",
+        "source_fact:v1:effb069b68280c7a9cc677d860bf798f66675e4de0e57b9132fcbcb0070026c8",
+        "source_fact:v1:f53429523fcd54eca679431149158d77ffe56b7c39e5a3e1d8d23e24ad6ef21d"
+      ],
+      "source_published_kst": "2026-10-07T17:12+09:00",
+      "source_title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이",
+      "telegram_core_fact": "코스피가 외국인의 거센 매도 폭탄과 미국 국채금리 반등, 주요 기업 실적에 대한 경계감에 밀려 2% 가까이 급락하며 간신히 6,800선을 지켜냈다.",
+      "title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이"
+    },
     "title:338cbebfe4f096cf89245c2c": {
       "first_seen_kst": "2026-10-07T07:12:15+09:00",
       "lanes": {
@@ -215459,6 +216942,29 @@
       ],
       "source_published_kst": "2026-10-07T11:31+09:00",
       "title": "역외IB, 국내 인가 없인 한국물 영업 제한…당국 의견수렴 | 연합뉴스"
+    },
+    "title:417a8a4e770fcb49f292afb1": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170602",
+      "source": "매일경제",
+      "source_body_digest": "89d1992912abd2c53cd0107202291ddc90e6a9a3509685054886207f096cda67",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:958cdbba0b02a89f54f470f23a915efd4e3f449952c75a31652481360b160d16",
+      "source_fact_keys": [
+        "source_fact:v1:2c6e320618c3989538b7b08fd915ba24e8d2f8c595bfa30ad7e79d4fc9a3eb7e",
+        "source_fact:v1:40c517475d6627c3023c0c636633da2bc6796761be2079c6a180bba016dbc93c",
+        "source_fact:v1:829e54afdac88c734822a00441af836617d4caf643a2948732ea4e59b9494d24",
+        "source_fact:v1:bf9d70c2ec24fc0f8d182f44d9397399132c1a74c951c780532f55cefe9401d1",
+        "source_fact:v1:e6bb1bcef58475ed58340b19d3b60edf38de81acd3e4a393e0fcf8fd85a4788c"
+      ],
+      "source_published_kst": "2026-10-07T08:43+09:00",
+      "source_title": "탑 웰스 그룹 홀딩, 나스닥 1달러 호가 요건 미달 통보..내년 3월 말 시한",
+      "telegram_core_fact": "탑 웰스 그룹 홀딩(TWG)이 나스닥 상장 유지 요건인 최소 매수호가 1달러를 30거래일 연속 밑돌아 10월 2일자로 나스닥으로부터 요건 미충족 통지서를 받았으며, 규정 준수 시한은 2027년 3월 31일이라고 10월 6일 발표했다.",
+      "title": "탑 웰스 그룹 홀딩, 나스닥 1달러 호가 요건 미달 통보..내년 3월 말 시한"
     },
     "title:41875cb990f377f3bd9670ce": {
       "first_seen_kst": "2026-10-06T10:41:31+09:00",
@@ -223875,6 +225381,29 @@
       "source_published_kst": "2026-10-06T11:35+09:00",
       "title": "日 ‘신중’ 알래스카 LNG 프로젝트…밴스 부통령 “韓과 조율…결국 이뤄질 일” [대미투자]"
     },
+    "title:79ac9c43c651529362db7207": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633265",
+      "source": "이투데이",
+      "source_body_digest": "e915a7b217a9faff892b4b85b64b6f7ad413742cfaa1a27ad0c4b0b1322a67f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:67593db42d40901bf065dbfcd145545dd011674401bf6e65a926153a6da77085",
+      "source_fact_keys": [
+        "source_fact:v1:19eb43c9e07e2c9eeee9aeb97d5cfa0aee7d2aa7ff5f1b47b8c25857db302d13",
+        "source_fact:v1:1da5d885a1e2fc0805512433a1a5039d92413653bdf7334537079a5b22848d41",
+        "source_fact:v1:85ab522b46617dc1f67bf9967dd85a3addeef75e1075ac7e32c7b3f9355aa482",
+        "source_fact:v1:98ef10b09d28fbe2a0b63c7aecd6d4164aad1628ee7c1a7fdc1f844328bf6b37",
+        "source_fact:v1:efff46dac032448e39b3a3c4789b523cec159e2b618a811978e20a2ca891d0f5"
+      ],
+      "source_published_kst": "2026-10-07T11:00+09:00",
+      "source_title": "3분기 누적 韓도착 외국인직접투자 149억불 '역대 최대'⋯중동 악재 속 30.6%↑",
+      "telegram_core_fact": "같은 기간 투자 도착액은 전년 대비 30.6% 증가한 148억7000만달러로 3분기 누적 기준 역대 1위 실적을 달성했다. 특히 실제 자금이 유입된 투자 도착액은 30% 넘게 증가하며 3분기 누적 기준 역대 최대치를 경신했다.",
+      "title": "3분기 누적 韓도착 외국인직접투자 149억불 '역대 최대'⋯중동 악재 속 30.6%↑"
+    },
     "title:79ae3fc0c5dbed41c293f074": {
       "first_seen_kst": "2026-10-06T03:45:53+09:00",
       "lanes": {
@@ -228046,6 +229575,23 @@
       "source": "매일경제",
       "title": "“이란전쟁 소풍 끝나면 유가 정상화”…금리발작 못본체하는 트럼프"
     },
+    "title:955b4f7c2b4fc6f050d8f26a": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12170803",
+      "source": "매일경제",
+      "source_body_digest": "7dcc7187abeae5b51501a76335437b508f13d80fa2c146a189540187fa01c52c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T18:50+09:00",
+      "source_title": "컨스텔레이션브랜드, 연간 EPS 가이던스 시장 기대 하회에 투자심리 위축",
+      "telegram_core_fact": "2분기 실적은 예상치를 웃돌았지만, 연간 비GAAP EPS 가이던스를 11.20~11.90달러로 제시해 시장 예상치 11.71달러를 밑돌며 실망감이 커졌습니다.",
+      "title": "컨스텔레이션브랜드, 연간 EPS 가이던스 시장 기대 하회에 투자심리 위축"
+    },
     "title:957ab90d1ca078035a91053c": {
       "first_seen_kst": "2026-10-03T21:21:44+09:00",
       "lanes": {
@@ -230389,6 +231935,30 @@
       "source_published_kst": "2026-10-06T11:12+09:00",
       "title": "LG전자, 5GW 북미 냉각 설루션 장기 계약"
     },
+    "title:a71e2433deb5b4772ddca4f4": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/07/2026100717474042035",
+      "source": "머니투데이",
+      "source_body_digest": "4d676ba1beeff7e708e70b3bb576e408f75cf4f3beb510f5affa195cdc8d681f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:36139c6a6e3b30fec709e0fa29284b1ba49d1c825927ee5f5bcccf6b6510375c",
+      "source_fact_keys": [
+        "source_fact:v1:5b43f998540751b28334982615c61011b3d84d556e42b93ab53a0c8fae29741f",
+        "source_fact:v1:5f5cd113bc4e4a719bb2ba2d5fdfc3aac1eeac02812f70fa95a125c765bd6ffe",
+        "source_fact:v1:a0fef42c47930a51ad19e66bcdde6e9cea8c53500431cfa5c378b7948de27083",
+        "source_fact:v1:a9754c3eeb91734e57d2cf00a568ce6b42c86ef45c3b9891740ac902e36c187d",
+        "source_fact:v1:b70d66799e00dbfbf27d4fbd2fba5e45ae1e7c787730ff3305992e88c06d3262",
+        "source_fact:v1:c2eb0027564d127ff06d9f42e3cd95d5e92e00f8657dc3e5b2914f4e53a8ec91"
+      ],
+      "source_published_kst": "2026-10-07T18:14+09:00",
+      "source_title": "日 토픽스 지수 56년만에 대수술…종목 40% 줄이는 이유",
+      "telegram_core_fact": "일본거래소그룹(JPX)은 일본 대표 주가지수 토픽스(TOPIX) 편입 종목 수를 약 40% 줄이는 대규모 개편안을 발표했다. 니혼게이자이(닛케이)신문에 따르면 도쿄증권거래소를 운영하는 JPX는 10월 말부터 토픽스의 편입 종목 수를 현재 1636개사에서 986개사로 줄이는 대규모 개편 계획을 밝혔다.",
+      "title": "日 토픽스 지수 56년만에 대수술…종목 40% 줄이는 이유"
+    },
     "title:a7578c1858fb1315d5bdcb30": {
       "first_seen_kst": "2026-10-03T21:50:02+09:00",
       "lanes": {
@@ -232483,6 +234053,27 @@
       ],
       "source_published_kst": "2026-10-06T09:48+09:00",
       "title": "은평구 불광 5구역, 철거 착수…2046가구 '북한산 자이'로 탈바꿈"
+    },
+    "title:b55aab252ea48f211484312a": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.hankyung.com/article/202610079441i",
+      "source": "한국경제",
+      "source_body_digest": "a337f5873b851ca5c199b4cc1d64b92435690278a7c64996da4a11ba7dd06951",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b9c2bc021f1b2207a31f99e463ab7db8588623de07168f337e7bd1c18bd6c440",
+      "source_fact_keys": [
+        "source_fact:v1:7ebba2aad4e71bd90c3d10e8cf0833596dd55243d77cf788b8cefd781ffb7c07",
+        "source_fact:v1:80a93970f1d126d66cfe7d22ddfd181f6415132cd0ecf88ce44038c6e60ac535",
+        "source_fact:v1:8a2f8dfe9ef26a0b128a7626d48050e34c2dacf83e458876637e34667e811cfd"
+      ],
+      "source_published_kst": "2026-10-07T20:47+09:00",
+      "source_title": "\"엔비디아칩 사려고 54조원 빚낸다\"…스페이스X, 400억달러 조달 추진",
+      "telegram_core_fact": "일론 머스크가 이끄는 스페이스X가 엔비디아의 칩을 사기 위해 약 300억달러 회사채를 포함, 400억달러(약 54조원)의 자금 조달에 나설 계획이다. 마켓워치에 따르면, 400억달러는 스페이스X의 올해 예상 매출 445억달러에 거의 맞먹는 규모이다.",
+      "title": "\"엔비디아칩 사려고 54조원 빚낸다\"…스페이스X, 400억달러 조달 추진"
     },
     "title:b5741091ce5981bbfd93d17d": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
@@ -238722,6 +240313,30 @@
       "source_published_kst": "2026-10-07T11:14+09:00",
       "title": "다이나핏, FW 신상 매출 23%↑…'트레이닝 세트'는 리오더"
     },
+    "title:dee8ef26ec56368e55f03934": {
+      "first_seen_kst": "2026-10-08T01:26:16+09:00",
+      "lanes": {
+        "live": "2026-10-08T01:26:16+09:00"
+      },
+      "last_seen_kst": "2026-10-08T01:26:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05710486645610624",
+      "source": "이데일리",
+      "source_body_digest": "79434e528aef9c3736075e83ba93423d072caa6b21f292ffa9e1458078a1c61c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dad74f37ed7a4196d44b3bccc06d4eea71b803e6ee9e9259ab8a6d6811869b7f",
+      "source_fact_keys": [
+        "source_fact:v1:1b368dc03cc4d454c34833dbe24e1bafdfd433822fd8bfe0c261cc8a09c33f75",
+        "source_fact:v1:628b3d9eff660600787b85b8df4a04cfd3382ad241105d56ff0300c8085b8a15",
+        "source_fact:v1:6f2c44c068c65670225194a94dfd4a68f7d735e7442283068586466e9dfd7747",
+        "source_fact:v1:baf05800d0b06a08edf240fd8edc67587a2bb320e8d17467d32ae1c395daeab5",
+        "source_fact:v1:ce8d6b6d3a2f703450acf2c6711cb00b827dc37bdeac940f2b787bfcfd750611",
+        "source_fact:v1:f78fcaea25a47232f9f6546658d7eaf7b7d16f19e3b34df3436157c238284f2c"
+      ],
+      "source_published_kst": "2026-10-07T20:11+09:00",
+      "source_title": "[美특징주]컨스텔레이션 브랜즈, 맥주 1위 유지에도 가이던스 하회에 개장전 5%↓",
+      "telegram_core_fact": "맥주 부문 순매출은 전년비 5% 증가한 24억7000만달러를 기록했으며 출하량은 5.5% 늘었다.",
+      "title": "[美특징주]컨스텔레이션 브랜즈, 맥주 1위 유지에도 가이던스 하회에 개장전 5%↓"
+    },
     "title:defa3a8ff3d427e95b19e17b": {
       "first_seen_kst": "2026-10-05T12:29:58+09:00",
       "lanes": {
@@ -243497,5 +245112,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-08T01:09:29+09:00"
+  "updated_at_kst": "2026-10-08T01:26:16+09:00"
 }
