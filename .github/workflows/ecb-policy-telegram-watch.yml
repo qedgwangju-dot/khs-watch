@@ -183,8 +183,16 @@ jobs:
             echo "ECB 상태 변경 없음"
           else
             git commit -m "Update ECB policy watch state"
-            git pull --rebase origin main
-            git push
+            for attempt in 1 2 3 4 5; do
+              if git pull --rebase origin main && git push; then
+                exit 0
+              fi
+              git rebase --abort 2>/dev/null || true
+              git fetch origin main
+              sleep $((attempt * 3))
+            done
+            echo "ECB state push failed after 5 retries" >&2
+            exit 1
           fi
 
       - name: Upload ECB verification artifacts
