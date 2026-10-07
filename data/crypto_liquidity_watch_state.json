@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-07T08:02:33+09:00",
+  "updated_at_kst": "2026-10-07T11:21:22+09:00",
   "buyback": {
     "sha256": "3e691d164254d161d0d814e87c0eb3b88203e8985bb2f046aff70278f43ae5d4",
     "bytes": 14234,
@@ -24,8 +24,8 @@
     "date": "2026-10-06",
     "total_usd_m": -3.2,
     "status": "partial",
-    "reported_funds": 5,
-    "missing_funds": 7,
+    "reported_funds": 11,
+    "missing_funds": 1,
     "prev_date": "2026-10-05",
     "prev_total_usd_m": -89.8,
     "day_change_usd_m": 86.6,
@@ -77,6 +77,13 @@
         "reported_funds": 5,
         "missing_funds": 7,
         "coverage": "5/12"
+      },
+      {
+        "observed_at_kst": "2026-10-07T11:21:22+09:00",
+        "total_usd_m": -3.2,
+        "reported_funds": 11,
+        "missing_funds": 1,
+        "coverage": "11/12"
       }
     ]
   },
