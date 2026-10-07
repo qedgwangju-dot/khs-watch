@@ -19,7 +19,7 @@ FORCE=os.getenv('FORCE_NOTIFY','0')=='1'
 UA='Mozilla/5.0 (compatible; khs-watch/3.0; +https://github.com/qedgwangju-dot/khs-watch)'
 YAHOO='https://query1.finance.yahoo.com/v8/finance/chart/{}?range=1mo&interval=1d&includePrePost=false'
 CBOE_VIX_CSV='https://cdn.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv'
-METHODOLOGY_VERSION='2026-10-07-v3'
+METHODOLOGY_VERSION='2026-10-07-v4'
 
 SYMBOLS={
     'S&P500':'SPY','동일가중 S&P500':'RSP','중소형주':'IWM','하이일드 회사채':'HYG','VIX':'^VIX',
@@ -47,24 +47,45 @@ def series(symbol, adjusted=False):
         values=adj
     else:
         values=closes
+
     meta=r.get('meta') or {}
     regular=((meta.get('currentTradingPeriod') or {}).get('regular') or {})
     regular_start=regular.get('start'); regular_end=regular.get('end')
     now=time.time()
-    ny_now=datetime.now(ZoneInfo('America/New_York'))
+    ny=ZoneInfo('America/New_York')
+    ny_now=datetime.now(ny)
     ny_today=ny_now.date().isoformat()
-    before_close_buffer=(ny_now.hour < 16 or (ny_now.hour == 16 and ny_now.minute < 15))
-    rows=[]
+    before_settlement=bool(regular_end and now < regular_end + 2700)  # 45m post-close guard
+
+    by_date={}
     for t,v in zip(ts,values):
         if v is None:
             continue
-        row_date=datetime.fromtimestamp(t,ZoneInfo('America/New_York')).date().isoformat()
-        if row_date == ny_today and before_close_buffer:
+        row_date=datetime.fromtimestamp(t,ny).date().isoformat()
+        if row_date == ny_today and before_settlement:
             continue
-        if regular_start and regular_end and regular_start <= t <= regular_end and now < regular_end + 900:
-            continue
-        rows.append((row_date,float(v)))
-    if len(rows)<7: raise RuntimeError(f'{symbol} completed-session history too short')
+        by_date[row_date]=float(v)
+
+    # Yahoo's daily-array bar can stay stale or retain an intraday value after the
+    # closing bell. Once the session has had a 45-minute settlement buffer, use the
+    # chart meta regularMarketPrice/regularMarketTime as the authoritative Yahoo
+    # completed-session close for that latest session. For adjusted series (HYG),
+    # the current post-distribution adjusted close equals the current close, so this
+    # safely extends an otherwise lagging adjusted-close array.
+    reg_price=meta.get('regularMarketPrice')
+    reg_time=meta.get('regularMarketTime')
+    if (
+        not before_settlement
+        and isinstance(reg_price,(int,float))
+        and isinstance(reg_time,(int,float))
+    ):
+        reg_date=datetime.fromtimestamp(int(reg_time),ny).date().isoformat()
+        if reg_date <= ny_today:
+            by_date[reg_date]=float(reg_price)
+
+    rows=sorted(by_date.items())
+    if len(rows)<7:
+        raise RuntimeError(f'{symbol} completed-session history too short')
     return rows
 
 def cboe_vix_series():
