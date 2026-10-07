@@ -171,10 +171,32 @@ CATEGORIES = (
 )
 
 
-def request_bytes(url: str, timeout: int = 25) -> bytes:
-    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, "Accept": "*/*"})
-    with urllib.request.urlopen(req, timeout=timeout) as response:
-        return response.read()
+def request_bytes(url: str, timeout: int = 25, attempts: int = 3) -> bytes:
+    """Fetch bytes with bounded retry for transient HTTP/network failures."""
+    last_error: Exception | None = None
+    for attempt in range(1, attempts + 1):
+        req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, "Accept": "*/*"})
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as response:
+                return response.read()
+        except urllib.error.HTTPError as exc:
+            last_error = exc
+            if exc.code not in {429, 500, 502, 503, 504} or attempt >= attempts:
+                raise
+            retry_after = exc.headers.get("Retry-After")
+            try:
+                delay = int(retry_after) if retry_after else 2 ** (attempt - 1)
+            except ValueError:
+                delay = 2 ** (attempt - 1)
+            time.sleep(max(1, min(delay, 10)))
+        except (urllib.error.URLError, socket.timeout, TimeoutError) as exc:
+            last_error = exc
+            if attempt >= attempts:
+                raise
+            time.sleep(min(2 ** (attempt - 1), 8))
+    if last_error:
+        raise last_error
+    raise RuntimeError("request_bytes failed without an exception")
 
 
 def strip_html(value: str) -> str:
