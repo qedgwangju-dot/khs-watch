@@ -223,13 +223,14 @@ def easy_read(s):
         return '지수는 버텨 보여도 동일가중과 여러 업종이 뒤처져, 소수 대형주가 지수를 받치는 장에 가깝습니다.'
     return '좋은 업종과 약한 업종이 섞여 있어, 순환매가 살아 있다고 단정하기도 전면 위험회피라고 보기도 이릅니다.'
 
-def message(s, correction=False, old_date=None):
+def message(s, correction=False, old_date=None, correction_reason=None):
     r=s['returns']; spy=r['S&P500']; rsp=r['동일가중 S&P500']; iwm=r['중소형주']; hyg=r['하이일드 회사채']; vix=r['VIX']
     title='[정정·미국 증시 내부 체력·순환매]' if correction else '[미국 증시 내부 체력·순환매]'
     lines=[f'<b>{title}</b>',f"기준: {s['date']} 미국 정규장 종가",
            f"5거래일 비교구간: {s.get('window',{}).get('5d','확인 불가')} → {s['date']}"]
     if correction:
-        lines += ['', '<b>정정 사유</b>', f"• 직전 {old_date or '당일'} 값은 정규장 진행 중의 부분 일봉이 섞인 값이어서 종가 기준 판정에서 제외했습니다."]
+        reason=correction_reason or f"직전 {old_date or '당일'} 값의 기준 또는 산식이 현재 검증 기준과 달라 재계산했습니다."
+        lines += ['', '<b>정정 사유</b>', f"• {html.escape(reason)}"]
     lines += ['', '<b>한눈에 보기</b>',
            f"• <b>{html.escape(s['verdict'])}</b>",
            f"• S&P 500(SPY): 5거래일 {spy['5d']:+.1f}%",
@@ -247,7 +248,10 @@ def message(s, correction=False, old_date=None):
            '• RSP 또는 IWM 중 하나라도 S&P보다 5거래일 기준 1%포인트 이상 더 약해지면 시장 폭 경고',
            '• HYG가 5거래일 -1% 이하로 밀리고 VIX가 15% 이상 급등',
            '• 11개 업종 중 상승 업종이 4개 이하로 축소', '',
-           '<b>원천</b>', f"{link('SPY',quote_url('SPY'))} · {link('RSP',quote_url('RSP'))} · {link('IWM',quote_url('IWM'))} · {link('HYG',quote_url('HYG'))} · {link('VIX',quote_url('^VIX'))}"]
+           '<b>원천</b>',
+           f"{link('SPY',quote_url('SPY'))} · {link('RSP',quote_url('RSP'))} · {link('IWM',quote_url('IWM'))} · "
+           f"{link('HYG',quote_url('HYG'))} · {link('iShares HYG','https://www.ishares.com/us/products/239565/ishares-iboxx-high-yield-corporate-bond-etf')} · "
+           f"{link('Cboe VIX','https://www.cboe.com/tradable-products/vix/vix-historical-data/')}"]
     return '\n'.join(lines)
 
 def main():
@@ -263,11 +267,19 @@ def main():
     )
     stale_date_correction=bool(old.get('date') and old.get('date') > s['date'])
     correction=stale_date_correction or same_day_method_correction
+    correction_reason=None
+    if same_day_method_correction:
+        correction_reason=(
+            "HYG를 분배금 반영 조정종가 총수익으로 바꾸고, RSP 또는 IWM이 S&P보다 "
+            "5거래일 기준 1%포인트 이상 뒤처질 때 시장 폭 경고가 종합 판정에 반영되도록 재계산했습니다."
+        )
+    elif stale_date_correction:
+        correction_reason=f"직전 {old.get('date')} 값보다 최신 완료 종가 기준일이 뒤로 돌아가 데이터 시점 오류를 정정했습니다."
     shock=(s['returns']['VIX']['5d']>=20 or s['returns']['하이일드 회사채']['5d']<=-2.0)
     old_shock=bool(old.get('shock'))
     should=FORCE or correction or (not first and (changed or (shock and not old_shock)))
     if should:
-        send(message(s, correction=correction, old_date=old.get('date')))
+        send(message(s, correction=correction, old_date=old.get('date'), correction_reason=correction_reason))
     if first or new_day or changed or shock!=old_shock or method_changed:
         save_state({
             'date':s['date'],'window':s.get('window'),'verdict':s['verdict'],'shock':shock,
