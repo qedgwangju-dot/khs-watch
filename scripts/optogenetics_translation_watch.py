@@ -33,7 +33,7 @@ GENSIGHT_NEWS = "https://www.gensight-biologics.com/subject/gs030/"
 RESTORE_VISION_NEWS = "https://restore-vis.com/en/news/2026/"
 AUGELUX_NEWS = "https://www.augeluxtherapeutics.com/en/news/"
 MAPLIGHT_RSS = "https://ir.maplightrx.com/rss/news-releases.xml"
-MAPLIGHT_TRACK_VERSION = 2
+MAPLIGHT_TRACK_VERSION = 3
 MAPLIGHT_INVALID_PLANNED_KEYS = {
     "maplight|ml007|vista-results",
     "maplight|ml007|zephyr2-results",
@@ -538,20 +538,18 @@ def maplight_milestone_keys(title: str, body: str) -> list[str]:
             re.I,
         ):
             add("maplight|ml007|zephyr2-started")
-        if "zephyr-2" in text and re.search(
-            r"announc(?:e|es|ed).{0,40}(?:topline|results)|report(?:s|ed)?.{0,40}(?:topline|results)|"
-            r"(?:topline|phase\s*3) results (?:show|demonstrate|met)|met (?:its )?primary endpoint",
-            text,
-            re.I,
+        if "zephyr-2" in text and (
+            re.search(r"(?:announc(?:e|es|ed)|report(?:s|ed)?|releas(?:e|es|ed)).{0,30}(?:positive )?(?:topline )?results.{0,40}(?:from|for|of).{0,30}zephyr-2", text, re.I)
+            or re.search(r"zephyr-2.{0,100}(?:met|did not meet).{0,30}(?:its )?primary endpoint", text, re.I)
+            or re.search(r"zephyr-2.{0,100}(?:topline )?results (?:show|showed|demonstrate|demonstrated|were)", text, re.I)
         ):
             add("maplight|ml007|zephyr2-results")
         if "vista" in text and re.search(r"enrollment (?:is )?complete|completed enrollment|fully enrolled", text, re.I):
             add("maplight|ml007|vista-enrollment-complete")
-        if "vista" in text and re.search(
-            r"announc(?:e|es|ed).{0,40}(?:topline|results)|report(?:s|ed)?.{0,40}(?:topline|results)|"
-            r"(?:topline|phase\s*2) results (?:show|demonstrate|met)|met (?:its )?primary endpoint",
-            text,
-            re.I,
+        if "vista" in text and (
+            re.search(r"(?:announc(?:e|es|ed)|report(?:s|ed)?|releas(?:e|es|ed)).{0,30}(?:positive )?(?:topline )?results.{0,40}(?:from|for|of).{0,30}vista", text, re.I)
+            or re.search(r"vista.{0,100}(?:met|did not meet).{0,30}(?:its )?primary endpoint", text, re.I)
+            or re.search(r"vista.{0,100}(?:topline )?results (?:show|showed|demonstrate|demonstrated|were)", text, re.I)
         ):
             add("maplight|ml007|vista-results")
         if re.search(r"new drug application|\bnda\b", text, re.I) and re.search(r"submit|submission|filed|accepted|review", text, re.I):
@@ -807,6 +805,10 @@ def self_test() -> None:
     assert "maplight|ml007|vista-results" not in planned_keys
     actual_result = "MapLight announces positive topline results from ZEPHYR-2; the trial met its primary endpoint"
     assert "maplight|ml007|zephyr2-results" in maplight_milestone_keys(actual_result, "")
+    generic_financial = "MapLight reports second quarter financial results. VISTA topline results expected in 2H 2027. ZEPHYR-2 topline results expected in 2028."
+    generic_keys = maplight_milestone_keys("MapLight reports second quarter financial results", generic_financial)
+    assert "maplight|ml007|vista-results" not in generic_keys
+    assert "maplight|ml007|zephyr2-results" not in generic_keys
     nobel_only = "MapLight celebrates Nobel Prize for optogenetics"
     assert maplight_milestone_keys(nobel_only, "") == ["maplight|nobel-optogenetics-bridge"]
     assert not any(x in "2026 nobel prize for optogenetics".lower() for x in ("pdufa", "approval", "phase 3"))
@@ -987,7 +989,7 @@ def main() -> int:
     pending = {
         "initialized": True,
         "version": 1,
-        "source_version": 8,
+        "source_version": 9,
         "ray_official_index_verified": ray_official_index_ok,
         "maplight_track_version": MAPLIGHT_TRACK_VERSION,
         "maplight_health_ok": maplight_health_ok,
