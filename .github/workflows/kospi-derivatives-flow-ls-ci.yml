@@ -2,6 +2,8 @@ name: KOSPI Derivatives Flow CI
 
 on:
   schedule:
+    - cron: "5 9 * * 1-5"
+      timezone: "Asia/Seoul"
     - cron: "10 10 * * 1-5"
       timezone: "Asia/Seoul"
     - cron: "25 12 * * 1-5"
@@ -27,7 +29,7 @@ on:
 
 permissions:
   contents: read
-  actions: read
+  actions: write
 
 concurrency:
   group: kospi-derivatives-flow-ci
@@ -201,9 +203,18 @@ jobs:
               and session["close"] is not None
               and session["open"] <= now <= session["close"]+dt.timedelta(minutes=2)
           )
-          if should_be_live:
-              assert production_jobs, (
-                  f"scheduled live validation found no active production job; active={active}"
+          if should_be_live and not production_jobs:
+              body=json.dumps({"ref":"main","inputs":{"mode":"production"}}).encode("utf-8")
+              req=urllib.request.Request(
+                  f"https://api.github.com/repos/{repo}/actions/workflows/kospi-derivatives-flow-ls-realtime.yml/dispatches",
+                  data=body,
+                  headers={**headers,"Content-Type":"application/json"},
+                  method="POST",
+              )
+              with urllib.request.urlopen(req,timeout=20) as r:
+                  print(f"scheduled_live_recovery_dispatch=true status={r.status}")
+              raise AssertionError(
+                  f"scheduled live validation found no active production job; recovery dispatched; active={active}"
               )
           print(
               f"leader_election_api_valid=true active={[(x[1],x[2]) for x in active]} "
