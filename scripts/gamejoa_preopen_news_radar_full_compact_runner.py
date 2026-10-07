@@ -11224,9 +11224,9 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
     candidates = sorted(
         candidates,
         key=lambda alert: (
-            alert["market_materiality"].get("transmission_scope_rank", 0),
             alert["market_materiality"].get("news_value_rank", 0),
             alert["market_materiality"]["priority"],
+            alert["market_materiality"].get("transmission_scope_rank", 0),
             alert["market_materiality"].get("focus", 0),
             (detail_queue.parse_time(alert.get("published")) or dt.datetime(1970, 1, 1, tzinfo=dt.timezone.utc)).timestamp(),
         ),

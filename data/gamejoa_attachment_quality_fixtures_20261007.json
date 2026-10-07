@@ -1,0 +1,138 @@
+{
+  "fixture_id": "gamejoa_attachment_quality_20261007",
+  "input_file": "붙여넣은 텍스트.txt",
+  "input_count": 15,
+  "source_boundary": "The attachment contains AI-generated Korean summaries and links, not verified full article bodies. This fixture records exhaustive triage and event identity only; it must not be treated as source-body verification.",
+  "stories": [
+    {
+      "id": "amazon_chip_sale_leaseback",
+      "title": "아마존, 11조 규모 엔비디아 AI 칩 '매각 후 재임차' 추진",
+      "url": "https://it.chosun.com/news/articleView.html?idxno=2023092171398",
+      "decision": "send_candidate",
+      "market_path": "AI 인프라 투자부담·자금조달 구조와 엔비디아 칩 수요",
+      "event_key": "amazon_gpu_sale_leaseback"
+    },
+    {
+      "id": "foreign_semiconductor_outflow",
+      "title": "한 달간 20조 매도…삼전닉스 외인 비중 줄어",
+      "url": "http://www.yonhapnewstv.co.kr/news/MYH20261004102545xrL",
+      "decision": "send_candidate",
+      "market_path": "삼성전자·SK하이닉스 대규모 외국인 매도와 보유비중 하락",
+      "event_key": "korean_foreign_semiconductor_flow"
+    },
+    {
+      "id": "samsung_q3_estimate",
+      "title": "삼성전자, 3분기 영업익 첫 100조 기대에도…희비 엇갈린 DS·DX",
+      "url": "https://www.bloter.net/news/articleView.html?idxno=674910",
+      "decision": "send_candidate",
+      "market_path": "3분기 영업이익 컨센서스와 DS·DX 부문별 실적 격차",
+      "event_key": "samsung_q3_earnings_consensus"
+    },
+    {
+      "id": "trump_ai_leadership",
+      "title": "트럼프, AI 수장에 클레이턴 국가정보국장 낙점…WSJ",
+      "url": "https://www.newsis.com/view/NISX20261004_0003813883",
+      "decision": "exclude_current_evidence",
+      "market_path": "인사 보도만으로는 AI 정책 권한·예산·시행 변화가 확인되지 않음",
+      "event_key": "trump_ai_task_force_personnel"
+    },
+    {
+      "id": "smartphone_memory_price_pass_through",
+      "title": "메모리 가격 인상에…구글 ‘픽셀 10a’, 13만원 비싸졌다",
+      "url": "https://zdnet.co.kr/view/?no=20261004105356",
+      "decision": "send_candidate",
+      "market_path": "메모리 원가 상승의 스마트폰 가격 전가와 소비 수요 위험",
+      "event_key": "smartphone_memory_cost_passthrough"
+    },
+    {
+      "id": "tesla_ai_memory_reduction",
+      "title": "머스크, 메모리 부족에 테슬라 AI 칩 용량 줄였다",
+      "url": "https://www.chosun.com/economy/tech_it/2026/10/04/ZROYGHOE55CVPHMNXTAAFVAH24/",
+      "decision": "send_candidate",
+      "market_path": "메모리 부족이 제품 설계·탑재량을 낮춰 공급자 수요를 제약할 가능성",
+      "event_key": "tesla_ai_chip_memory_reduction"
+    },
+    {
+      "id": "custom_hbm_development",
+      "title": "메모리 업계, 고객 맞춤형 HBM 개발 속도",
+      "url": "https://www.newsis.com/view/NISX20261002_0003813060",
+      "decision": "send_candidate",
+      "market_path": "삼성전자·SK하이닉스·마이크론의 고객 맞춤형 HBM 경쟁",
+      "event_key": "custom_hbm_industry_development"
+    },
+    {
+      "id": "q4_memory_price_forecast",
+      "title": "4분기 D램·낸드 가격 두 자릿수 뛴다…AI 열풍에 eSSD 최고 상승폭",
+      "url": "https://www.newsis.com/view/NISX20261002_0003812363",
+      "decision": "send_candidate",
+      "market_path": "4분기 DRAM·NAND 계약가격 및 eSSD 판가 전망",
+      "event_key": "q4_memory_contract_price_forecast"
+    },
+    {
+      "id": "solidigm_ipo_rumor",
+      "title": "‘몸값 200조’ 솔리다임 美상장설…주가 영향 주목",
+      "url": "https://www.joongang.co.kr/article/25467043",
+      "decision": "watch_confirmation",
+      "market_path": "상장설이 사실이면 SK하이닉스 지분가치·자금조달·주주가치에 영향",
+      "event_key": "solidigm_us_listing_rumor"
+    },
+    {
+      "id": "us_ai_sector_flows",
+      "title": "엔비디아·테슬라 차익실현…우주항공·AI인프라주 이동",
+      "url": "https://www.hankyung.com/article/2026100426701",
+      "decision": "send_candidate",
+      "market_path": "미국 성장주 차익실현과 반도체 ETF·우주항공·전력 인프라 자금 이동",
+      "event_key": "us_ai_equity_sector_rotation"
+    },
+    {
+      "id": "defense_startup_funding",
+      "title": "드론·AI가 바꾼 전쟁…세계 방산 스타트업 투자 56% 급증",
+      "url": "https://www.fnnews.com/news/202610051250536510",
+      "decision": "exclude_current_evidence",
+      "market_path": "분야별 투자증가율만으로는 상장사 수주·매출·자금 유입 경로가 특정되지 않음",
+      "event_key": "defense_startup_funding_trend"
+    },
+    {
+      "id": "goldman_samsung_estimate_revision",
+      "title": "골드만삭스, 삼성전자 실적 전망 하향…환율 가정도 조정",
+      "url": "https://www.mk.co.kr/article/12170097",
+      "decision": "send_candidate",
+      "market_path": "원·달러 가정 1460원에서 1418원, 영업이익 추정 114조원에서 105.5조원으로 변경",
+      "event_key": "goldman_samsung_q3_estimate_revision"
+    },
+    {
+      "id": "musk_tsmc_terrafab",
+      "title": "머스크의 테라팹·TSMC 회동, 인텔에 악재일 수 있다는 분석",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOdVlMZWlRNHI2cVp2RGJEZUd5WXJaYTQzbEZ1Rkh2MDZvbktBWmswcTFGa0lVc2IzOHRLX3NETXNycGFEYXlocmdWYzVUTWk0VjhHbHZZWWtpYmI2TUc5Zk44V29nZmNCV3lsclk5MENNNHVKbHN4ZVhLZ0h6dWNHZUE0bE9pUmFiaDB1dGJLdExvV21sZzhVbWJRYzdSb1NYYTRwRTJITGhaN2laVXRhQUtNcHZWYVU?oc=5",
+      "decision": "watch_confirmation",
+      "market_path": "테라팹 구상·TSMC 회동의 실체와 TSMC·Intel 공급망 영향 확인 필요",
+      "event_key": "musk_terrafab_tsmc_meeting"
+    },
+    {
+      "id": "korean_retail_memory_rotation",
+      "title": "개미 돌아오나…하닉·마이크론 다시 사들이고 엔비디아 매도",
+      "url": "https://www.mk.co.kr/article/12170698",
+      "decision": "send_candidate",
+      "market_path": "한국 개인투자자의 메모리주 매수·엔비디아 매도 수급 변화",
+      "event_key": "korean_retail_semiconductor_rotation"
+    },
+    {
+      "id": "amd_samsung_partnership_signal",
+      "title": "AMD 리사 수, 삼성과 더 폭넓은 파트너십 언급",
+      "url": "https://www.news1.kr/industry/general-industry/6313401",
+      "decision": "watch_confirmation",
+      "market_path": "AMD CEO 발언은 협력 신호이나 HBM4 공급계약·물량·일정은 미확정",
+      "event_key": "amd_samsung_hbm_partnership_signal"
+    }
+  ],
+  "must_remain_distinct": [
+    ["foreign_semiconductor_outflow", "korean_retail_memory_rotation"],
+    ["samsung_q3_estimate", "goldman_samsung_estimate_revision"],
+    ["smartphone_memory_price_pass_through", "q4_memory_price_forecast"],
+    ["tesla_ai_memory_reduction", "q4_memory_price_forecast"],
+    ["custom_hbm_development", "amd_samsung_partnership_signal"],
+    ["q4_memory_price_forecast", "solidigm_ipo_rumor"],
+    ["amazon_chip_sale_leaseback", "solidigm_ipo_rumor"],
+    ["us_ai_sector_flows", "korean_retail_memory_rotation"]
+  ]
+}

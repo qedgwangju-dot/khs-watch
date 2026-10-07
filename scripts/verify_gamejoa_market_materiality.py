@@ -17,6 +17,10 @@ import gamejoa_preopen_news_radar_fda_quality_runner as production
 
 radar = production.runner
 NOW = dt.datetime(2026, 10, 1, 22, 0, tzinfo=dt.timezone(dt.timedelta(hours=9)))
+ATTACHMENT_FIXTURE = json.loads(
+    (Path(__file__).resolve().parent.parent / "data/gamejoa_attachment_quality_fixtures_20261007.json")
+    .read_text(encoding="utf-8")
+)
 KEEP = (
     ("식품기업, 미국 김밥 매출 59% 증가", "식품기업은 미국 김밥의 1∼7월 매출이 전년비 59% 증가했다고 밝혔다."),
     ("전자기업, 신제품 공개…분기 가이던스 상향", "전자기업은 분기 매출 가이던스를 12% 상향했다고 발표했다."),
@@ -3099,6 +3103,90 @@ class ForegroundAndEventIdentityTests(unittest.TestCase):
             old_title, "SK하이닉스, 중국 충칭 공장 지분 매각 완료",
             old_fact, "SK하이닉스가 중국 충칭 공장 지분 매각을 완료했다.",
         ))
+
+    def test_october_four_attachment_is_exhaustively_triaged_without_claiming_body_verification(self):
+        stories = ATTACHMENT_FIXTURE["stories"]
+        self.assertEqual(len(stories), ATTACHMENT_FIXTURE["input_count"])
+        self.assertEqual(len({story["id"] for story in stories}), 15)
+        self.assertEqual(len({story["url"] for story in stories}), 15)
+        counts = {
+            decision: sum(story["decision"] == decision for story in stories)
+            for decision in {story["decision"] for story in stories}
+        }
+        self.assertEqual(counts, {
+            "send_candidate": 10,
+            "watch_confirmation": 3,
+            "exclude_current_evidence": 2,
+        })
+        self.assertIn("not verified full article bodies", ATTACHMENT_FIXTURE["source_boundary"])
+        for story in stories:
+            with self.subTest(story=story["id"]):
+                self.assertTrue(story["url"].startswith(("https://", "http://")))
+                self.assertTrue(story["market_path"])
+                self.assertTrue(story["event_key"])
+
+    def test_attachment_market_events_are_not_fuzzy_merged_just_for_sharing_a_theme(self):
+        stories = {story["id"]: story for story in ATTACHMENT_FIXTURE["stories"]}
+        for left_id, right_id in ATTACHMENT_FIXTURE["must_remain_distinct"]:
+            left, right = stories[left_id], stories[right_id]
+            with self.subTest(left=left_id, right=right_id):
+                self.assertFalse(materiality.same_headline_event(
+                    left["title"], right["title"], left["market_path"], right["market_path"],
+                ))
+
+    def test_attachment_cross_source_duplicates_allow_rounded_or_converted_headline_amounts(self):
+        duplicate_pairs = (
+            (
+                "아마존, 엔비디아 AI칩 80억달러 매각 후 재임차 추진",
+                "아마존, 11조원 규모 엔비디아 칩 매각·재임차 검토",
+                "아마존이 80억달러 규모의 엔비디아 AI 칩을 외부 투자자에게 매각한 뒤 재임차를 추진한다.",
+                "아마존이 약 11조원 규모 엔비디아 AI 칩 매각 후 재임차를 검토한다.",
+            ),
+            (
+                "외국인, 삼성전자·SK하이닉스 한 달간 17조1960억원 순매도",
+                "외국인, 삼전닉스 한 달간 20조 매도…보유비중 하락",
+                "최근 한 달간 외국인은 삼성전자 12조90억원, SK하이닉스 5조1860억원을 팔아 합계 17조1960억원을 순매도했다.",
+                "외국인이 한 달간 삼성전자와 SK하이닉스에서 약 20조원을 순매도해 보유비중이 줄었다.",
+            ),
+        )
+        for title_a, title_b, fact_a, fact_b in duplicate_pairs:
+            with self.subTest(title=title_a):
+                self.assertTrue(materiality.same_headline_event(title_a, title_b, fact_a, fact_b))
+
+        self.assertFalse(materiality.same_headline_event(
+            "기업, 3조원 규모 공장 투자 검토",
+            "기업, 4조원 규모 공장 투자 검토",
+            "회사는 3조원 공장 투자를 검토한다.",
+            "회사는 4조원 공장 투자를 검토한다.",
+        ))
+        self.assertFalse(materiality.same_headline_event(
+            "기업, 100억원 규모 공장 투자 검토",
+            "기업, 120억원 규모 공장 투자 검토",
+            "회사는 100억원 공장 투자를 검토한다.",
+            "회사는 120억원 공장 투자를 검토한다.",
+        ))
+
+    def test_quantified_foreign_flow_receives_top_market_value_rank(self):
+        title = "한 달간 20조 매도…삼전닉스 외인 비중 줄어"
+        body = (
+            "최근 한 달간 외국인 투자자들이 삼성전자 12조 90억원, SK하이닉스 5조 1860억원을 순매도했다. "
+            "지난 2일 기준 외국인 보유 비중은 SK하이닉스 49.76%, 삼성전자 46.41%로 감소했다."
+        )
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["disposition"], "keep", audit)
+        self.assertEqual(audit["news_value_rank"], 4, audit)
+        self.assertIn("market_price_or_flow", {item["kind"] for item in audit["evidence"]})
+
+    def test_quantified_company_earnings_rank_above_unquantified_market_commentary(self):
+        earnings_title = "삼성전자 3분기 영업이익 108조원 전망…컨센서스 상향"
+        earnings_body = "증권사 컨센서스에 따르면 삼성전자 3분기 영업이익은 108조원으로 전망된다."
+        breadth_title = "뉴욕증시, 기술주 강세에 위험선호 확산"
+        breadth_body = "대형 기술주에 매수세가 몰리며 시장 전반의 투자심리가 개선됐다는 분석이 나왔다."
+        earnings, breadth = alert(earnings_title, earnings_body), alert(breadth_title, breadth_body)
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            selected = radar.quality_display_alerts([breadth, earnings], 1)
+        self.assertEqual(len(selected), 1, (earnings.get("_exclusion_reason"), breadth.get("_exclusion_reason")))
+        self.assertEqual(selected[0]["source_title"], earnings_title)
 
     def test_same_day_batch_sends_one_cross_publisher_version_of_the_same_flow(self):
         first = alert(
