@@ -128,7 +128,14 @@ def _truth_social_rows():
 
 def google_news(query):
     if query == TRUTH_SENTINEL:
-        return _truth_social_rows()
+        rows, err = _truth_social_rows()
+        if err:
+            fallback_rows, fallback_err = _prev_google_news(
+                'Trump Truth Social Ukraine Russia energy facilities ceasefire agreement when:12h'
+            )
+            if fallback_err is None:
+                return fallback_rows, None
+        return rows, err
     return _prev_google_news(query)
 
 watch.google_news = google_news
