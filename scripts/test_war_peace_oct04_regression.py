@@ -660,4 +660,16 @@ check("oct07-saudi-oct06-signature-day2", mod._saudi_oct06_attack_signature(saud
 check("oct07-saudi-cross-date-same-id", mod.item_id(saudi_day1) == mod.item_id(saudi_day2))
 
 
+
+# 20) 국내 재게시에서 '아덴' 지명이 제목에서 빠져도 동일 공항 공격으로 묶는다.
+aden_alias = row(
+    "착륙 직전 여객기 긴급 회항…후티, 예멘 핵심공항 공습",
+    source="전남일보",
+    description="후티가 예멘 핵심공항을 공격해 카이로발 여객기가 착륙 직전 긴급 회항했다.",
+    link="https://www.jnilbo.com/news/articleView.html?idxno=90000071713",
+)
+check("oct07-aden-alias-detected", mod._aden_airport_attack_cluster(aden_alias))
+check("oct07-aden-alias-same-id", mod.item_id(aden_alias) == mod.item_id(aden_yonhap))
+check("oct07-aden-alias-topic", mod.topic_label(aden_alias) == "예멘·후티 · 아덴 국제공항 공격")
+
 print("WAR_PEACE_OCT04_REGRESSION_OK")
