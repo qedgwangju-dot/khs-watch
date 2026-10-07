@@ -634,6 +634,8 @@ def marks(row):
         out.append("종전전망성발언")
     if _conditional_military_threat(row):
         out.append("조건부군사위협")
+    if _statement_only_no_action(row):
+        out.append("발언단독행동미확인")
     if _saudi_riyadh_intercept_vs_claim(row):
         out.append("사우디리야드후티미사일요격확인")
     if _saudi_houthi_airport_refinery_cluster(row):
@@ -766,6 +768,7 @@ def score_item(row, now):
         return 0, []
     if (
         _trump_la_sd_hypothetical(row)
+        or _recycled_iran_full_scale_war_rhetoric(row)
         or _stale_mokha_capture_only(row)
         or _tass_turkmenistan_visit_noise(row)
         or _south_korea_russia_fuel_background(row)
@@ -778,7 +781,7 @@ def score_item(row, now):
         "러정유시설보복공격확대예고", "리야드아람코화재원인미확정",
         "러시아종전조건입장표명", "루코일종전협상연계상업거래",
         "이스라엘10월7일해외공격위험경고", "이란남부폭발원인미확정",
-        "종전전망성발언", "조건부군사위협",
+        "종전전망성발언", "조건부군사위협", "발언단독행동미확인",
     }
     if ms & yellow:
         tags = [t for t in tags if t not in ("확전", "휴전·평화", "재건", "종전·협상")]
@@ -819,6 +822,11 @@ def score_item(row, now):
         tags = [t for t in tags if t not in ("확전", "휴전·평화", "재건", "종전·협상")]
         tags += ["군사위협", "조건부발언", "실제공격아님"]
         score = max(score, 98)
+    if "발언단독행동미확인" in ms:
+        row["signals_ko"] = []
+        tags = [t for t in tags if t not in ("확전", "휴전·평화", "재건", "종전·협상")]
+        tags += ["발언단독", "실제행동미확인"]
+        score = max(score, 92)
     if "사우디리야드후티미사일요격확인" in ms:
         row["title_ko"] = korean_title(ms)
         row["signals_ko"] = []
@@ -972,6 +980,8 @@ def topic_label(row):
         return "전쟁·외교 · 종전 전망성 발언"
     if "조건부군사위협" in ms:
         return "이란 · 조건부 선제공격 경고"
+    if "발언단독행동미확인" in ms:
+        return "전쟁·외교 · 발언 단독"
     if "사우디리야드후티미사일요격확인" in ms:
         return "사우디·후티 · 리야드 미사일 요격"
     if "예멘아덴공항후티공격클러스터" in ms:
@@ -1011,6 +1021,8 @@ def final_color(row):
     if "종전전망성발언" in ms:
         return "yellow"
     if "조건부군사위협" in ms:
+        return "yellow"
+    if "발언단독행동미확인" in ms:
         return "yellow"
     if ms & {
         "러정유시설보복공격확대예고", "리야드아람코화재원인미확정",
