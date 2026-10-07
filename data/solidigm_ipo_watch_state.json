@@ -1,31 +1,55 @@
 {
-  "watch_version": 3,
+  "watch_version": 4,
   "topic": "Solidigm IPO + eSSD manufacturing",
   "baseline_as_of": "2026-09-25",
   "current_state": {
-    "stage": "bank_bakeoff",
+    "stage": "underwriters_selected",
     "target_year": 2027,
-    "valuation_max_usd": 150000000000,
-    "raise_target_usd": 15000000000,
+    "valuation_max_usd": 100000000000.0,
+    "raise_target_usd": 10000000000.0,
     "evidence_state": "top_tier_report",
-    "source_url": "https://www.reuters.com/world/sk-hynixs-solidigm-weighs-ipo-that-could-value-the-unit-up-150-billion-sources-2026-09-25/",
-    "source_name": "Reuters",
-    "source_published_at_kst": "2026-09-27T16:00:00+09:00",
-    "underwriters": [],
+    "source_url": "https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=02407526645610952",
+    "source_name": "Bloomberg 보도(이데일리·연합뉴스·Investing.com 재인용)",
+    "source_published_at_kst": "2026-10-08T07:48:01+09:00",
+    "underwriters": [
+      "Citigroup",
+      "Goldman Sachs",
+      "JPMorgan Chase",
+      "Morgan Stanley",
+      "UBS"
+    ],
     "primary_secondary_mix": "primary_included",
     "parent_post_ipo_stake_pct": null,
     "use_of_proceeds": [],
     "us_fab_link": "considering",
-    "pre_ipo_raise_usd": 3600000000
+    "pre_ipo_raise_usd": 3600000000,
+    "lead_underwriters": [
+      "Goldman Sachs",
+      "Morgan Stanley"
+    ],
+    "other_syndicate_banks": [
+      "JPMorgan Chase",
+      "Citigroup",
+      "UBS"
+    ],
+    "reported_original": "Bloomberg",
+    "independent_origin_count": 1,
+    "ipo_officially_confirmed": false,
+    "underwriter_officially_confirmed": false,
+    "user_original_url": "https://www.yna.co.kr/view/AKR20261008022500009",
+    "crosscheck_url": "https://www.investing.com/news/stock-market-news/solidigm-selects-lead-banks-for-blockbuster-us-ipo-bloomberg-reports-4937618"
   },
-  "last_checked_at_kst": "2026-10-08T07:36:27+09:00",
-  "last_alert_at_kst": "2026-10-03T21:03:21+09:00",
+  "last_checked_at_kst": "2026-10-08T08:21:40+09:00",
+  "last_alert_at_kst": "2026-10-08T08:21:40+09:00",
   "last_alert_reasons": [
-    "조달 규모 -70.0%"
+    "상장 단계 주관사 선정 경쟁(피치 미팅)→대표주관사·주관단 선정",
+    "기업가치 -33.3%",
+    "조달 규모 -33.3%",
+    "대표주관사·주관단 확인"
   ],
   "delivery_check": {
-    "checked_at_kst": "2026-10-08T07:36:34+09:00",
-    "status": "no_message_due"
+    "checked_at_kst": "2026-10-08T08:21:59+09:00",
+    "status": "confirmed"
   },
   "false_positive_audit": {
     "message_id": 149,
@@ -33,23 +57,23 @@
     "cause": "secondary-page text contamination and lower-tier evidence overwrite",
     "corrected": true
   },
-  "last_successful_delivery_kst": "2026-10-03T21:06:56+09:00",
+  "last_successful_delivery_kst": "2026-10-08T08:21:59+09:00",
   "telegram_message_ids": [
-    225
+    259
   ],
-  "telegram_message_id": 225,
+  "telegram_message_id": 259,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      225
+      259
     ],
-    "confirmed_at_kst": "2026-10-03T21:06:56+09:00",
-    "payload_hash": "870474638e03e25167a9e444352d7950dfff0ef36efd70fca65a2256b04909eb"
+    "confirmed_at_kst": "2026-10-08T08:21:59+09:00",
+    "payload_hash": "7861a088233d5968683d6b322ccd5189dbb64cbd90aff49cc99f86cb8350e0b0"
   },
-  "last_evidence_url": "https://www.reuters.com/world/sk-hynixs-solidigm-weighs-ipo-that-could-value-the-unit-up-150-billion-sources-2026-09-25/",
-  "last_evidence_published_at_kst": "2026-09-27T16:00:00+09:00",
+  "last_evidence_url": "https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=02407526645610952",
+  "last_evidence_published_at_kst": "2026-10-08T07:48:01+09:00",
   "historical_context": {
     "pre_ipo_raise_usd": 3600000000,
     "note": "별도 선행 보도에서 검토된 Pre-IPO 규모. 현재 IPO 본공모 조달액과 합산하지 않음."
@@ -66,6 +90,8 @@
     "reported_manufacturing_model": "ODM",
     "reported_ship_start_month": "2026-12",
     "reported_quality_standard_unchanged": true,
+    "quality_issue_status": "not_reported",
+    "customer_qualification_stage": "not_reported",
     "reported_existing_odm_partners": [
       "PTI",
       "Pegatron"
@@ -80,132 +106,6 @@
     "secondary_reported_source_url": "https://en.sedaily.com/finance/2026/10/05/solidigm-to-expand-ssd-production-sites-in-taiwan",
     "pti_official_source_url": "https://www.pti.com.tw/Handlers/ConferenceDownload.ashx?col=briefing&id=1ddf8d0a-0ca9-4271-ad0e-71812b1beadb&lang=en",
     "as_of": "2026-10-05",
-    "note": "Solidigm 공식 DMS는 PCN 0000048112-00과 'all Solidigm Datacenter SSDs' 대상 추가 제조거점을 확인. 대만·ODM·12월 출하·Pegatron은 아주경제/서울경제 보도 단계. PTI는 과거 PTI 공식 IR에서 Solidigm 파트너 관계가 확인됨. 신규 거점의 생산능력 수치는 미공개이며 NAND 웨이퍼 팹 증설로 해석하지 않음.",
-    "quality_issue_status": "not_reported",
-    "customer_qualification_stage": "not_reported"
-  },
-  "_delivery": {
-    "id": "aef53349071cd4d9c58b40d4e0c42366bb106338fcf081ed663194c6bd79ac19",
-    "status": "partial",
-    "created_at_kst": "2026-10-08T08:21:55+09:00",
-    "chunks": [
-      "🚨 <b>Solidigm IPO 상태 변화</b>\n━━━━━━━━━━━━━━━━\n• 현재 단계: <b>대표주관사·주관단 선정</b>\n• 확인 수준: <b>Reuters 복수 관계자 보도 단계</b>\n• 목표 시점: <b>이르면 2027년</b>\n• 거론 기업가치: <b>최대 1,000억달러(약 133조8,690억원)</b>\n• 조달 가능 규모: <b>100억달러(약 13조3,869억원)</b>\n• Pre-IPO 별도 검토액: 36억달러(약 4조8,193억원)\n• 주관사: Citigroup, Goldman Sachs, JPMorgan Chase, Morgan Stanley, UBS\n• 공모 구조: 신주 포함\n• 이번 변화: <b>상장 단계 주관사 선정 경쟁(피치 미팅)→대표주관사·주관단 선정 · 기업가치 -33.3% · 조달 규모 -33.3% · 대표주관사·주관단 확인</b>\n• 다음 확인: 대표주관사 선정 · SEC 비공개/공개 신고 · 공모가 밴드 · 신주/구주 비중 · SK하이닉스 잔여지분 · 자금용도\n• 근거: Bloomberg 보도(이데일리·연합뉴스·Investing.com 재인용) · <a href=\"https://www.edaily.co.kr/News/Read?mediaCodeNo=257&amp;newsId=02407526645610952\">원문</a>\n• 주의: 기업가치·조달액·일정은 현재 확정값이 아니라 보도 단계이며 시장 상황에 따라 변경될 수 있습니다.\n• 환율: 2026-10-07 일일 기준 · ECB/Frankfurter · 조회 2026-10-08 08:21 KST · 보조 API 2026-10-07 · 차이 0.02% · 일중 기준시각 차이 가능\n• 조회: 2026-10-08 08:21 KST"
-    ],
-    "next_chunk": 1,
-    "message_ids": [
-      259
-    ],
-    "candidate": {
-      "watch_version": 4,
-      "topic": "Solidigm IPO + eSSD manufacturing",
-      "baseline_as_of": "2026-09-25",
-      "current_state": {
-        "stage": "underwriters_selected",
-        "target_year": 2027,
-        "valuation_max_usd": 100000000000.0,
-        "raise_target_usd": 10000000000.0,
-        "evidence_state": "top_tier_report",
-        "source_url": "https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=02407526645610952",
-        "source_name": "Bloomberg 보도(이데일리·연합뉴스·Investing.com 재인용)",
-        "source_published_at_kst": "2026-10-08T07:48:01+09:00",
-        "underwriters": [
-          "Citigroup",
-          "Goldman Sachs",
-          "JPMorgan Chase",
-          "Morgan Stanley",
-          "UBS"
-        ],
-        "primary_secondary_mix": "primary_included",
-        "parent_post_ipo_stake_pct": null,
-        "use_of_proceeds": [],
-        "us_fab_link": "considering",
-        "pre_ipo_raise_usd": 3600000000,
-        "lead_underwriters": [
-          "Goldman Sachs",
-          "Morgan Stanley"
-        ],
-        "other_syndicate_banks": [
-          "JPMorgan Chase",
-          "Citigroup",
-          "UBS"
-        ],
-        "reported_original": "Bloomberg",
-        "independent_origin_count": 1,
-        "ipo_officially_confirmed": false,
-        "underwriter_officially_confirmed": false,
-        "user_original_url": "https://www.yna.co.kr/view/AKR20261008022500009",
-        "crosscheck_url": "https://www.investing.com/news/stock-market-news/solidigm-selects-lead-banks-for-blockbuster-us-ipo-bloomberg-reports-4937618"
-      },
-      "last_checked_at_kst": "2026-10-08T08:21:40+09:00",
-      "last_alert_at_kst": "2026-10-08T08:21:40+09:00",
-      "last_alert_reasons": [
-        "상장 단계 주관사 선정 경쟁(피치 미팅)→대표주관사·주관단 선정",
-        "기업가치 -33.3%",
-        "조달 규모 -33.3%",
-        "대표주관사·주관단 확인"
-      ],
-      "delivery_check": {
-        "checked_at_kst": "2026-10-08T07:36:34+09:00",
-        "status": "no_message_due"
-      },
-      "false_positive_audit": {
-        "message_id": 149,
-        "observed_stage": "postponed",
-        "cause": "secondary-page text contamination and lower-tier evidence overwrite",
-        "corrected": true
-      },
-      "last_successful_delivery_kst": "2026-10-03T21:06:56+09:00",
-      "telegram_message_ids": [
-        225
-      ],
-      "telegram_message_id": 225,
-      "bot_username": "khs88798879887988798879_bot",
-      "delivery_receipt": {
-        "status": "confirmed",
-        "bot_username": "khs88798879887988798879_bot",
-        "message_ids": [
-          225
-        ],
-        "confirmed_at_kst": "2026-10-03T21:06:56+09:00",
-        "payload_hash": "870474638e03e25167a9e444352d7950dfff0ef36efd70fca65a2256b04909eb"
-      },
-      "last_evidence_url": "https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=02407526645610952",
-      "last_evidence_published_at_kst": "2026-10-08T07:48:01+09:00",
-      "historical_context": {
-        "pre_ipo_raise_usd": 3600000000,
-        "note": "별도 선행 보도에서 검토된 Pre-IPO 규모. 현재 IPO 본공모 조달액과 합산하지 않음."
-      },
-      "manufacturing_state": {
-        "stage": "pcn_announced",
-        "pcn_number": "0000048112-00",
-        "pcn_publish_date": "2026-09-25",
-        "pcn_change_title": "Additional Manufacturing Site for all Solidigm Datacenter SSDs",
-        "official_pcn_verified": true,
-        "affected_scope": "all_solidigm_datacenter_ssds",
-        "manufacturing_scope": "ssd_manufacturing_not_nand_wafer_fab",
-        "reported_site_country": "Taiwan",
-        "reported_manufacturing_model": "ODM",
-        "reported_ship_start_month": "2026-12",
-        "reported_quality_standard_unchanged": true,
-        "quality_issue_status": "not_reported",
-        "customer_qualification_stage": "not_reported",
-        "reported_existing_odm_partners": [
-          "PTI",
-          "Pegatron"
-        ],
-        "pti_partnership_officially_supported": true,
-        "pegatron_partnership_evidence": "reported",
-        "confirmed_direct_server_customers": [],
-        "capacity_units_per_month": null,
-        "capacity_eb_per_year": null,
-        "official_source_url": "https://www.solidigm.com/products/document-management-system.html",
-        "reported_source_url": "https://www.ajunews.com/view/20261005160404868",
-        "secondary_reported_source_url": "https://en.sedaily.com/finance/2026/10/05/solidigm-to-expand-ssd-production-sites-in-taiwan",
-        "pti_official_source_url": "https://www.pti.com.tw/Handlers/ConferenceDownload.ashx?col=briefing&id=1ddf8d0a-0ca9-4271-ad0e-71812b1beadb&lang=en",
-        "as_of": "2026-10-05",
-        "note": "Solidigm 공식 DMS는 PCN 0000048112-00과 'all Solidigm Datacenter SSDs' 대상 추가 제조거점을 확인. 대만·ODM·12월 출하·Pegatron은 아주경제/서울경제 보도 단계. PTI는 과거 PTI 공식 IR에서 Solidigm 파트너 관계가 확인됨. 신규 거점의 생산능력 수치는 미공개이며 NAND 웨이퍼 팹 증설로 해석하지 않음."
-      }
-    },
-    "attempt_at_kst": "2026-10-08T08:21:56+09:00"
+    "note": "Solidigm 공식 DMS는 PCN 0000048112-00과 'all Solidigm Datacenter SSDs' 대상 추가 제조거점을 확인. 대만·ODM·12월 출하·Pegatron은 아주경제/서울경제 보도 단계. PTI는 과거 PTI 공식 IR에서 Solidigm 파트너 관계가 확인됨. 신규 거점의 생산능력 수치는 미공개이며 NAND 웨이퍼 팹 증설로 해석하지 않음."
   }
 }
