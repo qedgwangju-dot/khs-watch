@@ -120,6 +120,7 @@ COMPANIES = {
             'CPO (COUPE OR "advanced packaging" OR "optical engine") (yield OR capacity OR ramp OR production OR bottleneck OR order OR qualification OR shipment)',
             'CPO (testing OR "electro-optical test" OR "electro optical test" OR burn-in OR "high-power module socket" OR "testing throughput") (production OR volume OR capacity OR bottleneck OR standard OR qualification)',
             '("silicon photonics" OR SiPh) (packaging OR "fiber attach" OR FAU OR coupling) (yield OR production OR capacity OR qualification OR reliability OR shipment)',
+            '("CPO" OR "COUPE") ("FAU" OR "fiber array" OR "grating coupling" OR "edge coupling") ("test time" OR "insertion loss" OR "coupling loss" OR "alignment" OR "yield" OR "volume production")',
             '("CPO" OR "co-packaged optics" OR "silicon photonics" OR SiPh OR COUPE) ("package substrate" OR "packaging substrate" OR "packaged substrate" OR "substrate-level multi-chip" OR interposer OR "glass substrate" OR "glass interposer" OR "ABF substrate" OR "organic substrate") (customer OR "design win" OR qualification OR production OR shipment OR order OR capacity OR yield OR warpage OR thermal OR "insertion loss" OR "low loss" OR CTE OR bottleneck)',
         ],
     },
@@ -220,6 +221,27 @@ COMPANIES = {
         "aliases": ["Samsung Electronics", "Samsung Foundry"],
         "query": '"Samsung Foundry" ("silicon photonics" OR SiPh OR PIC OR "optical module" OR "optical engine" OR CPO OR NPO OR "photonics foundry" OR "design win" OR "mass production")',
     },
+    "OCS Optical Circuit Switching": {
+        "ticker": "OCS 광회로",
+        "aliases": ["Optical Circuit Switching", "OCS", "Lumentum", "iPronics", "Lumotive", "nEye", "POLATIS", "HUBER+SUHNER"],
+        "queries": [
+            '("optical circuit switch" OR "optical circuit switching") (NVIDIA OR GPU OR hyperscaler) (deployed OR deployment OR purchase OR order OR contract OR customer OR shipment OR "production")',
+            '("optical circuit switching" OR "OCS switch") (Lumentum OR "iPronics" OR "Lumotive" OR "nEye" OR "Polatis" OR "Google") (order OR qualification OR shipped OR deployment OR interop OR standard OR production)',
+            '("OCP" OR "Open Compute Project") ("optical circuit switching" OR "OCS") ("specification" OR "interoperability" OR "standard" OR "approved" OR "adopted" OR "NVIDIA")',
+        ],
+    },
+    "Huawei OPEN NPO": {
+        "ticker": "NPO 표준",
+        "aliases": ["Huawei", "OPEN NPO", "华为", "近封装光学"],
+        "queries": [
+            '("Huawei" OR "OPEN NPO") ("near-packaged optics" OR "NPO") (MSA OR standard OR interop OR specification OR customer OR order OR production OR shipment OR adoption)',
+            '("华为" OR "OPEN NPO") ("近封装光学" OR "NPO") ("协议" OR "标准" OR "互操作" OR "认证" OR "量产" OR "订单" OR "交付" OR "客户")',
+        ],
+        "locales": [
+            {"hl": "zh-CN", "gl": "CN", "ceid": "CN:zh-Hans"},
+            {"hl": "en-US", "gl": "US", "ceid": "US:en"},
+        ],
+    },
     "CPO Equipment Supply Chain": {
         "ticker": "장비 공급망",
         "aliases": [
@@ -242,6 +264,7 @@ COMPANIES = {
             '"TOYO Automation" CPO optical coupling',
             'ficonTEC CPO optical coupling alignment',
             '"Suruga Seiki" CPO optical coupling',
+            '("FAU" OR "fiber array unit") ("ficonTEC" OR "Suruga" OR "TOYO" OR "GMT Global" OR "Allring" OR "FitTech") (order OR shipment OR production OR equipment OR "test time" OR throughput)',
         ],
         "locales": [
             {"hl": "zh-TW", "gl": "TW", "ceid": "TW:zh-Hant"},
@@ -278,6 +301,8 @@ DISPLAY_NAMES_KO = {
     "Corning": "코닝",
     "Samsung Electronics": "삼성전자",
     "CPO Equipment Supply Chain": "CPO 장비 공급망",
+    "OCS Optical Circuit Switching": "광회로 스위칭(OCS)",
+    "Huawei OPEN NPO": "화웨이 OPEN NPO",
 }
 
 TRUSTED_SOURCES = {
@@ -297,6 +322,8 @@ TRUSTED_SOURCES = {
     "U.S. Senate", "Congress.gov", "Astera Labs", "Corning",
     "TrendForce", "MoneyDJ", "Economic Daily News", "UDN", "經濟日報",
     "GMT GLOBAL INC.", "TOYO Automation", "Chieftek Precision",
+    "Open Compute Project", "OCP", "iPronics", "Lumotive", "nEye",
+    "HUBER+SUHNER", "POLATIS", "Huawei", "华为", "Open AI Infra",
 }
 
 HIGH_SIGNAL_PATTERNS = [
@@ -350,6 +377,8 @@ HIGH_SIGNAL_PATTERNS = [
     r"\bFAU\b", r"\bOSAT\b", r"order visibility", r"delivery visibility",
     r"production capacity", r"\bCAPA\b", r"new lines?", r"assembly lines?",
     r"factory expansion", r"capacity doubles?", r"utilization", r"qualification",
+    r"optical circuit switch(?:ing)?", r"\bOCS\b",
+    r"\bOPEN NPO\b", r"near[- ]packaged optics", r"近封装光学", r"光电路交换",
     r"validation", r"verification", r"ahead[- ]of[- ]time orders?",
 ]
 
@@ -380,6 +409,8 @@ ACTION_PATTERNS = [
     r"정정", r"샘플", r"samples?", r"sampling", r"고객.{0,12}(검증|평가|인증)", r"양산", r"출하", r"생산능력", r"증설",
     r"訂單", r"能見度", r"出貨", r"量產", r"擴產", r"產能", r"產能利用率",
     r"驗證", r"認證", r"導入", r"光耦合", r"對位", r"線性馬達", r"六軸",
+    r"interoperability", r"ratif(?:ied|ication)", r"specification",
+    r"互操作", r"协议", r"标准", r"量产", r"交付", r"客户",
 ]
 
 NOISE_PATTERNS = [
@@ -413,6 +444,9 @@ SOURCE_PRIORITY = {
     "The Wall Street Journal": 93, "CNBC": 88, "DigiTimes": 85, "DIGITIMES": 85,
     "GlobeNewswire": 84, "PR Newswire": 82,
     "TrendForce": 92, "GMT GLOBAL INC.": 100, "TOYO Automation": 100,
+    "Open Compute Project": 100, "OCP": 100, "iPronics": 100,
+    "Lumotive": 100, "nEye": 100, "POLATIS": 100, "HUBER+SUHNER": 100,
+    "Huawei": 100, "华为": 100, "Open AI Infra": 100,
     "Chieftek Precision": 100, "Economic Daily News": 82, "UDN": 82,
     "經濟日報": 82, "MoneyDJ": 78,
     "HPCwire": 70, "Compound Semiconductor": 70, "Investing.com": 65,
@@ -633,6 +667,10 @@ def canonical_story_key(company: str, title: str) -> str | None:
         if re.search(r"customer|design win|qualification|validation|milestone", text, re.I):
             return "marvell|celestial|customer-validation"
 
+    structure_key = structural_story_key(company, title)
+    if structure_key:
+        return structure_key
+
     if company == "US Optical Policy":
         if re.search(r"senate|congress|bill|legislation|national security systems?", text, re.I):
             if re.search(r"signed|enacted|becomes? law", text, re.I):
@@ -682,6 +720,160 @@ def canonical_story_key(company: str, title: str) -> str | None:
             return "coherent|photonlink|commercial-ramp"
         return "coherent|photonlink|launch"
     return None
+
+
+# CPO packaging / OCS switching / NPO connector placement are three different
+# architectures. A common optical keyword is not proof of the same customer or PO.
+NEW_STRUCTURE_AXES = {"OCS Optical Circuit Switching", "Huawei OPEN NPO"}
+OCS_PRIMARY_SOURCES = {
+    "Open Compute Project", "OCP", "NVIDIA Newsroom", "NVIDIA Blog",
+    "NVIDIA", "Lumentum", "iPronics", "Lumotive", "nEye", "HUBER+SUHNER",
+    "POLATIS", "Google", "Google Cloud", "Microsoft",
+}
+NPO_PRIMARY_SOURCES = {"Huawei", "华为", "Open AI Infra", "Global Computing Consortium"}
+STRUCTURAL_OPTICS_VERSION = 1
+
+# Only true new milestones may alert. Historical 2025 OCS OCP membership and
+# July-2026 NPO MSA launch become baseline. Roadmap numbers are not shipments.
+KNOWN_NEW_STRUCTURE_KEYS = {
+    "ocs|ocp|founding-2025",
+    "huawei|open-npo|msa-initial-2026-07",
+}
+
+
+def meaningful_fau_milestone(title: str) -> bool:
+    text = html.unescape(title or "")
+    if not re.search(r"\bFAU\b|fiber[- ]array|光纖陣列|光纤阵列", text, re.I):
+        return True
+    # A repeated general note about coupling being a "bottleneck" is not a
+    # new production event. Measured yield/accuracy, real order and acceptance are.
+    return bool(re.search(
+        r"orders?|bookings?|contract|purchase|shipments?|deliver(?:y|ies)|"
+        r"mass production|volume production|yield (?:rises?|improves?|reaches?|hits?|falls?)|"
+        r"(?:coupling|insertion) loss.{0,20}\d+(?:\.\d+)?\s*dB|"
+        r"test(?:ing)? time.{0,20}\d+(?:\.\d+)?\s*(?:s|seconds?|ms)|"
+        r"\d+(?:\.\d+)?\s*%\s*(?:yield|pass)|\d+\s*nm|"
+        r"qualification|qualified|customer validation|"
+        r"產能|量產|出貨|訂單|驗證|认证|订单|量产|出货",
+        text, re.I
+    ))
+
+
+def classify_structural_axis(company: str, title: str) -> str | None:
+    text = html.unescape(title or "").strip()
+    if company == "OCS Optical Circuit Switching":
+        # "NVIDIA's CPO Ethernet Photonics" is NOT an optical circuit switch.
+        if not re.search(
+            r"optical circuit switch(?:ing)?|\bOCS\b.{0,30}\bswitch|\bOCS\b.{0,30}光",
+            text, re.I
+        ):
+            return None
+        commercial = bool(re.search(
+            r"purchase(?:d|s)?|procure(?:d|ment)?|contracts?|orders?|"
+            r"ship(?:ped|ment|ments)|deploy(?:ed|ment|s)?|"
+            r"pilot(?:s)?|trial(?:s)?|qualif(?:ied|ication)|"
+            r"first customer|customer win|design win|installed|production|"
+            r"采购|订单|部署|交付|量产|客户",
+            text, re.I,
+        ))
+        standard = bool(re.search(
+            r"ratif(?:y|ied)|published? spec(?:ification)?|"
+            r"interoperab|standards? release|approved? spec|"
+            r"protocol revision|specification v\d|"
+            r"互操作|标准发布|规格发布",
+            text, re.I,
+        ))
+        if commercial:
+            return "OCS 고객·주문·배치"
+        if standard:
+            return "OCS 표준·상호운용성"
+        return None
+
+    if company == "Huawei OPEN NPO":
+        if not re.search(r"\bNPO\b|near[- ]packag(?:e|ed) optics|近封装光学", text, re.I):
+            return None
+        if not re.search(r"Huawei|华为|OPEN NPO", text, re.I):
+            return None
+        if re.search(
+            r"customer (?:order|contract|acceptance)|"
+            r"purchase order|commercial deploy|mass production|volume production|"
+            r"production shipments?|manufacturing ramp|"
+            r"订单|采购合同|客户导入|客户验证|规模部署|量产|出货|交付",
+            text, re.I
+        ):
+            return "NPO 고객·양산·계약"
+        if re.search(
+            r"(?:final|updated?|revis(?:ed|ion)|approved?|ratif(?:ied|y)|published?|released?)"
+            r".{0,60}(?:MSA|spec(?:ification)?|standard|interop)|"
+            r"(?:MSA|spec(?:ification)?|standard|interop).{0,60}"
+            r"(?:final|updated?|revis(?:ed|ion)|approved?|ratif(?:ied|y)|published?|released?)|"
+            r"标准发布|标准修订|互操作测试|多源协议升级|标准升级",
+            text, re.I
+        ):
+            return "NPO 표준 제·개정"
+        if re.search(r"new (?:member|partner|signator)|新增成员|新成员加入", text, re.I):
+            return "NPO 공급사·생태계 확대"
+        return None
+    return None
+
+
+def structural_stage(company: str, category: str, title: str) -> str:
+    if category in {"OCS 고객·주문·배치", "NPO 고객·양산·계약"}:
+        if re.search(r"mass production|volume production|shipments?|deployed|deployment|量产|出货|部署", title, re.I):
+            return "상용 공급·배치 주장"
+        return "고객검증·수주 주장"
+    if category in {"OCS 표준·상호운용성", "NPO 표준 제·개정"}:
+        return "표준화·상호운용성"
+    if category == "NPO 공급사·생태계 확대":
+        return "표준 생태계 참여"
+    return stage_for(title)
+
+
+def credible_structural_source(item: dict, all_items: list[dict]) -> bool:
+    company = item.get("company") or ""
+    if company not in NEW_STRUCTURE_AXES:
+        return True
+    name = normalize_text(item.get("source") or "").lower()
+    primary = OCS_PRIMARY_SOURCES if company == "OCS Optical Circuit Switching" else NPO_PRIMARY_SOURCES
+    if any(name == a.lower() for a in primary):
+        return True
+    # A third-party headline about NVIDIA OCS deployment / Huawei mass
+    # production is not automatically a verified shipment. Require a second
+    # independent recognized source describing the *same* event.
+    return any(
+        other is not item
+        and other.get("company") == company
+        and normalize_text(other.get("source") or "").lower() != name
+        and source_priority(other.get("source") or "") >= 65
+        and (
+            same_underlying_story(other, item)
+            or same_article_identity(other, item)
+        )
+        for other in all_items
+    )
+
+
+def evidence_label(item: dict) -> str:
+    company = item.get("company")
+    if company not in NEW_STRUCTURE_AXES:
+        return "공식 확인 수준은 원문별 재검증 필요"
+    name = normalize_text(item.get("source") or "").lower()
+    sources = OCS_PRIMARY_SOURCES if company == "OCS Optical Circuit Switching" else NPO_PRIMARY_SOURCES
+    if any(name == primary.lower() for primary in sources):
+        return "당사자·표준단체 발표 — 계약·양산은 문구별 구분"
+    return "독립된 신뢰매체 교차확인 — 공식 계약·양산 여부 별도 확인"
+
+
+def structural_story_key(company: str, title: str) -> str | None:
+    text = html.unescape(title or "").lower()
+    if company == "OCS Optical Circuit Switching":
+        if re.search(r"ocp|open compute project", text, re.I) and re.search(r"launch|establish|form", text, re.I) and re.search(r"2025|initial|founding", text, re.I):
+            return "ocs|ocp|founding-2025"
+    if company == "Huawei OPEN NPO":
+        if re.search(r"launch|first|inaugural|发起|启动|首个", text, re.I) and re.search(r"msa|多源协议", text, re.I) and not re.search(r"2\.0|revision|升级|update|revised", text, re.I):
+            return "huawei|open-npo|msa-initial-2026-07"
+    return None
+
 
 def source_priority(source: str) -> int:
     source = normalize_text(source)
@@ -862,6 +1054,8 @@ def signal_score(title: str, source: str) -> int:
         score += 7
     if re.search(r"\bNPO\b|chip[- ]to[- ]chip", text, re.I):
         score += 5
+    if re.search(r"optical circuit switch(?:ing)?|\bOCS\b|近封装光学|光电路交换|\bOPEN NPO\b", text, re.I):
+        score += 7
     if re.search(r"customer engagements?|long[- ]term agreements?|anchor customers?", text, re.I):
         score += 5
     if re.search(r"content opportunity|content per|100\s*Tbps", text, re.I):
@@ -1003,6 +1197,9 @@ def stage_for(title: str) -> str:
 
 
 def category_for(title: str, company: str) -> str:
+    structural = classify_structural_axis(company, title)
+    if structural is not None:
+        return structural
     if company == "Volantis":
         if re.search(r"funding|financing|raises?|series\s+[abc]", title, re.I):
             return "광메모리 투자·개발자금"
@@ -1178,6 +1375,11 @@ def category_for(title: str, company: str) -> str:
 
 def meaning_for(category: str) -> str:
     mapping = {
+        "OCS 고객·주문·배치": "OCS는 광경로 자체를 바꾸는 별도 스위치입니다. NVIDIA의 OCP 참여·CPO 제품 판매를 OCS 구매로 오인하지 않고 실제 OCS 장비 계약·고객·배치 대수를 확인합니다.",
+        "OCS 표준·상호운용성": "OCP의 광회로 스위칭 개방형 제어 인터페이스·상호운용성이 개선되면 신규 고객군의 장비 검증 비용을 낮출 수 있습니다. 표준 참여는 양산수주와 다릅니다.",
+        "NPO 표준 제·개정": "화웨이 OPEN NPO의 다중공급자 규격 개정·호환성 인증은 NPO 공급망 진입조건을 바꿀 수 있습니다. MSA 발표만으로 고객 양산 물량이 생기지는 않습니다.",
+        "NPO 공급사·생태계 확대": "OPEN NPO에 새 실공급사가 공식 편입되면 NPO 광엔진·모듈·연결부품의 후보군이 확대되지만 직접 납품은 별도 검증해야 합니다.",
+        "NPO 고객·양산·계약": "화웨이 NPO 광연결이 확정 고객 주문·출하·양산으로 전환되는 경우에만 실제 장비·부품 매출 실현 신호입니다.",
         "광메모리 투자·개발자금": "대규모 자금조달은 광메모리 아키텍처의 개발·인력·테이프아웃·고객 샘플 비용을 감당할 수 있게 하지만, 그 자체가 성능 검증이나 양산 수주를 의미하지는 않습니다.",
         "광메모리·추론 아키텍처": "광학을 랙 간 네트워크가 아니라 가속기와 메모리 사이까지 끌어오면 HBM 용량·대역폭의 물리적 한계를 우회할 수 있어 추론 시스템 구조 자체를 바꾸는 신호입니다.",
         "광메모리 고객검증·상용화": "설계 목표를 넘어 실제 고객 샘플·통합 추론엔진·배치 일정이 확인되면 광메모리 아키텍처가 연구단계에서 매출 가능 단계로 넘어가는 핵심 검증 신호입니다.",
@@ -1259,6 +1461,11 @@ def meaning_for(category: str) -> str:
 
 def risk_for(category: str) -> str:
     mapping = {
+        "OCS 고객·주문·배치": "OCS 제어 소프트웨어와 스위치 재구성 지연·광경로 차단·고장복구가 GPU 가동률을 떨어뜨리면 채택과 재주문이 지연될 수 있습니다.",
+        "OCS 표준·상호운용성": "규격 합의 뒤에도 실제 다중업체 상호운용성·제어 인터페이스·운영 자동화 검증에 실패하면 설치가 지연됩니다.",
+        "NPO 표준 제·개정": "CPO와 경쟁하는 NPO의 광결합·삽입손실·외장광원·서비스성·온도별 신뢰성 조건이 규격을 충족하지 못하면 인증이 지연됩니다.",
+        "NPO 공급사·생태계 확대": "협약 참여와 실제 품질인증·PO가 다르며 공급사 추가가 가격 하락 또는 초기 품질관리 부담을 키울 수 있습니다.",
+        "NPO 고객·양산·계약": "고객 인증·초기 수율·광결합 정렬·패키징 검사에서 병목이 생기면 계약 물량의 출하·검수·매출 인식이 지연됩니다.",
         "광메모리 투자·개발자금": "투자금 유치는 기술 검증이 아닙니다. 목표 토큰속도·메모리 용량·비트당 에너지가 실제 실리콘·독립 벤치마크·고객 샘플로 확인되지 않으면 밸류체인 기대만 앞설 수 있습니다.",
         "광메모리·추론 아키텍처": "현재 공개 수치는 대부분 회사의 설계목표이므로 실리콘 존재 여부·메모리 종류·패키징 수율·실제 토큰당 비용이 검증되지 않으면 기대가 매출로 이어지지 않을 수 있습니다.",
         "광메모리 고객검증·상용화": "2027 고객 인도 일정이 지연되거나 고객 실명이 공개되지 않은 채 샘플 단계에 머물면 상용화 시점이 뒤로 밀릴 수 있습니다.",
@@ -1398,6 +1605,26 @@ def _self_test_korean_optics_alerts() -> None:
     merged = merge_article_scopes(same_article_a, same_article_b)
     assert len(merged.get("related_scopes") or []) == 2
 
+    # Harden three separate optical architectures against headline confusion.
+    ocs_member = "NVIDIA joins OCP optical circuit switching project"
+    ocs_contract = "NVIDIA signs contract to purchase optical circuit switching OCS switches for GPU clusters"
+    cpo_not_ocs = "NVIDIA Spectrum-X Ethernet Photonics CPO volume production shipments"
+    npo_old = "Huawei launches China's first OPEN NPO MSA with industry partners"
+    npo_real = "Huawei OPEN NPO begins mass production and customer delivery of near-packaged optics"
+    fau_old = "Passive Part, Active Battle: Inside CPO's FAU Coupling Bottleneck - TrendForce"
+    fau_new = "ficonTEC receives new order for FAU optical coupling production equipment for CPO"
+    assert classify_structural_axis("OCS Optical Circuit Switching", ocs_member) is None
+    assert classify_structural_axis("OCS Optical Circuit Switching", ocs_contract) == "OCS 고객·주문·배치"
+    assert classify_structural_axis("OCS Optical Circuit Switching", cpo_not_ocs) is None
+    assert classify_structural_axis("Huawei OPEN NPO", npo_old) is None
+    assert classify_structural_axis("Huawei OPEN NPO", npo_real) == "NPO 고객·양산·계약"
+    assert meaningful_fau_milestone(fau_old) is False
+    assert meaningful_fau_milestone(fau_new) is True
+    assert canonical_story_key("Huawei OPEN NPO", npo_old) == "huawei|open-npo|msa-initial-2026-07"
+    assert "OCS" not in category_for(cpo_not_ocs, "NVIDIA")
+    assert source_priority("Open Compute Project") == 100
+    assert evidence_label({"company": "Huawei OPEN NPO", "source": "TrendForce"}).startswith("독립된")
+
 
 def load_state() -> dict:
     if not STATE_PATH.exists():
@@ -1507,6 +1734,13 @@ def main() -> None:
             if conference_only and not commercial_proof:
                 continue
 
+            structural_category = classify_structural_axis(company, title)
+            if company in NEW_STRUCTURE_AXES and structural_category is None:
+                continue
+            if company in {"CPO Packaging & Test", "CPO Equipment Supply Chain"}:
+                if not meaningful_fau_milestone(title):
+                    continue
+
             score = signal_score(title, source)
             # Require both a technology/data-movement term and a concrete commercial/action term.
             # CPO mentions alone are not enough: this prevents stock-reaction/commentary articles
@@ -1522,7 +1756,7 @@ def main() -> None:
                 "ticker": meta["ticker"],
                 "score": score,
                 "key": key,
-                "stage": stage_for(title),
+                "stage": structural_stage(company, structural_category, title) if structural_category else stage_for(title),
                 "category": category_for(title, company),
             })
             all_relevant.append(item)
@@ -1577,7 +1811,11 @@ def main() -> None:
             for other in all_relevant
         )
 
-    all_relevant = [item for item in all_relevant if source_is_corroborated(item)]
+    quality_candidates = list(all_relevant)
+    all_relevant = [
+        item for item in quality_candidates
+        if source_is_corroborated(item) and credible_structural_source(item, quality_candidates)
+    ]
 
     # Stable order: newest first, then score.
     def sort_key(item: dict):
@@ -1614,7 +1852,11 @@ def main() -> None:
 
     initialized = bool(state.get("initialized"))
     dedupe_version = int(state.get("dedupe_version") or 0)
-    seen_story_keys = set(state.get("seen_story_keys") or []) | set(KNOWN_PHOTONIC_BASELINE_KEYS)
+    seen_story_keys = (
+        set(state.get("seen_story_keys") or [])
+        | set(KNOWN_PHOTONIC_BASELINE_KEYS)
+        | set(KNOWN_NEW_STRUCTURE_KEYS)
+    )
     seen_story_records = list(state.get("seen_story_records") or [])
 
     for item in deduped:
@@ -1687,6 +1929,7 @@ def main() -> None:
         "korea_optics_version": 1,
         "optical_bottleneck_version": 1,
         "optical_packaging_version": 2,
+        "structural_optics_version": STRUCTURAL_OPTICS_VERSION,
         "volantis_verified_baseline": VOLANTIS_VERIFIED_BASELINE,
         "last_checked_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
         "seen_keys": updated_seen,
@@ -1746,6 +1989,15 @@ def main() -> None:
                     "CPO 광패키징 기판·인터포저",
                 }
             ]
+        structural_version = int(state.get("structural_optics_version") or 0)
+        if structural_version < STRUCTURAL_OPTICS_VERSION:
+            # First upgrade run baselines historical OCP and OPEN NPO coverage.
+            # Never send 2025/July-2026 membership or a 2026 COUPE roadmap as
+            # a newly-confirmed customer purchase or initial NPO shipment.
+            new_items = [
+                item for item in new_items
+                if item.get("company") not in NEW_STRUCTURE_AXES
+            ]
         photonic_compute_version = int(state.get("photonic_compute_version") or 0)
         if photonic_compute_version < 5:
             new_items = [item for item in new_items if item.get("company") not in {"Volantis", "Lightmatter", "Ayar Labs", "Xscape Photonics"}]
@@ -1801,6 +2053,7 @@ def main() -> None:
             lines.extend([
                 f"<b>{idx}) {html.escape(DISPLAY_NAMES_KO.get(item['company'], item['company']))} ({html.escape(item['ticker'])}) — {html.escape(category)}</b>",
                 f"• 단계: {html.escape(item['stage'])}",
+                f"• 확인 수준: {html.escape(evidence_label(item))}" if item['company'] in NEW_STRUCTURE_AXES else "",
                 f"• 원문 제목: {html.escape(item['title'])}",
                 f"• 출처·시각: {html.escape(item.get('source') or '미표기')} / {html.escape(pub or '시각 미표기')}",
             ])
@@ -1820,7 +2073,7 @@ def main() -> None:
         lines.extend([
             "<b>감시 기준</b>",
             "• 고객·수주·양산: 1.6T·3.2T·CPO·광컴퓨팅의 고객인증, PO, 출하, 생산능력, 매출 가이던스 변화",
-            "• 병목·정책: 수율·광결합·InP·ELS·장비·가격·납기·FCC/의회 규제 변화",
+            "• 병목·정책: FAU 수율·검사/정렬·InP·ELS·FCC/의회 규제·OCS 표준/고객·OPEN NPO 표준/양산",
             "• 제외: 전시·데모·단순 주가반응·기존 기사 재탕은 알림하지 않음",
         ])
         ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
@@ -1834,6 +2087,7 @@ def main() -> None:
         f"- Telegram 발송 사건: {len(alert_items)}건",
         f"- 중복 기사 통합 후 사건 기준선: {len(deduped)}건",
         f"- 중복 제거 방식: 동일 원문 URL·제목/출처 통합 + 동일 사건 의미 클러스터 + 사건키 v3",
+        f"- FAU·OCS·OPEN NPO 감시 버전: {STRUCTURAL_OPTICS_VERSION} (2025 OCP·2026년 7월 OPEN NPO 기존사건 기준선)",
         f"- 소스 오류: {len(errors)}건",
     ]
     if errors:
