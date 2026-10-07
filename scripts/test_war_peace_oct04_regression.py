@@ -594,7 +594,7 @@ except RuntimeError as e:
 iran_preemptive = row(
     "*IRAN AMRY SAYS IT WILL LAUNCH PREEMPTIVE ATTACKS IF NECESSARY: FARS",
     source="Walter Bloomberg",
-    description="Iran army says it may launch a preemptive attack if necessary.",
+    description="",
     link="https://t.me/WalterBloomberg/36505",
 )
 check("oct07-conditional-threat-detected", mod._conditional_military_threat(iran_preemptive))
@@ -639,5 +639,24 @@ check("oct07-quote-only-detected", mod._statement_only_no_action(quote_only))
 s, tags = mod.score_item(quote_only, dt.datetime.now(mod.watch.KST))
 check("oct07-quote-only-yellow", mod.final_color(quote_only) == "yellow")
 check("oct07-quote-only-no-red-tag", "확전" not in tags and "실제행동미확인" in tags)
+
+
+# 21) 동일 사우디 공항·라빅 공격은 다음날 재보도돼도 같은 사건 ID를 유지한다.
+saudi_day1 = row(
+    "Saudi Arabia confirms airport damage after Houthi attacks",
+    source="Yonhap",
+    description="Houthis attacked Jazan and Najran airports and claimed strikes on Riyadh airport and the Rabigh Aramco refinery.",
+    minutes_ago=10,
+)
+saudi_day2 = row(
+    "후티, 사우디 본토 공습…한국 기업 진출 지역까지 피해",
+    source="서울경제",
+    description="후티는 자잔·나지란 공항과 리야드 공항, 라빅 아람코 정유시설을 공격했다고 밝혔다.",
+    minutes_ago=10,
+)
+saudi_day1["published"] = format_datetime(dt.datetime.now(mod.watch.KST) - dt.timedelta(hours=20))
+check("oct07-saudi-oct06-signature-day1", mod._saudi_oct06_attack_signature(saudi_day1))
+check("oct07-saudi-oct06-signature-day2", mod._saudi_oct06_attack_signature(saudi_day2))
+check("oct07-saudi-cross-date-same-id", mod.item_id(saudi_day1) == mod.item_id(saudi_day2))
 
 print("WAR_PEACE_OCT04_REGRESSION_OK")
