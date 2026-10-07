@@ -2,7 +2,7 @@
   "initialized": true,
   "version": 1,
   "source_version": 9,
-  "ray_official_index_verified": true,
+  "ray_official_index_verified": false,
   "maplight_track_version": 3,
   "maplight_health_ok": true,
   "maplight_optogenetics_bridge_verified": true,
@@ -14,7 +14,7 @@
     "maplight|nobel-optogenetics-bridge",
     "maplight|portfolio|discovery-paused"
   ],
-  "last_checked_kst": "2026-10-08T05:46:50+09:00",
+  "last_checked_kst": "2026-10-08T06:42:18+09:00",
   "nobel_2026_verified": true,
   "seen_event_keys": [
     "d3e43c74900cbe45ced82930",
@@ -29,9 +29,9 @@
     "89edfd25162fb70a90bc15ef",
     "3b9006d3c6cdc45c8b4799ae",
     "a168e38fecc4618002c9078e",
-    "c5b07942c2f87f613c2d6534",
     "f9150ec8a2689f8d887bf8b4",
-    "7068d58d13d508a32621ac78"
+    "7068d58d13d508a32621ac78",
+    "c5b07942c2f87f613c2d6534"
   ],
   "trial_snapshots": {
     "NCT06460844": {
@@ -302,6 +302,8 @@
   },
   "cns_trial_ids": [],
   "relevant_press_events": 12,
-  "source_errors": [],
+  "source_errors": [
+    "Ray Therapeutics 공식도메인 색인: HTTPError"
+  ],
   "maplight_source_errors": []
 }

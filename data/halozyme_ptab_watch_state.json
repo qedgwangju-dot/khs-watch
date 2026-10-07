@@ -24,7 +24,7 @@
     "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557766",
     "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557959"
   ],
-  "last_check_kst": "2026-10-08T05:46:41+09:00",
+  "last_check_kst": "2026-10-08T06:42:00+09:00",
   "tracked_cases": {
     "PGR2025-00003": "11,952,600",
     "PGR2025-00004": "12,018,298",
@@ -45,7 +45,28 @@
     "IPR2026-00313": "11,041,149",
     "IPR2026-00314": "11,066,656"
   },
-  "errors_last_run": [],
+  "errors_last_run": [
+    "Google 뉴스:RuntimeError:\"PGR2025-00004\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"PGR2025-00039\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"PGR2025-00024\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"PGR2025-00006\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"PGR2025-00009\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"PGR2025-00017\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"PGR2025-00033\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"PGR2025-00030\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"PGR2025-00042\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"PGR2025-00052\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"PGR2025-00050\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"PGR2025-00046\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"PGR2025-00053\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"IPR2026-00313\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"PGR2025-00087\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"IPR2026-00312\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"IPR2026-00314\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"C/09/695432\" Halozyme Merck Keytruda SC",
+    "Google 뉴스:RuntimeError:\"EP 3 130 347\" Halozyme Merck Keytruda SC UK",
+    "Google 뉴스:RuntimeError:\"EP 2 797 622\" Halozyme Merck Keytruda SC appeal"
+  ],
   "tracked_known_cases": {
     "PGR2025-00003": "11,952,600",
     "PGR2025-00004": "12,018,298",
@@ -226,5 +247,5 @@
   "search_query_count": 36,
   "search_task_count": 72,
   "search_workers": 8,
-  "search_elapsed_seconds": 3.876
+  "search_elapsed_seconds": 141.138
 }
