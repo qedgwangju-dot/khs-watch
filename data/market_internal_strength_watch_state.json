@@ -7,9 +7,12 @@
   },
   "verdict": "종목·업종 순환매 유지",
   "shock": false,
-  "methodology_version": "2026-10-07-v2",
+  "methodology_version": "2026-10-07-v3",
   "hyg_basis": "Yahoo adjusted close total return",
-  "vix_source": "Cboe official daily close",
+  "vix_source": "Yahoo completed close with Cboe official overlap validation",
+  "vix_official_crosscheck_date": "2026-10-05",
+  "vix_official_same_day": true,
+  "vix_official_lag_days": 0,
   "vix_crosscheck_max_abs_diff": 4.5776367230132564e-07,
   "breadth_warning": false,
   "rsp_warning": false,
@@ -40,9 +43,9 @@
       "5d": -0.2805015266885147
     },
     "VIX": {
-      "1d": 1.3716525146962644,
-      "3d": -5.018359853121179,
-      "5d": -3.422526446795271
+      "1d": 1.3716527262657596,
+      "3d": -5.018357938597385,
+      "5d": -3.4225217641895123
     },
     "커뮤니케이션": {
       "1d": 1.1693264313776597,
