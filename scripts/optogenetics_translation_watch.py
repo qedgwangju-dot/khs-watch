@@ -32,8 +32,7 @@ RAY_GOOGLE_QUERY = '"Ray Therapeutics" (RTx-015 OR RTx-021 OR optogenetic) (FDA 
 GENSIGHT_NEWS = "https://www.gensight-biologics.com/subject/gs030/"
 RESTORE_VISION_NEWS = "https://restore-vis.com/en/news/2026/"
 AUGELUX_NEWS = "https://www.augeluxtherapeutics.com/en/news/"
-MAPLIGHT_NEWS = "https://ir.maplightrx.com/news-events/news-releases"
-MAPLIGHT_NOBEL = "https://ir.maplightrx.com/news-releases/news-release-details/maplight-therapeutics-celebrates-co-founder-dr-karl-deisseroth"
+MAPLIGHT_RSS = "https://ir.maplightrx.com/rss/news-releases.xml"
 JRCT_RV001 = "https://jrct.mhlw.go.jp/en-latest-detail/jRCT2033240611"
 
 TRIALS = {
@@ -53,7 +52,6 @@ COMPANY_SOURCES = [
     ("GenSight Biologics", GENSIGHT_NEWS, ("gs030", "optogen")),
     ("Restore Vision", RESTORE_VISION_NEWS, ("rv-001", "optogen", "chimeric rhodopsin")),
     ("Augelux Therapeutics", AUGELUX_NEWS, ("zm-02", "optogen", "moon", "prism")),
-    ("MapLight Therapeutics", MAPLIGHT_NEWS, ("ml-007c-ma", "ml-004", "ml-055", "zephyr", "iris", "vista")),
 ]
 
 ACTION_TERMS = (
@@ -491,10 +489,45 @@ def validate_nobel() -> bool:
     return all(x in text for x in required)
 
 
-def validate_maplight_bridge() -> bool:
-    text = clean(re.sub(r"<[^>]+>", " ", fetch_text(MAPLIGHT_NOBEL))).lower()
-    required = ("maplight", "karl deisseroth", "optogenetics", "circuit", "ml-007c-ma")
-    return all(x in text for x in required)
+def validate_maplight_bridge_and_events() -> tuple[bool, list[dict]]:
+    # MapLight's IR HTML pages can intermittently time out from GitHub-hosted runners.
+    # Use the company's own Q4-hosted RSS feed as the primary machine-readable official source.
+    xml = fetch_text(MAPLIGHT_RSS, timeout=35)
+    low = clean(re.sub(r"<[^>]+>", " ", xml)).lower()
+    bridge_required = ("maplight", "karl deisseroth", "optogenetics", "circuit")
+    pipeline_ok = "ml-007c-ma" in low and any(x in low for x in ("zephyr", "vista", "schizophrenia"))
+    bridge_ok = all(x in low for x in bridge_required) and pipeline_ok
+
+    root = ET.fromstring(xml)
+    out: list[dict] = []
+    seen: set[str] = set()
+    terms = ("ml-007c-ma", "ml-004", "ml-055", "zephyr", "iris", "vista")
+    for item in root.findall(".//item"):
+        title = clean(item.findtext("title") or "")
+        link = clean(item.findtext("link") or "")
+        low_title = title.lower()
+        if not title or not link:
+            continue
+        if not any(term in low_title for term in terms):
+            continue
+        if not any(term in low_title for term in ACTION_TERMS):
+            continue
+        k = key_for("MapLight Therapeutics", link.rstrip("/"), title.lower())
+        if k in seen:
+            continue
+        seen.add(k)
+        stage, meaning = classify_press(title)
+        out.append({
+            "key": k,
+            "company": "MapLight Therapeutics",
+            "program": program_label("MapLight Therapeutics", low_title),
+            "stage": stage,
+            "meaning": meaning,
+            "title": title,
+            "url": link,
+            "source": "MapLight Therapeutics 공식 RSS",
+        })
+    return bridge_ok, out
 
 
 def render_alert(
@@ -634,12 +667,13 @@ def main() -> int:
 
     maplight_bridge_ok = False
     try:
-        maplight_bridge_ok = validate_maplight_bridge()
+        maplight_bridge_ok, maplight_events = validate_maplight_bridge_and_events()
+        events.extend(maplight_events)
         successful += 1
         if not maplight_bridge_ok:
             errors.append("MapLight 광유전학→회로지도→약물발굴 공식 연결 검증 실패")
     except Exception as exc:
-        errors.append(f"MapLight 광유전학 연결: {type(exc).__name__}")
+        errors.append(f"MapLight 공식 RSS: {type(exc).__name__}")
 
     for company, url, terms in COMPANY_SOURCES:
         try:
