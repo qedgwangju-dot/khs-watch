@@ -152,11 +152,16 @@ jobs:
                       f"https://api.telegram.org/bot{bot}/sendMessage",
                       data=payload,method="POST",
                   )
-                  with urllib.request.urlopen(req,timeout=25) as r:
-                      out=json.loads(r.read().decode("utf-8"))
-                  if not out.get("ok"):
-                      raise RuntimeError(f"Telegram gap alert rejected: {out}")
-                  print(f"kospi_gap_recovery_alert=true message_id={out['result'].get('message_id')}")
+                  try:
+                      with urllib.request.urlopen(req,timeout=25) as r:
+                          out=json.loads(r.read().decode("utf-8"))
+                      if out.get("ok"):
+                          print(f"kospi_gap_recovery_alert=true message_id={out['result'].get('message_id')}")
+                      else:
+                          print(f"kospi_gap_recovery_alert=false rejected={out}")
+                  except Exception as exc:
+                      # 경고 발송 장애가 실제 시장감시 기동을 막아서는 안 된다.
+                      print(f"kospi_gap_recovery_alert=false error={type(exc).__name__}: {exc}")
 
           with open(os.environ["GITHUB_OUTPUT"],"a",encoding="utf-8") as fp:
               fp.write(f"run_production={'1' if should_run else '0'}\n")
