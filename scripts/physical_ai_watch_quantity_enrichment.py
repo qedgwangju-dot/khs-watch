@@ -274,6 +274,12 @@ def _skip_quantity_enrichment(block: str) -> bool:
         return True
     if "디케이티 로보틱스" in block or "디케이티 휴머노이드 배터리" in block:
         return True
+    # Patent publication numbers (US 2026/0310299 A1), two substrate layers,
+    # and 3D sensor descriptions are NOT shipped robot/unit quantities.
+    if "테슬라 촉각센서 · 미국 특허출원 공개 A1" in block:
+        return True
+    if "US 2026/0310299 A1" in block and ("촉각" in block or "tactile" in block.lower()):
+        return True
     return False
 
 
