@@ -184,7 +184,7 @@ def format_generic_alert(original: str) -> str:
     if has_rubin_spec:
         quick += [
         "",
-        "<b>[HBM 방향 체크]</b>"
+        "<b>[HBM 방향 체크]</b>",
         "🟢 <b>좋아짐</b>  가격↑+물량↑ · HBM4E 인증→양산 · GPU +50%↑ · 대역폭 유지 · DDR5/SOCAMM2/eSSD↑",
         "🔴 <b>나빠짐</b>  192GB+GPU&lt;50% · 인증 지연 · 가격/물량↓ · NVL576 지연 · 기타 메모리 주문↓",
         "",
@@ -203,9 +203,6 @@ def format_generic_alert(original: str) -> str:
         "→ 기사보다 실제 출하·매출이 최종 확인\n\n"
         "약세 조건: GPU당 192GB 확정+GPU 출하 증가 +50% 미만 / HBM4E 인증·양산 반복 지연 / 2027 계약가격 하락·계약물량 축소 / NVL576 도입 지연·축소 / DDR5·SOCAMM2·eSSD 주문 둔화\n\n"
         "판정 원칙: 192GB만 보고 HBM 수요 붕괴로 단정하지 않으며 GPU 총출하×GPU당 HBM 용량으로 총 비트 수요를 판단합니다.</blockquote>",
-    ]
-
-    # Close the Rubin-only explanatory block before rendering real event facts.
         ]
 
     body = original
