@@ -71,6 +71,38 @@ class SmartphoneMemoryPricePassThroughTests(unittest.TestCase):
     def test_s27_lpddr6_ufs51_remains_rumor_baseline(self):
         self.assertEqual(m.BASELINE["s27_lpddr6_ufs51_some_models_status"], "루머")
 
+    def test_smartphone_production_cut_does_not_become_shipment_revision(self):
+        article = (
+            "Samsung smartphone production cut 30% in Q4 due to memory prices. "
+            "DRAM cost rose 175% and IDC expects 52 million smartphones."
+        )
+        self.assertIsNone(m._shipment_revision_pct(article))
+        self.assertFalse(m._is_shipment_revision(article))
+        self.assertFalse(m._is_price_pass_through(article))
+
+    def test_actual_shipment_forecast_revision_is_signed(self):
+        article = "Samsung smartphone shipment forecast cut 12% due to memory cost increases."
+        self.assertEqual(m._shipment_revision_pct(article), -12.0)
+
+    def test_reuters_quote_does_not_make_s27_price_official(self):
+        item = self.item(
+            "Galaxy S27 Samsung price hike reportedly 100000 won to 130000 won",
+            "Rising memory cost was cited.",
+            "Reuters",
+        )
+        self.assertFalse(m._is_official_samsung_item(item))
+        self.assertIsNone(m._signal(item, self.state()))
+
+    def test_direct_official_link_is_required_for_confirmation(self):
+        item = self.item(
+            "Galaxy S27 price hike 100000 won to 130000 won due to memory",
+            "Samsung news release",
+            "Samsung Global Newsroom",
+        )
+        self.assertFalse(m._is_official_samsung_item(item))
+        item["link"] = "https://news.samsung.com/global/galaxy-s27-pricing-release"
+        self.assertTrue(m._is_official_samsung_item(item))
+
 
 if __name__ == "__main__":
     result = unittest.TextTestRunner(verbosity=2).run(
