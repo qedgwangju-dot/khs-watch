@@ -453,6 +453,12 @@ def assert_energy_month_document_keeps_identity() -> None:
             raise AssertionError(f"Missing distinct official policy title: {value}")
     if "트럼프 대통령 발언, 시장 영향 정책 신호" in report:
         raise AssertionError("Generic remark downgrade still corrupts mixed policy delivery")
+    heading_duplicate = khs_telegram_delivery_guard.duplicate_policy_heading(report)
+    if heading_duplicate:
+        raise AssertionError(f"Telegram guard would suppress the whole bundle: {heading_duplicate}")
+    body_duplicate = khs_telegram_delivery_guard.duplicate_policy_body_signature(report)
+    if body_duplicate:
+        raise AssertionError(f"Telegram guard would suppress distinct official acts: {body_duplicate}")
     if "- 타임라인:" not in report or "2026년 10월 7일" not in report:
         raise AssertionError("Presidential timeline was lost")
 
