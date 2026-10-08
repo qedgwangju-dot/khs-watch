@@ -101,7 +101,7 @@ class HybridHBMSourceGuardTests(unittest.TestCase):
         self.assertEqual(base["reported_origin_count"], 1)
         self.assertTrue(base["reported_sk_hybrid_customer_sample_not_started"])
         self.assertTrue(base["reported_samsung_hybrid_customer_sample_sent"])
-        self.assertFalse(base["sk_official_hybrid_customer_sample_verified"])
+        self.assertFalse(base["skhynix_official_hybrid_customer_sample_verified"])
         self.assertFalse(base["samsung_official_hybrid_customer_sample_verified"])
         self.assertTrue(base["sk_hbm4e_mr_muf_sample_shipped"])
         self.assertEqual(base["sk_revenue_share_q2_2026_pct"], 50.0)
