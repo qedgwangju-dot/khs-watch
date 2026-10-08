@@ -459,3 +459,46 @@ assert not ks.should_finalize_market_close(_after, _real_close, 15)
 assert not ks.should_finalize_market_close(_after, None, None)
 assert "should_finalize_market_close(" in inspect.getsource(ks.Watch.run)
 print("noon_handoff_does_not_close_episode_regression=true")
+
+
+# 2026-10-08 11:10/11:26 실제 수급 기준점 정렬 회귀시험.
+# 11:10 종료 39.9초는 30초를 초과하므로 선행 매도주체를 확정하지 않는다.
+w_1110 = Watch.__new__(Watch)
+w_1110.flows = deque([
+    {"ts": 1000.0-6.5,
+     "현물":{"sample_ts":1000.0-6.5,"외국인":0.0,"기관":0.0,"개인":0.0},
+     "선물":{"sample_ts":1000.0-6.5,"외국인":0.0,"기관":0.0,"개인":0.0}},
+    {"ts": 1393.0-39.9,
+     "현물":{"sample_ts":1393.0-39.9,"외국인":-342.0,"기관":-1530.0,"개인":1531.0},
+     "선물":{"sample_ts":1393.0-39.9,"외국인":-1078.0,"기관":740.0,"개인":237.0}},
+],maxlen=2500)
+a_1110 = Watch.attribution(w_1110,1000.0,1393.0)
+assert a_1110["available"] is False, a_1110
+assert "39.9초" in a_1110["reason"], a_1110
+print("20261008_1110_alignment_hold_valid=true")
+
+# 11:26에서는 실제 저점 기준 19.6초로 정렬 허용치 안에 들어오지만,
+# 현물 기관 최다매도와 선물 외국인 최다매도가 갈리므로 단일 주도자 보류.
+w_1126 = Watch.__new__(Watch)
+w_1126.flows = deque([
+    {"ts": 1000.0-6.5,
+     "현물":{"sample_ts":1000.0-6.5,"외국인":0.0,"기관":0.0,"개인":0.0},
+     "선물":{"sample_ts":1000.0-6.5,"외국인":0.0,"기관":0.0,"개인":0.0},
+     "프로그램":{"sample_ts":1000.0-6.5,"전체":0.0,"차익":0.0,
+                "비차익":0.0,"표본시차초":4.3}},
+    {"ts": 1943.0-19.6,
+     "현물":{"sample_ts":1943.0-19.6,"외국인":-342.0,"기관":-1530.0,"개인":1531.0},
+     "선물":{"sample_ts":1943.0-19.6,"외국인":-1078.0,"기관":740.0,"개인":237.0},
+     "프로그램":{"sample_ts":1943.0-19.6,"전체":-79062.0,
+                "차익":-36058.0,"비차익":-43002.0,
+                "표본시차초":4.3}},
+],maxlen=2500)
+a_1126=Watch.attribution(w_1126,1000.0,1943.0)
+assert a_1126["available"] is True, a_1126
+assert a_1126["spot_leader"] == "기관", a_1126
+assert a_1126["futures_leader"] == "외국인", a_1126
+assert a_1126["confidence"] != "높음", a_1126
+assert "단일 주도자 확정 보류" in a_1126["verdict"], a_1126
+assert a_1126["program"]["전체"] == -79060.0, a_1126
+assert a_1126["program"]["검산차이"] == -2.0, a_1126
+print("20261008_1126_split_seller_valid=true")
