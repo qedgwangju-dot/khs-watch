@@ -151,7 +151,13 @@ jobs:
           ):
               verdict, reason = fmt.compact_judgement(live_state)
               assert "다만" not in reason, reason
-              assert "순유입 강도도 둔화" in reason, reason
+              if (
+                  (live_state.get("btc_etf") or {}).get("status") != "complete"
+                  and "IBIT" in ((live_state.get("btc_etf") or {}).get("missing_tickers") or [])
+              ):
+                  assert "판정 보류" in verdict and "IBIT 미보고" in reason, (verdict, reason)
+              else:
+                  assert "순유입 강도도 둔화" in reason, reason
               print("adverse_crypto_wording_valid=true")
 
           revised = json.loads(json.dumps(live_state))
