@@ -236,13 +236,13 @@ def _jpm_30y_signal(y30):
     elif y30 >= 5.78:
         state = "5.78% 이상 → JPM Equal Swings 약세 목표 구간"
     elif y30 >= 5.59:
-        state = "5.59% 상향 돌파 → 채권 약세 추세 재확인"
+        state = "5.59% 이상 유지 → 채권 약세 구간 지속(신규 돌파 아님)"
     elif y30 > 5.25:
         state = "5.59% 아래·5.25% 위 → 반전 미확인"
     elif y30 > 5.15:
-        state = "5.25% 하향 돌파 → 숏커버·CTA 매수전환 후보"
+        state = "5.25% 이하 유지 → 숏커버·CTA 전환 가능성"
     else:
-        state = "5.15% 이하 → 채권 반전 신호 강화"
+        state = "5.15% 이하 유지 → 채권 반전 신호 강화"
     return (
         f"JPM 30년 기술선: 현재 {y30:.2f}% | {state} | "
         "상단 5.59→5.78→6.00 / 하단 5.25→5.15"
@@ -354,7 +354,7 @@ def _validate_compact_report(text, overall_head, y10, hyg_oas):
     expected = f"전체 방향: {overall_head}"
     if expected not in text:
         raise RuntimeError(f"final report overall mismatch: expected {expected}")
-    if re.search(r"[↑↓]\\s+[+-]0(?:\\.0+)?bp", text):
+    if re.search(r"[↑↓]\s+[+-]0(?:\.0+)?bp", text):
         raise RuntimeError("final report contains signed zero bp")
     if y10 is not None and y10 >= 5.00 and "다음 경보: 10년물 5% 돌파" in text:
         raise RuntimeError("final report repeats an already-crossed 10Y 5% alert")
