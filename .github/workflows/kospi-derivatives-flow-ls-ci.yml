@@ -483,6 +483,20 @@ jobs:
                   "latest_rows":tail,
                   "window":window,
               })
+              # 장애 발생 직후 첫 휴장일 1회만 실제 역사 구간 정밀분해도 점검한다.
+              # 이 시험은 모의 시장 주체를 쓰므로 실전 매도주체 검증으로 취급하지 않는다.
+              if today==dt.date(2026,10,9):
+                  from kospi_shock_enrichment import run_smoke
+                  try:
+                      detail=run_smoke(get_token())
+                      print("holiday_full_enrichment_replay_valid=true",
+                            "stock_program=",detail.get("stock_program_available"),
+                            "stock_price=",detail.get("stock_price_available"),
+                            "industry_count=",detail.get("industry_count"),
+                            "etf_price=",detail.get("etf_price_available"),
+                            "errors=",len(detail.get("errors") or []))
+                  except Exception as smoke_exc:
+                      print(f"holiday_full_enrichment_replay_unavailable={type(smoke_exc).__name__}: {smoke_exc}")
           except Exception as exc:
               # 휴장일의 외부 API 접속 불가를 생산 감시 실패로 승격하지 않는다.
               print(f"holiday_history_probe_unavailable={type(exc).__name__}: {exc}")
