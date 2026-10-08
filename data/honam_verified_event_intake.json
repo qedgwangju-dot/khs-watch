@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "note": "사건 단위 일회성 검증 접수. 특정 기사 URL의 지속 감시는 수행하지 않음.",
+  "events": [
+    {
+      "event_family": "honam_sk_chair_site_visit_20261009",
+      "event_phase": "scheduled",
+      "event_date_kst": "2026-10-09",
+      "event_type": "executive_site_visit",
+      "title": "최태원 SK그룹 회장, 10월 9일 광주 군공항 SK하이닉스 팹 예정지 방문 예정",
+      "description": "최태원 회장과 SK하이닉스 경영진이 광주 군공항 탄약고 이전 예정 부지를 9일 오후 방문할 예정. 민형배 시장 동행 보도. 군공항 이전·전력·용수·인허가 논의 예정으로, 방문 완료나 최종 투자계약 확정과는 별개.",
+      "stages": [
+        "6_산단투자_기업일정"
+      ],
+      "evidence": [
+        {
+          "source": "이데일리",
+          "published_rfc2822": "Thu, 08 Oct 2026 11:09:54 GMT",
+          "url": "https://www3.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=06773206645610952"
+        },
+        {
+          "source": "조선비즈",
+          "published_rfc2822": "Thu, 08 Oct 2026 11:09:00 GMT",
+          "url": "https://biz.chosun.com/industry/company/2026/10/08/M3D3MAEHHRBQREJBES7IXZCJ7A/"
+        }
+      ],
+      "user_original": {
+        "url": "https://sedaily.com/article/20099817",
+        "source": "서울경제",
+        "verification": "직접 본문 접근 실패; 제목은 사용자 제공"
+      },
+      "do_not_confuse": [
+        "방문 예정 ≠ 방문 완료",
+        "현장방문 ≠ 투자계약 확정",
+        "2026-07-29 SK 경영진 방문 ≠ 이번 최태원 회장 방문"
+      ]
+    }
+  ]
+}
