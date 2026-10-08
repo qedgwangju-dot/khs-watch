@@ -1,0 +1,115 @@
+name: Korean Defense Space Command and Support Telegram Watch
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/k-defense-space-command-telegram-watch.yml"
+      - "scripts/k_defense_space_watch.py"
+      - "scripts/k_defense_space_korean_guard.py"
+  schedule:
+    # Korea defense-space policy and procurement: twice hourly.
+    - cron: "13,43 * * * *"
+  workflow_dispatch:
+    inputs:
+      force_notify:
+        description: "공식 검증된 당일 신규 알림 항목 다시 전송"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: k-defense-space-command-telegram-watch
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 13
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs887988798879887988798879_bot"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Static checks and conservative policy safety tests
+        run: |
+          python -m py_compile scripts/k_defense_space_watch.py
+          python -m py_compile scripts/k_defense_space_korean_guard.py
+          python -m py_compile scripts/space_launch_telegram_send.py
+          python -m py_compile scripts/space_launch_translate_local.py
+          python -m py_compile scripts/merge_space_launch_state.py
+          K_DEFENSE_WATCH_SELF_TEST=1 python scripts/k_defense_space_watch.py
+          python scripts/k_defense_space_korean_guard.py --self-test
+          python scripts/space_launch_telegram_send.py --self-test
+          python scripts/merge_space_launch_state.py --self-test
+
+      - name: Scan official defense space and procurement updates
+        env:
+          FORCE_NOTIFY: ${{ inputs.force_notify }}
+        run: python scripts/k_defense_space_watch.py
+
+      - name: Translate foreign headlines and preserve source URLs
+        if: hashFiles('out/k_defense_space_watch_telegram.txt') != ''
+        run: |
+          cp out/k_defense_space_watch_telegram.txt out/k_defense_space_watch_original.txt
+          python scripts/k_defense_space_korean_guard.py \
+            out/k_defense_space_watch_original.txt \
+            out/k_defense_space_watch_korean.txt
+          cp out/k_defense_space_watch_korean.txt out/k_defense_space_watch_telegram.txt
+
+      - name: Audit summary
+        if: always()
+        run: |
+          if [ -f out/k_defense_space_watch_status.md ]; then
+            cat out/k_defense_space_watch_status.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Telegram delivery through exact dedicated bot only
+        if: hashFiles('out/k_defense_space_watch_telegram.txt') != ''
+        env:
+          SPACE_LAUNCH_TELEGRAM_BOT_TOKEN: ${{ secrets.SPACE_LAUNCH_TELEGRAM_BOT_TOKEN }}
+          SPACE_LAUNCH_TELEGRAM_CHAT_ID: ${{ secrets.SPACE_LAUNCH_TELEGRAM_CHAT_ID }}
+        run: |
+          python scripts/space_launch_telegram_send.py out/k_defense_space_watch_telegram.txt
+
+      - name: Save deduplication state only after successful delivery
+        if: success() && hashFiles('out/k_defense_space_watch_pending_state.json') != ''
+        run: |
+          cp out/k_defense_space_watch_pending_state.json /tmp/k_defense_space_pending_state.json
+          git config user.name "k-defense-space-watch[bot]"
+          git config user.email "k-defense-space-watch[bot]@users.noreply.github.com"
+
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git reset --hard origin/main
+
+            python scripts/merge_space_launch_state.py \
+              data/k_defense_space_watch_state.json \
+              /tmp/k_defense_space_pending_state.json \
+              data/k_defense_space_watch_state.json
+
+            git add data/k_defense_space_watch_state.json
+            if git diff --cached --quiet; then
+              echo "Korean defense-space watch state already merged"
+              exit 0
+            fi
+
+            git commit -m "chore: update defense space command watch state"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep $((attempt * 3))
+          done
+          exit 1
