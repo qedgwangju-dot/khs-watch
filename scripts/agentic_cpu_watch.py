@@ -385,7 +385,11 @@ def official_cpu_signal_type(url: str, text: str) -> str:
             r"|volume\s+production|mass\s+production)\b", low
         )
         if supply:
-            supply_seen = True
+            # A planned future production ramp is not present output.
+            before_ramp = low[max(0, supply.start() - 65):supply.start()]
+            if not re.search(r"\b(?:plans?\s+to|expects?\s+to|will|could|may"
+                             r"|intends?\s+to|scheduled\s+to)\s*$", before_ramp):
+                supply_seen = True
         action = re.search(
             r"\b(?:shipped|shipments?|orders?|bookings?|contracted|contracts?"
             r"|purchased|purchase\s+orders?|qualif(?:ied|ying|ication)"
