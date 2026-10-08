@@ -2446,7 +2446,10 @@ def extract_hbm_hybrid_official_observation(event: dict) -> dict | None:
         vendor = "samsung"
     else:
         return None
-    article = " ".join(
+    # Keep title, summary, and body in separate semantic segments: joining
+    # them with spaces could falsely attach an unrelated HBM4E shipment to
+    # a hybrid-bonding headline.
+    article = "\n".join(
         str(event.get(key) or "") for key in
         ("article_title", "article_description", "article_text")
     )
