@@ -9,18 +9,22 @@ on:
       - ".github/workflows/yen-policy-news-alert.yml"
       - "scripts/yen_policy_news_alert_runner.py"
       - "scripts/yen_policy_news_event_guard.py"
+      - "scripts/yen_policy_news_message_guard.py"
       - "tests/test_yen_policy_news_event_guard.py"
+      - "tests/test_yen_policy_news_message_guard.py"
   pull_request:
     paths:
       - ".github/workflows/yen-policy-news-alert.yml"
       - "scripts/yen_policy_news_alert.py"
       - "scripts/yen_policy_news_alert_runner.py"
       - "scripts/yen_policy_news_event_guard.py"
+      - "scripts/yen_policy_news_message_guard.py"
       - "scripts/yen_policy_news_linkify.py"
       - "scripts/khs_source_fetch.py"
       - "tests/test_yen_policy_news_alert.py"
       - "tests/test_yen_policy_news_alert_runner.py"
       - "tests/test_yen_policy_news_event_guard.py"
+      - "tests/test_yen_policy_news_message_guard.py"
       - "tests/test_yen_policy_news_linkify.py"
       - "data/yen_policy_news_state.json"
       - "data/yen_policy_news_alert_config.json"
@@ -58,9 +62,10 @@ jobs:
           python -m py_compile scripts/yen_policy_news_alert.py
           python -m py_compile scripts/yen_policy_news_alert_runner.py
           python -m py_compile scripts/yen_policy_news_event_guard.py
+          python -m py_compile scripts/yen_policy_news_message_guard.py
           python -m py_compile scripts/yen_policy_news_linkify.py
           python -m py_compile scripts/khs_source_fetch.py
-          PYTHONPATH=scripts python -m unittest tests/test_yen_policy_news_alert.py tests/test_yen_policy_news_alert_runner.py tests/test_yen_policy_news_event_guard.py tests/test_yen_policy_news_linkify.py -v
+          PYTHONPATH=scripts python -m unittest tests/test_yen_policy_news_alert.py tests/test_yen_policy_news_alert_runner.py tests/test_yen_policy_news_event_guard.py tests/test_yen_policy_news_message_guard.py tests/test_yen_policy_news_linkify.py -v
 
       - name: Check BOJ and yen policy catalysts
         run: PYTHONPATH=scripts python scripts/yen_policy_news_alert_runner.py
@@ -131,30 +136,35 @@ jobs:
 
           title = pathlib.Path("out/yen_policy_news_alert_title.txt").read_text(encoding="utf-8").strip()
           body = pathlib.Path("out/yen_policy_news_alert.md").read_text(encoding="utf-8").strip()
-          text = f"{title}\n\n{body}"[:4096]
-          payload = urllib.parse.urlencode(
-              {
+          import sys
+          sys.path.insert(0, "scripts")
+          from yen_policy_news_message_guard import split_html_message
+          chunks = split_html_message(title, body)
+          message_ids = []
+          for chunk in chunks:
+              payload = urllib.parse.urlencode({
                   "chat_id": chat_id,
-                  "text": text,
+                  "text": chunk,
                   "parse_mode": "HTML",
                   "disable_web_page_preview": "true",
-              }
-          ).encode("utf-8")
-          request = urllib.request.Request(
-              f"https://api.telegram.org/bot{token}/sendMessage",
-              data=payload,
-              method="POST",
-          )
-          with urllib.request.urlopen(request, timeout=25) as response:
-              result = json.loads(response.read().decode("utf-8"))
-          if not result.get("ok"):
-              raise RuntimeError(f"Telegram rejected yen_policy_news message: {result}")
+              }).encode("utf-8")
+              request = urllib.request.Request(
+                  f"https://api.telegram.org/bot{token}/sendMessage",
+                  data=payload,
+                  method="POST",
+              )
+              with urllib.request.urlopen(request, timeout=25) as response:
+                  result = json.loads(response.read().decode("utf-8"))
+              if not result.get("ok") or not (result.get("result") or {}).get("message_id"):
+                  raise RuntimeError(f"Telegram rejected yen_policy_news message: {result}")
+              message_ids.append(result["result"]["message_id"])
 
           confirmed = {
               "status": "confirmed",
               "lane": "yen_policy_news",
               "bot_username": actual,
-              "message_id": result.get("result", {}).get("message_id"),
+              "message_id": message_ids[0],
+              "message_ids": message_ids,
               "confirmed_at_kst": dt.datetime.now(
                   ZoneInfo("Asia/Seoul")
               ).isoformat(timespec="seconds"),
@@ -166,7 +176,7 @@ jobs:
           print(
               "telegram_delivery_confirmed=true "
               f"lane=yen_policy_news bot_username=@{actual} "
-              f"message_id={confirmed['message_id']}"
+              f"message_ids={message_ids}"
           )
           PY
 
