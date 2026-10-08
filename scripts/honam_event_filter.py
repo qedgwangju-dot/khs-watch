@@ -99,12 +99,18 @@ def _executive_visit_signal(item):
     if phase == "completed":
         return 3
 
-    if any(x in lead for x in (
+    completed_verbs = (
         "방문했다", "방문을 마쳤", "방문 완료", "현장을 찾았다",
         "직접 찾았다", "현장을 둘러봤", "현장 점검했다",
         "실사를 마쳤", "현장 방문 마쳤",
-    )):
+    )
+    if any(x in heading for x in completed_verbs):
         return 3
+    # 기사 설명의 '지난달 사장단이 방문했다'는 과거 배경이다.
+    # 회장 본인의 완료 동사가 같은 문장에 있을 때만 완료로 승격한다.
+    for sentence in re.split(r"(?<=[.!?])\s+|(?<=다\.)\s+", _norm(item.get("description")).lower()):
+        if any(actor in sentence for actor in ("최태원", "최 회장")) and any(verb in sentence for verb in completed_verbs):
+            return 3
     # '방문한다', '찾는다', '예정'을 완료로 취급하지 않는다.
     return 1
 
