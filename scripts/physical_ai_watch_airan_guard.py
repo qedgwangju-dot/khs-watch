@@ -199,11 +199,15 @@ def score(item: dict) -> int:
 
 def category(text: str, group: str) -> str:
     if group == 'dongkuk_nps':
+        official_source = next(
+            (name for name in DONGKUK_OFFICIAL_SOURCES if text.endswith(' ' + name)), ''
+        )
+        stage = _dongkuk_stage(text, official_source)
         return {
             'reported_first_shipment': '동국산업 46시리즈 · 10월 초도 납품 보도',
             'official_first_shipment': '동국산업 46시리즈 · 첫 출하 공식 확인',
             'official_contract': '동국산업 46시리즈 · 정식 공급계약',
-        }.get(_dongkuk_stage(text), '동국산업 46시리즈 · 품질 인증 기존 기준선')
+        }.get(stage, '동국산업 46시리즈 · 품질 인증 기존 기준선')
     if group == 'airan':
         stage = _stage(text)
         if stage == 'commercial':
