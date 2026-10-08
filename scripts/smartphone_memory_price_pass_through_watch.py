@@ -100,8 +100,10 @@ COST_MARKERS = (
     "부품 원가", "메모리 가격", "메모리 원가", "원가 상승", "칩플레이션",
 )
 CONFIG_MARKERS = (
-    "reduce ram", "reduce storage", "cut ram", "cut storage", "same configuration",
-    "no upgrade", "사양 축소", "용량 축소", "메모리 축소", "저장용량 축소",
+    "reduce ram", "reduced ram", "cuts ram", "ram cut", "ram reduction",
+    "reduced memory", "reduce storage", "cut ram", "cut storage",
+    "same configuration", "no upgrade",
+    "사양 축소", "용량 축소", "메모리 축소", "저장용량 축소",
 )
 SHIPMENT_MARKERS = (
     "shipment", "shipments", "forecast", "출하", "출하량", "전망",
