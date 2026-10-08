@@ -82,18 +82,18 @@ def write_json(path: pathlib.Path, value: dict) -> None:
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
-def chart_url(base: str, symbol: str) -> str:
+def chart_url(base: str, symbol: str, interval: str = "5m", range_days: str = "5d") -> str:
     params = urllib.parse.urlencode(
-        {"interval": "5m", "range": "5d", "includePrePost": "true", "events": "div,splits"}
+        {"interval": interval, "range": range_days, "includePrePost": "true", "events": "div,splits"}
     )
     return f"{base}/{urllib.parse.quote(symbol, safe='')}?{params}"
 
 
-def fetch_symbol_points(symbol: str) -> list[tuple[float, float]]:
+def fetch_symbol_points(symbol: str, interval: str = "5m", range_days: str = "5d") -> list[tuple[float, float]]:
     series: list[list[tuple[float, float]]] = []
     errors: list[str] = []
     for base in fx.YAHOO_BASES:
-        url = chart_url(base, symbol)
+        url = chart_url(base, symbol, interval=interval, range_days=range_days)
         text, error = fetch_text(url, USER_AGENT, timeout=18, attempts=2, accept="application/json")
         if error or not text:
             errors.append(error or "empty response")
@@ -162,6 +162,34 @@ def make_cross_move(code: str, label: str, points: list[tuple[float, float]]) ->
     ch60 = pct_change(latest, reference_value(points, 60))
     stressed = ch30 <= TARGET_30M_STRESS_PCT or ch60 <= TARGET_60M_STRESS_PCT
     return CrossMove(code, label, latest, latest_ts, ch15, ch30, ch60, stressed)
+
+
+
+def recover_sparse_target_cross(
+    code: str,
+    symbol: str,
+    label: str,
+    original_jpy: list[tuple[float, float]],
+    original_target: list[tuple[float, float]],
+    now: dt.datetime,
+) -> CrossMove:
+    """Use fresh 1-minute bars ONLY when 5-minute bars have a reference gap.
+
+    Both reconstructed legs must match the original latest prices, be fresh,
+    and contain real 15/30/60-minute observations. No stale-price carry forward.
+    """
+    jpy = fetch_symbol_points(fx.SYMBOL, interval="1m", range_days="1d")
+    target = fetch_symbol_points(symbol, interval="1m", range_days="1d")
+    newest_age = now.timestamp() - min(jpy[-1][0], target[-1][0])
+    if not -120 <= newest_age <= 900:
+        raise RuntimeError(f"1m fallback stale: age={newest_age:.0f}s")
+    for one_minute, five_minute, leg in [
+        (jpy[-1][1], original_jpy[-1][1], "USD/JPY"),
+        (target[-1][1], original_target[-1][1], f"USD/{code}"),
+    ]:
+        if not 0 < five_minute or abs(one_minute / five_minute - 1) > 0.003:
+            raise RuntimeError(f"1m/5m price mismatch: {leg}")
+    return make_cross_move(code, label, cross_series(jpy, target))
 
 
 def classify_target_spread(moves: list[CrossMove], usdjpy_15m: float, usdjpy_30m: float, usdjpy_60m: float) -> dict:
@@ -255,14 +283,28 @@ def process(now: dt.datetime | None = None) -> int:
             source_failure(f"Yahoo {code}", page, str(exc), now)
 
     moves: list[CrossMove] = []
+    recovered: list[str] = []
     if "JPY" in symbol_points:
-        for code, (_symbol, label) in TARGETS.items():
+        for code, (symbol, label) in TARGETS.items():
             if code not in symbol_points:
                 continue
             try:
                 moves.append(make_cross_move(code, label, cross_series(symbol_points["JPY"], symbol_points[code])))
             except Exception as exc:
-                errors.append(f"{code}/JPY: {type(exc).__name__}: {exc}")
+                if "reference" in str(exc) or "aligned 5m" in str(exc):
+                    try:
+                        move = recover_sparse_target_cross(
+                            code, symbol, label, symbol_points["JPY"], symbol_points[code], now
+                        )
+                        moves.append(move)
+                        recovered.append(code)
+                        continue
+                    except Exception as fallback_exc:
+                        errors.append(
+                            f"{code}/JPY: 5m gap={exc}; 1m fallback={type(fallback_exc).__name__}: {fallback_exc}"
+                        )
+                else:
+                    errors.append(f"{code}/JPY: {type(exc).__name__}: {exc}")
 
     available = len(moves)
     incomplete = available < 2 or "JPY" not in symbol_points
@@ -282,6 +324,8 @@ def process(now: dt.datetime | None = None) -> int:
         "checked_at_kst": now.astimezone(KST).isoformat(timespec="seconds"), "available_count": available,
         "incomplete": incomplete, "usd_jpy_changes": {"15m_pct": ch15, "30m_pct": ch30, "60m_pct": ch60},
         "moves": [asdict(m) for m in moves], "classification": classification,
+        "recovered_1m": recovered,
+        "coverage_limited": available < len(TARGETS),
         "thresholds": {"target_30m_pct": TARGET_30M_STRESS_PCT, "target_60m_pct": TARGET_60M_STRESS_PCT,
                        "yen_15m_pct": fx.FAST_WARNING_THRESHOLDS[15], "yen_30m_pct": fx.FAST_WARNING_THRESHOLDS[30],
                        "yen_60m_pct": YEN_60M_SHOCK_PCT}, "errors": errors,
@@ -292,6 +336,10 @@ def process(now: dt.datetime | None = None) -> int:
           f"- 엔화 급등 조건: {'충족' if classification.get('yen_shock') else '미충족'}",
           f"- 투자통화 동반 약세: {classification.get('stressed_count', 0)}/3",
           f"- 청산 확산 확인: {'예' if classification.get('active_confirmation') else '아니오'}"]
+    if recovered:
+        md += ["", "- 1분봉 보조 검증 성공: " + ", ".join(recovered)]
+    if context["coverage_limited"]:
+        md += ["", f"- 일부 자료 확인 불가: {available}/3 통화 확인 — 없는 데이터를 청산 확인으로 사용하지 않음"]
     if errors:
         md += ["", "## 자료 확인 지연"] + [f"- {e}" for e in errors]
     CONTEXT_MD.write_text("\n".join(md) + "\n", encoding="utf-8")
