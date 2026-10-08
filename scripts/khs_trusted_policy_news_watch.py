@@ -44,6 +44,14 @@ AI_FORCE_ALERT_PATH = OUT_DIR / "khs_ai_force_policy_alert.md"
 AI_FORCE_TITLE_PATH = OUT_DIR / "khs_ai_force_policy_title.txt"
 
 OFFICIAL_DIRECT_STORIES = {
+    # Primary evidence: 2026-10-07 Treasury release, not a robot-maker SDN designation.
+    "us_treasury_outbound_ai_robotics_enforcement": (
+        (
+            "https://home.treasury.gov/news/press-releases/sb0652",
+            "Treasury Announces Enforcement Penalty for Violation of Outbound Program",
+            "U.S. Department of the Treasury",
+        ),
+    ),
     "us_congress_chinese_optical_transceiver_restriction": (
         (
             "https://www.mccormick.senate.gov/news/press-releases/senators-mccormick-gallego-cornyn-fetterman-introduce-bill-to-keep-chinese-transceivers-out-of-u-s-national-security-systems/",
@@ -189,6 +197,8 @@ RULE_MAX_AGE_HOURS = {
     # semantic event key below prevents article republication dates from
     # becoming false "new official stage" alerts.
     "us_fcc_foreign_energy_inverter_ban": 24 * 90,
+    # Recover the Treasury enforcement release once, not each time it is reprinted.
+    "us_treasury_outbound_ai_robotics_enforcement": 24 * 14,
     # Backfill only the verified launch/current execution stages once; after
     # that semantic event keys prevent republications from becoming new alerts.
     "us_dow_project_meridian_future_warfare": 24 * 7,
@@ -744,6 +754,39 @@ STORY_RULES = (
         impacts=("시간표", "수급", "돈 버는 능력"),
         paths=("정책 타임라인", "수급", "중국 대체 공급망"),
         follow_up="오늘 바뀐 것은 확정 매출이 아니라 정책 시간표·테마 수급입니다. 공식 상무부 발표, 관세/수입제한 품목, OSC 대출 조건을 후속 확인해야 합니다.",
+    ),
+    StoryRule(
+        key="us_treasury_outbound_ai_robotics_enforcement",
+        title="미 재무부, 중국 로봇·AI 투자 신고 위반 첫 과징금",
+        google_queries=(
+            'site:home.treasury.gov/news/press-releases/sb0652 Amidi Noematrix outbound penalty',
+            '"Treasury Announces Enforcement Penalty for Violation of Outbound Program"',
+            'US Treasury Amidi Noematrix first outbound investment security program penalty robotics AI',
+            'Reuters Treasury OISP China artificial intelligence robotics investment penalty',
+            'US Treasury outbound investment security program COINS scope rule enforcement update',
+        ),
+        required_groups=(
+            ("outbound investment", "outbound program", "outbound rules", "oisp", "31 cfr part 850"),
+            ("treasury", "department of the treasury", "美國財政部", "미 재무부"),
+            ("china", "chinese", "amidi", "noematrix", "country of concern", "prc", "중국"),
+            ("penalty", "fine", "enforcement", "notification", "notifiable", "prohibited", "ban", "restriction", "expansion", "rule", "과징금", "제재"),
+            ("artificial intelligence", "robot", "ai", "quantum", "semiconductor", "체화형", "인공지능"),
+        ),
+        core=(
+            "미 재무부의 해외투자안보프로그램(OISP)은 미국인의 특정 대중 첨단기술 투자를 신고 대상 또는 금지 대상으로 분리합니다. "
+            "2026년 10월 7일 첫 공개 과징금은 신고 의무 위반 사건으로, 중국 로봇 제조사 자체의 수입금지나 자산동결 조치가 아닙니다."
+        ),
+        impact="중국 AI·로봇·반도체·양자 기업 투자금 유입, 미국계 펀드 규제 준수비용 | 자본조달·할인율·시간표",
+        point="미국 투자자의 규제 준수 부담과 중국 첨단기술 스타트업의 달러 조달 경로를 바꿀 수 있지만, 한국 로봇업체의 수주 증가가 확인된 것은 아닙니다.",
+        counter="신고 의무 위반의 첫 과징금을 중국 로봇기업에 대한 수출금지·OFAC 자산동결·모든 투자 전면 금지로 확대 해석해서는 안 됩니다.",
+        sectors="중국 로봇·체화형 AI, 첨단 반도체, 양자컴퓨팅, 벤처투자·사모펀드, 한국 로봇 생태계",
+        impacts=("자본조달·돈 버는 능력", "할인율", "시간표"),
+        paths=("규제 집행", "해외투자 신고", "금지거래", "자금조달", "정책 시간표"),
+        follow_up=(
+            "미 재무부의 추가 OISP 집행 사례, 신고와 금지의 구분, 자회사·펀드 투자 책임, "
+            "31 CFR part 850 정정·발효, COINS에 따른 국가·산업 확대 및 실제 투자·수주 변화를 확인합니다."
+        ),
+        trusted_sources=("U.S. Department of the Treasury", "U.S. Treasury", "US Treasury", "South China Morning Post"),
     ),
     StoryRule(
         key="uk_china_ev_tariff_review",
@@ -1678,6 +1721,29 @@ def semantic_policy_event_key(item: dict) -> str:
             for key in ("title", "description", "link", "source")
         )
     ).lower()
+    # Distinguish outbound-investment penalties from export bans or OFAC sanctions.
+    # Title plus party markers prevents recycled press coverage from generating alerts.
+    outbound_terms = ("outbound investment", "outbound program", "oisp", "31 cfr part 850")
+    if any(term in text for term in outbound_terms) and any(
+        term in text for term in ("treasury", "amidi", "noematrix", "미 재무부")
+    ):
+        if (
+            ("amidi" in text or "noematrix" in text)
+            and any(term in text for term in ("penalty", "fined", "fine", "과징금"))
+        ):
+            return "us-treasury-oisp-amidi-noematrix-notification-penalty-2026-10-07"
+        policy_title = clean_story_title(title_text).lower()
+        if any(term in policy_title for term in ("penalty", "fines", "enforcement action", "settlement", "과징금")):
+            return "us-treasury-oisp-enforcement-" + hashlib.sha1(policy_title.encode("utf-8")).hexdigest()[:12]
+        if any(term in policy_title for term in ("final rule", "adopts rule", "rule finalized", "최종 규칙")):
+            return "us-treasury-oisp-final-" + hashlib.sha1(policy_title.encode("utf-8")).hexdigest()[:12]
+        if any(term in policy_title for term in ("proposes", "proposed rule", "seeks comments", "의견수렴")):
+            return "us-treasury-oisp-proposal-" + hashlib.sha1(policy_title.encode("utf-8")).hexdigest()[:12]
+        if any(term in policy_title for term in ("effective", "takes effect", "시행")):
+            return "us-treasury-oisp-effective-" + hashlib.sha1(policy_title.encode("utf-8")).hexdigest()[:12]
+        if any(term in policy_title for term in ("expands", "expansion", "amends", "revises", "확대", "개정")):
+            return "us-treasury-oisp-scope-" + hashlib.sha1(policy_title.encode("utf-8")).hexdigest()[:12]
+
     # SIF stages: establishment -> authority/funding -> report; replayed coverage stays deduped.
     sif_terms = ("super intelligence force", "superintelligence force")
     if any(term in text for term in sif_terms):
@@ -2183,6 +2249,7 @@ def alert_item_groups(rule: StoryRule, items: list[dict]) -> list[list[dict]]:
     if rule.key in {
         "us_dow_project_meridian_future_warfare",
         "us_dow_autonomous_warfare_execution",
+        "us_treasury_outbound_ai_robotics_enforcement",
     }:
         grouped: dict[str, list[dict]] = {}
         for item in items:
@@ -2745,6 +2812,34 @@ def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] 
         return None
     title = str(items[0].get("title", ""))
     semantic_key = semantic_policy_event_key(items[0])
+    if (
+        rule.key == "us_treasury_outbound_ai_robotics_enforcement"
+        and semantic_key == "us-treasury-oisp-amidi-noematrix-notification-penalty-2026-10-07"
+    ):
+        return {
+            "title": "미 재무부, 중국 로봇·체화형 AI 투자 미신고 첫 과징금",
+            "core": "미 재무부는 중국 Noematrix에 대한 미국계 해외투자 신고 누락을 이유로 Amidi, LLC에 첫 OISP 과징금을 부과했다고 발표했습니다.",
+            "stage": "과징금 처분 공표. 신고 의무 위반으로, 중국 로봇기업 자체의 수입금지·자산동결이 아닙니다.",
+            "event_date": "2026년 10월 7일",
+            "event_date_label": "공식 발표일",
+            "show_publication_date": False,
+            "actual_bullets": [
+                "Amidi의 중국 펀드 자회사가 2025년 4월 19일 상하이 로봇·체화형 AI 기업 Shanghai Qiongche Intelligent Technology(Noematrix)에 92,478달러(약 1억2,392만원)를 투자했습니다.",
+                "미 재무부는 필요한 사전·사후 신고를 하지 않은 문제로 2026년 7월 20만 달러(약 2억6,799만원) 민사 과징금을 부과했고 10월 7일 발표했습니다.",
+                "Amidi는 Plug and Play Tech Center 운영조직의 모회사입니다. 중국 투자대상 기업이 OFAC 제재명단에 추가됐다는 발표는 아닙니다.",
+            ],
+            "timeline": "2025년 1월 2일 OISP 시행 → 2025년 4월 19일 투자 → 2026년 7월 과징금 결정 → 2026년 10월 7일 대외 발표",
+            "scope_note": "첫 집행은 신고 누락에 대한 민사 과징금입니다. 모든 중국 로봇·AI 투자 금지, 미국의 중국 로봇 수입금지, 한국 로봇업체 확정 수주로 해석하지 않습니다. 원화는 2026년 10월 7일 달러당 1,339.95원 기준 계산값입니다.",
+            "korea": "국내 로봇기업 직접 수주·매출 확인 전으로 테마 반사이익과 실제 계약을 구분합니다.",
+            "next": "재무부 추가 집행·벌금, COINS 적용범위 확대, 신고 대상·금지 대상 구분, 펀드·자회사 투자 의무 및 후속 규칙을 감시합니다.",
+            "investment": rule.point,
+            "priced_in": "정책 집행 첫 사례로 미국계 투자자의 규제 위험이 구체화됐습니다. 국내 로봇주 직접 수혜는 확인되지 않았습니다.",
+            "counter": rule.counter,
+            "failure": rule.follow_up,
+            "impacts": rule.impacts,
+            "paths": rule.paths,
+            "sectors": rule.sectors,
+        }
     fcc_profiles = {
         "us-fcc-space-nepa-adopted": {
             "title": "미 FCC, 우주 기반 운영의 NEPA 환경심사 범위 축소",
@@ -3494,6 +3589,17 @@ def compact_explanation_lines(rule: StoryRule, items: list[dict], explain_item: 
 def alert_confirmation_status(rule: StoryRule, items: list[dict]) -> tuple[str, str]:
     """Return a conservative status, upgrading only first-party verified events."""
     if (
+        rule.key == "us_treasury_outbound_ai_robotics_enforcement"
+        and any(
+            str(item.get("link") or "").lower().startswith("https://home.treasury.gov/news/press-releases/")
+            or str(item.get("source") or "").strip().lower() in {
+                "u.s. department of the treasury", "u.s. treasury", "us treasury"
+            }
+            for item in items
+        )
+    ):
+        return "공식 확인", "미 재무부 OISP 공식 보도자료 확인 완료"
+    if (
         rule.key in {
             "us_dow_project_meridian_future_warfare",
             "us_dow_autonomous_warfare_execution",
@@ -3608,6 +3714,34 @@ def render_auction115_compact_body(now: dt.datetime) -> str:
         f'- 다음: 낙찰자 → 통신사 CAPEX → 삼성전자·Ericsson·Nokia 수주 → 국내 주문 · <a href="{reuters_url}">Reuters</a>',
         f'- 출처: <a href="{fcc_url}">FCC 원문</a>',
     ]) + "\n"
+
+
+def _self_test_us_treasury_outbound_event_model() -> None:
+    rule = next(r for r in STORY_RULES if r.key == "us_treasury_outbound_ai_robotics_enforcement")
+    first = {
+        "title": "Treasury Announces Enforcement Penalty for Violation of Outbound Program",
+        "description": "The Treasury issued its first civil penalty under the Outbound Investment Security Program (OISP). Amidi LLC's Chinese subsidiary fund invested $92,478 in Noematrix (Shanghai robotics and embodied artificial intelligence); the parent was fined $200,000 for failing to notify Treasury.",
+        "link": "https://home.treasury.gov/news/press-releases/sb0652",
+        "source": "U.S. Department of the Treasury",
+        "published_kst": "2026-10-07T12:00:00+09:00",
+    }
+    replay = {
+        **first,
+        "title": "US issues first outbound investment fine over Chinese robotics AI deal",
+        "source": "South China Morning Post",
+        "link": "https://www.scmp.com/news/china/diplomacy/example",
+    }
+    key = "us-treasury-oisp-amidi-noematrix-notification-penalty-2026-10-07"
+    assert has_required_terms(" ".join((first["title"], first["description"], first["source"])), rule)
+    assert semantic_policy_event_key(first) == key
+    assert semantic_policy_event_key(replay) == key
+    assert story_event_fingerprint(rule, [first]) == story_event_fingerprint(rule, [replay])
+    assert alert_confirmation_status(rule, [first])[0] == "공식 확인"
+    assert alert_confirmation_status(rule, [replay])[0] == "공식 확인 전"
+    profile = item_story_profile(rule, [first])
+    assert profile and "수입금지·자산동결이 아닙니다" in str(profile["stage"])
+    assert "2026년 7월" in str(profile["timeline"])
+    assert "2026년 10월 7일" in str(profile["timeline"])
 
 
 def _self_test_fcc_optical_transceiver_event_model() -> None:
@@ -3911,6 +4045,7 @@ def main() -> int:
 
 
 if __name__ == "__main__":
+    _self_test_us_treasury_outbound_event_model()
     _self_test_fcc_optical_transceiver_event_model()
     _self_test_super_intelligence_force_event_model()
     raise SystemExit(main())
