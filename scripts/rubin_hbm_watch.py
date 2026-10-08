@@ -699,6 +699,8 @@ def enrich_event(event: dict) -> dict:
     direct = decode_google_news_url(e.get("link") or "")
     e["direct_link"] = direct
     e["link_verified"] = bool(direct)
+    # URL decoding is NOT proof that an official article body was fetched.
+    e["article_fetch_succeeded"] = False
     e["article_title"] = e.get("title") or ""
     e["article_description"] = e.get("description") or ""
     e["article_text"] = ""
@@ -712,6 +714,7 @@ def enrich_event(event: dict) -> dict:
         og_title = meta_content(raw, "og:title") or meta_content(raw, "twitter:title")
         desc = meta_content(raw, "og:description") or meta_content(raw, "description")
         body = article_text_from_html(raw)
+        e["article_fetch_succeeded"] = True
         if og_title:
             e["article_title"] = og_title
         if desc:
@@ -2438,6 +2441,10 @@ def extract_hbm_hybrid_official_observation(event: dict) -> dict | None:
     HBM4E MR-MUF shipments and generic hybrid-bonding research are excluded
     unless one sentence explicitly links hybrid bonding, HBM, and the stage.
     """
+    # Without successfully fetching the *publisher's* article HTML, a
+    # headline or syndicated RSS snippet cannot be promoted to official fact.
+    if event.get("article_fetch_succeeded") is not True:
+        return None
     url = event.get("direct_link") or ""
     host = (urlparse(url).hostname or "").lower()
     if host in ("news.skhynix.com", "news.skhynix.co.kr", "www.skhynix.com", "skhynix.com"):
@@ -2456,7 +2463,18 @@ def extract_hbm_hybrid_official_observation(event: dict) -> dict | None:
     sentences = re.split(r"(?<=[.!?。])\s+|\n+", article)
     best = ""
     for sentence in sentences:
-        lower = sentence.lower()
+        lower = sentence.lower().strip()
+        # Newsroom articles regularly mention competitors. The issuer host
+        # alone does not identify WHO achieved the milestone; require one
+        # unambiguous issuer in the same short sentence.
+        if not lower or len(lower) > 480:
+            continue
+        is_sk = bool(re.search(r"\bsk[\s-]*hynix\b|sk하이닉스|에스케이하이닉스", lower, re.I))
+        is_samsung = bool(re.search(r"\bsamsung(?: electronics)?\b|삼성전자", lower, re.I))
+        if (vendor == "skhynix" and not is_sk) or (vendor == "samsung" and not is_samsung):
+            continue
+        if is_sk and is_samsung:
+            continue
         if not re.search(r"\bhbm(?:3e|4e?|5)?\b|고대역폭\s*메모리", lower, re.I):
             continue
         if not re.search(r"hybrid[\s-]*(?:copper[\s-]*)?bonding|hcb|하이브리드\s*(?:구리\s*)?본딩", lower, re.I):
@@ -2529,6 +2547,15 @@ def merge_hbm_hybrid_official_observation(old: dict, observation: dict) -> dict:
     if vendor not in ("skhynix", "samsung") or stage not in HBM_HYBRID_STAGE_RANK:
         return out
     if observation.get("evidence") != "official":
+        return out
+    # Revalidate the issuer's hostname even when a function caller has
+    # erroneously tagged a non-official report as official.
+    obs_host = (urlparse(observation.get("source_url") or "").hostname or "").lower()
+    hosts = {
+        "skhynix": {"news.skhynix.com", "news.skhynix.co.kr", "www.skhynix.com", "skhynix.com"},
+        "samsung": {"news.samsung.com", "semiconductor.samsung.com", "www.samsung.com", "samsung.com"},
+    }
+    if obs_host not in hosts[vendor]:
         return out
     key = f"{vendor}_official_hybrid_stage"
     prev = out.get(key) or "technical_feasibility"
