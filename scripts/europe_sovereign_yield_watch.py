@@ -510,18 +510,18 @@ def build_alert(latest: dict[str, Obs], changes: dict, spread_bp: float | None, 
         "■ 지금 숫자",
     ]
     if fr and "fr10" not in stale:
-        lines.append(f"🇫🇷 Banque de France TEC10 {fr.value:.3f}% / 전일 {signed_bp(changes.get('fr10_day_bp'))} / 기준일 {fr.date}")
+        lines.append(f"🇫🇷 Banque de France TEC10 {fr.value:.3f}% / 직전 공식 관측일 대비 {signed_bp(changes.get('fr10_day_bp'))} / 기준일 {fr.date}")
     if fr_mkt and "fr_mkt" not in stale:
         lines.append(f"   ↳ 프랑스 10년 시장수익률 {fr_mkt.value:.3f}% / 기준일 {fr_mkt.date} (Trading Economics 보조 시장자료)")
     if it and "it10" not in stale:
-        lines.append(f"🇮🇹 이탈리아 10년 시장수익률 {it.value:.3f}% / 전일 {signed_bp(changes.get('it10_day_bp'))} / 기준일 {it.date}")
+        lines.append(f"🇮🇹 이탈리아 10년 시장수익률 {it.value:.3f}% / 출처 표기 전 거래일 대비 {signed_bp(changes.get('it10_day_bp'))} / 기준일 {it.date}")
     if uk and "uk10" not in stale:
-        lines.append(f"🇬🇧 BoE 10년 명목 파수익률 {uk.value:.3f}% / 전일 {signed_bp(changes.get('uk10_day_bp'))} / 기준일 {uk.date}")
+        lines.append(f"🇬🇧 BoE 10년 명목 파수익률 {uk.value:.3f}% / 직전 공식 관측일 대비 {signed_bp(changes.get('uk10_day_bp'))} / 기준일 {uk.date}")
     elif uk_mkt and "uk_mkt" not in stale:
-        lines.append(f"🇬🇧 영국 10년 시장수익률 {uk_mkt.value:.3f}% / 전일 {signed_bp(changes.get('uk_mkt_day_bp'))} / 기준일 {uk_mkt.date} (BoE 공식값 후행으로 Trading Economics 보조 시장자료 사용)")
+        lines.append(f"🇬🇧 영국 10년 시장수익률 {uk_mkt.value:.3f}% / 출처 표기 전 거래일 대비 {signed_bp(changes.get('uk_mkt_day_bp'))} / 기준일 {uk_mkt.date} (BoE 공식값 후행으로 Trading Economics 보조 시장자료 사용)")
     if de and "de10" not in stale:
         suffix = ""
-        lines.append(f"🇩🇪 Bundesbank 10년 {de.value:.3f}% / 전일 {signed_bp(changes.get('de10_day_bp'))} / 기준일 {de.date}{suffix}")
+        lines.append(f"🇩🇪 Bundesbank 10년 {de.value:.3f}% / 직전 공식 관측일 대비 {signed_bp(changes.get('de10_day_bp'))} / 기준일 {de.date}{suffix}")
     if de_mkt and "de_mkt" not in stale:
         lines.append(f"   ↳ 독일 10년 시장수익률 {de_mkt.value:.3f}% / 기준일 {de_mkt.date} (Trading Economics 보조 시장자료)")
     if spread_bp is not None:
@@ -566,7 +566,11 @@ def build_alert(latest: dict[str, Obs], changes: dict, spread_bp: float | None, 
     if uk_mkt:
         lines.append(f"• UK 10Y Trading Economics 보조 시장자료: {uk_mkt.source}")
     if stale:
-        lines += ["", "※ 후행 데이터는 신규 경계 판정에서 제외했습니다: " + ", ".join(stale)]
+        stale_names = {"uk10": "영국 중앙은행 공식 10년물",
+                       "fr10": "프랑스 중앙은행 TEC10",
+                       "de10": "독일 중앙은행 10년물"}
+        dated = [f"{stale_names.get(k, k)} ({latest[k].date})" for k in stale if k in latest]
+        lines += ["", "※ 기준일이 늦은 자료는 신규 경보에서 제외: " + ", ".join(dated)]
     if errors:
         lines += ["※ 일부 보조 소스는 확인 불가였지만, 해당 값은 경보 계산에서 제외했습니다. 상세 오류는 실행 상태에만 기록합니다."]
 
