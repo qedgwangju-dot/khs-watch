@@ -92,6 +92,18 @@ class YenHistoricalFundingSafety(unittest.TestCase):
             items, _ = base.collect_items(now)
         self.assertFalse(any(x.link == guard.FOMC_MINUTES_URL for x in items))
 
+    def test_media_only_funding_story_does_not_claim_official_confirmation(self):
+        x = item("Fed Used Treasury Funds to Support Yen in Joint Intervention - Bloomberg.com")
+        classified = base.classify(x)
+        title, body, payload = base.build_message(
+            [(classified, 1, [classified.source_group])], RELEASE + dt.timedelta(hours=4)
+        )
+        self.assertIn("보도 단계", body)
+        self.assertIn("공식 대조 전", body)
+        self.assertIn("보도 주장", body)
+        self.assertNotIn("공식자료로 확인된 집행 구조", body)
+        self.assertFalse(payload["fresh_intervention"])
+
     def test_urgent_live_alert_source_remains_distinct(self):
         x = item("Fed Used Treasury Funds to Support Yen in Joint Intervention")
         classification = base.classify(x)
