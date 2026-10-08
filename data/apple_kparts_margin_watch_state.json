@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at_kst": "2026-10-08T10:08:05+09:00",
+  "updated_at_kst": "2026-10-08T16:20:06+09:00",
   "initial_alert_sent": true,
   "baseline_at_kst": "2026-09-27T17:05:00+09:00",
   "baseline": {
@@ -38,8 +38,10 @@
     "3b25b918d7752ff75744fcc8",
     "3cf3ef1b3cf069be72cdfae4",
     "3d4a30411c274b22896d32a7",
+    "3eea8d685a6a2ec1221413c0",
     "41187bce6efa74554f66a7a1",
     "4162ef063a91d37847ee9e21",
+    "41a0cb4387ff1e17e9d60a22",
     "41c6ff7b18ee6f97ad19adba",
     "424e8e71d058c86731b2dffb",
     "4346b70866060e5e6a7c9c98",
@@ -107,6 +109,7 @@
     "b9d3e2f22960d6016fbc7ca2",
     "bac44f57c9ffa75904871a3b",
     "bbd8114733e3a15829b6d105",
+    "bc2f79adcc5395d58a59f726",
     "bd283ea6bc9fbc4b7fce0371",
     "be1e0909de89b8dac90a3b9a",
     "bff88584b86d23d8a138158e",
@@ -115,6 +118,7 @@
     "cba557320aa2854debadcd61",
     "cc14169e011f5de69228e146",
     "ccb519aed790de670d115c22",
+    "cd03f191714f461d880cf3c5",
     "cd5f398c24ab65680e5dfff7",
     "cda6d3065496506d792b5ece",
     "cf5a9c38bf692484c028450f",
@@ -124,6 +128,7 @@
     "d4ef256a60a4d6e481467a75",
     "d669a09ccb20d5ea9bb42ccd",
     "d7ab90989cbf67b88cf033c4",
+    "d84c90764ddb8bc8b842ba21",
     "ddb2691df0b50ae0e45a4c23",
     "dec5d2731ee6c20eecf43ac3",
     "dfe36f5ae82f1833ec82786b",
@@ -158,7 +163,7 @@
     "bucket": "orange",
     "average_source": "Fed H.10/FRED"
   },
-  "last_scan_items": 37,
+  "last_scan_items": 41,
   "last_signal_count": 0,
   "last_alert": {
     "at_kst": "2026-09-28T07:38:15+09:00",
