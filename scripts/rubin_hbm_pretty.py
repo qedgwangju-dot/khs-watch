@@ -5,6 +5,8 @@ import pathlib
 import re
 
 ALERT = pathlib.Path("out/rubin_hbm_alert.md")
+MESSAGE_BREAK = "<<<TELEGRAM_MESSAGE_BREAK>>>"
+HYBRID_TITLE = "🚨 HBM 하이브리드 본딩 · 삼성전자 vs SK하이닉스"
 
 
 def find(pattern: str, text: str, default: str = "") -> str:
@@ -22,7 +24,6 @@ def emphasize_metrics(line: str) -> str:
         r"(?<![\w])([+-]?\d+(?:\.\d+)?%)",
         r"(?<![\w])(\d+(?:\.\d+)?\s*(?:GB|TB|Gbps|TB/s|GB/s|W|GW))\b",
         r"(?<![\w])(\$\s*\d+(?:\.\d+)?\s*(?:billion|million|B|M)?)\b",
-        r"(?<![\w])(20\d{2})\b",
     ]
     for pattern in patterns:
         escaped = re.sub(pattern, r"<b>\1</b>", escaped, flags=re.I)
@@ -66,6 +67,9 @@ def event_summaries(original: str) -> list[tuple[str, str]]:
 def htmlify_lines(text: str) -> str:
     out: list[str] = []
     for line in text.splitlines():
+        if line.strip() == MESSAGE_BREAK:
+            out.append(MESSAGE_BREAK)
+            continue
         if not line.strip():
             out.append("")
             continue
@@ -125,18 +129,8 @@ def strip_repeated_header(body: str) -> str:
     return "\n".join(lines).strip()
 
 
-def main() -> None:
-    if not ALERT.exists():
-        return
 
-    original = ALERT.read_text(encoding="utf-8").strip()
-    if not original:
-        return
-
-    # 이미 시각화된 알림은 재처리하지 않는다.
-    if "[이번 변화]" in original:
-        return
-
+def format_generic_alert(original: str) -> str:
     checked = find(r"조회시각:\s*(.+)", original, "확인 불가")
     count = find(r"신규 핵심 변화:\s*(\d+건)", original, "확인 불가")
     fx = find(r"원화 환산:\s*(.+)", original)
@@ -213,6 +207,78 @@ def main() -> None:
         + htmlify_lines(body)
         + "\n"
     )
+    return formatted
+
+
+def format_hybrid_alert(original: str) -> str:
+    """Telegram HTML with no irrelevant scenario, percent-encoded display URL, or year regex."""
+    from urllib.parse import urlparse
+
+    allowed = {
+        "Damnang": ("damnang.com", "www.damnang.com"),
+        "TechPowerUp": ("techpowerup.com", "www.techpowerup.com"),
+        "SK하이닉스 공식": ("news.skhynix.com", "www.skhynix.com"),
+        "삼성전자 공식": ("news.samsung.com",),
+        "Counterpoint": ("counterpointresearch.com", "www.counterpointresearch.com"),
+    }
+    out: list[str] = []
+    for raw in original.splitlines():
+        line = raw.strip()
+        if not line:
+            out.append("")
+            continue
+        m = re.fullmatch(
+            r"(Damnang|TechPowerUp|SK하이닉스 공식|삼성전자 공식|Counterpoint)\s+(https?://\S+)",
+            line,
+        )
+        if m:
+            label, url = m.groups()
+            host = (urlparse(url).hostname or "").lower()
+            if host not in allowed[label]:
+                out.append(f"• {html.escape(label)}: 원문 주소 재검증 필요")
+                continue
+            out.append(
+                f'• {html.escape(label)}: <a href="{html.escape(url, quote=True)}">원문 보기</a>'
+            )
+        elif line == MESSAGE_BREAK:
+            out.append(MESSAGE_BREAK)
+        elif line.startswith("■ "):
+            out.append(f"<b>{html.escape(line, quote=False)}</b>")
+        elif line.startswith("🚨 "):
+            out.append(f"<b>{html.escape(line, quote=False)}</b>")
+        elif line.startswith("상태:"):
+            out.append(f"<b>{html.escape(line, quote=False)}</b>")
+        else:
+            # In particular preserve '2026-10-08', '99%이고', and all Korean text.
+            out.append(html.escape(raw, quote=False))
+    return "\n".join(out).strip() + "\n"
+
+
+def main() -> None:
+    if not ALERT.exists():
+        return
+    original = ALERT.read_text(encoding="utf-8").strip()
+    if not original:
+        return
+
+    if "<b>[이번 변화]</b>" in original or "<b>" + HYBRID_TITLE + "</b>" in original:
+        return
+
+    sections = [part.strip() for part in original.split(MESSAGE_BREAK) if part.strip()]
+    if not sections:
+        return
+    if any(part.startswith(HYBRID_TITLE) for part in sections):
+        normal = [part for part in sections if not part.startswith(HYBRID_TITLE)]
+        hybrid = [part for part in sections if part.startswith(HYBRID_TITLE)]
+        pretty_sections = []
+        if normal:
+            pretty_sections.append(format_generic_alert(("\n" + MESSAGE_BREAK + "\n").join(normal)))
+        pretty_sections += [format_hybrid_alert(part) for part in hybrid]
+        formatted = ("\n\n" + MESSAGE_BREAK + "\n\n").join(
+            part.strip() for part in pretty_sections if part.strip()
+        ) + "\n"
+    else:
+        formatted = format_generic_alert(original)
     ALERT.write_text(formatted, encoding="utf-8")
 
 
