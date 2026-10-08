@@ -388,6 +388,53 @@ class AgenticCpuStructureTests(unittest.TestCase):
         self.assertTrue(recovered["next"]["cpu_structure"]["cpu_xpu_ratio_alert_sent"])
         self.assertFalse(run(recovered["next"])["alerted"])
 
+    def test_digitimes_provenance_upgrade_and_future_source_link(self):
+        original = w.CPU_STRUCTURE_BASELINE
+        old_digitimes = dict(original["digitimes"])
+        old_digitimes["cpu_xpu_ratio_source_kind"] = (
+            "잘못된 과거 상태: DIGITIMES 원문 표제가 2027년이라고 단정"
+        )
+        structure = {
+            **original, "digitimes": old_digitimes, "cpu_xpu_ratio_alert_sent": True,
+        }
+        prev = {
+            **w.BASELINE,
+            "cpu_structure_track_version": w.CPU_STRUCTURE_TRACK_VERSION,
+            "cpu_structure": structure,
+        }
+
+        def run(new):
+            with (
+                mock.patch.object(w, "load_json", side_effect=[{"agentic_cpu_demand": prev}, {}]),
+                mock.patch.object(w, "discover_forecasts", return_value=[]),
+                mock.patch.object(w, "discover_validation", return_value=[]),
+                mock.patch.object(w, "discover_cpu_structure", return_value=new),
+                mock.patch.object(w, "get_fx", return_value=(1343.88, "2026-10-08")),
+                mock.patch.object(w, "ALERT_PATH") as alert,
+                mock.patch.object(w, "write_json") as writer,
+            ):
+                alert.exists.return_value = False
+                w.main()
+                next_state = writer.call_args.args[1]["agentic_cpu_demand"]["cpu_structure"]
+                return next_state, alert.write_text.called
+
+        repaired, sent = run([])
+        self.assertFalse(sent)
+        self.assertEqual(
+            repaired["digitimes"]["cpu_xpu_ratio_source_kind"],
+            original["digitimes"]["cpu_xpu_ratio_source_kind"],
+        )
+        new_url = "https://www.digitimes.com.tw/research/report/?v=20261012-new"
+        revised, sent2 = run([{
+            "issuer": "digitimes",
+            "metrics": {"cpu_xpu_ratio_2027": 2.0},
+            "url": new_url,
+            "as_of": "2026-10-12",
+        }])
+        self.assertTrue(sent2)
+        self.assertEqual(revised["digitimes"]["cpu_xpu_ratio_source_url"], new_url)
+        self.assertIn("신규 공식자료", revised["digitimes"]["cpu_xpu_ratio_source_kind"])
+
     def test_one_shot_cpu_alert_has_separate_official_and_broker_provenance(self):
         a = w.cpu_structure_block(w.CPU_STRUCTURE_BASELINE, 1400.0, [])
         self.assertIn("260억달러(약", a)
