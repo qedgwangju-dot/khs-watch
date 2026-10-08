@@ -1,13 +1,13 @@
 {
-  "last_checked_kst": "2026-10-08T15:35:20+09:00",
+  "last_checked_kst": "2026-10-08T22:59:05+09:00",
   "active": {
     "fr10:above:4.5": true,
     "fr10:above:4.75": true,
     "fr10:above:5.0": false,
-    "fr10:daymove:10.0": true,
+    "fr10:daymove:10.0": false,
     "fr10:5obs:25.0": false,
     "de10:above:3.25": true,
-    "de10:above:3.5": false,
+    "de10:above:3.5": true,
     "de10:above:3.75": false,
     "de10:daymove:10.0": false,
     "de10:5obs:25.0": false,
@@ -29,24 +29,40 @@
       {
         "date": "2026-10-07",
         "value": 4.834
+      },
+      {
+        "date": "2026-10-08",
+        "value": 4.898
       }
     ],
     "de10": [
       {
         "date": "2026-10-07",
         "value": 3.49
+      },
+      {
+        "date": "2026-10-08",
+        "value": 3.5
       }
     ],
     "uk10": [
       {
         "date": "2026-10-05",
         "value": 5.3634
+      },
+      {
+        "date": "2026-10-06",
+        "value": 5.3368
       }
     ],
     "fr_mkt": [
       {
         "date": "2026-10-07",
         "value": 4.89
+      },
+      {
+        "date": "2026-10-08",
+        "value": 4.87
       }
     ],
     "de_mkt": [
@@ -82,21 +98,21 @@
   },
   "source_fail_streak": 0,
   "last_source_dates": {
-    "fr10": "2026-10-07",
-    "de10": "2026-10-07",
-    "uk10": "2026-10-05",
-    "fr_mkt": "2026-10-07",
+    "fr10": "2026-10-08",
+    "de10": "2026-10-08",
+    "uk10": "2026-10-06",
+    "fr_mkt": "2026-10-08",
     "de_mkt": "2026-10-08",
     "it10": "2026-10-08",
     "uk_mkt": "2026-10-08"
   },
   "last_values": {
-    "fr10": 4.834,
-    "de10": 3.49,
-    "uk10": 5.3634,
-    "fr_mkt": 4.89,
+    "fr10": 4.898,
+    "de10": 3.5,
+    "uk10": 5.3368,
+    "fr_mkt": 4.87,
     "de_mkt": 3.48,
-    "it10": 4.66,
+    "it10": 4.6,
     "uk_mkt": 5.45
   },
   "stale": [
