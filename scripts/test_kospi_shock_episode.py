@@ -369,3 +369,76 @@ finally:
         else:
             _env[_k] = _v
 print("telegram_transport_retry_regression=true")
+
+
+# 2026-10-08 09:58 실전 경보 검산: 계산합계 -40,892와 LS 직접값 -39,448의
+# 차이 +1,444(3.53%)는 같은 방향이어도 '정확히 일치/확신도 높음'이 아니다.
+from kospi_shock_episode_watch import program_quality_label, fmt_duration
+w_today = Watch.__new__(Watch)
+w_today.flows = deque([
+    {"ts": 1000.0-16.9,
+     "현물": {"sample_ts":1000.0-16.9, "외국인":0.0,"기관":0.0,"개인":0.0},
+     "선물": {"sample_ts":1000.0-16.9, "외국인":0.0,"기관":0.0,"개인":0.0},
+     "프로그램": {"sample_ts":1000.0-16.9, "전체":0.0, "차익":0.0,
+                    "비차익":0.0, "표본시차초":6.4}},
+    {"ts": 1332.0-18.9,
+     "현물": {"sample_ts":1332.0-18.9, "외국인":-439.0,"기관":-199.0,"개인":535.0},
+     "선물": {"sample_ts":1332.0-18.9, "외국인":-478.0,"기관":660.0,"개인":-96.0},
+     "프로그램": {"sample_ts":1332.0-18.9, "전체":-39448.0, "차익":4898.0,
+                    "비차익":-45790.0, "표본시차초":6.4}},
+],maxlen=2500)
+att_today = Watch.attribution(w_today,1000.0,1332.0)
+assert att_today["available"], att_today
+assert att_today["spot_leader"] == "외국인" and att_today["futures_leader"] == "외국인"
+assert att_today["program"]["전체"] == -40892.0, att_today
+assert att_today["program"]["전체직접"] == -39448.0, att_today
+assert att_today["program"]["검산차이"] == 1444.0, att_today
+assert 3.50 < att_today["program_crosscheck_ratio_pct"] < 3.55, att_today
+assert att_today["program_quality"] is False, att_today
+assert att_today["confidence"] == "중간", att_today
+assert "방향 일치·합계 차이 3.53%" in program_quality_label(att_today), att_today
+w_today.put_defs = []
+w_today.puts = {}
+msg_today = Watch.build_alert(w_today,"start",{
+    "start_ts":1000.0,"start_price":6766.49,
+    "low_ts":1332.0,"low_price":6741.59,
+},1332.0,6741.59)
+assert "확신도 중간" in msg_today, msg_today
+assert "방향 일치·합계 차이 3.53%" in msg_today, msg_today
+assert "주도 가능성 높음" not in msg_today, msg_today
+assert "5분 32초" in msg_today, msg_today
+print("20261008_flow_precision_regression=true program_gap=1444 raw_ratio=3.53 confidence=medium")
+
+# 프로그램 숫자가 거의 일치하면 고확신 진입 가능성을 유지한다.
+w_today.flows[-1]["프로그램"]["전체"] = -40800.0
+att_close = Watch.attribution(w_today,1000.0,1332.0)
+assert att_close["program_quality"] is True, att_close
+assert att_close["confidence"] == "높음", att_close
+assert "근사 일치" in program_quality_label(att_close)
+print("tight_program_tolerance_regression=true")
+
+# 합계가 0인데 직접값이 음수인 경우는 방향 '일치'로 승격하지 않는다.
+w_today.flows[-1]["프로그램"]["전체"] = -500.0
+w_today.flows[-1]["프로그램"]["차익"] = 0.0
+w_today.flows[-1]["프로그램"]["비차익"] = 0.0
+att_zero = Watch.attribution(w_today,1000.0,1332.0)
+assert not att_zero["program_direction_consistent"], att_zero
+assert att_zero["program_quality"] is False, att_zero
+assert att_zero["confidence"] != "높음", att_zero
+print("zero_program_direction_regression=true")
+
+# 표시 HH:MM:SS 차이와 경과시간 1초 오차가 발생하지 않도록 내림 정수시각을 사용.
+assert fmt_duration(int(1332.1)-int(1000.9)) == "5분 32초"
+print("clock_duration_consistency_regression=true")
+
+# 45% 회복만으로 '원위치 복원'이라고 말하지 않는다.
+w_end = Watch.__new__(Watch)
+w_end.flows = deque(maxlen=2500)
+partial_end = {
+    "start_ts": 1000.0,"start_price":7000.0,
+    "low_ts":1200.0,"low_price":6900.0,
+}
+partial_msg = Watch.build_end(w_end, partial_end, 1350.0, 6950.0)
+assert "종료·반등 확인" in partial_msg, partial_msg
+assert "종료·복원 확인" not in partial_msg, partial_msg
+print("partial_rebound_label_regression=true")
