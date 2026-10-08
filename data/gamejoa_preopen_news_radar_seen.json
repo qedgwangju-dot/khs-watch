@@ -1409,6 +1409,32 @@
       "telegram_core_fact": "워딩턴 스틸(WS)은 2027 회계연도 1분기(2026년 6~8월) 계속사업 기준 매출액이 27억2660만 달러로 전년비 212% 증가했으며, 계속사업 기준 GAAP 희석 주당순손실은 0.14달러로 전년 동기 0.73달러 순이익에서 적자 전환했다고 10월 7일 발표했다.",
       "title": "워딩턴 스틸, 1분기 매출 27억 달러 212%↑..적자전환"
     },
+    "core:25fb2709e9f163ab37bee8bc": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080819422198",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1d5d372fd97d10d0c15a71b6e156316f611895d180853f8922e934d101255eef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0effadefb217b433ffef155dcd50c278fc7e505cc5661305218e128e239db088",
+      "source_fact_keys": [
+        "source_fact:v1:649465956dd282eb510c04fc3242bfea6ae7e40e129cd09202c11ab011991fb2",
+        "source_fact:v1:ceb383669b8579eedb310188be297502e7234ab71f6b7d26a9e122fbb0cacb73",
+        "source_fact:v1:d9607286216a4b4b57397af1b4d6e27d2dd888de06a0d58c5e7a35f02146daaa",
+        "source_fact:v1:e47e75c2b2743e1d9170f6a4c169f2a687dc656ec3cd3596003b83076647973c",
+        "source_fact:v1:ecd6c506a7f326726be654185fafe1396571bd7c321f1be0cce40668da4049d4",
+        "source_fact:v1:ee605453695856fe177124855342a1c670d650aab44245116907747c7d20163f",
+        "source_fact:v1:f8d00e3bbc39370213bcbadec856eb6d157380edfff3a4d4bb05c7e389c308b8",
+        "source_fact:v1:fb3f9164b1af9d5dbbeb6d64a4f59cf3f753a6680d0d69b02f23619a029c217c"
+      ],
+      "source_published_kst": "2026-10-08T08:19+09:00",
+      "source_title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)",
+      "telegram_core_fact": "삼성전자(005930)가 올해 3분기 107조 4000억 원의 영업이익을 기록, 우리나라 기업 사상 처음으로 분기 영업익 100조 시대를 열었다.",
+      "title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)"
+    },
     "core:273d2ea7a346350cf0bf4cde": {
       "first_seen_kst": "2026-10-07T18:00:43+09:00",
       "lanes": {
@@ -2967,6 +2993,56 @@
       "source_title": "리사 수 AMD CEO “반도체는 팀 스포츠, 한국은 핵심 파트너”",
       "telegram_core_fact": "리사 수 AMD 최고경영자(CEO)가 한국을 인공지능(AI)과 반도체 공급망에서 핵심적인 파트너로 꼽았다. 최근 수 CEO가 한국을 잇따라 찾는 배경에도 장기적인 공급망 협력이 있다고 설명했다.",
       "title": "리사 수 AMD CEO “반도체는 팀 스포츠, 한국은 핵심 파트너”"
+    },
+    "core:5ae1dac9616b303df2e7ecc6": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.hankyung.com/article/202610089959g",
+      "source": "한국경제",
+      "source_body_digest": "c8d9a9ed6081918d44d429b82b87732ca84335ce05277c9ed512e47c56c19a0c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11be3e369c5dd8421a39d64a2e5e8ef910f00be446660641f5737cf1409317f0",
+      "source_fact_keys": [
+        "source_fact:v1:42048dec96489b5891e39471ebc6d506d2a9661162f8c0cab66e332e8e5558f7",
+        "source_fact:v1:577876a91f6fc13dc8dd03e85c9454e506f901424c5c5c374681c1dd5d3541ae",
+        "source_fact:v1:cba51f2cc0072a289281db33f2948d61b459f826c8f7b2eddc9b3067da578cec"
+      ],
+      "source_published_kst": "2026-10-08T08:38+09:00",
+      "source_title": "도미노피자, 5년 만에 가격 인상…L사이즈 1500원 뛴다",
+      "telegram_core_fact": "도미노피자는 지난 5년간 물가 안정 기조에 발맞춰 본사 차원에서 원부자재 및 운영비 상승분을 자체 흡수해 왔으나, 원가 압박과 대내외적 불안정성이 지속되면서 본사와 가맹점의 경영 부담이 한계에 달해 조정을 단행하게 됐다고 설명했다.",
+      "title": "도미노피자, 5년 만에 가격 인상…L사이즈 1500원 뛴다"
+    },
+    "core:5bc7d54ca2fcd9e69557a5e7": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171085",
+      "source": "매일경제",
+      "source_body_digest": "3747b63134ac35b70fb908c9e6fe48c6de1560e1b31310a3d76c9a0ac24094fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f89e2178beaa89f6944651a7c378a06d024f8806b15f85118225b06ee61f7dd5",
+      "source_fact_keys": [
+        "source_fact:v1:17af42e2778f8824cae434d44f7598351ee1dca8be9c77f6390e7a10baa55551",
+        "source_fact:v1:1c20db5d37364a25526992f3fc6d6a07ee967ffbd3bc28f01ea24e774e3cf42a",
+        "source_fact:v1:20d41ed86d96c0eeaa426f7fc78b1135fd04af8eb6cc4900f42a3dc19569fa20",
+        "source_fact:v1:320ea8dc05bd11b3b96b1b65f8318e8ba5ee66671efa6706bf4e8663221ad652",
+        "source_fact:v1:3a1f910036e5a868e14c238086cab5e8f1429d1b874c6f3bccdcc9ba1ec610d0",
+        "source_fact:v1:4fe09a58060e650b04e62c9ee19641a2f3e37aa503843f2a0525eedb8cba64f1",
+        "source_fact:v1:54cfbf2773db78bba55fac89292259019eae5cf542ca6723da1b32cb6ce7b3c4",
+        "source_fact:v1:7fe975a801d7f6de72d1ebf4768142ebe21a4769345025ea092eec1a54cb88b9",
+        "source_fact:v1:b26b6243aeac52db6f30ade951ae4ea4bf6e57ded8d87efef0dd041a22516f50",
+        "source_fact:v1:bd04c477f6ed0b50ba1324a4ca5738b1f6294ba25a31407c7756e600a6dc1d17",
+        "source_fact:v1:be92d1fa42d6293dfbf3b10fbdf30892a3721374914e828cf974381be0922526"
+      ],
+      "source_published_kst": "2026-10-08T08:17+09:00",
+      "source_title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박",
+      "telegram_core_fact": "삼성전자의 영업이익은 지난 분기 세계에서 최고치를 기록했는데 이번에도 전세계 기업중 1위를 기록할 것으로 예상된다.",
+      "title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박"
     },
     "core:5cd3e29a43951d473c519dd9": {
       "first_seen_kst": "2026-10-08T03:13:06+09:00",
@@ -5065,6 +5141,26 @@
       "telegram_core_fact": "향후 글로벌 AI 인프라 경쟁에서는 중국의 대규모 데이터센터 건설 계획이 실제 가동으로 얼마나 이어지는지와 미국의 전력망 제약이 어떻게 작용하는지가 주요 변수로 남을 전망이다.",
       "title": "중국, 남아도는 전력으로 AI 승부…데이터센터 건설 가속"
     },
+    "core:99aafe13e7d04dd78a729601": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080759480948",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ae89acae2353ebdacb8065a1f4f6d03931e88d909e805898ebf2ca8b837a7cec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:62e880acb3afc27f7276c8aece82d2f477ef9199c7234bd0b50c0810c9ee48af",
+      "source_fact_keys": [
+        "source_fact:v1:12bb8eb4a64997ae786597cbce2c0fda8678d53214dbe40dd36b8778b58b5851",
+        "source_fact:v1:d3c43792122e92a0d1ca29139ab7fc4e20bda39a87a7ed8eaa824a57b841c462"
+      ],
+      "source_published_kst": "2026-10-08T08:13+09:00",
+      "source_title": "삼성전자 '분기 영업이익 100조' 시대 열었다… 세계 테크기업 '최초'(2보)",
+      "telegram_core_fact": "[파이낸셜뉴스]삼성전자는 올해 3·4분기 영업이익 107조4000억원을 기록하며 '분기 영업이익 100조 시대'를 열었다.",
+      "title": "삼성전자 '분기 영업이익 100조' 시대 열었다… 세계 테크기업 '최초'(2보)"
+    },
     "core:99e75dd8d0c30cff9c7b297e": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
       "lanes": {
@@ -5716,6 +5812,30 @@
       "source_title": "\"미래기금으로 한전·관사·공연관람·농어촌 기본소득 지원\"(종합)",
       "telegram_core_fact": "반도체 산업 호황에 따른 추가 세수를 미래 세대를 위한 투자 재원으로 활용하는 정부의 미래대응기금의 사용 계획에 한국전력[015760] 지원 등의 내용이 포함돼 있다고 국회 재정경제기획위원회 소속 국민의힘 박수영 의원이 7일 밝혔다.",
       "title": "\"미래기금으로 한전·관사·공연관람·농어촌 기본소득 지원\"(종합)"
+    },
+    "core:ab9dc758d64344e91a349655": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080827230920",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "362ac36045f4b8569a1e71e771018df07e554aebf71d0bd006ea1e489966dd43",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee5dbd450b8329f7b023e9de9c64aa02c229b3cf9935c0bb26c933bc5d1a2953",
+      "source_fact_keys": [
+        "source_fact:v1:0a210fc83d5e52580865a07d6f2a584773f31062102ee7b936de56b3a8356545",
+        "source_fact:v1:5543552e1a3f73b393ae74947dce614e629ba31ee617ec1599d36055c848a95e",
+        "source_fact:v1:5fdddc81ddae88f52d622c22cdd9272cecf0f22b501692e25c48f2482fff213f",
+        "source_fact:v1:ac6717d061095f95576ec9ce0235f7bd15ec9c850c1fde58e24380d0b17953ac",
+        "source_fact:v1:d5e037e9874ac704e30388f6b9bf402115a8e4ecc92583ad782ba5689950ae4e",
+        "source_fact:v1:fe6f12e357db565900fa6f43d22598ed39b4eab005f4cc0c8fb0ba5cc5b1972e"
+      ],
+      "source_published_kst": "2026-10-08T08:27+09:00",
+      "source_title": "\"기대치 넘었다\" 삼성전자, 프리마켓서 1.6% 상승…반도체주 강세",
+      "telegram_core_fact": "삼성전자가 시장 기대치를 웃도는 3분기 잠정 실적을 발표하면서 프리마켓에서 1%대 상승세를 보이고 있다. 삼성전자, 올해 3분기 연결 기준 영업이익이 107조 4000억 원으로 잠정 집계됐다고 공시했다.",
+      "title": "\"기대치 넘었다\" 삼성전자, 프리마켓서 1.6% 상승…반도체주 강세"
     },
     "core:abe1f9d007dee5040a6bb4ce": {
       "first_seen_kst": "2026-10-08T01:26:16+09:00",
@@ -6688,6 +6808,31 @@
       ],
       "source_published_kst": "2026-10-07T12:00+09:00",
       "title": "전쟁 틈타 44조원대 유가담합…SK에너지·현대오일뱅크 심판대에 | 연합뉴스"
+    },
+    "core:c1a6afa9967667ccf4649f8a": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610952",
+      "source": "이데일리",
+      "source_body_digest": "2b0b854afd39864b2e9abad65e37cf9a45291ce0a063c8afb43124ee8c3a9d36",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb0d54a924e21fde88997dc6f789c0f21070e7d7aea1771d6b72a177d826aceb",
+      "source_fact_keys": [
+        "source_fact:v1:17ebea6958e6f7dc8abfa197f1e4f0fdde4dd0253a47de6d7a42f739217917c6",
+        "source_fact:v1:2a272bdd1cdeaf2a19996c25d22768c6352e2e93150fdfe088b301855d1f5552",
+        "source_fact:v1:30c8179986dfb7864bea397863a32f74369e6622ce85797711e92a800cfebf13",
+        "source_fact:v1:4431f780899246ffe2ddf1eb7ef6811ac759c382f883b2ee1b715f723afad90d",
+        "source_fact:v1:66dba7e0997aee968de09ec682f2a0f82a990eb1600ddbdbf1cd7abfddb1954e",
+        "source_fact:v1:9c27efd46228fa33304483773914e63d16b4927aa47804b79da0d45db5f7ab26",
+        "source_fact:v1:f68fd3e802c47eecff1c512dbf86fd10b39df97e851ec93ce1854fd68b70ceeb"
+      ],
+      "source_published_kst": "2026-10-08T08:24+09:00",
+      "source_title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권",
+      "telegram_core_fact": "EU는 중국산 하이브리드차에 수입 물량 제한과 추가 관세를 부과하는 방안을 검토하고 있다.",
+      "title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권"
     },
     "core:c245ff89184444fef2955784": {
       "first_seen_kst": "2026-10-07T22:24:07+09:00",
@@ -8063,6 +8208,23 @@
       "source_title": "포항시-아모지, 영일만산단 ‘무탄소 분산발전’ 가속화… 글로벌 투자사·대기업 총출동",
       "telegram_core_fact": "참석자들은 ▲영일만 무탄소 분산발전 프로젝트의 속도감 있는 추진 ▲원활한 사업 진행을 위한 부지 및 인허가 행정 지원 ▲안정적인 청정 암모니아 수입·저장·공급망 구축 ▲영일만산단 입주기업들의 무탄소 전력 공급 확대 방안 등을 논의했다.",
       "title": "포항시-아모지, 영일만산단 ‘무탄소 분산발전’ 가속화… 글로벌 투자사·대기업 총출동"
+    },
+    "core:e9ff5fafadaa2483a683c362": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818418",
+      "source": "뉴시스",
+      "source_body_digest": "f86ae5642321949f50586e779274f1d01835843279d5c761f5ce9d16549b112e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T08:45+09:00",
+      "source_title": "LG에너지솔루션, 캐나다산 리튬정광 24만톤 확보…\"북미 ESS 수요 선점 집중\"",
+      "telegram_core_fact": "LG에너지솔루션은 북미 리튬 생산 기업 엘레브라 리튬과 리튬 정광 장기 공급 계약을 체결했다고 8일 밝혔다.",
+      "title": "LG에너지솔루션, 캐나다산 리튬정광 24만톤 확보…\"북미 ESS 수요 선점 집중\""
     },
     "core:eab0d308a04b717f901bfac7": {
       "first_seen_kst": "2026-10-07T13:41:41+09:00",
@@ -9637,6 +9799,26 @@
       "source_title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스",
       "telegram_core_fact": "일단 삼성전자는 올해 3분기 연결 기준 영업이익이 107조4천억원으로 지난해 동기보다 782.5% 증가한 것으로 잠정 집계됐다고 공시했다.",
       "title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스"
+    },
+    "event:18c3a4a7226eebf8d523985a": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080759480948",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ae89acae2353ebdacb8065a1f4f6d03931e88d909e805898ebf2ca8b837a7cec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:62e880acb3afc27f7276c8aece82d2f477ef9199c7234bd0b50c0810c9ee48af",
+      "source_fact_keys": [
+        "source_fact:v1:12bb8eb4a64997ae786597cbce2c0fda8678d53214dbe40dd36b8778b58b5851",
+        "source_fact:v1:d3c43792122e92a0d1ca29139ab7fc4e20bda39a87a7ed8eaa824a57b841c462"
+      ],
+      "source_published_kst": "2026-10-08T08:13+09:00",
+      "source_title": "삼성전자 '분기 영업이익 100조' 시대 열었다… 세계 테크기업 '최초'(2보)",
+      "telegram_core_fact": "[파이낸셜뉴스]삼성전자는 올해 3·4분기 영업이익 107조4000억원을 기록하며 '분기 영업이익 100조 시대'를 열었다.",
+      "title": "삼성전자 '분기 영업이익 100조' 시대 열었다… 세계 테크기업 '최초'(2보)"
     },
     "event:193afa500eebedefe7deed86": {
       "first_seen_kst": "2026-10-02T10:55:46+09:00",
@@ -14040,24 +14222,29 @@
     "event:a9c0dc518f880d430bbcffd6": {
       "first_seen_kst": "2026-10-08T05:01:11+09:00",
       "lanes": {
-        "live": "2026-10-08T08:12:34+09:00",
+        "live": "2026-10-08T08:56:19+09:00",
         "preopen": "2026-10-08T06:42:50+09:00"
       },
-      "last_seen_kst": "2026-10-08T08:12:34+09:00",
-      "link": "https://www.hankyung.com/article/202610089567i",
-      "source": "한국경제",
-      "source_body_digest": "9cfb27592ac407b90d1295f82034a63fab38613b4b064f3e5412c0b6d648d142",
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080819422198",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1d5d372fd97d10d0c15a71b6e156316f611895d180853f8922e934d101255eef",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:b2fb072eed861740c567747a443e2cace6ec3c0f8463d19266c412a5776855ae",
+      "source_fact_identity": "source_facts:v1:0effadefb217b433ffef155dcd50c278fc7e505cc5661305218e128e239db088",
       "source_fact_keys": [
-        "source_fact:v1:225efac09973c14d0aeb3b24f98bed1910a5da86fe6554c8ca0466aa7c31044b",
-        "source_fact:v1:6903ece1a2235e3cf7060f7e36204c16a7b422d09e60ef0e12c34cbf77d96763",
-        "source_fact:v1:817a71e077196a7bb8b69e422a409285957abf2dc8678ccbd828b324bf7fec7a"
+        "source_fact:v1:649465956dd282eb510c04fc3242bfea6ae7e40e129cd09202c11ab011991fb2",
+        "source_fact:v1:ceb383669b8579eedb310188be297502e7234ab71f6b7d26a9e122fbb0cacb73",
+        "source_fact:v1:d9607286216a4b4b57397af1b4d6e27d2dd888de06a0d58c5e7a35f02146daaa",
+        "source_fact:v1:e47e75c2b2743e1d9170f6a4c169f2a687dc656ec3cd3596003b83076647973c",
+        "source_fact:v1:ecd6c506a7f326726be654185fafe1396571bd7c321f1be0cce40668da4049d4",
+        "source_fact:v1:ee605453695856fe177124855342a1c670d650aab44245116907747c7d20163f",
+        "source_fact:v1:f8d00e3bbc39370213bcbadec856eb6d157380edfff3a4d4bb05c7e389c308b8",
+        "source_fact:v1:fb3f9164b1af9d5dbbeb6d64a4f59cf3f753a6680d0d69b02f23619a029c217c"
       ],
-      "source_published_kst": "2026-10-08T07:50+09:00",
-      "source_title": "삼성전자 3분기 영업이익 107조…반도체 슈퍼사이클에 4분기 연속 역대 최대",
-      "telegram_core_fact": "삼성전자는 3분기 영업이익이 107조4000억원으로 전년비 782.5% 증가한 것으로 잠정 집계됐다고 8일 발표했다.",
-      "title": "삼성전자 3분기 영업이익 107조…반도체 슈퍼사이클에 4분기 연속 역대 최대"
+      "source_published_kst": "2026-10-08T08:19+09:00",
+      "source_title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)",
+      "telegram_core_fact": "삼성전자(005930)가 올해 3분기 107조 4000억 원의 영업이익을 기록, 우리나라 기업 사상 처음으로 분기 영업익 100조 시대를 열었다.",
+      "title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)"
     },
     "event:a9dc5b3e4c7e6aef4cecc596": {
       "first_seen_kst": "2026-09-27T19:02:46+09:00",
@@ -14867,31 +15054,31 @@
     "event:c158b090c5d842f8525a5d6f": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
       "lanes": {
-        "live": "2026-10-08T08:31:37+09:00"
+        "live": "2026-10-08T08:56:19+09:00"
       },
-      "last_seen_kst": "2026-10-08T08:31:37+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261007207800003",
-      "source": "연합뉴스",
-      "source_body_digest": "85f00500e5ef82c44eed80de0211e619ae35b57968f9e492577a884c2e65c053",
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171085",
+      "source": "매일경제",
+      "source_body_digest": "3747b63134ac35b70fb908c9e6fe48c6de1560e1b31310a3d76c9a0ac24094fc",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:c3cc4e3ff57839f6a8d1a37d81f149740c4d0ef79f95b990969b5dd89b6e2d02",
+      "source_fact_identity": "source_facts:v1:f89e2178beaa89f6944651a7c378a06d024f8806b15f85118225b06ee61f7dd5",
       "source_fact_keys": [
-        "source_fact:v1:0f0332f0cb1d6fa5cbd5e574467edf2eb48c334fb4b6e82fa8eede69e8e22297",
-        "source_fact:v1:456b51d120a43183ecc01f1c23d65e26f57e73e6495fa24c59dde84c462d0039",
-        "source_fact:v1:4617860cfe451e443ae623e79ba6915f3312bdf628853a8325a598c649f42bc6",
-        "source_fact:v1:5493e86c94b2166a6613fe94bfdff7806f519a15f240c72891c92e3f4a642950",
-        "source_fact:v1:57fb54b54e946b4603d66c7943a1aeafc800b43d1966ad7da6ce7a02b76cee80",
-        "source_fact:v1:855be2fb9034a0952540208e2429455fad56b752c6bee030b3e037895747c65e",
-        "source_fact:v1:8695e7ed5e433d85e01918d01c8c6ae11305b78a21368c1d5457c15fcb926920",
-        "source_fact:v1:bd2069879107ddfcbde4874f9cfcd3473bfea7b77ef45df4b73fb949cf6c6096",
-        "source_fact:v1:e8ba757c0d827ad13e66762b3fa069e3fed3e8950406a16779a5f7eb88459872",
-        "source_fact:v1:eb879c02ef1b97e1f15dd1df55a4a644898281d94c856cf8ee31c4fd70e7cdd6",
-        "source_fact:v1:ec6e4b5287bb49992b292ea5b77ddd6f9bc52d49e750d905fea8a658b94c198f"
+        "source_fact:v1:17af42e2778f8824cae434d44f7598351ee1dca8be9c77f6390e7a10baa55551",
+        "source_fact:v1:1c20db5d37364a25526992f3fc6d6a07ee967ffbd3bc28f01ea24e774e3cf42a",
+        "source_fact:v1:20d41ed86d96c0eeaa426f7fc78b1135fd04af8eb6cc4900f42a3dc19569fa20",
+        "source_fact:v1:320ea8dc05bd11b3b96b1b65f8318e8ba5ee66671efa6706bf4e8663221ad652",
+        "source_fact:v1:3a1f910036e5a868e14c238086cab5e8f1429d1b874c6f3bccdcc9ba1ec610d0",
+        "source_fact:v1:4fe09a58060e650b04e62c9ee19641a2f3e37aa503843f2a0525eedb8cba64f1",
+        "source_fact:v1:54cfbf2773db78bba55fac89292259019eae5cf542ca6723da1b32cb6ce7b3c4",
+        "source_fact:v1:7fe975a801d7f6de72d1ebf4768142ebe21a4769345025ea092eec1a54cb88b9",
+        "source_fact:v1:b26b6243aeac52db6f30ade951ae4ea4bf6e57ded8d87efef0dd041a22516f50",
+        "source_fact:v1:bd04c477f6ed0b50ba1324a4ca5738b1f6294ba25a31407c7756e600a6dc1d17",
+        "source_fact:v1:be92d1fa42d6293dfbf3b10fbdf30892a3721374914e828cf974381be0922526"
       ],
-      "source_published_kst": "2026-10-08T08:16+09:00",
-      "source_title": "메모리 대호황 올라탄 삼성…엔비디아 넘어 영업익 세계1위 눈앞 | 연합뉴스",
-      "telegram_core_fact": "이는 전 세계적인 인공지능(AI) 인프라 투자 확대로 D램과 낸드 등 메모리 전반의 공급이 부족해지며 가격 오름세를 이어간 영향으로 해석된다.",
-      "title": "메모리 대호황 올라탄 삼성…엔비디아 넘어 영업익 세계1위 눈앞 | 연합뉴스"
+      "source_published_kst": "2026-10-08T08:17+09:00",
+      "source_title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박",
+      "telegram_core_fact": "삼성전자의 영업이익은 지난 분기 세계에서 최고치를 기록했는데 이번에도 전세계 기업중 1위를 기록할 것으로 예상된다.",
+      "title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박"
     },
     "event:c1e317ded2d88411e7e58d30": {
       "first_seen_kst": "2026-09-28T05:09:16+09:00",
@@ -15018,6 +15205,30 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "정부, ‘프론티어‘·‘독파모’ 두 축으로...흡수·폐지설 반박"
+    },
+    "event:c3f02aac152187a692ecee7d": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080827230920",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "362ac36045f4b8569a1e71e771018df07e554aebf71d0bd006ea1e489966dd43",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee5dbd450b8329f7b023e9de9c64aa02c229b3cf9935c0bb26c933bc5d1a2953",
+      "source_fact_keys": [
+        "source_fact:v1:0a210fc83d5e52580865a07d6f2a584773f31062102ee7b936de56b3a8356545",
+        "source_fact:v1:5543552e1a3f73b393ae74947dce614e629ba31ee617ec1599d36055c848a95e",
+        "source_fact:v1:5fdddc81ddae88f52d622c22cdd9272cecf0f22b501692e25c48f2482fff213f",
+        "source_fact:v1:ac6717d061095f95576ec9ce0235f7bd15ec9c850c1fde58e24380d0b17953ac",
+        "source_fact:v1:d5e037e9874ac704e30388f6b9bf402115a8e4ecc92583ad782ba5689950ae4e",
+        "source_fact:v1:fe6f12e357db565900fa6f43d22598ed39b4eab005f4cc0c8fb0ba5cc5b1972e"
+      ],
+      "source_published_kst": "2026-10-08T08:27+09:00",
+      "source_title": "\"기대치 넘었다\" 삼성전자, 프리마켓서 1.6% 상승…반도체주 강세",
+      "telegram_core_fact": "삼성전자가 시장 기대치를 웃도는 3분기 잠정 실적을 발표하면서 프리마켓에서 1%대 상승세를 보이고 있다. 삼성전자, 올해 3분기 연결 기준 영업이익이 107조 4000억 원으로 잠정 집계됐다고 공시했다.",
+      "title": "\"기대치 넘었다\" 삼성전자, 프리마켓서 1.6% 상승…반도체주 강세"
     },
     "event:c49ef7bb4d0518b534255016": {
       "first_seen_kst": "2026-09-21T17:23:09+09:00",
@@ -24992,6 +25203,35 @@
       "telegram_core_fact": "네이버는 7일 기재정정공시를 통해 주주총회 예정일을 기존 11월19일에서 내년 2월26일로, 주식교환·이전일을 12월31일에서 내년 3월31일로 변경했다고 밝혔다. 두나무와 네이버파이낸셜의 포괄적 주식교환 일정이 약 3개월 연장됐다.",
       "title": "두나무·네이버 주식교환 일정 연장…주총 2월·교환일 3월로 변경"
     },
+    "fact:4e89f2d9ad899108fa02980d": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171085",
+      "source": "매일경제",
+      "source_body_digest": "3747b63134ac35b70fb908c9e6fe48c6de1560e1b31310a3d76c9a0ac24094fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f89e2178beaa89f6944651a7c378a06d024f8806b15f85118225b06ee61f7dd5",
+      "source_fact_keys": [
+        "source_fact:v1:17af42e2778f8824cae434d44f7598351ee1dca8be9c77f6390e7a10baa55551",
+        "source_fact:v1:1c20db5d37364a25526992f3fc6d6a07ee967ffbd3bc28f01ea24e774e3cf42a",
+        "source_fact:v1:20d41ed86d96c0eeaa426f7fc78b1135fd04af8eb6cc4900f42a3dc19569fa20",
+        "source_fact:v1:320ea8dc05bd11b3b96b1b65f8318e8ba5ee66671efa6706bf4e8663221ad652",
+        "source_fact:v1:3a1f910036e5a868e14c238086cab5e8f1429d1b874c6f3bccdcc9ba1ec610d0",
+        "source_fact:v1:4fe09a58060e650b04e62c9ee19641a2f3e37aa503843f2a0525eedb8cba64f1",
+        "source_fact:v1:54cfbf2773db78bba55fac89292259019eae5cf542ca6723da1b32cb6ce7b3c4",
+        "source_fact:v1:7fe975a801d7f6de72d1ebf4768142ebe21a4769345025ea092eec1a54cb88b9",
+        "source_fact:v1:b26b6243aeac52db6f30ade951ae4ea4bf6e57ded8d87efef0dd041a22516f50",
+        "source_fact:v1:bd04c477f6ed0b50ba1324a4ca5738b1f6294ba25a31407c7756e600a6dc1d17",
+        "source_fact:v1:be92d1fa42d6293dfbf3b10fbdf30892a3721374914e828cf974381be0922526"
+      ],
+      "source_published_kst": "2026-10-08T08:17+09:00",
+      "source_title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박",
+      "telegram_core_fact": "삼성전자의 영업이익은 지난 분기 세계에서 최고치를 기록했는데 이번에도 전세계 기업중 1위를 기록할 것으로 예상된다.",
+      "title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박"
+    },
     "fact:4e991205cd0f1080904ea4cc": {
       "first_seen_kst": "2026-10-07T06:12:17+09:00",
       "lanes": {
@@ -29389,6 +29629,32 @@
       "source_published_kst": "2026-10-05T17:54+09:00",
       "title": "24년來 최고 금리도 AI 기세 못막아…나스닥 사상 최고[월스트리트in]"
     },
+    "fact:7e468090fd28ccb8c92e3916": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080819422198",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1d5d372fd97d10d0c15a71b6e156316f611895d180853f8922e934d101255eef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0effadefb217b433ffef155dcd50c278fc7e505cc5661305218e128e239db088",
+      "source_fact_keys": [
+        "source_fact:v1:649465956dd282eb510c04fc3242bfea6ae7e40e129cd09202c11ab011991fb2",
+        "source_fact:v1:ceb383669b8579eedb310188be297502e7234ab71f6b7d26a9e122fbb0cacb73",
+        "source_fact:v1:d9607286216a4b4b57397af1b4d6e27d2dd888de06a0d58c5e7a35f02146daaa",
+        "source_fact:v1:e47e75c2b2743e1d9170f6a4c169f2a687dc656ec3cd3596003b83076647973c",
+        "source_fact:v1:ecd6c506a7f326726be654185fafe1396571bd7c321f1be0cce40668da4049d4",
+        "source_fact:v1:ee605453695856fe177124855342a1c670d650aab44245116907747c7d20163f",
+        "source_fact:v1:f8d00e3bbc39370213bcbadec856eb6d157380edfff3a4d4bb05c7e389c308b8",
+        "source_fact:v1:fb3f9164b1af9d5dbbeb6d64a4f59cf3f753a6680d0d69b02f23619a029c217c"
+      ],
+      "source_published_kst": "2026-10-08T08:19+09:00",
+      "source_title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)",
+      "telegram_core_fact": "삼성전자(005930)가 올해 3분기 107조 4000억 원의 영업이익을 기록, 우리나라 기업 사상 처음으로 분기 영업익 100조 시대를 열었다.",
+      "title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)"
+    },
     "fact:7e5f460033e0451a226888e8": {
       "first_seen_kst": "2026-10-07T16:57:09+09:00",
       "lanes": {
@@ -31559,6 +31825,27 @@
       "source_published_kst": "2026-10-06T09:30+09:00",
       "title": "\"美 대표지수 ETF 사고 미국 가자\"…한투운용, 항공 기프트카드 증정"
     },
+    "fact:93d8984c7b0aada26c6bd079": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.hankyung.com/article/202610089959g",
+      "source": "한국경제",
+      "source_body_digest": "c8d9a9ed6081918d44d429b82b87732ca84335ce05277c9ed512e47c56c19a0c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11be3e369c5dd8421a39d64a2e5e8ef910f00be446660641f5737cf1409317f0",
+      "source_fact_keys": [
+        "source_fact:v1:42048dec96489b5891e39471ebc6d506d2a9661162f8c0cab66e332e8e5558f7",
+        "source_fact:v1:577876a91f6fc13dc8dd03e85c9454e506f901424c5c5c374681c1dd5d3541ae",
+        "source_fact:v1:cba51f2cc0072a289281db33f2948d61b459f826c8f7b2eddc9b3067da578cec"
+      ],
+      "source_published_kst": "2026-10-08T08:38+09:00",
+      "source_title": "도미노피자, 5년 만에 가격 인상…L사이즈 1500원 뛴다",
+      "telegram_core_fact": "도미노피자는 지난 5년간 물가 안정 기조에 발맞춰 본사 차원에서 원부자재 및 운영비 상승분을 자체 흡수해 왔으나, 원가 압박과 대내외적 불안정성이 지속되면서 본사와 가맹점의 경영 부담이 한계에 달해 조정을 단행하게 됐다고 설명했다.",
+      "title": "도미노피자, 5년 만에 가격 인상…L사이즈 1500원 뛴다"
+    },
     "fact:9420c9f086dd2027b8f52eca": {
       "first_seen_kst": "2026-10-07T01:07:29+09:00",
       "lanes": {
@@ -33371,6 +33658,31 @@
       ],
       "source_published_kst": "2026-10-06T16:09+09:00",
       "title": "롯데백화점 외국인 매출 1조 돌파…신세계·현대도 '목전'(종합)"
+    },
+    "fact:a675ee5b2e8e6c05098516ea": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610952",
+      "source": "이데일리",
+      "source_body_digest": "2b0b854afd39864b2e9abad65e37cf9a45291ce0a063c8afb43124ee8c3a9d36",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb0d54a924e21fde88997dc6f789c0f21070e7d7aea1771d6b72a177d826aceb",
+      "source_fact_keys": [
+        "source_fact:v1:17ebea6958e6f7dc8abfa197f1e4f0fdde4dd0253a47de6d7a42f739217917c6",
+        "source_fact:v1:2a272bdd1cdeaf2a19996c25d22768c6352e2e93150fdfe088b301855d1f5552",
+        "source_fact:v1:30c8179986dfb7864bea397863a32f74369e6622ce85797711e92a800cfebf13",
+        "source_fact:v1:4431f780899246ffe2ddf1eb7ef6811ac759c382f883b2ee1b715f723afad90d",
+        "source_fact:v1:66dba7e0997aee968de09ec682f2a0f82a990eb1600ddbdbf1cd7abfddb1954e",
+        "source_fact:v1:9c27efd46228fa33304483773914e63d16b4927aa47804b79da0d45db5f7ab26",
+        "source_fact:v1:f68fd3e802c47eecff1c512dbf86fd10b39df97e851ec93ce1854fd68b70ceeb"
+      ],
+      "source_published_kst": "2026-10-08T08:24+09:00",
+      "source_title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권",
+      "telegram_core_fact": "EU는 중국산 하이브리드차에 수입 물량 제한과 추가 관세를 부과하는 방안을 검토하고 있다.",
+      "title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권"
     },
     "fact:a6a981dbfb6bb33cb08f4db4": {
       "first_seen_kst": "2026-10-06T01:51:09+09:00",
@@ -37405,6 +37717,26 @@
       "source_published_kst": "2026-10-04T23:56+09:00",
       "title": "OPEC+, 11월 원유 생산 목표 유지 합의"
     },
+    "fact:d06fb413326d2bbe5da2fc98": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080759480948",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ae89acae2353ebdacb8065a1f4f6d03931e88d909e805898ebf2ca8b837a7cec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:62e880acb3afc27f7276c8aece82d2f477ef9199c7234bd0b50c0810c9ee48af",
+      "source_fact_keys": [
+        "source_fact:v1:12bb8eb4a64997ae786597cbce2c0fda8678d53214dbe40dd36b8778b58b5851",
+        "source_fact:v1:d3c43792122e92a0d1ca29139ab7fc4e20bda39a87a7ed8eaa824a57b841c462"
+      ],
+      "source_published_kst": "2026-10-08T08:13+09:00",
+      "source_title": "삼성전자 '분기 영업이익 100조' 시대 열었다… 세계 테크기업 '최초'(2보)",
+      "telegram_core_fact": "[파이낸셜뉴스]삼성전자는 올해 3·4분기 영업이익 107조4000억원을 기록하며 '분기 영업이익 100조 시대'를 열었다.",
+      "title": "삼성전자 '분기 영업이익 100조' 시대 열었다… 세계 테크기업 '최초'(2보)"
+    },
     "fact:d08c39b5ee4442721896726f": {
       "first_seen_kst": "2026-10-08T01:43:44+09:00",
       "lanes": {
@@ -41180,6 +41512,30 @@
       ],
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"30개 테스트공장 풀가동\" SK엔무브 고급 윤활기유 1위 만든 R&D"
+    },
+    "fact:f5ecdaf7b0c2954cbdef6d69": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080827230920",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "362ac36045f4b8569a1e71e771018df07e554aebf71d0bd006ea1e489966dd43",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee5dbd450b8329f7b023e9de9c64aa02c229b3cf9935c0bb26c933bc5d1a2953",
+      "source_fact_keys": [
+        "source_fact:v1:0a210fc83d5e52580865a07d6f2a584773f31062102ee7b936de56b3a8356545",
+        "source_fact:v1:5543552e1a3f73b393ae74947dce614e629ba31ee617ec1599d36055c848a95e",
+        "source_fact:v1:5fdddc81ddae88f52d622c22cdd9272cecf0f22b501692e25c48f2482fff213f",
+        "source_fact:v1:ac6717d061095f95576ec9ce0235f7bd15ec9c850c1fde58e24380d0b17953ac",
+        "source_fact:v1:d5e037e9874ac704e30388f6b9bf402115a8e4ecc92583ad782ba5689950ae4e",
+        "source_fact:v1:fe6f12e357db565900fa6f43d22598ed39b4eab005f4cc0c8fb0ba5cc5b1972e"
+      ],
+      "source_published_kst": "2026-10-08T08:27+09:00",
+      "source_title": "\"기대치 넘었다\" 삼성전자, 프리마켓서 1.6% 상승…반도체주 강세",
+      "telegram_core_fact": "삼성전자가 시장 기대치를 웃도는 3분기 잠정 실적을 발표하면서 프리마켓에서 1%대 상승세를 보이고 있다. 삼성전자, 올해 3분기 연결 기준 영업이익이 107조 4000억 원으로 잠정 집계됐다고 공시했다.",
+      "title": "\"기대치 넘었다\" 삼성전자, 프리마켓서 1.6% 상승…반도체주 강세"
     },
     "fact:f60cab73ad877a870fa9d429": {
       "first_seen_kst": "2026-10-07T07:12:15+09:00",
@@ -58860,6 +59216,32 @@
       "source_published_kst": "2026-10-06T13:52+09:00",
       "title": "거래소 “코스닥 체질 개선 노력⋯법원 제동 건 ‘시총 미달 상폐’ 후속 조치 예정”"
     },
+    "link:634694baea5c6084c23b3a22": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080819422198",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1d5d372fd97d10d0c15a71b6e156316f611895d180853f8922e934d101255eef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0effadefb217b433ffef155dcd50c278fc7e505cc5661305218e128e239db088",
+      "source_fact_keys": [
+        "source_fact:v1:649465956dd282eb510c04fc3242bfea6ae7e40e129cd09202c11ab011991fb2",
+        "source_fact:v1:ceb383669b8579eedb310188be297502e7234ab71f6b7d26a9e122fbb0cacb73",
+        "source_fact:v1:d9607286216a4b4b57397af1b4d6e27d2dd888de06a0d58c5e7a35f02146daaa",
+        "source_fact:v1:e47e75c2b2743e1d9170f6a4c169f2a687dc656ec3cd3596003b83076647973c",
+        "source_fact:v1:ecd6c506a7f326726be654185fafe1396571bd7c321f1be0cce40668da4049d4",
+        "source_fact:v1:ee605453695856fe177124855342a1c670d650aab44245116907747c7d20163f",
+        "source_fact:v1:f8d00e3bbc39370213bcbadec856eb6d157380edfff3a4d4bb05c7e389c308b8",
+        "source_fact:v1:fb3f9164b1af9d5dbbeb6d64a4f59cf3f753a6680d0d69b02f23619a029c217c"
+      ],
+      "source_published_kst": "2026-10-08T08:19+09:00",
+      "source_title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)",
+      "telegram_core_fact": "삼성전자(005930)가 올해 3분기 107조 4000억 원의 영업이익을 기록, 우리나라 기업 사상 처음으로 분기 영업익 100조 시대를 열었다.",
+      "title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)"
+    },
     "link:6350b390a9e8ce7098561f75": {
       "first_seen_kst": "2026-10-07T03:43:49+09:00",
       "lanes": {
@@ -69524,6 +69906,31 @@
       "source": "이데일리",
       "title": "CJ제일제당, 美 ADM과 합작법인 설립…사료용 아미노산 사업 강화"
     },
+    "link:a3eb3392d4a70cc7c0d72f84": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610952",
+      "source": "이데일리",
+      "source_body_digest": "2b0b854afd39864b2e9abad65e37cf9a45291ce0a063c8afb43124ee8c3a9d36",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb0d54a924e21fde88997dc6f789c0f21070e7d7aea1771d6b72a177d826aceb",
+      "source_fact_keys": [
+        "source_fact:v1:17ebea6958e6f7dc8abfa197f1e4f0fdde4dd0253a47de6d7a42f739217917c6",
+        "source_fact:v1:2a272bdd1cdeaf2a19996c25d22768c6352e2e93150fdfe088b301855d1f5552",
+        "source_fact:v1:30c8179986dfb7864bea397863a32f74369e6622ce85797711e92a800cfebf13",
+        "source_fact:v1:4431f780899246ffe2ddf1eb7ef6811ac759c382f883b2ee1b715f723afad90d",
+        "source_fact:v1:66dba7e0997aee968de09ec682f2a0f82a990eb1600ddbdbf1cd7abfddb1954e",
+        "source_fact:v1:9c27efd46228fa33304483773914e63d16b4927aa47804b79da0d45db5f7ab26",
+        "source_fact:v1:f68fd3e802c47eecff1c512dbf86fd10b39df97e851ec93ce1854fd68b70ceeb"
+      ],
+      "source_published_kst": "2026-10-08T08:24+09:00",
+      "source_title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권",
+      "telegram_core_fact": "EU는 중국산 하이브리드차에 수입 물량 제한과 추가 관세를 부과하는 방안을 검토하고 있다.",
+      "title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권"
+    },
     "link:a3fcd3c5a0b038a8eb947ed9": {
       "first_seen_kst": "2026-09-29T08:30:42+09:00",
       "lanes": {
@@ -70081,6 +70488,30 @@
       ],
       "source_published_kst": "2026-10-06T01:21+09:00",
       "title": "페라리, 자사주 2600만 유로 매입..3차 한도 41% 소진"
+    },
+    "link:a6e3e3b2abaa22f408e66d22": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080827230920",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "362ac36045f4b8569a1e71e771018df07e554aebf71d0bd006ea1e489966dd43",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee5dbd450b8329f7b023e9de9c64aa02c229b3cf9935c0bb26c933bc5d1a2953",
+      "source_fact_keys": [
+        "source_fact:v1:0a210fc83d5e52580865a07d6f2a584773f31062102ee7b936de56b3a8356545",
+        "source_fact:v1:5543552e1a3f73b393ae74947dce614e629ba31ee617ec1599d36055c848a95e",
+        "source_fact:v1:5fdddc81ddae88f52d622c22cdd9272cecf0f22b501692e25c48f2482fff213f",
+        "source_fact:v1:ac6717d061095f95576ec9ce0235f7bd15ec9c850c1fde58e24380d0b17953ac",
+        "source_fact:v1:d5e037e9874ac704e30388f6b9bf402115a8e4ecc92583ad782ba5689950ae4e",
+        "source_fact:v1:fe6f12e357db565900fa6f43d22598ed39b4eab005f4cc0c8fb0ba5cc5b1972e"
+      ],
+      "source_published_kst": "2026-10-08T08:27+09:00",
+      "source_title": "\"기대치 넘었다\" 삼성전자, 프리마켓서 1.6% 상승…반도체주 강세",
+      "telegram_core_fact": "삼성전자가 시장 기대치를 웃도는 3분기 잠정 실적을 발표하면서 프리마켓에서 1%대 상승세를 보이고 있다. 삼성전자, 올해 3분기 연결 기준 영업이익이 107조 4000억 원으로 잠정 집계됐다고 공시했다.",
+      "title": "\"기대치 넘었다\" 삼성전자, 프리마켓서 1.6% 상승…반도체주 강세"
     },
     "link:a6f7187af40b11676fec4a38": {
       "first_seen_kst": "2026-10-07T06:12:17+09:00",
@@ -73420,6 +73851,35 @@
       "source_published_kst": "2026-10-07T15:31+09:00",
       "title": "스페이스X, 엔비디아 칩 사려고 400억달러 조달 추진"
     },
+    "link:bbef7ee6d446211b6a23e346": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171085",
+      "source": "매일경제",
+      "source_body_digest": "3747b63134ac35b70fb908c9e6fe48c6de1560e1b31310a3d76c9a0ac24094fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f89e2178beaa89f6944651a7c378a06d024f8806b15f85118225b06ee61f7dd5",
+      "source_fact_keys": [
+        "source_fact:v1:17af42e2778f8824cae434d44f7598351ee1dca8be9c77f6390e7a10baa55551",
+        "source_fact:v1:1c20db5d37364a25526992f3fc6d6a07ee967ffbd3bc28f01ea24e774e3cf42a",
+        "source_fact:v1:20d41ed86d96c0eeaa426f7fc78b1135fd04af8eb6cc4900f42a3dc19569fa20",
+        "source_fact:v1:320ea8dc05bd11b3b96b1b65f8318e8ba5ee66671efa6706bf4e8663221ad652",
+        "source_fact:v1:3a1f910036e5a868e14c238086cab5e8f1429d1b874c6f3bccdcc9ba1ec610d0",
+        "source_fact:v1:4fe09a58060e650b04e62c9ee19641a2f3e37aa503843f2a0525eedb8cba64f1",
+        "source_fact:v1:54cfbf2773db78bba55fac89292259019eae5cf542ca6723da1b32cb6ce7b3c4",
+        "source_fact:v1:7fe975a801d7f6de72d1ebf4768142ebe21a4769345025ea092eec1a54cb88b9",
+        "source_fact:v1:b26b6243aeac52db6f30ade951ae4ea4bf6e57ded8d87efef0dd041a22516f50",
+        "source_fact:v1:bd04c477f6ed0b50ba1324a4ca5738b1f6294ba25a31407c7756e600a6dc1d17",
+        "source_fact:v1:be92d1fa42d6293dfbf3b10fbdf30892a3721374914e828cf974381be0922526"
+      ],
+      "source_published_kst": "2026-10-08T08:17+09:00",
+      "source_title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박",
+      "telegram_core_fact": "삼성전자의 영업이익은 지난 분기 세계에서 최고치를 기록했는데 이번에도 전세계 기업중 1위를 기록할 것으로 예상된다.",
+      "title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박"
+    },
     "link:bc02ef5d06c01df5461e2e97": {
       "first_seen_kst": "2026-10-02T06:53:18+09:00",
       "lanes": {
@@ -73896,6 +74356,27 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T06:20+09:00",
       "title": "3분기 약달러에 ETF 상승률 1∼3위 모두 '달러 곱버스' 차지 | 연합뉴스"
+    },
+    "link:be7f70e2e53c16f69614bc47": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.hankyung.com/article/202610089959g",
+      "source": "한국경제",
+      "source_body_digest": "c8d9a9ed6081918d44d429b82b87732ca84335ce05277c9ed512e47c56c19a0c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11be3e369c5dd8421a39d64a2e5e8ef910f00be446660641f5737cf1409317f0",
+      "source_fact_keys": [
+        "source_fact:v1:42048dec96489b5891e39471ebc6d506d2a9661162f8c0cab66e332e8e5558f7",
+        "source_fact:v1:577876a91f6fc13dc8dd03e85c9454e506f901424c5c5c374681c1dd5d3541ae",
+        "source_fact:v1:cba51f2cc0072a289281db33f2948d61b459f826c8f7b2eddc9b3067da578cec"
+      ],
+      "source_published_kst": "2026-10-08T08:38+09:00",
+      "source_title": "도미노피자, 5년 만에 가격 인상…L사이즈 1500원 뛴다",
+      "telegram_core_fact": "도미노피자는 지난 5년간 물가 안정 기조에 발맞춰 본사 차원에서 원부자재 및 운영비 상승분을 자체 흡수해 왔으나, 원가 압박과 대내외적 불안정성이 지속되면서 본사와 가맹점의 경영 부담이 한계에 달해 조정을 단행하게 됐다고 설명했다.",
+      "title": "도미노피자, 5년 만에 가격 인상…L사이즈 1500원 뛴다"
     },
     "link:be9e639a6c15873c33add193": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
@@ -83538,6 +84019,23 @@
       "source_published_kst": "2026-10-05T10:59+09:00",
       "title": "“국내서 접하기 힘든 해외 AI 한곳 에”…LG유플러스가 ‘유독’으로 들여온다"
     },
+    "link:f9ad7bda631047617711198b": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818418",
+      "source": "뉴시스",
+      "source_body_digest": "f86ae5642321949f50586e779274f1d01835843279d5c761f5ce9d16549b112e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T08:45+09:00",
+      "source_title": "LG에너지솔루션, 캐나다산 리튬정광 24만톤 확보…\"북미 ESS 수요 선점 집중\"",
+      "telegram_core_fact": "LG에너지솔루션은 북미 리튬 생산 기업 엘레브라 리튬과 리튬 정광 장기 공급 계약을 체결했다고 8일 밝혔다.",
+      "title": "LG에너지솔루션, 캐나다산 리튬정광 24만톤 확보…\"북미 ESS 수요 선점 집중\""
+    },
     "link:f9d4b838813ec505964ebb07": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
       "lanes": {
@@ -84134,6 +84632,26 @@
       "link": "https://www.newsis.com/view/NISX20261003_0003813582",
       "source": "뉴시스",
       "title": "트럼프 핵심 참모들 캠프 데이비드 긴급회동…이란전 확전 논의"
+    },
+    "link:fe11312662318e940920523a": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080759480948",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ae89acae2353ebdacb8065a1f4f6d03931e88d909e805898ebf2ca8b837a7cec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:62e880acb3afc27f7276c8aece82d2f477ef9199c7234bd0b50c0810c9ee48af",
+      "source_fact_keys": [
+        "source_fact:v1:12bb8eb4a64997ae786597cbce2c0fda8678d53214dbe40dd36b8778b58b5851",
+        "source_fact:v1:d3c43792122e92a0d1ca29139ab7fc4e20bda39a87a7ed8eaa824a57b841c462"
+      ],
+      "source_published_kst": "2026-10-08T08:13+09:00",
+      "source_title": "삼성전자 '분기 영업이익 100조' 시대 열었다… 세계 테크기업 '최초'(2보)",
+      "telegram_core_fact": "[파이낸셜뉴스]삼성전자는 올해 3·4분기 영업이익 107조4000억원을 기록하며 '분기 영업이익 100조 시대'를 열었다.",
+      "title": "삼성전자 '분기 영업이익 100조' 시대 열었다… 세계 테크기업 '최초'(2보)"
     },
     "link:fe18e9f13f7288b5ca7aca6e": {
       "first_seen_kst": "2026-10-07T20:05:17+09:00",
@@ -85919,6 +86437,27 @@
       "source": "머니투데이",
       "title": "나경원, DMZ 지뢰 사고 국조·청문회 촉구…\"축소·은폐 의혹 밝혀야\""
     },
+    "original:08298688c322448f81a638d4": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.hankyung.com/article/202610089959g",
+      "source": "한국경제",
+      "source_body_digest": "c8d9a9ed6081918d44d429b82b87732ca84335ce05277c9ed512e47c56c19a0c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11be3e369c5dd8421a39d64a2e5e8ef910f00be446660641f5737cf1409317f0",
+      "source_fact_keys": [
+        "source_fact:v1:42048dec96489b5891e39471ebc6d506d2a9661162f8c0cab66e332e8e5558f7",
+        "source_fact:v1:577876a91f6fc13dc8dd03e85c9454e506f901424c5c5c374681c1dd5d3541ae",
+        "source_fact:v1:cba51f2cc0072a289281db33f2948d61b459f826c8f7b2eddc9b3067da578cec"
+      ],
+      "source_published_kst": "2026-10-08T08:38+09:00",
+      "source_title": "도미노피자, 5년 만에 가격 인상…L사이즈 1500원 뛴다",
+      "telegram_core_fact": "도미노피자는 지난 5년간 물가 안정 기조에 발맞춰 본사 차원에서 원부자재 및 운영비 상승분을 자체 흡수해 왔으나, 원가 압박과 대내외적 불안정성이 지속되면서 본사와 가맹점의 경영 부담이 한계에 달해 조정을 단행하게 됐다고 설명했다.",
+      "title": "도미노피자, 5년 만에 가격 인상…L사이즈 1500원 뛴다"
+    },
     "original:08597c257bc9bd4cdcfea293": {
       "first_seen_kst": "2026-10-02T06:53:18+09:00",
       "lanes": {
@@ -86803,6 +87342,35 @@
       "link": "https://www.etoday.co.kr/news/view/2631810",
       "source": "이투데이",
       "title": "CJ온스타일, 유아동 매출 160%↑…월 990원 멤버십 승부"
+    },
+    "original:0dd13109fac96b303e9c65a5": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171085",
+      "source": "매일경제",
+      "source_body_digest": "3747b63134ac35b70fb908c9e6fe48c6de1560e1b31310a3d76c9a0ac24094fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f89e2178beaa89f6944651a7c378a06d024f8806b15f85118225b06ee61f7dd5",
+      "source_fact_keys": [
+        "source_fact:v1:17af42e2778f8824cae434d44f7598351ee1dca8be9c77f6390e7a10baa55551",
+        "source_fact:v1:1c20db5d37364a25526992f3fc6d6a07ee967ffbd3bc28f01ea24e774e3cf42a",
+        "source_fact:v1:20d41ed86d96c0eeaa426f7fc78b1135fd04af8eb6cc4900f42a3dc19569fa20",
+        "source_fact:v1:320ea8dc05bd11b3b96b1b65f8318e8ba5ee66671efa6706bf4e8663221ad652",
+        "source_fact:v1:3a1f910036e5a868e14c238086cab5e8f1429d1b874c6f3bccdcc9ba1ec610d0",
+        "source_fact:v1:4fe09a58060e650b04e62c9ee19641a2f3e37aa503843f2a0525eedb8cba64f1",
+        "source_fact:v1:54cfbf2773db78bba55fac89292259019eae5cf542ca6723da1b32cb6ce7b3c4",
+        "source_fact:v1:7fe975a801d7f6de72d1ebf4768142ebe21a4769345025ea092eec1a54cb88b9",
+        "source_fact:v1:b26b6243aeac52db6f30ade951ae4ea4bf6e57ded8d87efef0dd041a22516f50",
+        "source_fact:v1:bd04c477f6ed0b50ba1324a4ca5738b1f6294ba25a31407c7756e600a6dc1d17",
+        "source_fact:v1:be92d1fa42d6293dfbf3b10fbdf30892a3721374914e828cf974381be0922526"
+      ],
+      "source_published_kst": "2026-10-08T08:17+09:00",
+      "source_title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박",
+      "telegram_core_fact": "삼성전자의 영업이익은 지난 분기 세계에서 최고치를 기록했는데 이번에도 전세계 기업중 1위를 기록할 것으로 예상된다.",
+      "title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박"
     },
     "original:0dd2fd4d0f30e52faddf64fd": {
       "first_seen_kst": "2026-10-06T04:08:54+09:00",
@@ -96043,6 +96611,32 @@
       "source": "한국경제",
       "title": "예상 밑돈 PCE 물가에도 국채금리 고공행진하자 혼조 마감 [뉴욕증시 브리핑]"
     },
+    "original:43e408d55266135c858cce89": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080819422198",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1d5d372fd97d10d0c15a71b6e156316f611895d180853f8922e934d101255eef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0effadefb217b433ffef155dcd50c278fc7e505cc5661305218e128e239db088",
+      "source_fact_keys": [
+        "source_fact:v1:649465956dd282eb510c04fc3242bfea6ae7e40e129cd09202c11ab011991fb2",
+        "source_fact:v1:ceb383669b8579eedb310188be297502e7234ab71f6b7d26a9e122fbb0cacb73",
+        "source_fact:v1:d9607286216a4b4b57397af1b4d6e27d2dd888de06a0d58c5e7a35f02146daaa",
+        "source_fact:v1:e47e75c2b2743e1d9170f6a4c169f2a687dc656ec3cd3596003b83076647973c",
+        "source_fact:v1:ecd6c506a7f326726be654185fafe1396571bd7c321f1be0cce40668da4049d4",
+        "source_fact:v1:ee605453695856fe177124855342a1c670d650aab44245116907747c7d20163f",
+        "source_fact:v1:f8d00e3bbc39370213bcbadec856eb6d157380edfff3a4d4bb05c7e389c308b8",
+        "source_fact:v1:fb3f9164b1af9d5dbbeb6d64a4f59cf3f753a6680d0d69b02f23619a029c217c"
+      ],
+      "source_published_kst": "2026-10-08T08:19+09:00",
+      "source_title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)",
+      "telegram_core_fact": "삼성전자(005930)가 올해 3분기 107조 4000억 원의 영업이익을 기록, 우리나라 기업 사상 처음으로 분기 영업익 100조 시대를 열었다.",
+      "title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)"
+    },
     "original:43e8a1813927f6b6fd348995": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
       "lanes": {
@@ -102288,6 +102882,30 @@
       ],
       "source_published_kst": "2026-10-06T11:08+09:00",
       "title": "\"농지 특조법 특례 2∼3년 설정·농지법 개정 동시 추진 필요\" | 연합뉴스"
+    },
+    "original:6be9d30def7f94cfcefd0ea7": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080827230920",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "362ac36045f4b8569a1e71e771018df07e554aebf71d0bd006ea1e489966dd43",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee5dbd450b8329f7b023e9de9c64aa02c229b3cf9935c0bb26c933bc5d1a2953",
+      "source_fact_keys": [
+        "source_fact:v1:0a210fc83d5e52580865a07d6f2a584773f31062102ee7b936de56b3a8356545",
+        "source_fact:v1:5543552e1a3f73b393ae74947dce614e629ba31ee617ec1599d36055c848a95e",
+        "source_fact:v1:5fdddc81ddae88f52d622c22cdd9272cecf0f22b501692e25c48f2482fff213f",
+        "source_fact:v1:ac6717d061095f95576ec9ce0235f7bd15ec9c850c1fde58e24380d0b17953ac",
+        "source_fact:v1:d5e037e9874ac704e30388f6b9bf402115a8e4ecc92583ad782ba5689950ae4e",
+        "source_fact:v1:fe6f12e357db565900fa6f43d22598ed39b4eab005f4cc0c8fb0ba5cc5b1972e"
+      ],
+      "source_published_kst": "2026-10-08T08:27+09:00",
+      "source_title": "\"기대치 넘었다\" 삼성전자, 프리마켓서 1.6% 상승…반도체주 강세",
+      "telegram_core_fact": "삼성전자가 시장 기대치를 웃도는 3분기 잠정 실적을 발표하면서 프리마켓에서 1%대 상승세를 보이고 있다. 삼성전자, 올해 3분기 연결 기준 영업이익이 107조 4000억 원으로 잠정 집계됐다고 공시했다.",
+      "title": "\"기대치 넘었다\" 삼성전자, 프리마켓서 1.6% 상승…반도체주 강세"
     },
     "original:6bef4d724494d44ed45c6eee": {
       "first_seen_kst": "2026-09-27T07:38:21+09:00",
@@ -110853,6 +111471,23 @@
       "source_published_kst": "2026-10-05T22:16+09:00",
       "title": "에릭슨, 주간 자사주 937만주 매입..8억7200만 크로나"
     },
+    "original:a39fac70e29f56417cc267ce": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818418",
+      "source": "뉴시스",
+      "source_body_digest": "f86ae5642321949f50586e779274f1d01835843279d5c761f5ce9d16549b112e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T08:45+09:00",
+      "source_title": "LG에너지솔루션, 캐나다산 리튬정광 24만톤 확보…\"북미 ESS 수요 선점 집중\"",
+      "telegram_core_fact": "LG에너지솔루션은 북미 리튬 생산 기업 엘레브라 리튬과 리튬 정광 장기 공급 계약을 체결했다고 8일 밝혔다.",
+      "title": "LG에너지솔루션, 캐나다산 리튬정광 24만톤 확보…\"북미 ESS 수요 선점 집중\""
+    },
     "original:a3ac73abae7f47d2da18cb85": {
       "first_seen_kst": "2026-10-03T02:51:01+09:00",
       "lanes": {
@@ -118580,6 +119215,26 @@
       "source": "연합뉴스",
       "title": "고려아연 최윤범 \"5년간 제품 20여종에서 30여종으로 확대\" | 연합뉴스"
     },
+    "original:d40de61695b4c70dbe6c65b7": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080759480948",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ae89acae2353ebdacb8065a1f4f6d03931e88d909e805898ebf2ca8b837a7cec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:62e880acb3afc27f7276c8aece82d2f477ef9199c7234bd0b50c0810c9ee48af",
+      "source_fact_keys": [
+        "source_fact:v1:12bb8eb4a64997ae786597cbce2c0fda8678d53214dbe40dd36b8778b58b5851",
+        "source_fact:v1:d3c43792122e92a0d1ca29139ab7fc4e20bda39a87a7ed8eaa824a57b841c462"
+      ],
+      "source_published_kst": "2026-10-08T08:13+09:00",
+      "source_title": "삼성전자 '분기 영업이익 100조' 시대 열었다… 세계 테크기업 '최초'(2보)",
+      "telegram_core_fact": "[파이낸셜뉴스]삼성전자는 올해 3·4분기 영업이익 107조4000억원을 기록하며 '분기 영업이익 100조 시대'를 열었다.",
+      "title": "삼성전자 '분기 영업이익 100조' 시대 열었다… 세계 테크기업 '최초'(2보)"
+    },
     "original:d4170961c2253cd5661aa643": {
       "first_seen_kst": "2026-10-06T16:30:27+09:00",
       "lanes": {
@@ -120414,6 +121069,31 @@
       "source_title": "롯데바이오로직스, 알보텍 바이오시밀러 생산 수주",
       "telegram_core_fact": "롯데바이오로직스가 글로벌 바이오시밀러 기업 알보텍과 생산 수주 계약을 체결했다고 7일 밝혔다.",
       "title": "롯데바이오로직스, 알보텍 바이오시밀러 생산 수주"
+    },
+    "original:de6031f4e089e7a52f900cb5": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610952",
+      "source": "이데일리",
+      "source_body_digest": "2b0b854afd39864b2e9abad65e37cf9a45291ce0a063c8afb43124ee8c3a9d36",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb0d54a924e21fde88997dc6f789c0f21070e7d7aea1771d6b72a177d826aceb",
+      "source_fact_keys": [
+        "source_fact:v1:17ebea6958e6f7dc8abfa197f1e4f0fdde4dd0253a47de6d7a42f739217917c6",
+        "source_fact:v1:2a272bdd1cdeaf2a19996c25d22768c6352e2e93150fdfe088b301855d1f5552",
+        "source_fact:v1:30c8179986dfb7864bea397863a32f74369e6622ce85797711e92a800cfebf13",
+        "source_fact:v1:4431f780899246ffe2ddf1eb7ef6811ac759c382f883b2ee1b715f723afad90d",
+        "source_fact:v1:66dba7e0997aee968de09ec682f2a0f82a990eb1600ddbdbf1cd7abfddb1954e",
+        "source_fact:v1:9c27efd46228fa33304483773914e63d16b4927aa47804b79da0d45db5f7ab26",
+        "source_fact:v1:f68fd3e802c47eecff1c512dbf86fd10b39df97e851ec93ce1854fd68b70ceeb"
+      ],
+      "source_published_kst": "2026-10-08T08:24+09:00",
+      "source_title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권",
+      "telegram_core_fact": "EU는 중국산 하이브리드차에 수입 물량 제한과 추가 관세를 부과하는 방안을 검토하고 있다.",
+      "title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권"
     },
     "original:de6bcdd77c98deb85ec5bf12": {
       "first_seen_kst": "2026-10-07T01:59:08+09:00",
@@ -128404,6 +129084,30 @@
       "source_published_kst": "2026-10-06T15:45+09:00",
       "title": "NH투자증권, 기업금융·투자수익 두 토끼…IMA로 잡는다"
     },
+    "source_fact:06936f67ff290ed0878a7964": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080827230920",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "362ac36045f4b8569a1e71e771018df07e554aebf71d0bd006ea1e489966dd43",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee5dbd450b8329f7b023e9de9c64aa02c229b3cf9935c0bb26c933bc5d1a2953",
+      "source_fact_keys": [
+        "source_fact:v1:0a210fc83d5e52580865a07d6f2a584773f31062102ee7b936de56b3a8356545",
+        "source_fact:v1:5543552e1a3f73b393ae74947dce614e629ba31ee617ec1599d36055c848a95e",
+        "source_fact:v1:5fdddc81ddae88f52d622c22cdd9272cecf0f22b501692e25c48f2482fff213f",
+        "source_fact:v1:ac6717d061095f95576ec9ce0235f7bd15ec9c850c1fde58e24380d0b17953ac",
+        "source_fact:v1:d5e037e9874ac704e30388f6b9bf402115a8e4ecc92583ad782ba5689950ae4e",
+        "source_fact:v1:fe6f12e357db565900fa6f43d22598ed39b4eab005f4cc0c8fb0ba5cc5b1972e"
+      ],
+      "source_published_kst": "2026-10-08T08:27+09:00",
+      "source_title": "\"기대치 넘었다\" 삼성전자, 프리마켓서 1.6% 상승…반도체주 강세",
+      "telegram_core_fact": "삼성전자가 시장 기대치를 웃도는 3분기 잠정 실적을 발표하면서 프리마켓에서 1%대 상승세를 보이고 있다. 삼성전자, 올해 3분기 연결 기준 영업이익이 107조 4000억 원으로 잠정 집계됐다고 공시했다.",
+      "title": "\"기대치 넘었다\" 삼성전자, 프리마켓서 1.6% 상승…반도체주 강세"
+    },
     "source_fact:06b7620e042aec29bad2e654": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
       "lanes": {
@@ -130347,6 +131051,35 @@
       "telegram_core_fact": "크리스탈리나 게오르기에바(사진) 국제통화기금(IMF) 총재가 고유가 장기화, 치솟는 국가 부채, 인공지능(AI) 투자 열풍에 따른 위험성을 지적하며 세계 경제가 심각한 위협에 직면해 있다고 경고했다.",
       "title": "IMF 총재 \"고유가·부채·AI 거품, 세계경제 거센 위협\" 경고"
     },
+    "source_fact:0b7d2b76f5f20f02351d1158": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171085",
+      "source": "매일경제",
+      "source_body_digest": "3747b63134ac35b70fb908c9e6fe48c6de1560e1b31310a3d76c9a0ac24094fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f89e2178beaa89f6944651a7c378a06d024f8806b15f85118225b06ee61f7dd5",
+      "source_fact_keys": [
+        "source_fact:v1:17af42e2778f8824cae434d44f7598351ee1dca8be9c77f6390e7a10baa55551",
+        "source_fact:v1:1c20db5d37364a25526992f3fc6d6a07ee967ffbd3bc28f01ea24e774e3cf42a",
+        "source_fact:v1:20d41ed86d96c0eeaa426f7fc78b1135fd04af8eb6cc4900f42a3dc19569fa20",
+        "source_fact:v1:320ea8dc05bd11b3b96b1b65f8318e8ba5ee66671efa6706bf4e8663221ad652",
+        "source_fact:v1:3a1f910036e5a868e14c238086cab5e8f1429d1b874c6f3bccdcc9ba1ec610d0",
+        "source_fact:v1:4fe09a58060e650b04e62c9ee19641a2f3e37aa503843f2a0525eedb8cba64f1",
+        "source_fact:v1:54cfbf2773db78bba55fac89292259019eae5cf542ca6723da1b32cb6ce7b3c4",
+        "source_fact:v1:7fe975a801d7f6de72d1ebf4768142ebe21a4769345025ea092eec1a54cb88b9",
+        "source_fact:v1:b26b6243aeac52db6f30ade951ae4ea4bf6e57ded8d87efef0dd041a22516f50",
+        "source_fact:v1:bd04c477f6ed0b50ba1324a4ca5738b1f6294ba25a31407c7756e600a6dc1d17",
+        "source_fact:v1:be92d1fa42d6293dfbf3b10fbdf30892a3721374914e828cf974381be0922526"
+      ],
+      "source_published_kst": "2026-10-08T08:17+09:00",
+      "source_title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박",
+      "telegram_core_fact": "삼성전자의 영업이익은 지난 분기 세계에서 최고치를 기록했는데 이번에도 전세계 기업중 1위를 기록할 것으로 예상된다.",
+      "title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박"
+    },
     "source_fact:0b92c8b04b037e6733517262": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
       "lanes": {
@@ -131777,6 +132510,30 @@
       "source_published_kst": "2026-10-07T16:35+09:00",
       "title": "AMD 리사 수, 삼성전자-SK하이닉스 반도체 수장 만나..AI 협력 행보 강화"
     },
+    "source_fact:0e7d877f285fecd69cc17410": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080827230920",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "362ac36045f4b8569a1e71e771018df07e554aebf71d0bd006ea1e489966dd43",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee5dbd450b8329f7b023e9de9c64aa02c229b3cf9935c0bb26c933bc5d1a2953",
+      "source_fact_keys": [
+        "source_fact:v1:0a210fc83d5e52580865a07d6f2a584773f31062102ee7b936de56b3a8356545",
+        "source_fact:v1:5543552e1a3f73b393ae74947dce614e629ba31ee617ec1599d36055c848a95e",
+        "source_fact:v1:5fdddc81ddae88f52d622c22cdd9272cecf0f22b501692e25c48f2482fff213f",
+        "source_fact:v1:ac6717d061095f95576ec9ce0235f7bd15ec9c850c1fde58e24380d0b17953ac",
+        "source_fact:v1:d5e037e9874ac704e30388f6b9bf402115a8e4ecc92583ad782ba5689950ae4e",
+        "source_fact:v1:fe6f12e357db565900fa6f43d22598ed39b4eab005f4cc0c8fb0ba5cc5b1972e"
+      ],
+      "source_published_kst": "2026-10-08T08:27+09:00",
+      "source_title": "\"기대치 넘었다\" 삼성전자, 프리마켓서 1.6% 상승…반도체주 강세",
+      "telegram_core_fact": "삼성전자가 시장 기대치를 웃도는 3분기 잠정 실적을 발표하면서 프리마켓에서 1%대 상승세를 보이고 있다. 삼성전자, 올해 3분기 연결 기준 영업이익이 107조 4000억 원으로 잠정 집계됐다고 공시했다.",
+      "title": "\"기대치 넘었다\" 삼성전자, 프리마켓서 1.6% 상승…반도체주 강세"
+    },
     "source_fact:0eb01d0de18c98ba4084d844": {
       "first_seen_kst": "2026-10-08T04:26:05+09:00",
       "lanes": {
@@ -132977,6 +133734,35 @@
       "source_published_kst": "2026-10-06T12:08+09:00",
       "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
     },
+    "source_fact:10c38943a0062c97b327e4f5": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171085",
+      "source": "매일경제",
+      "source_body_digest": "3747b63134ac35b70fb908c9e6fe48c6de1560e1b31310a3d76c9a0ac24094fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f89e2178beaa89f6944651a7c378a06d024f8806b15f85118225b06ee61f7dd5",
+      "source_fact_keys": [
+        "source_fact:v1:17af42e2778f8824cae434d44f7598351ee1dca8be9c77f6390e7a10baa55551",
+        "source_fact:v1:1c20db5d37364a25526992f3fc6d6a07ee967ffbd3bc28f01ea24e774e3cf42a",
+        "source_fact:v1:20d41ed86d96c0eeaa426f7fc78b1135fd04af8eb6cc4900f42a3dc19569fa20",
+        "source_fact:v1:320ea8dc05bd11b3b96b1b65f8318e8ba5ee66671efa6706bf4e8663221ad652",
+        "source_fact:v1:3a1f910036e5a868e14c238086cab5e8f1429d1b874c6f3bccdcc9ba1ec610d0",
+        "source_fact:v1:4fe09a58060e650b04e62c9ee19641a2f3e37aa503843f2a0525eedb8cba64f1",
+        "source_fact:v1:54cfbf2773db78bba55fac89292259019eae5cf542ca6723da1b32cb6ce7b3c4",
+        "source_fact:v1:7fe975a801d7f6de72d1ebf4768142ebe21a4769345025ea092eec1a54cb88b9",
+        "source_fact:v1:b26b6243aeac52db6f30ade951ae4ea4bf6e57ded8d87efef0dd041a22516f50",
+        "source_fact:v1:bd04c477f6ed0b50ba1324a4ca5738b1f6294ba25a31407c7756e600a6dc1d17",
+        "source_fact:v1:be92d1fa42d6293dfbf3b10fbdf30892a3721374914e828cf974381be0922526"
+      ],
+      "source_published_kst": "2026-10-08T08:17+09:00",
+      "source_title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박",
+      "telegram_core_fact": "삼성전자의 영업이익은 지난 분기 세계에서 최고치를 기록했는데 이번에도 전세계 기업중 1위를 기록할 것으로 예상된다.",
+      "title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박"
+    },
     "source_fact:10e8e754ef824f594cc2fd2a": {
       "first_seen_kst": "2026-10-07T00:09:35+09:00",
       "lanes": {
@@ -133582,6 +134368,35 @@
       ],
       "source_published_kst": "2026-10-07T08:45+09:00",
       "title": "더 루비콘 프로젝트, MR탱커 3호선 인수..잠재 수주잔고 3억7500만 달러"
+    },
+    "source_fact:129bc530f05657e8e6ef2215": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171085",
+      "source": "매일경제",
+      "source_body_digest": "3747b63134ac35b70fb908c9e6fe48c6de1560e1b31310a3d76c9a0ac24094fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f89e2178beaa89f6944651a7c378a06d024f8806b15f85118225b06ee61f7dd5",
+      "source_fact_keys": [
+        "source_fact:v1:17af42e2778f8824cae434d44f7598351ee1dca8be9c77f6390e7a10baa55551",
+        "source_fact:v1:1c20db5d37364a25526992f3fc6d6a07ee967ffbd3bc28f01ea24e774e3cf42a",
+        "source_fact:v1:20d41ed86d96c0eeaa426f7fc78b1135fd04af8eb6cc4900f42a3dc19569fa20",
+        "source_fact:v1:320ea8dc05bd11b3b96b1b65f8318e8ba5ee66671efa6706bf4e8663221ad652",
+        "source_fact:v1:3a1f910036e5a868e14c238086cab5e8f1429d1b874c6f3bccdcc9ba1ec610d0",
+        "source_fact:v1:4fe09a58060e650b04e62c9ee19641a2f3e37aa503843f2a0525eedb8cba64f1",
+        "source_fact:v1:54cfbf2773db78bba55fac89292259019eae5cf542ca6723da1b32cb6ce7b3c4",
+        "source_fact:v1:7fe975a801d7f6de72d1ebf4768142ebe21a4769345025ea092eec1a54cb88b9",
+        "source_fact:v1:b26b6243aeac52db6f30ade951ae4ea4bf6e57ded8d87efef0dd041a22516f50",
+        "source_fact:v1:bd04c477f6ed0b50ba1324a4ca5738b1f6294ba25a31407c7756e600a6dc1d17",
+        "source_fact:v1:be92d1fa42d6293dfbf3b10fbdf30892a3721374914e828cf974381be0922526"
+      ],
+      "source_published_kst": "2026-10-08T08:17+09:00",
+      "source_title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박",
+      "telegram_core_fact": "삼성전자의 영업이익은 지난 분기 세계에서 최고치를 기록했는데 이번에도 전세계 기업중 1위를 기록할 것으로 예상된다.",
+      "title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박"
     },
     "source_fact:12b70517195b31b38ee58bd3": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
@@ -135090,6 +135905,35 @@
       ],
       "source_published_kst": "2026-10-06T18:09+09:00",
       "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어(종합) | 연합뉴스"
+    },
+    "source_fact:1626bb6481a65a596937d91b": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171085",
+      "source": "매일경제",
+      "source_body_digest": "3747b63134ac35b70fb908c9e6fe48c6de1560e1b31310a3d76c9a0ac24094fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f89e2178beaa89f6944651a7c378a06d024f8806b15f85118225b06ee61f7dd5",
+      "source_fact_keys": [
+        "source_fact:v1:17af42e2778f8824cae434d44f7598351ee1dca8be9c77f6390e7a10baa55551",
+        "source_fact:v1:1c20db5d37364a25526992f3fc6d6a07ee967ffbd3bc28f01ea24e774e3cf42a",
+        "source_fact:v1:20d41ed86d96c0eeaa426f7fc78b1135fd04af8eb6cc4900f42a3dc19569fa20",
+        "source_fact:v1:320ea8dc05bd11b3b96b1b65f8318e8ba5ee66671efa6706bf4e8663221ad652",
+        "source_fact:v1:3a1f910036e5a868e14c238086cab5e8f1429d1b874c6f3bccdcc9ba1ec610d0",
+        "source_fact:v1:4fe09a58060e650b04e62c9ee19641a2f3e37aa503843f2a0525eedb8cba64f1",
+        "source_fact:v1:54cfbf2773db78bba55fac89292259019eae5cf542ca6723da1b32cb6ce7b3c4",
+        "source_fact:v1:7fe975a801d7f6de72d1ebf4768142ebe21a4769345025ea092eec1a54cb88b9",
+        "source_fact:v1:b26b6243aeac52db6f30ade951ae4ea4bf6e57ded8d87efef0dd041a22516f50",
+        "source_fact:v1:bd04c477f6ed0b50ba1324a4ca5738b1f6294ba25a31407c7756e600a6dc1d17",
+        "source_fact:v1:be92d1fa42d6293dfbf3b10fbdf30892a3721374914e828cf974381be0922526"
+      ],
+      "source_published_kst": "2026-10-08T08:17+09:00",
+      "source_title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박",
+      "telegram_core_fact": "삼성전자의 영업이익은 지난 분기 세계에서 최고치를 기록했는데 이번에도 전세계 기업중 1위를 기록할 것으로 예상된다.",
+      "title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박"
     },
     "source_fact:164d8ab6fcca626e5a46d8c5": {
       "first_seen_kst": "2026-10-08T08:12:34+09:00",
@@ -137350,6 +138194,30 @@
       ],
       "source_published_kst": "2026-10-05T15:21+09:00",
       "title": "“영끌했는데 매달 이자 어쩌죠”...치솟는 주담대 금리- 매경ECONOMY"
+    },
+    "source_fact:1b8bb7b197673dc3a94f9aea": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080827230920",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "362ac36045f4b8569a1e71e771018df07e554aebf71d0bd006ea1e489966dd43",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee5dbd450b8329f7b023e9de9c64aa02c229b3cf9935c0bb26c933bc5d1a2953",
+      "source_fact_keys": [
+        "source_fact:v1:0a210fc83d5e52580865a07d6f2a584773f31062102ee7b936de56b3a8356545",
+        "source_fact:v1:5543552e1a3f73b393ae74947dce614e629ba31ee617ec1599d36055c848a95e",
+        "source_fact:v1:5fdddc81ddae88f52d622c22cdd9272cecf0f22b501692e25c48f2482fff213f",
+        "source_fact:v1:ac6717d061095f95576ec9ce0235f7bd15ec9c850c1fde58e24380d0b17953ac",
+        "source_fact:v1:d5e037e9874ac704e30388f6b9bf402115a8e4ecc92583ad782ba5689950ae4e",
+        "source_fact:v1:fe6f12e357db565900fa6f43d22598ed39b4eab005f4cc0c8fb0ba5cc5b1972e"
+      ],
+      "source_published_kst": "2026-10-08T08:27+09:00",
+      "source_title": "\"기대치 넘었다\" 삼성전자, 프리마켓서 1.6% 상승…반도체주 강세",
+      "telegram_core_fact": "삼성전자가 시장 기대치를 웃도는 3분기 잠정 실적을 발표하면서 프리마켓에서 1%대 상승세를 보이고 있다. 삼성전자, 올해 3분기 연결 기준 영업이익이 107조 4000억 원으로 잠정 집계됐다고 공시했다.",
+      "title": "\"기대치 넘었다\" 삼성전자, 프리마켓서 1.6% 상승…반도체주 강세"
     },
     "source_fact:1b8c5f16209622d08082653a": {
       "first_seen_kst": "2026-10-07T22:13:12+09:00",
@@ -150170,6 +151038,26 @@
       "source_published_kst": "2026-10-07T10:42+09:00",
       "title": "\"올해로 4년째\"…한·중남미 식품안전 교류 '탄탄'"
     },
+    "source_fact:3699e128966cf728750de135": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080759480948",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ae89acae2353ebdacb8065a1f4f6d03931e88d909e805898ebf2ca8b837a7cec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:62e880acb3afc27f7276c8aece82d2f477ef9199c7234bd0b50c0810c9ee48af",
+      "source_fact_keys": [
+        "source_fact:v1:12bb8eb4a64997ae786597cbce2c0fda8678d53214dbe40dd36b8778b58b5851",
+        "source_fact:v1:d3c43792122e92a0d1ca29139ab7fc4e20bda39a87a7ed8eaa824a57b841c462"
+      ],
+      "source_published_kst": "2026-10-08T08:13+09:00",
+      "source_title": "삼성전자 '분기 영업이익 100조' 시대 열었다… 세계 테크기업 '최초'(2보)",
+      "telegram_core_fact": "[파이낸셜뉴스]삼성전자는 올해 3·4분기 영업이익 107조4000억원을 기록하며 '분기 영업이익 100조 시대'를 열었다.",
+      "title": "삼성전자 '분기 영업이익 100조' 시대 열었다… 세계 테크기업 '최초'(2보)"
+    },
     "source_fact:36a0b9093007d4bc32a380c4": {
       "first_seen_kst": "2026-10-07T08:36:47+09:00",
       "lanes": {
@@ -154753,6 +155641,32 @@
       "source_published_kst": "2026-10-06T10:44+09:00",
       "title": "유진투자증권, 연말 절세·자산관리 이벤트…최대 200만원 혜택"
     },
+    "source_fact:40be69bc84b003b545995e0d": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080819422198",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1d5d372fd97d10d0c15a71b6e156316f611895d180853f8922e934d101255eef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0effadefb217b433ffef155dcd50c278fc7e505cc5661305218e128e239db088",
+      "source_fact_keys": [
+        "source_fact:v1:649465956dd282eb510c04fc3242bfea6ae7e40e129cd09202c11ab011991fb2",
+        "source_fact:v1:ceb383669b8579eedb310188be297502e7234ab71f6b7d26a9e122fbb0cacb73",
+        "source_fact:v1:d9607286216a4b4b57397af1b4d6e27d2dd888de06a0d58c5e7a35f02146daaa",
+        "source_fact:v1:e47e75c2b2743e1d9170f6a4c169f2a687dc656ec3cd3596003b83076647973c",
+        "source_fact:v1:ecd6c506a7f326726be654185fafe1396571bd7c321f1be0cce40668da4049d4",
+        "source_fact:v1:ee605453695856fe177124855342a1c670d650aab44245116907747c7d20163f",
+        "source_fact:v1:f8d00e3bbc39370213bcbadec856eb6d157380edfff3a4d4bb05c7e389c308b8",
+        "source_fact:v1:fb3f9164b1af9d5dbbeb6d64a4f59cf3f753a6680d0d69b02f23619a029c217c"
+      ],
+      "source_published_kst": "2026-10-08T08:19+09:00",
+      "source_title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)",
+      "telegram_core_fact": "삼성전자(005930)가 올해 3분기 107조 4000억 원의 영업이익을 기록, 우리나라 기업 사상 처음으로 분기 영업익 100조 시대를 열었다.",
+      "title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)"
+    },
     "source_fact:40e43e8f871bf901c3833a89": {
       "first_seen_kst": "2026-10-07T18:30:29+09:00",
       "lanes": {
@@ -157146,6 +158060,35 @@
       "source_published_kst": "2026-10-07T07:22+09:00",
       "title": "트럼프 \"韓에 관세 낮추려면 대가 지불해야 한다고 했다\""
     },
+    "source_fact:465047f780a628c2d6536393": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171085",
+      "source": "매일경제",
+      "source_body_digest": "3747b63134ac35b70fb908c9e6fe48c6de1560e1b31310a3d76c9a0ac24094fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f89e2178beaa89f6944651a7c378a06d024f8806b15f85118225b06ee61f7dd5",
+      "source_fact_keys": [
+        "source_fact:v1:17af42e2778f8824cae434d44f7598351ee1dca8be9c77f6390e7a10baa55551",
+        "source_fact:v1:1c20db5d37364a25526992f3fc6d6a07ee967ffbd3bc28f01ea24e774e3cf42a",
+        "source_fact:v1:20d41ed86d96c0eeaa426f7fc78b1135fd04af8eb6cc4900f42a3dc19569fa20",
+        "source_fact:v1:320ea8dc05bd11b3b96b1b65f8318e8ba5ee66671efa6706bf4e8663221ad652",
+        "source_fact:v1:3a1f910036e5a868e14c238086cab5e8f1429d1b874c6f3bccdcc9ba1ec610d0",
+        "source_fact:v1:4fe09a58060e650b04e62c9ee19641a2f3e37aa503843f2a0525eedb8cba64f1",
+        "source_fact:v1:54cfbf2773db78bba55fac89292259019eae5cf542ca6723da1b32cb6ce7b3c4",
+        "source_fact:v1:7fe975a801d7f6de72d1ebf4768142ebe21a4769345025ea092eec1a54cb88b9",
+        "source_fact:v1:b26b6243aeac52db6f30ade951ae4ea4bf6e57ded8d87efef0dd041a22516f50",
+        "source_fact:v1:bd04c477f6ed0b50ba1324a4ca5738b1f6294ba25a31407c7756e600a6dc1d17",
+        "source_fact:v1:be92d1fa42d6293dfbf3b10fbdf30892a3721374914e828cf974381be0922526"
+      ],
+      "source_published_kst": "2026-10-08T08:17+09:00",
+      "source_title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박",
+      "telegram_core_fact": "삼성전자의 영업이익은 지난 분기 세계에서 최고치를 기록했는데 이번에도 전세계 기업중 1위를 기록할 것으로 예상된다.",
+      "title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박"
+    },
     "source_fact:466f06965fdae924a464d3ea": {
       "first_seen_kst": "2026-10-07T18:30:29+09:00",
       "lanes": {
@@ -157322,6 +158265,27 @@
       ],
       "source_published_kst": "2026-10-06T08:41+09:00",
       "title": "AI 데이터센터 늘자 전력 수요도 급증…ETF 투자처도 '전력 인프라'로"
+    },
+    "source_fact:4699b4eccde7289770a50fbc": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.hankyung.com/article/202610089959g",
+      "source": "한국경제",
+      "source_body_digest": "c8d9a9ed6081918d44d429b82b87732ca84335ce05277c9ed512e47c56c19a0c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11be3e369c5dd8421a39d64a2e5e8ef910f00be446660641f5737cf1409317f0",
+      "source_fact_keys": [
+        "source_fact:v1:42048dec96489b5891e39471ebc6d506d2a9661162f8c0cab66e332e8e5558f7",
+        "source_fact:v1:577876a91f6fc13dc8dd03e85c9454e506f901424c5c5c374681c1dd5d3541ae",
+        "source_fact:v1:cba51f2cc0072a289281db33f2948d61b459f826c8f7b2eddc9b3067da578cec"
+      ],
+      "source_published_kst": "2026-10-08T08:38+09:00",
+      "source_title": "도미노피자, 5년 만에 가격 인상…L사이즈 1500원 뛴다",
+      "telegram_core_fact": "도미노피자는 지난 5년간 물가 안정 기조에 발맞춰 본사 차원에서 원부자재 및 운영비 상승분을 자체 흡수해 왔으나, 원가 압박과 대내외적 불안정성이 지속되면서 본사와 가맹점의 경영 부담이 한계에 달해 조정을 단행하게 됐다고 설명했다.",
+      "title": "도미노피자, 5년 만에 가격 인상…L사이즈 1500원 뛴다"
     },
     "source_fact:46b126c815dfc34c9b3f31e6": {
       "first_seen_kst": "2026-10-07T05:33:37+09:00",
@@ -161466,6 +162430,31 @@
       "source_published_kst": "2026-10-06T15:11+09:00",
       "title": "\"중국 문샷, 내년 1분기 홍콩 상장 추진\" | 연합뉴스"
     },
+    "source_fact:4ef0f165a19d29caf9bc1e45": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610952",
+      "source": "이데일리",
+      "source_body_digest": "2b0b854afd39864b2e9abad65e37cf9a45291ce0a063c8afb43124ee8c3a9d36",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb0d54a924e21fde88997dc6f789c0f21070e7d7aea1771d6b72a177d826aceb",
+      "source_fact_keys": [
+        "source_fact:v1:17ebea6958e6f7dc8abfa197f1e4f0fdde4dd0253a47de6d7a42f739217917c6",
+        "source_fact:v1:2a272bdd1cdeaf2a19996c25d22768c6352e2e93150fdfe088b301855d1f5552",
+        "source_fact:v1:30c8179986dfb7864bea397863a32f74369e6622ce85797711e92a800cfebf13",
+        "source_fact:v1:4431f780899246ffe2ddf1eb7ef6811ac759c382f883b2ee1b715f723afad90d",
+        "source_fact:v1:66dba7e0997aee968de09ec682f2a0f82a990eb1600ddbdbf1cd7abfddb1954e",
+        "source_fact:v1:9c27efd46228fa33304483773914e63d16b4927aa47804b79da0d45db5f7ab26",
+        "source_fact:v1:f68fd3e802c47eecff1c512dbf86fd10b39df97e851ec93ce1854fd68b70ceeb"
+      ],
+      "source_published_kst": "2026-10-08T08:24+09:00",
+      "source_title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권",
+      "telegram_core_fact": "EU는 중국산 하이브리드차에 수입 물량 제한과 추가 관세를 부과하는 방안을 검토하고 있다.",
+      "title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권"
+    },
     "source_fact:4ef8c74c284dcf1a79a83977": {
       "first_seen_kst": "2026-10-06T17:24:43+09:00",
       "lanes": {
@@ -163183,6 +164172,35 @@
       "source_title": "美국채 10년물 장중 5.36%까지 치솟아…24년 만에 최고",
       "telegram_core_fact": "미국 10년물 국채 금리는 장중 5.36%를 넘어 2002년 이후 최고치를 새로 썼고, 30년물 금리도 5.73%까지 치솟았다. 7일(현지 시각) 미국 국채시장에서 10년물 금리는 장중 전장보다 약 8bp(1bp=0.01%포인트) 오른 5.3640%까지 상승했다.",
       "title": "美국채 10년물 장중 5.36%까지 치솟아…24년 만에 최고"
+    },
+    "source_fact:52f06331f8cf7d9bf844f08a": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171085",
+      "source": "매일경제",
+      "source_body_digest": "3747b63134ac35b70fb908c9e6fe48c6de1560e1b31310a3d76c9a0ac24094fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f89e2178beaa89f6944651a7c378a06d024f8806b15f85118225b06ee61f7dd5",
+      "source_fact_keys": [
+        "source_fact:v1:17af42e2778f8824cae434d44f7598351ee1dca8be9c77f6390e7a10baa55551",
+        "source_fact:v1:1c20db5d37364a25526992f3fc6d6a07ee967ffbd3bc28f01ea24e774e3cf42a",
+        "source_fact:v1:20d41ed86d96c0eeaa426f7fc78b1135fd04af8eb6cc4900f42a3dc19569fa20",
+        "source_fact:v1:320ea8dc05bd11b3b96b1b65f8318e8ba5ee66671efa6706bf4e8663221ad652",
+        "source_fact:v1:3a1f910036e5a868e14c238086cab5e8f1429d1b874c6f3bccdcc9ba1ec610d0",
+        "source_fact:v1:4fe09a58060e650b04e62c9ee19641a2f3e37aa503843f2a0525eedb8cba64f1",
+        "source_fact:v1:54cfbf2773db78bba55fac89292259019eae5cf542ca6723da1b32cb6ce7b3c4",
+        "source_fact:v1:7fe975a801d7f6de72d1ebf4768142ebe21a4769345025ea092eec1a54cb88b9",
+        "source_fact:v1:b26b6243aeac52db6f30ade951ae4ea4bf6e57ded8d87efef0dd041a22516f50",
+        "source_fact:v1:bd04c477f6ed0b50ba1324a4ca5738b1f6294ba25a31407c7756e600a6dc1d17",
+        "source_fact:v1:be92d1fa42d6293dfbf3b10fbdf30892a3721374914e828cf974381be0922526"
+      ],
+      "source_published_kst": "2026-10-08T08:17+09:00",
+      "source_title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박",
+      "telegram_core_fact": "삼성전자의 영업이익은 지난 분기 세계에서 최고치를 기록했는데 이번에도 전세계 기업중 1위를 기록할 것으로 예상된다.",
+      "title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박"
     },
     "source_fact:52f6c2bb253ff3accffc58a4": {
       "first_seen_kst": "2026-10-07T05:13:11+09:00",
@@ -168292,6 +169310,26 @@
       "source_published_kst": "2026-10-06T17:10+09:00",
       "title": "데이터센터 전력수요 급증 전망에 기후장관"
     },
+    "source_fact:5d1fc4afa79f4c50ad801cf0": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080759480948",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ae89acae2353ebdacb8065a1f4f6d03931e88d909e805898ebf2ca8b837a7cec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:62e880acb3afc27f7276c8aece82d2f477ef9199c7234bd0b50c0810c9ee48af",
+      "source_fact_keys": [
+        "source_fact:v1:12bb8eb4a64997ae786597cbce2c0fda8678d53214dbe40dd36b8778b58b5851",
+        "source_fact:v1:d3c43792122e92a0d1ca29139ab7fc4e20bda39a87a7ed8eaa824a57b841c462"
+      ],
+      "source_published_kst": "2026-10-08T08:13+09:00",
+      "source_title": "삼성전자 '분기 영업이익 100조' 시대 열었다… 세계 테크기업 '최초'(2보)",
+      "telegram_core_fact": "[파이낸셜뉴스]삼성전자는 올해 3·4분기 영업이익 107조4000억원을 기록하며 '분기 영업이익 100조 시대'를 열었다.",
+      "title": "삼성전자 '분기 영업이익 100조' 시대 열었다… 세계 테크기업 '최초'(2보)"
+    },
     "source_fact:5d27e893a255f1b880a46204": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
       "lanes": {
@@ -168647,6 +169685,32 @@
       ],
       "source_published_kst": "2026-10-07T05:30+09:00",
       "title": "“주가 일희일비할 것 없어, 반도체 공급난 지속은 명확한 사실”"
+    },
+    "source_fact:5e0468c0db976c1f7195b365": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080819422198",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1d5d372fd97d10d0c15a71b6e156316f611895d180853f8922e934d101255eef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0effadefb217b433ffef155dcd50c278fc7e505cc5661305218e128e239db088",
+      "source_fact_keys": [
+        "source_fact:v1:649465956dd282eb510c04fc3242bfea6ae7e40e129cd09202c11ab011991fb2",
+        "source_fact:v1:ceb383669b8579eedb310188be297502e7234ab71f6b7d26a9e122fbb0cacb73",
+        "source_fact:v1:d9607286216a4b4b57397af1b4d6e27d2dd888de06a0d58c5e7a35f02146daaa",
+        "source_fact:v1:e47e75c2b2743e1d9170f6a4c169f2a687dc656ec3cd3596003b83076647973c",
+        "source_fact:v1:ecd6c506a7f326726be654185fafe1396571bd7c321f1be0cce40668da4049d4",
+        "source_fact:v1:ee605453695856fe177124855342a1c670d650aab44245116907747c7d20163f",
+        "source_fact:v1:f8d00e3bbc39370213bcbadec856eb6d157380edfff3a4d4bb05c7e389c308b8",
+        "source_fact:v1:fb3f9164b1af9d5dbbeb6d64a4f59cf3f753a6680d0d69b02f23619a029c217c"
+      ],
+      "source_published_kst": "2026-10-08T08:19+09:00",
+      "source_title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)",
+      "telegram_core_fact": "삼성전자(005930)가 올해 3분기 107조 4000억 원의 영업이익을 기록, 우리나라 기업 사상 처음으로 분기 영업익 100조 시대를 열었다.",
+      "title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)"
     },
     "source_fact:5e05e39bcec924fd822d3555": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
@@ -171609,6 +172673,32 @@
       ],
       "source_published_kst": "2026-10-06T15:11+09:00",
       "title": "\"중국 문샷, 내년 1분기 홍콩 상장 추진\" | 연합뉴스"
+    },
+    "source_fact:64e451da662ddd9f42d6938f": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080819422198",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1d5d372fd97d10d0c15a71b6e156316f611895d180853f8922e934d101255eef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0effadefb217b433ffef155dcd50c278fc7e505cc5661305218e128e239db088",
+      "source_fact_keys": [
+        "source_fact:v1:649465956dd282eb510c04fc3242bfea6ae7e40e129cd09202c11ab011991fb2",
+        "source_fact:v1:ceb383669b8579eedb310188be297502e7234ab71f6b7d26a9e122fbb0cacb73",
+        "source_fact:v1:d9607286216a4b4b57397af1b4d6e27d2dd888de06a0d58c5e7a35f02146daaa",
+        "source_fact:v1:e47e75c2b2743e1d9170f6a4c169f2a687dc656ec3cd3596003b83076647973c",
+        "source_fact:v1:ecd6c506a7f326726be654185fafe1396571bd7c321f1be0cce40668da4049d4",
+        "source_fact:v1:ee605453695856fe177124855342a1c670d650aab44245116907747c7d20163f",
+        "source_fact:v1:f8d00e3bbc39370213bcbadec856eb6d157380edfff3a4d4bb05c7e389c308b8",
+        "source_fact:v1:fb3f9164b1af9d5dbbeb6d64a4f59cf3f753a6680d0d69b02f23619a029c217c"
+      ],
+      "source_published_kst": "2026-10-08T08:19+09:00",
+      "source_title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)",
+      "telegram_core_fact": "삼성전자(005930)가 올해 3분기 107조 4000억 원의 영업이익을 기록, 우리나라 기업 사상 처음으로 분기 영업익 100조 시대를 열었다.",
+      "title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)"
     },
     "source_fact:64f17ed32c8db95fc8e172a1": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
@@ -177643,6 +178733,31 @@
       "source_published_kst": "2026-10-05T06:17+09:00",
       "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
     },
+    "source_fact:73068218eeb165f6e937e46c": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610952",
+      "source": "이데일리",
+      "source_body_digest": "2b0b854afd39864b2e9abad65e37cf9a45291ce0a063c8afb43124ee8c3a9d36",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb0d54a924e21fde88997dc6f789c0f21070e7d7aea1771d6b72a177d826aceb",
+      "source_fact_keys": [
+        "source_fact:v1:17ebea6958e6f7dc8abfa197f1e4f0fdde4dd0253a47de6d7a42f739217917c6",
+        "source_fact:v1:2a272bdd1cdeaf2a19996c25d22768c6352e2e93150fdfe088b301855d1f5552",
+        "source_fact:v1:30c8179986dfb7864bea397863a32f74369e6622ce85797711e92a800cfebf13",
+        "source_fact:v1:4431f780899246ffe2ddf1eb7ef6811ac759c382f883b2ee1b715f723afad90d",
+        "source_fact:v1:66dba7e0997aee968de09ec682f2a0f82a990eb1600ddbdbf1cd7abfddb1954e",
+        "source_fact:v1:9c27efd46228fa33304483773914e63d16b4927aa47804b79da0d45db5f7ab26",
+        "source_fact:v1:f68fd3e802c47eecff1c512dbf86fd10b39df97e851ec93ce1854fd68b70ceeb"
+      ],
+      "source_published_kst": "2026-10-08T08:24+09:00",
+      "source_title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권",
+      "telegram_core_fact": "EU는 중국산 하이브리드차에 수입 물량 제한과 추가 관세를 부과하는 방안을 검토하고 있다.",
+      "title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권"
+    },
     "source_fact:730912750e74ab3f3272810d": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
       "lanes": {
@@ -179983,6 +181098,31 @@
       ],
       "source_published_kst": "2026-10-06T16:00+09:00",
       "title": "롯데백화점, 업계 사상 첫 외국인 매출 1조 돌파…\"상징적 성과\""
+    },
+    "source_fact:77eb05660df226872e0405ab": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610952",
+      "source": "이데일리",
+      "source_body_digest": "2b0b854afd39864b2e9abad65e37cf9a45291ce0a063c8afb43124ee8c3a9d36",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb0d54a924e21fde88997dc6f789c0f21070e7d7aea1771d6b72a177d826aceb",
+      "source_fact_keys": [
+        "source_fact:v1:17ebea6958e6f7dc8abfa197f1e4f0fdde4dd0253a47de6d7a42f739217917c6",
+        "source_fact:v1:2a272bdd1cdeaf2a19996c25d22768c6352e2e93150fdfe088b301855d1f5552",
+        "source_fact:v1:30c8179986dfb7864bea397863a32f74369e6622ce85797711e92a800cfebf13",
+        "source_fact:v1:4431f780899246ffe2ddf1eb7ef6811ac759c382f883b2ee1b715f723afad90d",
+        "source_fact:v1:66dba7e0997aee968de09ec682f2a0f82a990eb1600ddbdbf1cd7abfddb1954e",
+        "source_fact:v1:9c27efd46228fa33304483773914e63d16b4927aa47804b79da0d45db5f7ab26",
+        "source_fact:v1:f68fd3e802c47eecff1c512dbf86fd10b39df97e851ec93ce1854fd68b70ceeb"
+      ],
+      "source_published_kst": "2026-10-08T08:24+09:00",
+      "source_title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권",
+      "telegram_core_fact": "EU는 중국산 하이브리드차에 수입 물량 제한과 추가 관세를 부과하는 방안을 검토하고 있다.",
+      "title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권"
     },
     "source_fact:77fe2888e666649e30ac527b": {
       "first_seen_kst": "2026-10-07T20:28:48+09:00",
@@ -183042,6 +184182,31 @@
       ],
       "source_published_kst": "2026-10-07T16:35+09:00",
       "title": "AMD 리사 수, 삼성전자-SK하이닉스 반도체 수장 만나..AI 협력 행보 강화"
+    },
+    "source_fact:7e7dc58861f0b7714d98cc44": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610952",
+      "source": "이데일리",
+      "source_body_digest": "2b0b854afd39864b2e9abad65e37cf9a45291ce0a063c8afb43124ee8c3a9d36",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb0d54a924e21fde88997dc6f789c0f21070e7d7aea1771d6b72a177d826aceb",
+      "source_fact_keys": [
+        "source_fact:v1:17ebea6958e6f7dc8abfa197f1e4f0fdde4dd0253a47de6d7a42f739217917c6",
+        "source_fact:v1:2a272bdd1cdeaf2a19996c25d22768c6352e2e93150fdfe088b301855d1f5552",
+        "source_fact:v1:30c8179986dfb7864bea397863a32f74369e6622ce85797711e92a800cfebf13",
+        "source_fact:v1:4431f780899246ffe2ddf1eb7ef6811ac759c382f883b2ee1b715f723afad90d",
+        "source_fact:v1:66dba7e0997aee968de09ec682f2a0f82a990eb1600ddbdbf1cd7abfddb1954e",
+        "source_fact:v1:9c27efd46228fa33304483773914e63d16b4927aa47804b79da0d45db5f7ab26",
+        "source_fact:v1:f68fd3e802c47eecff1c512dbf86fd10b39df97e851ec93ce1854fd68b70ceeb"
+      ],
+      "source_published_kst": "2026-10-08T08:24+09:00",
+      "source_title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권",
+      "telegram_core_fact": "EU는 중국산 하이브리드차에 수입 물량 제한과 추가 관세를 부과하는 방안을 검토하고 있다.",
+      "title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권"
     },
     "source_fact:7e7e299349bb930d05596a90": {
       "first_seen_kst": "2026-10-07T00:54:50+09:00",
@@ -186297,6 +187462,27 @@
       ],
       "source_published_kst": "2026-10-06T11:40+09:00",
       "title": "심텍 `CPU, LPDDR 수요 확대의 중심` 증권사 발표에 강세…7.78%"
+    },
+    "source_fact:85ef1500fd97873f82434811": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.hankyung.com/article/202610089959g",
+      "source": "한국경제",
+      "source_body_digest": "c8d9a9ed6081918d44d429b82b87732ca84335ce05277c9ed512e47c56c19a0c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11be3e369c5dd8421a39d64a2e5e8ef910f00be446660641f5737cf1409317f0",
+      "source_fact_keys": [
+        "source_fact:v1:42048dec96489b5891e39471ebc6d506d2a9661162f8c0cab66e332e8e5558f7",
+        "source_fact:v1:577876a91f6fc13dc8dd03e85c9454e506f901424c5c5c374681c1dd5d3541ae",
+        "source_fact:v1:cba51f2cc0072a289281db33f2948d61b459f826c8f7b2eddc9b3067da578cec"
+      ],
+      "source_published_kst": "2026-10-08T08:38+09:00",
+      "source_title": "도미노피자, 5년 만에 가격 인상…L사이즈 1500원 뛴다",
+      "telegram_core_fact": "도미노피자는 지난 5년간 물가 안정 기조에 발맞춰 본사 차원에서 원부자재 및 운영비 상승분을 자체 흡수해 왔으나, 원가 압박과 대내외적 불안정성이 지속되면서 본사와 가맹점의 경영 부담이 한계에 달해 조정을 단행하게 됐다고 설명했다.",
+      "title": "도미노피자, 5년 만에 가격 인상…L사이즈 1500원 뛴다"
     },
     "source_fact:85f1b9a81394607de3ee1f5b": {
       "first_seen_kst": "2026-10-07T07:39:19+09:00",
@@ -200543,6 +201729,32 @@
       "source_published_kst": "2026-10-07T08:08+09:00",
       "title": "AMD “반도체 수요, 공급 크게 앞질러”⋯CEO 움직이자 주가는 최고치"
     },
+    "source_fact:a5b827a2337e900a8d4fb926": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080819422198",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1d5d372fd97d10d0c15a71b6e156316f611895d180853f8922e934d101255eef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0effadefb217b433ffef155dcd50c278fc7e505cc5661305218e128e239db088",
+      "source_fact_keys": [
+        "source_fact:v1:649465956dd282eb510c04fc3242bfea6ae7e40e129cd09202c11ab011991fb2",
+        "source_fact:v1:ceb383669b8579eedb310188be297502e7234ab71f6b7d26a9e122fbb0cacb73",
+        "source_fact:v1:d9607286216a4b4b57397af1b4d6e27d2dd888de06a0d58c5e7a35f02146daaa",
+        "source_fact:v1:e47e75c2b2743e1d9170f6a4c169f2a687dc656ec3cd3596003b83076647973c",
+        "source_fact:v1:ecd6c506a7f326726be654185fafe1396571bd7c321f1be0cce40668da4049d4",
+        "source_fact:v1:ee605453695856fe177124855342a1c670d650aab44245116907747c7d20163f",
+        "source_fact:v1:f8d00e3bbc39370213bcbadec856eb6d157380edfff3a4d4bb05c7e389c308b8",
+        "source_fact:v1:fb3f9164b1af9d5dbbeb6d64a4f59cf3f753a6680d0d69b02f23619a029c217c"
+      ],
+      "source_published_kst": "2026-10-08T08:19+09:00",
+      "source_title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)",
+      "telegram_core_fact": "삼성전자(005930)가 올해 3분기 107조 4000억 원의 영업이익을 기록, 우리나라 기업 사상 처음으로 분기 영업익 100조 시대를 열었다.",
+      "title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)"
+    },
     "source_fact:a5d1ebda6478c353379a8de8": {
       "first_seen_kst": "2026-10-06T02:31:07+09:00",
       "lanes": {
@@ -202436,6 +203648,32 @@
       "source_published_kst": "2026-10-07T09:42+09:00",
       "title": "샌프란시스코 연은 총재 \"AI발 인플레, 단발성 아닐 수도\""
     },
+    "source_fact:aab557e656e67bb006d71079": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080819422198",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1d5d372fd97d10d0c15a71b6e156316f611895d180853f8922e934d101255eef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0effadefb217b433ffef155dcd50c278fc7e505cc5661305218e128e239db088",
+      "source_fact_keys": [
+        "source_fact:v1:649465956dd282eb510c04fc3242bfea6ae7e40e129cd09202c11ab011991fb2",
+        "source_fact:v1:ceb383669b8579eedb310188be297502e7234ab71f6b7d26a9e122fbb0cacb73",
+        "source_fact:v1:d9607286216a4b4b57397af1b4d6e27d2dd888de06a0d58c5e7a35f02146daaa",
+        "source_fact:v1:e47e75c2b2743e1d9170f6a4c169f2a687dc656ec3cd3596003b83076647973c",
+        "source_fact:v1:ecd6c506a7f326726be654185fafe1396571bd7c321f1be0cce40668da4049d4",
+        "source_fact:v1:ee605453695856fe177124855342a1c670d650aab44245116907747c7d20163f",
+        "source_fact:v1:f8d00e3bbc39370213bcbadec856eb6d157380edfff3a4d4bb05c7e389c308b8",
+        "source_fact:v1:fb3f9164b1af9d5dbbeb6d64a4f59cf3f753a6680d0d69b02f23619a029c217c"
+      ],
+      "source_published_kst": "2026-10-08T08:19+09:00",
+      "source_title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)",
+      "telegram_core_fact": "삼성전자(005930)가 올해 3분기 107조 4000억 원의 영업이익을 기록, 우리나라 기업 사상 처음으로 분기 영업익 100조 시대를 열었다.",
+      "title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)"
+    },
     "source_fact:aab73128416769b00f10de7b": {
       "first_seen_kst": "2026-10-06T23:46:46+09:00",
       "lanes": {
@@ -203399,6 +204637,27 @@
       "source_published_kst": "2026-10-07T14:21+09:00",
       "title": "HD건설기계, 미국 데이터센터 발전엔진 몸체 수주…3천900억원 | 연합뉴스"
     },
+    "source_fact:ac7b8fae8d2d427981a81d02": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.hankyung.com/article/202610089959g",
+      "source": "한국경제",
+      "source_body_digest": "c8d9a9ed6081918d44d429b82b87732ca84335ce05277c9ed512e47c56c19a0c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11be3e369c5dd8421a39d64a2e5e8ef910f00be446660641f5737cf1409317f0",
+      "source_fact_keys": [
+        "source_fact:v1:42048dec96489b5891e39471ebc6d506d2a9661162f8c0cab66e332e8e5558f7",
+        "source_fact:v1:577876a91f6fc13dc8dd03e85c9454e506f901424c5c5c374681c1dd5d3541ae",
+        "source_fact:v1:cba51f2cc0072a289281db33f2948d61b459f826c8f7b2eddc9b3067da578cec"
+      ],
+      "source_published_kst": "2026-10-08T08:38+09:00",
+      "source_title": "도미노피자, 5년 만에 가격 인상…L사이즈 1500원 뛴다",
+      "telegram_core_fact": "도미노피자는 지난 5년간 물가 안정 기조에 발맞춰 본사 차원에서 원부자재 및 운영비 상승분을 자체 흡수해 왔으나, 원가 압박과 대내외적 불안정성이 지속되면서 본사와 가맹점의 경영 부담이 한계에 달해 조정을 단행하게 됐다고 설명했다.",
+      "title": "도미노피자, 5년 만에 가격 인상…L사이즈 1500원 뛴다"
+    },
     "source_fact:ac81b037fb13da4d76bce350": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
@@ -203886,6 +205145,32 @@
       "source_published_kst": "2026-10-06T17:29+09:00",
       "title": "\"AI 병목 구간은 메모리\"… 삼전닉스 담는 새 글로벌ETF"
     },
+    "source_fact:ada046457047966ff79c04ac": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080819422198",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1d5d372fd97d10d0c15a71b6e156316f611895d180853f8922e934d101255eef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0effadefb217b433ffef155dcd50c278fc7e505cc5661305218e128e239db088",
+      "source_fact_keys": [
+        "source_fact:v1:649465956dd282eb510c04fc3242bfea6ae7e40e129cd09202c11ab011991fb2",
+        "source_fact:v1:ceb383669b8579eedb310188be297502e7234ab71f6b7d26a9e122fbb0cacb73",
+        "source_fact:v1:d9607286216a4b4b57397af1b4d6e27d2dd888de06a0d58c5e7a35f02146daaa",
+        "source_fact:v1:e47e75c2b2743e1d9170f6a4c169f2a687dc656ec3cd3596003b83076647973c",
+        "source_fact:v1:ecd6c506a7f326726be654185fafe1396571bd7c321f1be0cce40668da4049d4",
+        "source_fact:v1:ee605453695856fe177124855342a1c670d650aab44245116907747c7d20163f",
+        "source_fact:v1:f8d00e3bbc39370213bcbadec856eb6d157380edfff3a4d4bb05c7e389c308b8",
+        "source_fact:v1:fb3f9164b1af9d5dbbeb6d64a4f59cf3f753a6680d0d69b02f23619a029c217c"
+      ],
+      "source_published_kst": "2026-10-08T08:19+09:00",
+      "source_title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)",
+      "telegram_core_fact": "삼성전자(005930)가 올해 3분기 107조 4000억 원의 영업이익을 기록, 우리나라 기업 사상 처음으로 분기 영업익 100조 시대를 열었다.",
+      "title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)"
+    },
     "source_fact:adaed53200945b33620d104c": {
       "first_seen_kst": "2026-10-07T07:39:19+09:00",
       "lanes": {
@@ -203944,6 +205229,32 @@
       ],
       "source_published_kst": "2026-10-07T12:00+09:00",
       "title": "'44조원대' 유가 담합…공정위, SK에너지·현대오일뱅크 제재 착수"
+    },
+    "source_fact:adcfb8212e593481a939ce56": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080819422198",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1d5d372fd97d10d0c15a71b6e156316f611895d180853f8922e934d101255eef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0effadefb217b433ffef155dcd50c278fc7e505cc5661305218e128e239db088",
+      "source_fact_keys": [
+        "source_fact:v1:649465956dd282eb510c04fc3242bfea6ae7e40e129cd09202c11ab011991fb2",
+        "source_fact:v1:ceb383669b8579eedb310188be297502e7234ab71f6b7d26a9e122fbb0cacb73",
+        "source_fact:v1:d9607286216a4b4b57397af1b4d6e27d2dd888de06a0d58c5e7a35f02146daaa",
+        "source_fact:v1:e47e75c2b2743e1d9170f6a4c169f2a687dc656ec3cd3596003b83076647973c",
+        "source_fact:v1:ecd6c506a7f326726be654185fafe1396571bd7c321f1be0cce40668da4049d4",
+        "source_fact:v1:ee605453695856fe177124855342a1c670d650aab44245116907747c7d20163f",
+        "source_fact:v1:f8d00e3bbc39370213bcbadec856eb6d157380edfff3a4d4bb05c7e389c308b8",
+        "source_fact:v1:fb3f9164b1af9d5dbbeb6d64a4f59cf3f753a6680d0d69b02f23619a029c217c"
+      ],
+      "source_published_kst": "2026-10-08T08:19+09:00",
+      "source_title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)",
+      "telegram_core_fact": "삼성전자(005930)가 올해 3분기 107조 4000억 원의 영업이익을 기록, 우리나라 기업 사상 처음으로 분기 영업익 100조 시대를 열었다.",
+      "title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)"
     },
     "source_fact:add040c415131598ad1a2226": {
       "first_seen_kst": "2026-10-08T08:31:37+09:00",
@@ -207327,6 +208638,30 @@
       "telegram_core_fact": "그레이스케일은 지난 8월 지캐시 트러스트를 현물 ETF로 전환했고, 21셰어스는 유럽 최초의 지캐시 상장지수상품(ETP)을 출시했다.",
       "title": "1년간 810% 오른 지캐시…윙클보스 형제, 현물 ETF 신청"
     },
+    "source_fact:b4e97a4122d5ca6c238af274": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080827230920",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "362ac36045f4b8569a1e71e771018df07e554aebf71d0bd006ea1e489966dd43",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee5dbd450b8329f7b023e9de9c64aa02c229b3cf9935c0bb26c933bc5d1a2953",
+      "source_fact_keys": [
+        "source_fact:v1:0a210fc83d5e52580865a07d6f2a584773f31062102ee7b936de56b3a8356545",
+        "source_fact:v1:5543552e1a3f73b393ae74947dce614e629ba31ee617ec1599d36055c848a95e",
+        "source_fact:v1:5fdddc81ddae88f52d622c22cdd9272cecf0f22b501692e25c48f2482fff213f",
+        "source_fact:v1:ac6717d061095f95576ec9ce0235f7bd15ec9c850c1fde58e24380d0b17953ac",
+        "source_fact:v1:d5e037e9874ac704e30388f6b9bf402115a8e4ecc92583ad782ba5689950ae4e",
+        "source_fact:v1:fe6f12e357db565900fa6f43d22598ed39b4eab005f4cc0c8fb0ba5cc5b1972e"
+      ],
+      "source_published_kst": "2026-10-08T08:27+09:00",
+      "source_title": "\"기대치 넘었다\" 삼성전자, 프리마켓서 1.6% 상승…반도체주 강세",
+      "telegram_core_fact": "삼성전자가 시장 기대치를 웃도는 3분기 잠정 실적을 발표하면서 프리마켓에서 1%대 상승세를 보이고 있다. 삼성전자, 올해 3분기 연결 기준 영업이익이 107조 4000억 원으로 잠정 집계됐다고 공시했다.",
+      "title": "\"기대치 넘었다\" 삼성전자, 프리마켓서 1.6% 상승…반도체주 강세"
+    },
     "source_fact:b4f8d3d21828f9064155ba15": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
       "lanes": {
@@ -207727,6 +209062,31 @@
       ],
       "source_published_kst": "2026-10-07T09:19+09:00",
       "title": "[더벨]레이저쎌, '글로벌 톱' 메모리 프로브카드 기업에 LPB 공급"
+    },
+    "source_fact:b637ce5b46ecc0ba4349d215": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610952",
+      "source": "이데일리",
+      "source_body_digest": "2b0b854afd39864b2e9abad65e37cf9a45291ce0a063c8afb43124ee8c3a9d36",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb0d54a924e21fde88997dc6f789c0f21070e7d7aea1771d6b72a177d826aceb",
+      "source_fact_keys": [
+        "source_fact:v1:17ebea6958e6f7dc8abfa197f1e4f0fdde4dd0253a47de6d7a42f739217917c6",
+        "source_fact:v1:2a272bdd1cdeaf2a19996c25d22768c6352e2e93150fdfe088b301855d1f5552",
+        "source_fact:v1:30c8179986dfb7864bea397863a32f74369e6622ce85797711e92a800cfebf13",
+        "source_fact:v1:4431f780899246ffe2ddf1eb7ef6811ac759c382f883b2ee1b715f723afad90d",
+        "source_fact:v1:66dba7e0997aee968de09ec682f2a0f82a990eb1600ddbdbf1cd7abfddb1954e",
+        "source_fact:v1:9c27efd46228fa33304483773914e63d16b4927aa47804b79da0d45db5f7ab26",
+        "source_fact:v1:f68fd3e802c47eecff1c512dbf86fd10b39df97e851ec93ce1854fd68b70ceeb"
+      ],
+      "source_published_kst": "2026-10-08T08:24+09:00",
+      "source_title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권",
+      "telegram_core_fact": "EU는 중국산 하이브리드차에 수입 물량 제한과 추가 관세를 부과하는 방안을 검토하고 있다.",
+      "title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권"
     },
     "source_fact:b641a08c01357a1dedbe09bc": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
@@ -214524,6 +215884,35 @@
       "source_published_kst": "2026-10-05T18:21+09:00",
       "title": "솔리다임 美상장… \"SK하닉 가치 재평가\" vs \"주주 피해\" [어떻게 생각하십니까]"
     },
+    "source_fact:c54cdf97249cbe599c77b3bf": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171085",
+      "source": "매일경제",
+      "source_body_digest": "3747b63134ac35b70fb908c9e6fe48c6de1560e1b31310a3d76c9a0ac24094fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f89e2178beaa89f6944651a7c378a06d024f8806b15f85118225b06ee61f7dd5",
+      "source_fact_keys": [
+        "source_fact:v1:17af42e2778f8824cae434d44f7598351ee1dca8be9c77f6390e7a10baa55551",
+        "source_fact:v1:1c20db5d37364a25526992f3fc6d6a07ee967ffbd3bc28f01ea24e774e3cf42a",
+        "source_fact:v1:20d41ed86d96c0eeaa426f7fc78b1135fd04af8eb6cc4900f42a3dc19569fa20",
+        "source_fact:v1:320ea8dc05bd11b3b96b1b65f8318e8ba5ee66671efa6706bf4e8663221ad652",
+        "source_fact:v1:3a1f910036e5a868e14c238086cab5e8f1429d1b874c6f3bccdcc9ba1ec610d0",
+        "source_fact:v1:4fe09a58060e650b04e62c9ee19641a2f3e37aa503843f2a0525eedb8cba64f1",
+        "source_fact:v1:54cfbf2773db78bba55fac89292259019eae5cf542ca6723da1b32cb6ce7b3c4",
+        "source_fact:v1:7fe975a801d7f6de72d1ebf4768142ebe21a4769345025ea092eec1a54cb88b9",
+        "source_fact:v1:b26b6243aeac52db6f30ade951ae4ea4bf6e57ded8d87efef0dd041a22516f50",
+        "source_fact:v1:bd04c477f6ed0b50ba1324a4ca5738b1f6294ba25a31407c7756e600a6dc1d17",
+        "source_fact:v1:be92d1fa42d6293dfbf3b10fbdf30892a3721374914e828cf974381be0922526"
+      ],
+      "source_published_kst": "2026-10-08T08:17+09:00",
+      "source_title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박",
+      "telegram_core_fact": "삼성전자의 영업이익은 지난 분기 세계에서 최고치를 기록했는데 이번에도 전세계 기업중 1위를 기록할 것으로 예상된다.",
+      "title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박"
+    },
     "source_fact:c557e5419a7a5fd330415276": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
       "lanes": {
@@ -215521,6 +216910,35 @@
       "source_title": "[속보]뉴욕증시 사상 최고치에도…코스피 연일 하락세",
       "telegram_core_fact": "현재까지 코스피 시장에서 개인 투자자 홀로 4687억원 순매수 중이며 외국인과 기관 투자자가 각각 4240억원 758억원 순매도 중이다. 미국 증시가 사상 최고치 행진을 이어가고 미 국채금리 상승세까지 꺾이고 있으나 코스피는 연일 하락세를 면치 못하고 있다.",
       "title": "[속보]뉴욕증시 사상 최고치에도…코스피 연일 하락세"
+    },
+    "source_fact:c77153409182ac75f0075076": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171085",
+      "source": "매일경제",
+      "source_body_digest": "3747b63134ac35b70fb908c9e6fe48c6de1560e1b31310a3d76c9a0ac24094fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f89e2178beaa89f6944651a7c378a06d024f8806b15f85118225b06ee61f7dd5",
+      "source_fact_keys": [
+        "source_fact:v1:17af42e2778f8824cae434d44f7598351ee1dca8be9c77f6390e7a10baa55551",
+        "source_fact:v1:1c20db5d37364a25526992f3fc6d6a07ee967ffbd3bc28f01ea24e774e3cf42a",
+        "source_fact:v1:20d41ed86d96c0eeaa426f7fc78b1135fd04af8eb6cc4900f42a3dc19569fa20",
+        "source_fact:v1:320ea8dc05bd11b3b96b1b65f8318e8ba5ee66671efa6706bf4e8663221ad652",
+        "source_fact:v1:3a1f910036e5a868e14c238086cab5e8f1429d1b874c6f3bccdcc9ba1ec610d0",
+        "source_fact:v1:4fe09a58060e650b04e62c9ee19641a2f3e37aa503843f2a0525eedb8cba64f1",
+        "source_fact:v1:54cfbf2773db78bba55fac89292259019eae5cf542ca6723da1b32cb6ce7b3c4",
+        "source_fact:v1:7fe975a801d7f6de72d1ebf4768142ebe21a4769345025ea092eec1a54cb88b9",
+        "source_fact:v1:b26b6243aeac52db6f30ade951ae4ea4bf6e57ded8d87efef0dd041a22516f50",
+        "source_fact:v1:bd04c477f6ed0b50ba1324a4ca5738b1f6294ba25a31407c7756e600a6dc1d17",
+        "source_fact:v1:be92d1fa42d6293dfbf3b10fbdf30892a3721374914e828cf974381be0922526"
+      ],
+      "source_published_kst": "2026-10-08T08:17+09:00",
+      "source_title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박",
+      "telegram_core_fact": "삼성전자의 영업이익은 지난 분기 세계에서 최고치를 기록했는데 이번에도 전세계 기업중 1위를 기록할 것으로 예상된다.",
+      "title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박"
     },
     "source_fact:c773e7898ee7d743ede638c5": {
       "first_seen_kst": "2026-10-07T07:54:25+09:00",
@@ -217475,6 +218893,30 @@
       "source_title": "삼성, 반도체 성과급 내년 3월 말 지급⋯8천만원 연봉시 최대 7.5억 [종합]",
       "telegram_core_fact": "성과급은 세금과 보험료 등을 공제한 뒤 삼성전자 자사주로 지급한다.",
       "title": "삼성, 반도체 성과급 내년 3월 말 지급⋯8천만원 연봉시 최대 7.5억 [종합]"
+    },
+    "source_fact:cc61cda96c02f0daca01edc3": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080827230920",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "362ac36045f4b8569a1e71e771018df07e554aebf71d0bd006ea1e489966dd43",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee5dbd450b8329f7b023e9de9c64aa02c229b3cf9935c0bb26c933bc5d1a2953",
+      "source_fact_keys": [
+        "source_fact:v1:0a210fc83d5e52580865a07d6f2a584773f31062102ee7b936de56b3a8356545",
+        "source_fact:v1:5543552e1a3f73b393ae74947dce614e629ba31ee617ec1599d36055c848a95e",
+        "source_fact:v1:5fdddc81ddae88f52d622c22cdd9272cecf0f22b501692e25c48f2482fff213f",
+        "source_fact:v1:ac6717d061095f95576ec9ce0235f7bd15ec9c850c1fde58e24380d0b17953ac",
+        "source_fact:v1:d5e037e9874ac704e30388f6b9bf402115a8e4ecc92583ad782ba5689950ae4e",
+        "source_fact:v1:fe6f12e357db565900fa6f43d22598ed39b4eab005f4cc0c8fb0ba5cc5b1972e"
+      ],
+      "source_published_kst": "2026-10-08T08:27+09:00",
+      "source_title": "\"기대치 넘었다\" 삼성전자, 프리마켓서 1.6% 상승…반도체주 강세",
+      "telegram_core_fact": "삼성전자가 시장 기대치를 웃도는 3분기 잠정 실적을 발표하면서 프리마켓에서 1%대 상승세를 보이고 있다. 삼성전자, 올해 3분기 연결 기준 영업이익이 107조 4000억 원으로 잠정 집계됐다고 공시했다.",
+      "title": "\"기대치 넘었다\" 삼성전자, 프리마켓서 1.6% 상승…반도체주 강세"
     },
     "source_fact:cc67de6ea5405f621f2e0a37": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
@@ -223435,6 +224877,35 @@
       "source_published_kst": "2026-10-06T10:35+09:00",
       "title": "거버넌스포럼, 최태원 회장 SK 지분 매각에 '3%룰 회피' 비판"
     },
+    "source_fact:d9743f7afe05e038904523c3": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171085",
+      "source": "매일경제",
+      "source_body_digest": "3747b63134ac35b70fb908c9e6fe48c6de1560e1b31310a3d76c9a0ac24094fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f89e2178beaa89f6944651a7c378a06d024f8806b15f85118225b06ee61f7dd5",
+      "source_fact_keys": [
+        "source_fact:v1:17af42e2778f8824cae434d44f7598351ee1dca8be9c77f6390e7a10baa55551",
+        "source_fact:v1:1c20db5d37364a25526992f3fc6d6a07ee967ffbd3bc28f01ea24e774e3cf42a",
+        "source_fact:v1:20d41ed86d96c0eeaa426f7fc78b1135fd04af8eb6cc4900f42a3dc19569fa20",
+        "source_fact:v1:320ea8dc05bd11b3b96b1b65f8318e8ba5ee66671efa6706bf4e8663221ad652",
+        "source_fact:v1:3a1f910036e5a868e14c238086cab5e8f1429d1b874c6f3bccdcc9ba1ec610d0",
+        "source_fact:v1:4fe09a58060e650b04e62c9ee19641a2f3e37aa503843f2a0525eedb8cba64f1",
+        "source_fact:v1:54cfbf2773db78bba55fac89292259019eae5cf542ca6723da1b32cb6ce7b3c4",
+        "source_fact:v1:7fe975a801d7f6de72d1ebf4768142ebe21a4769345025ea092eec1a54cb88b9",
+        "source_fact:v1:b26b6243aeac52db6f30ade951ae4ea4bf6e57ded8d87efef0dd041a22516f50",
+        "source_fact:v1:bd04c477f6ed0b50ba1324a4ca5738b1f6294ba25a31407c7756e600a6dc1d17",
+        "source_fact:v1:be92d1fa42d6293dfbf3b10fbdf30892a3721374914e828cf974381be0922526"
+      ],
+      "source_published_kst": "2026-10-08T08:17+09:00",
+      "source_title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박",
+      "telegram_core_fact": "삼성전자의 영업이익은 지난 분기 세계에서 최고치를 기록했는데 이번에도 전세계 기업중 1위를 기록할 것으로 예상된다.",
+      "title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박"
+    },
     "source_fact:d9776a1e69898a540fad77a3": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
       "lanes": {
@@ -227668,6 +229139,32 @@
       "source_published_kst": "2026-10-06T07:07+09:00",
       "title": "스페이스X 주가 급등에 머스크 다시 조만장자 [마켓핫]"
     },
+    "source_fact:e183558966bbdd7b7d575b91": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080819422198",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1d5d372fd97d10d0c15a71b6e156316f611895d180853f8922e934d101255eef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0effadefb217b433ffef155dcd50c278fc7e505cc5661305218e128e239db088",
+      "source_fact_keys": [
+        "source_fact:v1:649465956dd282eb510c04fc3242bfea6ae7e40e129cd09202c11ab011991fb2",
+        "source_fact:v1:ceb383669b8579eedb310188be297502e7234ab71f6b7d26a9e122fbb0cacb73",
+        "source_fact:v1:d9607286216a4b4b57397af1b4d6e27d2dd888de06a0d58c5e7a35f02146daaa",
+        "source_fact:v1:e47e75c2b2743e1d9170f6a4c169f2a687dc656ec3cd3596003b83076647973c",
+        "source_fact:v1:ecd6c506a7f326726be654185fafe1396571bd7c321f1be0cce40668da4049d4",
+        "source_fact:v1:ee605453695856fe177124855342a1c670d650aab44245116907747c7d20163f",
+        "source_fact:v1:f8d00e3bbc39370213bcbadec856eb6d157380edfff3a4d4bb05c7e389c308b8",
+        "source_fact:v1:fb3f9164b1af9d5dbbeb6d64a4f59cf3f753a6680d0d69b02f23619a029c217c"
+      ],
+      "source_published_kst": "2026-10-08T08:19+09:00",
+      "source_title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)",
+      "telegram_core_fact": "삼성전자(005930)가 올해 3분기 107조 4000억 원의 영업이익을 기록, 우리나라 기업 사상 처음으로 분기 영업익 100조 시대를 열었다.",
+      "title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)"
+    },
     "source_fact:e193d8ad59ad7594041e1322": {
       "first_seen_kst": "2026-10-07T20:43:18+09:00",
       "lanes": {
@@ -228293,6 +229790,35 @@
       "source_title": "'GH 베이스캠프' 5개 기업, 미국서 투자 유치활동 펼친다",
       "telegram_core_fact": "경기주택도시공사(GH)는 '2026 GH 베이스캠프'에 선정된 판교 입주기업 5개사가 7~16일 미국에서 투자 유치활동을 펼친다고 밝혔다.",
       "title": "'GH 베이스캠프' 5개 기업, 미국서 투자 유치활동 펼친다"
+    },
+    "source_fact:e26008b2823a0544b838f06b": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171085",
+      "source": "매일경제",
+      "source_body_digest": "3747b63134ac35b70fb908c9e6fe48c6de1560e1b31310a3d76c9a0ac24094fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f89e2178beaa89f6944651a7c378a06d024f8806b15f85118225b06ee61f7dd5",
+      "source_fact_keys": [
+        "source_fact:v1:17af42e2778f8824cae434d44f7598351ee1dca8be9c77f6390e7a10baa55551",
+        "source_fact:v1:1c20db5d37364a25526992f3fc6d6a07ee967ffbd3bc28f01ea24e774e3cf42a",
+        "source_fact:v1:20d41ed86d96c0eeaa426f7fc78b1135fd04af8eb6cc4900f42a3dc19569fa20",
+        "source_fact:v1:320ea8dc05bd11b3b96b1b65f8318e8ba5ee66671efa6706bf4e8663221ad652",
+        "source_fact:v1:3a1f910036e5a868e14c238086cab5e8f1429d1b874c6f3bccdcc9ba1ec610d0",
+        "source_fact:v1:4fe09a58060e650b04e62c9ee19641a2f3e37aa503843f2a0525eedb8cba64f1",
+        "source_fact:v1:54cfbf2773db78bba55fac89292259019eae5cf542ca6723da1b32cb6ce7b3c4",
+        "source_fact:v1:7fe975a801d7f6de72d1ebf4768142ebe21a4769345025ea092eec1a54cb88b9",
+        "source_fact:v1:b26b6243aeac52db6f30ade951ae4ea4bf6e57ded8d87efef0dd041a22516f50",
+        "source_fact:v1:bd04c477f6ed0b50ba1324a4ca5738b1f6294ba25a31407c7756e600a6dc1d17",
+        "source_fact:v1:be92d1fa42d6293dfbf3b10fbdf30892a3721374914e828cf974381be0922526"
+      ],
+      "source_published_kst": "2026-10-08T08:17+09:00",
+      "source_title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박",
+      "telegram_core_fact": "삼성전자의 영업이익은 지난 분기 세계에서 최고치를 기록했는데 이번에도 전세계 기업중 1위를 기록할 것으로 예상된다.",
+      "title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박"
     },
     "source_fact:e26148001b61b1d05fbd5039": {
       "first_seen_kst": "2026-10-07T12:49:48+09:00",
@@ -229351,6 +230877,30 @@
       ],
       "source_published_kst": "2026-10-06T09:58+09:00",
       "title": "메리츠는 신규 합류, 기존 증권사는 금리 인상…발행어음 '9파전' 경쟁 본격화"
+    },
+    "source_fact:e4782bdd0eb1907bf7af31e4": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080827230920",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "362ac36045f4b8569a1e71e771018df07e554aebf71d0bd006ea1e489966dd43",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee5dbd450b8329f7b023e9de9c64aa02c229b3cf9935c0bb26c933bc5d1a2953",
+      "source_fact_keys": [
+        "source_fact:v1:0a210fc83d5e52580865a07d6f2a584773f31062102ee7b936de56b3a8356545",
+        "source_fact:v1:5543552e1a3f73b393ae74947dce614e629ba31ee617ec1599d36055c848a95e",
+        "source_fact:v1:5fdddc81ddae88f52d622c22cdd9272cecf0f22b501692e25c48f2482fff213f",
+        "source_fact:v1:ac6717d061095f95576ec9ce0235f7bd15ec9c850c1fde58e24380d0b17953ac",
+        "source_fact:v1:d5e037e9874ac704e30388f6b9bf402115a8e4ecc92583ad782ba5689950ae4e",
+        "source_fact:v1:fe6f12e357db565900fa6f43d22598ed39b4eab005f4cc0c8fb0ba5cc5b1972e"
+      ],
+      "source_published_kst": "2026-10-08T08:27+09:00",
+      "source_title": "\"기대치 넘었다\" 삼성전자, 프리마켓서 1.6% 상승…반도체주 강세",
+      "telegram_core_fact": "삼성전자가 시장 기대치를 웃도는 3분기 잠정 실적을 발표하면서 프리마켓에서 1%대 상승세를 보이고 있다. 삼성전자, 올해 3분기 연결 기준 영업이익이 107조 4000억 원으로 잠정 집계됐다고 공시했다.",
+      "title": "\"기대치 넘었다\" 삼성전자, 프리마켓서 1.6% 상승…반도체주 강세"
     },
     "source_fact:e479f21381868314472a8342": {
       "first_seen_kst": "2026-10-07T02:13:12+09:00",
@@ -231152,6 +232702,35 @@
       "source_title": "'GH 베이스캠프' 5개 기업, 미국서 투자 유치활동 펼친다",
       "telegram_core_fact": "경기주택도시공사(GH)는 '2026 GH 베이스캠프'에 선정된 판교 입주기업 5개사가 7~16일 미국에서 투자 유치활동을 펼친다고 밝혔다.",
       "title": "'GH 베이스캠프' 5개 기업, 미국서 투자 유치활동 펼친다"
+    },
+    "source_fact:e8b891e42efe425de99e343a": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171085",
+      "source": "매일경제",
+      "source_body_digest": "3747b63134ac35b70fb908c9e6fe48c6de1560e1b31310a3d76c9a0ac24094fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f89e2178beaa89f6944651a7c378a06d024f8806b15f85118225b06ee61f7dd5",
+      "source_fact_keys": [
+        "source_fact:v1:17af42e2778f8824cae434d44f7598351ee1dca8be9c77f6390e7a10baa55551",
+        "source_fact:v1:1c20db5d37364a25526992f3fc6d6a07ee967ffbd3bc28f01ea24e774e3cf42a",
+        "source_fact:v1:20d41ed86d96c0eeaa426f7fc78b1135fd04af8eb6cc4900f42a3dc19569fa20",
+        "source_fact:v1:320ea8dc05bd11b3b96b1b65f8318e8ba5ee66671efa6706bf4e8663221ad652",
+        "source_fact:v1:3a1f910036e5a868e14c238086cab5e8f1429d1b874c6f3bccdcc9ba1ec610d0",
+        "source_fact:v1:4fe09a58060e650b04e62c9ee19641a2f3e37aa503843f2a0525eedb8cba64f1",
+        "source_fact:v1:54cfbf2773db78bba55fac89292259019eae5cf542ca6723da1b32cb6ce7b3c4",
+        "source_fact:v1:7fe975a801d7f6de72d1ebf4768142ebe21a4769345025ea092eec1a54cb88b9",
+        "source_fact:v1:b26b6243aeac52db6f30ade951ae4ea4bf6e57ded8d87efef0dd041a22516f50",
+        "source_fact:v1:bd04c477f6ed0b50ba1324a4ca5738b1f6294ba25a31407c7756e600a6dc1d17",
+        "source_fact:v1:be92d1fa42d6293dfbf3b10fbdf30892a3721374914e828cf974381be0922526"
+      ],
+      "source_published_kst": "2026-10-08T08:17+09:00",
+      "source_title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박",
+      "telegram_core_fact": "삼성전자의 영업이익은 지난 분기 세계에서 최고치를 기록했는데 이번에도 전세계 기업중 1위를 기록할 것으로 예상된다.",
+      "title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박"
     },
     "source_fact:e8c3413e971d9f119760fa10": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
@@ -235970,6 +237549,31 @@
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
     },
+    "source_fact:f2d50355f6c9cff377e8817e": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610952",
+      "source": "이데일리",
+      "source_body_digest": "2b0b854afd39864b2e9abad65e37cf9a45291ce0a063c8afb43124ee8c3a9d36",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb0d54a924e21fde88997dc6f789c0f21070e7d7aea1771d6b72a177d826aceb",
+      "source_fact_keys": [
+        "source_fact:v1:17ebea6958e6f7dc8abfa197f1e4f0fdde4dd0253a47de6d7a42f739217917c6",
+        "source_fact:v1:2a272bdd1cdeaf2a19996c25d22768c6352e2e93150fdfe088b301855d1f5552",
+        "source_fact:v1:30c8179986dfb7864bea397863a32f74369e6622ce85797711e92a800cfebf13",
+        "source_fact:v1:4431f780899246ffe2ddf1eb7ef6811ac759c382f883b2ee1b715f723afad90d",
+        "source_fact:v1:66dba7e0997aee968de09ec682f2a0f82a990eb1600ddbdbf1cd7abfddb1954e",
+        "source_fact:v1:9c27efd46228fa33304483773914e63d16b4927aa47804b79da0d45db5f7ab26",
+        "source_fact:v1:f68fd3e802c47eecff1c512dbf86fd10b39df97e851ec93ce1854fd68b70ceeb"
+      ],
+      "source_published_kst": "2026-10-08T08:24+09:00",
+      "source_title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권",
+      "telegram_core_fact": "EU는 중국산 하이브리드차에 수입 물량 제한과 추가 관세를 부과하는 방안을 검토하고 있다.",
+      "title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권"
+    },
     "source_fact:f2e4c25bbead682f88b70935": {
       "first_seen_kst": "2026-10-07T00:38:27+09:00",
       "lanes": {
@@ -238550,6 +240154,31 @@
       ],
       "source_published_kst": "2026-10-06T15:06+09:00",
       "title": "엠키스코어, AI Festa 26서 검증된 AI Factory 역량 공개… 대규모 구축부터 AI 활용까지"
+    },
+    "source_fact:fa09d82108febfd96b2b110d": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610952",
+      "source": "이데일리",
+      "source_body_digest": "2b0b854afd39864b2e9abad65e37cf9a45291ce0a063c8afb43124ee8c3a9d36",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb0d54a924e21fde88997dc6f789c0f21070e7d7aea1771d6b72a177d826aceb",
+      "source_fact_keys": [
+        "source_fact:v1:17ebea6958e6f7dc8abfa197f1e4f0fdde4dd0253a47de6d7a42f739217917c6",
+        "source_fact:v1:2a272bdd1cdeaf2a19996c25d22768c6352e2e93150fdfe088b301855d1f5552",
+        "source_fact:v1:30c8179986dfb7864bea397863a32f74369e6622ce85797711e92a800cfebf13",
+        "source_fact:v1:4431f780899246ffe2ddf1eb7ef6811ac759c382f883b2ee1b715f723afad90d",
+        "source_fact:v1:66dba7e0997aee968de09ec682f2a0f82a990eb1600ddbdbf1cd7abfddb1954e",
+        "source_fact:v1:9c27efd46228fa33304483773914e63d16b4927aa47804b79da0d45db5f7ab26",
+        "source_fact:v1:f68fd3e802c47eecff1c512dbf86fd10b39df97e851ec93ce1854fd68b70ceeb"
+      ],
+      "source_published_kst": "2026-10-08T08:24+09:00",
+      "source_title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권",
+      "telegram_core_fact": "EU는 중국산 하이브리드차에 수입 물량 제한과 추가 관세를 부과하는 방안을 검토하고 있다.",
+      "title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권"
     },
     "source_fact:fa0de5e477c5a21c122e6b22": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
@@ -242944,6 +244573,27 @@
       "source": "머니투데이",
       "title": "나경원, DMZ 지뢰 사고 국조·청문회 촉구…\"축소·은폐 의혹 밝혀야\""
     },
+    "title:08298688c322448f81a638d4": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.hankyung.com/article/202610089959g",
+      "source": "한국경제",
+      "source_body_digest": "c8d9a9ed6081918d44d429b82b87732ca84335ce05277c9ed512e47c56c19a0c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11be3e369c5dd8421a39d64a2e5e8ef910f00be446660641f5737cf1409317f0",
+      "source_fact_keys": [
+        "source_fact:v1:42048dec96489b5891e39471ebc6d506d2a9661162f8c0cab66e332e8e5558f7",
+        "source_fact:v1:577876a91f6fc13dc8dd03e85c9454e506f901424c5c5c374681c1dd5d3541ae",
+        "source_fact:v1:cba51f2cc0072a289281db33f2948d61b459f826c8f7b2eddc9b3067da578cec"
+      ],
+      "source_published_kst": "2026-10-08T08:38+09:00",
+      "source_title": "도미노피자, 5년 만에 가격 인상…L사이즈 1500원 뛴다",
+      "telegram_core_fact": "도미노피자는 지난 5년간 물가 안정 기조에 발맞춰 본사 차원에서 원부자재 및 운영비 상승분을 자체 흡수해 왔으나, 원가 압박과 대내외적 불안정성이 지속되면서 본사와 가맹점의 경영 부담이 한계에 달해 조정을 단행하게 됐다고 설명했다.",
+      "title": "도미노피자, 5년 만에 가격 인상…L사이즈 1500원 뛴다"
+    },
     "title:08597c257bc9bd4cdcfea293": {
       "first_seen_kst": "2026-10-02T06:53:18+09:00",
       "lanes": {
@@ -243849,6 +245499,35 @@
       "source": "이투데이",
       "title": "CJ온스타일, 유아동 매출 160%↑…월 990원 멤버십 승부"
     },
+    "title:0dd13109fac96b303e9c65a5": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171085",
+      "source": "매일경제",
+      "source_body_digest": "3747b63134ac35b70fb908c9e6fe48c6de1560e1b31310a3d76c9a0ac24094fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f89e2178beaa89f6944651a7c378a06d024f8806b15f85118225b06ee61f7dd5",
+      "source_fact_keys": [
+        "source_fact:v1:17af42e2778f8824cae434d44f7598351ee1dca8be9c77f6390e7a10baa55551",
+        "source_fact:v1:1c20db5d37364a25526992f3fc6d6a07ee967ffbd3bc28f01ea24e774e3cf42a",
+        "source_fact:v1:20d41ed86d96c0eeaa426f7fc78b1135fd04af8eb6cc4900f42a3dc19569fa20",
+        "source_fact:v1:320ea8dc05bd11b3b96b1b65f8318e8ba5ee66671efa6706bf4e8663221ad652",
+        "source_fact:v1:3a1f910036e5a868e14c238086cab5e8f1429d1b874c6f3bccdcc9ba1ec610d0",
+        "source_fact:v1:4fe09a58060e650b04e62c9ee19641a2f3e37aa503843f2a0525eedb8cba64f1",
+        "source_fact:v1:54cfbf2773db78bba55fac89292259019eae5cf542ca6723da1b32cb6ce7b3c4",
+        "source_fact:v1:7fe975a801d7f6de72d1ebf4768142ebe21a4769345025ea092eec1a54cb88b9",
+        "source_fact:v1:b26b6243aeac52db6f30ade951ae4ea4bf6e57ded8d87efef0dd041a22516f50",
+        "source_fact:v1:bd04c477f6ed0b50ba1324a4ca5738b1f6294ba25a31407c7756e600a6dc1d17",
+        "source_fact:v1:be92d1fa42d6293dfbf3b10fbdf30892a3721374914e828cf974381be0922526"
+      ],
+      "source_published_kst": "2026-10-08T08:17+09:00",
+      "source_title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박",
+      "telegram_core_fact": "삼성전자의 영업이익은 지난 분기 세계에서 최고치를 기록했는데 이번에도 전세계 기업중 1위를 기록할 것으로 예상된다.",
+      "title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박"
+    },
     "title:0dd2fd4d0f30e52faddf64fd": {
       "first_seen_kst": "2026-10-06T04:08:54+09:00",
       "lanes": {
@@ -243881,6 +245560,32 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-05T22:34+09:00",
       "title": "[美특징주]할리데이비슨, 씨티 '매수' 상향에 상승"
+    },
+    "title:0dedc763159181ed2813b937": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080819422198",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1d5d372fd97d10d0c15a71b6e156316f611895d180853f8922e934d101255eef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0effadefb217b433ffef155dcd50c278fc7e505cc5661305218e128e239db088",
+      "source_fact_keys": [
+        "source_fact:v1:649465956dd282eb510c04fc3242bfea6ae7e40e129cd09202c11ab011991fb2",
+        "source_fact:v1:ceb383669b8579eedb310188be297502e7234ab71f6b7d26a9e122fbb0cacb73",
+        "source_fact:v1:d9607286216a4b4b57397af1b4d6e27d2dd888de06a0d58c5e7a35f02146daaa",
+        "source_fact:v1:e47e75c2b2743e1d9170f6a4c169f2a687dc656ec3cd3596003b83076647973c",
+        "source_fact:v1:ecd6c506a7f326726be654185fafe1396571bd7c321f1be0cce40668da4049d4",
+        "source_fact:v1:ee605453695856fe177124855342a1c670d650aab44245116907747c7d20163f",
+        "source_fact:v1:f8d00e3bbc39370213bcbadec856eb6d157380edfff3a4d4bb05c7e389c308b8",
+        "source_fact:v1:fb3f9164b1af9d5dbbeb6d64a4f59cf3f753a6680d0d69b02f23619a029c217c"
+      ],
+      "source_published_kst": "2026-10-08T08:19+09:00",
+      "source_title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)",
+      "telegram_core_fact": "삼성전자(005930)가 올해 3분기 107조 4000억 원의 영업이익을 기록, 우리나라 기업 사상 처음으로 분기 영업익 100조 시대를 열었다.",
+      "title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)"
     },
     "title:0e043441ba723b819b0e0149": {
       "first_seen_kst": "2026-10-06T16:30:27+09:00",
@@ -253248,6 +254953,32 @@
       "source": "한국경제",
       "title": "예상 밑돈 PCE 물가에도 국채금리 고공행진하자 혼조 마감 [뉴욕증시 브리핑]"
     },
+    "title:43e408d55266135c858cce89": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080819422198",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1d5d372fd97d10d0c15a71b6e156316f611895d180853f8922e934d101255eef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0effadefb217b433ffef155dcd50c278fc7e505cc5661305218e128e239db088",
+      "source_fact_keys": [
+        "source_fact:v1:649465956dd282eb510c04fc3242bfea6ae7e40e129cd09202c11ab011991fb2",
+        "source_fact:v1:ceb383669b8579eedb310188be297502e7234ab71f6b7d26a9e122fbb0cacb73",
+        "source_fact:v1:d9607286216a4b4b57397af1b4d6e27d2dd888de06a0d58c5e7a35f02146daaa",
+        "source_fact:v1:e47e75c2b2743e1d9170f6a4c169f2a687dc656ec3cd3596003b83076647973c",
+        "source_fact:v1:ecd6c506a7f326726be654185fafe1396571bd7c321f1be0cce40668da4049d4",
+        "source_fact:v1:ee605453695856fe177124855342a1c670d650aab44245116907747c7d20163f",
+        "source_fact:v1:f8d00e3bbc39370213bcbadec856eb6d157380edfff3a4d4bb05c7e389c308b8",
+        "source_fact:v1:fb3f9164b1af9d5dbbeb6d64a4f59cf3f753a6680d0d69b02f23619a029c217c"
+      ],
+      "source_published_kst": "2026-10-08T08:19+09:00",
+      "source_title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)",
+      "telegram_core_fact": "삼성전자(005930)가 올해 3분기 107조 4000억 원의 영업이익을 기록, 우리나라 기업 사상 처음으로 분기 영업익 100조 시대를 열었다.",
+      "title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)"
+    },
     "title:43e8a1813927f6b6fd348995": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
       "lanes": {
@@ -259550,6 +261281,30 @@
       ],
       "source_published_kst": "2026-10-06T11:08+09:00",
       "title": "\"농지 특조법 특례 2∼3년 설정·농지법 개정 동시 추진 필요\" | 연합뉴스"
+    },
+    "title:6be9d30def7f94cfcefd0ea7": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080827230920",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "362ac36045f4b8569a1e71e771018df07e554aebf71d0bd006ea1e489966dd43",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee5dbd450b8329f7b023e9de9c64aa02c229b3cf9935c0bb26c933bc5d1a2953",
+      "source_fact_keys": [
+        "source_fact:v1:0a210fc83d5e52580865a07d6f2a584773f31062102ee7b936de56b3a8356545",
+        "source_fact:v1:5543552e1a3f73b393ae74947dce614e629ba31ee617ec1599d36055c848a95e",
+        "source_fact:v1:5fdddc81ddae88f52d622c22cdd9272cecf0f22b501692e25c48f2482fff213f",
+        "source_fact:v1:ac6717d061095f95576ec9ce0235f7bd15ec9c850c1fde58e24380d0b17953ac",
+        "source_fact:v1:d5e037e9874ac704e30388f6b9bf402115a8e4ecc92583ad782ba5689950ae4e",
+        "source_fact:v1:fe6f12e357db565900fa6f43d22598ed39b4eab005f4cc0c8fb0ba5cc5b1972e"
+      ],
+      "source_published_kst": "2026-10-08T08:27+09:00",
+      "source_title": "\"기대치 넘었다\" 삼성전자, 프리마켓서 1.6% 상승…반도체주 강세",
+      "telegram_core_fact": "삼성전자가 시장 기대치를 웃도는 3분기 잠정 실적을 발표하면서 프리마켓에서 1%대 상승세를 보이고 있다. 삼성전자, 올해 3분기 연결 기준 영업이익이 107조 4000억 원으로 잠정 집계됐다고 공시했다.",
+      "title": "\"기대치 넘었다\" 삼성전자, 프리마켓서 1.6% 상승…반도체주 강세"
     },
     "title:6bef4d724494d44ed45c6eee": {
       "first_seen_kst": "2026-09-27T07:38:21+09:00",
@@ -268421,6 +270176,23 @@
       "source_published_kst": "2026-10-05T22:16+09:00",
       "title": "에릭슨, 주간 자사주 937만주 매입..8억7200만 크로나"
     },
+    "title:a39fac70e29f56417cc267ce": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818418",
+      "source": "뉴시스",
+      "source_body_digest": "f86ae5642321949f50586e779274f1d01835843279d5c761f5ce9d16549b112e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T08:45+09:00",
+      "source_title": "LG에너지솔루션, 캐나다산 리튬정광 24만톤 확보…\"북미 ESS 수요 선점 집중\"",
+      "telegram_core_fact": "LG에너지솔루션은 북미 리튬 생산 기업 엘레브라 리튬과 리튬 정광 장기 공급 계약을 체결했다고 8일 밝혔다.",
+      "title": "LG에너지솔루션, 캐나다산 리튬정광 24만톤 확보…\"북미 ESS 수요 선점 집중\""
+    },
     "title:a3ac73abae7f47d2da18cb85": {
       "first_seen_kst": "2026-10-03T02:51:01+09:00",
       "lanes": {
@@ -273335,6 +275107,26 @@
       "telegram_core_fact": "주주환원이 꾸준히 이어지는지, 실제로 벌어들인 현금 흐름을 바탕으로 하는지, 발표에 그치지 않고 자사주 소각 등 실제 행동으로 연결되는지를 본다는 것이다.",
       "title": "\"코리아 디스카운트 해소, 주주환원 지속에 답 있다\""
     },
+    "title:c0bdd353f775be5640c6f86c": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080759480948",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ae89acae2353ebdacb8065a1f4f6d03931e88d909e805898ebf2ca8b837a7cec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:62e880acb3afc27f7276c8aece82d2f477ef9199c7234bd0b50c0810c9ee48af",
+      "source_fact_keys": [
+        "source_fact:v1:12bb8eb4a64997ae786597cbce2c0fda8678d53214dbe40dd36b8778b58b5851",
+        "source_fact:v1:d3c43792122e92a0d1ca29139ab7fc4e20bda39a87a7ed8eaa824a57b841c462"
+      ],
+      "source_published_kst": "2026-10-08T08:13+09:00",
+      "source_title": "삼성전자 '분기 영업이익 100조' 시대 열었다… 세계 테크기업 '최초'(2보)",
+      "telegram_core_fact": "[파이낸셜뉴스]삼성전자는 올해 3·4분기 영업이익 107조4000억원을 기록하며 '분기 영업이익 100조 시대'를 열었다.",
+      "title": "삼성전자 '분기 영업이익 100조' 시대 열었다… 세계 테크기업 '최초'(2보)"
+    },
     "title:c0f6ef5fa25415d45ba2143b": {
       "first_seen_kst": "2026-09-26T20:59:22+09:00",
       "lanes": {
@@ -276357,6 +278149,26 @@
       "source": "연합뉴스",
       "title": "고려아연 최윤범 \"5년간 제품 20여종에서 30여종으로 확대\" | 연합뉴스"
     },
+    "title:d40de61695b4c70dbe6c65b7": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080759480948",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ae89acae2353ebdacb8065a1f4f6d03931e88d909e805898ebf2ca8b837a7cec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:62e880acb3afc27f7276c8aece82d2f477ef9199c7234bd0b50c0810c9ee48af",
+      "source_fact_keys": [
+        "source_fact:v1:12bb8eb4a64997ae786597cbce2c0fda8678d53214dbe40dd36b8778b58b5851",
+        "source_fact:v1:d3c43792122e92a0d1ca29139ab7fc4e20bda39a87a7ed8eaa824a57b841c462"
+      ],
+      "source_published_kst": "2026-10-08T08:13+09:00",
+      "source_title": "삼성전자 '분기 영업이익 100조' 시대 열었다… 세계 테크기업 '최초'(2보)",
+      "telegram_core_fact": "[파이낸셜뉴스]삼성전자는 올해 3·4분기 영업이익 107조4000억원을 기록하며 '분기 영업이익 100조 시대'를 열었다.",
+      "title": "삼성전자 '분기 영업이익 100조' 시대 열었다… 세계 테크기업 '최초'(2보)"
+    },
     "title:d4170961c2253cd5661aa643": {
       "first_seen_kst": "2026-10-06T16:30:27+09:00",
       "lanes": {
@@ -278201,6 +280013,31 @@
       "source_title": "롯데바이오로직스, 알보텍 바이오시밀러 생산 수주",
       "telegram_core_fact": "롯데바이오로직스가 글로벌 바이오시밀러 기업 알보텍과 생산 수주 계약을 체결했다고 7일 밝혔다.",
       "title": "롯데바이오로직스, 알보텍 바이오시밀러 생산 수주"
+    },
+    "title:de6031f4e089e7a52f900cb5": {
+      "first_seen_kst": "2026-10-08T08:56:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T08:56:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T08:56:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610952",
+      "source": "이데일리",
+      "source_body_digest": "2b0b854afd39864b2e9abad65e37cf9a45291ce0a063c8afb43124ee8c3a9d36",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb0d54a924e21fde88997dc6f789c0f21070e7d7aea1771d6b72a177d826aceb",
+      "source_fact_keys": [
+        "source_fact:v1:17ebea6958e6f7dc8abfa197f1e4f0fdde4dd0253a47de6d7a42f739217917c6",
+        "source_fact:v1:2a272bdd1cdeaf2a19996c25d22768c6352e2e93150fdfe088b301855d1f5552",
+        "source_fact:v1:30c8179986dfb7864bea397863a32f74369e6622ce85797711e92a800cfebf13",
+        "source_fact:v1:4431f780899246ffe2ddf1eb7ef6811ac759c382f883b2ee1b715f723afad90d",
+        "source_fact:v1:66dba7e0997aee968de09ec682f2a0f82a990eb1600ddbdbf1cd7abfddb1954e",
+        "source_fact:v1:9c27efd46228fa33304483773914e63d16b4927aa47804b79da0d45db5f7ab26",
+        "source_fact:v1:f68fd3e802c47eecff1c512dbf86fd10b39df97e851ec93ce1854fd68b70ceeb"
+      ],
+      "source_published_kst": "2026-10-08T08:24+09:00",
+      "source_title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권",
+      "telegram_core_fact": "EU는 중국산 하이브리드차에 수입 물량 제한과 추가 관세를 부과하는 방안을 검토하고 있다.",
+      "title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권"
     },
     "title:de6bcdd77c98deb85ec5bf12": {
       "first_seen_kst": "2026-10-07T01:59:08+09:00",
@@ -283645,5 +285482,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-08T08:31:37+09:00"
+  "updated_at_kst": "2026-10-08T08:56:19+09:00"
 }
