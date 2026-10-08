@@ -203,6 +203,54 @@ class AgenticCpuStructureTests(unittest.TestCase):
         )
         self.assertEqual((name, obs), ("", {}))
 
+    def test_mixed_bnp_amd_nvidia_arm_targets_never_cross_attributed(self):
+        url = w.CPU_STRUCTURE_BASELINE["bnpp_analyst"]["target_source_url"]
+        for article in (
+            "BNP Paribas sees AMD as a competitor and raised Nvidia price target to $345.",
+            "BNP Paribas raised its price target on Nvidia to $345 and discussed AMD server CPUs.",
+            "BNP Paribas discusses AMD processors while raising Arm price target to $405.",
+        ):
+            with self.subTest(article=article):
+                self.assertEqual(w.cpu_structure_observation(article, "", url), ("", {}))
+        name, obs = w.cpu_structure_observation(
+            "BNP Paribas analyst raised its price target on AMD (NASDAQ: AMD) to $960 from $600",
+            "", url,
+        )
+        self.assertEqual(name, "bnpp_analyst")
+        self.assertEqual(obs.get("amd_target_usd"), 960.0)
+
+    def test_digitimes_numeric_cpu_xpu_ratio_is_not_shipments_or_socket_count(self):
+        di = w.CPU_STRUCTURE_BASELINE["digitimes"]
+        self.assertEqual(di["cpu_xpu_ratio_2027"], 2.3)
+        name, obs = w.cpu_structure_observation(
+            "Agentic AI 2027年 AI伺服器CPU : XPU將提升至1 : 2.3",
+            "AI server CPU:XPU ratio forecast for 2027",
+            di["cpu_xpu_ratio_source_url"],
+        )
+        self.assertEqual(name, "digitimes")
+        self.assertEqual(obs.get("cpu_xpu_ratio_2027"), 2.3)
+        self.assertEqual(w.cpu_structure_changes(di, obs, "digitimes"), [])
+        self.assertEqual(w.cpu_structure_changes(di, {"cpu_xpu_ratio_2027": 2.2}, "digitimes"), [])
+        self.assertIn("1:2.3→1:2", w.cpu_structure_changes(
+            di, {"cpu_xpu_ratio_2027": 2.0}, "digitimes"
+        )[0])
+        self.assertNotIn("cpu_xpu_ratio_2027", w.cpu_structure_observation(
+            "2027 NVIDIA accelerators are twice as fast",
+            "AMD processor outlook", "https://www.amd.com/news", 
+        )[1])
+
+    def test_digitimes_traditional_chinese_ai_server_cpu_volume_not_total(self):
+        url = w.CPU_STRUCTURE_BASELINE["digitimes"]["shipments_source_url"]
+        title = "Agentic AI 2027年全球伺服器CPU出貨量將達4857.4萬顆"
+        body = (
+            "一般伺服器CPU為3527.9萬顆；"
+            "AI伺服器CPU因配比提高，2027年出貨量將激增至984.5萬顆，年增84.1%。"
+        )
+        name, obs = w.cpu_structure_observation(title, body, url)
+        self.assertEqual(name, "digitimes")
+        self.assertAlmostEqual(obs["ai_server_cpu_2027_million"], 9.845)
+        self.assertNotIn("all_server_cpu_2027_million", obs)
+
     def test_one_shot_cpu_alert_has_separate_official_and_broker_provenance(self):
         a = w.cpu_structure_block(w.CPU_STRUCTURE_BASELINE, 1400.0, [])
         self.assertIn("260억달러(약", a)
