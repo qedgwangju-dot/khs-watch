@@ -227,7 +227,7 @@ def _retail_price_event(item: dict) -> dict | None:
     model = _model_name(blob)
     if not model:
         return None
-    if re.search(r"\b(?:united states|u\.s\.|usa|미국)\b", low):
+    if re.search(r"(?:\bunited states\b|\bu\.s\.?(?=\W|$)|\busa\b|미국)", low):
         matches = re.findall(r"\$\s*(\d{2,3})\b|\b(\d{2,3})\s*(?:usd|dollars?)\b", low)
         dollars = [int(v) for row in matches for v in row if v]
         if dollars and len(set(dollars)) == 1:
@@ -676,9 +676,14 @@ def _merge_checkpoint_states(remote: dict, local: dict) -> dict:
     out["initial_alert_sent"] = bool(remote.get("initial_alert_sent") or local.get("initial_alert_sent"))
     out["seen"] = sorted(set(remote.get("seen") or []) | set(local.get("seen") or []))[-700:]
     out["seen_fact_keys"] = sorted(set(remote.get("seen_fact_keys") or []) | set(local.get("seen_fact_keys") or []))[-300:]
-    if any("제조사 공식 발표 확인" in str((x.get("metrics") or {}).get("s27_status") or "") for x in (remote, local)):
+    official_states = [x for x in (remote, local)
+                       if "제조사 공식 발표 확인" in str((x.get("metrics") or {}).get("s27_status") or "")]
+    if official_states:
+        official = max(official_states, key=lambda x: str(x.get("updated_at_kst") or ""))
         out["metrics"] = dict(out.get("metrics") or {})
-        out["metrics"]["s27_status"] = "제조사 공식 발표 확인"
+        for name in ("s27_status", "s27_korea_hike_low_krw", "s27_korea_hike_high_krw"):
+            if name in (official.get("metrics") or {}):
+                out["metrics"][name] = official["metrics"][name]
     alerts = [x["last_alert"] for x in (remote, local) if isinstance(x.get("last_alert"), dict)]
     if alerts:
         out["last_alert"] = max(alerts, key=lambda x: x.get("at_kst") or "")

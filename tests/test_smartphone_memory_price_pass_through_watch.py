@@ -206,6 +206,21 @@ class SmartphoneMemoryPricePassThroughTests(unittest.TestCase):
                 with self.assertRaises(RuntimeError):
                     m._load_state()
 
+    def test_newer_rumor_cannot_overwrite_older_official_price(self):
+        remote={
+            "updated_at_kst":"2026-10-08T14:00:00+09:00",
+            "metrics":{"s27_status":"제조사 공식 발표 확인",
+                       "s27_korea_hike_low_krw":150000,"s27_korea_hike_high_krw":180000},
+        }
+        local={
+            "updated_at_kst":"2026-10-08T15:00:00+09:00",
+            "metrics":{"s27_status":"팁스터 기반 전망",
+                       "s27_korea_hike_low_krw":100000,"s27_korea_hike_high_krw":130000},
+        }
+        merged=m._merge_checkpoint_states(remote,local)
+        self.assertEqual(merged["metrics"]["s27_korea_hike_high_krw"],180000)
+        self.assertEqual(merged["metrics"]["s27_status"],"제조사 공식 발표 확인")
+
     def test_concurrent_state_checkpoint_merges_all_dedupe_keys(self):
         remote={
             "updated_at_kst":"2026-10-08T15:00:00+09:00",
