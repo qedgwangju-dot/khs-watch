@@ -106,12 +106,16 @@ def levels(payload: dict) -> tuple[int, int]:
 
 
 def _live_fx_bias(pending: dict | None) -> str:
+    if (pending or {}).get("fx_signal_eligible") is not True:
+        return "unknown"
     values = (pending or {}).get("values") or {}
     try:
         m30 = float(values.get("usdjpy_30m_pct"))
         m60 = float(values.get("usdjpy_60m_pct"))
     except (TypeError, ValueError):
         return "unknown"
+    if max(m30, m60) >= 0.10 and min(m30, m60) <= -0.10:
+        return "mixed"
     if max(m30, m60) >= 0.10:
         return "carry"
     if min(m30, m60) <= -0.10:
@@ -190,7 +194,7 @@ def direction_call(payload: dict, pending: dict | None = None) -> tuple[str, str
     # show an unwind arrow from structural vulnerability or old position levels.
     spread_opposes_unwind = spread_move is not None and spread_move >= 1.0
     spread_opposes_carry = spread_move is not None and spread_move <= -1.0
-    fresh_fx = (pending or {}).get("fx_signal_eligible") is not False
+    fresh_fx = (pending or {}).get("fx_signal_eligible") is True
     if not fresh_fx:
         unwind_score = carry_score = 0
     risk_emoji = {0: "🟢", 1: "🟡", 2: "🟠", 3: "🔴"}.get(min(risk_level, 3), "🟡")
@@ -283,30 +287,54 @@ def compact_jgb10(item: str | None) -> str | None:
     return item
 
 
+def _krw_yen(value: float, payload: dict | None = None) -> str:
+    info = (payload or {}).get("krw_conversion") or {}
+    try:
+        per_yen = float(info["krw_per_yen"])
+        if not (0 < per_yen < 100):
+            raise ValueError("KRW/JPY outside plausible range")
+        return f"{value:+.2f}조엔(약 {value * per_yen:+.2f}조원)"
+    except (TypeError, ValueError, KeyError):
+        return f"{value:+.2f}조엔(원화 환산 확인 불가)"
+
+
 def compact_flow(item: str | None, payload: dict | None = None) -> str | None:
+    """Outward bond sales do not prove total repatriation or actual yen purchases."""
     if not item:
         return None
-    m = re.search(r"최근 2주\s*([+\-]?[0-9.]+)조엔\s*/\s*직전 2주\s*([+\-]?[0-9.]+)조엔", item)
-    if m:
-        latest = float(m.group(1))
-        prior = float(m.group(2))
-        if latest > 0:
-            meaning = "순매수·본국회귀 압력 약함"
-        elif latest < 0:
-            meaning = "순매도·본국회귀 압력"
-        else:
-            meaning = "중립"
+    structural = (payload or {}).get("structural_context") or {}
+    mof = structural.get("mof_split") or {}
+    try:
+        bonds = float(mof["latest_2w_lt_debt_trillion_yen"])
+        equities = float(mof["latest_2w_equity_trillion_yen"])
+    except (ValueError, TypeError, KeyError):
+        # Never relabel long-term debt alone as equities+debt subtotal.
+        match = re.search(r"최근 2주\s*([+\-]?[0-9.]+)조엔", item)
+        if not match:
+            return item
+        bonds = float(match.group(1))
+        return (
+            f"해외중장기채 2주 {_krw_yen(bonds, payload)}"
+            " → 채권 순매도" + ("; 실제 엔화 환류는 별도 확인" if bonds < 0 else "; 엔화 방향 별도 확인")
+        ) if bonds < 0 else (
+            f"해외중장기채 2주 {_krw_yen(bonds, payload)} → 채권 순매수; 엔화 방향 별도 확인"
+        )
 
-        structural = (payload or {}).get("structural_context") or {}
-        mof = structural.get("mof_split") or {}
-        prev_week = str(mof.get("previous_week") or "")
-        latest_week = str(mof.get("latest_week") or "")
-        period = f" / 자료 {prev_week}·{latest_week}" if prev_week and latest_week else ""
-        return f"해외주식+중장기채 합계 2주 {latest:+.2f}조엔 (직전 {prior:+.2f}){period} → {meaning}"
-    return item
+    combined = bonds + equities
+    summary = "해외증권 합계 순매수" if combined > 0 else "해외증권 합계 순매도" if combined < 0 else "해외증권 합계 보합"
+    previous_week = str(mof.get("previous_week") or "")
+    latest_week = str(mof.get("latest_week") or "")
+    period = f" / {previous_week}·{latest_week}" if previous_week and latest_week else ""
+    return (
+        f"일본 거주자 해외투자 2주│채권 {_krw_yen(bonds, payload)} · "
+        f"주식 {_krw_yen(equities, payload)} → 합계 {_krw_yen(combined, payload)}"
+        f"({summary}); 실제 엔화 환류 미확인{period}"
+    )
 
 
 def live_fx_line(pending: dict) -> str | None:
+    if pending.get("fx_signal_eligible") is not True:
+        return "USD/JPY 현재값 최신성 미확인 → 방향 판정 보류"
     values = pending.get("values") or {}
     try:
         px = float(values.get("usdjpy"))
@@ -314,8 +342,10 @@ def live_fx_line(pending: dict) -> str | None:
         m30 = float(values.get("usdjpy_30m_pct"))
         m60 = float(values.get("usdjpy_60m_pct"))
     except (TypeError, ValueError):
-        return None
-    if max(abs(m30), abs(m60)) < 0.10:
+        return "USD/JPY 변화율 확인 불가 → 방향 판정 보류"
+    if max(m30, m60) >= 0.10 and min(m30, m60) <= -0.10:
+        direction = "30·60분 방향 충돌"
+    elif max(abs(m30), abs(m60)) < 0.10:
         direction = "사실상 보합"
     elif max(m30, m60) >= 0.10:
         direction = "엔화 약세"
@@ -335,12 +365,16 @@ def compact_rate(item: str | None) -> str | None:
         return item
     spread_bp = float(spread.group(1))
     jgb_bp = float(jgb.group(1)) if jgb else None
-    if spread_bp >= 1.0:
-        meaning = "확대 → 캐리 유지·재구축 쪽"
+    if spread_bp <= -10.0:
+        meaning = "뚜렷한 축소 → 청산 쪽(엔화·위험자산 동시 확인 필요)"
+    elif spread_bp >= 10.0:
+        meaning = "뚜렷한 확대 → 캐리 유지 쪽"
     elif spread_bp <= -1.0:
-        meaning = "축소 → 캐리 청산 압력"
+        meaning = "소폭 축소 → 청산 확인 아님"
+    elif spread_bp >= 1.0:
+        meaning = "소폭 확대 → 재구축 확인 아님"
     else:
-        meaning = "보합 → 중립"
+        meaning = "사실상 보합"
     tail = f" / JGB2 {jgb_bp:+.1f}bp" if jgb_bp is not None else ""
     return f"미·일 2년 금리차 {spread_bp:+.1f}bp {meaning}{tail}"
 
@@ -348,11 +382,33 @@ def compact_rate(item: str | None) -> str | None:
 def compact_vol(item: str | None) -> str | None:
     if not item:
         return None
-    if "낮음·안정" in item:
-        return "FX 변동성 낮음·안정 → 강제청산 신호 약함"
-    if "상승" in item or "높" in item:
-        return "FX 변동성 상승 → 청산 위험 점검"
-    return item
+    match = re.search(r"이전 구간 대비\s*(\d+(?:\.\d+)?)배", item)
+    if match:
+        ratio = float(match.group(1))
+        if ratio >= 1.50:
+            return f"FX 실현변동성 {ratio:.2f}배 → 상승 경보(엔화·주가 동시 확인 필요)"
+        if ratio >= 1.00:
+            return f"FX 실현변동성 {ratio:.2f}배 → 급등 기준 1.50배 미달"
+        return f"FX 실현변동성 {ratio:.2f}배 → 전 구간보다 낮음"
+    return "FX 실현변동성 현재 수치 확인 불가"
+ 
+ 
+def auction_line(payload: dict) -> str | None:
+    context = (payload.get("structural_context") or {})
+    current = context.get("auction30") or {}
+    previous = context.get("auction30_previous") or {}
+    try:
+        btc = float(current["bid_to_cover"])
+        tail = float(current["tail_bp"])
+    except (KeyError, TypeError, ValueError):
+        return None
+    day = str(current.get("auction_date") or "날짜 확인 불가")
+    try:
+        previous_btc = float(previous["bid_to_cover"])
+        comparison = f"직전 {previous_btc:.2f}배 대비 " + ("개선" if btc > previous_btc else "악화" if btc < previous_btc else "동일")
+    except (KeyError, TypeError, ValueError):
+        comparison = "직전 비교 불가"
+    return f"30년 JGB 입찰({day})│응찰 {btc:.2f}배·꼬리 {tail:.1f}bp / {comparison} → 국채수요와 10년금리 상승을 분리 판단"
 
 
 def cftc_line(payload: dict) -> str | None:
@@ -467,6 +523,10 @@ def main() -> int:
     if flow:
         key_reasons.append(flow)
 
+    auction = auction_line(payload)
+    if auction:
+        key_reasons.append(auction)
+
     vol = compact_vol(first_matching(
         sections.get("긴축 경로·레버리지", []),
         "FX 실현변동성",
@@ -486,9 +546,12 @@ def main() -> int:
     if jgb:
         key_reasons.append(jgb)
 
-    key_reasons = key_reasons[:6]
+    key_reasons = key_reasons[:7]
     next_alert = reverse_conditions(payload)
     source_lines = [f"- {label}: {url}" for label, url in SOURCE_LINES]
+    new_auction_url = ((payload.get("structural_context") or {}).get("auction30") or {}).get("url")
+    if new_auction_url and auction:
+        source_lines.append(f"- Japan MOF JGB 30Y auction: {new_auction_url}")
 
     checked = next((x.strip() for x in preamble if x.strip().startswith("조회 시각:")), "")
     if not checked:
