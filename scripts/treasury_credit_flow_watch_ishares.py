@@ -336,16 +336,42 @@ def send_exact(text):
     return actual, ids
 
 
+def _us_latest_weekday(now):
+    local_day = now.astimezone(ZoneInfo("America/New_York")).date()
+    while local_day.weekday() >= 5:
+        local_day -= dt.timedelta(days=1)
+    return local_day.isoformat()
+
+
+def _delivery_complete_for_date(state, source_date):
+    last = (state or {}).get("last_delivery") or {}
+    return (
+        bool(source_date)
+        and last.get("treasury_date") == source_date
+        and bool(last.get("message_ids"))
+        and last.get("bot_username") == "khs8879887988798879_bot"
+    )
+
+
 def main():
     state = base.load_state()
     state.setdefault("history", {})
     now = dt.datetime.now(KST)
     event_name = os.getenv("GITHUB_EVENT_NAME", "").strip()
+    validate_only = os.getenv("TREASURY_REPORT_VALIDATE_ONLY", "").strip().lower() in ("1", "true", "yes")
     if event_name == "workflow_run":
         minute_of_day = now.hour * 60 + now.minute
         if not (8 * 60 + 20 <= minute_of_day <= 16 * 60):
             print(f"treasury_fallback_noop=true kst={now:%H:%M} reason=outside_0820_1600")
             return
+    expected_market_date = _us_latest_weekday(now)
+    if not validate_only and _delivery_complete_for_date(state, expected_market_date):
+        print(
+            "same_market_day_delivery_suppressed=true "
+            f"market_date={expected_market_date} "
+            f"last_message_ids={(state.get('last_delivery') or {}).get('message_ids')}"
+        )
+        return
     fx = base.get_usdkrw()
     curve, prev_curve = get_curve_pair()
     results, prev_rows = {}, {}
@@ -559,6 +585,14 @@ def main():
     text = "\n".join(lines)
     (base.OUT / "treasury_etf_flow_telegram.txt").write_text(text + "\n", encoding="utf-8")
     (base.OUT / "treasury_etf_flow_status.md").write_text("```\n" + text + "\n```\n", encoding="utf-8")
+    if validate_only:
+        print(
+            "treasury_report_validation_only=true telegram_sent=false "
+            f"treasury_date={curve['date']} "
+            f"fund_dates={sorted(unique_fund_dates)} oas_dates={sorted(unique_oas_dates)} "
+            f"overall={o_head} credit={c_head}"
+        )
+        return
 
     fingerprint_payload = {
         "curve_date": curve["date"],
@@ -580,10 +614,7 @@ def main():
     ).hexdigest()
     last_delivery = state.get("last_delivery") or {}
     event_name = os.getenv("GITHUB_EVENT_NAME", "").strip()
-    if (
-        event_name != "workflow_dispatch"
-        and last_delivery.get("treasury_date") == curve["date"]
-    ):
+    if _delivery_complete_for_date(state, curve["date"]):
         base.save_state(state)
         print(
             "duplicate_delivery_suppressed=true "
