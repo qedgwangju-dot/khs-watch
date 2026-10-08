@@ -143,7 +143,7 @@ OFFICIAL_BASE=(
   ("국방부 국정과제","https://www.mnd.go.kr/mnd/497/subview.do"),
   ("국방부 2026 국방예산","https://mnd.go.kr/mnd/780/subview.do"),
   ("방위사업청 425사업 5호기 발사","https://www.dapa.go.kr/dapa/doc/selectDoc.do?bbsSeq=326&docSeq=57695&menuSeq=3069"),
-  ("방위사업청 저궤도위성통신 협의회","https://www.dapa.go.kr/dapa/doc/selectDoc.do?bbsSeq=326&docSeq=58127&menuSeq=3069"),
+  ("방위사업청 저궤도위성통신 협의회","https://www.dapa.go.kr/dapa/doc/selectDoc.do?bbsSeq=326&currentPageNo=1&docSeq=58127&menuSeq=3069&recordCountPerPage=10"),
 )
 
 def hostname(url:str)->str:
