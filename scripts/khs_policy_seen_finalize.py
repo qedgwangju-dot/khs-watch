@@ -57,13 +57,21 @@ def finalize_confirmed_outbound_alert(delivery: dict) -> None:
     except OSError:
         return
     sent_titles = delivery.get("sent_titles") or []
-    confirmed = any(
+    confirmed_title = any(
         isinstance(item, dict)
         and item.get("route") == "policy"
         and item.get("title") == expected_title
         for item in sent_titles
     )
-    if not confirmed:
+    confirmed_id = any(
+        isinstance(item, dict)
+        and item.get("route") == "policy"
+        and isinstance(item.get("message_id"), int)
+        and not isinstance(item.get("message_id"), bool)
+        and item.get("message_id") > 0
+        for item in (delivery.get("message_ids") or [])
+    )
+    if not (confirmed_title and confirmed_id):
         print("trusted_oisp_seen_finalize=deferred no_matching_telegram_title")
         return
     try:
