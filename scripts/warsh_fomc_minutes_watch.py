@@ -16,6 +16,7 @@ from zoneinfo import ZoneInfo
 STATE = Path('data/warsh_fomc_minutes_watch_state.json')
 FOMC_STATE = Path('data/warsh_fomc_event_watch_state.json')
 SEP_STATE = Path('data/warsh_sep_path_watch_state.json')
+POLICY_STATE = Path('data/warsh_policy_path_watch_state.json')
 FED_CAL = 'https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm'
 TOKEN = (os.getenv('TELEGRAM_BOT_TOKEN') or '').strip()
 CHAT = (os.getenv('TELEGRAM_CHAT_ID') or '').strip()
@@ -23,7 +24,7 @@ BOT = (os.getenv('EXPECTED_BOT_USERNAME') or 'hshs8879_bot').strip().lstrip('@')
 FORCE = os.getenv('FORCE_NOTIFY', '0') == '1'
 UA = 'Mozilla/5.0 (compatible; khs-watch/4.1)'
 ET = ZoneInfo('America/New_York')
-FORMAT_VERSION = 2
+FORMAT_VERSION = 3
 
 
 def fetch(url, timeout=18):
@@ -341,74 +342,126 @@ def current_sep(stmt_date):
         return None
 
 
+def _date_ko(value):
+    try:
+        d = datetime.strptime(str(value)[:10], '%Y-%m-%d')
+        return f'{d.year}년 {d.month}월 {d.day}일'
+    except ValueError:
+        return '날짜 확인 필요'
+
+
+def market_status():
+    state = load(POLICY_STATE)
+    if state.get('source_status') != '시장원천 최신성·연준 공식범위 교차검증 통과':
+        return 'CME 공식 금리선물 최신값 확인 실패 · 과거 인상확률 재사용 금지'
+    return '금리선물 결제값은 참고용 · 의사록 참가자 의견과 별도 판정'
+
+
 def message(stmt_date, minutes_link, press_link, rel, sig):
-    stmt = load(FOMC_STATE).get('current_statement') or {}
     sep = current_sep(stmt_date)
-    rate = ('대부분이 연내 추가 인상 적절 가능성 평가 · 시점과 폭은 미확정'
-            if sig['most_yearend'] else
-            '추가 인상 의견의 우세 정도 자동 확인 불가 · 원문 참조')
-    why = ('위험관리 목적 다수 / 기본 전망상 필요 상당수'
-           if sig['many_risk'] and sig['number_modal'] else
-           '추가 인상 근거의 참가자별 차이 확인 필요')
+    meeting_day = datetime.strptime(stmt_date, '%Y-%m-%d').date()
+    # 정례 2일 회의 기준. 다른 형식일 때는 날짜 범위 추정 대신 마지막 날만 표시.
+    meeting_label = _date_ko(stmt_date) + ' 종료 회의'
+    followup = '10월 27~28일 FOMC' if stmt_date == '2026-09-16' else '다음 FOMC'
+    known = lambda name: bool(sig.get(name))
+
+    def group(name, items):
+        true_lines = [line for signal, line in items if known(signal)]
+        if not true_lines:
+            return ['<b>' + name + '</b>', '• 참가자 의견의 해당 문구 자동 검증 보류 · 공식 원문 확인 필요', '']
+        return ['<b>' + name + '</b>'] + true_lines + ['']
+
     lines = [
-        '<b>[Warsh | FOMC 의사록 · 정책경로]</b>',
-        f"대상: {stmt_date} 회의 · 공식 공개: {rel} (미국 현지)",
+        '<b>[Warsh | FOMC 의사록 · 반응함수]</b>',
+        f'대상: {meeting_label} · 공개: {_date_ko(rel)} (미국 동부시간 오후 2시)',
         '',
         '<b>한눈에 보기</b>',
-        '• <b>9월 결정</b>: ' +
-            ('전원 25bp 인상 지지 · 표결 12대 0 · 3.75~4.00%'
-             if sig['all_support'] and sig['unanimous_vote'] else
-             '9월 정책결정 결과 공식 성명 재확인 필요'),
-        f'• <b>연말 전망</b>: {html.escape(rate)}',
-        f'• <b>인상 근거</b>: {html.escape(why)}',
-        '• <b>대차대조표</b>: 충분한 준비금 유지 · 시장기능 대비 ≠ QT 재개',
+        ('• <b>정책 결정</b> | 참가자 전원 25bp 인상 지지 · FOMC 표결 12대 0 · 3.75~4.00%'
+         if stmt_date == '2026-09-16' and known('all_support') and known('unanimous_vote')
+         else '• <b>정책 결정</b> | 참석자 의견과 실제 의결 결과를 별도 확인'),
+        ('• <b>연말 경로</b> | 대부분이 추가 인상 1회 적절할 가능성 평가 · 다음 회의 확정 아님'
+         if known('most_yearend') else
+         '• <b>연말 경로</b> | 추가 인상 우세 여부의 공식 근거 자동 검증 보류'),
+        ('• <b>물가</b> | 유가·AI 인프라 투자발 압력, 서비스·근원 재화 상승률 주시'
+         if known('ai_inflation') and known('core_services_ex_housing') and known('ai_core_goods') else
+         '• <b>물가</b> | 세부 위험 판단 확인 필요'),
+        ('• <b>고용·성장</b> | 완전고용 근접, 노동이동성 저하 · 투자·소비는 견조'
+         if known('employment_stable') and known('employment_low_dynamism') and known('growth_solid') else
+         '• <b>고용·성장</b> | 공식 문구 확인 필요'),
+        ('• <b>대차대조표</b> | 충분한 준비금 유지와 국채시장 위기 대비 · QT 재개 결정 아님'
+         if known('ample_reserves') and known('few_treasury') else
+         '• <b>대차대조표</b> | 시행지침 및 참가자 제안 구분 필요'),
         '',
-        '<b>확정 당사자·발언 강도</b>',
-        '• 정책 지지: 모든 참석자(회의 의견) / FOMC 표결 12대 0(의결)' if sig['all_support'] else
-            '• 정책 지지: 전원 여부 확인 필요',
-        '• 연말 추가 인상 전망: 대부분의 참석자 · 10월 인상 확정 아님' if sig['most_yearend'] else
-            '• 연말 추가 인상 전망: 자동 판독 보류',
-        '• 추가긴축 근거: 많은 참석자는 위험관리, 상당수는 기본 전망' if
-            sig['many_risk'] and sig['number_modal'] else
-            '• 추가긴축 근거: 참가자별 차이 재검증 필요',
     ]
-    if sig['several_not_restrictive']:
-        lines.append('• 제약 수준: 여러 명은 금리가 비제약적 또는 약한 제약이라고 평가')
-    if sig['couple_neutral']:
-        lines.append('• 중립금리: 두어 명은 추정치를 상향')
+    lines += group('금리경로 · 참가자 강도', [
+        ('many_risk', '• 많은 참석자: 강한 수요·추가 공급 충격에 대비하는 위험관리 차원의 높은 금리경로'),
+        ('number_modal', '• 상당수 참석자: 위험관리만이 아니라 기본 경제전망 자체로 높은 금리경로 필요'),
+        ('several_not_restrictive', '• 여러 명: 현 정책금리가 비제약적이거나 제약 정도가 약하다고 평가'),
+        ('couple_neutral', '• 두어 명: 중립금리 추정치를 상향'),
+        ('almost_all_risks', '• 거의 모든 참석자: 물가 위험은 상방, 고용 위험은 줄어 대체로 균형'),
+    ])
     if sep:
-        lines.append(f"• 공식 점도표(당시 전망): 2026년 말 {sep['yearend']:.1f}% · 2027년 말 {sep['nextyear']:.1f}%")
-    else:
-        lines.append('• 공식 점도표: 해당 회의 전망치 확인 불가(다른 회의 전망 재사용 안 함)')
+        lines.append(f"• <b>당시 점도표</b> | 연말 {sep['yearend']:.1f}% · 다음 해 {sep['nextyear']:.1f}% (약속 아님)")
+    lines += ['', *group('대차대조표 · 실제 지침과 제안 구분', [
+        ('few_treasury', '• 몇몇 참석자: 현재 국채시장은 원활하게 작동 중'),
+        ('treasury_stress', '• 같은 논의: 시장 기능 장애에 대비하는 사전 대응 필요'),
+        ('strengthen_tools', '• 연준 대응 전략·의사소통·시장안정 수단 강화 제안'),
+        ('limit_footprint', '• 다만 연준의 국채시장 영향력·개입 범위는 제한할 필요'),
+        ('principal_reinvestment', '• 당시 확정 지침: 국채 원금 전액 차환·기관채 원금 단기국채 재투자 → 총량축소형 QT 재개로 단정 금지'),
+    ])]
+    lines += group('물가 · 공급과 수요 압력', [
+        ('inflation_sticky', '• 참가자들: 물가가 여전히 높고 최근 충분한 둔화 진전이 없음'),
+        ('ai_inflation', '• 지정학적 유가 상승과 AI 관련 설비투자가 물가상승 압력에 기여'),
+        ('core_services_ex_housing', '• 여러 명: 주거비 제외 근원서비스 상승률이 여전히 높음'),
+        ('ai_core_goods', '• 여러 명: 근원 재화 상승률도 높음 · 관세 영향은 약해지고 AI 설비투자 영향 확대'),
+        ('inflation_upside', '• 참가자들: 물가 전망 위험은 상방으로 치우침'),
+        ('inflation_upside_more', '• 일부: 최근 물가 위험의 상방 쏠림이 심해짐'),
+        ('inflation_expectations_warning', '• 일부: 5년 넘게 목표 2% 상회한 물가가 향후 기대인플레이션·임금·가격 결정에 전이될 위험'),
+        ('inflation_exp_anchored', '• 중장기 기대인플레이션은 당시 공식 목표 2%와 대체로 일치'),
+    ])
+    lines += group('고용 · 전체와 AI 숙련인력 분리', [
+        ('employment_stable', '• 참가자들: 노동시장은 대체로 안정적이며 최대고용에 근접'),
+        ('employment_majority', '• 과반: 고용 증가가 노동력 증가를 소폭 웃도는 등 최근 다소 강화'),
+        ('employment_low_dynamism', '• 여러 명: 채용·해고·구직 성공률은 낮고 장기실업률은 높아 노동시장 이동성 저하'),
+        ('employment_ai_skilled_wages', '• 일부: AI 관련 숙련인력 수요로 해당 인력 임금은 강세'),
+        ('employment_moderate_wages', '• 반면 일부: 전체 임금 상승률은 완만하며 노동시장 자체가 물가 압력 원천은 아니라는 평가'),
+        ('employment_outlook_balanced', '• 참가자들: 실업률은 현 수준 부근 유지 전망 · 고용 위험 상·하방 대체로 균형'),
+    ])
+    lines += group('성장 · AI 설비투자와 소비 양극화', [
+        ('growth_solid', '• 경제활동 견조한 확장 · 기업투자·소비가 공급 충격을 상쇄'),
+        ('growth_momentum', '• 여러 명: 기저 성장 모멘텀 강화'),
+        ('ai_surprise', '• 여러 명: AI 인프라 투자 규모와 속도가 지속적으로 예상 상회'),
+        ('financial_supportive', '• 많은 참석자: 장기금리 상승에도 금융여건은 성장에 우호적'),
+        ('housing_exception', '• 다만 몇몇은 높은 주택담보대출 금리로 주택부문은 예외라고 평가'),
+        ('consumer_high_income', '• 여러 명: 주가 상승이 고소득층 소비를 뒷받침'),
+        ('consumer_low_income', '• 여러 명: 저·중소득층은 높은 에너지 가격으로 실질 가처분소득 부담'),
+        ('productivity_future_uncertain', '• AI는 장기 생산성·잠재성장에 긍정적일 수 있지만 효과의 크기·시점은 불확실'),
+        ('ai_cyber_risk', '• 몇몇: 사이버보안 등 AI 도입 위험은 오히려 생산성을 낮출 가능성'),
+    ])
+    lines += ['<b>시장보고 · 참가자 합의와 구분</b>']
+    if known('ai_private_debt_term_premium'):
+        lines.append('• 당시 시장보고는 AI 인프라용 대규모 민간채권 발행과 자금경쟁을 장기국채 기간프리미엄 상승 요인으로 언급')
+    if known('yields_2y10y_35bp'):
+        lines.append('• 회의 사이 미국 국채 2~10년 구간 수익률 약 35bp 상승 · 현재 거래일 움직임이 아님')
+    if not known('ai_private_debt_term_premium') and not known('yields_2y10y_35bp'):
+        lines.append('• 시장 관련 세부 근거 확인 필요')
     lines += [
         '',
-        '<b>새로 확인된 위험</b>',
-    ]
-    if sig['ai_inflation'] or sig['ai_core_goods']:
-        lines.append('• AI 인프라 설비투자·유가가 물가 압력에 기여. 핵심 제품가격·투입비·전력 병목 관찰')
-    if sig['ai_private_debt_term_premium']:
-        lines.append('• 의사록 시장보고: AI 투자용 민간채권 발행 확대가 국채 기간프리미엄 상승 요인으로 언급')
-    if sig['pce_3m_warning']:
-        lines.append('• 몇몇은 근원 PCE 3개월 상승률의 하반기 과소평가 가능성을 경고')
-    if sig['pce_methodology']:
-        lines.append('• 몇몇은 소프트웨어·포트폴리오 운용수수료 물가의 향후 BEA 방식 변경을 언급')
-    if sig['few_treasury'] and sig['limit_footprint']:
-        lines.append('• 일부 참석자는 국채시장 스트레스 대비를 원하지만 연준의 국채시장 개입은 제한하자고 제안')
-    if not any(sig[k] for k in ('ai_inflation','ai_private_debt_term_premium','pce_3m_warning','few_treasury')):
-        lines.append('• 관련 정책·물가 세부 논의는 공식 원문으로 추가 확인')
-    lines += [
-        '',
-        '<b>다음 확인·실패 경로</b>',
-        '• 10월 27~28일 FOMC에서 실제 추가 인상 여부와 논거 변화를 확인',
-        '• 유가·AI발 비용이 물가로 확산하는지, 아니면 소비·고용이 먼저 약해지는지 구분',
-        '• 대차대조표 태스크포스 제안과 정식 시행지침/자산총량 변화를 분리',
-        '• 이번 의사록은 과거 회의 기록이지 오늘의 금리결정이 아닙니다.',
+        '<b>먼저 볼 실패 경로·다음 일정</b>',
+        '• 3개월 근원 PCE 둔화와 전년 동월비·새 통계방식 차이를 분리. 의사록 내 직원 추정은 발표 당시 정보이며 최신 확정치로 재사용하지 않음',
+        '• 유가·AI 투자비 상승 → 물가 전이와 소비·고용 위축 중 어느 경로가 우세한지 확인',
+        '• 장기국채 금리·기업채 조달비·주택대출 비용이 높아져 투자·채택 일정이 밀리는지 점검',
+        f'• {followup}의 실제 금리 결정과 신규 성명 확인 · 의사록은 과거 회의 기록',
+        f'• 시장 기대: {market_status()}',
         '',
         '<b>원천</b>',
-        f"{link('연준 의사록', minutes_link)} · {link('공식 공개문', press_link)} · {link('연준 회의일정', FED_CAL)}",
+        link('연준 의사록', minutes_link) + ' · ' +
+        link('연준 공개문', press_link) + ' · ' +
+        link('연준 일정', FED_CAL),
     ]
     if sep and sep.get('url'):
-        lines.append(link('연준 당시 점도표', sep['url']))
+        lines.append(link('당시 공식 점도표', sep['url']))
+    # 텔레그램에서 길이 초과를 조용히 자르지 않도록 전송 전에 검사한다.
     return '\n'.join(lines)
 
 
