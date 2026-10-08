@@ -256,6 +256,9 @@ class HybridHBMSourceGuardTests(unittest.TestCase):
                 leverage.main()
                 formatted = f.read_text(encoding="utf-8")
             parts = delivery.chunks(formatted)
+            # Both vendors have advanced beyond the technology-showcase stages.
+            # The final send gate must accept real official improvements.
+            self.assertIsNone(delivery.validate_rubin_hybrid_notification(formatted))
         self.assertEqual(len(parts), 2)
         self.assertIn("https://news.skhynix.com/en/sk-original", parts[0])
         self.assertNotIn("https://news.samsung.com/global/samsung-original", parts[0])
