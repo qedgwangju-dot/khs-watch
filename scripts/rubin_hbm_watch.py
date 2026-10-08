@@ -2431,6 +2431,202 @@ def samsung_hbm4e_thermal_event(state: dict, reasons: list[str]) -> dict:
     }
 
 
+
+def extract_hbm_hybrid_official_observation(event: dict) -> dict | None:
+    """Promote *explicit official HBM hybrid-bonding* milestones, not rumour.
+    
+    HBM4E MR-MUF shipments and generic hybrid-bonding research are excluded
+    unless one sentence explicitly links hybrid bonding, HBM, and the stage.
+    """
+    url = event.get("direct_link") or ""
+    host = (urlparse(url).hostname or "").lower()
+    if host in ("news.skhynix.com", "news.skhynix.co.kr", "www.skhynix.com", "skhynix.com"):
+        vendor = "skhynix"
+    elif host in ("news.samsung.com", "semiconductor.samsung.com", "www.samsung.com", "samsung.com"):
+        vendor = "samsung"
+    else:
+        return None
+    article = " ".join(
+        str(event.get(key) or "") for key in
+        ("article_title", "article_description", "article_text")
+    )
+    sentences = re.split(r"(?<=[.!?。])\s+|\n+", article)
+    best = ""
+    for sentence in sentences:
+        lower = sentence.lower()
+        if not re.search(r"\bhbm(?:3e|4e?|5)?\b|고대역폭\s*메모리", lower, re.I):
+            continue
+        if not re.search(r"hybrid[\s-]*(?:copper[\s-]*)?bonding|hcb|하이브리드\s*(?:구리\s*)?본딩", lower, re.I):
+            continue
+        # Plans, forecasts, denials and rhetorical challenges are not actual
+        # completed milestones. This is intentionally conservative.
+        if re.search(
+            r"\b(?:planned?|planning|will|aims?|targets?|expected|could|might|may|"
+            r"not yet|not shipped|hasn't|has not|without|challenge|difficult)\b|"
+            r"예정|계획|목표|추진|검토|예상|전망|고려|아직|미출하|미제공|어려움|난항",
+            lower, re.I
+        ):
+            continue
+        stage = ""
+        if re.search(
+            r"(?:양산\s*(?:돌입|개시|시작|출하)|"
+            r"(?:began|started|commenced)\s+(?:mass|volume)\s+production|"
+            r"mass[- ]production\s+(?:has\s+)?(?:begun|started))",
+            lower, re.I
+        ):
+            stage = "hbm_mass_production_started"
+        elif re.search(
+            r"(?:파일럿|시험생산)\s*(?:라인|설비)?\s*(?:가동|시작|개시)|"
+            r"(?:pilot\s*(?:line|production))\s*(?:began|started|running|operational)",
+            lower, re.I
+        ):
+            stage = "pilot_line_running"
+        elif re.search(
+            r"(?:고객|customer)[^.]{0,90}?(?:신뢰성\s*검증|품질\s*인증|qualification|validation)[^.]{0,50}?"
+            r"(?:통과|완료|passed|completed)|"
+            r"(?:passed|completed)[^.]{0,45}?(?:customer\s+qualification|customer\s+validation|고객\s*검증)",
+            lower, re.I
+        ):
+            stage = "customer_qualification_passed"
+        elif (
+            re.search(r"customer|clients?|고객(?:사)?", lower, re.I)
+            and re.search(
+                r"(?:samples?|샘플)[^.]{0,75}?(?:shipped|delivered|sent|supplied|출하|전달|공급|발송)|"
+                r"(?:shipped|delivered|sent|supplied|출하|전달|공급|발송)[^.]{0,75}?(?:samples?|샘플)",
+                lower, re.I
+            )
+        ):
+            stage = "customer_hbm_sample_shipped"
+        elif re.search(
+            r"(?:internal|in-house|test)\s+(?:prototype|sample)[^.]{0,30}?(?:made|produced|fabricated)|"
+            r"(?:내부|시험)\s*(?:시제품|샘플)[^.]{0,30}?(?:제작|생산|완료)",
+            lower, re.I
+        ):
+            stage = "internal_hbm_prototype"
+        if stage and (
+            not best or HBM_HYBRID_STAGE_RANK[stage] > HBM_HYBRID_STAGE_RANK[best]
+        ):
+            best = stage
+    if not best:
+        return None
+    return {
+        "vendor": vendor,
+        "stage": best,
+        "evidence": "official",
+        "source_url": url,
+        "observed_at": event.get("published_at_kst") or "",
+    }
+
+
+def merge_hbm_hybrid_official_observation(old: dict, observation: dict) -> dict:
+    out = dict(old or {})
+    vendor = observation.get("vendor")
+    stage = observation.get("stage")
+    if vendor not in ("skhynix", "samsung") or stage not in HBM_HYBRID_STAGE_RANK:
+        return out
+    if observation.get("evidence") != "official":
+        return out
+    key = f"{vendor}_official_hybrid_stage"
+    prev = out.get(key) or "technical_feasibility"
+    if HBM_HYBRID_STAGE_RANK[stage] <= HBM_HYBRID_STAGE_RANK.get(prev, -1):
+        return out
+    out[key] = stage
+    out[f"{vendor}_official_hybrid_customer_sample_verified"] = (
+        HBM_HYBRID_STAGE_RANK[stage]
+        >= HBM_HYBRID_STAGE_RANK["customer_hbm_sample_shipped"]
+    )
+    out[f"{vendor}_official_stage_source_url"] = observation["source_url"]
+    out["last_official_stage_change_at"] = observation.get("observed_at") or ""
+    return out
+
+
+def hbm_hybrid_official_changes(old: dict, new: dict) -> list[str]:
+    names = {"skhynix": "SK하이닉스", "samsung": "삼성전자"}
+    changes = []
+    for vendor, name in names.items():
+        key = f"{vendor}_official_hybrid_stage"
+        if HBM_HYBRID_STAGE_RANK.get(new.get(key), -1) > HBM_HYBRID_STAGE_RANK.get(old.get(key), -1):
+            changes.append(f"{name} 하이브리드 본딩 HBM 공식 단계 {old.get(key) or '미확인'}→{new.get(key)}")
+    return changes
+
+
+def hbm_hybrid_bond_event(state: dict, reasons: list[str], *, initial: bool = False) -> dict:
+    source = (
+        state.get("primary_url") if initial else
+        state.get("samsung_official_stage_source_url")
+        or state.get("skhynix_official_stage_source_url")
+        or state.get("primary_url")
+    )
+    change_at = state.get("last_official_stage_change_at") or "2026-10-08T16:04:00+09:00"
+    return {
+        "category": "hbm_hybrid_bonding",
+        "fact_key": ("hbm_hybrid_bonding_report_20261008" if initial else
+                     "hbm_hybrid_official_" + change_at),
+        "headline_ko": ("하이브리드 본딩 경쟁력 격차 보도 · 공식 양산과 분리"
+                        if initial else "하이브리드 본딩 고객 샘플·양산 단계 공식 변화"),
+        "fact_bullets": list(reasons),
+        "verdict": ("단일 익명 엔지니어 인터뷰로 양산 격차·실패를 확정할 수 없습니다."
+                    if initial else "공식 고객 샘플·인증·양산 상태의 신규 변화를 확인합니다."),
+        "verification": ("Damnang 원문 서두 확인 / TechPowerUp 재인용 / 양사 공식 HBM 실적과 구분"
+                         if initial else "해당 제조사 공식 고객 샘플·생산 발표"),
+        "quality": ("신뢰 보도·회사 공식자료 구분" if initial else "공식·회사자료"),
+        "origin_source": ("Damnang(익명 전문가)" if initial else "공식 기업자료"),
+        "source": "Damnang" if initial else "공식 기업자료",
+        "published_at_kst": (change_at if not initial else "2026-10-08T16:04:00+09:00"),
+        "direct_link": source,
+        "article_text": "",
+        "hybrid_bonding_state": dict(state),
+    }
+
+
+def render_hbm_hybrid_bonding_notice(e: dict, now: datetime) -> str:
+    st = e["hybrid_bonding_state"]
+    initial = e.get("fact_key") == "hbm_hybrid_bonding_report_20261008"
+    lines = [
+        "🚨 HBM 하이브리드 본딩 · 삼성전자 vs SK하이닉스",
+        f"조회: {now.strftime('%Y-%m-%d %H:%M KST')}",
+        ("상태: 단일 익명 전문가 인터뷰 보도 · 회사 미확정"
+         if initial else "상태: 하이브리드 본딩 HBM 공식 단계 신규 변화"),
+        "",
+        "■ 현재 제품과 미래 공정은 다릅니다",
+        "• SK하이닉스 12단 HBM4E 고객 샘플(2026-06-18): 공식 확인, 어드밴스드 MR-MUF 적용. 하이브리드 본딩 샘플로 계산 금지.",
+        "• 삼성전자 HBM4E 고객 샘플: 공식 확인. 하이브리드 본딩을 적용한 고객 샘플인지 별도 공식 확인 필요.",
+        "• SK하이닉스 16단용 하이브리드 본딩 기술적 가능성 설명(공식 IR)과 고객사로 전달된 완성 HBM 샘플은 서로 다릅니다.",
+        "",
+        "■ 하이브리드 본딩 고객 샘플 검증",
+        ("• SK하이닉스: 샘플 제작 지연 주장(익명 인터뷰) · 회사 공식 고객 샘플 확인: "
+         + ("확인" if st.get("skhynix_official_hybrid_customer_sample_verified") else "미확인")),
+        ("• 삼성전자: 고객에게 하이브리드 본딩 HBM 샘플 발송 주장(같은 인터뷰) · 회사 공식 확인: "
+         + ("확인" if st.get("samsung_official_hybrid_customer_sample_verified") else "미확인")),
+        f"• 공식 추적 단계: SK하이닉스 {st.get('skhynix_official_hybrid_stage') or '미확인'} / 삼성전자 {st.get('samsung_official_hybrid_stage') or '미확인'}",
+        "• 원보도: Damnang 인터뷰 1곳 → TechPowerUp 재보도. 독립 검증 2곳 아님.",
+        "",
+        "■ 현재 돈 버는 사업과 실적",
+        "• Counterpoint 2026년 2분기 HBM 매출점유율: SK하이닉스 50% / 삼성전자 33%. 이는 차세대 본딩 성숙도를 나타내는 값이 아닙니다.",
+        "• 하이브리드 본딩 개발 지연이 기존 MR-MUF 기반 HBM 출하 중단 또는 즉시 매출 하락을 뜻하지 않습니다.",
+        "",
+        "■ 공정 병목·실패 경로",
+        "• 정렬·표면 오염·구리 단차 → 접합 불량 → 다층 누적수율 저하 → 고온 동작 검사·신뢰성 검증 지연 → 고객 승인 연기.",
+        "• 민감도 예시(실측 아님): 각 층 접합 양품률 99%이고 16개 독립 접합을 가정하면 0.99^16≈85.1%. 실제 수율·접합 횟수는 미공개.",
+        "• 위험 관찰 기간: 향후 6~12개월 고객 샘플·인증·양산 전환. MR-MUF 개선은 대안이며 하이브리드 본딩 채택 시점은 고객 결정에 달립니다.",
+        "",
+        "■ 다음 새 알림",
+        "• 공식 시제품 제작 → 고객 샘플 발송 → 고객 인증 완료 → 파일럿 → 양산을 분리해 추적.",
+        "• 삼성전자/ SK하이닉스 실제 공식 발표, 장비 수주·공정시간·수율·고객 채택 변화만 단계 승격.",
+        "• 원출처에 새로운 정보 없이 TechPowerUp 기사가 반복 인용되면 재전송하지 않음.",
+        "",
+        "출처:",
+        "Damnang " + st.get("primary_url", ""),
+        "TechPowerUp " + st.get("republisher_url", ""),
+        "SK하이닉스 공식 " + HBM_HYBRID_SK_OFFICIAL,
+        "삼성전자 공식 " + HBM_HYBRID_SAMSUNG_OFFICIAL,
+        "Counterpoint " + HBM_HYBRID_SHARE_SOURCE,
+    ]
+    if not initial and e.get("fact_bullets"):
+        lines.insert(5, "• 이번 공식 변화: " + " / ".join(e["fact_bullets"]))
+    return "\n".join(lines).strip() + "\n"
+
+
 def make_fact(event: dict) -> dict | None:
     e = dict(event)
     text = compact_fact_text(e)
