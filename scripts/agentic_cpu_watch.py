@@ -986,6 +986,14 @@ def main() -> None:
     structure_latest = json.loads(json.dumps(CPU_STRUCTURE_BASELINE))
     for provider in ("bnpp_public", "bnpp_analyst", "digitimes", "amd_system"):
         structure_latest[provider].update(structure_old.get(provider) or {})
+    # A checkpoint may contain old provenance wording even after the evidence
+    # class improved. Correct the 245bn baseline metadata deterministically
+    # without generating a synthetic "forecast revision" alert.
+    analyst = structure_latest["bnpp_analyst"]
+    if float(analyst.get("market_2030_usd_bn") or 0) == 245.0:
+        if "사용자 제공" in str(analyst.get("market_2030_source_kind") or ""):
+            analyst["market_2030_source_kind"] = CPU_STRUCTURE_BASELINE["bnpp_analyst"]["market_2030_source_kind"]
+        analyst["market_2030_secondary_confirmed"] = True
     # Correct stale metadata when an old state checkpoint stored a claim
     # that the source's paywalled headline itself specified "2027".
     if (
