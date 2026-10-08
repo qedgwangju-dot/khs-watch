@@ -610,6 +610,10 @@ def canonical_story_key(company: str, title: str) -> str | None:
     text = html.unescape(title or "").lower()
     money = _money_tokens(text)
 
+    if company == POWER_COMPANY:
+        result = power_milestone(title)
+        return result[2] if result else None
+
     if company == "Volantis":
         # Preserve the already-seen $88M Series A key, but do not collapse every
         # future financing round into that old event.
@@ -1160,6 +1164,8 @@ def merge_article_scopes(current: dict, candidate: dict) -> dict:
 def same_underlying_story(a: dict, b: dict) -> bool:
     if a.get("company") != b.get("company"):
         return False
+    if a.get("company") == POWER_COMPANY:
+        return same_power_event(a, b)
 
     if a.get("company") == "CPO Equipment Supply Chain":
         # Sector articles are often rewritten with different supplier names/headlines.
@@ -1411,6 +1417,9 @@ def stage_for(title: str) -> str:
 
 
 def category_for(title: str, company: str) -> str:
+    if company == POWER_COMPANY:
+        milestone = power_milestone(title)
+        return milestone[0] if milestone else "AAOI 현장발전 EPC 추진"
     structural = classify_structural_axis(company, title)
     if structural is not None:
         return structural
@@ -1589,6 +1598,15 @@ def category_for(title: str, company: str) -> str:
 
 def meaning_for(category: str) -> str:
     mapping = {
+        "AAOI 현장발전 EPC 추진": "Leadray Energy가 설계·조달·시공을 맡고 Bloom Energy의 SOFC로 대만 광통신 공장 전력을 보강할 예정입니다. 2027년 1분기는 운전 목표이며 현재 전원 인가·발전용량·계약금액은 공개되지 않았습니다.",
+        "AAOI 현장발전 용량·계약금액": "실제 발전용량(MW)과 공급계약 금액이 공개되면 설치비·단위 출력 및 증설 대응 정도를 검산할 수 있습니다. 미공개 수치를 다른 프로젝트에서 차용하지 않습니다.",
+        "AAOI SOFC 착공·장비반입": "연료전지 설비반입과 실제 착공은 발표 단계보다 진전됐지만 시운전·계통접속·안전 승인·전원 인가가 남아 있습니다.",
+        "AAOI SOFC 설치·검수": "설비 설치·검수는 전원 인가 전 마지막 주요 관문입니다. 검사와 안전 승인이 끝났는지 별도로 확인합니다.",
+        "AAOI 현장발전 전원 인가": "실제 상업운전이 확인되면 전력 공급 위험은 줄지만 AAOI 대만 공장의 고객인증·수율·800G/1.6T 출하는 별도 확인해야 합니다.",
+        "AAOI 연료·전력 접속": "대만 현장 가스 공급·전력 접속과 현지 허가가 확보되면 발전설비 가동 지연 위험이 낮아집니다.",
+        "AAOI 현장발전 보조금": "보조금 신청과 실제 승인·금액 지급은 구분해야 합니다. 확정 금액과 수혜 당사자만 사업비 계산에 반영합니다.",
+        "AAOI 전력 확보→출하 검증": "전력 설비 가동 이후 고객별 800G·1.6T 생산 인증, 양품 수율, 실제 출하량과 매출 증가가 연결돼야 설비투자 효과가 입증됩니다.",
+        "AAOI 현장발전 일정·공급 위험": "가스 계약·허가·설치·검수·2027년 1분기 전원 인가 일정의 지연은 대만 광통신 생산능력 증설의 선행 위험입니다.",
         "OCS 고객·주문·배치": "OCS는 광경로 자체를 바꾸는 별도 스위치입니다. NVIDIA의 OCP 참여·CPO 제품 판매를 OCS 구매로 오인하지 않고 실제 OCS 장비 계약·고객·배치 대수를 확인합니다.",
         "OCS 표준·상호운용성": "OCP의 광회로 스위칭 개방형 제어 인터페이스·상호운용성이 개선되면 신규 고객군의 장비 검증 비용을 낮출 수 있습니다. 표준 참여는 양산수주와 다릅니다.",
         "NPO 표준 제·개정": "화웨이 OPEN NPO의 다중공급자 규격 개정·호환성 인증은 NPO 공급망 진입조건을 바꿀 수 있습니다. MSA 발표만으로 고객 양산 물량이 생기지는 않습니다.",
@@ -1675,6 +1693,15 @@ def meaning_for(category: str) -> str:
 
 def risk_for(category: str) -> str:
     mapping = {
+        "AAOI 현장발전 EPC 추진": "전력망·가스 공급·허가·부지 설치·보험과 SOFC 초기 고장으로 2027년 1분기 가동 목표가 지연될 수 있습니다.",
+        "AAOI 현장발전 용량·계약금액": "정격출력과 실제 연속 가동률이 다르며 보조금·설치비·천연가스 가격·정비비를 반영해야 실질 단위 원가를 판단할 수 있습니다.",
+        "AAOI SOFC 착공·장비반입": "현장 배관·방재·계통 보호·고온 설비 인허가와 시운전의 지연 위험이 남습니다.",
+        "AAOI SOFC 설치·검수": "설비 설치를 마쳐도 신뢰성 검사·안전 인수·가스 연결과 전력 계통 검증 실패 시 전원 인가가 지연될 수 있습니다.",
+        "AAOI 현장발전 전원 인가": "연료전지 가동률·정비 정지·가스 공급·백업전원이 부족하면 실제 광모듈 라인 가동률 증가는 제한됩니다.",
+        "AAOI 연료·전력 접속": "현지 연료 공급·계통 보호설비·가스 안전 승인·보험 조건에 문제가 있으면 전원 공급이 늦어집니다.",
+        "AAOI 현장발전 보조금": "정부 심사·지급 지연이나 승인액 축소가 프로젝트 순설비투자와 투자회수기간을 바꿀 수 있습니다.",
+        "AAOI 전력 확보→출하 검증": "전력을 확보해도 고객별 제품 인증·광엔진 수율·1.6T 검사 시간·핵심 광부품 병목으로 출하가 자동 증가하지 않을 수 있습니다.",
+        "AAOI 현장발전 일정·공급 위험": "2027년 1분기를 넘겨 전원 인가가 밀리면 신규 공장 고정비 부담과 광트랜시버 납기 위험이 먼저 나타납니다.",
         "OCS 고객·주문·배치": "OCS 제어 소프트웨어와 스위치 재구성 지연·광경로 차단·고장복구가 GPU 가동률을 떨어뜨리면 채택과 재주문이 지연될 수 있습니다.",
         "OCS 표준·상호운용성": "규격 합의 뒤에도 실제 다중업체 상호운용성·제어 인터페이스·운영 자동화 검증에 실패하면 설치가 지연됩니다.",
         "NPO 표준 제·개정": "CPO와 경쟁하는 NPO의 광결합·삽입손실·외장광원·서비스성·온도별 신뢰성 조건이 규격을 충족하지 못하면 인증이 지연됩니다.",
