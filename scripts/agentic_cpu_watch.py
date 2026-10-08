@@ -915,9 +915,11 @@ def main() -> None:
     fx, fx_date = get_fx()
     existing_alert = ALERT_PATH.read_text(encoding="utf-8").strip() if ALERT_PATH.exists() else ""
     cpu_material = bool(forecast_changes or ratio_change or validation or structure_first_install or structure_events)
-    if (structure_first_install or structure_events) and fx is None:
-        # Fail closed; neither USD figures nor an unacknowledged baseline may leak.
-        raise RuntimeError("CPU structure alert requires verified USD/KRW conversion")
+    if cpu_material and fx is None:
+        # All CPU alerts, including BofA revisions and validation-only changes,
+        # must contain a verified USD/KRW conversion. Never send stale or
+        # unconverted foreign-currency figures or checkpoint a missed alert.
+        raise RuntimeError("CPU alert requires verified USD/KRW conversion")
 
     if cpu_material:
         blocks = []
