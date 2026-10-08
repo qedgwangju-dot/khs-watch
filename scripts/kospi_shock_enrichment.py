@@ -214,6 +214,25 @@ def _nearest_row(
     return min(vals, key=lambda x: x[2]) if vals else None
 
 
+def _aligned_prior_row(
+    rows: list[dict[str, Any]],
+    target_ts: float,
+    max_age_sec: float = 90.0,
+    date_key: str = "date",
+    time_key: str = "time",
+) -> tuple[dict[str, Any], float, float] | None:
+    """구간 판정에는 미래 표본을 사용하지 않고, 오래된 분봉도 배제한다."""
+    candidates: list[tuple[dict[str, Any], float, float]] = []
+    for row in rows:
+        ts = _epoch(row.get(date_key), row.get(time_key))
+        if ts is None or ts > target_ts:
+            continue
+        age = target_ts - ts
+        if age <= max_age_sec:
+            candidates.append((row, ts, age))
+    return min(candidates, key=lambda x: x[2]) if candidates else None
+
+
 def direct_industry_interval(
     start_ts: float,
     end_ts: float,
@@ -412,10 +431,10 @@ def stock_interval_price(
     end_ts: float,
 ) -> dict[str, Any]:
     rows = fetch_stock_bars(token, shcode, "U")
-    a = _nearest_row(rows, start_ts)
-    b = _nearest_row(rows, end_ts)
-    if not a or not b:
-        return {"available": False}
+    a = _aligned_prior_row(rows, start_ts)
+    b = _aligned_prior_row(rows, end_ts)
+    if not a or not b or a[1] >= b[1]:
+        return {"available": False, "error": "1분봉 기준점 누락·시차 초과·시각 역전"}
     ap = fnum(a[0].get("close"))
     bp = fnum(b[0].get("close"))
     return {
@@ -520,10 +539,10 @@ def program_interval(
             error = f"{type(exc).__name__}: {exc}"
     if not rows:
         return {"available": False, "error": error or "no rows"}
-    a = _nearest_row(rows, start_ts)
-    b = _nearest_row(rows, end_ts)
-    if not a or not b:
-        return {"available": False, "error": "time rows unavailable"}
+    a = _aligned_prior_row(rows, start_ts)
+    b = _aligned_prior_row(rows, end_ts)
+    if not a or not b or a[1] >= b[1]:
+        return {"available": False, "error": "프로그램 구간 표본 90초 정렬 미충족·시각 역전"}
     av = fnum(a[0].get("svalue"))
     bv = fnum(b[0].get("svalue"))
     if av is None or bv is None:
@@ -577,10 +596,10 @@ def industry_index_interval(
     }
     data = ls_post(token, "/indtp/chart", "t8409", body)
     rows = _rows(data, "t8409OutBlock1")
-    a = _nearest_row(rows, start_ts)
-    b = _nearest_row(rows, end_ts)
-    if not a or not b:
-        return {"available": False}
+    a = _aligned_prior_row(rows, start_ts)
+    b = _aligned_prior_row(rows, end_ts)
+    if not a or not b or a[1] >= b[1]:
+        return {"available": False, "error": "업종지수 1분봉 기준점 누락·시차 초과·시각 역전"}
     av = fnum(a[0].get("close"))
     bv = fnum(b[0].get("close"))
     return {
@@ -1014,7 +1033,7 @@ def build_enrichment(
         "",
         "<b>정확성</b>",
         "• '현물 주체가 직접 판 업종'은 사건구간에 현물 순매도인 외국인·기관·개인을 각각 통합 UBM으로 직접 판정합니다. 기준점이 30초를 넘으면 해당 주체·업종 판정을 보류합니다.",
-        "• 프로그램·가격 업종·종목 순위는 장중 프로그램 매도 상위 후보군을 사건구간으로 재검산한 결과이며 전체 상장종목의 완전 전수순위로 표현하지 않습니다.",
+        "• 프로그램·가격 업종·종목 순위는 장중 프로그램 매도 상위 후보군을 사건구간으로 재검산한 결과이며 전체 상장종목의 완전 전수순위로 표현하지 않습니다. 구간값은 사건 기준점 이전 90초 이내 표본만 사용하고, 누락 시 판정 보류합니다.",
         "• 테마는 동일 종목이 여러 테마에 동시에 속하므로 중복 허용 연결정보입니다. 테마별 직접 순매도액이나 상호배타적 시장점유율로 해석하지 않습니다.",
         "• LS 프로그램 원값은 단위를 임의로 억원 환산하지 않습니다.",
         "• 특정 업종·테마의 외국인 직접 순매도액으로 바꿔 쓰지 않습니다.",
