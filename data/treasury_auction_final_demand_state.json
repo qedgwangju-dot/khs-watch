@@ -1,6 +1,7 @@
 {
   "state_version": 3,
   "seen_result_urls": [
+    "https://www.treasurydirect.gov/auctions/results/#auction-912810UW6-2026-10-08T00:00:00",
     "https://www.treasurydirect.gov/auctions/results/#auction-91282CRF0-2026-10-07T00:00:00",
     "https://www.treasurydirect.gov/auctions/results/#auction-912810UX4-2026-09-15T00:00:00",
     "https://www.treasurydirect.gov/auctions/results/#auction-912810UW6-2026-09-10T00:00:00",
@@ -459,23 +460,6 @@
       {
         "tenor": "30-Year Bond",
         "tenor_ko": "30년물",
-        "auction_date": "2025-10-09T00:00:00",
-        "result_url": "https://www.treasurydirect.gov/auctions/results/#auction-912810UM8-2025-10-09T00:00:00",
-        "offering_bn": 22.0,
-        "high_yield": 4.734,
-        "btc": 2.38,
-        "indirect_bn": 14.1563205,
-        "direct_bn": 5.8984,
-        "dealer_bn": 1.901737,
-        "soma_bn": 0.4083927,
-        "total_accepted_bn": 21.9564575,
-        "indirect_pct": 64.47451962594603,
-        "direct_pct": 26.864078597378473,
-        "dealer_pct": 8.661401776675495
-      },
-      {
-        "tenor": "30-Year Bond",
-        "tenor_ko": "30년물",
         "auction_date": "2025-11-13T00:00:00",
         "result_url": "https://www.treasurydirect.gov/auctions/results/#auction-912810UP1-2025-11-13T00:00:00",
         "offering_bn": 25.0,
@@ -659,6 +643,23 @@
         "indirect_pct": 79.48443105047096,
         "direct_pct": 18.307664355054012,
         "dealer_pct": 2.2079045944750333
+      },
+      {
+        "tenor": "30-Year Bond",
+        "tenor_ko": "30년물",
+        "auction_date": "2026-10-08T00:00:00",
+        "result_url": "https://www.treasurydirect.gov/auctions/results/#auction-912810UW6-2026-10-08T00:00:00",
+        "offering_bn": 22.0,
+        "high_yield": 5.618,
+        "btc": 2.54,
+        "indirect_bn": 15.8660595,
+        "direct_bn": 4.5830441,
+        "dealer_bn": 1.4905,
+        "soma_bn": 0.5225226,
+        "total_accepted_bn": 21.9396036,
+        "indirect_pct": 72.31698342991028,
+        "direct_pct": 20.889366023003262,
+        "dealer_pct": 6.7936505470864565
       }
     ]
   }
