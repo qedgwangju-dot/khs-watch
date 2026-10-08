@@ -11667,7 +11667,12 @@ def source_market_materiality(alert: dict) -> dict:
     body = str(alert.get("source_body") or alert.get("source_abstract") or "")
     if not alert.get("body_verified"):
         body = ""
-    return market_materiality.assess(title, article_summary_body(body), source_url=str(alert.get("link") or ""))
+    return market_materiality.assess(
+        title,
+        article_summary_body(body),
+        source_url=str(alert.get("link") or ""),
+        published=str(alert.get("published") or ""),
+    )
 
 
 def verified_materiality_axes(alert: dict) -> list[str]:

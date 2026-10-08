@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 121
+VERSION = 125
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -3702,7 +3702,14 @@ def transmission_scope(title: str, evidence: list[dict]) -> tuple[int, str]:
     return 1, 'issuer_specific_event'
 
 
-def equity_publication_assessment(title: str, evidence: list[dict], *, body: str = "", source_url: str = "") -> dict:
+def equity_publication_assessment(
+    title: str,
+    evidence: list[dict],
+    *,
+    body: str = "",
+    source_url: str = "",
+    published: str = "",
+) -> dict:
     """Separate a true economic fact from a foreground stock-market catalyst."""
     kinds = {item['kind'] for item in evidence}
     if not kinds:
@@ -3712,6 +3719,68 @@ def equity_publication_assessment(title: str, evidence: list[dict], *, body: str
     source_rows = source_sentences(body)
     lead = " ".join(source_rows[:5])
     headline_and_lead = f"{title} {lead}"
+    primary_rows = source_rows[:12]
+    firm_company_event = any(
+        not ASPIRATION.search(row)
+        and (
+            (re.search(r"(?:공급\s*계약|납품\s*계약|구매\s*계약|수주|발주).{0,35}(?:체결|확정|공시|했다|받았다)|(?:체결|확정|공시).{0,35}(?:공급\s*계약|납품\s*계약|수주|발주)", row)
+             and (QUANTITY.search(row) or re.search(r"공시했다|계약을\s*체결했다", row)))
+            or (re.search(r"(?:CAPEX|설비투자|투자액|투자금|자본지출)", row, re.I)
+                and re.search(r"(?:확정|집행|승인|의결|착공)", row)
+                and QUANTITY.search(row))
+            or (re.search(r"(?:공장|생산라인|양산|생산)", row)
+                and re.search(r"(?:가동을\s*시작|양산을\s*시작|생산을\s*시작|착공했다|완공했다)", row)
+                and QUANTITY.search(row))
+            or (re.search(r"(?:분기|반기|연간|회계연도).{0,35}(?:매출|영업이익|순이익|EPS)|(?:매출|영업이익|순이익|EPS).{0,35}(?:분기|반기|연간|회계연도)", row, re.I)
+                and re.search(r"(?:기록|집계|발표|공시|달성)", row)
+                and QUANTITY.search(row))
+        )
+        for row in primary_rows
+    )
+
+    organization_only = bool(
+        re.search(r"전담\s*(?:팀|조직)|사업팀\s*(?:신설|설치)|조직\s*개편|본부\s*신설", title + " " + lead)
+        and not firm_company_event
+    )
+    if organization_only:
+        return {"eligible": False, "reason": "organization_change_without_funded_or_revenue_execution"}
+
+    stock_pick_roundup = bool(
+        re.search(r"오늘\s*이\s*종목|이\s*종목.{0,20}(?:주목|추천|수혜)|(?:종목|수혜주).{0,20}(?:짚었|꼽았|주목|추천)", title)
+        and re.search(r"증권사|연구원|애널리스트|분석가|부장|리서치", title + " " + lead)
+        and not firm_company_event
+        and not re.search(r"(?:실적|계약|수주|발주|승인|시행|수출|관세).{0,25}(?:공시|발표|체결|확정|기록)", title)
+    )
+    if stock_pick_roundup:
+        return {"eligible": False, "reason": "analyst_stock_pick_without_independent_company_action"}
+
+    future_target_years = [int(year) for year in re.findall(r"(?<!\d)(20\d{2})년", title)]
+    published_year = int(published[:4]) if re.match(r"20\d{2}", str(published or "")) else dt.date.today().year
+    long_horizon_target_only = bool(
+        any(year - published_year >= 3 for year in future_target_years)
+        and re.search(r"(?:매출|영업이익|순이익).{0,30}(?:목표|계획)|(?:목표|계획).{0,30}(?:매출|영업이익|순이익)", title + " " + lead)
+        and not firm_company_event
+    )
+    if long_horizon_target_only:
+        return {"eligible": False, "reason": "long_horizon_management_target_without_near_term_execution"}
+
+    standalone_target_price_recap = bool(
+        re.search(r"(?:증권사\s*)?(?:목표가|목표주가).{0,12}(?:상향|올려)|(?:강세|급등|상승).{0,20}(?:목표가|목표주가)", title)
+        and "analyst_revision" in kinds
+        and not firm_company_event
+        and not re.search(r"(?:실적|가이던스|수주|발주|계약|투자|승인|허가|양산|가동).{0,25}(?:공시|발표|체결|확정|기록|달성)", title)
+        and not re.search(r"(?:복수|다수)\s*(?:증권사|애널리스트)|컨센서스\s*(?:상향|개선)", headline_and_lead)
+    )
+    if standalone_target_price_recap:
+        return {"eligible": False, "reason": "single_broker_target_price_commentary_without_new_company_event"}
+
+    personal_tax_profile = bool(
+        re.search(r"(?:선박왕|개인\s*체납|체납세금|체납액|세금\s*다\s*내고)", title)
+        and re.search(r"국세청장|국세청|세무당국", title + " " + lead)
+        and not re.search(r"코스피|코스닥|상장사|상장기업|삼성전자|SK하이닉스|현대차|기아|LG전자|네이버|카카오|\b\d{6}\b", title + " " + lead)
+    )
+    if personal_tax_profile:
+        return {"eligible": False, "reason": "individual_tax_collection_interview_without_equity_channel"}
 
     single_etf_listing_flow = (
         re.search(r"\bETF\b|상장지수펀드", title, re.I)
@@ -3899,6 +3968,77 @@ def equity_publication_assessment(title: str, evidence: list[dict], *, body: str
     )
     if housing_price_commentary:
         return {"eligible": False, "reason": "housing_price_commentary_without_equity_or_policy_event"}
+
+    domestic_weekly_housing_recap = (
+        re.search(r"(?:아파트|주택).{0,12}(?:매매가|매매가격)|(?:매매가|매매가격).{0,12}(?:아파트|주택)", title)
+        and re.search(r"(?:서울|전국|강남|용산).{0,24}(?:상승|하락|약세|강세|보합)|(?:상승|하락|약세|강세|보합).{0,24}(?:서울|전국|강남|용산)", title)
+        and re.search(r"(?:주간\s*(?:동향|통계)|\d+(?:\.\d+)?\s*%\s*(?:상승|하락|올랐|내렸))", title + " " + lead)
+        and not re.search(
+            r"주택공급|공급대책|재건축|청약|분양|주담대\s*금리|대출금리|가계대출|연체율|부동산\s*PF|"
+            r"상장사|코스피|코스닥|건설주|은행주|리츠|실적|수주|발주|상환능력|부실채권",
+            headline_and_lead,
+            re.I,
+        )
+    )
+    if domestic_weekly_housing_recap:
+        return {"eligible": False, "reason": "domestic_housing_price_recap_without_equity_or_policy_catalyst"}
+
+    community_scholarship_mou = (
+        re.search(r"장학회|장학사업|지역인재\s*육성|지역\s*학생.{0,12}(?:교육|장학)|교육\s*기회\s*확대", headline_and_lead)
+        and re.search(r"업무\s*협약|업무협약|상생\s*협약|협약을\s*체결", headline_and_lead)
+        and not firm_company_event
+        and not re.search(
+            r"상장사|코스피|코스닥|매출|영업이익|순이익|공급계약|수주|발주|투자액|출자액|사업비|"
+            r"기부금\s*\d|장학금\s*\d|지원금\s*\d",
+            headline_and_lead,
+            re.I,
+        )
+    )
+    if community_scholarship_mou:
+        return {"eligible": False, "reason": "community_sponsorship_mou_without_public_equity_or_material_amount"}
+
+    routine_japan_current_account = (
+        re.search(r"일본|Japan", title, re.I)
+        and re.search(r"경상수지|current\s*account", title, re.I)
+        and re.search(r"해외투자\s*수익|배당금\s*수입|investment\s*income", headline_and_lead, re.I)
+        and not re.search(
+            r"시장\s*예상|컨센서스|예상치|예상보다|예상\s*상회|예상\s*하회|역대|사상|기록적|"
+            r"흑자\s*전환|적자\s*전환|엔화.{0,12}(?:급등|급락)|환율.{0,12}(?:급등|급락)|시장.{0,12}(?:반응|충격)",
+            headline_and_lead,
+            re.I,
+        )
+    )
+    if routine_japan_current_account:
+        return {"eligible": False, "reason": "routine_japan_current_account_without_surprise_or_market_reaction"}
+
+    local_detail_text = f"{title} {' '.join(source_rows[:12])}"
+    local_industrial_park_recruitment_plan = (
+        LOCAL_AUTHORITY.search(local_detail_text)
+        and re.search(r"산업단지|도시첨단산업단지", local_detail_text)
+        and re.search(r"기업\s*유치|앵커\s*기업|입주\s*기업", local_detail_text)
+        and re.search(r"기업을\s*발굴|투자유치\s*활동|유치\s*활동.{0,25}(?:계획|벌일|나설)", local_detail_text)
+        and not re.search(
+            r"입주\s*(?:확정|계약)|앵커\s*기업\s*(?:확정|선정)|기업.{0,30}(?:투자계약|착공|공급계약|수주)|"
+            r"공급계약|수주|발주|실제\s*투자\s*집행|공사\s*착수|(?:공장|데이터센터|발전소).{0,30}(?:착공|가동|준공|건설\s*허가)",
+            local_detail_text,
+        )
+    )
+    if local_industrial_park_recruitment_plan:
+        return {"eligible": False, "reason": "local_industrial_park_recruitment_plan_without_committed_tenants_or_execution"}
+
+    local_venue_funding_aspiration = (
+        (LOCAL_AUTHORITY.search(headline_and_lead) or LOCAL_EXECUTIVE_INTERVIEW.search(headline_and_lead))
+        and re.search(r"돔\s*아레나|아레나|공연장|경기장", headline_and_lead)
+        and re.search(r"민간.{0,15}접촉|국비.{0,20}(?:추진|공모|계획)|공모.{0,25}신청", headline_and_lead)
+        and not re.search(
+            r"(?:국비|사업비|민간투자|투자금).{0,20}(?:확정|확보했다|확보완료|금융종결|투자계약|실시협약)|"
+            r"(?:확정|확보했다|확보완료|금융종결|투자계약|실시협약).{0,20}(?:국비|사업비|민간투자|투자금)|"
+            r"공사\s*계약|착공|공사\s*착수",
+            headline_and_lead,
+        )
+    )
+    if local_venue_funding_aspiration:
+        return {"eligible": False, "reason": "municipal_venue_plan_without_committed_funding_or_construction"}
 
     if (focus_kind(title) == "commercial_order"
             and any(item["kind"] == "commercial_order" for item in evidence)
@@ -4478,7 +4618,7 @@ def google_constellation_ppa_observation(title: str, body: str) -> dict[str, str
     return {"stage": "contracted_capacity_expansion", "source_excerpt": excerpt}
 
 
-def assess(title: str, body: str, *, source_url: str = "") -> dict:
+def assess(title: str, body: str, *, source_url: str = "", published: str = "") -> dict:
     title = re.sub(r"\s+", " ", str(title or "")).strip()
     body = source_article_body(source_reported_body(str(body or ""))).strip()
     result = {"version": VERSION, "disposition": "review", "priority": 1, "axes": [], "evidence": []}
@@ -5652,8 +5792,10 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
         result["reason"] = "existing_market_gate_required"
     if result['evidence']:
         result['transmission_scope_rank'], result['transmission_scope_reason'] = transmission_scope(title, result['evidence'])
-        result['equity_publication'] = equity_publication_assessment(title, result['evidence'], body=body, source_url=source_url)
+        result['equity_publication'] = equity_publication_assessment(
+            title, result['evidence'], body=body, source_url=source_url, published=published,
+        )
         if not result['equity_publication']['eligible']:
             result['priority'] = min(result['priority'], 1)
-            result['scope_note'] = result['equity_publication']['reason']
+            result.setdefault('scope_note', result['equity_publication']['reason'])
     return result

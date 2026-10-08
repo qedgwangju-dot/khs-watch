@@ -3653,6 +3653,34 @@ class ForegroundAndEventIdentityTests(unittest.TestCase):
 class PostMergeLiveArtifactQualityChecks(unittest.TestCase):
     """Regressions captured from the 2026-10-07 post-merge GitHub dry-run."""
 
+    def test_latest_saved_live_report_rescores_without_uncommitted_local_park_plan(self):
+        report_path = Path(__file__).resolve().parent.parent / "out" / "gamejoa_preopen_news_radar.json"
+        if not report_path.is_file():
+            self.skipTest("no saved live radar artifact in this checkout")
+        report = json.loads(report_path.read_text(encoding="utf-8"))
+        items = copy.deepcopy(report.get("alerts") or [])
+        local_title = "남양주시, 왕숙 산업단지 세부 계획 승인…기업 유치 속도"
+        local = next((item for item in items if item.get("source_title") == local_title), None)
+        if local is None:
+            self.skipTest("saved report does not contain the known local-plan regression")
+        run_time = dt.datetime.fromisoformat(report["query_time_kst"])
+        audit = radar.source_market_materiality(local)
+        self.assertFalse(audit["equity_publication"]["eligible"], audit)
+        self.assertEqual(
+            audit["equity_publication"]["reason"],
+            "local_industrial_park_recruitment_plan_without_committed_tenants_or_execution",
+        )
+        with patch.object(radar.base, "kst_now", return_value=run_time):
+            selected = radar.quality_display_alerts(items, 7)
+        selected_titles = {item.get("source_title") for item in selected}
+        self.assertNotIn(local_title, selected_titles)
+        self.assertEqual(selected_titles, {
+            "가온칩스 수주공시 - 주문형 반도체 설계 개발 76.7억원 (매출액대비 11.20 %)",
+            "삼성전자, 영업이익 107조원 돌파에도 무덤덤… K-반도체 저평가 흐름 이어지나",
+            "이라크산 원유 시리아 통해 육로수송…호르무즈 우회",
+            "日소프트뱅크 자회사에 랜섬웨어 공격…495개 기업·지자체 피해",
+        })
+
     def assert_source_aligned(self, title, body, core, link):
         alert = {
             "source_title": title,
@@ -3701,6 +3729,68 @@ class PostMergeLiveArtifactQualityChecks(unittest.TestCase):
                 publication = materiality.equity_publication_assessment(title, evidence, body=body)
                 self.assertFalse(publication["eligible"], publication)
                 self.assertEqual(publication["reason"], reason)
+
+    def test_october_eighth_generated_low_stock_impact_items_are_blocked_end_to_end(self):
+        cases = (
+            (
+                "서울 아파트 매매가 0.12% 상승…강남3구·용산은 약세 지속",
+                "부동산원 주간 동향에 따르면 서울 아파트 매매가격은 0.12% 상승했다. "
+                "강남3구와 용산의 약세가 이어졌으며, 한 연구원은 국제유가와 미국 국채금리 상승, "
+                "대출 한도 등을 언급했다.",
+                "domestic_housing_price_recap_without_equity_or_policy_catalyst",
+            ),
+            (
+                "[부산소식] 부산해상풍력발전·다대장학회, 지역인재 육성 협약",
+                "부산해상풍력발전은 다대장학회와 지역인재 육성 및 지역사회 상생을 위한 업무협약을 체결했다. "
+                "양측은 장학사업과 지역 학생의 교육 기회 확대를 위한 지원 방안을 모색한다.",
+                "community_sponsorship_mou_without_public_equity_or_material_amount",
+            ),
+            (
+                "일본 8월 경상수지 34조원 흑자·12%↑…해외투자 수익 확대",
+                "일본 재무성이 발표한 8월 국제수지 통계에서 경상수지는 4조620억엔 흑자를 냈다. "
+                "해외 자회사 배당금과 해외투자 수익이 늘었다. 달러·엔 환율의 월평균이 전년 동월보다 7.5% 오르고 "
+                "유로·엔 환율도 7.2% 상승해 엔화 약세가 이어졌다.",
+                "routine_japan_current_account_without_surprise_or_market_reaction",
+            ),
+            (
+                "남양주시, 왕숙 산업단지 세부 계획 승인…기업 유치 속도",
+                "(남양주=연합뉴스) 경기 남양주시는 왕숙 도시첨단산업단지의 토지 이용과 기반 시설 설치 등 세부 계획을 승인·고시했다고 8일 밝혔다. "
+                "이 산업단지는 2032년 완공을 목표로 진건읍 일대에 120만㎡ 규모로 조성된다. "
+                "제1 판교 테크노밸리 면적 66만㎡의 1.8배에 달하며 총사업비 1조8천993억원이 투입된다. "
+                "남양주시는 인공지능(AI)·클라우드·데이터, 연구개발(R&D), 바이오·첨단 제조 등 미래산업 분야 기업과 연구개발 기능을 집적하기로 했다. "
+                "이를 통해 미래산업 생태계를 구축하고 수도권 동북부의 새로운 산업 거점으로 육성할 방침이다. "
+                "왕숙 도시첨단산업단지가 본격적인 개발 단계에 들어서면서 시는 기업 유치에 속도를 내기로 했다. "
+                "남양주시는 한국토지주택공사(LH)와 실무 협의체를 구성해 앵커 기업과 미래산업 분야 기업을 발굴하고 기업별 수요에 맞춘 투자유치 활동을 벌일 계획이다. "
+                "국내 주요 산업·기업 행사에 참여해 입지와 교통, 정주 환경 및 미래산업 경쟁력을 알리고 잠재 투자기업을 발굴해 투자수요를 파악하기로 했다.",
+                "local_industrial_park_recruitment_plan_without_committed_tenants_or_execution",
+            ),
+            (
+                "전재수 \"북항 돔 아레나, 국비 확보·민간 접촉 투 트랙\"",
+                "전재수 부산시장이 북항에 5만석 규모의 복합형 북항 돔 아레나를 추진하기 위해 문화체육관광부 공모와 민간 투자 유치 접촉을 병행하고 있다고 밝혔다. "
+                "국비 지원 규모는 아직 정해지지 않았으며 민간 사업자와도 구체적인 합의 단계는 아니다.",
+                "municipal_venue_plan_without_committed_funding_or_construction",
+            ),
+            (
+                "디아이, 증권사 목표가 상향에 강세…3.73%",
+                "당일 현대차증권 윤동욱 애널리스트는 디아이 목표주가를 4만4천원에서 5만7천원으로 상향했다. "
+                "회사는 신규 계약이나 투자 결정을 발표하지 않았다.",
+                "single_broker_target_price_commentary_without_new_company_event",
+            ),
+        )
+        import verify_gamejoa_generated_report as guard
+
+        for index, (title, body, reason) in enumerate(cases):
+            with self.subTest(title=title):
+                item = {**alert(title, body), "link": f"https://www.yna.co.kr/view/live-quality-{index}"}
+                audit = radar.source_market_materiality(item)
+                self.assertFalse(audit["equity_publication"]["eligible"], audit)
+                self.assertEqual(audit["equity_publication"]["reason"], reason, audit)
+                self.assertLess(audit["priority"], 2, audit)
+                item["market_materiality"] = audit
+                errors = guard.source_materiality_errors(item, radar)
+                self.assertTrue(any("without source market-change evidence" in error for error in errors), errors)
+                with patch.object(radar.base, "kst_now", return_value=NOW):
+                    self.assertEqual(radar.quality_display_alerts([item], 7), [])
 
     def test_iea_reserve_release_core_keeps_incrementality_volume_timing_and_price_reaction(self):
         title = "추가 방출 없이 합의된 비축유만 조기 공급…유럽 경윳값 8%↑"

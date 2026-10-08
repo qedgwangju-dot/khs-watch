@@ -5884,8 +5884,86 @@ class IncrementalNewsTests(unittest.TestCase):
                 self.assertFalse(eligible(title, body), assessment)
 
 
+class ConcreteLiveSelectionRegressions(unittest.TestCase):
+    def test_weak_live_candidates_do_not_fill_core_slots(self):
+        cases = [
+            (
+                "대우건설, 정비사업 확대하고 데이터센터 전담팀 신설",
+                "대우건설이 도시정비사업과 데이터센터를 전략사업으로 육성한다. "
+                "회사는 조직개편을 단행하고 데이터센터사업팀을 신설해 시장 확대에 대응할 계획이다. "
+                "올해 도시정비사업에서 역대 최고 수주 실적을 기대한다.",
+                "organization_change_without_funded_or_revenue_execution",
+            ),
+            (
+                "[오늘 이 종목] 테슬라 AI 수주 가시화 · 후공정 수혜…두산테스나 '주목'",
+                "증권사 강 부장은 외국인과 기관의 매수세가 집중되는 반도체 소부장을 짚었다. "
+                "그는 호실적이 기대되는 심텍과 증설 효과가 본격화되는 네패스아크, "
+                "테슬라 AI 칩 수주 모멘텀을 보유한 두산테스나를 주목 종목으로 꼽았다.",
+                "analyst_stock_pick_without_independent_company_action",
+            ),
+            (
+                "SK케미칼, 2030년 매출 2.8조 목표…리사이클·AIDC 사업 확대",
+                "SK케미칼은 2030년까지 매출 2조8000억원, 영업이익 3200억원을 목표로 하는 "
+                "중장기 사업 성장 전략과 재무목표를 발표했다. 회사는 리사이클과 AI 데이터센터 사업을 확대할 계획이다.",
+                "long_horizon_management_target_without_near_term_execution",
+            ),
+            (
+                "임광현 '선박왕' 권혁에 세금 다 내고 한국 돌아와 사업할 것 제안",
+                "임광현 국세청장은 권혁 회장이 개인 체납액 3938억원을 모두 내겠다는 계획을 밝혔고 "
+                "해외 선박 5척을 담보로 제공했다고 말했다. 국세청은 세금을 다 내고 한국에 돌아와 "
+                "사업하는 방안도 제안했다고 설명했다.",
+                "individual_tax_collection_interview_without_equity_channel",
+            ),
+        ]
+        now = dt.datetime(2026, 10, 8, 18, 45, tzinfo=dt.timezone(dt.timedelta(hours=9)))
+        for index, (title, body, expected_reason) in enumerate(cases):
+            with self.subTest(title=title):
+                candidate = alert(title, body, f"https://www.newsis.com/view/NISX20261008_{index:07d}")
+                candidate["published"] = now.isoformat()
+                publication = materiality.equity_publication_assessment(
+                    title,
+                    [{"kind": "market_price_or_flow", "source_excerpt": body[:240]}],
+                    body=body,
+                    source_url=candidate["link"],
+                    published=candidate["published"],
+                )
+                self.assertFalse(publication["eligible"], publication)
+                self.assertEqual(publication["reason"], expected_reason, publication)
+                audit = radar.source_market_materiality(candidate)
+                with patch.object(radar.base, "kst_now", return_value=now):
+                    selected = radar.quality_display_alerts([candidate], 7)
+                self.assertEqual(selected, [])
+
+    def test_firm_earnings_and_signed_contract_remain_eligible(self):
+        cases = [
+            (
+                "삼성전자, 3분기 영업이익 107조원 기록",
+                "삼성전자는 3분기 영업이익 107조원을 기록했다고 발표했다. "
+                "외국인 투자자는 이날 삼성전자 주식을 순매도했고 주가는 보합 마감했다.",
+            ),
+            (
+                "가온칩스 수주공시 - 주문형 반도체 설계 개발 76.7억원",
+                "가온칩스(399720)는 주문형 반도체 설계 개발에 관한 단일판매·공급계약을 8일 공시했다. "
+                "계약금액은 76.7억원 규모로 최근 가온칩스 매출액 685.1억원 대비 11.20% 수준이다. "
+                "계약 기간은 2025년 12월 26일부터 2027년 7월 31일까지다.",
+            ),
+        ]
+        for index, (title, body) in enumerate(cases):
+            with self.subTest(title=title):
+                candidate = alert(title, body, f"https://www.etnews.com/20261008000{index + 1}")
+                candidate["published"] = "2026-10-08T18:45:00+09:00"
+                audit = radar.source_market_materiality(candidate)
+                self.assertTrue(audit["equity_publication"]["eligible"], audit)
+                self.assertGreaterEqual(audit["priority"], 2, audit)
+
+
 if __name__ == "__main__":
-    suite = unittest.defaultTestLoader.loadTestsFromTestCase(IncrementalNewsTests)
+    test_cases = [
+        test
+        for test_case in (IncrementalNewsTests, ConcreteLiveSelectionRegressions)
+        for test in unittest.defaultTestLoader.loadTestsFromTestCase(test_case)
+    ]
+    suite = unittest.TestSuite(test_cases)
     test_filter = os.environ.get('GAMEJOA_TEST_FILTER', '').strip()
     if test_filter:
         selectors = tuple(part.strip() for part in test_filter.split(',') if part.strip())
