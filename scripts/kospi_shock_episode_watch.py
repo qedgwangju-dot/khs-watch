@@ -631,6 +631,8 @@ class Watch:
         self.puts: dict[str, deque[tuple[float, float]]] = defaultdict(lambda: deque(maxlen=30000))
         self.flows: deque[dict[str, Any]] = deque(maxlen=2500)
         self.front_future = front_future; self.episode: dict[str, Any] | None = None
+        # 종료된 사건의 과거 고점으로 새로운 시작 경보를 재발송하지 않는다.
+        self.last_episode_end_ts: float | None = None
         self.last_flow_poll = 0.0; self.flow_task: asyncio.Task | None = None
         self.msg_ids: list[int] = []; self.enrichment_msg_ids: list[int] = []; self.raw: dict[str, Any] = {}
         self.enrichment_tasks: set[asyncio.Task] = set()
@@ -675,7 +677,11 @@ class Watch:
             return None
         now_t = self.idx[-1][0]
         cutoff = now_t - (minutes + pad_minutes) * 60
-        rows = [x for x in self.idx if x[0] >= cutoff]
+        last_end = fnum(getattr(self, "last_episode_end_ts", None))
+        # 이미 끝난 사건의 시작 고점이 새로운 사건의 시작점으로 재사용되면
+        # 다른 시각의 가격변동을 한 사건으로 잘못 묶게 된다.
+        rows = [x for x in self.idx
+                if x[0] >= cutoff and (last_end is None or x[0] > last_end)]
         if not rows:
             return None
         high = max(v for _, v in rows)
@@ -1195,6 +1201,7 @@ class Watch:
             # 완료 전송이 확인되면 활성 사건을 먼저 비워 인계 상태에 원상태가 남지 않게 한다.
             # 기존 코드는 종료 전송 직후 체크포인트에 활성 사건을 저장할 수 있었다.
             self.episode = None
+            self.last_episode_end_ts = now_t
             self._record_delivery("end", msg_id, ep, now_t)
             ep_copy = json.loads(json.dumps(ep))
             task = asyncio.create_task(self._run_enrichment(ep_copy, final_att))
@@ -1237,6 +1244,7 @@ class Watch:
             "saved_at_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
             "flows": [x for x in self.flows if float(x.get("ts", 0)) >= cutoff],
             "episode": self.episode,
+            "last_episode_end_ts": self.last_episode_end_ts,
             "opening_gap_sent": self.opening_gap_sent,
             "msg_ids": self.msg_ids[-20:],
             "enrichment_msg_ids": self.enrichment_msg_ids[-20:],
@@ -1276,6 +1284,7 @@ class Watch:
             ep = data.get("episode")
             if isinstance(ep, dict) and ep.get("start_ts") and ep.get("start_price"):
                 self.episode = ep
+            self.last_episode_end_ts = fnum(data.get("last_episode_end_ts"))
             self.opening_gap_sent = bool(data.get("opening_gap_sent", False))
             self.msg_ids.extend(int(x) for x in (data.get("msg_ids") or []) if str(x).isdigit())
             self.enrichment_msg_ids.extend(int(x) for x in (data.get("enrichment_msg_ids") or []) if str(x).isdigit())
@@ -1432,6 +1441,7 @@ class Watch:
             )
             self.msg_ids.append(msg_id)
             self.episode = None
+            self.last_episode_end_ts = end_ts
             self._record_delivery("close", msg_id, ep, end_ts)
             ep_copy = json.loads(json.dumps(ep))
             task = asyncio.create_task(self._run_enrichment(ep_copy, final_att))
