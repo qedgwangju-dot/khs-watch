@@ -23,6 +23,7 @@ TREASURY_BUYBACK_XML = "https://home.treasury.gov/system/files/221/Tentative-Buy
 TREASURY_BUYBACK_PAGE = "https://www.treasurydirect.gov/auctions/announcements-data-results/buy-backs/"
 TREASURY_RATES_URL = "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_yield_curve"
 FARSIDE_BTC_ETF_URL = "https://farside.co.uk/btc/"
+FUND_TICKERS = ("IBIT", "FBTC", "BITB", "ARKB", "BTCO", "EZBC", "BRRR", "HODL", "BTCW", "MSBT", "GBTC", "BTC")
 
 UA = "Mozilla/5.0 (compatible; khs-watch/1.0; +https://github.com/qedgwangju-dot/khs-watch)"
 KST = ZoneInfo("Asia/Seoul")
@@ -119,9 +120,23 @@ def treasury_rates() -> dict:
 def btc_etf_flow() -> dict:
     html = fetch(FARSIDE_BTC_ETF_URL).decode("utf-8", errors="replace")
     soup = BeautifulSoup(html, "html.parser")
-    rows: list[dict] = []
+    table_rows = []
     for tr in soup.find_all("tr"):
         cells = [" ".join(td.get_text(" ", strip=True).split()) for td in tr.find_all(["td", "th"])]
+        table_rows.append(cells)
+    # A layout change must never silently move totals between funds or treat
+    # a missing fund report as a literal zero.
+    header_matches = [
+        cells for cells in table_rows
+        if all(ticker in cells for ticker in FUND_TICKERS)
+        and [cells.index(ticker) for ticker in FUND_TICKERS]
+            == sorted(cells.index(ticker) for ticker in FUND_TICKERS)
+    ]
+    if not header_matches:
+        raise RuntimeError("Farside BTC fund ticker header not verified; table layout may have changed")
+
+    rows: list[dict] = []
+    for cells in table_rows:
         if len(cells) < 3:
             continue
         d = parse_date(cells[0])
@@ -129,10 +144,20 @@ def btc_etf_flow() -> dict:
             continue
 
         fund_cells = cells[1:-1]
+        if len(fund_cells) != len(FUND_TICKERS):
+            raise RuntimeError(
+                f"Farside BTC fund column drift on {d}: {len(fund_cells)} != {len(FUND_TICKERS)}"
+            )
         normalized = [x.strip() for x in fund_cells]
         numeric_funds = [parse_number(x) for x in normalized if x not in {"", "-", "—"}]
         reported_count = sum(v is not None for v in numeric_funds)
         missing_count = sum(x in {"", "-", "—"} for x in normalized)
+        if reported_count + missing_count != len(FUND_TICKERS):
+            raise RuntimeError(f"Farside unknown BTC fund cell on {d}: {normalized}")
+        missing_tickers = [
+            ticker for ticker, value in zip(FUND_TICKERS, normalized)
+            if value in {"", "-", "—"}
+        ]
         total = parse_number(cells[-1])
         recomputed_total = round(sum(v for v in numeric_funds if v is not None), 1) if numeric_funds else None
 
@@ -152,6 +177,7 @@ def btc_etf_flow() -> dict:
             "status": status,
             "reported_funds": reported_count,
             "missing_funds": missing_count,
+            "missing_tickers": missing_tickers,
             "recomputed_total": recomputed_total,
             "total_gap": total_gap,
             "total_validated": total_validated,
@@ -209,6 +235,7 @@ def btc_etf_flow() -> dict:
         "status": latest_valid["status"],
         "reported_funds": latest_valid["reported_funds"],
         "missing_funds": latest_valid["missing_funds"],
+        "missing_tickers": latest_valid["missing_tickers"],
         "prev_date": prev_valid["date"].isoformat(),
         "prev_total_usd_m": prev_valid["total"],
         "day_change_usd_m": day_change,
@@ -309,6 +336,28 @@ def carry_partial_history(old_state: dict, etf: dict, observed_at_kst: str) -> d
     return etf
 
 
+def reject_etf_source_regression(old_etf: dict, new_etf: dict) -> str | None:
+    """Reject stale CDN snapshots without treating a report as an outflow change."""
+    if not old_etf or not new_etf:
+        return None
+    old_date, new_date = str(old_etf.get("date") or ""), str(new_etf.get("date") or "")
+    if old_date and (not new_date or new_date < old_date):
+        return f"Farside stale trade date {new_date or 'missing'} < {old_date}"
+    if old_date != new_date:
+        return None
+    old_count = int(old_etf.get("reported_funds", 0) or 0)
+    new_count = int(new_etf.get("reported_funds", 0) or 0)
+    if new_count < old_count:
+        return f"Farside same-day coverage regression {new_count}/{len(FUND_TICKERS)} < {old_count}/{len(FUND_TICKERS)}"
+    if old_etf.get("status") == "complete" and new_etf.get("status") != "complete":
+        return "Farside complete-day snapshot regressed to partial"
+    old_missing = set(old_etf.get("missing_tickers") or [])
+    new_missing = set(new_etf.get("missing_tickers") or [])
+    if old_missing and new_missing and not new_missing.issubset(old_missing):
+        return f"Farside missing-fund set changed unexpectedly: {sorted(old_missing)} -> {sorted(new_missing)}"
+    return None
+
+
 def market_read(rates: dict, etf: dict) -> str:
     rate_date = rates.get("date")
     etf_date = etf.get("date")
@@ -360,6 +409,10 @@ def main() -> None:
 
     try:
         etf = btc_etf_flow()
+        regression = reject_etf_source_regression(old.get("btc_etf") or {}, etf)
+        if regression:
+            errors.append(f"btc_etf: {regression}; prior validated snapshot retained")
+            etf = old.get("btc_etf") or {}
     except Exception as e:
         errors.append(f"btc_etf: {e}")
         etf = old.get("btc_etf") or {}

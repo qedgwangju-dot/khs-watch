@@ -23,6 +23,9 @@ def base_stage2():
         "wallet_patent_priority_date": "",
         "wallet_patent_direct_stablecoin_link": False,
         "stablecoin_partner": "",
+        "partner_primary_confirmed": False,
+        "partner_primary_sources": [],
+        "planned_rollout": "",
         "pilot_or_launch": False,
         "explicit_reversal_confirmed": False,
         "status": "진행 중",
@@ -43,6 +46,10 @@ def official(**kwargs):
         "wallet_patent_family_confirmed": False,
         "wallet_patent_news_confirmed": False,
         "explicit_reversal_confirmed": False,
+        "solana_partner_primary": False,
+        "bastion_partner_primary": False,
+        "sui_partner_primary": False,
+        "pilot_live_confirmed": False,
         "errors": [],
     }
     base.update(kwargs)
@@ -229,36 +236,59 @@ def assert_patent_never_implies_stablecoin_partner_or_launch():
     assert current["stage"] == 2, current
 
 
-def assert_explicit_partner_promotes_once():
+def assert_partner_press_promotes_only_with_two_primary_sources():
+    prev = base_stage2()
+    article = candidate(
+        "Samsung Wallet stablecoin partnership with Circle, Solana, Sui and Bastion",
+        "Google News headline claims launch and 82 million devices with USDC",
+    )
+    unverified = topic_state(official(), article, prev)
+    changed, changes = state_changed(prev, unverified)
+    assert unverified["stage"] == 2, unverified
+    assert unverified["stablecoin_partner"] == "", unverified
+    assert unverified["pilot_or_launch"] is False, unverified
+    assert not changed, changes
+
+    single = topic_state(official(solana_partner_primary=True), article, prev)
+    assert single["stage"] == 2, single
+    assert single["stablecoin_partner"] == "", single
+
+    confirmed = topic_state(
+        official(solana_partner_primary=True, bastion_partner_primary=True),
+        article,
+        prev,
+    )
+    changed, changes = state_changed(prev, confirmed)
+    assert confirmed["stage"] == 3, confirmed
+    assert confirmed["partner_primary_confirmed"] is True, confirmed
+    assert confirmed["stablecoin_partner"] == "Solana, Bastion", confirmed
+    assert confirmed["pilot_or_launch"] is False, confirmed
+    assert confirmed["samsung_partner_newsroom_confirmed"] is False, confirmed
+    assert "Circle" not in confirmed["stablecoin_partner"], confirmed
+    assert changed, changes
+    assert not state_changed(confirmed, confirmed)[0]
+
+    cached = topic_state(official(), [], confirmed)
+    assert cached["stage"] == 3 and cached["stablecoin_partner"], cached
+    assert not state_changed(confirmed, cached)[0]
+
+
+def assert_future_launch_is_not_live():
     prev = base_stage2()
     current = topic_state(
-        official(),
+        official(solana_partner_primary=True, sui_partner_primary=True),
         candidate(
-            "Samsung Wallet stablecoin partnership with Circle announced",
-            "Samsung Wallet stablecoin partnership integrates Circle USDC for payments.",
+            "Samsung Wallet to launch USDC support last week October",
+            "New release planned October, not already live.",
         ),
         prev,
     )
-    changed, changes = state_changed(prev, current)
-    assert current["stablecoin_partner"] == "Circle", current
-    assert current["stage"] >= 3, current
-    assert changed, changes
+    assert current["stage"] == 3, current
+    assert current["pilot_or_launch"] is False, current
 
-
-def assert_explicit_pilot_promotes_once():
-    prev = base_stage2()
-    current = topic_state(
-        official(),
-        candidate(
-            "Samsung Wallet stablecoin pilot launches",
-            "Samsung Wallet stablecoin pilot launches in the United States.",
-        ),
-        prev,
-    )
-    changed, changes = state_changed(prev, current)
-    assert current["pilot_or_launch"] is True, current
-    assert current["stage"] == 4, current
-    assert changed, changes
+    live = topic_state(official(pilot_live_confirmed=True), [], current)
+    assert live["stage"] == 4 and live["pilot_or_launch"] is True, live
+    assert state_changed(current, live)[0]
 
 
 def assert_explicit_reversal_alerts():
@@ -285,8 +315,8 @@ def main():
         assert_wallet_patent_alerts_once_without_stage_promotion,
         assert_single_patent_source_does_not_confirm_milestone,
         assert_patent_never_implies_stablecoin_partner_or_launch,
-        assert_explicit_partner_promotes_once,
-        assert_explicit_pilot_promotes_once,
+        assert_partner_press_promotes_only_with_two_primary_sources,
+        assert_future_launch_is_not_live,
         assert_explicit_reversal_alerts,
     ]
     for test in tests:

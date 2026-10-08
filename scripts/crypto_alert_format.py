@@ -492,6 +492,9 @@ def format_alert(text: str) -> str:
                 if total_funds
                 else " · 잠정"
             )
+            missing = etf.get("missing_tickers") or []
+            if missing:
+                status_text += " · 미보고 " + ", ".join(map(str, missing))
         out.append(
             f"• ETF {etf.get('date', 'N/A')} · <b>{fmt_usd_m(flow, fx_rate)}</b>{status_text}"
         )

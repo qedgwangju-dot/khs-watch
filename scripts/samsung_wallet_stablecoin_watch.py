@@ -42,6 +42,9 @@ PATENT_NEWS_URL = "https://www.digitalasset.works/news/articleView.html?idxno=43
 PATENT_PUBLICATION = "US20260212355A1"
 PATENT_PUBLICATION_DATE = "2026-07-23"
 PATENT_PRIORITY_DATE = "2023-09-15"
+SOLANA_PARTNER_PR = "https://www.prnewswire.com/news-releases/samsung-partners-with-solana-to-natively-deliver-stablecoins-in-samsung-wallet-to-82-million-us-galaxy-devices-302901200.html"
+BASTION_PARTNER_PR = "https://www.streetinsider.com/Globe%2BNewswire/Bastion%2BSelected%2Bas%2BOne%2Bof%2BSamsung%2BWallet%E2%80%99s%2BStablecoin%2BPartners%2C%2BProviding%2BRegulated%2BInfrastructure%2C%2BCustody%2C%2Band%2BCross-Border%2BRemittances/27162288.html"
+SUI_PARTNER_PR = "https://www.sui.io/blog/samsung-collaborates-with-sui-to-bring-usdc-to-samsung-wallet-on-82-million-u-s-galaxy-devices"
 
 RSS_URLS = [
     "https://news.google.com/rss/search?q="
@@ -150,6 +153,10 @@ def official_context() -> dict:
         "wallet_patent_family_confirmed": False,
         "wallet_patent_news_confirmed": False,
         "explicit_reversal_confirmed": False,
+        "solana_partner_primary": False,
+        "bastion_partner_primary": False,
+        "sui_partner_primary": False,
+        "pilot_live_confirmed": False,
         "errors": [],
     }
 
@@ -299,6 +306,23 @@ def official_context() -> dict:
     except Exception as exc:
         result["errors"].append(f"wallet_patent_news: {exc}")
 
+    # Partner-source primary announcements, separate from Google News snippets.
+    # A single syndicated article is never sufficient for a commercial milestone.
+    primary_sources = (
+        ("solana_partner_primary", SOLANA_PARTNER_PR,
+         ("samsung wallet", "solana foundation", "usdc", "october 2026")),
+        ("bastion_partner_primary", BASTION_PARTNER_PR,
+         ("samsung wallet", "bastion", "stablecoin", "custody", "82 million")),
+        ("sui_partner_primary", SUI_PARTNER_PR,
+         ("samsung wallet", "sui", "usdc", "82 million")),
+    )
+    for key, url, required in primary_sources:
+        try:
+            text = clean_text(fetch(url, timeout=14)).lower()
+            result[key] = all(term in text for term in required)
+        except Exception as exc:
+            result["errors"].append(f"{key}: {exc}")
+
     return result
 
 
@@ -353,57 +377,35 @@ def topic_state(official: dict, candidates: list[dict], previous: dict | None = 
         patent_now or bool(previous.get("smart_contract_wallet_patent_confirmed"))
     )
 
-    # Partner/pilot signals require explicit semantic binding to stablecoin.
-    # Mere co-occurrence (e.g. Galaxy Card launched with Visa in the same article)
-    # must not promote the stablecoin state.
-    detected_partner = ""
-    partner_patterns = [
-        ("Circle", ("circle", "usdc")),
-        ("Tether", ("tether", "usdt")),
-        ("PayPal", ("paypal", "pyusd")),
-        ("Stripe", ("stripe",)),
-        ("Visa", ("visa",)),
-        ("Mastercard", ("mastercard",)),
+    # Do not infer a commercial partner from RSS word co-occurrence. Circle is
+    # the USDC issuer; that fact alone is not a Samsung/Circle partnership.
+    source_names = [
+        name for name, key in (
+            ("Solana", "solana_partner_primary"),
+            ("Bastion", "bastion_partner_primary"),
+            ("Sui", "sui_partner_primary"),
+        )
+        if official.get(key)
     ]
-    stable_expr = r"(?:stable[\s\-]?coin|스테이블코인)"
-    relation_expr = r"(?:partner(?:ship)?|integrat(?:e|ion|ed)?|support(?:s|ed)?|settlement|제휴|파트너|통합|지원|결제망)"
-    for name, aliases in partner_patterns:
-        for alias in aliases:
-            alias_expr = re.escape(alias)
-            explicit_patterns = [
-                rf"{stable_expr}.{{0,45}}{relation_expr}.{{0,35}}(?:with|via|using|to|for|와|과|로|통해)?\s*.{{0,15}}{alias_expr}",
-                rf"{alias_expr}.{{0,35}}{relation_expr}.{{0,45}}{stable_expr}",
-            ]
-            if alias in {"usdc", "usdt", "pyusd"}:
-                explicit_patterns.append(
-                    rf"(?:samsung wallet|삼성월렛).{{0,70}}(?:support(?:s|ed)?|integrat(?:e|ion|ed)?|지원|통합).{{0,35}}{alias_expr}"
-                )
-            if any(re.search(pattern, evidence_text, re.I) for pattern in explicit_patterns):
-                # Avoid the known false-positive shape where Visa/Barclays belong only
-                # to Galaxy Card while stablecoin support is discussed separately.
-                if name in {"Visa", "Mastercard"}:
-                    context = evidence_text
-                    if (
-                        "galaxy card" in context
-                        and re.search(rf"galaxy card.{{0,80}}{alias_expr}", context, re.I)
-                        and not re.search(rf"{stable_expr}.{{0,45}}(?:via|using|with)\s*{alias_expr}", context, re.I)
-                    ):
-                        continue
-                detected_partner = name
-                break
-        if detected_partner:
-            break
+    primary_partner_confirmed = len(source_names) >= 2
+    prior_confirmed = bool(previous.get("partner_primary_confirmed"))
+    partner_primary_confirmed = primary_partner_confirmed or prior_confirmed
+    stablecoin_partner = (
+        ", ".join(source_names)
+        if primary_partner_confirmed
+        else str(previous.get("stablecoin_partner") or "")
+    )
+    if not stablecoin_partner and partner_primary_confirmed:
+        stablecoin_partner = str(previous.get("stablecoin_partner") or "")
 
-    stablecoin_partner = detected_partner or str(previous.get("stablecoin_partner") or "")
-
-    launch_patterns = [
-        rf"(?:samsung wallet|삼성월렛).{{0,80}}{stable_expr}\s*(?:payment|payments|결제)?\s*(?:pilot|rollout|goes? live|launch(?:es|ed)?|파일럿|상용화|출시)",
-        rf"(?:samsung wallet|삼성월렛).{{0,80}}(?:launch(?:es|ed)?|rollout|pilot|goes? live|출시|상용화|파일럿)\s*.{{0,25}}{stable_expr}",
-        rf"{stable_expr}\s*(?:payment|payments|결제)?\s*(?:pilot|rollout|goes? live|launch(?:es|ed)?|파일럿|상용화|출시).{{0,80}}(?:samsung wallet|삼성월렛)",
-        rf"(?:pilot|rollout|goes? live|launch(?:es|ed)?|파일럿|상용화|출시)\s*.{{0,25}}{stable_expr}.{{0,80}}(?:samsung wallet|삼성월렛)",
-    ]
-    detected_pilot = any(re.search(pattern, evidence_text, re.I) for pattern in launch_patterns)
+    # Announced service launch dates do not constitute a live pilot or rollout.
+    detected_pilot = bool(official.get("pilot_live_confirmed"))
     pilot_or_launch = detected_pilot or bool(previous.get("pilot_or_launch"))
+    known_primary_sources = source_names or list(previous.get("partner_primary_sources") or [])
+    planned_rollout = (
+        "2026년 10월 마지막 주 미국 예정(파트너사 발표·실제 출시 미확인)"
+        if partner_primary_confirmed else str(previous.get("planned_rollout") or "")
+    )
 
     reversal = bool(official.get("explicit_reversal_confirmed"))
     if reversal:
@@ -414,9 +416,9 @@ def topic_state(official: dict, candidates: list[dict], previous: dict | None = 
     if pilot_or_launch:
         stage = 4
         stage_name = "파일럿·출시 실행"
-    elif stablecoin_partner:
+    elif stablecoin_partner and partner_primary_confirmed:
         stage = 3
-        stage_name = "스테이블코인 파트너 구체화"
+        stage_name = "파트너사 공식 발표 교차확인"
     elif stablecoin_bd_scope:
         stage = 2
         stage_name = "사업개발·파트너십 실행"
@@ -453,6 +455,10 @@ def topic_state(official: dict, candidates: list[dict], previous: dict | None = 
         "wallet_patent_priority_date": PATENT_PRIORITY_DATE if smart_contract_wallet_patent_confirmed else "",
         "wallet_patent_direct_stablecoin_link": False,
         "stablecoin_partner": stablecoin_partner,
+        "partner_primary_confirmed": partner_primary_confirmed,
+        "partner_primary_sources": known_primary_sources,
+        "planned_rollout": planned_rollout,
+        "samsung_partner_newsroom_confirmed": False,
         "pilot_or_launch": pilot_or_launch,
         "explicit_reversal_confirmed": reversal,
         "status": status,
@@ -567,81 +573,47 @@ def main() -> int:
     )
 
     if changed:
-        support = "공식 확인" if official["samsung_support_confirmed"] else "공식 페이지 재확인 필요"
-        if official["job_stablecoin_confirmed"]:
-            job = "Samsung Careers R118656 원문에서 stable coin을 결제 제휴 범위로 직접 확인"
-        elif current.get("stablecoin_bd_scope"):
-            job = "기존 공식 확인된 사업개발 범위 유지 · 현재 원문 직접 파싱은 재확인 필요"
-        else:
-            job = "사업개발 범위 미확인"
         lines = [
             "<b>Samsung Wallet 스테이블코인 상태 변화</b>",
-            f"<code>조회 {html.escape(now_kst.isoformat(timespec='seconds'))}</code>",
+            f"<code>{html.escape(now_kst.isoformat(timespec='seconds'))}</code>",
             "",
-            "<b>무엇이 달라졌나</b>",
-        ]
-        lines += [f"• {html.escape(change)}" for change in changes]
-        lines += [
+            "<b>이번 변화</b>",
+            *[f"• {html.escape(change)}" for change in changes[:5]],
             "",
-            "<b>현재 상태</b>",
-            f"• <b>{html.escape(str(current['stage_name']))}</b> · 단계 {current['stage']}",
-            f"• Samsung Wallet stablecoin 지원 계획: <b>{support}</b>",
-            f"• 결제 BD 실행 신호: {html.escape(job)}",
-            (
-                "• KBW2026 담당 임원 공개 발언: <b>기본 기능 지원 추진 교차확인</b>"
-                if current.get("executive_default_feature_confirmation")
-                else "• KBW2026 담당 임원 공개 발언: 미확정"
-            ),
-            (
-                f"• 지갑 기술 R&D: <b>{PATENT_PUBLICATION}</b> · 스마트계약 지갑 기능·주소/인증정보 갱신·복구 청구항 교차확인"
-                if current.get("smart_contract_wallet_patent_confirmed")
-                else "• 지갑 기술 R&D: 스마트계약 지갑 특허 교차확인 전"
-            ),
-            (
-                "• 특허의 Samsung Wallet·스테이블코인 직접 적용: <b>미확정</b>"
-                if current.get("smart_contract_wallet_patent_confirmed")
-                else "• 특허 제품 연결: 미확정"
-            ),
+            f"<b>현재 단계 {current['stage']} · {html.escape(str(current['stage_name']))}</b>",
+            "• 스테이블코인 지원 계획·사업개발: 기존 확인 유지",
         ]
-        if current.get("stablecoin_partner"):
-            lines.append(
-                f"• 스테이블코인 관련 파트너: <b>{html.escape(str(current['stablecoin_partner']))}</b>"
-            )
+        if current.get("partner_primary_confirmed"):
+            partners = html.escape(str(current.get("stablecoin_partner") or ""))
+            lines += [
+                f"• 상대방 발표에서 확인된 역할: <b>{partners}</b>",
+                "• USDC = Circle 발행 토큰. <b>Samsung–Circle 직접 계약은 미확인</b>",
+                f"• 일정: {html.escape(str(current.get('planned_rollout') or '미확정'))}",
+                "• 삼성 공식 보도자료·제품 배포·실거래: <b>별도 검증 필요</b>",
+                "• <b>출시 예정은 실제 출시가 아니며 단계 4 승격 아님</b>",
+            ]
         else:
-            lines.append("• 스테이블코인 발행사·체인·결제 파트너 실명: <b>아직 확정 확인 없음</b>")
+            lines.append("• 결제 파트너 확정: 아직 교차검증되지 않음")
 
-        lines += [
-            "",
-            "<b>투자 의미</b>",
-            "• <b>기사 자체가 아니라 Samsung Wallet의 스테이블코인 사업 상태가 실제로 바뀔 때만 알림</b>",
-            "• 기사 만료·검색 누락·파서 실패만으로 기존 확인 상태를 낮추거나 알림하지 않음",
-            "• 다음 상태 변화: 발행사/결제망 실명 → 특허 기술의 Samsung Wallet 제품 연결 → 파일럿 → 출시국·출시일 → Wallet 기능 공개 → 상용화·수수료 구조",
-            "• <b>특허는 제품 출시 증거가 아님</b> — Samsung Wallet 탑재, 스테이블코인 연동, 발행사·체인·결제망 실명은 별도 확인 필요",
-            "• <b>이번 건은 단계 3 승격이 아님</b> — 발행사·체인·결제 파트너 실명, 파일럿, 출시국·출시일은 아직 확인되지 않음",
-            "",
-            "<b>근거·교차검증</b>",
-            f'• Samsung Business Insights: <a href="{SAMSUNG_INSIGHTS_URL}">원문</a>',
-            f'• Samsung Careers R118656: <a href="{WORKDAY_JOB_URL}">원문</a>',
-        ]
-        if current.get("executive_default_feature_confirmation"):
-            lines += [
-                f'• KBW2026 직접 발언 보도 · 파이낸셜뉴스: <a href="{KBW_FN_URL}">원문</a>',
-                f'• KBW2026 교차검증 · 뉴스후플러스: <a href="{KBW_NEWSWHO_URL}">원문</a>',
-            ]
         if current.get("smart_contract_wallet_patent_confirmed"):
+            lines.append("• 지갑 R&D: US20260212355A1 확인 · 실제 Wallet 적용 미확정")
+
+        lines += ["", "<b>검증 근거</b>"]
+        if official.get("solana_partner_primary"):
+            lines.append(f'• <a href="{SOLANA_PARTNER_PR}">Solana Foundation 발표</a>')
+        if official.get("bastion_partner_primary"):
+            lines.append(f'• <a href="{BASTION_PARTNER_PR}">Bastion 보도자료</a>')
+        if official.get("sui_partner_primary"):
+            lines.append(f'• <a href="{SUI_PARTNER_PR}">Sui 공식 발표</a>')
+        if not any(official.get(k) for k in ("solana_partner_primary", "bastion_partner_primary", "sui_partner_primary")):
             lines += [
-                f'• 미국 공개특허 {PATENT_PUBLICATION} · OEPM 교차검증: <a href="{PATENT_US_CROSSCHECK_URL}">원문</a>',
-                f'• 한국 패밀리 KR20250040467A · Google Patents: <a href="{PATENT_KR_URL}">원문</a>',
+                f'• <a href="{WORKDAY_JOB_URL}">Samsung Careers</a>',
+                f'• <a href="{KBW_FN_URL}">KBW 담당자 발언</a>',
             ]
-            if official.get("wallet_patent_news_confirmed"):
-                lines.append(f'• 특허 보도 · Digital Asset: <a href="{PATENT_NEWS_URL}">원문</a>')
-        if official["article_confirmed"]:
-            lines.append(f'• Digital Asset 확인 기사: <a href="{DIGITAL_ASSET_URL}">근거</a>')
-        for item in evidence[:3]:
-            title = html.escape(str(item.get("title") or "교차검증"))
-            link = html.escape(str(item.get("link") or ""))
-            lines.append(f'• <a href="{link}">{title}</a>')
-        ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
+        alert_text = "\n".join(lines).strip() + "\n"
+        if len(alert_text) >= 3300:
+            raise RuntimeError(f"Samsung alert exceeded compact format: {len(alert_text)}")
+        ALERT_PATH.write_text(alert_text, encoding="utf-8")
 
     status = [
         "# Samsung Wallet stablecoin adoption state watch",
@@ -659,6 +631,10 @@ def main() -> int:
         f"- US patent crosscheck: {official.get('wallet_patent_us_confirmed', False) or official.get('wallet_patent_us_crosscheck_confirmed', False)}",
         f"- patent direct stablecoin/Samsung Wallet link: {current.get('wallet_patent_direct_stablecoin_link', False)}",
         f"- partner: {current['stablecoin_partner'] or 'unconfirmed'}",
+        f"- partner primary releases: {', '.join(current.get('partner_primary_sources') or []) or 'not verified'}",
+        f"- partner crosschecked: {current.get('partner_primary_confirmed', False)}",
+        f"- Samsung newsroom directly verified: {current.get('samsung_partner_newsroom_confirmed', False)}",
+        f"- planned rollout: {current.get('planned_rollout') or 'unconfirmed'}",
         f"- pilot/live: {current['pilot_or_launch']}",
         f"- evidence count: {len(evidence)}",
         f"- errors: {'; '.join(official['errors']) if official['errors'] else 'none'}",

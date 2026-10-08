@@ -13,6 +13,7 @@ on:
       - "scripts/coin_alert_korean_terms.py"
       - "scripts/coinbase_stablecoin_catalyst_watch.py"
       - "tests/test_coinbase_stablecoin_catalyst_watch.py"
+      - "tests/test_crypto_liquidity_integrity.py"
       - "tests/test_coin_alert_korean_terms.py"
       - "data/coinbase_stablecoin_catalyst_state.json"
       - "data/crypto_liquidity_watch_state.json"
@@ -26,7 +27,7 @@ permissions:
 
 concurrency:
   group: crypto-liquidity-watch-telegram
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   monitor:
@@ -60,7 +61,7 @@ jobs:
           python scripts/verify_samsung_wallet_stablecoin_state.py
           python -m py_compile scripts/coin_alert_korean_terms.py
           python -m py_compile scripts/coinbase_stablecoin_catalyst_watch.py
-          python -m unittest tests/test_coinbase_stablecoin_catalyst_watch.py tests/test_coin_alert_korean_terms.py -v
+          python -m unittest tests/test_coinbase_stablecoin_catalyst_watch.py tests/test_coin_alert_korean_terms.py tests/test_crypto_liquidity_integrity.py -v
           python - <<'PY'
           import json
           import pathlib
@@ -330,6 +331,29 @@ jobs:
             out/crypto_liquidity_watch_telegram.txt \
             out/samsung_wallet_stablecoin_telegram.txt \
             out/coinbase_stablecoin_catalyst_telegram.txt
+
+      - name: Preflight all Telegram payloads
+        run: |
+          python - <<'PY'
+          import pathlib
+          for name in (
+              "crypto_liquidity_watch_telegram.txt",
+              "samsung_wallet_stablecoin_telegram.txt",
+              "coinbase_stablecoin_catalyst_telegram.txt",
+          ):
+              path = pathlib.Path("out") / name
+              if not path.exists():
+                  continue
+              data = path.read_text(encoding="utf-8").strip()
+              if not data:
+                  raise RuntimeError(f"Empty Telegram payload: {name}")
+              if name == "samsung_wallet_stablecoin_telegram.txt":
+                  if len(data) > 3900:
+                      raise RuntimeError(f"Samsung Telegram payload exceeds limit: {len(data)}")
+                  if "파트너사 공식 발표 교차확인" in data and "단계 3 승격이 아님" in data:
+                      raise RuntimeError("Contradictory Samsung partner verdict")
+              print(f"telegram_payload_preflight_valid=true name={name} characters={len(data)}")
+          PY
 
       - name: Publish watcher summary
         if: always()
