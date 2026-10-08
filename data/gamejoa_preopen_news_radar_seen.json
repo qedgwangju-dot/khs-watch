@@ -1179,6 +1179,30 @@
       "telegram_core_fact": "김선우 연구원은 \"당사의 최근 전망치 대비 메모리에서 2조2000억원 기대 이상의 성과를 기록한 것으로 추정된다\"며 \"급격한 원화 강세로 비우호적인 사업 환경이 조성됐음에도 업계 평균을 웃도는 견조한 판매가격 정책이 실적 개선을 이끈 것으로 판단한다\"고 설명했다.",
       "title": "메리츠證 \"삼성전자 3분기 메모리 실적 예상 웃돌아…D램·낸드 가격 경쟁력 지속\""
     },
+    "core:1b9cbf02bae38ebe724cfc5c": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818876",
+      "source": "뉴시스",
+      "source_body_digest": "07e1acb74b40fd3a2cb7bc0fc0772dadd8d85c5333a2647112f1c2ad48cdca93",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b661541c6e9373c87a5931f2396fc85452e6c955ab4787495e14acfb6a32442",
+      "source_fact_keys": [
+        "source_fact:v1:00f63e7f90f70028352df17eaa32e09817f355b53c4c97274f7c1ac58ce15d8e",
+        "source_fact:v1:0d034ac1434acb0b3b4bb40d3ff131e7849c92282c2c234fda2a06d58495fab1",
+        "source_fact:v1:3bd013021a2c0bda27e4d7eef3c4c9897a5b57b0f5f95b35883355c707b24840",
+        "source_fact:v1:948f7a1b60c0cd516c952fb328707c8219c2bf85d94bacba1d9c5782cab44a34",
+        "source_fact:v1:9e95f80ed2bd845a70e245a00034080ae3811b93d03bfdedbbc4a1d4aee4c0ab",
+        "source_fact:v1:e88e2c4434e30d7d18e87fac1152c2fef6f9ccc314199e188d8161c45c6204f6"
+      ],
+      "source_published_kst": "2026-10-08T12:38+09:00",
+      "source_title": "삼성전자 호실적에도 힘 못 쓰는 주가…\"선반영과 수급 살펴야\"",
+      "telegram_core_fact": "기대치를 뛰어넘는 이른바 '어닝 서프라이즈'를 기록하더라도 향후 가이던스가 불투명하거나 추가적인 상승 동력이 부족할 경우 주가는 즉각 조정을 받는 양상이다.",
+      "title": "삼성전자 호실적에도 힘 못 쓰는 주가…\"선반영과 수급 살펴야\""
+    },
     "core:1c27ac1692faa8084711250e": {
       "first_seen_kst": "2026-10-08T14:21:54+09:00",
       "lanes": {
@@ -1806,6 +1830,31 @@
       "source_title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)",
       "telegram_core_fact": "삼성전자(005930)가 올해 3분기 107조 4000억 원의 영업이익을 기록, 우리나라 기업 사상 처음으로 분기 영업익 100조 시대를 열었다.",
       "title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)"
+    },
+    "core:272dc3427c6b13bf47857dbd": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03371846645610952",
+      "source": "이데일리",
+      "source_body_digest": "fb979b25ef32ccac4109da387765ef8a333ef86d0dd587921cca70cf1778b523",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a6714519873e4a4898102d20e309ed1200d825d7b1b33e2ae9d8f26da7eceeaa",
+      "source_fact_keys": [
+        "source_fact:v1:2d6cc0202c8f727a85bc685021cc13e96653b8c2673771580d057e3188f0fb46",
+        "source_fact:v1:6fa45948a707575127c66d31c42cb1a0e7b054912391664e9020c2420874dabe",
+        "source_fact:v1:7967640b582fd6e0e7729728a8cf1a164c7897f0e4beadcfb47d7b5b080cbed9",
+        "source_fact:v1:b7c4d34282468de8fb5e353425c6fbd4b784e1d1959eb3149808d6303b76866e",
+        "source_fact:v1:bf4e7bd8aa2ad92f9ff08ac256e05f2ac5ba90428b05905c97f666396c4e401a",
+        "source_fact:v1:c9b266705baaf10a66085403b2afa8cdf69dd832153f7c13fcea995df0ae1265",
+        "source_fact:v1:cde1e465fbf6285778dc62a7387b10249f796ef0f2d9dc9ddc0891a1d7045e92"
+      ],
+      "source_published_kst": "2026-10-08T11:12+09:00",
+      "source_title": "‘삼성 투자’ 월든, 美 동·서부 거점 확대…생산라인에 로봇 투입",
+      "telegram_core_fact": "연구실 시연을 넘어 실제 생산라인에서 사람, 전체 교대시간 동안 로봇을 운영하는 데 이어 삼성전기와 세메스 제조현장에서도 로봇의 적용 가능성을 검증하고 있다.",
+      "title": "‘삼성 투자’ 월든, 美 동·서부 거점 확대…생산라인에 로봇 투입"
     },
     "core:273d2ea7a346350cf0bf4cde": {
       "first_seen_kst": "2026-10-07T18:00:43+09:00",
@@ -3705,6 +3754,28 @@
       "telegram_core_fact": "현재 국토부 규제샌드박스 승인을 받아 서울 강남·서초·송파·강동구에서 약 80대 규모로 운영 중인 전기 이륜차 LED 배달통 광고 실증사업도 민관협력 사례로 발전시킬 계획이다.",
       "title": "배민, ‘K-GX’ 프로젝트 참여…전기 이륜차 보급 확대 나선다"
     },
+    "core:592a4930744c66063783dc77": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633833",
+      "source": "이투데이",
+      "source_body_digest": "07c79fc0bb40ee4a5640cafe8f2c2d42ee23c55caaba043dcbe7225533e80e62",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:640b5d61d7c4eec1132dd42ade0805996b45d4754718f7802fab56eb88715069",
+      "source_fact_keys": [
+        "source_fact:v1:62f260802e6983a06a9ac0b1800eba137e79e5edd2ad2d76e61bbe5d46234350",
+        "source_fact:v1:843f261f2794881238a6d946bd648c4010356244d36046bca4704d4306eefb39",
+        "source_fact:v1:c153b48a9912c20fc20eb28dd3ef75ad9f9ed117ec9fb5d1deaae3e3d9b05a9a",
+        "source_fact:v1:dddb9e83bc29d8cc11028004fe0002553c8878c1fb8a82540503de73f6de6124"
+      ],
+      "source_published_kst": "2026-10-08T11:13+09:00",
+      "source_title": "美 여자농구 골든스테이트, 연매출 1억달러⋯여성 구단 최초",
+      "telegram_core_fact": "미국여자프로농구(WNBA) 골든스테이트 발키리스가 여성 프로스포츠 구단 가운데 처음으로 연매출 1억 달러(약 1400억원)를 돌파했다.",
+      "title": "美 여자농구 골든스테이트, 연매출 1억달러⋯여성 구단 최초"
+    },
     "core:5a8ba209843c8bfbbc09e6c3": {
       "first_seen_kst": "2026-10-08T06:57:59+09:00",
       "lanes": {
@@ -5367,6 +5438,29 @@
       "telegram_core_fact": "이는 전 세계적인 인공지능(AI) 인프라 투자 확대로 D램과 낸드 등 메모리 전반의 공급이 부족해지며 가격 오름세를 이어간 영향으로 해석된다.",
       "title": "메모리 대호황 올라탄 삼성…엔비디아 넘어 영업익 세계1위 눈앞 | 연합뉴스"
     },
+    "core:82c3a7b50927ea150d2f0560": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818492",
+      "source": "뉴시스",
+      "source_body_digest": "735593a60e32d9467c988e283346680493d547f4871e30fa0720d91e2196aebe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5f0e8fbf7faf786dc24b37ef6a54b3618e1cd8928e9a67d82949c73fd06cc3d",
+      "source_fact_keys": [
+        "source_fact:v1:0a587a73b3f0d3936e34075655a0f126addc446f11faab849ce5d5602689d870",
+        "source_fact:v1:0edfb2770737ec2c247db4e5396fc3ce5f0570ec633eecf2e7ba8f448b89f3bd",
+        "source_fact:v1:5e1b962e1789667ba5303004b94a037a6b6ea4f82cbfd2c008d8330bf008be37",
+        "source_fact:v1:8453ba8128a0e30d7c2b82a8478b1147cc4ce5f8b163952693177593846c8bcf",
+        "source_fact:v1:92793a4f270b17d6e83039619bac221dbd917f60f4c9bddb0e917d55d48d0b3b"
+      ],
+      "source_published_kst": "2026-10-08T12:26+09:00",
+      "source_title": "\"추가 방출 없이 합의된 비축유만 조기 공급…유럽 경윳값 8%↑\"",
+      "telegram_core_fact": "국제에너지기구(IEA) 회원국들이 7일(현지 시간) 중동 사태에 따른 에너지 공급 차질을 감안해 지난 3월 합의한 비축유 방출에 속도를 내겠다고 밝혔다.",
+      "title": "\"추가 방출 없이 합의된 비축유만 조기 공급…유럽 경윳값 8%↑\""
+    },
     "core:83601938b9d4dfd1b7f29be9": {
       "first_seen_kst": "2026-10-07T23:23:06+09:00",
       "lanes": {
@@ -5886,6 +5980,28 @@
       ],
       "source_published_kst": "2026-10-07T11:33+09:00",
       "title": "트럼프, 확전·선거철 여론악화 우려해 예멘내전 '뒷짐' | 연합뉴스"
+    },
+    "core:8f0331b0dc891ec0b66f5763": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01902406645610952",
+      "source": "이데일리",
+      "source_body_digest": "5f90d08efa64d9877bbf7c997c30d9d9a03a1f0e2c2805481bdf7d4e3cb4da50",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b4263f8d3aa32672059292f500721b2d57732381cc4bfd91b2094e6fdc092b4b",
+      "source_fact_keys": [
+        "source_fact:v1:180173a89272dd745a5bff3cb12aa3a54f8e0648c87f244b61021e48b68de632",
+        "source_fact:v1:24afdb13d417e786673763cb04510efda4e986aedd867b70d0bb37ffc97a93f2",
+        "source_fact:v1:649087d9078ee8a9bd73b10ef972a4e545d394f0809e4265af05fbe3ecabe5f0",
+        "source_fact:v1:b2240b3a8d1713228e67d51b24586abaae08fe78c0f682fe4f5f43928e068416"
+      ],
+      "source_published_kst": "2026-10-08T05:36+09:00",
+      "source_title": "[오늘장특징주]테슬라, 스페이스X, TSMC, 인텔, 엔비디아, 마벨",
+      "telegram_core_fact": "이는 전일 마벨이 진행한 애널리스트데이에서 나온 내용을 반영한 것으로, 이들은 2031 회계연도에 매출 700억~900억 달러, 비일반회계기준(Non-GAAP) 주당순이익(EPS) 30달러 이상을 달성하겠다는 장기 재무 모델을 제시했다.",
+      "title": "[오늘장특징주]테슬라, 스페이스X, TSMC, 인텔, 엔비디아, 마벨"
     },
     "core:8f85304adc5346d53149b7bf": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
@@ -6680,6 +6796,25 @@
       "source_title": "컨스텔레이션브랜드, 연간 EPS 가이던스 시장 기대 하회에 투자심리 위축",
       "telegram_core_fact": "2분기 실적은 예상치를 웃돌았지만, 연간 비GAAP EPS 가이던스를 11.20~11.90달러로 제시해 시장 예상치 11.71달러를 밑돌며 실망감이 커졌습니다.",
       "title": "컨스텔레이션브랜드, 연간 EPS 가이던스 시장 기대 하회에 투자심리 위축"
+    },
+    "core:a377d61d0c24b8808efa365d": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.news1.kr/world/usa-canada/6313643",
+      "source": "뉴스1",
+      "source_body_digest": "8198f4ed181502304a861ad129fee70b2a3dd7643754e85e25dada4f37110f57",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78ad8d2ecb400c3d0bbbdc4fcd43ec4a948c3ab1a6581dc16a5167686acaa7d7",
+      "source_fact_keys": [
+        "source_fact:v1:31f87c45164a30964e93b7461a16e6dc4b23374ed91236bcaae4151f7709368d"
+      ],
+      "source_published_kst": "2026-10-08T04:35+09:00",
+      "source_title": "美연준 \"연내 기준금리 한 차례 더 인상\"…9월 FOMC 의사록 공개",
+      "telegram_core_fact": "연준은 9월 회의에서 기준금리를 0.25%포인트(p) 올려 연 3.75~4.00%로 결정했다.",
+      "title": "美연준 \"연내 기준금리 한 차례 더 인상\"…9월 FOMC 의사록 공개"
     },
     "core:a3b3179988599a7ab0075526": {
       "first_seen_kst": "2026-10-08T09:33:54+09:00",
@@ -9448,6 +9583,32 @@
       "telegram_core_fact": "김세빈 유안타증권 연구원은 “지수 전체의 이익추정치 개선보다 반도체 소부장과 기판, 통신장비 등 일부 IT 업종과 테마 중심의 상승”이라며 “지수 추격보다 실적과 매출 추정치가 실제로 올라오는 업종으로 압축할 필요가 있다”고 조언했다.",
       "title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]"
     },
+    "core:dd84aca762ac78550537c3be": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02656806645610952",
+      "source": "이데일리",
+      "source_body_digest": "3e0dacecef9b5207bb8c918a73e0b13088aa15296347200952c59937ac47e29c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:889759894f30707f475c96cf305c4399d3d06e387cc94d8f970b35843776a480",
+      "source_fact_keys": [
+        "source_fact:v1:0713132b0b59553d3e7f7faa9202783682388ed6a55349b1575d861f5299d238",
+        "source_fact:v1:0bb7ef2ec2ad1063e6f8ace721c349614ce7c821492fc7c6efd92f57e015725f",
+        "source_fact:v1:22ffe685090afc3c40dc3ee28c7e5c1b4b1ba0d19052fa3055a2db75392b9efb",
+        "source_fact:v1:34ad064b33bb14ebb7e997ffe18b610df111dd27f2cd940771f6940596d3bb99",
+        "source_fact:v1:4009d9668f7ac937a4fae8d42ef408fa37b224eca3cd3ceeca836f2515e9a342",
+        "source_fact:v1:522dd6826800544a2c4fc31a8c73d33fff8f9bae777c221718fd6b52a481b609",
+        "source_fact:v1:e8f345a5281cf2685b65cf1080740ecbbc67648a1cbd189d336f029a219948c1",
+        "source_fact:v1:fa22182a0f43ea871db0677484dca53b5d4f0ccec0396d8840178e6fc74f7e5e"
+      ],
+      "source_published_kst": "2026-10-08T09:07+09:00",
+      "source_title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박",
+      "telegram_core_fact": "하지만 전쟁 이후 2년 만기 주택담보대출 평균 금리가 1%포인트 가까이 상승하면서 최근 6%에 근접했다.",
+      "title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박"
+    },
     "core:ddb1677e5bcbb3c11957d176": {
       "first_seen_kst": "2026-10-08T00:39:44+09:00",
       "lanes": {
@@ -11334,24 +11495,24 @@
     "event:11dca2e291da5f4c789b3666": {
       "first_seen_kst": "2026-10-08T10:20:20+09:00",
       "lanes": {
-        "live": "2026-10-08T10:20:20+09:00"
+        "live": "2026-10-08T14:55:40+09:00"
       },
-      "last_seen_kst": "2026-10-08T10:20:20+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02814246645610952&mediaCodeNo=257",
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01902406645610952",
       "source": "이데일리",
-      "source_body_digest": "00a88ae211e7306c8afaaa47ab91f3dbd377e75b84595bcaab65a8ebb99c0950",
+      "source_body_digest": "5f90d08efa64d9877bbf7c997c30d9d9a03a1f0e2c2805481bdf7d4e3cb4da50",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:ee26fe350ea2db39ea4627c84a6d73671524e4ef9cddbf1ee8e45de82f0b3d59",
+      "source_fact_identity": "source_facts:v1:b4263f8d3aa32672059292f500721b2d57732381cc4bfd91b2094e6fdc092b4b",
       "source_fact_keys": [
-        "source_fact:v1:197a94987c0d1eb46b66c5b261f70deded2781a25e3179e74acaebc6a35c6490",
-        "source_fact:v1:b2f7124d863c92b197a89b4dd121d6eaf80eb0e49ea11c1a9c3987d32896f2b2",
-        "source_fact:v1:d1a37fb2bfc7338f114957d27c019f75678537b85e7de6db44431f72e657455c",
-        "source_fact:v1:f73e62af489b6f33b4a38ad7ead38fd1c31ba53db6af1b4bfb46827472de50fd"
+        "source_fact:v1:180173a89272dd745a5bff3cb12aa3a54f8e0648c87f244b61021e48b68de632",
+        "source_fact:v1:24afdb13d417e786673763cb04510efda4e986aedd867b70d0bb37ffc97a93f2",
+        "source_fact:v1:649087d9078ee8a9bd73b10ef972a4e545d394f0809e4265af05fbe3ecabe5f0",
+        "source_fact:v1:b2240b3a8d1713228e67d51b24586abaae08fe78c0f682fe4f5f43928e068416"
       ],
-      "source_published_kst": "2026-10-08T09:45+09:00",
-      "source_title": "LG엔솔, 3분기 매출 9.6조 ‘역대 최대’…영업익은 전망치 2배 웃돌아(종합)",
-      "telegram_core_fact": "금융정보업체 에프앤가이드에 따르면 LG에너지솔루션 3분기 실적 전망치는 매출 8조7989억원, 영업이익 3264억원 이었다.",
-      "title": "LG엔솔, 3분기 매출 9.6조 ‘역대 최대’…영업익은 전망치 2배 웃돌아(종합)"
+      "source_published_kst": "2026-10-08T05:36+09:00",
+      "source_title": "[오늘장특징주]테슬라, 스페이스X, TSMC, 인텔, 엔비디아, 마벨",
+      "telegram_core_fact": "이는 전일 마벨이 진행한 애널리스트데이에서 나온 내용을 반영한 것으로, 이들은 2031 회계연도에 매출 700억~900억 달러, 비일반회계기준(Non-GAAP) 주당순이익(EPS) 30달러 이상을 달성하겠다는 장기 재무 모델을 제시했다.",
+      "title": "[오늘장특징주]테슬라, 스페이스X, TSMC, 인텔, 엔비디아, 마벨"
     },
     "event:1267db5b7f755d2c483683a9": {
       "event_alias_evidence_message_id": 2289,
@@ -15199,19 +15360,26 @@
     "event:8980672628ca904387dde2ee": {
       "first_seen_kst": "2026-10-08T09:33:54+09:00",
       "lanes": {
-        "live": "2026-10-08T09:33:54+09:00"
+        "live": "2026-10-08T14:55:40+09:00"
       },
-      "last_seen_kst": "2026-10-08T09:33:54+09:00",
-      "link": "https://biz.heraldcorp.com/article/10896460",
-      "source": "헤럴드경제",
-      "source_body_digest": "226a0f050b9734deacf687ca04053e376a7a7bb8156e37ca0c5298a66e4bf285",
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818876",
+      "source": "뉴시스",
+      "source_body_digest": "07e1acb74b40fd3a2cb7bc0fc0772dadd8d85c5333a2647112f1c2ad48cdca93",
       "source_event_identity": "",
-      "source_fact_identity": "",
-      "source_fact_keys": [],
-      "source_published_kst": "2026-10-08T09:15+09:00",
-      "source_title": "LG엔솔, 3분기 매출 9.6조 ‘분기 사상 최대’…영업익도 어닝 서프라이즈",
-      "telegram_core_fact": "LG에너지솔루션은 연결 기준 3분기 매출 9조6434억원, 영업이익 7560억원을 기록했다고 8일 잠정 공시했다.",
-      "title": "LG엔솔, 3분기 매출 9.6조 ‘분기 사상 최대’…영업익도 어닝 서프라이즈"
+      "source_fact_identity": "source_facts:v1:5b661541c6e9373c87a5931f2396fc85452e6c955ab4787495e14acfb6a32442",
+      "source_fact_keys": [
+        "source_fact:v1:00f63e7f90f70028352df17eaa32e09817f355b53c4c97274f7c1ac58ce15d8e",
+        "source_fact:v1:0d034ac1434acb0b3b4bb40d3ff131e7849c92282c2c234fda2a06d58495fab1",
+        "source_fact:v1:3bd013021a2c0bda27e4d7eef3c4c9897a5b57b0f5f95b35883355c707b24840",
+        "source_fact:v1:948f7a1b60c0cd516c952fb328707c8219c2bf85d94bacba1d9c5782cab44a34",
+        "source_fact:v1:9e95f80ed2bd845a70e245a00034080ae3811b93d03bfdedbbc4a1d4aee4c0ab",
+        "source_fact:v1:e88e2c4434e30d7d18e87fac1152c2fef6f9ccc314199e188d8161c45c6204f6"
+      ],
+      "source_published_kst": "2026-10-08T12:38+09:00",
+      "source_title": "삼성전자 호실적에도 힘 못 쓰는 주가…\"선반영과 수급 살펴야\"",
+      "telegram_core_fact": "기대치를 뛰어넘는 이른바 '어닝 서프라이즈'를 기록하더라도 향후 가이던스가 불투명하거나 추가적인 상승 동력이 부족할 경우 주가는 즉각 조정을 받는 양상이다.",
+      "title": "삼성전자 호실적에도 힘 못 쓰는 주가…\"선반영과 수급 살펴야\""
     },
     "event:89a487c8295ea75a26c50b66": {
       "first_seen_kst": "2026-10-02T11:29:29+09:00",
@@ -16917,30 +17085,21 @@
     "event:c02e87bed44e44d9bcb968e8": {
       "first_seen_kst": "2026-10-08T06:57:59+09:00",
       "lanes": {
-        "live": "2026-10-08T06:57:59+09:00"
+        "live": "2026-10-08T14:55:40+09:00"
       },
-      "last_seen_kst": "2026-10-08T06:57:59+09:00",
-      "link": "https://www.hankyung.com/article/202610089590i",
-      "source": "한국경제",
-      "source_body_digest": "fd70e9808b00d837c35784a5c0d5492ad1173cf4a985fd0436d8bfa27728dcb0",
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.news1.kr/world/usa-canada/6313643",
+      "source": "뉴스1",
+      "source_body_digest": "8198f4ed181502304a861ad129fee70b2a3dd7643754e85e25dada4f37110f57",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:2b624983469814a7de33e9b295287faf2bbdecc280868753369571905f0b3f72",
+      "source_fact_identity": "source_facts:v1:78ad8d2ecb400c3d0bbbdc4fcd43ec4a948c3ab1a6581dc16a5167686acaa7d7",
       "source_fact_keys": [
-        "source_fact:v1:0e0c389c6c35414d4098ec93b04737b78ab25700aa9d5cb00a060cb1f059155a",
-        "source_fact:v1:6bdc6b1afb802817a2e205b324568f4edb1d350d8ddbd229e66ed6d8643f90f2",
-        "source_fact:v1:78258404a074b90e96d8d011a3f662fed3ad95a613f42310a57ae1e2189e2a92",
-        "source_fact:v1:7865c9f906a40d42ad318453453d8243f13647260862e253ad0def37a62fbada",
-        "source_fact:v1:ad271c863cc1412034f5db112a34a8f999ba11c3b19d7905550455d021b9e966",
-        "source_fact:v1:b59f10ee4d6ba88b214d53bf1b1306ac5cdfd02af80dc007470bb203e2885d43",
-        "source_fact:v1:b5b1a9b6264a2a4eb4d9276af66ff274c6c565312fd2c7a18a5336c6ff4fb405",
-        "source_fact:v1:dc7d1a353bd8fdc3c2be1bc49f9fe908c95c4fee9a74dd23615570e0535e3ac4",
-        "source_fact:v1:e08af3729594f8833a74508587d30c46ef435bf3ed8ca2bc62bedcfb1975ea00",
-        "source_fact:v1:efa4a98d1943ad7880d53c314ec8e7951ad6c92330db980bae797e7364eadbbe"
+        "source_fact:v1:31f87c45164a30964e93b7461a16e6dc4b23374ed91236bcaae4151f7709368d"
       ],
-      "source_published_kst": "2026-10-08T04:17+09:00",
-      "source_title": "9월 FOMC \"연내 금리 인상 한 번 더\"…인상 근거 놓고는 시각차 [Fed 워치]",
-      "telegram_core_fact": "Fed가 공개한 9월 15~16일 연방공개시장위원회(FOMC) 의사록에 따르면 모든 참석자는 연방기금금리 목표범위를 0.25%포인트 인상해 연 3.75~4.00%로 높이는 데 찬성했다.",
-      "title": "9월 FOMC \"연내 금리 인상 한 번 더\"…인상 근거 놓고는 시각차 [Fed 워치]"
+      "source_published_kst": "2026-10-08T04:35+09:00",
+      "source_title": "美연준 \"연내 기준금리 한 차례 더 인상\"…9월 FOMC 의사록 공개",
+      "telegram_core_fact": "연준은 9월 회의에서 기준금리를 0.25%포인트(p) 올려 연 3.75~4.00%로 결정했다.",
+      "title": "美연준 \"연내 기준금리 한 차례 더 인상\"…9월 FOMC 의사록 공개"
     },
     "event:c044a73b98f4be2fd6f47932": {
       "first_seen_kst": "2026-09-28T17:39:42+09:00",
@@ -34725,6 +34884,28 @@
       "source_published_kst": "2026-10-07T09:30+09:00",
       "title": "포스코, 아르헨티나서 리튬 5만t 생산체제 구축 눈앞"
     },
+    "fact:9357b4efe05dc00e1d56cc57": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633833",
+      "source": "이투데이",
+      "source_body_digest": "07c79fc0bb40ee4a5640cafe8f2c2d42ee23c55caaba043dcbe7225533e80e62",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:640b5d61d7c4eec1132dd42ade0805996b45d4754718f7802fab56eb88715069",
+      "source_fact_keys": [
+        "source_fact:v1:62f260802e6983a06a9ac0b1800eba137e79e5edd2ad2d76e61bbe5d46234350",
+        "source_fact:v1:843f261f2794881238a6d946bd648c4010356244d36046bca4704d4306eefb39",
+        "source_fact:v1:c153b48a9912c20fc20eb28dd3ef75ad9f9ed117ec9fb5d1deaae3e3d9b05a9a",
+        "source_fact:v1:dddb9e83bc29d8cc11028004fe0002553c8878c1fb8a82540503de73f6de6124"
+      ],
+      "source_published_kst": "2026-10-08T11:13+09:00",
+      "source_title": "美 여자농구 골든스테이트, 연매출 1억달러⋯여성 구단 최초",
+      "telegram_core_fact": "미국여자프로농구(WNBA) 골든스테이트 발키리스가 여성 프로스포츠 구단 가운데 처음으로 연매출 1억 달러(약 1400억원)를 돌파했다.",
+      "title": "美 여자농구 골든스테이트, 연매출 1억달러⋯여성 구단 최초"
+    },
     "fact:936e05cc02bbce9e0ef6b010": {
       "first_seen_kst": "2026-10-06T17:24:43+09:00",
       "lanes": {
@@ -35658,6 +35839,25 @@
       "source_title": "바이오카디아, 심부전 세포치료 학회 발표..FDA 승인 근거 부각",
       "telegram_core_fact": "규제 측면에서는 미 식품의약국(FDA)이 CardiAMP 세포치료 시스템에 대해 세 건의 별도 임상시험에서 카테고리 B 지정을 승인했다.",
       "title": "바이오카디아, 심부전 세포치료 학회 발표..FDA 승인 근거 부각"
+    },
+    "fact:99bdbac4d00193fd87265dea": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.news1.kr/world/usa-canada/6313643",
+      "source": "뉴스1",
+      "source_body_digest": "8198f4ed181502304a861ad129fee70b2a3dd7643754e85e25dada4f37110f57",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78ad8d2ecb400c3d0bbbdc4fcd43ec4a948c3ab1a6581dc16a5167686acaa7d7",
+      "source_fact_keys": [
+        "source_fact:v1:31f87c45164a30964e93b7461a16e6dc4b23374ed91236bcaae4151f7709368d"
+      ],
+      "source_published_kst": "2026-10-08T04:35+09:00",
+      "source_title": "美연준 \"연내 기준금리 한 차례 더 인상\"…9월 FOMC 의사록 공개",
+      "telegram_core_fact": "연준은 9월 회의에서 기준금리를 0.25%포인트(p) 올려 연 3.75~4.00%로 결정했다.",
+      "title": "美연준 \"연내 기준금리 한 차례 더 인상\"…9월 FOMC 의사록 공개"
     },
     "fact:99dddc1a7a7c670f806b535a": {
       "first_seen_kst": "2026-10-07T21:47:30+09:00",
@@ -37015,6 +37215,31 @@
       "source_published_kst": "2026-10-06T11:37+09:00",
       "title": "통일부, 北지뢰 조사결과에 \"필요조치 검토…평화해법 마련 노력\" | 연합뉴스"
     },
+    "fact:a83abcc839bbf1e5ed08331a": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03371846645610952",
+      "source": "이데일리",
+      "source_body_digest": "fb979b25ef32ccac4109da387765ef8a333ef86d0dd587921cca70cf1778b523",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a6714519873e4a4898102d20e309ed1200d825d7b1b33e2ae9d8f26da7eceeaa",
+      "source_fact_keys": [
+        "source_fact:v1:2d6cc0202c8f727a85bc685021cc13e96653b8c2673771580d057e3188f0fb46",
+        "source_fact:v1:6fa45948a707575127c66d31c42cb1a0e7b054912391664e9020c2420874dabe",
+        "source_fact:v1:7967640b582fd6e0e7729728a8cf1a164c7897f0e4beadcfb47d7b5b080cbed9",
+        "source_fact:v1:b7c4d34282468de8fb5e353425c6fbd4b784e1d1959eb3149808d6303b76866e",
+        "source_fact:v1:bf4e7bd8aa2ad92f9ff08ac256e05f2ac5ba90428b05905c97f666396c4e401a",
+        "source_fact:v1:c9b266705baaf10a66085403b2afa8cdf69dd832153f7c13fcea995df0ae1265",
+        "source_fact:v1:cde1e465fbf6285778dc62a7387b10249f796ef0f2d9dc9ddc0891a1d7045e92"
+      ],
+      "source_published_kst": "2026-10-08T11:12+09:00",
+      "source_title": "‘삼성 투자’ 월든, 美 동·서부 거점 확대…생산라인에 로봇 투입",
+      "telegram_core_fact": "연구실 시연을 넘어 실제 생산라인에서 사람, 전체 교대시간 동안 로봇을 운영하는 데 이어 삼성전기와 세메스 제조현장에서도 로봇의 적용 가능성을 검증하고 있다.",
+      "title": "‘삼성 투자’ 월든, 美 동·서부 거점 확대…생산라인에 로봇 투입"
+    },
     "fact:a92b236ee4a6b15b6192c7c8": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
       "lanes": {
@@ -37123,6 +37348,32 @@
       ],
       "source_published_kst": "2026-10-06T11:22+09:00",
       "title": "\"2028년 전력 대란 온다\" 경고…잘나가던 삼전닉스 '빨간불'"
+    },
+    "fact:a9e371f2978c6dbe3b48fdb6": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02656806645610952",
+      "source": "이데일리",
+      "source_body_digest": "3e0dacecef9b5207bb8c918a73e0b13088aa15296347200952c59937ac47e29c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:889759894f30707f475c96cf305c4399d3d06e387cc94d8f970b35843776a480",
+      "source_fact_keys": [
+        "source_fact:v1:0713132b0b59553d3e7f7faa9202783682388ed6a55349b1575d861f5299d238",
+        "source_fact:v1:0bb7ef2ec2ad1063e6f8ace721c349614ce7c821492fc7c6efd92f57e015725f",
+        "source_fact:v1:22ffe685090afc3c40dc3ee28c7e5c1b4b1ba0d19052fa3055a2db75392b9efb",
+        "source_fact:v1:34ad064b33bb14ebb7e997ffe18b610df111dd27f2cd940771f6940596d3bb99",
+        "source_fact:v1:4009d9668f7ac937a4fae8d42ef408fa37b224eca3cd3ceeca836f2515e9a342",
+        "source_fact:v1:522dd6826800544a2c4fc31a8c73d33fff8f9bae777c221718fd6b52a481b609",
+        "source_fact:v1:e8f345a5281cf2685b65cf1080740ecbbc67648a1cbd189d336f029a219948c1",
+        "source_fact:v1:fa22182a0f43ea871db0677484dca53b5d4f0ccec0396d8840178e6fc74f7e5e"
+      ],
+      "source_published_kst": "2026-10-08T09:07+09:00",
+      "source_title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박",
+      "telegram_core_fact": "하지만 전쟁 이후 2년 만기 주택담보대출 평균 금리가 1%포인트 가까이 상승하면서 최근 6%에 근접했다.",
+      "title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박"
     },
     "fact:a9f2a4b19e0b592b13b89f37": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
@@ -38839,6 +39090,29 @@
       "source_title": "AI칩 사려 53조원 차입 추진…스페이스X 신용위험 '사상 최고'",
       "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 일론 머스크의 스페이스X가 엔비디아의 인공지능(AI) 칩 구매를 위해 400억달러(약 53조5560억원) 신규 차입을 추진하는 가운데 스페이스X의 신용위험 지표가 사상 최고치로 치솟았다.",
       "title": "AI칩 사려 53조원 차입 추진…스페이스X 신용위험 '사상 최고'"
+    },
+    "fact:b9b2d1eff74cccf4453cdc2b": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818492",
+      "source": "뉴시스",
+      "source_body_digest": "735593a60e32d9467c988e283346680493d547f4871e30fa0720d91e2196aebe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5f0e8fbf7faf786dc24b37ef6a54b3618e1cd8928e9a67d82949c73fd06cc3d",
+      "source_fact_keys": [
+        "source_fact:v1:0a587a73b3f0d3936e34075655a0f126addc446f11faab849ce5d5602689d870",
+        "source_fact:v1:0edfb2770737ec2c247db4e5396fc3ce5f0570ec633eecf2e7ba8f448b89f3bd",
+        "source_fact:v1:5e1b962e1789667ba5303004b94a037a6b6ea4f82cbfd2c008d8330bf008be37",
+        "source_fact:v1:8453ba8128a0e30d7c2b82a8478b1147cc4ce5f8b163952693177593846c8bcf",
+        "source_fact:v1:92793a4f270b17d6e83039619bac221dbd917f60f4c9bddb0e917d55d48d0b3b"
+      ],
+      "source_published_kst": "2026-10-08T12:26+09:00",
+      "source_title": "\"추가 방출 없이 합의된 비축유만 조기 공급…유럽 경윳값 8%↑\"",
+      "telegram_core_fact": "국제에너지기구(IEA) 회원국들이 7일(현지 시간) 중동 사태에 따른 에너지 공급 차질을 감안해 지난 3월 합의한 비축유 방출에 속도를 내겠다고 밝혔다.",
+      "title": "\"추가 방출 없이 합의된 비축유만 조기 공급…유럽 경윳값 8%↑\""
     },
     "fact:b9ec6c51cb70081a9a596be6": {
       "first_seen_kst": "2026-10-05T23:05:12+09:00",
@@ -42259,6 +42533,28 @@
       "source_published_kst": "2026-10-06T17:40+09:00",
       "title": "亞 최대 동해 AI데이터센터 연내 착공"
     },
+    "fact:da4465b9d4c6ae76dd8a9def": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01902406645610952",
+      "source": "이데일리",
+      "source_body_digest": "5f90d08efa64d9877bbf7c997c30d9d9a03a1f0e2c2805481bdf7d4e3cb4da50",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b4263f8d3aa32672059292f500721b2d57732381cc4bfd91b2094e6fdc092b4b",
+      "source_fact_keys": [
+        "source_fact:v1:180173a89272dd745a5bff3cb12aa3a54f8e0648c87f244b61021e48b68de632",
+        "source_fact:v1:24afdb13d417e786673763cb04510efda4e986aedd867b70d0bb37ffc97a93f2",
+        "source_fact:v1:649087d9078ee8a9bd73b10ef972a4e545d394f0809e4265af05fbe3ecabe5f0",
+        "source_fact:v1:b2240b3a8d1713228e67d51b24586abaae08fe78c0f682fe4f5f43928e068416"
+      ],
+      "source_published_kst": "2026-10-08T05:36+09:00",
+      "source_title": "[오늘장특징주]테슬라, 스페이스X, TSMC, 인텔, 엔비디아, 마벨",
+      "telegram_core_fact": "이는 전일 마벨이 진행한 애널리스트데이에서 나온 내용을 반영한 것으로, 이들은 2031 회계연도에 매출 700억~900억 달러, 비일반회계기준(Non-GAAP) 주당순이익(EPS) 30달러 이상을 달성하겠다는 장기 재무 모델을 제시했다.",
+      "title": "[오늘장특징주]테슬라, 스페이스X, TSMC, 인텔, 엔비디아, 마벨"
+    },
     "fact:da7845615ed994fabacb7137": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
       "lanes": {
@@ -44441,6 +44737,30 @@
       ],
       "source_published_kst": "2026-10-07T08:30+09:00",
       "title": "인천시, 글로벌캠퍼스에 피지컬 AI 실증센터 구축 | 연합뉴스"
+    },
+    "fact:ee5c7f9126343944b402c3b0": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818876",
+      "source": "뉴시스",
+      "source_body_digest": "07e1acb74b40fd3a2cb7bc0fc0772dadd8d85c5333a2647112f1c2ad48cdca93",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b661541c6e9373c87a5931f2396fc85452e6c955ab4787495e14acfb6a32442",
+      "source_fact_keys": [
+        "source_fact:v1:00f63e7f90f70028352df17eaa32e09817f355b53c4c97274f7c1ac58ce15d8e",
+        "source_fact:v1:0d034ac1434acb0b3b4bb40d3ff131e7849c92282c2c234fda2a06d58495fab1",
+        "source_fact:v1:3bd013021a2c0bda27e4d7eef3c4c9897a5b57b0f5f95b35883355c707b24840",
+        "source_fact:v1:948f7a1b60c0cd516c952fb328707c8219c2bf85d94bacba1d9c5782cab44a34",
+        "source_fact:v1:9e95f80ed2bd845a70e245a00034080ae3811b93d03bfdedbbc4a1d4aee4c0ab",
+        "source_fact:v1:e88e2c4434e30d7d18e87fac1152c2fef6f9ccc314199e188d8161c45c6204f6"
+      ],
+      "source_published_kst": "2026-10-08T12:38+09:00",
+      "source_title": "삼성전자 호실적에도 힘 못 쓰는 주가…\"선반영과 수급 살펴야\"",
+      "telegram_core_fact": "기대치를 뛰어넘는 이른바 '어닝 서프라이즈'를 기록하더라도 향후 가이던스가 불투명하거나 추가적인 상승 동력이 부족할 경우 주가는 즉각 조정을 받는 양상이다.",
+      "title": "삼성전자 호실적에도 힘 못 쓰는 주가…\"선반영과 수급 살펴야\""
     },
     "fact:ee6e6cd0895e2a9204d949ed": {
       "first_seen_kst": "2026-10-07T08:36:47+09:00",
@@ -61816,6 +62136,30 @@
       "source_published_kst": "2026-10-07T11:07+09:00",
       "title": "[속보] LG전자 3Q 매출 23조8270원…영업이익 전년 比 13.5%↑"
     },
+    "link:5acef59345eed47518aa240c": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818876",
+      "source": "뉴시스",
+      "source_body_digest": "07e1acb74b40fd3a2cb7bc0fc0772dadd8d85c5333a2647112f1c2ad48cdca93",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b661541c6e9373c87a5931f2396fc85452e6c955ab4787495e14acfb6a32442",
+      "source_fact_keys": [
+        "source_fact:v1:00f63e7f90f70028352df17eaa32e09817f355b53c4c97274f7c1ac58ce15d8e",
+        "source_fact:v1:0d034ac1434acb0b3b4bb40d3ff131e7849c92282c2c234fda2a06d58495fab1",
+        "source_fact:v1:3bd013021a2c0bda27e4d7eef3c4c9897a5b57b0f5f95b35883355c707b24840",
+        "source_fact:v1:948f7a1b60c0cd516c952fb328707c8219c2bf85d94bacba1d9c5782cab44a34",
+        "source_fact:v1:9e95f80ed2bd845a70e245a00034080ae3811b93d03bfdedbbc4a1d4aee4c0ab",
+        "source_fact:v1:e88e2c4434e30d7d18e87fac1152c2fef6f9ccc314199e188d8161c45c6204f6"
+      ],
+      "source_published_kst": "2026-10-08T12:38+09:00",
+      "source_title": "삼성전자 호실적에도 힘 못 쓰는 주가…\"선반영과 수급 살펴야\"",
+      "telegram_core_fact": "기대치를 뛰어넘는 이른바 '어닝 서프라이즈'를 기록하더라도 향후 가이던스가 불투명하거나 추가적인 상승 동력이 부족할 경우 주가는 즉각 조정을 받는 양상이다.",
+      "title": "삼성전자 호실적에도 힘 못 쓰는 주가…\"선반영과 수급 살펴야\""
+    },
     "link:5ad7cabe42daa9051b673c5f": {
       "first_seen_kst": "2026-10-07T03:30:59+09:00",
       "lanes": {
@@ -65939,6 +66283,31 @@
       "source_published_kst": "2026-10-07T10:55+09:00",
       "title": "'적자 전락'에서 매출 8조원 돌파 기업으로…日 아식스의 부활 | 연합뉴스"
     },
+    "link:7021b0eeb35d2d60b5b48f8b": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03371846645610952",
+      "source": "이데일리",
+      "source_body_digest": "fb979b25ef32ccac4109da387765ef8a333ef86d0dd587921cca70cf1778b523",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a6714519873e4a4898102d20e309ed1200d825d7b1b33e2ae9d8f26da7eceeaa",
+      "source_fact_keys": [
+        "source_fact:v1:2d6cc0202c8f727a85bc685021cc13e96653b8c2673771580d057e3188f0fb46",
+        "source_fact:v1:6fa45948a707575127c66d31c42cb1a0e7b054912391664e9020c2420874dabe",
+        "source_fact:v1:7967640b582fd6e0e7729728a8cf1a164c7897f0e4beadcfb47d7b5b080cbed9",
+        "source_fact:v1:b7c4d34282468de8fb5e353425c6fbd4b784e1d1959eb3149808d6303b76866e",
+        "source_fact:v1:bf4e7bd8aa2ad92f9ff08ac256e05f2ac5ba90428b05905c97f666396c4e401a",
+        "source_fact:v1:c9b266705baaf10a66085403b2afa8cdf69dd832153f7c13fcea995df0ae1265",
+        "source_fact:v1:cde1e465fbf6285778dc62a7387b10249f796ef0f2d9dc9ddc0891a1d7045e92"
+      ],
+      "source_published_kst": "2026-10-08T11:12+09:00",
+      "source_title": "‘삼성 투자’ 월든, 美 동·서부 거점 확대…생산라인에 로봇 투입",
+      "telegram_core_fact": "연구실 시연을 넘어 실제 생산라인에서 사람, 전체 교대시간 동안 로봇을 운영하는 데 이어 삼성전기와 세메스 제조현장에서도 로봇의 적용 가능성을 검증하고 있다.",
+      "title": "‘삼성 투자’ 월든, 美 동·서부 거점 확대…생산라인에 로봇 투입"
+    },
     "link:702a35d4b2a4ad205806446f": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
       "lanes": {
@@ -66329,6 +66698,28 @@
       ],
       "source_published_kst": "2026-10-06T15:59+09:00",
       "title": "자사주 매입 막바지·솔리다임 상장설 악재? 삼전닉스 1~3%대↓(종합) | 연합뉴스"
+    },
+    "link:7374a9523b186e4062ddabb5": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01902406645610952",
+      "source": "이데일리",
+      "source_body_digest": "5f90d08efa64d9877bbf7c997c30d9d9a03a1f0e2c2805481bdf7d4e3cb4da50",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b4263f8d3aa32672059292f500721b2d57732381cc4bfd91b2094e6fdc092b4b",
+      "source_fact_keys": [
+        "source_fact:v1:180173a89272dd745a5bff3cb12aa3a54f8e0648c87f244b61021e48b68de632",
+        "source_fact:v1:24afdb13d417e786673763cb04510efda4e986aedd867b70d0bb37ffc97a93f2",
+        "source_fact:v1:649087d9078ee8a9bd73b10ef972a4e545d394f0809e4265af05fbe3ecabe5f0",
+        "source_fact:v1:b2240b3a8d1713228e67d51b24586abaae08fe78c0f682fe4f5f43928e068416"
+      ],
+      "source_published_kst": "2026-10-08T05:36+09:00",
+      "source_title": "[오늘장특징주]테슬라, 스페이스X, TSMC, 인텔, 엔비디아, 마벨",
+      "telegram_core_fact": "이는 전일 마벨이 진행한 애널리스트데이에서 나온 내용을 반영한 것으로, 이들은 2031 회계연도에 매출 700억~900억 달러, 비일반회계기준(Non-GAAP) 주당순이익(EPS) 30달러 이상을 달성하겠다는 장기 재무 모델을 제시했다.",
+      "title": "[오늘장특징주]테슬라, 스페이스X, TSMC, 인텔, 엔비디아, 마벨"
     },
     "link:7395cd10c3ad828ae582bf47": {
       "first_seen_kst": "2026-10-04T15:45:24+09:00",
@@ -68688,6 +69079,29 @@
       ],
       "source_published_kst": "2026-10-06T09:58+09:00",
       "title": "메리츠는 신규 합류, 기존 증권사는 금리 인상…발행어음 '9파전' 경쟁 본격화"
+    },
+    "link:7f20705fe6750f9ab4853db3": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818492",
+      "source": "뉴시스",
+      "source_body_digest": "735593a60e32d9467c988e283346680493d547f4871e30fa0720d91e2196aebe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5f0e8fbf7faf786dc24b37ef6a54b3618e1cd8928e9a67d82949c73fd06cc3d",
+      "source_fact_keys": [
+        "source_fact:v1:0a587a73b3f0d3936e34075655a0f126addc446f11faab849ce5d5602689d870",
+        "source_fact:v1:0edfb2770737ec2c247db4e5396fc3ce5f0570ec633eecf2e7ba8f448b89f3bd",
+        "source_fact:v1:5e1b962e1789667ba5303004b94a037a6b6ea4f82cbfd2c008d8330bf008be37",
+        "source_fact:v1:8453ba8128a0e30d7c2b82a8478b1147cc4ce5f8b163952693177593846c8bcf",
+        "source_fact:v1:92793a4f270b17d6e83039619bac221dbd917f60f4c9bddb0e917d55d48d0b3b"
+      ],
+      "source_published_kst": "2026-10-08T12:26+09:00",
+      "source_title": "\"추가 방출 없이 합의된 비축유만 조기 공급…유럽 경윳값 8%↑\"",
+      "telegram_core_fact": "국제에너지기구(IEA) 회원국들이 7일(현지 시간) 중동 사태에 따른 에너지 공급 차질을 감안해 지난 3월 합의한 비축유 방출에 속도를 내겠다고 밝혔다.",
+      "title": "\"추가 방출 없이 합의된 비축유만 조기 공급…유럽 경윳값 8%↑\""
     },
     "link:7f2dc70bc12c7880d8f1a05f": {
       "first_seen_kst": "2026-10-06T22:37:02+09:00",
@@ -71049,6 +71463,25 @@
       "source": "파이낸셜뉴스",
       "title": "LG, 엔비디아 AI 팩토리 '냉각·전력 파트너' 보폭 확대"
     },
+    "link:8dab4bcaf5046af16c15a3e5": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.news1.kr/world/usa-canada/6313643",
+      "source": "뉴스1",
+      "source_body_digest": "8198f4ed181502304a861ad129fee70b2a3dd7643754e85e25dada4f37110f57",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78ad8d2ecb400c3d0bbbdc4fcd43ec4a948c3ab1a6581dc16a5167686acaa7d7",
+      "source_fact_keys": [
+        "source_fact:v1:31f87c45164a30964e93b7461a16e6dc4b23374ed91236bcaae4151f7709368d"
+      ],
+      "source_published_kst": "2026-10-08T04:35+09:00",
+      "source_title": "美연준 \"연내 기준금리 한 차례 더 인상\"…9월 FOMC 의사록 공개",
+      "telegram_core_fact": "연준은 9월 회의에서 기준금리를 0.25%포인트(p) 올려 연 3.75~4.00%로 결정했다.",
+      "title": "美연준 \"연내 기준금리 한 차례 더 인상\"…9월 FOMC 의사록 공개"
+    },
     "link:8dad5877c7a0413176a1b6ba": {
       "first_seen_kst": "2026-10-02T12:43:56+09:00",
       "lanes": {
@@ -72363,6 +72796,32 @@
       "link": "https://www.fnnews.com/news/202610020410167846",
       "source": "파이낸셜뉴스",
       "title": "美·英·佛 장기금리 동반 급등…글로벌 국채 투매 심화"
+    },
+    "link:9564a76cc97753d3d3270ece": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02656806645610952",
+      "source": "이데일리",
+      "source_body_digest": "3e0dacecef9b5207bb8c918a73e0b13088aa15296347200952c59937ac47e29c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:889759894f30707f475c96cf305c4399d3d06e387cc94d8f970b35843776a480",
+      "source_fact_keys": [
+        "source_fact:v1:0713132b0b59553d3e7f7faa9202783682388ed6a55349b1575d861f5299d238",
+        "source_fact:v1:0bb7ef2ec2ad1063e6f8ace721c349614ce7c821492fc7c6efd92f57e015725f",
+        "source_fact:v1:22ffe685090afc3c40dc3ee28c7e5c1b4b1ba0d19052fa3055a2db75392b9efb",
+        "source_fact:v1:34ad064b33bb14ebb7e997ffe18b610df111dd27f2cd940771f6940596d3bb99",
+        "source_fact:v1:4009d9668f7ac937a4fae8d42ef408fa37b224eca3cd3ceeca836f2515e9a342",
+        "source_fact:v1:522dd6826800544a2c4fc31a8c73d33fff8f9bae777c221718fd6b52a481b609",
+        "source_fact:v1:e8f345a5281cf2685b65cf1080740ecbbc67648a1cbd189d336f029a219948c1",
+        "source_fact:v1:fa22182a0f43ea871db0677484dca53b5d4f0ccec0396d8840178e6fc74f7e5e"
+      ],
+      "source_published_kst": "2026-10-08T09:07+09:00",
+      "source_title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박",
+      "telegram_core_fact": "하지만 전쟁 이후 2년 만기 주택담보대출 평균 금리가 1%포인트 가까이 상승하면서 최근 6%에 근접했다.",
+      "title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박"
     },
     "link:9585a6ace49fa5758f3128cb": {
       "first_seen_kst": "2026-10-05T11:24:20+09:00",
@@ -85506,6 +85965,28 @@
       "source": "연합뉴스",
       "title": "트럼프 \"韓 알래스카 투자 합의않으면 두배로 청구\" 노골적 압박 | 연합뉴스"
     },
+    "link:e1a51e47794abb1495a70a50": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633833",
+      "source": "이투데이",
+      "source_body_digest": "07c79fc0bb40ee4a5640cafe8f2c2d42ee23c55caaba043dcbe7225533e80e62",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:640b5d61d7c4eec1132dd42ade0805996b45d4754718f7802fab56eb88715069",
+      "source_fact_keys": [
+        "source_fact:v1:62f260802e6983a06a9ac0b1800eba137e79e5edd2ad2d76e61bbe5d46234350",
+        "source_fact:v1:843f261f2794881238a6d946bd648c4010356244d36046bca4704d4306eefb39",
+        "source_fact:v1:c153b48a9912c20fc20eb28dd3ef75ad9f9ed117ec9fb5d1deaae3e3d9b05a9a",
+        "source_fact:v1:dddb9e83bc29d8cc11028004fe0002553c8878c1fb8a82540503de73f6de6124"
+      ],
+      "source_published_kst": "2026-10-08T11:13+09:00",
+      "source_title": "美 여자농구 골든스테이트, 연매출 1억달러⋯여성 구단 최초",
+      "telegram_core_fact": "미국여자프로농구(WNBA) 골든스테이트 발키리스가 여성 프로스포츠 구단 가운데 처음으로 연매출 1억 달러(약 1400억원)를 돌파했다.",
+      "title": "美 여자농구 골든스테이트, 연매출 1억달러⋯여성 구단 최초"
+    },
     "link:e1a900815be225fca93a0d84": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
       "lanes": {
@@ -93167,6 +93648,31 @@
       "source": "머니투데이",
       "title": "\"삼성전자, 3Q 예상 영업익 107조…환율·D램 강세 둔화\"-키움"
     },
+    "original:0d589a0d54e27329c6eb3687": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03371846645610952",
+      "source": "이데일리",
+      "source_body_digest": "fb979b25ef32ccac4109da387765ef8a333ef86d0dd587921cca70cf1778b523",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a6714519873e4a4898102d20e309ed1200d825d7b1b33e2ae9d8f26da7eceeaa",
+      "source_fact_keys": [
+        "source_fact:v1:2d6cc0202c8f727a85bc685021cc13e96653b8c2673771580d057e3188f0fb46",
+        "source_fact:v1:6fa45948a707575127c66d31c42cb1a0e7b054912391664e9020c2420874dabe",
+        "source_fact:v1:7967640b582fd6e0e7729728a8cf1a164c7897f0e4beadcfb47d7b5b080cbed9",
+        "source_fact:v1:b7c4d34282468de8fb5e353425c6fbd4b784e1d1959eb3149808d6303b76866e",
+        "source_fact:v1:bf4e7bd8aa2ad92f9ff08ac256e05f2ac5ba90428b05905c97f666396c4e401a",
+        "source_fact:v1:c9b266705baaf10a66085403b2afa8cdf69dd832153f7c13fcea995df0ae1265",
+        "source_fact:v1:cde1e465fbf6285778dc62a7387b10249f796ef0f2d9dc9ddc0891a1d7045e92"
+      ],
+      "source_published_kst": "2026-10-08T11:12+09:00",
+      "source_title": "‘삼성 투자’ 월든, 美 동·서부 거점 확대…생산라인에 로봇 투입",
+      "telegram_core_fact": "연구실 시연을 넘어 실제 생산라인에서 사람, 전체 교대시간 동안 로봇을 운영하는 데 이어 삼성전기와 세메스 제조현장에서도 로봇의 적용 가능성을 검증하고 있다.",
+      "title": "‘삼성 투자’ 월든, 美 동·서부 거점 확대…생산라인에 로봇 투입"
+    },
     "original:0d64a8fa1fe6655f03b74d35": {
       "first_seen_kst": "2026-09-24T14:05:07+09:00",
       "lanes": {
@@ -94119,6 +94625,30 @@
       "link": "https://www.yna.co.kr/view/AKR20260920035100009",
       "source": "연합뉴스",
       "title": "이란 협상단장 \"우리 조건 이행안되면 호르무즈 계속 폐쇄\" | 연합뉴스"
+    },
+    "original:13f4cc67d6cd403a724cb2db": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818876",
+      "source": "뉴시스",
+      "source_body_digest": "07e1acb74b40fd3a2cb7bc0fc0772dadd8d85c5333a2647112f1c2ad48cdca93",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b661541c6e9373c87a5931f2396fc85452e6c955ab4787495e14acfb6a32442",
+      "source_fact_keys": [
+        "source_fact:v1:00f63e7f90f70028352df17eaa32e09817f355b53c4c97274f7c1ac58ce15d8e",
+        "source_fact:v1:0d034ac1434acb0b3b4bb40d3ff131e7849c92282c2c234fda2a06d58495fab1",
+        "source_fact:v1:3bd013021a2c0bda27e4d7eef3c4c9897a5b57b0f5f95b35883355c707b24840",
+        "source_fact:v1:948f7a1b60c0cd516c952fb328707c8219c2bf85d94bacba1d9c5782cab44a34",
+        "source_fact:v1:9e95f80ed2bd845a70e245a00034080ae3811b93d03bfdedbbc4a1d4aee4c0ab",
+        "source_fact:v1:e88e2c4434e30d7d18e87fac1152c2fef6f9ccc314199e188d8161c45c6204f6"
+      ],
+      "source_published_kst": "2026-10-08T12:38+09:00",
+      "source_title": "삼성전자 호실적에도 힘 못 쓰는 주가…\"선반영과 수급 살펴야\"",
+      "telegram_core_fact": "기대치를 뛰어넘는 이른바 '어닝 서프라이즈'를 기록하더라도 향후 가이던스가 불투명하거나 추가적인 상승 동력이 부족할 경우 주가는 즉각 조정을 받는 양상이다.",
+      "title": "삼성전자 호실적에도 힘 못 쓰는 주가…\"선반영과 수급 살펴야\""
     },
     "original:140b6b472ee5f26e9302306e": {
       "first_seen_kst": "2026-10-06T20:54:05+09:00",
@@ -100564,6 +101094,28 @@
       "source": "Reuters",
       "title": "미국 지역 데이터센터 인허가·주민 반발 이슈 확산"
     },
+    "original:3881dffc5b68985a7eeb7819": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01902406645610952",
+      "source": "이데일리",
+      "source_body_digest": "5f90d08efa64d9877bbf7c997c30d9d9a03a1f0e2c2805481bdf7d4e3cb4da50",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b4263f8d3aa32672059292f500721b2d57732381cc4bfd91b2094e6fdc092b4b",
+      "source_fact_keys": [
+        "source_fact:v1:180173a89272dd745a5bff3cb12aa3a54f8e0648c87f244b61021e48b68de632",
+        "source_fact:v1:24afdb13d417e786673763cb04510efda4e986aedd867b70d0bb37ffc97a93f2",
+        "source_fact:v1:649087d9078ee8a9bd73b10ef972a4e545d394f0809e4265af05fbe3ecabe5f0",
+        "source_fact:v1:b2240b3a8d1713228e67d51b24586abaae08fe78c0f682fe4f5f43928e068416"
+      ],
+      "source_published_kst": "2026-10-08T05:36+09:00",
+      "source_title": "[오늘장특징주]테슬라, 스페이스X, TSMC, 인텔, 엔비디아, 마벨",
+      "telegram_core_fact": "이는 전일 마벨이 진행한 애널리스트데이에서 나온 내용을 반영한 것으로, 이들은 2031 회계연도에 매출 700억~900억 달러, 비일반회계기준(Non-GAAP) 주당순이익(EPS) 30달러 이상을 달성하겠다는 장기 재무 모델을 제시했다.",
+      "title": "[오늘장특징주]테슬라, 스페이스X, TSMC, 인텔, 엔비디아, 마벨"
+    },
     "original:389a6fb1199bbab21a8bec12": {
       "first_seen_kst": "2026-10-01T21:17:39+09:00",
       "lanes": {
@@ -101184,6 +101736,29 @@
       "link": "https://www.yna.co.kr/view/MYH20261002000800038",
       "source": "연합뉴스",
       "title": "美, 이란 기업 무더기 제재…자동차·철도 등 | 연합뉴스"
+    },
+    "original:3c0fe6b455b93adfba909ca1": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818492",
+      "source": "뉴시스",
+      "source_body_digest": "735593a60e32d9467c988e283346680493d547f4871e30fa0720d91e2196aebe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5f0e8fbf7faf786dc24b37ef6a54b3618e1cd8928e9a67d82949c73fd06cc3d",
+      "source_fact_keys": [
+        "source_fact:v1:0a587a73b3f0d3936e34075655a0f126addc446f11faab849ce5d5602689d870",
+        "source_fact:v1:0edfb2770737ec2c247db4e5396fc3ce5f0570ec633eecf2e7ba8f448b89f3bd",
+        "source_fact:v1:5e1b962e1789667ba5303004b94a037a6b6ea4f82cbfd2c008d8330bf008be37",
+        "source_fact:v1:8453ba8128a0e30d7c2b82a8478b1147cc4ce5f8b163952693177593846c8bcf",
+        "source_fact:v1:92793a4f270b17d6e83039619bac221dbd917f60f4c9bddb0e917d55d48d0b3b"
+      ],
+      "source_published_kst": "2026-10-08T12:26+09:00",
+      "source_title": "\"추가 방출 없이 합의된 비축유만 조기 공급…유럽 경윳값 8%↑\"",
+      "telegram_core_fact": "국제에너지기구(IEA) 회원국들이 7일(현지 시간) 중동 사태에 따른 에너지 공급 차질을 감안해 지난 3월 합의한 비축유 방출에 속도를 내겠다고 밝혔다.",
+      "title": "\"추가 방출 없이 합의된 비축유만 조기 공급…유럽 경윳값 8%↑\""
     },
     "original:3c1aaa2981b0d370a5fd0a06": {
       "first_seen_kst": "2026-09-28T15:47:59+09:00",
@@ -105710,6 +106285,25 @@
       "source_title": "미래운용, '스테이트타워 남산' 매각 검토…KIC 등 입주",
       "telegram_core_fact": "현재 복수의 부동산 자문사를 대상으로 매각 주관사 선정 절차를 진행 중인 초기 단계로, 입찰제안요청서(RFP)는 아직 배포하지 않았다.",
       "title": "미래운용, '스테이트타워 남산' 매각 검토…KIC 등 입주"
+    },
+    "original:5465b6bc5a552ea6e67abcc8": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.news1.kr/world/usa-canada/6313643",
+      "source": "뉴스1",
+      "source_body_digest": "8198f4ed181502304a861ad129fee70b2a3dd7643754e85e25dada4f37110f57",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78ad8d2ecb400c3d0bbbdc4fcd43ec4a948c3ab1a6581dc16a5167686acaa7d7",
+      "source_fact_keys": [
+        "source_fact:v1:31f87c45164a30964e93b7461a16e6dc4b23374ed91236bcaae4151f7709368d"
+      ],
+      "source_published_kst": "2026-10-08T04:35+09:00",
+      "source_title": "美연준 \"연내 기준금리 한 차례 더 인상\"…9월 FOMC 의사록 공개",
+      "telegram_core_fact": "연준은 9월 회의에서 기준금리를 0.25%포인트(p) 올려 연 3.75~4.00%로 결정했다.",
+      "title": "美연준 \"연내 기준금리 한 차례 더 인상\"…9월 FOMC 의사록 공개"
     },
     "original:5483a50ee87a43e6db5da291": {
       "first_seen_kst": "2026-09-30T02:23:41+09:00",
@@ -118700,6 +119294,28 @@
       "telegram_core_fact": "강유정 청와대 수석대변인은 7일 서면브리핑을 내고 \"우리 정부는 러시아의 우크라이나 침공 이후 국제 사회와 긴밀히 공조, 대러 제재와 수출통제를 일관되게 이행해 왔다. 이러한 우리 정부의 기본 입장에는 변함이 없다\"며 이같이 밝혔다.",
       "title": "靑, 우크라 '러 석유제품 공급' 주장에 \"사실과 다르고 부적절\""
     },
+    "original:a3d025aafe8a67c2dea80f30": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633833",
+      "source": "이투데이",
+      "source_body_digest": "07c79fc0bb40ee4a5640cafe8f2c2d42ee23c55caaba043dcbe7225533e80e62",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:640b5d61d7c4eec1132dd42ade0805996b45d4754718f7802fab56eb88715069",
+      "source_fact_keys": [
+        "source_fact:v1:62f260802e6983a06a9ac0b1800eba137e79e5edd2ad2d76e61bbe5d46234350",
+        "source_fact:v1:843f261f2794881238a6d946bd648c4010356244d36046bca4704d4306eefb39",
+        "source_fact:v1:c153b48a9912c20fc20eb28dd3ef75ad9f9ed117ec9fb5d1deaae3e3d9b05a9a",
+        "source_fact:v1:dddb9e83bc29d8cc11028004fe0002553c8878c1fb8a82540503de73f6de6124"
+      ],
+      "source_published_kst": "2026-10-08T11:13+09:00",
+      "source_title": "美 여자농구 골든스테이트, 연매출 1억달러⋯여성 구단 최초",
+      "telegram_core_fact": "미국여자프로농구(WNBA) 골든스테이트 발키리스가 여성 프로스포츠 구단 가운데 처음으로 연매출 1억 달러(약 1400억원)를 돌파했다.",
+      "title": "美 여자농구 골든스테이트, 연매출 1억달러⋯여성 구단 최초"
+    },
     "original:a3e9c451eb43a7945424e0b0": {
       "first_seen_kst": "2026-10-01T19:16:32+09:00",
       "lanes": {
@@ -127788,6 +128404,32 @@
       "source": "전자신문",
       "title": "앰코, 韓 패키지 본딩 기술 'R-LTC' 美 시장 전면 배치"
     },
+    "original:d91d47e9583cc88c7b4ca52c": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02656806645610952",
+      "source": "이데일리",
+      "source_body_digest": "3e0dacecef9b5207bb8c918a73e0b13088aa15296347200952c59937ac47e29c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:889759894f30707f475c96cf305c4399d3d06e387cc94d8f970b35843776a480",
+      "source_fact_keys": [
+        "source_fact:v1:0713132b0b59553d3e7f7faa9202783682388ed6a55349b1575d861f5299d238",
+        "source_fact:v1:0bb7ef2ec2ad1063e6f8ace721c349614ce7c821492fc7c6efd92f57e015725f",
+        "source_fact:v1:22ffe685090afc3c40dc3ee28c7e5c1b4b1ba0d19052fa3055a2db75392b9efb",
+        "source_fact:v1:34ad064b33bb14ebb7e997ffe18b610df111dd27f2cd940771f6940596d3bb99",
+        "source_fact:v1:4009d9668f7ac937a4fae8d42ef408fa37b224eca3cd3ceeca836f2515e9a342",
+        "source_fact:v1:522dd6826800544a2c4fc31a8c73d33fff8f9bae777c221718fd6b52a481b609",
+        "source_fact:v1:e8f345a5281cf2685b65cf1080740ecbbc67648a1cbd189d336f029a219948c1",
+        "source_fact:v1:fa22182a0f43ea871db0677484dca53b5d4f0ccec0396d8840178e6fc74f7e5e"
+      ],
+      "source_published_kst": "2026-10-08T09:07+09:00",
+      "source_title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박",
+      "telegram_core_fact": "하지만 전쟁 이후 2년 만기 주택담보대출 평균 금리가 1%포인트 가까이 상승하면서 최근 6%에 근접했다.",
+      "title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박"
+    },
     "original:d93b60bb1832b9d4703a19b2": {
       "first_seen_kst": "2026-10-06T19:46:03+09:00",
       "lanes": {
@@ -134797,6 +135439,29 @@
       "source_published_kst": "2026-10-06T22:00+09:00",
       "title": "포스코퓨처엠·삼성SDI … LFP 양극재 6조원 계약"
     },
+    "source_fact:01c2b2da2e6604e879348287": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818492",
+      "source": "뉴시스",
+      "source_body_digest": "735593a60e32d9467c988e283346680493d547f4871e30fa0720d91e2196aebe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5f0e8fbf7faf786dc24b37ef6a54b3618e1cd8928e9a67d82949c73fd06cc3d",
+      "source_fact_keys": [
+        "source_fact:v1:0a587a73b3f0d3936e34075655a0f126addc446f11faab849ce5d5602689d870",
+        "source_fact:v1:0edfb2770737ec2c247db4e5396fc3ce5f0570ec633eecf2e7ba8f448b89f3bd",
+        "source_fact:v1:5e1b962e1789667ba5303004b94a037a6b6ea4f82cbfd2c008d8330bf008be37",
+        "source_fact:v1:8453ba8128a0e30d7c2b82a8478b1147cc4ce5f8b163952693177593846c8bcf",
+        "source_fact:v1:92793a4f270b17d6e83039619bac221dbd917f60f4c9bddb0e917d55d48d0b3b"
+      ],
+      "source_published_kst": "2026-10-08T12:26+09:00",
+      "source_title": "\"추가 방출 없이 합의된 비축유만 조기 공급…유럽 경윳값 8%↑\"",
+      "telegram_core_fact": "국제에너지기구(IEA) 회원국들이 7일(현지 시간) 중동 사태에 따른 에너지 공급 차질을 감안해 지난 3월 합의한 비축유 방출에 속도를 내겠다고 밝혔다.",
+      "title": "\"추가 방출 없이 합의된 비축유만 조기 공급…유럽 경윳값 8%↑\""
+    },
     "source_fact:01c61f246b67dc3a18779445": {
       "first_seen_kst": "2026-10-07T22:00:35+09:00",
       "lanes": {
@@ -135914,6 +136579,31 @@
       ],
       "source_published_kst": "2026-10-05T22:06+09:00",
       "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
+    },
+    "source_fact:04dd6e215466fa0fdbec91a6": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03371846645610952",
+      "source": "이데일리",
+      "source_body_digest": "fb979b25ef32ccac4109da387765ef8a333ef86d0dd587921cca70cf1778b523",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a6714519873e4a4898102d20e309ed1200d825d7b1b33e2ae9d8f26da7eceeaa",
+      "source_fact_keys": [
+        "source_fact:v1:2d6cc0202c8f727a85bc685021cc13e96653b8c2673771580d057e3188f0fb46",
+        "source_fact:v1:6fa45948a707575127c66d31c42cb1a0e7b054912391664e9020c2420874dabe",
+        "source_fact:v1:7967640b582fd6e0e7729728a8cf1a164c7897f0e4beadcfb47d7b5b080cbed9",
+        "source_fact:v1:b7c4d34282468de8fb5e353425c6fbd4b784e1d1959eb3149808d6303b76866e",
+        "source_fact:v1:bf4e7bd8aa2ad92f9ff08ac256e05f2ac5ba90428b05905c97f666396c4e401a",
+        "source_fact:v1:c9b266705baaf10a66085403b2afa8cdf69dd832153f7c13fcea995df0ae1265",
+        "source_fact:v1:cde1e465fbf6285778dc62a7387b10249f796ef0f2d9dc9ddc0891a1d7045e92"
+      ],
+      "source_published_kst": "2026-10-08T11:12+09:00",
+      "source_title": "‘삼성 투자’ 월든, 美 동·서부 거점 확대…생산라인에 로봇 투입",
+      "telegram_core_fact": "연구실 시연을 넘어 실제 생산라인에서 사람, 전체 교대시간 동안 로봇을 운영하는 데 이어 삼성전기와 세메스 제조현장에서도 로봇의 적용 가능성을 검증하고 있다.",
+      "title": "‘삼성 투자’ 월든, 美 동·서부 거점 확대…생산라인에 로봇 투입"
     },
     "source_fact:04f61ad9d4af2e0907723d41": {
       "first_seen_kst": "2026-10-08T00:24:24+09:00",
@@ -141976,6 +142666,32 @@
       "source_published_kst": "2026-10-06T22:44+09:00",
       "title": "아모데이 앤트로픽 CEO 지난해 보수 246억원…대부분 주식·옵션"
     },
+    "source_fact:10adcb5c95f0bd75d4772128": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02656806645610952",
+      "source": "이데일리",
+      "source_body_digest": "3e0dacecef9b5207bb8c918a73e0b13088aa15296347200952c59937ac47e29c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:889759894f30707f475c96cf305c4399d3d06e387cc94d8f970b35843776a480",
+      "source_fact_keys": [
+        "source_fact:v1:0713132b0b59553d3e7f7faa9202783682388ed6a55349b1575d861f5299d238",
+        "source_fact:v1:0bb7ef2ec2ad1063e6f8ace721c349614ce7c821492fc7c6efd92f57e015725f",
+        "source_fact:v1:22ffe685090afc3c40dc3ee28c7e5c1b4b1ba0d19052fa3055a2db75392b9efb",
+        "source_fact:v1:34ad064b33bb14ebb7e997ffe18b610df111dd27f2cd940771f6940596d3bb99",
+        "source_fact:v1:4009d9668f7ac937a4fae8d42ef408fa37b224eca3cd3ceeca836f2515e9a342",
+        "source_fact:v1:522dd6826800544a2c4fc31a8c73d33fff8f9bae777c221718fd6b52a481b609",
+        "source_fact:v1:e8f345a5281cf2685b65cf1080740ecbbc67648a1cbd189d336f029a219948c1",
+        "source_fact:v1:fa22182a0f43ea871db0677484dca53b5d4f0ccec0396d8840178e6fc74f7e5e"
+      ],
+      "source_published_kst": "2026-10-08T09:07+09:00",
+      "source_title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박",
+      "telegram_core_fact": "하지만 전쟁 이후 2년 만기 주택담보대출 평균 금리가 1%포인트 가까이 상승하면서 최근 6%에 근접했다.",
+      "title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박"
+    },
     "source_fact:10b1313cdc2ab988d65e2f0a": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
       "lanes": {
@@ -147576,6 +148292,31 @@
       "source_published_kst": "2026-10-05T18:21+09:00",
       "title": "솔리다임 美상장… \"SK하닉 가치 재평가\" vs \"주주 피해\" [어떻게 생각하십니까]"
     },
+    "source_fact:1c98775f077d75ba82c115ac": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03371846645610952",
+      "source": "이데일리",
+      "source_body_digest": "fb979b25ef32ccac4109da387765ef8a333ef86d0dd587921cca70cf1778b523",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a6714519873e4a4898102d20e309ed1200d825d7b1b33e2ae9d8f26da7eceeaa",
+      "source_fact_keys": [
+        "source_fact:v1:2d6cc0202c8f727a85bc685021cc13e96653b8c2673771580d057e3188f0fb46",
+        "source_fact:v1:6fa45948a707575127c66d31c42cb1a0e7b054912391664e9020c2420874dabe",
+        "source_fact:v1:7967640b582fd6e0e7729728a8cf1a164c7897f0e4beadcfb47d7b5b080cbed9",
+        "source_fact:v1:b7c4d34282468de8fb5e353425c6fbd4b784e1d1959eb3149808d6303b76866e",
+        "source_fact:v1:bf4e7bd8aa2ad92f9ff08ac256e05f2ac5ba90428b05905c97f666396c4e401a",
+        "source_fact:v1:c9b266705baaf10a66085403b2afa8cdf69dd832153f7c13fcea995df0ae1265",
+        "source_fact:v1:cde1e465fbf6285778dc62a7387b10249f796ef0f2d9dc9ddc0891a1d7045e92"
+      ],
+      "source_published_kst": "2026-10-08T11:12+09:00",
+      "source_title": "‘삼성 투자’ 월든, 美 동·서부 거점 확대…생산라인에 로봇 투입",
+      "telegram_core_fact": "연구실 시연을 넘어 실제 생산라인에서 사람, 전체 교대시간 동안 로봇을 운영하는 데 이어 삼성전기와 세메스 제조현장에서도 로봇의 적용 가능성을 검증하고 있다.",
+      "title": "‘삼성 투자’ 월든, 美 동·서부 거점 확대…생산라인에 로봇 투입"
+    },
     "source_fact:1ca2a983b4f134d91471aa8a": {
       "first_seen_kst": "2026-10-08T01:26:16+09:00",
       "lanes": {
@@ -148964,6 +149705,31 @@
       ],
       "source_published_kst": "2026-10-06T13:24+09:00",
       "title": "통합항공사 뜨자 남은 10.58%…산은, 한진칼 지분 '엑시트 셈법' 관심집중 [fn마켓워치]"
+    },
+    "source_fact:1fa5167f64cd5752ceb10ea1": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03371846645610952",
+      "source": "이데일리",
+      "source_body_digest": "fb979b25ef32ccac4109da387765ef8a333ef86d0dd587921cca70cf1778b523",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a6714519873e4a4898102d20e309ed1200d825d7b1b33e2ae9d8f26da7eceeaa",
+      "source_fact_keys": [
+        "source_fact:v1:2d6cc0202c8f727a85bc685021cc13e96653b8c2673771580d057e3188f0fb46",
+        "source_fact:v1:6fa45948a707575127c66d31c42cb1a0e7b054912391664e9020c2420874dabe",
+        "source_fact:v1:7967640b582fd6e0e7729728a8cf1a164c7897f0e4beadcfb47d7b5b080cbed9",
+        "source_fact:v1:b7c4d34282468de8fb5e353425c6fbd4b784e1d1959eb3149808d6303b76866e",
+        "source_fact:v1:bf4e7bd8aa2ad92f9ff08ac256e05f2ac5ba90428b05905c97f666396c4e401a",
+        "source_fact:v1:c9b266705baaf10a66085403b2afa8cdf69dd832153f7c13fcea995df0ae1265",
+        "source_fact:v1:cde1e465fbf6285778dc62a7387b10249f796ef0f2d9dc9ddc0891a1d7045e92"
+      ],
+      "source_published_kst": "2026-10-08T11:12+09:00",
+      "source_title": "‘삼성 투자’ 월든, 美 동·서부 거점 확대…생산라인에 로봇 투입",
+      "telegram_core_fact": "연구실 시연을 넘어 실제 생산라인에서 사람, 전체 교대시간 동안 로봇을 운영하는 데 이어 삼성전기와 세메스 제조현장에서도 로봇의 적용 가능성을 검증하고 있다.",
+      "title": "‘삼성 투자’ 월든, 美 동·서부 거점 확대…생산라인에 로봇 투입"
     },
     "source_fact:1fac88cbbfd5bdf40a35eeef": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
@@ -152579,6 +153345,25 @@
       "source_title": "네온샛 5기 모두 교신 성공…'하루 3번' 한반도 관측 군집위성 첫발(종합)",
       "telegram_core_fact": "한국형발사체 '누리호' 5차 발사로 우주에 오른 초소형군집위성 '네온샛' 2~6호 5기가 모두 지상국과 초기 교신에 성공했다.",
       "title": "네온샛 5기 모두 교신 성공…'하루 3번' 한반도 관측 군집위성 첫발(종합)"
+    },
+    "source_fact:26a09b8eae7f259dbc6f8e38": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.news1.kr/world/usa-canada/6313643",
+      "source": "뉴스1",
+      "source_body_digest": "8198f4ed181502304a861ad129fee70b2a3dd7643754e85e25dada4f37110f57",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78ad8d2ecb400c3d0bbbdc4fcd43ec4a948c3ab1a6581dc16a5167686acaa7d7",
+      "source_fact_keys": [
+        "source_fact:v1:31f87c45164a30964e93b7461a16e6dc4b23374ed91236bcaae4151f7709368d"
+      ],
+      "source_published_kst": "2026-10-08T04:35+09:00",
+      "source_title": "美연준 \"연내 기준금리 한 차례 더 인상\"…9월 FOMC 의사록 공개",
+      "telegram_core_fact": "연준은 9월 회의에서 기준금리를 0.25%포인트(p) 올려 연 3.75~4.00%로 결정했다.",
+      "title": "美연준 \"연내 기준금리 한 차례 더 인상\"…9월 FOMC 의사록 공개"
     },
     "source_fact:26ae4a1963e2b280ca954c34": {
       "first_seen_kst": "2026-10-07T17:34:38+09:00",
@@ -163244,6 +164029,28 @@
       "source_published_kst": "2026-10-06T08:57+09:00",
       "title": "JW중외제약, EASD 2026서 당뇨병 치료제 ‘엠파가드’ 임상 3상 결과 발표"
     },
+    "source_fact:3b70fc7c2dccd331e0503cb6": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01902406645610952",
+      "source": "이데일리",
+      "source_body_digest": "5f90d08efa64d9877bbf7c997c30d9d9a03a1f0e2c2805481bdf7d4e3cb4da50",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b4263f8d3aa32672059292f500721b2d57732381cc4bfd91b2094e6fdc092b4b",
+      "source_fact_keys": [
+        "source_fact:v1:180173a89272dd745a5bff3cb12aa3a54f8e0648c87f244b61021e48b68de632",
+        "source_fact:v1:24afdb13d417e786673763cb04510efda4e986aedd867b70d0bb37ffc97a93f2",
+        "source_fact:v1:649087d9078ee8a9bd73b10ef972a4e545d394f0809e4265af05fbe3ecabe5f0",
+        "source_fact:v1:b2240b3a8d1713228e67d51b24586abaae08fe78c0f682fe4f5f43928e068416"
+      ],
+      "source_published_kst": "2026-10-08T05:36+09:00",
+      "source_title": "[오늘장특징주]테슬라, 스페이스X, TSMC, 인텔, 엔비디아, 마벨",
+      "telegram_core_fact": "이는 전일 마벨이 진행한 애널리스트데이에서 나온 내용을 반영한 것으로, 이들은 2031 회계연도에 매출 700억~900억 달러, 비일반회계기준(Non-GAAP) 주당순이익(EPS) 30달러 이상을 달성하겠다는 장기 재무 모델을 제시했다.",
+      "title": "[오늘장특징주]테슬라, 스페이스X, TSMC, 인텔, 엔비디아, 마벨"
+    },
     "source_fact:3b79686d20ae7642ac74ff0b": {
       "first_seen_kst": "2026-10-08T10:20:20+09:00",
       "lanes": {
@@ -163919,6 +164726,28 @@
       "source_title": "3분기 누적 韓도착 외국인직접투자 149억불 '역대 최대'⋯중동 악재 속 30.6%↑",
       "telegram_core_fact": "같은 기간 투자 도착액은 전년 대비 30.6% 증가한 148억7000만달러로 3분기 누적 기준 역대 1위 실적을 달성했다. 특히 실제 자금이 유입된 투자 도착액은 30% 넘게 증가하며 3분기 누적 기준 역대 최대치를 경신했다.",
       "title": "3분기 누적 韓도착 외국인직접투자 149억불 '역대 최대'⋯중동 악재 속 30.6%↑"
+    },
+    "source_fact:3cb58dd5226c7437d7a89fba": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01902406645610952",
+      "source": "이데일리",
+      "source_body_digest": "5f90d08efa64d9877bbf7c997c30d9d9a03a1f0e2c2805481bdf7d4e3cb4da50",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b4263f8d3aa32672059292f500721b2d57732381cc4bfd91b2094e6fdc092b4b",
+      "source_fact_keys": [
+        "source_fact:v1:180173a89272dd745a5bff3cb12aa3a54f8e0648c87f244b61021e48b68de632",
+        "source_fact:v1:24afdb13d417e786673763cb04510efda4e986aedd867b70d0bb37ffc97a93f2",
+        "source_fact:v1:649087d9078ee8a9bd73b10ef972a4e545d394f0809e4265af05fbe3ecabe5f0",
+        "source_fact:v1:b2240b3a8d1713228e67d51b24586abaae08fe78c0f682fe4f5f43928e068416"
+      ],
+      "source_published_kst": "2026-10-08T05:36+09:00",
+      "source_title": "[오늘장특징주]테슬라, 스페이스X, TSMC, 인텔, 엔비디아, 마벨",
+      "telegram_core_fact": "이는 전일 마벨이 진행한 애널리스트데이에서 나온 내용을 반영한 것으로, 이들은 2031 회계연도에 매출 700억~900억 달러, 비일반회계기준(Non-GAAP) 주당순이익(EPS) 30달러 이상을 달성하겠다는 장기 재무 모델을 제시했다.",
+      "title": "[오늘장특징주]테슬라, 스페이스X, TSMC, 인텔, 엔비디아, 마벨"
     },
     "source_fact:3ccb2c9628ba07e05384ff64": {
       "first_seen_kst": "2026-10-07T11:43:24+09:00",
@@ -166163,6 +166992,28 @@
       "source_published_kst": "2026-10-06T06:38+09:00",
       "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
     },
+    "source_fact:41bb59e2b119a68d54590780": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633833",
+      "source": "이투데이",
+      "source_body_digest": "07c79fc0bb40ee4a5640cafe8f2c2d42ee23c55caaba043dcbe7225533e80e62",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:640b5d61d7c4eec1132dd42ade0805996b45d4754718f7802fab56eb88715069",
+      "source_fact_keys": [
+        "source_fact:v1:62f260802e6983a06a9ac0b1800eba137e79e5edd2ad2d76e61bbe5d46234350",
+        "source_fact:v1:843f261f2794881238a6d946bd648c4010356244d36046bca4704d4306eefb39",
+        "source_fact:v1:c153b48a9912c20fc20eb28dd3ef75ad9f9ed117ec9fb5d1deaae3e3d9b05a9a",
+        "source_fact:v1:dddb9e83bc29d8cc11028004fe0002553c8878c1fb8a82540503de73f6de6124"
+      ],
+      "source_published_kst": "2026-10-08T11:13+09:00",
+      "source_title": "美 여자농구 골든스테이트, 연매출 1억달러⋯여성 구단 최초",
+      "telegram_core_fact": "미국여자프로농구(WNBA) 골든스테이트 발키리스가 여성 프로스포츠 구단 가운데 처음으로 연매출 1억 달러(약 1400억원)를 돌파했다.",
+      "title": "美 여자농구 골든스테이트, 연매출 1억달러⋯여성 구단 최초"
+    },
     "source_fact:41d947b4fa888c7043914631": {
       "first_seen_kst": "2026-10-07T18:12:46+09:00",
       "lanes": {
@@ -167656,6 +168507,29 @@
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "외국인·명품 소비에 비용 절감까지…백화점 3사, 3분기 실적 ‘청신호’"
     },
+    "source_fact:4504428682e74372c3323e51": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818492",
+      "source": "뉴시스",
+      "source_body_digest": "735593a60e32d9467c988e283346680493d547f4871e30fa0720d91e2196aebe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5f0e8fbf7faf786dc24b37ef6a54b3618e1cd8928e9a67d82949c73fd06cc3d",
+      "source_fact_keys": [
+        "source_fact:v1:0a587a73b3f0d3936e34075655a0f126addc446f11faab849ce5d5602689d870",
+        "source_fact:v1:0edfb2770737ec2c247db4e5396fc3ce5f0570ec633eecf2e7ba8f448b89f3bd",
+        "source_fact:v1:5e1b962e1789667ba5303004b94a037a6b6ea4f82cbfd2c008d8330bf008be37",
+        "source_fact:v1:8453ba8128a0e30d7c2b82a8478b1147cc4ce5f8b163952693177593846c8bcf",
+        "source_fact:v1:92793a4f270b17d6e83039619bac221dbd917f60f4c9bddb0e917d55d48d0b3b"
+      ],
+      "source_published_kst": "2026-10-08T12:26+09:00",
+      "source_title": "\"추가 방출 없이 합의된 비축유만 조기 공급…유럽 경윳값 8%↑\"",
+      "telegram_core_fact": "국제에너지기구(IEA) 회원국들이 7일(현지 시간) 중동 사태에 따른 에너지 공급 차질을 감안해 지난 3월 합의한 비축유 방출에 속도를 내겠다고 밝혔다.",
+      "title": "\"추가 방출 없이 합의된 비축유만 조기 공급…유럽 경윳값 8%↑\""
+    },
     "source_fact:450c31e682c03a786050cb0d": {
       "first_seen_kst": "2026-10-06T10:41:31+09:00",
       "lanes": {
@@ -168925,6 +169799,30 @@
       "source_published_kst": "2026-10-07T16:11+09:00",
       "title": "\"대만 반도체업체 난야, D램 가격 최대 20% 인상 전망\""
     },
+    "source_fact:47609b8226bb2680abeb9f24": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818876",
+      "source": "뉴시스",
+      "source_body_digest": "07e1acb74b40fd3a2cb7bc0fc0772dadd8d85c5333a2647112f1c2ad48cdca93",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b661541c6e9373c87a5931f2396fc85452e6c955ab4787495e14acfb6a32442",
+      "source_fact_keys": [
+        "source_fact:v1:00f63e7f90f70028352df17eaa32e09817f355b53c4c97274f7c1ac58ce15d8e",
+        "source_fact:v1:0d034ac1434acb0b3b4bb40d3ff131e7849c92282c2c234fda2a06d58495fab1",
+        "source_fact:v1:3bd013021a2c0bda27e4d7eef3c4c9897a5b57b0f5f95b35883355c707b24840",
+        "source_fact:v1:948f7a1b60c0cd516c952fb328707c8219c2bf85d94bacba1d9c5782cab44a34",
+        "source_fact:v1:9e95f80ed2bd845a70e245a00034080ae3811b93d03bfdedbbc4a1d4aee4c0ab",
+        "source_fact:v1:e88e2c4434e30d7d18e87fac1152c2fef6f9ccc314199e188d8161c45c6204f6"
+      ],
+      "source_published_kst": "2026-10-08T12:38+09:00",
+      "source_title": "삼성전자 호실적에도 힘 못 쓰는 주가…\"선반영과 수급 살펴야\"",
+      "telegram_core_fact": "기대치를 뛰어넘는 이른바 '어닝 서프라이즈'를 기록하더라도 향후 가이던스가 불투명하거나 추가적인 상승 동력이 부족할 경우 주가는 즉각 조정을 받는 양상이다.",
+      "title": "삼성전자 호실적에도 힘 못 쓰는 주가…\"선반영과 수급 살펴야\""
+    },
     "source_fact:4763b7b7a9e1ec09f7628609": {
       "first_seen_kst": "2026-10-07T01:07:29+09:00",
       "lanes": {
@@ -169603,6 +170501,28 @@
       ],
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
+    },
+    "source_fact:485bced2a981a5f80f03172b": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633833",
+      "source": "이투데이",
+      "source_body_digest": "07c79fc0bb40ee4a5640cafe8f2c2d42ee23c55caaba043dcbe7225533e80e62",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:640b5d61d7c4eec1132dd42ade0805996b45d4754718f7802fab56eb88715069",
+      "source_fact_keys": [
+        "source_fact:v1:62f260802e6983a06a9ac0b1800eba137e79e5edd2ad2d76e61bbe5d46234350",
+        "source_fact:v1:843f261f2794881238a6d946bd648c4010356244d36046bca4704d4306eefb39",
+        "source_fact:v1:c153b48a9912c20fc20eb28dd3ef75ad9f9ed117ec9fb5d1deaae3e3d9b05a9a",
+        "source_fact:v1:dddb9e83bc29d8cc11028004fe0002553c8878c1fb8a82540503de73f6de6124"
+      ],
+      "source_published_kst": "2026-10-08T11:13+09:00",
+      "source_title": "美 여자농구 골든스테이트, 연매출 1억달러⋯여성 구단 최초",
+      "telegram_core_fact": "미국여자프로농구(WNBA) 골든스테이트 발키리스가 여성 프로스포츠 구단 가운데 처음으로 연매출 1억 달러(약 1400억원)를 돌파했다.",
+      "title": "美 여자농구 골든스테이트, 연매출 1억달러⋯여성 구단 최초"
     },
     "source_fact:486173a3b93f8da088bfa9bf": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
@@ -172592,6 +173512,28 @@
       "source_published_kst": "2026-10-05T08:08+09:00",
       "title": "한반도 감시부터 우주의약품 실험까지…K-우주영토 넓힌다[누리호 5차 下]"
     },
+    "source_fact:4e9c93bcb9e1eb72f2328276": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01902406645610952",
+      "source": "이데일리",
+      "source_body_digest": "5f90d08efa64d9877bbf7c997c30d9d9a03a1f0e2c2805481bdf7d4e3cb4da50",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b4263f8d3aa32672059292f500721b2d57732381cc4bfd91b2094e6fdc092b4b",
+      "source_fact_keys": [
+        "source_fact:v1:180173a89272dd745a5bff3cb12aa3a54f8e0648c87f244b61021e48b68de632",
+        "source_fact:v1:24afdb13d417e786673763cb04510efda4e986aedd867b70d0bb37ffc97a93f2",
+        "source_fact:v1:649087d9078ee8a9bd73b10ef972a4e545d394f0809e4265af05fbe3ecabe5f0",
+        "source_fact:v1:b2240b3a8d1713228e67d51b24586abaae08fe78c0f682fe4f5f43928e068416"
+      ],
+      "source_published_kst": "2026-10-08T05:36+09:00",
+      "source_title": "[오늘장특징주]테슬라, 스페이스X, TSMC, 인텔, 엔비디아, 마벨",
+      "telegram_core_fact": "이는 전일 마벨이 진행한 애널리스트데이에서 나온 내용을 반영한 것으로, 이들은 2031 회계연도에 매출 700억~900억 달러, 비일반회계기준(Non-GAAP) 주당순이익(EPS) 30달러 이상을 달성하겠다는 장기 재무 모델을 제시했다.",
+      "title": "[오늘장특징주]테슬라, 스페이스X, TSMC, 인텔, 엔비디아, 마벨"
+    },
     "source_fact:4ea88256bb5436c1ea10aa4f": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -173225,6 +174167,30 @@
       "source_title": "배민, ‘K-GX’ 프로젝트 참여…전기 이륜차 보급 확대 나선다",
       "telegram_core_fact": "현재 국토부 규제샌드박스 승인을 받아 서울 강남·서초·송파·강동구에서 약 80대 규모로 운영 중인 전기 이륜차 LED 배달통 광고 실증사업도 민관협력 사례로 발전시킬 계획이다.",
       "title": "배민, ‘K-GX’ 프로젝트 참여…전기 이륜차 보급 확대 나선다"
+    },
+    "source_fact:50553c7e50eaf3b94be2a07e": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818876",
+      "source": "뉴시스",
+      "source_body_digest": "07e1acb74b40fd3a2cb7bc0fc0772dadd8d85c5333a2647112f1c2ad48cdca93",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b661541c6e9373c87a5931f2396fc85452e6c955ab4787495e14acfb6a32442",
+      "source_fact_keys": [
+        "source_fact:v1:00f63e7f90f70028352df17eaa32e09817f355b53c4c97274f7c1ac58ce15d8e",
+        "source_fact:v1:0d034ac1434acb0b3b4bb40d3ff131e7849c92282c2c234fda2a06d58495fab1",
+        "source_fact:v1:3bd013021a2c0bda27e4d7eef3c4c9897a5b57b0f5f95b35883355c707b24840",
+        "source_fact:v1:948f7a1b60c0cd516c952fb328707c8219c2bf85d94bacba1d9c5782cab44a34",
+        "source_fact:v1:9e95f80ed2bd845a70e245a00034080ae3811b93d03bfdedbbc4a1d4aee4c0ab",
+        "source_fact:v1:e88e2c4434e30d7d18e87fac1152c2fef6f9ccc314199e188d8161c45c6204f6"
+      ],
+      "source_published_kst": "2026-10-08T12:38+09:00",
+      "source_title": "삼성전자 호실적에도 힘 못 쓰는 주가…\"선반영과 수급 살펴야\"",
+      "telegram_core_fact": "기대치를 뛰어넘는 이른바 '어닝 서프라이즈'를 기록하더라도 향후 가이던스가 불투명하거나 추가적인 상승 동력이 부족할 경우 주가는 즉각 조정을 받는 양상이다.",
+      "title": "삼성전자 호실적에도 힘 못 쓰는 주가…\"선반영과 수급 살펴야\""
     },
     "source_fact:506066fa355780febc8cd3b7": {
       "first_seen_kst": "2026-10-07T07:24:41+09:00",
@@ -175903,6 +176869,32 @@
       ],
       "source_published_kst": "2026-10-07T07:00+09:00",
       "title": "경영권 인수 넘어 성장자본으로…PEF 순기능 살려야 [김앤장 금융·핀테크·가상자산 인사이트]"
+    },
+    "source_fact:559d6ac3b76e67b375f3931c": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02656806645610952",
+      "source": "이데일리",
+      "source_body_digest": "3e0dacecef9b5207bb8c918a73e0b13088aa15296347200952c59937ac47e29c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:889759894f30707f475c96cf305c4399d3d06e387cc94d8f970b35843776a480",
+      "source_fact_keys": [
+        "source_fact:v1:0713132b0b59553d3e7f7faa9202783682388ed6a55349b1575d861f5299d238",
+        "source_fact:v1:0bb7ef2ec2ad1063e6f8ace721c349614ce7c821492fc7c6efd92f57e015725f",
+        "source_fact:v1:22ffe685090afc3c40dc3ee28c7e5c1b4b1ba0d19052fa3055a2db75392b9efb",
+        "source_fact:v1:34ad064b33bb14ebb7e997ffe18b610df111dd27f2cd940771f6940596d3bb99",
+        "source_fact:v1:4009d9668f7ac937a4fae8d42ef408fa37b224eca3cd3ceeca836f2515e9a342",
+        "source_fact:v1:522dd6826800544a2c4fc31a8c73d33fff8f9bae777c221718fd6b52a481b609",
+        "source_fact:v1:e8f345a5281cf2685b65cf1080740ecbbc67648a1cbd189d336f029a219948c1",
+        "source_fact:v1:fa22182a0f43ea871db0677484dca53b5d4f0ccec0396d8840178e6fc74f7e5e"
+      ],
+      "source_published_kst": "2026-10-08T09:07+09:00",
+      "source_title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박",
+      "telegram_core_fact": "하지만 전쟁 이후 2년 만기 주택담보대출 평균 금리가 1%포인트 가까이 상승하면서 최근 6%에 근접했다.",
+      "title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박"
     },
     "source_fact:55aa7b110aa78ac2e4439998": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
@@ -180696,6 +181688,32 @@
       "telegram_core_fact": "LG에너지솔루션은 연결 기준 올해 3분기 영업이익이 지난해 동기보다 25.7% 증가한 7천560억원으로 잠정 집계됐다고 8일 공시했다.",
       "title": "LG엔솔, 3분기 영업익 7천560억원…분기 최대 매출 달성(종합) | 연합뉴스"
     },
+    "source_fact:5f05815655851b6cdcef57db": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02656806645610952",
+      "source": "이데일리",
+      "source_body_digest": "3e0dacecef9b5207bb8c918a73e0b13088aa15296347200952c59937ac47e29c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:889759894f30707f475c96cf305c4399d3d06e387cc94d8f970b35843776a480",
+      "source_fact_keys": [
+        "source_fact:v1:0713132b0b59553d3e7f7faa9202783682388ed6a55349b1575d861f5299d238",
+        "source_fact:v1:0bb7ef2ec2ad1063e6f8ace721c349614ce7c821492fc7c6efd92f57e015725f",
+        "source_fact:v1:22ffe685090afc3c40dc3ee28c7e5c1b4b1ba0d19052fa3055a2db75392b9efb",
+        "source_fact:v1:34ad064b33bb14ebb7e997ffe18b610df111dd27f2cd940771f6940596d3bb99",
+        "source_fact:v1:4009d9668f7ac937a4fae8d42ef408fa37b224eca3cd3ceeca836f2515e9a342",
+        "source_fact:v1:522dd6826800544a2c4fc31a8c73d33fff8f9bae777c221718fd6b52a481b609",
+        "source_fact:v1:e8f345a5281cf2685b65cf1080740ecbbc67648a1cbd189d336f029a219948c1",
+        "source_fact:v1:fa22182a0f43ea871db0677484dca53b5d4f0ccec0396d8840178e6fc74f7e5e"
+      ],
+      "source_published_kst": "2026-10-08T09:07+09:00",
+      "source_title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박",
+      "telegram_core_fact": "하지만 전쟁 이후 2년 만기 주택담보대출 평균 금리가 1%포인트 가까이 상승하면서 최근 6%에 근접했다.",
+      "title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박"
+    },
     "source_fact:5f0b36aa9ec8d242330df0c2": {
       "first_seen_kst": "2026-10-07T23:36:14+09:00",
       "lanes": {
@@ -181949,6 +182967,32 @@
       ],
       "source_published_kst": "2026-10-06T07:07+09:00",
       "title": "스페이스X 주가 급등에 머스크 다시 조만장자 [마켓핫]"
+    },
+    "source_fact:61f7aeadc605f63b6e7f14bd": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02656806645610952",
+      "source": "이데일리",
+      "source_body_digest": "3e0dacecef9b5207bb8c918a73e0b13088aa15296347200952c59937ac47e29c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:889759894f30707f475c96cf305c4399d3d06e387cc94d8f970b35843776a480",
+      "source_fact_keys": [
+        "source_fact:v1:0713132b0b59553d3e7f7faa9202783682388ed6a55349b1575d861f5299d238",
+        "source_fact:v1:0bb7ef2ec2ad1063e6f8ace721c349614ce7c821492fc7c6efd92f57e015725f",
+        "source_fact:v1:22ffe685090afc3c40dc3ee28c7e5c1b4b1ba0d19052fa3055a2db75392b9efb",
+        "source_fact:v1:34ad064b33bb14ebb7e997ffe18b610df111dd27f2cd940771f6940596d3bb99",
+        "source_fact:v1:4009d9668f7ac937a4fae8d42ef408fa37b224eca3cd3ceeca836f2515e9a342",
+        "source_fact:v1:522dd6826800544a2c4fc31a8c73d33fff8f9bae777c221718fd6b52a481b609",
+        "source_fact:v1:e8f345a5281cf2685b65cf1080740ecbbc67648a1cbd189d336f029a219948c1",
+        "source_fact:v1:fa22182a0f43ea871db0677484dca53b5d4f0ccec0396d8840178e6fc74f7e5e"
+      ],
+      "source_published_kst": "2026-10-08T09:07+09:00",
+      "source_title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박",
+      "telegram_core_fact": "하지만 전쟁 이후 2년 만기 주택담보대출 평균 금리가 1%포인트 가까이 상승하면서 최근 6%에 근접했다.",
+      "title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박"
     },
     "source_fact:622164fb69cc304b2fb5cb8e": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
@@ -183372,6 +184416,31 @@
       "source_title": "폐배터리서 리튬 캔다…웰크론한텍, ‘이차전지 자원회수’ 사업 확장",
       "telegram_core_fact": "실제 웰크론한텍 중국법인은 현지 주요 리튬이온배터리 분리막 생산시설을 대상으로 총 4건의 에너지 설비 프로젝트를 따내며 올해 3분기 누적 수주액 242억원을 달성했다.",
       "title": "폐배터리서 리튬 캔다…웰크론한텍, ‘이차전지 자원회수’ 사업 확장"
+    },
+    "source_fact:64aac89370a15a96148754a2": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03371846645610952",
+      "source": "이데일리",
+      "source_body_digest": "fb979b25ef32ccac4109da387765ef8a333ef86d0dd587921cca70cf1778b523",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a6714519873e4a4898102d20e309ed1200d825d7b1b33e2ae9d8f26da7eceeaa",
+      "source_fact_keys": [
+        "source_fact:v1:2d6cc0202c8f727a85bc685021cc13e96653b8c2673771580d057e3188f0fb46",
+        "source_fact:v1:6fa45948a707575127c66d31c42cb1a0e7b054912391664e9020c2420874dabe",
+        "source_fact:v1:7967640b582fd6e0e7729728a8cf1a164c7897f0e4beadcfb47d7b5b080cbed9",
+        "source_fact:v1:b7c4d34282468de8fb5e353425c6fbd4b784e1d1959eb3149808d6303b76866e",
+        "source_fact:v1:bf4e7bd8aa2ad92f9ff08ac256e05f2ac5ba90428b05905c97f666396c4e401a",
+        "source_fact:v1:c9b266705baaf10a66085403b2afa8cdf69dd832153f7c13fcea995df0ae1265",
+        "source_fact:v1:cde1e465fbf6285778dc62a7387b10249f796ef0f2d9dc9ddc0891a1d7045e92"
+      ],
+      "source_published_kst": "2026-10-08T11:12+09:00",
+      "source_title": "‘삼성 투자’ 월든, 美 동·서부 거점 확대…생산라인에 로봇 투입",
+      "telegram_core_fact": "연구실 시연을 넘어 실제 생산라인에서 사람, 전체 교대시간 동안 로봇을 운영하는 데 이어 삼성전기와 세메스 제조현장에서도 로봇의 적용 가능성을 검증하고 있다.",
+      "title": "‘삼성 투자’ 월든, 美 동·서부 거점 확대…생산라인에 로봇 투입"
     },
     "source_fact:64b3a4644ef87c9ce937be65": {
       "first_seen_kst": "2026-10-06T18:16:47+09:00",
@@ -189558,6 +190627,31 @@
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
     },
+    "source_fact:71d880a290fde2db40fe8c9f": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03371846645610952",
+      "source": "이데일리",
+      "source_body_digest": "fb979b25ef32ccac4109da387765ef8a333ef86d0dd587921cca70cf1778b523",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a6714519873e4a4898102d20e309ed1200d825d7b1b33e2ae9d8f26da7eceeaa",
+      "source_fact_keys": [
+        "source_fact:v1:2d6cc0202c8f727a85bc685021cc13e96653b8c2673771580d057e3188f0fb46",
+        "source_fact:v1:6fa45948a707575127c66d31c42cb1a0e7b054912391664e9020c2420874dabe",
+        "source_fact:v1:7967640b582fd6e0e7729728a8cf1a164c7897f0e4beadcfb47d7b5b080cbed9",
+        "source_fact:v1:b7c4d34282468de8fb5e353425c6fbd4b784e1d1959eb3149808d6303b76866e",
+        "source_fact:v1:bf4e7bd8aa2ad92f9ff08ac256e05f2ac5ba90428b05905c97f666396c4e401a",
+        "source_fact:v1:c9b266705baaf10a66085403b2afa8cdf69dd832153f7c13fcea995df0ae1265",
+        "source_fact:v1:cde1e465fbf6285778dc62a7387b10249f796ef0f2d9dc9ddc0891a1d7045e92"
+      ],
+      "source_published_kst": "2026-10-08T11:12+09:00",
+      "source_title": "‘삼성 투자’ 월든, 美 동·서부 거점 확대…생산라인에 로봇 투입",
+      "telegram_core_fact": "연구실 시연을 넘어 실제 생산라인에서 사람, 전체 교대시간 동안 로봇을 운영하는 데 이어 삼성전기와 세메스 제조현장에서도 로봇의 적용 가능성을 검증하고 있다.",
+      "title": "‘삼성 투자’ 월든, 美 동·서부 거점 확대…생산라인에 로봇 투입"
+    },
     "source_fact:71ee23a06c0aac044ed6dd74": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
       "lanes": {
@@ -191172,6 +192266,28 @@
       "source_title": "아이티센엔텍, 2173억 'K-에듀파인 고도화' 수주",
       "telegram_core_fact": "아이티센엔텍은 한국교육학술정보원(KERIS)이 발주한 'K-에듀파인 운영환경 고도화 및 재해복구 체계 구축' 사업의 우선협상대상자로 선정됐다고 7일 밝혔다.",
       "title": "아이티센엔텍, 2173억 'K-에듀파인 고도화' 수주"
+    },
+    "source_fact:7543e9f727a0d3e7c87bec64": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01902406645610952",
+      "source": "이데일리",
+      "source_body_digest": "5f90d08efa64d9877bbf7c997c30d9d9a03a1f0e2c2805481bdf7d4e3cb4da50",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b4263f8d3aa32672059292f500721b2d57732381cc4bfd91b2094e6fdc092b4b",
+      "source_fact_keys": [
+        "source_fact:v1:180173a89272dd745a5bff3cb12aa3a54f8e0648c87f244b61021e48b68de632",
+        "source_fact:v1:24afdb13d417e786673763cb04510efda4e986aedd867b70d0bb37ffc97a93f2",
+        "source_fact:v1:649087d9078ee8a9bd73b10ef972a4e545d394f0809e4265af05fbe3ecabe5f0",
+        "source_fact:v1:b2240b3a8d1713228e67d51b24586abaae08fe78c0f682fe4f5f43928e068416"
+      ],
+      "source_published_kst": "2026-10-08T05:36+09:00",
+      "source_title": "[오늘장특징주]테슬라, 스페이스X, TSMC, 인텔, 엔비디아, 마벨",
+      "telegram_core_fact": "이는 전일 마벨이 진행한 애널리스트데이에서 나온 내용을 반영한 것으로, 이들은 2031 회계연도에 매출 700억~900억 달러, 비일반회계기준(Non-GAAP) 주당순이익(EPS) 30달러 이상을 달성하겠다는 장기 재무 모델을 제시했다.",
+      "title": "[오늘장특징주]테슬라, 스페이스X, TSMC, 인텔, 엔비디아, 마벨"
     },
     "source_fact:75473748c8bb0486c8bdc196": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
@@ -194679,6 +195795,31 @@
       ],
       "source_published_kst": "2026-10-07T08:42+09:00",
       "title": "셰브론, 헤스 미드스트림 지분 넘기고 바켄 비용 50% 절감"
+    },
+    "source_fact:7c7d890629b8369e85fcab13": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03371846645610952",
+      "source": "이데일리",
+      "source_body_digest": "fb979b25ef32ccac4109da387765ef8a333ef86d0dd587921cca70cf1778b523",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a6714519873e4a4898102d20e309ed1200d825d7b1b33e2ae9d8f26da7eceeaa",
+      "source_fact_keys": [
+        "source_fact:v1:2d6cc0202c8f727a85bc685021cc13e96653b8c2673771580d057e3188f0fb46",
+        "source_fact:v1:6fa45948a707575127c66d31c42cb1a0e7b054912391664e9020c2420874dabe",
+        "source_fact:v1:7967640b582fd6e0e7729728a8cf1a164c7897f0e4beadcfb47d7b5b080cbed9",
+        "source_fact:v1:b7c4d34282468de8fb5e353425c6fbd4b784e1d1959eb3149808d6303b76866e",
+        "source_fact:v1:bf4e7bd8aa2ad92f9ff08ac256e05f2ac5ba90428b05905c97f666396c4e401a",
+        "source_fact:v1:c9b266705baaf10a66085403b2afa8cdf69dd832153f7c13fcea995df0ae1265",
+        "source_fact:v1:cde1e465fbf6285778dc62a7387b10249f796ef0f2d9dc9ddc0891a1d7045e92"
+      ],
+      "source_published_kst": "2026-10-08T11:12+09:00",
+      "source_title": "‘삼성 투자’ 월든, 美 동·서부 거점 확대…생산라인에 로봇 투입",
+      "telegram_core_fact": "연구실 시연을 넘어 실제 생산라인에서 사람, 전체 교대시간 동안 로봇을 운영하는 데 이어 삼성전기와 세메스 제조현장에서도 로봇의 적용 가능성을 검증하고 있다.",
+      "title": "‘삼성 투자’ 월든, 美 동·서부 거점 확대…생산라인에 로봇 투입"
     },
     "source_fact:7c804b5ef6f238b0f26b0f78": {
       "first_seen_kst": "2026-10-07T01:33:00+09:00",
@@ -202934,6 +204075,32 @@
       "source_published_kst": "2026-10-07T09:31+09:00",
       "title": "롯데바이오, '알보텍' 바이오시밀러 생산 수주…美 거점 앞세워 글로벌 공략"
     },
+    "source_fact:8e371131d2d1a9fddb521f2c": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02656806645610952",
+      "source": "이데일리",
+      "source_body_digest": "3e0dacecef9b5207bb8c918a73e0b13088aa15296347200952c59937ac47e29c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:889759894f30707f475c96cf305c4399d3d06e387cc94d8f970b35843776a480",
+      "source_fact_keys": [
+        "source_fact:v1:0713132b0b59553d3e7f7faa9202783682388ed6a55349b1575d861f5299d238",
+        "source_fact:v1:0bb7ef2ec2ad1063e6f8ace721c349614ce7c821492fc7c6efd92f57e015725f",
+        "source_fact:v1:22ffe685090afc3c40dc3ee28c7e5c1b4b1ba0d19052fa3055a2db75392b9efb",
+        "source_fact:v1:34ad064b33bb14ebb7e997ffe18b610df111dd27f2cd940771f6940596d3bb99",
+        "source_fact:v1:4009d9668f7ac937a4fae8d42ef408fa37b224eca3cd3ceeca836f2515e9a342",
+        "source_fact:v1:522dd6826800544a2c4fc31a8c73d33fff8f9bae777c221718fd6b52a481b609",
+        "source_fact:v1:e8f345a5281cf2685b65cf1080740ecbbc67648a1cbd189d336f029a219948c1",
+        "source_fact:v1:fa22182a0f43ea871db0677484dca53b5d4f0ccec0396d8840178e6fc74f7e5e"
+      ],
+      "source_published_kst": "2026-10-08T09:07+09:00",
+      "source_title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박",
+      "telegram_core_fact": "하지만 전쟁 이후 2년 만기 주택담보대출 평균 금리가 1%포인트 가까이 상승하면서 최근 6%에 근접했다.",
+      "title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박"
+    },
     "source_fact:8e3876cfda8cc3634b0055c3": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
       "lanes": {
@@ -203295,6 +204462,30 @@
       ],
       "source_published_kst": "2026-10-06T13:10+09:00",
       "title": "서남권 반도체 팹은 제2 반도체 생산거점…풍부한 에너지 활용해야"
+    },
+    "source_fact:8ef1f321d31d0b7d7c259082": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818876",
+      "source": "뉴시스",
+      "source_body_digest": "07e1acb74b40fd3a2cb7bc0fc0772dadd8d85c5333a2647112f1c2ad48cdca93",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b661541c6e9373c87a5931f2396fc85452e6c955ab4787495e14acfb6a32442",
+      "source_fact_keys": [
+        "source_fact:v1:00f63e7f90f70028352df17eaa32e09817f355b53c4c97274f7c1ac58ce15d8e",
+        "source_fact:v1:0d034ac1434acb0b3b4bb40d3ff131e7849c92282c2c234fda2a06d58495fab1",
+        "source_fact:v1:3bd013021a2c0bda27e4d7eef3c4c9897a5b57b0f5f95b35883355c707b24840",
+        "source_fact:v1:948f7a1b60c0cd516c952fb328707c8219c2bf85d94bacba1d9c5782cab44a34",
+        "source_fact:v1:9e95f80ed2bd845a70e245a00034080ae3811b93d03bfdedbbc4a1d4aee4c0ab",
+        "source_fact:v1:e88e2c4434e30d7d18e87fac1152c2fef6f9ccc314199e188d8161c45c6204f6"
+      ],
+      "source_published_kst": "2026-10-08T12:38+09:00",
+      "source_title": "삼성전자 호실적에도 힘 못 쓰는 주가…\"선반영과 수급 살펴야\"",
+      "telegram_core_fact": "기대치를 뛰어넘는 이른바 '어닝 서프라이즈'를 기록하더라도 향후 가이던스가 불투명하거나 추가적인 상승 동력이 부족할 경우 주가는 즉각 조정을 받는 양상이다.",
+      "title": "삼성전자 호실적에도 힘 못 쓰는 주가…\"선반영과 수급 살펴야\""
     },
     "source_fact:8ef632dfb4350a5a9aecfaec": {
       "first_seen_kst": "2026-10-08T08:31:37+09:00",
@@ -207456,6 +208647,30 @@
       "source_published_kst": "2026-10-05T13:09+09:00",
       "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
     },
+    "source_fact:97c1aa41958d213ac694e4b9": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818876",
+      "source": "뉴시스",
+      "source_body_digest": "07e1acb74b40fd3a2cb7bc0fc0772dadd8d85c5333a2647112f1c2ad48cdca93",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b661541c6e9373c87a5931f2396fc85452e6c955ab4787495e14acfb6a32442",
+      "source_fact_keys": [
+        "source_fact:v1:00f63e7f90f70028352df17eaa32e09817f355b53c4c97274f7c1ac58ce15d8e",
+        "source_fact:v1:0d034ac1434acb0b3b4bb40d3ff131e7849c92282c2c234fda2a06d58495fab1",
+        "source_fact:v1:3bd013021a2c0bda27e4d7eef3c4c9897a5b57b0f5f95b35883355c707b24840",
+        "source_fact:v1:948f7a1b60c0cd516c952fb328707c8219c2bf85d94bacba1d9c5782cab44a34",
+        "source_fact:v1:9e95f80ed2bd845a70e245a00034080ae3811b93d03bfdedbbc4a1d4aee4c0ab",
+        "source_fact:v1:e88e2c4434e30d7d18e87fac1152c2fef6f9ccc314199e188d8161c45c6204f6"
+      ],
+      "source_published_kst": "2026-10-08T12:38+09:00",
+      "source_title": "삼성전자 호실적에도 힘 못 쓰는 주가…\"선반영과 수급 살펴야\"",
+      "telegram_core_fact": "기대치를 뛰어넘는 이른바 '어닝 서프라이즈'를 기록하더라도 향후 가이던스가 불투명하거나 추가적인 상승 동력이 부족할 경우 주가는 즉각 조정을 받는 양상이다.",
+      "title": "삼성전자 호실적에도 힘 못 쓰는 주가…\"선반영과 수급 살펴야\""
+    },
     "source_fact:97db8546c828e82a8d90b231": {
       "first_seen_kst": "2026-10-05T22:57:49+09:00",
       "lanes": {
@@ -207498,6 +208713,32 @@
       "source_title": "세이프 프로 그룹, 3분기 잠정매출 250만달러..전년비 2300%↑",
       "telegram_core_fact": "세이프 프로 그룹(SPAI)이 9월 30일 종료된 2026년 3분기 잠정 매출액이 250만 달러를 넘어서 전년 동기 10만1422달러 대비 2300% 이상 증가할 것으로 예상된다고 7일 발표했다.",
       "title": "세이프 프로 그룹, 3분기 잠정매출 250만달러..전년비 2300%↑"
+    },
+    "source_fact:97f283ee676ccf3f9e54bf65": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02656806645610952",
+      "source": "이데일리",
+      "source_body_digest": "3e0dacecef9b5207bb8c918a73e0b13088aa15296347200952c59937ac47e29c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:889759894f30707f475c96cf305c4399d3d06e387cc94d8f970b35843776a480",
+      "source_fact_keys": [
+        "source_fact:v1:0713132b0b59553d3e7f7faa9202783682388ed6a55349b1575d861f5299d238",
+        "source_fact:v1:0bb7ef2ec2ad1063e6f8ace721c349614ce7c821492fc7c6efd92f57e015725f",
+        "source_fact:v1:22ffe685090afc3c40dc3ee28c7e5c1b4b1ba0d19052fa3055a2db75392b9efb",
+        "source_fact:v1:34ad064b33bb14ebb7e997ffe18b610df111dd27f2cd940771f6940596d3bb99",
+        "source_fact:v1:4009d9668f7ac937a4fae8d42ef408fa37b224eca3cd3ceeca836f2515e9a342",
+        "source_fact:v1:522dd6826800544a2c4fc31a8c73d33fff8f9bae777c221718fd6b52a481b609",
+        "source_fact:v1:e8f345a5281cf2685b65cf1080740ecbbc67648a1cbd189d336f029a219948c1",
+        "source_fact:v1:fa22182a0f43ea871db0677484dca53b5d4f0ccec0396d8840178e6fc74f7e5e"
+      ],
+      "source_published_kst": "2026-10-08T09:07+09:00",
+      "source_title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박",
+      "telegram_core_fact": "하지만 전쟁 이후 2년 만기 주택담보대출 평균 금리가 1%포인트 가까이 상승하면서 최근 6%에 근접했다.",
+      "title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박"
     },
     "source_fact:97ffbaca5b5309d56c12a4a3": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -211407,6 +212648,32 @@
       ],
       "source_published_kst": "2026-10-06T15:42+09:00",
       "title": "MSDI, 구미시와 7천억 규모 미사일 방산단지 조성 MOU | 연합뉴스"
+    },
+    "source_fact:a01932f073aea9a553e92e5a": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02656806645610952",
+      "source": "이데일리",
+      "source_body_digest": "3e0dacecef9b5207bb8c918a73e0b13088aa15296347200952c59937ac47e29c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:889759894f30707f475c96cf305c4399d3d06e387cc94d8f970b35843776a480",
+      "source_fact_keys": [
+        "source_fact:v1:0713132b0b59553d3e7f7faa9202783682388ed6a55349b1575d861f5299d238",
+        "source_fact:v1:0bb7ef2ec2ad1063e6f8ace721c349614ce7c821492fc7c6efd92f57e015725f",
+        "source_fact:v1:22ffe685090afc3c40dc3ee28c7e5c1b4b1ba0d19052fa3055a2db75392b9efb",
+        "source_fact:v1:34ad064b33bb14ebb7e997ffe18b610df111dd27f2cd940771f6940596d3bb99",
+        "source_fact:v1:4009d9668f7ac937a4fae8d42ef408fa37b224eca3cd3ceeca836f2515e9a342",
+        "source_fact:v1:522dd6826800544a2c4fc31a8c73d33fff8f9bae777c221718fd6b52a481b609",
+        "source_fact:v1:e8f345a5281cf2685b65cf1080740ecbbc67648a1cbd189d336f029a219948c1",
+        "source_fact:v1:fa22182a0f43ea871db0677484dca53b5d4f0ccec0396d8840178e6fc74f7e5e"
+      ],
+      "source_published_kst": "2026-10-08T09:07+09:00",
+      "source_title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박",
+      "telegram_core_fact": "하지만 전쟁 이후 2년 만기 주택담보대출 평균 금리가 1%포인트 가까이 상승하면서 최근 6%에 근접했다.",
+      "title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박"
     },
     "source_fact:a01f9ce481e17f06363194b3": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
@@ -221650,6 +222917,32 @@
       "source_published_kst": "2026-10-06T15:11+09:00",
       "title": "\"중국 문샷, 내년 1분기 홍콩 상장 추진\" | 연합뉴스"
     },
+    "source_fact:b51b902aec9254003e212859": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02656806645610952",
+      "source": "이데일리",
+      "source_body_digest": "3e0dacecef9b5207bb8c918a73e0b13088aa15296347200952c59937ac47e29c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:889759894f30707f475c96cf305c4399d3d06e387cc94d8f970b35843776a480",
+      "source_fact_keys": [
+        "source_fact:v1:0713132b0b59553d3e7f7faa9202783682388ed6a55349b1575d861f5299d238",
+        "source_fact:v1:0bb7ef2ec2ad1063e6f8ace721c349614ce7c821492fc7c6efd92f57e015725f",
+        "source_fact:v1:22ffe685090afc3c40dc3ee28c7e5c1b4b1ba0d19052fa3055a2db75392b9efb",
+        "source_fact:v1:34ad064b33bb14ebb7e997ffe18b610df111dd27f2cd940771f6940596d3bb99",
+        "source_fact:v1:4009d9668f7ac937a4fae8d42ef408fa37b224eca3cd3ceeca836f2515e9a342",
+        "source_fact:v1:522dd6826800544a2c4fc31a8c73d33fff8f9bae777c221718fd6b52a481b609",
+        "source_fact:v1:e8f345a5281cf2685b65cf1080740ecbbc67648a1cbd189d336f029a219948c1",
+        "source_fact:v1:fa22182a0f43ea871db0677484dca53b5d4f0ccec0396d8840178e6fc74f7e5e"
+      ],
+      "source_published_kst": "2026-10-08T09:07+09:00",
+      "source_title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박",
+      "telegram_core_fact": "하지만 전쟁 이후 2년 만기 주택담보대출 평균 금리가 1%포인트 가까이 상승하면서 최근 6%에 근접했다.",
+      "title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박"
+    },
     "source_fact:b532e26f76cc46850b730b20": {
       "first_seen_kst": "2026-10-08T03:26:42+09:00",
       "lanes": {
@@ -222087,6 +223380,29 @@
       ],
       "source_published_kst": "2026-10-06T10:19+09:00",
       "title": "김정관 장관 “1600조 지방투자 본격화…2030년 AI팩토리 500개 구축”"
+    },
+    "source_fact:b6adc350cfb89d6ab5d0769f": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818492",
+      "source": "뉴시스",
+      "source_body_digest": "735593a60e32d9467c988e283346680493d547f4871e30fa0720d91e2196aebe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5f0e8fbf7faf786dc24b37ef6a54b3618e1cd8928e9a67d82949c73fd06cc3d",
+      "source_fact_keys": [
+        "source_fact:v1:0a587a73b3f0d3936e34075655a0f126addc446f11faab849ce5d5602689d870",
+        "source_fact:v1:0edfb2770737ec2c247db4e5396fc3ce5f0570ec633eecf2e7ba8f448b89f3bd",
+        "source_fact:v1:5e1b962e1789667ba5303004b94a037a6b6ea4f82cbfd2c008d8330bf008be37",
+        "source_fact:v1:8453ba8128a0e30d7c2b82a8478b1147cc4ce5f8b163952693177593846c8bcf",
+        "source_fact:v1:92793a4f270b17d6e83039619bac221dbd917f60f4c9bddb0e917d55d48d0b3b"
+      ],
+      "source_published_kst": "2026-10-08T12:26+09:00",
+      "source_title": "\"추가 방출 없이 합의된 비축유만 조기 공급…유럽 경윳값 8%↑\"",
+      "telegram_core_fact": "국제에너지기구(IEA) 회원국들이 7일(현지 시간) 중동 사태에 따른 에너지 공급 차질을 감안해 지난 3월 합의한 비축유 방출에 속도를 내겠다고 밝혔다.",
+      "title": "\"추가 방출 없이 합의된 비축유만 조기 공급…유럽 경윳값 8%↑\""
     },
     "source_fact:b6b54b1a95c00d7d1a7c4c1e": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
@@ -224838,6 +226154,29 @@
       ],
       "source_published_kst": "2026-10-07T14:58+09:00",
       "title": "송미령 \"산란계협회, 경고에도 가격 고시…농가 짓밟았다는 비판 과해\""
+    },
+    "source_fact:bc591f4d31d083147bcab95b": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818492",
+      "source": "뉴시스",
+      "source_body_digest": "735593a60e32d9467c988e283346680493d547f4871e30fa0720d91e2196aebe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5f0e8fbf7faf786dc24b37ef6a54b3618e1cd8928e9a67d82949c73fd06cc3d",
+      "source_fact_keys": [
+        "source_fact:v1:0a587a73b3f0d3936e34075655a0f126addc446f11faab849ce5d5602689d870",
+        "source_fact:v1:0edfb2770737ec2c247db4e5396fc3ce5f0570ec633eecf2e7ba8f448b89f3bd",
+        "source_fact:v1:5e1b962e1789667ba5303004b94a037a6b6ea4f82cbfd2c008d8330bf008be37",
+        "source_fact:v1:8453ba8128a0e30d7c2b82a8478b1147cc4ce5f8b163952693177593846c8bcf",
+        "source_fact:v1:92793a4f270b17d6e83039619bac221dbd917f60f4c9bddb0e917d55d48d0b3b"
+      ],
+      "source_published_kst": "2026-10-08T12:26+09:00",
+      "source_title": "\"추가 방출 없이 합의된 비축유만 조기 공급…유럽 경윳값 8%↑\"",
+      "telegram_core_fact": "국제에너지기구(IEA) 회원국들이 7일(현지 시간) 중동 사태에 따른 에너지 공급 차질을 감안해 지난 3월 합의한 비축유 방출에 속도를 내겠다고 밝혔다.",
+      "title": "\"추가 방출 없이 합의된 비축유만 조기 공급…유럽 경윳값 8%↑\""
     },
     "source_fact:bc6e13b7b1742874c357b996": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
@@ -231355,6 +232694,28 @@
       "source_published_kst": "2026-10-07T14:22+09:00",
       "title": "AI 전력난에 엔진도 뜬다…HD건설기계, 북미서 3900억원 수주"
     },
+    "source_fact:c98e0891a4f4056ffbf2b597": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633833",
+      "source": "이투데이",
+      "source_body_digest": "07c79fc0bb40ee4a5640cafe8f2c2d42ee23c55caaba043dcbe7225533e80e62",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:640b5d61d7c4eec1132dd42ade0805996b45d4754718f7802fab56eb88715069",
+      "source_fact_keys": [
+        "source_fact:v1:62f260802e6983a06a9ac0b1800eba137e79e5edd2ad2d76e61bbe5d46234350",
+        "source_fact:v1:843f261f2794881238a6d946bd648c4010356244d36046bca4704d4306eefb39",
+        "source_fact:v1:c153b48a9912c20fc20eb28dd3ef75ad9f9ed117ec9fb5d1deaae3e3d9b05a9a",
+        "source_fact:v1:dddb9e83bc29d8cc11028004fe0002553c8878c1fb8a82540503de73f6de6124"
+      ],
+      "source_published_kst": "2026-10-08T11:13+09:00",
+      "source_title": "美 여자농구 골든스테이트, 연매출 1억달러⋯여성 구단 최초",
+      "telegram_core_fact": "미국여자프로농구(WNBA) 골든스테이트 발키리스가 여성 프로스포츠 구단 가운데 처음으로 연매출 1억 달러(약 1400억원)를 돌파했다.",
+      "title": "美 여자농구 골든스테이트, 연매출 1억달러⋯여성 구단 최초"
+    },
     "source_fact:c990bd542b81eec30504ee5b": {
       "first_seen_kst": "2026-10-07T08:36:47+09:00",
       "lanes": {
@@ -231946,6 +233307,53 @@
       ],
       "source_published_kst": "2026-10-06T11:37+09:00",
       "title": "통일부, 北지뢰 조사결과에 \"필요조치 검토…평화해법 마련 노력\" | 연합뉴스"
+    },
+    "source_fact:cb47b8e210ddfcb1a2aa9c9d": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818876",
+      "source": "뉴시스",
+      "source_body_digest": "07e1acb74b40fd3a2cb7bc0fc0772dadd8d85c5333a2647112f1c2ad48cdca93",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b661541c6e9373c87a5931f2396fc85452e6c955ab4787495e14acfb6a32442",
+      "source_fact_keys": [
+        "source_fact:v1:00f63e7f90f70028352df17eaa32e09817f355b53c4c97274f7c1ac58ce15d8e",
+        "source_fact:v1:0d034ac1434acb0b3b4bb40d3ff131e7849c92282c2c234fda2a06d58495fab1",
+        "source_fact:v1:3bd013021a2c0bda27e4d7eef3c4c9897a5b57b0f5f95b35883355c707b24840",
+        "source_fact:v1:948f7a1b60c0cd516c952fb328707c8219c2bf85d94bacba1d9c5782cab44a34",
+        "source_fact:v1:9e95f80ed2bd845a70e245a00034080ae3811b93d03bfdedbbc4a1d4aee4c0ab",
+        "source_fact:v1:e88e2c4434e30d7d18e87fac1152c2fef6f9ccc314199e188d8161c45c6204f6"
+      ],
+      "source_published_kst": "2026-10-08T12:38+09:00",
+      "source_title": "삼성전자 호실적에도 힘 못 쓰는 주가…\"선반영과 수급 살펴야\"",
+      "telegram_core_fact": "기대치를 뛰어넘는 이른바 '어닝 서프라이즈'를 기록하더라도 향후 가이던스가 불투명하거나 추가적인 상승 동력이 부족할 경우 주가는 즉각 조정을 받는 양상이다.",
+      "title": "삼성전자 호실적에도 힘 못 쓰는 주가…\"선반영과 수급 살펴야\""
+    },
+    "source_fact:cb594ebb5345da7ee4097c3a": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818492",
+      "source": "뉴시스",
+      "source_body_digest": "735593a60e32d9467c988e283346680493d547f4871e30fa0720d91e2196aebe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5f0e8fbf7faf786dc24b37ef6a54b3618e1cd8928e9a67d82949c73fd06cc3d",
+      "source_fact_keys": [
+        "source_fact:v1:0a587a73b3f0d3936e34075655a0f126addc446f11faab849ce5d5602689d870",
+        "source_fact:v1:0edfb2770737ec2c247db4e5396fc3ce5f0570ec633eecf2e7ba8f448b89f3bd",
+        "source_fact:v1:5e1b962e1789667ba5303004b94a037a6b6ea4f82cbfd2c008d8330bf008be37",
+        "source_fact:v1:8453ba8128a0e30d7c2b82a8478b1147cc4ce5f8b163952693177593846c8bcf",
+        "source_fact:v1:92793a4f270b17d6e83039619bac221dbd917f60f4c9bddb0e917d55d48d0b3b"
+      ],
+      "source_published_kst": "2026-10-08T12:26+09:00",
+      "source_title": "\"추가 방출 없이 합의된 비축유만 조기 공급…유럽 경윳값 8%↑\"",
+      "telegram_core_fact": "국제에너지기구(IEA) 회원국들이 7일(현지 시간) 중동 사태에 따른 에너지 공급 차질을 감안해 지난 3월 합의한 비축유 방출에 속도를 내겠다고 밝혔다.",
+      "title": "\"추가 방출 없이 합의된 비축유만 조기 공급…유럽 경윳값 8%↑\""
     },
     "source_fact:cb64deee031b1dd447621164": {
       "first_seen_kst": "2026-10-08T02:41:45+09:00",
@@ -236194,6 +237602,28 @@
       ],
       "source_published_kst": "2026-10-07T10:08+09:00",
       "title": "365mc·GC녹십자웰빙, 국소지방 신약·GLP-1 건기식 공동개발"
+    },
+    "source_fact:d47802a2f066e690ffde9d9a": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633833",
+      "source": "이투데이",
+      "source_body_digest": "07c79fc0bb40ee4a5640cafe8f2c2d42ee23c55caaba043dcbe7225533e80e62",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:640b5d61d7c4eec1132dd42ade0805996b45d4754718f7802fab56eb88715069",
+      "source_fact_keys": [
+        "source_fact:v1:62f260802e6983a06a9ac0b1800eba137e79e5edd2ad2d76e61bbe5d46234350",
+        "source_fact:v1:843f261f2794881238a6d946bd648c4010356244d36046bca4704d4306eefb39",
+        "source_fact:v1:c153b48a9912c20fc20eb28dd3ef75ad9f9ed117ec9fb5d1deaae3e3d9b05a9a",
+        "source_fact:v1:dddb9e83bc29d8cc11028004fe0002553c8878c1fb8a82540503de73f6de6124"
+      ],
+      "source_published_kst": "2026-10-08T11:13+09:00",
+      "source_title": "美 여자농구 골든스테이트, 연매출 1억달러⋯여성 구단 최초",
+      "telegram_core_fact": "미국여자프로농구(WNBA) 골든스테이트 발키리스가 여성 프로스포츠 구단 가운데 처음으로 연매출 1억 달러(약 1400억원)를 돌파했다.",
+      "title": "美 여자농구 골든스테이트, 연매출 1억달러⋯여성 구단 최초"
     },
     "source_fact:d47fc7f659b20ebfc76c9fd9": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
@@ -243193,6 +244623,30 @@
       "source_published_kst": "2026-10-07T14:17+09:00",
       "title": "반도체 소부장 덜어낸 국민연금…건설·에너지로 눈 돌렸다"
     },
+    "source_fact:e141c9f46d95f81c75e2a975": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818876",
+      "source": "뉴시스",
+      "source_body_digest": "07e1acb74b40fd3a2cb7bc0fc0772dadd8d85c5333a2647112f1c2ad48cdca93",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b661541c6e9373c87a5931f2396fc85452e6c955ab4787495e14acfb6a32442",
+      "source_fact_keys": [
+        "source_fact:v1:00f63e7f90f70028352df17eaa32e09817f355b53c4c97274f7c1ac58ce15d8e",
+        "source_fact:v1:0d034ac1434acb0b3b4bb40d3ff131e7849c92282c2c234fda2a06d58495fab1",
+        "source_fact:v1:3bd013021a2c0bda27e4d7eef3c4c9897a5b57b0f5f95b35883355c707b24840",
+        "source_fact:v1:948f7a1b60c0cd516c952fb328707c8219c2bf85d94bacba1d9c5782cab44a34",
+        "source_fact:v1:9e95f80ed2bd845a70e245a00034080ae3811b93d03bfdedbbc4a1d4aee4c0ab",
+        "source_fact:v1:e88e2c4434e30d7d18e87fac1152c2fef6f9ccc314199e188d8161c45c6204f6"
+      ],
+      "source_published_kst": "2026-10-08T12:38+09:00",
+      "source_title": "삼성전자 호실적에도 힘 못 쓰는 주가…\"선반영과 수급 살펴야\"",
+      "telegram_core_fact": "기대치를 뛰어넘는 이른바 '어닝 서프라이즈'를 기록하더라도 향후 가이던스가 불투명하거나 추가적인 상승 동력이 부족할 경우 주가는 즉각 조정을 받는 양상이다.",
+      "title": "삼성전자 호실적에도 힘 못 쓰는 주가…\"선반영과 수급 살펴야\""
+    },
     "source_fact:e14bfb7ba8cca5960a8499db": {
       "first_seen_kst": "2026-10-06T21:05:27+09:00",
       "lanes": {
@@ -247638,6 +249092,31 @@
       "source_title": "[속보] 삼성전자 영업익 100조 돌파…분기 기준 '국내 최초'",
       "telegram_core_fact": "인공지능(AI) 투자정보 플랫폼 에픽AI는 삼성전자의 3분기 매출과 영업이익 컨센서스(증권사 전망치 평균)를 각각 201조1109억원, 107조860억원으로 제시했다.",
       "title": "[속보] 삼성전자 영업익 100조 돌파…분기 기준 '국내 최초'"
+    },
+    "source_fact:e940c14333b9f65d76b4c4ba": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03371846645610952",
+      "source": "이데일리",
+      "source_body_digest": "fb979b25ef32ccac4109da387765ef8a333ef86d0dd587921cca70cf1778b523",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a6714519873e4a4898102d20e309ed1200d825d7b1b33e2ae9d8f26da7eceeaa",
+      "source_fact_keys": [
+        "source_fact:v1:2d6cc0202c8f727a85bc685021cc13e96653b8c2673771580d057e3188f0fb46",
+        "source_fact:v1:6fa45948a707575127c66d31c42cb1a0e7b054912391664e9020c2420874dabe",
+        "source_fact:v1:7967640b582fd6e0e7729728a8cf1a164c7897f0e4beadcfb47d7b5b080cbed9",
+        "source_fact:v1:b7c4d34282468de8fb5e353425c6fbd4b784e1d1959eb3149808d6303b76866e",
+        "source_fact:v1:bf4e7bd8aa2ad92f9ff08ac256e05f2ac5ba90428b05905c97f666396c4e401a",
+        "source_fact:v1:c9b266705baaf10a66085403b2afa8cdf69dd832153f7c13fcea995df0ae1265",
+        "source_fact:v1:cde1e465fbf6285778dc62a7387b10249f796ef0f2d9dc9ddc0891a1d7045e92"
+      ],
+      "source_published_kst": "2026-10-08T11:12+09:00",
+      "source_title": "‘삼성 투자’ 월든, 美 동·서부 거점 확대…생산라인에 로봇 투입",
+      "telegram_core_fact": "연구실 시연을 넘어 실제 생산라인에서 사람, 전체 교대시간 동안 로봇을 운영하는 데 이어 삼성전기와 세메스 제조현장에서도 로봇의 적용 가능성을 검증하고 있다.",
+      "title": "‘삼성 투자’ 월든, 美 동·서부 거점 확대…생산라인에 로봇 투입"
     },
     "source_fact:e9579b868ce1dfa6e4c157e3": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
@@ -260472,6 +261951,31 @@
       "source": "머니투데이",
       "title": "\"삼성전자, 3Q 예상 영업익 107조…환율·D램 강세 둔화\"-키움"
     },
+    "title:0d589a0d54e27329c6eb3687": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03371846645610952",
+      "source": "이데일리",
+      "source_body_digest": "fb979b25ef32ccac4109da387765ef8a333ef86d0dd587921cca70cf1778b523",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a6714519873e4a4898102d20e309ed1200d825d7b1b33e2ae9d8f26da7eceeaa",
+      "source_fact_keys": [
+        "source_fact:v1:2d6cc0202c8f727a85bc685021cc13e96653b8c2673771580d057e3188f0fb46",
+        "source_fact:v1:6fa45948a707575127c66d31c42cb1a0e7b054912391664e9020c2420874dabe",
+        "source_fact:v1:7967640b582fd6e0e7729728a8cf1a164c7897f0e4beadcfb47d7b5b080cbed9",
+        "source_fact:v1:b7c4d34282468de8fb5e353425c6fbd4b784e1d1959eb3149808d6303b76866e",
+        "source_fact:v1:bf4e7bd8aa2ad92f9ff08ac256e05f2ac5ba90428b05905c97f666396c4e401a",
+        "source_fact:v1:c9b266705baaf10a66085403b2afa8cdf69dd832153f7c13fcea995df0ae1265",
+        "source_fact:v1:cde1e465fbf6285778dc62a7387b10249f796ef0f2d9dc9ddc0891a1d7045e92"
+      ],
+      "source_published_kst": "2026-10-08T11:12+09:00",
+      "source_title": "‘삼성 투자’ 월든, 美 동·서부 거점 확대…생산라인에 로봇 투입",
+      "telegram_core_fact": "연구실 시연을 넘어 실제 생산라인에서 사람, 전체 교대시간 동안 로봇을 운영하는 데 이어 삼성전기와 세메스 제조현장에서도 로봇의 적용 가능성을 검증하고 있다.",
+      "title": "‘삼성 투자’ 월든, 美 동·서부 거점 확대…생산라인에 로봇 투입"
+    },
     "title:0d64a8fa1fe6655f03b74d35": {
       "first_seen_kst": "2026-09-24T14:05:07+09:00",
       "lanes": {
@@ -261450,6 +262954,30 @@
       "link": "https://www.yna.co.kr/view/AKR20260920035100009",
       "source": "연합뉴스",
       "title": "이란 협상단장 \"우리 조건 이행안되면 호르무즈 계속 폐쇄\" | 연합뉴스"
+    },
+    "title:13f4cc67d6cd403a724cb2db": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818876",
+      "source": "뉴시스",
+      "source_body_digest": "07e1acb74b40fd3a2cb7bc0fc0772dadd8d85c5333a2647112f1c2ad48cdca93",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5b661541c6e9373c87a5931f2396fc85452e6c955ab4787495e14acfb6a32442",
+      "source_fact_keys": [
+        "source_fact:v1:00f63e7f90f70028352df17eaa32e09817f355b53c4c97274f7c1ac58ce15d8e",
+        "source_fact:v1:0d034ac1434acb0b3b4bb40d3ff131e7849c92282c2c234fda2a06d58495fab1",
+        "source_fact:v1:3bd013021a2c0bda27e4d7eef3c4c9897a5b57b0f5f95b35883355c707b24840",
+        "source_fact:v1:948f7a1b60c0cd516c952fb328707c8219c2bf85d94bacba1d9c5782cab44a34",
+        "source_fact:v1:9e95f80ed2bd845a70e245a00034080ae3811b93d03bfdedbbc4a1d4aee4c0ab",
+        "source_fact:v1:e88e2c4434e30d7d18e87fac1152c2fef6f9ccc314199e188d8161c45c6204f6"
+      ],
+      "source_published_kst": "2026-10-08T12:38+09:00",
+      "source_title": "삼성전자 호실적에도 힘 못 쓰는 주가…\"선반영과 수급 살펴야\"",
+      "telegram_core_fact": "기대치를 뛰어넘는 이른바 '어닝 서프라이즈'를 기록하더라도 향후 가이던스가 불투명하거나 추가적인 상승 동력이 부족할 경우 주가는 즉각 조정을 받는 양상이다.",
+      "title": "삼성전자 호실적에도 힘 못 쓰는 주가…\"선반영과 수급 살펴야\""
     },
     "title:140b6b472ee5f26e9302306e": {
       "first_seen_kst": "2026-10-06T20:54:05+09:00",
@@ -268059,6 +269587,28 @@
       "telegram_core_fact": "한국토지주택공사(LH)가 주택공급 사업의 병목을 줄이고 착공 일정을 앞당기는데 박차를 가하고 있다. 보상에 들어간 지 한 달가량 지난 9월 초 기준 계약률은 토지 소유자 수 기준 약 27%, 보상 계약액은 약 2조4000억원으로 집계됐다.",
       "title": "\"계획보다 더 빨리\"…LH, 사업 병목 풀고 주택공급 속도전"
     },
+    "title:3881dffc5b68985a7eeb7819": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01902406645610952",
+      "source": "이데일리",
+      "source_body_digest": "5f90d08efa64d9877bbf7c997c30d9d9a03a1f0e2c2805481bdf7d4e3cb4da50",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b4263f8d3aa32672059292f500721b2d57732381cc4bfd91b2094e6fdc092b4b",
+      "source_fact_keys": [
+        "source_fact:v1:180173a89272dd745a5bff3cb12aa3a54f8e0648c87f244b61021e48b68de632",
+        "source_fact:v1:24afdb13d417e786673763cb04510efda4e986aedd867b70d0bb37ffc97a93f2",
+        "source_fact:v1:649087d9078ee8a9bd73b10ef972a4e545d394f0809e4265af05fbe3ecabe5f0",
+        "source_fact:v1:b2240b3a8d1713228e67d51b24586abaae08fe78c0f682fe4f5f43928e068416"
+      ],
+      "source_published_kst": "2026-10-08T05:36+09:00",
+      "source_title": "[오늘장특징주]테슬라, 스페이스X, TSMC, 인텔, 엔비디아, 마벨",
+      "telegram_core_fact": "이는 전일 마벨이 진행한 애널리스트데이에서 나온 내용을 반영한 것으로, 이들은 2031 회계연도에 매출 700억~900억 달러, 비일반회계기준(Non-GAAP) 주당순이익(EPS) 30달러 이상을 달성하겠다는 장기 재무 모델을 제시했다.",
+      "title": "[오늘장특징주]테슬라, 스페이스X, TSMC, 인텔, 엔비디아, 마벨"
+    },
     "title:389a6fb1199bbab21a8bec12": {
       "first_seen_kst": "2026-10-01T21:17:39+09:00",
       "lanes": {
@@ -268694,6 +270244,29 @@
       "link": "https://www.yna.co.kr/view/MYH20261002000800038",
       "source": "연합뉴스",
       "title": "美, 이란 기업 무더기 제재…자동차·철도 등 | 연합뉴스"
+    },
+    "title:3c0fe6b455b93adfba909ca1": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818492",
+      "source": "뉴시스",
+      "source_body_digest": "735593a60e32d9467c988e283346680493d547f4871e30fa0720d91e2196aebe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5f0e8fbf7faf786dc24b37ef6a54b3618e1cd8928e9a67d82949c73fd06cc3d",
+      "source_fact_keys": [
+        "source_fact:v1:0a587a73b3f0d3936e34075655a0f126addc446f11faab849ce5d5602689d870",
+        "source_fact:v1:0edfb2770737ec2c247db4e5396fc3ce5f0570ec633eecf2e7ba8f448b89f3bd",
+        "source_fact:v1:5e1b962e1789667ba5303004b94a037a6b6ea4f82cbfd2c008d8330bf008be37",
+        "source_fact:v1:8453ba8128a0e30d7c2b82a8478b1147cc4ce5f8b163952693177593846c8bcf",
+        "source_fact:v1:92793a4f270b17d6e83039619bac221dbd917f60f4c9bddb0e917d55d48d0b3b"
+      ],
+      "source_published_kst": "2026-10-08T12:26+09:00",
+      "source_title": "\"추가 방출 없이 합의된 비축유만 조기 공급…유럽 경윳값 8%↑\"",
+      "telegram_core_fact": "국제에너지기구(IEA) 회원국들이 7일(현지 시간) 중동 사태에 따른 에너지 공급 차질을 감안해 지난 3월 합의한 비축유 방출에 속도를 내겠다고 밝혔다.",
+      "title": "\"추가 방출 없이 합의된 비축유만 조기 공급…유럽 경윳값 8%↑\""
     },
     "title:3c1aaa2981b0d370a5fd0a06": {
       "first_seen_kst": "2026-09-28T15:47:59+09:00",
@@ -273245,6 +274818,25 @@
       "source_title": "미래운용, '스테이트타워 남산' 매각 검토…KIC 등 입주",
       "telegram_core_fact": "현재 복수의 부동산 자문사를 대상으로 매각 주관사 선정 절차를 진행 중인 초기 단계로, 입찰제안요청서(RFP)는 아직 배포하지 않았다.",
       "title": "미래운용, '스테이트타워 남산' 매각 검토…KIC 등 입주"
+    },
+    "title:5465b6bc5a552ea6e67abcc8": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.news1.kr/world/usa-canada/6313643",
+      "source": "뉴스1",
+      "source_body_digest": "8198f4ed181502304a861ad129fee70b2a3dd7643754e85e25dada4f37110f57",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78ad8d2ecb400c3d0bbbdc4fcd43ec4a948c3ab1a6581dc16a5167686acaa7d7",
+      "source_fact_keys": [
+        "source_fact:v1:31f87c45164a30964e93b7461a16e6dc4b23374ed91236bcaae4151f7709368d"
+      ],
+      "source_published_kst": "2026-10-08T04:35+09:00",
+      "source_title": "美연준 \"연내 기준금리 한 차례 더 인상\"…9월 FOMC 의사록 공개",
+      "telegram_core_fact": "연준은 9월 회의에서 기준금리를 0.25%포인트(p) 올려 연 3.75~4.00%로 결정했다.",
+      "title": "美연준 \"연내 기준금리 한 차례 더 인상\"…9월 FOMC 의사록 공개"
     },
     "title:5483a50ee87a43e6db5da291": {
       "first_seen_kst": "2026-09-30T02:23:41+09:00",
@@ -286615,6 +288207,28 @@
       "telegram_core_fact": "강유정 청와대 수석대변인은 7일 서면브리핑을 내고 \"우리 정부는 러시아의 우크라이나 침공 이후 국제 사회와 긴밀히 공조, 대러 제재와 수출통제를 일관되게 이행해 왔다. 이러한 우리 정부의 기본 입장에는 변함이 없다\"며 이같이 밝혔다.",
       "title": "靑, 우크라 '러 석유제품 공급' 주장에 \"사실과 다르고 부적절\""
     },
+    "title:a3d025aafe8a67c2dea80f30": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633833",
+      "source": "이투데이",
+      "source_body_digest": "07c79fc0bb40ee4a5640cafe8f2c2d42ee23c55caaba043dcbe7225533e80e62",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:640b5d61d7c4eec1132dd42ade0805996b45d4754718f7802fab56eb88715069",
+      "source_fact_keys": [
+        "source_fact:v1:62f260802e6983a06a9ac0b1800eba137e79e5edd2ad2d76e61bbe5d46234350",
+        "source_fact:v1:843f261f2794881238a6d946bd648c4010356244d36046bca4704d4306eefb39",
+        "source_fact:v1:c153b48a9912c20fc20eb28dd3ef75ad9f9ed117ec9fb5d1deaae3e3d9b05a9a",
+        "source_fact:v1:dddb9e83bc29d8cc11028004fe0002553c8878c1fb8a82540503de73f6de6124"
+      ],
+      "source_published_kst": "2026-10-08T11:13+09:00",
+      "source_title": "美 여자농구 골든스테이트, 연매출 1억달러⋯여성 구단 최초",
+      "telegram_core_fact": "미국여자프로농구(WNBA) 골든스테이트 발키리스가 여성 프로스포츠 구단 가운데 처음으로 연매출 1억 달러(약 1400억원)를 돌파했다.",
+      "title": "美 여자농구 골든스테이트, 연매출 1억달러⋯여성 구단 최초"
+    },
     "title:a3e9c451eb43a7945424e0b0": {
       "first_seen_kst": "2026-10-01T19:16:32+09:00",
       "lanes": {
@@ -295932,6 +297546,32 @@
       "source": "전자신문",
       "title": "앰코, 韓 패키지 본딩 기술 'R-LTC' 美 시장 전면 배치"
     },
+    "title:d91d47e9583cc88c7b4ca52c": {
+      "first_seen_kst": "2026-10-08T14:55:40+09:00",
+      "lanes": {
+        "live": "2026-10-08T14:55:40+09:00"
+      },
+      "last_seen_kst": "2026-10-08T14:55:40+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02656806645610952",
+      "source": "이데일리",
+      "source_body_digest": "3e0dacecef9b5207bb8c918a73e0b13088aa15296347200952c59937ac47e29c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:889759894f30707f475c96cf305c4399d3d06e387cc94d8f970b35843776a480",
+      "source_fact_keys": [
+        "source_fact:v1:0713132b0b59553d3e7f7faa9202783682388ed6a55349b1575d861f5299d238",
+        "source_fact:v1:0bb7ef2ec2ad1063e6f8ace721c349614ce7c821492fc7c6efd92f57e015725f",
+        "source_fact:v1:22ffe685090afc3c40dc3ee28c7e5c1b4b1ba0d19052fa3055a2db75392b9efb",
+        "source_fact:v1:34ad064b33bb14ebb7e997ffe18b610df111dd27f2cd940771f6940596d3bb99",
+        "source_fact:v1:4009d9668f7ac937a4fae8d42ef408fa37b224eca3cd3ceeca836f2515e9a342",
+        "source_fact:v1:522dd6826800544a2c4fc31a8c73d33fff8f9bae777c221718fd6b52a481b609",
+        "source_fact:v1:e8f345a5281cf2685b65cf1080740ecbbc67648a1cbd189d336f029a219948c1",
+        "source_fact:v1:fa22182a0f43ea871db0677484dca53b5d4f0ccec0396d8840178e6fc74f7e5e"
+      ],
+      "source_published_kst": "2026-10-08T09:07+09:00",
+      "source_title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박",
+      "telegram_core_fact": "하지만 전쟁 이후 2년 만기 주택담보대출 평균 금리가 1%포인트 가까이 상승하면서 최근 6%에 근접했다.",
+      "title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박"
+    },
     "title:d93b60bb1832b9d4703a19b2": {
       "first_seen_kst": "2026-10-06T19:46:03+09:00",
       "lanes": {
@@ -302387,5 +304027,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-08T14:21:54+09:00"
+  "updated_at_kst": "2026-10-08T14:55:40+09:00"
 }
