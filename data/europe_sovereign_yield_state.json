@@ -1,5 +1,5 @@
 {
-  "last_checked_kst": "2026-10-09T00:08:06+09:00",
+  "last_checked_kst": "2026-10-09T00:09:55+09:00",
   "active": {
     "fr10:above:4.5": true,
     "fr10:above:4.75": true,
@@ -97,6 +97,13 @@
     ]
   },
   "source_fail_streak": 0,
+  "coverage_outage_alerted": false,
+  "country_coverage": {
+    "프랑스": true,
+    "독일": true,
+    "이탈리아": true,
+    "영국": true
+  },
   "last_source_dates": {
     "fr10": "2026-10-08",
     "de10": "2026-10-08",
