@@ -77,6 +77,36 @@ jobs:
           python -m py_compile scripts/khs_trusted_policy_news_watch.py
           python -m py_compile scripts/khs_policy_seen_finalize.py
           PYTHONPATH=. python - <<'PY'
+          import scripts.khs_policy_watch as watch
+          from scripts.khs_policy_telegram_formatter import presidential_action_timeline_lines
+          from scripts.khs_policy_telegram_delivery import _semantic_delivery_digest
+          watch._self_test_energy_month_proclamation()
+          alert = {
+              "source": "White House proclamations",
+              "document_type": "Proclamation",
+              "title": "National Energy Dominance Month, 2026",
+              "policy_timeline": [
+                  {"date": "2025-10-17", "stage": "과거", "detail": "동일 명칭 2025년 포고"},
+                  {"date": "2026-10-07", "stage": "이번", "detail": "새 예산이 아닌 2026년 포고"},
+              ],
+          }
+          lines = presidential_action_timeline_lines(alert)
+          assert "2025년 10월 17일" in " ".join(lines), lines
+          assert "2026년 10월 7일" in " ".join(lines), lines
+          first = _semantic_delivery_digest(
+              ["National Energy Dominance Month, 2026 proclamation"],
+              digest="raw-a", route="policy",
+              title="National Energy Dominance Month, 2026"
+          )
+          second = _semantic_delivery_digest(
+              ["2026년 10월 국가 에너지 지배력의 달 포고문"],
+              digest="raw-b", route="policy",
+              title="2026년 10월 국가 에너지 지배력의 달 포고"
+          )
+          assert first == second, (first, second)
+          print("energy_month_timeline_and_delivery_dedupe=passed")
+          PY
+          PYTHONPATH=. python - <<'PY'
           import scripts.khs_trusted_policy_news_watch as m
           m._self_test_us_treasury_outbound_event_model()
           m._self_test_defense_future_warfare_event_model()
