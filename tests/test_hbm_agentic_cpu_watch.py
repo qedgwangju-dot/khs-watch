@@ -278,6 +278,21 @@ class AgenticCpuStructureTests(unittest.TestCase):
         self.assertEqual(found[0]["issuer"], "bnpp_analyst")
         self.assertEqual(found[0]["metrics"].get("amd_target_usd"), 1100)
 
+    def test_epyc_product_mention_is_not_customer_demand_validation(self):
+        official_url = "https://www.amd.com/en/news/epyc-platforms"
+        self.assertFalse(w.is_official_validation(
+            official_url,
+            "The AMD EPYC server CPU platform enables cloud computing workloads.",
+        ))
+        self.assertTrue(w.is_official_validation(
+            official_url,
+            "Meta is validating sixth-generation AMD EPYC CPUs in its labs.",
+        ))
+        self.assertFalse(w.is_official_validation(
+            "https://untrusted.example.com/news",
+            "Meta is validating sixth-generation AMD EPYC CPUs in its labs.",
+        ))
+
     def test_same_day_official_cpu_validation_not_suppressed(self):
         item = {
             "kind": "bing",
