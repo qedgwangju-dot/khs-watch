@@ -10,6 +10,7 @@ import sys
 import urllib.parse
 
 import yen_policy_news_alert as base
+import yen_policy_news_event_guard as event_guard
 from krw_fx import JpyKrwQuote, format_krw, latest_jpy_krw, yen_to_krw
 
 WSJ_MARKERS = (
@@ -550,6 +551,7 @@ def install() -> None:
 
 
 install()
+event_guard.install(base)
 
 
 def main() -> int:
