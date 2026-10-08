@@ -402,8 +402,10 @@ def official_cpu_signal_type(url: str, text: str) -> str:
             continue
         # Prospective, negated or hypothetical volume is not observed demand.
         context = low[max(0, action.start() - 70):action.end() + 25]
-        if re.search(r"\b(?:no|not|without|unconfirmed|expected\s+to|plans?\s+to"
-                     r"|designed\s+to|could|might|may|forecast|projected)\b", context):
+        if re.search(r"\b(?:no|not|without|unconfirmed|expect(?:s|ed)?(?:\s+to)?"
+                     r"|plans?\s+to|designed\s+to|could|might|may|forecast"
+                     r"|projected|predict(?:s|ed)?|anticipat(?:es|ed)?"
+                     r"|estimat(?:es|ed)?|guidance|outlook)\b", context):
             continue
         return "demand"
     return "supply" if supply_seen else ""
