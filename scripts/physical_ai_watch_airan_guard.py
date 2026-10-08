@@ -84,18 +84,109 @@ def _dongkuk_report_recovery() -> list[dict]:
     }]
 
 
+
+# DKT humanoid battery module: retrospectively restore an important reported
+# production milestone, without turning the July ESS-BMS discussion into sales.
+# Company releases, broker research and anonymous customer identities stay separate.
+DKT_HUMANOID_RECOVERY = 'DIRECT_DKT_HUMANOID_BATTERY_MODULE_HANA_20260909'
+DKT_COMPANY = re.compile(r'디케이티|\bDKT\b|Dongkuk Tech', re.I)
+DKT_ROBOT = re.compile(r'휴머노이드|humanoid|로보틱스|robotics|로봇|robot', re.I)
+DKT_BATTERY = re.compile(
+    r'(?:배터리|battery).{0,45}(?:모듈|module|팩|pack)|'
+    r'(?:BMS|배터리관리시스템|배터리\s*관리\s*시스템|battery\s*management)|'
+    r'(?:이머전시|비상장치|emergency).{0,45}(?:배터리|battery)',
+    re.I,
+)
+DKT_REPORTED_SOP = re.compile(
+    r'(?:8\s*월\s*말|late\s+Aug(?:ust)?).{0,95}(?:승인|approval|approved?).{0,140}'
+    r'(?:양산\s*공급[이가은을\s]*(?:시작|개시)|양산\s*(?:공급\s*)?(?:시작|개시)|'
+    r'mass[-\s]*production\s*(?:supply\s*)?(?:started|began)|'
+    r'(?:started|began)\s+mass[-\s]*production)',
+    re.I,
+)
+DKT_COMPANY_DIRECT = {'디케이티', 'DKT', 'DKT Official', '디케이티 공식 발표'}
+DKT_BROKER_SOURCES = {'하나증권', 'Hana Securities', 'IBK투자증권', '교보증권'}
+DKT_REPORT_SOURCES = DKT_BROKER_SOURCES | {'프라임경제', '아시아경제', '뉴스프라임', '연합뉴스'}
+DKT_DIRECT_CONTRACT = re.compile(
+    r'(?:휴머노이드|humanoid).{0,100}(?:BMS|배터리|battery).{0,110}'
+    r'(?:정식\s*공급계약|구매\s*계약\s*체결|양산\s*수주\s*확정)|'
+    r'(?:BMS|배터리|battery).{0,110}(?:휴머노이드|humanoid).{0,100}'
+    r'(?:공급계약\s*체결|정식\s*수주)',
+    re.I,
+)
+
+
+def _is_dkt_humanoid(text: str) -> bool:
+    return bool(DKT_COMPANY.search(text) and DKT_ROBOT.search(text) and DKT_BATTERY.search(text))
+
+
+def _dkt_stage(text: str, source: str = '') -> str:
+    if not _is_dkt_humanoid(text):
+        return ''
+    if source in DKT_COMPANY_DIRECT and DKT_DIRECT_CONTRACT.search(text) and not re.search(
+        r'기사|증권사|리포트|업계\s*보도|추정', text, re.I
+    ):
+        return 'official_robot_bms_contract'
+    if DKT_REPORTED_SOP.search(text):
+        if source in DKT_COMPANY_DIRECT and not re.search(r'증권사|하나증권|파악|보도|추정', text, re.I):
+            return 'official_robot_module_sop'
+        if source in DKT_REPORT_SOURCES:
+            return 'reported_robot_module_sop'
+    return 'old_discussion_or_plan'
+
+
+def _dkt_humanoid_recovery() -> list[dict]:
+    return [{
+        'title': '디케이티 휴머노이드 비상장치용 배터리 모듈, 8월 말 양산 공급 시작 보도',
+        'link': 'https://t.me/s/hanasmallcap',
+        'description': (
+            '2026년 9월 9일 하나증권 권태우·김진우 리포트: 북미 전기차 고객사향 '
+            '휴머노이드 이머전시 디바이스 배터리 모듈은 주당 1,500~2,000대의 초기 공급으로 '
+            '검증을 마쳤고 8월 말 승인과 함께 양산 공급이 시작된 것으로 파악했다. '
+            '이 고객 실명과 실제 현재 주간 출하량, 계약금액 및 인식매출은 비공개다. '
+            '회사 8월 18일 공개자료에는 해당 휴머노이드 소형 배터리팩 모듈을 '
+            '9월부터 양산할 예정이라고 기재됐다. '
+            '2026년 7월 13일 전자신문의 휴머노이드용 BMS 협력 논의와는 제품·단계가 다르다. '
+            '8월 19일 북미 LFP ESS용 BMS 첫 출하는 또 다른 실제 양산 사업이며 '
+            '휴머노이드용 BMS 양산을 증명하지 않는다. '
+            '테슬라 또는 보스턴다이내믹스가 이번 북미 배터리 모듈의 '
+            '확정 구매 고객이라는 공식 양방향 발표는 확인되지 않았다.'
+        ),
+        'source': '하나증권',
+        # The original report date is stated in text. Do not fabricate an
+        # exact intraday timestamp; the item is an explicitly recovered
+        # earlier milestone, not a new 2026-10-08 announcement.
+        'published': None,
+        'direct_recovery': True,
+        'dkt_reported_robot_module_sop': True,
+    }]
+
+
 _orig_query_news = base.query_news
 
 
 def query_news(q: str) -> list[dict]:
     if q == DONGKUK_NPS_RECOVERY:
         return _dongkuk_report_recovery()
+    if q == DKT_HUMANOID_RECOVERY:
+        return _dkt_humanoid_recovery()
     return _orig_query_news(q)
 
 
 base.query_news = query_news
 if DONGKUK_NPS_RECOVERY not in base.QUERIES:
     base.QUERIES.append(DONGKUK_NPS_RECOVERY)
+if DKT_HUMANOID_RECOVERY not in base.QUERIES:
+    base.QUERIES.append(DKT_HUMANOID_RECOVERY)
+for q in (
+    '(디케이티 OR DKT) (휴머노이드 OR humanoid OR 로보틱스) '
+    '(BMS OR 배터리팩 OR 배터리모듈 OR 충전모듈) '
+    '(공급계약 OR 고객승인 OR 양산공급 OR 본계약 OR 출하 OR 수율 OR 납기 OR 연기)',
+    '(디케이티 OR DKT) (이머전시 디바이스 OR 소형 배터리팩 OR 휴머노이드 BMS) '
+    '(북미 OR 미국 OR 로봇) (공급확대 OR 검증 OR 실제 출하 OR 매출 OR 수주)',
+):
+    if q not in base.QUERIES:
+        base.QUERIES.append(q)
 for q in (
     '(동국산업 OR "Dongkuk Industries") (니켈도금강판 OR "nickel plated steel" OR DiKel) '
     '(46시리즈 OR 4680 OR "46 series") (초도납품 OR 출하 OR 고객승인 OR 품질인증 OR 공급계약 OR 양산 OR 납품지연)',
@@ -152,6 +243,8 @@ def _is_airan(text: str) -> bool:
 
 
 def topic_group(text: str) -> str | None:
+    if _is_dkt_humanoid(text):
+        return 'dkt_humanoid'
     if _is_dongkuk_nps(text):
         return 'dongkuk_nps'
     if _is_airan(text):
@@ -171,6 +264,10 @@ def _stage(text: str) -> str:
 
 def score(item: dict) -> int:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if topic_group(text) == 'dkt_humanoid':
+        stage = _dkt_stage(text, item.get('source') or '')
+        return {'reported_robot_module_sop': 44, 'official_robot_module_sop': 52,
+                'official_robot_bms_contract': 56, 'old_discussion_or_plan': 0}.get(stage, 0)
     if topic_group(text) == 'dongkuk_nps':
         stage = _dongkuk_stage(text, item.get('source') or '')
         return {'reported_first_shipment': 33, 'official_first_shipment': 46,
@@ -198,6 +295,13 @@ def score(item: dict) -> int:
 
 
 def category(text: str, group: str) -> str:
+    if group == 'dkt_humanoid':
+        source = next((x for x in DKT_REPORT_SOURCES | DKT_COMPANY_DIRECT if text.endswith(' ' + x)), '')
+        return {
+            'reported_robot_module_sop': '디케이티 로보틱스 · 배터리 모듈 양산 공급 증권사 확인',
+            'official_robot_module_sop': '디케이티 로보틱스 · 배터리 모듈 양산 회사 공식 확인',
+            'official_robot_bms_contract': '디케이티 로보틱스 · 휴머노이드용 BMS 정식 계약',
+        }.get(_dkt_stage(text, source), '디케이티 로보틱스 · 협의·양산계획 기존 기준선')
     if group == 'dongkuk_nps':
         official_source = next(
             (name for name in DONGKUK_OFFICIAL_SOURCES if text.endswith(' ' + name)), ''
@@ -221,6 +325,21 @@ def category(text: str, group: str) -> str:
 
 
 def meaning(cat: str) -> str:
+    if cat.startswith('디케이티 로보틱스 · '):
+        if '증권사 확인' in cat:
+            return ('7/13 휴머노이드용 BMS 협의 보도→8/18 회사의 소형 배터리팩 모듈 '
+                    '9월 양산 계획→9/9 하나증권의 8월 말 양산 공급 시작 파악으로 단계가 바뀌었습니다. '
+                    '주당 1,500~2,000대는 초기 고객 검증용 공급 규모이지 현재 정규 출하량 확정치가 아닙니다. '
+                    '북미 고객 실명·단가·계약액·인식매출 미공개. '
+                    '8/19 북미 LFP ESS용 BMS 실제 첫 출하는 이 휴머노이드 모듈과 별도 사업입니다.')
+        if '양산 회사 공식 확인' in cat:
+            return ('회사 직접 확인으로 북미 휴머노이드용 배터리 모듈의 양산 공급이 '
+                    '보도 단계를 넘어 공식 단계로 이동했습니다. '
+                    '실제 출하 대수·평균판매단가·정규 구매계약·반복 발주·분기 인식매출을 분리해 검증합니다.')
+        if 'BMS 정식 계약' in cat:
+            return ('협의 중이던 휴머노이드용 BMS의 계약이 별도 공식 확인된 단계입니다. '
+                    '기존 비상장치용 배터리 모듈, ESS용 BMS와 구분하고 고객·계약액·첫 출하를 확인합니다.')
+        return '7/13 협력 논의·8/18 양산 계획의 과거 기준선입니다. 반복 기사만으로 계약·매출을 확정하지 않습니다.'
     if cat.startswith('동국산업 46시리즈 · '):
         if '초도 납품 보도' in cat:
             return ('9월 14일 고객 품질인증 완료·4분기 공급 예정은 기존 회사 발표입니다. '
@@ -251,6 +370,11 @@ def meaning(cat: str) -> str:
 
 
 def risk(cat: str) -> str:
+    if cat.startswith('디케이티 로보틱스 · '):
+        return ('최대 오판은 북미 익명 고객을 테슬라로 확정하거나 '
+                '휴머노이드 배터리 모듈과 휴머노이드용 BMS·ESS용 BMS를 같은 공급계약으로 보는 것입니다. '
+                '소형 팩은 발열·고출력 순간 방전·배선 진동·충격·열폭주 전파·보호회로 신뢰성 검증이 병목입니다. '
+                '향후 6~12개월의 조기경보는 실제 주간 출하·재작업률·반품·교환 접수·고객 승인 및 분기 매출입니다.')
     if cat.startswith('동국산업 46시리즈 · '):
         return ('테슬라 Optimus·보스턴다이내믹스 Atlas의 원통형 배터리 언급은 '
                 '동국산업의 두 로봇 직접 공급 증거가 아닙니다. 북미 실제 고객·캔 공급사도 비공개입니다. '
@@ -265,6 +389,16 @@ def risk(cat: str) -> str:
 
 
 def verification(item: dict, group: str, text: str) -> str:
+    if group == 'dkt_humanoid':
+        stage = _dkt_stage(text, item.get('source') or '')
+        if stage == 'reported_robot_module_sop':
+            return ('9/9 하나증권 확인 보고·프라임경제 교차 보도 · '
+                    '8/18 회사 양산 계획 공개 · 회사 직접 출하·인식매출·익명 고객 실명은 미확인')
+        if stage == 'official_robot_module_sop':
+            return '회사 직접 양산 확인 · 실제 공급계약·판매수량·매출인식 별도 확인'
+        if stage == 'official_robot_bms_contract':
+            return '회사 직접 휴머노이드용 BMS 공급계약 확인 · ESS용 BMS와 다른 계약'
+        return '기존 개발 협의·양산 계획 단계 · 현재 신규 양산 증빙 아님'
     if group == 'dongkuk_nps':
         stage = _dongkuk_stage(text, item.get('source') or '')
         if stage == 'reported_first_shipment':
@@ -284,6 +418,14 @@ def verification(item: dict, group: str, text: str) -> str:
 
 def clean_title(title: str, source: str) -> str:
     text = f'{title} {source}'
+    if _is_dkt_humanoid(text):
+        stage = _dkt_stage(text, source)
+        if stage == 'reported_robot_module_sop':
+            return '디케이티, 휴머노이드 비상장치용 배터리 모듈 양산 공급 시작 보도(9/9 하나증권)'
+        if stage == 'official_robot_module_sop':
+            return '디케이티, 휴머노이드용 배터리 모듈 양산 회사 직접 확인'
+        if stage == 'official_robot_bms_contract':
+            return '디케이티, 휴머노이드용 BMS 정식 공급계약 공식 확인'
     # Headlines can name Tesla/Atlas and "cylindrical" while omitting the
     # actual material and 46-series details. Do not repeat this clickbait as
     # proof of direct customer delivery.
@@ -312,6 +454,8 @@ def clean_title(title: str, source: str) -> str:
 
 
 def tag_for(group: str) -> str:
+    if group == 'dkt_humanoid':
+        return '디케이티 휴머노이드 배터리'
     if group == 'dongkuk_nps':
         return '동국산업 46시리즈 소재'
     if group == 'airan':
@@ -321,6 +465,11 @@ def tag_for(group: str) -> str:
 
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if topic_group(text) == 'dkt_humanoid':
+        stage = _dkt_stage(text, item.get('source') or '')
+        return hashlib.sha256(
+            f'dkt|humanoid|emergency-battery-module|{stage}|2026-08'.encode()
+        ).hexdigest()
     if topic_group(text) == 'dongkuk_nps':
         stage = _dongkuk_stage(text, item.get('source') or '')
         # Event + evidence tier, not publisher/article or unrelated robot claims.
@@ -354,6 +503,9 @@ def key(item: dict) -> str:
 def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
     chosen = _orig_select_diverse(items, seen, force, limit)
     candidates = items if force else [x for x in items if x.get('key') not in seen]
+    dkt = next((x for x in candidates if x.get('group') == 'dkt_humanoid'), None)
+    if dkt and not any(x.get('key') == dkt.get('key') for x in chosen):
+        chosen = ([dkt, *chosen] if len(chosen) < limit else [dkt, *chosen[:-1]])
     dongkuk = next((x for x in candidates if x.get('group') == 'dongkuk_nps'), None)
     if dongkuk and not any(x.get('key') == dongkuk.get('key') for x in chosen):
         chosen = ([dongkuk, *chosen] if len(chosen) < limit else [dongkuk, *chosen[:-1]])
