@@ -8,6 +8,11 @@ on:
       timezone: "Asia/Seoul"
     - cron: "3,13,23 15 * * 1-5"
       timezone: "Asia/Seoul"
+    # 별도 UTC 예약 경로: 10월 8일 본 예약 schedule 실행이 보이지 않아 중복 안전망 추가.
+    # UTC 일요일~목요일 23시는 한국 월요일~금요일 08시이다.
+    - cron: "6,26,46 23 * * 0-4"
+    - cron: "6,26,46 0-5 * * 1-5"
+    - cron: "6,26 6 * * 1-5"
   workflow_run:
     workflows:
       - "Wonyotti 90D Thesis Telegram Watch"
