@@ -34,7 +34,12 @@ function parseJsonMaybe(value) {
 }
 
 function toNum(v, label) {
-  const n = Number(v);
+  // Number(null), Number('') and Number('   ') are 0 in JavaScript.
+  // Missing official KOFIA values must never silently turn into zero balances.
+  if (v === null || v === undefined || (typeof v === 'string' && !v.trim())) {
+    throw new Error(`${label}: missing official numeric value`);
+  }
+  const n = Number(typeof v === 'string' ? v.replace(/,/g, '').trim() : v);
   if (!Number.isFinite(n)) throw new Error(`${label}: non-numeric value ${String(v)}`);
   return n;
 }
