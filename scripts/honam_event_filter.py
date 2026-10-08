@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 import hashlib
+import datetime as dt
+import email.utils
 import json
 import pathlib
 import re
@@ -75,6 +77,75 @@ def _item_text(item):
     ]).strip()
 
 
+def _executive_visit_actor(item):
+    heading = " ".join([_norm(item.get("title")), _norm(item.get("headline"))]).lower()
+    # 실명으로 식별한 주요 반도체 기업 경영진의 부지 방문을 사건으로 관리한다.
+    actors = {
+        "최태원": ("sk_chair", "최태원 SK그룹 회장"),
+        "이재용": ("samsung_chair", "이재용 삼성전자 회장"),
+        "곽노정": ("sk_ceo", "곽노정 SK하이닉스 대표"),
+        "전영현": ("samsung_exec", "전영현 삼성전자 경영진"),
+    }
+    for name, actor in actors.items():
+        if name in heading:
+            return actor
+    if "sk그룹 회장" in heading or "sk 회장" in heading:
+        return actors["최태원"]
+    return None
+
+
+def _executive_visit_date(item):
+    explicit = _norm(item.get("event_date_kst"))
+    if re.fullmatch(r"20\d{2}-\d{2}-\d{2}", explicit):
+        return explicit.replace("-", "")
+
+    published = _norm(item.get("published"))
+    parsed = None
+    try:
+        parsed = email.utils.parsedate_to_datetime(published)
+    except (TypeError, ValueError, OverflowError):
+        try:
+            parsed = dt.datetime.fromisoformat(published)
+        except (TypeError, ValueError):
+            pass
+    if parsed is not None:
+        if parsed.tzinfo is None:
+            parsed = parsed.replace(tzinfo=dt.timezone.utc)
+        parsed = parsed.astimezone(dt.timezone(dt.timedelta(hours=9)))
+
+    title = _norm(item.get("title"))
+    description = _norm(item.get("description"))
+    # 제목의 방문일을 우선한다. 기사 내용의 예전 임원진 방문일과 혼동하지 않는다.
+    for candidate in (title, description):
+        month_day = re.search(r"(?<!\d)(\d{1,2})월\s*(\d{1,2})일", candidate)
+        if month_day and parsed is not None:
+            month, day = map(int, month_day.groups())
+            try:
+                return dt.date(parsed.year, month, day).strftime("%Y%m%d")
+            except ValueError:
+                pass
+        if candidate == title and parsed is not None:
+            only_day = re.search(r"(?<!\d)(\d{1,2})일\s*(?:오전|오후)?[^.]{0,50}(?:방문|찾|실사)", candidate)
+            if only_day:
+                try:
+                    return dt.date(parsed.year, parsed.month, int(only_day.group(1))).strftime("%Y%m%d")
+                except ValueError:
+                    pass
+
+    if parsed is not None and "방문 예정" in (title + description):
+        # '9일 방문 예정'처럼 기사 날짜와 방문 날짜가 다를 때는 방문일을 사용한다.
+        m = re.search(r"(?<!\d)(\d{1,2})일\s*(?:오전|오후)?[^.]{0,60}(?:방문|찾|실사)", description)
+        if m:
+            try:
+                return dt.date(parsed.year, parsed.month, int(m.group(1))).strftime("%Y%m%d")
+            except ValueError:
+                pass
+
+    if parsed is not None:
+        return parsed.strftime("%Y%m%d")
+    return "unknown"
+
+
 def _executive_visit_signal(item):
     """Classify the SK chairman's site visit from the lead, not old background."""
     lead = " ".join([
@@ -83,12 +154,13 @@ def _executive_visit_signal(item):
         _norm(item.get("headline")),
     ]).lower()
     heading = " ".join([_norm(item.get("title")), _norm(item.get("headline"))]).lower()
-    # 본문에서 과거 최태원 발언을 인용한 다른 경영진 방문 기사는 제외한다.
-    if not any(term in heading for term in ("최태원", "sk그룹 회장", "sk 회장", "최 회장")):
+    # 다른 임원 방문 기사에서 과거 회장 발언을 인용하는 경우를 제외한다.
+    actor = _executive_visit_actor(item)
+    if actor is None:
         return 0
     if not any(x in lead for x in ("광주 군공항", "광주공항", "군공항", "호남")):
         return 0
-    if not any(x in lead for x in ("반도체", "sk하이닉스", "팹", "fab")):
+    if not any(x in lead for x in ("반도체", "sk하이닉스", "삼성전자", "팹", "fab")):
         return 0
     if not any(x in lead for x in ("방문", "찾", "부지", "현장", "실사")):
         return 0
@@ -108,8 +180,13 @@ def _executive_visit_signal(item):
         return 3
     # 기사 설명의 '지난달 사장단이 방문했다'는 과거 배경이다.
     # 회장 본인의 완료 동사가 같은 문장에 있을 때만 완료로 승격한다.
+    short_names = ("최태원", "최 회장") if actor[0] == "sk_chair" else {
+        "samsung_chair": ("이재용", "이 회장"),
+        "sk_ceo": ("곽노정", "곽 대표"),
+        "samsung_exec": ("전영현", "전 부회장"),
+    }.get(actor[0], ())
     for sentence in re.split(r"(?<=[.!?])\s+|(?<=다\.)\s+", _norm(item.get("description")).lower()):
-        if any(actor in sentence for actor in ("최태원", "최 회장")) and any(verb in sentence for verb in completed_verbs):
+        if any(name in sentence for name in short_names) and any(verb in sentence for verb in completed_verbs):
             return 3
     # '방문한다', '찾는다', '예정'을 완료로 취급하지 않는다.
     return 1
@@ -222,13 +299,16 @@ def _action_level(item):
 
 
 def _event_family(item):
-    # 검증된 사건 접수의 고유 식별자는 기사 URL이 아닌 사업·당사자·방문일이다.
+    # 보도 매체·기사 URL이 아니라 인물·현장방문일을 사건 식별자로 사용한다.
     family = _norm(item.get("event_family"))
-    if family.startswith("honam_sk_chair_site_visit_") and _executive_visit_signal(item):
+    if family.startswith("honam_") and "_site_visit_" in family and _executive_visit_signal(item):
         return family
     if _executive_visit_signal(item):
-        # 이번 10/9 방문: '예정' 기사와 다음 날 실제 방문 기사를 한 사건으로 연결.
-        return "honam_sk_chair_site_visit_20261009"
+        actor = _executive_visit_actor(item)
+        date = _executive_visit_date(item)
+        if actor and actor[0] == "sk_chair":
+            return "honam_sk_chair_site_visit_" + date
+        return "honam_" + actor[0] + "_site_visit_" + date
     text = _item_text(item).lower()
     if "반도체" in text and ("반도체도시과" in text or "반도체도시정주팀" in text):
         return "honam_settlement_governance"
@@ -273,10 +353,15 @@ def _verification_status(level):
 
 def _summarize_event(items):
     if any(_executive_visit_signal(i) for i in items):
+        main = next(i for i in items if _executive_visit_signal(i))
+        actor = _executive_visit_actor(main)
+        name = actor[1] if actor else "반도체 기업 경영진"
         completed = any(_executive_visit_signal(i) >= 3 for i in items)
         if completed:
-            return "최태원 SK그룹 회장, 광주 군공항 팹 예정지 현장 방문 완료 보도"
-        return "최태원 SK그룹 회장, 10월 9일 광주 군공항 팹 예정지 방문 예정"
+            return name + ", 광주 군공항 팹 예정지 현장 방문 완료 보도"
+        if actor and actor[0] == "sk_chair" and _executive_visit_date(main) == "20261009":
+            return "최태원 SK그룹 회장, 10월 9일 광주 군공항 팹 예정지 방문 예정"
+        return name + ", 호남 반도체 부지 현장 방문 예정"
     text = " ".join(_item_text(i) for i in items)
     low = text.lower()
     points = []
@@ -339,12 +424,14 @@ def _merge_group(items):
         first["stages"] = ["6_산단투자_기업일정"]
         first["stage_labels"] = ["⑥ 산단·기업투자·팹 일정"]
         completed = any(_executive_visit_signal(i) >= 3 for i in ordered)
+        actor_info = next((_executive_visit_actor(i) for i in ordered if _executive_visit_signal(i)), None)
+        actor_name = actor_info[1] if actor_info else "기업 경영진"
         first["impact"] = (
-            "SK그룹 회장 광주 군공항 현장 방문 완료 확인"
-            if completed else "SK그룹 회장 현장 방문 예정·투자계약은 별도 확인"
+            actor_name + " 현장 방문 완료 보도"
+            if completed else actor_name + " 현장 방문 예정·투자계약은 별도 확인"
         )
         first["reason"] = (
-            "기존 SK하이닉스 사장단 검토 이후 회장 현장방문 단계로 진전. "
+            "기존 임원진의 부지 검토 이후 경영진 방문으로 사업 검토가 진행 중. "
             "군공항 부지·전력·용수·인허가 실제 협의 결과는 후속 확인"
         )
     summary = _summarize_event(ordered)
