@@ -589,7 +589,9 @@ def discover_cpu_structure(now: datetime, previous: dict) -> list[dict]:
                 continue
             published = str(item.get("published_at_kst") or "")[:10]
             baseline_date = str((previous.get(issuer) or {}).get("as_of") or "")
-            if not published or (baseline_date and published <= baseline_date):
+            # Same-day new URLs are new evidence. URL dedupe and revision
+            # comparison prevent replaying the previous numeric baseline.
+            if not published or (baseline_date and published < baseline_date):
                 continue
             if fetched >= 6:
                 continue
@@ -799,8 +801,15 @@ def discover_validation(now: datetime, cutoff: str, seen_urls: set[str]) -> list
                 continue
             published = item.get("published_at_kst") or ""
             date = published[:10] if published else ""
-            if cutoff and date and date <= cutoff:
-                continue
+            # Date-only cutoffs would discard reports published *later today*
+            # after the first scan. Revisit a 3-day window, dedupe by URL,
+            # and retry on transient feed failure.
+            if date:
+                try:
+                    if datetime.fromisoformat(date).date() < now.date() - timedelta(days=3):
+                        continue
+                except ValueError:
+                    continue
             base = clean_text(f"{item.get('title','')} {item.get('description','')}")
             base_low = base.lower()
             if not any(k in base_low for k in ("cpu", "epyc", "xeon", "agentic")):
@@ -839,7 +848,7 @@ def main() -> None:
             continue
         candidate_date = str(candidate.get("published_at_kst") or "")[:10]
         # 과거 리포트·재인용을 새 전망 하향/상향으로 오인하지 않는다.
-        if not candidate_date or candidate_date <= previous_as_of:
+        if not candidate_date or candidate_date < previous_as_of:
             continue
         new_metrics = dict(previous.get("metrics") or {})
         new_metrics.update(candidate.get("metrics") or {})
