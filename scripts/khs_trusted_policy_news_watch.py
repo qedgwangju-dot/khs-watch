@@ -1770,9 +1770,18 @@ def semantic_policy_event_key(item: dict) -> str:
     if any(term in text for term in outbound_terms) and any(
         term in text for term in ("treasury", "amidi", "noematrix", "미 재무부")
     ):
-        if (
-            ("amidi" in text or "noematrix" in text)
-            and any(term in text for term in ("penalty", "fined", "fine", "과징금"))
+        source_link = str(item.get("link") or "").lower()
+        same_first_case = (
+            "home.treasury.gov/news/press-releases/sb0652" in source_link
+            or "amidi" in title_text
+            or "noematrix" in title_text
+            or (
+                "first" in title_text
+                and "amidi" in text and "noematrix" in text
+            )
+        )
+        if same_first_case and any(
+            term in text for term in ("penalty", "fined", "fine", "과징금")
         ):
             return "us-treasury-oisp-amidi-noematrix-notification-penalty-2026-10-07"
         policy_title = clean_story_title(title_text).lower()
@@ -3783,6 +3792,13 @@ def _self_test_us_treasury_outbound_event_model() -> None:
     assert semantic_policy_event_key(first) == key
     assert semantic_policy_event_key(replay) == key
     assert story_event_fingerprint(rule, [first]) == story_event_fingerprint(rule, [replay])
+    subsequent = {
+        **replay,
+        "title": "Treasury fines a different US investor for China AI outbound rules",
+        "description": "A different second fine under OISP. An earlier Amidi investment in Noematrix was the first penalty.",
+        "link": "https://home.treasury.gov/news/press-releases/sb9999",
+    }
+    assert semantic_policy_event_key(subsequent) != key, "historical Amidi reference concealed a new penalty"
     assert alert_confirmation_status(rule, [first])[0] == "공식 확인"
     assert alert_confirmation_status(rule, [replay])[0] == "공식 확인 전"
     spoofed = {**replay, "source": "U.S. Department of the Treasury"}
