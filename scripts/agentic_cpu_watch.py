@@ -77,7 +77,9 @@ CPU_STRUCTURE_BASELINE = {
         "as_of": "2026-10-05",
         "market_2030_usd_bn": 245.0,
         "market_2030_official_confirmed": False,
-        "market_2030_source_kind": "사용자 제공 애널리스트 전망 · 1차 리포트와 독립 보도 미확인",
+        "market_2030_secondary_confirmed": True,
+        "market_2030_source_kind": "BNP Paribas 애널리스트 2030년 245bn · Yahoo/GuruFocus 및 24/7 Wall St. 2차 보도 교차확인 · 리포트 원문 미열람",
+        "market_2030_crosscheck_url": "https://247wallst.com/investing/2026/10/06/bnp-paribas-just-hiked-amds-price-target-60-to-960/",
         "market_2025_user_claim_usd_bn": 30.0,
         "market_2025_official_confirmed": False,
         "amd_target_usd": 960.0,
@@ -692,9 +694,9 @@ def cpu_structure_block(state: dict, fx: float, changes: list[str]) -> str:
     lines += [
         "• BNP 공개자료의 AMD 추정 인용: 2025년 " + fmt(bp["market_2025_usd_bn"])
         + " → 2030년 " + fmt(bp["market_2030_usd_bn"]),
-        "• BNP 애널리스트 시장 전망 사용자 제공: 2030년 " + fmt(ba["market_2030_usd_bn"])
-        + " / 2025년 " + fmt(ba["market_2025_user_claim_usd_bn"])
-        + " · 독립 리포트 원문 미확인(BNP 공개자료의 260억→2,200억달러와 구분)",
+        "• BNP 애널리스트 2차 기사 교차확인: 2030년 " + fmt(ba["market_2030_usd_bn"])
+        + " · 보고서 원문 미열람 / 2025년 " + fmt(ba["market_2025_user_claim_usd_bn"])
+        + "는 사용자 제공치로 미확인(BNP 공개 글 AMD 인용 260억→2,200억달러와 구분)",
         "• AMD 목표주가: BNP 보도상 " + usd_shares(ba["amd_prior_target_usd"])
         + "→" + usd_shares(ba["amd_target_usd"])
         + " · Arm 목표주가 "
@@ -718,7 +720,8 @@ def cpu_structure_block(state: dict, fx: float, changes: list[str]) -> str:
         "• 후속 확인: CPU 발주·소켓·실출하→DDR5 RDIMM·서버용 FC-BGA/ABF·eSSD 주문 연결"
         + " · 2nm 수율·ABF·전원·냉각 병목 및 가상화 최적화에 따른 수요 미달 점검",
         '• <a href="' + html.escape(bp["source_url"], quote=True) + '">BNP 공식 공개자료</a>'
-        + ' · <a href="' + html.escape(ba["source_url"], quote=True) + '">BNP AMD 목표주가 2차 보도</a>'
+        + ' · <a href="' + html.escape(ba["source_url"], quote=True) + '">BNP 2차 보도 1</a>'
+        + ' · <a href="' + html.escape(str(ba.get("market_2030_crosscheck_url") or ba["source_url"]), quote=True) + '">BNP 2차 보도 2</a>'
         + ' · <a href="' + html.escape(di["per_accelerator_source_url"], quote=True) + '">DIGITIMES 가속기당 전망</a>'
         + ' · <a href="' + html.escape(di["shipments_source_url"], quote=True) + '">DIGITIMES 출하 전망</a>'
         + ' · <a href="' + html.escape(di["cpu_xpu_ratio_source_url"], quote=True) + '">DIGITIMES 연구 1:2.3</a>'
