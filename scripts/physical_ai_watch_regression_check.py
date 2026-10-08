@@ -2571,4 +2571,111 @@ try:
 finally:
     base.NOW = old_now
 
+
+# 48) Tesla patent US20260310299A1: application PUBLICATION, not grant,
+# SOP, Optimus installed unit, vendor contract, or any unit-volume sales.
+tesla_patent_report = make(
+    "Tesla publishes US 2026/0310299 A1 3D tactile sensor patent application",
+    "Tesla 3D tactile array sensor patent US20260310299A1 publication on Oct 8, 2026. "
+    "The regular application was filed September 11 2025 and the provisional "
+    "on April 4 2025. Screen printing and thermoforming plus direct curved-surface "
+    "deposition are scalable manufacturing methods, not production evidence.",
+    "Robotics News",
+)
+pg, ps, pc, pk = classify(tesla_patent_report)
+assert pg == 'tesla_touch_patent' and ps >= 11, (pg, ps, pc)
+assert pc == '테슬라 촉각센서 · 미국 특허출원 공개 A1', pc
+assert '특허등록 B2' in base.risk(pc), base.risk(pc)
+assert '2025-09-11' in base.meaning(pc), base.meaning(pc)
+assert '수율' in base.risk(pc), base.risk(pc)
+
+tesla_patent_rewrite = make(
+    "테슬라 US20260310299A1 촉각 로봇 피부 제조기술 공개",
+    "Tesla 미국 특허 US20260310299A1 공개: flexible tactile array sensor "
+    "curved fingers, TPU, screen printing and thermoforming.",
+    "Patent Technology Media",
+)
+pg2, ps2, pc2, pk2 = classify(tesla_patent_rewrite)
+assert pg2 == 'tesla_touch_patent' and ps2 >= 11, (pg2, ps2, pc2)
+assert pk2 == pk, 'different media describing one publication must share one state key'
+
+tesla_old_filing = make(
+    "Tesla tactile patent filing",
+    "Tesla US20260310299A1 sensor application was filed September 11 2025.",
+    "Patent Blog",
+)
+fg, fs, fc, fk = classify(tesla_old_filing)
+assert fg == 'tesla_touch_patent' and fs < 11, (fg, fs, fc)
+
+tesla_patent_media_grant_rumor = make(
+    "Tesla US20260310299A1 tactile patent granted",
+    "Tesla patent US20260310299A1 3D tactile sensor has been granted.",
+    "Unknown News",
+)
+mg, ms, mc, mk = classify(tesla_patent_media_grant_rumor)
+assert mg == 'tesla_touch_patent' and ms < 11, (mg, ms, mc)
+
+tesla_patent_official_grant = make(
+    "USPTO: Tesla US20260310299A1 tactile patent granted",
+    "USPTO official record reports the Tesla patent US20260310299A1 tactile "
+    "sensor patent granted. Actual grant number and claims must be checked.",
+    "USPTO",
+)
+gg, gs, gc, gk = classify(tesla_patent_official_grant)
+assert gg == 'tesla_touch_patent' and gs >= 11, (gg, gs, gc)
+assert gc == '테슬라 촉각센서 · 특허 등록 공식확인 단계', gc
+assert gk != pk, 'future official grant must be distinct from A1 publication'
+assert '등록 상태' in base.meaning(gc), base.meaning(gc)
+
+tesla_not_granted = make(
+    "Tesla US20260310299A1 tactile patent publication, not yet granted",
+    "Tesla tactile sensor US 2026/0310299 A1 was published October 8, 2026. "
+    "It is not yet granted and is not an installed Optimus production part.",
+    "Robotics News",
+)
+ng, ns, nc, nk = classify(tesla_not_granted)
+assert ng == 'tesla_touch_patent' and ns >= 11 and nk == pk, (ng, ns, nc, nk)
+
+tesla_other_patent = make(
+    "Tesla patent unrelated to tactile sensing",
+    "Tesla patent US20260123456A1 for unrelated vehicle body parts was published.",
+    "Tesla News",
+)
+og, os, oc, ok = classify(tesla_other_patent)
+assert og != 'tesla_touch_patent', (og, os, oc)
+
+patent_backfill = watcher.query_news(watcher.TESLA_TOUCH_PATENT_RECOVERY)
+if base.NOW.astimezone(base.KST).date() <= dt.date(2026, 10, 12):
+    assert len(patent_backfill) == 1, patent_backfill
+    p = patent_backfill[0]
+    assert p.get('published') is None, 'no invented intraday publication time'
+    assert p['source'] == '사용자제공 미국특허공개 표지', p
+    bg, bs, bc, bk = classify(p)
+    assert bg == 'tesla_touch_patent' and bs >= 11 and bk == pk, (bg, bs, bc, bk)
+    # Renderer specifically loses the source in category(title + description);
+    # verify EXACT production rendering contract to avoid the previous DKT bug.
+    rendered_text = f"{p['title']} {p['description']}"
+    rendered_group = base.topic_group(rendered_text)
+    rendered_category = base.category(rendered_text, rendered_group)
+    assert rendered_group == 'tesla_touch_patent', rendered_group
+    assert rendered_category == pc, rendered_category
+    assert '특허출원 공개' in base.clean_title(p['title'], p['source'])
+    assert '기사 본문 직접 열람 실패' in base.verification(
+        p, rendered_group, rendered_text
+    ), 'verification must not claim to have read unavailable source'
+    assert watcher.qty._skip_quantity_enrichment(
+        f'<b>1. 테슬라 촉각센서 특허</b>\n<b>분류</b>  {rendered_category}\n'
+        '<b>핵심</b>  US 2026/0310299 A1·2개 유연층·3차원 센서'
+    ), 'A1 identifier/layer counts are not real unit sales'
+
+old_patent_now = base.NOW
+try:
+    base.NOW = dt.datetime(2026, 10, 13, tzinfo=dt.timezone.utc)
+    assert watcher.query_news(watcher.TESLA_TOUCH_PATENT_RECOVERY) == [], (
+        'historical publication cannot replay as news after backfill expiry'
+    )
+finally:
+    base.NOW = old_patent_now
+
+
 print("Physical-AI watcher regression guards: PASS")
