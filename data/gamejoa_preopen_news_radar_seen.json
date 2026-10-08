@@ -1,5 +1,26 @@
 {
   "seen": {
+    "core:0037c3e0de33634e26f3d58f": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819439",
+      "source": "뉴시스",
+      "source_body_digest": "8f13e4e6cc4593a3374f28c2a58574e5ee3ceee76a13d255996959a6db90751f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:57267a3bbd79bbe2b2ba766b697cda18b580dda3b08caa44692749ae756210a9",
+      "source_fact_keys": [
+        "source_fact:v1:213c72827bca9cd12ee8ab7e3d5cdb63e176605a80a7d56fcbf61adadb1ee5b6",
+        "source_fact:v1:7d8910af552a590dc424f0210e12b8f79a374757cc616eb238346ce166b84515",
+        "source_fact:v1:c5867544d75b175ce75b7b2d8b7bbf6ccd9b37546521881affb2fe0326e1fdd2"
+      ],
+      "source_published_kst": "2026-10-08T15:42+09:00",
+      "source_title": "경기 광주시 \"3만호 스마트도시·국가산단 조성을\"",
+      "telegram_core_fact": "경기 광주시가 용인 반도체 국가산업단지 용수공급 사업과 관련한 지역 상생방안으로 3만호 스마트도시와 국가산업단지 조성을 정부에 요구했다. 광주시가 제시한 핵심 건의사항은 난개발 방지를 위한 3만호 스마트도시 조성과 지역경제 활성화를 위한 국가산업단지 조성이다.",
+      "title": "경기 광주시 \"3만호 스마트도시·국가산단 조성을\""
+    },
     "core:009a0d1e8b11f492333942ca": {
       "first_seen_kst": "2026-10-08T12:46:54+09:00",
       "lanes": {
@@ -1246,6 +1267,23 @@
       "source_title": "삼성전자 '분기 영업익 100조' 한국기업 첫 돌파 …이익률 55% 찍었다",
       "telegram_core_fact": "삼성전자는 2026년 3분기 점정실적으로 연결기준 매출 195조원, 영업이익 107.4조원을 기록했다고 8일 발표했다.",
       "title": "삼성전자 '분기 영업익 100조' 한국기업 첫 돌파 …이익률 55% 찍었다"
+    },
+    "core:186f604d526413b7082cd9e9": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008141500008",
+      "source": "연합뉴스",
+      "source_body_digest": "b59afbb83a8735ae7edd551d28472d648ef958faf645b35ab6fb5db884381c12",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T15:31+09:00",
+      "source_title": "현대비앤지스틸 \"성림첨단산업 주식 708억원에 추가취득\" | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 현대비앤지스틸[004560]은 영구자석, 전자석, 자석응용기기 제조 및 판매업 업체 성림첨단산업의 주식 283만3천629주를 약 708억원에 추가 취득한다고 8일 공시했다.",
+      "title": "현대비앤지스틸 \"성림첨단산업 주식 708억원에 추가취득\" | 연합뉴스"
     },
     "core:188ccdf9a14403067690fe48": {
       "first_seen_kst": "2026-10-08T02:26:35+09:00",
@@ -3366,6 +3404,25 @@
       ],
       "source_published_kst": "2026-10-07T11:13+09:00",
       "title": "부산항 이용 선박 위치 실시간 확인…BPA, '글로벌 AIS' 도입"
+    },
+    "core:3dcb363256bd6a50fbff38c6": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008138400060",
+      "source": "연합뉴스",
+      "source_body_digest": "28fc2bc8c4eaa95824489cf9ffe09e07899bef91d801c0f351fb3a1e47189c42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0917907e3cac94e53c29688b0a02831f2cc5fb97b75f96a86535457c219746b6",
+      "source_fact_keys": [
+        "source_fact:v1:021cdfb6cb6611be60eb08261fb2c5d06152addbe21d0acb6985809e1679cdcf"
+      ],
+      "source_published_kst": "2026-10-08T15:23+09:00",
+      "source_title": "양주시, 외국인 납세자에 6개국 언어 안내문 발송 | 연합뉴스",
+      "telegram_core_fact": "정미순 양주시 세정과장은 \"외국인 주민도 지방세 납세자인 만큼 세금 정보를 쉽게 확인하고 필요한 절차를 이용하도록 납세 편의 서비스를 개선하겠다\"고 말했다.",
+      "title": "양주시, 외국인 납세자에 6개국 언어 안내문 발송 | 연합뉴스"
     },
     "core:3dd4609b73b40737dce54429": {
       "first_seen_kst": "2026-10-08T15:16:19+09:00",
@@ -5885,6 +5942,27 @@
       "source_published_kst": "2026-10-07T09:44+09:00",
       "title": "장인화 회장 '자원 승부수' 결실…포스코홀딩스, 아르헨 리튬 2공장 준공"
     },
+    "core:75ba870bdbc091b0377dc167": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008046251008",
+      "source": "연합뉴스",
+      "source_body_digest": "ef67d97c6bb05296db0f0dd008f7d74b8c97aca9a54e26ae9e4e06b2b36052f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7df783bcd93fd75d36ec64c891db99e95f93d3f48cb12bc3a6f3593616101b57",
+      "source_fact_keys": [
+        "source_fact:v1:18fa9ffbfc10e0cd55e63415b9f78b4eae462325ebd2a3303332075de84fa347",
+        "source_fact:v1:590c411802714ecbc391cf63c6260e128cfbc7cc8208d412d73ba6f9f03329a2",
+        "source_fact:v1:b4900569e0842591bee959421b8e695ebbce2a5bda410586b3d5a85d60d21fa3"
+      ],
+      "source_published_kst": "2026-10-08T15:37+09:00",
+      "source_title": "'분기 최대 매출' LG엔솔, 2%대↑…이차전지주 동반 강세(종합) | 연합뉴스",
+      "telegram_core_fact": "분기 기준 사상 최대 매출을 기록한 LG에너지솔루션[373220]이 8일 2%대 강세를 보였다.",
+      "title": "'분기 최대 매출' LG엔솔, 2%대↑…이차전지주 동반 강세(종합) | 연합뉴스"
+    },
     "core:768e52f4fb0a3d3bcdf7868c": {
       "first_seen_kst": "2026-10-08T11:49:03+09:00",
       "lanes": {
@@ -6317,6 +6395,29 @@
       "source_title": "9월 FOMC \"연내 금리 인상 한 번 더\"…인상 근거 놓고는 시각차 [Fed 워치]",
       "telegram_core_fact": "Fed가 공개한 9월 15~16일 연방공개시장위원회(FOMC) 의사록에 따르면 모든 참석자는 연방기금금리 목표범위를 0.25%포인트 인상해 연 3.75~4.00%로 높이는 데 찬성했다.",
       "title": "9월 FOMC \"연내 금리 인상 한 번 더\"…인상 근거 놓고는 시각차 [Fed 워치]"
+    },
+    "core:7d393207333c27b26177e489": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.mt.co.kr/politics/2026/10/08/2026100813194710337",
+      "source": "머니투데이",
+      "source_body_digest": "a30d91739749a668bbed3172f2e25f055a4c942c5a173949b08d03057dc1ea3d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21b18fef1f45830593243211fb5f14f0babbfb6d160cc89e796f53d53b8a7c15",
+      "source_fact_keys": [
+        "source_fact:v1:21345b10ee9fb65e85ac8e656f233689462040fa94ef41aac8b39aa6c5a32509",
+        "source_fact:v1:4936a041672e2a1e79c164e1736d618064f771f180a9ad659f13f75a44eda624",
+        "source_fact:v1:59f48e2c4b442c0e54be362bddbaa7ed0cc8338d30926f9747f9c4f01bb310ea",
+        "source_fact:v1:65a98eb5e6711d31019d08570d025b7178a043543d4de83eaba809f52d34ac32",
+        "source_fact:v1:c3858e0f6074ff9d50cda737b032463bbb9e5fc9006d94406b13f583693676d9"
+      ],
+      "source_published_kst": "2026-10-08T14:30+09:00",
+      "source_title": "野 \"레버리지 ETF, 청와대가 주범\"…與 \"설계 아쉽지만 도입 불가피\"",
+      "telegram_core_fact": "박태준 국민의힘 의원은 8일 서울 여의도 국회 본관에서 진행된 국회 정무위원회 국감에서 \"저는 ETF 논란의 주범을 이재명 대통령과 청와대가 공범이라고 결론 내렸다\"며 \"금융투자협회 산하 연구원에서 2024년 ETF 출시를 반대했는데 이 대통령 취임 직후 찬성으로 바뀌었다. 이것이 이번 사태의 발단\"이라고 말했다.",
+      "title": "野 \"레버리지 ETF, 청와대가 주범\"…與 \"설계 아쉽지만 도입 불가피\""
     },
     "core:7dba1dfce02926d1be4022f5": {
       "first_seen_kst": "2026-10-07T20:43:18+09:00",
@@ -7309,6 +7410,30 @@
       "source_title": "'GH 베이스캠프' 5개 기업, 미국서 투자 유치활동 펼친다",
       "telegram_core_fact": "경기주택도시공사(GH)는 '2026 GH 베이스캠프'에 선정된 판교 입주기업 5개사가 7~16일 미국에서 투자 유치활동을 펼친다고 밝혔다.",
       "title": "'GH 베이스캠프' 5개 기업, 미국서 투자 유치활동 펼친다"
+    },
+    "core:940992394577efc89b9eebbc": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6313650",
+      "source": "뉴스1",
+      "source_body_digest": "00c7c3883479ec7aa3bc14b8eec0162c6ec541cdedf2c7d9cf61bc5fa85be0e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99f761f3aaceb54160665bceaf46a4610d535cb95aa8719e7c1fc52d20797fee",
+      "source_fact_keys": [
+        "source_fact:v1:0bdb928f9a6b49da892dfd54a70823e71288d9b15ba58f5ccaa6ccd4b7ef49a7",
+        "source_fact:v1:2719bd773c9ada53ba328bf245d796003a52b9ab0814abc5be3e6963226b6a1e",
+        "source_fact:v1:672ad80a4c7677e03a5af051dbd3e2f8d1f5684ef04e50425a027a1d63f4a868",
+        "source_fact:v1:789629a223f38625d36903608edf4579228389d2efc6ab37bc18b2f178891f5d",
+        "source_fact:v1:aa1c4c3c25da577ee45069a776bfaaf4b9c9018772ab6002708e69dbfc731848",
+        "source_fact:v1:af4d3f92876fce2018c7d29c3178229243c03709dc73f3b5f8fd039212cabef9"
+      ],
+      "source_published_kst": "2026-10-08T05:43+09:00",
+      "source_title": "국제유가 하락…글로벌 비축유 방출 가속에 WTI 1.3%↓",
+      "telegram_core_fact": "IEA는 앞서 발표한 비축유 방출을 최대한 신속하게 완료하면 약 1억배럴의 원유와 석유제품이 시장에 공급될 수 있다고 밝혔다.",
+      "title": "국제유가 하락…글로벌 비축유 방출 가속에 WTI 1.3%↓"
     },
     "core:94c7a2f303c0b0fdae22ccfd": {
       "first_seen_kst": "2026-10-08T02:41:45+09:00",
@@ -11150,6 +11275,27 @@
       "source_title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓",
       "telegram_core_fact": "유럽·태평양 선진시장 순매출은 9억3500만 달러로 3.3% 감소했고, 부문 조정 영업이익은 1억3700만 달러로 8.9% 감소했다.",
       "title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓"
+    },
+    "core:d969450de73217efbf205dee": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819428",
+      "source": "뉴시스",
+      "source_body_digest": "875648f571548095c8980d6dda9b5da57f5688299f85634231709a67876f8294",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:98a1d88b30108854d4342dea97602eb1bd464a74cdb03cb44c2fae1893af09f3",
+      "source_fact_keys": [
+        "source_fact:v1:8a190f1f13d173af5b557c9b6b631c4e68a5c26e2a7cecd341d586749cb12286",
+        "source_fact:v1:9648686a11e82828ca3250c9540d8acecd3d1b34fd2bdbd1af8e458d1c896be0",
+        "source_fact:v1:c2751f63da9d29229c8b4745edb974141112f53178c5a697c698f2edc4510ed6"
+      ],
+      "source_published_kst": "2026-10-08T15:32+09:00",
+      "source_title": "[올댓차이나] 독일, 中 코스코 물류업체 치펠 인수 저지…\"안보 우려\"",
+      "telegram_core_fact": "독일 정부가 중국 국영 해운 대기업 코스코(中遠海運集團 COSCO)의 자국 물류업체 치펠(Zippel) 인수를 국가안보상 우려를 이유로 저지했다. dpa와 AFP 통신, rfi에 따르면 독일 경제에너지부는 7일(현지시간) 코스코가 함부르크 소재 물류업체 치펠 지분 80%를 인수하는 거래를 막았다고 발표했다.",
+      "title": "[올댓차이나] 독일, 中 코스코 물류업체 치펠 인수 저지…\"안보 우려\""
     },
     "core:d9ee72d5a903d2ad3319aee5": {
       "first_seen_kst": "2026-10-08T03:26:42+09:00",
@@ -17048,21 +17194,26 @@
     "event:7fb12baca26427e75de41ba7": {
       "first_seen_kst": "2026-10-08T03:13:06+09:00",
       "lanes": {
-        "live": "2026-10-08T20:16:13+09:00"
+        "live": "2026-10-08T20:39:20+09:00"
       },
-      "last_seen_kst": "2026-10-08T20:16:13+09:00",
-      "link": "https://www.newsis.com/view/NISX20261008_0003819598",
-      "source": "뉴시스",
-      "source_body_digest": "623fe7a7c6d92d10f26a99d4c22c9867506250e5076fcf268636adca0cd1197d",
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6313650",
+      "source": "뉴스1",
+      "source_body_digest": "00c7c3883479ec7aa3bc14b8eec0162c6ec541cdedf2c7d9cf61bc5fa85be0e3",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:33185e74870ee5e9ca69a508f137292e390d6e218045c04349a7f079242e9413",
+      "source_fact_identity": "source_facts:v1:99f761f3aaceb54160665bceaf46a4610d535cb95aa8719e7c1fc52d20797fee",
       "source_fact_keys": [
-        "source_fact:v1:dbc02b2af9df778749c6a32b024c9cfbedb0b3efd2cec30d61f3ba46c87ef967"
+        "source_fact:v1:0bdb928f9a6b49da892dfd54a70823e71288d9b15ba58f5ccaa6ccd4b7ef49a7",
+        "source_fact:v1:2719bd773c9ada53ba328bf245d796003a52b9ab0814abc5be3e6963226b6a1e",
+        "source_fact:v1:672ad80a4c7677e03a5af051dbd3e2f8d1f5684ef04e50425a027a1d63f4a868",
+        "source_fact:v1:789629a223f38625d36903608edf4579228389d2efc6ab37bc18b2f178891f5d",
+        "source_fact:v1:aa1c4c3c25da577ee45069a776bfaaf4b9c9018772ab6002708e69dbfc731848",
+        "source_fact:v1:af4d3f92876fce2018c7d29c3178229243c03709dc73f3b5f8fd039212cabef9"
       ],
-      "source_published_kst": "2026-10-08T18:20+09:00",
-      "source_title": "美, 이란전 재개 가능성에…브렌트유, 4% 가까이 뛴 104달러",
-      "telegram_core_fact": "CNBC 등에 따르면 유럽 ICE선물거래소에서 국제유가 기준인 브렌트유 12월 인도분은 한국 시간 8일 오후 4시45분께 전장 대비 3.96% 오른 배럴당 104.17달러를 기록하고 있다.",
-      "title": "美, 이란전 재개 가능성에…브렌트유, 4% 가까이 뛴 104달러"
+      "source_published_kst": "2026-10-08T05:43+09:00",
+      "source_title": "국제유가 하락…글로벌 비축유 방출 가속에 WTI 1.3%↓",
+      "telegram_core_fact": "IEA는 앞서 발표한 비축유 방출을 최대한 신속하게 완료하면 약 1억배럴의 원유와 석유제품이 시장에 공급될 수 있다고 밝혔다.",
+      "title": "국제유가 하락…글로벌 비축유 방출 가속에 WTI 1.3%↓"
     },
     "event:805f3f743bb1dcc747449d9a": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
@@ -20801,25 +20952,25 @@
     "event:f10f698cf4e062e133597b4b": {
       "first_seen_kst": "2026-10-08T04:26:05+09:00",
       "lanes": {
-        "live": "2026-10-08T19:27:03+09:00"
+        "live": "2026-10-08T20:39:20+09:00"
       },
-      "last_seen_kst": "2026-10-08T19:27:03+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261008157800008",
-      "source": "연합뉴스",
-      "source_body_digest": "84a5e7e5243db6e7d91ecaddfe215daa6d35c44da65208502450cf84fdddff62",
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.mt.co.kr/politics/2026/10/08/2026100813194710337",
+      "source": "머니투데이",
+      "source_body_digest": "a30d91739749a668bbed3172f2e25f055a4c942c5a173949b08d03057dc1ea3d",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:40e42db2842dade5aefddd96e8901aacbd29ed6164b9e2a37e369b8d3697065c",
+      "source_fact_identity": "source_facts:v1:21b18fef1f45830593243211fb5f14f0babbfb6d160cc89e796f53d53b8a7c15",
       "source_fact_keys": [
-        "source_fact:v1:271d507846e818353498481508b8cf557e55f8f702805c808fdb4477a86ec847",
-        "source_fact:v1:6bb36669ef5b59bc71d77ea190c71454ed632ac7dd019e24b8d1fe1a522e5fb1",
-        "source_fact:v1:86feb46b7f42ee741be5ee2800c37f122f97114794e84c443cf24087880b6083",
-        "source_fact:v1:e40e43c920a94ea68d788925c7692061dd1795ff7c496e189d574e51d74de684",
-        "source_fact:v1:f6c4fed253da7c615572d9fbeb2fffe0a817d2307315d41db1c243a9f166a3d7"
+        "source_fact:v1:21345b10ee9fb65e85ac8e656f233689462040fa94ef41aac8b39aa6c5a32509",
+        "source_fact:v1:4936a041672e2a1e79c164e1736d618064f771f180a9ad659f13f75a44eda624",
+        "source_fact:v1:59f48e2c4b442c0e54be362bddbaa7ed0cc8338d30926f9747f9c4f01bb310ea",
+        "source_fact:v1:65a98eb5e6711d31019d08570d025b7178a043543d4de83eaba809f52d34ac32",
+        "source_fact:v1:c3858e0f6074ff9d50cda737b032463bbb9e5fc9006d94406b13f583693676d9"
       ],
-      "source_published_kst": "2026-10-08T16:15+09:00",
-      "source_title": "'반도체 밸류체인 투자' 등 ETF 4종 13일 신규 상장 | 연합뉴스",
-      "telegram_core_fact": "한국거래소는 DS자산운용, 한국투자신탁운용, 키움투자자산운용, 삼성자산운용의 상장지수펀드(ETF) 4종목을 오는 13일 유가증권시장에 상장한다고 8일 밝혔다.",
-      "title": "'반도체 밸류체인 투자' 등 ETF 4종 13일 신규 상장 | 연합뉴스"
+      "source_published_kst": "2026-10-08T14:30+09:00",
+      "source_title": "野 \"레버리지 ETF, 청와대가 주범\"…與 \"설계 아쉽지만 도입 불가피\"",
+      "telegram_core_fact": "박태준 국민의힘 의원은 8일 서울 여의도 국회 본관에서 진행된 국회 정무위원회 국감에서 \"저는 ETF 논란의 주범을 이재명 대통령과 청와대가 공범이라고 결론 내렸다\"며 \"금융투자협회 산하 연구원에서 2024년 ETF 출시를 반대했는데 이 대통령 취임 직후 찬성으로 바뀌었다. 이것이 이번 사태의 발단\"이라고 말했다.",
+      "title": "野 \"레버리지 ETF, 청와대가 주범\"…與 \"설계 아쉽지만 도입 불가피\""
     },
     "event:f113d7b17c1c7e546a0cef59": {
       "first_seen_kst": "2026-09-22T09:27:58+09:00",
@@ -25196,6 +25347,30 @@
       "telegram_core_fact": "에스엠국일은 전기차와 내연기관 차량에 적용되는 전선 피복지를 중심으로 모빌리티용 고기능성 특수지 사업을 확대한다고 8일 밝혔다. 에스엠국일은 기존 고객사 공급을 확대하는 동시에 신규 고객사를 발굴해 자동차용 전선 피복지 매출을 늘릴 계획이다.",
       "title": "에스엠국일, 자동차용 전선 피복지 사업 확대…전기차·내연기관 적용처 넓힌다"
     },
+    "fact:20009822b20fd29baadf3b88": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6313650",
+      "source": "뉴스1",
+      "source_body_digest": "00c7c3883479ec7aa3bc14b8eec0162c6ec541cdedf2c7d9cf61bc5fa85be0e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99f761f3aaceb54160665bceaf46a4610d535cb95aa8719e7c1fc52d20797fee",
+      "source_fact_keys": [
+        "source_fact:v1:0bdb928f9a6b49da892dfd54a70823e71288d9b15ba58f5ccaa6ccd4b7ef49a7",
+        "source_fact:v1:2719bd773c9ada53ba328bf245d796003a52b9ab0814abc5be3e6963226b6a1e",
+        "source_fact:v1:672ad80a4c7677e03a5af051dbd3e2f8d1f5684ef04e50425a027a1d63f4a868",
+        "source_fact:v1:789629a223f38625d36903608edf4579228389d2efc6ab37bc18b2f178891f5d",
+        "source_fact:v1:aa1c4c3c25da577ee45069a776bfaaf4b9c9018772ab6002708e69dbfc731848",
+        "source_fact:v1:af4d3f92876fce2018c7d29c3178229243c03709dc73f3b5f8fd039212cabef9"
+      ],
+      "source_published_kst": "2026-10-08T05:43+09:00",
+      "source_title": "국제유가 하락…글로벌 비축유 방출 가속에 WTI 1.3%↓",
+      "telegram_core_fact": "IEA는 앞서 발표한 비축유 방출을 최대한 신속하게 완료하면 약 1억배럴의 원유와 석유제품이 시장에 공급될 수 있다고 밝혔다.",
+      "title": "국제유가 하락…글로벌 비축유 방출 가속에 WTI 1.3%↓"
+    },
     "fact:20c622d2edb68bc54210844e": {
       "first_seen_kst": "2026-10-07T23:36:14+09:00",
       "lanes": {
@@ -26712,6 +26887,27 @@
       ],
       "source_published_kst": "2026-10-06T21:25+09:00",
       "title": "[美특징주]콘스텔레이션 에너지, 구글과 20년 원전 전력 공급 계약에 개장 전↑"
+    },
+    "fact:2da54e3d09f306dd3643219e": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819439",
+      "source": "뉴시스",
+      "source_body_digest": "8f13e4e6cc4593a3374f28c2a58574e5ee3ceee76a13d255996959a6db90751f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:57267a3bbd79bbe2b2ba766b697cda18b580dda3b08caa44692749ae756210a9",
+      "source_fact_keys": [
+        "source_fact:v1:213c72827bca9cd12ee8ab7e3d5cdb63e176605a80a7d56fcbf61adadb1ee5b6",
+        "source_fact:v1:7d8910af552a590dc424f0210e12b8f79a374757cc616eb238346ce166b84515",
+        "source_fact:v1:c5867544d75b175ce75b7b2d8b7bbf6ccd9b37546521881affb2fe0326e1fdd2"
+      ],
+      "source_published_kst": "2026-10-08T15:42+09:00",
+      "source_title": "경기 광주시 \"3만호 스마트도시·국가산단 조성을\"",
+      "telegram_core_fact": "경기 광주시가 용인 반도체 국가산업단지 용수공급 사업과 관련한 지역 상생방안으로 3만호 스마트도시와 국가산업단지 조성을 정부에 요구했다. 광주시가 제시한 핵심 건의사항은 난개발 방지를 위한 3만호 스마트도시 조성과 지역경제 활성화를 위한 국가산업단지 조성이다.",
+      "title": "경기 광주시 \"3만호 스마트도시·국가산단 조성을\""
     },
     "fact:2dc0379dc7a81daa72d5831a": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
@@ -32556,6 +32752,27 @@
       "telegram_core_fact": "SK하이닉스의 D램과 낸드플래시를 비롯해 인세라솔루션의 고속 정밀 조정 거울, 모멘텀스페이스의 반작용휠, KAIST(한국과학기술원)의 자세결정 및 시스템 모듈, 코스모비의 전기추력기용 1A급 할로우음극, 인터그래비티 테크놀로지스의 궤도 수송선 항전 장비 등이 실제 우주환경에서 성능을 검증한다.",
       "title": "삼전 D램·낸드플래시 이어 SK하이닉스도 우주검증"
     },
+    "fact:61df97b7566797c5cb39435b": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819428",
+      "source": "뉴시스",
+      "source_body_digest": "875648f571548095c8980d6dda9b5da57f5688299f85634231709a67876f8294",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:98a1d88b30108854d4342dea97602eb1bd464a74cdb03cb44c2fae1893af09f3",
+      "source_fact_keys": [
+        "source_fact:v1:8a190f1f13d173af5b557c9b6b631c4e68a5c26e2a7cecd341d586749cb12286",
+        "source_fact:v1:9648686a11e82828ca3250c9540d8acecd3d1b34fd2bdbd1af8e458d1c896be0",
+        "source_fact:v1:c2751f63da9d29229c8b4745edb974141112f53178c5a697c698f2edc4510ed6"
+      ],
+      "source_published_kst": "2026-10-08T15:32+09:00",
+      "source_title": "[올댓차이나] 독일, 中 코스코 물류업체 치펠 인수 저지…\"안보 우려\"",
+      "telegram_core_fact": "독일 정부가 중국 국영 해운 대기업 코스코(中遠海運集團 COSCO)의 자국 물류업체 치펠(Zippel) 인수를 국가안보상 우려를 이유로 저지했다. dpa와 AFP 통신, rfi에 따르면 독일 경제에너지부는 7일(현지시간) 코스코가 함부르크 소재 물류업체 치펠 지분 80%를 인수하는 거래를 막았다고 발표했다.",
+      "title": "[올댓차이나] 독일, 中 코스코 물류업체 치펠 인수 저지…\"안보 우려\""
+    },
     "fact:61e8a6121e8f056784c9f50a": {
       "first_seen_kst": "2026-10-07T15:44:50+09:00",
       "lanes": {
@@ -34976,6 +35193,29 @@
       ],
       "source_published_kst": "2026-10-05T20:37+09:00",
       "title": "마타도르 리소시즈, 팔로마 인수 완료..12억5500만 달러·시추 156곳"
+    },
+    "fact:78d948b403a2856afe4d3d4b": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.mt.co.kr/politics/2026/10/08/2026100813194710337",
+      "source": "머니투데이",
+      "source_body_digest": "a30d91739749a668bbed3172f2e25f055a4c942c5a173949b08d03057dc1ea3d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21b18fef1f45830593243211fb5f14f0babbfb6d160cc89e796f53d53b8a7c15",
+      "source_fact_keys": [
+        "source_fact:v1:21345b10ee9fb65e85ac8e656f233689462040fa94ef41aac8b39aa6c5a32509",
+        "source_fact:v1:4936a041672e2a1e79c164e1736d618064f771f180a9ad659f13f75a44eda624",
+        "source_fact:v1:59f48e2c4b442c0e54be362bddbaa7ed0cc8338d30926f9747f9c4f01bb310ea",
+        "source_fact:v1:65a98eb5e6711d31019d08570d025b7178a043543d4de83eaba809f52d34ac32",
+        "source_fact:v1:c3858e0f6074ff9d50cda737b032463bbb9e5fc9006d94406b13f583693676d9"
+      ],
+      "source_published_kst": "2026-10-08T14:30+09:00",
+      "source_title": "野 \"레버리지 ETF, 청와대가 주범\"…與 \"설계 아쉽지만 도입 불가피\"",
+      "telegram_core_fact": "박태준 국민의힘 의원은 8일 서울 여의도 국회 본관에서 진행된 국회 정무위원회 국감에서 \"저는 ETF 논란의 주범을 이재명 대통령과 청와대가 공범이라고 결론 내렸다\"며 \"금융투자협회 산하 연구원에서 2024년 ETF 출시를 반대했는데 이 대통령 취임 직후 찬성으로 바뀌었다. 이것이 이번 사태의 발단\"이라고 말했다.",
+      "title": "野 \"레버리지 ETF, 청와대가 주범\"…與 \"설계 아쉽지만 도입 불가피\""
     },
     "fact:799c82197734a98abc3874ff": {
       "first_seen_kst": "2026-10-07T12:06:36+09:00",
@@ -37762,6 +38002,27 @@
       ],
       "source_published_kst": "2026-10-06T15:07+09:00",
       "title": "\"K-콘텐츠 금융지원\"…부산은행·신보, 100억원 보증지원"
+    },
+    "fact:92273d69413fa4abf5737e97": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008046251008",
+      "source": "연합뉴스",
+      "source_body_digest": "ef67d97c6bb05296db0f0dd008f7d74b8c97aca9a54e26ae9e4e06b2b36052f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7df783bcd93fd75d36ec64c891db99e95f93d3f48cb12bc3a6f3593616101b57",
+      "source_fact_keys": [
+        "source_fact:v1:18fa9ffbfc10e0cd55e63415b9f78b4eae462325ebd2a3303332075de84fa347",
+        "source_fact:v1:590c411802714ecbc391cf63c6260e128cfbc7cc8208d412d73ba6f9f03329a2",
+        "source_fact:v1:b4900569e0842591bee959421b8e695ebbce2a5bda410586b3d5a85d60d21fa3"
+      ],
+      "source_published_kst": "2026-10-08T15:37+09:00",
+      "source_title": "'분기 최대 매출' LG엔솔, 2%대↑…이차전지주 동반 강세(종합) | 연합뉴스",
+      "telegram_core_fact": "분기 기준 사상 최대 매출을 기록한 LG에너지솔루션[373220]이 8일 2%대 강세를 보였다.",
+      "title": "'분기 최대 매출' LG엔솔, 2%대↑…이차전지주 동반 강세(종합) | 연합뉴스"
     },
     "fact:92459c37a6a67057266990ce": {
       "first_seen_kst": "2026-10-06T17:59:23+09:00",
@@ -47168,6 +47429,25 @@
       "source_published_kst": "2026-10-07T00:00+09:00",
       "title": "우크라 '韓, 러 석유공급' 보도에 비판…\"제재 정책과 어긋나\""
     },
+    "fact:e386395ea0ed7499d98554af": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008138400060",
+      "source": "연합뉴스",
+      "source_body_digest": "28fc2bc8c4eaa95824489cf9ffe09e07899bef91d801c0f351fb3a1e47189c42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0917907e3cac94e53c29688b0a02831f2cc5fb97b75f96a86535457c219746b6",
+      "source_fact_keys": [
+        "source_fact:v1:021cdfb6cb6611be60eb08261fb2c5d06152addbe21d0acb6985809e1679cdcf"
+      ],
+      "source_published_kst": "2026-10-08T15:23+09:00",
+      "source_title": "양주시, 외국인 납세자에 6개국 언어 안내문 발송 | 연합뉴스",
+      "telegram_core_fact": "정미순 양주시 세정과장은 \"외국인 주민도 지방세 납세자인 만큼 세금 정보를 쉽게 확인하고 필요한 절차를 이용하도록 납세 편의 서비스를 개선하겠다\"고 말했다.",
+      "title": "양주시, 외국인 납세자에 6개국 언어 안내문 발송 | 연합뉴스"
+    },
     "fact:e38ade45e9ca6878f174a305": {
       "first_seen_kst": "2026-10-07T03:43:49+09:00",
       "lanes": {
@@ -51133,6 +51413,27 @@
       "source_title": "\"코리아 디스카운트 해소, 주주환원 지속에 답 있다\"",
       "telegram_core_fact": "주주환원이 꾸준히 이어지는지, 실제로 벌어들인 현금 흐름을 바탕으로 하는지, 발표에 그치지 않고 자사주 소각 등 실제 행동으로 연결되는지를 본다는 것이다.",
       "title": "\"코리아 디스카운트 해소, 주주환원 지속에 답 있다\""
+    },
+    "link:0458a65f08e861882cb68731": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008046251008",
+      "source": "연합뉴스",
+      "source_body_digest": "ef67d97c6bb05296db0f0dd008f7d74b8c97aca9a54e26ae9e4e06b2b36052f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7df783bcd93fd75d36ec64c891db99e95f93d3f48cb12bc3a6f3593616101b57",
+      "source_fact_keys": [
+        "source_fact:v1:18fa9ffbfc10e0cd55e63415b9f78b4eae462325ebd2a3303332075de84fa347",
+        "source_fact:v1:590c411802714ecbc391cf63c6260e128cfbc7cc8208d412d73ba6f9f03329a2",
+        "source_fact:v1:b4900569e0842591bee959421b8e695ebbce2a5bda410586b3d5a85d60d21fa3"
+      ],
+      "source_published_kst": "2026-10-08T15:37+09:00",
+      "source_title": "'분기 최대 매출' LG엔솔, 2%대↑…이차전지주 동반 강세(종합) | 연합뉴스",
+      "telegram_core_fact": "분기 기준 사상 최대 매출을 기록한 LG에너지솔루션[373220]이 8일 2%대 강세를 보였다.",
+      "title": "'분기 최대 매출' LG엔솔, 2%대↑…이차전지주 동반 강세(종합) | 연합뉴스"
     },
     "link:0480a813f28dbf534ca8c0d3": {
       "first_seen_kst": "2026-10-04T06:09:53+09:00",
@@ -64895,6 +65196,27 @@
       "source": "이데일리",
       "title": "[美특징주]엔비디아, 장중 사상 최고가 경신…시총 5.7조달러 터치"
     },
+    "link:4f2d769fe79b2719a63cef92": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819428",
+      "source": "뉴시스",
+      "source_body_digest": "875648f571548095c8980d6dda9b5da57f5688299f85634231709a67876f8294",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:98a1d88b30108854d4342dea97602eb1bd464a74cdb03cb44c2fae1893af09f3",
+      "source_fact_keys": [
+        "source_fact:v1:8a190f1f13d173af5b557c9b6b631c4e68a5c26e2a7cecd341d586749cb12286",
+        "source_fact:v1:9648686a11e82828ca3250c9540d8acecd3d1b34fd2bdbd1af8e458d1c896be0",
+        "source_fact:v1:c2751f63da9d29229c8b4745edb974141112f53178c5a697c698f2edc4510ed6"
+      ],
+      "source_published_kst": "2026-10-08T15:32+09:00",
+      "source_title": "[올댓차이나] 독일, 中 코스코 물류업체 치펠 인수 저지…\"안보 우려\"",
+      "telegram_core_fact": "독일 정부가 중국 국영 해운 대기업 코스코(中遠海運集團 COSCO)의 자국 물류업체 치펠(Zippel) 인수를 국가안보상 우려를 이유로 저지했다. dpa와 AFP 통신, rfi에 따르면 독일 경제에너지부는 7일(현지시간) 코스코가 함부르크 소재 물류업체 치펠 지분 80%를 인수하는 거래를 막았다고 발표했다.",
+      "title": "[올댓차이나] 독일, 中 코스코 물류업체 치펠 인수 저지…\"안보 우려\""
+    },
     "link:4f34c6c20002c79c6fb3d8d1": {
       "first_seen_kst": "2026-10-02T18:51:02+09:00",
       "lanes": {
@@ -71535,6 +71857,23 @@
       "source_published_kst": "2026-10-05T09:51+09:00",
       "title": "아이폰 듀오, 초기 물량 부족…한국도 '공급 지연' 우려"
     },
+    "link:722545036d9ac1e070aace52": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008141500008",
+      "source": "연합뉴스",
+      "source_body_digest": "b59afbb83a8735ae7edd551d28472d648ef958faf645b35ab6fb5db884381c12",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T15:31+09:00",
+      "source_title": "현대비앤지스틸 \"성림첨단산업 주식 708억원에 추가취득\" | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 현대비앤지스틸[004560]은 영구자석, 전자석, 자석응용기기 제조 및 판매업 업체 성림첨단산업의 주식 283만3천629주를 약 708억원에 추가 취득한다고 8일 공시했다.",
+      "title": "현대비앤지스틸 \"성림첨단산업 주식 708억원에 추가취득\" | 연합뉴스"
+    },
     "link:7240319c12243a970310188a": {
       "first_seen_kst": "2026-10-08T15:53:45+09:00",
       "lanes": {
@@ -72135,6 +72474,30 @@
       "link": "https://www.yna.co.kr/view/AKR20260918130700054",
       "source": "연합뉴스",
       "title": "전남광주시·장성군, 앰코 폐수처리시설 확충 협력 | 연합뉴스"
+    },
+    "link:75d7b5aaa186217455779b79": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6313650",
+      "source": "뉴스1",
+      "source_body_digest": "00c7c3883479ec7aa3bc14b8eec0162c6ec541cdedf2c7d9cf61bc5fa85be0e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99f761f3aaceb54160665bceaf46a4610d535cb95aa8719e7c1fc52d20797fee",
+      "source_fact_keys": [
+        "source_fact:v1:0bdb928f9a6b49da892dfd54a70823e71288d9b15ba58f5ccaa6ccd4b7ef49a7",
+        "source_fact:v1:2719bd773c9ada53ba328bf245d796003a52b9ab0814abc5be3e6963226b6a1e",
+        "source_fact:v1:672ad80a4c7677e03a5af051dbd3e2f8d1f5684ef04e50425a027a1d63f4a868",
+        "source_fact:v1:789629a223f38625d36903608edf4579228389d2efc6ab37bc18b2f178891f5d",
+        "source_fact:v1:aa1c4c3c25da577ee45069a776bfaaf4b9c9018772ab6002708e69dbfc731848",
+        "source_fact:v1:af4d3f92876fce2018c7d29c3178229243c03709dc73f3b5f8fd039212cabef9"
+      ],
+      "source_published_kst": "2026-10-08T05:43+09:00",
+      "source_title": "국제유가 하락…글로벌 비축유 방출 가속에 WTI 1.3%↓",
+      "telegram_core_fact": "IEA는 앞서 발표한 비축유 방출을 최대한 신속하게 완료하면 약 1억배럴의 원유와 석유제품이 시장에 공급될 수 있다고 밝혔다.",
+      "title": "국제유가 하락…글로벌 비축유 방출 가속에 WTI 1.3%↓"
     },
     "link:75f69968f137a3c8e64c5da6": {
       "first_seen_kst": "2026-10-07T20:59:13+09:00",
@@ -85943,6 +86306,27 @@
       "source_published_kst": "2026-10-07T11:36+09:00",
       "title": "우상호 지사 \"취임 100일, 강원 변화 시작…기업 투자 가시화\" | 연합뉴스"
     },
+    "link:c0e02b08c45b8540951b606d": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819439",
+      "source": "뉴시스",
+      "source_body_digest": "8f13e4e6cc4593a3374f28c2a58574e5ee3ceee76a13d255996959a6db90751f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:57267a3bbd79bbe2b2ba766b697cda18b580dda3b08caa44692749ae756210a9",
+      "source_fact_keys": [
+        "source_fact:v1:213c72827bca9cd12ee8ab7e3d5cdb63e176605a80a7d56fcbf61adadb1ee5b6",
+        "source_fact:v1:7d8910af552a590dc424f0210e12b8f79a374757cc616eb238346ce166b84515",
+        "source_fact:v1:c5867544d75b175ce75b7b2d8b7bbf6ccd9b37546521881affb2fe0326e1fdd2"
+      ],
+      "source_published_kst": "2026-10-08T15:42+09:00",
+      "source_title": "경기 광주시 \"3만호 스마트도시·국가산단 조성을\"",
+      "telegram_core_fact": "경기 광주시가 용인 반도체 국가산업단지 용수공급 사업과 관련한 지역 상생방안으로 3만호 스마트도시와 국가산업단지 조성을 정부에 요구했다. 광주시가 제시한 핵심 건의사항은 난개발 방지를 위한 3만호 스마트도시 조성과 지역경제 활성화를 위한 국가산업단지 조성이다.",
+      "title": "경기 광주시 \"3만호 스마트도시·국가산단 조성을\""
+    },
     "link:c0fda36b693368cfd2a2c7df": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
       "lanes": {
@@ -87962,6 +88346,25 @@
       "link": "https://www.yna.co.kr/view/AKR20260926032900009",
       "source": "연합뉴스",
       "title": "미중정상 \"국제수로 통행료 반대\"…이란 호르무즈 통제 변수되나 | 연합뉴스"
+    },
+    "link:cd241cf1ef3952e02808e901": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008138400060",
+      "source": "연합뉴스",
+      "source_body_digest": "28fc2bc8c4eaa95824489cf9ffe09e07899bef91d801c0f351fb3a1e47189c42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0917907e3cac94e53c29688b0a02831f2cc5fb97b75f96a86535457c219746b6",
+      "source_fact_keys": [
+        "source_fact:v1:021cdfb6cb6611be60eb08261fb2c5d06152addbe21d0acb6985809e1679cdcf"
+      ],
+      "source_published_kst": "2026-10-08T15:23+09:00",
+      "source_title": "양주시, 외국인 납세자에 6개국 언어 안내문 발송 | 연합뉴스",
+      "telegram_core_fact": "정미순 양주시 세정과장은 \"외국인 주민도 지방세 납세자인 만큼 세금 정보를 쉽게 확인하고 필요한 절차를 이용하도록 납세 편의 서비스를 개선하겠다\"고 말했다.",
+      "title": "양주시, 외국인 납세자에 6개국 언어 안내문 발송 | 연합뉴스"
     },
     "link:cd438090b3b045c773af514f": {
       "first_seen_kst": "2026-10-01T21:38:16+09:00",
@@ -94367,6 +94770,29 @@
       "source_title": "日 토픽스 지수 56년만에 대수술…종목 40% 줄이는 이유",
       "telegram_core_fact": "일본거래소그룹(JPX)은 일본 대표 주가지수 토픽스(TOPIX) 편입 종목 수를 약 40% 줄이는 대규모 개편안을 발표했다. 니혼게이자이(닛케이)신문에 따르면 도쿄증권거래소를 운영하는 JPX는 10월 말부터 토픽스의 편입 종목 수를 현재 1636개사에서 986개사로 줄이는 대규모 개편 계획을 밝혔다.",
       "title": "日 토픽스 지수 56년만에 대수술…종목 40% 줄이는 이유"
+    },
+    "link:ef7036c473bf8f3677b2ea9b": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.mt.co.kr/politics/2026/10/08/2026100813194710337",
+      "source": "머니투데이",
+      "source_body_digest": "a30d91739749a668bbed3172f2e25f055a4c942c5a173949b08d03057dc1ea3d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21b18fef1f45830593243211fb5f14f0babbfb6d160cc89e796f53d53b8a7c15",
+      "source_fact_keys": [
+        "source_fact:v1:21345b10ee9fb65e85ac8e656f233689462040fa94ef41aac8b39aa6c5a32509",
+        "source_fact:v1:4936a041672e2a1e79c164e1736d618064f771f180a9ad659f13f75a44eda624",
+        "source_fact:v1:59f48e2c4b442c0e54be362bddbaa7ed0cc8338d30926f9747f9c4f01bb310ea",
+        "source_fact:v1:65a98eb5e6711d31019d08570d025b7178a043543d4de83eaba809f52d34ac32",
+        "source_fact:v1:c3858e0f6074ff9d50cda737b032463bbb9e5fc9006d94406b13f583693676d9"
+      ],
+      "source_published_kst": "2026-10-08T14:30+09:00",
+      "source_title": "野 \"레버리지 ETF, 청와대가 주범\"…與 \"설계 아쉽지만 도입 불가피\"",
+      "telegram_core_fact": "박태준 국민의힘 의원은 8일 서울 여의도 국회 본관에서 진행된 국회 정무위원회 국감에서 \"저는 ETF 논란의 주범을 이재명 대통령과 청와대가 공범이라고 결론 내렸다\"며 \"금융투자협회 산하 연구원에서 2024년 ETF 출시를 반대했는데 이 대통령 취임 직후 찬성으로 바뀌었다. 이것이 이번 사태의 발단\"이라고 말했다.",
+      "title": "野 \"레버리지 ETF, 청와대가 주범\"…與 \"설계 아쉽지만 도입 불가피\""
     },
     "link:ef8c4f456f30257a0542331b": {
       "first_seen_kst": "2026-10-03T10:53:56+09:00",
@@ -104735,6 +105161,27 @@
       "source": "뉴시스",
       "title": "美, 이란 경제 옥죄기 계속…자동차·철도 기업들 제재"
     },
+    "original:2a1931236d65452dd4dded84": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819428",
+      "source": "뉴시스",
+      "source_body_digest": "875648f571548095c8980d6dda9b5da57f5688299f85634231709a67876f8294",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:98a1d88b30108854d4342dea97602eb1bd464a74cdb03cb44c2fae1893af09f3",
+      "source_fact_keys": [
+        "source_fact:v1:8a190f1f13d173af5b557c9b6b631c4e68a5c26e2a7cecd341d586749cb12286",
+        "source_fact:v1:9648686a11e82828ca3250c9540d8acecd3d1b34fd2bdbd1af8e458d1c896be0",
+        "source_fact:v1:c2751f63da9d29229c8b4745edb974141112f53178c5a697c698f2edc4510ed6"
+      ],
+      "source_published_kst": "2026-10-08T15:32+09:00",
+      "source_title": "[올댓차이나] 독일, 中 코스코 물류업체 치펠 인수 저지…\"안보 우려\"",
+      "telegram_core_fact": "독일 정부가 중국 국영 해운 대기업 코스코(中遠海運集團 COSCO)의 자국 물류업체 치펠(Zippel) 인수를 국가안보상 우려를 이유로 저지했다. dpa와 AFP 통신, rfi에 따르면 독일 경제에너지부는 7일(현지시간) 코스코가 함부르크 소재 물류업체 치펠 지분 80%를 인수하는 거래를 막았다고 발표했다.",
+      "title": "[올댓차이나] 독일, 中 코스코 물류업체 치펠 인수 저지…\"안보 우려\""
+    },
     "original:2a1fe798a439f50b1de3aa60": {
       "first_seen_kst": "2026-10-07T18:00:43+09:00",
       "lanes": {
@@ -108121,6 +108568,25 @@
       "link": "https://biz.heraldcorp.com/article/10890394",
       "source": "헤럴드경제",
       "title": "마이크론 뚫은 에코프로HN, 수주 2500억 쌓았다…내년 2분기 HBM 소재 양산 [비즈360]"
+    },
+    "original:3bb989f4fc64f7ea288849a9": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008138400060",
+      "source": "연합뉴스",
+      "source_body_digest": "28fc2bc8c4eaa95824489cf9ffe09e07899bef91d801c0f351fb3a1e47189c42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0917907e3cac94e53c29688b0a02831f2cc5fb97b75f96a86535457c219746b6",
+      "source_fact_keys": [
+        "source_fact:v1:021cdfb6cb6611be60eb08261fb2c5d06152addbe21d0acb6985809e1679cdcf"
+      ],
+      "source_published_kst": "2026-10-08T15:23+09:00",
+      "source_title": "양주시, 외국인 납세자에 6개국 언어 안내문 발송 | 연합뉴스",
+      "telegram_core_fact": "정미순 양주시 세정과장은 \"외국인 주민도 지방세 납세자인 만큼 세금 정보를 쉽게 확인하고 필요한 절차를 이용하도록 납세 편의 서비스를 개선하겠다\"고 말했다.",
+      "title": "양주시, 외국인 납세자에 6개국 언어 안내문 발송 | 연합뉴스"
     },
     "original:3bf8f1f47b955dcf7ee06843": {
       "first_seen_kst": "2026-10-07T13:41:41+09:00",
@@ -111838,6 +112304,23 @@
       "telegram_core_fact": "국내 금융지주회사의 올해 상반기 순이익이 17조6000억원으로 전년비 13.7% 증가했다.",
       "title": "금융지주 상반기 순익 17.6조…증권 73% 뛰고 은행은 8% 감소"
     },
+    "original:4da6ed626edcbaf5e2920587": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008141500008",
+      "source": "연합뉴스",
+      "source_body_digest": "b59afbb83a8735ae7edd551d28472d648ef958faf645b35ab6fb5db884381c12",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T15:31+09:00",
+      "source_title": "현대비앤지스틸 \"성림첨단산업 주식 708억원에 추가취득\" | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 현대비앤지스틸[004560]은 영구자석, 전자석, 자석응용기기 제조 및 판매업 업체 성림첨단산업의 주식 283만3천629주를 약 708억원에 추가 취득한다고 8일 공시했다.",
+      "title": "현대비앤지스틸 \"성림첨단산업 주식 708억원에 추가취득\" | 연합뉴스"
+    },
     "original:4db9e021e97ce7746d56cd74": {
       "first_seen_kst": "2026-10-01T21:12:25+09:00",
       "lanes": {
@@ -114219,6 +114702,30 @@
       ],
       "source_published_kst": "2026-10-06T10:05+09:00",
       "title": "두산로보틱스, '한국형 피지컬 AI' 시동…989억 국책과제 수주"
+    },
+    "original:5bd3b2a8ab583f7db6884b10": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6313650",
+      "source": "뉴스1",
+      "source_body_digest": "00c7c3883479ec7aa3bc14b8eec0162c6ec541cdedf2c7d9cf61bc5fa85be0e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99f761f3aaceb54160665bceaf46a4610d535cb95aa8719e7c1fc52d20797fee",
+      "source_fact_keys": [
+        "source_fact:v1:0bdb928f9a6b49da892dfd54a70823e71288d9b15ba58f5ccaa6ccd4b7ef49a7",
+        "source_fact:v1:2719bd773c9ada53ba328bf245d796003a52b9ab0814abc5be3e6963226b6a1e",
+        "source_fact:v1:672ad80a4c7677e03a5af051dbd3e2f8d1f5684ef04e50425a027a1d63f4a868",
+        "source_fact:v1:789629a223f38625d36903608edf4579228389d2efc6ab37bc18b2f178891f5d",
+        "source_fact:v1:aa1c4c3c25da577ee45069a776bfaaf4b9c9018772ab6002708e69dbfc731848",
+        "source_fact:v1:af4d3f92876fce2018c7d29c3178229243c03709dc73f3b5f8fd039212cabef9"
+      ],
+      "source_published_kst": "2026-10-08T05:43+09:00",
+      "source_title": "국제유가 하락…글로벌 비축유 방출 가속에 WTI 1.3%↓",
+      "telegram_core_fact": "IEA는 앞서 발표한 비축유 방출을 최대한 신속하게 완료하면 약 1억배럴의 원유와 석유제품이 시장에 공급될 수 있다고 밝혔다.",
+      "title": "국제유가 하락…글로벌 비축유 방출 가속에 WTI 1.3%↓"
     },
     "original:5bf50ed79a1b109798d11901": {
       "first_seen_kst": "2026-10-03T19:34:33+09:00",
@@ -120113,6 +120620,29 @@
       "source_title": "대신증권 \"효성중공업, 3분기 일시적 부진…업황 호조는 지속\"",
       "telegram_core_fact": "대신증권은 효성중공업의 3분기 매출을 1조9090억원, 영업이익을 3032억원으로 예상했다.",
       "title": "대신증권 \"효성중공업, 3분기 일시적 부진…업황 호조는 지속\""
+    },
+    "original:7ea3b2081a1ae400dd3cbcd6": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.mt.co.kr/politics/2026/10/08/2026100813194710337",
+      "source": "머니투데이",
+      "source_body_digest": "a30d91739749a668bbed3172f2e25f055a4c942c5a173949b08d03057dc1ea3d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21b18fef1f45830593243211fb5f14f0babbfb6d160cc89e796f53d53b8a7c15",
+      "source_fact_keys": [
+        "source_fact:v1:21345b10ee9fb65e85ac8e656f233689462040fa94ef41aac8b39aa6c5a32509",
+        "source_fact:v1:4936a041672e2a1e79c164e1736d618064f771f180a9ad659f13f75a44eda624",
+        "source_fact:v1:59f48e2c4b442c0e54be362bddbaa7ed0cc8338d30926f9747f9c4f01bb310ea",
+        "source_fact:v1:65a98eb5e6711d31019d08570d025b7178a043543d4de83eaba809f52d34ac32",
+        "source_fact:v1:c3858e0f6074ff9d50cda737b032463bbb9e5fc9006d94406b13f583693676d9"
+      ],
+      "source_published_kst": "2026-10-08T14:30+09:00",
+      "source_title": "野 \"레버리지 ETF, 청와대가 주범\"…與 \"설계 아쉽지만 도입 불가피\"",
+      "telegram_core_fact": "박태준 국민의힘 의원은 8일 서울 여의도 국회 본관에서 진행된 국회 정무위원회 국감에서 \"저는 ETF 논란의 주범을 이재명 대통령과 청와대가 공범이라고 결론 내렸다\"며 \"금융투자협회 산하 연구원에서 2024년 ETF 출시를 반대했는데 이 대통령 취임 직후 찬성으로 바뀌었다. 이것이 이번 사태의 발단\"이라고 말했다.",
+      "title": "野 \"레버리지 ETF, 청와대가 주범\"…與 \"설계 아쉽지만 도입 불가피\""
     },
     "original:7ec0df0193d5bda93e97c9d0": {
       "first_seen_kst": "2026-10-04T00:48:36+09:00",
@@ -128144,6 +128674,27 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T16:52+09:00",
       "title": "구미시, 원스톱 민원팀 성과…\"복합 민원 200여건 해결\""
+    },
+    "original:ac3561aa590aba1c7baef06e": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008046251008",
+      "source": "연합뉴스",
+      "source_body_digest": "ef67d97c6bb05296db0f0dd008f7d74b8c97aca9a54e26ae9e4e06b2b36052f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7df783bcd93fd75d36ec64c891db99e95f93d3f48cb12bc3a6f3593616101b57",
+      "source_fact_keys": [
+        "source_fact:v1:18fa9ffbfc10e0cd55e63415b9f78b4eae462325ebd2a3303332075de84fa347",
+        "source_fact:v1:590c411802714ecbc391cf63c6260e128cfbc7cc8208d412d73ba6f9f03329a2",
+        "source_fact:v1:b4900569e0842591bee959421b8e695ebbce2a5bda410586b3d5a85d60d21fa3"
+      ],
+      "source_published_kst": "2026-10-08T15:37+09:00",
+      "source_title": "'분기 최대 매출' LG엔솔, 2%대↑…이차전지주 동반 강세(종합) | 연합뉴스",
+      "telegram_core_fact": "분기 기준 사상 최대 매출을 기록한 LG에너지솔루션[373220]이 8일 2%대 강세를 보였다.",
+      "title": "'분기 최대 매출' LG엔솔, 2%대↑…이차전지주 동반 강세(종합) | 연합뉴스"
     },
     "original:ac3ea94222048294de166f3a": {
       "first_seen_kst": "2026-10-03T16:23:07+09:00",
@@ -136837,6 +137388,27 @@
       "source": "연합뉴스",
       "title": "K뷰티 질주 가속…9월까지 화장품 수출 31%↑ '역대 최대' | 연합뉴스"
     },
+    "original:de0c1f787b269102acd6cf93": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819439",
+      "source": "뉴시스",
+      "source_body_digest": "8f13e4e6cc4593a3374f28c2a58574e5ee3ceee76a13d255996959a6db90751f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:57267a3bbd79bbe2b2ba766b697cda18b580dda3b08caa44692749ae756210a9",
+      "source_fact_keys": [
+        "source_fact:v1:213c72827bca9cd12ee8ab7e3d5cdb63e176605a80a7d56fcbf61adadb1ee5b6",
+        "source_fact:v1:7d8910af552a590dc424f0210e12b8f79a374757cc616eb238346ce166b84515",
+        "source_fact:v1:c5867544d75b175ce75b7b2d8b7bbf6ccd9b37546521881affb2fe0326e1fdd2"
+      ],
+      "source_published_kst": "2026-10-08T15:42+09:00",
+      "source_title": "경기 광주시 \"3만호 스마트도시·국가산단 조성을\"",
+      "telegram_core_fact": "경기 광주시가 용인 반도체 국가산업단지 용수공급 사업과 관련한 지역 상생방안으로 3만호 스마트도시와 국가산업단지 조성을 정부에 요구했다. 광주시가 제시한 핵심 건의사항은 난개발 방지를 위한 3만호 스마트도시 조성과 지역경제 활성화를 위한 국가산업단지 조성이다.",
+      "title": "경기 광주시 \"3만호 스마트도시·국가산단 조성을\""
+    },
     "original:de21b0711a15737bc07a2bb1": {
       "first_seen_kst": "2026-09-21T18:41:01+09:00",
       "lanes": {
@@ -145164,6 +145736,29 @@
       "source_published_kst": "2026-10-07T06:31+09:00",
       "title": "실적 기대에 힘받은 뉴욕증시…S&P500·나스닥 또 최고치(종합)"
     },
+    "source_fact:05ac8238afda244e796d97ad": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.mt.co.kr/politics/2026/10/08/2026100813194710337",
+      "source": "머니투데이",
+      "source_body_digest": "a30d91739749a668bbed3172f2e25f055a4c942c5a173949b08d03057dc1ea3d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21b18fef1f45830593243211fb5f14f0babbfb6d160cc89e796f53d53b8a7c15",
+      "source_fact_keys": [
+        "source_fact:v1:21345b10ee9fb65e85ac8e656f233689462040fa94ef41aac8b39aa6c5a32509",
+        "source_fact:v1:4936a041672e2a1e79c164e1736d618064f771f180a9ad659f13f75a44eda624",
+        "source_fact:v1:59f48e2c4b442c0e54be362bddbaa7ed0cc8338d30926f9747f9c4f01bb310ea",
+        "source_fact:v1:65a98eb5e6711d31019d08570d025b7178a043543d4de83eaba809f52d34ac32",
+        "source_fact:v1:c3858e0f6074ff9d50cda737b032463bbb9e5fc9006d94406b13f583693676d9"
+      ],
+      "source_published_kst": "2026-10-08T14:30+09:00",
+      "source_title": "野 \"레버리지 ETF, 청와대가 주범\"…與 \"설계 아쉽지만 도입 불가피\"",
+      "telegram_core_fact": "박태준 국민의힘 의원은 8일 서울 여의도 국회 본관에서 진행된 국회 정무위원회 국감에서 \"저는 ETF 논란의 주범을 이재명 대통령과 청와대가 공범이라고 결론 내렸다\"며 \"금융투자협회 산하 연구원에서 2024년 ETF 출시를 반대했는데 이 대통령 취임 직후 찬성으로 바뀌었다. 이것이 이번 사태의 발단\"이라고 말했다.",
+      "title": "野 \"레버리지 ETF, 청와대가 주범\"…與 \"설계 아쉽지만 도입 불가피\""
+    },
     "source_fact:05cc33823489ae9a36f1e1a5": {
       "first_seen_kst": "2026-10-06T12:10:48+09:00",
       "lanes": {
@@ -146732,6 +147327,27 @@
       ],
       "source_published_kst": "2026-10-06T01:21+09:00",
       "title": "페라리, 자사주 2600만 유로 매입..3차 한도 41% 소진"
+    },
+    "source_fact:08b6a2f204a42da14368086b": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819428",
+      "source": "뉴시스",
+      "source_body_digest": "875648f571548095c8980d6dda9b5da57f5688299f85634231709a67876f8294",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:98a1d88b30108854d4342dea97602eb1bd464a74cdb03cb44c2fae1893af09f3",
+      "source_fact_keys": [
+        "source_fact:v1:8a190f1f13d173af5b557c9b6b631c4e68a5c26e2a7cecd341d586749cb12286",
+        "source_fact:v1:9648686a11e82828ca3250c9540d8acecd3d1b34fd2bdbd1af8e458d1c896be0",
+        "source_fact:v1:c2751f63da9d29229c8b4745edb974141112f53178c5a697c698f2edc4510ed6"
+      ],
+      "source_published_kst": "2026-10-08T15:32+09:00",
+      "source_title": "[올댓차이나] 독일, 中 코스코 물류업체 치펠 인수 저지…\"안보 우려\"",
+      "telegram_core_fact": "독일 정부가 중국 국영 해운 대기업 코스코(中遠海運集團 COSCO)의 자국 물류업체 치펠(Zippel) 인수를 국가안보상 우려를 이유로 저지했다. dpa와 AFP 통신, rfi에 따르면 독일 경제에너지부는 7일(현지시간) 코스코가 함부르크 소재 물류업체 치펠 지분 80%를 인수하는 거래를 막았다고 발표했다.",
+      "title": "[올댓차이나] 독일, 中 코스코 물류업체 치펠 인수 저지…\"안보 우려\""
     },
     "source_fact:08c14ce1a78ac4fdf7f632dd": {
       "first_seen_kst": "2026-10-07T13:41:41+09:00",
@@ -159754,6 +160370,27 @@
       "telegram_core_fact": "올해 들어 8월까지 쌓인 경상수지 흑자도 2800억달러에 육박했다. 반도체 수출 증가세가 더욱 강해지면서 지난 8월 경상수지 흑자가 460억달러를 넘어섰다.",
       "title": "[속보] '반도체 강세' 8월 경상흑자 461억달러…누적 2800억달러 육박"
     },
+    "source_fact:21cd56818141bcb4fb11be84": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819428",
+      "source": "뉴시스",
+      "source_body_digest": "875648f571548095c8980d6dda9b5da57f5688299f85634231709a67876f8294",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:98a1d88b30108854d4342dea97602eb1bd464a74cdb03cb44c2fae1893af09f3",
+      "source_fact_keys": [
+        "source_fact:v1:8a190f1f13d173af5b557c9b6b631c4e68a5c26e2a7cecd341d586749cb12286",
+        "source_fact:v1:9648686a11e82828ca3250c9540d8acecd3d1b34fd2bdbd1af8e458d1c896be0",
+        "source_fact:v1:c2751f63da9d29229c8b4745edb974141112f53178c5a697c698f2edc4510ed6"
+      ],
+      "source_published_kst": "2026-10-08T15:32+09:00",
+      "source_title": "[올댓차이나] 독일, 中 코스코 물류업체 치펠 인수 저지…\"안보 우려\"",
+      "telegram_core_fact": "독일 정부가 중국 국영 해운 대기업 코스코(中遠海運集團 COSCO)의 자국 물류업체 치펠(Zippel) 인수를 국가안보상 우려를 이유로 저지했다. dpa와 AFP 통신, rfi에 따르면 독일 경제에너지부는 7일(현지시간) 코스코가 함부르크 소재 물류업체 치펠 지분 80%를 인수하는 거래를 막았다고 발표했다.",
+      "title": "[올댓차이나] 독일, 中 코스코 물류업체 치펠 인수 저지…\"안보 우려\""
+    },
     "source_fact:21d07e08b4dce159d7e70cc2": {
       "first_seen_kst": "2026-10-08T01:26:16+09:00",
       "lanes": {
@@ -160375,6 +161012,30 @@
       "source_title": "LG엔솔, 3분기 영업익 7천560억원…분기 최대 매출 달성(종합) | 연합뉴스",
       "telegram_core_fact": "LG에너지솔루션은 연결 기준 올해 3분기 영업이익이 지난해 동기보다 25.7% 증가한 7천560억원으로 잠정 집계됐다고 8일 공시했다.",
       "title": "LG엔솔, 3분기 영업익 7천560억원…분기 최대 매출 달성(종합) | 연합뉴스"
+    },
+    "source_fact:22e07075daa1e34a5ff30881": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6313650",
+      "source": "뉴스1",
+      "source_body_digest": "00c7c3883479ec7aa3bc14b8eec0162c6ec541cdedf2c7d9cf61bc5fa85be0e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99f761f3aaceb54160665bceaf46a4610d535cb95aa8719e7c1fc52d20797fee",
+      "source_fact_keys": [
+        "source_fact:v1:0bdb928f9a6b49da892dfd54a70823e71288d9b15ba58f5ccaa6ccd4b7ef49a7",
+        "source_fact:v1:2719bd773c9ada53ba328bf245d796003a52b9ab0814abc5be3e6963226b6a1e",
+        "source_fact:v1:672ad80a4c7677e03a5af051dbd3e2f8d1f5684ef04e50425a027a1d63f4a868",
+        "source_fact:v1:789629a223f38625d36903608edf4579228389d2efc6ab37bc18b2f178891f5d",
+        "source_fact:v1:aa1c4c3c25da577ee45069a776bfaaf4b9c9018772ab6002708e69dbfc731848",
+        "source_fact:v1:af4d3f92876fce2018c7d29c3178229243c03709dc73f3b5f8fd039212cabef9"
+      ],
+      "source_published_kst": "2026-10-08T05:43+09:00",
+      "source_title": "국제유가 하락…글로벌 비축유 방출 가속에 WTI 1.3%↓",
+      "telegram_core_fact": "IEA는 앞서 발표한 비축유 방출을 최대한 신속하게 완료하면 약 1억배럴의 원유와 석유제품이 시장에 공급될 수 있다고 밝혔다.",
+      "title": "국제유가 하락…글로벌 비축유 방출 가속에 WTI 1.3%↓"
     },
     "source_fact:22e834b152665a370f8b743b": {
       "first_seen_kst": "2026-10-07T00:38:27+09:00",
@@ -166730,6 +167391,27 @@
       "source_published_kst": "2026-10-06T11:33+09:00",
       "title": "李대통령 치킨값 점검 예고했는데…중량도 최대 30% 차이"
     },
+    "source_fact:2e47310b873e943a47e20c59": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819439",
+      "source": "뉴시스",
+      "source_body_digest": "8f13e4e6cc4593a3374f28c2a58574e5ee3ceee76a13d255996959a6db90751f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:57267a3bbd79bbe2b2ba766b697cda18b580dda3b08caa44692749ae756210a9",
+      "source_fact_keys": [
+        "source_fact:v1:213c72827bca9cd12ee8ab7e3d5cdb63e176605a80a7d56fcbf61adadb1ee5b6",
+        "source_fact:v1:7d8910af552a590dc424f0210e12b8f79a374757cc616eb238346ce166b84515",
+        "source_fact:v1:c5867544d75b175ce75b7b2d8b7bbf6ccd9b37546521881affb2fe0326e1fdd2"
+      ],
+      "source_published_kst": "2026-10-08T15:42+09:00",
+      "source_title": "경기 광주시 \"3만호 스마트도시·국가산단 조성을\"",
+      "telegram_core_fact": "경기 광주시가 용인 반도체 국가산업단지 용수공급 사업과 관련한 지역 상생방안으로 3만호 스마트도시와 국가산업단지 조성을 정부에 요구했다. 광주시가 제시한 핵심 건의사항은 난개발 방지를 위한 3만호 스마트도시 조성과 지역경제 활성화를 위한 국가산업단지 조성이다.",
+      "title": "경기 광주시 \"3만호 스마트도시·국가산단 조성을\""
+    },
     "source_fact:2e4a615a47c0ed56fad4a7a5": {
       "first_seen_kst": "2026-10-08T10:20:20+09:00",
       "lanes": {
@@ -167785,6 +168467,29 @@
       ],
       "source_published_kst": "2026-10-06T16:23+09:00",
       "title": "日증시, AI·반도체 강세에 상승 마감…닛케이 1.05%↑"
+    },
+    "source_fact:3038047ac9e4f37db522138f": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.mt.co.kr/politics/2026/10/08/2026100813194710337",
+      "source": "머니투데이",
+      "source_body_digest": "a30d91739749a668bbed3172f2e25f055a4c942c5a173949b08d03057dc1ea3d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21b18fef1f45830593243211fb5f14f0babbfb6d160cc89e796f53d53b8a7c15",
+      "source_fact_keys": [
+        "source_fact:v1:21345b10ee9fb65e85ac8e656f233689462040fa94ef41aac8b39aa6c5a32509",
+        "source_fact:v1:4936a041672e2a1e79c164e1736d618064f771f180a9ad659f13f75a44eda624",
+        "source_fact:v1:59f48e2c4b442c0e54be362bddbaa7ed0cc8338d30926f9747f9c4f01bb310ea",
+        "source_fact:v1:65a98eb5e6711d31019d08570d025b7178a043543d4de83eaba809f52d34ac32",
+        "source_fact:v1:c3858e0f6074ff9d50cda737b032463bbb9e5fc9006d94406b13f583693676d9"
+      ],
+      "source_published_kst": "2026-10-08T14:30+09:00",
+      "source_title": "野 \"레버리지 ETF, 청와대가 주범\"…與 \"설계 아쉽지만 도입 불가피\"",
+      "telegram_core_fact": "박태준 국민의힘 의원은 8일 서울 여의도 국회 본관에서 진행된 국회 정무위원회 국감에서 \"저는 ETF 논란의 주범을 이재명 대통령과 청와대가 공범이라고 결론 내렸다\"며 \"금융투자협회 산하 연구원에서 2024년 ETF 출시를 반대했는데 이 대통령 취임 직후 찬성으로 바뀌었다. 이것이 이번 사태의 발단\"이라고 말했다.",
+      "title": "野 \"레버리지 ETF, 청와대가 주범\"…與 \"설계 아쉽지만 도입 불가피\""
     },
     "source_fact:30426b6cd1373a478064f4f6": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
@@ -179155,6 +179860,27 @@
       "source_published_kst": "2026-10-06T23:31+09:00",
       "title": "우크라, '한국의 러 석유공급' 기사 인용해 韓 비판(종합) | 연합뉴스"
     },
+    "source_fact:463b5859e1fd6df7c585e00f": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819439",
+      "source": "뉴시스",
+      "source_body_digest": "8f13e4e6cc4593a3374f28c2a58574e5ee3ceee76a13d255996959a6db90751f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:57267a3bbd79bbe2b2ba766b697cda18b580dda3b08caa44692749ae756210a9",
+      "source_fact_keys": [
+        "source_fact:v1:213c72827bca9cd12ee8ab7e3d5cdb63e176605a80a7d56fcbf61adadb1ee5b6",
+        "source_fact:v1:7d8910af552a590dc424f0210e12b8f79a374757cc616eb238346ce166b84515",
+        "source_fact:v1:c5867544d75b175ce75b7b2d8b7bbf6ccd9b37546521881affb2fe0326e1fdd2"
+      ],
+      "source_published_kst": "2026-10-08T15:42+09:00",
+      "source_title": "경기 광주시 \"3만호 스마트도시·국가산단 조성을\"",
+      "telegram_core_fact": "경기 광주시가 용인 반도체 국가산업단지 용수공급 사업과 관련한 지역 상생방안으로 3만호 스마트도시와 국가산업단지 조성을 정부에 요구했다. 광주시가 제시한 핵심 건의사항은 난개발 방지를 위한 3만호 스마트도시 조성과 지역경제 활성화를 위한 국가산업단지 조성이다.",
+      "title": "경기 광주시 \"3만호 스마트도시·국가산단 조성을\""
+    },
     "source_fact:463c1514eb64da443933dd45": {
       "first_seen_kst": "2026-10-07T13:41:41+09:00",
       "lanes": {
@@ -182751,6 +183477,30 @@
       "telegram_core_fact": "램리서치는 '인공지능(AI) 시대 회복탄력적 파트너십 구축'을 주제로 열린 이번 행사에서 반도체 공급망 안정성과 대응력을 높이기 위한 생태계 협력 방안을 논의했다.",
       "title": "램리서치, \"한국 반도체 생태계와 밀착…제조 역량·공급망 강화\""
     },
+    "source_fact:4c6deb9b9863239af12b94dd": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6313650",
+      "source": "뉴스1",
+      "source_body_digest": "00c7c3883479ec7aa3bc14b8eec0162c6ec541cdedf2c7d9cf61bc5fa85be0e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99f761f3aaceb54160665bceaf46a4610d535cb95aa8719e7c1fc52d20797fee",
+      "source_fact_keys": [
+        "source_fact:v1:0bdb928f9a6b49da892dfd54a70823e71288d9b15ba58f5ccaa6ccd4b7ef49a7",
+        "source_fact:v1:2719bd773c9ada53ba328bf245d796003a52b9ab0814abc5be3e6963226b6a1e",
+        "source_fact:v1:672ad80a4c7677e03a5af051dbd3e2f8d1f5684ef04e50425a027a1d63f4a868",
+        "source_fact:v1:789629a223f38625d36903608edf4579228389d2efc6ab37bc18b2f178891f5d",
+        "source_fact:v1:aa1c4c3c25da577ee45069a776bfaaf4b9c9018772ab6002708e69dbfc731848",
+        "source_fact:v1:af4d3f92876fce2018c7d29c3178229243c03709dc73f3b5f8fd039212cabef9"
+      ],
+      "source_published_kst": "2026-10-08T05:43+09:00",
+      "source_title": "국제유가 하락…글로벌 비축유 방출 가속에 WTI 1.3%↓",
+      "telegram_core_fact": "IEA는 앞서 발표한 비축유 방출을 최대한 신속하게 완료하면 약 1억배럴의 원유와 석유제품이 시장에 공급될 수 있다고 밝혔다.",
+      "title": "국제유가 하락…글로벌 비축유 방출 가속에 WTI 1.3%↓"
+    },
     "source_fact:4c7fce218a40abd9ea2efb1a": {
       "first_seen_kst": "2026-10-07T17:23:27+09:00",
       "lanes": {
@@ -184328,6 +185078,27 @@
       "source_title": "허성무 \"웨스팅하우스 상장시 추가 지분 확보 계획 필요\"",
       "telegram_core_fact": "국회 산업통상자원중소벤처기업위원회 소속 더불어민주당 허성무(경남 창원 성산) 의원은 산업통상부 국정감사에서 김정관 산업통상부 장관에게 윤석열 정부 당시 미국 웨스팅하우스와 체결한 노예계약을 변경하고 원전 수출 주권을 회복하기 위해 웨스팅하우스 지분 확보 계획을 마련해야 한다고 촉구했다.",
       "title": "허성무 \"웨스팅하우스 상장시 추가 지분 확보 계획 필요\""
+    },
+    "source_fact:4f85c03526bbed1f41fff66f": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008046251008",
+      "source": "연합뉴스",
+      "source_body_digest": "ef67d97c6bb05296db0f0dd008f7d74b8c97aca9a54e26ae9e4e06b2b36052f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7df783bcd93fd75d36ec64c891db99e95f93d3f48cb12bc3a6f3593616101b57",
+      "source_fact_keys": [
+        "source_fact:v1:18fa9ffbfc10e0cd55e63415b9f78b4eae462325ebd2a3303332075de84fa347",
+        "source_fact:v1:590c411802714ecbc391cf63c6260e128cfbc7cc8208d412d73ba6f9f03329a2",
+        "source_fact:v1:b4900569e0842591bee959421b8e695ebbce2a5bda410586b3d5a85d60d21fa3"
+      ],
+      "source_published_kst": "2026-10-08T15:37+09:00",
+      "source_title": "'분기 최대 매출' LG엔솔, 2%대↑…이차전지주 동반 강세(종합) | 연합뉴스",
+      "telegram_core_fact": "분기 기준 사상 최대 매출을 기록한 LG에너지솔루션[373220]이 8일 2%대 강세를 보였다.",
+      "title": "'분기 최대 매출' LG엔솔, 2%대↑…이차전지주 동반 강세(종합) | 연합뉴스"
     },
     "source_fact:4f939e696a9b3c78e90cb47f": {
       "first_seen_kst": "2026-10-07T18:00:43+09:00",
@@ -206294,6 +207065,27 @@
       "source_published_kst": "2026-10-06T11:35+09:00",
       "title": "日 ‘신중’ 알래스카 LNG 프로젝트…밴스 부통령 “韓과 조율…결국 이뤄질 일” [대미투자]"
     },
+    "source_fact:791971c38635930168e66d9d": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008046251008",
+      "source": "연합뉴스",
+      "source_body_digest": "ef67d97c6bb05296db0f0dd008f7d74b8c97aca9a54e26ae9e4e06b2b36052f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7df783bcd93fd75d36ec64c891db99e95f93d3f48cb12bc3a6f3593616101b57",
+      "source_fact_keys": [
+        "source_fact:v1:18fa9ffbfc10e0cd55e63415b9f78b4eae462325ebd2a3303332075de84fa347",
+        "source_fact:v1:590c411802714ecbc391cf63c6260e128cfbc7cc8208d412d73ba6f9f03329a2",
+        "source_fact:v1:b4900569e0842591bee959421b8e695ebbce2a5bda410586b3d5a85d60d21fa3"
+      ],
+      "source_published_kst": "2026-10-08T15:37+09:00",
+      "source_title": "'분기 최대 매출' LG엔솔, 2%대↑…이차전지주 동반 강세(종합) | 연합뉴스",
+      "telegram_core_fact": "분기 기준 사상 최대 매출을 기록한 LG에너지솔루션[373220]이 8일 2%대 강세를 보였다.",
+      "title": "'분기 최대 매출' LG엔솔, 2%대↑…이차전지주 동반 강세(종합) | 연합뉴스"
+    },
     "source_fact:7923e75fd6e5f2992b0436cb": {
       "first_seen_kst": "2026-10-07T15:44:50+09:00",
       "lanes": {
@@ -207811,6 +208603,29 @@
       "source_title": "두나무·네이버파이낸셜 주식교환 다시 연기…내년 3월 예정",
       "telegram_core_fact": "두나무는 네이버 종속회사인 네이버파이낸셜과 자사의 주식교환일이 내년 3월 31일로 변경됐다고 오늘(7일) 공시했습니다. 네이버파이낸셜의 두나무 완전자회사 편입을 위한 포괄적 주식교환 일정이 다시 연기됐습니다.",
       "title": "두나무·네이버파이낸셜 주식교환 다시 연기…내년 3월 예정"
+    },
+    "source_fact:7c35362b1ef9dc68081f2a44": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.mt.co.kr/politics/2026/10/08/2026100813194710337",
+      "source": "머니투데이",
+      "source_body_digest": "a30d91739749a668bbed3172f2e25f055a4c942c5a173949b08d03057dc1ea3d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21b18fef1f45830593243211fb5f14f0babbfb6d160cc89e796f53d53b8a7c15",
+      "source_fact_keys": [
+        "source_fact:v1:21345b10ee9fb65e85ac8e656f233689462040fa94ef41aac8b39aa6c5a32509",
+        "source_fact:v1:4936a041672e2a1e79c164e1736d618064f771f180a9ad659f13f75a44eda624",
+        "source_fact:v1:59f48e2c4b442c0e54be362bddbaa7ed0cc8338d30926f9747f9c4f01bb310ea",
+        "source_fact:v1:65a98eb5e6711d31019d08570d025b7178a043543d4de83eaba809f52d34ac32",
+        "source_fact:v1:c3858e0f6074ff9d50cda737b032463bbb9e5fc9006d94406b13f583693676d9"
+      ],
+      "source_published_kst": "2026-10-08T14:30+09:00",
+      "source_title": "野 \"레버리지 ETF, 청와대가 주범\"…與 \"설계 아쉽지만 도입 불가피\"",
+      "telegram_core_fact": "박태준 국민의힘 의원은 8일 서울 여의도 국회 본관에서 진행된 국회 정무위원회 국감에서 \"저는 ETF 논란의 주범을 이재명 대통령과 청와대가 공범이라고 결론 내렸다\"며 \"금융투자협회 산하 연구원에서 2024년 ETF 출시를 반대했는데 이 대통령 취임 직후 찬성으로 바뀌었다. 이것이 이번 사태의 발단\"이라고 말했다.",
+      "title": "野 \"레버리지 ETF, 청와대가 주범\"…與 \"설계 아쉽지만 도입 불가피\""
     },
     "source_fact:7c3aafbcd7a100551906a496": {
       "first_seen_kst": "2026-10-08T11:06:13+09:00",
@@ -214230,6 +215045,29 @@
       "source_title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력",
       "telegram_core_fact": "어플라이드 머티어리얼즈와 인텔이 인공지능(AI) 반도체용 차세대 공정과 첨단 패키징 기술 개발 협력에 나선다. 어플라이드는 6일(현지시간) 인텔과 차세대 트랜지스터·인터커넥트·첨단 패키징 개발을 위해 협력한다고 밝혔다.",
       "title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력"
+    },
+    "source_fact:88b5a74e925b34744400d2aa": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.mt.co.kr/politics/2026/10/08/2026100813194710337",
+      "source": "머니투데이",
+      "source_body_digest": "a30d91739749a668bbed3172f2e25f055a4c942c5a173949b08d03057dc1ea3d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21b18fef1f45830593243211fb5f14f0babbfb6d160cc89e796f53d53b8a7c15",
+      "source_fact_keys": [
+        "source_fact:v1:21345b10ee9fb65e85ac8e656f233689462040fa94ef41aac8b39aa6c5a32509",
+        "source_fact:v1:4936a041672e2a1e79c164e1736d618064f771f180a9ad659f13f75a44eda624",
+        "source_fact:v1:59f48e2c4b442c0e54be362bddbaa7ed0cc8338d30926f9747f9c4f01bb310ea",
+        "source_fact:v1:65a98eb5e6711d31019d08570d025b7178a043543d4de83eaba809f52d34ac32",
+        "source_fact:v1:c3858e0f6074ff9d50cda737b032463bbb9e5fc9006d94406b13f583693676d9"
+      ],
+      "source_published_kst": "2026-10-08T14:30+09:00",
+      "source_title": "野 \"레버리지 ETF, 청와대가 주범\"…與 \"설계 아쉽지만 도입 불가피\"",
+      "telegram_core_fact": "박태준 국민의힘 의원은 8일 서울 여의도 국회 본관에서 진행된 국회 정무위원회 국감에서 \"저는 ETF 논란의 주범을 이재명 대통령과 청와대가 공범이라고 결론 내렸다\"며 \"금융투자협회 산하 연구원에서 2024년 ETF 출시를 반대했는데 이 대통령 취임 직후 찬성으로 바뀌었다. 이것이 이번 사태의 발단\"이라고 말했다.",
+      "title": "野 \"레버리지 ETF, 청와대가 주범\"…與 \"설계 아쉽지만 도입 불가피\""
     },
     "source_fact:88b6d15a55f50cf35efc9134": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
@@ -235469,6 +236307,27 @@
       "source_published_kst": "2026-10-07T11:33+09:00",
       "title": "트럼프, 확전·선거철 여론악화 우려해 예멘내전 '뒷짐' | 연합뉴스"
     },
+    "source_fact:b2b66769933c434d4179524d": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008046251008",
+      "source": "연합뉴스",
+      "source_body_digest": "ef67d97c6bb05296db0f0dd008f7d74b8c97aca9a54e26ae9e4e06b2b36052f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7df783bcd93fd75d36ec64c891db99e95f93d3f48cb12bc3a6f3593616101b57",
+      "source_fact_keys": [
+        "source_fact:v1:18fa9ffbfc10e0cd55e63415b9f78b4eae462325ebd2a3303332075de84fa347",
+        "source_fact:v1:590c411802714ecbc391cf63c6260e128cfbc7cc8208d412d73ba6f9f03329a2",
+        "source_fact:v1:b4900569e0842591bee959421b8e695ebbce2a5bda410586b3d5a85d60d21fa3"
+      ],
+      "source_published_kst": "2026-10-08T15:37+09:00",
+      "source_title": "'분기 최대 매출' LG엔솔, 2%대↑…이차전지주 동반 강세(종합) | 연합뉴스",
+      "telegram_core_fact": "분기 기준 사상 최대 매출을 기록한 LG에너지솔루션[373220]이 8일 2%대 강세를 보였다.",
+      "title": "'분기 최대 매출' LG엔솔, 2%대↑…이차전지주 동반 강세(종합) | 연합뉴스"
+    },
     "source_fact:b2c1b85ad905a0f65b4370f2": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
       "lanes": {
@@ -239122,6 +239981,25 @@
       ],
       "source_published_kst": "2026-10-06T08:46+09:00",
       "title": "“코스피, 7100만 찍으면 7700까지 간다”…장밋빛 전망 근거는? [오늘 나온 보고서]"
+    },
+    "source_fact:b9fcd7c78547327684a1a88c": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008138400060",
+      "source": "연합뉴스",
+      "source_body_digest": "28fc2bc8c4eaa95824489cf9ffe09e07899bef91d801c0f351fb3a1e47189c42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0917907e3cac94e53c29688b0a02831f2cc5fb97b75f96a86535457c219746b6",
+      "source_fact_keys": [
+        "source_fact:v1:021cdfb6cb6611be60eb08261fb2c5d06152addbe21d0acb6985809e1679cdcf"
+      ],
+      "source_published_kst": "2026-10-08T15:23+09:00",
+      "source_title": "양주시, 외국인 납세자에 6개국 언어 안내문 발송 | 연합뉴스",
+      "telegram_core_fact": "정미순 양주시 세정과장은 \"외국인 주민도 지방세 납세자인 만큼 세금 정보를 쉽게 확인하고 필요한 절차를 이용하도록 납세 편의 서비스를 개선하겠다\"고 말했다.",
+      "title": "양주시, 외국인 납세자에 6개국 언어 안내문 발송 | 연합뉴스"
     },
     "source_fact:b9fe7fa90e35b55e8c72d49f": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
@@ -244780,6 +245658,30 @@
       "telegram_core_fact": "회사는 상장 이후 LNG 설비 증설과 발전 인프라 투자 확대에 맞춰 주력사업 수주를 늘린다는 목표다.",
       "title": "디티에스 \"코스닥 상장으로 글로벌 열 관리 솔루션 리더 도약\""
     },
+    "source_fact:c4b9946e8fa980431c1cb242": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6313650",
+      "source": "뉴스1",
+      "source_body_digest": "00c7c3883479ec7aa3bc14b8eec0162c6ec541cdedf2c7d9cf61bc5fa85be0e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99f761f3aaceb54160665bceaf46a4610d535cb95aa8719e7c1fc52d20797fee",
+      "source_fact_keys": [
+        "source_fact:v1:0bdb928f9a6b49da892dfd54a70823e71288d9b15ba58f5ccaa6ccd4b7ef49a7",
+        "source_fact:v1:2719bd773c9ada53ba328bf245d796003a52b9ab0814abc5be3e6963226b6a1e",
+        "source_fact:v1:672ad80a4c7677e03a5af051dbd3e2f8d1f5684ef04e50425a027a1d63f4a868",
+        "source_fact:v1:789629a223f38625d36903608edf4579228389d2efc6ab37bc18b2f178891f5d",
+        "source_fact:v1:aa1c4c3c25da577ee45069a776bfaaf4b9c9018772ab6002708e69dbfc731848",
+        "source_fact:v1:af4d3f92876fce2018c7d29c3178229243c03709dc73f3b5f8fd039212cabef9"
+      ],
+      "source_published_kst": "2026-10-08T05:43+09:00",
+      "source_title": "국제유가 하락…글로벌 비축유 방출 가속에 WTI 1.3%↓",
+      "telegram_core_fact": "IEA는 앞서 발표한 비축유 방출을 최대한 신속하게 완료하면 약 1억배럴의 원유와 석유제품이 시장에 공급될 수 있다고 밝혔다.",
+      "title": "국제유가 하락…글로벌 비축유 방출 가속에 WTI 1.3%↓"
+    },
     "source_fact:c4cea5805fe9307cc2fde712": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
       "lanes": {
@@ -247243,6 +248145,27 @@
       "telegram_core_fact": "로보AI(AIIO)가 9월 한 달 잠정 매출(미감사)이 1억 달러를 넘어섰으며, 연초 이후 실적을 토대로 2026년 연간 매출을 약 6억 달러로 예상한다고 7일 발표했다.",
       "title": "로보AI, 9월 매출 1억달러 돌파..올 매출 6억달러 전망"
     },
+    "source_fact:c9263ece9755bd7e62e1c846": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819439",
+      "source": "뉴시스",
+      "source_body_digest": "8f13e4e6cc4593a3374f28c2a58574e5ee3ceee76a13d255996959a6db90751f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:57267a3bbd79bbe2b2ba766b697cda18b580dda3b08caa44692749ae756210a9",
+      "source_fact_keys": [
+        "source_fact:v1:213c72827bca9cd12ee8ab7e3d5cdb63e176605a80a7d56fcbf61adadb1ee5b6",
+        "source_fact:v1:7d8910af552a590dc424f0210e12b8f79a374757cc616eb238346ce166b84515",
+        "source_fact:v1:c5867544d75b175ce75b7b2d8b7bbf6ccd9b37546521881affb2fe0326e1fdd2"
+      ],
+      "source_published_kst": "2026-10-08T15:42+09:00",
+      "source_title": "경기 광주시 \"3만호 스마트도시·국가산단 조성을\"",
+      "telegram_core_fact": "경기 광주시가 용인 반도체 국가산업단지 용수공급 사업과 관련한 지역 상생방안으로 3만호 스마트도시와 국가산업단지 조성을 정부에 요구했다. 광주시가 제시한 핵심 건의사항은 난개발 방지를 위한 3만호 스마트도시 조성과 지역경제 활성화를 위한 국가산업단지 조성이다.",
+      "title": "경기 광주시 \"3만호 스마트도시·국가산단 조성을\""
+    },
     "source_fact:c93bfb480ae0695d2b5a5f36": {
       "first_seen_kst": "2026-10-07T06:28:41+09:00",
       "lanes": {
@@ -249080,6 +250003,29 @@
       "telegram_core_fact": "파라다이스가 공모 회사채 수요예측에서 모집액의 3.4배에 달하는 투자 수요를 확보하며 2년 연속 흥행에 성공했다. 파라다이스에 따르면 회사는 지난 6일 총 600억원 공모 회사채 발행을 위한 수요예측을 실시한 결과 모집액의 3.42배인 총 2050억원의 주문이 접수됐다.",
       "title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배"
     },
+    "source_fact:cd5bddf130ba9265050338e5": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.mt.co.kr/politics/2026/10/08/2026100813194710337",
+      "source": "머니투데이",
+      "source_body_digest": "a30d91739749a668bbed3172f2e25f055a4c942c5a173949b08d03057dc1ea3d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21b18fef1f45830593243211fb5f14f0babbfb6d160cc89e796f53d53b8a7c15",
+      "source_fact_keys": [
+        "source_fact:v1:21345b10ee9fb65e85ac8e656f233689462040fa94ef41aac8b39aa6c5a32509",
+        "source_fact:v1:4936a041672e2a1e79c164e1736d618064f771f180a9ad659f13f75a44eda624",
+        "source_fact:v1:59f48e2c4b442c0e54be362bddbaa7ed0cc8338d30926f9747f9c4f01bb310ea",
+        "source_fact:v1:65a98eb5e6711d31019d08570d025b7178a043543d4de83eaba809f52d34ac32",
+        "source_fact:v1:c3858e0f6074ff9d50cda737b032463bbb9e5fc9006d94406b13f583693676d9"
+      ],
+      "source_published_kst": "2026-10-08T14:30+09:00",
+      "source_title": "野 \"레버리지 ETF, 청와대가 주범\"…與 \"설계 아쉽지만 도입 불가피\"",
+      "telegram_core_fact": "박태준 국민의힘 의원은 8일 서울 여의도 국회 본관에서 진행된 국회 정무위원회 국감에서 \"저는 ETF 논란의 주범을 이재명 대통령과 청와대가 공범이라고 결론 내렸다\"며 \"금융투자협회 산하 연구원에서 2024년 ETF 출시를 반대했는데 이 대통령 취임 직후 찬성으로 바뀌었다. 이것이 이번 사태의 발단\"이라고 말했다.",
+      "title": "野 \"레버리지 ETF, 청와대가 주범\"…與 \"설계 아쉽지만 도입 불가피\""
+    },
     "source_fact:cd65b250fb4ff54245e4ae86": {
       "first_seen_kst": "2026-10-08T11:49:03+09:00",
       "lanes": {
@@ -250626,6 +251572,27 @@
       "source_title": "美, 이란전 재개 가능성에…브렌트유, 4% 가까이 뛴 104달러",
       "telegram_core_fact": "CNBC 등에 따르면 유럽 ICE선물거래소에서 국제유가 기준인 브렌트유 12월 인도분은 한국 시간 8일 오후 4시45분께 전장 대비 3.96% 오른 배럴당 104.17달러를 기록하고 있다.",
       "title": "美, 이란전 재개 가능성에…브렌트유, 4% 가까이 뛴 104달러"
+    },
+    "source_fact:d077a3ac96f066a69ba6799e": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819428",
+      "source": "뉴시스",
+      "source_body_digest": "875648f571548095c8980d6dda9b5da57f5688299f85634231709a67876f8294",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:98a1d88b30108854d4342dea97602eb1bd464a74cdb03cb44c2fae1893af09f3",
+      "source_fact_keys": [
+        "source_fact:v1:8a190f1f13d173af5b557c9b6b631c4e68a5c26e2a7cecd341d586749cb12286",
+        "source_fact:v1:9648686a11e82828ca3250c9540d8acecd3d1b34fd2bdbd1af8e458d1c896be0",
+        "source_fact:v1:c2751f63da9d29229c8b4745edb974141112f53178c5a697c698f2edc4510ed6"
+      ],
+      "source_published_kst": "2026-10-08T15:32+09:00",
+      "source_title": "[올댓차이나] 독일, 中 코스코 물류업체 치펠 인수 저지…\"안보 우려\"",
+      "telegram_core_fact": "독일 정부가 중국 국영 해운 대기업 코스코(中遠海運集團 COSCO)의 자국 물류업체 치펠(Zippel) 인수를 국가안보상 우려를 이유로 저지했다. dpa와 AFP 통신, rfi에 따르면 독일 경제에너지부는 7일(현지시간) 코스코가 함부르크 소재 물류업체 치펠 지분 80%를 인수하는 거래를 막았다고 발표했다.",
+      "title": "[올댓차이나] 독일, 中 코스코 물류업체 치펠 인수 저지…\"안보 우려\""
     },
     "source_fact:d07c81843bec7da8712a87d8": {
       "first_seen_kst": "2026-10-07T10:23:42+09:00",
@@ -252443,6 +253410,30 @@
       ],
       "source_published_kst": "2026-10-07T07:15+09:00",
       "title": "'알렉사 주역' 보스턴다이나믹스 지휘한다 …현대차 피지컬 AI 속도"
+    },
+    "source_fact:d4157ec86c3f27bf21d2ecc8": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6313650",
+      "source": "뉴스1",
+      "source_body_digest": "00c7c3883479ec7aa3bc14b8eec0162c6ec541cdedf2c7d9cf61bc5fa85be0e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99f761f3aaceb54160665bceaf46a4610d535cb95aa8719e7c1fc52d20797fee",
+      "source_fact_keys": [
+        "source_fact:v1:0bdb928f9a6b49da892dfd54a70823e71288d9b15ba58f5ccaa6ccd4b7ef49a7",
+        "source_fact:v1:2719bd773c9ada53ba328bf245d796003a52b9ab0814abc5be3e6963226b6a1e",
+        "source_fact:v1:672ad80a4c7677e03a5af051dbd3e2f8d1f5684ef04e50425a027a1d63f4a868",
+        "source_fact:v1:789629a223f38625d36903608edf4579228389d2efc6ab37bc18b2f178891f5d",
+        "source_fact:v1:aa1c4c3c25da577ee45069a776bfaaf4b9c9018772ab6002708e69dbfc731848",
+        "source_fact:v1:af4d3f92876fce2018c7d29c3178229243c03709dc73f3b5f8fd039212cabef9"
+      ],
+      "source_published_kst": "2026-10-08T05:43+09:00",
+      "source_title": "국제유가 하락…글로벌 비축유 방출 가속에 WTI 1.3%↓",
+      "telegram_core_fact": "IEA는 앞서 발표한 비축유 방출을 최대한 신속하게 완료하면 약 1억배럴의 원유와 석유제품이 시장에 공급될 수 있다고 밝혔다.",
+      "title": "국제유가 하락…글로벌 비축유 방출 가속에 WTI 1.3%↓"
     },
     "source_fact:d41f02e2b3741c184780743c": {
       "first_seen_kst": "2026-10-06T01:26:06+09:00",
@@ -259934,6 +260925,30 @@
       "source_title": "삼성전자 호실적에도 힘 못 쓰는 주가…\"선반영과 수급 살펴야\"",
       "telegram_core_fact": "기대치를 뛰어넘는 이른바 '어닝 서프라이즈'를 기록하더라도 향후 가이던스가 불투명하거나 추가적인 상승 동력이 부족할 경우 주가는 즉각 조정을 받는 양상이다.",
       "title": "삼성전자 호실적에도 힘 못 쓰는 주가…\"선반영과 수급 살펴야\""
+    },
+    "source_fact:e149d7bb7ad137216c1b41b8": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6313650",
+      "source": "뉴스1",
+      "source_body_digest": "00c7c3883479ec7aa3bc14b8eec0162c6ec541cdedf2c7d9cf61bc5fa85be0e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99f761f3aaceb54160665bceaf46a4610d535cb95aa8719e7c1fc52d20797fee",
+      "source_fact_keys": [
+        "source_fact:v1:0bdb928f9a6b49da892dfd54a70823e71288d9b15ba58f5ccaa6ccd4b7ef49a7",
+        "source_fact:v1:2719bd773c9ada53ba328bf245d796003a52b9ab0814abc5be3e6963226b6a1e",
+        "source_fact:v1:672ad80a4c7677e03a5af051dbd3e2f8d1f5684ef04e50425a027a1d63f4a868",
+        "source_fact:v1:789629a223f38625d36903608edf4579228389d2efc6ab37bc18b2f178891f5d",
+        "source_fact:v1:aa1c4c3c25da577ee45069a776bfaaf4b9c9018772ab6002708e69dbfc731848",
+        "source_fact:v1:af4d3f92876fce2018c7d29c3178229243c03709dc73f3b5f8fd039212cabef9"
+      ],
+      "source_published_kst": "2026-10-08T05:43+09:00",
+      "source_title": "국제유가 하락…글로벌 비축유 방출 가속에 WTI 1.3%↓",
+      "telegram_core_fact": "IEA는 앞서 발표한 비축유 방출을 최대한 신속하게 완료하면 약 1억배럴의 원유와 석유제품이 시장에 공급될 수 있다고 밝혔다.",
+      "title": "국제유가 하락…글로벌 비축유 방출 가속에 WTI 1.3%↓"
     },
     "source_fact:e14bfb7ba8cca5960a8499db": {
       "first_seen_kst": "2026-10-06T21:05:27+09:00",
@@ -267454,6 +268469,30 @@
       ],
       "source_published_kst": "2026-10-07T13:37+09:00",
       "title": "대구·경북 제조업 생산 엇갈려…소비는 동반 감소"
+    },
+    "source_fact:eecdf574022e6c8930f88aa0": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6313650",
+      "source": "뉴스1",
+      "source_body_digest": "00c7c3883479ec7aa3bc14b8eec0162c6ec541cdedf2c7d9cf61bc5fa85be0e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99f761f3aaceb54160665bceaf46a4610d535cb95aa8719e7c1fc52d20797fee",
+      "source_fact_keys": [
+        "source_fact:v1:0bdb928f9a6b49da892dfd54a70823e71288d9b15ba58f5ccaa6ccd4b7ef49a7",
+        "source_fact:v1:2719bd773c9ada53ba328bf245d796003a52b9ab0814abc5be3e6963226b6a1e",
+        "source_fact:v1:672ad80a4c7677e03a5af051dbd3e2f8d1f5684ef04e50425a027a1d63f4a868",
+        "source_fact:v1:789629a223f38625d36903608edf4579228389d2efc6ab37bc18b2f178891f5d",
+        "source_fact:v1:aa1c4c3c25da577ee45069a776bfaaf4b9c9018772ab6002708e69dbfc731848",
+        "source_fact:v1:af4d3f92876fce2018c7d29c3178229243c03709dc73f3b5f8fd039212cabef9"
+      ],
+      "source_published_kst": "2026-10-08T05:43+09:00",
+      "source_title": "국제유가 하락…글로벌 비축유 방출 가속에 WTI 1.3%↓",
+      "telegram_core_fact": "IEA는 앞서 발표한 비축유 방출을 최대한 신속하게 완료하면 약 1억배럴의 원유와 석유제품이 시장에 공급될 수 있다고 밝혔다.",
+      "title": "국제유가 하락…글로벌 비축유 방출 가속에 WTI 1.3%↓"
     },
     "source_fact:eed01ee5b483fbd63cdb3123": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -283326,6 +284365,27 @@
       "source": "뉴시스",
       "title": "美, 이란 경제 옥죄기 계속…자동차·철도 기업들 제재"
     },
+    "title:2a1931236d65452dd4dded84": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819428",
+      "source": "뉴시스",
+      "source_body_digest": "875648f571548095c8980d6dda9b5da57f5688299f85634231709a67876f8294",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:98a1d88b30108854d4342dea97602eb1bd464a74cdb03cb44c2fae1893af09f3",
+      "source_fact_keys": [
+        "source_fact:v1:8a190f1f13d173af5b557c9b6b631c4e68a5c26e2a7cecd341d586749cb12286",
+        "source_fact:v1:9648686a11e82828ca3250c9540d8acecd3d1b34fd2bdbd1af8e458d1c896be0",
+        "source_fact:v1:c2751f63da9d29229c8b4745edb974141112f53178c5a697c698f2edc4510ed6"
+      ],
+      "source_published_kst": "2026-10-08T15:32+09:00",
+      "source_title": "[올댓차이나] 독일, 中 코스코 물류업체 치펠 인수 저지…\"안보 우려\"",
+      "telegram_core_fact": "독일 정부가 중국 국영 해운 대기업 코스코(中遠海運集團 COSCO)의 자국 물류업체 치펠(Zippel) 인수를 국가안보상 우려를 이유로 저지했다. dpa와 AFP 통신, rfi에 따르면 독일 경제에너지부는 7일(현지시간) 코스코가 함부르크 소재 물류업체 치펠 지분 80%를 인수하는 거래를 막았다고 발표했다.",
+      "title": "[올댓차이나] 독일, 中 코스코 물류업체 치펠 인수 저지…\"안보 우려\""
+    },
     "title:2a1fe798a439f50b1de3aa60": {
       "first_seen_kst": "2026-10-07T18:00:43+09:00",
       "lanes": {
@@ -286792,6 +287852,25 @@
       "link": "https://biz.heraldcorp.com/article/10890394",
       "source": "헤럴드경제",
       "title": "마이크론 뚫은 에코프로HN, 수주 2500억 쌓았다…내년 2분기 HBM 소재 양산 [비즈360]"
+    },
+    "title:3bb989f4fc64f7ea288849a9": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008138400060",
+      "source": "연합뉴스",
+      "source_body_digest": "28fc2bc8c4eaa95824489cf9ffe09e07899bef91d801c0f351fb3a1e47189c42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0917907e3cac94e53c29688b0a02831f2cc5fb97b75f96a86535457c219746b6",
+      "source_fact_keys": [
+        "source_fact:v1:021cdfb6cb6611be60eb08261fb2c5d06152addbe21d0acb6985809e1679cdcf"
+      ],
+      "source_published_kst": "2026-10-08T15:23+09:00",
+      "source_title": "양주시, 외국인 납세자에 6개국 언어 안내문 발송 | 연합뉴스",
+      "telegram_core_fact": "정미순 양주시 세정과장은 \"외국인 주민도 지방세 납세자인 만큼 세금 정보를 쉽게 확인하고 필요한 절차를 이용하도록 납세 편의 서비스를 개선하겠다\"고 말했다.",
+      "title": "양주시, 외국인 납세자에 6개국 언어 안내문 발송 | 연합뉴스"
     },
     "title:3bf8f1f47b955dcf7ee06843": {
       "first_seen_kst": "2026-10-07T13:41:41+09:00",
@@ -290534,6 +291613,23 @@
       "telegram_core_fact": "국내 금융지주회사의 올해 상반기 순이익이 17조6000억원으로 전년비 13.7% 증가했다.",
       "title": "금융지주 상반기 순익 17.6조…증권 73% 뛰고 은행은 8% 감소"
     },
+    "title:4da6ed626edcbaf5e2920587": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008141500008",
+      "source": "연합뉴스",
+      "source_body_digest": "b59afbb83a8735ae7edd551d28472d648ef958faf645b35ab6fb5db884381c12",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T15:31+09:00",
+      "source_title": "현대비앤지스틸 \"성림첨단산업 주식 708억원에 추가취득\" | 연합뉴스",
+      "telegram_core_fact": "코스피 상장사 현대비앤지스틸[004560]은 영구자석, 전자석, 자석응용기기 제조 및 판매업 업체 성림첨단산업의 주식 283만3천629주를 약 708억원에 추가 취득한다고 8일 공시했다.",
+      "title": "현대비앤지스틸 \"성림첨단산업 주식 708억원에 추가취득\" | 연합뉴스"
+    },
     "title:4db9e021e97ce7746d56cd74": {
       "first_seen_kst": "2026-10-01T21:12:25+09:00",
       "lanes": {
@@ -292979,6 +294075,30 @@
       ],
       "source_published_kst": "2026-10-06T10:05+09:00",
       "title": "두산로보틱스, '한국형 피지컬 AI' 시동…989억 국책과제 수주"
+    },
+    "title:5bd3b2a8ab583f7db6884b10": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6313650",
+      "source": "뉴스1",
+      "source_body_digest": "00c7c3883479ec7aa3bc14b8eec0162c6ec541cdedf2c7d9cf61bc5fa85be0e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99f761f3aaceb54160665bceaf46a4610d535cb95aa8719e7c1fc52d20797fee",
+      "source_fact_keys": [
+        "source_fact:v1:0bdb928f9a6b49da892dfd54a70823e71288d9b15ba58f5ccaa6ccd4b7ef49a7",
+        "source_fact:v1:2719bd773c9ada53ba328bf245d796003a52b9ab0814abc5be3e6963226b6a1e",
+        "source_fact:v1:672ad80a4c7677e03a5af051dbd3e2f8d1f5684ef04e50425a027a1d63f4a868",
+        "source_fact:v1:789629a223f38625d36903608edf4579228389d2efc6ab37bc18b2f178891f5d",
+        "source_fact:v1:aa1c4c3c25da577ee45069a776bfaaf4b9c9018772ab6002708e69dbfc731848",
+        "source_fact:v1:af4d3f92876fce2018c7d29c3178229243c03709dc73f3b5f8fd039212cabef9"
+      ],
+      "source_published_kst": "2026-10-08T05:43+09:00",
+      "source_title": "국제유가 하락…글로벌 비축유 방출 가속에 WTI 1.3%↓",
+      "telegram_core_fact": "IEA는 앞서 발표한 비축유 방출을 최대한 신속하게 완료하면 약 1억배럴의 원유와 석유제품이 시장에 공급될 수 있다고 밝혔다.",
+      "title": "국제유가 하락…글로벌 비축유 방출 가속에 WTI 1.3%↓"
     },
     "title:5bf50ed79a1b109798d11901": {
       "first_seen_kst": "2026-10-03T19:34:33+09:00",
@@ -298956,6 +300076,29 @@
       "source_title": "대신증권 \"효성중공업, 3분기 일시적 부진…업황 호조는 지속\"",
       "telegram_core_fact": "대신증권은 효성중공업의 3분기 매출을 1조9090억원, 영업이익을 3032억원으로 예상했다.",
       "title": "대신증권 \"효성중공업, 3분기 일시적 부진…업황 호조는 지속\""
+    },
+    "title:7ea3b2081a1ae400dd3cbcd6": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.mt.co.kr/politics/2026/10/08/2026100813194710337",
+      "source": "머니투데이",
+      "source_body_digest": "a30d91739749a668bbed3172f2e25f055a4c942c5a173949b08d03057dc1ea3d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:21b18fef1f45830593243211fb5f14f0babbfb6d160cc89e796f53d53b8a7c15",
+      "source_fact_keys": [
+        "source_fact:v1:21345b10ee9fb65e85ac8e656f233689462040fa94ef41aac8b39aa6c5a32509",
+        "source_fact:v1:4936a041672e2a1e79c164e1736d618064f771f180a9ad659f13f75a44eda624",
+        "source_fact:v1:59f48e2c4b442c0e54be362bddbaa7ed0cc8338d30926f9747f9c4f01bb310ea",
+        "source_fact:v1:65a98eb5e6711d31019d08570d025b7178a043543d4de83eaba809f52d34ac32",
+        "source_fact:v1:c3858e0f6074ff9d50cda737b032463bbb9e5fc9006d94406b13f583693676d9"
+      ],
+      "source_published_kst": "2026-10-08T14:30+09:00",
+      "source_title": "野 \"레버리지 ETF, 청와대가 주범\"…與 \"설계 아쉽지만 도입 불가피\"",
+      "telegram_core_fact": "박태준 국민의힘 의원은 8일 서울 여의도 국회 본관에서 진행된 국회 정무위원회 국감에서 \"저는 ETF 논란의 주범을 이재명 대통령과 청와대가 공범이라고 결론 내렸다\"며 \"금융투자협회 산하 연구원에서 2024년 ETF 출시를 반대했는데 이 대통령 취임 직후 찬성으로 바뀌었다. 이것이 이번 사태의 발단\"이라고 말했다.",
+      "title": "野 \"레버리지 ETF, 청와대가 주범\"…與 \"설계 아쉽지만 도입 불가피\""
     },
     "title:7ec0df0193d5bda93e97c9d0": {
       "first_seen_kst": "2026-10-04T00:48:36+09:00",
@@ -307300,6 +308443,27 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T16:52+09:00",
       "title": "구미시, 원스톱 민원팀 성과…\"복합 민원 200여건 해결\""
+    },
+    "title:ac3561aa590aba1c7baef06e": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008046251008",
+      "source": "연합뉴스",
+      "source_body_digest": "ef67d97c6bb05296db0f0dd008f7d74b8c97aca9a54e26ae9e4e06b2b36052f8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7df783bcd93fd75d36ec64c891db99e95f93d3f48cb12bc3a6f3593616101b57",
+      "source_fact_keys": [
+        "source_fact:v1:18fa9ffbfc10e0cd55e63415b9f78b4eae462325ebd2a3303332075de84fa347",
+        "source_fact:v1:590c411802714ecbc391cf63c6260e128cfbc7cc8208d412d73ba6f9f03329a2",
+        "source_fact:v1:b4900569e0842591bee959421b8e695ebbce2a5bda410586b3d5a85d60d21fa3"
+      ],
+      "source_published_kst": "2026-10-08T15:37+09:00",
+      "source_title": "'분기 최대 매출' LG엔솔, 2%대↑…이차전지주 동반 강세(종합) | 연합뉴스",
+      "telegram_core_fact": "분기 기준 사상 최대 매출을 기록한 LG에너지솔루션[373220]이 8일 2%대 강세를 보였다.",
+      "title": "'분기 최대 매출' LG엔솔, 2%대↑…이차전지주 동반 강세(종합) | 연합뉴스"
     },
     "title:ac3ea94222048294de166f3a": {
       "first_seen_kst": "2026-10-03T16:23:07+09:00",
@@ -316172,6 +317336,27 @@
       "source": "연합뉴스",
       "title": "K뷰티 질주 가속…9월까지 화장품 수출 31%↑ '역대 최대' | 연합뉴스"
     },
+    "title:de0c1f787b269102acd6cf93": {
+      "first_seen_kst": "2026-10-08T20:39:20+09:00",
+      "lanes": {
+        "live": "2026-10-08T20:39:20+09:00"
+      },
+      "last_seen_kst": "2026-10-08T20:39:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819439",
+      "source": "뉴시스",
+      "source_body_digest": "8f13e4e6cc4593a3374f28c2a58574e5ee3ceee76a13d255996959a6db90751f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:57267a3bbd79bbe2b2ba766b697cda18b580dda3b08caa44692749ae756210a9",
+      "source_fact_keys": [
+        "source_fact:v1:213c72827bca9cd12ee8ab7e3d5cdb63e176605a80a7d56fcbf61adadb1ee5b6",
+        "source_fact:v1:7d8910af552a590dc424f0210e12b8f79a374757cc616eb238346ce166b84515",
+        "source_fact:v1:c5867544d75b175ce75b7b2d8b7bbf6ccd9b37546521881affb2fe0326e1fdd2"
+      ],
+      "source_published_kst": "2026-10-08T15:42+09:00",
+      "source_title": "경기 광주시 \"3만호 스마트도시·국가산단 조성을\"",
+      "telegram_core_fact": "경기 광주시가 용인 반도체 국가산업단지 용수공급 사업과 관련한 지역 상생방안으로 3만호 스마트도시와 국가산업단지 조성을 정부에 요구했다. 광주시가 제시한 핵심 건의사항은 난개발 방지를 위한 3만호 스마트도시 조성과 지역경제 활성화를 위한 국가산업단지 조성이다.",
+      "title": "경기 광주시 \"3만호 스마트도시·국가산단 조성을\""
+    },
     "title:de21b0711a15737bc07a2bb1": {
       "first_seen_kst": "2026-09-21T18:41:01+09:00",
       "lanes": {
@@ -322114,5 +323299,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-08T20:16:13+09:00"
+  "updated_at_kst": "2026-10-08T20:39:20+09:00"
 }
