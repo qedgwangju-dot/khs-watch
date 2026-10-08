@@ -131,8 +131,13 @@ def strip_repeated_header(body: str) -> str:
 
 
 def format_generic_alert(original: str) -> str:
-    checked = find(r"조회시각:\s*(.+)", original, "확인 불가")
-    count = find(r"신규 핵심 변화:\s*(\d+건)", original, "확인 불가")
+    checked = find(r"조회시각:\s*(.+)", original)
+    count = find(r"신규 핵심 변화:\s*(\d+건)", original)
+    # Never manufacture "확인 불가" metadata when the upstream message
+    # follows an independent topic-specific format. Keep it as a plain
+    # escaped report, or fail before Telegram if no actionable content.
+    if not checked or not count:
+        raise ValueError("Rubin generic alert missing required timestamp/count; refusing fake summary")
     fx = find(r"원화 환산:\s*(.+)", original)
     axes = detected_axes(original)
     summaries = event_summaries(original)
@@ -270,6 +275,9 @@ def main() -> None:
     if not sections:
         return
     if any(part.startswith(HYBRID_TITLE) for part in sections):
+        # A hybrid event is always its own notification. Ignore neither its
+        # source text nor its verified provenance in favour of the Rubin
+        # generic fallback.
         normal = [part for part in sections if not part.startswith(HYBRID_TITLE)]
         hybrid = [part for part in sections if part.startswith(HYBRID_TITLE)]
         pretty_sections = []
