@@ -77,7 +77,7 @@ class YenCarryTelegramCompactTests(unittest.TestCase):
             self.assertIn("USD/JPY 158.68", result)
             self.assertIn("미·일 2년 금리차 +4.7bp 확대 → 캐리 유지·재구축 쪽", result)
             self.assertIn("JGB 10년 3.073% → 🟡 구조적 경계, 자동 청산선 아님", result)
-            self.assertIn("해외중장기채 2주 +1.19조엔", result)
+            self.assertIn("해외주식+중장기채 합계 2주 +1.19조엔", result)
             self.assertIn("순매수·본국회귀 압력 약함", result)
             self.assertIn("FX 변동성 낮음·안정 → 강제청산 신호 약함", result)
             self.assertIn("엔화 순롱 +23,170계약", result)
@@ -209,6 +209,27 @@ class YenCarryTelegramCompactTests(unittest.TestCase):
         self.assertEqual(direction, "↔ 중립·방향 확인 대기")
         self.assertEqual(impact, "🟡 중립 / 구조 변동성 주의")
         self.assertIn("사실상 보합", compact.live_fx_line(pending))
+
+    def test_widening_spread_blocks_unconfirmed_unwind_arrow(self):
+        payload = {
+            "verdict": {"unwind_level": 0, "rebuild_level": 0,
+                        "evidence": {"unwind::미·일 2년 금리차 축소": False}},
+            "refined_risk": {"level": 1, "structural_floor": True, "signals": {}},
+        }
+        pending = {
+            "fx_signal_eligible": True,
+            "values": {"usdjpy_30m_pct": -0.12, "usdjpy_60m_pct": -0.11},
+            "policy_path": {"spread_change_bp": 7.0},
+        }
+        title, direction, impact = compact.direction_call(payload, pending)
+        self.assertIn("신호 충돌", title)
+        self.assertIn("금리차 확대", direction)
+        self.assertNotIn("청산 쪽으로 기울기", direction)
+
+    def test_combined_mof_flow_is_not_mislabeled_bonds_only(self):
+        message = compact.compact_flow("해외중장기채: 최근 2주 -2.59조엔 / 직전 2주 +1.21조엔")
+        self.assertIn("해외주식+중장기채 합계", message)
+        self.assertIn("-2.59조엔", message)
 
     def test_structural_floor_without_direction_is_neutral(self):
         payload = {
