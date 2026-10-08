@@ -12,6 +12,7 @@ The script performs no network requests.
 """
 from __future__ import annotations
 
+import datetime as dt
 import hashlib
 import sys
 import tempfile
@@ -2521,5 +2522,50 @@ assert rgg == 'dkt_humanoid' and rss >= 11 and rkk == rk, (rgg, rss, rcc, rkk)
 assert watcher.qty._skip_quantity_enrichment(
     "디케이티 휴머노이드 배터리\n주당 1,500~2,000대 초기 공급 규모\n"
 ), 'do not render unverified priced robot shipments for DKT'
+
+
+# 47) The actual Telegram renderer calls category(title + description)
+# without source and clean_title(title, source) without description.
+# This exact interface mismatch previously sent message_id=197 with a
+# "prior discussion" label despite the high-signal production report.
+dkt_rendered_prose = f"{dkt_report['title']} {dkt_report['description']}"
+dkt_rendered_category = base.category(dkt_rendered_prose, base.topic_group(dkt_rendered_prose))
+assert dkt_rendered_category.endswith('양산 공급 증권사 확인'), dkt_rendered_category
+assert '8월 말 양산 공급 시작' in base.meaning(dkt_rendered_category), base.meaning(dkt_rendered_category)
+assert '기존 기준선' not in base.meaning(dkt_rendered_category), base.meaning(dkt_rendered_category)
+
+dkt_official_prose = f"{dkt_official['title']} {dkt_official['description']}"
+assert base.category(dkt_official_prose, base.topic_group(dkt_official_prose)).endswith(
+    '양산 회사 공식 확인'
+), 'first-party confirmation must not be downgraded to a report'
+
+dkt_contract_prose = f"{dkt_real_bms_contract['title']} {dkt_real_bms_contract['description']}"
+assert base.category(dkt_contract_prose, base.topic_group(dkt_contract_prose)).endswith(
+    '휴머노이드용 BMS 정식 계약'
+), 'BMS contract must not become an ESS shipment or battery-module report'
+
+if retrieved_dkt:
+    recovered_dkt_rendered_prose = (
+        f"{retrieved_dkt[0]['title']} {retrieved_dkt[0]['description']}"
+    )
+    recovered_dkt_rendered_category = base.category(
+        recovered_dkt_rendered_prose, base.topic_group(recovered_dkt_rendered_prose)
+    )
+    assert recovered_dkt_rendered_category.endswith('양산 공급 증권사 확인'), (
+        recovered_dkt_rendered_category
+    )
+    corrected_title = base.clean_title(
+        retrieved_dkt[0]['title'], retrieved_dkt[0]['source']
+    )
+    assert corrected_title.startswith('정정: 디케이티'), corrected_title
+
+# The backfill expires; future genuine company announcements remain eligible,
+# but an old 9/9 report cannot be replayed after state-file rotation.
+old_now = base.NOW
+try:
+    base.NOW = dt.datetime(2026, 10, 16, 12, 0, tzinfo=dt.timezone.utc)
+    assert watcher.query_news(watcher.DKT_HUMANOID_RECOVERY) == []
+finally:
+    base.NOW = old_now
 
 print("Physical-AI watcher regression guards: PASS")
