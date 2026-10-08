@@ -54,5 +54,12 @@
   "message_version": "kofia-direction-20261008-v1",
   "last_event": "해석 정정",
   "source": "KOFIA FreeSIS",
-  "source_url": "https://freesis.kofia.or.kr/stat/main.do"
+  "source_url": "https://freesis.kofia.or.kr/stat/main.do",
+  "delivery_receipt": {
+    "message_id": 219,
+    "bot_username": "khs887900887900008879_bot",
+    "timestamp_utc": "2026-10-08T09:28:16.488223Z",
+    "verification": "historical GitHub Actions Telegram API log",
+    "workflow_run_id": 37756779998
+  }
 }
