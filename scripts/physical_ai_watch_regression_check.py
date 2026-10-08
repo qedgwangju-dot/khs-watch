@@ -2381,7 +2381,7 @@ g, sc, cat, k_report = classify(dongkuk_reported)
 assert g == 'dongkuk_nps', (g, sc, cat)
 assert sc >= 11 and cat.endswith('10월 초도 납품 보도'), (sc, cat)
 assert k_report != k_qual, "analyst shipment claim must be an upgrade from September qualification"
-assert "회사 확인" in watcher.clean_title(dongkuk_reported["title"], "뉴스씬")
+assert "직접 공급 미확인" in watcher.clean_title(dongkuk_reported["title"], "뉴스씬")
 assert "직접 공급 증거가 아닙니다" in base.risk(cat), base.risk(cat)
 assert "애널리스트 전망" in base.meaning(cat), base.meaning(cat)
 
