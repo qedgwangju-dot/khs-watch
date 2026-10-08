@@ -897,6 +897,18 @@ def main() -> None:
         structure_latest[provider].update(structure_old.get(provider) or {})
     structure_latest["seen_source_urls"] = list(structure_old.get("seen_source_urls") or [])
     structure_events: list[str] = []
+    # A newly verified numeric source was absent from the first CPU alert.
+    # Announce it exactly once through the existing transactional Rubin route;
+    # do not mislabel the older DIGITIMES report as today's new publication.
+    if (
+        not structure_first_install
+        and (structure_old.get("digitimes") or {}).get("cpu_xpu_ratio_2027") is None
+        and structure_latest["digitimes"].get("cpu_xpu_ratio_2027") is not None
+    ):
+        structure_events.append(
+            "DIGITIMES 기존 연구의 CPU:XPU 1:2.3 수치 신규 추적"
+            " · 연구 원문 상세 연도는 미열람(신규 발표 아님)"
+        )
     for entry in discover_cpu_structure(now, structure_latest):
         provider = entry["issuer"]
         new_metrics = entry["metrics"]
