@@ -74,6 +74,7 @@ jobs:
           python -m py_compile scripts/khs_policy_alert_explainer.py
           python -m py_compile scripts/khs_policy_alert_guardrails.py
           python -m py_compile scripts/khs_trusted_policy_news_watch.py
+          python -m py_compile scripts/khs_policy_seen_finalize.py
           PYTHONPATH=. python - <<'PY'
           import scripts.khs_trusted_policy_news_watch as m
           m._self_test_us_treasury_outbound_event_model()
@@ -82,6 +83,46 @@ jobs:
           print("us_treasury_outbound_regression=passed")
           print("defense_future_warfare_regression=passed")
           print("fcc_optical_transceiver_regression=passed")
+          PY
+          PYTHONPATH=. python - <<'PY'
+          import json
+          import tempfile
+          from pathlib import Path
+          from unittest.mock import patch
+          import scripts.khs_policy_seen_finalize as finalize
+
+          with tempfile.TemporaryDirectory() as td:
+              root = Path(td)
+              title = root / "title.txt"
+              alerts = root / "alerts.json"
+              state = root / "seen.json"
+              title.write_text("trusted OISP bundle\n", encoding="utf-8")
+              data = [
+                  {"key": finalize.OISP_RULE_KEY, "fingerprint": "fp1", "title": "first", "status": "공식 확인", "items": [{"source": "U.S. Department of the Treasury"}]},
+                  {"key": "other", "fingerprint": "fp2", "title": "other"},
+                  {"key": "other2", "fingerprint": "fp3", "title": "other2"},
+                  {"key": finalize.OISP_RULE_KEY, "fingerprint": "fp4", "title": "fourth"},
+              ]
+              alerts.write_text(json.dumps(data), encoding="utf-8")
+              payload = {
+                  "status": "confirmed",
+                  "confirmed_at_kst": "2026-10-08T11:00:00+09:00",
+                  "sent_titles": [{"route": "policy", "title": "trusted OISP bundle"}],
+                  "message_ids": [{"route": "policy", "message_id": 301}],
+              }
+              with (
+                  patch.object(finalize, "TRUSTED_TITLE_PATH", title),
+                  patch.object(finalize, "TRUSTED_ALERTS_PATH", alerts),
+                  patch.object(finalize, "TRUSTED_STATE_PATH", state),
+              ):
+                  finalize.finalize_confirmed_outbound_alert({**payload, "sent_titles": []})
+                  assert not state.exists(), "wrong-title delivery marked seen"
+                  finalize.finalize_confirmed_outbound_alert({**payload, "message_ids": []})
+                  assert not state.exists(), "delivery without message_id marked seen"
+                  finalize.finalize_confirmed_outbound_alert(payload)
+                  seen = json.loads(state.read_text(encoding="utf-8"))["seen"]
+                  assert set(seen) == {"fp1"}, f"unsent or fourth-ranked event falsely consumed: {seen}"
+          print("us_treasury_delivery_ack_regression=passed")
           PY
           python -m py_compile scripts/gamejoa_preopen_news_radar_full_compact_runner.py
           PYTHONPATH=. python tests/test_polysilicon_policy_guard.py
