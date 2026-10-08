@@ -90,6 +90,25 @@ def validate(text, state):
         expect(display_d1 == amount(v["d1"]) and display_d5 == amount(v["d5"]),
                f"{key} signed 1D/5D amount mismatch")
 
+    # The receivable and actual forced-sale amounts are also Telegram-facing
+    # financial figures. An incorrect amount here must block the whole alert.
+    rec = values.get("receivable") or {}
+    forced = values.get("forced") or {}
+    expect(isinstance(rec.get("value"), (int, float)) and math.isfinite(rec["value"]) and rec["value"] >= 0,
+           "invalid KOFIA receivable")
+    expect(isinstance(forced.get("value"), (int, float)) and math.isfinite(forced["value"]) and forced["value"] >= 0,
+           "invalid KOFIA forced-sale amount")
+    rec_forced = re.findall(
+        r"^• 미수금 ([\d,]+\.\d{2})조 \| 실제 반대매매 ([\d,]+)억원$",
+        head, re.M
+    )
+    expect(len(rec_forced) == 1, "receivable/forced-sale row missing or duplicated")
+    rec_print, forced_print = rec_forced[0]
+    expected_forced_eok = int(math.floor(forced["value"] / 100.0 + 0.5))
+    expect(rec_print == level(rec["value"]) and
+           forced_print.replace(",", "") == str(expected_forced_eok),
+           "receivable or forced-sale displayed value differs from KOFIA source")
+
     rows = assessment.splitlines()
     def find(prefix):
         matching = [r for r in rows if r.startswith(prefix)]
