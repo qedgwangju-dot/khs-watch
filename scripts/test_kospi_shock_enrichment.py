@@ -174,3 +174,42 @@ selected = ke.confirmed_interval_sellers(rows)
 assert [x["code"] for x in selected] == ["B", "D"], selected
 assert ke.confirmed_interval_sellers(rows[:1] + rows[2:3]) == []
 print("event_program_sellers_only_regression=true")
+
+
+# 2026-10-08 22:47 KST CI 실패 재현: 장마감 뒤 지금-10분은 거래 봉이 없으므로
+# 당일 마지막 정규장 1분봉 두 기준점으로만 검증해야 한다.
+from kospi_shock_enrichment import select_stock_chart_probe_window, stock_interval_price
+after_hours = dt.datetime(2026,10,8,22,47,tzinfo=KST)
+oct_bars = [
+    {"date":"20261008","time":f"15{m:02d}00","close":str(262000+m*10)}
+    for m in range(9,20)
+]
+oct_bars.append({"date":"20261008","time":"153288","close":"999999"}) # 비정상 초(88) 배제
+oct_bars.append({"date":"20261007","time":"152900","close":"999999"}) # 다른 거래일 배제
+w_after=select_stock_chart_probe_window(oct_bars,after_hours)
+assert w_after["available"] and w_after["mode"]=="장마감 자료",w_after
+assert w_after["session_date"]=="20261008" and w_after["end_bar_kst"]=="15:19:00",w_after
+price_after=stock_interval_price("dummy","005930",w_after["start_ts"],w_after["end_ts"],rows=oct_bars)
+assert price_after["available"] and price_after["start_time"]=="15:09:00",price_after
+assert price_after["end_time"]=="15:19:00",price_after
+print("after_hours_chart_anchor_regression=true")
+
+# 장중에는 현재 시각과 다른 오래된 1분봉을 '실시간 검증 통과'로 위장하지 않는다.
+live_now=dt.datetime(2026,10,8,11,10,tzinfo=KST)
+stale_bars=[{"date":"20261008","time":f"11{m:02d}00","close":"250000"} for m in range(0,5)]
+w_stale=select_stock_chart_probe_window(stale_bars,live_now)
+assert w_stale["available"] is False and w_stale["mode"]=="장중",w_stale
+assert "지연" in w_stale["reason"],w_stale
+print("intraday_stale_chart_rejection_regression=true")
+
+# 같은 날 원자료 자체가 없으면 장외에도 검증 실패(단순 정상 처리 금지).
+w_missing=select_stock_chart_probe_window(oct_bars[-1:],after_hours)
+assert w_missing["available"] is False,w_missing
+assert "표본" in w_missing["reason"],w_missing
+print("after_hours_missing_chart_rejection_regression=true")
+
+# 장전·휴장일은 오늘 장중 데이터라고 속이지 않는다.
+holiday=dt.datetime(2026,10,9,11,10,tzinfo=KST)
+w_holiday=select_stock_chart_probe_window(oct_bars,holiday)
+assert w_holiday["available"] is False and w_holiday["mode"]=="휴장",w_holiday
+print("holiday_chart_probe_guard_regression=true")
