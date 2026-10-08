@@ -993,9 +993,10 @@ def power_is_plan(title: str) -> bool:
     text = html.unescape(title or "")
     planned = bool(re.search(
         r"expects? to|expected to|plans? to|scheduled to|aims? to|"
-        r"set to|on track to|will (?:install|deploy|start|complete|begin|commission)|"
+        r"set to|on track to|to be (?:installed|completed|commissioned|energized|operational)|"
+        r"will (?:install|deploy|start|complete|begin|commission)|"
         r"anticipated|target(?:s|ing)?|預計|预计|計畫|计划|將於|"
-        r"将于|擬|拟|規劃|规划", text, re.I
+        r"将于|擬|拟|規劃|规划|가동 예정|설치 예정|시운전 예정", text, re.I
     ))
     achieved = bool(re.search(
         r"(?:has |have )?(?:completed|commissioned|energized|"
@@ -1003,7 +1004,15 @@ def power_is_plan(title: str) -> bool:
         r"正式運轉|正式运行|已完成|已投運|"
         r"已投入運轉|驗收完成|验收完成", text, re.I
     ))
-    return planned and not achieved
+    # Do not elevate a future-dated 2027 commissioning headline written in
+    # October 2026 to completed generation, even when phrased ambiguously.
+    future_year = re.search(r"\b(20\d{2})\b", text)
+    future_target = bool(
+        future_year and int(future_year.group(1)) > NOW.astimezone(KST).year
+        and re.search(r"2027|2028|2029", text)
+        and not re.search(r"has commissioned|has entered operation|已投入運轉|正式運轉", text, re.I)
+    )
+    return (planned or future_target) and not achieved
 
 
 def power_amount_fingerprint(title: str) -> str:
@@ -1060,6 +1069,10 @@ def power_milestone(title: str) -> tuple[str, str, str] | None:
         text, re.I
     ):
         return ("AAOI SOFC 유지보수 계약", "장기 유지보수·교체부품·원격관제 계약", "aaoi-taiwan|power|service|" + (fingerprint or "agreement"))
+    if future and fingerprint and re.search(
+        r"Bloom Energy|賀喜能源|Leadray|\bSOFC\b|fuel cell|燃料[電电]池", text, re.I
+    ):
+        return ("AAOI SOFC 계획 용량·금액", "계획 수치 공개·실제 계약 검증 전", "aaoi-taiwan|power|planned-terms|" + fingerprint)
     if not future and fingerprint and re.search(
         r"Bloom Energy|賀喜能源|Leadray|\bSOFC\b|fuel cell|燃料[電电]池", text, re.I
     ):
@@ -1617,6 +1630,7 @@ def meaning_for(category: str) -> str:
     mapping = {
         "AAOI 현장발전 EPC 추진": "Leadray Energy가 설계·조달·시공을 맡고 Bloom Energy의 SOFC로 대만 광통신 공장 전력을 보강할 예정입니다. 2027년 1분기는 운전 목표이며 현재 전원 인가·발전용량·계약금액은 공개되지 않았습니다.",
         "AAOI 현장발전 용량·계약금액": "실제 발전용량(MW)과 공급계약 금액이 공개되면 설치비·단위 출력 및 증설 대응 정도를 검산할 수 있습니다. 미공개 수치를 다른 프로젝트에서 차용하지 않습니다.",
+        "AAOI SOFC 계획 용량·금액": "새로 공개된 용량·금액 목표는 확정 납품·설비투자가 아닙니다. 공급계약·허가·실제 설치규모와 분리해 추적합니다.",
         "AAOI SOFC 착공·장비반입": "연료전지 설비반입과 실제 착공은 발표 단계보다 진전됐지만 시운전·계통접속·안전 승인·전원 인가가 남아 있습니다.",
         "AAOI SOFC 설치·검수": "설비 설치·검수는 전원 인가 전 마지막 주요 관문입니다. 검사와 안전 승인이 끝났는지 별도로 확인합니다.",
         "AAOI 현장발전 전원 인가": "실제 상업운전이 확인되면 전력 공급 위험은 줄지만 AAOI 대만 공장의 고객인증·수율·800G/1.6T 출하는 별도 확인해야 합니다.",
@@ -1713,6 +1727,7 @@ def risk_for(category: str) -> str:
     mapping = {
         "AAOI 현장발전 EPC 추진": "전력망·가스 공급·허가·부지 설치·보험과 SOFC 초기 고장으로 2027년 1분기 가동 목표가 지연될 수 있습니다.",
         "AAOI 현장발전 용량·계약금액": "정격출력과 실제 연속 가동률이 다르며 보조금·설치비·천연가스 가격·정비비를 반영해야 실질 단위 원가를 판단할 수 있습니다.",
+        "AAOI SOFC 계획 용량·금액": "계획 용량과 계약 물량·실제 설치 용량이 다를 수 있으며, 가스·인허가·설치비·후속 유지보수 비용이 달라집니다.",
         "AAOI SOFC 착공·장비반입": "현장 배관·방재·계통 보호·고온 설비 인허가와 시운전의 지연 위험이 남습니다.",
         "AAOI SOFC 설치·검수": "설비 설치를 마쳐도 신뢰성 검사·안전 인수·가스 연결과 전력 계통 검증 실패 시 전원 인가가 지연될 수 있습니다.",
         "AAOI 현장발전 전원 인가": "연료전지 가동률·정비 정지·가스 공급·백업전원이 부족하면 실제 광모듈 라인 가동률 증가는 제한됩니다.",
@@ -1916,6 +1931,12 @@ def _self_test_korean_optics_alerts() -> None:
     assert power_milestone("AAOI Taiwan Bloom Energy SOFC plant 5MW officially confirmed")[2] != power_milestone(
         "AAOI Taiwan Bloom Energy SOFC plant 8MW officially confirmed"
     )[2]
+    assert power_milestone(
+        "AAOI Taiwan Bloom Energy 5MW SOFC to be commissioned in 2027"
+    )[0] == "AAOI SOFC 계획 용량·금액"
+    assert power_milestone(
+        "AAOI Taiwan Bloom Energy SOFC to be commissioned in Q1 2027"
+    )[2] == POWER_INITIAL_KEY
     p1 = {"company": POWER_COMPANY, "title": initial}
     p2 = {"company": POWER_COMPANY, "title": taiwan_press}
     assert same_power_event(p1, p2)
