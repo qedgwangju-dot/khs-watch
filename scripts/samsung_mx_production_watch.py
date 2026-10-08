@@ -234,7 +234,15 @@ def _production_metrics(blob: str, date: dt.datetime) -> dict:
     out: dict[str, tuple[float, float]] = {}
     # Evaluate facts clause-by-clause: a 175% MEMORY PRICE increase must not
     # become a 175% PHONE production cut.
+    other_oems = (
+        "apple", "iphone", "oppo", "vivo", "xiaomi", "google", "pixel",
+        "huawei", "애플", "아이폰", "샤오미", "화웨이",
+    )
     for clause in re.split(r"[!?;；。]|\s+\|\s+", low):
+        # Another handset maker's cut must not be attributed to Samsung only
+        # because "Samsung" appeared elsewhere in the RSS excerpt.
+        if any(w in clause for w in other_oems) and not any(w in clause for w in MX_WORDS):
+            continue
         if not any(w in clause for w in CUT_WORDS):
             continue
         supplier = any(w in clause for w in SUPPLIER_WORDS)
@@ -255,6 +263,62 @@ def _production_metrics(blob: str, date: dt.datetime) -> dict:
     return out
 
 
+def _quarter_volume_m(blob: str, date: dt.datetime) -> tuple[float, str] | None:
+    """Extract only an explicitly Q4 2026 Samsung handset shipment number.
+
+    Do not turn a Q3 number, annual 270m target or memory-price percentage
+    into a Q4 shipment number. If multiple Q4 quantities are ambiguous, abstain.
+    """
+    low = _clean(blob).lower().replace(",", "")
+    if not _is_target_quarter(low, date):
+        return None
+    if not any(w in low for w in MX_WORDS):
+        return None
+    if not any(w in low for w in ("shipments", "shipment", "출하", "출고대수")):
+        return None
+    actual = (date.year >= 2027 and any(w in low for w in (
+        "actual shipments", "shipped", "actual", "확정 출하", "실제 출하",
+    )))
+    forecast = any(w in low for w in (
+        "forecast", "projection", "estimated", "expected", "전망", "예상", "추정",
+    ))
+    if not (actual or forecast):
+        return None
+
+    q4 = re.search(r"(?i)(?:\bq4\b|\b4q\b|fourth.quarter|4분기)", low)
+    if not q4:
+        return None
+    segment = low[q4.end():q4.end()+150]
+    values: list[float] = []
+    for match in re.finditer(
+        r"(\d+(?:\.\d+)?)\s*(?:million|mn)\s*(?:units|handsets|phones|smartphones)?",
+        segment,
+    ):
+        values.append(float(match.group(1)))
+    for match in re.finditer(r"(\d{2,5})\s*만\s*대", segment):
+        values.append(float(match.group(1)) / 100.0)
+    for match in re.finditer(r"(\d+(?:\.\d+)?)\s*백만\s*대", segment):
+        values.append(float(match.group(1)))
+    values = [round(x, 2) for x in values if 10 <= x <= 100]
+    if not values:
+        return None
+    if len(set(values)) > 1:
+        # "from 52m to 45m" is directional; otherwise do not guess which
+        # of several nearby values describes Q4.
+        if not (("from" in segment and " to " in segment)
+                or ("에서" in segment and "로" in segment)):
+            return None
+        value = values[-1]
+    else:
+        value = values[0]
+    return value, ("actual" if actual else "forecast")
+
+
+def _is_idc_official_url(item: dict) -> bool:
+    host = (urlparse(item.get("link") or "").hostname or "").lower()
+    return host == "idc.com" or host.endswith(".idc.com")
+
+
 def _event(item: dict, state: dict) -> dict | None:
     official = _official_url(item)
     rank = max(_rank(item.get("source") or ""), 3 if official else 0)
@@ -267,6 +331,7 @@ def _event(item: dict, state: dict) -> dict | None:
         return None
 
     data = _production_metrics(blob, date)
+    quantity = _quarter_volume_m(blob, date)
     metrics = state.get("metrics") or {}
     reasons: list[str] = []
     updates: dict[str, object] = {}
@@ -303,6 +368,30 @@ def _event(item: dict, state: dict) -> dict | None:
                 updates["production_cut_max_pct"] = hi
                 stage = max(stage, 3 if official else 2)
                 keys.append(fact)
+
+    if quantity is not None:
+        current_m, kind = quantity
+        old_m = (
+            float(metrics.get("q4_forecast_m_latest") or metrics.get("q4_forecast_m_article") or 52.0)
+            if kind == "forecast"
+            else float(metrics.get("q4_actual_shipments_m") or 0.0)
+        )
+        change = abs(current_m - old_m)
+        source_kind = "idc_official" if _is_idc_official_url(item) else "reported"
+        if kind == "actual" and _is_idc_official_url(item):
+            if current_m != old_m:
+                reasons.append(f"IDC 공식 2026년 4분기 실제 출하 {current_m:g}백만대")
+                updates["q4_actual_shipments_m"] = current_m
+                stage = max(stage, 2)
+                keys.append(f"samsung_2026q4_actual_{current_m:g}m_idc")
+        elif kind == "forecast" and change >= 5:
+            reasons.append(
+                f"2026년 4분기 스마트폰 출하전망 {old_m:g}→{current_m:g}백만대"
+                " (출하전망, 생산계획과 구별)"
+            )
+            updates["q4_forecast_m_latest"] = current_m
+            stage = max(stage, 2)
+            keys.append(f"samsung_2026q4_forecast_{current_m:g}m_{source_kind}")
 
     if official and ("생산" in low or "production" in low) and not data:
         if any(x in low for x in DENIAL_WORDS):
@@ -351,7 +440,7 @@ def _baseline_alert() -> str:
         "<b>[다음 알림 조건]</b>",
         "• 삼성 공식 생산계획 확인·정정 또는 독립적인 신규 생산 감축 폭",
         "• 분기·제품군이 확인된 부품 발주 축소율의 10%포인트 이상 변경",
-        "• IDC 실제 출하량 확인, 분기 전망 수정, 재고·고객사 발주 변화",
+        "• 2026년 4분기 스마트폰 출하전망 500만대 이상 수정 또는 IDC 공식 실제 출하량 발표",
         "• MX 영업이익률 개선/악화가 공식 실적에서 확인되는지",
         "",
         f'<a href="{ARTICLE}">머니투데이 10월 8일 원보도</a>',
@@ -368,7 +457,12 @@ def _change_alert(events: list[dict]) -> str:
         "━━━━━━━━━━━━━━━━",
     ]
     for e in events[:2]:
-        verdict = "🔴 삼성 공식 확인" if e["official"] else "🟠 새 공급망 물량 변화 보도"
+        verdict = (
+            "🔴 삼성 공식 확인" if e["official"]
+            else ("🟠 출하전망·실제 물량 변경"
+                  if "q4_forecast_m_latest" in e["changes"] or "q4_actual_shipments_m" in e["changes"]
+                  else "🟠 새 공급망 물량 변화 보도")
+        )
         lines.append(f"• <b>{verdict}</b>: {html.escape(' / '.join(e['reasons']))}")
         it = e["item"]
         lines.append(f"  └ {html.escape(it['source'])} · {html.escape(it['published_at_kst'])}")
