@@ -66,6 +66,49 @@ SAMSUNG_HBM4_PRICE_BASELINE = {
     "as_of": "2026-10-02",
     "note": "4달러대 중후반은 제시·협상 가격으로 보존. '사실상 완판'과 협상력 강화는 매일경제 보도 단계이며 실제 고객별 체결물량·체결가격으로 승격하지 않음.",
 }
+HBM_HYBRID_BOND_TRACK_VERSION = 1
+HBM_HYBRID_BOND_PRIMARY = "https://www.damnang.com/p/the-next-memory-race-will-not-be"
+HBM_HYBRID_BOND_REPUBLISHER = "https://www.techpowerup.com/353458/sk-hynix-reportedly-faces-difficulties-in-hbm-hybrid-bonding-trailing-samsung"
+HBM_HYBRID_SK_OFFICIAL = "https://news.skhynix.com/en/sk-hynix-ships-samples-of-12-layer-next-gen-hbm4e-2/"
+HBM_HYBRID_SK_FEASIBILITY = "https://www.skhynix.com/ir/UI-FR-IR12_T7/"
+HBM_HYBRID_SAMSUNG_OFFICIAL = "https://news.samsung.com/kr/%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90-fms-2026%EC%84%9C-%EC%B0%A8%EC%84%B8%EB%8C%80-3d-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EB%B9%84%EC%A0%84-%EC%A0%9C%EC%8B%9C"
+HBM_HYBRID_SHARE_SOURCE = "https://counterpointresearch.com/en/insights/global-hbm-market-share-q2-2026"
+# A single paid, anonymously sourced expert interview, repercussed by
+# TechPowerUp. This is NOT a verified "SK made no samples" corporate fact.
+HBM_HYBRID_BOND_BASELINE = {
+    "reported_origin": "Damnang",
+    "reported_origin_count": 1,
+    "source_evidence": "single_anonymous_engineer_report_not_official",
+    "reported_sk_hybrid_difficulty": True,
+    "reported_sk_hybrid_customer_sample_not_started": True,
+    "reported_samsung_hybrid_customer_sample_sent": True,
+    "sk_official_hybrid_stage": "technical_feasibility",
+    "samsung_official_hybrid_stage": "technology_showcase",
+    "sk_official_hybrid_customer_sample_verified": False,
+    "samsung_official_hybrid_customer_sample_verified": False,
+    "sk_hbm4e_mr_muf_sample_shipped": True,
+    "samsung_hbm4e_sample_shipped": True,
+    "sk_revenue_share_q2_2026_pct": 50.0,
+    "samsung_revenue_share_q2_2026_pct": 33.0,
+    "interview_date": "2026-09-19",
+    "reported_at": "2026-10-06",
+    "primary_url": HBM_HYBRID_BOND_PRIMARY,
+    "republisher_url": HBM_HYBRID_BOND_REPUBLISHER,
+    "sk_official_url": HBM_HYBRID_SK_OFFICIAL,
+    "samsung_official_url": HBM_HYBRID_SAMSUNG_OFFICIAL,
+    "share_source_url": HBM_HYBRID_SHARE_SOURCE,
+    "last_official_stage_change_at": None,
+}
+HBM_HYBRID_STAGE_RANK = {
+    "technical_feasibility": 0,
+    "technology_showcase": 0,
+    "internal_hbm_prototype": 1,
+    "customer_hbm_sample_shipped": 2,
+    "customer_qualification_passed": 3,
+    "pilot_line_running": 4,
+    "hbm_mass_production_started": 5,
+}
+
 SAMSUNG_HBM4E_THERMAL_TRACK_VERSION = 1
 SAMSUNG_HBM4E_THERMAL_BASELINE = {
     "industry_current_interposer_reticle_x": 5.5,
@@ -290,6 +333,10 @@ QUERIES = [
         'HBM4E (qualification OR validation OR sample OR mass production OR production) (Samsung OR "SK hynix" OR Micron)',
     ),
     (
+        "hbm_hybrid_bonding",
+        '("SK hynix" OR SK하이닉스 OR Samsung OR 삼성전자) HBM ("hybrid bonding" OR 하이브리드본딩 OR "하이브리드 본딩") (sample OR 샘플 OR pilot OR 파일럿 OR validation OR 인증 OR 양산 OR difficulty OR 지연 OR 난항)',
+    ),
+    (
         "hbm4e_thermal_package",
         'Samsung HBM4E (thermal OR heat OR cooling OR HCB OR HPB OR "hybrid bonding" OR interposer OR reticle OR package OR 발열 OR 냉각 OR 하이브리드본딩 OR 하이브리드 본딩 OR 인터포저 OR 열저항 OR 패키지)',
     ),
@@ -352,6 +399,7 @@ CATEGORY_KO = {
     "rubin_broker_model": "Bernstein Rubin Ultra HBM 모델 가정",
     "hbm_supplier_relative": "삼성전자↔SK하이닉스 HBM 상대 변화",
     "hbm4e_validation": "HBM4E 고객 검증·양산",
+    "hbm_hybrid_bonding": "별도 알림 · HBM 하이브리드 본딩 개발·고객 검증 격차",
     "hbm4e_thermal_package": "삼성 HBM4E 발열·인터포저·패키징 병목",
     "rubin_shipments": "Rubin Ultra·NVL576 실제 출하",
     "rubin_hbm_option_set": "별도 알림 · Rubin Ultra HBM4/HBM4E 옵션 변화",
@@ -434,6 +482,13 @@ def relevant(category: str, text: str) -> bool:
         )
     if category == "hbm4e_validation":
         return "hbm4e" in low and any(k in low for k in ("samsung", "sk hynix", "sk하이닉스", "micron")) and any(k in low for k in ("qualification", "validation", "sample", "mass production", "production", "yield", "수율", "양산", "검증", "샘플"))
+    if category == "hbm_hybrid_bonding":
+        return (
+            "hbm" in low
+            and any(t in low for t in ("hybrid bonding", "hybrid copper bonding", "하이브리드 본딩", "하이브리드본딩"))
+            and any(t in low for t in ("sk hynix", "sk하이닉스", "samsung", "삼성전자"))
+            and any(t in low for t in ("sample", "샘플", "customer", "고객", "pilot", "파일럿", "mass production", "양산", "difficulty", "지연", "난항", "qualification", "검증", "bonding"))
+        )
     if category == "hbm4e_thermal_package":
         return (
             ("samsung" in low or "삼성전자" in low or "삼성" in low)
@@ -2741,7 +2796,7 @@ def choose_verified_events(fresh_unseen: list[dict], raw_events: list[dict], see
     errors: list[str] = []
     candidates: list[dict] = []
     for raw in fresh_unseen:
-        if raw.get("category") in ("citi_hbm_outlook", "jpm_hbm_structural", "micron_sca_visibility", "samsung_hbm4_price", "hbm4e_thermal_package", "samsung_nextgen_hbm", "nvhbm_architecture", "morgan_stanley_nvidia_hbm_margin", "rubin_hbm_option_set"):
+        if raw.get("category") in ("citi_hbm_outlook", "jpm_hbm_structural", "micron_sca_visibility", "samsung_hbm4_price", "hbm4e_thermal_package", "hbm_hybrid_bonding", "samsung_nextgen_hbm", "nvhbm_architecture", "morgan_stanley_nvidia_hbm_margin", "rubin_hbm_option_set"):
             continue
         source_low = (raw.get("source") or "").lower()
         if any(k in source_low for k in LOW_VALUE_SOURCE_HINTS):
@@ -2856,10 +2911,12 @@ def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
         grouped.setdefault(e["category"], []).append(e)
 
     n = 1
-    for category in ("rubin_spec", "rubin_broker_model", "hbm_supplier_relative", "hbm4e_validation", "hbm4e_thermal_package", "rubin_shipments", "rubin_hbm_option_set", "samsung_hbm4_price", "samsung_nextgen_hbm", "nvhbm_architecture", "hbm_2027_contract", "morgan_stanley_nvidia_hbm_margin", "jpm_hbm_structural", "micron_sca_visibility", "citi_hbm_outlook", "hbm_wafer_economics", "memory_migration"):
+    for category in ("rubin_spec", "rubin_broker_model", "hbm_supplier_relative", "hbm4e_validation", "hbm4e_thermal_package", "hbm_hybrid_bonding", "rubin_shipments", "rubin_hbm_option_set", "samsung_hbm4_price", "samsung_nextgen_hbm", "nvhbm_architecture", "hbm_2027_contract", "morgan_stanley_nvidia_hbm_margin", "jpm_hbm_structural", "micron_sca_visibility", "citi_hbm_outlook", "hbm_wafer_economics", "memory_migration"):
         group = grouped.get(category) or []
         if not group:
             continue
+        if category == "hbm_hybrid_bonding" and n > 1:
+            lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 차세대 HBM 하이브리드 본딩 개발 격차", ""]
         if category == "hbm4e_thermal_package" and n > 1:
             lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 삼성 HBM4E 발열·패키징 병목 감시", ""]
         if category == "rubin_hbm_option_set" and n > 1:
