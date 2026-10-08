@@ -179,11 +179,20 @@ jobs:
               f"신용융자 {fmt(cr5)}{arrow(cr5,'credit')} → "
           )
           def mmf_today_context(current_direction, five_day_direction):
-              # Both the current direction and the five-day trend must be checked.
+              # Explicit 3x3 state matrix: never equate a flat five-day trend with
+              # an increase or decrease merely because the daily sign is known.
               if current_direction == '증가':
-                  return "당일에도 MMF가 증가해 5거래일 누적 증가 방향과 일치합니다." if five_day_direction == '증가' else "당일 MMF가 증가했으나 5거래일 추세와 방향이 다릅니다."
+                  if five_day_direction == '증가':
+                      return "당일에도 MMF가 증가해 5거래일 누적 증가 방향과 일치합니다."
+                  if five_day_direction == '감소':
+                      return "당일 MMF가 증가했으나 5거래일 누적 감소 흐름과는 반대입니다."
+                  return "당일 MMF가 증가했지만 5거래일 기준으로는 보합입니다."
               if current_direction == '감소':
-                  return "당일 MMF는 감소해 5거래일 누적 증가 방향과 반대로 움직였습니다." if five_day_direction == '증가' else "당일 MMF도 감소해 5거래일 흐름과 같은 방향입니다."
+                  if five_day_direction == '증가':
+                      return "당일 MMF는 감소해 5거래일 누적 증가 방향과 반대로 움직였습니다."
+                  if five_day_direction == '감소':
+                      return "당일 MMF도 감소해 5거래일 누적 감소 방향과 일치합니다."
+                  return "당일 MMF는 감소했지만 5거래일 기준으로는 보합입니다."
               return "당일 MMF는 유의미한 증감 없이 보합입니다."
 
           # Guard all three possible daily outcomes before live message construction.
