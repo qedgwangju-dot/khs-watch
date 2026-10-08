@@ -8,7 +8,7 @@
     "raw_items": 20,
     "stale_backfill_suppressed": 0
   },
-  "news_watermark_utc": "2026-10-08T16:39:55.591218+00:00",
+  "news_watermark_utc": "2026-10-08T22:14:30.311921+00:00",
   "official_pages": {
     "OpenAI GPT-5.6 Sol Ultrafast 미리보기": {
       "candidate_count": 0,
@@ -25,10 +25,24 @@
       "url": "https://openai.com/index/previewing-ultrafast/"
     },
     "OpenAI GPT-6.1 Sol 모델": {
-      "candidate_count": 0,
-      "candidate_digest": null,
-      "candidate_first_seen_at": null,
-      "candidate_semantic": null,
+      "candidate_count": 1,
+      "candidate_digest": "c7964f3e1f57502c672d56f4a29e982d37cad953926087cdb2a75eec74290279",
+      "candidate_first_seen_at": "2026-10-08T22:14:30.311921+00:00",
+      "candidate_semantic": {
+        "batch_flex_discount_pct": 50.0,
+        "cache_write_usd_per_mtok": 2.5,
+        "cached_input_usd_per_mtok": 0.1,
+        "context_window": 1050000,
+        "eu_data_residency": true,
+        "fast_mode_mentioned": true,
+        "fast_multiplier_x": 2.0,
+        "input_usd_per_mtok": 2.0,
+        "kind": "openai_gpt_6_1_sol",
+        "max_output_tokens": 128000,
+        "output_usd_per_mtok": 10.0,
+        "ultrafast_mentioned": true,
+        "us_data_residency": true
+      },
       "digest": "4c9c8d8a7c597b34d80e502c0b1fce9cb2e5d7447e6524afa6ec76994e199d67",
       "semantic": {
         "batch_flex_discount_pct": 50.0,
@@ -49,10 +63,22 @@
       "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol"
     },
     "OpenAI Ultrafast 모드": {
-      "candidate_count": 0,
-      "candidate_digest": null,
-      "candidate_first_seen_at": null,
-      "candidate_semantic": null,
+      "candidate_count": 1,
+      "candidate_digest": "d51f62ba0af7b3e0a298fa29ee29ed9bb89b8e737fa3b55b5a65c4644bf67f08",
+      "candidate_first_seen_at": "2026-10-08T22:14:30.311921+00:00",
+      "candidate_semantic": {
+        "eu_regional_supported": true,
+        "gpt_5_6_sol_preview": true,
+        "gpt_6_1_sol_mentioned": true,
+        "gpt_6_astra_supported": true,
+        "kind": "openai_ultrafast",
+        "max_speed_x": null,
+        "service_tier_ultrafast": true,
+        "tier_1_3_tpm": null,
+        "tier_4_tpm": null,
+        "tier_5_tpm": null,
+        "us_data_residency": true
+      },
       "digest": "e03a66b0a6fedeac421d1ef155a23fec7958b80f29600d204b54828bd6b66dff",
       "semantic": {
         "eu_regional_supported": false,
@@ -148,5 +174,5 @@
       "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9KcU1JWEFGdV96M2o5aF9HdU14SzRNTU5PVWh3RnRQUUJTa3RZT05YZkJNTHZ0RnpveXBhODdoSnNxcU1DSmg2dUFpWGV6c2FPR1FoV3B4QnB2MWJkXzhNbWdTdjVZaW5adDV2SlFYWXAwQQ?oc=5"
     }
   },
-  "updated_at_kst": "2026-10-09T01:39:55+09:00"
+  "updated_at_kst": "2026-10-09T07:14:30+09:00"
 }
