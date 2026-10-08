@@ -489,7 +489,7 @@ def cpu_structure_observation(title: str, text: str, url: str) -> tuple[str, dic
         # CPU:XPU=1:2.3. Preserve the *forecast* as a ratio distinct from
         # CPU shipments, cores/sockets and installed hardware.
         ratio = re.search(
-            r"\bcpu\s*[:：]\s*xpu\b[^0-9]{0,45}?\b1\s*[:：]\s*(\d+(?:\.\d+)?)",
+            r"(?<![a-z])cpu\s*[:：]\s*xpu[^0-9]{0,45}?1\s*[:：]\s*(\d+(?:\.\d+)?)",
             low, re.I,
         )
         if ratio:
