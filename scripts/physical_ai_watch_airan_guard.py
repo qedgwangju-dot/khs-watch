@@ -21,22 +21,22 @@ base = defense.base
 # baseline; reported October shipments are an unconfirmed new milestone.
 # Never infer Tesla Optimus / Boston Dynamics Atlas as a Dongkuk customer.
 DONGKUK_NPS_RECOVERY = 'DIRECT_DONGKUK_NPS_OCT_FIRST_SHIPMENT_REPORT_20261008'
-DONGKUK_NAME = re.compile(r'동국산업|Dongkuk\\s*Industr(?:y|ies)', re.I)
-DONGKUK_NPS = re.compile(r'니켈\\s*도금\\s*강판|니켈도금강판|nickel[-\\s]*plated\\s*(?:steel|sheet)|\\bDiKel\\b', re.I)
-DONGKUK_46 = re.compile(r'46\\s*시리즈|46시리즈|46\\s*파이|46[-\\s]*series|46\\s*mm|46mm|4680|4695|46120', re.I)
+DONGKUK_NAME = re.compile(r'동국산업|Dongkuk\s*Industr(?:y|ies)', re.I)
+DONGKUK_NPS = re.compile(r'니켈\s*도금\s*강판|니켈도금강판|nickel[-\s]*plated\s*(?:steel|sheet)|\bDiKel\b', re.I)
+DONGKUK_46 = re.compile(r'46\s*시리즈|46시리즈|46\s*파이|46[-\s]*series|46\s*mm|46mm|4680|4695|46120', re.I)
 DONGKUK_SHIP_ACTUAL = re.compile(
-    r'(?:10\\s*월|October).{0,100}(?:초도\\s*납품|첫\\s*납품|첫\\s*출하|initial\\s*shipments?|first\\s*deliveries?).{0,70}'
+    r'(?:10\s*월|October).{0,100}(?:초도\s*납품|첫\s*납품|첫\s*출하|initial\s*shipments?|first\s*deliveries?).{0,70}'
     r'(?:시작|개시|완료|진행|출하|전해|보도|started|began|commenced|delivered)|'
-    r'(?:초도\\s*납품|첫\\s*출하).{0,65}(?:10\\s*월|October).{0,70}(?:시작|개시|완료|보도|전해|started|began)',
+    r'(?:초도\s*납품|첫\s*출하).{0,65}(?:10\s*월|October).{0,70}(?:시작|개시|완료|보도|전해|started|began)',
     re.I,
 )
-DONGKUK_QUAL = re.compile(r'품질\\s*(?:인증|승인).{0,30}(?:완료|통과|마쳤|성공)|(?:고객|고객사).{0,50}(?:품질\\s*승인|인증).{0,40}(?:완료|통과|마쳤)', re.I)
-DONGKUK_CONTRACT = re.compile(r'(?:공급\\s*계약|확정\\s*발주|구매\\s*계약|납품\\s*계약|contract\\s*signed|purchase\\s*order).{0,80}(?:체결|확정|서명|signed|confirmed)|(?:체결|확정).{0,60}(?:공급\\s*계약|구매\\s*계약)', re.I)
+DONGKUK_QUAL = re.compile(r'품질\s*(?:인증|승인).{0,30}(?:완료|통과|마쳤|성공)|(?:고객|고객사).{0,50}(?:품질\s*승인|인증).{0,40}(?:완료|통과|마쳤)', re.I)
+DONGKUK_CONTRACT = re.compile(r'(?:공급\s*계약|확정\s*발주|구매\s*계약|납품\s*계약|contract\s*signed|purchase\s*order).{0,80}(?:체결|확정|서명|signed|confirmed)|(?:체결|확정).{0,60}(?:공급\s*계약|구매\s*계약)', re.I)
 DONGKUK_ROBOT_LINK = re.compile(
-    r'(?:Optimus|옵티머스|Atlas|아틀라스|Boston\\s*Dynamics|보스턴다이내믹스).{0,90}'
-    r'(?:직접\\s*납품|직접\\s*공급|공급계약\\s*체결|직접\\s*공급사)|'
-    r'(?:직접\\s*납품|직접\\s*공급|공급계약\\s*체결).{0,90}'
-    r'(?:Optimus|옵티머스|Atlas|아틀라스|Boston\\s*Dynamics|보스턴다이내믹스)',
+    r'(?:Optimus|옵티머스|Atlas|아틀라스|Boston\s*Dynamics|보스턴다이내믹스).{0,90}'
+    r'(?:직접\s*납품|직접\s*공급|공급계약\s*체결|직접\s*공급사)|'
+    r'(?:직접\s*납품|직접\s*공급|공급계약\s*체결).{0,90}'
+    r'(?:Optimus|옵티머스|Atlas|아틀라스|Boston\s*Dynamics|보스턴다이내믹스)',
     re.I,
 )
 DONGKUK_OFFICIAL_SOURCES = {'동국산업', 'Dongkuk Industries', 'Dongkuk Industry'}
