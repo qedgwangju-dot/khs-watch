@@ -10,6 +10,8 @@ on:
       - ".github/workflows/ecb-policy-telegram-watch.yml"
       - "scripts/ecb_policy_watch.py"
       - "tests/test_ecb_policy_watch.py"
+      - "scripts/telegram_state_commit.py"
+      - "tests/test_telegram_state_commit.py"
 
 permissions:
   contents: write
@@ -40,6 +42,8 @@ jobs:
         run: |
           python -m py_compile scripts/ecb_policy_watch.py
           python -m unittest tests/test_ecb_policy_watch.py -v
+          python -m py_compile scripts/telegram_state_commit.py
+          python -m unittest tests.test_telegram_state_commit -v
 
       - name: Check ECB official releases
         run: python scripts/ecb_policy_watch.py
@@ -173,27 +177,11 @@ jobs:
         if: always()
         run: python scripts/ecb_policy_watch.py --finalize
 
-      - name: Commit ECB watcher state
-        if: always() && hashFiles('data/ecb_policy_watch_state.json') != ''
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/ecb_policy_watch_state.json
-          if git diff --cached --quiet; then
-            echo "ECB 상태 변경 없음"
-          else
-            git commit -m "Update ECB policy watch state"
-            for attempt in 1 2 3 4 5; do
-              if git pull --rebase origin main && git push; then
-                exit 0
-              fi
-              git rebase --abort 2>/dev/null || true
-              git fetch origin main
-              sleep $((attempt * 3))
-            done
-            echo "ECB state push failed after 5 retries" >&2
-            exit 1
-          fi
+      - name: Persist ECB policy state using SHA-safe GitHub Contents API
+        if: success() && hashFiles('data/ecb_policy_watch_state.json') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/telegram_state_commit.py data/ecb_policy_watch_state.json
 
       - name: Upload ECB verification artifacts
         if: always()
