@@ -106,3 +106,56 @@ with tempfile.TemporaryDirectory() as td:
     assert direct["available"], direct
     assert direct["rows"][0]["delta"] == -400, direct
 print("ubm_received_time_alignment_regression=true")
+
+
+# 사건 이후 시각이나 90초 초과 오래된 1분봉을 섞어 종목·업종·ETF/프로그램 순위를
+# 잘못 작성하지 않는지 2026-10-08 11:04→11:19 급락 사례로 검증한다.
+import kospi_shock_enrichment as ke
+from kospi_shock_enrichment import _aligned_prior_row
+start = dt.datetime(2026, 10, 8, 11, 4, 6, tzinfo=KST).timestamp()
+end = dt.datetime(2026, 10, 8, 11, 19, 49, tzinfo=KST).timestamp()
+before = {"date": "20261008", "time": "110400", "close": "6786.16"}
+future = {"date": "20261008", "time": "110415", "close": "9999"}
+strict = _aligned_prior_row([future, before], start)
+assert strict is not None and strict[0] == before and strict[2] == 6.0, strict
+assert _aligned_prior_row([future], start) is None, "future-only bar must not be used"
+assert _aligned_prior_row([{"date": "20261008", "time": "110200"}], start) is None, "stale bar must not be used"
+
+bars = [
+    {"date": "20261008", "time": "110400", "close": "6786.16", "svalue": "100000"},
+    {"date": "20261008", "time": "111900", "close": "6745.30", "svalue": "70000"},
+    {"date": "20261008", "time": "112000", "close": "6700.00", "svalue": "40000"},
+]
+orig_stock_bars = ke.fetch_stock_bars
+orig_ls_post = ke.ls_post
+try:
+    ke.fetch_stock_bars = lambda *args, **kwargs: bars
+    price = ke.stock_interval_price("demo", "005930", start, end)
+    assert price["available"], price
+    assert price["end_price"] == 6745.30, price
+    assert price["end_time"] == "11:19:00", price
+    assert 0 <= price["end_gap_sec"] <= 90, price
+
+    def fake_ls_post(token, api, tr, body):
+        if tr == "t1637":
+            return {"t1637OutBlock1": bars}
+        if tr == "t8409":
+            return {"t8409OutBlock1": bars}
+        raise AssertionError(tr)
+    ke.ls_post = fake_ls_post
+    program = ke.program_interval("demo", "005930", start, end)
+    assert program["available"] and program["program_delta"] == -30000, program
+    assert program["end_time"] == "11:19:00", program
+    industry = ke.industry_index_interval("demo", "013", start, end)
+    assert industry["available"] and industry["end"] == 6745.30, industry
+
+    # 사건 종료 기준점에 대응하는 표본이 없으면 값·순위는 추정하지 않는다.
+    no_end = [bars[0], {"date":"20261008", "time":"111600", "close":"6750", "svalue":"80000"}]
+    ke.fetch_stock_bars = lambda *args, **kwargs: no_end
+    assert not ke.stock_interval_price("demo", "005930", start, end)["available"]
+    ke.ls_post = lambda *args, **kwargs: {"t1637OutBlock1": no_end}
+    assert not ke.program_interval("demo", "005930", start, end)["available"]
+finally:
+    ke.fetch_stock_bars = orig_stock_bars
+    ke.ls_post = orig_ls_post
+print("strict_prior_interval_alignment_regression=true")
