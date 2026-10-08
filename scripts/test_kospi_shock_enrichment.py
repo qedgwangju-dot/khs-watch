@@ -159,3 +159,18 @@ finally:
     ke.fetch_stock_bars = orig_stock_bars
     ke.ls_post = orig_ls_post
 print("strict_prior_interval_alignment_regression=true")
+
+
+# 하루 누적 프로그램 매도 상위라도 사건구간에 순매수가 발생했거나
+# 90초 정렬에 실패한 종목은 '급락구간 프로그램 매도종목'으로 재분류하지 않는다.
+rows = [
+    {"code":"A","program":{"available":True,"program_delta":200}},
+    {"code":"B","program":{"available":True,"program_delta":-120}},
+    {"code":"C","program":{"available":False,"program_delta":-9999}},
+    {"code":"D","program":{"available":True,"program_delta":-35}},
+    {"code":"E","program":{"available":True,"program_delta":None}},
+]
+selected = ke.confirmed_interval_sellers(rows)
+assert [x["code"] for x in selected] == ["B", "D"], selected
+assert ke.confirmed_interval_sellers(rows[:1] + rows[2:3]) == []
+print("event_program_sellers_only_regression=true")
