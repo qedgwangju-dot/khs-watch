@@ -450,6 +450,44 @@ jobs:
                 "program_identity_gap=", pgm.get("전체대비차이"), "program=", pgm)
           PY
 
+      - name: Inspect last completed KRX session chart on holiday
+        if: env.KOSPI_SKIP_LIVE_TESTS == '1'
+        run: |
+          PYTHONPATH=scripts python - <<'PY'
+          import datetime as dt
+          from zoneinfo import ZoneInfo
+          from krx_session_calendar import is_session_day
+          from kospi_shock_enrichment import (
+              get_token, fetch_stock_bars, select_stock_chart_probe_window,
+          )
+          KST=ZoneInfo("Asia/Seoul")
+          today=dt.datetime.now(KST).date()
+          previous=today-dt.timedelta(days=1)
+          for _ in range(14):
+              if is_session_day(previous):
+                  break
+              previous-=dt.timedelta(days=1)
+          else:
+              print("holiday_history_probe=skipped previous_session_unknown")
+              raise SystemExit(0)
+          asof=dt.datetime.combine(previous,dt.time(22,47),tzinfo=KST)
+          try:
+              bars=fetch_stock_bars(get_token(),"005930","U")
+              window=select_stock_chart_probe_window(bars,asof)
+              valid_dates=sorted({str(x.get("date") or "") for x in bars})
+              tail=[(x.get("date"),x.get("time")) for x in bars[-5:]]
+              print("holiday_history_probe_result=", {
+                  "previous_session":str(previous),
+                  "row_count":len(bars),
+                  "source_dates":valid_dates[-5:],
+                  "latest_rows":tail,
+                  "window":window,
+              })
+          except Exception as exc:
+              # 휴장일의 외부 API 접속 불가를 생산 감시 실패로 승격하지 않는다.
+              print(f"holiday_history_probe_unavailable={type(exc).__name__}: {exc}")
+          PY
+
       - name: Verify integrated sector/theme/stock/ETF enrichment APIs
         if: env.KOSPI_SKIP_LIVE_TESTS != '1'
         run: |
