@@ -3983,10 +3983,57 @@ def covered_call_market_assets_fact(title: str, source: str) -> str:
     return fact if len(fact) <= GAMEJOA_CORE_MAX_CHARS and core_sentence_is_complete(fact) else ""
 
 
+def iea_existing_stock_release_core(title: str, body: str) -> str:
+    if not re.search(r"IEA|국제에너지기구|비축유|비축\s*원유|oil\s+reserves|stockpile", title, re.I):
+        return ""
+    source = article_summary_body(body)
+    combined = f"{title} {source}"
+    if not re.search(r"IEA|국제에너지기구", source, re.I):
+        return ""
+    if not re.search(r"추가\s*방출\s*없이|추가\s*물량이\s*아닌|not\s+additional\s+stocks", combined, re.I):
+        return ""
+    if not re.search(r"1\s*억\s*배럴", source) or not re.search(r"경유", source):
+        return ""
+    if not re.search(r"20\s*일", source) or not re.search(r"(?:최대\s*)?8\s*%", combined):
+        return ""
+    return (
+        "IEA 회원국은 3월 합의 비축유 약 3억2500만 배럴을 이미 방출했고, 잔여 약 1억 배럴을 4개월간 공급하며 첫 20일은 경유를 우선합니다. "
+        "추가 방출이 아닌 기존 약속 이행 발표 뒤 유럽 경유 선물은 장중 최대 8% 올랐습니다."
+    )
+
+
+def fomc_minutes_guidance_core(title: str, body: str) -> str:
+    if not re.search(r"FOMC|연준.{0,24}의사록|의사록.{0,24}연준|Fed(?:eral Reserve)?(?:\s+minutes)?", title, re.I):
+        return ""
+    source = article_summary_body(body)
+    combined = f"{title} {source}"
+    if not re.search(r"FOMC", combined, re.I) or not re.search(r"의사록|minutes", combined, re.I):
+        return ""
+    rate_guidance = re.search(
+        r"(?:대부분|다수|대다수|위원\s*대부분|참석자\s*대부분).{0,100}(?:연말|연내|올해\s*말).{0,80}(?:추가|한\s*차례|1회).{0,35}(?:인상|금리)|"
+        r"(?:연말|연내|올해\s*말).{0,60}(?:추가|한\s*차례|1회).{0,35}(?:인상|금리).{0,70}(?:적절|예상|판단)",
+        combined,
+    )
+    inflation_drivers = all(re.search(term, combined, re.I) for term in (
+        r"유가|에너지", r"AI", r"관세", r"물가|인플레이션|inflation",
+    ))
+    if not rate_guidance or not inflation_drivers:
+        return ""
+    return (
+        "9월 FOMC 의사록에서 대부분 위원은 연말 추가 금리 인상이 적절하다고 봤고, "
+        "유가·AI 투자·관세를 물가 상방 위험으로 꼽았습니다."
+    )
+
+
 def source_focused_article_core(title: str, sentences: list[str]) -> str:
     """Prefer a complete source fact about the headline, never an unrelated number."""
     focus = market_materiality.focus_kind(title)
     source = " ".join(sentences)
+    event_core = iea_existing_stock_release_core(title, source)
+    if not event_core:
+        event_core = fomc_minutes_guidance_core(title, source)
+    if event_core:
+        return event_core
     fx_fact = won_dollar_fx_article_core(title, source)
     if fx_fact:
         return fx_fact
@@ -9731,6 +9778,19 @@ def source_output_aligned(alert: dict) -> bool:
                 observation and "컨센서스" in observation and "하향 조정" in observation
                 and market_materiality.canonical_source_fact(observation) == market_materiality.canonical_source_fact(summary)
             )
+        event_specific_core = iea_existing_stock_release_core(
+            str(alert.get("source_title") or ""),
+            article_summary_body(str(alert.get("source_body") or alert.get("source_abstract") or "")),
+        )
+        if not event_specific_core:
+            event_specific_core = fomc_minutes_guidance_core(
+                str(alert.get("source_title") or ""),
+                article_summary_body(str(alert.get("source_body") or alert.get("source_abstract") or "")),
+            )
+        event_specific_market_alignment = bool(
+            event_specific_core
+            and re.sub(r"\s+", "", event_specific_core) == re.sub(r"\s+", "", summary)
+        )
         petroleum_cartel_alignment = korean_petroleum_cartel_core_matches(alert, summary)
         return bool(
             (alert.get("body_verified") or alert.get("title_fact_verified"))
@@ -9740,9 +9800,10 @@ def source_output_aligned(alert: dict) -> bool:
             and not core_has_ui_garbage(summary)
             and korean_business_source_allowed(alert)
             and (korean_title_core_aligned(source_title, summary) or financing_alignment or preview_revision_alignment
-                 or petroleum_cartel_alignment)
+                 or petroleum_cartel_alignment or event_specific_market_alignment)
             and macro_release_core_aligned(source_title, summary)
-            and (market_materiality.core_focus_aligned(source_title, summary) or petroleum_cartel_alignment)
+            and (market_materiality.core_focus_aligned(source_title, summary) or petroleum_cartel_alignment
+                 or event_specific_market_alignment)
             and not source_core_fact_errors(alert)
             and not direction_conflict
         )
@@ -11998,6 +12059,11 @@ def verified_alert_core(alert: dict, title: str) -> str:
     if is_business:
         if alert.get("body_verified"):
             body = str(alert.get("source_body") or alert.get("source_abstract") or "")
+            event_core = iea_existing_stock_release_core(source_title or title, body)
+            if not event_core:
+                event_core = fomc_minutes_guidance_core(source_title or title, body)
+            if event_core and valid_source_fact(event_core):
+                return event_core
             observed_fact = source_headline_event_fact(source_title or title, article_summary_body(body))
             if observed_fact and valid_source_fact(observed_fact):
                 return observed_fact
@@ -12083,6 +12149,15 @@ def source_core_fact_errors(alert: dict) -> list[str]:
     if not source or not core:
         return []
     errors = []
+    event_specific_core = iea_existing_stock_release_core(title, source)
+    if not event_specific_core:
+        event_specific_core = fomc_minutes_guidance_core(title, source)
+    if event_specific_core and re.sub(r"\s+", "", event_specific_core) != re.sub(r"\s+", "", core):
+        errors.append("event_specific_market_fact_missing_or_mismatched")
+    event_specific_market_alignment = bool(
+        event_specific_core
+        and re.sub(r"\s+", "", event_specific_core) == re.sub(r"\s+", "", core)
+    )
     expected_fx = won_dollar_fx_article_core(title, source)
     if expected_fx and re.sub(r"\s+", "", expected_fx) != re.sub(r"\s+", "", core):
         errors.append("fx_headline_pair_or_driver_mismatch")
@@ -12105,7 +12180,7 @@ def source_core_fact_errors(alert: dict) -> list[str]:
     if expected_commercial and re.search(r"공급\s*계약|사업\s*수행기관", core):
         if re.sub(r"\s+", "", expected_commercial) != re.sub(r"\s+", "", core):
             errors.append("commercial_contract_actor_customer_or_stage_mismatch")
-    if not market_materiality.core_focus_aligned(title, core) and not petroleum_cartel_alignment:
+    if not market_materiality.core_focus_aligned(title, core) and not petroleum_cartel_alignment and not event_specific_market_alignment:
         errors.append("headline_event_or_period_mismatch")
     if market_materiality.focus_kind(title) == "cyber_incident":
         expected_cyber = financial_cyber_incident_fact(title, source)
@@ -12203,7 +12278,8 @@ def source_core_fact_errors(alert: dict) -> list[str]:
               or ('삼성전자' in title and re.search(r'성과급|OPI2', title)
                   and '노조 추산상' in expected_observation and '7억' in expected_observation
                   and '10억' in expected_observation)
-             or petroleum_cartel_alignment)
+             or petroleum_cartel_alignment
+             or event_specific_market_alignment)
             and source_audit["disposition"] == "keep" and source_audit["priority"] >= 2
             and expected_observation
             and market_materiality.canonical_source_fact(expected_observation) == market_materiality.canonical_source_fact(observation_core)

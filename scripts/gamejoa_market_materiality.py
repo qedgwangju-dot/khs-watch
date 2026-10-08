@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 117
+VERSION = 118
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -3495,6 +3495,55 @@ def equity_publication_assessment(title: str, evidence: list[dict], *, body: str
     source_rows = source_sentences(body)
     lead = " ".join(source_rows[:5])
     headline_and_lead = f"{title} {lead}"
+
+    wnba_team_revenue = (
+        re.search(r"\bWNBA\b|여자\s*(?:프로)?농구", headline_and_lead, re.I)
+        and re.search(r"(?:구단|팀).{0,24}(?:연)?매출|(?:연)?매출.{0,24}(?:구단|팀)", title + " " + lead)
+        and not re.search(r"상장\s*(?:모기업|구단|회사)|공개\s*기업.{0,30}(?:모기업|구단)|\b(?:NYSE|NASDAQ)\b", headline_and_lead, re.I)
+    )
+    if wnba_team_revenue:
+        return {"eligible": False, "reason": "private_sports_team_revenue_without_listed_issuer_transmission"}
+
+    stock_commentary_without_market_fact = (
+        re.search(r"(?:선반영|수급).{0,24}(?:살펴야|봐야|주목|점검)|(?:살펴야|봐야).{0,24}(?:선반영|수급)", title)
+        and re.search(r"주가|주식", title)
+        and not any(
+            re.search(r"(?:삼성전자|SK하이닉스|현대차|기아|LG전자|네이버|카카오|[A-Z]{2,5})", row)
+            and re.search(r"주가|주식|종가", row)
+            and QUANTITY.search(row)
+            and re.search(r"상승|하락|급등|급락|보합|내렸|올랐|마감", row)
+            for row in source_rows[:10]
+        )
+        and not any(
+            re.search(r"삼성전자|SK하이닉스|현대차|기아|LG전자|네이버|카카오", row)
+            and re.search(r"(?:매출|영업이익|순이익|가이던스).{0,30}\d", row)
+            for row in source_rows[:10]
+        )
+    )
+    if stock_commentary_without_market_fact:
+        return {"eligible": False, "reason": "stock_market_commentary_without_issuer_result_or_observed_price_flow"}
+
+    multi_stock_roundup = (
+        re.search(r"오늘장\s*특징주|특징주\s*모음|특징주\s*브리핑", title)
+        and len(re.findall(r"테슬라|스페이스\s*X|TSMC|인텔|엔비디아|마벨|마이크론|브로드컴|애플|아마존|메타", title, re.I)) >= 3
+    )
+    if multi_stock_roundup:
+        return {"eligible": False, "reason": "multi_issuer_stock_roundup_without_single_foreground_event"}
+
+    foreign_residential_housing_report = (
+        re.search(r"(?:영국|英|\bUK\b|\bBritain\b)", title, re.I)
+        and re.search(r"주택시장|주택담보대출|모기지|housing market|mortgage", title, re.I)
+        and re.search(r"냉각|위축|약세|둔화|cooling|weak", title + " " + lead, re.I)
+        and not re.search(
+            r"(?:영란은행|Bank of England).{0,55}(?:기준금리|금리).{0,30}(?:인상|인하|동결|결정|발표)|"
+            r"(?:기준금리|금리).{0,30}(?:인상|인하|동결).{0,45}(?:영란은행|Bank of England)",
+            headline_and_lead,
+            re.I,
+        )
+        and not re.search(r"(?:영국|英).{0,50}(?:상장사|기업).{0,40}(?:매출|영업이익|수주|실적)", headline_and_lead)
+    )
+    if foreign_residential_housing_report:
+        return {"eligible": False, "reason": "foreign_local_housing_conditions_without_policy_or_listed_issuer_channel"}
 
     ga_enforcement_roundup = (
         re.search(r"법인\s*보험\s*대리점|\bGA\b", headline_and_lead, re.I)
