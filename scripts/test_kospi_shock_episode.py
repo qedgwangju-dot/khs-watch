@@ -698,3 +698,37 @@ try:
 finally:
     ks.time.time = _before_clock
 print("invalid_investor_clock_regression=true clock8=HHMMSScc malformed=153288 masked=false")
+
+
+# 실전 재발 방지: 10/8 14:36 고점이 종료된 뒤 15:30에 다시 신규사건 고점으로
+# 재사용된 사례. 전파·신규 사건은 실제 이전 사건 종료 이후 국소 고점으로만 판단한다.
+_old_completed = Watch.__new__(Watch)
+_old_completed.idx = deque([
+    (1000.0, 7000.0), (1100.0, 6800.0), (1200.0, 6850.0),
+    (1400.0, 6920.0), (1500.0, 6915.0), (1590.0, 6880.0),
+], maxlen=30000)
+_old_completed.last_episode_end_ts=1200.0
+local_peak = _old_completed._window_peak(30, 5)
+assert local_peak == (1400.0, 6920.0), local_peak
+hit, info = _old_completed._trigger()
+assert hit and info["peak_ts"]==1400.0, (hit, info)
+_old_completed.idx = deque([
+    (1000.0, 7000.0), (1100.0, 6800.0), (1200.0, 6850.0),
+    (1400.0, 6820.0), (1500.0, 6819.0), (1590.0, 6818.0),
+], maxlen=30000)
+hit, info = _old_completed._trigger()
+assert not hit, (hit, info)
+print("closed_episode_peak_isolation_regression=true")
+
+# 재기동 및 오전/오후 상태인계에도 종료시점(신규 사건 경계)을 유지한다.
+import tempfile as _tempfile_peak
+from pathlib import Path as _Path_peak
+with _tempfile_peak.TemporaryDirectory() as _tmp_peak:
+    _w_old=Watch("unused", [], "", True)
+    _w_old.last_episode_end_ts=time.time()-120
+    _w_old.save_handoff(_Path_peak(_tmp_peak)/"handoff.json")
+    _w_new=Watch("unused", [], "", True)
+    _w_new.load_handoff(_Path_peak(_tmp_peak)/"handoff.json")
+    assert _w_new.last_episode_end_ts == _w_old.last_episode_end_ts, (
+        _w_new.last_episode_end_ts,_w_old.last_episode_end_ts)
+print("episode_boundary_handoff_regression=true")
