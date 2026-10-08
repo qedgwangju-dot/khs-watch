@@ -1888,6 +1888,44 @@ def _self_test_doe_grid_dpa_event_model() -> None:
     assert doe_grid_dpa_event_key(base, base_haystack) == "us-grid-dpa-section303-base-2026-04-20"
 
 
+
+def _self_test_energy_month_proclamation() -> None:
+    url = (
+        "https://www.whitehouse.gov/presidential-actions/2026/10/"
+        "national-energy-dominance-month-2026/"
+    )
+    body = (
+        "BY THE PRESIDENT OF THE UNITED STATES OF AMERICA. A PROCLAMATION. "
+        "We approve over 6,000 drilling permits, over $1 billion in coal, "
+        "over 100 coal plants, and Venezuela's 65 billion barrels. "
+        "On March 4, 2026, we arranged for the Ratepayer Protection Pledge. "
+        "I do hereby proclaim October 2026 as National Energy Dominance Month. "
+        "I sign this seventh day of October."
+    )
+    fixture = {
+        "source": "White House proclamations",
+        "title": "National Energy Dominance Month, 2026",
+        "link": url, "source_body": body, "summary": body,
+        "body_verified": True, "document_type": "Proclamation",
+        "published_kst": "2026-10-07T00:00:00+09:00",
+    }
+    result = classify_item(fixture)
+    assert result and result["importance"] == "상"
+    assert result["document_type"] == "Proclamation"
+    assert len(result["policy_timeline"]) == 7
+    assert "새로운 세출 승인" in result["policy_plain_summary"]
+    assert result["fingerprint"] == classify_item(dict(fixture))["fingerprint"]
+    bad = dict(fixture, body_verified=False)
+    assert classify_item(bad) is None
+    wrong_date = dict(fixture, source_body=body.replace("seventh day of October", "another date"))
+    assert classify_item(wrong_date) is None
+    previous = dict(fixture, title="National Energy Dominance Month, 2025")
+    previous["link"] = url.replace("/2026/10/", "/2025/10/").replace("-2026/", "-2025/")
+    assert not is_energy_dominance_month_proclamation(previous)
+    print("energy_month_proclamation_classification=passed")
+
+
 if __name__ == "__main__":
     _self_test_doe_grid_dpa_event_model()
+    _self_test_energy_month_proclamation()
     raise SystemExit(main())
