@@ -1876,6 +1876,37 @@ def _self_test_korean_optics_alerts() -> None:
         "company": "Huawei OPEN NPO", "source": "Huawei", "source_url": "https://example.com"
     })
 
+    # Regression: the 2026-10-08 Bloom/Leadray story was missing because
+    # the old query required optical/800G/CPO terms in the news headline.
+    initial = "Bloom Energy SOFC system to support AOI's Taiwan expansion"
+    taiwan_press = "賀喜能源擔任祥茂光電EPC 導入Bloom Energy現地發電系統"
+    forecast = "AOI Taiwan Bloom Energy SOFC to begin operation in first quarter 2027"
+    realized = "AAOI Taiwan Bloom Energy SOFC plant commissioned and entered commercial operation"
+    another_site = "Bloom Energy installs 3MW at Unimicron Taiwan facility"
+    old_customer = "AAOI Taiwan facility was qualified to produce some 800G products during 2025"
+    award_application = "祥茂光電Bloom Energy SOFC台灣已申請補助 awaiting government approval"
+    award_granted = "祥茂光電Bloom Energy SOFC台灣燃料電池補助核准"
+    assert power_milestone(initial)[2] == POWER_INITIAL_KEY
+    assert power_milestone(taiwan_press)[2] == POWER_INITIAL_KEY
+    assert power_milestone(forecast)[2] == POWER_INITIAL_KEY
+    assert power_milestone(realized)[2] != POWER_INITIAL_KEY
+    assert power_milestone(another_site) is None
+    assert power_milestone(old_customer) is None
+    assert power_milestone(award_application)[2] == POWER_INITIAL_KEY
+    assert power_milestone(award_granted)[0] == "AAOI 현장발전 보조금"
+    assert power_milestone("AAOI Taiwan Bloom Energy SOFC plant 5MW officially confirmed")[2] != power_milestone(
+        "AAOI Taiwan Bloom Energy SOFC plant 8MW officially confirmed"
+    )[2]
+    p1 = {"company": POWER_COMPANY, "title": initial}
+    p2 = {"company": POWER_COMPANY, "title": taiwan_press}
+    assert same_power_event(p1, p2)
+    assert official_power_source({
+        "source": "Bloom Energy", "source_url": "https://www.bloomenergy.com/news/test"
+    })
+    assert not official_power_source({
+        "source": "Bloom Energy", "source_url": "https://example.org/blog"
+    })
+
 
 def load_state() -> dict:
     if not STATE_PATH.exists():
@@ -1921,6 +1952,8 @@ def main() -> None:
     successful_company_queries = 0
     attempted_company_queries = 0
     consecutive_service_failures = 0
+    power_source_healthy = False
+    power_source_errors: list[str] = []
 
     cutoff = NOW - dt.timedelta(days=7)
     for company, meta in COMPANIES.items():
@@ -1929,14 +1962,40 @@ def main() -> None:
             feed_items = []
             locales = meta.get("locales") or [{"hl": "en-US", "gl": "US", "ceid": "US:en"}]
             queries = meta.get("queries") or [meta.get("query")]
+            power_locales_ok: set[str] = set()
+            power_query_failed = False
             for query in [q for q in queries if q]:
                 for locale in locales:
-                    feed_items.extend(query_google_news(
-                        query,
-                        hl=locale.get("hl", "en-US"),
-                        gl=locale.get("gl", "US"),
-                        ceid=locale.get("ceid", "US:en"),
-                    ))
+                    try:
+                        rows = query_google_news(
+                            query,
+                            hl=locale.get("hl", "en-US"),
+                            gl=locale.get("gl", "US"),
+                            ceid=locale.get("ceid", "US:en"),
+                        )
+                        feed_items.extend(rows)
+                        if company == POWER_COMPANY:
+                            power_locales_ok.add(locale.get("gl", "US"))
+                    except Exception as exc:
+                        if company != POWER_COMPANY:
+                            raise
+                        power_query_failed = True
+                        power_source_errors.append(
+                            f"{locale.get('gl', 'US')} query: {type(exc).__name__}: {exc}"
+                        )
+            if company == POWER_COMPANY:
+                # Unlike a generic news category, the power-to-production gate
+                # must not advance when one language lane is unavailable.
+                power_source_healthy = (
+                    not power_query_failed
+                    and {"TW", "US"}.issubset(power_locales_ok)
+                )
+                if not power_source_healthy:
+                    errors.append(
+                        "AAOI Taiwan power source degraded: hold only power lane; "
+                        + " | ".join(power_source_errors[:4])
+                    )
+                    continue
         except Exception as exc:
             errors.append(f"{company}: {type(exc).__name__}: {exc}")
             is_service_failure = isinstance(exc, urllib.error.HTTPError) and getattr(exc, "code", None) in {429, 500, 502, 503, 504}
@@ -1953,6 +2012,13 @@ def main() -> None:
                 continue
             title = item["title"]
             source = item.get("source") or ""
+            # A power/fuel-cell article is not a generic 800G customer award.
+            # Route it exclusively through the AAOI factory-power evidence gate.
+            if company == "Applied Optoelectronics" and is_aaoi_power_topic(title):
+                continue
+            power_event = power_milestone(title) if company == POWER_COMPANY else None
+            if company == POWER_COMPANY and power_event is None:
+                continue
 
             # Keep 800V-DC / SiC / GaN power architecture separate from optics.
             # Higher rack density can drive both power and optical changes, but one does
@@ -1993,13 +2059,17 @@ def main() -> None:
                     continue
 
             score = signal_score(title, source)
+            if power_event:
+                # Factory fuel cell / grid news often lacks 800G or "optical"
+                # in the title, so the original optics score must not drop it.
+                score = max(score, 10)
             # Require both a technology/data-movement term and a concrete commercial/action term.
             # CPO mentions alone are not enough: this prevents stock-reaction/commentary articles
             # from becoming alerts. Only a 3.2T milestone may bypass the action requirement.
             has_high = any(re.search(p, title, re.I) for p in HIGH_SIGNAL_PATTERNS)
             has_action = any(re.search(p, title, re.I) for p in ACTION_PATTERNS)
             very_strong = bool(re.search(r"\b3\.2\s*[Tt]\b", title, re.I))
-            if score < 7 or not has_high or (not has_action and not very_strong):
+            if not power_event and (score < 7 or not has_high or (not has_action and not very_strong)):
                 continue
             key = event_key(company, title, source)
             item.update({
@@ -2007,8 +2077,8 @@ def main() -> None:
                 "ticker": meta["ticker"],
                 "score": score,
                 "key": key,
-                "stage": structural_stage(company, structural_category, title) if structural_category else stage_for(title),
-                "category": category_for(title, company),
+                "stage": power_event[1] if power_event else structural_stage(company, structural_category, title) if structural_category else stage_for(title),
+                "category": power_event[0] if power_event else category_for(title, company),
             })
             all_relevant.append(item)
 
@@ -2065,7 +2135,11 @@ def main() -> None:
     quality_candidates = list(all_relevant)
     all_relevant = [
         item for item in quality_candidates
-        if source_is_corroborated(item) and credible_structural_source(item, quality_candidates)
+        if (
+            source_is_corroborated(item)
+            and credible_structural_source(item, quality_candidates)
+            and verified_power_event(item, quality_candidates)
+        )
     ]
 
     # Stable order: newest first, then score.
@@ -2107,6 +2181,7 @@ def main() -> None:
         set(state.get("seen_story_keys") or [])
         | set(KNOWN_PHOTONIC_BASELINE_KEYS)
         | set(KNOWN_NEW_STRUCTURE_KEYS)
+        | set(POWER_BASELINE_KEYS)
     )
     seen_story_records = list(state.get("seen_story_records") or [])
 
@@ -2181,6 +2256,13 @@ def main() -> None:
         "optical_bottleneck_version": 1,
         "optical_packaging_version": 2,
         "structural_optics_version": STRUCTURAL_OPTICS_VERSION,
+        "aaoi_taiwan_power_watch_version": POWER_MONITOR_VERSION,
+        "aaoi_taiwan_power_source_ok": power_source_healthy,
+        "aaoi_taiwan_power_last_healthy_kst": (
+            dt.datetime.now(KST).isoformat(timespec="seconds")
+            if power_source_healthy else state.get("aaoi_taiwan_power_last_healthy_kst")
+        ),
+        "aaoi_taiwan_power_errors": power_source_errors,
         "volantis_verified_baseline": VOLANTIS_VERIFIED_BASELINE,
         "last_checked_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
         "seen_keys": updated_seen,
@@ -2240,6 +2322,11 @@ def main() -> None:
                     "CPO 광패키징 기판·인터포저",
                 }
             ]
+        power_version = int(state.get("aaoi_taiwan_power_watch_version") or 0)
+        if power_version < POWER_MONITOR_VERSION or not power_source_healthy:
+            # Seed October-2026 EPC press as history; suppress power events
+            # during a partial source outage without affecting other watchers.
+            new_items = [item for item in new_items if item.get("company") != POWER_COMPANY]
         structural_version = int(state.get("structural_optics_version") or 0)
         if structural_version < STRUCTURAL_OPTICS_VERSION:
             # First upgrade run baselines historical OCP and OPEN NPO coverage.
@@ -2284,6 +2371,8 @@ def main() -> None:
             alert_header = "🚨 <b>국내 AI 광통신 수주·검증 변화 감지</b>"
         elif photonic_compute_only:
             alert_header = "🚨 <b>AI 광컴퓨팅·광메모리 구조 변화 감지</b>"
+        elif all(item.get("company") == POWER_COMPANY for item in alert_items):
+            alert_header = "🚨 <b>AAOI 대만 전력확보·광모듈 증설 변화 감지</b>"
         else:
             alert_header = "🚨 <b>AI 네트워킹·광통신 구조 변화 감지</b>"
         lines = [
@@ -2304,7 +2393,10 @@ def main() -> None:
             lines.extend([
                 f"<b>{idx}) {html.escape(DISPLAY_NAMES_KO.get(item['company'], item['company']))} ({html.escape(item['ticker'])}) — {html.escape(category)}</b>",
                 f"• 단계: {html.escape(item['stage'])}",
-                f"• 확인 수준: {html.escape(evidence_label(item))}" if item['company'] in NEW_STRUCTURE_AXES else "",
+                f"• 확인 수준: {html.escape(evidence_label(item))}" if item['company'] in NEW_STRUCTURE_AXES else (
+                    "• 확인 수준: 공급사 공식발표" if official_power_source(item) else
+                    "• 확인 수준: 독립 신뢰매체 교차확인·실제 계약조건 재검증 필요"
+                ) if item['company'] == POWER_COMPANY else "",
                 f"• 원문 제목: {html.escape(item['title'])}",
                 f"• 출처·시각: {html.escape(item.get('source') or '미표기')} / {html.escape(pub or '시각 미표기')}",
             ])
@@ -2324,7 +2416,7 @@ def main() -> None:
         lines.extend([
             "<b>감시 기준</b>",
             "• 고객·수주·양산: 1.6T·3.2T·CPO·광컴퓨팅의 고객인증, PO, 출하, 생산능력, 매출 가이던스 변화",
-            "• 병목·정책: FAU 수율·검사/정렬·InP·ELS·FCC/의회 규제·OCS 표준/고객·OPEN NPO 표준/양산",
+            "• 병목·정책: FAU·InP·ELS·OCS/NPO 검증, AAOI 대만 전력·SOFC 시운전·검수·출하·허가",
             "• 제외: 전시·데모·단순 주가반응·기존 기사 재탕은 알림하지 않음",
         ])
         ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
@@ -2339,6 +2431,8 @@ def main() -> None:
         f"- 중복 기사 통합 후 사건 기준선: {len(deduped)}건",
         f"- 중복 제거 방식: 동일 원문 URL·제목/출처 통합 + 동일 사건 의미 클러스터 + 사건키 v3",
         f"- FAU·OCS·OPEN NPO 감시 버전: {STRUCTURAL_OPTICS_VERSION} (2025 OCP·2026년 7월 OPEN NPO 기존사건 기준선)",
+        f"- AAOI 대만 전력 감시: {'정상' if power_source_healthy else '보류·해당 감시축 기준선 미갱신'}",
+        f"- AAOI 대만 전력 최근 정상조회: {pending.get('aaoi_taiwan_power_last_healthy_kst') or '확인되지 않음'}",
         f"- 소스 오류: {len(errors)}건",
     ]
     if errors:
