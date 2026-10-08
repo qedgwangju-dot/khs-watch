@@ -158,6 +158,7 @@ def main() -> int:
     valid_title = (
         text.startswith("📰 GAMEJOA 장전 핵심 뉴스 레이더 · ")
         or text.startswith("📰 실시간 핵심 뉴스 레이더 · ")
+        or text.startswith("🧪 GAMEJOA 뉴스 레이더 검증용 · ")
     )
     if not valid_title:
         errors.append("report title contract broken")

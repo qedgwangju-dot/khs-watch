@@ -2888,6 +2888,19 @@ class IncrementalNewsTests(unittest.TestCase):
                     self.assertFalse(radar.source_core_fact_errors(selected[0]))
                     self.assertTrue(radar.core_sentence_is_complete(selected[0]["telegram_core_fact"]))
 
+    def test_monthly_product_export_core_binds_title_growth_and_source_population(self):
+        case = FOLLOWON_CASES["cosmetics_export_data"]
+        core = radar.monthly_product_export_core(case["title"], case["body"])
+        self.assertEqual(
+            core,
+            "9월 화장품 수출은 12억1000만달러로 전년 동월 대비 29%, 전월 대비 12% 증가했다.",
+        )
+        self.assertFalse(radar.source_core_fact_errors({
+            **self.followon_alert(case["id"]), "telegram_core_fact": core,
+        }))
+        mismatched_title = case["title"].replace("29%", "30%")
+        self.assertFalse(radar.monthly_product_export_core(mismatched_title, case["body"]))
+
     def test_data_center_contract_core_keeps_counterparty_capacity_and_discussion_stage(self):
         case = FOLLOWON_CASES["cooling_contract_not_half_year_order_total"]
         item = self.followon_alert(case["id"])
@@ -4158,7 +4171,7 @@ class IncrementalNewsTests(unittest.TestCase):
         errors = generated_guard.duplicate_event_errors([alert(body=CONTRACT_BODY + ADDITIONAL_FACT), alert()], radar)
         self.assertEqual(len(errors), 1)
 
-    def test_duplicate_across_runs_preserves_followup_and_lanes(self):
+    def test_duplicate_across_runs_suppresses_cross_lane_but_preserves_followup(self):
         with tempfile.TemporaryDirectory() as folder, patch.object(telegram, "SEEN_PATH", Path(folder) / "seen.json"), patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}):
             first = alert()
             telegram.record_seen_alerts([first], NOW)
@@ -4170,13 +4183,32 @@ class IncrementalNewsTests(unittest.TestCase):
             fresh, skipped = telegram.filter_previously_seen_alerts([changed], NOW, "live")
             self.assertEqual(len(fresh), 1)
             self.assertFalse(skipped)
-            fresh, _ = telegram.filter_previously_seen_alerts([second], NOW, "preopen")
-            self.assertEqual(len(fresh), 1)
-            with patch.dict(os.environ, {"RADAR_RUN_MODE": "preopen"}):
-                telegram.record_seen_alerts(fresh, NOW)
             fresh, skipped = telegram.filter_previously_seen_alerts([second], NOW, "preopen")
             self.assertFalse(fresh)
             self.assertEqual(len(skipped), 1)
+            fresh, skipped = telegram.filter_previously_seen_alerts([changed], NOW, "preopen")
+            self.assertEqual(len(fresh), 1)
+            self.assertFalse(skipped)
+            with patch.dict(os.environ, {"RADAR_RUN_MODE": "preopen"}):
+                telegram.record_seen_alerts(fresh, NOW)
+            fresh, skipped = telegram.filter_previously_seen_alerts([changed], NOW, "preopen")
+            self.assertFalse(fresh)
+            self.assertEqual(len(skipped), 1)
+
+    def test_off_window_preopen_report_is_labeled_as_validation_not_0630_digest(self):
+        now = dt.datetime(2026, 10, 8, 15, 25, tzinfo=NOW.tzinfo)
+        with patch.dict(os.environ, {"RADAR_RUN_MODE": "preopen"}), \
+                patch.object(radar, "collect_fx_snapshot", return_value={"rates": {}}):
+            report = radar.compact_report([], {}, {}, now)
+            self.assertFalse(radar.preopen_clock_window_open(now))
+            self.assertTrue(report.startswith("🧪 GAMEJOA 뉴스 레이더 검증용 · 2026년 10월 08일 · 조회 15:25"))
+            self.assertNotIn("06:30", report.splitlines()[0])
+            radar.guard_preopen_report(report)
+
+            in_window = now.replace(hour=6, minute=30)
+            digest = radar.compact_report([], {}, {}, in_window)
+            self.assertTrue(digest.startswith("📰 GAMEJOA 장전 핵심 뉴스 레이더 · 2026년 10월 08일 · 06:30"))
+            radar.guard_preopen_report(digest)
 
     def delivery_scope_alert(self, key):
         case = DELIVERY_SCOPE_CASES[key]
@@ -4793,8 +4825,73 @@ class IncrementalNewsTests(unittest.TestCase):
         )
         self.assertEqual(
             radar.source_headline_event_fact(etf_title, etf_body),
-            'SOL 글로벌DRAM반도체플러스 ETF는 상장 첫날 개인 순매수액 58억원으로 하반기 신규 반도체 ETF 8종 중 최대였다. 신한자산운용에 따르면 연금 매수 포함 유입액은 110억원이다.',
+            '한국거래소 기준 상장 첫날 개인 순매수는 58억원으로, 하반기 신규 반도체 ETF 8종 중 최대였다. 퇴직연금 매수 포함 유입액은 110억원이다.',
         )
+
+    def test_oct8_radar_uses_headline_facts_and_downgrades_small_single_etf_flow(self):
+        etf_title = "'SOL 글로벌DRAM반도체플러스'ETF, 상장일 개인순매수 몰렸다"
+        etf_body = (
+            "신한자산운용은 'SOL 글로벌DRAM반도체플러스(9,655원 ▼10 -0.1%)' ETF가 올해 하반기 신규 상장한 "
+            '반도체 ETF 중 상장일 개인투자자 순매수 1위를 기록했다고 밝혔다. 한국거래소에 따르면 SOL 글로벌DRAM반도체플러스의 '
+            '상장일인 지난 7일 개인투자자 순매수 금액은 약 58억원을 기록했다. 이는 올해 하반기 국내 증시에 신규 상장한 '
+            '반도체 ETF 8개의 상장 첫날 개인 순매수액 중 가장 큰 규모다. 퇴직연금 계좌를 통한 매수분을 포함하면 '
+            '약 110억원의 자금이 유입됐다는 게 신한자산운용의 설명이다. 신한자산운용은 SOL 글로벌DRAM반도체플러스 ETF의 '
+            '신규 상장을 기념해 오는 30일까지 순매수 인증 이벤트를 진행한다.'
+        )
+        summary = radar.source_headline_event_fact(etf_title, etf_body)
+        self.assertIn('개인 순매수는 58억원', summary)
+        self.assertIn('퇴직연금 매수 포함 유입액은 110억원', summary)
+        self.assertNotIn('인증 이벤트', summary)
+        market = materiality.assess(etf_title, etf_body)
+        self.assertLess(market['priority'], 2, market)
+        self.assertEqual(market['scope_note'], 'single_etf_listing_day_flow_below_market_scale')
+        wrong = alert(etf_title, etf_body)
+        wrong['telegram_core_fact'] = '신한자산운용은 신규 상장을 기념해 순매수 인증 이벤트를 진행한다.'
+        self.assertIn('promotional_tail_not_headline_market_fact', radar.source_core_fact_errors(wrong))
+
+    def test_oct8_energy_and_samsung_cores_preserve_the_reported_market_facts(self):
+        samsung_title = '메모리 대호황 올라탄 삼성…엔비디아 넘어 영업익 세계1위 눈앞'
+        samsung_body = (
+            '삼성전자가 올해 3분기 잠정 영업이익 107조4천억원을 거두며 분기 영업이익 100조원을 넘겼다. '
+            '삼성전자는 8일 공시를 통해 올해 3분기 연결 기준 매출 195조원, 영업이익 107조4천억원을 기록했다고 밝혔다.'
+        )
+        samsung_core = radar.source_headline_event_fact(samsung_title, samsung_body)
+        self.assertEqual(
+            samsung_core,
+            '삼성전자의 올해 3분기 잠정 실적은 매출 195조원, 영업이익 107조4천억원이다.',
+        )
+        self.assertFalse(radar.source_core_fact_errors({
+            **alert(samsung_title, samsung_body), 'telegram_core_fact': samsung_core,
+        }))
+
+        iea_title = 'IEA "경유 필요하면 추가 방출…비축량 2억 배럴" | 연합뉴스'
+        iea_body = (
+            '국제에너지기구(IEA)는 3월 방출 합의한 비축유 4억 배럴 중 3억2천500만 배럴을 방출했다고 밝혔다. '
+            '회원국들은 경유 2억 배럴 이상을 포함해 약 11억 배럴을 비축하고 있으며 필요하면 비축유를 시장에 '
+            '추가로 방출할 준비가 됐다고 밝혔다. G7은 경유와 원유 등 1억 배럴을 4개월 동안 공동 방출하기로 했지만 '
+            '기존 약속과 별도인지 설명하지 않았다.'
+        )
+        iea_core = radar.iea_existing_stock_release_core(iea_title, iea_body)
+        self.assertIn('3억2500만 배럴을 방출', iea_core)
+        self.assertIn('경유 2억 배럴 이상', iea_core)
+        self.assertIn('별도인지 불분명하다', iea_core)
+        self.assertFalse(radar.source_core_fact_errors({
+            **alert(iea_title, iea_body), 'telegram_core_fact': iea_core,
+        }))
+
+        iraq_title = '이라크산 원유 시리아 통해 육로수송…호르무즈 우회 | 연합뉴스'
+        iraq_body = (
+            '이라크는 원유를 실은 첫 트럭 행렬이 10월 중순까지 시리아에 도착하길 바란다. '
+            '원유 수송 트럭은 하루 1천 대 이상이 될 것으로 예상된다. 트럭 1대가 약 220배럴을 운반하며, '
+            '이는 지난달 이라크 전체 원유 수출 하루 평균 약 270만배럴 가운데 작은 비중이다.'
+        )
+        iraq_core = radar.iraq_syria_oil_route_core(iraq_title, iraq_body)
+        self.assertIn('하루 1천대 이상', iraq_core)
+        self.assertIn('대당 약 220배럴', iraq_core)
+        self.assertIn('270만배럴/일', iraq_core)
+        self.assertFalse(radar.source_core_fact_errors({
+            **alert(iraq_title, iraq_body), 'telegram_core_fact': iraq_core,
+        }))
 
         macro_title = '[속보] 반도체 호황…8월 경상수지 461억1000만달러 흑자 역대 2위'
         macro_body = (
@@ -5551,6 +5648,240 @@ class IncrementalNewsTests(unittest.TestCase):
         self.assertIn('782.50%', fact)
         self.assertNotIn('93조8000억원', fact)
         self.assertNotIn('20조1000억원', fact)
+
+    def test_oct8_live_selection_downranks_event_pr_and_low_scope_indicators(self):
+        conference_title = '씨이랩, AI 데이터센터 인프라 컨퍼런스 개최…기업 고객 확대 추진'
+        conference_body = (
+            '인공지능(AI) 인프라 소프트웨어 전문기업 씨이랩이 기업의 AI 데이터센터 전환을 지원하기 위한 '
+            '컨퍼런스를 개최하고 기업 고객 확대에 나섰다. 이번 행사는 대기업 계열사의 AI 인프라 담당자와 '
+            '데이터·AI 조직장 등을 대상으로 GPU 자원 운영 방안을 논의하기 위해 마련됐다. '
+            '씨이랩은 행사에서 GPU 관리 솔루션을 시연하고, 향후 진단부터 구축·운영까지 사업을 확대할 방침이다.'
+        )
+        rice_title = '올해 쌀 생산량 0.6% 감소 전망…재배면적 축소 영향'
+        rice_body = (
+            '올해 쌀 생산량은 351만8000t으로 전년 353만9000t보다 2만1000t(0.6%) 감소할 것으로 전망됐다. '
+            '벼 재배면적은 전년보다 1.1% 줄었다.'
+        )
+        fisheries_title = '어획량·조업 위치 데이터로 관리…연근해어업 규제 절반 줄인다'
+        fisheries_body = (
+            '정부는 어획량과 조업 위치를 데이터로 관리하고 총허용어획량(TAC)을 2031년까지 전체 어종으로 확대한다. '
+            '어구·어법 규제는 2031년까지 절반으로 줄이고 근해어선 약 36%를 감척할 방침이다. '
+            '수산물 수출 경쟁력 제고에도 도움이 될 것으로 보고 있다.'
+        )
+        algae_title = '제주 해조류 생산 97% 감소…바다숲 장기 생태조사'
+        algae_body = (
+            '연구 보고서에 따르면 제주 해조류 생산량은 2010년 5155t에서 2025년 154t으로 감소했다. '
+            '보고서는 바다숲과 해양 생태계 변화를 장기간 조사했다.'
+        )
+        for title, body, note in (
+            (conference_title, conference_body, 'business_event_without_contract_shipment_result_or_market_data'),
+            (rice_title, rice_body, 'small_domestic_crop_revision_without_price_or_cross_border_market_link'),
+            (fisheries_title, fisheries_body, 'long_horizon_fisheries_policy_without_listed_or_observed_market_channel'),
+            (algae_title, algae_body, 'long_term_ecological_study_without_public_market_transmission'),
+        ):
+            with self.subTest(title=title):
+                assessment = materiality.assess(title, body)
+                self.assertLess(assessment['priority'], 2, assessment)
+                self.assertIn(note, assessment.get('scope_note', assessment.get('reason', '')), assessment)
+
+        shipment_title = '램리서치, "한국 반도체 생태계와 밀착…제조 역량·공급망 강화"'
+        shipment_body = (
+            '램리서치가 한국에서 생산한 반도체 제조 챔버 1만5000호기를 출하했다고 밝혔다. '
+            '램리서치는 지난해 국내 협력사에서 1조원 이상 조달했다고 밝혔다. '
+            '하나벤처스와 램리서치의 기업형 벤처투자 조직 램캐피탈이 공동 설립한 램리서치-하나 반도체 유니콘 펀드는 '
+            '국내 반도체 스타트업과 신기술 기업에 투자한다. '
+            '심포지엄에서는 반도체 공급망 협력 방안을 논의했다.'
+        )
+        shipment_audit = materiality.assess(shipment_title, shipment_body)
+        self.assertGreaterEqual(shipment_audit['priority'], 2, shipment_audit)
+        shipment_core = radar.source_headline_event_fact(shipment_title, shipment_body)
+        self.assertEqual(
+            shipment_core,
+            '램리서치가 한국 생산 반도체 제조 챔버 1만5000호기를 출하했다. '
+            '지난해 국내 협력사에서 1조원 이상 조달했고, 하나벤처스·램캐피탈은 '
+            '국내 반도체 스타트업 펀드를 공동 설립했다.',
+        )
+        self.assertTrue(radar.core_sentence_is_complete(shipment_core))
+        shipment_alert = alert(shipment_title, shipment_body)
+        shipment_alert.update(
+            korean_business_news=True,
+            body_verified=True,
+            telegram_core_fact=shipment_core,
+        )
+        self.assertEqual(radar.source_core_fact_errors(shipment_alert), [])
+        clipped_event_summary = alert(shipment_title, shipment_body)
+        clipped_event_summary.update(
+            korean_business_news=True,
+            body_verified=True,
+            telegram_core_fact=(
+                "램리서치는 심포지엄에서 반도체 공급망 협력 방안을 논의했다."
+            ),
+        )
+        self.assertIn(
+            'headline_actor_population_period_or_standard_mismatch',
+            radar.source_core_fact_errors(clipped_event_summary),
+        )
+
+    def test_oct8_live_selection_binds_denial_and_short_sale_to_current_source_event(self):
+        denial_title = '정부 "석유정제제품 對러 수출통제 품목 아냐…전략물자 수출은 전면 불허"'
+        denial_sentence = (
+            '정부는 한국이 러시아에 석유 제품을 공급했다는 영국 보도와 관련해 '
+            '경유 등 한국산 연료의 수출 여부도 확인된 사실이 아니라고 반박했다.'
+        )
+        self.assertTrue(materiality.DENIAL_HEADLINE.search(denial_title))
+        self.assertTrue(materiality.DENIAL_SOURCE.search(denial_sentence))
+        denial_assessment = materiality.assess(denial_title, denial_sentence)
+        self.assertFalse(any(item['kind'] == 'customer_supply_start'
+                             for item in denial_assessment['evidence']), denial_assessment)
+
+        ruling_title = "'158억원 무차입 공매도 혐의' 홍콩 HSBC, 대법서 무죄 확정"
+        ruling_body = (
+            '대법원 2부는 HSBC 홍콩법인의 자본시장법 위반 혐의 사건 상고심에서 검찰의 상고를 기각하고 원심의 무죄판결을 확정했다. '
+            'HSBC 홍콩법인 트레이더 3명은 2021년 8∼12월 무차입 공매도 혐의로 2024년 3월 기소됐다.'
+        )
+        audit = materiality.assess(ruling_title, ruling_body)
+        self.assertEqual(audit['disposition'], 'keep', audit)
+        self.assertTrue(any(
+            item['stage'] == 'final_court_ruling' and '상고를 기각' in item['source_excerpt']
+            for item in audit['evidence']
+        ), audit)
+        core = radar.source_headline_event_fact(ruling_title, ruling_body)
+        self.assertIn('검찰 상고를 기각하고 무죄를 확정', core)
+        current = alert(ruling_title, ruling_body)
+        current['telegram_core_fact'] = core
+        self.assertFalse(radar.source_core_fact_errors(current), core)
+        historical = alert(ruling_title, ruling_body)
+        historical['telegram_core_fact'] = 'HSBC 홍콩법인 트레이더 3명은 2021년 무차입 공매도 혐의로 2024년 기소됐다.'
+        self.assertTrue(radar.source_core_fact_errors(historical))
+
+    def test_oct8_market_movers_are_selected_once_with_source_bound_cores(self):
+        cases = [
+            (
+                '브로드컴·스페이스X·오라클, AI칩 위해 수십조 빚낸다…신용지표 경고등',
+                '브로드컴은 오픈AI 맞춤형 AI 칩에 쓰일 500억달러(약 67조원)를 마련하기 위해 사모펀드와 자금 조달 논의에 돌입했다. '
+                '스페이스X는 엔비디아 AI 칩 구매를 위해 400억달러(약 53조6000억원) 조달에 나서고 있다. '
+                '스페이스X의 5년 만기 CDS 스프레드는 194bp로 지난 6월 110bp에서 상승했다. '
+                '오라클의 5년 만기 CDS는 지난달 초보다 40bp 오른 244bp를 기록했다.',
+                '브로드컴은 오픈AI AI칩용 500억달러(약 67조원) 조달을 논의하고, 스페이스X는 400억달러(약 53조6000억원) 조달을 추진 중입니다. '
+                'CDS는 스페이스X가 110bp에서 194bp로, 오라클은 40bp 오른 244bp로 상승했습니다.',
+                ('브로드컴', '오픈AI', '500억달러', '스페이스X', '400억달러', '194bp', '110bp', '오라클', '244bp'),
+            ),
+            (
+                '佛 재정불안에 유로존 전염 경고…獨과 국채금리 격차 2012년 이후 최대',
+                '프랑스 국채 매도세가 이어져 국채 가격이 하락하고 수익률은 상승했다. '
+                '프랑스와 독일 국채 수익률 격차는 2012년 이후 가장 크게 벌어졌다. '
+                '시장에서는 프랑스의 불안이 다른 고금리 유럽 국채시장으로 번질 가능성을 우려하고 있다.',
+                '프랑스 국채 매도로 독일 국채 대비 수익률 격차가 2012년 이후 최대를 기록해 유로존 재정불안 확산 우려가 커졌습니다.',
+                ('프랑스', '독일', '2012년 이후', '유로존 재정불안'),
+            ),
+            (
+                '美, 중부사령부에 이란전 재개 준비 지시…트럼프 결단 남았다',
+                '미 국방부가 중부사령부에 이란을 상대로 대규모 전투를 재개할 준비를 마치도록 지시한 것으로 알려졌다. '
+                '공격 날짜는 정해지지 않았으며, 도널드 트럼프 대통령도 작전 재개 여부를 최종 결정하지 않은 것으로 전해졌다. '
+                '액시오스는 미 당국자들을 인용해 국방부가 수일 전 중부사령부에 이 같은 지시를 내렸다고 보도했다. '
+                '대규모 군사작전에 대비해 준비를 마무리하라는 내용으로, 구체적인 실행 시점은 포함되지 않았다.',
+                '액시오스가 미 당국자를 인용해, 미 국방부가 중부사령부에 이란 대규모 전투 재개 준비를 지시했다고 보도했습니다. '
+                '공격 날짜는 정해지지 않았고 트럼프의 최종 결정도 나오지 않았습니다.',
+                ('액시오스', '미 국방부', '중부사령부', '대규모 전투', '공격 날짜는 정해지지', '최종 결정'),
+            ),
+        ]
+        current = NOW.replace(day=8, hour=18)
+        for index, (title, body, expected_core, terms) in enumerate(cases):
+            with self.subTest(title=title):
+                assessment = materiality.assess(title, body)
+                self.assertEqual(
+                    assessment['disposition'], 'keep',
+                    f"assessment={assessment}; focus={materiality.focus_kind(title)}; "
+                    f"observation={materiality.sovereign_credit_spread_observation(title, body) if '프랑스' in title or '佛' in title else materiality.ai_infrastructure_credit_stress_observation(title, body) if 'AI' in title else materiality.iran_military_readiness_observation(title, body)}; "
+                    f"sentences={materiality.source_sentences(materiality.source_reported_body(body))}",
+                )
+                self.assertGreaterEqual(assessment['priority'], 2, assessment)
+                core = radar.source_headline_event_fact(title, body)
+                self.assertEqual(core, expected_core)
+                for term in terms:
+                    self.assertIn(term, core)
+                self.assertTrue(radar.core_sentence_is_complete(core), core)
+                candidate = alert(title, body, f'https://www.newsis.com/view/market-event-{index}')
+                candidate.update(source_title=title, published=current.isoformat(), telegram_core_fact=core)
+                self.assertEqual(
+                    radar.source_core_fact_errors(candidate), [],
+                    f"expected={expected_core}; recomputed={radar.source_headline_event_fact(title, candidate['source_body'])}; "
+                    f"observation={materiality.ai_infrastructure_credit_stress_observation(title, candidate['source_body']) if 'AI' in title else materiality.sovereign_credit_spread_observation(title, candidate['source_body']) if '佛' in title or '프랑스' in title else materiality.iran_military_readiness_observation(title, candidate['source_body'])}",
+                )
+                with patch.object(radar.base, 'kst_now', return_value=current):
+                    selected = radar.quality_display_alerts([candidate], 10)
+                self.assertEqual(len(selected), 1)
+                self.assertEqual(selected[0]['telegram_core_fact'], core)
+
+    def test_oct8_same_day_cross_publisher_market_event_is_one_alert(self):
+        title_a = '브로드컴·스페이스X·오라클, AI칩 위해 수십조 빚낸다…신용지표 경고등'
+        title_b = 'AI 자금조달 위험…스페이스X·브로드컴 신용지표 상승'
+        body = (
+            '브로드컴은 오픈AI 맞춤형 AI 칩에 쓰일 500억달러(약 67조원)를 마련하기 위해 사모펀드와 자금 조달 논의에 돌입했다. '
+            '스페이스X는 엔비디아 AI 칩 구매를 위해 400억달러(약 53조6000억원) 조달에 나서고 있다. '
+            '스페이스X의 5년 만기 CDS 스프레드는 194bp로 지난 6월 110bp에서 상승했다. '
+            '오라클의 5년 만기 CDS는 지난달 초보다 40bp 오른 244bp를 기록했다.'
+        )
+        published = '2026-10-08T10:31:00+09:00'
+        first = alert(title_a, body, 'https://www.mt.co.kr/index.php/world/2026/10/08/2026100809420950784')
+        second = alert(title_b, body, 'https://www.fnnews.com/news/202610081030000001')
+        for candidate in (first, second):
+            candidate.update(source_title=candidate['news'], published=published)
+            candidate['telegram_core_fact'] = radar.verified_alert_core(candidate, candidate['source_title'])
+            self.assertTrue(candidate['telegram_core_fact'])
+            self.assertEqual(radar.source_core_fact_errors(candidate), [])
+        self.assertEqual(materiality.source_event_identity(first), materiality.source_event_identity(second))
+        with patch.object(radar.base, 'kst_now', return_value=NOW.replace(day=8, hour=18)):
+            selected = radar.quality_display_alerts([first, second], 10)
+        self.assertEqual(len(selected), 1)
+
+        next_day = {**second, 'published': '2026-10-09T08:00:00+09:00'}
+        self.assertEqual(materiality.source_event_identity(first), materiality.source_event_identity(next_day))
+        revised = {
+            **next_day,
+            'source_body': body.replace('194bp', '200bp'),
+        }
+        revised_observation = materiality.ai_infrastructure_credit_stress_observation(
+            revised['source_title'], revised['source_body'],
+        )
+        self.assertEqual(revised_observation['spacex_cds_current'], '200bp')
+        self.assertNotEqual(materiality.source_event_identity(first), materiality.source_event_identity(revised))
+
+    def test_oct8_market_radar_rejects_nonmaterial_training_events_and_unfunded_claims(self):
+        low_quality = [
+            (
+                '[바이오스냅] 동아쏘시오그룹, 협력사 대상 ESG 공급망 교육 | 연합뉴스',
+                '동아쏘시오그룹은 서울 동대문구 본사에서 협력사 대상 ESG 공급망 교육을 진행했다. '
+                '행사에는 협력사 임직원과 ESG 공급망 담당자 약 70명이 참여했다.',
+                'supplier_esg_training_without_enforcement_or_equity_event',
+            ),
+            (
+                '법무법인 세종, 자본시장·M&A 세미나…중복상장 규제 대응 논의',
+                '중복상장 제도개선안은 지난 8월 3일부터 시행됐다. 법무법인 세종은 기업의 대응 방안을 다루는 세미나를 개최한다. '
+                '세미나에서는 이미 시행된 규제와 기업의 M&A·자금조달 대응을 논의한다.',
+                'business_event_without_contract_shipment_result_or_market_data',
+            ),
+            (
+                '램리서치, 한국 반도체 생태계와 밀착…제조 역량·공급망 강화',
+                '램리서치가 한국에서 생산한 반도체 제조 챔버 1만 5000호기를 출하했다고 밝혔다. '
+                '램리서치는 지난해 국내 협력사에서 1조원 이상 조달했다고 밝혔다. '
+                '하나벤처스와 램캐피탈은 국내 반도체 스타트업을 위한 펀드를 공동 설립했다.',
+                '',
+            ),
+            (
+                '박홍근 장관, 반도체 호황 재원으로 미래 투자…교육교부금 개편',
+                '박홍근 장관은 반도체 호황에 따른 재정 여력을 청년과 성장동력, 지방, 교육·인재 투자에 활용하겠다고 밝혔다. '
+                '미래대응기금을 신설하고 AI와 핵융합, SMR, 양자, 우주항공을 육성하겠다는 구상을 제시했다.',
+                'uncosted_fiscal_aspiration_without_approved_allocation',
+            ),
+        ]
+        for title, body, expected_note in low_quality:
+            with self.subTest(title=title):
+                assessment = materiality.assess(title, body)
+                self.assertLess(assessment['priority'], 2, assessment)
+                if expected_note:
+                    self.assertIn(expected_note, assessment.get('scope_note', assessment.get('reason', '')), assessment)
+                self.assertFalse(eligible(title, body), assessment)
 
 
 if __name__ == "__main__":

@@ -909,8 +909,21 @@ class MaterialityChecks(unittest.TestCase):
         self.assertTrue(radar.core_sentence_is_complete(core))
         self.assertEqual(radar.source_core_fact_errors({**item, "telegram_core_fact": core}), [])
         self.assertFalse(materiality.core_focus_aligned(title, item["telegram_core_fact"]))
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["disposition"], "keep", audit)
+        self.assertIn("export_results", [row["kind"] for row in audit["evidence"]])
+        self.assertTrue(radar.source_output_aligned({**item, "telegram_core_fact": core}))
         with patch.object(radar.base, "kst_now", return_value=NOW):
             self.assertEqual(len(radar.quality_display_alerts([item], 7)), 1, item.get("_exclusion_reason"))
+
+    def test_ranked_product_export_headline_requires_observed_growth_and_country_rank(self):
+        title = "K-뷰티 수출 1위, 중국 아닌 ‘이 나라’였다"
+        for body in (
+            "식약처는 수출 1위 달성을 위해 규제정보 제공과 인증 컨설팅을 추진하겠다고 밝혔다.",
+            "1~3분기 화장품 수출액은 전년 동기 대비 31.1% 증가한 111억달러였다. 국가별로는 미국이 1위였다.",
+        ):
+            with self.subTest(body=body):
+                self.assertIsNone(materiality.ranked_product_export_observation(title, body))
 
     def test_export_results_need_source_quantity_and_do_not_reclassify_export_bans(self):
         for title, body in (
@@ -3233,7 +3246,7 @@ class ForegroundAndEventIdentityTests(unittest.TestCase):
         self.assertEqual(fresh, [])
         self.assertEqual(len(skipped), 1)
 
-    def test_preopen_digest_still_bypasses_only_live_lane_fuzzy_duplicate(self):
+    def test_preopen_digest_suppresses_cross_lane_fuzzy_duplicate(self):
         first = alert(
             "SK하이닉스, 중국 충칭 공장 지분 매각 검토",
             "SK하이닉스가 중국 충칭 후공정 공장의 지분 매각 방안을 검토 중이다.",
@@ -3252,8 +3265,8 @@ class ForegroundAndEventIdentityTests(unittest.TestCase):
                 patch.object(radar.telegram, "save_seen_state", side_effect=lambda *_args: None):
             radar.telegram.record_seen_alerts([first], NOW)
             digest, skipped = radar.telegram.filter_previously_seen_alerts([second], NOW, "preopen")
-        self.assertEqual(len(digest), 1)
-        self.assertEqual(skipped, [])
+        self.assertEqual(digest, [])
+        self.assertEqual(len(skipped), 1)
 
     def test_economic_fact_alone_does_not_fill_stock_market_news_slots(self):
         cases = (
@@ -3624,7 +3637,7 @@ class ForegroundAndEventIdentityTests(unittest.TestCase):
             digest, _ = radar.telegram.filter_previously_seen_alerts([item], NOW, "preopen")
         self.assertEqual(fresh, [])
         self.assertEqual(len(repeated), 1)
-        self.assertEqual(len(digest), 1)
+        self.assertEqual(digest, [])
 
     def test_legacy_coarse_receipt_cannot_be_bypassed_by_new_structured_identity(self):
         item = alert('G7, 비축유 방출', 'G7은 비축유 1억 배럴을 4개월간 방출하기로 합의했다.')
