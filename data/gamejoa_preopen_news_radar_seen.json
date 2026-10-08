@@ -6243,6 +6243,23 @@
       "telegram_core_fact": "주교회의는 오는 19일 오후 2시 서울 중구 한국천주교중앙협의회에서 수입·유통 전담 기업인 동원와인플러스와 공급 계약을 체결한다.",
       "title": "한국 천주교, 50년만 미사주 교체…호주 '세븐힐'·伊 '알라냐 비니'"
     },
+    "core:920f97aae645a2ce811c97e6": {
+      "first_seen_kst": "2026-10-08T15:53:45+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:53:45+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:53:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008087900009",
+      "source": "연합뉴스",
+      "source_body_digest": "5bf544f34bd20c080c6eafed0af16905a2fddb9c7ef168624656b76fd15b319d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T11:36+09:00",
+      "source_title": "이라크산 원유 시리아 통해 육로수송…호르무즈 우회 | 연합뉴스",
+      "telegram_core_fact": "이라크가 트럭으로 원유를 시리아를 거쳐 수출하는 방식이 이르면 이달 중순 시작될 전망이라고 블룸버그 통신이 7일(현지시간) 보도했다.",
+      "title": "이라크산 원유 시리아 통해 육로수송…호르무즈 우회 | 연합뉴스"
+    },
     "core:92737e25549d89de658d60e8": {
       "first_seen_kst": "2026-10-07T19:47:02+09:00",
       "lanes": {
@@ -6495,6 +6512,27 @@
       "telegram_core_fact": "향후 글로벌 AI 인프라 경쟁에서는 중국의 대규모 데이터센터 건설 계획이 실제 가동으로 얼마나 이어지는지와 미국의 전력망 제약이 어떻게 작용하는지가 주요 변수로 남을 전망이다.",
       "title": "중국, 남아도는 전력으로 AI 승부…데이터센터 건설 가속"
     },
+    "core:998af0f0df4cbe404624c9df": {
+      "first_seen_kst": "2026-10-08T15:53:45+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:53:45+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:53:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008072400008",
+      "source": "연합뉴스",
+      "source_body_digest": "725a9528d6d2dd78d5069ebbec86b3dad21051ec24f1ce2ad1f22635e5392998",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:88f9bda70c1c224c898779bbe35f012f375cc34367b57c23fbd5d7c3b036fe4a",
+      "source_fact_keys": [
+        "source_fact:v1:11ca7f143590f530ca899d7cb33effad2d81756777dddbccf8dc6af89a93139e",
+        "source_fact:v1:1a26df520a62cdce32883e5f2cf0274d21e9e3e6fdc2494e7b022a02794f25e1",
+        "source_fact:v1:8eb7837cd49014bef700f9bd74f01d789085f913bf65160b238f2121d26116eb"
+      ],
+      "source_published_kst": "2026-10-08T10:46+09:00",
+      "source_title": "\"ETF 리밸런싱에 단기 수급 충격 예상…화장품·로봇 유의\" | 연합뉴스",
+      "telegram_core_fact": "이달 상장지수펀드(ETF) 리밸런싱(재조정) 매매가 8일과 오는 12일 나뉘어 이뤄지는 가운데 단기 수급 충격이 예상된다는 분석이 나왔다. 옵션 만기 리밸런싱을 하는 ETF 편입 종목의 예상 순매매 금액이 평균 거래대금보다 크다면 충격이 커질 수 있다.",
+      "title": "\"ETF 리밸런싱에 단기 수급 충격 예상…화장품·로봇 유의\" | 연합뉴스"
+    },
     "core:99aafe13e7d04dd78a729601": {
       "first_seen_kst": "2026-10-08T08:56:19+09:00",
       "lanes": {
@@ -6653,6 +6691,25 @@
       ],
       "source_published_kst": "2026-10-07T16:01+09:00",
       "title": "6800선으로 내려온 코스피…삼전 실적·FOMC 의사록 등 변동성↑"
+    },
+    "core:9d0657325fc737f7fe039518": {
+      "first_seen_kst": "2026-10-08T15:53:45+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:53:45+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:53:45+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/08/2026100811230289015",
+      "source": "머니투데이",
+      "source_body_digest": "8962cef0bfe5dcd8f447d1a560bae52cf2c89ed169ef32c709838b74877479c3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f53233797c73603b76aa0fbb4aab32139a50a25e5c7e3933af811ae035bf1c7",
+      "source_fact_keys": [
+        "source_fact:v1:93d41f12e0999f6275868e37a027752a5da0a1b280a92dd66a67ec91568a450e"
+      ],
+      "source_published_kst": "2026-10-08T11:36+09:00",
+      "source_title": "기술주 약세·고금리 공포…日 닛케이, 7만선 붕괴[Asia오전]",
+      "telegram_core_fact": "마쓰모토 히로시 픽재팬 선임연구원은 \"최근 닛케이225지수 상승은 기업 이익 증가 전망에 따른 것이었다\"며 \"금리 상승을 계기로 시장 변동성이 커진 만큼 (투자자들은) 경계할 필요가 있다\"고 말했다.",
+      "title": "기술주 약세·고금리 공포…日 닛케이, 7만선 붕괴[Asia오전]"
     },
     "core:9f021d0d94fff0fbff8dfd72": {
       "first_seen_kst": "2026-10-07T20:43:18+09:00",
@@ -9069,6 +9126,23 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-07T12:21+09:00",
       "title": "[종합] LG전자, 3분기 누적 매출 70조ㆍ영업익 4조 첫 돌파"
+    },
+    "core:d1d3a9d7f9677c690d0dfce2": {
+      "first_seen_kst": "2026-10-08T15:53:45+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:53:45+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:53:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008088600003",
+      "source": "연합뉴스",
+      "source_body_digest": "0d0d5ebc53c9a55770a5484f59997ca3a7db4d66548d2b13594a3499c0e0de70",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T11:30+09:00",
+      "source_title": "'기름값 담합 의혹' SK에너지 \"거래관행 개선·내부통제 강화\" | 연합뉴스",
+      "telegram_core_fact": "이는 공정거래위원회가 가격 담합 혐의를 적용해 SK에너지와 HD 현대오일뱅크 제재 절차에 착수하겠다고 발표한 지 하루 만에 나온 조치다.",
+      "title": "'기름값 담합 의혹' SK에너지 \"거래관행 개선·내부통제 강화\" | 연합뉴스"
     },
     "core:d1d4e2bc6f25aa5ef4c160eb": {
       "first_seen_kst": "2026-10-08T05:01:11+09:00",
@@ -18906,24 +18980,23 @@
     "event:f10f698cf4e062e133597b4b": {
       "first_seen_kst": "2026-10-08T04:26:05+09:00",
       "lanes": {
-        "live": "2026-10-08T11:28:27+09:00"
+        "live": "2026-10-08T15:53:45+09:00"
       },
-      "last_seen_kst": "2026-10-08T11:28:27+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2633666",
-      "source": "이투데이",
-      "source_body_digest": "82d26756927636d16403c773db26c6589f99223d54f8e0cee9739d10c0ccccea",
+      "last_seen_kst": "2026-10-08T15:53:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008072400008",
+      "source": "연합뉴스",
+      "source_body_digest": "725a9528d6d2dd78d5069ebbec86b3dad21051ec24f1ce2ad1f22635e5392998",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:bbee1fc00da22b8ef403c305f5f8c3cf125b31c4ffd6d270126bad58a574e0f7",
+      "source_fact_identity": "source_facts:v1:88f9bda70c1c224c898779bbe35f012f375cc34367b57c23fbd5d7c3b036fe4a",
       "source_fact_keys": [
-        "source_fact:v1:08cc8bdb479d45afecbdaa60c85bd681ab69a5659ff5b7e428a5157a3f68ed76",
-        "source_fact:v1:2982e17b48d2931b4a63e2813be296e27525ff39308dcd0217d021cb48a15b1e",
-        "source_fact:v1:81a37dbe540bc49120f740808be789e78406a1dc2a0989e23c8a27599f1923ad",
-        "source_fact:v1:9ad9a24fac6b647b8e5c8c9894f5e3a305f55635b34041dca8886be134ef8cbf"
+        "source_fact:v1:11ca7f143590f530ca899d7cb33effad2d81756777dddbccf8dc6af89a93139e",
+        "source_fact:v1:1a26df520a62cdce32883e5f2cf0274d21e9e3e6fdc2494e7b022a02794f25e1",
+        "source_fact:v1:8eb7837cd49014bef700f9bd74f01d789085f913bf65160b238f2121d26116eb"
       ],
-      "source_published_kst": "2026-10-08T08:11+09:00",
-      "source_title": "[증시키워드] 삼전 잠정 실적에 쏠린 눈…바이오는 희비",
-      "telegram_core_fact": "SK하이닉스는 3분기 실적 시즌 진입을 앞두고 영업이익 전망치가 77조원대까지 상향되는 등 엔비디아 공급망 핵심인 고대역폭메모리(HBM) 지배력과 메모리 가격 강세가 부각되며 투자자들의 관심을 모았다.",
-      "title": "[증시키워드] 삼전 잠정 실적에 쏠린 눈…바이오는 희비"
+      "source_published_kst": "2026-10-08T10:46+09:00",
+      "source_title": "\"ETF 리밸런싱에 단기 수급 충격 예상…화장품·로봇 유의\" | 연합뉴스",
+      "telegram_core_fact": "이달 상장지수펀드(ETF) 리밸런싱(재조정) 매매가 8일과 오는 12일 나뉘어 이뤄지는 가운데 단기 수급 충격이 예상된다는 분석이 나왔다. 옵션 만기 리밸런싱을 하는 ETF 편입 종목의 예상 순매매 금액이 평균 거래대금보다 크다면 충격이 커질 수 있다.",
+      "title": "\"ETF 리밸런싱에 단기 수급 충격 예상…화장품·로봇 유의\" | 연합뉴스"
     },
     "event:f113d7b17c1c7e546a0cef59": {
       "first_seen_kst": "2026-09-22T09:27:58+09:00",
@@ -30507,6 +30580,25 @@
       "source_published_kst": "2026-10-06T14:27+09:00",
       "title": "\"구글, 콘스텔레이션과 10억달러 전력구매계약 임박\" | 연합뉴스"
     },
+    "fact:65b445b537477d5262982e51": {
+      "first_seen_kst": "2026-10-08T15:53:45+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:53:45+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:53:45+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/08/2026100811230289015",
+      "source": "머니투데이",
+      "source_body_digest": "8962cef0bfe5dcd8f447d1a560bae52cf2c89ed169ef32c709838b74877479c3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f53233797c73603b76aa0fbb4aab32139a50a25e5c7e3933af811ae035bf1c7",
+      "source_fact_keys": [
+        "source_fact:v1:93d41f12e0999f6275868e37a027752a5da0a1b280a92dd66a67ec91568a450e"
+      ],
+      "source_published_kst": "2026-10-08T11:36+09:00",
+      "source_title": "기술주 약세·고금리 공포…日 닛케이, 7만선 붕괴[Asia오전]",
+      "telegram_core_fact": "마쓰모토 히로시 픽재팬 선임연구원은 \"최근 닛케이225지수 상승은 기업 이익 증가 전망에 따른 것이었다\"며 \"금리 상승을 계기로 시장 변동성이 커진 만큼 (투자자들은) 경계할 필요가 있다\"고 말했다.",
+      "title": "기술주 약세·고금리 공포…日 닛케이, 7만선 붕괴[Asia오전]"
+    },
     "fact:65cd918dbd04ee1a70d01a45": {
       "first_seen_kst": "2026-10-07T13:41:41+09:00",
       "lanes": {
@@ -38439,6 +38531,27 @@
       "source_title": "세계 최대 바이오 생산기지 송도의 역설…원부자재 95% 수입 | 연합뉴스",
       "telegram_core_fact": "보고서는 \"바이오 원부자재는 원가, 품질, 공급 안전성을 좌우하는 전략 자산\"이라며 \"의약품 제조 품목 허가에 등록된 원부자재는 교체 시 재검증 비용이 막대해 안정적 매출의 원천이 된다\"고 짚었다.",
       "title": "세계 최대 바이오 생산기지 송도의 역설…원부자재 95% 수입 | 연합뉴스"
+    },
+    "fact:b14404dbf0b49d1fa3d89fdd": {
+      "first_seen_kst": "2026-10-08T15:53:45+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:53:45+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:53:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008072400008",
+      "source": "연합뉴스",
+      "source_body_digest": "725a9528d6d2dd78d5069ebbec86b3dad21051ec24f1ce2ad1f22635e5392998",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:88f9bda70c1c224c898779bbe35f012f375cc34367b57c23fbd5d7c3b036fe4a",
+      "source_fact_keys": [
+        "source_fact:v1:11ca7f143590f530ca899d7cb33effad2d81756777dddbccf8dc6af89a93139e",
+        "source_fact:v1:1a26df520a62cdce32883e5f2cf0274d21e9e3e6fdc2494e7b022a02794f25e1",
+        "source_fact:v1:8eb7837cd49014bef700f9bd74f01d789085f913bf65160b238f2121d26116eb"
+      ],
+      "source_published_kst": "2026-10-08T10:46+09:00",
+      "source_title": "\"ETF 리밸런싱에 단기 수급 충격 예상…화장품·로봇 유의\" | 연합뉴스",
+      "telegram_core_fact": "이달 상장지수펀드(ETF) 리밸런싱(재조정) 매매가 8일과 오는 12일 나뉘어 이뤄지는 가운데 단기 수급 충격이 예상된다는 분석이 나왔다. 옵션 만기 리밸런싱을 하는 ETF 편입 종목의 예상 순매매 금액이 평균 거래대금보다 크다면 충격이 커질 수 있다.",
+      "title": "\"ETF 리밸런싱에 단기 수급 충격 예상…화장품·로봇 유의\" | 연합뉴스"
     },
     "fact:b150e5c6afd06f3a714f3a8c": {
       "first_seen_kst": "2026-10-08T13:46:05+09:00",
@@ -49218,6 +49331,27 @@
       "source_published_kst": "2026-10-07T08:17+09:00",
       "title": "지아이이노베이션 GI-301, 일본 임상 2상 진입 … 10월 첫 환자 투약"
     },
+    "link:0e083577fdb729f7d17a5077": {
+      "first_seen_kst": "2026-10-08T15:53:45+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:53:45+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:53:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008072400008",
+      "source": "연합뉴스",
+      "source_body_digest": "725a9528d6d2dd78d5069ebbec86b3dad21051ec24f1ce2ad1f22635e5392998",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:88f9bda70c1c224c898779bbe35f012f375cc34367b57c23fbd5d7c3b036fe4a",
+      "source_fact_keys": [
+        "source_fact:v1:11ca7f143590f530ca899d7cb33effad2d81756777dddbccf8dc6af89a93139e",
+        "source_fact:v1:1a26df520a62cdce32883e5f2cf0274d21e9e3e6fdc2494e7b022a02794f25e1",
+        "source_fact:v1:8eb7837cd49014bef700f9bd74f01d789085f913bf65160b238f2121d26116eb"
+      ],
+      "source_published_kst": "2026-10-08T10:46+09:00",
+      "source_title": "\"ETF 리밸런싱에 단기 수급 충격 예상…화장품·로봇 유의\" | 연합뉴스",
+      "telegram_core_fact": "이달 상장지수펀드(ETF) 리밸런싱(재조정) 매매가 8일과 오는 12일 나뉘어 이뤄지는 가운데 단기 수급 충격이 예상된다는 분석이 나왔다. 옵션 만기 리밸런싱을 하는 ETF 편입 종목의 예상 순매매 금액이 평균 거래대금보다 크다면 충격이 커질 수 있다.",
+      "title": "\"ETF 리밸런싱에 단기 수급 충격 예상…화장품·로봇 유의\" | 연합뉴스"
+    },
     "link:0e17eb19cfa0c664b14f6e05": {
       "first_seen_kst": "2026-10-06T19:46:03+09:00",
       "lanes": {
@@ -55972,6 +56106,23 @@
       ],
       "source_published_kst": "2026-10-06T09:41+09:00",
       "title": "HLB그룹주 연일 강세…리픽투 FDA 품목허가 효과"
+    },
+    "link:33b47e3d96e15398937a1df2": {
+      "first_seen_kst": "2026-10-08T15:53:45+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:53:45+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:53:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008087900009",
+      "source": "연합뉴스",
+      "source_body_digest": "5bf544f34bd20c080c6eafed0af16905a2fddb9c7ef168624656b76fd15b319d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T11:36+09:00",
+      "source_title": "이라크산 원유 시리아 통해 육로수송…호르무즈 우회 | 연합뉴스",
+      "telegram_core_fact": "이라크가 트럭으로 원유를 시리아를 거쳐 수출하는 방식이 이르면 이달 중순 시작될 전망이라고 블룸버그 통신이 7일(현지시간) 보도했다.",
+      "title": "이라크산 원유 시리아 통해 육로수송…호르무즈 우회 | 연합뉴스"
     },
     "link:3406f55edcf4710a27384c16": {
       "first_seen_kst": "2026-09-19T17:57:47+09:00",
@@ -66950,6 +67101,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T09:51+09:00",
       "title": "아이폰 듀오, 초기 물량 부족…한국도 '공급 지연' 우려"
+    },
+    "link:7240319c12243a970310188a": {
+      "first_seen_kst": "2026-10-08T15:53:45+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:53:45+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:53:45+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896824",
+      "source": "헤럴드경제",
+      "source_body_digest": "0636fbd2a7b3e08085c09864ccf54e8c6a2aa0902f1d4a06c45c19f06092c952",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T11:21+09:00",
+      "source_title": "얼어붙은 3분기 IPO 시장…무신사·소노, 구원투수될까",
+      "telegram_core_fact": "코스닥 상장을 추진 중인 1조원 IPO 대어, 엘리스그룹 또한 기대주로 꼽힌다.",
+      "title": "얼어붙은 3분기 IPO 시장…무신사·소노, 구원투수될까"
     },
     "link:728d42d0a476c61a406f5a44": {
       "first_seen_kst": "2026-10-08T07:12:10+09:00",
@@ -78123,6 +78291,25 @@
       "source": "전자신문",
       "title": "구광모 LG그룹 회장, 사장단 회의서 “AI, 미래 경쟁력 좌우…집요한 실행력 갖춰야”"
     },
+    "link:b233a6e6835c14164b4cb953": {
+      "first_seen_kst": "2026-10-08T15:53:45+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:53:45+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:53:45+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/08/2026100811230289015",
+      "source": "머니투데이",
+      "source_body_digest": "8962cef0bfe5dcd8f447d1a560bae52cf2c89ed169ef32c709838b74877479c3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f53233797c73603b76aa0fbb4aab32139a50a25e5c7e3933af811ae035bf1c7",
+      "source_fact_keys": [
+        "source_fact:v1:93d41f12e0999f6275868e37a027752a5da0a1b280a92dd66a67ec91568a450e"
+      ],
+      "source_published_kst": "2026-10-08T11:36+09:00",
+      "source_title": "기술주 약세·고금리 공포…日 닛케이, 7만선 붕괴[Asia오전]",
+      "telegram_core_fact": "마쓰모토 히로시 픽재팬 선임연구원은 \"최근 닛케이225지수 상승은 기업 이익 증가 전망에 따른 것이었다\"며 \"금리 상승을 계기로 시장 변동성이 커진 만큼 (투자자들은) 경계할 필요가 있다\"고 말했다.",
+      "title": "기술주 약세·고금리 공포…日 닛케이, 7만선 붕괴[Asia오전]"
+    },
     "link:b23764cb4f206493fa4fdedd": {
       "first_seen_kst": "2026-10-06T10:04:04+09:00",
       "lanes": {
@@ -85721,6 +85908,23 @@
       ],
       "source_published_kst": "2026-10-06T17:33+09:00",
       "title": "날아오른 스페이스X…머스크 다시 '조만장자'"
+    },
+    "link:dd9a34e232977f894a742eba": {
+      "first_seen_kst": "2026-10-08T15:53:45+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:53:45+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:53:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008088600003",
+      "source": "연합뉴스",
+      "source_body_digest": "0d0d5ebc53c9a55770a5484f59997ca3a7db4d66548d2b13594a3499c0e0de70",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T11:30+09:00",
+      "source_title": "'기름값 담합 의혹' SK에너지 \"거래관행 개선·내부통제 강화\" | 연합뉴스",
+      "telegram_core_fact": "이는 공정거래위원회가 가격 담합 혐의를 적용해 SK에너지와 HD 현대오일뱅크 제재 절차에 착수하겠다고 발표한 지 하루 만에 나온 조치다.",
+      "title": "'기름값 담합 의혹' SK에너지 \"거래관행 개선·내부통제 강화\" | 연합뉴스"
     },
     "link:ddce76538e3ec997c8ba589d": {
       "first_seen_kst": "2026-10-01T21:12:25+09:00",
@@ -95805,6 +96009,25 @@
       "link": "https://www.mk.co.kr/news/economy/12159993",
       "source": "매일경제",
       "title": "“참호 구축 지양해야”…이찬진, 은행지주 CEO 선임절차 정조준"
+    },
+    "original:1762d20b918d955900edd751": {
+      "first_seen_kst": "2026-10-08T15:53:45+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:53:45+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:53:45+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/08/2026100811230289015",
+      "source": "머니투데이",
+      "source_body_digest": "8962cef0bfe5dcd8f447d1a560bae52cf2c89ed169ef32c709838b74877479c3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f53233797c73603b76aa0fbb4aab32139a50a25e5c7e3933af811ae035bf1c7",
+      "source_fact_keys": [
+        "source_fact:v1:93d41f12e0999f6275868e37a027752a5da0a1b280a92dd66a67ec91568a450e"
+      ],
+      "source_published_kst": "2026-10-08T11:36+09:00",
+      "source_title": "기술주 약세·고금리 공포…日 닛케이, 7만선 붕괴[Asia오전]",
+      "telegram_core_fact": "마쓰모토 히로시 픽재팬 선임연구원은 \"최근 닛케이225지수 상승은 기업 이익 증가 전망에 따른 것이었다\"며 \"금리 상승을 계기로 시장 변동성이 커진 만큼 (투자자들은) 경계할 필요가 있다\"고 말했다.",
+      "title": "기술주 약세·고금리 공포…日 닛케이, 7만선 붕괴[Asia오전]"
     },
     "original:176d6f54ee563e600932e066": {
       "first_seen_kst": "2026-10-03T08:59:09+09:00",
@@ -109578,6 +109801,23 @@
       "source_published_kst": "2026-10-05T12:53+09:00",
       "title": "이강석 대우건설 대표이사 공식 취임…“AI· 데이터센터 등 미래성장 분야 발굴”"
     },
+    "original:64ccc180ef1a72fd952e98c5": {
+      "first_seen_kst": "2026-10-08T15:53:45+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:53:45+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:53:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008088600003",
+      "source": "연합뉴스",
+      "source_body_digest": "0d0d5ebc53c9a55770a5484f59997ca3a7db4d66548d2b13594a3499c0e0de70",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T11:30+09:00",
+      "source_title": "'기름값 담합 의혹' SK에너지 \"거래관행 개선·내부통제 강화\" | 연합뉴스",
+      "telegram_core_fact": "이는 공정거래위원회가 가격 담합 혐의를 적용해 SK에너지와 HD 현대오일뱅크 제재 절차에 착수하겠다고 발표한 지 하루 만에 나온 조치다.",
+      "title": "'기름값 담합 의혹' SK에너지 \"거래관행 개선·내부통제 강화\" | 연합뉴스"
+    },
     "original:64cfe5f26c338742fd4bacc6": {
       "first_seen_kst": "2026-10-07T04:49:54+09:00",
       "lanes": {
@@ -115689,6 +115929,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T07:00+09:00",
       "title": "[단독]코스닥 입성 3년도 안 돼 '부실징후' 11곳…절반은 거래정지"
+    },
+    "original:8a0c4194b779bba1dc1e3dce": {
+      "first_seen_kst": "2026-10-08T15:53:45+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:53:45+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:53:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008087900009",
+      "source": "연합뉴스",
+      "source_body_digest": "5bf544f34bd20c080c6eafed0af16905a2fddb9c7ef168624656b76fd15b319d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T11:36+09:00",
+      "source_title": "이라크산 원유 시리아 통해 육로수송…호르무즈 우회 | 연합뉴스",
+      "telegram_core_fact": "이라크가 트럭으로 원유를 시리아를 거쳐 수출하는 방식이 이르면 이달 중순 시작될 전망이라고 블룸버그 통신이 7일(현지시간) 보도했다.",
+      "title": "이라크산 원유 시리아 통해 육로수송…호르무즈 우회 | 연합뉴스"
     },
     "original:8a213876bc4bec87b84e3fe6": {
       "first_seen_kst": "2026-09-23T09:05:43+09:00",
@@ -127695,6 +127952,23 @@
       "source": "이데일리",
       "title": "유가 꺾이고 인상 전망 약해져도…美장기금리 ‘高高’"
     },
+    "original:d32d36c8d144b443e3097cf3": {
+      "first_seen_kst": "2026-10-08T15:53:45+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:53:45+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:53:45+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896824",
+      "source": "헤럴드경제",
+      "source_body_digest": "0636fbd2a7b3e08085c09864ccf54e8c6a2aa0902f1d4a06c45c19f06092c952",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T11:21+09:00",
+      "source_title": "얼어붙은 3분기 IPO 시장…무신사·소노, 구원투수될까",
+      "telegram_core_fact": "코스닥 상장을 추진 중인 1조원 IPO 대어, 엘리스그룹 또한 기대주로 꼽힌다.",
+      "title": "얼어붙은 3분기 IPO 시장…무신사·소노, 구원투수될까"
+    },
     "original:d34711fa198e989bee621bfc": {
       "first_seen_kst": "2026-10-02T12:38:28+09:00",
       "lanes": {
@@ -129886,6 +130160,27 @@
       ],
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "KAIST, 데이터 추가·삭제에도 검색 정확도 유지하는 'CONDA' 개발"
+    },
+    "original:deba5b98b3be43fa9dd9521a": {
+      "first_seen_kst": "2026-10-08T15:53:45+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:53:45+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:53:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008072400008",
+      "source": "연합뉴스",
+      "source_body_digest": "725a9528d6d2dd78d5069ebbec86b3dad21051ec24f1ce2ad1f22635e5392998",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:88f9bda70c1c224c898779bbe35f012f375cc34367b57c23fbd5d7c3b036fe4a",
+      "source_fact_keys": [
+        "source_fact:v1:11ca7f143590f530ca899d7cb33effad2d81756777dddbccf8dc6af89a93139e",
+        "source_fact:v1:1a26df520a62cdce32883e5f2cf0274d21e9e3e6fdc2494e7b022a02794f25e1",
+        "source_fact:v1:8eb7837cd49014bef700f9bd74f01d789085f913bf65160b238f2121d26116eb"
+      ],
+      "source_published_kst": "2026-10-08T10:46+09:00",
+      "source_title": "\"ETF 리밸런싱에 단기 수급 충격 예상…화장품·로봇 유의\" | 연합뉴스",
+      "telegram_core_fact": "이달 상장지수펀드(ETF) 리밸런싱(재조정) 매매가 8일과 오는 12일 나뉘어 이뤄지는 가운데 단기 수급 충격이 예상된다는 분석이 나왔다. 옵션 만기 리밸런싱을 하는 ETF 편입 종목의 예상 순매매 금액이 평균 거래대금보다 크다면 충격이 커질 수 있다.",
+      "title": "\"ETF 리밸런싱에 단기 수급 충격 예상…화장품·로봇 유의\" | 연합뉴스"
     },
     "original:dec16dee7691731505808d53": {
       "first_seen_kst": "2026-10-07T22:53:53+09:00",
@@ -174726,6 +175021,27 @@
       "telegram_core_fact": "인공지능(AI) 데이터센터 시장이 학습용 그래픽처리장치(GPU) 중심에서 AI 추론과 데이터 처리 등 실제 서비스 운영을 위한 서버 인프라 경쟁으로 확대되고 있다.",
       "title": "HPE, AMD 최신 CPU 서버 4종 공개…AI 추론 시장 정조준"
     },
+    "source_fact:4f72a7a18265a233f56ba96f": {
+      "first_seen_kst": "2026-10-08T15:53:45+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:53:45+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:53:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008072400008",
+      "source": "연합뉴스",
+      "source_body_digest": "725a9528d6d2dd78d5069ebbec86b3dad21051ec24f1ce2ad1f22635e5392998",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:88f9bda70c1c224c898779bbe35f012f375cc34367b57c23fbd5d7c3b036fe4a",
+      "source_fact_keys": [
+        "source_fact:v1:11ca7f143590f530ca899d7cb33effad2d81756777dddbccf8dc6af89a93139e",
+        "source_fact:v1:1a26df520a62cdce32883e5f2cf0274d21e9e3e6fdc2494e7b022a02794f25e1",
+        "source_fact:v1:8eb7837cd49014bef700f9bd74f01d789085f913bf65160b238f2121d26116eb"
+      ],
+      "source_published_kst": "2026-10-08T10:46+09:00",
+      "source_title": "\"ETF 리밸런싱에 단기 수급 충격 예상…화장품·로봇 유의\" | 연합뉴스",
+      "telegram_core_fact": "이달 상장지수펀드(ETF) 리밸런싱(재조정) 매매가 8일과 오는 12일 나뉘어 이뤄지는 가운데 단기 수급 충격이 예상된다는 분석이 나왔다. 옵션 만기 리밸런싱을 하는 ETF 편입 종목의 예상 순매매 금액이 평균 거래대금보다 크다면 충격이 커질 수 있다.",
+      "title": "\"ETF 리밸런싱에 단기 수급 충격 예상…화장품·로봇 유의\" | 연합뉴스"
+    },
     "source_fact:4f73179f40a8d756b50d1441": {
       "first_seen_kst": "2026-10-08T04:45:20+09:00",
       "lanes": {
@@ -182553,6 +182869,27 @@
       ],
       "source_published_kst": "2026-10-05T21:46+09:00",
       "title": "재규어 헬스, 특별 주식배당..우선주 1주 보통주 5주 전환"
+    },
+    "source_fact:5ef1aab8f0c4d55f4198414b": {
+      "first_seen_kst": "2026-10-08T15:53:45+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:53:45+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:53:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008072400008",
+      "source": "연합뉴스",
+      "source_body_digest": "725a9528d6d2dd78d5069ebbec86b3dad21051ec24f1ce2ad1f22635e5392998",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:88f9bda70c1c224c898779bbe35f012f375cc34367b57c23fbd5d7c3b036fe4a",
+      "source_fact_keys": [
+        "source_fact:v1:11ca7f143590f530ca899d7cb33effad2d81756777dddbccf8dc6af89a93139e",
+        "source_fact:v1:1a26df520a62cdce32883e5f2cf0274d21e9e3e6fdc2494e7b022a02794f25e1",
+        "source_fact:v1:8eb7837cd49014bef700f9bd74f01d789085f913bf65160b238f2121d26116eb"
+      ],
+      "source_published_kst": "2026-10-08T10:46+09:00",
+      "source_title": "\"ETF 리밸런싱에 단기 수급 충격 예상…화장품·로봇 유의\" | 연합뉴스",
+      "telegram_core_fact": "이달 상장지수펀드(ETF) 리밸런싱(재조정) 매매가 8일과 오는 12일 나뉘어 이뤄지는 가운데 단기 수급 충격이 예상된다는 분석이 나왔다. 옵션 만기 리밸런싱을 하는 ETF 편입 종목의 예상 순매매 금액이 평균 거래대금보다 크다면 충격이 커질 수 있다.",
+      "title": "\"ETF 리밸런싱에 단기 수급 충격 예상…화장품·로봇 유의\" | 연합뉴스"
     },
     "source_fact:5f02636da8ce48cb3482e38e": {
       "first_seen_kst": "2026-10-08T09:17:31+09:00",
@@ -199917,6 +200254,25 @@
       ],
       "source_published_kst": "2026-10-06T15:14+09:00",
       "title": "삼성전기, AI 서버용 MLCC 2900억 수주 ... 올해만 6번째 장기공급계약"
+    },
+    "source_fact:82be382c9a0c094fc90655ba": {
+      "first_seen_kst": "2026-10-08T15:53:45+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:53:45+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:53:45+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/08/2026100811230289015",
+      "source": "머니투데이",
+      "source_body_digest": "8962cef0bfe5dcd8f447d1a560bae52cf2c89ed169ef32c709838b74877479c3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f53233797c73603b76aa0fbb4aab32139a50a25e5c7e3933af811ae035bf1c7",
+      "source_fact_keys": [
+        "source_fact:v1:93d41f12e0999f6275868e37a027752a5da0a1b280a92dd66a67ec91568a450e"
+      ],
+      "source_published_kst": "2026-10-08T11:36+09:00",
+      "source_title": "기술주 약세·고금리 공포…日 닛케이, 7만선 붕괴[Asia오전]",
+      "telegram_core_fact": "마쓰모토 히로시 픽재팬 선임연구원은 \"최근 닛케이225지수 상승은 기업 이익 증가 전망에 따른 것이었다\"며 \"금리 상승을 계기로 시장 변동성이 커진 만큼 (투자자들은) 경계할 필요가 있다\"고 말했다.",
+      "title": "기술주 약세·고금리 공포…日 닛케이, 7만선 붕괴[Asia오전]"
     },
     "source_fact:82d8f26422039973e5ede439": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
@@ -223098,6 +223454,27 @@
       ],
       "source_published_kst": "2026-10-06T15:43+09:00",
       "title": "李대통령, 알시시 이집트 대통령과 정상회담…인프라·공급망 협력 확대"
+    },
+    "source_fact:b35dfe59c4efd55b0e837afc": {
+      "first_seen_kst": "2026-10-08T15:53:45+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:53:45+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:53:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008072400008",
+      "source": "연합뉴스",
+      "source_body_digest": "725a9528d6d2dd78d5069ebbec86b3dad21051ec24f1ce2ad1f22635e5392998",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:88f9bda70c1c224c898779bbe35f012f375cc34367b57c23fbd5d7c3b036fe4a",
+      "source_fact_keys": [
+        "source_fact:v1:11ca7f143590f530ca899d7cb33effad2d81756777dddbccf8dc6af89a93139e",
+        "source_fact:v1:1a26df520a62cdce32883e5f2cf0274d21e9e3e6fdc2494e7b022a02794f25e1",
+        "source_fact:v1:8eb7837cd49014bef700f9bd74f01d789085f913bf65160b238f2121d26116eb"
+      ],
+      "source_published_kst": "2026-10-08T10:46+09:00",
+      "source_title": "\"ETF 리밸런싱에 단기 수급 충격 예상…화장품·로봇 유의\" | 연합뉴스",
+      "telegram_core_fact": "이달 상장지수펀드(ETF) 리밸런싱(재조정) 매매가 8일과 오는 12일 나뉘어 이뤄지는 가운데 단기 수급 충격이 예상된다는 분석이 나왔다. 옵션 만기 리밸런싱을 하는 ETF 편입 종목의 예상 순매매 금액이 평균 거래대금보다 크다면 충격이 커질 수 있다.",
+      "title": "\"ETF 리밸런싱에 단기 수급 충격 예상…화장품·로봇 유의\" | 연합뉴스"
     },
     "source_fact:b3651549a855f2e1187cd77d": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
@@ -265010,6 +265387,25 @@
       "source": "매일경제",
       "title": "“참호 구축 지양해야”…이찬진, 은행지주 CEO 선임절차 정조준"
     },
+    "title:1762d20b918d955900edd751": {
+      "first_seen_kst": "2026-10-08T15:53:45+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:53:45+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:53:45+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/08/2026100811230289015",
+      "source": "머니투데이",
+      "source_body_digest": "8962cef0bfe5dcd8f447d1a560bae52cf2c89ed169ef32c709838b74877479c3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f53233797c73603b76aa0fbb4aab32139a50a25e5c7e3933af811ae035bf1c7",
+      "source_fact_keys": [
+        "source_fact:v1:93d41f12e0999f6275868e37a027752a5da0a1b280a92dd66a67ec91568a450e"
+      ],
+      "source_published_kst": "2026-10-08T11:36+09:00",
+      "source_title": "기술주 약세·고금리 공포…日 닛케이, 7만선 붕괴[Asia오전]",
+      "telegram_core_fact": "마쓰모토 히로시 픽재팬 선임연구원은 \"최근 닛케이225지수 상승은 기업 이익 증가 전망에 따른 것이었다\"며 \"금리 상승을 계기로 시장 변동성이 커진 만큼 (투자자들은) 경계할 필요가 있다\"고 말했다.",
+      "title": "기술주 약세·고금리 공포…日 닛케이, 7만선 붕괴[Asia오전]"
+    },
     "title:176d6f54ee563e600932e066": {
       "first_seen_kst": "2026-10-03T08:59:09+09:00",
       "lanes": {
@@ -279024,6 +279420,23 @@
       "source_published_kst": "2026-10-05T12:53+09:00",
       "title": "이강석 대우건설 대표이사 공식 취임…“AI· 데이터센터 등 미래성장 분야 발굴”"
     },
+    "title:64ccc180ef1a72fd952e98c5": {
+      "first_seen_kst": "2026-10-08T15:53:45+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:53:45+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:53:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008088600003",
+      "source": "연합뉴스",
+      "source_body_digest": "0d0d5ebc53c9a55770a5484f59997ca3a7db4d66548d2b13594a3499c0e0de70",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T11:30+09:00",
+      "source_title": "'기름값 담합 의혹' SK에너지 \"거래관행 개선·내부통제 강화\" | 연합뉴스",
+      "telegram_core_fact": "이는 공정거래위원회가 가격 담합 혐의를 적용해 SK에너지와 HD 현대오일뱅크 제재 절차에 착수하겠다고 발표한 지 하루 만에 나온 조치다.",
+      "title": "'기름값 담합 의혹' SK에너지 \"거래관행 개선·내부통제 강화\" | 연합뉴스"
+    },
     "title:64cfe5f26c338742fd4bacc6": {
       "first_seen_kst": "2026-10-07T04:49:54+09:00",
       "lanes": {
@@ -285305,6 +285718,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T07:00+09:00",
       "title": "[단독]코스닥 입성 3년도 안 돼 '부실징후' 11곳…절반은 거래정지"
+    },
+    "title:8a0c4194b779bba1dc1e3dce": {
+      "first_seen_kst": "2026-10-08T15:53:45+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:53:45+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:53:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008087900009",
+      "source": "연합뉴스",
+      "source_body_digest": "5bf544f34bd20c080c6eafed0af16905a2fddb9c7ef168624656b76fd15b319d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T11:36+09:00",
+      "source_title": "이라크산 원유 시리아 통해 육로수송…호르무즈 우회 | 연합뉴스",
+      "telegram_core_fact": "이라크가 트럭으로 원유를 시리아를 거쳐 수출하는 방식이 이르면 이달 중순 시작될 전망이라고 블룸버그 통신이 7일(현지시간) 보도했다.",
+      "title": "이라크산 원유 시리아 통해 육로수송…호르무즈 우회 | 연합뉴스"
     },
     "title:8a213876bc4bec87b84e3fe6": {
       "first_seen_kst": "2026-09-23T09:05:43+09:00",
@@ -297686,6 +298116,23 @@
       "source": "이데일리",
       "title": "유가 꺾이고 인상 전망 약해져도…美장기금리 ‘高高’"
     },
+    "title:d32d36c8d144b443e3097cf3": {
+      "first_seen_kst": "2026-10-08T15:53:45+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:53:45+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:53:45+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896824",
+      "source": "헤럴드경제",
+      "source_body_digest": "0636fbd2a7b3e08085c09864ccf54e8c6a2aa0902f1d4a06c45c19f06092c952",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T11:21+09:00",
+      "source_title": "얼어붙은 3분기 IPO 시장…무신사·소노, 구원투수될까",
+      "telegram_core_fact": "코스닥 상장을 추진 중인 1조원 IPO 대어, 엘리스그룹 또한 기대주로 꼽힌다.",
+      "title": "얼어붙은 3분기 IPO 시장…무신사·소노, 구원투수될까"
+    },
     "title:d34711fa198e989bee621bfc": {
       "first_seen_kst": "2026-10-02T12:38:28+09:00",
       "lanes": {
@@ -299887,6 +300334,27 @@
       ],
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "KAIST, 데이터 추가·삭제에도 검색 정확도 유지하는 'CONDA' 개발"
+    },
+    "title:deba5b98b3be43fa9dd9521a": {
+      "first_seen_kst": "2026-10-08T15:53:45+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:53:45+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:53:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008072400008",
+      "source": "연합뉴스",
+      "source_body_digest": "725a9528d6d2dd78d5069ebbec86b3dad21051ec24f1ce2ad1f22635e5392998",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:88f9bda70c1c224c898779bbe35f012f375cc34367b57c23fbd5d7c3b036fe4a",
+      "source_fact_keys": [
+        "source_fact:v1:11ca7f143590f530ca899d7cb33effad2d81756777dddbccf8dc6af89a93139e",
+        "source_fact:v1:1a26df520a62cdce32883e5f2cf0274d21e9e3e6fdc2494e7b022a02794f25e1",
+        "source_fact:v1:8eb7837cd49014bef700f9bd74f01d789085f913bf65160b238f2121d26116eb"
+      ],
+      "source_published_kst": "2026-10-08T10:46+09:00",
+      "source_title": "\"ETF 리밸런싱에 단기 수급 충격 예상…화장품·로봇 유의\" | 연합뉴스",
+      "telegram_core_fact": "이달 상장지수펀드(ETF) 리밸런싱(재조정) 매매가 8일과 오는 12일 나뉘어 이뤄지는 가운데 단기 수급 충격이 예상된다는 분석이 나왔다. 옵션 만기 리밸런싱을 하는 ETF 편입 종목의 예상 순매매 금액이 평균 거래대금보다 크다면 충격이 커질 수 있다.",
+      "title": "\"ETF 리밸런싱에 단기 수급 충격 예상…화장품·로봇 유의\" | 연합뉴스"
     },
     "title:dec16dee7691731505808d53": {
       "first_seen_kst": "2026-10-07T22:53:53+09:00",
@@ -305462,5 +305930,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-08T15:16:19+09:00"
+  "updated_at_kst": "2026-10-08T15:53:45+09:00"
 }
