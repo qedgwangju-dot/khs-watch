@@ -123,8 +123,9 @@ CPU_STRUCTURE_SEARCHES = [
     ("google", '"BNP Paribas" "AMD" "price target" "CPU"'),
     ("bing", 'site:marketscreener.com "BNP Paribas" "AMD" "price target"'),
     ("google", 'site:gb-www.digitimes.com.tw agentic AI 2027 CPU 出货'),
+    ("google", 'site:digitimes.com.tw/research/report CPU XPU agentic'),
     ("google", 'site:digitimes.com.tw/research/report CPU XPU 2027 agentic'),
-    ("bing", 'site:digitimes.com.tw 2027 AI伺服器CPU CPU XPU'),
+    ("bing", 'site:digitimes.com.tw AI伺服器CPU XPU'),
 ]
 
 FORECAST_SEARCHES = [
