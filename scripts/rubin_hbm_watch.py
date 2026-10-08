@@ -3474,9 +3474,13 @@ def main() -> None:
 
     raw_events_by_id: dict[str, dict] = {}
     errors: list[str] = []
+    feed_checks, feed_healthy = 0, 0
     for category, query in QUERIES:
         for lang in ("en", "ko"):
+            feed_checks += 1
             events, errs = read_feed(category, query, lang)
+            if not errs:
+                feed_healthy += 1
             errors.extend(errs)
             for e in events:
                 try:
@@ -3486,6 +3490,11 @@ def main() -> None:
                 except Exception:
                     pass
                 raw_events_by_id[e["id"]] = e
+
+    if feed_checks and feed_healthy == 0:
+        # An all-sources outage must fail the Actions run, not masquerade as
+        # "no new developments" while silently advancing check timestamps.
+        raise RuntimeError("HBM news feeds unavailable: all configured queries failed")
 
     raw_events = sorted(raw_events_by_id.values(), key=lambda x: x.get("published_at_kst") or "")
     current_ids = {e["id"] for e in raw_events}
@@ -3900,6 +3909,8 @@ def main() -> None:
         "freshness_hours": SEND_FRESHNESS_HOURS,
         "usdkrw": fx,
         "errors": errors,
+        "feed_checks": feed_checks,
+        "feed_healthy": feed_healthy,
     }
     write_json(OUT / "rubin_hbm_pending_state.json", pending)
 
@@ -3934,6 +3945,7 @@ def main() -> None:
         f"- freshness_hours: {SEND_FRESHNESS_HOURS}",
         f"- break_even_gpu_growth: {BREAKEVEN_GPU_GROWTH*100:.1f}%",
         f"- source_errors_or_suppressed: {len(errors)}",
+        f"- news_feeds_healthy: {feed_healthy}/{feed_checks}",
     ]
     for e in errors[:12]:
         status.append(f"  - {e}")
