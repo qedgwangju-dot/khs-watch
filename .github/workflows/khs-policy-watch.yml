@@ -13,6 +13,7 @@ on:
       - "scripts/khs_policy_alert_router.py"
       - "scripts/khs_telegram_delivery_guard.py"
       - "scripts/khs_trusted_policy_news_watch.py"
+      - "scripts/khs_policy_seen_finalize.py"
       - "scripts/khs_policy_telegram_formatter.py"
       - "scripts/khs_policy_readability_patch.py"
       - "scripts/khs_policy_telegram_delivery.py"
