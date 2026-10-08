@@ -198,20 +198,38 @@ def resolve_google_news_url(url: str):
     if (urllib.parse.urlparse(url).hostname or "").lower() != "news.google.com":
         return url, False
     try:
-        from googlenewsdecoder import gnewsdecoder
-    except Exception:
+        from googlenewsdecoder import new_decoderv1, gnewsdecoder
+        decoders = (new_decoderv1, gnewsdecoder)
+    except ImportError:
         try:
-            subprocess.run([sys.executable, "-m", "pip", "install", "--quiet", "googlenewsdecoder>=0.1.7"], check=True, timeout=75, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-            from googlenewsdecoder import gnewsdecoder
+            from googlenewsdecoder import new_decoderv1
+            decoders = (new_decoderv1,)
+        except ImportError:
+            decoders = ()
+
+    for decoder in decoders:
+        try:
+            result = decoder(url, interval=0)
+            if isinstance(result, dict):
+                decoded = str(result.get("decoded_url") or result.get("url") or "").strip()
+            elif isinstance(result, str):
+                decoded = result.strip()
+            else:
+                decoded = ""
+            host = (urllib.parse.urlparse(decoded).hostname or "").lower()
+            if decoded.startswith("https://") and host and host != "news.google.com":
+                return decoded, True
         except Exception:
-            return url, False
+            continue
+
+    # 페이지 리디렉션도 실제 기사 도메인으로 확인될 때만 원문으로 표시한다.
     try:
-        result = gnewsdecoder(url, interval=0)
-        decoded = result.get("decoded_url") or result.get("url") or "" if isinstance(result, dict) else (result if isinstance(result, str) else "")
-        decoded = (decoded or "").strip()
-        host = (urllib.parse.urlparse(decoded).hostname or "").lower()
-        if decoded.startswith("http") and host and host != "news.google.com":
-            return decoded, True
+        req = urllib.request.Request(url, headers={"User-Agent": UA})
+        with urllib.request.urlopen(req, timeout=12) as response:
+            resolved = response.geturl()
+        host = (urllib.parse.urlparse(resolved).hostname or "").lower()
+        if resolved.startswith("https://") and host and not host.endswith("google.com"):
+            return resolved, True
     except Exception:
         pass
     return url, False
