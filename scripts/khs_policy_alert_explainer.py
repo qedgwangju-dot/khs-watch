@@ -293,6 +293,10 @@ def infer_korean_title(item: dict, text: str = "") -> str:
 
     if has_korean(title):
         korean = title
+    elif "emergency tax relief on diesel fuel" in title.lower():
+        korean = "미국, 경유 연방세 납부 유예·벌금 감면 행정명령"
+    elif "fact sheet: president donald j. trump promotes diesel affordability" in title.lower():
+        korean = "백악관, 경유세 납부 유예·경유 비용 완화 팩트시트"
     elif has_any(low, ["quantum innovation", "next frontier of quantum"]):
         korean = "백악관, 양자기술 혁신·국가안보 행정명령 발표"
     elif has_any(low, ["advanced cryptographic attacks", "cryptographic attack"]):
@@ -460,6 +464,19 @@ def is_fcc_resilient(text: str) -> bool:
 def is_trump_direct_policy_statement(text: str, item: dict) -> bool:
     source = str(item.get("source") or "").lower()
     link = str(item.get("link") or "").lower()
+    doc_type = str(
+        item.get("presidential_document_type") or item.get("document_type") or ""
+    ).lower()
+    # A verified signed instrument or fact sheet is not an uncommitted Trump
+    # speech. Treating one as a generic remark overwrote distinct headlines,
+    # and the Telegram guard then silently blocked the entire policy bundle.
+    if item.get("body_verified") and (
+        source.startswith("white house") or "whitehouse.gov/" in link
+    ) and doc_type in {
+        "executive order", "presidential memorandum",
+        "presidential determination", "proclamation", "fact sheet",
+    }:
+        return False
     direct_sources = ("white house", "reuters", "bloomberg", "ap", "cnbc", "marketwatch")
     if not ("whitehouse.gov/" in link or any(name in source for name in direct_sources)):
         return False
@@ -844,6 +861,21 @@ def is_eu_sanctions_export_policy(text: str, item: dict) -> bool:
 def ensure_explained(item: dict) -> dict:
     default_context(item)
     text = text_for(item)
+
+    # Preserve an explicitly source-verified, event-specific presidential
+    # profile; never downgrade a signed proclamation to generic Trump remarks.
+    if (
+        item.get("body_verified")
+        and str(item.get("source") or "").lower().startswith("white house")
+        and str(item.get("link") or "").lower().find(
+            "national-energy-dominance-month-2026"
+        ) >= 0
+        and str(item.get("document_type") or "").lower() == "proclamation"
+        and item.get("title_ko")
+        and item.get("policy_plain_summary")
+        and item.get("policy_timeline")
+    ):
+        return item
 
     if item.get("source") == "U.S. Treasury press releases" and item.get("policy_plain_summary"):
         return item
