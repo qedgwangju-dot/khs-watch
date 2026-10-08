@@ -45,6 +45,11 @@ YAHOO_BASES = (
     "https://query1.finance.yahoo.com/v8/finance/chart",
     "https://query2.finance.yahoo.com/v8/finance/chart",
 )
+EIA_REFINING_WEEKLY_URL = "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_w.htm"
+EIA_REFINING_SOURCE = "미국 에너지정보청(EIA)"
+# Only distinct weekly observations and material changes can trigger a message.
+EIA_REFINING_MIN_ABS_WEEKLY_MOVE_USD = 5.0
+EIA_REFINING_MIN_LEVEL_USD = 40.0
 
 KPLER_STS_URL = (
     "https://www.kpler.com/blog/"
@@ -240,6 +245,7 @@ EVENT_LABELS = {
     "sts_reroute_expansion": "걸프오브오만 STS 우회 물류 급증·병목",
     "ex_iran_crude_prewar_recovery": "이란 제외 걸프 원유 수출 전쟁 전 100% 회복",
     "saudi_asia_osp_change": "사우디 아시아 원유 공식판매가격(OSP) 변화",
+    "eia_refining_crack_watch": "미국 공식 현물 정제마진·가격 병목 변화",
     "east_west_pipeline_recovery": "사우디 East-West Pipeline 실물 회복",
     "regional_export_recovery": "중동 원유 수출 회복 단계 상향",
     "crude_product_divergence": "중동 원유 98% 회복·정제품 병목",
@@ -385,6 +391,9 @@ def _news_title_ko(row: NewsItem) -> str:
             "withdrawn": "미국, 디젤 수출금지 계획 철회",
         }
         return labels.get(stage, "미국 디젤 수출정책 변화")
+
+    if kind == "eia_refining_crack_watch":
+        return "미국 에너지정보청, WTI·휘발유·경유 현물가격으로 계산한 정제마진 변화"
 
     if kind == "crude_product_divergence":
         return "JP모건, 중동 원유 흐름은 전쟁 전 수준에 근접했지만 정제품 회복은 지연"
@@ -1065,6 +1074,173 @@ def _extract_ex_iran_prewar_metrics(news_rows: list[NewsItem]) -> dict[str, floa
     }
 
 
+def _eia_weekly_table_values(
+    text: str,
+    start_label: str,
+    end_label: str,
+    expected_count: int,
+) -> list[float]:
+    a = text.find(start_label)
+    if a < 0:
+        raise RuntimeError(f"EIA 주간표에서 품목 행을 찾지 못함: {start_label}")
+    b = text.find(end_label, a + len(start_label))
+    if b < 0:
+        raise RuntimeError(f"EIA 주간표에서 행 경계를 찾지 못함: {end_label}")
+    segment = text[a + len(start_label):b]
+    raw = re.findall(r"(?<![0-9])([0-9]{1,4}\.[0-9]{2,3})(?![0-9])", segment)
+    if len(raw) != expected_count:
+        raise RuntimeError(f"EIA 주간표 기간·값 개수 불일치: {start_label} {len(raw)} vs {expected_count}")
+    vals = [float(v) for v in raw]
+    if not all(math.isfinite(v) for v in vals):
+        raise RuntimeError(f"EIA 주간표에 비정상 숫자 존재: {start_label}")
+    return vals
+
+
+def _eia_refining_spread(wti_barrel: float, gas_gallon: float, diesel_gallon: float) -> float:
+    if not (15 <= wti_barrel <= 350 and 0.25 <= gas_gallon <= 20 and 0.25 <= diesel_gallon <= 20):
+        raise ValueError("EIA 가격 범위가 비정상: 원유/휘발유/경유 단위 확인 필요")
+    # (2 gasoline barrels + 1 diesel barrel - 3 crude barrels) / 3 crude barrels;
+    # gasoline and diesel are $/gallon and WTI is $/barrel (42 gallons per barrel).
+    return ((2 * gas_gallon + diesel_gallon) * 42.0 / 3.0) - wti_barrel
+
+
+def parse_eia_weekly_refining_snapshot(raw_html: str, current: dt.datetime) -> NewsItem:
+    """Official EIA weekly NYH conventional gasoline, NYH ULSD, WTI spot proxy.
+
+    Not the same as Bloomberg's futures-based WTI 3-2-1, and not realized profit.
+    All inputs must come from the same EIA date columns.
+    """
+    visible = _visible_text(raw_html)
+    if not all(marker in visible for marker in (
+        "Spot Prices", "WTI - Cushing, Oklahoma",
+        "Conventional Gasoline", "Ultra-Low-Sulfur No. 2 Diesel Fuel",
+    )):
+        raise RuntimeError("EIA 공식 현물표 헤더·품목 확인 실패")
+
+    dates_part = visible.split("WTI - Cushing, Oklahoma", 1)[0]
+    stamp_strings = re.findall(r"(?<!\d)(\d{2}/\d{2}/\d{2})(?!\d)", dates_part)
+    if len(stamp_strings) < 2 or len(stamp_strings) > 10:
+        raise RuntimeError("EIA 주간표 기준일 2개 이상 확인 불가")
+    dates = [dt.datetime.strptime(d, "%m/%d/%y").replace(tzinfo=UTC) for d in stamp_strings]
+    if any(dates[i] >= dates[i + 1] for i in range(len(dates) - 1)):
+        raise RuntimeError("EIA 주간표 기준일 중복·역순")
+    now_date = current.astimezone(UTC).date()
+    last_date = dates[-1].date()
+    if last_date > now_date + dt.timedelta(days=1):
+        raise RuntimeError("EIA 주간표 기준일이 미래")
+    age_days = (now_date - last_date).days
+    if age_days > 14:
+        raise RuntimeError(f"EIA 주간 현물값 {age_days}일 경과 · 오래된 수치 발송 금지")
+
+    n = len(dates)
+    wti = _eia_weekly_table_values(visible, "WTI - Cushing, Oklahoma", "Brent - Europe", n)
+    conventional = visible.split("Conventional Gasoline", 1)[1].split("RBOB Regular Gasoline", 1)[0]
+    gas = _eia_weekly_table_values(conventional, "New York Harbor, Regular", "U.S. Gulf Coast, Regular", n)
+    distillate = visible.split("Ultra-Low-Sulfur No. 2 Diesel Fuel", 1)[1].split("Kerosene-Type Jet Fuel", 1)[0]
+    diesel = _eia_weekly_table_values(distillate, "New York Harbor", "U.S. Gulf Coast", n)
+
+    last_spread = _eia_refining_spread(wti[-1], gas[-1], diesel[-1])
+    prev_spread = _eia_refining_spread(wti[-2], gas[-2], diesel[-2])
+    move = last_spread - prev_spread
+    if max(last_spread, prev_spread) < EIA_REFINING_MIN_LEVEL_USD:
+        raise RuntimeError("EIA 정제마진 고마진 구간이 아니어서 알림 제외")
+    if abs(move) < EIA_REFINING_MIN_ABS_WEEKLY_MOVE_USD:
+        raise RuntimeError(f"EIA 정제마진 주간 변동 {move:+.2f}달러 · 의미 있는 변화 기준 미충족")
+    if not (math.isfinite(last_spread) and math.isfinite(prev_spread) and math.isfinite(move)):
+        raise RuntimeError("EIA 정제마진 계산 결과 비정상")
+
+    title = (
+        f"EIA weekly refining proxy {last_date.isoformat()}; "
+        f"latest {last_spread:.2f} USD/bbl; previous {prev_spread:.2f} USD/bbl; "
+        f"delta {move:+.2f} USD/bbl; WTI {wti[-1]:.2f} USD/bbl; "
+        f"NYH regular gasoline {gas[-1]:.3f} USD/gal; "
+        f"NYH ULSD {diesel[-1]:.3f} USD/gal"
+    )
+    return NewsItem(
+        title=title,
+        source=EIA_REFINING_SOURCE,
+        link=EIA_REFINING_WEEKLY_URL,
+        published_utc=current.isoformat().replace("+00:00", "Z"),
+        published_epoch=current.timestamp(),
+        event_kind="eia_refining_crack_watch",
+    )
+
+
+def _extract_eia_refining_metrics(rows: list[NewsItem]) -> dict[str, float | str] | None:
+    for row in rows:
+        if row.event_kind != "eia_refining_crack_watch" or row.source != EIA_REFINING_SOURCE or row.link != EIA_REFINING_WEEKLY_URL:
+            continue
+        pattern = (
+            r"EIA weekly refining proxy (\d{4}-\d{2}-\d{2}); "
+            r"latest ([+-]?\d+\.\d{2}) USD/bbl; previous ([+-]?\d+\.\d{2}) USD/bbl; "
+            r"delta ([+-]\d+\.\d{2}) USD/bbl; WTI (\d+\.\d{2}) USD/bbl; "
+            r"NYH regular gasoline (\d+\.\d{3}) USD/gal; NYH ULSD (\d+\.\d{3}) USD/gal"
+        )
+        m = re.fullmatch(pattern, row.title)
+        if not m:
+            continue
+        latest, previous, delta = float(m.group(2)), float(m.group(3)), float(m.group(4))
+        if not all(math.isfinite(v) for v in (latest, previous, delta)):
+            continue
+        if abs((latest - previous) - delta) > 0.025:
+            continue
+        return {
+            "week": m.group(1),
+            "latest": latest, "previous": previous, "move": delta,
+            "wti": float(m.group(5)), "gas": float(m.group(6)), "diesel": float(m.group(7)),
+        }
+    return None
+
+
+def _build_eia_refining_alert_body(
+    news_rows: list[NewsItem], oil: Quote | None, current: dt.datetime, fx: Quote | None
+) -> str:
+    m = _extract_eia_refining_metrics(news_rows)
+    if m is None:
+        raise RuntimeError("EIA 공식 지표 숫자 불일치 · Telegram 전송 차단")
+    latest, previous, move = float(m["latest"]), float(m["previous"]), float(m["move"])
+    direction = "확대" if move > 0 else "축소"
+    lines = [
+        current.astimezone(KST).strftime("%Y년 %m월 %d일 %H:%M KST"),
+        "",
+        "[현재 숫자]",
+        f"주간 기준      {m['week']} · EIA 현물 3-2-1 유사 지표",
+        f"정제마진      {latest:.2f}달러/배럴 · 전주 {previous:.2f}달러 · {move:+.2f}달러 {direction}",
+        f"입력 가격     WTI {float(m['wti']):.2f}달러/배럴 · 휘발유 {float(m['gas']):.3f}달러/갤런 · 경유 {float(m['diesel']):.3f}달러/갤런",
+    ]
+    if fx is not None:
+        lines.append(f"원화 환산     약 {latest * fx.price:,.0f}원/배럴 · 원·달러 {fx.price:,.2f}원")
+    lines.extend([
+        "",
+        "[핵심]",
+        "원유 가격과 정제품 가격의 차이를 분리해 추적합니다. 정제마진은 곧바로 영업이익이 아닙니다.",
+        (
+            "→ 가격차 확대는 정유사의 잠재적인 가공수익에 우호적이지만 운임·에너지·가동률·재고평가를 확인해야 합니다."
+            if move > 0 else
+            "→ 아직 고마진이더라도 주간 차이 축소는 정유사의 추가 이익 증가세가 둔화될 조기 경보입니다."
+        ),
+        "",
+        "[한국 전이]",
+        "정유          S-OIL·SK에너지·GS칼텍스·HD현대오일뱅크: 아시아 실제 정제마진·원가 확인",
+        "역방향        항공·운송: 항공유·경유 가격 상승 시 비용 부담",
+        "",
+        "[다음 체크]",
+        "미국          EIA 다음 주 현물가격·정유 가동률·휘발유/중간유분 재고",
+        "해외          싱가포르 경유·항공유 정제마진 · 중국 수출 재개 · 중동 정제시설 복구",
+        "정책          G7 비축유 실제 방출량 · 미국 디젤 수출 제한 여부",
+        "",
+        "[근거]",
+        f"{EIA_REFINING_SOURCE} · 기준 {m['week']} · 공식 현물가격 주간표",
+        f"원문: {EIA_REFINING_WEEKLY_URL}",
+        "",
+        "[주의]",
+        "공식 WTI·뉴욕항 일반휘발유·초저유황경유의 동일 주간 현물가격으로 재계산한 유사 3-2-1입니다.",
+        "Bloomberg 선물 3-2-1·Shell 회사별 정제마진과 다른 지표이며, 영업비·수율·재고손익을 차감하지 않았습니다.",
+        "6주 내역만으로 '52주 신고가'나 '사상 최고'를 단정하지 않습니다.",
+    ])
+    return "\n".join(lines).strip() + "\n"
+
+
 def parse_kpler_sts_snapshot(raw_html: str, current: dt.datetime) -> NewsItem:
     text = _visible_text(raw_html)
     record = re.search(
@@ -1214,6 +1390,12 @@ def fetch_news(current: dt.datetime) -> tuple[list[NewsItem], list[str]]:
             errors.append(str(exc))
 
     try:
+        eia_html = fetch_bytes(EIA_REFINING_WEEKLY_URL, timeout=22, attempts=2).decode("utf-8", errors="replace")
+        items.append(parse_eia_weekly_refining_snapshot(eia_html, current))
+    except Exception as exc:
+        errors.append(f"EIA refinery 3-2-1 official: {type(exc).__name__}: {exc}")
+
+    try:
         items.extend(fetch_saudi_osp_snapshots(current))
     except Exception as exc:
         errors.append(f"Saudi OSP direct: {type(exc).__name__}: {exc}")
@@ -1287,13 +1469,19 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
         )
         pipeline_cross_checked = kind == "east_west_pipeline_recovery" and len(selected) >= minimum_sources
         osp_cross_checked = kind == "saudi_asia_osp_change" and len(selected) >= minimum_sources
+        eia_primary = kind == "eia_refining_crack_watch" and any(
+            row.source == EIA_REFINING_SOURCE
+            and row.link == EIA_REFINING_WEEKLY_URL
+            and _extract_eia_refining_metrics([row]) is not None
+            for row in selected
+        )
         pipeline_bloomberg_material = kind == "east_west_pipeline_recovery" and any(
             "bloomberg" in normalize_text(row.source)
             and ("80% capacity" in normalize_text(row.title) or "6 million" in normalize_text(row.title))
             for row in selected
         )
 
-        if len(selected) >= minimum_sources or has_primary_data or regional_primary or broker_snapshot or eu_primary_interview or pipeline_cross_checked or pipeline_bloomberg_material or osp_cross_checked:
+        if len(selected) >= minimum_sources or has_primary_data or regional_primary or broker_snapshot or eu_primary_interview or pipeline_cross_checked or pipeline_bloomberg_material or osp_cross_checked or eia_primary:
             candidates.append((max(row.published_epoch for row in selected), kind, selected))
 
     candidates.sort(key=lambda value: value[0], reverse=True)
@@ -1419,6 +1607,19 @@ def load_state(path: pathlib.Path = STATE_PATH) -> dict:
 
 def event_id(kind: str, rows: list[NewsItem]) -> str:
     combined = " ".join(normalize_text(row.title) for row in rows)
+
+    if kind == "eia_refining_crack_watch":
+        metrics = _extract_eia_refining_metrics(rows)
+        if not metrics:
+            raise ValueError("EIA 정제마진 수치가 없어 중복키를 만들 수 없습니다")
+        obs = str(metrics["week"])
+        latest = float(metrics["latest"])
+        previous = float(metrics["previous"])
+        # Same observation and same material $5/bbl band -> same alert even if a feed is republished.
+        bucket = math.floor(latest / 5.0)
+        direction = "up" if latest > previous else "down" if latest < previous else "flat"
+        basis = f"{kind}|week_{obs}|bucket_{bucket}|{direction}"
+        return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
 
     if kind == "us_diesel_export_policy":
         stage = _diesel_policy_stage(combined)
@@ -2667,6 +2868,8 @@ def build_physical_flow_alert_body(
     fx: Quote | None = None,
 ) -> str:
     metrics = _extract_kpler_sts_metrics(news_rows)
+    if kind == "eia_refining_crack_watch":
+        return _build_eia_refining_alert_body(news_rows, oil, current, fx)
     if kind == "crude_product_divergence":
         return _build_crude_product_gap_alert_body(news_rows, oil, current, fx)
     if kind == "g7_reserve_release_agreement":
@@ -3027,6 +3230,7 @@ def run_monitor(current: dt.datetime) -> int:
         "east_west_pipeline_recovery",
         "regional_export_recovery",
         "crude_product_divergence",
+        "eia_refining_crack_watch",
         "g7_reserve_release_agreement",
         "eu_diesel_reserve_policy",
         "us_diesel_export_policy",
@@ -3044,7 +3248,9 @@ def run_monitor(current: dt.datetime) -> int:
         if fx is not None and not quote_is_fresh(fx, current, max_age_minutes):
             fx = None
         body = build_physical_flow_alert_body(kind, news_rows, oil, current, fx)
-        if kind == "crude_product_divergence":
+        if kind == "eia_refining_crack_watch":
+            title = "미국 정제마진·정유사 이익 병목 변화"
+        elif kind == "crude_product_divergence":
             title = "중동 원유 회복·정제품 병목 변화"
         elif kind == "g7_reserve_release_agreement":
             title = "G7 경유·원유 전략비축유 방출 합의"

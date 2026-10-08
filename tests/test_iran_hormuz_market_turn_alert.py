@@ -231,6 +231,87 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
             MODULE.event_id("saudi_asia_osp_change", dec),
         )
 
+    @staticmethod
+    def _eia_weekly_fixture():
+        return """<html><body>
+        Spot Prices (Crude Oil in Dollars per Barrel, Products in Dollars per Gallon)
+        Product by Area 08/28/26 09/04/26 09/11/26 09/18/26 09/25/26 10/02/26
+        Crude Oil
+        WTI - Cushing, Oklahoma 84.62 91.18 99.08 103.54 93.57 98.07
+        Brent - Europe 89.73 99.09 111.83 124.15 117.08 120.03
+        Conventional Gasoline
+        New York Harbor, Regular 3.370 3.266 3.361 3.542 3.580 3.433
+        U.S. Gulf Coast, Regular 3.564 3.494 3.629 3.888 3.945 3.672
+        RBOB Regular Gasoline
+        Los Angeles 3.854 3.860 3.941 4.123 4.294 4.438
+        No. 2 Heating Oil
+        New York Harbor 4.163 4.508 4.802 5.025 4.745 4.661
+        Ultra-Low-Sulfur No. 2 Diesel Fuel
+        New York Harbor 4.262 4.604 4.928 5.223 4.955 4.871
+        U.S. Gulf Coast 4.274 4.612 4.882 5.128 4.870 4.731
+        Kerosene-Type Jet Fuel
+        U.S. Gulf Coast 3.715 4.082 4.418 4.584 4.351 4.416
+        </body></html>"""
+
+    def test_eia_weekly_refining_crack_official_table_and_units(self):
+        now = dt.datetime(2026, 10, 8, 5, 0, tzinfo=dt.timezone.utc)
+        row = MODULE.parse_eia_weekly_refining_snapshot(self._eia_weekly_fixture(), now)
+        self.assertEqual(row.event_kind, "eia_refining_crack_watch")
+        self.assertEqual(row.link, MODULE.EIA_REFINING_WEEKLY_URL)
+        self.assertEqual(row.source, MODULE.EIA_REFINING_SOURCE)
+        m = MODULE._extract_eia_refining_metrics([row])
+        self.assertIsNotNone(m)
+        self.assertEqual(m["week"], "2026-10-02")
+        self.assertAlmostEqual(float(m["latest"]), 66.25, places=2)
+        self.assertAlmostEqual(float(m["previous"]), 76.04, places=2)
+        self.assertAlmostEqual(float(m["move"]), -9.79, places=2)
+        self.assertAlmostEqual(float(m["gas"]), 3.433, places=3)
+        self.assertAlmostEqual(float(m["diesel"]), 4.871, places=3)
+
+    def test_eia_refining_alert_keeps_bloomberg_separate_and_krw(self):
+        now = dt.datetime(2026, 10, 8, 5, 0, tzinfo=dt.timezone.utc)
+        row = MODULE.parse_eia_weekly_refining_snapshot(self._eia_weekly_fixture(), now)
+        fx = MODULE.Quote("KRW=X", "원·달러", "원/달러", 1350.0, 1355.0, -5, -0.37, "", now.timestamp())
+        body = MODULE.build_physical_flow_alert_body("eia_refining_crack_watch", [row], None, now, fx)
+        self.assertIn("66.25달러/배럴", body)
+        self.assertIn("-9.79달러 축소", body)
+        self.assertIn("Bloomberg 선물 3-2-1·Shell 회사별 정제마진과 다른 지표", body)
+        self.assertIn("원화 환산", body)
+        self.assertIn("52주 신고가", body)
+        self.assertIn("원문: https://www.eia.gov", body)
+        self.assertLessEqual(len(body.splitlines()), 29)
+
+    def test_eia_refining_official_one_source_confirms_and_dedupes(self):
+        now = dt.datetime(2026, 10, 8, 5, 0, tzinfo=dt.timezone.utc)
+        row = MODULE.parse_eia_weekly_refining_snapshot(self._eia_weekly_fixture(), now)
+        self.assertIsNotNone(MODULE.confirm_event([row]))
+        first = MODULE.event_id("eia_refining_crack_watch", [row])
+        reprint = MODULE.NewsItem(row.title, row.source, row.link, row.published_utc, row.published_epoch + 7200, row.event_kind)
+        self.assertEqual(first, MODULE.event_id("eia_refining_crack_watch", [reprint]))
+        state = {"alerted_events": {first: now.astimezone(MODULE.KST).isoformat()}}
+        self.assertIsNone(MODULE.select_unalerted_event(state, [("eia_refining_crack_watch", [row])], now)[0])
+
+    def test_eia_refining_rejects_stale_and_missing_rows(self):
+        now = dt.datetime(2026, 10, 28, 5, 0, tzinfo=dt.timezone.utc)
+        with self.assertRaisesRegex(RuntimeError, "오래된"):
+            MODULE.parse_eia_weekly_refining_snapshot(self._eia_weekly_fixture(), now)
+        with self.assertRaisesRegex(RuntimeError, "개수 불일치"):
+            MODULE.parse_eia_weekly_refining_snapshot(self._eia_weekly_fixture().replace("3.433", ""), dt.datetime(2026, 10, 8, 5, tzinfo=dt.timezone.utc))
+
+    def test_eia_refining_rejects_unrealistic_units_and_small_change(self):
+        now = dt.datetime(2026, 10, 8, 5, 0, tzinfo=dt.timezone.utc)
+        with self.assertRaisesRegex(ValueError, "가격 범위"):
+            MODULE.parse_eia_weekly_refining_snapshot(self._eia_weekly_fixture().replace("98.07", "999.07"), now)
+        with self.assertRaisesRegex(RuntimeError, "기준 미충족"):
+            MODULE.parse_eia_weekly_refining_snapshot(self._eia_weekly_fixture().replace("4.871", "5.550"), now)
+
+    def test_eia_refining_wrong_source_cannot_claim_official(self):
+        now = dt.datetime(2026, 10, 8, 5, 0, tzinfo=dt.timezone.utc)
+        row = MODULE.parse_eia_weekly_refining_snapshot(self._eia_weekly_fixture(), now)
+        forged = MODULE.NewsItem(row.title, "blog", "https://example.com", row.published_utc, row.published_epoch, row.event_kind)
+        self.assertIsNone(MODULE._extract_eia_refining_metrics([forged]))
+        self.assertIsNone(MODULE.confirm_event([forged]))
+
     def test_kpler_prewar_export_parser(self):
         now = dt.datetime(2026, 10, 3, 12, 0, tzinfo=dt.timezone.utc)
         html = """
