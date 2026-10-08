@@ -1,10 +1,11 @@
 {
   "schema_version": 1,
-  "updated_at_kst": "2026-10-08T22:27:24+09:00",
+  "updated_at_kst": "2026-10-09T04:27:59+09:00",
   "initial_alert_sent": true,
   "baseline_at_kst": "2026-10-08T04:00:00+09:00",
   "seen": [
     "060da3cec87e79da60cb0497",
+    "20155d5da54050f606780123",
     "210a0e88bb6419ab8696f56d",
     "347fc8aeddcde7511ee96a0c",
     "45706b589d64669952b732ea",
@@ -13,7 +14,9 @@
     "68d47b2184538f629f5320c4",
     "709637d4cb883a3f1d1d756e",
     "b30ef4ab027887ae75aa36c8",
+    "b857ca1d047790b1389ae4f8",
     "cd18c5d7069d73468ed20187",
+    "d2479fcfbc783c5e14c234ef",
     "efaa6320ba4af316433490e0",
     "f16a654d72efe0953952395c"
   ],
@@ -39,7 +42,7 @@
     "mx_network_q3_op_est_krw_eok": -19000,
     "mx_network_q3_status": "메리츠증권 추정·삼성 공식 미확정"
   },
-  "last_scan_items": 12,
+  "last_scan_items": 13,
   "last_new_signal_count": 0,
   "errors": [],
   "last_alert": {
