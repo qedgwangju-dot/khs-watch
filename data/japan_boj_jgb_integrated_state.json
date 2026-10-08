@@ -1,6 +1,6 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-10-08T09:27:20+09:00",
+  "updated_at_kst": "2026-10-08T15:33:29+09:00",
   "policy_rate": 1.0,
   "statement_url": "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/k260731a.pdf",
   "opinion_url": "https://www.boj.or.jp/en/mopo/mpmsche_minu/opinion_2026/opi260918.pdf",
@@ -8,26 +8,26 @@
   "hawkish_hits": [
     "nimble"
   ],
-  "jgb_source_date": "2026/10/6",
+  "jgb_source_date": "2026/10/7",
   "jgb10_above3_active": true,
-  "jgb10_above3_streak": 8,
+  "jgb10_above3_streak": 9,
   "yen_carry_combo_active": false,
   "critical_abnormal_active": false,
   "jgb": {
-    "date": "2026/10/6",
-    "jgb2": 1.93,
-    "jgb10": 3.103,
-    "jgb20": 3.946,
-    "jgb30": 4.168,
-    "jgb40": 4.196
+    "date": "2026/10/7",
+    "jgb2": 1.951,
+    "jgb10": 3.111,
+    "jgb20": 3.943,
+    "jgb30": 4.148,
+    "jgb40": 4.17
   },
   "usdjpy": {
-    "date": "2026-10-08T00:27:20Z",
-    "value": 157.8730010986328,
-    "change_pct": -0.36855401218607714,
+    "date": "2026-10-08T06:33:29Z",
+    "value": 158.13099670410156,
+    "change_pct": -0.09603561473349442,
     "source": "Yahoo query1/query2 5분 데이터 교차확인",
     "signal_eligible": true,
-    "age_seconds": 1.242802
+    "age_seconds": 1.596932
   },
   "auctions": {
     "20": {
@@ -40,13 +40,13 @@
       "prev_tail_bp": 1.5000000000000124
     },
     "30": {
-      "date": "9/3/2026",
-      "url": "https://www.mof.go.jp/english/policy/jgbs/auction/calendar/eresul/eresul20260903.htm",
-      "btc": 3.788031565103025,
-      "tail_bp": 2.0999999999999908,
-      "prev_date": "8/6/2026",
-      "prev_btc": 3.8637560333479595,
-      "prev_tail_bp": 1.5000000000000124
+      "date": "10/8/2026",
+      "url": "https://www.mof.go.jp/english/policy/jgbs/auction/calendar/eresul/eresul20261008.htm",
+      "btc": 3.8766363434657203,
+      "tail_bp": 1.2000000000000455,
+      "prev_date": "9/3/2026",
+      "prev_btc": 3.788031565103025,
+      "prev_tail_bp": 2.0999999999999908
     }
   },
   "news_seen": []
