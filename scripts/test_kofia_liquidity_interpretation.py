@@ -20,6 +20,8 @@ BASE = {
     "mmf": {"date": "20261007", "value": 262894698, "d1": 4928506, "d5": 24445118},
     "cma": {"date": "20261007", "value": 105624312, "d1": 2628244, "d5": -949377},
     "credit": {"date": "20261007", "value": 33516739, "d1": -42404, "d5": 596734},
+    "receivable": {"date": "20261007", "value": 931602},
+    "forced": {"date": "20261007", "value": 19220, "ratio": 2},
 }
 
 
@@ -45,6 +47,7 @@ def trial(name, overrides=None, expected=None, forbidden=(), bad_dates=False, co
             "• MMF 설정원본 <b>262.89조</b> (10/7) | 1D +4.93조 | 5D +24.45조\n"
             "• CMA 잔고 <b>105.62조</b> (10/7) | 1D +2.63조 | 5D -0.95조\n"
             "• 신용융자 <b>33.52조</b> (10/7) | 1D -0.04조 | 5D +0.60조\n"
+            "• 미수금 0.93조 | 실제 반대매매 192억원\n"
             "<b>현재 판정</b>\n• 원본 간략 판정\n\n"
             "<b>검증</b>\n• MMF 1D는 공식 전일대비증감과 재계산값 일치 확인\n",
             encoding="utf-8",
@@ -173,6 +176,9 @@ def run_all():
     ))
     trial("tampered signed MMF headline", corrupt=lambda text: text.replace(
         "1D +4.93조 | 5D +24.45조", "1D -4.93조 | 5D +24.45조", 1
+    ))
+    trial("tampered actual forced-sale amount", corrupt=lambda text: text.replace(
+        "실제 반대매매 192억원", "실제 반대매매 291억원", 1
     ))
     trial("mismatched KOFIA dates", bad_dates=True)
     print("PASS all KOFIA directional and final-message regression scenarios")
