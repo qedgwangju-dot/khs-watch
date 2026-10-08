@@ -957,6 +957,150 @@ def source_priority(source: str) -> int:
     return 50
 
 
+
+POWER_COMPANY = "AAOI Taiwan Power-to-Production"
+POWER_MONITOR_VERSION = 1
+POWER_INITIAL_KEY = "aaoi-taiwan|bloom-leadray|epc-announcement-2026-10-07"
+POWER_BASELINE_KEYS = {POWER_INITIAL_KEY}
+POWER_SOURCES_OFFICIAL = ("bloomenergy.com", "ao-inc.com", "gcs-web.com")
+POWER_TRUSTED_MEDIA = (
+    "digitimes.com", "technews.tw", "money-link.com.tw",
+    "reccessary.com", "udn.com", "ctee.com.tw",
+)
+
+
+def is_aaoi_power_topic(title: str) -> bool:
+    text = html.unescape(title or "")
+    aaoi = bool(re.search(
+        r"Applied Optoelectronics|\bAAOI\b|\bAOI\b|祥茂光[電电]", text, re.I
+    ))
+    taiwan = bool(re.search(r"Taiwan|台灣|台湾|祥茂光[電电]", text, re.I))
+    power = bool(re.search(
+        r"Bloom Energy|賀喜能源|贺喜能源|Leadray|\bSOFC\b|"
+        r"fuel cell|燃料[電电]池|on[- ]site power|現地發電|现场发电|"
+        r"electricity supply|power supply|power outage|grid connection|"
+        r"(?:電力|电力|供電|供电|發電|发电).{0,25}"
+        r"(?:擴廠|扩厂|工廠|工厂|產能|产能)", text, re.I
+    ))
+    return aaoi and taiwan and power
+
+
+def power_is_plan(title: str) -> bool:
+    text = html.unescape(title or "")
+    planned = bool(re.search(
+        r"expects? to|expected to|plans? to|scheduled to|aims? to|"
+        r"set to|on track to|will (?:install|deploy|start|complete|begin|commission)|"
+        r"anticipated|target(?:s|ing)?|預計|预计|計畫|计划|將於|"
+        r"将于|擬|拟|規劃|规划", text, re.I
+    ))
+    achieved = bool(re.search(
+        r"(?:has |have )?(?:completed|commissioned|energized|"
+        r"installed and operating|started commercial operation)|"
+        r"正式運轉|正式运行|已完成|已投運|"
+        r"已投入運轉|驗收完成|验收完成", text, re.I
+    ))
+    return planned and not achieved
+
+
+def power_amount_fingerprint(title: str) -> str:
+    text = html.unescape(title or "")
+    power = re.search(r"(?<!\d)(\d+(?:\.\d+)?)\s*(MW|kW|兆瓦|千瓦)\b", text, re.I)
+    money = re.search(
+        r"(?:US\$|NT\$|\$)\s*(\d+(?:[.,]\d+)?)\s*(million|billion|m|bn)?|"
+        r"\d+(?:\.\d+)?\s*(?:億元|亿元|萬元|万元)", text, re.I
+    )
+    suffix = []
+    if power:
+        suffix.append((power.group(1) + power.group(2)).lower())
+    if money:
+        suffix.append(re.sub(r"\s+", "", money.group(0)).lower())
+    return "-".join(suffix)
+
+
+def power_milestone(title: str) -> tuple[str, str, str] | None:
+    if not is_aaoi_power_topic(title):
+        return None
+    text = html.unescape(title or "")
+    future = power_is_plan(text)
+    fingerprint = power_amount_fingerprint(text)
+    if re.search(r"delay|postpon|suspend|cancel|延期|延後|推遲|推迟|停電|停电|燃氣不足|天然氣短缺", text, re.I):
+        return ("AAOI 현장발전 일정·공급 위험", "지연·취소·연료 공급 역풍", "aaoi-taiwan|power|delay|" + (fingerprint or "event"))
+    if re.search(r"subsidy|grant|補助|补助", text, re.I) and re.search(
+        r"approved|granted|awarded|核准|核定|獲准|批准", text, re.I
+    ) and not re.search(r"applied|application|申請|申请|待審|待审", text, re.I):
+        return ("AAOI 현장발전 보조금", "보조금 실제 승인", "aaoi-taiwan|power|grant|" + (fingerprint or "approved"))
+    if not future and re.search(
+        r"commissioned|commercial operation|energized|power[- ]on|"
+        r"正式運轉|正式运行|投入運轉|投入运行|正式發電|正式发电", text, re.I
+    ):
+        return ("AAOI 현장발전 전원 인가", "실제 전원 인가·가동", "aaoi-taiwan|power|operating|" + (fingerprint or "start"))
+    if not future and re.search(
+        r"installed|site acceptance|construction completed|"
+        r"安裝完成|安装完成|完工驗收|完工验收|驗收完成|验收完成", text, re.I
+    ):
+        return ("AAOI SOFC 설치·검수", "실제 설치·검수", "aaoi-taiwan|power|inspection|" + (fingerprint or "completed"))
+    if not future and re.search(
+        r"construction begins|construction starts|breaks ground|"
+        r"delivery of fuel cell|設備到貨|设备到货|正式開工|正式开工", text, re.I
+    ):
+        return ("AAOI SOFC 착공·장비반입", "실제 착공·반입", "aaoi-taiwan|power|construction|" + (fingerprint or "start"))
+    if not future and re.search(
+        r"gas supply secured|gas connection completed|grid permit granted|"
+        r"gas contract signed|供氣完成|供气完成|併網核准|并网核准", text, re.I
+    ):
+        return ("AAOI 연료·전력 접속", "가스 공급·접속·허가", "aaoi-taiwan|power|gas-grid|" + (fingerprint or "secured"))
+    if not future and fingerprint and re.search(
+        r"Bloom Energy|賀喜能源|Leadray|\bSOFC\b|fuel cell|燃料[電电]池", text, re.I
+    ):
+        return ("AAOI 현장발전 용량·계약금액", "실제 규모 또는 금액 공개", "aaoi-taiwan|power|terms|" + fingerprint)
+    if not future and re.search(
+        r"800G|1\.6T", text, re.I
+    ) and re.search(
+        r"customer (?:qualification|approved|certification)|"
+        r"volume shipments?|production ramp|volume production|"
+        r"客戶認證|客户认证|量產|量产|出貨|出货", text, re.I
+    ):
+        return ("AAOI 전력 확보→출하 검증", "고객 승인·양산·출하", "aaoi-taiwan|power|optics|" + (fingerprint or "production"))
+    if re.search(r"Bloom Energy|Leadray|賀喜能源|贺喜能源|SOFC|fuel cell|燃料[電电]池", text, re.I):
+        # The October 2026 EPC announcement is planned for Q1 2027, not energized.
+        return ("AAOI 현장발전 EPC 추진", "사업 발표·가동 전", POWER_INITIAL_KEY)
+    return None
+
+
+def same_power_event(a: dict, b: dict) -> bool:
+    if a.get("company") != POWER_COMPANY or b.get("company") != POWER_COMPANY:
+        return False
+    left = power_milestone(a.get("title") or "")
+    right = power_milestone(b.get("title") or "")
+    return bool(left and right and left[2] == right[2])
+
+
+def official_power_source(item: dict) -> bool:
+    name = normalize_text(item.get("source") or "").lower()
+    addr = normalize_text(item.get("source_url") or "")
+    host = urllib.parse.urlparse(addr).hostname or ""
+    return bool(
+        any(n in name for n in ("bloom energy", "applied optoelectronics", "leadray", "賀喜能源"))
+        and any(host == d or host.endswith("." + d) for d in POWER_SOURCES_OFFICIAL)
+    )
+
+
+def verified_power_event(item: dict, all_items: list[dict]) -> bool:
+    if item.get("company") != POWER_COMPANY:
+        return True
+    if official_power_source(item):
+        return True
+    matching = set()
+    for row in all_items:
+        if not same_power_event(item, row):
+            continue
+        if source_priority(row.get("source") or "") < 70:
+            continue
+        host = urllib.parse.urlparse(row.get("source_url") or "").hostname or ""
+        if any(host == d or host.endswith("." + d) for d in POWER_TRUSTED_MEDIA):
+            matching.add(host.removeprefix("www."))
+    return len(matching) >= 2
+
 def _article_title_identity(title: str) -> str:
     value = html.unescape(title or "").lower()
     # Google News commonly appends " - Source" to the headline.
