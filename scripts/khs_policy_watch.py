@@ -1470,6 +1470,15 @@ def classify_item(item: dict) -> dict | None:
     is_whitehouse_source = source_lower.startswith("white house") or "whitehouse.gov/" in link_lower
     if is_whitehouse_source and not item.get("body_verified"):
         return None
+    if "national-energy-dominance-month-2026" in link_lower:
+        if not is_energy_dominance_month_proclamation(item):
+            return None
+        body = clean_text(str(item.get("source_body") or "")).lower()
+        if (
+            "proclaim october 2026 as national energy dominance month" not in body
+            or "seventh day of october" not in body
+        ):
+            return None
     is_treasury_source = source_name == "U.S. Treasury press releases"
     if is_treasury_source and not item.get("body_verified"):
         return None
@@ -1544,7 +1553,9 @@ def classify_item(item: dict) -> dict | None:
     if "company_filing" in matched:
         paths.append("계약 가시성")
     semantic_event_key = (
-        doe_grid_dpa_event_key(item, haystack)
+        "us-energy-dominance-month-proclamation-2026-10-07"
+        if is_energy_dominance_month_proclamation(item)
+        else doe_grid_dpa_event_key(item, haystack)
         or polysilicon_11052_event_key(item, haystack)
     )
     if semantic_event_key:
@@ -1767,10 +1778,53 @@ def main() -> int:
     seen = load_seen()
     seen_map = seen.setdefault("seen", {})
     candidates, source_notes = collect_candidates(now)
+    energy_key = hashlib.sha256(
+        b"policy-event-v1|us-energy-dominance-month-proclamation-2026-10-07"
+    ).hexdigest()[:16]
+    if (
+        energy_key not in seen_map
+        and not any(x.get("fingerprint") == energy_key for x in candidates)
+        and dt.date(2026, 10, 7) <= now.date() <= dt.date(2026, 10, 18)
+    ):
+        original_url = (
+            "https://www.whitehouse.gov/presidential-actions/2026/10/"
+            "national-energy-dominance-month-2026/"
+        )
+        original_html, original_error = fetch_text(original_url, timeout=16)
+        if not original_error and original_html:
+            detail = extract_article_detail(
+                original_html, "National Energy Dominance Month, 2026"
+            )
+            candidate = {
+                "source": "White House proclamations",
+                "title": "National Energy Dominance Month, 2026",
+                "source_title": str(detail.get("title") or ""),
+                "link": original_url,
+                "summary": clean_text(str(detail.get("body") or ""))[:24000],
+                "source_body": str(detail.get("body") or ""),
+                "published_kst": "2026-10-07T00:00:00+09:00",
+                "document_type": "Proclamation",
+                "presidential_document_type": "Proclamation",
+                "body_verified": bool(detail.get("body_verified")),
+            }
+            verified = classify_item(candidate)
+            if verified is not None:
+                ensure_explained(verified)
+                verified["age_hours"] = item_age_hours(verified, now)
+                candidates.append(verified)
+                print("energy_month_direct=verified_official_proclamation")
+            else:
+                print("energy_month_direct=unverified_no_alert")
+        else:
+            print(f"energy_month_direct=official_fetch_unavailable error={original_error}")
     candidates = dedupe_candidate_fingerprints(candidates)
     new_alerts = []
     selected_fingerprints: set[str] = set()
-    for item in sorted(candidates, key=lambda x: (x["importance"] != "상", x.get("age_hours") or 999)):
+    for item in sorted(candidates, key=lambda x: (
+        x.get("fingerprint") != energy_key,
+        x["importance"] != "상",
+        x.get("age_hours") or 999,
+    )):
         if (
             item["importance"] == "하"
             or item["fingerprint"] in seen_map
