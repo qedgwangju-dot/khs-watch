@@ -386,6 +386,14 @@ class AgenticCpuStructureTests(unittest.TestCase):
             "demand",
         )
         self.assertEqual(
+            w.official_cpu_signal_type(amd, "AMD plans to ramp production of EPYC CPUs next year."),
+            "",
+        )
+        self.assertEqual(
+            w.official_cpu_signal_type(amd, "AMD expects to ramp production of EPYC CPUs next year."),
+            "",
+        )
+        self.assertEqual(
             w.official_cpu_signal_type(
                 amd, "New EPYC CPU launched. Memory chip suppliers received large orders."
             ),
