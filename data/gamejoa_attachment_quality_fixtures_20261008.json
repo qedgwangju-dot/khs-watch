@@ -1,0 +1,163 @@
+{
+  "fixture_id": "gamejoa_attachment_quality_20261008",
+  "input_label": "user-supplied October 7-8 Korean and international news batch",
+  "input_count": 18,
+  "source_boundary": "This fixture exhaustively triages the 18 supplied story items using their provided headlines, summaries, and links. It is not independent verification of the linked full articles. A send_candidate is eligible only after production retrieves and verifies the source article body and event facts.",
+  "stories": [
+    {
+      "id": "goldman_samsung_q3_estimate_revision",
+      "title": "골드만삭스, 삼성전자 3분기 실적 전망 하향…환율 가정 1460원에서 1418원으로 조정",
+      "url": "https://www.mk.co.kr/article/12170097",
+      "decision": "send_candidate",
+      "market_path": "이익 추정 114조원에서 105.5조원으로 하향하고 환율 가정을 조정한 분석",
+      "event_key": "samsung_q3_broker_estimate_revision"
+    },
+    {
+      "id": "musk_terrafab_tsmc_meeting",
+      "title": "머스크의 테라팹·TSMC 회동, 인텔에는 악재일 수 있다는 월가 분석",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOdVlMZWlRNHI2cVp2RGJEZUd5WXJaYTQzbEZ1Rkh2MDZvbktBWmswcTFGa0lVc2IzOHRLX3NETXNycGFEYXlocmdWYzVUTWk0VjhHbHZZWWtpYmI2TUc5Zk44V29nZmNCV3lsclk5MENNNHVKbHN4ZVhLZ0h6dWNHZUE0bE9pUmFiaDB1dGJLdExvV21sZzhVbWJRYzdSb1NYYTRwRTJITGhaN2laVXRhQUtNcHZWYVU?oc=5",
+      "decision": "watch_confirmation",
+      "market_path": "Terafab의 실체, TSMC와의 협력 여부 및 인텔 경쟁 영향 확인 필요",
+      "event_key": "musk_terrafab_tsmc_meeting"
+    },
+    {
+      "id": "korean_retail_memory_rotation",
+      "title": "국내 투자자, SK하이닉스·마이크론 매수 및 엔비디아 차익실현 보도",
+      "url": "https://www.mk.co.kr/article/12170698",
+      "decision": "watch_confirmation",
+      "market_path": "메모리주와 AI 가속기 간 수급 이동 주장; 종목별 순매수 금액·기간 확인 필요",
+      "event_key": "korean_retail_semiconductor_rotation"
+    },
+    {
+      "id": "amd_samsung_partnership_signal",
+      "title": "AMD 리사 수, 삼성과 더 폭넓은 파트너십 언급",
+      "url": "https://www.news1.kr/industry/general-industry/6313401",
+      "decision": "watch_confirmation",
+      "market_path": "HBM4 협력 신호이나 공급계약·물량·가격·일정은 확인되지 않음",
+      "event_key": "amd_samsung_hbm_partnership_signal"
+    },
+    {
+      "id": "thebell_consulting_interview",
+      "title": "더벨 인터뷰, 실행 중심 컨설팅으로 구조조정 성과 증명",
+      "url": "https://www.thebell.co.kr/free/content/ArticleView.asp?key=202609211458396960107295",
+      "decision": "exclude_current_evidence",
+      "market_path": "상장 발행사·확정된 투자·계약·매출 변화가 제시되지 않은 컨설팅 인터뷰",
+      "event_key": "consulting_interview"
+    },
+    {
+      "id": "samsung_q3_actual_result",
+      "title": "삼성전자 3분기 영업이익 100조원 돌파 보도",
+      "url": "http://mbn.mk.co.kr/pages/news/newsView.php?category=mbn00003&news_seq_no=5223686",
+      "decision": "send_candidate",
+      "market_path": "국내 기업 최초 수준의 분기 실적이라는 정량적 실적 촉매; 잠정·확정 및 수치 원문 대조 필요",
+      "event_key": "samsung_q3_actual_result"
+    },
+    {
+      "id": "kkr_korea_market_view",
+      "title": "KKR, 한국 투자 매력 및 AI·반도체 실적 견인 평가",
+      "url": "https://www.yna.co.kr/view/AKR20261008050200008?input=1195m",
+      "decision": "exclude_current_evidence",
+      "market_path": "기업별 신규 계약·실적 수치·자금 집행보다 광범위한 시장 평가",
+      "event_key": "broad_korea_equity_opinion"
+    },
+    {
+      "id": "samsung_global_profit_comparison",
+      "title": "삼성전자 100조원 실적과 글로벌 빅테크 비교",
+      "url": "https://www.dailian.co.kr/news/view/1699251/?sc=Naver",
+      "decision": "exclude_current_evidence",
+      "market_path": "삼성전자 분기 실적 보도를 재가공한 비교 기사; 독립된 새 실적 사실은 원문 대조 후 병합",
+      "event_key": "samsung_q3_actual_result"
+    },
+    {
+      "id": "musk_net_worth_human_scale",
+      "title": "머스크 재산으로 모든 사람에게 90달러씩 줄 수 있다는 재산 비교",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPX2pWZnhjajYzT0lCQzJoMlFpVDlrRmNtX0tJSWFPeTBrRm1xZFVlaXlaeUVpMEktYWRoN2twQjlrUEF6SVBNc01JT0ZwbXJRMExHWko5b09Md2kwbEJZTnpvbFB2aXlJWFlaMlBWRDZRMjZMaDhlX0Z6WFVrcHQ4bVZqVW41WWFDcEVnR3BaREFReFlqRTVpMDdPN3ZwNU1GTVo3alJoc0JuMUVrUHcwTQ?oc=5",
+      "decision": "exclude_current_evidence",
+      "market_path": "개인 자산 규모 비교로 상장사 실적·정책·거래 촉매가 아님",
+      "event_key": "musk_personal_wealth_feature"
+    },
+    {
+      "id": "microsoft_nvidia_ai_pc_launch",
+      "title": "마이크로소프트, 엔비디아 칩 탑재 AI PC 및 윈도우 개편 공개",
+      "url": "https://it.chosun.com/news/articleView.html?idxno=2023092171639",
+      "decision": "watch_confirmation",
+      "market_path": "제품 공개만 확인; 출하량·가격·판매일·주문이나 기업 매출 기여 정보는 추가 확인 필요",
+      "event_key": "microsoft_nvidia_ai_pc_launch"
+    },
+    {
+      "id": "samsung_q3_fx_stock_commentary",
+      "title": "삼성전자 실적 대기록과 환율·주가 향방 해설",
+      "url": "https://www.newsis.com/view/NISX20261008_0003818890",
+      "decision": "watch_confirmation",
+      "market_path": "삼성 실적 재보도 성격; 환율·주가의 독립된 관측값과 날짜가 검증될 때만 별도 사건 유지",
+      "event_key": "samsung_q3_actual_result"
+    },
+    {
+      "id": "semicap_smallcap_price_move",
+      "title": "반도체·2차전지 종목 강세 및 두산테스나 14.4% 상승 보도",
+      "url": "https://www.hankyung.com/article/202610080451i",
+      "decision": "exclude_current_evidence",
+      "market_path": "주가 변동 보도만으로 신규 기업 촉매가 확인되지 않음; 종가·거래일·공시 확인 전 제외",
+      "event_key": "korean_equity_price_movers_roundup"
+    },
+    {
+      "id": "solidigm_us_listing_underwriters",
+      "title": "솔리다임, 미국 상장 추진 및 AI 저장장치 투자재원 모색",
+      "url": "http://www.seouleconews.com/news/articleView.html?idxno=94219",
+      "decision": "send_candidate",
+      "market_path": "주관사 선정과 미국 상장 추진이 확인되면 SK하이닉스 자회사 자금조달·지분가치에 연결; 신주·구주 구조는 미확정",
+      "event_key": "solidigm_us_listing_underwriter_selection"
+    },
+    {
+      "id": "trump_science_medal_musk",
+      "title": "트럼프, 머스크에게 국가과학훈장 수여 예정 보도",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQUnVLamsybDFvWXhFOTFEdERSekd6ZjJDYzVYY2J4d3RWU0JmekM0NHp1cTRrOUQxZjN3ckdGYzJ1Sk5rMHR5TWtDd1I4T0JDMzJpbEwtbWtFWXdOSEg1QnIyd1BtaUxUbXdRR2tZT2x5cDlPV0VyMWFpUHZOanktR18zNTl2bWVNa0dzMVQ3bUlkUdIBlwFBVV95cUxNbGVBSU5fZ3dzMkNIWkZSTnZEaTFqVTRyRzhvdkVudV85R05jMUJZOEVMRkNfWHVFdjdtd0NMM1l6S1RyMmxWVjF0ZFJDNWp3VVptSEE4RG8xY3EwUXFkbTAyTFotWGppcXQ5aTY2aldXeU5aUjAtSEpabU9xT1JmcW9iZWZjclRZSXJWd0gwRk5wc1oxVF9R?oc=5",
+      "decision": "exclude_current_evidence",
+      "market_path": "의전·수상 소식만으로 정책·예산·기업 현금흐름 변화 없음",
+      "event_key": "trump_technology_executive_awards"
+    },
+    {
+      "id": "trump_technology_executive_awards_roundup",
+      "title": "트럼프, 머스크·델·나델라 등 기술기업 임원 훈장 수여 보도",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPTzNnMFpVV1dYQ2tUMHg4SWJTR2ZtRW9KZUtnSHdkNG5EZFZkQ00xVUl1VmRFSGlub0g2WlRIcXZmM2E5a3NXZDlkZXp1dHJWY3FMNUV0MDdJV2FjWW8tZ2tLSHdZWHV4WlhZa0VuNkFRVEwyTmNic0t0eFUzdFZHd1NVcGxyYTFtZFE5YUQ4Um5zRXY5dXJkNWtFeFZHZ9IBowFBVV95cUxNMjU3eDJVVWMwVld0MWVLcUM4MzB2MjI1RTdaZ3VRU0pvR1JWUHFYaG04MFRNT1l1WlV0b1prYU9ZT19NSVM3X280S0NaWXlHTVhWZHNzSkJoVElPM3lBamRxT01XTlNCQ0J0R3FCTHZmczE1bnAtNThGejE2VVdtVTFsTktNSXdqdEUxTld2aVZRRWdBcDFGZzRnUFhJclphSEo0?oc=5",
+      "decision": "exclude_current_evidence",
+      "market_path": "같은 과학훈장 수여 행사에 관한 중복 보도; 기업별 계약·수주·정책 발표 없음",
+      "event_key": "trump_technology_executive_awards"
+    },
+    {
+      "id": "samsung_semiconductor_hbm4_2027_forecast",
+      "title": "삼성전자 반도체 영업이익 110조원 전망 및 HBM4 공급 확대 분석",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=04152486645610952&mediaCodeNo=257&utm_source=naver&utm_medium=referral&utm_campaign=news_syndication&utm_content=original_article",
+      "decision": "send_candidate",
+      "market_path": "부문 영업이익 전망과 HBM4 공급 확대의 수치·기간·작성 주체를 원문 검증; 실제 3분기 실적과 별도 전망 사건",
+      "event_key": "samsung_semiconductor_2027_hbm4_forecast"
+    },
+    {
+      "id": "digitalx_prediction_market_derivatives",
+      "title": "디지털엑스 예측시장 분석 및 국내 주식 무기한선물의 규제 공백 지적",
+      "url": "https://www.fnnews.com/news/202610081512177383",
+      "decision": "watch_confirmation",
+      "market_path": "분석 보고서의 규제 공백 지적; 금융당국의 공식 해석·조치나 실제 거래 규모 확인 필요",
+      "event_key": "korean_equity_perpetual_derivative_regulatory_scope"
+    },
+    {
+      "id": "us_russia_europe_gas_sales_exploration",
+      "title": "소식통: 미국과 러시아, 우크라이나 전쟁 중 유럽 가스 판매 모색",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNUEhaa1JlbmtzZjZfVFhHcXR0S3ZZUnRnTjBJNnl6UUQ3cjJPZ2JfQ1d5bDVpTEdvXzhwT2JrQTA5VGg4dVNweG9odGJwalF3cTd0clZUb1FJRE45NHVfS2R1bXRIQXliZkZPdFM4NGFkNkNlaTQxSU9Kd2R4WTEtX3FGMkx3YkR5X3lMaW9FOXRpemVncHlTRkZiWEdwakUzVnJ1NHVTdGhEWlRkNWIyeDJha2c?oc=5",
+      "decision": "send_candidate",
+      "market_path": "제재·전쟁 중 에너지 교역 재편 가능성; 소식통 보도 단계이며 계약·물량·구매자·시행 여부 미확정",
+      "event_key": "us_russia_europe_gas_trade_exploration"
+    }
+  ],
+  "must_remain_distinct": [
+    ["goldman_samsung_q3_estimate_revision", "samsung_q3_actual_result"],
+    ["samsung_q3_actual_result", "samsung_semiconductor_hbm4_2027_forecast"],
+    ["samsung_q3_actual_result", "solidigm_us_listing_underwriters"],
+    ["musk_terrafab_tsmc_meeting", "amd_samsung_partnership_signal"],
+    ["samsung_q3_actual_result", "us_russia_europe_gas_sales_exploration"]
+  ],
+  "duplicate_event_groups": [
+    ["samsung_q3_actual_result", "samsung_global_profit_comparison", "samsung_q3_fx_stock_commentary"],
+    ["trump_science_medal_musk", "trump_technology_executive_awards_roundup"]
+  ]
+}

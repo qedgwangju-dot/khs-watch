@@ -21,6 +21,10 @@ ATTACHMENT_FIXTURE = json.loads(
     (Path(__file__).resolve().parent.parent / "data/gamejoa_attachment_quality_fixtures_20261007.json")
     .read_text(encoding="utf-8")
 )
+ATTACHMENT_FIXTURE_20261008 = json.loads(
+    (Path(__file__).resolve().parent.parent / "data/gamejoa_attachment_quality_fixtures_20261008.json")
+    .read_text(encoding="utf-8")
+)
 KEEP = (
     ("식품기업, 미국 김밥 매출 59% 증가", "식품기업은 미국 김밥의 1∼7월 매출이 전년비 59% 증가했다고 밝혔다."),
     ("전자기업, 신제품 공개…분기 가이던스 상향", "전자기업은 분기 매출 가이던스를 12% 상향했다고 발표했다."),
@@ -3137,6 +3141,40 @@ class ForegroundAndEventIdentityTests(unittest.TestCase):
                 self.assertTrue(story["url"].startswith(("https://", "http://")))
                 self.assertTrue(story["market_path"])
                 self.assertTrue(story["event_key"])
+
+    def test_october_eighth_batch_is_exhaustively_triaged_and_deduplicated_by_event(self):
+        fixture = ATTACHMENT_FIXTURE_20261008
+        stories = fixture["stories"]
+        self.assertEqual(len(stories), 18)
+        self.assertEqual(len(stories), fixture["input_count"])
+        self.assertEqual(len({story["id"] for story in stories}), 18)
+        self.assertEqual(len({story["url"] for story in stories}), 18)
+        counts = {
+            decision: sum(story["decision"] == decision for story in stories)
+            for decision in {story["decision"] for story in stories}
+        }
+        self.assertEqual(counts, {
+            "send_candidate": 5,
+            "watch_confirmation": 6,
+            "exclude_current_evidence": 7,
+        })
+        self.assertIn("not independent verification", fixture["source_boundary"])
+        by_id = {story["id"]: story for story in stories}
+        for story in stories:
+            with self.subTest(story=story["id"]):
+                self.assertTrue(story["url"].startswith(("https://", "http://")))
+                self.assertTrue(story["market_path"])
+                self.assertTrue(story["event_key"])
+        for group in fixture["duplicate_event_groups"]:
+            with self.subTest(duplicate_group=group):
+                self.assertEqual(len({by_id[story_id]["event_key"] for story_id in group}), 1)
+        for left_id, right_id in fixture["must_remain_distinct"]:
+            with self.subTest(distinct_pair=(left_id, right_id)):
+                left, right = by_id[left_id], by_id[right_id]
+                self.assertNotEqual(left["event_key"], right["event_key"])
+                self.assertFalse(materiality.same_headline_event(
+                    left["title"], right["title"], left["market_path"], right["market_path"],
+                ))
 
     def test_attachment_market_events_are_not_fuzzy_merged_just_for_sharing_a_theme(self):
         stories = {story["id"]: story for story in ATTACHMENT_FIXTURE["stories"]}

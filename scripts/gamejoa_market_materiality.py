@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 125
+VERSION = 126
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -138,6 +138,13 @@ EXPLANATORY_ONLY = re.compile(
     r"(?:방식|여부)에\s*따라[^.!?]{0,70}(?:의미|결과)[^.!?]{0,25}달라진다|"
     r"구체적인\s*안이\s*나오기도\s*전에",
 )
+NEGATED_MARKET_EVENT = re.compile(
+    r"(?:공급\s*계약|계약|협력|파트너십|투자|수주|출시|양산|승인|검증|실적|매출|물량|가격|일정)"
+    r"[^.!?]{0,90}(?:공개되지\s*않|밝히지\s*않|확정되지\s*않|체결되지\s*않|합의되지\s*않|"
+    r"확인되지\s*않|발표되지\s*않|미정|미확정|아직\s*없|없다고\s*밝|not\s+disclosed|not\s+confirmed|not\s+signed)|"
+    r"(?:not\s+disclosed|not\s+confirmed|not\s+signed|has\s+not\s+been\s+announced)",
+    re.I,
+)
 NEW_EXECUTION = re.compile(
     r"(?:계약|협약)[^.!?]{0,25}(?:체결|서명|취소|확정)|수주했다|"
     r"(?:예산|투자액|설비투자|보조금)[^.!?]{0,55}(?:확정|배정|증액|삭감|공시)|"
@@ -255,6 +262,16 @@ ECONOMIC_GEOPOLITICS = re.compile(
     r"확전|전면전|전쟁\s*(?:선포|확대)|핵(?:무기)?\s*(?:사용|위협|공격)|핵전쟁|참전|"
     r"추가\s*(?:공격|공습)|공격\s*임박|항공\s*모함|항공모함|항모|병력\s*증강|"
     r"energy|refiner|pipeline|oil|gas|port|shipping|tanker|hormuz|blockade|sanction|procurement|contract|ceasefire|talks|negotiat|escalat", re.I,
+)
+REPORTED_CROSS_BLOC_GAS_SALES_EXPLORATION = re.compile(
+    r"(?=.*(?:미국|미국과|미국이|\bu\.?s\.?\b|united states))"
+    r"(?=.*(?:러시아|러시아와|러시아가|russia))"
+    r"(?=.*(?:유럽|유럽에|europe|european))"
+    r"(?=.*(?:천연가스|lng|\bgas\b))"
+    r"(?=.*(?:판매|수출|공급|sales?|exports?|supply))"
+    r"(?=.*(?:소식통|복수의 소식통|sources? say|according to sources|reportedly))"
+    r"(?=.*(?:모색|타진|협의|논의|검토|seek|explor|look(?:ing)? to|weigh))",
+    re.I,
 )
 LOCAL_AUTHORITY = re.compile(
     r"도지사|도의원|시의원|군의원|구의원|시의회|군의회|구의회|지방정부|지자체|지방자치단체|"
@@ -2844,6 +2861,16 @@ def macro_model_report_observation(title: str, body: str) -> dict[str, str]:
 
 QUARTERLY_EARNINGS_ISSUER_ALIASES = {
     'LG에너지솔루션': ('LG에너지솔루션', 'LG엔솔'),
+    '삼성전자': ('삼성전자',),
+    'SK하이닉스': ('SK하이닉스',),
+    'LG전자': ('LG전자',),
+    '현대차': ('현대차', '현대자동차'),
+    '기아': ('기아',),
+    '삼성SDI': ('삼성SDI',),
+    '삼성전기': ('삼성전기',),
+    'NAVER': ('네이버', 'NAVER'),
+    '카카오': ('카카오',),
+    'POSCO홀딩스': ('POSCO홀딩스', '포스코홀딩스'),
 }
 
 
@@ -2857,26 +2884,48 @@ def quarterly_earnings_release_observation(alert: dict) -> dict[str, str]:
     title = re.sub(r'^\s*(?:\[(?:\d+보|속보|상보|종합)\]\s*)+', '',
                    str(alert.get('source_title') or alert.get('original_news') or ''))
     quarter_match = re.search(r'(?<!\d)(?P<quarter>[1-4])\s*(?:분기|Q)(?![가-힣])', title, re.I)
-    if not quarter_match or not re.search(r'매출|영업(?:이익|익)|실적|어닝', title):
-        return {}
-    issuer = re.sub(r'\s+', '', title[:quarter_match.start()].strip(' ,·:;\t'))
-    if not issuer or len(issuer) > 30:
-        return {}
-    canonical_issuer = next(
-        (canonical for canonical, aliases in QUARTERLY_EARNINGS_ISSUER_ALIASES.items()
-         if issuer in aliases),
-        issuer,
-    )
-    aliases = QUARTERLY_EARNINGS_ISSUER_ALIASES.get(canonical_issuer, (issuer,))
-    quarter = quarter_match['quarter']
+    if quarter_match:
+        if not re.search(r'매출|영업(?:이익|익)|실적|어닝', title):
+            return {}
+        issuer = re.sub(r'\s+', '', title[:quarter_match.start()].strip(' ,·:;\t'))
+        if not issuer or len(issuer) > 30:
+            return {}
+        canonical_issuer = next(
+            (canonical for canonical, aliases in QUARTERLY_EARNINGS_ISSUER_ALIASES.items()
+             if issuer in aliases),
+            issuer,
+        )
+        aliases = QUARTERLY_EARNINGS_ISSUER_ALIASES.get(canonical_issuer, (issuer,))
+        quarter = quarter_match['quarter']
+    else:
+        result_title = re.search(
+            r'영업(?:이익|익)|매출|순이익|실적|어닝|대기록|사상\s*(?:최대|처음|최초)|'
+            r'실적.{0,20}주가|주가.{0,20}실적',
+            title,
+        )
+        issuer_matches = [
+            (canonical, aliases) for canonical, aliases in QUARTERLY_EARNINGS_ISSUER_ALIASES.items()
+            if any(alias in title for alias in aliases)
+        ]
+        if not result_title or len(issuer_matches) != 1:
+            return {}
+        canonical_issuer, aliases = issuer_matches[0]
+        quarter = ''
     source = source_reported_body(str(alert['source_body']))
-    quarter_pattern = re.compile(rf'(?<!\d)(?:올해\s*)?{quarter}\s*(?:분기|Q)(?![가-힣])', re.I)
     release = None
     release_year = ''
+    release_quarter = quarter
     for sentence in source_sentences(source):
-        if not any(alias in sentence for alias in aliases) or not quarter_pattern.search(sentence):
+        if not any(alias in sentence for alias in aliases):
             continue
-        if not re.search(r'잠정|공시|기록|집계|발표', sentence):
+        body_quarter = re.search(
+            r'(?<!\d)(?:올해\s*)?(?P<quarter>[1-4])\s*(?:분기|Q)(?![가-힣])', sentence, re.I,
+        )
+        if not body_quarter or (quarter and body_quarter['quarter'] != quarter):
+            continue
+        if re.search(r'전망|예상|컨센서스|추정|목표|forecast|estimate', sentence, re.I):
+            continue
+        if not re.search(r'잠정|공시|기록|집계|발표|달성', sentence):
             continue
         profit = re.search(
             r'영업(?:이익|익)\s*(?:은|이|도)?\s*'
@@ -2886,6 +2935,7 @@ def quarterly_earnings_release_observation(alert: dict) -> dict[str, str]:
         if not profit:
             continue
         release = profit
+        release_quarter = body_quarter['quarter']
         year_match = re.search(r'(?P<year>20\d{2})년', sentence)
         release_year = year_match['year'] if year_match else published[:4]
         break
@@ -2894,7 +2944,19 @@ def quarterly_earnings_release_observation(alert: dict) -> dict[str, str]:
     amount = korean_amount_value(re.sub(r'\s+', '', release['profit']).removesuffix('원'))
     if not amount:
         return {}
-    return {'issuer': canonical_issuer, 'fiscal_year': published[:4], 'quarter': quarter,
+    quantified_market_reaction = any(
+        any(alias in sentence for alias in aliases)
+        and re.search(r'외국인|기관|개인|순매수|순매도|주가|주식|종가', sentence)
+        and re.search(r'순매수|순매도|유입|유출|주가|주식|종가', sentence)
+        and re.search(
+            r'\d[\d,.]*\s*(?:조\s*원|억\s*원|조원|억원|만원|달러|만\s*주|천\s*주|주)|\d+(?:\.\d+)?\s*%',
+            sentence,
+        )
+        for sentence in source_sentences(source)
+    )
+    if quantified_market_reaction:
+        return {}
+    return {'issuer': canonical_issuer, 'fiscal_year': published[:4], 'quarter': release_quarter,
             'metric': 'consolidated_operating_profit', 'amount_won': amount,
             'stage': 'preliminary_filing'}
 
@@ -3181,8 +3243,12 @@ RULES = (
      r"거래\s*재개|매매\s*재개|액면병합|주식병합|거래정지|매매정지|보통주.{0,45}범위로\s*병합",
      r"재개|결정|발표|완료|정지"),
     ("capital_listing_stage", ("flows", "timeline"),
-     r"기업공개|\bipo\b|(?:증시|코스피|코스닥|나스닥)\s*상장|상장\s*(?:추진|예정|연기|철회|신청|승인)|(?:나스닥|코스피|코스닥).{0,35}첫\s*거래|ETF",
-     r"추진|예정|목표|신청|승인|상장(?:했다|한다고|한다|할|돼)|첫\s*거래를\s*시작(?:한다|한다고|하는)|연기|철회|마케팅|등록|출시|plan|aim|file|approv|delay|withdraw|market"),
+     r"기업공개|\bipo\b|(?:증시|코스피|코스닥|나스닥)\s*상장|상장\s*(?:추진|예정|연기|철회|신청|승인)|"
+     r"(?:미국|해외|나스닥|뉴욕|코스피|코스닥)?\s*상장(?:을)?\s*(?:추진|목표|준비|예정)|"
+     r"(?:나스닥|코스피|코스닥).{0,35}첫\s*거래|ETF",
+     r"추진|예정|목표|신청|승인|상장(?:했다|한다고|한다|할|돼)|첫\s*거래를\s*시작(?:한다|한다고|하는)|"
+     r"주관사(?:단)?[^.!?]{0,25}선정|선정[^.!?]{0,25}주관사|연기|철회|마케팅|등록|출시|"
+     r"plan|aim|file|approv|delay|withdraw|market|underwriter.{0,25}select|select.{0,25}underwriter"),
     ("commercial_order", ("earnings", "timeline"),
      r"수주|발주|공급계약|공급(?:하는)?\s*계약|제조\s*(?:서비스\s*)?계약|납품\s*계약|발사\s*계약|건설\s*계약|purchase order|supply contract|manufacturing (?:contract|agreement)|procurement contract|launch (?:contract|agreement)",
      r"체결|맺었다|맺었다고|확정|수주|발주|갱신|취소|파기|해지|협상|추진|서명|sign|secure|award|agree|cancel|negotiat"),
@@ -3341,7 +3407,7 @@ RULES = (
      r"효소|단백질|enzyme|protein", r"발견|규명|discover|characteriz"),
     ("energy_geopolitics_or_supply_risk", ("earnings", "discount_rate"),
      ENERGY_SUBJECT,
-     r"공격|공습|피격|발사체|화재|휴전|협상|통항|봉쇄|제재|상승|하락|오른|내린|급등|급락|차질|감산|증산|합의|경고|명령|배치|추가\s*파견|파견했다|발표|attack|strike|ceasefire|talks|blockade|sanction|rise|fall|disrupt|output|warn|deploy|announc"),
+     r"공격|공습|피격|발사체|화재|휴전|협상|통항|봉쇄|제재|상승|하락|오른|내린|급등|급락|차질|감산|증산|합의|경고|명령|배치|추가\s*파견|파견했다|발표|모색|타진|seek|explor|look(?:ing)? to|weigh|attack|strike|ceasefire|talks|blockade|sanction|rise|fall|disrupt|output|warn|deploy|announc"),
     ("climate_operational_damage", ("earnings", "timeline"),
      r"폭염|폭우|홍수|태풍|정전|가뭄|산불|heatwave|flood|outage|drought|wildfire",
      r"전력|변압기|과부하|폐사|양식|농작물|생산|공급|항만|물류|공장|피해|사망|power|transformer|crop|production|supply|port|factory|damage|death"),
@@ -3361,6 +3427,10 @@ COMPILED_RULES = tuple(
 def evidence_is_new_event(kind: str, sentence: str) -> bool:
     """Do not promote service descriptions or event support into transactions."""
     if not current_event_sentence(sentence) or ACCOUNTING_NOTE.search(sentence):
+        return False
+    if (NEGATED_MARKET_EVENT.search(sentence)
+            and not NEW_EXECUTION.search(sentence)
+            and not FORMAL_POLICY_EXECUTION.search(sentence)):
         return False
     quoted_label = re.fullmatch(r"[\"“‘][^\"”’]{2,60}[\"”’]", sentence.strip())
     if quoted_label and not re.search(
@@ -3406,6 +3476,16 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
                     and not re.search(r"확보해야|구매해야|도입해야|필요하다|예를\s*들어|가정하면", sentence))
     if kind == "market_price_or_flow" and re.search(r"몰렸|향했", sentence) and not QUANTITY.search(sentence):
         return False
+    if kind == "market_price_or_flow" and re.search(
+        r"순매수|순매도|매수세|매도세|사들였|사들인다|팔아치|팔아치웠|유입|유출|자금\s*이동|투자자\s*매수|투자자\s*매도",
+        sentence,
+    ) and not re.search(
+        r"\d[\d,.]*\s*(?:조\s*원|억\s*원|조원|억원|만원|달러|유로|위안|만\s*주|천\s*주|주|shares?|million|billion)|"
+        r"\d+(?:\.\d+)?\s*%",
+        sentence,
+        re.I,
+    ):
+        return False
     if kind == 'physical_supply_or_capacity' and re.search(
         r'(?:구축|설치|건설)하는\s*데[^.!?]{0,70}(?:투입된다|필요하다|소요된다)', sentence,
     ) and not NEW_EXECUTION.search(sentence):
@@ -3417,6 +3497,12 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
     if kind == 'technology_or_clinical_stage' and re.search(r'청탁|고발장|수사\s*중|판결문|협박|범죄\s*혐의|bribery|criminal investigation', sentence, re.I):
         return bool(re.search(r'(?:임상|시험|품목|판매|생산).{0,25}(?:중단했다|중단됐|취소했다|취소됐|허가를\s*취소|승인을\s*철회)|'
                               r'(?:clinical|trial|production).{0,25}(?:halted|suspended|approval revoked)', sentence, re.I))
+    if (kind == 'technology_or_clinical_stage'
+            and re.search(r'파트너십|협력|협의|논의|언급|모색|partnership|collaboration|discuss', sentence, re.I)
+            and not re.search(r'공급\s*계약.{0,30}(?:체결|서명|확정)|수주|발주|승인|인증|양산|검증|시험\s*결과|'
+                              r'\d+(?:\.\d+)?\s*(?:%|배|dB|MW|GW)|signed|awarded|approved|validated',
+                              sentence, re.I)):
+        return False
     if kind == 'physical_supply_or_capacity' and re.search(r'(?:물류|항만|화물).{0,20}(?:정보|데이터).{0,30}(?:협력|공유|플랫폼|네트워크)', sentence):
         if not re.search(r'(?:운항|하역|통관|선적|배송|생산|물동량|화물량|운송료).{0,25}(?:중단|차질|감소|지연|증가|인상)|'
                          r'(?:수출|수입).{0,20}(?:금지|제한)|새로운\s*(?:규제|제재)', sentence):
@@ -3616,6 +3702,9 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
         without_quotes = re.sub(r"(?:S-?Oil|SK이노베이션)\s*\([^)]*\)", "", sentence, flags=re.I)
         if not re.search(ENERGY_SUBJECT, without_quotes, re.I):
             return False
+        if re.search(r"모색|타진|seek|explor|look(?:ing)? to|weigh", sentence, re.I):
+            if not REPORTED_CROSS_BLOC_GAS_SALES_EXPLORATION.search(sentence):
+                return False
     if kind == "climate_operational_damage":
         if re.search(r"구호대|구조대|구호\s*(?:활동|물품)|봉사|기부|성금|감사|노고|짧은\s*정전|정전\s*시간.{0,25}(?:짧|최저|\d위)", sentence):
             return False
@@ -4488,6 +4577,15 @@ def equity_publication_assessment(
         and kinds <= {'capital_listing_stage'}
     ):
         return {'eligible': False, 'reason': 'secondary_listing_fact_in_business_vision_interview'}
+    generic_business_interview = (
+        re.search(r"인터뷰|interview", title, re.I)
+        and not re.search(r"상장|기업공개|\bIPO\b|스팩\s*합병|첫\s*거래|listing|first trade", title, re.I)
+        and re.search(r"컨설팅|컨설턴트|자문사|컨설팅사|구조조정\s*성과|실행\s*중심", title)
+        and not issuer_name.search(title)
+        and not firm_company_event
+    )
+    if generic_business_interview:
+        return {"eligible": False, "reason": "business_interview_without_named_issuer_or_company_event"}
     overview = re.search(r"초격차|\[기획|체질|비전|성장\s*전략|반등\s*채비", title)
     roadmap_kinds = {
         'research_spending_change', 'earnings_or_guidance',
