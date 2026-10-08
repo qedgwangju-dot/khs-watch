@@ -90,7 +90,7 @@ CPU_STRUCTURE_BASELINE = {
         "as_of": "2026-10-07",
         "per_accelerator_cpu_2027": "nearly_double",
         "cpu_xpu_ratio_2027": 2.3,
-        "cpu_xpu_ratio_source_kind": "DIGITIMES 2026-10-05 연구 표제: 2027 CPU:XPU=1:2.3 · 전망치, 실제 설치 비율 아님",
+        "cpu_xpu_ratio_source_kind": "DIGITIMES 2026-10-05 연구 표제 CPU:XPU=1:2.3 · 영어 후속기사 2027년 언급 · 원문 상세 연도는 구독 제한으로 미열람",
         "cpu_xpu_ratio_source_url": "https://www.digitimes.com.tw/research/report/?cnlid=3&n=1&v=20261005-314",
         "per_accelerator_source_kind": "DIGITIMES 10월 7일 원문 표제 확인 · 구독 제한으로 상세 계산 기준 미열람",
         "per_accelerator_source_url": "https://www.digitimes.com/news/a20261005PD216/cpu-demand-commercial-llm-market.html",
@@ -482,7 +482,12 @@ def cpu_structure_observation(title: str, text: str, url: str) -> tuple[str, dic
         return ("bnpp_analyst", obs) if obs else ("", {})
     if (host == "digitimes.com" or host.endswith(".digitimes.com")
             or host == "digitimes.com.tw" or host.endswith(".digitimes.com.tw")):
-        if "cpu" not in low or "2027" not in low:
+        if "cpu" not in low:
+            return "", {}
+        # Original October 5 Chinese report headline specifies CPU:XPU 1:2.3
+        # but does not repeat the year; require 2027 only for shipment values.
+        ratio_headline = re.search(r"cpu\s*[:：]\s*xpu", low, re.I)
+        if "2027" not in low and not ratio_headline:
             return "", {}
         obs = {}
         # DIGITIMES Research's public headline explicitly specifies 2027
@@ -621,7 +626,7 @@ def cpu_structure_block(state: dict, fx: float, changes: list[str]) -> str:
         "• DIGITIMES: 2027년 가속기당 CPU 거의 2배 전망(유료 기사 표제)"
         + (
             f" · 연구 표제 CPU:XPU <b>1:{float(di['cpu_xpu_ratio_2027']):g}</b>"
-            f"(가속기당 CPU 약 {1/float(di['cpu_xpu_ratio_2027']):.2f}개, 전망치)"
+            f"(가속기당 CPU 약 {1/float(di['cpu_xpu_ratio_2027']):.2f}개, 전망치·상세 기준연도 미열람)"
             if di.get("cpu_xpu_ratio_2027") else ""
         )
         + " · <b>코어 수·소켓 수·실제 출하가 각각 2배라는 의미는 아님</b>",
