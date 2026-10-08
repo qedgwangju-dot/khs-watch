@@ -98,6 +98,20 @@ jobs:
                 "close=",close_dt.isoformat())
           PY
 
+      - name: Skip live API checks on KRX market holidays
+        run: |
+          PYTHONPATH=scripts python - <<'PY'
+          import datetime as dt
+          import os
+          from zoneinfo import ZoneInfo
+          from krx_session_calendar import is_session_day
+          today=dt.datetime.now(ZoneInfo("Asia/Seoul")).date()
+          skip=not is_session_day(today)
+          with open(os.environ["GITHUB_ENV"],"a",encoding="utf-8") as out:
+              out.write(f"KOSPI_SKIP_LIVE_TESTS={'1' if skip else '0'}\n")
+          print(f"kospi_live_ci_gate=true date={today} skipped={skip}")
+          PY
+
       - name: Verify production workflow structure
         run: |
           python - <<'PY'
@@ -407,6 +421,7 @@ jobs:
           PY
 
       - name: Verify LS REST prices and flow snapshot
+        if: env.KOSPI_SKIP_LIVE_TESTS != '1'
         run: |
           rm -f out/kospi_shock_episode_status.md out/kospi_shock_episode_raw.json
           python scripts/kospi_shock_episode_watch.py --test --test-seconds 45
@@ -436,6 +451,7 @@ jobs:
           PY
 
       - name: Verify integrated sector/theme/stock/ETF enrichment APIs
+        if: env.KOSPI_SKIP_LIVE_TESTS != '1'
         run: |
           rm -f out/kospi_shock_enrichment_probe.json
           python scripts/kospi_shock_enrichment.py --probe
@@ -456,6 +472,7 @@ jobs:
           PY
 
       - name: Verify full event enrichment path
+        if: env.KOSPI_SKIP_LIVE_TESTS != '1'
         run: |
           rm -f out/kospi_shock_enrichment_latest.json
           python scripts/kospi_shock_enrichment.py --smoke
@@ -475,12 +492,14 @@ jobs:
           PY
 
       - name: Probe unified KRX+NXT realtime flow
+        if: env.KOSPI_SKIP_LIVE_TESTS != '1'
         run: |
           rm -f out/ls_unified_flow_probe.json
           python -m py_compile scripts/ls_unified_flow_probe.py
           python scripts/ls_unified_flow_probe.py
 
       - name: Verify live unified industry collector
+        if: env.KOSPI_SKIP_LIVE_TESTS != '1'
         run: |
           rm -f out/kospi_industry_flow_ci.jsonl
           DAY=$(TZ=Asia/Seoul date +%u)
