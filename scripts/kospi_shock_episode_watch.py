@@ -37,6 +37,7 @@ FLOW_INTERVAL_SEC = 15
 NEW_LOW_CONFIRM_SEC = 240
 MAX_EPISODE_SEC = 3 * 60 * 60
 MAX_FLOW_ALIGNMENT_SEC = 30
+MAX_FLOW_HEALTH_AGE_SEC = 90.0  # API 응답 시각과 원자료 시각을 따로 확인한다.
 MAX_PROGRAM_SNAPSHOT_SKEW_SEC = 8.0
 MAX_PROGRAM_CROSSCHECK_RATIO_PCT = 1.0  # 1% 초과면 방향이 같아도 높은 확신도 부여 금지
 OPEN_GAP_ALERT_PCT = -1.0
@@ -260,14 +261,26 @@ def ls_post(token: str, path: str, tr: str, body: dict[str, Any]) -> dict[str, A
                 continue
             raise RuntimeError(last_error) from exc
         text = r.text or ""
-        retryable_http = r.status_code in {429, 500, 502, 503, 504}
+        # LS 게이트웨이가 임시 장애의 /503.html 경로를 HTTP 404로 반환하는
+        # 실전 사례가 있다. 진짜 404와 구분해 해당 경로만 재시도한다.
+        gateway_503_as_404 = r.status_code == 404 and "/503.html" in text
+        retryable_http = r.status_code in {429, 500, 502, 503, 504} or gateway_503_as_404
         if not r.ok:
             last_error = f"{tr} HTTP {r.status_code}: {text[:250]}"
             if attempt < 4 and retryable_http:
                 time.sleep(min(8.0, 0.8 * (2 ** attempt)))
                 continue
             raise RuntimeError(last_error)
-        d = r.json()
+        try:
+            d = r.json()
+            if not isinstance(d, dict):
+                raise ValueError("LS response is not a JSON object")
+        except (ValueError, TypeError) as exc:
+            last_error = f"{tr} invalid JSON: {type(exc).__name__}: {text[:200]}"
+            if attempt < 4:
+                time.sleep(min(8.0, 0.8 * (2 ** attempt)))
+                continue
+            raise RuntimeError(last_error) from exc
         code = str(d.get("rsp_cd") or "")
         if code and code not in {"00000", "0000"}:
             last_error = f"{tr} rejected {code}: {d.get('rsp_msg')}"
@@ -373,6 +386,33 @@ def fetch_flow_snapshot(token: str) -> dict[str, Any]:
     snap["ts"] = (started_ts + ended_ts) / 2.0
     snap["sample_span_sec"] = ended_ts - started_ts
     return snap
+
+
+def flow_snapshot_health(
+    snap: dict[str, Any], now_ts: float | None = None,
+    max_age_sec: float = MAX_FLOW_HEALTH_AGE_SEC,
+) -> tuple[bool, dict[str, str]]:
+    """HTTP 수신 성공과 수급 원자료의 시간·필드 유효성을 구분한다."""
+    now_ts = time.time() if now_ts is None else now_ts
+    issues: dict[str, str] = {}
+    for key in ("현물", "선물", "프로그램"):
+        block = snap.get(key)
+        if not isinstance(block, dict):
+            issues[key] = "수급 채널 누락"
+            continue
+        source_ts = fnum(block.get("sample_ts"))
+        if source_ts is None:
+            issues[key] = "원자료 기준시각 누락"
+            continue
+        age = now_ts - source_ts
+        if not (-5.0 <= age <= max_age_sec):
+            issues[key] = f"원자료 시차 {age:.1f}초(허용 {max_age_sec:.0f}초)"
+            continue
+        fields = ("개인", "외국인", "기관") if key != "프로그램" else ("전체", "차익", "비차익")
+        missing = [field for field in fields if fnum(block.get(field)) is None]
+        if missing:
+            issues[key] = "필수 수급값 누락: " + ",".join(missing)
+    return not issues, issues
 
 
 def fetch_kpi200() -> float | None:
@@ -989,8 +1029,15 @@ class Watch:
                 snap = await asyncio.to_thread(fetch_flow_snapshot, self.token)
                 self.flows.append(snap)
                 self.raw["last_flow_snapshot"] = snap
-                if snap.get("현물") is not None and snap.get("선물") is not None and snap.get("프로그램") is not None:
+                snapshot_ok, issues = flow_snapshot_health(snap)
+                if snapshot_ok:
                     self.last_flow_success_ts = time.time()
+                    self.raw.pop("last_flow_health_issue", None)
+                    prior_error = self.raw.pop("last_flow_error", None)
+                    if prior_error:
+                        self.raw["last_flow_recovered_at_kst"] = dt.datetime.now(KST).isoformat(timespec="seconds")
+                else:
+                    self.raw["last_flow_health_issue"] = issues
                 cutoff = time.time() - FLOW_LOOKBACK_SEC
                 while self.flows and float(self.flows[0].get("ts", 0)) < cutoff:
                     self.flows.popleft()
@@ -1019,6 +1066,8 @@ class Watch:
                     "message_id": msg_id, "open_pct": opct,
                     "sent_at_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
                 }
+                # 개장 경보는 일반 사건 _record_delivery 경로를 거치지 않으므로 즉시 인계한다.
+                self._checkpoint_handoff(force=True)
         if self.episode is None:
             hit, info = self._trigger()
             if not hit:
@@ -1184,9 +1233,13 @@ class Watch:
             self.msg_ids.extend(int(x) for x in (data.get("msg_ids") or []) if str(x).isdigit())
             self.enrichment_msg_ids.extend(int(x) for x in (data.get("enrichment_msg_ids") or []) if str(x).isdigit())
             if self.flows:
-                latest = max(float(x.get("ts", 0)) for x in self.flows)
-                if time.time() - latest <= 180:
+                latest_snap = max(self.flows, key=lambda x: float(x.get("ts", 0)))
+                latest = float(latest_snap.get("ts", 0))
+                healthy, issues = flow_snapshot_health(latest_snap)
+                if healthy and time.time() - latest <= 180:
                     self.last_flow_success_ts = latest
+                elif issues:
+                    self.raw["handoff_flow_health_issue"] = issues
             self.raw["handoff_loaded"] = {
                 "path": str(p), "status": "ok", "flow_count": loaded,
                 "episode_active": bool(self.episode),
@@ -1281,9 +1334,12 @@ class Watch:
             try:
                 await asyncio.to_thread(self.poll_market_once)
                 last_poll_error = None
+                if self.raw.pop("last_price_poll_error", None):
+                    self.raw["last_price_poll_recovered_at_kst"] = dt.datetime.now(KST).isoformat(timespec="seconds")
             except Exception as exc:
                 last_poll_error = f"{type(exc).__name__}: {exc}"
                 self.raw["last_price_poll_error"] = last_poll_error
+                self.raw["price_poll_failures_total"] = int(self.raw.get("price_poll_failures_total", 0)) + 1
 
             await self.evaluate()
             self._checkpoint_handoff()
