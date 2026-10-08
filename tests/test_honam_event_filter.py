@@ -150,6 +150,7 @@ class HonamEventFilterRegressionTest(unittest.TestCase):
         item = {
             "title": "최태원 SK그룹 회장, 9일 광주 군공항 반도체 팹 예정지 방문한다",
             "description": "SK하이닉스 경영진이 현장 동행 예정. 기존 사장단은 7월에 방문했다.",
+            "published": "Thu, 08 Oct 2026 11:09:00 GMT",
             "source_status": "보도 단계",
         }
         self.assertEqual(_executive_visit_signal(item), 1)
@@ -161,11 +162,28 @@ class HonamEventFilterRegressionTest(unittest.TestCase):
         item = {
             "title": "최태원 회장, 광주 군공항 반도체 부지 방문했다",
             "description": "SK하이닉스의 팹 건립 예정지 현장을 둘러봤다.",
+            "published": "Fri, 09 Oct 2026 06:00:00 GMT",
             "source_status": "보도 단계",
         }
         self.assertEqual(_executive_visit_signal(item), 3)
         self.assertEqual(_action_level(item), 3)
         self.assertEqual(_event_family(item), "honam_sk_chair_site_visit_20261009")
+
+    def test_another_visit_date_gets_new_event_key(self):
+        future = {
+            "title": "최태원 SK그룹 회장, 20일 광주 군공항 반도체 부지 방문 예정",
+            "description": "새로운 현장 방문 일정",
+            "published": "Mon, 19 Oct 2026 09:00:00 GMT",
+        }
+        self.assertEqual(_event_family(future), "honam_sk_chair_site_visit_20261020")
+
+    def test_other_chipmaker_chair_has_separate_family(self):
+        item = {
+            "title": "이재용 삼성전자 회장, 9일 광주 군공항 반도체 부지 방문 예정",
+            "description": "현장 확인을 위한 방문 예정",
+            "published": "Thu, 08 Oct 2026 11:00:00 GMT",
+        }
+        self.assertEqual(_event_family(item), "honam_samsung_chair_site_visit_20261009")
 
     def test_old_executive_visit_is_not_chair_visit(self):
         item = {
