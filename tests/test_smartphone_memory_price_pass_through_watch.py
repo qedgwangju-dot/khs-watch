@@ -175,6 +175,40 @@ class SmartphoneMemoryPricePassThroughTests(unittest.TestCase):
         self.assertEqual((info["model"],info["market"],info["amount"]),("S26","미국",100))
         self.assertEqual(m._signal(specific,self.state())["stage"],2)
 
+    def test_retail_storage_tiers_are_distinct_semantic_facts(self):
+        p256=self.item(
+            "Samsung raises Galaxy S26 Ultra 256GB prices $100 in the U.S.",
+            "Memory cost increases led to a $100 handset price hike.", "Reuters"
+        )
+        p512=self.item(
+            "Samsung raises Galaxy S26 Ultra 512GB prices $100 in the U.S.",
+            "Memory cost increases led to a $100 handset price hike.", "Reuters"
+        )
+        a,b=m._retail_price_event(p256),m._retail_price_event(p512)
+        self.assertEqual(a["capacity"],"256GB")
+        self.assertEqual(b["capacity"],"512GB")
+        self.assertNotEqual(m._fact_keys(p256),m._fact_keys(p512))
+
+    def test_one_story_two_storage_tiers_is_ambiguous(self):
+        p=self.item(
+            "Samsung raises Galaxy S26 Ultra 256GB and 512GB prices $100 in the U.S.",
+            "Memory cost hikes led to higher smartphone prices.", "Reuters"
+        )
+        self.assertIsNone(m._retail_price_event(p))
+        self.assertIsNone(m._signal(p,self.state()))
+
+    def test_same_ram_spec_cut_dedupes_across_sources(self):
+        p=self.item(
+            "Samsung Galaxy S26 Ultra cuts RAM from 16GB to 12GB to reduce memory costs",
+            "New handset RAM storage reduction due to high LPDDR costs.", "Reuters"
+        )
+        q=self.item(
+            "Samsung Galaxy S26 Ultra reduced memory to 12GB from 16GB",
+            "RAM cut due to component cost pressure.", "Bloomberg"
+        )
+        self.assertEqual(m._fact_keys(p),m._fact_keys(q))
+        self.assertTrue(m._fact_keys(p))
+
     def test_multiple_price_bands_do_not_get_attached_to_one_sku(self):
         item=self.item(
             "Samsung raises Galaxy S26 Ultra by $100 and $200 in the U.S.",

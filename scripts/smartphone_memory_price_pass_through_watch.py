@@ -217,6 +217,14 @@ def _model_name(blob: str) -> str:
     return ""
 
 
+def _storage_tier(blob: str) -> str | None:
+    tiers = {re.sub(r"\s+", "", x).upper()
+             for x in re.findall(r"\b(?:128|256|512)\s*gb\b|\b1\s*tb\b", blob.lower())}
+    if len(tiers) > 1:
+        return None
+    return next(iter(tiers)) if tiers else "용량 미확인"
+
+
 def _retail_price_event(item: dict) -> dict | None:
     blob = f"{item.get('title','')} {item.get('description','')}"
     low = blob.lower()
@@ -227,15 +235,18 @@ def _retail_price_event(item: dict) -> dict | None:
     model = _model_name(blob)
     if not model:
         return None
+    tier = _storage_tier(blob)
+    if tier is None:
+        return None
     if re.search(r"(?:\bunited states\b|\bu\.s\.?(?=\W|$)|\busa\b|미국)", low):
         matches = re.findall(r"\$\s*(\d{2,3})\b|\b(\d{2,3})\s*(?:usd|dollars?)\b", low)
         dollars = [int(v) for row in matches for v in row if v]
         if dollars and len(set(dollars)) == 1:
-            return {"model": model, "market": "미국", "currency": "USD", "amount": dollars[0]}
+            return {"model": model, "market": "미국", "currency": "USD", "amount": dollars[0], "capacity": tier}
     if re.search(r"(?:한국|국내|korea|\bkrw\b|만원)", low):
         lo, hi = _extract_krw_hike(blob)
         if lo is not None and lo == hi:
-            return {"model": model, "market": "한국", "currency": "KRW", "amount": lo}
+            return {"model": model, "market": "한국", "currency": "KRW", "amount": lo, "capacity": tier}
     return None
 
 
@@ -415,8 +426,16 @@ def _fact_keys(item: dict) -> set[str]:
             keys.add("s27_lpddr6_ufs51_official")
     retail = _retail_price_event(item)
     if retail:
-        key = f"retail_{retail['model']}_{retail['market']}_{retail['currency']}_{retail['amount']}"
+        key = (
+            f"retail_{retail['model']}_{retail['market']}_{retail['currency']}_"
+            f"{retail['amount']}_{retail['capacity']}"
+        )
         keys.add(key.lower().replace(" ", "_"))
+    if _is_config_pressure(blob) and not _is_uncertain(blob):
+        model = "S27" if _is_s27(blob) else _model_name(blob)
+        capacities = sorted(set(re.findall(r"(?:8|12|16|24|32|128|256|512)\s*gb", low)))
+        if model and capacities:
+            keys.add(f"config_{model}_{'_'.join(capacities)}".lower().replace(" ", "_"))
     pct = _shipment_revision_pct(blob)
     if pct is not None:
         model = _model_name(blob) or "brand"
@@ -467,11 +486,12 @@ def _signal(item: dict, state: dict) -> dict | None:
         unit = "원" if retail["currency"] == "KRW" else "달러(원화 환산 필수)"
         reasons.append(
             f"스마트폰 출고가 변경 보도: {retail['model']} {retail['market']} "
-            f"인상액 {retail['amount']}{unit} (제조사 직접발표 여부 별도)"
+            f"{retail['capacity']} 인상액 {retail['amount']}{unit} (제조사 직접발표 여부 별도)"
         )
         stage = max(stage, 3 if _is_official_samsung_item(item) else 2)
 
     if (_is_config_pressure(blob)
+            and (_is_s27(blob) or bool(_model_name(blob)))
             and re.search(r"(?:8|12|16|24|32|128|256|512)\s*gb", low)
             and any(x in low for x in ("reduc", "cut ", "축소", "하향"))
             and rank >= 3 and not _is_uncertain(blob)):
