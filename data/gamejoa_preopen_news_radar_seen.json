@@ -3338,6 +3338,33 @@
       "telegram_core_fact": "네이버가 공시한 ‘주식교환·이전 결정’ 정정공시에 따르면 네이버파이낸셜과 두나무의 주식교환일은 기존 올해 12월 31일에서 내년 3월 31일로 변경됐다. 주식교환 비율은 네이버파이낸셜 1주당 두나무 2.5422618주다.",
       "title": "두나무·네이버파이낸셜 빅딜 내년 3월로 또 연기"
     },
+    "core:45c8f869456c88032aeee1a8": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816974",
+      "source": "뉴시스",
+      "source_body_digest": "63ad4a4062add8850e68625fe7ff0e85db9451d26769ac6a69c23048ee4544b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f2ef5c1e8564aff293263c4e95522b2b3d664ffd05a495c12881412ee9642ce0",
+      "source_fact_keys": [
+        "source_fact:v1:2c070cfcafd703a27130974d1ecdea15086dabf7e31cb722af85f8c78b783aba",
+        "source_fact:v1:50e6c11927b690514da4376e397ef1132ef39a60b59cbc20a731cb57e6e67b13",
+        "source_fact:v1:826fe75b9844c546a71238e8b7c3ed74b376f46d01cd359e85e6ea60c9153741",
+        "source_fact:v1:962033cd011d8bce875dd230cbe73511943f72ebd98c6be8662d1d900ef691ba",
+        "source_fact:v1:a53a84c7d4ed8a8a84627a179b4f303149b2c0afacfbb9fe8a1125fe608948b2",
+        "source_fact:v1:b2c4771265ec338b1a79aa82924145da966da37fb1a7626e74953855cd011c79",
+        "source_fact:v1:c0a3937da9eb86fc6157b958a8956632e367fd71068d3d7d2b4637aafd01b486",
+        "source_fact:v1:ca624d3a21e11fe5cc06ac4223db1f13b6f6ce1af8c61be4b654e39701b2d2b1",
+        "source_fact:v1:f4555bc888f8bb5648aacf0cda33ff698c19df72030ad6e225ed79bb9c1d933f"
+      ],
+      "source_published_kst": "2026-10-08T11:43+09:00",
+      "source_title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화",
+      "telegram_core_fact": "2000억 달러 대미 전략투자 프로그램이 확정되면서, 1500억 달러 한미 조선 협력 프로젝트인 '마스가(MASGA)'도 본격적인 사업 발굴과 투자 집행 단계에 들어설 전망이다.",
+      "title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화"
+    },
     "core:45de1b9c532d76b5748e707c": {
       "first_seen_kst": "2026-10-07T19:13:29+09:00",
       "lanes": {
@@ -4019,6 +4046,30 @@
       "telegram_core_fact": "삼성전자의 영업이익은 지난 분기 세계에서 최고치를 기록했는데 이번에도 전세계 기업중 1위를 기록할 것으로 예상된다.",
       "title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박"
     },
+    "core:5c72103a1748c8acb94bc8a6": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02863446645610952",
+      "source": "이데일리",
+      "source_body_digest": "1b6a0d4fd90e14deb1ced48b2cf7e0a69aa3655c05c8d76205d72735247fce8a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f76561a7f2d50e6765aa012cf3b08498ed890351c902e8a9cec6b4bfd46b08aa",
+      "source_fact_keys": [
+        "source_fact:v1:6488b6c4c09c2bdc59130ff734f284a63332e4ec2738d7f2cd2d34e94b78dede",
+        "source_fact:v1:68875868a18dd912a66258d3ec78be2d5336e460a42c18529d08f6de504ea66a",
+        "source_fact:v1:9d008187b4ec926af126fa5276c12bd3873a65ceb5ff167af105b87bb79af891",
+        "source_fact:v1:9e6bd3e7c67e86206136d6717f3501a31cb326383a47a67c9c54e4fd1563124f",
+        "source_fact:v1:a25f3d5f5c21db0ac3378e841f52e3824069382f562409424109ad6c9debf7b0",
+        "source_fact:v1:e11d96b2e8a892a7aa583b1149e2ba6dd7178beedaecca74ab3f5513f769505d"
+      ],
+      "source_published_kst": "2026-10-08T09:54+09:00",
+      "source_title": "엘리스그룹, 모듈형 AI 데이터센터 ‘PMDC’ 상표 등록",
+      "telegram_core_fact": "2021년부터 개발·운영해온 모듈형 데이터센터 기술과 AI 클라우드 소프트웨어를 결합해 국내외 AI 인프라 사업을 확대한다.",
+      "title": "엘리스그룹, 모듈형 AI 데이터센터 ‘PMDC’ 상표 등록"
+    },
     "core:5cd3e29a43951d473c519dd9": {
       "first_seen_kst": "2026-10-08T03:13:06+09:00",
       "lanes": {
@@ -4322,6 +4373,28 @@
       "source_title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소",
       "telegram_core_fact": "포르투나 마이닝(FSM)은 3분기 금환산온스(GEO) 기준 생산량이 6만9665온스로 전년 동기(7만2462온스) 대비 3.9%, 전분기(7만2217온스) 대비 3.5% 감소했다고 10월 7일 발표했다.",
       "title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소"
+    },
+    "core:620363c649cfeba7b37674fc": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://biz.chosun.com/topics/law_firm/2026/10/08/PSMISUZSLJDDDHCTYKIDZQXXCI/",
+      "source": "조선비즈",
+      "source_body_digest": "170c8656f654667b64e3a4e45325e336da6ad71f3a7f9d35e974402cf335e87d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9f67ecbb8780d0df3af3cd521c998c36b2a8dde7785f47ac4f96b2af6099d030",
+      "source_fact_keys": [
+        "source_fact:v1:55c422934052c6c410a2399166e55c9170b98c82e09a2a76c4e794651cf9294d",
+        "source_fact:v1:631ed9ad1351333a767026c2d760aab94f25a34a78a4c7ad2c2fe4b8cbe4e114",
+        "source_fact:v1:ce46c95a02b22e874178c124956fcf9fd74976bfc4fa48106d93a4d7992a0b4c",
+        "source_fact:v1:d845165158c6cfec2a489fbd10450484363cf5c7c18858729e28740be32e7fe8"
+      ],
+      "source_published_kst": "2026-10-08T09:11+09:00",
+      "source_title": "법무법인 세종, 21일 자본시장·M&A 세미나…중복상장 규제 대응 논의",
+      "telegram_core_fact": "중복상장 규제가 본격 시행되고 주주 보호를 강화하는 방향으로 자본시장 제도가 바뀌면서 기업의 인수합병(M&A)과 자금조달 과정에서 고려해야 할 변수가 늘고 있다.",
+      "title": "법무법인 세종, 21일 자본시장·M&A 세미나…중복상장 규제 대응 논의"
     },
     "core:622e7b0fcc07b4fbc860d886": {
       "first_seen_kst": "2026-10-08T01:43:44+09:00",
@@ -6574,6 +6647,26 @@
       "telegram_core_fact": "네이버는 7일 기재정정공시를 통해 주주총회 예정일을 기존 11월19일에서 내년 2월26일로, 주식교환·이전일을 12월31일에서 내년 3월31일로 변경했다고 밝혔다. 두나무와 네이버파이낸셜의 포괄적 주식교환 일정이 약 3개월 연장됐다.",
       "title": "두나무·네이버 주식교환 일정 연장…주총 2월·교환일 3월로 변경"
     },
+    "core:9a0d3c7b7adf7473c92d6dc7": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008091700004",
+      "source": "연합뉴스",
+      "source_body_digest": "0c5497b4e1a3b4ec69ac4be56c741266cf3da477063f7eae2e7d7c37a8c2fd85",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b891b1770bcefb6b7083dad9c4463f6be7e7e3526c70a1fd1a0a6f25c091e8e4",
+      "source_fact_keys": [
+        "source_fact:v1:181e29bfaf3e46f75200e5c021e070c75d801e6603011e509c05e599977588c7",
+        "source_fact:v1:bae5b83e4540c54685cd0f6275816dc1d90ad45b1054da1b743ab69b0d5fe9d8"
+      ],
+      "source_published_kst": "2026-10-08T11:45+09:00",
+      "source_title": "'158억원 무차입 공매도 혐의' 홍콩 HSBC, 대법서 무죄 확정 | 연합뉴스",
+      "telegram_core_fact": "HSBC 홍콩법인 트레이더 A씨 등 3명은 2021년 8∼12월 무차입 방식으로 호텔신라 등 9개 상장사 주식 31만8천781주(157억8천468만원)를 공매도한 혐의로 2024년 3월 기소됐다.",
+      "title": "'158억원 무차입 공매도 혐의' 홍콩 HSBC, 대법서 무죄 확정 | 연합뉴스"
+    },
     "core:9a465b2eca65ff27dd2ca98e": {
       "first_seen_kst": "2026-10-07T19:13:29+09:00",
       "lanes": {
@@ -7107,6 +7200,25 @@
       "source_title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\"",
       "telegram_core_fact": "스콧 베선트 미국 재무장관이 최근 물가와 장기 국채금리 급등의 주된 원인을 이란전쟁에 따른 에너지 충격으로 진단하며 전쟁이 끝나면 유가와 물가, 국채금리가 함께 내려갈 것이라고 전망했다.",
       "title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\""
+    },
+    "core:a5c2bf73cfe7a5d58becf6c4": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896913",
+      "source": "헤럴드경제",
+      "source_body_digest": "804b4eee53616e2b74b617fc7db9203d39b4a81c9fd10b5deebe758157ddc2c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:97ff43a0977bdc61d5cf53036bca3483d41bd8f31d6522e0c672284c6de93710",
+      "source_fact_keys": [
+        "source_fact:v1:4054e6a8463cf13d4b6c92782c0e7214bce26105c19dc82fa6c3d26ab2fa61de"
+      ],
+      "source_published_kst": "2026-10-08T12:03+09:00",
+      "source_title": "남양주시, 왕숙 도시첨단산업단지 개발실시계획 승인·고시",
+      "telegram_core_fact": "이번 승인·고시는 산업단지의 토지이용계획과 기반시설 설치계획 등 사업 추진에 필요한 세부 계획을 확정한 것으로, 왕숙 도시첨단산업단지 조성사업이 계획 단계를 넘어 본격적인 개발 단계에 들어섰다는 데 의미가 있다.",
+      "title": "남양주시, 왕숙 도시첨단산업단지 개발실시계획 승인·고시"
     },
     "core:a626e1a5e21f13e6084c430f": {
       "first_seen_kst": "2026-10-08T09:33:54+09:00",
@@ -8800,6 +8912,23 @@
       "telegram_core_fact": "GS ITM이 삼성SDS·LG CNS와 다른 규제를 받는 이유는 상호출자제한기업집단 소속 여부에 있다.",
       "title": "[공공SW전략] 기업마다 다른 규제…참여제한 갈린다 | GS ITM㊦"
     },
+    "core:c74f74c306f9c38e65a113e0": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818966",
+      "source": "뉴시스",
+      "source_body_digest": "061a5e9ba923f5fe4685df8a2554147ec5173ee900a620328e1cab72e57a0ea9",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T13:20+09:00",
+      "source_title": "美 재무부, 상하이 로봇 AI 업체 투자 美 기업에 약 2억 6000만원 벌금",
+      "telegram_core_fact": "이번 사례는 지난해 1월 발효된 것으로 중국의 AI, 반도체 및 양자 컴퓨팅 사업에 대한 미국의 해외 투자 규제 조치가 처음 집행된 것이라고 SCMP는 전했다.",
+      "title": "美 재무부, 상하이 로봇 AI 업체 투자 美 기업에 약 2억 6000만원 벌금"
+    },
     "core:c8cc44b19cd9600e691d175d": {
       "first_seen_kst": "2026-10-08T07:50:51+09:00",
       "lanes": {
@@ -10015,6 +10144,27 @@
       "source_title": "LG엔솔, 3분기 영업익 7천560억원…분기 최대 매출 달성(종합) | 연합뉴스",
       "telegram_core_fact": "LG에너지솔루션은 연결 기준 올해 3분기 영업이익이 지난해 동기보다 25.7% 증가한 7천560억원으로 잠정 집계됐다고 8일 공시했다.",
       "title": "LG엔솔, 3분기 영업익 7천560억원…분기 최대 매출 달성(종합) | 연합뉴스"
+    },
+    "core:e39c06007b197b6be1172892": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171236",
+      "source": "매일경제",
+      "source_body_digest": "64f7d9300e4611d9fbf73c17b6aa7084060db16bc10333a0169dbdbe900d65b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61cb318d1908b13a1ac4dd3038211af33fa95534034e9fe2e2c0cf9b36321167",
+      "source_fact_keys": [
+        "source_fact:v1:4cb77bf7b46008f3a930d94ac8dea9c8b664f2c23b1656fa9cb33565ee56ee9d",
+        "source_fact:v1:6b62024b89d9e9e73174581535ba16b46c9fe5b15e24cdbfe1f72515fa43fdcb",
+        "source_fact:v1:fc241ec8e30626a8dfbc72e8b87fa01f4872881ad02abd989cec0b5a13819cb6"
+      ],
+      "source_published_kst": "2026-10-08T10:26+09:00",
+      "source_title": "분기 영업이익 107조 찍었는데…전기전자 대형주 순매도 흐름 [주식 초고수는 지금]",
+      "telegram_core_fact": "삼성전자가 분기 영업이익 100조원을 처음 돌파했다는 발표가 나왔지만 초고수들은 전 거래일 순매수 상위에 올려놨던 전기전자 대형주를 하루 만에 대거 정리했다.",
+      "title": "분기 영업이익 107조 찍었는데…전기전자 대형주 순매도 흐름 [주식 초고수는 지금]"
     },
     "core:e4b8c2c97225d524e5a11d94": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
@@ -17532,26 +17682,23 @@
     "event:c3f02aac152187a692ecee7d": {
       "first_seen_kst": "2026-10-08T08:56:19+09:00",
       "lanes": {
-        "live": "2026-10-08T08:56:19+09:00"
+        "live": "2026-10-08T16:14:26+09:00"
       },
-      "last_seen_kst": "2026-10-08T08:56:19+09:00",
-      "link": "https://www.fnnews.com/news/202610080827230920",
-      "source": "파이낸셜뉴스",
-      "source_body_digest": "362ac36045f4b8569a1e71e771018df07e554aebf71d0bd006ea1e489966dd43",
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171236",
+      "source": "매일경제",
+      "source_body_digest": "64f7d9300e4611d9fbf73c17b6aa7084060db16bc10333a0169dbdbe900d65b3",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:ee5dbd450b8329f7b023e9de9c64aa02c229b3cf9935c0bb26c933bc5d1a2953",
+      "source_fact_identity": "source_facts:v1:61cb318d1908b13a1ac4dd3038211af33fa95534034e9fe2e2c0cf9b36321167",
       "source_fact_keys": [
-        "source_fact:v1:0a210fc83d5e52580865a07d6f2a584773f31062102ee7b936de56b3a8356545",
-        "source_fact:v1:5543552e1a3f73b393ae74947dce614e629ba31ee617ec1599d36055c848a95e",
-        "source_fact:v1:5fdddc81ddae88f52d622c22cdd9272cecf0f22b501692e25c48f2482fff213f",
-        "source_fact:v1:ac6717d061095f95576ec9ce0235f7bd15ec9c850c1fde58e24380d0b17953ac",
-        "source_fact:v1:d5e037e9874ac704e30388f6b9bf402115a8e4ecc92583ad782ba5689950ae4e",
-        "source_fact:v1:fe6f12e357db565900fa6f43d22598ed39b4eab005f4cc0c8fb0ba5cc5b1972e"
+        "source_fact:v1:4cb77bf7b46008f3a930d94ac8dea9c8b664f2c23b1656fa9cb33565ee56ee9d",
+        "source_fact:v1:6b62024b89d9e9e73174581535ba16b46c9fe5b15e24cdbfe1f72515fa43fdcb",
+        "source_fact:v1:fc241ec8e30626a8dfbc72e8b87fa01f4872881ad02abd989cec0b5a13819cb6"
       ],
-      "source_published_kst": "2026-10-08T08:27+09:00",
-      "source_title": "\"기대치 넘었다\" 삼성전자, 프리마켓서 1.6% 상승…반도체주 강세",
-      "telegram_core_fact": "삼성전자가 시장 기대치를 웃도는 3분기 잠정 실적을 발표하면서 프리마켓에서 1%대 상승세를 보이고 있다. 삼성전자, 올해 3분기 연결 기준 영업이익이 107조 4000억 원으로 잠정 집계됐다고 공시했다.",
-      "title": "\"기대치 넘었다\" 삼성전자, 프리마켓서 1.6% 상승…반도체주 강세"
+      "source_published_kst": "2026-10-08T10:26+09:00",
+      "source_title": "분기 영업이익 107조 찍었는데…전기전자 대형주 순매도 흐름 [주식 초고수는 지금]",
+      "telegram_core_fact": "삼성전자가 분기 영업이익 100조원을 처음 돌파했다는 발표가 나왔지만 초고수들은 전 거래일 순매수 상위에 올려놨던 전기전자 대형주를 하루 만에 대거 정리했다.",
+      "title": "분기 영업이익 107조 찍었는데…전기전자 대형주 순매도 흐름 [주식 초고수는 지금]"
     },
     "event:c49ef7bb4d0518b534255016": {
       "first_seen_kst": "2026-09-21T17:23:09+09:00",
@@ -24127,6 +24274,26 @@
       "source_title": "제주 바다숲 소멸은 생태계 변화 신호탄…해조류 생산 97% 감소 | 연합뉴스",
       "telegram_core_fact": "한국해양과학기술원이 8일 내놓은 현안 보고서를 보면 2010년 5천155t에 달하던 제주 연근해 해조류 생산량은 지난해 154t으로 97% 감소했다. 제주 연안의 바다숲 소멸은 생태계 변화의 신호탄으로, 아열대화를 지속해서 관측해야 한다는 의견이 나왔다.",
       "title": "제주 바다숲 소멸은 생태계 변화 신호탄…해조류 생산 97% 감소 | 연합뉴스"
+    },
+    "fact:280bc24820ca476d8f9080e5": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008091700004",
+      "source": "연합뉴스",
+      "source_body_digest": "0c5497b4e1a3b4ec69ac4be56c741266cf3da477063f7eae2e7d7c37a8c2fd85",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b891b1770bcefb6b7083dad9c4463f6be7e7e3526c70a1fd1a0a6f25c091e8e4",
+      "source_fact_keys": [
+        "source_fact:v1:181e29bfaf3e46f75200e5c021e070c75d801e6603011e509c05e599977588c7",
+        "source_fact:v1:bae5b83e4540c54685cd0f6275816dc1d90ad45b1054da1b743ab69b0d5fe9d8"
+      ],
+      "source_published_kst": "2026-10-08T11:45+09:00",
+      "source_title": "'158억원 무차입 공매도 혐의' 홍콩 HSBC, 대법서 무죄 확정 | 연합뉴스",
+      "telegram_core_fact": "HSBC 홍콩법인 트레이더 A씨 등 3명은 2021년 8∼12월 무차입 방식으로 호텔신라 등 9개 상장사 주식 31만8천781주(157억8천468만원)를 공매도한 혐의로 2024년 3월 기소됐다.",
+      "title": "'158억원 무차입 공매도 혐의' 홍콩 HSBC, 대법서 무죄 확정 | 연합뉴스"
     },
     "fact:281325f1cdf314e996cc2f72": {
       "first_seen_kst": "2026-10-07T03:30:59+09:00",
@@ -34815,6 +34982,25 @@
       "source_published_kst": "2026-10-06T17:38+09:00",
       "title": "[미국 주식 돋보기] 데이터센터 전력 구원투수 '비코' 고공행진"
     },
+    "fact:8ff98a319e645a1161d61c42": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896913",
+      "source": "헤럴드경제",
+      "source_body_digest": "804b4eee53616e2b74b617fc7db9203d39b4a81c9fd10b5deebe758157ddc2c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:97ff43a0977bdc61d5cf53036bca3483d41bd8f31d6522e0c672284c6de93710",
+      "source_fact_keys": [
+        "source_fact:v1:4054e6a8463cf13d4b6c92782c0e7214bce26105c19dc82fa6c3d26ab2fa61de"
+      ],
+      "source_published_kst": "2026-10-08T12:03+09:00",
+      "source_title": "남양주시, 왕숙 도시첨단산업단지 개발실시계획 승인·고시",
+      "telegram_core_fact": "이번 승인·고시는 산업단지의 토지이용계획과 기반시설 설치계획 등 사업 추진에 필요한 세부 계획을 확정한 것으로, 왕숙 도시첨단산업단지 조성사업이 계획 단계를 넘어 본격적인 개발 단계에 들어섰다는 데 의미가 있다.",
+      "title": "남양주시, 왕숙 도시첨단산업단지 개발실시계획 승인·고시"
+    },
     "fact:902af95803a854ed9b1e9ebf": {
       "first_seen_kst": "2026-10-07T09:44:16+09:00",
       "lanes": {
@@ -36379,6 +36565,28 @@
       ],
       "source_published_kst": "2026-10-07T09:00+09:00",
       "title": "하나證 “효성중공업, 고마진 매출 이연으로 3분기 실적 하회 …중장기 성장은 유효\""
+    },
+    "fact:9b1d3f030689cb277f15d12c": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://biz.chosun.com/topics/law_firm/2026/10/08/PSMISUZSLJDDDHCTYKIDZQXXCI/",
+      "source": "조선비즈",
+      "source_body_digest": "170c8656f654667b64e3a4e45325e336da6ad71f3a7f9d35e974402cf335e87d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9f67ecbb8780d0df3af3cd521c998c36b2a8dde7785f47ac4f96b2af6099d030",
+      "source_fact_keys": [
+        "source_fact:v1:55c422934052c6c410a2399166e55c9170b98c82e09a2a76c4e794651cf9294d",
+        "source_fact:v1:631ed9ad1351333a767026c2d760aab94f25a34a78a4c7ad2c2fe4b8cbe4e114",
+        "source_fact:v1:ce46c95a02b22e874178c124956fcf9fd74976bfc4fa48106d93a4d7992a0b4c",
+        "source_fact:v1:d845165158c6cfec2a489fbd10450484363cf5c7c18858729e28740be32e7fe8"
+      ],
+      "source_published_kst": "2026-10-08T09:11+09:00",
+      "source_title": "법무법인 세종, 21일 자본시장·M&A 세미나…중복상장 규제 대응 논의",
+      "telegram_core_fact": "중복상장 규제가 본격 시행되고 주주 보호를 강화하는 방향으로 자본시장 제도가 바뀌면서 기업의 인수합병(M&A)과 자금조달 과정에서 고려해야 할 변수가 늘고 있다.",
+      "title": "법무법인 세종, 21일 자본시장·M&A 세미나…중복상장 규제 대응 논의"
     },
     "fact:9b7ba9c987c119219d9d8a65": {
       "first_seen_kst": "2026-10-06T16:30:27+09:00",
@@ -43276,6 +43484,27 @@
       "telegram_core_fact": "하지만 대규모 추론 수요가 늘어나면 이를 처리할 수 있는 '메모리 역량'과 지속적인 투자를 가능하게 할 '사업성과 수익구조'가 새로운 핵심 경쟁요인이 될 수 있다고 내다봤다.",
       "title": "AIDC 병목, GPU·전력서 메모리로…정석근 SK하이퍼 대표 \"韓에 새 기회\""
     },
+    "fact:dd5fcf0b5ae49813801ac2ef": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171236",
+      "source": "매일경제",
+      "source_body_digest": "64f7d9300e4611d9fbf73c17b6aa7084060db16bc10333a0169dbdbe900d65b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61cb318d1908b13a1ac4dd3038211af33fa95534034e9fe2e2c0cf9b36321167",
+      "source_fact_keys": [
+        "source_fact:v1:4cb77bf7b46008f3a930d94ac8dea9c8b664f2c23b1656fa9cb33565ee56ee9d",
+        "source_fact:v1:6b62024b89d9e9e73174581535ba16b46c9fe5b15e24cdbfe1f72515fa43fdcb",
+        "source_fact:v1:fc241ec8e30626a8dfbc72e8b87fa01f4872881ad02abd989cec0b5a13819cb6"
+      ],
+      "source_published_kst": "2026-10-08T10:26+09:00",
+      "source_title": "분기 영업이익 107조 찍었는데…전기전자 대형주 순매도 흐름 [주식 초고수는 지금]",
+      "telegram_core_fact": "삼성전자가 분기 영업이익 100조원을 처음 돌파했다는 발표가 나왔지만 초고수들은 전 거래일 순매수 상위에 올려놨던 전기전자 대형주를 하루 만에 대거 정리했다.",
+      "title": "분기 영업이익 107조 찍었는데…전기전자 대형주 순매도 흐름 [주식 초고수는 지금]"
+    },
     "fact:dd643114d83cb3446ba19093": {
       "first_seen_kst": "2026-10-06T20:37:39+09:00",
       "lanes": {
@@ -45030,6 +45259,30 @@
       "source_published_kst": "2026-10-05T20:21+09:00",
       "title": "[美특징주]코어위브, 연이은 제품 가격 인상에 월가 호평…개장전 '강보합'"
     },
+    "fact:ed3ceff3387714f1ab9ba410": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02863446645610952",
+      "source": "이데일리",
+      "source_body_digest": "1b6a0d4fd90e14deb1ced48b2cf7e0a69aa3655c05c8d76205d72735247fce8a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f76561a7f2d50e6765aa012cf3b08498ed890351c902e8a9cec6b4bfd46b08aa",
+      "source_fact_keys": [
+        "source_fact:v1:6488b6c4c09c2bdc59130ff734f284a63332e4ec2738d7f2cd2d34e94b78dede",
+        "source_fact:v1:68875868a18dd912a66258d3ec78be2d5336e460a42c18529d08f6de504ea66a",
+        "source_fact:v1:9d008187b4ec926af126fa5276c12bd3873a65ceb5ff167af105b87bb79af891",
+        "source_fact:v1:9e6bd3e7c67e86206136d6717f3501a31cb326383a47a67c9c54e4fd1563124f",
+        "source_fact:v1:a25f3d5f5c21db0ac3378e841f52e3824069382f562409424109ad6c9debf7b0",
+        "source_fact:v1:e11d96b2e8a892a7aa583b1149e2ba6dd7178beedaecca74ab3f5513f769505d"
+      ],
+      "source_published_kst": "2026-10-08T09:54+09:00",
+      "source_title": "엘리스그룹, 모듈형 AI 데이터센터 ‘PMDC’ 상표 등록",
+      "telegram_core_fact": "2021년부터 개발·운영해온 모듈형 데이터센터 기술과 AI 클라우드 소프트웨어를 결합해 국내외 AI 인프라 사업을 확대한다.",
+      "title": "엘리스그룹, 모듈형 AI 데이터센터 ‘PMDC’ 상표 등록"
+    },
     "fact:ed5109e8afbe8439bacdc49a": {
       "first_seen_kst": "2026-10-05T20:31:34+09:00",
       "lanes": {
@@ -46069,6 +46322,33 @@
       ],
       "source_published_kst": "2026-10-06T09:58+09:00",
       "title": "메리츠는 신규 합류, 기존 증권사는 금리 인상…발행어음 '9파전' 경쟁 본격화"
+    },
+    "fact:f7ea0880083208e5ff9fd128": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816974",
+      "source": "뉴시스",
+      "source_body_digest": "63ad4a4062add8850e68625fe7ff0e85db9451d26769ac6a69c23048ee4544b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f2ef5c1e8564aff293263c4e95522b2b3d664ffd05a495c12881412ee9642ce0",
+      "source_fact_keys": [
+        "source_fact:v1:2c070cfcafd703a27130974d1ecdea15086dabf7e31cb722af85f8c78b783aba",
+        "source_fact:v1:50e6c11927b690514da4376e397ef1132ef39a60b59cbc20a731cb57e6e67b13",
+        "source_fact:v1:826fe75b9844c546a71238e8b7c3ed74b376f46d01cd359e85e6ea60c9153741",
+        "source_fact:v1:962033cd011d8bce875dd230cbe73511943f72ebd98c6be8662d1d900ef691ba",
+        "source_fact:v1:a53a84c7d4ed8a8a84627a179b4f303149b2c0afacfbb9fe8a1125fe608948b2",
+        "source_fact:v1:b2c4771265ec338b1a79aa82924145da966da37fb1a7626e74953855cd011c79",
+        "source_fact:v1:c0a3937da9eb86fc6157b958a8956632e367fd71068d3d7d2b4637aafd01b486",
+        "source_fact:v1:ca624d3a21e11fe5cc06ac4223db1f13b6f6ce1af8c61be4b654e39701b2d2b1",
+        "source_fact:v1:f4555bc888f8bb5648aacf0cda33ff698c19df72030ad6e225ed79bb9c1d933f"
+      ],
+      "source_published_kst": "2026-10-08T11:43+09:00",
+      "source_title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화",
+      "telegram_core_fact": "2000억 달러 대미 전략투자 프로그램이 확정되면서, 1500억 달러 한미 조선 협력 프로젝트인 '마스가(MASGA)'도 본격적인 사업 발굴과 투자 집행 단계에 들어설 전망이다.",
+      "title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화"
     },
     "fact:f82f6fcb4fab34d50318c9af": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
@@ -55233,6 +55513,28 @@
       "source_published_kst": "2026-10-05T20:21+09:00",
       "title": "[美특징주]코어위브, 연이은 제품 가격 인상에 월가 호평…개장전 '강보합'"
     },
+    "link:2eb5836de8cea4e699c8607b": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://biz.chosun.com/topics/law_firm/2026/10/08/PSMISUZSLJDDDHCTYKIDZQXXCI/",
+      "source": "조선비즈",
+      "source_body_digest": "170c8656f654667b64e3a4e45325e336da6ad71f3a7f9d35e974402cf335e87d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9f67ecbb8780d0df3af3cd521c998c36b2a8dde7785f47ac4f96b2af6099d030",
+      "source_fact_keys": [
+        "source_fact:v1:55c422934052c6c410a2399166e55c9170b98c82e09a2a76c4e794651cf9294d",
+        "source_fact:v1:631ed9ad1351333a767026c2d760aab94f25a34a78a4c7ad2c2fe4b8cbe4e114",
+        "source_fact:v1:ce46c95a02b22e874178c124956fcf9fd74976bfc4fa48106d93a4d7992a0b4c",
+        "source_fact:v1:d845165158c6cfec2a489fbd10450484363cf5c7c18858729e28740be32e7fe8"
+      ],
+      "source_published_kst": "2026-10-08T09:11+09:00",
+      "source_title": "법무법인 세종, 21일 자본시장·M&A 세미나…중복상장 규제 대응 논의",
+      "telegram_core_fact": "중복상장 규제가 본격 시행되고 주주 보호를 강화하는 방향으로 자본시장 제도가 바뀌면서 기업의 인수합병(M&A)과 자금조달 과정에서 고려해야 할 변수가 늘고 있다.",
+      "title": "법무법인 세종, 21일 자본시장·M&A 세미나…중복상장 규제 대응 논의"
+    },
     "link:2ebe7c423b86ab9de97e13c4": {
       "first_seen_kst": "2026-10-05T16:27:40+09:00",
       "lanes": {
@@ -56510,6 +56812,30 @@
       "source_title": "LG전자, 3분기 누적 영업이익 4조 첫 돌파…매출 9% 늘 때 이익 56% 뛰었다",
       "telegram_core_fact": "LG전자는 2026년 3분기 연결기준 매출 23조8270억원, 영업이익 7818억원을 잠정 기록했다고 7일 발표했다.",
       "title": "LG전자, 3분기 누적 영업이익 4조 첫 돌파…매출 9% 늘 때 이익 56% 뛰었다"
+    },
+    "link:36261435731a86147f591d79": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02863446645610952",
+      "source": "이데일리",
+      "source_body_digest": "1b6a0d4fd90e14deb1ced48b2cf7e0a69aa3655c05c8d76205d72735247fce8a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f76561a7f2d50e6765aa012cf3b08498ed890351c902e8a9cec6b4bfd46b08aa",
+      "source_fact_keys": [
+        "source_fact:v1:6488b6c4c09c2bdc59130ff734f284a63332e4ec2738d7f2cd2d34e94b78dede",
+        "source_fact:v1:68875868a18dd912a66258d3ec78be2d5336e460a42c18529d08f6de504ea66a",
+        "source_fact:v1:9d008187b4ec926af126fa5276c12bd3873a65ceb5ff167af105b87bb79af891",
+        "source_fact:v1:9e6bd3e7c67e86206136d6717f3501a31cb326383a47a67c9c54e4fd1563124f",
+        "source_fact:v1:a25f3d5f5c21db0ac3378e841f52e3824069382f562409424109ad6c9debf7b0",
+        "source_fact:v1:e11d96b2e8a892a7aa583b1149e2ba6dd7178beedaecca74ab3f5513f769505d"
+      ],
+      "source_published_kst": "2026-10-08T09:54+09:00",
+      "source_title": "엘리스그룹, 모듈형 AI 데이터센터 ‘PMDC’ 상표 등록",
+      "telegram_core_fact": "2021년부터 개발·운영해온 모듈형 데이터센터 기술과 AI 클라우드 소프트웨어를 결합해 국내외 AI 인프라 사업을 확대한다.",
+      "title": "엘리스그룹, 모듈형 AI 데이터센터 ‘PMDC’ 상표 등록"
     },
     "link:366d8bee3f4110314c43f718": {
       "first_seen_kst": "2026-10-01T23:05:38+09:00",
@@ -59018,6 +59344,23 @@
       "link": "https://m.edaily.co.kr/News/Read?newsId=02532166645581432&mediaCodeNo=257",
       "source": "이데일리",
       "title": "JP모건 “ETF 헤지 줄어들면, 비트코인이 금보다 더 오른다”"
+    },
+    "link:43faf4bac1b8638d91703d51": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818966",
+      "source": "뉴시스",
+      "source_body_digest": "061a5e9ba923f5fe4685df8a2554147ec5173ee900a620328e1cab72e57a0ea9",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T13:20+09:00",
+      "source_title": "美 재무부, 상하이 로봇 AI 업체 투자 美 기업에 약 2억 6000만원 벌금",
+      "telegram_core_fact": "이번 사례는 지난해 1월 발효된 것으로 중국의 AI, 반도체 및 양자 컴퓨팅 사업에 대한 미국의 해외 투자 규제 조치가 처음 집행된 것이라고 SCMP는 전했다.",
+      "title": "美 재무부, 상하이 로봇 AI 업체 투자 美 기업에 약 2억 6000만원 벌금"
     },
     "link:442a94a4b8045e7368cde5df": {
       "first_seen_kst": "2026-09-23T16:19:42+09:00",
@@ -61851,6 +62194,27 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T14:10+09:00",
       "title": "롯데백화점, 업계 최초 외국인 매출 1조 넘었다"
+    },
+    "link:5615fe39617514b80e159249": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171236",
+      "source": "매일경제",
+      "source_body_digest": "64f7d9300e4611d9fbf73c17b6aa7084060db16bc10333a0169dbdbe900d65b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61cb318d1908b13a1ac4dd3038211af33fa95534034e9fe2e2c0cf9b36321167",
+      "source_fact_keys": [
+        "source_fact:v1:4cb77bf7b46008f3a930d94ac8dea9c8b664f2c23b1656fa9cb33565ee56ee9d",
+        "source_fact:v1:6b62024b89d9e9e73174581535ba16b46c9fe5b15e24cdbfe1f72515fa43fdcb",
+        "source_fact:v1:fc241ec8e30626a8dfbc72e8b87fa01f4872881ad02abd989cec0b5a13819cb6"
+      ],
+      "source_published_kst": "2026-10-08T10:26+09:00",
+      "source_title": "분기 영업이익 107조 찍었는데…전기전자 대형주 순매도 흐름 [주식 초고수는 지금]",
+      "telegram_core_fact": "삼성전자가 분기 영업이익 100조원을 처음 돌파했다는 발표가 나왔지만 초고수들은 전 거래일 순매수 상위에 올려놨던 전기전자 대형주를 하루 만에 대거 정리했다.",
+      "title": "분기 영업이익 107조 찍었는데…전기전자 대형주 순매도 흐름 [주식 초고수는 지금]"
     },
     "link:56486a606c110329bc7c7e97": {
       "first_seen_kst": "2026-10-06T16:09:23+09:00",
@@ -66333,6 +66697,25 @@
       ],
       "source_published_kst": "2026-10-07T12:00+09:00",
       "title": "반도체 호조에 2분기 기업 여윳돈 67.1조…역대 최대"
+    },
+    "link:6d59ccd054a6e3bd49537997": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896913",
+      "source": "헤럴드경제",
+      "source_body_digest": "804b4eee53616e2b74b617fc7db9203d39b4a81c9fd10b5deebe758157ddc2c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:97ff43a0977bdc61d5cf53036bca3483d41bd8f31d6522e0c672284c6de93710",
+      "source_fact_keys": [
+        "source_fact:v1:4054e6a8463cf13d4b6c92782c0e7214bce26105c19dc82fa6c3d26ab2fa61de"
+      ],
+      "source_published_kst": "2026-10-08T12:03+09:00",
+      "source_title": "남양주시, 왕숙 도시첨단산업단지 개발실시계획 승인·고시",
+      "telegram_core_fact": "이번 승인·고시는 산업단지의 토지이용계획과 기반시설 설치계획 등 사업 추진에 필요한 세부 계획을 확정한 것으로, 왕숙 도시첨단산업단지 조성사업이 계획 단계를 넘어 본격적인 개발 단계에 들어섰다는 데 의미가 있다.",
+      "title": "남양주시, 왕숙 도시첨단산업단지 개발실시계획 승인·고시"
     },
     "link:6d6eb4afbb090f372de221a2": {
       "first_seen_kst": "2026-09-20T19:20:28+09:00",
@@ -78247,6 +78630,26 @@
       "source": "연합뉴스",
       "title": "원/달러 환율, 1.1원 오른 1,383.3원…7거래일 연속 상승 | 연합뉴스"
     },
+    "link:b1bfaef74dd12f37d393625d": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008091700004",
+      "source": "연합뉴스",
+      "source_body_digest": "0c5497b4e1a3b4ec69ac4be56c741266cf3da477063f7eae2e7d7c37a8c2fd85",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b891b1770bcefb6b7083dad9c4463f6be7e7e3526c70a1fd1a0a6f25c091e8e4",
+      "source_fact_keys": [
+        "source_fact:v1:181e29bfaf3e46f75200e5c021e070c75d801e6603011e509c05e599977588c7",
+        "source_fact:v1:bae5b83e4540c54685cd0f6275816dc1d90ad45b1054da1b743ab69b0d5fe9d8"
+      ],
+      "source_published_kst": "2026-10-08T11:45+09:00",
+      "source_title": "'158억원 무차입 공매도 혐의' 홍콩 HSBC, 대법서 무죄 확정 | 연합뉴스",
+      "telegram_core_fact": "HSBC 홍콩법인 트레이더 A씨 등 3명은 2021년 8∼12월 무차입 방식으로 호텔신라 등 9개 상장사 주식 31만8천781주(157억8천468만원)를 공매도한 혐의로 2024년 3월 기소됐다.",
+      "title": "'158억원 무차입 공매도 혐의' 홍콩 HSBC, 대법서 무죄 확정 | 연합뉴스"
+    },
     "link:b1d78d8a7135cd25aae1f67e": {
       "first_seen_kst": "2026-10-07T02:49:10+09:00",
       "lanes": {
@@ -88542,6 +88945,33 @@
       "source": "헤럴드경제",
       "title": "美·英·佛 장기금리 수십년래 최고…글로벌 국채 투매 심화"
     },
+    "link:eb4351cfb7eef73e08ac1084": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816974",
+      "source": "뉴시스",
+      "source_body_digest": "63ad4a4062add8850e68625fe7ff0e85db9451d26769ac6a69c23048ee4544b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f2ef5c1e8564aff293263c4e95522b2b3d664ffd05a495c12881412ee9642ce0",
+      "source_fact_keys": [
+        "source_fact:v1:2c070cfcafd703a27130974d1ecdea15086dabf7e31cb722af85f8c78b783aba",
+        "source_fact:v1:50e6c11927b690514da4376e397ef1132ef39a60b59cbc20a731cb57e6e67b13",
+        "source_fact:v1:826fe75b9844c546a71238e8b7c3ed74b376f46d01cd359e85e6ea60c9153741",
+        "source_fact:v1:962033cd011d8bce875dd230cbe73511943f72ebd98c6be8662d1d900ef691ba",
+        "source_fact:v1:a53a84c7d4ed8a8a84627a179b4f303149b2c0afacfbb9fe8a1125fe608948b2",
+        "source_fact:v1:b2c4771265ec338b1a79aa82924145da966da37fb1a7626e74953855cd011c79",
+        "source_fact:v1:c0a3937da9eb86fc6157b958a8956632e367fd71068d3d7d2b4637aafd01b486",
+        "source_fact:v1:ca624d3a21e11fe5cc06ac4223db1f13b6f6ce1af8c61be4b654e39701b2d2b1",
+        "source_fact:v1:f4555bc888f8bb5648aacf0cda33ff698c19df72030ad6e225ed79bb9c1d933f"
+      ],
+      "source_published_kst": "2026-10-08T11:43+09:00",
+      "source_title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화",
+      "telegram_core_fact": "2000억 달러 대미 전략투자 프로그램이 확정되면서, 1500억 달러 한미 조선 협력 프로젝트인 '마스가(MASGA)'도 본격적인 사업 발굴과 투자 집행 단계에 들어설 전망이다.",
+      "title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화"
+    },
     "link:eb956e51adc0507c363ae71d": {
       "first_seen_kst": "2026-10-01T06:08:16+09:00",
       "lanes": {
@@ -93968,6 +94398,28 @@
       "telegram_core_fact": "라이다(LiDAR) 기반 인지 기술 기업 마이크로비젼(MVIS)이 2026년 연간 매출 가이던스 1000만~1500만 달러를 재확인하고, 2027년 매출이 2026년 대비 2배로 늘어날 것으로 전망하며 2027년 현금 소진도 2026년보다 대폭 줄이겠다는 계획을 7일 발표했다.",
       "title": "마이크로비젼, 올해 매출 1000만~1500만달러 유지..내년 2배 전망"
     },
+    "original:0b1a8e5dc5cd72682467bfc3": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://biz.chosun.com/topics/law_firm/2026/10/08/PSMISUZSLJDDDHCTYKIDZQXXCI/",
+      "source": "조선비즈",
+      "source_body_digest": "170c8656f654667b64e3a4e45325e336da6ad71f3a7f9d35e974402cf335e87d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9f67ecbb8780d0df3af3cd521c998c36b2a8dde7785f47ac4f96b2af6099d030",
+      "source_fact_keys": [
+        "source_fact:v1:55c422934052c6c410a2399166e55c9170b98c82e09a2a76c4e794651cf9294d",
+        "source_fact:v1:631ed9ad1351333a767026c2d760aab94f25a34a78a4c7ad2c2fe4b8cbe4e114",
+        "source_fact:v1:ce46c95a02b22e874178c124956fcf9fd74976bfc4fa48106d93a4d7992a0b4c",
+        "source_fact:v1:d845165158c6cfec2a489fbd10450484363cf5c7c18858729e28740be32e7fe8"
+      ],
+      "source_published_kst": "2026-10-08T09:11+09:00",
+      "source_title": "법무법인 세종, 21일 자본시장·M&A 세미나…중복상장 규제 대응 논의",
+      "telegram_core_fact": "중복상장 규제가 본격 시행되고 주주 보호를 강화하는 방향으로 자본시장 제도가 바뀌면서 기업의 인수합병(M&A)과 자금조달 과정에서 고려해야 할 변수가 늘고 있다.",
+      "title": "법무법인 세종, 21일 자본시장·M&A 세미나…중복상장 규제 대응 논의"
+    },
     "original:0b3a5ebdde0c6ce55b8f7b68": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -97235,6 +97687,33 @@
       "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000019067",
       "source": "국민일보",
       "title": "“왜 AI 위험성 경고하나”…젠슨 황, 앤트로픽 CEO와 설전"
+    },
+    "original:1f06eca53604a9dd832445d7": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816974",
+      "source": "뉴시스",
+      "source_body_digest": "63ad4a4062add8850e68625fe7ff0e85db9451d26769ac6a69c23048ee4544b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f2ef5c1e8564aff293263c4e95522b2b3d664ffd05a495c12881412ee9642ce0",
+      "source_fact_keys": [
+        "source_fact:v1:2c070cfcafd703a27130974d1ecdea15086dabf7e31cb722af85f8c78b783aba",
+        "source_fact:v1:50e6c11927b690514da4376e397ef1132ef39a60b59cbc20a731cb57e6e67b13",
+        "source_fact:v1:826fe75b9844c546a71238e8b7c3ed74b376f46d01cd359e85e6ea60c9153741",
+        "source_fact:v1:962033cd011d8bce875dd230cbe73511943f72ebd98c6be8662d1d900ef691ba",
+        "source_fact:v1:a53a84c7d4ed8a8a84627a179b4f303149b2c0afacfbb9fe8a1125fe608948b2",
+        "source_fact:v1:b2c4771265ec338b1a79aa82924145da966da37fb1a7626e74953855cd011c79",
+        "source_fact:v1:c0a3937da9eb86fc6157b958a8956632e367fd71068d3d7d2b4637aafd01b486",
+        "source_fact:v1:ca624d3a21e11fe5cc06ac4223db1f13b6f6ce1af8c61be4b654e39701b2d2b1",
+        "source_fact:v1:f4555bc888f8bb5648aacf0cda33ff698c19df72030ad6e225ed79bb9c1d933f"
+      ],
+      "source_published_kst": "2026-10-08T11:43+09:00",
+      "source_title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화",
+      "telegram_core_fact": "2000억 달러 대미 전략투자 프로그램이 확정되면서, 1500억 달러 한미 조선 협력 프로젝트인 '마스가(MASGA)'도 본격적인 사업 발굴과 투자 집행 단계에 들어설 전망이다.",
+      "title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화"
     },
     "original:1f0f0902c2d954176857a4a4": {
       "first_seen_kst": "2026-10-02T10:55:46+09:00",
@@ -115840,6 +116319,23 @@
       "source": "연합뉴스",
       "title": "한화에어로, 미국 아칸소주에 탄약 생산거점…7년간 3조원 투자 | 연합뉴스"
     },
+    "original:899ea3b7b2d4d28b715746d9": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818966",
+      "source": "뉴시스",
+      "source_body_digest": "061a5e9ba923f5fe4685df8a2554147ec5173ee900a620328e1cab72e57a0ea9",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T13:20+09:00",
+      "source_title": "美 재무부, 상하이 로봇 AI 업체 투자 美 기업에 약 2억 6000만원 벌금",
+      "telegram_core_fact": "이번 사례는 지난해 1월 발효된 것으로 중국의 AI, 반도체 및 양자 컴퓨팅 사업에 대한 미국의 해외 투자 규제 조치가 처음 집행된 것이라고 SCMP는 전했다.",
+      "title": "美 재무부, 상하이 로봇 AI 업체 투자 美 기업에 약 2억 6000만원 벌금"
+    },
     "original:89a9187c40dabbe900194017": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
       "lanes": {
@@ -117333,6 +117829,26 @@
       "source_title": "LG전자, 3분기 영업익 7818억… 전년比 13.5% 증가",
       "telegram_core_fact": "LG전자는 연결 기준 올해 3분기 잠정 매출이 23조8270억원, 영업이익이 7818억원으로 집계됐다고 7일 공시했다.",
       "title": "LG전자, 3분기 영업익 7818억… 전년比 13.5% 증가"
+    },
+    "original:915c026fce90d2ebef38f11d": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008091700004",
+      "source": "연합뉴스",
+      "source_body_digest": "0c5497b4e1a3b4ec69ac4be56c741266cf3da477063f7eae2e7d7c37a8c2fd85",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b891b1770bcefb6b7083dad9c4463f6be7e7e3526c70a1fd1a0a6f25c091e8e4",
+      "source_fact_keys": [
+        "source_fact:v1:181e29bfaf3e46f75200e5c021e070c75d801e6603011e509c05e599977588c7",
+        "source_fact:v1:bae5b83e4540c54685cd0f6275816dc1d90ad45b1054da1b743ab69b0d5fe9d8"
+      ],
+      "source_published_kst": "2026-10-08T11:45+09:00",
+      "source_title": "'158억원 무차입 공매도 혐의' 홍콩 HSBC, 대법서 무죄 확정 | 연합뉴스",
+      "telegram_core_fact": "HSBC 홍콩법인 트레이더 A씨 등 3명은 2021년 8∼12월 무차입 방식으로 호텔신라 등 9개 상장사 주식 31만8천781주(157억8천468만원)를 공매도한 혐의로 2024년 3월 기소됐다.",
+      "title": "'158억원 무차입 공매도 혐의' 홍콩 HSBC, 대법서 무죄 확정 | 연합뉴스"
     },
     "original:915c416fb74eb89eadad5ccd": {
       "first_seen_kst": "2026-10-06T23:56:49+09:00",
@@ -120126,6 +120642,27 @@
       "source_published_kst": "2026-10-06T17:29+09:00",
       "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 양극재 공급계약 | 연합뉴스"
     },
+    "original:a41148f98adc1407f952b829": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171236",
+      "source": "매일경제",
+      "source_body_digest": "64f7d9300e4611d9fbf73c17b6aa7084060db16bc10333a0169dbdbe900d65b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61cb318d1908b13a1ac4dd3038211af33fa95534034e9fe2e2c0cf9b36321167",
+      "source_fact_keys": [
+        "source_fact:v1:4cb77bf7b46008f3a930d94ac8dea9c8b664f2c23b1656fa9cb33565ee56ee9d",
+        "source_fact:v1:6b62024b89d9e9e73174581535ba16b46c9fe5b15e24cdbfe1f72515fa43fdcb",
+        "source_fact:v1:fc241ec8e30626a8dfbc72e8b87fa01f4872881ad02abd989cec0b5a13819cb6"
+      ],
+      "source_published_kst": "2026-10-08T10:26+09:00",
+      "source_title": "분기 영업이익 107조 찍었는데…전기전자 대형주 순매도 흐름 [주식 초고수는 지금]",
+      "telegram_core_fact": "삼성전자가 분기 영업이익 100조원을 처음 돌파했다는 발표가 나왔지만 초고수들은 전 거래일 순매수 상위에 올려놨던 전기전자 대형주를 하루 만에 대거 정리했다.",
+      "title": "분기 영업이익 107조 찍었는데…전기전자 대형주 순매도 흐름 [주식 초고수는 지금]"
+    },
     "original:a424a15f60e8d00eb9c7dc35": {
       "first_seen_kst": "2026-10-07T19:47:02+09:00",
       "lanes": {
@@ -121056,6 +121593,30 @@
       "source_title": "\"삼성전기, 3년 성장 사이클 열린다…수주 확대 지속\"",
       "telegram_core_fact": "고 연구원은 “컴포넌트의 경우 수주 공시를 통해 AI 서버 수요의 견조함이 확인된다”며 “2027~2028년 반영될 수주금액만 4조원 수준”이라고 강조했다.",
       "title": "\"삼성전기, 3년 성장 사이클 열린다…수주 확대 지속\""
+    },
+    "original:a97165826f4b5a21432a7935": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02863446645610952",
+      "source": "이데일리",
+      "source_body_digest": "1b6a0d4fd90e14deb1ced48b2cf7e0a69aa3655c05c8d76205d72735247fce8a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f76561a7f2d50e6765aa012cf3b08498ed890351c902e8a9cec6b4bfd46b08aa",
+      "source_fact_keys": [
+        "source_fact:v1:6488b6c4c09c2bdc59130ff734f284a63332e4ec2738d7f2cd2d34e94b78dede",
+        "source_fact:v1:68875868a18dd912a66258d3ec78be2d5336e460a42c18529d08f6de504ea66a",
+        "source_fact:v1:9d008187b4ec926af126fa5276c12bd3873a65ceb5ff167af105b87bb79af891",
+        "source_fact:v1:9e6bd3e7c67e86206136d6717f3501a31cb326383a47a67c9c54e4fd1563124f",
+        "source_fact:v1:a25f3d5f5c21db0ac3378e841f52e3824069382f562409424109ad6c9debf7b0",
+        "source_fact:v1:e11d96b2e8a892a7aa583b1149e2ba6dd7178beedaecca74ab3f5513f769505d"
+      ],
+      "source_published_kst": "2026-10-08T09:54+09:00",
+      "source_title": "엘리스그룹, 모듈형 AI 데이터센터 ‘PMDC’ 상표 등록",
+      "telegram_core_fact": "2021년부터 개발·운영해온 모듈형 데이터센터 기술과 AI 클라우드 소프트웨어를 결합해 국내외 AI 인프라 사업을 확대한다.",
+      "title": "엘리스그룹, 모듈형 AI 데이터센터 ‘PMDC’ 상표 등록"
     },
     "original:a976cda2ebc29cc8b30e2347": {
       "first_seen_kst": "2026-10-05T11:45:11+09:00",
@@ -123959,6 +124520,25 @@
       "source_title": "BKV, 1200MW 가스발전설비 확보와 비용 90% 보전 계약에 주목",
       "telegram_core_fact": "텍사스 발전 프로젝트용 1,200MW 가스발전설비 공급계약을 체결했고 2028년 9월부터 인도가 시작됩니다.",
       "title": "BKV, 1200MW 가스발전설비 확보와 비용 90% 보전 계약에 주목"
+    },
+    "original:ba6c461e999b7f86d2c05043": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896913",
+      "source": "헤럴드경제",
+      "source_body_digest": "804b4eee53616e2b74b617fc7db9203d39b4a81c9fd10b5deebe758157ddc2c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:97ff43a0977bdc61d5cf53036bca3483d41bd8f31d6522e0c672284c6de93710",
+      "source_fact_keys": [
+        "source_fact:v1:4054e6a8463cf13d4b6c92782c0e7214bce26105c19dc82fa6c3d26ab2fa61de"
+      ],
+      "source_published_kst": "2026-10-08T12:03+09:00",
+      "source_title": "남양주시, 왕숙 도시첨단산업단지 개발실시계획 승인·고시",
+      "telegram_core_fact": "이번 승인·고시는 산업단지의 토지이용계획과 기반시설 설치계획 등 사업 추진에 필요한 세부 계획을 확정한 것으로, 왕숙 도시첨단산업단지 조성사업이 계획 단계를 넘어 본격적인 개발 단계에 들어섰다는 데 의미가 있다.",
+      "title": "남양주시, 왕숙 도시첨단산업단지 개발실시계획 승인·고시"
     },
     "original:ba6dda28926da38f37c84663": {
       "first_seen_kst": "2026-10-07T16:15:21+09:00",
@@ -137055,6 +137635,30 @@
       ],
       "source_published_kst": "2026-10-05T20:16+09:00",
       "title": "\"역사상 가장 어려운 시기\"…이란 안보수장, 경제난 공식 시인"
+    },
+    "source_fact:03322428d1c8bb5dfe965b7d": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02863446645610952",
+      "source": "이데일리",
+      "source_body_digest": "1b6a0d4fd90e14deb1ced48b2cf7e0a69aa3655c05c8d76205d72735247fce8a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f76561a7f2d50e6765aa012cf3b08498ed890351c902e8a9cec6b4bfd46b08aa",
+      "source_fact_keys": [
+        "source_fact:v1:6488b6c4c09c2bdc59130ff734f284a63332e4ec2738d7f2cd2d34e94b78dede",
+        "source_fact:v1:68875868a18dd912a66258d3ec78be2d5336e460a42c18529d08f6de504ea66a",
+        "source_fact:v1:9d008187b4ec926af126fa5276c12bd3873a65ceb5ff167af105b87bb79af891",
+        "source_fact:v1:9e6bd3e7c67e86206136d6717f3501a31cb326383a47a67c9c54e4fd1563124f",
+        "source_fact:v1:a25f3d5f5c21db0ac3378e841f52e3824069382f562409424109ad6c9debf7b0",
+        "source_fact:v1:e11d96b2e8a892a7aa583b1149e2ba6dd7178beedaecca74ab3f5513f769505d"
+      ],
+      "source_published_kst": "2026-10-08T09:54+09:00",
+      "source_title": "엘리스그룹, 모듈형 AI 데이터센터 ‘PMDC’ 상표 등록",
+      "telegram_core_fact": "2021년부터 개발·운영해온 모듈형 데이터센터 기술과 AI 클라우드 소프트웨어를 결합해 국내외 AI 인프라 사업을 확대한다.",
+      "title": "엘리스그룹, 모듈형 AI 데이터센터 ‘PMDC’ 상표 등록"
     },
     "source_fact:034faa19e3c9f53ba7c63556": {
       "first_seen_kst": "2026-10-08T08:31:37+09:00",
@@ -151481,6 +152085,26 @@
       "source_published_kst": "2026-10-06T07:45+09:00",
       "title": "\"지금이 매수 기회\" 화장품株 급락했는데, 수출 29% 급증"
     },
+    "source_fact:20dac2ed1ef1383bbb429a23": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008091700004",
+      "source": "연합뉴스",
+      "source_body_digest": "0c5497b4e1a3b4ec69ac4be56c741266cf3da477063f7eae2e7d7c37a8c2fd85",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b891b1770bcefb6b7083dad9c4463f6be7e7e3526c70a1fd1a0a6f25c091e8e4",
+      "source_fact_keys": [
+        "source_fact:v1:181e29bfaf3e46f75200e5c021e070c75d801e6603011e509c05e599977588c7",
+        "source_fact:v1:bae5b83e4540c54685cd0f6275816dc1d90ad45b1054da1b743ab69b0d5fe9d8"
+      ],
+      "source_published_kst": "2026-10-08T11:45+09:00",
+      "source_title": "'158억원 무차입 공매도 혐의' 홍콩 HSBC, 대법서 무죄 확정 | 연합뉴스",
+      "telegram_core_fact": "HSBC 홍콩법인 트레이더 A씨 등 3명은 2021년 8∼12월 무차입 방식으로 호텔신라 등 9개 상장사 주식 31만8천781주(157억8천468만원)를 공매도한 혐의로 2024년 3월 기소됐다.",
+      "title": "'158억원 무차입 공매도 혐의' 홍콩 HSBC, 대법서 무죄 확정 | 연합뉴스"
+    },
     "source_fact:20f47d64b8e51e9773fa4c54": {
       "first_seen_kst": "2026-10-06T01:41:59+09:00",
       "lanes": {
@@ -155974,6 +156598,33 @@
       "source_published_kst": "2026-10-06T08:33+09:00",
       "title": "“광고·커머스 매출 성장 둔화, AI 비용 증가”…대신증권, NAVER 목표가↓"
     },
+    "source_fact:29b54a14609b6fdfd35e3387": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816974",
+      "source": "뉴시스",
+      "source_body_digest": "63ad4a4062add8850e68625fe7ff0e85db9451d26769ac6a69c23048ee4544b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f2ef5c1e8564aff293263c4e95522b2b3d664ffd05a495c12881412ee9642ce0",
+      "source_fact_keys": [
+        "source_fact:v1:2c070cfcafd703a27130974d1ecdea15086dabf7e31cb722af85f8c78b783aba",
+        "source_fact:v1:50e6c11927b690514da4376e397ef1132ef39a60b59cbc20a731cb57e6e67b13",
+        "source_fact:v1:826fe75b9844c546a71238e8b7c3ed74b376f46d01cd359e85e6ea60c9153741",
+        "source_fact:v1:962033cd011d8bce875dd230cbe73511943f72ebd98c6be8662d1d900ef691ba",
+        "source_fact:v1:a53a84c7d4ed8a8a84627a179b4f303149b2c0afacfbb9fe8a1125fe608948b2",
+        "source_fact:v1:b2c4771265ec338b1a79aa82924145da966da37fb1a7626e74953855cd011c79",
+        "source_fact:v1:c0a3937da9eb86fc6157b958a8956632e367fd71068d3d7d2b4637aafd01b486",
+        "source_fact:v1:ca624d3a21e11fe5cc06ac4223db1f13b6f6ce1af8c61be4b654e39701b2d2b1",
+        "source_fact:v1:f4555bc888f8bb5648aacf0cda33ff698c19df72030ad6e225ed79bb9c1d933f"
+      ],
+      "source_published_kst": "2026-10-08T11:43+09:00",
+      "source_title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화",
+      "telegram_core_fact": "2000억 달러 대미 전략투자 프로그램이 확정되면서, 1500억 달러 한미 조선 협력 프로젝트인 '마스가(MASGA)'도 본격적인 사업 발굴과 투자 집행 단계에 들어설 전망이다.",
+      "title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화"
+    },
     "source_fact:29b7123584fa1a8f27a63b69": {
       "first_seen_kst": "2026-10-07T20:43:18+09:00",
       "lanes": {
@@ -159694,6 +160345,28 @@
       ],
       "source_published_kst": "2026-10-07T08:49+09:00",
       "title": "위스키 인터내셔널 홀딩, 자회사 1000만 달러 PIPE 유치..티커 변경"
+    },
+    "source_fact:308bc9e0d2be660ce496a16d": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://biz.chosun.com/topics/law_firm/2026/10/08/PSMISUZSLJDDDHCTYKIDZQXXCI/",
+      "source": "조선비즈",
+      "source_body_digest": "170c8656f654667b64e3a4e45325e336da6ad71f3a7f9d35e974402cf335e87d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9f67ecbb8780d0df3af3cd521c998c36b2a8dde7785f47ac4f96b2af6099d030",
+      "source_fact_keys": [
+        "source_fact:v1:55c422934052c6c410a2399166e55c9170b98c82e09a2a76c4e794651cf9294d",
+        "source_fact:v1:631ed9ad1351333a767026c2d760aab94f25a34a78a4c7ad2c2fe4b8cbe4e114",
+        "source_fact:v1:ce46c95a02b22e874178c124956fcf9fd74976bfc4fa48106d93a4d7992a0b4c",
+        "source_fact:v1:d845165158c6cfec2a489fbd10450484363cf5c7c18858729e28740be32e7fe8"
+      ],
+      "source_published_kst": "2026-10-08T09:11+09:00",
+      "source_title": "법무법인 세종, 21일 자본시장·M&A 세미나…중복상장 규제 대응 논의",
+      "telegram_core_fact": "중복상장 규제가 본격 시행되고 주주 보호를 강화하는 방향으로 자본시장 제도가 바뀌면서 기업의 인수합병(M&A)과 자금조달 과정에서 고려해야 할 변수가 늘고 있다.",
+      "title": "법무법인 세종, 21일 자본시장·M&A 세미나…중복상장 규제 대응 논의"
     },
     "source_fact:308dd3bd4c990b9ae7e15ee3": {
       "first_seen_kst": "2026-10-08T07:50:51+09:00",
@@ -177848,6 +178521,33 @@
       "telegram_core_fact": "이날 뉴욕상업거래소에서 11월 인도분 서부텍사스산원유(WTI)는 전장보다 1.16달러(1.3%) 내린 배럴당 88.28달러에 장을 마감했다.",
       "title": "[속보] 국제유가 하락⋯WTI 1.3%↓"
     },
+    "source_fact:54e527fe5355b70bd1a74f71": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816974",
+      "source": "뉴시스",
+      "source_body_digest": "63ad4a4062add8850e68625fe7ff0e85db9451d26769ac6a69c23048ee4544b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f2ef5c1e8564aff293263c4e95522b2b3d664ffd05a495c12881412ee9642ce0",
+      "source_fact_keys": [
+        "source_fact:v1:2c070cfcafd703a27130974d1ecdea15086dabf7e31cb722af85f8c78b783aba",
+        "source_fact:v1:50e6c11927b690514da4376e397ef1132ef39a60b59cbc20a731cb57e6e67b13",
+        "source_fact:v1:826fe75b9844c546a71238e8b7c3ed74b376f46d01cd359e85e6ea60c9153741",
+        "source_fact:v1:962033cd011d8bce875dd230cbe73511943f72ebd98c6be8662d1d900ef691ba",
+        "source_fact:v1:a53a84c7d4ed8a8a84627a179b4f303149b2c0afacfbb9fe8a1125fe608948b2",
+        "source_fact:v1:b2c4771265ec338b1a79aa82924145da966da37fb1a7626e74953855cd011c79",
+        "source_fact:v1:c0a3937da9eb86fc6157b958a8956632e367fd71068d3d7d2b4637aafd01b486",
+        "source_fact:v1:ca624d3a21e11fe5cc06ac4223db1f13b6f6ce1af8c61be4b654e39701b2d2b1",
+        "source_fact:v1:f4555bc888f8bb5648aacf0cda33ff698c19df72030ad6e225ed79bb9c1d933f"
+      ],
+      "source_published_kst": "2026-10-08T11:43+09:00",
+      "source_title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화",
+      "telegram_core_fact": "2000억 달러 대미 전략투자 프로그램이 확정되면서, 1500억 달러 한미 조선 협력 프로젝트인 '마스가(MASGA)'도 본격적인 사업 발굴과 투자 집행 단계에 들어설 전망이다.",
+      "title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화"
+    },
     "source_fact:54e6160128ab0221fd0b163c": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
       "lanes": {
@@ -178232,6 +178932,30 @@
       ],
       "source_published_kst": "2026-10-07T11:06+09:00",
       "title": "[ESGX 이슈 5] 구글, 美 원전 11기 출력 높인다…AI 전력 확보에 43억달러 투자"
+    },
+    "source_fact:5616957c4a249489aaec62f3": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02863446645610952",
+      "source": "이데일리",
+      "source_body_digest": "1b6a0d4fd90e14deb1ced48b2cf7e0a69aa3655c05c8d76205d72735247fce8a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f76561a7f2d50e6765aa012cf3b08498ed890351c902e8a9cec6b4bfd46b08aa",
+      "source_fact_keys": [
+        "source_fact:v1:6488b6c4c09c2bdc59130ff734f284a63332e4ec2738d7f2cd2d34e94b78dede",
+        "source_fact:v1:68875868a18dd912a66258d3ec78be2d5336e460a42c18529d08f6de504ea66a",
+        "source_fact:v1:9d008187b4ec926af126fa5276c12bd3873a65ceb5ff167af105b87bb79af891",
+        "source_fact:v1:9e6bd3e7c67e86206136d6717f3501a31cb326383a47a67c9c54e4fd1563124f",
+        "source_fact:v1:a25f3d5f5c21db0ac3378e841f52e3824069382f562409424109ad6c9debf7b0",
+        "source_fact:v1:e11d96b2e8a892a7aa583b1149e2ba6dd7178beedaecca74ab3f5513f769505d"
+      ],
+      "source_published_kst": "2026-10-08T09:54+09:00",
+      "source_title": "엘리스그룹, 모듈형 AI 데이터센터 ‘PMDC’ 상표 등록",
+      "telegram_core_fact": "2021년부터 개발·운영해온 모듈형 데이터센터 기술과 AI 클라우드 소프트웨어를 결합해 국내외 AI 인프라 사업을 확대한다.",
+      "title": "엘리스그룹, 모듈형 AI 데이터센터 ‘PMDC’ 상표 등록"
     },
     "source_fact:5623479559fcc1071ed4b838": {
       "first_seen_kst": "2026-10-06T00:26:07+09:00",
@@ -180225,6 +180949,28 @@
       "source_published_kst": "2026-10-07T11:00+09:00",
       "title": "폴스타, 9월 역대 최대 판매…年 판매목표 달성 성큼"
     },
+    "source_fact:59c7c0157125544c3bee1439": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://biz.chosun.com/topics/law_firm/2026/10/08/PSMISUZSLJDDDHCTYKIDZQXXCI/",
+      "source": "조선비즈",
+      "source_body_digest": "170c8656f654667b64e3a4e45325e336da6ad71f3a7f9d35e974402cf335e87d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9f67ecbb8780d0df3af3cd521c998c36b2a8dde7785f47ac4f96b2af6099d030",
+      "source_fact_keys": [
+        "source_fact:v1:55c422934052c6c410a2399166e55c9170b98c82e09a2a76c4e794651cf9294d",
+        "source_fact:v1:631ed9ad1351333a767026c2d760aab94f25a34a78a4c7ad2c2fe4b8cbe4e114",
+        "source_fact:v1:ce46c95a02b22e874178c124956fcf9fd74976bfc4fa48106d93a4d7992a0b4c",
+        "source_fact:v1:d845165158c6cfec2a489fbd10450484363cf5c7c18858729e28740be32e7fe8"
+      ],
+      "source_published_kst": "2026-10-08T09:11+09:00",
+      "source_title": "법무법인 세종, 21일 자본시장·M&A 세미나…중복상장 규제 대응 논의",
+      "telegram_core_fact": "중복상장 규제가 본격 시행되고 주주 보호를 강화하는 방향으로 자본시장 제도가 바뀌면서 기업의 인수합병(M&A)과 자금조달 과정에서 고려해야 할 변수가 늘고 있다.",
+      "title": "법무법인 세종, 21일 자본시장·M&A 세미나…중복상장 규제 대응 논의"
+    },
     "source_fact:59dc55e979d2d4e7701b3dde": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
       "lanes": {
@@ -181628,6 +182374,30 @@
       "source_title": "李 \"녹색기업 세액공제 외 보조금 지급 검토\" 지시",
       "telegram_core_fact": "이재명 대통령이 내년에 도입하는 국내생산세액공제 제도의 혜택을 당장 보지 못할 녹색기업들을 위해 직접 보조금을 지급하는 방안을 검토하라고 지시했다.",
       "title": "李 \"녹색기업 세액공제 외 보조금 지급 검토\" 지시"
+    },
+    "source_fact:5c78d749673e986788578db2": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02863446645610952",
+      "source": "이데일리",
+      "source_body_digest": "1b6a0d4fd90e14deb1ced48b2cf7e0a69aa3655c05c8d76205d72735247fce8a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f76561a7f2d50e6765aa012cf3b08498ed890351c902e8a9cec6b4bfd46b08aa",
+      "source_fact_keys": [
+        "source_fact:v1:6488b6c4c09c2bdc59130ff734f284a63332e4ec2738d7f2cd2d34e94b78dede",
+        "source_fact:v1:68875868a18dd912a66258d3ec78be2d5336e460a42c18529d08f6de504ea66a",
+        "source_fact:v1:9d008187b4ec926af126fa5276c12bd3873a65ceb5ff167af105b87bb79af891",
+        "source_fact:v1:9e6bd3e7c67e86206136d6717f3501a31cb326383a47a67c9c54e4fd1563124f",
+        "source_fact:v1:a25f3d5f5c21db0ac3378e841f52e3824069382f562409424109ad6c9debf7b0",
+        "source_fact:v1:e11d96b2e8a892a7aa583b1149e2ba6dd7178beedaecca74ab3f5513f769505d"
+      ],
+      "source_published_kst": "2026-10-08T09:54+09:00",
+      "source_title": "엘리스그룹, 모듈형 AI 데이터센터 ‘PMDC’ 상표 등록",
+      "telegram_core_fact": "2021년부터 개발·운영해온 모듈형 데이터센터 기술과 AI 클라우드 소프트웨어를 결합해 국내외 AI 인프라 사업을 확대한다.",
+      "title": "엘리스그룹, 모듈형 AI 데이터센터 ‘PMDC’ 상표 등록"
     },
     "source_fact:5c7e78c98542c5cc6574ac86": {
       "first_seen_kst": "2026-10-08T00:24:24+09:00",
@@ -183088,6 +183858,33 @@
       "source_published_kst": "2026-10-05T08:08+09:00",
       "title": "한반도 감시부터 우주의약품 실험까지…K-우주영토 넓힌다[누리호 5차 下]"
     },
+    "source_fact:5f3f95b437c285033cee9de3": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816974",
+      "source": "뉴시스",
+      "source_body_digest": "63ad4a4062add8850e68625fe7ff0e85db9451d26769ac6a69c23048ee4544b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f2ef5c1e8564aff293263c4e95522b2b3d664ffd05a495c12881412ee9642ce0",
+      "source_fact_keys": [
+        "source_fact:v1:2c070cfcafd703a27130974d1ecdea15086dabf7e31cb722af85f8c78b783aba",
+        "source_fact:v1:50e6c11927b690514da4376e397ef1132ef39a60b59cbc20a731cb57e6e67b13",
+        "source_fact:v1:826fe75b9844c546a71238e8b7c3ed74b376f46d01cd359e85e6ea60c9153741",
+        "source_fact:v1:962033cd011d8bce875dd230cbe73511943f72ebd98c6be8662d1d900ef691ba",
+        "source_fact:v1:a53a84c7d4ed8a8a84627a179b4f303149b2c0afacfbb9fe8a1125fe608948b2",
+        "source_fact:v1:b2c4771265ec338b1a79aa82924145da966da37fb1a7626e74953855cd011c79",
+        "source_fact:v1:c0a3937da9eb86fc6157b958a8956632e367fd71068d3d7d2b4637aafd01b486",
+        "source_fact:v1:ca624d3a21e11fe5cc06ac4223db1f13b6f6ce1af8c61be4b654e39701b2d2b1",
+        "source_fact:v1:f4555bc888f8bb5648aacf0cda33ff698c19df72030ad6e225ed79bb9c1d933f"
+      ],
+      "source_published_kst": "2026-10-08T11:43+09:00",
+      "source_title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화",
+      "telegram_core_fact": "2000억 달러 대미 전략투자 프로그램이 확정되면서, 1500억 달러 한미 조선 협력 프로젝트인 '마스가(MASGA)'도 본격적인 사업 발굴과 투자 집행 단계에 들어설 전망이다.",
+      "title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화"
+    },
     "source_fact:5f579318f70f7217318bbe38": {
       "first_seen_kst": "2026-10-07T12:49:48+09:00",
       "lanes": {
@@ -183738,6 +184535,28 @@
       ],
       "source_published_kst": "2026-10-06T17:02+09:00",
       "title": "엠투클라우드 \"백신 유통 이력 '디지털 관리' 의료기관까지 확대\""
+    },
+    "source_fact:6088e3cc291c948cd6fcd305": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://biz.chosun.com/topics/law_firm/2026/10/08/PSMISUZSLJDDDHCTYKIDZQXXCI/",
+      "source": "조선비즈",
+      "source_body_digest": "170c8656f654667b64e3a4e45325e336da6ad71f3a7f9d35e974402cf335e87d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9f67ecbb8780d0df3af3cd521c998c36b2a8dde7785f47ac4f96b2af6099d030",
+      "source_fact_keys": [
+        "source_fact:v1:55c422934052c6c410a2399166e55c9170b98c82e09a2a76c4e794651cf9294d",
+        "source_fact:v1:631ed9ad1351333a767026c2d760aab94f25a34a78a4c7ad2c2fe4b8cbe4e114",
+        "source_fact:v1:ce46c95a02b22e874178c124956fcf9fd74976bfc4fa48106d93a4d7992a0b4c",
+        "source_fact:v1:d845165158c6cfec2a489fbd10450484363cf5c7c18858729e28740be32e7fe8"
+      ],
+      "source_published_kst": "2026-10-08T09:11+09:00",
+      "source_title": "법무법인 세종, 21일 자본시장·M&A 세미나…중복상장 규제 대응 논의",
+      "telegram_core_fact": "중복상장 규제가 본격 시행되고 주주 보호를 강화하는 방향으로 자본시장 제도가 바뀌면서 기업의 인수합병(M&A)과 자금조달 과정에서 고려해야 할 변수가 늘고 있다.",
+      "title": "법무법인 세종, 21일 자본시장·M&A 세미나…중복상장 규제 대응 논의"
     },
     "source_fact:60a15d16cdba6a657cc5a704": {
       "first_seen_kst": "2026-10-08T13:07:52+09:00",
@@ -189503,6 +190322,25 @@
       "telegram_core_fact": "엘링턴 크레딧(EARN)이 이사회에서 보통주 1주당 0.08달러의 월간 배당을 결정했다고 7일(현지시간) 발표했다.",
       "title": "엘링턴 크레딧, 월 배당 주당 0.08달러 선언..11월 30일 지급"
     },
+    "source_fact:6c74e9b471ea2f76aaef5ca0": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896913",
+      "source": "헤럴드경제",
+      "source_body_digest": "804b4eee53616e2b74b617fc7db9203d39b4a81c9fd10b5deebe758157ddc2c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:97ff43a0977bdc61d5cf53036bca3483d41bd8f31d6522e0c672284c6de93710",
+      "source_fact_keys": [
+        "source_fact:v1:4054e6a8463cf13d4b6c92782c0e7214bce26105c19dc82fa6c3d26ab2fa61de"
+      ],
+      "source_published_kst": "2026-10-08T12:03+09:00",
+      "source_title": "남양주시, 왕숙 도시첨단산업단지 개발실시계획 승인·고시",
+      "telegram_core_fact": "이번 승인·고시는 산업단지의 토지이용계획과 기반시설 설치계획 등 사업 추진에 필요한 세부 계획을 확정한 것으로, 왕숙 도시첨단산업단지 조성사업이 계획 단계를 넘어 본격적인 개발 단계에 들어섰다는 데 의미가 있다.",
+      "title": "남양주시, 왕숙 도시첨단산업단지 개발실시계획 승인·고시"
+    },
     "source_fact:6c7510ddf63896bfa488654f": {
       "first_seen_kst": "2026-10-08T11:49:03+09:00",
       "lanes": {
@@ -191779,6 +192617,33 @@
       ],
       "source_published_kst": "2026-10-06T16:10+09:00",
       "title": "신세계그룹, 워너브라더스 인수에 1조4000억 투자…콘텐츠 사업 확장"
+    },
+    "source_fact:718acdb78ec98cd83ccf853f": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816974",
+      "source": "뉴시스",
+      "source_body_digest": "63ad4a4062add8850e68625fe7ff0e85db9451d26769ac6a69c23048ee4544b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f2ef5c1e8564aff293263c4e95522b2b3d664ffd05a495c12881412ee9642ce0",
+      "source_fact_keys": [
+        "source_fact:v1:2c070cfcafd703a27130974d1ecdea15086dabf7e31cb722af85f8c78b783aba",
+        "source_fact:v1:50e6c11927b690514da4376e397ef1132ef39a60b59cbc20a731cb57e6e67b13",
+        "source_fact:v1:826fe75b9844c546a71238e8b7c3ed74b376f46d01cd359e85e6ea60c9153741",
+        "source_fact:v1:962033cd011d8bce875dd230cbe73511943f72ebd98c6be8662d1d900ef691ba",
+        "source_fact:v1:a53a84c7d4ed8a8a84627a179b4f303149b2c0afacfbb9fe8a1125fe608948b2",
+        "source_fact:v1:b2c4771265ec338b1a79aa82924145da966da37fb1a7626e74953855cd011c79",
+        "source_fact:v1:c0a3937da9eb86fc6157b958a8956632e367fd71068d3d7d2b4637aafd01b486",
+        "source_fact:v1:ca624d3a21e11fe5cc06ac4223db1f13b6f6ce1af8c61be4b654e39701b2d2b1",
+        "source_fact:v1:f4555bc888f8bb5648aacf0cda33ff698c19df72030ad6e225ed79bb9c1d933f"
+      ],
+      "source_published_kst": "2026-10-08T11:43+09:00",
+      "source_title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화",
+      "telegram_core_fact": "2000억 달러 대미 전략투자 프로그램이 확정되면서, 1500억 달러 한미 조선 협력 프로젝트인 '마스가(MASGA)'도 본격적인 사업 발굴과 투자 집행 단계에 들어설 전망이다.",
+      "title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화"
     },
     "source_fact:718f2fa47e09a9c3ecd03736": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
@@ -198993,6 +199858,26 @@
       "source_published_kst": "2026-10-06T17:12+09:00",
       "title": "포스코퓨처엠, 삼성SDI와 6조 계약…LFP 물량 두 배 넘게 확대"
     },
+    "source_fact:805628999cef69f8f3070ad6": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008091700004",
+      "source": "연합뉴스",
+      "source_body_digest": "0c5497b4e1a3b4ec69ac4be56c741266cf3da477063f7eae2e7d7c37a8c2fd85",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b891b1770bcefb6b7083dad9c4463f6be7e7e3526c70a1fd1a0a6f25c091e8e4",
+      "source_fact_keys": [
+        "source_fact:v1:181e29bfaf3e46f75200e5c021e070c75d801e6603011e509c05e599977588c7",
+        "source_fact:v1:bae5b83e4540c54685cd0f6275816dc1d90ad45b1054da1b743ab69b0d5fe9d8"
+      ],
+      "source_published_kst": "2026-10-08T11:45+09:00",
+      "source_title": "'158억원 무차입 공매도 혐의' 홍콩 HSBC, 대법서 무죄 확정 | 연합뉴스",
+      "telegram_core_fact": "HSBC 홍콩법인 트레이더 A씨 등 3명은 2021년 8∼12월 무차입 방식으로 호텔신라 등 9개 상장사 주식 31만8천781주(157억8천468만원)를 공매도한 혐의로 2024년 3월 기소됐다.",
+      "title": "'158억원 무차입 공매도 혐의' 홍콩 HSBC, 대법서 무죄 확정 | 연합뉴스"
+    },
     "source_fact:8059ac53c90c8e354982452f": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
       "lanes": {
@@ -201978,6 +202863,30 @@
       "source_published_kst": "2026-10-06T20:10+09:00",
       "title": "콘스텔레이션, 구글과 10억 달러 이상 원전 전력 계약 임박 소식에 강세"
     },
+    "source_fact:86bc5a30824a5355d41fb1bf": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02863446645610952",
+      "source": "이데일리",
+      "source_body_digest": "1b6a0d4fd90e14deb1ced48b2cf7e0a69aa3655c05c8d76205d72735247fce8a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f76561a7f2d50e6765aa012cf3b08498ed890351c902e8a9cec6b4bfd46b08aa",
+      "source_fact_keys": [
+        "source_fact:v1:6488b6c4c09c2bdc59130ff734f284a63332e4ec2738d7f2cd2d34e94b78dede",
+        "source_fact:v1:68875868a18dd912a66258d3ec78be2d5336e460a42c18529d08f6de504ea66a",
+        "source_fact:v1:9d008187b4ec926af126fa5276c12bd3873a65ceb5ff167af105b87bb79af891",
+        "source_fact:v1:9e6bd3e7c67e86206136d6717f3501a31cb326383a47a67c9c54e4fd1563124f",
+        "source_fact:v1:a25f3d5f5c21db0ac3378e841f52e3824069382f562409424109ad6c9debf7b0",
+        "source_fact:v1:e11d96b2e8a892a7aa583b1149e2ba6dd7178beedaecca74ab3f5513f769505d"
+      ],
+      "source_published_kst": "2026-10-08T09:54+09:00",
+      "source_title": "엘리스그룹, 모듈형 AI 데이터센터 ‘PMDC’ 상표 등록",
+      "telegram_core_fact": "2021년부터 개발·운영해온 모듈형 데이터센터 기술과 AI 클라우드 소프트웨어를 결합해 국내외 AI 인프라 사업을 확대한다.",
+      "title": "엘리스그룹, 모듈형 AI 데이터센터 ‘PMDC’ 상표 등록"
+    },
     "source_fact:86bc69a04d8f5a63bc15bd97": {
       "first_seen_kst": "2026-10-08T15:16:19+09:00",
       "lanes": {
@@ -203448,6 +204357,54 @@
       "telegram_core_fact": "예상대로라면 미래에셋증권은 직전 분기(지배주주순이익 1조8,959억원) 대비 적자 전환하게 됩니다. 고연수 하나증권 연구원은 \"(미래에셋증권의) 3분기 연결 지배주주 순손실은 4,088억원으로 컨센서스(시장 예상치)인 986억원을 대폭 하회할 것으로 예상한다\"고 밝혔습니다.",
       "title": "하나증권 “미래에셋, 스페이스X 평가손에 3분기 적자 예상“"
     },
+    "source_fact:8a04bd1560826e99458fbf81": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816974",
+      "source": "뉴시스",
+      "source_body_digest": "63ad4a4062add8850e68625fe7ff0e85db9451d26769ac6a69c23048ee4544b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f2ef5c1e8564aff293263c4e95522b2b3d664ffd05a495c12881412ee9642ce0",
+      "source_fact_keys": [
+        "source_fact:v1:2c070cfcafd703a27130974d1ecdea15086dabf7e31cb722af85f8c78b783aba",
+        "source_fact:v1:50e6c11927b690514da4376e397ef1132ef39a60b59cbc20a731cb57e6e67b13",
+        "source_fact:v1:826fe75b9844c546a71238e8b7c3ed74b376f46d01cd359e85e6ea60c9153741",
+        "source_fact:v1:962033cd011d8bce875dd230cbe73511943f72ebd98c6be8662d1d900ef691ba",
+        "source_fact:v1:a53a84c7d4ed8a8a84627a179b4f303149b2c0afacfbb9fe8a1125fe608948b2",
+        "source_fact:v1:b2c4771265ec338b1a79aa82924145da966da37fb1a7626e74953855cd011c79",
+        "source_fact:v1:c0a3937da9eb86fc6157b958a8956632e367fd71068d3d7d2b4637aafd01b486",
+        "source_fact:v1:ca624d3a21e11fe5cc06ac4223db1f13b6f6ce1af8c61be4b654e39701b2d2b1",
+        "source_fact:v1:f4555bc888f8bb5648aacf0cda33ff698c19df72030ad6e225ed79bb9c1d933f"
+      ],
+      "source_published_kst": "2026-10-08T11:43+09:00",
+      "source_title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화",
+      "telegram_core_fact": "2000억 달러 대미 전략투자 프로그램이 확정되면서, 1500억 달러 한미 조선 협력 프로젝트인 '마스가(MASGA)'도 본격적인 사업 발굴과 투자 집행 단계에 들어설 전망이다.",
+      "title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화"
+    },
+    "source_fact:8a0f21b0e046e2fe072b04c2": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171236",
+      "source": "매일경제",
+      "source_body_digest": "64f7d9300e4611d9fbf73c17b6aa7084060db16bc10333a0169dbdbe900d65b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61cb318d1908b13a1ac4dd3038211af33fa95534034e9fe2e2c0cf9b36321167",
+      "source_fact_keys": [
+        "source_fact:v1:4cb77bf7b46008f3a930d94ac8dea9c8b664f2c23b1656fa9cb33565ee56ee9d",
+        "source_fact:v1:6b62024b89d9e9e73174581535ba16b46c9fe5b15e24cdbfe1f72515fa43fdcb",
+        "source_fact:v1:fc241ec8e30626a8dfbc72e8b87fa01f4872881ad02abd989cec0b5a13819cb6"
+      ],
+      "source_published_kst": "2026-10-08T10:26+09:00",
+      "source_title": "분기 영업이익 107조 찍었는데…전기전자 대형주 순매도 흐름 [주식 초고수는 지금]",
+      "telegram_core_fact": "삼성전자가 분기 영업이익 100조원을 처음 돌파했다는 발표가 나왔지만 초고수들은 전 거래일 순매수 상위에 올려놨던 전기전자 대형주를 하루 만에 대거 정리했다.",
+      "title": "분기 영업이익 107조 찍었는데…전기전자 대형주 순매도 흐름 [주식 초고수는 지금]"
+    },
     "source_fact:8a11e0c3b48a63696aac46ce": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
       "lanes": {
@@ -203695,6 +204652,33 @@
       "source_title": "9월 FOMC \"연내 금리 인상 한 번 더\"…인상 근거 놓고는 시각차 [Fed 워치]",
       "telegram_core_fact": "Fed가 공개한 9월 15~16일 연방공개시장위원회(FOMC) 의사록에 따르면 모든 참석자는 연방기금금리 목표범위를 0.25%포인트 인상해 연 3.75~4.00%로 높이는 데 찬성했다.",
       "title": "9월 FOMC \"연내 금리 인상 한 번 더\"…인상 근거 놓고는 시각차 [Fed 워치]"
+    },
+    "source_fact:8a67d3f8421d608c7ce23ca1": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816974",
+      "source": "뉴시스",
+      "source_body_digest": "63ad4a4062add8850e68625fe7ff0e85db9451d26769ac6a69c23048ee4544b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f2ef5c1e8564aff293263c4e95522b2b3d664ffd05a495c12881412ee9642ce0",
+      "source_fact_keys": [
+        "source_fact:v1:2c070cfcafd703a27130974d1ecdea15086dabf7e31cb722af85f8c78b783aba",
+        "source_fact:v1:50e6c11927b690514da4376e397ef1132ef39a60b59cbc20a731cb57e6e67b13",
+        "source_fact:v1:826fe75b9844c546a71238e8b7c3ed74b376f46d01cd359e85e6ea60c9153741",
+        "source_fact:v1:962033cd011d8bce875dd230cbe73511943f72ebd98c6be8662d1d900ef691ba",
+        "source_fact:v1:a53a84c7d4ed8a8a84627a179b4f303149b2c0afacfbb9fe8a1125fe608948b2",
+        "source_fact:v1:b2c4771265ec338b1a79aa82924145da966da37fb1a7626e74953855cd011c79",
+        "source_fact:v1:c0a3937da9eb86fc6157b958a8956632e367fd71068d3d7d2b4637aafd01b486",
+        "source_fact:v1:ca624d3a21e11fe5cc06ac4223db1f13b6f6ce1af8c61be4b654e39701b2d2b1",
+        "source_fact:v1:f4555bc888f8bb5648aacf0cda33ff698c19df72030ad6e225ed79bb9c1d933f"
+      ],
+      "source_published_kst": "2026-10-08T11:43+09:00",
+      "source_title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화",
+      "telegram_core_fact": "2000억 달러 대미 전략투자 프로그램이 확정되면서, 1500억 달러 한미 조선 협력 프로젝트인 '마스가(MASGA)'도 본격적인 사업 발굴과 투자 집행 단계에 들어설 전망이다.",
+      "title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화"
     },
     "source_fact:8a6d7931a9d3e9a3ff494d96": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -221016,6 +222000,33 @@
       "telegram_core_fact": "예멘 정부군과 사우디 주도 연합군이 지난 4일 후티가 장악한 영토를 탈환하기 위한 '예멘의 새벽' 작전을 선언하고 대규모 공세에 나서자 후티는 이후 사우디 본토의 공항과 정유시설을 탄도미사일과 드론으로 잇달아 공격했다고 밝히고 있다.",
       "title": "사우디 \"리야드·아브하 공항서 3명 사망\"…후티 잇단 공습 주장(종합) | 연합뉴스"
     },
+    "source_fact:ae9235be52ddc670408f9623": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816974",
+      "source": "뉴시스",
+      "source_body_digest": "63ad4a4062add8850e68625fe7ff0e85db9451d26769ac6a69c23048ee4544b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f2ef5c1e8564aff293263c4e95522b2b3d664ffd05a495c12881412ee9642ce0",
+      "source_fact_keys": [
+        "source_fact:v1:2c070cfcafd703a27130974d1ecdea15086dabf7e31cb722af85f8c78b783aba",
+        "source_fact:v1:50e6c11927b690514da4376e397ef1132ef39a60b59cbc20a731cb57e6e67b13",
+        "source_fact:v1:826fe75b9844c546a71238e8b7c3ed74b376f46d01cd359e85e6ea60c9153741",
+        "source_fact:v1:962033cd011d8bce875dd230cbe73511943f72ebd98c6be8662d1d900ef691ba",
+        "source_fact:v1:a53a84c7d4ed8a8a84627a179b4f303149b2c0afacfbb9fe8a1125fe608948b2",
+        "source_fact:v1:b2c4771265ec338b1a79aa82924145da966da37fb1a7626e74953855cd011c79",
+        "source_fact:v1:c0a3937da9eb86fc6157b958a8956632e367fd71068d3d7d2b4637aafd01b486",
+        "source_fact:v1:ca624d3a21e11fe5cc06ac4223db1f13b6f6ce1af8c61be4b654e39701b2d2b1",
+        "source_fact:v1:f4555bc888f8bb5648aacf0cda33ff698c19df72030ad6e225ed79bb9c1d933f"
+      ],
+      "source_published_kst": "2026-10-08T11:43+09:00",
+      "source_title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화",
+      "telegram_core_fact": "2000억 달러 대미 전략투자 프로그램이 확정되면서, 1500억 달러 한미 조선 협력 프로젝트인 '마스가(MASGA)'도 본격적인 사업 발굴과 투자 집행 단계에 들어설 전망이다.",
+      "title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화"
+    },
     "source_fact:ae94d1f00b8e261f5ccff56f": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
       "lanes": {
@@ -227340,6 +228351,27 @@
       "source_published_kst": "2026-10-06T10:19+09:00",
       "title": "김정관 장관 “1600조 지방투자 본격화…2030년 AI팩토리 500개 구축”"
     },
+    "source_fact:bb69ad05e553d8b501c6d540": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171236",
+      "source": "매일경제",
+      "source_body_digest": "64f7d9300e4611d9fbf73c17b6aa7084060db16bc10333a0169dbdbe900d65b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61cb318d1908b13a1ac4dd3038211af33fa95534034e9fe2e2c0cf9b36321167",
+      "source_fact_keys": [
+        "source_fact:v1:4cb77bf7b46008f3a930d94ac8dea9c8b664f2c23b1656fa9cb33565ee56ee9d",
+        "source_fact:v1:6b62024b89d9e9e73174581535ba16b46c9fe5b15e24cdbfe1f72515fa43fdcb",
+        "source_fact:v1:fc241ec8e30626a8dfbc72e8b87fa01f4872881ad02abd989cec0b5a13819cb6"
+      ],
+      "source_published_kst": "2026-10-08T10:26+09:00",
+      "source_title": "분기 영업이익 107조 찍었는데…전기전자 대형주 순매도 흐름 [주식 초고수는 지금]",
+      "telegram_core_fact": "삼성전자가 분기 영업이익 100조원을 처음 돌파했다는 발표가 나왔지만 초고수들은 전 거래일 순매수 상위에 올려놨던 전기전자 대형주를 하루 만에 대거 정리했다.",
+      "title": "분기 영업이익 107조 찍었는데…전기전자 대형주 순매도 흐름 [주식 초고수는 지금]"
+    },
     "source_fact:bb73498e9695225ca2a0c437": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -232599,6 +233631,28 @@
       "source_published_kst": "2026-10-06T16:02+09:00",
       "title": "후티 사우디 공격에…현대차"
     },
+    "source_fact:c67c5e62f8eda2c12c538b1d": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://biz.chosun.com/topics/law_firm/2026/10/08/PSMISUZSLJDDDHCTYKIDZQXXCI/",
+      "source": "조선비즈",
+      "source_body_digest": "170c8656f654667b64e3a4e45325e336da6ad71f3a7f9d35e974402cf335e87d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9f67ecbb8780d0df3af3cd521c998c36b2a8dde7785f47ac4f96b2af6099d030",
+      "source_fact_keys": [
+        "source_fact:v1:55c422934052c6c410a2399166e55c9170b98c82e09a2a76c4e794651cf9294d",
+        "source_fact:v1:631ed9ad1351333a767026c2d760aab94f25a34a78a4c7ad2c2fe4b8cbe4e114",
+        "source_fact:v1:ce46c95a02b22e874178c124956fcf9fd74976bfc4fa48106d93a4d7992a0b4c",
+        "source_fact:v1:d845165158c6cfec2a489fbd10450484363cf5c7c18858729e28740be32e7fe8"
+      ],
+      "source_published_kst": "2026-10-08T09:11+09:00",
+      "source_title": "법무법인 세종, 21일 자본시장·M&A 세미나…중복상장 규제 대응 논의",
+      "telegram_core_fact": "중복상장 규제가 본격 시행되고 주주 보호를 강화하는 방향으로 자본시장 제도가 바뀌면서 기업의 인수합병(M&A)과 자금조달 과정에서 고려해야 할 변수가 늘고 있다.",
+      "title": "법무법인 세종, 21일 자본시장·M&A 세미나…중복상장 규제 대응 논의"
+    },
     "source_fact:c68323d247c4430333c9004e": {
       "first_seen_kst": "2026-10-08T03:26:42+09:00",
       "lanes": {
@@ -234635,6 +235689,33 @@
       "source_published_kst": "2026-10-06T09:41+09:00",
       "title": "[美공시]테라울프, 증가하는 고객 수요에 대응해 머스키 데이터 캠퍼스의 발전 용량을 1GW로 확대"
     },
+    "source_fact:caa3b44b81841d20979e9f6d": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816974",
+      "source": "뉴시스",
+      "source_body_digest": "63ad4a4062add8850e68625fe7ff0e85db9451d26769ac6a69c23048ee4544b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f2ef5c1e8564aff293263c4e95522b2b3d664ffd05a495c12881412ee9642ce0",
+      "source_fact_keys": [
+        "source_fact:v1:2c070cfcafd703a27130974d1ecdea15086dabf7e31cb722af85f8c78b783aba",
+        "source_fact:v1:50e6c11927b690514da4376e397ef1132ef39a60b59cbc20a731cb57e6e67b13",
+        "source_fact:v1:826fe75b9844c546a71238e8b7c3ed74b376f46d01cd359e85e6ea60c9153741",
+        "source_fact:v1:962033cd011d8bce875dd230cbe73511943f72ebd98c6be8662d1d900ef691ba",
+        "source_fact:v1:a53a84c7d4ed8a8a84627a179b4f303149b2c0afacfbb9fe8a1125fe608948b2",
+        "source_fact:v1:b2c4771265ec338b1a79aa82924145da966da37fb1a7626e74953855cd011c79",
+        "source_fact:v1:c0a3937da9eb86fc6157b958a8956632e367fd71068d3d7d2b4637aafd01b486",
+        "source_fact:v1:ca624d3a21e11fe5cc06ac4223db1f13b6f6ce1af8c61be4b654e39701b2d2b1",
+        "source_fact:v1:f4555bc888f8bb5648aacf0cda33ff698c19df72030ad6e225ed79bb9c1d933f"
+      ],
+      "source_published_kst": "2026-10-08T11:43+09:00",
+      "source_title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화",
+      "telegram_core_fact": "2000억 달러 대미 전략투자 프로그램이 확정되면서, 1500억 달러 한미 조선 협력 프로젝트인 '마스가(MASGA)'도 본격적인 사업 발굴과 투자 집행 단계에 들어설 전망이다.",
+      "title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화"
+    },
     "source_fact:caba6c9b635b03c9b595bf3f": {
       "first_seen_kst": "2026-10-07T15:44:50+09:00",
       "lanes": {
@@ -235974,6 +237055,30 @@
       "source_published_kst": "2026-10-06T13:27+09:00",
       "title": "IPARK현대산업개발, 2812억 규모 재개발 정비사업 시공사 선정"
     },
+    "source_fact:cda13ab7246c3cb6ea698cd2": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02863446645610952",
+      "source": "이데일리",
+      "source_body_digest": "1b6a0d4fd90e14deb1ced48b2cf7e0a69aa3655c05c8d76205d72735247fce8a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f76561a7f2d50e6765aa012cf3b08498ed890351c902e8a9cec6b4bfd46b08aa",
+      "source_fact_keys": [
+        "source_fact:v1:6488b6c4c09c2bdc59130ff734f284a63332e4ec2738d7f2cd2d34e94b78dede",
+        "source_fact:v1:68875868a18dd912a66258d3ec78be2d5336e460a42c18529d08f6de504ea66a",
+        "source_fact:v1:9d008187b4ec926af126fa5276c12bd3873a65ceb5ff167af105b87bb79af891",
+        "source_fact:v1:9e6bd3e7c67e86206136d6717f3501a31cb326383a47a67c9c54e4fd1563124f",
+        "source_fact:v1:a25f3d5f5c21db0ac3378e841f52e3824069382f562409424109ad6c9debf7b0",
+        "source_fact:v1:e11d96b2e8a892a7aa583b1149e2ba6dd7178beedaecca74ab3f5513f769505d"
+      ],
+      "source_published_kst": "2026-10-08T09:54+09:00",
+      "source_title": "엘리스그룹, 모듈형 AI 데이터센터 ‘PMDC’ 상표 등록",
+      "telegram_core_fact": "2021년부터 개발·운영해온 모듈형 데이터센터 기술과 AI 클라우드 소프트웨어를 결합해 국내외 AI 인프라 사업을 확대한다.",
+      "title": "엘리스그룹, 모듈형 AI 데이터센터 ‘PMDC’ 상표 등록"
+    },
     "source_fact:cdc6e5dcfa0d86141ee00b0e": {
       "first_seen_kst": "2026-10-06T15:44:02+09:00",
       "lanes": {
@@ -236246,6 +237351,30 @@
       ],
       "source_published_kst": "2026-10-06T17:51+09:00",
       "title": "알테오젠, 알테오젠바이오로직스 합병 결정"
+    },
+    "source_fact:ce4b131ef52aa0985d6445c3": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02863446645610952",
+      "source": "이데일리",
+      "source_body_digest": "1b6a0d4fd90e14deb1ced48b2cf7e0a69aa3655c05c8d76205d72735247fce8a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f76561a7f2d50e6765aa012cf3b08498ed890351c902e8a9cec6b4bfd46b08aa",
+      "source_fact_keys": [
+        "source_fact:v1:6488b6c4c09c2bdc59130ff734f284a63332e4ec2738d7f2cd2d34e94b78dede",
+        "source_fact:v1:68875868a18dd912a66258d3ec78be2d5336e460a42c18529d08f6de504ea66a",
+        "source_fact:v1:9d008187b4ec926af126fa5276c12bd3873a65ceb5ff167af105b87bb79af891",
+        "source_fact:v1:9e6bd3e7c67e86206136d6717f3501a31cb326383a47a67c9c54e4fd1563124f",
+        "source_fact:v1:a25f3d5f5c21db0ac3378e841f52e3824069382f562409424109ad6c9debf7b0",
+        "source_fact:v1:e11d96b2e8a892a7aa583b1149e2ba6dd7178beedaecca74ab3f5513f769505d"
+      ],
+      "source_published_kst": "2026-10-08T09:54+09:00",
+      "source_title": "엘리스그룹, 모듈형 AI 데이터센터 ‘PMDC’ 상표 등록",
+      "telegram_core_fact": "2021년부터 개발·운영해온 모듈형 데이터센터 기술과 AI 클라우드 소프트웨어를 결합해 국내외 AI 인프라 사업을 확대한다.",
+      "title": "엘리스그룹, 모듈형 AI 데이터센터 ‘PMDC’ 상표 등록"
     },
     "source_fact:ce4fed3fb155ba01fd3f9fcb": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
@@ -245559,6 +246688,33 @@
       "source_title": "8월 유로존 산업생산 2.0%↑…\"건설 호조에 17개월 만에 최대폭\"",
       "telegram_core_fact": "RTT 뉴스와 마켓워치, dpa 통신에 따르면 독일 연방통계청은 7일 2026년 8월 산업생산이 계절 조정치로 전월 대비 2.0% 증대했다고 발표했다. 유럽 최대 경제국 독일의 8월 산업생산은 건설과 기계·설비 생산 호조에 힘입어 17개월 만에 가장 큰 폭으로 증가했다.",
       "title": "8월 유로존 산업생산 2.0%↑…\"건설 호조에 17개월 만에 최대폭\""
+    },
+    "source_fact:e02abdd6c007a8b20fa70cf0": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816974",
+      "source": "뉴시스",
+      "source_body_digest": "63ad4a4062add8850e68625fe7ff0e85db9451d26769ac6a69c23048ee4544b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f2ef5c1e8564aff293263c4e95522b2b3d664ffd05a495c12881412ee9642ce0",
+      "source_fact_keys": [
+        "source_fact:v1:2c070cfcafd703a27130974d1ecdea15086dabf7e31cb722af85f8c78b783aba",
+        "source_fact:v1:50e6c11927b690514da4376e397ef1132ef39a60b59cbc20a731cb57e6e67b13",
+        "source_fact:v1:826fe75b9844c546a71238e8b7c3ed74b376f46d01cd359e85e6ea60c9153741",
+        "source_fact:v1:962033cd011d8bce875dd230cbe73511943f72ebd98c6be8662d1d900ef691ba",
+        "source_fact:v1:a53a84c7d4ed8a8a84627a179b4f303149b2c0afacfbb9fe8a1125fe608948b2",
+        "source_fact:v1:b2c4771265ec338b1a79aa82924145da966da37fb1a7626e74953855cd011c79",
+        "source_fact:v1:c0a3937da9eb86fc6157b958a8956632e367fd71068d3d7d2b4637aafd01b486",
+        "source_fact:v1:ca624d3a21e11fe5cc06ac4223db1f13b6f6ce1af8c61be4b654e39701b2d2b1",
+        "source_fact:v1:f4555bc888f8bb5648aacf0cda33ff698c19df72030ad6e225ed79bb9c1d933f"
+      ],
+      "source_published_kst": "2026-10-08T11:43+09:00",
+      "source_title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화",
+      "telegram_core_fact": "2000억 달러 대미 전략투자 프로그램이 확정되면서, 1500억 달러 한미 조선 협력 프로젝트인 '마스가(MASGA)'도 본격적인 사업 발굴과 투자 집행 단계에 들어설 전망이다.",
+      "title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화"
     },
     "source_fact:e043218146f2deaedaf12704": {
       "first_seen_kst": "2026-10-07T02:13:12+09:00",
@@ -256025,6 +257181,27 @@
       "source_published_kst": "2026-10-06T03:54+09:00",
       "title": "[美특징주]웰스파고, 모건스탠리 ‘매수’ 상향에 주가 2%↑"
     },
+    "source_fact:f445d0fb7c1c31231a5e24aa": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171236",
+      "source": "매일경제",
+      "source_body_digest": "64f7d9300e4611d9fbf73c17b6aa7084060db16bc10333a0169dbdbe900d65b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61cb318d1908b13a1ac4dd3038211af33fa95534034e9fe2e2c0cf9b36321167",
+      "source_fact_keys": [
+        "source_fact:v1:4cb77bf7b46008f3a930d94ac8dea9c8b664f2c23b1656fa9cb33565ee56ee9d",
+        "source_fact:v1:6b62024b89d9e9e73174581535ba16b46c9fe5b15e24cdbfe1f72515fa43fdcb",
+        "source_fact:v1:fc241ec8e30626a8dfbc72e8b87fa01f4872881ad02abd989cec0b5a13819cb6"
+      ],
+      "source_published_kst": "2026-10-08T10:26+09:00",
+      "source_title": "분기 영업이익 107조 찍었는데…전기전자 대형주 순매도 흐름 [주식 초고수는 지금]",
+      "telegram_core_fact": "삼성전자가 분기 영업이익 100조원을 처음 돌파했다는 발표가 나왔지만 초고수들은 전 거래일 순매수 상위에 올려놨던 전기전자 대형주를 하루 만에 대거 정리했다.",
+      "title": "분기 영업이익 107조 찍었는데…전기전자 대형주 순매도 흐름 [주식 초고수는 지금]"
+    },
     "source_fact:f44ef306f0a09121e14e73e2": {
       "first_seen_kst": "2026-10-07T07:54:25+09:00",
       "lanes": {
@@ -263267,6 +264444,28 @@
       "telegram_core_fact": "라이다(LiDAR) 기반 인지 기술 기업 마이크로비젼(MVIS)이 2026년 연간 매출 가이던스 1000만~1500만 달러를 재확인하고, 2027년 매출이 2026년 대비 2배로 늘어날 것으로 전망하며 2027년 현금 소진도 2026년보다 대폭 줄이겠다는 계획을 7일 발표했다.",
       "title": "마이크로비젼, 올해 매출 1000만~1500만달러 유지..내년 2배 전망"
     },
+    "title:0b1a8e5dc5cd72682467bfc3": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://biz.chosun.com/topics/law_firm/2026/10/08/PSMISUZSLJDDDHCTYKIDZQXXCI/",
+      "source": "조선비즈",
+      "source_body_digest": "170c8656f654667b64e3a4e45325e336da6ad71f3a7f9d35e974402cf335e87d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9f67ecbb8780d0df3af3cd521c998c36b2a8dde7785f47ac4f96b2af6099d030",
+      "source_fact_keys": [
+        "source_fact:v1:55c422934052c6c410a2399166e55c9170b98c82e09a2a76c4e794651cf9294d",
+        "source_fact:v1:631ed9ad1351333a767026c2d760aab94f25a34a78a4c7ad2c2fe4b8cbe4e114",
+        "source_fact:v1:ce46c95a02b22e874178c124956fcf9fd74976bfc4fa48106d93a4d7992a0b4c",
+        "source_fact:v1:d845165158c6cfec2a489fbd10450484363cf5c7c18858729e28740be32e7fe8"
+      ],
+      "source_published_kst": "2026-10-08T09:11+09:00",
+      "source_title": "법무법인 세종, 21일 자본시장·M&A 세미나…중복상장 규제 대응 논의",
+      "telegram_core_fact": "중복상장 규제가 본격 시행되고 주주 보호를 강화하는 방향으로 자본시장 제도가 바뀌면서 기업의 인수합병(M&A)과 자금조달 과정에서 고려해야 할 변수가 늘고 있다.",
+      "title": "법무법인 세종, 21일 자본시장·M&A 세미나…중복상장 규제 대응 논의"
+    },
     "title:0b3a5ebdde0c6ce55b8f7b68": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -266632,6 +267831,33 @@
       "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000019067",
       "source": "국민일보",
       "title": "“왜 AI 위험성 경고하나”…젠슨 황, 앤트로픽 CEO와 설전"
+    },
+    "title:1f06eca53604a9dd832445d7": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816974",
+      "source": "뉴시스",
+      "source_body_digest": "63ad4a4062add8850e68625fe7ff0e85db9451d26769ac6a69c23048ee4544b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f2ef5c1e8564aff293263c4e95522b2b3d664ffd05a495c12881412ee9642ce0",
+      "source_fact_keys": [
+        "source_fact:v1:2c070cfcafd703a27130974d1ecdea15086dabf7e31cb722af85f8c78b783aba",
+        "source_fact:v1:50e6c11927b690514da4376e397ef1132ef39a60b59cbc20a731cb57e6e67b13",
+        "source_fact:v1:826fe75b9844c546a71238e8b7c3ed74b376f46d01cd359e85e6ea60c9153741",
+        "source_fact:v1:962033cd011d8bce875dd230cbe73511943f72ebd98c6be8662d1d900ef691ba",
+        "source_fact:v1:a53a84c7d4ed8a8a84627a179b4f303149b2c0afacfbb9fe8a1125fe608948b2",
+        "source_fact:v1:b2c4771265ec338b1a79aa82924145da966da37fb1a7626e74953855cd011c79",
+        "source_fact:v1:c0a3937da9eb86fc6157b958a8956632e367fd71068d3d7d2b4637aafd01b486",
+        "source_fact:v1:ca624d3a21e11fe5cc06ac4223db1f13b6f6ce1af8c61be4b654e39701b2d2b1",
+        "source_fact:v1:f4555bc888f8bb5648aacf0cda33ff698c19df72030ad6e225ed79bb9c1d933f"
+      ],
+      "source_published_kst": "2026-10-08T11:43+09:00",
+      "source_title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화",
+      "telegram_core_fact": "2000억 달러 대미 전략투자 프로그램이 확정되면서, 1500억 달러 한미 조선 협력 프로젝트인 '마스가(MASGA)'도 본격적인 사업 발굴과 투자 집행 단계에 들어설 전망이다.",
+      "title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화"
     },
     "title:1f0f0902c2d954176857a4a4": {
       "first_seen_kst": "2026-10-02T10:55:46+09:00",
@@ -285605,6 +286831,23 @@
       "source": "연합뉴스",
       "title": "한화에어로, 미국 아칸소주에 탄약 생산거점…7년간 3조원 투자 | 연합뉴스"
     },
+    "title:899ea3b7b2d4d28b715746d9": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818966",
+      "source": "뉴시스",
+      "source_body_digest": "061a5e9ba923f5fe4685df8a2554147ec5173ee900a620328e1cab72e57a0ea9",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T13:20+09:00",
+      "source_title": "美 재무부, 상하이 로봇 AI 업체 투자 美 기업에 약 2억 6000만원 벌금",
+      "telegram_core_fact": "이번 사례는 지난해 1월 발효된 것으로 중국의 AI, 반도체 및 양자 컴퓨팅 사업에 대한 미국의 해외 투자 규제 조치가 처음 집행된 것이라고 SCMP는 전했다.",
+      "title": "美 재무부, 상하이 로봇 AI 업체 투자 美 기업에 약 2억 6000만원 벌금"
+    },
     "title:89a9187c40dabbe900194017": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
       "lanes": {
@@ -287139,6 +288382,26 @@
       "source_title": "LG전자, 3분기 영업익 7818억… 전년比 13.5% 증가",
       "telegram_core_fact": "LG전자는 연결 기준 올해 3분기 잠정 매출이 23조8270억원, 영업이익이 7818억원으로 집계됐다고 7일 공시했다.",
       "title": "LG전자, 3분기 영업익 7818억… 전년比 13.5% 증가"
+    },
+    "title:915c026fce90d2ebef38f11d": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008091700004",
+      "source": "연합뉴스",
+      "source_body_digest": "0c5497b4e1a3b4ec69ac4be56c741266cf3da477063f7eae2e7d7c37a8c2fd85",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b891b1770bcefb6b7083dad9c4463f6be7e7e3526c70a1fd1a0a6f25c091e8e4",
+      "source_fact_keys": [
+        "source_fact:v1:181e29bfaf3e46f75200e5c021e070c75d801e6603011e509c05e599977588c7",
+        "source_fact:v1:bae5b83e4540c54685cd0f6275816dc1d90ad45b1054da1b743ab69b0d5fe9d8"
+      ],
+      "source_published_kst": "2026-10-08T11:45+09:00",
+      "source_title": "'158억원 무차입 공매도 혐의' 홍콩 HSBC, 대법서 무죄 확정 | 연합뉴스",
+      "telegram_core_fact": "HSBC 홍콩법인 트레이더 A씨 등 3명은 2021년 8∼12월 무차입 방식으로 호텔신라 등 9개 상장사 주식 31만8천781주(157억8천468만원)를 공매도한 혐의로 2024년 3월 기소됐다.",
+      "title": "'158억원 무차입 공매도 혐의' 홍콩 HSBC, 대법서 무죄 확정 | 연합뉴스"
     },
     "title:915c416fb74eb89eadad5ccd": {
       "first_seen_kst": "2026-10-06T23:56:49+09:00",
@@ -290061,6 +291324,27 @@
       "source_published_kst": "2026-10-06T17:29+09:00",
       "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 양극재 공급계약 | 연합뉴스"
     },
+    "title:a41148f98adc1407f952b829": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171236",
+      "source": "매일경제",
+      "source_body_digest": "64f7d9300e4611d9fbf73c17b6aa7084060db16bc10333a0169dbdbe900d65b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61cb318d1908b13a1ac4dd3038211af33fa95534034e9fe2e2c0cf9b36321167",
+      "source_fact_keys": [
+        "source_fact:v1:4cb77bf7b46008f3a930d94ac8dea9c8b664f2c23b1656fa9cb33565ee56ee9d",
+        "source_fact:v1:6b62024b89d9e9e73174581535ba16b46c9fe5b15e24cdbfe1f72515fa43fdcb",
+        "source_fact:v1:fc241ec8e30626a8dfbc72e8b87fa01f4872881ad02abd989cec0b5a13819cb6"
+      ],
+      "source_published_kst": "2026-10-08T10:26+09:00",
+      "source_title": "분기 영업이익 107조 찍었는데…전기전자 대형주 순매도 흐름 [주식 초고수는 지금]",
+      "telegram_core_fact": "삼성전자가 분기 영업이익 100조원을 처음 돌파했다는 발표가 나왔지만 초고수들은 전 거래일 순매수 상위에 올려놨던 전기전자 대형주를 하루 만에 대거 정리했다.",
+      "title": "분기 영업이익 107조 찍었는데…전기전자 대형주 순매도 흐름 [주식 초고수는 지금]"
+    },
     "title:a424a15f60e8d00eb9c7dc35": {
       "first_seen_kst": "2026-10-07T19:47:02+09:00",
       "lanes": {
@@ -291051,6 +292335,30 @@
       "source_title": "\"삼성전기, 3년 성장 사이클 열린다…수주 확대 지속\"",
       "telegram_core_fact": "고 연구원은 “컴포넌트의 경우 수주 공시를 통해 AI 서버 수요의 견조함이 확인된다”며 “2027~2028년 반영될 수주금액만 4조원 수준”이라고 강조했다.",
       "title": "\"삼성전기, 3년 성장 사이클 열린다…수주 확대 지속\""
+    },
+    "title:a97165826f4b5a21432a7935": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02863446645610952",
+      "source": "이데일리",
+      "source_body_digest": "1b6a0d4fd90e14deb1ced48b2cf7e0a69aa3655c05c8d76205d72735247fce8a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f76561a7f2d50e6765aa012cf3b08498ed890351c902e8a9cec6b4bfd46b08aa",
+      "source_fact_keys": [
+        "source_fact:v1:6488b6c4c09c2bdc59130ff734f284a63332e4ec2738d7f2cd2d34e94b78dede",
+        "source_fact:v1:68875868a18dd912a66258d3ec78be2d5336e460a42c18529d08f6de504ea66a",
+        "source_fact:v1:9d008187b4ec926af126fa5276c12bd3873a65ceb5ff167af105b87bb79af891",
+        "source_fact:v1:9e6bd3e7c67e86206136d6717f3501a31cb326383a47a67c9c54e4fd1563124f",
+        "source_fact:v1:a25f3d5f5c21db0ac3378e841f52e3824069382f562409424109ad6c9debf7b0",
+        "source_fact:v1:e11d96b2e8a892a7aa583b1149e2ba6dd7178beedaecca74ab3f5513f769505d"
+      ],
+      "source_published_kst": "2026-10-08T09:54+09:00",
+      "source_title": "엘리스그룹, 모듈형 AI 데이터센터 ‘PMDC’ 상표 등록",
+      "telegram_core_fact": "2021년부터 개발·운영해온 모듈형 데이터센터 기술과 AI 클라우드 소프트웨어를 결합해 국내외 AI 인프라 사업을 확대한다.",
+      "title": "엘리스그룹, 모듈형 AI 데이터센터 ‘PMDC’ 상표 등록"
     },
     "title:a976cda2ebc29cc8b30e2347": {
       "first_seen_kst": "2026-10-05T11:45:11+09:00",
@@ -294046,6 +295354,25 @@
       "source_title": "BKV, 1200MW 가스발전설비 확보와 비용 90% 보전 계약에 주목",
       "telegram_core_fact": "텍사스 발전 프로젝트용 1,200MW 가스발전설비 공급계약을 체결했고 2028년 9월부터 인도가 시작됩니다.",
       "title": "BKV, 1200MW 가스발전설비 확보와 비용 90% 보전 계약에 주목"
+    },
+    "title:ba6c461e999b7f86d2c05043": {
+      "first_seen_kst": "2026-10-08T16:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-08T16:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-08T16:14:26+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896913",
+      "source": "헤럴드경제",
+      "source_body_digest": "804b4eee53616e2b74b617fc7db9203d39b4a81c9fd10b5deebe758157ddc2c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:97ff43a0977bdc61d5cf53036bca3483d41bd8f31d6522e0c672284c6de93710",
+      "source_fact_keys": [
+        "source_fact:v1:4054e6a8463cf13d4b6c92782c0e7214bce26105c19dc82fa6c3d26ab2fa61de"
+      ],
+      "source_published_kst": "2026-10-08T12:03+09:00",
+      "source_title": "남양주시, 왕숙 도시첨단산업단지 개발실시계획 승인·고시",
+      "telegram_core_fact": "이번 승인·고시는 산업단지의 토지이용계획과 기반시설 설치계획 등 사업 추진에 필요한 세부 계획을 확정한 것으로, 왕숙 도시첨단산업단지 조성사업이 계획 단계를 넘어 본격적인 개발 단계에 들어섰다는 데 의미가 있다.",
+      "title": "남양주시, 왕숙 도시첨단산업단지 개발실시계획 승인·고시"
     },
     "title:ba6dda28926da38f37c84663": {
       "first_seen_kst": "2026-10-07T16:15:21+09:00",
@@ -305930,5 +307257,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-08T15:53:45+09:00"
+  "updated_at_kst": "2026-10-08T16:14:26+09:00"
 }
