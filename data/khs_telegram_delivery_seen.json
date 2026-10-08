@@ -66,6 +66,16 @@
       "sent_at_utc": "2026-10-01T04:10:50.854435Z",
       "title": "신뢰외신 정책 워치: [상·공식 확인] 미 FCC, Upper C-band Auction 115 확정: 2027년 4월 27일 입찰 예정"
     },
+    "7a7adcc186f81f38e7b0": {
+      "message_id": 2491,
+      "message_ids": [
+        2491
+      ],
+      "preview": "2026년 10월 09일 04:17 KST 공식 문서 확인 전 정책 뉴스 2건 확인 1. [상·공식 확인 전] FCC 광트랜시버 규제 경로 업데이트: 3.2T·65% BOM은 Morgan Stanley 시나리오 - 핵심: Morgan Stanley는 워싱턴 정책 미팅을 근거로 FCC의 중국산 광트랜시버 제한이 3.2T 세대부터 적용될 가능성과 미국산 부품 가치 65% 이상 예외 가능성을 제시",
+      "route": "policy",
+      "sent_at_utc": "2026-10-08T19:21:48.082838Z",
+      "title": "신뢰외신 정책 워치: [상·공식 확인 전] FCC 광트랜시버 규제 경로 업데이트: 3.2T·65% BOM은 Morgan Stanley 시나리오 외 1건"
+    },
     "8adab7724111bd001023": {
       "message_id": 1908,
       "preview": "🚨 정책·규제 고충격 워치 · 2026년 10월 01일 15:26 KST 1. [상·확정] 미·일·한, 제3국 SMR 배치 협력 MOC 체결 - 핵심: 미 국무부 기준 미·일·한이 제3국 SMR 배치 MOC를 체결했습니다. - 출처: <a href=\"https://www.whitehouse.gov/briefings-statements/2026/09/adobe-amazon-intel-starl",
@@ -128,6 +138,15 @@
       "route": "policy",
       "sent_at_utc": "2026-10-06T17:16:45.598711Z",
       "title": "신뢰외신 정책 워치: [상·공식 확인 전] 영국, 중국산 전기차 관세 검토·도입 준비 외 1건"
+    },
+    "part-9c30311ba1616eb1057287f2": {
+      "message_id": 2491,
+      "parent_digest": "7a7adcc186f81f38e7b0",
+      "part_count": 1,
+      "part_index": 1,
+      "route": "policy",
+      "sent_at_utc": "2026-10-08T19:21:48.082838Z",
+      "title": "신뢰외신 정책 워치: [상·공식 확인 전] FCC 광트랜시버 규제 경로 업데이트: 3.2T·65% BOM은 Morgan Stanley 시나리오 외 1건"
     }
   }
 }
