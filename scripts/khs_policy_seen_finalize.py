@@ -17,6 +17,11 @@ TRUSTED_ALERTS_PATH = OUT / "khs_trusted_policy_news_alerts.json"
 TRUSTED_TITLE_PATH = OUT / "khs_trusted_policy_news_title.txt"
 TRUSTED_STATE_PATH = DATA / "khs_trusted_policy_news_seen.json"
 OISP_RULE_KEY = "us_treasury_outbound_ai_robotics_enforcement"
+DELIVERY_GATED_RULE_KEYS = {
+    OISP_RULE_KEY,
+    "us_fcc_chinese_optical_transceiver_ban",
+    "uk_china_ev_tariff_review",
+}
 SURVIVING_ALERT_PATHS = (
     OUT / "khs_policy_watch_alerts.json",
     OUT / "khs_korea_presidential_personnel_alerts.json",
@@ -83,7 +88,7 @@ def finalize_confirmed_outbound_alert(delivery: dict) -> None:
     # The displayed policy bundle includes at most the first three general events.
     selected = [
         event for event in events[:3]
-        if isinstance(event, dict) and event.get("key") == OISP_RULE_KEY
+        if isinstance(event, dict) and event.get("key") in DELIVERY_GATED_RULE_KEYS
         and str(event.get("fingerprint") or "").strip()
     ]
     if not selected:
@@ -93,7 +98,7 @@ def finalize_confirmed_outbound_alert(delivery: dict) -> None:
     timestamp = str(delivery.get("confirmed_at_kst") or "")
     for event in selected:
         seen[str(event["fingerprint"])] = {
-            "key": OISP_RULE_KEY,
+            "key": str(event.get("key") or ""),
             "title": str(event.get("title") or ""),
             "first_seen_kst": timestamp,
             "status": str(event.get("status") or "공식 확인 전"),
