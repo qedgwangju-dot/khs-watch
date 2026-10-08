@@ -203,6 +203,18 @@ if (
 
   await browser.close();
 
+  // The start and end of every 1D/5D calculation must also be the SAME
+  // trading dates across all four official series. Checking latest dates
+  // alone is not sufficient when one lane skips a reporting day.
+  const referenceDates = dep.map(r => r.date);
+  for (const [name, values] of Object.entries({ credit, mmf, cma })) {
+    const actualDates = values.map(r => r.date);
+    if (actualDates.length !== referenceDates.length ||
+        actualDates.some((date, i) => date !== referenceDates[i])) {
+      throw new Error(`KOFIA 1D/5D reference-date mismatch ${name}: deposit=${referenceDates.join(',')} vs ${name}=${actualDates.join(',')}`);
+    }
+  }
+
   const depNow = dep[0], depPrev = dep[1], dep5 = dep[5];
   const crNow = credit[0], crPrev = credit[1], cr5 = credit[5];
   const mmfNow = mmf[0], mmfPrev = mmf[1], mmf5 = mmf[5];
@@ -236,6 +248,10 @@ if (
   };
   const fp = fingerprint(fpPayload);
   const priorState = readState();
+  // A delayed API cache cannot roll back a previously delivered date.
+  if (priorState && priorState.snapshot_date && depNow.date < priorState.snapshot_date) {
+    throw new Error(`KOFIA date rolled back: stored=${priorState.snapshot_date} fetched=${depNow.date}`);
+  }
   const forceSend = String(process.env.FORCE_SEND || '').toLowerCase() === 'true' || process.env.FORCE_SEND === '1';
   const changed = !priorState || priorState.fingerprint !== fp;
 
@@ -254,16 +270,7 @@ if (
   const eventLabel = !priorState ? '초기 기준 확정' : sameDatesAsState ? '동일 기준일 수정치' : '신규 공식값';
   const signal = strongMove ? '예탁금↑ + MMF↓ 동시 신호 강함' : big1d ? '당일 큰 변동 감지' : '공식값 갱신';
 
-  let baselineLine = '';
-  const dep0904 = depRows.find(r => String(r.TMPV1) === '20260904');
-  if (dep0904 && mmfNow.date === '20260914') {
-    const oldMmf = await (async () => {
-      // Values were already validated in live probes; avoid reopening browser here.
-      return 267088692;
-    })();
-    baselineLine = `\n• <b>9/4→9/14 검증</b>: 예탁금 ${fmtDelta(depNow.value - Number(dep0904.TMPV2))} / MMF ${fmtDelta(mmfNow.value - oldMmf)}`;
-  }
-
+  const baselineLine = ''; // No hardcoded historical MMF baselines.
   const message = [
     `📊 <b>[국내 증시 대기자금 추적 | ${esc(eventLabel)}]</b>`,
     `KOFIA FreeSIS 공식 원자료 직접 조회`,
@@ -303,6 +310,10 @@ if (
     `- alignment_ready ${alignmentReady}`,
     `- snapshot_date ${snapshotDate || 'none'}`,
     `- critical_dates deposit=${dates.deposit} mmf=${dates.mmf} cma=${dates.cma} credit=${dates.credit}`,
+    `- reference_date_alignment true`,
+    `- common_reference_dates ${referenceDates.join(',')}`,
+    `- 1d_reference_date ${referenceDates[1]} / 5d_reference_date ${referenceDates[5]}`,
+    `- mmf_published_daily_delta ${mmfNow.daily} / recomputed ${mmfNow.value - mmfPrev.value}`,
     `- force_send ${forceSend}`,
     `- signal ${signal}`,
     `- source https://freesis.kofia.or.kr/stat/main.do`,
@@ -326,6 +337,7 @@ if (
       snapshot_date: snapshotDate,
       alignment_ready: true,
       dates,
+      reference_dates: referenceDates,
       values: fpPayload,
       last_event: eventLabel,
       source: 'KOFIA FreeSIS',
