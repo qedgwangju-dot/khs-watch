@@ -8,6 +8,14 @@
     "cma": "20261007",
     "credit": "20261007"
   },
+  "reference_dates": [
+    "20261007",
+    "20261006",
+    "20261002",
+    "20261001",
+    "20260930",
+    "20260929"
+  ],
   "values": {
     "deposit": {
       "date": "20261007",
@@ -43,7 +51,8 @@
       "ratio": 2
     }
   },
-  "last_event": "신규 공식값",
+  "message_version": "kofia-direction-20261008-v1",
+  "last_event": "해석 정정",
   "source": "KOFIA FreeSIS",
   "source_url": "https://freesis.kofia.or.kr/stat/main.do"
 }
