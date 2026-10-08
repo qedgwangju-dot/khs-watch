@@ -293,6 +293,54 @@ class AgenticCpuStructureTests(unittest.TestCase):
             "Meta is validating sixth-generation AMD EPYC CPUs in its labs.",
         ))
 
+    def test_cpu_validation_distinguishes_observed_orders_from_product_ramp(self):
+        amd = "https://newsroom.amd.com/news/production-ramp"
+        self.assertEqual(
+            w.official_cpu_signal_type(amd, "AMD EPYC CPUs entered production ramp on TSMC 2nm."),
+            "supply",
+        )
+        self.assertEqual(
+            w.official_cpu_signal_type(amd, "Meta is validating sixth-generation AMD EPYC CPUs in its labs."),
+            "demand",
+        )
+        self.assertEqual(
+            w.official_cpu_signal_type(amd, "AMD EPYC CPU shipments accelerated."),
+            "demand",
+        )
+        self.assertEqual(
+            w.official_cpu_signal_type(
+                amd, "New EPYC CPU launched. Memory chip suppliers received large orders."
+            ),
+            "",
+        )
+        self.assertEqual(
+            w.official_cpu_signal_type(amd, "EPYC CPU shipments are not yet confirmed."),
+            "",
+        )
+        self.assertEqual(
+            w.official_cpu_signal_type(amd, "EPYC CPUs are designed to support future deployments."),
+            "",
+        )
+        self.assertEqual(
+            w.official_cpu_signal_type(
+                "https://unknown.test/press", "AMD EPYC CPU shipments accelerated."
+            ),
+            "",
+        )
+
+    def test_cpu_supply_only_alert_is_never_called_confirmed_customer_demand(self):
+        supply = [{
+            "title": "AMD EPYC Venice entered production ramp",
+            "signal_type": "supply",
+            "url": "https://newsroom.amd.com/news/production-ramp",
+        }]
+        block = w.snapshot_block(w.BASELINE, 1345.37, "2026-10-08", [], None, supply, standalone=False)
+        self.assertIn("공식 공급확대", block)
+        self.assertNotIn("공식 수요검증", block)
+        demand = [dict(supply[0], signal_type="demand")]
+        block2 = w.snapshot_block(w.BASELINE, 1345.37, "2026-10-08", [], None, demand, standalone=False)
+        self.assertIn("공식 수요검증", block2)
+
     def test_same_day_official_cpu_validation_not_suppressed(self):
         item = {
             "kind": "bing",
