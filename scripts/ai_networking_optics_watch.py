@@ -999,8 +999,9 @@ def power_is_plan(title: str) -> bool:
         r"将于|擬|拟|規劃|规划|가동 예정|설치 예정|시운전 예정", text, re.I
     ))
     achieved = bool(re.search(
-        r"(?:has |have )?(?:completed|commissioned|energized|"
-        r"installed and operating|started commercial operation)|"
+        r"(?:has|have|was|were) (?:now |already )?(?:been )?"
+        r"(?:completed|commissioned|energized|installed)|"
+        r"has started commercial operation|has entered operation|"
         r"正式運轉|正式运行|已完成|已投運|"
         r"已投入運轉|驗收完成|验收完成", text, re.I
     ))
