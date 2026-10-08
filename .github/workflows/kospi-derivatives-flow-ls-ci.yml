@@ -58,7 +58,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: python -m pip install --disable-pip-version-check --quiet requests ebest exchange_calendars
+        run: python -m pip install --disable-pip-version-check --quiet requests ebest exchange_calendars pyyaml
 
       - name: Compile
         run: |
@@ -250,6 +250,43 @@ jobs:
                   if v is None: env.pop(k,None)
                   else: env[k]=v
           print("rapid_fallback_telegram_retry_valid=true")
+          PY
+
+      - name: Verify production completion audit and embedded Python
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          try:
+              import yaml
+          except ImportError as exc:
+              raise RuntimeError("PyYAML required to verify GitHub workflow syntax") from exc
+          workflow=Path(".github/workflows/kospi-derivatives-flow-ls-realtime.yml")
+          doc=yaml.safe_load(workflow.read_text(encoding="utf-8"))
+          assert isinstance(doc,dict) and "jobs" in doc and "gate" in doc["jobs"], "invalid workflow YAML"
+          for name in ("morning","afternoon"):
+              job=doc["jobs"][name]
+              run_block=next(step["run"] for step in job["steps"] if
+                             step.get("name","").startswith("Run "+name+" KOSPI watcher") or
+                             (name=="afternoon" and step.get("name")=="Run afternoon KOSPI watcher with handoff"))
+              for marker in (
+                  "WATCH_SUCCESS=0",
+                  'if [ "$WATCH_SUCCESS" -ne 1 ]; then',
+                  "kospi_production_delivery_integrity_valid=true",
+                  "KOSPI ticks missing",
+                  "KOSPI futures ticks missing",
+                  "KOSPI handoff missing",
+              ):
+                  assert marker in run_block, f"{name}: production completion evidence missing: {marker}"
+          count=0
+          for name,job in doc["jobs"].items():
+              for step in job.get("steps",[]):
+                  run=step.get("run") or ""
+                  for match in re.finditer(r"(?ms)^python - <<'PY'\n(.*?)^PY\s*$",run):
+                      compile(match.group(1), f"{name}:{step.get('name')}", "exec")
+                      count+=1
+          assert count>=5, f"embedded Python blocks not verified: {count}"
+          print("kospi_production_integrity_structure_valid=true embedded_blocks=",count)
           PY
 
       - name: Verify production leader election API
