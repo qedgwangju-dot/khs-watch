@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-08T20:41:39+09:00",
+  "updated_at_kst": "2026-10-08T20:44:32+09:00",
   "seen_ids": [
     "00315ac822df3f19f0f17bfd",
     "01899de42b17bb25951592cf",
@@ -178,7 +178,7 @@
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1338.69,
-    "date": "2026-10-07 일일 기준 · ECB/Frankfurter · 조회 2026-10-08 20:41 KST · 보조 API 2026-10-08 · 차이 0.03% · 일중 기준시각 차이 가능",
+    "date": "2026-10-07 일일 기준 · ECB/Frankfurter · 조회 2026-10-08 20:44 KST · 보조 API 2026-10-08 · 차이 0.03% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
@@ -306,13 +306,13 @@
       "https://www.trendforce.com/news/",
       "https://www.trendforce.com/research"
     ],
-    "last_checked_at_kst": "2026-10-08T20:41:53+09:00",
+    "last_checked_at_kst": "2026-10-08T20:44:45+09:00",
     "candidate_count": 3,
     "errors": []
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-08T20:42:28+09:00",
+    "checked_at_kst": "2026-10-08T20:45:26+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-08T19:41:56+09:00",
@@ -380,7 +380,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-10-08",
-    "last_checked_at_kst": "2026-10-08T20:42:18+09:00",
+    "last_checked_at_kst": "2026-10-08T20:45:13+09:00",
     "cpu_structure": {
       "bnpp_public": {
         "as_of": "2026-10-05",
@@ -392,6 +392,8 @@
       "bnpp_analyst": {
         "as_of": "2026-10-05",
         "market_2030_usd_bn": 245.0,
+        "market_2030_official_confirmed": false,
+        "market_2030_source_kind": "사용자 제공 애널리스트 전망 · 1차 리포트와 독립 보도 미확인",
         "market_2025_user_claim_usd_bn": 30.0,
         "market_2025_official_confirmed": false,
         "amd_target_usd": 960.0,
@@ -470,7 +472,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-10-08",
-    "last_checked_at_kst": "2026-10-08T20:42:22+09:00",
+    "last_checked_at_kst": "2026-10-08T20:45:17+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -514,7 +516,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-08T20:42:24+09:00",
+    "last_checked_at_kst": "2026-10-08T20:45:18+09:00",
     "candidate_count": 0,
     "event_count": 0,
     "area_structure": {
