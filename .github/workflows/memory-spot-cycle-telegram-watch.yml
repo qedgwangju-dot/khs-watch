@@ -399,7 +399,17 @@ jobs:
             fi
 
             if [ -f /tmp/smartphone_memory_price_pass_through_state.local.json ]; then
-              cp /tmp/smartphone_memory_price_pass_through_state.local.json data/smartphone_memory_price_pass_through_state.json
+              python - <<'PY'
+          import json
+          import pathlib
+          from scripts.smartphone_memory_price_pass_through_watch import _merge_checkpoint_states
+          dest = pathlib.Path("data/smartphone_memory_price_pass_through_state.json")
+          temp = pathlib.Path("/tmp/smartphone_memory_price_pass_through_state.local.json")
+          remote = json.loads(dest.read_text(encoding="utf-8")) if dest.exists() else {}
+          local = json.loads(temp.read_text(encoding="utf-8"))
+          merged = _merge_checkpoint_states(remote, local)
+          dest.write_text(json.dumps(merged, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          PY
             fi
             if [ -f /tmp/samsung_mx_production_watch_state.local.json ]; then
               cp /tmp/samsung_mx_production_watch_state.local.json data/samsung_mx_production_watch_state.json

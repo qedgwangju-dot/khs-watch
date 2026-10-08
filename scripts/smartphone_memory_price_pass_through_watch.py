@@ -58,7 +58,7 @@ BASELINE = {
 
 QUERIES = [
     ("ko", '"갤럭시 S27" 가격 인상 메모리 LPDDR6 NAND 13만원'),
-    ("ko", '"갤럭시 S27" 가격 10만원 13만원 yeux1122'),
+    ("ko", '"갤럭시 S27" 한국 10만원 13만원 가격 인상'),
     ("ko", '"갤럭시 S27" LPDDR6 UFS 5.1 가격'),
     ("ko", '삼성 스마트폰 가격 인상 메모리 가격 S26 A시리즈'),
     ("ko", '스마트폰 가격 인상 메모리 DRAM NAND 애플 OPPO vivo 구글'),
@@ -70,7 +70,7 @@ QUERIES = [
 ]
 
 HIGH_SOURCES = (
-    "samsung", "reuters", "yonhap", "연합뉴스", "trendforce", "counterpoint",
+    "reuters", "yonhap", "연합뉴스", "trendforce", "counterpoint",
     "idc", "canalys", "omdia", "bloomberg", "financial times", "wsj",
     "wall street journal",
 )
@@ -134,13 +134,14 @@ def _normalize(value: str) -> str:
 
 def _source_rank(source: str) -> int:
     raw = _clean(source).lower()
-    low = _normalize(source)
-    if any(x.lower() in raw or x.lower() in low for x in HIGH_SOURCES):
-        return 3
-    if any(x.lower() in raw or x.lower() in low for x in MID_SOURCES):
-        return 2
-    if any(x.lower() in raw or x.lower() in low for x in LOW_SOURCES):
+    if any(x.lower() in raw for x in LOW_SOURCES):
         return 0
+    if any(x.lower() in raw for x in HIGH_SOURCES):
+        return 3
+    if raw in ("samsung electronics", "samsung global newsroom", "samsung newsroom", "삼성전자 뉴스룸"):
+        return 3
+    if any(x.lower() in raw for x in MID_SOURCES):
+        return 2
     return 1
 
 
@@ -169,21 +170,73 @@ def _fingerprint(item: dict) -> str:
 
 def _extract_krw_hike(blob: str) -> tuple[int | None, int | None]:
     low = blob.lower().replace(",", "")
-    values: list[int] = []
-
-    for m in re.finditer(r"(\d+(?:\.\d+)?)\s*만\s*원", low):
-        value = int(round(float(m.group(1)) * 10000))
-        if 10000 <= value <= 1000000:
-            values.append(value)
-
-    for m in re.finditer(r"(\d{5,7})\s*(?:원|krw|won)", low):
-        value = int(m.group(1))
-        if 10000 <= value <= 1000000:
-            values.append(value)
-
-    if not values:
+    if not any(x in low for x in ("인상", "상승", "올리", "오른", "price hike", "price increase", "increase", "raise", "higher")):
         return None, None
-    return min(values), max(values)
+    values: list[int] = []
+    for m in re.finditer(
+        r"(\d+(?:\.\d+)?)\s*만\s*(?:원)?\s*(?:~|–|—|-|to|에서|부터)\s*(\d+(?:\.\d+)?)\s*만\s*원",
+        low,
+    ):
+        values.extend([round(float(m.group(1)) * 10000), round(float(m.group(2)) * 10000)])
+    for m in re.finditer(r"(\d+(?:\.\d+)?)\s*만\s*원", low):
+        values.append(round(float(m.group(1)) * 10000))
+    for m in re.finditer(r"(?:₩\s*|krw\s*)(\d{4,7})\b|\b(\d{4,7})\s*(?:원|krw|won)\b", low):
+        values.append(int(m.group(1) or m.group(2)))
+    values = [v for v in values if 30000 <= v <= 500000]
+    return (min(values), max(values)) if values else (None, None)
+
+
+def _material_s27_change(lo: int, hi: int, old_lo: int, old_hi: int) -> bool:
+    # A headline that repeats only the known upper bound (13만원) is not new.
+    if lo == hi and old_lo <= lo <= old_hi:
+        return False
+    return abs(lo - old_lo) >= 30000 or abs(hi - old_hi) >= 30000
+
+
+def _is_uncertain(blob: str) -> bool:
+    return any(word in blob.lower() for word in (
+        "rumor", "rumour", "leak", "tipster", "tipped", "could ", "may ",
+        "might ", "expected", "likely", "전망", "예상", "추정",
+        "루머", "유출", "가능성", "보도에 따르면", "傳出", "可能", "預計",
+    ))
+
+
+def _model_name(blob: str) -> str:
+    low = blob.lower()
+    for regex, name in (
+        (r"(?:galaxy\s*)?s26\s*ultra", "S26 Ultra"),
+        (r"(?:galaxy\s*)?s26\s*plus", "S26 Plus"),
+        (r"(?:galaxy\s*)?s26\b", "S26"),
+        (r"iphone\s*18\s*pro\s*max", "iPhone 18 Pro Max"),
+        (r"iphone\s*18\s*pro", "iPhone 18 Pro"),
+        (r"iphone\s*18\b", "iPhone 18"),
+        (r"pixel\s*1[01]\b", "Pixel"),
+    ):
+        if re.search(regex, low):
+            return name
+    return ""
+
+
+def _retail_price_event(item: dict) -> dict | None:
+    blob = f"{item.get('title','')} {item.get('description','')}"
+    low = blob.lower()
+    if _is_s27(blob) or _is_uncertain(blob) or not _is_price_pass_through(blob):
+        return None
+    if not any(x in low for x in ("raises", "raised", "hiked", "increase", "인상", "올렸")):
+        return None
+    model = _model_name(blob)
+    if not model:
+        return None
+    if re.search(r"\b(?:united states|u\.s\.|usa|미국)\b", low):
+        matches = re.findall(r"\$\s*(\d{2,3})\b|\b(\d{2,3})\s*(?:usd|dollars?)\b", low)
+        dollars = [int(v) for row in matches for v in row if v]
+        if dollars and len(set(dollars)) == 1:
+            return {"model": model, "market": "미국", "currency": "USD", "amount": dollars[0]}
+    if re.search(r"(?:한국|국내|korea|\bkrw\b|만원)", low):
+        lo, hi = _extract_krw_hike(blob)
+        if lo is not None and lo == hi:
+            return {"model": model, "market": "한국", "currency": "KRW", "amount": lo}
+    return None
 
 
 def _extract_pct(blob: str) -> float | None:
@@ -234,28 +287,26 @@ def _is_config_pressure(blob: str) -> bool:
 
 def _shipment_revision_pct(blob: str) -> float | None:
     low = blob.lower()
-    if not (any(x in low for x in OEM_MARKERS)
-            and any(x in low for x in MEMORY_MARKERS)):
+    if not any(x in low for x in OEM_MARKERS) or not any(x in low for x in MEMORY_MARKERS):
         return None
     for clause in re.split(r"[!?;；。]|\n|\|", low):
-        if not any(x in clause for x in ("shipments", "shipment forecast", "출하량", "출하전망", "출하 목표")):
-            continue
-        if not any(x in clause for x in ("forecast", "guidance", "estimate", "전망", "추정", "목표", "수정")):
-            continue
-        # Attribute a percent to the change verb immediately preceding it.
-        # "shipments forecast cut 12% due to 175% memory-price inflation"
-        # must mean a -12% shipment revision, not +175% or an ambiguous signal.
-        for match in re.finditer(r"([+\-]?\d{1,3}(?:\.\d+)?)\s*%", clause):
-            prefix = clause[max(0, match.start()-90):match.start()]
-            down_words = ("cut", "lower", "reduce", "down", "하향", "축소", "감소")
-            up_words = ("raise", "increase", "up", "higher", "상향", "확대", "증가")
-            last_down = max((prefix.rfind(x) for x in down_words), default=-1)
-            last_up = max((prefix.rfind(x) for x in up_words), default=-1)
-            if last_down == last_up:
-                continue
-            value = abs(float(match.group(1)))
-            return round(-value if last_down > last_up else value, 2)
-        return None
+        # The direction word must be near the SHIPMENT quantity, not near a
+        # memory-price percentage somewhere else in the same article.
+        forward = (
+            r"(?:shipments?|출하량|출하전망|출하 목표)"
+            r"[^,.]{0,90}?(?:cut|lowered|reduced|fall|drop|하향|감소|축소)"
+            r"[^,.]{0,25}?(\d{1,3}(?:\.\d+)?)\s*%"
+        )
+        reverse = (
+            r"(?:shipments?|출하량|출하전망|출하 목표)"
+            r"[^,.]{0,70}?(\d{1,3}(?:\.\d+)?)\s*%"
+            r"[^,.]{0,20}?(?:cut|lowered|reduced|fall|drop|하향|감소|축소)"
+        )
+        m = re.search(forward, clause) or re.search(reverse, clause)
+        if m:
+            value = float(m.group(1))
+            if 5 <= value <= 100:
+                return -value
     return None
 
 
@@ -264,9 +315,26 @@ def _is_shipment_revision(blob: str) -> bool:
 
 
 def _is_official_samsung_item(item: dict) -> bool:
-    # "Samsung" in a Reuters headline does not make it an official notice.
-    host = (urlparse(item.get("link") or "").hostname or "").lower()
-    return host in ("news.samsung.com", "samsung.com", "www.samsung.com")
+    # A media headline saying "Samsung" is never a manufacturer statement.
+    # Google News links are redirects: use the RSS publisher's source URL.
+    origin = item.get("source_url") or item.get("link") or ""
+    host = (urlparse(origin).hostname or "").lower().removeprefix("www.")
+    source = _clean(item.get("source", "")).lower()
+    return host in ("news.samsung.com", "samsung.com", "shop.samsung.com") and ("samsung" in source or "삼성" in source)
+
+
+def _official_s27_price(item: dict) -> bool:
+    blob = f"{item.get('title','')} {item.get('description','')}"
+    low = blob.lower()
+    return (
+        _is_official_samsung_item(item)
+        and _is_s27(blob)
+        and not _is_uncertain(blob)
+        and bool(re.search(r"(?:128|256|512)\s*gb|1\s*tb", low))
+        and any(x in low for x in ("price", "msrp", "가격", "출고가"))
+        and any(x in low for x in ("announc", "increas", "raise", "인상", "발표", "확정"))
+        and _extract_krw_hike(blob)[0] is not None
+    )
 
 
 def _load_state() -> dict:
@@ -277,10 +345,10 @@ def _load_state() -> dict:
             data.setdefault("metrics", {})
             data.setdefault("seen_fact_keys", [])
             return data
-    except Exception:
-        pass
+    except Exception as exc:
+        raise RuntimeError("State file unreadable: stop alerting rather than replaying baseline") from exc
     return {
-        "schema_version": 1,
+        "schema_version": 2,
         "initial_alert_sent": False,
         "seen": [],
         "seen_fact_keys": [],
@@ -308,6 +376,7 @@ def collect() -> tuple[list[dict], list[str]]:
             link = _clean(node.findtext("link"))
             source_node = node.find("source")
             source = _clean(source_node.text if source_node is not None else "")
+            source_url = _clean(source_node.attrib.get("url")) if source_node is not None else ""
             published = _parse_date(_clean(node.findtext("pubDate")))
             if not title or not published or published < cutoff or published > now + dt.timedelta(minutes=15):
                 continue
@@ -324,6 +393,7 @@ def collect() -> tuple[list[dict], list[str]]:
                 "description": description,
                 "link": link,
                 "source": source or "출처 미표시",
+                "source_url": source_url,
                 "published_at_kst": published.isoformat(timespec="seconds"),
             }
             rows[_fingerprint(item)] = item
@@ -332,99 +402,92 @@ def collect() -> tuple[list[dict], list[str]]:
 
 
 def _fact_keys(item: dict) -> set[str]:
-    blob = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    blob = f"{item.get('title','')} {item.get('description','')}"
     low = blob.lower()
     keys: set[str] = set()
-
     if _is_s27(blob):
-        low_krw, high_krw = _extract_krw_hike(blob)
-        if low_krw is not None or high_krw is not None:
-            lo = int(round((low_krw or 0) / 10000))
-            hi = int(round((high_krw or low_krw or 0) / 10000))
-            keys.add(f"s27_korea_price_hike_{lo}_{hi}_manwon")
-        if "lpddr6" in low or "ufs 5.1" in low or "ufs5.1" in low:
-            keys.add("s27_lpddr6_ufs51_rumor")
-
-    if ("galaxy s26" in low or "갤럭시 s26" in low or "갤럭시s26" in low) and _is_price_pass_through(blob):
-        keys.add("s26_memory_price_pass_through")
-
-    if _is_config_pressure(blob):
-        keys.add("smartphone_memory_config_pressure")
-
-    if _is_shipment_revision(blob):
-        pct = _shipment_revision_pct(blob)
-        if pct is not None:
-            keys.add(f"smartphone_memory_shipment_revision_{round(pct,1)}")
-
+        lo, hi = _extract_krw_hike(blob)
+        if lo is not None:
+            tier = "official" if _official_s27_price(item) else "rumor"
+            keys.add(f"s27_{tier}_krw_hike_{lo}_{hi}")
+        if (_is_official_samsung_item(item) and not _is_uncertain(blob)
+                and "lpddr6" in low and ("ufs 5.1" in low or "ufs5.1" in low)):
+            keys.add("s27_lpddr6_ufs51_official")
+    retail = _retail_price_event(item)
+    if retail:
+        key = f"retail_{retail['model']}_{retail['market']}_{retail['currency']}_{retail['amount']}"
+        keys.add(key.lower().replace(" ", "_"))
+    pct = _shipment_revision_pct(blob)
+    if pct is not None:
+        model = _model_name(blob) or "brand"
+        year = re.search(r"20(?:26|27|28)", low)
+        keys.add(f"shipments_{model}_{year.group(0) if year else 'unknown'}_{pct}".lower().replace(" ", "_"))
     return keys
 
 
 def _signal(item: dict, state: dict) -> dict | None:
-    blob = f"{item['title']} {item.get('description','')} {item.get('source','')}"
+    blob = f"{item['title']} {item.get('description','')}"
     low = blob.lower()
     rank = _source_rank(item.get("source", ""))
     if rank < 2:
         return None
-
     metrics = state.get("metrics") or {}
     reasons: list[str] = []
     changes: dict[str, object] = {}
     stage = 0
 
     if _is_s27(blob):
-        low_krw, high_krw = _extract_krw_hike(blob)
-        old_low = int(metrics.get("s27_korea_hike_low_krw") or 0)
-        old_high = int(metrics.get("s27_korea_hike_high_krw") or 0)
-
-        if low_krw is not None and high_krw is not None:
-            # Same 10~13만원 rumor is baseline repeat. Only material change or
-            # official confirmation re-alerts.
-            material = (
-                abs(low_krw - old_low) >= 30000
-                or abs(high_krw - old_high) >= 30000
-            )
-            official = _is_official_samsung_item(item)
-            if material or official:
+        lo, hi = _extract_krw_hike(blob)
+        old_lo = int(metrics.get("s27_korea_hike_low_krw") or 0)
+        old_hi = int(metrics.get("s27_korea_hike_high_krw") or 0)
+        official = _official_s27_price(item)
+        if lo is not None and hi is not None and (official or _material_s27_change(lo, hi, old_lo, old_hi)):
+            if official:
+                reasons.append(f"삼성전자 공식 S27 한국 256GB 등 모델·용량 확인 인상액 {lo//10000}~{hi//10000}만원")
+                changes.update({"s27_status": "제조사 공식 발표 확인",
+                                "s27_korea_hike_low_krw": lo,
+                                "s27_korea_hike_high_krw": hi})
+                stage = 3
+            else:
                 reasons.append(
-                    f"Galaxy S27 한국 가격 인상 범위 "
-                    f"{old_low//10000:g}~{old_high//10000:g}만원 → "
-                    f"{low_krw//10000:g}~{high_krw//10000:g}만원"
+                    f"S27 한국 가격 인상 전망 변경(공식 미확정) "
+                    f"{old_lo//10000}~{old_hi//10000}만원 기준 → {lo//10000}~{hi//10000}만원 보도"
                 )
-                changes["s27_korea_hike_low_krw"] = low_krw
-                changes["s27_korea_hike_high_krw"] = high_krw
-                stage = max(stage, 3 if official else 2)
+                # A single report never rewrites the standing rumor baseline.
+                stage = max(stage, 1)
+        if (_is_official_samsung_item(item) and not _is_uncertain(blob)
+                and "lpddr6" in low and ("ufs 5.1" in low or "ufs5.1" in low)
+                and any(x in low for x in ("채택", "탑재", "ships with", "equipped", "확정"))):
+            reasons.append("삼성전자 공식: S27 LPDDR6 및 UFS 5.1 채택 확인")
+            changes["s27_lpddr6_ufs51_some_models_status"] = "제조사 공식 확인"
+            stage = 3
 
-        if ("lpddr6" in low or "ufs 5.1" in low or "ufs5.1" in low) and _is_official_samsung_item(item):
-            reasons.append("Galaxy S27 LPDDR6·UFS 5.1 채택의 삼성 공식 확인")
-            changes["s27_lpddr6_ufs51_some_models_status"] = "공식 확인"
-            stage = max(stage, 3)
+    retail = _retail_price_event(item)
+    if retail and rank >= 3:
+        unit = "원" if retail["currency"] == "KRW" else "달러(원화 환산 필수)"
+        reasons.append(
+            f"스마트폰 출고가 변경 보도: {retail['model']} {retail['market']} "
+            f"인상액 {retail['amount']}{unit} (제조사 직접발표 여부 별도)"
+        )
+        stage = max(stage, 3 if _is_official_samsung_item(item) else 2)
 
-    if _is_price_pass_through(blob):
-        # A new OEM price pass-through is investable evidence that memory
-        # inflation is reaching end-device pricing.
-        if not _is_s27(blob):
-            reasons.append("메모리 원가 상승이 스마트폰 판매가격으로 전가되는 신규 사례")
-            stage = max(stage, 2 if rank >= 3 else 1)
+    if (_is_config_pressure(blob)
+            and re.search(r"(?:8|12|16|24|32|128|256|512)\s*gb", low)
+            and any(x in low for x in ("reduc", "cut ", "축소", "하향"))
+            and rank >= 3 and not _is_uncertain(blob)):
+        reasons.append("메모리 원가 때문에 스마트폰 RAM·저장용량 사양을 실제 축소한 보도")
+        stage = max(stage, 2)
 
-    if _is_config_pressure(blob):
-        reasons.append("메모리 원가 때문에 RAM·저장용량 사양 조정 신호")
-        stage = max(stage, 2 if rank >= 3 else 1)
-
-    if _is_shipment_revision(blob):
-        pct = _shipment_revision_pct(blob)
-        if pct is not None and abs(pct) >= 5:
-            reasons.append(f"메모리 비용과 연결된 스마트폰 출하전망 변화 {pct:+g}%")
-            stage = max(stage, 2)
+    pct = _shipment_revision_pct(blob)
+    if pct is not None and abs(pct) >= 5 and rank >= 3:
+        reasons.append(f"메모리 비용에 따른 스마트폰 출하전망 하향 {pct:g}%")
+        stage = max(stage, 2)
 
     if not reasons:
         return None
-
     return {
-        "item": item,
-        "rank": rank,
-        "stage": stage,
-        "reasons": reasons[:3],
-        "changes": changes,
+        "item": item, "rank": rank, "stage": stage,
+        "reasons": reasons[:3], "changes": changes,
         "fact_keys": sorted(_fact_keys(item)),
     }
 
@@ -467,9 +530,9 @@ def _baseline_alert(metrics: dict) -> str:
 def _change_alert(signals: list[dict]) -> str:
     best = max(signals, key=lambda s: (s["stage"], s["rank"], s["item"]["published_at_kst"]))
     stage_text = (
-        "🔴 공식 가격·수요 전환"
+        "🔴 제조사 공식 확인"
         if best["stage"] >= 3
-        else ("🟠 완제품 가격 전가 확대" if best["stage"] >= 2 else "🟡 전가 선행 신호")
+        else ("🟠 실제 출고가·출하 전망 확인" if best["stage"] >= 2 else "🟡 미확정 전망 변화")
     )
     selected = sorted(
         signals,
@@ -490,7 +553,8 @@ def _change_alert(signals: list[dict]) -> str:
     lines += [
         "",
         "<b>[해석 규칙]</b>",
-        "• 가격 인상 루머와 제조사 공식 출고가를 분리합니다.",
+        "• 루머는 공식 확정이 아닙니다. 언론사가 삼성전자를 언급한 것만으로 공식 발표로 승격하지 않습니다.",
+        "• 서로 다른 국가·모델·통화·저장용량 숫자는 비교하지 않습니다.",
         "• DRAM과 NAND 수급을 분리합니다. 2027 NAND 완화 가능성을 무시하지 않습니다.",
         "• 가격 전가는 메모리 업체 가격결정력에는 호재지만 스마트폰 출하·부품 수요에는 역풍이 될 수 있습니다.",
         "",
@@ -520,6 +584,8 @@ def main() -> None:
     metrics = dict(BASELINE)
     metrics.update(state.get("metrics") or {})
     items, errors = collect()
+    if not items and len(errors) == len(QUERIES):
+        raise RuntimeError("All smartphone news queries failed; no-alert state must not advance")
     signals: list[dict] = []
 
     initial_pending = not bool(state.get("initial_alert_sent"))
@@ -548,7 +614,7 @@ def main() -> None:
                 seen_fact_keys.update(signal.get("fact_keys") or [])
 
     pending = {
-        "schema_version": 1,
+        "schema_version": 2,
         "updated_at_kst": now.isoformat(timespec="seconds"),
         "initial_alert_sent": True,
         "seen": sorted(seen)[-700:],
@@ -561,6 +627,7 @@ def main() -> None:
             "nand_2h27": "TrendForce 공식: 2027 하반기 NAND 공급 완화 가능성",
         },
         "last_scan_items": len(items),
+        "errors": errors[-20:],
         "last_signal_count": len(signals),
         "last_alert": (
             {
@@ -598,6 +665,24 @@ def main() -> None:
         f"- errors: {len(errors)}\n",
         encoding="utf-8",
     )
+
+
+def _merge_checkpoint_states(remote: dict, local: dict) -> dict:
+    newer = local if str(local.get("updated_at_kst") or "") >= str(remote.get("updated_at_kst") or "") else remote
+    older = remote if newer is local else local
+    out = dict(older)
+    out.update(newer)
+    out["schema_version"] = 2
+    out["initial_alert_sent"] = bool(remote.get("initial_alert_sent") or local.get("initial_alert_sent"))
+    out["seen"] = sorted(set(remote.get("seen") or []) | set(local.get("seen") or []))[-700:]
+    out["seen_fact_keys"] = sorted(set(remote.get("seen_fact_keys") or []) | set(local.get("seen_fact_keys") or []))[-300:]
+    if any("제조사 공식 발표 확인" in str((x.get("metrics") or {}).get("s27_status") or "") for x in (remote, local)):
+        out["metrics"] = dict(out.get("metrics") or {})
+        out["metrics"]["s27_status"] = "제조사 공식 발표 확인"
+    alerts = [x["last_alert"] for x in (remote, local) if isinstance(x.get("last_alert"), dict)]
+    if alerts:
+        out["last_alert"] = max(alerts, key=lambda x: x.get("at_kst") or "")
+    return out
 
 
 if __name__ == "__main__":
