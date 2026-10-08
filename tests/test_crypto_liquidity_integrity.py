@@ -2,6 +2,7 @@ import unittest
 from unittest.mock import patch
 
 from scripts import crypto_liquidity_watch as watch
+from scripts import crypto_alert_format as fmt
 
 
 DAYS = [
@@ -36,6 +37,37 @@ class CryptoLiquidityDataIntegrityTest(unittest.TestCase):
     def fetch_btc(self, html):
         with patch.object(watch, "fetch", return_value=html.encode("utf-8")):
             return watch.btc_etf_flow()
+
+    def test_unreported_ibit_prevents_premature_overall_verdict(self):
+        state = {
+            "rates": {
+                "date": "2026-10-07",
+                "daily_10y_bp": 1.0,
+                "daily_30y_bp": 3.0,
+            },
+            "btc_etf": {
+                "date": "2026-10-07",
+                "total_usd_m": -277.2,
+                "status": "partial",
+                "reported_funds": 11,
+                "missing_funds": 1,
+                "missing_tickers": ["IBIT"],
+                "last5_usd_m": 44.4,
+                "prev5_usd_m": 273.7,
+            },
+        }
+        verdict, reason = fmt.compact_judgement(state)
+        self.assertIn("판정 보류", verdict)
+        self.assertIn("IBIT 미보고", reason)
+        self.assertIn("-277.2백만달러", reason)
+        state["btc_etf"]["missing_tickers"] = ["BTC"]
+        verdict, _ = fmt.compact_judgement(state)
+        self.assertIn("불리", verdict)
+        self.assertIn("잠정", verdict)
+        state["btc_etf"]["status"] = "complete"
+        state["btc_etf"]["missing_tickers"] = []
+        verdict, _ = fmt.compact_judgement(state)
+        self.assertEqual(verdict, "불리")
 
     def test_twelve_tickers_and_rolling_window_math(self):
         latest = self.fetch_btc(build_html())

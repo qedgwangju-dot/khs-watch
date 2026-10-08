@@ -359,6 +359,19 @@ def compact_judgement(state: dict) -> tuple[str, str]:
             "같은 날의 종합 방향으로 묶지 않음"
         )
 
+    missing_tickers = set(etf.get("missing_tickers") or [])
+    if str(etf.get("status") or "") != "complete" and "IBIT" in missing_tickers:
+        reported = int(etf.get("reported_funds", 0) or 0)
+        missing_count = int(etf.get("missing_funds", 0) or 0)
+        count = reported + missing_count
+        flow_label = "순유출" if flow < 0 else "순유입" if flow > 0 else "중립"
+        return (
+            "종합판정 보류 · 잠정",
+            f"보고된 {reported}/{count}개 ETF 합계 {flow:+,.1f}백만달러({flow_label})는 "
+            "IBIT 미보고 상태. 최종 수급 방향은 미확정. "
+            "장기금리 변화는 확인됐지만 5거래일 합계도 잠정.",
+        )
+
     flow_score = 1 if flow > 0 else -1 if flow < 0 else 0
     five_score = 0
     if last5 is not None and prev5 is not None:
@@ -411,7 +424,10 @@ def compact_judgement(state: dict) -> tuple[str, str]:
         five_text = "5거래일 비교는 확인 불가"
 
     if flow < 0 and r10 > 0 and r30 > 0:
-        reason = f"{day_text}과 {rate_text}은 부담이고, 5거래일 순유입 강도도 둔화."
+        if last5 is not None and prev5 is not None and last5 < prev5:
+            reason = f"{day_text}과 {rate_text}은 부담이고, 5거래일 순유입 강도도 둔화."
+        else:
+            reason = f"{day_text}과 {rate_text}은 부담. {five_text}."
     elif flow > 0 and r10 < 0 and r30 < 0:
         reason = f"{day_text}과 {rate_text}이 우호적. {five_text}."
     else:
