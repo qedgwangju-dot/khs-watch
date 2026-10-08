@@ -404,8 +404,11 @@ def score(item: dict) -> int:
 
 def category(text: str, group: str) -> str:
     if group == 'tesla_touch_patent':
-        # base.main renders category(title + description) WITHOUT source.
-        # A1 cannot become an issued patent from a sensational headline.
+        # Renderer omits item['source'], while score() verifies source.
+        # A press claim of "grant" scores zero; only an official source can
+        # result in a rendered grant-stage event.
+        if TESLA_TOUCH_PATENT_GRANT.search(text) and not TESLA_TOUCH_PATENT_GRANT_DENIAL.search(text):
+            return '테슬라 촉각센서 · 특허 등록 공식확인 단계'
         return '테슬라 촉각센서 · 미국 특허출원 공개 A1'
     if group == 'dkt_humanoid':
         # The legacy renderer deliberately calls category(title + description)
@@ -445,6 +448,12 @@ def category(text: str, group: str) -> str:
 
 
 def meaning(cat: str) -> str:
+    if cat == '테슬라 촉각센서 · 특허 등록 공식확인 단계':
+        return (
+            '미국 특허청의 후속 등록 상태 변화가 2026-10-08 공개출원 A1과 '
+            '별도로 확인된 단계입니다. 등록번호·청구항·등록일을 반드시 다시 확인하고, '
+            '제품 채택이나 판매 실적과는 분리합니다.'
+        )
     if cat == '테슬라 촉각센서 · 미국 특허출원 공개 A1':
         return (
             '2026-10-08 미국 특허출원 공개 US 2026/0310299 A1. '
@@ -499,6 +508,11 @@ def meaning(cat: str) -> str:
 
 
 def risk(cat: str) -> str:
+    if cat == '테슬라 촉각센서 · 특허 등록 공식확인 단계':
+        return (
+            '등록돼도 어떤 청구항이 유지됐는지, 권리범위가 실제 제품을 덮는지 '
+            '확인해야 합니다. 특허 등록과 수율·고객납품·현금매출은 별개의 사건입니다.'
+        )
     if cat == '테슬라 촉각센서 · 미국 특허출원 공개 A1':
         return (
             'A1 공개는 B2 특허등록도, Optimus 손 양산 탑재도, 외부부품 공급계약도 아닙니다. '
@@ -527,6 +541,8 @@ def risk(cat: str) -> str:
 
 def verification(item: dict, group: str, text: str) -> str:
     if group == 'tesla_touch_patent':
+        if _tesla_touch_patent_stage(text, item.get('source') or '') == 'official_grant':
+            return 'USPTO 공식자료의 특허 등록 상태 · 별도 등록증/청구항/제품 채택 확인 필요'
         return (
             '사용자 제공 미국 A1 특허공개문서 표지 확인 · Tesla Optimus 채용공고로 '
             '기술개발·제조방향 교차확인 · USPTO 웹 원문 및 기사 본문 직접 열람 실패 · '
@@ -562,6 +578,8 @@ def verification(item: dict, group: str, text: str) -> str:
 def clean_title(title: str, source: str) -> str:
     text = f'{title} {source}'
     if _tesla_touch_patent_match(text):
+        if source in TESLA_TOUCH_PATENT_OFFICIAL and TESLA_TOUCH_PATENT_GRANT.search(text) and not TESLA_TOUCH_PATENT_GRANT_DENIAL.search(text):
+            return '테슬라, US 2026/0310299 A1 관련 특허 등록 상태 공식 확인'
         return TESLA_TOUCH_PATENT_TITLE
     if _is_dkt_humanoid(text):
         # clean_title receives only title + source (NOT description).
