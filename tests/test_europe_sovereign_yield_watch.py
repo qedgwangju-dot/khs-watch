@@ -113,6 +113,19 @@ class EuropeSovereignYieldWatchTests(unittest.TestCase):
         base["de_mkt"].date = "2026-10-08"
         self.assertIsNone(watch.comparable_market_spread(base, ["fr_mkt"]))
 
+    def test_country_coverage_excludes_stale_and_accepts_market_fallback(self):
+        latest = {
+            "fr10": watch.Obs("fr10", "프랑스", "2026-10-08", 4.898, "official"),
+            "de_mkt": watch.Obs("de_mkt", "독일", "2026-10-08", 3.48, "market"),
+            "uk10": watch.Obs("uk10", "영국", "2026-10-06", 5.33, "official"),
+            "uk_mkt": watch.Obs("uk_mkt", "영국", "2026-10-08", 5.46, "market"),
+        }
+        coverage = watch.coverage_by_country(latest, ["uk10"])
+        self.assertEqual(coverage, {"프랑스": True, "독일": True,
+                                    "이탈리아": False, "영국": True})
+        coverage_bad = watch.coverage_by_country(latest, ["uk10", "de_mkt", "uk_mkt"])
+        self.assertEqual(sum(coverage_bad.values()), 1)
+
     def test_future_dated_market_data_does_not_trigger(self):
         now = dt.datetime(2026, 10, 8, 23, 54, tzinfo=ZoneInfo("Asia/Seoul"))
         row = watch.Obs("fr10", "프랑스", "2026-10-09", 5.00, "x")
