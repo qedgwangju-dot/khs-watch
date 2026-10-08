@@ -701,6 +701,11 @@ def enrich_event(event: dict) -> dict:
     e["link_verified"] = bool(direct)
     # URL decoding is NOT proof that an official article body was fetched.
     e["article_fetch_succeeded"] = False
+    # Publisher-owned HTML evidence. RSS title and summary alone must never
+    # prove an official HBM qualification or volume-production milestone.
+    e["official_article_title"] = ""
+    e["official_article_description"] = ""
+    e["official_article_text"] = ""
     e["article_title"] = e.get("title") or ""
     e["article_description"] = e.get("description") or ""
     e["article_text"] = ""
@@ -715,6 +720,9 @@ def enrich_event(event: dict) -> dict:
         desc = meta_content(raw, "og:description") or meta_content(raw, "description")
         body = article_text_from_html(raw)
         e["article_fetch_succeeded"] = True
+        e["official_article_title"] = og_title
+        e["official_article_description"] = desc
+        e["official_article_text"] = body
         if og_title:
             e["article_title"] = og_title
         if desc:
@@ -2458,8 +2466,10 @@ def extract_hbm_hybrid_official_observation(event: dict) -> dict | None:
     # a hybrid-bonding headline.
     article = "\n".join(
         str(event.get(key) or "") for key in
-        ("article_title", "article_description", "article_text")
+        ("official_article_title", "official_article_description", "official_article_text")
     )
+    if not article.strip():
+        return None
     sentences = re.split(r"(?<=[.!?。])\s+|\n+", article)
     best = ""
     for sentence in sentences:
