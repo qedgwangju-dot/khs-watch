@@ -732,3 +732,28 @@ with _tempfile_peak.TemporaryDirectory() as _tmp_peak:
     assert _w_new.last_episode_end_ts == _w_old.last_episode_end_ts, (
         _w_new.last_episode_end_ts,_w_old.last_episode_end_ts)
 print("episode_boundary_handoff_regression=true")
+
+
+# --test는 실데이터를 조회하더라도 실전 Telegram 송출 경로를 절대 호출하지 않는다.
+# 가격이 실제 급락 기준을 충족할 때도 시험용 경보가 발송되면 안 된다.
+import asyncio as _asyncio_no_alert
+_test_watch=Watch("unused",[], "", True)
+_test_watch.idx=deque([
+    (time.time()-300, 7000.0),
+    (time.time()-180, 6965.0),
+    (time.time(), 6900.0),
+],maxlen=30000)
+async def _no_flow_test():
+    return None
+_test_watch.maybe_flow=_no_flow_test
+_old_sender=ks.telegram_send
+try:
+    def _forbid_send(*args,**kwargs):
+        raise AssertionError("CI test mode attempted Telegram delivery")
+    ks.telegram_send=_forbid_send
+    _asyncio_no_alert.run(_test_watch.evaluate())
+    assert _test_watch.raw.get("test_mode_notification_suppressed") is True
+    assert _test_watch.episode is None
+finally:
+    ks.telegram_send=_old_sender
+print("test_mode_must_not_send_telegram_regression=true")
