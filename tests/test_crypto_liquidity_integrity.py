@@ -61,7 +61,7 @@ class CryptoLiquidityDataIntegrityTest(unittest.TestCase):
         self.assertIsNone(watch.reject_etf_source_regression(old, same))
         complete = self.fetch_btc(build_html(latest_missing=0))
         self.assertIsNone(watch.reject_etf_source_regression(old, complete))
-        self.assertIn("regressed", watch.reject_etf_source_regression(complete, old))
+        self.assertIn("coverage regression", watch.reject_etf_source_regression(complete, old))
 
     def test_stale_date_rejected(self):
         old = {"date": "2026-10-07", "reported_funds": 11, "status": "partial"}
