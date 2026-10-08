@@ -617,3 +617,40 @@ assert not continuous_flow_guard_active(_dt_guard.datetime(2026,10,8,15,20,tzinf
 assert not continuous_flow_guard_active(_dt_guard.datetime(2026,10,8,15,28,tzinfo=zone_guard),market_session_guard)
 assert "continuous_flow_guard_active(now, session)" in inspect.getsource(ks.Watch.run)
 print("closing_auction_flow_health_guard_regression=true")
+
+
+# 2026-10-08 장마감 실제 이력: 14:36:27 시작 사건이 15:06 종료된 뒤
+# 동일 시작점으로 15:30:32에 재발송됐음. 장 종료 후 지연된 시세는 신규 사건이 아니다.
+import asyncio as _postclose_async
+import datetime as _postclose_dt
+from zoneinfo import ZoneInfo as _postclose_zone
+from kospi_shock_episode_watch import price_event_window_open as _price_window_open
+_closetime = _postclose_dt.datetime(2026, 10, 8, 15, 30, tzinfo=_postclose_zone("Asia/Seoul")).timestamp()
+assert _price_window_open(_closetime - 2, _closetime, _closetime - 1)
+assert not _price_window_open(_closetime, _closetime, _closetime)
+assert not _price_window_open(_closetime + 29, _closetime, _closetime + 30)
+assert not _price_window_open(_closetime - 1, _closetime, _closetime + 1)
+assert _price_window_open(_closetime + 29, None, _closetime + 30)  # 영업일 종료시각 미확인 시 테스트만 허용
+
+_closed_watch = Watch.__new__(Watch)
+_closed_watch.raw = {}
+_closed_watch.idx = deque([(_closetime + 29, 6741.59)], maxlen=100)
+_closed_watch.session_close_ts = _closetime
+async def _no_flow():
+    return None
+_closed_watch.maybe_flow = _no_flow
+_closed_watch._trigger = lambda: (_ for _ in ()).throw(AssertionError("post-close must not trigger"))
+_postclose_async.run(_closed_watch.evaluate())
+assert _closed_watch.raw.get("post_close_alert_suppressed"), _closed_watch.raw
+print("post_close_duplicate_start_regression=true close=15:30 blocked=15:30:29")
+
+# 실제 오전/오후 handoff는 마지막 Telegram 종료경보 뒤 활성 사건을 비운 상태로 저장한다.
+_close_eval_source = inspect.getsource(ks.Watch.evaluate)
+_final_eval_tail = _close_eval_source.split("        if ended:", 1)[1]
+assert _final_eval_tail.index("self.episode = None") < _final_eval_tail.index('self._record_delivery("end"'), _final_eval_tail
+_close_run_source = inspect.getsource(ks.Watch.run)
+_final_close_tail = _close_run_source.split('self._record_delivery("close"', 1)[0]
+assert _final_close_tail.rfind("self.episode = None") > _final_close_tail.rfind("self.msg_ids.append(msg_id)"), _final_close_tail
+_handoff_source = inspect.getsource(ks.Watch.save_handoff)
+assert "temp.replace(p)" in _handoff_source, _handoff_source
+print("post_delivery_clean_handoff_regression=true atomic_write=true")
