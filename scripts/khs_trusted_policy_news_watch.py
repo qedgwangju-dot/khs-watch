@@ -4025,6 +4025,11 @@ def main() -> int:
                 path.unlink()
 
     for alert in alerts:
+        # OISP reports are acknowledged only by the confirmed Telegram
+        # message-title receipt in khs_policy_seen_finalize.py.
+        # A failed/blocked send must not permanently consume this first penalty.
+        if alert["rule"].key == "us_treasury_outbound_ai_robotics_enforcement":
+            continue
         seen_entry = {
             "key": alert["rule"].key,
             "title": alert["rule"].title,
