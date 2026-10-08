@@ -406,6 +406,18 @@ class AgenticCpuStructureTests(unittest.TestCase):
             "",
         )
         self.assertEqual(
+            w.official_cpu_signal_type(amd, "AMD expects EPYC CPU shipments to grow 40% in 2027."),
+            "",
+        )
+        self.assertEqual(
+            w.official_cpu_signal_type(amd, "AMD predicts that EPYC CPU revenue will double."),
+            "",
+        )
+        self.assertEqual(
+            w.official_cpu_signal_type(amd, "EPYC CPU shipments are projected to rise 40%."),
+            "",
+        )
+        self.assertEqual(
             w.official_cpu_signal_type(amd, "EPYC CPUs are designed to support future deployments."),
             "",
         )
