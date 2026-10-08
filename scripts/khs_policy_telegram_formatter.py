@@ -692,6 +692,14 @@ def _presidential_action_surface(value: object) -> str:
 
 def presidential_action_timeline_required(value: object) -> bool:
     text = _presidential_action_surface(value).lower()
+    if isinstance(value, dict) and value.get("policy_timeline"):
+        doc_type = str(
+            value.get("presidential_document_type")
+            or value.get("document_type")
+            or ""
+        ).lower()
+        if doc_type in {"proclamation", "executive order", "presidential memorandum"}:
+            return True
     if not text:
         return False
     if any(term in text for term in (
