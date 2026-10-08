@@ -364,10 +364,104 @@ def assert_presidential_policy_timeline_contract() -> None:
         raise AssertionError("same executive order from White House and Federal Register was not deduplicated")
 
 
+def assert_energy_month_document_keeps_identity() -> None:
+    """A confirmed White House proclamation must not become generic Trump remarks."""
+    from khs_policy_alert_explainer import (
+        ensure_explained, is_trump_direct_policy_statement, text_for,
+    )
+
+    proclamation = {
+        "source": "White House proclamations",
+        "document_type": "Proclamation",
+        "title": "National Energy Dominance Month, 2026",
+        "title_ko": "트럼프, 2026년 10월 국가 에너지 지배력의 달 포고",
+        "link": "https://www.whitehouse.gov/presidential-actions/2026/10/national-energy-dominance-month-2026/",
+        "source_body": (
+            "President Donald J. Trump proclaimed October 2026 National Energy Dominance Month. "
+            "Oil, gas, power grid and AI investment remain priorities."
+        ),
+        "body_verified": True,
+        "published_kst": "2026-10-07T00:00:00+09:00",
+        "policy_plain_summary": (
+            "2026년 10월 7일 공식 포고문입니다. "
+            "이 문서 자체에는 신규 세출 배정이나 수주가 없습니다."
+        ),
+        "investment_view": "기존 에너지 정책의 재확인입니다.",
+        "korea_market_impact": "직접 계약 기업은 확인되지 않았습니다.",
+        "policy_timeline": [
+            {"date": "2025-10-17", "stage": "과거", "detail": "동일 명칭 2025년 포고"},
+            {"date": "2026-10-07", "stage": "이번", "detail": "2026년 포고문"},
+        ],
+        "impacts": ["시간표"],
+        "sectors": ["미국 전력·에너지"],
+        "importance": "상",
+        "status": "확정",
+    }
+    diesel = {
+        "source": "White House executive orders",
+        "document_type": "Executive Order",
+        "title": "Emergency Tax Relief on Diesel Fuel",
+        "link": "https://www.whitehouse.gov/presidential-actions/2026/10/emergency-tax-relief-on-diesel-fuel/",
+        "source_body": (
+            "President Trump ordered the Treasury Secretary to determine within "
+            "5 days of the date of this order whether dyed diesel tax deferral is authorized."
+        ),
+        "body_verified": True,
+        "published_kst": "2026-10-05T00:00:00+09:00",
+        "impacts": ["시간표"],
+        "sectors": ["에너지"],
+        "importance": "상",
+        "status": "확정",
+    }
+    fact = {
+        "source": "White House fact sheets",
+        "document_type": "Fact Sheet",
+        "title": "Fact Sheet: President Donald J. Trump Promotes Diesel Affordability",
+        "link": "https://www.whitehouse.gov/fact-sheets/2026/10/fact-sheet-president-donald-j-trump-promotes-diesel-affordability/",
+        "source_body": (
+            "President Donald J. Trump signed an Executive Order to temporarily "
+            "allow off-road dyed diesel for highway use."
+        ),
+        "body_verified": True,
+        "published_kst": "2026-10-05T00:00:00+09:00",
+        "impacts": ["시간표"],
+        "sectors": ["에너지"],
+        "importance": "상",
+        "status": "확정",
+    }
+    for alert in (proclamation, diesel, fact):
+        if is_trump_direct_policy_statement(text_for(alert), alert):
+            raise AssertionError("Verified signed policy instrument was misclassified as Trump remarks")
+    detailed = dict(proclamation)
+    ensure_explained(detailed)
+    if detailed["title_ko"] != proclamation["title_ko"]:
+        raise AssertionError("Proclamation title was overwritten by a generic remark")
+    if detailed["policy_plain_summary"] != proclamation["policy_plain_summary"]:
+        raise AssertionError("Proclamation official facts were overwritten")
+
+    report = khs_policy_alert_router.render_policy_report(
+        [proclamation, diesel, fact],
+        dt.datetime(2026, 10, 8, 12, 0, tzinfo=ZoneInfo("Asia/Seoul")),
+    )
+    required_titles = (
+        "트럼프, 2026년 10월 국가 에너지 지배력의 달 포고",
+        "미국, 경유 연방세 납부 유예·벌금 감면 행정명령",
+        "백악관, 경유세 납부 유예·경유 비용 완화 팩트시트",
+    )
+    for value in required_titles:
+        if value not in report:
+            raise AssertionError(f"Missing distinct official policy title: {value}")
+    if "트럼프 대통령 발언, 시장 영향 정책 신호" in report:
+        raise AssertionError("Generic remark downgrade still corrupts mixed policy delivery")
+    if "- 타임라인:" not in report or "2026년 10월 7일" not in report:
+        raise AssertionError("Presidential timeline was lost")
+
+
 def main() -> int:
     OUT_DIR.mkdir(exist_ok=True)
     khs_policy_watch._self_test_doe_grid_dpa_event_model()
     assert_dpa_grid_delivery_semantic_dedupe()
+    assert_energy_month_document_keeps_identity()
     assert_presidential_policy_timeline_contract()
     assert_workflow_delivery_dedupe()
     assert_final_policy_telegram_format_and_currency_conversion()
