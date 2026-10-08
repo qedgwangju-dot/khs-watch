@@ -588,9 +588,11 @@ jobs:
         run: |
           python -m py_compile scripts/yen_policy_news_alert.py
           python -m py_compile scripts/yen_policy_news_alert_runner.py
+          python -m py_compile scripts/yen_policy_news_event_guard.py
+          python -m py_compile scripts/yen_policy_news_message_guard.py
           python -m py_compile scripts/yen_policy_news_linkify.py
           python -m py_compile scripts/khs_source_fetch.py
-          PYTHONPATH=scripts python -m unittest tests/test_yen_policy_news_alert.py tests/test_yen_policy_news_alert_runner.py tests/test_yen_policy_news_linkify.py -v
+          PYTHONPATH=scripts python -m unittest tests/test_yen_policy_news_alert.py tests/test_yen_policy_news_alert_runner.py tests/test_yen_policy_news_event_guard.py tests/test_yen_policy_news_message_guard.py tests/test_yen_policy_news_linkify.py -v
 
       - name: Check BOJ and yen policy catalysts
         run: PYTHONPATH=scripts python scripts/yen_policy_news_alert_runner.py
