@@ -199,6 +199,9 @@ RULE_MAX_AGE_HOURS = {
     "us_fcc_foreign_energy_inverter_ban": 24 * 90,
     # Recover the Treasury enforcement release once, not each time it is reprinted.
     "us_treasury_outbound_ai_robotics_enforcement": 24 * 14,
+    # One-time recovery for the 2026-10-01 Morgan Stanley 3.2T/65% research
+    # story that predates the international outlet parser fix.
+    "us_fcc_chinese_optical_transceiver_ban": 24 * 7,
     # Backfill only the verified launch/current execution stages once; after
     # that semantic event keys prevent republications from becoming new alerts.
     "us_dow_project_meridian_future_warfare": 24 * 7,
@@ -484,6 +487,7 @@ STORY_RULES = (
                 "optical transceiver", "optical transceivers", "fiber optic transceiver",
                 "fiber-optic transceiver", "optical module", "optical modules",
                 "광트랜시버", "광모듈", "光收发器", "光模组",
+                "光收發模組", "光收發", "光模組",
             ),
             ("fcc", "federal communications commission"),
             ("china", "chinese", "중국", "中國", "中国产", "中國製"),
@@ -1859,6 +1863,9 @@ def semantic_policy_event_key(item: dict) -> str:
             or "광모듈" in text
             or "光收发器" in text
             or "光模组" in text
+            or "光收發模組" in text
+            or "光收發" in text
+            or "光模組" in text
         )
         and (
             "fcc" in text
@@ -3756,7 +3763,17 @@ def _self_test_fcc_optical_transceiver_event_model() -> None:
         "published_kst": "2026-10-02T13:14:04+09:00",
     }
     assert semantic_policy_event_key(research) == "us-fcc-optical-transceiver-3p2t-65pct-research-2026-10-01"
+    # Taiwan source is Traditional Chinese; do not require simplified or English labels.
+    traditional = {
+        "title": "美訂光通訊新規 台鏈利多 聯亞、華星光等迎轉單",
+        "description": "摩根士丹利指出 FCC 對中國大陸光收發模組的採購限制，3.2T 起適用，且65%的 BOM 價值需要來自美國本土公司。",
+        "link": "https://money.udn.com/money/story/5612/9791710",
+        "source": "經濟日報",
+        "published_kst": "2026-10-03T03:43:54+09:00",
+    }
     rules = {rule.key: rule for rule in STORY_RULES}
+    assert has_required_terms(" ".join((traditional["title"], traditional["description"], traditional["source"])), rules["us_fcc_chinese_optical_transceiver_ban"])
+    assert semantic_policy_event_key(traditional) == "us-fcc-optical-transceiver-3p2t-65pct-research-2026-10-01"
     assert alert_confirmation_status(
         rules["us_fcc_chinese_optical_transceiver_ban"], [research]
     )[0] == "공식 확인 전"
