@@ -3655,6 +3655,76 @@ class PostMergeLiveArtifactQualityChecks(unittest.TestCase):
         self.assertEqual(radar.source_core_fact_errors(alert), [])
         self.assertTrue(radar.source_output_aligned(alert))
 
+    def test_october_eighth_live_false_positives_are_not_market_radar_items(self):
+        cases = (
+            (
+                "美 여자농구 골든스테이트, 연매출 1억달러⋯여성 구단 최초",
+                "미국여자프로농구(WNBA) 골든스테이트 발키리스가 여성 프로스포츠 구단 가운데 처음으로 연매출 1억 달러를 돌파했다.",
+                "private_sports_team_revenue_without_listed_issuer_transmission",
+            ),
+            (
+                "삼성전자 호실적에도 힘 못 쓰는 주가…선반영과 수급 살펴야",
+                "주요 기업들의 실적 발표가 본격화된 가운데 실적을 내고도 주가가 하락하거나 제자리에 머무는 현상이 이어졌다. "
+                "전문가는 실적이 잘 나와도 이미 주가에 선반영됐다는 이유로 매물이 나올 수 있다며 성장성과 수급을 살펴야 한다고 말했다. "
+                "실적 발표 이후 가이던스가 불투명하거나 추가 상승 동력이 없으면 주가가 조정받을 수 있다는 분석이다.",
+                "stock_market_commentary_without_issuer_result_or_observed_price_flow",
+            ),
+            (
+                "[오늘장특징주]테슬라, 스페이스X, TSMC, 인텔, 엔비디아, 마벨",
+                "마벨은 애널리스트데이에서 2031 회계연도 매출 700억~900억 달러와 주당순이익 목표를 제시했다. "
+                "이 기사는 여러 종목의 당일 이슈를 함께 정리했다.",
+                "multi_issuer_stock_roundup_without_single_foreground_event",
+            ),
+            (
+                "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박",
+                "영국에서 기준금리 인상 우려가 커지면서 주택시장에 찬바람이 불고 있다. "
+                "주택담보대출 금리가 6%에 육박하자 주택 구매 수요가 위축되고 매매와 가격도 약세를 보인다.",
+                "foreign_local_housing_conditions_without_policy_or_listed_issuer_channel",
+            ),
+        )
+        for title, body, reason in cases:
+            with self.subTest(title=title):
+                evidence = [{"kind": "sector_demand_outlook", "source_excerpt": body}]
+                publication = materiality.equity_publication_assessment(title, evidence, body=body)
+                self.assertFalse(publication["eligible"], publication)
+                self.assertEqual(publication["reason"], reason)
+
+    def test_iea_reserve_release_core_keeps_incrementality_volume_timing_and_price_reaction(self):
+        title = "추가 방출 없이 합의된 비축유만 조기 공급…유럽 경윳값 8%↑"
+        body = (
+            "국제에너지기구(IEA) 회원국은 지난 3월 합의한 비축유 방출을 조속히 이행하고 경유를 우선 공급하기로 했다. "
+            "약 3억2500만 배럴이 이미 방출됐으며, 미방출 약 1억 배럴이 시장에 공급될 예정이다. "
+            "G7은 4개월 동안 물량을 공급하고 처음 20일은 경유 방출을 우선하기로 했다. "
+            "이번 공급은 추가 물량이 아닌 기존 약속의 조기 이행으로 확인됐다. 유럽 경유 선물 가격은 장중 최대 8% 올랐다."
+        )
+        core = radar.detailed_article_core(title, body)
+        for expected in ("3월 합의", "3억2500만 배럴", "1억 배럴", "4개월", "20일", "추가 방출이 아닌", "최대 8%"):
+            self.assertIn(expected, core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        self.assert_source_aligned(title, body, core, "https://www.newsis.com/view/NISX20261008_0003818492")
+
+    def test_fomc_minutes_core_keeps_year_end_hike_guidance_and_inflation_drivers(self):
+        title = "美연준 연내 기준금리 한 차례 더 인상…9월 FOMC 의사록 공개"
+        body = (
+            "9월 연준 FOMC 의사록에 따르면 대부분의 참석자는 연말까지 기준금리를 한 차례 더 올리는 것이 적절하다고 봤다. "
+            "참석자들은 유가와 에너지 가격, AI 투자 급증, 추가 관세 가능성이 물가 압력을 키울 수 있다고 지적했다. "
+            "향후 금리 결정은 회의별로 들어오는 지표에 따라 판단하기로 했다."
+        )
+        core = radar.detailed_article_core(title, body)
+        for expected in ("대부분 위원", "연말 추가 금리 인상", "유가", "AI 투자", "관세", "물가"):
+            self.assertIn(expected, core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        self.assert_source_aligned(title, body, core, "https://www.news1.kr/world/usa-canada/6313643")
+
+    def test_republished_fomc_minutes_titles_collapse_to_one_event(self):
+        first_title = "美연준 연내 기준금리 한 차례 더 인상…9월 FOMC 의사록 공개"
+        second_title = "9월 FOMC 의사록, 연내 금리 추가 인상 적절…시기는 미정"
+        body = (
+            "대부분의 참석자는 연말까지 기준금리를 한 차례 더 올리는 것이 적절하다고 봤다. "
+            "유가와 AI 투자, 관세가 물가 압력을 키울 수 있다고 지적했다."
+        )
+        self.assertTrue(materiality.same_headline_event(first_title, second_title, body, body))
+
     def test_professional_qualification_is_not_a_licensing_cashflow_event(self):
         title = "기술사업화 전문인력 수요 확대…'IP중개사' 양성교육·자격시험 운영"
         body = (
