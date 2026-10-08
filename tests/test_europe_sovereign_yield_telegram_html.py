@@ -55,7 +55,7 @@ class EuropeYieldTelegramHtmlTests(unittest.TestCase):
         self.assertEqual(html.count("<a href="), 7)
         self.assertIn("영국 10년물 시장자료</a>", html)
         self.assertIn("이탈리아 10년물 시장자료</a>", html)
-        self.assertIn("전일 +2.0bp", html)
+        self.assertIn("출처 표기 전 거래일 대비 +2.0bp", html)
         self.assertNotIn("전일 +0.0bp", html)
 
     def test_invalid_source_url_rejected(self):
