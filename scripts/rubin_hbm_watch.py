@@ -2591,18 +2591,23 @@ def hbm_hybrid_official_changes(old: dict, new: dict) -> list[str]:
     return changes
 
 
-def hbm_hybrid_bond_event(state: dict, reasons: list[str], *, initial: bool = False) -> dict:
+def hbm_hybrid_bond_event(
+    state: dict, reasons: list[str], *, initial: bool = False, vendor: str = ""
+) -> dict:
+    if not initial and vendor not in ("skhynix", "samsung"):
+        raise ValueError("official hybrid alert must identify one issuer")
     source = (
-        state.get("primary_url") if initial else
-        state.get("samsung_official_stage_source_url")
-        or state.get("skhynix_official_stage_source_url")
-        or state.get("primary_url")
+        state.get("primary_url") if initial
+        else state.get(f"{vendor}_official_stage_source_url")
     )
+    if not source:
+        raise ValueError("official hybrid alert source URL missing")
     change_at = state.get("last_official_stage_change_at") or "2026-10-08T16:04:00+09:00"
+    stage_id = state.get(f"{vendor}_official_hybrid_stage") if not initial else ""
     return {
         "category": "hbm_hybrid_bonding",
         "fact_key": ("hbm_hybrid_bonding_report_20261008" if initial else
-                     "hbm_hybrid_official_" + change_at),
+                     f"hbm_hybrid_official_{vendor}_{stage_id}_{change_at}"),
         "headline_ko": ("하이브리드 본딩 경쟁력 격차 보도 · 공식 양산과 분리"
                         if initial else "하이브리드 본딩 고객 샘플·양산 단계 공식 변화"),
         "fact_bullets": list(reasons),
@@ -2611,8 +2616,10 @@ def hbm_hybrid_bond_event(state: dict, reasons: list[str], *, initial: bool = Fa
         "verification": ("Damnang 원문 서두 확인 / TechPowerUp 재인용 / 양사 공식 HBM 실적과 구분"
                          if initial else "해당 제조사 공식 고객 샘플·생산 발표"),
         "quality": ("신뢰 보도·회사 공식자료 구분" if initial else "공식·회사자료"),
-        "origin_source": ("Damnang(익명 전문가)" if initial else "공식 기업자료"),
-        "source": "Damnang" if initial else "공식 기업자료",
+        "origin_source": ("Damnang(익명 전문가)" if initial else
+                          ("SK하이닉스 공식자료" if vendor == "skhynix" else "삼성전자 공식자료")),
+        "source": "Damnang" if initial else ("SK하이닉스" if vendor == "skhynix" else "삼성전자"),
+        "official_vendor": vendor if not initial else "",
         "published_at_kst": (change_at if not initial else "2026-10-08T16:04:00+09:00"),
         "direct_link": source,
         "article_text": "",
@@ -2674,6 +2681,11 @@ def render_hbm_hybrid_bonding_notice(e: dict, now: datetime) -> str:
         "삼성전자 공식 " + HBM_HYBRID_SAMSUNG_OFFICIAL,
         "Counterpoint " + HBM_HYBRID_SHARE_SOURCE,
     ]
+    if not initial and e.get("official_vendor") in ("skhynix", "samsung"):
+        vendor = e["official_vendor"]
+        company = "SK하이닉스" if vendor == "skhynix" else "삼성전자"
+        lines.append("변화 공식원문 " + e["direct_link"])
+        lines.append("• 공식 새 변화 확인 회사: " + company)
     if not initial and e.get("fact_bullets"):
         lines.insert(5, "• 이번 공식 변화: " + " / ".join(e["fact_bullets"]))
     return "\n".join(line for line in lines if line).strip() + "\n"
@@ -3828,7 +3840,13 @@ def main() -> None:
             notice["format_correction"] = True
         verified_events.append(notice)
     if hybrid_changes and not first_run:
-        verified_events.append(hbm_hybrid_bond_event(hybrid_state, hybrid_changes, initial=False))
+        for reason in hybrid_changes:
+            vendor = ("skhynix" if reason.startswith("SK하이닉스") else
+                      "samsung" if reason.startswith("삼성전자") else "")
+            if vendor:
+                verified_events.append(
+                    hbm_hybrid_bond_event(hybrid_state, [reason], vendor=vendor)
+                )
 
     fx = fetch_fx()
     if fx.get("error"):
