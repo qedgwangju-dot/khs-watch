@@ -45,9 +45,10 @@ jobs:
       TREASURY_REPORT_VALIDATE_ONLY: ${{ github.event_name == 'push' && '1' || '0' }}
 
     steps:
-      - name: Checkout
+      - name: Checkout latest delivery state
         uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 0
 
       - name: Set up Python
@@ -126,6 +127,7 @@ jobs:
         run: |
           set -o pipefail
           mkdir -p out
+          rm -f out/treasury_etf_flow_status.md out/treasury_etf_flow_telegram.txt out/treasury_runtime_status.log
           python scripts/treasury_credit_flow_watch_refinancing.py | tee out/treasury_runtime_status.log
           if grep -q 'report_withheld' out/treasury_runtime_status.log; then
             echo "::warning::Treasury daily report withheld: official source dates or fields are not yet aligned."
