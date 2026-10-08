@@ -325,6 +325,38 @@ class HybridTelegramPresentationTests(unittest.TestCase):
                 formatted = p.read_text(encoding="utf-8")
         return raw, formatted, delivery.chunks(formatted)
 
+    def test_missing_rubin_metadata_does_not_create_fake_change_headline(self):
+        with self.assertRaisesRegex(ValueError, "missing required timestamp/count"):
+            pretty.format_generic_alert(
+                "🚨 Rubin/HBM 구조 변화 감시\n■ HBM4E 고객 검증·양산\n"
+                "1. 검증 단계 기사\n• 판정: 공식 미확인"
+            )
+        # Missing metadata may not be replaced by a misleading fake count.
+        good = pretty.format_generic_alert(
+            "🚨 Rubin/HBM 구조 변화 감시\n"
+            "조회시각: 2026-10-08 19:40:00 KST\n"
+            "신규 핵심 변화: 1건\n"
+            "■ HBM4E 고객 검증·양산\n"
+            "1. HBM4E 단계 변화\n• 판정: 확인 필요"
+        )
+        self.assertIn("1건", good)
+        self.assertNotIn("신규 변화 <b>확인 불가</b>", good)
+
+    def test_irrelevant_generic_hbm_notice_does_not_get_unrelated_leverage(self):
+        with tempfile.TemporaryDirectory() as temp:
+            p = pathlib.Path(temp) / "rubin_alert.md"
+            plain = (
+                "<b>🚨 Rubin/HBM 구조 변화 감시</b>\n"
+                "<b>■ HBM4E 고객 검증·양산</b>\n"
+                "• 기술 검증 상태 변경\n"
+            )
+            p.write_text(plain, encoding="utf-8")
+            with patch.object(leverage, "ALERT", p):
+                leverage.main()
+            out = p.read_text(encoding="utf-8")
+            self.assertNotIn("[HBM 수요·가격 레버리지]", out)
+            self.assertIn("기술 검증 상태 변경", out)
+
     def test_actual_hybrid_report_has_no_generic_rubin_wrapper(self):
         state = dict(w.HBM_HYBRID_BOND_BASELINE)
         event = w.hbm_hybrid_bond_event(
