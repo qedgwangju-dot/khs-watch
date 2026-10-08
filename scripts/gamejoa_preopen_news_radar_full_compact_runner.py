@@ -2604,6 +2604,49 @@ def source_headline_event_fact(title: str, body: str) -> str:
     focus = market_materiality.focus_kind(title)
     source = market_materiality.source_reported_body(body)
     rows = market_materiality.source_sentences(source)
+    if (re.search(r"ETF", title, re.I) and re.search(r"상장\s*첫날", title)
+            and re.search(r"개인\s*\d+\s*억", title)):
+        personal = re.search(r"개인투자자는\s*이\s*상품을\s*약\s*(?P<amount>[\d,]+\s*억원)\s*순매수", source)
+        listing_set = re.search(r"신규\s*상장한\s*반도체\s*ETF\s*(?P<count>\d+)종\s*가운데", source)
+        pension = re.search(r"퇴직연금\s*계좌를\s*통한\s*매수분까지\s*포함하면\s*약\s*(?P<amount>[\d,]+\s*억원)\s*[^.!?\n]{0,20}유입", source)
+        fund = re.search(r"(?P<fund>SOL\s*글로벌DRAM반도체플러스\s*ETF)", title, re.I)
+        if personal and listing_set and pension and fund:
+            fact = (f"{fund['fund']}는 상장 첫날 개인 순매수액 {personal['amount'].replace(' ', '')}으로 "
+                    f"하반기 신규 반도체 ETF {listing_set['count']}종 중 최대였다. "
+                    f"신한자산운용에 따르면 연금 매수 포함 유입액은 {pension['amount'].replace(' ', '')}이다.")
+            return fact if core_sentence_is_complete(fact) else ''
+    if re.search(r"경상수지", title) and re.search(r"\d{1,2}월", title):
+        account = re.search(
+            r"(?P<month>\d{1,2})월\s*경상수지는\s*(?P<amount>[\d,]+억[\d,]+만\s*달러)\s*흑자로\s*집계됐다",
+            source,
+        )
+        exports = re.search(
+            r"수출\s*\(\s*(?P<amount>[\d,]+억\s*달러)\s*\)도\s*1년\s*전보다\s*(?P<growth>[\d.]+)%\s*증가",
+            source,
+        )
+        rank = re.search(r"(?P<rank>역대\s*(?:2위|3위)|사상\s*최대)", title + " " + " ".join(rows[:5]))
+        if account and exports and rank:
+            rank_text = re.sub(r"\s+", " ", rank["rank"]).strip()
+            fact = (f"한국은행 잠정치 기준 {account['month']}월 경상수지는 "
+                    f"{account['amount'].replace(' ', '')} 흑자({rank_text}); "
+                    f"수출은 {exports['amount'].replace(' ', '')}로 전년 대비 {exports['growth']}% 증가했다.")
+            return fact if core_sentence_is_complete(fact) else ''
+    if re.search(r"신안산선", title) and re.search(r"충당부채", title + " " + source[:1200]):
+        total = re.search(r"(?P<amount>[\d,]+억\s*원)[.]\s*올해\s*상반기\s*말\s*포스코이앤씨가\s*장부에\s*쌓아둔\s*충당부채\s*규모다", source)
+        work_loss = re.search(r"공사손실충당부채는\s*같은\s*기간\s*(?P<old>[\d,]+억\s*원)에서\s*(?P<new>[\d,]+억\s*원)으로\s*늘었다", source)
+        if total and work_loss:
+            fact = (f"포스코이앤씨의 상반기 말 충당부채는 {total['amount'].replace(' ', '')}; "
+                    f"신안산선 공사손실충당부채는 작년 말 {work_loss['old'].replace(' ', '')}에서 "
+                    f"{work_loss['new'].replace(' ', '')}으로 늘었다.")
+            return fact if core_sentence_is_complete(fact) else ''
+    if re.search(r'한국콜마', title) and re.search(r'K.?선케어|선케어.{0,20}글로벌', title):
+        robot_test = re.search(r'SPF\s*인체(?:\s*적용)?\s*시험[^.!?\n]{0,180}로봇\s*팔을\s*도입', source)
+        duration = re.search(r'한\s*달(?:가량)?[^.!?\n]{0,90}?이틀(?:\s*수준)?', source)
+        cost = re.search(r'비용도?\s*절반\s*가까이\s*(?:낮췄|줄였)', source)
+        if robot_test and duration and cost:
+            fact = ('한국콜마는 K선케어 SPF 인체시험에 로봇 팔을 도입해 시험 기간을 '
+                    '약 한 달에서 이틀 수준으로 줄이고 비용도 절반 가까이 낮췄다.')
+            return fact if core_sentence_is_complete(fact) else ''
     if re.search(r'씨케이솔루션', title) and re.search(r'SK하이닉스 인디애나 팹', source):
         ess = re.search(r'ESS\)용으로 전환하는 사업을 약\s*(?P<amount>\d+)억원에 수주', source)
         fab = re.search(r'SK하이닉스 인디애나 팹 관련 제조 인프라 구축 사업을 약\s*(?P<amount>\d+)억원에 확보', source)

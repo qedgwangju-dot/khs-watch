@@ -4550,6 +4550,151 @@ class IncrementalNewsTests(unittest.TestCase):
             self.assertFalse(fresh)
             self.assertEqual(len(skipped), 1)
 
+    def test_lg_energy_quarterly_recap_dedupes_q_alias_and_drops_related_story_cards(self):
+        published = '2026-10-08T09:33:00+09:00'
+        source_a = (
+            'LG에너지솔루션이 올해 3분기 9조6000억원이 넘는 매출을 올리며 분기 기준 역대 최대 실적을 달성했다. '
+            'LG에너지솔루션은 연결 기준 올해 3분기 매출 9조6434억원, 영업이익 7560억원을 '
+            '기록한 것으로 잠정 집계됐다고 8일 공시했다.'
+        )
+        source_b = (
+            'LG에너지솔루션은 연결 기준 3분기 매출 9조6434억원, 영업이익 7560억원을 '
+            '기록했다고 8일 잠정 공시했다.\n'
+            '새역사 쓰는 삼성전자, 전세계 테크기업 최초 분기 영업익 100조\n'
+            'https://biz.heraldcorp.com/article/10896438\n'
+            '[단독] 현대차, 파업에 신형 투싼 양산 계획 연기\n'
+            'https://biz.heraldcorp.com/article/10894857\n'
+            'eyre@heraldcorp.com'
+        )
+        title_a = "LG엔솔, 3Q 매출 9.6조 '역대 최대'…ESS·전기차 쌍끌이 [종합]"
+        title_b = 'LG엔솔, 3분기 매출 9.6조 분기 사상 최대…영업익도 어닝 서프라이즈'
+        first = {**alert(title_a, source_a, 'https://www.etoday.co.kr/news/view/2633734'),
+                 'published': published,
+                 'telegram_core_fact': 'LG에너지솔루션은 연결 기준 올해 3분기 매출 9조6434억원, 영업이익 7560억원을 기록했다고 공시했다.'}
+        second = {**alert(title_b, source_b, 'https://biz.heraldcorp.com/article/10896460'),
+                  'published': published,
+                  'telegram_core_fact': 'LG에너지솔루션은 연결 기준 3분기 매출 9조6434억원, 영업이익 7560억원을 기록했다고 8일 잠정 공시했다.'}
+
+        first_observation = materiality.quarterly_earnings_release_observation(first)
+        second_observation = materiality.quarterly_earnings_release_observation(second)
+        self.assertEqual(first_observation, second_observation)
+        self.assertEqual(first_observation['issuer'], 'LG에너지솔루션')
+        self.assertEqual(first_observation['amount_won'], '756000000000')
+        self.assertEqual(materiality.source_event_identity(first), materiality.source_event_identity(second))
+        self.assertNotIn('새역사 쓰는 삼성전자', materiality.source_article_body(source_b))
+        self.assertNotIn('현대차, 파업', radar.article_summary_body(source_b))
+
+        with patch.object(radar.base, 'kst_now', return_value=NOW):
+            selected = radar.quality_display_alerts([first, second], 10)
+        self.assertEqual(len(selected), 1)
+
+    def test_kolmar_suncare_headline_core_does_not_borrow_earnings_from_article_tail(self):
+        title = "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑"
+        body = (
+            '기존 사람이 직접 제품을 펴 바르는 방식의 SPF 인체 적용 시험에 로봇 팔을 도입해 '
+            '제품을 일정한 양과 두께로 도포할 수 있도록 했다. '
+            '이를 통해 시험 편차를 줄이는 동시에 통상 한 달가량 소요되던 시험 기간을 '
+            '이틀 수준으로 단축하고 비용도 절반 가까이 낮췄다는 설명이다. '
+            '한국콜마의 올해 2분기 연결 기준 매출은 8613억원으로 전년 동기 대비 17.3% 증가했으며, '
+            '영업이익은 1103억원으로 50.2% 늘었다.'
+        )
+        expected = ('한국콜마는 K선케어 SPF 인체시험에 로봇 팔을 도입해 시험 기간을 '
+                    '약 한 달에서 이틀 수준으로 줄이고 비용도 절반 가까이 낮췄다.')
+        self.assertEqual(radar.source_headline_event_fact(title, body), expected)
+        item = {**alert(title, body), 'source_title': title, 'published': '2026-10-07T09:33:00+09:00'}
+        self.assertEqual(radar.verified_alert_core(item, title), expected)
+        wrong_core = '한국콜마 2분기 영업이익은 1103억원으로 전년비 17.3% 증가했습니다.'
+        self.assertTrue(radar.source_core_fact_errors({**item, 'telegram_core_fact': wrong_core}))
+
+    def test_market_radar_quality_filters_local_showcase_and_unfunded_research_but_keeps_execution(self):
+        local_title = "울산시, 240억원 규모 '지역주도형 AI 대전환 사업' 성과공유회 | 연합뉴스"
+        local_body = (
+            "울산시는 240억여원 규모 지역 주도형 AI 대전환 사업 추진 경과를 점검하고자 성과공유회를 개최했다. "
+            "AI와 기술 검증 지원을 받은 기업들의 매출 증가, 불량률 감소 등 성과가 소개됐다. "
+            "국비 140억원을 포함해 총 240억6000만원을 들여 중소기업 지원 체계를 구축하고 있다."
+        )
+        local_evidence = [{
+            'kind': 'earnings_or_guidance', 'stage': 'reported_change',
+            'source_excerpt': '참여 기업 매출 증가·불량률 감소 성과 소개',
+        }]
+        local_result = materiality.equity_publication_assessment(
+            local_title, local_evidence, body=local_body,
+        )
+        self.assertFalse(local_result['eligible'], local_result)
+        self.assertEqual(local_result['reason'], 'local_program_showcase_without_named_issuer_result')
+
+        local_contract = materiality.equity_publication_assessment(
+            '울산시 AI 성과공유회…현대자동차, 제조설비 500억원 계약',
+            [{'kind': 'commercial_order', 'stage': 'reported_change',
+              'source_excerpt': '현대자동차는 AI 제조설비 500억원 공급계약을 체결했다.'}],
+            body='울산시 성과공유회에서 현대자동차는 AI 제조설비 500억원 공급계약을 체결했다고 밝혔다.',
+        )
+        self.assertTrue(local_contract['eligible'], local_contract)
+
+        research_title = '현대엔지니어링, 하이브리드 수전해 기술 개발…수소·에너지 사업 확대'
+        research_body = (
+            '현대엔지니어링이 재생에너지와 연계한 하이브리드 수전해 플랜트 기술 개발에 나선다. '
+            '현대엔지니어링은 한국에너지기술평가원이 추진하는 국책과제에 참여한다고 밝혔다. '
+            '이번 사업은 알칼라인과 PEM 수전해 방식을 결합한 플랜트를 구축하고 성능을 검증하는 프로젝트다. '
+            '현대엔지니어링은 과거 보령 수소생산기지와 제주 5MW PEM 시스템 개발을 수행했다.'
+        )
+        research_evidence = [{
+            'kind': 'technology_or_clinical_stage', 'stage': 'reported_change',
+            'source_excerpt': '현대엔지니어링은 국책과제에 참여한다고 밝혔다.',
+        }]
+        research_result = materiality.equity_publication_assessment(
+            research_title, research_evidence, body=research_body,
+        )
+        self.assertFalse(research_result['eligible'], research_result)
+        self.assertEqual(
+            research_result['reason'],
+            'unfunded_research_participation_without_commercial_or_measured_milestone',
+        )
+
+        funded_result = materiality.equity_publication_assessment(
+            '현대엔지니어링, 하이브리드 수전해 국책과제 선정…연구비 80억원 확정',
+            research_evidence,
+            body=(research_body + ' 현대엔지니어링 연구개발비 80억원이 확정돼 연구기관에 배정됐다.'),
+        )
+        self.assertTrue(funded_result['eligible'], funded_result)
+
+    def test_live_radar_cores_use_headline_linked_etf_macro_and_construction_facts(self):
+        etf_title = '상장 첫날 개인 58억 샀다…SOL 글로벌DRAM반도체플러스 ETF, 하반기 1위'
+        etf_body = (
+            '신한자산운용은 SOL 글로벌DRAM반도체플러스 ETF가 하반기 신규 상장한 반도체 ETF 가운데 '
+            '상장 첫날 개인 순매수 1위를 기록했다고 8일 밝혔다. 한국거래소에 따르면 상장일인 전날 '
+            '개인투자자는 이 상품을 약 58억원 순매수했다. 올해 하반기 국내 증시에 신규 상장한 반도체 ETF 8종 가운데 '
+            '상장 첫날 기준 가장 큰 규모다. 퇴직연금 계좌를 통한 매수분까지 포함하면 약 110억원의 '
+            '자금이 유입됐다는 게 신한자산운용의 설명이다.'
+        )
+        self.assertEqual(
+            radar.source_headline_event_fact(etf_title, etf_body),
+            'SOL 글로벌DRAM반도체플러스 ETF는 상장 첫날 개인 순매수액 58억원으로 하반기 신규 반도체 ETF 8종 중 최대였다. 신한자산운용에 따르면 연금 매수 포함 유입액은 110억원이다.',
+        )
+
+        macro_title = '[속보] 반도체 호황…8월 경상수지 461억1000만달러 흑자 역대 2위'
+        macro_body = (
+            '한국은행이 발표한 2026년 8월 국제수지 잠정치에 따르면 8월 경상수지는 '
+            '461억1000만달러 흑자로 집계됐다. 흑자 규모로는 역대 2위다. '
+            '수출(1048억달러)도 1년 전보다 82.1% 증가했다.'
+        )
+        macro_core = radar.source_headline_event_fact(macro_title, macro_body)
+        self.assertIn('8월 경상수지는 461억1000만달러 흑자(역대 2위)', macro_core)
+        self.assertIn('수출은 1048억달러로 전년 대비 82.1% 증가', macro_core)
+
+        construction_title = "신안산선 붕괴 4662억 '청구서'…영업정지에도 수주는 계속"
+        construction_body = (
+            '4662억원. 올해 상반기 말 포스코이앤씨가 장부에 쌓아둔 충당부채 규모다. '
+            '신안산선 붕괴사고에 따른 재시공 비용 등 예상 손실을 반영했다. '
+            '전체 충당부채 규모는 올해 상반기 말 4662억원으로 줄었지만 공사손실충당부채는 '
+            '같은 기간 1147억원에서 1224억원으로 늘었다.'
+        )
+        construction_core = radar.source_headline_event_fact(construction_title, construction_body)
+        self.assertEqual(
+            construction_core,
+            '포스코이앤씨의 상반기 말 충당부채는 4662억원; 신안산선 공사손실충당부채는 작년 말 1147억원에서 1224억원으로 늘었다.',
+        )
+
     def test_verified_quarterly_earnings_alias_requires_matching_prior_receipt(self):
         proof = next(item for item in json.loads(telegram.VERIFIED_EVENT_ALIAS_PATH.read_text(encoding='utf-8'))['entries']
                      if item['message_id'] == 2388 and item['source_title'].startswith('LG전자 3분기'))
@@ -4936,6 +5081,13 @@ class IncrementalNewsTests(unittest.TestCase):
 
 if __name__ == "__main__":
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(IncrementalNewsTests)
+    test_filter = os.environ.get('GAMEJOA_TEST_FILTER', '').strip()
+    if test_filter:
+        selectors = tuple(part.strip() for part in test_filter.split(',') if part.strip())
+        selected = [test for test in suite if any(selector in test.id() for selector in selectors)]
+        if not selected:
+            raise SystemExit(f"No tests matched GAMEJOA_TEST_FILTER={test_filter!r}")
+        suite = unittest.TestSuite(selected)
     result = unittest.TextTestRunner(verbosity=2).run(suite)
     output = {"passed": result.wasSuccessful(), "tests": result.testsRun, "materiality_version": materiality.VERSION,
               "original_count": 10, "unique_article_count": 10, "unique_event_count": FIXTURE["unique_event_count"],

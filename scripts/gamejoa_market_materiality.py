@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 112
+VERSION = 113
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -1140,8 +1140,19 @@ def verified_source_fact_keys(alert: dict) -> list[str]:
 def source_article_body(body: str) -> str:
     """Match the display boundary, excluding rotating recommendation cards."""
     paragraphs = []
-    for line in body.splitlines():
+    lines = body.splitlines()
+    url_lines = [index for index, line in enumerate(lines) if re.search(r"https?://", line, flags=re.I)]
+    recommendation_start = None
+    if len(url_lines) >= 2 and url_lines[0] >= max(0, len(lines) - 16):
+        recommendation_start = url_lines[0] - 1
+        while recommendation_start >= 0 and not lines[recommendation_start].strip():
+            recommendation_start -= 1
+    for index, line in enumerate(lines):
+        if recommendation_start is not None and index >= recommendation_start:
+            break
         line = line.strip()
+        if len(re.findall(r"https?://", line, flags=re.I)) >= 2:
+            break
         if re.fullmatch(r"관련\s*뉴스|주요\s*뉴스|.+기자의\s*주요\s*뉴스", line):
             break
         if re.fullmatch(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}", line) or re.match(
@@ -2628,8 +2639,13 @@ def macro_model_report_observation(title: str, body: str) -> dict[str, str]:
             'revision': canonical_source_fact(revision)}
 
 
+QUARTERLY_EARNINGS_ISSUER_ALIASES = {
+    'LG에너지솔루션': ('LG에너지솔루션', 'LG엔솔'),
+}
+
+
 def quarterly_earnings_release_observation(alert: dict) -> dict[str, str]:
-    """Key a filed preliminary result by issuer, fiscal period and reported profit."""
+    """Key a filed preliminary result by canonical issuer, fiscal period and profit."""
     if not alert.get('body_verified') or not alert.get('source_body'):
         return {}
     published = str(alert.get('published') or '')
@@ -2637,41 +2653,46 @@ def quarterly_earnings_release_observation(alert: dict) -> dict[str, str]:
         return {}
     title = re.sub(r'^\s*(?:\[(?:\d+보|속보|상보|종합)\]\s*)+', '',
                    str(alert.get('source_title') or alert.get('original_news') or ''))
-    headline = re.match(r'(?P<issuer>[가-힣A-Za-z0-9&·]{2,30}).{0,30}?(?P<quarter>[1-4])분기.{0,25}?영업(?:이익|익)', title)
-    if not headline:
+    quarter_match = re.search(r'(?<!\d)(?P<quarter>[1-4])\s*(?:분기|Q)(?![가-힣])', title, re.I)
+    if not quarter_match or not re.search(r'매출|영업(?:이익|익)|실적|어닝', title):
         return {}
-    issuer, quarter = headline['issuer'], headline['quarter']
-    source = source_reported_body(str(alert['source_body']))
-    release = re.search(
-        rf'{re.escape(issuer)}(?:\[\d{{6}}\])?(?:은|는|가)?[^.!?\n]{{0,75}}?'
-        rf'연결\s+기준\s+올해\s+{quarter}분기\s+영업이익이\s+'
-        rf'(?P<profit>\d[\d,천백십만억조]*원)[^!?\n]{{0,150}}?'
-        r'잠정\s*(?:집계|실적)[^!?\n]{0,30}?공시했다',
-        source,
+    issuer = re.sub(r'\s+', '', title[:quarter_match.start()].strip(' ,·:;\t'))
+    if not issuer or len(issuer) > 30:
+        return {}
+    canonical_issuer = next(
+        (canonical for canonical, aliases in QUARTERLY_EARNINGS_ISSUER_ALIASES.items()
+         if issuer in aliases),
+        issuer,
     )
-    if not release:
-        release = re.search(
-            rf'{re.escape(issuer)}(?:\[\d{{6}}\])?(?:은|는|가)?[^\n]{{0,40}}?'
-            rf'(?P<year>20\d{{2}})년\s+{quarter}분기\s+연결\s*기준\s+매출액\s+'
-            rf'[^\n]{{0,85}}?영업이익\s+(?P<profit>\d[\d,천백십만억조]*\s*원)'
-            rf'[^\n]{{0,90}}?잠정\s*실적을\s+발표했다',
-            source,
+    aliases = QUARTERLY_EARNINGS_ISSUER_ALIASES.get(canonical_issuer, (issuer,))
+    quarter = quarter_match['quarter']
+    source = source_reported_body(str(alert['source_body']))
+    quarter_pattern = re.compile(rf'(?<!\d)(?:올해\s*)?{quarter}\s*(?:분기|Q)(?![가-힣])', re.I)
+    release = None
+    release_year = ''
+    for sentence in source_sentences(source):
+        if not any(alias in sentence for alias in aliases) or not quarter_pattern.search(sentence):
+            continue
+        if not re.search(r'잠정|공시|기록|집계|발표', sentence):
+            continue
+        profit = re.search(
+            r'영업(?:이익|익)\s*(?:은|이|도)?\s*'
+            r'(?P<profit>\d[\d,]*(?:조|억|만|천)?(?:\s*\d[\d,]*(?:억|만|천)?)?\s*원)',
+            sentence,
         )
-    if not release:
-        release = re.search(
-            rf'{re.escape(issuer)}(?:\[\d{{6}}\])?(?:은|는|가)?[^\n]{{0,40}}?'
-            rf'(?P<year>20\d{{2}})년\s+{quarter}분기\s+연결\s*기준\s+매출(?:액)?\s+'
-            rf'[^\n]{{0,85}}?영업이익\s+(?P<profit>\d[\d,천백십만억조]*\s*원)'
-            rf'[^\n]{{0,90}}?잠정\s*실적을\s+(?:\d{{1,2}}일\s*)?발표했다',
-            source,
-        )
-    if not release:
+        if not profit:
+            continue
+        release = profit
+        year_match = re.search(r'(?P<year>20\d{2})년', sentence)
+        release_year = year_match['year'] if year_match else published[:4]
+        break
+    if not release or release_year != published[:4]:
         return {}
-    if release.groupdict().get('year') and release['year'] != published[:4]:
+    amount = korean_amount_value(re.sub(r'\s+', '', release['profit']).removesuffix('원'))
+    if not amount:
         return {}
-    return {'issuer': issuer, 'fiscal_year': published[:4], 'quarter': quarter,
-            'metric': 'consolidated_operating_profit',
-            'amount_won': korean_amount_value(release['profit'].removesuffix('원').replace(' ', '')),
+    return {'issuer': canonical_issuer, 'fiscal_year': published[:4], 'quarter': quarter,
+            'metric': 'consolidated_operating_profit', 'amount_won': amount,
             'stage': 'preliminary_filing'}
 
 
@@ -3466,8 +3487,49 @@ def equity_publication_assessment(title: str, evidence: list[dict], *, body: str
     if not kinds:
         return {'eligible': False, 'reason': 'no_verified_economic_change'}
     execution = any(NEW_EXECUTION.search(item['source_excerpt']) for item in evidence)
-    source_rows = source_sentences(source_reported_body(body))
+    body = source_article_body(source_reported_body(body))
+    source_rows = source_sentences(body)
     lead = " ".join(source_rows[:5])
+    local_showcase = (LOCAL_AUTHORITY.search(f"{title} {lead}")
+                      and re.search(r"성과\s*(?:공유회|보고회|발표회)|실적\s*공유회", title))
+    issuer_name = re.compile(
+        r"삼성전자|삼성중공업|삼성전기|SK하이닉스|SK텔레콤|LG에너지솔루션|LG엔솔|LG전자|LG디스플레이|"
+        r"현대자동차|현대차|기아|현대건설|현대엔지니어링|HD현대[가-힣A-Za-z]*|포스코[가-힣A-Za-z]*|"
+        r"한화[가-힣A-Za-z]*|두산[가-힣A-Za-z]*|효성[가-힣A-Za-z]*|CJ[가-힣A-Za-z]*|네이버|카카오|셀트리온|"
+        r"(?:주식회사\s*)?[가-힣A-Za-z0-9&·()]{2,24}(?:전자|반도체|중공업|엔지니어링|건설|솔루션|시스템|테크|"
+        r"제약|화학|조선|에너지|모빌리티|로보틱스|산업|은행|증권|운용|그룹)"
+    )
+    issuer_level_result = any(
+        issuer_name.search(row)
+        and re.search(r"매출|영업이익|수주|공급\s*계약|납품|발주|설비투자|투자액|생산|양산|도입|가동|검증", row)
+        and (QUANTITY.search(row) or re.search(r"증가|감소|확대|축소|체결|수주|확정|시작|가동|검증", row))
+        for row in source_rows[:12]
+    )
+    if local_showcase and not issuer_level_result:
+        return {'eligible': False, 'reason': 'local_program_showcase_without_named_issuer_result'}
+    research_program_headline = (
+        re.search(r"기술\s*개발|개발\s*사업|기술\s*확보", title)
+        and re.search(r"국책과제|국가\s*연구개발|정부\s*R.?D", lead, re.I)
+        and re.search(r"참여한다|참여하게\s*됐다|추진한다|착수한다", lead)
+    )
+    attributed_research_funding = any(
+        issuer_name.search(row)
+        and QUANTITY.search(row)
+        and re.search(r"연구비|정부출연금|연구개발비|지원금|보조금", row)
+        and re.search(r"확정|배정|수령|지원받|선정", row)
+        for row in source_rows[:10]
+    )
+    measured_new_milestone = any(
+        not PAST_ACTION.search(row)
+        and ((issuer_name.search(row) and re.search(r"수주|공급\s*계약|납품|양산|상용화|고객\s*도입", row))
+             or (re.search(r"독립|외부|고객", row)
+                 and re.search(r"검증|시험|실증", row)
+                 and re.search(r"\d+(?:\.\d+)?\s*(?:%|배|dB|MW|GW|톤)", row)
+                 and re.search(r"개선|단축|증가|감소|달성|통과", row)))
+        for row in source_rows[:10]
+    )
+    if research_program_headline and not (attributed_research_funding or measured_new_milestone):
+        return {'eligible': False, 'reason': 'unfunded_research_participation_without_commercial_or_measured_milestone'}
     if (kinds == {'model_operating_specification'}
             and re.search(r'개인용|로컬|데스크톱|desktop|personal', title + ' ' + lead, re.I)
             and not re.search(r'수주|공급\s*계약|납품\s*계약|판매량|연결\s*매출|영업이익|commercial order|revenue',
@@ -3880,7 +3942,7 @@ def google_constellation_ppa_observation(title: str, body: str) -> dict[str, str
 
 def assess(title: str, body: str, *, source_url: str = "") -> dict:
     title = re.sub(r"\s+", " ", str(title or "")).strip()
-    body = source_reported_body(str(body or "")).strip()
+    body = source_article_body(source_reported_body(str(body or ""))).strip()
     result = {"version": VERSION, "disposition": "review", "priority": 1, "axes": [], "evidence": []}
     if not title or not body:
         result["reason"] = "source_evidence_unavailable"
