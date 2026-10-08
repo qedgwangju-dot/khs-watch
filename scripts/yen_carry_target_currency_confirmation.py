@@ -224,6 +224,11 @@ def append_context(body: str, context: dict) -> str:
             f"- {row['code']}/JPY: 15분 {row['change_15m_pct']:+.2f}% / 30분 {row['change_30m_pct']:+.2f}% / 60분 {row['change_60m_pct']:+.2f}% → {state}"
         )
     c = context.get("classification") or {}
+    if context.get("coverage_limited"):
+        lines.append(
+            f"- 자료 확인 범위: {context.get('available_count', 0)}/3개 통화"
+            " / 누락 통화는 확인 불가이며 청산확산 판단에 포함하지 않음"
+        )
     if context.get("incomplete"):
         lines.append(f"- 판정: 자료 일부 지연 — {context.get('available_count', 0)}/3개 통화 확인 / 이번 위험도 계산에서 제외")
     elif c.get("active_confirmation"):
