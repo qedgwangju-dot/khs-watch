@@ -3106,8 +3106,17 @@ def extract_price_notes(text: str, rate: float | None) -> list[str]:
 
 
 def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
-    if len(events) == 1 and events[0].get("category") == "hbm_hybrid_bonding":
-        return render_hbm_hybrid_bonding_notice(events[0], now)
+    # Give each hybrid-bonding alert an independent Telegram message, even
+    # when another HBM event is found in the same hourly collector run.
+    # Do not put speculative Rubin demand/GPU scenario text above this risk.
+    hybrid = [e for e in events if e.get("category") == "hbm_hybrid_bonding"]
+    if hybrid:
+        normal = [e for e in events if e.get("category") != "hbm_hybrid_bonding"]
+        sections = ([build_alert(now, normal, fx)] if normal else [])
+        sections += [render_hbm_hybrid_bonding_notice(e, now) for e in hybrid]
+        return "\n\n<<<TELEGRAM_MESSAGE_BREAK>>>\n\n".join(
+            section.strip() for section in sections if section.strip()
+        ) + "\n"
     rate = fx.get("rate")
     lines = [
         "🚨 Rubin/HBM 구조 변화 감시",
