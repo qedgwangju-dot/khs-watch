@@ -410,6 +410,39 @@ class HybridTelegramPresentationTests(unittest.TestCase):
         )
         self.assertIsNone(delivery.validate_rubin_hybrid_notification(normal))
 
+
+    def test_all_hbm_feeds_failed_causes_hard_failure(self):
+        old = {"seen_ids": [], "seen_fact_keys": [], "hbm_hybrid_bond_track_version": 2}
+        with (
+            patch.object(w, "load_state", return_value=(old, False)),
+            patch.object(w, "read_feed", return_value=([], ["UpstreamTimeout"])),
+            patch.object(w, "fetch_fx", side_effect=AssertionError("must fail before conversion")),
+        ):
+            with self.assertRaisesRegex(RuntimeError, "all configured queries failed"):
+                w.main()
+
+    def test_partial_feed_outage_does_not_claim_all_sources_failed(self):
+        old = {"seen_ids": [], "seen_fact_keys": [],
+               "structure_baseline_version": w.STRUCTURE_BASELINE_VERSION,
+               "hbm_hybrid_bond_track_version": w.HBM_HYBRID_BOND_TRACK_VERSION}
+        calls = {"n": 0}
+        def fake_feed(*args):
+            calls["n"] += 1
+            return ([], ["UpstreamTimeout"]) if calls["n"] % 2 else ([], [])
+        with tempfile.TemporaryDirectory() as tmp:
+            out = pathlib.Path(tmp)
+            with (
+                patch.object(w, "OUT", out),
+                patch.object(w, "load_state", return_value=(old, False)),
+                patch.object(w, "read_feed", side_effect=fake_feed),
+                patch.object(w, "fetch_fx", return_value={"rate":1400.0,"date":"2026-10-08","error":""}),
+            ):
+                w.main()
+                state = (out / "rubin_hbm_pending_state.json").read_text(encoding="utf-8")
+                self.assertIn('"feed_healthy"', state)
+                self.assertIn('"feed_checks"', state)
+                self.assertGreater(calls["n"], 0)
+
     def test_mixed_hybrid_and_rubin_events_remain_independent(self):
         state = dict(w.HBM_HYBRID_BOND_BASELINE)
         hybrid = w.hbm_hybrid_bond_event(state, ["동일 익명 인터뷰"], initial=True)
