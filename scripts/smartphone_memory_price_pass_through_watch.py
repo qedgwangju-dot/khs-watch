@@ -27,6 +27,7 @@ import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from email.utils import parsedate_to_datetime
+from urllib.parse import urlparse
 from zoneinfo import ZoneInfo
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -201,12 +202,25 @@ def _is_s27(blob: str) -> bool:
 
 def _is_price_pass_through(blob: str) -> bool:
     low = blob.lower()
-    return (
-        any(x in low for x in OEM_MARKERS)
-        and any(x in low for x in MEMORY_MARKERS)
-        and any(x in low for x in PRICE_MARKERS)
-        and any(x in low for x in COST_MARKERS)
+    if not (any(x in low for x in OEM_MARKERS)
+            and any(x in low for x in MEMORY_MARKERS)
+            and any(x in low for x in COST_MARKERS)):
+        return False
+    # Memory price appreciation itself is NOT a new handset MSRP increase.
+    # Demand clear language about handset selling prices, not just "price".
+    handset_price_terms = (
+        "smartphone price", "phone price", "galaxy price",
+        "iphone price", "pixel price", "handset price",
+        "스마트폰 가격", "휴대폰 가격", "갤럭시 가격", "아이폰 가격",
+        "폰 가격", "출고가", "출시가",
     )
+    if any(x in low for x in handset_price_terms):
+        return True
+    return bool(re.search(
+        r"(?:galaxy|iphone|pixel|스마트폰|휴대폰|갤럭시|아이폰)"
+        r"[^.!?\n]{0,55}?(?:prices?|msrp|가격|인상)",
+        low
+    ) and any(x in low for x in ("raise", "hike", "increase", "인상", "올려", "상향")))
 
 
 def _is_config_pressure(blob: str) -> bool:
@@ -218,14 +232,36 @@ def _is_config_pressure(blob: str) -> bool:
     )
 
 
-def _is_shipment_revision(blob: str) -> bool:
+def _shipment_revision_pct(blob: str) -> float | None:
     low = blob.lower()
-    return (
-        any(x in low for x in OEM_MARKERS)
-        and any(x in low for x in MEMORY_MARKERS)
-        and any(x in low for x in SHIPMENT_MARKERS)
-        and _extract_pct(blob) is not None
-    )
+    if not (any(x in low for x in OEM_MARKERS)
+            and any(x in low for x in MEMORY_MARKERS)):
+        return None
+    for clause in re.split(r"[!?;；。]|\\n|\\|", low):
+        if not any(x in clause for x in ("shipments", "shipment forecast", "출하량", "출하전망", "출하 목표")):
+            continue
+        if not any(x in clause for x in ("forecast", "guidance", "estimate", "전망", "추정", "목표", "수정")):
+            continue
+        down = any(x in clause for x in ("cut", "lower", "reduce", "down", "revised down", "하향", "축소", "감소"))
+        up = any(x in clause for x in ("raise", "increase", "up", "higher", "상향", "확대", "증가"))
+        if down == up:
+            continue
+        values = re.findall(r"([+\\-]?\\d{1,3}(?:\\.\\d+)?)\\s*%", clause)
+        if not values:
+            continue
+        value = abs(float(values[-1]))
+        return round(-value if down else value, 2)
+    return None
+
+
+def _is_shipment_revision(blob: str) -> bool:
+    return _shipment_revision_pct(blob) is not None
+
+
+def _is_official_samsung_item(item: dict) -> bool:
+    # "Samsung" in a Reuters headline does not make it an official notice.
+    host = (urlparse(item.get("link") or "").hostname or "").lower()
+    return host in ("news.samsung.com", "samsung.com", "www.samsung.com")
 
 
 def _load_state() -> dict:
@@ -311,7 +347,7 @@ def _fact_keys(item: dict) -> set[str]:
         keys.add("smartphone_memory_config_pressure")
 
     if _is_shipment_revision(blob):
-        pct = _extract_pct(blob)
+        pct = _shipment_revision_pct(blob)
         if pct is not None:
             keys.add(f"smartphone_memory_shipment_revision_{round(pct,1)}")
 
@@ -342,7 +378,7 @@ def _signal(item: dict, state: dict) -> dict | None:
                 abs(low_krw - old_low) >= 30000
                 or abs(high_krw - old_high) >= 30000
             )
-            official = rank >= 3 and ("samsung" in low or "삼성전자" in low)
+            official = _is_official_samsung_item(item)
             if material or official:
                 reasons.append(
                     f"Galaxy S27 한국 가격 인상 범위 "
@@ -353,10 +389,10 @@ def _signal(item: dict, state: dict) -> dict | None:
                 changes["s27_korea_hike_high_krw"] = high_krw
                 stage = max(stage, 3 if official else 2)
 
-        if ("lpddr6" in low or "ufs 5.1" in low or "ufs5.1" in low) and rank >= 3:
-            reasons.append("Galaxy S27 LPDDR6·UFS 5.1 채택의 고신뢰 확인")
-            changes["s27_lpddr6_ufs51_some_models_status"] = "고신뢰 확인"
-            stage = max(stage, 2)
+        if ("lpddr6" in low or "ufs 5.1" in low or "ufs5.1" in low) and _is_official_samsung_item(item):
+            reasons.append("Galaxy S27 LPDDR6·UFS 5.1 채택의 삼성 공식 확인")
+            changes["s27_lpddr6_ufs51_some_models_status"] = "공식 확인"
+            stage = max(stage, 3)
 
     if _is_price_pass_through(blob):
         # A new OEM price pass-through is investable evidence that memory
@@ -370,7 +406,7 @@ def _signal(item: dict, state: dict) -> dict | None:
         stage = max(stage, 2 if rank >= 3 else 1)
 
     if _is_shipment_revision(blob):
-        pct = _extract_pct(blob)
+        pct = _shipment_revision_pct(blob)
         if pct is not None and abs(pct) >= 5:
             reasons.append(f"메모리 비용과 연결된 스마트폰 출하전망 변화 {pct:+g}%")
             stage = max(stage, 2)
