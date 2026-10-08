@@ -341,12 +341,16 @@ def fetch_germany() -> list[Obs]:
 
 
 def business_lag_days(obs: Obs, now: dt.datetime, tz=PARIS) -> int:
+    """Business-day lag in the source's own market timezone.
+
+    Future-dated records are invalid and cannot trigger alerts.
+    """
     d = parse_iso(obs.date)
     if d is None:
         return 999
     today = now.astimezone(tz).date()
-    if d >= today:
-        return 0
+    if d > today:
+        return 999
     lag = 0
     cur = d
     while cur < today:
@@ -378,13 +382,18 @@ def parse_market_page(text: str, key: str, label: str, source: str) -> list[Obs]
         raise ValueError(f"Trading Economics current quote parse failed: {key}")
     value = float(m.group(1))
     d = dt.datetime.strptime(m.group(2), "%B %d, %Y").date().isoformat()
-    daily_bp = None
-    move = re.search(
-        r"marking a\s+([0-9]+(?:\.[0-9]+)?)\s+percentage points\s+"
+    if not 0.0 < value < 25.0:
+        raise ValueError(f"Unreasonable market bond-yield value: {key}={value}")
+    # A whole-page search could attach an unrelated news-item price change.
+    # Match daily change only immediately after the SAME current quote.
+    quote_tail = plain[m.end():m.end() + 185]
+    move = re.match(
+        r",?\s*marking a\s+([0-9]+(?:\.[0-9]+)?)\s+percentage points\s+"
         r"(increase|decrease)\s+from the previous session",
-        plain,
+        quote_tail,
         re.I,
     )
+    daily_bp = None
     if move:
         daily_bp = float(move.group(1)) * 100.0
         if move.group(2).lower() == "decrease":
@@ -404,6 +413,48 @@ def bp(new: float, old: float) -> float:
 def history_from_state(state: dict, key: str) -> list[dict]:
     rows = state.get("history", {}).get(key, [])
     return rows if isinstance(rows, list) else []
+
+
+def previous_trading_observation(cur: Obs, today_rows: list[Obs], state: dict) -> Obs | None:
+    """Find an earlier SOURCE DATE: same-day snapshots are never previous close."""
+    candidates = [x for x in today_rows if x.date < cur.date]
+    for x in history_from_state(state, cur.key):
+        day = str(x.get("date") or "")
+        if not day or day >= cur.date:
+            continue
+        try:
+            value = float(x["value"])
+        except (TypeError, ValueError, KeyError):
+            continue
+        candidates.append(Obs(cur.key, cur.label, day, value, cur.source))
+    candidates.sort(key=lambda x: x.date)
+    return candidates[-1] if candidates else None
+
+
+def merge_daily_history(state: dict, key: str, cur: Obs) -> list[dict]:
+    """Replace revised same-date quotes, preserving one observation per date."""
+    by_date = {}
+    for row in history_from_state(state, key):
+        day = str(row.get("date") or "")
+        try:
+            value = float(row["value"])
+        except (TypeError, ValueError, KeyError):
+            continue
+        if parse_iso(day):
+            by_date[day] = value
+    by_date[cur.date] = cur.value
+    return [{"date": day, "value": value}
+            for day, value in sorted(by_date.items())][-40:]
+
+
+def comparable_market_spread(latest: dict[str, Obs], stale: list[str]) -> float | None:
+    """Same vendor, identical source date and fresh observations."""
+    fr, de = latest.get("fr_mkt"), latest.get("de_mkt")
+    if fr is None or de is None or "fr_mkt" in stale or "de_mkt" in stale:
+        return None
+    if fr.date != de.date:
+        return None
+    return (fr.value - de.value) * 100.0
 
 
 def active_prev(state: dict, key: str) -> bool:
@@ -443,19 +494,22 @@ def build_alert(latest: dict[str, Obs], changes: dict, spread_bp: float | None, 
         bool(it and it.value >= 4.75 and "it10" not in stale),
         bool(spread_bp is not None and spread_bp >= 125),
     ])
-    if stress_count >= 2 or (fr and fr.value >= 5.0):
-        level, emoji = "유럽 장기금리 스트레스 강화", "🔴"
-    elif events:
-        level, emoji = "유럽 정부 차입비용 상승 경계", "🟠"
+    if stress_count >= 2 or (fr and "fr10" not in stale and fr.value >= 5.0):
+        level, emoji = "유럽 장기금리 고수준 경계", "🔴"
+    elif any(e.get("type") == "trigger" for e in events):
+        level, emoji = "유럽 장기금리 상승 경계", "🟠"
     else:
-        level, emoji = "관찰", "🟡"
+        level, emoji = "금리 상승 속도 둔화·수준 별도 확인", "🟡"
 
     lines = [
         f"{emoji} [유럽 국채금리 경보] {level}",
         "",
+        f"■ 조회: {now.strftime('%Y-%m-%d %H:%M')} 한국시간",
+        "※ 시장 보조자료는 당일 확정 종가가 아닌 조회 시점의 제공값입니다.",
+        "",
         "■ 지금 숫자",
     ]
-    if fr:
+    if fr and "fr10" not in stale:
         lines.append(f"🇫🇷 Banque de France TEC10 {fr.value:.3f}% / 전일 {signed_bp(changes.get('fr10_day_bp'))} / 기준일 {fr.date}")
     if fr_mkt and "fr_mkt" not in stale:
         lines.append(f"   ↳ 프랑스 10년 시장수익률 {fr_mkt.value:.3f}% / 기준일 {fr_mkt.date} (Trading Economics 보조 시장자료)")
@@ -465,8 +519,8 @@ def build_alert(latest: dict[str, Obs], changes: dict, spread_bp: float | None, 
         lines.append(f"🇬🇧 BoE 10년 명목 파수익률 {uk.value:.3f}% / 전일 {signed_bp(changes.get('uk10_day_bp'))} / 기준일 {uk.date}")
     elif uk_mkt and "uk_mkt" not in stale:
         lines.append(f"🇬🇧 영국 10년 시장수익률 {uk_mkt.value:.3f}% / 전일 {signed_bp(changes.get('uk_mkt_day_bp'))} / 기준일 {uk_mkt.date} (BoE 공식값 후행으로 Trading Economics 보조 시장자료 사용)")
-    if de:
-        suffix = " ⚠️ 후행값" if "de10" in stale else ""
+    if de and "de10" not in stale:
+        suffix = ""
         lines.append(f"🇩🇪 Bundesbank 10년 {de.value:.3f}% / 전일 {signed_bp(changes.get('de10_day_bp'))} / 기준일 {de.date}{suffix}")
     if de_mkt and "de_mkt" not in stale:
         lines.append(f"   ↳ 독일 10년 시장수익률 {de_mkt.value:.3f}% / 기준일 {de_mkt.date} (Trading Economics 보조 시장자료)")
@@ -482,7 +536,7 @@ def build_alert(latest: dict[str, Obs], changes: dict, spread_bp: float | None, 
         "",
         "■ 왜 중요한가",
         "• ECB 정책금리와 별개입니다. 시장의 10년 국채금리가 오르면 정부·기업·주택의 실제 장기 차입비용과 주식 할인율이 올라갑니다.",
-        "• 프랑스-독일 금리차는 동일 시장자료끼리 계산합니다. 서로 방법론이 다른 공식 지표를 섞어 위험프리미엄으로 부르지 않습니다.",
+        "• 프랑스-독일 금리차는 동일 제공사·동일 기준일의 시장금리로 계산합니다. 산출방식 또는 날짜가 다르면 계산하지 않습니다.",
         "",
         "■ 시장 영향",
         "• 성장주·리츠·고부채 기업: 할인율·자금조달비용 상승 부담.",
@@ -492,6 +546,7 @@ def build_alert(latest: dict[str, Obs], changes: dict, spread_bp: float | None, 
         "■ 다음 경계",
         "• 감시 기준: 프랑스 TEC10 5.00% / 영국 10년 5.50% / 프랑스-독일 동일 시장자료 금리차 150bp.",
         "• 하루 +10bp 또는 최근 5개 관측치 +25bp면 속도 경보를 별도로 냅니다.",
+        "• 속도 경계 해제는 금리 수준의 위험 해소를 뜻하지 않습니다.",
         "• 위 숫자는 ECB·BoE의 공식 위기선이 아니라 변동성 확대를 빨리 잡기 위한 내부 감시 기준입니다.",
         "",
         "■ 출처",
@@ -521,6 +576,7 @@ def build_alert(latest: dict[str, Obs], changes: dict, spread_bp: float | None, 
         "events": events,
         "latest": {k: {"date": v.date, "value": v.value, "source": v.source} for k, v in latest.items()},
         "changes": changes,
+        "change_basis": {k: ("출처 명시 변화" if k in MARKET_URLS else "공식 직전 관측치 차이") for k in latest},
         "fr_de_spread_bp": spread_bp,
         "stale": stale,
         "errors": errors,
@@ -580,34 +636,28 @@ def main() -> int:
     changes = {}
     history = dict(state.get("history") or {})
 
+    change_basis: dict[str, str] = {}
     for key, rows in all_rows.items():
-        cur, before = latest_two(rows)
+        cur, _ = latest_two(rows)
         if cur:
             latest[key] = cur
             tz = LONDON if key in {"uk10", "uk_mkt"} else PARIS
             if business_lag_days(cur, now, tz) > MAX_BUSINESS_LAG:
                 stale.append(key)
-            old = before
-            if old is None:
-                prior_state = history_from_state(state, key)
-                if prior_state:
-                    x = prior_state[-1]
-                    try:
-                        old = Obs(key, cur.label, str(x["date"]), float(x["value"]), cur.source)
-                    except Exception:
-                        old = None
-            if old:
+            old = previous_trading_observation(cur, rows, state)
+            if key in MARKET_URLS:
+                # Cached intraday quotes are not prior-day closes. Never call
+                # such same-day movements a "previous-day change".
+                if cur.daily_bp is not None:
+                    changes[f"{key}_day_bp"] = cur.daily_bp
+                    change_basis[key] = "자료제공사가 명시한 전 거래일 대비"
+            elif old is not None:
                 prev[key] = old
                 changes[f"{key}_day_bp"] = bp(cur.value, old.value)
-            elif cur.daily_bp is not None:
-                changes[f"{key}_day_bp"] = cur.daily_bp
+                change_basis[key] = f"공식자료 이전 관측일 {old.date} 대비"
             if len(rows) >= 5:
                 changes[f"{key}_5obs_bp"] = bp(rows[-1].value, rows[-5].value)
-
-            merged = list(history_from_state(state, key))
-            if not merged or merged[-1].get("date") != cur.date:
-                merged.append({"date": cur.date, "value": cur.value})
-            history[key] = merged[-40:]
+            history[key] = merge_daily_history(state, key, cur)
 
     active = dict(state.get("active") or {})
     events = []
@@ -662,9 +712,8 @@ def main() -> int:
     # Comparable spread must use the same market-data methodology/provider.
     # Do NOT mix Banque de France TEC10 with a Bundesbank benchmark and call the
     # arithmetic difference a market risk premium.
-    spread_bp = None
-    if fresh("fr_mkt") and fresh("de_mkt"):
-        spread_bp = bp(latest["fr_mkt"].value, latest["de_mkt"].value)
+    spread_bp = comparable_market_spread(latest, stale)
+    if spread_bp is not None:
         for level in FR_DE_SPREAD_LEVELS_BP:
             mark_event(
                 events, active, state, f"fr_de_market_spread:above:{level}", spread_bp >= level,
@@ -679,6 +728,7 @@ def main() -> int:
         "source_fail_streak": 0 if latest else int(state.get("source_fail_streak") or 0) + 1,
         "last_source_dates": {k: v.date for k, v in latest.items()},
         "last_values": {k: v.value for k, v in latest.items()},
+        "last_change_basis": change_basis,
         "stale": stale,
     }
     PENDING.write_text(json.dumps(next_state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
