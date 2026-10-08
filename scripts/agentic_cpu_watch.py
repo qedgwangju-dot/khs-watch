@@ -76,13 +76,15 @@ CPU_STRUCTURE_BASELINE = {
     "bnpp_analyst": {
         "as_of": "2026-10-05",
         "market_2030_usd_bn": 245.0,
+        "market_2030_official_confirmed": False,
+        "market_2030_source_kind": "사용자 제공 애널리스트 전망 · 1차 리포트와 독립 보도 미확인",
         "market_2025_user_claim_usd_bn": 30.0,
         "market_2025_official_confirmed": False,
         "amd_target_usd": 960.0,
         "amd_prior_target_usd": 600.0,
         "arm_target_user_claim_usd": 405.0,
         "arm_target_confirmed": False,
-        "source_kind": "BNP Paribas Karl Ackerman 애널리스트 의견의 2차 보도 · 보고서 원문 미열람",
+        "source_kind": "AMD 목표주가 2차 보도 확인 · 245bn 시장 전망은 사용자 제공 수치이며 리포트 원문 미열람",
         "source_url": "https://finance.yahoo.com/markets/stocks/articles/bnp-paribas-revamps-amd-stock-191959150.html",
         "target_source_url": "https://www.marketscreener.com/news/bnp-paribas-adjusts-pt-on-advanced-micro-devices-to-960-from-600-keeps-outperform-rating-ce785ddbd08af222",
     },
@@ -121,6 +123,7 @@ CPU_STRUCTURE_SEARCHES = [
     ("google", 'site:digitimes.com/news CPU accelerator 2027 agentic'),
     ("bing", 'site:digitimes.com "CPU" "per accelerator" "2027"'),
     ("google", '"BNP Paribas" "AMD" "price target" "CPU"'),
+    ("bing", 'site:marketscreener.com "BNP Paribas" "Arm Holdings" "price target"'),
     ("bing", 'site:marketscreener.com "BNP Paribas" "AMD" "price target"'),
     ("google", 'site:gb-www.digitimes.com.tw agentic AI 2027 CPU 出货'),
     ("google", 'site:digitimes.com.tw/research/report CPU XPU agentic'),
@@ -491,7 +494,7 @@ def cpu_structure_observation(title: str, text: str, url: str) -> tuple[str, dic
     # Secondary analyst reporting is not BNP's public AMD-estimate series.
     trusted = ("marketscreener.com", "investors.com", "247wallst.com", "finance.yahoo.com", "gurufocus.com")
     if any(host == d or host.endswith("." + d) for d in trusted):
-        if "bnp paribas" not in low or not any(s in low for s in ("amd", "advanced micro devices")):
+        if "bnp paribas" not in low:
             return "", {}
         obs = {}
         # Attribute a target only when AMD itself owns the nearby target phrase.
@@ -517,6 +520,24 @@ def cpu_structure_observation(title: str, text: str, url: str) -> tuple[str, dic
         )
         if market and 100 <= float(market.group(1)) <= 600:
             obs["market_2030_usd_bn"] = float(market.group(1))
+            obs["market_2030_official_confirmed"] = False  # secondary report only
+
+        # Arm Holdings is a distinct ticker, not a mention of AMD's Arm
+        # competitors in a mixed analyst article. Require an Arm-specific
+        # BNP target clause and never apply AMD's $960 price to ARM.
+        arm_target_patterns = (
+            r"bnp paribas[^.!?]{0,180}?\barm holdings\b[^.!?]{0,75}?"
+            r"\b(?:price\s+target|target|pt)\b[^.!?]{0,50}?\b(?:to|at)\s*\$?\s*(\d{2,4})\b",
+            r"bnp paribas[^.!?]{0,180}?\b(?:price\s+target|target|pt)\s+"
+            r"(?:on|for)\s+arm holdings\b[^.!?]{0,50}?\b(?:to|at)\s*\$?\s*(\d{2,4})\b",
+        )
+        arm_target = next((m for pattern in arm_target_patterns
+                           if (m := re.search(pattern, low, re.I))), None)
+        if arm_target:
+            value = float(arm_target.group(1))
+            if 50 <= value <= 1000:
+                obs["arm_target_usd"] = value
+                obs["arm_target_confirmed"] = True  # attributable secondary report
         return ("bnpp_analyst", obs) if obs else ("", {})
     if (host == "digitimes.com" or host.endswith(".digitimes.com")
             or host == "digitimes.com.tw" or host.endswith(".digitimes.com.tw")):
@@ -570,6 +591,13 @@ def cpu_structure_changes(old: dict, observed: dict, issuer: str) -> list[str]:
         if before and abs(after / before - 1) >= 0.10:
             changes.append(f"BNP 공개자료의 AMD 인용 CPU 시장 전망: {before:.0f}→{after:.0f}십억달러")
     if issuer == "bnpp_analyst":
+        if "arm_target_usd" in observed:
+            before_arm = float(old.get("arm_target_usd") or old.get("arm_target_user_claim_usd") or 0)
+            after_arm = float(observed["arm_target_usd"])
+            if not old.get("arm_target_confirmed"):
+                changes.append(f"BNP Arm Holdings 목표주가 {after_arm:,.0f}달러 2차 보도 신규 확인")
+            elif before_arm and abs(after_arm / before_arm - 1) >= 0.10:
+                changes.append(f"BNP Arm Holdings 목표주가 수정 {before_arm:,.0f}→{after_arm:,.0f}달러")
         for key, title in (("market_2030_usd_bn", "2030 데이터센터 CPU 시장"),
                            ("amd_target_usd", "AMD 목표주가")):
             if key not in observed:
@@ -660,11 +688,15 @@ def cpu_structure_block(state: dict, fx: float, changes: list[str]) -> str:
     lines += [
         "• BNP 공개자료의 AMD 추정 인용: 2025년 " + fmt(bp["market_2025_usd_bn"])
         + " → 2030년 " + fmt(bp["market_2030_usd_bn"]),
-        "• BNP 애널리스트 별도 보도: 2030년 " + fmt(ba["market_2030_usd_bn"])
-        + " · 원문 리포트 미열람 / 2025년 " + fmt(ba["market_2025_user_claim_usd_bn"]) + "는 사용자 제공치로 공식 확인 전",
+        "• BNP 애널리스트 시장 전망 사용자 제공: 2030년 " + fmt(ba["market_2030_usd_bn"])
+        + " / 2025년 " + fmt(ba["market_2025_user_claim_usd_bn"])
+        + " · 독립 리포트 원문 미확인(BNP 공개자료의 260억→2,200억달러와 구분)",
         "• AMD 목표주가: BNP 보도상 " + usd_shares(ba["amd_prior_target_usd"])
         + "→" + usd_shares(ba["amd_target_usd"])
-        + " · Arm 목표주가 " + usd_shares(ba["arm_target_user_claim_usd"]) + "는 원문 근거 확인 전이므로 확정 알림에서 제외",
+        + " · Arm 목표주가 "
+        + usd_shares(ba.get("arm_target_usd") if ba.get("arm_target_confirmed") else ba["arm_target_user_claim_usd"])
+        + ("는 BNP 2차 보도 확인" if ba.get("arm_target_confirmed")
+           else "는 사용자 제공 수치·근거 미확인, 확정 알림 제외"),
         "• DIGITIMES: 2027년 가속기당 CPU 거의 2배 전망(유료 기사 표제)"
         + (
             f" · 연구 표제 CPU:XPU <b>1:{float(di['cpu_xpu_ratio_2027']):g}</b>"
@@ -682,7 +714,7 @@ def cpu_structure_block(state: dict, fx: float, changes: list[str]) -> str:
         "• 후속 확인: CPU 발주·소켓·실출하→DDR5 RDIMM·서버용 FC-BGA/ABF·eSSD 주문 연결"
         + " · 2nm 수율·ABF·전원·냉각 병목 및 가상화 최적화에 따른 수요 미달 점검",
         '• <a href="' + html.escape(bp["source_url"], quote=True) + '">BNP 공식 공개자료</a>'
-        + ' · <a href="' + html.escape(ba["source_url"], quote=True) + '">BNP 애널리스트 2차 보도</a>'
+        + ' · <a href="' + html.escape(ba["source_url"], quote=True) + '">BNP AMD 목표주가 2차 보도</a>'
         + ' · <a href="' + html.escape(di["per_accelerator_source_url"], quote=True) + '">DIGITIMES 가속기당 전망</a>'
         + ' · <a href="' + html.escape(di["shipments_source_url"], quote=True) + '">DIGITIMES 출하 전망</a>'
         + ' · <a href="' + html.escape(di["cpu_xpu_ratio_source_url"], quote=True) + '">DIGITIMES 연구 1:2.3</a>'
