@@ -630,6 +630,7 @@ jobs:
           else:
               sent_by_route = {}
               message_ids = []
+              sent_titles = []
               for title, body, digest, route in sendable:
                   parts = prepare_telegram_messages(title, body)
                   # Verify the actual Telegram bot immediately before every send.
@@ -667,6 +668,8 @@ jobs:
                   )
                   new_ids = receipt["new_message_ids"]
                   message_ids.extend({"route": route, "message_id": value} for value in new_ids)
+                  if new_ids:
+                      sent_titles.append({"route": route, "title": title})
                   sent_state[digest]["preview"] = re.sub(r"\s+", " ", body)[:220]
                   sent_by_route[route] = sent_by_route.get(route, 0) + len(new_ids)
 
@@ -684,6 +687,7 @@ jobs:
                               "duplicate_skipped": len(skipped),
                               "sent_by_route": sent_by_route,
                               "message_ids": message_ids,
+                              "sent_titles": sent_titles,
                               "confirmed_at_kst": confirmed_at.isoformat(timespec="seconds"),
                           },
                           ensure_ascii=False,
