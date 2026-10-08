@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-08T10:23:59+09:00",
+  "updated_at_kst": "2026-10-08T10:26:47+09:00",
   "buyback": {
     "sha256": "3e691d164254d161d0d814e87c0eb3b88203e8985bb2f046aff70278f43ae5d4",
     "bytes": 14234,
@@ -26,6 +26,9 @@
     "status": "partial",
     "reported_funds": 11,
     "missing_funds": 1,
+    "missing_tickers": [
+      "IBIT"
+    ],
     "prev_date": "2026-10-06",
     "prev_total_usd_m": 118.8,
     "day_change_usd_m": -396.0,
