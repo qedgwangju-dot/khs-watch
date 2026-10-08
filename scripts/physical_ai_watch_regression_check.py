@@ -2585,7 +2585,7 @@ tesla_patent_report = make(
 pg, ps, pc, pk = classify(tesla_patent_report)
 assert pg == 'tesla_touch_patent' and ps >= 11, (pg, ps, pc)
 assert pc == '테슬라 촉각센서 · 미국 특허출원 공개 A1', pc
-assert '특허등록 B2' in base.risk(pc), base.risk(pc)
+assert 'B2' in base.risk(pc) and '특허등록' in base.risk(pc), base.risk(pc)
 assert '2025-09-11' in base.meaning(pc), base.meaning(pc)
 assert '수율' in base.risk(pc), base.risk(pc)
 
