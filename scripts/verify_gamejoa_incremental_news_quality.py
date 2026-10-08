@@ -5118,6 +5118,162 @@ class IncrementalNewsTests(unittest.TestCase):
         self.assertEqual({item['source_title'] for item in selected}, {hdec_title, goldman_title})
         self.assertEqual(kt.get('_exclusion_reason'), 'same_project_in_delivery_batch')
 
+    def test_legacy_title_only_seen_receipt_suppresses_cross_publisher_lisa_su_repeat(self):
+        now = dt.datetime(2026, 10, 5, 17, 23, tzinfo=dt.timezone(dt.timedelta(hours=9)))
+        old_title = "리사 수 AMD 회장 7개월 만에 방한…7일 용산서 '게이머데이'"
+        new_title = "리사 수 AMD 회장, 7개월 만에 방한…7일 ‘게이머 데이’ 참석"
+        seen_at = "2026-10-05T17:09:18+09:00"
+        legacy_entry = {
+            'first_seen_kst': seen_at,
+            'last_seen_kst': seen_at,
+            'lanes': {'live': seen_at},
+            'title': old_title,
+            'link': 'https://www.hankyung.com/article/202610053588Y',
+        }
+        candidate = alert(
+            new_title,
+            '리사 수 AMD 회장은 7일 용산에서 게이머 데이에 참석한다. '
+            '방한 기간 국내 AI 반도체 기업과 협력 방안을 논의할 예정이다.',
+            'https://biz.chosun.com/it-science/ict/2026/10/05/TM6DHCN2GNGRLL6BLQQ2FCH24A/',
+        )
+        candidate['published'] = '2026-10-05T17:16:00+09:00'
+        self.assertTrue(materiality.same_headline_event(new_title, old_title))
+        with tempfile.TemporaryDirectory() as directory:
+            state_path = Path(directory) / 'seen.json'
+            state_path.write_text(json.dumps({'seen': {'title:legacy': legacy_entry}}), encoding='utf-8')
+            with patch.object(telegram, 'SEEN_PATH', state_path), patch.object(radar.base, 'kst_now', return_value=now):
+                fresh, skipped = telegram.filter_previously_seen_alerts([candidate], now, 'live')
+        self.assertEqual(fresh, [])
+        self.assertEqual(skipped, [candidate])
+
+    def test_search_rank_roundup_does_not_pass_as_samsung_earnings_news(self):
+        title = '[증시키워드] 삼전 잠정 실적에 쏠린 눈…바이오는 희비'
+        body = (
+            '국내 증시가 3분기 실적 시즌의 포문을 여는 삼성전자의 잠정실적 발표를 앞두고 관망세를 나타냈다. '
+            '이날 네이버페이증권 검색 상위 종목은 삼성전자, SK하이닉스, 펩트론 등이었다. '
+            '삼성전자는 이날 오전 3분기 잠정실적 발표가 예정됐다. '
+            '삼성전자는의 3분기 잠정실적은 107조4000억원을 기록한 가운데 전날 19조원 규모의 국내 반도체 '
+            '상장지수펀드(ETF) 7종 리밸런싱과 옵션 만기일이 겹치면서 전날 1.29% 하락했다.'
+        )
+        item = alert(title, body)
+        assessment = materiality.equity_publication_assessment(
+            title,
+            [{'kind': 'earnings_or_guidance', 'stage': 'reported_change',
+              'source_excerpt': '삼성전자 3분기 잠정실적이 107조4000억원으로 보도됐다.'}],
+            body=body,
+        )
+        self.assertFalse(assessment['eligible'], assessment)
+        self.assertEqual(assessment['reason'], 'search_trend_roundup_without_independent_headline_event')
+        with patch.object(radar.base, 'kst_now', return_value=NOW):
+            selected = radar.quality_display_alerts([item], 5)
+        self.assertEqual(selected, [])
+
+    def test_earnings_and_mining_cores_follow_headline_source_metrics_not_article_tail(self):
+        emart_title = '한투증권 “이마트, 3분기 연결 영업익 컨센서스 17% 하회 전망”'
+        emart_body = (
+            '한국투자증권은 8일 이마트의 3분기 연결 기준 영업이익이 시장 기대치를 17% 이상 밑돌 것으로 추산했다. '
+            '김명주 연구원은 보고서에서 이마트의 3분기 연결 기준 영업이익이 1천449억원이 될 것으로 예상했다. '
+            '이는 전년 동기 대비 4.3% 늘어난 규모이지만 시장 기대치에는 17.7% 밑도는 수준이다. '
+            '다만 3분기 별도 기준 영업이익은 1천659억원으로 시장 기대치를 8.6% 웃돌 것으로 전망했다.'
+        )
+        emart_core = self.assert_source_bound_core(
+            emart_title, emart_body,
+            ('이마트', '1천449억원', '17.7%', '4.3%', '1천659억원', '8.6%'),
+        )
+        self.assertTrue(radar.source_core_fact_errors({
+            **alert(emart_title, emart_body),
+            'telegram_core_fact': '이마트 3분기 영업이익은 1천449억원으로 전년 대비 4.3% 증가할 전망이다.',
+        }))
+        self.assertIn('17.7%', emart_core)
+
+        aris_title = '아리스 마이닝, 3분기 금 매출 2억8700만 달러·누적생산 16%↑'
+        aris_body = (
+            '아리스 마이닝(ARIS)은 올해 3분기(7~9월) 금 생산량이 6만9300온스, 금 판매량이 6만8400온스, '
+            '금 매출이 약 2억8700만 달러로 집계됐다고 7일 발표했다. '
+            '이번 수치는 확정 재무제표 공개 전 발표한 예비 생산 실적이다. '
+            '1~9월 누적 금 생산량은 21만7300온스로 전년 동기 대비 16.4% 증가했다. '
+            '다만 분기별 생산량은 감소 흐름을 보였고 3분기 생산량은 6만9300온스로 전분기 대비 약 6.0% 감소했다.'
+        )
+        aris_core = self.assert_source_bound_core(
+            aris_title, aris_body,
+            ('아리스 마이닝', '2억8700만달러', '6만9300온스', '21만7300온스', '16.4%', '6.0%'),
+        )
+        self.assertTrue(radar.source_core_fact_errors({
+            **alert(aris_title, aris_body),
+            'telegram_core_fact': '컨센서스 기준 매출은 2026년 15억5233만달러, 2027년 19억6567만달러로 늘 전망이다.',
+        }))
+        self.assertIn('예비', aris_core)
+
+    def test_weak_attendance_pilot_and_summit_discussion_are_filtered_with_hard_event_controls(self):
+        collective_title = "유니슨, '한국형 녹색대전환 전략 국민보고회' 참여"
+        collective_body = (
+            '풍력터빈 전문기업 유니슨은 한국형 녹색대전환 전략 국민보고회에 풍력 분야 기업으로 참여했다고 밝혔다. '
+            '정부는 10년간 1000조원 규모 지원을 추진하고 민간은 220조원 프로젝트를 계획했다. '
+            '해상풍력 분야에서는 유니슨을 포함한 참여기업들이 약 2조8500억원 민간 투자를 추진한다. '
+            '유니슨은 해상풍력 전 주기 공급망 구축 사업에 참여할 계획이다.'
+        )
+        collective = materiality.equity_publication_assessment(
+            collective_title,
+            [{'kind': 'commercial_order', 'stage': 'reported_change',
+              'source_excerpt': '유니슨을 포함한 참여기업들이 약 2조8500억원 민간 투자를 추진한다.'}],
+            body=collective_body,
+        )
+        self.assertFalse(collective['eligible'], collective)
+        self.assertEqual(collective['reason'], 'event_attendance_or_aggregate_investment_without_issuer_commitment')
+
+        pilot_title = "'이상기후 대응' 농진청, 여름철 배추 재배 적지 확대 등 지원"
+        pilot_body = (
+            '농촌진흥청은 여름철 배추 수급 불안에 대응하기 위해 준고랭지 안정 생산 체계 구축 사업을 한다. '
+            '올해 6개 시군 24개 농가가 19.7ha를 시범 재배한다. '
+            '고온 피해 저감 기술을 적용해 안정 생산 가능성을 높였으며 전국 단위 생산량이나 가격 변화는 확인되지 않았다.'
+        )
+        pilot = materiality.equity_publication_assessment(
+            pilot_title,
+            [{'kind': 'physical_supply_or_capacity', 'stage': 'reported_change',
+              'source_excerpt': '6개 시군 24개 농가가 19.7ha를 시범 재배한다.'}],
+            body=pilot_body,
+        )
+        self.assertFalse(pilot['eligible'], pilot)
+        self.assertEqual(pilot['reason'], 'agriculture_pilot_without_market_scale_or_issuer_execution')
+
+        summit_title = '이 대통령, 이집트 대통령과 정상회담…공급망 협력 등 논의'
+        summit_body = (
+            '양 정상은 이날 공식 환영식에 이어 소인수·확대회담과 협정·양해각서 서명식을 진행할 예정이다. '
+            '회담에서는 교역·투자, 인프라, 공급망 등 경제협력 방안을 논의한다.'
+        )
+        summit = materiality.equity_publication_assessment(
+            summit_title,
+            [{'kind': 'policy_scope_or_stage', 'stage': 'reported_change',
+              'source_excerpt': '공급망 협력 방안을 논의할 예정이다.'}],
+            body=summit_body,
+        )
+        self.assertFalse(summit['eligible'], summit)
+        self.assertEqual(summit['reason'], 'summit_cooperation_discussion_without_completed_market_outcome')
+
+        contract = materiality.equity_publication_assessment(
+            '유니슨, K-GX 보고회 참석…800억원 해상풍력터빈 공급계약 체결',
+            [{'kind': 'commercial_order', 'stage': 'reported_change',
+              'source_excerpt': '유니슨은 800억원 규모 해상풍력터빈 공급계약을 체결했다.'}],
+            body='유니슨은 K-GX 보고회에서 800억원 규모 해상풍력터빈 공급계약을 체결했다고 밝혔다.',
+        )
+        self.assertTrue(contract['eligible'], contract)
+
+        crop_shock = materiality.equity_publication_assessment(
+            '농진청, 배추 시범재배 확대…폭염에 도매가 40% 상승',
+            [{'kind': 'climate_operational_damage', 'stage': 'reported_change',
+              'source_excerpt': '배추 도매가격이 40% 상승했다.'}],
+            body='농촌진흥청은 여름철 배추 시범재배를 확대했다. 배추 도매가격은 전년 대비 40% 상승했다.',
+        )
+        self.assertTrue(crop_shock['eligible'], crop_shock)
+
+        signed_summit = materiality.equity_publication_assessment(
+            '이 대통령, 이집트 대통령과 정상회담…공급망 협정 서명',
+            [{'kind': 'policy_scope_or_stage', 'stage': 'reported_change',
+              'source_excerpt': '양국은 공급망 협력 양해각서에 서명했다.'}],
+            body='양국은 정상회담에서 공급망 협력 양해각서에 서명했다.',
+        )
+        self.assertTrue(signed_summit['eligible'], signed_summit)
+
 
 if __name__ == "__main__":
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(IncrementalNewsTests)

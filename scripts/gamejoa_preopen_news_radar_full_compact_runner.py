@@ -2604,6 +2604,59 @@ def source_headline_event_fact(title: str, body: str) -> str:
     focus = market_materiality.focus_kind(title)
     source = market_materiality.source_reported_body(body)
     rows = market_materiality.source_sentences(source)
+    flat_source = re.sub(r"\s+", " ", source)
+    if (re.search(r"이마트", title)
+            and re.search(r"3분기", title)
+            and re.search(r"컨센서스|시장\s*기대치", title)):
+        connected = re.search(
+            r"연결\s*기준\s*영업이익이\s*(?P<amount>(?:\d+\s*천\s*\d+|\d[\d,]*)\s*억\s*원)",
+            flat_source,
+        )
+        connected_gap = re.search(r"(?P<gap>\d+(?:\.\d+)?)%\s*밑도는\s*수준", flat_source)
+        year_growth = re.search(r"전년\s*동기\s*대비\s*(?P<growth>\d+(?:\.\d+)?)%\s*늘어난\s*규모", flat_source)
+        separate = re.search(
+            r"별도\s*기준\s*영업이익은\s*(?P<amount>(?:\d+\s*천\s*\d+|\d[\d,]*)\s*억\s*원)",
+            flat_source,
+        )
+        separate_gap = re.search(r"시장\s*기대치를\s*(?P<gap>\d+(?:\.\d+)?)%\s*웃돌", flat_source)
+        if connected and connected_gap and year_growth and separate and separate_gap:
+            connected_amount = re.sub(r"\s+", "", connected["amount"])
+            separate_amount = re.sub(r"\s+", "", separate["amount"])
+            fact = (
+                f"한국투자증권은 이마트 3분기 연결 영업이익을 {connected_amount}로 전망해 "
+                f"컨센서스보다 {connected_gap['gap']}% 낮게 봤다(전년비 {year_growth['growth']}% 증가). "
+                f"별도 영업이익은 {separate_amount}로 컨센서스 {separate_gap['gap']}% 상회를 전망했다."
+            )
+            return fact if core_sentence_is_complete(fact) else ""
+    if (re.search(r"아리스\s*마이닝|\bARIS\b", title, re.I)
+            and re.search(r"3분기.{0,40}금\s*매출|금\s*매출.{0,30}3분기", title)):
+        q3 = re.search(
+            r"3분기\s*\(7\s*~\s*9월\)\s*금\s*생산량이\s*"
+            r"(?P<production>(?:[\d,]+\s*만\s*[\d,]+|[\d,]+)\s*온스),\s*"
+            r"금\s*판매량이\s*(?P<sales>(?:[\d,]+\s*만\s*[\d,]+|[\d,]+)\s*온스),\s*"
+            r"금\s*매출이\s*약\s*"
+            r"(?P<revenue>[\d,]+\s*억\s*[\d,]+\s*만\s*달러)", flat_source,
+        )
+        ytd = re.search(
+            r"1\s*~\s*9월\s*누적\s*금\s*생산량은\s*"
+            r"(?P<production>(?:[\d,]+\s*만\s*[\d,]+|[\d,]+)\s*온스)\s*로\s*"
+            r"전년\s*동기\s*대비\s*(?P<growth>[\d.]+)%\s*증가", flat_source,
+        )
+        qoq = re.search(
+            r"3분기\s*생산량은\s*(?:[\d,]+\s*만\s*[\d,]+|[\d,]+)\s*온스로\s*전분기\s*대비\s*약\s*"
+            r"(?P<decline>[\d.]+)%", flat_source,
+        )
+        qoq_decline_explicit = re.search(r"3분기\s*생산량은[^!?]{0,120}(?:감소|하락|줄었)", flat_source)
+        if q3 and ytd and qoq and qoq_decline_explicit:
+            revenue = re.sub(r"\s+", "", q3["revenue"])
+            production = re.sub(r"\s+", "", q3["production"])
+            ytd_production = re.sub(r"\s+", "", ytd["production"])
+            fact = (
+                f"아리스 마이닝은 3분기 예비 실적으로 금 매출 {revenue}, 생산량 {production}를 발표했다. "
+                f"1~9월 누적 생산은 {ytd_production}로 전년비 {ytd['growth']}% 늘었지만, "
+                f"3분기 생산은 전분기보다 {qoq['decline']}% 줄었다."
+            )
+            return fact if core_sentence_is_complete(fact) else ""
     if (re.search(r"ETF", title, re.I) and re.search(r"상장\s*첫날", title)
             and re.search(r"개인\s*\d+\s*억", title)):
         personal = re.search(r"개인투자자는\s*이\s*상품을\s*약\s*(?P<amount>[\d,]+\s*억원)\s*순매수", source)

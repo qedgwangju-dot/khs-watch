@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 113
+VERSION = 114
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -3494,6 +3494,12 @@ def equity_publication_assessment(title: str, evidence: list[dict], *, body: str
     body = source_article_body(source_reported_body(body))
     source_rows = source_sentences(body)
     lead = " ".join(source_rows[:5])
+    search_trend_roundup = (
+        re.search(r"^\s*\[\s*(?:증시\s*)?키워드\s*\]", title)
+        and re.search(r"검색\s*(?:상위|량)|네이버페이증권", title + " " + lead)
+    )
+    if search_trend_roundup:
+        return {'eligible': False, 'reason': 'search_trend_roundup_without_independent_headline_event'}
     local_showcase = (LOCAL_AUTHORITY.search(f"{title} {lead}")
                       and re.search(r"성과\s*(?:공유회|보고회|발표회)|실적\s*공유회", title))
     issuer_name = re.compile(
@@ -3509,6 +3515,67 @@ def equity_publication_assessment(title: str, evidence: list[dict], *, body: str
         and (QUANTITY.search(row) or re.search(r"증가|감소|확대|축소|체결|수주|확정|시작|가동|검증", row))
         for row in source_rows[:12]
     )
+    agriculture_pilot = (
+        re.search(r"농진청|농촌진흥청|농업기술원|농업기술센터", title + " " + lead)
+        and re.search(r"배추|양파|마늘|쌀|벼|과수|농산물", title + " " + lead)
+        and re.search(r"시범\s*(?:사업|재배|운영)|실증\s*사업", title + " " + lead)
+    )
+    measured_agriculture_market_event = any(
+        re.search(r"배추|양파|마늘|쌀|벼|과수|농산물", row)
+        and QUANTITY.search(row)
+        and re.search(r"가격|생산량|출하량|수확량|수급", row)
+        and re.search(r"급등|급락|상승|하락|증가|감소|줄었|늘었|피해", row)
+        for row in source_rows[:10]
+    ) or any(
+        re.search(r"수출\s*(?:금지|제한|중단)|수입\s*(?:금지|제한|중단)", row)
+        or (re.search(r"전국.{0,30}(?:생산량|수확량|공급량)", row)
+            and re.search(r"급등|급락|상승|하락|증가|감소|줄었|늘었|피해|부족", row)
+            and not re.search(r"변화.{0,12}확인되지|확인되지.{0,12}변화", row))
+        for row in source_rows[:10]
+    )
+    if agriculture_pilot and not issuer_level_result and not measured_agriculture_market_event:
+        return {'eligible': False, 'reason': 'agriculture_pilot_without_market_scale_or_issuer_execution'}
+
+    event_participation = (
+        re.match(r"\s*([^,，:]{2,30})[,，]", title)
+        and re.search(r"참여|참석|참가|방문", title)
+        and re.search(r"보고회|포럼|간담회|행사|전시회|컨퍼런스|박람회", title)
+    )
+    event_actor = re.match(r"\s*([^,，:]{2,30})[,，]", title)
+    company_bound_execution = bool(event_actor) and any(
+        re.search(rf"{re.escape(event_actor.group(1))}(?:은|는|이|가)", row)
+        and not re.search(rf"{re.escape(event_actor.group(1))}(?:을|를)\s*포함", row)
+        and re.search(r"투자|설비투자|수주|공급\s*계약|납품\s*계약|발주|매출|생산|양산|가동", row)
+        and (QUANTITY.search(row) or re.search(r"계약.{0,20}(?:체결|확정)|(?:수주|발주).{0,20}(?:확정|했다)", row))
+        and re.search(r"체결|확정|공시|집행|발주|수주|착공|가동|생산", row)
+        for row in source_rows[:5]
+    )
+    if event_participation and not company_bound_execution:
+        return {'eligible': False, 'reason': 'event_attendance_or_aggregate_investment_without_issuer_commitment'}
+
+    summit_preview = (
+        re.search(r"대통령|총리|국가주석|정상회담|정상\s*회의", title)
+        and re.search(r"정상회담|회담|정상\s*회의|국빈\s*방문|국빈\s*방한", title)
+        and re.search(r"논의|협력|공급망|교역|투자|인프라", title + " " + lead)
+    )
+    completed_summit_outcome = any(
+        re.search(
+            r"(?:협정|양해각서|협력각서|업무협약|MOU|공동성명|공동선언|계약).{0,55}(?:체결했다|서명했다|채택했다|발효했다|합의했다)|"
+            r"(?:체결했다|서명했다|채택했다|발효했다|합의했다).{0,55}(?:협정|양해각서|협력각서|업무협약|MOU|공동성명|공동선언|계약)",
+            row,
+            re.I,
+        )
+        and not re.search(r"예정|계획|추진|검토|논의할|논의한다|열릴|진행할", row)
+        for row in source_rows
+    ) or any(
+        re.search(r"관세|수출통제|수입\s*금지|수출\s*금지|공급\s*계약|구매\s*계약|예산|사업비|공급량|발주|수주", row)
+        and re.search(r"확정했다|시행한다|승인했다|배정했다|집행했다|체결했다|서명했다|발표했다", row)
+        and not re.search(r"예정|계획|추진|검토|논의할|논의한다", row)
+        for row in source_rows
+    )
+    if summit_preview and not completed_summit_outcome:
+        return {'eligible': False, 'reason': 'summit_cooperation_discussion_without_completed_market_outcome'}
+
     local_official_interview = (
         re.search(r"인터뷰|대담", title)
         and LOCAL_EXECUTIVE_INTERVIEW.search(title)
