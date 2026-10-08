@@ -1053,6 +1053,13 @@ def power_milestone(title: str) -> tuple[str, str, str] | None:
         r"gas contract signed|供氣完成|供气完成|併網核准|并网核准", text, re.I
     ):
         return ("AAOI 연료·전력 접속", "가스 공급·접속·허가", "aaoi-taiwan|power|gas-grid|" + (fingerprint or "secured"))
+    if not future and re.search(
+        r"maintenance agreement|service contract|long[- ]term service|"
+        r"remote monitoring contract|O&M agreement|stack replacement|"
+        r"維運合約|维运合同|長期維護|长期维护|維修合約|维修合同",
+        text, re.I
+    ):
+        return ("AAOI SOFC 유지보수 계약", "장기 유지보수·교체부품·원격관제 계약", "aaoi-taiwan|power|service|" + (fingerprint or "agreement"))
     if not future and fingerprint and re.search(
         r"Bloom Energy|賀喜能源|Leadray|\bSOFC\b|fuel cell|燃料[電电]池", text, re.I
     ):
@@ -1069,6 +1076,16 @@ def power_milestone(title: str) -> tuple[str, str, str] | None:
         # The October 2026 EPC announcement is planned for Q1 2027, not energized.
         return ("AAOI 현장발전 EPC 추진", "사업 발표·가동 전", POWER_INITIAL_KEY)
     return None
+
+
+def retain_historical_optics_record(record: dict) -> bool:
+    # A short-lived intermediate deploy incorrectly labeled an unrelated
+    # Chunghwa Telecom article as AAOI Taiwan power news. Purge it from both
+    # seen hashes and story records; never treat it as verified AAOI evidence.
+    return not (
+        record.get("company") == POWER_COMPANY
+        and power_milestone(str(record.get("title") or "")) is None
+    )
 
 
 def same_power_event(a: dict, b: dict) -> bool:
@@ -1605,6 +1622,7 @@ def meaning_for(category: str) -> str:
         "AAOI 현장발전 전원 인가": "실제 상업운전이 확인되면 전력 공급 위험은 줄지만 AAOI 대만 공장의 고객인증·수율·800G/1.6T 출하는 별도 확인해야 합니다.",
         "AAOI 연료·전력 접속": "대만 현장 가스 공급·전력 접속과 현지 허가가 확보되면 발전설비 가동 지연 위험이 낮아집니다.",
         "AAOI 현장발전 보조금": "보조금 신청과 실제 승인·금액 지급은 구분해야 합니다. 확정 금액과 수혜 당사자만 사업비 계산에 반영합니다.",
+        "AAOI SOFC 유지보수 계약": "전력설비 인도 이후 장기 유지보수 계약·스택 교체·원격관제는 Bloom 및 서비스 당사자의 반복매출 경로입니다. 최초 장비 공급계약과 분리합니다.",
         "AAOI 전력 확보→출하 검증": "전력 설비 가동 이후 고객별 800G·1.6T 생산 인증, 양품 수율, 실제 출하량과 매출 증가가 연결돼야 설비투자 효과가 입증됩니다.",
         "AAOI 현장발전 일정·공급 위험": "가스 계약·허가·설치·검수·2027년 1분기 전원 인가 일정의 지연은 대만 광통신 생산능력 증설의 선행 위험입니다.",
         "OCS 고객·주문·배치": "OCS는 광경로 자체를 바꾸는 별도 스위치입니다. NVIDIA의 OCP 참여·CPO 제품 판매를 OCS 구매로 오인하지 않고 실제 OCS 장비 계약·고객·배치 대수를 확인합니다.",
@@ -1700,6 +1718,7 @@ def risk_for(category: str) -> str:
         "AAOI 현장발전 전원 인가": "연료전지 가동률·정비 정지·가스 공급·백업전원이 부족하면 실제 광모듈 라인 가동률 증가는 제한됩니다.",
         "AAOI 연료·전력 접속": "현지 연료 공급·계통 보호설비·가스 안전 승인·보험 조건에 문제가 있으면 전원 공급이 늦어집니다.",
         "AAOI 현장발전 보조금": "정부 심사·지급 지연이나 승인액 축소가 프로젝트 순설비투자와 투자회수기간을 바꿀 수 있습니다.",
+        "AAOI SOFC 유지보수 계약": "SOFC 연료비·유지보수·스택 교체 주기와 가동률·보증충당금이 실제 반복매출 마진을 바꿀 수 있습니다.",
         "AAOI 전력 확보→출하 검증": "전력을 확보해도 고객별 제품 인증·광엔진 수율·1.6T 검사 시간·핵심 광부품 병목으로 출하가 자동 증가하지 않을 수 있습니다.",
         "AAOI 현장발전 일정·공급 위험": "2027년 1분기를 넘겨 전원 인가가 밀리면 신규 공장 고정비 부담과 광트랜시버 납기 위험이 먼저 나타납니다.",
         "OCS 고객·주문·배치": "OCS 제어 소프트웨어와 스위치 재구성 지연·광경로 차단·고장복구가 GPU 가동률을 떨어뜨리면 채택과 재주문이 지연될 수 있습니다.",
@@ -1906,6 +1925,15 @@ def _self_test_korean_optics_alerts() -> None:
     assert not official_power_source({
         "source": "Bloom Energy", "source_url": "https://example.org/blog"
     })
+    assert not retain_historical_optics_record({
+        "company": POWER_COMPANY,
+        "title": "Chunghwa Telecom's Simplified Modular Data Center delivers turnkey deployment",
+    })
+    assert retain_historical_optics_record({
+        "company": POWER_COMPANY,
+        "title": initial,
+    })
+    assert power_milestone("AAOI Taiwan Bloom Energy SOFC long-term service contract signed")[0] == "AAOI SOFC 유지보수 계약"
 
 
 def load_state() -> dict:
@@ -1947,6 +1975,13 @@ def main() -> None:
                 pass
 
     seen = set(state.get("seen_keys") or [])
+    for invalid in state.get("seen_story_records") or []:
+        if not retain_historical_optics_record(invalid):
+            seen.discard(event_key(
+                str(invalid.get("company") or ""),
+                str(invalid.get("title") or ""),
+                str(invalid.get("source") or ""),
+            ))
     all_relevant: list[dict] = []
     errors: list[str] = []
     successful_company_queries = 0
@@ -2183,7 +2218,10 @@ def main() -> None:
         | set(KNOWN_NEW_STRUCTURE_KEYS)
         | set(POWER_BASELINE_KEYS)
     )
-    seen_story_records = list(state.get("seen_story_records") or [])
+    seen_story_records = [
+        record for record in (state.get("seen_story_records") or [])
+        if retain_historical_optics_record(record)
+    ]
 
     for item in deduped:
         item["story_key"] = canonical_story_key(item["company"], item["title"])
