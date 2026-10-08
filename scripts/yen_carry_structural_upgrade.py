@@ -438,11 +438,12 @@ def build_context(jgb_rows, mof, a10, p10, a30, p30, errors: list[str]) -> str:
         f"- 일본 10년 JGB(재무성 공식 종가) {jgb10:.3f}% ({latest_date}) → {jgb_state}",
     ]
     if mof:
-        lt_direction = "해외채권 순매수" if mof.latest_2w_lt_debt_trillion_yen > 0 else "해외채권 순매도·환류 압력"
+        lt_direction = "해외채권 순매수" if mof.latest_2w_lt_debt_trillion_yen > 0 else "해외채권 순매도(실제 엔화 환류는 미확인)"
         lines += [
             f"- 해외중장기채: 최근 2주 {fmt_flow(mof.latest_2w_lt_debt_trillion_yen)} / 직전 2주 {fmt_flow(mof.prior_2w_lt_debt_trillion_yen)} / 연초 이후 {fmt_flow(mof.ytd_lt_debt_trillion_yen)} → {lt_direction}",
             f"- 해외주식·투자펀드: 최근 2주 {fmt_flow(mof.latest_2w_equity_trillion_yen)} / 직전 2주 {fmt_flow(mof.prior_2w_equity_trillion_yen)}",
-            "※ 해외주식과 해외중장기채를 분리합니다. 엔캐리·글로벌 채권 환류 판단에는 해외중장기채를 우선 봅니다.",
+            f"- 해외주식+중장기채 합계: 최근 2주 {fmt_flow(mof.latest_2w_equity_trillion_yen + mof.latest_2w_lt_debt_trillion_yen)} (채권과 주식의 합산 순거래)",
+            "※ 해외채권 순매도만으로 본국 송금·현물 엔화 매수·엔캐리 청산을 확정하지 않습니다.",
         ]
     else:
         lines.append("- 일본 해외증권투자: 이번 실행 확인 지연")
