@@ -8,6 +8,8 @@ on:
       - "scripts/kofia_liquidity_watch.js"
       - "scripts/test_kofia_liquidity_interpretation.py"
       - "scripts/kofia_liquidity_semantic_guard.py"
+      - "scripts/kofia_liquidity_state_integrity.js"
+      - "scripts/test_kofia_liquidity_state_integrity.js"
   schedule:
     # KST 직접 지정. 새 공식값/수정치가 없으면 Telegram은 보내지 않는다.
     - cron: "5,20,40 7 * * 1-5"
@@ -34,7 +36,7 @@ permissions:
 
 concurrency:
   group: kofia-liquidity-telegram-watch
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   watch:
@@ -78,6 +80,8 @@ jobs:
 
       - name: Test KOFIA directional interpretation
         run: |
+          node --check scripts/kofia_liquidity_state_integrity.js
+          node scripts/test_kofia_liquidity_state_integrity.js
           python scripts/test_kofia_liquidity_interpretation.py
 
       - name: Query KOFIA official liquidity data
