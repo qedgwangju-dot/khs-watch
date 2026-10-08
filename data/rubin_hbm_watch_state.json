@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-08T16:54:12+09:00",
+  "updated_at_kst": "2026-10-08T20:00:53+09:00",
   "seen_ids": [
     "00315ac822df3f19f0f17bfd",
     "01899de42b17bb25951592cf",
@@ -177,7 +177,7 @@
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1338.69,
-    "date": "2026-10-07 일일 기준 · ECB/Frankfurter · 조회 2026-10-08 16:54 KST · 보조 API 2026-10-08 · 차이 0.03% · 일중 기준시각 차이 가능",
+    "date": "2026-10-07 일일 기준 · ECB/Frankfurter · 조회 2026-10-08 20:01 KST · 보조 API 2026-10-08 · 차이 0.03% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
@@ -305,29 +305,29 @@
       "https://www.trendforce.com/news/",
       "https://www.trendforce.com/research"
     ],
-    "last_checked_at_kst": "2026-10-08T16:54:25+09:00",
+    "last_checked_at_kst": "2026-10-08T20:01:09+09:00",
     "candidate_count": 3,
     "errors": []
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-08T16:54:59+09:00",
+    "checked_at_kst": "2026-10-08T20:01:46+09:00",
     "status": "no_message_due"
   },
-  "last_successful_delivery_kst": "2026-10-08T16:51:56+09:00",
+  "last_successful_delivery_kst": "2026-10-08T19:41:56+09:00",
   "telegram_message_ids": [
-    265
+    266
   ],
-  "telegram_message_id": 265,
+  "telegram_message_id": 266,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      265
+      266
     ],
-    "confirmed_at_kst": "2026-10-08T16:51:56+09:00",
-    "payload_hash": "fb1a2a8d8161fdf41bcb6d7c8a66692b84fa9cfdad5f8be18f5c16ecc1cfd51a"
+    "confirmed_at_kst": "2026-10-08T19:41:56+09:00",
+    "payload_hash": "2244db55883a26752b84b799c73abc66ed82ebb111de0562914cef4c5a6dd5f3"
   },
   "agentic_cpu_demand": {
     "as_of": "2026-08-12",
@@ -379,7 +379,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-10-08",
-    "last_checked_at_kst": "2026-10-08T16:54:51+09:00",
+    "last_checked_at_kst": "2026-10-08T20:01:35+09:00",
     "cpu_structure": {
       "bnpp_public": {
         "as_of": "2026-10-05",
@@ -404,6 +404,9 @@
       "digitimes": {
         "as_of": "2026-10-07",
         "per_accelerator_cpu_2027": "nearly_double",
+        "cpu_xpu_ratio_2027": 2.3,
+        "cpu_xpu_ratio_source_kind": "DIGITIMES 2026-10-05 연구 표제 CPU:XPU=1:2.3 · 영어 후속기사 2027년 언급 · 원문 상세 연도는 구독 제한으로 미열람",
+        "cpu_xpu_ratio_source_url": "https://www.digitimes.com.tw/research/report/?cnlid=3&n=1&v=20261005-314",
         "per_accelerator_source_kind": "DIGITIMES 10월 7일 원문 표제 확인 · 구독 제한으로 상세 계산 기준 미열람",
         "per_accelerator_source_url": "https://www.digitimes.com/news/a20261005PD216/cpu-demand-commercial-llm-market.html",
         "shipments_as_of": "2026-07-29",
@@ -425,7 +428,8 @@
         "source_url": "https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era",
         "customer_validation": "Meta 6세대 EPYC 실험실 검증; OpenAI 2026년 4분기 Helios 가동 시작 전망"
       },
-      "seen_source_urls": []
+      "seen_source_urls": [],
+      "cpu_xpu_ratio_alert_sent": true
     },
     "cpu_structure_track_version": 1
   },
@@ -463,7 +467,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-10-08",
-    "last_checked_at_kst": "2026-10-08T16:54:54+09:00",
+    "last_checked_at_kst": "2026-10-08T20:01:40+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -507,7 +511,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-08T16:54:55+09:00",
+    "last_checked_at_kst": "2026-10-08T20:01:41+09:00",
     "candidate_count": 0,
     "event_count": 0,
     "area_structure": {
@@ -855,5 +859,7 @@
     "samsung_official_url": "https://news.samsung.com/kr/%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90-fms-2026%EC%84%9C-%EC%B0%A8%EC%84%B8%EB%8C%80-3d-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EB%B9%84%EC%A0%84-%EC%A0%9C%EC%8B%9C",
     "share_source_url": "https://counterpointresearch.com/en/insights/global-hbm-market-share-q2-2026",
     "last_official_stage_change_at": null
-  }
+  },
+  "feed_checks": 38,
+  "feed_healthy": 38
 }

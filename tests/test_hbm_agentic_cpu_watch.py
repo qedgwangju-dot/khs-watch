@@ -1,6 +1,9 @@
 import pathlib
 import sys
 import unittest
+from datetime import datetime
+from unittest import mock
+from zoneinfo import ZoneInfo
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "scripts"))
 import agentic_cpu_watch as w
@@ -202,6 +205,235 @@ class AgenticCpuStructureTests(unittest.TestCase):
             url,
         )
         self.assertEqual((name, obs), ("", {}))
+
+    def test_mixed_bnp_amd_nvidia_arm_targets_never_cross_attributed(self):
+        url = w.CPU_STRUCTURE_BASELINE["bnpp_analyst"]["target_source_url"]
+        for article in (
+            "BNP Paribas sees AMD as a competitor and raised Nvidia price target to $345.",
+            "BNP Paribas raised its price target on Nvidia to $345 and discussed AMD server CPUs.",
+            "BNP Paribas discusses AMD processors while raising Arm price target to $405.",
+        ):
+            with self.subTest(article=article):
+                self.assertEqual(w.cpu_structure_observation(article, "", url), ("", {}))
+        name, obs = w.cpu_structure_observation(
+            "BNP Paribas analyst raised its price target on AMD (NASDAQ: AMD) to $960 from $600",
+            "", url,
+        )
+        self.assertEqual(name, "bnpp_analyst")
+        self.assertEqual(obs.get("amd_target_usd"), 960.0)
+
+    def test_digitimes_numeric_cpu_xpu_ratio_is_not_shipments_or_socket_count(self):
+        di = w.CPU_STRUCTURE_BASELINE["digitimes"]
+        self.assertEqual(di["cpu_xpu_ratio_2027"], 2.3)
+        name, obs = w.cpu_structure_observation(
+            "Agentic AI 2027年 AI伺服器CPU : XPU將提升至1 : 2.3",
+            "AI server CPU:XPU ratio forecast for 2027",
+            di["cpu_xpu_ratio_source_url"],
+        )
+        self.assertEqual(name, "digitimes")
+        self.assertEqual(obs.get("cpu_xpu_ratio_2027"), 2.3)
+        self.assertEqual(w.cpu_structure_changes(di, obs, "digitimes"), [])
+        # The authentic DIGITIMES Chinese headline has the 1:2.3 ratio but
+        # not the year. Do not silently miss it because English adds "2027".
+        name2, obs2 = w.cpu_structure_observation(
+            "Agentic AI、長推論驅動CPU需求　AI伺服器CPU : XPU將提升至1 : 2.3",
+            "",
+            di["cpu_xpu_ratio_source_url"],
+        )
+        self.assertEqual(name2, "digitimes")
+        self.assertEqual(obs2.get("cpu_xpu_ratio_2027"), 2.3)
+        self.assertEqual(w.cpu_structure_changes(di, {"cpu_xpu_ratio_2027": 2.2}, "digitimes"), [])
+        self.assertIn("1:2.3→1:2", w.cpu_structure_changes(
+            di, {"cpu_xpu_ratio_2027": 2.0}, "digitimes"
+        )[0])
+        self.assertNotIn("cpu_xpu_ratio_2027", w.cpu_structure_observation(
+            "2027 NVIDIA accelerators are twice as fast",
+            "AMD processor outlook", "https://www.amd.com/news", 
+        )[1])
+
+    def test_digitimes_traditional_chinese_ai_server_cpu_volume_not_total(self):
+        url = w.CPU_STRUCTURE_BASELINE["digitimes"]["shipments_source_url"]
+        title = "Agentic AI 2027年全球伺服器CPU出貨量將達4857.4萬顆"
+        body = (
+            "一般伺服器CPU為3527.9萬顆；"
+            "AI伺服器CPU因配比提高，2027年出貨量將激增至984.5萬顆，年增84.1%。"
+        )
+        name, obs = w.cpu_structure_observation(title, body, url)
+        self.assertEqual(name, "digitimes")
+        self.assertAlmostEqual(obs["ai_server_cpu_2027_million"], 9.845)
+        self.assertNotIn("all_server_cpu_2027_million", obs)
+
+    def test_same_day_secondary_analyst_revision_is_not_lost(self):
+        item = {
+            "kind": "bing",
+            "title": "BNP Paribas Adjusts PT on Advanced Micro Devices to $1,100 From $960",
+            "description": "BNP Paribas adjusts the price target on AMD",
+            "link": "https://www.marketscreener.com/news/bnp-paribas-adjusts-amd-pt-to-1100",
+            "published_at_kst": "2026-10-05T21:00:00+09:00",
+        }
+        previous = w.CPU_STRUCTURE_BASELINE.copy()
+        with mock.patch.object(w, "read_rss", return_value=[item]), mock.patch.object(w, "article_text", return_value=""):
+            found = w.discover_cpu_structure(datetime(2026, 10, 5, 23, tzinfo=ZoneInfo("Asia/Seoul")), previous)
+        self.assertEqual(len(found), 1)
+        self.assertEqual(found[0]["issuer"], "bnpp_analyst")
+        self.assertEqual(found[0]["metrics"].get("amd_target_usd"), 1100)
+
+    def test_epyc_product_mention_is_not_customer_demand_validation(self):
+        official_url = "https://www.amd.com/en/news/epyc-platforms"
+        self.assertFalse(w.is_official_validation(
+            official_url,
+            "The AMD EPYC server CPU platform enables cloud computing workloads.",
+        ))
+        self.assertTrue(w.is_official_validation(
+            official_url,
+            "Meta is validating sixth-generation AMD EPYC CPUs in its labs.",
+        ))
+        self.assertFalse(w.is_official_validation(
+            "https://untrusted.example.com/news",
+            "Meta is validating sixth-generation AMD EPYC CPUs in its labs.",
+        ))
+
+    def test_same_day_official_cpu_validation_not_suppressed(self):
+        item = {
+            "kind": "bing",
+            "title": "AMD EPYC CPU server shipment growth",
+            "description": "AMD reports new CPU shipments and deployments",
+            "link": "https://ir.amd.com/news-events/press-releases/detail/999/cpu-shipments",
+            "published_at_kst": "2026-10-08T18:30:00+09:00",
+        }
+        now = datetime(2026, 10, 8, 19, tzinfo=ZoneInfo("Asia/Seoul"))
+        with mock.patch.object(w, "read_rss", return_value=[item]), mock.patch.object(w, "article_text", return_value="EPYC CPU shipments accelerate"):
+            found = w.discover_validation(now, "2026-10-08", set())
+        self.assertEqual(len(found), 1)
+        self.assertEqual(found[0]["url"], item["link"])
+        # The same URL must never trigger twice, even within the lookback window.
+        with mock.patch.object(w, "read_rss", return_value=[item]):
+            duplicate = w.discover_validation(now, "2026-10-08", {item["link"]})
+        self.assertEqual(duplicate, [])
+
+    def test_fx_outage_blocks_validation_only_alert_without_state_advance(self):
+        committed = {
+            "agentic_cpu_demand": {
+                **w.BASELINE,
+                "cpu_structure_track_version": w.CPU_STRUCTURE_TRACK_VERSION,
+                "cpu_structure": {**w.CPU_STRUCTURE_BASELINE, "cpu_xpu_ratio_alert_sent": True},
+            }
+        }
+        with (
+            mock.patch.object(w, "load_json", side_effect=[committed, {}]),
+            mock.patch.object(w, "discover_forecasts", return_value=[]),
+            mock.patch.object(w, "discover_validation", return_value=[{
+                "title": "Official AMD EPYC shipments improve",
+                "url": "https://ir.amd.com/news/events/epyc",
+            }]),
+            mock.patch.object(w, "discover_cpu_structure", return_value=[]),
+            mock.patch.object(w, "get_fx", return_value=(None, "")),
+            mock.patch.object(w, "write_json") as writer,
+            mock.patch.object(w, "ALERT_PATH") as alert,
+        ):
+            alert.exists.return_value = False
+            with self.assertRaisesRegex(RuntimeError, "verified USD/KRW conversion"):
+                w.main()
+            writer.assert_not_called()
+            alert.write_text.assert_not_called()
+
+    def test_existing_digitimes_ratio_numeric_upgrade_alerts_once(self):
+        original_structure = w.CPU_STRUCTURE_BASELINE
+        old_structure = {
+            key: (dict(value) if isinstance(value, dict) else list(value))
+            for key, value in original_structure.items()
+        }
+        old_structure["digitimes"].pop("cpu_xpu_ratio_2027", None)
+        prev = {
+            **w.BASELINE,
+            "cpu_structure_track_version": w.CPU_STRUCTURE_TRACK_VERSION,
+            "cpu_structure": old_structure,
+        }
+
+        def run(previous):
+            captured = {}
+            with (
+                mock.patch.object(w, "load_json", side_effect=[{"agentic_cpu_demand": previous}, {}]),
+                mock.patch.object(w, "discover_forecasts", return_value=[]),
+                mock.patch.object(w, "discover_validation", return_value=[]),
+                mock.patch.object(w, "discover_cpu_structure", return_value=[]),
+                mock.patch.object(w, "get_fx", return_value=(1343.88, "2026-10-08")),
+                mock.patch.object(w, "ALERT_PATH") as alert,
+                mock.patch.object(w, "write_json") as writer,
+            ):
+                alert.exists.return_value = False
+                w.main()
+                captured["alerted"] = alert.write_text.called
+                captured["body"] = alert.write_text.call_args.args[0] if captured["alerted"] else ""
+                captured["next"] = writer.call_args.args[1]["agentic_cpu_demand"]
+            return captured
+
+        first = run(prev)
+        self.assertTrue(first["alerted"])
+        self.assertIn("CPU:XPU 1:2.3 수치 신규 추적", first["body"])
+        self.assertEqual(first["next"]["cpu_structure"]["digitimes"]["cpu_xpu_ratio_2027"], 2.3)
+        second = run(first["next"])
+        self.assertFalse(second["alerted"])
+        self.assertTrue(first["next"]["cpu_structure"]["cpu_xpu_ratio_alert_sent"])
+
+        # A prior no-alert scan may already have persisted the number before
+        # the one-time formatter was deployed. Its presence is not an ACK.
+        already_seeded = {
+            **w.BASELINE,
+            "cpu_structure_track_version": w.CPU_STRUCTURE_TRACK_VERSION,
+            "cpu_structure": w.CPU_STRUCTURE_BASELINE,
+        }
+        recovered = run(already_seeded)
+        self.assertTrue(recovered["alerted"])
+        self.assertTrue(recovered["next"]["cpu_structure"]["cpu_xpu_ratio_alert_sent"])
+        self.assertFalse(run(recovered["next"])["alerted"])
+
+    def test_digitimes_provenance_upgrade_and_future_source_link(self):
+        original = w.CPU_STRUCTURE_BASELINE
+        old_digitimes = dict(original["digitimes"])
+        old_digitimes["cpu_xpu_ratio_source_kind"] = (
+            "잘못된 과거 상태: DIGITIMES 원문 표제가 2027년이라고 단정"
+        )
+        structure = {
+            **original, "digitimes": old_digitimes, "cpu_xpu_ratio_alert_sent": True,
+        }
+        prev = {
+            **w.BASELINE,
+            "cpu_structure_track_version": w.CPU_STRUCTURE_TRACK_VERSION,
+            "cpu_structure": structure,
+        }
+
+        def run(new):
+            with (
+                mock.patch.object(w, "load_json", side_effect=[{"agentic_cpu_demand": prev}, {}]),
+                mock.patch.object(w, "discover_forecasts", return_value=[]),
+                mock.patch.object(w, "discover_validation", return_value=[]),
+                mock.patch.object(w, "discover_cpu_structure", return_value=new),
+                mock.patch.object(w, "get_fx", return_value=(1343.88, "2026-10-08")),
+                mock.patch.object(w, "ALERT_PATH") as alert,
+                mock.patch.object(w, "write_json") as writer,
+            ):
+                alert.exists.return_value = False
+                w.main()
+                next_state = writer.call_args.args[1]["agentic_cpu_demand"]["cpu_structure"]
+                return next_state, alert.write_text.called
+
+        repaired, sent = run([])
+        self.assertFalse(sent)
+        self.assertEqual(
+            repaired["digitimes"]["cpu_xpu_ratio_source_kind"],
+            original["digitimes"]["cpu_xpu_ratio_source_kind"],
+        )
+        new_url = "https://www.digitimes.com.tw/research/report/?v=20261012-new"
+        revised, sent2 = run([{
+            "issuer": "digitimes",
+            "metrics": {"cpu_xpu_ratio_2027": 2.0},
+            "url": new_url,
+            "as_of": "2026-10-12",
+        }])
+        self.assertTrue(sent2)
+        self.assertEqual(revised["digitimes"]["cpu_xpu_ratio_source_url"], new_url)
+        self.assertIn("신규 공식자료", revised["digitimes"]["cpu_xpu_ratio_source_kind"])
 
     def test_one_shot_cpu_alert_has_separate_official_and_broker_provenance(self):
         a = w.cpu_structure_block(w.CPU_STRUCTURE_BASELINE, 1400.0, [])

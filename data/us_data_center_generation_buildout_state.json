@@ -1,6 +1,6 @@
 {
   "initialized": true,
-  "format_version": 9,
+  "format_version": 10,
   "baseline": {
     "need_generation_gw": 45.0,
     "gas_min_gw": 30.0,
@@ -166,10 +166,10 @@
     "394b88027aa4cb3c5917",
     "644835b9ff0f6ea97163"
   ],
-  "last_fx_krw_per_usd": 1338.924224,
+  "last_fx_krw_per_usd": 1339.092519,
   "fx_source": "ER-API",
-  "fx_checked_utc": "2026-10-07T23:56:08+00:00",
-  "updated_at_utc": "2026-10-07T23:56:44+00:00",
+  "fx_checked_utc": "2026-10-08T09:55:11+00:00",
+  "updated_at_utc": "2026-10-08T09:55:56+00:00",
   "hyperscaler_nuclear_ppa": {
     "version": 7,
     "states": {
@@ -244,7 +244,7 @@
     "source_errors": [
       "Constellation IR newsroom: ReadTimeout"
     ],
-    "last_checked_utc": "2026-10-07T23:57:12+00:00",
+    "last_checked_utc": "2026-10-08T09:56:23+00:00",
     "alert_change_count": 0,
     "google_constellation_official_ack": true
   }

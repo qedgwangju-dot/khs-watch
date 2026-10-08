@@ -58,7 +58,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: python -m pip install --disable-pip-version-check --quiet requests ebest exchange_calendars
+        run: python -m pip install --disable-pip-version-check --quiet requests ebest exchange_calendars pyyaml
 
       - name: Compile
         run: |
@@ -78,6 +78,8 @@ jobs:
 
           assert not is_session_day(dt.date(2026,10,5)), "Chuseok holiday must be closed"
           assert is_session_day(dt.date(2026,10,6)), "2026-10-06 must be an XKRX session"
+          assert not is_session_day(dt.date(2026,10,9)), "2026-10-09 Hangul Day must be closed"
+          assert is_session_day(dt.date(2026,10,12)), "2026-10-12 next session must be open"
           assert not is_session_day(dt.date(2026,5,1)), "Labor Day must be closed"
           assert not is_session_day(dt.date(2026,12,31)), "year-end closure must be closed"
           normal_bounds=session_bounds(dt.date(2026,10,7))
@@ -94,6 +96,20 @@ jobs:
           print("xkrx_session_calendar_valid=true",
                 "2026-01-02-open=",open_dt.isoformat(),
                 "close=",close_dt.isoformat())
+          PY
+
+      - name: Skip live API checks on KRX market holidays
+        run: |
+          PYTHONPATH=scripts python - <<'PY'
+          import datetime as dt
+          import os
+          from zoneinfo import ZoneInfo
+          from krx_session_calendar import is_session_day
+          today=dt.datetime.now(ZoneInfo("Asia/Seoul")).date()
+          skip=not is_session_day(today)
+          with open(os.environ["GITHUB_ENV"],"a",encoding="utf-8") as out:
+              out.write(f"KOSPI_SKIP_LIVE_TESTS={'1' if skip else '0'}\n")
+          print(f"kospi_live_ci_gate=true date={today} skipped={skip}")
           PY
 
       - name: Verify production workflow structure
@@ -192,6 +208,16 @@ jobs:
           assert "kospi_realtime_watchdog=verified_production" in korea, "recovery must verify real production job"
           assert "deadline=time.time()+90" in korea, "post-dispatch production verification window missing"
           assert 'KOSPI_REALTIME_WATCH_ACTIVE=0' in korea, "fallback-safe inactive state missing"
+          # '평일 09시'가 한국거래소 개장이라는 추정을 금지한다.
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+          tz=ZoneInfo("Asia/Seoul")
+          assert not fb.live_trading_window(datetime(2026,10,9,9,30,tzinfo=tz)), "Hangul Day must not alert"
+          assert fb.live_trading_window(datetime(2026,10,12,9,30,tzinfo=tz)), "normal trading day missing"
+          assert not fb.live_trading_window(datetime(2026,10,12,15,31,tzinfo=tz)), "post-close stale alert"
+          assert not fb.live_trading_window(datetime(2026,1,2,9,30,tzinfo=tz)), "delayed new-year opening"
+          assert fb.live_trading_window(datetime(2026,1,2,10,1,tzinfo=tz)), "delayed new-year open"
+          print("kospi_fallback_krx_holiday_guard_valid=true")
           print("redundant_recovery_structure_valid=true")
 
           # 2026-10-07 실데이터 조건: 종가 6,803.90, 일간 -1.98%, 시가 6,864.25.
@@ -250,6 +276,43 @@ jobs:
                   if v is None: env.pop(k,None)
                   else: env[k]=v
           print("rapid_fallback_telegram_retry_valid=true")
+          PY
+
+      - name: Verify production completion audit and embedded Python
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          try:
+              import yaml
+          except ImportError as exc:
+              raise RuntimeError("PyYAML required to verify GitHub workflow syntax") from exc
+          workflow=Path(".github/workflows/kospi-derivatives-flow-ls-realtime.yml")
+          doc=yaml.safe_load(workflow.read_text(encoding="utf-8"))
+          assert isinstance(doc,dict) and "jobs" in doc and "gate" in doc["jobs"], "invalid workflow YAML"
+          for name in ("morning","afternoon"):
+              job=doc["jobs"][name]
+              run_block=next(step["run"] for step in job["steps"] if
+                             step.get("name","").startswith("Run "+name+" KOSPI watcher") or
+                             (name=="afternoon" and step.get("name")=="Run afternoon KOSPI watcher with handoff"))
+              for marker in (
+                  "WATCH_SUCCESS=0",
+                  'if [ "$WATCH_SUCCESS" -ne 1 ]; then',
+                  "kospi_production_delivery_integrity_valid=true",
+                  "KOSPI ticks missing",
+                  "KOSPI futures ticks missing",
+                  "KOSPI handoff missing",
+              ):
+                  assert marker in run_block, f"{name}: production completion evidence missing: {marker}"
+          count=0
+          for name,job in doc["jobs"].items():
+              for step in job.get("steps",[]):
+                  run=step.get("run") or ""
+                  for match in re.finditer(r"(?ms)^python - <<'PY'\n(.*?)^PY\s*$",run):
+                      compile(match.group(1), f"{name}:{step.get('name')}", "exec")
+                      count+=1
+          assert count>=5, f"embedded Python blocks not verified: {count}"
+          print("kospi_production_integrity_structure_valid=true embedded_blocks=",count)
           PY
 
       - name: Verify production leader election API
@@ -358,12 +421,15 @@ jobs:
           PY
 
       - name: Verify LS REST prices and flow snapshot
+        if: env.KOSPI_SKIP_LIVE_TESTS != '1'
         run: |
           rm -f out/kospi_shock_episode_status.md out/kospi_shock_episode_raw.json
           python scripts/kospi_shock_episode_watch.py --test --test-seconds 45
           python - <<'PY'
           import json
           d=json.load(open("out/kospi_shock_episode_raw.json", encoding="utf-8"))
+          assert d.get("test_mode_notification_suppressed") is True, "live API --test must never send Telegram"
+          print("kospi_live_probe_send_suppressed=true")
           price=d.get("last_price_snapshot") or {}
           assert (price.get("KOSPI") or {}).get("price") is not None, price
           assert (price.get("선물") or {}).get("price") is not None, price
@@ -385,6 +451,7 @@ jobs:
           PY
 
       - name: Verify integrated sector/theme/stock/ETF enrichment APIs
+        if: env.KOSPI_SKIP_LIVE_TESTS != '1'
         run: |
           rm -f out/kospi_shock_enrichment_probe.json
           python scripts/kospi_shock_enrichment.py --probe
@@ -405,6 +472,7 @@ jobs:
           PY
 
       - name: Verify full event enrichment path
+        if: env.KOSPI_SKIP_LIVE_TESTS != '1'
         run: |
           rm -f out/kospi_shock_enrichment_latest.json
           python scripts/kospi_shock_enrichment.py --smoke
@@ -424,12 +492,14 @@ jobs:
           PY
 
       - name: Probe unified KRX+NXT realtime flow
+        if: env.KOSPI_SKIP_LIVE_TESTS != '1'
         run: |
           rm -f out/ls_unified_flow_probe.json
           python -m py_compile scripts/ls_unified_flow_probe.py
           python scripts/ls_unified_flow_probe.py
 
       - name: Verify live unified industry collector
+        if: env.KOSPI_SKIP_LIVE_TESTS != '1'
         run: |
           rm -f out/kospi_industry_flow_ci.jsonl
           DAY=$(TZ=Asia/Seoul date +%u)

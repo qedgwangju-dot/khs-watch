@@ -75,23 +75,32 @@ def ko_subject(name: str | None) -> str:
 
 
 def market_clock_epoch(value: Any, fallback_ts: float | None = None) -> float | None:
+    """원자료 HHMMSS가 유효할 때만 사건구간 기준시각으로 사용한다.
+
+    조회 완료 시각(fallback_ts)은 비교 기준일 뿐 원자료 시각을 대신하지 않는다.
+    """
     digits = "".join(ch for ch in str(value or "") if ch.isdigit())
-    if len(digits) < 4:
-        return fallback_ts
-    digits = (digits + "000000")[:6]
+    # 실전 t1602는 HHMMSScc(8자리), 일부 API는 HHMMSS/HHMM를 반환한다.
+    # 8자리의 마지막 두 자리는 1/100초이므로 초 필드 검증 전 제거한다.
+    if len(digits) not in {4, 6, 8}:
+        return None
+    if len(digits) == 4:
+        digits += "00"
+    elif len(digits) == 8:
+        digits = digits[:6]
     try:
         now = dt.datetime.now(KST)
         point = dt.datetime(now.year, now.month, now.day,
                             int(digits[:2]), int(digits[2:4]), int(digits[4:6]),
                             tzinfo=KST)
         ts = point.timestamp()
-        # 장중 API 시각이 비정상적으로 미래/과거면 조회시각을 사용한다.
         ref = fallback_ts if fallback_ts is not None else time.time()
+        # 오래되거나 유효하지 않은 자료는 새 HTTP 조회 시각으로 위장하지 않는다.
         if abs(ts - ref) > 6 * 60 * 60:
-            return fallback_ts
+            return None
         return ts
-    except Exception:
-        return fallback_ts
+    except (ValueError, OverflowError):
+        return None
 
 
 def should_finalize_market_close(
@@ -101,6 +110,18 @@ def should_finalize_market_close(
 ) -> bool:
     """오전·오후 작업 인계는 장마감이 아니다. 장 종료 시에만 사건을 최종 확정한다."""
     return test_seconds is None and actual_close is not None and now >= actual_close
+
+
+def price_event_window_open(
+    observed_ts: float,
+    actual_close_ts: float | None,
+    evaluation_ts: float | None = None,
+) -> bool:
+    """장마감 후 지연된 시세 조회를 신규 장중 급락으로 오인하지 않는다."""
+    if actual_close_ts is None:
+        return True
+    effective_ts = observed_ts if evaluation_ts is None else max(observed_ts, evaluation_ts)
+    return effective_ts < actual_close_ts
 
 
 def continuous_flow_guard_active(now: dt.datetime, session: dict[str, Any]) -> bool:
@@ -308,12 +329,13 @@ def _latest_time_row(rows: Any) -> dict[str, Any] | None:
     if not isinstance(rows, list):
         return None
     valid = []
+    observed = time.time()
     for row in rows:
         if not isinstance(row, dict):
             continue
-        s = "".join(c for c in str(row.get("time") or "") if c.isdigit())
-        if len(s) >= 6:
-            valid.append((s[:6], row))
+        source_ts = market_clock_epoch(row.get("time"), observed)
+        if source_ts is not None:
+            valid.append((source_ts, row))
     return max(valid, key=lambda x: x[0])[1] if valid else None
 
 
@@ -609,6 +631,8 @@ class Watch:
         self.puts: dict[str, deque[tuple[float, float]]] = defaultdict(lambda: deque(maxlen=30000))
         self.flows: deque[dict[str, Any]] = deque(maxlen=2500)
         self.front_future = front_future; self.episode: dict[str, Any] | None = None
+        # 종료된 사건의 과거 고점으로 새로운 시작 경보를 재발송하지 않는다.
+        self.last_episode_end_ts: float | None = None
         self.last_flow_poll = 0.0; self.flow_task: asyncio.Task | None = None
         self.msg_ids: list[int] = []; self.enrichment_msg_ids: list[int] = []; self.raw: dict[str, Any] = {}
         self.enrichment_tasks: set[asyncio.Task] = set()
@@ -619,6 +643,7 @@ class Watch:
         self.last_flow_success_ts: float | None = None
         self.last_option_poll = 0.0
         self.session_open_ts: float | None = None
+        self.session_close_ts: float | None = None
         self.opening_gap_sent = False
         self.handoff_path: str | None = None
         self.last_handoff_save_ts = 0.0
@@ -652,7 +677,11 @@ class Watch:
             return None
         now_t = self.idx[-1][0]
         cutoff = now_t - (minutes + pad_minutes) * 60
-        rows = [x for x in self.idx if x[0] >= cutoff]
+        last_end = fnum(getattr(self, "last_episode_end_ts", None))
+        # 이미 끝난 사건의 시작 고점이 새로운 사건의 시작점으로 재사용되면
+        # 다른 시각의 가격변동을 한 사건으로 잘못 묶게 된다.
+        rows = [x for x in self.idx
+                if x[0] >= cutoff and (last_end is None or x[0] > last_end)]
         if not rows:
             return None
         high = max(v for _, v in rows)
@@ -1057,9 +1086,23 @@ class Watch:
 
     async def evaluate(self) -> None:
         await self.maybe_flow()
+        # CI 실데이터 조회(--test)는 소스와 API 품질만 검사한다.
+        # 장중 급락 조건이 충족돼도 시험 실행이 실전 Telegram 알림을 보내서는 안 된다.
+        if getattr(self, "test", False):
+            self.raw["test_mode_notification_suppressed"] = True
+            return
         if not self.idx:
             return
         now_t, cur = self.idx[-1]
+
+        if not price_event_window_open(
+            now_t, getattr(self, "session_close_ts", None), time.time()
+        ):
+            self.raw["post_close_alert_suppressed"] = {
+                "observed_at_kst": fmt_clock(now_t),
+                "reason": "XKRX 정규장 종료 후 신규 급락·확대·반등 판정 중단",
+            }
+            return
 
         if (
             not self.opening_gap_sent
@@ -1160,12 +1203,15 @@ class Watch:
             final_att = self.attribution(float(ep["start_ts"]), float(ep["low_ts"]))
             msg_id = await asyncio.to_thread(telegram_send, self.build_end(ep, now_t, cur))
             self.msg_ids.append(msg_id)
+            # 완료 전송이 확인되면 활성 사건을 먼저 비워 인계 상태에 원상태가 남지 않게 한다.
+            # 기존 코드는 종료 전송 직후 체크포인트에 활성 사건을 저장할 수 있었다.
+            self.episode = None
+            self.last_episode_end_ts = now_t
             self._record_delivery("end", msg_id, ep, now_t)
             ep_copy = json.loads(json.dumps(ep))
             task = asyncio.create_task(self._run_enrichment(ep_copy, final_att))
             self.enrichment_tasks.add(task)
             task.add_done_callback(self.enrichment_tasks.discard)
-            self.episode = None
 
     def _checkpoint_handoff(self, force: bool = False) -> None:
         if not self.handoff_path:
@@ -1203,12 +1249,16 @@ class Watch:
             "saved_at_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
             "flows": [x for x in self.flows if float(x.get("ts", 0)) >= cutoff],
             "episode": self.episode,
+            "last_episode_end_ts": self.last_episode_end_ts,
             "opening_gap_sent": self.opening_gap_sent,
             "msg_ids": self.msg_ids[-20:],
             "enrichment_msg_ids": self.enrichment_msg_ids[-20:],
         }
         p.parent.mkdir(parents=True, exist_ok=True)
-        p.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        # 인계 파일을 직접 덮어쓰다 중단되면 손상된 JSON이 다음 작업에 넘어갈 수 있다.
+        temp = p.with_name(p.name + ".tmp")
+        temp.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        temp.replace(p)
         self.raw["handoff_saved"] = {
             "path": str(p), "flow_count": len(payload["flows"]),
             "episode_active": bool(self.episode),
@@ -1239,6 +1289,7 @@ class Watch:
             ep = data.get("episode")
             if isinstance(ep, dict) and ep.get("start_ts") and ep.get("start_price"):
                 self.episode = ep
+            self.last_episode_end_ts = fnum(data.get("last_episode_end_ts"))
             self.opening_gap_sent = bool(data.get("opening_gap_sent", False))
             self.msg_ids.extend(int(x) for x in (data.get("msg_ids") or []) if str(x).isdigit())
             self.enrichment_msg_ids.extend(int(x) for x in (data.get("enrichment_msg_ids") or []) if str(x).isdigit())
@@ -1318,6 +1369,7 @@ class Watch:
         open_dt = session["open"]
         close_dt = session["close"]
         self.session_open_ts = open_dt.timestamp() if open_dt is not None else None
+        self.session_close_ts = close_dt.timestamp() if close_dt is not None else None
         poll_start_dt = (
             open_dt - dt.timedelta(seconds=90)
             if open_dt is not None else initial_now
@@ -1341,8 +1393,10 @@ class Watch:
                 await asyncio.sleep(min(5.0, max(0.5, (poll_start_dt - now).total_seconds())))
                 continue
 
+            price_poll_ok = False
             try:
                 await asyncio.to_thread(self.poll_market_once)
+                price_poll_ok = True
                 last_poll_error = None
                 if self.raw.pop("last_price_poll_error", None):
                     self.raw["last_price_poll_recovered_at_kst"] = dt.datetime.now(KST).isoformat(timespec="seconds")
@@ -1351,7 +1405,12 @@ class Watch:
                 self.raw["last_price_poll_error"] = last_poll_error
                 self.raw["price_poll_failures_total"] = int(self.raw.get("price_poll_failures_total", 0)) + 1
 
-            await self.evaluate()
+            # 현재가 조회 실패 시 이전 가격으로 신규 급락 사건을 판정하지 않는다.
+            # 기존 마지막 틱은 상태 표시용으로만 유지하고, 새 가격이 들어왔을 때 평가를 재개한다.
+            if price_poll_ok:
+                await self.evaluate()
+            else:
+                self.raw["price_event_skipped_on_poll_failure"] = True
             self._checkpoint_handoff()
 
             # XKRX 실제 세션 기준으로만 stale 검사를 적용한다.
@@ -1386,12 +1445,13 @@ class Watch:
                 self.build_end(ep, end_ts, end_price, session_close=True),
             )
             self.msg_ids.append(msg_id)
+            self.episode = None
+            self.last_episode_end_ts = end_ts
             self._record_delivery("close", msg_id, ep, end_ts)
             ep_copy = json.loads(json.dumps(ep))
             task = asyncio.create_task(self._run_enrichment(ep_copy, final_att))
             self.enrichment_tasks.add(task)
             task.add_done_callback(self.enrichment_tasks.discard)
-            self.episode = None
 
         if self.flow_task:
             try:

@@ -699,6 +699,13 @@ def enrich_event(event: dict) -> dict:
     direct = decode_google_news_url(e.get("link") or "")
     e["direct_link"] = direct
     e["link_verified"] = bool(direct)
+    # URL decoding is NOT proof that an official article body was fetched.
+    e["article_fetch_succeeded"] = False
+    # Publisher-owned HTML evidence. RSS title and summary alone must never
+    # prove an official HBM qualification or volume-production milestone.
+    e["official_article_title"] = ""
+    e["official_article_description"] = ""
+    e["official_article_text"] = ""
     e["article_title"] = e.get("title") or ""
     e["article_description"] = e.get("description") or ""
     e["article_text"] = ""
@@ -712,6 +719,10 @@ def enrich_event(event: dict) -> dict:
         og_title = meta_content(raw, "og:title") or meta_content(raw, "twitter:title")
         desc = meta_content(raw, "og:description") or meta_content(raw, "description")
         body = article_text_from_html(raw)
+        e["article_fetch_succeeded"] = True
+        e["official_article_title"] = og_title
+        e["official_article_description"] = desc
+        e["official_article_text"] = body
         if og_title:
             e["article_title"] = og_title
         if desc:
@@ -2438,8 +2449,15 @@ def extract_hbm_hybrid_official_observation(event: dict) -> dict | None:
     HBM4E MR-MUF shipments and generic hybrid-bonding research are excluded
     unless one sentence explicitly links hybrid bonding, HBM, and the stage.
     """
+    # Without successfully fetching the *publisher's* article HTML, a
+    # headline or syndicated RSS snippet cannot be promoted to official fact.
+    if event.get("article_fetch_succeeded") is not True:
+        return None
     url = event.get("direct_link") or ""
-    host = (urlparse(url).hostname or "").lower()
+    parsed_url = urlparse(url)
+    if parsed_url.scheme != "https":
+        return None
+    host = (parsed_url.hostname or "").lower()
     if host in ("news.skhynix.com", "news.skhynix.co.kr", "www.skhynix.com", "skhynix.com"):
         vendor = "skhynix"
     elif host in ("news.samsung.com", "semiconductor.samsung.com", "www.samsung.com", "samsung.com"):
@@ -2451,12 +2469,25 @@ def extract_hbm_hybrid_official_observation(event: dict) -> dict | None:
     # a hybrid-bonding headline.
     article = "\n".join(
         str(event.get(key) or "") for key in
-        ("article_title", "article_description", "article_text")
+        ("official_article_title", "official_article_description", "official_article_text")
     )
+    if not article.strip():
+        return None
     sentences = re.split(r"(?<=[.!?。])\s+|\n+", article)
     best = ""
     for sentence in sentences:
-        lower = sentence.lower()
+        lower = sentence.lower().strip()
+        # Newsroom articles regularly mention competitors. The issuer host
+        # alone does not identify WHO achieved the milestone; require one
+        # unambiguous issuer in the same short sentence.
+        if not lower or len(lower) > 480:
+            continue
+        is_sk = bool(re.search(r"\bsk[\s-]*hynix\b|sk하이닉스|에스케이하이닉스", lower, re.I))
+        is_samsung = bool(re.search(r"\bsamsung(?: electronics)?\b|삼성전자", lower, re.I))
+        if (vendor == "skhynix" and not is_sk) or (vendor == "samsung" and not is_samsung):
+            continue
+        if is_sk and is_samsung:
+            continue
         if not re.search(r"\bhbm(?:3e|4e?|5)?\b|고대역폭\s*메모리", lower, re.I):
             continue
         if not re.search(r"hybrid[\s-]*(?:copper[\s-]*)?bonding|hcb|하이브리드\s*(?:구리\s*)?본딩", lower, re.I):
@@ -2530,6 +2561,18 @@ def merge_hbm_hybrid_official_observation(old: dict, observation: dict) -> dict:
         return out
     if observation.get("evidence") != "official":
         return out
+    # Revalidate the issuer's hostname even when a function caller has
+    # erroneously tagged a non-official report as official.
+    parsed_source = urlparse(observation.get("source_url") or "")
+    if parsed_source.scheme != "https":
+        return out
+    obs_host = (parsed_source.hostname or "").lower()
+    hosts = {
+        "skhynix": {"news.skhynix.com", "news.skhynix.co.kr", "www.skhynix.com", "skhynix.com"},
+        "samsung": {"news.samsung.com", "semiconductor.samsung.com", "www.samsung.com", "samsung.com"},
+    }
+    if obs_host not in hosts[vendor]:
+        return out
     key = f"{vendor}_official_hybrid_stage"
     prev = out.get(key) or "technical_feasibility"
     if HBM_HYBRID_STAGE_RANK[stage] <= HBM_HYBRID_STAGE_RANK.get(prev, -1):
@@ -2554,18 +2597,23 @@ def hbm_hybrid_official_changes(old: dict, new: dict) -> list[str]:
     return changes
 
 
-def hbm_hybrid_bond_event(state: dict, reasons: list[str], *, initial: bool = False) -> dict:
+def hbm_hybrid_bond_event(
+    state: dict, reasons: list[str], *, initial: bool = False, vendor: str = ""
+) -> dict:
+    if not initial and vendor not in ("skhynix", "samsung"):
+        raise ValueError("official hybrid alert must identify one issuer")
     source = (
-        state.get("primary_url") if initial else
-        state.get("samsung_official_stage_source_url")
-        or state.get("skhynix_official_stage_source_url")
-        or state.get("primary_url")
+        state.get("primary_url") if initial
+        else state.get(f"{vendor}_official_stage_source_url")
     )
+    if not source:
+        raise ValueError("official hybrid alert source URL missing")
     change_at = state.get("last_official_stage_change_at") or "2026-10-08T16:04:00+09:00"
+    stage_id = state.get(f"{vendor}_official_hybrid_stage") if not initial else ""
     return {
         "category": "hbm_hybrid_bonding",
         "fact_key": ("hbm_hybrid_bonding_report_20261008" if initial else
-                     "hbm_hybrid_official_" + change_at),
+                     f"hbm_hybrid_official_{vendor}_{stage_id}_{change_at}"),
         "headline_ko": ("하이브리드 본딩 경쟁력 격차 보도 · 공식 양산과 분리"
                         if initial else "하이브리드 본딩 고객 샘플·양산 단계 공식 변화"),
         "fact_bullets": list(reasons),
@@ -2574,8 +2622,10 @@ def hbm_hybrid_bond_event(state: dict, reasons: list[str], *, initial: bool = Fa
         "verification": ("Damnang 원문 서두 확인 / TechPowerUp 재인용 / 양사 공식 HBM 실적과 구분"
                          if initial else "해당 제조사 공식 고객 샘플·생산 발표"),
         "quality": ("신뢰 보도·회사 공식자료 구분" if initial else "공식·회사자료"),
-        "origin_source": ("Damnang(익명 전문가)" if initial else "공식 기업자료"),
-        "source": "Damnang" if initial else "공식 기업자료",
+        "origin_source": ("Damnang(익명 전문가)" if initial else
+                          ("SK하이닉스 공식자료" if vendor == "skhynix" else "삼성전자 공식자료")),
+        "source": "Damnang" if initial else ("SK하이닉스" if vendor == "skhynix" else "삼성전자"),
+        "official_vendor": vendor if not initial else "",
         "published_at_kst": (change_at if not initial else "2026-10-08T16:04:00+09:00"),
         "direct_link": source,
         "article_text": "",
@@ -2637,6 +2687,11 @@ def render_hbm_hybrid_bonding_notice(e: dict, now: datetime) -> str:
         "삼성전자 공식 " + HBM_HYBRID_SAMSUNG_OFFICIAL,
         "Counterpoint " + HBM_HYBRID_SHARE_SOURCE,
     ]
+    if not initial and e.get("official_vendor") in ("skhynix", "samsung"):
+        vendor = e["official_vendor"]
+        company = "SK하이닉스" if vendor == "skhynix" else "삼성전자"
+        lines.append("변화 공식원문 " + e["direct_link"])
+        lines.append("• 공식 새 변화 확인 회사: " + company)
     if not initial and e.get("fact_bullets"):
         lines.insert(5, "• 이번 공식 변화: " + " / ".join(e["fact_bullets"]))
     return "\n".join(line for line in lines if line).strip() + "\n"
@@ -3419,9 +3474,13 @@ def main() -> None:
 
     raw_events_by_id: dict[str, dict] = {}
     errors: list[str] = []
+    feed_checks, feed_healthy = 0, 0
     for category, query in QUERIES:
         for lang in ("en", "ko"):
+            feed_checks += 1
             events, errs = read_feed(category, query, lang)
+            if not errs:
+                feed_healthy += 1
             errors.extend(errs)
             for e in events:
                 try:
@@ -3431,6 +3490,11 @@ def main() -> None:
                 except Exception:
                     pass
                 raw_events_by_id[e["id"]] = e
+
+    if feed_checks and feed_healthy == 0:
+        # An all-sources outage must fail the Actions run, not masquerade as
+        # "no new developments" while silently advancing check timestamps.
+        raise RuntimeError("HBM news feeds unavailable: all configured queries failed")
 
     raw_events = sorted(raw_events_by_id.values(), key=lambda x: x.get("published_at_kst") or "")
     current_ids = {e["id"] for e in raw_events}
@@ -3791,7 +3855,13 @@ def main() -> None:
             notice["format_correction"] = True
         verified_events.append(notice)
     if hybrid_changes and not first_run:
-        verified_events.append(hbm_hybrid_bond_event(hybrid_state, hybrid_changes, initial=False))
+        for reason in hybrid_changes:
+            vendor = ("skhynix" if reason.startswith("SK하이닉스") else
+                      "samsung" if reason.startswith("삼성전자") else "")
+            if vendor:
+                verified_events.append(
+                    hbm_hybrid_bond_event(hybrid_state, [reason], vendor=vendor)
+                )
 
     fx = fetch_fx()
     if fx.get("error"):
@@ -3839,6 +3909,8 @@ def main() -> None:
         "freshness_hours": SEND_FRESHNESS_HOURS,
         "usdkrw": fx,
         "errors": errors,
+        "feed_checks": feed_checks,
+        "feed_healthy": feed_healthy,
     }
     write_json(OUT / "rubin_hbm_pending_state.json", pending)
 
@@ -3873,6 +3945,7 @@ def main() -> None:
         f"- freshness_hours: {SEND_FRESHNESS_HOURS}",
         f"- break_even_gpu_growth: {BREAKEVEN_GPU_GROWTH*100:.1f}%",
         f"- source_errors_or_suppressed: {len(errors)}",
+        f"- news_feeds_healthy: {feed_healthy}/{feed_checks}",
     ]
     for e in errors[:12]:
         status.append(f"  - {e}")

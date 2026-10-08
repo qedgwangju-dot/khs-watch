@@ -354,11 +354,31 @@ def stage_of(text: str) -> str:
 
 
 def extract_scale_mw(text: str) -> float:
+    """Only power capacity (MW/GW); never classify energy (MWh/GWh) as MW/GW."""
     low = text.lower().replace(",", "")
     vals = []
-    vals += [float(x) for x in re.findall(r"([0-9]+(?:\.[0-9]+)?)\s*mw", low)]
-    vals += [float(x) * 1000 for x in re.findall(r"([0-9]+(?:\.[0-9]+)?)\s*gw", low)]
+    vals += [float(x) for x in re.findall(r"(?<![\w])([0-9]+(?:\.[0-9]+)?)\s*mw\b", low)]
+    vals += [float(x) * 1000 for x in re.findall(r"(?<![\w])([0-9]+(?:\.[0-9]+)?)\s*gw\b", low)]
     return max(vals + [0.0])
+
+
+def _test_capacity_unit_guard() -> None:
+    # Regression: Morgan Stanley 279 GWh ESS is not a 279 GW power project.
+    cases = (
+        ("Morgan Stanley 2030 US ESS 279GWh DC 169GWh", 0.0),
+        ("2027 data center battery 31 GWh", 0.0),
+        ("2026 energy storage 100 MWh, 600 kWh", 0.0),
+        ("500 MW natural-gas power project", 500.0),
+        ("AI data center 2.5 GW capacity", 2500.0),
+        ("1,200MW plant", 1200.0),
+    )
+    for value, expected in cases:
+        got = extract_scale_mw(value)
+        if got != expected:
+            raise RuntimeError(f"Capacity vs storage-energy unit regression: {value}: {got} != {expected}")
+
+
+_test_capacity_unit_guard()
 
 
 def is_meaningful(text: str, source: str) -> bool:

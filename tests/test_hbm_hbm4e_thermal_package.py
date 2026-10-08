@@ -90,6 +90,10 @@ class HybridHBMSourceGuardTests(unittest.TestCase):
             "article_title": "HBM hybrid bonding update",
             "article_description": "",
             "article_text": body,
+            "article_fetch_succeeded": True,
+            "official_article_title": "",
+            "official_article_description": "",
+            "official_article_text": body,
             "source": "Manufacturer",
             "direct_link": domain,
             "published_at_kst": published,
@@ -181,6 +185,88 @@ class HybridHBMSourceGuardTests(unittest.TestCase):
             "evidence":"official","source_url":"https://news.skhynix.com/en/example"
         }), old)
 
+
+    def test_official_site_quoting_competitor_cannot_promote_host_issuer(self):
+        for host, sentence in (
+            ("https://news.skhynix.com/en/competitor",
+             "Samsung Electronics shipped hybrid bonding HBM samples to customers."),
+            ("https://news.samsung.com/global/competitor",
+             "SK hynix shipped hybrid bonding HBM samples to customers."),
+            ("https://news.skhynix.com/en/both",
+             "SK hynix and Samsung discussed that Samsung shipped hybrid bonding HBM samples to customers."),
+        ):
+            with self.subTest(host=host):
+                self.assertIsNone(w.extract_hbm_hybrid_official_observation(
+                    self.event(sentence, domain=host)
+                ))
+
+    def test_official_site_headline_is_not_article_body_proof(self):
+        reported = self.event(
+            "SK hynix has shipped hybrid bonding HBM samples to customers.",
+        )
+        reported["article_fetch_succeeded"] = False
+        self.assertIsNone(w.extract_hbm_hybrid_official_observation(reported))
+        reported["article_fetch_succeeded"] = True
+        reported["official_article_text"] = "<html>Access denied</html>"
+        self.assertIsNone(w.extract_hbm_hybrid_official_observation(reported))
+
+    def test_enrichment_fetch_failure_does_not_forge_official_evidence(self):
+        rss = {
+            "id": "test", "title": "SK hynix hybrid bonding HBM samples shipped to customers",
+            "description": "Claimed on a news aggregator", "source": "SK hynix",
+            "link": "https://news.skhynix.com/en/sample",
+            "published_at_kst": "2026-10-08T16:00:00+09:00",
+        }
+        with patch.object(w, "fetch", side_effect=TimeoutError("unavailable")):
+            enriched = w.enrich_event(rss)
+        self.assertTrue(enriched["link_verified"])
+        self.assertFalse(enriched["article_fetch_succeeded"])
+        self.assertIsNone(w.extract_hbm_hybrid_official_observation(enriched))
+
+    def test_merge_must_validate_official_issuer_host(self):
+        old = dict(w.HBM_HYBRID_BOND_BASELINE)
+        fake = {
+            "vendor": "samsung", "stage": "hbm_mass_production_started",
+            "source_url": "https://news.skhynix.com/en/sk-announcement",
+            "evidence": "official",
+        }
+        self.assertEqual(w.merge_hbm_hybrid_official_observation(old, fake), old)
+
+    def test_separate_official_vendors_get_unique_evidence_links(self):
+        state = dict(w.HBM_HYBRID_BOND_BASELINE)
+        state.update({
+            "skhynix_official_hybrid_stage": "customer_hbm_sample_shipped",
+            "skhynix_official_stage_source_url": "https://news.skhynix.com/en/sk-original",
+            "samsung_official_hybrid_stage": "customer_qualification_passed",
+            "samsung_official_stage_source_url": "https://news.samsung.com/global/samsung-original",
+            "last_official_stage_change_at": "2026-10-08T15:30:00+09:00",
+        })
+        sk = w.hbm_hybrid_bond_event(state, ["SK하이닉스 실제 고객 샘플"], vendor="skhynix")
+        sam = w.hbm_hybrid_bond_event(state, ["삼성전자 고객 승인"], vendor="samsung")
+        self.assertNotEqual(sk["fact_key"], sam["fact_key"])
+        self.assertEqual(sk["direct_link"], state["skhynix_official_stage_source_url"])
+        self.assertEqual(sam["direct_link"], state["samsung_official_stage_source_url"])
+        now = datetime(2026, 10, 8, 19, tzinfo=ZoneInfo("Asia/Seoul"))
+        raw = w.build_alert(now, [sk, sam], {"rate":1400.0,"date":"2026-10-08"})
+        with tempfile.TemporaryDirectory() as tmp:
+            f = pathlib.Path(tmp) / "alert.md"
+            f.write_text(raw, encoding="utf-8")
+            with patch.object(pretty, "ALERT", f), patch.object(leverage, "ALERT", f):
+                pretty.main()
+                leverage.main()
+                formatted = f.read_text(encoding="utf-8")
+            parts = delivery.chunks(formatted)
+            # Both vendors have advanced beyond the technology-showcase stages.
+            # The final send gate must accept real official improvements.
+            self.assertIsNone(delivery.validate_rubin_hybrid_notification(formatted))
+        self.assertEqual(len(parts), 2)
+        self.assertIn("https://news.skhynix.com/en/sk-original", parts[0])
+        self.assertNotIn("https://news.samsung.com/global/samsung-original", parts[0])
+        self.assertIn("https://news.samsung.com/global/samsung-original", parts[1])
+        self.assertNotIn("https://news.skhynix.com/en/sk-original", parts[1])
+        self.assertIn("원문 보기", parts[0])
+        self.assertIn("원문 보기", parts[1])
+
     def test_report_notice_is_labelled_reported_and_telegram_safe(self):
         event = w.hbm_hybrid_bond_event(w.HBM_HYBRID_BOND_BASELINE, ["보도 최초"], initial=True)
         now = datetime(2026, 10, 8, 16, 4, tzinfo=ZoneInfo("Asia/Seoul"))
@@ -239,6 +325,54 @@ class HybridTelegramPresentationTests(unittest.TestCase):
                 formatted = p.read_text(encoding="utf-8")
         return raw, formatted, delivery.chunks(formatted)
 
+    def test_non_rubin_event_does_not_get_rubin_288_to_192_scenario(self):
+        original = (
+            "🚨 Rubin/HBM 구조 변화 감시\n"
+            "조회시각: 2026-10-08 19:40:00 KST\n"
+            "신규 핵심 변화: 1건\n"
+            "■ HBM4E 고객 검증·양산\n"
+            "1. 고객 인증 단계 진척\n"
+            "• 판정: 고객 샘플 검증 중\n"
+        )
+        formatted = pretty.format_generic_alert(original)
+        self.assertNotIn("288GB", formatted)
+        self.assertNotIn("192GB", formatted)
+        self.assertNotIn("디스펙 상쇄선", formatted)
+        self.assertNotIn("[HBM 방향 체크]", formatted)
+        self.assertIn("고객 인증 단계 진척", formatted)
+
+    def test_missing_rubin_metadata_does_not_create_fake_change_headline(self):
+        with self.assertRaisesRegex(ValueError, "missing required timestamp/count"):
+            pretty.format_generic_alert(
+                "🚨 Rubin/HBM 구조 변화 감시\n■ HBM4E 고객 검증·양산\n"
+                "1. 검증 단계 기사\n• 판정: 공식 미확인"
+            )
+        # Missing metadata may not be replaced by a misleading fake count.
+        good = pretty.format_generic_alert(
+            "🚨 Rubin/HBM 구조 변화 감시\n"
+            "조회시각: 2026-10-08 19:40:00 KST\n"
+            "신규 핵심 변화: 1건\n"
+            "■ HBM4E 고객 검증·양산\n"
+            "1. HBM4E 단계 변화\n• 판정: 확인 필요"
+        )
+        self.assertIn("1건", good)
+        self.assertNotIn("신규 변화 <b>확인 불가</b>", good)
+
+    def test_irrelevant_generic_hbm_notice_does_not_get_unrelated_leverage(self):
+        with tempfile.TemporaryDirectory() as temp:
+            p = pathlib.Path(temp) / "rubin_alert.md"
+            plain = (
+                "<b>🚨 Rubin/HBM 구조 변화 감시</b>\n"
+                "<b>■ HBM4E 고객 검증·양산</b>\n"
+                "• 기술 검증 상태 변경\n"
+            )
+            p.write_text(plain, encoding="utf-8")
+            with patch.object(leverage, "ALERT", p):
+                leverage.main()
+            out = p.read_text(encoding="utf-8")
+            self.assertNotIn("[HBM 수요·가격 레버리지]", out)
+            self.assertIn("기술 검증 상태 변경", out)
+
     def test_actual_hybrid_report_has_no_generic_rubin_wrapper(self):
         state = dict(w.HBM_HYBRID_BOND_BASELINE)
         event = w.hbm_hybrid_bond_event(
@@ -283,6 +417,82 @@ class HybridTelegramPresentationTests(unittest.TestCase):
         self.assertNotIn("[https://", formatted)
         self.assertNotIn("<b>82%</b>", formatted)
         self.assertTrue(all(len(x.encode("utf-16-le")) // 2 <= 3600 for x in parts))
+
+
+    def test_hybrid_final_telegram_gate_accepts_original_render(self):
+        event = w.hbm_hybrid_bond_event(
+            w.HBM_HYBRID_BOND_BASELINE, ["단일 전문가 보도·미확정"], initial=True
+        )
+        _, formatted, _ = self._render_pipeline([event])
+        self.assertIsNone(delivery.validate_rubin_hybrid_notification(formatted))
+
+    def test_final_telegram_gate_blocks_known_error_recurrence(self):
+        event = w.hbm_hybrid_bond_event(
+            w.HBM_HYBRID_BOND_BASELINE, ["단일 전문가 보도·미확정"], initial=True
+        )
+        _, formatted, _ = self._render_pipeline([event])
+        samples = {
+            "fake_change_header": formatted.replace(
+                "<b>🚨 HBM 하이브리드 본딩", "🚨 Rubin/HBM 구조 변화 감시 [이번 변화]\n<b>🚨 HBM 하이브리드 본딩", 1
+            ),
+            "year_bold": formatted.replace("2026-10-08", "<b>2026</b>-10-08", 1),
+            "broken_korean_entity": formatted.replace("99%이고", "99%&#xC774;고", 1),
+            "unrelated_leverage": formatted + "\n[HBM 수요·가격 레버리지]\n",
+            "unsafe_link": formatted.replace(
+                w.HBM_HYBRID_BOND_PRIMARY, "https://example.com/fake-source", 1
+            ),
+            "visible_percent_encoded_url": formatted + "\n• 삼성 공식 "
+                + w.HBM_HYBRID_SAMSUNG_OFFICIAL + "\n",
+            "lost_links": re.sub(
+                r'<a href="[^"]+">원문 보기</a>', "원문 주소 미확인", formatted
+            ),
+            "english_stage": formatted.replace("기술 공개·시연", "technology_showcase", 1),
+        }
+        for label, corrupt in samples.items():
+            with self.subTest(label=label):
+                with self.assertRaises(ValueError):
+                    delivery.validate_rubin_hybrid_notification(corrupt)
+
+    def test_hybrid_mention_in_unrelated_rubin_story_does_not_block_delivery(self):
+        normal = (
+            "<b>🚨 Rubin/HBM 구조 변화 감시</b>\n"
+            "• 차세대 HBM 하이브리드 본딩 기술을 언급한 리서치\n"
+            "• 신규 변화 1건\n"
+        )
+        self.assertIsNone(delivery.validate_rubin_hybrid_notification(normal))
+
+
+    def test_all_hbm_feeds_failed_causes_hard_failure(self):
+        old = {"seen_ids": [], "seen_fact_keys": [], "hbm_hybrid_bond_track_version": 2}
+        with (
+            patch.object(w, "load_state", return_value=(old, False)),
+            patch.object(w, "read_feed", return_value=([], ["UpstreamTimeout"])),
+            patch.object(w, "fetch_fx", side_effect=AssertionError("must fail before conversion")),
+        ):
+            with self.assertRaisesRegex(RuntimeError, "all configured queries failed"):
+                w.main()
+
+    def test_partial_feed_outage_does_not_claim_all_sources_failed(self):
+        old = {"seen_ids": [], "seen_fact_keys": [],
+               "structure_baseline_version": w.STRUCTURE_BASELINE_VERSION,
+               "hbm_hybrid_bond_track_version": w.HBM_HYBRID_BOND_TRACK_VERSION}
+        calls = {"n": 0}
+        def fake_feed(*args):
+            calls["n"] += 1
+            return ([], ["UpstreamTimeout"]) if calls["n"] % 2 else ([], [])
+        with tempfile.TemporaryDirectory() as tmp:
+            out = pathlib.Path(tmp)
+            with (
+                patch.object(w, "OUT", out),
+                patch.object(w, "load_state", return_value=(old, False)),
+                patch.object(w, "read_feed", side_effect=fake_feed),
+                patch.object(w, "fetch_fx", return_value={"rate":1400.0,"date":"2026-10-08","error":""}),
+            ):
+                w.main()
+                state = (out / "rubin_hbm_pending_state.json").read_text(encoding="utf-8")
+                self.assertIn('"feed_healthy"', state)
+                self.assertIn('"feed_checks"', state)
+                self.assertGreater(calls["n"], 0)
 
     def test_mixed_hybrid_and_rubin_events_remain_independent(self):
         state = dict(w.HBM_HYBRID_BOND_BASELINE)

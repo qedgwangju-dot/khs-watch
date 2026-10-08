@@ -617,3 +617,143 @@ assert not continuous_flow_guard_active(_dt_guard.datetime(2026,10,8,15,20,tzinf
 assert not continuous_flow_guard_active(_dt_guard.datetime(2026,10,8,15,28,tzinfo=zone_guard),market_session_guard)
 assert "continuous_flow_guard_active(now, session)" in inspect.getsource(ks.Watch.run)
 print("closing_auction_flow_health_guard_regression=true")
+
+
+# 2026-10-08 장마감 실제 이력: 14:36:27 시작 사건이 15:06 종료된 뒤
+# 동일 시작점으로 15:30:32에 재발송됐음. 장 종료 후 지연된 시세는 신규 사건이 아니다.
+import asyncio as _postclose_async
+import datetime as _postclose_dt
+from zoneinfo import ZoneInfo as _postclose_zone
+from kospi_shock_episode_watch import price_event_window_open as _price_window_open
+_closetime = _postclose_dt.datetime(2026, 10, 8, 15, 30, tzinfo=_postclose_zone("Asia/Seoul")).timestamp()
+assert _price_window_open(_closetime - 2, _closetime, _closetime - 1)
+assert not _price_window_open(_closetime, _closetime, _closetime)
+assert not _price_window_open(_closetime + 29, _closetime, _closetime + 30)
+assert not _price_window_open(_closetime - 1, _closetime, _closetime + 1)
+assert _price_window_open(_closetime + 29, None, _closetime + 30)  # 영업일 종료시각 미확인 시 테스트만 허용
+
+_closed_watch = Watch.__new__(Watch)
+_closed_watch.raw = {}
+_closed_watch.idx = deque([(_closetime + 29, 6741.59)], maxlen=100)
+_closed_watch.session_close_ts = _closetime
+async def _no_flow():
+    return None
+_closed_watch.maybe_flow = _no_flow
+_closed_watch._trigger = lambda: (_ for _ in ()).throw(AssertionError("post-close must not trigger"))
+_postclose_async.run(_closed_watch.evaluate())
+assert _closed_watch.raw.get("post_close_alert_suppressed"), _closed_watch.raw
+print("post_close_duplicate_start_regression=true close=15:30 blocked=15:30:29")
+
+# 실제 오전/오후 handoff는 마지막 Telegram 종료경보 뒤 활성 사건을 비운 상태로 저장한다.
+_close_eval_source = inspect.getsource(ks.Watch.evaluate)
+_final_eval_tail = _close_eval_source.split("        if ended:", 1)[1]
+assert _final_eval_tail.index("self.episode = None") < _final_eval_tail.index('self._record_delivery("end"'), _final_eval_tail
+_close_run_source = inspect.getsource(ks.Watch.run)
+_final_close_tail = _close_run_source.split('self._record_delivery("close"', 1)[0]
+assert _final_close_tail.rfind("self.episode = None") > _final_close_tail.rfind("self.msg_ids.append(msg_id)"), _final_close_tail
+_handoff_source = inspect.getsource(ks.Watch.save_handoff)
+assert "temp.replace(p)" in _handoff_source, _handoff_source
+print("post_delivery_clean_handoff_regression=true atomic_write=true")
+
+
+# 시세 API가 404/일시 장애인 경우 직전 가격으로 새 사건을 평가하면 거짓 양성이 될 수 있다.
+# 정상 수신된 새 현재가가 있을 때만 평가가 진행되는지 운영 루프를 확인한다.
+_fresh_poll_source = inspect.getsource(ks.Watch.run)
+assert "price_poll_ok = False" in _fresh_poll_source
+assert "price_poll_ok = True" in _fresh_poll_source
+assert "if price_poll_ok:\\n                await self.evaluate()" not in _fresh_poll_source  # 잘못 이스케이프된 패턴 방지
+assert "if price_poll_ok:\n                await self.evaluate()" in _fresh_poll_source, _fresh_poll_source
+assert "price_event_skipped_on_poll_failure" in _fresh_poll_source
+print("failed_price_poll_skip_regression=true")
+
+
+# LS API가 '153288'처럼 존재하지 않는 초 단위나 빈 시각을 반환해도
+# 조회 완료시각을 대신 넣으면 수급 정렬이 거짓으로 '정상' 판정될 수 있다.
+# 허용 시각만 채택하고 잘못된 시각은 엄격하게 보류한다.
+from zoneinfo import ZoneInfo as _clock_zone
+import datetime as _clock_dt
+_ref_clock = _clock_dt.datetime.now(_clock_zone("Asia/Seoul")).replace(
+    hour=15, minute=30, second=40, microsecond=0
+)
+_ref_clock_ts = _ref_clock.timestamp()
+assert ks.market_clock_epoch("153040", _ref_clock_ts) == _ref_clock_ts
+assert ks.market_clock_epoch("15:30:40", _ref_clock_ts) == _ref_clock_ts
+assert ks.market_clock_epoch("15304000", _ref_clock_ts) == _ref_clock_ts
+assert ks.market_clock_epoch("15304099", _ref_clock_ts) == _ref_clock_ts
+assert ks.market_clock_epoch("153288", _ref_clock_ts) is None
+assert ks.market_clock_epoch("15328800", _ref_clock_ts) is None
+assert ks.market_clock_epoch("", _ref_clock_ts) is None
+assert ks.market_clock_epoch("153060", _ref_clock_ts) is None
+assert ks.market_clock_epoch("1530", _ref_clock_ts) == _ref_clock_ts - 40
+
+_before_clock = ks.time.time
+try:
+    ks.time.time = lambda: _ref_clock_ts
+    row = ks._latest_time_row([
+        {"time": "15304000", "name": "valid"},
+        {"time": "15328800", "name": "invalid"},
+        {"time": "15303500", "name": "older"},
+    ])
+    assert row["name"] == "valid", row
+finally:
+    ks.time.time = _before_clock
+print("invalid_investor_clock_regression=true clock8=HHMMSScc malformed=153288 masked=false")
+
+
+# 실전 재발 방지: 10/8 14:36 고점이 종료된 뒤 15:30에 다시 신규사건 고점으로
+# 재사용된 사례. 전파·신규 사건은 실제 이전 사건 종료 이후 국소 고점으로만 판단한다.
+_old_completed = Watch.__new__(Watch)
+_old_completed.idx = deque([
+    (1000.0, 7000.0), (1100.0, 6800.0), (1200.0, 6850.0),
+    (1400.0, 6920.0), (1500.0, 6915.0), (1590.0, 6880.0),
+], maxlen=30000)
+_old_completed.last_episode_end_ts=1200.0
+local_peak = _old_completed._window_peak(30, 5)
+assert local_peak == (1400.0, 6920.0), local_peak
+hit, info = _old_completed._trigger()
+assert hit and info["peak_ts"]==1400.0, (hit, info)
+_old_completed.idx = deque([
+    (1000.0, 7000.0), (1100.0, 6800.0), (1200.0, 6850.0),
+    (1400.0, 6820.0), (1500.0, 6819.0), (1590.0, 6818.0),
+], maxlen=30000)
+hit, info = _old_completed._trigger()
+assert not hit, (hit, info)
+print("closed_episode_peak_isolation_regression=true")
+
+# 재기동 및 오전/오후 상태인계에도 종료시점(신규 사건 경계)을 유지한다.
+import tempfile as _tempfile_peak
+from pathlib import Path as _Path_peak
+with _tempfile_peak.TemporaryDirectory() as _tmp_peak:
+    _w_old=Watch("unused", [], "", True)
+    _w_old.last_episode_end_ts=time.time()-120
+    _w_old.save_handoff(_Path_peak(_tmp_peak)/"handoff.json")
+    _w_new=Watch("unused", [], "", True)
+    _w_new.load_handoff(_Path_peak(_tmp_peak)/"handoff.json")
+    assert _w_new.last_episode_end_ts == _w_old.last_episode_end_ts, (
+        _w_new.last_episode_end_ts,_w_old.last_episode_end_ts)
+print("episode_boundary_handoff_regression=true")
+
+
+# --test는 실데이터를 조회하더라도 실전 Telegram 송출 경로를 절대 호출하지 않는다.
+# 가격이 실제 급락 기준을 충족할 때도 시험용 경보가 발송되면 안 된다.
+import asyncio as _asyncio_no_alert
+_test_watch=Watch("unused",[], "", True)
+_test_watch.idx=deque([
+    (time.time()-300, 7000.0),
+    (time.time()-180, 6965.0),
+    (time.time(), 6900.0),
+],maxlen=30000)
+async def _no_flow_test():
+    return None
+_test_watch.maybe_flow=_no_flow_test
+_old_sender=ks.telegram_send
+try:
+    def _forbid_send(*args,**kwargs):
+        raise AssertionError("CI test mode attempted Telegram delivery")
+    ks.telegram_send=_forbid_send
+    _asyncio_no_alert.run(_test_watch.evaluate())
+    assert _test_watch.raw.get("test_mode_notification_suppressed") is True
+    assert _test_watch.episode is None
+finally:
+    ks.telegram_send=_old_sender
+print("test_mode_must_not_send_telegram_regression=true")

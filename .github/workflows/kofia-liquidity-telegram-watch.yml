@@ -6,6 +6,10 @@ on:
     paths:
       - ".github/workflows/kofia-liquidity-telegram-watch.yml"
       - "scripts/kofia_liquidity_watch.js"
+      - "scripts/test_kofia_liquidity_interpretation.py"
+      - "scripts/kofia_liquidity_semantic_guard.py"
+      - "scripts/kofia_liquidity_state_integrity.js"
+      - "scripts/test_kofia_liquidity_state_integrity.js"
   schedule:
     # KST 직접 지정. 새 공식값/수정치가 없으면 Telegram은 보내지 않는다.
     - cron: "5,20,40 7 * * 1-5"
@@ -32,7 +36,7 @@ permissions:
 
 concurrency:
   group: kofia-liquidity-telegram-watch
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   watch:
@@ -73,6 +77,12 @@ jobs:
               raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
           print(f"telegram_route_valid=true bot=@{actual}")
           PY
+
+      - name: Test KOFIA directional interpretation
+        run: |
+          node --check scripts/kofia_liquidity_state_integrity.js
+          node scripts/test_kofia_liquidity_state_integrity.js
+          python scripts/test_kofia_liquidity_interpretation.py
 
       - name: Query KOFIA official liquidity data
         run: |
@@ -137,7 +147,7 @@ jobs:
               ('CMA', cma1, 2_000_000, '±2조'),
               ('신용융자', cr1, 500_000, '±0.5조'),
           ]
-          triggered = [f"{name} {fmt(value)}(경보 기준 {label} 초과)" for name, value, threshold, label in thresholds if abs(value) >= threshold]
+          triggered = [f"{name} {fmt(value)}(경보 기준 {label} 이상)" for name, value, threshold, label in thresholds if abs(value) >= threshold]
           trigger_line = '• <b>큰 변동 항목</b>: ' + (' / '.join(triggered) if triggered else '1D 큰 변동 기준을 넘은 항목 없음')
 
           # 당일 자금 방향은 예탁금·MMF만 보지 않고 CMA와 신용융자까지 같이 읽는다.
@@ -149,7 +159,7 @@ jobs:
           )
           if direction(mmf1,'mmf') == '감소' and direction(dep1,'deposit') == '감소' and direction(cma1,'cma') == '증가':
               cash_line += (
-                  "MMF에서 큰 자금이 빠졌지만 투자자예탁금은 오히려 줄고 CMA는 늘었습니다. "
+                  "MMF 자금이 감소했지만 투자자예탁금은 오히려 줄고 CMA는 늘었습니다. "
                   "따라서 MMF 유출이 곧바로 주식 매수 대기자금으로 이동했다고 볼 수 없고, 목적지는 아직 불명확합니다."
               )
           elif direction(dep1,'deposit') == '증가' and direction(mmf1,'mmf') == '감소':
@@ -173,11 +183,20 @@ jobs:
               f"신용융자 {fmt(cr5)}{arrow(cr5,'credit')} → "
           )
           def mmf_today_context(current_direction, five_day_direction):
-              # Both the current direction and the five-day trend must be checked.
+              # Explicit 3x3 state matrix: never equate a flat five-day trend with
+              # an increase or decrease merely because the daily sign is known.
               if current_direction == '증가':
-                  return "당일에도 MMF가 증가해 5거래일 누적 증가 방향과 일치합니다." if five_day_direction == '증가' else "당일 MMF가 증가했으나 5거래일 추세와 방향이 다릅니다."
+                  if five_day_direction == '증가':
+                      return "당일에도 MMF가 증가해 5거래일 누적 증가 방향과 일치합니다."
+                  if five_day_direction == '감소':
+                      return "당일 MMF가 증가했으나 5거래일 누적 감소 흐름과는 반대입니다."
+                  return "당일 MMF가 증가했지만 5거래일 기준으로는 보합입니다."
               if current_direction == '감소':
-                  return "당일 MMF는 감소해 5거래일 누적 증가 방향과 반대로 움직였습니다." if five_day_direction == '증가' else "당일 MMF도 감소해 5거래일 흐름과 같은 방향입니다."
+                  if five_day_direction == '증가':
+                      return "당일 MMF는 감소해 5거래일 누적 증가 방향과 반대로 움직였습니다."
+                  if five_day_direction == '감소':
+                      return "당일 MMF도 감소해 5거래일 누적 감소 방향과 일치합니다."
+                  return "당일 MMF는 감소했지만 5거래일 기준으로는 보합입니다."
               return "당일 MMF는 유의미한 증감 없이 보합입니다."
 
           # Guard all three possible daily outcomes before live message construction.
@@ -187,7 +206,7 @@ jobs:
 
           if direction(dep5,'deposit') == '감소' and direction(mmf5,'mmf') == '증가' and direction(cr5,'credit') == '증가':
               persistence_line += (
-                  "최근 5거래일에는 현금성 주식 매수 대기자금이 크게 줄었고 MMF·신용융자는 늘었습니다. "
+                  "최근 5거래일에는 투자자예탁금이 감소하고 MMF·신용융자는 늘었습니다. "
                   + mmf_today_context(direction(mmf1,'mmf'), direction(mmf5,'mmf'))
               )
           else:
@@ -200,6 +219,8 @@ jobs:
           cma_dir_5 = direction(cma5,'cma')
           if cma_dir_5 == '보합':
               cma_meaning = "5거래일 기준 사실상 보합이라 추세 신호로 보지 않습니다."
+          elif cma_dir_1 == '보합':
+              cma_meaning = f"당일 변화는 제한적이지만 최근 5거래일에는 {cma_dir_5} 방향입니다."
           elif cma_dir_1 == cma_dir_5:
               cma_meaning = f"단기와 5거래일 모두 {cma_dir_5} 방향입니다."
           else:
@@ -220,12 +241,18 @@ jobs:
           cma1_dir = direction(cma1,'cma')
           cr1_dir = direction(cr1,'credit')
           dep5_dir = direction(dep5,'deposit')
+          mmf5_dir = direction(mmf5,'mmf')
           cr5_dir = direction(cr5,'credit')
+          mmf_flow_caution = (
+              "다만 MMF 증가분이 주식에서 빠져나간 동일 자금이라고 단정하지 않습니다."
+              if mmf5_dir == '증가' else
+              "다만 MMF의 변화분을 주식시장 자금과 동일 자금의 직접 이동으로 단정하지 않습니다."
+          )
 
           if dep1_dir == '증가' and cma1_dir == '증가' and mmf1_dir == '감소' and cr1_dir == '감소':
               summary_line = (
                   f"• <b>종합</b>: <b>당일 수급의 질은 개선</b>됐습니다. "
-                  f"투자자예탁금 {fmt(dep1)}와 CMA {fmt(cma1)}가 크게 늘고, MMF는 {fmt(mmf1)} 줄었으며 신용융자는 {fmt(cr1)} 감소했습니다. "
+                  f"투자자예탁금 {fmt(dep1)}와 CMA {fmt(cma1)}가 늘고, MMF는 {fmt(mmf1)} 감소했으며 신용융자는 {fmt(cr1)} 감소했습니다. "
                   "즉 빚을 늘리지 않고 현금성 매수여력이 커진 조합입니다. "
                   f"다만 5D 투자자예탁금은 아직 {fmt(dep5)}라 최근 5거래일 전체 추세가 완전히 반전됐다고 보기는 이릅니다."
               )
@@ -234,7 +261,7 @@ jobs:
                   f"• <b>종합</b>: 5D 기준 투자자예탁금 {fmt(dep5)}로 크게 줄었는데 신용융자는 {fmt(cr5)} 늘었습니다. "
                   f"MMF는 {fmt(mmf5)}, CMA는 {fmt(cma5)}입니다. "
                   "즉 현금으로 살 수 있는 주식 매수 여력은 약해진 반면 레버리지 의존도는 높아져 수급의 질이 이전보다 취약해진 조합입니다. "
-                  "다만 MMF 증가분이 주식에서 빠져나간 동일 자금이라고 단정하지 않습니다."
+                  + mmf_flow_caution
               )
           elif dep5_dir == '증가' and cr5_dir != '증가':
               summary_line = (
@@ -288,6 +315,10 @@ jobs:
           print(summary_line.replace('<b>', '').replace('</b>', ''))
           PY
 
+      - name: Validate signed final KOFIA Telegram message
+        if: hashFiles('out/kofia_liquidity_alert.html') != ''
+        run: python scripts/kofia_liquidity_semantic_guard.py
+
       - name: Send Telegram update
         if: hashFiles('out/kofia_liquidity_alert.html') != ''
         run: |
@@ -322,7 +353,19 @@ jobs:
           if not result.get('ok'):
               raise RuntimeError(f"Telegram rejected message: {result}")
           mid = (result.get('result') or {}).get('message_id')
-          print(f"telegram_delivery_confirmed=true bot=@{actual} messages=1 id={mid}")
+          if not isinstance(mid, int) or mid <= 0:
+              raise RuntimeError(f"Telegram acknowledged without a valid message_id: {mid!r}")
+          from datetime import datetime, timezone
+          state['delivery_receipt'] = {
+              'message_id': mid,
+              'bot_username': actual,
+              'timestamp_utc': datetime.now(timezone.utc).isoformat(),
+          }
+          pathlib.Path('out/kofia_liquidity_pending_state.json').write_text(
+              json.dumps(state, ensure_ascii=False, indent=2) + '\n',
+              encoding='utf-8'
+          )
+          print(f"telegram_delivery_confirmed=true bot=@{actual} messages=1 id={mid} receipt_persist_ready=true")
           PY
 
       - name: Persist state only after successful delivery

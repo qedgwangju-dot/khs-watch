@@ -89,6 +89,9 @@ CPU_STRUCTURE_BASELINE = {
     "digitimes": {
         "as_of": "2026-10-07",
         "per_accelerator_cpu_2027": "nearly_double",
+        "cpu_xpu_ratio_2027": 2.3,
+        "cpu_xpu_ratio_source_kind": "DIGITIMES 2026-10-05 연구 표제 CPU:XPU=1:2.3 · 영어 후속기사 2027년 언급 · 원문 상세 연도는 구독 제한으로 미열람",
+        "cpu_xpu_ratio_source_url": "https://www.digitimes.com.tw/research/report/?cnlid=3&n=1&v=20261005-314",
         "per_accelerator_source_kind": "DIGITIMES 10월 7일 원문 표제 확인 · 구독 제한으로 상세 계산 기준 미열람",
         "per_accelerator_source_url": "https://www.digitimes.com/news/a20261005PD216/cpu-demand-commercial-llm-market.html",
         "shipments_as_of": "2026-07-29",
@@ -120,6 +123,9 @@ CPU_STRUCTURE_SEARCHES = [
     ("google", '"BNP Paribas" "AMD" "price target" "CPU"'),
     ("bing", 'site:marketscreener.com "BNP Paribas" "AMD" "price target"'),
     ("google", 'site:gb-www.digitimes.com.tw agentic AI 2027 CPU 出货'),
+    ("google", 'site:digitimes.com.tw/research/report CPU XPU agentic'),
+    ("google", 'site:digitimes.com.tw/research/report CPU XPU 2027 agentic'),
+    ("bing", 'site:digitimes.com.tw AI伺服器CPU XPU'),
 ]
 
 FORECAST_SEARCHES = [
@@ -144,10 +150,13 @@ OFFICIAL_VALIDATION_DOMAINS = (
     "supermicro.com",
 )
 
+# A CPU product mention is not evidence of demand. Only actions such as
+# customer orders, deployment, capacity commitments or validation qualify.
 VALIDATION_TERMS = (
-    "order book", "orders", "shipment", "shipments", "volume", "revenue", "capacity",
-    "deploy", "deployment", "deployments", "validation", "validating", "long-term agreement",
-    "lta", "server cpu", "epyc", "xeon", "cloud",
+    "order book", "orders", "shipment", "shipments", "revenue",
+    "deployed", "deployment", "deployments", "validation", "validating",
+    "long-term agreement", "supply agreement", "purchase", "contract",
+    "capacity expansion", "production ramp", "customer qualification",
 )
 
 
@@ -451,11 +460,15 @@ def cpu_structure_observation(title: str, text: str, url: str) -> tuple[str, dic
         if "bnp paribas" not in low or not any(s in low for s in ("amd", "advanced micro devices")):
             return "", {}
         obs = {}
+        # Attribute a target only when AMD itself owns the nearby target phrase.
+        # The older broad BNP→AMD→target window could silently pick up an
+        # unrelated NVIDIA / Arm price target from the same sentence.
         target_patterns = (
-            r"bnp paribas[^.!?]{0,180}?(?:amd|advanced micro devices)[^.!?]{0,120}?"
-            r"(?:price\s+target|target|pt)[^.!?]{0,70}?\bto\s*\$?\s*(\d{1,2},\d{3}|\d{3,4})\b",
-            r"bnp paribas[^.!?]{0,100}?(?:price\s+target|target|pt)[^.!?]{0,90}?"
-            r"(?:amd|advanced micro devices)[^.!?]{0,70}?\bto\s*\$?\s*(\d{1,2},\d{3}|\d{3,4})\b",
+            r"bnp paribas[^.!?]{0,200}?\b(?:amd|advanced micro devices)(?:['’]s)?\s+"
+            r"(?:stock\s+)?(?:price\s+target|target|pt)\b[^.!?]{0,45}?\b(?:to|at)\s*\$?\s*(\d{1,2},\d{3}|\d{3,4})\b",
+            r"bnp paribas[^.!?]{0,200}?\b(?:price\s+target|target|pt)\s+"
+            r"(?:on|for)\s+(?:amd|advanced micro devices)\b(?:\s*\([^)]{0,55}\))?"
+            r"[^.!?]{0,20}?\b(?:to|at)\s*\$?\s*(\d{1,2},\d{3}|\d{3,4})\b",
         )
         m = next((found for p in target_patterns if (found := re.search(p, low, re.I))), None)
         if m:
@@ -473,9 +486,25 @@ def cpu_structure_observation(title: str, text: str, url: str) -> tuple[str, dic
         return ("bnpp_analyst", obs) if obs else ("", {})
     if (host == "digitimes.com" or host.endswith(".digitimes.com")
             or host == "digitimes.com.tw" or host.endswith(".digitimes.com.tw")):
-        if "cpu" not in low or "2027" not in low:
+        if "cpu" not in low:
+            return "", {}
+        # Original October 5 Chinese report headline specifies CPU:XPU 1:2.3
+        # but does not repeat the year; require 2027 only for shipment values.
+        ratio_headline = re.search(r"cpu\s*[:：]\s*xpu", low, re.I)
+        if "2027" not in low and not ratio_headline:
             return "", {}
         obs = {}
+        # DIGITIMES Research's public headline explicitly specifies 2027
+        # CPU:XPU=1:2.3. Preserve the *forecast* as a ratio distinct from
+        # CPU shipments, cores/sockets and installed hardware.
+        ratio = re.search(
+            r"(?<![a-z])cpu\s*[:：]\s*xpu[^0-9]{0,45}?1\s*[:：]\s*(\d+(?:\.\d+)?)",
+            low, re.I,
+        )
+        if ratio:
+            accelerator_per_cpu = float(ratio.group(1))
+            if 0.7 <= accelerator_per_cpu <= 16:
+                obs["cpu_xpu_ratio_2027"] = accelerator_per_cpu
         if "accelerator" in low:
             if re.search(r"(?:nearly|almost)\s+(?:twice|double)|nearly\s+twofold", low):
                 obs["per_accelerator_cpu_2027"] = "nearly_double"
@@ -485,7 +514,7 @@ def cpu_structure_observation(title: str, text: str, url: str) -> tuple[str, dic
                 obs["per_accelerator_cpu_2027"] = "one_point_five"
         # Only exact AI-server CPU shipments; total server CPUs use a separate denominator.
         m = re.search(
-            r"(?:ai[- ]?server\s+cpu|ai\s+servers?\s+cpu|ai服务器cpu)[^.!?]{0,190}?"
+            r"(?:ai[- ]?server\s+cpu|ai\s+servers?\s+cpu|ai\s*(?:伺服器|服務器|服务器)\s*cpu)[^.!?]{0,190}?"
             r"2027[^.!?]{0,90}?(\d+(?:\.\d+)?)\s*(million|万|萬)",
             low,
             re.I,
@@ -516,6 +545,13 @@ def cpu_structure_changes(old: dict, observed: dict, issuer: str) -> list[str]:
             if before and abs(after / before - 1) >= 0.10:
                 changes.append(f"BNP 애널리스트 {title} 전망 변경 {((after/before)-1)*100:+.1f}%")
     if issuer == "digitimes":
+        if "cpu_xpu_ratio_2027" in observed:
+            before_ratio = float(old.get("cpu_xpu_ratio_2027") or 0)
+            new_ratio = float(observed["cpu_xpu_ratio_2027"])
+            if before_ratio and abs(new_ratio / before_ratio - 1) >= 0.10:
+                changes.append(
+                    f"DIGITIMES 2027 CPU:XPU 전망 변경: 1:{before_ratio:g}→1:{new_ratio:g}"
+                )
         if "per_accelerator_cpu_2027" in observed:
             before = str(old.get("per_accelerator_cpu_2027") or "")
             after = str(observed["per_accelerator_cpu_2027"])
@@ -556,7 +592,9 @@ def discover_cpu_structure(now: datetime, previous: dict) -> list[dict]:
                 continue
             published = str(item.get("published_at_kst") or "")[:10]
             baseline_date = str((previous.get(issuer) or {}).get("as_of") or "")
-            if not published or (baseline_date and published <= baseline_date):
+            # Same-day new URLs are new evidence. URL dedupe and revision
+            # comparison prevent replaying the previous numeric baseline.
+            if not published or (baseline_date and published < baseline_date):
                 continue
             if fetched >= 6:
                 continue
@@ -592,6 +630,11 @@ def cpu_structure_block(state: dict, fx: float, changes: list[str]) -> str:
         + "→" + usd_shares(ba["amd_target_usd"])
         + " · Arm 목표주가 " + usd_shares(ba["arm_target_user_claim_usd"]) + "는 원문 근거 확인 전이므로 확정 알림에서 제외",
         "• DIGITIMES: 2027년 가속기당 CPU 거의 2배 전망(유료 기사 표제)"
+        + (
+            f" · 연구 표제 CPU:XPU <b>1:{float(di['cpu_xpu_ratio_2027']):g}</b>"
+            f"(가속기당 CPU 약 {1/float(di['cpu_xpu_ratio_2027']):.2f}개, 전망치·상세 기준연도 미열람)"
+            if di.get("cpu_xpu_ratio_2027") else ""
+        )
         + " · <b>코어 수·소켓 수·실제 출하가 각각 2배라는 의미는 아님</b>",
         "• DIGITIMES 공개 출하 전망: 2027년 AI 서버 CPU "
         + f"{float(di['ai_server_cpu_2027_million'])*100:,.1f}만개(+{float(di['ai_server_cpu_2027_yoy_pct']):.1f}% 전년 대비)"
@@ -606,6 +649,7 @@ def cpu_structure_block(state: dict, fx: float, changes: list[str]) -> str:
         + ' · <a href="' + html.escape(ba["source_url"], quote=True) + '">BNP 애널리스트 2차 보도</a>'
         + ' · <a href="' + html.escape(di["per_accelerator_source_url"], quote=True) + '">DIGITIMES 가속기당 전망</a>'
         + ' · <a href="' + html.escape(di["shipments_source_url"], quote=True) + '">DIGITIMES 출하 전망</a>'
+        + ' · <a href="' + html.escape(di["cpu_xpu_ratio_source_url"], quote=True) + '">DIGITIMES 연구 1:2.3</a>'
         + ' · <a href="' + html.escape(am["source_url"], quote=True) + '">AMD 실제 설계 자료</a>',
     ]
     return "\n".join(lines) + "\n"
@@ -760,8 +804,15 @@ def discover_validation(now: datetime, cutoff: str, seen_urls: set[str]) -> list
                 continue
             published = item.get("published_at_kst") or ""
             date = published[:10] if published else ""
-            if cutoff and date and date <= cutoff:
-                continue
+            # Date-only cutoffs would discard reports published *later today*
+            # after the first scan. Revisit a 3-day window, dedupe by URL,
+            # and retry on transient feed failure.
+            if date:
+                try:
+                    if datetime.fromisoformat(date).date() < now.date() - timedelta(days=3):
+                        continue
+                except ValueError:
+                    continue
             base = clean_text(f"{item.get('title','')} {item.get('description','')}")
             base_low = base.lower()
             if not any(k in base_low for k in ("cpu", "epyc", "xeon", "agentic")):
@@ -800,7 +851,7 @@ def main() -> None:
             continue
         candidate_date = str(candidate.get("published_at_kst") or "")[:10]
         # 과거 리포트·재인용을 새 전망 하향/상향으로 오인하지 않는다.
-        if not candidate_date or candidate_date <= previous_as_of:
+        if not candidate_date or candidate_date < previous_as_of:
             continue
         new_metrics = dict(previous.get("metrics") or {})
         new_metrics.update(candidate.get("metrics") or {})
@@ -847,8 +898,38 @@ def main() -> None:
     structure_latest = json.loads(json.dumps(CPU_STRUCTURE_BASELINE))
     for provider in ("bnpp_public", "bnpp_analyst", "digitimes", "amd_system"):
         structure_latest[provider].update(structure_old.get(provider) or {})
+    # Correct stale metadata when an old state checkpoint stored a claim
+    # that the source's paywalled headline itself specified "2027".
+    if (
+        structure_latest["digitimes"].get("cpu_xpu_ratio_source_url")
+        == CPU_STRUCTURE_BASELINE["digitimes"]["cpu_xpu_ratio_source_url"]
+        and str(structure_latest["digitimes"].get("as_of") or "") <= "2026-10-07"
+    ):
+        structure_latest["digitimes"]["cpu_xpu_ratio_source_kind"] = (
+            CPU_STRUCTURE_BASELINE["digitimes"]["cpu_xpu_ratio_source_kind"]
+        )
     structure_latest["seen_source_urls"] = list(structure_old.get("seen_source_urls") or [])
     structure_events: list[str] = []
+    # A newly verified numeric source was absent from the first CPU alert.
+    # Announce it exactly once through the existing transactional Rubin route;
+    # do not mislabel the older DIGITIMES report as today's new publication.
+    source_alert_needed = (
+        not structure_first_install
+        and not bool(structure_old.get("cpu_xpu_ratio_alert_sent"))
+        and structure_latest["digitimes"].get("cpu_xpu_ratio_2027") is not None
+    )
+    if source_alert_needed:
+        structure_events.append(
+            "DIGITIMES 기존 연구의 CPU:XPU 1:2.3 수치 신규 추적"
+            " · 연구 원문 상세 연도는 미열람(신규 발표 아님)"
+        )
+    # An explicit notification version survives concurrent no-alert snapshots.
+    # Do not use presence of a numeric baseline as proof of Telegram delivery.
+    structure_latest["cpu_xpu_ratio_alert_sent"] = (
+        bool(structure_old.get("cpu_xpu_ratio_alert_sent"))
+        or source_alert_needed
+        or structure_first_install
+    )
     for entry in discover_cpu_structure(now, structure_latest):
         provider = entry["issuer"]
         new_metrics = entry["metrics"]
@@ -860,6 +941,13 @@ def main() -> None:
         structure_latest[provider].update(new_metrics)
         structure_latest[provider]["as_of"] = entry["as_of"]
         structure_latest[provider]["source_url"] = entry["url"]
+        if provider == "digitimes" and "cpu_xpu_ratio_2027" in new_metrics:
+            # Tie revised values to the *new* original report, not to the
+            # fixed 2026-10-05 headline that seeded the first ratio.
+            structure_latest[provider]["cpu_xpu_ratio_source_url"] = entry["url"]
+            structure_latest[provider]["cpu_xpu_ratio_source_kind"] = (
+                "DIGITIMES 신규 공식자료의 CPU:XPU 전망 변화 · 유료 본문 상세 연도 검증 전"
+            )
         structure_events.extend(changes)
     latest["cpu_structure"] = structure_latest
     latest["cpu_structure_track_version"] = CPU_STRUCTURE_TRACK_VERSION
@@ -867,9 +955,11 @@ def main() -> None:
     fx, fx_date = get_fx()
     existing_alert = ALERT_PATH.read_text(encoding="utf-8").strip() if ALERT_PATH.exists() else ""
     cpu_material = bool(forecast_changes or ratio_change or validation or structure_first_install or structure_events)
-    if (structure_first_install or structure_events) and fx is None:
-        # Fail closed; neither USD figures nor an unacknowledged baseline may leak.
-        raise RuntimeError("CPU structure alert requires verified USD/KRW conversion")
+    if cpu_material and fx is None:
+        # All CPU alerts, including BofA revisions and validation-only changes,
+        # must contain a verified USD/KRW conversion. Never send stale or
+        # unconverted foreign-currency figures or checkpoint a missed alert.
+        raise RuntimeError("CPU alert requires verified USD/KRW conversion")
 
     if cpu_material:
         blocks = []

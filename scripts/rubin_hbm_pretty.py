@@ -131,8 +131,13 @@ def strip_repeated_header(body: str) -> str:
 
 
 def format_generic_alert(original: str) -> str:
-    checked = find(r"조회시각:\s*(.+)", original, "확인 불가")
-    count = find(r"신규 핵심 변화:\s*(\d+건)", original, "확인 불가")
+    checked = find(r"조회시각:\s*(.+)", original)
+    count = find(r"신규 핵심 변화:\s*(\d+건)", original)
+    # Never manufacture "확인 불가" metadata when the upstream message
+    # follows an independent topic-specific format. Keep it as a plain
+    # escaped report, or fail before Telegram if no actionable content.
+    if not checked or not count:
+        raise ValueError("Rubin generic alert missing required timestamp/count; refusing fake summary")
     fx = find(r"원화 환산:\s*(.+)", original)
     axes = detected_axes(original)
     summaries = event_summaries(original)
@@ -158,13 +163,16 @@ def format_generic_alert(original: str) -> str:
             if verdict:
                 quick.append(f"   {emphasize_metrics(verdict)}")
 
-    quick += [
-        "",
-        "<b>[핵심 숫자]</b>",
-        "• 일반 Rubin  <b>288GB HBM4</b>",
-        "• 288GB → 192GB  <b>-33.3%</b>",
-        "• 디스펙 상쇄선  <b>GPU 출하 +50%</b>",
-    ]
+    # These are scenario assumptions, not news. Never prepend them to an
+    # unrelated HBM customer qualification or hybrid-bonding event.
+    if has_rubin_spec:
+        quick += [
+            "",
+            "<b>[Rubin 가정·민감도, 공식 사양 아님]</b>",
+            "• 일반 Rubin  <b>288GB HBM4</b>",
+            "• 가정 288GB → 192GB  <b>-33.3%</b>",
+            "• 가정 상쇄선  <b>GPU 출하 +50%</b>",
+        ]
     if has_192:
         quick += [
             "• 72×288GB  <b>20.7TB</b>",
@@ -173,7 +181,8 @@ def format_generic_alert(original: str) -> str:
         ]
 
     # 자주 반복되는 기준은 핵심만 먼저 노출하고 설명은 접어서 보존한다.
-    quick += [
+    if has_rubin_spec:
+        quick += [
         "",
         "<b>[HBM 방향 체크]</b>",
         "🟢 <b>좋아짐</b>  가격↑+물량↑ · HBM4E 인증→양산 · GPU +50%↑ · 대역폭 유지 · DDR5/SOCAMM2/eSSD↑",
@@ -194,7 +203,7 @@ def format_generic_alert(original: str) -> str:
         "→ 기사보다 실제 출하·매출이 최종 확인\n\n"
         "약세 조건: GPU당 192GB 확정+GPU 출하 증가 +50% 미만 / HBM4E 인증·양산 반복 지연 / 2027 계약가격 하락·계약물량 축소 / NVL576 도입 지연·축소 / DDR5·SOCAMM2·eSSD 주문 둔화\n\n"
         "판정 원칙: 192GB만 보고 HBM 수요 붕괴로 단정하지 않으며 GPU 총출하×GPU당 HBM 용량으로 총 비트 수요를 판단합니다.</blockquote>",
-    ]
+        ]
 
     body = original
     if body.startswith("🚨 Rubin/HBM 구조 변화 감시"):
@@ -220,6 +229,8 @@ def format_hybrid_alert(original: str) -> str:
         "SK하이닉스 공식": ("news.skhynix.com", "www.skhynix.com"),
         "삼성전자 공식": ("news.samsung.com",),
         "Counterpoint": ("counterpointresearch.com", "www.counterpointresearch.com"),
+        "변화 공식원문": ("news.skhynix.com", "news.skhynix.co.kr", "www.skhynix.com",
+                           "news.samsung.com", "semiconductor.samsung.com", "www.samsung.com"),
     }
     out: list[str] = []
     for raw in original.splitlines():
@@ -228,7 +239,7 @@ def format_hybrid_alert(original: str) -> str:
             out.append("")
             continue
         m = re.fullmatch(
-            r"(Damnang|TechPowerUp|SK하이닉스 공식|삼성전자 공식|Counterpoint)\s+(https?://\S+)",
+            r"(Damnang|TechPowerUp|SK하이닉스 공식|삼성전자 공식|Counterpoint|변화 공식원문)\s+(https?://\S+)",
             line,
         )
         if m:
@@ -268,6 +279,9 @@ def main() -> None:
     if not sections:
         return
     if any(part.startswith(HYBRID_TITLE) for part in sections):
+        # A hybrid event is always its own notification. Ignore neither its
+        # source text nor its verified provenance in favour of the Rubin
+        # generic fallback.
         normal = [part for part in sections if not part.startswith(HYBRID_TITLE)]
         hybrid = [part for part in sections if part.startswith(HYBRID_TITLE)]
         pretty_sections = []

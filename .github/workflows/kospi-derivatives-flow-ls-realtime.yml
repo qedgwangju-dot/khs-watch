@@ -237,6 +237,7 @@ jobs:
           COLLECTOR_PID=$!
 
           WATCH_FAILS=0
+          WATCH_SUCCESS=0
           while [ "$(TZ=Asia/Seoul date +%H%M)" -lt 1215 ]; do
             set +e
             if [ -s out/kospi_shock_handoff.json ]; then
@@ -246,7 +247,10 @@ jobs:
             fi
             WATCH_RC=$?
             set -e
-            [ "$WATCH_RC" -eq 0 ] && break
+            if [ "$WATCH_RC" -eq 0 ]; then
+              WATCH_SUCCESS=1
+              break
+            fi
             WATCH_FAILS=$((WATCH_FAILS + 1))
             echo "kospi_watcher_restart rc=$WATCH_RC consecutive_failures=$WATCH_FAILS"
             BACKOFF=$((WATCH_FAILS * 10))
@@ -259,6 +263,42 @@ jobs:
             kill "$COLLECTOR_PID" 2>/dev/null || true
           fi
           wait "$COLLECTOR_PID" 2>/dev/null || true
+          # 세션 종료시각 도달과 실제 감시 완료를 구분한다.
+          # 전 구간 재시도 실패 또는 미기동이면 정상 종료로 처리하지 않는다.
+          if [ "$WATCH_SUCCESS" -ne 1 ]; then
+            echo "KOSPI production never completed a successful watcher process" >&2
+            exit 1
+          fi
+          test -s out/kospi_shock_episode_status.md || { echo "KOSPI status missing" >&2; exit 1; }
+          test -s out/kospi_shock_episode_raw.json || { echo "KOSPI raw evidence missing" >&2; exit 1; }
+          test -s out/kospi_shock_handoff.json || { echo "KOSPI handoff missing" >&2; exit 1; }
+          grep -q -- '- 상태: 정상 종료' out/kospi_shock_episode_status.md || { echo "KOSPI status not normal" >&2; exit 1; }
+          grep -Eq -- '- KOSPI 틱: [1-9][0-9]*' out/kospi_shock_episode_status.md || { echo "KOSPI ticks missing" >&2; exit 1; }
+          grep -Eq -- '- 선물 틱: [1-9][0-9]*' out/kospi_shock_episode_status.md || { echo "KOSPI futures ticks missing" >&2; exit 1; }
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+          raw=json.loads(Path("out/kospi_shock_episode_raw.json").read_text(encoding="utf-8"))
+          handoff=json.loads(Path("out/kospi_shock_handoff.json").read_text(encoding="utf-8"))
+          assert (raw.get("last_price_snapshot") or {}).get("KOSPI",{}).get("price") is not None, "missing final KOSPI price"
+          assert handoff.get("date")==datetime.now(ZoneInfo("Asia/Seoul")).strftime("%Y-%m-%d"), "handoff wrong date"
+          delivery=Path("out/kospi_shock_delivery_log.jsonl")
+          ids=set()
+          stages=set()
+          if delivery.exists():
+              for line in delivery.read_text(encoding="utf-8").splitlines():
+                  rec=json.loads(line)
+                  mid=int(rec["message_id"])
+                  assert mid not in ids, f"repeated Telegram message_id {mid}"
+                  ids.add(mid)
+                  if rec.get("stage")!="expand":
+                      key=(str(rec.get("event_start_ts")),str(rec.get("stage")))
+                      assert key not in stages, f"duplicate episode stage {key}"
+                      stages.add(key)
+          print(f"kospi_production_delivery_integrity_valid=true acknowledged_messages={len(ids)}")
+          PY
           if [ -s out/kospi_shock_episode_status.md ]; then
             cat out/kospi_shock_episode_status.md >> "$GITHUB_STEP_SUMMARY"
           fi
@@ -347,12 +387,16 @@ jobs:
           COLLECTOR_PID=$!
 
           WATCH_FAILS=0
+          WATCH_SUCCESS=0
           while [ "$(TZ=Asia/Seoul date +%H%M)" -lt 1532 ]; do
             set +e
             python scripts/kospi_shock_episode_watch.py --until 15:32 --handoff-in out/kospi_shock_handoff.json --handoff-out out/kospi_shock_handoff.json
             WATCH_RC=$?
             set -e
-            [ "$WATCH_RC" -eq 0 ] && break
+            if [ "$WATCH_RC" -eq 0 ]; then
+              WATCH_SUCCESS=1
+              break
+            fi
             WATCH_FAILS=$((WATCH_FAILS + 1))
             echo "kospi_watcher_restart rc=$WATCH_RC consecutive_failures=$WATCH_FAILS"
             BACKOFF=$((WATCH_FAILS * 10))
@@ -365,6 +409,42 @@ jobs:
             kill "$COLLECTOR_PID" 2>/dev/null || true
           fi
           wait "$COLLECTOR_PID" 2>/dev/null || true
+          # 세션 종료시각 도달과 실제 감시 완료를 구분한다.
+          # 전 구간 재시도 실패 또는 미기동이면 정상 종료로 처리하지 않는다.
+          if [ "$WATCH_SUCCESS" -ne 1 ]; then
+            echo "KOSPI production never completed a successful watcher process" >&2
+            exit 1
+          fi
+          test -s out/kospi_shock_episode_status.md || { echo "KOSPI status missing" >&2; exit 1; }
+          test -s out/kospi_shock_episode_raw.json || { echo "KOSPI raw evidence missing" >&2; exit 1; }
+          test -s out/kospi_shock_handoff.json || { echo "KOSPI handoff missing" >&2; exit 1; }
+          grep -q -- '- 상태: 정상 종료' out/kospi_shock_episode_status.md || { echo "KOSPI status not normal" >&2; exit 1; }
+          grep -Eq -- '- KOSPI 틱: [1-9][0-9]*' out/kospi_shock_episode_status.md || { echo "KOSPI ticks missing" >&2; exit 1; }
+          grep -Eq -- '- 선물 틱: [1-9][0-9]*' out/kospi_shock_episode_status.md || { echo "KOSPI futures ticks missing" >&2; exit 1; }
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+          raw=json.loads(Path("out/kospi_shock_episode_raw.json").read_text(encoding="utf-8"))
+          handoff=json.loads(Path("out/kospi_shock_handoff.json").read_text(encoding="utf-8"))
+          assert (raw.get("last_price_snapshot") or {}).get("KOSPI",{}).get("price") is not None, "missing final KOSPI price"
+          assert handoff.get("date")==datetime.now(ZoneInfo("Asia/Seoul")).strftime("%Y-%m-%d"), "handoff wrong date"
+          delivery=Path("out/kospi_shock_delivery_log.jsonl")
+          ids=set()
+          stages=set()
+          if delivery.exists():
+              for line in delivery.read_text(encoding="utf-8").splitlines():
+                  rec=json.loads(line)
+                  mid=int(rec["message_id"])
+                  assert mid not in ids, f"repeated Telegram message_id {mid}"
+                  ids.add(mid)
+                  if rec.get("stage")!="expand":
+                      key=(str(rec.get("event_start_ts")),str(rec.get("stage")))
+                      assert key not in stages, f"duplicate episode stage {key}"
+                      stages.add(key)
+          print(f"kospi_production_delivery_integrity_valid=true acknowledged_messages={len(ids)}")
+          PY
           if [ -s out/kospi_shock_episode_status.md ]; then
             cat out/kospi_shock_episode_status.md >> "$GITHUB_STEP_SUMMARY"
           fi

@@ -48,6 +48,18 @@ def main() -> None:
         return
 
     text = fix_source_links(text)
+    # Append model assumptions only to actual Rubin/HBM quantity or pricing
+    # stories, never to a generic event or a hybrid-bonding-only notice.
+    evidence_topics = (
+        "■ Rubin Ultra 최종 HBM 사양",
+        "■ Rubin Ultra·NVL576 실제 출하",
+        "■ 2027 HBM 계약가격·물량",
+        "■ HBM↔DDR5 웨이퍼 경제성",
+        "■ Rubin Ultra HBM4/HBM4E 옵션 변화",
+    )
+    if not any(topic in html.unescape(re.sub(r"</?b>", "", text)) for topic in evidence_topics):
+        ALERT.write_text(text.strip() + "\n", encoding="utf-8")
+        return
     if "[HBM 수요·가격 레버리지]" in text:
         ALERT.write_text(text.strip() + "\n", encoding="utf-8")
         return

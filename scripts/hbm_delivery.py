@@ -14,6 +14,7 @@ from html.parser import HTMLParser
 import json
 import os
 import pathlib
+import re
 import subprocess
 import urllib.error
 import urllib.parse
@@ -188,6 +189,70 @@ def chunks(text, limit=3600):
     return result
 
 
+
+def validate_rubin_hybrid_notification(text: str) -> None:
+    """Final fail-closed Telegram gate for the user's HBM hybrid-bond alerts.
+
+    The source-to-state pipeline can be correct even when a downstream
+    formatter accidentally inserts an unrelated price model, breaks a URL,
+    or emits a fake "unknown" headline. Never advance the durable state
+    or send the offending notification in any of those cases.
+    """
+    title = "<b>🚨 HBM 하이브리드 본딩"
+    segments = [
+        part.strip() for part in text.split(MESSAGE_BREAK)
+        if "🚨 HBM 하이브리드 본딩 · 삼성전자 vs SK하이닉스" in part
+        or "■ 하이브리드 본딩 고객 샘플 검증" in part
+    ]
+    if not segments:
+        return
+    for part in segments:
+        if not part.startswith(title):
+            raise ValueError("hybrid alert malformed title or mixed section")
+        if any(bad in part for bad in (
+            "[이번 변화]", "신규 변화 확인 불가",
+            "[핵심 숫자]", "[HBM 수요·가격 레버리지]",
+            "디스펙 상쇄선", "<b>2026</b>",
+            "&#xC774;", "&#xc774;",
+            "technology_showcase",
+        )):
+            raise ValueError("hybrid alert contains stale wrapper or malformed Unicode")
+        # A legitimate official upgrade replaces "기술 가능성 확인" with a
+        # higher stage. Do not accidentally block the very milestone this
+        # monitor was built to deliver.
+        if ("• 공식 추적 단계:" not in part
+                or "• 원보도:" not in part
+                or "독립 검증 2곳 아님" not in part):
+            raise ValueError("hybrid alert lacks required official/report distinctions")
+        if re.search(r"<b>20\\d{2}</b>|&(?:amp;)?\\#(?:x[0-9a-f]{4,6}|[0-9]{4,7});", part, re.I):
+            raise ValueError("hybrid alert contains split year or literal Unicode escape")
+        if any(tag not in ("a", "b") for tag in
+               re.findall(r"</?([a-z][a-z0-9-]*)\\b", part, re.I)):
+            raise ValueError("hybrid alert has unsupported Telegram HTML markup")
+        # Normalize the visible text, not attributes inside links.
+        without_anchors = re.sub(r'<a\s+href="[^"]+">.*?</a>', "", part, flags=re.S)
+        visible = html.unescape(re.sub(r"<[^>]+>", "", without_anchors))
+        if re.search(r"https?://\S+", visible):
+            raise ValueError("raw long URL leaking into hybrid alert visible text")
+        links = re.findall(r'<a\s+href="([^"]+)">원문 보기</a>', part)
+        if len(links) < 5:
+            raise ValueError("hybrid alert lost short-form source links")
+        allowed_hosts = {
+            "damnang.com", "www.damnang.com",
+            "techpowerup.com", "www.techpowerup.com",
+            "news.skhynix.com", "news.skhynix.co.kr", "www.skhynix.com",
+            "news.samsung.com", "semiconductor.samsung.com", "www.samsung.com",
+            "counterpointresearch.com", "www.counterpointresearch.com",
+        }
+        for href in links:
+            parsed = urllib.parse.urlparse(html.unescape(href))
+            if parsed.scheme != "https" or (parsed.hostname or "").lower() not in allowed_hosts:
+                raise ValueError("hybrid alert source hyperlink host not approved")
+        # The transactional sender will split these into valid Telegram HTML
+        # chunks, or fail before the first send.
+        chunks(part)
+
+
 def promote(candidate, before):
     # Keep independent lead-time metadata rather than deleting it with a
     # collector pending-state document that lacks those fields.
@@ -332,6 +397,8 @@ def finish(name):
     # Working-tree mutations from the old collector are not a committed delivery.
     write(ROOT / path, before)
     text = (ROOT / alert).read_text(encoding='utf-8') if (ROOT / alert).exists() else ''
+    if name == 'rubin':
+        validate_rubin_hybrid_notification(text)
     guard({'state': candidate, 'text': text})
     receipt = transact(Repository(), path, before, candidate, text)
     write(OUT / (name + '_hbm_delivery_receipt.json'), receipt)

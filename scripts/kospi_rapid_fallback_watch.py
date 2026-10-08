@@ -16,6 +16,7 @@ from zoneinfo import ZoneInfo
 import requests
 
 from kospi_flow_attribution_ls import attribution_html_lines, fetch_attribution
+from krx_session_calendar import session_state
 
 KST = ZoneInfo("Asia/Seoul")
 STATE_PATH = Path("data/kospi_rapid_fallback_state.json")
@@ -30,8 +31,16 @@ SESSION_HIGH_DD = -1.50
 FAST_15M = -1.00
 FAST_30M = -1.25
 OPEN_GAP_ALERT_PCT = -1.0
-START_TIME = dt.time(9, 0)
-END_TIME = dt.time(15, 35)
+def live_trading_window(now: dt.datetime) -> bool:
+    """휴일·특별 개장시간·장마감 이후에 전일의 고점/가격을 신규 급락으로 쓰지 않는다."""
+    session = session_state(now)
+    return bool(
+        session["is_session"]
+        and session["open"] is not None
+        and session["close"] is not None
+        and session["open"] <= now <= session["close"]
+    )
+
 
 
 def fnum(v: Any) -> float | None:
@@ -251,9 +260,9 @@ def main() -> int:
     now = dt.datetime.now(KST)
     today = now.date().isoformat()
     state = load_state(today)
-    if now.weekday() >= 5 or not (START_TIME <= now.time() <= END_TIME):
+    if not live_trading_window(now):
         save_pending(state)
-        write_status(now, "장외 시간 — 발송 없음")
+        write_status(now, "KRX 휴장·장외 시간 — 경보 발송 없음")
         return 0
 
     data = fetch_kospi()

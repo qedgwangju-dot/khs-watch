@@ -2058,7 +2058,7 @@ if classify_old not in s:
 s = s.replace(classify_old, classify_new, 1)
 
 meaningful_old = '''    if item.get("official") and theme != "기타":\n        return True\n    if theme == "800V DC":\n'''
-meaningful_new = '''    if item.get("official") and theme not in {"기타", "유연부하·수요반응"}:\n        return True\n    if theme == "유연부하·수요반응":\n        execution = any(k in text for k in (\n            "contract", "agreement", "signed", "approved", "adopt", "tariff", "program",\n            "pilot", "demonstrat", "commercial", "standard", "rule", "interconnection",\n            "launch", "founding", "board member", "mw", "gw", "계약", "승인", "실증", "상업",\n        ))\n        scale_mw = [float(x.replace(",", "")) for x in re.findall(r"([0-9][0-9,]*(?:\\.[0-9]+)?)\\s*mw", text, re.I)]\n        scale_gw = [float(x.replace(",", "")) * 1000 for x in re.findall(r"([0-9]+(?:\\.[0-9]+)?)\\s*gw", text, re.I)]\n        scale = max(scale_mw + scale_gw + [0])\n        policy_step = any(k in text for k in (\n            "tariff", "rule", "approved", "adopt", "interconnection", "utility", "ferc", "pjm", "miso", "ercot",\n        ))\n        return execution and (item.get("official") or scale >= 100 or policy_step)\n    if theme == "800V DC":\n'''
+meaningful_new = '''    if item.get("official") and theme not in {"기타", "유연부하·수요반응"}:\n        return True\n    if theme == "유연부하·수요반응":\n        execution = any(k in text for k in (\n            "contract", "agreement", "signed", "approved", "adopt", "tariff", "program",\n            "pilot", "demonstrat", "commercial", "standard", "rule", "interconnection",\n            "launch", "founding", "board member", "mw", "gw", "계약", "승인", "실증", "상업",\n        ))\n        scale_mw = [float(x.replace(",", "")) for x in re.findall(r"([0-9][0-9,]*(?:\\.[0-9]+)?)\\s*mw\\b", text, re.I)]\n        scale_gw = [float(x.replace(",", "")) * 1000 for x in re.findall(r"([0-9]+(?:\\.[0-9]+)?)\\s*gw\\b", text, re.I)]\n        scale = max(scale_mw + scale_gw + [0])\n        policy_step = any(k in text for k in (\n            "tariff", "rule", "approved", "adopt", "interconnection", "utility", "ferc", "pjm", "miso", "ercot",\n        ))\n        return execution and (item.get("official") or scale >= 100 or policy_step)\n    if theme == "800V DC":\n'''
 if meaningful_old not in s:
     raise SystemExit("time-to-power meaningful insertion point not found")
 s = s.replace(meaningful_old, meaningful_new, 1)
@@ -3265,7 +3265,7 @@ _eia_put(
     )
     msg.append(
         f"• <b>EIA 도매전력가격</b> │ 2026 평균 {power_metrics['eia_wholesale_2026_usd_mwh']:g}달러/MWh "
-        f"· PJM 전년비 +{power_metrics['eia_pjm_2026_yoy_pct']:g}% "
+        f"= {power_metrics['eia_wholesale_2026_usd_mwh']*fx:,.0f}원/MWh (환율 {fx:,.2f}원/달러) · PJM 전년비 +{power_metrics['eia_pjm_2026_yoy_pct']:g}% "
         f"· 미 북서부 {power_metrics['eia_northwest_2026_yoy_pct']:g}%"
     )
 ''',
@@ -3289,6 +3289,7 @@ _eia_put(
     '''        "• Goldman Sachs 2026~2027 미국 용량",''',
     '''        "• EIA 공식 전력소비·판매",
         "• EIA 도매전력가격",
+        "• Morgan Stanley ESS",
         "• Goldman Sachs 2026~2027 미국 용량",''',
     "short-headings",
 )
@@ -3311,6 +3312,56 @@ _eia_put(
 
 if t.count("FORMAT_VERSION = 8") != 1:
     raise SystemExit("EIA generation version anchor changed; not touching runtime")
-t = t.replace("FORMAT_VERSION = 8", "FORMAT_VERSION = 9", 1)
+t = t.replace("FORMAT_VERSION = 8", "FORMAT_VERSION = 10", 1)
 g.write_text(t, encoding="utf-8")
 print("EIA verified sales/consumption and annual Morgan Stanley ESS research graph guard inserted")
+
+# Monitor NEW signed U.S. ESS orders in the SAME existing generation watcher.
+# This is not a new workflow/state/Telegram route. Prior items are blocked by
+# the existing seven-day source-date guard and seen-event state.
+t = g.read_text(encoding="utf-8")
+ess_official_anchor = '''    "hyosung.com", "hd-hyundaielectric.com", "hyundai-elec.co.kr", "ls-electric.com",
+'''
+ess_official_updated = ess_official_anchor + '''    "lgensol.com", "lg.co.kr", "lgcorp.com", "samsungsdi.com",
+'''
+if ess_official_anchor not in t:
+    raise SystemExit("ESS official supplier domains anchor moved")
+t = t.replace(ess_official_anchor, ess_official_updated, 1)
+
+ess_query_anchor = '''    'LS ELECTRIC data center transformer switchgear order North America',
+'''
+ess_query_updated = ess_query_anchor + '''    'site:lgensol.com energy storage ESS battery supply contract data center GWh',
+    'site:news.samsungsdi.com ESS energy storage battery contract US LFP',
+    'site:lg.co.kr LG에너지솔루션 ESS 미국 데이터센터 계약 수주 GWh',
+'''
+if ess_query_anchor not in t:
+    raise SystemExit("ESS official order news queries anchor moved")
+t = t.replace(ess_query_anchor, ess_query_updated, 1)
+
+# A GWh contract must not require >=500 MW. Only accept original ESS-supplier
+# source domains + explicit supply-contract/order language; research forecasts
+# with a GWh number still cannot become an awarded MW project.
+ess_meaning_anchor = '''    if "pwc" in low and any(k in low for k in ("data center", "data centre")) and any(k in low for k in ("capex", "ict", "2050", "investment")):
+        return True
+'''
+ess_meaning_updated = ess_meaning_anchor + '''    official_ess_supplier = any(k in source.lower() for k in (
+        "lg energy solution", "lg에너지솔루션", "samsung sdi", "삼성sdi", "삼성에스디아이",
+    ))
+    official_ess_contract = any(k in low for k in (
+        "supply agreement", "supply deal", "supply contract", "contract signed",
+        "signed contract", "wins contract", "secures contract", "order",
+        "공급계약", "수주", "계약 체결",
+    ))
+    is_ess = any(k in low for k in ("energy storage", "ess", "lfp"))
+    if official_ess_supplier and official_ess_contract and is_ess:
+        return True
+'''
+if ess_meaning_anchor not in t:
+    raise SystemExit("ESS official order meaningful-source gate anchor moved")
+t = t.replace(ess_meaning_anchor, ess_meaning_updated, 1)
+
+# No version bump: this expands what can be discovered, not the historical
+# research baseline. It must not create a synthetic 'format upgrade' alert.
+g.write_text(t, encoding="utf-8")
+print("Official LG Energy Solution/Samsung SDI ESS orders added to existing data-center watch")
+
