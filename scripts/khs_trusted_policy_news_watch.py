@@ -1496,7 +1496,7 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
             # release date rather than dropping the first enforcement action.
             primary_text = clean_text(raw)
             release_date = re.search(
-                r"\\bOctober\\s+7,\\s+2026\\b", primary_text, re.I
+                r"\bOctober\s+7,\s+2026\b", primary_text, re.I
             )
             if (
                 release_date
