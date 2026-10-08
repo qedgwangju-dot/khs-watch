@@ -3265,7 +3265,7 @@ _eia_put(
     )
     msg.append(
         f"• <b>EIA 도매전력가격</b> │ 2026 평균 {power_metrics['eia_wholesale_2026_usd_mwh']:g}달러/MWh "
-        f"· PJM 전년비 +{power_metrics['eia_pjm_2026_yoy_pct']:g}% "
+        f"= {power_metrics['eia_wholesale_2026_usd_mwh']*fx:,.0f}원/MWh (환율 {fx:,.2f}원/달러) · PJM 전년비 +{power_metrics['eia_pjm_2026_yoy_pct']:g}% "
         f"· 미 북서부 {power_metrics['eia_northwest_2026_yoy_pct']:g}%"
     )
 ''',
@@ -3289,6 +3289,7 @@ _eia_put(
     '''        "• Goldman Sachs 2026~2027 미국 용량",''',
     '''        "• EIA 공식 전력소비·판매",
         "• EIA 도매전력가격",
+        "• Morgan Stanley ESS",
         "• Goldman Sachs 2026~2027 미국 용량",''',
     "short-headings",
 )
@@ -3311,6 +3312,6 @@ _eia_put(
 
 if t.count("FORMAT_VERSION = 8") != 1:
     raise SystemExit("EIA generation version anchor changed; not touching runtime")
-t = t.replace("FORMAT_VERSION = 8", "FORMAT_VERSION = 9", 1)
+t = t.replace("FORMAT_VERSION = 8", "FORMAT_VERSION = 10", 1)
 g.write_text(t, encoding="utf-8")
 print("EIA verified sales/consumption and annual Morgan Stanley ESS research graph guard inserted")
