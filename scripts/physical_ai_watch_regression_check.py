@@ -2355,4 +2355,83 @@ try:
 finally:
     base.ALERT_PATH = _original_alert_path
 
+# 46) Dongkuk nickel-plated steel is a battery-can material milestone, not
+# evidence that Tesla Optimus or Boston Dynamics Atlas use its specific cells.
+# The 09/14 company qualification, 10/08 analyst-reported first shipments and a
+# future official shipment are three separate evidence / commercial stages.
+dongkuk_qual = make(
+    "동국산업 북미 46시리즈 니켈도금강판 품질인증 완료",
+    "동국산업은 2026년 9월 14일 북미 고객 46시리즈 니켈도금강판 품질 인증을 완료했고 "
+    "4분기부터 양산 공급할 예정이라고 밝혔다. Tesla Optimus Atlas 로봇 원통형 수요도 거론된다.",
+    "뉴스씬",
+)
+g, sc, cat, k_qual = classify(dongkuk_qual)
+assert g == 'dongkuk_nps', (g, sc, cat)
+assert sc < 11, (sc, cat)
+
+dongkuk_reported = make(
+    "테슬라·보스턴다이내믹스도 휴머노이드 원통형 택했다…동국산업 북미 테스트 완료",
+    "동국산업의 46시리즈 니켈도금강판은 9월 북미 고객 품질 인증이 완료됐으며 "
+    "증권가 기업 탐방 내용에 따르면 10월부터 초도 납품을 시작한 것으로 전해졌다. "
+    "애널리스트는 올해 2,000톤에서 2027년 20,000톤으로 늘어날 것으로 예상. "
+    "테슬라 Optimus·보스턴다이내믹스 Atlas 원통형 배터리 언급은 산업 잠재 수요다.",
+    "뉴스씬",
+)
+g, sc, cat, k_report = classify(dongkuk_reported)
+assert g == 'dongkuk_nps', (g, sc, cat)
+assert sc >= 11 and cat.endswith('10월 초도 납품 보도'), (sc, cat)
+assert k_report != k_qual, "analyst shipment claim must be an upgrade from September qualification"
+assert "회사 확인" in watcher.clean_title(dongkuk_reported["title"], "뉴스씬")
+assert "직접 공급 증거가 아닙니다" in base.risk(cat), base.risk(cat)
+assert "애널리스트 전망" in base.meaning(cat), base.meaning(cat)
+
+dongkuk_rewrite = make(
+    "동국산업 북미 46 시리즈 원통형 배터리 첫 공급 주목",
+    "니켈도금강판에 대해 증권가에서는 10월부터 초도 납품을 시작한 것으로 전해졌다. "
+    "고객사는 공개되지 않았고 테슬라 Optimus·Atlas 공급은 확인되지 않았다.",
+    "아이티인사이트",
+)
+g2, sc2, cat2, k_rewrite = classify(dongkuk_rewrite)
+assert g2 == 'dongkuk_nps' and sc2 >= 11, (g2, sc2, cat2)
+assert k_rewrite == k_report, "syndication must not generate a duplicate alert"
+
+dongkuk_official_ship = make(
+    "동국산업 46시리즈 니켈도금강판 초도 공급 공식 발표",
+    "동국산업은 북미 고객에 대한 46시리즈 니켈도금강판 10월 초도 납품을 시작했다고 발표했다.",
+    "동국산업",
+)
+g, sc, cat, k_official = classify(dongkuk_official_ship)
+assert g == 'dongkuk_nps' and sc >= 11, (g, sc, cat)
+assert cat.endswith('첫 출하 공식 확인'), cat
+assert k_official != k_report, "future company confirmation must trigger a distinct upgrade"
+
+dongkuk_theme = make(
+    "테슬라·보스턴다이내믹스 로봇 배터리 테마 동국산업 관심",
+    "동국산업 니켈도금강판은 46시리즈 원통형 배터리 케이스 소재이며 "
+    "Optimus Atlas 로봇이 원통형 배터리를 쓴다는 보도에 관련주로 주목된다.",
+    "경제뉴스",
+)
+g, sc, cat, k_theme = classify(dongkuk_theme)
+assert g == 'dongkuk_nps' and sc < 11, (g, sc, cat)
+assert k_theme != k_report, "robot theme alone must not become shipment evidence"
+
+dongkuk_forecast = make(
+    "동국산업 니켈도금강판 46시리즈 공급량 전망",
+    "동국산업 46시리즈 니켈도금강판은 2026년 2,000톤과 2027년 2만톤 판매가 예상된다. "
+    "이는 애널리스트 전망이며 공식 출하는 발표되지 않았다.",
+    "증권가",
+)
+g, sc, cat, k_forecast = classify(dongkuk_forecast)
+assert g == 'dongkuk_nps' and sc < 11, (g, sc, cat)
+assert k_forecast != k_report
+
+# Recovery must keep exact source category and 2026-10-08 publication timestamp
+# while remaining within the original workflow/script/state/Telegram route.
+recovered_dongkuk = watcher.query_news(watcher.DONGKUK_NPS_RECOVERY)
+assert len(recovered_dongkuk) == 1, recovered_dongkuk
+assert recovered_dongkuk[0]['source'] == '뉴스씬', recovered_dongkuk
+assert recovered_dongkuk[0]['published'] == '2026-10-08T00:35:00+00:00'
+rg, rs, rc, rk = classify(recovered_dongkuk[0])
+assert rg == 'dongkuk_nps' and rs >= 11 and rk == k_report, (rg, rs, rc)
+
 print("Physical-AI watcher regression guards: PASS")
