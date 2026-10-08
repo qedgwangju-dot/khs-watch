@@ -21,6 +21,43 @@ class EuropeYieldTelegramHtmlTests(unittest.TestCase):
         self.assertIn("이탈리아 10년물 시장자료", combined)
         self.assertNotIn("https://tradingeconomics.com/italy/government-bond-yield</a>", combined)
 
+    def test_real_alert_rendering_links_all_available_data_sources(self):
+        import datetime as dt
+        from zoneinfo import ZoneInfo
+        from scripts import europe_sovereign_yield_watch as watch
+        latest = {
+            "fr10": watch.Obs("fr10", "프랑스", "2026-10-08", 4.898,
+                              "https://www.banque-france.fr/fr/statistiques/taux-et-cours/indices-obligataires-2026-10-08"),
+            "de10": watch.Obs("de10", "독일", "2026-10-08", 3.500,
+                              "https://www.bundesbank.de/en/statistics/money-and-capital-markets/interest-rates-and-yields/daily-yields-of-current-federal-securities-772220"),
+            "uk10": watch.Obs("uk10", "영국", "2026-10-06", 5.3368,
+                              "https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp?SeriesCodes=IUDMNPY&CSVF=TN"),
+        }
+        for k, place, country in (
+            ("fr_mkt", "프랑스", "france"),
+            ("de_mkt", "독일", "germany"),
+            ("it10", "이탈리아", "italy"),
+            ("uk_mkt", "영국", "united-kingdom"),
+        ):
+            latest[k] = watch.Obs(k, place, "2026-10-08", 4.6,
+                                  f"https://tradingeconomics.com/{country}/government-bond-yield")
+        _, body, _ = watch.build_alert(
+            latest,
+            {"fr10_day_bp": 6.4, "de10_day_bp": 1.0,
+             "it10_day_bp": -5.0, "uk_mkt_day_bp": 2.0},
+            139.0,
+            [{"type": "trigger", "key": "de10:above:3.5",
+              "summary": "독일 10년 3.50% 이상"}],
+            ["uk10"], [],
+            dt.datetime(2026, 10, 8, 23, 50, tzinfo=ZoneInfo("Asia/Seoul")),
+        )
+        html = "\n".join(render_chunks(body))
+        self.assertEqual(html.count("<a href="), 7)
+        self.assertIn("영국 10년물 시장자료</a>", html)
+        self.assertIn("이탈리아 10년물 시장자료</a>", html)
+        self.assertIn("전일 +2.0bp", html)
+        self.assertNotIn("전일 +0.0bp", html)
+
     def test_invalid_source_url_rejected(self):
         for url in ["javascript:alert(1)", "http://tradingeconomics.com/foo",
                     "https://evil.example.com/foo"]:
