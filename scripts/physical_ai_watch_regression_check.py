@@ -2434,4 +2434,92 @@ assert recovered_dongkuk[0]['published'] == '2026-10-08T00:35:00+00:00'
 rg, rs, rc, rk = classify(recovered_dongkuk[0])
 assert rg == 'dongkuk_nps' and rs >= 11 and rk == k_report, (rg, rs, rc)
 
+
+# 46) DKT alert: separate the 2026-07 BMS discussions, the 2026-08
+# company production *plan*, the 2026-09 broker-observed robot battery
+# module ramp, actual ESS BMS shipment, and a future company confirmation.
+dkt_july = make(
+    "디케이티, ESS용 BMS 기술력으로 휴머노이드 배터리 시장 정조준",
+    "디케이티가 휴머노이드에 탑재할 배터리팩과 BMS 개발 협력을 논의하고 있다.",
+    "전자신문",
+)
+dg, ds, dc, dk = classify(dkt_july)
+assert dg == 'dkt_humanoid' and ds < 11, (dg, ds, dc)
+
+dkt_plan = make(
+    "디케이티, 휴머노이드 소형 배터리팩 모듈 9월 양산 계획",
+    "디케이티는 북미 휴머노이드 기업향 소형 배터리팩 모듈을 9월부터 양산할 예정이다.",
+    "디케이티",
+)
+pg, ps, pc, pk = classify(dkt_plan)
+assert pg == 'dkt_humanoid' and ps < 11, (pg, ps, pc)
+
+dkt_report = make(
+    "디케이티 휴머노이드 배터리 모듈 양산공급 시작",
+    "디케이티 북미 전기차 고객사의 휴머노이드 이머전시 디바이스 배터리 모듈은 "
+    "주당 1,500~2,000대 초기 공급으로 검증을 마쳤고 8월 말 승인과 함께 "
+    "양산 공급이 시작된 것으로 파악된다.",
+    "하나증권",
+)
+rg, rs, rc, rk = classify(dkt_report)
+assert rg == 'dkt_humanoid' and rs >= 11, (rg, rs, rc)
+assert rc.endswith('양산 공급 증권사 확인'), rc
+assert '익명 고객' in base.risk(rc), base.risk(rc)
+assert '현재 정규 출하량 확정치가 아닙니다' in base.meaning(rc), base.meaning(rc)
+assert '회사 직접 출하' in base.verification(dkt_report, rg,
+       dkt_report['title'] + ' ' + dkt_report['description']), 'source tier lost'
+
+dkt_copy = make(
+    "디케이티 북미 휴머노이드 배터리 모듈 공급 단계",
+    "디케이티 휴머노이드용 배터리 모듈 8월 말 승인과 함께 양산 공급 시작, "
+    "주당 2,000대 초기 검증 이력, 회사 직접 양산 발표는 없다.",
+    "프라임경제",
+)
+cg, cs, cc, ck = classify(dkt_copy)
+assert cg == 'dkt_humanoid' and cs >= 11 and ck == rk, (cg, cs, cc, ck)
+
+dkt_official = make(
+    "디케이티 휴머노이드 배터리 모듈 양산 공식 발표",
+    "디케이티는 휴머노이드용 배터리 모듈의 8월 말 승인에 따라 "
+    "양산 공급을 시작했다고 직접 발표했다.",
+    "디케이티",
+)
+og, os, oc, ok = classify(dkt_official)
+assert og == 'dkt_humanoid' and os >= 11, (og, os, oc)
+assert oc.endswith('양산 회사 공식 확인'), oc
+assert ok != rk, "company confirmation must alert after broker-reported production"
+
+dkt_ess_shipment = make(
+    "디케이티 북미 LFP ESS용 BMS 첫 출하",
+    "디케이티는 8월 19일 북미 ESS용 LFP 배터리관리시스템을 첫 출하했다.",
+    "전자신문",
+)
+eg, es, ec, ek = classify(dkt_ess_shipment)
+assert eg != 'dkt_humanoid', (eg, es, ec)
+
+dkt_tesla_theme = make(
+    "테슬라 휴머노이드 로봇 관련주 디케이티 주가 급등",
+    "디케이티는 휴머노이드 BMS 관련 기대와 테슬라 테마로 강세다.",
+    "종목뉴스",
+)
+tg, ts, tc, tk = classify(dkt_tesla_theme)
+assert tg == 'dkt_humanoid' and ts < 11, (tg, ts, tc)
+
+dkt_real_bms_contract = make(
+    "디케이티 휴머노이드 BMS 정식 공급계약",
+    "디케이티는 휴머노이드용 BMS 정식 공급계약을 체결했다고 발표했다.",
+    "디케이티",
+)
+bg, bs, bc, bk = classify(dkt_real_bms_contract)
+assert bg == 'dkt_humanoid' and bs >= 11 and bk not in {rk, ok}, (bg, bs, bc)
+
+retrieved_dkt = watcher.query_news(watcher.DKT_HUMANOID_RECOVERY)
+assert len(retrieved_dkt) == 1 and retrieved_dkt[0]['source'] == '하나증권', retrieved_dkt
+assert retrieved_dkt[0].get('published') is None, 'never invent an intraday report timestamp'
+rgg, rss, rcc, rkk = classify(retrieved_dkt[0])
+assert rgg == 'dkt_humanoid' and rss >= 11 and rkk == rk, (rgg, rss, rcc, rkk)
+assert watcher.qty._skip_quantity_enrichment(
+    "디케이티 휴머노이드 배터리\n주당 1,500~2,000대 초기 공급 규모\n"
+), 'do not render unverified priced robot shipments for DKT'
+
 print("Physical-AI watcher regression guards: PASS")
