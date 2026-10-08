@@ -132,6 +132,15 @@ jobs:
           assert 'cron: "3,13,23,33,43,53 8 * * 1-5"' in s, "preopen KOSPI retry schedule missing"
           assert 'cron: "3,13,23,33,43,53 9-14 * * 1-5"' in s, "intraday KOSPI self-recovery schedule missing"
           assert 'cron: "3,13,23 15 * * 1-5"' in s, "late-session KOSPI recovery schedule missing"
+          # 독립 UTC 예약이 KST 일자에 맞춰 열리는지 검증: 한국 월요일 오전 8시는 UTC 일요일 밤 11시.
+          assert 'cron: "6,26,46 23 * * 0-4"' in s, "UTC 08 KST fallback missing"
+          assert 'cron: "6,26,46 0-5 * * 1-5"' in s, "UTC intraday fallback missing"
+          assert 'cron: "6,26 6 * * 1-5"' in s, "UTC closing fallback missing"
+          from zoneinfo import ZoneInfo
+          mon_local=dt.datetime(2026,10,12,8,6,tzinfo=ZoneInfo("Asia/Seoul"))
+          utc=mon_local.astimezone(ZoneInfo("UTC"))
+          assert (utc.weekday(),utc.hour,utc.minute)==(6,23,6), utc
+          print("utc_kospi_preopen_schedule_valid=true",utc.isoformat(),mon_local.isoformat())
           assert "workflow_run:" in s and "Wonyotti 90D Thesis Telegram Watch" in s, "event-driven KOSPI fallback missing"
           assert "Korea Market Stress and Global Wave Telegram Watch" in s, "independent KOSPI preopen fallback missing"
           assert "GAMEJOA preopen news radar" in s, "GAMEJOA preopen event fallback missing"
