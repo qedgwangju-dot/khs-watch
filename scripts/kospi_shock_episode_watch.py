@@ -93,6 +93,15 @@ def market_clock_epoch(value: Any, fallback_ts: float | None = None) -> float | 
         return fallback_ts
 
 
+def should_finalize_market_close(
+    now: dt.datetime,
+    actual_close: dt.datetime | None,
+    test_seconds: int | None = None,
+) -> bool:
+    """오전·오후 작업 인계는 장마감이 아니다. 장 종료 시에만 사건을 최종 확정한다."""
+    return test_seconds is None and actual_close is not None and now >= actual_close
+
+
 def fmt_duration(seconds: float) -> str:
     seconds = max(0, int(seconds))
     h, rem = divmod(seconds, 3600)
@@ -1296,7 +1305,9 @@ class Watch:
 
             await asyncio.sleep(0.6)
 
-        if test_seconds is None and self.episode is not None and self.idx:
+        if self.episode is not None and self.idx and should_finalize_market_close(
+            dt.datetime.now(KST), close_dt, test_seconds
+        ):
             ep = self.episode
             end_ts, end_price = self.idx[-1]
             final_att = self.attribution(float(ep["start_ts"]), float(ep["low_ts"]))
