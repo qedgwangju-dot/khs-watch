@@ -1,6 +1,6 @@
 {
-  "schema_version": 1,
-  "updated_at_kst": "2026-10-08T15:02:46+09:00",
+  "schema_version": 2,
+  "updated_at_kst": "2026-10-08T15:05:09+09:00",
   "initial_alert_sent": true,
   "seen": [
     "0476c77ae806a2663597a257",
@@ -37,6 +37,7 @@
     "6f044c97230596fbacb8bc30",
     "784e19ddff6e23faa79234b6",
     "7c51514490ca48f3f5e60020",
+    "7fb7d4f2ccb988c31a631547",
     "84165b4d505eaf1fb033b460",
     "8c998efb7e725880dff1daa0",
     "8e5cf73dadcf4d4744061885",
@@ -60,6 +61,7 @@
     "c279ae5d554efd3aa7833543",
     "c62b2cb4b1f7049cdf3637f7",
     "c69c38157b50d580916c8672",
+    "c88b10d3d2263d2fecce8804",
     "cc2acb34dbef2f00c77c2262",
     "d406cd497a11d32681916ec9",
     "da9ccef98ac9c153a716deb5",
@@ -100,10 +102,11 @@
     "dram_2027": "TrendForce 공식: 타이트한 모바일 DRAM 공급·높은 비용 압력",
     "nand_2h27": "TrendForce 공식: 2027 하반기 NAND 공급 완화 가능성"
   },
-  "last_scan_items": 23,
+  "last_scan_items": 26,
   "last_signal_count": 0,
   "last_alert": {
     "at_kst": "2026-10-06T07:37:33+09:00",
     "kind": "change"
-  }
+  },
+  "errors": []
 }
