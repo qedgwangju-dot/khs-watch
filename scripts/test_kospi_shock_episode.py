@@ -598,3 +598,22 @@ print("flow_snapshot_freshness_regression=true")
 assert "self._checkpoint_handoff(force=True)" in inspect.getsource(ks.Watch.evaluate)
 assert 'self.raw.pop("last_price_poll_error", None)' in inspect.getsource(ks.Watch.run)
 print("gap_handoff_and_recovered_poll_status_regression=true")
+
+
+# 15:20 이후 동시호가에서 투자자 수급 조회가 멈춰도
+# 현물 가격감시 자체를 재시작시키지 않고 15:32까지 지속한다.
+import datetime as _dt_guard
+from zoneinfo import ZoneInfo as _ZoneInfo_guard
+from kospi_shock_episode_watch import continuous_flow_guard_active
+zone_guard = _ZoneInfo_guard("Asia/Seoul")
+market_session_guard = {
+    "is_session":True,
+    "open":_dt_guard.datetime(2026,10,8,9,0,tzinfo=zone_guard),
+    "continuous_end":_dt_guard.datetime(2026,10,8,15,20,tzinfo=zone_guard),
+    "close":_dt_guard.datetime(2026,10,8,15,30,tzinfo=zone_guard),
+}
+assert continuous_flow_guard_active(_dt_guard.datetime(2026,10,8,14,55,tzinfo=zone_guard),market_session_guard)
+assert not continuous_flow_guard_active(_dt_guard.datetime(2026,10,8,15,20,tzinfo=zone_guard),market_session_guard)
+assert not continuous_flow_guard_active(_dt_guard.datetime(2026,10,8,15,28,tzinfo=zone_guard),market_session_guard)
+assert "continuous_flow_guard_active(now, session)" in inspect.getsource(ks.Watch.run)
+print("closing_auction_flow_health_guard_regression=true")
