@@ -61,6 +61,66 @@ class EuropeSovereignYieldWatchTests(unittest.TestCase):
         self.assertAlmostEqual(rows[-1].value, 4.69)
         self.assertAlmostEqual(rows[-1].daily_bp, 15.0)
 
+    def test_same_date_snapshot_is_not_yesterday(self):
+        today = watch.Obs("uk_mkt", "영국 10년", "2026-10-08", 5.45, "x")
+        state = {"history": {"uk_mkt": [
+            {"date": "2026-10-07", "value": 5.44},
+            {"date": "2026-10-08", "value": 5.40},
+        ]}}
+        old = watch.previous_trading_observation(today, [today], state)
+        self.assertEqual(old.date, "2026-10-07")
+        self.assertAlmostEqual(old.value, 5.44)
+        only_same_day = {"history": {"uk_mkt": [{"date": "2026-10-08", "value": 5.40}]}}
+        self.assertIsNone(watch.previous_trading_observation(today, [today], only_same_day))
+
+    def test_intraday_revision_replaces_history_but_not_previous_close(self):
+        cur = watch.Obs("it10", "이탈리아", "2026-10-08", 4.60, "x")
+        state = {"history": {"it10": [
+            {"date": "2026-10-07", "value": 4.64},
+            {"date": "2026-10-08", "value": 4.66},
+        ]}}
+        self.assertEqual(watch.merge_daily_history(state, "it10", cur), [
+            {"date": "2026-10-07", "value": 4.64},
+            {"date": "2026-10-08", "value": 4.60},
+        ])
+
+    def test_current_market_quote_daily_move_must_match_same_sentence(self):
+        text = (
+            "The yield on United Kingdom 10Y Bond Yield rose to 5.46% on "
+            "October 8, 2026, marking a 0.02 percentage points increase "
+            "from the previous session. Other news marking a 0.80 percentage "
+            "points decrease from the previous session."
+        )
+        row = watch.parse_market_page(text, "uk_mkt", "영국 10년", "https://example")[0]
+        self.assertAlmostEqual(row.value, 5.46)
+        self.assertAlmostEqual(row.daily_bp, 2.0)
+        no_move = (
+            "The yield on United Kingdom 10Y Bond Yield rose to 5.46% on "
+            "October 8, 2026. Other news marking a 0.80 percentage points "
+            "decrease from the previous session."
+        )
+        row = watch.parse_market_page(no_move, "uk_mkt", "영국 10년", "https://example")[0]
+        self.assertIsNone(row.daily_bp)
+
+    def test_spread_requires_same_vendor_and_source_date(self):
+        base = {
+            "fr_mkt": watch.Obs("fr_mkt", "프랑스", "2026-10-08", 4.87, "tradingeconomics.com"),
+            "de_mkt": watch.Obs("de_mkt", "독일", "2026-10-08", 3.48, "tradingeconomics.com"),
+        }
+        self.assertAlmostEqual(watch.comparable_market_spread(base, []), 139.0)
+        base["de_mkt"].date = "2026-10-07"
+        self.assertIsNone(watch.comparable_market_spread(base, []))
+        base["de_mkt"].date = "2026-10-08"
+        self.assertIsNone(watch.comparable_market_spread(base, ["fr_mkt"]))
+
+    def test_future_dated_market_data_does_not_trigger(self):
+        now = dt.datetime(2026, 10, 8, 23, 54, tzinfo=ZoneInfo("Asia/Seoul"))
+        row = watch.Obs("fr10", "프랑스", "2026-10-09", 5.00, "x")
+        self.assertEqual(watch.business_lag_days(row, now, watch.PARIS), 999)
+
+    def test_official_france_change_is_exact(self):
+        self.assertAlmostEqual(watch.bp(4.898, 4.834), 6.4)
+
     def test_alert_explains_policy_vs_market_rate(self):
         latest = {
             "fr10": watch.Obs("fr10", "프랑스 10년", "2026-10-07", 4.834, "fr"),
