@@ -63,6 +63,25 @@ class CryptoLiquidityDataIntegrityTest(unittest.TestCase):
         self.assertIsNone(watch.reject_etf_source_regression(old, complete))
         self.assertIn("coverage regression", watch.reject_etf_source_regression(complete, old))
 
+    def test_zero_only_partial_placeholder_does_not_shift_rolling_window(self):
+        extra = """<tr><td>08 Oct 2026</td><td>0.0</td><td>0.0</td>"""
+        extra += "<td>-</td>" * 10 + "<td>0.0</td></tr>"
+        html = build_html().replace("</table>", extra + "</table>")
+        parsed = self.fetch_btc(html)
+        self.assertEqual(parsed["date"], "2026-10-07")
+        self.assertEqual(parsed["pending_date"], "2026-10-08")
+        self.assertEqual(parsed["source_latest_status"], "pending")
+        self.assertEqual(parsed["last5_usd_m"], 44.4)
+
+    def test_full_zero_day_is_not_placeholder(self):
+        zero_cells = "<td>0.0</td>" * 12
+        extra = f"<tr><td>08 Oct 2026</td>{zero_cells}<td>0.0</td></tr>"
+        parsed = self.fetch_btc(build_html().replace("</table>", extra + "</table>"))
+        self.assertEqual(parsed["date"], "2026-10-08")
+        self.assertEqual(parsed["status"], "complete")
+        self.assertEqual(parsed["reported_funds"], 12)
+        self.assertEqual(parsed["total_usd_m"], 0.0)
+
     def test_stale_date_rejected(self):
         old = {"date": "2026-10-07", "reported_funds": 11, "status": "partial"}
         new = {"date": "2026-10-06", "reported_funds": 12, "status": "complete"}

@@ -161,7 +161,18 @@ def btc_etf_flow() -> dict:
         total = parse_number(cells[-1])
         recomputed_total = round(sum(v for v in numeric_funds if v is not None), 1) if numeric_funds else None
 
-        if reported_count == 0 and missing_count == len(normalized):
+        # Farside sometimes pre-fills a future date with a handful of "0.0"
+        # values while most funds remain unreported. That is NOT a 0-flow day.
+        all_reported_zero = (
+            reported_count > 0
+            and all(v is None or abs(float(v)) < 1e-12 for v in numeric_funds)
+        )
+        zero_only_partial_placeholder = (
+            missing_count > 0
+            and all_reported_zero
+            and (total is None or abs(float(total)) < 1e-12)
+        )
+        if (reported_count == 0 and missing_count == len(normalized)) or zero_only_partial_placeholder:
             status = "pending"
             total = None
             total_gap = None
@@ -178,6 +189,7 @@ def btc_etf_flow() -> dict:
             "reported_funds": reported_count,
             "missing_funds": missing_count,
             "missing_tickers": missing_tickers,
+            "zero_only_partial_placeholder": zero_only_partial_placeholder,
             "recomputed_total": recomputed_total,
             "total_gap": total_gap,
             "total_validated": total_validated,
