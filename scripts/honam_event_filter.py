@@ -75,6 +75,38 @@ def _item_text(item):
     ]).strip()
 
 
+def _executive_visit_signal(item):
+    """Classify the SK chairman's site visit from the lead, not old background."""
+    lead = " ".join([
+        _norm(item.get("title")),
+        _norm(item.get("description")),
+        _norm(item.get("headline")),
+    ]).lower()
+    if not ("최태원" in lead or ("sk그룹" in lead and "회장" in lead)):
+        return 0
+    if not any(x in lead for x in ("광주 군공항", "광주공항", "군공항", "호남")):
+        return 0
+    if not any(x in lead for x in ("반도체", "sk하이닉스", "팹", "fab")):
+        return 0
+    if not any(x in lead for x in ("방문", "찾", "부지", "현장", "실사")):
+        return 0
+
+    phase = str(item.get("event_phase") or "").lower()
+    if phase == "scheduled":
+        return 1
+    if phase == "completed":
+        return 3
+
+    if any(x in lead for x in (
+        "방문했다", "방문을 마쳤", "방문 완료", "현장을 찾았다",
+        "직접 찾았다", "현장을 둘러봤", "현장 점검했다",
+        "실사를 마쳤", "현장 방문 마쳤",
+    )):
+        return 3
+    # '방문한다', '찾는다', '예정'을 완료로 취급하지 않는다.
+    return 1
+
+
 def _extract_numbers(text):
     vals = re.findall(r"\d[\d,.]*\s*(?:명|가구|세대|년|월|일|억|조|만평|평|㎡|km|㎞|mw|gw|%|톤/일|만\s*톤/일|만톤/일|t/일)?", text, flags=re.I)
     out = []
@@ -98,6 +130,8 @@ def _event_key(item):
 
 
 def _is_material_event(item):
+    if _executive_visit_signal(item):
+        return True
     text = _item_text(item)
     low = text.lower()
     strong = any(t.lower() in low for t in STRONG_TERMS)
@@ -127,6 +161,9 @@ EXECUTION_UPGRADE_TERMS = [
 
 
 def _is_known_baseline_only(item):
+    # 회장의 신규 현장방문은 과거 팹 로드맵 수치를 함께 언급해도 별개 사건이다.
+    if _executive_visit_signal(item):
+        return False
     text = _item_text(item)
     low = text.lower()
 
@@ -160,6 +197,9 @@ def _is_proposal_only(item):
 
 
 def _action_level(item):
+    executive_signal = _executive_visit_signal(item)
+    if executive_signal:
+        return executive_signal
     text = _item_text(item).lower()
     if any(re.search(pattern, text, flags=re.I) for pattern in ACTION_EXECUTION_PATTERNS):
         return 3
@@ -174,6 +214,13 @@ def _action_level(item):
 
 
 def _event_family(item):
+    # 검증된 사건 접수의 고유 식별자는 기사 URL이 아닌 사업·당사자·방문일이다.
+    family = _norm(item.get("event_family"))
+    if family.startswith("honam_sk_chair_site_visit_") and _executive_visit_signal(item):
+        return family
+    if _executive_visit_signal(item):
+        # 이번 10/9 방문: '예정' 기사와 다음 날 실제 방문 기사를 한 사건으로 연결.
+        return "honam_sk_chair_site_visit_20261009"
     text = _item_text(item).lower()
     if "반도체" in text and ("반도체도시과" in text or "반도체도시정주팀" in text):
         return "honam_settlement_governance"
@@ -217,6 +264,11 @@ def _verification_status(level):
 
 
 def _summarize_event(items):
+    if any(_executive_visit_signal(i) for i in items):
+        completed = any(_executive_visit_signal(i) >= 3 for i in items)
+        if completed:
+            return "최태원 SK그룹 회장, 광주 군공항 팹 예정지 현장 방문 완료 보도"
+        return "최태원 SK그룹 회장, 10월 9일 광주 군공항 팹 예정지 방문 예정"
     text = " ".join(_item_text(i) for i in items)
     low = text.lower()
     points = []
@@ -239,6 +291,7 @@ def _merge_group(items):
     ordered = sorted(
         items,
         key=lambda i: (
+            -_action_level(i),
             0 if (i.get("_kind") == "official" or i.get("source_status") == "공식자료") else 1,
             _norm(i.get("published")),
         ),
