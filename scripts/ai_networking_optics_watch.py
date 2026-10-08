@@ -108,6 +108,19 @@ COMPANIES = {
         "aliases": ["Applied Optoelectronics", "AOI", "AAOI"],
         "query": '"Applied Optoelectronics" (800G OR 1.6T OR 3.2T OR transceiver OR optical OR hyperscaler OR customer OR capacity OR shipment OR FCC OR China OR ECOC)',
     },
+    "AAOI Taiwan Power-to-Production": {
+        "ticker": "AAOI/BE",
+        "aliases": ["Applied Optoelectronics", "AAOI", "祥茂光電", "Bloom Energy", "賀喜能源"],
+        "queries": [
+            '("祥茂光電" OR "Applied Optoelectronics" OR "AAOI") ("Bloom Energy" OR "賀喜能源" OR "Leadray") (SOFC OR 燃料電池 OR 發電 OR 供電 OR power OR expansion)',
+            '("祥茂光電" OR "AAOI Taiwan" OR "AOI Taiwan") (Bloom OR SOFC OR "fuel cell" OR "on-site power" OR power OR 供電 OR 電力 OR 擴廠) (installation OR construction OR permit OR supply OR operation OR 2027 OR MW)',
+            '("祥茂光電" OR "賀喜能源") ("驗收" OR "補助" OR "供氣" OR "運轉" OR "併網" OR "發電" OR "量產" OR "出貨" OR "電力" OR Bloom)',
+        ],
+        "locales": [
+            {"hl": "zh-TW", "gl": "TW", "ceid": "TW:zh-Hant"},
+            {"hl": "en-US", "gl": "US", "ceid": "US:en"},
+        ],
+    },
     "Fabrinet": {
         "ticker": "FN",
         "aliases": ["Fabrinet"],
@@ -285,6 +298,7 @@ DISPLAY_NAMES_KO = {
     "InP Supply Chain": "InP 기판 공급망",
     "GaAs Optical Supply Chain": "GaAs 광통신 기판 공급망",
     "Applied Optoelectronics": "어플라이드 옵토일렉트로닉스",
+    "AAOI Taiwan Power-to-Production": "AAOI 대만 전력·증설",
     "Fabrinet": "파브리넷",
     "CPO Packaging & Test": "CPO 패키징·검사",
     "Opticore": "옵티코어",
@@ -325,6 +339,8 @@ TRUSTED_SOURCES = {
     "Open Compute Project", "OCP", "iPronics", "Lumotive", "nEye",
     "HUBER+SUHNER", "POLATIS", "Huawei", "华为", "Huawei Cloud", "华为云",
     "Open AI Infra", "Open AI Infra Community",
+    "Leadray Energy", "賀喜能源", "Bloom Energy", "TechNews", "科技新報",
+    "時報資訊", "時報", "工商時報", "Reccessary", "富聯網",
 }
 
 HIGH_SIGNAL_PATTERNS = [
@@ -449,6 +465,10 @@ SOURCE_PRIORITY = {
     "Lumotive": 100, "nEye": 100, "POLATIS": 100, "HUBER+SUHNER": 100,
     "Huawei": 100, "华为": 100, "Huawei Cloud": 100, "华为云": 100,
     "Huawei Computing": 100, "Open AI Infra": 100,
+    "Bloom Energy": 100, "Applied Optoelectronics": 100,
+    "Leadray Energy": 100, "賀喜能源": 100, "TechNews": 82,
+    "科技新報": 82, "時報資訊": 80, "時報": 80,
+    "工商時報": 80, "富聯網": 78, "Reccessary": 74,
     "Chieftek Precision": 100, "Economic Daily News": 82, "UDN": 82,
     "經濟日報": 82, "MoneyDJ": 78,
     "HPCwire": 70, "Compound Semiconductor": 70, "Investing.com": 65,
