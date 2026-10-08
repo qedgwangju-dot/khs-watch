@@ -179,9 +179,31 @@ def direction_call(payload: dict, pending: dict | None = None) -> tuple[str, str
     risk_level = int(refined.get("level", verdict.get("unwind_level", 0)) or 0)
     structural_floor = bool(refined.get("structural_floor"))
     unwind_score, carry_score = _active_direction_scores(payload, pending)
+    values = (pending or {}).get("values") or {}
+    policy = (pending or {}).get("policy_path") or {}
+    spread_move = policy.get("spread_change_bp")
+    try:
+        spread_move = float(spread_move) if spread_move is not None else None
+    except (ValueError, TypeError):
+        spread_move = None
+    # A verified widening of the U.S.-Japan spread opposes unwind. Do not
+    # show an unwind arrow from structural vulnerability or old position levels.
+    spread_opposes_unwind = spread_move is not None and spread_move >= 1.0
+    spread_opposes_carry = spread_move is not None and spread_move <= -1.0
+    fresh_fx = bool((pending or {}).get("fx_signal_eligible"))
+    if not fresh_fx:
+        unwind_score = carry_score = 0
     risk_emoji = {0: "🟢", 1: "🟡", 2: "🟠", 3: "🔴"}.get(min(risk_level, 3), "🟡")
 
-    if unwind_score >= 4 and carry_score >= 4:
+    if spread_opposes_unwind and unwind_score > carry_score and unwind_score < 4:
+        direction = "↔ 신호 충돌 — 금리차 확대·청산 취약성 병존"
+        title_dir = "↔ 신호 충돌"
+        direction_kind = "conflict"
+    elif spread_opposes_carry and carry_score > unwind_score and carry_score < 4:
+        direction = "↔ 신호 충돌 — 금리차 축소·캐리 유지 신호 병존"
+        title_dir = "↔ 신호 충돌"
+        direction_kind = "conflict"
+    elif unwind_score >= 4 and carry_score >= 4:
         direction = "↔ 청산·유지 신호 충돌"
         title_dir = "↔ 방향 충돌"
         direction_kind = "conflict"
@@ -280,7 +302,7 @@ def compact_flow(item: str | None, payload: dict | None = None) -> str | None:
         prev_week = str(mof.get("previous_week") or "")
         latest_week = str(mof.get("latest_week") or "")
         period = f" / 자료 {prev_week}·{latest_week}" if prev_week and latest_week else ""
-        return f"해외중장기채 2주 {latest:+.2f}조엔 (직전 {prior:+.2f}){period} → {meaning}"
+        return f"해외주식+중장기채 합계 2주 {latest:+.2f}조엔 (직전 {prior:+.2f}){period} → {meaning}"
     return item
 
 
@@ -434,6 +456,9 @@ def main() -> int:
     ))
     if rate:
         key_reasons.append(rate)
+    elif (pending.get("policy_path") or {}).get("spread_change_bp") is not None:
+        change = float(pending["policy_path"]["spread_change_bp"])
+        key_reasons.append(f"미·일 2년 금리차 {change:+.1f}bp → " + ("캐리 유지 방향" if change >= 1 else "청산 방향" if change <= -1 else "보합"))
 
     flow = compact_flow(first_matching(
         sections.get("구조적 경계·자금환류", []),
