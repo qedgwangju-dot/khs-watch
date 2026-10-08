@@ -1,62 +1,63 @@
 {
   "seen": {
-    "Nasdaq SOX|sox": "0b8c90ea30fb360e5df72e8cc09e50e1766d0a76ac8934f809d3aa2d73f4aef7",
-    "Cboe|options": "aca15a594dabf3169916ab743e96e5a7f4cd4de371d4078849a2860a95ffaec9",
+    "Nasdaq SOX|sox": "ebd29dc37292e6665cda16c2fa98ee53c4359e723c2244944de24cd8d354a252",
+    "Cboe|options": "f2076ad534bf311090477af62daa28ca94292c12b737be386eb018d11d913eec",
     "CFTC|cot": "c6cd12bb2f7ff0dae21beafc02d13fa2a2370b448ca51c53f9192bd15fa89dc3"
   },
   "values": {
     "Nasdaq SOX|sox": {
       "source": "Nasdaq SOX",
       "kind": "sox",
-      "period": "10/05/2026",
+      "period": "10/07/2026",
       "metrics": {
-        "value": 13172.74,
-        "previous_close": 13136.669921875,
+        "value": 13066.15,
+        "previous_close": 13217.8203125,
         "previous_close_source": "Yahoo daily close cross-check",
-        "net_change": 36.07007812499978,
-        "net_change_source": "Nasdaq official close minus Yahoo prior daily close",
-        "pct": 0.27457550764016236,
-        "d1_pct": 0.27457550764016236,
-        "official_overview_url": "https://beta.indexes.nasdaq.com/Index/Overview/SOX",
+        "net_change": -151.67031250000036,
+        "net_change_source": "Nasdaq official completed close minus Yahoo prior daily close",
+        "pct": -1.1474684094212373,
+        "d1_pct": -1.1474684094212373,
+        "official_overview_url": "https://indexes.nasdaq.com/Index/History/SOX",
         "crosscheck_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ESOX?range=10d&interval=1d",
         "crosscheck_same_date": true,
-        "crosscheck_close_diff": 0.0036718749997817213,
+        "crosscheck_close_diff": 0.0005859374996362021,
         "final_close_confirmed": true,
-        "d3_pct": 4.3085959185434675,
-        "d5_pct": 5.6757517741131025
+        "expected_completed_session": "2026-10-07",
+        "d3_pct": -0.5368217990700197,
+        "d5_pct": 3.464585147188992
       },
-      "url": "https://beta.indexes.nasdaq.com/Index/Overview/SOX",
-      "fingerprint": "0b8c90ea30fb360e5df72e8cc09e50e1766d0a76ac8934f809d3aa2d73f4aef7"
+      "url": "https://indexes.nasdaq.com/Index/History/SOX",
+      "fingerprint": "ebd29dc37292e6665cda16c2fa98ee53c4359e723c2244944de24cd8d354a252"
     },
     "Cboe|options": {
       "source": "Cboe",
       "kind": "options",
-      "period": "Monday, October 5, 2026",
+      "period": "Wednesday, October 7, 2026",
       "metrics": {
-        "total_pc_ratio": 0.83,
-        "total_calls": 7720926,
-        "total_puts": 6429431,
+        "total_pc_ratio": 0.87,
+        "total_calls": 7309174,
+        "total_puts": 6323143,
         "total_time_ct": "일별 마감",
-        "equity_pc_ratio": 0.59,
-        "equity_calls": 2584689,
-        "equity_puts": 1520104,
+        "equity_pc_ratio": 0.63,
+        "equity_calls": 2407137,
+        "equity_puts": 1510620,
         "equity_time_ct": "일별 마감",
-        "index_pc_ratio": 0.91,
-        "index_calls": 3440625,
-        "index_puts": 3136869,
+        "index_pc_ratio": 0.93,
+        "index_calls": 3399886,
+        "index_puts": 3174569,
         "index_time_ct": "일별 마감",
         "snapshot_type": "cboe_daily_eod",
         "final_snapshot": true,
         "daily_ratio_crosscheck": {
-          "date": "2026-10-05",
-          "total": 0.83,
-          "index": 0.91,
-          "equity": 0.59,
-          "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-10-05"
+          "date": "2026-10-07",
+          "total": 0.87,
+          "index": 0.93,
+          "equity": 0.63,
+          "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-10-07"
         }
       },
-      "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-10-05",
-      "fingerprint": "aca15a594dabf3169916ab743e96e5a7f4cd4de371d4078849a2860a95ffaec9"
+      "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-10-07",
+      "fingerprint": "f2076ad534bf311090477af62daa28ca94292c12b737be386eb018d11d913eec"
     },
     "CFTC|cot": {
       "source": "CFTC",
@@ -181,5 +182,5 @@
       "live_source_error": "RuntimeError: HTTP 조회 3회 실패: https://www.cftc.gov/dea/futures/financial_lf.htm / HTTPError: 403 Client Error: Forbidden for url: https://www.cftc.gov/dea/futures/financial_lf.htm | HTTPError: 403 Client Error: Forbidden for url: https://www.cftc.gov/dea/futures/financial_lf.htm | HTTPError: 403 Client Error: Forbidden for url: https://www.cftc.gov/dea/futures/financial_lf.htm"
     }
   },
-  "updated_at_kst": "2026-10-07T23:47:41.775944+09:00"
+  "updated_at_kst": "2026-10-08T11:43:16.107567+09:00"
 }
