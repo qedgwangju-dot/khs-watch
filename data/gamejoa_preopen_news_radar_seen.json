@@ -1954,6 +1954,26 @@
       "source_published_kst": "2026-10-07T15:28+09:00",
       "title": "두나무-네이버파이낸셜 주식교환, 내년 3월로 연기 [공시]"
     },
+    "core:2caff90ca3009af9e894a534": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818809",
+      "source": "뉴시스",
+      "source_body_digest": "47be18800de6bd60301b474b1172f9ee1a81f3def52332e41fa346d6de9559a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cc005825f19a6e839991225b0f44cf969da982f4cbfca660459963b4ba218616",
+      "source_fact_keys": [
+        "source_fact:v1:78b17ff3127b9682b34ef8bea93794d005f366d5d8588a6077f770ac55655d9c",
+        "source_fact:v1:d0eb8cf4196e260e0935fc581c04a38d3d2f18afd45368a6ff10ed60aa07dc91"
+      ],
+      "source_published_kst": "2026-10-08T10:56+09:00",
+      "source_title": "AIDC 병목, GPU·전력서 메모리로…정석근 SK하이퍼 대표 \"韓에 새 기회\"",
+      "telegram_core_fact": "하지만 대규모 추론 수요가 늘어나면 이를 처리할 수 있는 '메모리 역량'과 지속적인 투자를 가능하게 할 '사업성과 수익구조'가 새로운 핵심 경쟁요인이 될 수 있다고 내다봤다.",
+      "title": "AIDC 병목, GPU·전력서 메모리로…정석근 SK하이퍼 대표 \"韓에 새 기회\""
+    },
     "core:2e6313bef5f333cedb52be3a": {
       "first_seen_kst": "2026-10-08T03:26:42+09:00",
       "lanes": {
@@ -2151,6 +2171,30 @@
       "source_title": "'100조 영업익'에도 삼성전자 주가 주춤…'HBM 가격'에 운명 달렸다",
       "telegram_core_fact": "사상 처음으로 분기 영업이익 '100조 원' 돌파가 유력한 삼성전자 주가가 실적발표를 앞두고 주춤한 모습이다.",
       "title": "'100조 영업익'에도 삼성전자 주가 주춤…'HBM 가격'에 운명 달렸다"
+    },
+    "core:3353ab39e807c07688a10c47": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633481",
+      "source": "이투데이",
+      "source_body_digest": "e1559f8eefc330c16fedfcd5f7d53a488d28935cfe4431b73e7655ad2b72949c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:64e1b1f802a68de5c88f2305e7b478e284c4aae7ef0fc3eba01510650555615e",
+      "source_fact_keys": [
+        "source_fact:v1:0f72c90176cc6cdbd551ae22e0fdc1838b71e97cb2bef5a2dd2888ee1fae2d67",
+        "source_fact:v1:4209e75ea4d186d0569e0e9d686c212597ecc7b180eb3892262f9cc25d36ad78",
+        "source_fact:v1:5ae8ed2e6c09330dfa5c7347ee98c7a26b6249a675e65fffd7247f798b53643b",
+        "source_fact:v1:630e798ce22e67ee081f887cc45f77767a115c0cd6959ebd18b25c5c2c6c473b",
+        "source_fact:v1:8ce3148685ac9552bb28f254ecbfaead4b4e83b3fb50d9c7e8ff0ea0386e4177",
+        "source_fact:v1:99a31cddfc76ef8a7d82431cf68eae41d0d244d7644cc84cbc1b211d3b84b7a4"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "2년 만에 끝난 ‘2세 경영’…적자 늪 모닝글로리, 백약이 무효?",
+      "telegram_core_fact": "모닝글로리는 43기 6억원의 영업이익을 냈으나 한 전 대표 취임 후인 44기(-5억원) 적자 전환한 이래 45기(-8억원), 46기(-6억원)까지 3개 회계연도 연속 영업적자의 늪에서 벗어나지 못하고 있다.",
+      "title": "2년 만에 끝난 ‘2세 경영’…적자 늪 모닝글로리, 백약이 무효?"
     },
     "core:336c1e92e27d9d8d4c3bc19e": {
       "first_seen_kst": "2026-10-07T23:50:27+09:00",
@@ -3615,6 +3659,29 @@
       "telegram_core_fact": "도미노피자는 지난 5년간 물가 안정 기조에 발맞춰 본사 차원에서 원부자재 및 운영비 상승분을 자체 흡수해 왔으나, 원가 압박과 대내외적 불안정성이 지속되면서 본사와 가맹점의 경영 부담이 한계에 달해 조정을 단행하게 됐다고 설명했다.",
       "title": "도미노피자, 5년 만에 가격 인상…L사이즈 1500원 뛴다"
     },
+    "core:5b163d292f66a9015e589c62": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12171264",
+      "source": "매일경제",
+      "source_body_digest": "a6ff44ec68726ad44adec1f96c8fff2ae8396f761bc3b7ade8287e3979b818f5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:197284835e43e62d499c920b758ae7e911b4c647fa238118d8c076291d6d64ea",
+      "source_fact_keys": [
+        "source_fact:v1:742a6af740a3c8e1e9f56b9184fa42242419810f8a6dbb5f860ee529baf9ced4",
+        "source_fact:v1:94000761696f596c07870aadc7bb172ea76a1e2c0ccaed55bb31ad70c6b60b50",
+        "source_fact:v1:975d6cccae799c9b3ff46a038f32aebf63dabac4a65b2e2e9b129126ef2a9b12",
+        "source_fact:v1:a9d96576acf4b38de548ae495a78f38c9bccbfa89fdb5e5122b9ece48bfb4fe6",
+        "source_fact:v1:e57d15f7e4b1ddf60550acc18d64cdc6669bc1f38e7310042daf01fbb48b2822"
+      ],
+      "source_published_kst": "2026-10-08T10:44+09:00",
+      "source_title": "외신 “AI가 서울 집값도 끌어올렸다…李정부 직면한 부동산 딜레마”",
+      "telegram_core_fact": "인공지능(AI) 산업 호황으로 국내 반도체 기업과 근로자들의 소득이 늘면서 서울을 비롯한 수도권 집값 상승에도 영향을 미치고 있다는 외신 분석이 나왔다.",
+      "title": "외신 “AI가 서울 집값도 끌어올렸다…李정부 직면한 부동산 딜레마”"
+    },
     "core:5b70ade016ae80f9cd61b4af": {
       "first_seen_kst": "2026-10-08T11:28:27+09:00",
       "lanes": {
@@ -4171,6 +4238,29 @@
       "source_title": "주춤한 은행주⋯증권가 “4분기 마진 개선·주주환원이 기폭제”",
       "telegram_core_fact": "은행 업종은 밸류업 프로그램 이후 총주주환원율이 과거 20%대에서 50%대로 높아졌고, 주가순자산비율(P/B) 역시 0.3~0.4배 수준에서 0.7~0.9배까지 상승했다.",
       "title": "주춤한 은행주⋯증권가 “4분기 마진 개선·주주환원이 기폭제”"
+    },
+    "core:69ea12b9f3cdf8ee24fd87e6": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.mk.co.kr/news/world/12171265",
+      "source": "매일경제",
+      "source_body_digest": "145c4300f20755ffb892f9caa65c32eb0d72296d94626708c4ac8eff147bc9a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:97b1d16b8b5f2cb7a231ef1ac532abeb827640ae51b8811281b049725ab453c1",
+      "source_fact_keys": [
+        "source_fact:v1:49483681bbdf6cc30a460d607d1a264a64e427c7f94b4ea186fc8e98be3bc2d9",
+        "source_fact:v1:50b7887aa34bdb40569cee745271cb16d4779614be66df8610971c9b72a2f237",
+        "source_fact:v1:c07364dd5550800ceba28350a303ae481bd6a6807812be07f1a9fae40eeefd66",
+        "source_fact:v1:c96668288b611f2e829dee4780bc71d2b1bcc5fdaf04fc6b93a05e313fc9ed73",
+        "source_fact:v1:f916bf554d15a04fb51a896c559b170df95a5d28d7c7b2193eb5a8e23f464cad"
+      ],
+      "source_published_kst": "2026-10-08T10:45+09:00",
+      "source_title": "외신 “하이닉스 솔리다임, 내년 美IPO 추진…골드만·모건스탠리 주관사 선정”",
+      "telegram_core_fact": "8일(현지시간) 블룸버그통신은 복수의 소식통을 인용해 솔리다임이 골드만삭스와 모건스탠리를 IPO 대표 주관사로 선정했다고 보도했다. SK하이닉스의 손자회사 솔리다임이 내년 미국 증시 상장을 위한 대표 주관사단을 구성하며 기업공개(IPO) 준비에 속도를 내고 있다는 미국 현지 보도가 나왔다.",
+      "title": "외신 “하이닉스 솔리다임, 내년 美IPO 추진…골드만·모건스탠리 주관사 선정”"
     },
     "core:6a03fd74259726df80acfb37": {
       "first_seen_kst": "2026-10-08T04:45:20+09:00",
@@ -10515,6 +10605,30 @@
       "source_published_kst": "2026-10-07T09:42+09:00",
       "title": "샌프란시스코 연은 총재 \"AI발 인플레, 단발성 아닐 수도\""
     },
+    "core:fec37dcbe4356053483640a8": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03053686645610952",
+      "source": "이데일리",
+      "source_body_digest": "babfcbfcfc8252115ea6399f76c7874ca04503378b5c983354ba3617902f87ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9b3e86dd0d37a8aefd8a9b0dbb48d37a60e34be5fc3fcf273798281b8a07f1e4",
+      "source_fact_keys": [
+        "source_fact:v1:14b8d245cf1f4967c0c4a78dcec26e7936ae486e955cf51300ee7ffb4126df03",
+        "source_fact:v1:357937484900847292d4dc4e0c6181e9332fd1e79a48f91e82b8d91eb89fbe22",
+        "source_fact:v1:498e99fa38b2dd17ae2f23a5f9745a9f43363b41880c0d74fb23dded4121b88e",
+        "source_fact:v1:8ce3dac6478ce8a0075fbb2e3e4cdd0117b52d5dd38ad34918a52ddc19e515bb",
+        "source_fact:v1:8d0aa45b2f811e146d4dbd1e9863238aa66b327c118f393d6a570d2e0788071b",
+        "source_fact:v1:c601ea11f818d9bacc77f8607a50520cabf32600f72c0d3c7c659d87ea704f18"
+      ],
+      "source_published_kst": "2026-10-08T10:40+09:00",
+      "source_title": "HPE, AMD 최신 CPU 서버 4종 공개…AI 추론 시장 정조준",
+      "telegram_core_fact": "인공지능(AI) 데이터센터 시장이 학습용 그래픽처리장치(GPU) 중심에서 AI 추론과 데이터 처리 등 실제 서비스 운영을 위한 서버 인프라 경쟁으로 확대되고 있다.",
+      "title": "HPE, AMD 최신 CPU 서버 4종 공개…AI 추론 시장 정조준"
+    },
     "core:fec3e9c025cdc7fb1274ee12": {
       "first_seen_kst": "2026-10-07T18:44:00+09:00",
       "lanes": {
@@ -11353,22 +11467,36 @@
     "event:18c3a4a7226eebf8d523985a": {
       "first_seen_kst": "2026-10-08T08:56:19+09:00",
       "lanes": {
-        "live": "2026-10-08T08:56:19+09:00"
+        "live": "2026-10-08T13:46:05+09:00"
       },
-      "last_seen_kst": "2026-10-08T08:56:19+09:00",
-      "link": "https://www.fnnews.com/news/202610080759480948",
-      "source": "파이낸셜뉴스",
-      "source_body_digest": "ae89acae2353ebdacb8065a1f4f6d03931e88d909e805898ebf2ca8b837a7cec",
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818706",
+      "source": "뉴시스",
+      "source_body_digest": "576297ed1fa677a9e1a37151e3f3e7fa6a370797ef8a02459073bf5115a25208",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:62e880acb3afc27f7276c8aece82d2f477ef9199c7234bd0b50c0810c9ee48af",
+      "source_fact_identity": "source_facts:v1:517ca165ac43bf32c3c0e2e3156f52b23d9c4e54de59fa642b73acf2c13a7e5d",
       "source_fact_keys": [
-        "source_fact:v1:12bb8eb4a64997ae786597cbce2c0fda8678d53214dbe40dd36b8778b58b5851",
-        "source_fact:v1:d3c43792122e92a0d1ca29139ab7fc4e20bda39a87a7ed8eaa824a57b841c462"
+        "source_fact:v1:0545034b46d17e4597eedfc4cb707c72e6cd7f044f7787c533c6f57a4c7b279c",
+        "source_fact:v1:21dda79f0292f6ad685744db8f9270d4b825422f45785dd6fa82c7870ed4ab2c",
+        "source_fact:v1:521b78ff22fee0d4822e92f7dffbdf5d32e926f64245abc19edb7c366866bf11",
+        "source_fact:v1:5c68ca94aebd80606c3a5f308d8985f56ff05c6862a58c78381bb200baa46d0d",
+        "source_fact:v1:81b7eff0300eb5200ba29a27b8ec12488ce502b44ed88b33760f5644281ed718",
+        "source_fact:v1:83b5f4c8e62061b1780f552f746d122a632bab50d7f1d951d673c8bf70523c5d",
+        "source_fact:v1:86bf9b006651f0a94d6ed773320b8097095c7f2e12d8118678d8e49365652c1d",
+        "source_fact:v1:8ba15dc5e1cb350536ccfbab5182f34da588428de3c4aa12ba7040d090e4df58",
+        "source_fact:v1:93614b67a4afbb5a5abc40b7977acd67b0e9e9eefd8058f1f95d08aec998143c",
+        "source_fact:v1:970a9e8e92dc388ed3eee538931e7f6da8936ba620886cb0a11bc912f6ccdb63",
+        "source_fact:v1:a702b72b281a69119dee2b61a0dbcbf523f0b5617ff1d083749b8ad94376ef52",
+        "source_fact:v1:a791647f89493ddc16a92143ddd4d61308dd93dbc64b2955916b1f5c134ca5d1",
+        "source_fact:v1:dcb67dda46052222c7b7e282be24b32bb30d7e3c1cb7a8e8bbe9f09606f510c9",
+        "source_fact:v1:e05b170caca97613d7f762adccc8b977d4f6f5ead868dcfb6adbd9bc95633e7d",
+        "source_fact:v1:e7fb9205906afab2bb7a4c0c567d50a6ca0755245811190555a056323fe17b68",
+        "source_fact:v1:eaf8c6fdaa4f7f382a7508f2421f9db1d3fc105606c4bbf13f8b2835e66d3fe8"
       ],
-      "source_published_kst": "2026-10-08T08:13+09:00",
-      "source_title": "삼성전자 '분기 영업이익 100조' 시대 열었다… 세계 테크기업 '최초'(2보)",
-      "telegram_core_fact": "[파이낸셜뉴스]삼성전자는 올해 3·4분기 영업이익 107조4000억원을 기록하며 '분기 영업이익 100조 시대'를 열었다.",
-      "title": "삼성전자 '분기 영업이익 100조' 시대 열었다… 세계 테크기업 '최초'(2보)"
+      "source_published_kst": "2026-10-08T11:52+09:00",
+      "source_title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나",
+      "telegram_core_fact": "특별성과급은 세금과 보험료 등을 공제한 뒤 자사주로 지급된다.",
+      "title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나"
     },
     "event:193afa500eebedefe7deed86": {
       "first_seen_kst": "2026-10-02T10:55:46+09:00",
@@ -18403,21 +18531,25 @@
     "event:f364c6024dca2bb3c9e1bc8f": {
       "first_seen_kst": "2026-10-08T05:44:23+09:00",
       "lanes": {
-        "live": "2026-10-08T12:46:54+09:00"
+        "live": "2026-10-08T13:46:05+09:00"
       },
-      "last_seen_kst": "2026-10-08T12:46:54+09:00",
-      "link": "https://www.newsis.com/view/NISX20261008_0003818735",
-      "source": "뉴시스",
-      "source_body_digest": "c62c0e33a9a4d5f385f141d28395b241be7eae3f57c398b32964e149a72b32a2",
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.mk.co.kr/news/world/12171265",
+      "source": "매일경제",
+      "source_body_digest": "145c4300f20755ffb892f9caa65c32eb0d72296d94626708c4ac8eff147bc9a8",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:588b7afcfeab07b7171d3c6d439d8fc376bdc8285032cf180ee7786a8a05c695",
+      "source_fact_identity": "source_facts:v1:97b1d16b8b5f2cb7a231ef1ac532abeb827640ae51b8811281b049725ab453c1",
       "source_fact_keys": [
-        "source_fact:v1:6e390f73b412cdc9717a4955b06e64fbbfed127b2fd4a5717f8788f8b013d10b"
+        "source_fact:v1:49483681bbdf6cc30a460d607d1a264a64e427c7f94b4ea186fc8e98be3bc2d9",
+        "source_fact:v1:50b7887aa34bdb40569cee745271cb16d4779614be66df8610971c9b72a2f237",
+        "source_fact:v1:c07364dd5550800ceba28350a303ae481bd6a6807812be07f1a9fae40eeefd66",
+        "source_fact:v1:c96668288b611f2e829dee4780bc71d2b1bcc5fdaf04fc6b93a05e313fc9ed73",
+        "source_fact:v1:f916bf554d15a04fb51a896c559b170df95a5d28d7c7b2193eb5a8e23f464cad"
       ],
-      "source_published_kst": "2026-10-08T10:23+09:00",
-      "source_title": "OK금융, 예별손보 새 주인으로…\"종합금융그룹 도약 발판\"",
-      "telegram_core_fact": "OK금융 관계자는 \"동시에 진행 중인 중앙일보 인수의 경우 예별손보 실적 악화에 따른 추가 예산 투입 등으로 당초 계획보다 재정적 부담이 늘어난 상황\"이라며 \"중앙일보 우선협상대상자 선정 시까지 실사에 충실히 참여한다는 방침\"이라고 설명했다.",
-      "title": "OK금융, 예별손보 새 주인으로…\"종합금융그룹 도약 발판\""
+      "source_published_kst": "2026-10-08T10:45+09:00",
+      "source_title": "외신 “하이닉스 솔리다임, 내년 美IPO 추진…골드만·모건스탠리 주관사 선정”",
+      "telegram_core_fact": "8일(현지시간) 블룸버그통신은 복수의 소식통을 인용해 솔리다임이 골드만삭스와 모건스탠리를 IPO 대표 주관사로 선정했다고 보도했다. SK하이닉스의 손자회사 솔리다임이 내년 미국 증시 상장을 위한 대표 주관사단을 구성하며 기업공개(IPO) 준비에 속도를 내고 있다는 미국 현지 보도가 나왔다.",
+      "title": "외신 “하이닉스 솔리다임, 내년 美IPO 추진…골드만·모건스탠리 주관사 선정”"
     },
     "event:f3deef153cd0644c9be96040": {
       "first_seen_kst": "2026-10-01T16:19:49+09:00",
@@ -18432,22 +18564,25 @@
     "event:f402a4fc4b8175e04d205a16": {
       "first_seen_kst": "2026-10-08T08:31:37+09:00",
       "lanes": {
-        "live": "2026-10-08T08:31:37+09:00"
+        "live": "2026-10-08T13:46:05+09:00"
       },
-      "last_seen_kst": "2026-10-08T08:31:37+09:00",
-      "link": "https://www.newsis.com/view/NISX20261008_0003818341",
-      "source": "뉴시스",
-      "source_body_digest": "968a61db915917162d8626fabbc11b1a85c9337fa9cfdad1fdac066cf4c10f4b",
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12171264",
+      "source": "매일경제",
+      "source_body_digest": "a6ff44ec68726ad44adec1f96c8fff2ae8396f761bc3b7ade8287e3979b818f5",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:50c6e5a3adf7aef2ca3a97841d115dda8952dfa5341520441a7b9dea97635e02",
+      "source_fact_identity": "source_facts:v1:197284835e43e62d499c920b758ae7e911b4c647fa238118d8c076291d6d64ea",
       "source_fact_keys": [
-        "source_fact:v1:161d04f5a87b405fa2a2f2f5e104812f75f0514982cbeea86414de89eeeb9fbb",
-        "source_fact:v1:dbdad26aaa30e10303d809bc3779b86e59d3e84542e367f02ab131d0a6bafe0f"
+        "source_fact:v1:742a6af740a3c8e1e9f56b9184fa42242419810f8a6dbb5f860ee529baf9ced4",
+        "source_fact:v1:94000761696f596c07870aadc7bb172ea76a1e2c0ccaed55bb31ad70c6b60b50",
+        "source_fact:v1:975d6cccae799c9b3ff46a038f32aebf63dabac4a65b2e2e9b129126ef2a9b12",
+        "source_fact:v1:a9d96576acf4b38de548ae495a78f38c9bccbfa89fdb5e5122b9ece48bfb4fe6",
+        "source_fact:v1:e57d15f7e4b1ddf60550acc18d64cdc6669bc1f38e7310042daf01fbb48b2822"
       ],
-      "source_published_kst": "2026-10-08T08:11+09:00",
-      "source_title": "삼성전자, 3분기 호실적에 프리마켓서 1.5% 상승…SK하닉도 1%↑",
-      "telegram_core_fact": "삼성전자는 이날 프리마켓 개장 직전 연결 기준 올해 3분기 매출 195조원, 영업이익 107조4000억원의 3분기 잠정 실적을 발표했다.",
-      "title": "삼성전자, 3분기 호실적에 프리마켓서 1.5% 상승…SK하닉도 1%↑"
+      "source_published_kst": "2026-10-08T10:44+09:00",
+      "source_title": "외신 “AI가 서울 집값도 끌어올렸다…李정부 직면한 부동산 딜레마”",
+      "telegram_core_fact": "인공지능(AI) 산업 호황으로 국내 반도체 기업과 근로자들의 소득이 늘면서 서울을 비롯한 수도권 집값 상승에도 영향을 미치고 있다는 외신 분석이 나왔다.",
+      "title": "외신 “AI가 서울 집값도 끌어올렸다…李정부 직면한 부동산 딜레마”"
     },
     "event:f40d830b2064cbc5f4077e9d": {
       "first_seen_kst": "2026-09-22T13:18:41+09:00",
@@ -22892,6 +23027,40 @@
       "source_published_kst": "2026-10-07T08:04+09:00",
       "title": "\"AI발 칩 부족 우려, 물가로 번질 수도\"…샌프란 연은 총재의 경고"
     },
+    "fact:23a2e26a2ce8959b7d86643a": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818706",
+      "source": "뉴시스",
+      "source_body_digest": "576297ed1fa677a9e1a37151e3f3e7fa6a370797ef8a02459073bf5115a25208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:517ca165ac43bf32c3c0e2e3156f52b23d9c4e54de59fa642b73acf2c13a7e5d",
+      "source_fact_keys": [
+        "source_fact:v1:0545034b46d17e4597eedfc4cb707c72e6cd7f044f7787c533c6f57a4c7b279c",
+        "source_fact:v1:21dda79f0292f6ad685744db8f9270d4b825422f45785dd6fa82c7870ed4ab2c",
+        "source_fact:v1:521b78ff22fee0d4822e92f7dffbdf5d32e926f64245abc19edb7c366866bf11",
+        "source_fact:v1:5c68ca94aebd80606c3a5f308d8985f56ff05c6862a58c78381bb200baa46d0d",
+        "source_fact:v1:81b7eff0300eb5200ba29a27b8ec12488ce502b44ed88b33760f5644281ed718",
+        "source_fact:v1:83b5f4c8e62061b1780f552f746d122a632bab50d7f1d951d673c8bf70523c5d",
+        "source_fact:v1:86bf9b006651f0a94d6ed773320b8097095c7f2e12d8118678d8e49365652c1d",
+        "source_fact:v1:8ba15dc5e1cb350536ccfbab5182f34da588428de3c4aa12ba7040d090e4df58",
+        "source_fact:v1:93614b67a4afbb5a5abc40b7977acd67b0e9e9eefd8058f1f95d08aec998143c",
+        "source_fact:v1:970a9e8e92dc388ed3eee538931e7f6da8936ba620886cb0a11bc912f6ccdb63",
+        "source_fact:v1:a702b72b281a69119dee2b61a0dbcbf523f0b5617ff1d083749b8ad94376ef52",
+        "source_fact:v1:a791647f89493ddc16a92143ddd4d61308dd93dbc64b2955916b1f5c134ca5d1",
+        "source_fact:v1:dcb67dda46052222c7b7e282be24b32bb30d7e3c1cb7a8e8bbe9f09606f510c9",
+        "source_fact:v1:e05b170caca97613d7f762adccc8b977d4f6f5ead868dcfb6adbd9bc95633e7d",
+        "source_fact:v1:e7fb9205906afab2bb7a4c0c567d50a6ca0755245811190555a056323fe17b68",
+        "source_fact:v1:eaf8c6fdaa4f7f382a7508f2421f9db1d3fc105606c4bbf13f8b2835e66d3fe8"
+      ],
+      "source_published_kst": "2026-10-08T11:52+09:00",
+      "source_title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나",
+      "telegram_core_fact": "특별성과급은 세금과 보험료 등을 공제한 뒤 자사주로 지급된다.",
+      "title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나"
+    },
     "fact:23c35a578f669aa77f679980": {
       "first_seen_kst": "2026-10-06T14:52:12+09:00",
       "lanes": {
@@ -25410,6 +25579,30 @@
       "source_title": "개인정보유출 보상은 없다는 '듀오' 수천억 과징금 쿠팡과 역차별 논란",
       "telegram_core_fact": "개인정보보호위원회(이하 개보위)에 따르면 지난해 1월 듀오에서 개인정보를 취급하는 직원의 업무용 PC가 해킹돼 정회원 42만7464명의 개인정보가 유출됐다.",
       "title": "개인정보유출 보상은 없다는 '듀오' 수천억 과징금 쿠팡과 역차별 논란"
+    },
+    "fact:3b2468b989e91a177ccb3d6e": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633481",
+      "source": "이투데이",
+      "source_body_digest": "e1559f8eefc330c16fedfcd5f7d53a488d28935cfe4431b73e7655ad2b72949c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:64e1b1f802a68de5c88f2305e7b478e284c4aae7ef0fc3eba01510650555615e",
+      "source_fact_keys": [
+        "source_fact:v1:0f72c90176cc6cdbd551ae22e0fdc1838b71e97cb2bef5a2dd2888ee1fae2d67",
+        "source_fact:v1:4209e75ea4d186d0569e0e9d686c212597ecc7b180eb3892262f9cc25d36ad78",
+        "source_fact:v1:5ae8ed2e6c09330dfa5c7347ee98c7a26b6249a675e65fffd7247f798b53643b",
+        "source_fact:v1:630e798ce22e67ee081f887cc45f77767a115c0cd6959ebd18b25c5c2c6c473b",
+        "source_fact:v1:8ce3148685ac9552bb28f254ecbfaead4b4e83b3fb50d9c7e8ff0ea0386e4177",
+        "source_fact:v1:99a31cddfc76ef8a7d82431cf68eae41d0d244d7644cc84cbc1b211d3b84b7a4"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "2년 만에 끝난 ‘2세 경영’…적자 늪 모닝글로리, 백약이 무효?",
+      "telegram_core_fact": "모닝글로리는 43기 6억원의 영업이익을 냈으나 한 전 대표 취임 후인 44기(-5억원) 적자 전환한 이래 45기(-8억원), 46기(-6억원)까지 3개 회계연도 연속 영업적자의 늪에서 벗어나지 못하고 있다.",
+      "title": "2년 만에 끝난 ‘2세 경영’…적자 늪 모닝글로리, 백약이 무효?"
     },
     "fact:3b4a994f8dfa598d9e2024db": {
       "first_seen_kst": "2026-10-08T01:43:44+09:00",
@@ -32812,6 +33005,30 @@
       "source_published_kst": "2026-10-07T16:01+09:00",
       "title": "6800선으로 내려온 코스피…삼전 실적·FOMC 의사록 등 변동성↑"
     },
+    "fact:8658fb1464dc09196a4c17c7": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03053686645610952",
+      "source": "이데일리",
+      "source_body_digest": "babfcbfcfc8252115ea6399f76c7874ca04503378b5c983354ba3617902f87ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9b3e86dd0d37a8aefd8a9b0dbb48d37a60e34be5fc3fcf273798281b8a07f1e4",
+      "source_fact_keys": [
+        "source_fact:v1:14b8d245cf1f4967c0c4a78dcec26e7936ae486e955cf51300ee7ffb4126df03",
+        "source_fact:v1:357937484900847292d4dc4e0c6181e9332fd1e79a48f91e82b8d91eb89fbe22",
+        "source_fact:v1:498e99fa38b2dd17ae2f23a5f9745a9f43363b41880c0d74fb23dded4121b88e",
+        "source_fact:v1:8ce3dac6478ce8a0075fbb2e3e4cdd0117b52d5dd38ad34918a52ddc19e515bb",
+        "source_fact:v1:8d0aa45b2f811e146d4dbd1e9863238aa66b327c118f393d6a570d2e0788071b",
+        "source_fact:v1:c601ea11f818d9bacc77f8607a50520cabf32600f72c0d3c7c659d87ea704f18"
+      ],
+      "source_published_kst": "2026-10-08T10:40+09:00",
+      "source_title": "HPE, AMD 최신 CPU 서버 4종 공개…AI 추론 시장 정조준",
+      "telegram_core_fact": "인공지능(AI) 데이터센터 시장이 학습용 그래픽처리장치(GPU) 중심에서 AI 추론과 데이터 처리 등 실제 서비스 운영을 위한 서버 인프라 경쟁으로 확대되고 있다.",
+      "title": "HPE, AMD 최신 CPU 서버 4종 공개…AI 추론 시장 정조준"
+    },
     "fact:865f53f4123b577d9226e2be": {
       "first_seen_kst": "2026-10-06T00:18:21+09:00",
       "lanes": {
@@ -33230,6 +33447,27 @@
       "source_title": "브리티시 아메리칸 타바코, 12월 23일까지 메릴린치 통한 자사주 매입",
       "telegram_core_fact": "브리티시 아메리칸 타바코(BTI)가 메릴린치인터내셔널(Merrill Lynch International)과 자사주 매입 계약을 체결하고, 10월 13일부터 12월 23일 영업 종료 시점까지 보통주를 매입해 전량 소각하기로 했다고 10월 7일 발표했다.",
       "title": "브리티시 아메리칸 타바코, 12월 23일까지 메릴린치 통한 자사주 매입"
+    },
+    "fact:8a088fdfe216fc8afd487cc6": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008074700002",
+      "source": "연합뉴스",
+      "source_body_digest": "6e0f0f6bf17c0edcaa7f1d264b5ef181eb75de8a1358707d116285855e83f489",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3ae5c5ec3af0e403343fc513f01e6ab83c8f25d8744b4c3b21729b83a4a6b19",
+      "source_fact_keys": [
+        "source_fact:v1:252df806dd79e1f0508a3ba95f048680b92e77c7a6b17e023f072314a0cc0a11",
+        "source_fact:v1:59ae3d6cce2d505092a02c5b9d1e5a1d08d1cdd3d475423c86393ba54dfeabd3",
+        "source_fact:v1:70e50fbc8a07db640ff6e078d3a9ae3826dae38225cd028d45bdad4821ee8b61"
+      ],
+      "source_published_kst": "2026-10-08T10:50+09:00",
+      "source_title": "우리銀, '수출선도기업대출' 출시…시설자금 최대 15% 추가한도 | 연합뉴스",
+      "telegram_core_fact": "우리은행은 수출기업이 시설자금 대출을 신청할 경우 최대 15%의 추가 한도를 지원한다.",
+      "title": "우리銀, '수출선도기업대출' 출시…시설자금 최대 15% 추가한도 | 연합뉴스"
     },
     "fact:8a1661fe80811999d3440882": {
       "first_seen_kst": "2026-10-08T02:57:10+09:00",
@@ -37420,6 +37658,29 @@
       "telegram_core_fact": "보고서는 \"바이오 원부자재는 원가, 품질, 공급 안전성을 좌우하는 전략 자산\"이라며 \"의약품 제조 품목 허가에 등록된 원부자재는 교체 시 재검증 비용이 막대해 안정적 매출의 원천이 된다\"고 짚었다.",
       "title": "세계 최대 바이오 생산기지 송도의 역설…원부자재 95% 수입 | 연합뉴스"
     },
+    "fact:b150e5c6afd06f3a714f3a8c": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.mk.co.kr/news/world/12171265",
+      "source": "매일경제",
+      "source_body_digest": "145c4300f20755ffb892f9caa65c32eb0d72296d94626708c4ac8eff147bc9a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:97b1d16b8b5f2cb7a231ef1ac532abeb827640ae51b8811281b049725ab453c1",
+      "source_fact_keys": [
+        "source_fact:v1:49483681bbdf6cc30a460d607d1a264a64e427c7f94b4ea186fc8e98be3bc2d9",
+        "source_fact:v1:50b7887aa34bdb40569cee745271cb16d4779614be66df8610971c9b72a2f237",
+        "source_fact:v1:c07364dd5550800ceba28350a303ae481bd6a6807812be07f1a9fae40eeefd66",
+        "source_fact:v1:c96668288b611f2e829dee4780bc71d2b1bcc5fdaf04fc6b93a05e313fc9ed73",
+        "source_fact:v1:f916bf554d15a04fb51a896c559b170df95a5d28d7c7b2193eb5a8e23f464cad"
+      ],
+      "source_published_kst": "2026-10-08T10:45+09:00",
+      "source_title": "외신 “하이닉스 솔리다임, 내년 美IPO 추진…골드만·모건스탠리 주관사 선정”",
+      "telegram_core_fact": "8일(현지시간) 블룸버그통신은 복수의 소식통을 인용해 솔리다임이 골드만삭스와 모건스탠리를 IPO 대표 주관사로 선정했다고 보도했다. SK하이닉스의 손자회사 솔리다임이 내년 미국 증시 상장을 위한 대표 주관사단을 구성하며 기업공개(IPO) 준비에 속도를 내고 있다는 미국 현지 보도가 나왔다.",
+      "title": "외신 “하이닉스 솔리다임, 내년 美IPO 추진…골드만·모건스탠리 주관사 선정”"
+    },
     "fact:b1787f1d01f6e5b04638bf8c": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -37576,6 +37837,29 @@
       ],
       "source_published_kst": "2026-10-05T22:45+09:00",
       "title": "[美특징주]PTC, 슈나이더일렉트릭에 피인수 소식에 급등"
+    },
+    "fact:b1dd751e156f9954c2e01318": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12171264",
+      "source": "매일경제",
+      "source_body_digest": "a6ff44ec68726ad44adec1f96c8fff2ae8396f761bc3b7ade8287e3979b818f5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:197284835e43e62d499c920b758ae7e911b4c647fa238118d8c076291d6d64ea",
+      "source_fact_keys": [
+        "source_fact:v1:742a6af740a3c8e1e9f56b9184fa42242419810f8a6dbb5f860ee529baf9ced4",
+        "source_fact:v1:94000761696f596c07870aadc7bb172ea76a1e2c0ccaed55bb31ad70c6b60b50",
+        "source_fact:v1:975d6cccae799c9b3ff46a038f32aebf63dabac4a65b2e2e9b129126ef2a9b12",
+        "source_fact:v1:a9d96576acf4b38de548ae495a78f38c9bccbfa89fdb5e5122b9ece48bfb4fe6",
+        "source_fact:v1:e57d15f7e4b1ddf60550acc18d64cdc6669bc1f38e7310042daf01fbb48b2822"
+      ],
+      "source_published_kst": "2026-10-08T10:44+09:00",
+      "source_title": "외신 “AI가 서울 집값도 끌어올렸다…李정부 직면한 부동산 딜레마”",
+      "telegram_core_fact": "인공지능(AI) 산업 호황으로 국내 반도체 기업과 근로자들의 소득이 늘면서 서울을 비롯한 수도권 집값 상승에도 영향을 미치고 있다는 외신 분석이 나왔다.",
+      "title": "외신 “AI가 서울 집값도 끌어올렸다…李정부 직면한 부동산 딜레마”"
     },
     "fact:b1e0f1ea4aa7e73fa4519697": {
       "first_seen_kst": "2026-10-06T23:19:02+09:00",
@@ -41970,6 +42254,26 @@
       "source_title": "중수청, 출범 첫날 접수 고소·고발건 배당 시작",
       "telegram_core_fact": "출범 엿새째를 맞은 중대범죄수사청(중수청)이 첫날 접수한 고소·고발 사건들을 배당하고 검토에 착수했다.",
       "title": "중수청, 출범 첫날 접수 고소·고발건 배당 시작"
+    },
+    "fact:dd5e755552489d930cf460f8": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818809",
+      "source": "뉴시스",
+      "source_body_digest": "47be18800de6bd60301b474b1172f9ee1a81f3def52332e41fa346d6de9559a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cc005825f19a6e839991225b0f44cf969da982f4cbfca660459963b4ba218616",
+      "source_fact_keys": [
+        "source_fact:v1:78b17ff3127b9682b34ef8bea93794d005f366d5d8588a6077f770ac55655d9c",
+        "source_fact:v1:d0eb8cf4196e260e0935fc581c04a38d3d2f18afd45368a6ff10ed60aa07dc91"
+      ],
+      "source_published_kst": "2026-10-08T10:56+09:00",
+      "source_title": "AIDC 병목, GPU·전력서 메모리로…정석근 SK하이퍼 대표 \"韓에 새 기회\"",
+      "telegram_core_fact": "하지만 대규모 추론 수요가 늘어나면 이를 처리할 수 있는 '메모리 역량'과 지속적인 투자를 가능하게 할 '사업성과 수익구조'가 새로운 핵심 경쟁요인이 될 수 있다고 내다봤다.",
+      "title": "AIDC 병목, GPU·전력서 메모리로…정석근 SK하이퍼 대표 \"韓에 새 기회\""
     },
     "fact:dd643114d83cb3446ba19093": {
       "first_seen_kst": "2026-10-06T20:37:39+09:00",
@@ -46724,6 +47028,30 @@
       "source": "뉴시스",
       "title": "한은 \"10월 소비자물가 3% 내외의 높은 수준 이어갈 것\""
     },
+    "link:0702be48b569b394039ea558": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633481",
+      "source": "이투데이",
+      "source_body_digest": "e1559f8eefc330c16fedfcd5f7d53a488d28935cfe4431b73e7655ad2b72949c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:64e1b1f802a68de5c88f2305e7b478e284c4aae7ef0fc3eba01510650555615e",
+      "source_fact_keys": [
+        "source_fact:v1:0f72c90176cc6cdbd551ae22e0fdc1838b71e97cb2bef5a2dd2888ee1fae2d67",
+        "source_fact:v1:4209e75ea4d186d0569e0e9d686c212597ecc7b180eb3892262f9cc25d36ad78",
+        "source_fact:v1:5ae8ed2e6c09330dfa5c7347ee98c7a26b6249a675e65fffd7247f798b53643b",
+        "source_fact:v1:630e798ce22e67ee081f887cc45f77767a115c0cd6959ebd18b25c5c2c6c473b",
+        "source_fact:v1:8ce3148685ac9552bb28f254ecbfaead4b4e83b3fb50d9c7e8ff0ea0386e4177",
+        "source_fact:v1:99a31cddfc76ef8a7d82431cf68eae41d0d244d7644cc84cbc1b211d3b84b7a4"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "2년 만에 끝난 ‘2세 경영’…적자 늪 모닝글로리, 백약이 무효?",
+      "telegram_core_fact": "모닝글로리는 43기 6억원의 영업이익을 냈으나 한 전 대표 취임 후인 44기(-5억원) 적자 전환한 이래 45기(-8억원), 46기(-6억원)까지 3개 회계연도 연속 영업적자의 늪에서 벗어나지 못하고 있다.",
+      "title": "2년 만에 끝난 ‘2세 경영’…적자 늪 모닝글로리, 백약이 무효?"
+    },
     "link:07172adec13ede9b09efb6b4": {
       "first_seen_kst": "2026-10-06T16:09:23+09:00",
       "lanes": {
@@ -50833,6 +51161,27 @@
       ],
       "source_published_kst": "2026-10-07T13:37+09:00",
       "title": "대구·경북 제조업 생산 엇갈려…소비는 동반 감소"
+    },
+    "link:1eadb27ca0321c9c58545096": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008074700002",
+      "source": "연합뉴스",
+      "source_body_digest": "6e0f0f6bf17c0edcaa7f1d264b5ef181eb75de8a1358707d116285855e83f489",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3ae5c5ec3af0e403343fc513f01e6ab83c8f25d8744b4c3b21729b83a4a6b19",
+      "source_fact_keys": [
+        "source_fact:v1:252df806dd79e1f0508a3ba95f048680b92e77c7a6b17e023f072314a0cc0a11",
+        "source_fact:v1:59ae3d6cce2d505092a02c5b9d1e5a1d08d1cdd3d475423c86393ba54dfeabd3",
+        "source_fact:v1:70e50fbc8a07db640ff6e078d3a9ae3826dae38225cd028d45bdad4821ee8b61"
+      ],
+      "source_published_kst": "2026-10-08T10:50+09:00",
+      "source_title": "우리銀, '수출선도기업대출' 출시…시설자금 최대 15% 추가한도 | 연합뉴스",
+      "telegram_core_fact": "우리은행은 수출기업이 시설자금 대출을 신청할 경우 최대 15%의 추가 한도를 지원한다.",
+      "title": "우리銀, '수출선도기업대출' 출시…시설자금 최대 15% 추가한도 | 연합뉴스"
     },
     "link:1eaeef36cc8d820d0213714c": {
       "first_seen_kst": "2026-10-02T16:20:30+09:00",
@@ -59997,6 +60346,29 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T11:12+09:00",
       "title": "\"공짜로 쓰게 해줄 때 알아봤어야\"…미·중 AI 무기화 경고음[주末머니]"
+    },
+    "link:54049f6dd97239879a7dd69a": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12171264",
+      "source": "매일경제",
+      "source_body_digest": "a6ff44ec68726ad44adec1f96c8fff2ae8396f761bc3b7ade8287e3979b818f5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:197284835e43e62d499c920b758ae7e911b4c647fa238118d8c076291d6d64ea",
+      "source_fact_keys": [
+        "source_fact:v1:742a6af740a3c8e1e9f56b9184fa42242419810f8a6dbb5f860ee529baf9ced4",
+        "source_fact:v1:94000761696f596c07870aadc7bb172ea76a1e2c0ccaed55bb31ad70c6b60b50",
+        "source_fact:v1:975d6cccae799c9b3ff46a038f32aebf63dabac4a65b2e2e9b129126ef2a9b12",
+        "source_fact:v1:a9d96576acf4b38de548ae495a78f38c9bccbfa89fdb5e5122b9ece48bfb4fe6",
+        "source_fact:v1:e57d15f7e4b1ddf60550acc18d64cdc6669bc1f38e7310042daf01fbb48b2822"
+      ],
+      "source_published_kst": "2026-10-08T10:44+09:00",
+      "source_title": "외신 “AI가 서울 집값도 끌어올렸다…李정부 직면한 부동산 딜레마”",
+      "telegram_core_fact": "인공지능(AI) 산업 호황으로 국내 반도체 기업과 근로자들의 소득이 늘면서 서울을 비롯한 수도권 집값 상승에도 영향을 미치고 있다는 외신 분석이 나왔다.",
+      "title": "외신 “AI가 서울 집값도 끌어올렸다…李정부 직면한 부동산 딜레마”"
     },
     "link:541ba978032d536cca03ce50": {
       "first_seen_kst": "2026-10-03T22:08:29+09:00",
@@ -74354,6 +74726,26 @@
       "source_published_kst": "2026-10-06T08:17+09:00",
       "title": "나스닥 사상 최고…비트코인 8만5000달러대[코인 모닝콜]"
     },
+    "link:a53dfb9624b20d21603a9d93": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818809",
+      "source": "뉴시스",
+      "source_body_digest": "47be18800de6bd60301b474b1172f9ee1a81f3def52332e41fa346d6de9559a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cc005825f19a6e839991225b0f44cf969da982f4cbfca660459963b4ba218616",
+      "source_fact_keys": [
+        "source_fact:v1:78b17ff3127b9682b34ef8bea93794d005f366d5d8588a6077f770ac55655d9c",
+        "source_fact:v1:d0eb8cf4196e260e0935fc581c04a38d3d2f18afd45368a6ff10ed60aa07dc91"
+      ],
+      "source_published_kst": "2026-10-08T10:56+09:00",
+      "source_title": "AIDC 병목, GPU·전력서 메모리로…정석근 SK하이퍼 대표 \"韓에 새 기회\"",
+      "telegram_core_fact": "하지만 대규모 추론 수요가 늘어나면 이를 처리할 수 있는 '메모리 역량'과 지속적인 투자를 가능하게 할 '사업성과 수익구조'가 새로운 핵심 경쟁요인이 될 수 있다고 내다봤다.",
+      "title": "AIDC 병목, GPU·전력서 메모리로…정석근 SK하이퍼 대표 \"韓에 새 기회\""
+    },
     "link:a53f7582005066ef98b2af4f": {
       "first_seen_kst": "2026-09-26T20:35:23+09:00",
       "lanes": {
@@ -81193,6 +81585,29 @@
       "source_published_kst": "2026-10-06T11:11+09:00",
       "title": "쿠콘, 펫보험 데이터 시장 진출…현대해상에 조회 API 공급"
     },
+    "link:cd96cd2ef177ccaa3a3d5d6d": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.mk.co.kr/news/world/12171265",
+      "source": "매일경제",
+      "source_body_digest": "145c4300f20755ffb892f9caa65c32eb0d72296d94626708c4ac8eff147bc9a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:97b1d16b8b5f2cb7a231ef1ac532abeb827640ae51b8811281b049725ab453c1",
+      "source_fact_keys": [
+        "source_fact:v1:49483681bbdf6cc30a460d607d1a264a64e427c7f94b4ea186fc8e98be3bc2d9",
+        "source_fact:v1:50b7887aa34bdb40569cee745271cb16d4779614be66df8610971c9b72a2f237",
+        "source_fact:v1:c07364dd5550800ceba28350a303ae481bd6a6807812be07f1a9fae40eeefd66",
+        "source_fact:v1:c96668288b611f2e829dee4780bc71d2b1bcc5fdaf04fc6b93a05e313fc9ed73",
+        "source_fact:v1:f916bf554d15a04fb51a896c559b170df95a5d28d7c7b2193eb5a8e23f464cad"
+      ],
+      "source_published_kst": "2026-10-08T10:45+09:00",
+      "source_title": "외신 “하이닉스 솔리다임, 내년 美IPO 추진…골드만·모건스탠리 주관사 선정”",
+      "telegram_core_fact": "8일(현지시간) 블룸버그통신은 복수의 소식통을 인용해 솔리다임이 골드만삭스와 모건스탠리를 IPO 대표 주관사로 선정했다고 보도했다. SK하이닉스의 손자회사 솔리다임이 내년 미국 증시 상장을 위한 대표 주관사단을 구성하며 기업공개(IPO) 준비에 속도를 내고 있다는 미국 현지 보도가 나왔다.",
+      "title": "외신 “하이닉스 솔리다임, 내년 美IPO 추진…골드만·모건스탠리 주관사 선정”"
+    },
     "link:cdd2a2c14219901fdf46757a": {
       "first_seen_kst": "2026-10-05T08:24:29+09:00",
       "lanes": {
@@ -83328,6 +83743,30 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T11:30+09:00",
       "title": "암로, 韓 성장률 3.1→3.3% 상향…물가도 2.6→2.7%"
+    },
+    "link:da0b57b27b0b73393334bcf4": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03053686645610952",
+      "source": "이데일리",
+      "source_body_digest": "babfcbfcfc8252115ea6399f76c7874ca04503378b5c983354ba3617902f87ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9b3e86dd0d37a8aefd8a9b0dbb48d37a60e34be5fc3fcf273798281b8a07f1e4",
+      "source_fact_keys": [
+        "source_fact:v1:14b8d245cf1f4967c0c4a78dcec26e7936ae486e955cf51300ee7ffb4126df03",
+        "source_fact:v1:357937484900847292d4dc4e0c6181e9332fd1e79a48f91e82b8d91eb89fbe22",
+        "source_fact:v1:498e99fa38b2dd17ae2f23a5f9745a9f43363b41880c0d74fb23dded4121b88e",
+        "source_fact:v1:8ce3dac6478ce8a0075fbb2e3e4cdd0117b52d5dd38ad34918a52ddc19e515bb",
+        "source_fact:v1:8d0aa45b2f811e146d4dbd1e9863238aa66b327c118f393d6a570d2e0788071b",
+        "source_fact:v1:c601ea11f818d9bacc77f8607a50520cabf32600f72c0d3c7c659d87ea704f18"
+      ],
+      "source_published_kst": "2026-10-08T10:40+09:00",
+      "source_title": "HPE, AMD 최신 CPU 서버 4종 공개…AI 추론 시장 정조준",
+      "telegram_core_fact": "인공지능(AI) 데이터센터 시장이 학습용 그래픽처리장치(GPU) 중심에서 AI 추론과 데이터 처리 등 실제 서비스 운영을 위한 서버 인프라 경쟁으로 확대되고 있다.",
+      "title": "HPE, AMD 최신 CPU 서버 4종 공개…AI 추론 시장 정조준"
     },
     "link:da0d0e49138ce568e8f999ae": {
       "first_seen_kst": "2026-09-21T17:23:09+09:00",
@@ -86048,6 +86487,40 @@
       "source_title": "금양 회계위반 과징금 76억3300만원⋯대표 등 6명도 제재",
       "telegram_core_fact": "금양이 허위 세금계산서 등을 이용해 매출을 부풀리고 몽골법인 관련 회계처리를 잘못한 혐의로 76억3300만원의 과징금을 부과받았다.",
       "title": "금양 회계위반 과징금 76억3300만원⋯대표 등 6명도 제재"
+    },
+    "link:e8932d786c56f4fb9895103f": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818706",
+      "source": "뉴시스",
+      "source_body_digest": "576297ed1fa677a9e1a37151e3f3e7fa6a370797ef8a02459073bf5115a25208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:517ca165ac43bf32c3c0e2e3156f52b23d9c4e54de59fa642b73acf2c13a7e5d",
+      "source_fact_keys": [
+        "source_fact:v1:0545034b46d17e4597eedfc4cb707c72e6cd7f044f7787c533c6f57a4c7b279c",
+        "source_fact:v1:21dda79f0292f6ad685744db8f9270d4b825422f45785dd6fa82c7870ed4ab2c",
+        "source_fact:v1:521b78ff22fee0d4822e92f7dffbdf5d32e926f64245abc19edb7c366866bf11",
+        "source_fact:v1:5c68ca94aebd80606c3a5f308d8985f56ff05c6862a58c78381bb200baa46d0d",
+        "source_fact:v1:81b7eff0300eb5200ba29a27b8ec12488ce502b44ed88b33760f5644281ed718",
+        "source_fact:v1:83b5f4c8e62061b1780f552f746d122a632bab50d7f1d951d673c8bf70523c5d",
+        "source_fact:v1:86bf9b006651f0a94d6ed773320b8097095c7f2e12d8118678d8e49365652c1d",
+        "source_fact:v1:8ba15dc5e1cb350536ccfbab5182f34da588428de3c4aa12ba7040d090e4df58",
+        "source_fact:v1:93614b67a4afbb5a5abc40b7977acd67b0e9e9eefd8058f1f95d08aec998143c",
+        "source_fact:v1:970a9e8e92dc388ed3eee538931e7f6da8936ba620886cb0a11bc912f6ccdb63",
+        "source_fact:v1:a702b72b281a69119dee2b61a0dbcbf523f0b5617ff1d083749b8ad94376ef52",
+        "source_fact:v1:a791647f89493ddc16a92143ddd4d61308dd93dbc64b2955916b1f5c134ca5d1",
+        "source_fact:v1:dcb67dda46052222c7b7e282be24b32bb30d7e3c1cb7a8e8bbe9f09606f510c9",
+        "source_fact:v1:e05b170caca97613d7f762adccc8b977d4f6f5ead868dcfb6adbd9bc95633e7d",
+        "source_fact:v1:e7fb9205906afab2bb7a4c0c567d50a6ca0755245811190555a056323fe17b68",
+        "source_fact:v1:eaf8c6fdaa4f7f382a7508f2421f9db1d3fc105606c4bbf13f8b2835e66d3fe8"
+      ],
+      "source_published_kst": "2026-10-08T11:52+09:00",
+      "source_title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나",
+      "telegram_core_fact": "특별성과급은 세금과 보험료 등을 공제한 뒤 자사주로 지급된다.",
+      "title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나"
     },
     "link:e9075a573b2e19fdb789b113": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
@@ -90918,6 +91391,40 @@
       "link": "https://www.yna.co.kr/view/AKR20260918027100003",
       "source": "연합뉴스",
       "title": "SK그룹 전문경영인 부회장 3명 SK하이닉스로 보임 | 연합뉴스"
+    },
+    "original:05ce92ec666ea0b3d6472a27": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818706",
+      "source": "뉴시스",
+      "source_body_digest": "576297ed1fa677a9e1a37151e3f3e7fa6a370797ef8a02459073bf5115a25208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:517ca165ac43bf32c3c0e2e3156f52b23d9c4e54de59fa642b73acf2c13a7e5d",
+      "source_fact_keys": [
+        "source_fact:v1:0545034b46d17e4597eedfc4cb707c72e6cd7f044f7787c533c6f57a4c7b279c",
+        "source_fact:v1:21dda79f0292f6ad685744db8f9270d4b825422f45785dd6fa82c7870ed4ab2c",
+        "source_fact:v1:521b78ff22fee0d4822e92f7dffbdf5d32e926f64245abc19edb7c366866bf11",
+        "source_fact:v1:5c68ca94aebd80606c3a5f308d8985f56ff05c6862a58c78381bb200baa46d0d",
+        "source_fact:v1:81b7eff0300eb5200ba29a27b8ec12488ce502b44ed88b33760f5644281ed718",
+        "source_fact:v1:83b5f4c8e62061b1780f552f746d122a632bab50d7f1d951d673c8bf70523c5d",
+        "source_fact:v1:86bf9b006651f0a94d6ed773320b8097095c7f2e12d8118678d8e49365652c1d",
+        "source_fact:v1:8ba15dc5e1cb350536ccfbab5182f34da588428de3c4aa12ba7040d090e4df58",
+        "source_fact:v1:93614b67a4afbb5a5abc40b7977acd67b0e9e9eefd8058f1f95d08aec998143c",
+        "source_fact:v1:970a9e8e92dc388ed3eee538931e7f6da8936ba620886cb0a11bc912f6ccdb63",
+        "source_fact:v1:a702b72b281a69119dee2b61a0dbcbf523f0b5617ff1d083749b8ad94376ef52",
+        "source_fact:v1:a791647f89493ddc16a92143ddd4d61308dd93dbc64b2955916b1f5c134ca5d1",
+        "source_fact:v1:dcb67dda46052222c7b7e282be24b32bb30d7e3c1cb7a8e8bbe9f09606f510c9",
+        "source_fact:v1:e05b170caca97613d7f762adccc8b977d4f6f5ead868dcfb6adbd9bc95633e7d",
+        "source_fact:v1:e7fb9205906afab2bb7a4c0c567d50a6ca0755245811190555a056323fe17b68",
+        "source_fact:v1:eaf8c6fdaa4f7f382a7508f2421f9db1d3fc105606c4bbf13f8b2835e66d3fe8"
+      ],
+      "source_published_kst": "2026-10-08T11:52+09:00",
+      "source_title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나",
+      "telegram_core_fact": "특별성과급은 세금과 보험료 등을 공제한 뒤 자사주로 지급된다.",
+      "title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나"
     },
     "original:05ed5ec455d34522ccc1570e": {
       "first_seen_kst": "2026-10-07T23:10:06+09:00",
@@ -98401,6 +98908,30 @@
       "telegram_core_fact": "은행 업종은 밸류업 프로그램 이후 총주주환원율이 과거 20%대에서 50%대로 높아졌고, 주가순자산비율(P/B) 역시 0.3~0.4배 수준에서 0.7~0.9배까지 상승했다.",
       "title": "주춤한 은행주⋯증권가 “4분기 마진 개선·주주환원이 기폭제”"
     },
+    "original:31c0e4acc892900f9268fa6c": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03053686645610952",
+      "source": "이데일리",
+      "source_body_digest": "babfcbfcfc8252115ea6399f76c7874ca04503378b5c983354ba3617902f87ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9b3e86dd0d37a8aefd8a9b0dbb48d37a60e34be5fc3fcf273798281b8a07f1e4",
+      "source_fact_keys": [
+        "source_fact:v1:14b8d245cf1f4967c0c4a78dcec26e7936ae486e955cf51300ee7ffb4126df03",
+        "source_fact:v1:357937484900847292d4dc4e0c6181e9332fd1e79a48f91e82b8d91eb89fbe22",
+        "source_fact:v1:498e99fa38b2dd17ae2f23a5f9745a9f43363b41880c0d74fb23dded4121b88e",
+        "source_fact:v1:8ce3dac6478ce8a0075fbb2e3e4cdd0117b52d5dd38ad34918a52ddc19e515bb",
+        "source_fact:v1:8d0aa45b2f811e146d4dbd1e9863238aa66b327c118f393d6a570d2e0788071b",
+        "source_fact:v1:c601ea11f818d9bacc77f8607a50520cabf32600f72c0d3c7c659d87ea704f18"
+      ],
+      "source_published_kst": "2026-10-08T10:40+09:00",
+      "source_title": "HPE, AMD 최신 CPU 서버 4종 공개…AI 추론 시장 정조준",
+      "telegram_core_fact": "인공지능(AI) 데이터센터 시장이 학습용 그래픽처리장치(GPU) 중심에서 AI 추론과 데이터 처리 등 실제 서비스 운영을 위한 서버 인프라 경쟁으로 확대되고 있다.",
+      "title": "HPE, AMD 최신 CPU 서버 4종 공개…AI 추론 시장 정조준"
+    },
     "original:31d57d27d7175944d6db18e2": {
       "first_seen_kst": "2026-10-06T01:51:09+09:00",
       "lanes": {
@@ -98544,6 +99075,30 @@
       "source": "뉴시스",
       "source_event_identity": "",
       "title": "현대차그룹, 美 3분기 판매 포드에 1195대 차…첫 추월 문턱서 멈췄다"
+    },
+    "original:32d16057f39ea8e34ea95313": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633481",
+      "source": "이투데이",
+      "source_body_digest": "e1559f8eefc330c16fedfcd5f7d53a488d28935cfe4431b73e7655ad2b72949c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:64e1b1f802a68de5c88f2305e7b478e284c4aae7ef0fc3eba01510650555615e",
+      "source_fact_keys": [
+        "source_fact:v1:0f72c90176cc6cdbd551ae22e0fdc1838b71e97cb2bef5a2dd2888ee1fae2d67",
+        "source_fact:v1:4209e75ea4d186d0569e0e9d686c212597ecc7b180eb3892262f9cc25d36ad78",
+        "source_fact:v1:5ae8ed2e6c09330dfa5c7347ee98c7a26b6249a675e65fffd7247f798b53643b",
+        "source_fact:v1:630e798ce22e67ee081f887cc45f77767a115c0cd6959ebd18b25c5c2c6c473b",
+        "source_fact:v1:8ce3148685ac9552bb28f254ecbfaead4b4e83b3fb50d9c7e8ff0ea0386e4177",
+        "source_fact:v1:99a31cddfc76ef8a7d82431cf68eae41d0d244d7644cc84cbc1b211d3b84b7a4"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "2년 만에 끝난 ‘2세 경영’…적자 늪 모닝글로리, 백약이 무효?",
+      "telegram_core_fact": "모닝글로리는 43기 6억원의 영업이익을 냈으나 한 전 대표 취임 후인 44기(-5억원) 적자 전환한 이래 45기(-8억원), 46기(-6억원)까지 3개 회계연도 연속 영업적자의 늪에서 벗어나지 못하고 있다.",
+      "title": "2년 만에 끝난 ‘2세 경영’…적자 늪 모닝글로리, 백약이 무효?"
     },
     "original:32f5d5293728213ef72d4c24": {
       "first_seen_kst": "2026-10-06T19:33:48+09:00",
@@ -102854,6 +103409,26 @@
       "source_published_kst": "2026-10-03T07:00+09:00",
       "title": "세계식량가격 석 달째 상승…설탕 6.1%·곡물 5.1%↑"
     },
+    "original:49d70c3d0a448b25a8e04446": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818809",
+      "source": "뉴시스",
+      "source_body_digest": "47be18800de6bd60301b474b1172f9ee1a81f3def52332e41fa346d6de9559a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cc005825f19a6e839991225b0f44cf969da982f4cbfca660459963b4ba218616",
+      "source_fact_keys": [
+        "source_fact:v1:78b17ff3127b9682b34ef8bea93794d005f366d5d8588a6077f770ac55655d9c",
+        "source_fact:v1:d0eb8cf4196e260e0935fc581c04a38d3d2f18afd45368a6ff10ed60aa07dc91"
+      ],
+      "source_published_kst": "2026-10-08T10:56+09:00",
+      "source_title": "AIDC 병목, GPU·전력서 메모리로…정석근 SK하이퍼 대표 \"韓에 새 기회\"",
+      "telegram_core_fact": "하지만 대규모 추론 수요가 늘어나면 이를 처리할 수 있는 '메모리 역량'과 지속적인 투자를 가능하게 할 '사업성과 수익구조'가 새로운 핵심 경쟁요인이 될 수 있다고 내다봤다.",
+      "title": "AIDC 병목, GPU·전력서 메모리로…정석근 SK하이퍼 대표 \"韓에 새 기회\""
+    },
     "original:49f68e2990029019eeee449d": {
       "first_seen_kst": "2026-09-30T08:08:30+09:00",
       "lanes": {
@@ -103756,6 +104331,29 @@
       ],
       "source_published_kst": "2026-10-05T21:21+09:00",
       "title": "C.H. 로빈슨, RXO 58억 달러 인수 합의…3억 달러 시너지 목표"
+    },
+    "original:4ecc0dfad24634dc9bcb915c": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.mk.co.kr/news/world/12171265",
+      "source": "매일경제",
+      "source_body_digest": "145c4300f20755ffb892f9caa65c32eb0d72296d94626708c4ac8eff147bc9a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:97b1d16b8b5f2cb7a231ef1ac532abeb827640ae51b8811281b049725ab453c1",
+      "source_fact_keys": [
+        "source_fact:v1:49483681bbdf6cc30a460d607d1a264a64e427c7f94b4ea186fc8e98be3bc2d9",
+        "source_fact:v1:50b7887aa34bdb40569cee745271cb16d4779614be66df8610971c9b72a2f237",
+        "source_fact:v1:c07364dd5550800ceba28350a303ae481bd6a6807812be07f1a9fae40eeefd66",
+        "source_fact:v1:c96668288b611f2e829dee4780bc71d2b1bcc5fdaf04fc6b93a05e313fc9ed73",
+        "source_fact:v1:f916bf554d15a04fb51a896c559b170df95a5d28d7c7b2193eb5a8e23f464cad"
+      ],
+      "source_published_kst": "2026-10-08T10:45+09:00",
+      "source_title": "외신 “하이닉스 솔리다임, 내년 美IPO 추진…골드만·모건스탠리 주관사 선정”",
+      "telegram_core_fact": "8일(현지시간) 블룸버그통신은 복수의 소식통을 인용해 솔리다임이 골드만삭스와 모건스탠리를 IPO 대표 주관사로 선정했다고 보도했다. SK하이닉스의 손자회사 솔리다임이 내년 미국 증시 상장을 위한 대표 주관사단을 구성하며 기업공개(IPO) 준비에 속도를 내고 있다는 미국 현지 보도가 나왔다.",
+      "title": "외신 “하이닉스 솔리다임, 내년 美IPO 추진…골드만·모건스탠리 주관사 선정”"
     },
     "original:4ece24cad3f83d220df115fd": {
       "first_seen_kst": "2026-10-07T05:13:11+09:00",
@@ -113712,6 +114310,27 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T17:44+09:00",
       "title": "[단독] 근로기준법 '5인 미만' 적용, 정부 보고서도 우려 일색"
+    },
+    "original:8b8a602bb5dc0ce39a7a0a11": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008074700002",
+      "source": "연합뉴스",
+      "source_body_digest": "6e0f0f6bf17c0edcaa7f1d264b5ef181eb75de8a1358707d116285855e83f489",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3ae5c5ec3af0e403343fc513f01e6ab83c8f25d8744b4c3b21729b83a4a6b19",
+      "source_fact_keys": [
+        "source_fact:v1:252df806dd79e1f0508a3ba95f048680b92e77c7a6b17e023f072314a0cc0a11",
+        "source_fact:v1:59ae3d6cce2d505092a02c5b9d1e5a1d08d1cdd3d475423c86393ba54dfeabd3",
+        "source_fact:v1:70e50fbc8a07db640ff6e078d3a9ae3826dae38225cd028d45bdad4821ee8b61"
+      ],
+      "source_published_kst": "2026-10-08T10:50+09:00",
+      "source_title": "우리銀, '수출선도기업대출' 출시…시설자금 최대 15% 추가한도 | 연합뉴스",
+      "telegram_core_fact": "우리은행은 수출기업이 시설자금 대출을 신청할 경우 최대 15%의 추가 한도를 지원한다.",
+      "title": "우리銀, '수출선도기업대출' 출시…시설자금 최대 15% 추가한도 | 연합뉴스"
     },
     "original:8b91d38daea35c172db8bcef": {
       "first_seen_kst": "2026-10-01T16:31:12+09:00",
@@ -124017,6 +124636,29 @@
       "source_title": "[공공SW전략] 기업마다 다른 규제…참여제한 갈린다 | GS ITM㊦",
       "telegram_core_fact": "GS ITM이 삼성SDS·LG CNS와 다른 규제를 받는 이유는 상호출자제한기업집단 소속 여부에 있다.",
       "title": "[공공SW전략] 기업마다 다른 규제…참여제한 갈린다 | GS ITM㊦"
+    },
+    "original:cba679f4c1471057967ae9e5": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12171264",
+      "source": "매일경제",
+      "source_body_digest": "a6ff44ec68726ad44adec1f96c8fff2ae8396f761bc3b7ade8287e3979b818f5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:197284835e43e62d499c920b758ae7e911b4c647fa238118d8c076291d6d64ea",
+      "source_fact_keys": [
+        "source_fact:v1:742a6af740a3c8e1e9f56b9184fa42242419810f8a6dbb5f860ee529baf9ced4",
+        "source_fact:v1:94000761696f596c07870aadc7bb172ea76a1e2c0ccaed55bb31ad70c6b60b50",
+        "source_fact:v1:975d6cccae799c9b3ff46a038f32aebf63dabac4a65b2e2e9b129126ef2a9b12",
+        "source_fact:v1:a9d96576acf4b38de548ae495a78f38c9bccbfa89fdb5e5122b9ece48bfb4fe6",
+        "source_fact:v1:e57d15f7e4b1ddf60550acc18d64cdc6669bc1f38e7310042daf01fbb48b2822"
+      ],
+      "source_published_kst": "2026-10-08T10:44+09:00",
+      "source_title": "외신 “AI가 서울 집값도 끌어올렸다…李정부 직면한 부동산 딜레마”",
+      "telegram_core_fact": "인공지능(AI) 산업 호황으로 국내 반도체 기업과 근로자들의 소득이 늘면서 서울을 비롯한 수도권 집값 상승에도 영향을 미치고 있다는 외신 분석이 나왔다.",
+      "title": "외신 “AI가 서울 집값도 끌어올렸다…李정부 직면한 부동산 딜레마”"
     },
     "original:cba6d50888cd9c6f659bb5c5": {
       "first_seen_kst": "2026-10-07T22:53:53+09:00",
@@ -136167,6 +136809,40 @@
       "source_published_kst": "2026-10-05T18:21+09:00",
       "title": "솔리다임 美상장… \"SK하닉 가치 재평가\" vs \"주주 피해\" [어떻게 생각하십니까]"
     },
+    "source_fact:07a00521090e5bb5e8b83a19": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818706",
+      "source": "뉴시스",
+      "source_body_digest": "576297ed1fa677a9e1a37151e3f3e7fa6a370797ef8a02459073bf5115a25208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:517ca165ac43bf32c3c0e2e3156f52b23d9c4e54de59fa642b73acf2c13a7e5d",
+      "source_fact_keys": [
+        "source_fact:v1:0545034b46d17e4597eedfc4cb707c72e6cd7f044f7787c533c6f57a4c7b279c",
+        "source_fact:v1:21dda79f0292f6ad685744db8f9270d4b825422f45785dd6fa82c7870ed4ab2c",
+        "source_fact:v1:521b78ff22fee0d4822e92f7dffbdf5d32e926f64245abc19edb7c366866bf11",
+        "source_fact:v1:5c68ca94aebd80606c3a5f308d8985f56ff05c6862a58c78381bb200baa46d0d",
+        "source_fact:v1:81b7eff0300eb5200ba29a27b8ec12488ce502b44ed88b33760f5644281ed718",
+        "source_fact:v1:83b5f4c8e62061b1780f552f746d122a632bab50d7f1d951d673c8bf70523c5d",
+        "source_fact:v1:86bf9b006651f0a94d6ed773320b8097095c7f2e12d8118678d8e49365652c1d",
+        "source_fact:v1:8ba15dc5e1cb350536ccfbab5182f34da588428de3c4aa12ba7040d090e4df58",
+        "source_fact:v1:93614b67a4afbb5a5abc40b7977acd67b0e9e9eefd8058f1f95d08aec998143c",
+        "source_fact:v1:970a9e8e92dc388ed3eee538931e7f6da8936ba620886cb0a11bc912f6ccdb63",
+        "source_fact:v1:a702b72b281a69119dee2b61a0dbcbf523f0b5617ff1d083749b8ad94376ef52",
+        "source_fact:v1:a791647f89493ddc16a92143ddd4d61308dd93dbc64b2955916b1f5c134ca5d1",
+        "source_fact:v1:dcb67dda46052222c7b7e282be24b32bb30d7e3c1cb7a8e8bbe9f09606f510c9",
+        "source_fact:v1:e05b170caca97613d7f762adccc8b977d4f6f5ead868dcfb6adbd9bc95633e7d",
+        "source_fact:v1:e7fb9205906afab2bb7a4c0c567d50a6ca0755245811190555a056323fe17b68",
+        "source_fact:v1:eaf8c6fdaa4f7f382a7508f2421f9db1d3fc105606c4bbf13f8b2835e66d3fe8"
+      ],
+      "source_published_kst": "2026-10-08T11:52+09:00",
+      "source_title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나",
+      "telegram_core_fact": "특별성과급은 세금과 보험료 등을 공제한 뒤 자사주로 지급된다.",
+      "title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나"
+    },
     "source_fact:07a818cfaed66b4132c784ed": {
       "first_seen_kst": "2026-10-06T23:19:02+09:00",
       "lanes": {
@@ -136831,6 +137507,29 @@
       ],
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
+    "source_fact:0931e9228c7ac37430f85f61": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.mk.co.kr/news/world/12171265",
+      "source": "매일경제",
+      "source_body_digest": "145c4300f20755ffb892f9caa65c32eb0d72296d94626708c4ac8eff147bc9a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:97b1d16b8b5f2cb7a231ef1ac532abeb827640ae51b8811281b049725ab453c1",
+      "source_fact_keys": [
+        "source_fact:v1:49483681bbdf6cc30a460d607d1a264a64e427c7f94b4ea186fc8e98be3bc2d9",
+        "source_fact:v1:50b7887aa34bdb40569cee745271cb16d4779614be66df8610971c9b72a2f237",
+        "source_fact:v1:c07364dd5550800ceba28350a303ae481bd6a6807812be07f1a9fae40eeefd66",
+        "source_fact:v1:c96668288b611f2e829dee4780bc71d2b1bcc5fdaf04fc6b93a05e313fc9ed73",
+        "source_fact:v1:f916bf554d15a04fb51a896c559b170df95a5d28d7c7b2193eb5a8e23f464cad"
+      ],
+      "source_published_kst": "2026-10-08T10:45+09:00",
+      "source_title": "외신 “하이닉스 솔리다임, 내년 美IPO 추진…골드만·모건스탠리 주관사 선정”",
+      "telegram_core_fact": "8일(현지시간) 블룸버그통신은 복수의 소식통을 인용해 솔리다임이 골드만삭스와 모건스탠리를 IPO 대표 주관사로 선정했다고 보도했다. SK하이닉스의 손자회사 솔리다임이 내년 미국 증시 상장을 위한 대표 주관사단을 구성하며 기업공개(IPO) 준비에 속도를 내고 있다는 미국 현지 보도가 나왔다.",
+      "title": "외신 “하이닉스 솔리다임, 내년 美IPO 추진…골드만·모건스탠리 주관사 선정”"
     },
     "source_fact:0941feefadf3c4d934fa87e0": {
       "first_seen_kst": "2026-10-06T23:19:02+09:00",
@@ -140482,6 +141181,40 @@
       "source_title": "뉴욕증시, 국채금리 24년래 최고에 휘청⋯3대 지수 동반 하락[종합]",
       "telegram_core_fact": "10년 만기 미국 국채금리는 장중 연 5.36%까지 상승해 2002년 이후 최고치를 기록했다.",
       "title": "뉴욕증시, 국채금리 24년래 최고에 휘청⋯3대 지수 동반 하락[종합]"
+    },
+    "source_fact:10a3e1470545f31afcd608ac": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818706",
+      "source": "뉴시스",
+      "source_body_digest": "576297ed1fa677a9e1a37151e3f3e7fa6a370797ef8a02459073bf5115a25208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:517ca165ac43bf32c3c0e2e3156f52b23d9c4e54de59fa642b73acf2c13a7e5d",
+      "source_fact_keys": [
+        "source_fact:v1:0545034b46d17e4597eedfc4cb707c72e6cd7f044f7787c533c6f57a4c7b279c",
+        "source_fact:v1:21dda79f0292f6ad685744db8f9270d4b825422f45785dd6fa82c7870ed4ab2c",
+        "source_fact:v1:521b78ff22fee0d4822e92f7dffbdf5d32e926f64245abc19edb7c366866bf11",
+        "source_fact:v1:5c68ca94aebd80606c3a5f308d8985f56ff05c6862a58c78381bb200baa46d0d",
+        "source_fact:v1:81b7eff0300eb5200ba29a27b8ec12488ce502b44ed88b33760f5644281ed718",
+        "source_fact:v1:83b5f4c8e62061b1780f552f746d122a632bab50d7f1d951d673c8bf70523c5d",
+        "source_fact:v1:86bf9b006651f0a94d6ed773320b8097095c7f2e12d8118678d8e49365652c1d",
+        "source_fact:v1:8ba15dc5e1cb350536ccfbab5182f34da588428de3c4aa12ba7040d090e4df58",
+        "source_fact:v1:93614b67a4afbb5a5abc40b7977acd67b0e9e9eefd8058f1f95d08aec998143c",
+        "source_fact:v1:970a9e8e92dc388ed3eee538931e7f6da8936ba620886cb0a11bc912f6ccdb63",
+        "source_fact:v1:a702b72b281a69119dee2b61a0dbcbf523f0b5617ff1d083749b8ad94376ef52",
+        "source_fact:v1:a791647f89493ddc16a92143ddd4d61308dd93dbc64b2955916b1f5c134ca5d1",
+        "source_fact:v1:dcb67dda46052222c7b7e282be24b32bb30d7e3c1cb7a8e8bbe9f09606f510c9",
+        "source_fact:v1:e05b170caca97613d7f762adccc8b977d4f6f5ead868dcfb6adbd9bc95633e7d",
+        "source_fact:v1:e7fb9205906afab2bb7a4c0c567d50a6ca0755245811190555a056323fe17b68",
+        "source_fact:v1:eaf8c6fdaa4f7f382a7508f2421f9db1d3fc105606c4bbf13f8b2835e66d3fe8"
+      ],
+      "source_published_kst": "2026-10-08T11:52+09:00",
+      "source_title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나",
+      "telegram_core_fact": "특별성과급은 세금과 보험료 등을 공제한 뒤 자사주로 지급된다.",
+      "title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나"
     },
     "source_fact:10acdefef51be2a86aac9ffa": {
       "first_seen_kst": "2026-10-07T01:18:00+09:00",
@@ -145369,6 +146102,52 @@
       "source_published_kst": "2026-10-06T14:04+09:00",
       "title": "세아베스틸, 로봇 감속기 소재 시장 진출…휴머노이드까지 확대"
     },
+    "source_fact:1b98834630909278220da2aa": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.mk.co.kr/news/world/12171265",
+      "source": "매일경제",
+      "source_body_digest": "145c4300f20755ffb892f9caa65c32eb0d72296d94626708c4ac8eff147bc9a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:97b1d16b8b5f2cb7a231ef1ac532abeb827640ae51b8811281b049725ab453c1",
+      "source_fact_keys": [
+        "source_fact:v1:49483681bbdf6cc30a460d607d1a264a64e427c7f94b4ea186fc8e98be3bc2d9",
+        "source_fact:v1:50b7887aa34bdb40569cee745271cb16d4779614be66df8610971c9b72a2f237",
+        "source_fact:v1:c07364dd5550800ceba28350a303ae481bd6a6807812be07f1a9fae40eeefd66",
+        "source_fact:v1:c96668288b611f2e829dee4780bc71d2b1bcc5fdaf04fc6b93a05e313fc9ed73",
+        "source_fact:v1:f916bf554d15a04fb51a896c559b170df95a5d28d7c7b2193eb5a8e23f464cad"
+      ],
+      "source_published_kst": "2026-10-08T10:45+09:00",
+      "source_title": "외신 “하이닉스 솔리다임, 내년 美IPO 추진…골드만·모건스탠리 주관사 선정”",
+      "telegram_core_fact": "8일(현지시간) 블룸버그통신은 복수의 소식통을 인용해 솔리다임이 골드만삭스와 모건스탠리를 IPO 대표 주관사로 선정했다고 보도했다. SK하이닉스의 손자회사 솔리다임이 내년 미국 증시 상장을 위한 대표 주관사단을 구성하며 기업공개(IPO) 준비에 속도를 내고 있다는 미국 현지 보도가 나왔다.",
+      "title": "외신 “하이닉스 솔리다임, 내년 美IPO 추진…골드만·모건스탠리 주관사 선정”"
+    },
+    "source_fact:1b9b1807431aa81982443169": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12171264",
+      "source": "매일경제",
+      "source_body_digest": "a6ff44ec68726ad44adec1f96c8fff2ae8396f761bc3b7ade8287e3979b818f5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:197284835e43e62d499c920b758ae7e911b4c647fa238118d8c076291d6d64ea",
+      "source_fact_keys": [
+        "source_fact:v1:742a6af740a3c8e1e9f56b9184fa42242419810f8a6dbb5f860ee529baf9ced4",
+        "source_fact:v1:94000761696f596c07870aadc7bb172ea76a1e2c0ccaed55bb31ad70c6b60b50",
+        "source_fact:v1:975d6cccae799c9b3ff46a038f32aebf63dabac4a65b2e2e9b129126ef2a9b12",
+        "source_fact:v1:a9d96576acf4b38de548ae495a78f38c9bccbfa89fdb5e5122b9ece48bfb4fe6",
+        "source_fact:v1:e57d15f7e4b1ddf60550acc18d64cdc6669bc1f38e7310042daf01fbb48b2822"
+      ],
+      "source_published_kst": "2026-10-08T10:44+09:00",
+      "source_title": "외신 “AI가 서울 집값도 끌어올렸다…李정부 직면한 부동산 딜레마”",
+      "telegram_core_fact": "인공지능(AI) 산업 호황으로 국내 반도체 기업과 근로자들의 소득이 늘면서 서울을 비롯한 수도권 집값 상승에도 영향을 미치고 있다는 외신 분석이 나왔다.",
+      "title": "외신 “AI가 서울 집값도 끌어올렸다…李정부 직면한 부동산 딜레마”"
+    },
     "source_fact:1ba77729c7a117737952f0ef": {
       "first_seen_kst": "2026-10-08T04:14:15+09:00",
       "lanes": {
@@ -146402,6 +147181,29 @@
       ],
       "source_published_kst": "2026-10-05T21:21+09:00",
       "title": "레드 로빈 고메 버거, 1억1500만 달러 대출 재융자 완료..2031년 만기"
+    },
+    "source_fact:1d4b20b8c4d5c1d8a9a2a3ab": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12171264",
+      "source": "매일경제",
+      "source_body_digest": "a6ff44ec68726ad44adec1f96c8fff2ae8396f761bc3b7ade8287e3979b818f5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:197284835e43e62d499c920b758ae7e911b4c647fa238118d8c076291d6d64ea",
+      "source_fact_keys": [
+        "source_fact:v1:742a6af740a3c8e1e9f56b9184fa42242419810f8a6dbb5f860ee529baf9ced4",
+        "source_fact:v1:94000761696f596c07870aadc7bb172ea76a1e2c0ccaed55bb31ad70c6b60b50",
+        "source_fact:v1:975d6cccae799c9b3ff46a038f32aebf63dabac4a65b2e2e9b129126ef2a9b12",
+        "source_fact:v1:a9d96576acf4b38de548ae495a78f38c9bccbfa89fdb5e5122b9ece48bfb4fe6",
+        "source_fact:v1:e57d15f7e4b1ddf60550acc18d64cdc6669bc1f38e7310042daf01fbb48b2822"
+      ],
+      "source_published_kst": "2026-10-08T10:44+09:00",
+      "source_title": "외신 “AI가 서울 집값도 끌어올렸다…李정부 직면한 부동산 딜레마”",
+      "telegram_core_fact": "인공지능(AI) 산업 호황으로 국내 반도체 기업과 근로자들의 소득이 늘면서 서울을 비롯한 수도권 집값 상승에도 영향을 미치고 있다는 외신 분석이 나왔다.",
+      "title": "외신 “AI가 서울 집값도 끌어올렸다…李정부 직면한 부동산 딜레마”"
     },
     "source_fact:1d4ee86ecf0f11f1a0c4c9df": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -151556,6 +152358,29 @@
       "source_published_kst": "2026-10-06T10:57+09:00",
       "title": "오텍캐리어, AI 데이터센터용 CDU 제품 라인업 강화"
     },
+    "source_fact:27c75553915edcbbf5dd8de5": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12171264",
+      "source": "매일경제",
+      "source_body_digest": "a6ff44ec68726ad44adec1f96c8fff2ae8396f761bc3b7ade8287e3979b818f5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:197284835e43e62d499c920b758ae7e911b4c647fa238118d8c076291d6d64ea",
+      "source_fact_keys": [
+        "source_fact:v1:742a6af740a3c8e1e9f56b9184fa42242419810f8a6dbb5f860ee529baf9ced4",
+        "source_fact:v1:94000761696f596c07870aadc7bb172ea76a1e2c0ccaed55bb31ad70c6b60b50",
+        "source_fact:v1:975d6cccae799c9b3ff46a038f32aebf63dabac4a65b2e2e9b129126ef2a9b12",
+        "source_fact:v1:a9d96576acf4b38de548ae495a78f38c9bccbfa89fdb5e5122b9ece48bfb4fe6",
+        "source_fact:v1:e57d15f7e4b1ddf60550acc18d64cdc6669bc1f38e7310042daf01fbb48b2822"
+      ],
+      "source_published_kst": "2026-10-08T10:44+09:00",
+      "source_title": "외신 “AI가 서울 집값도 끌어올렸다…李정부 직면한 부동산 딜레마”",
+      "telegram_core_fact": "인공지능(AI) 산업 호황으로 국내 반도체 기업과 근로자들의 소득이 늘면서 서울을 비롯한 수도권 집값 상승에도 영향을 미치고 있다는 외신 분석이 나왔다.",
+      "title": "외신 “AI가 서울 집값도 끌어올렸다…李정부 직면한 부동산 딜레마”"
+    },
     "source_fact:27c77da46a487fcdb9d2df89": {
       "first_seen_kst": "2026-10-06T23:19:02+09:00",
       "lanes": {
@@ -151763,6 +152588,40 @@
       ],
       "source_published_kst": "2026-10-06T15:14+09:00",
       "title": "삼성전기, 2900억원 AI 서버용 MLCC 공급 계약…“AI 부품 '4조 클럽' 달성”"
+    },
+    "source_fact:280b3544534bc52960ddfb50": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818706",
+      "source": "뉴시스",
+      "source_body_digest": "576297ed1fa677a9e1a37151e3f3e7fa6a370797ef8a02459073bf5115a25208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:517ca165ac43bf32c3c0e2e3156f52b23d9c4e54de59fa642b73acf2c13a7e5d",
+      "source_fact_keys": [
+        "source_fact:v1:0545034b46d17e4597eedfc4cb707c72e6cd7f044f7787c533c6f57a4c7b279c",
+        "source_fact:v1:21dda79f0292f6ad685744db8f9270d4b825422f45785dd6fa82c7870ed4ab2c",
+        "source_fact:v1:521b78ff22fee0d4822e92f7dffbdf5d32e926f64245abc19edb7c366866bf11",
+        "source_fact:v1:5c68ca94aebd80606c3a5f308d8985f56ff05c6862a58c78381bb200baa46d0d",
+        "source_fact:v1:81b7eff0300eb5200ba29a27b8ec12488ce502b44ed88b33760f5644281ed718",
+        "source_fact:v1:83b5f4c8e62061b1780f552f746d122a632bab50d7f1d951d673c8bf70523c5d",
+        "source_fact:v1:86bf9b006651f0a94d6ed773320b8097095c7f2e12d8118678d8e49365652c1d",
+        "source_fact:v1:8ba15dc5e1cb350536ccfbab5182f34da588428de3c4aa12ba7040d090e4df58",
+        "source_fact:v1:93614b67a4afbb5a5abc40b7977acd67b0e9e9eefd8058f1f95d08aec998143c",
+        "source_fact:v1:970a9e8e92dc388ed3eee538931e7f6da8936ba620886cb0a11bc912f6ccdb63",
+        "source_fact:v1:a702b72b281a69119dee2b61a0dbcbf523f0b5617ff1d083749b8ad94376ef52",
+        "source_fact:v1:a791647f89493ddc16a92143ddd4d61308dd93dbc64b2955916b1f5c134ca5d1",
+        "source_fact:v1:dcb67dda46052222c7b7e282be24b32bb30d7e3c1cb7a8e8bbe9f09606f510c9",
+        "source_fact:v1:e05b170caca97613d7f762adccc8b977d4f6f5ead868dcfb6adbd9bc95633e7d",
+        "source_fact:v1:e7fb9205906afab2bb7a4c0c567d50a6ca0755245811190555a056323fe17b68",
+        "source_fact:v1:eaf8c6fdaa4f7f382a7508f2421f9db1d3fc105606c4bbf13f8b2835e66d3fe8"
+      ],
+      "source_published_kst": "2026-10-08T11:52+09:00",
+      "source_title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나",
+      "telegram_core_fact": "특별성과급은 세금과 보험료 등을 공제한 뒤 자사주로 지급된다.",
+      "title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나"
     },
     "source_fact:280bc6b766665adac5d65d8e": {
       "first_seen_kst": "2026-10-08T06:57:59+09:00",
@@ -156229,6 +157088,27 @@
       "source_title": "이 대통령, 누리호 5차 발사 성공 축하…\"우주 주권 한층 가까워져\"",
       "telegram_core_fact": "이재명 대통령이 7일 한국형 발사체 누리호 5차 발사가 성공한 데 대해 \"정부가 우주 발사를 적극적으로 지원한 성과\"라고 평가하며 \"향후 발사 주기를 더욱 앞당겨 위성체 기술 발전에 박차를 가할 것\"이라고 밝혔다.",
       "title": "이 대통령, 누리호 5차 발사 성공 축하…\"우주 주권 한층 가까워져\""
+    },
+    "source_fact:30ce7a23ca847fe3e25ac4cc": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008074700002",
+      "source": "연합뉴스",
+      "source_body_digest": "6e0f0f6bf17c0edcaa7f1d264b5ef181eb75de8a1358707d116285855e83f489",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3ae5c5ec3af0e403343fc513f01e6ab83c8f25d8744b4c3b21729b83a4a6b19",
+      "source_fact_keys": [
+        "source_fact:v1:252df806dd79e1f0508a3ba95f048680b92e77c7a6b17e023f072314a0cc0a11",
+        "source_fact:v1:59ae3d6cce2d505092a02c5b9d1e5a1d08d1cdd3d475423c86393ba54dfeabd3",
+        "source_fact:v1:70e50fbc8a07db640ff6e078d3a9ae3826dae38225cd028d45bdad4821ee8b61"
+      ],
+      "source_published_kst": "2026-10-08T10:50+09:00",
+      "source_title": "우리銀, '수출선도기업대출' 출시…시설자금 최대 15% 추가한도 | 연합뉴스",
+      "telegram_core_fact": "우리은행은 수출기업이 시설자금 대출을 신청할 경우 최대 15%의 추가 한도를 지원한다.",
+      "title": "우리銀, '수출선도기업대출' 출시…시설자금 최대 15% 추가한도 | 연합뉴스"
     },
     "source_fact:30f09a1f16bce401c79068c5": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
@@ -164505,6 +165385,40 @@
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
     },
+    "source_fact:4202f9e289c4d9a11f5e69c7": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818706",
+      "source": "뉴시스",
+      "source_body_digest": "576297ed1fa677a9e1a37151e3f3e7fa6a370797ef8a02459073bf5115a25208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:517ca165ac43bf32c3c0e2e3156f52b23d9c4e54de59fa642b73acf2c13a7e5d",
+      "source_fact_keys": [
+        "source_fact:v1:0545034b46d17e4597eedfc4cb707c72e6cd7f044f7787c533c6f57a4c7b279c",
+        "source_fact:v1:21dda79f0292f6ad685744db8f9270d4b825422f45785dd6fa82c7870ed4ab2c",
+        "source_fact:v1:521b78ff22fee0d4822e92f7dffbdf5d32e926f64245abc19edb7c366866bf11",
+        "source_fact:v1:5c68ca94aebd80606c3a5f308d8985f56ff05c6862a58c78381bb200baa46d0d",
+        "source_fact:v1:81b7eff0300eb5200ba29a27b8ec12488ce502b44ed88b33760f5644281ed718",
+        "source_fact:v1:83b5f4c8e62061b1780f552f746d122a632bab50d7f1d951d673c8bf70523c5d",
+        "source_fact:v1:86bf9b006651f0a94d6ed773320b8097095c7f2e12d8118678d8e49365652c1d",
+        "source_fact:v1:8ba15dc5e1cb350536ccfbab5182f34da588428de3c4aa12ba7040d090e4df58",
+        "source_fact:v1:93614b67a4afbb5a5abc40b7977acd67b0e9e9eefd8058f1f95d08aec998143c",
+        "source_fact:v1:970a9e8e92dc388ed3eee538931e7f6da8936ba620886cb0a11bc912f6ccdb63",
+        "source_fact:v1:a702b72b281a69119dee2b61a0dbcbf523f0b5617ff1d083749b8ad94376ef52",
+        "source_fact:v1:a791647f89493ddc16a92143ddd4d61308dd93dbc64b2955916b1f5c134ca5d1",
+        "source_fact:v1:dcb67dda46052222c7b7e282be24b32bb30d7e3c1cb7a8e8bbe9f09606f510c9",
+        "source_fact:v1:e05b170caca97613d7f762adccc8b977d4f6f5ead868dcfb6adbd9bc95633e7d",
+        "source_fact:v1:e7fb9205906afab2bb7a4c0c567d50a6ca0755245811190555a056323fe17b68",
+        "source_fact:v1:eaf8c6fdaa4f7f382a7508f2421f9db1d3fc105606c4bbf13f8b2835e66d3fe8"
+      ],
+      "source_published_kst": "2026-10-08T11:52+09:00",
+      "source_title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나",
+      "telegram_core_fact": "특별성과급은 세금과 보험료 등을 공제한 뒤 자사주로 지급된다.",
+      "title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나"
+    },
     "source_fact:421c17a4ff1bce7ab9a95cee": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
       "lanes": {
@@ -164635,6 +165549,30 @@
       "source_published_kst": "2026-10-07T07:53+09:00",
       "title": "롯데바이오, 알보텍과 생산 수주 계약 체결 | 연합뉴스"
     },
+    "source_fact:4249c40c0c2b72509fe1251b": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633481",
+      "source": "이투데이",
+      "source_body_digest": "e1559f8eefc330c16fedfcd5f7d53a488d28935cfe4431b73e7655ad2b72949c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:64e1b1f802a68de5c88f2305e7b478e284c4aae7ef0fc3eba01510650555615e",
+      "source_fact_keys": [
+        "source_fact:v1:0f72c90176cc6cdbd551ae22e0fdc1838b71e97cb2bef5a2dd2888ee1fae2d67",
+        "source_fact:v1:4209e75ea4d186d0569e0e9d686c212597ecc7b180eb3892262f9cc25d36ad78",
+        "source_fact:v1:5ae8ed2e6c09330dfa5c7347ee98c7a26b6249a675e65fffd7247f798b53643b",
+        "source_fact:v1:630e798ce22e67ee081f887cc45f77767a115c0cd6959ebd18b25c5c2c6c473b",
+        "source_fact:v1:8ce3148685ac9552bb28f254ecbfaead4b4e83b3fb50d9c7e8ff0ea0386e4177",
+        "source_fact:v1:99a31cddfc76ef8a7d82431cf68eae41d0d244d7644cc84cbc1b211d3b84b7a4"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "2년 만에 끝난 ‘2세 경영’…적자 늪 모닝글로리, 백약이 무효?",
+      "telegram_core_fact": "모닝글로리는 43기 6억원의 영업이익을 냈으나 한 전 대표 취임 후인 44기(-5억원) 적자 전환한 이래 45기(-8억원), 46기(-6억원)까지 3개 회계연도 연속 영업적자의 늪에서 벗어나지 못하고 있다.",
+      "title": "2년 만에 끝난 ‘2세 경영’…적자 늪 모닝글로리, 백약이 무효?"
+    },
     "source_fact:425c2e57ecb211c5fdd94741": {
       "first_seen_kst": "2026-10-08T02:26:35+09:00",
       "lanes": {
@@ -164662,6 +165600,40 @@
       "source_title": "3주 만에 32% 뛰어올라…한섬 주가 들썩이는 이유",
       "telegram_core_fact": "주주환원 정책 공시 이후 한섬 보고서를 낸 증권사 5곳은 모두 ‘매수’ 의견을 냈고, 이 가운데 4곳이 목표주가를 올렸다.",
       "title": "3주 만에 32% 뛰어올라…한섬 주가 들썩이는 이유"
+    },
+    "source_fact:426256216f595e4fe0122e2a": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818706",
+      "source": "뉴시스",
+      "source_body_digest": "576297ed1fa677a9e1a37151e3f3e7fa6a370797ef8a02459073bf5115a25208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:517ca165ac43bf32c3c0e2e3156f52b23d9c4e54de59fa642b73acf2c13a7e5d",
+      "source_fact_keys": [
+        "source_fact:v1:0545034b46d17e4597eedfc4cb707c72e6cd7f044f7787c533c6f57a4c7b279c",
+        "source_fact:v1:21dda79f0292f6ad685744db8f9270d4b825422f45785dd6fa82c7870ed4ab2c",
+        "source_fact:v1:521b78ff22fee0d4822e92f7dffbdf5d32e926f64245abc19edb7c366866bf11",
+        "source_fact:v1:5c68ca94aebd80606c3a5f308d8985f56ff05c6862a58c78381bb200baa46d0d",
+        "source_fact:v1:81b7eff0300eb5200ba29a27b8ec12488ce502b44ed88b33760f5644281ed718",
+        "source_fact:v1:83b5f4c8e62061b1780f552f746d122a632bab50d7f1d951d673c8bf70523c5d",
+        "source_fact:v1:86bf9b006651f0a94d6ed773320b8097095c7f2e12d8118678d8e49365652c1d",
+        "source_fact:v1:8ba15dc5e1cb350536ccfbab5182f34da588428de3c4aa12ba7040d090e4df58",
+        "source_fact:v1:93614b67a4afbb5a5abc40b7977acd67b0e9e9eefd8058f1f95d08aec998143c",
+        "source_fact:v1:970a9e8e92dc388ed3eee538931e7f6da8936ba620886cb0a11bc912f6ccdb63",
+        "source_fact:v1:a702b72b281a69119dee2b61a0dbcbf523f0b5617ff1d083749b8ad94376ef52",
+        "source_fact:v1:a791647f89493ddc16a92143ddd4d61308dd93dbc64b2955916b1f5c134ca5d1",
+        "source_fact:v1:dcb67dda46052222c7b7e282be24b32bb30d7e3c1cb7a8e8bbe9f09606f510c9",
+        "source_fact:v1:e05b170caca97613d7f762adccc8b977d4f6f5ead868dcfb6adbd9bc95633e7d",
+        "source_fact:v1:e7fb9205906afab2bb7a4c0c567d50a6ca0755245811190555a056323fe17b68",
+        "source_fact:v1:eaf8c6fdaa4f7f382a7508f2421f9db1d3fc105606c4bbf13f8b2835e66d3fe8"
+      ],
+      "source_published_kst": "2026-10-08T11:52+09:00",
+      "source_title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나",
+      "telegram_core_fact": "특별성과급은 세금과 보험료 등을 공제한 뒤 자사주로 지급된다.",
+      "title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나"
     },
     "source_fact:42630be558b1bc0e83ac14f2": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
@@ -165192,6 +166164,40 @@
       ],
       "source_published_kst": "2026-10-06T14:14+09:00",
       "title": "경상수지 흑자 너무 많아도 문제? IMF 내년 한국에 ‘과잉 평가’ 전망 [머니뭐니]"
+    },
+    "source_fact:4372d7e84a55bf034215d982": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818706",
+      "source": "뉴시스",
+      "source_body_digest": "576297ed1fa677a9e1a37151e3f3e7fa6a370797ef8a02459073bf5115a25208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:517ca165ac43bf32c3c0e2e3156f52b23d9c4e54de59fa642b73acf2c13a7e5d",
+      "source_fact_keys": [
+        "source_fact:v1:0545034b46d17e4597eedfc4cb707c72e6cd7f044f7787c533c6f57a4c7b279c",
+        "source_fact:v1:21dda79f0292f6ad685744db8f9270d4b825422f45785dd6fa82c7870ed4ab2c",
+        "source_fact:v1:521b78ff22fee0d4822e92f7dffbdf5d32e926f64245abc19edb7c366866bf11",
+        "source_fact:v1:5c68ca94aebd80606c3a5f308d8985f56ff05c6862a58c78381bb200baa46d0d",
+        "source_fact:v1:81b7eff0300eb5200ba29a27b8ec12488ce502b44ed88b33760f5644281ed718",
+        "source_fact:v1:83b5f4c8e62061b1780f552f746d122a632bab50d7f1d951d673c8bf70523c5d",
+        "source_fact:v1:86bf9b006651f0a94d6ed773320b8097095c7f2e12d8118678d8e49365652c1d",
+        "source_fact:v1:8ba15dc5e1cb350536ccfbab5182f34da588428de3c4aa12ba7040d090e4df58",
+        "source_fact:v1:93614b67a4afbb5a5abc40b7977acd67b0e9e9eefd8058f1f95d08aec998143c",
+        "source_fact:v1:970a9e8e92dc388ed3eee538931e7f6da8936ba620886cb0a11bc912f6ccdb63",
+        "source_fact:v1:a702b72b281a69119dee2b61a0dbcbf523f0b5617ff1d083749b8ad94376ef52",
+        "source_fact:v1:a791647f89493ddc16a92143ddd4d61308dd93dbc64b2955916b1f5c134ca5d1",
+        "source_fact:v1:dcb67dda46052222c7b7e282be24b32bb30d7e3c1cb7a8e8bbe9f09606f510c9",
+        "source_fact:v1:e05b170caca97613d7f762adccc8b977d4f6f5ead868dcfb6adbd9bc95633e7d",
+        "source_fact:v1:e7fb9205906afab2bb7a4c0c567d50a6ca0755245811190555a056323fe17b68",
+        "source_fact:v1:eaf8c6fdaa4f7f382a7508f2421f9db1d3fc105606c4bbf13f8b2835e66d3fe8"
+      ],
+      "source_published_kst": "2026-10-08T11:52+09:00",
+      "source_title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나",
+      "telegram_core_fact": "특별성과급은 세금과 보험료 등을 공제한 뒤 자사주로 지급된다.",
+      "title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나"
     },
     "source_fact:437a114d58a1b4e80ea2e6a5": {
       "first_seen_kst": "2026-10-07T20:59:13+09:00",
@@ -168702,6 +169708,30 @@
       "source_published_kst": "2026-10-05T11:20+09:00",
       "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
     },
+    "source_fact:4a50f30124fbe61b5f46e0e7": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03053686645610952",
+      "source": "이데일리",
+      "source_body_digest": "babfcbfcfc8252115ea6399f76c7874ca04503378b5c983354ba3617902f87ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9b3e86dd0d37a8aefd8a9b0dbb48d37a60e34be5fc3fcf273798281b8a07f1e4",
+      "source_fact_keys": [
+        "source_fact:v1:14b8d245cf1f4967c0c4a78dcec26e7936ae486e955cf51300ee7ffb4126df03",
+        "source_fact:v1:357937484900847292d4dc4e0c6181e9332fd1e79a48f91e82b8d91eb89fbe22",
+        "source_fact:v1:498e99fa38b2dd17ae2f23a5f9745a9f43363b41880c0d74fb23dded4121b88e",
+        "source_fact:v1:8ce3dac6478ce8a0075fbb2e3e4cdd0117b52d5dd38ad34918a52ddc19e515bb",
+        "source_fact:v1:8d0aa45b2f811e146d4dbd1e9863238aa66b327c118f393d6a570d2e0788071b",
+        "source_fact:v1:c601ea11f818d9bacc77f8607a50520cabf32600f72c0d3c7c659d87ea704f18"
+      ],
+      "source_published_kst": "2026-10-08T10:40+09:00",
+      "source_title": "HPE, AMD 최신 CPU 서버 4종 공개…AI 추론 시장 정조준",
+      "telegram_core_fact": "인공지능(AI) 데이터센터 시장이 학습용 그래픽처리장치(GPU) 중심에서 AI 추론과 데이터 처리 등 실제 서비스 운영을 위한 서버 인프라 경쟁으로 확대되고 있다.",
+      "title": "HPE, AMD 최신 CPU 서버 4종 공개…AI 추론 시장 정조준"
+    },
     "source_fact:4a621c6e0b81c9e7e5614b4a": {
       "first_seen_kst": "2026-10-08T00:39:44+09:00",
       "lanes": {
@@ -170895,6 +171925,30 @@
       ],
       "source_published_kst": "2026-10-07T14:04+09:00",
       "title": "MS·아마존 이어 구글까지…AI 전력 병목 해결에 '원전' 뜬다"
+    },
+    "source_fact:4f72152913fb69a4c92547e2": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03053686645610952",
+      "source": "이데일리",
+      "source_body_digest": "babfcbfcfc8252115ea6399f76c7874ca04503378b5c983354ba3617902f87ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9b3e86dd0d37a8aefd8a9b0dbb48d37a60e34be5fc3fcf273798281b8a07f1e4",
+      "source_fact_keys": [
+        "source_fact:v1:14b8d245cf1f4967c0c4a78dcec26e7936ae486e955cf51300ee7ffb4126df03",
+        "source_fact:v1:357937484900847292d4dc4e0c6181e9332fd1e79a48f91e82b8d91eb89fbe22",
+        "source_fact:v1:498e99fa38b2dd17ae2f23a5f9745a9f43363b41880c0d74fb23dded4121b88e",
+        "source_fact:v1:8ce3dac6478ce8a0075fbb2e3e4cdd0117b52d5dd38ad34918a52ddc19e515bb",
+        "source_fact:v1:8d0aa45b2f811e146d4dbd1e9863238aa66b327c118f393d6a570d2e0788071b",
+        "source_fact:v1:c601ea11f818d9bacc77f8607a50520cabf32600f72c0d3c7c659d87ea704f18"
+      ],
+      "source_published_kst": "2026-10-08T10:40+09:00",
+      "source_title": "HPE, AMD 최신 CPU 서버 4종 공개…AI 추론 시장 정조준",
+      "telegram_core_fact": "인공지능(AI) 데이터센터 시장이 학습용 그래픽처리장치(GPU) 중심에서 AI 추론과 데이터 처리 등 실제 서비스 운영을 위한 서버 인프라 경쟁으로 확대되고 있다.",
+      "title": "HPE, AMD 최신 CPU 서버 4종 공개…AI 추론 시장 정조준"
     },
     "source_fact:4f73179f40a8d756b50d1441": {
       "first_seen_kst": "2026-10-08T04:45:20+09:00",
@@ -185447,6 +186501,26 @@
       "source_published_kst": "2026-10-06T17:33+09:00",
       "title": "날아오른 스페이스X…머스크 다시 '조만장자'"
     },
+    "source_fact:6d514d976d437da6d41e7be6": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818809",
+      "source": "뉴시스",
+      "source_body_digest": "47be18800de6bd60301b474b1172f9ee1a81f3def52332e41fa346d6de9559a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cc005825f19a6e839991225b0f44cf969da982f4cbfca660459963b4ba218616",
+      "source_fact_keys": [
+        "source_fact:v1:78b17ff3127b9682b34ef8bea93794d005f366d5d8588a6077f770ac55655d9c",
+        "source_fact:v1:d0eb8cf4196e260e0935fc581c04a38d3d2f18afd45368a6ff10ed60aa07dc91"
+      ],
+      "source_published_kst": "2026-10-08T10:56+09:00",
+      "source_title": "AIDC 병목, GPU·전력서 메모리로…정석근 SK하이퍼 대표 \"韓에 새 기회\"",
+      "telegram_core_fact": "하지만 대규모 추론 수요가 늘어나면 이를 처리할 수 있는 '메모리 역량'과 지속적인 투자를 가능하게 할 '사업성과 수익구조'가 새로운 핵심 경쟁요인이 될 수 있다고 내다봤다.",
+      "title": "AIDC 병목, GPU·전력서 메모리로…정석근 SK하이퍼 대표 \"韓에 새 기회\""
+    },
     "source_fact:6d5250d8ace8ef0dced9f04a": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -187270,6 +188344,29 @@
       ],
       "source_published_kst": "2026-10-06T16:01+09:00",
       "title": "코스피, 삼전·하닉 자사주 매입 종료 경계감에 약세...코스닥은 강세[fn마감시황]"
+    },
+    "source_fact:7163800439c25815c2ce6546": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.mk.co.kr/news/world/12171265",
+      "source": "매일경제",
+      "source_body_digest": "145c4300f20755ffb892f9caa65c32eb0d72296d94626708c4ac8eff147bc9a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:97b1d16b8b5f2cb7a231ef1ac532abeb827640ae51b8811281b049725ab453c1",
+      "source_fact_keys": [
+        "source_fact:v1:49483681bbdf6cc30a460d607d1a264a64e427c7f94b4ea186fc8e98be3bc2d9",
+        "source_fact:v1:50b7887aa34bdb40569cee745271cb16d4779614be66df8610971c9b72a2f237",
+        "source_fact:v1:c07364dd5550800ceba28350a303ae481bd6a6807812be07f1a9fae40eeefd66",
+        "source_fact:v1:c96668288b611f2e829dee4780bc71d2b1bcc5fdaf04fc6b93a05e313fc9ed73",
+        "source_fact:v1:f916bf554d15a04fb51a896c559b170df95a5d28d7c7b2193eb5a8e23f464cad"
+      ],
+      "source_published_kst": "2026-10-08T10:45+09:00",
+      "source_title": "외신 “하이닉스 솔리다임, 내년 美IPO 추진…골드만·모건스탠리 주관사 선정”",
+      "telegram_core_fact": "8일(현지시간) 블룸버그통신은 복수의 소식통을 인용해 솔리다임이 골드만삭스와 모건스탠리를 IPO 대표 주관사로 선정했다고 보도했다. SK하이닉스의 손자회사 솔리다임이 내년 미국 증시 상장을 위한 대표 주관사단을 구성하며 기업공개(IPO) 준비에 속도를 내고 있다는 미국 현지 보도가 나왔다.",
+      "title": "외신 “하이닉스 솔리다임, 내년 美IPO 추진…골드만·모건스탠리 주관사 선정”"
     },
     "source_fact:717705a8ddce24779b9ef992": {
       "first_seen_kst": "2026-10-06T22:08:07+09:00",
@@ -191568,6 +192665,40 @@
       "source_published_kst": "2026-10-06T11:30+09:00",
       "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
     },
+    "source_fact:7a7c8e1349be70f8e924bb35": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818706",
+      "source": "뉴시스",
+      "source_body_digest": "576297ed1fa677a9e1a37151e3f3e7fa6a370797ef8a02459073bf5115a25208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:517ca165ac43bf32c3c0e2e3156f52b23d9c4e54de59fa642b73acf2c13a7e5d",
+      "source_fact_keys": [
+        "source_fact:v1:0545034b46d17e4597eedfc4cb707c72e6cd7f044f7787c533c6f57a4c7b279c",
+        "source_fact:v1:21dda79f0292f6ad685744db8f9270d4b825422f45785dd6fa82c7870ed4ab2c",
+        "source_fact:v1:521b78ff22fee0d4822e92f7dffbdf5d32e926f64245abc19edb7c366866bf11",
+        "source_fact:v1:5c68ca94aebd80606c3a5f308d8985f56ff05c6862a58c78381bb200baa46d0d",
+        "source_fact:v1:81b7eff0300eb5200ba29a27b8ec12488ce502b44ed88b33760f5644281ed718",
+        "source_fact:v1:83b5f4c8e62061b1780f552f746d122a632bab50d7f1d951d673c8bf70523c5d",
+        "source_fact:v1:86bf9b006651f0a94d6ed773320b8097095c7f2e12d8118678d8e49365652c1d",
+        "source_fact:v1:8ba15dc5e1cb350536ccfbab5182f34da588428de3c4aa12ba7040d090e4df58",
+        "source_fact:v1:93614b67a4afbb5a5abc40b7977acd67b0e9e9eefd8058f1f95d08aec998143c",
+        "source_fact:v1:970a9e8e92dc388ed3eee538931e7f6da8936ba620886cb0a11bc912f6ccdb63",
+        "source_fact:v1:a702b72b281a69119dee2b61a0dbcbf523f0b5617ff1d083749b8ad94376ef52",
+        "source_fact:v1:a791647f89493ddc16a92143ddd4d61308dd93dbc64b2955916b1f5c134ca5d1",
+        "source_fact:v1:dcb67dda46052222c7b7e282be24b32bb30d7e3c1cb7a8e8bbe9f09606f510c9",
+        "source_fact:v1:e05b170caca97613d7f762adccc8b977d4f6f5ead868dcfb6adbd9bc95633e7d",
+        "source_fact:v1:e7fb9205906afab2bb7a4c0c567d50a6ca0755245811190555a056323fe17b68",
+        "source_fact:v1:eaf8c6fdaa4f7f382a7508f2421f9db1d3fc105606c4bbf13f8b2835e66d3fe8"
+      ],
+      "source_published_kst": "2026-10-08T11:52+09:00",
+      "source_title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나",
+      "telegram_core_fact": "특별성과급은 세금과 보험료 등을 공제한 뒤 자사주로 지급된다.",
+      "title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나"
+    },
     "source_fact:7a846b38b31c77c23cf6a045": {
       "first_seen_kst": "2026-10-08T04:14:15+09:00",
       "lanes": {
@@ -193813,6 +194944,27 @@
       "source_published_kst": "2026-10-07T08:51+09:00",
       "title": "비욘드스프링, 중국 자회사 매각 완료..처분이익 5400만 달러"
     },
+    "source_fact:7f169a8e405ed307bb97a8d9": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008074700002",
+      "source": "연합뉴스",
+      "source_body_digest": "6e0f0f6bf17c0edcaa7f1d264b5ef181eb75de8a1358707d116285855e83f489",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3ae5c5ec3af0e403343fc513f01e6ab83c8f25d8744b4c3b21729b83a4a6b19",
+      "source_fact_keys": [
+        "source_fact:v1:252df806dd79e1f0508a3ba95f048680b92e77c7a6b17e023f072314a0cc0a11",
+        "source_fact:v1:59ae3d6cce2d505092a02c5b9d1e5a1d08d1cdd3d475423c86393ba54dfeabd3",
+        "source_fact:v1:70e50fbc8a07db640ff6e078d3a9ae3826dae38225cd028d45bdad4821ee8b61"
+      ],
+      "source_published_kst": "2026-10-08T10:50+09:00",
+      "source_title": "우리銀, '수출선도기업대출' 출시…시설자금 최대 15% 추가한도 | 연합뉴스",
+      "telegram_core_fact": "우리은행은 수출기업이 시설자금 대출을 신청할 경우 최대 15%의 추가 한도를 지원한다.",
+      "title": "우리銀, '수출선도기업대출' 출시…시설자금 최대 15% 추가한도 | 연합뉴스"
+    },
     "source_fact:7f175c486a529488531f2b2f": {
       "first_seen_kst": "2026-10-07T23:50:27+09:00",
       "lanes": {
@@ -196022,6 +197174,29 @@
       ],
       "source_published_kst": "2026-10-06T08:17+09:00",
       "title": "나스닥 사상 최고…비트코인 8만5000달러대[코인 모닝콜]"
+    },
+    "source_fact:840d5123488d0c8f79961661": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12171264",
+      "source": "매일경제",
+      "source_body_digest": "a6ff44ec68726ad44adec1f96c8fff2ae8396f761bc3b7ade8287e3979b818f5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:197284835e43e62d499c920b758ae7e911b4c647fa238118d8c076291d6d64ea",
+      "source_fact_keys": [
+        "source_fact:v1:742a6af740a3c8e1e9f56b9184fa42242419810f8a6dbb5f860ee529baf9ced4",
+        "source_fact:v1:94000761696f596c07870aadc7bb172ea76a1e2c0ccaed55bb31ad70c6b60b50",
+        "source_fact:v1:975d6cccae799c9b3ff46a038f32aebf63dabac4a65b2e2e9b129126ef2a9b12",
+        "source_fact:v1:a9d96576acf4b38de548ae495a78f38c9bccbfa89fdb5e5122b9ece48bfb4fe6",
+        "source_fact:v1:e57d15f7e4b1ddf60550acc18d64cdc6669bc1f38e7310042daf01fbb48b2822"
+      ],
+      "source_published_kst": "2026-10-08T10:44+09:00",
+      "source_title": "외신 “AI가 서울 집값도 끌어올렸다…李정부 직면한 부동산 딜레마”",
+      "telegram_core_fact": "인공지능(AI) 산업 호황으로 국내 반도체 기업과 근로자들의 소득이 늘면서 서울을 비롯한 수도권 집값 상승에도 영향을 미치고 있다는 외신 분석이 나왔다.",
+      "title": "외신 “AI가 서울 집값도 끌어올렸다…李정부 직면한 부동산 딜레마”"
     },
     "source_fact:8412ad498c06f0972b6aec66": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
@@ -200749,6 +201924,30 @@
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
+    "source_fact:8e8cabf3669690027b0a4bf7": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03053686645610952",
+      "source": "이데일리",
+      "source_body_digest": "babfcbfcfc8252115ea6399f76c7874ca04503378b5c983354ba3617902f87ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9b3e86dd0d37a8aefd8a9b0dbb48d37a60e34be5fc3fcf273798281b8a07f1e4",
+      "source_fact_keys": [
+        "source_fact:v1:14b8d245cf1f4967c0c4a78dcec26e7936ae486e955cf51300ee7ffb4126df03",
+        "source_fact:v1:357937484900847292d4dc4e0c6181e9332fd1e79a48f91e82b8d91eb89fbe22",
+        "source_fact:v1:498e99fa38b2dd17ae2f23a5f9745a9f43363b41880c0d74fb23dded4121b88e",
+        "source_fact:v1:8ce3dac6478ce8a0075fbb2e3e4cdd0117b52d5dd38ad34918a52ddc19e515bb",
+        "source_fact:v1:8d0aa45b2f811e146d4dbd1e9863238aa66b327c118f393d6a570d2e0788071b",
+        "source_fact:v1:c601ea11f818d9bacc77f8607a50520cabf32600f72c0d3c7c659d87ea704f18"
+      ],
+      "source_published_kst": "2026-10-08T10:40+09:00",
+      "source_title": "HPE, AMD 최신 CPU 서버 4종 공개…AI 추론 시장 정조준",
+      "telegram_core_fact": "인공지능(AI) 데이터센터 시장이 학습용 그래픽처리장치(GPU) 중심에서 AI 추론과 데이터 처리 등 실제 서비스 운영을 위한 서버 인프라 경쟁으로 확대되고 있다.",
+      "title": "HPE, AMD 최신 CPU 서버 4종 공개…AI 추론 시장 정조준"
+    },
     "source_fact:8e91354d7dbb6af8ea5755e0": {
       "first_seen_kst": "2026-10-08T09:58:56+09:00",
       "lanes": {
@@ -202515,6 +203714,29 @@
       ],
       "source_published_kst": "2026-10-05T03:42+09:00",
       "title": "\"호르무즈 해협서 또 유조선 피격\"…이달에만 최소 4차례 | 연합뉴스"
+    },
+    "source_fact:9205f137fa7319ef527b6522": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.mk.co.kr/news/world/12171265",
+      "source": "매일경제",
+      "source_body_digest": "145c4300f20755ffb892f9caa65c32eb0d72296d94626708c4ac8eff147bc9a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:97b1d16b8b5f2cb7a231ef1ac532abeb827640ae51b8811281b049725ab453c1",
+      "source_fact_keys": [
+        "source_fact:v1:49483681bbdf6cc30a460d607d1a264a64e427c7f94b4ea186fc8e98be3bc2d9",
+        "source_fact:v1:50b7887aa34bdb40569cee745271cb16d4779614be66df8610971c9b72a2f237",
+        "source_fact:v1:c07364dd5550800ceba28350a303ae481bd6a6807812be07f1a9fae40eeefd66",
+        "source_fact:v1:c96668288b611f2e829dee4780bc71d2b1bcc5fdaf04fc6b93a05e313fc9ed73",
+        "source_fact:v1:f916bf554d15a04fb51a896c559b170df95a5d28d7c7b2193eb5a8e23f464cad"
+      ],
+      "source_published_kst": "2026-10-08T10:45+09:00",
+      "source_title": "외신 “하이닉스 솔리다임, 내년 美IPO 추진…골드만·모건스탠리 주관사 선정”",
+      "telegram_core_fact": "8일(현지시간) 블룸버그통신은 복수의 소식통을 인용해 솔리다임이 골드만삭스와 모건스탠리를 IPO 대표 주관사로 선정했다고 보도했다. SK하이닉스의 손자회사 솔리다임이 내년 미국 증시 상장을 위한 대표 주관사단을 구성하며 기업공개(IPO) 준비에 속도를 내고 있다는 미국 현지 보도가 나왔다.",
+      "title": "외신 “하이닉스 솔리다임, 내년 美IPO 추진…골드만·모건스탠리 주관사 선정”"
     },
     "source_fact:92232597fcb615265f45a4d9": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
@@ -206216,6 +207438,40 @@
       "source_published_kst": "2026-10-06T08:10+09:00",
       "title": "현대차證 \"동국제강, 견조한 실적…목표가 1만3800원↑\""
     },
+    "source_fact:9a225f226eba732edee93ae9": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818706",
+      "source": "뉴시스",
+      "source_body_digest": "576297ed1fa677a9e1a37151e3f3e7fa6a370797ef8a02459073bf5115a25208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:517ca165ac43bf32c3c0e2e3156f52b23d9c4e54de59fa642b73acf2c13a7e5d",
+      "source_fact_keys": [
+        "source_fact:v1:0545034b46d17e4597eedfc4cb707c72e6cd7f044f7787c533c6f57a4c7b279c",
+        "source_fact:v1:21dda79f0292f6ad685744db8f9270d4b825422f45785dd6fa82c7870ed4ab2c",
+        "source_fact:v1:521b78ff22fee0d4822e92f7dffbdf5d32e926f64245abc19edb7c366866bf11",
+        "source_fact:v1:5c68ca94aebd80606c3a5f308d8985f56ff05c6862a58c78381bb200baa46d0d",
+        "source_fact:v1:81b7eff0300eb5200ba29a27b8ec12488ce502b44ed88b33760f5644281ed718",
+        "source_fact:v1:83b5f4c8e62061b1780f552f746d122a632bab50d7f1d951d673c8bf70523c5d",
+        "source_fact:v1:86bf9b006651f0a94d6ed773320b8097095c7f2e12d8118678d8e49365652c1d",
+        "source_fact:v1:8ba15dc5e1cb350536ccfbab5182f34da588428de3c4aa12ba7040d090e4df58",
+        "source_fact:v1:93614b67a4afbb5a5abc40b7977acd67b0e9e9eefd8058f1f95d08aec998143c",
+        "source_fact:v1:970a9e8e92dc388ed3eee538931e7f6da8936ba620886cb0a11bc912f6ccdb63",
+        "source_fact:v1:a702b72b281a69119dee2b61a0dbcbf523f0b5617ff1d083749b8ad94376ef52",
+        "source_fact:v1:a791647f89493ddc16a92143ddd4d61308dd93dbc64b2955916b1f5c134ca5d1",
+        "source_fact:v1:dcb67dda46052222c7b7e282be24b32bb30d7e3c1cb7a8e8bbe9f09606f510c9",
+        "source_fact:v1:e05b170caca97613d7f762adccc8b977d4f6f5ead868dcfb6adbd9bc95633e7d",
+        "source_fact:v1:e7fb9205906afab2bb7a4c0c567d50a6ca0755245811190555a056323fe17b68",
+        "source_fact:v1:eaf8c6fdaa4f7f382a7508f2421f9db1d3fc105606c4bbf13f8b2835e66d3fe8"
+      ],
+      "source_published_kst": "2026-10-08T11:52+09:00",
+      "source_title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나",
+      "telegram_core_fact": "특별성과급은 세금과 보험료 등을 공제한 뒤 자사주로 지급된다.",
+      "title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나"
+    },
     "source_fact:9a248fba2704a96bfdb26342": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -207903,6 +209159,30 @@
       "source_published_kst": "2026-10-07T15:40+09:00",
       "title": "유가·금리 반등에 실적 경계감…코스피, 6800선 마감"
     },
+    "source_fact:9dbadd2af8dfa0c54d012b2b": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633481",
+      "source": "이투데이",
+      "source_body_digest": "e1559f8eefc330c16fedfcd5f7d53a488d28935cfe4431b73e7655ad2b72949c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:64e1b1f802a68de5c88f2305e7b478e284c4aae7ef0fc3eba01510650555615e",
+      "source_fact_keys": [
+        "source_fact:v1:0f72c90176cc6cdbd551ae22e0fdc1838b71e97cb2bef5a2dd2888ee1fae2d67",
+        "source_fact:v1:4209e75ea4d186d0569e0e9d686c212597ecc7b180eb3892262f9cc25d36ad78",
+        "source_fact:v1:5ae8ed2e6c09330dfa5c7347ee98c7a26b6249a675e65fffd7247f798b53643b",
+        "source_fact:v1:630e798ce22e67ee081f887cc45f77767a115c0cd6959ebd18b25c5c2c6c473b",
+        "source_fact:v1:8ce3148685ac9552bb28f254ecbfaead4b4e83b3fb50d9c7e8ff0ea0386e4177",
+        "source_fact:v1:99a31cddfc76ef8a7d82431cf68eae41d0d244d7644cc84cbc1b211d3b84b7a4"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "2년 만에 끝난 ‘2세 경영’…적자 늪 모닝글로리, 백약이 무효?",
+      "telegram_core_fact": "모닝글로리는 43기 6억원의 영업이익을 냈으나 한 전 대표 취임 후인 44기(-5억원) 적자 전환한 이래 45기(-8억원), 46기(-6억원)까지 3개 회계연도 연속 영업적자의 늪에서 벗어나지 못하고 있다.",
+      "title": "2년 만에 끝난 ‘2세 경영’…적자 늪 모닝글로리, 백약이 무효?"
+    },
     "source_fact:9dcf8322e15e1f369c3a3fca": {
       "first_seen_kst": "2026-10-06T19:46:03+09:00",
       "lanes": {
@@ -207973,6 +209253,40 @@
       "source_title": "[속보]뉴욕증시 사상 최고치에도…코스피 연일 하락세",
       "telegram_core_fact": "현재까지 코스피 시장에서 개인 투자자 홀로 4687억원 순매수 중이며 외국인과 기관 투자자가 각각 4240억원 758억원 순매도 중이다. 미국 증시가 사상 최고치 행진을 이어가고 미 국채금리 상승세까지 꺾이고 있으나 코스피는 연일 하락세를 면치 못하고 있다.",
       "title": "[속보]뉴욕증시 사상 최고치에도…코스피 연일 하락세"
+    },
+    "source_fact:9df2ce70c6b10bd25f557deb": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818706",
+      "source": "뉴시스",
+      "source_body_digest": "576297ed1fa677a9e1a37151e3f3e7fa6a370797ef8a02459073bf5115a25208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:517ca165ac43bf32c3c0e2e3156f52b23d9c4e54de59fa642b73acf2c13a7e5d",
+      "source_fact_keys": [
+        "source_fact:v1:0545034b46d17e4597eedfc4cb707c72e6cd7f044f7787c533c6f57a4c7b279c",
+        "source_fact:v1:21dda79f0292f6ad685744db8f9270d4b825422f45785dd6fa82c7870ed4ab2c",
+        "source_fact:v1:521b78ff22fee0d4822e92f7dffbdf5d32e926f64245abc19edb7c366866bf11",
+        "source_fact:v1:5c68ca94aebd80606c3a5f308d8985f56ff05c6862a58c78381bb200baa46d0d",
+        "source_fact:v1:81b7eff0300eb5200ba29a27b8ec12488ce502b44ed88b33760f5644281ed718",
+        "source_fact:v1:83b5f4c8e62061b1780f552f746d122a632bab50d7f1d951d673c8bf70523c5d",
+        "source_fact:v1:86bf9b006651f0a94d6ed773320b8097095c7f2e12d8118678d8e49365652c1d",
+        "source_fact:v1:8ba15dc5e1cb350536ccfbab5182f34da588428de3c4aa12ba7040d090e4df58",
+        "source_fact:v1:93614b67a4afbb5a5abc40b7977acd67b0e9e9eefd8058f1f95d08aec998143c",
+        "source_fact:v1:970a9e8e92dc388ed3eee538931e7f6da8936ba620886cb0a11bc912f6ccdb63",
+        "source_fact:v1:a702b72b281a69119dee2b61a0dbcbf523f0b5617ff1d083749b8ad94376ef52",
+        "source_fact:v1:a791647f89493ddc16a92143ddd4d61308dd93dbc64b2955916b1f5c134ca5d1",
+        "source_fact:v1:dcb67dda46052222c7b7e282be24b32bb30d7e3c1cb7a8e8bbe9f09606f510c9",
+        "source_fact:v1:e05b170caca97613d7f762adccc8b977d4f6f5ead868dcfb6adbd9bc95633e7d",
+        "source_fact:v1:e7fb9205906afab2bb7a4c0c567d50a6ca0755245811190555a056323fe17b68",
+        "source_fact:v1:eaf8c6fdaa4f7f382a7508f2421f9db1d3fc105606c4bbf13f8b2835e66d3fe8"
+      ],
+      "source_published_kst": "2026-10-08T11:52+09:00",
+      "source_title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나",
+      "telegram_core_fact": "특별성과급은 세금과 보험료 등을 공제한 뒤 자사주로 지급된다.",
+      "title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나"
     },
     "source_fact:9e040961808e685e175616c0": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
@@ -210736,6 +212050,30 @@
       "telegram_core_fact": "패트리아 인베스트먼트(PAX)는 2분기(4~6월) 서비스 순매출(Net revenue from services)이 1억1129만 달러로 전년비 34.9% 증가했고, 희석 주당순이익은 0.065달러로 전년 동기 0.080달러보다 감소했다고 10월 7일 발표했다.",
       "title": "패트리아 인베스트먼트, 2분기 순매출 1억1100만 달러..35% 증가"
     },
+    "source_fact:a3837a4cabad355d29733719": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03053686645610952",
+      "source": "이데일리",
+      "source_body_digest": "babfcbfcfc8252115ea6399f76c7874ca04503378b5c983354ba3617902f87ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9b3e86dd0d37a8aefd8a9b0dbb48d37a60e34be5fc3fcf273798281b8a07f1e4",
+      "source_fact_keys": [
+        "source_fact:v1:14b8d245cf1f4967c0c4a78dcec26e7936ae486e955cf51300ee7ffb4126df03",
+        "source_fact:v1:357937484900847292d4dc4e0c6181e9332fd1e79a48f91e82b8d91eb89fbe22",
+        "source_fact:v1:498e99fa38b2dd17ae2f23a5f9745a9f43363b41880c0d74fb23dded4121b88e",
+        "source_fact:v1:8ce3dac6478ce8a0075fbb2e3e4cdd0117b52d5dd38ad34918a52ddc19e515bb",
+        "source_fact:v1:8d0aa45b2f811e146d4dbd1e9863238aa66b327c118f393d6a570d2e0788071b",
+        "source_fact:v1:c601ea11f818d9bacc77f8607a50520cabf32600f72c0d3c7c659d87ea704f18"
+      ],
+      "source_published_kst": "2026-10-08T10:40+09:00",
+      "source_title": "HPE, AMD 최신 CPU 서버 4종 공개…AI 추론 시장 정조준",
+      "telegram_core_fact": "인공지능(AI) 데이터센터 시장이 학습용 그래픽처리장치(GPU) 중심에서 AI 추론과 데이터 처리 등 실제 서비스 운영을 위한 서버 인프라 경쟁으로 확대되고 있다.",
+      "title": "HPE, AMD 최신 CPU 서버 4종 공개…AI 추론 시장 정조준"
+    },
     "source_fact:a38b9ed96b7063f7f8775b0c": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
       "lanes": {
@@ -212833,6 +214171,27 @@
       "source_published_kst": "2026-10-06T18:17+09:00",
       "title": "한미반도체, 삼성전기서 첫 수주… MSVP 매출 탄력"
     },
+    "source_fact:a85ca04cfea178fe9e69383a": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008074700002",
+      "source": "연합뉴스",
+      "source_body_digest": "6e0f0f6bf17c0edcaa7f1d264b5ef181eb75de8a1358707d116285855e83f489",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3ae5c5ec3af0e403343fc513f01e6ab83c8f25d8744b4c3b21729b83a4a6b19",
+      "source_fact_keys": [
+        "source_fact:v1:252df806dd79e1f0508a3ba95f048680b92e77c7a6b17e023f072314a0cc0a11",
+        "source_fact:v1:59ae3d6cce2d505092a02c5b9d1e5a1d08d1cdd3d475423c86393ba54dfeabd3",
+        "source_fact:v1:70e50fbc8a07db640ff6e078d3a9ae3826dae38225cd028d45bdad4821ee8b61"
+      ],
+      "source_published_kst": "2026-10-08T10:50+09:00",
+      "source_title": "우리銀, '수출선도기업대출' 출시…시설자금 최대 15% 추가한도 | 연합뉴스",
+      "telegram_core_fact": "우리은행은 수출기업이 시설자금 대출을 신청할 경우 최대 15%의 추가 한도를 지원한다.",
+      "title": "우리銀, '수출선도기업대출' 출시…시설자금 최대 15% 추가한도 | 연합뉴스"
+    },
     "source_fact:a89e859fdbfade7a0eea29db": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
@@ -213455,6 +214814,30 @@
       "telegram_core_fact": "강유정 청와대 수석대변인은 7일 서면브리핑을 내고 \"우리 정부는 러시아의 우크라이나 침공 이후 국제 사회와 긴밀히 공조, 대러 제재와 수출통제를 일관되게 이행해 왔다. 이러한 우리 정부의 기본 입장에는 변함이 없다\"며 이같이 밝혔다.",
       "title": "靑, 우크라 '러 석유제품 공급' 주장에 \"사실과 다르고 부적절\""
     },
+    "source_fact:a9fce40efc28d87671850f3e": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633481",
+      "source": "이투데이",
+      "source_body_digest": "e1559f8eefc330c16fedfcd5f7d53a488d28935cfe4431b73e7655ad2b72949c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:64e1b1f802a68de5c88f2305e7b478e284c4aae7ef0fc3eba01510650555615e",
+      "source_fact_keys": [
+        "source_fact:v1:0f72c90176cc6cdbd551ae22e0fdc1838b71e97cb2bef5a2dd2888ee1fae2d67",
+        "source_fact:v1:4209e75ea4d186d0569e0e9d686c212597ecc7b180eb3892262f9cc25d36ad78",
+        "source_fact:v1:5ae8ed2e6c09330dfa5c7347ee98c7a26b6249a675e65fffd7247f798b53643b",
+        "source_fact:v1:630e798ce22e67ee081f887cc45f77767a115c0cd6959ebd18b25c5c2c6c473b",
+        "source_fact:v1:8ce3148685ac9552bb28f254ecbfaead4b4e83b3fb50d9c7e8ff0ea0386e4177",
+        "source_fact:v1:99a31cddfc76ef8a7d82431cf68eae41d0d244d7644cc84cbc1b211d3b84b7a4"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "2년 만에 끝난 ‘2세 경영’…적자 늪 모닝글로리, 백약이 무효?",
+      "telegram_core_fact": "모닝글로리는 43기 6억원의 영업이익을 냈으나 한 전 대표 취임 후인 44기(-5억원) 적자 전환한 이래 45기(-8억원), 46기(-6억원)까지 3개 회계연도 연속 영업적자의 늪에서 벗어나지 못하고 있다.",
+      "title": "2년 만에 끝난 ‘2세 경영’…적자 늪 모닝글로리, 백약이 무효?"
+    },
     "source_fact:aa1110306527ba4ed2ea6cf1": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
       "lanes": {
@@ -213999,6 +215382,40 @@
       "source_published_kst": "2026-10-07T14:38+09:00",
       "title": "삼보산업, 중동 전쟁에 알루미늄 판가 상승…장기화 땐 수익성 개선 긍정"
     },
+    "source_fact:ab4c081683c78e751b92c4d3": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818706",
+      "source": "뉴시스",
+      "source_body_digest": "576297ed1fa677a9e1a37151e3f3e7fa6a370797ef8a02459073bf5115a25208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:517ca165ac43bf32c3c0e2e3156f52b23d9c4e54de59fa642b73acf2c13a7e5d",
+      "source_fact_keys": [
+        "source_fact:v1:0545034b46d17e4597eedfc4cb707c72e6cd7f044f7787c533c6f57a4c7b279c",
+        "source_fact:v1:21dda79f0292f6ad685744db8f9270d4b825422f45785dd6fa82c7870ed4ab2c",
+        "source_fact:v1:521b78ff22fee0d4822e92f7dffbdf5d32e926f64245abc19edb7c366866bf11",
+        "source_fact:v1:5c68ca94aebd80606c3a5f308d8985f56ff05c6862a58c78381bb200baa46d0d",
+        "source_fact:v1:81b7eff0300eb5200ba29a27b8ec12488ce502b44ed88b33760f5644281ed718",
+        "source_fact:v1:83b5f4c8e62061b1780f552f746d122a632bab50d7f1d951d673c8bf70523c5d",
+        "source_fact:v1:86bf9b006651f0a94d6ed773320b8097095c7f2e12d8118678d8e49365652c1d",
+        "source_fact:v1:8ba15dc5e1cb350536ccfbab5182f34da588428de3c4aa12ba7040d090e4df58",
+        "source_fact:v1:93614b67a4afbb5a5abc40b7977acd67b0e9e9eefd8058f1f95d08aec998143c",
+        "source_fact:v1:970a9e8e92dc388ed3eee538931e7f6da8936ba620886cb0a11bc912f6ccdb63",
+        "source_fact:v1:a702b72b281a69119dee2b61a0dbcbf523f0b5617ff1d083749b8ad94376ef52",
+        "source_fact:v1:a791647f89493ddc16a92143ddd4d61308dd93dbc64b2955916b1f5c134ca5d1",
+        "source_fact:v1:dcb67dda46052222c7b7e282be24b32bb30d7e3c1cb7a8e8bbe9f09606f510c9",
+        "source_fact:v1:e05b170caca97613d7f762adccc8b977d4f6f5ead868dcfb6adbd9bc95633e7d",
+        "source_fact:v1:e7fb9205906afab2bb7a4c0c567d50a6ca0755245811190555a056323fe17b68",
+        "source_fact:v1:eaf8c6fdaa4f7f382a7508f2421f9db1d3fc105606c4bbf13f8b2835e66d3fe8"
+      ],
+      "source_published_kst": "2026-10-08T11:52+09:00",
+      "source_title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나",
+      "telegram_core_fact": "특별성과급은 세금과 보험료 등을 공제한 뒤 자사주로 지급된다.",
+      "title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나"
+    },
     "source_fact:ab55f29f3dcc62156c34da26": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
       "lanes": {
@@ -214345,6 +215762,30 @@
       ],
       "source_published_kst": "2026-10-06T10:09+09:00",
       "title": "씨피시스템 \"글로벌 MLCC 제조사사 장비에 '로보킷' 채택\""
+    },
+    "source_fact:abf7a26a1c790c0c8c2c6d3b": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633481",
+      "source": "이투데이",
+      "source_body_digest": "e1559f8eefc330c16fedfcd5f7d53a488d28935cfe4431b73e7655ad2b72949c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:64e1b1f802a68de5c88f2305e7b478e284c4aae7ef0fc3eba01510650555615e",
+      "source_fact_keys": [
+        "source_fact:v1:0f72c90176cc6cdbd551ae22e0fdc1838b71e97cb2bef5a2dd2888ee1fae2d67",
+        "source_fact:v1:4209e75ea4d186d0569e0e9d686c212597ecc7b180eb3892262f9cc25d36ad78",
+        "source_fact:v1:5ae8ed2e6c09330dfa5c7347ee98c7a26b6249a675e65fffd7247f798b53643b",
+        "source_fact:v1:630e798ce22e67ee081f887cc45f77767a115c0cd6959ebd18b25c5c2c6c473b",
+        "source_fact:v1:8ce3148685ac9552bb28f254ecbfaead4b4e83b3fb50d9c7e8ff0ea0386e4177",
+        "source_fact:v1:99a31cddfc76ef8a7d82431cf68eae41d0d244d7644cc84cbc1b211d3b84b7a4"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "2년 만에 끝난 ‘2세 경영’…적자 늪 모닝글로리, 백약이 무효?",
+      "telegram_core_fact": "모닝글로리는 43기 6억원의 영업이익을 냈으나 한 전 대표 취임 후인 44기(-5억원) 적자 전환한 이래 45기(-8억원), 46기(-6억원)까지 3개 회계연도 연속 영업적자의 늪에서 벗어나지 못하고 있다.",
+      "title": "2년 만에 끝난 ‘2세 경영’…적자 늪 모닝글로리, 백약이 무효?"
     },
     "source_fact:abf9032d71c33da5e25d9684": {
       "first_seen_kst": "2026-10-07T12:28:05+09:00",
@@ -218726,6 +220167,40 @@
       "source_published_kst": "2026-10-06T20:43+09:00",
       "title": "“원유수출 0인데도 안 무너진다”…이란이 美 지치길 기다리는 이유"
     },
+    "source_fact:b4a8dc0da5ed44693413c5c7": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818706",
+      "source": "뉴시스",
+      "source_body_digest": "576297ed1fa677a9e1a37151e3f3e7fa6a370797ef8a02459073bf5115a25208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:517ca165ac43bf32c3c0e2e3156f52b23d9c4e54de59fa642b73acf2c13a7e5d",
+      "source_fact_keys": [
+        "source_fact:v1:0545034b46d17e4597eedfc4cb707c72e6cd7f044f7787c533c6f57a4c7b279c",
+        "source_fact:v1:21dda79f0292f6ad685744db8f9270d4b825422f45785dd6fa82c7870ed4ab2c",
+        "source_fact:v1:521b78ff22fee0d4822e92f7dffbdf5d32e926f64245abc19edb7c366866bf11",
+        "source_fact:v1:5c68ca94aebd80606c3a5f308d8985f56ff05c6862a58c78381bb200baa46d0d",
+        "source_fact:v1:81b7eff0300eb5200ba29a27b8ec12488ce502b44ed88b33760f5644281ed718",
+        "source_fact:v1:83b5f4c8e62061b1780f552f746d122a632bab50d7f1d951d673c8bf70523c5d",
+        "source_fact:v1:86bf9b006651f0a94d6ed773320b8097095c7f2e12d8118678d8e49365652c1d",
+        "source_fact:v1:8ba15dc5e1cb350536ccfbab5182f34da588428de3c4aa12ba7040d090e4df58",
+        "source_fact:v1:93614b67a4afbb5a5abc40b7977acd67b0e9e9eefd8058f1f95d08aec998143c",
+        "source_fact:v1:970a9e8e92dc388ed3eee538931e7f6da8936ba620886cb0a11bc912f6ccdb63",
+        "source_fact:v1:a702b72b281a69119dee2b61a0dbcbf523f0b5617ff1d083749b8ad94376ef52",
+        "source_fact:v1:a791647f89493ddc16a92143ddd4d61308dd93dbc64b2955916b1f5c134ca5d1",
+        "source_fact:v1:dcb67dda46052222c7b7e282be24b32bb30d7e3c1cb7a8e8bbe9f09606f510c9",
+        "source_fact:v1:e05b170caca97613d7f762adccc8b977d4f6f5ead868dcfb6adbd9bc95633e7d",
+        "source_fact:v1:e7fb9205906afab2bb7a4c0c567d50a6ca0755245811190555a056323fe17b68",
+        "source_fact:v1:eaf8c6fdaa4f7f382a7508f2421f9db1d3fc105606c4bbf13f8b2835e66d3fe8"
+      ],
+      "source_published_kst": "2026-10-08T11:52+09:00",
+      "source_title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나",
+      "telegram_core_fact": "특별성과급은 세금과 보험료 등을 공제한 뒤 자사주로 지급된다.",
+      "title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나"
+    },
     "source_fact:b4acd40ac6a7ee3b4cf58c2f": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
@@ -219488,6 +220963,30 @@
       "source_title": "고고로, 6200만 달러 증자..주당 2.48달러 신주 발행",
       "telegram_core_fact": "배터리 교환 생태계 기업 고고로(GGR)가 이사 Chung-Yao Yin이 지배하는 법인과 전략적 투자자를 대상으로 보통주 2493만6057주를 주당 2.48달러에 발행해 약 6180만 달러 두 번째 신규 지분투자를 유치한다고 7일(현지시간) 발표했다.",
       "title": "고고로, 6200만 달러 증자..주당 2.48달러 신주 발행"
+    },
+    "source_fact:b6c2e0e426623efc02b15d85": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03053686645610952",
+      "source": "이데일리",
+      "source_body_digest": "babfcbfcfc8252115ea6399f76c7874ca04503378b5c983354ba3617902f87ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9b3e86dd0d37a8aefd8a9b0dbb48d37a60e34be5fc3fcf273798281b8a07f1e4",
+      "source_fact_keys": [
+        "source_fact:v1:14b8d245cf1f4967c0c4a78dcec26e7936ae486e955cf51300ee7ffb4126df03",
+        "source_fact:v1:357937484900847292d4dc4e0c6181e9332fd1e79a48f91e82b8d91eb89fbe22",
+        "source_fact:v1:498e99fa38b2dd17ae2f23a5f9745a9f43363b41880c0d74fb23dded4121b88e",
+        "source_fact:v1:8ce3dac6478ce8a0075fbb2e3e4cdd0117b52d5dd38ad34918a52ddc19e515bb",
+        "source_fact:v1:8d0aa45b2f811e146d4dbd1e9863238aa66b327c118f393d6a570d2e0788071b",
+        "source_fact:v1:c601ea11f818d9bacc77f8607a50520cabf32600f72c0d3c7c659d87ea704f18"
+      ],
+      "source_published_kst": "2026-10-08T10:40+09:00",
+      "source_title": "HPE, AMD 최신 CPU 서버 4종 공개…AI 추론 시장 정조준",
+      "telegram_core_fact": "인공지능(AI) 데이터센터 시장이 학습용 그래픽처리장치(GPU) 중심에서 AI 추론과 데이터 처리 등 실제 서비스 운영을 위한 서버 인프라 경쟁으로 확대되고 있다.",
+      "title": "HPE, AMD 최신 CPU 서버 4종 공개…AI 추론 시장 정조준"
     },
     "source_fact:b6d0d64cbde24d143d47e175": {
       "first_seen_kst": "2026-10-06T15:03:09+09:00",
@@ -222257,6 +223756,40 @@
       "source_published_kst": "2026-10-06T20:38+09:00",
       "title": "이 대통령 \"전세사기 피해자 기다리지 않도록\"…보증금 3분의 1 보장"
     },
+    "source_fact:bd27afea322203ab8b5396bd": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818706",
+      "source": "뉴시스",
+      "source_body_digest": "576297ed1fa677a9e1a37151e3f3e7fa6a370797ef8a02459073bf5115a25208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:517ca165ac43bf32c3c0e2e3156f52b23d9c4e54de59fa642b73acf2c13a7e5d",
+      "source_fact_keys": [
+        "source_fact:v1:0545034b46d17e4597eedfc4cb707c72e6cd7f044f7787c533c6f57a4c7b279c",
+        "source_fact:v1:21dda79f0292f6ad685744db8f9270d4b825422f45785dd6fa82c7870ed4ab2c",
+        "source_fact:v1:521b78ff22fee0d4822e92f7dffbdf5d32e926f64245abc19edb7c366866bf11",
+        "source_fact:v1:5c68ca94aebd80606c3a5f308d8985f56ff05c6862a58c78381bb200baa46d0d",
+        "source_fact:v1:81b7eff0300eb5200ba29a27b8ec12488ce502b44ed88b33760f5644281ed718",
+        "source_fact:v1:83b5f4c8e62061b1780f552f746d122a632bab50d7f1d951d673c8bf70523c5d",
+        "source_fact:v1:86bf9b006651f0a94d6ed773320b8097095c7f2e12d8118678d8e49365652c1d",
+        "source_fact:v1:8ba15dc5e1cb350536ccfbab5182f34da588428de3c4aa12ba7040d090e4df58",
+        "source_fact:v1:93614b67a4afbb5a5abc40b7977acd67b0e9e9eefd8058f1f95d08aec998143c",
+        "source_fact:v1:970a9e8e92dc388ed3eee538931e7f6da8936ba620886cb0a11bc912f6ccdb63",
+        "source_fact:v1:a702b72b281a69119dee2b61a0dbcbf523f0b5617ff1d083749b8ad94376ef52",
+        "source_fact:v1:a791647f89493ddc16a92143ddd4d61308dd93dbc64b2955916b1f5c134ca5d1",
+        "source_fact:v1:dcb67dda46052222c7b7e282be24b32bb30d7e3c1cb7a8e8bbe9f09606f510c9",
+        "source_fact:v1:e05b170caca97613d7f762adccc8b977d4f6f5ead868dcfb6adbd9bc95633e7d",
+        "source_fact:v1:e7fb9205906afab2bb7a4c0c567d50a6ca0755245811190555a056323fe17b68",
+        "source_fact:v1:eaf8c6fdaa4f7f382a7508f2421f9db1d3fc105606c4bbf13f8b2835e66d3fe8"
+      ],
+      "source_published_kst": "2026-10-08T11:52+09:00",
+      "source_title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나",
+      "telegram_core_fact": "특별성과급은 세금과 보험료 등을 공제한 뒤 자사주로 지급된다.",
+      "title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나"
+    },
     "source_fact:bd2a5fe0ee0b4da9f0be37d1": {
       "first_seen_kst": "2026-10-07T23:50:27+09:00",
       "lanes": {
@@ -222928,6 +224461,29 @@
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "데이터센터 반대여론에도 美건설 계속…2027년 90GW 전망"
     },
+    "source_fact:be6034e924601cb59cc0c0b8": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.mk.co.kr/news/world/12171265",
+      "source": "매일경제",
+      "source_body_digest": "145c4300f20755ffb892f9caa65c32eb0d72296d94626708c4ac8eff147bc9a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:97b1d16b8b5f2cb7a231ef1ac532abeb827640ae51b8811281b049725ab453c1",
+      "source_fact_keys": [
+        "source_fact:v1:49483681bbdf6cc30a460d607d1a264a64e427c7f94b4ea186fc8e98be3bc2d9",
+        "source_fact:v1:50b7887aa34bdb40569cee745271cb16d4779614be66df8610971c9b72a2f237",
+        "source_fact:v1:c07364dd5550800ceba28350a303ae481bd6a6807812be07f1a9fae40eeefd66",
+        "source_fact:v1:c96668288b611f2e829dee4780bc71d2b1bcc5fdaf04fc6b93a05e313fc9ed73",
+        "source_fact:v1:f916bf554d15a04fb51a896c559b170df95a5d28d7c7b2193eb5a8e23f464cad"
+      ],
+      "source_published_kst": "2026-10-08T10:45+09:00",
+      "source_title": "외신 “하이닉스 솔리다임, 내년 美IPO 추진…골드만·모건스탠리 주관사 선정”",
+      "telegram_core_fact": "8일(현지시간) 블룸버그통신은 복수의 소식통을 인용해 솔리다임이 골드만삭스와 모건스탠리를 IPO 대표 주관사로 선정했다고 보도했다. SK하이닉스의 손자회사 솔리다임이 내년 미국 증시 상장을 위한 대표 주관사단을 구성하며 기업공개(IPO) 준비에 속도를 내고 있다는 미국 현지 보도가 나왔다.",
+      "title": "외신 “하이닉스 솔리다임, 내년 美IPO 추진…골드만·모건스탠리 주관사 선정”"
+    },
     "source_fact:be6ece917c87a10fd66801b5": {
       "first_seen_kst": "2026-10-08T08:12:34+09:00",
       "lanes": {
@@ -223428,6 +224984,40 @@
       ],
       "source_published_kst": "2026-10-07T09:57+09:00",
       "title": "세종 국가산단에 100㎿ 데이터센터…1조8천억원 투자 계획 | 연합뉴스"
+    },
+    "source_fact:bff196fea015ff58a8d7b300": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818706",
+      "source": "뉴시스",
+      "source_body_digest": "576297ed1fa677a9e1a37151e3f3e7fa6a370797ef8a02459073bf5115a25208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:517ca165ac43bf32c3c0e2e3156f52b23d9c4e54de59fa642b73acf2c13a7e5d",
+      "source_fact_keys": [
+        "source_fact:v1:0545034b46d17e4597eedfc4cb707c72e6cd7f044f7787c533c6f57a4c7b279c",
+        "source_fact:v1:21dda79f0292f6ad685744db8f9270d4b825422f45785dd6fa82c7870ed4ab2c",
+        "source_fact:v1:521b78ff22fee0d4822e92f7dffbdf5d32e926f64245abc19edb7c366866bf11",
+        "source_fact:v1:5c68ca94aebd80606c3a5f308d8985f56ff05c6862a58c78381bb200baa46d0d",
+        "source_fact:v1:81b7eff0300eb5200ba29a27b8ec12488ce502b44ed88b33760f5644281ed718",
+        "source_fact:v1:83b5f4c8e62061b1780f552f746d122a632bab50d7f1d951d673c8bf70523c5d",
+        "source_fact:v1:86bf9b006651f0a94d6ed773320b8097095c7f2e12d8118678d8e49365652c1d",
+        "source_fact:v1:8ba15dc5e1cb350536ccfbab5182f34da588428de3c4aa12ba7040d090e4df58",
+        "source_fact:v1:93614b67a4afbb5a5abc40b7977acd67b0e9e9eefd8058f1f95d08aec998143c",
+        "source_fact:v1:970a9e8e92dc388ed3eee538931e7f6da8936ba620886cb0a11bc912f6ccdb63",
+        "source_fact:v1:a702b72b281a69119dee2b61a0dbcbf523f0b5617ff1d083749b8ad94376ef52",
+        "source_fact:v1:a791647f89493ddc16a92143ddd4d61308dd93dbc64b2955916b1f5c134ca5d1",
+        "source_fact:v1:dcb67dda46052222c7b7e282be24b32bb30d7e3c1cb7a8e8bbe9f09606f510c9",
+        "source_fact:v1:e05b170caca97613d7f762adccc8b977d4f6f5ead868dcfb6adbd9bc95633e7d",
+        "source_fact:v1:e7fb9205906afab2bb7a4c0c567d50a6ca0755245811190555a056323fe17b68",
+        "source_fact:v1:eaf8c6fdaa4f7f382a7508f2421f9db1d3fc105606c4bbf13f8b2835e66d3fe8"
+      ],
+      "source_published_kst": "2026-10-08T11:52+09:00",
+      "source_title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나",
+      "telegram_core_fact": "특별성과급은 세금과 보험료 등을 공제한 뒤 자사주로 지급된다.",
+      "title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나"
     },
     "source_fact:bffca875101bbb30435a743b": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
@@ -225976,6 +227566,40 @@
       ],
       "source_published_kst": "2026-10-07T15:31+09:00",
       "title": "스페이스X, 엔비디아 칩 사려고 400억달러 조달 추진"
+    },
+    "source_fact:c47fd251a84feb5b0e793f61": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818706",
+      "source": "뉴시스",
+      "source_body_digest": "576297ed1fa677a9e1a37151e3f3e7fa6a370797ef8a02459073bf5115a25208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:517ca165ac43bf32c3c0e2e3156f52b23d9c4e54de59fa642b73acf2c13a7e5d",
+      "source_fact_keys": [
+        "source_fact:v1:0545034b46d17e4597eedfc4cb707c72e6cd7f044f7787c533c6f57a4c7b279c",
+        "source_fact:v1:21dda79f0292f6ad685744db8f9270d4b825422f45785dd6fa82c7870ed4ab2c",
+        "source_fact:v1:521b78ff22fee0d4822e92f7dffbdf5d32e926f64245abc19edb7c366866bf11",
+        "source_fact:v1:5c68ca94aebd80606c3a5f308d8985f56ff05c6862a58c78381bb200baa46d0d",
+        "source_fact:v1:81b7eff0300eb5200ba29a27b8ec12488ce502b44ed88b33760f5644281ed718",
+        "source_fact:v1:83b5f4c8e62061b1780f552f746d122a632bab50d7f1d951d673c8bf70523c5d",
+        "source_fact:v1:86bf9b006651f0a94d6ed773320b8097095c7f2e12d8118678d8e49365652c1d",
+        "source_fact:v1:8ba15dc5e1cb350536ccfbab5182f34da588428de3c4aa12ba7040d090e4df58",
+        "source_fact:v1:93614b67a4afbb5a5abc40b7977acd67b0e9e9eefd8058f1f95d08aec998143c",
+        "source_fact:v1:970a9e8e92dc388ed3eee538931e7f6da8936ba620886cb0a11bc912f6ccdb63",
+        "source_fact:v1:a702b72b281a69119dee2b61a0dbcbf523f0b5617ff1d083749b8ad94376ef52",
+        "source_fact:v1:a791647f89493ddc16a92143ddd4d61308dd93dbc64b2955916b1f5c134ca5d1",
+        "source_fact:v1:dcb67dda46052222c7b7e282be24b32bb30d7e3c1cb7a8e8bbe9f09606f510c9",
+        "source_fact:v1:e05b170caca97613d7f762adccc8b977d4f6f5ead868dcfb6adbd9bc95633e7d",
+        "source_fact:v1:e7fb9205906afab2bb7a4c0c567d50a6ca0755245811190555a056323fe17b68",
+        "source_fact:v1:eaf8c6fdaa4f7f382a7508f2421f9db1d3fc105606c4bbf13f8b2835e66d3fe8"
+      ],
+      "source_published_kst": "2026-10-08T11:52+09:00",
+      "source_title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나",
+      "telegram_core_fact": "특별성과급은 세금과 보험료 등을 공제한 뒤 자사주로 지급된다.",
+      "title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나"
     },
     "source_fact:c48886ff783af761d88d24cf": {
       "first_seen_kst": "2026-10-06T15:03:09+09:00",
@@ -230809,6 +232433,29 @@
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "\"일주일새 12% 올랐다\"…전고체 ETF 뛰는데 뭉칫돈 향한 곳은"
     },
+    "source_fact:cf044763ee361230a64f031d": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12171264",
+      "source": "매일경제",
+      "source_body_digest": "a6ff44ec68726ad44adec1f96c8fff2ae8396f761bc3b7ade8287e3979b818f5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:197284835e43e62d499c920b758ae7e911b4c647fa238118d8c076291d6d64ea",
+      "source_fact_keys": [
+        "source_fact:v1:742a6af740a3c8e1e9f56b9184fa42242419810f8a6dbb5f860ee529baf9ced4",
+        "source_fact:v1:94000761696f596c07870aadc7bb172ea76a1e2c0ccaed55bb31ad70c6b60b50",
+        "source_fact:v1:975d6cccae799c9b3ff46a038f32aebf63dabac4a65b2e2e9b129126ef2a9b12",
+        "source_fact:v1:a9d96576acf4b38de548ae495a78f38c9bccbfa89fdb5e5122b9ece48bfb4fe6",
+        "source_fact:v1:e57d15f7e4b1ddf60550acc18d64cdc6669bc1f38e7310042daf01fbb48b2822"
+      ],
+      "source_published_kst": "2026-10-08T10:44+09:00",
+      "source_title": "외신 “AI가 서울 집값도 끌어올렸다…李정부 직면한 부동산 딜레마”",
+      "telegram_core_fact": "인공지능(AI) 산업 호황으로 국내 반도체 기업과 근로자들의 소득이 늘면서 서울을 비롯한 수도권 집값 상승에도 영향을 미치고 있다는 외신 분석이 나왔다.",
+      "title": "외신 “AI가 서울 집값도 끌어올렸다…李정부 직면한 부동산 딜레마”"
+    },
     "source_fact:cf0d92c45ab1c21bcbd6ad81": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
       "lanes": {
@@ -233256,6 +234903,40 @@
       "telegram_core_fact": "RTT 뉴스와 마켓워치, dpa 통신에 따르면 독일 연방통계청은 7일 2026년 8월 산업생산이 계절 조정치로 전월 대비 2.0% 증대했다고 발표했다. 유럽 최대 경제국 독일의 8월 산업생산은 건설과 기계·설비 생산 호조에 힘입어 17개월 만에 가장 큰 폭으로 증가했다.",
       "title": "8월 유로존 산업생산 2.0%↑…\"건설 호조에 17개월 만에 최대폭\""
     },
+    "source_fact:d46d166901bb4a4ffa752f25": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818706",
+      "source": "뉴시스",
+      "source_body_digest": "576297ed1fa677a9e1a37151e3f3e7fa6a370797ef8a02459073bf5115a25208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:517ca165ac43bf32c3c0e2e3156f52b23d9c4e54de59fa642b73acf2c13a7e5d",
+      "source_fact_keys": [
+        "source_fact:v1:0545034b46d17e4597eedfc4cb707c72e6cd7f044f7787c533c6f57a4c7b279c",
+        "source_fact:v1:21dda79f0292f6ad685744db8f9270d4b825422f45785dd6fa82c7870ed4ab2c",
+        "source_fact:v1:521b78ff22fee0d4822e92f7dffbdf5d32e926f64245abc19edb7c366866bf11",
+        "source_fact:v1:5c68ca94aebd80606c3a5f308d8985f56ff05c6862a58c78381bb200baa46d0d",
+        "source_fact:v1:81b7eff0300eb5200ba29a27b8ec12488ce502b44ed88b33760f5644281ed718",
+        "source_fact:v1:83b5f4c8e62061b1780f552f746d122a632bab50d7f1d951d673c8bf70523c5d",
+        "source_fact:v1:86bf9b006651f0a94d6ed773320b8097095c7f2e12d8118678d8e49365652c1d",
+        "source_fact:v1:8ba15dc5e1cb350536ccfbab5182f34da588428de3c4aa12ba7040d090e4df58",
+        "source_fact:v1:93614b67a4afbb5a5abc40b7977acd67b0e9e9eefd8058f1f95d08aec998143c",
+        "source_fact:v1:970a9e8e92dc388ed3eee538931e7f6da8936ba620886cb0a11bc912f6ccdb63",
+        "source_fact:v1:a702b72b281a69119dee2b61a0dbcbf523f0b5617ff1d083749b8ad94376ef52",
+        "source_fact:v1:a791647f89493ddc16a92143ddd4d61308dd93dbc64b2955916b1f5c134ca5d1",
+        "source_fact:v1:dcb67dda46052222c7b7e282be24b32bb30d7e3c1cb7a8e8bbe9f09606f510c9",
+        "source_fact:v1:e05b170caca97613d7f762adccc8b977d4f6f5ead868dcfb6adbd9bc95633e7d",
+        "source_fact:v1:e7fb9205906afab2bb7a4c0c567d50a6ca0755245811190555a056323fe17b68",
+        "source_fact:v1:eaf8c6fdaa4f7f382a7508f2421f9db1d3fc105606c4bbf13f8b2835e66d3fe8"
+      ],
+      "source_published_kst": "2026-10-08T11:52+09:00",
+      "source_title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나",
+      "telegram_core_fact": "특별성과급은 세금과 보험료 등을 공제한 뒤 자사주로 지급된다.",
+      "title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나"
+    },
     "source_fact:d475eef0970138dbb354b700": {
       "first_seen_kst": "2026-10-07T14:18:25+09:00",
       "lanes": {
@@ -234454,6 +236135,30 @@
       ],
       "source_published_kst": "2026-10-05T21:54+09:00",
       "title": "비트마인 이머전 테크놀로, ETH 602만개 보유..총자산 174억 달러"
+    },
+    "source_fact:d6a02d0f20919ca16ceeebfc": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633481",
+      "source": "이투데이",
+      "source_body_digest": "e1559f8eefc330c16fedfcd5f7d53a488d28935cfe4431b73e7655ad2b72949c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:64e1b1f802a68de5c88f2305e7b478e284c4aae7ef0fc3eba01510650555615e",
+      "source_fact_keys": [
+        "source_fact:v1:0f72c90176cc6cdbd551ae22e0fdc1838b71e97cb2bef5a2dd2888ee1fae2d67",
+        "source_fact:v1:4209e75ea4d186d0569e0e9d686c212597ecc7b180eb3892262f9cc25d36ad78",
+        "source_fact:v1:5ae8ed2e6c09330dfa5c7347ee98c7a26b6249a675e65fffd7247f798b53643b",
+        "source_fact:v1:630e798ce22e67ee081f887cc45f77767a115c0cd6959ebd18b25c5c2c6c473b",
+        "source_fact:v1:8ce3148685ac9552bb28f254ecbfaead4b4e83b3fb50d9c7e8ff0ea0386e4177",
+        "source_fact:v1:99a31cddfc76ef8a7d82431cf68eae41d0d244d7644cc84cbc1b211d3b84b7a4"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "2년 만에 끝난 ‘2세 경영’…적자 늪 모닝글로리, 백약이 무효?",
+      "telegram_core_fact": "모닝글로리는 43기 6억원의 영업이익을 냈으나 한 전 대표 취임 후인 44기(-5억원) 적자 전환한 이래 45기(-8억원), 46기(-6억원)까지 3개 회계연도 연속 영업적자의 늪에서 벗어나지 못하고 있다.",
+      "title": "2년 만에 끝난 ‘2세 경영’…적자 늪 모닝글로리, 백약이 무효?"
     },
     "source_fact:d6a3c58774731a8d3d512f1d": {
       "first_seen_kst": "2026-10-07T23:36:14+09:00",
@@ -237764,6 +239469,30 @@
       "telegram_core_fact": "연준이 7일(현지시간) 공개한 9월 15~16일 연방공개시장위원회(FOMC) 의사록에 따르면 참석자 대부분은 향후 통화정책과 관련해 “연말까지 기준금리 목표범위를 한 차례 더 인상하는 것이 적절할 가능성이 높다”고 평가했다.",
       "title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\""
     },
+    "source_fact:dd53e2ad45b20f7ca58e5efb": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03053686645610952",
+      "source": "이데일리",
+      "source_body_digest": "babfcbfcfc8252115ea6399f76c7874ca04503378b5c983354ba3617902f87ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9b3e86dd0d37a8aefd8a9b0dbb48d37a60e34be5fc3fcf273798281b8a07f1e4",
+      "source_fact_keys": [
+        "source_fact:v1:14b8d245cf1f4967c0c4a78dcec26e7936ae486e955cf51300ee7ffb4126df03",
+        "source_fact:v1:357937484900847292d4dc4e0c6181e9332fd1e79a48f91e82b8d91eb89fbe22",
+        "source_fact:v1:498e99fa38b2dd17ae2f23a5f9745a9f43363b41880c0d74fb23dded4121b88e",
+        "source_fact:v1:8ce3dac6478ce8a0075fbb2e3e4cdd0117b52d5dd38ad34918a52ddc19e515bb",
+        "source_fact:v1:8d0aa45b2f811e146d4dbd1e9863238aa66b327c118f393d6a570d2e0788071b",
+        "source_fact:v1:c601ea11f818d9bacc77f8607a50520cabf32600f72c0d3c7c659d87ea704f18"
+      ],
+      "source_published_kst": "2026-10-08T10:40+09:00",
+      "source_title": "HPE, AMD 최신 CPU 서버 4종 공개…AI 추론 시장 정조준",
+      "telegram_core_fact": "인공지능(AI) 데이터센터 시장이 학습용 그래픽처리장치(GPU) 중심에서 AI 추론과 데이터 처리 등 실제 서비스 운영을 위한 서버 인프라 경쟁으로 확대되고 있다.",
+      "title": "HPE, AMD 최신 CPU 서버 4종 공개…AI 추론 시장 정조준"
+    },
     "source_fact:dd55e7c34fc1cbac7d9e04db": {
       "first_seen_kst": "2026-10-06T03:45:53+09:00",
       "lanes": {
@@ -240157,6 +241886,40 @@
       ],
       "source_published_kst": "2026-10-06T17:40+09:00",
       "title": "亞 최대 동해 AI데이터센터 연내 착공"
+    },
+    "source_fact:e15d03012454ad0f82a82f44": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818706",
+      "source": "뉴시스",
+      "source_body_digest": "576297ed1fa677a9e1a37151e3f3e7fa6a370797ef8a02459073bf5115a25208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:517ca165ac43bf32c3c0e2e3156f52b23d9c4e54de59fa642b73acf2c13a7e5d",
+      "source_fact_keys": [
+        "source_fact:v1:0545034b46d17e4597eedfc4cb707c72e6cd7f044f7787c533c6f57a4c7b279c",
+        "source_fact:v1:21dda79f0292f6ad685744db8f9270d4b825422f45785dd6fa82c7870ed4ab2c",
+        "source_fact:v1:521b78ff22fee0d4822e92f7dffbdf5d32e926f64245abc19edb7c366866bf11",
+        "source_fact:v1:5c68ca94aebd80606c3a5f308d8985f56ff05c6862a58c78381bb200baa46d0d",
+        "source_fact:v1:81b7eff0300eb5200ba29a27b8ec12488ce502b44ed88b33760f5644281ed718",
+        "source_fact:v1:83b5f4c8e62061b1780f552f746d122a632bab50d7f1d951d673c8bf70523c5d",
+        "source_fact:v1:86bf9b006651f0a94d6ed773320b8097095c7f2e12d8118678d8e49365652c1d",
+        "source_fact:v1:8ba15dc5e1cb350536ccfbab5182f34da588428de3c4aa12ba7040d090e4df58",
+        "source_fact:v1:93614b67a4afbb5a5abc40b7977acd67b0e9e9eefd8058f1f95d08aec998143c",
+        "source_fact:v1:970a9e8e92dc388ed3eee538931e7f6da8936ba620886cb0a11bc912f6ccdb63",
+        "source_fact:v1:a702b72b281a69119dee2b61a0dbcbf523f0b5617ff1d083749b8ad94376ef52",
+        "source_fact:v1:a791647f89493ddc16a92143ddd4d61308dd93dbc64b2955916b1f5c134ca5d1",
+        "source_fact:v1:dcb67dda46052222c7b7e282be24b32bb30d7e3c1cb7a8e8bbe9f09606f510c9",
+        "source_fact:v1:e05b170caca97613d7f762adccc8b977d4f6f5ead868dcfb6adbd9bc95633e7d",
+        "source_fact:v1:e7fb9205906afab2bb7a4c0c567d50a6ca0755245811190555a056323fe17b68",
+        "source_fact:v1:eaf8c6fdaa4f7f382a7508f2421f9db1d3fc105606c4bbf13f8b2835e66d3fe8"
+      ],
+      "source_published_kst": "2026-10-08T11:52+09:00",
+      "source_title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나",
+      "telegram_core_fact": "특별성과급은 세금과 보험료 등을 공제한 뒤 자사주로 지급된다.",
+      "title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나"
     },
     "source_fact:e1622320315177afd50f3c82": {
       "first_seen_kst": "2026-10-08T10:20:20+09:00",
@@ -249159,6 +250922,30 @@
       "source_published_kst": "2026-10-07T05:00+09:00",
       "title": "개미는 반도체 ‘팔자’…美 지수·파킹형에 몰린 돈 [ETF 지형도 변화]①"
     },
+    "source_fact:f36f922c51c4ff3ec0f6db9c": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633481",
+      "source": "이투데이",
+      "source_body_digest": "e1559f8eefc330c16fedfcd5f7d53a488d28935cfe4431b73e7655ad2b72949c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:64e1b1f802a68de5c88f2305e7b478e284c4aae7ef0fc3eba01510650555615e",
+      "source_fact_keys": [
+        "source_fact:v1:0f72c90176cc6cdbd551ae22e0fdc1838b71e97cb2bef5a2dd2888ee1fae2d67",
+        "source_fact:v1:4209e75ea4d186d0569e0e9d686c212597ecc7b180eb3892262f9cc25d36ad78",
+        "source_fact:v1:5ae8ed2e6c09330dfa5c7347ee98c7a26b6249a675e65fffd7247f798b53643b",
+        "source_fact:v1:630e798ce22e67ee081f887cc45f77767a115c0cd6959ebd18b25c5c2c6c473b",
+        "source_fact:v1:8ce3148685ac9552bb28f254ecbfaead4b4e83b3fb50d9c7e8ff0ea0386e4177",
+        "source_fact:v1:99a31cddfc76ef8a7d82431cf68eae41d0d244d7644cc84cbc1b211d3b84b7a4"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "2년 만에 끝난 ‘2세 경영’…적자 늪 모닝글로리, 백약이 무효?",
+      "telegram_core_fact": "모닝글로리는 43기 6억원의 영업이익을 냈으나 한 전 대표 취임 후인 44기(-5억원) 적자 전환한 이래 45기(-8억원), 46기(-6억원)까지 3개 회계연도 연속 영업적자의 늪에서 벗어나지 못하고 있다.",
+      "title": "2년 만에 끝난 ‘2세 경영’…적자 늪 모닝글로리, 백약이 무효?"
+    },
     "source_fact:f37851808b0d6700f73a9b40": {
       "first_seen_kst": "2026-10-07T21:31:57+09:00",
       "lanes": {
@@ -253768,6 +255555,26 @@
       "source_published_kst": "2026-10-05T03:42+09:00",
       "title": "\"호르무즈 해협서 또 유조선 피격\"…이달에만 최소 4차례 | 연합뉴스"
     },
+    "source_fact:fe1751bda0e357fa833768be": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818809",
+      "source": "뉴시스",
+      "source_body_digest": "47be18800de6bd60301b474b1172f9ee1a81f3def52332e41fa346d6de9559a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cc005825f19a6e839991225b0f44cf969da982f4cbfca660459963b4ba218616",
+      "source_fact_keys": [
+        "source_fact:v1:78b17ff3127b9682b34ef8bea93794d005f366d5d8588a6077f770ac55655d9c",
+        "source_fact:v1:d0eb8cf4196e260e0935fc581c04a38d3d2f18afd45368a6ff10ed60aa07dc91"
+      ],
+      "source_published_kst": "2026-10-08T10:56+09:00",
+      "source_title": "AIDC 병목, GPU·전력서 메모리로…정석근 SK하이퍼 대표 \"韓에 새 기회\"",
+      "telegram_core_fact": "하지만 대규모 추론 수요가 늘어나면 이를 처리할 수 있는 '메모리 역량'과 지속적인 투자를 가능하게 할 '사업성과 수익구조'가 새로운 핵심 경쟁요인이 될 수 있다고 내다봤다.",
+      "title": "AIDC 병목, GPU·전력서 메모리로…정석근 SK하이퍼 대표 \"韓에 새 기회\""
+    },
     "source_fact:fe22db0c5f7685aa6572d276": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
       "lanes": {
@@ -255870,6 +257677,40 @@
       "link": "https://www.yna.co.kr/view/AKR20260918027100003",
       "source": "연합뉴스",
       "title": "SK그룹 전문경영인 부회장 3명 SK하이닉스로 보임 | 연합뉴스"
+    },
+    "title:05ce92ec666ea0b3d6472a27": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818706",
+      "source": "뉴시스",
+      "source_body_digest": "576297ed1fa677a9e1a37151e3f3e7fa6a370797ef8a02459073bf5115a25208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:517ca165ac43bf32c3c0e2e3156f52b23d9c4e54de59fa642b73acf2c13a7e5d",
+      "source_fact_keys": [
+        "source_fact:v1:0545034b46d17e4597eedfc4cb707c72e6cd7f044f7787c533c6f57a4c7b279c",
+        "source_fact:v1:21dda79f0292f6ad685744db8f9270d4b825422f45785dd6fa82c7870ed4ab2c",
+        "source_fact:v1:521b78ff22fee0d4822e92f7dffbdf5d32e926f64245abc19edb7c366866bf11",
+        "source_fact:v1:5c68ca94aebd80606c3a5f308d8985f56ff05c6862a58c78381bb200baa46d0d",
+        "source_fact:v1:81b7eff0300eb5200ba29a27b8ec12488ce502b44ed88b33760f5644281ed718",
+        "source_fact:v1:83b5f4c8e62061b1780f552f746d122a632bab50d7f1d951d673c8bf70523c5d",
+        "source_fact:v1:86bf9b006651f0a94d6ed773320b8097095c7f2e12d8118678d8e49365652c1d",
+        "source_fact:v1:8ba15dc5e1cb350536ccfbab5182f34da588428de3c4aa12ba7040d090e4df58",
+        "source_fact:v1:93614b67a4afbb5a5abc40b7977acd67b0e9e9eefd8058f1f95d08aec998143c",
+        "source_fact:v1:970a9e8e92dc388ed3eee538931e7f6da8936ba620886cb0a11bc912f6ccdb63",
+        "source_fact:v1:a702b72b281a69119dee2b61a0dbcbf523f0b5617ff1d083749b8ad94376ef52",
+        "source_fact:v1:a791647f89493ddc16a92143ddd4d61308dd93dbc64b2955916b1f5c134ca5d1",
+        "source_fact:v1:dcb67dda46052222c7b7e282be24b32bb30d7e3c1cb7a8e8bbe9f09606f510c9",
+        "source_fact:v1:e05b170caca97613d7f762adccc8b977d4f6f5ead868dcfb6adbd9bc95633e7d",
+        "source_fact:v1:e7fb9205906afab2bb7a4c0c567d50a6ca0755245811190555a056323fe17b68",
+        "source_fact:v1:eaf8c6fdaa4f7f382a7508f2421f9db1d3fc105606c4bbf13f8b2835e66d3fe8"
+      ],
+      "source_published_kst": "2026-10-08T11:52+09:00",
+      "source_title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나",
+      "telegram_core_fact": "특별성과급은 세금과 보험료 등을 공제한 뒤 자사주로 지급된다.",
+      "title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나"
     },
     "title:05ed5ec455d34522ccc1570e": {
       "first_seen_kst": "2026-10-07T23:10:06+09:00",
@@ -263520,6 +265361,30 @@
       "telegram_core_fact": "은행 업종은 밸류업 프로그램 이후 총주주환원율이 과거 20%대에서 50%대로 높아졌고, 주가순자산비율(P/B) 역시 0.3~0.4배 수준에서 0.7~0.9배까지 상승했다.",
       "title": "주춤한 은행주⋯증권가 “4분기 마진 개선·주주환원이 기폭제”"
     },
+    "title:31c0e4acc892900f9268fa6c": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03053686645610952",
+      "source": "이데일리",
+      "source_body_digest": "babfcbfcfc8252115ea6399f76c7874ca04503378b5c983354ba3617902f87ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9b3e86dd0d37a8aefd8a9b0dbb48d37a60e34be5fc3fcf273798281b8a07f1e4",
+      "source_fact_keys": [
+        "source_fact:v1:14b8d245cf1f4967c0c4a78dcec26e7936ae486e955cf51300ee7ffb4126df03",
+        "source_fact:v1:357937484900847292d4dc4e0c6181e9332fd1e79a48f91e82b8d91eb89fbe22",
+        "source_fact:v1:498e99fa38b2dd17ae2f23a5f9745a9f43363b41880c0d74fb23dded4121b88e",
+        "source_fact:v1:8ce3dac6478ce8a0075fbb2e3e4cdd0117b52d5dd38ad34918a52ddc19e515bb",
+        "source_fact:v1:8d0aa45b2f811e146d4dbd1e9863238aa66b327c118f393d6a570d2e0788071b",
+        "source_fact:v1:c601ea11f818d9bacc77f8607a50520cabf32600f72c0d3c7c659d87ea704f18"
+      ],
+      "source_published_kst": "2026-10-08T10:40+09:00",
+      "source_title": "HPE, AMD 최신 CPU 서버 4종 공개…AI 추론 시장 정조준",
+      "telegram_core_fact": "인공지능(AI) 데이터센터 시장이 학습용 그래픽처리장치(GPU) 중심에서 AI 추론과 데이터 처리 등 실제 서비스 운영을 위한 서버 인프라 경쟁으로 확대되고 있다.",
+      "title": "HPE, AMD 최신 CPU 서버 4종 공개…AI 추론 시장 정조준"
+    },
     "title:31d57d27d7175944d6db18e2": {
       "first_seen_kst": "2026-10-06T01:51:09+09:00",
       "lanes": {
@@ -263695,6 +265560,30 @@
       "source": "뉴시스",
       "source_event_identity": "",
       "title": "현대차그룹, 美 3분기 판매 포드에 1195대 차…첫 추월 문턱서 멈췄다"
+    },
+    "title:32d16057f39ea8e34ea95313": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633481",
+      "source": "이투데이",
+      "source_body_digest": "e1559f8eefc330c16fedfcd5f7d53a488d28935cfe4431b73e7655ad2b72949c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:64e1b1f802a68de5c88f2305e7b478e284c4aae7ef0fc3eba01510650555615e",
+      "source_fact_keys": [
+        "source_fact:v1:0f72c90176cc6cdbd551ae22e0fdc1838b71e97cb2bef5a2dd2888ee1fae2d67",
+        "source_fact:v1:4209e75ea4d186d0569e0e9d686c212597ecc7b180eb3892262f9cc25d36ad78",
+        "source_fact:v1:5ae8ed2e6c09330dfa5c7347ee98c7a26b6249a675e65fffd7247f798b53643b",
+        "source_fact:v1:630e798ce22e67ee081f887cc45f77767a115c0cd6959ebd18b25c5c2c6c473b",
+        "source_fact:v1:8ce3148685ac9552bb28f254ecbfaead4b4e83b3fb50d9c7e8ff0ea0386e4177",
+        "source_fact:v1:99a31cddfc76ef8a7d82431cf68eae41d0d244d7644cc84cbc1b211d3b84b7a4"
+      ],
+      "source_published_kst": "2026-10-08T05:00+09:00",
+      "source_title": "2년 만에 끝난 ‘2세 경영’…적자 늪 모닝글로리, 백약이 무효?",
+      "telegram_core_fact": "모닝글로리는 43기 6억원의 영업이익을 냈으나 한 전 대표 취임 후인 44기(-5억원) 적자 전환한 이래 45기(-8억원), 46기(-6억원)까지 3개 회계연도 연속 영업적자의 늪에서 벗어나지 못하고 있다.",
+      "title": "2년 만에 끝난 ‘2세 경영’…적자 늪 모닝글로리, 백약이 무효?"
     },
     "title:32f5d5293728213ef72d4c24": {
       "first_seen_kst": "2026-10-06T19:33:48+09:00",
@@ -268056,6 +269945,26 @@
       "source_published_kst": "2026-10-03T07:00+09:00",
       "title": "세계식량가격 석 달째 상승…설탕 6.1%·곡물 5.1%↑"
     },
+    "title:49d70c3d0a448b25a8e04446": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818809",
+      "source": "뉴시스",
+      "source_body_digest": "47be18800de6bd60301b474b1172f9ee1a81f3def52332e41fa346d6de9559a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cc005825f19a6e839991225b0f44cf969da982f4cbfca660459963b4ba218616",
+      "source_fact_keys": [
+        "source_fact:v1:78b17ff3127b9682b34ef8bea93794d005f366d5d8588a6077f770ac55655d9c",
+        "source_fact:v1:d0eb8cf4196e260e0935fc581c04a38d3d2f18afd45368a6ff10ed60aa07dc91"
+      ],
+      "source_published_kst": "2026-10-08T10:56+09:00",
+      "source_title": "AIDC 병목, GPU·전력서 메모리로…정석근 SK하이퍼 대표 \"韓에 새 기회\"",
+      "telegram_core_fact": "하지만 대규모 추론 수요가 늘어나면 이를 처리할 수 있는 '메모리 역량'과 지속적인 투자를 가능하게 할 '사업성과 수익구조'가 새로운 핵심 경쟁요인이 될 수 있다고 내다봤다.",
+      "title": "AIDC 병목, GPU·전력서 메모리로…정석근 SK하이퍼 대표 \"韓에 새 기회\""
+    },
     "title:49f68e2990029019eeee449d": {
       "first_seen_kst": "2026-09-30T08:08:30+09:00",
       "lanes": {
@@ -268958,6 +270867,29 @@
       ],
       "source_published_kst": "2026-10-05T21:21+09:00",
       "title": "C.H. 로빈슨, RXO 58억 달러 인수 합의…3억 달러 시너지 목표"
+    },
+    "title:4ecc0dfad24634dc9bcb915c": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.mk.co.kr/news/world/12171265",
+      "source": "매일경제",
+      "source_body_digest": "145c4300f20755ffb892f9caa65c32eb0d72296d94626708c4ac8eff147bc9a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:97b1d16b8b5f2cb7a231ef1ac532abeb827640ae51b8811281b049725ab453c1",
+      "source_fact_keys": [
+        "source_fact:v1:49483681bbdf6cc30a460d607d1a264a64e427c7f94b4ea186fc8e98be3bc2d9",
+        "source_fact:v1:50b7887aa34bdb40569cee745271cb16d4779614be66df8610971c9b72a2f237",
+        "source_fact:v1:c07364dd5550800ceba28350a303ae481bd6a6807812be07f1a9fae40eeefd66",
+        "source_fact:v1:c96668288b611f2e829dee4780bc71d2b1bcc5fdaf04fc6b93a05e313fc9ed73",
+        "source_fact:v1:f916bf554d15a04fb51a896c559b170df95a5d28d7c7b2193eb5a8e23f464cad"
+      ],
+      "source_published_kst": "2026-10-08T10:45+09:00",
+      "source_title": "외신 “하이닉스 솔리다임, 내년 美IPO 추진…골드만·모건스탠리 주관사 선정”",
+      "telegram_core_fact": "8일(현지시간) 블룸버그통신은 복수의 소식통을 인용해 솔리다임이 골드만삭스와 모건스탠리를 IPO 대표 주관사로 선정했다고 보도했다. SK하이닉스의 손자회사 솔리다임이 내년 미국 증시 상장을 위한 대표 주관사단을 구성하며 기업공개(IPO) 준비에 속도를 내고 있다는 미국 현지 보도가 나왔다.",
+      "title": "외신 “하이닉스 솔리다임, 내년 美IPO 추진…골드만·모건스탠리 주관사 선정”"
     },
     "title:4ece24cad3f83d220df115fd": {
       "first_seen_kst": "2026-10-07T05:13:11+09:00",
@@ -279148,6 +281080,27 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T17:44+09:00",
       "title": "[단독] 근로기준법 '5인 미만' 적용, 정부 보고서도 우려 일색"
+    },
+    "title:8b8a602bb5dc0ce39a7a0a11": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008074700002",
+      "source": "연합뉴스",
+      "source_body_digest": "6e0f0f6bf17c0edcaa7f1d264b5ef181eb75de8a1358707d116285855e83f489",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3ae5c5ec3af0e403343fc513f01e6ab83c8f25d8744b4c3b21729b83a4a6b19",
+      "source_fact_keys": [
+        "source_fact:v1:252df806dd79e1f0508a3ba95f048680b92e77c7a6b17e023f072314a0cc0a11",
+        "source_fact:v1:59ae3d6cce2d505092a02c5b9d1e5a1d08d1cdd3d475423c86393ba54dfeabd3",
+        "source_fact:v1:70e50fbc8a07db640ff6e078d3a9ae3826dae38225cd028d45bdad4821ee8b61"
+      ],
+      "source_published_kst": "2026-10-08T10:50+09:00",
+      "source_title": "우리銀, '수출선도기업대출' 출시…시설자금 최대 15% 추가한도 | 연합뉴스",
+      "telegram_core_fact": "우리은행은 수출기업이 시설자금 대출을 신청할 경우 최대 15%의 추가 한도를 지원한다.",
+      "title": "우리銀, '수출선도기업대출' 출시…시설자금 최대 15% 추가한도 | 연합뉴스"
     },
     "title:8b91d38daea35c172db8bcef": {
       "first_seen_kst": "2026-10-01T16:31:12+09:00",
@@ -289830,6 +291783,29 @@
       "telegram_core_fact": "GS ITM이 삼성SDS·LG CNS와 다른 규제를 받는 이유는 상호출자제한기업집단 소속 여부에 있다.",
       "title": "[공공SW전략] 기업마다 다른 규제…참여제한 갈린다 | GS ITM㊦"
     },
+    "title:cba679f4c1471057967ae9e5": {
+      "first_seen_kst": "2026-10-08T13:46:05+09:00",
+      "lanes": {
+        "live": "2026-10-08T13:46:05+09:00"
+      },
+      "last_seen_kst": "2026-10-08T13:46:05+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12171264",
+      "source": "매일경제",
+      "source_body_digest": "a6ff44ec68726ad44adec1f96c8fff2ae8396f761bc3b7ade8287e3979b818f5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:197284835e43e62d499c920b758ae7e911b4c647fa238118d8c076291d6d64ea",
+      "source_fact_keys": [
+        "source_fact:v1:742a6af740a3c8e1e9f56b9184fa42242419810f8a6dbb5f860ee529baf9ced4",
+        "source_fact:v1:94000761696f596c07870aadc7bb172ea76a1e2c0ccaed55bb31ad70c6b60b50",
+        "source_fact:v1:975d6cccae799c9b3ff46a038f32aebf63dabac4a65b2e2e9b129126ef2a9b12",
+        "source_fact:v1:a9d96576acf4b38de548ae495a78f38c9bccbfa89fdb5e5122b9ece48bfb4fe6",
+        "source_fact:v1:e57d15f7e4b1ddf60550acc18d64cdc6669bc1f38e7310042daf01fbb48b2822"
+      ],
+      "source_published_kst": "2026-10-08T10:44+09:00",
+      "source_title": "외신 “AI가 서울 집값도 끌어올렸다…李정부 직면한 부동산 딜레마”",
+      "telegram_core_fact": "인공지능(AI) 산업 호황으로 국내 반도체 기업과 근로자들의 소득이 늘면서 서울을 비롯한 수도권 집값 상승에도 영향을 미치고 있다는 외신 분석이 나왔다.",
+      "title": "외신 “AI가 서울 집값도 끌어올렸다…李정부 직면한 부동산 딜레마”"
+    },
     "title:cba6d50888cd9c6f659bb5c5": {
       "first_seen_kst": "2026-10-07T22:53:53+09:00",
       "lanes": {
@@ -298719,5 +300695,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-08T13:07:52+09:00"
+  "updated_at_kst": "2026-10-08T13:46:05+09:00"
 }
