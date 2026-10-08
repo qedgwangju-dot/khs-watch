@@ -536,6 +536,45 @@ class AgenticCpuStructureTests(unittest.TestCase):
         self.assertTrue(recovered["next"]["cpu_structure"]["cpu_xpu_ratio_alert_sent"])
         self.assertFalse(run(recovered["next"])["alerted"])
 
+    def test_arm_target_update_preserves_distinct_bnp_and_amd_citations(self):
+        old = {
+            **w.BASELINE,
+            "cpu_structure_track_version": w.CPU_STRUCTURE_TRACK_VERSION,
+            "cpu_structure": {
+                **w.CPU_STRUCTURE_BASELINE,
+                "cpu_xpu_ratio_alert_sent": True,
+            },
+        }
+        arm_url = "https://www.marketscreener.com/news/bnp-paribas-arm-target-405"
+        with (
+            mock.patch.object(w, "load_json", side_effect=[{"agentic_cpu_demand": old}, {}]),
+            mock.patch.object(w, "discover_forecasts", return_value=[]),
+            mock.patch.object(w, "discover_validation", return_value=[]),
+            mock.patch.object(w, "discover_cpu_structure", return_value=[{
+                "issuer": "bnpp_analyst",
+                "metrics": {"arm_target_usd": 405, "arm_target_confirmed": True},
+                "url": arm_url,
+                "as_of": "2026-10-12",
+            }]),
+            mock.patch.object(w, "get_fx", return_value=(1345.37, "2026-10-08")),
+            mock.patch.object(w, "ALERT_PATH") as alert,
+            mock.patch.object(w, "write_json") as writer,
+        ):
+            alert.exists.return_value = False
+            w.main()
+            analyst = writer.call_args.args[1]["agentic_cpu_demand"]["cpu_structure"]["bnpp_analyst"]
+            self.assertTrue(alert.write_text.called)
+        self.assertEqual(analyst["arm_target_source_url"], arm_url)
+        self.assertEqual(analyst["target_source_url"], w.CPU_STRUCTURE_BASELINE["bnpp_analyst"]["target_source_url"])
+        self.assertEqual(
+            analyst["market_2030_source_url"],
+            w.CPU_STRUCTURE_BASELINE["bnpp_analyst"]["market_2030_source_url"],
+        )
+        self.assertEqual(
+            analyst["source_url"],
+            w.CPU_STRUCTURE_BASELINE["bnpp_analyst"]["source_url"],
+        )
+
     def test_digitimes_provenance_upgrade_and_future_source_link(self):
         original = w.CPU_STRUCTURE_BASELINE
         old_digitimes = dict(original["digitimes"])
