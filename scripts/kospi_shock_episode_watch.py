@@ -1086,6 +1086,11 @@ class Watch:
 
     async def evaluate(self) -> None:
         await self.maybe_flow()
+        # CI 실데이터 조회(--test)는 소스와 API 품질만 검사한다.
+        # 장중 급락 조건이 충족돼도 시험 실행이 실전 Telegram 알림을 보내서는 안 된다.
+        if getattr(self, "test", False):
+            self.raw["test_mode_notification_suppressed"] = True
+            return
         if not self.idx:
             return
         now_t, cur = self.idx[-1]
