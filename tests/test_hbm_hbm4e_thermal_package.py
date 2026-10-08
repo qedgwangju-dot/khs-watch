@@ -325,6 +325,22 @@ class HybridTelegramPresentationTests(unittest.TestCase):
                 formatted = p.read_text(encoding="utf-8")
         return raw, formatted, delivery.chunks(formatted)
 
+    def test_non_rubin_event_does_not_get_rubin_288_to_192_scenario(self):
+        original = (
+            "🚨 Rubin/HBM 구조 변화 감시\n"
+            "조회시각: 2026-10-08 19:40:00 KST\n"
+            "신규 핵심 변화: 1건\n"
+            "■ HBM4E 고객 검증·양산\n"
+            "1. 고객 인증 단계 진척\n"
+            "• 판정: 고객 샘플 검증 중\n"
+        )
+        formatted = pretty.format_generic_alert(original)
+        self.assertNotIn("288GB", formatted)
+        self.assertNotIn("192GB", formatted)
+        self.assertNotIn("디스펙 상쇄선", formatted)
+        self.assertNotIn("[HBM 방향 체크]", formatted)
+        self.assertIn("고객 인증 단계 진척", formatted)
+
     def test_missing_rubin_metadata_does_not_create_fake_change_headline(self):
         with self.assertRaisesRegex(ValueError, "missing required timestamp/count"):
             pretty.format_generic_alert(
