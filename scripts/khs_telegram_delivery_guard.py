@@ -435,8 +435,14 @@ def duplicate_policy_heading(body: str) -> str | None:
 
 
 def duplicate_policy_body_signature(body: str) -> str | None:
-    blocks = re.split(r"(?m)^##\s+", body)
-    seen: set[str] = set()
+    """Detect replayed policy content without collapsing distinct official documents.
+
+    Generic explanatory templates can be identical for different presidential
+    instruments. A distinct official primary-source URL takes precedence over
+    a coincidentally identical generic body signature.
+    """
+    blocks = re.split(r"(?m)^##\\s+", body)
+    seen: dict[str, str | None] = {}
     for block in blocks:
         if not block.strip():
             continue
@@ -452,11 +458,20 @@ def duplicate_policy_body_signature(body: str) -> str | None:
         if len(lines) < 3:
             continue
         signature = "|".join(lines[:6])
+        official_urls = re.findall(
+            r"https?://(?:www\\.)?(?:whitehouse\\.gov|federalregister\\.gov|energy\\.gov)/[^\\s)<>\"']+",
+            block, flags=re.I,
+        )
+        source_url = official_urls[0].rstrip(".,;") if official_urls else None
         if signature in seen:
+            previous_url = seen[signature]
+            if previous_url and source_url and previous_url != source_url:
+                # Different official instruments with generic matching descriptions.
+                # Do not discard a whole alert bundle.
+                continue
             return signature[:120]
-        seen.add(signature)
+        seen[signature] = source_url
     return None
-
 
 def has_source_body_mismatch(title: str, body: str) -> str | None:
     combined = f"{title}\n{body}"
