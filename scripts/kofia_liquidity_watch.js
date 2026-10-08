@@ -10,6 +10,7 @@ const STATE_FILE = path.join(process.cwd(), 'data', 'kofia_liquidity_state.json'
 const ALERT_FILE = path.join(OUT_DIR, 'kofia_liquidity_alert.html');
 const STATUS_FILE = path.join(OUT_DIR, 'kofia_liquidity_status.md');
 const PENDING_FILE = path.join(OUT_DIR, 'kofia_liquidity_pending_state.json');
+const MESSAGE_VERSION = 'kofia-direction-20261008-v1';
 
 const SID = {
   deposit: 'STATSCU0100000060',
@@ -267,7 +268,16 @@ if (
   const alignmentReady = criticalDatesAligned(dates);
   const snapshotDate = alignmentReady ? dates.deposit : null;
   const sameDatesAsState = priorState && JSON.stringify(priorState.dates || {}) === JSON.stringify(dates);
-  const eventLabel = !priorState ? '초기 기준 확정' : sameDatesAsState ? '동일 기준일 수정치' : '신규 공식값';
+  // One-time correction of the already-delivered October 7 message. This is NOT
+  // a fake new KOFIA datapoint: the earlier narrative said "MMF 급감" on +4.93조.
+  // It is keyed by snapshot+fingerprint+message version, so it cannot repeat.
+  const narrativeCorrection = Boolean(priorState && !changed &&
+    snapshotDate === '20261007' &&
+    priorState.snapshot_date === snapshotDate &&
+    priorState.message_version !== MESSAGE_VERSION);
+  const eventLabel = narrativeCorrection
+    ? '해석 정정'
+    : (!priorState ? '초기 기준 확정' : sameDatesAsState ? '동일 기준일 수정치' : '신규 공식값');
   const signal = strongMove ? '예탁금↑ + MMF↓ 동시 신호 강함' : big1d ? '당일 큰 변동 감지' : '공식값 갱신';
 
   const baselineLine = ''; // No hardcoded historical MMF baselines.
@@ -275,6 +285,9 @@ if (
     `📊 <b>[국내 증시 대기자금 추적 | ${esc(eventLabel)}]</b>`,
     `KOFIA FreeSIS 공식 원자료 직접 조회`,
     `• 핵심 4개 지표 기준일 동기화: <b>${snapshotDate ? fmtDate(snapshotDate) : '미완료'}</b>`,
+    ...(narrativeCorrection ? [
+      `• <b>정정 사유</b>: 직전 알림에서 당일 MMF +4.93조원 증가를 '급감'으로 설명한 해석 오류 수정. KOFIA 원자료 수치 자체는 바뀌지 않았습니다.`
+    ] : []),
     ``,
     `<b>무엇이 달라졌나</b>`,
     `• 투자자예탁금 <b>${fmtTrillion(metrics.deposit.value)}</b> (${fmtDate(metrics.deposit.date)}) | 1D ${fmtDelta(metrics.deposit.d1)} | 5D ${fmtDelta(metrics.deposit.d5)}`,
@@ -306,6 +319,8 @@ if (
     `- fingerprint ${fp}`,
     `- prior fingerprint ${priorState ? priorState.fingerprint : 'none'}`,
     `- changed ${changed}`,
+    `- narrative_correction ${narrativeCorrection}`,
+    `- message_version ${MESSAGE_VERSION}`,
     `- alignment_selftest true`,
     `- alignment_ready ${alignmentReady}`,
     `- snapshot_date ${snapshotDate || 'none'}`,
@@ -330,7 +345,7 @@ if (
     return;
   }
 
-  if (changed || forceSend) {
+  if (changed || forceSend || narrativeCorrection) {
     fs.writeFileSync(ALERT_FILE, message + '\n', 'utf8');
     const nextState = {
       fingerprint: fp,
@@ -339,6 +354,7 @@ if (
       dates,
       reference_dates: referenceDates,
       values: fpPayload,
+      message_version: MESSAGE_VERSION,
       last_event: eventLabel,
       source: 'KOFIA FreeSIS',
       source_url: 'https://freesis.kofia.or.kr/stat/main.do',
