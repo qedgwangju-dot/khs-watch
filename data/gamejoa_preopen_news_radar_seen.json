@@ -386,6 +386,31 @@
       "telegram_core_fact": "RTT 뉴스와 마켓워치, dpa 통신에 따르면 독일 연방통계청은 7일 2026년 8월 산업생산이 계절 조정치로 전월 대비 2.0% 증대했다고 발표했다. 유럽 최대 경제국 독일의 8월 산업생산은 건설과 기계·설비 생산 호조에 힘입어 17개월 만에 가장 큰 폭으로 증가했다.",
       "title": "8월 유로존 산업생산 2.0%↑…\"건설 호조에 17개월 만에 최대폭\""
     },
+    "core:091570ce848b292ec28d4a9e": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04742886645610952",
+      "source": "이데일리",
+      "source_body_digest": "6968e3e9552f837adb1d90f2afe41242cb7ecadd7245db79e7cd7a45973833bd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:443c8df68bb6984036e0214f8a27254cf2ac4681e73fae8a192f87535b3f10d5",
+      "source_fact_keys": [
+        "source_fact:v1:16c572f17b64081da778d41d2eb6127ee865e2b0e858a1dcfd382bcc0356c48a",
+        "source_fact:v1:353374f9336c214b51b8ec00d75f7fa84f02e046baece518365b1baf7dd19d37",
+        "source_fact:v1:94289e16338d8739e51cb5f9a57184dec03f6d93d038b9be4f5aff884966d7e9",
+        "source_fact:v1:a6ec24e037b302f44c856a77dcb4bb31710bb81f3f88442fdbdf4c0ac0b96eaa",
+        "source_fact:v1:ac5acbd335e7bb6e9288ee0798fd2a9ae66fef2ee7101c314e955fe23dd28427",
+        "source_fact:v1:b92f1924553545da5fd38bda75aa91f9887839c071bfb51e2b6b4e857e03e759",
+        "source_fact:v1:bc7fa1422d648000b2f777609a8141af3b28738cc8d0bc39f4fcc2bd80aa6cbf"
+      ],
+      "source_published_kst": "2026-10-08T16:31+09:00",
+      "source_title": "AI 반도체 얼마나 잘 팔리길래…TSMC, 분기 매출 62조원 '사상 최대'",
+      "telegram_core_fact": "세계 최대 파운드리(반도체 위탁생산) 업체인 대만 TSMC가 인공지능(AI) 반도체 수요 급증에 힘입어 사상 최대 분기 매출을 기록했다.",
+      "title": "AI 반도체 얼마나 잘 팔리길래…TSMC, 분기 매출 62조원 '사상 최대'"
+    },
     "core:092aa63b19085536fb914cf9": {
       "first_seen_kst": "2026-10-08T09:33:54+09:00",
       "lanes": {
@@ -2278,6 +2303,34 @@
       "source_title": "AIDC 병목, GPU·전력서 메모리로…정석근 SK하이퍼 대표 \"韓에 새 기회\"",
       "telegram_core_fact": "하지만 대규모 추론 수요가 늘어나면 이를 처리할 수 있는 '메모리 역량'과 지속적인 투자를 가능하게 할 '사업성과 수익구조'가 새로운 핵심 경쟁요인이 될 수 있다고 내다봤다.",
       "title": "AIDC 병목, GPU·전력서 메모리로…정석근 SK하이퍼 대표 \"韓에 새 기회\""
+    },
+    "core:2e00d2b9a6de0fbaf886ffb6": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.hankyung.com/article/202610079499i",
+      "source": "한국경제",
+      "source_body_digest": "c2e4cf863c2d33a6e6e7cdd5cfc7ae6afb7736b552a507e5f156e014543b716e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cb1e45d72307f6d4789fdea5ff8eb18c8e432af0932453d2889f60cd6fa6622b",
+      "source_fact_keys": [
+        "source_fact:v1:47195c9854b7bfd137574f0faa5831a9481efc335dc9914df2de4fbe5b936b4d",
+        "source_fact:v1:4829decb390d98609d2aa5109638a29e0efad4ff3b37425c581bd01d4952511b",
+        "source_fact:v1:521eb2b1c6a2f34f9297728ab3bec102b402a6ba4c9e2722c9a53bec1254dfd3",
+        "source_fact:v1:6ac2e4a60f97e2816fdb1da0bacdd46845977484b4c6bcd47b59a62224a69bb1",
+        "source_fact:v1:75fb5b638048f526d406bb2c19da59d9b121dd0051508e73d336e39d20fa8aad",
+        "source_fact:v1:c1c424c7c802313bba7c452a147475bee63abc3d883f3d58f80bf5ad6a49adb9",
+        "source_fact:v1:dcffe4b737b02edc7976617d8df65f51e02f0f9795305022cea287b670131939",
+        "source_fact:v1:eb3cc25ecf4834003020c0beedd2c2bec31e257bbc7348d0dde3a582a9e424b0",
+        "source_fact:v1:ec053acafc9065566cacdd338e09217902b26a819900fed90033a6aa23ad70dc",
+        "source_fact:v1:f42810715e1e691b034f6491d644d86ca62044625c7a7ddcf3c0798a73026025"
+      ],
+      "source_published_kst": "2026-10-07T22:11+09:00",
+      "source_title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매",
+      "telegram_core_fact": "10년 만기 미국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
+      "title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매"
     },
     "core:2e6313bef5f333cedb52be3a": {
       "first_seen_kst": "2026-10-08T03:26:42+09:00",
@@ -5093,6 +5146,27 @@
       "source_published_kst": "2026-10-07T08:00+09:00",
       "title": "한성크린텍, 삼성전기 베트남 공장 230억원 초순수 E&P 계약 체결"
     },
+    "core:6c67ea3ef72f09464c7996c3": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.hankyung.com/article/202610081009L",
+      "source": "한국경제",
+      "source_body_digest": "3c43107ddf16e290a3cd376d3f533fc7a0ffad6f52b25cb31e5d7e16c91e1bb9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:26ba1175062f2d79f9ae2e00948c3fd6c39ce132e407c84dc3c60f8c8728f7da",
+      "source_fact_keys": [
+        "source_fact:v1:aa78be0de9c5b7883c9224d0095ff62ecbe05d2d49c8a3a199f8c78c5aa72c04",
+        "source_fact:v1:b106ceeec51cf3a056fba4ccc2037de597c9cbc58748c25dfd152d4b2e62b021",
+        "source_fact:v1:b92e486a5ea1c2822ff2e9df658f0156075fff3442da7bc34dd88715a0f57a0e"
+      ],
+      "source_published_kst": "2026-10-08T13:53+09:00",
+      "source_title": "가온칩스 수주공시 - 주문형 반도체 설계 개발 76.7억원 (매출액대비 11.20 %)",
+      "telegram_core_fact": "가온칩스(399720)는 주문형 반도체 설계 개발에 관한 단일판매ㆍ공급계약체결 을 08일에 공시했다. 계약금액은 76.7억원이다.",
+      "title": "가온칩스 수주공시 - 주문형 반도체 설계 개발 76.7억원 (매출액대비 11.20 %)"
+    },
     "core:6c7a3aa96160173cf8468711": {
       "first_seen_kst": "2026-10-07T23:36:14+09:00",
       "lanes": {
@@ -7450,6 +7524,27 @@
       "telegram_core_fact": "삼성SDI가 내년 양산을 목표로 소재 공급망 구축까지 속도를 내는 반면 LG에너지솔루션(LG엔솔)은 상용화 시점보다는 기술 차별화와 원가 경쟁력 확보에 무게를 두고 있다. 이와 비교해 삼성SDI는 이보다 빠른 내년께 황화물계 전고체 배터리 상용화를 목표로 공급망 구축에 나서고 있다.",
       "title": "전고체 배터리 경쟁 본격화…LG엔솔·삼성SDI 전략 차이는?"
     },
+    "core:a0a5f6faabddf5b3fd17039f": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=04152486645610952&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "ea6511024acf60bb5fd52e4be8ff7ce1264befb41e8e33d4e45e8849565e1410",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bc59f69f9dd80e200116671e012b4a12f9fd774c4f8d7671fe75805d03f12fc5",
+      "source_fact_keys": [
+        "source_fact:v1:1f03e76d9cf4b2b0c2dda1f556aa1e3e828491ddd865fd7bfc83912fff6a8796",
+        "source_fact:v1:8a4be2c641108cfb71bbd9ab7a0bf4085066e773e4771472ef39a073fca17d1d",
+        "source_fact:v1:e07118c317b14c52f656657011bb6af838579b6b683b837da93e13a9b6e7053d"
+      ],
+      "source_published_kst": "2026-10-08T05:27+09:00",
+      "source_title": "삼성전자 반도체서만 영업익 110조…HBM4로 내년도 질주",
+      "telegram_core_fact": "삼성전자가 올해 3분기 107조4000억원에 달하는 영업이익을 잠정 기록한 가운데 반도체 부문에서만 110조원에 달하는 이익을 거뒀을 것으로 추정된다.",
+      "title": "삼성전자 반도체서만 영업익 110조…HBM4로 내년도 질주"
+    },
     "core:a1e565fb7aec7d53e8a6f34b": {
       "first_seen_kst": "2026-10-08T01:43:44+09:00",
       "lanes": {
@@ -7990,6 +8085,26 @@
       "source_title": "리사 수 \"삼성·SK 핵심 파트너…HBM 협력 여러 세대 간다\"(종합)",
       "telegram_core_fact": "수 회장은 이와 관련해 \"삼성과 SK하이닉스 모두로부터 큰 지원을 받았다\"며 HBM 협력이 \"한 세대에 그치지 않고 여러 세대에 걸쳐 이어질 것\"이라고 말했다.",
       "title": "리사 수 \"삼성·SK 핵심 파트너…HBM 협력 여러 세대 간다\"(종합)"
+    },
+    "core:ab26e42867303964a59aba74": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.fnnews.com/news/202610081336468279",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "84f1f899e142df20b8f4390294c1159f67e27f606b0f285b62e225f6e1c2088d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d7bba5b873cf86468b3d93fb63b11739eaad06c7388b830ecc11961991cd504",
+      "source_fact_keys": [
+        "source_fact:v1:56606f77e39c7badeadb223e7ac19f722f88b8cd65968f049800c1e0e2055100",
+        "source_fact:v1:d4c0ff3585f05d5cafe2c2864200dbcc1f202b4fdb8bea851ea106f23696bc18"
+      ],
+      "source_published_kst": "2026-10-08T13:36+09:00",
+      "source_title": "삼성전자, 영업이익 107조원 돌파에도 무덤덤… K-반도체 저평가 흐름 이어지나",
+      "telegram_core_fact": "삼성전자가 3분기 100조원이 넘는 영업이익을 기록하며 깜짝 실적을 냈으나 외국인 투자자들의 매도세와 옵션 만기일 영향이 겹쳐 주가는 지루한 움직임을 보였다.",
+      "title": "삼성전자, 영업이익 107조원 돌파에도 무덤덤… K-반도체 저평가 흐름 이어지나"
     },
     "core:ab55b1177a2222a658e7b098": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
@@ -9689,6 +9804,31 @@
       "source_title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력",
       "telegram_core_fact": "어플라이드 머티어리얼즈와 인텔이 인공지능(AI) 반도체용 차세대 공정과 첨단 패키징 기술 개발 협력에 나선다. 어플라이드는 6일(현지시간) 인텔과 차세대 트랜지스터·인터커넥트·첨단 패키징 개발을 위해 협력한다고 밝혔다.",
       "title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력"
+    },
+    "core:ca58b3b49362cb9bfdba0a56": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634044",
+      "source": "이투데이",
+      "source_body_digest": "fa8eec043d3fba10fb9aa9446960854741b7ac5d2e14f95523a5473e9df77de0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee2f0a9c30dd2348ad4be736d6a0c9462a1da2bde6b93a3eade8d0fec013aaa4",
+      "source_fact_keys": [
+        "source_fact:v1:56a2fe0721429082873e6123b06a8088fd5c680cff44ca7e7b37d08853ba4096",
+        "source_fact:v1:6d86857c6dd6f3256fb8b7dcaeceb7606c93c537e2304aab2b26a957d1243fa9",
+        "source_fact:v1:99995af031b1c5a586ce3bb13265383cab3cc9457cb36d4197be737b1789782d",
+        "source_fact:v1:9bd8f1dfa1460eccbef380e2fae2ee5d2988688d01040f05e638a23e4e9b6dea",
+        "source_fact:v1:c6cf205dc1c56077c8d55980c45ef81fb41638a629be01fc174f4612af130fac",
+        "source_fact:v1:d4ffa0b28fcb090eea1c64bcf74a57c792904912f42137eed93a800ca096dde5",
+        "source_fact:v1:e65a3e2277afe6a68a0c5719340ca786cfeae77720208e6984ce474b72c879f8"
+      ],
+      "source_published_kst": "2026-10-08T16:44+09:00",
+      "source_title": "HDC, 771억 규모 자사주 소각 결정…주주환원 강화",
+      "telegram_core_fact": "HDC가 배당 확대에 이어 771억 원 자기주식(자사주)을 소각하며 주주환원 강화에 나선다.",
+      "title": "HDC, 771억 규모 자사주 소각 결정…주주환원 강화"
     },
     "core:cb3633a8ac080a7526a7984d": {
       "first_seen_kst": "2026-10-08T01:09:29+09:00",
@@ -16550,6 +16690,31 @@
       "source": "연합뉴스",
       "title": "EU 이어 영국도 한국의 러시아산 LNG 수입 제재 면제(종합) | 연합뉴스"
     },
+    "event:8fb7bb068185ad6274dfadb3": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04742886645610952",
+      "source": "이데일리",
+      "source_body_digest": "6968e3e9552f837adb1d90f2afe41242cb7ecadd7245db79e7cd7a45973833bd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:443c8df68bb6984036e0214f8a27254cf2ac4681e73fae8a192f87535b3f10d5",
+      "source_fact_keys": [
+        "source_fact:v1:16c572f17b64081da778d41d2eb6127ee865e2b0e858a1dcfd382bcc0356c48a",
+        "source_fact:v1:353374f9336c214b51b8ec00d75f7fa84f02e046baece518365b1baf7dd19d37",
+        "source_fact:v1:94289e16338d8739e51cb5f9a57184dec03f6d93d038b9be4f5aff884966d7e9",
+        "source_fact:v1:a6ec24e037b302f44c856a77dcb4bb31710bb81f3f88442fdbdf4c0ac0b96eaa",
+        "source_fact:v1:ac5acbd335e7bb6e9288ee0798fd2a9ae66fef2ee7101c314e955fe23dd28427",
+        "source_fact:v1:b92f1924553545da5fd38bda75aa91f9887839c071bfb51e2b6b4e857e03e759",
+        "source_fact:v1:bc7fa1422d648000b2f777609a8141af3b28738cc8d0bc39f4fcc2bd80aa6cbf"
+      ],
+      "source_published_kst": "2026-10-08T16:31+09:00",
+      "source_title": "AI 반도체 얼마나 잘 팔리길래…TSMC, 분기 매출 62조원 '사상 최대'",
+      "telegram_core_fact": "세계 최대 파운드리(반도체 위탁생산) 업체인 대만 TSMC가 인공지능(AI) 반도체 수요 급증에 힘입어 사상 최대 분기 매출을 기록했다.",
+      "title": "AI 반도체 얼마나 잘 팔리길래…TSMC, 분기 매출 62조원 '사상 최대'"
+    },
     "event:8fd99b112f636c6c56cca4c5": {
       "first_seen_kst": "2026-09-19T20:13:35+09:00",
       "lanes": {
@@ -17616,24 +17781,22 @@
     "event:b11d572aadf1fa216e0a0bc3": {
       "first_seen_kst": "2026-10-08T02:26:35+09:00",
       "lanes": {
-        "live": "2026-10-08T17:21:28+09:00"
+        "live": "2026-10-08T18:24:19+09:00"
       },
-      "last_seen_kst": "2026-10-08T17:21:28+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02443606645610952",
-      "source": "이데일리",
-      "source_body_digest": "79c02cd1fce27aeec44f5ad923845c10e37c7380309e2421f6480fe8a607aac3",
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.fnnews.com/news/202610081336468279",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "84f1f899e142df20b8f4390294c1159f67e27f606b0f285b62e225f6e1c2088d",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:11365e426e83ff382156f7ef18a3de557811c6f807aea7e20a098fffa3629857",
+      "source_fact_identity": "source_facts:v1:8d7bba5b873cf86468b3d93fb63b11739eaad06c7388b830ecc11961991cd504",
       "source_fact_keys": [
-        "source_fact:v1:108a03a8ebc2d64b54ef1be2e97888b2ad3885e799c5a9911d72ec7f87962685",
-        "source_fact:v1:42288adce8af4c24f223aab21edf25607d58c9bd14606f3f03b7219e728b701a",
-        "source_fact:v1:a11289c902963911c3abafa39bbf1bb73d5c59f8b58b28c165271559912625fa",
-        "source_fact:v1:edfc496bbfb67241bcb66d3a353aecc6d2d9a2e4aed42a1d9a4e3da1e3feb010"
+        "source_fact:v1:56606f77e39c7badeadb223e7ac19f722f88b8cd65968f049800c1e0e2055100",
+        "source_fact:v1:d4c0ff3585f05d5cafe2c2864200dbcc1f202b4fdb8bea851ea106f23696bc18"
       ],
-      "source_published_kst": "2026-10-08T08:00+09:00",
-      "source_title": "[속보] '반도체 강세' 8월 경상흑자 461억달러…누적 2800억달러 육박",
-      "telegram_core_fact": "올해 들어 8월까지 쌓인 경상수지 흑자도 2800억달러에 육박했다. 반도체 수출 증가세가 더욱 강해지면서 지난 8월 경상수지 흑자가 460억달러를 넘어섰다.",
-      "title": "[속보] '반도체 강세' 8월 경상흑자 461억달러…누적 2800억달러 육박"
+      "source_published_kst": "2026-10-08T13:36+09:00",
+      "source_title": "삼성전자, 영업이익 107조원 돌파에도 무덤덤… K-반도체 저평가 흐름 이어지나",
+      "telegram_core_fact": "삼성전자가 3분기 100조원이 넘는 영업이익을 기록하며 깜짝 실적을 냈으나 외국인 투자자들의 매도세와 옵션 만기일 영향이 겹쳐 주가는 지루한 움직임을 보였다.",
+      "title": "삼성전자, 영업이익 107조원 돌파에도 무덤덤… K-반도체 저평가 흐름 이어지나"
     },
     "event:b1495e0393111e527b090ddc": {
       "first_seen_kst": "2026-09-18T14:40:33+09:00",
@@ -18206,21 +18369,23 @@
     "event:c158b090c5d842f8525a5d6f": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
       "lanes": {
-        "live": "2026-10-08T13:07:52+09:00"
+        "live": "2026-10-08T18:24:19+09:00"
       },
-      "last_seen_kst": "2026-10-08T13:07:52+09:00",
-      "link": "https://www.hankyung.com/article/202610089704g",
-      "source": "한국경제",
-      "source_body_digest": "70f02409f09e12ceb5663754ab239f7ef7938f870c8d7a981cea52aff00d5bc3",
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=04152486645610952&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "ea6511024acf60bb5fd52e4be8ff7ce1264befb41e8e33d4e45e8849565e1410",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:c8281eb094baf483d744c27aff619b15446034b05e38f05f93a6d1f1a7977f8f",
+      "source_fact_identity": "source_facts:v1:bc59f69f9dd80e200116671e012b4a12f9fd774c4f8d7671fe75805d03f12fc5",
       "source_fact_keys": [
-        "source_fact:v1:5648d0ce25a864a74995074fad527d62c215b32903adc96a20df501d2ac1a90a"
+        "source_fact:v1:1f03e76d9cf4b2b0c2dda1f556aa1e3e828491ddd865fd7bfc83912fff6a8796",
+        "source_fact:v1:8a4be2c641108cfb71bbd9ab7a0bf4085066e773e4771472ef39a073fca17d1d",
+        "source_fact:v1:e07118c317b14c52f656657011bb6af838579b6b683b837da93e13a9b6e7053d"
       ],
-      "source_published_kst": "2026-10-08T07:45+09:00",
-      "source_title": "[속보] 삼성전자 영업익 100조 돌파…분기 기준 '국내 최초'",
-      "telegram_core_fact": "인공지능(AI) 투자정보 플랫폼 에픽AI는 삼성전자의 3분기 매출과 영업이익 컨센서스(증권사 전망치 평균)를 각각 201조1109억원, 107조860억원으로 제시했다.",
-      "title": "[속보] 삼성전자 영업익 100조 돌파…분기 기준 '국내 최초'"
+      "source_published_kst": "2026-10-08T05:27+09:00",
+      "source_title": "삼성전자 반도체서만 영업익 110조…HBM4로 내년도 질주",
+      "telegram_core_fact": "삼성전자가 올해 3분기 107조4000억원에 달하는 영업이익을 잠정 기록한 가운데 반도체 부문에서만 110조원에 달하는 이익을 거뒀을 것으로 추정된다.",
+      "title": "삼성전자 반도체서만 영업익 110조…HBM4로 내년도 질주"
     },
     "event:c1e317ded2d88411e7e58d30": {
       "first_seen_kst": "2026-09-28T05:09:16+09:00",
@@ -18851,28 +19016,30 @@
     "event:d3d0aaceb95ef8feef9bfb40": {
       "first_seen_kst": "2026-10-07T04:29:18+09:00",
       "lanes": {
-        "live": "2026-10-07T04:29:18+09:00"
+        "live": "2026-10-08T18:24:19+09:00"
       },
-      "last_seen_kst": "2026-10-07T04:29:18+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01430086645610624",
-      "source": "이데일리",
-      "source_body_digest": "7450f1e1ae5ef83dce90243b2a5b14619f46586b3588d160698d1a3f735f83db",
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.hankyung.com/article/202610079499i",
+      "source": "한국경제",
+      "source_body_digest": "c2e4cf863c2d33a6e6e7cdd5cfc7ae6afb7736b552a507e5f156e014543b716e",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:bb1398a56462aa1b954565314a28d3eb327b3fa8fe546ea6274a078b9eb0cd62",
+      "source_fact_identity": "source_facts:v1:cb1e45d72307f6d4789fdea5ff8eb18c8e432af0932453d2889f60cd6fa6622b",
       "source_fact_keys": [
-        "source_fact:v1:158f5827d5d20c96ae224b48d9b04e5774e01ed990cbe19559c62817268417c5",
-        "source_fact:v1:1759fab70c3737b351a06d1c7fd05da940c254d6e4dfb6aa22c5900e48d3c8d8",
-        "source_fact:v1:393243267aac052abfa90df87acabe3877ab356e8661671ed6cff5a4ada70f3f",
-        "source_fact:v1:46bbcb9864fadc4fd446ea98a8e1d481d6c4c76a3937779761aff2d6e5dd3181",
-        "source_fact:v1:50a6f62c47c79e1b1aad308d9aa33afc5a2acd746844c1180e43246f82e0eab6",
-        "source_fact:v1:50f9950e1d06325a8905515d71bd2f882cab357e12a3b61663a0842ca2e3c614",
-        "source_fact:v1:73d8122aafc09ae5e6730d309260b7fea4987aedd84594baa6e491ec76c4f792",
-        "source_fact:v1:a4bf821eaae797d6141a7b7a6b2bb82b2355aba1aba300d3a83db2b32dfa7fcc",
-        "source_fact:v1:a596264919c53a497a9f766dad14c7ac4af25e8def7fd892ca8b3a69e73b7138",
-        "source_fact:v1:e148bdded8fd84d5e62854954dcd1d8ae5fc8768020801f37738feb6827f9a5e"
+        "source_fact:v1:47195c9854b7bfd137574f0faa5831a9481efc335dc9914df2de4fbe5b936b4d",
+        "source_fact:v1:4829decb390d98609d2aa5109638a29e0efad4ff3b37425c581bd01d4952511b",
+        "source_fact:v1:521eb2b1c6a2f34f9297728ab3bec102b402a6ba4c9e2722c9a53bec1254dfd3",
+        "source_fact:v1:6ac2e4a60f97e2816fdb1da0bacdd46845977484b4c6bcd47b59a62224a69bb1",
+        "source_fact:v1:75fb5b638048f526d406bb2c19da59d9b121dd0051508e73d336e39d20fa8aad",
+        "source_fact:v1:c1c424c7c802313bba7c452a147475bee63abc3d883f3d58f80bf5ad6a49adb9",
+        "source_fact:v1:dcffe4b737b02edc7976617d8df65f51e02f0f9795305022cea287b670131939",
+        "source_fact:v1:eb3cc25ecf4834003020c0beedd2c2bec31e257bbc7348d0dde3a582a9e424b0",
+        "source_fact:v1:ec053acafc9065566cacdd338e09217902b26a819900fed90033a6aa23ad70dc",
+        "source_fact:v1:f42810715e1e691b034f6491d644d86ca62044625c7a7ddcf3c0798a73026025"
       ],
-      "source_published_kst": "2026-10-07T03:50+09:00",
-      "title": "美국채 금리 급등하자…핌코 \"투자매력 매우 높아졌다\""
+      "source_published_kst": "2026-10-07T22:11+09:00",
+      "source_title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매",
+      "telegram_core_fact": "10년 만기 미국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
+      "title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매"
     },
     "event:d3f7bb7a19ba6c2f88d9f346": {
       "first_seen_kst": "2026-10-07T05:13:11+09:00",
@@ -19943,25 +20110,23 @@
     "event:f402a4fc4b8175e04d205a16": {
       "first_seen_kst": "2026-10-08T08:31:37+09:00",
       "lanes": {
-        "live": "2026-10-08T13:46:05+09:00"
+        "live": "2026-10-08T18:24:19+09:00"
       },
-      "last_seen_kst": "2026-10-08T13:46:05+09:00",
-      "link": "https://www.mk.co.kr/news/economy/12171264",
-      "source": "매일경제",
-      "source_body_digest": "a6ff44ec68726ad44adec1f96c8fff2ae8396f761bc3b7ade8287e3979b818f5",
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.hankyung.com/article/202610081009L",
+      "source": "한국경제",
+      "source_body_digest": "3c43107ddf16e290a3cd376d3f533fc7a0ffad6f52b25cb31e5d7e16c91e1bb9",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:197284835e43e62d499c920b758ae7e911b4c647fa238118d8c076291d6d64ea",
+      "source_fact_identity": "source_facts:v1:26ba1175062f2d79f9ae2e00948c3fd6c39ce132e407c84dc3c60f8c8728f7da",
       "source_fact_keys": [
-        "source_fact:v1:742a6af740a3c8e1e9f56b9184fa42242419810f8a6dbb5f860ee529baf9ced4",
-        "source_fact:v1:94000761696f596c07870aadc7bb172ea76a1e2c0ccaed55bb31ad70c6b60b50",
-        "source_fact:v1:975d6cccae799c9b3ff46a038f32aebf63dabac4a65b2e2e9b129126ef2a9b12",
-        "source_fact:v1:a9d96576acf4b38de548ae495a78f38c9bccbfa89fdb5e5122b9ece48bfb4fe6",
-        "source_fact:v1:e57d15f7e4b1ddf60550acc18d64cdc6669bc1f38e7310042daf01fbb48b2822"
+        "source_fact:v1:aa78be0de9c5b7883c9224d0095ff62ecbe05d2d49c8a3a199f8c78c5aa72c04",
+        "source_fact:v1:b106ceeec51cf3a056fba4ccc2037de597c9cbc58748c25dfd152d4b2e62b021",
+        "source_fact:v1:b92e486a5ea1c2822ff2e9df658f0156075fff3442da7bc34dd88715a0f57a0e"
       ],
-      "source_published_kst": "2026-10-08T10:44+09:00",
-      "source_title": "외신 “AI가 서울 집값도 끌어올렸다…李정부 직면한 부동산 딜레마”",
-      "telegram_core_fact": "인공지능(AI) 산업 호황으로 국내 반도체 기업과 근로자들의 소득이 늘면서 서울을 비롯한 수도권 집값 상승에도 영향을 미치고 있다는 외신 분석이 나왔다.",
-      "title": "외신 “AI가 서울 집값도 끌어올렸다…李정부 직면한 부동산 딜레마”"
+      "source_published_kst": "2026-10-08T13:53+09:00",
+      "source_title": "가온칩스 수주공시 - 주문형 반도체 설계 개발 76.7억원 (매출액대비 11.20 %)",
+      "telegram_core_fact": "가온칩스(399720)는 주문형 반도체 설계 개발에 관한 단일판매ㆍ공급계약체결 을 08일에 공시했다. 계약금액은 76.7억원이다.",
+      "title": "가온칩스 수주공시 - 주문형 반도체 설계 개발 76.7억원 (매출액대비 11.20 %)"
     },
     "event:f40d830b2064cbc5f4077e9d": {
       "first_seen_kst": "2026-09-22T13:18:41+09:00",
@@ -25190,6 +25355,27 @@
       "source_published_kst": "2026-10-05T18:05+09:00",
       "title": "양산에 '선박 하이브리드 시스템' 실증센터"
     },
+    "fact:2ac7bcbcf830fcb8c425af13": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.hankyung.com/article/202610081009L",
+      "source": "한국경제",
+      "source_body_digest": "3c43107ddf16e290a3cd376d3f533fc7a0ffad6f52b25cb31e5d7e16c91e1bb9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:26ba1175062f2d79f9ae2e00948c3fd6c39ce132e407c84dc3c60f8c8728f7da",
+      "source_fact_keys": [
+        "source_fact:v1:aa78be0de9c5b7883c9224d0095ff62ecbe05d2d49c8a3a199f8c78c5aa72c04",
+        "source_fact:v1:b106ceeec51cf3a056fba4ccc2037de597c9cbc58748c25dfd152d4b2e62b021",
+        "source_fact:v1:b92e486a5ea1c2822ff2e9df658f0156075fff3442da7bc34dd88715a0f57a0e"
+      ],
+      "source_published_kst": "2026-10-08T13:53+09:00",
+      "source_title": "가온칩스 수주공시 - 주문형 반도체 설계 개발 76.7억원 (매출액대비 11.20 %)",
+      "telegram_core_fact": "가온칩스(399720)는 주문형 반도체 설계 개발에 관한 단일판매ㆍ공급계약체결 을 08일에 공시했다. 계약금액은 76.7억원이다.",
+      "title": "가온칩스 수주공시 - 주문형 반도체 설계 개발 76.7억원 (매출액대비 11.20 %)"
+    },
     "fact:2ac9ea390bd374e6067fd01d": {
       "first_seen_kst": "2026-10-08T15:16:19+09:00",
       "lanes": {
@@ -29855,6 +30041,27 @@
       ],
       "source_published_kst": "2026-10-05T21:36+09:00",
       "title": "엑스 컴퓨트, 조지아 AI 클러스터 인수..고객계약 5년 연장"
+    },
+    "fact:54fc788687616d51c9f5c6a7": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=04152486645610952&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "ea6511024acf60bb5fd52e4be8ff7ce1264befb41e8e33d4e45e8849565e1410",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bc59f69f9dd80e200116671e012b4a12f9fd774c4f8d7671fe75805d03f12fc5",
+      "source_fact_keys": [
+        "source_fact:v1:1f03e76d9cf4b2b0c2dda1f556aa1e3e828491ddd865fd7bfc83912fff6a8796",
+        "source_fact:v1:8a4be2c641108cfb71bbd9ab7a0bf4085066e773e4771472ef39a073fca17d1d",
+        "source_fact:v1:e07118c317b14c52f656657011bb6af838579b6b683b837da93e13a9b6e7053d"
+      ],
+      "source_published_kst": "2026-10-08T05:27+09:00",
+      "source_title": "삼성전자 반도체서만 영업익 110조…HBM4로 내년도 질주",
+      "telegram_core_fact": "삼성전자가 올해 3분기 107조4000억원에 달하는 영업이익을 잠정 기록한 가운데 반도체 부문에서만 110조원에 달하는 이익을 거뒀을 것으로 추정된다.",
+      "title": "삼성전자 반도체서만 영업익 110조…HBM4로 내년도 질주"
     },
     "fact:5512977e8e3f77b787266a6f": {
       "first_seen_kst": "2026-10-07T05:59:02+09:00",
@@ -42105,6 +42312,31 @@
       "telegram_core_fact": "기존 계약에 따른 공사는 영업정지 중에도 계속할 수 있는 만큼 신규 계약과 입찰 제한이 언제 시작되는지가 제재의 실효성을 좌우한다.",
       "title": "신안산선 붕괴 4662억 '청구서'…영업정지에도 수주는 계속"
     },
+    "fact:c7783553e665b929d3634144": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634044",
+      "source": "이투데이",
+      "source_body_digest": "fa8eec043d3fba10fb9aa9446960854741b7ac5d2e14f95523a5473e9df77de0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee2f0a9c30dd2348ad4be736d6a0c9462a1da2bde6b93a3eade8d0fec013aaa4",
+      "source_fact_keys": [
+        "source_fact:v1:56a2fe0721429082873e6123b06a8088fd5c680cff44ca7e7b37d08853ba4096",
+        "source_fact:v1:6d86857c6dd6f3256fb8b7dcaeceb7606c93c537e2304aab2b26a957d1243fa9",
+        "source_fact:v1:99995af031b1c5a586ce3bb13265383cab3cc9457cb36d4197be737b1789782d",
+        "source_fact:v1:9bd8f1dfa1460eccbef380e2fae2ee5d2988688d01040f05e638a23e4e9b6dea",
+        "source_fact:v1:c6cf205dc1c56077c8d55980c45ef81fb41638a629be01fc174f4612af130fac",
+        "source_fact:v1:d4ffa0b28fcb090eea1c64bcf74a57c792904912f42137eed93a800ca096dde5",
+        "source_fact:v1:e65a3e2277afe6a68a0c5719340ca786cfeae77720208e6984ce474b72c879f8"
+      ],
+      "source_published_kst": "2026-10-08T16:44+09:00",
+      "source_title": "HDC, 771억 규모 자사주 소각 결정…주주환원 강화",
+      "telegram_core_fact": "HDC가 배당 확대에 이어 771억 원 자기주식(자사주)을 소각하며 주주환원 강화에 나선다.",
+      "title": "HDC, 771억 규모 자사주 소각 결정…주주환원 강화"
+    },
     "fact:c77bfcc4258688fffac3028c": {
       "first_seen_kst": "2026-10-08T05:17:22+09:00",
       "lanes": {
@@ -43149,6 +43381,26 @@
       "telegram_core_fact": "우크라이나 대통령실이 러시아에 석유제품을 공급했다는 외신 보도를 인용해 한국 정부를 비판한 가운데 청와대는 사실과 다르다며 전면 반박했습니다.",
       "title": "靑, 우크라 '대러 유류수송' 주장에 \"사실과 달라\" | 연합뉴스"
     },
+    "fact:d0a23fddfaab760964fc8ab9": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.fnnews.com/news/202610081336468279",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "84f1f899e142df20b8f4390294c1159f67e27f606b0f285b62e225f6e1c2088d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d7bba5b873cf86468b3d93fb63b11739eaad06c7388b830ecc11961991cd504",
+      "source_fact_keys": [
+        "source_fact:v1:56606f77e39c7badeadb223e7ac19f722f88b8cd65968f049800c1e0e2055100",
+        "source_fact:v1:d4c0ff3585f05d5cafe2c2864200dbcc1f202b4fdb8bea851ea106f23696bc18"
+      ],
+      "source_published_kst": "2026-10-08T13:36+09:00",
+      "source_title": "삼성전자, 영업이익 107조원 돌파에도 무덤덤… K-반도체 저평가 흐름 이어지나",
+      "telegram_core_fact": "삼성전자가 3분기 100조원이 넘는 영업이익을 기록하며 깜짝 실적을 냈으나 외국인 투자자들의 매도세와 옵션 만기일 영향이 겹쳐 주가는 지루한 움직임을 보였다.",
+      "title": "삼성전자, 영업이익 107조원 돌파에도 무덤덤… K-반도체 저평가 흐름 이어지나"
+    },
     "fact:d0e9d8ad018ec470be6dc05a": {
       "first_seen_kst": "2026-10-07T19:13:29+09:00",
       "lanes": {
@@ -43977,6 +44229,34 @@
       ],
       "source_published_kst": "2026-10-06T06:25+09:00",
       "title": "국제유가, 중동 원유 수출 증가ㆍG7 재고 방출에 하락⋯WTI 1.84%↓ [상보]"
+    },
+    "fact:d715a6efbd7ad33f20500254": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.hankyung.com/article/202610079499i",
+      "source": "한국경제",
+      "source_body_digest": "c2e4cf863c2d33a6e6e7cdd5cfc7ae6afb7736b552a507e5f156e014543b716e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cb1e45d72307f6d4789fdea5ff8eb18c8e432af0932453d2889f60cd6fa6622b",
+      "source_fact_keys": [
+        "source_fact:v1:47195c9854b7bfd137574f0faa5831a9481efc335dc9914df2de4fbe5b936b4d",
+        "source_fact:v1:4829decb390d98609d2aa5109638a29e0efad4ff3b37425c581bd01d4952511b",
+        "source_fact:v1:521eb2b1c6a2f34f9297728ab3bec102b402a6ba4c9e2722c9a53bec1254dfd3",
+        "source_fact:v1:6ac2e4a60f97e2816fdb1da0bacdd46845977484b4c6bcd47b59a62224a69bb1",
+        "source_fact:v1:75fb5b638048f526d406bb2c19da59d9b121dd0051508e73d336e39d20fa8aad",
+        "source_fact:v1:c1c424c7c802313bba7c452a147475bee63abc3d883f3d58f80bf5ad6a49adb9",
+        "source_fact:v1:dcffe4b737b02edc7976617d8df65f51e02f0f9795305022cea287b670131939",
+        "source_fact:v1:eb3cc25ecf4834003020c0beedd2c2bec31e257bbc7348d0dde3a582a9e424b0",
+        "source_fact:v1:ec053acafc9065566cacdd338e09217902b26a819900fed90033a6aa23ad70dc",
+        "source_fact:v1:f42810715e1e691b034f6491d644d86ca62044625c7a7ddcf3c0798a73026025"
+      ],
+      "source_published_kst": "2026-10-07T22:11+09:00",
+      "source_title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매",
+      "telegram_core_fact": "10년 만기 미국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
+      "title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매"
     },
     "fact:d781e4d4062e764dff27527f": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
@@ -46289,6 +46569,31 @@
       ],
       "source_published_kst": "2026-10-06T17:22+09:00",
       "title": "김성환 \"호남 반도체 팹 9개 되면 전력 약 14GW 필요\""
+    },
+    "fact:eb1cbcaac872cc1ef021ae62": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04742886645610952",
+      "source": "이데일리",
+      "source_body_digest": "6968e3e9552f837adb1d90f2afe41242cb7ecadd7245db79e7cd7a45973833bd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:443c8df68bb6984036e0214f8a27254cf2ac4681e73fae8a192f87535b3f10d5",
+      "source_fact_keys": [
+        "source_fact:v1:16c572f17b64081da778d41d2eb6127ee865e2b0e858a1dcfd382bcc0356c48a",
+        "source_fact:v1:353374f9336c214b51b8ec00d75f7fa84f02e046baece518365b1baf7dd19d37",
+        "source_fact:v1:94289e16338d8739e51cb5f9a57184dec03f6d93d038b9be4f5aff884966d7e9",
+        "source_fact:v1:a6ec24e037b302f44c856a77dcb4bb31710bb81f3f88442fdbdf4c0ac0b96eaa",
+        "source_fact:v1:ac5acbd335e7bb6e9288ee0798fd2a9ae66fef2ee7101c314e955fe23dd28427",
+        "source_fact:v1:b92f1924553545da5fd38bda75aa91f9887839c071bfb51e2b6b4e857e03e759",
+        "source_fact:v1:bc7fa1422d648000b2f777609a8141af3b28738cc8d0bc39f4fcc2bd80aa6cbf"
+      ],
+      "source_published_kst": "2026-10-08T16:31+09:00",
+      "source_title": "AI 반도체 얼마나 잘 팔리길래…TSMC, 분기 매출 62조원 '사상 최대'",
+      "telegram_core_fact": "세계 최대 파운드리(반도체 위탁생산) 업체인 대만 TSMC가 인공지능(AI) 반도체 수요 급증에 힘입어 사상 최대 분기 매출을 기록했다.",
+      "title": "AI 반도체 얼마나 잘 팔리길래…TSMC, 분기 매출 62조원 '사상 최대'"
     },
     "fact:eb2724262af3cb1d922612b6": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -50230,6 +50535,27 @@
       ],
       "source_published_kst": "2026-10-07T12:58+09:00",
       "title": "AI 에이전트 뜨자 CPU도 재부상…AMD·인텔 한 달 새 32%·21%↑"
+    },
+    "link:0984a3c0970238a7ee040c8c": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=04152486645610952&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "ea6511024acf60bb5fd52e4be8ff7ce1264befb41e8e33d4e45e8849565e1410",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bc59f69f9dd80e200116671e012b4a12f9fd774c4f8d7671fe75805d03f12fc5",
+      "source_fact_keys": [
+        "source_fact:v1:1f03e76d9cf4b2b0c2dda1f556aa1e3e828491ddd865fd7bfc83912fff6a8796",
+        "source_fact:v1:8a4be2c641108cfb71bbd9ab7a0bf4085066e773e4771472ef39a073fca17d1d",
+        "source_fact:v1:e07118c317b14c52f656657011bb6af838579b6b683b837da93e13a9b6e7053d"
+      ],
+      "source_published_kst": "2026-10-08T05:27+09:00",
+      "source_title": "삼성전자 반도체서만 영업익 110조…HBM4로 내년도 질주",
+      "telegram_core_fact": "삼성전자가 올해 3분기 107조4000억원에 달하는 영업이익을 잠정 기록한 가운데 반도체 부문에서만 110조원에 달하는 이익을 거뒀을 것으로 추정된다.",
+      "title": "삼성전자 반도체서만 영업익 110조…HBM4로 내년도 질주"
     },
     "link:0987eaf9303b2bb43e4e76d0": {
       "first_seen_kst": "2026-10-01T22:39:53+09:00",
@@ -57680,6 +58006,27 @@
       "source_published_kst": "2026-10-06T16:13+09:00",
       "title": "원/달러 환율 보합 움직임…0.4원 내린 1,343.6원 | 연합뉴스"
     },
+    "link:31e85078460e62832451923c": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.hankyung.com/article/202610081009L",
+      "source": "한국경제",
+      "source_body_digest": "3c43107ddf16e290a3cd376d3f533fc7a0ffad6f52b25cb31e5d7e16c91e1bb9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:26ba1175062f2d79f9ae2e00948c3fd6c39ce132e407c84dc3c60f8c8728f7da",
+      "source_fact_keys": [
+        "source_fact:v1:aa78be0de9c5b7883c9224d0095ff62ecbe05d2d49c8a3a199f8c78c5aa72c04",
+        "source_fact:v1:b106ceeec51cf3a056fba4ccc2037de597c9cbc58748c25dfd152d4b2e62b021",
+        "source_fact:v1:b92e486a5ea1c2822ff2e9df658f0156075fff3442da7bc34dd88715a0f57a0e"
+      ],
+      "source_published_kst": "2026-10-08T13:53+09:00",
+      "source_title": "가온칩스 수주공시 - 주문형 반도체 설계 개발 76.7억원 (매출액대비 11.20 %)",
+      "telegram_core_fact": "가온칩스(399720)는 주문형 반도체 설계 개발에 관한 단일판매ㆍ공급계약체결 을 08일에 공시했다. 계약금액은 76.7억원이다.",
+      "title": "가온칩스 수주공시 - 주문형 반도체 설계 개발 76.7억원 (매출액대비 11.20 %)"
+    },
     "link:31edcce87ae51139000f392c": {
       "first_seen_kst": "2026-10-08T00:24:24+09:00",
       "lanes": {
@@ -62543,6 +62890,26 @@
       "source_published_kst": "2026-10-05T13:43+09:00",
       "title": "KT, 산불 재난 대응 훈련…재난·상용망 이동기지국 동시 가동"
     },
+    "link:4df0e2d645e2b7cdac5f2f66": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.fnnews.com/news/202610081336468279",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "84f1f899e142df20b8f4390294c1159f67e27f606b0f285b62e225f6e1c2088d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d7bba5b873cf86468b3d93fb63b11739eaad06c7388b830ecc11961991cd504",
+      "source_fact_keys": [
+        "source_fact:v1:56606f77e39c7badeadb223e7ac19f722f88b8cd65968f049800c1e0e2055100",
+        "source_fact:v1:d4c0ff3585f05d5cafe2c2864200dbcc1f202b4fdb8bea851ea106f23696bc18"
+      ],
+      "source_published_kst": "2026-10-08T13:36+09:00",
+      "source_title": "삼성전자, 영업이익 107조원 돌파에도 무덤덤… K-반도체 저평가 흐름 이어지나",
+      "telegram_core_fact": "삼성전자가 3분기 100조원이 넘는 영업이익을 기록하며 깜짝 실적을 냈으나 외국인 투자자들의 매도세와 옵션 만기일 영향이 겹쳐 주가는 지루한 움직임을 보였다.",
+      "title": "삼성전자, 영업이익 107조원 돌파에도 무덤덤… K-반도체 저평가 흐름 이어지나"
+    },
     "link:4e15765a151c059187d86c1c": {
       "first_seen_kst": "2026-10-02T16:20:30+09:00",
       "lanes": {
@@ -66291,6 +66658,23 @@
       ],
       "source_published_kst": "2026-10-06T13:52+09:00",
       "title": "거래소 “코스닥 체질 개선 노력⋯법원 제동 건 ‘시총 미달 상폐’ 후속 조치 예정”"
+    },
+    "link:6344a217cd7f212bff2bfd8e": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610080880b",
+      "source": "한국경제",
+      "source_body_digest": "c449d828f539172ebe67bec432b5d7b47922a655e57e40653632a50191a3be23",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T13:28+09:00",
+      "source_title": "대우건설, 정비사업 확대하고 데이터센터 전담팀 신설",
+      "telegram_core_fact": "인공지능(AI) 시대의 새로운 성장동력으로 데이터센터사업팀도 신설한다.",
+      "title": "대우건설, 정비사업 확대하고 데이터센터 전담팀 신설"
     },
     "link:634694baea5c6084c23b3a22": {
       "first_seen_kst": "2026-10-08T08:56:19+09:00",
@@ -71816,31 +72200,29 @@
     "link:7fdf2675bab99859877f7af8": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
       "lanes": {
-        "live": "2026-10-08T01:58:01+09:00"
+        "live": "2026-10-08T18:24:19+09:00"
       },
-      "last_seen_kst": "2026-10-08T01:58:01+09:00",
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
       "link": "https://www.hankyung.com/article/202610079499i",
       "source": "한국경제",
-      "source_body_digest": "e930a8c037174af9dace28adb85106cf30d7a646ce47a850315187afe6669c25",
+      "source_body_digest": "c2e4cf863c2d33a6e6e7cdd5cfc7ae6afb7736b552a507e5f156e014543b716e",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:afde99fd798d448f711c1da2d2282b087c2d2f16e952d282200abeddebcab03c",
+      "source_fact_identity": "source_facts:v1:cb1e45d72307f6d4789fdea5ff8eb18c8e432af0932453d2889f60cd6fa6622b",
       "source_fact_keys": [
-        "source_fact:v1:1d2f26068ae7b406e00541dec6e28346e1b189fc03f2b532990c4d389e584b9f",
+        "source_fact:v1:47195c9854b7bfd137574f0faa5831a9481efc335dc9914df2de4fbe5b936b4d",
         "source_fact:v1:4829decb390d98609d2aa5109638a29e0efad4ff3b37425c581bd01d4952511b",
         "source_fact:v1:521eb2b1c6a2f34f9297728ab3bec102b402a6ba4c9e2722c9a53bec1254dfd3",
-        "source_fact:v1:56cb3d63397e680114b46dbe1851826013bb603124a5b9a6d014123a03c4d607",
-        "source_fact:v1:66b665b0ce8531fa68fb1cf817b35a9670e125bd8d6477bf2fdea892e9480dca",
         "source_fact:v1:6ac2e4a60f97e2816fdb1da0bacdd46845977484b4c6bcd47b59a62224a69bb1",
-        "source_fact:v1:7488fd21a3faf1f58f050c207241be29891484cf1f29c7f017ecce63b61adbdf",
-        "source_fact:v1:7b6d19567315890753136fa6724326c8ca96caa4c0106522c2ca3f1e70f62115",
-        "source_fact:v1:a3919271d9e53c7131c4f02692c6cbc9bd7f24dfafec1949e3a3f49da8fc2e8d",
+        "source_fact:v1:75fb5b638048f526d406bb2c19da59d9b121dd0051508e73d336e39d20fa8aad",
         "source_fact:v1:c1c424c7c802313bba7c452a147475bee63abc3d883f3d58f80bf5ad6a49adb9",
+        "source_fact:v1:dcffe4b737b02edc7976617d8df65f51e02f0f9795305022cea287b670131939",
         "source_fact:v1:eb3cc25ecf4834003020c0beedd2c2bec31e257bbc7348d0dde3a582a9e424b0",
+        "source_fact:v1:ec053acafc9065566cacdd338e09217902b26a819900fed90033a6aa23ad70dc",
         "source_fact:v1:f42810715e1e691b034f6491d644d86ca62044625c7a7ddcf3c0798a73026025"
       ],
       "source_published_kst": "2026-10-07T22:11+09:00",
       "source_title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매",
-      "telegram_core_fact": "10년 만기 국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
+      "telegram_core_fact": "10년 만기 미국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
       "title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매"
     },
     "link:800096aec5a00c62efa60843": {
@@ -76806,6 +77188,31 @@
       "link": "https://www.mk.co.kr/news/politics/12161571",
       "source": "매일경제",
       "title": "李대통령, 멕시코 ‘K엑스포’ 방문…“관세 얼마나 올랐나”"
+    },
+    "link:9d2764a6a12f8ce6a105b8da": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634044",
+      "source": "이투데이",
+      "source_body_digest": "fa8eec043d3fba10fb9aa9446960854741b7ac5d2e14f95523a5473e9df77de0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee2f0a9c30dd2348ad4be736d6a0c9462a1da2bde6b93a3eade8d0fec013aaa4",
+      "source_fact_keys": [
+        "source_fact:v1:56a2fe0721429082873e6123b06a8088fd5c680cff44ca7e7b37d08853ba4096",
+        "source_fact:v1:6d86857c6dd6f3256fb8b7dcaeceb7606c93c537e2304aab2b26a957d1243fa9",
+        "source_fact:v1:99995af031b1c5a586ce3bb13265383cab3cc9457cb36d4197be737b1789782d",
+        "source_fact:v1:9bd8f1dfa1460eccbef380e2fae2ee5d2988688d01040f05e638a23e4e9b6dea",
+        "source_fact:v1:c6cf205dc1c56077c8d55980c45ef81fb41638a629be01fc174f4612af130fac",
+        "source_fact:v1:d4ffa0b28fcb090eea1c64bcf74a57c792904912f42137eed93a800ca096dde5",
+        "source_fact:v1:e65a3e2277afe6a68a0c5719340ca786cfeae77720208e6984ce474b72c879f8"
+      ],
+      "source_published_kst": "2026-10-08T16:44+09:00",
+      "source_title": "HDC, 771억 규모 자사주 소각 결정…주주환원 강화",
+      "telegram_core_fact": "HDC가 배당 확대에 이어 771억 원 자기주식(자사주)을 소각하며 주주환원 강화에 나선다.",
+      "title": "HDC, 771억 규모 자사주 소각 결정…주주환원 강화"
     },
     "link:9d2b7fe5240ba80faf53a538": {
       "first_seen_kst": "2026-10-04T16:20:59+09:00",
@@ -88420,6 +88827,31 @@
       "telegram_core_fact": "이는 내달 중간선거를 앞두고 기름값 잡기에 골몰 중인 트럼프 미국 대통령이 비축유를 방출하지 않으면 경유 수출을 금지하겠다고 유럽을 압박한 데 따른 것이다.",
       "title": "IEA \"경유 필요하면 추가 방출…비축량 2억 배럴\" | 연합뉴스"
     },
+    "link:de6503b60e80b4e4d92d1f6e": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04742886645610952",
+      "source": "이데일리",
+      "source_body_digest": "6968e3e9552f837adb1d90f2afe41242cb7ecadd7245db79e7cd7a45973833bd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:443c8df68bb6984036e0214f8a27254cf2ac4681e73fae8a192f87535b3f10d5",
+      "source_fact_keys": [
+        "source_fact:v1:16c572f17b64081da778d41d2eb6127ee865e2b0e858a1dcfd382bcc0356c48a",
+        "source_fact:v1:353374f9336c214b51b8ec00d75f7fa84f02e046baece518365b1baf7dd19d37",
+        "source_fact:v1:94289e16338d8739e51cb5f9a57184dec03f6d93d038b9be4f5aff884966d7e9",
+        "source_fact:v1:a6ec24e037b302f44c856a77dcb4bb31710bb81f3f88442fdbdf4c0ac0b96eaa",
+        "source_fact:v1:ac5acbd335e7bb6e9288ee0798fd2a9ae66fef2ee7101c314e955fe23dd28427",
+        "source_fact:v1:b92f1924553545da5fd38bda75aa91f9887839c071bfb51e2b6b4e857e03e759",
+        "source_fact:v1:bc7fa1422d648000b2f777609a8141af3b28738cc8d0bc39f4fcc2bd80aa6cbf"
+      ],
+      "source_published_kst": "2026-10-08T16:31+09:00",
+      "source_title": "AI 반도체 얼마나 잘 팔리길래…TSMC, 분기 매출 62조원 '사상 최대'",
+      "telegram_core_fact": "세계 최대 파운드리(반도체 위탁생산) 업체인 대만 TSMC가 인공지능(AI) 반도체 수요 급증에 힘입어 사상 최대 분기 매출을 기록했다.",
+      "title": "AI 반도체 얼마나 잘 팔리길래…TSMC, 분기 매출 62조원 '사상 최대'"
+    },
     "link:de725e6f8ba5c64fa35e0749": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
       "lanes": {
@@ -90944,6 +91376,27 @@
       "link": "https://www.yna.co.kr/view/AKR20260918027100003",
       "source": "연합뉴스",
       "title": "SK그룹 전문경영인 부회장 3명 SK하이닉스로 보임 | 연합뉴스"
+    },
+    "link:eaf53183b4a4545112382bbf": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=04152486645610952&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "ea6511024acf60bb5fd52e4be8ff7ce1264befb41e8e33d4e45e8849565e1410",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bc59f69f9dd80e200116671e012b4a12f9fd774c4f8d7671fe75805d03f12fc5",
+      "source_fact_keys": [
+        "source_fact:v1:1f03e76d9cf4b2b0c2dda1f556aa1e3e828491ddd865fd7bfc83912fff6a8796",
+        "source_fact:v1:8a4be2c641108cfb71bbd9ab7a0bf4085066e773e4771472ef39a073fca17d1d",
+        "source_fact:v1:e07118c317b14c52f656657011bb6af838579b6b683b837da93e13a9b6e7053d"
+      ],
+      "source_published_kst": "2026-10-08T05:27+09:00",
+      "source_title": "삼성전자 반도체서만 영업익 110조…HBM4로 내년도 질주",
+      "telegram_core_fact": "삼성전자가 올해 3분기 107조4000억원에 달하는 영업이익을 잠정 기록한 가운데 반도체 부문에서만 110조원에 달하는 이익을 거뒀을 것으로 추정된다.",
+      "title": "삼성전자 반도체서만 영업익 110조…HBM4로 내년도 질주"
     },
     "link:eb09cdcb5c006e8de6e5d262": {
       "first_seen_kst": "2026-10-07T23:10:06+09:00",
@@ -98453,6 +98906,23 @@
       "source_event_identity": "",
       "title": "가드포스 AI, 40대1 액면병합 추진…복수의결권 도입도"
     },
+    "original:16002be16336d1ef7863adc1": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610080880b",
+      "source": "한국경제",
+      "source_body_digest": "c449d828f539172ebe67bec432b5d7b47922a655e57e40653632a50191a3be23",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T13:28+09:00",
+      "source_title": "대우건설, 정비사업 확대하고 데이터센터 전담팀 신설",
+      "telegram_core_fact": "인공지능(AI) 시대의 새로운 성장동력으로 데이터센터사업팀도 신설한다.",
+      "title": "대우건설, 정비사업 확대하고 데이터센터 전담팀 신설"
+    },
     "original:1646056f18c4e4139dbe2d17": {
       "first_seen_kst": "2026-10-07T10:04:59+09:00",
       "lanes": {
@@ -99251,31 +99721,29 @@
     "original:1a649bd88db91bd6c0cb2ae6": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
       "lanes": {
-        "live": "2026-10-08T01:58:01+09:00"
+        "live": "2026-10-08T18:24:19+09:00"
       },
-      "last_seen_kst": "2026-10-08T01:58:01+09:00",
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
       "link": "https://www.hankyung.com/article/202610079499i",
       "source": "한국경제",
-      "source_body_digest": "e930a8c037174af9dace28adb85106cf30d7a646ce47a850315187afe6669c25",
+      "source_body_digest": "c2e4cf863c2d33a6e6e7cdd5cfc7ae6afb7736b552a507e5f156e014543b716e",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:afde99fd798d448f711c1da2d2282b087c2d2f16e952d282200abeddebcab03c",
+      "source_fact_identity": "source_facts:v1:cb1e45d72307f6d4789fdea5ff8eb18c8e432af0932453d2889f60cd6fa6622b",
       "source_fact_keys": [
-        "source_fact:v1:1d2f26068ae7b406e00541dec6e28346e1b189fc03f2b532990c4d389e584b9f",
+        "source_fact:v1:47195c9854b7bfd137574f0faa5831a9481efc335dc9914df2de4fbe5b936b4d",
         "source_fact:v1:4829decb390d98609d2aa5109638a29e0efad4ff3b37425c581bd01d4952511b",
         "source_fact:v1:521eb2b1c6a2f34f9297728ab3bec102b402a6ba4c9e2722c9a53bec1254dfd3",
-        "source_fact:v1:56cb3d63397e680114b46dbe1851826013bb603124a5b9a6d014123a03c4d607",
-        "source_fact:v1:66b665b0ce8531fa68fb1cf817b35a9670e125bd8d6477bf2fdea892e9480dca",
         "source_fact:v1:6ac2e4a60f97e2816fdb1da0bacdd46845977484b4c6bcd47b59a62224a69bb1",
-        "source_fact:v1:7488fd21a3faf1f58f050c207241be29891484cf1f29c7f017ecce63b61adbdf",
-        "source_fact:v1:7b6d19567315890753136fa6724326c8ca96caa4c0106522c2ca3f1e70f62115",
-        "source_fact:v1:a3919271d9e53c7131c4f02692c6cbc9bd7f24dfafec1949e3a3f49da8fc2e8d",
+        "source_fact:v1:75fb5b638048f526d406bb2c19da59d9b121dd0051508e73d336e39d20fa8aad",
         "source_fact:v1:c1c424c7c802313bba7c452a147475bee63abc3d883f3d58f80bf5ad6a49adb9",
+        "source_fact:v1:dcffe4b737b02edc7976617d8df65f51e02f0f9795305022cea287b670131939",
         "source_fact:v1:eb3cc25ecf4834003020c0beedd2c2bec31e257bbc7348d0dde3a582a9e424b0",
+        "source_fact:v1:ec053acafc9065566cacdd338e09217902b26a819900fed90033a6aa23ad70dc",
         "source_fact:v1:f42810715e1e691b034f6491d644d86ca62044625c7a7ddcf3c0798a73026025"
       ],
       "source_published_kst": "2026-10-07T22:11+09:00",
       "source_title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매",
-      "telegram_core_fact": "10년 만기 국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
+      "telegram_core_fact": "10년 만기 미국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
       "title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매"
     },
     "original:1a914bd7b6e7c965c2728fbe": {
@@ -99301,6 +99769,31 @@
       ],
       "source_published_kst": "2026-10-07T10:08+09:00",
       "title": "365mc·GC녹십자웰빙, 국소지방 신약·GLP-1 건기식 공동개발"
+    },
+    "original:1a977ded4877709b24616959": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04742886645610952",
+      "source": "이데일리",
+      "source_body_digest": "6968e3e9552f837adb1d90f2afe41242cb7ecadd7245db79e7cd7a45973833bd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:443c8df68bb6984036e0214f8a27254cf2ac4681e73fae8a192f87535b3f10d5",
+      "source_fact_keys": [
+        "source_fact:v1:16c572f17b64081da778d41d2eb6127ee865e2b0e858a1dcfd382bcc0356c48a",
+        "source_fact:v1:353374f9336c214b51b8ec00d75f7fa84f02e046baece518365b1baf7dd19d37",
+        "source_fact:v1:94289e16338d8739e51cb5f9a57184dec03f6d93d038b9be4f5aff884966d7e9",
+        "source_fact:v1:a6ec24e037b302f44c856a77dcb4bb31710bb81f3f88442fdbdf4c0ac0b96eaa",
+        "source_fact:v1:ac5acbd335e7bb6e9288ee0798fd2a9ae66fef2ee7101c314e955fe23dd28427",
+        "source_fact:v1:b92f1924553545da5fd38bda75aa91f9887839c071bfb51e2b6b4e857e03e759",
+        "source_fact:v1:bc7fa1422d648000b2f777609a8141af3b28738cc8d0bc39f4fcc2bd80aa6cbf"
+      ],
+      "source_published_kst": "2026-10-08T16:31+09:00",
+      "source_title": "AI 반도체 얼마나 잘 팔리길래…TSMC, 분기 매출 62조원 '사상 최대'",
+      "telegram_core_fact": "세계 최대 파운드리(반도체 위탁생산) 업체인 대만 TSMC가 인공지능(AI) 반도체 수요 급증에 힘입어 사상 최대 분기 매출을 기록했다.",
+      "title": "AI 반도체 얼마나 잘 팔리길래…TSMC, 분기 매출 62조원 '사상 최대'"
     },
     "original:1aa07593611e9b5f233d28f6": {
       "first_seen_kst": "2026-10-07T11:43:24+09:00",
@@ -100718,6 +101211,26 @@
       "link": "https://www.yna.co.kr/view/MYH20261001015000038",
       "source": "연합뉴스",
       "title": "트럼프 \"알래스카 LNG 韓투자\" 대못…공식문서엔 조건부 | 연합뉴스"
+    },
+    "original:23b050e5cb633729ed1978fc": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.fnnews.com/news/202610081336468279",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "84f1f899e142df20b8f4390294c1159f67e27f606b0f285b62e225f6e1c2088d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d7bba5b873cf86468b3d93fb63b11739eaad06c7388b830ecc11961991cd504",
+      "source_fact_keys": [
+        "source_fact:v1:56606f77e39c7badeadb223e7ac19f722f88b8cd65968f049800c1e0e2055100",
+        "source_fact:v1:d4c0ff3585f05d5cafe2c2864200dbcc1f202b4fdb8bea851ea106f23696bc18"
+      ],
+      "source_published_kst": "2026-10-08T13:36+09:00",
+      "source_title": "삼성전자, 영업이익 107조원 돌파에도 무덤덤… K-반도체 저평가 흐름 이어지나",
+      "telegram_core_fact": "삼성전자가 3분기 100조원이 넘는 영업이익을 기록하며 깜짝 실적을 냈으나 외국인 투자자들의 매도세와 옵션 만기일 영향이 겹쳐 주가는 지루한 움직임을 보였다.",
+      "title": "삼성전자, 영업이익 107조원 돌파에도 무덤덤… K-반도체 저평가 흐름 이어지나"
     },
     "original:23c857c44f3ed94bec7a88ae": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
@@ -120795,6 +121308,27 @@
       "source": "매일경제",
       "title": "콜플랜트 홀딩스, 광컴퓨팅 기업 라이트솔버 인수..HPC 시장 진출"
     },
+    "original:93e23516d92152aa097fd687": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=04152486645610952&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "ea6511024acf60bb5fd52e4be8ff7ce1264befb41e8e33d4e45e8849565e1410",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bc59f69f9dd80e200116671e012b4a12f9fd774c4f8d7671fe75805d03f12fc5",
+      "source_fact_keys": [
+        "source_fact:v1:1f03e76d9cf4b2b0c2dda1f556aa1e3e828491ddd865fd7bfc83912fff6a8796",
+        "source_fact:v1:8a4be2c641108cfb71bbd9ab7a0bf4085066e773e4771472ef39a073fca17d1d",
+        "source_fact:v1:e07118c317b14c52f656657011bb6af838579b6b683b837da93e13a9b6e7053d"
+      ],
+      "source_published_kst": "2026-10-08T05:27+09:00",
+      "source_title": "삼성전자 반도체서만 영업익 110조…HBM4로 내년도 질주",
+      "telegram_core_fact": "삼성전자가 올해 3분기 107조4000억원에 달하는 영업이익을 잠정 기록한 가운데 반도체 부문에서만 110조원에 달하는 이익을 거뒀을 것으로 추정된다.",
+      "title": "삼성전자 반도체서만 영업익 110조…HBM4로 내년도 질주"
+    },
     "original:93ea893810d9b14331d98525": {
       "first_seen_kst": "2026-10-06T15:44:02+09:00",
       "lanes": {
@@ -130371,6 +130905,31 @@
       "telegram_core_fact": "최근 반도체 특수로 경기 동남권 주택 가격이 가파르게 오르고 있는 만큼 신규 분양 단지에 대한 수요자 관심이 이어질 것으로 전망된다.",
       "title": "‘청약 불패’ 성남·과천·동탄서 신규 분양 잇따라"
     },
+    "original:ce2143adea32d569251f8bc1": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634044",
+      "source": "이투데이",
+      "source_body_digest": "fa8eec043d3fba10fb9aa9446960854741b7ac5d2e14f95523a5473e9df77de0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee2f0a9c30dd2348ad4be736d6a0c9462a1da2bde6b93a3eade8d0fec013aaa4",
+      "source_fact_keys": [
+        "source_fact:v1:56a2fe0721429082873e6123b06a8088fd5c680cff44ca7e7b37d08853ba4096",
+        "source_fact:v1:6d86857c6dd6f3256fb8b7dcaeceb7606c93c537e2304aab2b26a957d1243fa9",
+        "source_fact:v1:99995af031b1c5a586ce3bb13265383cab3cc9457cb36d4197be737b1789782d",
+        "source_fact:v1:9bd8f1dfa1460eccbef380e2fae2ee5d2988688d01040f05e638a23e4e9b6dea",
+        "source_fact:v1:c6cf205dc1c56077c8d55980c45ef81fb41638a629be01fc174f4612af130fac",
+        "source_fact:v1:d4ffa0b28fcb090eea1c64bcf74a57c792904912f42137eed93a800ca096dde5",
+        "source_fact:v1:e65a3e2277afe6a68a0c5719340ca786cfeae77720208e6984ce474b72c879f8"
+      ],
+      "source_published_kst": "2026-10-08T16:44+09:00",
+      "source_title": "HDC, 771억 규모 자사주 소각 결정…주주환원 강화",
+      "telegram_core_fact": "HDC가 배당 확대에 이어 771억 원 자기주식(자사주)을 소각하며 주주환원 강화에 나선다.",
+      "title": "HDC, 771억 규모 자사주 소각 결정…주주환원 강화"
+    },
     "original:ce2715be9653fd123a25ea86": {
       "first_seen_kst": "2026-10-02T07:42:52+09:00",
       "lanes": {
@@ -131495,6 +132054,27 @@
       ],
       "source_published_kst": "2026-10-06T14:19+09:00",
       "title": "비주택 용도변경 공급 ‘순항’…LH, 매입 신청 2125가구로 목표 초과"
+    },
+    "original:d418a37f307c353e6c0332d2": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.hankyung.com/article/202610081009L",
+      "source": "한국경제",
+      "source_body_digest": "3c43107ddf16e290a3cd376d3f533fc7a0ffad6f52b25cb31e5d7e16c91e1bb9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:26ba1175062f2d79f9ae2e00948c3fd6c39ce132e407c84dc3c60f8c8728f7da",
+      "source_fact_keys": [
+        "source_fact:v1:aa78be0de9c5b7883c9224d0095ff62ecbe05d2d49c8a3a199f8c78c5aa72c04",
+        "source_fact:v1:b106ceeec51cf3a056fba4ccc2037de597c9cbc58748c25dfd152d4b2e62b021",
+        "source_fact:v1:b92e486a5ea1c2822ff2e9df658f0156075fff3442da7bc34dd88715a0f57a0e"
+      ],
+      "source_published_kst": "2026-10-08T13:53+09:00",
+      "source_title": "가온칩스 수주공시 - 주문형 반도체 설계 개발 76.7억원 (매출액대비 11.20 %)",
+      "telegram_core_fact": "가온칩스(399720)는 주문형 반도체 설계 개발에 관한 단일판매ㆍ공급계약체결 을 08일에 공시했다. 계약금액은 76.7억원이다.",
+      "title": "가온칩스 수주공시 - 주문형 반도체 설계 개발 76.7억원 (매출액대비 11.20 %)"
     },
     "original:d43b4d9276d7b8bda0fb0226": {
       "first_seen_kst": "2026-10-06T10:04:04+09:00",
@@ -142433,6 +143013,31 @@
       "source_published_kst": "2026-10-06T16:27+09:00",
       "title": "[올댓차이나] 中 AI 스타트업 문샷, 내년 1분기 홍콩 상장…\"기업가치 500억＄\""
     },
+    "source_fact:0754b323fdad63144942fda0": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634044",
+      "source": "이투데이",
+      "source_body_digest": "fa8eec043d3fba10fb9aa9446960854741b7ac5d2e14f95523a5473e9df77de0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee2f0a9c30dd2348ad4be736d6a0c9462a1da2bde6b93a3eade8d0fec013aaa4",
+      "source_fact_keys": [
+        "source_fact:v1:56a2fe0721429082873e6123b06a8088fd5c680cff44ca7e7b37d08853ba4096",
+        "source_fact:v1:6d86857c6dd6f3256fb8b7dcaeceb7606c93c537e2304aab2b26a957d1243fa9",
+        "source_fact:v1:99995af031b1c5a586ce3bb13265383cab3cc9457cb36d4197be737b1789782d",
+        "source_fact:v1:9bd8f1dfa1460eccbef380e2fae2ee5d2988688d01040f05e638a23e4e9b6dea",
+        "source_fact:v1:c6cf205dc1c56077c8d55980c45ef81fb41638a629be01fc174f4612af130fac",
+        "source_fact:v1:d4ffa0b28fcb090eea1c64bcf74a57c792904912f42137eed93a800ca096dde5",
+        "source_fact:v1:e65a3e2277afe6a68a0c5719340ca786cfeae77720208e6984ce474b72c879f8"
+      ],
+      "source_published_kst": "2026-10-08T16:44+09:00",
+      "source_title": "HDC, 771억 규모 자사주 소각 결정…주주환원 강화",
+      "telegram_core_fact": "HDC가 배당 확대에 이어 771억 원 자기주식(자사주)을 소각하며 주주환원 강화에 나선다.",
+      "title": "HDC, 771억 규모 자사주 소각 결정…주주환원 강화"
+    },
     "source_fact:07777cfd89ff310ed3fcced5": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
       "lanes": {
@@ -143279,6 +143884,31 @@
       ],
       "source_published_kst": "2026-10-06T13:05+09:00",
       "title": "\"양자 산업 키우려면 민관협력 필수…韓 강점 제조업에 집중해야\""
+    },
+    "source_fact:094335bdbd33fb1e0d150bd8": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04742886645610952",
+      "source": "이데일리",
+      "source_body_digest": "6968e3e9552f837adb1d90f2afe41242cb7ecadd7245db79e7cd7a45973833bd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:443c8df68bb6984036e0214f8a27254cf2ac4681e73fae8a192f87535b3f10d5",
+      "source_fact_keys": [
+        "source_fact:v1:16c572f17b64081da778d41d2eb6127ee865e2b0e858a1dcfd382bcc0356c48a",
+        "source_fact:v1:353374f9336c214b51b8ec00d75f7fa84f02e046baece518365b1baf7dd19d37",
+        "source_fact:v1:94289e16338d8739e51cb5f9a57184dec03f6d93d038b9be4f5aff884966d7e9",
+        "source_fact:v1:a6ec24e037b302f44c856a77dcb4bb31710bb81f3f88442fdbdf4c0ac0b96eaa",
+        "source_fact:v1:ac5acbd335e7bb6e9288ee0798fd2a9ae66fef2ee7101c314e955fe23dd28427",
+        "source_fact:v1:b92f1924553545da5fd38bda75aa91f9887839c071bfb51e2b6b4e857e03e759",
+        "source_fact:v1:bc7fa1422d648000b2f777609a8141af3b28738cc8d0bc39f4fcc2bd80aa6cbf"
+      ],
+      "source_published_kst": "2026-10-08T16:31+09:00",
+      "source_title": "AI 반도체 얼마나 잘 팔리길래…TSMC, 분기 매출 62조원 '사상 최대'",
+      "telegram_core_fact": "세계 최대 파운드리(반도체 위탁생산) 업체인 대만 TSMC가 인공지능(AI) 반도체 수요 급증에 힘입어 사상 최대 분기 매출을 기록했다.",
+      "title": "AI 반도체 얼마나 잘 팔리길래…TSMC, 분기 매출 62조원 '사상 최대'"
     },
     "source_fact:09554470f7d082412238dbb1": {
       "first_seen_kst": "2026-10-06T16:20:22+09:00",
@@ -155622,6 +156252,31 @@
       "telegram_core_fact": "반면에 순자산총액 하위 50개 ETF의 합산 순자산은 1700억원으로 지난해 말보다 오히려 줄었다. 신규 상장된 우주 ETF 가운데 순자산 규모가 가장 컸던 'TIGER 미국우주테크'의 6월 하루 평균 거래대금은 2000억원에 육박할 정도였다.",
       "title": "테마 떴다하면 찍어내는 ETF … 하위 50개 순자산 고작 1700억"
     },
+    "source_fact:2197b0c3f0b8a3b668ef18e6": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04742886645610952",
+      "source": "이데일리",
+      "source_body_digest": "6968e3e9552f837adb1d90f2afe41242cb7ecadd7245db79e7cd7a45973833bd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:443c8df68bb6984036e0214f8a27254cf2ac4681e73fae8a192f87535b3f10d5",
+      "source_fact_keys": [
+        "source_fact:v1:16c572f17b64081da778d41d2eb6127ee865e2b0e858a1dcfd382bcc0356c48a",
+        "source_fact:v1:353374f9336c214b51b8ec00d75f7fa84f02e046baece518365b1baf7dd19d37",
+        "source_fact:v1:94289e16338d8739e51cb5f9a57184dec03f6d93d038b9be4f5aff884966d7e9",
+        "source_fact:v1:a6ec24e037b302f44c856a77dcb4bb31710bb81f3f88442fdbdf4c0ac0b96eaa",
+        "source_fact:v1:ac5acbd335e7bb6e9288ee0798fd2a9ae66fef2ee7101c314e955fe23dd28427",
+        "source_fact:v1:b92f1924553545da5fd38bda75aa91f9887839c071bfb51e2b6b4e857e03e759",
+        "source_fact:v1:bc7fa1422d648000b2f777609a8141af3b28738cc8d0bc39f4fcc2bd80aa6cbf"
+      ],
+      "source_published_kst": "2026-10-08T16:31+09:00",
+      "source_title": "AI 반도체 얼마나 잘 팔리길래…TSMC, 분기 매출 62조원 '사상 최대'",
+      "telegram_core_fact": "세계 최대 파운드리(반도체 위탁생산) 업체인 대만 TSMC가 인공지능(AI) 반도체 수요 급증에 힘입어 사상 최대 분기 매출을 기록했다.",
+      "title": "AI 반도체 얼마나 잘 팔리길래…TSMC, 분기 매출 62조원 '사상 최대'"
+    },
     "source_fact:21a1225a0abff68aaf0ccb6d": {
       "first_seen_kst": "2026-10-08T11:49:03+09:00",
       "lanes": {
@@ -156617,31 +157272,29 @@
     "source_fact:236bc9f1524c9ba759605d4d": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
       "lanes": {
-        "live": "2026-10-08T01:58:01+09:00"
+        "live": "2026-10-08T18:24:19+09:00"
       },
-      "last_seen_kst": "2026-10-08T01:58:01+09:00",
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
       "link": "https://www.hankyung.com/article/202610079499i",
       "source": "한국경제",
-      "source_body_digest": "e930a8c037174af9dace28adb85106cf30d7a646ce47a850315187afe6669c25",
+      "source_body_digest": "c2e4cf863c2d33a6e6e7cdd5cfc7ae6afb7736b552a507e5f156e014543b716e",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:afde99fd798d448f711c1da2d2282b087c2d2f16e952d282200abeddebcab03c",
+      "source_fact_identity": "source_facts:v1:cb1e45d72307f6d4789fdea5ff8eb18c8e432af0932453d2889f60cd6fa6622b",
       "source_fact_keys": [
-        "source_fact:v1:1d2f26068ae7b406e00541dec6e28346e1b189fc03f2b532990c4d389e584b9f",
+        "source_fact:v1:47195c9854b7bfd137574f0faa5831a9481efc335dc9914df2de4fbe5b936b4d",
         "source_fact:v1:4829decb390d98609d2aa5109638a29e0efad4ff3b37425c581bd01d4952511b",
         "source_fact:v1:521eb2b1c6a2f34f9297728ab3bec102b402a6ba4c9e2722c9a53bec1254dfd3",
-        "source_fact:v1:56cb3d63397e680114b46dbe1851826013bb603124a5b9a6d014123a03c4d607",
-        "source_fact:v1:66b665b0ce8531fa68fb1cf817b35a9670e125bd8d6477bf2fdea892e9480dca",
         "source_fact:v1:6ac2e4a60f97e2816fdb1da0bacdd46845977484b4c6bcd47b59a62224a69bb1",
-        "source_fact:v1:7488fd21a3faf1f58f050c207241be29891484cf1f29c7f017ecce63b61adbdf",
-        "source_fact:v1:7b6d19567315890753136fa6724326c8ca96caa4c0106522c2ca3f1e70f62115",
-        "source_fact:v1:a3919271d9e53c7131c4f02692c6cbc9bd7f24dfafec1949e3a3f49da8fc2e8d",
+        "source_fact:v1:75fb5b638048f526d406bb2c19da59d9b121dd0051508e73d336e39d20fa8aad",
         "source_fact:v1:c1c424c7c802313bba7c452a147475bee63abc3d883f3d58f80bf5ad6a49adb9",
+        "source_fact:v1:dcffe4b737b02edc7976617d8df65f51e02f0f9795305022cea287b670131939",
         "source_fact:v1:eb3cc25ecf4834003020c0beedd2c2bec31e257bbc7348d0dde3a582a9e424b0",
+        "source_fact:v1:ec053acafc9065566cacdd338e09217902b26a819900fed90033a6aa23ad70dc",
         "source_fact:v1:f42810715e1e691b034f6491d644d86ca62044625c7a7ddcf3c0798a73026025"
       ],
       "source_published_kst": "2026-10-07T22:11+09:00",
       "source_title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매",
-      "telegram_core_fact": "10년 만기 국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
+      "telegram_core_fact": "10년 만기 미국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
       "title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매"
     },
     "source_fact:23713b0de2779ba25110d7ed": {
@@ -162287,6 +162940,31 @@
       "telegram_core_fact": "연성회로기판(FPCB) 전문기업 이브이첨단소재가 피부에 접촉하지 않고 혈류를 측정하는 자기혈류파 기술 상용화에 나선다.",
       "title": "이브이첨단소재, 비접촉 심혈관 진단센서 국책과제 주관…상용화 추진"
     },
+    "source_fact:2dda42a5f0dbce0cea2bf73b": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634044",
+      "source": "이투데이",
+      "source_body_digest": "fa8eec043d3fba10fb9aa9446960854741b7ac5d2e14f95523a5473e9df77de0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee2f0a9c30dd2348ad4be736d6a0c9462a1da2bde6b93a3eade8d0fec013aaa4",
+      "source_fact_keys": [
+        "source_fact:v1:56a2fe0721429082873e6123b06a8088fd5c680cff44ca7e7b37d08853ba4096",
+        "source_fact:v1:6d86857c6dd6f3256fb8b7dcaeceb7606c93c537e2304aab2b26a957d1243fa9",
+        "source_fact:v1:99995af031b1c5a586ce3bb13265383cab3cc9457cb36d4197be737b1789782d",
+        "source_fact:v1:9bd8f1dfa1460eccbef380e2fae2ee5d2988688d01040f05e638a23e4e9b6dea",
+        "source_fact:v1:c6cf205dc1c56077c8d55980c45ef81fb41638a629be01fc174f4612af130fac",
+        "source_fact:v1:d4ffa0b28fcb090eea1c64bcf74a57c792904912f42137eed93a800ca096dde5",
+        "source_fact:v1:e65a3e2277afe6a68a0c5719340ca786cfeae77720208e6984ce474b72c879f8"
+      ],
+      "source_published_kst": "2026-10-08T16:44+09:00",
+      "source_title": "HDC, 771억 규모 자사주 소각 결정…주주환원 강화",
+      "telegram_core_fact": "HDC가 배당 확대에 이어 771억 원 자기주식(자사주)을 소각하며 주주환원 강화에 나선다.",
+      "title": "HDC, 771억 규모 자사주 소각 결정…주주환원 강화"
+    },
     "source_fact:2ddfeb82cfa6806a46193712": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
       "lanes": {
@@ -162629,6 +163307,31 @@
       ],
       "source_published_kst": "2026-10-06T13:52+09:00",
       "title": "'KIWOOM 미국AI테크하이베타 ETF', 마이크론·스페이스X 편입"
+    },
+    "source_fact:2eacb93f38cb81a1d1127630": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634044",
+      "source": "이투데이",
+      "source_body_digest": "fa8eec043d3fba10fb9aa9446960854741b7ac5d2e14f95523a5473e9df77de0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee2f0a9c30dd2348ad4be736d6a0c9462a1da2bde6b93a3eade8d0fec013aaa4",
+      "source_fact_keys": [
+        "source_fact:v1:56a2fe0721429082873e6123b06a8088fd5c680cff44ca7e7b37d08853ba4096",
+        "source_fact:v1:6d86857c6dd6f3256fb8b7dcaeceb7606c93c537e2304aab2b26a957d1243fa9",
+        "source_fact:v1:99995af031b1c5a586ce3bb13265383cab3cc9457cb36d4197be737b1789782d",
+        "source_fact:v1:9bd8f1dfa1460eccbef380e2fae2ee5d2988688d01040f05e638a23e4e9b6dea",
+        "source_fact:v1:c6cf205dc1c56077c8d55980c45ef81fb41638a629be01fc174f4612af130fac",
+        "source_fact:v1:d4ffa0b28fcb090eea1c64bcf74a57c792904912f42137eed93a800ca096dde5",
+        "source_fact:v1:e65a3e2277afe6a68a0c5719340ca786cfeae77720208e6984ce474b72c879f8"
+      ],
+      "source_published_kst": "2026-10-08T16:44+09:00",
+      "source_title": "HDC, 771억 규모 자사주 소각 결정…주주환원 강화",
+      "telegram_core_fact": "HDC가 배당 확대에 이어 771억 원 자기주식(자사주)을 소각하며 주주환원 강화에 나선다.",
+      "title": "HDC, 771억 규모 자사주 소각 결정…주주환원 강화"
     },
     "source_fact:2eb34a8eb38a7b661cd95367": {
       "first_seen_kst": "2026-10-06T23:19:02+09:00",
@@ -164631,6 +165334,31 @@
       "telegram_core_fact": "실제 웰크론한텍 중국법인은 현지 주요 리튬이온배터리 분리막 생산시설을 대상으로 총 4건의 에너지 설비 프로젝트를 따내며 올해 3분기 누적 수주액 242억원을 달성했다.",
       "title": "폐배터리서 리튬 캔다…웰크론한텍, ‘이차전지 자원회수’ 사업 확장"
     },
+    "source_fact:3226bf24ca4da3bcc1e98902": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04742886645610952",
+      "source": "이데일리",
+      "source_body_digest": "6968e3e9552f837adb1d90f2afe41242cb7ecadd7245db79e7cd7a45973833bd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:443c8df68bb6984036e0214f8a27254cf2ac4681e73fae8a192f87535b3f10d5",
+      "source_fact_keys": [
+        "source_fact:v1:16c572f17b64081da778d41d2eb6127ee865e2b0e858a1dcfd382bcc0356c48a",
+        "source_fact:v1:353374f9336c214b51b8ec00d75f7fa84f02e046baece518365b1baf7dd19d37",
+        "source_fact:v1:94289e16338d8739e51cb5f9a57184dec03f6d93d038b9be4f5aff884966d7e9",
+        "source_fact:v1:a6ec24e037b302f44c856a77dcb4bb31710bb81f3f88442fdbdf4c0ac0b96eaa",
+        "source_fact:v1:ac5acbd335e7bb6e9288ee0798fd2a9ae66fef2ee7101c314e955fe23dd28427",
+        "source_fact:v1:b92f1924553545da5fd38bda75aa91f9887839c071bfb51e2b6b4e857e03e759",
+        "source_fact:v1:bc7fa1422d648000b2f777609a8141af3b28738cc8d0bc39f4fcc2bd80aa6cbf"
+      ],
+      "source_published_kst": "2026-10-08T16:31+09:00",
+      "source_title": "AI 반도체 얼마나 잘 팔리길래…TSMC, 분기 매출 62조원 '사상 최대'",
+      "telegram_core_fact": "세계 최대 파운드리(반도체 위탁생산) 업체인 대만 TSMC가 인공지능(AI) 반도체 수요 급증에 힘입어 사상 최대 분기 매출을 기록했다.",
+      "title": "AI 반도체 얼마나 잘 팔리길래…TSMC, 분기 매출 62조원 '사상 최대'"
+    },
     "source_fact:3229fb7d7e568c6a62073508": {
       "first_seen_kst": "2026-10-05T19:54:04+09:00",
       "lanes": {
@@ -166401,6 +167129,27 @@
       "source_title": "한국 HBM 수출 200배 뛴 말레이시아…이유는?",
       "telegram_core_fact": "말레이시아가 한국산 고대역폭메모리(HBM)의 핵심 수출처로 떠올랐다.",
       "title": "한국 HBM 수출 200배 뛴 말레이시아…이유는?"
+    },
+    "source_fact:35971bacd3edc73ddad2f661": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.hankyung.com/article/202610081009L",
+      "source": "한국경제",
+      "source_body_digest": "3c43107ddf16e290a3cd376d3f533fc7a0ffad6f52b25cb31e5d7e16c91e1bb9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:26ba1175062f2d79f9ae2e00948c3fd6c39ce132e407c84dc3c60f8c8728f7da",
+      "source_fact_keys": [
+        "source_fact:v1:aa78be0de9c5b7883c9224d0095ff62ecbe05d2d49c8a3a199f8c78c5aa72c04",
+        "source_fact:v1:b106ceeec51cf3a056fba4ccc2037de597c9cbc58748c25dfd152d4b2e62b021",
+        "source_fact:v1:b92e486a5ea1c2822ff2e9df658f0156075fff3442da7bc34dd88715a0f57a0e"
+      ],
+      "source_published_kst": "2026-10-08T13:53+09:00",
+      "source_title": "가온칩스 수주공시 - 주문형 반도체 설계 개발 76.7억원 (매출액대비 11.20 %)",
+      "telegram_core_fact": "가온칩스(399720)는 주문형 반도체 설계 개발에 관한 단일판매ㆍ공급계약체결 을 08일에 공시했다. 계약금액은 76.7억원이다.",
+      "title": "가온칩스 수주공시 - 주문형 반도체 설계 개발 76.7억원 (매출액대비 11.20 %)"
     },
     "source_fact:35ac386eda6cb4b920324b33": {
       "first_seen_kst": "2026-10-07T23:50:27+09:00",
@@ -169129,6 +169878,34 @@
       "telegram_core_fact": "신공장이 완공되면 케이엔에스의 연간 생산능력(CAPA)은 기존 대비 약 100% 확대될 전망이다.",
       "title": "케이엔에스, 안성 신공장 증설 결정"
     },
+    "source_fact:3b322d67de7b2ea36491ad03": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.hankyung.com/article/202610079499i",
+      "source": "한국경제",
+      "source_body_digest": "c2e4cf863c2d33a6e6e7cdd5cfc7ae6afb7736b552a507e5f156e014543b716e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cb1e45d72307f6d4789fdea5ff8eb18c8e432af0932453d2889f60cd6fa6622b",
+      "source_fact_keys": [
+        "source_fact:v1:47195c9854b7bfd137574f0faa5831a9481efc335dc9914df2de4fbe5b936b4d",
+        "source_fact:v1:4829decb390d98609d2aa5109638a29e0efad4ff3b37425c581bd01d4952511b",
+        "source_fact:v1:521eb2b1c6a2f34f9297728ab3bec102b402a6ba4c9e2722c9a53bec1254dfd3",
+        "source_fact:v1:6ac2e4a60f97e2816fdb1da0bacdd46845977484b4c6bcd47b59a62224a69bb1",
+        "source_fact:v1:75fb5b638048f526d406bb2c19da59d9b121dd0051508e73d336e39d20fa8aad",
+        "source_fact:v1:c1c424c7c802313bba7c452a147475bee63abc3d883f3d58f80bf5ad6a49adb9",
+        "source_fact:v1:dcffe4b737b02edc7976617d8df65f51e02f0f9795305022cea287b670131939",
+        "source_fact:v1:eb3cc25ecf4834003020c0beedd2c2bec31e257bbc7348d0dde3a582a9e424b0",
+        "source_fact:v1:ec053acafc9065566cacdd338e09217902b26a819900fed90033a6aa23ad70dc",
+        "source_fact:v1:f42810715e1e691b034f6491d644d86ca62044625c7a7ddcf3c0798a73026025"
+      ],
+      "source_published_kst": "2026-10-07T22:11+09:00",
+      "source_title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매",
+      "telegram_core_fact": "10년 만기 미국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
+      "title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매"
+    },
     "source_fact:3b37ba6a4e49f1e0701fee0b": {
       "first_seen_kst": "2026-10-07T02:13:12+09:00",
       "lanes": {
@@ -169210,35 +169987,23 @@
     "source_fact:3b4b7ea694afb51aa02502e3": {
       "first_seen_kst": "2026-10-08T08:31:37+09:00",
       "lanes": {
-        "live": "2026-10-08T14:21:54+09:00"
+        "live": "2026-10-08T18:24:19+09:00"
       },
-      "last_seen_kst": "2026-10-08T14:21:54+09:00",
-      "link": "https://www.edaily.co.kr/news/read?newsid=02482966645610952&parentid=03224246645610952&gubun=E",
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=04152486645610952&Kind=257",
       "source": "이데일리",
-      "source_body_digest": "5cc7621b1d45e2b420073814863c088a94082a3b57c7f4059178d7f0f6844c94",
+      "source_body_digest": "ea6511024acf60bb5fd52e4be8ff7ce1264befb41e8e33d4e45e8849565e1410",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:cc4d84ad9a80f98d01c7db8276e5f53e8c48b85459a51ea67a25da9cf5cabb64",
+      "source_fact_identity": "source_facts:v1:bc59f69f9dd80e200116671e012b4a12f9fd774c4f8d7671fe75805d03f12fc5",
       "source_fact_keys": [
-        "source_fact:v1:1cc2e1a70cfa166806e4b50770772d3740e006a081164f21db269812f32a368e",
-        "source_fact:v1:52a7bbe0c12e823f4020d94ec1b2228b1df71baa7494c03c356acf6a16d3a6e3",
-        "source_fact:v1:5b8e728de935cf5447cec722f90e487438d80f26b0ab809fb5e0e1e2362d430e",
-        "source_fact:v1:64386c53975123e0b7acb67bc1f73da72146d72151e7f5f5ac9d7f260dff1e78",
-        "source_fact:v1:747c1845e8ac651e5cbe9a64251856af98b2531e41f6ae80403d7cf1edc55cf5",
-        "source_fact:v1:8b5f5246a1c4dc87adece050e92815c92814280c7243b4fc5c17949abb6ee738",
-        "source_fact:v1:afc4ea828d70807f33f4d8cd5d2377e043d92a0c8da6d84ee8771ce7a1ef4696",
-        "source_fact:v1:b0e6289fd20cff72b7d467eabb166f31a9aa4a5bd9d15e3bf98cc5b44ab8071d",
-        "source_fact:v1:b6132f00411ac405517e552b62311fb86d3272067885a71524a6b38ce71b4207",
-        "source_fact:v1:d71252967461006287192f380bc900ffb650c27adba9568342a729576fa80eb9",
-        "source_fact:v1:e07118c317b14c52f656657011bb6af838579b6b683b837da93e13a9b6e7053d",
-        "source_fact:v1:e1f5124160f9b735057145587714dc7ac6de4eab7131d3e6b5ce340f806e9f76",
-        "source_fact:v1:e516c98308c2678489e8fb5b90bacbfcea15b00cb84238c2e2b67cae05b72629",
-        "source_fact:v1:f5dc59a58d51544e1768169ef9851e84ea4e26419c78cd58cb8a0f8aefe16590",
-        "source_fact:v1:fd9fd362aad580e81a7af900ecae712ce51e339cc33f89ae512fc98bd8b882b8"
+        "source_fact:v1:1f03e76d9cf4b2b0c2dda1f556aa1e3e828491ddd865fd7bfc83912fff6a8796",
+        "source_fact:v1:8a4be2c641108cfb71bbd9ab7a0bf4085066e773e4771472ef39a073fca17d1d",
+        "source_fact:v1:e07118c317b14c52f656657011bb6af838579b6b683b837da93e13a9b6e7053d"
       ],
-      "source_published_kst": "2026-10-08T08:05+09:00",
-      "source_title": "\"100조 벽 깼다\" 삼성전자 또 신기록…내년엔 130조 찍나",
-      "telegram_core_fact": "삼성전자는 지난해 4분기 매출 93조8000억원, 영업익 20조1000억원으로 역대 최대 기록을 세운 이후 4개 분기 연속해 매출과 영업이익 신기록 행진을 이어가고 있다.",
-      "title": "\"100조 벽 깼다\" 삼성전자 또 신기록…내년엔 130조 찍나"
+      "source_published_kst": "2026-10-08T05:27+09:00",
+      "source_title": "삼성전자 반도체서만 영업익 110조…HBM4로 내년도 질주",
+      "telegram_core_fact": "삼성전자가 올해 3분기 107조4000억원에 달하는 영업이익을 잠정 기록한 가운데 반도체 부문에서만 110조원에 달하는 이익을 거뒀을 것으로 추정된다.",
+      "title": "삼성전자 반도체서만 영업익 110조…HBM4로 내년도 질주"
     },
     "source_fact:3b640984746be4c629009c66": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -170448,6 +171213,31 @@
       ],
       "source_published_kst": "2026-10-07T09:48+09:00",
       "title": "KT클라우드, 50MW급 '청라 AI 데이터센터' 구축…2030년 준공"
+    },
+    "source_fact:3e0d07613506d4bdeef087d7": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04742886645610952",
+      "source": "이데일리",
+      "source_body_digest": "6968e3e9552f837adb1d90f2afe41242cb7ecadd7245db79e7cd7a45973833bd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:443c8df68bb6984036e0214f8a27254cf2ac4681e73fae8a192f87535b3f10d5",
+      "source_fact_keys": [
+        "source_fact:v1:16c572f17b64081da778d41d2eb6127ee865e2b0e858a1dcfd382bcc0356c48a",
+        "source_fact:v1:353374f9336c214b51b8ec00d75f7fa84f02e046baece518365b1baf7dd19d37",
+        "source_fact:v1:94289e16338d8739e51cb5f9a57184dec03f6d93d038b9be4f5aff884966d7e9",
+        "source_fact:v1:a6ec24e037b302f44c856a77dcb4bb31710bb81f3f88442fdbdf4c0ac0b96eaa",
+        "source_fact:v1:ac5acbd335e7bb6e9288ee0798fd2a9ae66fef2ee7101c314e955fe23dd28427",
+        "source_fact:v1:b92f1924553545da5fd38bda75aa91f9887839c071bfb51e2b6b4e857e03e759",
+        "source_fact:v1:bc7fa1422d648000b2f777609a8141af3b28738cc8d0bc39f4fcc2bd80aa6cbf"
+      ],
+      "source_published_kst": "2026-10-08T16:31+09:00",
+      "source_title": "AI 반도체 얼마나 잘 팔리길래…TSMC, 분기 매출 62조원 '사상 최대'",
+      "telegram_core_fact": "세계 최대 파운드리(반도체 위탁생산) 업체인 대만 TSMC가 인공지능(AI) 반도체 수요 급증에 힘입어 사상 최대 분기 매출을 기록했다.",
+      "title": "AI 반도체 얼마나 잘 팔리길래…TSMC, 분기 매출 62조원 '사상 최대'"
     },
     "source_fact:3e0ee791d3e8fb5ad6892ccc": {
       "first_seen_kst": "2026-10-07T10:49:23+09:00",
@@ -171743,6 +172533,31 @@
       "source_published_kst": "2026-10-06T13:51+09:00",
       "title": "코스피, 반도체 약세에 6900선으로…코스닥은 2%대 뛰며 900선 돌파"
     },
+    "source_fact:411e9ff1929d1d10de4133e1": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04742886645610952",
+      "source": "이데일리",
+      "source_body_digest": "6968e3e9552f837adb1d90f2afe41242cb7ecadd7245db79e7cd7a45973833bd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:443c8df68bb6984036e0214f8a27254cf2ac4681e73fae8a192f87535b3f10d5",
+      "source_fact_keys": [
+        "source_fact:v1:16c572f17b64081da778d41d2eb6127ee865e2b0e858a1dcfd382bcc0356c48a",
+        "source_fact:v1:353374f9336c214b51b8ec00d75f7fa84f02e046baece518365b1baf7dd19d37",
+        "source_fact:v1:94289e16338d8739e51cb5f9a57184dec03f6d93d038b9be4f5aff884966d7e9",
+        "source_fact:v1:a6ec24e037b302f44c856a77dcb4bb31710bb81f3f88442fdbdf4c0ac0b96eaa",
+        "source_fact:v1:ac5acbd335e7bb6e9288ee0798fd2a9ae66fef2ee7101c314e955fe23dd28427",
+        "source_fact:v1:b92f1924553545da5fd38bda75aa91f9887839c071bfb51e2b6b4e857e03e759",
+        "source_fact:v1:bc7fa1422d648000b2f777609a8141af3b28738cc8d0bc39f4fcc2bd80aa6cbf"
+      ],
+      "source_published_kst": "2026-10-08T16:31+09:00",
+      "source_title": "AI 반도체 얼마나 잘 팔리길래…TSMC, 분기 매출 62조원 '사상 최대'",
+      "telegram_core_fact": "세계 최대 파운드리(반도체 위탁생산) 업체인 대만 TSMC가 인공지능(AI) 반도체 수요 급증에 힘입어 사상 최대 분기 매출을 기록했다.",
+      "title": "AI 반도체 얼마나 잘 팔리길래…TSMC, 분기 매출 62조원 '사상 최대'"
+    },
     "source_fact:411eee509df85d03b0991f20": {
       "first_seen_kst": "2026-10-07T03:30:59+09:00",
       "lanes": {
@@ -172761,31 +173576,29 @@
     "source_fact:426da1e66c60e60741dbf8af": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
       "lanes": {
-        "live": "2026-10-08T01:58:01+09:00"
+        "live": "2026-10-08T18:24:19+09:00"
       },
-      "last_seen_kst": "2026-10-08T01:58:01+09:00",
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
       "link": "https://www.hankyung.com/article/202610079499i",
       "source": "한국경제",
-      "source_body_digest": "e930a8c037174af9dace28adb85106cf30d7a646ce47a850315187afe6669c25",
+      "source_body_digest": "c2e4cf863c2d33a6e6e7cdd5cfc7ae6afb7736b552a507e5f156e014543b716e",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:afde99fd798d448f711c1da2d2282b087c2d2f16e952d282200abeddebcab03c",
+      "source_fact_identity": "source_facts:v1:cb1e45d72307f6d4789fdea5ff8eb18c8e432af0932453d2889f60cd6fa6622b",
       "source_fact_keys": [
-        "source_fact:v1:1d2f26068ae7b406e00541dec6e28346e1b189fc03f2b532990c4d389e584b9f",
+        "source_fact:v1:47195c9854b7bfd137574f0faa5831a9481efc335dc9914df2de4fbe5b936b4d",
         "source_fact:v1:4829decb390d98609d2aa5109638a29e0efad4ff3b37425c581bd01d4952511b",
         "source_fact:v1:521eb2b1c6a2f34f9297728ab3bec102b402a6ba4c9e2722c9a53bec1254dfd3",
-        "source_fact:v1:56cb3d63397e680114b46dbe1851826013bb603124a5b9a6d014123a03c4d607",
-        "source_fact:v1:66b665b0ce8531fa68fb1cf817b35a9670e125bd8d6477bf2fdea892e9480dca",
         "source_fact:v1:6ac2e4a60f97e2816fdb1da0bacdd46845977484b4c6bcd47b59a62224a69bb1",
-        "source_fact:v1:7488fd21a3faf1f58f050c207241be29891484cf1f29c7f017ecce63b61adbdf",
-        "source_fact:v1:7b6d19567315890753136fa6724326c8ca96caa4c0106522c2ca3f1e70f62115",
-        "source_fact:v1:a3919271d9e53c7131c4f02692c6cbc9bd7f24dfafec1949e3a3f49da8fc2e8d",
+        "source_fact:v1:75fb5b638048f526d406bb2c19da59d9b121dd0051508e73d336e39d20fa8aad",
         "source_fact:v1:c1c424c7c802313bba7c452a147475bee63abc3d883f3d58f80bf5ad6a49adb9",
+        "source_fact:v1:dcffe4b737b02edc7976617d8df65f51e02f0f9795305022cea287b670131939",
         "source_fact:v1:eb3cc25ecf4834003020c0beedd2c2bec31e257bbc7348d0dde3a582a9e424b0",
+        "source_fact:v1:ec053acafc9065566cacdd338e09217902b26a819900fed90033a6aa23ad70dc",
         "source_fact:v1:f42810715e1e691b034f6491d644d86ca62044625c7a7ddcf3c0798a73026025"
       ],
       "source_published_kst": "2026-10-07T22:11+09:00",
       "source_title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매",
-      "telegram_core_fact": "10년 만기 국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
+      "telegram_core_fact": "10년 만기 미국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
       "title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매"
     },
     "source_fact:427500e5e90d013dbb4823ec": {
@@ -177471,31 +178284,29 @@
     "source_fact:4b1515e14f596160be2cdc39": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
       "lanes": {
-        "live": "2026-10-08T01:58:01+09:00"
+        "live": "2026-10-08T18:24:19+09:00"
       },
-      "last_seen_kst": "2026-10-08T01:58:01+09:00",
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
       "link": "https://www.hankyung.com/article/202610079499i",
       "source": "한국경제",
-      "source_body_digest": "e930a8c037174af9dace28adb85106cf30d7a646ce47a850315187afe6669c25",
+      "source_body_digest": "c2e4cf863c2d33a6e6e7cdd5cfc7ae6afb7736b552a507e5f156e014543b716e",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:afde99fd798d448f711c1da2d2282b087c2d2f16e952d282200abeddebcab03c",
+      "source_fact_identity": "source_facts:v1:cb1e45d72307f6d4789fdea5ff8eb18c8e432af0932453d2889f60cd6fa6622b",
       "source_fact_keys": [
-        "source_fact:v1:1d2f26068ae7b406e00541dec6e28346e1b189fc03f2b532990c4d389e584b9f",
+        "source_fact:v1:47195c9854b7bfd137574f0faa5831a9481efc335dc9914df2de4fbe5b936b4d",
         "source_fact:v1:4829decb390d98609d2aa5109638a29e0efad4ff3b37425c581bd01d4952511b",
         "source_fact:v1:521eb2b1c6a2f34f9297728ab3bec102b402a6ba4c9e2722c9a53bec1254dfd3",
-        "source_fact:v1:56cb3d63397e680114b46dbe1851826013bb603124a5b9a6d014123a03c4d607",
-        "source_fact:v1:66b665b0ce8531fa68fb1cf817b35a9670e125bd8d6477bf2fdea892e9480dca",
         "source_fact:v1:6ac2e4a60f97e2816fdb1da0bacdd46845977484b4c6bcd47b59a62224a69bb1",
-        "source_fact:v1:7488fd21a3faf1f58f050c207241be29891484cf1f29c7f017ecce63b61adbdf",
-        "source_fact:v1:7b6d19567315890753136fa6724326c8ca96caa4c0106522c2ca3f1e70f62115",
-        "source_fact:v1:a3919271d9e53c7131c4f02692c6cbc9bd7f24dfafec1949e3a3f49da8fc2e8d",
+        "source_fact:v1:75fb5b638048f526d406bb2c19da59d9b121dd0051508e73d336e39d20fa8aad",
         "source_fact:v1:c1c424c7c802313bba7c452a147475bee63abc3d883f3d58f80bf5ad6a49adb9",
+        "source_fact:v1:dcffe4b737b02edc7976617d8df65f51e02f0f9795305022cea287b670131939",
         "source_fact:v1:eb3cc25ecf4834003020c0beedd2c2bec31e257bbc7348d0dde3a582a9e424b0",
+        "source_fact:v1:ec053acafc9065566cacdd338e09217902b26a819900fed90033a6aa23ad70dc",
         "source_fact:v1:f42810715e1e691b034f6491d644d86ca62044625c7a7ddcf3c0798a73026025"
       ],
       "source_published_kst": "2026-10-07T22:11+09:00",
       "source_title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매",
-      "telegram_core_fact": "10년 만기 국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
+      "telegram_core_fact": "10년 만기 미국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
       "title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매"
     },
     "source_fact:4b2927b14eaf4dec35f3df67": {
@@ -179048,6 +179859,34 @@
       ],
       "source_published_kst": "2026-10-05T21:32+09:00",
       "title": "에볼루션 메탈스 앤 테크, 포항 희토류 자석공장 12월 17일 개장..연 1만t 확대 추진"
+    },
+    "source_fact:4eaf4b5d25e827dbb77bd107": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.hankyung.com/article/202610079499i",
+      "source": "한국경제",
+      "source_body_digest": "c2e4cf863c2d33a6e6e7cdd5cfc7ae6afb7736b552a507e5f156e014543b716e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cb1e45d72307f6d4789fdea5ff8eb18c8e432af0932453d2889f60cd6fa6622b",
+      "source_fact_keys": [
+        "source_fact:v1:47195c9854b7bfd137574f0faa5831a9481efc335dc9914df2de4fbe5b936b4d",
+        "source_fact:v1:4829decb390d98609d2aa5109638a29e0efad4ff3b37425c581bd01d4952511b",
+        "source_fact:v1:521eb2b1c6a2f34f9297728ab3bec102b402a6ba4c9e2722c9a53bec1254dfd3",
+        "source_fact:v1:6ac2e4a60f97e2816fdb1da0bacdd46845977484b4c6bcd47b59a62224a69bb1",
+        "source_fact:v1:75fb5b638048f526d406bb2c19da59d9b121dd0051508e73d336e39d20fa8aad",
+        "source_fact:v1:c1c424c7c802313bba7c452a147475bee63abc3d883f3d58f80bf5ad6a49adb9",
+        "source_fact:v1:dcffe4b737b02edc7976617d8df65f51e02f0f9795305022cea287b670131939",
+        "source_fact:v1:eb3cc25ecf4834003020c0beedd2c2bec31e257bbc7348d0dde3a582a9e424b0",
+        "source_fact:v1:ec053acafc9065566cacdd338e09217902b26a819900fed90033a6aa23ad70dc",
+        "source_fact:v1:f42810715e1e691b034f6491d644d86ca62044625c7a7ddcf3c0798a73026025"
+      ],
+      "source_published_kst": "2026-10-07T22:11+09:00",
+      "source_title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매",
+      "telegram_core_fact": "10년 만기 미국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
+      "title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매"
     },
     "source_fact:4eb2dffd83b7daa68501d37e": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
@@ -190127,6 +190966,31 @@
       "telegram_core_fact": "SK에너지는 △석유시장 가격체계 투명성 및 거래관행 개선 △공정거래 및 내부통제 체계 강화 △석유 유통고객과의 상생협력 강화 △안정적인 에너지 공급을 위한 역할 지속을 골자로 하는 ‘석유시장 가격구조 개편 및 내부통제 강화’ 조치를 마련했다고 8일 밝혔다.",
       "title": "SK에너지, 석유제품 가격·거래관행 점검…내부통제 강화한다"
     },
+    "source_fact:63a94238485048e379c79368": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634044",
+      "source": "이투데이",
+      "source_body_digest": "fa8eec043d3fba10fb9aa9446960854741b7ac5d2e14f95523a5473e9df77de0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee2f0a9c30dd2348ad4be736d6a0c9462a1da2bde6b93a3eade8d0fec013aaa4",
+      "source_fact_keys": [
+        "source_fact:v1:56a2fe0721429082873e6123b06a8088fd5c680cff44ca7e7b37d08853ba4096",
+        "source_fact:v1:6d86857c6dd6f3256fb8b7dcaeceb7606c93c537e2304aab2b26a957d1243fa9",
+        "source_fact:v1:99995af031b1c5a586ce3bb13265383cab3cc9457cb36d4197be737b1789782d",
+        "source_fact:v1:9bd8f1dfa1460eccbef380e2fae2ee5d2988688d01040f05e638a23e4e9b6dea",
+        "source_fact:v1:c6cf205dc1c56077c8d55980c45ef81fb41638a629be01fc174f4612af130fac",
+        "source_fact:v1:d4ffa0b28fcb090eea1c64bcf74a57c792904912f42137eed93a800ca096dde5",
+        "source_fact:v1:e65a3e2277afe6a68a0c5719340ca786cfeae77720208e6984ce474b72c879f8"
+      ],
+      "source_published_kst": "2026-10-08T16:44+09:00",
+      "source_title": "HDC, 771억 규모 자사주 소각 결정…주주환원 강화",
+      "telegram_core_fact": "HDC가 배당 확대에 이어 771억 원 자기주식(자사주)을 소각하며 주주환원 강화에 나선다.",
+      "title": "HDC, 771억 규모 자사주 소각 결정…주주환원 강화"
+    },
     "source_fact:63acf900143c232b9de29b28": {
       "first_seen_kst": "2026-10-08T09:58:56+09:00",
       "lanes": {
@@ -190527,31 +191391,29 @@
     "source_fact:64b790fbc9fea6dc771bbcae": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
       "lanes": {
-        "live": "2026-10-08T01:58:01+09:00"
+        "live": "2026-10-08T18:24:19+09:00"
       },
-      "last_seen_kst": "2026-10-08T01:58:01+09:00",
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
       "link": "https://www.hankyung.com/article/202610079499i",
       "source": "한국경제",
-      "source_body_digest": "e930a8c037174af9dace28adb85106cf30d7a646ce47a850315187afe6669c25",
+      "source_body_digest": "c2e4cf863c2d33a6e6e7cdd5cfc7ae6afb7736b552a507e5f156e014543b716e",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:afde99fd798d448f711c1da2d2282b087c2d2f16e952d282200abeddebcab03c",
+      "source_fact_identity": "source_facts:v1:cb1e45d72307f6d4789fdea5ff8eb18c8e432af0932453d2889f60cd6fa6622b",
       "source_fact_keys": [
-        "source_fact:v1:1d2f26068ae7b406e00541dec6e28346e1b189fc03f2b532990c4d389e584b9f",
+        "source_fact:v1:47195c9854b7bfd137574f0faa5831a9481efc335dc9914df2de4fbe5b936b4d",
         "source_fact:v1:4829decb390d98609d2aa5109638a29e0efad4ff3b37425c581bd01d4952511b",
         "source_fact:v1:521eb2b1c6a2f34f9297728ab3bec102b402a6ba4c9e2722c9a53bec1254dfd3",
-        "source_fact:v1:56cb3d63397e680114b46dbe1851826013bb603124a5b9a6d014123a03c4d607",
-        "source_fact:v1:66b665b0ce8531fa68fb1cf817b35a9670e125bd8d6477bf2fdea892e9480dca",
         "source_fact:v1:6ac2e4a60f97e2816fdb1da0bacdd46845977484b4c6bcd47b59a62224a69bb1",
-        "source_fact:v1:7488fd21a3faf1f58f050c207241be29891484cf1f29c7f017ecce63b61adbdf",
-        "source_fact:v1:7b6d19567315890753136fa6724326c8ca96caa4c0106522c2ca3f1e70f62115",
-        "source_fact:v1:a3919271d9e53c7131c4f02692c6cbc9bd7f24dfafec1949e3a3f49da8fc2e8d",
+        "source_fact:v1:75fb5b638048f526d406bb2c19da59d9b121dd0051508e73d336e39d20fa8aad",
         "source_fact:v1:c1c424c7c802313bba7c452a147475bee63abc3d883f3d58f80bf5ad6a49adb9",
+        "source_fact:v1:dcffe4b737b02edc7976617d8df65f51e02f0f9795305022cea287b670131939",
         "source_fact:v1:eb3cc25ecf4834003020c0beedd2c2bec31e257bbc7348d0dde3a582a9e424b0",
+        "source_fact:v1:ec053acafc9065566cacdd338e09217902b26a819900fed90033a6aa23ad70dc",
         "source_fact:v1:f42810715e1e691b034f6491d644d86ca62044625c7a7ddcf3c0798a73026025"
       ],
       "source_published_kst": "2026-10-07T22:11+09:00",
       "source_title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매",
-      "telegram_core_fact": "10년 만기 국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
+      "telegram_core_fact": "10년 만기 미국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
       "title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매"
     },
     "source_fact:64c67e27c3996b57629e07a7": {
@@ -195718,6 +196580,27 @@
       ],
       "source_published_kst": "2026-10-06T17:38+09:00",
       "title": "\"中국경절 연휴 특수\"… 외국인 매출 두배로"
+    },
+    "source_fact:6f48df0087c66e47e4388f7a": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=04152486645610952&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "ea6511024acf60bb5fd52e4be8ff7ce1264befb41e8e33d4e45e8849565e1410",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bc59f69f9dd80e200116671e012b4a12f9fd774c4f8d7671fe75805d03f12fc5",
+      "source_fact_keys": [
+        "source_fact:v1:1f03e76d9cf4b2b0c2dda1f556aa1e3e828491ddd865fd7bfc83912fff6a8796",
+        "source_fact:v1:8a4be2c641108cfb71bbd9ab7a0bf4085066e773e4771472ef39a073fca17d1d",
+        "source_fact:v1:e07118c317b14c52f656657011bb6af838579b6b683b837da93e13a9b6e7053d"
+      ],
+      "source_published_kst": "2026-10-08T05:27+09:00",
+      "source_title": "삼성전자 반도체서만 영업익 110조…HBM4로 내년도 질주",
+      "telegram_core_fact": "삼성전자가 올해 3분기 107조4000억원에 달하는 영업이익을 잠정 기록한 가운데 반도체 부문에서만 110조원에 달하는 이익을 거뒀을 것으로 추정된다.",
+      "title": "삼성전자 반도체서만 영업익 110조…HBM4로 내년도 질주"
     },
     "source_fact:6f4a572629f829919850b55b": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
@@ -203638,6 +204521,34 @@
       ],
       "source_published_kst": "2026-10-06T13:24+09:00",
       "title": "통합항공사 뜨자 남은 10.58%…산은, 한진칼 지분 '엑시트 셈법' 관심집중 [fn마켓워치]"
+    },
+    "source_fact:7f074a7436f60b1c3223d070": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.hankyung.com/article/202610079499i",
+      "source": "한국경제",
+      "source_body_digest": "c2e4cf863c2d33a6e6e7cdd5cfc7ae6afb7736b552a507e5f156e014543b716e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cb1e45d72307f6d4789fdea5ff8eb18c8e432af0932453d2889f60cd6fa6622b",
+      "source_fact_keys": [
+        "source_fact:v1:47195c9854b7bfd137574f0faa5831a9481efc335dc9914df2de4fbe5b936b4d",
+        "source_fact:v1:4829decb390d98609d2aa5109638a29e0efad4ff3b37425c581bd01d4952511b",
+        "source_fact:v1:521eb2b1c6a2f34f9297728ab3bec102b402a6ba4c9e2722c9a53bec1254dfd3",
+        "source_fact:v1:6ac2e4a60f97e2816fdb1da0bacdd46845977484b4c6bcd47b59a62224a69bb1",
+        "source_fact:v1:75fb5b638048f526d406bb2c19da59d9b121dd0051508e73d336e39d20fa8aad",
+        "source_fact:v1:c1c424c7c802313bba7c452a147475bee63abc3d883f3d58f80bf5ad6a49adb9",
+        "source_fact:v1:dcffe4b737b02edc7976617d8df65f51e02f0f9795305022cea287b670131939",
+        "source_fact:v1:eb3cc25ecf4834003020c0beedd2c2bec31e257bbc7348d0dde3a582a9e424b0",
+        "source_fact:v1:ec053acafc9065566cacdd338e09217902b26a819900fed90033a6aa23ad70dc",
+        "source_fact:v1:f42810715e1e691b034f6491d644d86ca62044625c7a7ddcf3c0798a73026025"
+      ],
+      "source_published_kst": "2026-10-07T22:11+09:00",
+      "source_title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매",
+      "telegram_core_fact": "10년 만기 미국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
+      "title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매"
     },
     "source_fact:7f15cd11b026b000c43a5c5a": {
       "first_seen_kst": "2026-10-07T11:43:24+09:00",
@@ -224254,6 +225165,26 @@
       "source_published_kst": "2026-10-06T08:17+09:00",
       "title": "나스닥 사상 최고…비트코인 8만5000달러대[코인 모닝콜]"
     },
+    "source_fact:a92cf1780a1265df64bf0af9": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.fnnews.com/news/202610081336468279",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "84f1f899e142df20b8f4390294c1159f67e27f606b0f285b62e225f6e1c2088d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d7bba5b873cf86468b3d93fb63b11739eaad06c7388b830ecc11961991cd504",
+      "source_fact_keys": [
+        "source_fact:v1:56606f77e39c7badeadb223e7ac19f722f88b8cd65968f049800c1e0e2055100",
+        "source_fact:v1:d4c0ff3585f05d5cafe2c2864200dbcc1f202b4fdb8bea851ea106f23696bc18"
+      ],
+      "source_published_kst": "2026-10-08T13:36+09:00",
+      "source_title": "삼성전자, 영업이익 107조원 돌파에도 무덤덤… K-반도체 저평가 흐름 이어지나",
+      "telegram_core_fact": "삼성전자가 3분기 100조원이 넘는 영업이익을 기록하며 깜짝 실적을 냈으나 외국인 투자자들의 매도세와 옵션 만기일 영향이 겹쳐 주가는 지루한 움직임을 보였다.",
+      "title": "삼성전자, 영업이익 107조원 돌파에도 무덤덤… K-반도체 저평가 흐름 이어지나"
+    },
     "source_fact:a938db455f23ec4ee1c5b54d": {
       "first_seen_kst": "2026-10-08T10:20:20+09:00",
       "lanes": {
@@ -231929,6 +232860,31 @@
       "source_published_kst": "2026-10-06T09:44+09:00",
       "title": "[특징주] LG전자 5%대 강세⋯북미 AI 데이터센터 냉각 솔루션 공급 호재"
     },
+    "source_fact:b8488b28fdab067292e95929": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04742886645610952",
+      "source": "이데일리",
+      "source_body_digest": "6968e3e9552f837adb1d90f2afe41242cb7ecadd7245db79e7cd7a45973833bd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:443c8df68bb6984036e0214f8a27254cf2ac4681e73fae8a192f87535b3f10d5",
+      "source_fact_keys": [
+        "source_fact:v1:16c572f17b64081da778d41d2eb6127ee865e2b0e858a1dcfd382bcc0356c48a",
+        "source_fact:v1:353374f9336c214b51b8ec00d75f7fa84f02e046baece518365b1baf7dd19d37",
+        "source_fact:v1:94289e16338d8739e51cb5f9a57184dec03f6d93d038b9be4f5aff884966d7e9",
+        "source_fact:v1:a6ec24e037b302f44c856a77dcb4bb31710bb81f3f88442fdbdf4c0ac0b96eaa",
+        "source_fact:v1:ac5acbd335e7bb6e9288ee0798fd2a9ae66fef2ee7101c314e955fe23dd28427",
+        "source_fact:v1:b92f1924553545da5fd38bda75aa91f9887839c071bfb51e2b6b4e857e03e759",
+        "source_fact:v1:bc7fa1422d648000b2f777609a8141af3b28738cc8d0bc39f4fcc2bd80aa6cbf"
+      ],
+      "source_published_kst": "2026-10-08T16:31+09:00",
+      "source_title": "AI 반도체 얼마나 잘 팔리길래…TSMC, 분기 매출 62조원 '사상 최대'",
+      "telegram_core_fact": "세계 최대 파운드리(반도체 위탁생산) 업체인 대만 TSMC가 인공지능(AI) 반도체 수요 급증에 힘입어 사상 최대 분기 매출을 기록했다.",
+      "title": "AI 반도체 얼마나 잘 팔리길래…TSMC, 분기 매출 62조원 '사상 최대'"
+    },
     "source_fact:b84bffa1300db4e5bd6fd98a": {
       "first_seen_kst": "2026-10-07T08:57:59+09:00",
       "lanes": {
@@ -233259,6 +234215,34 @@
       ],
       "source_published_kst": "2026-10-06T07:45+09:00",
       "title": "\"지금이 매수 기회\" 화장품株 급락했는데, 수출 29% 급증"
+    },
+    "source_fact:bb3c2e56ade29b441d3e845e": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.hankyung.com/article/202610079499i",
+      "source": "한국경제",
+      "source_body_digest": "c2e4cf863c2d33a6e6e7cdd5cfc7ae6afb7736b552a507e5f156e014543b716e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cb1e45d72307f6d4789fdea5ff8eb18c8e432af0932453d2889f60cd6fa6622b",
+      "source_fact_keys": [
+        "source_fact:v1:47195c9854b7bfd137574f0faa5831a9481efc335dc9914df2de4fbe5b936b4d",
+        "source_fact:v1:4829decb390d98609d2aa5109638a29e0efad4ff3b37425c581bd01d4952511b",
+        "source_fact:v1:521eb2b1c6a2f34f9297728ab3bec102b402a6ba4c9e2722c9a53bec1254dfd3",
+        "source_fact:v1:6ac2e4a60f97e2816fdb1da0bacdd46845977484b4c6bcd47b59a62224a69bb1",
+        "source_fact:v1:75fb5b638048f526d406bb2c19da59d9b121dd0051508e73d336e39d20fa8aad",
+        "source_fact:v1:c1c424c7c802313bba7c452a147475bee63abc3d883f3d58f80bf5ad6a49adb9",
+        "source_fact:v1:dcffe4b737b02edc7976617d8df65f51e02f0f9795305022cea287b670131939",
+        "source_fact:v1:eb3cc25ecf4834003020c0beedd2c2bec31e257bbc7348d0dde3a582a9e424b0",
+        "source_fact:v1:ec053acafc9065566cacdd338e09217902b26a819900fed90033a6aa23ad70dc",
+        "source_fact:v1:f42810715e1e691b034f6491d644d86ca62044625c7a7ddcf3c0798a73026025"
+      ],
+      "source_published_kst": "2026-10-07T22:11+09:00",
+      "source_title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매",
+      "telegram_core_fact": "10년 만기 미국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
+      "title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매"
     },
     "source_fact:bb45a1038b77fb3d75fea58c": {
       "first_seen_kst": "2026-10-06T18:16:47+09:00",
@@ -234965,6 +235949,31 @@
       "source_published_kst": "2026-10-06T04:20+09:00",
       "title": "[美특징주]에스티로더, 성장 회복 기대에 월가 투자의견 ‘매수’ 상향…주가 2%↑"
     },
+    "source_fact:bf0725e0c1978d8ca265abe4": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634044",
+      "source": "이투데이",
+      "source_body_digest": "fa8eec043d3fba10fb9aa9446960854741b7ac5d2e14f95523a5473e9df77de0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee2f0a9c30dd2348ad4be736d6a0c9462a1da2bde6b93a3eade8d0fec013aaa4",
+      "source_fact_keys": [
+        "source_fact:v1:56a2fe0721429082873e6123b06a8088fd5c680cff44ca7e7b37d08853ba4096",
+        "source_fact:v1:6d86857c6dd6f3256fb8b7dcaeceb7606c93c537e2304aab2b26a957d1243fa9",
+        "source_fact:v1:99995af031b1c5a586ce3bb13265383cab3cc9457cb36d4197be737b1789782d",
+        "source_fact:v1:9bd8f1dfa1460eccbef380e2fae2ee5d2988688d01040f05e638a23e4e9b6dea",
+        "source_fact:v1:c6cf205dc1c56077c8d55980c45ef81fb41638a629be01fc174f4612af130fac",
+        "source_fact:v1:d4ffa0b28fcb090eea1c64bcf74a57c792904912f42137eed93a800ca096dde5",
+        "source_fact:v1:e65a3e2277afe6a68a0c5719340ca786cfeae77720208e6984ce474b72c879f8"
+      ],
+      "source_published_kst": "2026-10-08T16:44+09:00",
+      "source_title": "HDC, 771억 규모 자사주 소각 결정…주주환원 강화",
+      "telegram_core_fact": "HDC가 배당 확대에 이어 771억 원 자기주식(자사주)을 소각하며 주주환원 강화에 나선다.",
+      "title": "HDC, 771억 규모 자사주 소각 결정…주주환원 강화"
+    },
     "source_fact:bf09dbf0fa47cc7977b3a615": {
       "first_seen_kst": "2026-10-08T06:10:43+09:00",
       "lanes": {
@@ -235599,6 +236608,27 @@
       "source_published_kst": "2026-10-07T09:51+09:00",
       "title": "삼미금속, 한화파워에 ‘가스터빈 블레이드’ 납품 개시…후속 수주 논의"
     },
+    "source_fact:c07ecda280ffad24723ed554": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=04152486645610952&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "ea6511024acf60bb5fd52e4be8ff7ce1264befb41e8e33d4e45e8849565e1410",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bc59f69f9dd80e200116671e012b4a12f9fd774c4f8d7671fe75805d03f12fc5",
+      "source_fact_keys": [
+        "source_fact:v1:1f03e76d9cf4b2b0c2dda1f556aa1e3e828491ddd865fd7bfc83912fff6a8796",
+        "source_fact:v1:8a4be2c641108cfb71bbd9ab7a0bf4085066e773e4771472ef39a073fca17d1d",
+        "source_fact:v1:e07118c317b14c52f656657011bb6af838579b6b683b837da93e13a9b6e7053d"
+      ],
+      "source_published_kst": "2026-10-08T05:27+09:00",
+      "source_title": "삼성전자 반도체서만 영업익 110조…HBM4로 내년도 질주",
+      "telegram_core_fact": "삼성전자가 올해 3분기 107조4000억원에 달하는 영업이익을 잠정 기록한 가운데 반도체 부문에서만 110조원에 달하는 이익을 거뒀을 것으로 추정된다.",
+      "title": "삼성전자 반도체서만 영업익 110조…HBM4로 내년도 질주"
+    },
     "source_fact:c08201de2a1e763edbeb1894": {
       "first_seen_kst": "2026-10-06T15:14:29+09:00",
       "lanes": {
@@ -235991,31 +237021,29 @@
     "source_fact:c1563513adf014868be98301": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
       "lanes": {
-        "live": "2026-10-08T01:58:01+09:00"
+        "live": "2026-10-08T18:24:19+09:00"
       },
-      "last_seen_kst": "2026-10-08T01:58:01+09:00",
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
       "link": "https://www.hankyung.com/article/202610079499i",
       "source": "한국경제",
-      "source_body_digest": "e930a8c037174af9dace28adb85106cf30d7a646ce47a850315187afe6669c25",
+      "source_body_digest": "c2e4cf863c2d33a6e6e7cdd5cfc7ae6afb7736b552a507e5f156e014543b716e",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:afde99fd798d448f711c1da2d2282b087c2d2f16e952d282200abeddebcab03c",
+      "source_fact_identity": "source_facts:v1:cb1e45d72307f6d4789fdea5ff8eb18c8e432af0932453d2889f60cd6fa6622b",
       "source_fact_keys": [
-        "source_fact:v1:1d2f26068ae7b406e00541dec6e28346e1b189fc03f2b532990c4d389e584b9f",
+        "source_fact:v1:47195c9854b7bfd137574f0faa5831a9481efc335dc9914df2de4fbe5b936b4d",
         "source_fact:v1:4829decb390d98609d2aa5109638a29e0efad4ff3b37425c581bd01d4952511b",
         "source_fact:v1:521eb2b1c6a2f34f9297728ab3bec102b402a6ba4c9e2722c9a53bec1254dfd3",
-        "source_fact:v1:56cb3d63397e680114b46dbe1851826013bb603124a5b9a6d014123a03c4d607",
-        "source_fact:v1:66b665b0ce8531fa68fb1cf817b35a9670e125bd8d6477bf2fdea892e9480dca",
         "source_fact:v1:6ac2e4a60f97e2816fdb1da0bacdd46845977484b4c6bcd47b59a62224a69bb1",
-        "source_fact:v1:7488fd21a3faf1f58f050c207241be29891484cf1f29c7f017ecce63b61adbdf",
-        "source_fact:v1:7b6d19567315890753136fa6724326c8ca96caa4c0106522c2ca3f1e70f62115",
-        "source_fact:v1:a3919271d9e53c7131c4f02692c6cbc9bd7f24dfafec1949e3a3f49da8fc2e8d",
+        "source_fact:v1:75fb5b638048f526d406bb2c19da59d9b121dd0051508e73d336e39d20fa8aad",
         "source_fact:v1:c1c424c7c802313bba7c452a147475bee63abc3d883f3d58f80bf5ad6a49adb9",
+        "source_fact:v1:dcffe4b737b02edc7976617d8df65f51e02f0f9795305022cea287b670131939",
         "source_fact:v1:eb3cc25ecf4834003020c0beedd2c2bec31e257bbc7348d0dde3a582a9e424b0",
+        "source_fact:v1:ec053acafc9065566cacdd338e09217902b26a819900fed90033a6aa23ad70dc",
         "source_fact:v1:f42810715e1e691b034f6491d644d86ca62044625c7a7ddcf3c0798a73026025"
       ],
       "source_published_kst": "2026-10-07T22:11+09:00",
       "source_title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매",
-      "telegram_core_fact": "10년 만기 국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
+      "telegram_core_fact": "10년 만기 미국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
       "title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매"
     },
     "source_fact:c16038f3414065bad02ac92f": {
@@ -236278,6 +237306,31 @@
       ],
       "source_published_kst": "2026-10-05T08:05+09:00",
       "title": "씨이앤에스, ‘AI 서버 폭발적 발열’ 미스트 정밀 분사로 잡는다"
+    },
+    "source_fact:c1f72273aca4b8bf71f665b0": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634044",
+      "source": "이투데이",
+      "source_body_digest": "fa8eec043d3fba10fb9aa9446960854741b7ac5d2e14f95523a5473e9df77de0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee2f0a9c30dd2348ad4be736d6a0c9462a1da2bde6b93a3eade8d0fec013aaa4",
+      "source_fact_keys": [
+        "source_fact:v1:56a2fe0721429082873e6123b06a8088fd5c680cff44ca7e7b37d08853ba4096",
+        "source_fact:v1:6d86857c6dd6f3256fb8b7dcaeceb7606c93c537e2304aab2b26a957d1243fa9",
+        "source_fact:v1:99995af031b1c5a586ce3bb13265383cab3cc9457cb36d4197be737b1789782d",
+        "source_fact:v1:9bd8f1dfa1460eccbef380e2fae2ee5d2988688d01040f05e638a23e4e9b6dea",
+        "source_fact:v1:c6cf205dc1c56077c8d55980c45ef81fb41638a629be01fc174f4612af130fac",
+        "source_fact:v1:d4ffa0b28fcb090eea1c64bcf74a57c792904912f42137eed93a800ca096dde5",
+        "source_fact:v1:e65a3e2277afe6a68a0c5719340ca786cfeae77720208e6984ce474b72c879f8"
+      ],
+      "source_published_kst": "2026-10-08T16:44+09:00",
+      "source_title": "HDC, 771억 규모 자사주 소각 결정…주주환원 강화",
+      "telegram_core_fact": "HDC가 배당 확대에 이어 771억 원 자기주식(자사주)을 소각하며 주주환원 강화에 나선다.",
+      "title": "HDC, 771억 규모 자사주 소각 결정…주주환원 강화"
     },
     "source_fact:c1f78f657a1b6a22c2494cd8": {
       "first_seen_kst": "2026-10-06T19:10:36+09:00",
@@ -236626,6 +237679,31 @@
       ],
       "source_published_kst": "2026-10-06T17:12+09:00",
       "title": "유로화 17개월 최저…프랑스 재정불안에 스페인 조기총선까지(종합)"
+    },
+    "source_fact:c2722ae91ecb69fd9f5bc6a9": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04742886645610952",
+      "source": "이데일리",
+      "source_body_digest": "6968e3e9552f837adb1d90f2afe41242cb7ecadd7245db79e7cd7a45973833bd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:443c8df68bb6984036e0214f8a27254cf2ac4681e73fae8a192f87535b3f10d5",
+      "source_fact_keys": [
+        "source_fact:v1:16c572f17b64081da778d41d2eb6127ee865e2b0e858a1dcfd382bcc0356c48a",
+        "source_fact:v1:353374f9336c214b51b8ec00d75f7fa84f02e046baece518365b1baf7dd19d37",
+        "source_fact:v1:94289e16338d8739e51cb5f9a57184dec03f6d93d038b9be4f5aff884966d7e9",
+        "source_fact:v1:a6ec24e037b302f44c856a77dcb4bb31710bb81f3f88442fdbdf4c0ac0b96eaa",
+        "source_fact:v1:ac5acbd335e7bb6e9288ee0798fd2a9ae66fef2ee7101c314e955fe23dd28427",
+        "source_fact:v1:b92f1924553545da5fd38bda75aa91f9887839c071bfb51e2b6b4e857e03e759",
+        "source_fact:v1:bc7fa1422d648000b2f777609a8141af3b28738cc8d0bc39f4fcc2bd80aa6cbf"
+      ],
+      "source_published_kst": "2026-10-08T16:31+09:00",
+      "source_title": "AI 반도체 얼마나 잘 팔리길래…TSMC, 분기 매출 62조원 '사상 최대'",
+      "telegram_core_fact": "세계 최대 파운드리(반도체 위탁생산) 업체인 대만 TSMC가 인공지능(AI) 반도체 수요 급증에 힘입어 사상 최대 분기 매출을 기록했다.",
+      "title": "AI 반도체 얼마나 잘 팔리길래…TSMC, 분기 매출 62조원 '사상 최대'"
     },
     "source_fact:c27e34b0b2b0eb86abaf929a": {
       "first_seen_kst": "2026-10-07T06:28:41+09:00",
@@ -238998,6 +240076,27 @@
       ],
       "source_published_kst": "2026-10-06T13:27+09:00",
       "title": "엠플러스, 유럽 글로벌 배터리 기업서 각형 장비 수주"
+    },
+    "source_fact:c6a302c0884feee231740add": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.hankyung.com/article/202610081009L",
+      "source": "한국경제",
+      "source_body_digest": "3c43107ddf16e290a3cd376d3f533fc7a0ffad6f52b25cb31e5d7e16c91e1bb9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:26ba1175062f2d79f9ae2e00948c3fd6c39ce132e407c84dc3c60f8c8728f7da",
+      "source_fact_keys": [
+        "source_fact:v1:aa78be0de9c5b7883c9224d0095ff62ecbe05d2d49c8a3a199f8c78c5aa72c04",
+        "source_fact:v1:b106ceeec51cf3a056fba4ccc2037de597c9cbc58748c25dfd152d4b2e62b021",
+        "source_fact:v1:b92e486a5ea1c2822ff2e9df658f0156075fff3442da7bc34dd88715a0f57a0e"
+      ],
+      "source_published_kst": "2026-10-08T13:53+09:00",
+      "source_title": "가온칩스 수주공시 - 주문형 반도체 설계 개발 76.7억원 (매출액대비 11.20 %)",
+      "telegram_core_fact": "가온칩스(399720)는 주문형 반도체 설계 개발에 관한 단일판매ㆍ공급계약체결 을 08일에 공시했다. 계약금액은 76.7억원이다.",
+      "title": "가온칩스 수주공시 - 주문형 반도체 설계 개발 76.7억원 (매출액대비 11.20 %)"
     },
     "source_fact:c6a37974ed41668f2ba4ce0b": {
       "first_seen_kst": "2026-10-07T02:13:12+09:00",
@@ -255013,6 +256112,26 @@
       "telegram_core_fact": "청와대는 7일 \"한국이 러시아의 연료난과 정제능력의 상실효과 완화에 도움을 줬으며 이를 통해 기존의 대러 제재정책에 배치되는 행동을 한 것처럼 (우크라이나가) 언급한 것은 사실과 다르며 부적절하다\"고 밝혔다.",
       "title": "靑 \"우크라, 韓 대러제재 배치행동 한 것처럼 언급…부적절하고 사실과 달라\""
     },
+    "source_fact:e487b009c75e4cc0df5b0a3d": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.fnnews.com/news/202610081336468279",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "84f1f899e142df20b8f4390294c1159f67e27f606b0f285b62e225f6e1c2088d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d7bba5b873cf86468b3d93fb63b11739eaad06c7388b830ecc11961991cd504",
+      "source_fact_keys": [
+        "source_fact:v1:56606f77e39c7badeadb223e7ac19f722f88b8cd65968f049800c1e0e2055100",
+        "source_fact:v1:d4c0ff3585f05d5cafe2c2864200dbcc1f202b4fdb8bea851ea106f23696bc18"
+      ],
+      "source_published_kst": "2026-10-08T13:36+09:00",
+      "source_title": "삼성전자, 영업이익 107조원 돌파에도 무덤덤… K-반도체 저평가 흐름 이어지나",
+      "telegram_core_fact": "삼성전자가 3분기 100조원이 넘는 영업이익을 기록하며 깜짝 실적을 냈으나 외국인 투자자들의 매도세와 옵션 만기일 영향이 겹쳐 주가는 지루한 움직임을 보였다.",
+      "title": "삼성전자, 영업이익 107조원 돌파에도 무덤덤… K-반도체 저평가 흐름 이어지나"
+    },
     "source_fact:e4a4a195ccb73d759ef73fde": {
       "first_seen_kst": "2026-10-07T01:07:29+09:00",
       "lanes": {
@@ -261459,6 +262578,31 @@
       "source_published_kst": "2026-10-06T13:52+09:00",
       "title": "거래소 “코스닥 체질 개선 노력⋯법원 제동 건 ‘시총 미달 상폐’ 후속 조치 예정”"
     },
+    "source_fact:f1e00c963c9b6ba22b6194c7": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634044",
+      "source": "이투데이",
+      "source_body_digest": "fa8eec043d3fba10fb9aa9446960854741b7ac5d2e14f95523a5473e9df77de0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee2f0a9c30dd2348ad4be736d6a0c9462a1da2bde6b93a3eade8d0fec013aaa4",
+      "source_fact_keys": [
+        "source_fact:v1:56a2fe0721429082873e6123b06a8088fd5c680cff44ca7e7b37d08853ba4096",
+        "source_fact:v1:6d86857c6dd6f3256fb8b7dcaeceb7606c93c537e2304aab2b26a957d1243fa9",
+        "source_fact:v1:99995af031b1c5a586ce3bb13265383cab3cc9457cb36d4197be737b1789782d",
+        "source_fact:v1:9bd8f1dfa1460eccbef380e2fae2ee5d2988688d01040f05e638a23e4e9b6dea",
+        "source_fact:v1:c6cf205dc1c56077c8d55980c45ef81fb41638a629be01fc174f4612af130fac",
+        "source_fact:v1:d4ffa0b28fcb090eea1c64bcf74a57c792904912f42137eed93a800ca096dde5",
+        "source_fact:v1:e65a3e2277afe6a68a0c5719340ca786cfeae77720208e6984ce474b72c879f8"
+      ],
+      "source_published_kst": "2026-10-08T16:44+09:00",
+      "source_title": "HDC, 771억 규모 자사주 소각 결정…주주환원 강화",
+      "telegram_core_fact": "HDC가 배당 확대에 이어 771억 원 자기주식(자사주)을 소각하며 주주환원 강화에 나선다.",
+      "title": "HDC, 771억 규모 자사주 소각 결정…주주환원 강화"
+    },
     "source_fact:f1faf112e66fa3141fdb05ce": {
       "first_seen_kst": "2026-10-07T22:37:58+09:00",
       "lanes": {
@@ -263220,6 +264364,27 @@
       "source_title": "\"100조 벽 깼다\" 삼성전자 또 신기록…내년엔 130조 찍나",
       "telegram_core_fact": "삼성전자는 지난해 4분기 매출 93조8000억원, 영업익 20조1000억원으로 역대 최대 기록을 세운 이후 4개 분기 연속해 매출과 영업이익 신기록 행진을 이어가고 있다.",
       "title": "\"100조 벽 깼다\" 삼성전자 또 신기록…내년엔 130조 찍나"
+    },
+    "source_fact:f51b07ec853aa5a968112931": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.hankyung.com/article/202610081009L",
+      "source": "한국경제",
+      "source_body_digest": "3c43107ddf16e290a3cd376d3f533fc7a0ffad6f52b25cb31e5d7e16c91e1bb9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:26ba1175062f2d79f9ae2e00948c3fd6c39ce132e407c84dc3c60f8c8728f7da",
+      "source_fact_keys": [
+        "source_fact:v1:aa78be0de9c5b7883c9224d0095ff62ecbe05d2d49c8a3a199f8c78c5aa72c04",
+        "source_fact:v1:b106ceeec51cf3a056fba4ccc2037de597c9cbc58748c25dfd152d4b2e62b021",
+        "source_fact:v1:b92e486a5ea1c2822ff2e9df658f0156075fff3442da7bc34dd88715a0f57a0e"
+      ],
+      "source_published_kst": "2026-10-08T13:53+09:00",
+      "source_title": "가온칩스 수주공시 - 주문형 반도체 설계 개발 76.7억원 (매출액대비 11.20 %)",
+      "telegram_core_fact": "가온칩스(399720)는 주문형 반도체 설계 개발에 관한 단일판매ㆍ공급계약체결 을 08일에 공시했다. 계약금액은 76.7억원이다.",
+      "title": "가온칩스 수주공시 - 주문형 반도체 설계 개발 76.7억원 (매출액대비 11.20 %)"
     },
     "source_fact:f523adb73340759ad9828876": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
@@ -265125,31 +266290,29 @@
     "source_fact:fa7719f02ac04f621e6f2413": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
       "lanes": {
-        "live": "2026-10-08T01:58:01+09:00"
+        "live": "2026-10-08T18:24:19+09:00"
       },
-      "last_seen_kst": "2026-10-08T01:58:01+09:00",
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
       "link": "https://www.hankyung.com/article/202610079499i",
       "source": "한국경제",
-      "source_body_digest": "e930a8c037174af9dace28adb85106cf30d7a646ce47a850315187afe6669c25",
+      "source_body_digest": "c2e4cf863c2d33a6e6e7cdd5cfc7ae6afb7736b552a507e5f156e014543b716e",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:afde99fd798d448f711c1da2d2282b087c2d2f16e952d282200abeddebcab03c",
+      "source_fact_identity": "source_facts:v1:cb1e45d72307f6d4789fdea5ff8eb18c8e432af0932453d2889f60cd6fa6622b",
       "source_fact_keys": [
-        "source_fact:v1:1d2f26068ae7b406e00541dec6e28346e1b189fc03f2b532990c4d389e584b9f",
+        "source_fact:v1:47195c9854b7bfd137574f0faa5831a9481efc335dc9914df2de4fbe5b936b4d",
         "source_fact:v1:4829decb390d98609d2aa5109638a29e0efad4ff3b37425c581bd01d4952511b",
         "source_fact:v1:521eb2b1c6a2f34f9297728ab3bec102b402a6ba4c9e2722c9a53bec1254dfd3",
-        "source_fact:v1:56cb3d63397e680114b46dbe1851826013bb603124a5b9a6d014123a03c4d607",
-        "source_fact:v1:66b665b0ce8531fa68fb1cf817b35a9670e125bd8d6477bf2fdea892e9480dca",
         "source_fact:v1:6ac2e4a60f97e2816fdb1da0bacdd46845977484b4c6bcd47b59a62224a69bb1",
-        "source_fact:v1:7488fd21a3faf1f58f050c207241be29891484cf1f29c7f017ecce63b61adbdf",
-        "source_fact:v1:7b6d19567315890753136fa6724326c8ca96caa4c0106522c2ca3f1e70f62115",
-        "source_fact:v1:a3919271d9e53c7131c4f02692c6cbc9bd7f24dfafec1949e3a3f49da8fc2e8d",
+        "source_fact:v1:75fb5b638048f526d406bb2c19da59d9b121dd0051508e73d336e39d20fa8aad",
         "source_fact:v1:c1c424c7c802313bba7c452a147475bee63abc3d883f3d58f80bf5ad6a49adb9",
+        "source_fact:v1:dcffe4b737b02edc7976617d8df65f51e02f0f9795305022cea287b670131939",
         "source_fact:v1:eb3cc25ecf4834003020c0beedd2c2bec31e257bbc7348d0dde3a582a9e424b0",
+        "source_fact:v1:ec053acafc9065566cacdd338e09217902b26a819900fed90033a6aa23ad70dc",
         "source_fact:v1:f42810715e1e691b034f6491d644d86ca62044625c7a7ddcf3c0798a73026025"
       ],
       "source_published_kst": "2026-10-07T22:11+09:00",
       "source_title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매",
-      "telegram_core_fact": "10년 만기 국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
+      "telegram_core_fact": "10년 만기 미국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
       "title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매"
     },
     "source_fact:fa81f487893ae54fa3608f56": {
@@ -272211,6 +273374,23 @@
       "source_event_identity": "",
       "title": "가드포스 AI, 40대1 액면병합 추진…복수의결권 도입도"
     },
+    "title:16002be16336d1ef7863adc1": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610080880b",
+      "source": "한국경제",
+      "source_body_digest": "c449d828f539172ebe67bec432b5d7b47922a655e57e40653632a50191a3be23",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T13:28+09:00",
+      "source_title": "대우건설, 정비사업 확대하고 데이터센터 전담팀 신설",
+      "telegram_core_fact": "인공지능(AI) 시대의 새로운 성장동력으로 데이터센터사업팀도 신설한다.",
+      "title": "대우건설, 정비사업 확대하고 데이터센터 전담팀 신설"
+    },
     "title:1646056f18c4e4139dbe2d17": {
       "first_seen_kst": "2026-10-07T10:04:59+09:00",
       "lanes": {
@@ -273037,31 +274217,29 @@
     "title:1a649bd88db91bd6c0cb2ae6": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
       "lanes": {
-        "live": "2026-10-08T01:58:01+09:00"
+        "live": "2026-10-08T18:24:19+09:00"
       },
-      "last_seen_kst": "2026-10-08T01:58:01+09:00",
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
       "link": "https://www.hankyung.com/article/202610079499i",
       "source": "한국경제",
-      "source_body_digest": "e930a8c037174af9dace28adb85106cf30d7a646ce47a850315187afe6669c25",
+      "source_body_digest": "c2e4cf863c2d33a6e6e7cdd5cfc7ae6afb7736b552a507e5f156e014543b716e",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:afde99fd798d448f711c1da2d2282b087c2d2f16e952d282200abeddebcab03c",
+      "source_fact_identity": "source_facts:v1:cb1e45d72307f6d4789fdea5ff8eb18c8e432af0932453d2889f60cd6fa6622b",
       "source_fact_keys": [
-        "source_fact:v1:1d2f26068ae7b406e00541dec6e28346e1b189fc03f2b532990c4d389e584b9f",
+        "source_fact:v1:47195c9854b7bfd137574f0faa5831a9481efc335dc9914df2de4fbe5b936b4d",
         "source_fact:v1:4829decb390d98609d2aa5109638a29e0efad4ff3b37425c581bd01d4952511b",
         "source_fact:v1:521eb2b1c6a2f34f9297728ab3bec102b402a6ba4c9e2722c9a53bec1254dfd3",
-        "source_fact:v1:56cb3d63397e680114b46dbe1851826013bb603124a5b9a6d014123a03c4d607",
-        "source_fact:v1:66b665b0ce8531fa68fb1cf817b35a9670e125bd8d6477bf2fdea892e9480dca",
         "source_fact:v1:6ac2e4a60f97e2816fdb1da0bacdd46845977484b4c6bcd47b59a62224a69bb1",
-        "source_fact:v1:7488fd21a3faf1f58f050c207241be29891484cf1f29c7f017ecce63b61adbdf",
-        "source_fact:v1:7b6d19567315890753136fa6724326c8ca96caa4c0106522c2ca3f1e70f62115",
-        "source_fact:v1:a3919271d9e53c7131c4f02692c6cbc9bd7f24dfafec1949e3a3f49da8fc2e8d",
+        "source_fact:v1:75fb5b638048f526d406bb2c19da59d9b121dd0051508e73d336e39d20fa8aad",
         "source_fact:v1:c1c424c7c802313bba7c452a147475bee63abc3d883f3d58f80bf5ad6a49adb9",
+        "source_fact:v1:dcffe4b737b02edc7976617d8df65f51e02f0f9795305022cea287b670131939",
         "source_fact:v1:eb3cc25ecf4834003020c0beedd2c2bec31e257bbc7348d0dde3a582a9e424b0",
+        "source_fact:v1:ec053acafc9065566cacdd338e09217902b26a819900fed90033a6aa23ad70dc",
         "source_fact:v1:f42810715e1e691b034f6491d644d86ca62044625c7a7ddcf3c0798a73026025"
       ],
       "source_published_kst": "2026-10-07T22:11+09:00",
       "source_title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매",
-      "telegram_core_fact": "10년 만기 국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
+      "telegram_core_fact": "10년 만기 미국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
       "title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매"
     },
     "title:1a914bd7b6e7c965c2728fbe": {
@@ -273087,6 +274265,31 @@
       ],
       "source_published_kst": "2026-10-07T10:08+09:00",
       "title": "365mc·GC녹십자웰빙, 국소지방 신약·GLP-1 건기식 공동개발"
+    },
+    "title:1a977ded4877709b24616959": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04742886645610952",
+      "source": "이데일리",
+      "source_body_digest": "6968e3e9552f837adb1d90f2afe41242cb7ecadd7245db79e7cd7a45973833bd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:443c8df68bb6984036e0214f8a27254cf2ac4681e73fae8a192f87535b3f10d5",
+      "source_fact_keys": [
+        "source_fact:v1:16c572f17b64081da778d41d2eb6127ee865e2b0e858a1dcfd382bcc0356c48a",
+        "source_fact:v1:353374f9336c214b51b8ec00d75f7fa84f02e046baece518365b1baf7dd19d37",
+        "source_fact:v1:94289e16338d8739e51cb5f9a57184dec03f6d93d038b9be4f5aff884966d7e9",
+        "source_fact:v1:a6ec24e037b302f44c856a77dcb4bb31710bb81f3f88442fdbdf4c0ac0b96eaa",
+        "source_fact:v1:ac5acbd335e7bb6e9288ee0798fd2a9ae66fef2ee7101c314e955fe23dd28427",
+        "source_fact:v1:b92f1924553545da5fd38bda75aa91f9887839c071bfb51e2b6b4e857e03e759",
+        "source_fact:v1:bc7fa1422d648000b2f777609a8141af3b28738cc8d0bc39f4fcc2bd80aa6cbf"
+      ],
+      "source_published_kst": "2026-10-08T16:31+09:00",
+      "source_title": "AI 반도체 얼마나 잘 팔리길래…TSMC, 분기 매출 62조원 '사상 최대'",
+      "telegram_core_fact": "세계 최대 파운드리(반도체 위탁생산) 업체인 대만 TSMC가 인공지능(AI) 반도체 수요 급증에 힘입어 사상 최대 분기 매출을 기록했다.",
+      "title": "AI 반도체 얼마나 잘 팔리길래…TSMC, 분기 매출 62조원 '사상 최대'"
     },
     "title:1aa07593611e9b5f233d28f6": {
       "first_seen_kst": "2026-10-07T11:43:24+09:00",
@@ -274548,6 +275751,26 @@
       "link": "https://www.yna.co.kr/view/MYH20261001015000038",
       "source": "연합뉴스",
       "title": "트럼프 \"알래스카 LNG 韓투자\" 대못…공식문서엔 조건부 | 연합뉴스"
+    },
+    "title:23b050e5cb633729ed1978fc": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.fnnews.com/news/202610081336468279",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "84f1f899e142df20b8f4390294c1159f67e27f606b0f285b62e225f6e1c2088d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d7bba5b873cf86468b3d93fb63b11739eaad06c7388b830ecc11961991cd504",
+      "source_fact_keys": [
+        "source_fact:v1:56606f77e39c7badeadb223e7ac19f722f88b8cd65968f049800c1e0e2055100",
+        "source_fact:v1:d4c0ff3585f05d5cafe2c2864200dbcc1f202b4fdb8bea851ea106f23696bc18"
+      ],
+      "source_published_kst": "2026-10-08T13:36+09:00",
+      "source_title": "삼성전자, 영업이익 107조원 돌파에도 무덤덤… K-반도체 저평가 흐름 이어지나",
+      "telegram_core_fact": "삼성전자가 3분기 100조원이 넘는 영업이익을 기록하며 깜짝 실적을 냈으나 외국인 투자자들의 매도세와 옵션 만기일 영향이 겹쳐 주가는 지루한 움직임을 보였다.",
+      "title": "삼성전자, 영업이익 107조원 돌파에도 무덤덤… K-반도체 저평가 흐름 이어지나"
     },
     "title:23c857c44f3ed94bec7a88ae": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
@@ -295039,6 +296262,27 @@
       "source": "매일경제",
       "title": "콜플랜트 홀딩스, 광컴퓨팅 기업 라이트솔버 인수..HPC 시장 진출"
     },
+    "title:93e23516d92152aa097fd687": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=04152486645610952&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "ea6511024acf60bb5fd52e4be8ff7ce1264befb41e8e33d4e45e8849565e1410",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bc59f69f9dd80e200116671e012b4a12f9fd774c4f8d7671fe75805d03f12fc5",
+      "source_fact_keys": [
+        "source_fact:v1:1f03e76d9cf4b2b0c2dda1f556aa1e3e828491ddd865fd7bfc83912fff6a8796",
+        "source_fact:v1:8a4be2c641108cfb71bbd9ab7a0bf4085066e773e4771472ef39a073fca17d1d",
+        "source_fact:v1:e07118c317b14c52f656657011bb6af838579b6b683b837da93e13a9b6e7053d"
+      ],
+      "source_published_kst": "2026-10-08T05:27+09:00",
+      "source_title": "삼성전자 반도체서만 영업익 110조…HBM4로 내년도 질주",
+      "telegram_core_fact": "삼성전자가 올해 3분기 107조4000억원에 달하는 영업이익을 잠정 기록한 가운데 반도체 부문에서만 110조원에 달하는 이익을 거뒀을 것으로 추정된다.",
+      "title": "삼성전자 반도체서만 영업익 110조…HBM4로 내년도 질주"
+    },
     "title:93ea893810d9b14331d98525": {
       "first_seen_kst": "2026-10-06T15:44:02+09:00",
       "lanes": {
@@ -304964,6 +306208,31 @@
       "telegram_core_fact": "최근 반도체 특수로 경기 동남권 주택 가격이 가파르게 오르고 있는 만큼 신규 분양 단지에 대한 수요자 관심이 이어질 것으로 전망된다.",
       "title": "‘청약 불패’ 성남·과천·동탄서 신규 분양 잇따라"
     },
+    "title:ce2143adea32d569251f8bc1": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634044",
+      "source": "이투데이",
+      "source_body_digest": "fa8eec043d3fba10fb9aa9446960854741b7ac5d2e14f95523a5473e9df77de0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee2f0a9c30dd2348ad4be736d6a0c9462a1da2bde6b93a3eade8d0fec013aaa4",
+      "source_fact_keys": [
+        "source_fact:v1:56a2fe0721429082873e6123b06a8088fd5c680cff44ca7e7b37d08853ba4096",
+        "source_fact:v1:6d86857c6dd6f3256fb8b7dcaeceb7606c93c537e2304aab2b26a957d1243fa9",
+        "source_fact:v1:99995af031b1c5a586ce3bb13265383cab3cc9457cb36d4197be737b1789782d",
+        "source_fact:v1:9bd8f1dfa1460eccbef380e2fae2ee5d2988688d01040f05e638a23e4e9b6dea",
+        "source_fact:v1:c6cf205dc1c56077c8d55980c45ef81fb41638a629be01fc174f4612af130fac",
+        "source_fact:v1:d4ffa0b28fcb090eea1c64bcf74a57c792904912f42137eed93a800ca096dde5",
+        "source_fact:v1:e65a3e2277afe6a68a0c5719340ca786cfeae77720208e6984ce474b72c879f8"
+      ],
+      "source_published_kst": "2026-10-08T16:44+09:00",
+      "source_title": "HDC, 771억 규모 자사주 소각 결정…주주환원 강화",
+      "telegram_core_fact": "HDC가 배당 확대에 이어 771억 원 자기주식(자사주)을 소각하며 주주환원 강화에 나선다.",
+      "title": "HDC, 771억 규모 자사주 소각 결정…주주환원 강화"
+    },
     "title:ce2715be9653fd123a25ea86": {
       "first_seen_kst": "2026-10-02T07:42:52+09:00",
       "lanes": {
@@ -306088,6 +307357,27 @@
       ],
       "source_published_kst": "2026-10-06T14:19+09:00",
       "title": "비주택 용도변경 공급 ‘순항’…LH, 매입 신청 2125가구로 목표 초과"
+    },
+    "title:d418a37f307c353e6c0332d2": {
+      "first_seen_kst": "2026-10-08T18:24:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T18:24:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T18:24:19+09:00",
+      "link": "https://www.hankyung.com/article/202610081009L",
+      "source": "한국경제",
+      "source_body_digest": "3c43107ddf16e290a3cd376d3f533fc7a0ffad6f52b25cb31e5d7e16c91e1bb9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:26ba1175062f2d79f9ae2e00948c3fd6c39ce132e407c84dc3c60f8c8728f7da",
+      "source_fact_keys": [
+        "source_fact:v1:aa78be0de9c5b7883c9224d0095ff62ecbe05d2d49c8a3a199f8c78c5aa72c04",
+        "source_fact:v1:b106ceeec51cf3a056fba4ccc2037de597c9cbc58748c25dfd152d4b2e62b021",
+        "source_fact:v1:b92e486a5ea1c2822ff2e9df658f0156075fff3442da7bc34dd88715a0f57a0e"
+      ],
+      "source_published_kst": "2026-10-08T13:53+09:00",
+      "source_title": "가온칩스 수주공시 - 주문형 반도체 설계 개발 76.7억원 (매출액대비 11.20 %)",
+      "telegram_core_fact": "가온칩스(399720)는 주문형 반도체 설계 개발에 관한 단일판매ㆍ공급계약체결 을 08일에 공시했다. 계약금액은 76.7억원이다.",
+      "title": "가온칩스 수주공시 - 주문형 반도체 설계 개발 76.7억원 (매출액대비 11.20 %)"
     },
     "title:d43b4d9276d7b8bda0fb0226": {
       "first_seen_kst": "2026-10-06T10:04:04+09:00",
@@ -313754,5 +315044,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-08T18:02:43+09:00"
+  "updated_at_kst": "2026-10-08T18:24:19+09:00"
 }
