@@ -80,6 +80,7 @@ CPU_STRUCTURE_BASELINE = {
         "market_2030_secondary_confirmed": True,
         "market_2030_source_kind": "BNP Paribas 애널리스트 2030년 245bn · Yahoo/GuruFocus 및 24/7 Wall St. 2차 보도 교차확인 · 리포트 원문 미열람",
         "market_2030_crosscheck_url": "https://247wallst.com/investing/2026/10/06/bnp-paribas-just-hiked-amds-price-target-60-to-960/",
+        "market_2030_source_url": "https://finance.yahoo.com/markets/stocks/articles/bnp-paribas-revamps-amd-stock-191959150.html",
         "market_2025_user_claim_usd_bn": 30.0,
         "market_2025_official_confirmed": False,
         "amd_target_usd": 960.0,
@@ -722,8 +723,13 @@ def cpu_structure_block(state: dict, fx: float, changes: list[str]) -> str:
         "• 후속 확인: CPU 발주·소켓·실출하→DDR5 RDIMM·서버용 FC-BGA/ABF·eSSD 주문 연결"
         + " · 2nm 수율·ABF·전원·냉각 병목 및 가상화 최적화에 따른 수요 미달 점검",
         '• <a href="' + html.escape(bp["source_url"], quote=True) + '">BNP 공식 공개자료</a>'
-        + ' · <a href="' + html.escape(ba["source_url"], quote=True) + '">BNP 2차 보도 1</a>'
-        + ' · <a href="' + html.escape(str(ba.get("market_2030_crosscheck_url") or ba["source_url"]), quote=True) + '">BNP 2차 보도 2</a>'
+        + ' · <a href="' + html.escape(str(ba.get("market_2030_source_url") or ba["source_url"]), quote=True) + '">BNP CPU 시장 전망 보도</a>'
+        + ' · <a href="' + html.escape(str(ba.get("market_2030_crosscheck_url") or ba["source_url"]), quote=True) + '">BNP 전망 교차확인</a>'
+        + ' · <a href="' + html.escape(str(ba.get("target_source_url") or ba["source_url"]), quote=True) + '">AMD 목표주가 변경</a>'
+        + (
+            ' · <a href="' + html.escape(str(ba["arm_target_source_url"]), quote=True) + '">Arm 목표주가 변경</a>'
+            if ba.get("arm_target_confirmed") and ba.get("arm_target_source_url") else ""
+        )
         + ' · <a href="' + html.escape(di["per_accelerator_source_url"], quote=True) + '">DIGITIMES 가속기당 전망</a>'
         + ' · <a href="' + html.escape(di["shipments_source_url"], quote=True) + '">DIGITIMES 출하 전망</a>'
         + ' · <a href="' + html.escape(di["cpu_xpu_ratio_source_url"], quote=True) + '">DIGITIMES 연구 1:2.3</a>'
@@ -1018,11 +1024,20 @@ def main() -> None:
         changes = cpu_structure_changes(structure_latest.get(provider) or {}, new_metrics, provider)
         if not changes:
             continue
-        if provider == "bnpp_analyst" and "amd_target_usd" in new_metrics:
-            structure_latest[provider]["amd_prior_target_usd"] = structure_latest[provider]["amd_target_usd"]
+        if provider == "bnpp_analyst":
+            # Independent fields must keep independent evidence. An Arm target
+            # article cannot replace the BNP CPU TAM or AMD target citations.
+            if "amd_target_usd" in new_metrics:
+                structure_latest[provider]["amd_prior_target_usd"] = structure_latest[provider]["amd_target_usd"]
+                structure_latest[provider]["target_source_url"] = entry["url"]
+            if "market_2030_usd_bn" in new_metrics:
+                structure_latest[provider]["market_2030_source_url"] = entry["url"]
+            if "arm_target_usd" in new_metrics:
+                structure_latest[provider]["arm_target_source_url"] = entry["url"]
         structure_latest[provider].update(new_metrics)
         structure_latest[provider]["as_of"] = entry["as_of"]
-        structure_latest[provider]["source_url"] = entry["url"]
+        if provider != "bnpp_analyst":
+            structure_latest[provider]["source_url"] = entry["url"]
         if provider == "digitimes" and "cpu_xpu_ratio_2027" in new_metrics:
             # Tie revised values to the *new* original report, not to the
             # fixed 2026-10-05 headline that seeded the first ratio.
