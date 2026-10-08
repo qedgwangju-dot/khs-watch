@@ -150,10 +150,13 @@ OFFICIAL_VALIDATION_DOMAINS = (
     "supermicro.com",
 )
 
+# A CPU product mention is not evidence of demand. Only actions such as
+# customer orders, deployment, capacity commitments or validation qualify.
 VALIDATION_TERMS = (
-    "order book", "orders", "shipment", "shipments", "volume", "revenue", "capacity",
-    "deploy", "deployment", "deployments", "validation", "validating", "long-term agreement",
-    "lta", "server cpu", "epyc", "xeon", "cloud",
+    "order book", "orders", "shipment", "shipments", "revenue",
+    "deployed", "deployment", "deployments", "validation", "validating",
+    "long-term agreement", "supply agreement", "purchase", "contract",
+    "capacity expansion", "production ramp", "customer qualification",
 )
 
 
