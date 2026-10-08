@@ -70,6 +70,30 @@ jobs:
           python scripts/test_kospi_shock_enrichment.py
           python scripts/test_kospi_flow_attribution_strict.py
 
+      - name: Verify failure notifier syntax and independent handoff
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import yaml
+          ci=yaml.safe_load(Path(".github/workflows/kospi-derivatives-flow-ls-ci.yml").read_text(encoding="utf-8"))
+          jobs=ci["jobs"]
+          alert=jobs["daily_failure_alert"]
+          producer=jobs["handoff_producer"]
+          consumer=jobs["handoff_consumer"]
+          assert "needs" not in producer, "handoff producer must execute despite test failure"
+          assert consumer.get("needs")=="handoff_producer", "handoff consumer dependency changed"
+          assert alert.get("needs")==["test","handoff_producer","handoff_consumer"]
+          assert "GH_TOKEN" in alert.get("env",{}), "failure notifier cannot fetch failed step"
+          run=alert["steps"][0]["run"]
+          prefix="python - <<'PY'\n"
+          assert prefix in run and run.rstrip().endswith("\nPY"), "failure notifier python heredoc missing"
+          script=run.split(prefix,1)[1].rsplit("\nPY",1)[0]
+          compile(script,"ci_failure_notifier_embedded.py","exec")
+          assert "CI 실패는 실시간 시장감시 중단" in script
+          assert "실패 단계:" in script and "message_id" in script
+          print("ci_failure_alert_syntax_valid=true independent_handoff=true")
+          PY
+
       - name: Verify XKRX session calendar
         run: |
           PYTHONPATH=scripts python - <<'PY'
