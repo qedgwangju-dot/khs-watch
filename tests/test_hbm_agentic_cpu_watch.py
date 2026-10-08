@@ -359,6 +359,19 @@ class AgenticCpuStructureTests(unittest.TestCase):
         self.assertEqual(first["next"]["cpu_structure"]["digitimes"]["cpu_xpu_ratio_2027"], 2.3)
         second = run(first["next"])
         self.assertFalse(second["alerted"])
+        self.assertTrue(first["next"]["cpu_structure"]["cpu_xpu_ratio_alert_sent"])
+
+        # A prior no-alert scan may already have persisted the number before
+        # the one-time formatter was deployed. Its presence is not an ACK.
+        already_seeded = {
+            **w.BASELINE,
+            "cpu_structure_track_version": w.CPU_STRUCTURE_TRACK_VERSION,
+            "cpu_structure": w.CPU_STRUCTURE_BASELINE,
+        }
+        recovered = run(already_seeded)
+        self.assertTrue(recovered["alerted"])
+        self.assertTrue(recovered["next"]["cpu_structure"]["cpu_xpu_ratio_alert_sent"])
+        self.assertFalse(run(recovered["next"])["alerted"])
 
     def test_one_shot_cpu_alert_has_separate_official_and_broker_provenance(self):
         a = w.cpu_structure_block(w.CPU_STRUCTURE_BASELINE, 1400.0, [])
