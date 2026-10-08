@@ -186,6 +186,11 @@ TESLA_TOUCH_SENSOR_TOPIC = re.compile(
     r'촉각|센서|유연\s*피부|전자\s*피부|tactile|touch|sensor|compliant|robot\s*skin',
     re.I,
 )
+TESLA_TOUCH_PATENT_PUBLICATION_MARKER = re.compile(
+    r'published|publication|공개|공표|'
+    r'(?:Oct(?:ober)?\s*8,?\s*2026|2026[-./]10[-./]08|2026년\s*10월\s*8일)',
+    re.I,
+)
 TESLA_TOUCH_PATENT_GRANT = re.compile(
     r'\bpatent\s+(?:was\s+|has\s+been\s+)?granted\b|'
     r'\bpatent\s+issued\b|특허\s*등록\s*완료|특허\s*등록\s*확정',
@@ -215,7 +220,9 @@ def _tesla_touch_patent_stage(text: str, source: str = '') -> str:
             return 'official_grant'
         # Media speculation that A1 has been granted is not another alert.
         return 'unverified_grant'
-    return 'application_publication'
+    if TESLA_TOUCH_PATENT_PUBLICATION_MARKER.search(text):
+        return 'application_publication'
+    return 'background'
 
 
 def _tesla_touch_patent_recovery() -> list[dict]:
