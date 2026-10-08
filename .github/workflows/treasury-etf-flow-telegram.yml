@@ -1,9 +1,6 @@
 name: Treasury ETF Fund Flow Telegram
 
 on:
-  push:
-    paths:
-      - ".github/workflows/treasury-etf-flow-telegram.yml"
   schedule:
     - cron: "30,35,40 8 * * *"
       timezone: "Asia/Seoul"
@@ -13,6 +10,12 @@ on:
     types:
       - completed
   workflow_dispatch:
+    inputs:
+      validate_only:
+        description: "Read official sources and validate the report without sending Telegram"
+        required: false
+        default: true
+        type: boolean
 
 permissions:
   contents: write
@@ -42,7 +45,7 @@ jobs:
       TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
-      TREASURY_REPORT_VALIDATE_ONLY: ${{ github.event_name == 'push' && '1' || '0' }}
+      TREASURY_REPORT_VALIDATE_ONLY: ${{ github.event_name == 'workflow_dispatch' && inputs.validate_only && '1' || '0' }}
 
     steps:
       - name: Checkout latest delivery state
