@@ -324,6 +324,7 @@ def _merge_group(items):
         seen.add(key)
         evidence.append({"source": source, "url": url, "published": _norm(it.get("published"))})
     level = _verification_level(ordered)
+    evidence.sort(key=lambda ev: (1 if "news.google.com" in str(ev.get("url") or "") else 0))
     first["evidence_count"] = len(evidence)
     first["evidence_sources"] = evidence[:5]
     first["verification_level"] = level
@@ -331,6 +332,21 @@ def _merge_group(items):
     first["source_status"] = _verification_status(level)
     first["stages"] = merged_stages
     first["stage_labels"] = merged_labels
+    # 방문 장소에서 전력·용수를 논의할 예정이라는 내용은
+    # 전력 공급량·용수 확보 상태 자체가 바뀌었다는 뜻이 아니다.
+    executive_visit = any(_executive_visit_signal(i) for i in ordered)
+    if executive_visit:
+        first["stages"] = ["6_산단투자_기업일정"]
+        first["stage_labels"] = ["⑥ 산단·기업투자·팹 일정"]
+        completed = any(_executive_visit_signal(i) >= 3 for i in ordered)
+        first["impact"] = (
+            "SK그룹 회장 광주 군공항 현장 방문 완료 확인"
+            if completed else "SK그룹 회장 현장 방문 예정·투자계약은 별도 확인"
+        )
+        first["reason"] = (
+            "기존 SK하이닉스 사장단 검토 이후 회장 현장방문 단계로 진전. "
+            "군공항 부지·전력·용수·인허가 실제 협의 결과는 후속 확인"
+        )
     summary = _summarize_event(ordered)
     if summary:
         first["title"] = summary
