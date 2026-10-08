@@ -1369,8 +1369,10 @@ class Watch:
                 await asyncio.sleep(min(5.0, max(0.5, (poll_start_dt - now).total_seconds())))
                 continue
 
+            price_poll_ok = False
             try:
                 await asyncio.to_thread(self.poll_market_once)
+                price_poll_ok = True
                 last_poll_error = None
                 if self.raw.pop("last_price_poll_error", None):
                     self.raw["last_price_poll_recovered_at_kst"] = dt.datetime.now(KST).isoformat(timespec="seconds")
@@ -1379,7 +1381,12 @@ class Watch:
                 self.raw["last_price_poll_error"] = last_poll_error
                 self.raw["price_poll_failures_total"] = int(self.raw.get("price_poll_failures_total", 0)) + 1
 
-            await self.evaluate()
+            # 현재가 조회 실패 시 이전 가격으로 신규 급락 사건을 판정하지 않는다.
+            # 기존 마지막 틱은 상태 표시용으로만 유지하고, 새 가격이 들어왔을 때 평가를 재개한다.
+            if price_poll_ok:
+                await self.evaluate()
+            else:
+                self.raw["price_event_skipped_on_poll_failure"] = True
             self._checkpoint_handoff()
 
             # XKRX 실제 세션 기준으로만 stale 검사를 적용한다.
