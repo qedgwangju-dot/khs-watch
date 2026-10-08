@@ -860,13 +860,15 @@
   },
   "_delivery": {
     "id": "65c88a601a92bd54590b996b495d5fa39d51bb2a0348e6f7aa1aa22e1e51d101",
-    "status": "in_flight",
+    "status": "partial",
     "created_at_kst": "2026-10-08T16:51:51+09:00",
     "chunks": [
       "<b>🚨 HBM 하이브리드 본딩 · 삼성전자 vs SK하이닉스</b>\n조회: 2026-10-08 16:51 KST\n정정 안내: 기존 단일 인터뷰 보도 알림의 표시·링크·단계 이름 수정. 새 기술 진전 아님.\n<b>상태: 단일 익명 전문가 인터뷰 보도 · 회사 미확정</b>\n<b>■ 현재 제품과 미래 공정은 다릅니다</b>\n• SK하이닉스 12단 HBM4E 고객 샘플(2026-06-18): 공식 확인, 어드밴스드 MR-MUF 적용. 하이브리드 본딩 샘플로 계산 금지.\n• 삼성전자 HBM4E 고객 샘플: 공식 확인. 하이브리드 본딩을 적용한 고객 샘플인지 별도 공식 확인 필요.\n• SK하이닉스 16단용 하이브리드 본딩 기술적 가능성 설명(공식 IR)과 고객사로 전달된 완성 HBM 샘플은 서로 다릅니다.\n<b>■ 하이브리드 본딩 고객 샘플 검증</b>\n• SK하이닉스: 샘플 제작 지연 주장(익명 인터뷰) · 회사 공식 고객 샘플 확인: 미확인\n• 삼성전자: 고객에게 하이브리드 본딩 HBM 샘플 발송 주장(같은 인터뷰) · 회사 공식 확인: 미확인\n• 공식 추적 단계: SK하이닉스 기술 가능성 확인 / 삼성전자 기술 공개·시연\n• 원보도: Damnang 인터뷰 1곳 → TechPowerUp 재보도. 독립 검증 2곳 아님.\n<b>■ 현재 돈 버는 사업과 실적</b>\n• Counterpoint 2026년 2분기 HBM 매출점유율: SK하이닉스 50% / 삼성전자 33%. 이는 차세대 본딩 성숙도를 나타내는 값이 아닙니다.\n• 하이브리드 본딩 개발 지연이 기존 MR-MUF 기반 HBM 출하 중단 또는 즉시 매출 하락을 뜻하지 않습니다.\n<b>■ 공정 병목·실패 경로</b>\n• 정렬·표면 오염·구리 단차 → 접합 불량 → 다층 누적수율 저하 → 고온 동작 검사·신뢰성 검증 지연 → 고객 승인 연기.\n• 민감도 예시(실측 아님): 각 층 접합 양품률 99%이고 16개 독립 접합을 가정하면 0.99^16≈85.1%. 실제 수율·접합 횟수는 미공개.\n• 위험 관찰 기간: 향후 6~12개월 고객 샘플·인증·양산 전환. MR-MUF 개선은 대안이며 하이브리드 본딩 채택 시점은 고객 결정에 달립니다.\n<b>■ 다음 새 알림</b>\n• 공식 시제품 제작 → 고객 샘플 발송 → 고객 인증 완료 → 파일럿 → 양산을 분리해 추적.\n• 삼성전자/ SK하이닉스 실제 공식 발표, 장비 수주·공정시간·수율·고객 채택 변화만 단계 승격.\n• 원출처에 새로운 정보 없이 TechPowerUp 기사가 반복 인용되면 재전송하지 않음.\n출처:\n• Damnang: <a href=\"https://www.damnang.com/p/the-next-memory-race-will-not-be\">원문 보기</a>\n• TechPowerUp: <a href=\"https://www.techpowerup.com/353458/sk-hynix-reportedly-faces-difficulties-in-hbm-hybrid-bonding-trailing-samsung\">원문 보기</a>\n• SK하이닉스 공식: <a href=\"https://news.skhynix.com/en/sk-hynix-ships-samples-of-12-layer-next-gen-hbm4e-2/\">원문 보기</a>\n• 삼성전자 공식: <a href=\"https://news.samsung.com/kr/%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90-fms-2026%EC%84%9C-%EC%B0%A8%EC%84%B8%EB%8C%80-3d-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EB%B9%84%EC%A0%84-%EC%A0%9C%EC%8B%9C\">원문 보기</a>\n• Counterpoint: <a href=\"https://counterpointresearch.com/ko/insights/global-hbm-market-share-q2-2026\">원문 보기</a>"
     ],
-    "next_chunk": 0,
-    "message_ids": [],
+    "next_chunk": 1,
+    "message_ids": [
+      265
+    ],
     "candidate": {
       "updated_at_kst": "2026-10-08T16:51:08+09:00",
       "seen_ids": [
