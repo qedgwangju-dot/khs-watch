@@ -2587,7 +2587,7 @@ assert pg == 'tesla_touch_patent' and ps >= 11, (pg, ps, pc)
 assert pc == '테슬라 촉각센서 · 미국 특허출원 공개 A1', pc
 assert 'B2' in base.risk(pc) and '특허등록' in base.risk(pc), base.risk(pc)
 assert '2025-09-11' in base.meaning(pc), base.meaning(pc)
-assert '수율' in base.risk(pc), base.risk(pc)
+assert any(t in base.risk(pc) for t in ('양품률', '수율')), base.risk(pc)
 
 tesla_patent_rewrite = make(
     "테슬라 US20260310299A1 촉각 로봇 피부 제조기술 공개",
