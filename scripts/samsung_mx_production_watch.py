@@ -293,6 +293,13 @@ def _quarter_volume_m(blob: str, date: dt.datetime) -> tuple[float, str] | None:
         "apple", "iphone", "oppo", "vivo", "xiaomi", "google", "pixel",
         "huawei", "애플", "아이폰", "샤오미", "화웨이",
     )
+    # The publisher may compare two brands within one RSS paragraph.
+    # The last company named immediately before "Q4" owns that number.
+    before_q4 = low[max(0, q4.start()-180):q4.start()]
+    last_samsung = max((before_q4.rfind(x) for x in MX_WORDS), default=-1)
+    last_other = max((before_q4.rfind(x) for x in other_oems), default=-1)
+    if last_other > last_samsung:
+        return None
     if any(x in segment for x in other_oems) and not any(x in segment for x in MX_WORDS):
         return None
     values: list[float] = []
