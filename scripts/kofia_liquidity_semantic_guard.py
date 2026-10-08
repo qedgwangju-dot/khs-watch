@@ -123,7 +123,9 @@ def validate(text, state):
     d1 = direction(mmf["d1"], mmf["value"])
     d5 = direction(mmf["d5"], mmf["value"])
     if d1 == "증가":
-        expected = "당일에도 MMF가 증가" if d5 == "증가" else "당일 MMF가 증가했으나"
+        expected = ("당일에도 MMF가 증가" if d5 == "증가" else
+                    "당일 MMF가 증가했으나" if d5 == "감소" else
+                    "당일 MMF가 증가했지만")
         forbidden = ("당일 MMF는 감소", "당일 MMF 급감", "당일 MMF 감소", "당일 MMF 유출")
     elif d1 == "감소":
         expected = "당일 MMF는 감소" if d5 != "감소" else "당일 MMF도 감소"
