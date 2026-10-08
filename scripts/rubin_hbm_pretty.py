@@ -220,6 +220,8 @@ def format_hybrid_alert(original: str) -> str:
         "SK하이닉스 공식": ("news.skhynix.com", "www.skhynix.com"),
         "삼성전자 공식": ("news.samsung.com",),
         "Counterpoint": ("counterpointresearch.com", "www.counterpointresearch.com"),
+        "변화 공식원문": ("news.skhynix.com", "news.skhynix.co.kr", "www.skhynix.com",
+                           "news.samsung.com", "semiconductor.samsung.com", "www.samsung.com"),
     }
     out: list[str] = []
     for raw in original.splitlines():
@@ -228,7 +230,7 @@ def format_hybrid_alert(original: str) -> str:
             out.append("")
             continue
         m = re.fullmatch(
-            r"(Damnang|TechPowerUp|SK하이닉스 공식|삼성전자 공식|Counterpoint)\s+(https?://\S+)",
+            r"(Damnang|TechPowerUp|SK하이닉스 공식|삼성전자 공식|Counterpoint|변화 공식원문)\s+(https?://\S+)",
             line,
         )
         if m:
