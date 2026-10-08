@@ -1,6 +1,9 @@
 name: Treasury ETF Fund Flow Telegram
 
 on:
+  push:
+    paths:
+      - ".github/workflows/treasury-etf-flow-telegram.yml"
   schedule:
     - cron: "30,35,40 8 * * *"
       timezone: "Asia/Seoul"
@@ -16,16 +19,30 @@ permissions:
 
 concurrency:
   group: treasury-etf-flow-telegram
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   monitor:
+    # Global Rates runs frequently; only start fallback checks during the Korean morning.
+    if: >-
+      ${{
+        github.event_name != 'workflow_run' ||
+        contains(github.event.workflow_run.created_at, 'T23:') ||
+        contains(github.event.workflow_run.created_at, 'T00:') ||
+        contains(github.event.workflow_run.created_at, 'T01:') ||
+        contains(github.event.workflow_run.created_at, 'T02:') ||
+        contains(github.event.workflow_run.created_at, 'T03:') ||
+        contains(github.event.workflow_run.created_at, 'T04:') ||
+        contains(github.event.workflow_run.created_at, 'T05:') ||
+        contains(github.event.workflow_run.created_at, 'T06:')
+      }}
     runs-on: ubuntu-latest
     timeout-minutes: 12
     env:
       TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
+      TREASURY_REPORT_VALIDATE_ONLY: ${{ github.event_name == 'push' && '1' || '0' }}
 
     steps:
       - name: Checkout
@@ -59,7 +76,27 @@ jobs:
           assert "HYG 자금유출 + OAS 일간 +5bp 이상" not in nxt, nxt
           alert = report._credit_alert_line("↑ 순유입 +$638.1M", sample)
           assert alert and "현재 신용경보:" in alert and "2026-10-01" in alert, alert
-          print("treasury_compact_invariants=ok")
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+          import treasury_credit_flow_watch_ishares as watch
+
+          test_state = {"last_delivery": {"treasury_date":"2026-10-07", "message_ids":[425], "bot_username":"khs8879887988798879_bot"}}
+          assert watch._us_latest_weekday(datetime(2026,10,8,11,0,tzinfo=ZoneInfo("Asia/Seoul"))) == "2026-10-07"
+          assert watch._delivery_complete_for_date(test_state,"2026-10-07")
+          assert not watch._delivery_complete_for_date(test_state,"2026-10-08")
+          valid = (
+              "전체 방향: 혼조·추가 확인\\n"
+              "차환: 12개월 $10.64T (원화 14,244조원) | Bills에 +75bp 비용\\n"
+              "자금흐름: 발행좌수 변화 × 해당일 NAV로 계산한 추정치"
+          )
+          report._validate_compact_report(valid, "혼조·추가 확인", 5.28, "269.1bp | 직전 대비 ↓ -9.9bp")
+          try:
+              report._validate_compact_report(valid + "\\nLQD OAS ↓ -0.0bp", "혼조·추가 확인", 5.28, "269.1bp")
+              raise AssertionError("signed-zero invariant did not fail")
+          except RuntimeError as exc:
+              assert "signed zero" in str(exc), str(exc)
+          assert "신규 돌파 아님" in report._jpm_30y_signal(5.67)
+          print("treasury_compact_invariants=ok and early_dedupe_guard=ok")
           PY
 
       - name: Validate exact Telegram bot route
