@@ -442,3 +442,20 @@ partial_msg = Watch.build_end(w_end, partial_end, 1350.0, 6950.0)
 assert "종료·반등 확인" in partial_msg, partial_msg
 assert "종료·복원 확인" not in partial_msg, partial_msg
 print("partial_rebound_label_regression=true")
+
+
+# 오전 감시 실행시간 만료(12:15)는 시장 장마감(15:30)이 아니다.
+# 진행 중 사건을 오후 artifact에 남겨 이어가고, 시장이 닫힌 경우에만
+# 장마감 확정 텔레그램을 발송하도록 강제한다.
+import datetime as _dt_close
+from zoneinfo import ZoneInfo as _ZoneInfo_close
+_close_kst = _ZoneInfo_close("Asia/Seoul")
+_real_close = _dt_close.datetime(2026, 10, 8, 15, 30, tzinfo=_close_kst)
+_noon = _dt_close.datetime(2026, 10, 8, 12, 15, tzinfo=_close_kst)
+_after = _dt_close.datetime(2026, 10, 8, 15, 32, tzinfo=_close_kst)
+assert not ks.should_finalize_market_close(_noon, _real_close, None)
+assert ks.should_finalize_market_close(_after, _real_close, None)
+assert not ks.should_finalize_market_close(_after, _real_close, 15)
+assert not ks.should_finalize_market_close(_after, None, None)
+assert "should_finalize_market_close(" in inspect.getsource(ks.Watch.run)
+print("noon_handoff_does_not_close_episode_regression=true")
