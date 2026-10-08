@@ -301,7 +301,7 @@ class AgenticCpuStructureTests(unittest.TestCase):
             "agentic_cpu_demand": {
                 **w.BASELINE,
                 "cpu_structure_track_version": w.CPU_STRUCTURE_TRACK_VERSION,
-                "cpu_structure": w.CPU_STRUCTURE_BASELINE,
+                "cpu_structure": {**w.CPU_STRUCTURE_BASELINE, "cpu_xpu_ratio_alert_sent": True},
             }
         }
         with (
