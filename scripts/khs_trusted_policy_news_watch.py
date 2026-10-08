@@ -1507,6 +1507,7 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
             "source": source_label,
             "published_kst": published.isoformat(timespec="seconds"),
             "priority": 0,
+            "official_direct_verified": bool(verified),
         })
         print(f"trusted_policy_news=official_direct_verified key={rule.key} title={title!r}")
     # Direct analyst/reporting pages are tracked separately from first-party FCC
@@ -3618,10 +3619,9 @@ def alert_confirmation_status(rule: StoryRule, items: list[dict]) -> tuple[str, 
     if (
         rule.key == "us_treasury_outbound_ai_robotics_enforcement"
         and any(
-            str(item.get("link") or "").lower().startswith("https://home.treasury.gov/news/press-releases/")
-            or str(item.get("source") or "").strip().lower() in {
-                "u.s. department of the treasury", "u.s. treasury", "us treasury"
-            }
+            item.get("official_direct_verified") is True
+            and str(item.get("link") or "").lower().rstrip("/")
+               == "https://home.treasury.gov/news/press-releases/sb0652"
             for item in items
         )
     ):
@@ -3751,9 +3751,11 @@ def _self_test_us_treasury_outbound_event_model() -> None:
         "link": "https://home.treasury.gov/news/press-releases/sb0652",
         "source": "U.S. Department of the Treasury",
         "published_kst": "2026-10-07T12:00:00+09:00",
+        "official_direct_verified": True,
     }
     replay = {
         **first,
+        "official_direct_verified": False,
         "title": "US issues first outbound investment fine over Chinese robotics AI deal",
         "source": "South China Morning Post",
         "link": "https://www.scmp.com/news/china/diplomacy/example",
@@ -3765,6 +3767,8 @@ def _self_test_us_treasury_outbound_event_model() -> None:
     assert story_event_fingerprint(rule, [first]) == story_event_fingerprint(rule, [replay])
     assert alert_confirmation_status(rule, [first])[0] == "공식 확인"
     assert alert_confirmation_status(rule, [replay])[0] == "공식 확인 전"
+    spoofed = {**replay, "source": "U.S. Department of the Treasury"}
+    assert alert_confirmation_status(rule, [spoofed])[0] == "공식 확인 전", "source labels alone are not official verification"
     profile = item_story_profile(rule, [first])
     assert profile and "수입금지·자산동결이 아닙니다" in str(profile["stage"])
     assert "2026년 7월" in str(profile["timeline"])
