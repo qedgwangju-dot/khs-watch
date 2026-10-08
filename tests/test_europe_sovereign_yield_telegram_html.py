@@ -60,7 +60,9 @@ class EuropeYieldTelegramHtmlTests(unittest.TestCase):
 
     def test_invalid_source_url_rejected(self):
         for url in ["javascript:alert(1)", "http://tradingeconomics.com/foo",
-                    "https://evil.example.com/foo"]:
+                    "https://evil.example.com/foo",
+                    "https://tradingeconomics.com.evil.example.net/fake",
+                    "https://tradingeconomics.com/italy?x=1\nInjected: yes"]:
             with self.assertRaises(ValueError):
                 render_line("• Italy 10Y Trading Economics 보조 시장자료: " + url)
 
