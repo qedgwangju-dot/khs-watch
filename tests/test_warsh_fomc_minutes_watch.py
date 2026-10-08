@@ -142,8 +142,8 @@ class TestMinutes(unittest.TestCase):
                               'https://www.federalreserve.gov/newsevents/pressreleases/monetary20261007a.htm',
                               '2026-10-07',sig,upgraded=True)
         for txt in ('연말 경로','대차대조표','물가 · 공급과 수요','고용 · 전체와 AI',
-                    '성장 · AI','저·중소득층','시장보고','근원 PCE','위원회','2~10년',
-                    '사이버보안','10월 27~28일'):
+                    '성장 · AI','저·중소득층','시장보고','근원 PCE','2~10년',
+                    '사이버보안','10월 27~28일','FOMC 표결'):
             self.assertIn(txt,msg)
         self.assertNotIn('Many participants',msg)
         self.assertNotIn('A majority of participants',msg)
