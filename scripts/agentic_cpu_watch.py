@@ -635,8 +635,10 @@ def discover_cpu_structure(now: datetime, previous: dict) -> list[dict]:
             fetched += 1
             body = article_text(url)
             provider, obs = cpu_structure_observation(item.get("title") or "", body or item.get("description") or "", url)
-            seen.add(url)
+            # An inaccessible paywalled article or transient parser failure is
+            # not evidence it was processed. Leave it retryable next scan.
             if provider and obs:
+                seen.add(url)
                 results.append({"issuer": provider, "metrics": obs, "url": url, "as_of": published})
     previous["seen_source_urls"] = sorted(seen)[-100:]
     return results
@@ -796,7 +798,9 @@ def discover_forecasts(now: datetime, cutoff: str) -> list[dict]:
             seen.add(url)
             published = item.get("published_at_kst") or ""
             date = published[:10] if published else ""
-            if cutoff and date and date <= cutoff:
+            # A date-only cutoff must not discard new BofA revisions later
+            # on the same day. The caller uses persisted URLs for dedupe.
+            if cutoff and date and date < cutoff:
                 continue
             try:
                 dt = datetime.fromisoformat(published) if published else None
