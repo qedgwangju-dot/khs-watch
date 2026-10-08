@@ -2462,7 +2462,7 @@ def extract_hbm_hybrid_official_observation(event: dict) -> dict | None:
         # completed milestones. This is intentionally conservative.
         if re.search(
             r"\b(?:planned?|planning|will|aims?|targets?|expected|could|might|may|"
-            r"not yet|not shipped|hasn't|has not|without|challenge|difficult)\b|"
+            r"not yet|not shipped|hasn't|has not|without|challenge|difficult|no|never)\b|"
             r"예정|계획|목표|추진|검토|예상|전망|고려|아직|미출하|미제공|어려움|난항",
             lower, re.I
         ):
@@ -2489,7 +2489,8 @@ def extract_hbm_hybrid_official_observation(event: dict) -> dict | None:
         ):
             stage = "customer_qualification_passed"
         elif (
-            re.search(r"customer|clients?|고객(?:사)?", lower, re.I)
+            "mr-muf" not in lower and "mr muf" not in lower
+            and re.search(r"customer|clients?|고객(?:사)?", lower, re.I)
             and re.search(
                 r"(?:samples?|샘플)[^.]{0,75}?(?:shipped|delivered|sent|supplied|출하|전달|공급|발송)|"
                 r"(?:shipped|delivered|sent|supplied|출하|전달|공급|발송)[^.]{0,75}?(?:samples?|샘플)",
