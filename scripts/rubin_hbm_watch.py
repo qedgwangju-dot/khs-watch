@@ -2454,7 +2454,10 @@ def extract_hbm_hybrid_official_observation(event: dict) -> dict | None:
     if event.get("article_fetch_succeeded") is not True:
         return None
     url = event.get("direct_link") or ""
-    host = (urlparse(url).hostname or "").lower()
+    parsed_url = urlparse(url)
+    if parsed_url.scheme != "https":
+        return None
+    host = (parsed_url.hostname or "").lower()
     if host in ("news.skhynix.com", "news.skhynix.co.kr", "www.skhynix.com", "skhynix.com"):
         vendor = "skhynix"
     elif host in ("news.samsung.com", "semiconductor.samsung.com", "www.samsung.com", "samsung.com"):
@@ -2560,7 +2563,10 @@ def merge_hbm_hybrid_official_observation(old: dict, observation: dict) -> dict:
         return out
     # Revalidate the issuer's hostname even when a function caller has
     # erroneously tagged a non-official report as official.
-    obs_host = (urlparse(observation.get("source_url") or "").hostname or "").lower()
+    parsed_source = urlparse(observation.get("source_url") or "")
+    if parsed_source.scheme != "https":
+        return out
+    obs_host = (parsed_source.hostname or "").lower()
     hosts = {
         "skhynix": {"news.skhynix.com", "news.skhynix.co.kr", "www.skhynix.com", "skhynix.com"},
         "samsung": {"news.samsung.com", "semiconductor.samsung.com", "www.samsung.com", "samsung.com"},
