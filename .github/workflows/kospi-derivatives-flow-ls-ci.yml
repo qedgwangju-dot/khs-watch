@@ -106,6 +106,14 @@ jobs:
           bad = "\\" + "$" + "{{"
           assert bad not in s, "escaped GitHub expression found"
           assert "morning:" in s and "afternoon:" in s, "split jobs missing"
+          # workflow_run의 기본 checkout은 시작 당시 SHA를 사용한다.
+          # 오전/오후 작업 모두 main을 명시해야 새 판정 로직이 다음 실행에서 누락되지 않는다.
+          morning_block=s.split("  morning:\n",1)[1].split("  afternoon:\n",1)[0]
+          afternoon_block=s.split("  afternoon:\n",1)[1]
+          checkout_latest="      - name: Checkout\n        uses: actions/checkout@v4\n        with:\n          ref: main"
+          assert checkout_latest in morning_block, "morning still checks out stale workflow_run SHA"
+          assert checkout_latest in afternoon_block, "afternoon still checks out stale workflow_run SHA"
+          print("kospi_shift_checkout_latest_main_valid=true")
           assert "--handoff-out out/kospi_shock_handoff.json" in s, "morning handoff missing"
           assert "--handoff-in out/kospi_shock_handoff.json" in s, "afternoon handoff missing"
           assert "timeout-minutes: 430" not in s, "GitHub-hosted 6h limit unsafe timeout remains"
