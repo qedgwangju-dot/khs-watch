@@ -66,13 +66,13 @@ SAMSUNG_HBM4_PRICE_BASELINE = {
     "as_of": "2026-10-02",
     "note": "4달러대 중후반은 제시·협상 가격으로 보존. '사실상 완판'과 협상력 강화는 매일경제 보도 단계이며 실제 고객별 체결물량·체결가격으로 승격하지 않음.",
 }
-HBM_HYBRID_BOND_TRACK_VERSION = 1
+HBM_HYBRID_BOND_TRACK_VERSION = 2
 HBM_HYBRID_BOND_PRIMARY = "https://www.damnang.com/p/the-next-memory-race-will-not-be"
 HBM_HYBRID_BOND_REPUBLISHER = "https://www.techpowerup.com/353458/sk-hynix-reportedly-faces-difficulties-in-hbm-hybrid-bonding-trailing-samsung"
 HBM_HYBRID_SK_OFFICIAL = "https://news.skhynix.com/en/sk-hynix-ships-samples-of-12-layer-next-gen-hbm4e-2/"
 HBM_HYBRID_SK_FEASIBILITY = "https://www.skhynix.com/ir/UI-FR-IR12_T7/"
 HBM_HYBRID_SAMSUNG_OFFICIAL = "https://news.samsung.com/kr/%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90-fms-2026%EC%84%9C-%EC%B0%A8%EC%84%B8%EB%8C%80-3d-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EB%B9%84%EC%A0%84-%EC%A0%9C%EC%8B%9C"
-HBM_HYBRID_SHARE_SOURCE = "https://counterpointresearch.com/en/insights/global-hbm-market-share-q2-2026"
+HBM_HYBRID_SHARE_SOURCE = "https://counterpointresearch.com/ko/insights/global-hbm-market-share-q2-2026"
 # A single paid, anonymously sourced expert interview, repercussed by
 # TechPowerUp. This is NOT a verified "SK made no samples" corporate fact.
 HBM_HYBRID_BOND_BASELINE = {
@@ -82,9 +82,9 @@ HBM_HYBRID_BOND_BASELINE = {
     "reported_sk_hybrid_difficulty": True,
     "reported_sk_hybrid_customer_sample_not_started": True,
     "reported_samsung_hybrid_customer_sample_sent": True,
-    "sk_official_hybrid_stage": "technical_feasibility",
+    "skhynix_official_hybrid_stage": "technical_feasibility",
     "samsung_official_hybrid_stage": "technology_showcase",
-    "sk_official_hybrid_customer_sample_verified": False,
+    "skhynix_official_hybrid_customer_sample_verified": False,
     "samsung_official_hybrid_customer_sample_verified": False,
     "sk_hbm4e_mr_muf_sample_shipped": True,
     "samsung_hbm4e_sample_shipped": True,
@@ -2585,10 +2585,21 @@ def hbm_hybrid_bond_event(state: dict, reasons: list[str], *, initial: bool = Fa
 
 def render_hbm_hybrid_bonding_notice(e: dict, now: datetime) -> str:
     st = e["hybrid_bonding_state"]
+    stage_ko = {
+        "technical_feasibility": "기술 가능성 확인",
+        "technology_showcase": "기술 공개·시연",
+        "internal_hbm_prototype": "내부 HBM 시제품",
+        "customer_hbm_sample_shipped": "고객용 HBM 샘플 발송",
+        "customer_qualification_passed": "고객 검증 통과",
+        "pilot_line_running": "파일럿 설비 가동",
+        "hbm_mass_production_started": "HBM 양산 개시",
+    }
     initial = e.get("fact_key") == "hbm_hybrid_bonding_report_20261008"
     lines = [
         "🚨 HBM 하이브리드 본딩 · 삼성전자 vs SK하이닉스",
         f"조회: {now.strftime('%Y-%m-%d %H:%M KST')}",
+        ("정정 안내: 기존 단일 인터뷰 보도 알림의 표시·링크·단계 이름 수정. 새 기술 진전 아님."
+         if e.get("format_correction") else ""),
         ("상태: 단일 익명 전문가 인터뷰 보도 · 회사 미확정"
          if initial else "상태: 하이브리드 본딩 HBM 공식 단계 신규 변화"),
         "",
@@ -2602,7 +2613,7 @@ def render_hbm_hybrid_bonding_notice(e: dict, now: datetime) -> str:
          + ("확인" if st.get("skhynix_official_hybrid_customer_sample_verified") else "미확인")),
         ("• 삼성전자: 고객에게 하이브리드 본딩 HBM 샘플 발송 주장(같은 인터뷰) · 회사 공식 확인: "
          + ("확인" if st.get("samsung_official_hybrid_customer_sample_verified") else "미확인")),
-        f"• 공식 추적 단계: SK하이닉스 {st.get('skhynix_official_hybrid_stage') or '미확인'} / 삼성전자 {st.get('samsung_official_hybrid_stage') or '미확인'}",
+        f"• 공식 추적 단계: SK하이닉스 {stage_ko.get(st.get('skhynix_official_hybrid_stage'), '미확인')} / 삼성전자 {stage_ko.get(st.get('samsung_official_hybrid_stage'), '미확인')}",
         "• 원보도: Damnang 인터뷰 1곳 → TechPowerUp 재보도. 독립 검증 2곳 아님.",
         "",
         "■ 현재 돈 버는 사업과 실적",
@@ -2628,7 +2639,7 @@ def render_hbm_hybrid_bonding_notice(e: dict, now: datetime) -> str:
     ]
     if not initial and e.get("fact_bullets"):
         lines.insert(5, "• 이번 공식 변화: " + " / ".join(e["fact_bullets"]))
-    return "\n".join(lines).strip() + "\n"
+    return "\n".join(line for line in lines if line).strip() + "\n"
 
 
 def make_fact(event: dict) -> dict | None:
@@ -3733,6 +3744,15 @@ def main() -> None:
     if hybrid_version_before < HBM_HYBRID_BOND_TRACK_VERSION:
         seeded = dict(HBM_HYBRID_BOND_BASELINE)
         seeded.update({k: v for k, v in hybrid_state.items() if v is not None})
+        # State v1 wrote "sk_*" while the parser/renderer expected
+        # "skhynix_*". This made the SK official stage show "미확인".
+        # Migrate without promoting any reported sample to an official one.
+        if "sk_official_hybrid_stage" in seeded:
+            seeded["skhynix_official_hybrid_stage"] = seeded.pop("sk_official_hybrid_stage")
+        if "sk_official_hybrid_customer_sample_verified" in seeded:
+            seeded["skhynix_official_hybrid_customer_sample_verified"] = seeded.pop(
+                "sk_official_hybrid_customer_sample_verified"
+            )
         hybrid_state = seeded
 
     initial_hybrid_notice = (
@@ -3750,10 +3770,17 @@ def main() -> None:
             hybrid_state = merge_hbm_hybrid_official_observation(hybrid_state, observation)
     hybrid_changes = hbm_hybrid_official_changes(hybrid_old, hybrid_state)
     if initial_hybrid_notice:
-        verified_events.append(hbm_hybrid_bond_event(
-            hybrid_state, ["익명 엔지니어 보도 신규 위험 감시 시작 · 회사 공식 고객 샘플 여부 미확인"],
-            initial=True
-        ))
+        correction_only = bool(hybrid_version_before > 0)
+        notice = hbm_hybrid_bond_event(
+            hybrid_state,
+            (["이전 알림의 표시·출처 링크·하이닉스 단계 표기 정정; 동일 보도이며 새 공정 진척 아님"]
+             if correction_only else
+             ["익명 엔지니어 보도 신규 위험 감시 시작 · 회사 공식 고객 샘플 여부 미확인"]),
+            initial=True,
+        )
+        if correction_only:
+            notice["format_correction"] = True
+        verified_events.append(notice)
     if hybrid_changes and not first_run:
         verified_events.append(hbm_hybrid_bond_event(hybrid_state, hybrid_changes, initial=False))
 
