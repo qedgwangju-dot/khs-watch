@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 115
+VERSION = 116
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -3494,6 +3494,62 @@ def equity_publication_assessment(title: str, evidence: list[dict], *, body: str
     body = source_article_body(source_reported_body(body))
     source_rows = source_sentences(body)
     lead = " ".join(source_rows[:5])
+    headline_and_lead = f"{title} {lead}"
+
+    single_bank_product_launch = (
+        re.search(r"(?:은행|銀|bank)", title, re.I)
+        and re.search(r"대출|여신|금융상품", title)
+        and re.search(r"출시|선보|신설|내놨", title)
+    )
+    aggregate_credit_program = any(
+        re.search(r"(?:총|전체|누적).{0,24}\d[\d,.]*\s*(?:조|천억|백억)\s*원.{0,40}(?:대출|지원|공급|한도)", row)
+        for row in source_rows[:10]
+    )
+    broad_credit_rate_change = re.search(
+        r"(?:기준금리|전\s*은행권|가계대출\s*금리|주담대\s*금리).{0,25}(?:인상|인하|상승|하락|변경)",
+        headline_and_lead,
+    )
+    if single_bank_product_launch and not aggregate_credit_program and not broad_credit_rate_change:
+        return {"eligible": False, "reason": "single_bank_financing_product_without_market_scale"}
+
+    routine_server_lineup = (
+        re.search(r"서버", title, re.I)
+        and re.search(r"(?:\d+\s*종|신제품|신형)", title)
+        and re.search(r"공개|출시|선보|내놨", title)
+    )
+    server_market_execution = any(
+        re.search(r"수주|주문|발주|공급계약|납품|출하|고객.{0,20}(?:도입|채택|구매)|매출.{0,20}\d", row)
+        for row in source_rows
+    )
+    server_measured_delta = any(
+        re.search(r"(?:전작|기존\s*제품|이전\s*세대).{0,30}대비", row)
+        and re.search(r"(?:성능|처리량|전력효율|performance|throughput).{0,35}\d+(?:\.\d+)?\s*(?:배|%)", row, re.I)
+        for row in source_rows
+    )
+    if routine_server_lineup and not server_market_execution and not server_measured_delta:
+        return {"eligible": False, "reason": "server_product_lineup_without_customer_or_measured_delta"}
+
+    owner_succession_loss_profile = (
+        re.search(r"2세\s*경영|오너\s*2세|경영\s*승계", title)
+        and re.search(r"(?:3년|세\s*회계연도|세\s*해).{0,18}연속.{0,12}영업적자|연속\s*영업적자", headline_and_lead)
+        and not re.search(r"상장사|코스피|코스닥|상장\s*(?:기업|회사)|주가|\b\d{6}\b", headline_and_lead)
+        and not re.search(r"(?:수주|공급\s*계약|대규모\s*투자|부도|채무불이행|회생절차|공장\s*폐쇄)", headline_and_lead)
+        and not re.search(
+            r"(?:영업)?(?:손실|적자).{0,35}(?:(?:100|[1-9]\d{2,})\s*억|[\d,.]+\s*(?:조|천억|백억))\s*원?",
+            headline_and_lead,
+        )
+    )
+    if owner_succession_loss_profile:
+        return {"eligible": False, "reason": "owner_succession_loss_profile_without_equity_transmission"}
+
+    housing_price_commentary = (
+        re.search(r"집값|아파트\s*가격|주택시장|housing prices?", title, re.I)
+        and re.search(r"외신|분석|딜레마|AI.{0,20}(?:집값|주택|아파트)", headline_and_lead, re.I)
+        and kinds <= {"sector_demand_outlook"}
+    )
+    if housing_price_commentary:
+        return {"eligible": False, "reason": "housing_price_commentary_without_equity_or_policy_event"}
+
     if (focus_kind(title) == "commercial_order"
             and any(item["kind"] == "commercial_order" for item in evidence)
             and {item["kind"] for item in evidence} <= {"commercial_order", "market_price_or_flow", "customer_discussions"}):
@@ -5017,7 +5073,7 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
             )
             for sentence in sentences
         )
-        if forum_agenda and kinds <= {"policy_scope_or_stage", "customer_discussions", "financing_infrastructure", "market_infrastructure", "physical_supply_or_capacity"} and not forum_change:
+        if forum_agenda and kinds <= {"policy_scope_or_stage", "customer_discussions", "financing_infrastructure", "market_infrastructure", "physical_supply_or_capacity", "sector_demand_outlook"} and not forum_change:
             result["priority"] = 1
             result["scope_note"] = "forum_policy_opinion_without_announced_instrument_change"
         if SUPPORT_EVENT.search(title) and kinds <= {"capital_or_shareholder_action", "corporate_transaction", "institutional_capital_access", "financing_infrastructure"}:

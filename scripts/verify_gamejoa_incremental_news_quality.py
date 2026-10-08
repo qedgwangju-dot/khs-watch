@@ -191,6 +191,90 @@ class IncrementalNewsTests(unittest.TestCase):
                                              ('삼성전자 DS부문', '10.5%', '자사주', '3월 말', '4월 초', '대체 방식은 미정'))
         self.assertNotIn('370조원', core)
 
+    def test_live_core_summarizes_samsung_bonus_estimates_with_years_and_conditions(self):
+        title = '내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나'
+        body = (
+            '삼성전자가 올해 3분기 연결 기준 잠정 영업이익은 107조4000억원으로 전년 동기보다 782.50% 증가했다. '
+            '삼성전자 노사는 기존 초과이익성과급(OPI)과 별도로 2026년도 DS부문 영업이익의 10.5%를 특별성과급 재원으로 지급하기로 했다. '
+            '초기업노조는 이 같은 지급 기준과 올해 연간 영업이익 전망치 약 370조원을 토대로 직원별 성과급을 추산했다. '
+            '연봉 8000만원대 초반 직원이 받는 성과급은 기존 OPI를 포함해 세전 기준 메모리사업부 약 7억5000만원, '
+            '공통 조직 약 5억3000만원, 시스템LSI·파운드리사업부 약 2억4000만원으로 계산됐다. '
+            '삼성증권은 삼성전자의 내년 영업이익을 511조원, 하나증권은 519조원으로 전망했다. '
+            '현재의 성과급 산정 조건이 유지된다는 가정에 따른 추산으로, 실제 지급액은 사업부별 실적과 향후 노사 협의 결과 등에 따라 달라질 수 있다. '
+            '연봉 8000만원대 직원의 내년 예상 성과급 7억5000만원 가운데 기존 OPI를 4000만원으로 가정하면 특별성과급은 약 7억1000만원이다. '
+            '기존 OPI 4000만원을 합산한 총성과급은 세전 약 10억2000만~10억4000만원에 달한다.'
+        )
+        item = alert(title, body, 'https://www.newsis.com/view/NISX20261008_0003818706')
+        core = radar.verified_alert_core(item, title)
+        self.assertIn('10.5%', core)
+        self.assertIn('2027년', core)
+        self.assertIn('7억5000만원', core)
+        self.assertIn('2028년', core)
+        self.assertIn('삼성증권 511조원', core)
+        self.assertIn('하나증권 519조원', core)
+        self.assertIn('10억2000만~10억4000만원', core)
+        self.assertFalse(radar.source_core_fact_errors({**item, 'telegram_core_fact': core}), core)
+        self.assertLessEqual(len(core), radar.GAMEJOA_CORE_MAX_CHARS, core)
+
+    def test_live_radar_excludes_unscaled_business_items_from_october_8_artifact(self):
+        cases = [
+            (
+                "우리銀, '수출선도기업대출' 출시…시설자금 최대 15% 추가한도",
+                '우리은행은 수출기업 대상 금융상품을 출시했다. 최근 1년 수출실적이 있는 기업은 시설자금 대출에서 최대 15% 추가 한도를 받고 금리와 수수료 우대를 받는다. 총 대출 규모는 공개되지 않았다.',
+                'https://www.yna.co.kr/view/AKR20261008074700002',
+            ),
+            (
+                'HPE, AMD 최신 CPU 서버 4종 공개…AI 추론 시장 정조준',
+                'HPE가 6세대 AMD EPYC 프로세서를 탑재한 서버 4종을 공개했다. 일부 모델은 최대 256코어와 PCIe Gen6를 지원하며 AI 추론과 데이터 분석을 겨냥한다. 고객 주문, 판매량, 가격, 전작 대비 성능 향상은 공개되지 않았다.',
+                'https://www.edaily.co.kr/News/Read?newsId=03053686645610952',
+            ),
+            (
+                'AIDC 병목, GPU·전력서 메모리로…SK하이퍼 대표 "韓에 새 기회"',
+                '한국정보통신진흥협회(KAIT)는 8일 디지털 인사이트 포럼을 열었다. SK하이퍼 대표는 포럼에서 추론 수요가 늘면 메모리 역량과 사업성·수익구조가 중요해질 수 있다고 전망했다.',
+                'https://www.newsis.com/view/NISX20261008_0003818809',
+            ),
+            (
+                '2년 만에 끝난 2세 경영…적자 늪 모닝글로리, 백약이 무효?',
+                '3년 연속 영업적자에 순손실 30억원 급증했다. 모닝글로리는 44기 5억원, 45기 8억원, 46기 6억원 영업적자를 기록했다. 오너 2세 경영은 2년 만에 끝났고 상장·주가·대규모 계약이나 채무불이행 사실은 보도되지 않았다.',
+                'https://www.etoday.co.kr/news/view/2633481',
+            ),
+            (
+                '외신 "AI가 서울 집값도 끌어올렸다…李정부 직면한 부동산 딜레마"',
+                '외신 분석에 따르면 AI 반도체 호황으로 기업과 근로자 소득이 늘면서 수도권 집값 상승에 영향을 미쳤다. 이는 부동산 시장에 대한 분석이며 새로운 주택정책이나 상장기업의 실적·계약 발표는 아니다.',
+                'https://www.mk.co.kr/news/economy/12171264',
+            ),
+        ]
+        for index, (title, body, url) in enumerate(cases):
+            with self.subTest(title=title):
+                assessment = materiality.assess(title, body)
+                self.assertLess(assessment['priority'], 2, assessment)
+                candidate = alert(title, body, url)
+                with patch.object(radar.base, 'kst_now', return_value=NOW), patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}):
+                    self.assertEqual(radar.quality_display_alerts([candidate], 7), [])
+
+    def test_live_radar_keeps_scaled_credit_server_and_housing_policy_events(self):
+        positive_cases = [
+            (
+                '우리은행, 수출기업 대출 3조원 지원 상품 출시',
+                '우리은행은 총 3조원 규모의 수출기업 대출 지원 상품을 출시해 시설자금과 운전자금을 공급한다.',
+                [{'kind': 'physical_supply_or_capacity', 'source_excerpt': '총 3조원 규모의 수출기업 대출 지원 상품을 출시한다.'}],
+            ),
+            (
+                'HPE, AMD 서버 4종 공개…현대차와 1200억원 공급계약',
+                'HPE는 현대차와 1200억원 규모의 AMD 서버 4000대 공급계약을 체결했다.',
+                [{'kind': 'commercial_order', 'source_excerpt': 'HPE는 현대차와 1200억원 규모의 AMD 서버 4000대 공급계약을 체결했다.'}],
+            ),
+            (
+                '정부, 주택공급 5조원 확대안 확정',
+                '정부는 전국 주택공급을 늘리기 위해 5조원 예산을 확정하고 내년부터 집행하기로 했다.',
+                [{'kind': 'housing_supply_policy', 'source_excerpt': '정부는 주택공급 5조원 예산을 확정하고 집행하기로 했다.'}],
+            ),
+        ]
+        for title, body, evidence in positive_cases:
+            with self.subTest(title=title):
+                assessment = materiality.equity_publication_assessment(title, evidence, body=body)
+                self.assertTrue(assessment['eligible'], assessment)
+
     def test_live_filter_excludes_ytd_market_cap_recap_without_company_execution_only(self):
         title = '올해 680% 뛴 가온전선, 장중 시총 10조 돌파'
         recap = alert(title, '가온전선은 장중 시가총액 10조원을 넘었지만 종가에는 6.27% 하락했다.')
