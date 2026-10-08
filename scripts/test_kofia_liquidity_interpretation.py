@@ -124,8 +124,10 @@ def run_all():
         for d5 in (24_445_118, -24_445_118, 0):
             expected = (
                 "당일에도 MMF가 증가" if d1 > 0 and d5 > 0 else
-                "당일 MMF가 증가했으나" if d1 > 0 else
-                "당일 MMF는 감소" if d1 < 0 else
+                "당일 MMF가 증가했으나" if d1 > 0 and d5 < 0 else
+                "당일 MMF가 증가했지만" if d1 > 0 else
+                "당일 MMF는 감소" if d1 < 0 and d5 >= 0 else
+                "당일 MMF도 감소" if d1 < 0 else
                 "당일 MMF는 유의미한 증감 없이 보합"
             )
             trial(f"MMF day={day_word}, five={d5}", overrides={"mmf":{"d1":d1,"d5":d5}}, expected=expected)
@@ -139,7 +141,7 @@ def run_all():
     trial("deposit decrease with MMF decrease and CMA increase", overrides={
         "deposit":{"d1":-3_000_000}, "mmf":{"d1":-4_000_000},
         "cma":{"d1":3_000_000},
-    }, expected="MMF에서 큰 자금이 빠졌지만")
+    }, expected="MMF 자금이 감소했지만")
     trial("five-day low cash and high leverage", expected="수급의 질이 이전보다 취약")
     trial("five-day improving cash", overrides={
         "deposit":{"d5":5_000_000}, "credit":{"d5":-150_000}
@@ -153,6 +155,14 @@ def run_all():
     trial("CMA one-day flat and five-day drop", overrides={
         "cma":{"d1":0, "d5":-2_000_000}
     }, expected="CMA</b>: 1D +0.00조≈")
+    trial("MMF five-day decline cannot claim MMF inflow", overrides={
+        "mmf":{"d1":-4_000_000, "d5":-8_000_000}
+    }, expected="MMF의 변화분을 주식시장 자금과 동일 자금의 직접 이동으로 단정하지 않습니다.",
+       forbidden=("MMF 증가분이 주식에서",))
+    trial("MMF five-day flat cannot claim matching daily direction", overrides={
+        "mmf":{"d1":-4_000_000, "d5":0}
+    }, expected="당일 MMF는 감소했지만 5거래일 기준으로는 보합입니다.",
+       forbidden=("5거래일 흐름과 같은 방향",))
 
     # This catches mutations after the narrative builder has completed.
     trial("tampered MMF narrative", corrupt=lambda text: text.replace(
