@@ -1487,6 +1487,24 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
                 published = dt.datetime(2026, 8, 3, tzinfo=KST)
                 verified = True
 
+        if (
+            rule.key == "us_treasury_outbound_ai_robotics_enforcement"
+            and verified and not published
+        ):
+            # Treasury press releases sometimes expose the verified article
+            # body without an ISO publication-time meta tag. Read the printed
+            # release date rather than dropping the first enforcement action.
+            primary_text = clean_text(raw)
+            release_date = re.search(
+                r"\\bOctober\\s+7,\\s+2026\\b", primary_text, re.I
+            )
+            if (
+                release_date
+                and clean_text(expected_title).lower() in primary_text.lower()
+                and all(marker in primary_text.lower() for marker in ("amidi", "noematrix"))
+            ):
+                published = dt.datetime(2026, 10, 7, tzinfo=KST)
+
         haystack = f"{title} {source_label} {description}"
         if (
             not verified
