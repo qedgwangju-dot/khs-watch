@@ -898,6 +898,16 @@ def main() -> None:
     structure_latest = json.loads(json.dumps(CPU_STRUCTURE_BASELINE))
     for provider in ("bnpp_public", "bnpp_analyst", "digitimes", "amd_system"):
         structure_latest[provider].update(structure_old.get(provider) or {})
+    # Correct stale metadata when an old state checkpoint stored a claim
+    # that the source's paywalled headline itself specified "2027".
+    if (
+        structure_latest["digitimes"].get("cpu_xpu_ratio_source_url")
+        == CPU_STRUCTURE_BASELINE["digitimes"]["cpu_xpu_ratio_source_url"]
+        and str(structure_latest["digitimes"].get("as_of") or "") <= "2026-10-07"
+    ):
+        structure_latest["digitimes"]["cpu_xpu_ratio_source_kind"] = (
+            CPU_STRUCTURE_BASELINE["digitimes"]["cpu_xpu_ratio_source_kind"]
+        )
     structure_latest["seen_source_urls"] = list(structure_old.get("seen_source_urls") or [])
     structure_events: list[str] = []
     # A newly verified numeric source was absent from the first CPU alert.
@@ -931,6 +941,13 @@ def main() -> None:
         structure_latest[provider].update(new_metrics)
         structure_latest[provider]["as_of"] = entry["as_of"]
         structure_latest[provider]["source_url"] = entry["url"]
+        if provider == "digitimes" and "cpu_xpu_ratio_2027" in new_metrics:
+            # Tie revised values to the *new* original report, not to the
+            # fixed 2026-10-05 headline that seeded the first ratio.
+            structure_latest[provider]["cpu_xpu_ratio_source_url"] = entry["url"]
+            structure_latest[provider]["cpu_xpu_ratio_source_kind"] = (
+                "DIGITIMES 신규 공식자료의 CPU:XPU 전망 변화 · 유료 본문 상세 연도 검증 전"
+            )
         structure_events.extend(changes)
     latest["cpu_structure"] = structure_latest
     latest["cpu_structure_track_version"] = CPU_STRUCTURE_TRACK_VERSION
