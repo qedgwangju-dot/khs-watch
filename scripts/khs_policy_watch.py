@@ -913,6 +913,49 @@ def apply_doe_grid_dpa_profile(item: dict, haystack: str) -> None:
         )
 
 
+
+def is_energy_dominance_month_proclamation(item: dict) -> bool:
+    return (
+        "national-energy-dominance-month-2026" in str(item.get("link") or "").lower()
+        and "national energy dominance month" in str(item.get("title") or "").lower()
+        and str(item.get("source") or "").lower().startswith("white house")
+        and bool(item.get("body_verified"))
+    )
+
+
+def apply_energy_dominance_month_profile(item: dict) -> None:
+    text = str(item.get("source_body") or "").lower()
+    if "proclaim october 2026 as national energy dominance month" not in text:
+        item["importance"] = "하"
+        return
+    item["importance"] = "상"
+    item["title_ko"] = "트럼프, 2026년 10월 국가 에너지 지배력의 달 포고"
+    item["document_type"] = "Proclamation"
+    item["policy_plain_summary"] = (
+        "2026년 10월 7일 대통령 포고문으로 10월을 국가 에너지 지배력의 달로 지정했습니다. "
+        "2025년에도 같은 달을 선포한 적이 있으며 이번 문서에는 새로운 세출 승인이나 계약이 없습니다."
+    )
+    item["policy_timeline"] = [
+        {"date": "2025-02-14", "stage": "기반", "detail": "Executive Order 14213 국가 에너지 지배력 위원회 설립"},
+        {"date": "2025-10-17", "stage": "과거", "detail": "동일 명칭의 2025년 에너지 지배력의 달 포고"},
+        {"date": "2026-02-12", "stage": "기존 집행", "detail": "EPA 차량 온실가스 Endangerment Finding 철회 최종규칙"},
+        {"date": "2026-03-04", "stage": "기존 집행", "detail": "Ratepayer Protection Pledge 포고문"},
+        {"date": "2026-06-04", "stage": "기존 집행", "detail": "DOE 석탄발전·수출 기반시설 DPA 최대 5억달러 지원 발표"},
+        {"date": "2026-08-31", "stage": "기존 발표", "detail": "베네수엘라 원유 관련 NABEP 지분·구매권 백악관 발표"},
+        {"date": "2026-10-07", "stage": "이번 신규 사건", "detail": "국가 에너지 지배력의 달 포고문 서명"},
+    ]
+    item["investment_view"] = (
+        "석유·가스·석탄·원전·송변전 정책 방향을 재확인한 선언입니다. "
+        "후속 예산 배정·송전 인허가·RFP·실제 계약과 매출 발생은 각각 별도 확인이 필요합니다."
+    )
+    item["korea_market_impact"] = (
+        "효성중공업·HD현대일렉트릭·LS ELECTRIC 등은 전력망 장비 공급망 후보이나 "
+        "이번 포고문 자체로 공급계약이 확정된 것은 아닙니다."
+    )
+    item["counter"] = "시추 6,000건 이상, 석탄 지원 10억달러 이상, 석탄발전소 100곳 이상, 베네수엘라 매장량 650억배럴 이상은 포고문의 기존 성과 주장입니다."
+    item["failure_signal"] = "6~12개월 내 신규 집행·인허가·공급계약·전력망 연결이 확인되지 않으면 반복 선언에 머물 수 있습니다."
+
+
 def apply_treasury_borrowing_profile(item: dict, haystack: str) -> None:
     if not (
         str(item.get("source") or "") == "U.S. Treasury press releases"
@@ -1515,6 +1558,8 @@ def classify_item(item: dict) -> dict | None:
     result = {**item, "fingerprint": fingerprint, "matched": matched, "importance": importance, "status": "예비" if item["source"].startswith(("CourtListener", "KRX KIND")) else "확정", "impacts": list(dict.fromkeys(impacts)) or ["의사결정 영향 제한적"], "paths": list(dict.fromkeys(paths)) or ["정책 타임라인"], "sectors": sectors}
     apply_korea_trade_remedy_profile(result, haystack)
     apply_doe_grid_dpa_profile(result, haystack)
+    if is_energy_dominance_month_proclamation(result):
+        apply_energy_dominance_month_profile(result)
     apply_treasury_borrowing_profile(result, haystack)
     return result
 
