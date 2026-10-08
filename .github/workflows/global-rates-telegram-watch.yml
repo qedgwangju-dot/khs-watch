@@ -566,6 +566,9 @@ jobs:
     if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && github.event.schedule == '1,6,11,16,21,26,31,36,41,46,51,56 * * * *') }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    concurrency:
+      group: yen-policy-news-shared
+      cancel-in-progress: false
     env:
       TELEGRAM_DRY_RUN: "false"
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
@@ -577,6 +580,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 0
 
       - name: Set up Python
