@@ -1,9 +1,9 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-10-07T17:54:42+09:00",
+  "updated_at_kst": "2026-10-08T09:28:33+09:00",
   "levels": {
     "official_funding": 0,
-    "structural_repatriation": 0,
+    "structural_repatriation": 1,
     "japan_long_end_fingerprint": 0,
     "event_long_end_breakout": 0,
     "fed_repricing_dominant": 0,
@@ -19,23 +19,23 @@
     "funding_ratio": null,
     "fima_bn_usd": 0.0,
     "flow": {
-      "latest_week": "2026-09-20~09-26",
-      "one_week": -0.6845,
-      "two_week": -2.5894,
-      "four_week": -1.3844,
-      "twelve_week": -1.4702,
-      "negative_streak": 2
+      "latest_week": "2026-09-27~10-03",
+      "one_week": -0.3476,
+      "two_week": -1.0299,
+      "four_week": -1.8438,
+      "twelve_week": -2.9036,
+      "negative_streak": 3
     },
     "market": {
-      "observed_at_utc": "2026-10-07T08:54:47Z",
-      "usdjpy": 158.0989990234375,
-      "usdjpy_change_pct": -0.06321538080177629,
+      "observed_at_utc": "2026-10-08T00:28:43Z",
+      "usdjpy": 157.83999633789062,
+      "usdjpy_change_pct": -0.3686307937172977,
       "ust2": null,
       "ust2_change_bp": null,
-      "ust10": 5.269,
-      "ust10_change_bp": -4.1999999999999815,
-      "ust30": 5.641,
-      "ust30_change_bp": -2.400000000000002
+      "ust10": 5.277,
+      "ust10_change_bp": 0.8000000000000007,
+      "ust30": 5.661,
+      "ust30_change_bp": 1.9999999999999574
     }
   }
 }
