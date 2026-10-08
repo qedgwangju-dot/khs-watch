@@ -536,6 +536,35 @@ class AgenticCpuStructureTests(unittest.TestCase):
         self.assertTrue(recovered["next"]["cpu_structure"]["cpu_xpu_ratio_alert_sent"])
         self.assertFalse(run(recovered["next"])["alerted"])
 
+    def test_old_checkpoint_bnp_provenance_is_corrected_without_fake_alert(self):
+        old_bnpp = dict(w.CPU_STRUCTURE_BASELINE["bnpp_analyst"])
+        old_bnpp["market_2030_source_kind"] = "사용자 제공 애널리스트 전망 · 독립 보도 미확인"
+        old = {
+            **w.BASELINE,
+            "cpu_structure_track_version": w.CPU_STRUCTURE_TRACK_VERSION,
+            "cpu_structure": {
+                **w.CPU_STRUCTURE_BASELINE,
+                "bnpp_analyst": old_bnpp,
+                "cpu_xpu_ratio_alert_sent": True,
+            },
+        }
+        with (
+            mock.patch.object(w, "load_json", side_effect=[{"agentic_cpu_demand": old}, {}]),
+            mock.patch.object(w, "discover_forecasts", return_value=[]),
+            mock.patch.object(w, "discover_validation", return_value=[]),
+            mock.patch.object(w, "discover_cpu_structure", return_value=[]),
+            mock.patch.object(w, "get_fx", return_value=(1345.37, "2026-10-08")),
+            mock.patch.object(w, "ALERT_PATH") as alert,
+            mock.patch.object(w, "write_json") as writer,
+        ):
+            alert.exists.return_value = False
+            w.main()
+            new_bnpp = writer.call_args.args[1]["agentic_cpu_demand"]["cpu_structure"]["bnpp_analyst"]
+            self.assertFalse(alert.write_text.called)
+        self.assertIn("2차 보도 교차확인", new_bnpp["market_2030_source_kind"])
+        self.assertTrue(new_bnpp["market_2030_secondary_confirmed"])
+        self.assertFalse(new_bnpp["market_2030_official_confirmed"])
+
     def test_arm_target_update_preserves_distinct_bnp_and_amd_citations(self):
         old = {
             **w.BASELINE,
