@@ -91,7 +91,7 @@ class YenCarryTelegramCompactTests(unittest.TestCase):
             self.assertIn("FX 실현변동성 1.00배 → 급등 기준 1.50배 미달", result)
             self.assertIn("엔화 순롱 +23,170계약", result)
             self.assertNotIn("CFTC 레버리지 엔화 순숏: 0계약", result)
-            self.assertLess(len(result), len(body) + 500)
+            self.assertLess(len(result), 3600)  # Telegram single-message body limit
             self.assertEqual(detail_path.read_text(encoding="utf-8").strip(), body.strip())
 
     def test_structural_yellow_floor_never_forces_unwind_arrow(self):
