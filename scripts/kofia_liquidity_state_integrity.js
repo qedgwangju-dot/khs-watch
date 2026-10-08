@@ -1,6 +1,7 @@
 'use strict';
 
 const fs = require('fs');
+const crypto = require('crypto');
 
 const CORE = ['deposit', 'mmf', 'cma', 'credit'];
 
@@ -39,6 +40,22 @@ function loadStateStrict(filePath) {
       }
     }
   }
+  for (const key of ['receivable', 'forced']) {
+    const extra = state.values[key];
+    if (!extra || extra.date !== date || typeof extra.value !== 'number' ||
+        !Number.isFinite(extra.value) || extra.value < 0) {
+      throw new Error('KOFIA persisted optional-lane value malformed: ' + key);
+    }
+  }
+  const payload = Object.fromEntries(
+    ['deposit','mmf','cma','credit','receivable','forced'].map(k=>[k,state.values[k]])
+  );
+  const computedFingerprint = crypto.createHash('sha256')
+    .update(JSON.stringify(payload)).digest('hex');
+  if (computedFingerprint !== state.fingerprint) {
+    throw new Error('KOFIA persisted values/fingerprint inconsistent: refuse replay');
+  }
+
   const ref = state.reference_dates;
   if (ref !== undefined) {
     if (!Array.isArray(ref) || ref.length !== 6 ||
