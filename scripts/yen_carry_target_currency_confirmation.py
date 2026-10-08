@@ -312,7 +312,9 @@ def process(now: dt.datetime | None = None) -> int:
                     errors.append(f"{code}/JPY: {type(exc).__name__}: {exc}")
 
     available = len(moves)
-    incomplete = available < 2 or "JPY" not in symbol_points
+    # Confirm 2-of-3 only when all three target currencies have valid bars.
+    # Missing the third currency makes the risk verdict provisional, never confirmed.
+    incomplete = available < len(TARGETS) or "JPY" not in symbol_points
     classification = {"yen_shock": False, "stressed_count": 0, "stressed_codes": [], "broad_target_weakness": False, "active_confirmation": False}
     if not incomplete:
         jpy_points = symbol_points["JPY"]
