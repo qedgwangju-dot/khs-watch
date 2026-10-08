@@ -367,6 +367,49 @@ class HybridTelegramPresentationTests(unittest.TestCase):
         self.assertNotIn("<b>82%</b>", formatted)
         self.assertTrue(all(len(x.encode("utf-16-le")) // 2 <= 3600 for x in parts))
 
+
+    def test_hybrid_final_telegram_gate_accepts_original_render(self):
+        event = w.hbm_hybrid_bond_event(
+            w.HBM_HYBRID_BOND_BASELINE, ["단일 전문가 보도·미확정"], initial=True
+        )
+        _, formatted, _ = self._render_pipeline([event])
+        self.assertIsNone(delivery.validate_rubin_hybrid_notification(formatted))
+
+    def test_final_telegram_gate_blocks_known_error_recurrence(self):
+        event = w.hbm_hybrid_bond_event(
+            w.HBM_HYBRID_BOND_BASELINE, ["단일 전문가 보도·미확정"], initial=True
+        )
+        _, formatted, _ = self._render_pipeline([event])
+        samples = {
+            "fake_change_header": formatted.replace(
+                "<b>🚨 HBM 하이브리드 본딩", "🚨 Rubin/HBM 구조 변화 감시 [이번 변화]\n<b>🚨 HBM 하이브리드 본딩", 1
+            ),
+            "year_bold": formatted.replace("2026-10-08", "<b>2026</b>-10-08", 1),
+            "broken_korean_entity": formatted.replace("99%이고", "99%&#xC774;고", 1),
+            "unrelated_leverage": formatted + "\n[HBM 수요·가격 레버리지]\n",
+            "unsafe_link": formatted.replace(
+                w.HBM_HYBRID_BOND_PRIMARY, "https://example.com/fake-source", 1
+            ),
+            "visible_percent_encoded_url": formatted + "\n• 삼성 공식 "
+                + w.HBM_HYBRID_SAMSUNG_OFFICIAL + "\n",
+            "lost_links": re.sub(
+                r'<a href="[^"]+">원문 보기</a>', "원문 주소 미확인", formatted
+            ),
+            "english_stage": formatted.replace("기술 공개·시연", "technology_showcase", 1),
+        }
+        for label, corrupt in samples.items():
+            with self.subTest(label=label):
+                with self.assertRaises(ValueError):
+                    delivery.validate_rubin_hybrid_notification(corrupt)
+
+    def test_hybrid_mention_in_unrelated_rubin_story_does_not_block_delivery(self):
+        normal = (
+            "<b>🚨 Rubin/HBM 구조 변화 감시</b>\n"
+            "• 차세대 HBM 하이브리드 본딩 기술을 언급한 리서치\n"
+            "• 신규 변화 1건\n"
+        )
+        self.assertIsNone(delivery.validate_rubin_hybrid_notification(normal))
+
     def test_mixed_hybrid_and_rubin_events_remain_independent(self):
         state = dict(w.HBM_HYBRID_BOND_BASELINE)
         hybrid = w.hbm_hybrid_bond_event(state, ["동일 익명 인터뷰"], initial=True)
