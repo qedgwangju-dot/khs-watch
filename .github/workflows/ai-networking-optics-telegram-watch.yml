@@ -646,13 +646,19 @@ jobs:
           else
             echo "AI 네트워킹·광통신 감시 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
           fi
+          if [ "${GITHUB_EVENT_NAME:-}" = "push" ]; then
+            echo "검증 전용 실행: 코드 push에서는 Telegram 전송 및 감시 기준선 갱신을 금지합니다." >> "$GITHUB_STEP_SUMMARY"
+          fi
           if [ -f out/ai_networking_optics_watch_telegram.html ]; then
             printf '\n---\n\nTelegram 알림 미리보기:\n\n' >> "$GITHUB_STEP_SUMMARY"
             cat out/ai_networking_optics_watch_telegram.html >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Send meaningful new signal to exact requested Telegram bot
-        if: hashFiles('out/ai_networking_optics_watch_telegram.html') != ''
+        # Defensive two-phase rollout: code pushes validate but may not emit
+        # market alerts or consume the baseline. Only schedule/workflow_run or
+        # an intentional manual run may deliver new confirmed events.
+        if: github.event_name != 'push' && hashFiles('out/ai_networking_optics_watch_telegram.html') != ''
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
@@ -736,7 +742,7 @@ jobs:
           PY
 
       - name: Persist baseline or delivered state
-        if: always()
+        if: always() && github.event_name != 'push'
         run: |
           if [ ! -f out/ai_networking_optics_watch_telegram.html ] || [ -f out/ai_networking_optics_watch_telegram_confirmed.json ]; then
             if [ -f out/ai_networking_optics_watch_pending_state.json ]; then
@@ -747,7 +753,7 @@ jobs:
           fi
 
       - name: Record confirmed Telegram delivery in watcher state
-        if: always() && hashFiles('data/ai_networking_optics_watch_state.json') != '' && hashFiles('out/ai_networking_optics_watch_telegram_confirmed.json') != ''
+        if: always() && github.event_name != 'push' && hashFiles('data/ai_networking_optics_watch_state.json') != '' && hashFiles('out/ai_networking_optics_watch_telegram_confirmed.json') != ''
         run: |
           python - <<'PY'
           import json
@@ -763,7 +769,7 @@ jobs:
           PY
 
       - name: Commit watcher state
-        if: always()
+        if: always() && github.event_name != 'push'
         run: |
           if [ ! -f data/ai_networking_optics_watch_state.json ]; then
             exit 0
