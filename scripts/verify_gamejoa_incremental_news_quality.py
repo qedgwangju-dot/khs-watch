@@ -5458,6 +5458,100 @@ class IncrementalNewsTests(unittest.TestCase):
         self.assertIn('1100억원', ok_core)
         self.assertNotIn('중앙일보', ok_core)
 
+    def test_oct8_live_artifact_filters_noise_but_keeps_listed_company_exposure(self):
+        ga_title = '대형 GA 위법행위 반복…3년간 42건 제재·과태료 18억'
+        ga_body = (
+            '2024년부터 올해까지 대형 GA에 대한 제재는 모두 42건이었다. 금융위는 지난 6월 17일 '
+            '인카금융서비스에 53억1110만원, 한화라이프랩에 5730만원, 아너스금융서비스에 1억5750만원의 '
+            '법인 과태료를 각각 의결했다. 기존 제재에 이번 의결액을 합산할 경우 법인 과태료 규모는 '
+            '72억9130만원으로 확대된다.'
+        )
+        ga_result = materiality.equity_publication_assessment(
+            ga_title,
+            [{'kind': 'policy_scope_or_stage', 'stage': 'reported_change', 'source_excerpt': ga_body}],
+            body=ga_body,
+        )
+        self.assertNotEqual(
+            ga_result.get('reason'),
+            'insurance_agency_enforcement_roundup_without_listed_issuer_or_rule_change',
+        )
+        ga_core = radar.source_headline_event_fact(ga_title, ga_body)
+        self.assertIn('인카금융서비스', ga_core)
+        self.assertIn('53억1110만원', ga_core)
+        self.assertIn('72억9130만원', ga_core)
+
+        political = materiality.equity_publication_assessment(
+            '美민주당, 트럼프 행정부의 정치 광고 집행 제소',
+            [{'kind': 'policy_scope_or_stage', 'stage': 'early_signal',
+              'source_excerpt': '민주당이 정부 광고 예산 사용을 중단시켜 달라는 소송을 냈다.'}],
+            body='민주당이 정부 광고 예산 사용을 중단시켜 달라는 소송을 냈다. 법원 판단은 아직 나오지 않았다.',
+        )
+        self.assertEqual(
+            political.get('reason'),
+            'political_advertising_lawsuit_without_market_policy_or_enacted_spending_change',
+        )
+
+        local = materiality.equity_publication_assessment(
+            '서울 모든 도로 토허구역 지정…도로 지분 쪼개기 방지',
+            [{'kind': 'policy_scope_or_stage', 'stage': 'reported_change',
+              'source_excerpt': '서울시는 투기성 도로 지분 거래를 막기 위해 도로를 토지거래허가구역으로 지정했다.'}],
+            body='서울시는 투기성 도로 지분 거래를 막기 위해 도로를 토지거래허가구역으로 지정했다.',
+        )
+        self.assertEqual(
+            local.get('reason'),
+            'local_land_speculation_control_without_equity_or_housing_supply_transmission',
+        )
+
+        fund_title = 'KB운용, 국민성장펀드 2호 일반 판매 시작'
+        small_fund = materiality.equity_publication_assessment(
+            fund_title,
+            [{'kind': 'fund_flow_or_allocation', 'stage': 'reported_change',
+              'source_excerpt': '총 2000억원 한도로 선착순 모집한다.'}],
+            body='국민성장펀드 2호를 총 2000억원 한도로 선착순 모집한다.',
+        )
+        self.assertEqual(
+            small_fund.get('reason'),
+            'retail_fund_distribution_without_committed_scale_or_market_flow',
+        )
+        large_fund = materiality.equity_publication_assessment(
+            fund_title,
+            [{'kind': 'fund_flow_or_allocation', 'stage': 'reported_change',
+              'source_excerpt': '총 1조원 규모로 모집을 시작했다.'}],
+            body='국민성장펀드 2호는 총 1조원 규모로 모집을 시작했다.',
+        )
+        self.assertNotEqual(
+            large_fund.get('reason'),
+            'retail_fund_distribution_without_committed_scale_or_market_flow',
+        )
+
+        first = alert(
+            '공정위 담합 심의에…SK에너지, 공정거래 내부 통제 강화 나선다',
+            'SK에너지가 석유 시장 가격 구조 개편 및 내부 통제 강화 조치를 마련했다.',
+        )
+        second = alert(
+            'SK에너지, 석유제품 가격·거래관행 점검…내부통제 강화한다',
+            'SK에너지는 석유 시장 가격 구조 개편 및 내부 통제 강화 조치를 마련했다고 밝혔다.',
+            'https://www.edaily.co.kr/News/Read?newsId=03273446645610952',
+        )
+        first['published'] = second['published'] = '2026-10-08T11:00:00+09:00'
+        self.assertEqual(radar.alert_dedup_key(first), radar.alert_dedup_key(second))
+
+    def test_oct8_samsung_report_summary_uses_current_official_quarter(self):
+        title = '"100조 벽 깼다" 삼성전자 또 신기록…내년엔 130조 찍나'
+        body = (
+            '삼성전자는 연결 기준 올해 3분기 영업이익이 107조4000억원으로 잠정 집계됐다고 공시했다. '
+            '이는 전년 동기 대비 782.50% 폭증한 수치다. 전기 대비로는 20.01% 증가했다. '
+            '3분기 매출은 195조원으로, 전년 동기 대비 126.59% 증가했다. '
+            '삼성전자는 지난해 4분기 매출 93조8000억원, 영업익 20조1000억원으로 역대 최대 기록을 세웠다.'
+        )
+        fact = radar.source_headline_event_fact(title, body)
+        self.assertIn('올해 3분기', fact)
+        self.assertIn('107조4000억원', fact)
+        self.assertIn('195조원', fact)
+        self.assertIn('782.50%', fact)
+        self.assertNotIn('93조8000억원', fact)
+        self.assertNotIn('20조1000억원', fact)
+
 
 if __name__ == "__main__":
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(IncrementalNewsTests)

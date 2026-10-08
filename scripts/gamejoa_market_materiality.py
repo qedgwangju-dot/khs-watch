@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 116
+VERSION = 117
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -3495,6 +3495,70 @@ def equity_publication_assessment(title: str, evidence: list[dict], *, body: str
     source_rows = source_sentences(body)
     lead = " ".join(source_rows[:5])
     headline_and_lead = f"{title} {lead}"
+
+    ga_enforcement_roundup = (
+        re.search(r"법인\s*보험\s*대리점|\bGA\b", headline_and_lead, re.I)
+        and re.search(r"위법|제재|과태료", title)
+    )
+    listed_insurer = re.search(
+        r"삼성생명|삼성화재|DB손해보험|현대해상|메리츠화재|한화생명|동양생명|코리안리|롯데손해보험",
+        headline_and_lead,
+    )
+    full_source = " ".join(source_rows)
+    listed_ga_with_fine = (
+        re.search(r"인카금융서비스", full_source)
+        and re.search(r"인카금융서비스.{0,160}(?:과태료|제재)", full_source)
+        and re.search(r"인카금융서비스.{0,60}\d[\d,]*\s*억\s*\d[\d,]*\s*만\s*원", full_source)
+    )
+    enacted_ga_rule_change = any(
+        re.search(r"보험업법|보험모집|판매수수료|보험대리점", row)
+        and re.search(r"개정|시행|변경|상한|폐지|의결|확정|발표|도입", row)
+        and not re.search(r"해야|요구|촉구|제언|주장|제안", row)
+        for row in source_rows[:10]
+    )
+    if ga_enforcement_roundup and not listed_insurer and not enacted_ga_rule_change and not listed_ga_with_fine:
+        return {"eligible": False, "reason": "insurance_agency_enforcement_roundup_without_listed_issuer_or_rule_change"}
+
+    pending_political_ad_case = (
+        re.search(r"(?:정치|대통령직|정권).{0,15}광고|광고.{0,15}(?:정치|대통령직|정권)", headline_and_lead)
+        and re.search(r"제소|소송|불법|위법", headline_and_lead)
+        and not re.search(
+            r"가처분\s*(?:인용|결정)|금지명령|법원.{0,25}(?:판결|인용)|"
+            r"(?:실제\s*)?지출.{0,15}(?:중단|삭감|동결)|예산.{0,20}(?:삭감|동결)(?!\s*(?:요구|요청|촉구|주장))|관세|수출통제",
+            headline_and_lead,
+        )
+    )
+    if pending_political_ad_case:
+        return {"eligible": False, "reason": "political_advertising_lawsuit_without_market_policy_or_enacted_spending_change"}
+
+    local_road_land_restriction = (
+        re.search(r"토허구역|토지거래허가", headline_and_lead)
+        and re.search(r"도로.{0,18}(?:지분|쪼개|기획부동산)|기획부동산", headline_and_lead)
+        and LOCAL_AUTHORITY.search(headline_and_lead)
+        and not re.search(r"상장사|코스피|코스닥|공급물량|분양|수주|착공|사업비", headline_and_lead)
+    )
+    if local_road_land_restriction:
+        return {"eligible": False, "reason": "local_land_speculation_control_without_equity_or_housing_supply_transmission"}
+
+    retail_fund_distribution = (
+        re.search(r"펀드", title)
+        and re.search(r"일반\s*판매|판매\s*(?:개시|시작)|모집\s*(?:개시|시작)", title)
+    )
+    significant_fund_amount = re.compile(
+        r"(?:[1-9]\d{0,2}(?:\.\d+)?\s*조(?:\s*\d{1,4}\s*억)?|"
+        r"(?:[5-9]\d{3}|[1-9]\d{4,})\s*억)\s*원?"
+    )
+    fund_scale_or_flow = any(
+        significant_fund_amount.search(row)
+        and re.search(r"모집|설정|약정|출자|조성|순유입|순자산|모집액|청약액", row)
+        for row in source_rows[:20]
+    ) or any(
+        QUANTITY.search(row)
+        and re.search(r"실제\s*(?:순유입|모집액|청약액)|순유입액|모집액|청약액|순자산", row)
+        for row in source_rows[:20]
+    )
+    if retail_fund_distribution and not fund_scale_or_flow:
+        return {"eligible": False, "reason": "retail_fund_distribution_without_committed_scale_or_market_flow"}
 
     single_bank_product_launch = (
         re.search(r"(?:은행|銀|bank)", title, re.I)

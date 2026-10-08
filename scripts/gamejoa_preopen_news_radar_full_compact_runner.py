@@ -2605,6 +2605,74 @@ def source_headline_event_fact(title: str, body: str) -> str:
     source = market_materiality.source_reported_body(body)
     rows = market_materiality.source_sentences(source)
     flat_source = re.sub(r"\s+", " ", source)
+    if re.search(r"\bGA\b|법인\s*보험\s*대리점", title, re.I) and re.search(r"제재|과태료", title):
+        direct_fine = re.search(
+            r"인카금융서비스에\s*(?P<amount>\d[\d,]*\s*억\s*\d[\d,]*\s*만\s*원)",
+            flat_source,
+        )
+        total_fine = re.search(
+            r"과태료(?:\s*규모)?는\s*(?P<amount>\d[\d,]*\s*억\s*\d[\d,]*\s*만\s*원)",
+            flat_source,
+        )
+        sanctions = re.search(r"대형\s*GA에\s*대한\s*제재는\s*모두\s*(?P<count>\d+)건", flat_source)
+        if direct_fine and total_fine:
+            count = f"{sanctions['count']}건" if sanctions else ""
+            direct_amount = re.sub(r"\s+", "", direct_fine["amount"])
+            total_amount = re.sub(r"\s+", "", total_fine["amount"])
+            fact = (
+                f"최근 3년간 대형 GA 제재는 {count}이며, 6월 금융위는 인카금융서비스에 "
+                f"{direct_amount} 과태료를 의결했다. 합산 과태료는 {total_amount}이다."
+            )
+            if core_sentence_is_complete(fact):
+                return fact
+    if re.search(r"삼성전자", title) and re.search(r"100\s*조|영업\s*이익|신기록", title):
+        won_amount = r"\d[\d,]*(?:조\s*\d[\d,]*억|조|억|만)\s*원"
+        official_result = re.search(
+            rf"삼성전자(?:는|가)?\s*(?:연결\s*기준\s*)?(?:올해\s*)?"
+            rf"(?:\d{{1,2}}일\s*)?"
+            rf"(?P<quarter>[1-4])\s*분기\s*영업(?:이익|익)(?:이|은)?\s*"
+            rf"(?P<profit>{won_amount})\s*(?:으로|로)\s*잠정\s*집계됐다고\s*공시했다",
+            flat_source,
+        )
+        if official_result:
+            quarter = official_result["quarter"]
+            profit = re.sub(r"\s+", "", official_result["profit"])
+            operating_yoy = re.search(r"전년\s*동기\s*대비\s*(\d+(?:\.\d+)?)%\s*(?:폭증|증가)", flat_source)
+            operating_qoq = re.search(r"전기\s*대비(?:로는)?\s*(\d+(?:\.\d+)?)%\s*증가", flat_source)
+            revenue = re.search(
+                rf"{quarter}\s*분기\s*매출은\s*(?P<amount>{won_amount})\s*(?:으로|로)",
+                flat_source,
+            )
+            revenue_yoy = re.search(
+                rf"{quarter}\s*분기\s*매출은\s*{won_amount}\s*(?:으로|로),?\s*"
+                r"전년\s*동기\s*대비\s*(\d+(?:\.\d+)?)%\s*증가",
+                flat_source,
+            )
+            operating_change = []
+            if operating_yoy:
+                operating_change.append(f"전년비 {operating_yoy.group(1)}% 증가")
+            if operating_qoq:
+                operating_change.append(f"전기비 {operating_qoq.group(1)}% 증가")
+            fact = f"삼성전자의 올해 {quarter}분기 잠정 영업이익은 {profit}으로 집계됐다."
+            if operating_change:
+                fact += " "
+                if operating_yoy:
+                    fact += f"전년비 {operating_yoy.group(1)}% 증가"
+                if operating_yoy and operating_qoq:
+                    fact += ", "
+                if operating_qoq:
+                    fact += f"전기비 {operating_qoq.group(1)}% 증가"
+                fact += "."
+            if revenue:
+                revenue_amount = re.sub(r"\s+", "", revenue["amount"])
+                fact += f" 매출은 {revenue_amount}"
+                if revenue_yoy:
+                    fact += f"으로 전년비 {revenue_yoy.group(1)}% 증가했다"
+                else:
+                    fact += "으로 집계됐다"
+                fact += "."
+            if core_sentence_is_complete(fact):
+                return fact
     if re.search(r"케이엔에스", title) and re.search(r"안성.{0,12}신공장|신공장.{0,12}증설", title):
         area = re.search(r"신공장은\s*약\s*(?P<area>[\d,]+)\s*평", flat_source)
         completion = re.search(r"내년\s*초\s*완공을\s*목표", flat_source)
@@ -9799,6 +9867,28 @@ def dpa_grid_event_theme(alert: dict) -> str:
     return ""
 
 
+def sk_energy_pricing_controls_event_theme(alert: dict) -> str:
+    """Collapse same-day rewrites of SK Energy's one pricing/internal-control package."""
+    if not alert.get("body_verified"):
+        return ""
+    title = str(alert.get("source_title") or alert.get("original_news") or alert.get("news") or "")
+    if not re.search(r"SK\s*에너지", title, re.I):
+        return ""
+    text = " ".join(
+        str(alert.get(key) or "")
+        for key in ("source_title", "original_news", "source_body", "source_abstract")
+    )
+    pricing_package = re.search(
+        r"석유\s*(?:시장|제품)\s*가격\s*(?:구조|체계|결정).{0,35}(?:개편|투명성|점검)",
+        text,
+    )
+    internal_controls = re.search(r"내부\s*통제\s*강화", text)
+    published_day = str(alert.get("published") or "")[:10]
+    if not pricing_package or not internal_controls or not re.fullmatch(r"20\d{2}-\d{2}-\d{2}", published_day):
+        return ""
+    return f"sk_energy_pricing_controls:{published_day}"
+
+
 def korean_petroleum_cartel_event_theme(alert: dict) -> str:
     """Identify one verified KFTC petroleum-price case across publisher rewrites."""
     if not alert.get("body_verified"):
@@ -9837,6 +9927,9 @@ def korean_petroleum_cartel_core_matches(alert: dict, core: str) -> bool:
 
 
 def semantic_event_theme(alert: dict) -> str:
+    pricing_controls_theme = sk_energy_pricing_controls_event_theme(alert)
+    if pricing_controls_theme:
+        return pricing_controls_theme
     petroleum_theme = korean_petroleum_cartel_event_theme(alert)
     if petroleum_theme:
         return petroleum_theme
@@ -9933,6 +10026,9 @@ def semantic_event_theme(alert: dict) -> str:
 
 
 def alert_dedup_key(alert: dict) -> tuple[str, str]:
+    pricing_controls_theme = sk_energy_pricing_controls_event_theme(alert)
+    if pricing_controls_theme:
+        return (pricing_controls_theme, "event")
     petroleum_theme = korean_petroleum_cartel_event_theme(alert)
     if petroleum_theme:
         return (petroleum_theme, "event")
