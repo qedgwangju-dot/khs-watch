@@ -138,7 +138,7 @@ jobs:
               ('신용융자', cr1, 500_000, '±0.5조'),
           ]
           triggered = [f"{name} {fmt(value)}(경보 기준 {label} 초과)" for name, value, threshold, label in thresholds if abs(value) >= threshold]
-          trigger_line = '• <b>큰 변동 원인</b>: ' + (' / '.join(triggered) if triggered else '1D 큰 변동 기준을 넘은 항목 없음')
+          trigger_line = '• <b>큰 변동 항목</b>: ' + (' / '.join(triggered) if triggered else '1D 큰 변동 기준을 넘은 항목 없음')
 
           # 당일 자금 방향은 예탁금·MMF만 보지 않고 CMA와 신용융자까지 같이 읽는다.
           cash_line = (
@@ -172,13 +172,29 @@ jobs:
               f"CMA {fmt(cma5)}{arrow(cma5,'cma')} · "
               f"신용융자 {fmt(cr5)}{arrow(cr5,'credit')} → "
           )
+          def mmf_today_context(current_direction, five_day_direction):
+              # Both the current direction and the five-day trend must be checked.
+              if current_direction == '증가':
+                  return "당일에도 MMF가 증가해 5거래일 누적 증가 방향과 일치합니다." if five_day_direction == '증가' else "당일 MMF가 증가했으나 5거래일 추세와 방향이 다릅니다."
+              if current_direction == '감소':
+                  return "당일 MMF는 감소해 5거래일 누적 증가 방향과 반대로 움직였습니다." if five_day_direction == '증가' else "당일 MMF도 감소해 5거래일 흐름과 같은 방향입니다."
+              return "당일 MMF는 유의미한 증감 없이 보합입니다."
+
+          # Guard all three possible daily outcomes before live message construction.
+          assert '당일에도 MMF가 증가' in mmf_today_context('증가','증가')
+          assert '당일 MMF는 감소' in mmf_today_context('감소','증가')
+          assert '보합' in mmf_today_context('보합','증가')
+
           if direction(dep5,'deposit') == '감소' and direction(mmf5,'mmf') == '증가' and direction(cr5,'credit') == '증가':
               persistence_line += (
                   "최근 5거래일에는 현금성 주식 매수 대기자금이 크게 줄었고 MMF·신용융자는 늘었습니다. "
-                  "당일 MMF 급감은 5거래일 상승 흐름 안의 단기 되돌림인지 다음 값에서 확인해야 합니다."
+                  + mmf_today_context(direction(mmf1,'mmf'), direction(mmf5,'mmf'))
               )
           else:
-              persistence_line += "1D와 5D 방향을 함께 봐 일시 반전인지 지속 추세인지 구분합니다."
+              persistence_line += (
+                  "1D와 5D 방향을 함께 봐 일시 반전인지 지속 추세인지 구분합니다. "
+                  + mmf_today_context(direction(mmf1,'mmf'), direction(mmf5,'mmf'))
+              )
 
           cma_dir_1 = direction(cma1,'cma')
           cma_dir_5 = direction(cma5,'cma')
@@ -240,6 +256,21 @@ jobs:
               summary_line,
           ])
 
+          # Independent final output guard: direction claims must match the raw
+          # signed KOFIA values. Fail before Telegram rather than transmit nonsense.
+          mmf_day_dir = direction(mmf1, 'mmf')
+          mmf_five_dir = direction(mmf5, 'mmf')
+          assert mmf_today_context(mmf_day_dir, mmf_five_dir) in new_section, "MMF day-vs-five-day commentary missing"
+          if mmf_day_dir == '증가':
+              forbidden = ('당일 MMF 급감', '당일 MMF 감소', '당일 MMF 유출', '당일 MMF는 감소')
+          elif mmf_day_dir == '감소':
+              forbidden = ('당일 MMF 급증', '당일 MMF 증가', '당일 MMF 유입', '당일에도 MMF가 증가')
+          else:
+              forbidden = ('당일 MMF 급감', '당일 MMF 급증')
+          conflicting = [term for term in forbidden if term in new_section]
+          if conflicting:
+              raise RuntimeError(f"KOFIA directional text inconsistent with MMF 1D={fmt(mmf1)}: {conflicting}")
+
           start_marker = '<b>현재 판정</b>'
           end_marker = '<b>검증</b>'
           start = text.index(start_marker)
@@ -252,6 +283,7 @@ jobs:
 
           alert_path.write_text(text, encoding='utf-8')
           print('detailed_liquidity_interpretation_applied=true')
+          print(f"directional_narrative_guard=true mmf_1d={fmt(mmf1)} mmf_direction={mmf_day_dir} mmf_5d={fmt(mmf5)}")
           print(trigger_line.replace('<b>', '').replace('</b>', ''))
           print(summary_line.replace('<b>', '').replace('</b>', ''))
           PY
