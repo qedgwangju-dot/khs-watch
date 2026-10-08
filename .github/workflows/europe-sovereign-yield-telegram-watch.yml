@@ -9,7 +9,9 @@ on:
     paths:
       - ".github/workflows/europe-sovereign-yield-telegram-watch.yml"
       - "scripts/europe_sovereign_yield_watch.py"
+      - "scripts/europe_sovereign_yield_telegram_html.py"
       - "tests/test_europe_sovereign_yield_watch.py"
+      - "tests/test_europe_sovereign_yield_telegram_html.py"
 
 permissions:
   contents: write
@@ -38,8 +40,8 @@ jobs:
 
       - name: Validate European yield watcher
         run: |
-          python -m py_compile scripts/europe_sovereign_yield_watch.py
-          python -m unittest tests/test_europe_sovereign_yield_watch.py -v
+          python -m py_compile scripts/europe_sovereign_yield_watch.py scripts/europe_sovereign_yield_telegram_html.py
+          python -m unittest tests.test_europe_sovereign_yield_watch tests.test_europe_sovereign_yield_telegram_html -v
 
       - name: Check official sovereign-yield sources
         run: python scripts/europe_sovereign_yield_watch.py
@@ -92,48 +94,20 @@ jobs:
           if not identity.get("ok") or actual.lower() != expected.lower():
               raise RuntimeError(f"Wrong Telegram bot configured: expected @{expected}, got @{actual or 'unknown'}")
 
-          title = pathlib.Path("out/europe_sovereign_yield_alert_title.txt").read_text(encoding="utf-8").strip()
+          from scripts.europe_sovereign_yield_telegram_html import render_chunks
+
           body = pathlib.Path("out/europe_sovereign_yield_alert.md").read_text(encoding="utf-8").strip()
-          raw = f"{title}\n\n{body}".strip()
-
-          rendered = []
-          for line in raw.splitlines():
-              if line.startswith("• Banque de France TEC10: "):
-                  url = line.split(": ", 1)[1].strip()
-                  rendered.append(f'• <a href="{html.escape(url, quote=True)}">Banque de France TEC10 원문</a>')
-              elif line.startswith("• Deutsche Bundesbank 10Y: "):
-                  url = line.split(": ", 1)[1].strip()
-                  rendered.append(f'• <a href="{html.escape(url, quote=True)}">Deutsche Bundesbank 10년 원문</a>')
-              elif line.startswith("• Bank of England IUDMNPY: "):
-                  url = line.split(": ", 1)[1].strip()
-                  rendered.append(f'• <a href="{html.escape(url, quote=True)}">Bank of England 10년 원문</a>')
-              else:
-                  rendered.append(html.escape(line))
-          text = "\n".join(rendered)
-
-          def split_message(value, limit=3900):
-              chunks, current = [], ""
-              for paragraph in value.split("\n\n"):
-                  candidate = paragraph if not current else current + "\n\n" + paragraph
-                  if len(candidate) <= limit:
-                      current = candidate
-                      continue
-                  if current:
-                      chunks.append(current)
-                      current = ""
-                  while len(paragraph) > limit:
-                      cut = paragraph.rfind("\n", 0, limit)
-                      if cut < 1:
-                          cut = limit
-                      chunks.append(paragraph[:cut])
-                      paragraph = paragraph[cut:].lstrip()
-                  current = paragraph
-              if current:
-                  chunks.append(current)
-              return chunks
+          # One headline: body already carries the alert title and risk status.
+          # Convert every official/market link into a clickable HTML anchor.
+          # Split lines before HTML conversion, never in the middle of <a href>.
+          chunks = render_chunks(body)
+          pathlib.Path("out/europe_sovereign_yield_telegram_preview.json").write_text(
+              json.dumps({"parse_mode": "HTML", "chunks": chunks},
+                         ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+          )
 
           ids = []
-          for idx, chunk in enumerate(split_message(text), start=1):
+          for idx, chunk in enumerate(chunks, start=1):
               if idx > 1:
                   chunk = f"유럽 국채금리 경보 (계속 {idx})\n\n{chunk}"
               payload = urllib.parse.urlencode({
@@ -199,6 +173,7 @@ jobs:
             out/europe_sovereign_yield_alert.json
             out/europe_sovereign_yield_pending_state.json
             out/europe_sovereign_yield_telegram_confirmed.json
+            out/europe_sovereign_yield_telegram_preview.json
             out/europe_sovereign_debug_*.txt
           if-no-files-found: ignore
           retention-days: 14
