@@ -256,7 +256,8 @@ def _production_metrics(blob: str, date: dt.datetime) -> dict:
 
 
 def _event(item: dict, state: dict) -> dict | None:
-    rank = _rank(item.get("source") or "")
+    official = _official_url(item)
+    rank = max(_rank(item.get("source") or ""), 3 if official else 0)
     if rank < 2:
         return None
     date = dt.datetime.fromisoformat(item["published_at_kst"])
@@ -265,7 +266,6 @@ def _event(item: dict, state: dict) -> dict | None:
     if not _is_target_quarter(blob, date):
         return None
 
-    official = _official_url(item)
     data = _production_metrics(blob, date)
     metrics = state.get("metrics") or {}
     reasons: list[str] = []
