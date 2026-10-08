@@ -185,17 +185,22 @@ def etf_interpretation(ticker, price, flow):
 
 
 def treasury_class(results, curve):
+    """Classify ETF flows separately from absolute Treasury yield stress."""
     shy, ief, tlt = [results[x].get("flow_usd") for x in ("SHY", "IEF", "TLT")]
     if None in (shy, ief, tlt):
-        return "국채 Fund Flow 판정 대기", "기준점 부족으로 국채 만기 이동 판정 대기"
-    if curve["30Y"] >= 5.30:
-        return "장기채 위험 확대", "30년물 5.30% 이상 → 장기채·고밸류 할인율 부담 확대"
+        return "국채 ETF 자금 판정 대기", "기준점 부족으로 국채 만기별 이동 판정 대기"
     if shy > 0 and ief <= 0 and tlt <= 0:
-        return "단기채 피신·방어적", "SHY 유입 + IEF/TLT 이탈 → 장기금리 하락보다 짧은 만기 이자 선호"
+        return "단기채 피신·방어적", "SHY 유입 + IEF·TLT 이탈 → 짧은 국채 만기 선호"
     if ief > 0 and tlt > 0 and (results["TLT"].get("nav_change_pct") or 0) > 0:
-        return "장기채 로테이션 확인", "IEF 유입 + TLT 가격·자금 동반 상승 → 실제 자금이 중·장기 만기로 이동"
+        return "중·장기채 가격·자금 동반 회복", "IEF·TLT 유입 + TLT 기준가격 상승 → 중·장기채 투자수요 확인"
     if ief > 0 and tlt > 0:
-        return "중·장기채 저가매수", "IEF·TLT 동시 유입 → 장기금리 고점 베팅 일부 시작"
+        return "중·장기채 저가매수", "IEF·TLT 동시 유입 → 금리 고점에 대한 매수 시도. 가격 상승과 동일한 뜻은 아님"
+    if ief < 0 and tlt > 0:
+        return "국채 만기별 자금 혼조", "IEF(7~10년) 유출·TLT(20년 이상) 유입 → 채권 전체 순매수나 순매도로 단정 불가"
+    if ief > 0 and tlt < 0:
+        return "국채 만기별 자금 혼조", "IEF(7~10년) 유입·TLT(20년 이상) 유출 → 듀레이션 내부 차별화"
+    if ief < 0 and tlt < 0:
+        return "중·장기채 ETF 동반 유출", "IEF·TLT 동시 유출 → 중·장기 국채 ETF 자금 이탈"
     return "국채 내부 혼조", "SHY·IEF·TLT 자금이 한 방향으로 정렬되지 않음"
 
 
@@ -257,7 +262,13 @@ def credit_class(results, prev_rows):
             return "품질 선호·선제적 위험축소", "LQD·HYG 자금은 빠지지만 OAS 급등은 아직 없음 → 신용위기보다 자금이 먼저 방어적으로 이동", ldoas, hdoas
         return "회사채 위험축소", "LQD·HYG 동반 유출 → 기업 신용위험 노출 축소", ldoas, hdoas
     if lqd > 0 and hyg < 0:
-        return "우량 신용만 선호", "LQD 유입·HYG 유출 → 회사채 안에서도 투자등급으로 품질 이동", ldoas, hdoas
+        if hdoas is not None and hdoas < -2:
+            return (
+                "우량 회사채 자금 선호·고수익 신용가격 개선",
+                f"LQD 유입·HYG 유출이지만 HYG OAS {hdoas:+.1f}bp 축소 → 자금은 품질 이동, 신용가격은 개선돼 전면적 위험회피로 단정 불가",
+                ldoas, hdoas,
+            )
+        return "우량 신용자금 선호", "LQD 유입·HYG 유출 → 회사채 안에서 자금이 투자등급으로 이동", ldoas, hdoas
     if lqd > 0 and hyg > 0:
         if (ldoas is None or ldoas <= 0) and (hdoas is None or hdoas <= 0):
             return "신용 위험선호 회복 확인", "LQD·HYG 동반 유입 + OAS 안정/축소 → 자금과 신용가격이 함께 개선", ldoas, hdoas
@@ -265,7 +276,7 @@ def credit_class(results, prev_rows):
     return "신용시장 혼조", "LQD·HYG 방향이 엇갈림", ldoas, hdoas
 
 
-def overall_class(t_head, c_head, results):
+def overall_class(t_head, c_head, results, curve=None):
     shy = results["SHY"].get("flow_usd")
     lqd = results["LQD"].get("flow_usd")
     hyg = results["HYG"].get("flow_usd")
@@ -273,7 +284,7 @@ def overall_class(t_head, c_head, results):
         return "방어적·품질 선호 강화", "회사채에서 빠진 자금이 안전한 미 국채, 특히 짧은 만기로 이동하는 품질 이동"
     if "신용위험 확대 확인" in c_head:
         return "위험회피 강화", "신용위험이 자금흐름을 넘어 가격·스프레드까지 번지는 단계"
-    if ("신용위험 경계" in c_head or "신용가격 악화" in c_head) and "장기채 위험 확대" in t_head:
+    if ("신용위험 경계" in c_head or "신용가격 악화" in c_head) and (curve or {}).get("30Y", 0) >= 5.30:
         return (
             "금리·신용 위험경계 강화",
             "장기금리 스트레스와 신용스프레드 악화가 동시에 확인. 다만 ETF 자금이 전면 유출로 정렬된 것은 아니어서 전면 위험회피 확정 단계는 아님",
@@ -482,7 +493,7 @@ def main():
 
     t_head, t_reason = treasury_class(results, curve)
     c_head, c_reason, ldoas, hdoas = credit_class(results, prev_rows)
-    o_head, o_reason = overall_class(t_head, c_head, results)
+    o_head, o_reason = overall_class(t_head, c_head, results, curve)
     regime, regime_easy, s210, s1030 = curve_regime(curve, prev_curve)
     d2, d10, d30 = bp(curve, prev_curve, "2Y"), bp(curve, prev_curve, "10Y"), bp(curve, prev_curve, "30Y")
     gap30 = (5.30 - curve["30Y"]) * 100
