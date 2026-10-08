@@ -2755,7 +2755,32 @@ def source_headline_event_fact(title: str, body: str) -> str:
             fact = (f'시지메드텍의 {product["product"]}이 지난달 {product["date"]} 콜롬비아 INVIMA Class IIb 허가를 받았다. '
                     f'현지 파트너 {partner["partner"]}와 공급을 추진하고 의료진 교육·학술 활동을 진행할 예정이다.')
             return fact if core_sentence_is_complete(fact) else ''
-    if re.search(r'삼성전자', title) and re.search(r'특별성과급|특별경영성과급|OPI2', title):
+    if re.search(r'삼성전자', title) and re.search(r'성과급|OPI2', title):
+        employee_estimate = re.search(
+            r'연봉\s*8000만원대(?:\s*초반)?\s*직원이\s*받는\s*성과급은.{0,100}?'
+            r'세전\s*기준\s*메모리사업부\s*약\s*(?P<current>\d+억\d+만원)', source,
+        )
+        profit_forecast = re.search(
+            r'삼성증권은.{0,60}내년 영업이익을\s*(?P<samsung>[\d,]+조원),\s*'
+            r'하나증권은\s*(?P<hana>[\d,]+조원)으로\s*전망',
+            source,
+        )
+        future_estimate = re.search(
+            r'총성과급은\s*세전\s*약\s*(?P<future>10억\d+만~10억\d+만원)', source,
+        )
+        current_allocation = re.search(
+            r'(?P<profit_year>20\d{2})년도 DS부문 영업이익의\s*(?P<share>[\d.]+)%', source,
+        )
+        if employee_estimate and profit_forecast and future_estimate and current_allocation:
+            payout_year = int(current_allocation["profit_year"]) + 1
+            forecast_payout_year = payout_year + 1
+            fact = (
+                f'삼성전자 DS부문 성과급 재원은 영업이익의 {current_allocation["share"]}%다. '
+                f'노조 추산상 연봉 8000만원대 메모리 직원의 {payout_year}년 세전 총액은 {employee_estimate["current"]}, '
+                f'{payout_year}년 이익전망(삼성증권 {profit_forecast["samsung"]}, 하나증권 {profit_forecast["hana"]})과 '
+                f'산정조건 유지 시 {forecast_payout_year}년 총액은 {future_estimate["future"]}다.'
+            )
+            return fact if core_sentence_is_complete(fact) else ''
         pool = re.search(r'2026년도 DS부문 영업이익의\s*(?P<share>[\d.]+)%', source)
         timing = re.search(r'내년 정기 주주총회가 끝난 뒤인\s*(?P<timing>3월 말에서 4월 초)', source)
         stock = re.search(r'세금과 보험료 등을 공제한 뒤 삼성전자 자사주로 지급', source)
@@ -12076,9 +12101,12 @@ def source_core_fact_errors(alert: dict) -> list[str]:
                   and '1477억원' in expected_observation and '2048억원' in expected_observation)
               or ('시지메드텍' in title and 'INVIMA Class IIb 허가를 받았다' in expected_observation
                   and '현지 파트너' in expected_observation)
-              or ('삼성전자' in title and re.search(r'특별성과급|특별경영성과급|OPI2', title)
+              or ('삼성전자' in title and re.search(r'성과급|OPI2', title)
                   and '영업이익의' in expected_observation and '10.5%' in expected_observation
                   and '자사주' in expected_observation)
+              or ('삼성전자' in title and re.search(r'성과급|OPI2', title)
+                  and '노조 추산상' in expected_observation and '7억' in expected_observation
+                  and '10억' in expected_observation)
              or petroleum_cartel_alignment)
             and source_audit["disposition"] == "keep" and source_audit["priority"] >= 2
             and expected_observation
