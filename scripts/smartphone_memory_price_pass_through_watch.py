@@ -242,15 +242,20 @@ def _shipment_revision_pct(blob: str) -> float | None:
             continue
         if not any(x in clause for x in ("forecast", "guidance", "estimate", "전망", "추정", "목표", "수정")):
             continue
-        down = any(x in clause for x in ("cut", "lower", "reduce", "down", "revised down", "하향", "축소", "감소"))
-        up = any(x in clause for x in ("raise", "increase", "up", "higher", "상향", "확대", "증가"))
-        if down == up:
-            continue
-        values = re.findall(r"([+\-]?\d{1,3}(?:\.\d+)?)\s*%", clause)
-        if not values:
-            continue
-        value = abs(float(values[-1]))
-        return round(-value if down else value, 2)
+        # Attribute a percent to the change verb immediately preceding it.
+        # "shipments forecast cut 12% due to 175% memory-price inflation"
+        # must mean a -12% shipment revision, not +175% or an ambiguous signal.
+        for match in re.finditer(r"([+\-]?\d{1,3}(?:\.\d+)?)\s*%", clause):
+            prefix = clause[max(0, match.start()-90):match.start()]
+            down_words = ("cut", "lower", "reduce", "down", "하향", "축소", "감소")
+            up_words = ("raise", "increase", "up", "higher", "상향", "확대", "증가")
+            last_down = max((prefix.rfind(x) for x in down_words), default=-1)
+            last_up = max((prefix.rfind(x) for x in up_words), default=-1)
+            if last_down == last_up:
+                continue
+            value = abs(float(match.group(1)))
+            return round(-value if last_down > last_up else value, 2)
+        return None
     return None
 
 
