@@ -4666,6 +4666,173 @@ class IncrementalNewsTests(unittest.TestCase):
             self.assertFalse(fresh)
             self.assertEqual(len(skipped), 1)
 
+    def test_quarterly_earnings_identity_recognizes_result_recap_without_period_in_title(self):
+        published = '2026-10-08T11:46:00+09:00'
+        body = ('삼성전자는 2026년 3분기 연결 기준 영업이익 107조원을 기록했다고 '
+                '8일 잠정 공시했다. 환율 하락과 실적 컨센서스가 향후 주가 변수로 거론됐다.')
+        release = {
+            'source_title': '삼성전자 3분기 영업이익 107조원 발표',
+            'published': published, 'body_verified': True, 'source_body': body,
+        }
+        recap = {
+            'source_title': '삼성전자 사상 최대 실적에도 주가 향방은',
+            'published': published, 'body_verified': True, 'source_body': body,
+        }
+        identity = materiality.source_event_identity(release)
+        self.assertTrue(identity.startswith('source_event:v2:issuer_quarterly_earnings:'))
+        self.assertEqual(identity, materiality.source_event_identity(recap))
+
+        quantified_flow = {
+            **recap,
+            'source_title': '삼성전자 실적 대기록에도 외국인 4조5000억원 순매도',
+            'source_body': body + ' 외국인은 삼성전자 주식을 4조5000억원 순매도했고 주가는 1.2% 하락했다.',
+        }
+        self.assertFalse(materiality.quarterly_earnings_release_observation(quantified_flow))
+        self.assertNotEqual(identity, materiality.source_event_identity(quantified_flow))
+
+        forecast = {
+            'source_title': '골드만삭스, 삼성전자 3분기 영업이익 전망 하향',
+            'published': published, 'body_verified': True,
+            'source_body': '골드만삭스는 삼성전자 3분기 영업이익 전망치를 114조원에서 105조5000억원으로 하향했다.',
+        }
+        self.assertFalse(materiality.quarterly_earnings_release_observation(forecast))
+
+    def test_same_quarterly_result_recap_is_deduped_in_live_selection(self):
+        published = '2026-10-08T11:46:00+09:00'
+        body = ('삼성전자는 2026년 3분기 연결 기준 영업이익 107조원을 기록했다고 '
+                '8일 잠정 공시했다. 환율 하락과 실적 컨센서스가 향후 주가 변수로 거론됐다.')
+        first = alert('삼성전자 3분기 영업이익 107조원 발표', body,
+                      'https://www.news1.kr/industry/general-industry/6313401')
+        second = alert('삼성전자 사상 최대 실적에도 주가 향방은', body,
+                       'https://www.newsis.com/view/NISX20261008_0003818890')
+        first['published'] = second['published'] = published
+        with patch.object(radar.base, 'kst_now', return_value=dt.datetime.fromisoformat(published)):
+            selected = radar.quality_display_alerts([first, second], 10)
+        self.assertEqual(len(selected), 1)
+
+    def test_october_eighth_low_signal_and_unconfirmed_partnership_cases_are_withheld(self):
+        lisa_title = 'AMD 리사 수, 삼성과 "더 폭넓은 파트너십…많은 파트너들 있어"'
+        lisa_body = ('리사 수 CEO는 삼성전자와 SK하이닉스의 HBM4 공급과 관련해 더 폭넓은 파트너십을 언급했다. '
+                     'HBM4 공급 계약, 물량, 가격, 일정은 공개되지 않았다.')
+        self.assertFalse(materiality.evidence_is_new_event(
+            'technology_or_clinical_stage', 'HBM4 공급 계약, 물량, 가격, 일정은 공개되지 않았다.'
+        ))
+        lisa_assessment = materiality.assess(lisa_title, lisa_body, published='2026-10-08T17:46:00+09:00')
+        lisa_publication = materiality.equity_publication_assessment(
+            lisa_title, lisa_assessment['evidence'], body=lisa_body, published='2026-10-08T17:46:00+09:00'
+        )
+        self.assertFalse(lisa_publication['eligible'], lisa_publication)
+
+        interview_title = '더벨thebell interview "실행 중심 컨설팅으로 구조조정 성과 증명"'
+        interview_body = (
+            '최 대표는 반도체 설비 실사 과정에서 삼성전자 제조 공정 출신 전문가들이 직접 참여해 '
+            '생산성과 설비 경쟁력 및 추가 투자 필요성을 검토했다고 밝혔다. '
+            '이번 실사에서 생산성과 설비 경쟁력, 추가 투자 필요성 등을 검토했다.'
+        )
+        interview_assessment = materiality.assess(
+            interview_title, interview_body, published='2026-10-08T07:16:00+09:00'
+        )
+        interview_publication = materiality.equity_publication_assessment(
+            interview_title, interview_assessment['evidence'], body=interview_body,
+            published='2026-10-08T07:16:00+09:00',
+        )
+        self.assertFalse(interview_publication['eligible'], interview_publication)
+
+        wealth = materiality.assess(
+            '머스크 재산이면 모든 사람에게 90달러씩 줄 수 있다',
+            '포춘은 머스크의 순자산 규모를 개인별 금액으로 환산해 비교했다.',
+            published='2026-10-08T10:16:00+09:00',
+        )
+        award = materiality.assess(
+            '트럼프, 머스크·델·나델라에 국가과학훈장 수여',
+            '트럼프 대통령이 과학 정상회의에서 기술기업 임원들에게 훈장을 수여한다.',
+            published='2026-10-08T14:16:00+09:00',
+        )
+        for assessment in (wealth, award):
+            self.assertNotEqual(assessment['disposition'], 'keep', assessment)
+
+    def test_goldman_samsung_forecast_revision_remains_market_relevant(self):
+        title = '골드만삭스, 삼성전자 3분기 영업이익 전망 하향…환율 가정도 조정'
+        body = (
+            '골드만삭스는 삼성전자 3분기 영업이익 전망치를 114조원에서 105조5000억원으로 하향했다. '
+            '3분기 평균 원·달러 환율 가정도 기존 1460원에서 1418원으로 낮췄다.'
+        )
+        assessment = materiality.assess(title, body, published='2026-10-07T10:16:00+09:00')
+        publication = materiality.equity_publication_assessment(
+            title, assessment['evidence'], body=body, published='2026-10-07T10:16:00+09:00'
+        )
+        self.assertEqual(assessment['disposition'], 'keep', assessment)
+        self.assertGreaterEqual(assessment['priority'], 2, assessment)
+        self.assertTrue(publication['eligible'], publication)
+
+    def test_october_eighth_material_triggers_survive_but_low_signal_items_do_not(self):
+        published = '2026-10-08T12:46:00+09:00'
+        solidigm_title = '솔리다임, 美 상장 추진…주관사단 선정해 AI 저장장치 투자 재원 모색'
+        solidigm_body = (
+            'SK하이닉스 자회사 솔리다임은 내년 미국 증시 상장을 목표로 주관사단을 선정했다. '
+            '회사는 AI 저장장치 투자를 위한 자금 조달을 추진한다. 신주 발행과 기존 주주 지분 매각 비중은 아직 확정되지 않았다.'
+        )
+        solidigm = materiality.assess(solidigm_title, solidigm_body, published=published)
+        solidigm_publication = materiality.equity_publication_assessment(
+            solidigm_title, solidigm['evidence'], body=solidigm_body, published=published,
+        )
+        self.assertEqual(solidigm['disposition'], 'keep', solidigm)
+        self.assertGreaterEqual(solidigm['priority'], 2, solidigm)
+        self.assertTrue(solidigm_publication['eligible'], solidigm_publication)
+
+        hbm_title = '삼성전자 반도체 영업이익 전망 110조원…HBM4 공급 확대'
+        hbm_body = (
+            '증권업계는 삼성전자 반도체 부문 영업이익을 110조원으로 전망했다. '
+            '2027년 HBM4 공급 확대가 전망의 주요 근거로 제시됐다.'
+        )
+        hbm = materiality.assess(hbm_title, hbm_body, published=published)
+        self.assertEqual(hbm['disposition'], 'keep', hbm)
+        self.assertTrue(any(item['kind'] == 'earnings_or_guidance' for item in hbm['evidence']), hbm)
+
+        retail_flow = materiality.assess(
+            '개미 돌아오나…하닉·마이크론 다시 사들인다',
+            '국내 투자자들이 SK하이닉스와 마이크론을 다시 사들이고 엔비디아를 매도했다.',
+            published=published,
+        )
+        self.assertNotEqual(retail_flow['disposition'], 'keep', retail_flow)
+        ai_pc = materiality.assess(
+            'MS, 엔비디아 칩 탑재 AI PC 공개…윈도11 개편',
+            '마이크로소프트가 엔비디아 칩 탑재 PC와 윈도11 AI 기능을 공개했다.',
+            published=published,
+        )
+        self.assertNotEqual(ai_pc['disposition'], 'keep', ai_pc)
+        price_move = materiality.assess(
+            '반도체 강세에 두산테스나 주가 14.4% 상승',
+            '두산테스나 주가가 반도체 대장주 강세에 힘입어 14.4% 상승했다.',
+            published=published,
+        )
+        self.assertLess(price_move['priority'], 2, price_move)
+
+    def test_attributed_us_russia_europe_gas_sales_exploration_is_early_not_confirmed(self):
+        title = 'Reuters: 미국과 러시아, 우크라이나 전쟁 중 유럽 가스 판매 모색'
+        body = (
+            '소식통에 따르면 우크라이나 전쟁 중 미국과 러시아가 유럽에 대한 천연가스 판매를 모색하고 있다. '
+            '현재 공개된 보도에는 판매 계약, 확정 물량, 구매자, 공급 일정이 제시되지 않았다.'
+        )
+        assessment = materiality.assess(title, body, published='2026-10-08T16:16:00+09:00')
+        self.assertEqual(assessment['disposition'], 'keep', assessment)
+        evidence = [item for item in assessment['evidence']
+                    if item['kind'] == 'energy_geopolitics_or_supply_risk']
+        self.assertTrue(evidence, assessment)
+        self.assertTrue(all(item['stage'] == 'early_signal' for item in evidence), evidence)
+        publication = materiality.equity_publication_assessment(
+            title, assessment['evidence'], body=body, published='2026-10-08T16:16:00+09:00',
+        )
+        self.assertTrue(publication['eligible'], publication)
+
+        unattributed = materiality.assess(
+            '미국과 러시아의 유럽 가스 판매 가능성',
+            '미국과 러시아가 유럽 가스 판매를 모색하고 있다.',
+            published='2026-10-08T16:16:00+09:00',
+        )
+        self.assertFalse(any(item['kind'] == 'energy_geopolitics_or_supply_risk'
+                             for item in unattributed['evidence']), unattributed)
+
     def test_lg_energy_quarterly_recap_dedupes_q_alias_and_drops_related_story_cards(self):
         published = '2026-10-08T09:33:00+09:00'
         source_a = (
