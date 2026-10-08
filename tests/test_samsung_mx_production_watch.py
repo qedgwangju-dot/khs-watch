@@ -129,6 +129,45 @@ class SamsungMXProductionWatchTests(unittest.TestCase):
     def test_old_baseline_fact_keys_are_stable(self):
         self.assertIn("samsung_2026q4_production_cut_30_reported", m.BASE_FACTS)
 
+    def test_q4_idc_forecast_52m_repeat_does_not_alert(self):
+        item = self.item("IDC forecasts Samsung 2026 Q4 smartphone shipments at 52 million units", "IDC")
+        self.assertIsNone(m._event(item, self.state()))
+
+    def test_q4_idc_forecast_45m_can_alert_not_as_production(self):
+        item = self.item("IDC cuts Samsung 2026 Q4 smartphone shipments forecast from 52 million units to 45 million units", "IDC")
+        signal = m._event(item, self.state())
+        self.assertIsNotNone(signal)
+        self.assertEqual(signal["changes"]["q4_forecast_m_latest"], 45)
+        self.assertNotIn("production_cut_max_pct", signal["changes"])
+        self.assertIn("출하전망", signal["reasons"][0])
+
+    def test_2027_idc_q4_actual_is_not_the_q4_forecast(self):
+        item = self.item(
+            "IDC Samsung 2026 Q4 actual smartphone shipments reached 48 million units",
+            "IDC",
+            "https://www.idc.com/research/samsung-2026-q4-results",
+        )
+        item["published_at_kst"] = "2027-01-15T09:00:00+09:00"
+        signal = m._event(item, self.state())
+        self.assertIsNotNone(signal)
+        self.assertEqual(signal["changes"]["q4_actual_shipments_m"], 48)
+        self.assertNotIn("q4_forecast_m_latest", signal["changes"])
+
+    def test_multiple_ambiguous_q4_volumes_are_not_guessed(self):
+        blob = "IDC Samsung 2026 Q4 smartphone shipments forecast at 52 million units or 45 million units"
+        self.assertIsNone(m._quarter_volume_m(blob, self.date))
+
+    def test_annual_samsung_270m_not_mislabeled_q4(self):
+        blob = "IDC Samsung full-year 2026 smartphone shipments forecast 270 million units"
+        self.assertIsNone(m._quarter_volume_m(blob, self.date))
+
+    def test_apple_volume_not_attributed_to_samsung_mention_elsewhere(self):
+        blob = "Samsung smartphone market outlook | Apple 2026 Q4 smartphone shipments forecast 45 million units"
+        self.assertIsNone(m._quarter_volume_m(blob, self.date))
+        self.assertEqual(m._production_metrics(
+            "Samsung market update | Apple Q4 2026 smartphone production cut 40%", self.date
+        ), {})
+
 if __name__ == "__main__":
     result = unittest.TextTestRunner(verbosity=2).run(
         unittest.defaultTestLoader.loadTestsFromTestCase(SamsungMXProductionWatchTests)
