@@ -187,9 +187,9 @@ if (
 
   const dep = depRows.slice(0, 6).map(r => ({
     date: String(r.TMPV1), value: toNum(r.TMPV2, `deposit ${r.TMPV1}`),
-    receivable: toNum(r.TMPV5 || 0, `receivable ${r.TMPV1}`),
-    forced: toNum(r.TMPV6 || 0, `forced ${r.TMPV1}`),
-    forcedRatio: Number(r.TMPV7 || 0),
+    receivable: toNum(r.TMPV5, `receivable ${r.TMPV1}`),
+    forced: toNum(r.TMPV6, `forced ${r.TMPV1}`),
+    forcedRatio: toNum(r.TMPV7, `forced ratio ${r.TMPV1}`),
   }));
   const credit = crRows.slice(0, 6).map(r => ({ date: String(r.TMPV1), value: toNum(r.TMPV2, `credit ${r.TMPV1}`) }));
 
