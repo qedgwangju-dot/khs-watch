@@ -58,6 +58,14 @@ QUERIES = [
     '함평 반도체 직접 팹 국가산단 후보지',
     '무안 반도체 소부장 물류 에너지 배후기지',
     '광주공항 반도체 팹 생산거점',
+    # 경영진 실사·현장방문은 부지·투자계약의 실행단계 사건이며 특정 기사 URL을 감시하지 않는다.
+    '최태원 SK하이닉스 광주 군공항 방문 팹 부지',
+    '최태원 호남 반도체 광주 군공항 현장 실사 일정',
+    'SK그룹 회장 광주 군공항 반도체 부지 방문 완료',
+    'SK하이닉스 최고경영진 광주 반도체 부지 실사 투자협약',
+    '삼성전자 이재용 광주 군공항 반도체 실사 협약',
+    'site:sk.com 광주 군공항 반도체 최태원',
+    'site:news.skhynix.co.kr 광주 반도체 현장 투자',
     '"호남 반도체" 함평 무안 클러스터 추가 부지',
     # 공식자료 우선
     'site:lh.or.kr "호남권 반도체 첨단 국가산업단지"',
@@ -83,7 +91,7 @@ STAGES = {
     "3_람사르_심사결과": ["람사르", "ramsar", "등록", "등재", "등록습지", "심사", "보완", "승인", "지정"],
     "4_정주주거_배후도시": ["정주", "주거", "주택", "배후도시", "배후 주거", "택지", "공공주택", "산정지구", "송정역", "상무 도심융합", "금호타이어", "자족형 도시", "주거종합계획", "주거정책", "미분양", "공실", "가구", "세대", "정주 수요"],
     "5_기반시설_생활SOC": ["전력", "용수", "변전소", "송전", "배전", "전원 인가", "도로", "철도", "교통", "교육", "학교", "의료", "병원", "문화", "생활 soc", "기반시설", "산업용수", "하수", "물류", "공항", "항공화물", "에너지", "분산에너지", "댐", "동복댐", "주암댐", "장흥댐", "보성강댐", "나주댐", "하수재이용수", "재이용수", "하천수", "이수 안전도", "유입량", "유출량", "가뭄", "물 부족", "용수 배분", "목적 외 사용", "사용료", "수자원", "용수 공급"],
-    "6_산단투자_기업일정": ["삼성전자", "sk하이닉스", "팹", "fab", "직접 팹", "투자", "착공", "준공", "양산", "생산시설", "생산거점", "후보지", "국가산단 지정", "산업단지 지정", "추가 확장", "추가 부지", "확장", "기업 투자", "실사", "클러스터", "배후기지", "소부장", "공급망", "다핵"],
+    "6_산단투자_기업일정": ["삼성전자", "sk하이닉스", "팹", "fab", "직접 팹", "투자", "착공", "준공", "양산", "생산시설", "생산거점", "후보지", "국가산단 지정", "산업단지 지정", "추가 확장", "추가 부지", "확장", "기업 투자", "실사", "현장 방문", "현장 실사", "부지 점검", "최고경영진", "최태원", "이재용", "회장", "클러스터", "배후기지", "소부장", "공급망", "다핵"],
 }
 
 STAGE_LABELS = {
@@ -98,11 +106,13 @@ CORE_STAGES = {"1_용역선정_현지조사", "2_수량수질_조사범위", "3_
 BROAD_STAGES = {"4_정주주거_배후도시", "5_기반시설_생활SOC", "6_산단투자_기업일정"}
 TOPIC_TERMS = ["호남권 반도체", "호남 반도체", "호남권 첨단 반도체", "호남 반도체 클러스터", "반도체 국가산업단지", "반도체 국가산단", "장록습지", "장록", "광주 군공항", "광주공항", "군공항 종전부지"]
 LOCAL_TERMS = ["전남광주", "전남광주시", "광주", "광산구", "산정지구", "송정역", "상무", "군공항", "광주공항", "함평", "함평군", "빛그린산단", "무안", "무안군", "무안공항", "현경면"]
-MATERIAL_TERMS = ["계획", "정책", "조례", "수요", "공급", "검토", "착공", "준공", "양산", "지정", "선정", "계약", "낙찰", "조사", "등록", "심사", "보완", "확장", "투자", "팹", "직접 팹", "생산거점", "후보지", "클러스터", "배후기지", "소부장", "공급망", "물류", "실사", "가구", "명", "억원", "조원", "㎞", "km", "mw", "gw", "만평", "㎡", "지구", "도시", "주택", "전력", "용수", "댐", "하수재이용수", "하천수", "가뭄", "물 부족", "유입량", "유출량", "이수 안전도", "수자원"]
+MATERIAL_TERMS = ["계획", "정책", "조례", "수요", "공급", "검토", "착공", "준공", "양산", "지정", "선정", "계약", "낙찰", "조사", "등록", "심사", "보완", "확장", "투자", "팹", "현장 방문", "실사", "경영진", "회장", "부지 점검", "직접 팹", "생산거점", "후보지", "클러스터", "배후기지", "소부장", "공급망", "물류", "실사", "가구", "명", "억원", "조원", "㎞", "km", "mw", "gw", "만평", "㎡", "지구", "도시", "주택", "전력", "용수", "댐", "하수재이용수", "하천수", "가뭄", "물 부족", "유입량", "유출량", "이수 안전도", "수자원"]
 POSITIVE = ["선정", "낙찰", "계약 체결", "조사 착수", "현지조사 착수", "승인", "확정", "통과", "착공", "준공", "양산", "기간 단축", "앞당", "확대", "증설"]
 NEGATIVE = ["지연", "보완", "재검토", "반려", "중단", "연기", "갈등", "우려", "영향 불가피", "재입찰", "사업기간 연장", "준공 지연", "공급 부족", "병목"]
 OFFICIAL_LH_DESIGN_BID = "https://ebid.lh.or.kr/ebid.et.tp.cmd.BidsrvcsDetailListCmd.dev?bidDegree=00&bidNum=2602775"
 OFFICIAL_LH_ENV_BID = "https://ebid.lh.or.kr/ebid.et.tp.cmd.BidsrvcsDetailListCmd.dev?bidDegree=00&bidNum=2603004"
+# 검증된 사건을 한 번만 초기 등록하는 입력. 뉴스 URL 자체를 정기 감시하지 않는다.
+VERIFIED_INTAKE_PATH = DATA / "honam_verified_event_intake.json"
 
 
 def fetch(url: str, timeout: int = 25) -> bytes:
@@ -370,6 +380,46 @@ def official_signature(url: str):
     return hashlib.sha256(joined.encode()).hexdigest()
 
 
+def verified_intake_events(state: dict) -> list[dict]:
+    """Register independently checked event evidence once, by event family.
+
+    This is an incident intake, not a URL subscription. The permanent topic
+    queries continue to discover independent follow-up changes.
+    """
+    if not VERIFIED_INTAKE_PATH.exists():
+        return []
+    payload = json.loads(VERIFIED_INTAKE_PATH.read_text(encoding="utf-8"))
+    seen = set(state.get("seen_event_keys") or [])
+    out = []
+    for event in payload.get("events", []):
+        family = str(event.get("event_family") or "").strip()
+        if not family or not family.startswith("honam_"):
+            continue
+        event_key = hashlib.sha256(("family|" + family).encode("utf-8")).hexdigest()[:28]
+        if event_key in seen:
+            continue
+        for src in event.get("evidence", []):
+            url = str(src.get("url") or "").strip()
+            if not url.startswith("https://"):
+                continue
+            out.append({
+                "title": str(event.get("title") or ""),
+                "description": str(event.get("description") or ""),
+                "source": str(src.get("source") or "보도"),
+                "published": str(src.get("published_rfc2822") or ""),
+                "url": url,
+                "url_resolved": True,
+                "source_status": "보도 단계",
+                "event_family": family,
+                "event_phase": str(event.get("event_phase") or "scheduled"),
+                "stages": list(event.get("stages") or ["6_산단투자_기업일정"]),
+                "stage_labels": [STAGE_LABELS.get(s, s) for s in (event.get("stages") or ["6_산단투자_기업일정"])],
+                "impact": "경영진 현장점검 예정·실제 투자 확정 아님",
+                "reason": "기존 사장단 부지검토에서 회장 현장방문 예정으로 진전, 향후 투자계약·전력·용수 및 인허가 협의 추적",
+            })
+    return out
+
+
 def main():
     now_dt = dt.datetime.now(KST)
     now = now_dt.isoformat(timespec="seconds")
@@ -461,7 +511,10 @@ def main():
     except Exception as exc:
         errors.append(f"LH 환경영향평가용역 확인 실패: {type(exc).__name__}: {exc}")
 
-    send_items = [compact_news_item(i) for i in new_items] if initialized else []
+    # 검증된 신규 사건을 먼저 처리해 RSS 색인 지연으로 누락되는 것을 방지한다.
+    # 최초 발송 뒤에는 기존 seen_event_keys로 중복 차단한다.
+    intake_items = verified_intake_events(state) if initialized else []
+    send_items = intake_items + ([compact_news_item(i) for i in new_items] if initialized else [])
     send_official = official_changes if initialized else []
 
     pending = {
