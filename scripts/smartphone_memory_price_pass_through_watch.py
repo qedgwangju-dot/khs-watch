@@ -237,7 +237,7 @@ def _shipment_revision_pct(blob: str) -> float | None:
     if not (any(x in low for x in OEM_MARKERS)
             and any(x in low for x in MEMORY_MARKERS)):
         return None
-    for clause in re.split(r"[!?;；。]|\\n|\\|", low):
+    for clause in re.split(r"[!?;；。]|\n|\|", low):
         if not any(x in clause for x in ("shipments", "shipment forecast", "출하량", "출하전망", "출하 목표")):
             continue
         if not any(x in clause for x in ("forecast", "guidance", "estimate", "전망", "추정", "목표", "수정")):
@@ -246,7 +246,7 @@ def _shipment_revision_pct(blob: str) -> float | None:
         up = any(x in clause for x in ("raise", "increase", "up", "higher", "상향", "확대", "증가"))
         if down == up:
             continue
-        values = re.findall(r"([+\\-]?\\d{1,3}(?:\\.\\d+)?)\\s*%", clause)
+        values = re.findall(r"([+\-]?\d{1,3}(?:\.\d+)?)\s*%", clause)
         if not values:
             continue
         value = abs(float(values[-1]))
