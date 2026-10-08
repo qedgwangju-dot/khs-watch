@@ -280,6 +280,11 @@ def enrich_quantity_values() -> None:
     changed = False
     enriched: list[str] = []
     for block in parts:
+        # Steel sheet is sold by mass, not in robot units. Never infer a
+        # fabricated device count from years, capacity or model numbers.
+        if "동국산업 46시리즈" in block or "동국산업" in block and "니켈도금강판" in block:
+            enriched.append(block)
+            continue
         if not QTY_RE.search(_visible_text(block)) or "💰 <b>대당·물량 환산</b>" in block or "💰 <b>물량 환산</b>" in block or "💰 <b>개당·물량 환산</b>" in block:
             enriched.append(block)
             continue
