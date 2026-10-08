@@ -98,7 +98,24 @@ jobs:
           except RuntimeError as exc:
               assert "signed zero" in str(exc), str(exc)
           assert "신규 돌파 아님" in report._jpm_30y_signal(5.67)
-          print("treasury_compact_invariants=ok and early_dedupe_guard=ok")
+
+          sample_results = {
+              "SHY": {"flow_usd": 40_580_000},
+              "IEF": {"flow_usd": -106_932_000},
+              "TLT": {"flow_usd": 115_695_000, "nav_change_pct": -0.14},
+              "LQD": {"flow_usd": 734_904_000, "oas_bps": 83.13},
+              "HYG": {"flow_usd": -331_315_000, "oas_bps": 269.13},
+          }
+          prior = {"LQD": {"oas_bps": 85.81}, "HYG": {"oas_bps": 279.04}}
+          curve = {"30Y": 5.67}
+          t_head, _ = watch.treasury_class(sample_results, curve)
+          c_head, _, _, hdoas = watch.credit_class(sample_results, prior)
+          o_head, _ = watch.overall_class(t_head, c_head, sample_results, curve)
+          assert t_head == "국채 만기별 자금 혼조", t_head
+          assert "고수익 신용가격 개선" in c_head, c_head
+          assert round(hdoas, 1) == -9.9, hdoas
+          assert o_head == "혼조·추가 확인", o_head
+          print("treasury_compact_invariants=ok, daily_guard=ok, credit_flow_and_oas=ok")
           PY
 
       - name: Validate exact Telegram bot route
