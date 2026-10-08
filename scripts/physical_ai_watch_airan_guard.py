@@ -284,6 +284,13 @@ def verification(item: dict, group: str, text: str) -> str:
 
 def clean_title(title: str, source: str) -> str:
     text = f'{title} {source}'
+    # Headlines can name Tesla/Atlas and "cylindrical" while omitting the
+    # actual material and 46-series details. Do not repeat this clickbait as
+    # proof of direct customer delivery.
+    if (source not in DONGKUK_OFFICIAL_SOURCES and DONGKUK_NAME.search(text)
+            and re.search(r'원통형|46\s*시리즈|46시리즈|cylindrical', text, re.I)
+            and re.search(r'Optimus|옵티머스|Atlas|아틀라스|테슬라|Tesla|보스턴다이내믹스|Boston\s*Dynamics|휴머노이드', text, re.I)):
+        return '동국산업 북미 46시리즈 소재 품질 인증…테슬라·아틀라스 직접 공급 미확인'
     if _is_dongkuk_nps(text):
         stage = _dongkuk_stage(text, source)
         if stage == 'reported_first_shipment':
