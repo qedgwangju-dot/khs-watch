@@ -86,7 +86,7 @@ class YenCarryTelegramCompactTests(unittest.TestCase):
             self.assertIn("USD/JPY 158.68", result)
             self.assertIn("미·일 2년 금리차 +4.7bp 소폭 확대 → 재구축 확인 아님", result)
             self.assertIn("JGB 10년 3.073% → 🟡 구조적 경계, 자동 청산선 아님", result)
-            self.assertIn("해외주식+중장기채 합계 2주 +1.19조엔", result)
+            self.assertIn("해외중장기채 2주 +1.19조엔", result)
             self.assertIn("채권 순매수", result)
             self.assertIn("FX 실현변동성 1.00배 → 급등 기준 1.50배 미달", result)
             self.assertIn("엔화 순롱 +23,170계약", result)
