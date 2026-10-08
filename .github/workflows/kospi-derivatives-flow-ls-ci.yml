@@ -78,6 +78,8 @@ jobs:
 
           assert not is_session_day(dt.date(2026,10,5)), "Chuseok holiday must be closed"
           assert is_session_day(dt.date(2026,10,6)), "2026-10-06 must be an XKRX session"
+          assert not is_session_day(dt.date(2026,10,9)), "2026-10-09 Hangul Day must be closed"
+          assert is_session_day(dt.date(2026,10,12)), "2026-10-12 next session must be open"
           assert not is_session_day(dt.date(2026,5,1)), "Labor Day must be closed"
           assert not is_session_day(dt.date(2026,12,31)), "year-end closure must be closed"
           normal_bounds=session_bounds(dt.date(2026,10,7))
@@ -192,6 +194,16 @@ jobs:
           assert "kospi_realtime_watchdog=verified_production" in korea, "recovery must verify real production job"
           assert "deadline=time.time()+90" in korea, "post-dispatch production verification window missing"
           assert 'KOSPI_REALTIME_WATCH_ACTIVE=0' in korea, "fallback-safe inactive state missing"
+          # '평일 09시'가 한국거래소 개장이라는 추정을 금지한다.
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+          tz=ZoneInfo("Asia/Seoul")
+          assert not fb.live_trading_window(datetime(2026,10,9,9,30,tzinfo=tz)), "Hangul Day must not alert"
+          assert fb.live_trading_window(datetime(2026,10,12,9,30,tzinfo=tz)), "normal trading day missing"
+          assert not fb.live_trading_window(datetime(2026,10,12,15,31,tzinfo=tz)), "post-close stale alert"
+          assert not fb.live_trading_window(datetime(2026,1,2,9,30,tzinfo=tz)), "delayed new-year opening"
+          assert fb.live_trading_window(datetime(2026,1,2,10,1,tzinfo=tz)), "delayed new-year open"
+          print("kospi_fallback_krx_holiday_guard_valid=true")
           print("redundant_recovery_structure_valid=true")
 
           # 2026-10-07 실데이터 조건: 종가 6,803.90, 일간 -1.98%, 시가 6,864.25.
