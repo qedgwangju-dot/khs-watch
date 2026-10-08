@@ -4,6 +4,7 @@ const { chromium } = require('playwright-core');
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+const {loadStateStrict} = require('./kofia_liquidity_state_integrity');
 
 const OUT_DIR = path.join(process.cwd(), 'out');
 const STATE_FILE = path.join(process.cwd(), 'data', 'kofia_liquidity_state.json');
@@ -76,7 +77,7 @@ function esc(s) {
 }
 
 function readState() {
-  try { return JSON.parse(fs.readFileSync(STATE_FILE, 'utf8')); } catch (_) { return null; }
+  return loadStateStrict(STATE_FILE);
 }
 
 function fingerprint(payload) {
@@ -213,6 +214,11 @@ if (
   // trading dates across all four official series. Checking latest dates
   // alone is not sufficient when one lane skips a reporting day.
   const referenceDates = dep.map(r => r.date);
+  if (referenceDates.length !== 6 ||
+      new Set(referenceDates).size !== 6 ||
+      referenceDates.some((d, i) => i > 0 && d >= referenceDates[i-1])) {
+    throw new Error('KOFIA deposit 1D/5D dates are not six distinct descending trading dates: ' + referenceDates.join(','));
+  }
   for (const [name, values] of Object.entries({ credit, mmf, cma })) {
     const actualDates = values.map(r => r.date);
     if (actualDates.length !== referenceDates.length ||
