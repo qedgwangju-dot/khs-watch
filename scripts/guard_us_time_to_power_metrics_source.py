@@ -3315,3 +3315,53 @@ if t.count("FORMAT_VERSION = 8") != 1:
 t = t.replace("FORMAT_VERSION = 8", "FORMAT_VERSION = 10", 1)
 g.write_text(t, encoding="utf-8")
 print("EIA verified sales/consumption and annual Morgan Stanley ESS research graph guard inserted")
+
+# Monitor NEW signed U.S. ESS orders in the SAME existing generation watcher.
+# This is not a new workflow/state/Telegram route. Prior items are blocked by
+# the existing seven-day source-date guard and seen-event state.
+t = g.read_text(encoding="utf-8")
+ess_official_anchor = '''    "hyosung.com", "hd-hyundaielectric.com", "hyundai-elec.co.kr", "ls-electric.com",
+'''
+ess_official_updated = ess_official_anchor + '''    "lgensol.com", "lg.co.kr", "lgcorp.com", "samsungsdi.com",
+'''
+if ess_official_anchor not in t:
+    raise SystemExit("ESS official supplier domains anchor moved")
+t = t.replace(ess_official_anchor, ess_official_updated, 1)
+
+ess_query_anchor = '''    'LS ELECTRIC data center transformer switchgear order North America',
+'''
+ess_query_updated = ess_query_anchor + '''    'site:lgensol.com energy storage ESS battery supply contract data center GWh',
+    'site:news.samsungsdi.com ESS energy storage battery contract US LFP',
+    'site:lg.co.kr LG에너지솔루션 ESS 미국 데이터센터 계약 수주 GWh',
+'''
+if ess_query_anchor not in t:
+    raise SystemExit("ESS official order news queries anchor moved")
+t = t.replace(ess_query_anchor, ess_query_updated, 1)
+
+# A GWh contract must not require >=500 MW. Only accept original ESS-supplier
+# source domains + explicit supply-contract/order language; research forecasts
+# with a GWh number still cannot become an awarded MW project.
+ess_meaning_anchor = '''    if "pwc" in low and any(k in low for k in ("data center", "data centre")) and any(k in low for k in ("capex", "ict", "2050", "investment")):
+        return True
+'''
+ess_meaning_updated = ess_meaning_anchor + '''    official_ess_supplier = any(k in source.lower() for k in (
+        "lg energy solution", "lg에너지솔루션", "samsung sdi", "삼성sdi", "삼성에스디아이",
+    ))
+    official_ess_contract = any(k in low for k in (
+        "supply agreement", "supply deal", "supply contract", "contract signed",
+        "signed contract", "wins contract", "secures contract", "order",
+        "공급계약", "수주", "계약 체결",
+    ))
+    is_ess = any(k in low for k in ("energy storage", "ess", "lfp"))
+    if official_ess_supplier and official_ess_contract and is_ess:
+        return True
+'''
+if ess_meaning_anchor not in t:
+    raise SystemExit("ESS official order meaningful-source gate anchor moved")
+t = t.replace(ess_meaning_anchor, ess_meaning_updated, 1)
+
+# No version bump: this expands what can be discovered, not the historical
+# research baseline. It must not create a synthetic 'format upgrade' alert.
+g.write_text(t, encoding="utf-8")
+print("Official LG Energy Solution/Samsung SDI ESS orders added to existing data-center watch")
+
