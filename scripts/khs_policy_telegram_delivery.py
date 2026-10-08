@@ -11,6 +11,21 @@ from collections.abc import Callable
 def _semantic_delivery_digest(parts: list[str], *, digest: str, route: str, title: str) -> str:
     """Collapse known policy event families across parallel alert lanes."""
     text = re.sub(r"\s+", " ", f"{title} {' '.join(parts)}").lower()
+    title_text = title.lower()
+    # Same one-time October 7 proclamation can appear in the White House
+    # feed and in a second general-policy lane with a different article link.
+    energy_month = (
+        "national-energy-dominance-month-2026" in text
+        or "national energy dominance month, 2026" in text
+        or "2026년 10월 국가 에너지 지배력의 달" in text
+    )
+    commemorative = any(x in title_text for x in (
+        "national energy dominance month", "국가 에너지 지배력의 달",
+    ))
+    if energy_month and commemorative:
+        return hashlib.sha256(
+            f"{route}|semantic|us-energy-dominance-month-proclamation-2026-10-07".encode()
+        ).hexdigest()[:20]
     dpa = "defense production act" in text or re.search(r"\bdpa\b", text) is not None
     alaska = any(term in text for term in ("beluga-healy", "beluga healy", "alaska railbelt"))
     grid = any(term in text for term in (
