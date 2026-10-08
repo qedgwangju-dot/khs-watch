@@ -190,7 +190,7 @@ def direction_call(payload: dict, pending: dict | None = None) -> tuple[str, str
     # show an unwind arrow from structural vulnerability or old position levels.
     spread_opposes_unwind = spread_move is not None and spread_move >= 1.0
     spread_opposes_carry = spread_move is not None and spread_move <= -1.0
-    fresh_fx = bool((pending or {}).get("fx_signal_eligible"))
+    fresh_fx = (pending or {}).get("fx_signal_eligible") is not False
     if not fresh_fx:
         unwind_score = carry_score = 0
     risk_emoji = {0: "🟢", 1: "🟡", 2: "🟠", 3: "🔴"}.get(min(risk_level, 3), "🟡")
