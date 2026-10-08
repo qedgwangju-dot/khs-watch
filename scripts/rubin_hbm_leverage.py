@@ -38,6 +38,11 @@ def main() -> None:
     if not text:
         return
 
+    # A hybrid-bonding process-risk alert must not inherit generic Rubin
+    # 288→192GB GPU/demand scenarios. Source-only corrections likewise.
+    if text.lstrip().startswith("🚨 <b>HBM 하이브리드 본딩") or text.lstrip().startswith("🚨 HBM 하이브리드 본딩"):
+        return
+
     text = fix_source_links(text)
     if "[HBM 수요·가격 레버리지]" in text:
         ALERT.write_text(text.strip() + "\n", encoding="utf-8")
