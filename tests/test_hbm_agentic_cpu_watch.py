@@ -1,6 +1,9 @@
 import pathlib
 import sys
 import unittest
+from datetime import datetime
+from unittest import mock
+from zoneinfo import ZoneInfo
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "scripts"))
 import agentic_cpu_watch as w
@@ -259,6 +262,39 @@ class AgenticCpuStructureTests(unittest.TestCase):
         self.assertEqual(name, "digitimes")
         self.assertAlmostEqual(obs["ai_server_cpu_2027_million"], 9.845)
         self.assertNotIn("all_server_cpu_2027_million", obs)
+
+    def test_same_day_secondary_analyst_revision_is_not_lost(self):
+        item = {
+            "kind": "bing",
+            "title": "BNP Paribas Adjusts PT on Advanced Micro Devices to $1,100 From $960",
+            "description": "BNP Paribas adjusts the price target on AMD",
+            "link": "https://www.marketscreener.com/news/bnp-paribas-adjusts-amd-pt-to-1100",
+            "published_at_kst": "2026-10-05T21:00:00+09:00",
+        }
+        previous = w.CPU_STRUCTURE_BASELINE.copy()
+        with mock.patch.object(w, "read_rss", return_value=[item]), mock.patch.object(w, "article_text", return_value=""):
+            found = w.discover_cpu_structure(datetime(2026, 10, 5, 23, tzinfo=ZoneInfo("Asia/Seoul")), previous)
+        self.assertEqual(len(found), 1)
+        self.assertEqual(found[0]["issuer"], "bnpp_analyst")
+        self.assertEqual(found[0]["metrics"].get("amd_target_usd"), 1100)
+
+    def test_same_day_official_cpu_validation_not_suppressed(self):
+        item = {
+            "kind": "bing",
+            "title": "AMD EPYC CPU server shipment growth",
+            "description": "AMD reports new CPU shipments and deployments",
+            "link": "https://ir.amd.com/news-events/press-releases/detail/999/cpu-shipments",
+            "published_at_kst": "2026-10-08T18:30:00+09:00",
+        }
+        now = datetime(2026, 10, 8, 19, tzinfo=ZoneInfo("Asia/Seoul"))
+        with mock.patch.object(w, "read_rss", return_value=[item]), mock.patch.object(w, "article_text", return_value="EPYC CPU shipments accelerate"):
+            found = w.discover_validation(now, "2026-10-08", set())
+        self.assertEqual(len(found), 1)
+        self.assertEqual(found[0]["url"], item["link"])
+        # The same URL must never trigger twice, even within the lookback window.
+        with mock.patch.object(w, "read_rss", return_value=[item]):
+            duplicate = w.discover_validation(now, "2026-10-08", {item["link"]})
+        self.assertEqual(duplicate, [])
 
     def test_one_shot_cpu_alert_has_separate_official_and_broker_provenance(self):
         a = w.cpu_structure_block(w.CPU_STRUCTURE_BASELINE, 1400.0, [])
