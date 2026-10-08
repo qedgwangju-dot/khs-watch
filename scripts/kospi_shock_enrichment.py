@@ -429,8 +429,11 @@ def stock_interval_price(
     shcode: str,
     start_ts: float,
     end_ts: float,
+    rows: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
-    rows = fetch_stock_bars(token, shcode, "U")
+    # 검증 경로에서는 같은 요청의 원자료를 재사용해 조회 시차·서로 다른 봉 집합을 방지한다.
+    if rows is None:
+        rows = fetch_stock_bars(token, shcode, "U")
     a = _aligned_prior_row(rows, start_ts)
     b = _aligned_prior_row(rows, end_ts)
     if not a or not b or a[1] >= b[1]:
@@ -1138,9 +1141,79 @@ def run_smoke(token: str) -> dict[str, Any]:
     return summary
 
 
+def select_stock_chart_probe_window(
+    rows: list[dict[str, Any]],
+    now: dt.datetime | None = None,
+) -> dict[str, Any]:
+    """검증만 장중 실시간 창과 장마감 당일 원자료 창을 구분한다.
+
+    실전 사건구간 stock_interval_price의 과거 표본 금지·90초 정렬 규칙은 그대로 둔다.
+    장외에 '현재-10분'을 사용하면 정상인 당일 장중 봉도 무조건 실패하는 문제를 막는다.
+    """
+    from krx_session_calendar import session_state
+
+    now = now or dt.datetime.now(KST)
+    now = now.replace(tzinfo=KST) if now.tzinfo is None else now.astimezone(KST)
+    session = session_state(now)
+    if not session["is_session"] or not session["open"] or not session["close"]:
+        return {"available": False, "mode": "휴장", "reason": "XKRX 휴장일: 장중 API 검증 대상 아님"}
+
+    open_ts = session["open"].timestamp()
+    close_ts = session["close"].timestamp()
+    now_ts = now.timestamp()
+    date_key = now.strftime("%Y%m%d")
+    timed = []
+    for row in rows:
+        # 빈 날짜를 _epoch에서 오늘로 대체하는 관용 동작을 CI 검증에는 허용하지 않는다.
+        bar_date = "".join(ch for ch in str(row.get("date") or "") if ch.isdigit())
+        if bar_date != date_key:
+            continue
+        ts = _epoch(row.get("date"), row.get("time"))
+        price = fnum(row.get("close"))
+        if (
+            ts is not None and price is not None and price > 0
+            and open_ts <= ts <= min(now_ts, close_ts + 120)
+        ):
+            timed.append((ts, row))
+    if len(timed) < 2:
+        return {"available": False, "mode": "자료부족",
+                "reason": "당일 정규장 1분봉 표본 2개 미만(과거 날짜·미래 봉 제외)",
+                "session_date":date_key,"valid_bars":len(timed)}
+
+    end_ts, _ = max(timed, key=lambda x:x[0])
+    is_live = bool(now < session["continuous_end"])
+    age = now_ts - end_ts
+    if is_live and age > 180:
+        return {"available": False, "mode": "장중",
+                "reason": f"장중 1분봉 {age:.0f}초 지연(허용 180초)",
+                "session_date":date_key,"bar_age_sec":round(age,1)}
+    # 종가단일가 구간 및 장마감 후에는 당일 마지막 유효 체결봉을 검증한다.
+    # 정규장 종료 20분보다 오래된 표본만 남았다면 장마감 봉조차 불완전한 것.
+    if not is_live and close_ts - end_ts > 20 * 60:
+        return {"available": False, "mode": "장마감 자료",
+                "reason": "정규장 종료 전 20분 내 유효 1분봉 없음",
+                "session_date":date_key,"last_bar_kst":fmt_clock(end_ts)}
+
+    target_ts = max(open_ts, end_ts - 10 * 60)
+    start_row = _aligned_prior_row([row for _, row in timed], target_ts)
+    if not start_row or start_row[1] >= end_ts:
+        return {"available": False, "mode": "장중" if is_live else "장마감 자료",
+                "reason": "당일 10분 이전 기준봉 부재·90초 시간 정렬 실패",
+                "session_date":date_key, "last_bar_kst":fmt_clock(end_ts)}
+    return {
+        "available": True,
+        "mode": "장중" if is_live else "장마감 자료",
+        "session_date": date_key,
+        "start_ts": target_ts, "end_ts": end_ts,
+        "start_bar_kst":fmt_clock(start_row[1]),
+        "end_bar_kst":fmt_clock(end_ts),
+        "bar_age_sec": round(age,1),
+        "valid_bars": len(timed),
+    }
+
+
 def run_probe(token: str) -> dict[str, Any]:
-    now = time.time()
-    start = now - 10 * 60
+    # 시각과 검증 데이터의 거래일을 잠근 뒤 장중·장외 창을 분리한다.
     master = stock_master(token)
     etfs = etf_master(token)
     industries = industry_master(token)
@@ -1152,7 +1225,16 @@ def run_probe(token: str) -> dict[str, Any]:
     if real_inds:
         first_members = industry_members(token, str(real_inds[0].get("upcode") or ""))
     rank, rank_errors = program_rank_candidates(token, limit=5)
-    samsung_price = stock_interval_price(token, "005930", start, now)
+    samsung_bars = fetch_stock_bars(token, "005930", "U")
+    chart_window = select_stock_chart_probe_window(samsung_bars)
+    if chart_window.get("available"):
+        samsung_price = stock_interval_price(
+            token, "005930",
+            float(chart_window["start_ts"]), float(chart_window["end_ts"]),
+            rows=samsung_bars,
+        )
+    else:
+        samsung_price = {"available":False,"error":chart_window.get("reason")}
     try:
         themes = stock_themes(token, "000660")
     except Exception as exc:
@@ -1172,6 +1254,7 @@ def run_probe(token: str) -> dict[str, Any]:
         "program_rank_count": len(rank),
         "program_rank_sample": rank[:3],
         "program_rank_errors": rank_errors,
+        "stock_chart_probe_window": chart_window,
         "samsung_integrated_price": samsung_price,
         "skhynix_themes": themes[:8],
         "etf_pdf_probe": etf_pdf_probe,
@@ -1181,7 +1264,12 @@ def run_probe(token: str) -> dict[str, Any]:
     if not master or not industries:
         raise RuntimeError(f"enrichment probe failed: {probe}")
     if not samsung_price.get("available"):
-        raise RuntimeError(f"integrated stock chart probe failed: {probe}")
+        raise RuntimeError(
+            "integrated stock chart probe failed "
+            f"(mode={chart_window.get('mode')}, "
+            f"reason={chart_window.get('reason') or samsung_price.get('error')}, "
+            f"date={chart_window.get('session_date')})"
+        )
     if not rank:
         raise RuntimeError(f"integrated program rank probe failed: {probe}")
     if etf_pdf_probe is None or not etf_pdf_probe.get("available"):
