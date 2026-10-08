@@ -357,7 +357,7 @@ def market_status():
     return '금리선물 결제값은 참고용 · 의사록 참가자 의견과 별도 판정'
 
 
-def message(stmt_date, minutes_link, press_link, rel, sig):
+def message(stmt_date, minutes_link, press_link, rel, sig, upgraded=False):
     sep = current_sep(stmt_date)
     meeting_day = datetime.strptime(stmt_date, '%Y-%m-%d').date()
     # 정례 2일 회의 기준. 다른 형식일 때는 날짜 범위 추정 대신 마지막 날만 표시.
@@ -372,7 +372,8 @@ def message(stmt_date, minutes_link, press_link, rel, sig):
         return ['<b>' + name + '</b>'] + true_lines + ['']
 
     lines = [
-        '<b>[Warsh | FOMC 의사록 · 반응함수]</b>',
+        ('<b>[보강 · Warsh | FOMC 의사록 · 반응함수]</b>' if upgraded else
+         '<b>[Warsh | FOMC 의사록 · 반응함수]</b>'),
         f'대상: {meeting_label} · 공개: {_date_ko(rel)} (미국 동부시간 오후 2시)',
         '',
         '<b>한눈에 보기</b>',
@@ -501,10 +502,13 @@ def main():
     already = old.get('last_sent_key') == key or legacy_sent
     if old.get('pending_key') == key and old.get('delivery_status') == 'sending':
         raise RuntimeError('이전 Telegram 전송 결과 불명확 — 자동 재전송 중단, 운영 확인 필요')
-    # 설치 때 오래된 의사록을 다시 알리지 않되, 이번 미전송 건은 복원한다.
+    # 이미 전송된 동일 회의도 승인된 상세 형식 업그레이드는 한 번만 보강 송출한다.
+    # 결측/실패 상태에서는 최신 의사록 자체를 발송 처리하지 않는다.
     delta = (datetime.now(ET).date() - datetime.fromisoformat(rel).date()).days
     eligible = 0 <= delta <= 7
-    should_send = FORCE or (not already and eligible)
+    old_version = int(old.get('last_sent_format_version') or 2)
+    upgraded = bool(already and eligible and old_version < FORMAT_VERSION)
+    should_send = FORCE or (not already and eligible) or upgraded
 
     new = {
         'schema_version': FORMAT_VERSION,
@@ -512,7 +516,9 @@ def main():
         'last_minutes_url': final,
         'last_release_date': rel,
         'last_sent_key': key if already else old.get('last_sent_key'),
+        'last_sent_format_version': old.get('last_sent_format_version'),
         'message_id': old.get('message_id'),
+        'previous_message_id': old.get('previous_message_id'),
         'classification': signals,
         'status': '공식 공개·본문·보도자료 확인',
         'sent': bool(already),
@@ -523,10 +529,13 @@ def main():
         # 수신 여부가 불명확한 메시지를 중복 발송하지 않도록 한다.
         new.update({'pending_key': key, 'delivery_status': 'sending', 'sent': False})
         save(new)
-        receipt = send(message(stmt_date, final, press_url, rel, signals))
+        receipt = send(message(stmt_date, final, press_url, rel, signals, upgraded=upgraded))
         new.update({
             'sent': True, 'last_sent_key': key,
             'message_id': receipt, 'delivery_status': 'confirmed',
+            'last_sent_format_version': FORMAT_VERSION,
+            'previous_message_id': old.get('message_id') if upgraded else old.get('previous_message_id'),
+            'format_upgrade_sent': upgraded,
             'pending_key': None, 'sent_at_utc': datetime.now(timezone.utc).isoformat(),
         })
         save(new)
@@ -541,6 +550,7 @@ def main():
     print(json.dumps({
         'available': True, 'statement_date': stmt_date, 'release_date': rel,
         'verified': True, 'sent': should_send, 'already_sent': bool(already),
+        'format_upgrade_sent': upgraded,
         'message_id': new.get('message_id'),
         'most_yearend': signals['most_yearend'],
         'many_risk': signals['many_risk'],
