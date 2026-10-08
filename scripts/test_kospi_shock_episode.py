@@ -665,3 +665,33 @@ assert "if price_poll_ok:\\n                await self.evaluate()" not in _fresh
 assert "if price_poll_ok:\n                await self.evaluate()" in _fresh_poll_source, _fresh_poll_source
 assert "price_event_skipped_on_poll_failure" in _fresh_poll_source
 print("failed_price_poll_skip_regression=true")
+
+
+# LS API가 '153288'처럼 존재하지 않는 초 단위나 빈 시각을 반환해도
+# 조회 완료시각을 대신 넣으면 수급 정렬이 거짓으로 '정상' 판정될 수 있다.
+# 허용 시각만 채택하고 잘못된 시각은 엄격하게 보류한다.
+from zoneinfo import ZoneInfo as _clock_zone
+import datetime as _clock_dt
+_ref_clock = _clock_dt.datetime.now(_clock_zone("Asia/Seoul")).replace(
+    hour=15, minute=30, second=40, microsecond=0
+)
+_ref_clock_ts = _ref_clock.timestamp()
+assert ks.market_clock_epoch("153040", _ref_clock_ts) == _ref_clock_ts
+assert ks.market_clock_epoch("15:30:40", _ref_clock_ts) == _ref_clock_ts
+assert ks.market_clock_epoch("153288", _ref_clock_ts) is None
+assert ks.market_clock_epoch("", _ref_clock_ts) is None
+assert ks.market_clock_epoch("153060", _ref_clock_ts) is None
+assert ks.market_clock_epoch("1530", _ref_clock_ts) == _ref_clock_ts - 40
+
+_before_clock = ks.time.time
+try:
+    ks.time.time = lambda: _ref_clock_ts
+    row = ks._latest_time_row([
+        {"time": "153040", "name": "valid"},
+        {"time": "153288", "name": "invalid"},
+        {"time": "153035", "name": "older"},
+    ])
+    assert row["name"] == "valid", row
+finally:
+    ks.time.time = _before_clock
+print("invalid_investor_clock_regression=true malformed=153288 masked=false")
