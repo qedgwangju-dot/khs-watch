@@ -80,10 +80,14 @@ def market_clock_epoch(value: Any, fallback_ts: float | None = None) -> float | 
     조회 완료 시각(fallback_ts)은 비교 기준일 뿐 원자료 시각을 대신하지 않는다.
     """
     digits = "".join(ch for ch in str(value or "") if ch.isdigit())
-    if len(digits) not in {4, 6}:
+    # 실전 t1602는 HHMMSScc(8자리), 일부 API는 HHMMSS/HHMM를 반환한다.
+    # 8자리의 마지막 두 자리는 1/100초이므로 초 필드 검증 전 제거한다.
+    if len(digits) not in {4, 6, 8}:
         return None
     if len(digits) == 4:
         digits += "00"
+    elif len(digits) == 8:
+        digits = digits[:6]
     try:
         now = dt.datetime.now(KST)
         point = dt.datetime(now.year, now.month, now.day,
