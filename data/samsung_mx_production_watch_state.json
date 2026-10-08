@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "initial_alert_sent": false,
+  "baseline_at_kst": "2026-10-08T04:00:00+09:00",
+  "seen": [],
+  "seen_fact_keys": [
+    "samsung_2026q4_production_cut_30_reported",
+    "samsung_2026q4_supplier_order_cut_20_30_reported",
+    "samsung_2026q4_q4_forecast_52m_article"
+  ],
+  "metrics": {
+    "period": "2026Q4",
+    "production_cut_max_pct": 30,
+    "production_cut_base": "비교 기준·감축 전 목표물량 비공개",
+    "production_status": "머니투데이 업계 관계자 인용·삼성 공식 미확정",
+    "supplier_order_cut_min_pct": 20,
+    "supplier_order_cut_max_pct": 30,
+    "supplier_order_status": "협력사 납품량 감축 요청에 대한 언론 보도",
+    "idc_q2_actual_shipments_m": 62.7,
+    "q3_forecast_m_article": 59,
+    "q4_forecast_m_article": 52,
+    "forecast_source": "머니투데이 IDC 전망 인용·직접 공개 원표 Q4 확인 불가",
+    "mx_network_q2_op_krw_eok": -7000,
+    "mx_network_q2_status": "삼성전자 공식 2분기 실적",
+    "mx_network_q3_op_est_krw_eok": -19000,
+    "mx_network_q3_status": "메리츠증권 추정·삼성 공식 미확정"
+  },
+  "last_alert": null
+}
