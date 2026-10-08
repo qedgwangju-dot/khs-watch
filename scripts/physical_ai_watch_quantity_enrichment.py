@@ -267,22 +267,31 @@ def _insert_after_core(block: str, value_block: str) -> str:
     return "\n".join(out)
 
 
+def _skip_quantity_enrichment(block: str) -> bool:
+    # These alerts describe steel tonnage or an old robot-module validation
+    # throughput, not a priced count of finished robot/BMS customer shipments.
+    if "동국산업 46시리즈" in block or ("동국산업" in block and "니켈도금강판" in block):
+        return True
+    if "디케이티 로보틱스" in block or "디케이티 휴머노이드 배터리" in block:
+        return True
+    return False
+
+
 def enrich_quantity_values() -> None:
     if not base.ALERT_PATH.exists():
         return
     text = base.ALERT_PATH.read_text(encoding="utf-8")
-    if not QTY_RE.search(_visible_text(text)):
+    parts = text.split("\n──────────────────\n")
+    if not any(QTY_RE.search(_visible_text(part)) and
+               not _skip_quantity_enrichment(part) for part in parts):
         return
 
     rate, _fresh_fx = current._usdkrw()
     prices, fresh = _official_prices()
-    parts = text.split("\n──────────────────\n")
     changed = False
     enriched: list[str] = []
     for block in parts:
-        # Steel sheet is sold by mass, not in robot units. Never infer a
-        # fabricated device count from years, capacity or model numbers.
-        if "동국산업 46시리즈" in block or "동국산업" in block and "니켈도금강판" in block:
+        if _skip_quantity_enrichment(block):
             enriched.append(block)
             continue
         if not QTY_RE.search(_visible_text(block)) or "💰 <b>대당·물량 환산</b>" in block or "💰 <b>물량 환산</b>" in block or "💰 <b>개당·물량 환산</b>" in block:
