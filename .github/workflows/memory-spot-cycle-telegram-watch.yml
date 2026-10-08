@@ -7,11 +7,13 @@ on:
       - "scripts/memory_spot_cycle_watch.py"
       - "scripts/apple_memory_procurement_watch.py"
       - "scripts/smartphone_memory_price_pass_through_watch.py"
+      - "scripts/samsung_mx_production_watch.py"
       - "scripts/currency_krw_guard.py"
       - "scripts/fx_api.py"
       - "tests/test_memory_spot_cycle_watch.py"
       - "tests/test_hbm_currency_krw_guard.py"
       - "tests/test_smartphone_memory_price_pass_through_watch.py"
+      - "tests/test_samsung_mx_production_watch.py"
   schedule:
     - cron: "17,47 * * * *"
   workflow_dispatch:
@@ -57,10 +59,12 @@ jobs:
           python -m py_compile scripts/memory_spot_cycle_watch.py
           python -m py_compile scripts/apple_memory_procurement_watch.py
           python -m py_compile scripts/smartphone_memory_price_pass_through_watch.py
+          python -m py_compile scripts/samsung_mx_production_watch.py
           python -m py_compile scripts/currency_krw_guard.py scripts/fx_api.py
           python -m unittest discover -s tests -p 'test_memory_spot_cycle_watch.py' -v
           python -m unittest discover -s tests -p 'test_hbm_currency_krw_guard.py' -v
           python -m unittest discover -s tests -p 'test_smartphone_memory_price_pass_through_watch.py' -v
+          python -m unittest discover -s tests -p 'test_samsung_mx_production_watch.py' -v
 
       - name: Scan memory spot, contract and HBM supply signals
         env:
@@ -72,6 +76,9 @@ jobs:
 
       - name: Scan smartphone memory-cost price pass-through
         run: python scripts/smartphone_memory_price_pass_through_watch.py
+
+      - name: Scan Samsung MX production and component-order cuts
+        run: python scripts/samsung_mx_production_watch.py
 
       - name: Publish watcher summary
         if: always()
@@ -88,6 +95,10 @@ jobs:
           if [ -f out/smartphone_memory_price_pass_through_status.md ]; then
             printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
             cat out/smartphone_memory_price_pass_through_status.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/samsung_mx_production_watch_status.md ]; then
+            printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/samsung_mx_production_watch_status.md >> "$GITHUB_STEP_SUMMARY"
           fi
           if [ -f out/memory_spot_cycle_watch_telegram.txt ]; then
             printf '\n---\n\nTelegram 알림 미리보기:\n\n' >> "$GITHUB_STEP_SUMMARY"
@@ -301,6 +312,14 @@ jobs:
         if: success() && hashFiles('out/memory_spot_cycle_watch_telegram.txt') == '' && hashFiles('out/smartphone_memory_price_pass_through_pending_state.json') != ''
         run: cp out/smartphone_memory_price_pass_through_pending_state.json data/smartphone_memory_price_pass_through_state.json
 
+      - name: Persist Samsung MX state after confirmed Telegram delivery
+        if: success() && hashFiles('out/memory_spot_cycle_watch_telegram.txt') != '' && hashFiles('out/memory_spot_cycle_watch_telegram_confirmed.json') != '' && hashFiles('out/samsung_mx_production_watch_pending_state.json') != ''
+        run: cp out/samsung_mx_production_watch_pending_state.json data/samsung_mx_production_watch_state.json
+
+      - name: Persist Samsung MX no-alert state
+        if: success() && hashFiles('out/memory_spot_cycle_watch_telegram.txt') == '' && hashFiles('out/samsung_mx_production_watch_pending_state.json') != ''
+        run: cp out/samsung_mx_production_watch_pending_state.json data/samsung_mx_production_watch_state.json
+
       - name: Commit watcher state
         if: success()
         run: |
@@ -322,6 +341,10 @@ jobs:
           if [ -f data/smartphone_memory_price_pass_through_state.json ]; then
             cp data/smartphone_memory_price_pass_through_state.json /tmp/smartphone_memory_price_pass_through_state.local.json
             git checkout -- data/smartphone_memory_price_pass_through_state.json 2>/dev/null || true
+          fi
+          if [ -f data/samsung_mx_production_watch_state.json ]; then
+            cp data/samsung_mx_production_watch_state.json /tmp/samsung_mx_production_watch_state.local.json
+            git checkout -- data/samsung_mx_production_watch_state.json 2>/dev/null || true
           fi
 
           # Memory delivery state is critical. Rebase-based retries can conflict when
@@ -378,8 +401,11 @@ jobs:
             if [ -f /tmp/smartphone_memory_price_pass_through_state.local.json ]; then
               cp /tmp/smartphone_memory_price_pass_through_state.local.json data/smartphone_memory_price_pass_through_state.json
             fi
+            if [ -f /tmp/samsung_mx_production_watch_state.local.json ]; then
+              cp /tmp/samsung_mx_production_watch_state.local.json data/samsung_mx_production_watch_state.json
+            fi
 
-            git add data/memory_spot_cycle_watch_state.json data/smartphone_memory_price_pass_through_state.json
+            git add data/memory_spot_cycle_watch_state.json data/smartphone_memory_price_pass_through_state.json data/samsung_mx_production_watch_state.json
             if git diff --cached --quiet; then
               echo "Memory watch state already checkpointed by concurrent run"
               pushed=true
@@ -429,6 +455,9 @@ jobs:
             out/smartphone_memory_price_pass_through_status.md
             out/smartphone_memory_price_pass_through_alert.html
             out/smartphone_memory_price_pass_through_pending_state.json
+            out/samsung_mx_production_watch_status.md
+            out/samsung_mx_production_watch_alert.html
+            out/samsung_mx_production_watch_pending_state.json
             out/memory_spot_cycle_watch_telegram.txt
             out/memory_spot_cycle_watch_pending_state.json
             out/memory_spot_cycle_watch_telegram_confirmed.json
