@@ -278,6 +278,55 @@ class AgenticCpuStructureTests(unittest.TestCase):
         self.assertEqual(found[0]["issuer"], "bnpp_analyst")
         self.assertEqual(found[0]["metrics"].get("amd_target_usd"), 1100)
 
+    def test_failed_source_parse_remains_retryable_instead_of_blacklisted(self):
+        item = {
+            "kind": "bing",
+            "title": "BNP Paribas discusses AMD CPU market",
+            "description": "Forecast report is restricted to subscribers",
+            "link": "https://www.marketscreener.com/news/bnp-cpu-revision-2026",
+            "published_at_kst": "2026-10-08T18:00:00+09:00",
+        }
+        previous = {
+            **w.CPU_STRUCTURE_BASELINE,
+            "seen_source_urls": [],
+        }
+        current_time = datetime(2026, 10, 8, 19, tzinfo=ZoneInfo("Asia/Seoul"))
+        with mock.patch.object(w, "read_rss", return_value=[item]):
+            with mock.patch.object(w, "article_text", return_value=""):
+                first = w.discover_cpu_structure(current_time, previous)
+            self.assertEqual(first, [])
+            self.assertNotIn(item["link"], previous["seen_source_urls"])
+            with mock.patch.object(
+                w, "article_text",
+                return_value="BNP Paribas adjusts PT on AMD to $1,100 from $960.",
+            ):
+                second = w.discover_cpu_structure(current_time, previous)
+        self.assertEqual(len(second), 1)
+        self.assertEqual(second[0]["metrics"]["amd_target_usd"], 1100)
+        self.assertIn(item["link"], previous["seen_source_urls"])
+
+    def test_same_day_bofa_revision_is_not_skipped_by_date_only_cutoff(self):
+        item = {
+            "kind": "bing",
+            "title": "BofA agentic server CPU forecast revision",
+            "description": "Bank of America server CPU TAM agentic AI outlook",
+            "link": "https://example.org/new-bofa-cpu-forecast",
+            "published_at_kst": "2026-10-08T19:00:00+09:00",
+        }
+        with (
+            mock.patch.object(w, "read_rss", return_value=[item]),
+            mock.patch.object(
+                w, "article_text",
+                return_value="BofA expects server CPU TAM $240bn in 2030 for agentic AI.",
+            ),
+        ):
+            found = w.discover_forecasts(
+                datetime(2026, 10, 8, 20, tzinfo=ZoneInfo("Asia/Seoul")),
+                "2026-10-08",
+            )
+        self.assertEqual(len(found), 1)
+        self.assertEqual(found[0]["metrics"]["server_cpu_tam_2030_usd_bn"], 240.0)
+
     def test_epyc_product_mention_is_not_customer_demand_validation(self):
         official_url = "https://www.amd.com/en/news/epyc-platforms"
         self.assertFalse(w.is_official_validation(
