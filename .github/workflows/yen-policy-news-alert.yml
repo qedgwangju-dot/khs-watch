@@ -4,15 +4,23 @@ on:
   # Production scheduling is owned by global-rates-telegram-watch.yml.
   # Keep this workflow only for manual execution and pull-request validation.
   workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/yen-policy-news-alert.yml"
+      - "scripts/yen_policy_news_alert_runner.py"
+      - "scripts/yen_policy_news_event_guard.py"
+      - "tests/test_yen_policy_news_event_guard.py"
   pull_request:
     paths:
       - ".github/workflows/yen-policy-news-alert.yml"
       - "scripts/yen_policy_news_alert.py"
       - "scripts/yen_policy_news_alert_runner.py"
+      - "scripts/yen_policy_news_event_guard.py"
       - "scripts/yen_policy_news_linkify.py"
       - "scripts/khs_source_fetch.py"
       - "tests/test_yen_policy_news_alert.py"
       - "tests/test_yen_policy_news_alert_runner.py"
+      - "tests/test_yen_policy_news_event_guard.py"
       - "tests/test_yen_policy_news_linkify.py"
       - "data/yen_policy_news_state.json"
       - "data/yen_policy_news_alert_config.json"
@@ -49,9 +57,10 @@ jobs:
         run: |
           python -m py_compile scripts/yen_policy_news_alert.py
           python -m py_compile scripts/yen_policy_news_alert_runner.py
+          python -m py_compile scripts/yen_policy_news_event_guard.py
           python -m py_compile scripts/yen_policy_news_linkify.py
           python -m py_compile scripts/khs_source_fetch.py
-          PYTHONPATH=scripts python -m unittest tests/test_yen_policy_news_alert.py tests/test_yen_policy_news_alert_runner.py tests/test_yen_policy_news_linkify.py -v
+          PYTHONPATH=scripts python -m unittest tests/test_yen_policy_news_alert.py tests/test_yen_policy_news_alert_runner.py tests/test_yen_policy_news_event_guard.py tests/test_yen_policy_news_linkify.py -v
 
       - name: Check BOJ and yen policy catalysts
         run: PYTHONPATH=scripts python scripts/yen_policy_news_alert_runner.py
