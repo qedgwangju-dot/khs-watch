@@ -973,11 +973,19 @@ POWER_TRUSTED_MEDIA = (
 )
 
 
+def has_actual_aaoi_identity(title: str) -> bool:
+    # A Google News query matching the article body does not prove the
+    # headline's company is AAOI. Require an actual corporate identifier.
+    return bool(re.search(
+        r"Applied Optoelectronics|\bAAOI\b|\bAOI\b|"
+        r"祥茂光[電电]|Prime World International",
+        html.unescape(title or ""), re.I
+    ))
+
+
 def is_aaoi_power_topic(title: str) -> bool:
     text = html.unescape(title or "")
-    aaoi = bool(re.search(
-        r"Applied Optoelectronics|\bAAOI\b|\bAOI\b|祥茂光[電电]", text, re.I
-    ))
+    aaoi = has_actual_aaoi_identity(text)
     taiwan = bool(re.search(r"Taiwan|台灣|台湾|祥茂光[電电]", text, re.I))
     power = bool(re.search(
         r"Bloom Energy|賀喜能源|贺喜能源|Leadray|\bSOFC\b|"
@@ -1927,6 +1935,11 @@ def _self_test_korean_optics_alerts() -> None:
     assert power_milestone(realized)[2] != POWER_INITIAL_KEY
     assert power_milestone(another_site) is None
     assert power_milestone(old_customer) is None
+    assert not has_actual_aaoi_identity(
+        "Chunghwa Telecom's modular data center turnkey deployment"
+    )
+    assert has_actual_aaoi_identity("AOI doubles 800G transceiver shipments")
+    assert has_actual_aaoi_identity("祥茂光電 expands 800G production")
     assert power_milestone(award_application)[2] == POWER_INITIAL_KEY
     assert power_milestone(award_granted)[0] == "AAOI 현장발전 보조금"
     assert power_milestone("AAOI Taiwan Bloom Energy SOFC plant 5MW officially confirmed")[2] != power_milestone(
@@ -2071,8 +2084,11 @@ def main() -> None:
             source = item.get("source") or ""
             # A power/fuel-cell article is not a generic 800G customer award.
             # Route it exclusively through the AAOI factory-power evidence gate.
-            if company == "Applied Optoelectronics" and is_aaoi_power_topic(title):
-                continue
+            if company == "Applied Optoelectronics":
+                if not has_actual_aaoi_identity(title):
+                    continue
+                if is_aaoi_power_topic(title):
+                    continue
             power_event = power_milestone(title) if company == POWER_COMPANY else None
             if company == POWER_COMPANY and power_event is None:
                 continue
