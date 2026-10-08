@@ -360,14 +360,48 @@ def ratio_changed(old: str, new: str) -> bool:
     return bool(old and new and norm(old) != norm(new))
 
 
-def is_official_validation(url: str, text: str) -> bool:
+def official_cpu_signal_type(url: str, text: str) -> str:
+    """Return demand or supply; never infer a customer order from a CPU launch.
+
+    A whole-page CPU keyword plus an unrelated "order" was previously enough
+    to create an erroneous customer-demand alert. Require both in the same
+    sentence, reject prospective/negated statements, and distinguish a
+    production ramp from evidence of a paying customer.
+    """
     host = (urlparse(url).hostname or "").lower()
     if not any(host == d or host.endswith("." + d) for d in OFFICIAL_VALIDATION_DOMAINS):
-        return False
-    low = text.lower()
-    cpu_hit = any(k in low for k in ("cpu", "epyc", "xeon"))
-    demand_hit = any(k in low for k in VALIDATION_TERMS)
-    return cpu_hit and demand_hit
+        return ""
+    sentences = re.split(r"(?<=[.!?])\s+|[;\n]+", text)
+    supply_seen = False
+    for sentence in sentences:
+        low = sentence.lower()
+        if not re.search(r"\b(?:cpu|epyc|xeon)\b", low):
+            continue
+        supply = re.search(
+            r"\b(?:production\s+ramp(?:-?up|ing)?|ramp(?:ing|ed)?\s+production"
+            r"|volume\s+production|mass\s+production)\b", low
+        )
+        if supply:
+            supply_seen = True
+        action = re.search(
+            r"\b(?:shipped|shipments?|orders?|bookings?|contracted|contracts?"
+            r"|purchased|purchase\s+orders?|qualif(?:ied|ying|ication)"
+            r"|validat(?:ed|ing|ion)|deploy(?:ed|ment|ments|ing)"
+            r"|revenue)\b", low
+        )
+        if not action:
+            continue
+        # Prospective, negated or hypothetical volume is not observed demand.
+        context = low[max(0, action.start() - 70):action.end() + 25]
+        if re.search(r"\b(?:no|not|without|unconfirmed|expected\s+to|plans?\s+to"
+                     r"|designed\s+to|could|might|may|forecast|projected)\b", context):
+            continue
+        return "demand"
+    return "supply" if supply_seen else ""
+
+
+def is_official_validation(url: str, text: str) -> bool:
+    return bool(official_cpu_signal_type(url, text))
 
 
 def extract_ratio(text: str) -> str:
@@ -615,7 +649,7 @@ def cpu_structure_block(state: dict, fx: float, changes: list[str]) -> str:
     am = state["amd_system"]
     fmt = lambda x: html.escape(bn_label(float(x), fx))
     def usd_shares(n: float) -> str:
-        return f"\${n:,.0f}(약 {n*fx:,.0f}원)".replace("\\$", "$")
+        return f"${n:,.0f}(약 {n*fx:,.0f}원)"
     lines = ["<b>에이전틱 AI·데이터센터 CPU 수요 구조 감시</b>"]
     if changes:
         lines += ["• 신규 변화: " + html.escape("; ".join(changes))]
@@ -673,7 +707,8 @@ def snapshot_block(state: dict, fx: float | None, fx_date: str, changed: list[di
         if ratio_change:
             change_bits.append(f"CPU:GPU {ratio_change[0]}→{ratio_change[1]}")
         if validation:
-            change_bits.append("공식 수요검증 " + str(validation[0].get("title") or "확인"))
+            category = "공식 공급확대" if validation[0].get("signal_type") == "supply" else "공식 수요검증"
+            change_bits.append(category + " " + str(validation[0].get("title") or "확인"))
         if change_bits:
             lines.append("• 변화: " + " / ".join(html.escape(x) for x in change_bits))
 
@@ -713,7 +748,8 @@ def snapshot_block(state: dict, fx: float | None, fx_date: str, changed: list[di
         lines.append(f"• CPU:GPU 구조: {html.escape(ratio_change[0])} → {html.escape(ratio_change[1])}")
     if validation:
         for item in validation[:2]:
-            lines.append(f"• 공식 검증: {html.escape(item.get('title') or '수요 신호')}")
+            category = "양산·공급 확대" if item.get("signal_type") == "supply" else "고객 수요·출하"
+            lines.append(f"• 공식 {category} 검증: {html.escape(item.get('title') or '공식 신호')}")
 
     total = float(m.get("server_cpu_tam_2030_usd_bn") or 0)
     agent = float(m.get("agentic_2030_usd_bn") or 0)
@@ -824,9 +860,10 @@ def discover_validation(now: datetime, cutoff: str, seen_urls: set[str]) -> list
             fetched += 1
             body = article_text(url)
             text = clean_text(f"{base} {body}")
-            if not is_official_validation(url, text):
+            signal_type = official_cpu_signal_type(url, text)
+            if not signal_type:
                 continue
-            out.append({**item, "url": url, "ratio": extract_ratio(text)})
+            out.append({**item, "url": url, "signal_type": signal_type, "ratio": extract_ratio(text)})
             seen.add(url)
     out.sort(key=lambda x: x.get("published_at_kst") or "")
     return out
