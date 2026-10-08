@@ -4658,6 +4658,46 @@ class IncrementalNewsTests(unittest.TestCase):
         )
         self.assertTrue(funded_result['eligible'], funded_result)
 
+    def test_local_mayor_vision_interview_needs_funded_policy_or_issuer_execution(self):
+        title = '[인터뷰]심재국 평창군수 "평창형 기본소득으로 군민 삶 변화"'
+        body = (
+            '[평창=뉴시스] 민선9기 출범 100일을 맞은 심재국 강원 평창군수는 군정 방향으로 소득 기반 성장을 제시했다. '
+            '지역경제 규모를 키워 농업인의 생산비 부담을 낮추고 소상공인 매출과 일자리를 늘리겠다는 구상이다. '
+            "65개 공약 중 가장 먼저 성과를 내고 싶은 사업은 '평창형 군민 기본소득'이다. "
+            '농어촌 기본소득 시범사업 등 국비 공모에 대응하고 강원특별자치도와 협의해 국·도비 확보에 힘쓰겠다고 밝혔다. '
+            '유휴 군유지를 활용한 풍력·태양광 사업도 주민 의견과 인허가를 거쳐 추진할 계획이다. '
+            '실제 수익이 발생하기까지 시간이 필요한 만큼 지급 시기를 약속하지 않았다. '
+            '체류형 관광, 청년 일자리와 주거 지원을 추진하겠다는 계획도 제시했다.'
+        )
+        evidence = [
+            {'kind': 'physical_supply_or_capacity', 'stage': 'reported_change',
+             'source_excerpt': '농업인은 생산비와 일손 걱정을 덜고 소상공인은 관광객 증가가 매출로 이어진다는 구상이다.'},
+            {'kind': 'policy_scope_or_stage', 'stage': 'early_signal',
+             'source_excerpt': '국·도비 지원은 선정 절차가 필요하고 에너지 사업도 주민 의견 수렴과 인허가를 거쳐야 수익이 발생한다.'},
+            {'kind': 'earnings_or_guidance', 'stage': 'reported_change',
+             'source_excerpt': '소상공인 매출과 일자리를 늘리겠다는 계획을 밝혔다.'},
+        ]
+        result = materiality.equity_publication_assessment(title, evidence, body=body)
+        self.assertFalse(result['eligible'], result)
+        self.assertEqual(
+            result['reason'],
+            'local_official_interview_without_funded_policy_or_issuer_execution',
+        )
+
+        funded_policy = materiality.equity_publication_assessment(
+            title, evidence,
+            body=body + ' 평창군의회는 관련 조례를 의결했고 사업비 80억원을 2027년도 예산에 편성했다.',
+        )
+        self.assertTrue(funded_policy['eligible'], funded_policy)
+
+        company_order = materiality.equity_publication_assessment(
+            title,
+            evidence + [{'kind': 'commercial_order', 'stage': 'reported_change',
+                         'source_excerpt': '현대자동차는 제조 설비 500억원 공급계약을 체결했다.'}],
+            body=body + ' 현대자동차는 제조 설비 500억원 공급계약을 체결했다.',
+        )
+        self.assertTrue(company_order['eligible'], company_order)
+
     def test_live_radar_cores_use_headline_linked_etf_macro_and_construction_facts(self):
         etf_title = '상장 첫날 개인 58억 샀다…SOL 글로벌DRAM반도체플러스 ETF, 하반기 1위'
         etf_body = (

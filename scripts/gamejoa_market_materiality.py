@@ -261,6 +261,10 @@ LOCAL_AUTHORITY = re.compile(
     r"(?:경기|강원|경북|경남|충북|충남|전북|전남|제주)(?:특별자치)?도|"
     r"(?<![가-힣])[가-힣]{2,8}(?:시|군|구)(?:청)?(?:은|는|이|가|[,\s])", re.I,
 )
+LOCAL_EXECUTIVE_INTERVIEW = re.compile(
+    r"(?:[가-힣]{2,8}시장|[가-힣]{2,8}군수|[가-힣]{2,8}구청장|"
+    r"[가-힣]{2,8}(?:특별자치)?도지사)"
+)
 LOCAL_ADMINISTRATIVE_TOPIC = re.compile(
     r"(?:평화경제|관광)특구|관광\s*(?:거점|개발)|주민|편입지역|생계지원|주거|주택공급\s*(?:전략|구상)|"
     r"도시계획|지역특화|지역경제|규제\s*개선|규제개선|지역\s*생산\s*전력|"
@@ -3505,6 +3509,23 @@ def equity_publication_assessment(title: str, evidence: list[dict], *, body: str
         and (QUANTITY.search(row) or re.search(r"증가|감소|확대|축소|체결|수주|확정|시작|가동|검증", row))
         for row in source_rows[:12]
     )
+    local_official_interview = (
+        re.search(r"인터뷰|대담", title)
+        and LOCAL_EXECUTIVE_INTERVIEW.search(title)
+        and LOCAL_ADMINISTRATIVE_TOPIC.search(f"{title} {lead}")
+    )
+    local_formal_action = any(
+        FORMAL_POLICY_EXECUTION.search(row)
+        and re.search(r"예산|지원금|보조금|사업비|기금|조례|시행|허가|승인|공모|지급", row)
+        for row in source_rows
+    ) or any(
+        QUANTITY.search(row)
+        and re.search(r"예산|지원금|보조금|사업비|기금", row)
+        and re.search(r"확정|편성|의결|배정|집행|지급|선정", row)
+        for row in source_rows
+    )
+    if local_official_interview and not (issuer_level_result or local_formal_action):
+        return {'eligible': False, 'reason': 'local_official_interview_without_funded_policy_or_issuer_execution'}
     if local_showcase and not issuer_level_result:
         return {'eligible': False, 'reason': 'local_program_showcase_without_named_issuer_result'}
     research_program_headline = (
