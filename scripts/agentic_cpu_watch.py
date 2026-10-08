@@ -89,6 +89,9 @@ CPU_STRUCTURE_BASELINE = {
     "digitimes": {
         "as_of": "2026-10-07",
         "per_accelerator_cpu_2027": "nearly_double",
+        "cpu_xpu_ratio_2027": 2.3,
+        "cpu_xpu_ratio_source_kind": "DIGITIMES 2026-10-05 연구 표제: 2027 CPU:XPU=1:2.3 · 전망치, 실제 설치 비율 아님",
+        "cpu_xpu_ratio_source_url": "https://www.digitimes.com.tw/research/report/?cnlid=3&n=1&v=20261005-314",
         "per_accelerator_source_kind": "DIGITIMES 10월 7일 원문 표제 확인 · 구독 제한으로 상세 계산 기준 미열람",
         "per_accelerator_source_url": "https://www.digitimes.com/news/a20261005PD216/cpu-demand-commercial-llm-market.html",
         "shipments_as_of": "2026-07-29",
@@ -120,6 +123,8 @@ CPU_STRUCTURE_SEARCHES = [
     ("google", '"BNP Paribas" "AMD" "price target" "CPU"'),
     ("bing", 'site:marketscreener.com "BNP Paribas" "AMD" "price target"'),
     ("google", 'site:gb-www.digitimes.com.tw agentic AI 2027 CPU 出货'),
+    ("google", 'site:digitimes.com.tw/research/report CPU XPU 2027 agentic'),
+    ("bing", 'site:digitimes.com.tw 2027 AI伺服器CPU CPU XPU'),
 ]
 
 FORECAST_SEARCHES = [
@@ -451,11 +456,15 @@ def cpu_structure_observation(title: str, text: str, url: str) -> tuple[str, dic
         if "bnp paribas" not in low or not any(s in low for s in ("amd", "advanced micro devices")):
             return "", {}
         obs = {}
+        # Attribute a target only when AMD itself owns the nearby target phrase.
+        # The older broad BNP→AMD→target window could silently pick up an
+        # unrelated NVIDIA / Arm price target from the same sentence.
         target_patterns = (
-            r"bnp paribas[^.!?]{0,180}?(?:amd|advanced micro devices)[^.!?]{0,120}?"
-            r"(?:price\s+target|target|pt)[^.!?]{0,70}?\bto\s*\$?\s*(\d{1,2},\d{3}|\d{3,4})\b",
-            r"bnp paribas[^.!?]{0,100}?(?:price\s+target|target|pt)[^.!?]{0,90}?"
-            r"(?:amd|advanced micro devices)[^.!?]{0,70}?\bto\s*\$?\s*(\d{1,2},\d{3}|\d{3,4})\b",
+            r"bnp paribas[^.!?]{0,200}?\b(?:amd|advanced micro devices)(?:['’]s)?\s+"
+            r"(?:stock\s+)?(?:price\s+target|target|pt)\b[^.!?]{0,45}?\b(?:to|at)\s*\$?\s*(\d{1,2},\d{3}|\d{3,4})\b",
+            r"bnp paribas[^.!?]{0,200}?\b(?:price\s+target|target|pt)\s+"
+            r"(?:on|for)\s+(?:amd|advanced micro devices)\b(?:\s*\([^)]{0,55}\))?"
+            r"[^.!?]{0,20}?\b(?:to|at)\s*\$?\s*(\d{1,2},\d{3}|\d{3,4})\b",
         )
         m = next((found for p in target_patterns if (found := re.search(p, low, re.I))), None)
         if m:
@@ -476,6 +485,17 @@ def cpu_structure_observation(title: str, text: str, url: str) -> tuple[str, dic
         if "cpu" not in low or "2027" not in low:
             return "", {}
         obs = {}
+        # DIGITIMES Research's public headline explicitly specifies 2027
+        # CPU:XPU=1:2.3. Preserve the *forecast* as a ratio distinct from
+        # CPU shipments, cores/sockets and installed hardware.
+        ratio = re.search(
+            r"\bcpu\s*[:：]\s*xpu\b[^0-9]{0,45}?\b1\s*[:：]\s*(\d+(?:\.\d+)?)",
+            low, re.I,
+        )
+        if ratio:
+            accelerator_per_cpu = float(ratio.group(1))
+            if 0.7 <= accelerator_per_cpu <= 16:
+                obs["cpu_xpu_ratio_2027"] = accelerator_per_cpu
         if "accelerator" in low:
             if re.search(r"(?:nearly|almost)\s+(?:twice|double)|nearly\s+twofold", low):
                 obs["per_accelerator_cpu_2027"] = "nearly_double"
@@ -485,7 +505,7 @@ def cpu_structure_observation(title: str, text: str, url: str) -> tuple[str, dic
                 obs["per_accelerator_cpu_2027"] = "one_point_five"
         # Only exact AI-server CPU shipments; total server CPUs use a separate denominator.
         m = re.search(
-            r"(?:ai[- ]?server\s+cpu|ai\s+servers?\s+cpu|ai服务器cpu)[^.!?]{0,190}?"
+            r"(?:ai[- ]?server\s+cpu|ai\s+servers?\s+cpu|ai\s*(?:伺服器|服務器|服务器)\s*cpu)[^.!?]{0,190}?"
             r"2027[^.!?]{0,90}?(\d+(?:\.\d+)?)\s*(million|万|萬)",
             low,
             re.I,
@@ -516,6 +536,13 @@ def cpu_structure_changes(old: dict, observed: dict, issuer: str) -> list[str]:
             if before and abs(after / before - 1) >= 0.10:
                 changes.append(f"BNP 애널리스트 {title} 전망 변경 {((after/before)-1)*100:+.1f}%")
     if issuer == "digitimes":
+        if "cpu_xpu_ratio_2027" in observed:
+            before_ratio = float(old.get("cpu_xpu_ratio_2027") or 0)
+            new_ratio = float(observed["cpu_xpu_ratio_2027"])
+            if before_ratio and abs(new_ratio / before_ratio - 1) >= 0.10:
+                changes.append(
+                    f"DIGITIMES 2027 CPU:XPU 전망 변경: 1:{before_ratio:g}→1:{new_ratio:g}"
+                )
         if "per_accelerator_cpu_2027" in observed:
             before = str(old.get("per_accelerator_cpu_2027") or "")
             after = str(observed["per_accelerator_cpu_2027"])
@@ -592,6 +619,11 @@ def cpu_structure_block(state: dict, fx: float, changes: list[str]) -> str:
         + "→" + usd_shares(ba["amd_target_usd"])
         + " · Arm 목표주가 " + usd_shares(ba["arm_target_user_claim_usd"]) + "는 원문 근거 확인 전이므로 확정 알림에서 제외",
         "• DIGITIMES: 2027년 가속기당 CPU 거의 2배 전망(유료 기사 표제)"
+        + (
+            f" · 연구 표제 CPU:XPU <b>1:{float(di['cpu_xpu_ratio_2027']):g}</b>"
+            f"(가속기당 CPU 약 {1/float(di['cpu_xpu_ratio_2027']):.2f}개, 전망치)"
+            if di.get("cpu_xpu_ratio_2027") else ""
+        )
         + " · <b>코어 수·소켓 수·실제 출하가 각각 2배라는 의미는 아님</b>",
         "• DIGITIMES 공개 출하 전망: 2027년 AI 서버 CPU "
         + f"{float(di['ai_server_cpu_2027_million'])*100:,.1f}만개(+{float(di['ai_server_cpu_2027_yoy_pct']):.1f}% 전년 대비)"
@@ -606,6 +638,7 @@ def cpu_structure_block(state: dict, fx: float, changes: list[str]) -> str:
         + ' · <a href="' + html.escape(ba["source_url"], quote=True) + '">BNP 애널리스트 2차 보도</a>'
         + ' · <a href="' + html.escape(di["per_accelerator_source_url"], quote=True) + '">DIGITIMES 가속기당 전망</a>'
         + ' · <a href="' + html.escape(di["shipments_source_url"], quote=True) + '">DIGITIMES 출하 전망</a>'
+        + ' · <a href="' + html.escape(di["cpu_xpu_ratio_source_url"], quote=True) + '">DIGITIMES 연구 1:2.3</a>'
         + ' · <a href="' + html.escape(am["source_url"], quote=True) + '">AMD 실제 설계 자료</a>',
     ]
     return "\n".join(lines) + "\n"
