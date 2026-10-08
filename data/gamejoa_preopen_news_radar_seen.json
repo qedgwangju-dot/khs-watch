@@ -1,5 +1,25 @@
 {
   "seen": {
+    "core:0032ffa6a5eedc4b22b4cbdb": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008158200063",
+      "source": "연합뉴스",
+      "source_body_digest": "72e87b720b901b4f3df7a47609d4a313f51ebeded2a420d4d417873f23299ad4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02a37b6ed1e5542a5bbb146fdc2ab05b094bf6febf1129bdc72d9f5e3a908bfd",
+      "source_fact_keys": [
+        "source_fact:v1:4033e46c26102e2eb197fedba9d7d46760fc6e819450777c41a615e28cf9d342",
+        "source_fact:v1:673f0808dbfe37b1cb909d3e5b9ed85e0ffa84ac68e5b83ac61c383a6d5a4658"
+      ],
+      "source_published_kst": "2026-10-08T16:19+09:00",
+      "source_title": "세종시, 360㎿ 규모 데이터센터 건립 유치…7조원 투자 받는다 | 연합뉴스",
+      "telegram_core_fact": "세종시가 7조원 인공지능 데이터센터(AIDC) 투자 유치에 성공했다. SK증권은 오는 2029년까지 7조원을 투입해 360㎿ AIDC를 건립할 방침이다.",
+      "title": "세종시, 360㎿ 규모 데이터센터 건립 유치…7조원 투자 받는다 | 연합뉴스"
+    },
     "core:0037c3e0de33634e26f3d58f": {
       "first_seen_kst": "2026-10-08T20:39:20+09:00",
       "lanes": {
@@ -137,6 +157,25 @@
       ],
       "source_published_kst": "2026-10-07T11:07+09:00",
       "title": "[2보] LG전자 3분기 영업익 7천818억…작년비 13.5% 증가 | 연합뉴스"
+    },
+    "core:0351203f24fd3f3283ca232c": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/08/2026100809420950784",
+      "source": "머니투데이",
+      "source_body_digest": "db50fde09c5e176257ef54aeb533a196b600e27ac8845f14dc75e315ef3db0cf",
+      "source_event_identity": "source_event:v2:ai_infrastructure_credit_stress:681e358410fd88ef214d10a2f392dcc8b687f21e1070861ace0c8aa7a6050218",
+      "source_fact_identity": "source_facts:v1:9f8c735d036d8472fea30dad3c1fa4eeeb06f7ff9beac4ced213a3ff168fb097",
+      "source_fact_keys": [
+        "source_fact:v1:f706d7572303984dcdcc2df010599a9137ff3fd1fa9a94e0161c7dedca118b98"
+      ],
+      "source_published_kst": "2026-10-08T10:31+09:00",
+      "source_title": "브로드컴·스페이스X·오라클, AI칩 위해 수십조 빚낸다…신용지표 '경고등'",
+      "telegram_core_fact": "브로드컴은 오픈AI AI칩용 500억달러(약 67조원) 조달을 논의하고, 스페이스X는 400억달러(약 53조6000억원) 조달을 추진 중입니다. CDS는 스페이스X가 194bp에서 1bp로, 오라클은 40bp 오른 81bp로 상승했습니다.",
+      "title": "브로드컴·스페이스X·오라클, AI칩 위해 수십조 빚낸다…신용지표 '경고등'"
     },
     "core:037ba9601cee4a51f93d9890": {
       "first_seen_kst": "2026-10-08T16:34:42+09:00",
@@ -1764,6 +1803,23 @@
       ],
       "source_published_kst": "2026-10-07T13:33+09:00",
       "title": "KT클라우드, 50㎿급 '청라 AIDC' 구축 참여…수도권 AI 인프라 수요 대응"
+    },
+    "core:20fee89f8ed8b8c9ac3b3a12": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819550",
+      "source": "뉴시스",
+      "source_body_digest": "783998493be5ff71d0c85728c7e3ea7538b9c7644932a562869c18c8114b1c50",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T16:22+09:00",
+      "source_title": "부광 \"한국유니온제약, '부광유니파마'로 사명변경\"",
+      "telegram_core_fact": "정관 일부 변경 안건이 가결되면서 한국유니온제약의 상호는 ‘부광유니파마 주식회사’(이하 부광유니파마)로 변경됐다. 부광약품이 인수한 한국유니온제약의 사명이 변경된다.",
+      "title": "부광 \"한국유니온제약, '부광유니파마'로 사명변경\""
     },
     "core:214d54680d9ac8e26876622c": {
       "first_seen_kst": "2026-10-08T03:13:06+09:00",
@@ -7015,6 +7071,43 @@
       "source_published_kst": "2026-10-07T11:06+09:00",
       "title": "[ESGX 이슈 5] 구글, 美 원전 11기 출력 높인다…AI 전력 확보에 43억달러 투자"
     },
+    "core:8760a9c3b4aee58f1d0ccabd": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008061300008",
+      "source": "연합뉴스",
+      "source_body_digest": "70c4002da6484444171ab22de9223289d3c015d7a820e76d1bd3ec3214bc4208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e89c06b309e25e81e996ad76d6428b76b3399d8505902527a69c5fd8bc93f36b",
+      "source_fact_keys": [
+        "source_fact:v1:143c60d26e6f90ca3c4ffa921b86ac9e15e3fadac249fc5f4498d7aae260a7a5",
+        "source_fact:v1:178870f988b6fae0613a7133fcfec6b326f93e65e59ca278161dd3d222528688",
+        "source_fact:v1:21a557d7dffb33763434aa302eaa08ba12a45ea713ceb45c89aa7e3f33abe5b9",
+        "source_fact:v1:33776a2032da45bcc927e3941e905fa943969ab714376414f7c4c43c16469ba3",
+        "source_fact:v1:3ee158ac01b689c28ac99dfb3d4f734b0fb435172d68a927489bbb9630d34d0d",
+        "source_fact:v1:4e9c44bbbdc4961c8c544378c398c144194e37a1ae8c1ef8bc7ba851f4d3a338",
+        "source_fact:v1:5bc60be200df43dc4bf6b55c418798095f40bfb0a69b91596d5f0ad57a384037",
+        "source_fact:v1:61115eee9325507db0b54edb9d2c722783491d5dd822b36bebb0b5a2c47d9d75",
+        "source_fact:v1:68d3187e27b5c1c3daeba8bc385da0f6e11dbb698caa66634da6e2bad7a6ba2e",
+        "source_fact:v1:6f0dae763467c73f3080be24cf659dcf2c92740b983a4c4d4aacc77aae971b30",
+        "source_fact:v1:81beccb4c6f31c72274372f6a17022c5d89c77729f86c01f277b1cc10dcf1a6d",
+        "source_fact:v1:93a7dd789eae701a3b248ec6e23085bce99d239ffb9dec937c58ba999495795e",
+        "source_fact:v1:95daea6d42f1903945ff74ff79fe570978d4543e13c651a59a3f9234e5d293ac",
+        "source_fact:v1:a43ec6032c718b30c02cf18033c4701106cf7341acb5b49d055c89c0cc2a93f0",
+        "source_fact:v1:ac3ea6af0211471b00b9a9d97f02985ac00249d3aa747b00722b5f2bd5b139aa",
+        "source_fact:v1:c1b6ab6f36f3f1a54b52fb5d4fc3788eecdfe0c107a19432b010f58d44d8bfe3",
+        "source_fact:v1:ebc160b665c658b2370e18b19ae13404f380912cc54886fd56883ed9e5c63527",
+        "source_fact:v1:fc8b61db0583205c20b0d4eccb07cffa708d766d25132c4502f4519c7b06d248",
+        "source_fact:v1:fcefb51b059dd524ba26bea909942207c666794aca73c91ca69131745e4400e7"
+      ],
+      "source_published_kst": "2026-10-08T10:37+09:00",
+      "source_title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스",
+      "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
+      "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
+    },
     "core:8777547e567900f999a37fe2": {
       "first_seen_kst": "2026-10-07T14:56:20+09:00",
       "lanes": {
@@ -9883,6 +9976,26 @@
       "telegram_core_fact": "삼성전자와 SK하이닉스로 대표되는 반도체 업계의 유례없는 호황 속에 국내외의 관심을 받아 온 충북반도체고등학교(음성군 금왕읍)가 내년도 신입생을 모집한다. 충북반도체고는 삼성전자와 SK하이닉스를 비롯한 120여개 반도체 기업과 취업 협력을 이어가고 있으며, 매년 95% 이상의 취업률을 기록하고 있다.",
       "title": "전국서 주목받는 충북반도체고, 내년 3개과 신입생 96명 모집 | 연합뉴스"
     },
+    "core:bae8d4aa69277c452a5d6c9d": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008156600017",
+      "source": "연합뉴스",
+      "source_body_digest": "35683fb891a0e216245686e6778c71798e3404b9e371b1698344cd4d6bbe3d4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5e8d15e818573c30685aaf381f8c8e2ddba971b1d2d00cc6a98b1aad5df791d7",
+      "source_fact_keys": [
+        "source_fact:v1:2224ab33939ead4ba53c6bd8717ed8739bd7dd4e92782fd8ebcf982c16a7ab04",
+        "source_fact:v1:2f241cd812ba4bfb16125fd3d08c44b7269f181317db31c9d9838e8228244a40"
+      ],
+      "source_published_kst": "2026-10-08T16:12+09:00",
+      "source_title": "부광약품, 한국유니온제약 사명 '부광유니파마'로 변경 | 연합뉴스",
+      "telegram_core_fact": "부광약품[003000]은 올해 인수한 한국유니온제약[080720]의 사명을 '부광유니파마'로 변경했다고 8일 밝혔다. 부광약품은 5월 하순 신주 인수 대금 300억원을 납입해 회생 절차 중이던 한국유니온제약의 최대 주주가 됐으며, 지난달 회생 절차가 종결됐다고 밝혔다.",
+      "title": "부광약품, 한국유니온제약 사명 '부광유니파마'로 변경 | 연합뉴스"
+    },
     "core:bb23e92535a2df3fa9cdc350": {
       "first_seen_kst": "2026-10-08T20:16:13+09:00",
       "lanes": {
@@ -12449,6 +12562,29 @@
       "source_title": "BGF, 지배구조 3단계로 단순화…반도체 소재 사업 직접 키운다",
       "telegram_core_fact": "글로벌 친환경 규제에 대응해 고품질 재생 소재 공급 역량을 확대하고 엔지니어링 플라스틱 소재 사업 경쟁력을 강화할 계획이다.",
       "title": "BGF, 지배구조 3단계로 단순화…반도체 소재 사업 직접 키운다"
+    },
+    "core:ee6d17f0688379b9ec27e3d8": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896261",
+      "source": "헤럴드경제",
+      "source_body_digest": "61ec1236e84b927cfd5320d1b16e7b69a1ee4cf56a4e976f10cb9d3ac0e50210",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:33ca3f0dfe864d1ed26007908b4d0454fabf3173a37a83c7097bf7b921999578",
+      "source_fact_keys": [
+        "source_fact:v1:120dd5db3393fba05f4b149609eba7dc35536cb4a5d2d4edf4c4526b6133bcb4",
+        "source_fact:v1:72f11742be2f689bb88c120a00253013569bf09c50206241ba89224254f65835",
+        "source_fact:v1:addee6fca254a42575394fea032d98446f03a74433ffddea43a02c5af83dc2ac",
+        "source_fact:v1:bed246dc0977d71d6420f716e5dbccfbace968da540fd38dc53cf167b943cbfd",
+        "source_fact:v1:e56c2d691a17b731737285ad8d64abafd3ac143371cc30bf5c46d4c2c6099782"
+      ],
+      "source_published_kst": "2026-10-08T06:41+09:00",
+      "source_title": "비축유 방출 앞당긴다는 소식에 국제유가 하락…WTI 1.3%↓",
+      "telegram_core_fact": "국제에너지기구(IEA)가 비축유 방출을 앞당기기로 했다는 소식에 7일(현지시간) 국제유가가 하락했다.",
+      "title": "비축유 방출 앞당긴다는 소식에 국제유가 하락…WTI 1.3%↓"
     },
     "core:ee879e72102bd8443596b97a": {
       "first_seen_kst": "2026-10-08T11:49:03+09:00",
@@ -16135,6 +16271,25 @@
       "telegram_core_fact": "말레이시아가 한국산 고대역폭메모리(HBM)의 핵심 수출처로 떠올랐다.",
       "title": "한국 HBM 수출 200배 뛴 말레이시아…이유는?"
     },
+    "event:574265b71d9cf7c76d6e6f2c": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/08/2026100809420950784",
+      "source": "머니투데이",
+      "source_body_digest": "db50fde09c5e176257ef54aeb533a196b600e27ac8845f14dc75e315ef3db0cf",
+      "source_event_identity": "source_event:v2:ai_infrastructure_credit_stress:681e358410fd88ef214d10a2f392dcc8b687f21e1070861ace0c8aa7a6050218",
+      "source_fact_identity": "source_facts:v1:9f8c735d036d8472fea30dad3c1fa4eeeb06f7ff9beac4ced213a3ff168fb097",
+      "source_fact_keys": [
+        "source_fact:v1:f706d7572303984dcdcc2df010599a9137ff3fd1fa9a94e0161c7dedca118b98"
+      ],
+      "source_published_kst": "2026-10-08T10:31+09:00",
+      "source_title": "브로드컴·스페이스X·오라클, AI칩 위해 수십조 빚낸다…신용지표 '경고등'",
+      "telegram_core_fact": "브로드컴은 오픈AI AI칩용 500억달러(약 67조원) 조달을 논의하고, 스페이스X는 400억달러(약 53조6000억원) 조달을 추진 중입니다. CDS는 스페이스X가 194bp에서 1bp로, 오라클은 40bp 오른 81bp로 상승했습니다.",
+      "title": "브로드컴·스페이스X·오라클, AI칩 위해 수십조 빚낸다…신용지표 '경고등'"
+    },
     "event:5752f44e92ac107d74cdcfbe": {
       "first_seen_kst": "2026-09-18T14:19:18+09:00",
       "lanes": {
@@ -19357,19 +19512,25 @@
     "event:ba788d3209221bdc009f8f7e": {
       "first_seen_kst": "2026-10-08T05:01:11+09:00",
       "lanes": {
-        "live": "2026-10-08T05:01:11+09:00"
+        "live": "2026-10-08T21:47:01+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:01:11+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261008005800072",
-      "source": "연합뉴스",
-      "source_body_digest": "15304d485b220280c581ad48a17e10ee5585ba4016eade0e5578dc9b886da0ad",
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896261",
+      "source": "헤럴드경제",
+      "source_body_digest": "61ec1236e84b927cfd5320d1b16e7b69a1ee4cf56a4e976f10cb9d3ac0e50210",
       "source_event_identity": "",
-      "source_fact_identity": "",
-      "source_fact_keys": [],
-      "source_published_kst": "2026-10-08T04:47+09:00",
-      "source_title": "국제유가, IEA 비축유 방출 가속에 하락…WTI 1.3%↓ | 연합뉴스",
-      "telegram_core_fact": "국제에너지기구(IEA)가 비축유 방출을 앞당기기로 하면서 7일(현지시간) 국제유가가 하락했다.",
-      "title": "국제유가, IEA 비축유 방출 가속에 하락…WTI 1.3%↓ | 연합뉴스"
+      "source_fact_identity": "source_facts:v1:33ca3f0dfe864d1ed26007908b4d0454fabf3173a37a83c7097bf7b921999578",
+      "source_fact_keys": [
+        "source_fact:v1:120dd5db3393fba05f4b149609eba7dc35536cb4a5d2d4edf4c4526b6133bcb4",
+        "source_fact:v1:72f11742be2f689bb88c120a00253013569bf09c50206241ba89224254f65835",
+        "source_fact:v1:addee6fca254a42575394fea032d98446f03a74433ffddea43a02c5af83dc2ac",
+        "source_fact:v1:bed246dc0977d71d6420f716e5dbccfbace968da540fd38dc53cf167b943cbfd",
+        "source_fact:v1:e56c2d691a17b731737285ad8d64abafd3ac143371cc30bf5c46d4c2c6099782"
+      ],
+      "source_published_kst": "2026-10-08T06:41+09:00",
+      "source_title": "비축유 방출 앞당긴다는 소식에 국제유가 하락…WTI 1.3%↓",
+      "telegram_core_fact": "국제에너지기구(IEA)가 비축유 방출을 앞당기기로 했다는 소식에 7일(현지시간) 국제유가가 하락했다.",
+      "title": "비축유 방출 앞당긴다는 소식에 국제유가 하락…WTI 1.3%↓"
     },
     "event:ba92964c9b95ffb842e33659": {
       "first_seen_kst": "2026-09-21T16:48:31+09:00",
@@ -19661,22 +19822,39 @@
     "event:c158b090c5d842f8525a5d6f": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
       "lanes": {
-        "live": "2026-10-08T20:58:15+09:00"
+        "live": "2026-10-08T21:47:01+09:00"
       },
-      "last_seen_kst": "2026-10-08T20:58:15+09:00",
-      "link": "https://www.yna.co.kr/view/MYH20261008010900038",
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008061300008",
       "source": "연합뉴스",
-      "source_body_digest": "dc5679ae67f0e00ffb9f480809a86bd2e7c88ffbe667215161f24c2770ce2519",
+      "source_body_digest": "70c4002da6484444171ab22de9223289d3c015d7a820e76d1bd3ec3214bc4208",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:2d094079a4e9f05e340a16df245f69615b7a02529037ebf7d89ecb0d9e211d89",
+      "source_fact_identity": "source_facts:v1:e89c06b309e25e81e996ad76d6428b76b3399d8505902527a69c5fd8bc93f36b",
       "source_fact_keys": [
-        "source_fact:v1:2bf5d618a6691ba1c99bf9dc2648cf66ed3b04de496f80affbe4951c10f1cd65",
-        "source_fact:v1:9297cc77d5fe0e8016a577ba0a26c8c880328524db9095deca0a2cf3713e1876"
+        "source_fact:v1:143c60d26e6f90ca3c4ffa921b86ac9e15e3fadac249fc5f4498d7aae260a7a5",
+        "source_fact:v1:178870f988b6fae0613a7133fcfec6b326f93e65e59ca278161dd3d222528688",
+        "source_fact:v1:21a557d7dffb33763434aa302eaa08ba12a45ea713ceb45c89aa7e3f33abe5b9",
+        "source_fact:v1:33776a2032da45bcc927e3941e905fa943969ab714376414f7c4c43c16469ba3",
+        "source_fact:v1:3ee158ac01b689c28ac99dfb3d4f734b0fb435172d68a927489bbb9630d34d0d",
+        "source_fact:v1:4e9c44bbbdc4961c8c544378c398c144194e37a1ae8c1ef8bc7ba851f4d3a338",
+        "source_fact:v1:5bc60be200df43dc4bf6b55c418798095f40bfb0a69b91596d5f0ad57a384037",
+        "source_fact:v1:61115eee9325507db0b54edb9d2c722783491d5dd822b36bebb0b5a2c47d9d75",
+        "source_fact:v1:68d3187e27b5c1c3daeba8bc385da0f6e11dbb698caa66634da6e2bad7a6ba2e",
+        "source_fact:v1:6f0dae763467c73f3080be24cf659dcf2c92740b983a4c4d4aacc77aae971b30",
+        "source_fact:v1:81beccb4c6f31c72274372f6a17022c5d89c77729f86c01f277b1cc10dcf1a6d",
+        "source_fact:v1:93a7dd789eae701a3b248ec6e23085bce99d239ffb9dec937c58ba999495795e",
+        "source_fact:v1:95daea6d42f1903945ff74ff79fe570978d4543e13c651a59a3f9234e5d293ac",
+        "source_fact:v1:a43ec6032c718b30c02cf18033c4701106cf7341acb5b49d055c89c0cc2a93f0",
+        "source_fact:v1:ac3ea6af0211471b00b9a9d97f02985ac00249d3aa747b00722b5f2bd5b139aa",
+        "source_fact:v1:c1b6ab6f36f3f1a54b52fb5d4fc3788eecdfe0c107a19432b010f58d44d8bfe3",
+        "source_fact:v1:ebc160b665c658b2370e18b19ae13404f380912cc54886fd56883ed9e5c63527",
+        "source_fact:v1:fc8b61db0583205c20b0d4eccb07cffa708d766d25132c4502f4519c7b06d248",
+        "source_fact:v1:fcefb51b059dd524ba26bea909942207c666794aca73c91ca69131745e4400e7"
       ],
-      "source_published_kst": "2026-10-08T13:32+09:00",
-      "source_title": "삼성전자 분기 영업익 100조 돌파…글로벌 빅테크 최초 | 연합뉴스",
-      "telegram_core_fact": "삼성전자가 올해 3분기 영업이익 100조 원을 넘기며 글로벌 빅테크 사상 최초 기록을 썼습니다.",
-      "title": "삼성전자 분기 영업익 100조 돌파…글로벌 빅테크 최초 | 연합뉴스"
+      "source_published_kst": "2026-10-08T10:37+09:00",
+      "source_title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스",
+      "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
+      "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
     },
     "event:c1e317ded2d88411e7e58d30": {
       "first_seen_kst": "2026-09-28T05:09:16+09:00",
@@ -23099,6 +23277,29 @@
       "telegram_core_fact": "파라다이스가 공모 회사채 수요예측에서 모집액의 3.4배에 달하는 투자 수요를 확보하며 2년 연속 흥행에 성공했다. 파라다이스에 따르면 회사는 지난 6일 총 600억원 공모 회사채 발행을 위한 수요예측을 실시한 결과 모집액의 3.42배인 총 2050억원의 주문이 접수됐다.",
       "title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배"
     },
+    "fact:0b6460144e61a11075e92da0": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896261",
+      "source": "헤럴드경제",
+      "source_body_digest": "61ec1236e84b927cfd5320d1b16e7b69a1ee4cf56a4e976f10cb9d3ac0e50210",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:33ca3f0dfe864d1ed26007908b4d0454fabf3173a37a83c7097bf7b921999578",
+      "source_fact_keys": [
+        "source_fact:v1:120dd5db3393fba05f4b149609eba7dc35536cb4a5d2d4edf4c4526b6133bcb4",
+        "source_fact:v1:72f11742be2f689bb88c120a00253013569bf09c50206241ba89224254f65835",
+        "source_fact:v1:addee6fca254a42575394fea032d98446f03a74433ffddea43a02c5af83dc2ac",
+        "source_fact:v1:bed246dc0977d71d6420f716e5dbccfbace968da540fd38dc53cf167b943cbfd",
+        "source_fact:v1:e56c2d691a17b731737285ad8d64abafd3ac143371cc30bf5c46d4c2c6099782"
+      ],
+      "source_published_kst": "2026-10-08T06:41+09:00",
+      "source_title": "비축유 방출 앞당긴다는 소식에 국제유가 하락…WTI 1.3%↓",
+      "telegram_core_fact": "국제에너지기구(IEA)가 비축유 방출을 앞당기기로 했다는 소식에 7일(현지시간) 국제유가가 하락했다.",
+      "title": "비축유 방출 앞당긴다는 소식에 국제유가 하락…WTI 1.3%↓"
+    },
     "fact:0b670f3a60b5040252cedab8": {
       "first_seen_kst": "2026-10-07T00:38:27+09:00",
       "lanes": {
@@ -23179,6 +23380,26 @@
       ],
       "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "수도권은 집 부족…지방은 수요 부족해 공공주택 착공 연기"
+    },
+    "fact:0b8a11ce3ed3fbd56134b097": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008156600017",
+      "source": "연합뉴스",
+      "source_body_digest": "35683fb891a0e216245686e6778c71798e3404b9e371b1698344cd4d6bbe3d4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5e8d15e818573c30685aaf381f8c8e2ddba971b1d2d00cc6a98b1aad5df791d7",
+      "source_fact_keys": [
+        "source_fact:v1:2224ab33939ead4ba53c6bd8717ed8739bd7dd4e92782fd8ebcf982c16a7ab04",
+        "source_fact:v1:2f241cd812ba4bfb16125fd3d08c44b7269f181317db31c9d9838e8228244a40"
+      ],
+      "source_published_kst": "2026-10-08T16:12+09:00",
+      "source_title": "부광약품, 한국유니온제약 사명 '부광유니파마'로 변경 | 연합뉴스",
+      "telegram_core_fact": "부광약품[003000]은 올해 인수한 한국유니온제약[080720]의 사명을 '부광유니파마'로 변경했다고 8일 밝혔다. 부광약품은 5월 하순 신주 인수 대금 300억원을 납입해 회생 절차 중이던 한국유니온제약의 최대 주주가 됐으며, 지난달 회생 절차가 종결됐다고 밝혔다.",
+      "title": "부광약품, 한국유니온제약 사명 '부광유니파마'로 변경 | 연합뉴스"
     },
     "fact:0bbf120b2526ef9aa8688b52": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
@@ -33530,6 +33751,35 @@
       ],
       "source_published_kst": "2026-10-06T19:00+09:00",
       "title": "9월 유로존 종합 PMI 53.1·1.1P↑…\"3년5개월 만에 최고\""
+    },
+    "fact:64aa16c732d292a7cc2a2ae3": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171026",
+      "source": "매일경제",
+      "source_body_digest": "37b4bc5cf031f47bdc1bf4f2a6c27eb29a6e04238f91538b88b03d0c5dd4f9b8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:40046c2acf5f34ba157e9feec7a46f55f65cf433f39052eea23621cfb7105a61",
+      "source_fact_keys": [
+        "source_fact:v1:137a3d79950e15282120b88f7751e9c507dbf12c9a8c5a3c0f485a2903c13268",
+        "source_fact:v1:30f11d931d44f43cb7675118c474d6a133b9128872192b946733afd10e14b792",
+        "source_fact:v1:57a58920cdde7d7a43ed4b206c264eacccee88d4823ad50a4f572b64f02322f4",
+        "source_fact:v1:6e69f70d160fa0b1975bbfa977fbdcc7e1508f4af8a685bfa9d6ca76f72ae833",
+        "source_fact:v1:87dabe55b8e0fb41ff81e8128b9a6e3ae45909756946cd700f49537553c8834e",
+        "source_fact:v1:8d8db422e9f729a7cf02dc49ab2f66c5b51563f8670917a7aff2de97ea29a605",
+        "source_fact:v1:95c17d6153385dcd8ec01afdf431441d25d443aed40dfb3b79587c8b146f1994",
+        "source_fact:v1:be33958723e3d964250be2d3d6a5852aa4ed894208279f87c20977a18f5ce704",
+        "source_fact:v1:c6bdce2c16367cdbd10045d7851152e15bee94425ad97f815d8087963ed89c80",
+        "source_fact:v1:d62045cfecbe4500046d30c7a85b7c0a28a1ac4bf41212124278c5c08b6fbd6d",
+        "source_fact:v1:f8742b019b58c74cb3e5cc7f066b929af2246ac5d1f676b563d5f86f128b2d1d"
+      ],
+      "source_published_kst": "2026-10-08T05:23+09:00",
+      "source_title": "리차드슨 일렉트로닉스, 1분기 매출 6490만 달러..전년비 19% 증가",
+      "telegram_core_fact": "2028년 매출액은 2억6791만 달러로 9.19% 늘어날 것으로 예상된다.",
+      "title": "리차드슨 일렉트로닉스, 1분기 매출 6490만 달러..전년비 19% 증가"
     },
     "fact:65324d6e57f59e2ba04f41de": {
       "first_seen_kst": "2026-10-08T02:41:45+09:00",
@@ -46443,6 +46693,25 @@
       "source_published_kst": "2026-10-06T09:47+09:00",
       "title": "중간선거 앞두고 전전긍긍…트럼프 \"농업용 면세유 車사용 한시 유예\""
     },
+    "fact:d59ed28c04221129eb7313bf": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/08/2026100809420950784",
+      "source": "머니투데이",
+      "source_body_digest": "db50fde09c5e176257ef54aeb533a196b600e27ac8845f14dc75e315ef3db0cf",
+      "source_event_identity": "source_event:v2:ai_infrastructure_credit_stress:681e358410fd88ef214d10a2f392dcc8b687f21e1070861ace0c8aa7a6050218",
+      "source_fact_identity": "source_facts:v1:9f8c735d036d8472fea30dad3c1fa4eeeb06f7ff9beac4ced213a3ff168fb097",
+      "source_fact_keys": [
+        "source_fact:v1:f706d7572303984dcdcc2df010599a9137ff3fd1fa9a94e0161c7dedca118b98"
+      ],
+      "source_published_kst": "2026-10-08T10:31+09:00",
+      "source_title": "브로드컴·스페이스X·오라클, AI칩 위해 수십조 빚낸다…신용지표 '경고등'",
+      "telegram_core_fact": "브로드컴은 오픈AI AI칩용 500억달러(약 67조원) 조달을 논의하고, 스페이스X는 400억달러(약 53조6000억원) 조달을 추진 중입니다. CDS는 스페이스X가 194bp에서 1bp로, 오라클은 40bp 오른 81bp로 상승했습니다.",
+      "title": "브로드컴·스페이스X·오라클, AI칩 위해 수십조 빚낸다…신용지표 '경고등'"
+    },
     "fact:d5d7803fa25aad6c5732829d": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
       "lanes": {
@@ -46460,6 +46729,43 @@
       ],
       "source_published_kst": "2026-10-06T07:29+09:00",
       "title": "부산 청년기업, 국내 최초 디지털제품여권 상용화"
+    },
+    "fact:d5f200a53d7786b8814a4dc3": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008061300008",
+      "source": "연합뉴스",
+      "source_body_digest": "70c4002da6484444171ab22de9223289d3c015d7a820e76d1bd3ec3214bc4208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e89c06b309e25e81e996ad76d6428b76b3399d8505902527a69c5fd8bc93f36b",
+      "source_fact_keys": [
+        "source_fact:v1:143c60d26e6f90ca3c4ffa921b86ac9e15e3fadac249fc5f4498d7aae260a7a5",
+        "source_fact:v1:178870f988b6fae0613a7133fcfec6b326f93e65e59ca278161dd3d222528688",
+        "source_fact:v1:21a557d7dffb33763434aa302eaa08ba12a45ea713ceb45c89aa7e3f33abe5b9",
+        "source_fact:v1:33776a2032da45bcc927e3941e905fa943969ab714376414f7c4c43c16469ba3",
+        "source_fact:v1:3ee158ac01b689c28ac99dfb3d4f734b0fb435172d68a927489bbb9630d34d0d",
+        "source_fact:v1:4e9c44bbbdc4961c8c544378c398c144194e37a1ae8c1ef8bc7ba851f4d3a338",
+        "source_fact:v1:5bc60be200df43dc4bf6b55c418798095f40bfb0a69b91596d5f0ad57a384037",
+        "source_fact:v1:61115eee9325507db0b54edb9d2c722783491d5dd822b36bebb0b5a2c47d9d75",
+        "source_fact:v1:68d3187e27b5c1c3daeba8bc385da0f6e11dbb698caa66634da6e2bad7a6ba2e",
+        "source_fact:v1:6f0dae763467c73f3080be24cf659dcf2c92740b983a4c4d4aacc77aae971b30",
+        "source_fact:v1:81beccb4c6f31c72274372f6a17022c5d89c77729f86c01f277b1cc10dcf1a6d",
+        "source_fact:v1:93a7dd789eae701a3b248ec6e23085bce99d239ffb9dec937c58ba999495795e",
+        "source_fact:v1:95daea6d42f1903945ff74ff79fe570978d4543e13c651a59a3f9234e5d293ac",
+        "source_fact:v1:a43ec6032c718b30c02cf18033c4701106cf7341acb5b49d055c89c0cc2a93f0",
+        "source_fact:v1:ac3ea6af0211471b00b9a9d97f02985ac00249d3aa747b00722b5f2bd5b139aa",
+        "source_fact:v1:c1b6ab6f36f3f1a54b52fb5d4fc3788eecdfe0c107a19432b010f58d44d8bfe3",
+        "source_fact:v1:ebc160b665c658b2370e18b19ae13404f380912cc54886fd56883ed9e5c63527",
+        "source_fact:v1:fc8b61db0583205c20b0d4eccb07cffa708d766d25132c4502f4519c7b06d248",
+        "source_fact:v1:fcefb51b059dd524ba26bea909942207c666794aca73c91ca69131745e4400e7"
+      ],
+      "source_published_kst": "2026-10-08T10:37+09:00",
+      "source_title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스",
+      "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
+      "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
     },
     "fact:d6108f526c69ecee4bc61c49": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
@@ -49535,6 +49841,26 @@
       "source_published_kst": "2026-10-06T15:09+09:00",
       "title": "AI팩토리에 승부 건 엔비디아 \"생산성·수명·범용성이 수익 좌우\""
     },
+    "fact:f013aff3e1f4698e0f1ccd8b": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008158200063",
+      "source": "연합뉴스",
+      "source_body_digest": "72e87b720b901b4f3df7a47609d4a313f51ebeded2a420d4d417873f23299ad4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02a37b6ed1e5542a5bbb146fdc2ab05b094bf6febf1129bdc72d9f5e3a908bfd",
+      "source_fact_keys": [
+        "source_fact:v1:4033e46c26102e2eb197fedba9d7d46760fc6e819450777c41a615e28cf9d342",
+        "source_fact:v1:673f0808dbfe37b1cb909d3e5b9ed85e0ffa84ac68e5b83ac61c383a6d5a4658"
+      ],
+      "source_published_kst": "2026-10-08T16:19+09:00",
+      "source_title": "세종시, 360㎿ 규모 데이터센터 건립 유치…7조원 투자 받는다 | 연합뉴스",
+      "telegram_core_fact": "세종시가 7조원 인공지능 데이터센터(AIDC) 투자 유치에 성공했다. SK증권은 오는 2029년까지 7조원을 투입해 360㎿ AIDC를 건립할 방침이다.",
+      "title": "세종시, 360㎿ 규모 데이터센터 건립 유치…7조원 투자 받는다 | 연합뉴스"
+    },
     "fact:f02201e69e1a305a852c563d": {
       "first_seen_kst": "2026-10-07T14:56:20+09:00",
       "lanes": {
@@ -51889,6 +52215,35 @@
       ],
       "source_published_kst": "2026-10-06T09:04+09:00",
       "title": "현대글로비스, 美 LGL과 원자력 자동차운반선 한·미 운항 검토"
+    },
+    "link:035f22de97e10d0c78f13313": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171026",
+      "source": "매일경제",
+      "source_body_digest": "37b4bc5cf031f47bdc1bf4f2a6c27eb29a6e04238f91538b88b03d0c5dd4f9b8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:40046c2acf5f34ba157e9feec7a46f55f65cf433f39052eea23621cfb7105a61",
+      "source_fact_keys": [
+        "source_fact:v1:137a3d79950e15282120b88f7751e9c507dbf12c9a8c5a3c0f485a2903c13268",
+        "source_fact:v1:30f11d931d44f43cb7675118c474d6a133b9128872192b946733afd10e14b792",
+        "source_fact:v1:57a58920cdde7d7a43ed4b206c264eacccee88d4823ad50a4f572b64f02322f4",
+        "source_fact:v1:6e69f70d160fa0b1975bbfa977fbdcc7e1508f4af8a685bfa9d6ca76f72ae833",
+        "source_fact:v1:87dabe55b8e0fb41ff81e8128b9a6e3ae45909756946cd700f49537553c8834e",
+        "source_fact:v1:8d8db422e9f729a7cf02dc49ab2f66c5b51563f8670917a7aff2de97ea29a605",
+        "source_fact:v1:95c17d6153385dcd8ec01afdf431441d25d443aed40dfb3b79587c8b146f1994",
+        "source_fact:v1:be33958723e3d964250be2d3d6a5852aa4ed894208279f87c20977a18f5ce704",
+        "source_fact:v1:c6bdce2c16367cdbd10045d7851152e15bee94425ad97f815d8087963ed89c80",
+        "source_fact:v1:d62045cfecbe4500046d30c7a85b7c0a28a1ac4bf41212124278c5c08b6fbd6d",
+        "source_fact:v1:f8742b019b58c74cb3e5cc7f066b929af2246ac5d1f676b563d5f86f128b2d1d"
+      ],
+      "source_published_kst": "2026-10-08T05:23+09:00",
+      "source_title": "리차드슨 일렉트로닉스, 1분기 매출 6490만 달러..전년비 19% 증가",
+      "telegram_core_fact": "2028년 매출액은 2억6791만 달러로 9.19% 늘어날 것으로 예상된다.",
+      "title": "리차드슨 일렉트로닉스, 1분기 매출 6490만 달러..전년비 19% 증가"
     },
     "link:037bcb8e7a8a073d7c466dd1": {
       "first_seen_kst": "2026-10-05T10:24:46+09:00",
@@ -69537,6 +69892,26 @@
       "telegram_core_fact": "청와대는 7일 \"한국이 러시아의 연료난과 정제능력의 상실효과 완화에 도움을 줬으며 이를 통해 기존의 대러 제재정책에 배치되는 행동을 한 것처럼 (우크라이나가) 언급한 것은 사실과 다르며 부적절하다\"고 밝혔다.",
       "title": "靑 \"우크라, 韓 대러제재 배치행동 한 것처럼 언급…부적절하고 사실과 달라\""
     },
+    "link:62b8d613ac31b361a7be7928": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008158200063",
+      "source": "연합뉴스",
+      "source_body_digest": "72e87b720b901b4f3df7a47609d4a313f51ebeded2a420d4d417873f23299ad4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02a37b6ed1e5542a5bbb146fdc2ab05b094bf6febf1129bdc72d9f5e3a908bfd",
+      "source_fact_keys": [
+        "source_fact:v1:4033e46c26102e2eb197fedba9d7d46760fc6e819450777c41a615e28cf9d342",
+        "source_fact:v1:673f0808dbfe37b1cb909d3e5b9ed85e0ffa84ac68e5b83ac61c383a6d5a4658"
+      ],
+      "source_published_kst": "2026-10-08T16:19+09:00",
+      "source_title": "세종시, 360㎿ 규모 데이터센터 건립 유치…7조원 투자 받는다 | 연합뉴스",
+      "telegram_core_fact": "세종시가 7조원 인공지능 데이터센터(AIDC) 투자 유치에 성공했다. SK증권은 오는 2029년까지 7조원을 투입해 360㎿ AIDC를 건립할 방침이다.",
+      "title": "세종시, 360㎿ 규모 데이터센터 건립 유치…7조원 투자 받는다 | 연합뉴스"
+    },
     "link:62d3a74b98f75cba40c3b274": {
       "first_seen_kst": "2026-10-07T18:58:51+09:00",
       "lanes": {
@@ -76957,6 +77332,26 @@
       "source_published_kst": "2026-10-04T06:25+09:00",
       "title": "반도체 설비투자 확대로 공급 확대? \"내후년 하반기는 돼야\" | 연합뉴스"
     },
+    "link:8a18a5b3323854b4d37fd387": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008156600017",
+      "source": "연합뉴스",
+      "source_body_digest": "35683fb891a0e216245686e6778c71798e3404b9e371b1698344cd4d6bbe3d4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5e8d15e818573c30685aaf381f8c8e2ddba971b1d2d00cc6a98b1aad5df791d7",
+      "source_fact_keys": [
+        "source_fact:v1:2224ab33939ead4ba53c6bd8717ed8739bd7dd4e92782fd8ebcf982c16a7ab04",
+        "source_fact:v1:2f241cd812ba4bfb16125fd3d08c44b7269f181317db31c9d9838e8228244a40"
+      ],
+      "source_published_kst": "2026-10-08T16:12+09:00",
+      "source_title": "부광약품, 한국유니온제약 사명 '부광유니파마'로 변경 | 연합뉴스",
+      "telegram_core_fact": "부광약품[003000]은 올해 인수한 한국유니온제약[080720]의 사명을 '부광유니파마'로 변경했다고 8일 밝혔다. 부광약품은 5월 하순 신주 인수 대금 300억원을 납입해 회생 절차 중이던 한국유니온제약의 최대 주주가 됐으며, 지난달 회생 절차가 종결됐다고 밝혔다.",
+      "title": "부광약품, 한국유니온제약 사명 '부광유니파마'로 변경 | 연합뉴스"
+    },
     "link:8a43740be1560ca2051b647c": {
       "first_seen_kst": "2026-10-01T21:33:24+09:00",
       "lanes": {
@@ -79973,6 +80368,23 @@
       "source": "헤럴드경제",
       "title": "최수종, 추석 당일 ‘모친상’…하희라 ‘시모상’"
     },
+    "link:9a81290b49f0c65ba34db9df": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819550",
+      "source": "뉴시스",
+      "source_body_digest": "783998493be5ff71d0c85728c7e3ea7538b9c7644932a562869c18c8114b1c50",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T16:22+09:00",
+      "source_title": "부광 \"한국유니온제약, '부광유니파마'로 사명변경\"",
+      "telegram_core_fact": "정관 일부 변경 안건이 가결되면서 한국유니온제약의 상호는 ‘부광유니파마 주식회사’(이하 부광유니파마)로 변경됐다. 부광약품이 인수한 한국유니온제약의 사명이 변경된다.",
+      "title": "부광 \"한국유니온제약, '부광유니파마'로 사명변경\""
+    },
     "link:9aa1415754f335660fbec6aa": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -81672,6 +82084,25 @@
       ],
       "source_published_kst": "2026-10-07T05:57+09:00",
       "title": "삼전 ‘영업익 100조’ 예고에도 주가는 영…8일도 심상치않다는데"
+    },
+    "link:a2cff0623d76623653d1170c": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/08/2026100809420950784",
+      "source": "머니투데이",
+      "source_body_digest": "db50fde09c5e176257ef54aeb533a196b600e27ac8845f14dc75e315ef3db0cf",
+      "source_event_identity": "source_event:v2:ai_infrastructure_credit_stress:681e358410fd88ef214d10a2f392dcc8b687f21e1070861ace0c8aa7a6050218",
+      "source_fact_identity": "source_facts:v1:9f8c735d036d8472fea30dad3c1fa4eeeb06f7ff9beac4ced213a3ff168fb097",
+      "source_fact_keys": [
+        "source_fact:v1:f706d7572303984dcdcc2df010599a9137ff3fd1fa9a94e0161c7dedca118b98"
+      ],
+      "source_published_kst": "2026-10-08T10:31+09:00",
+      "source_title": "브로드컴·스페이스X·오라클, AI칩 위해 수십조 빚낸다…신용지표 '경고등'",
+      "telegram_core_fact": "브로드컴은 오픈AI AI칩용 500억달러(약 67조원) 조달을 논의하고, 스페이스X는 400억달러(약 53조6000억원) 조달을 추진 중입니다. CDS는 스페이스X가 194bp에서 1bp로, 오라클은 40bp 오른 81bp로 상승했습니다.",
+      "title": "브로드컴·스페이스X·오라클, AI칩 위해 수십조 빚낸다…신용지표 '경고등'"
     },
     "link:a2daef3ed6ae6a9a6f72f2f7": {
       "first_seen_kst": "2026-10-07T12:49:48+09:00",
@@ -91212,6 +91643,29 @@
       "source": "뉴시스",
       "title": "韓총리 \"지금 필요한 건 '연대와 통합'…홍익인간을 나침반 삼아 온 힘 쏟을 것\""
     },
+    "link:d7ff9d1e17e8fbdf5e4ea72e": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896261",
+      "source": "헤럴드경제",
+      "source_body_digest": "61ec1236e84b927cfd5320d1b16e7b69a1ee4cf56a4e976f10cb9d3ac0e50210",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:33ca3f0dfe864d1ed26007908b4d0454fabf3173a37a83c7097bf7b921999578",
+      "source_fact_keys": [
+        "source_fact:v1:120dd5db3393fba05f4b149609eba7dc35536cb4a5d2d4edf4c4526b6133bcb4",
+        "source_fact:v1:72f11742be2f689bb88c120a00253013569bf09c50206241ba89224254f65835",
+        "source_fact:v1:addee6fca254a42575394fea032d98446f03a74433ffddea43a02c5af83dc2ac",
+        "source_fact:v1:bed246dc0977d71d6420f716e5dbccfbace968da540fd38dc53cf167b943cbfd",
+        "source_fact:v1:e56c2d691a17b731737285ad8d64abafd3ac143371cc30bf5c46d4c2c6099782"
+      ],
+      "source_published_kst": "2026-10-08T06:41+09:00",
+      "source_title": "비축유 방출 앞당긴다는 소식에 국제유가 하락…WTI 1.3%↓",
+      "telegram_core_fact": "국제에너지기구(IEA)가 비축유 방출을 앞당기기로 했다는 소식에 7일(현지시간) 국제유가가 하락했다.",
+      "title": "비축유 방출 앞당긴다는 소식에 국제유가 하락…WTI 1.3%↓"
+    },
     "link:d8073a6233cc5bf5a3913780": {
       "first_seen_kst": "2026-10-05T11:24:20+09:00",
       "lanes": {
@@ -97385,6 +97839,43 @@
       "source_title": "LG에너지솔루션, 캐나다산 리튬정광 24만톤 확보…\"북미 ESS 수요 선점 집중\"",
       "telegram_core_fact": "LG에너지솔루션은 북미 리튬 생산 기업 엘레브라 리튬과 리튬 정광 장기 공급 계약을 체결했다고 8일 밝혔다.",
       "title": "LG에너지솔루션, 캐나다산 리튬정광 24만톤 확보…\"북미 ESS 수요 선점 집중\""
+    },
+    "link:f9b5250dce3073b87fbf6508": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008061300008",
+      "source": "연합뉴스",
+      "source_body_digest": "70c4002da6484444171ab22de9223289d3c015d7a820e76d1bd3ec3214bc4208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e89c06b309e25e81e996ad76d6428b76b3399d8505902527a69c5fd8bc93f36b",
+      "source_fact_keys": [
+        "source_fact:v1:143c60d26e6f90ca3c4ffa921b86ac9e15e3fadac249fc5f4498d7aae260a7a5",
+        "source_fact:v1:178870f988b6fae0613a7133fcfec6b326f93e65e59ca278161dd3d222528688",
+        "source_fact:v1:21a557d7dffb33763434aa302eaa08ba12a45ea713ceb45c89aa7e3f33abe5b9",
+        "source_fact:v1:33776a2032da45bcc927e3941e905fa943969ab714376414f7c4c43c16469ba3",
+        "source_fact:v1:3ee158ac01b689c28ac99dfb3d4f734b0fb435172d68a927489bbb9630d34d0d",
+        "source_fact:v1:4e9c44bbbdc4961c8c544378c398c144194e37a1ae8c1ef8bc7ba851f4d3a338",
+        "source_fact:v1:5bc60be200df43dc4bf6b55c418798095f40bfb0a69b91596d5f0ad57a384037",
+        "source_fact:v1:61115eee9325507db0b54edb9d2c722783491d5dd822b36bebb0b5a2c47d9d75",
+        "source_fact:v1:68d3187e27b5c1c3daeba8bc385da0f6e11dbb698caa66634da6e2bad7a6ba2e",
+        "source_fact:v1:6f0dae763467c73f3080be24cf659dcf2c92740b983a4c4d4aacc77aae971b30",
+        "source_fact:v1:81beccb4c6f31c72274372f6a17022c5d89c77729f86c01f277b1cc10dcf1a6d",
+        "source_fact:v1:93a7dd789eae701a3b248ec6e23085bce99d239ffb9dec937c58ba999495795e",
+        "source_fact:v1:95daea6d42f1903945ff74ff79fe570978d4543e13c651a59a3f9234e5d293ac",
+        "source_fact:v1:a43ec6032c718b30c02cf18033c4701106cf7341acb5b49d055c89c0cc2a93f0",
+        "source_fact:v1:ac3ea6af0211471b00b9a9d97f02985ac00249d3aa747b00722b5f2bd5b139aa",
+        "source_fact:v1:c1b6ab6f36f3f1a54b52fb5d4fc3788eecdfe0c107a19432b010f58d44d8bfe3",
+        "source_fact:v1:ebc160b665c658b2370e18b19ae13404f380912cc54886fd56883ed9e5c63527",
+        "source_fact:v1:fc8b61db0583205c20b0d4eccb07cffa708d766d25132c4502f4519c7b06d248",
+        "source_fact:v1:fcefb51b059dd524ba26bea909942207c666794aca73c91ca69131745e4400e7"
+      ],
+      "source_published_kst": "2026-10-08T10:37+09:00",
+      "source_title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스",
+      "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
+      "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
     },
     "link:f9d4b838813ec505964ebb07": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
@@ -109594,6 +110085,25 @@
       "telegram_core_fact": "정미순 양주시 세정과장은 \"외국인 주민도 지방세 납세자인 만큼 세금 정보를 쉽게 확인하고 필요한 절차를 이용하도록 납세 편의 서비스를 개선하겠다\"고 말했다.",
       "title": "양주시, 외국인 납세자에 6개국 언어 안내문 발송 | 연합뉴스"
     },
+    "original:3beb97ee1d911567cfd93edf": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/08/2026100809420950784",
+      "source": "머니투데이",
+      "source_body_digest": "db50fde09c5e176257ef54aeb533a196b600e27ac8845f14dc75e315ef3db0cf",
+      "source_event_identity": "source_event:v2:ai_infrastructure_credit_stress:681e358410fd88ef214d10a2f392dcc8b687f21e1070861ace0c8aa7a6050218",
+      "source_fact_identity": "source_facts:v1:9f8c735d036d8472fea30dad3c1fa4eeeb06f7ff9beac4ced213a3ff168fb097",
+      "source_fact_keys": [
+        "source_fact:v1:f706d7572303984dcdcc2df010599a9137ff3fd1fa9a94e0161c7dedca118b98"
+      ],
+      "source_published_kst": "2026-10-08T10:31+09:00",
+      "source_title": "브로드컴·스페이스X·오라클, AI칩 위해 수십조 빚낸다…신용지표 '경고등'",
+      "telegram_core_fact": "브로드컴은 오픈AI AI칩용 500억달러(약 67조원) 조달을 논의하고, 스페이스X는 400억달러(약 53조6000억원) 조달을 추진 중입니다. CDS는 스페이스X가 194bp에서 1bp로, 오라클은 40bp 오른 81bp로 상승했습니다.",
+      "title": "브로드컴·스페이스X·오라클, AI칩 위해 수십조 빚낸다…신용지표 '경고등'"
+    },
     "original:3bf8f1f47b955dcf7ee06843": {
       "first_seen_kst": "2026-10-07T13:41:41+09:00",
       "lanes": {
@@ -110444,6 +110954,26 @@
       "source_title": "[속보] 반도체 호황…8월 경상수지 461억1000만달러 흑자 역대 2위",
       "telegram_core_fact": "우리나라의 경상수지가 반도체 수출 호황 등에 힘입어 지난 8월에도 흑자 흐름을 이어갔다.",
       "title": "[속보] 반도체 호황…8월 경상수지 461억1000만달러 흑자 역대 2위"
+    },
+    "original:40516581fe5b6ea455f4e27f": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008158200063",
+      "source": "연합뉴스",
+      "source_body_digest": "72e87b720b901b4f3df7a47609d4a313f51ebeded2a420d4d417873f23299ad4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02a37b6ed1e5542a5bbb146fdc2ab05b094bf6febf1129bdc72d9f5e3a908bfd",
+      "source_fact_keys": [
+        "source_fact:v1:4033e46c26102e2eb197fedba9d7d46760fc6e819450777c41a615e28cf9d342",
+        "source_fact:v1:673f0808dbfe37b1cb909d3e5b9ed85e0ffa84ac68e5b83ac61c383a6d5a4658"
+      ],
+      "source_published_kst": "2026-10-08T16:19+09:00",
+      "source_title": "세종시, 360㎿ 규모 데이터센터 건립 유치…7조원 투자 받는다 | 연합뉴스",
+      "telegram_core_fact": "세종시가 7조원 인공지능 데이터센터(AIDC) 투자 유치에 성공했다. SK증권은 오는 2029년까지 7조원을 투입해 360㎿ AIDC를 건립할 방침이다.",
+      "title": "세종시, 360㎿ 규모 데이터센터 건립 유치…7조원 투자 받는다 | 연합뉴스"
     },
     "original:405ac66caffd6e84dec10f35": {
       "first_seen_kst": "2026-10-07T00:38:27+09:00",
@@ -111421,16 +111951,17 @@
     "original:43c68deb5970a6f94a26cd7e": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
-        "live": "2026-10-08T05:31:58+09:00"
+        "live": "2026-10-08T21:47:01+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:31:58+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1171403",
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171026",
       "source": "매일경제",
-      "source_body_digest": "3d5eaeb53673a5a7a34409a1f0cf0542210a74b3a29c26c83251cd23e2e07ede",
+      "source_body_digest": "37b4bc5cf031f47bdc1bf4f2a6c27eb29a6e04238f91538b88b03d0c5dd4f9b8",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:3a81cc067129c1d1f225646689c6c3887eb5ef2f4ff78d75b53e08527112d9d5",
+      "source_fact_identity": "source_facts:v1:40046c2acf5f34ba157e9feec7a46f55f65cf433f39052eea23621cfb7105a61",
       "source_fact_keys": [
         "source_fact:v1:137a3d79950e15282120b88f7751e9c507dbf12c9a8c5a3c0f485a2903c13268",
+        "source_fact:v1:30f11d931d44f43cb7675118c474d6a133b9128872192b946733afd10e14b792",
         "source_fact:v1:57a58920cdde7d7a43ed4b206c264eacccee88d4823ad50a4f572b64f02322f4",
         "source_fact:v1:6e69f70d160fa0b1975bbfa977fbdcc7e1508f4af8a685bfa9d6ca76f72ae833",
         "source_fact:v1:87dabe55b8e0fb41ff81e8128b9a6e3ae45909756946cd700f49537553c8834e",
@@ -111438,6 +111969,7 @@
         "source_fact:v1:95c17d6153385dcd8ec01afdf431441d25d443aed40dfb3b79587c8b146f1994",
         "source_fact:v1:be33958723e3d964250be2d3d6a5852aa4ed894208279f87c20977a18f5ce704",
         "source_fact:v1:c6bdce2c16367cdbd10045d7851152e15bee94425ad97f815d8087963ed89c80",
+        "source_fact:v1:d62045cfecbe4500046d30c7a85b7c0a28a1ac4bf41212124278c5c08b6fbd6d",
         "source_fact:v1:f8742b019b58c74cb3e5cc7f066b929af2246ac5d1f676b563d5f86f128b2d1d"
       ],
       "source_published_kst": "2026-10-08T05:23+09:00",
@@ -113458,6 +113990,26 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T15:16+09:00",
       "title": "MSDI, 구미에 미사일 개발·생산 거점 추진…2029년까지 7000억 규모"
+    },
+    "original:4e6a4cac798c1894f9f81584": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008156600017",
+      "source": "연합뉴스",
+      "source_body_digest": "35683fb891a0e216245686e6778c71798e3404b9e371b1698344cd4d6bbe3d4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5e8d15e818573c30685aaf381f8c8e2ddba971b1d2d00cc6a98b1aad5df791d7",
+      "source_fact_keys": [
+        "source_fact:v1:2224ab33939ead4ba53c6bd8717ed8739bd7dd4e92782fd8ebcf982c16a7ab04",
+        "source_fact:v1:2f241cd812ba4bfb16125fd3d08c44b7269f181317db31c9d9838e8228244a40"
+      ],
+      "source_published_kst": "2026-10-08T16:12+09:00",
+      "source_title": "부광약품, 한국유니온제약 사명 '부광유니파마'로 변경 | 연합뉴스",
+      "telegram_core_fact": "부광약품[003000]은 올해 인수한 한국유니온제약[080720]의 사명을 '부광유니파마'로 변경했다고 8일 밝혔다. 부광약품은 5월 하순 신주 인수 대금 300억원을 납입해 회생 절차 중이던 한국유니온제약의 최대 주주가 됐으며, 지난달 회생 절차가 종결됐다고 밝혔다.",
+      "title": "부광약품, 한국유니온제약 사명 '부광유니파마'로 변경 | 연합뉴스"
     },
     "original:4e792d2bfd7018600c8cc349": {
       "first_seen_kst": "2026-10-05T23:21:26+09:00",
@@ -122364,6 +122916,43 @@
       "telegram_core_fact": "CALISA ACQUISITION CORP는 협력 계약의 구속력이 없어 실제 매출 기여까지는 불확실성이 크며, 합병이 완료되지 않거나 지연될 가능성도 위험 요인으로 제시됐다.",
       "title": "CALISA ACQUISITION CORP, 합병 대상 굿비전AI 텍사스 AI 인프라 협력 2건"
     },
+    "original:82d7cfbde9e9b2248db63cd8": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008061300008",
+      "source": "연합뉴스",
+      "source_body_digest": "70c4002da6484444171ab22de9223289d3c015d7a820e76d1bd3ec3214bc4208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e89c06b309e25e81e996ad76d6428b76b3399d8505902527a69c5fd8bc93f36b",
+      "source_fact_keys": [
+        "source_fact:v1:143c60d26e6f90ca3c4ffa921b86ac9e15e3fadac249fc5f4498d7aae260a7a5",
+        "source_fact:v1:178870f988b6fae0613a7133fcfec6b326f93e65e59ca278161dd3d222528688",
+        "source_fact:v1:21a557d7dffb33763434aa302eaa08ba12a45ea713ceb45c89aa7e3f33abe5b9",
+        "source_fact:v1:33776a2032da45bcc927e3941e905fa943969ab714376414f7c4c43c16469ba3",
+        "source_fact:v1:3ee158ac01b689c28ac99dfb3d4f734b0fb435172d68a927489bbb9630d34d0d",
+        "source_fact:v1:4e9c44bbbdc4961c8c544378c398c144194e37a1ae8c1ef8bc7ba851f4d3a338",
+        "source_fact:v1:5bc60be200df43dc4bf6b55c418798095f40bfb0a69b91596d5f0ad57a384037",
+        "source_fact:v1:61115eee9325507db0b54edb9d2c722783491d5dd822b36bebb0b5a2c47d9d75",
+        "source_fact:v1:68d3187e27b5c1c3daeba8bc385da0f6e11dbb698caa66634da6e2bad7a6ba2e",
+        "source_fact:v1:6f0dae763467c73f3080be24cf659dcf2c92740b983a4c4d4aacc77aae971b30",
+        "source_fact:v1:81beccb4c6f31c72274372f6a17022c5d89c77729f86c01f277b1cc10dcf1a6d",
+        "source_fact:v1:93a7dd789eae701a3b248ec6e23085bce99d239ffb9dec937c58ba999495795e",
+        "source_fact:v1:95daea6d42f1903945ff74ff79fe570978d4543e13c651a59a3f9234e5d293ac",
+        "source_fact:v1:a43ec6032c718b30c02cf18033c4701106cf7341acb5b49d055c89c0cc2a93f0",
+        "source_fact:v1:ac3ea6af0211471b00b9a9d97f02985ac00249d3aa747b00722b5f2bd5b139aa",
+        "source_fact:v1:c1b6ab6f36f3f1a54b52fb5d4fc3788eecdfe0c107a19432b010f58d44d8bfe3",
+        "source_fact:v1:ebc160b665c658b2370e18b19ae13404f380912cc54886fd56883ed9e5c63527",
+        "source_fact:v1:fc8b61db0583205c20b0d4eccb07cffa708d766d25132c4502f4519c7b06d248",
+        "source_fact:v1:fcefb51b059dd524ba26bea909942207c666794aca73c91ca69131745e4400e7"
+      ],
+      "source_published_kst": "2026-10-08T10:37+09:00",
+      "source_title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스",
+      "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
+      "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
+    },
     "original:82fb04fe6ea26a6d49b807ae": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
       "lanes": {
@@ -128228,6 +128817,23 @@
       "source_published_kst": "2026-10-07T15:40+09:00",
       "title": "두나무·네파 주식교환 세 번째 연기…내년 3월로(종합) | 연합뉴스"
     },
+    "original:a4272a8e8e4038150206685b": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819550",
+      "source": "뉴시스",
+      "source_body_digest": "783998493be5ff71d0c85728c7e3ea7538b9c7644932a562869c18c8114b1c50",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T16:22+09:00",
+      "source_title": "부광 \"한국유니온제약, '부광유니파마'로 사명변경\"",
+      "telegram_core_fact": "정관 일부 변경 안건이 가결되면서 한국유니온제약의 상호는 ‘부광유니파마 주식회사’(이하 부광유니파마)로 변경됐다. 부광약품이 인수한 한국유니온제약의 사명이 변경된다.",
+      "title": "부광 \"한국유니온제약, '부광유니파마'로 사명변경\""
+    },
     "original:a4331d348e5a004d3cfd2afb": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
       "lanes": {
@@ -129343,6 +129949,29 @@
       "source_title": "1억 넣으면 월 200만원 나온다는데…배당 부자들만 몰래 쓰는 '세금 0원' 기술",
       "telegram_core_fact": "배당금을 먼저 확정하고 배당 기준일을 정하는 '선배당 후투자' 방식이 확산하면서 결산 배당일이 2~4월 봄철로 분산되고 있다.",
       "title": "1억 넣으면 월 200만원 나온다는데…배당 부자들만 몰래 쓰는 '세금 0원' 기술"
+    },
+    "original:aa19c8ba1c029484dae13baa": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896261",
+      "source": "헤럴드경제",
+      "source_body_digest": "61ec1236e84b927cfd5320d1b16e7b69a1ee4cf56a4e976f10cb9d3ac0e50210",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:33ca3f0dfe864d1ed26007908b4d0454fabf3173a37a83c7097bf7b921999578",
+      "source_fact_keys": [
+        "source_fact:v1:120dd5db3393fba05f4b149609eba7dc35536cb4a5d2d4edf4c4526b6133bcb4",
+        "source_fact:v1:72f11742be2f689bb88c120a00253013569bf09c50206241ba89224254f65835",
+        "source_fact:v1:addee6fca254a42575394fea032d98446f03a74433ffddea43a02c5af83dc2ac",
+        "source_fact:v1:bed246dc0977d71d6420f716e5dbccfbace968da540fd38dc53cf167b943cbfd",
+        "source_fact:v1:e56c2d691a17b731737285ad8d64abafd3ac143371cc30bf5c46d4c2c6099782"
+      ],
+      "source_published_kst": "2026-10-08T06:41+09:00",
+      "source_title": "비축유 방출 앞당긴다는 소식에 국제유가 하락…WTI 1.3%↓",
+      "telegram_core_fact": "국제에너지기구(IEA)가 비축유 방출을 앞당기기로 했다는 소식에 7일(현지시간) 국제유가가 하락했다.",
+      "title": "비축유 방출 앞당긴다는 소식에 국제유가 하락…WTI 1.3%↓"
     },
     "original:aa29884680afc75245694726": {
       "first_seen_kst": "2026-10-05T17:09:18+09:00",
@@ -145479,6 +146108,43 @@
       "source_published_kst": "2026-10-07T05:00+09:00",
       "title": "테마 쪼개고 채권 섞고…ETF 신상품 설계 다변화 [ETF 지형도 변화]②"
     },
+    "source_fact:0226fc5bc0e93031ca71f1a7": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008061300008",
+      "source": "연합뉴스",
+      "source_body_digest": "70c4002da6484444171ab22de9223289d3c015d7a820e76d1bd3ec3214bc4208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e89c06b309e25e81e996ad76d6428b76b3399d8505902527a69c5fd8bc93f36b",
+      "source_fact_keys": [
+        "source_fact:v1:143c60d26e6f90ca3c4ffa921b86ac9e15e3fadac249fc5f4498d7aae260a7a5",
+        "source_fact:v1:178870f988b6fae0613a7133fcfec6b326f93e65e59ca278161dd3d222528688",
+        "source_fact:v1:21a557d7dffb33763434aa302eaa08ba12a45ea713ceb45c89aa7e3f33abe5b9",
+        "source_fact:v1:33776a2032da45bcc927e3941e905fa943969ab714376414f7c4c43c16469ba3",
+        "source_fact:v1:3ee158ac01b689c28ac99dfb3d4f734b0fb435172d68a927489bbb9630d34d0d",
+        "source_fact:v1:4e9c44bbbdc4961c8c544378c398c144194e37a1ae8c1ef8bc7ba851f4d3a338",
+        "source_fact:v1:5bc60be200df43dc4bf6b55c418798095f40bfb0a69b91596d5f0ad57a384037",
+        "source_fact:v1:61115eee9325507db0b54edb9d2c722783491d5dd822b36bebb0b5a2c47d9d75",
+        "source_fact:v1:68d3187e27b5c1c3daeba8bc385da0f6e11dbb698caa66634da6e2bad7a6ba2e",
+        "source_fact:v1:6f0dae763467c73f3080be24cf659dcf2c92740b983a4c4d4aacc77aae971b30",
+        "source_fact:v1:81beccb4c6f31c72274372f6a17022c5d89c77729f86c01f277b1cc10dcf1a6d",
+        "source_fact:v1:93a7dd789eae701a3b248ec6e23085bce99d239ffb9dec937c58ba999495795e",
+        "source_fact:v1:95daea6d42f1903945ff74ff79fe570978d4543e13c651a59a3f9234e5d293ac",
+        "source_fact:v1:a43ec6032c718b30c02cf18033c4701106cf7341acb5b49d055c89c0cc2a93f0",
+        "source_fact:v1:ac3ea6af0211471b00b9a9d97f02985ac00249d3aa747b00722b5f2bd5b139aa",
+        "source_fact:v1:c1b6ab6f36f3f1a54b52fb5d4fc3788eecdfe0c107a19432b010f58d44d8bfe3",
+        "source_fact:v1:ebc160b665c658b2370e18b19ae13404f380912cc54886fd56883ed9e5c63527",
+        "source_fact:v1:fc8b61db0583205c20b0d4eccb07cffa708d766d25132c4502f4519c7b06d248",
+        "source_fact:v1:fcefb51b059dd524ba26bea909942207c666794aca73c91ca69131745e4400e7"
+      ],
+      "source_published_kst": "2026-10-08T10:37+09:00",
+      "source_title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스",
+      "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
+      "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
+    },
     "source_fact:022a2ae909b53fe0a5810362": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
@@ -146351,6 +147017,29 @@
       ],
       "source_published_kst": "2026-10-05T22:06+09:00",
       "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
+    },
+    "source_fact:04d87cbba0a30e18db091d89": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896261",
+      "source": "헤럴드경제",
+      "source_body_digest": "61ec1236e84b927cfd5320d1b16e7b69a1ee4cf56a4e976f10cb9d3ac0e50210",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:33ca3f0dfe864d1ed26007908b4d0454fabf3173a37a83c7097bf7b921999578",
+      "source_fact_keys": [
+        "source_fact:v1:120dd5db3393fba05f4b149609eba7dc35536cb4a5d2d4edf4c4526b6133bcb4",
+        "source_fact:v1:72f11742be2f689bb88c120a00253013569bf09c50206241ba89224254f65835",
+        "source_fact:v1:addee6fca254a42575394fea032d98446f03a74433ffddea43a02c5af83dc2ac",
+        "source_fact:v1:bed246dc0977d71d6420f716e5dbccfbace968da540fd38dc53cf167b943cbfd",
+        "source_fact:v1:e56c2d691a17b731737285ad8d64abafd3ac143371cc30bf5c46d4c2c6099782"
+      ],
+      "source_published_kst": "2026-10-08T06:41+09:00",
+      "source_title": "비축유 방출 앞당긴다는 소식에 국제유가 하락…WTI 1.3%↓",
+      "telegram_core_fact": "국제에너지기구(IEA)가 비축유 방출을 앞당기기로 했다는 소식에 7일(현지시간) 국제유가가 하락했다.",
+      "title": "비축유 방출 앞당긴다는 소식에 국제유가 하락…WTI 1.3%↓"
     },
     "source_fact:04dd6e215466fa0fdbec91a6": {
       "first_seen_kst": "2026-10-08T14:55:40+09:00",
@@ -149382,16 +150071,17 @@
     "source_fact:0a7881be1040ffa2821687fb": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
-        "live": "2026-10-08T05:31:58+09:00"
+        "live": "2026-10-08T21:47:01+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:31:58+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1171403",
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171026",
       "source": "매일경제",
-      "source_body_digest": "3d5eaeb53673a5a7a34409a1f0cf0542210a74b3a29c26c83251cd23e2e07ede",
+      "source_body_digest": "37b4bc5cf031f47bdc1bf4f2a6c27eb29a6e04238f91538b88b03d0c5dd4f9b8",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:3a81cc067129c1d1f225646689c6c3887eb5ef2f4ff78d75b53e08527112d9d5",
+      "source_fact_identity": "source_facts:v1:40046c2acf5f34ba157e9feec7a46f55f65cf433f39052eea23621cfb7105a61",
       "source_fact_keys": [
         "source_fact:v1:137a3d79950e15282120b88f7751e9c507dbf12c9a8c5a3c0f485a2903c13268",
+        "source_fact:v1:30f11d931d44f43cb7675118c474d6a133b9128872192b946733afd10e14b792",
         "source_fact:v1:57a58920cdde7d7a43ed4b206c264eacccee88d4823ad50a4f572b64f02322f4",
         "source_fact:v1:6e69f70d160fa0b1975bbfa977fbdcc7e1508f4af8a685bfa9d6ca76f72ae833",
         "source_fact:v1:87dabe55b8e0fb41ff81e8128b9a6e3ae45909756946cd700f49537553c8834e",
@@ -149399,6 +150089,7 @@
         "source_fact:v1:95c17d6153385dcd8ec01afdf431441d25d443aed40dfb3b79587c8b146f1994",
         "source_fact:v1:be33958723e3d964250be2d3d6a5852aa4ed894208279f87c20977a18f5ce704",
         "source_fact:v1:c6bdce2c16367cdbd10045d7851152e15bee94425ad97f815d8087963ed89c80",
+        "source_fact:v1:d62045cfecbe4500046d30c7a85b7c0a28a1ac4bf41212124278c5c08b6fbd6d",
         "source_fact:v1:f8742b019b58c74cb3e5cc7f066b929af2246ac5d1f676b563d5f86f128b2d1d"
       ],
       "source_published_kst": "2026-10-08T05:23+09:00",
@@ -156128,16 +156819,17 @@
     "source_fact:171ea205cbb37cfdf0143a3d": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
-        "live": "2026-10-08T05:31:58+09:00"
+        "live": "2026-10-08T21:47:01+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:31:58+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1171403",
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171026",
       "source": "매일경제",
-      "source_body_digest": "3d5eaeb53673a5a7a34409a1f0cf0542210a74b3a29c26c83251cd23e2e07ede",
+      "source_body_digest": "37b4bc5cf031f47bdc1bf4f2a6c27eb29a6e04238f91538b88b03d0c5dd4f9b8",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:3a81cc067129c1d1f225646689c6c3887eb5ef2f4ff78d75b53e08527112d9d5",
+      "source_fact_identity": "source_facts:v1:40046c2acf5f34ba157e9feec7a46f55f65cf433f39052eea23621cfb7105a61",
       "source_fact_keys": [
         "source_fact:v1:137a3d79950e15282120b88f7751e9c507dbf12c9a8c5a3c0f485a2903c13268",
+        "source_fact:v1:30f11d931d44f43cb7675118c474d6a133b9128872192b946733afd10e14b792",
         "source_fact:v1:57a58920cdde7d7a43ed4b206c264eacccee88d4823ad50a4f572b64f02322f4",
         "source_fact:v1:6e69f70d160fa0b1975bbfa977fbdcc7e1508f4af8a685bfa9d6ca76f72ae833",
         "source_fact:v1:87dabe55b8e0fb41ff81e8128b9a6e3ae45909756946cd700f49537553c8834e",
@@ -156145,6 +156837,7 @@
         "source_fact:v1:95c17d6153385dcd8ec01afdf431441d25d443aed40dfb3b79587c8b146f1994",
         "source_fact:v1:be33958723e3d964250be2d3d6a5852aa4ed894208279f87c20977a18f5ce704",
         "source_fact:v1:c6bdce2c16367cdbd10045d7851152e15bee94425ad97f815d8087963ed89c80",
+        "source_fact:v1:d62045cfecbe4500046d30c7a85b7c0a28a1ac4bf41212124278c5c08b6fbd6d",
         "source_fact:v1:f8742b019b58c74cb3e5cc7f066b929af2246ac5d1f676b563d5f86f128b2d1d"
       ],
       "source_published_kst": "2026-10-08T05:23+09:00",
@@ -157041,6 +157734,35 @@
       ],
       "source_published_kst": "2026-10-07T07:00+09:00",
       "title": "“관세 낮추려면 대가 내야”…트럼프, 한국 1500억달러 또 꺼냈다"
+    },
+    "source_fact:18c3d24fb7252455a0b8a96e": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171026",
+      "source": "매일경제",
+      "source_body_digest": "37b4bc5cf031f47bdc1bf4f2a6c27eb29a6e04238f91538b88b03d0c5dd4f9b8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:40046c2acf5f34ba157e9feec7a46f55f65cf433f39052eea23621cfb7105a61",
+      "source_fact_keys": [
+        "source_fact:v1:137a3d79950e15282120b88f7751e9c507dbf12c9a8c5a3c0f485a2903c13268",
+        "source_fact:v1:30f11d931d44f43cb7675118c474d6a133b9128872192b946733afd10e14b792",
+        "source_fact:v1:57a58920cdde7d7a43ed4b206c264eacccee88d4823ad50a4f572b64f02322f4",
+        "source_fact:v1:6e69f70d160fa0b1975bbfa977fbdcc7e1508f4af8a685bfa9d6ca76f72ae833",
+        "source_fact:v1:87dabe55b8e0fb41ff81e8128b9a6e3ae45909756946cd700f49537553c8834e",
+        "source_fact:v1:8d8db422e9f729a7cf02dc49ab2f66c5b51563f8670917a7aff2de97ea29a605",
+        "source_fact:v1:95c17d6153385dcd8ec01afdf431441d25d443aed40dfb3b79587c8b146f1994",
+        "source_fact:v1:be33958723e3d964250be2d3d6a5852aa4ed894208279f87c20977a18f5ce704",
+        "source_fact:v1:c6bdce2c16367cdbd10045d7851152e15bee94425ad97f815d8087963ed89c80",
+        "source_fact:v1:d62045cfecbe4500046d30c7a85b7c0a28a1ac4bf41212124278c5c08b6fbd6d",
+        "source_fact:v1:f8742b019b58c74cb3e5cc7f066b929af2246ac5d1f676b563d5f86f128b2d1d"
+      ],
+      "source_published_kst": "2026-10-08T05:23+09:00",
+      "source_title": "리차드슨 일렉트로닉스, 1분기 매출 6490만 달러..전년비 19% 증가",
+      "telegram_core_fact": "2028년 매출액은 2억6791만 달러로 9.19% 늘어날 것으로 예상된다.",
+      "title": "리차드슨 일렉트로닉스, 1분기 매출 6490만 달러..전년비 19% 증가"
     },
     "source_fact:18c5000dfeaf526bb6756942": {
       "first_seen_kst": "2026-10-07T02:49:10+09:00",
@@ -169330,16 +170052,17 @@
     "source_fact:2ee2b3761d014a45366ad6ba": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
-        "live": "2026-10-08T05:31:58+09:00"
+        "live": "2026-10-08T21:47:01+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:31:58+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1171403",
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171026",
       "source": "매일경제",
-      "source_body_digest": "3d5eaeb53673a5a7a34409a1f0cf0542210a74b3a29c26c83251cd23e2e07ede",
+      "source_body_digest": "37b4bc5cf031f47bdc1bf4f2a6c27eb29a6e04238f91538b88b03d0c5dd4f9b8",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:3a81cc067129c1d1f225646689c6c3887eb5ef2f4ff78d75b53e08527112d9d5",
+      "source_fact_identity": "source_facts:v1:40046c2acf5f34ba157e9feec7a46f55f65cf433f39052eea23621cfb7105a61",
       "source_fact_keys": [
         "source_fact:v1:137a3d79950e15282120b88f7751e9c507dbf12c9a8c5a3c0f485a2903c13268",
+        "source_fact:v1:30f11d931d44f43cb7675118c474d6a133b9128872192b946733afd10e14b792",
         "source_fact:v1:57a58920cdde7d7a43ed4b206c264eacccee88d4823ad50a4f572b64f02322f4",
         "source_fact:v1:6e69f70d160fa0b1975bbfa977fbdcc7e1508f4af8a685bfa9d6ca76f72ae833",
         "source_fact:v1:87dabe55b8e0fb41ff81e8128b9a6e3ae45909756946cd700f49537553c8834e",
@@ -169347,6 +170070,7 @@
         "source_fact:v1:95c17d6153385dcd8ec01afdf431441d25d443aed40dfb3b79587c8b146f1994",
         "source_fact:v1:be33958723e3d964250be2d3d6a5852aa4ed894208279f87c20977a18f5ce704",
         "source_fact:v1:c6bdce2c16367cdbd10045d7851152e15bee94425ad97f815d8087963ed89c80",
+        "source_fact:v1:d62045cfecbe4500046d30c7a85b7c0a28a1ac4bf41212124278c5c08b6fbd6d",
         "source_fact:v1:f8742b019b58c74cb3e5cc7f066b929af2246ac5d1f676b563d5f86f128b2d1d"
       ],
       "source_published_kst": "2026-10-08T05:23+09:00",
@@ -173097,6 +173821,25 @@
       "source_published_kst": "2026-10-06T12:08+09:00",
       "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
     },
+    "source_fact:357649c350460723f7cad9c3": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/08/2026100809420950784",
+      "source": "머니투데이",
+      "source_body_digest": "db50fde09c5e176257ef54aeb533a196b600e27ac8845f14dc75e315ef3db0cf",
+      "source_event_identity": "source_event:v2:ai_infrastructure_credit_stress:681e358410fd88ef214d10a2f392dcc8b687f21e1070861ace0c8aa7a6050218",
+      "source_fact_identity": "source_facts:v1:9f8c735d036d8472fea30dad3c1fa4eeeb06f7ff9beac4ced213a3ff168fb097",
+      "source_fact_keys": [
+        "source_fact:v1:f706d7572303984dcdcc2df010599a9137ff3fd1fa9a94e0161c7dedca118b98"
+      ],
+      "source_published_kst": "2026-10-08T10:31+09:00",
+      "source_title": "브로드컴·스페이스X·오라클, AI칩 위해 수십조 빚낸다…신용지표 '경고등'",
+      "telegram_core_fact": "브로드컴은 오픈AI AI칩용 500억달러(약 67조원) 조달을 논의하고, 스페이스X는 400억달러(약 53조6000억원) 조달을 추진 중입니다. CDS는 스페이스X가 194bp에서 1bp로, 오라클은 40bp 오른 81bp로 상승했습니다.",
+      "title": "브로드컴·스페이스X·오라클, AI칩 위해 수십조 빚낸다…신용지표 '경고등'"
+    },
     "source_fact:3590310bf437e78b463cdeba": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -176238,6 +176981,26 @@
       "source_published_kst": "2026-10-06T08:57+09:00",
       "title": "JW중외제약, EASD 2026서 당뇨병 치료제 ‘엠파가드’ 임상 3상 결과 발표"
     },
+    "source_fact:3b6f87081767c4b102289284": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008156600017",
+      "source": "연합뉴스",
+      "source_body_digest": "35683fb891a0e216245686e6778c71798e3404b9e371b1698344cd4d6bbe3d4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5e8d15e818573c30685aaf381f8c8e2ddba971b1d2d00cc6a98b1aad5df791d7",
+      "source_fact_keys": [
+        "source_fact:v1:2224ab33939ead4ba53c6bd8717ed8739bd7dd4e92782fd8ebcf982c16a7ab04",
+        "source_fact:v1:2f241cd812ba4bfb16125fd3d08c44b7269f181317db31c9d9838e8228244a40"
+      ],
+      "source_published_kst": "2026-10-08T16:12+09:00",
+      "source_title": "부광약품, 한국유니온제약 사명 '부광유니파마'로 변경 | 연합뉴스",
+      "telegram_core_fact": "부광약품[003000]은 올해 인수한 한국유니온제약[080720]의 사명을 '부광유니파마'로 변경했다고 8일 밝혔다. 부광약품은 5월 하순 신주 인수 대금 300억원을 납입해 회생 절차 중이던 한국유니온제약의 최대 주주가 됐으며, 지난달 회생 절차가 종결됐다고 밝혔다.",
+      "title": "부광약품, 한국유니온제약 사명 '부광유니파마'로 변경 | 연합뉴스"
+    },
     "source_fact:3b70fc7c2dccd331e0503cb6": {
       "first_seen_kst": "2026-10-08T14:55:40+09:00",
       "lanes": {
@@ -177158,6 +177921,43 @@
       ],
       "source_published_kst": "2026-10-07T11:16+09:00",
       "title": "“삼성전기, 한번 더”...DS證 “실적 서프라이즈” [오늘, 이 종목]- 매경ECONOMY"
+    },
+    "source_fact:3d6073c40233e0bb7952ff4a": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008061300008",
+      "source": "연합뉴스",
+      "source_body_digest": "70c4002da6484444171ab22de9223289d3c015d7a820e76d1bd3ec3214bc4208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e89c06b309e25e81e996ad76d6428b76b3399d8505902527a69c5fd8bc93f36b",
+      "source_fact_keys": [
+        "source_fact:v1:143c60d26e6f90ca3c4ffa921b86ac9e15e3fadac249fc5f4498d7aae260a7a5",
+        "source_fact:v1:178870f988b6fae0613a7133fcfec6b326f93e65e59ca278161dd3d222528688",
+        "source_fact:v1:21a557d7dffb33763434aa302eaa08ba12a45ea713ceb45c89aa7e3f33abe5b9",
+        "source_fact:v1:33776a2032da45bcc927e3941e905fa943969ab714376414f7c4c43c16469ba3",
+        "source_fact:v1:3ee158ac01b689c28ac99dfb3d4f734b0fb435172d68a927489bbb9630d34d0d",
+        "source_fact:v1:4e9c44bbbdc4961c8c544378c398c144194e37a1ae8c1ef8bc7ba851f4d3a338",
+        "source_fact:v1:5bc60be200df43dc4bf6b55c418798095f40bfb0a69b91596d5f0ad57a384037",
+        "source_fact:v1:61115eee9325507db0b54edb9d2c722783491d5dd822b36bebb0b5a2c47d9d75",
+        "source_fact:v1:68d3187e27b5c1c3daeba8bc385da0f6e11dbb698caa66634da6e2bad7a6ba2e",
+        "source_fact:v1:6f0dae763467c73f3080be24cf659dcf2c92740b983a4c4d4aacc77aae971b30",
+        "source_fact:v1:81beccb4c6f31c72274372f6a17022c5d89c77729f86c01f277b1cc10dcf1a6d",
+        "source_fact:v1:93a7dd789eae701a3b248ec6e23085bce99d239ffb9dec937c58ba999495795e",
+        "source_fact:v1:95daea6d42f1903945ff74ff79fe570978d4543e13c651a59a3f9234e5d293ac",
+        "source_fact:v1:a43ec6032c718b30c02cf18033c4701106cf7341acb5b49d055c89c0cc2a93f0",
+        "source_fact:v1:ac3ea6af0211471b00b9a9d97f02985ac00249d3aa747b00722b5f2bd5b139aa",
+        "source_fact:v1:c1b6ab6f36f3f1a54b52fb5d4fc3788eecdfe0c107a19432b010f58d44d8bfe3",
+        "source_fact:v1:ebc160b665c658b2370e18b19ae13404f380912cc54886fd56883ed9e5c63527",
+        "source_fact:v1:fc8b61db0583205c20b0d4eccb07cffa708d766d25132c4502f4519c7b06d248",
+        "source_fact:v1:fcefb51b059dd524ba26bea909942207c666794aca73c91ca69131745e4400e7"
+      ],
+      "source_published_kst": "2026-10-08T10:37+09:00",
+      "source_title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스",
+      "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
+      "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
     },
     "source_fact:3d6531dd16dc5c86a0c72da9": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
@@ -178161,6 +178961,43 @@
       ],
       "source_published_kst": "2026-10-07T03:50+09:00",
       "title": "美국채 금리 급등하자…핌코 \"투자매력 매우 높아졌다\""
+    },
+    "source_fact:3fa64f6672874cb61a55c97d": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008061300008",
+      "source": "연합뉴스",
+      "source_body_digest": "70c4002da6484444171ab22de9223289d3c015d7a820e76d1bd3ec3214bc4208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e89c06b309e25e81e996ad76d6428b76b3399d8505902527a69c5fd8bc93f36b",
+      "source_fact_keys": [
+        "source_fact:v1:143c60d26e6f90ca3c4ffa921b86ac9e15e3fadac249fc5f4498d7aae260a7a5",
+        "source_fact:v1:178870f988b6fae0613a7133fcfec6b326f93e65e59ca278161dd3d222528688",
+        "source_fact:v1:21a557d7dffb33763434aa302eaa08ba12a45ea713ceb45c89aa7e3f33abe5b9",
+        "source_fact:v1:33776a2032da45bcc927e3941e905fa943969ab714376414f7c4c43c16469ba3",
+        "source_fact:v1:3ee158ac01b689c28ac99dfb3d4f734b0fb435172d68a927489bbb9630d34d0d",
+        "source_fact:v1:4e9c44bbbdc4961c8c544378c398c144194e37a1ae8c1ef8bc7ba851f4d3a338",
+        "source_fact:v1:5bc60be200df43dc4bf6b55c418798095f40bfb0a69b91596d5f0ad57a384037",
+        "source_fact:v1:61115eee9325507db0b54edb9d2c722783491d5dd822b36bebb0b5a2c47d9d75",
+        "source_fact:v1:68d3187e27b5c1c3daeba8bc385da0f6e11dbb698caa66634da6e2bad7a6ba2e",
+        "source_fact:v1:6f0dae763467c73f3080be24cf659dcf2c92740b983a4c4d4aacc77aae971b30",
+        "source_fact:v1:81beccb4c6f31c72274372f6a17022c5d89c77729f86c01f277b1cc10dcf1a6d",
+        "source_fact:v1:93a7dd789eae701a3b248ec6e23085bce99d239ffb9dec937c58ba999495795e",
+        "source_fact:v1:95daea6d42f1903945ff74ff79fe570978d4543e13c651a59a3f9234e5d293ac",
+        "source_fact:v1:a43ec6032c718b30c02cf18033c4701106cf7341acb5b49d055c89c0cc2a93f0",
+        "source_fact:v1:ac3ea6af0211471b00b9a9d97f02985ac00249d3aa747b00722b5f2bd5b139aa",
+        "source_fact:v1:c1b6ab6f36f3f1a54b52fb5d4fc3788eecdfe0c107a19432b010f58d44d8bfe3",
+        "source_fact:v1:ebc160b665c658b2370e18b19ae13404f380912cc54886fd56883ed9e5c63527",
+        "source_fact:v1:fc8b61db0583205c20b0d4eccb07cffa708d766d25132c4502f4519c7b06d248",
+        "source_fact:v1:fcefb51b059dd524ba26bea909942207c666794aca73c91ca69131745e4400e7"
+      ],
+      "source_published_kst": "2026-10-08T10:37+09:00",
+      "source_title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스",
+      "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
+      "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
     },
     "source_fact:3fa66b033e69f844bcde44c7": {
       "first_seen_kst": "2026-10-08T06:10:43+09:00",
@@ -181978,6 +182815,26 @@
       "telegram_core_fact": "포르투나 마이닝(FSM)은 3분기 금환산온스(GEO) 기준 생산량이 6만9665온스로 전년 동기(7만2462온스) 대비 3.9%, 전분기(7만2217온스) 대비 3.5% 감소했다고 10월 7일 발표했다.",
       "title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소"
     },
+    "source_fact:46d7fe95bc374baa2d4fd84b": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008158200063",
+      "source": "연합뉴스",
+      "source_body_digest": "72e87b720b901b4f3df7a47609d4a313f51ebeded2a420d4d417873f23299ad4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02a37b6ed1e5542a5bbb146fdc2ab05b094bf6febf1129bdc72d9f5e3a908bfd",
+      "source_fact_keys": [
+        "source_fact:v1:4033e46c26102e2eb197fedba9d7d46760fc6e819450777c41a615e28cf9d342",
+        "source_fact:v1:673f0808dbfe37b1cb909d3e5b9ed85e0ffa84ac68e5b83ac61c383a6d5a4658"
+      ],
+      "source_published_kst": "2026-10-08T16:19+09:00",
+      "source_title": "세종시, 360㎿ 규모 데이터센터 건립 유치…7조원 투자 받는다 | 연합뉴스",
+      "telegram_core_fact": "세종시가 7조원 인공지능 데이터센터(AIDC) 투자 유치에 성공했다. SK증권은 오는 2029년까지 7조원을 투입해 360㎿ AIDC를 건립할 방침이다.",
+      "title": "세종시, 360㎿ 규모 데이터센터 건립 유치…7조원 투자 받는다 | 연합뉴스"
+    },
     "source_fact:46dcffe7f0d06205702df532": {
       "first_seen_kst": "2026-10-08T20:58:15+09:00",
       "lanes": {
@@ -185018,6 +185875,43 @@
       "source_published_kst": "2026-10-06T17:29+09:00",
       "title": "HK이노엔 도입 비만약, 청소년에서도 효과…“20주 체중 최대 12.1%↓”"
     },
+    "source_fact:4b48bbe03c80836690070ed7": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008061300008",
+      "source": "연합뉴스",
+      "source_body_digest": "70c4002da6484444171ab22de9223289d3c015d7a820e76d1bd3ec3214bc4208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e89c06b309e25e81e996ad76d6428b76b3399d8505902527a69c5fd8bc93f36b",
+      "source_fact_keys": [
+        "source_fact:v1:143c60d26e6f90ca3c4ffa921b86ac9e15e3fadac249fc5f4498d7aae260a7a5",
+        "source_fact:v1:178870f988b6fae0613a7133fcfec6b326f93e65e59ca278161dd3d222528688",
+        "source_fact:v1:21a557d7dffb33763434aa302eaa08ba12a45ea713ceb45c89aa7e3f33abe5b9",
+        "source_fact:v1:33776a2032da45bcc927e3941e905fa943969ab714376414f7c4c43c16469ba3",
+        "source_fact:v1:3ee158ac01b689c28ac99dfb3d4f734b0fb435172d68a927489bbb9630d34d0d",
+        "source_fact:v1:4e9c44bbbdc4961c8c544378c398c144194e37a1ae8c1ef8bc7ba851f4d3a338",
+        "source_fact:v1:5bc60be200df43dc4bf6b55c418798095f40bfb0a69b91596d5f0ad57a384037",
+        "source_fact:v1:61115eee9325507db0b54edb9d2c722783491d5dd822b36bebb0b5a2c47d9d75",
+        "source_fact:v1:68d3187e27b5c1c3daeba8bc385da0f6e11dbb698caa66634da6e2bad7a6ba2e",
+        "source_fact:v1:6f0dae763467c73f3080be24cf659dcf2c92740b983a4c4d4aacc77aae971b30",
+        "source_fact:v1:81beccb4c6f31c72274372f6a17022c5d89c77729f86c01f277b1cc10dcf1a6d",
+        "source_fact:v1:93a7dd789eae701a3b248ec6e23085bce99d239ffb9dec937c58ba999495795e",
+        "source_fact:v1:95daea6d42f1903945ff74ff79fe570978d4543e13c651a59a3f9234e5d293ac",
+        "source_fact:v1:a43ec6032c718b30c02cf18033c4701106cf7341acb5b49d055c89c0cc2a93f0",
+        "source_fact:v1:ac3ea6af0211471b00b9a9d97f02985ac00249d3aa747b00722b5f2bd5b139aa",
+        "source_fact:v1:c1b6ab6f36f3f1a54b52fb5d4fc3788eecdfe0c107a19432b010f58d44d8bfe3",
+        "source_fact:v1:ebc160b665c658b2370e18b19ae13404f380912cc54886fd56883ed9e5c63527",
+        "source_fact:v1:fc8b61db0583205c20b0d4eccb07cffa708d766d25132c4502f4519c7b06d248",
+        "source_fact:v1:fcefb51b059dd524ba26bea909942207c666794aca73c91ca69131745e4400e7"
+      ],
+      "source_published_kst": "2026-10-08T10:37+09:00",
+      "source_title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스",
+      "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
+      "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
+    },
     "source_fact:4b6200feddff0b1843a3c050": {
       "first_seen_kst": "2026-10-07T06:12:17+09:00",
       "lanes": {
@@ -186435,6 +187329,43 @@
       ],
       "source_published_kst": "2026-10-06T10:20+09:00",
       "title": "\"韓 가상자산 경제 600조원대…동아시아 최대\" | 연합뉴스"
+    },
+    "source_fact:4e8eab046194cdb88f55cce4": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008061300008",
+      "source": "연합뉴스",
+      "source_body_digest": "70c4002da6484444171ab22de9223289d3c015d7a820e76d1bd3ec3214bc4208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e89c06b309e25e81e996ad76d6428b76b3399d8505902527a69c5fd8bc93f36b",
+      "source_fact_keys": [
+        "source_fact:v1:143c60d26e6f90ca3c4ffa921b86ac9e15e3fadac249fc5f4498d7aae260a7a5",
+        "source_fact:v1:178870f988b6fae0613a7133fcfec6b326f93e65e59ca278161dd3d222528688",
+        "source_fact:v1:21a557d7dffb33763434aa302eaa08ba12a45ea713ceb45c89aa7e3f33abe5b9",
+        "source_fact:v1:33776a2032da45bcc927e3941e905fa943969ab714376414f7c4c43c16469ba3",
+        "source_fact:v1:3ee158ac01b689c28ac99dfb3d4f734b0fb435172d68a927489bbb9630d34d0d",
+        "source_fact:v1:4e9c44bbbdc4961c8c544378c398c144194e37a1ae8c1ef8bc7ba851f4d3a338",
+        "source_fact:v1:5bc60be200df43dc4bf6b55c418798095f40bfb0a69b91596d5f0ad57a384037",
+        "source_fact:v1:61115eee9325507db0b54edb9d2c722783491d5dd822b36bebb0b5a2c47d9d75",
+        "source_fact:v1:68d3187e27b5c1c3daeba8bc385da0f6e11dbb698caa66634da6e2bad7a6ba2e",
+        "source_fact:v1:6f0dae763467c73f3080be24cf659dcf2c92740b983a4c4d4aacc77aae971b30",
+        "source_fact:v1:81beccb4c6f31c72274372f6a17022c5d89c77729f86c01f277b1cc10dcf1a6d",
+        "source_fact:v1:93a7dd789eae701a3b248ec6e23085bce99d239ffb9dec937c58ba999495795e",
+        "source_fact:v1:95daea6d42f1903945ff74ff79fe570978d4543e13c651a59a3f9234e5d293ac",
+        "source_fact:v1:a43ec6032c718b30c02cf18033c4701106cf7341acb5b49d055c89c0cc2a93f0",
+        "source_fact:v1:ac3ea6af0211471b00b9a9d97f02985ac00249d3aa747b00722b5f2bd5b139aa",
+        "source_fact:v1:c1b6ab6f36f3f1a54b52fb5d4fc3788eecdfe0c107a19432b010f58d44d8bfe3",
+        "source_fact:v1:ebc160b665c658b2370e18b19ae13404f380912cc54886fd56883ed9e5c63527",
+        "source_fact:v1:fc8b61db0583205c20b0d4eccb07cffa708d766d25132c4502f4519c7b06d248",
+        "source_fact:v1:fcefb51b059dd524ba26bea909942207c666794aca73c91ca69131745e4400e7"
+      ],
+      "source_published_kst": "2026-10-08T10:37+09:00",
+      "source_title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스",
+      "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
+      "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
     },
     "source_fact:4e9481b7dd365c26736fd226": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
@@ -188458,6 +189389,29 @@
       "telegram_core_fact": "인공지능(AI) 투자 확대에 따른 메모리 호황이 실적을 밀어 올렸지만 주가까지 상승할지는 별개다.",
       "title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나"
     },
+    "source_fact:5230f9ca0a0f05d6b0989dee": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896261",
+      "source": "헤럴드경제",
+      "source_body_digest": "61ec1236e84b927cfd5320d1b16e7b69a1ee4cf56a4e976f10cb9d3ac0e50210",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:33ca3f0dfe864d1ed26007908b4d0454fabf3173a37a83c7097bf7b921999578",
+      "source_fact_keys": [
+        "source_fact:v1:120dd5db3393fba05f4b149609eba7dc35536cb4a5d2d4edf4c4526b6133bcb4",
+        "source_fact:v1:72f11742be2f689bb88c120a00253013569bf09c50206241ba89224254f65835",
+        "source_fact:v1:addee6fca254a42575394fea032d98446f03a74433ffddea43a02c5af83dc2ac",
+        "source_fact:v1:bed246dc0977d71d6420f716e5dbccfbace968da540fd38dc53cf167b943cbfd",
+        "source_fact:v1:e56c2d691a17b731737285ad8d64abafd3ac143371cc30bf5c46d4c2c6099782"
+      ],
+      "source_published_kst": "2026-10-08T06:41+09:00",
+      "source_title": "비축유 방출 앞당긴다는 소식에 국제유가 하락…WTI 1.3%↓",
+      "telegram_core_fact": "국제에너지기구(IEA)가 비축유 방출을 앞당기기로 했다는 소식에 7일(현지시간) 국제유가가 하락했다.",
+      "title": "비축유 방출 앞당긴다는 소식에 국제유가 하락…WTI 1.3%↓"
+    },
     "source_fact:52411b2c60a1331f8181e628": {
       "first_seen_kst": "2026-10-08T07:50:51+09:00",
       "lanes": {
@@ -189841,16 +190795,17 @@
     "source_fact:54c5f161f9679b9a733161c9": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
-        "live": "2026-10-08T05:31:58+09:00"
+        "live": "2026-10-08T21:47:01+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:31:58+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1171403",
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171026",
       "source": "매일경제",
-      "source_body_digest": "3d5eaeb53673a5a7a34409a1f0cf0542210a74b3a29c26c83251cd23e2e07ede",
+      "source_body_digest": "37b4bc5cf031f47bdc1bf4f2a6c27eb29a6e04238f91538b88b03d0c5dd4f9b8",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:3a81cc067129c1d1f225646689c6c3887eb5ef2f4ff78d75b53e08527112d9d5",
+      "source_fact_identity": "source_facts:v1:40046c2acf5f34ba157e9feec7a46f55f65cf433f39052eea23621cfb7105a61",
       "source_fact_keys": [
         "source_fact:v1:137a3d79950e15282120b88f7751e9c507dbf12c9a8c5a3c0f485a2903c13268",
+        "source_fact:v1:30f11d931d44f43cb7675118c474d6a133b9128872192b946733afd10e14b792",
         "source_fact:v1:57a58920cdde7d7a43ed4b206c264eacccee88d4823ad50a4f572b64f02322f4",
         "source_fact:v1:6e69f70d160fa0b1975bbfa977fbdcc7e1508f4af8a685bfa9d6ca76f72ae833",
         "source_fact:v1:87dabe55b8e0fb41ff81e8128b9a6e3ae45909756946cd700f49537553c8834e",
@@ -189858,6 +190813,7 @@
         "source_fact:v1:95c17d6153385dcd8ec01afdf431441d25d443aed40dfb3b79587c8b146f1994",
         "source_fact:v1:be33958723e3d964250be2d3d6a5852aa4ed894208279f87c20977a18f5ce704",
         "source_fact:v1:c6bdce2c16367cdbd10045d7851152e15bee94425ad97f815d8087963ed89c80",
+        "source_fact:v1:d62045cfecbe4500046d30c7a85b7c0a28a1ac4bf41212124278c5c08b6fbd6d",
         "source_fact:v1:f8742b019b58c74cb3e5cc7f066b929af2246ac5d1f676b563d5f86f128b2d1d"
       ],
       "source_published_kst": "2026-10-08T05:23+09:00",
@@ -190805,6 +191761,43 @@
       ],
       "source_published_kst": "2026-10-06T11:20+09:00",
       "title": "엠플러스, 유럽 배터리 기업 각형 노칭·스태킹 장비 수주"
+    },
+    "source_fact:56f17f4c6b5fa573f83fdb14": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008061300008",
+      "source": "연합뉴스",
+      "source_body_digest": "70c4002da6484444171ab22de9223289d3c015d7a820e76d1bd3ec3214bc4208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e89c06b309e25e81e996ad76d6428b76b3399d8505902527a69c5fd8bc93f36b",
+      "source_fact_keys": [
+        "source_fact:v1:143c60d26e6f90ca3c4ffa921b86ac9e15e3fadac249fc5f4498d7aae260a7a5",
+        "source_fact:v1:178870f988b6fae0613a7133fcfec6b326f93e65e59ca278161dd3d222528688",
+        "source_fact:v1:21a557d7dffb33763434aa302eaa08ba12a45ea713ceb45c89aa7e3f33abe5b9",
+        "source_fact:v1:33776a2032da45bcc927e3941e905fa943969ab714376414f7c4c43c16469ba3",
+        "source_fact:v1:3ee158ac01b689c28ac99dfb3d4f734b0fb435172d68a927489bbb9630d34d0d",
+        "source_fact:v1:4e9c44bbbdc4961c8c544378c398c144194e37a1ae8c1ef8bc7ba851f4d3a338",
+        "source_fact:v1:5bc60be200df43dc4bf6b55c418798095f40bfb0a69b91596d5f0ad57a384037",
+        "source_fact:v1:61115eee9325507db0b54edb9d2c722783491d5dd822b36bebb0b5a2c47d9d75",
+        "source_fact:v1:68d3187e27b5c1c3daeba8bc385da0f6e11dbb698caa66634da6e2bad7a6ba2e",
+        "source_fact:v1:6f0dae763467c73f3080be24cf659dcf2c92740b983a4c4d4aacc77aae971b30",
+        "source_fact:v1:81beccb4c6f31c72274372f6a17022c5d89c77729f86c01f277b1cc10dcf1a6d",
+        "source_fact:v1:93a7dd789eae701a3b248ec6e23085bce99d239ffb9dec937c58ba999495795e",
+        "source_fact:v1:95daea6d42f1903945ff74ff79fe570978d4543e13c651a59a3f9234e5d293ac",
+        "source_fact:v1:a43ec6032c718b30c02cf18033c4701106cf7341acb5b49d055c89c0cc2a93f0",
+        "source_fact:v1:ac3ea6af0211471b00b9a9d97f02985ac00249d3aa747b00722b5f2bd5b139aa",
+        "source_fact:v1:c1b6ab6f36f3f1a54b52fb5d4fc3788eecdfe0c107a19432b010f58d44d8bfe3",
+        "source_fact:v1:ebc160b665c658b2370e18b19ae13404f380912cc54886fd56883ed9e5c63527",
+        "source_fact:v1:fc8b61db0583205c20b0d4eccb07cffa708d766d25132c4502f4519c7b06d248",
+        "source_fact:v1:fcefb51b059dd524ba26bea909942207c666794aca73c91ca69131745e4400e7"
+      ],
+      "source_published_kst": "2026-10-08T10:37+09:00",
+      "source_title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스",
+      "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
+      "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
     },
     "source_fact:56f64ba30061de135b02d276": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
@@ -193696,6 +194689,43 @@
       "source_published_kst": "2026-10-06T15:28+09:00",
       "title": "한 주에 10% 뛴 광통신 ETF…\"AI 데이터센터 전력난이 복병\""
     },
+    "source_fact:5bda15c05d00f9214e03e479": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008061300008",
+      "source": "연합뉴스",
+      "source_body_digest": "70c4002da6484444171ab22de9223289d3c015d7a820e76d1bd3ec3214bc4208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e89c06b309e25e81e996ad76d6428b76b3399d8505902527a69c5fd8bc93f36b",
+      "source_fact_keys": [
+        "source_fact:v1:143c60d26e6f90ca3c4ffa921b86ac9e15e3fadac249fc5f4498d7aae260a7a5",
+        "source_fact:v1:178870f988b6fae0613a7133fcfec6b326f93e65e59ca278161dd3d222528688",
+        "source_fact:v1:21a557d7dffb33763434aa302eaa08ba12a45ea713ceb45c89aa7e3f33abe5b9",
+        "source_fact:v1:33776a2032da45bcc927e3941e905fa943969ab714376414f7c4c43c16469ba3",
+        "source_fact:v1:3ee158ac01b689c28ac99dfb3d4f734b0fb435172d68a927489bbb9630d34d0d",
+        "source_fact:v1:4e9c44bbbdc4961c8c544378c398c144194e37a1ae8c1ef8bc7ba851f4d3a338",
+        "source_fact:v1:5bc60be200df43dc4bf6b55c418798095f40bfb0a69b91596d5f0ad57a384037",
+        "source_fact:v1:61115eee9325507db0b54edb9d2c722783491d5dd822b36bebb0b5a2c47d9d75",
+        "source_fact:v1:68d3187e27b5c1c3daeba8bc385da0f6e11dbb698caa66634da6e2bad7a6ba2e",
+        "source_fact:v1:6f0dae763467c73f3080be24cf659dcf2c92740b983a4c4d4aacc77aae971b30",
+        "source_fact:v1:81beccb4c6f31c72274372f6a17022c5d89c77729f86c01f277b1cc10dcf1a6d",
+        "source_fact:v1:93a7dd789eae701a3b248ec6e23085bce99d239ffb9dec937c58ba999495795e",
+        "source_fact:v1:95daea6d42f1903945ff74ff79fe570978d4543e13c651a59a3f9234e5d293ac",
+        "source_fact:v1:a43ec6032c718b30c02cf18033c4701106cf7341acb5b49d055c89c0cc2a93f0",
+        "source_fact:v1:ac3ea6af0211471b00b9a9d97f02985ac00249d3aa747b00722b5f2bd5b139aa",
+        "source_fact:v1:c1b6ab6f36f3f1a54b52fb5d4fc3788eecdfe0c107a19432b010f58d44d8bfe3",
+        "source_fact:v1:ebc160b665c658b2370e18b19ae13404f380912cc54886fd56883ed9e5c63527",
+        "source_fact:v1:fc8b61db0583205c20b0d4eccb07cffa708d766d25132c4502f4519c7b06d248",
+        "source_fact:v1:fcefb51b059dd524ba26bea909942207c666794aca73c91ca69131745e4400e7"
+      ],
+      "source_published_kst": "2026-10-08T10:37+09:00",
+      "source_title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스",
+      "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
+      "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
+    },
     "source_fact:5bdf42a7b12d48b24d6826a0": {
       "first_seen_kst": "2026-10-07T09:44:16+09:00",
       "lanes": {
@@ -194826,16 +195856,17 @@
     "source_fact:5d67a5d10fb766ceae9a8b75": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
-        "live": "2026-10-08T05:31:58+09:00"
+        "live": "2026-10-08T21:47:01+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:31:58+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1171403",
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171026",
       "source": "매일경제",
-      "source_body_digest": "3d5eaeb53673a5a7a34409a1f0cf0542210a74b3a29c26c83251cd23e2e07ede",
+      "source_body_digest": "37b4bc5cf031f47bdc1bf4f2a6c27eb29a6e04238f91538b88b03d0c5dd4f9b8",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:3a81cc067129c1d1f225646689c6c3887eb5ef2f4ff78d75b53e08527112d9d5",
+      "source_fact_identity": "source_facts:v1:40046c2acf5f34ba157e9feec7a46f55f65cf433f39052eea23621cfb7105a61",
       "source_fact_keys": [
         "source_fact:v1:137a3d79950e15282120b88f7751e9c507dbf12c9a8c5a3c0f485a2903c13268",
+        "source_fact:v1:30f11d931d44f43cb7675118c474d6a133b9128872192b946733afd10e14b792",
         "source_fact:v1:57a58920cdde7d7a43ed4b206c264eacccee88d4823ad50a4f572b64f02322f4",
         "source_fact:v1:6e69f70d160fa0b1975bbfa977fbdcc7e1508f4af8a685bfa9d6ca76f72ae833",
         "source_fact:v1:87dabe55b8e0fb41ff81e8128b9a6e3ae45909756946cd700f49537553c8834e",
@@ -194843,6 +195874,7 @@
         "source_fact:v1:95c17d6153385dcd8ec01afdf431441d25d443aed40dfb3b79587c8b146f1994",
         "source_fact:v1:be33958723e3d964250be2d3d6a5852aa4ed894208279f87c20977a18f5ce704",
         "source_fact:v1:c6bdce2c16367cdbd10045d7851152e15bee94425ad97f815d8087963ed89c80",
+        "source_fact:v1:d62045cfecbe4500046d30c7a85b7c0a28a1ac4bf41212124278c5c08b6fbd6d",
         "source_fact:v1:f8742b019b58c74cb3e5cc7f066b929af2246ac5d1f676b563d5f86f128b2d1d"
       ],
       "source_published_kst": "2026-10-08T05:23+09:00",
@@ -198277,6 +199309,35 @@
       "source_published_kst": "2026-10-07T09:47+09:00",
       "title": "8월 공장·창고 거래 규모 대폭 증가…거래량은 감소"
     },
+    "source_fact:63f1e8acab636a8fa5ab6341": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171026",
+      "source": "매일경제",
+      "source_body_digest": "37b4bc5cf031f47bdc1bf4f2a6c27eb29a6e04238f91538b88b03d0c5dd4f9b8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:40046c2acf5f34ba157e9feec7a46f55f65cf433f39052eea23621cfb7105a61",
+      "source_fact_keys": [
+        "source_fact:v1:137a3d79950e15282120b88f7751e9c507dbf12c9a8c5a3c0f485a2903c13268",
+        "source_fact:v1:30f11d931d44f43cb7675118c474d6a133b9128872192b946733afd10e14b792",
+        "source_fact:v1:57a58920cdde7d7a43ed4b206c264eacccee88d4823ad50a4f572b64f02322f4",
+        "source_fact:v1:6e69f70d160fa0b1975bbfa977fbdcc7e1508f4af8a685bfa9d6ca76f72ae833",
+        "source_fact:v1:87dabe55b8e0fb41ff81e8128b9a6e3ae45909756946cd700f49537553c8834e",
+        "source_fact:v1:8d8db422e9f729a7cf02dc49ab2f66c5b51563f8670917a7aff2de97ea29a605",
+        "source_fact:v1:95c17d6153385dcd8ec01afdf431441d25d443aed40dfb3b79587c8b146f1994",
+        "source_fact:v1:be33958723e3d964250be2d3d6a5852aa4ed894208279f87c20977a18f5ce704",
+        "source_fact:v1:c6bdce2c16367cdbd10045d7851152e15bee94425ad97f815d8087963ed89c80",
+        "source_fact:v1:d62045cfecbe4500046d30c7a85b7c0a28a1ac4bf41212124278c5c08b6fbd6d",
+        "source_fact:v1:f8742b019b58c74cb3e5cc7f066b929af2246ac5d1f676b563d5f86f128b2d1d"
+      ],
+      "source_published_kst": "2026-10-08T05:23+09:00",
+      "source_title": "리차드슨 일렉트로닉스, 1분기 매출 6490만 달러..전년비 19% 증가",
+      "telegram_core_fact": "2028년 매출액은 2억6791만 달러로 9.19% 늘어날 것으로 예상된다.",
+      "title": "리차드슨 일렉트로닉스, 1분기 매출 6490만 달러..전년비 19% 증가"
+    },
     "source_fact:63fe7bcf92381f0916c9ad65": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
@@ -198991,6 +200052,43 @@
       ],
       "source_published_kst": "2026-10-07T10:42+09:00",
       "title": "\"올해로 4년째\"…한·중남미 식품안전 교류 '탄탄'"
+    },
+    "source_fact:657e83ba5c7cf201615ce9f0": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008061300008",
+      "source": "연합뉴스",
+      "source_body_digest": "70c4002da6484444171ab22de9223289d3c015d7a820e76d1bd3ec3214bc4208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e89c06b309e25e81e996ad76d6428b76b3399d8505902527a69c5fd8bc93f36b",
+      "source_fact_keys": [
+        "source_fact:v1:143c60d26e6f90ca3c4ffa921b86ac9e15e3fadac249fc5f4498d7aae260a7a5",
+        "source_fact:v1:178870f988b6fae0613a7133fcfec6b326f93e65e59ca278161dd3d222528688",
+        "source_fact:v1:21a557d7dffb33763434aa302eaa08ba12a45ea713ceb45c89aa7e3f33abe5b9",
+        "source_fact:v1:33776a2032da45bcc927e3941e905fa943969ab714376414f7c4c43c16469ba3",
+        "source_fact:v1:3ee158ac01b689c28ac99dfb3d4f734b0fb435172d68a927489bbb9630d34d0d",
+        "source_fact:v1:4e9c44bbbdc4961c8c544378c398c144194e37a1ae8c1ef8bc7ba851f4d3a338",
+        "source_fact:v1:5bc60be200df43dc4bf6b55c418798095f40bfb0a69b91596d5f0ad57a384037",
+        "source_fact:v1:61115eee9325507db0b54edb9d2c722783491d5dd822b36bebb0b5a2c47d9d75",
+        "source_fact:v1:68d3187e27b5c1c3daeba8bc385da0f6e11dbb698caa66634da6e2bad7a6ba2e",
+        "source_fact:v1:6f0dae763467c73f3080be24cf659dcf2c92740b983a4c4d4aacc77aae971b30",
+        "source_fact:v1:81beccb4c6f31c72274372f6a17022c5d89c77729f86c01f277b1cc10dcf1a6d",
+        "source_fact:v1:93a7dd789eae701a3b248ec6e23085bce99d239ffb9dec937c58ba999495795e",
+        "source_fact:v1:95daea6d42f1903945ff74ff79fe570978d4543e13c651a59a3f9234e5d293ac",
+        "source_fact:v1:a43ec6032c718b30c02cf18033c4701106cf7341acb5b49d055c89c0cc2a93f0",
+        "source_fact:v1:ac3ea6af0211471b00b9a9d97f02985ac00249d3aa747b00722b5f2bd5b139aa",
+        "source_fact:v1:c1b6ab6f36f3f1a54b52fb5d4fc3788eecdfe0c107a19432b010f58d44d8bfe3",
+        "source_fact:v1:ebc160b665c658b2370e18b19ae13404f380912cc54886fd56883ed9e5c63527",
+        "source_fact:v1:fc8b61db0583205c20b0d4eccb07cffa708d766d25132c4502f4519c7b06d248",
+        "source_fact:v1:fcefb51b059dd524ba26bea909942207c666794aca73c91ca69131745e4400e7"
+      ],
+      "source_published_kst": "2026-10-08T10:37+09:00",
+      "source_title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스",
+      "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
+      "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
     },
     "source_fact:658064a71a2b1c76dd740fe1": {
       "first_seen_kst": "2026-10-08T02:26:35+09:00",
@@ -200418,6 +201516,43 @@
       ],
       "source_published_kst": "2026-10-07T14:38+09:00",
       "title": "삼보산업, 중동 전쟁에 알루미늄 판가 상승…장기화 땐 수익성 개선 긍정"
+    },
+    "source_fact:68aca48c44b367eba582549d": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008061300008",
+      "source": "연합뉴스",
+      "source_body_digest": "70c4002da6484444171ab22de9223289d3c015d7a820e76d1bd3ec3214bc4208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e89c06b309e25e81e996ad76d6428b76b3399d8505902527a69c5fd8bc93f36b",
+      "source_fact_keys": [
+        "source_fact:v1:143c60d26e6f90ca3c4ffa921b86ac9e15e3fadac249fc5f4498d7aae260a7a5",
+        "source_fact:v1:178870f988b6fae0613a7133fcfec6b326f93e65e59ca278161dd3d222528688",
+        "source_fact:v1:21a557d7dffb33763434aa302eaa08ba12a45ea713ceb45c89aa7e3f33abe5b9",
+        "source_fact:v1:33776a2032da45bcc927e3941e905fa943969ab714376414f7c4c43c16469ba3",
+        "source_fact:v1:3ee158ac01b689c28ac99dfb3d4f734b0fb435172d68a927489bbb9630d34d0d",
+        "source_fact:v1:4e9c44bbbdc4961c8c544378c398c144194e37a1ae8c1ef8bc7ba851f4d3a338",
+        "source_fact:v1:5bc60be200df43dc4bf6b55c418798095f40bfb0a69b91596d5f0ad57a384037",
+        "source_fact:v1:61115eee9325507db0b54edb9d2c722783491d5dd822b36bebb0b5a2c47d9d75",
+        "source_fact:v1:68d3187e27b5c1c3daeba8bc385da0f6e11dbb698caa66634da6e2bad7a6ba2e",
+        "source_fact:v1:6f0dae763467c73f3080be24cf659dcf2c92740b983a4c4d4aacc77aae971b30",
+        "source_fact:v1:81beccb4c6f31c72274372f6a17022c5d89c77729f86c01f277b1cc10dcf1a6d",
+        "source_fact:v1:93a7dd789eae701a3b248ec6e23085bce99d239ffb9dec937c58ba999495795e",
+        "source_fact:v1:95daea6d42f1903945ff74ff79fe570978d4543e13c651a59a3f9234e5d293ac",
+        "source_fact:v1:a43ec6032c718b30c02cf18033c4701106cf7341acb5b49d055c89c0cc2a93f0",
+        "source_fact:v1:ac3ea6af0211471b00b9a9d97f02985ac00249d3aa747b00722b5f2bd5b139aa",
+        "source_fact:v1:c1b6ab6f36f3f1a54b52fb5d4fc3788eecdfe0c107a19432b010f58d44d8bfe3",
+        "source_fact:v1:ebc160b665c658b2370e18b19ae13404f380912cc54886fd56883ed9e5c63527",
+        "source_fact:v1:fc8b61db0583205c20b0d4eccb07cffa708d766d25132c4502f4519c7b06d248",
+        "source_fact:v1:fcefb51b059dd524ba26bea909942207c666794aca73c91ca69131745e4400e7"
+      ],
+      "source_published_kst": "2026-10-08T10:37+09:00",
+      "source_title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스",
+      "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
+      "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
     },
     "source_fact:68b156ac44751915c9e84361": {
       "first_seen_kst": "2026-10-06T01:41:59+09:00",
@@ -204135,6 +205270,43 @@
       "source_published_kst": "2026-10-05T11:25+09:00",
       "title": "사우디, 11월 아시아 공급용 원유가 대폭 인하 | 연합뉴스"
     },
+    "source_fact:6fc03033bf5aa6872bb1a2b5": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008061300008",
+      "source": "연합뉴스",
+      "source_body_digest": "70c4002da6484444171ab22de9223289d3c015d7a820e76d1bd3ec3214bc4208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e89c06b309e25e81e996ad76d6428b76b3399d8505902527a69c5fd8bc93f36b",
+      "source_fact_keys": [
+        "source_fact:v1:143c60d26e6f90ca3c4ffa921b86ac9e15e3fadac249fc5f4498d7aae260a7a5",
+        "source_fact:v1:178870f988b6fae0613a7133fcfec6b326f93e65e59ca278161dd3d222528688",
+        "source_fact:v1:21a557d7dffb33763434aa302eaa08ba12a45ea713ceb45c89aa7e3f33abe5b9",
+        "source_fact:v1:33776a2032da45bcc927e3941e905fa943969ab714376414f7c4c43c16469ba3",
+        "source_fact:v1:3ee158ac01b689c28ac99dfb3d4f734b0fb435172d68a927489bbb9630d34d0d",
+        "source_fact:v1:4e9c44bbbdc4961c8c544378c398c144194e37a1ae8c1ef8bc7ba851f4d3a338",
+        "source_fact:v1:5bc60be200df43dc4bf6b55c418798095f40bfb0a69b91596d5f0ad57a384037",
+        "source_fact:v1:61115eee9325507db0b54edb9d2c722783491d5dd822b36bebb0b5a2c47d9d75",
+        "source_fact:v1:68d3187e27b5c1c3daeba8bc385da0f6e11dbb698caa66634da6e2bad7a6ba2e",
+        "source_fact:v1:6f0dae763467c73f3080be24cf659dcf2c92740b983a4c4d4aacc77aae971b30",
+        "source_fact:v1:81beccb4c6f31c72274372f6a17022c5d89c77729f86c01f277b1cc10dcf1a6d",
+        "source_fact:v1:93a7dd789eae701a3b248ec6e23085bce99d239ffb9dec937c58ba999495795e",
+        "source_fact:v1:95daea6d42f1903945ff74ff79fe570978d4543e13c651a59a3f9234e5d293ac",
+        "source_fact:v1:a43ec6032c718b30c02cf18033c4701106cf7341acb5b49d055c89c0cc2a93f0",
+        "source_fact:v1:ac3ea6af0211471b00b9a9d97f02985ac00249d3aa747b00722b5f2bd5b139aa",
+        "source_fact:v1:c1b6ab6f36f3f1a54b52fb5d4fc3788eecdfe0c107a19432b010f58d44d8bfe3",
+        "source_fact:v1:ebc160b665c658b2370e18b19ae13404f380912cc54886fd56883ed9e5c63527",
+        "source_fact:v1:fc8b61db0583205c20b0d4eccb07cffa708d766d25132c4502f4519c7b06d248",
+        "source_fact:v1:fcefb51b059dd524ba26bea909942207c666794aca73c91ca69131745e4400e7"
+      ],
+      "source_published_kst": "2026-10-08T10:37+09:00",
+      "source_title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스",
+      "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
+      "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
+    },
     "source_fact:6fd83272e0ae780b1ab54e3b": {
       "first_seen_kst": "2026-10-08T19:27:03+09:00",
       "lanes": {
@@ -204315,6 +205487,43 @@
       "source_title": "송미령 “CPTPP 가입 결정된 것 없어…쌀 최우선 보호” [국감]",
       "telegram_core_fact": "이 의원이 2014년 쌀 관세화 발표 당시 추가적인 양허 협상은 하지 않겠다는 정부 약속을 거론하자 송 장관은 “쌀은 우리로서는 정말 초민감 품목이라고 생각한다”며 “최우선으로 보호해야 한다는 입장”이라고 밝혔다.",
       "title": "송미령 “CPTPP 가입 결정된 것 없어…쌀 최우선 보호” [국감]"
+    },
+    "source_fact:701b7f7e92ae02c57389a5fe": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008061300008",
+      "source": "연합뉴스",
+      "source_body_digest": "70c4002da6484444171ab22de9223289d3c015d7a820e76d1bd3ec3214bc4208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e89c06b309e25e81e996ad76d6428b76b3399d8505902527a69c5fd8bc93f36b",
+      "source_fact_keys": [
+        "source_fact:v1:143c60d26e6f90ca3c4ffa921b86ac9e15e3fadac249fc5f4498d7aae260a7a5",
+        "source_fact:v1:178870f988b6fae0613a7133fcfec6b326f93e65e59ca278161dd3d222528688",
+        "source_fact:v1:21a557d7dffb33763434aa302eaa08ba12a45ea713ceb45c89aa7e3f33abe5b9",
+        "source_fact:v1:33776a2032da45bcc927e3941e905fa943969ab714376414f7c4c43c16469ba3",
+        "source_fact:v1:3ee158ac01b689c28ac99dfb3d4f734b0fb435172d68a927489bbb9630d34d0d",
+        "source_fact:v1:4e9c44bbbdc4961c8c544378c398c144194e37a1ae8c1ef8bc7ba851f4d3a338",
+        "source_fact:v1:5bc60be200df43dc4bf6b55c418798095f40bfb0a69b91596d5f0ad57a384037",
+        "source_fact:v1:61115eee9325507db0b54edb9d2c722783491d5dd822b36bebb0b5a2c47d9d75",
+        "source_fact:v1:68d3187e27b5c1c3daeba8bc385da0f6e11dbb698caa66634da6e2bad7a6ba2e",
+        "source_fact:v1:6f0dae763467c73f3080be24cf659dcf2c92740b983a4c4d4aacc77aae971b30",
+        "source_fact:v1:81beccb4c6f31c72274372f6a17022c5d89c77729f86c01f277b1cc10dcf1a6d",
+        "source_fact:v1:93a7dd789eae701a3b248ec6e23085bce99d239ffb9dec937c58ba999495795e",
+        "source_fact:v1:95daea6d42f1903945ff74ff79fe570978d4543e13c651a59a3f9234e5d293ac",
+        "source_fact:v1:a43ec6032c718b30c02cf18033c4701106cf7341acb5b49d055c89c0cc2a93f0",
+        "source_fact:v1:ac3ea6af0211471b00b9a9d97f02985ac00249d3aa747b00722b5f2bd5b139aa",
+        "source_fact:v1:c1b6ab6f36f3f1a54b52fb5d4fc3788eecdfe0c107a19432b010f58d44d8bfe3",
+        "source_fact:v1:ebc160b665c658b2370e18b19ae13404f380912cc54886fd56883ed9e5c63527",
+        "source_fact:v1:fc8b61db0583205c20b0d4eccb07cffa708d766d25132c4502f4519c7b06d248",
+        "source_fact:v1:fcefb51b059dd524ba26bea909942207c666794aca73c91ca69131745e4400e7"
+      ],
+      "source_published_kst": "2026-10-08T10:37+09:00",
+      "source_title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스",
+      "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
+      "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
     },
     "source_fact:70229d29a21469a7bf613c35": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -204534,16 +205743,17 @@
     "source_fact:707a15d7669e490e56d44a1f": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
-        "live": "2026-10-08T05:31:58+09:00"
+        "live": "2026-10-08T21:47:01+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:31:58+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1171403",
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171026",
       "source": "매일경제",
-      "source_body_digest": "3d5eaeb53673a5a7a34409a1f0cf0542210a74b3a29c26c83251cd23e2e07ede",
+      "source_body_digest": "37b4bc5cf031f47bdc1bf4f2a6c27eb29a6e04238f91538b88b03d0c5dd4f9b8",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:3a81cc067129c1d1f225646689c6c3887eb5ef2f4ff78d75b53e08527112d9d5",
+      "source_fact_identity": "source_facts:v1:40046c2acf5f34ba157e9feec7a46f55f65cf433f39052eea23621cfb7105a61",
       "source_fact_keys": [
         "source_fact:v1:137a3d79950e15282120b88f7751e9c507dbf12c9a8c5a3c0f485a2903c13268",
+        "source_fact:v1:30f11d931d44f43cb7675118c474d6a133b9128872192b946733afd10e14b792",
         "source_fact:v1:57a58920cdde7d7a43ed4b206c264eacccee88d4823ad50a4f572b64f02322f4",
         "source_fact:v1:6e69f70d160fa0b1975bbfa977fbdcc7e1508f4af8a685bfa9d6ca76f72ae833",
         "source_fact:v1:87dabe55b8e0fb41ff81e8128b9a6e3ae45909756946cd700f49537553c8834e",
@@ -204551,6 +205761,7 @@
         "source_fact:v1:95c17d6153385dcd8ec01afdf431441d25d443aed40dfb3b79587c8b146f1994",
         "source_fact:v1:be33958723e3d964250be2d3d6a5852aa4ed894208279f87c20977a18f5ce704",
         "source_fact:v1:c6bdce2c16367cdbd10045d7851152e15bee94425ad97f815d8087963ed89c80",
+        "source_fact:v1:d62045cfecbe4500046d30c7a85b7c0a28a1ac4bf41212124278c5c08b6fbd6d",
         "source_fact:v1:f8742b019b58c74cb3e5cc7f066b929af2246ac5d1f676b563d5f86f128b2d1d"
       ],
       "source_published_kst": "2026-10-08T05:23+09:00",
@@ -208938,16 +210149,17 @@
     "source_fact:78f50366e269b126673087c8": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
-        "live": "2026-10-08T05:31:58+09:00"
+        "live": "2026-10-08T21:47:01+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:31:58+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1171403",
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171026",
       "source": "매일경제",
-      "source_body_digest": "3d5eaeb53673a5a7a34409a1f0cf0542210a74b3a29c26c83251cd23e2e07ede",
+      "source_body_digest": "37b4bc5cf031f47bdc1bf4f2a6c27eb29a6e04238f91538b88b03d0c5dd4f9b8",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:3a81cc067129c1d1f225646689c6c3887eb5ef2f4ff78d75b53e08527112d9d5",
+      "source_fact_identity": "source_facts:v1:40046c2acf5f34ba157e9feec7a46f55f65cf433f39052eea23621cfb7105a61",
       "source_fact_keys": [
         "source_fact:v1:137a3d79950e15282120b88f7751e9c507dbf12c9a8c5a3c0f485a2903c13268",
+        "source_fact:v1:30f11d931d44f43cb7675118c474d6a133b9128872192b946733afd10e14b792",
         "source_fact:v1:57a58920cdde7d7a43ed4b206c264eacccee88d4823ad50a4f572b64f02322f4",
         "source_fact:v1:6e69f70d160fa0b1975bbfa977fbdcc7e1508f4af8a685bfa9d6ca76f72ae833",
         "source_fact:v1:87dabe55b8e0fb41ff81e8128b9a6e3ae45909756946cd700f49537553c8834e",
@@ -208955,6 +210167,7 @@
         "source_fact:v1:95c17d6153385dcd8ec01afdf431441d25d443aed40dfb3b79587c8b146f1994",
         "source_fact:v1:be33958723e3d964250be2d3d6a5852aa4ed894208279f87c20977a18f5ce704",
         "source_fact:v1:c6bdce2c16367cdbd10045d7851152e15bee94425ad97f815d8087963ed89c80",
+        "source_fact:v1:d62045cfecbe4500046d30c7a85b7c0a28a1ac4bf41212124278c5c08b6fbd6d",
         "source_fact:v1:f8742b019b58c74cb3e5cc7f066b929af2246ac5d1f676b563d5f86f128b2d1d"
       ],
       "source_published_kst": "2026-10-08T05:23+09:00",
@@ -211632,6 +212845,29 @@
       ],
       "source_published_kst": "2026-10-06T15:07+09:00",
       "title": "[2026 국감] 호남 반도체 놓고 여야 격돌…김성환 기후부 장관 “전력·용수 공급 가능”"
+    },
+    "source_fact:7dcea23d9b764c889323bc8a": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896261",
+      "source": "헤럴드경제",
+      "source_body_digest": "61ec1236e84b927cfd5320d1b16e7b69a1ee4cf56a4e976f10cb9d3ac0e50210",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:33ca3f0dfe864d1ed26007908b4d0454fabf3173a37a83c7097bf7b921999578",
+      "source_fact_keys": [
+        "source_fact:v1:120dd5db3393fba05f4b149609eba7dc35536cb4a5d2d4edf4c4526b6133bcb4",
+        "source_fact:v1:72f11742be2f689bb88c120a00253013569bf09c50206241ba89224254f65835",
+        "source_fact:v1:addee6fca254a42575394fea032d98446f03a74433ffddea43a02c5af83dc2ac",
+        "source_fact:v1:bed246dc0977d71d6420f716e5dbccfbace968da540fd38dc53cf167b943cbfd",
+        "source_fact:v1:e56c2d691a17b731737285ad8d64abafd3ac143371cc30bf5c46d4c2c6099782"
+      ],
+      "source_published_kst": "2026-10-08T06:41+09:00",
+      "source_title": "비축유 방출 앞당긴다는 소식에 국제유가 하락…WTI 1.3%↓",
+      "telegram_core_fact": "국제에너지기구(IEA)가 비축유 방출을 앞당기기로 했다는 소식에 7일(현지시간) 국제유가가 하락했다.",
+      "title": "비축유 방출 앞당긴다는 소식에 국제유가 하락…WTI 1.3%↓"
     },
     "source_fact:7dcf51d5db2a33fcb52d693c": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
@@ -218532,6 +219768,43 @@
       "source_published_kst": "2026-10-07T08:08+09:00",
       "title": "AMD “반도체 수요, 공급 크게 앞질러”⋯CEO 움직이자 주가는 최고치"
     },
+    "source_fact:8b7812b53c039060ca44f57f": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008061300008",
+      "source": "연합뉴스",
+      "source_body_digest": "70c4002da6484444171ab22de9223289d3c015d7a820e76d1bd3ec3214bc4208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e89c06b309e25e81e996ad76d6428b76b3399d8505902527a69c5fd8bc93f36b",
+      "source_fact_keys": [
+        "source_fact:v1:143c60d26e6f90ca3c4ffa921b86ac9e15e3fadac249fc5f4498d7aae260a7a5",
+        "source_fact:v1:178870f988b6fae0613a7133fcfec6b326f93e65e59ca278161dd3d222528688",
+        "source_fact:v1:21a557d7dffb33763434aa302eaa08ba12a45ea713ceb45c89aa7e3f33abe5b9",
+        "source_fact:v1:33776a2032da45bcc927e3941e905fa943969ab714376414f7c4c43c16469ba3",
+        "source_fact:v1:3ee158ac01b689c28ac99dfb3d4f734b0fb435172d68a927489bbb9630d34d0d",
+        "source_fact:v1:4e9c44bbbdc4961c8c544378c398c144194e37a1ae8c1ef8bc7ba851f4d3a338",
+        "source_fact:v1:5bc60be200df43dc4bf6b55c418798095f40bfb0a69b91596d5f0ad57a384037",
+        "source_fact:v1:61115eee9325507db0b54edb9d2c722783491d5dd822b36bebb0b5a2c47d9d75",
+        "source_fact:v1:68d3187e27b5c1c3daeba8bc385da0f6e11dbb698caa66634da6e2bad7a6ba2e",
+        "source_fact:v1:6f0dae763467c73f3080be24cf659dcf2c92740b983a4c4d4aacc77aae971b30",
+        "source_fact:v1:81beccb4c6f31c72274372f6a17022c5d89c77729f86c01f277b1cc10dcf1a6d",
+        "source_fact:v1:93a7dd789eae701a3b248ec6e23085bce99d239ffb9dec937c58ba999495795e",
+        "source_fact:v1:95daea6d42f1903945ff74ff79fe570978d4543e13c651a59a3f9234e5d293ac",
+        "source_fact:v1:a43ec6032c718b30c02cf18033c4701106cf7341acb5b49d055c89c0cc2a93f0",
+        "source_fact:v1:ac3ea6af0211471b00b9a9d97f02985ac00249d3aa747b00722b5f2bd5b139aa",
+        "source_fact:v1:c1b6ab6f36f3f1a54b52fb5d4fc3788eecdfe0c107a19432b010f58d44d8bfe3",
+        "source_fact:v1:ebc160b665c658b2370e18b19ae13404f380912cc54886fd56883ed9e5c63527",
+        "source_fact:v1:fc8b61db0583205c20b0d4eccb07cffa708d766d25132c4502f4519c7b06d248",
+        "source_fact:v1:fcefb51b059dd524ba26bea909942207c666794aca73c91ca69131745e4400e7"
+      ],
+      "source_published_kst": "2026-10-08T10:37+09:00",
+      "source_title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스",
+      "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
+      "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
+    },
     "source_fact:8b8fc36c01cb80b7b78a55c0": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
       "lanes": {
@@ -222776,6 +224049,43 @@
       "telegram_core_fact": "시선AI 자회사 유온로보틱스는 경북 성주월항농협 산지유통센터(APC)와 인공지능(AI) 기반 물류 자동화 로봇 시스템 상용 공급계약을 체결했다고 8일 밝혔다.",
       "title": "시선AI 子, 성주월항농협APC와 로봇 시스템 상용 공급계약"
     },
+    "source_fact:93f2c2f778097679c2f8037e": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008061300008",
+      "source": "연합뉴스",
+      "source_body_digest": "70c4002da6484444171ab22de9223289d3c015d7a820e76d1bd3ec3214bc4208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e89c06b309e25e81e996ad76d6428b76b3399d8505902527a69c5fd8bc93f36b",
+      "source_fact_keys": [
+        "source_fact:v1:143c60d26e6f90ca3c4ffa921b86ac9e15e3fadac249fc5f4498d7aae260a7a5",
+        "source_fact:v1:178870f988b6fae0613a7133fcfec6b326f93e65e59ca278161dd3d222528688",
+        "source_fact:v1:21a557d7dffb33763434aa302eaa08ba12a45ea713ceb45c89aa7e3f33abe5b9",
+        "source_fact:v1:33776a2032da45bcc927e3941e905fa943969ab714376414f7c4c43c16469ba3",
+        "source_fact:v1:3ee158ac01b689c28ac99dfb3d4f734b0fb435172d68a927489bbb9630d34d0d",
+        "source_fact:v1:4e9c44bbbdc4961c8c544378c398c144194e37a1ae8c1ef8bc7ba851f4d3a338",
+        "source_fact:v1:5bc60be200df43dc4bf6b55c418798095f40bfb0a69b91596d5f0ad57a384037",
+        "source_fact:v1:61115eee9325507db0b54edb9d2c722783491d5dd822b36bebb0b5a2c47d9d75",
+        "source_fact:v1:68d3187e27b5c1c3daeba8bc385da0f6e11dbb698caa66634da6e2bad7a6ba2e",
+        "source_fact:v1:6f0dae763467c73f3080be24cf659dcf2c92740b983a4c4d4aacc77aae971b30",
+        "source_fact:v1:81beccb4c6f31c72274372f6a17022c5d89c77729f86c01f277b1cc10dcf1a6d",
+        "source_fact:v1:93a7dd789eae701a3b248ec6e23085bce99d239ffb9dec937c58ba999495795e",
+        "source_fact:v1:95daea6d42f1903945ff74ff79fe570978d4543e13c651a59a3f9234e5d293ac",
+        "source_fact:v1:a43ec6032c718b30c02cf18033c4701106cf7341acb5b49d055c89c0cc2a93f0",
+        "source_fact:v1:ac3ea6af0211471b00b9a9d97f02985ac00249d3aa747b00722b5f2bd5b139aa",
+        "source_fact:v1:c1b6ab6f36f3f1a54b52fb5d4fc3788eecdfe0c107a19432b010f58d44d8bfe3",
+        "source_fact:v1:ebc160b665c658b2370e18b19ae13404f380912cc54886fd56883ed9e5c63527",
+        "source_fact:v1:fc8b61db0583205c20b0d4eccb07cffa708d766d25132c4502f4519c7b06d248",
+        "source_fact:v1:fcefb51b059dd524ba26bea909942207c666794aca73c91ca69131745e4400e7"
+      ],
+      "source_published_kst": "2026-10-08T10:37+09:00",
+      "source_title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스",
+      "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
+      "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
+    },
     "source_fact:93fc37e373f71fc5fe90657a": {
       "first_seen_kst": "2026-10-07T17:47:45+09:00",
       "lanes": {
@@ -223904,6 +225214,43 @@
       "source_title": "\"이란, 헤즈볼라에 2억달러 지원…피란민 5만가구에 지급\"",
       "telegram_core_fact": "이란은 미국의 강력한 제재 속에서도 헤즈볼라에 대한 재정 지원을 지속해온 것으로 알려졌다.",
       "title": "\"이란, 헤즈볼라에 2억달러 지원…피란민 5만가구에 지급\""
+    },
+    "source_fact:965debe8bb55bf9ef9f4708a": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008061300008",
+      "source": "연합뉴스",
+      "source_body_digest": "70c4002da6484444171ab22de9223289d3c015d7a820e76d1bd3ec3214bc4208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e89c06b309e25e81e996ad76d6428b76b3399d8505902527a69c5fd8bc93f36b",
+      "source_fact_keys": [
+        "source_fact:v1:143c60d26e6f90ca3c4ffa921b86ac9e15e3fadac249fc5f4498d7aae260a7a5",
+        "source_fact:v1:178870f988b6fae0613a7133fcfec6b326f93e65e59ca278161dd3d222528688",
+        "source_fact:v1:21a557d7dffb33763434aa302eaa08ba12a45ea713ceb45c89aa7e3f33abe5b9",
+        "source_fact:v1:33776a2032da45bcc927e3941e905fa943969ab714376414f7c4c43c16469ba3",
+        "source_fact:v1:3ee158ac01b689c28ac99dfb3d4f734b0fb435172d68a927489bbb9630d34d0d",
+        "source_fact:v1:4e9c44bbbdc4961c8c544378c398c144194e37a1ae8c1ef8bc7ba851f4d3a338",
+        "source_fact:v1:5bc60be200df43dc4bf6b55c418798095f40bfb0a69b91596d5f0ad57a384037",
+        "source_fact:v1:61115eee9325507db0b54edb9d2c722783491d5dd822b36bebb0b5a2c47d9d75",
+        "source_fact:v1:68d3187e27b5c1c3daeba8bc385da0f6e11dbb698caa66634da6e2bad7a6ba2e",
+        "source_fact:v1:6f0dae763467c73f3080be24cf659dcf2c92740b983a4c4d4aacc77aae971b30",
+        "source_fact:v1:81beccb4c6f31c72274372f6a17022c5d89c77729f86c01f277b1cc10dcf1a6d",
+        "source_fact:v1:93a7dd789eae701a3b248ec6e23085bce99d239ffb9dec937c58ba999495795e",
+        "source_fact:v1:95daea6d42f1903945ff74ff79fe570978d4543e13c651a59a3f9234e5d293ac",
+        "source_fact:v1:a43ec6032c718b30c02cf18033c4701106cf7341acb5b49d055c89c0cc2a93f0",
+        "source_fact:v1:ac3ea6af0211471b00b9a9d97f02985ac00249d3aa747b00722b5f2bd5b139aa",
+        "source_fact:v1:c1b6ab6f36f3f1a54b52fb5d4fc3788eecdfe0c107a19432b010f58d44d8bfe3",
+        "source_fact:v1:ebc160b665c658b2370e18b19ae13404f380912cc54886fd56883ed9e5c63527",
+        "source_fact:v1:fc8b61db0583205c20b0d4eccb07cffa708d766d25132c4502f4519c7b06d248",
+        "source_fact:v1:fcefb51b059dd524ba26bea909942207c666794aca73c91ca69131745e4400e7"
+      ],
+      "source_published_kst": "2026-10-08T10:37+09:00",
+      "source_title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스",
+      "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
+      "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
     },
     "source_fact:96617fed565530ab86fc5992": {
       "first_seen_kst": "2026-10-08T01:26:16+09:00",
@@ -233028,16 +234375,17 @@
     "source_fact:a7cb1800ac6f4e328fc9a549": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
-        "live": "2026-10-08T05:31:58+09:00"
+        "live": "2026-10-08T21:47:01+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:31:58+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1171403",
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171026",
       "source": "매일경제",
-      "source_body_digest": "3d5eaeb53673a5a7a34409a1f0cf0542210a74b3a29c26c83251cd23e2e07ede",
+      "source_body_digest": "37b4bc5cf031f47bdc1bf4f2a6c27eb29a6e04238f91538b88b03d0c5dd4f9b8",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:3a81cc067129c1d1f225646689c6c3887eb5ef2f4ff78d75b53e08527112d9d5",
+      "source_fact_identity": "source_facts:v1:40046c2acf5f34ba157e9feec7a46f55f65cf433f39052eea23621cfb7105a61",
       "source_fact_keys": [
         "source_fact:v1:137a3d79950e15282120b88f7751e9c507dbf12c9a8c5a3c0f485a2903c13268",
+        "source_fact:v1:30f11d931d44f43cb7675118c474d6a133b9128872192b946733afd10e14b792",
         "source_fact:v1:57a58920cdde7d7a43ed4b206c264eacccee88d4823ad50a4f572b64f02322f4",
         "source_fact:v1:6e69f70d160fa0b1975bbfa977fbdcc7e1508f4af8a685bfa9d6ca76f72ae833",
         "source_fact:v1:87dabe55b8e0fb41ff81e8128b9a6e3ae45909756946cd700f49537553c8834e",
@@ -233045,6 +234393,7 @@
         "source_fact:v1:95c17d6153385dcd8ec01afdf431441d25d443aed40dfb3b79587c8b146f1994",
         "source_fact:v1:be33958723e3d964250be2d3d6a5852aa4ed894208279f87c20977a18f5ce704",
         "source_fact:v1:c6bdce2c16367cdbd10045d7851152e15bee94425ad97f815d8087963ed89c80",
+        "source_fact:v1:d62045cfecbe4500046d30c7a85b7c0a28a1ac4bf41212124278c5c08b6fbd6d",
         "source_fact:v1:f8742b019b58c74cb3e5cc7f066b929af2246ac5d1f676b563d5f86f128b2d1d"
       ],
       "source_published_kst": "2026-10-08T05:23+09:00",
@@ -233918,6 +235267,43 @@
       ],
       "source_published_kst": "2026-10-06T11:44+09:00",
       "title": "정부 \"11월 원유 90% 이상 확보…나프타도 90% 이상\" | 연합뉴스"
+    },
+    "source_fact:a9cbcfa4b0486758fbf9365b": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008061300008",
+      "source": "연합뉴스",
+      "source_body_digest": "70c4002da6484444171ab22de9223289d3c015d7a820e76d1bd3ec3214bc4208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e89c06b309e25e81e996ad76d6428b76b3399d8505902527a69c5fd8bc93f36b",
+      "source_fact_keys": [
+        "source_fact:v1:143c60d26e6f90ca3c4ffa921b86ac9e15e3fadac249fc5f4498d7aae260a7a5",
+        "source_fact:v1:178870f988b6fae0613a7133fcfec6b326f93e65e59ca278161dd3d222528688",
+        "source_fact:v1:21a557d7dffb33763434aa302eaa08ba12a45ea713ceb45c89aa7e3f33abe5b9",
+        "source_fact:v1:33776a2032da45bcc927e3941e905fa943969ab714376414f7c4c43c16469ba3",
+        "source_fact:v1:3ee158ac01b689c28ac99dfb3d4f734b0fb435172d68a927489bbb9630d34d0d",
+        "source_fact:v1:4e9c44bbbdc4961c8c544378c398c144194e37a1ae8c1ef8bc7ba851f4d3a338",
+        "source_fact:v1:5bc60be200df43dc4bf6b55c418798095f40bfb0a69b91596d5f0ad57a384037",
+        "source_fact:v1:61115eee9325507db0b54edb9d2c722783491d5dd822b36bebb0b5a2c47d9d75",
+        "source_fact:v1:68d3187e27b5c1c3daeba8bc385da0f6e11dbb698caa66634da6e2bad7a6ba2e",
+        "source_fact:v1:6f0dae763467c73f3080be24cf659dcf2c92740b983a4c4d4aacc77aae971b30",
+        "source_fact:v1:81beccb4c6f31c72274372f6a17022c5d89c77729f86c01f277b1cc10dcf1a6d",
+        "source_fact:v1:93a7dd789eae701a3b248ec6e23085bce99d239ffb9dec937c58ba999495795e",
+        "source_fact:v1:95daea6d42f1903945ff74ff79fe570978d4543e13c651a59a3f9234e5d293ac",
+        "source_fact:v1:a43ec6032c718b30c02cf18033c4701106cf7341acb5b49d055c89c0cc2a93f0",
+        "source_fact:v1:ac3ea6af0211471b00b9a9d97f02985ac00249d3aa747b00722b5f2bd5b139aa",
+        "source_fact:v1:c1b6ab6f36f3f1a54b52fb5d4fc3788eecdfe0c107a19432b010f58d44d8bfe3",
+        "source_fact:v1:ebc160b665c658b2370e18b19ae13404f380912cc54886fd56883ed9e5c63527",
+        "source_fact:v1:fc8b61db0583205c20b0d4eccb07cffa708d766d25132c4502f4519c7b06d248",
+        "source_fact:v1:fcefb51b059dd524ba26bea909942207c666794aca73c91ca69131745e4400e7"
+      ],
+      "source_published_kst": "2026-10-08T10:37+09:00",
+      "source_title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스",
+      "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
+      "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
     },
     "source_fact:a9dbe901d2dc62198c8045d0": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
@@ -243574,6 +244960,43 @@
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
     },
+    "source_fact:bc76ca9f982b68b892a99741": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008061300008",
+      "source": "연합뉴스",
+      "source_body_digest": "70c4002da6484444171ab22de9223289d3c015d7a820e76d1bd3ec3214bc4208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e89c06b309e25e81e996ad76d6428b76b3399d8505902527a69c5fd8bc93f36b",
+      "source_fact_keys": [
+        "source_fact:v1:143c60d26e6f90ca3c4ffa921b86ac9e15e3fadac249fc5f4498d7aae260a7a5",
+        "source_fact:v1:178870f988b6fae0613a7133fcfec6b326f93e65e59ca278161dd3d222528688",
+        "source_fact:v1:21a557d7dffb33763434aa302eaa08ba12a45ea713ceb45c89aa7e3f33abe5b9",
+        "source_fact:v1:33776a2032da45bcc927e3941e905fa943969ab714376414f7c4c43c16469ba3",
+        "source_fact:v1:3ee158ac01b689c28ac99dfb3d4f734b0fb435172d68a927489bbb9630d34d0d",
+        "source_fact:v1:4e9c44bbbdc4961c8c544378c398c144194e37a1ae8c1ef8bc7ba851f4d3a338",
+        "source_fact:v1:5bc60be200df43dc4bf6b55c418798095f40bfb0a69b91596d5f0ad57a384037",
+        "source_fact:v1:61115eee9325507db0b54edb9d2c722783491d5dd822b36bebb0b5a2c47d9d75",
+        "source_fact:v1:68d3187e27b5c1c3daeba8bc385da0f6e11dbb698caa66634da6e2bad7a6ba2e",
+        "source_fact:v1:6f0dae763467c73f3080be24cf659dcf2c92740b983a4c4d4aacc77aae971b30",
+        "source_fact:v1:81beccb4c6f31c72274372f6a17022c5d89c77729f86c01f277b1cc10dcf1a6d",
+        "source_fact:v1:93a7dd789eae701a3b248ec6e23085bce99d239ffb9dec937c58ba999495795e",
+        "source_fact:v1:95daea6d42f1903945ff74ff79fe570978d4543e13c651a59a3f9234e5d293ac",
+        "source_fact:v1:a43ec6032c718b30c02cf18033c4701106cf7341acb5b49d055c89c0cc2a93f0",
+        "source_fact:v1:ac3ea6af0211471b00b9a9d97f02985ac00249d3aa747b00722b5f2bd5b139aa",
+        "source_fact:v1:c1b6ab6f36f3f1a54b52fb5d4fc3788eecdfe0c107a19432b010f58d44d8bfe3",
+        "source_fact:v1:ebc160b665c658b2370e18b19ae13404f380912cc54886fd56883ed9e5c63527",
+        "source_fact:v1:fc8b61db0583205c20b0d4eccb07cffa708d766d25132c4502f4519c7b06d248",
+        "source_fact:v1:fcefb51b059dd524ba26bea909942207c666794aca73c91ca69131745e4400e7"
+      ],
+      "source_published_kst": "2026-10-08T10:37+09:00",
+      "source_title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스",
+      "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
+      "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
+    },
     "source_fact:bc82d2e8e2d782b68f3f59de": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
       "lanes": {
@@ -249845,6 +251268,29 @@
       "telegram_core_fact": "보고서에 따르면 삼기에너지솔루션즈의 올해 상반기 연결 매출액은 1133억원, 영업이익은 49억원을 기록했다.",
       "title": "스몰인사이트 \"삼기에너지솔루션즈, 북미 사업 성장축 부상\""
     },
+    "source_fact:c7d3fba1b0e3888cc381514a": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896261",
+      "source": "헤럴드경제",
+      "source_body_digest": "61ec1236e84b927cfd5320d1b16e7b69a1ee4cf56a4e976f10cb9d3ac0e50210",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:33ca3f0dfe864d1ed26007908b4d0454fabf3173a37a83c7097bf7b921999578",
+      "source_fact_keys": [
+        "source_fact:v1:120dd5db3393fba05f4b149609eba7dc35536cb4a5d2d4edf4c4526b6133bcb4",
+        "source_fact:v1:72f11742be2f689bb88c120a00253013569bf09c50206241ba89224254f65835",
+        "source_fact:v1:addee6fca254a42575394fea032d98446f03a74433ffddea43a02c5af83dc2ac",
+        "source_fact:v1:bed246dc0977d71d6420f716e5dbccfbace968da540fd38dc53cf167b943cbfd",
+        "source_fact:v1:e56c2d691a17b731737285ad8d64abafd3ac143371cc30bf5c46d4c2c6099782"
+      ],
+      "source_published_kst": "2026-10-08T06:41+09:00",
+      "source_title": "비축유 방출 앞당긴다는 소식에 국제유가 하락…WTI 1.3%↓",
+      "telegram_core_fact": "국제에너지기구(IEA)가 비축유 방출을 앞당기기로 했다는 소식에 7일(현지시간) 국제유가가 하락했다.",
+      "title": "비축유 방출 앞당긴다는 소식에 국제유가 하락…WTI 1.3%↓"
+    },
     "source_fact:c7d905815b8d07f63d824e5e": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
       "lanes": {
@@ -252531,6 +253977,43 @@
       "telegram_core_fact": "박태준 국민의힘 의원은 8일 서울 여의도 국회 본관에서 진행된 국회 정무위원회 국감에서 \"저는 ETF 논란의 주범을 이재명 대통령과 청와대가 공범이라고 결론 내렸다\"며 \"금융투자협회 산하 연구원에서 2024년 ETF 출시를 반대했는데 이 대통령 취임 직후 찬성으로 바뀌었다. 이것이 이번 사태의 발단\"이라고 말했다.",
       "title": "野 \"레버리지 ETF, 청와대가 주범\"…與 \"설계 아쉽지만 도입 불가피\""
     },
+    "source_fact:cd6015cae7233ec0f753fba8": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008061300008",
+      "source": "연합뉴스",
+      "source_body_digest": "70c4002da6484444171ab22de9223289d3c015d7a820e76d1bd3ec3214bc4208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e89c06b309e25e81e996ad76d6428b76b3399d8505902527a69c5fd8bc93f36b",
+      "source_fact_keys": [
+        "source_fact:v1:143c60d26e6f90ca3c4ffa921b86ac9e15e3fadac249fc5f4498d7aae260a7a5",
+        "source_fact:v1:178870f988b6fae0613a7133fcfec6b326f93e65e59ca278161dd3d222528688",
+        "source_fact:v1:21a557d7dffb33763434aa302eaa08ba12a45ea713ceb45c89aa7e3f33abe5b9",
+        "source_fact:v1:33776a2032da45bcc927e3941e905fa943969ab714376414f7c4c43c16469ba3",
+        "source_fact:v1:3ee158ac01b689c28ac99dfb3d4f734b0fb435172d68a927489bbb9630d34d0d",
+        "source_fact:v1:4e9c44bbbdc4961c8c544378c398c144194e37a1ae8c1ef8bc7ba851f4d3a338",
+        "source_fact:v1:5bc60be200df43dc4bf6b55c418798095f40bfb0a69b91596d5f0ad57a384037",
+        "source_fact:v1:61115eee9325507db0b54edb9d2c722783491d5dd822b36bebb0b5a2c47d9d75",
+        "source_fact:v1:68d3187e27b5c1c3daeba8bc385da0f6e11dbb698caa66634da6e2bad7a6ba2e",
+        "source_fact:v1:6f0dae763467c73f3080be24cf659dcf2c92740b983a4c4d4aacc77aae971b30",
+        "source_fact:v1:81beccb4c6f31c72274372f6a17022c5d89c77729f86c01f277b1cc10dcf1a6d",
+        "source_fact:v1:93a7dd789eae701a3b248ec6e23085bce99d239ffb9dec937c58ba999495795e",
+        "source_fact:v1:95daea6d42f1903945ff74ff79fe570978d4543e13c651a59a3f9234e5d293ac",
+        "source_fact:v1:a43ec6032c718b30c02cf18033c4701106cf7341acb5b49d055c89c0cc2a93f0",
+        "source_fact:v1:ac3ea6af0211471b00b9a9d97f02985ac00249d3aa747b00722b5f2bd5b139aa",
+        "source_fact:v1:c1b6ab6f36f3f1a54b52fb5d4fc3788eecdfe0c107a19432b010f58d44d8bfe3",
+        "source_fact:v1:ebc160b665c658b2370e18b19ae13404f380912cc54886fd56883ed9e5c63527",
+        "source_fact:v1:fc8b61db0583205c20b0d4eccb07cffa708d766d25132c4502f4519c7b06d248",
+        "source_fact:v1:fcefb51b059dd524ba26bea909942207c666794aca73c91ca69131745e4400e7"
+      ],
+      "source_published_kst": "2026-10-08T10:37+09:00",
+      "source_title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스",
+      "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
+      "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
+    },
     "source_fact:cd65b250fb4ff54245e4ae86": {
       "first_seen_kst": "2026-10-08T11:49:03+09:00",
       "lanes": {
@@ -254753,6 +256236,26 @@
       ],
       "source_published_kst": "2026-10-06T15:14+09:00",
       "title": "삼성전기, AI 서버용 MLCC 2900억 수주 ... 올해만 6번째 장기공급계약"
+    },
+    "source_fact:d1daa0837a5b14337ea1e828": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008158200063",
+      "source": "연합뉴스",
+      "source_body_digest": "72e87b720b901b4f3df7a47609d4a313f51ebeded2a420d4d417873f23299ad4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02a37b6ed1e5542a5bbb146fdc2ab05b094bf6febf1129bdc72d9f5e3a908bfd",
+      "source_fact_keys": [
+        "source_fact:v1:4033e46c26102e2eb197fedba9d7d46760fc6e819450777c41a615e28cf9d342",
+        "source_fact:v1:673f0808dbfe37b1cb909d3e5b9ed85e0ffa84ac68e5b83ac61c383a6d5a4658"
+      ],
+      "source_published_kst": "2026-10-08T16:19+09:00",
+      "source_title": "세종시, 360㎿ 규모 데이터센터 건립 유치…7조원 투자 받는다 | 연합뉴스",
+      "telegram_core_fact": "세종시가 7조원 인공지능 데이터센터(AIDC) 투자 유치에 성공했다. SK증권은 오는 2029년까지 7조원을 투입해 360㎿ AIDC를 건립할 방침이다.",
+      "title": "세종시, 360㎿ 규모 데이터센터 건립 유치…7조원 투자 받는다 | 연합뉴스"
     },
     "source_fact:d1e1826fd601740f616af2d1": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
@@ -259316,6 +260819,43 @@
       "telegram_core_fact": "미국 재무부가 대(對)중국 첨단기술 투자 규제 제도 도입 이후 처음으로 위반 사례를 적발해 벌금을 부과했다고 홍콩 사우스차이나모닝포스트(SCMP)가 7일(현지시간) 보도했다.",
       "title": "미국, '對중국 첨단기술 투자규제' 위반 첫 벌금 부과"
     },
+    "source_fact:da3cfa7f7813ee16c06eee13": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008061300008",
+      "source": "연합뉴스",
+      "source_body_digest": "70c4002da6484444171ab22de9223289d3c015d7a820e76d1bd3ec3214bc4208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e89c06b309e25e81e996ad76d6428b76b3399d8505902527a69c5fd8bc93f36b",
+      "source_fact_keys": [
+        "source_fact:v1:143c60d26e6f90ca3c4ffa921b86ac9e15e3fadac249fc5f4498d7aae260a7a5",
+        "source_fact:v1:178870f988b6fae0613a7133fcfec6b326f93e65e59ca278161dd3d222528688",
+        "source_fact:v1:21a557d7dffb33763434aa302eaa08ba12a45ea713ceb45c89aa7e3f33abe5b9",
+        "source_fact:v1:33776a2032da45bcc927e3941e905fa943969ab714376414f7c4c43c16469ba3",
+        "source_fact:v1:3ee158ac01b689c28ac99dfb3d4f734b0fb435172d68a927489bbb9630d34d0d",
+        "source_fact:v1:4e9c44bbbdc4961c8c544378c398c144194e37a1ae8c1ef8bc7ba851f4d3a338",
+        "source_fact:v1:5bc60be200df43dc4bf6b55c418798095f40bfb0a69b91596d5f0ad57a384037",
+        "source_fact:v1:61115eee9325507db0b54edb9d2c722783491d5dd822b36bebb0b5a2c47d9d75",
+        "source_fact:v1:68d3187e27b5c1c3daeba8bc385da0f6e11dbb698caa66634da6e2bad7a6ba2e",
+        "source_fact:v1:6f0dae763467c73f3080be24cf659dcf2c92740b983a4c4d4aacc77aae971b30",
+        "source_fact:v1:81beccb4c6f31c72274372f6a17022c5d89c77729f86c01f277b1cc10dcf1a6d",
+        "source_fact:v1:93a7dd789eae701a3b248ec6e23085bce99d239ffb9dec937c58ba999495795e",
+        "source_fact:v1:95daea6d42f1903945ff74ff79fe570978d4543e13c651a59a3f9234e5d293ac",
+        "source_fact:v1:a43ec6032c718b30c02cf18033c4701106cf7341acb5b49d055c89c0cc2a93f0",
+        "source_fact:v1:ac3ea6af0211471b00b9a9d97f02985ac00249d3aa747b00722b5f2bd5b139aa",
+        "source_fact:v1:c1b6ab6f36f3f1a54b52fb5d4fc3788eecdfe0c107a19432b010f58d44d8bfe3",
+        "source_fact:v1:ebc160b665c658b2370e18b19ae13404f380912cc54886fd56883ed9e5c63527",
+        "source_fact:v1:fc8b61db0583205c20b0d4eccb07cffa708d766d25132c4502f4519c7b06d248",
+        "source_fact:v1:fcefb51b059dd524ba26bea909942207c666794aca73c91ca69131745e4400e7"
+      ],
+      "source_published_kst": "2026-10-08T10:37+09:00",
+      "source_title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스",
+      "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
+      "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
+    },
     "source_fact:da4a76751fdf08f360a00dd1": {
       "first_seen_kst": "2026-10-07T22:37:58+09:00",
       "lanes": {
@@ -259720,16 +261260,17 @@
     "source_fact:db197ee1e3e2882eee6b03ae": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
-        "live": "2026-10-08T05:31:58+09:00"
+        "live": "2026-10-08T21:47:01+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:31:58+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1171403",
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171026",
       "source": "매일경제",
-      "source_body_digest": "3d5eaeb53673a5a7a34409a1f0cf0542210a74b3a29c26c83251cd23e2e07ede",
+      "source_body_digest": "37b4bc5cf031f47bdc1bf4f2a6c27eb29a6e04238f91538b88b03d0c5dd4f9b8",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:3a81cc067129c1d1f225646689c6c3887eb5ef2f4ff78d75b53e08527112d9d5",
+      "source_fact_identity": "source_facts:v1:40046c2acf5f34ba157e9feec7a46f55f65cf433f39052eea23621cfb7105a61",
       "source_fact_keys": [
         "source_fact:v1:137a3d79950e15282120b88f7751e9c507dbf12c9a8c5a3c0f485a2903c13268",
+        "source_fact:v1:30f11d931d44f43cb7675118c474d6a133b9128872192b946733afd10e14b792",
         "source_fact:v1:57a58920cdde7d7a43ed4b206c264eacccee88d4823ad50a4f572b64f02322f4",
         "source_fact:v1:6e69f70d160fa0b1975bbfa977fbdcc7e1508f4af8a685bfa9d6ca76f72ae833",
         "source_fact:v1:87dabe55b8e0fb41ff81e8128b9a6e3ae45909756946cd700f49537553c8834e",
@@ -259737,6 +261278,7 @@
         "source_fact:v1:95c17d6153385dcd8ec01afdf431441d25d443aed40dfb3b79587c8b146f1994",
         "source_fact:v1:be33958723e3d964250be2d3d6a5852aa4ed894208279f87c20977a18f5ce704",
         "source_fact:v1:c6bdce2c16367cdbd10045d7851152e15bee94425ad97f815d8087963ed89c80",
+        "source_fact:v1:d62045cfecbe4500046d30c7a85b7c0a28a1ac4bf41212124278c5c08b6fbd6d",
         "source_fact:v1:f8742b019b58c74cb3e5cc7f066b929af2246ac5d1f676b563d5f86f128b2d1d"
       ],
       "source_published_kst": "2026-10-08T05:23+09:00",
@@ -261077,6 +262619,43 @@
       ],
       "source_published_kst": "2026-10-06T15:17+09:00",
       "title": "그래도 버틴다…\"이란, 원유수출 막혀도 美 지치기 기다려\" | 연합뉴스"
+    },
+    "source_fact:dd73f4898ad3eb1e410fe6b4": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008061300008",
+      "source": "연합뉴스",
+      "source_body_digest": "70c4002da6484444171ab22de9223289d3c015d7a820e76d1bd3ec3214bc4208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e89c06b309e25e81e996ad76d6428b76b3399d8505902527a69c5fd8bc93f36b",
+      "source_fact_keys": [
+        "source_fact:v1:143c60d26e6f90ca3c4ffa921b86ac9e15e3fadac249fc5f4498d7aae260a7a5",
+        "source_fact:v1:178870f988b6fae0613a7133fcfec6b326f93e65e59ca278161dd3d222528688",
+        "source_fact:v1:21a557d7dffb33763434aa302eaa08ba12a45ea713ceb45c89aa7e3f33abe5b9",
+        "source_fact:v1:33776a2032da45bcc927e3941e905fa943969ab714376414f7c4c43c16469ba3",
+        "source_fact:v1:3ee158ac01b689c28ac99dfb3d4f734b0fb435172d68a927489bbb9630d34d0d",
+        "source_fact:v1:4e9c44bbbdc4961c8c544378c398c144194e37a1ae8c1ef8bc7ba851f4d3a338",
+        "source_fact:v1:5bc60be200df43dc4bf6b55c418798095f40bfb0a69b91596d5f0ad57a384037",
+        "source_fact:v1:61115eee9325507db0b54edb9d2c722783491d5dd822b36bebb0b5a2c47d9d75",
+        "source_fact:v1:68d3187e27b5c1c3daeba8bc385da0f6e11dbb698caa66634da6e2bad7a6ba2e",
+        "source_fact:v1:6f0dae763467c73f3080be24cf659dcf2c92740b983a4c4d4aacc77aae971b30",
+        "source_fact:v1:81beccb4c6f31c72274372f6a17022c5d89c77729f86c01f277b1cc10dcf1a6d",
+        "source_fact:v1:93a7dd789eae701a3b248ec6e23085bce99d239ffb9dec937c58ba999495795e",
+        "source_fact:v1:95daea6d42f1903945ff74ff79fe570978d4543e13c651a59a3f9234e5d293ac",
+        "source_fact:v1:a43ec6032c718b30c02cf18033c4701106cf7341acb5b49d055c89c0cc2a93f0",
+        "source_fact:v1:ac3ea6af0211471b00b9a9d97f02985ac00249d3aa747b00722b5f2bd5b139aa",
+        "source_fact:v1:c1b6ab6f36f3f1a54b52fb5d4fc3788eecdfe0c107a19432b010f58d44d8bfe3",
+        "source_fact:v1:ebc160b665c658b2370e18b19ae13404f380912cc54886fd56883ed9e5c63527",
+        "source_fact:v1:fc8b61db0583205c20b0d4eccb07cffa708d766d25132c4502f4519c7b06d248",
+        "source_fact:v1:fcefb51b059dd524ba26bea909942207c666794aca73c91ca69131745e4400e7"
+      ],
+      "source_published_kst": "2026-10-08T10:37+09:00",
+      "source_title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스",
+      "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
+      "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
     },
     "source_fact:dd92e9d268a1f52f2dd144d2": {
       "first_seen_kst": "2026-10-07T17:34:38+09:00",
@@ -270473,6 +272052,26 @@
       "source_published_kst": "2026-10-05T22:55+09:00",
       "title": "美국채금리 5.3%에 다우 ‘주춤’… 뉴욕증시 혼조 출발"
     },
+    "source_fact:ed87bb974b8eca55648e7b9f": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008156600017",
+      "source": "연합뉴스",
+      "source_body_digest": "35683fb891a0e216245686e6778c71798e3404b9e371b1698344cd4d6bbe3d4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5e8d15e818573c30685aaf381f8c8e2ddba971b1d2d00cc6a98b1aad5df791d7",
+      "source_fact_keys": [
+        "source_fact:v1:2224ab33939ead4ba53c6bd8717ed8739bd7dd4e92782fd8ebcf982c16a7ab04",
+        "source_fact:v1:2f241cd812ba4bfb16125fd3d08c44b7269f181317db31c9d9838e8228244a40"
+      ],
+      "source_published_kst": "2026-10-08T16:12+09:00",
+      "source_title": "부광약품, 한국유니온제약 사명 '부광유니파마'로 변경 | 연합뉴스",
+      "telegram_core_fact": "부광약품[003000]은 올해 인수한 한국유니온제약[080720]의 사명을 '부광유니파마'로 변경했다고 8일 밝혔다. 부광약품은 5월 하순 신주 인수 대금 300억원을 납입해 회생 절차 중이던 한국유니온제약의 최대 주주가 됐으며, 지난달 회생 절차가 종결됐다고 밝혔다.",
+      "title": "부광약품, 한국유니온제약 사명 '부광유니파마'로 변경 | 연합뉴스"
+    },
     "source_fact:ed87d63d19ac58857cd00abc": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
@@ -275780,6 +277379,29 @@
       ],
       "source_published_kst": "2026-10-07T09:19+09:00",
       "title": "[더벨]레이저쎌, '글로벌 톱' 메모리 프로브카드 기업에 LPB 공급"
+    },
+    "source_fact:f973edbe282e973631c43d43": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896261",
+      "source": "헤럴드경제",
+      "source_body_digest": "61ec1236e84b927cfd5320d1b16e7b69a1ee4cf56a4e976f10cb9d3ac0e50210",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:33ca3f0dfe864d1ed26007908b4d0454fabf3173a37a83c7097bf7b921999578",
+      "source_fact_keys": [
+        "source_fact:v1:120dd5db3393fba05f4b149609eba7dc35536cb4a5d2d4edf4c4526b6133bcb4",
+        "source_fact:v1:72f11742be2f689bb88c120a00253013569bf09c50206241ba89224254f65835",
+        "source_fact:v1:addee6fca254a42575394fea032d98446f03a74433ffddea43a02c5af83dc2ac",
+        "source_fact:v1:bed246dc0977d71d6420f716e5dbccfbace968da540fd38dc53cf167b943cbfd",
+        "source_fact:v1:e56c2d691a17b731737285ad8d64abafd3ac143371cc30bf5c46d4c2c6099782"
+      ],
+      "source_published_kst": "2026-10-08T06:41+09:00",
+      "source_title": "비축유 방출 앞당긴다는 소식에 국제유가 하락…WTI 1.3%↓",
+      "telegram_core_fact": "국제에너지기구(IEA)가 비축유 방출을 앞당기기로 했다는 소식에 7일(현지시간) 국제유가가 하락했다.",
+      "title": "비축유 방출 앞당긴다는 소식에 국제유가 하락…WTI 1.3%↓"
     },
     "source_fact:f9835ebe212751609c3a6556": {
       "first_seen_kst": "2026-10-07T00:54:50+09:00",
@@ -290641,6 +292263,25 @@
       "telegram_core_fact": "정미순 양주시 세정과장은 \"외국인 주민도 지방세 납세자인 만큼 세금 정보를 쉽게 확인하고 필요한 절차를 이용하도록 납세 편의 서비스를 개선하겠다\"고 말했다.",
       "title": "양주시, 외국인 납세자에 6개국 언어 안내문 발송 | 연합뉴스"
     },
+    "title:3beb97ee1d911567cfd93edf": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/08/2026100809420950784",
+      "source": "머니투데이",
+      "source_body_digest": "db50fde09c5e176257ef54aeb533a196b600e27ac8845f14dc75e315ef3db0cf",
+      "source_event_identity": "source_event:v2:ai_infrastructure_credit_stress:681e358410fd88ef214d10a2f392dcc8b687f21e1070861ace0c8aa7a6050218",
+      "source_fact_identity": "source_facts:v1:9f8c735d036d8472fea30dad3c1fa4eeeb06f7ff9beac4ced213a3ff168fb097",
+      "source_fact_keys": [
+        "source_fact:v1:f706d7572303984dcdcc2df010599a9137ff3fd1fa9a94e0161c7dedca118b98"
+      ],
+      "source_published_kst": "2026-10-08T10:31+09:00",
+      "source_title": "브로드컴·스페이스X·오라클, AI칩 위해 수십조 빚낸다…신용지표 '경고등'",
+      "telegram_core_fact": "브로드컴은 오픈AI AI칩용 500억달러(약 67조원) 조달을 논의하고, 스페이스X는 400억달러(약 53조6000억원) 조달을 추진 중입니다. CDS는 스페이스X가 194bp에서 1bp로, 오라클은 40bp 오른 81bp로 상승했습니다.",
+      "title": "브로드컴·스페이스X·오라클, AI칩 위해 수십조 빚낸다…신용지표 '경고등'"
+    },
     "title:3bf8f1f47b955dcf7ee06843": {
       "first_seen_kst": "2026-10-07T13:41:41+09:00",
       "lanes": {
@@ -291501,6 +293142,26 @@
       "source_title": "[속보] 반도체 호황…8월 경상수지 461억1000만달러 흑자 역대 2위",
       "telegram_core_fact": "우리나라의 경상수지가 반도체 수출 호황 등에 힘입어 지난 8월에도 흑자 흐름을 이어갔다.",
       "title": "[속보] 반도체 호황…8월 경상수지 461억1000만달러 흑자 역대 2위"
+    },
+    "title:40516581fe5b6ea455f4e27f": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008158200063",
+      "source": "연합뉴스",
+      "source_body_digest": "72e87b720b901b4f3df7a47609d4a313f51ebeded2a420d4d417873f23299ad4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02a37b6ed1e5542a5bbb146fdc2ab05b094bf6febf1129bdc72d9f5e3a908bfd",
+      "source_fact_keys": [
+        "source_fact:v1:4033e46c26102e2eb197fedba9d7d46760fc6e819450777c41a615e28cf9d342",
+        "source_fact:v1:673f0808dbfe37b1cb909d3e5b9ed85e0ffa84ac68e5b83ac61c383a6d5a4658"
+      ],
+      "source_published_kst": "2026-10-08T16:19+09:00",
+      "source_title": "세종시, 360㎿ 규모 데이터센터 건립 유치…7조원 투자 받는다 | 연합뉴스",
+      "telegram_core_fact": "세종시가 7조원 인공지능 데이터센터(AIDC) 투자 유치에 성공했다. SK증권은 오는 2029년까지 7조원을 투입해 360㎿ AIDC를 건립할 방침이다.",
+      "title": "세종시, 360㎿ 규모 데이터센터 건립 유치…7조원 투자 받는다 | 연합뉴스"
     },
     "title:405ac66caffd6e84dec10f35": {
       "first_seen_kst": "2026-10-07T00:38:27+09:00",
@@ -292493,16 +294154,17 @@
     "title:43c68deb5970a6f94a26cd7e": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
-        "live": "2026-10-08T05:31:58+09:00"
+        "live": "2026-10-08T21:47:01+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:31:58+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1171403",
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171026",
       "source": "매일경제",
-      "source_body_digest": "3d5eaeb53673a5a7a34409a1f0cf0542210a74b3a29c26c83251cd23e2e07ede",
+      "source_body_digest": "37b4bc5cf031f47bdc1bf4f2a6c27eb29a6e04238f91538b88b03d0c5dd4f9b8",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:3a81cc067129c1d1f225646689c6c3887eb5ef2f4ff78d75b53e08527112d9d5",
+      "source_fact_identity": "source_facts:v1:40046c2acf5f34ba157e9feec7a46f55f65cf433f39052eea23621cfb7105a61",
       "source_fact_keys": [
         "source_fact:v1:137a3d79950e15282120b88f7751e9c507dbf12c9a8c5a3c0f485a2903c13268",
+        "source_fact:v1:30f11d931d44f43cb7675118c474d6a133b9128872192b946733afd10e14b792",
         "source_fact:v1:57a58920cdde7d7a43ed4b206c264eacccee88d4823ad50a4f572b64f02322f4",
         "source_fact:v1:6e69f70d160fa0b1975bbfa977fbdcc7e1508f4af8a685bfa9d6ca76f72ae833",
         "source_fact:v1:87dabe55b8e0fb41ff81e8128b9a6e3ae45909756946cd700f49537553c8834e",
@@ -292510,6 +294172,7 @@
         "source_fact:v1:95c17d6153385dcd8ec01afdf431441d25d443aed40dfb3b79587c8b146f1994",
         "source_fact:v1:be33958723e3d964250be2d3d6a5852aa4ed894208279f87c20977a18f5ce704",
         "source_fact:v1:c6bdce2c16367cdbd10045d7851152e15bee94425ad97f815d8087963ed89c80",
+        "source_fact:v1:d62045cfecbe4500046d30c7a85b7c0a28a1ac4bf41212124278c5c08b6fbd6d",
         "source_fact:v1:f8742b019b58c74cb3e5cc7f066b929af2246ac5d1f676b563d5f86f128b2d1d"
       ],
       "source_published_kst": "2026-10-08T05:23+09:00",
@@ -294530,6 +296193,26 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T15:16+09:00",
       "title": "MSDI, 구미에 미사일 개발·생산 거점 추진…2029년까지 7000억 규모"
+    },
+    "title:4e6a4cac798c1894f9f81584": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008156600017",
+      "source": "연합뉴스",
+      "source_body_digest": "35683fb891a0e216245686e6778c71798e3404b9e371b1698344cd4d6bbe3d4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5e8d15e818573c30685aaf381f8c8e2ddba971b1d2d00cc6a98b1aad5df791d7",
+      "source_fact_keys": [
+        "source_fact:v1:2224ab33939ead4ba53c6bd8717ed8739bd7dd4e92782fd8ebcf982c16a7ab04",
+        "source_fact:v1:2f241cd812ba4bfb16125fd3d08c44b7269f181317db31c9d9838e8228244a40"
+      ],
+      "source_published_kst": "2026-10-08T16:12+09:00",
+      "source_title": "부광약품, 한국유니온제약 사명 '부광유니파마'로 변경 | 연합뉴스",
+      "telegram_core_fact": "부광약품[003000]은 올해 인수한 한국유니온제약[080720]의 사명을 '부광유니파마'로 변경했다고 8일 밝혔다. 부광약품은 5월 하순 신주 인수 대금 300억원을 납입해 회생 절차 중이던 한국유니온제약의 최대 주주가 됐으며, 지난달 회생 절차가 종결됐다고 밝혔다.",
+      "title": "부광약품, 한국유니온제약 사명 '부광유니파마'로 변경 | 연합뉴스"
     },
     "title:4e792d2bfd7018600c8cc349": {
       "first_seen_kst": "2026-10-05T23:21:26+09:00",
@@ -303612,6 +305295,43 @@
       "telegram_core_fact": "CALISA ACQUISITION CORP는 협력 계약의 구속력이 없어 실제 매출 기여까지는 불확실성이 크며, 합병이 완료되지 않거나 지연될 가능성도 위험 요인으로 제시됐다.",
       "title": "CALISA ACQUISITION CORP, 합병 대상 굿비전AI 텍사스 AI 인프라 협력 2건"
     },
+    "title:82d7cfbde9e9b2248db63cd8": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008061300008",
+      "source": "연합뉴스",
+      "source_body_digest": "70c4002da6484444171ab22de9223289d3c015d7a820e76d1bd3ec3214bc4208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e89c06b309e25e81e996ad76d6428b76b3399d8505902527a69c5fd8bc93f36b",
+      "source_fact_keys": [
+        "source_fact:v1:143c60d26e6f90ca3c4ffa921b86ac9e15e3fadac249fc5f4498d7aae260a7a5",
+        "source_fact:v1:178870f988b6fae0613a7133fcfec6b326f93e65e59ca278161dd3d222528688",
+        "source_fact:v1:21a557d7dffb33763434aa302eaa08ba12a45ea713ceb45c89aa7e3f33abe5b9",
+        "source_fact:v1:33776a2032da45bcc927e3941e905fa943969ab714376414f7c4c43c16469ba3",
+        "source_fact:v1:3ee158ac01b689c28ac99dfb3d4f734b0fb435172d68a927489bbb9630d34d0d",
+        "source_fact:v1:4e9c44bbbdc4961c8c544378c398c144194e37a1ae8c1ef8bc7ba851f4d3a338",
+        "source_fact:v1:5bc60be200df43dc4bf6b55c418798095f40bfb0a69b91596d5f0ad57a384037",
+        "source_fact:v1:61115eee9325507db0b54edb9d2c722783491d5dd822b36bebb0b5a2c47d9d75",
+        "source_fact:v1:68d3187e27b5c1c3daeba8bc385da0f6e11dbb698caa66634da6e2bad7a6ba2e",
+        "source_fact:v1:6f0dae763467c73f3080be24cf659dcf2c92740b983a4c4d4aacc77aae971b30",
+        "source_fact:v1:81beccb4c6f31c72274372f6a17022c5d89c77729f86c01f277b1cc10dcf1a6d",
+        "source_fact:v1:93a7dd789eae701a3b248ec6e23085bce99d239ffb9dec937c58ba999495795e",
+        "source_fact:v1:95daea6d42f1903945ff74ff79fe570978d4543e13c651a59a3f9234e5d293ac",
+        "source_fact:v1:a43ec6032c718b30c02cf18033c4701106cf7341acb5b49d055c89c0cc2a93f0",
+        "source_fact:v1:ac3ea6af0211471b00b9a9d97f02985ac00249d3aa747b00722b5f2bd5b139aa",
+        "source_fact:v1:c1b6ab6f36f3f1a54b52fb5d4fc3788eecdfe0c107a19432b010f58d44d8bfe3",
+        "source_fact:v1:ebc160b665c658b2370e18b19ae13404f380912cc54886fd56883ed9e5c63527",
+        "source_fact:v1:fc8b61db0583205c20b0d4eccb07cffa708d766d25132c4502f4519c7b06d248",
+        "source_fact:v1:fcefb51b059dd524ba26bea909942207c666794aca73c91ca69131745e4400e7"
+      ],
+      "source_published_kst": "2026-10-08T10:37+09:00",
+      "source_title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스",
+      "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
+      "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
+    },
     "title:82fb04fe6ea26a6d49b807ae": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
       "lanes": {
@@ -309680,6 +311400,23 @@
       "source_published_kst": "2026-10-07T15:40+09:00",
       "title": "두나무·네파 주식교환 세 번째 연기…내년 3월로(종합) | 연합뉴스"
     },
+    "title:a4272a8e8e4038150206685b": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819550",
+      "source": "뉴시스",
+      "source_body_digest": "783998493be5ff71d0c85728c7e3ea7538b9c7644932a562869c18c8114b1c50",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T16:22+09:00",
+      "source_title": "부광 \"한국유니온제약, '부광유니파마'로 사명변경\"",
+      "telegram_core_fact": "정관 일부 변경 안건이 가결되면서 한국유니온제약의 상호는 ‘부광유니파마 주식회사’(이하 부광유니파마)로 변경됐다. 부광약품이 인수한 한국유니온제약의 사명이 변경된다.",
+      "title": "부광 \"한국유니온제약, '부광유니파마'로 사명변경\""
+    },
     "title:a4331d348e5a004d3cfd2afb": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
       "lanes": {
@@ -310875,6 +312612,29 @@
       "source_title": "1억 넣으면 월 200만원 나온다는데…배당 부자들만 몰래 쓰는 '세금 0원' 기술",
       "telegram_core_fact": "배당금을 먼저 확정하고 배당 기준일을 정하는 '선배당 후투자' 방식이 확산하면서 결산 배당일이 2~4월 봄철로 분산되고 있다.",
       "title": "1억 넣으면 월 200만원 나온다는데…배당 부자들만 몰래 쓰는 '세금 0원' 기술"
+    },
+    "title:aa19c8ba1c029484dae13baa": {
+      "first_seen_kst": "2026-10-08T21:47:01+09:00",
+      "lanes": {
+        "live": "2026-10-08T21:47:01+09:00"
+      },
+      "last_seen_kst": "2026-10-08T21:47:01+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896261",
+      "source": "헤럴드경제",
+      "source_body_digest": "61ec1236e84b927cfd5320d1b16e7b69a1ee4cf56a4e976f10cb9d3ac0e50210",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:33ca3f0dfe864d1ed26007908b4d0454fabf3173a37a83c7097bf7b921999578",
+      "source_fact_keys": [
+        "source_fact:v1:120dd5db3393fba05f4b149609eba7dc35536cb4a5d2d4edf4c4526b6133bcb4",
+        "source_fact:v1:72f11742be2f689bb88c120a00253013569bf09c50206241ba89224254f65835",
+        "source_fact:v1:addee6fca254a42575394fea032d98446f03a74433ffddea43a02c5af83dc2ac",
+        "source_fact:v1:bed246dc0977d71d6420f716e5dbccfbace968da540fd38dc53cf167b943cbfd",
+        "source_fact:v1:e56c2d691a17b731737285ad8d64abafd3ac143371cc30bf5c46d4c2c6099782"
+      ],
+      "source_published_kst": "2026-10-08T06:41+09:00",
+      "source_title": "비축유 방출 앞당긴다는 소식에 국제유가 하락…WTI 1.3%↓",
+      "telegram_core_fact": "국제에너지기구(IEA)가 비축유 방출을 앞당기기로 했다는 소식에 7일(현지시간) 국제유가가 하락했다.",
+      "title": "비축유 방출 앞당긴다는 소식에 국제유가 하락…WTI 1.3%↓"
     },
     "title:aa29884680afc75245694726": {
       "first_seen_kst": "2026-10-05T17:09:18+09:00",
@@ -326291,5 +328051,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-08T21:21:36+09:00"
+  "updated_at_kst": "2026-10-08T21:47:01+09:00"
 }
