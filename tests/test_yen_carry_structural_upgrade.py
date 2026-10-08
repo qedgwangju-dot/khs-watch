@@ -24,6 +24,28 @@ class YenCarryStructuralUpgradeTests(unittest.TestCase):
         self.assertAlmostEqual(result.prior_2w_lt_debt_trillion_yen, -0.9)
         self.assertAlmostEqual(result.ytd_lt_debt_trillion_yen, -1.4)
 
+
+    def test_bond_sales_are_not_labeled_confirmed_currency_repatriation(self):
+        mof = structural.MofFlowSplit(
+            latest_week="2026-09-27~10-03",
+            previous_week="2026-09-20~09-26",
+            latest_equity_net_trillion_yen=0.6,
+            latest_lt_debt_net_trillion_yen=-0.4,
+            latest_short_debt_net_trillion_yen=0.0,
+            latest_2w_equity_trillion_yen=1.5504,
+            prior_2w_equity_trillion_yen=0.1,
+            latest_2w_lt_debt_trillion_yen=-1.0299,
+            prior_2w_lt_debt_trillion_yen=-0.81,
+            ytd_equity_trillion_yen=5.0,
+            ytd_lt_debt_trillion_yen=-4.46,
+        )
+        context = structural.build_context(
+            [("2026/10/7", 3.111)], mof, None, None, None, None, []
+        )
+        self.assertIn("해외채권 순매도(실제 엔화 환류는 미확인)", context)
+        self.assertIn("합계: 최근 2주 +0.52조엔", context)
+        self.assertIn("현물 엔화 매수·엔캐리 청산을 확정하지 않습니다", context)
+
     def test_parse_auction_html_and_quality(self):
         html = """
         <table><tr>
