@@ -38,6 +38,7 @@ NEW_LOW_CONFIRM_SEC = 240
 MAX_EPISODE_SEC = 3 * 60 * 60
 MAX_FLOW_ALIGNMENT_SEC = 30
 MAX_PROGRAM_SNAPSHOT_SKEW_SEC = 8.0
+MAX_PROGRAM_CROSSCHECK_RATIO_PCT = 1.0  # 1% 초과면 방향이 같아도 높은 확신도 부여 금지
 OPEN_GAP_ALERT_PCT = -1.0
 
 
@@ -524,6 +525,23 @@ def fmt_raw(v: float | None) -> str:
     return f"{v:+,.0f}"
 
 
+def program_quality_label(att: dict[str, Any]) -> str:
+    """직접값과 차익+비차익의 엄밀한 수치 차이를 '일치'로 오표기하지 않는다."""
+    ratio = fnum(att.get("program_crosscheck_ratio_pct"))
+    span = fnum(att.get("program_sample_span_sec"))
+    if ratio is None or span is None:
+        return "검산·조회시차 자료 부족 — 확신도 상향 보류"
+    if span > MAX_PROGRAM_SNAPSHOT_SKEW_SEC:
+        return f"3종 조회시차 {span:.1f}초 초과 — 확신도 상향 보류"
+    if att.get("program_direction_consistent") is False:
+        return f"매매 방향 불일치(합계 차이 {ratio:.2f}%) — 재확인 필요"
+    if ratio > MAX_PROGRAM_CROSSCHECK_RATIO_PCT:
+        return f"방향 일치·합계 차이 {ratio:.2f}%(높은 확신도 보류)"
+    if ratio < 0.005:
+        return "수치 일치(합계 차이 0.01% 미만)"
+    return f"1% 이내 근사 일치(합계 차이 {ratio:.2f}%)"
+
+
 class Watch:
     def __init__(self, token: str, puts: list[dict[str, Any]], front_future: str, test: bool):
         self.token = token; self.put_defs = puts; self.test = test
@@ -720,14 +738,15 @@ class Watch:
         crosscheck_gap = fnum(pgm.get("검산차이"))
         direction_consistent = bool(
             calc_total is not None and direct_total is not None
-            and (calc_total == 0 or direct_total == 0 or (calc_total < 0) == (direct_total < 0))
+            and ((calc_total == 0 and direct_total == 0)
+                 or (calc_total != 0 and direct_total != 0 and (calc_total < 0) == (direct_total < 0)))
         )
         crosscheck_ratio_pct = None
         if crosscheck_gap is not None and calc_total is not None and direct_total is not None:
             denom = max(abs(calc_total), abs(direct_total), 1.0)
             crosscheck_ratio_pct = abs(crosscheck_gap) / denom * 100.0
         crosscheck_consistent = bool(
-            crosscheck_ratio_pct is not None and crosscheck_ratio_pct <= 5.0
+            crosscheck_ratio_pct is not None and crosscheck_ratio_pct <= MAX_PROGRAM_CROSSCHECK_RATIO_PCT
         )
         program_quality = bool(
             pgm_aligned
@@ -783,6 +802,7 @@ class Watch:
                 "program_sample_span_sec": max_pgm_span,
                 "program_crosscheck_gap": crosscheck_gap,
                 "program_crosscheck_ratio_pct": crosscheck_ratio_pct,
+                "program_direction_consistent": direction_consistent,
                 "program_direct_total": direct_total,
                 "program_quality": program_quality}
 
@@ -835,7 +855,7 @@ class Watch:
             title = "🚨 <b>코스피 급락 사건구간 포착</b>" if stage == "start" else "🔴 <b>코스피 급락 사건구간 확대</b>"
         lines = [title, f"<code>{dt.datetime.now(KST):%Y-%m-%d %H:%M:%S} KST</code>", "",
                  "<b>급락 구간</b>",
-                 f"• 시작 <b>{fmt_clock(ep['start_ts'])}</b> → 현재 <b>{fmt_clock(end_ts)}</b> · {fmt_duration(end_ts-float(ep['start_ts']))}",
+                 f"• 시작 <b>{fmt_clock(ep['start_ts'])}</b> → 현재 <b>{fmt_clock(end_ts)}</b> · {fmt_duration(int(end_ts)-int(float(ep['start_ts'])))}",
                  f"• KOSPI <b>{float(ep['start_price']):,.2f}</b> → <b>{end_price:,.2f}</b> · <b>{drop:+.2f}%</b>",
                  f"• 현재 구간 저점 <b>{float(ep['low_price']):,.2f}</b> ({fmt_clock(ep['low_ts'])})", ""]
         if ep.get("price_only"):
@@ -857,7 +877,7 @@ class Watch:
                       f"• LS 전체 직접값 변화 <b>{fmt_raw(p.get('전체직접'))}</b> · 계산합계와 차이 <b>{fmt_raw(p.get('검산차이'))}</b> ({float(att.get('program_crosscheck_ratio_pct') or 0):.2f}%)",
                       f"• 프로그램 방향: <b>{html.escape(str(att.get('program_kind')))}</b>",
                       f"• 수급 기준점 시차: 시작 <b>{float(att.get('start_alignment_sec') or 0):.1f}초</b> · 종료 <b>{float(att.get('end_alignment_sec') or 0):.1f}초</b> · 프로그램 3종 조회시차 최대 <b>{float(att.get('program_sample_span_sec') or 0):.1f}초</b>",
-                      f"• 프로그램 교차검증 품질: <b>{'일치' if att.get('program_quality') else '시차·합계차 재확인 필요'}</b>", "",
+                      f"• 프로그램 교차검증 품질: <b>{html.escape(program_quality_label(att))}</b>", "",
                       "<b>판정</b>", f"• <b>{html.escape(str(att.get('verdict')))}</b> · 확신도 {html.escape(str(att.get('confidence')))}"]
         else:
             lines += [f"• 주체 판정 보류 — {html.escape(str(att.get('reason') or '수급 스냅샷 부족'))}"]
@@ -868,7 +888,7 @@ class Watch:
                   "• 하루 누적 수급이 아니라 <b>급락 시작 직전 → 현재</b> 변화량만 비교합니다.",
                   "• 현물·프로그램은 <b>통합 기준</b>, KOSPI200 선물은 파생시장 기준입니다.",
                   "• 현물·선물·프로그램이 같은 방향으로 겹칠 때만 특정 주체를 급락 주도 후보로 올립니다.",
-                  "• 프로그램 전체는 차익 변화+비차익 변화로 계산하고 LS 전체 직접값 변화와 방향을 교차검증합니다. t1640 3종은 순차 조회라 조회시차를 함께 표시하며 단위는 임의 환산하지 않습니다.", "",
+                  "• 프로그램 전체는 차익 변화+비차익 변화로 계산하며, LS 전체 직접값과 방향·수치 차이를 별도 검증합니다. t1640 3종은 순차 조회이고 차이가 1%를 넘으면 높은 확신도로 판정하지 않습니다.", "",
                   "• " + " · ".join([link(KOSPI_URL,"KOSPI"), link(NEWS_URL,"급락 뉴스"), link(LS_URL,"LS OpenAPI")])]
         return "\n".join(lines)
 
@@ -886,17 +906,17 @@ class Watch:
             title = (
                 "🟣 <b>코스피 급락 가격구간 장마감 확정 · 수급 원인 보류</b>"
                 if session_close else
-                "🟢 <b>코스피 급락 가격구간 종료·복원 확인 · 수급 원인 보류</b>"
+                "🟢 <b>코스피 급락 가격구간 종료·반등 확인 · 수급 원인 보류</b>"
             )
         else:
             title = (
                 "🟣 <b>코스피 급락 사건구간 장마감 확정</b>"
                 if session_close else
-                "🟢 <b>코스피 급락 사건구간 종료·복원 확인</b>"
+                "🟢 <b>코스피 급락 사건구간 종료·반등 확인</b>"
             )
         lines = [title, f"<code>{dt.datetime.now(KST):%Y-%m-%d %H:%M:%S} KST</code>", "",
                  "<b>확정된 급락 구간</b>",
-                 f"• <b>{fmt_clock(ep['start_ts'])} → {fmt_clock(ep['low_ts'])}</b> · {fmt_duration(float(ep['low_ts'])-float(ep['start_ts']))}",
+                 f"• <b>{fmt_clock(ep['start_ts'])} → {fmt_clock(ep['low_ts'])}</b> · {fmt_duration(int(float(ep['low_ts']))-int(float(ep['start_ts'])))}",
                  f"• KOSPI <b>{float(ep['start_price']):,.2f}</b> → <b>{float(ep['low_price']):,.2f}</b> · <b>{drop:+.2f}%</b>",
                  (
                      f"• 저점 이후 장마감 <b>{end_price:,.2f}</b> · 반등 <b>{rebound:+.2f}%</b>"
@@ -915,7 +935,7 @@ class Watch:
                       f"• 프로그램 전체(차익+비차익) <b>{fmt_raw(p.get('전체'))}</b> · 차익 <b>{fmt_raw(p.get('차익'))}</b> · 비차익 <b>{fmt_raw(p.get('비차익'))}</b> <i>(LS t1640 사건구간 변화)</i>",
                       f"• LS 전체 직접값 변화 <b>{fmt_raw(p.get('전체직접'))}</b> · 계산합계와 차이 <b>{fmt_raw(p.get('검산차이'))}</b> ({float(att.get('program_crosscheck_ratio_pct') or 0):.2f}%)",
                       f"• 수급 기준점 시차: 시작 <b>{float(att.get('start_alignment_sec') or 0):.1f}초</b> · 저점 <b>{float(att.get('end_alignment_sec') or 0):.1f}초</b> · 프로그램 3종 조회시차 최대 <b>{float(att.get('program_sample_span_sec') or 0):.1f}초</b>",
-                      f"• 프로그램 교차검증 품질: <b>{'일치' if att.get('program_quality') else '시차·합계차 재확인 필요'}</b>",
+                      f"• 프로그램 교차검증 품질: <b>{html.escape(program_quality_label(att))}</b>",
                       f"• 최종 판정: <b>{html.escape(str(att.get('verdict')))}</b> · 확신도 {html.escape(str(att.get('confidence')))}"]
         else:
             lines += [f"• 가격 구간만 확정 — {html.escape(str(att.get('reason') or '수급 스냅샷 부족'))}"]
