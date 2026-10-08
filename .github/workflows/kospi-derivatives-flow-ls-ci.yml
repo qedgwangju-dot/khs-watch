@@ -401,6 +401,8 @@ jobs:
           python - <<'PY'
           import json
           d=json.load(open("out/kospi_shock_episode_raw.json", encoding="utf-8"))
+          assert d.get("test_mode_notification_suppressed") is True, "live API --test must never send Telegram"
+          print("kospi_live_probe_send_suppressed=true")
           price=d.get("last_price_snapshot") or {}
           assert (price.get("KOSPI") or {}).get("price") is not None, price
           assert (price.get("선물") or {}).get("price") is not None, price
