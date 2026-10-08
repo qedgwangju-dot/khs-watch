@@ -201,6 +201,20 @@ class HonamEventFilterRegressionTest(unittest.TestCase):
         self.assertIn("완료", merged["title"])
         self.assertEqual(merged["evidence_count"], 2)
 
+    def test_chair_visit_infra_discussion_not_infra_state_change(self):
+        planned = {
+            "title": "최태원 회장, 광주 군공항 반도체 부지 방문 예정",
+            "description": "광주 군공항 현장에서 전력·용수·인허가를 논의할 예정",
+            "source": "이데일리", "url": "https://example.com/a",
+            "source_status": "보도 단계",
+            "stages": ["5_기반시설_생활SOC", "6_산단투자_기업일정"],
+            "stage_labels": ["⑤ 전력·용수·교통·생활 인프라", "⑥ 산단·기업투자·팹 일정"],
+        }
+        merged = _merge_group([planned])
+        self.assertEqual(merged["stages"], ["6_산단투자_기업일정"])
+        self.assertIn("예정", merged["impact"])
+        self.assertNotIn("전원 인가 시간표", merged["impact"])
+
     def test_verified_incident_intake_is_once_by_family(self):
         payload = {"events": [{
             "event_family": "honam_sk_chair_site_visit_20261009",
