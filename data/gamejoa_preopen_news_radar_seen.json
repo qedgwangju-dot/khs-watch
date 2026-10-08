@@ -40,6 +40,25 @@
       "telegram_core_fact": "엘링턴 크레딧(EARN)이 이사회에서 보통주 1주당 0.08달러의 월간 배당을 결정했다고 7일(현지시간) 발표했다.",
       "title": "엘링턴 크레딧, 월 배당 주당 0.08달러 선언..11월 30일 지급"
     },
+    "core:01f0f8bf318680bae0088e45": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896769",
+      "source": "헤럴드경제",
+      "source_body_digest": "bd909cef5da816c8a5e3d3cb5d47635547efa41e65b3df7a491b34444ecb8147",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5e3bdbeece63e32eaf7a8a2d6bfcf462ae6b42be5168cba600c3c1f9e7830ba",
+      "source_fact_keys": [
+        "source_fact:v1:2046c4157838ff6be160695911512b51d98a16ceb724fd640e304c2ffd337b7e"
+      ],
+      "source_published_kst": "2026-10-08T11:04+09:00",
+      "source_title": "OK금융, 예별손보 인수로 보험업 본격 진입…추가 자금 1100억 이상 투입",
+      "telegram_core_fact": "OK금융그룹이 예별손해보험 인수를 위한 주식매매계약(SPA)을 체결하며 손해보험업 진출에 나선다.",
+      "title": "OK금융, 예별손보 인수로 보험업 본격 진입…추가 자금 1100억 이상 투입"
+    },
     "core:027285ebf773e19c9a4fec4d": {
       "first_seen_kst": "2026-10-07T14:18:25+09:00",
       "lanes": {
@@ -1805,6 +1824,23 @@
       "telegram_core_fact": "워딩턴 스틸(WS)은 2027 회계연도 1분기(2026년 6~8월) 계속사업 기준 매출액이 27억2660만 달러로 전년비 212% 증가했으며, 계속사업 기준 GAAP 희석 주당순손실은 0.14달러로 전년 동기 0.73달러 순이익에서 적자 전환했다고 10월 7일 발표했다.",
       "title": "워딩턴 스틸, 1분기 매출 27억 달러 212%↑..적자전환"
     },
+    "core:25f0c84d28d97b3eb614dd3b": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.etnews.com/20261007000383",
+      "source": "전자신문",
+      "source_body_digest": "a2ccf9adf2279c2db2c24c69a56b1483b3ba1b76430c248f664e6bfd29b2f937",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T15:37+09:00",
+      "source_title": "한전KDN, 공공 전력망 암호 기술 민간 태양광으로 확대",
+      "telegram_core_fact": "한전KDN은 신재생에너지 전문 기업 에너지어스에 국가정보원 검증필 암호모듈 '이파워 크립토(ePower Crypto) V2.2'를 공급한다고 7일 밝혔다.",
+      "title": "한전KDN, 공공 전력망 암호 기술 민간 태양광으로 확대"
+    },
     "core:25fb2709e9f163ab37bee8bc": {
       "first_seen_kst": "2026-10-08T08:56:19+09:00",
       "lanes": {
@@ -1878,6 +1914,30 @@
       ],
       "source_published_kst": "2026-10-07T14:17+09:00",
       "title": "반도체 소부장 덜어낸 국민연금…건설·에너지로 눈 돌렸다"
+    },
+    "core:277afa16cc58a9457ecfbaaa": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03135686645610952",
+      "source": "이데일리",
+      "source_body_digest": "1daf4d1f5f5f8105827076008de8fcd4167b5000ea168047d650470e24e923c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0134bfff37eea46cc6b091d5ddda724513547cd531f5d851da73928f10c5a44d",
+      "source_fact_keys": [
+        "source_fact:v1:0be4c986b8c47cea219cacfd05bd05e22d2c61ec5bd8ac50af9a70ae05ac4660",
+        "source_fact:v1:1ea6800d750321fb326a7d1fb9ac2123e4c4e3a40766025e6a96cf3fbcb9f1d4",
+        "source_fact:v1:32951f11ffb74e4ad50c08262e2178fa324021033d24c6290d085c6ce3bce8c9",
+        "source_fact:v1:3e0ad91bca1cf8f00409794d5402f4a8fa4713e73f838d87242eeae3140aaa32",
+        "source_fact:v1:42288adce8af4c24f223aab21edf25607d58c9bd14606f3f03b7219e728b701a",
+        "source_fact:v1:f98437ab0e5daa9745588210a4e17f4d4cd29b399fb836533baae4069f4e5fc2"
+      ],
+      "source_published_kst": "2026-10-08T10:54+09:00",
+      "source_title": "누적 경상흑자 2800억달러…반도체 질주에 연간 4500억달러 ‘순항’(종합)",
+      "telegram_core_fact": "반도체 수출이 가격과 물량의 동반 상승에 힘입어 질주하면서 지난 8월 경상수지 흑자가 460억달러를 넘어섰다.",
+      "title": "누적 경상흑자 2800억달러…반도체 질주에 연간 4500억달러 ‘순항’(종합)"
     },
     "core:28184b856c9084b35718d0b4": {
       "first_seen_kst": "2026-10-07T22:37:58+09:00",
@@ -2898,6 +2958,26 @@
       "source_published_kst": "2026-10-07T11:13+09:00",
       "title": "부산항 이용 선박 위치 실시간 확인…BPA, '글로벌 AIS' 도입"
     },
+    "core:3dd4609b73b40737dce54429": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008086500051",
+      "source": "연합뉴스",
+      "source_body_digest": "db1ac0ec70898030d55b0b57307659e6af8a4d120df12fbfc6364f92e8a6273e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8cc16ccf4b25f016119e00fb7a0ec114bb11f8170c897f8d3a79f4e3335dc21",
+      "source_fact_keys": [
+        "source_fact:v1:5ec532a8f064486c49b78a90ed9af3ce4f80bc36b038672b4f6b2b13c5b18abb",
+        "source_fact:v1:84d4a88c88eca65820c96b538c99d61b9e9308f6c130437b647d09eb41bb3ceb"
+      ],
+      "source_published_kst": "2026-10-08T11:22+09:00",
+      "source_title": "제주 바다숲 소멸은 생태계 변화 신호탄…해조류 생산 97% 감소 | 연합뉴스",
+      "telegram_core_fact": "한국해양과학기술원이 8일 내놓은 현안 보고서를 보면 2010년 5천155t에 달하던 제주 연근해 해조류 생산량은 지난해 154t으로 97% 감소했다. 제주 연안의 바다숲 소멸은 생태계 변화의 신호탄으로, 아열대화를 지속해서 관측해야 한다는 의견이 나왔다.",
+      "title": "제주 바다숲 소멸은 생태계 변화 신호탄…해조류 생산 97% 감소 | 연합뉴스"
+    },
     "core:3e8c4080f4b1058265cf21b7": {
       "first_seen_kst": "2026-10-08T01:26:16+09:00",
       "lanes": {
@@ -3754,6 +3834,25 @@
       "telegram_core_fact": "현재 국토부 규제샌드박스 승인을 받아 서울 강남·서초·송파·강동구에서 약 80대 규모로 운영 중인 전기 이륜차 LED 배달통 광고 실증사업도 민관협력 사례로 발전시킬 계획이다.",
       "title": "배민, ‘K-GX’ 프로젝트 참여…전기 이륜차 보급 확대 나선다"
     },
+    "core:57fabdf348551d691645768a": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008028900009",
+      "source": "연합뉴스",
+      "source_body_digest": "5929b80d35c6e7a1038d19cf8a5b9415962169d62a10c908dde7eb96e9f2ebd2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b5a74b2049f7b25efc78f4d3640865ffdbc71cf9d4b3299a24e4f643a39d565e",
+      "source_fact_keys": [
+        "source_fact:v1:e5e0267f22b5273c235d2d8063b6ad89c03343e8aa65ca449ef0ea7616c3ea97"
+      ],
+      "source_published_kst": "2026-10-08T09:11+09:00",
+      "source_title": "'400억달러 차입 추진' 보도에 스페이스X 신용위험 급등 | 연합뉴스",
+      "telegram_core_fact": "스페이스X가 엔비디아 AI 칩 구매용으로 400억달러(약 55조원)의 자금 조달을 논의중이라는 소식이 전해진 뒤 이 회사의 신용 위험 지표가 사상 최고치로 치솟고 채권 가격이 약세를 보였다. 총 400억달러의 자금 조달이 성사된다면 AI 인프라 구축을 위한 역대 최대 채권 발행 중 하나가 된다.",
+      "title": "'400억달러 차입 추진' 보도에 스페이스X 신용위험 급등 | 연합뉴스"
+    },
     "core:592a4930744c66063783dc77": {
       "first_seen_kst": "2026-10-08T14:55:40+09:00",
       "lanes": {
@@ -3775,6 +3874,33 @@
       "source_title": "美 여자농구 골든스테이트, 연매출 1억달러⋯여성 구단 최초",
       "telegram_core_fact": "미국여자프로농구(WNBA) 골든스테이트 발키리스가 여성 프로스포츠 구단 가운데 처음으로 연매출 1억 달러(약 1400억원)를 돌파했다.",
       "title": "美 여자농구 골든스테이트, 연매출 1억달러⋯여성 구단 최초"
+    },
+    "core:5a1410fd356ba1124fa89e40": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261008101343",
+      "source": "지디넷코리아",
+      "source_body_digest": "7b8dff8ac375814ee9afa549b0fdc22c419b84fce3e3ca6a89feba49f06be60e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0735c4194b2c07bac452a434429e6a230702245a543c234c2e4bba0783337a77",
+      "source_fact_keys": [
+        "source_fact:v1:04e22968cd7c9b6579011d8a2fd853a0114a6b6869a9a5218eaa5eaccdcdd23b",
+        "source_fact:v1:1100566211116e6c08705f5eaef8301e666118abeacc10dfef37a08b431cf8c6",
+        "source_fact:v1:174c4a4ec9c8f718e3f1b04f1f394f104d15ae6d95b6ae4b7303f25df0ba40a4",
+        "source_fact:v1:6845ddb4688454e42d167525590446ddad54765d0b0bc6b9459a0eb91d579fe8",
+        "source_fact:v1:6ee8c4bff6711c542f3c1f506856d1d291d0f51e5baa9762bee31aa07926f1f2",
+        "source_fact:v1:8a896a2582247c3903268321a7c4461fb5ed13170f3c2d6f6e22b67dfeedb66a",
+        "source_fact:v1:a3a281fb0b788265583a0fdc9fe7f14e1d6fc5a4c1b159e8ea645f53de108e3a",
+        "source_fact:v1:dc8f6d8e925d27b785eb2816bb565d18e114403aa07735cf7f97a0f59595d767",
+        "source_fact:v1:ed9106ee4b45dd977f2d23c1a47cbafd1b65b4ffd0adf685eca45cbea997e5c7"
+      ],
+      "source_published_kst": "2026-10-08T11:08+09:00",
+      "source_title": "램리서치, \"한국 반도체 생태계와 밀착…제조 역량·공급망 강화\"",
+      "telegram_core_fact": "램리서치는 '인공지능(AI) 시대 회복탄력적 파트너십 구축'을 주제로 열린 이번 행사에서 반도체 공급망 안정성과 대응력을 높이기 위한 생태계 협력 방안을 논의했다.",
+      "title": "램리서치, \"한국 반도체 생태계와 밀착…제조 역량·공급망 강화\""
     },
     "core:5a8ba209843c8bfbbc09e6c3": {
       "first_seen_kst": "2026-10-08T06:57:59+09:00",
@@ -10619,6 +10745,32 @@
       "source_published_kst": "2026-10-07T09:48+09:00",
       "title": "러 북한에 제트 드론 기술 대거 이전 가능성"
     },
+    "core:f7f57286874251b0269734ea": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080843238478",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ad9d170c68c09ad93f11e9020d1014dcf97c7269c1887a38b02195ec7dbc5e3e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c17edac15b5e3477f76c671104276572bf7d6c977635e25ad7434146bcdb7cfc",
+      "source_fact_keys": [
+        "source_fact:v1:024dfbc9ac0f9f07b18afee31aa6f3be7da3fab3e594a265bc43c3f0563aaf9f",
+        "source_fact:v1:62458f50508fdbf414603f6bc67fafeeeaef60c976fa8f1c0c8b640733b9a1e3",
+        "source_fact:v1:8ad4a5aeb76c27b7c5de1d9474386516754c23d5839ce6b97d203185f28ba3fb",
+        "source_fact:v1:a72c59788f33e6b8290ced8573aaf758219bd2638f813c30976a10d7d97c696c",
+        "source_fact:v1:a9e4400a068350faaeb3127f900723258e9460f6cc09a8d52e9396d584df1439",
+        "source_fact:v1:c4d354439624f58495b8e2509a86ba04d047e0506de21995663fcb1ec00a74e2",
+        "source_fact:v1:ce00f0d5bfb7a3010ba5b26dfff9a56933b278049337e58d93ca865d928c802f",
+        "source_fact:v1:e93735380fbcbca9ea2ad68017fbc86fbfdcc87d8818cdecea4e35d08dafce84"
+      ],
+      "source_published_kst": "2026-10-08T08:43+09:00",
+      "source_title": "누리호 탄 SK하이닉스 반도체, 우주서 성능 검증 나선다",
+      "telegram_core_fact": "초소형위성 기업 나라스페이스테크놀로지는 플랫폼 본체 개발과 운용을 맡은 우주검증위성 'E3T 2호기'가 누리호 5차 발사 후 지상국과 양방향 교신에 성공했다고 8일 밝혔다. E3T 2호기는 국내에서 개발된 우주용 반도체와 전자소자, 부품 및 기술을 실제 우주환경에서 검증하기 위해 개발됐다.",
+      "title": "누리호 탄 SK하이닉스 반도체, 우주서 성능 검증 나선다"
+    },
     "core:f7f88a76b22bb1a75165e527": {
       "first_seen_kst": "2026-10-08T11:06:13+09:00",
       "lanes": {
@@ -16569,26 +16721,26 @@
     "event:b11d572aadf1fa216e0a0bc3": {
       "first_seen_kst": "2026-10-08T02:26:35+09:00",
       "lanes": {
-        "live": "2026-10-08T12:46:54+09:00"
+        "live": "2026-10-08T15:16:19+09:00"
       },
-      "last_seen_kst": "2026-10-08T12:46:54+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02938886645610952",
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03135686645610952",
       "source": "이데일리",
-      "source_body_digest": "cb167c2d7e13a9213350eddc4aa886da125a70c20c57ef7fba0eec1d56db3a2b",
+      "source_body_digest": "1daf4d1f5f5f8105827076008de8fcd4167b5000ea168047d650470e24e923c6",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:351169d59871a4555625065b2923eed8c81fd4ecbcd04fd38d1176bd4fecc4e7",
+      "source_fact_identity": "source_facts:v1:0134bfff37eea46cc6b091d5ddda724513547cd531f5d851da73928f10c5a44d",
       "source_fact_keys": [
-        "source_fact:v1:6b4dfba91d64808b73705cdb1fee58a287ab8afdadab5f2c1240d4757fb79342",
-        "source_fact:v1:78b5105e4b949317516256f9341039bb59f07716f15faac795a482a5aba1df68",
-        "source_fact:v1:890d8d5a402417a49fb6655f24ee5cf7985a917ae1b17de499332fbd8e72341e",
-        "source_fact:v1:a4ecc53ddb03d28e6e5bcabd082a9a742c3e3ed6dc88382a26c0eb10ea931812",
-        "source_fact:v1:c9ff5e7bcb47129d61a031edd9fedf9aacad247fc6fa6004d160fe8bb7dc0e63",
-        "source_fact:v1:ebeaa2e3289f1dc3d35b2274653c6f8490b33e27fb17ce1fb7f67864a40575f8"
+        "source_fact:v1:0be4c986b8c47cea219cacfd05bd05e22d2c61ec5bd8ac50af9a70ae05ac4660",
+        "source_fact:v1:1ea6800d750321fb326a7d1fb9ac2123e4c4e3a40766025e6a96cf3fbcb9f1d4",
+        "source_fact:v1:32951f11ffb74e4ad50c08262e2178fa324021033d24c6290d085c6ce3bce8c9",
+        "source_fact:v1:3e0ad91bca1cf8f00409794d5402f4a8fa4713e73f838d87242eeae3140aaa32",
+        "source_fact:v1:42288adce8af4c24f223aab21edf25607d58c9bd14606f3f03b7219e728b701a",
+        "source_fact:v1:f98437ab0e5daa9745588210a4e17f4d4cd29b399fb836533baae4069f4e5fc2"
       ],
-      "source_published_kst": "2026-10-08T10:10+09:00",
-      "source_title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]",
-      "telegram_core_fact": "9월 무역수지가 예상을 뛰어넘는 큰 폭의 흑자를 기록한 데다, 연말로 갈수록 수출이 집중되는 효과까지 더해지면서 올해 연간 경상수지 흑자 전망치인 4500억달러도 달성 가능할 것이란 전망이다. 한은은 지난 8월 올해 연간 경상수지 흑자 전망치를 기존 2500억달러에서 4500억달러로 대폭 상향한 바 있다.",
-      "title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]"
+      "source_published_kst": "2026-10-08T10:54+09:00",
+      "source_title": "누적 경상흑자 2800억달러…반도체 질주에 연간 4500억달러 ‘순항’(종합)",
+      "telegram_core_fact": "반도체 수출이 가격과 물량의 동반 상승에 힘입어 질주하면서 지난 8월 경상수지 흑자가 460억달러를 넘어섰다.",
+      "title": "누적 경상흑자 2800억달러…반도체 질주에 연간 4500억달러 ‘순항’(종합)"
     },
     "event:b1495e0393111e527b090ddc": {
       "first_seen_kst": "2026-09-18T14:40:33+09:00",
@@ -17990,22 +18142,21 @@
     "event:d8590b1f93c2ff8931b9355c": {
       "first_seen_kst": "2026-10-08T04:26:05+09:00",
       "lanes": {
-        "live": "2026-10-08T12:46:54+09:00"
+        "live": "2026-10-08T15:16:19+09:00"
       },
-      "last_seen_kst": "2026-10-08T12:46:54+09:00",
-      "link": "https://www.fnnews.com/news/202610080457580741",
-      "source": "파이낸셜뉴스",
-      "source_body_digest": "5ee36832b7ba400bd18fb0a4ffb51507a954d02c84f3b927fcc102cf03075e18",
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008028900009",
+      "source": "연합뉴스",
+      "source_body_digest": "5929b80d35c6e7a1038d19cf8a5b9415962169d62a10c908dde7eb96e9f2ebd2",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:24cb394d6e57416cceb1db9f107542f0986aff2271ebe621f9df3722faf2f655",
+      "source_fact_identity": "source_facts:v1:b5a74b2049f7b25efc78f4d3640865ffdbc71cf9d4b3299a24e4f643a39d565e",
       "source_fact_keys": [
-        "source_fact:v1:131f9b35f2bc9ef0285ef14e0555986dbe02df9f7754805a27d0a6048353cda6",
-        "source_fact:v1:9b0c46426731d3193d1de3c36abffb9acc0b3059ac098cda12504ebd4948ed29"
+        "source_fact:v1:e5e0267f22b5273c235d2d8063b6ad89c03343e8aa65ca449ef0ea7616c3ea97"
       ],
-      "source_published_kst": "2026-10-08T05:58+09:00",
-      "source_title": "스페이스X 부도 위험 보험료 사상 최고...\"엔비디아 칩 매수 위해 400억달러 조달\"",
-      "telegram_core_fact": "엔비디아 칩을 구매하기 위해 400억달러(약 53조원)를 조달하기로 했다는 보도가 시장의 부도 대비 보험 비용을 끌어올렸다. 스페이스X가 400억달러 자금 조달을 계획하고 있다는 FT 보도가 CDS 스프레드 급등을 촉발했다.",
-      "title": "스페이스X 부도 위험 보험료 사상 최고...\"엔비디아 칩 매수 위해 400억달러 조달\""
+      "source_published_kst": "2026-10-08T09:11+09:00",
+      "source_title": "'400억달러 차입 추진' 보도에 스페이스X 신용위험 급등 | 연합뉴스",
+      "telegram_core_fact": "스페이스X가 엔비디아 AI 칩 구매용으로 400억달러(약 55조원)의 자금 조달을 논의중이라는 소식이 전해진 뒤 이 회사의 신용 위험 지표가 사상 최고치로 치솟고 채권 가격이 약세를 보였다. 총 400억달러의 자금 조달이 성사된다면 AI 인프라 구축을 위한 역대 최대 채권 발행 중 하나가 된다.",
+      "title": "'400억달러 차입 추진' 보도에 스페이스X 신용위험 급등 | 연합뉴스"
     },
     "event:d88b0eac57260dfdb7556995": {
       "first_seen_kst": "2026-09-27T00:25:22+09:00",
@@ -18861,25 +19012,21 @@
     "event:f364c6024dca2bb3c9e1bc8f": {
       "first_seen_kst": "2026-10-08T05:44:23+09:00",
       "lanes": {
-        "live": "2026-10-08T13:46:05+09:00"
+        "live": "2026-10-08T15:16:19+09:00"
       },
-      "last_seen_kst": "2026-10-08T13:46:05+09:00",
-      "link": "https://www.mk.co.kr/news/world/12171265",
-      "source": "매일경제",
-      "source_body_digest": "145c4300f20755ffb892f9caa65c32eb0d72296d94626708c4ac8eff147bc9a8",
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896769",
+      "source": "헤럴드경제",
+      "source_body_digest": "bd909cef5da816c8a5e3d3cb5d47635547efa41e65b3df7a491b34444ecb8147",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:97b1d16b8b5f2cb7a231ef1ac532abeb827640ae51b8811281b049725ab453c1",
+      "source_fact_identity": "source_facts:v1:c5e3bdbeece63e32eaf7a8a2d6bfcf462ae6b42be5168cba600c3c1f9e7830ba",
       "source_fact_keys": [
-        "source_fact:v1:49483681bbdf6cc30a460d607d1a264a64e427c7f94b4ea186fc8e98be3bc2d9",
-        "source_fact:v1:50b7887aa34bdb40569cee745271cb16d4779614be66df8610971c9b72a2f237",
-        "source_fact:v1:c07364dd5550800ceba28350a303ae481bd6a6807812be07f1a9fae40eeefd66",
-        "source_fact:v1:c96668288b611f2e829dee4780bc71d2b1bcc5fdaf04fc6b93a05e313fc9ed73",
-        "source_fact:v1:f916bf554d15a04fb51a896c559b170df95a5d28d7c7b2193eb5a8e23f464cad"
+        "source_fact:v1:2046c4157838ff6be160695911512b51d98a16ceb724fd640e304c2ffd337b7e"
       ],
-      "source_published_kst": "2026-10-08T10:45+09:00",
-      "source_title": "외신 “하이닉스 솔리다임, 내년 美IPO 추진…골드만·모건스탠리 주관사 선정”",
-      "telegram_core_fact": "8일(현지시간) 블룸버그통신은 복수의 소식통을 인용해 솔리다임이 골드만삭스와 모건스탠리를 IPO 대표 주관사로 선정했다고 보도했다. SK하이닉스의 손자회사 솔리다임이 내년 미국 증시 상장을 위한 대표 주관사단을 구성하며 기업공개(IPO) 준비에 속도를 내고 있다는 미국 현지 보도가 나왔다.",
-      "title": "외신 “하이닉스 솔리다임, 내년 美IPO 추진…골드만·모건스탠리 주관사 선정”"
+      "source_published_kst": "2026-10-08T11:04+09:00",
+      "source_title": "OK금융, 예별손보 인수로 보험업 본격 진입…추가 자금 1100억 이상 투입",
+      "telegram_core_fact": "OK금융그룹이 예별손해보험 인수를 위한 주식매매계약(SPA)을 체결하며 손해보험업 진출에 나선다.",
+      "title": "OK금융, 예별손보 인수로 보험업 본격 진입…추가 자금 1100억 이상 투입"
     },
     "event:f3deef153cd0644c9be96040": {
       "first_seen_kst": "2026-10-01T16:19:49+09:00",
@@ -20687,6 +20834,25 @@
       ],
       "source_published_kst": "2026-10-06T10:49+09:00",
       "title": "군인공제회 자금 불법추심 대부업체까지…김병기 \"운용 적정성 점검해야\""
+    },
+    "fact:0c4a41a5accefff4b569aa6b": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896769",
+      "source": "헤럴드경제",
+      "source_body_digest": "bd909cef5da816c8a5e3d3cb5d47635547efa41e65b3df7a491b34444ecb8147",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5e3bdbeece63e32eaf7a8a2d6bfcf462ae6b42be5168cba600c3c1f9e7830ba",
+      "source_fact_keys": [
+        "source_fact:v1:2046c4157838ff6be160695911512b51d98a16ceb724fd640e304c2ffd337b7e"
+      ],
+      "source_published_kst": "2026-10-08T11:04+09:00",
+      "source_title": "OK금융, 예별손보 인수로 보험업 본격 진입…추가 자금 1100억 이상 투입",
+      "telegram_core_fact": "OK금융그룹이 예별손해보험 인수를 위한 주식매매계약(SPA)을 체결하며 손해보험업 진출에 나선다.",
+      "title": "OK금융, 예별손보 인수로 보험업 본격 진입…추가 자금 1100억 이상 투입"
     },
     "fact:0ca37161e3eb5e20cd99467a": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -23247,6 +23413,25 @@
       "source_published_kst": "2026-10-06T14:09+09:00",
       "title": "신협자산관리회사, 부실채권 매입 가능해진다…건전성 강화"
     },
+    "fact:23087b4700c81ade05a5127a": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008028900009",
+      "source": "연합뉴스",
+      "source_body_digest": "5929b80d35c6e7a1038d19cf8a5b9415962169d62a10c908dde7eb96e9f2ebd2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b5a74b2049f7b25efc78f4d3640865ffdbc71cf9d4b3299a24e4f643a39d565e",
+      "source_fact_keys": [
+        "source_fact:v1:e5e0267f22b5273c235d2d8063b6ad89c03343e8aa65ca449ef0ea7616c3ea97"
+      ],
+      "source_published_kst": "2026-10-08T09:11+09:00",
+      "source_title": "'400억달러 차입 추진' 보도에 스페이스X 신용위험 급등 | 연합뉴스",
+      "telegram_core_fact": "스페이스X가 엔비디아 AI 칩 구매용으로 400억달러(약 55조원)의 자금 조달을 논의중이라는 소식이 전해진 뒤 이 회사의 신용 위험 지표가 사상 최고치로 치솟고 채권 가격이 약세를 보였다. 총 400억달러의 자금 조달이 성사된다면 AI 인프라 구축을 위한 역대 최대 채권 발행 중 하나가 된다.",
+      "title": "'400억달러 차입 추진' 보도에 스페이스X 신용위험 급등 | 연합뉴스"
+    },
     "fact:2336b45b2b86c4e5d6ae041d": {
       "first_seen_kst": "2026-10-07T11:43:24+09:00",
       "lanes": {
@@ -23850,6 +24035,26 @@
       "source_published_kst": "2026-10-06T17:00+09:00",
       "title": "금감원, '2.5만명 정보유출' 신한은행 현장검사 전환…점검 착수 엿새 만(종합)"
     },
+    "fact:27eaac93b1a4ad2f29601412": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008086500051",
+      "source": "연합뉴스",
+      "source_body_digest": "db1ac0ec70898030d55b0b57307659e6af8a4d120df12fbfc6364f92e8a6273e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8cc16ccf4b25f016119e00fb7a0ec114bb11f8170c897f8d3a79f4e3335dc21",
+      "source_fact_keys": [
+        "source_fact:v1:5ec532a8f064486c49b78a90ed9af3ce4f80bc36b038672b4f6b2b13c5b18abb",
+        "source_fact:v1:84d4a88c88eca65820c96b538c99d61b9e9308f6c130437b647d09eb41bb3ceb"
+      ],
+      "source_published_kst": "2026-10-08T11:22+09:00",
+      "source_title": "제주 바다숲 소멸은 생태계 변화 신호탄…해조류 생산 97% 감소 | 연합뉴스",
+      "telegram_core_fact": "한국해양과학기술원이 8일 내놓은 현안 보고서를 보면 2010년 5천155t에 달하던 제주 연근해 해조류 생산량은 지난해 154t으로 97% 감소했다. 제주 연안의 바다숲 소멸은 생태계 변화의 신호탄으로, 아열대화를 지속해서 관측해야 한다는 의견이 나왔다.",
+      "title": "제주 바다숲 소멸은 생태계 변화 신호탄…해조류 생산 97% 감소 | 연합뉴스"
+    },
     "fact:281325f1cdf314e996cc2f72": {
       "first_seen_kst": "2026-10-07T03:30:59+09:00",
       "lanes": {
@@ -23997,6 +24202,30 @@
       ],
       "source_published_kst": "2026-10-05T18:05+09:00",
       "title": "양산에 '선박 하이브리드 시스템' 실증센터"
+    },
+    "fact:2ac9ea390bd374e6067fd01d": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03135686645610952",
+      "source": "이데일리",
+      "source_body_digest": "1daf4d1f5f5f8105827076008de8fcd4167b5000ea168047d650470e24e923c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0134bfff37eea46cc6b091d5ddda724513547cd531f5d851da73928f10c5a44d",
+      "source_fact_keys": [
+        "source_fact:v1:0be4c986b8c47cea219cacfd05bd05e22d2c61ec5bd8ac50af9a70ae05ac4660",
+        "source_fact:v1:1ea6800d750321fb326a7d1fb9ac2123e4c4e3a40766025e6a96cf3fbcb9f1d4",
+        "source_fact:v1:32951f11ffb74e4ad50c08262e2178fa324021033d24c6290d085c6ce3bce8c9",
+        "source_fact:v1:3e0ad91bca1cf8f00409794d5402f4a8fa4713e73f838d87242eeae3140aaa32",
+        "source_fact:v1:42288adce8af4c24f223aab21edf25607d58c9bd14606f3f03b7219e728b701a",
+        "source_fact:v1:f98437ab0e5daa9745588210a4e17f4d4cd29b399fb836533baae4069f4e5fc2"
+      ],
+      "source_published_kst": "2026-10-08T10:54+09:00",
+      "source_title": "누적 경상흑자 2800억달러…반도체 질주에 연간 4500억달러 ‘순항’(종합)",
+      "telegram_core_fact": "반도체 수출이 가격과 물량의 동반 상승에 힘입어 질주하면서 지난 8월 경상수지 흑자가 460억달러를 넘어섰다.",
+      "title": "누적 경상흑자 2800억달러…반도체 질주에 연간 4500억달러 ‘순항’(종합)"
     },
     "fact:2ae90a023ff6eee186149c8e": {
       "first_seen_kst": "2026-10-07T01:59:08+09:00",
@@ -34863,6 +35092,33 @@
       "source_published_kst": "2026-10-07T07:02+09:00",
       "title": "뉴욕증시 상승...S&P500·나스닥 사상 최고치 경신"
     },
+    "fact:934a50592ff544f45e2415a2": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261008101343",
+      "source": "지디넷코리아",
+      "source_body_digest": "7b8dff8ac375814ee9afa549b0fdc22c419b84fce3e3ca6a89feba49f06be60e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0735c4194b2c07bac452a434429e6a230702245a543c234c2e4bba0783337a77",
+      "source_fact_keys": [
+        "source_fact:v1:04e22968cd7c9b6579011d8a2fd853a0114a6b6869a9a5218eaa5eaccdcdd23b",
+        "source_fact:v1:1100566211116e6c08705f5eaef8301e666118abeacc10dfef37a08b431cf8c6",
+        "source_fact:v1:174c4a4ec9c8f718e3f1b04f1f394f104d15ae6d95b6ae4b7303f25df0ba40a4",
+        "source_fact:v1:6845ddb4688454e42d167525590446ddad54765d0b0bc6b9459a0eb91d579fe8",
+        "source_fact:v1:6ee8c4bff6711c542f3c1f506856d1d291d0f51e5baa9762bee31aa07926f1f2",
+        "source_fact:v1:8a896a2582247c3903268321a7c4461fb5ed13170f3c2d6f6e22b67dfeedb66a",
+        "source_fact:v1:a3a281fb0b788265583a0fdc9fe7f14e1d6fc5a4c1b159e8ea645f53de108e3a",
+        "source_fact:v1:dc8f6d8e925d27b785eb2816bb565d18e114403aa07735cf7f97a0f59595d767",
+        "source_fact:v1:ed9106ee4b45dd977f2d23c1a47cbafd1b65b4ffd0adf685eca45cbea997e5c7"
+      ],
+      "source_published_kst": "2026-10-08T11:08+09:00",
+      "source_title": "램리서치, \"한국 반도체 생태계와 밀착…제조 역량·공급망 강화\"",
+      "telegram_core_fact": "램리서치는 '인공지능(AI) 시대 회복탄력적 파트너십 구축'을 주제로 열린 이번 행사에서 반도체 공급망 안정성과 대응력을 높이기 위한 생태계 협력 방안을 논의했다.",
+      "title": "램리서치, \"한국 반도체 생태계와 밀착…제조 역량·공급망 강화\""
+    },
     "fact:9350fc8eaf1ef95764abb6b1": {
       "first_seen_kst": "2026-10-07T14:18:25+09:00",
       "lanes": {
@@ -36642,6 +36898,32 @@
       "source_title": "펩트론, 본계약 없이 릴리 기술평가 종료…“후속 상업화 계약 불발 아냐”",
       "telegram_core_fact": "“이번 공동연구와 기술평가 결과를 실제 상업화로 이어가기 위해서는 상용화 가능성, 대량생산성, 시장성, 지식재산권 등 실제 제품 개발과 상업화에 필요한 여러 요소에 대한 종합적인 검토와 양사의 의사결정이 필요하다”고 말했다.",
       "title": "펩트론, 본계약 없이 릴리 기술평가 종료…“후속 상업화 계약 불발 아냐”"
+    },
+    "fact:a2625bfb89872e45383398f3": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080843238478",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ad9d170c68c09ad93f11e9020d1014dcf97c7269c1887a38b02195ec7dbc5e3e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c17edac15b5e3477f76c671104276572bf7d6c977635e25ad7434146bcdb7cfc",
+      "source_fact_keys": [
+        "source_fact:v1:024dfbc9ac0f9f07b18afee31aa6f3be7da3fab3e594a265bc43c3f0563aaf9f",
+        "source_fact:v1:62458f50508fdbf414603f6bc67fafeeeaef60c976fa8f1c0c8b640733b9a1e3",
+        "source_fact:v1:8ad4a5aeb76c27b7c5de1d9474386516754c23d5839ce6b97d203185f28ba3fb",
+        "source_fact:v1:a72c59788f33e6b8290ced8573aaf758219bd2638f813c30976a10d7d97c696c",
+        "source_fact:v1:a9e4400a068350faaeb3127f900723258e9460f6cc09a8d52e9396d584df1439",
+        "source_fact:v1:c4d354439624f58495b8e2509a86ba04d047e0506de21995663fcb1ec00a74e2",
+        "source_fact:v1:ce00f0d5bfb7a3010ba5b26dfff9a56933b278049337e58d93ca865d928c802f",
+        "source_fact:v1:e93735380fbcbca9ea2ad68017fbc86fbfdcc87d8818cdecea4e35d08dafce84"
+      ],
+      "source_published_kst": "2026-10-08T08:43+09:00",
+      "source_title": "누리호 탄 SK하이닉스 반도체, 우주서 성능 검증 나선다",
+      "telegram_core_fact": "초소형위성 기업 나라스페이스테크놀로지는 플랫폼 본체 개발과 운용을 맡은 우주검증위성 'E3T 2호기'가 누리호 5차 발사 후 지상국과 양방향 교신에 성공했다고 8일 밝혔다. E3T 2호기는 국내에서 개발된 우주용 반도체와 전자소자, 부품 및 기술을 실제 우주환경에서 검증하기 위해 개발됐다.",
+      "title": "누리호 탄 SK하이닉스 반도체, 우주서 성능 검증 나선다"
     },
     "fact:a2820ed8e7681e2362e2263c": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
@@ -50280,6 +50562,23 @@
       "source_published_kst": "2026-10-06T19:21+09:00",
       "title": "日경제상 \"반도체·전력 수요 무한대…美·日 투자 충분히 양립\""
     },
+    "link:15c5cfa91e7caffa205c6f11": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.etnews.com/20261007000383",
+      "source": "전자신문",
+      "source_body_digest": "a2ccf9adf2279c2db2c24c69a56b1483b3ba1b76430c248f664e6bfd29b2f937",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T15:37+09:00",
+      "source_title": "한전KDN, 공공 전력망 암호 기술 민간 태양광으로 확대",
+      "telegram_core_fact": "한전KDN은 신재생에너지 전문 기업 에너지어스에 국가정보원 검증필 암호모듈 '이파워 크립토(ePower Crypto) V2.2'를 공급한다고 7일 밝혔다.",
+      "title": "한전KDN, 공공 전력망 암호 기술 민간 태양광으로 확대"
+    },
     "link:15cb0adf611837b961bda2ea": {
       "first_seen_kst": "2026-10-02T19:18:49+09:00",
       "lanes": {
@@ -59804,6 +60103,26 @@
       ],
       "source_published_kst": "2026-10-05T13:25+09:00",
       "title": "'北 책임 추궁'과 '한반도 긴장 완화'…DMZ 지뢰사고 대응 딜레마"
+    },
+    "link:4b6b0efd6a3bee474bafccd6": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008086500051",
+      "source": "연합뉴스",
+      "source_body_digest": "db1ac0ec70898030d55b0b57307659e6af8a4d120df12fbfc6364f92e8a6273e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8cc16ccf4b25f016119e00fb7a0ec114bb11f8170c897f8d3a79f4e3335dc21",
+      "source_fact_keys": [
+        "source_fact:v1:5ec532a8f064486c49b78a90ed9af3ce4f80bc36b038672b4f6b2b13c5b18abb",
+        "source_fact:v1:84d4a88c88eca65820c96b538c99d61b9e9308f6c130437b647d09eb41bb3ceb"
+      ],
+      "source_published_kst": "2026-10-08T11:22+09:00",
+      "source_title": "제주 바다숲 소멸은 생태계 변화 신호탄…해조류 생산 97% 감소 | 연합뉴스",
+      "telegram_core_fact": "한국해양과학기술원이 8일 내놓은 현안 보고서를 보면 2010년 5천155t에 달하던 제주 연근해 해조류 생산량은 지난해 154t으로 97% 감소했다. 제주 연안의 바다숲 소멸은 생태계 변화의 신호탄으로, 아열대화를 지속해서 관측해야 한다는 의견이 나왔다.",
+      "title": "제주 바다숲 소멸은 생태계 변화 신호탄…해조류 생산 97% 감소 | 연합뉴스"
     },
     "link:4b92098577c8ef5dd8696610": {
       "first_seen_kst": "2026-10-03T11:19:18+09:00",
@@ -69694,6 +70013,25 @@
       "source": "연합뉴스",
       "title": "사우디 공급 차질 우려 심화…국제유가 5월 19일 이후 최고 | 연합뉴스"
     },
+    "link:84155f9abf86af410b064f0a": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008028900009",
+      "source": "연합뉴스",
+      "source_body_digest": "5929b80d35c6e7a1038d19cf8a5b9415962169d62a10c908dde7eb96e9f2ebd2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b5a74b2049f7b25efc78f4d3640865ffdbc71cf9d4b3299a24e4f643a39d565e",
+      "source_fact_keys": [
+        "source_fact:v1:e5e0267f22b5273c235d2d8063b6ad89c03343e8aa65ca449ef0ea7616c3ea97"
+      ],
+      "source_published_kst": "2026-10-08T09:11+09:00",
+      "source_title": "'400억달러 차입 추진' 보도에 스페이스X 신용위험 급등 | 연합뉴스",
+      "telegram_core_fact": "스페이스X가 엔비디아 AI 칩 구매용으로 400억달러(약 55조원)의 자금 조달을 논의중이라는 소식이 전해진 뒤 이 회사의 신용 위험 지표가 사상 최고치로 치솟고 채권 가격이 약세를 보였다. 총 400억달러의 자금 조달이 성사된다면 AI 인프라 구축을 위한 역대 최대 채권 발행 중 하나가 된다.",
+      "title": "'400억달러 차입 추진' 보도에 스페이스X 신용위험 급등 | 연합뉴스"
+    },
     "link:842023d5f15c873451ab71f2": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
       "lanes": {
@@ -75930,6 +76268,32 @@
       "source_published_kst": "2026-10-06T01:21+09:00",
       "title": "페라리, 자사주 2600만 유로 매입..3차 한도 41% 소진"
     },
+    "link:a6e096e6f55b5d99e2a0bd2e": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080843238478",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ad9d170c68c09ad93f11e9020d1014dcf97c7269c1887a38b02195ec7dbc5e3e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c17edac15b5e3477f76c671104276572bf7d6c977635e25ad7434146bcdb7cfc",
+      "source_fact_keys": [
+        "source_fact:v1:024dfbc9ac0f9f07b18afee31aa6f3be7da3fab3e594a265bc43c3f0563aaf9f",
+        "source_fact:v1:62458f50508fdbf414603f6bc67fafeeeaef60c976fa8f1c0c8b640733b9a1e3",
+        "source_fact:v1:8ad4a5aeb76c27b7c5de1d9474386516754c23d5839ce6b97d203185f28ba3fb",
+        "source_fact:v1:a72c59788f33e6b8290ced8573aaf758219bd2638f813c30976a10d7d97c696c",
+        "source_fact:v1:a9e4400a068350faaeb3127f900723258e9460f6cc09a8d52e9396d584df1439",
+        "source_fact:v1:c4d354439624f58495b8e2509a86ba04d047e0506de21995663fcb1ec00a74e2",
+        "source_fact:v1:ce00f0d5bfb7a3010ba5b26dfff9a56933b278049337e58d93ca865d928c802f",
+        "source_fact:v1:e93735380fbcbca9ea2ad68017fbc86fbfdcc87d8818cdecea4e35d08dafce84"
+      ],
+      "source_published_kst": "2026-10-08T08:43+09:00",
+      "source_title": "누리호 탄 SK하이닉스 반도체, 우주서 성능 검증 나선다",
+      "telegram_core_fact": "초소형위성 기업 나라스페이스테크놀로지는 플랫폼 본체 개발과 운용을 맡은 우주검증위성 'E3T 2호기'가 누리호 5차 발사 후 지상국과 양방향 교신에 성공했다고 8일 밝혔다. E3T 2호기는 국내에서 개발된 우주용 반도체와 전자소자, 부품 및 기술을 실제 우주환경에서 검증하기 위해 개발됐다.",
+      "title": "누리호 탄 SK하이닉스 반도체, 우주서 성능 검증 나선다"
+    },
     "link:a6e3e3b2abaa22f408e66d22": {
       "first_seen_kst": "2026-10-08T08:56:19+09:00",
       "lanes": {
@@ -77098,6 +77462,33 @@
       "source_title": "두나무-네이버파이낸셜 주식교환, 해 넘긴다…내년 3월로 연기 [크립토360]",
       "telegram_core_fact": "7일 네이버파이낸셜과 두나무는 양사의 포괄적 주식교환 일정을 올해 12월31일에서 내년 3월31일로 변경하는 정정공시를 냈다. 당초 올해 말로 예정됐던 포괄적 주식교환은 내년 3월 말로 연기되면서 양사의 결합은 해를 넘기게 됐다.",
       "title": "두나무-네이버파이낸셜 주식교환, 해 넘긴다…내년 3월로 연기 [크립토360]"
+    },
+    "link:ad094181a60d6d89603b3717": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261008101343",
+      "source": "지디넷코리아",
+      "source_body_digest": "7b8dff8ac375814ee9afa549b0fdc22c419b84fce3e3ca6a89feba49f06be60e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0735c4194b2c07bac452a434429e6a230702245a543c234c2e4bba0783337a77",
+      "source_fact_keys": [
+        "source_fact:v1:04e22968cd7c9b6579011d8a2fd853a0114a6b6869a9a5218eaa5eaccdcdd23b",
+        "source_fact:v1:1100566211116e6c08705f5eaef8301e666118abeacc10dfef37a08b431cf8c6",
+        "source_fact:v1:174c4a4ec9c8f718e3f1b04f1f394f104d15ae6d95b6ae4b7303f25df0ba40a4",
+        "source_fact:v1:6845ddb4688454e42d167525590446ddad54765d0b0bc6b9459a0eb91d579fe8",
+        "source_fact:v1:6ee8c4bff6711c542f3c1f506856d1d291d0f51e5baa9762bee31aa07926f1f2",
+        "source_fact:v1:8a896a2582247c3903268321a7c4461fb5ed13170f3c2d6f6e22b67dfeedb66a",
+        "source_fact:v1:a3a281fb0b788265583a0fdc9fe7f14e1d6fc5a4c1b159e8ea645f53de108e3a",
+        "source_fact:v1:dc8f6d8e925d27b785eb2816bb565d18e114403aa07735cf7f97a0f59595d767",
+        "source_fact:v1:ed9106ee4b45dd977f2d23c1a47cbafd1b65b4ffd0adf685eca45cbea997e5c7"
+      ],
+      "source_published_kst": "2026-10-08T11:08+09:00",
+      "source_title": "램리서치, \"한국 반도체 생태계와 밀착…제조 역량·공급망 강화\"",
+      "telegram_core_fact": "램리서치는 '인공지능(AI) 시대 회복탄력적 파트너십 구축'을 주제로 열린 이번 행사에서 반도체 공급망 안정성과 대응력을 높이기 위한 생태계 협력 방안을 논의했다.",
+      "title": "램리서치, \"한국 반도체 생태계와 밀착…제조 역량·공급망 강화\""
     },
     "link:ad1cefa9817b321948509e1d": {
       "first_seen_kst": "2026-10-04T09:36:30+09:00",
@@ -78868,6 +79259,25 @@
       "link": "https://www.mt.co.kr/index.php/world/2026/09/23/2026092305303428131",
       "source": "머니투데이",
       "title": "미·이란 대표단, 유엔서 3시간 전격 회동…'호르무즈 재개방' 조건 타진"
+    },
+    "link:b8a40075d5bc8b5c8e1013b4": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896769",
+      "source": "헤럴드경제",
+      "source_body_digest": "bd909cef5da816c8a5e3d3cb5d47635547efa41e65b3df7a491b34444ecb8147",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5e3bdbeece63e32eaf7a8a2d6bfcf462ae6b42be5168cba600c3c1f9e7830ba",
+      "source_fact_keys": [
+        "source_fact:v1:2046c4157838ff6be160695911512b51d98a16ceb724fd640e304c2ffd337b7e"
+      ],
+      "source_published_kst": "2026-10-08T11:04+09:00",
+      "source_title": "OK금융, 예별손보 인수로 보험업 본격 진입…추가 자금 1100억 이상 투입",
+      "telegram_core_fact": "OK금융그룹이 예별손해보험 인수를 위한 주식매매계약(SPA)을 체결하며 손해보험업 진출에 나선다.",
+      "title": "OK금융, 예별손보 인수로 보험업 본격 진입…추가 자금 1100억 이상 투입"
     },
     "link:b8f52fcf1183e4655763a1c6": {
       "first_seen_kst": "2026-09-21T21:05:50+09:00",
@@ -84368,6 +84778,30 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T14:05+09:00",
       "title": "'대전 D-성장펀드' 540억 규모 출범...지역성장펀드 3호"
+    },
+    "link:d834c710621c3268e901677b": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03135686645610952",
+      "source": "이데일리",
+      "source_body_digest": "1daf4d1f5f5f8105827076008de8fcd4167b5000ea168047d650470e24e923c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0134bfff37eea46cc6b091d5ddda724513547cd531f5d851da73928f10c5a44d",
+      "source_fact_keys": [
+        "source_fact:v1:0be4c986b8c47cea219cacfd05bd05e22d2c61ec5bd8ac50af9a70ae05ac4660",
+        "source_fact:v1:1ea6800d750321fb326a7d1fb9ac2123e4c4e3a40766025e6a96cf3fbcb9f1d4",
+        "source_fact:v1:32951f11ffb74e4ad50c08262e2178fa324021033d24c6290d085c6ce3bce8c9",
+        "source_fact:v1:3e0ad91bca1cf8f00409794d5402f4a8fa4713e73f838d87242eeae3140aaa32",
+        "source_fact:v1:42288adce8af4c24f223aab21edf25607d58c9bd14606f3f03b7219e728b701a",
+        "source_fact:v1:f98437ab0e5daa9745588210a4e17f4d4cd29b399fb836533baae4069f4e5fc2"
+      ],
+      "source_published_kst": "2026-10-08T10:54+09:00",
+      "source_title": "누적 경상흑자 2800억달러…반도체 질주에 연간 4500억달러 ‘순항’(종합)",
+      "telegram_core_fact": "반도체 수출이 가격과 물량의 동반 상승에 힘입어 질주하면서 지난 8월 경상수지 흑자가 460억달러를 넘어섰다.",
+      "title": "누적 경상흑자 2800억달러…반도체 질주에 연간 4500억달러 ‘순항’(종합)"
     },
     "link:d86069ee394c82bb82dae13f": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
@@ -97204,6 +97638,23 @@
       "source": "전자신문",
       "title": "에코프로, 최상운·김장우 공동 대표 체제 전환"
     },
+    "original:231634f36540c45d47298968": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.etnews.com/20261007000383",
+      "source": "전자신문",
+      "source_body_digest": "a2ccf9adf2279c2db2c24c69a56b1483b3ba1b76430c248f664e6bfd29b2f937",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T15:37+09:00",
+      "source_title": "한전KDN, 공공 전력망 암호 기술 민간 태양광으로 확대",
+      "telegram_core_fact": "한전KDN은 신재생에너지 전문 기업 에너지어스에 국가정보원 검증필 암호모듈 '이파워 크립토(ePower Crypto) V2.2'를 공급한다고 7일 밝혔다.",
+      "title": "한전KDN, 공공 전력망 암호 기술 민간 태양광으로 확대"
+    },
     "original:23206b612eab7e9741074a58": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -100385,6 +100836,30 @@
       "telegram_core_fact": "임직원 RSU 행사에 따른 정기적 신주 발행이며 지분 희석률도 0.06% 수준에 그쳐요.",
       "title": "TORM, RSU 행사로 신주 6만주 발행..총 1억271만주"
     },
+    "original:34194a3ebe140ec0ba862092": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03135686645610952",
+      "source": "이데일리",
+      "source_body_digest": "1daf4d1f5f5f8105827076008de8fcd4167b5000ea168047d650470e24e923c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0134bfff37eea46cc6b091d5ddda724513547cd531f5d851da73928f10c5a44d",
+      "source_fact_keys": [
+        "source_fact:v1:0be4c986b8c47cea219cacfd05bd05e22d2c61ec5bd8ac50af9a70ae05ac4660",
+        "source_fact:v1:1ea6800d750321fb326a7d1fb9ac2123e4c4e3a40766025e6a96cf3fbcb9f1d4",
+        "source_fact:v1:32951f11ffb74e4ad50c08262e2178fa324021033d24c6290d085c6ce3bce8c9",
+        "source_fact:v1:3e0ad91bca1cf8f00409794d5402f4a8fa4713e73f838d87242eeae3140aaa32",
+        "source_fact:v1:42288adce8af4c24f223aab21edf25607d58c9bd14606f3f03b7219e728b701a",
+        "source_fact:v1:f98437ab0e5daa9745588210a4e17f4d4cd29b399fb836533baae4069f4e5fc2"
+      ],
+      "source_published_kst": "2026-10-08T10:54+09:00",
+      "source_title": "누적 경상흑자 2800억달러…반도체 질주에 연간 4500억달러 ‘순항’(종합)",
+      "telegram_core_fact": "반도체 수출이 가격과 물량의 동반 상승에 힘입어 질주하면서 지난 8월 경상수지 흑자가 460억달러를 넘어섰다.",
+      "title": "누적 경상흑자 2800억달러…반도체 질주에 연간 4500억달러 ‘순항’(종합)"
+    },
     "original:342e9c30c372a026179045ab": {
       "first_seen_kst": "2026-10-02T13:15:57+09:00",
       "lanes": {
@@ -101540,6 +102015,25 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003813159",
       "source": "뉴시스",
       "title": "유로존 9월 인플레 3.8%로 ↑…8월의 3.2%에서"
+    },
+    "original:3af98ce99cd1039bd4277716": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896769",
+      "source": "헤럴드경제",
+      "source_body_digest": "bd909cef5da816c8a5e3d3cb5d47635547efa41e65b3df7a491b34444ecb8147",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5e3bdbeece63e32eaf7a8a2d6bfcf462ae6b42be5168cba600c3c1f9e7830ba",
+      "source_fact_keys": [
+        "source_fact:v1:2046c4157838ff6be160695911512b51d98a16ceb724fd640e304c2ffd337b7e"
+      ],
+      "source_published_kst": "2026-10-08T11:04+09:00",
+      "source_title": "OK금융, 예별손보 인수로 보험업 본격 진입…추가 자금 1100억 이상 투입",
+      "telegram_core_fact": "OK금융그룹이 예별손해보험 인수를 위한 주식매매계약(SPA)을 체결하며 손해보험업 진출에 나선다.",
+      "title": "OK금융, 예별손보 인수로 보험업 본격 진입…추가 자금 1100억 이상 투입"
     },
     "original:3b00b105b0a96e12270e4a65": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
@@ -117156,6 +117650,26 @@
       "source": "전자신문",
       "title": "보령, 中 이판제약과 '탁소텔' 3837억원 공급계약…역대 최대 규모"
     },
+    "original:9497b04163dfe3af02ef2a10": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008086500051",
+      "source": "연합뉴스",
+      "source_body_digest": "db1ac0ec70898030d55b0b57307659e6af8a4d120df12fbfc6364f92e8a6273e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8cc16ccf4b25f016119e00fb7a0ec114bb11f8170c897f8d3a79f4e3335dc21",
+      "source_fact_keys": [
+        "source_fact:v1:5ec532a8f064486c49b78a90ed9af3ce4f80bc36b038672b4f6b2b13c5b18abb",
+        "source_fact:v1:84d4a88c88eca65820c96b538c99d61b9e9308f6c130437b647d09eb41bb3ceb"
+      ],
+      "source_published_kst": "2026-10-08T11:22+09:00",
+      "source_title": "제주 바다숲 소멸은 생태계 변화 신호탄…해조류 생산 97% 감소 | 연합뉴스",
+      "telegram_core_fact": "한국해양과학기술원이 8일 내놓은 현안 보고서를 보면 2010년 5천155t에 달하던 제주 연근해 해조류 생산량은 지난해 154t으로 97% 감소했다. 제주 연안의 바다숲 소멸은 생태계 변화의 신호탄으로, 아열대화를 지속해서 관측해야 한다는 의견이 나왔다.",
+      "title": "제주 바다숲 소멸은 생태계 변화 신호탄…해조류 생산 97% 감소 | 연합뉴스"
+    },
     "original:94bb4ce171e8bd9bc51c6e49": {
       "first_seen_kst": "2026-10-02T13:15:57+09:00",
       "lanes": {
@@ -120226,6 +120740,25 @@
       "source_published_kst": "2026-10-06T08:17+09:00",
       "title": "나스닥 사상 최고…비트코인 8만5000달러대[코인 모닝콜]"
     },
+    "original:a8f4a4a0b718ac18c6e51c67": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008028900009",
+      "source": "연합뉴스",
+      "source_body_digest": "5929b80d35c6e7a1038d19cf8a5b9415962169d62a10c908dde7eb96e9f2ebd2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b5a74b2049f7b25efc78f4d3640865ffdbc71cf9d4b3299a24e4f643a39d565e",
+      "source_fact_keys": [
+        "source_fact:v1:e5e0267f22b5273c235d2d8063b6ad89c03343e8aa65ca449ef0ea7616c3ea97"
+      ],
+      "source_published_kst": "2026-10-08T09:11+09:00",
+      "source_title": "'400억달러 차입 추진' 보도에 스페이스X 신용위험 급등 | 연합뉴스",
+      "telegram_core_fact": "스페이스X가 엔비디아 AI 칩 구매용으로 400억달러(약 55조원)의 자금 조달을 논의중이라는 소식이 전해진 뒤 이 회사의 신용 위험 지표가 사상 최고치로 치솟고 채권 가격이 약세를 보였다. 총 400억달러의 자금 조달이 성사된다면 AI 인프라 구축을 위한 역대 최대 채권 발행 중 하나가 된다.",
+      "title": "'400억달러 차입 추진' 보도에 스페이스X 신용위험 급등 | 연합뉴스"
+    },
     "original:a8f89d56ff0976b60e903d8f": {
       "first_seen_kst": "2026-09-27T12:25:25+09:00",
       "lanes": {
@@ -121925,6 +122458,33 @@
       ],
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "반도체 소부장 랠리 … ETF 출시도 잇따라"
+    },
+    "original:b1beea3e158fd43385c6bc52": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261008101343",
+      "source": "지디넷코리아",
+      "source_body_digest": "7b8dff8ac375814ee9afa549b0fdc22c419b84fce3e3ca6a89feba49f06be60e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0735c4194b2c07bac452a434429e6a230702245a543c234c2e4bba0783337a77",
+      "source_fact_keys": [
+        "source_fact:v1:04e22968cd7c9b6579011d8a2fd853a0114a6b6869a9a5218eaa5eaccdcdd23b",
+        "source_fact:v1:1100566211116e6c08705f5eaef8301e666118abeacc10dfef37a08b431cf8c6",
+        "source_fact:v1:174c4a4ec9c8f718e3f1b04f1f394f104d15ae6d95b6ae4b7303f25df0ba40a4",
+        "source_fact:v1:6845ddb4688454e42d167525590446ddad54765d0b0bc6b9459a0eb91d579fe8",
+        "source_fact:v1:6ee8c4bff6711c542f3c1f506856d1d291d0f51e5baa9762bee31aa07926f1f2",
+        "source_fact:v1:8a896a2582247c3903268321a7c4461fb5ed13170f3c2d6f6e22b67dfeedb66a",
+        "source_fact:v1:a3a281fb0b788265583a0fdc9fe7f14e1d6fc5a4c1b159e8ea645f53de108e3a",
+        "source_fact:v1:dc8f6d8e925d27b785eb2816bb565d18e114403aa07735cf7f97a0f59595d767",
+        "source_fact:v1:ed9106ee4b45dd977f2d23c1a47cbafd1b65b4ffd0adf685eca45cbea997e5c7"
+      ],
+      "source_published_kst": "2026-10-08T11:08+09:00",
+      "source_title": "램리서치, \"한국 반도체 생태계와 밀착…제조 역량·공급망 강화\"",
+      "telegram_core_fact": "램리서치는 '인공지능(AI) 시대 회복탄력적 파트너십 구축'을 주제로 열린 이번 행사에서 반도체 공급망 안정성과 대응력을 높이기 위한 생태계 협력 방안을 논의했다.",
+      "title": "램리서치, \"한국 반도체 생태계와 밀착…제조 역량·공급망 강화\""
     },
     "original:b1c5f41b197c2bd67db20559": {
       "first_seen_kst": "2026-10-08T11:28:27+09:00",
@@ -131841,6 +132401,32 @@
       "source_published_kst": "2026-10-06T17:18+09:00",
       "title": "국고채 금리, 대외금리 연동하며 혼조세…3년물 3.933%(종합) | 연합뉴스"
     },
+    "original:eca2aed18b305554a273dce4": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080843238478",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ad9d170c68c09ad93f11e9020d1014dcf97c7269c1887a38b02195ec7dbc5e3e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c17edac15b5e3477f76c671104276572bf7d6c977635e25ad7434146bcdb7cfc",
+      "source_fact_keys": [
+        "source_fact:v1:024dfbc9ac0f9f07b18afee31aa6f3be7da3fab3e594a265bc43c3f0563aaf9f",
+        "source_fact:v1:62458f50508fdbf414603f6bc67fafeeeaef60c976fa8f1c0c8b640733b9a1e3",
+        "source_fact:v1:8ad4a5aeb76c27b7c5de1d9474386516754c23d5839ce6b97d203185f28ba3fb",
+        "source_fact:v1:a72c59788f33e6b8290ced8573aaf758219bd2638f813c30976a10d7d97c696c",
+        "source_fact:v1:a9e4400a068350faaeb3127f900723258e9460f6cc09a8d52e9396d584df1439",
+        "source_fact:v1:c4d354439624f58495b8e2509a86ba04d047e0506de21995663fcb1ec00a74e2",
+        "source_fact:v1:ce00f0d5bfb7a3010ba5b26dfff9a56933b278049337e58d93ca865d928c802f",
+        "source_fact:v1:e93735380fbcbca9ea2ad68017fbc86fbfdcc87d8818cdecea4e35d08dafce84"
+      ],
+      "source_published_kst": "2026-10-08T08:43+09:00",
+      "source_title": "누리호 탄 SK하이닉스 반도체, 우주서 성능 검증 나선다",
+      "telegram_core_fact": "초소형위성 기업 나라스페이스테크놀로지는 플랫폼 본체 개발과 운용을 맡은 우주검증위성 'E3T 2호기'가 누리호 5차 발사 후 지상국과 양방향 교신에 성공했다고 8일 밝혔다. E3T 2호기는 국내에서 개발된 우주용 반도체와 전자소자, 부품 및 기술을 실제 우주환경에서 검증하기 위해 개발됐다.",
+      "title": "누리호 탄 SK하이닉스 반도체, 우주서 성능 검증 나선다"
+    },
     "original:ecf1a1e8cfe79a17688ae1e5": {
       "first_seen_kst": "2026-10-03T21:43:46+09:00",
       "lanes": {
@@ -137348,6 +137934,33 @@
       ],
       "source_published_kst": "2026-10-05T16:00+09:00",
       "title": "[기획]한국재료연구원, AI·데이터로 '예측하고 설계하는' 소재 연구시대 연다"
+    },
+    "source_fact:0614248609c968050e664121": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261008101343",
+      "source": "지디넷코리아",
+      "source_body_digest": "7b8dff8ac375814ee9afa549b0fdc22c419b84fce3e3ca6a89feba49f06be60e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0735c4194b2c07bac452a434429e6a230702245a543c234c2e4bba0783337a77",
+      "source_fact_keys": [
+        "source_fact:v1:04e22968cd7c9b6579011d8a2fd853a0114a6b6869a9a5218eaa5eaccdcdd23b",
+        "source_fact:v1:1100566211116e6c08705f5eaef8301e666118abeacc10dfef37a08b431cf8c6",
+        "source_fact:v1:174c4a4ec9c8f718e3f1b04f1f394f104d15ae6d95b6ae4b7303f25df0ba40a4",
+        "source_fact:v1:6845ddb4688454e42d167525590446ddad54765d0b0bc6b9459a0eb91d579fe8",
+        "source_fact:v1:6ee8c4bff6711c542f3c1f506856d1d291d0f51e5baa9762bee31aa07926f1f2",
+        "source_fact:v1:8a896a2582247c3903268321a7c4461fb5ed13170f3c2d6f6e22b67dfeedb66a",
+        "source_fact:v1:a3a281fb0b788265583a0fdc9fe7f14e1d6fc5a4c1b159e8ea645f53de108e3a",
+        "source_fact:v1:dc8f6d8e925d27b785eb2816bb565d18e114403aa07735cf7f97a0f59595d767",
+        "source_fact:v1:ed9106ee4b45dd977f2d23c1a47cbafd1b65b4ffd0adf685eca45cbea997e5c7"
+      ],
+      "source_published_kst": "2026-10-08T11:08+09:00",
+      "source_title": "램리서치, \"한국 반도체 생태계와 밀착…제조 역량·공급망 강화\"",
+      "telegram_core_fact": "램리서치는 '인공지능(AI) 시대 회복탄력적 파트너십 구축'을 주제로 열린 이번 행사에서 반도체 공급망 안정성과 대응력을 높이기 위한 생태계 협력 방안을 논의했다.",
+      "title": "램리서치, \"한국 반도체 생태계와 밀착…제조 역량·공급망 강화\""
     },
     "source_fact:061a0d39315e95a25bee1cf4": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
@@ -143548,6 +144161,32 @@
       "telegram_core_fact": "한국투자신탁운용은 7일 ACE 미국빅테크TOP7Plus 상장지수펀드(ETF)의 순자산액이 1조2000억원을 돌파했다고 밝혔다. ACE 미국빅테크TOP7Plus ETF는 미국 나스닥 시장에 상장된 빅테크 기업에 집중적으로 투자하는 상품으로 2023년 9월 상장했다.",
       "title": "한투운용, 미국 빅테크 집중 ETF 순자산 1조2000억 돌파"
     },
+    "source_fact:12c1c5b41257a4cd8294e62c": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080843238478",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ad9d170c68c09ad93f11e9020d1014dcf97c7269c1887a38b02195ec7dbc5e3e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c17edac15b5e3477f76c671104276572bf7d6c977635e25ad7434146bcdb7cfc",
+      "source_fact_keys": [
+        "source_fact:v1:024dfbc9ac0f9f07b18afee31aa6f3be7da3fab3e594a265bc43c3f0563aaf9f",
+        "source_fact:v1:62458f50508fdbf414603f6bc67fafeeeaef60c976fa8f1c0c8b640733b9a1e3",
+        "source_fact:v1:8ad4a5aeb76c27b7c5de1d9474386516754c23d5839ce6b97d203185f28ba3fb",
+        "source_fact:v1:a72c59788f33e6b8290ced8573aaf758219bd2638f813c30976a10d7d97c696c",
+        "source_fact:v1:a9e4400a068350faaeb3127f900723258e9460f6cc09a8d52e9396d584df1439",
+        "source_fact:v1:c4d354439624f58495b8e2509a86ba04d047e0506de21995663fcb1ec00a74e2",
+        "source_fact:v1:ce00f0d5bfb7a3010ba5b26dfff9a56933b278049337e58d93ca865d928c802f",
+        "source_fact:v1:e93735380fbcbca9ea2ad68017fbc86fbfdcc87d8818cdecea4e35d08dafce84"
+      ],
+      "source_published_kst": "2026-10-08T08:43+09:00",
+      "source_title": "누리호 탄 SK하이닉스 반도체, 우주서 성능 검증 나선다",
+      "telegram_core_fact": "초소형위성 기업 나라스페이스테크놀로지는 플랫폼 본체 개발과 운용을 맡은 우주검증위성 'E3T 2호기'가 누리호 5차 발사 후 지상국과 양방향 교신에 성공했다고 8일 밝혔다. E3T 2호기는 국내에서 개발된 우주용 반도체와 전자소자, 부품 및 기술을 실제 우주환경에서 검증하기 위해 개발됐다.",
+      "title": "누리호 탄 SK하이닉스 반도체, 우주서 성능 검증 나선다"
+    },
     "source_fact:12c5893478b184b799834aef": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
@@ -144055,6 +144694,32 @@
       "source_title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]",
       "telegram_core_fact": "9월 무역수지가 예상을 뛰어넘는 큰 폭의 흑자를 기록한 데다, 연말로 갈수록 수출이 집중되는 효과까지 더해지면서 올해 연간 경상수지 흑자 전망치인 4500억달러도 달성 가능할 것이란 전망이다. 한은은 지난 8월 올해 연간 경상수지 흑자 전망치를 기존 2500억달러에서 4500억달러로 대폭 상향한 바 있다.",
       "title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]"
+    },
+    "source_fact:139bd9a7b38aee07fb0158e2": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080843238478",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ad9d170c68c09ad93f11e9020d1014dcf97c7269c1887a38b02195ec7dbc5e3e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c17edac15b5e3477f76c671104276572bf7d6c977635e25ad7434146bcdb7cfc",
+      "source_fact_keys": [
+        "source_fact:v1:024dfbc9ac0f9f07b18afee31aa6f3be7da3fab3e594a265bc43c3f0563aaf9f",
+        "source_fact:v1:62458f50508fdbf414603f6bc67fafeeeaef60c976fa8f1c0c8b640733b9a1e3",
+        "source_fact:v1:8ad4a5aeb76c27b7c5de1d9474386516754c23d5839ce6b97d203185f28ba3fb",
+        "source_fact:v1:a72c59788f33e6b8290ced8573aaf758219bd2638f813c30976a10d7d97c696c",
+        "source_fact:v1:a9e4400a068350faaeb3127f900723258e9460f6cc09a8d52e9396d584df1439",
+        "source_fact:v1:c4d354439624f58495b8e2509a86ba04d047e0506de21995663fcb1ec00a74e2",
+        "source_fact:v1:ce00f0d5bfb7a3010ba5b26dfff9a56933b278049337e58d93ca865d928c802f",
+        "source_fact:v1:e93735380fbcbca9ea2ad68017fbc86fbfdcc87d8818cdecea4e35d08dafce84"
+      ],
+      "source_published_kst": "2026-10-08T08:43+09:00",
+      "source_title": "누리호 탄 SK하이닉스 반도체, 우주서 성능 검증 나선다",
+      "telegram_core_fact": "초소형위성 기업 나라스페이스테크놀로지는 플랫폼 본체 개발과 운용을 맡은 우주검증위성 'E3T 2호기'가 누리호 5차 발사 후 지상국과 양방향 교신에 성공했다고 8일 밝혔다. E3T 2호기는 국내에서 개발된 우주용 반도체와 전자소자, 부품 및 기술을 실제 우주환경에서 검증하기 위해 개발됐다.",
+      "title": "누리호 탄 SK하이닉스 반도체, 우주서 성능 검증 나선다"
     },
     "source_fact:139c1b1aab5571f4ac9531c2": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
@@ -146959,6 +147624,30 @@
       "source_published_kst": "2026-10-07T05:30+09:00",
       "title": "“주가 일희일비할 것 없어, 반도체 공급난 지속은 명확한 사실”"
     },
+    "source_fact:1a6e0104d55e96e318cc0328": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03135686645610952",
+      "source": "이데일리",
+      "source_body_digest": "1daf4d1f5f5f8105827076008de8fcd4167b5000ea168047d650470e24e923c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0134bfff37eea46cc6b091d5ddda724513547cd531f5d851da73928f10c5a44d",
+      "source_fact_keys": [
+        "source_fact:v1:0be4c986b8c47cea219cacfd05bd05e22d2c61ec5bd8ac50af9a70ae05ac4660",
+        "source_fact:v1:1ea6800d750321fb326a7d1fb9ac2123e4c4e3a40766025e6a96cf3fbcb9f1d4",
+        "source_fact:v1:32951f11ffb74e4ad50c08262e2178fa324021033d24c6290d085c6ce3bce8c9",
+        "source_fact:v1:3e0ad91bca1cf8f00409794d5402f4a8fa4713e73f838d87242eeae3140aaa32",
+        "source_fact:v1:42288adce8af4c24f223aab21edf25607d58c9bd14606f3f03b7219e728b701a",
+        "source_fact:v1:f98437ab0e5daa9745588210a4e17f4d4cd29b399fb836533baae4069f4e5fc2"
+      ],
+      "source_published_kst": "2026-10-08T10:54+09:00",
+      "source_title": "누적 경상흑자 2800억달러…반도체 질주에 연간 4500억달러 ‘순항’(종합)",
+      "telegram_core_fact": "반도체 수출이 가격과 물량의 동반 상승에 힘입어 질주하면서 지난 8월 경상수지 흑자가 460억달러를 넘어섰다.",
+      "title": "누적 경상흑자 2800억달러…반도체 질주에 연간 4500억달러 ‘순항’(종합)"
+    },
     "source_fact:1a78e2e22ef7d595ae0698f4": {
       "first_seen_kst": "2026-10-08T06:10:43+09:00",
       "lanes": {
@@ -149457,6 +150146,26 @@
       "source_published_kst": "2026-10-06T08:46+09:00",
       "title": "“코스피, 7100만 찍으면 7700까지 간다”…장밋빛 전망 근거는? [오늘 나온 보고서]"
     },
+    "source_fact:1f125253e5fa9a76eff4c9fa": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008086500051",
+      "source": "연합뉴스",
+      "source_body_digest": "db1ac0ec70898030d55b0b57307659e6af8a4d120df12fbfc6364f92e8a6273e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8cc16ccf4b25f016119e00fb7a0ec114bb11f8170c897f8d3a79f4e3335dc21",
+      "source_fact_keys": [
+        "source_fact:v1:5ec532a8f064486c49b78a90ed9af3ce4f80bc36b038672b4f6b2b13c5b18abb",
+        "source_fact:v1:84d4a88c88eca65820c96b538c99d61b9e9308f6c130437b647d09eb41bb3ceb"
+      ],
+      "source_published_kst": "2026-10-08T11:22+09:00",
+      "source_title": "제주 바다숲 소멸은 생태계 변화 신호탄…해조류 생산 97% 감소 | 연합뉴스",
+      "telegram_core_fact": "한국해양과학기술원이 8일 내놓은 현안 보고서를 보면 2010년 5천155t에 달하던 제주 연근해 해조류 생산량은 지난해 154t으로 97% 감소했다. 제주 연안의 바다숲 소멸은 생태계 변화의 신호탄으로, 아열대화를 지속해서 관측해야 한다는 의견이 나왔다.",
+      "title": "제주 바다숲 소멸은 생태계 변화 신호탄…해조류 생산 97% 감소 | 연합뉴스"
+    },
     "source_fact:1f2d04e4c3a2c878273d4a71": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
       "lanes": {
@@ -151531,6 +152240,33 @@
       "source_title": "보스턴다이나믹스 신임 CEO에 로히트 프라사드..아틀라스 '상용화' 주력",
       "telegram_core_fact": "프라사드 CEO는 오는 2028년으로 예정된 휴머노이드(인간형) 로봇 아틀라스의 양산과 자동차 공장 실전 배치, 외부 판매 등 로봇의 '상용화 작업'에 주력할 전망이다.",
       "title": "보스턴다이나믹스 신임 CEO에 로히트 프라사드..아틀라스 '상용화' 주력"
+    },
+    "source_fact:23026360e230f5266f16e7ae": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261008101343",
+      "source": "지디넷코리아",
+      "source_body_digest": "7b8dff8ac375814ee9afa549b0fdc22c419b84fce3e3ca6a89feba49f06be60e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0735c4194b2c07bac452a434429e6a230702245a543c234c2e4bba0783337a77",
+      "source_fact_keys": [
+        "source_fact:v1:04e22968cd7c9b6579011d8a2fd853a0114a6b6869a9a5218eaa5eaccdcdd23b",
+        "source_fact:v1:1100566211116e6c08705f5eaef8301e666118abeacc10dfef37a08b431cf8c6",
+        "source_fact:v1:174c4a4ec9c8f718e3f1b04f1f394f104d15ae6d95b6ae4b7303f25df0ba40a4",
+        "source_fact:v1:6845ddb4688454e42d167525590446ddad54765d0b0bc6b9459a0eb91d579fe8",
+        "source_fact:v1:6ee8c4bff6711c542f3c1f506856d1d291d0f51e5baa9762bee31aa07926f1f2",
+        "source_fact:v1:8a896a2582247c3903268321a7c4461fb5ed13170f3c2d6f6e22b67dfeedb66a",
+        "source_fact:v1:a3a281fb0b788265583a0fdc9fe7f14e1d6fc5a4c1b159e8ea645f53de108e3a",
+        "source_fact:v1:dc8f6d8e925d27b785eb2816bb565d18e114403aa07735cf7f97a0f59595d767",
+        "source_fact:v1:ed9106ee4b45dd977f2d23c1a47cbafd1b65b4ffd0adf685eca45cbea997e5c7"
+      ],
+      "source_published_kst": "2026-10-08T11:08+09:00",
+      "source_title": "램리서치, \"한국 반도체 생태계와 밀착…제조 역량·공급망 강화\"",
+      "telegram_core_fact": "램리서치는 '인공지능(AI) 시대 회복탄력적 파트너십 구축'을 주제로 열린 이번 행사에서 반도체 공급망 안정성과 대응력을 높이기 위한 생태계 협력 방안을 논의했다.",
+      "title": "램리서치, \"한국 반도체 생태계와 밀착…제조 역량·공급망 강화\""
     },
     "source_fact:2323ca6312d46eb09d8e8fb5": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
@@ -155103,6 +155839,32 @@
       "source_title": "이 대통령, 이집트 대통령과 정상회담…공급망 협력 등 논의",
       "telegram_core_fact": "이재명 대통령은 8일 국빈 방한한 압델 파타 알시시 이집트 대통령과 정상회담을 하고 공급망 등 양국 협력 방안을 논의한다. 회담에서는 교역·투자, 인프라, 공급망 등 경제협력과 인적 교류 확대, 지역 정세 및 국제 현안 등에 대한 논의가 이뤄질 예정이다.",
       "title": "이 대통령, 이집트 대통령과 정상회담…공급망 협력 등 논의"
+    },
+    "source_fact:29e9433e36b55ee10ff64605": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080843238478",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ad9d170c68c09ad93f11e9020d1014dcf97c7269c1887a38b02195ec7dbc5e3e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c17edac15b5e3477f76c671104276572bf7d6c977635e25ad7434146bcdb7cfc",
+      "source_fact_keys": [
+        "source_fact:v1:024dfbc9ac0f9f07b18afee31aa6f3be7da3fab3e594a265bc43c3f0563aaf9f",
+        "source_fact:v1:62458f50508fdbf414603f6bc67fafeeeaef60c976fa8f1c0c8b640733b9a1e3",
+        "source_fact:v1:8ad4a5aeb76c27b7c5de1d9474386516754c23d5839ce6b97d203185f28ba3fb",
+        "source_fact:v1:a72c59788f33e6b8290ced8573aaf758219bd2638f813c30976a10d7d97c696c",
+        "source_fact:v1:a9e4400a068350faaeb3127f900723258e9460f6cc09a8d52e9396d584df1439",
+        "source_fact:v1:c4d354439624f58495b8e2509a86ba04d047e0506de21995663fcb1ec00a74e2",
+        "source_fact:v1:ce00f0d5bfb7a3010ba5b26dfff9a56933b278049337e58d93ca865d928c802f",
+        "source_fact:v1:e93735380fbcbca9ea2ad68017fbc86fbfdcc87d8818cdecea4e35d08dafce84"
+      ],
+      "source_published_kst": "2026-10-08T08:43+09:00",
+      "source_title": "누리호 탄 SK하이닉스 반도체, 우주서 성능 검증 나선다",
+      "telegram_core_fact": "초소형위성 기업 나라스페이스테크놀로지는 플랫폼 본체 개발과 운용을 맡은 우주검증위성 'E3T 2호기'가 누리호 5차 발사 후 지상국과 양방향 교신에 성공했다고 8일 밝혔다. E3T 2호기는 국내에서 개발된 우주용 반도체와 전자소자, 부품 및 기술을 실제 우주환경에서 검증하기 위해 개발됐다.",
+      "title": "누리호 탄 SK하이닉스 반도체, 우주서 성능 검증 나선다"
     },
     "source_fact:29e9fb0ac085302fc5b8ddc1": {
       "first_seen_kst": "2026-10-07T05:13:11+09:00",
@@ -161382,6 +162144,33 @@
       ],
       "source_published_kst": "2026-10-06T11:31+09:00",
       "title": "[2026 국감]산업부, 대미투자 국익 최우선 추진…호남 반도체 등 1600조 속도전"
+    },
+    "source_fact:361d983f7631d54e35466ce0": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261008101343",
+      "source": "지디넷코리아",
+      "source_body_digest": "7b8dff8ac375814ee9afa549b0fdc22c419b84fce3e3ca6a89feba49f06be60e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0735c4194b2c07bac452a434429e6a230702245a543c234c2e4bba0783337a77",
+      "source_fact_keys": [
+        "source_fact:v1:04e22968cd7c9b6579011d8a2fd853a0114a6b6869a9a5218eaa5eaccdcdd23b",
+        "source_fact:v1:1100566211116e6c08705f5eaef8301e666118abeacc10dfef37a08b431cf8c6",
+        "source_fact:v1:174c4a4ec9c8f718e3f1b04f1f394f104d15ae6d95b6ae4b7303f25df0ba40a4",
+        "source_fact:v1:6845ddb4688454e42d167525590446ddad54765d0b0bc6b9459a0eb91d579fe8",
+        "source_fact:v1:6ee8c4bff6711c542f3c1f506856d1d291d0f51e5baa9762bee31aa07926f1f2",
+        "source_fact:v1:8a896a2582247c3903268321a7c4461fb5ed13170f3c2d6f6e22b67dfeedb66a",
+        "source_fact:v1:a3a281fb0b788265583a0fdc9fe7f14e1d6fc5a4c1b159e8ea645f53de108e3a",
+        "source_fact:v1:dc8f6d8e925d27b785eb2816bb565d18e114403aa07735cf7f97a0f59595d767",
+        "source_fact:v1:ed9106ee4b45dd977f2d23c1a47cbafd1b65b4ffd0adf685eca45cbea997e5c7"
+      ],
+      "source_published_kst": "2026-10-08T11:08+09:00",
+      "source_title": "램리서치, \"한국 반도체 생태계와 밀착…제조 역량·공급망 강화\"",
+      "telegram_core_fact": "램리서치는 '인공지능(AI) 시대 회복탄력적 파트너십 구축'을 주제로 열린 이번 행사에서 반도체 공급망 안정성과 대응력을 높이기 위한 생태계 협력 방안을 논의했다.",
+      "title": "램리서치, \"한국 반도체 생태계와 밀착…제조 역량·공급망 강화\""
     },
     "source_fact:36268ece1298fec8cc598361": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
@@ -171617,6 +172406,33 @@
       "telegram_core_fact": "인공지능(AI) 데이터센터 시장이 학습용 그래픽처리장치(GPU) 중심에서 AI 추론과 데이터 처리 등 실제 서비스 운영을 위한 서버 인프라 경쟁으로 확대되고 있다.",
       "title": "HPE, AMD 최신 CPU 서버 4종 공개…AI 추론 시장 정조준"
     },
+    "source_fact:4a55194018605ce98fb623ad": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261008101343",
+      "source": "지디넷코리아",
+      "source_body_digest": "7b8dff8ac375814ee9afa549b0fdc22c419b84fce3e3ca6a89feba49f06be60e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0735c4194b2c07bac452a434429e6a230702245a543c234c2e4bba0783337a77",
+      "source_fact_keys": [
+        "source_fact:v1:04e22968cd7c9b6579011d8a2fd853a0114a6b6869a9a5218eaa5eaccdcdd23b",
+        "source_fact:v1:1100566211116e6c08705f5eaef8301e666118abeacc10dfef37a08b431cf8c6",
+        "source_fact:v1:174c4a4ec9c8f718e3f1b04f1f394f104d15ae6d95b6ae4b7303f25df0ba40a4",
+        "source_fact:v1:6845ddb4688454e42d167525590446ddad54765d0b0bc6b9459a0eb91d579fe8",
+        "source_fact:v1:6ee8c4bff6711c542f3c1f506856d1d291d0f51e5baa9762bee31aa07926f1f2",
+        "source_fact:v1:8a896a2582247c3903268321a7c4461fb5ed13170f3c2d6f6e22b67dfeedb66a",
+        "source_fact:v1:a3a281fb0b788265583a0fdc9fe7f14e1d6fc5a4c1b159e8ea645f53de108e3a",
+        "source_fact:v1:dc8f6d8e925d27b785eb2816bb565d18e114403aa07735cf7f97a0f59595d767",
+        "source_fact:v1:ed9106ee4b45dd977f2d23c1a47cbafd1b65b4ffd0adf685eca45cbea997e5c7"
+      ],
+      "source_published_kst": "2026-10-08T11:08+09:00",
+      "source_title": "램리서치, \"한국 반도체 생태계와 밀착…제조 역량·공급망 강화\"",
+      "telegram_core_fact": "램리서치는 '인공지능(AI) 시대 회복탄력적 파트너십 구축'을 주제로 열린 이번 행사에서 반도체 공급망 안정성과 대응력을 높이기 위한 생태계 협력 방안을 논의했다.",
+      "title": "램리서치, \"한국 반도체 생태계와 밀착…제조 역량·공급망 강화\""
+    },
     "source_fact:4a621c6e0b81c9e7e5614b4a": {
       "first_seen_kst": "2026-10-08T00:39:44+09:00",
       "lanes": {
@@ -172432,6 +173248,33 @@
       "source_published_kst": "2026-10-07T10:47+09:00",
       "title": "오세훈 “인허가 증가는 정부 아닌 서울시 성과”…2031년 31만호 착공"
     },
+    "source_fact:4c6b7a7979157acff0f83060": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261008101343",
+      "source": "지디넷코리아",
+      "source_body_digest": "7b8dff8ac375814ee9afa549b0fdc22c419b84fce3e3ca6a89feba49f06be60e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0735c4194b2c07bac452a434429e6a230702245a543c234c2e4bba0783337a77",
+      "source_fact_keys": [
+        "source_fact:v1:04e22968cd7c9b6579011d8a2fd853a0114a6b6869a9a5218eaa5eaccdcdd23b",
+        "source_fact:v1:1100566211116e6c08705f5eaef8301e666118abeacc10dfef37a08b431cf8c6",
+        "source_fact:v1:174c4a4ec9c8f718e3f1b04f1f394f104d15ae6d95b6ae4b7303f25df0ba40a4",
+        "source_fact:v1:6845ddb4688454e42d167525590446ddad54765d0b0bc6b9459a0eb91d579fe8",
+        "source_fact:v1:6ee8c4bff6711c542f3c1f506856d1d291d0f51e5baa9762bee31aa07926f1f2",
+        "source_fact:v1:8a896a2582247c3903268321a7c4461fb5ed13170f3c2d6f6e22b67dfeedb66a",
+        "source_fact:v1:a3a281fb0b788265583a0fdc9fe7f14e1d6fc5a4c1b159e8ea645f53de108e3a",
+        "source_fact:v1:dc8f6d8e925d27b785eb2816bb565d18e114403aa07735cf7f97a0f59595d767",
+        "source_fact:v1:ed9106ee4b45dd977f2d23c1a47cbafd1b65b4ffd0adf685eca45cbea997e5c7"
+      ],
+      "source_published_kst": "2026-10-08T11:08+09:00",
+      "source_title": "램리서치, \"한국 반도체 생태계와 밀착…제조 역량·공급망 강화\"",
+      "telegram_core_fact": "램리서치는 '인공지능(AI) 시대 회복탄력적 파트너십 구축'을 주제로 열린 이번 행사에서 반도체 공급망 안정성과 대응력을 높이기 위한 생태계 협력 방안을 논의했다.",
+      "title": "램리서치, \"한국 반도체 생태계와 밀착…제조 역량·공급망 강화\""
+    },
     "source_fact:4c7fce218a40abd9ea2efb1a": {
       "first_seen_kst": "2026-10-07T17:23:27+09:00",
       "lanes": {
@@ -173065,6 +173908,32 @@
       "source_title": "엔화, 美 장기금리 상승 주춤에 1달러=158엔 소폭 상승 출발",
       "telegram_core_fact": "엔화 환율은 8일 그간 상승세를 보인 미국 장기금리가 주춤하면서 엔 매수, 달러 매도 선행으로 1달러=158엔으로 소폭 올라 시작했다.",
       "title": "엔화, 美 장기금리 상승 주춤에 1달러=158엔 소폭 상승 출발"
+    },
+    "source_fact:4dbf87b34be17d50e043dc1f": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080843238478",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ad9d170c68c09ad93f11e9020d1014dcf97c7269c1887a38b02195ec7dbc5e3e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c17edac15b5e3477f76c671104276572bf7d6c977635e25ad7434146bcdb7cfc",
+      "source_fact_keys": [
+        "source_fact:v1:024dfbc9ac0f9f07b18afee31aa6f3be7da3fab3e594a265bc43c3f0563aaf9f",
+        "source_fact:v1:62458f50508fdbf414603f6bc67fafeeeaef60c976fa8f1c0c8b640733b9a1e3",
+        "source_fact:v1:8ad4a5aeb76c27b7c5de1d9474386516754c23d5839ce6b97d203185f28ba3fb",
+        "source_fact:v1:a72c59788f33e6b8290ced8573aaf758219bd2638f813c30976a10d7d97c696c",
+        "source_fact:v1:a9e4400a068350faaeb3127f900723258e9460f6cc09a8d52e9396d584df1439",
+        "source_fact:v1:c4d354439624f58495b8e2509a86ba04d047e0506de21995663fcb1ec00a74e2",
+        "source_fact:v1:ce00f0d5bfb7a3010ba5b26dfff9a56933b278049337e58d93ca865d928c802f",
+        "source_fact:v1:e93735380fbcbca9ea2ad68017fbc86fbfdcc87d8818cdecea4e35d08dafce84"
+      ],
+      "source_published_kst": "2026-10-08T08:43+09:00",
+      "source_title": "누리호 탄 SK하이닉스 반도체, 우주서 성능 검증 나선다",
+      "telegram_core_fact": "초소형위성 기업 나라스페이스테크놀로지는 플랫폼 본체 개발과 운용을 맡은 우주검증위성 'E3T 2호기'가 누리호 5차 발사 후 지상국과 양방향 교신에 성공했다고 8일 밝혔다. E3T 2호기는 국내에서 개발된 우주용 반도체와 전자소자, 부품 및 기술을 실제 우주환경에서 검증하기 위해 개발됐다.",
+      "title": "누리호 탄 SK하이닉스 반도체, 우주서 성능 검증 나선다"
     },
     "source_fact:4dcb7e90d547505bb2351737": {
       "first_seen_kst": "2026-10-07T00:09:35+09:00",
@@ -181092,6 +181961,25 @@
       "source_published_kst": "2026-10-06T12:52+09:00",
       "title": "술·약물 복용 후 수상레저기구 운전 '철퇴'…주취 조종 첫 적발, 최대 5년 징역"
     },
+    "source_fact:5da1ef98d1f29ee9a43d539a": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896769",
+      "source": "헤럴드경제",
+      "source_body_digest": "bd909cef5da816c8a5e3d3cb5d47635547efa41e65b3df7a491b34444ecb8147",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5e3bdbeece63e32eaf7a8a2d6bfcf462ae6b42be5168cba600c3c1f9e7830ba",
+      "source_fact_keys": [
+        "source_fact:v1:2046c4157838ff6be160695911512b51d98a16ceb724fd640e304c2ffd337b7e"
+      ],
+      "source_published_kst": "2026-10-08T11:04+09:00",
+      "source_title": "OK금융, 예별손보 인수로 보험업 본격 진입…추가 자금 1100억 이상 투입",
+      "telegram_core_fact": "OK금융그룹이 예별손해보험 인수를 위한 주식매매계약(SPA)을 체결하며 손해보험업 진출에 나선다.",
+      "title": "OK금융, 예별손보 인수로 보험업 본격 진입…추가 자금 1100억 이상 투입"
+    },
     "source_fact:5da2e24825742be1916e23e7": {
       "first_seen_kst": "2026-10-07T22:13:12+09:00",
       "lanes": {
@@ -182993,6 +183881,32 @@
       "source_title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박",
       "telegram_core_fact": "하지만 전쟁 이후 2년 만기 주택담보대출 평균 금리가 1%포인트 가까이 상승하면서 최근 6%에 근접했다.",
       "title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박"
+    },
+    "source_fact:621d9b0d37b56d99bcf13b65": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080843238478",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ad9d170c68c09ad93f11e9020d1014dcf97c7269c1887a38b02195ec7dbc5e3e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c17edac15b5e3477f76c671104276572bf7d6c977635e25ad7434146bcdb7cfc",
+      "source_fact_keys": [
+        "source_fact:v1:024dfbc9ac0f9f07b18afee31aa6f3be7da3fab3e594a265bc43c3f0563aaf9f",
+        "source_fact:v1:62458f50508fdbf414603f6bc67fafeeeaef60c976fa8f1c0c8b640733b9a1e3",
+        "source_fact:v1:8ad4a5aeb76c27b7c5de1d9474386516754c23d5839ce6b97d203185f28ba3fb",
+        "source_fact:v1:a72c59788f33e6b8290ced8573aaf758219bd2638f813c30976a10d7d97c696c",
+        "source_fact:v1:a9e4400a068350faaeb3127f900723258e9460f6cc09a8d52e9396d584df1439",
+        "source_fact:v1:c4d354439624f58495b8e2509a86ba04d047e0506de21995663fcb1ec00a74e2",
+        "source_fact:v1:ce00f0d5bfb7a3010ba5b26dfff9a56933b278049337e58d93ca865d928c802f",
+        "source_fact:v1:e93735380fbcbca9ea2ad68017fbc86fbfdcc87d8818cdecea4e35d08dafce84"
+      ],
+      "source_published_kst": "2026-10-08T08:43+09:00",
+      "source_title": "누리호 탄 SK하이닉스 반도체, 우주서 성능 검증 나선다",
+      "telegram_core_fact": "초소형위성 기업 나라스페이스테크놀로지는 플랫폼 본체 개발과 운용을 맡은 우주검증위성 'E3T 2호기'가 누리호 5차 발사 후 지상국과 양방향 교신에 성공했다고 8일 밝혔다. E3T 2호기는 국내에서 개발된 우주용 반도체와 전자소자, 부품 및 기술을 실제 우주환경에서 검증하기 위해 개발됐다.",
+      "title": "누리호 탄 SK하이닉스 반도체, 우주서 성능 검증 나선다"
     },
     "source_fact:622164fb69cc304b2fb5cb8e": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
@@ -188509,6 +189423,30 @@
       ],
       "source_published_kst": "2026-10-07T14:01+09:00",
       "title": "뉴인텍, 커패시터 수주 증가 따른 생산 대응력 강화"
+    },
+    "source_fact:6ce3b34908ac58e9ae571d66": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03135686645610952",
+      "source": "이데일리",
+      "source_body_digest": "1daf4d1f5f5f8105827076008de8fcd4167b5000ea168047d650470e24e923c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0134bfff37eea46cc6b091d5ddda724513547cd531f5d851da73928f10c5a44d",
+      "source_fact_keys": [
+        "source_fact:v1:0be4c986b8c47cea219cacfd05bd05e22d2c61ec5bd8ac50af9a70ae05ac4660",
+        "source_fact:v1:1ea6800d750321fb326a7d1fb9ac2123e4c4e3a40766025e6a96cf3fbcb9f1d4",
+        "source_fact:v1:32951f11ffb74e4ad50c08262e2178fa324021033d24c6290d085c6ce3bce8c9",
+        "source_fact:v1:3e0ad91bca1cf8f00409794d5402f4a8fa4713e73f838d87242eeae3140aaa32",
+        "source_fact:v1:42288adce8af4c24f223aab21edf25607d58c9bd14606f3f03b7219e728b701a",
+        "source_fact:v1:f98437ab0e5daa9745588210a4e17f4d4cd29b399fb836533baae4069f4e5fc2"
+      ],
+      "source_published_kst": "2026-10-08T10:54+09:00",
+      "source_title": "누적 경상흑자 2800억달러…반도체 질주에 연간 4500억달러 ‘순항’(종합)",
+      "telegram_core_fact": "반도체 수출이 가격과 물량의 동반 상승에 힘입어 질주하면서 지난 8월 경상수지 흑자가 460억달러를 넘어섰다.",
+      "title": "누적 경상흑자 2800억달러…반도체 질주에 연간 4500억달러 ‘순항’(종합)"
     },
     "source_fact:6d0c38058d5b5d61e65387ce": {
       "first_seen_kst": "2026-10-06T23:05:07+09:00",
@@ -195209,6 +196147,33 @@
       "source_published_kst": "2026-10-06T14:16+09:00",
       "title": "프랑스 중앙은행 총재 “금리에 목 졸릴수도”⋯재정개혁 촉구"
     },
+    "source_fact:7b291d0715b4805c09adb026": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261008101343",
+      "source": "지디넷코리아",
+      "source_body_digest": "7b8dff8ac375814ee9afa549b0fdc22c419b84fce3e3ca6a89feba49f06be60e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0735c4194b2c07bac452a434429e6a230702245a543c234c2e4bba0783337a77",
+      "source_fact_keys": [
+        "source_fact:v1:04e22968cd7c9b6579011d8a2fd853a0114a6b6869a9a5218eaa5eaccdcdd23b",
+        "source_fact:v1:1100566211116e6c08705f5eaef8301e666118abeacc10dfef37a08b431cf8c6",
+        "source_fact:v1:174c4a4ec9c8f718e3f1b04f1f394f104d15ae6d95b6ae4b7303f25df0ba40a4",
+        "source_fact:v1:6845ddb4688454e42d167525590446ddad54765d0b0bc6b9459a0eb91d579fe8",
+        "source_fact:v1:6ee8c4bff6711c542f3c1f506856d1d291d0f51e5baa9762bee31aa07926f1f2",
+        "source_fact:v1:8a896a2582247c3903268321a7c4461fb5ed13170f3c2d6f6e22b67dfeedb66a",
+        "source_fact:v1:a3a281fb0b788265583a0fdc9fe7f14e1d6fc5a4c1b159e8ea645f53de108e3a",
+        "source_fact:v1:dc8f6d8e925d27b785eb2816bb565d18e114403aa07735cf7f97a0f59595d767",
+        "source_fact:v1:ed9106ee4b45dd977f2d23c1a47cbafd1b65b4ffd0adf685eca45cbea997e5c7"
+      ],
+      "source_published_kst": "2026-10-08T11:08+09:00",
+      "source_title": "램리서치, \"한국 반도체 생태계와 밀착…제조 역량·공급망 강화\"",
+      "telegram_core_fact": "램리서치는 '인공지능(AI) 시대 회복탄력적 파트너십 구축'을 주제로 열린 이번 행사에서 반도체 공급망 안정성과 대응력을 높이기 위한 생태계 협력 방안을 논의했다.",
+      "title": "램리서치, \"한국 반도체 생태계와 밀착…제조 역량·공급망 강화\""
+    },
     "source_fact:7b2cec4dccc8ac81cc3c3510": {
       "first_seen_kst": "2026-10-07T01:18:00+09:00",
       "lanes": {
@@ -199536,6 +200501,32 @@
       "source_published_kst": "2026-10-06T06:10+09:00",
       "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
     },
+    "source_fact:8494b69aa2f2274e25ffaeeb": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080843238478",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ad9d170c68c09ad93f11e9020d1014dcf97c7269c1887a38b02195ec7dbc5e3e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c17edac15b5e3477f76c671104276572bf7d6c977635e25ad7434146bcdb7cfc",
+      "source_fact_keys": [
+        "source_fact:v1:024dfbc9ac0f9f07b18afee31aa6f3be7da3fab3e594a265bc43c3f0563aaf9f",
+        "source_fact:v1:62458f50508fdbf414603f6bc67fafeeeaef60c976fa8f1c0c8b640733b9a1e3",
+        "source_fact:v1:8ad4a5aeb76c27b7c5de1d9474386516754c23d5839ce6b97d203185f28ba3fb",
+        "source_fact:v1:a72c59788f33e6b8290ced8573aaf758219bd2638f813c30976a10d7d97c696c",
+        "source_fact:v1:a9e4400a068350faaeb3127f900723258e9460f6cc09a8d52e9396d584df1439",
+        "source_fact:v1:c4d354439624f58495b8e2509a86ba04d047e0506de21995663fcb1ec00a74e2",
+        "source_fact:v1:ce00f0d5bfb7a3010ba5b26dfff9a56933b278049337e58d93ca865d928c802f",
+        "source_fact:v1:e93735380fbcbca9ea2ad68017fbc86fbfdcc87d8818cdecea4e35d08dafce84"
+      ],
+      "source_published_kst": "2026-10-08T08:43+09:00",
+      "source_title": "누리호 탄 SK하이닉스 반도체, 우주서 성능 검증 나선다",
+      "telegram_core_fact": "초소형위성 기업 나라스페이스테크놀로지는 플랫폼 본체 개발과 운용을 맡은 우주검증위성 'E3T 2호기'가 누리호 5차 발사 후 지상국과 양방향 교신에 성공했다고 8일 밝혔다. E3T 2호기는 국내에서 개발된 우주용 반도체와 전자소자, 부품 및 기술을 실제 우주환경에서 검증하기 위해 개발됐다.",
+      "title": "누리호 탄 SK하이닉스 반도체, 우주서 성능 검증 나선다"
+    },
     "source_fact:8498a5549099e39b9e82622c": {
       "first_seen_kst": "2026-10-07T15:44:50+09:00",
       "lanes": {
@@ -200630,6 +201621,30 @@
       ],
       "source_published_kst": "2026-10-06T20:10+09:00",
       "title": "콘스텔레이션, 구글과 10억 달러 이상 원전 전력 계약 임박 소식에 강세"
+    },
+    "source_fact:86bc69a04d8f5a63bc15bd97": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03135686645610952",
+      "source": "이데일리",
+      "source_body_digest": "1daf4d1f5f5f8105827076008de8fcd4167b5000ea168047d650470e24e923c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0134bfff37eea46cc6b091d5ddda724513547cd531f5d851da73928f10c5a44d",
+      "source_fact_keys": [
+        "source_fact:v1:0be4c986b8c47cea219cacfd05bd05e22d2c61ec5bd8ac50af9a70ae05ac4660",
+        "source_fact:v1:1ea6800d750321fb326a7d1fb9ac2123e4c4e3a40766025e6a96cf3fbcb9f1d4",
+        "source_fact:v1:32951f11ffb74e4ad50c08262e2178fa324021033d24c6290d085c6ce3bce8c9",
+        "source_fact:v1:3e0ad91bca1cf8f00409794d5402f4a8fa4713e73f838d87242eeae3140aaa32",
+        "source_fact:v1:42288adce8af4c24f223aab21edf25607d58c9bd14606f3f03b7219e728b701a",
+        "source_fact:v1:f98437ab0e5daa9745588210a4e17f4d4cd29b399fb836533baae4069f4e5fc2"
+      ],
+      "source_published_kst": "2026-10-08T10:54+09:00",
+      "source_title": "누적 경상흑자 2800억달러…반도체 질주에 연간 4500억달러 ‘순항’(종합)",
+      "telegram_core_fact": "반도체 수출이 가격과 물량의 동반 상승에 힘입어 질주하면서 지난 8월 경상수지 흑자가 460억달러를 넘어섰다.",
+      "title": "누적 경상흑자 2800억달러…반도체 질주에 연간 4500억달러 ‘순항’(종합)"
     },
     "source_fact:86bff413ff0598ae62e52589": {
       "first_seen_kst": "2026-10-07T23:50:27+09:00",
@@ -202374,6 +203389,32 @@
       "source_published_kst": "2026-10-06T09:47+09:00",
       "title": "중간선거 앞두고 전전긍긍…트럼프 \"농업용 면세유 車사용 한시 유예\""
     },
+    "source_fact:8a8460f8bad9a59982df9230": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080843238478",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ad9d170c68c09ad93f11e9020d1014dcf97c7269c1887a38b02195ec7dbc5e3e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c17edac15b5e3477f76c671104276572bf7d6c977635e25ad7434146bcdb7cfc",
+      "source_fact_keys": [
+        "source_fact:v1:024dfbc9ac0f9f07b18afee31aa6f3be7da3fab3e594a265bc43c3f0563aaf9f",
+        "source_fact:v1:62458f50508fdbf414603f6bc67fafeeeaef60c976fa8f1c0c8b640733b9a1e3",
+        "source_fact:v1:8ad4a5aeb76c27b7c5de1d9474386516754c23d5839ce6b97d203185f28ba3fb",
+        "source_fact:v1:a72c59788f33e6b8290ced8573aaf758219bd2638f813c30976a10d7d97c696c",
+        "source_fact:v1:a9e4400a068350faaeb3127f900723258e9460f6cc09a8d52e9396d584df1439",
+        "source_fact:v1:c4d354439624f58495b8e2509a86ba04d047e0506de21995663fcb1ec00a74e2",
+        "source_fact:v1:ce00f0d5bfb7a3010ba5b26dfff9a56933b278049337e58d93ca865d928c802f",
+        "source_fact:v1:e93735380fbcbca9ea2ad68017fbc86fbfdcc87d8818cdecea4e35d08dafce84"
+      ],
+      "source_published_kst": "2026-10-08T08:43+09:00",
+      "source_title": "누리호 탄 SK하이닉스 반도체, 우주서 성능 검증 나선다",
+      "telegram_core_fact": "초소형위성 기업 나라스페이스테크놀로지는 플랫폼 본체 개발과 운용을 맡은 우주검증위성 'E3T 2호기'가 누리호 5차 발사 후 지상국과 양방향 교신에 성공했다고 8일 밝혔다. E3T 2호기는 국내에서 개발된 우주용 반도체와 전자소자, 부품 및 기술을 실제 우주환경에서 검증하기 위해 개발됐다.",
+      "title": "누리호 탄 SK하이닉스 반도체, 우주서 성능 검증 나선다"
+    },
     "source_fact:8a90a76175bc8b69ca5af09c": {
       "first_seen_kst": "2026-10-07T01:18:00+09:00",
       "lanes": {
@@ -203008,6 +204049,33 @@
       ],
       "source_published_kst": "2026-10-07T07:55+09:00",
       "title": "삼성전기, 3분기 ‘깜짝 실적’ 전망…목표가 160만→260만원"
+    },
+    "source_fact:8bf4ebe32e9eb949434f3dac": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261008101343",
+      "source": "지디넷코리아",
+      "source_body_digest": "7b8dff8ac375814ee9afa549b0fdc22c419b84fce3e3ca6a89feba49f06be60e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0735c4194b2c07bac452a434429e6a230702245a543c234c2e4bba0783337a77",
+      "source_fact_keys": [
+        "source_fact:v1:04e22968cd7c9b6579011d8a2fd853a0114a6b6869a9a5218eaa5eaccdcdd23b",
+        "source_fact:v1:1100566211116e6c08705f5eaef8301e666118abeacc10dfef37a08b431cf8c6",
+        "source_fact:v1:174c4a4ec9c8f718e3f1b04f1f394f104d15ae6d95b6ae4b7303f25df0ba40a4",
+        "source_fact:v1:6845ddb4688454e42d167525590446ddad54765d0b0bc6b9459a0eb91d579fe8",
+        "source_fact:v1:6ee8c4bff6711c542f3c1f506856d1d291d0f51e5baa9762bee31aa07926f1f2",
+        "source_fact:v1:8a896a2582247c3903268321a7c4461fb5ed13170f3c2d6f6e22b67dfeedb66a",
+        "source_fact:v1:a3a281fb0b788265583a0fdc9fe7f14e1d6fc5a4c1b159e8ea645f53de108e3a",
+        "source_fact:v1:dc8f6d8e925d27b785eb2816bb565d18e114403aa07735cf7f97a0f59595d767",
+        "source_fact:v1:ed9106ee4b45dd977f2d23c1a47cbafd1b65b4ffd0adf685eca45cbea997e5c7"
+      ],
+      "source_published_kst": "2026-10-08T11:08+09:00",
+      "source_title": "램리서치, \"한국 반도체 생태계와 밀착…제조 역량·공급망 강화\"",
+      "telegram_core_fact": "램리서치는 '인공지능(AI) 시대 회복탄력적 파트너십 구축'을 주제로 열린 이번 행사에서 반도체 공급망 안정성과 대응력을 높이기 위한 생태계 협력 방안을 논의했다.",
+      "title": "램리서치, \"한국 반도체 생태계와 밀착…제조 역량·공급망 강화\""
     },
     "source_fact:8c005684ba4cc2860966030a": {
       "first_seen_kst": "2026-10-06T18:16:47+09:00",
@@ -204769,6 +205837,32 @@
       ],
       "source_published_kst": "2026-10-07T07:38+09:00",
       "title": "NAVER, 3분기 실적은 부진...AI팩토리·두나무 합병 주목-유진"
+    },
+    "source_fact:8facff1d3800b80a6d581719": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080843238478",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ad9d170c68c09ad93f11e9020d1014dcf97c7269c1887a38b02195ec7dbc5e3e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c17edac15b5e3477f76c671104276572bf7d6c977635e25ad7434146bcdb7cfc",
+      "source_fact_keys": [
+        "source_fact:v1:024dfbc9ac0f9f07b18afee31aa6f3be7da3fab3e594a265bc43c3f0563aaf9f",
+        "source_fact:v1:62458f50508fdbf414603f6bc67fafeeeaef60c976fa8f1c0c8b640733b9a1e3",
+        "source_fact:v1:8ad4a5aeb76c27b7c5de1d9474386516754c23d5839ce6b97d203185f28ba3fb",
+        "source_fact:v1:a72c59788f33e6b8290ced8573aaf758219bd2638f813c30976a10d7d97c696c",
+        "source_fact:v1:a9e4400a068350faaeb3127f900723258e9460f6cc09a8d52e9396d584df1439",
+        "source_fact:v1:c4d354439624f58495b8e2509a86ba04d047e0506de21995663fcb1ec00a74e2",
+        "source_fact:v1:ce00f0d5bfb7a3010ba5b26dfff9a56933b278049337e58d93ca865d928c802f",
+        "source_fact:v1:e93735380fbcbca9ea2ad68017fbc86fbfdcc87d8818cdecea4e35d08dafce84"
+      ],
+      "source_published_kst": "2026-10-08T08:43+09:00",
+      "source_title": "누리호 탄 SK하이닉스 반도체, 우주서 성능 검증 나선다",
+      "telegram_core_fact": "초소형위성 기업 나라스페이스테크놀로지는 플랫폼 본체 개발과 운용을 맡은 우주검증위성 'E3T 2호기'가 누리호 5차 발사 후 지상국과 양방향 교신에 성공했다고 8일 밝혔다. E3T 2호기는 국내에서 개발된 우주용 반도체와 전자소자, 부품 및 기술을 실제 우주환경에서 검증하기 위해 개발됐다.",
+      "title": "누리호 탄 SK하이닉스 반도체, 우주서 성능 검증 나선다"
     },
     "source_fact:8fb68ce7c8e7bdb410b3a43b": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
@@ -209627,6 +210721,33 @@
       "source_published_kst": "2026-10-05T21:05+09:00",
       "title": "SS 이노베이션스 인터내셔, 2분기 매출 1390만 달러 39%↑·영업적자 전환"
     },
+    "source_fact:999cda87461f9643b0362e45": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261008101343",
+      "source": "지디넷코리아",
+      "source_body_digest": "7b8dff8ac375814ee9afa549b0fdc22c419b84fce3e3ca6a89feba49f06be60e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0735c4194b2c07bac452a434429e6a230702245a543c234c2e4bba0783337a77",
+      "source_fact_keys": [
+        "source_fact:v1:04e22968cd7c9b6579011d8a2fd853a0114a6b6869a9a5218eaa5eaccdcdd23b",
+        "source_fact:v1:1100566211116e6c08705f5eaef8301e666118abeacc10dfef37a08b431cf8c6",
+        "source_fact:v1:174c4a4ec9c8f718e3f1b04f1f394f104d15ae6d95b6ae4b7303f25df0ba40a4",
+        "source_fact:v1:6845ddb4688454e42d167525590446ddad54765d0b0bc6b9459a0eb91d579fe8",
+        "source_fact:v1:6ee8c4bff6711c542f3c1f506856d1d291d0f51e5baa9762bee31aa07926f1f2",
+        "source_fact:v1:8a896a2582247c3903268321a7c4461fb5ed13170f3c2d6f6e22b67dfeedb66a",
+        "source_fact:v1:a3a281fb0b788265583a0fdc9fe7f14e1d6fc5a4c1b159e8ea645f53de108e3a",
+        "source_fact:v1:dc8f6d8e925d27b785eb2816bb565d18e114403aa07735cf7f97a0f59595d767",
+        "source_fact:v1:ed9106ee4b45dd977f2d23c1a47cbafd1b65b4ffd0adf685eca45cbea997e5c7"
+      ],
+      "source_published_kst": "2026-10-08T11:08+09:00",
+      "source_title": "램리서치, \"한국 반도체 생태계와 밀착…제조 역량·공급망 강화\"",
+      "telegram_core_fact": "램리서치는 '인공지능(AI) 시대 회복탄력적 파트너십 구축'을 주제로 열린 이번 행사에서 반도체 공급망 안정성과 대응력을 높이기 위한 생태계 협력 방안을 논의했다.",
+      "title": "램리서치, \"한국 반도체 생태계와 밀착…제조 역량·공급망 강화\""
+    },
     "source_fact:999ebe82b0addbdcf5c128d7": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
       "lanes": {
@@ -210236,6 +211357,25 @@
       ],
       "source_published_kst": "2026-10-06T17:57+09:00",
       "title": "대학가 주택 '공공기숙사'로…LH, 서울대와 200가구 공급"
+    },
+    "source_fact:9b05db9a1e060a3a5ad89a8d": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008028900009",
+      "source": "연합뉴스",
+      "source_body_digest": "5929b80d35c6e7a1038d19cf8a5b9415962169d62a10c908dde7eb96e9f2ebd2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b5a74b2049f7b25efc78f4d3640865ffdbc71cf9d4b3299a24e4f643a39d565e",
+      "source_fact_keys": [
+        "source_fact:v1:e5e0267f22b5273c235d2d8063b6ad89c03343e8aa65ca449ef0ea7616c3ea97"
+      ],
+      "source_published_kst": "2026-10-08T09:11+09:00",
+      "source_title": "'400억달러 차입 추진' 보도에 스페이스X 신용위험 급등 | 연합뉴스",
+      "telegram_core_fact": "스페이스X가 엔비디아 AI 칩 구매용으로 400억달러(약 55조원)의 자금 조달을 논의중이라는 소식이 전해진 뒤 이 회사의 신용 위험 지표가 사상 최고치로 치솟고 채권 가격이 약세를 보였다. 총 400억달러의 자금 조달이 성사된다면 AI 인프라 구축을 위한 역대 최대 채권 발행 중 하나가 된다.",
+      "title": "'400억달러 차입 추진' 보도에 스페이스X 신용위험 급등 | 연합뉴스"
     },
     "source_fact:9b1a45a13c2b9bfc5c11984a": {
       "first_seen_kst": "2026-10-07T03:04:14+09:00",
@@ -223360,6 +224500,30 @@
       "telegram_core_fact": "수 회장은 이와 관련해 \"삼성과 SK하이닉스 모두로부터 큰 지원을 받았다\"며 HBM 협력이 \"한 세대에 그치지 않고 여러 세대에 걸쳐 이어질 것\"이라고 말했다.",
       "title": "리사 수 \"삼성·SK 핵심 파트너…HBM 협력 여러 세대 간다\"(종합)"
     },
+    "source_fact:b69cfccce17b4c986c205c05": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03135686645610952",
+      "source": "이데일리",
+      "source_body_digest": "1daf4d1f5f5f8105827076008de8fcd4167b5000ea168047d650470e24e923c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0134bfff37eea46cc6b091d5ddda724513547cd531f5d851da73928f10c5a44d",
+      "source_fact_keys": [
+        "source_fact:v1:0be4c986b8c47cea219cacfd05bd05e22d2c61ec5bd8ac50af9a70ae05ac4660",
+        "source_fact:v1:1ea6800d750321fb326a7d1fb9ac2123e4c4e3a40766025e6a96cf3fbcb9f1d4",
+        "source_fact:v1:32951f11ffb74e4ad50c08262e2178fa324021033d24c6290d085c6ce3bce8c9",
+        "source_fact:v1:3e0ad91bca1cf8f00409794d5402f4a8fa4713e73f838d87242eeae3140aaa32",
+        "source_fact:v1:42288adce8af4c24f223aab21edf25607d58c9bd14606f3f03b7219e728b701a",
+        "source_fact:v1:f98437ab0e5daa9745588210a4e17f4d4cd29b399fb836533baae4069f4e5fc2"
+      ],
+      "source_published_kst": "2026-10-08T10:54+09:00",
+      "source_title": "누적 경상흑자 2800억달러…반도체 질주에 연간 4500억달러 ‘순항’(종합)",
+      "telegram_core_fact": "반도체 수출이 가격과 물량의 동반 상승에 힘입어 질주하면서 지난 8월 경상수지 흑자가 460억달러를 넘어섰다.",
+      "title": "누적 경상흑자 2800억달러…반도체 질주에 연간 4500억달러 ‘순항’(종합)"
+    },
     "source_fact:b6a905d1e32f3a78e69916ee": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
       "lanes": {
@@ -226225,6 +227389,26 @@
       "source_title": "두나무·네이버 주식교환 일정 연장…주총 2월·교환일 3월로 변경",
       "telegram_core_fact": "네이버는 7일 기재정정공시를 통해 주주총회 예정일을 기존 11월19일에서 내년 2월26일로, 주식교환·이전일을 12월31일에서 내년 3월31일로 변경했다고 밝혔다. 두나무와 네이버파이낸셜의 포괄적 주식교환 일정이 약 3개월 연장됐다.",
       "title": "두나무·네이버 주식교환 일정 연장…주총 2월·교환일 3월로 변경"
+    },
+    "source_fact:bc9cc1275654db0f92fc8df0": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008086500051",
+      "source": "연합뉴스",
+      "source_body_digest": "db1ac0ec70898030d55b0b57307659e6af8a4d120df12fbfc6364f92e8a6273e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8cc16ccf4b25f016119e00fb7a0ec114bb11f8170c897f8d3a79f4e3335dc21",
+      "source_fact_keys": [
+        "source_fact:v1:5ec532a8f064486c49b78a90ed9af3ce4f80bc36b038672b4f6b2b13c5b18abb",
+        "source_fact:v1:84d4a88c88eca65820c96b538c99d61b9e9308f6c130437b647d09eb41bb3ceb"
+      ],
+      "source_published_kst": "2026-10-08T11:22+09:00",
+      "source_title": "제주 바다숲 소멸은 생태계 변화 신호탄…해조류 생산 97% 감소 | 연합뉴스",
+      "telegram_core_fact": "한국해양과학기술원이 8일 내놓은 현안 보고서를 보면 2010년 5천155t에 달하던 제주 연근해 해조류 생산량은 지난해 154t으로 97% 감소했다. 제주 연안의 바다숲 소멸은 생태계 변화의 신호탄으로, 아열대화를 지속해서 관측해야 한다는 의견이 나왔다.",
+      "title": "제주 바다숲 소멸은 생태계 변화 신호탄…해조류 생산 97% 감소 | 연합뉴스"
     },
     "source_fact:bc9d17713d82d183e42f735f": {
       "first_seen_kst": "2026-10-06T23:56:49+09:00",
@@ -243515,6 +244699,30 @@
       "source_published_kst": "2026-10-06T06:28+09:00",
       "title": "트럼프, 면세 경유 사용처 제한 완화…기름값 낮추려 안간힘"
     },
+    "source_fact:df39711eb855ce565900dd6d": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03135686645610952",
+      "source": "이데일리",
+      "source_body_digest": "1daf4d1f5f5f8105827076008de8fcd4167b5000ea168047d650470e24e923c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0134bfff37eea46cc6b091d5ddda724513547cd531f5d851da73928f10c5a44d",
+      "source_fact_keys": [
+        "source_fact:v1:0be4c986b8c47cea219cacfd05bd05e22d2c61ec5bd8ac50af9a70ae05ac4660",
+        "source_fact:v1:1ea6800d750321fb326a7d1fb9ac2123e4c4e3a40766025e6a96cf3fbcb9f1d4",
+        "source_fact:v1:32951f11ffb74e4ad50c08262e2178fa324021033d24c6290d085c6ce3bce8c9",
+        "source_fact:v1:3e0ad91bca1cf8f00409794d5402f4a8fa4713e73f838d87242eeae3140aaa32",
+        "source_fact:v1:42288adce8af4c24f223aab21edf25607d58c9bd14606f3f03b7219e728b701a",
+        "source_fact:v1:f98437ab0e5daa9745588210a4e17f4d4cd29b399fb836533baae4069f4e5fc2"
+      ],
+      "source_published_kst": "2026-10-08T10:54+09:00",
+      "source_title": "누적 경상흑자 2800억달러…반도체 질주에 연간 4500억달러 ‘순항’(종합)",
+      "telegram_core_fact": "반도체 수출이 가격과 물량의 동반 상승에 힘입어 질주하면서 지난 8월 경상수지 흑자가 460억달러를 넘어섰다.",
+      "title": "누적 경상흑자 2800억달러…반도체 질주에 연간 4500억달러 ‘순항’(종합)"
+    },
     "source_fact:df4282bd55309ae911164cf3": {
       "first_seen_kst": "2026-10-08T05:44:23+09:00",
       "lanes": {
@@ -254459,6 +255667,30 @@
       "source_published_kst": "2026-10-07T07:33+09:00",
       "title": "[마켓무버]뉴욕증시, 금리 부담 완화에 일제 상승…AI·반도체가 랠리 주도"
     },
+    "source_fact:f453add12aa0546eea9dea90": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03135686645610952",
+      "source": "이데일리",
+      "source_body_digest": "1daf4d1f5f5f8105827076008de8fcd4167b5000ea168047d650470e24e923c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0134bfff37eea46cc6b091d5ddda724513547cd531f5d851da73928f10c5a44d",
+      "source_fact_keys": [
+        "source_fact:v1:0be4c986b8c47cea219cacfd05bd05e22d2c61ec5bd8ac50af9a70ae05ac4660",
+        "source_fact:v1:1ea6800d750321fb326a7d1fb9ac2123e4c4e3a40766025e6a96cf3fbcb9f1d4",
+        "source_fact:v1:32951f11ffb74e4ad50c08262e2178fa324021033d24c6290d085c6ce3bce8c9",
+        "source_fact:v1:3e0ad91bca1cf8f00409794d5402f4a8fa4713e73f838d87242eeae3140aaa32",
+        "source_fact:v1:42288adce8af4c24f223aab21edf25607d58c9bd14606f3f03b7219e728b701a",
+        "source_fact:v1:f98437ab0e5daa9745588210a4e17f4d4cd29b399fb836533baae4069f4e5fc2"
+      ],
+      "source_published_kst": "2026-10-08T10:54+09:00",
+      "source_title": "누적 경상흑자 2800억달러…반도체 질주에 연간 4500억달러 ‘순항’(종합)",
+      "telegram_core_fact": "반도체 수출이 가격과 물량의 동반 상승에 힘입어 질주하면서 지난 8월 경상수지 흑자가 460억달러를 넘어섰다.",
+      "title": "누적 경상흑자 2800억달러…반도체 질주에 연간 4500억달러 ‘순항’(종합)"
+    },
     "source_fact:f45596abd8b187ee2e1ad929": {
       "first_seen_kst": "2026-10-07T07:39:19+09:00",
       "lanes": {
@@ -259237,6 +260469,33 @@
       ],
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
+    },
+    "source_fact:ff5b17982377bebe1cca9695": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261008101343",
+      "source": "지디넷코리아",
+      "source_body_digest": "7b8dff8ac375814ee9afa549b0fdc22c419b84fce3e3ca6a89feba49f06be60e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0735c4194b2c07bac452a434429e6a230702245a543c234c2e4bba0783337a77",
+      "source_fact_keys": [
+        "source_fact:v1:04e22968cd7c9b6579011d8a2fd853a0114a6b6869a9a5218eaa5eaccdcdd23b",
+        "source_fact:v1:1100566211116e6c08705f5eaef8301e666118abeacc10dfef37a08b431cf8c6",
+        "source_fact:v1:174c4a4ec9c8f718e3f1b04f1f394f104d15ae6d95b6ae4b7303f25df0ba40a4",
+        "source_fact:v1:6845ddb4688454e42d167525590446ddad54765d0b0bc6b9459a0eb91d579fe8",
+        "source_fact:v1:6ee8c4bff6711c542f3c1f506856d1d291d0f51e5baa9762bee31aa07926f1f2",
+        "source_fact:v1:8a896a2582247c3903268321a7c4461fb5ed13170f3c2d6f6e22b67dfeedb66a",
+        "source_fact:v1:a3a281fb0b788265583a0fdc9fe7f14e1d6fc5a4c1b159e8ea645f53de108e3a",
+        "source_fact:v1:dc8f6d8e925d27b785eb2816bb565d18e114403aa07735cf7f97a0f59595d767",
+        "source_fact:v1:ed9106ee4b45dd977f2d23c1a47cbafd1b65b4ffd0adf685eca45cbea997e5c7"
+      ],
+      "source_published_kst": "2026-10-08T11:08+09:00",
+      "source_title": "램리서치, \"한국 반도체 생태계와 밀착…제조 역량·공급망 강화\"",
+      "telegram_core_fact": "램리서치는 '인공지능(AI) 시대 회복탄력적 파트너십 구축'을 주제로 열린 이번 행사에서 반도체 공급망 안정성과 대응력을 높이기 위한 생태계 협력 방안을 논의했다.",
+      "title": "램리서치, \"한국 반도체 생태계와 밀착…제조 역량·공급망 강화\""
     },
     "source_fact:ff5d5a838c045b13bd796dd7": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -265269,6 +266528,30 @@
       "source": "헤럴드경제",
       "title": "“세계 최대 반도체 라인” 용인산단…1호 팹, 2028년 첫 삽 뜬다"
     },
+    "title:20daa4e0a59a8e65d20662ab": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03135686645610952",
+      "source": "이데일리",
+      "source_body_digest": "1daf4d1f5f5f8105827076008de8fcd4167b5000ea168047d650470e24e923c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0134bfff37eea46cc6b091d5ddda724513547cd531f5d851da73928f10c5a44d",
+      "source_fact_keys": [
+        "source_fact:v1:0be4c986b8c47cea219cacfd05bd05e22d2c61ec5bd8ac50af9a70ae05ac4660",
+        "source_fact:v1:1ea6800d750321fb326a7d1fb9ac2123e4c4e3a40766025e6a96cf3fbcb9f1d4",
+        "source_fact:v1:32951f11ffb74e4ad50c08262e2178fa324021033d24c6290d085c6ce3bce8c9",
+        "source_fact:v1:3e0ad91bca1cf8f00409794d5402f4a8fa4713e73f838d87242eeae3140aaa32",
+        "source_fact:v1:42288adce8af4c24f223aab21edf25607d58c9bd14606f3f03b7219e728b701a",
+        "source_fact:v1:f98437ab0e5daa9745588210a4e17f4d4cd29b399fb836533baae4069f4e5fc2"
+      ],
+      "source_published_kst": "2026-10-08T10:54+09:00",
+      "source_title": "누적 경상흑자 2800억달러…반도체 질주에 연간 4500억달러 ‘순항’(종합)",
+      "telegram_core_fact": "반도체 수출이 가격과 물량의 동반 상승에 힘입어 질주하면서 지난 8월 경상수지 흑자가 460억달러를 넘어섰다.",
+      "title": "누적 경상흑자 2800억달러…반도체 질주에 연간 4500억달러 ‘순항’(종합)"
+    },
     "title:20e1af893d81a4218bcbd2d9": {
       "first_seen_kst": "2026-10-07T00:09:35+09:00",
       "lanes": {
@@ -265602,6 +266885,23 @@
       "link": "https://www.etnews.com/20261001000471",
       "source": "전자신문",
       "title": "에코프로, 최상운·김장우 공동 대표 체제 전환"
+    },
+    "title:231634f36540c45d47298968": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.etnews.com/20261007000383",
+      "source": "전자신문",
+      "source_body_digest": "a2ccf9adf2279c2db2c24c69a56b1483b3ba1b76430c248f664e6bfd29b2f937",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T15:37+09:00",
+      "source_title": "한전KDN, 공공 전력망 암호 기술 민간 태양광으로 확대",
+      "telegram_core_fact": "한전KDN은 신재생에너지 전문 기업 에너지어스에 국가정보원 검증필 암호모듈 '이파워 크립토(ePower Crypto) V2.2'를 공급한다고 7일 밝혔다.",
+      "title": "한전KDN, 공공 전력망 암호 기술 민간 태양광으로 확대"
     },
     "title:23206b612eab7e9741074a58": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -268867,6 +270167,30 @@
       "telegram_core_fact": "임직원 RSU 행사에 따른 정기적 신주 발행이며 지분 희석률도 0.06% 수준에 그쳐요.",
       "title": "TORM, RSU 행사로 신주 6만주 발행..총 1억271만주"
     },
+    "title:34194a3ebe140ec0ba862092": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03135686645610952",
+      "source": "이데일리",
+      "source_body_digest": "1daf4d1f5f5f8105827076008de8fcd4167b5000ea168047d650470e24e923c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0134bfff37eea46cc6b091d5ddda724513547cd531f5d851da73928f10c5a44d",
+      "source_fact_keys": [
+        "source_fact:v1:0be4c986b8c47cea219cacfd05bd05e22d2c61ec5bd8ac50af9a70ae05ac4660",
+        "source_fact:v1:1ea6800d750321fb326a7d1fb9ac2123e4c4e3a40766025e6a96cf3fbcb9f1d4",
+        "source_fact:v1:32951f11ffb74e4ad50c08262e2178fa324021033d24c6290d085c6ce3bce8c9",
+        "source_fact:v1:3e0ad91bca1cf8f00409794d5402f4a8fa4713e73f838d87242eeae3140aaa32",
+        "source_fact:v1:42288adce8af4c24f223aab21edf25607d58c9bd14606f3f03b7219e728b701a",
+        "source_fact:v1:f98437ab0e5daa9745588210a4e17f4d4cd29b399fb836533baae4069f4e5fc2"
+      ],
+      "source_published_kst": "2026-10-08T10:54+09:00",
+      "source_title": "누적 경상흑자 2800억달러…반도체 질주에 연간 4500억달러 ‘순항’(종합)",
+      "telegram_core_fact": "반도체 수출이 가격과 물량의 동반 상승에 힘입어 질주하면서 지난 8월 경상수지 흑자가 460억달러를 넘어섰다.",
+      "title": "누적 경상흑자 2800억달러…반도체 질주에 연간 4500억달러 ‘순항’(종합)"
+    },
     "title:342e9c30c372a026179045ab": {
       "first_seen_kst": "2026-10-02T13:15:57+09:00",
       "lanes": {
@@ -270048,6 +271372,25 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003813159",
       "source": "뉴시스",
       "title": "유로존 9월 인플레 3.8%로 ↑…8월의 3.2%에서"
+    },
+    "title:3af98ce99cd1039bd4277716": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896769",
+      "source": "헤럴드경제",
+      "source_body_digest": "bd909cef5da816c8a5e3d3cb5d47635547efa41e65b3df7a491b34444ecb8147",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5e3bdbeece63e32eaf7a8a2d6bfcf462ae6b42be5168cba600c3c1f9e7830ba",
+      "source_fact_keys": [
+        "source_fact:v1:2046c4157838ff6be160695911512b51d98a16ceb724fd640e304c2ffd337b7e"
+      ],
+      "source_published_kst": "2026-10-08T11:04+09:00",
+      "source_title": "OK금융, 예별손보 인수로 보험업 본격 진입…추가 자금 1100억 이상 투입",
+      "telegram_core_fact": "OK금융그룹이 예별손해보험 인수를 위한 주식매매계약(SPA)을 체결하며 손해보험업 진출에 나선다.",
+      "title": "OK금융, 예별손보 인수로 보험업 본격 진입…추가 자금 1100억 이상 투입"
     },
     "title:3b00b105b0a96e12270e4a65": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
@@ -285969,6 +287312,26 @@
       "source": "전자신문",
       "title": "보령, 中 이판제약과 '탁소텔' 3837억원 공급계약…역대 최대 규모"
     },
+    "title:9497b04163dfe3af02ef2a10": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008086500051",
+      "source": "연합뉴스",
+      "source_body_digest": "db1ac0ec70898030d55b0b57307659e6af8a4d120df12fbfc6364f92e8a6273e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8cc16ccf4b25f016119e00fb7a0ec114bb11f8170c897f8d3a79f4e3335dc21",
+      "source_fact_keys": [
+        "source_fact:v1:5ec532a8f064486c49b78a90ed9af3ce4f80bc36b038672b4f6b2b13c5b18abb",
+        "source_fact:v1:84d4a88c88eca65820c96b538c99d61b9e9308f6c130437b647d09eb41bb3ceb"
+      ],
+      "source_published_kst": "2026-10-08T11:22+09:00",
+      "source_title": "제주 바다숲 소멸은 생태계 변화 신호탄…해조류 생산 97% 감소 | 연합뉴스",
+      "telegram_core_fact": "한국해양과학기술원이 8일 내놓은 현안 보고서를 보면 2010년 5천155t에 달하던 제주 연근해 해조류 생산량은 지난해 154t으로 97% 감소했다. 제주 연안의 바다숲 소멸은 생태계 변화의 신호탄으로, 아열대화를 지속해서 관측해야 한다는 의견이 나왔다.",
+      "title": "제주 바다숲 소멸은 생태계 변화 신호탄…해조류 생산 97% 감소 | 연합뉴스"
+    },
     "title:94bb4ce171e8bd9bc51c6e49": {
       "first_seen_kst": "2026-10-02T13:15:57+09:00",
       "lanes": {
@@ -289199,6 +290562,25 @@
       "source_published_kst": "2026-10-06T08:17+09:00",
       "title": "나스닥 사상 최고…비트코인 8만5000달러대[코인 모닝콜]"
     },
+    "title:a8f4a4a0b718ac18c6e51c67": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008028900009",
+      "source": "연합뉴스",
+      "source_body_digest": "5929b80d35c6e7a1038d19cf8a5b9415962169d62a10c908dde7eb96e9f2ebd2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b5a74b2049f7b25efc78f4d3640865ffdbc71cf9d4b3299a24e4f643a39d565e",
+      "source_fact_keys": [
+        "source_fact:v1:e5e0267f22b5273c235d2d8063b6ad89c03343e8aa65ca449ef0ea7616c3ea97"
+      ],
+      "source_published_kst": "2026-10-08T09:11+09:00",
+      "source_title": "'400억달러 차입 추진' 보도에 스페이스X 신용위험 급등 | 연합뉴스",
+      "telegram_core_fact": "스페이스X가 엔비디아 AI 칩 구매용으로 400억달러(약 55조원)의 자금 조달을 논의중이라는 소식이 전해진 뒤 이 회사의 신용 위험 지표가 사상 최고치로 치솟고 채권 가격이 약세를 보였다. 총 400억달러의 자금 조달이 성사된다면 AI 인프라 구축을 위한 역대 최대 채권 발행 중 하나가 된다.",
+      "title": "'400억달러 차입 추진' 보도에 스페이스X 신용위험 급등 | 연합뉴스"
+    },
     "title:a8f89d56ff0976b60e903d8f": {
       "first_seen_kst": "2026-09-27T12:25:25+09:00",
       "lanes": {
@@ -290943,6 +292325,33 @@
       ],
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "반도체 소부장 랠리 … ETF 출시도 잇따라"
+    },
+    "title:b1beea3e158fd43385c6bc52": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261008101343",
+      "source": "지디넷코리아",
+      "source_body_digest": "7b8dff8ac375814ee9afa549b0fdc22c419b84fce3e3ca6a89feba49f06be60e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0735c4194b2c07bac452a434429e6a230702245a543c234c2e4bba0783337a77",
+      "source_fact_keys": [
+        "source_fact:v1:04e22968cd7c9b6579011d8a2fd853a0114a6b6869a9a5218eaa5eaccdcdd23b",
+        "source_fact:v1:1100566211116e6c08705f5eaef8301e666118abeacc10dfef37a08b431cf8c6",
+        "source_fact:v1:174c4a4ec9c8f718e3f1b04f1f394f104d15ae6d95b6ae4b7303f25df0ba40a4",
+        "source_fact:v1:6845ddb4688454e42d167525590446ddad54765d0b0bc6b9459a0eb91d579fe8",
+        "source_fact:v1:6ee8c4bff6711c542f3c1f506856d1d291d0f51e5baa9762bee31aa07926f1f2",
+        "source_fact:v1:8a896a2582247c3903268321a7c4461fb5ed13170f3c2d6f6e22b67dfeedb66a",
+        "source_fact:v1:a3a281fb0b788265583a0fdc9fe7f14e1d6fc5a4c1b159e8ea645f53de108e3a",
+        "source_fact:v1:dc8f6d8e925d27b785eb2816bb565d18e114403aa07735cf7f97a0f59595d767",
+        "source_fact:v1:ed9106ee4b45dd977f2d23c1a47cbafd1b65b4ffd0adf685eca45cbea997e5c7"
+      ],
+      "source_published_kst": "2026-10-08T11:08+09:00",
+      "source_title": "램리서치, \"한국 반도체 생태계와 밀착…제조 역량·공급망 강화\"",
+      "telegram_core_fact": "램리서치는 '인공지능(AI) 시대 회복탄력적 파트너십 구축'을 주제로 열린 이번 행사에서 반도체 공급망 안정성과 대응력을 높이기 위한 생태계 협력 방안을 논의했다.",
+      "title": "램리서치, \"한국 반도체 생태계와 밀착…제조 역량·공급망 강화\""
     },
     "title:b1c5f41b197c2bd67db20559": {
       "first_seen_kst": "2026-10-08T11:28:27+09:00",
@@ -301070,6 +302479,32 @@
       "source_published_kst": "2026-10-06T17:18+09:00",
       "title": "국고채 금리, 대외금리 연동하며 혼조세…3년물 3.933%(종합) | 연합뉴스"
     },
+    "title:eca2aed18b305554a273dce4": {
+      "first_seen_kst": "2026-10-08T15:16:19+09:00",
+      "lanes": {
+        "live": "2026-10-08T15:16:19+09:00"
+      },
+      "last_seen_kst": "2026-10-08T15:16:19+09:00",
+      "link": "https://www.fnnews.com/news/202610080843238478",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ad9d170c68c09ad93f11e9020d1014dcf97c7269c1887a38b02195ec7dbc5e3e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c17edac15b5e3477f76c671104276572bf7d6c977635e25ad7434146bcdb7cfc",
+      "source_fact_keys": [
+        "source_fact:v1:024dfbc9ac0f9f07b18afee31aa6f3be7da3fab3e594a265bc43c3f0563aaf9f",
+        "source_fact:v1:62458f50508fdbf414603f6bc67fafeeeaef60c976fa8f1c0c8b640733b9a1e3",
+        "source_fact:v1:8ad4a5aeb76c27b7c5de1d9474386516754c23d5839ce6b97d203185f28ba3fb",
+        "source_fact:v1:a72c59788f33e6b8290ced8573aaf758219bd2638f813c30976a10d7d97c696c",
+        "source_fact:v1:a9e4400a068350faaeb3127f900723258e9460f6cc09a8d52e9396d584df1439",
+        "source_fact:v1:c4d354439624f58495b8e2509a86ba04d047e0506de21995663fcb1ec00a74e2",
+        "source_fact:v1:ce00f0d5bfb7a3010ba5b26dfff9a56933b278049337e58d93ca865d928c802f",
+        "source_fact:v1:e93735380fbcbca9ea2ad68017fbc86fbfdcc87d8818cdecea4e35d08dafce84"
+      ],
+      "source_published_kst": "2026-10-08T08:43+09:00",
+      "source_title": "누리호 탄 SK하이닉스 반도체, 우주서 성능 검증 나선다",
+      "telegram_core_fact": "초소형위성 기업 나라스페이스테크놀로지는 플랫폼 본체 개발과 운용을 맡은 우주검증위성 'E3T 2호기'가 누리호 5차 발사 후 지상국과 양방향 교신에 성공했다고 8일 밝혔다. E3T 2호기는 국내에서 개발된 우주용 반도체와 전자소자, 부품 및 기술을 실제 우주환경에서 검증하기 위해 개발됐다.",
+      "title": "누리호 탄 SK하이닉스 반도체, 우주서 성능 검증 나선다"
+    },
     "title:ecd112022f703f2ff2de9ece": {
       "first_seen_kst": "2026-10-08T07:12:10+09:00",
       "lanes": {
@@ -304027,5 +305462,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-08T14:55:40+09:00"
+  "updated_at_kst": "2026-10-08T15:16:19+09:00"
 }
