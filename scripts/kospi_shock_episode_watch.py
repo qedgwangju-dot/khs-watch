@@ -103,6 +103,16 @@ def should_finalize_market_close(
     return test_seconds is None and actual_close is not None and now >= actual_close
 
 
+def continuous_flow_guard_active(now: dt.datetime, session: dict[str, Any]) -> bool:
+    """동시호가 구간에는 현물·선물 수급 원자료가 일시 정지할 수 있다.
+    원자료는 오래됐다고 표시하되 장마감 감시 프로세스까지 재기동하지 않는다.
+    """
+    open_dt = session.get("open")
+    continuous_end = session.get("continuous_end")
+    return bool(session.get("is_session") and open_dt and continuous_end
+                and open_dt <= now < continuous_end)
+
+
 def fmt_duration(seconds: float) -> str:
     seconds = max(0, int(seconds))
     h, rem = divmod(seconds, 3600)
@@ -1356,8 +1366,12 @@ class Watch:
                     raise RuntimeError(f"KOSPI REST price stale >90s; last_error={last_poll_error}")
                 if self.last_fut_tick_ts is None or now_ts - self.last_fut_tick_ts > 90:
                     raise RuntimeError(f"KOSPI200 futures REST price stale >90s; last_error={last_poll_error}")
-                if self.last_flow_success_ts is None or now_ts - self.last_flow_success_ts > 180:
-                    raise RuntimeError("LS spot/futures/program flow snapshot stale >180s")
+                # 거래소 연속매매가 끝난 뒤의 동시호가에서는 투자자 수급 원자료가
+                # 정지할 수 있다. 가격은 계속 감시하되 수급 stale로 전체 작업을
+                # 불필요하게 재기동하지 않는다.
+                if continuous_flow_guard_active(now, session):
+                    if self.last_flow_success_ts is None or now_ts - self.last_flow_success_ts > 180:
+                        raise RuntimeError("LS spot/futures/program flow snapshot stale >180s")
 
             await asyncio.sleep(0.6)
 
