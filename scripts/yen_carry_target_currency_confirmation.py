@@ -209,6 +209,11 @@ def classify_target_spread(moves: list[CrossMove], usdjpy_15m: float, usdjpy_30m
     }
 
 
+def target_coverage_complete(available_count: int, has_yen: bool) -> bool:
+    """Full three-currency coverage required for a positive contagion confirmation."""
+    return has_yen and available_count == len(TARGETS)
+
+
 def emoji(level: int) -> str:
     return {0: "🟢", 1: "🟡", 2: "🟠", 3: "🔴"}.get(max(0, min(3, level)), "🔴")
 
@@ -314,7 +319,7 @@ def process(now: dt.datetime | None = None) -> int:
     available = len(moves)
     # Confirm 2-of-3 only when all three target currencies have valid bars.
     # Missing the third currency makes the risk verdict provisional, never confirmed.
-    incomplete = available < len(TARGETS) or "JPY" not in symbol_points
+    incomplete = not target_coverage_complete(available, "JPY" in symbol_points)
     classification = {"yen_shock": False, "stressed_count": 0, "stressed_codes": [], "broad_target_weakness": False, "active_confirmation": False}
     if not incomplete:
         jpy_points = symbol_points["JPY"]
