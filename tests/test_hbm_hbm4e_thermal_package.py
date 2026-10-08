@@ -90,6 +90,10 @@ class HybridHBMSourceGuardTests(unittest.TestCase):
             "article_title": "HBM hybrid bonding update",
             "article_description": "",
             "article_text": body,
+            "article_fetch_succeeded": True,
+            "official_article_title": "",
+            "official_article_description": "",
+            "official_article_text": body,
             "source": "Manufacturer",
             "direct_link": domain,
             "published_at_kst": published,
@@ -180,6 +184,85 @@ class HybridHBMSourceGuardTests(unittest.TestCase):
             "vendor":"skhynix","stage":"internal_hbm_prototype",
             "evidence":"official","source_url":"https://news.skhynix.com/en/example"
         }), old)
+
+
+    def test_official_site_quoting_competitor_cannot_promote_host_issuer(self):
+        for host, sentence in (
+            ("https://news.skhynix.com/en/competitor",
+             "Samsung Electronics shipped hybrid bonding HBM samples to customers."),
+            ("https://news.samsung.com/global/competitor",
+             "SK hynix shipped hybrid bonding HBM samples to customers."),
+            ("https://news.skhynix.com/en/both",
+             "SK hynix and Samsung discussed that Samsung shipped hybrid bonding HBM samples to customers."),
+        ):
+            with self.subTest(host=host):
+                self.assertIsNone(w.extract_hbm_hybrid_official_observation(
+                    self.event(sentence, domain=host)
+                ))
+
+    def test_official_site_headline_is_not_article_body_proof(self):
+        reported = self.event(
+            "SK hynix has shipped hybrid bonding HBM samples to customers.",
+        )
+        reported["article_fetch_succeeded"] = False
+        self.assertIsNone(w.extract_hbm_hybrid_official_observation(reported))
+        reported["article_fetch_succeeded"] = True
+        reported["official_article_text"] = "<html>Access denied</html>"
+        self.assertIsNone(w.extract_hbm_hybrid_official_observation(reported))
+
+    def test_enrichment_fetch_failure_does_not_forge_official_evidence(self):
+        rss = {
+            "id": "test", "title": "SK hynix hybrid bonding HBM samples shipped to customers",
+            "description": "Claimed on a news aggregator", "source": "SK hynix",
+            "link": "https://news.skhynix.com/en/sample",
+            "published_at_kst": "2026-10-08T16:00:00+09:00",
+        }
+        with patch.object(w, "fetch", side_effect=TimeoutError("unavailable")):
+            enriched = w.enrich_event(rss)
+        self.assertTrue(enriched["link_verified"])
+        self.assertFalse(enriched["article_fetch_succeeded"])
+        self.assertIsNone(w.extract_hbm_hybrid_official_observation(enriched))
+
+    def test_merge_must_validate_official_issuer_host(self):
+        old = dict(w.HBM_HYBRID_BOND_BASELINE)
+        fake = {
+            "vendor": "samsung", "stage": "hbm_mass_production_started",
+            "source_url": "https://news.skhynix.com/en/sk-announcement",
+            "evidence": "official",
+        }
+        self.assertEqual(w.merge_hbm_hybrid_official_observation(old, fake), old)
+
+    def test_separate_official_vendors_get_unique_evidence_links(self):
+        state = dict(w.HBM_HYBRID_BOND_BASELINE)
+        state.update({
+            "skhynix_official_hybrid_stage": "customer_hbm_sample_shipped",
+            "skhynix_official_stage_source_url": "https://news.skhynix.com/en/sk-original",
+            "samsung_official_hybrid_stage": "customer_qualification_passed",
+            "samsung_official_stage_source_url": "https://news.samsung.com/global/samsung-original",
+            "last_official_stage_change_at": "2026-10-08T15:30:00+09:00",
+        })
+        sk = w.hbm_hybrid_bond_event(state, ["SK하이닉스 실제 고객 샘플"], vendor="skhynix")
+        sam = w.hbm_hybrid_bond_event(state, ["삼성전자 고객 승인"], vendor="samsung")
+        self.assertNotEqual(sk["fact_key"], sam["fact_key"])
+        self.assertEqual(sk["direct_link"], state["skhynix_official_stage_source_url"])
+        self.assertEqual(sam["direct_link"], state["samsung_official_stage_source_url"])
+        now = datetime(2026, 10, 8, 19, tzinfo=ZoneInfo("Asia/Seoul"))
+        raw = w.build_alert(now, [sk, sam], {"rate":1400.0,"date":"2026-10-08"})
+        with tempfile.TemporaryDirectory() as tmp:
+            f = pathlib.Path(tmp) / "alert.md"
+            f.write_text(raw, encoding="utf-8")
+            with patch.object(pretty, "ALERT", f), patch.object(leverage, "ALERT", f):
+                pretty.main()
+                leverage.main()
+                formatted = f.read_text(encoding="utf-8")
+            parts = delivery.chunks(formatted)
+        self.assertEqual(len(parts), 2)
+        self.assertIn("https://news.skhynix.com/en/sk-original", parts[0])
+        self.assertNotIn("https://news.samsung.com/global/samsung-original", parts[0])
+        self.assertIn("https://news.samsung.com/global/samsung-original", parts[1])
+        self.assertNotIn("https://news.skhynix.com/en/sk-original", parts[1])
+        self.assertIn("원문 보기", parts[0])
+        self.assertIn("원문 보기", parts[1])
 
     def test_report_notice_is_labelled_reported_and_telegram_safe(self):
         event = w.hbm_hybrid_bond_event(w.HBM_HYBRID_BOND_BASELINE, ["보도 최초"], initial=True)
