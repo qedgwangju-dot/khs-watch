@@ -82,7 +82,9 @@ def _executive_visit_signal(item):
         _norm(item.get("description")),
         _norm(item.get("headline")),
     ]).lower()
-    if not ("최태원" in lead or ("sk그룹" in lead and "회장" in lead)):
+    heading = " ".join([_norm(item.get("title")), _norm(item.get("headline"))]).lower()
+    # 본문에서 과거 최태원 발언을 인용한 다른 경영진 방문 기사는 제외한다.
+    if not any(term in heading for term in ("최태원", "sk그룹 회장", "sk 회장", "최 회장")):
         return 0
     if not any(x in lead for x in ("광주 군공항", "광주공항", "군공항", "호남")):
         return 0
