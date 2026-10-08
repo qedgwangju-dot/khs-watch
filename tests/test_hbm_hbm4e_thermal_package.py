@@ -9,6 +9,10 @@ from zoneinfo import ZoneInfo
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "scripts"))
 import rubin_hbm_watch as w
+import rubin_hbm_pretty as pretty
+import rubin_hbm_leverage as leverage
+import hbm_delivery as delivery
+import re
 
 
 class SamsungHBM4EThermalPackageWatchTests(unittest.TestCase):
@@ -217,6 +221,134 @@ class HybridHBMSourceGuardTests(unittest.TestCase):
                 self.assertEqual(memory["saved"]["last_send_event_count"], 0)
                 self.assertEqual(memory["saved"]["hbm_hybrid_bond_track_version"], w.HBM_HYBRID_BOND_TRACK_VERSION)
 
+
+
+class HybridTelegramPresentationTests(unittest.TestCase):
+    def _render_pipeline(self, events):
+        now = datetime(2026, 10, 8, 16, 20, tzinfo=ZoneInfo("Asia/Seoul"))
+        raw = w.build_alert(now, events, {"rate":1400.0,"date":"2026-10-08"})
+        with tempfile.TemporaryDirectory() as temp:
+            p = pathlib.Path(temp) / "rubin_hbm_alert.md"
+            p.write_text(raw, encoding="utf-8")
+            with (
+                patch.object(pretty, "ALERT", p),
+                patch.object(leverage, "ALERT", p),
+            ):
+                pretty.main()
+                leverage.main()
+                formatted = p.read_text(encoding="utf-8")
+        return raw, formatted, delivery.chunks(formatted)
+
+    def test_actual_hybrid_report_has_no_generic_rubin_wrapper(self):
+        state = dict(w.HBM_HYBRID_BOND_BASELINE)
+        event = w.hbm_hybrid_bond_event(
+            state, ["표기 정정(같은 보도, 신규 기술 진전 아님)"], initial=True
+        )
+        event["format_correction"] = True
+        raw, formatted, parts = self._render_pipeline([event])
+        self.assertIn("🚨 HBM 하이브리드 본딩", raw)
+        self.assertIn("정정 안내:", formatted)
+        self.assertNotIn("[이번 변화]", formatted)
+        self.assertNotIn("신규 변화 확인 불가", formatted)
+        self.assertNotIn("[핵심 숫자]", formatted)
+        self.assertNotIn("[HBM 수요·가격 레버리지]", formatted)
+        self.assertNotIn("288GB HBM4", formatted)
+        self.assertNotIn("디스펙 상쇄선", formatted)
+        self.assertNotIn("<b>2026</b>", formatted)
+        self.assertIn("2026-10-08", formatted)
+        self.assertIn("99%이고", formatted)
+        self.assertNotIn("&#xC774;", formatted)
+        self.assertIn("기술 가능성 확인", formatted)
+        self.assertIn("기술 공개·시연", formatted)
+        self.assertNotIn("technology_showcase", formatted)
+        self.assertIn("하이브리드 본딩 샘플로 계산 금지", formatted)
+        self.assertIn("독립 검증 2곳 아님", formatted)
+        self.assertGreaterEqual(len(parts), 1)
+
+    def test_telegram_source_urls_are_complete_clickable_anchor_only(self):
+        state = dict(w.HBM_HYBRID_BOND_BASELINE)
+        event = w.hbm_hybrid_bond_event(state, ["정확성 검사"], initial=True)
+        _, formatted, parts = self._render_pipeline([event])
+        urls = re.findall(r'<a href="([^"]+)">원문 보기</a>', formatted)
+        self.assertEqual(len(urls), 5)
+        for expected in (
+            w.HBM_HYBRID_BOND_PRIMARY,
+            w.HBM_HYBRID_BOND_REPUBLISHER,
+            w.HBM_HYBRID_SK_OFFICIAL,
+            w.HBM_HYBRID_SAMSUNG_OFFICIAL,
+            w.HBM_HYBRID_SHARE_SOURCE,
+        ):
+            self.assertIn(expected, urls)
+        self.assertNotIn("https://", re.sub(r'<a href="[^"]+">[^<]+</a>', "", formatted))
+        self.assertNotIn("[https://", formatted)
+        self.assertNotIn("<b>82%</b>", formatted)
+        self.assertTrue(all(len(x.encode("utf-16-le")) // 2 <= 3600 for x in parts))
+
+    def test_mixed_hybrid_and_rubin_events_remain_independent(self):
+        state = dict(w.HBM_HYBRID_BOND_BASELINE)
+        hybrid = w.hbm_hybrid_bond_event(state, ["동일 익명 인터뷰"], initial=True)
+        rubin = {
+            "category":"rubin_spec",
+            "headline_ko":"Rubin Ultra 사양 변경 보도(시험)",
+            "origin_source":"테스트",
+            "source":"테스트",
+            "verification":"보도",
+            "published_at_kst":"2026-10-08T15:00:00+09:00",
+            "fact_bullets":["테스트용 사양 정보"],
+            "verdict":"확정 전",
+            "direct_link":"https://example.com/demo"
+        }
+        _, formatted, parts = self._render_pipeline([rubin, hybrid])
+        self.assertIn(delivery.MESSAGE_BREAK, formatted)
+        self.assertIn("[이번 변화]", formatted)
+        self.assertIn("HBM 하이브리드 본딩", formatted)
+        self.assertIn('• Damnang: <a href=', formatted)
+        self.assertGreaterEqual(len(parts), 2)
+        hybrid_part = next(x for x in parts if "HBM 하이브리드 본딩" in x)
+        self.assertNotIn("[HBM 수요·가격 레버리지]", hybrid_part)
+
+    def test_existing_v1_state_is_normalized_with_one_correction_then_silent(self):
+        old = {
+            "seen_ids":[],
+            "seen_fact_keys":[],
+            "structure_baseline_version":w.STRUCTURE_BASELINE_VERSION,
+            "hbm_hybrid_bond_track_version":1,
+            "hbm_hybrid_bonding": {
+                "sk_official_hybrid_stage": "technical_feasibility",
+                "sk_official_hybrid_customer_sample_verified":False,
+                "samsung_official_hybrid_stage": "technology_showcase",
+                "samsung_official_hybrid_customer_sample_verified":False,
+                "reported_origin_count":1,
+            },
+        }
+        memory = {"saved":copy.deepcopy(old)}
+        def load():
+            return copy.deepcopy(memory["saved"]), False
+        def fake_json(path, value):
+            if "rubin_hbm_pending_state.json" in str(path):
+                memory["saved"].update(copy.deepcopy(value))
+        with tempfile.TemporaryDirectory() as tmp:
+            output = pathlib.Path(tmp)
+            with (
+                patch.object(w, "OUT", output),
+                patch.object(w, "load_state", side_effect=load),
+                patch.object(w, "read_feed", return_value=([],[])),
+                patch.object(w, "fetch_fx", return_value={"rate":1400.0,"date":"2026-10-08","error":""}),
+                patch.object(w, "write_json", side_effect=fake_json),
+            ):
+                w.main()
+                self.assertEqual(memory["saved"]["hbm_hybrid_bond_track_version"], 2)
+                stage = memory["saved"]["hbm_hybrid_bonding"]
+                self.assertEqual(stage["skhynix_official_hybrid_stage"], "technical_feasibility")
+                self.assertFalse(stage["skhynix_official_hybrid_customer_sample_verified"])
+                self.assertNotIn("sk_official_hybrid_stage", stage)
+                self.assertNotIn("sk_official_hybrid_customer_sample_verified", stage)
+                self.assertEqual(memory["saved"]["last_send_event_count"], 1)
+                notice = (output / "rubin_hbm_alert.md").read_text(encoding="utf-8")
+                self.assertIn("정정 안내:", notice)
+                self.assertIn("새 기술 진전 아님", notice)
+                w.main()
+                self.assertEqual(memory["saved"]["last_send_event_count"], 0)
 
 
 if __name__ == "__main__":
