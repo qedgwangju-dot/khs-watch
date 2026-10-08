@@ -6,8 +6,8 @@
     "direct_official_items": 26,
     "errors": [],
     "material_items": 4,
-    "new_material_items": 0,
-    "raw_items": 106
+    "new_material_items": 1,
+    "raw_items": 107
   },
   "seen": {
     "027ea08934406a07812d619d": {
@@ -190,6 +190,16 @@
       "url": "https://www.anthropic.com/research/alignment-assessment-cybersecurity-incidents",
       "vendor": "AI 생태계"
     },
+    "a538ddde5185d669872ff295": {
+      "category": "취약점·패치",
+      "first_seen_at": "2026-10-08T19:13:10.418053+00:00",
+      "published_at": null,
+      "severity": 1,
+      "source": "Anthropic News",
+      "title": "Anthropic News: anthropic cyber mission",
+      "url": "https://www.anthropic.com/news/anthropic-cyber-mission",
+      "vendor": "Anthropic"
+    },
     "b83efe92a515d27f2260c40a": {
       "category": "취약점·패치",
       "first_seen_at": "2026-09-26T13:24:59.324346+00:00",
@@ -261,5 +271,5 @@
       "vendor": "Anthropic"
     }
   },
-  "updated_at_kst": "2026-10-09T03:48:01+09:00"
+  "updated_at_kst": "2026-10-09T04:13:10+09:00"
 }
