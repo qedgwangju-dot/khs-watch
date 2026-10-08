@@ -1298,6 +1298,34 @@
       "telegram_core_fact": "연준이 7일(현지시간) 공개한 9월 15~16일 연방공개시장위원회(FOMC) 의사록에 따르면 참석자 대부분은 향후 통화정책과 관련해 “연말까지 기준금리 목표범위를 한 차례 더 인상하는 것이 적절할 가능성이 높다”고 평가했다.",
       "title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\""
     },
+    "core:1aa43e41f6b0d6e7eff91672": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171797",
+      "source": "매일경제",
+      "source_body_digest": "72725ccbb6e0ae138707aa30589a96cd45bb94b19b168e70587e9b1a05da03df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:65a6eeaf2785151a1d50741d6d9551e7304ffbfb1abfd6846e94758b0824a0ed",
+      "source_fact_keys": [
+        "source_fact:v1:1f1bbe8886b9b6ec93b22c0f660aec824508b418bd21c5da82a233eb7266f43b",
+        "source_fact:v1:3a37c67120479f5c26c5c0e50eb191759e04270c9d8e4ca072e1e154d653bb80",
+        "source_fact:v1:3b0e67fff85ce02947f517e9164524bd687d7cc2e3f2f4b8cb271b6e45a6756f",
+        "source_fact:v1:3c1648f03971044420bbc62a3ac4b21b3b0794f40ab717efb81826009b1a4c73",
+        "source_fact:v1:4f0d29740b3a30d9717dbf1c424b495b3ec9d7cfcda859b31ba0d9cef9275e2d",
+        "source_fact:v1:4f84ec81751e762087777048d042c3e37a47b3b40fe0ee141b3f51677703b3e7",
+        "source_fact:v1:6749ea52970f6a5b50627b27719500f35b83bafbbf27dcda584c677052632bff",
+        "source_fact:v1:7890edd621778ce9857b42722a4d750015e0c66538b68f9638dffd07c304cae5",
+        "source_fact:v1:9ca674cb81d4cea68449a341447447e129b337e7deeb3cac45cdf06a43dfe55d",
+        "source_fact:v1:e99167c2b76beb2558d0c2aa7fa803726fa1085852db7484de19c7af8fe73ea6"
+      ],
+      "source_published_kst": "2026-10-08T17:30+09:00",
+      "source_title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다",
+      "telegram_core_fact": "글로벌 투자은행 UBS는 올해 HBM 시장의 비트 출하량 기준 점유율을 SK하이닉스 48%, 삼성전자 31%로 예상했다.",
+      "title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다"
+    },
     "core:1b36ed09494b3d8d1195fca0": {
       "first_seen_kst": "2026-10-08T04:14:15+09:00",
       "lanes": {
@@ -3014,6 +3042,33 @@
       ],
       "source_published_kst": "2026-10-07T08:02+09:00",
       "title": "[오늘의 증시]실적 앞두고 美증시 강세…코스피, 반도체 훈풍에 반등 전망"
+    },
+    "core:3ab9fb71d860ab6d8d2a7961": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.hankyung.com/article/202610080821i",
+      "source": "한국경제",
+      "source_body_digest": "15ba53efb53c525cd8723a98686219e3db61e80bed6840e6290242a0ba1adc80",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c1bbaf6884425cd579d8ffef7375e1980b94bb6ea977cc3b47a7c9051dba51c",
+      "source_fact_keys": [
+        "source_fact:v1:041cf2e4545963578744897e472fb36ed7894f8ae9274a98809d4903ae383b03",
+        "source_fact:v1:1ccd94df6bc02dd525e9bfef9911fd85562144337a44a0777a92cc4d00b1128f",
+        "source_fact:v1:4f6559c54d399b4f1b5433cd313ca3663c514bf516aceaa91cb9136e46500d97",
+        "source_fact:v1:758a178e9687e3583477ccfb137efe297703fa8ee9cb7cd08a772930005b4de3",
+        "source_fact:v1:a943b75e03be647a73acd48de362a87a3f0c5618f2e107c66766a723c25d593a",
+        "source_fact:v1:b00b10d54dc555a7fcb6ce2ec0cc877e654f1ac2a886307f749a742a9ae19a2b",
+        "source_fact:v1:c91f77972f569b7413465c9fbd55e9dd284cbf2498f6794e7b5c183b7737eba3",
+        "source_fact:v1:cfdbe59cdb35af60cfc6db4215b6fe03e59c206bfdf22cff39706ee264e97ac9",
+        "source_fact:v1:e259e98896bc9e992e34bbd306e2b6f2ba560fe78b27c8bf03dd8cba73933d1d"
+      ],
+      "source_published_kst": "2026-10-08T14:35+09:00",
+      "source_title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나",
+      "telegram_core_fact": "인공지능(AI) 투자 확대에 따른 메모리 호황이 실적을 밀어 올렸지만 주가까지 상승할지는 별개다.",
+      "title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나"
     },
     "core:3af1d7023c3ae69f870294a4": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
@@ -4792,6 +4847,23 @@
       "source_published_kst": "2026-10-07T16:16+09:00",
       "title": "'선박왕' 권혁, 15년 만에 체납세금 3938억 완납 의사…1000억 우선 납부(종합)"
     },
+    "core:6159e7cf9f2bed7b8d51451f": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819451",
+      "source": "뉴시스",
+      "source_body_digest": "0c82afa83641a9f57ee13fbb4c66005d3d92430bfe89edd9b03ef5cbb1b3d22d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T17:22+09:00",
+      "source_title": "트럼프 '강제노동 관세' 위법 논란에도…세계 각국 규제 고삐",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령의 '강제노동' 관세가 또다시 법적 시험대에 올랐지만 세계 각국은 관세에 대응하기 위해 강제노동 규제를 강화하고 있다는 분석이 나왔다.",
+      "title": "트럼프 '강제노동 관세' 위법 논란에도…세계 각국 규제 고삐"
+    },
     "core:617f9e80abb32d8c405523d3": {
       "first_seen_kst": "2026-10-08T03:51:03+09:00",
       "lanes": {
@@ -4943,6 +5015,25 @@
       ],
       "source_published_kst": "2026-10-07T14:04+09:00",
       "title": "MS·아마존 이어 구글까지…AI 전력 병목 해결에 '원전' 뜬다"
+    },
+    "core:65da52c79e7031535b75c3e6": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171895",
+      "source": "매일경제",
+      "source_body_digest": "1e3983f28a435b2b8944711c76db445e774854cd82f46601783b598c0bcb3c3a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7a7dd5778fcfa4f7da1aff05c0a589673fb4100c551cdb4b6462bb7d96c463fe",
+      "source_fact_keys": [
+        "source_fact:v1:d12cafa8f020c7032e2e92605dc4e4e0522060a4499b7f0d4726b4e8a8a4dd78"
+      ],
+      "source_published_kst": "2026-10-08T16:54+09:00",
+      "source_title": "TSMC 9월 매출 전년대비 54.6% 증가…전월보다는 감소",
+      "telegram_core_fact": "TSMC는 지난달 매출이 5,118억5,700만 대만달러로, 지난해 같은 달보다 54.6% 증가했다고 오늘(8일) 밝혔습니다.",
+      "title": "TSMC 9월 매출 전년대비 54.6% 증가…전월보다는 감소"
     },
     "core:66bd3b4601b2ce9fc7a6ece1": {
       "first_seen_kst": "2026-10-08T08:12:34+09:00",
@@ -9069,6 +9160,34 @@
       "telegram_core_fact": "신한자산운용은 'SOL 글로벌DRAM반도체플러스 ETF'가 올해 하반기 신규 상장한 반도체 ETF 가운데 상장 첫날 개인 순매수 1위를 기록했다고 8일 밝혔다.",
       "title": "상장 첫날 개인 58억 샀다…SOL 글로벌DRAM반도체플러스, 하반기 반도체 ETF 1위"
     },
+    "core:b92b2b9fc9a873956360a70f": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819150",
+      "source": "뉴시스",
+      "source_body_digest": "b214c9f533eadd1b8a611f3a72c6eab49f8d5ecba4631a5ffcc911844cbcf60b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c794142ca3c0165624e1cf4ceeb28ab0b4838d67e39420dbbe3a32c0597765f0",
+      "source_fact_keys": [
+        "source_fact:v1:0f0539e6e1da217a070c3d6778df15cb8da8a6229d459a7affda4b9d011b90d7",
+        "source_fact:v1:12d58271c4885d1fff8ac7f27fa6adc563d3e3cf547a2a875da834e681ee4242",
+        "source_fact:v1:3ae178ff60ca96959006c75485ff8bd21f714e1c470bdc5d543521b0772fa526",
+        "source_fact:v1:3fda028438cde66e2a99f5ab61382f72705084f91ddfff4e242fe325960c3777",
+        "source_fact:v1:6b375ad1bfd90efc60da24e1b501b9711f5b39b7774caa983674438fd6623601",
+        "source_fact:v1:73d9992f19f1d9e7c72adc31a3908aede36a12e19b8f73edb71ac1cb0a8e955c",
+        "source_fact:v1:876fcc0961573bce44502d4c77abb508145cfd5ca4084e8f3b62b023aac41265",
+        "source_fact:v1:8a58841b9648c49e2e82b6053b13cc91009dc27c73ba739e24abf4171a2b6a13",
+        "source_fact:v1:e2555b05eff4cbe629f8b02151c746880340f6ea0f5d5525caabbc4a80bda28b",
+        "source_fact:v1:eaab8a70d3097d1e5b6c671c508d356072cc60d84982b43bfbd36897dc0c71c8"
+      ],
+      "source_published_kst": "2026-10-08T14:11+09:00",
+      "source_title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대",
+      "telegram_core_fact": "올 3분기 누적 바이오의약품 수출 규모가 수출이 가장 많았던 지난해 3분기까지 수출액보다 15.8% 증가한 66억 달러(약 8조 8261억원)로 잠정집계됐다.",
+      "title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대"
+    },
     "core:b9ac3da3f3cb900fe9e95571": {
       "first_seen_kst": "2026-10-07T16:15:21+09:00",
       "lanes": {
@@ -9717,6 +9836,29 @@
       "source_title": "삼성전자, 3Q 매출 195조·영업익 107조…대한민국 기업史 신기록 썼다",
       "telegram_core_fact": "삼성전자가 올해 3분기 사상 처음으로 분기 영업이익 100조원을 돌파하며 한국 기업 역사를 새로 썼다.",
       "title": "삼성전자, 3Q 매출 195조·영업익 107조…대한민국 기업史 신기록 썼다"
+    },
+    "core:c6bc04f39158a1d06b3b34e5": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171506",
+      "source": "매일경제",
+      "source_body_digest": "0a322da29a1260312c55c670f84f6ac8cc8d09fe2ffc38e3131d39a4fa424650",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:378ac7cf5cd3ff6276be4679138e5092250ab498b703fefb5bbd3f3a8efb7454",
+      "source_fact_keys": [
+        "source_fact:v1:02cb2960e0ecff13c0b2ee689281d348dff2c1c790a390df6eda8ef05bb96ba9",
+        "source_fact:v1:246d3bf700467b936db76048dfa6f897357c5c90e0c30f7fd8985d4bdae50b95",
+        "source_fact:v1:380faf8cc28f9af3d2315a42f35ea53a1e0464e30455f07279d0dd6c437802a6",
+        "source_fact:v1:4d55dcca9ee12d1e4e9867f50656df76a58b2ee5bd2c99356a9dccfcd7788efa",
+        "source_fact:v1:b1c803d0930f142036a026b1e6f42dd3858292d9615dd5788dbfe229c1aaceab"
+      ],
+      "source_published_kst": "2026-10-08T14:54+09:00",
+      "source_title": "LS전선, 한국미래소재 200억 출자…미국 구리 재활용 공략 나선다",
+      "telegram_core_fact": "LS전선이 자회사 한국미래소재에 200억원을 추가 출자한 것을 계기로 미국 구리 재활용 사업 확대에 나선다. LS전선은 한국미래소재의 주주배정 유상증자에 참여해 200억원을 출자한다고 8일 공시했다.",
+      "title": "LS전선, 한국미래소재 200억 출자…미국 구리 재활용 공략 나선다"
     },
     "core:c742a19dfc389209534ca38f": {
       "first_seen_kst": "2026-10-08T02:57:10+09:00",
@@ -11626,6 +11768,27 @@
       ],
       "source_published_kst": "2026-10-07T15:06+09:00",
       "title": "한국 천주교 미사주, 국산 '마주앙'에서 수입 와인으로 교체"
+    },
+    "core:f19627de84b3d02c0e085074": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.newsis.com/view/ALSX20261008_0000007786",
+      "source": "뉴시스",
+      "source_body_digest": "b9f89b6aa75e6486f2a19fd3830c2d732c9014aa32d38d7e2addffa16469cec0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:69591a6913309b5091f0e800f6de563cb3a1081c9a16150d5a75d5b38da5b225",
+      "source_fact_keys": [
+        "source_fact:v1:5695af84509d9d8086a5e0036460f07704c40c99ec25b270a9c2a6da25ebf7fe",
+        "source_fact:v1:99aec0b5f3897f1b966d07c77239ea6eedefc3643c735d81dce326ceaa200214",
+        "source_fact:v1:f3deb087b93d25443f5ee952967fe52a5767f56b7324ae99d897ebcee4eb1ce9"
+      ],
+      "source_published_kst": "2026-10-08T14:21+09:00",
+      "source_title": "24X 내셔널 익스체인지, 신주인수권 성과 인센티브 프로그램 확대 계획",
+      "telegram_core_fact": "이번 변경으로 프로그램 참가자에게 제공되는 지분이 확대되고 24X 참가자가 되는 특정 브로커-딜러의 진입 비용이 낮아지며 프로그램이 2028년 6월까지 연장되고 신주인수권 확정 조건이 단순화된다.",
+      "title": "24X 내셔널 익스체인지, 신주인수권 성과 인센티브 프로그램 확대 계획"
     },
     "core:f1ab9255817e584634b7cf20": {
       "first_seen_kst": "2026-10-08T13:07:52+09:00",
@@ -14167,24 +14330,30 @@
     "event:36f19552f2f1da1e69ea3c4e": {
       "first_seen_kst": "2026-10-08T06:57:59+09:00",
       "lanes": {
-        "live": "2026-10-08T18:46:25+09:00"
+        "live": "2026-10-08T19:11:41+09:00"
       },
-      "last_seen_kst": "2026-10-08T18:46:25+09:00",
-      "link": "https://www.etnews.com/20261008000093",
-      "source": "전자신문",
-      "source_body_digest": "ce721f9ff4f753e2857ebd2286da0c6f275b0676d07885a9e09b5966f8a4bd50",
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171797",
+      "source": "매일경제",
+      "source_body_digest": "72725ccbb6e0ae138707aa30589a96cd45bb94b19b168e70587e9b1a05da03df",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:47b473a72a4f1311508b52b1d2eafb3190941e9d7f847f037fbec07f13dd7b10",
+      "source_fact_identity": "source_facts:v1:65a6eeaf2785151a1d50741d6d9551e7304ffbfb1abfd6846e94758b0824a0ed",
       "source_fact_keys": [
-        "source_fact:v1:0724d50f00f1562cac977e25b8fd707dcf34768bdf30871fce5fb7df7cab4d2b",
-        "source_fact:v1:0c3112b5b42bb3a64f7417c8296643738b0de3e91b22f4969f75a1f86521893a",
-        "source_fact:v1:7db678f6962c8544a26a83a67365a5e2c70a3ebd41ccbfba7fb4f778155fc91f",
-        "source_fact:v1:7fbd53764841a8dba997354b2feaa089642067c93e5b8128655f05b2d4cc52ea"
+        "source_fact:v1:1f1bbe8886b9b6ec93b22c0f660aec824508b418bd21c5da82a233eb7266f43b",
+        "source_fact:v1:3a37c67120479f5c26c5c0e50eb191759e04270c9d8e4ca072e1e154d653bb80",
+        "source_fact:v1:3b0e67fff85ce02947f517e9164524bd687d7cc2e3f2f4b8cb271b6e45a6756f",
+        "source_fact:v1:3c1648f03971044420bbc62a3ac4b21b3b0794f40ab717efb81826009b1a4c73",
+        "source_fact:v1:4f0d29740b3a30d9717dbf1c424b495b3ec9d7cfcda859b31ba0d9cef9275e2d",
+        "source_fact:v1:4f84ec81751e762087777048d042c3e37a47b3b40fe0ee141b3f51677703b3e7",
+        "source_fact:v1:6749ea52970f6a5b50627b27719500f35b83bafbbf27dcda584c677052632bff",
+        "source_fact:v1:7890edd621778ce9857b42722a4d750015e0c66538b68f9638dffd07c304cae5",
+        "source_fact:v1:9ca674cb81d4cea68449a341447447e129b337e7deeb3cac45cdf06a43dfe55d",
+        "source_fact:v1:e99167c2b76beb2558d0c2aa7fa803726fa1085852db7484de19c7af8fe73ea6"
       ],
-      "source_published_kst": "2026-10-08T10:16+09:00",
-      "source_title": "삼성전자 '분기 영업익 100조' 한국기업 첫 돌파 …이익률 55% 찍었다",
-      "telegram_core_fact": "삼성전자는 2026년 3분기 점정실적으로 연결기준 매출 195조원, 영업이익 107.4조원을 기록했다고 8일 발표했다.",
-      "title": "삼성전자 '분기 영업익 100조' 한국기업 첫 돌파 …이익률 55% 찍었다"
+      "source_published_kst": "2026-10-08T17:30+09:00",
+      "source_title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다",
+      "telegram_core_fact": "글로벌 투자은행 UBS는 올해 HBM 시장의 비트 출하량 기준 점유율을 SK하이닉스 48%, 삼성전자 31%로 예상했다.",
+      "title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다"
     },
     "event:3780ae43119fc3716dcb1b07": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
@@ -15308,6 +15477,23 @@
       "link": "https://www.mk.co.kr/news/world/12156059",
       "source": "매일경제",
       "title": "“엔비디아, 내년 칩 판매량 2배로 늘어날 것”…젠슨 황이 밝힌 이유는"
+    },
+    "event:5ec61e16ac6e684e8106fd4c": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819451",
+      "source": "뉴시스",
+      "source_body_digest": "0c82afa83641a9f57ee13fbb4c66005d3d92430bfe89edd9b03ef5cbb1b3d22d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T17:22+09:00",
+      "source_title": "트럼프 '강제노동 관세' 위법 논란에도…세계 각국 규제 고삐",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령의 '강제노동' 관세가 또다시 법적 시험대에 올랐지만 세계 각국은 관세에 대응하기 위해 강제노동 규제를 강화하고 있다는 분석이 나왔다.",
+      "title": "트럼프 '강제노동 관세' 위법 논란에도…세계 각국 규제 고삐"
     },
     "event:600ebda07b41a27d9e9c5014": {
       "first_seen_kst": "2026-09-23T07:15:19+09:00",
@@ -20278,23 +20464,29 @@
     "event:f402a4fc4b8175e04d205a16": {
       "first_seen_kst": "2026-10-08T08:31:37+09:00",
       "lanes": {
-        "live": "2026-10-08T18:24:19+09:00"
+        "live": "2026-10-08T19:11:41+09:00"
       },
-      "last_seen_kst": "2026-10-08T18:24:19+09:00",
-      "link": "https://www.hankyung.com/article/202610081009L",
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.hankyung.com/article/202610080821i",
       "source": "한국경제",
-      "source_body_digest": "3c43107ddf16e290a3cd376d3f533fc7a0ffad6f52b25cb31e5d7e16c91e1bb9",
+      "source_body_digest": "15ba53efb53c525cd8723a98686219e3db61e80bed6840e6290242a0ba1adc80",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:26ba1175062f2d79f9ae2e00948c3fd6c39ce132e407c84dc3c60f8c8728f7da",
+      "source_fact_identity": "source_facts:v1:6c1bbaf6884425cd579d8ffef7375e1980b94bb6ea977cc3b47a7c9051dba51c",
       "source_fact_keys": [
-        "source_fact:v1:aa78be0de9c5b7883c9224d0095ff62ecbe05d2d49c8a3a199f8c78c5aa72c04",
-        "source_fact:v1:b106ceeec51cf3a056fba4ccc2037de597c9cbc58748c25dfd152d4b2e62b021",
-        "source_fact:v1:b92e486a5ea1c2822ff2e9df658f0156075fff3442da7bc34dd88715a0f57a0e"
+        "source_fact:v1:041cf2e4545963578744897e472fb36ed7894f8ae9274a98809d4903ae383b03",
+        "source_fact:v1:1ccd94df6bc02dd525e9bfef9911fd85562144337a44a0777a92cc4d00b1128f",
+        "source_fact:v1:4f6559c54d399b4f1b5433cd313ca3663c514bf516aceaa91cb9136e46500d97",
+        "source_fact:v1:758a178e9687e3583477ccfb137efe297703fa8ee9cb7cd08a772930005b4de3",
+        "source_fact:v1:a943b75e03be647a73acd48de362a87a3f0c5618f2e107c66766a723c25d593a",
+        "source_fact:v1:b00b10d54dc555a7fcb6ce2ec0cc877e654f1ac2a886307f749a742a9ae19a2b",
+        "source_fact:v1:c91f77972f569b7413465c9fbd55e9dd284cbf2498f6794e7b5c183b7737eba3",
+        "source_fact:v1:cfdbe59cdb35af60cfc6db4215b6fe03e59c206bfdf22cff39706ee264e97ac9",
+        "source_fact:v1:e259e98896bc9e992e34bbd306e2b6f2ba560fe78b27c8bf03dd8cba73933d1d"
       ],
-      "source_published_kst": "2026-10-08T13:53+09:00",
-      "source_title": "가온칩스 수주공시 - 주문형 반도체 설계 개발 76.7억원 (매출액대비 11.20 %)",
-      "telegram_core_fact": "가온칩스(399720)는 주문형 반도체 설계 개발에 관한 단일판매ㆍ공급계약체결 을 08일에 공시했다. 계약금액은 76.7억원이다.",
-      "title": "가온칩스 수주공시 - 주문형 반도체 설계 개발 76.7억원 (매출액대비 11.20 %)"
+      "source_published_kst": "2026-10-08T14:35+09:00",
+      "source_title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나",
+      "telegram_core_fact": "인공지능(AI) 투자 확대에 따른 메모리 호황이 실적을 밀어 올렸지만 주가까지 상승할지는 별개다.",
+      "title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나"
     },
     "event:f40d830b2064cbc5f4077e9d": {
       "first_seen_kst": "2026-09-22T13:18:41+09:00",
@@ -24231,6 +24423,27 @@
       "source_published_kst": "2026-10-06T16:02+09:00",
       "title": "후티 사우디 공격에…현대차"
     },
+    "fact:1d8ff013c4d4700b4a7c3800": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.newsis.com/view/ALSX20261008_0000007786",
+      "source": "뉴시스",
+      "source_body_digest": "b9f89b6aa75e6486f2a19fd3830c2d732c9014aa32d38d7e2addffa16469cec0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:69591a6913309b5091f0e800f6de563cb3a1081c9a16150d5a75d5b38da5b225",
+      "source_fact_keys": [
+        "source_fact:v1:5695af84509d9d8086a5e0036460f07704c40c99ec25b270a9c2a6da25ebf7fe",
+        "source_fact:v1:99aec0b5f3897f1b966d07c77239ea6eedefc3643c735d81dce326ceaa200214",
+        "source_fact:v1:f3deb087b93d25443f5ee952967fe52a5767f56b7324ae99d897ebcee4eb1ce9"
+      ],
+      "source_published_kst": "2026-10-08T14:21+09:00",
+      "source_title": "24X 내셔널 익스체인지, 신주인수권 성과 인센티브 프로그램 확대 계획",
+      "telegram_core_fact": "이번 변경으로 프로그램 참가자에게 제공되는 지분이 확대되고 24X 참가자가 되는 특정 브로커-딜러의 진입 비용이 낮아지며 프로그램이 2028년 6월까지 연장되고 신주인수권 확정 조건이 단순화된다.",
+      "title": "24X 내셔널 익스체인지, 신주인수권 성과 인센티브 프로그램 확대 계획"
+    },
     "fact:1db405e0fb13516baa978111": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
       "lanes": {
@@ -24777,6 +24990,34 @@
       ],
       "source_published_kst": "2026-10-06T14:09+09:00",
       "title": "신협자산관리회사, 부실채권 매입 가능해진다…건전성 강화"
+    },
+    "fact:22d263c006fc629ed77475d8": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819150",
+      "source": "뉴시스",
+      "source_body_digest": "b214c9f533eadd1b8a611f3a72c6eab49f8d5ecba4631a5ffcc911844cbcf60b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c794142ca3c0165624e1cf4ceeb28ab0b4838d67e39420dbbe3a32c0597765f0",
+      "source_fact_keys": [
+        "source_fact:v1:0f0539e6e1da217a070c3d6778df15cb8da8a6229d459a7affda4b9d011b90d7",
+        "source_fact:v1:12d58271c4885d1fff8ac7f27fa6adc563d3e3cf547a2a875da834e681ee4242",
+        "source_fact:v1:3ae178ff60ca96959006c75485ff8bd21f714e1c470bdc5d543521b0772fa526",
+        "source_fact:v1:3fda028438cde66e2a99f5ab61382f72705084f91ddfff4e242fe325960c3777",
+        "source_fact:v1:6b375ad1bfd90efc60da24e1b501b9711f5b39b7774caa983674438fd6623601",
+        "source_fact:v1:73d9992f19f1d9e7c72adc31a3908aede36a12e19b8f73edb71ac1cb0a8e955c",
+        "source_fact:v1:876fcc0961573bce44502d4c77abb508145cfd5ca4084e8f3b62b023aac41265",
+        "source_fact:v1:8a58841b9648c49e2e82b6053b13cc91009dc27c73ba739e24abf4171a2b6a13",
+        "source_fact:v1:e2555b05eff4cbe629f8b02151c746880340f6ea0f5d5525caabbc4a80bda28b",
+        "source_fact:v1:eaab8a70d3097d1e5b6c671c508d356072cc60d84982b43bfbd36897dc0c71c8"
+      ],
+      "source_published_kst": "2026-10-08T14:11+09:00",
+      "source_title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대",
+      "telegram_core_fact": "올 3분기 누적 바이오의약품 수출 규모가 수출이 가장 많았던 지난해 3분기까지 수출액보다 15.8% 증가한 66억 달러(약 8조 8261억원)로 잠정집계됐다.",
+      "title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대"
     },
     "fact:23087b4700c81ade05a5127a": {
       "first_seen_kst": "2026-10-08T15:16:19+09:00",
@@ -26328,6 +26569,29 @@
       ],
       "source_published_kst": "2026-10-07T05:00+09:00",
       "title": "\"삼성 따라 미국 간다?\"…몸값 뛴 국내 OSAT, 테일러행은 ‘좁은 문’"
+    },
+    "fact:319da7d50bd96842670b1b5a": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171506",
+      "source": "매일경제",
+      "source_body_digest": "0a322da29a1260312c55c670f84f6ac8cc8d09fe2ffc38e3131d39a4fa424650",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:378ac7cf5cd3ff6276be4679138e5092250ab498b703fefb5bbd3f3a8efb7454",
+      "source_fact_keys": [
+        "source_fact:v1:02cb2960e0ecff13c0b2ee689281d348dff2c1c790a390df6eda8ef05bb96ba9",
+        "source_fact:v1:246d3bf700467b936db76048dfa6f897357c5c90e0c30f7fd8985d4bdae50b95",
+        "source_fact:v1:380faf8cc28f9af3d2315a42f35ea53a1e0464e30455f07279d0dd6c437802a6",
+        "source_fact:v1:4d55dcca9ee12d1e4e9867f50656df76a58b2ee5bd2c99356a9dccfcd7788efa",
+        "source_fact:v1:b1c803d0930f142036a026b1e6f42dd3858292d9615dd5788dbfe229c1aaceab"
+      ],
+      "source_published_kst": "2026-10-08T14:54+09:00",
+      "source_title": "LS전선, 한국미래소재 200억 출자…미국 구리 재활용 공략 나선다",
+      "telegram_core_fact": "LS전선이 자회사 한국미래소재에 200억원을 추가 출자한 것을 계기로 미국 구리 재활용 사업 확대에 나선다. LS전선은 한국미래소재의 주주배정 유상증자에 참여해 200억원을 출자한다고 8일 공시했다.",
+      "title": "LS전선, 한국미래소재 200억 출자…미국 구리 재활용 공략 나선다"
     },
     "fact:31aed3f69245b1d08e35c99f": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
@@ -28172,6 +28436,33 @@
       ],
       "source_published_kst": "2026-10-07T12:00+09:00",
       "title": "'44조원대' 유가 담합…공정위, SK에너지·현대오일뱅크 제재 착수"
+    },
+    "fact:4053ed46c65e73f265532596": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.hankyung.com/article/202610080821i",
+      "source": "한국경제",
+      "source_body_digest": "15ba53efb53c525cd8723a98686219e3db61e80bed6840e6290242a0ba1adc80",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c1bbaf6884425cd579d8ffef7375e1980b94bb6ea977cc3b47a7c9051dba51c",
+      "source_fact_keys": [
+        "source_fact:v1:041cf2e4545963578744897e472fb36ed7894f8ae9274a98809d4903ae383b03",
+        "source_fact:v1:1ccd94df6bc02dd525e9bfef9911fd85562144337a44a0777a92cc4d00b1128f",
+        "source_fact:v1:4f6559c54d399b4f1b5433cd313ca3663c514bf516aceaa91cb9136e46500d97",
+        "source_fact:v1:758a178e9687e3583477ccfb137efe297703fa8ee9cb7cd08a772930005b4de3",
+        "source_fact:v1:a943b75e03be647a73acd48de362a87a3f0c5618f2e107c66766a723c25d593a",
+        "source_fact:v1:b00b10d54dc555a7fcb6ce2ec0cc877e654f1ac2a886307f749a742a9ae19a2b",
+        "source_fact:v1:c91f77972f569b7413465c9fbd55e9dd284cbf2498f6794e7b5c183b7737eba3",
+        "source_fact:v1:cfdbe59cdb35af60cfc6db4215b6fe03e59c206bfdf22cff39706ee264e97ac9",
+        "source_fact:v1:e259e98896bc9e992e34bbd306e2b6f2ba560fe78b27c8bf03dd8cba73933d1d"
+      ],
+      "source_published_kst": "2026-10-08T14:35+09:00",
+      "source_title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나",
+      "telegram_core_fact": "인공지능(AI) 투자 확대에 따른 메모리 호황이 실적을 밀어 올렸지만 주가까지 상승할지는 별개다.",
+      "title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나"
     },
     "fact:40631e6443896e0d80e11e70": {
       "first_seen_kst": "2026-10-08T17:42:30+09:00",
@@ -36354,6 +36645,34 @@
       ],
       "source_published_kst": "2026-10-07T07:00+09:00",
       "title": "“관세 낮추려면 대가 내야”…트럼프, 한국 1500억달러 또 꺼냈다"
+    },
+    "fact:8e67e85be31df71cfa3ecac0": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171797",
+      "source": "매일경제",
+      "source_body_digest": "72725ccbb6e0ae138707aa30589a96cd45bb94b19b168e70587e9b1a05da03df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:65a6eeaf2785151a1d50741d6d9551e7304ffbfb1abfd6846e94758b0824a0ed",
+      "source_fact_keys": [
+        "source_fact:v1:1f1bbe8886b9b6ec93b22c0f660aec824508b418bd21c5da82a233eb7266f43b",
+        "source_fact:v1:3a37c67120479f5c26c5c0e50eb191759e04270c9d8e4ca072e1e154d653bb80",
+        "source_fact:v1:3b0e67fff85ce02947f517e9164524bd687d7cc2e3f2f4b8cb271b6e45a6756f",
+        "source_fact:v1:3c1648f03971044420bbc62a3ac4b21b3b0794f40ab717efb81826009b1a4c73",
+        "source_fact:v1:4f0d29740b3a30d9717dbf1c424b495b3ec9d7cfcda859b31ba0d9cef9275e2d",
+        "source_fact:v1:4f84ec81751e762087777048d042c3e37a47b3b40fe0ee141b3f51677703b3e7",
+        "source_fact:v1:6749ea52970f6a5b50627b27719500f35b83bafbbf27dcda584c677052632bff",
+        "source_fact:v1:7890edd621778ce9857b42722a4d750015e0c66538b68f9638dffd07c304cae5",
+        "source_fact:v1:9ca674cb81d4cea68449a341447447e129b337e7deeb3cac45cdf06a43dfe55d",
+        "source_fact:v1:e99167c2b76beb2558d0c2aa7fa803726fa1085852db7484de19c7af8fe73ea6"
+      ],
+      "source_published_kst": "2026-10-08T17:30+09:00",
+      "source_title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다",
+      "telegram_core_fact": "글로벌 투자은행 UBS는 올해 HBM 시장의 비트 출하량 기준 점유율을 SK하이닉스 48%, 삼성전자 31%로 예상했다.",
+      "title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다"
     },
     "fact:8e6ad71ed73978d0f60f7244": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
@@ -46012,6 +46331,25 @@
       "source_published_kst": "2026-10-06T06:30+09:00",
       "title": "[속보] 예멘 후티군, 사우디 전역 미사일 ·드론 공습했다 발표"
     },
+    "fact:e3cbc167a9d237b61667d972": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171895",
+      "source": "매일경제",
+      "source_body_digest": "1e3983f28a435b2b8944711c76db445e774854cd82f46601783b598c0bcb3c3a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7a7dd5778fcfa4f7da1aff05c0a589673fb4100c551cdb4b6462bb7d96c463fe",
+      "source_fact_keys": [
+        "source_fact:v1:d12cafa8f020c7032e2e92605dc4e4e0522060a4499b7f0d4726b4e8a8a4dd78"
+      ],
+      "source_published_kst": "2026-10-08T16:54+09:00",
+      "source_title": "TSMC 9월 매출 전년대비 54.6% 증가…전월보다는 감소",
+      "telegram_core_fact": "TSMC는 지난달 매출이 5,118억5,700만 대만달러로, 지난해 같은 달보다 54.6% 증가했다고 오늘(8일) 밝혔습니다.",
+      "title": "TSMC 9월 매출 전년대비 54.6% 증가…전월보다는 감소"
+    },
     "fact:e3de902488de631fa2c96170": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
       "lanes": {
@@ -53152,6 +53490,27 @@
       "source": "뉴시스",
       "title": "LS證 \"GS건설, 데이터센터·원전 재평가…목표가 5만원으로↑\""
     },
+    "link:163f81c27e2e63e4a2b227d1": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.newsis.com/view/ALSX20261008_0000007786",
+      "source": "뉴시스",
+      "source_body_digest": "b9f89b6aa75e6486f2a19fd3830c2d732c9014aa32d38d7e2addffa16469cec0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:69591a6913309b5091f0e800f6de563cb3a1081c9a16150d5a75d5b38da5b225",
+      "source_fact_keys": [
+        "source_fact:v1:5695af84509d9d8086a5e0036460f07704c40c99ec25b270a9c2a6da25ebf7fe",
+        "source_fact:v1:99aec0b5f3897f1b966d07c77239ea6eedefc3643c735d81dce326ceaa200214",
+        "source_fact:v1:f3deb087b93d25443f5ee952967fe52a5767f56b7324ae99d897ebcee4eb1ce9"
+      ],
+      "source_published_kst": "2026-10-08T14:21+09:00",
+      "source_title": "24X 내셔널 익스체인지, 신주인수권 성과 인센티브 프로그램 확대 계획",
+      "telegram_core_fact": "이번 변경으로 프로그램 참가자에게 제공되는 지분이 확대되고 24X 참가자가 되는 특정 브로커-딜러의 진입 비용이 낮아지며 프로그램이 2028년 6월까지 연장되고 신주인수권 확정 조건이 단순화된다.",
+      "title": "24X 내셔널 익스체인지, 신주인수권 성과 인센티브 프로그램 확대 계획"
+    },
     "link:16452e03b288e225ead6b7f5": {
       "first_seen_kst": "2026-10-06T00:41:11+09:00",
       "lanes": {
@@ -57872,6 +58231,29 @@
       "source": "연합뉴스",
       "title": "트럼프, 선거용 '알래스카 투자' 관철하려 韓에 관세카드 꺼낼까 | 연합뉴스"
     },
+    "link:300d434c42df102d9828e521": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171506",
+      "source": "매일경제",
+      "source_body_digest": "0a322da29a1260312c55c670f84f6ac8cc8d09fe2ffc38e3131d39a4fa424650",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:378ac7cf5cd3ff6276be4679138e5092250ab498b703fefb5bbd3f3a8efb7454",
+      "source_fact_keys": [
+        "source_fact:v1:02cb2960e0ecff13c0b2ee689281d348dff2c1c790a390df6eda8ef05bb96ba9",
+        "source_fact:v1:246d3bf700467b936db76048dfa6f897357c5c90e0c30f7fd8985d4bdae50b95",
+        "source_fact:v1:380faf8cc28f9af3d2315a42f35ea53a1e0464e30455f07279d0dd6c437802a6",
+        "source_fact:v1:4d55dcca9ee12d1e4e9867f50656df76a58b2ee5bd2c99356a9dccfcd7788efa",
+        "source_fact:v1:b1c803d0930f142036a026b1e6f42dd3858292d9615dd5788dbfe229c1aaceab"
+      ],
+      "source_published_kst": "2026-10-08T14:54+09:00",
+      "source_title": "LS전선, 한국미래소재 200억 출자…미국 구리 재활용 공략 나선다",
+      "telegram_core_fact": "LS전선이 자회사 한국미래소재에 200억원을 추가 출자한 것을 계기로 미국 구리 재활용 사업 확대에 나선다. LS전선은 한국미래소재의 주주배정 유상증자에 참여해 200억원을 출자한다고 8일 공시했다.",
+      "title": "LS전선, 한국미래소재 200억 출자…미국 구리 재활용 공략 나선다"
+    },
     "link:300e8dabc53b47a23281c9d0": {
       "first_seen_kst": "2026-10-06T07:30:15+09:00",
       "lanes": {
@@ -62257,6 +62639,34 @@
       "link": "https://mobile.newsis.com/view/NISX20260920_0003797126",
       "source": "뉴시스",
       "title": "금리 인상 악재에도 굳건한 증시…\"10월 반등 기회 온다\""
+    },
+    "link:485f5470f3c284d8f13369dd": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171797",
+      "source": "매일경제",
+      "source_body_digest": "72725ccbb6e0ae138707aa30589a96cd45bb94b19b168e70587e9b1a05da03df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:65a6eeaf2785151a1d50741d6d9551e7304ffbfb1abfd6846e94758b0824a0ed",
+      "source_fact_keys": [
+        "source_fact:v1:1f1bbe8886b9b6ec93b22c0f660aec824508b418bd21c5da82a233eb7266f43b",
+        "source_fact:v1:3a37c67120479f5c26c5c0e50eb191759e04270c9d8e4ca072e1e154d653bb80",
+        "source_fact:v1:3b0e67fff85ce02947f517e9164524bd687d7cc2e3f2f4b8cb271b6e45a6756f",
+        "source_fact:v1:3c1648f03971044420bbc62a3ac4b21b3b0794f40ab717efb81826009b1a4c73",
+        "source_fact:v1:4f0d29740b3a30d9717dbf1c424b495b3ec9d7cfcda859b31ba0d9cef9275e2d",
+        "source_fact:v1:4f84ec81751e762087777048d042c3e37a47b3b40fe0ee141b3f51677703b3e7",
+        "source_fact:v1:6749ea52970f6a5b50627b27719500f35b83bafbbf27dcda584c677052632bff",
+        "source_fact:v1:7890edd621778ce9857b42722a4d750015e0c66538b68f9638dffd07c304cae5",
+        "source_fact:v1:9ca674cb81d4cea68449a341447447e129b337e7deeb3cac45cdf06a43dfe55d",
+        "source_fact:v1:e99167c2b76beb2558d0c2aa7fa803726fa1085852db7484de19c7af8fe73ea6"
+      ],
+      "source_published_kst": "2026-10-08T17:30+09:00",
+      "source_title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다",
+      "telegram_core_fact": "글로벌 투자은행 UBS는 올해 HBM 시장의 비트 출하량 기준 점유율을 SK하이닉스 48%, 삼성전자 31%로 예상했다.",
+      "title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다"
     },
     "link:488365ef77a4ead3e8f9bc23": {
       "first_seen_kst": "2026-10-03T12:48:39+09:00",
@@ -68316,6 +68726,23 @@
       "telegram_core_fact": "공정거래위원회의 기업결합 심사를 비롯해 금융당국의 대주주 변경 승인 등 정부 인허가 절차가 길어지고 있는 데다, 국회 내 디지털자산기본법 제정 논의 지연 등이 복합적으로 작용한 결과로 풀이된다.",
       "title": "네이버파이낸셜·두나무 결합, 내년 3월로 재연기…“기업결합·규제절차 영향”(종합)"
     },
+    "link:690c5837db00cc48e411bad6": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819451",
+      "source": "뉴시스",
+      "source_body_digest": "0c82afa83641a9f57ee13fbb4c66005d3d92430bfe89edd9b03ef5cbb1b3d22d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T17:22+09:00",
+      "source_title": "트럼프 '강제노동 관세' 위법 논란에도…세계 각국 규제 고삐",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령의 '강제노동' 관세가 또다시 법적 시험대에 올랐지만 세계 각국은 관세에 대응하기 위해 강제노동 규제를 강화하고 있다는 분석이 나왔다.",
+      "title": "트럼프 '강제노동 관세' 위법 논란에도…세계 각국 규제 고삐"
+    },
     "link:691f21cbb3586cf22ee7d31b": {
       "first_seen_kst": "2026-10-02T13:38:43+09:00",
       "lanes": {
@@ -69786,6 +70213,33 @@
       "link": "https://www.mt.co.kr/stock/2026/09/29/2026092915185551845",
       "source": "머니투데이",
       "title": "디어유, 150억원 자사주 취득 후 전량 소각 \"중장기 기업가치 제고\""
+    },
+    "link:70fd1ca3a747c73d445483d2": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.hankyung.com/article/202610080821i",
+      "source": "한국경제",
+      "source_body_digest": "15ba53efb53c525cd8723a98686219e3db61e80bed6840e6290242a0ba1adc80",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c1bbaf6884425cd579d8ffef7375e1980b94bb6ea977cc3b47a7c9051dba51c",
+      "source_fact_keys": [
+        "source_fact:v1:041cf2e4545963578744897e472fb36ed7894f8ae9274a98809d4903ae383b03",
+        "source_fact:v1:1ccd94df6bc02dd525e9bfef9911fd85562144337a44a0777a92cc4d00b1128f",
+        "source_fact:v1:4f6559c54d399b4f1b5433cd313ca3663c514bf516aceaa91cb9136e46500d97",
+        "source_fact:v1:758a178e9687e3583477ccfb137efe297703fa8ee9cb7cd08a772930005b4de3",
+        "source_fact:v1:a943b75e03be647a73acd48de362a87a3f0c5618f2e107c66766a723c25d593a",
+        "source_fact:v1:b00b10d54dc555a7fcb6ce2ec0cc877e654f1ac2a886307f749a742a9ae19a2b",
+        "source_fact:v1:c91f77972f569b7413465c9fbd55e9dd284cbf2498f6794e7b5c183b7737eba3",
+        "source_fact:v1:cfdbe59cdb35af60cfc6db4215b6fe03e59c206bfdf22cff39706ee264e97ac9",
+        "source_fact:v1:e259e98896bc9e992e34bbd306e2b6f2ba560fe78b27c8bf03dd8cba73933d1d"
+      ],
+      "source_published_kst": "2026-10-08T14:35+09:00",
+      "source_title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나",
+      "telegram_core_fact": "인공지능(AI) 투자 확대에 따른 메모리 호황이 실적을 밀어 올렸지만 주가까지 상승할지는 별개다.",
+      "title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나"
     },
     "link:710801bb87da4852e5ad3180": {
       "first_seen_kst": "2026-10-07T01:59:08+09:00",
@@ -71475,6 +71929,25 @@
       ],
       "source_published_kst": "2026-10-05T08:08+09:00",
       "title": "한반도 감시부터 우주의약품 실험까지…K-우주영토 넓힌다[누리호 5차 下]"
+    },
+    "link:7a3ec7b75688628cf9b70f14": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171895",
+      "source": "매일경제",
+      "source_body_digest": "1e3983f28a435b2b8944711c76db445e774854cd82f46601783b598c0bcb3c3a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7a7dd5778fcfa4f7da1aff05c0a589673fb4100c551cdb4b6462bb7d96c463fe",
+      "source_fact_keys": [
+        "source_fact:v1:d12cafa8f020c7032e2e92605dc4e4e0522060a4499b7f0d4726b4e8a8a4dd78"
+      ],
+      "source_published_kst": "2026-10-08T16:54+09:00",
+      "source_title": "TSMC 9월 매출 전년대비 54.6% 증가…전월보다는 감소",
+      "telegram_core_fact": "TSMC는 지난달 매출이 5,118억5,700만 대만달러로, 지난해 같은 달보다 54.6% 증가했다고 오늘(8일) 밝혔습니다.",
+      "title": "TSMC 9월 매출 전년대비 54.6% 증가…전월보다는 감소"
     },
     "link:7a8949c0b0ca60839c1281c7": {
       "first_seen_kst": "2026-10-08T09:58:56+09:00",
@@ -76403,6 +76876,34 @@
       ],
       "source_published_kst": "2026-10-07T09:42+09:00",
       "title": "경기도, 생산단계 수산물 유해물질검사 항목 95→167개 확대 | 연합뉴스"
+    },
+    "link:95c3e818d9b86f0d6cccc081": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819150",
+      "source": "뉴시스",
+      "source_body_digest": "b214c9f533eadd1b8a611f3a72c6eab49f8d5ecba4631a5ffcc911844cbcf60b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c794142ca3c0165624e1cf4ceeb28ab0b4838d67e39420dbbe3a32c0597765f0",
+      "source_fact_keys": [
+        "source_fact:v1:0f0539e6e1da217a070c3d6778df15cb8da8a6229d459a7affda4b9d011b90d7",
+        "source_fact:v1:12d58271c4885d1fff8ac7f27fa6adc563d3e3cf547a2a875da834e681ee4242",
+        "source_fact:v1:3ae178ff60ca96959006c75485ff8bd21f714e1c470bdc5d543521b0772fa526",
+        "source_fact:v1:3fda028438cde66e2a99f5ab61382f72705084f91ddfff4e242fe325960c3777",
+        "source_fact:v1:6b375ad1bfd90efc60da24e1b501b9711f5b39b7774caa983674438fd6623601",
+        "source_fact:v1:73d9992f19f1d9e7c72adc31a3908aede36a12e19b8f73edb71ac1cb0a8e955c",
+        "source_fact:v1:876fcc0961573bce44502d4c77abb508145cfd5ca4084e8f3b62b023aac41265",
+        "source_fact:v1:8a58841b9648c49e2e82b6053b13cc91009dc27c73ba739e24abf4171a2b6a13",
+        "source_fact:v1:e2555b05eff4cbe629f8b02151c746880340f6ea0f5d5525caabbc4a80bda28b",
+        "source_fact:v1:eaab8a70d3097d1e5b6c671c508d356072cc60d84982b43bfbd36897dc0c71c8"
+      ],
+      "source_published_kst": "2026-10-08T14:11+09:00",
+      "source_title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대",
+      "telegram_core_fact": "올 3분기 누적 바이오의약품 수출 규모가 수출이 가장 많았던 지난해 3분기까지 수출액보다 15.8% 증가한 66억 달러(약 8조 8261억원)로 잠정집계됐다.",
+      "title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대"
     },
     "link:95cd4ff78ad8a677c60af62e": {
       "first_seen_kst": "2026-09-25T10:19:34+09:00",
@@ -115288,6 +115789,34 @@
       "source_published_kst": "2026-10-05T21:23+09:00",
       "title": "테라울프, 머스키 전력 1GW로 2배 확대..2단계 1년 앞당겨"
     },
+    "original:6e78f51c19ea4e979ef2767f": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819150",
+      "source": "뉴시스",
+      "source_body_digest": "b214c9f533eadd1b8a611f3a72c6eab49f8d5ecba4631a5ffcc911844cbcf60b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c794142ca3c0165624e1cf4ceeb28ab0b4838d67e39420dbbe3a32c0597765f0",
+      "source_fact_keys": [
+        "source_fact:v1:0f0539e6e1da217a070c3d6778df15cb8da8a6229d459a7affda4b9d011b90d7",
+        "source_fact:v1:12d58271c4885d1fff8ac7f27fa6adc563d3e3cf547a2a875da834e681ee4242",
+        "source_fact:v1:3ae178ff60ca96959006c75485ff8bd21f714e1c470bdc5d543521b0772fa526",
+        "source_fact:v1:3fda028438cde66e2a99f5ab61382f72705084f91ddfff4e242fe325960c3777",
+        "source_fact:v1:6b375ad1bfd90efc60da24e1b501b9711f5b39b7774caa983674438fd6623601",
+        "source_fact:v1:73d9992f19f1d9e7c72adc31a3908aede36a12e19b8f73edb71ac1cb0a8e955c",
+        "source_fact:v1:876fcc0961573bce44502d4c77abb508145cfd5ca4084e8f3b62b023aac41265",
+        "source_fact:v1:8a58841b9648c49e2e82b6053b13cc91009dc27c73ba739e24abf4171a2b6a13",
+        "source_fact:v1:e2555b05eff4cbe629f8b02151c746880340f6ea0f5d5525caabbc4a80bda28b",
+        "source_fact:v1:eaab8a70d3097d1e5b6c671c508d356072cc60d84982b43bfbd36897dc0c71c8"
+      ],
+      "source_published_kst": "2026-10-08T14:11+09:00",
+      "source_title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대",
+      "telegram_core_fact": "올 3분기 누적 바이오의약품 수출 규모가 수출이 가장 많았던 지난해 3분기까지 수출액보다 15.8% 증가한 66억 달러(약 8조 8261억원)로 잠정집계됐다.",
+      "title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대"
+    },
     "original:6e78fd7618c9d18c0783f504": {
       "first_seen_kst": "2026-10-08T10:43:48+09:00",
       "lanes": {
@@ -122472,6 +123001,33 @@
       "source": "뉴시스",
       "title": "해양산업 AI 전환 지원…해진공 AX 사이트 개통"
     },
+    "original:96fe1871e4b8a2964acc66c4": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.hankyung.com/article/202610080821i",
+      "source": "한국경제",
+      "source_body_digest": "15ba53efb53c525cd8723a98686219e3db61e80bed6840e6290242a0ba1adc80",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c1bbaf6884425cd579d8ffef7375e1980b94bb6ea977cc3b47a7c9051dba51c",
+      "source_fact_keys": [
+        "source_fact:v1:041cf2e4545963578744897e472fb36ed7894f8ae9274a98809d4903ae383b03",
+        "source_fact:v1:1ccd94df6bc02dd525e9bfef9911fd85562144337a44a0777a92cc4d00b1128f",
+        "source_fact:v1:4f6559c54d399b4f1b5433cd313ca3663c514bf516aceaa91cb9136e46500d97",
+        "source_fact:v1:758a178e9687e3583477ccfb137efe297703fa8ee9cb7cd08a772930005b4de3",
+        "source_fact:v1:a943b75e03be647a73acd48de362a87a3f0c5618f2e107c66766a723c25d593a",
+        "source_fact:v1:b00b10d54dc555a7fcb6ce2ec0cc877e654f1ac2a886307f749a742a9ae19a2b",
+        "source_fact:v1:c91f77972f569b7413465c9fbd55e9dd284cbf2498f6794e7b5c183b7737eba3",
+        "source_fact:v1:cfdbe59cdb35af60cfc6db4215b6fe03e59c206bfdf22cff39706ee264e97ac9",
+        "source_fact:v1:e259e98896bc9e992e34bbd306e2b6f2ba560fe78b27c8bf03dd8cba73933d1d"
+      ],
+      "source_published_kst": "2026-10-08T14:35+09:00",
+      "source_title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나",
+      "telegram_core_fact": "인공지능(AI) 투자 확대에 따른 메모리 호황이 실적을 밀어 올렸지만 주가까지 상승할지는 별개다.",
+      "title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나"
+    },
     "original:970d9315091d61e474c2e2bb": {
       "first_seen_kst": "2026-10-02T15:05:30+09:00",
       "lanes": {
@@ -123620,6 +124176,34 @@
       "telegram_core_fact": "3분기 생산량이 2,954대로 전분기보다 38.1% 줄어 지난해 1분기 이후 가장 낮은 수준을 기록했습니다. 인도량도 3,806대로 전년 동기보다 6.7% 감소했습니다.",
       "title": "루시드, 3분기 생산 38% 감축에 보급형 신차 연기까지 겹치며 투자심리 위축"
     },
+    "original:9f2d07f53da91257f54a16cd": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171797",
+      "source": "매일경제",
+      "source_body_digest": "72725ccbb6e0ae138707aa30589a96cd45bb94b19b168e70587e9b1a05da03df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:65a6eeaf2785151a1d50741d6d9551e7304ffbfb1abfd6846e94758b0824a0ed",
+      "source_fact_keys": [
+        "source_fact:v1:1f1bbe8886b9b6ec93b22c0f660aec824508b418bd21c5da82a233eb7266f43b",
+        "source_fact:v1:3a37c67120479f5c26c5c0e50eb191759e04270c9d8e4ca072e1e154d653bb80",
+        "source_fact:v1:3b0e67fff85ce02947f517e9164524bd687d7cc2e3f2f4b8cb271b6e45a6756f",
+        "source_fact:v1:3c1648f03971044420bbc62a3ac4b21b3b0794f40ab717efb81826009b1a4c73",
+        "source_fact:v1:4f0d29740b3a30d9717dbf1c424b495b3ec9d7cfcda859b31ba0d9cef9275e2d",
+        "source_fact:v1:4f84ec81751e762087777048d042c3e37a47b3b40fe0ee141b3f51677703b3e7",
+        "source_fact:v1:6749ea52970f6a5b50627b27719500f35b83bafbbf27dcda584c677052632bff",
+        "source_fact:v1:7890edd621778ce9857b42722a4d750015e0c66538b68f9638dffd07c304cae5",
+        "source_fact:v1:9ca674cb81d4cea68449a341447447e129b337e7deeb3cac45cdf06a43dfe55d",
+        "source_fact:v1:e99167c2b76beb2558d0c2aa7fa803726fa1085852db7484de19c7af8fe73ea6"
+      ],
+      "source_published_kst": "2026-10-08T17:30+09:00",
+      "source_title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다",
+      "telegram_core_fact": "글로벌 투자은행 UBS는 올해 HBM 시장의 비트 출하량 기준 점유율을 SK하이닉스 48%, 삼성전자 31%로 예상했다.",
+      "title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다"
+    },
     "original:9f336d41c12b9a46874765f3": {
       "first_seen_kst": "2026-10-03T05:03:54+09:00",
       "lanes": {
@@ -124573,6 +125157,23 @@
       "source_title": "\"100조 벽 깼다\" 삼성전자 또 신기록…내년엔 130조 찍나",
       "telegram_core_fact": "삼성전자는 지난해 4분기 매출 93조8000억원, 영업익 20조1000억원으로 역대 최대 기록을 세운 이후 4개 분기 연속해 매출과 영업이익 신기록 행진을 이어가고 있다.",
       "title": "\"100조 벽 깼다\" 삼성전자 또 신기록…내년엔 130조 찍나"
+    },
+    "original:a4ec022c99913d4abe0701c6": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819451",
+      "source": "뉴시스",
+      "source_body_digest": "0c82afa83641a9f57ee13fbb4c66005d3d92430bfe89edd9b03ef5cbb1b3d22d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T17:22+09:00",
+      "source_title": "트럼프 '강제노동 관세' 위법 논란에도…세계 각국 규제 고삐",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령의 '강제노동' 관세가 또다시 법적 시험대에 올랐지만 세계 각국은 관세에 대응하기 위해 강제노동 규제를 강화하고 있다는 분석이 나왔다.",
+      "title": "트럼프 '강제노동 관세' 위법 논란에도…세계 각국 규제 고삐"
     },
     "original:a4ec5e4b882176e30d6f2f0a": {
       "first_seen_kst": "2026-10-05T14:04:17+09:00",
@@ -135838,6 +136439,27 @@
       "source": "이데일리",
       "title": "日 31년 만의 최고금리에도 엔화 약세…원·달러 1380원대 중반으로"
     },
+    "original:e5d0a1a7e0f25b7c70b7a241": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.newsis.com/view/ALSX20261008_0000007786",
+      "source": "뉴시스",
+      "source_body_digest": "b9f89b6aa75e6486f2a19fd3830c2d732c9014aa32d38d7e2addffa16469cec0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:69591a6913309b5091f0e800f6de563cb3a1081c9a16150d5a75d5b38da5b225",
+      "source_fact_keys": [
+        "source_fact:v1:5695af84509d9d8086a5e0036460f07704c40c99ec25b270a9c2a6da25ebf7fe",
+        "source_fact:v1:99aec0b5f3897f1b966d07c77239ea6eedefc3643c735d81dce326ceaa200214",
+        "source_fact:v1:f3deb087b93d25443f5ee952967fe52a5767f56b7324ae99d897ebcee4eb1ce9"
+      ],
+      "source_published_kst": "2026-10-08T14:21+09:00",
+      "source_title": "24X 내셔널 익스체인지, 신주인수권 성과 인센티브 프로그램 확대 계획",
+      "telegram_core_fact": "이번 변경으로 프로그램 참가자에게 제공되는 지분이 확대되고 24X 참가자가 되는 특정 브로커-딜러의 진입 비용이 낮아지며 프로그램이 2028년 6월까지 연장되고 신주인수권 확정 조건이 단순화된다.",
+      "title": "24X 내셔널 익스체인지, 신주인수권 성과 인센티브 프로그램 확대 계획"
+    },
     "original:e5d140d28508b6634ad502ff": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
       "lanes": {
@@ -138271,6 +138893,29 @@
       "source_published_kst": "2026-10-05T15:36+09:00",
       "title": "용인·평택 물길 훑고 이천 수질까지…반도체 방류수 '기준 공백' 드러났다"
     },
+    "original:f3a72db7563cf13e093dcf2e": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171506",
+      "source": "매일경제",
+      "source_body_digest": "0a322da29a1260312c55c670f84f6ac8cc8d09fe2ffc38e3131d39a4fa424650",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:378ac7cf5cd3ff6276be4679138e5092250ab498b703fefb5bbd3f3a8efb7454",
+      "source_fact_keys": [
+        "source_fact:v1:02cb2960e0ecff13c0b2ee689281d348dff2c1c790a390df6eda8ef05bb96ba9",
+        "source_fact:v1:246d3bf700467b936db76048dfa6f897357c5c90e0c30f7fd8985d4bdae50b95",
+        "source_fact:v1:380faf8cc28f9af3d2315a42f35ea53a1e0464e30455f07279d0dd6c437802a6",
+        "source_fact:v1:4d55dcca9ee12d1e4e9867f50656df76a58b2ee5bd2c99356a9dccfcd7788efa",
+        "source_fact:v1:b1c803d0930f142036a026b1e6f42dd3858292d9615dd5788dbfe229c1aaceab"
+      ],
+      "source_published_kst": "2026-10-08T14:54+09:00",
+      "source_title": "LS전선, 한국미래소재 200억 출자…미국 구리 재활용 공략 나선다",
+      "telegram_core_fact": "LS전선이 자회사 한국미래소재에 200억원을 추가 출자한 것을 계기로 미국 구리 재활용 사업 확대에 나선다. LS전선은 한국미래소재의 주주배정 유상증자에 참여해 200억원을 출자한다고 8일 공시했다.",
+      "title": "LS전선, 한국미래소재 200억 출자…미국 구리 재활용 공략 나선다"
+    },
     "original:f3b6d2bf649dd92dc3866707": {
       "first_seen_kst": "2026-09-25T15:40:29+09:00",
       "lanes": {
@@ -139980,6 +140625,25 @@
       ],
       "source_published_kst": "2026-10-07T08:04+09:00",
       "title": "\"AI발 칩 부족 우려, 물가로 번질 수도\"…샌프란 연은 총재의 경고"
+    },
+    "original:fe5f05c761d7061bf481832d": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171895",
+      "source": "매일경제",
+      "source_body_digest": "1e3983f28a435b2b8944711c76db445e774854cd82f46601783b598c0bcb3c3a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7a7dd5778fcfa4f7da1aff05c0a589673fb4100c551cdb4b6462bb7d96c463fe",
+      "source_fact_keys": [
+        "source_fact:v1:d12cafa8f020c7032e2e92605dc4e4e0522060a4499b7f0d4726b4e8a8a4dd78"
+      ],
+      "source_published_kst": "2026-10-08T16:54+09:00",
+      "source_title": "TSMC 9월 매출 전년대비 54.6% 증가…전월보다는 감소",
+      "telegram_core_fact": "TSMC는 지난달 매출이 5,118억5,700만 대만달러로, 지난해 같은 달보다 54.6% 증가했다고 오늘(8일) 밝혔습니다.",
+      "title": "TSMC 9월 매출 전년대비 54.6% 증가…전월보다는 감소"
     },
     "original:fe664370359ce5ebe81c01f1": {
       "first_seen_kst": "2026-10-02T14:00:40+09:00",
@@ -143179,6 +143843,34 @@
       "source_title": "대형 GA 위법행위 반복…3년간 제재 42건·과태료 73억원",
       "telegram_core_fact": "부당한 보험 갈아타기 유도와 불법 수수료 지급 등이 반복되면서 금융당국의 제재 실효성과 GA의 내부통제를 강화해야 한다는 지적이 나온다.",
       "title": "대형 GA 위법행위 반복…3년간 제재 42건·과태료 73억원"
+    },
+    "source_fact:0630001525abd5dc978a68ef": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819150",
+      "source": "뉴시스",
+      "source_body_digest": "b214c9f533eadd1b8a611f3a72c6eab49f8d5ecba4631a5ffcc911844cbcf60b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c794142ca3c0165624e1cf4ceeb28ab0b4838d67e39420dbbe3a32c0597765f0",
+      "source_fact_keys": [
+        "source_fact:v1:0f0539e6e1da217a070c3d6778df15cb8da8a6229d459a7affda4b9d011b90d7",
+        "source_fact:v1:12d58271c4885d1fff8ac7f27fa6adc563d3e3cf547a2a875da834e681ee4242",
+        "source_fact:v1:3ae178ff60ca96959006c75485ff8bd21f714e1c470bdc5d543521b0772fa526",
+        "source_fact:v1:3fda028438cde66e2a99f5ab61382f72705084f91ddfff4e242fe325960c3777",
+        "source_fact:v1:6b375ad1bfd90efc60da24e1b501b9711f5b39b7774caa983674438fd6623601",
+        "source_fact:v1:73d9992f19f1d9e7c72adc31a3908aede36a12e19b8f73edb71ac1cb0a8e955c",
+        "source_fact:v1:876fcc0961573bce44502d4c77abb508145cfd5ca4084e8f3b62b023aac41265",
+        "source_fact:v1:8a58841b9648c49e2e82b6053b13cc91009dc27c73ba739e24abf4171a2b6a13",
+        "source_fact:v1:e2555b05eff4cbe629f8b02151c746880340f6ea0f5d5525caabbc4a80bda28b",
+        "source_fact:v1:eaab8a70d3097d1e5b6c671c508d356072cc60d84982b43bfbd36897dc0c71c8"
+      ],
+      "source_published_kst": "2026-10-08T14:11+09:00",
+      "source_title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대",
+      "telegram_core_fact": "올 3분기 누적 바이오의약품 수출 규모가 수출이 가장 많았던 지난해 3분기까지 수출액보다 15.8% 증가한 66억 달러(약 8조 8261억원)로 잠정집계됐다.",
+      "title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대"
     },
     "source_fact:063995bb888151eb95183780": {
       "first_seen_kst": "2026-10-07T07:24:41+09:00",
@@ -151900,6 +152592,34 @@
       "source_title": "나신평 \"이마트, 워너브라더스 인수 1.4조 투자로 재무부담 확대…과중한 투자\"",
       "telegram_core_fact": "스타필드 프로퍼티스가 투자기구 'RB텐트폴' 지분 100%를 취득해 파라마운트와 워너브라더스 합병 관련 신주에 간접 투자하는 구조다.",
       "title": "나신평 \"이마트, 워너브라더스 인수 1.4조 투자로 재무부담 확대…과중한 투자\""
+    },
+    "source_fact:17859084e1ddb2f819e5944d": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171797",
+      "source": "매일경제",
+      "source_body_digest": "72725ccbb6e0ae138707aa30589a96cd45bb94b19b168e70587e9b1a05da03df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:65a6eeaf2785151a1d50741d6d9551e7304ffbfb1abfd6846e94758b0824a0ed",
+      "source_fact_keys": [
+        "source_fact:v1:1f1bbe8886b9b6ec93b22c0f660aec824508b418bd21c5da82a233eb7266f43b",
+        "source_fact:v1:3a37c67120479f5c26c5c0e50eb191759e04270c9d8e4ca072e1e154d653bb80",
+        "source_fact:v1:3b0e67fff85ce02947f517e9164524bd687d7cc2e3f2f4b8cb271b6e45a6756f",
+        "source_fact:v1:3c1648f03971044420bbc62a3ac4b21b3b0794f40ab717efb81826009b1a4c73",
+        "source_fact:v1:4f0d29740b3a30d9717dbf1c424b495b3ec9d7cfcda859b31ba0d9cef9275e2d",
+        "source_fact:v1:4f84ec81751e762087777048d042c3e37a47b3b40fe0ee141b3f51677703b3e7",
+        "source_fact:v1:6749ea52970f6a5b50627b27719500f35b83bafbbf27dcda584c677052632bff",
+        "source_fact:v1:7890edd621778ce9857b42722a4d750015e0c66538b68f9638dffd07c304cae5",
+        "source_fact:v1:9ca674cb81d4cea68449a341447447e129b337e7deeb3cac45cdf06a43dfe55d",
+        "source_fact:v1:e99167c2b76beb2558d0c2aa7fa803726fa1085852db7484de19c7af8fe73ea6"
+      ],
+      "source_published_kst": "2026-10-08T17:30+09:00",
+      "source_title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다",
+      "telegram_core_fact": "글로벌 투자은행 UBS는 올해 HBM 시장의 비트 출하량 기준 점유율을 SK하이닉스 48%, 삼성전자 31%로 예상했다.",
+      "title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다"
     },
     "source_fact:178c9d393047ff224ad37fae": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
@@ -160714,6 +161434,33 @@
       "source_published_kst": "2026-10-06T05:00+09:00",
       "title": "납품단가 다음은 ‘데이터’⋯AI 시대 대기업·中企 ‘新 갑을관계’ 탄생하나 [AI 신계급사회]"
     },
+    "source_fact:28139ec4c23923a488692c69": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.hankyung.com/article/202610080821i",
+      "source": "한국경제",
+      "source_body_digest": "15ba53efb53c525cd8723a98686219e3db61e80bed6840e6290242a0ba1adc80",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c1bbaf6884425cd579d8ffef7375e1980b94bb6ea977cc3b47a7c9051dba51c",
+      "source_fact_keys": [
+        "source_fact:v1:041cf2e4545963578744897e472fb36ed7894f8ae9274a98809d4903ae383b03",
+        "source_fact:v1:1ccd94df6bc02dd525e9bfef9911fd85562144337a44a0777a92cc4d00b1128f",
+        "source_fact:v1:4f6559c54d399b4f1b5433cd313ca3663c514bf516aceaa91cb9136e46500d97",
+        "source_fact:v1:758a178e9687e3583477ccfb137efe297703fa8ee9cb7cd08a772930005b4de3",
+        "source_fact:v1:a943b75e03be647a73acd48de362a87a3f0c5618f2e107c66766a723c25d593a",
+        "source_fact:v1:b00b10d54dc555a7fcb6ce2ec0cc877e654f1ac2a886307f749a742a9ae19a2b",
+        "source_fact:v1:c91f77972f569b7413465c9fbd55e9dd284cbf2498f6794e7b5c183b7737eba3",
+        "source_fact:v1:cfdbe59cdb35af60cfc6db4215b6fe03e59c206bfdf22cff39706ee264e97ac9",
+        "source_fact:v1:e259e98896bc9e992e34bbd306e2b6f2ba560fe78b27c8bf03dd8cba73933d1d"
+      ],
+      "source_published_kst": "2026-10-08T14:35+09:00",
+      "source_title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나",
+      "telegram_core_fact": "인공지능(AI) 투자 확대에 따른 메모리 호황이 실적을 밀어 올렸지만 주가까지 상승할지는 별개다.",
+      "title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나"
+    },
     "source_fact:281e8b4d6284ad807af3a4bf": {
       "first_seen_kst": "2026-10-08T06:10:43+09:00",
       "lanes": {
@@ -161225,6 +161972,29 @@
       ],
       "source_published_kst": "2026-10-05T18:05+09:00",
       "title": "양산에 '선박 하이브리드 시스템' 실증센터"
+    },
+    "source_fact:295995d79345937599a93d24": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171506",
+      "source": "매일경제",
+      "source_body_digest": "0a322da29a1260312c55c670f84f6ac8cc8d09fe2ffc38e3131d39a4fa424650",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:378ac7cf5cd3ff6276be4679138e5092250ab498b703fefb5bbd3f3a8efb7454",
+      "source_fact_keys": [
+        "source_fact:v1:02cb2960e0ecff13c0b2ee689281d348dff2c1c790a390df6eda8ef05bb96ba9",
+        "source_fact:v1:246d3bf700467b936db76048dfa6f897357c5c90e0c30f7fd8985d4bdae50b95",
+        "source_fact:v1:380faf8cc28f9af3d2315a42f35ea53a1e0464e30455f07279d0dd6c437802a6",
+        "source_fact:v1:4d55dcca9ee12d1e4e9867f50656df76a58b2ee5bd2c99356a9dccfcd7788efa",
+        "source_fact:v1:b1c803d0930f142036a026b1e6f42dd3858292d9615dd5788dbfe229c1aaceab"
+      ],
+      "source_published_kst": "2026-10-08T14:54+09:00",
+      "source_title": "LS전선, 한국미래소재 200억 출자…미국 구리 재활용 공략 나선다",
+      "telegram_core_fact": "LS전선이 자회사 한국미래소재에 200억원을 추가 출자한 것을 계기로 미국 구리 재활용 사업 확대에 나선다. LS전선은 한국미래소재의 주주배정 유상증자에 참여해 200억원을 출자한다고 8일 공시했다.",
+      "title": "LS전선, 한국미래소재 200억 출자…미국 구리 재활용 공략 나선다"
     },
     "source_fact:295aaef28d6a9a556a8c4bf1": {
       "first_seen_kst": "2026-10-07T07:39:19+09:00",
@@ -164710,6 +165480,27 @@
       ],
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
+    },
+    "source_fact:2f7b111168bcdc278ddca52b": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.newsis.com/view/ALSX20261008_0000007786",
+      "source": "뉴시스",
+      "source_body_digest": "b9f89b6aa75e6486f2a19fd3830c2d732c9014aa32d38d7e2addffa16469cec0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:69591a6913309b5091f0e800f6de563cb3a1081c9a16150d5a75d5b38da5b225",
+      "source_fact_keys": [
+        "source_fact:v1:5695af84509d9d8086a5e0036460f07704c40c99ec25b270a9c2a6da25ebf7fe",
+        "source_fact:v1:99aec0b5f3897f1b966d07c77239ea6eedefc3643c735d81dce326ceaa200214",
+        "source_fact:v1:f3deb087b93d25443f5ee952967fe52a5767f56b7324ae99d897ebcee4eb1ce9"
+      ],
+      "source_published_kst": "2026-10-08T14:21+09:00",
+      "source_title": "24X 내셔널 익스체인지, 신주인수권 성과 인센티브 프로그램 확대 계획",
+      "telegram_core_fact": "이번 변경으로 프로그램 참가자에게 제공되는 지분이 확대되고 24X 참가자가 되는 특정 브로커-딜러의 진입 비용이 낮아지며 프로그램이 2028년 6월까지 연장되고 신주인수권 확정 조건이 단순화된다.",
+      "title": "24X 내셔널 익스체인지, 신주인수권 성과 인센티브 프로그램 확대 계획"
     },
     "source_fact:2f8b4542885528cc6caba87c": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -169429,6 +170220,34 @@
       ],
       "source_published_kst": "2026-10-07T08:35+09:00",
       "title": "유니온바이오메트릭스, 172억 규모 육군 사업 수주"
+    },
+    "source_fact:385fc6349392511a4c5ac030": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819150",
+      "source": "뉴시스",
+      "source_body_digest": "b214c9f533eadd1b8a611f3a72c6eab49f8d5ecba4631a5ffcc911844cbcf60b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c794142ca3c0165624e1cf4ceeb28ab0b4838d67e39420dbbe3a32c0597765f0",
+      "source_fact_keys": [
+        "source_fact:v1:0f0539e6e1da217a070c3d6778df15cb8da8a6229d459a7affda4b9d011b90d7",
+        "source_fact:v1:12d58271c4885d1fff8ac7f27fa6adc563d3e3cf547a2a875da834e681ee4242",
+        "source_fact:v1:3ae178ff60ca96959006c75485ff8bd21f714e1c470bdc5d543521b0772fa526",
+        "source_fact:v1:3fda028438cde66e2a99f5ab61382f72705084f91ddfff4e242fe325960c3777",
+        "source_fact:v1:6b375ad1bfd90efc60da24e1b501b9711f5b39b7774caa983674438fd6623601",
+        "source_fact:v1:73d9992f19f1d9e7c72adc31a3908aede36a12e19b8f73edb71ac1cb0a8e955c",
+        "source_fact:v1:876fcc0961573bce44502d4c77abb508145cfd5ca4084e8f3b62b023aac41265",
+        "source_fact:v1:8a58841b9648c49e2e82b6053b13cc91009dc27c73ba739e24abf4171a2b6a13",
+        "source_fact:v1:e2555b05eff4cbe629f8b02151c746880340f6ea0f5d5525caabbc4a80bda28b",
+        "source_fact:v1:eaab8a70d3097d1e5b6c671c508d356072cc60d84982b43bfbd36897dc0c71c8"
+      ],
+      "source_published_kst": "2026-10-08T14:11+09:00",
+      "source_title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대",
+      "telegram_core_fact": "올 3분기 누적 바이오의약품 수출 규모가 수출이 가장 많았던 지난해 3분기까지 수출액보다 15.8% 증가한 66억 달러(약 8조 8261억원)로 잠정집계됐다.",
+      "title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대"
     },
     "source_fact:38720f7078707b78f7f0cc75": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
@@ -175437,6 +176256,27 @@
       "source_published_kst": "2026-10-06T06:10+09:00",
       "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
     },
+    "source_fact:43f7dec9ae2c7de6f631f215": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.newsis.com/view/ALSX20261008_0000007786",
+      "source": "뉴시스",
+      "source_body_digest": "b9f89b6aa75e6486f2a19fd3830c2d732c9014aa32d38d7e2addffa16469cec0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:69591a6913309b5091f0e800f6de563cb3a1081c9a16150d5a75d5b38da5b225",
+      "source_fact_keys": [
+        "source_fact:v1:5695af84509d9d8086a5e0036460f07704c40c99ec25b270a9c2a6da25ebf7fe",
+        "source_fact:v1:99aec0b5f3897f1b966d07c77239ea6eedefc3643c735d81dce326ceaa200214",
+        "source_fact:v1:f3deb087b93d25443f5ee952967fe52a5767f56b7324ae99d897ebcee4eb1ce9"
+      ],
+      "source_published_kst": "2026-10-08T14:21+09:00",
+      "source_title": "24X 내셔널 익스체인지, 신주인수권 성과 인센티브 프로그램 확대 계획",
+      "telegram_core_fact": "이번 변경으로 프로그램 참가자에게 제공되는 지분이 확대되고 24X 참가자가 되는 특정 브로커-딜러의 진입 비용이 낮아지며 프로그램이 2028년 6월까지 연장되고 신주인수권 확정 조건이 단순화된다.",
+      "title": "24X 내셔널 익스체인지, 신주인수권 성과 인센티브 프로그램 확대 계획"
+    },
     "source_fact:4417b8f3114622744ab45890": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -180608,6 +181448,33 @@
       "source_published_kst": "2026-10-06T04:36+09:00",
       "title": "美10년물 국채금리 장중 5.34% 돌파…24년 만에 최고"
     },
+    "source_fact:4e128391960a730c9d51b47d": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.hankyung.com/article/202610080821i",
+      "source": "한국경제",
+      "source_body_digest": "15ba53efb53c525cd8723a98686219e3db61e80bed6840e6290242a0ba1adc80",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c1bbaf6884425cd579d8ffef7375e1980b94bb6ea977cc3b47a7c9051dba51c",
+      "source_fact_keys": [
+        "source_fact:v1:041cf2e4545963578744897e472fb36ed7894f8ae9274a98809d4903ae383b03",
+        "source_fact:v1:1ccd94df6bc02dd525e9bfef9911fd85562144337a44a0777a92cc4d00b1128f",
+        "source_fact:v1:4f6559c54d399b4f1b5433cd313ca3663c514bf516aceaa91cb9136e46500d97",
+        "source_fact:v1:758a178e9687e3583477ccfb137efe297703fa8ee9cb7cd08a772930005b4de3",
+        "source_fact:v1:a943b75e03be647a73acd48de362a87a3f0c5618f2e107c66766a723c25d593a",
+        "source_fact:v1:b00b10d54dc555a7fcb6ce2ec0cc877e654f1ac2a886307f749a742a9ae19a2b",
+        "source_fact:v1:c91f77972f569b7413465c9fbd55e9dd284cbf2498f6794e7b5c183b7737eba3",
+        "source_fact:v1:cfdbe59cdb35af60cfc6db4215b6fe03e59c206bfdf22cff39706ee264e97ac9",
+        "source_fact:v1:e259e98896bc9e992e34bbd306e2b6f2ba560fe78b27c8bf03dd8cba73933d1d"
+      ],
+      "source_published_kst": "2026-10-08T14:35+09:00",
+      "source_title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나",
+      "telegram_core_fact": "인공지능(AI) 투자 확대에 따른 메모리 호황이 실적을 밀어 올렸지만 주가까지 상승할지는 별개다.",
+      "title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나"
+    },
     "source_fact:4e155ab5339f0dd3bb90908e": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
       "lanes": {
@@ -182812,6 +183679,33 @@
       "source_title": "HD건설기계, 美 데이터센터에 3900억 규모 발전용 엔진 공급",
       "telegram_core_fact": "HD건설기계는 미국 발전 인프라 솔루션 업체 이록(ERock)과 가스 발전용 엔진 롱블록(Long Block) 공급 계약을 체결했다고 7일 공시했다.",
       "title": "HD건설기계, 美 데이터센터에 3900억 규모 발전용 엔진 공급"
+    },
+    "source_fact:522edd92c6660bad7f581934": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.hankyung.com/article/202610080821i",
+      "source": "한국경제",
+      "source_body_digest": "15ba53efb53c525cd8723a98686219e3db61e80bed6840e6290242a0ba1adc80",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c1bbaf6884425cd579d8ffef7375e1980b94bb6ea977cc3b47a7c9051dba51c",
+      "source_fact_keys": [
+        "source_fact:v1:041cf2e4545963578744897e472fb36ed7894f8ae9274a98809d4903ae383b03",
+        "source_fact:v1:1ccd94df6bc02dd525e9bfef9911fd85562144337a44a0777a92cc4d00b1128f",
+        "source_fact:v1:4f6559c54d399b4f1b5433cd313ca3663c514bf516aceaa91cb9136e46500d97",
+        "source_fact:v1:758a178e9687e3583477ccfb137efe297703fa8ee9cb7cd08a772930005b4de3",
+        "source_fact:v1:a943b75e03be647a73acd48de362a87a3f0c5618f2e107c66766a723c25d593a",
+        "source_fact:v1:b00b10d54dc555a7fcb6ce2ec0cc877e654f1ac2a886307f749a742a9ae19a2b",
+        "source_fact:v1:c91f77972f569b7413465c9fbd55e9dd284cbf2498f6794e7b5c183b7737eba3",
+        "source_fact:v1:cfdbe59cdb35af60cfc6db4215b6fe03e59c206bfdf22cff39706ee264e97ac9",
+        "source_fact:v1:e259e98896bc9e992e34bbd306e2b6f2ba560fe78b27c8bf03dd8cba73933d1d"
+      ],
+      "source_published_kst": "2026-10-08T14:35+09:00",
+      "source_title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나",
+      "telegram_core_fact": "인공지능(AI) 투자 확대에 따른 메모리 호황이 실적을 밀어 올렸지만 주가까지 상승할지는 별개다.",
+      "title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나"
     },
     "source_fact:52411b2c60a1331f8181e628": {
       "first_seen_kst": "2026-10-08T07:50:51+09:00",
@@ -185075,6 +185969,33 @@
       "source_published_kst": "2026-10-05T10:42+09:00",
       "title": "삼성전자, 코스피 ‘구원투수’ 될까…7000선 안착 시험대[주간증시전망]"
     },
+    "source_fact:56d057f7514bfccbe4f2f32c": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.hankyung.com/article/202610080821i",
+      "source": "한국경제",
+      "source_body_digest": "15ba53efb53c525cd8723a98686219e3db61e80bed6840e6290242a0ba1adc80",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c1bbaf6884425cd579d8ffef7375e1980b94bb6ea977cc3b47a7c9051dba51c",
+      "source_fact_keys": [
+        "source_fact:v1:041cf2e4545963578744897e472fb36ed7894f8ae9274a98809d4903ae383b03",
+        "source_fact:v1:1ccd94df6bc02dd525e9bfef9911fd85562144337a44a0777a92cc4d00b1128f",
+        "source_fact:v1:4f6559c54d399b4f1b5433cd313ca3663c514bf516aceaa91cb9136e46500d97",
+        "source_fact:v1:758a178e9687e3583477ccfb137efe297703fa8ee9cb7cd08a772930005b4de3",
+        "source_fact:v1:a943b75e03be647a73acd48de362a87a3f0c5618f2e107c66766a723c25d593a",
+        "source_fact:v1:b00b10d54dc555a7fcb6ce2ec0cc877e654f1ac2a886307f749a742a9ae19a2b",
+        "source_fact:v1:c91f77972f569b7413465c9fbd55e9dd284cbf2498f6794e7b5c183b7737eba3",
+        "source_fact:v1:cfdbe59cdb35af60cfc6db4215b6fe03e59c206bfdf22cff39706ee264e97ac9",
+        "source_fact:v1:e259e98896bc9e992e34bbd306e2b6f2ba560fe78b27c8bf03dd8cba73933d1d"
+      ],
+      "source_published_kst": "2026-10-08T14:35+09:00",
+      "source_title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나",
+      "telegram_core_fact": "인공지능(AI) 투자 확대에 따른 메모리 호황이 실적을 밀어 올렸지만 주가까지 상승할지는 별개다.",
+      "title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나"
+    },
     "source_fact:56db715d6b1b6ec3d67f9508": {
       "first_seen_kst": "2026-10-06T15:14:29+09:00",
       "lanes": {
@@ -187237,6 +188158,34 @@
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
     },
+    "source_fact:5abd74722b2a8eb3cc37c003": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819150",
+      "source": "뉴시스",
+      "source_body_digest": "b214c9f533eadd1b8a611f3a72c6eab49f8d5ecba4631a5ffcc911844cbcf60b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c794142ca3c0165624e1cf4ceeb28ab0b4838d67e39420dbbe3a32c0597765f0",
+      "source_fact_keys": [
+        "source_fact:v1:0f0539e6e1da217a070c3d6778df15cb8da8a6229d459a7affda4b9d011b90d7",
+        "source_fact:v1:12d58271c4885d1fff8ac7f27fa6adc563d3e3cf547a2a875da834e681ee4242",
+        "source_fact:v1:3ae178ff60ca96959006c75485ff8bd21f714e1c470bdc5d543521b0772fa526",
+        "source_fact:v1:3fda028438cde66e2a99f5ab61382f72705084f91ddfff4e242fe325960c3777",
+        "source_fact:v1:6b375ad1bfd90efc60da24e1b501b9711f5b39b7774caa983674438fd6623601",
+        "source_fact:v1:73d9992f19f1d9e7c72adc31a3908aede36a12e19b8f73edb71ac1cb0a8e955c",
+        "source_fact:v1:876fcc0961573bce44502d4c77abb508145cfd5ca4084e8f3b62b023aac41265",
+        "source_fact:v1:8a58841b9648c49e2e82b6053b13cc91009dc27c73ba739e24abf4171a2b6a13",
+        "source_fact:v1:e2555b05eff4cbe629f8b02151c746880340f6ea0f5d5525caabbc4a80bda28b",
+        "source_fact:v1:eaab8a70d3097d1e5b6c671c508d356072cc60d84982b43bfbd36897dc0c71c8"
+      ],
+      "source_published_kst": "2026-10-08T14:11+09:00",
+      "source_title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대",
+      "telegram_core_fact": "올 3분기 누적 바이오의약품 수출 규모가 수출이 가장 많았던 지난해 3분기까지 수출액보다 15.8% 증가한 66억 달러(약 8조 8261억원)로 잠정집계됐다.",
+      "title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대"
+    },
     "source_fact:5ac4d551a0f86cf9b852403e": {
       "first_seen_kst": "2026-10-06T21:17:11+09:00",
       "lanes": {
@@ -187788,6 +188737,27 @@
       "source_title": "금융지주 상반기 순익 17.6조…증권 73% 뛰고 은행은 8% 감소",
       "telegram_core_fact": "국내 금융지주회사의 올해 상반기 순이익이 17조6000억원으로 전년비 13.7% 증가했다.",
       "title": "금융지주 상반기 순익 17.6조…증권 73% 뛰고 은행은 8% 감소"
+    },
+    "source_fact:5bbb8232bbdd93e6c6f738df": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.newsis.com/view/ALSX20261008_0000007786",
+      "source": "뉴시스",
+      "source_body_digest": "b9f89b6aa75e6486f2a19fd3830c2d732c9014aa32d38d7e2addffa16469cec0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:69591a6913309b5091f0e800f6de563cb3a1081c9a16150d5a75d5b38da5b225",
+      "source_fact_keys": [
+        "source_fact:v1:5695af84509d9d8086a5e0036460f07704c40c99ec25b270a9c2a6da25ebf7fe",
+        "source_fact:v1:99aec0b5f3897f1b966d07c77239ea6eedefc3643c735d81dce326ceaa200214",
+        "source_fact:v1:f3deb087b93d25443f5ee952967fe52a5767f56b7324ae99d897ebcee4eb1ce9"
+      ],
+      "source_published_kst": "2026-10-08T14:21+09:00",
+      "source_title": "24X 내셔널 익스체인지, 신주인수권 성과 인센티브 프로그램 확대 계획",
+      "telegram_core_fact": "이번 변경으로 프로그램 참가자에게 제공되는 지분이 확대되고 24X 참가자가 되는 특정 브로커-딜러의 진입 비용이 낮아지며 프로그램이 2028년 6월까지 연장되고 신주인수권 확정 조건이 단순화된다.",
+      "title": "24X 내셔널 익스체인지, 신주인수권 성과 인센티브 프로그램 확대 계획"
     },
     "source_fact:5bc37956ca321ce910d1e0d1": {
       "first_seen_kst": "2026-10-06T17:24:43+09:00",
@@ -188863,6 +189833,33 @@
       ],
       "source_published_kst": "2026-10-05T21:02+09:00",
       "title": "라디오팜 테라노스틱스, RAD101 2상 종료미팅 완료..3상 준비 착수"
+    },
+    "source_fact:5d4afe8f86624bdae333a894": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.hankyung.com/article/202610080821i",
+      "source": "한국경제",
+      "source_body_digest": "15ba53efb53c525cd8723a98686219e3db61e80bed6840e6290242a0ba1adc80",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c1bbaf6884425cd579d8ffef7375e1980b94bb6ea977cc3b47a7c9051dba51c",
+      "source_fact_keys": [
+        "source_fact:v1:041cf2e4545963578744897e472fb36ed7894f8ae9274a98809d4903ae383b03",
+        "source_fact:v1:1ccd94df6bc02dd525e9bfef9911fd85562144337a44a0777a92cc4d00b1128f",
+        "source_fact:v1:4f6559c54d399b4f1b5433cd313ca3663c514bf516aceaa91cb9136e46500d97",
+        "source_fact:v1:758a178e9687e3583477ccfb137efe297703fa8ee9cb7cd08a772930005b4de3",
+        "source_fact:v1:a943b75e03be647a73acd48de362a87a3f0c5618f2e107c66766a723c25d593a",
+        "source_fact:v1:b00b10d54dc555a7fcb6ce2ec0cc877e654f1ac2a886307f749a742a9ae19a2b",
+        "source_fact:v1:c91f77972f569b7413465c9fbd55e9dd284cbf2498f6794e7b5c183b7737eba3",
+        "source_fact:v1:cfdbe59cdb35af60cfc6db4215b6fe03e59c206bfdf22cff39706ee264e97ac9",
+        "source_fact:v1:e259e98896bc9e992e34bbd306e2b6f2ba560fe78b27c8bf03dd8cba73933d1d"
+      ],
+      "source_published_kst": "2026-10-08T14:35+09:00",
+      "source_title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나",
+      "telegram_core_fact": "인공지능(AI) 투자 확대에 따른 메모리 호황이 실적을 밀어 올렸지만 주가까지 상승할지는 별개다.",
+      "title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나"
     },
     "source_fact:5d67a5d10fb766ceae9a8b75": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
@@ -190895,6 +191892,34 @@
       "source_published_kst": "2026-10-06T10:05+09:00",
       "title": "두산로보틱스, '한국형 피지컬 AI' 시동…989억 국책과제 수주"
     },
+    "source_fact:61af92260e963a65b4fc478f": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171797",
+      "source": "매일경제",
+      "source_body_digest": "72725ccbb6e0ae138707aa30589a96cd45bb94b19b168e70587e9b1a05da03df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:65a6eeaf2785151a1d50741d6d9551e7304ffbfb1abfd6846e94758b0824a0ed",
+      "source_fact_keys": [
+        "source_fact:v1:1f1bbe8886b9b6ec93b22c0f660aec824508b418bd21c5da82a233eb7266f43b",
+        "source_fact:v1:3a37c67120479f5c26c5c0e50eb191759e04270c9d8e4ca072e1e154d653bb80",
+        "source_fact:v1:3b0e67fff85ce02947f517e9164524bd687d7cc2e3f2f4b8cb271b6e45a6756f",
+        "source_fact:v1:3c1648f03971044420bbc62a3ac4b21b3b0794f40ab717efb81826009b1a4c73",
+        "source_fact:v1:4f0d29740b3a30d9717dbf1c424b495b3ec9d7cfcda859b31ba0d9cef9275e2d",
+        "source_fact:v1:4f84ec81751e762087777048d042c3e37a47b3b40fe0ee141b3f51677703b3e7",
+        "source_fact:v1:6749ea52970f6a5b50627b27719500f35b83bafbbf27dcda584c677052632bff",
+        "source_fact:v1:7890edd621778ce9857b42722a4d750015e0c66538b68f9638dffd07c304cae5",
+        "source_fact:v1:9ca674cb81d4cea68449a341447447e129b337e7deeb3cac45cdf06a43dfe55d",
+        "source_fact:v1:e99167c2b76beb2558d0c2aa7fa803726fa1085852db7484de19c7af8fe73ea6"
+      ],
+      "source_published_kst": "2026-10-08T17:30+09:00",
+      "source_title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다",
+      "telegram_core_fact": "글로벌 투자은행 UBS는 올해 HBM 시장의 비트 출하량 기준 점유율을 SK하이닉스 48%, 삼성전자 31%로 예상했다.",
+      "title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다"
+    },
     "source_fact:61d7912ca5f779a387a868fd": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
       "lanes": {
@@ -191764,6 +192789,34 @@
       ],
       "source_published_kst": "2026-10-07T09:31+09:00",
       "title": "KT클라우드, 청라 50MW AIDC 구축 참여…수도권 서부 거점 넓힌다"
+    },
+    "source_fact:6324ea580e97de3c34423c41": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819150",
+      "source": "뉴시스",
+      "source_body_digest": "b214c9f533eadd1b8a611f3a72c6eab49f8d5ecba4631a5ffcc911844cbcf60b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c794142ca3c0165624e1cf4ceeb28ab0b4838d67e39420dbbe3a32c0597765f0",
+      "source_fact_keys": [
+        "source_fact:v1:0f0539e6e1da217a070c3d6778df15cb8da8a6229d459a7affda4b9d011b90d7",
+        "source_fact:v1:12d58271c4885d1fff8ac7f27fa6adc563d3e3cf547a2a875da834e681ee4242",
+        "source_fact:v1:3ae178ff60ca96959006c75485ff8bd21f714e1c470bdc5d543521b0772fa526",
+        "source_fact:v1:3fda028438cde66e2a99f5ab61382f72705084f91ddfff4e242fe325960c3777",
+        "source_fact:v1:6b375ad1bfd90efc60da24e1b501b9711f5b39b7774caa983674438fd6623601",
+        "source_fact:v1:73d9992f19f1d9e7c72adc31a3908aede36a12e19b8f73edb71ac1cb0a8e955c",
+        "source_fact:v1:876fcc0961573bce44502d4c77abb508145cfd5ca4084e8f3b62b023aac41265",
+        "source_fact:v1:8a58841b9648c49e2e82b6053b13cc91009dc27c73ba739e24abf4171a2b6a13",
+        "source_fact:v1:e2555b05eff4cbe629f8b02151c746880340f6ea0f5d5525caabbc4a80bda28b",
+        "source_fact:v1:eaab8a70d3097d1e5b6c671c508d356072cc60d84982b43bfbd36897dc0c71c8"
+      ],
+      "source_published_kst": "2026-10-08T14:11+09:00",
+      "source_title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대",
+      "telegram_core_fact": "올 3분기 누적 바이오의약품 수출 규모가 수출이 가장 많았던 지난해 3분기까지 수출액보다 15.8% 증가한 66억 달러(약 8조 8261억원)로 잠정집계됐다.",
+      "title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대"
     },
     "source_fact:633d876314d1ac1278a57b82": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -197480,6 +198533,34 @@
       "telegram_core_fact": "전례 없는 반도체 호황에 국내 기업이 2분기(4~6월)에만 67조 원 넘는 여윳돈을 쌓았다.",
       "title": "넘치는 기업 곳간…여윳돈 석달 새 3배 늘어 67조 '최대'"
     },
+    "source_fact:6ebcfcba636a946c78b36b08": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171797",
+      "source": "매일경제",
+      "source_body_digest": "72725ccbb6e0ae138707aa30589a96cd45bb94b19b168e70587e9b1a05da03df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:65a6eeaf2785151a1d50741d6d9551e7304ffbfb1abfd6846e94758b0824a0ed",
+      "source_fact_keys": [
+        "source_fact:v1:1f1bbe8886b9b6ec93b22c0f660aec824508b418bd21c5da82a233eb7266f43b",
+        "source_fact:v1:3a37c67120479f5c26c5c0e50eb191759e04270c9d8e4ca072e1e154d653bb80",
+        "source_fact:v1:3b0e67fff85ce02947f517e9164524bd687d7cc2e3f2f4b8cb271b6e45a6756f",
+        "source_fact:v1:3c1648f03971044420bbc62a3ac4b21b3b0794f40ab717efb81826009b1a4c73",
+        "source_fact:v1:4f0d29740b3a30d9717dbf1c424b495b3ec9d7cfcda859b31ba0d9cef9275e2d",
+        "source_fact:v1:4f84ec81751e762087777048d042c3e37a47b3b40fe0ee141b3f51677703b3e7",
+        "source_fact:v1:6749ea52970f6a5b50627b27719500f35b83bafbbf27dcda584c677052632bff",
+        "source_fact:v1:7890edd621778ce9857b42722a4d750015e0c66538b68f9638dffd07c304cae5",
+        "source_fact:v1:9ca674cb81d4cea68449a341447447e129b337e7deeb3cac45cdf06a43dfe55d",
+        "source_fact:v1:e99167c2b76beb2558d0c2aa7fa803726fa1085852db7484de19c7af8fe73ea6"
+      ],
+      "source_published_kst": "2026-10-08T17:30+09:00",
+      "source_title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다",
+      "telegram_core_fact": "글로벌 투자은행 UBS는 올해 HBM 시장의 비트 출하량 기준 점유율을 SK하이닉스 48%, 삼성전자 31%로 예상했다.",
+      "title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다"
+    },
     "source_fact:6ec20602775073291199002e": {
       "first_seen_kst": "2026-10-06T10:41:31+09:00",
       "lanes": {
@@ -199916,6 +200997,34 @@
       "source_published_kst": "2026-10-05T11:20+09:00",
       "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
     },
+    "source_fact:7398545659970cbe79f58bf0": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819150",
+      "source": "뉴시스",
+      "source_body_digest": "b214c9f533eadd1b8a611f3a72c6eab49f8d5ecba4631a5ffcc911844cbcf60b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c794142ca3c0165624e1cf4ceeb28ab0b4838d67e39420dbbe3a32c0597765f0",
+      "source_fact_keys": [
+        "source_fact:v1:0f0539e6e1da217a070c3d6778df15cb8da8a6229d459a7affda4b9d011b90d7",
+        "source_fact:v1:12d58271c4885d1fff8ac7f27fa6adc563d3e3cf547a2a875da834e681ee4242",
+        "source_fact:v1:3ae178ff60ca96959006c75485ff8bd21f714e1c470bdc5d543521b0772fa526",
+        "source_fact:v1:3fda028438cde66e2a99f5ab61382f72705084f91ddfff4e242fe325960c3777",
+        "source_fact:v1:6b375ad1bfd90efc60da24e1b501b9711f5b39b7774caa983674438fd6623601",
+        "source_fact:v1:73d9992f19f1d9e7c72adc31a3908aede36a12e19b8f73edb71ac1cb0a8e955c",
+        "source_fact:v1:876fcc0961573bce44502d4c77abb508145cfd5ca4084e8f3b62b023aac41265",
+        "source_fact:v1:8a58841b9648c49e2e82b6053b13cc91009dc27c73ba739e24abf4171a2b6a13",
+        "source_fact:v1:e2555b05eff4cbe629f8b02151c746880340f6ea0f5d5525caabbc4a80bda28b",
+        "source_fact:v1:eaab8a70d3097d1e5b6c671c508d356072cc60d84982b43bfbd36897dc0c71c8"
+      ],
+      "source_published_kst": "2026-10-08T14:11+09:00",
+      "source_title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대",
+      "telegram_core_fact": "올 3분기 누적 바이오의약품 수출 규모가 수출이 가장 많았던 지난해 3분기까지 수출액보다 15.8% 증가한 66억 달러(약 8조 8261억원)로 잠정집계됐다.",
+      "title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대"
+    },
     "source_fact:739cf99b782ab76948f142c1": {
       "first_seen_kst": "2026-10-06T12:10:48+09:00",
       "lanes": {
@@ -200163,6 +201272,29 @@
       ],
       "source_published_kst": "2026-10-07T15:40+09:00",
       "title": "유가·금리 반등에 실적 경계감…코스피, 6800선 마감"
+    },
+    "source_fact:743b8b0288f71a2099cf56bd": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171506",
+      "source": "매일경제",
+      "source_body_digest": "0a322da29a1260312c55c670f84f6ac8cc8d09fe2ffc38e3131d39a4fa424650",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:378ac7cf5cd3ff6276be4679138e5092250ab498b703fefb5bbd3f3a8efb7454",
+      "source_fact_keys": [
+        "source_fact:v1:02cb2960e0ecff13c0b2ee689281d348dff2c1c790a390df6eda8ef05bb96ba9",
+        "source_fact:v1:246d3bf700467b936db76048dfa6f897357c5c90e0c30f7fd8985d4bdae50b95",
+        "source_fact:v1:380faf8cc28f9af3d2315a42f35ea53a1e0464e30455f07279d0dd6c437802a6",
+        "source_fact:v1:4d55dcca9ee12d1e4e9867f50656df76a58b2ee5bd2c99356a9dccfcd7788efa",
+        "source_fact:v1:b1c803d0930f142036a026b1e6f42dd3858292d9615dd5788dbfe229c1aaceab"
+      ],
+      "source_published_kst": "2026-10-08T14:54+09:00",
+      "source_title": "LS전선, 한국미래소재 200억 출자…미국 구리 재활용 공략 나선다",
+      "telegram_core_fact": "LS전선이 자회사 한국미래소재에 200억원을 추가 출자한 것을 계기로 미국 구리 재활용 사업 확대에 나선다. LS전선은 한국미래소재의 주주배정 유상증자에 참여해 200억원을 출자한다고 8일 공시했다.",
+      "title": "LS전선, 한국미래소재 200억 출자…미국 구리 재활용 공략 나선다"
     },
     "source_fact:74519f8a7b5d8a11ff2949fd": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -201900,6 +203032,33 @@
       ],
       "source_published_kst": "2026-10-06T16:33+09:00",
       "title": "'컨테이너 운임 지수' 소폭 하락…유럽·지중해·중동 약세"
+    },
+    "source_fact:7799adf8311a0581625cfd4a": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.hankyung.com/article/202610080821i",
+      "source": "한국경제",
+      "source_body_digest": "15ba53efb53c525cd8723a98686219e3db61e80bed6840e6290242a0ba1adc80",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c1bbaf6884425cd579d8ffef7375e1980b94bb6ea977cc3b47a7c9051dba51c",
+      "source_fact_keys": [
+        "source_fact:v1:041cf2e4545963578744897e472fb36ed7894f8ae9274a98809d4903ae383b03",
+        "source_fact:v1:1ccd94df6bc02dd525e9bfef9911fd85562144337a44a0777a92cc4d00b1128f",
+        "source_fact:v1:4f6559c54d399b4f1b5433cd313ca3663c514bf516aceaa91cb9136e46500d97",
+        "source_fact:v1:758a178e9687e3583477ccfb137efe297703fa8ee9cb7cd08a772930005b4de3",
+        "source_fact:v1:a943b75e03be647a73acd48de362a87a3f0c5618f2e107c66766a723c25d593a",
+        "source_fact:v1:b00b10d54dc555a7fcb6ce2ec0cc877e654f1ac2a886307f749a742a9ae19a2b",
+        "source_fact:v1:c91f77972f569b7413465c9fbd55e9dd284cbf2498f6794e7b5c183b7737eba3",
+        "source_fact:v1:cfdbe59cdb35af60cfc6db4215b6fe03e59c206bfdf22cff39706ee264e97ac9",
+        "source_fact:v1:e259e98896bc9e992e34bbd306e2b6f2ba560fe78b27c8bf03dd8cba73933d1d"
+      ],
+      "source_published_kst": "2026-10-08T14:35+09:00",
+      "source_title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나",
+      "telegram_core_fact": "인공지능(AI) 투자 확대에 따른 메모리 호황이 실적을 밀어 올렸지만 주가까지 상승할지는 별개다.",
+      "title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나"
     },
     "source_fact:779ead7dfca8f1f201bee1aa": {
       "first_seen_kst": "2026-10-07T23:23:06+09:00",
@@ -205201,6 +206360,34 @@
       "source_title": "스포츠레이더 그룹, 코칭사업 1억7000만 달러 매각…핵심 집중",
       "telegram_core_fact": "스포츠레이더 그룹(SRAD)이 자회사 시너지 스포츠(Synergy Sports)의 코칭·스카우팅 사업부인 아트리움 스포츠(Atrium Sports)를 팀웍스 이노베이션스(Teamworks Innovations)에 현금 1억7000만 달러를 받고 매각하는 확정 계약을 체결했다고 7일 발표했다.",
       "title": "스포츠레이더 그룹, 코칭사업 1억7000만 달러 매각…핵심 집중"
+    },
+    "source_fact:7dffb14f267d20b4ed995422": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171797",
+      "source": "매일경제",
+      "source_body_digest": "72725ccbb6e0ae138707aa30589a96cd45bb94b19b168e70587e9b1a05da03df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:65a6eeaf2785151a1d50741d6d9551e7304ffbfb1abfd6846e94758b0824a0ed",
+      "source_fact_keys": [
+        "source_fact:v1:1f1bbe8886b9b6ec93b22c0f660aec824508b418bd21c5da82a233eb7266f43b",
+        "source_fact:v1:3a37c67120479f5c26c5c0e50eb191759e04270c9d8e4ca072e1e154d653bb80",
+        "source_fact:v1:3b0e67fff85ce02947f517e9164524bd687d7cc2e3f2f4b8cb271b6e45a6756f",
+        "source_fact:v1:3c1648f03971044420bbc62a3ac4b21b3b0794f40ab717efb81826009b1a4c73",
+        "source_fact:v1:4f0d29740b3a30d9717dbf1c424b495b3ec9d7cfcda859b31ba0d9cef9275e2d",
+        "source_fact:v1:4f84ec81751e762087777048d042c3e37a47b3b40fe0ee141b3f51677703b3e7",
+        "source_fact:v1:6749ea52970f6a5b50627b27719500f35b83bafbbf27dcda584c677052632bff",
+        "source_fact:v1:7890edd621778ce9857b42722a4d750015e0c66538b68f9638dffd07c304cae5",
+        "source_fact:v1:9ca674cb81d4cea68449a341447447e129b337e7deeb3cac45cdf06a43dfe55d",
+        "source_fact:v1:e99167c2b76beb2558d0c2aa7fa803726fa1085852db7484de19c7af8fe73ea6"
+      ],
+      "source_published_kst": "2026-10-08T17:30+09:00",
+      "source_title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다",
+      "telegram_core_fact": "글로벌 투자은행 UBS는 올해 HBM 시장의 비트 출하량 기준 점유율을 SK하이닉스 48%, 삼성전자 31%로 예상했다.",
+      "title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다"
     },
     "source_fact:7e217679efc0de8a5886c80b": {
       "first_seen_kst": "2026-10-07T09:44:16+09:00",
@@ -212136,6 +213323,34 @@
       "source_published_kst": "2026-10-06T16:00+09:00",
       "title": "롯데백화점, 업계 사상 첫 외국인 매출 1조 돌파…\"상징적 성과\""
     },
+    "source_fact:8c07bbcc203d2168848bdc14": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171797",
+      "source": "매일경제",
+      "source_body_digest": "72725ccbb6e0ae138707aa30589a96cd45bb94b19b168e70587e9b1a05da03df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:65a6eeaf2785151a1d50741d6d9551e7304ffbfb1abfd6846e94758b0824a0ed",
+      "source_fact_keys": [
+        "source_fact:v1:1f1bbe8886b9b6ec93b22c0f660aec824508b418bd21c5da82a233eb7266f43b",
+        "source_fact:v1:3a37c67120479f5c26c5c0e50eb191759e04270c9d8e4ca072e1e154d653bb80",
+        "source_fact:v1:3b0e67fff85ce02947f517e9164524bd687d7cc2e3f2f4b8cb271b6e45a6756f",
+        "source_fact:v1:3c1648f03971044420bbc62a3ac4b21b3b0794f40ab717efb81826009b1a4c73",
+        "source_fact:v1:4f0d29740b3a30d9717dbf1c424b495b3ec9d7cfcda859b31ba0d9cef9275e2d",
+        "source_fact:v1:4f84ec81751e762087777048d042c3e37a47b3b40fe0ee141b3f51677703b3e7",
+        "source_fact:v1:6749ea52970f6a5b50627b27719500f35b83bafbbf27dcda584c677052632bff",
+        "source_fact:v1:7890edd621778ce9857b42722a4d750015e0c66538b68f9638dffd07c304cae5",
+        "source_fact:v1:9ca674cb81d4cea68449a341447447e129b337e7deeb3cac45cdf06a43dfe55d",
+        "source_fact:v1:e99167c2b76beb2558d0c2aa7fa803726fa1085852db7484de19c7af8fe73ea6"
+      ],
+      "source_published_kst": "2026-10-08T17:30+09:00",
+      "source_title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다",
+      "telegram_core_fact": "글로벌 투자은행 UBS는 올해 HBM 시장의 비트 출하량 기준 점유율을 SK하이닉스 48%, 삼성전자 31%로 예상했다.",
+      "title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다"
+    },
     "source_fact:8c0b28c96efa25bba053a3bb": {
       "first_seen_kst": "2026-10-08T05:17:22+09:00",
       "lanes": {
@@ -213799,6 +215014,34 @@
       "source_title": "'이상기후 대응' 농진청, 여름철 배추 재배 적지 확대 등 지원 | 연합뉴스",
       "telegram_core_fact": "김대현 국립원예특작과학원장은 \"준고랭지 여름철 배추 재배 적지를 확대하고 신품종·신기술을 확산해 여름철 배추의 안정적인 생산·공급 기반을 더 강화해 나가겠다\"고 말했다. 농촌진흥청은 여름철 배추 수급 불안에 대응하기 위해 '준고랭지 여름철 배추 안정 생산 체계 구축 사업'을 한다고 8일 밝혔다.",
       "title": "'이상기후 대응' 농진청, 여름철 배추 재배 적지 확대 등 지원 | 연합뉴스"
+    },
+    "source_fact:8f797073bb36623235331fbc": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171797",
+      "source": "매일경제",
+      "source_body_digest": "72725ccbb6e0ae138707aa30589a96cd45bb94b19b168e70587e9b1a05da03df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:65a6eeaf2785151a1d50741d6d9551e7304ffbfb1abfd6846e94758b0824a0ed",
+      "source_fact_keys": [
+        "source_fact:v1:1f1bbe8886b9b6ec93b22c0f660aec824508b418bd21c5da82a233eb7266f43b",
+        "source_fact:v1:3a37c67120479f5c26c5c0e50eb191759e04270c9d8e4ca072e1e154d653bb80",
+        "source_fact:v1:3b0e67fff85ce02947f517e9164524bd687d7cc2e3f2f4b8cb271b6e45a6756f",
+        "source_fact:v1:3c1648f03971044420bbc62a3ac4b21b3b0794f40ab717efb81826009b1a4c73",
+        "source_fact:v1:4f0d29740b3a30d9717dbf1c424b495b3ec9d7cfcda859b31ba0d9cef9275e2d",
+        "source_fact:v1:4f84ec81751e762087777048d042c3e37a47b3b40fe0ee141b3f51677703b3e7",
+        "source_fact:v1:6749ea52970f6a5b50627b27719500f35b83bafbbf27dcda584c677052632bff",
+        "source_fact:v1:7890edd621778ce9857b42722a4d750015e0c66538b68f9638dffd07c304cae5",
+        "source_fact:v1:9ca674cb81d4cea68449a341447447e129b337e7deeb3cac45cdf06a43dfe55d",
+        "source_fact:v1:e99167c2b76beb2558d0c2aa7fa803726fa1085852db7484de19c7af8fe73ea6"
+      ],
+      "source_published_kst": "2026-10-08T17:30+09:00",
+      "source_title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다",
+      "telegram_core_fact": "글로벌 투자은행 UBS는 올해 HBM 시장의 비트 출하량 기준 점유율을 SK하이닉스 48%, 삼성전자 31%로 예상했다.",
+      "title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다"
     },
     "source_fact:8f79f70405e8fadd8d636514": {
       "first_seen_kst": "2026-10-07T23:23:06+09:00",
@@ -215735,6 +216978,29 @@
       ],
       "source_published_kst": "2026-10-07T09:42+09:00",
       "title": "경기도, 생산단계 수산물 유해물질검사 항목 95→167개 확대 | 연합뉴스"
+    },
+    "source_fact:93a5e98b9630c2d03e0e56ab": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171506",
+      "source": "매일경제",
+      "source_body_digest": "0a322da29a1260312c55c670f84f6ac8cc8d09fe2ffc38e3131d39a4fa424650",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:378ac7cf5cd3ff6276be4679138e5092250ab498b703fefb5bbd3f3a8efb7454",
+      "source_fact_keys": [
+        "source_fact:v1:02cb2960e0ecff13c0b2ee689281d348dff2c1c790a390df6eda8ef05bb96ba9",
+        "source_fact:v1:246d3bf700467b936db76048dfa6f897357c5c90e0c30f7fd8985d4bdae50b95",
+        "source_fact:v1:380faf8cc28f9af3d2315a42f35ea53a1e0464e30455f07279d0dd6c437802a6",
+        "source_fact:v1:4d55dcca9ee12d1e4e9867f50656df76a58b2ee5bd2c99356a9dccfcd7788efa",
+        "source_fact:v1:b1c803d0930f142036a026b1e6f42dd3858292d9615dd5788dbfe229c1aaceab"
+      ],
+      "source_published_kst": "2026-10-08T14:54+09:00",
+      "source_title": "LS전선, 한국미래소재 200억 출자…미국 구리 재활용 공략 나선다",
+      "telegram_core_fact": "LS전선이 자회사 한국미래소재에 200억원을 추가 출자한 것을 계기로 미국 구리 재활용 사업 확대에 나선다. LS전선은 한국미래소재의 주주배정 유상증자에 참여해 200억원을 출자한다고 8일 공시했다.",
+      "title": "LS전선, 한국미래소재 200억 출자…미국 구리 재활용 공략 나선다"
     },
     "source_fact:93b0fbde6fc2bfafce80475f": {
       "first_seen_kst": "2026-10-07T06:28:41+09:00",
@@ -217749,6 +219015,34 @@
       ],
       "source_published_kst": "2026-10-06T11:30+09:00",
       "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
+    },
+    "source_fact:9792e17de9ce8b8b402b74d2": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819150",
+      "source": "뉴시스",
+      "source_body_digest": "b214c9f533eadd1b8a611f3a72c6eab49f8d5ecba4631a5ffcc911844cbcf60b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c794142ca3c0165624e1cf4ceeb28ab0b4838d67e39420dbbe3a32c0597765f0",
+      "source_fact_keys": [
+        "source_fact:v1:0f0539e6e1da217a070c3d6778df15cb8da8a6229d459a7affda4b9d011b90d7",
+        "source_fact:v1:12d58271c4885d1fff8ac7f27fa6adc563d3e3cf547a2a875da834e681ee4242",
+        "source_fact:v1:3ae178ff60ca96959006c75485ff8bd21f714e1c470bdc5d543521b0772fa526",
+        "source_fact:v1:3fda028438cde66e2a99f5ab61382f72705084f91ddfff4e242fe325960c3777",
+        "source_fact:v1:6b375ad1bfd90efc60da24e1b501b9711f5b39b7774caa983674438fd6623601",
+        "source_fact:v1:73d9992f19f1d9e7c72adc31a3908aede36a12e19b8f73edb71ac1cb0a8e955c",
+        "source_fact:v1:876fcc0961573bce44502d4c77abb508145cfd5ca4084e8f3b62b023aac41265",
+        "source_fact:v1:8a58841b9648c49e2e82b6053b13cc91009dc27c73ba739e24abf4171a2b6a13",
+        "source_fact:v1:e2555b05eff4cbe629f8b02151c746880340f6ea0f5d5525caabbc4a80bda28b",
+        "source_fact:v1:eaab8a70d3097d1e5b6c671c508d356072cc60d84982b43bfbd36897dc0c71c8"
+      ],
+      "source_published_kst": "2026-10-08T14:11+09:00",
+      "source_title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대",
+      "telegram_core_fact": "올 3분기 누적 바이오의약품 수출 규모가 수출이 가장 많았던 지난해 3분기까지 수출액보다 15.8% 증가한 66억 달러(약 8조 8261억원)로 잠정집계됐다.",
+      "title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대"
     },
     "source_fact:97a30e6a605dd2f5ab786183": {
       "first_seen_kst": "2026-10-08T00:39:44+09:00",
@@ -219863,6 +221157,33 @@
       "telegram_core_fact": "공정위 심사관은 SK에너지·현대오일뱅크가 약 4년간 유류 가격정보를 교환하고 올해 3월 두 차례 가격을 담합했다는 혐의로 심의에 넘겼다. 관련 매출은 약 44.1조원이며 최종 위법 여부와 제재는 미확정이다.",
       "title": "중동 전쟁에도 44조 기름값 담합 의혹…SK에너지·HD현대오일뱅크 ‘공정위 심판대’"
     },
+    "source_fact:9bb63f23b144ba5647ad71e5": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.hankyung.com/article/202610080821i",
+      "source": "한국경제",
+      "source_body_digest": "15ba53efb53c525cd8723a98686219e3db61e80bed6840e6290242a0ba1adc80",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c1bbaf6884425cd579d8ffef7375e1980b94bb6ea977cc3b47a7c9051dba51c",
+      "source_fact_keys": [
+        "source_fact:v1:041cf2e4545963578744897e472fb36ed7894f8ae9274a98809d4903ae383b03",
+        "source_fact:v1:1ccd94df6bc02dd525e9bfef9911fd85562144337a44a0777a92cc4d00b1128f",
+        "source_fact:v1:4f6559c54d399b4f1b5433cd313ca3663c514bf516aceaa91cb9136e46500d97",
+        "source_fact:v1:758a178e9687e3583477ccfb137efe297703fa8ee9cb7cd08a772930005b4de3",
+        "source_fact:v1:a943b75e03be647a73acd48de362a87a3f0c5618f2e107c66766a723c25d593a",
+        "source_fact:v1:b00b10d54dc555a7fcb6ce2ec0cc877e654f1ac2a886307f749a742a9ae19a2b",
+        "source_fact:v1:c91f77972f569b7413465c9fbd55e9dd284cbf2498f6794e7b5c183b7737eba3",
+        "source_fact:v1:cfdbe59cdb35af60cfc6db4215b6fe03e59c206bfdf22cff39706ee264e97ac9",
+        "source_fact:v1:e259e98896bc9e992e34bbd306e2b6f2ba560fe78b27c8bf03dd8cba73933d1d"
+      ],
+      "source_published_kst": "2026-10-08T14:35+09:00",
+      "source_title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나",
+      "telegram_core_fact": "인공지능(AI) 투자 확대에 따른 메모리 호황이 실적을 밀어 올렸지만 주가까지 상승할지는 별개다.",
+      "title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나"
+    },
     "source_fact:9bbe63567f29a3bf8e64c9e3": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
       "lanes": {
@@ -220981,6 +222302,34 @@
       "source_title": "[속보]뉴욕증시 사상 최고치에도…코스피 연일 하락세",
       "telegram_core_fact": "현재까지 코스피 시장에서 개인 투자자 홀로 4687억원 순매수 중이며 외국인과 기관 투자자가 각각 4240억원 758억원 순매도 중이다. 미국 증시가 사상 최고치 행진을 이어가고 미 국채금리 상승세까지 꺾이고 있으나 코스피는 연일 하락세를 면치 못하고 있다.",
       "title": "[속보]뉴욕증시 사상 최고치에도…코스피 연일 하락세"
+    },
+    "source_fact:9de8f0f1ab20d09905ef2d3a": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819150",
+      "source": "뉴시스",
+      "source_body_digest": "b214c9f533eadd1b8a611f3a72c6eab49f8d5ecba4631a5ffcc911844cbcf60b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c794142ca3c0165624e1cf4ceeb28ab0b4838d67e39420dbbe3a32c0597765f0",
+      "source_fact_keys": [
+        "source_fact:v1:0f0539e6e1da217a070c3d6778df15cb8da8a6229d459a7affda4b9d011b90d7",
+        "source_fact:v1:12d58271c4885d1fff8ac7f27fa6adc563d3e3cf547a2a875da834e681ee4242",
+        "source_fact:v1:3ae178ff60ca96959006c75485ff8bd21f714e1c470bdc5d543521b0772fa526",
+        "source_fact:v1:3fda028438cde66e2a99f5ab61382f72705084f91ddfff4e242fe325960c3777",
+        "source_fact:v1:6b375ad1bfd90efc60da24e1b501b9711f5b39b7774caa983674438fd6623601",
+        "source_fact:v1:73d9992f19f1d9e7c72adc31a3908aede36a12e19b8f73edb71ac1cb0a8e955c",
+        "source_fact:v1:876fcc0961573bce44502d4c77abb508145cfd5ca4084e8f3b62b023aac41265",
+        "source_fact:v1:8a58841b9648c49e2e82b6053b13cc91009dc27c73ba739e24abf4171a2b6a13",
+        "source_fact:v1:e2555b05eff4cbe629f8b02151c746880340f6ea0f5d5525caabbc4a80bda28b",
+        "source_fact:v1:eaab8a70d3097d1e5b6c671c508d356072cc60d84982b43bfbd36897dc0c71c8"
+      ],
+      "source_published_kst": "2026-10-08T14:11+09:00",
+      "source_title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대",
+      "telegram_core_fact": "올 3분기 누적 바이오의약품 수출 규모가 수출이 가장 많았던 지난해 3분기까지 수출액보다 15.8% 증가한 66억 달러(약 8조 8261억원)로 잠정집계됐다.",
+      "title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대"
     },
     "source_fact:9df2ce70c6b10bd25f557deb": {
       "first_seen_kst": "2026-10-08T13:46:05+09:00",
@@ -223778,6 +225127,29 @@
       ],
       "source_published_kst": "2026-10-05T20:03+09:00",
       "title": "인스메드, CFO 10월 30일 사임…연간 매출 가이던스 유지"
+    },
+    "source_fact:a349da5f05da32dc416280c2": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171506",
+      "source": "매일경제",
+      "source_body_digest": "0a322da29a1260312c55c670f84f6ac8cc8d09fe2ffc38e3131d39a4fa424650",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:378ac7cf5cd3ff6276be4679138e5092250ab498b703fefb5bbd3f3a8efb7454",
+      "source_fact_keys": [
+        "source_fact:v1:02cb2960e0ecff13c0b2ee689281d348dff2c1c790a390df6eda8ef05bb96ba9",
+        "source_fact:v1:246d3bf700467b936db76048dfa6f897357c5c90e0c30f7fd8985d4bdae50b95",
+        "source_fact:v1:380faf8cc28f9af3d2315a42f35ea53a1e0464e30455f07279d0dd6c437802a6",
+        "source_fact:v1:4d55dcca9ee12d1e4e9867f50656df76a58b2ee5bd2c99356a9dccfcd7788efa",
+        "source_fact:v1:b1c803d0930f142036a026b1e6f42dd3858292d9615dd5788dbfe229c1aaceab"
+      ],
+      "source_published_kst": "2026-10-08T14:54+09:00",
+      "source_title": "LS전선, 한국미래소재 200억 출자…미국 구리 재활용 공략 나선다",
+      "telegram_core_fact": "LS전선이 자회사 한국미래소재에 200억원을 추가 출자한 것을 계기로 미국 구리 재활용 사업 확대에 나선다. LS전선은 한국미래소재의 주주배정 유상증자에 참여해 200억원을 출자한다고 8일 공시했다.",
+      "title": "LS전선, 한국미래소재 200억 출자…미국 구리 재활용 공략 나선다"
     },
     "source_fact:a34a96a059a58dc4276d5e03": {
       "first_seen_kst": "2026-10-06T16:30:27+09:00",
@@ -237278,6 +238650,33 @@
       "source_published_kst": "2026-10-06T17:12+09:00",
       "title": "오일머니 줄선 오픈AI … 42조원 투자유치 추진"
     },
+    "source_fact:bedba40cc49cbee12c8fd190": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.hankyung.com/article/202610080821i",
+      "source": "한국경제",
+      "source_body_digest": "15ba53efb53c525cd8723a98686219e3db61e80bed6840e6290242a0ba1adc80",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c1bbaf6884425cd579d8ffef7375e1980b94bb6ea977cc3b47a7c9051dba51c",
+      "source_fact_keys": [
+        "source_fact:v1:041cf2e4545963578744897e472fb36ed7894f8ae9274a98809d4903ae383b03",
+        "source_fact:v1:1ccd94df6bc02dd525e9bfef9911fd85562144337a44a0777a92cc4d00b1128f",
+        "source_fact:v1:4f6559c54d399b4f1b5433cd313ca3663c514bf516aceaa91cb9136e46500d97",
+        "source_fact:v1:758a178e9687e3583477ccfb137efe297703fa8ee9cb7cd08a772930005b4de3",
+        "source_fact:v1:a943b75e03be647a73acd48de362a87a3f0c5618f2e107c66766a723c25d593a",
+        "source_fact:v1:b00b10d54dc555a7fcb6ce2ec0cc877e654f1ac2a886307f749a742a9ae19a2b",
+        "source_fact:v1:c91f77972f569b7413465c9fbd55e9dd284cbf2498f6794e7b5c183b7737eba3",
+        "source_fact:v1:cfdbe59cdb35af60cfc6db4215b6fe03e59c206bfdf22cff39706ee264e97ac9",
+        "source_fact:v1:e259e98896bc9e992e34bbd306e2b6f2ba560fe78b27c8bf03dd8cba73933d1d"
+      ],
+      "source_published_kst": "2026-10-08T14:35+09:00",
+      "source_title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나",
+      "telegram_core_fact": "인공지능(AI) 투자 확대에 따른 메모리 호황이 실적을 밀어 올렸지만 주가까지 상승할지는 별개다.",
+      "title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나"
+    },
     "source_fact:bee9c8ea4bfd25db7b1891f3": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
@@ -237728,6 +239127,34 @@
       "source_title": "메리츠證 \"삼성전자 3분기 메모리 실적 예상 웃돌아…D램·낸드 가격 경쟁력 지속\"",
       "telegram_core_fact": "김선우 연구원은 \"당사의 최근 전망치 대비 메모리에서 2조2000억원 기대 이상의 성과를 기록한 것으로 추정된다\"며 \"급격한 원화 강세로 비우호적인 사업 환경이 조성됐음에도 업계 평균을 웃도는 견조한 판매가격 정책이 실적 개선을 이끈 것으로 판단한다\"고 설명했다.",
       "title": "메리츠證 \"삼성전자 3분기 메모리 실적 예상 웃돌아…D램·낸드 가격 경쟁력 지속\""
+    },
+    "source_fact:c005f01cb434d59a20e6148e": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171797",
+      "source": "매일경제",
+      "source_body_digest": "72725ccbb6e0ae138707aa30589a96cd45bb94b19b168e70587e9b1a05da03df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:65a6eeaf2785151a1d50741d6d9551e7304ffbfb1abfd6846e94758b0824a0ed",
+      "source_fact_keys": [
+        "source_fact:v1:1f1bbe8886b9b6ec93b22c0f660aec824508b418bd21c5da82a233eb7266f43b",
+        "source_fact:v1:3a37c67120479f5c26c5c0e50eb191759e04270c9d8e4ca072e1e154d653bb80",
+        "source_fact:v1:3b0e67fff85ce02947f517e9164524bd687d7cc2e3f2f4b8cb271b6e45a6756f",
+        "source_fact:v1:3c1648f03971044420bbc62a3ac4b21b3b0794f40ab717efb81826009b1a4c73",
+        "source_fact:v1:4f0d29740b3a30d9717dbf1c424b495b3ec9d7cfcda859b31ba0d9cef9275e2d",
+        "source_fact:v1:4f84ec81751e762087777048d042c3e37a47b3b40fe0ee141b3f51677703b3e7",
+        "source_fact:v1:6749ea52970f6a5b50627b27719500f35b83bafbbf27dcda584c677052632bff",
+        "source_fact:v1:7890edd621778ce9857b42722a4d750015e0c66538b68f9638dffd07c304cae5",
+        "source_fact:v1:9ca674cb81d4cea68449a341447447e129b337e7deeb3cac45cdf06a43dfe55d",
+        "source_fact:v1:e99167c2b76beb2558d0c2aa7fa803726fa1085852db7484de19c7af8fe73ea6"
+      ],
+      "source_published_kst": "2026-10-08T17:30+09:00",
+      "source_title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다",
+      "telegram_core_fact": "글로벌 투자은행 UBS는 올해 HBM 시장의 비트 출하량 기준 점유율을 SK하이닉스 48%, 삼성전자 31%로 예상했다.",
+      "title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다"
     },
     "source_fact:c01de5fa34672858edb0957c": {
       "first_seen_kst": "2026-10-06T01:41:59+09:00",
@@ -238423,6 +239850,34 @@
       "source_title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매",
       "telegram_core_fact": "10년 만기 미국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
       "title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매"
+    },
+    "source_fact:c158eb31f72a5b0d4c901549": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819150",
+      "source": "뉴시스",
+      "source_body_digest": "b214c9f533eadd1b8a611f3a72c6eab49f8d5ecba4631a5ffcc911844cbcf60b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c794142ca3c0165624e1cf4ceeb28ab0b4838d67e39420dbbe3a32c0597765f0",
+      "source_fact_keys": [
+        "source_fact:v1:0f0539e6e1da217a070c3d6778df15cb8da8a6229d459a7affda4b9d011b90d7",
+        "source_fact:v1:12d58271c4885d1fff8ac7f27fa6adc563d3e3cf547a2a875da834e681ee4242",
+        "source_fact:v1:3ae178ff60ca96959006c75485ff8bd21f714e1c470bdc5d543521b0772fa526",
+        "source_fact:v1:3fda028438cde66e2a99f5ab61382f72705084f91ddfff4e242fe325960c3777",
+        "source_fact:v1:6b375ad1bfd90efc60da24e1b501b9711f5b39b7774caa983674438fd6623601",
+        "source_fact:v1:73d9992f19f1d9e7c72adc31a3908aede36a12e19b8f73edb71ac1cb0a8e955c",
+        "source_fact:v1:876fcc0961573bce44502d4c77abb508145cfd5ca4084e8f3b62b023aac41265",
+        "source_fact:v1:8a58841b9648c49e2e82b6053b13cc91009dc27c73ba739e24abf4171a2b6a13",
+        "source_fact:v1:e2555b05eff4cbe629f8b02151c746880340f6ea0f5d5525caabbc4a80bda28b",
+        "source_fact:v1:eaab8a70d3097d1e5b6c671c508d356072cc60d84982b43bfbd36897dc0c71c8"
+      ],
+      "source_published_kst": "2026-10-08T14:11+09:00",
+      "source_title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대",
+      "telegram_core_fact": "올 3분기 누적 바이오의약품 수출 규모가 수출이 가장 많았던 지난해 3분기까지 수출액보다 15.8% 증가한 66억 달러(약 8조 8261억원)로 잠정집계됐다.",
+      "title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대"
     },
     "source_fact:c16038f3414065bad02ac92f": {
       "first_seen_kst": "2026-10-07T20:05:17+09:00",
@@ -240645,6 +242100,25 @@
       "source_title": "미래에셋 \"美타겟데일리커버드콜 3종, 올해 개인 1조 넘게 매수\"",
       "telegram_core_fact": "미래에셋자산운용은 미국 3대 대표지수를 기초로 하는 'TIGER 미국 타겟데일리커버드콜 ETF(상장지수펀드)' 3종의 올해 개인 누적 순매수가 1조원을 돌파했다고 7일 밝혔다.",
       "title": "미래에셋 \"美타겟데일리커버드콜 3종, 올해 개인 1조 넘게 매수\""
+    },
+    "source_fact:c4f3b6e34c89a2c3f5413ab8": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171895",
+      "source": "매일경제",
+      "source_body_digest": "1e3983f28a435b2b8944711c76db445e774854cd82f46601783b598c0bcb3c3a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7a7dd5778fcfa4f7da1aff05c0a589673fb4100c551cdb4b6462bb7d96c463fe",
+      "source_fact_keys": [
+        "source_fact:v1:d12cafa8f020c7032e2e92605dc4e4e0522060a4499b7f0d4726b4e8a8a4dd78"
+      ],
+      "source_published_kst": "2026-10-08T16:54+09:00",
+      "source_title": "TSMC 9월 매출 전년대비 54.6% 증가…전월보다는 감소",
+      "telegram_core_fact": "TSMC는 지난달 매출이 5,118억5,700만 대만달러로, 지난해 같은 달보다 54.6% 증가했다고 오늘(8일) 밝혔습니다.",
+      "title": "TSMC 9월 매출 전년대비 54.6% 증가…전월보다는 감소"
     },
     "source_fact:c4f3ff4b852be4edef9171ac": {
       "first_seen_kst": "2026-10-05T22:57:49+09:00",
@@ -245612,6 +247086,34 @@
       ],
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "\"일주일새 12% 올랐다\"…전고체 ETF 뛰는데 뭉칫돈 향한 곳은"
+    },
+    "source_fact:cf03e38c5bb7d3e566e7184a": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171797",
+      "source": "매일경제",
+      "source_body_digest": "72725ccbb6e0ae138707aa30589a96cd45bb94b19b168e70587e9b1a05da03df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:65a6eeaf2785151a1d50741d6d9551e7304ffbfb1abfd6846e94758b0824a0ed",
+      "source_fact_keys": [
+        "source_fact:v1:1f1bbe8886b9b6ec93b22c0f660aec824508b418bd21c5da82a233eb7266f43b",
+        "source_fact:v1:3a37c67120479f5c26c5c0e50eb191759e04270c9d8e4ca072e1e154d653bb80",
+        "source_fact:v1:3b0e67fff85ce02947f517e9164524bd687d7cc2e3f2f4b8cb271b6e45a6756f",
+        "source_fact:v1:3c1648f03971044420bbc62a3ac4b21b3b0794f40ab717efb81826009b1a4c73",
+        "source_fact:v1:4f0d29740b3a30d9717dbf1c424b495b3ec9d7cfcda859b31ba0d9cef9275e2d",
+        "source_fact:v1:4f84ec81751e762087777048d042c3e37a47b3b40fe0ee141b3f51677703b3e7",
+        "source_fact:v1:6749ea52970f6a5b50627b27719500f35b83bafbbf27dcda584c677052632bff",
+        "source_fact:v1:7890edd621778ce9857b42722a4d750015e0c66538b68f9638dffd07c304cae5",
+        "source_fact:v1:9ca674cb81d4cea68449a341447447e129b337e7deeb3cac45cdf06a43dfe55d",
+        "source_fact:v1:e99167c2b76beb2558d0c2aa7fa803726fa1085852db7484de19c7af8fe73ea6"
+      ],
+      "source_published_kst": "2026-10-08T17:30+09:00",
+      "source_title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다",
+      "telegram_core_fact": "글로벌 투자은행 UBS는 올해 HBM 시장의 비트 출하량 기준 점유율을 SK하이닉스 48%, 삼성전자 31%로 예상했다.",
+      "title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다"
     },
     "source_fact:cf044763ee361230a64f031d": {
       "first_seen_kst": "2026-10-08T13:46:05+09:00",
@@ -257447,6 +258949,34 @@
       "source_published_kst": "2026-10-06T09:59+09:00",
       "title": "엔비디아, DGX 스파크 64GB 공개…로컬 AI 확장 지원"
     },
+    "source_fact:e413c5c731c8d84c24868e2a": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819150",
+      "source": "뉴시스",
+      "source_body_digest": "b214c9f533eadd1b8a611f3a72c6eab49f8d5ecba4631a5ffcc911844cbcf60b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c794142ca3c0165624e1cf4ceeb28ab0b4838d67e39420dbbe3a32c0597765f0",
+      "source_fact_keys": [
+        "source_fact:v1:0f0539e6e1da217a070c3d6778df15cb8da8a6229d459a7affda4b9d011b90d7",
+        "source_fact:v1:12d58271c4885d1fff8ac7f27fa6adc563d3e3cf547a2a875da834e681ee4242",
+        "source_fact:v1:3ae178ff60ca96959006c75485ff8bd21f714e1c470bdc5d543521b0772fa526",
+        "source_fact:v1:3fda028438cde66e2a99f5ab61382f72705084f91ddfff4e242fe325960c3777",
+        "source_fact:v1:6b375ad1bfd90efc60da24e1b501b9711f5b39b7774caa983674438fd6623601",
+        "source_fact:v1:73d9992f19f1d9e7c72adc31a3908aede36a12e19b8f73edb71ac1cb0a8e955c",
+        "source_fact:v1:876fcc0961573bce44502d4c77abb508145cfd5ca4084e8f3b62b023aac41265",
+        "source_fact:v1:8a58841b9648c49e2e82b6053b13cc91009dc27c73ba739e24abf4171a2b6a13",
+        "source_fact:v1:e2555b05eff4cbe629f8b02151c746880340f6ea0f5d5525caabbc4a80bda28b",
+        "source_fact:v1:eaab8a70d3097d1e5b6c671c508d356072cc60d84982b43bfbd36897dc0c71c8"
+      ],
+      "source_published_kst": "2026-10-08T14:11+09:00",
+      "source_title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대",
+      "telegram_core_fact": "올 3분기 누적 바이오의약품 수출 규모가 수출이 가장 많았던 지난해 3분기까지 수출액보다 15.8% 증가한 66억 달러(약 8조 8261억원)로 잠정집계됐다.",
+      "title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대"
+    },
     "source_fact:e4150f351c4a074787562d52": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -261716,6 +263246,34 @@
       "source_published_kst": "2026-10-06T03:32+09:00",
       "title": "[美특징주]마이크로소프트, 멜리우스 ‘매수’ 상향에 2%↑…AI 보안 경쟁력 주목"
     },
+    "source_fact:ec94580626416de94ce22701": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171797",
+      "source": "매일경제",
+      "source_body_digest": "72725ccbb6e0ae138707aa30589a96cd45bb94b19b168e70587e9b1a05da03df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:65a6eeaf2785151a1d50741d6d9551e7304ffbfb1abfd6846e94758b0824a0ed",
+      "source_fact_keys": [
+        "source_fact:v1:1f1bbe8886b9b6ec93b22c0f660aec824508b418bd21c5da82a233eb7266f43b",
+        "source_fact:v1:3a37c67120479f5c26c5c0e50eb191759e04270c9d8e4ca072e1e154d653bb80",
+        "source_fact:v1:3b0e67fff85ce02947f517e9164524bd687d7cc2e3f2f4b8cb271b6e45a6756f",
+        "source_fact:v1:3c1648f03971044420bbc62a3ac4b21b3b0794f40ab717efb81826009b1a4c73",
+        "source_fact:v1:4f0d29740b3a30d9717dbf1c424b495b3ec9d7cfcda859b31ba0d9cef9275e2d",
+        "source_fact:v1:4f84ec81751e762087777048d042c3e37a47b3b40fe0ee141b3f51677703b3e7",
+        "source_fact:v1:6749ea52970f6a5b50627b27719500f35b83bafbbf27dcda584c677052632bff",
+        "source_fact:v1:7890edd621778ce9857b42722a4d750015e0c66538b68f9638dffd07c304cae5",
+        "source_fact:v1:9ca674cb81d4cea68449a341447447e129b337e7deeb3cac45cdf06a43dfe55d",
+        "source_fact:v1:e99167c2b76beb2558d0c2aa7fa803726fa1085852db7484de19c7af8fe73ea6"
+      ],
+      "source_published_kst": "2026-10-08T17:30+09:00",
+      "source_title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다",
+      "telegram_core_fact": "글로벌 투자은행 UBS는 올해 HBM 시장의 비트 출하량 기준 점유율을 SK하이닉스 48%, 삼성전자 31%로 예상했다.",
+      "title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다"
+    },
     "source_fact:ec95ad79aa4385517ea70328": {
       "first_seen_kst": "2026-10-07T22:53:53+09:00",
       "lanes": {
@@ -263926,6 +265484,29 @@
       "source_published_kst": "2026-10-06T16:45+09:00",
       "title": "알테오젠, 2000억 투자 유치…연구부터 판매까지 한 회사로"
     },
+    "source_fact:f15d60df63700436256cdd40": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171506",
+      "source": "매일경제",
+      "source_body_digest": "0a322da29a1260312c55c670f84f6ac8cc8d09fe2ffc38e3131d39a4fa424650",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:378ac7cf5cd3ff6276be4679138e5092250ab498b703fefb5bbd3f3a8efb7454",
+      "source_fact_keys": [
+        "source_fact:v1:02cb2960e0ecff13c0b2ee689281d348dff2c1c790a390df6eda8ef05bb96ba9",
+        "source_fact:v1:246d3bf700467b936db76048dfa6f897357c5c90e0c30f7fd8985d4bdae50b95",
+        "source_fact:v1:380faf8cc28f9af3d2315a42f35ea53a1e0464e30455f07279d0dd6c437802a6",
+        "source_fact:v1:4d55dcca9ee12d1e4e9867f50656df76a58b2ee5bd2c99356a9dccfcd7788efa",
+        "source_fact:v1:b1c803d0930f142036a026b1e6f42dd3858292d9615dd5788dbfe229c1aaceab"
+      ],
+      "source_published_kst": "2026-10-08T14:54+09:00",
+      "source_title": "LS전선, 한국미래소재 200억 출자…미국 구리 재활용 공략 나선다",
+      "telegram_core_fact": "LS전선이 자회사 한국미래소재에 200억원을 추가 출자한 것을 계기로 미국 구리 재활용 사업 확대에 나선다. LS전선은 한국미래소재의 주주배정 유상증자에 참여해 200억원을 출자한다고 8일 공시했다.",
+      "title": "LS전선, 한국미래소재 200억 출자…미국 구리 재활용 공략 나선다"
+    },
     "source_fact:f16c5089b3d37b6975d37218": {
       "first_seen_kst": "2026-10-07T20:28:48+09:00",
       "lanes": {
@@ -265475,6 +267056,34 @@
       ],
       "source_published_kst": "2026-10-07T10:06+09:00",
       "title": "골드만삭스 “삼성전자 8일 요동친다”…매도 요인 3개나 겹쳤다는데"
+    },
+    "source_fact:f426a6cbd99495571653bac6": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819150",
+      "source": "뉴시스",
+      "source_body_digest": "b214c9f533eadd1b8a611f3a72c6eab49f8d5ecba4631a5ffcc911844cbcf60b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c794142ca3c0165624e1cf4ceeb28ab0b4838d67e39420dbbe3a32c0597765f0",
+      "source_fact_keys": [
+        "source_fact:v1:0f0539e6e1da217a070c3d6778df15cb8da8a6229d459a7affda4b9d011b90d7",
+        "source_fact:v1:12d58271c4885d1fff8ac7f27fa6adc563d3e3cf547a2a875da834e681ee4242",
+        "source_fact:v1:3ae178ff60ca96959006c75485ff8bd21f714e1c470bdc5d543521b0772fa526",
+        "source_fact:v1:3fda028438cde66e2a99f5ab61382f72705084f91ddfff4e242fe325960c3777",
+        "source_fact:v1:6b375ad1bfd90efc60da24e1b501b9711f5b39b7774caa983674438fd6623601",
+        "source_fact:v1:73d9992f19f1d9e7c72adc31a3908aede36a12e19b8f73edb71ac1cb0a8e955c",
+        "source_fact:v1:876fcc0961573bce44502d4c77abb508145cfd5ca4084e8f3b62b023aac41265",
+        "source_fact:v1:8a58841b9648c49e2e82b6053b13cc91009dc27c73ba739e24abf4171a2b6a13",
+        "source_fact:v1:e2555b05eff4cbe629f8b02151c746880340f6ea0f5d5525caabbc4a80bda28b",
+        "source_fact:v1:eaab8a70d3097d1e5b6c671c508d356072cc60d84982b43bfbd36897dc0c71c8"
+      ],
+      "source_published_kst": "2026-10-08T14:11+09:00",
+      "source_title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대",
+      "telegram_core_fact": "올 3분기 누적 바이오의약품 수출 규모가 수출이 가장 많았던 지난해 3분기까지 수출액보다 15.8% 증가한 66억 달러(약 8조 8261억원)로 잠정집계됐다.",
+      "title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대"
     },
     "source_fact:f429525c8cf8845e5bbd8eb9": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
@@ -269691,6 +271300,33 @@
       "source_published_kst": "2026-10-06T05:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
     },
+    "source_fact:fd653cada57eafc21e82b3ab": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.hankyung.com/article/202610080821i",
+      "source": "한국경제",
+      "source_body_digest": "15ba53efb53c525cd8723a98686219e3db61e80bed6840e6290242a0ba1adc80",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c1bbaf6884425cd579d8ffef7375e1980b94bb6ea977cc3b47a7c9051dba51c",
+      "source_fact_keys": [
+        "source_fact:v1:041cf2e4545963578744897e472fb36ed7894f8ae9274a98809d4903ae383b03",
+        "source_fact:v1:1ccd94df6bc02dd525e9bfef9911fd85562144337a44a0777a92cc4d00b1128f",
+        "source_fact:v1:4f6559c54d399b4f1b5433cd313ca3663c514bf516aceaa91cb9136e46500d97",
+        "source_fact:v1:758a178e9687e3583477ccfb137efe297703fa8ee9cb7cd08a772930005b4de3",
+        "source_fact:v1:a943b75e03be647a73acd48de362a87a3f0c5618f2e107c66766a723c25d593a",
+        "source_fact:v1:b00b10d54dc555a7fcb6ce2ec0cc877e654f1ac2a886307f749a742a9ae19a2b",
+        "source_fact:v1:c91f77972f569b7413465c9fbd55e9dd284cbf2498f6794e7b5c183b7737eba3",
+        "source_fact:v1:cfdbe59cdb35af60cfc6db4215b6fe03e59c206bfdf22cff39706ee264e97ac9",
+        "source_fact:v1:e259e98896bc9e992e34bbd306e2b6f2ba560fe78b27c8bf03dd8cba73933d1d"
+      ],
+      "source_published_kst": "2026-10-08T14:35+09:00",
+      "source_title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나",
+      "telegram_core_fact": "인공지능(AI) 투자 확대에 따른 메모리 호황이 실적을 밀어 올렸지만 주가까지 상승할지는 별개다.",
+      "title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나"
+    },
     "source_fact:fd7ec878ff8bff0f3fa96783": {
       "first_seen_kst": "2026-10-07T23:36:14+09:00",
       "lanes": {
@@ -269774,6 +271410,34 @@
       ],
       "source_published_kst": "2026-10-07T14:21+09:00",
       "title": "리사 수 방한 계기로 韓ㆍAMD 반도체 협력 확대⋯정부, 내년 실증사업 속도 [종합]"
+    },
+    "source_fact:fdb72961c04422a99c624f8e": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171797",
+      "source": "매일경제",
+      "source_body_digest": "72725ccbb6e0ae138707aa30589a96cd45bb94b19b168e70587e9b1a05da03df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:65a6eeaf2785151a1d50741d6d9551e7304ffbfb1abfd6846e94758b0824a0ed",
+      "source_fact_keys": [
+        "source_fact:v1:1f1bbe8886b9b6ec93b22c0f660aec824508b418bd21c5da82a233eb7266f43b",
+        "source_fact:v1:3a37c67120479f5c26c5c0e50eb191759e04270c9d8e4ca072e1e154d653bb80",
+        "source_fact:v1:3b0e67fff85ce02947f517e9164524bd687d7cc2e3f2f4b8cb271b6e45a6756f",
+        "source_fact:v1:3c1648f03971044420bbc62a3ac4b21b3b0794f40ab717efb81826009b1a4c73",
+        "source_fact:v1:4f0d29740b3a30d9717dbf1c424b495b3ec9d7cfcda859b31ba0d9cef9275e2d",
+        "source_fact:v1:4f84ec81751e762087777048d042c3e37a47b3b40fe0ee141b3f51677703b3e7",
+        "source_fact:v1:6749ea52970f6a5b50627b27719500f35b83bafbbf27dcda584c677052632bff",
+        "source_fact:v1:7890edd621778ce9857b42722a4d750015e0c66538b68f9638dffd07c304cae5",
+        "source_fact:v1:9ca674cb81d4cea68449a341447447e129b337e7deeb3cac45cdf06a43dfe55d",
+        "source_fact:v1:e99167c2b76beb2558d0c2aa7fa803726fa1085852db7484de19c7af8fe73ea6"
+      ],
+      "source_published_kst": "2026-10-08T17:30+09:00",
+      "source_title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다",
+      "telegram_core_fact": "글로벌 투자은행 UBS는 올해 HBM 시장의 비트 출하량 기준 점유율을 SK하이닉스 48%, 삼성전자 31%로 예상했다.",
+      "title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다"
     },
     "source_fact:fdb75e42b3c5b777c50b58b5": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -291177,6 +292841,34 @@
       "source_published_kst": "2026-10-05T21:23+09:00",
       "title": "테라울프, 머스키 전력 1GW로 2배 확대..2단계 1년 앞당겨"
     },
+    "title:6e78f51c19ea4e979ef2767f": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819150",
+      "source": "뉴시스",
+      "source_body_digest": "b214c9f533eadd1b8a611f3a72c6eab49f8d5ecba4631a5ffcc911844cbcf60b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c794142ca3c0165624e1cf4ceeb28ab0b4838d67e39420dbbe3a32c0597765f0",
+      "source_fact_keys": [
+        "source_fact:v1:0f0539e6e1da217a070c3d6778df15cb8da8a6229d459a7affda4b9d011b90d7",
+        "source_fact:v1:12d58271c4885d1fff8ac7f27fa6adc563d3e3cf547a2a875da834e681ee4242",
+        "source_fact:v1:3ae178ff60ca96959006c75485ff8bd21f714e1c470bdc5d543521b0772fa526",
+        "source_fact:v1:3fda028438cde66e2a99f5ab61382f72705084f91ddfff4e242fe325960c3777",
+        "source_fact:v1:6b375ad1bfd90efc60da24e1b501b9711f5b39b7774caa983674438fd6623601",
+        "source_fact:v1:73d9992f19f1d9e7c72adc31a3908aede36a12e19b8f73edb71ac1cb0a8e955c",
+        "source_fact:v1:876fcc0961573bce44502d4c77abb508145cfd5ca4084e8f3b62b023aac41265",
+        "source_fact:v1:8a58841b9648c49e2e82b6053b13cc91009dc27c73ba739e24abf4171a2b6a13",
+        "source_fact:v1:e2555b05eff4cbe629f8b02151c746880340f6ea0f5d5525caabbc4a80bda28b",
+        "source_fact:v1:eaab8a70d3097d1e5b6c671c508d356072cc60d84982b43bfbd36897dc0c71c8"
+      ],
+      "source_published_kst": "2026-10-08T14:11+09:00",
+      "source_title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대",
+      "telegram_core_fact": "올 3분기 누적 바이오의약품 수출 규모가 수출이 가장 많았던 지난해 3분기까지 수출액보다 15.8% 증가한 66억 달러(약 8조 8261억원)로 잠정집계됐다.",
+      "title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대"
+    },
     "title:6e78fd7618c9d18c0783f504": {
       "first_seen_kst": "2026-10-08T10:43:48+09:00",
       "lanes": {
@@ -298548,6 +300240,33 @@
       "source": "뉴시스",
       "title": "해양산업 AI 전환 지원…해진공 AX 사이트 개통"
     },
+    "title:96fe1871e4b8a2964acc66c4": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.hankyung.com/article/202610080821i",
+      "source": "한국경제",
+      "source_body_digest": "15ba53efb53c525cd8723a98686219e3db61e80bed6840e6290242a0ba1adc80",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c1bbaf6884425cd579d8ffef7375e1980b94bb6ea977cc3b47a7c9051dba51c",
+      "source_fact_keys": [
+        "source_fact:v1:041cf2e4545963578744897e472fb36ed7894f8ae9274a98809d4903ae383b03",
+        "source_fact:v1:1ccd94df6bc02dd525e9bfef9911fd85562144337a44a0777a92cc4d00b1128f",
+        "source_fact:v1:4f6559c54d399b4f1b5433cd313ca3663c514bf516aceaa91cb9136e46500d97",
+        "source_fact:v1:758a178e9687e3583477ccfb137efe297703fa8ee9cb7cd08a772930005b4de3",
+        "source_fact:v1:a943b75e03be647a73acd48de362a87a3f0c5618f2e107c66766a723c25d593a",
+        "source_fact:v1:b00b10d54dc555a7fcb6ce2ec0cc877e654f1ac2a886307f749a742a9ae19a2b",
+        "source_fact:v1:c91f77972f569b7413465c9fbd55e9dd284cbf2498f6794e7b5c183b7737eba3",
+        "source_fact:v1:cfdbe59cdb35af60cfc6db4215b6fe03e59c206bfdf22cff39706ee264e97ac9",
+        "source_fact:v1:e259e98896bc9e992e34bbd306e2b6f2ba560fe78b27c8bf03dd8cba73933d1d"
+      ],
+      "source_published_kst": "2026-10-08T14:35+09:00",
+      "source_title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나",
+      "telegram_core_fact": "인공지능(AI) 투자 확대에 따른 메모리 호황이 실적을 밀어 올렸지만 주가까지 상승할지는 별개다.",
+      "title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나"
+    },
     "title:970d9315091d61e474c2e2bb": {
       "first_seen_kst": "2026-10-02T15:05:30+09:00",
       "lanes": {
@@ -299763,6 +301482,34 @@
       "telegram_core_fact": "3분기 생산량이 2,954대로 전분기보다 38.1% 줄어 지난해 1분기 이후 가장 낮은 수준을 기록했습니다. 인도량도 3,806대로 전년 동기보다 6.7% 감소했습니다.",
       "title": "루시드, 3분기 생산 38% 감축에 보급형 신차 연기까지 겹치며 투자심리 위축"
     },
+    "title:9f2d07f53da91257f54a16cd": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171797",
+      "source": "매일경제",
+      "source_body_digest": "72725ccbb6e0ae138707aa30589a96cd45bb94b19b168e70587e9b1a05da03df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:65a6eeaf2785151a1d50741d6d9551e7304ffbfb1abfd6846e94758b0824a0ed",
+      "source_fact_keys": [
+        "source_fact:v1:1f1bbe8886b9b6ec93b22c0f660aec824508b418bd21c5da82a233eb7266f43b",
+        "source_fact:v1:3a37c67120479f5c26c5c0e50eb191759e04270c9d8e4ca072e1e154d653bb80",
+        "source_fact:v1:3b0e67fff85ce02947f517e9164524bd687d7cc2e3f2f4b8cb271b6e45a6756f",
+        "source_fact:v1:3c1648f03971044420bbc62a3ac4b21b3b0794f40ab717efb81826009b1a4c73",
+        "source_fact:v1:4f0d29740b3a30d9717dbf1c424b495b3ec9d7cfcda859b31ba0d9cef9275e2d",
+        "source_fact:v1:4f84ec81751e762087777048d042c3e37a47b3b40fe0ee141b3f51677703b3e7",
+        "source_fact:v1:6749ea52970f6a5b50627b27719500f35b83bafbbf27dcda584c677052632bff",
+        "source_fact:v1:7890edd621778ce9857b42722a4d750015e0c66538b68f9638dffd07c304cae5",
+        "source_fact:v1:9ca674cb81d4cea68449a341447447e129b337e7deeb3cac45cdf06a43dfe55d",
+        "source_fact:v1:e99167c2b76beb2558d0c2aa7fa803726fa1085852db7484de19c7af8fe73ea6"
+      ],
+      "source_published_kst": "2026-10-08T17:30+09:00",
+      "source_title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다",
+      "telegram_core_fact": "글로벌 투자은행 UBS는 올해 HBM 시장의 비트 출하량 기준 점유율을 SK하이닉스 48%, 삼성전자 31%로 예상했다.",
+      "title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다"
+    },
     "title:9f336d41c12b9a46874765f3": {
       "first_seen_kst": "2026-10-03T05:03:54+09:00",
       "lanes": {
@@ -300768,6 +302515,23 @@
       "source_title": "\"100조 벽 깼다\" 삼성전자 또 신기록…내년엔 130조 찍나",
       "telegram_core_fact": "삼성전자는 지난해 4분기 매출 93조8000억원, 영업익 20조1000억원으로 역대 최대 기록을 세운 이후 4개 분기 연속해 매출과 영업이익 신기록 행진을 이어가고 있다.",
       "title": "\"100조 벽 깼다\" 삼성전자 또 신기록…내년엔 130조 찍나"
+    },
+    "title:a4ec022c99913d4abe0701c6": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003819451",
+      "source": "뉴시스",
+      "source_body_digest": "0c82afa83641a9f57ee13fbb4c66005d3d92430bfe89edd9b03ef5cbb1b3d22d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T17:22+09:00",
+      "source_title": "트럼프 '강제노동 관세' 위법 논란에도…세계 각국 규제 고삐",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령의 '강제노동' 관세가 또다시 법적 시험대에 올랐지만 세계 각국은 관세에 대응하기 위해 강제노동 규제를 강화하고 있다는 분석이 나왔다.",
+      "title": "트럼프 '강제노동 관세' 위법 논란에도…세계 각국 규제 고삐"
     },
     "title:a4ec5e4b882176e30d6f2f0a": {
       "first_seen_kst": "2026-10-05T14:04:17+09:00",
@@ -312299,6 +314063,27 @@
       "source": "이데일리",
       "title": "日 31년 만의 최고금리에도 엔화 약세…원·달러 1380원대 중반으로"
     },
+    "title:e5d0a1a7e0f25b7c70b7a241": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.newsis.com/view/ALSX20261008_0000007786",
+      "source": "뉴시스",
+      "source_body_digest": "b9f89b6aa75e6486f2a19fd3830c2d732c9014aa32d38d7e2addffa16469cec0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:69591a6913309b5091f0e800f6de563cb3a1081c9a16150d5a75d5b38da5b225",
+      "source_fact_keys": [
+        "source_fact:v1:5695af84509d9d8086a5e0036460f07704c40c99ec25b270a9c2a6da25ebf7fe",
+        "source_fact:v1:99aec0b5f3897f1b966d07c77239ea6eedefc3643c735d81dce326ceaa200214",
+        "source_fact:v1:f3deb087b93d25443f5ee952967fe52a5767f56b7324ae99d897ebcee4eb1ce9"
+      ],
+      "source_published_kst": "2026-10-08T14:21+09:00",
+      "source_title": "24X 내셔널 익스체인지, 신주인수권 성과 인센티브 프로그램 확대 계획",
+      "telegram_core_fact": "이번 변경으로 프로그램 참가자에게 제공되는 지분이 확대되고 24X 참가자가 되는 특정 브로커-딜러의 진입 비용이 낮아지며 프로그램이 2028년 6월까지 연장되고 신주인수권 확정 조건이 단순화된다.",
+      "title": "24X 내셔널 익스체인지, 신주인수권 성과 인센티브 프로그램 확대 계획"
+    },
     "title:e5d140d28508b6634ad502ff": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
       "lanes": {
@@ -314816,6 +316601,29 @@
       "source_published_kst": "2026-10-05T15:36+09:00",
       "title": "용인·평택 물길 훑고 이천 수질까지…반도체 방류수 '기준 공백' 드러났다"
     },
+    "title:f3a72db7563cf13e093dcf2e": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://www.mk.co.kr/news/business/12171506",
+      "source": "매일경제",
+      "source_body_digest": "0a322da29a1260312c55c670f84f6ac8cc8d09fe2ffc38e3131d39a4fa424650",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:378ac7cf5cd3ff6276be4679138e5092250ab498b703fefb5bbd3f3a8efb7454",
+      "source_fact_keys": [
+        "source_fact:v1:02cb2960e0ecff13c0b2ee689281d348dff2c1c790a390df6eda8ef05bb96ba9",
+        "source_fact:v1:246d3bf700467b936db76048dfa6f897357c5c90e0c30f7fd8985d4bdae50b95",
+        "source_fact:v1:380faf8cc28f9af3d2315a42f35ea53a1e0464e30455f07279d0dd6c437802a6",
+        "source_fact:v1:4d55dcca9ee12d1e4e9867f50656df76a58b2ee5bd2c99356a9dccfcd7788efa",
+        "source_fact:v1:b1c803d0930f142036a026b1e6f42dd3858292d9615dd5788dbfe229c1aaceab"
+      ],
+      "source_published_kst": "2026-10-08T14:54+09:00",
+      "source_title": "LS전선, 한국미래소재 200억 출자…미국 구리 재활용 공략 나선다",
+      "telegram_core_fact": "LS전선이 자회사 한국미래소재에 200억원을 추가 출자한 것을 계기로 미국 구리 재활용 사업 확대에 나선다. LS전선은 한국미래소재의 주주배정 유상증자에 참여해 200억원을 출자한다고 8일 공시했다.",
+      "title": "LS전선, 한국미래소재 200억 출자…미국 구리 재활용 공략 나선다"
+    },
     "title:f3b6d2bf649dd92dc3866707": {
       "first_seen_kst": "2026-09-25T15:40:29+09:00",
       "lanes": {
@@ -316598,6 +318406,25 @@
       "source_published_kst": "2026-10-07T08:04+09:00",
       "title": "\"AI발 칩 부족 우려, 물가로 번질 수도\"…샌프란 연은 총재의 경고"
     },
+    "title:fe5f05c761d7061bf481832d": {
+      "first_seen_kst": "2026-10-08T19:11:41+09:00",
+      "lanes": {
+        "live": "2026-10-08T19:11:41+09:00"
+      },
+      "last_seen_kst": "2026-10-08T19:11:41+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171895",
+      "source": "매일경제",
+      "source_body_digest": "1e3983f28a435b2b8944711c76db445e774854cd82f46601783b598c0bcb3c3a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7a7dd5778fcfa4f7da1aff05c0a589673fb4100c551cdb4b6462bb7d96c463fe",
+      "source_fact_keys": [
+        "source_fact:v1:d12cafa8f020c7032e2e92605dc4e4e0522060a4499b7f0d4726b4e8a8a4dd78"
+      ],
+      "source_published_kst": "2026-10-08T16:54+09:00",
+      "source_title": "TSMC 9월 매출 전년대비 54.6% 증가…전월보다는 감소",
+      "telegram_core_fact": "TSMC는 지난달 매출이 5,118억5,700만 대만달러로, 지난해 같은 달보다 54.6% 증가했다고 오늘(8일) 밝혔습니다.",
+      "title": "TSMC 9월 매출 전년대비 54.6% 증가…전월보다는 감소"
+    },
     "title:fe664370359ce5ebe81c01f1": {
       "first_seen_kst": "2026-10-02T14:00:40+09:00",
       "lanes": {
@@ -316829,5 +318656,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-08T18:46:25+09:00"
+  "updated_at_kst": "2026-10-08T19:11:41+09:00"
 }
