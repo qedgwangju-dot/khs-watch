@@ -32,6 +32,10 @@ try:
     from khs_compact_text import concise_text
 except ImportError:  # pragma: no cover - supports module-style local tests.
     from scripts.khs_compact_text import concise_text
+try:
+    from khs_source_fetch import fetch_text as fetch_policy_source_with_fallback
+except ImportError:
+    from scripts.khs_source_fetch import fetch_text as fetch_policy_source_with_fallback
 
 KST = ZoneInfo("Asia/Seoul")
 UTC = dt.timezone.utc
@@ -1217,15 +1221,31 @@ def clean_text(value: str | None) -> str:
 
 
 def fetch_text(url: str, timeout: int = 8) -> str:
+    user_agent = "KHS-trusted-policy-news-watch contact=github-actions"
+    accept = "application/rss+xml, text/xml, text/html;q=0.8, */*;q=0.5"
     req = urllib.request.Request(
         url,
-        headers={
-            "User-Agent": "KHS-trusted-policy-news-watch contact=github-actions",
-            "Accept": "application/rss+xml, text/xml, text/html;q=0.8, */*;q=0.5",
-        },
+        headers={"User-Agent": user_agent, "Accept": accept},
     )
-    with urllib.request.urlopen(req, timeout=timeout) as resp:
-        return resp.read().decode(resp.headers.get_content_charset() or "utf-8", errors="replace")
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            return resp.read().decode(resp.headers.get_content_charset() or "utf-8", errors="replace")
+    except (OSError, TimeoutError) as direct_error:
+        # Direct GitHub-runner access to Treasury/UDN can be blocked. Reuse the
+        # already configured policy proxy/direct race only for these named
+        # verified first-party/research sources, without changing RSS sourcing.
+        host = (urllib.parse.urlparse(url).hostname or "").lower()
+        if host not in {"home.treasury.gov", "money.udn.com"}:
+            raise
+        body, error = fetch_policy_source_with_fallback(
+            url, user_agent=user_agent, timeout=timeout, attempts=1, accept=accept
+        )
+        if body:
+            print(f"trusted_policy_news=source_fallback_verified host={host}")
+            return body
+        raise RuntimeError(
+            f"Policy source fetch failed after direct/proxy fallback host={host}: {error}"
+        ) from direct_error
 
 
 def google_news_rss_url(query: str) -> str:
@@ -3981,7 +4001,21 @@ def main() -> int:
         print("trusted_policy_news_alerts=0")
         return 0
 
-    alerts.sort(key=alert_latest_kst, reverse=True)
+    # User-requested policy stages must not be silently starved by an unrelated
+    # busy-news day. Prioritize these three *unseen* rule families for the
+    # existing three-item Telegram bundle, preserving recency within each tier.
+    requested_policy_priority = {
+        "us_treasury_outbound_ai_robotics_enforcement": 3,
+        "us_fcc_chinese_optical_transceiver_ban": 2,
+        "uk_china_ev_tariff_review": 1,
+    }
+    alerts.sort(
+        key=lambda alert: (
+            requested_policy_priority.get(alert["rule"].key, 0),
+            alert_latest_kst(alert),
+        ),
+        reverse=True,
+    )
     ai_force_alerts = dedupe_alerts_for_display(
         [alert for alert in alerts if is_ai_force_alert(alert)]
     )
