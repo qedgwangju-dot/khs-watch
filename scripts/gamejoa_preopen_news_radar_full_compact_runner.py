@@ -2605,6 +2605,34 @@ def source_headline_event_fact(title: str, body: str) -> str:
     source = market_materiality.source_reported_body(body)
     rows = market_materiality.source_sentences(source)
     flat_source = re.sub(r"\s+", " ", source)
+    if re.search(r"케이엔에스", title) and re.search(r"안성.{0,12}신공장|신공장.{0,12}증설", title):
+        area = re.search(r"신공장은\s*약\s*(?P<area>[\d,]+)\s*평", flat_source)
+        completion = re.search(r"내년\s*초\s*완공을\s*목표", flat_source)
+        capacity = re.search(r"연간\s*생산능력\(CAPA\)은\s*기존\s*대비\s*약\s*100%\s*확대", flat_source)
+        if area and completion and capacity:
+            fact = (
+                f"케이엔에스는 안성에 약 {area['area']}평 신공장을 내년 초 완공해 연간 생산능력을 약 100% 늘리고, "
+                "46파이 배터리·ESS·무인자동화 장비 수요에 대응할 계획이다."
+            )
+            return fact if core_sentence_is_complete(fact) else ""
+    if re.search(r"OK금융", title) and re.search(r"예별손보|예별손해보험", title):
+        spa = re.search(
+            r"OK금융그룹은\s*예금보험공사와\s*예별손해보험\s*주식매매계약\(SPA\)을\s*체결했다고", flat_source,
+        )
+        if spa:
+            fact = "OK금융은 예금보험공사와 예별손해보험 주식매매계약(SPA)을 체결했다."
+            additional = re.search(
+                r"약\s*(?P<amount>[\d,]+\s*억\s*원?)\s*이상의?\s*추가\s*자금\s*투입이\s*불가피", flat_source,
+            )
+            acceleration = re.search(r"자금\s*집행시기를[^.!?]{0,40}앞당겨[^.!?]{0,35}논의\s*중", flat_source)
+            if additional:
+                amount = re.sub(r"\s+", "", additional["amount"])
+                fact += f" 예별손보 실적 악화로 {amount} 이상 추가 투입이 불가피하며"
+                if acceleration:
+                    fact += " 자금 집행 시기를 앞당기는 방안을 논의 중이다."
+                else:
+                    fact += " 추가 자금 투입이 필요하다고 밝혔다."
+            return fact if core_sentence_is_complete(fact) else ""
     if (re.search(r"이마트", title)
             and re.search(r"3분기", title)
             and re.search(r"컨센서스|시장\s*기대치", title)):

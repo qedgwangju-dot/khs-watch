@@ -5274,6 +5274,106 @@ class IncrementalNewsTests(unittest.TestCase):
         )
         self.assertTrue(signed_summit['eligible'], signed_summit)
 
+    def test_postdeploy_market_scope_and_headline_cores_match_production_failures(self):
+        twim_title = '트윔, 방산 분야 AI 비전 검사기 수주...검사 솔루션 적용 확대'
+        twim_body = (
+            '코스닥 상장 AI 비전 검사 전문기업 트윔이 방산 분야 AI 비전 검사기를 수주하며 검사 솔루션의 적용 분야를 확대한다. '
+            '트윔은 K-방산 제품의 품질 신뢰성 강화를 위해 AI 기반 비전 품질검사기를 공급할 예정이라고 밝혔다. '
+            '이번 수주는 방산 제품의 생산량 증대에 따른 검사 속도 개선과 엄격한 품질 확보를 위해 추진됐다.'
+        )
+        twim = materiality.equity_publication_assessment(
+            twim_title,
+            [{'kind': 'commercial_order', 'stage': 'reported_change',
+              'source_excerpt': twim_body.split('.')[0] + '.'}],
+            body=twim_body,
+        )
+        self.assertFalse(twim['eligible'], twim)
+        self.assertEqual(twim['reason'], 'order_without_disclosed_value_customer_or_delivery_scope')
+
+        scoped_twim = materiality.equity_publication_assessment(
+            twim_title,
+            [{'kind': 'commercial_order', 'stage': 'reported_change',
+              'source_excerpt': '트윔은 방산업체 A사와 12억원 규모 AI 비전 검사기 공급계약을 체결했다.'}],
+            body='트윔은 방산업체 A사와 12억원 규모 AI 비전 검사기 공급계약을 체결했다.',
+        )
+        self.assertTrue(scoped_twim['eligible'], scoped_twim)
+
+        quantified_robot_order = materiality.equity_publication_assessment(
+            '中전기차 공장은 로봇 실험장…공급 계약 체결',
+            [{'kind': 'commercial_order', 'stage': 'reported_change',
+              'source_excerpt': 'BYD는 자동차 공장용 휴머노이드 200대 공급 계약을 체결했다고 발표했다.'}],
+            body='BYD는 자동차 공장용 휴머노이드 200대 공급 계약을 체결했다고 발표했다.',
+        )
+        self.assertTrue(quantified_robot_order['eligible'], quantified_robot_order)
+
+        fsc_title = '이억원 "금리인상기, 정책서민금융 금리 낮추고 공급 확대" | 연합뉴스'
+        fsc_body = (
+            '이억원 금융위원장은 8일 국회 정무위원회 국정감사 모두발언에서 정책서민금융의 금리수준을 낮추고 '
+            '신상품 출시 등 공급을 지속적으로 확대하겠다고 밝혔다.'
+        )
+        fsc = materiality.equity_publication_assessment(
+            fsc_title,
+            [{'kind': 'policy_scope_or_stage', 'stage': 'early_signal', 'source_excerpt': fsc_body}],
+            body=fsc_body,
+        )
+        self.assertFalse(fsc['eligible'], fsc)
+        self.assertEqual(fsc['reason'], 'financial_policy_statement_without_specific_terms_or_effective_change')
+
+        fsc_with_terms = materiality.equity_publication_assessment(
+            '금융위, 정책서민금융 금리 2%p 인하·2조원 공급 확대 시행',
+            [{'kind': 'policy_scope_or_stage', 'stage': 'reported_change',
+              'source_excerpt': '금융위는 정책서민금융 금리를 2%포인트 내리고 공급을 2조원으로 확대해 11월 시행한다.'}],
+            body='금융위는 정책서민금융 금리를 2%포인트 내리고 공급을 2조원으로 확대해 11월 시행한다.',
+        )
+        self.assertTrue(fsc_with_terms['eligible'], fsc_with_terms)
+
+        maduro_title = '미 검찰, 베네수 마두로 미국인 고문 혐의 추가 기소 예정'
+        maduro_body = (
+            '미국 검찰이 니콜라스 마두로 전 베네수엘라 대통령 부부를 미국인 고문 혐의로 추가 기소할 예정이다. '
+            '당국자는 이르면 9일 추가 기소가 이뤄질 계획이라고 말했다. 과거 미국 정부는 금융 제재 완화 등을 두고 비난해 왔다.'
+        )
+        legal_update = materiality.equity_publication_assessment(
+            maduro_title,
+            [{'kind': 'policy_scope_or_stage', 'stage': 'reported_change',
+              'source_excerpt': '미국 검찰이 마두로를 추가 기소할 예정이다.'}],
+            body=maduro_body,
+        )
+        self.assertFalse(legal_update['eligible'], legal_update)
+        self.assertEqual(legal_update['reason'], 'criminal_case_update_without_policy_or_supply_channel')
+
+        sanction_update = materiality.equity_publication_assessment(
+            '미국, 마두로 추가 기소와 베네수엘라 원유 수출 제재 확대 발표',
+            [{'kind': 'policy_scope_or_stage', 'stage': 'reported_change',
+              'source_excerpt': '미국은 베네수엘라 원유 수출 제재를 확대한다고 발표했다.'}],
+            body='미국은 베네수엘라 원유 수출 제재를 확대한다고 발표했다.',
+        )
+        self.assertTrue(sanction_update['eligible'], sanction_update)
+
+        kns_title = '케이엔에스, 안성 신공장 증설 결정'
+        kns_body = (
+            '무인 자동화 전문기업 케이엔에스는 안성 신공장 증설을 결정했다고 밝혔다. '
+            '신공장은 약 2051평(6781㎡) 규모 부지에 조성되며 내년 초 완공을 목표로 한다. '
+            '신공장이 완공되면 케이엔에스의 연간 생산능력(CAPA)은 기존 대비 약 100% 확대될 전망이다. '
+            '주요 생산 품목은 46파이 배터리 장비와 ESS 솔루션 장비, 무인자동화 설비다.'
+        )
+        kns_core = radar.source_headline_event_fact(kns_title, kns_body)
+        self.assertIn('2051평', kns_core)
+        self.assertIn('내년 초', kns_core)
+        self.assertIn('100%', kns_core)
+        self.assertIn('ESS', kns_core)
+
+        ok_title = 'OK금융, 예별손보 새 주인으로…종합금융그룹 도약 발판'
+        ok_body = (
+            'OK금융그룹은 예금보험공사와 예별손해보험 주식매매계약(SPA)을 체결했다고 밝혔다. '
+            'OK금융은 예별손보의 실적 악화 등에 따라 약 1100억원 이상의 추가 자금 투입이 불가피해진 상황이다. '
+            '경영 정상화를 위해 향후 투자 자금 집행시기를 앞당겨 대응하는 방안을 논의 중이다. '
+            'OK금융 관계자는 동시에 진행 중인 중앙일보 인수의 경우 실사에 참여한다고 설명했다.'
+        )
+        ok_core = radar.source_headline_event_fact(ok_title, ok_body)
+        self.assertIn('주식매매계약(SPA)을 체결', ok_core)
+        self.assertIn('1100억원', ok_core)
+        self.assertNotIn('중앙일보', ok_core)
+
 
 if __name__ == "__main__":
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(IncrementalNewsTests)

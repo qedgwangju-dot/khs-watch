@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 114
+VERSION = 115
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -3494,6 +3494,50 @@ def equity_publication_assessment(title: str, evidence: list[dict], *, body: str
     body = source_article_body(source_reported_body(body))
     source_rows = source_sentences(body)
     lead = " ".join(source_rows[:5])
+    if (focus_kind(title) == "commercial_order"
+            and any(item["kind"] == "commercial_order" for item in evidence)
+            and {item["kind"] for item in evidence} <= {"commercial_order", "market_price_or_flow", "customer_discussions"}):
+        order_text = " ".join([title, *source_rows[:6]])
+        disclosed_order_scope = bool(
+            any(QUANTITY.search(row) and re.search(r"수주|발주|계약|공급|납품", row)
+                for row in source_rows[:8])
+            or any(re.search(r"\d[\d,.]*\s*(?:대|개|세트|기|회|톤|MW|GW).{0,35}(?:수주|발주|계약|공급|납품)", row)
+                   for row in source_rows[:8])
+            or re.search(r"(?:해외|국내|글로벌)?\s*고객(?:사)?[^.!?]{0,45}(?:수주|발주|계약|공급|납품)", order_text)
+            or re.search(r"(?:고객사|발주처|납품처|수요처)(?:는|가|인|:)?\s*[A-Za-z가-힣0-9][A-Za-z가-힣0-9&·()._-]{1,30}", order_text)
+            or re.search(r"(?:육군|국방부|방위사업청|미군|U\.S\. Army).{0,45}(?:발주|수주|공급|납품|계약)", order_text, re.I)
+            or re.search(r"(?:20\d{2}년|분기|반기|연간).{0,35}(?:납품|공급|계약|수주)", order_text)
+        )
+        if not disclosed_order_scope:
+            return {"eligible": False, "reason": "order_without_disclosed_value_customer_or_delivery_scope"}
+
+    financial_policy_quote = (
+        re.search(r"금융위원장|금융위|금융당국|정책서민금융", title)
+        and re.search(r"밝혔|말했|강조|하겠|추진|확대|낮추", title + " " + lead)
+        and {item["kind"] for item in evidence} <= {
+            "policy_scope_or_stage", "rates_fx_or_macro", "physical_supply_or_capacity", "customer_discussions",
+        }
+    )
+    financial_policy_commitment = any(
+        not PAST_ACTION.search(row)
+        and (FORMAL_POLICY_EXECUTION.search(row)
+             or (QUANTITY.search(row)
+                 and re.search(r"예산|지원금|기금|금리|대출|공급|수혜|대상", row)
+                 and re.search(r"확정|배정|집행|시행|인하|인상|늘렸|줄였|상향|하향", row)))
+        for row in source_rows[:10]
+    )
+    if financial_policy_quote and not financial_policy_commitment:
+        return {"eligible": False, "reason": "financial_policy_statement_without_specific_terms_or_effective_change"}
+
+    legal_proceeding = re.search(r"추가\s*기소|기소\s*예정|혐의.{0,20}기소|재판\s*(?:시작|개시)", title)
+    direct_market_channel = re.search(
+        r"제재.{0,18}(?:시행|확대|해제|강화)|원유|석유|가스|수출.{0,15}(?:금지|제한|중단)|"
+        r"자산.{0,15}(?:동결|압류|몰수)|유조선|해운|원자재|관세",
+        title + " " + " ".join(source_rows[:2]), re.I,
+    )
+    if legal_proceeding and not direct_market_channel:
+        return {"eligible": False, "reason": "criminal_case_update_without_policy_or_supply_channel"}
+
     search_trend_roundup = (
         re.search(r"^\s*\[\s*(?:증시\s*)?키워드\s*\]", title)
         and re.search(r"검색\s*(?:상위|량)|네이버페이증권", title + " " + lead)
