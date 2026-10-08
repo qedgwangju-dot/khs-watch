@@ -166,6 +166,87 @@ def _dkt_humanoid_recovery() -> list[dict]:
     }]
 
 
+
+# Tesla 3D tactile-array patent PUBLICATION (A1), not a granted patent and
+# not proof of an installed Optimus component. This lane uses the patent
+# number, not the media headline, as the event identity. The first-page
+# publication supplied by the user is evidence for the title/date/applicant;
+# it is not a substitute for examining granted claims or physical shipments.
+TESLA_TOUCH_PATENT_RECOVERY = 'DIRECT_TESLA_TACTILE_PATENT_US20260310299A1_20261008'
+TESLA_TOUCH_PATENT_OFFICIAL = {'USPTO', 'United States Patent and Trademark Office'}
+TESLA_TOUCH_PATENT_TITLE = (
+    '테슬라, 3차원 유연 촉각센서·대량 제조공정 특허출원 공개 '
+    '(US 2026/0310299 A1)'
+)
+TESLA_TOUCH_PATENT_PUBLICATION_URL = (
+    'https://eletric-vehicles.com/tesla/'
+    'tesla-seeks-patent-for-touch-sensitive-skin-for-humanoid-robot-optimus/'
+)
+TESLA_TOUCH_SENSOR_TOPIC = re.compile(
+    r'촉각|센서|유연\s*피부|전자\s*피부|tactile|touch|sensor|compliant|robot\s*skin',
+    re.I,
+)
+TESLA_TOUCH_PATENT_GRANT = re.compile(
+    r'\bpatent\s+(?:was\s+|has\s+been\s+)?granted\b|'
+    r'\bpatent\s+issued\b|특허\s*등록\s*완료|특허\s*등록\s*확정',
+    re.I,
+)
+TESLA_TOUCH_PATENT_GRANT_DENIAL = re.compile(
+    r'not\s+(?:yet\s+)?granted|not\s+issued|'
+    r'특허\s*(?:등록|승인)\s*(?:전|미확인|아님|아니다)',
+    re.I,
+)
+
+
+def _tesla_touch_patent_match(text: str) -> bool:
+    no_punctuation = re.sub(r'[\s/.,:_\-]', '', text).upper()
+    return bool(
+        '20260310299A1' in no_punctuation
+        and ('TESLA' in no_punctuation or '테슬라' in text)
+        and TESLA_TOUCH_SENSOR_TOPIC.search(text)
+    )
+
+
+def _tesla_touch_patent_stage(text: str, source: str = '') -> str:
+    if not _tesla_touch_patent_match(text):
+        return ''
+    if TESLA_TOUCH_PATENT_GRANT.search(text) and not TESLA_TOUCH_PATENT_GRANT_DENIAL.search(text):
+        if source in TESLA_TOUCH_PATENT_OFFICIAL:
+            return 'official_grant'
+        # Media speculation that A1 has been granted is not another alert.
+        return 'unverified_grant'
+    return 'application_publication'
+
+
+def _tesla_touch_patent_recovery() -> list[dict]:
+    # One-time recovery only: the 2026-10-08 A1 publication is an event
+    # distinct from 2025 filing/provisional dates, patent grant, or SOP.
+    # A date-only source does not justify inventing an hourly timestamp.
+    if base.NOW.astimezone(base.KST).date() > dt.date(2026, 10, 12):
+        return []
+    return [{
+        'title': TESLA_TOUCH_PATENT_TITLE,
+        'link': TESLA_TOUCH_PATENT_PUBLICATION_URL,
+        'description': (
+            '사용자 제공 미국 특허공개문서 첫 페이지의 공개번호 US 2026/0310299 A1, '
+            '공개일 2026-10-08, 출원인 Tesla Inc., 정규 출원 2025-09-11, '
+            '가출원 2025-04-04. 발명의 원문 제목은 THREE-DIMENSIONAL SOFT COMPLIANT '
+            'ARRAY TACTILE SENSOR WITH MULTI-MODAL SENSING AND SCALABLE '
+            'MANUFACTURING METHODS. 유연 기판 사이 도체 배열과 분리층으로 3차원 곡면의 '
+            '힘·접촉·압력을 측정하는 구조이며 평면 인쇄 후 열성형과 직접 곡면 인쇄 같은 '
+            '대량 제조 가능 공정을 다룬다. 미국 특허공개 A1은 특허등록 B2가 아니다. '
+            'Tesla 공식 Optimus 촉각센서·손 제조 채용공고는 열성형·정밀 도포·적층과 '
+            '손 생산라인 시운전·수율 개선을 직접 언급한다. 그러나 그 채용공고로도 '
+            '이 정확한 특허의 Optimus 양산 손 실제 탑재, 매출, 공급사, 수율은 '
+            '확정할 수 없다. USPTO 웹 원문 직접 열람은 실패했으며 기사도 직접 열람되지 '
+            '않아 사용자 제공 공개서류 표지와 Tesla 채용공고를 분리해 증거로 사용한다.'
+        ),
+        'source': '사용자제공 미국특허공개 표지',
+        'published': None,
+        'direct_recovery': True,
+        'user_supplied_publication': True,
+    }]
+
 _orig_query_news = base.query_news
 
 
@@ -174,6 +255,8 @@ def query_news(q: str) -> list[dict]:
         return _dongkuk_report_recovery()
     if q == DKT_HUMANOID_RECOVERY:
         return _dkt_humanoid_recovery()
+    if q == TESLA_TOUCH_PATENT_RECOVERY:
+        return _tesla_touch_patent_recovery()
     return _orig_query_news(q)
 
 
@@ -182,6 +265,18 @@ if DONGKUK_NPS_RECOVERY not in base.QUERIES:
     base.QUERIES.append(DONGKUK_NPS_RECOVERY)
 if DKT_HUMANOID_RECOVERY not in base.QUERIES:
     base.QUERIES.append(DKT_HUMANOID_RECOVERY)
+if TESLA_TOUCH_PATENT_RECOVERY not in base.QUERIES:
+    base.QUERIES.append(TESLA_TOUCH_PATENT_RECOVERY)
+for q in (
+    '(Tesla OR 테슬라) ("US 2026/0310299" OR US20260310299A1 '
+    'OR "three-dimensional soft compliant array tactile sensor") '
+    '(patent OR publication OR 특허 OR 촉각센서)',
+    '(Tesla OR 테슬라) (Optimus OR 옵티머스) '
+    '(촉각센서 OR "tactile sensor" OR "robot skin") '
+    '(실제 양산 OR 고객 승인 OR 생산 수율 OR 내구성 OR 출하 OR 설계 변경)',
+):
+    if q not in base.QUERIES:
+        base.QUERIES.append(q)
 for q in (
     '(디케이티 OR DKT) (휴머노이드 OR humanoid OR 로보틱스) '
     '(BMS OR 배터리팩 OR 배터리모듈 OR 충전모듈) '
@@ -247,6 +342,8 @@ def _is_airan(text: str) -> bool:
 
 
 def topic_group(text: str) -> str | None:
+    if _tesla_touch_patent_match(text):
+        return 'tesla_touch_patent'
     if _is_dkt_humanoid(text):
         return 'dkt_humanoid'
     if _is_dongkuk_nps(text):
@@ -268,6 +365,13 @@ def _stage(text: str) -> str:
 
 def score(item: dict) -> int:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if topic_group(text) == 'tesla_touch_patent':
+        stage = _tesla_touch_patent_stage(text, item.get('source') or '')
+        return {
+            'application_publication': 40,
+            'official_grant': 48,
+            'unverified_grant': 0,
+        }.get(stage, 0)
     if topic_group(text) == 'dkt_humanoid':
         stage = _dkt_stage(text, item.get('source') or '')
         return {'reported_robot_module_sop': 44, 'official_robot_module_sop': 52,
@@ -299,6 +403,10 @@ def score(item: dict) -> int:
 
 
 def category(text: str, group: str) -> str:
+    if group == 'tesla_touch_patent':
+        # base.main renders category(title + description) WITHOUT source.
+        # A1 cannot become an issued patent from a sensational headline.
+        return '테슬라 촉각센서 · 미국 특허출원 공개 A1'
     if group == 'dkt_humanoid':
         # The legacy renderer deliberately calls category(title + description)
         # WITHOUT item['source']. Re-evaluate evidence from the visible prose;
@@ -337,6 +445,15 @@ def category(text: str, group: str) -> str:
 
 
 def meaning(cat: str) -> str:
+    if cat == '테슬라 촉각센서 · 미국 특허출원 공개 A1':
+        return (
+            '2026-10-08 미국 특허출원 공개 US 2026/0310299 A1. '
+            '정규 출원 2025-09-11·가출원 2025-04-04로 오늘 첫 출원한 것이 아닙니다. '
+            '손가락·손바닥의 곡면에 밀착하는 유연 촉각 배열과 '
+            '인쇄·열성형·정밀 도포·적층 등 제조공정의 연결이 핵심입니다. '
+            'Tesla 공식 Optimus 채용공고에도 동일한 제조기능이 기재돼 있지만 '
+            '해당 특허의 최종 손 탑재·양산 수율·계약·매출은 공개되지 않았습니다.'
+        )
     if cat.startswith('디케이티 로보틱스 · '):
         if '증권사 확인' in cat:
             return ('7/13 휴머노이드용 BMS 협의 보도→8/18 회사의 소형 배터리팩 모듈 '
@@ -382,6 +499,14 @@ def meaning(cat: str) -> str:
 
 
 def risk(cat: str) -> str:
+    if cat == '테슬라 촉각센서 · 미국 특허출원 공개 A1':
+        return (
+            'A1 공개는 B2 특허등록도, Optimus 손 양산 탑재도, 외부부품 공급계약도 아닙니다. '
+            '열성형 후 전극 단선·인쇄 저항 편차·층간 박리·촉각센서 드리프트·'
+            '반복 접촉 내구성·정밀 검사시간이 양산 병목 후보입니다. '
+            '향후 6~12개월 동안 Tesla 공식 적용 공개, 반복 접촉시험, '
+            '센서 양품률, 작업 성공률, 교체주기와 실제 손 출하가 확인되는지 추적합니다.'
+        )
     if cat.startswith('디케이티 로보틱스 · '):
         return ('최대 오판은 북미 익명 고객을 테슬라로 확정하거나 '
                 '휴머노이드 배터리 모듈과 휴머노이드용 BMS·ESS용 BMS를 같은 공급계약으로 보는 것입니다. '
@@ -401,6 +526,12 @@ def risk(cat: str) -> str:
 
 
 def verification(item: dict, group: str, text: str) -> str:
+    if group == 'tesla_touch_patent':
+        return (
+            '사용자 제공 미국 A1 특허공개문서 표지 확인 · Tesla Optimus 채용공고로 '
+            '기술개발·제조방향 교차확인 · USPTO 웹 원문 및 기사 본문 직접 열람 실패 · '
+            '특허 등록·제품 탑재·매출 미확인'
+        )
     if group == 'dkt_humanoid':
         stage = _dkt_stage(text, item.get('source') or '')
         if stage == 'reported_robot_module_sop':
@@ -430,6 +561,8 @@ def verification(item: dict, group: str, text: str) -> str:
 
 def clean_title(title: str, source: str) -> str:
     text = f'{title} {source}'
+    if _tesla_touch_patent_match(text):
+        return TESLA_TOUCH_PATENT_TITLE
     if _is_dkt_humanoid(text):
         # clean_title receives only title + source (NOT description).
         if source in DKT_BROKER_SOURCES and re.search(
@@ -471,6 +604,8 @@ def clean_title(title: str, source: str) -> str:
 
 
 def tag_for(group: str) -> str:
+    if group == 'tesla_touch_patent':
+        return '테슬라 촉각센서 특허'
     if group == 'dkt_humanoid':
         return '디케이티 휴머노이드 배터리'
     if group == 'dongkuk_nps':
@@ -482,6 +617,11 @@ def tag_for(group: str) -> str:
 
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if topic_group(text) == 'tesla_touch_patent':
+        stage = _tesla_touch_patent_stage(text, item.get('source') or '')
+        return hashlib.sha256(
+            f'tesla|tactile-array|US20260310299A1|{stage}|2026-10-08'.encode()
+        ).hexdigest()
     if topic_group(text) == 'dkt_humanoid':
         stage = _dkt_stage(text, item.get('source') or '')
         return hashlib.sha256(
@@ -520,6 +660,9 @@ def key(item: dict) -> str:
 def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
     chosen = _orig_select_diverse(items, seen, force, limit)
     candidates = items if force else [x for x in items if x.get('key') not in seen]
+    patent = next((x for x in candidates if x.get('group') == 'tesla_touch_patent'), None)
+    if patent and not any(x.get('key') == patent.get('key') for x in chosen):
+        chosen = ([patent, *chosen] if len(chosen) < limit else [patent, *chosen[:-1]])
     dkt = next((x for x in candidates if x.get('group') == 'dkt_humanoid'), None)
     if dkt and not any(x.get('key') == dkt.get('key') for x in chosen):
         chosen = ([dkt, *chosen] if len(chosen) < limit else [dkt, *chosen[:-1]])
