@@ -678,7 +678,10 @@ _ref_clock = _clock_dt.datetime.now(_clock_zone("Asia/Seoul")).replace(
 _ref_clock_ts = _ref_clock.timestamp()
 assert ks.market_clock_epoch("153040", _ref_clock_ts) == _ref_clock_ts
 assert ks.market_clock_epoch("15:30:40", _ref_clock_ts) == _ref_clock_ts
+assert ks.market_clock_epoch("15304000", _ref_clock_ts) == _ref_clock_ts
+assert ks.market_clock_epoch("15304099", _ref_clock_ts) == _ref_clock_ts
 assert ks.market_clock_epoch("153288", _ref_clock_ts) is None
+assert ks.market_clock_epoch("15328800", _ref_clock_ts) is None
 assert ks.market_clock_epoch("", _ref_clock_ts) is None
 assert ks.market_clock_epoch("153060", _ref_clock_ts) is None
 assert ks.market_clock_epoch("1530", _ref_clock_ts) == _ref_clock_ts - 40
@@ -687,11 +690,11 @@ _before_clock = ks.time.time
 try:
     ks.time.time = lambda: _ref_clock_ts
     row = ks._latest_time_row([
-        {"time": "153040", "name": "valid"},
-        {"time": "153288", "name": "invalid"},
-        {"time": "153035", "name": "older"},
+        {"time": "15304000", "name": "valid"},
+        {"time": "15328800", "name": "invalid"},
+        {"time": "15303500", "name": "older"},
     ])
     assert row["name"] == "valid", row
 finally:
     ks.time.time = _before_clock
-print("invalid_investor_clock_regression=true malformed=153288 masked=false")
+print("invalid_investor_clock_regression=true clock8=HHMMSScc malformed=153288 masked=false")
