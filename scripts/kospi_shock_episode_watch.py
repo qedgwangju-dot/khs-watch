@@ -75,23 +75,28 @@ def ko_subject(name: str | None) -> str:
 
 
 def market_clock_epoch(value: Any, fallback_ts: float | None = None) -> float | None:
+    """원자료 HHMMSS가 유효할 때만 사건구간 기준시각으로 사용한다.
+
+    조회 완료 시각(fallback_ts)은 비교 기준일 뿐 원자료 시각을 대신하지 않는다.
+    """
     digits = "".join(ch for ch in str(value or "") if ch.isdigit())
-    if len(digits) < 4:
-        return fallback_ts
-    digits = (digits + "000000")[:6]
+    if len(digits) not in {4, 6}:
+        return None
+    if len(digits) == 4:
+        digits += "00"
     try:
         now = dt.datetime.now(KST)
         point = dt.datetime(now.year, now.month, now.day,
                             int(digits[:2]), int(digits[2:4]), int(digits[4:6]),
                             tzinfo=KST)
         ts = point.timestamp()
-        # 장중 API 시각이 비정상적으로 미래/과거면 조회시각을 사용한다.
         ref = fallback_ts if fallback_ts is not None else time.time()
+        # 오래되거나 유효하지 않은 자료는 새 HTTP 조회 시각으로 위장하지 않는다.
         if abs(ts - ref) > 6 * 60 * 60:
-            return fallback_ts
+            return None
         return ts
-    except Exception:
-        return fallback_ts
+    except (ValueError, OverflowError):
+        return None
 
 
 def should_finalize_market_close(
@@ -320,12 +325,13 @@ def _latest_time_row(rows: Any) -> dict[str, Any] | None:
     if not isinstance(rows, list):
         return None
     valid = []
+    observed = time.time()
     for row in rows:
         if not isinstance(row, dict):
             continue
-        s = "".join(c for c in str(row.get("time") or "") if c.isdigit())
-        if len(s) >= 6:
-            valid.append((s[:6], row))
+        source_ts = market_clock_epoch(row.get("time"), observed)
+        if source_ts is not None:
+            valid.append((source_ts, row))
     return max(valid, key=lambda x: x[0])[1] if valid else None
 
 
