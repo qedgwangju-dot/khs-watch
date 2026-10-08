@@ -1,7 +1,9 @@
 {
   "initialized": true,
   "last_collection": {
-    "errors": [],
+    "errors": [
+      "OpenShell 텔레메트리 감시 실패: HTTPError: HTTP Error 403: rate limit exceeded"
+    ],
     "material_items": 0,
     "new_articles": 0,
     "new_events": 0,
@@ -139,5 +141,5 @@
       "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE1nUGFNdklnZVhSemdadTI5cXB6R0NocDk1SjBUbEVfZk51YlVrOEhoc2hyeWJwSXZ5OE9UbU1pcGRpRER3RVF5cVk2SDhWUQ?oc=5"
     }
   },
-  "updated_at_kst": "2026-10-09T06:58:50+09:00"
+  "updated_at_kst": "2026-10-09T07:23:59+09:00"
 }
