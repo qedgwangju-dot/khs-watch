@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-09T01:54:05+09:00",
+  "updated_at_kst": "2026-10-09T07:24:10+09:00",
   "monitoring_model": "topic_event_official_state_change_v2",
   "official_signature": "{\"cpu_gb\": [1536], \"module_gb\": [], \"rack_tb\": [54.0], \"slots\": []}",
   "official_capacity": {
@@ -16,7 +16,18 @@
   "known_topic_states": [],
   "evidence_ids": [],
   "fresh_hours": 96,
-  "errors": [],
+  "errors": [
+    "뉴스 조회 실패 en: HTTPError: HTTP Error 503: Service Unavailable",
+    "뉴스 조회 실패 ko: HTTPError: HTTP Error 503: Service Unavailable",
+    "뉴스 조회 실패 en: HTTPError: HTTP Error 503: Service Unavailable",
+    "뉴스 조회 실패 ko: HTTPError: HTTP Error 503: Service Unavailable",
+    "뉴스 조회 실패 en: HTTPError: HTTP Error 503: Service Unavailable",
+    "뉴스 조회 실패 ko: HTTPError: HTTP Error 503: Service Unavailable",
+    "뉴스 조회 실패 en: HTTPError: HTTP Error 503: Service Unavailable",
+    "뉴스 조회 실패 ko: HTTPError: HTTP Error 503: Service Unavailable",
+    "뉴스 조회 실패 en: HTTPError: HTTP Error 503: Service Unavailable",
+    "뉴스 조회 실패 ko: HTTPError: HTTP Error 503: Service Unavailable"
+  ],
   "verified_topic_states_now": 0,
   "new_topic_state_changes": 0
 }
