@@ -296,6 +296,32 @@ class AgenticCpuStructureTests(unittest.TestCase):
             duplicate = w.discover_validation(now, "2026-10-08", {item["link"]})
         self.assertEqual(duplicate, [])
 
+    def test_fx_outage_blocks_validation_only_alert_without_state_advance(self):
+        committed = {
+            "agentic_cpu_demand": {
+                **w.BASELINE,
+                "cpu_structure_track_version": w.CPU_STRUCTURE_TRACK_VERSION,
+                "cpu_structure": w.CPU_STRUCTURE_BASELINE,
+            }
+        }
+        with (
+            mock.patch.object(w, "load_json", side_effect=[committed, {}]),
+            mock.patch.object(w, "discover_forecasts", return_value=[]),
+            mock.patch.object(w, "discover_validation", return_value=[{
+                "title": "Official AMD EPYC shipments improve",
+                "url": "https://ir.amd.com/news/events/epyc",
+            }]),
+            mock.patch.object(w, "discover_cpu_structure", return_value=[]),
+            mock.patch.object(w, "get_fx", return_value=(None, "")),
+            mock.patch.object(w, "write_json") as writer,
+            mock.patch.object(w, "ALERT_PATH") as alert,
+        ):
+            alert.exists.return_value = False
+            with self.assertRaisesRegex(RuntimeError, "verified USD/KRW conversion"):
+                w.main()
+            writer.assert_not_called()
+            alert.write_text.assert_not_called()
+
     def test_one_shot_cpu_alert_has_separate_official_and_broker_provenance(self):
         a = w.cpu_structure_block(w.CPU_STRUCTURE_BASELINE, 1400.0, [])
         self.assertIn("260억달러(약", a)
