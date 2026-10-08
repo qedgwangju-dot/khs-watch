@@ -349,7 +349,19 @@ jobs:
           if not result.get('ok'):
               raise RuntimeError(f"Telegram rejected message: {result}")
           mid = (result.get('result') or {}).get('message_id')
-          print(f"telegram_delivery_confirmed=true bot=@{actual} messages=1 id={mid}")
+          if not isinstance(mid, int) or mid <= 0:
+              raise RuntimeError(f"Telegram acknowledged without a valid message_id: {mid!r}")
+          from datetime import datetime, timezone
+          state['delivery_receipt'] = {
+              'message_id': mid,
+              'bot_username': actual,
+              'timestamp_utc': datetime.now(timezone.utc).isoformat(),
+          }
+          pathlib.Path('out/kofia_liquidity_pending_state.json').write_text(
+              json.dumps(state, ensure_ascii=False, indent=2) + '\n',
+              encoding='utf-8'
+          )
+          print(f"telegram_delivery_confirmed=true bot=@{actual} messages=1 id={mid} receipt_persist_ready=true")
           PY
 
       - name: Persist state only after successful delivery
