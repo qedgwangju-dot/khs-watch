@@ -195,66 +195,137 @@ def section(text, start, end):
 
 
 def extract_signals(text, stmt_date):
+    """원문에서 근거가 잡힌 항목만 참으로 판정. 참가자/시장보고/위원회 결정을 분리."""
     text = ' '.join(text.split())
     views = section(
         text, "Participants' Views on Current Conditions and the Economic Outlook",
         'Committee Policy Actions',
     )
-    # 금리정책 논의 부분만 별도로 분리해 단순 과거 표결을 향후 인상 경로로 오인하지 않음.
-    policy = section(views, 'In their consideration of monetary policy at this meeting',
-                     'Regarding balance sheet policy')
+    outlook = views.split('In their consideration of monetary policy at this meeting')[0]
+    policy = section(
+        views, 'In their consideration of monetary policy at this meeting',
+        'Regarding balance sheet policy',
+    )
+    balance = views.split('Regarding balance sheet policy', 1)[-1]
+    manager = section(text, 'Developments in Financial Markets and Open Market Operations',
+                      'Staff Review of the Economic Situation')
+    actions = text.split('Committee Policy Actions',1)[-1]
+
+    def has(where, pattern):
+        return bool(re.search(pattern, where, flags=re.I))
 
     signals = {
-        'all_support': bool(re.search(
-            r'all participants supported raising the target range', policy, re.I)),
-        'most_yearend': bool(re.search(
-            r'most participants assessed that another increase.{0,160}?by year end',
-            policy, re.I | re.S)),
-        'many_risk': bool(re.search(
-            r'many participants emphasized that a higher path.{0,200}?risk-management grounds',
-            policy, re.I | re.S)),
-        'number_modal': bool(re.search(
-            r'a number of participants viewed a higher path.{0,200}?modal outlooks',
-            policy, re.I | re.S)),
-        'several_not_restrictive': bool(re.search(
-            r'several participants stated that they viewed the current policy rate '
-            r'as not restrictive or only mildly restrictive', policy, re.I)),
-        'couple_neutral': bool(re.search(
-            r'a couple of participants remarked on having increased their estimate '
-            r'of the neutral federal funds rate', policy, re.I)),
-        'almost_all_risks': bool(re.search(
-            r'almost all participants assessed that.{0,200}?inflation risks.{0,140}?upside',
-            policy, re.I | re.S)),
-        'few_treasury': bool(re.search(
-            r'a few participants observed that Treasury markets had been functioning smoothly',
-            views, re.I)),
-        'limit_footprint': bool(re.search(
-            r'limiting the Federal Reserve.s footprint in the Treasury market',
-            views, re.I)),
-        'ai_inflation': bool(re.search(
-            r'ongoing geopolitical developments.{0,170}?AI-related investments'
-            r'.{0,90}?inflation pressures', views, re.I | re.S)),
-        'ai_core_goods': bool(re.search(
-            r'core goods category.{0,130}?AI buildout.{0,130}?tariff',
-            views, re.I | re.S)),
-        'pce_methodology': bool(re.search(
-            r'software and portfolio management fees.{0,180}?upcoming changes'
-            r' to the BEA.s methodology', views, re.I | re.S)),
-        'pce_3m_warning': bool(re.search(
-            r'3-month change measure of core PCE inflation.{0,260}?volatile'
-            r'.{0,230}?understate inflation', views, re.I | re.S)),
-        'ai_private_debt_term_premium': bool(re.search(
-            r'heavy private debt issuance to finance the development of '
-            r'artificial intelligence.{0,200}?term premiums',
-            text, re.I | re.S)),
-        'unanimous_vote': bool(re.search(
-            r'approved the following statement for release by a 12\s*[–—-]\s*0 vote',
-            text, re.I)),
+        # 의결권자 12인 표결과 참가자 의견(18인 전망)은 서로 별개.
+        'all_support': has(policy, r'all participants supported raising the target range'),
+        'unanimous_vote': has(actions, r'12\s*[–—-]\s*0 vote') or has(
+            actions, r'Voting against this action:\s*None'),
+        'most_yearend': has(policy,
+            r'most participants assessed that another increase.{0,180}?by year end'),
+        'many_risk': has(policy,
+            r'many participants emphasized that a higher path.{0,210}?risk-management grounds'),
+        'number_modal': has(policy,
+            r'a number of participants viewed a higher path.{0,220}?modal outlooks'),
+        'several_not_restrictive': has(policy,
+            r'several participants stated that they viewed the current policy rate as not restrictive or only mildly restrictive'),
+        'couple_neutral': has(policy,
+            r'a couple of participants remarked on having increased their estimate of the neutral federal funds rate'),
+        'almost_all_risks': has(policy,
+            r'almost all participants assessed that.{0,190}?inflation risks.{0,90}?upside'),
+
+        # 유동성 운영과 향후 시장 스트레스 대비 논의를 총량축소형 QT와 혼동하지 않음.
+        'few_treasury': has(balance,
+            r'a few participants observed that Treasury markets had been functioning smoothly'),
+        'treasury_stress': has(balance,
+            r'importance of planning for market stress'),
+        'strengthen_tools': has(balance,
+            r'strengthening the Federal Reserve.s strategy, communications, and tools for addressing market dysfunction'),
+        'limit_footprint': has(balance,
+            r'limiting the Federal Reserve.s footprint in the Treasury market'),
+        'ample_reserves': has(actions,
+            r'maintaining ample reserves in the banking system'),
+        'principal_reinvestment': has(actions,
+            r'Roll over at auction all principal payments.*?Reinvest all principal payments'),
+
+        # 물가: 의사록 시점 참가자 의견과 직원 추산, 공개일 현재 공식치 구별.
+        'inflation_sticky': has(outlook,
+            r'Participants noted that inflation remained elevated and that they had not seen sufficient progress'),
+        'ai_inflation': has(outlook,
+            r'ongoing geopolitical developments.{0,160}?surging AI-related investments.{0,90}?inflation pressures'),
+        'core_services_ex_housing': has(outlook,
+            r'Several participants observed that the rate of price increases in core services excluding housing remained elevated'),
+        'ai_core_goods': has(outlook,
+            r'core goods category.{0,120}?AI buildout.{0,110}?tariff increases waned'),
+        'inflation_upside': has(outlook,
+            r'Participants generally assessed inflation risk as skewed to the upside'),
+        'inflation_upside_more': has(outlook,
+            r'some participants remarked that those risks had become more skewed to the upside'),
+        'inflation_expectations_warning': has(outlook,
+            r'after more than five years of inflation above 2 percent.{0,165}?inflation expectations and wage- and price-setting'),
+        'inflation_exp_anchored': has(outlook,
+            r'medium- and longer-term inflation expectations remained at levels consistent with the Committee.s 2 percent objective'),
+        'pce_methodology': has(outlook,
+            r'software and portfolio management fees.{0,220}?upcoming changes to the BEA.s methodology'),
+        'pce_3m_warning': has(outlook,
+            r'3-month change measure of core PCE inflation.{0,245}?volatile.{0,185}?understate inflation'),
+
+        # 고용: 낮은 노동이동성과 전체 임금·AI 숙련인력 임금을 별개 기록.
+        'employment_stable': has(outlook,
+            r'Participants judged that labor market conditions were stable and generally viewed the labor market as close to maximum employment'),
+        'employment_majority': has(outlook,
+            r'A majority of participants assessed that the labor market had strengthened a bit recently'),
+        'employment_low_dynamism': has(outlook,
+            r'Several participants noted that dynamism in the labor market was unusually low'),
+        'employment_low_hire_layoff_find': has(outlook,
+            r'low rates of hiring and layoffs, a low job-finding rate, and a persistently elevated long-term unemployment rate'),
+        'employment_ai_skilled_wages': has(outlook,
+            r'Some participants observed that strong demand for skilled workers.{0,150}?driving strong wage gains'),
+        'employment_moderate_wages': has(outlook,
+            r'some participants also commented that aggregate wage growth was moderate'),
+        'employment_outlook_balanced': has(outlook,
+            r'Participants generally viewed the upside and downside risks to the labor market as broadly balanced'),
+
+        # 실물 성장: AI 투자, 장기금리/주택, 고소득층/저소득층, 생산성 불확실성.
+        'growth_solid': has(outlook,
+            r'Participants generally assessed that economic activity was expanding at a solid pace'),
+        'business_investment_consumption': has(outlook,
+            r'Robust business investment and resilient consumer spending had supported economic activity'),
+        'growth_momentum': has(outlook,
+            r'Several participants commented that the underlying momentum in the economy appeared to have increased'),
+        'ai_surprise': has(outlook,
+            r'Several participants commented that the scale and pace of the AI buildout had continued to surprise to the upside'),
+        'financial_supportive': has(outlook,
+            r'Many participants commented that, despite the recent rise in longer-term Treasury yields, financial conditions appeared to be supportive of economic growth'),
+        'housing_exception': has(outlook,
+            r'A few participants commented that housing was a sector in which financial conditions did not appear supportive'),
+        'consumer_high_income': has(outlook,
+            r'Several participants observed that stock market gains had provided support to consumer spending, particularly among higher-income households'),
+        'consumer_low_income': has(outlook,
+            r'Several participants noted, however, that low- and moderate-income households faced strains'),
+        'productivity_future_uncertain': has(outlook,
+            r'Participants generally judged that AI-related investments would likely contribute to stronger gains in productivity and potential output.{0,175}?uncertainty over the magnitude or timing'),
+        'ai_cyber_risk': has(outlook,
+            r'A few participants flagged emerging concerns regarding potential repercussions associated with rapid adoption of AI, including cybersecurity'),
+
+        # 별도 공개 당시 시장보고: 참가자 일반 합의가 아님.
+        'ai_private_debt_term_premium': has(manager,
+            r'heavy private debt issuance to finance the development of artificial intelligence.{0,135}?term premiums'),
+        'yields_2y10y_35bp': has(manager,
+            r'Nominal yields increased around 35 basis points across the 2- to 10-year segment'),
     }
-    if stmt_date == '2026-09-16' and not all((
-            signals['all_support'], signals['most_yearend'],
-            signals['many_risk'], signals['number_modal'])):
-        raise RuntimeError('9월 의사록 필수 연말 인상/이유 원문 탐지 실패 — 오판 알림 금지')
+    if stmt_date == '2026-09-16':
+        mandatory = (
+            'all_support','unanimous_vote','most_yearend','many_risk','number_modal',
+            'few_treasury','treasury_stress','limit_footprint','ample_reserves',
+            'inflation_sticky','ai_inflation','core_services_ex_housing','ai_core_goods',
+            'inflation_upside','employment_stable','employment_majority',
+            'employment_low_dynamism','growth_solid','ai_surprise',
+            'consumer_high_income','consumer_low_income','productivity_future_uncertain',
+        )
+        missing = [k for k in mandatory if not signals[k]]
+        if missing:
+            raise RuntimeError(
+                '9월 FOMC 의사록 필수 근거 파싱 실패 — 알림 보류: ' + ','.join(missing)
+            )
     return signals
 
 
