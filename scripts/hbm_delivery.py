@@ -201,7 +201,8 @@ def validate_rubin_hybrid_notification(text: str) -> None:
     title = "<b>🚨 HBM 하이브리드 본딩"
     segments = [
         part.strip() for part in text.split(MESSAGE_BREAK)
-        if "HBM 하이브리드 본딩" in part
+        if "🚨 HBM 하이브리드 본딩 · 삼성전자 vs SK하이닉스" in part
+        or "■ 하이브리드 본딩 고객 샘플 검증" in part
     ]
     if not segments:
         return
