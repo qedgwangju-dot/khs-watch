@@ -126,13 +126,19 @@ def validate(text, state):
         expected = "당일에도 MMF가 증가" if d5 == "증가" else "당일 MMF가 증가했으나"
         forbidden = ("당일 MMF는 감소", "당일 MMF 급감", "당일 MMF 감소", "당일 MMF 유출")
     elif d1 == "감소":
-        expected = "당일 MMF는 감소"
+        expected = "당일 MMF는 감소" if d5 != "감소" else "당일 MMF도 감소"
         forbidden = ("당일에도 MMF가 증가", "당일 MMF 급증", "당일 MMF 증가", "당일 MMF 유입")
     else:
         expected = "당일 MMF는 유의미한 증감 없이 보합"
         forbidden = ("당일 MMF 급감", "당일 MMF 급증", "당일에도 MMF가 증가", "당일 MMF는 감소")
     expect(expected in persistence, "MMF 1D/5D verbal explanation contradicts raw direction")
     expect(not any(s in assessment for s in forbidden), "opposite MMF direction claim in assessment")
+    if d5 != "증가":
+        expect("MMF 증가분이 주식에서" not in assessment,
+               "MMF 5D non-increase mislabeled as increase in summary")
+    if d5 == "보합":
+        expect("5거래일 흐름과 같은 방향" not in persistence,
+               "MMF daily non-flat move wrongly equated with flat five-day trend")
     dep = values["deposit"]
     cr = values["credit"]
     if (direction(dep["d1"],dep["value"]) == "증가"
