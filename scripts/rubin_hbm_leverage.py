@@ -40,7 +40,11 @@ def main() -> None:
 
     # A hybrid-bonding process-risk alert must not inherit generic Rubin
     # 288→192GB GPU/demand scenarios. Source-only corrections likewise.
-    if text.lstrip().startswith("🚨 <b>HBM 하이브리드 본딩") or text.lstrip().startswith("🚨 HBM 하이브리드 본딩"):
+    if text.lstrip().startswith((
+        "<b>🚨 HBM 하이브리드 본딩",
+        "🚨 <b>HBM 하이브리드 본딩",
+        "🚨 HBM 하이브리드 본딩",
+    )):
         return
 
     text = fix_source_links(text)
