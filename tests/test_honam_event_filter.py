@@ -2,6 +2,10 @@
 import pathlib
 import sys
 import unittest
+import hashlib
+import json
+import tempfile
+from unittest.mock import patch
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -9,12 +13,13 @@ if str(ROOT) not in sys.path:
 
 from scripts.honam_event_filter import (
     _action_level,
+    _executive_visit_signal,
     _event_family,
     _is_known_baseline_only,
     _is_proposal_only,
     _merge_group,
 )
-from scripts.honam_semiconductor_watch import canonical_headline_key, canonical_url_key
+from scripts.honam_semiconductor_watch import canonical_headline_key, canonical_url_key, verified_intake_events
 
 
 class HonamEventFilterRegressionTest(unittest.TestCase):
@@ -140,6 +145,83 @@ class HonamEventFilterRegressionTest(unittest.TestCase):
         }
         self.assertEqual(_event_family(item), "honam_settlement_governance")
         self.assertEqual(_action_level(item), 3)
+
+    def test_chair_site_visit_scheduled_not_completed(self):
+        item = {
+            "title": "최태원 SK그룹 회장, 9일 광주 군공항 반도체 팹 예정지 방문한다",
+            "description": "SK하이닉스 경영진이 현장 동행 예정. 기존 사장단은 7월에 방문했다.",
+            "source_status": "보도 단계",
+        }
+        self.assertEqual(_executive_visit_signal(item), 1)
+        self.assertEqual(_action_level(item), 1)
+        self.assertEqual(_event_family(item), "honam_sk_chair_site_visit_20261009")
+        self.assertFalse(_is_known_baseline_only(item))
+
+    def test_chair_site_visit_actual_completion_is_new_stage(self):
+        item = {
+            "title": "최태원 회장, 광주 군공항 반도체 부지 방문했다",
+            "description": "SK하이닉스의 팹 건립 예정지 현장을 둘러봤다.",
+            "source_status": "보도 단계",
+        }
+        self.assertEqual(_executive_visit_signal(item), 3)
+        self.assertEqual(_action_level(item), 3)
+        self.assertEqual(_event_family(item), "honam_sk_chair_site_visit_20261009")
+
+    def test_old_executive_visit_is_not_chair_visit(self):
+        item = {
+            "title": "SK하이닉스 염성진 사장단, 광주 군공항 부지 방문",
+            "description": "최태원 회장은 향후 현장을 찾을 예정이라는 보도가 나왔다.",
+        }
+        self.assertEqual(_executive_visit_signal(item), 0)
+
+    def test_chair_visit_not_investment_contract(self):
+        item = {
+            "title": "최태원, 호남 광주 군공항 반도체 부지 찾는다",
+            "description": "SK하이닉스가 향후 설비투자 규모와 일정을 검토할 예정이다.",
+        }
+        self.assertEqual(_action_level(item), 1)
+
+    def test_merge_completed_chair_visit_overrides_planned_article(self):
+        planned = {
+            "title": "최태원 회장, 광주 군공항 반도체 부지 방문 예정",
+            "source": "이데일리", "url": "https://example.com/a",
+            "source_status": "보도 단계",
+            "stages": ["6_산단투자_기업일정"],
+            "stage_labels": ["⑥ 산단·기업투자·팹 일정"],
+        }
+        actual = {
+            "title": "최태원 회장, 광주 군공항 반도체 부지 방문했다",
+            "source": "조선비즈", "url": "https://example.com/b",
+            "source_status": "보도 단계",
+            "stages": ["6_산단투자_기업일정"],
+            "stage_labels": ["⑥ 산단·기업투자·팹 일정"],
+        }
+        merged = _merge_group([planned, actual])
+        self.assertEqual(merged["verification_level"], 2)
+        self.assertIn("완료", merged["title"])
+        self.assertEqual(merged["evidence_count"], 2)
+
+    def test_verified_incident_intake_is_once_by_family(self):
+        payload = {"events": [{
+            "event_family": "honam_sk_chair_site_visit_20261009",
+            "event_phase": "scheduled",
+            "title": "최태원 SK그룹 회장, 광주 군공항 반도체 부지 방문 예정",
+            "description": "10월 9일 방문 예정",
+            "evidence": [
+                {"source": "이데일리", "url": "https://example.com/a"},
+                {"source": "조선비즈", "url": "https://example.com/b"},
+            ],
+        }]}
+        with tempfile.TemporaryDirectory() as td:
+            path = pathlib.Path(td) / "intake.json"
+            path.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
+            with patch("scripts.honam_semiconductor_watch.VERIFIED_INTAKE_PATH", path):
+                first = verified_intake_events({"seen_event_keys": []})
+                self.assertEqual(len(first), 2)
+                key = hashlib.sha256(
+                    "family|honam_sk_chair_site_visit_20261009".encode("utf-8")
+                ).hexdigest()[:28]
+                self.assertEqual(verified_intake_events({"seen_event_keys": [key]}), [])
 
 
 if __name__ == "__main__":
