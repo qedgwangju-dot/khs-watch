@@ -230,7 +230,7 @@ REQUIRED_TELEGRAM_RUNNER_SNIPPETS = [
     "filter_alerts_for_run_mode(classified, now, live_mode)",
     "preopen_digest_seen_bypass",
     "seen_filter_scope",
-    "_preopen_live_seen_bypass",
+    "preopen_digest_cross_lane_repeats_suppressed",
     "record_seen_alerts(final_alerts, now)",
     "delivery_confirmed_sent()",
     "reset_delivery_status()",
@@ -955,9 +955,7 @@ def main() -> int:
         if preopen_remaining != [normalized_iran] or preopen_routed:
             errors.append("Iran/Hormuz alert was not retained for the 06:30 radar")
 
-    # A story already announced by the real-time lane must still be available
-    # to the once-daily 06:30 digest. This guards the failure where overnight
-    # live polls consumed every preopen candidate before the morning run.
+    # One source event must not be delivered again by another radar lane.
     live_only_probe = {
         "news": "장전 seen-state 회귀 검사",
         "original_news": "Preopen seen-state regression fixture",
@@ -988,12 +986,8 @@ def main() -> int:
         production.telegram.load_seen_state = original_load_seen_state
     if live_fresh or live_skipped != probes:
         errors.append("live radar no longer applies seen-state suppression")
-    if len(preopen_fresh) != 1 or preopen_fresh[0].get("link") != live_only_probe["link"]:
-        errors.append("06:30 preopen digest did not retain the live-only story")
-    elif not preopen_fresh[0].get("_preopen_live_seen_bypass"):
-        errors.append("06:30 preopen digest lost its live-seen bypass marker")
-    if len(preopen_skipped) != 1 or preopen_skipped[0].get("link") != preopen_probe["link"]:
-        errors.append("06:30 preopen digest repeated a prior preopen story")
+    if preopen_fresh or preopen_skipped != probes:
+        errors.append("preopen lane did not suppress stories already sent by either lane")
     if not production.telegram.seen_entry_has_lane({"first_seen_kst": now.isoformat()}, "preopen"):
         errors.append("legacy seen-state was not suppressed from repeat preopen delivery")
 

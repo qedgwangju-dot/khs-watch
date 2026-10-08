@@ -2599,12 +2599,151 @@ def reported_issuer_announcement_fact(title: str, body: str) -> str:
     return ""
 
 
+def monthly_product_export_core(title: str, body: str) -> str:
+    """Bind a product-sector export headline to its current monthly source data."""
+    if not re.search(r"수출", title) or not re.search(r"\d+(?:\.\d+)?\s*%", title):
+        return ""
+    title_rates = {
+        re.sub(r"\s+", "", value)
+        for value in re.findall(r"\d+(?:\.\d+)?\s*%", title)
+    }
+    source = market_materiality.source_reported_body(body)
+    amount_pattern = r"\d[\d,.]*\s*(?:조|억|만)?(?:\s*\d[\d,.]*\s*(?:억|만)?)?\s*달러"
+    for sentence in market_materiality.source_sentences(source):
+        match = re.search(
+            rf"(?P<month>(?:1[0-2]|[1-9])월)\s*(?P<product>[가-힣A-Za-z·&() ]{{1,18}}?)\s*수출은\s*"
+            rf"(?P<amount>{amount_pattern})\s*(?:로|,)\s*전년\s*동월\s*대비\s*"
+            r"(?P<yoy>\d+(?:\.\d+)?\s*%)\s*(?:,\s*)?"
+            r"(?:전월\s*대비\s*(?P<mom>\d+(?:\.\d+)?\s*%)\s*)?"
+            r"(?P<direction>증가|감소|급증|급감)했다?",
+            sentence,
+        )
+        if not match:
+            continue
+        yoy = re.sub(r"\s+", "", match.group("yoy"))
+        if yoy not in title_rates:
+            continue
+        product = re.sub(r"\s+", " ", match.group("product")).strip()
+        amount = re.sub(r"\s+", "", match.group("amount"))
+        direction = "증가" if match.group("direction") in {"증가", "급증"} else "감소"
+        fact = (
+            f"{match.group('month')} {product} 수출은 {amount}로 전년 동월 대비 {yoy}"
+        )
+        if match.group("mom"):
+            fact += f", 전월 대비 {re.sub(r'\s+', '', match.group('mom'))}"
+        fact += f" {direction}했다."
+        return fact if core_sentence_is_complete(fact) else ""
+    return ""
+
+
+def ranked_product_export_core(title: str, body: str) -> str:
+    """Summarize a ranked product-export story only from matching source statistics."""
+    observation = market_materiality.ranked_product_export_observation(title, body)
+    if not observation:
+        return ""
+    fact = (
+        f"{observation['period']} {observation['product']} 수출액은 전년 동기 대비 "
+        f"{observation['change']} {observation['direction']}한 {observation['amount']}였고, "
+        f"{observation['leader']}이 {observation['leader_amount']}로 국가별 1위였다."
+    )
+    return fact if core_sentence_is_complete(fact) else ""
+
+
+def lam_research_korea_supply_chain_core(title: str, body: str) -> str:
+    """Keep Lam's reported Korea shipment, procurement, and fund facts together."""
+    if not re.search(r"램리서치|Lam\s+Research", title, re.I):
+        return ""
+    source = market_materiality.source_reported_body(body)
+    flat_source = re.sub(r"\s+", " ", source)
+    shipment = re.search(
+        r"(?:한국에서\s*생산한|한국\s*생산(?:의)?)\s*(?:반도체\s*제조\s*)?챔버\s*"
+        r"(?P<count>1만\s*5000|15,?000)\s*(?:호기|번째)?[^.!?]{0,35}(?:출하|선적)",
+        flat_source,
+    )
+    procurement = re.search(
+        r"지난해\s*국내\s*협력사\s*(?:에서\s*)?1조\s*원?\s*이상\s*(?:조달|구매)",
+        flat_source,
+    )
+    fund = all((
+        re.search(r"하나벤처스", flat_source),
+        re.search(r"램캐피탈", flat_source),
+        re.search(r"공동\s*설립", flat_source),
+        re.search(r"반도체[^.!?]{0,35}펀드|펀드[^.!?]{0,35}반도체", flat_source),
+    ))
+    if not (shipment and procurement and fund):
+        return ""
+    count = re.sub(r"\s+", "", shipment.group("count"))
+    fact = (
+        f"램리서치가 한국 생산 반도체 제조 챔버 {count}호기를 출하했다. "
+        "지난해 국내 협력사에서 1조원 이상 조달했고, 하나벤처스·램캐피탈은 "
+        "국내 반도체 스타트업 펀드를 공동 설립했다."
+    )
+    return fact if core_sentence_is_complete(fact) else ""
+
+
+def ai_infrastructure_credit_stress_core(title: str, body: str) -> str:
+    observation = market_materiality.ai_infrastructure_credit_stress_observation(title, body)
+    if not observation:
+        return ""
+    fact = (
+        f"브로드컴은 오픈AI AI칩용 {observation['broadcom_amount']} 조달을 논의하고, "
+        f"스페이스X는 {observation['spacex_amount']} 조달을 추진 중입니다. "
+        f"CDS는 스페이스X가 {observation['spacex_cds_previous']}에서 {observation['spacex_cds_current']}로, "
+        f"오라클은 {observation['oracle_cds_change']} 오른 {observation['oracle_cds_current']}로 상승했습니다."
+    )
+    return fact if core_sentence_is_complete(fact, limit=GAMEJOA_CORE_MAX_CHARS) else ""
+
+
+def sovereign_credit_spread_core(title: str, body: str) -> str:
+    observation = market_materiality.sovereign_credit_spread_observation(title, body)
+    if not observation:
+        return ""
+    fact = "프랑스 국채 매도로 독일 국채 대비 수익률 격차가 2012년 이후 최대를 기록해 유로존 재정불안 확산 우려가 커졌습니다."
+    return fact if core_sentence_is_complete(fact) else ""
+
+
+def iran_military_readiness_core(title: str, body: str) -> str:
+    observation = market_materiality.iran_military_readiness_observation(title, body)
+    if not observation:
+        return ""
+    fact = (
+        "액시오스가 미 당국자를 인용해, 미 국방부가 중부사령부에 이란 대규모 전투 재개 준비를 지시했다고 보도했습니다. "
+        "공격 날짜는 정해지지 않았고 트럼프의 최종 결정도 나오지 않았습니다."
+    )
+    return fact if core_sentence_is_complete(fact) else ""
+
+
 def source_headline_event_fact(title: str, body: str) -> str:
     """Bind a compact observation to its source actor, population and period."""
     focus = market_materiality.focus_kind(title)
     source = market_materiality.source_reported_body(body)
     rows = market_materiality.source_sentences(source)
     flat_source = re.sub(r"\s+", " ", source)
+    export_core = monthly_product_export_core(title, source)
+    if export_core:
+        return export_core
+    ranked_export_core = ranked_product_export_core(title, source)
+    if ranked_export_core:
+        return ranked_export_core
+    credit_core = ai_infrastructure_credit_stress_core(title, source)
+    if credit_core:
+        return credit_core
+    sovereign_core = sovereign_credit_spread_core(title, source)
+    if sovereign_core:
+        return sovereign_core
+    iran_core = iran_military_readiness_core(title, source)
+    if iran_core:
+        return iran_core
+    lam_core = lam_research_korea_supply_chain_core(title, source)
+    if lam_core:
+        return lam_core
+    if focus == "short_sale_ruling":
+        ruling = next((
+            row for row in rows
+            if market_materiality.focus_matches(title, row)
+        ), "")
+        if ruling:
+            return "대법원은 HSBC 홍콩법인의 무차입 공매도 사건에서 검찰 상고를 기각하고 무죄를 확정했다."
     if re.search(r"\bGA\b|법인\s*보험\s*대리점", title, re.I) and re.search(r"제재|과태료", title):
         direct_fine = re.search(
             r"인카금융서비스에\s*(?P<amount>\d[\d,]*\s*억\s*\d[\d,]*\s*만\s*원)",
@@ -2625,8 +2764,9 @@ def source_headline_event_fact(title: str, body: str) -> str:
             )
             if core_sentence_is_complete(fact):
                 return fact
-    if re.search(r"삼성전자", title) and re.search(r"100\s*조|영업\s*이익|신기록", title):
-        won_amount = r"\d[\d,]*(?:조\s*\d[\d,]*억|조|억|만)\s*원"
+    samsung_headline = bool(re.search(r"삼성전자|삼성(?=[…\s,.])", title))
+    if samsung_headline and re.search(r"100\s*조|영업\s*이익|영업익|신기록", title):
+        won_amount = r"\d[\d,]*(?:조)?(?:\d[\d,]*(?:천|백|십)?억)?(?:\d[\d,]*(?:천|백|십)?만)?\s*원"
         official_result = re.search(
             rf"삼성전자(?:는|가)?\s*(?:연결\s*기준\s*)?(?:올해\s*)?"
             rf"(?:\d{{1,2}}일\s*)?"
@@ -2634,6 +2774,20 @@ def source_headline_event_fact(title: str, body: str) -> str:
             rf"(?P<profit>{won_amount})\s*(?:으로|로)\s*잠정\s*집계됐다고\s*공시했다",
             flat_source,
         )
+        reported_result = re.search(
+            rf"삼성전자(?:는|가)?\s*(?:\d{{1,2}}일\s*)?(?:공시를\s*통해\s*)?"
+            rf"(?:올해\s*)?(?P<quarter>[1-4])\s*분기\s*(?:연결\s*기준\s*)?"
+            rf"매출\s*(?P<revenue>{won_amount})\s*[,，]\s*"
+            rf"영업이익\s*(?P<profit>{won_amount})\s*(?:을|를)?\s*기록했다고\s*밝혔다",
+            flat_source,
+        )
+        if reported_result and not official_result:
+            quarter = reported_result["quarter"]
+            profit = re.sub(r"\s+", "", reported_result["profit"])
+            revenue_amount = re.sub(r"\s+", "", reported_result["revenue"])
+            fact = f"삼성전자의 올해 {quarter}분기 잠정 실적은 매출 {revenue_amount}, 영업이익 {profit}이다."
+            if core_sentence_is_complete(fact):
+                return fact
         if official_result:
             quarter = official_result["quarter"]
             profit = re.sub(r"\s+", "", official_result["profit"])
@@ -2655,7 +2809,7 @@ def source_headline_event_fact(title: str, body: str) -> str:
                 operating_change.append(f"전기비 {operating_qoq.group(1)}% 증가")
             fact = f"삼성전자의 올해 {quarter}분기 잠정 영업이익은 {profit}으로 집계됐다."
             if operating_change:
-                fact += " "
+                fact = fact[:-1] + " "
                 if operating_yoy:
                     fact += f"전년비 {operating_yoy.group(1)}% 증가"
                 if operating_yoy and operating_qoq:
@@ -2753,16 +2907,24 @@ def source_headline_event_fact(title: str, body: str) -> str:
                 f"3분기 생산은 전분기보다 {qoq['decline']}% 줄었다."
             )
             return fact if core_sentence_is_complete(fact) else ""
-    if (re.search(r"ETF", title, re.I) and re.search(r"상장\s*첫날", title)
-            and re.search(r"개인\s*\d+\s*억", title)):
-        personal = re.search(r"개인투자자는\s*이\s*상품을\s*약\s*(?P<amount>[\d,]+\s*억원)\s*순매수", source)
-        listing_set = re.search(r"신규\s*상장한\s*반도체\s*ETF\s*(?P<count>\d+)종\s*가운데", source)
-        pension = re.search(r"퇴직연금\s*계좌를\s*통한\s*매수분까지\s*포함하면\s*약\s*(?P<amount>[\d,]+\s*억원)\s*[^.!?\n]{0,20}유입", source)
-        fund = re.search(r"(?P<fund>SOL\s*글로벌DRAM반도체플러스\s*ETF)", title, re.I)
+    if (re.search(r"ETF", title, re.I) and re.search(r"상장\s*(?:첫날|일)", title)
+            and (re.search(r"개인.{0,24}순매수", title) or re.search(r"개인\s*\d+\s*억", title))):
+        personal = re.search(
+            r"개인(?:투자자)?[^.!?\n]{0,65}?(?:순매수(?:\s*금액)?|상품을)[^.!?\n]{0,25}?"
+            r"(?:약\s*)?(?P<amount>[\d,]+\s*억원)", source,
+        )
+        listing_set = re.search(
+            r"신규\s*상장한\s*반도체\s*ETF\s*(?P<count>\d+)\s*(?:종|개)", source,
+        )
+        pension = re.search(
+            r"퇴직연금\s*계좌를\s*통한\s*매수분(?:까지)?\s*(?:을\s*)?포함하면\s*약\s*"
+            r"(?P<amount>[\d,]+\s*억원)\s*[^.!?\n]{0,30}유입", source,
+        )
+        fund = re.search(r"(?P<fund>SOL\s*글로벌DRAM반도체플러스)", f"{title} {source}", re.I)
         if personal and listing_set and pension and fund:
-            fact = (f"{fund['fund']}는 상장 첫날 개인 순매수액 {personal['amount'].replace(' ', '')}으로 "
+            fact = (f"한국거래소 기준 상장 첫날 개인 순매수는 {personal['amount'].replace(' ', '')}으로, "
                     f"하반기 신규 반도체 ETF {listing_set['count']}종 중 최대였다. "
-                    f"신한자산운용에 따르면 연금 매수 포함 유입액은 {pension['amount'].replace(' ', '')}이다.")
+                    f"퇴직연금 매수 포함 유입액은 {pension['amount'].replace(' ', '')}이다.")
             return fact if core_sentence_is_complete(fact) else ''
     if re.search(r"경상수지", title) and re.search(r"\d{1,2}월", title):
         account = re.search(
@@ -3990,6 +4152,21 @@ def iea_existing_stock_release_core(title: str, body: str) -> str:
     combined = f"{title} {source}"
     if not re.search(r"IEA|국제에너지기구", source, re.I):
         return ""
+    if (
+        re.search(r"3월[^.!?\n]{0,60}4억\s*배럴", source)
+        and re.search(r"3억\s*(?:2천\s*500|2500)\s*만\s*배럴", source)
+        and re.search(r"경유\s*2억\s*배럴\s*이상", source)
+        and re.search(r"필요하면[^.!?\n]{0,70}추가로?\s*방출할\s*준비", source)
+    ):
+        fact = (
+            "IEA 회원국은 3월 합의한 비축유 4억 배럴 중 3억2500만 배럴을 방출했고, "
+            "필요하면 경유 2억 배럴 이상을 포함해 추가 방출할 준비가 됐다고 밝혔다."
+        )
+        if re.search(r"G7[^.!?\n]{0,80}1억\s*배럴", source) and re.search(
+            r"별도인지|추가로\s*방출할지|설명하지\s*않|불분명", source,
+        ):
+            fact += " G7의 1억 배럴 계획은 기존 약속과 별도인지 불분명하다."
+        return fact if core_sentence_is_complete(fact) else ""
     if not re.search(r"추가\s*방출\s*없이|추가\s*물량이\s*아닌|not\s+additional\s+stocks", combined, re.I):
         return ""
     if not re.search(r"1\s*억\s*배럴", source) or not re.search(r"경유", source):
@@ -4000,6 +4177,26 @@ def iea_existing_stock_release_core(title: str, body: str) -> str:
         "IEA 회원국은 3월 합의 비축유 약 3억2500만 배럴을 이미 방출했고, 잔여 약 1억 배럴을 4개월간 공급하며 첫 20일은 경유를 우선합니다. "
         "추가 방출이 아닌 기존 약속 이행 발표 뒤 유럽 경유 선물은 장중 최대 8% 올랐습니다."
     )
+
+
+def iraq_syria_oil_route_core(title: str, body: str) -> str:
+    if not re.search(r"이라크|Iraq", title, re.I) or not re.search(r"시리아|Syria", title, re.I):
+        return ""
+    source = article_summary_body(body)
+    required = (
+        re.search(r"10월\s*중순", source),
+        re.search(r"원유.{0,50}트럭|트럭.{0,50}원유", source),
+        re.search(r"하루\s*(?:약\s*)?1\s*천\s*대", source),
+        re.search(r"트럭\s*1\s*대가\s*(?:약\s*)?220\s*배럴", source),
+        re.search(r"270\s*만\s*배럴", source),
+    )
+    if not all(required):
+        return ""
+    fact = (
+        "이라크는 10월 중순부터 시리아 경유 원유 수출을 시작할 전망이다. "
+        "하루 1천대 이상·대당 약 220배럴로, 최근 전체 수출(270만배럴/일) 중 일부다."
+    )
+    return fact if core_sentence_is_complete(fact) else ""
 
 
 def fomc_minutes_guidance_core(title: str, body: str) -> str:
@@ -4030,6 +4227,8 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
     focus = market_materiality.focus_kind(title)
     source = " ".join(sentences)
     event_core = iea_existing_stock_release_core(title, source)
+    if not event_core:
+        event_core = iraq_syria_oil_route_core(title, source)
     if not event_core:
         event_core = fomc_minutes_guidance_core(title, source)
     if event_core:
@@ -9787,6 +9986,11 @@ def source_output_aligned(alert: dict) -> bool:
                 str(alert.get("source_title") or ""),
                 article_summary_body(str(alert.get("source_body") or alert.get("source_abstract") or "")),
             )
+        if not event_specific_core:
+            event_specific_core = ranked_product_export_core(
+                str(alert.get("source_title") or ""),
+                article_summary_body(str(alert.get("source_body") or alert.get("source_abstract") or "")),
+            )
         event_specific_market_alignment = bool(
             event_specific_core
             and re.sub(r"\s+", "", event_specific_core) == re.sub(r"\s+", "", summary)
@@ -11463,7 +11667,12 @@ def source_market_materiality(alert: dict) -> dict:
     body = str(alert.get("source_body") or alert.get("source_abstract") or "")
     if not alert.get("body_verified"):
         body = ""
-    return market_materiality.assess(title, article_summary_body(body), source_url=str(alert.get("link") or ""))
+    return market_materiality.assess(
+        title,
+        article_summary_body(body),
+        source_url=str(alert.get("link") or ""),
+        published=str(alert.get("published") or ""),
+    )
 
 
 def verified_materiality_axes(alert: dict) -> list[str]:
@@ -12149,7 +12358,28 @@ def source_core_fact_errors(alert: dict) -> list[str]:
     if not source or not core:
         return []
     errors = []
+    if (
+        re.search(r"\bETF\b|상장지수펀드", title, re.I)
+        and re.search(r"상장\s*(?:첫날|일)", title)
+        and re.search(r"개인.{0,24}순매수", title)
+        and re.search(r"순매수\s*인증\s*이벤트|경품\s*이벤트", core)
+    ):
+        errors.append("promotional_tail_not_headline_market_fact")
     event_specific_core = iea_existing_stock_release_core(title, source)
+    if not event_specific_core:
+        event_specific_core = monthly_product_export_core(title, source)
+    if not event_specific_core:
+        event_specific_core = ranked_product_export_core(title, source)
+    if not event_specific_core:
+        event_specific_core = ai_infrastructure_credit_stress_core(title, source)
+    if not event_specific_core:
+        event_specific_core = sovereign_credit_spread_core(title, source)
+    if not event_specific_core:
+        event_specific_core = iran_military_readiness_core(title, source)
+    if not event_specific_core:
+        event_specific_core = lam_research_korea_supply_chain_core(title, source)
+    if not event_specific_core:
+        event_specific_core = iraq_syria_oil_route_core(title, source)
     if not event_specific_core:
         event_specific_core = fomc_minutes_guidance_core(title, source)
     if event_specific_core and re.sub(r"\s+", "", event_specific_core) != re.sub(r"\s+", "", core):
@@ -12250,6 +12480,9 @@ def source_core_fact_errors(alert: dict) -> list[str]:
         # short deployment sentence. Require that exact source-bound summary.
         source_bound_deployment = bool(
             (market_materiality.focus_kind(title) == "military_reinforcement"
+             or market_materiality.ai_infrastructure_credit_stress_observation(title, source)
+             or market_materiality.sovereign_credit_spread_observation(title, source)
+             or market_materiality.iran_military_readiness_observation(title, source)
              or market_materiality.declared_capital_participation_observation(title, source)
              or market_materiality.quantified_oil_shipping_constraints_observation(title, source)
              or market_materiality.procurement_lead_time_observation(title, source)
@@ -12278,6 +12511,17 @@ def source_core_fact_errors(alert: dict) -> list[str]:
               or ('삼성전자' in title and re.search(r'성과급|OPI2', title)
                   and '노조 추산상' in expected_observation and '7억' in expected_observation
                   and '10억' in expected_observation)
+              or ('삼성' in title and '잠정 실적은 매출' in expected_observation
+                  and '영업이익' in expected_observation)
+              or ('램리서치' in title and '챔버 1만5000호기를 출하했다' in expected_observation
+                  and '국내 협력사에서 1조원 이상 조달' in expected_observation
+                  and '반도체 스타트업 펀드를 공동 설립했다' in expected_observation)
+              or (monthly_product_export_core(title, source)
+                  and market_materiality.canonical_source_fact(monthly_product_export_core(title, source))
+                  == market_materiality.canonical_source_fact(expected_observation))
+              or (ranked_product_export_core(title, source)
+                  and market_materiality.canonical_source_fact(ranked_product_export_core(title, source))
+                  == market_materiality.canonical_source_fact(expected_observation))
              or petroleum_cartel_alignment
              or event_specific_market_alignment)
             and source_audit["disposition"] == "keep" and source_audit["priority"] >= 2
@@ -12516,10 +12760,16 @@ def compact_report(alerts: list[dict], fred: dict, te: dict, now) -> str:
         title = f"📰 실시간 핵심 뉴스 레이더 · {now:%Y년 %m월 %d일} · {now:%H:%M}"
         empty_line = "실시간 고충격 뉴스 직접 확인 없음"
     else:
-        title = f"📰 GAMEJOA 장전 핵심 뉴스 레이더 · {now:%Y년 %m월 %d일} · 06:30"
-        comment_title = "💡 06:30 장전 뉴스 코멘트"
-        followup_line = "06:50 투자기상도에서 수치·수급·테마와 재확인 필요."
-        empty_line = "장전 고충격 뉴스 직접 확인 없음"
+        if preopen_clock_window_open(now):
+            title = f"📰 GAMEJOA 장전 핵심 뉴스 레이더 · {now:%Y년 %m월 %d일} · 06:30"
+            comment_title = "💡 06:30 장전 뉴스 코멘트"
+            followup_line = "06:50 투자기상도에서 수치·수급·테마와 재확인 필요."
+            empty_line = "장전 고충격 뉴스 직접 확인 없음"
+        else:
+            title = f"🧪 GAMEJOA 뉴스 레이더 검증용 · {now:%Y년 %m월 %d일} · 조회 {now:%H:%M}"
+            comment_title = "💡 검증 결과"
+            followup_line = "검증용 결과이며 정규 장전 발송 기록으로 간주하지 않습니다."
+            empty_line = "검증 기준을 통과한 고충격 뉴스 없음"
 
     visible: list[dict] = []
     rendered: list[str] = []
@@ -12570,6 +12820,7 @@ def guard_preopen_report(text: str) -> str:
     valid_title = (
         text.startswith("📰 GAMEJOA 장전 핵심 뉴스 레이더 · ")
         or text.startswith("📰 실시간 핵심 뉴스 레이더 · ")
+        or text.startswith("🧪 GAMEJOA 뉴스 레이더 검증용 · ")
     )
     if not valid_title:
         errors.append("title_contract")
@@ -12828,18 +13079,21 @@ def parse_hhmm(value: str, fallback: tuple[int, int]) -> int:
     return max(0, min(23, hour)) * 60 + max(0, min(59, minute))
 
 
-def preopen_send_window_open() -> bool:
-    if os.getenv("RADAR_RUN_MODE", "").strip().lower() == "live":
-        return True
-    if os.getenv("ALLOW_OFF_WINDOW_TELEGRAM", "").lower() in {"1", "true", "yes", "y"}:
-        return True
-    now = base.kst_now()
+def preopen_clock_window_open(now) -> bool:
     current = now.hour * 60 + now.minute
     start = parse_hhmm(os.getenv("PREOPEN_SEND_WINDOW_START_KST", "05:30"), (5, 30))
     end = parse_hhmm(os.getenv("PREOPEN_SEND_WINDOW_END_KST", "07:30"), (7, 30))
     if start <= end:
         return start <= current <= end
     return current >= start or current <= end
+
+
+def preopen_send_window_open() -> bool:
+    if os.getenv("RADAR_RUN_MODE", "").strip().lower() == "live":
+        return True
+    if os.getenv("ALLOW_OFF_WINDOW_TELEGRAM", "").lower() in {"1", "true", "yes", "y"}:
+        return True
+    return preopen_clock_window_open(base.kst_now())
 
 
 def fit_telegram_html(text: str, limit: int) -> str:

@@ -403,7 +403,7 @@ def recent_seen_event_entries(seen: dict, now, lane: str) -> list[dict]:
     cutoff = now - dt.timedelta(hours=36)
     unique: dict[tuple[str, str, str], dict] = {}
     for entry in seen.values():
-        if not isinstance(entry, dict) or (lane != "live" and not seen_entry_has_lane(entry, lane)):
+        if not isinstance(entry, dict) or (lane not in {"live", "all"} and not seen_entry_has_lane(entry, lane)):
             continue
         last_seen = parse_seen_time(entry.get("last_seen_kst"))
         if not last_seen or last_seen < cutoff or last_seen > now + dt.timedelta(minutes=5):
@@ -463,7 +463,7 @@ def filter_previously_seen_alerts(
         if not identity and fact_keys and not matching_entries:
             # A shorter syndication may omit a previously sent secondary fact.
             # An added fact must remain fresh; matching just one is insufficient.
-            if all(key in seen and (lane == "live" or seen_entry_has_lane(seen[key], lane)) for key in fact_keys):
+            if all(key in seen for key in fact_keys):
                 matching_entries = [seen[key] for key in fact_keys]
         if (identity or fact_identity) and not matching_entries:
             # Legacy receipts without sufficient event terms still protect
@@ -511,7 +511,7 @@ def filter_previously_seen_alerts(
                 canonical.get("source_title") or canonical.get("original_news") or canonical.get("news") or ""
             )
             candidate_fact = str(canonical.get("telegram_core_fact") or "")
-            for entry in recent_seen_event_entries(seen, now, lane):
+            for entry in recent_seen_event_entries(seen, now, "all"):
                 prior_title = str(entry.get("source_title") or "")
                 if entry.get("_legacy_title_only"):
                     same_event = market_materiality.same_headline_event(candidate_title, prior_title)
@@ -532,17 +532,12 @@ def filter_previously_seen_alerts(
                         continue
                 fuzzy_duplicate = True
                 break
-        already_seen = bool(matching_entries) if lane == "live" else any(
-            seen_entry_has_lane(entry, lane) for entry in matching_entries
-        )
-        already_seen = already_seen or fuzzy_duplicate
+        already_seen = bool(matching_entries) or fuzzy_duplicate
         if already_seen:
             skipped.append(alert)
             continue
         alert = dict(alert)
         alert["_seen_keys"] = keys
-        if lane == "preopen" and matching_entries:
-            alert["_preopen_live_seen_bypass"] = True
         fresh.append(alert)
     if skipped:
         print(f"GAMEJOA radar: skipped_seen_alerts={len(skipped)} lane={lane}")
@@ -550,18 +545,15 @@ def filter_previously_seen_alerts(
 
 
 def filter_alerts_for_run_mode(classified: list[dict], now, live_mode: bool) -> tuple[list[dict], list[dict]]:
-    """Apply lane-aware seen-state suppression.
+    """Suppress the same source event across live and preopen lanes.
 
-    The 06:30 radar is an overnight digest. It must retain qualifying items
-    when an earlier real-time run announced them, but it must not repeat an
-    item already sent in an earlier preopen digest. A successful preopen send
-    also prevents the next live poll from repeating the same stories.
+    A body-verified factual revision remains eligible because its structured
+    event identity differs from the receipt for the earlier version.
     """
     if live_mode:
         return filter_previously_seen_alerts(classified, now, "live")
     digest_alerts, skipped = filter_previously_seen_alerts(classified, now, "preopen")
-    bypassed = sum(bool(alert.get("_preopen_live_seen_bypass")) for alert in digest_alerts)
-    print(f"GAMEJOA radar: preopen_digest_seen_bypass={bypassed}")
+    print(f"GAMEJOA radar: preopen_digest_cross_lane_repeats_suppressed={len(skipped)}")
     return digest_alerts, skipped
 
 
@@ -642,6 +634,10 @@ def preopen_send_window_open(now) -> bool:
         return True
     if os.getenv("ALLOW_OFF_WINDOW_TELEGRAM", "").lower() in {"1", "true", "yes", "y"}:
         return True
+    return preopen_clock_window_open(now)
+
+
+def preopen_clock_window_open(now) -> bool:
     current = now.hour * 60 + now.minute
     start = parse_hhmm(os.getenv("PREOPEN_SEND_WINDOW_START_KST", "05:30"), (5, 30))
     end = parse_hhmm(os.getenv("PREOPEN_SEND_WINDOW_END_KST", "07:30"), (7, 30))
@@ -855,10 +851,8 @@ def selection_diagnostics(
         "collected_rows": len(rows),
         "classified_alerts": len(classified),
         "seen_filter_applied": True,
-        "seen_filter_scope": "all_lanes" if live_mode else "preopen_lane",
-        "preopen_digest_seen_bypass": 0 if live_mode else sum(
-            bool(alert.get("_preopen_live_seen_bypass")) for alert in candidates
-        ),
+        "seen_filter_scope": "all_lanes",
+        "preopen_digest_seen_bypass": 0,
         "seen_filtered_alerts": len(skipped_seen),
         "deduped_candidates": len(candidates),
         "selected_alerts": len(selected),
@@ -898,10 +892,16 @@ def compact_report(alerts: list[dict], fred: dict, te: dict, now) -> str:
         title = f"📰 실시간 핵심 뉴스 레이더 · {now:%Y년 %m월 %d일} · {now:%H:%M}"
         empty_line = "실시간 고충격 뉴스 직접 확인 없음"
     else:
-        title = f"장전 핵심 뉴스 레이더 · {now:%Y년 %m월 %d일} · 06:30"
-        comment_title = "💡 06:30 장전 뉴스 코멘트"
-        followup_line = "06:50 투자기상도에서 수치·수급·테마와 재확인 필요."
-        empty_line = "장전 고충격 뉴스 직접 확인 없음"
+        if preopen_clock_window_open(now):
+            title = f"장전 핵심 뉴스 레이더 · {now:%Y년 %m월 %d일} · 06:30"
+            comment_title = "💡 06:30 장전 뉴스 코멘트"
+            followup_line = "06:50 투자기상도에서 수치·수급·테마와 재확인 필요."
+            empty_line = "장전 고충격 뉴스 직접 확인 없음"
+        else:
+            title = f"🧪 뉴스 레이더 검증용 · {now:%Y년 %m월 %d일} · 조회 {now:%H:%M}"
+            comment_title = "💡 검증 결과"
+            followup_line = "검증용 결과이며 정규 장전 발송 기록으로 간주하지 않습니다."
+            empty_line = "검증 기준을 통과한 고충격 뉴스 없음"
     lines = [title, f"선별: 핵심 {len(visible)}건", ""]
     if visible:
         for idx, alert in enumerate(visible, 1):
