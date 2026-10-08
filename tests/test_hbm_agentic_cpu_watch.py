@@ -322,6 +322,44 @@ class AgenticCpuStructureTests(unittest.TestCase):
             writer.assert_not_called()
             alert.write_text.assert_not_called()
 
+    def test_existing_digitimes_ratio_numeric_upgrade_alerts_once(self):
+        original_structure = w.CPU_STRUCTURE_BASELINE
+        old_structure = {
+            key: (dict(value) if isinstance(value, dict) else list(value))
+            for key, value in original_structure.items()
+        }
+        old_structure["digitimes"].pop("cpu_xpu_ratio_2027", None)
+        prev = {
+            **w.BASELINE,
+            "cpu_structure_track_version": w.CPU_STRUCTURE_TRACK_VERSION,
+            "cpu_structure": old_structure,
+        }
+
+        def run(previous):
+            captured = {}
+            with (
+                mock.patch.object(w, "load_json", side_effect=[{"agentic_cpu_demand": previous}, {}]),
+                mock.patch.object(w, "discover_forecasts", return_value=[]),
+                mock.patch.object(w, "discover_validation", return_value=[]),
+                mock.patch.object(w, "discover_cpu_structure", return_value=[]),
+                mock.patch.object(w, "get_fx", return_value=(1343.88, "2026-10-08")),
+                mock.patch.object(w, "ALERT_PATH") as alert,
+                mock.patch.object(w, "write_json") as writer,
+            ):
+                alert.exists.return_value = False
+                w.main()
+                captured["alerted"] = alert.write_text.called
+                captured["body"] = alert.write_text.call_args.args[0] if captured["alerted"] else ""
+                captured["next"] = writer.call_args.args[1]["agentic_cpu_demand"]
+            return captured
+
+        first = run(prev)
+        self.assertTrue(first["alerted"])
+        self.assertIn("CPU:XPU 1:2.3 수치 신규 추적", first["body"])
+        self.assertEqual(first["next"]["cpu_structure"]["digitimes"]["cpu_xpu_ratio_2027"], 2.3)
+        second = run(first["next"])
+        self.assertFalse(second["alerted"])
+
     def test_one_shot_cpu_alert_has_separate_official_and_broker_provenance(self):
         a = w.cpu_structure_block(w.CPU_STRUCTURE_BASELINE, 1400.0, [])
         self.assertIn("260억달러(약", a)
