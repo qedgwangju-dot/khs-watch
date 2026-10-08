@@ -110,6 +110,7 @@ class AgenticCpuStructureTests(unittest.TestCase):
         self.assertEqual(sources["bnpp_public"]["market_2030_usd_bn"], 220.0)
         self.assertIn("AMD 추정치", sources["bnpp_public"]["source_kind"])
         self.assertEqual(sources["bnpp_analyst"]["market_2030_usd_bn"], 245.0)
+        self.assertFalse(sources["bnpp_analyst"]["market_2030_official_confirmed"])
         self.assertFalse(sources["bnpp_analyst"]["market_2025_official_confirmed"])
         self.assertEqual(sources["bnpp_analyst"]["amd_target_usd"], 960.0)
         self.assertFalse(sources["bnpp_analyst"]["arm_target_confirmed"])
@@ -205,6 +206,34 @@ class AgenticCpuStructureTests(unittest.TestCase):
             url,
         )
         self.assertEqual((name, obs), ("", {}))
+
+    def test_arm_target_requires_named_company_and_bnp_attribution(self):
+        url = "https://www.marketscreener.com/news/bnp-paribas-arm-holdings-pt-405"
+        name, obs = w.cpu_structure_observation(
+            "BNP Paribas Adjusts PT on Arm Holdings to $405 From $350",
+            "", url,
+        )
+        self.assertEqual(name, "bnpp_analyst")
+        self.assertEqual(obs.get("arm_target_usd"), 405)
+        self.assertTrue(obs.get("arm_target_confirmed"))
+        self.assertNotIn("amd_target_usd", obs)
+        changes = w.cpu_structure_changes(w.CPU_STRUCTURE_BASELINE[name], obs, name)
+        self.assertTrue(any("신규 확인" in x for x in changes))
+        self.assertEqual(
+            w.cpu_structure_observation(
+                "Citi Adjusts PT on Arm Holdings to $405 From $350", "", url
+            ),
+            ("", {}),
+        )
+
+    def test_245bn_remains_unconfirmed_without_analyst_original(self):
+        ba = w.CPU_STRUCTURE_BASELINE["bnpp_analyst"]
+        self.assertFalse(ba["market_2030_official_confirmed"])
+        self.assertIn("사용자 제공", ba["market_2030_source_kind"])
+        rendered = w.cpu_structure_block(w.CPU_STRUCTURE_BASELINE, 1345.37, [])
+        self.assertIn("2,450억달러(", rendered)
+        self.assertIn("독립 리포트 원문 미확인", rendered)
+        self.assertNotIn("BNP 2차 보도 확인", rendered)
 
     def test_mixed_bnp_amd_nvidia_arm_targets_never_cross_attributed(self):
         url = w.CPU_STRUCTURE_BASELINE["bnpp_analyst"]["target_source_url"]
@@ -537,7 +566,7 @@ class AgenticCpuStructureTests(unittest.TestCase):
         self.assertIn("260억달러(약", a)
         self.assertIn("2,200억달러(약", a)
         self.assertIn("2,450억달러(약", a)
-        self.assertIn("BNP 애널리스트 별도 보도", a)
+        self.assertIn("BNP 애널리스트 시장 전망 사용자 제공", a)
         self.assertIn("AMD 목표주가", a)
         self.assertIn("Arm 목표주가 $405(약", a)
         self.assertIn("300억달러(약", a)
