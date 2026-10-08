@@ -657,7 +657,7 @@
       "first_seen_kst": "2026-10-08T04:59:21+09:00"
     }
   },
-  "updated_at_kst": "2026-10-08T15:00:46+09:00",
+  "updated_at_kst": "2026-10-08T15:02:44+09:00",
   "last_scan_count": 40,
   "last_new_count": 0,
   "hbm_market_pricing_track_version": 2,
@@ -719,20 +719,20 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-10-07T18:38:03+09:00",
+  "last_successful_delivery_kst": "2026-10-08T15:02:53+09:00",
   "telegram_message_ids": [
-    254
+    262
   ],
-  "telegram_message_id": 254,
+  "telegram_message_id": 262,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      254
+      262
     ],
-    "confirmed_at_kst": "2026-10-07T18:38:03+09:00",
-    "alert_signature": "783add2406ee0b6a19354ca9049505c8ef03dad340efbf1c49d3279d792b9b5a"
+    "confirmed_at_kst": "2026-10-08T15:02:53+09:00",
+    "alert_signature": "73f0f85fa9c7bc4b4610255b8b5371cf55315e0fd794a3a20c278a6ebca8c8ea"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
