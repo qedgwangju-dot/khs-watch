@@ -2308,6 +2308,9 @@ def main() -> None:
         "seen_story_records": merged_story_records,
         "relevant_item_count": len(deduped),
         "source_errors": errors,
+        # The one-time correction is committed only after a Telegram API
+        # delivery confirmation (push validation never persists any state).
+        "aaoi_power_prior_alert_correction_done": True,
     }
     pending = preserve_delivery_metadata(state, pending)
     PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -2459,6 +2462,30 @@ def main() -> None:
         ])
         ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
 
+    # Repair two real misfires from code-push runs during the watcher upgrade:
+    # 267 was not an AAOI event; 268 was a baseline EPC announcement, not a
+    # verified energized plant or incremental optical production.
+    # A correction is operational hygiene, not a newly detected market event.
+    correction_due = not bool(state.get("aaoi_power_prior_alert_correction_done"))
+    if correction_due:
+        correction_lines = [
+            "<b>[정정] AI 광통신·AAOI 대만 전력 알림</b>",
+            "",
+            "• 이전 메시지 267: 중화전신(Chunghwa Telecom) 데이터센터 기사가 AAOI 감시로 잘못 분류됐습니다. AAOI 신규 사업사건으로 취급하지 마십시오.",
+            "• 이전 메시지 268: AAOI 대만 사업장·블룸에너지 SOFC의 EPC 추진 보도는 관련 사실이지만, 신규 전원 인가·발전 가동·1.6T 출하가 확인된 사건은 아닙니다.",
+            "• 확인된 사실: Leadray Energy가 설계·조달·시공을 맡아 SOFC를 도입하는 사업이며, 2027년 1분기 운전 개시는 목표 일정입니다.",
+            "• 아직 미공개: 이 사업장의 정격출력(MW), 계약금액, 보조금 승인액, 가스계통·전원 인가일, 추가 광트랜시버 생산량.",
+            "• 개선: 이후 전력 계약→착공→검수→가동→고객별 인증·출하를 분리 검증하고, 코드 변경(push)은 전송 및 감시 기준선 갱신을 하지 않습니다.",
+            "• <a href=\"https://technews.tw/2026/10/08/bloom-energy-ai-optical-supply-chain-sofc-gigalight-expands-production/\">대만 현지 보도</a>"
+            " / <a href=\"https://appliedoptoelectronics.gcs-web.com/node/17511/html\">AAOI 2026년 2분기 공식 자료</a>",
+        ]
+        correction_html = "\n".join(correction_lines).strip() + "\n"
+        if ALERT_PATH.exists():
+            with ALERT_PATH.open("a", encoding="utf-8") as handle:
+                handle.write("\n" + correction_html)
+        else:
+            ALERT_PATH.write_text(correction_html, encoding="utf-8")
+
     status_lines = [
         "# AI 네트워킹·광통신 감시 상태",
         "",
@@ -2470,6 +2497,7 @@ def main() -> None:
         f"- 중복 제거 방식: 동일 원문 URL·제목/출처 통합 + 동일 사건 의미 클러스터 + 사건키 v3",
         f"- FAU·OCS·OPEN NPO 감시 버전: {STRUCTURAL_OPTICS_VERSION} (2025 OCP·2026년 7월 OPEN NPO 기존사건 기준선)",
         f"- AAOI 대만 전력 감시: {'정상' if power_source_healthy else '보류·해당 감시축 기준선 미갱신'}",
+        f"- 이전 오탐 정정: {'전송 대기' if correction_due else '기존 송출 확인·중복 발송 금지'}",
         f"- AAOI 대만 전력 최근 정상조회: {pending.get('aaoi_taiwan_power_last_healthy_kst') or '확인되지 않음'}",
         f"- 소스 오류: {len(errors)}건",
     ]
