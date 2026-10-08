@@ -1,5 +1,24 @@
 {
   "seen": {
+    "core:009a0d1e8b11f492333942ca": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818735",
+      "source": "뉴시스",
+      "source_body_digest": "c62c0e33a9a4d5f385f141d28395b241be7eae3f57c398b32964e149a72b32a2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:588b7afcfeab07b7171d3c6d439d8fc376bdc8285032cf180ee7786a8a05c695",
+      "source_fact_keys": [
+        "source_fact:v1:6e390f73b412cdc9717a4955b06e64fbbfed127b2fd4a5717f8788f8b013d10b"
+      ],
+      "source_published_kst": "2026-10-08T10:23+09:00",
+      "source_title": "OK금융, 예별손보 새 주인으로…\"종합금융그룹 도약 발판\"",
+      "telegram_core_fact": "OK금융 관계자는 \"동시에 진행 중인 중앙일보 인수의 경우 예별손보 실적 악화에 따른 추가 예산 투입 등으로 당초 계획보다 재정적 부담이 늘어난 상황\"이라며 \"중앙일보 우선협상대상자 선정 시까지 실사에 충실히 참여한다는 방침\"이라고 설명했다.",
+      "title": "OK금융, 예별손보 새 주인으로…\"종합금융그룹 도약 발판\""
+    },
     "core:01be4886eb43b3cfb273e805": {
       "first_seen_kst": "2026-10-08T01:09:29+09:00",
       "lanes": {
@@ -5318,6 +5337,26 @@
       "telegram_core_fact": "포스코홀딩스는 염수리튬 2공장 상공정을 준공하고, 2033년 연산 10만톤 생산체제 구축을 공식화했다. 장인화 포스코그룹 회장이 글로벌 핵심광물 확보전 한복판인 아르헨티나에서 리튬 사업의 확장 신호탄을 쐈다.",
       "title": "장인화, 글로벌 자원 확보전 진두지휘…포스코 리튬 2공장 준공"
     },
+    "core:896971023a5b3f674239e2f5": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02404246645610952",
+      "source": "이데일리",
+      "source_body_digest": "b79b840887e7af5c0af654402477d5dd88ad39160d27cdfeff578b73d90051ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:39b8d0b8f860de1613b0c1e1955c85419798b64f5814416e56083aa390cd8a49",
+      "source_fact_keys": [
+        "source_fact:v1:42c6e083be8b8a3bae524f1c1725e74c02529f016339aa8bde9522e7af41aec6",
+        "source_fact:v1:88425e5f26d18f6906e91afd059301bfd0d2cb1da2a4e652a8caf352ba202048"
+      ],
+      "source_published_kst": "2026-10-08T07:47+09:00",
+      "source_title": "수십조 빌려 AI칩 쟁탈전…브로드컴·스페이스X·오라클 자금 조달 총력",
+      "telegram_core_fact": "AI 데이터센터 투자 경쟁이 가속화하면서 기존 회사채 시장을 넘어 사모대출과 구조화금융까지 조달 범위가 확대되고 있다.",
+      "title": "수십조 빌려 AI칩 쟁탈전…브로드컴·스페이스X·오라클 자금 조달 총력"
+    },
     "core:8a6f7add6752f3486d52308e": {
       "first_seen_kst": "2026-10-08T04:45:20+09:00",
       "lanes": {
@@ -5411,6 +5450,26 @@
       "source_published_kst": "2026-10-07T07:43+09:00",
       "title": "“56만전자·320만닉스 간다\"…삼전닉스, 3분기 실적 기대 이상"
     },
+    "core:8b06fbb9d22b4489406e0e82": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.fnnews.com/news/202610080457580741",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5ee36832b7ba400bd18fb0a4ffb51507a954d02c84f3b927fcc102cf03075e18",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:24cb394d6e57416cceb1db9f107542f0986aff2271ebe621f9df3722faf2f655",
+      "source_fact_keys": [
+        "source_fact:v1:131f9b35f2bc9ef0285ef14e0555986dbe02df9f7754805a27d0a6048353cda6",
+        "source_fact:v1:9b0c46426731d3193d1de3c36abffb9acc0b3059ac098cda12504ebd4948ed29"
+      ],
+      "source_published_kst": "2026-10-08T05:58+09:00",
+      "source_title": "스페이스X 부도 위험 보험료 사상 최고...\"엔비디아 칩 매수 위해 400억달러 조달\"",
+      "telegram_core_fact": "엔비디아 칩을 구매하기 위해 400억달러(약 53조원)를 조달하기로 했다는 보도가 시장의 부도 대비 보험 비용을 끌어올렸다. 스페이스X가 400억달러 자금 조달을 계획하고 있다는 FT 보도가 CDS 스프레드 급등을 촉발했다.",
+      "title": "스페이스X 부도 위험 보험료 사상 최고...\"엔비디아 칩 매수 위해 400억달러 조달\""
+    },
     "core:8c4456d317b7bbbf4fae8677": {
       "first_seen_kst": "2026-10-07T20:43:18+09:00",
       "lanes": {
@@ -5471,6 +5530,25 @@
       "source_title": "[증시키워드] 삼전 잠정 실적에 쏠린 눈…바이오는 희비",
       "telegram_core_fact": "SK하이닉스는 3분기 실적 시즌 진입을 앞두고 영업이익 전망치가 77조원대까지 상향되는 등 엔비디아 공급망 핵심인 고대역폭메모리(HBM) 지배력과 메모리 가격 강세가 부각되며 투자자들의 관심을 모았다.",
       "title": "[증시키워드] 삼전 잠정 실적에 쏠린 눈…바이오는 희비"
+    },
+    "core:8e35ef219ae74733f71ee393": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/08/2026100810020416009",
+      "source": "머니투데이",
+      "source_body_digest": "a7bd17833ee64900dae297126c6718048c784c0e5bff45a8798ec04dfdad5253",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b33a9fad65c7b721207cbbfd7a3862eb928fa53bacacce5b07514a53e5ec46da",
+      "source_fact_keys": [
+        "source_fact:v1:d155a92b51bd067a905b2321e8e3d5f8705648a7cc73ff082960f303c2213f98"
+      ],
+      "source_published_kst": "2026-10-08T10:33+09:00",
+      "source_title": "\"미 검찰, 베네수 마두로 '미국인 고문 혐의' 추가 기소 예정\"",
+      "telegram_core_fact": "CNN에 따르면 당시 마두로 정권은 미국인 12명 이상을 억류했고, 미국 정부는 베네수엘라가 금융 제재 완화 등의 양보를 얻어내고자 미국인을 억류하고 고문했다고 비난해 왔다.",
+      "title": "\"미 검찰, 베네수 마두로 '미국인 고문 혐의' 추가 기소 예정\""
     },
     "core:8e367c8cd72fc72075411f5c": {
       "first_seen_kst": "2026-10-08T05:44:23+09:00",
@@ -5976,6 +6054,23 @@
       "source_title": "오리엔트정공, 전기차용 우레탄 접착제 개발 완료…양산 검증 착수",
       "telegram_core_fact": "오리엔트정공은 자체 기술로 전기차용 우레탄 접착제 개발을 완료하고 고객사 공급을 위한 본격적인 양산 테스트에 착수했다고 7일 밝혔다.",
       "title": "오리엔트정공, 전기차용 우레탄 접착제 개발 완료…양산 검증 착수"
+    },
+    "core:9b92eb2948cacf7fb41d1203": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007202800002",
+      "source": "연합뉴스",
+      "source_body_digest": "4bedc6ef3a152fd27f5d5becc755460f90761abb2297afa0337b3fa13a90b3bd",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T10:18+09:00",
+      "source_title": "이억원 \"금리인상기, 정책서민금융 금리 낮추고 공급 확대\" | 연합뉴스",
+      "telegram_core_fact": "이억원 금융위원장은 8일 서민·취약계층을 위해 \"정책서민금융의 금리수준을 낮추고 신상품 출시 등 공급을 지속적으로 확대하겠다\"고 밝혔다.",
+      "title": "이억원 \"금리인상기, 정책서민금융 금리 낮추고 공급 확대\" | 연합뉴스"
     },
     "core:9bf225cfe2d4c37aa31b2eb5": {
       "first_seen_kst": "2026-10-08T05:44:23+09:00",
@@ -8864,6 +8959,28 @@
       "telegram_core_fact": "타이탄 마이닝(TII)은 전액 출자 자회사 엠파이어스테이트마인즈(ESM)가 미 육군과 앨라배마주 애니스턴 육군 보급창 내 약 97에이커 부지에 핵심 광물 가공시설을 짓기 위한 '강화 활용 임대(EUL)'의 주요 상업 조건을 담은 텀싯(term sheet)에 서명했다고 7일 발표했다.",
       "title": "타이탄 마이닝, 美 육군과 흑연시설 임대 합의..최장 100년 부지 확보"
     },
+    "core:daffff8980018db87e1c4d87": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818738",
+      "source": "뉴시스",
+      "source_body_digest": "8a5eae11b1270708c8c47a382d0a84742e696622c87255a487aed7e0c6c33144",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2639ff2d47e64d1a0677e0f47bc85a9f6203984bed9d91990a696881260c4e98",
+      "source_fact_keys": [
+        "source_fact:v1:0bc8f07ed7d510a8fab3b21d85993a5878e8e429cfc75192ba23d67eb9ce6582",
+        "source_fact:v1:2e4ac5dac206b7594f60f2baadc34b89f30e9c99c65518243c4afa991143f6d4",
+        "source_fact:v1:ab28c5a9d42d27e310a01471e07bd99f27d66abd36987c9cc3d5bd18ffa8f698",
+        "source_fact:v1:f546ed637a466615cdc429dea98caaf64ca3b5ced1e3d059b5d1ff7fda26e6d9"
+      ],
+      "source_published_kst": "2026-10-08T10:23+09:00",
+      "source_title": "케이엔에스, 안성 신공장 증설 결정",
+      "telegram_core_fact": "신공장이 완공되면 케이엔에스의 연간 생산능력(CAPA)은 기존 대비 약 100% 확대될 전망이다.",
+      "title": "케이엔에스, 안성 신공장 증설 결정"
+    },
     "core:db18f44ae4befea726a1bcbd": {
       "first_seen_kst": "2026-10-08T00:24:24+09:00",
       "lanes": {
@@ -9892,6 +10009,30 @@
       "source_title": "금융지주 상반기 순익 17.6조 ‘역대급’…증권이 끌고 은행은 주춤",
       "telegram_core_fact": "7일 금융감독원이 발표한 ‘2026년 상반기 금융지주회사 경영실적(잠정)’에 따르면 10개 금융지주의 상반기 연결 당기순이익은 17조6000억원으로 지난해 같은 기간 15조4000억원보다 2조2000억원(13.7%) 증가했다.",
       "title": "금융지주 상반기 순익 17.6조 ‘역대급’…증권이 끌고 은행은 주춤"
+    },
+    "core:f6fb863f440a0caa10cc14fd": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02938886645610952",
+      "source": "이데일리",
+      "source_body_digest": "cb167c2d7e13a9213350eddc4aa886da125a70c20c57ef7fba0eec1d56db3a2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:351169d59871a4555625065b2923eed8c81fd4ecbcd04fd38d1176bd4fecc4e7",
+      "source_fact_keys": [
+        "source_fact:v1:6b4dfba91d64808b73705cdb1fee58a287ab8afdadab5f2c1240d4757fb79342",
+        "source_fact:v1:78b5105e4b949317516256f9341039bb59f07716f15faac795a482a5aba1df68",
+        "source_fact:v1:890d8d5a402417a49fb6655f24ee5cf7985a917ae1b17de499332fbd8e72341e",
+        "source_fact:v1:a4ecc53ddb03d28e6e5bcabd082a9a742c3e3ed6dc88382a26c0eb10ea931812",
+        "source_fact:v1:c9ff5e7bcb47129d61a031edd9fedf9aacad247fc6fa6004d160fe8bb7dc0e63",
+        "source_fact:v1:ebeaa2e3289f1dc3d35b2274653c6f8490b33e27fb17ce1fb7f67864a40575f8"
+      ],
+      "source_published_kst": "2026-10-08T10:10+09:00",
+      "source_title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]",
+      "telegram_core_fact": "9월 무역수지가 예상을 뛰어넘는 큰 폭의 흑자를 기록한 데다, 연말로 갈수록 수출이 집중되는 효과까지 더해지면서 올해 연간 경상수지 흑자 전망치인 4500억달러도 달성 가능할 것이란 전망이다. 한은은 지난 8월 올해 연간 경상수지 흑자 전망치를 기존 2500억달러에서 4500억달러로 대폭 상향한 바 있다.",
+      "title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]"
     },
     "core:f796226fa73142c79add5d0d": {
       "first_seen_kst": "2026-10-07T22:00:35+09:00",
@@ -12021,6 +12162,26 @@
       ],
       "source_published_kst": "2026-10-06T06:30+09:00",
       "title": "[속보] 예멘 후티군, 사우디 전역 미사일 ·드론 공습했다 발표"
+    },
+    "event:35c2b8918508cfcbedbcda09": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02404246645610952",
+      "source": "이데일리",
+      "source_body_digest": "b79b840887e7af5c0af654402477d5dd88ad39160d27cdfeff578b73d90051ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:39b8d0b8f860de1613b0c1e1955c85419798b64f5814416e56083aa390cd8a49",
+      "source_fact_keys": [
+        "source_fact:v1:42c6e083be8b8a3bae524f1c1725e74c02529f016339aa8bde9522e7af41aec6",
+        "source_fact:v1:88425e5f26d18f6906e91afd059301bfd0d2cb1da2a4e652a8caf352ba202048"
+      ],
+      "source_published_kst": "2026-10-08T07:47+09:00",
+      "source_title": "수십조 빌려 AI칩 쟁탈전…브로드컴·스페이스X·오라클 자금 조달 총력",
+      "telegram_core_fact": "AI 데이터센터 투자 경쟁이 가속화하면서 기존 회사채 시장을 넘어 사모대출과 구조화금융까지 조달 범위가 확대되고 있다.",
+      "title": "수십조 빌려 AI칩 쟁탈전…브로드컴·스페이스X·오라클 자금 조달 총력"
     },
     "event:35c61e03fc529e43f46f2a91": {
       "first_seen_kst": "2026-10-02T12:31:36+09:00",
@@ -15789,21 +15950,26 @@
     "event:b11d572aadf1fa216e0a0bc3": {
       "first_seen_kst": "2026-10-08T02:26:35+09:00",
       "lanes": {
-        "live": "2026-10-08T02:26:35+09:00"
+        "live": "2026-10-08T12:46:54+09:00"
       },
-      "last_seen_kst": "2026-10-08T02:26:35+09:00",
-      "link": "https://www.joongang.co.kr/article/25468026",
-      "source": "중앙일보",
-      "source_body_digest": "e245b361bfd18732874c0b238553a895939fa176461bd6711f2233f734e08013",
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02938886645610952",
+      "source": "이데일리",
+      "source_body_digest": "cb167c2d7e13a9213350eddc4aa886da125a70c20c57ef7fba0eec1d56db3a2b",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:f8f0d4b6ff921e4a03a24034b2d0a9ab6e47d0a117301c1acf2a21a36d37c191",
+      "source_fact_identity": "source_facts:v1:351169d59871a4555625065b2923eed8c81fd4ecbcd04fd38d1176bd4fecc4e7",
       "source_fact_keys": [
-        "source_fact:v1:7a9b0258d63b68777650caa4884b68828268d4ef331c8f1cb715166c9a055618"
+        "source_fact:v1:6b4dfba91d64808b73705cdb1fee58a287ab8afdadab5f2c1240d4757fb79342",
+        "source_fact:v1:78b5105e4b949317516256f9341039bb59f07716f15faac795a482a5aba1df68",
+        "source_fact:v1:890d8d5a402417a49fb6655f24ee5cf7985a917ae1b17de499332fbd8e72341e",
+        "source_fact:v1:a4ecc53ddb03d28e6e5bcabd082a9a742c3e3ed6dc88382a26c0eb10ea931812",
+        "source_fact:v1:c9ff5e7bcb47129d61a031edd9fedf9aacad247fc6fa6004d160fe8bb7dc0e63",
+        "source_fact:v1:ebeaa2e3289f1dc3d35b2274653c6f8490b33e27fb17ce1fb7f67864a40575f8"
       ],
-      "source_published_kst": "2026-10-08T00:22+09:00",
-      "source_title": "박용진 “부처간 꼬여있는 규제, 풀려면 ‘차르’ 필요” | 중앙일보",
-      "telegram_core_fact": "지난달 30일 서울 태평로에 있는 규제합리화위원회 사무실에서 만난 그는 “규제 차르에게 대통령이 권한을 주고, 국무회의에도 참관할 수 있도록 해서 낡은 규제를 풀어야 한다”고 제안했다.",
-      "title": "박용진 “부처간 꼬여있는 규제, 풀려면 ‘차르’ 필요” | 중앙일보"
+      "source_published_kst": "2026-10-08T10:10+09:00",
+      "source_title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]",
+      "telegram_core_fact": "9월 무역수지가 예상을 뛰어넘는 큰 폭의 흑자를 기록한 데다, 연말로 갈수록 수출이 집중되는 효과까지 더해지면서 올해 연간 경상수지 흑자 전망치인 4500억달러도 달성 가능할 것이란 전망이다. 한은은 지난 8월 올해 연간 경상수지 흑자 전망치를 기존 2500억달러에서 4500억달러로 대폭 상향한 바 있다.",
+      "title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]"
     },
     "event:b1495e0393111e527b090ddc": {
       "first_seen_kst": "2026-09-18T14:40:33+09:00",
@@ -17215,24 +17381,22 @@
     "event:d8590b1f93c2ff8931b9355c": {
       "first_seen_kst": "2026-10-08T04:26:05+09:00",
       "lanes": {
-        "live": "2026-10-08T04:26:05+09:00"
+        "live": "2026-10-08T12:46:54+09:00"
       },
-      "last_seen_kst": "2026-10-08T04:26:05+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01433366645610952&mediaCodeNo=257",
-      "source": "이데일리",
-      "source_body_digest": "21508d60b9e9900a63f7c08b97b1d0148c160f1c08ef817f332c3b7f80ceaef3",
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.fnnews.com/news/202610080457580741",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5ee36832b7ba400bd18fb0a4ffb51507a954d02c84f3b927fcc102cf03075e18",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:762163ab0a93ea9efe288584c39ac2efdf9ca01f2845364047e1a5ccdc233e3f",
+      "source_fact_identity": "source_facts:v1:24cb394d6e57416cceb1db9f107542f0986aff2271ebe621f9df3722faf2f655",
       "source_fact_keys": [
-        "source_fact:v1:0bd2354f837b0b9eca4255011b006b67469d762007c9a4aca7436bb101cb65dc",
-        "source_fact:v1:d110cd416797959a29931a30ee90b09e23fa0987bbaf5dab1356c349cab0187e",
-        "source_fact:v1:e9ad043dc62fc861e1ad63224eeea92e7de300bc22a547f9f060aabcec18250a",
-        "source_fact:v1:f398073df75096cc9523f83b6752691572efe31570d179dab0fbb3c4074e3cd2"
+        "source_fact:v1:131f9b35f2bc9ef0285ef14e0555986dbe02df9f7754805a27d0a6048353cda6",
+        "source_fact:v1:9b0c46426731d3193d1de3c36abffb9acc0b3059ac098cda12504ebd4948ed29"
       ],
-      "source_published_kst": "2026-10-08T03:59+09:00",
-      "source_title": "AI칩 사려 53조원 차입 추진…스페이스X 신용위험 '사상 최고'",
-      "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 일론 머스크의 스페이스X가 엔비디아의 인공지능(AI) 칩 구매를 위해 400억달러(약 53조5560억원) 신규 차입을 추진하는 가운데 스페이스X의 신용위험 지표가 사상 최고치로 치솟았다.",
-      "title": "AI칩 사려 53조원 차입 추진…스페이스X 신용위험 '사상 최고'"
+      "source_published_kst": "2026-10-08T05:58+09:00",
+      "source_title": "스페이스X 부도 위험 보험료 사상 최고...\"엔비디아 칩 매수 위해 400억달러 조달\"",
+      "telegram_core_fact": "엔비디아 칩을 구매하기 위해 400억달러(약 53조원)를 조달하기로 했다는 보도가 시장의 부도 대비 보험 비용을 끌어올렸다. 스페이스X가 400억달러 자금 조달을 계획하고 있다는 FT 보도가 CDS 스프레드 급등을 촉발했다.",
+      "title": "스페이스X 부도 위험 보험료 사상 최고...\"엔비디아 칩 매수 위해 400억달러 조달\""
     },
     "event:d88b0eac57260dfdb7556995": {
       "first_seen_kst": "2026-09-27T00:25:22+09:00",
@@ -18088,19 +18252,21 @@
     "event:f364c6024dca2bb3c9e1bc8f": {
       "first_seen_kst": "2026-10-08T05:44:23+09:00",
       "lanes": {
-        "live": "2026-10-08T05:44:23+09:00"
+        "live": "2026-10-08T12:46:54+09:00"
       },
-      "last_seen_kst": "2026-10-08T05:44:23+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2633618",
-      "source": "이투데이",
-      "source_body_digest": "8ddc594f58230bf6f1dda9afbf04c2b1b53c2572a81bb5fd9b0c0a42a7bf78b0",
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818735",
+      "source": "뉴시스",
+      "source_body_digest": "c62c0e33a9a4d5f385f141d28395b241be7eae3f57c398b32964e149a72b32a2",
       "source_event_identity": "",
-      "source_fact_identity": "",
-      "source_fact_keys": [],
-      "source_published_kst": "2026-10-08T00:29+09:00",
-      "source_title": "에피소드컴퍼니, 160억원 유상증자…납입 후 최대주주 변경 예정",
-      "telegram_core_fact": "에피소드컴퍼니가 사업 투자 재원 확보와 재무건전성 개선을 위해 160억원 유상증자를 추진한다. 납입 완료 후 최대주주는 하이라인컴퍼니로 변경되며, 지분율은 현재 9.91%에서 증자 완료 후 22.58%로 높아질 예정이다.",
-      "title": "에피소드컴퍼니, 160억원 유상증자…납입 후 최대주주 변경 예정"
+      "source_fact_identity": "source_facts:v1:588b7afcfeab07b7171d3c6d439d8fc376bdc8285032cf180ee7786a8a05c695",
+      "source_fact_keys": [
+        "source_fact:v1:6e390f73b412cdc9717a4955b06e64fbbfed127b2fd4a5717f8788f8b013d10b"
+      ],
+      "source_published_kst": "2026-10-08T10:23+09:00",
+      "source_title": "OK금융, 예별손보 새 주인으로…\"종합금융그룹 도약 발판\"",
+      "telegram_core_fact": "OK금융 관계자는 \"동시에 진행 중인 중앙일보 인수의 경우 예별손보 실적 악화에 따른 추가 예산 투입 등으로 당초 계획보다 재정적 부담이 늘어난 상황\"이라며 \"중앙일보 우선협상대상자 선정 시까지 실사에 충실히 참여한다는 방침\"이라고 설명했다.",
+      "title": "OK금융, 예별손보 새 주인으로…\"종합금융그룹 도약 발판\""
     },
     "event:f3deef153cd0644c9be96040": {
       "first_seen_kst": "2026-10-01T16:19:49+09:00",
@@ -23098,6 +23264,25 @@
       "telegram_core_fact": "미국 재무부가 대(對)중국 첨단기술 투자 규제 제도 도입 이후 처음으로 위반 사례를 적발해 벌금을 부과했다고 홍콩 사우스차이나모닝포스트(SCMP)가 7일(현지시간) 보도했다.",
       "title": "미국, '對중국 첨단기술 투자규제' 위반 첫 벌금 부과"
     },
+    "fact:299cd627dddcc2d4990d6235": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818735",
+      "source": "뉴시스",
+      "source_body_digest": "c62c0e33a9a4d5f385f141d28395b241be7eae3f57c398b32964e149a72b32a2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:588b7afcfeab07b7171d3c6d439d8fc376bdc8285032cf180ee7786a8a05c695",
+      "source_fact_keys": [
+        "source_fact:v1:6e390f73b412cdc9717a4955b06e64fbbfed127b2fd4a5717f8788f8b013d10b"
+      ],
+      "source_published_kst": "2026-10-08T10:23+09:00",
+      "source_title": "OK금융, 예별손보 새 주인으로…\"종합금융그룹 도약 발판\"",
+      "telegram_core_fact": "OK금융 관계자는 \"동시에 진행 중인 중앙일보 인수의 경우 예별손보 실적 악화에 따른 추가 예산 투입 등으로 당초 계획보다 재정적 부담이 늘어난 상황\"이라며 \"중앙일보 우선협상대상자 선정 시까지 실사에 충실히 참여한다는 방침\"이라고 설명했다.",
+      "title": "OK금융, 예별손보 새 주인으로…\"종합금융그룹 도약 발판\""
+    },
     "fact:29cb5a93eac5cfe540eb6e34": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
       "lanes": {
@@ -24695,6 +24880,26 @@
       "source_title": "동아쏘시오그룹, 협력사 ESG 공급망 교육 개최",
       "telegram_core_fact": "국내외 ESG 규제가 강화되고 지속가능성 공시 의무화가 추진되는 데 맞춰 공급망 전반의 대응 역량을 높이기 위해 마련한 행사다.",
       "title": "동아쏘시오그룹, 협력사 ESG 공급망 교육 개최"
+    },
+    "fact:381662d4b2c603799215edd4": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02404246645610952",
+      "source": "이데일리",
+      "source_body_digest": "b79b840887e7af5c0af654402477d5dd88ad39160d27cdfeff578b73d90051ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:39b8d0b8f860de1613b0c1e1955c85419798b64f5814416e56083aa390cd8a49",
+      "source_fact_keys": [
+        "source_fact:v1:42c6e083be8b8a3bae524f1c1725e74c02529f016339aa8bde9522e7af41aec6",
+        "source_fact:v1:88425e5f26d18f6906e91afd059301bfd0d2cb1da2a4e652a8caf352ba202048"
+      ],
+      "source_published_kst": "2026-10-08T07:47+09:00",
+      "source_title": "수십조 빌려 AI칩 쟁탈전…브로드컴·스페이스X·오라클 자금 조달 총력",
+      "telegram_core_fact": "AI 데이터센터 투자 경쟁이 가속화하면서 기존 회사채 시장을 넘어 사모대출과 구조화금융까지 조달 범위가 확대되고 있다.",
+      "title": "수십조 빌려 AI칩 쟁탈전…브로드컴·스페이스X·오라클 자금 조달 총력"
     },
     "fact:38179a69e076c6652b0f8822": {
       "first_seen_kst": "2026-10-06T23:46:46+09:00",
@@ -32833,6 +33038,25 @@
       "telegram_core_fact": "영동선 덕평휴게소가 매출 1위(연매출 360억원)를 기록했고, 서해안선 행담도휴게소와 수도권 제1순환선 시흥하늘휴게소가 각각 2, 3위로 뒤를 이었다.",
       "title": "매출 1~3위 휩쓴 민자휴게소, 서비스 평가는 최하위권"
     },
+    "fact:8b129f8e85b95158cb5ca697": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/08/2026100810020416009",
+      "source": "머니투데이",
+      "source_body_digest": "a7bd17833ee64900dae297126c6718048c784c0e5bff45a8798ec04dfdad5253",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b33a9fad65c7b721207cbbfd7a3862eb928fa53bacacce5b07514a53e5ec46da",
+      "source_fact_keys": [
+        "source_fact:v1:d155a92b51bd067a905b2321e8e3d5f8705648a7cc73ff082960f303c2213f98"
+      ],
+      "source_published_kst": "2026-10-08T10:33+09:00",
+      "source_title": "\"미 검찰, 베네수 마두로 '미국인 고문 혐의' 추가 기소 예정\"",
+      "telegram_core_fact": "CNN에 따르면 당시 마두로 정권은 미국인 12명 이상을 억류했고, 미국 정부는 베네수엘라가 금융 제재 완화 등의 양보를 얻어내고자 미국인을 억류하고 고문했다고 비난해 왔다.",
+      "title": "\"미 검찰, 베네수 마두로 '미국인 고문 혐의' 추가 기소 예정\""
+    },
     "fact:8b226aad827046a4a628cb52": {
       "first_seen_kst": "2026-10-08T04:45:20+09:00",
       "lanes": {
@@ -39371,6 +39595,26 @@
       "source_published_kst": "2026-10-06T14:11+09:00",
       "title": "장기임대 늘리겠다는데⋯기업형 임대는 여전히 ‘사업성 벽’"
     },
+    "fact:c97224dfb00253701591795b": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.fnnews.com/news/202610080457580741",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5ee36832b7ba400bd18fb0a4ffb51507a954d02c84f3b927fcc102cf03075e18",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:24cb394d6e57416cceb1db9f107542f0986aff2271ebe621f9df3722faf2f655",
+      "source_fact_keys": [
+        "source_fact:v1:131f9b35f2bc9ef0285ef14e0555986dbe02df9f7754805a27d0a6048353cda6",
+        "source_fact:v1:9b0c46426731d3193d1de3c36abffb9acc0b3059ac098cda12504ebd4948ed29"
+      ],
+      "source_published_kst": "2026-10-08T05:58+09:00",
+      "source_title": "스페이스X 부도 위험 보험료 사상 최고...\"엔비디아 칩 매수 위해 400억달러 조달\"",
+      "telegram_core_fact": "엔비디아 칩을 구매하기 위해 400억달러(약 53조원)를 조달하기로 했다는 보도가 시장의 부도 대비 보험 비용을 끌어올렸다. 스페이스X가 400억달러 자금 조달을 계획하고 있다는 FT 보도가 CDS 스프레드 급등을 촉발했다.",
+      "title": "스페이스X 부도 위험 보험료 사상 최고...\"엔비디아 칩 매수 위해 400억달러 조달\""
+    },
     "fact:c9a9a71bdd4f31e7694efd7c": {
       "first_seen_kst": "2026-10-06T18:16:47+09:00",
       "lanes": {
@@ -40169,6 +40413,30 @@
       ],
       "source_published_kst": "2026-10-07T17:12+09:00",
       "title": "8월 공장·창고 거래액 1.4조원…거래 줄어도 금액은 연중 최고"
+    },
+    "fact:d123c6be7f37a2125fba0311": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02938886645610952",
+      "source": "이데일리",
+      "source_body_digest": "cb167c2d7e13a9213350eddc4aa886da125a70c20c57ef7fba0eec1d56db3a2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:351169d59871a4555625065b2923eed8c81fd4ecbcd04fd38d1176bd4fecc4e7",
+      "source_fact_keys": [
+        "source_fact:v1:6b4dfba91d64808b73705cdb1fee58a287ab8afdadab5f2c1240d4757fb79342",
+        "source_fact:v1:78b5105e4b949317516256f9341039bb59f07716f15faac795a482a5aba1df68",
+        "source_fact:v1:890d8d5a402417a49fb6655f24ee5cf7985a917ae1b17de499332fbd8e72341e",
+        "source_fact:v1:a4ecc53ddb03d28e6e5bcabd082a9a742c3e3ed6dc88382a26c0eb10ea931812",
+        "source_fact:v1:c9ff5e7bcb47129d61a031edd9fedf9aacad247fc6fa6004d160fe8bb7dc0e63",
+        "source_fact:v1:ebeaa2e3289f1dc3d35b2274653c6f8490b33e27fb17ce1fb7f67864a40575f8"
+      ],
+      "source_published_kst": "2026-10-08T10:10+09:00",
+      "source_title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]",
+      "telegram_core_fact": "9월 무역수지가 예상을 뛰어넘는 큰 폭의 흑자를 기록한 데다, 연말로 갈수록 수출이 집중되는 효과까지 더해지면서 올해 연간 경상수지 흑자 전망치인 4500억달러도 달성 가능할 것이란 전망이다. 한은은 지난 8월 올해 연간 경상수지 흑자 전망치를 기존 2500억달러에서 4500억달러로 대폭 상향한 바 있다.",
+      "title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]"
     },
     "fact:d13c536d069f0ce22349d608": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
@@ -44227,6 +44495,28 @@
       ],
       "source_published_kst": "2026-10-07T12:19+09:00",
       "title": "SK에너지·현대오일뱅크 44조 정유 담합 심의…과징금 최대 4.6조 가능(종합)"
+    },
+    "fact:f8684bc47092f6e930d39339": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818738",
+      "source": "뉴시스",
+      "source_body_digest": "8a5eae11b1270708c8c47a382d0a84742e696622c87255a487aed7e0c6c33144",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2639ff2d47e64d1a0677e0f47bc85a9f6203984bed9d91990a696881260c4e98",
+      "source_fact_keys": [
+        "source_fact:v1:0bc8f07ed7d510a8fab3b21d85993a5878e8e429cfc75192ba23d67eb9ce6582",
+        "source_fact:v1:2e4ac5dac206b7594f60f2baadc34b89f30e9c99c65518243c4afa991143f6d4",
+        "source_fact:v1:ab28c5a9d42d27e310a01471e07bd99f27d66abd36987c9cc3d5bd18ffa8f698",
+        "source_fact:v1:f546ed637a466615cdc429dea98caaf64ca3b5ced1e3d059b5d1ff7fda26e6d9"
+      ],
+      "source_published_kst": "2026-10-08T10:23+09:00",
+      "source_title": "케이엔에스, 안성 신공장 증설 결정",
+      "telegram_core_fact": "신공장이 완공되면 케이엔에스의 연간 생산능력(CAPA)은 기존 대비 약 100% 확대될 전망이다.",
+      "title": "케이엔에스, 안성 신공장 증설 결정"
     },
     "fact:f8886d8c9ebef6a68973d4b7": {
       "first_seen_kst": "2026-10-07T10:49:23+09:00",
@@ -49228,6 +49518,25 @@
       "source": "연합뉴스",
       "title": "미국 '산업역군' 경유 수출 금지 땐 세계경제 충격 도미노 | 연합뉴스"
     },
+    "link:18688dadcf6ce63145ed182f": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/08/2026100810020416009",
+      "source": "머니투데이",
+      "source_body_digest": "a7bd17833ee64900dae297126c6718048c784c0e5bff45a8798ec04dfdad5253",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b33a9fad65c7b721207cbbfd7a3862eb928fa53bacacce5b07514a53e5ec46da",
+      "source_fact_keys": [
+        "source_fact:v1:d155a92b51bd067a905b2321e8e3d5f8705648a7cc73ff082960f303c2213f98"
+      ],
+      "source_published_kst": "2026-10-08T10:33+09:00",
+      "source_title": "\"미 검찰, 베네수 마두로 '미국인 고문 혐의' 추가 기소 예정\"",
+      "telegram_core_fact": "CNN에 따르면 당시 마두로 정권은 미국인 12명 이상을 억류했고, 미국 정부는 베네수엘라가 금융 제재 완화 등의 양보를 얻어내고자 미국인을 억류하고 고문했다고 비난해 왔다.",
+      "title": "\"미 검찰, 베네수 마두로 '미국인 고문 혐의' 추가 기소 예정\""
+    },
     "link:189c2a1d0459576916e49e40": {
       "first_seen_kst": "2026-10-05T23:21:26+09:00",
       "lanes": {
@@ -49598,6 +49907,25 @@
       ],
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "\"예수금 줄고 대미투자 송금까지\"⋯9월 외환보유액, 넉 달 만에 감소"
+    },
+    "link:1a6835535c601070a3cf0da6": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818735",
+      "source": "뉴시스",
+      "source_body_digest": "c62c0e33a9a4d5f385f141d28395b241be7eae3f57c398b32964e149a72b32a2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:588b7afcfeab07b7171d3c6d439d8fc376bdc8285032cf180ee7786a8a05c695",
+      "source_fact_keys": [
+        "source_fact:v1:6e390f73b412cdc9717a4955b06e64fbbfed127b2fd4a5717f8788f8b013d10b"
+      ],
+      "source_published_kst": "2026-10-08T10:23+09:00",
+      "source_title": "OK금융, 예별손보 새 주인으로…\"종합금융그룹 도약 발판\"",
+      "telegram_core_fact": "OK금융 관계자는 \"동시에 진행 중인 중앙일보 인수의 경우 예별손보 실적 악화에 따른 추가 예산 투입 등으로 당초 계획보다 재정적 부담이 늘어난 상황\"이라며 \"중앙일보 우선협상대상자 선정 시까지 실사에 충실히 참여한다는 방침\"이라고 설명했다.",
+      "title": "OK금융, 예별손보 새 주인으로…\"종합금융그룹 도약 발판\""
     },
     "link:1a80e4eae10a2472d119242d": {
       "first_seen_kst": "2026-10-02T15:29:23+09:00",
@@ -57004,6 +57332,26 @@
       "telegram_core_fact": "해성디에스는 약 1900억원을 투자해 패널 공법 기반 패키지 기판 생산능력을 구축하고 있으며, 2029년에는 연간 2000~3000억원 신규 생산능력(CAPA) 확보가 예상된다고 부연했다.",
       "title": "\"반도체 기판 가격 또 오른다…대덕전자·심텍 등 수천억 투자\"-하나"
     },
+    "link:4456eaeebd4c53b0c79de53d": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02404246645610952",
+      "source": "이데일리",
+      "source_body_digest": "b79b840887e7af5c0af654402477d5dd88ad39160d27cdfeff578b73d90051ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:39b8d0b8f860de1613b0c1e1955c85419798b64f5814416e56083aa390cd8a49",
+      "source_fact_keys": [
+        "source_fact:v1:42c6e083be8b8a3bae524f1c1725e74c02529f016339aa8bde9522e7af41aec6",
+        "source_fact:v1:88425e5f26d18f6906e91afd059301bfd0d2cb1da2a4e652a8caf352ba202048"
+      ],
+      "source_published_kst": "2026-10-08T07:47+09:00",
+      "source_title": "수십조 빌려 AI칩 쟁탈전…브로드컴·스페이스X·오라클 자금 조달 총력",
+      "telegram_core_fact": "AI 데이터센터 투자 경쟁이 가속화하면서 기존 회사채 시장을 넘어 사모대출과 구조화금융까지 조달 범위가 확대되고 있다.",
+      "title": "수십조 빌려 AI칩 쟁탈전…브로드컴·스페이스X·오라클 자금 조달 총력"
+    },
     "link:447a50c8851097926e853e44": {
       "first_seen_kst": "2026-10-02T00:28:46+09:00",
       "lanes": {
@@ -63473,6 +63821,26 @@
       "source_published_kst": "2026-10-05T11:19+09:00",
       "title": "LGU+, 구독 플랫폼 '유독'에 해외 AI 서비스 순차 확대"
     },
+    "link:69ccd54bf96be76a16ee198e": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.fnnews.com/news/202610080457580741",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5ee36832b7ba400bd18fb0a4ffb51507a954d02c84f3b927fcc102cf03075e18",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:24cb394d6e57416cceb1db9f107542f0986aff2271ebe621f9df3722faf2f655",
+      "source_fact_keys": [
+        "source_fact:v1:131f9b35f2bc9ef0285ef14e0555986dbe02df9f7754805a27d0a6048353cda6",
+        "source_fact:v1:9b0c46426731d3193d1de3c36abffb9acc0b3059ac098cda12504ebd4948ed29"
+      ],
+      "source_published_kst": "2026-10-08T05:58+09:00",
+      "source_title": "스페이스X 부도 위험 보험료 사상 최고...\"엔비디아 칩 매수 위해 400억달러 조달\"",
+      "telegram_core_fact": "엔비디아 칩을 구매하기 위해 400억달러(약 53조원)를 조달하기로 했다는 보도가 시장의 부도 대비 보험 비용을 끌어올렸다. 스페이스X가 400억달러 자금 조달을 계획하고 있다는 FT 보도가 CDS 스프레드 급등을 촉발했다.",
+      "title": "스페이스X 부도 위험 보험료 사상 최고...\"엔비디아 칩 매수 위해 400억달러 조달\""
+    },
     "link:69da45e6daf26e3e7beb74b2": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
       "lanes": {
@@ -67452,6 +67820,30 @@
       "source_title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매",
       "telegram_core_fact": "10년 만기 국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
       "title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매"
+    },
+    "link:800096aec5a00c62efa60843": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02938886645610952",
+      "source": "이데일리",
+      "source_body_digest": "cb167c2d7e13a9213350eddc4aa886da125a70c20c57ef7fba0eec1d56db3a2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:351169d59871a4555625065b2923eed8c81fd4ecbcd04fd38d1176bd4fecc4e7",
+      "source_fact_keys": [
+        "source_fact:v1:6b4dfba91d64808b73705cdb1fee58a287ab8afdadab5f2c1240d4757fb79342",
+        "source_fact:v1:78b5105e4b949317516256f9341039bb59f07716f15faac795a482a5aba1df68",
+        "source_fact:v1:890d8d5a402417a49fb6655f24ee5cf7985a917ae1b17de499332fbd8e72341e",
+        "source_fact:v1:a4ecc53ddb03d28e6e5bcabd082a9a742c3e3ed6dc88382a26c0eb10ea931812",
+        "source_fact:v1:c9ff5e7bcb47129d61a031edd9fedf9aacad247fc6fa6004d160fe8bb7dc0e63",
+        "source_fact:v1:ebeaa2e3289f1dc3d35b2274653c6f8490b33e27fb17ce1fb7f67864a40575f8"
+      ],
+      "source_published_kst": "2026-10-08T10:10+09:00",
+      "source_title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]",
+      "telegram_core_fact": "9월 무역수지가 예상을 뛰어넘는 큰 폭의 흑자를 기록한 데다, 연말로 갈수록 수출이 집중되는 효과까지 더해지면서 올해 연간 경상수지 흑자 전망치인 4500억달러도 달성 가능할 것이란 전망이다. 한은은 지난 8월 올해 연간 경상수지 흑자 전망치를 기존 2500억달러에서 4500억달러로 대폭 상향한 바 있다.",
+      "title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]"
     },
     "link:802a5a0572a2ef3655ccedfb": {
       "first_seen_kst": "2026-10-03T07:28:32+09:00",
@@ -72271,6 +72663,23 @@
       "telegram_core_fact": "반도체 산업 호황에 따른 추가 세수를 미래 세대를 위한 투자 재원으로 활용하는 정부의 미래대응기금의 사용 계획에 한국전력 지원 등의 내용이 포함돼 있다고 국회 재정경제기획위원회 소속 국민의힘 박수영 의원이 7일 밝혔다.",
       "title": "\"미래기금으로 한전·관사·공연관람·농어촌 기본소득 지원\""
     },
+    "link:9e14d42244a27e9361196092": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007202800002",
+      "source": "연합뉴스",
+      "source_body_digest": "4bedc6ef3a152fd27f5d5becc755460f90761abb2297afa0337b3fa13a90b3bd",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T10:18+09:00",
+      "source_title": "이억원 \"금리인상기, 정책서민금융 금리 낮추고 공급 확대\" | 연합뉴스",
+      "telegram_core_fact": "이억원 금융위원장은 8일 서민·취약계층을 위해 \"정책서민금융의 금리수준을 낮추고 신상품 출시 등 공급을 지속적으로 확대하겠다\"고 밝혔다.",
+      "title": "이억원 \"금리인상기, 정책서민금융 금리 낮추고 공급 확대\" | 연합뉴스"
+    },
     "link:9e16de9135c205079b3e5c5e": {
       "first_seen_kst": "2026-10-07T07:39:19+09:00",
       "lanes": {
@@ -73669,6 +74078,28 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T09:21+09:00",
       "title": "[특징주] LG전자, 북미향 AI데이터센터 냉각솔루션 계약에 장초반 급등"
+    },
+    "link:a5beff1c872e0988d50f91a2": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818738",
+      "source": "뉴시스",
+      "source_body_digest": "8a5eae11b1270708c8c47a382d0a84742e696622c87255a487aed7e0c6c33144",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2639ff2d47e64d1a0677e0f47bc85a9f6203984bed9d91990a696881260c4e98",
+      "source_fact_keys": [
+        "source_fact:v1:0bc8f07ed7d510a8fab3b21d85993a5878e8e429cfc75192ba23d67eb9ce6582",
+        "source_fact:v1:2e4ac5dac206b7594f60f2baadc34b89f30e9c99c65518243c4afa991143f6d4",
+        "source_fact:v1:ab28c5a9d42d27e310a01471e07bd99f27d66abd36987c9cc3d5bd18ffa8f698",
+        "source_fact:v1:f546ed637a466615cdc429dea98caaf64ca3b5ced1e3d059b5d1ff7fda26e6d9"
+      ],
+      "source_published_kst": "2026-10-08T10:23+09:00",
+      "source_title": "케이엔에스, 안성 신공장 증설 결정",
+      "telegram_core_fact": "신공장이 완공되면 케이엔에스의 연간 생산능력(CAPA)은 기존 대비 약 100% 확대될 전망이다.",
+      "title": "케이엔에스, 안성 신공장 증설 결정"
     },
     "link:a5d59859aac0d2b342803dbe": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
@@ -91888,6 +92319,26 @@
       "telegram_core_fact": "글로벌 친환경 규제에 대응해 고품질 재생 소재 공급 역량을 확대하고 엔지니어링 플라스틱 소재 사업 경쟁력을 강화할 계획이다.",
       "title": "BGF, 지배구조 3단계로 단순화…반도체 소재 사업 직접 키운다"
     },
+    "original:11c1341269d8329138873b12": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02404246645610952",
+      "source": "이데일리",
+      "source_body_digest": "b79b840887e7af5c0af654402477d5dd88ad39160d27cdfeff578b73d90051ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:39b8d0b8f860de1613b0c1e1955c85419798b64f5814416e56083aa390cd8a49",
+      "source_fact_keys": [
+        "source_fact:v1:42c6e083be8b8a3bae524f1c1725e74c02529f016339aa8bde9522e7af41aec6",
+        "source_fact:v1:88425e5f26d18f6906e91afd059301bfd0d2cb1da2a4e652a8caf352ba202048"
+      ],
+      "source_published_kst": "2026-10-08T07:47+09:00",
+      "source_title": "수십조 빌려 AI칩 쟁탈전…브로드컴·스페이스X·오라클 자금 조달 총력",
+      "telegram_core_fact": "AI 데이터센터 투자 경쟁이 가속화하면서 기존 회사채 시장을 넘어 사모대출과 구조화금융까지 조달 범위가 확대되고 있다.",
+      "title": "수십조 빌려 AI칩 쟁탈전…브로드컴·스페이스X·오라클 자금 조달 총력"
+    },
     "original:11c423bbc089cc71c4472e36": {
       "first_seen_kst": "2026-10-07T23:10:06+09:00",
       "lanes": {
@@ -92995,6 +93446,28 @@
       ],
       "source_published_kst": "2026-10-06T09:24+09:00",
       "title": "특징주, 아이티센씨티에스-네트워크통합 테마 상승세에 2.22% ↑"
+    },
+    "original:182c019b3810d02ebd82fc4e": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818738",
+      "source": "뉴시스",
+      "source_body_digest": "8a5eae11b1270708c8c47a382d0a84742e696622c87255a487aed7e0c6c33144",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2639ff2d47e64d1a0677e0f47bc85a9f6203984bed9d91990a696881260c4e98",
+      "source_fact_keys": [
+        "source_fact:v1:0bc8f07ed7d510a8fab3b21d85993a5878e8e429cfc75192ba23d67eb9ce6582",
+        "source_fact:v1:2e4ac5dac206b7594f60f2baadc34b89f30e9c99c65518243c4afa991143f6d4",
+        "source_fact:v1:ab28c5a9d42d27e310a01471e07bd99f27d66abd36987c9cc3d5bd18ffa8f698",
+        "source_fact:v1:f546ed637a466615cdc429dea98caaf64ca3b5ced1e3d059b5d1ff7fda26e6d9"
+      ],
+      "source_published_kst": "2026-10-08T10:23+09:00",
+      "source_title": "케이엔에스, 안성 신공장 증설 결정",
+      "telegram_core_fact": "신공장이 완공되면 케이엔에스의 연간 생산능력(CAPA)은 기존 대비 약 100% 확대될 전망이다.",
+      "title": "케이엔에스, 안성 신공장 증설 결정"
     },
     "original:182e0e44a99e39dc482d76ab": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
@@ -95769,6 +96242,25 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T06:43+09:00",
       "title": "치솟는 기름값에 지갑 닫힌 미국인…SUV 대신 세단 찾자 현대차·혼다 ‘반색’"
+    },
+    "original:29565222cb0d6cd5dbd28a1c": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/08/2026100810020416009",
+      "source": "머니투데이",
+      "source_body_digest": "a7bd17833ee64900dae297126c6718048c784c0e5bff45a8798ec04dfdad5253",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b33a9fad65c7b721207cbbfd7a3862eb928fa53bacacce5b07514a53e5ec46da",
+      "source_fact_keys": [
+        "source_fact:v1:d155a92b51bd067a905b2321e8e3d5f8705648a7cc73ff082960f303c2213f98"
+      ],
+      "source_published_kst": "2026-10-08T10:33+09:00",
+      "source_title": "\"미 검찰, 베네수 마두로 '미국인 고문 혐의' 추가 기소 예정\"",
+      "telegram_core_fact": "CNN에 따르면 당시 마두로 정권은 미국인 12명 이상을 억류했고, 미국 정부는 베네수엘라가 금융 제재 완화 등의 양보를 얻어내고자 미국인을 억류하고 고문했다고 비난해 왔다.",
+      "title": "\"미 검찰, 베네수 마두로 '미국인 고문 혐의' 추가 기소 예정\""
     },
     "original:2960d79bcbdcbe60f4e3a67d": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
@@ -105380,6 +105872,23 @@
       "source": "전자신문",
       "title": "美 금리 인상?…“금 팔지마라 …내년 말 금리 인하, 더 오른다” 믿는 구석 있는 골드만삭스"
     },
+    "original:5f1c74f616c7e7f072b524e7": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007202800002",
+      "source": "연합뉴스",
+      "source_body_digest": "4bedc6ef3a152fd27f5d5becc755460f90761abb2297afa0337b3fa13a90b3bd",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T10:18+09:00",
+      "source_title": "이억원 \"금리인상기, 정책서민금융 금리 낮추고 공급 확대\" | 연합뉴스",
+      "telegram_core_fact": "이억원 금융위원장은 8일 서민·취약계층을 위해 \"정책서민금융의 금리수준을 낮추고 신상품 출시 등 공급을 지속적으로 확대하겠다\"고 밝혔다.",
+      "title": "이억원 \"금리인상기, 정책서민금융 금리 낮추고 공급 확대\" | 연합뉴스"
+    },
     "original:5f1da59bfd23f240b0e48983": {
       "first_seen_kst": "2026-10-01T16:57:16+09:00",
       "lanes": {
@@ -108942,6 +109451,25 @@
       "source_published_kst": "2026-10-07T08:27+09:00",
       "title": "LS일렉, 대만 최대 석화사와 합작법인 설립…현지 전력 설루션 시장 본격 공략"
     },
+    "original:745162e0bcf1a86bc93036a2": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818735",
+      "source": "뉴시스",
+      "source_body_digest": "c62c0e33a9a4d5f385f141d28395b241be7eae3f57c398b32964e149a72b32a2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:588b7afcfeab07b7171d3c6d439d8fc376bdc8285032cf180ee7786a8a05c695",
+      "source_fact_keys": [
+        "source_fact:v1:6e390f73b412cdc9717a4955b06e64fbbfed127b2fd4a5717f8788f8b013d10b"
+      ],
+      "source_published_kst": "2026-10-08T10:23+09:00",
+      "source_title": "OK금융, 예별손보 새 주인으로…\"종합금융그룹 도약 발판\"",
+      "telegram_core_fact": "OK금융 관계자는 \"동시에 진행 중인 중앙일보 인수의 경우 예별손보 실적 악화에 따른 추가 예산 투입 등으로 당초 계획보다 재정적 부담이 늘어난 상황\"이라며 \"중앙일보 우선협상대상자 선정 시까지 실사에 충실히 참여한다는 방침\"이라고 설명했다.",
+      "title": "OK금융, 예별손보 새 주인으로…\"종합금융그룹 도약 발판\""
+    },
     "original:7455adc81d006833839ccdd6": {
       "first_seen_kst": "2026-09-18T06:33:53+09:00",
       "lanes": {
@@ -110637,6 +111165,26 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003813117",
       "source": "뉴시스",
       "title": "CJ제일제당, 美 ADM과 사료용 아미노산 합작법인 설립 추진"
+    },
+    "original:7f38caf51bb5ea765c43826a": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.fnnews.com/news/202610080457580741",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5ee36832b7ba400bd18fb0a4ffb51507a954d02c84f3b927fcc102cf03075e18",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:24cb394d6e57416cceb1db9f107542f0986aff2271ebe621f9df3722faf2f655",
+      "source_fact_keys": [
+        "source_fact:v1:131f9b35f2bc9ef0285ef14e0555986dbe02df9f7754805a27d0a6048353cda6",
+        "source_fact:v1:9b0c46426731d3193d1de3c36abffb9acc0b3059ac098cda12504ebd4948ed29"
+      ],
+      "source_published_kst": "2026-10-08T05:58+09:00",
+      "source_title": "스페이스X 부도 위험 보험료 사상 최고...\"엔비디아 칩 매수 위해 400억달러 조달\"",
+      "telegram_core_fact": "엔비디아 칩을 구매하기 위해 400억달러(약 53조원)를 조달하기로 했다는 보도가 시장의 부도 대비 보험 비용을 끌어올렸다. 스페이스X가 400억달러 자금 조달을 계획하고 있다는 FT 보도가 CDS 스프레드 급등을 촉발했다.",
+      "title": "스페이스X 부도 위험 보험료 사상 최고...\"엔비디아 칩 매수 위해 400억달러 조달\""
     },
     "original:7f6bc31a6e9fa16168e4b438": {
       "first_seen_kst": "2026-09-29T10:32:56+09:00",
@@ -127620,6 +128168,30 @@
       "source_published_kst": "2026-10-07T11:04+09:00",
       "title": "LG전자, 3분기 영업이익 전년 比 13.5% ↑"
     },
+    "original:e6f9b2d2a9e5f305f17be00f": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02938886645610952",
+      "source": "이데일리",
+      "source_body_digest": "cb167c2d7e13a9213350eddc4aa886da125a70c20c57ef7fba0eec1d56db3a2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:351169d59871a4555625065b2923eed8c81fd4ecbcd04fd38d1176bd4fecc4e7",
+      "source_fact_keys": [
+        "source_fact:v1:6b4dfba91d64808b73705cdb1fee58a287ab8afdadab5f2c1240d4757fb79342",
+        "source_fact:v1:78b5105e4b949317516256f9341039bb59f07716f15faac795a482a5aba1df68",
+        "source_fact:v1:890d8d5a402417a49fb6655f24ee5cf7985a917ae1b17de499332fbd8e72341e",
+        "source_fact:v1:a4ecc53ddb03d28e6e5bcabd082a9a742c3e3ed6dc88382a26c0eb10ea931812",
+        "source_fact:v1:c9ff5e7bcb47129d61a031edd9fedf9aacad247fc6fa6004d160fe8bb7dc0e63",
+        "source_fact:v1:ebeaa2e3289f1dc3d35b2274653c6f8490b33e27fb17ce1fb7f67864a40575f8"
+      ],
+      "source_published_kst": "2026-10-08T10:10+09:00",
+      "source_title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]",
+      "telegram_core_fact": "9월 무역수지가 예상을 뛰어넘는 큰 폭의 흑자를 기록한 데다, 연말로 갈수록 수출이 집중되는 효과까지 더해지면서 올해 연간 경상수지 흑자 전망치인 4500억달러도 달성 가능할 것이란 전망이다. 한은은 지난 8월 올해 연간 경상수지 흑자 전망치를 기존 2500억달러에서 4500억달러로 대폭 상향한 바 있다.",
+      "title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]"
+    },
     "original:e75e31335f9f8d1eede2529e": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
       "lanes": {
@@ -135208,6 +135780,26 @@
       "telegram_core_fact": "GS ITM이 삼성SDS·LG CNS와 다른 규제를 받는 이유는 상호출자제한기업집단 소속 여부에 있다.",
       "title": "[공공SW전략] 기업마다 다른 규제…참여제한 갈린다 | GS ITM㊦"
     },
+    "source_fact:082766e0aaecd0325573d694": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02404246645610952",
+      "source": "이데일리",
+      "source_body_digest": "b79b840887e7af5c0af654402477d5dd88ad39160d27cdfeff578b73d90051ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:39b8d0b8f860de1613b0c1e1955c85419798b64f5814416e56083aa390cd8a49",
+      "source_fact_keys": [
+        "source_fact:v1:42c6e083be8b8a3bae524f1c1725e74c02529f016339aa8bde9522e7af41aec6",
+        "source_fact:v1:88425e5f26d18f6906e91afd059301bfd0d2cb1da2a4e652a8caf352ba202048"
+      ],
+      "source_published_kst": "2026-10-08T07:47+09:00",
+      "source_title": "수십조 빌려 AI칩 쟁탈전…브로드컴·스페이스X·오라클 자금 조달 총력",
+      "telegram_core_fact": "AI 데이터센터 투자 경쟁이 가속화하면서 기존 회사채 시장을 넘어 사모대출과 구조화금융까지 조달 범위가 확대되고 있다.",
+      "title": "수십조 빌려 AI칩 쟁탈전…브로드컴·스페이스X·오라클 자금 조달 총력"
+    },
     "source_fact:082adff0c9beb8d86ac46203": {
       "first_seen_kst": "2026-10-08T04:26:05+09:00",
       "lanes": {
@@ -139366,6 +139958,28 @@
       "telegram_core_fact": "삼성전자의 영업이익은 지난 분기 세계에서 최고치를 기록했는데 이번에도 전세계 기업중 1위를 기록할 것으로 예상된다.",
       "title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박"
     },
+    "source_fact:10e41c85e7099e7036447829": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818738",
+      "source": "뉴시스",
+      "source_body_digest": "8a5eae11b1270708c8c47a382d0a84742e696622c87255a487aed7e0c6c33144",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2639ff2d47e64d1a0677e0f47bc85a9f6203984bed9d91990a696881260c4e98",
+      "source_fact_keys": [
+        "source_fact:v1:0bc8f07ed7d510a8fab3b21d85993a5878e8e429cfc75192ba23d67eb9ce6582",
+        "source_fact:v1:2e4ac5dac206b7594f60f2baadc34b89f30e9c99c65518243c4afa991143f6d4",
+        "source_fact:v1:ab28c5a9d42d27e310a01471e07bd99f27d66abd36987c9cc3d5bd18ffa8f698",
+        "source_fact:v1:f546ed637a466615cdc429dea98caaf64ca3b5ced1e3d059b5d1ff7fda26e6d9"
+      ],
+      "source_published_kst": "2026-10-08T10:23+09:00",
+      "source_title": "케이엔에스, 안성 신공장 증설 결정",
+      "telegram_core_fact": "신공장이 완공되면 케이엔에스의 연간 생산능력(CAPA)은 기존 대비 약 100% 확대될 전망이다.",
+      "title": "케이엔에스, 안성 신공장 증설 결정"
+    },
     "source_fact:10e8e754ef824f594cc2fd2a": {
       "first_seen_kst": "2026-10-07T00:09:35+09:00",
       "lanes": {
@@ -140507,6 +141121,30 @@
       ],
       "source_published_kst": "2026-10-06T21:25+09:00",
       "title": "[美특징주]콘스텔레이션 에너지, 구글과 20년 원전 전력 공급 계약에 개장 전↑"
+    },
+    "source_fact:139969956d66d77e9de0bec0": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02938886645610952",
+      "source": "이데일리",
+      "source_body_digest": "cb167c2d7e13a9213350eddc4aa886da125a70c20c57ef7fba0eec1d56db3a2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:351169d59871a4555625065b2923eed8c81fd4ecbcd04fd38d1176bd4fecc4e7",
+      "source_fact_keys": [
+        "source_fact:v1:6b4dfba91d64808b73705cdb1fee58a287ab8afdadab5f2c1240d4757fb79342",
+        "source_fact:v1:78b5105e4b949317516256f9341039bb59f07716f15faac795a482a5aba1df68",
+        "source_fact:v1:890d8d5a402417a49fb6655f24ee5cf7985a917ae1b17de499332fbd8e72341e",
+        "source_fact:v1:a4ecc53ddb03d28e6e5bcabd082a9a742c3e3ed6dc88382a26c0eb10ea931812",
+        "source_fact:v1:c9ff5e7bcb47129d61a031edd9fedf9aacad247fc6fa6004d160fe8bb7dc0e63",
+        "source_fact:v1:ebeaa2e3289f1dc3d35b2274653c6f8490b33e27fb17ce1fb7f67864a40575f8"
+      ],
+      "source_published_kst": "2026-10-08T10:10+09:00",
+      "source_title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]",
+      "telegram_core_fact": "9월 무역수지가 예상을 뛰어넘는 큰 폭의 흑자를 기록한 데다, 연말로 갈수록 수출이 집중되는 효과까지 더해지면서 올해 연간 경상수지 흑자 전망치인 4500억달러도 달성 가능할 것이란 전망이다. 한은은 지난 8월 올해 연간 경상수지 흑자 전망치를 기존 2500억달러에서 4500억달러로 대폭 상향한 바 있다.",
+      "title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]"
     },
     "source_fact:139c1b1aab5571f4ac9531c2": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
@@ -142697,6 +143335,30 @@
       ],
       "source_published_kst": "2026-10-06T09:55+09:00",
       "title": "어기구 \"5년간 2천억원 썼는데 연간 조류 정전 2배로\" | 연합뉴스"
+    },
+    "source_fact:184f94584ad8d606cb63034b": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02938886645610952",
+      "source": "이데일리",
+      "source_body_digest": "cb167c2d7e13a9213350eddc4aa886da125a70c20c57ef7fba0eec1d56db3a2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:351169d59871a4555625065b2923eed8c81fd4ecbcd04fd38d1176bd4fecc4e7",
+      "source_fact_keys": [
+        "source_fact:v1:6b4dfba91d64808b73705cdb1fee58a287ab8afdadab5f2c1240d4757fb79342",
+        "source_fact:v1:78b5105e4b949317516256f9341039bb59f07716f15faac795a482a5aba1df68",
+        "source_fact:v1:890d8d5a402417a49fb6655f24ee5cf7985a917ae1b17de499332fbd8e72341e",
+        "source_fact:v1:a4ecc53ddb03d28e6e5bcabd082a9a742c3e3ed6dc88382a26c0eb10ea931812",
+        "source_fact:v1:c9ff5e7bcb47129d61a031edd9fedf9aacad247fc6fa6004d160fe8bb7dc0e63",
+        "source_fact:v1:ebeaa2e3289f1dc3d35b2274653c6f8490b33e27fb17ce1fb7f67864a40575f8"
+      ],
+      "source_published_kst": "2026-10-08T10:10+09:00",
+      "source_title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]",
+      "telegram_core_fact": "9월 무역수지가 예상을 뛰어넘는 큰 폭의 흑자를 기록한 데다, 연말로 갈수록 수출이 집중되는 효과까지 더해지면서 올해 연간 경상수지 흑자 전망치인 4500억달러도 달성 가능할 것이란 전망이다. 한은은 지난 8월 올해 연간 경상수지 흑자 전망치를 기존 2500억달러에서 4500억달러로 대폭 상향한 바 있다.",
+      "title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]"
     },
     "source_fact:1866c259b79027acb42c2123": {
       "first_seen_kst": "2026-10-07T14:18:25+09:00",
@@ -159411,6 +160073,30 @@
       "source_published_kst": "2026-10-06T15:45+09:00",
       "title": "NH투자증권, 기업금융·투자수익 두 토끼…IMA로 잡는다"
     },
+    "source_fact:3a77d515e7fff2af0fccca67": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02938886645610952",
+      "source": "이데일리",
+      "source_body_digest": "cb167c2d7e13a9213350eddc4aa886da125a70c20c57ef7fba0eec1d56db3a2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:351169d59871a4555625065b2923eed8c81fd4ecbcd04fd38d1176bd4fecc4e7",
+      "source_fact_keys": [
+        "source_fact:v1:6b4dfba91d64808b73705cdb1fee58a287ab8afdadab5f2c1240d4757fb79342",
+        "source_fact:v1:78b5105e4b949317516256f9341039bb59f07716f15faac795a482a5aba1df68",
+        "source_fact:v1:890d8d5a402417a49fb6655f24ee5cf7985a917ae1b17de499332fbd8e72341e",
+        "source_fact:v1:a4ecc53ddb03d28e6e5bcabd082a9a742c3e3ed6dc88382a26c0eb10ea931812",
+        "source_fact:v1:c9ff5e7bcb47129d61a031edd9fedf9aacad247fc6fa6004d160fe8bb7dc0e63",
+        "source_fact:v1:ebeaa2e3289f1dc3d35b2274653c6f8490b33e27fb17ce1fb7f67864a40575f8"
+      ],
+      "source_published_kst": "2026-10-08T10:10+09:00",
+      "source_title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]",
+      "telegram_core_fact": "9월 무역수지가 예상을 뛰어넘는 큰 폭의 흑자를 기록한 데다, 연말로 갈수록 수출이 집중되는 효과까지 더해지면서 올해 연간 경상수지 흑자 전망치인 4500억달러도 달성 가능할 것이란 전망이다. 한은은 지난 8월 올해 연간 경상수지 흑자 전망치를 기존 2500억달러에서 4500억달러로 대폭 상향한 바 있다.",
+      "title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]"
+    },
     "source_fact:3a78bbffadd1e6cf49c1bb8a": {
       "first_seen_kst": "2026-10-08T11:49:03+09:00",
       "lanes": {
@@ -159777,6 +160463,28 @@
       ],
       "source_published_kst": "2026-10-07T11:14+09:00",
       "title": "다이나핏, FW 신상 매출 23%↑…'트레이닝 세트'는 리오더"
+    },
+    "source_fact:3b292119441eb9f3fe281023": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818738",
+      "source": "뉴시스",
+      "source_body_digest": "8a5eae11b1270708c8c47a382d0a84742e696622c87255a487aed7e0c6c33144",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2639ff2d47e64d1a0677e0f47bc85a9f6203984bed9d91990a696881260c4e98",
+      "source_fact_keys": [
+        "source_fact:v1:0bc8f07ed7d510a8fab3b21d85993a5878e8e429cfc75192ba23d67eb9ce6582",
+        "source_fact:v1:2e4ac5dac206b7594f60f2baadc34b89f30e9c99c65518243c4afa991143f6d4",
+        "source_fact:v1:ab28c5a9d42d27e310a01471e07bd99f27d66abd36987c9cc3d5bd18ffa8f698",
+        "source_fact:v1:f546ed637a466615cdc429dea98caaf64ca3b5ced1e3d059b5d1ff7fda26e6d9"
+      ],
+      "source_published_kst": "2026-10-08T10:23+09:00",
+      "source_title": "케이엔에스, 안성 신공장 증설 결정",
+      "telegram_core_fact": "신공장이 완공되면 케이엔에스의 연간 생산능력(CAPA)은 기존 대비 약 100% 확대될 전망이다.",
+      "title": "케이엔에스, 안성 신공장 증설 결정"
     },
     "source_fact:3b37ba6a4e49f1e0701fee0b": {
       "first_seen_kst": "2026-10-07T02:13:12+09:00",
@@ -163301,6 +164009,30 @@
       "source_title": "AMD 리사수, 삼성 전영현·SK 곽노정 만나 AI 협력방안 논의(종합)",
       "telegram_core_fact": "방한한 리사 수 AMD 회장 겸 최고경영자(CEO)가 삼성과 SK의 반도체 수장을 만나 AI 협력 강화 방안을 논의한다. 약 7개월 만에 다시 성사된 전 부회장과 수 회장의 이번 회동으로 삼성전자와 AMD는 고대역폭메모리(HBM)를 포함한 AI 반도체 협력을 강화할 전망이다.",
       "title": "AMD 리사수, 삼성 전영현·SK 곽노정 만나 AI 협력방안 논의(종합)"
+    },
+    "source_fact:429c8f253168459e24eebe3c": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02938886645610952",
+      "source": "이데일리",
+      "source_body_digest": "cb167c2d7e13a9213350eddc4aa886da125a70c20c57ef7fba0eec1d56db3a2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:351169d59871a4555625065b2923eed8c81fd4ecbcd04fd38d1176bd4fecc4e7",
+      "source_fact_keys": [
+        "source_fact:v1:6b4dfba91d64808b73705cdb1fee58a287ab8afdadab5f2c1240d4757fb79342",
+        "source_fact:v1:78b5105e4b949317516256f9341039bb59f07716f15faac795a482a5aba1df68",
+        "source_fact:v1:890d8d5a402417a49fb6655f24ee5cf7985a917ae1b17de499332fbd8e72341e",
+        "source_fact:v1:a4ecc53ddb03d28e6e5bcabd082a9a742c3e3ed6dc88382a26c0eb10ea931812",
+        "source_fact:v1:c9ff5e7bcb47129d61a031edd9fedf9aacad247fc6fa6004d160fe8bb7dc0e63",
+        "source_fact:v1:ebeaa2e3289f1dc3d35b2274653c6f8490b33e27fb17ce1fb7f67864a40575f8"
+      ],
+      "source_published_kst": "2026-10-08T10:10+09:00",
+      "source_title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]",
+      "telegram_core_fact": "9월 무역수지가 예상을 뛰어넘는 큰 폭의 흑자를 기록한 데다, 연말로 갈수록 수출이 집중되는 효과까지 더해지면서 올해 연간 경상수지 흑자 전망치인 4500억달러도 달성 가능할 것이란 전망이다. 한은은 지난 8월 올해 연간 경상수지 흑자 전망치를 기존 2500억달러에서 4500억달러로 대폭 상향한 바 있다.",
+      "title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]"
     },
     "source_fact:42b4c335b54d8c037577fff1": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
@@ -187433,6 +188165,28 @@
       "source_published_kst": "2026-10-06T22:37+09:00",
       "title": "美 8월 무역적자 142조원…트럼프 관세 폭탄 이후 최대"
     },
+    "source_fact:7562ed94ebc06f5c671359d7": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818738",
+      "source": "뉴시스",
+      "source_body_digest": "8a5eae11b1270708c8c47a382d0a84742e696622c87255a487aed7e0c6c33144",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2639ff2d47e64d1a0677e0f47bc85a9f6203984bed9d91990a696881260c4e98",
+      "source_fact_keys": [
+        "source_fact:v1:0bc8f07ed7d510a8fab3b21d85993a5878e8e429cfc75192ba23d67eb9ce6582",
+        "source_fact:v1:2e4ac5dac206b7594f60f2baadc34b89f30e9c99c65518243c4afa991143f6d4",
+        "source_fact:v1:ab28c5a9d42d27e310a01471e07bd99f27d66abd36987c9cc3d5bd18ffa8f698",
+        "source_fact:v1:f546ed637a466615cdc429dea98caaf64ca3b5ced1e3d059b5d1ff7fda26e6d9"
+      ],
+      "source_published_kst": "2026-10-08T10:23+09:00",
+      "source_title": "케이엔에스, 안성 신공장 증설 결정",
+      "telegram_core_fact": "신공장이 완공되면 케이엔에스의 연간 생산능력(CAPA)은 기존 대비 약 100% 확대될 전망이다.",
+      "title": "케이엔에스, 안성 신공장 증설 결정"
+    },
     "source_fact:756c28bb1d467abf75270d13": {
       "first_seen_kst": "2026-10-08T06:27:52+09:00",
       "lanes": {
@@ -190185,6 +190939,30 @@
       ],
       "source_published_kst": "2026-10-07T11:16+09:00",
       "title": "“삼성전기, 한번 더”...DS證 “실적 서프라이즈” [오늘, 이 종목]- 매경ECONOMY"
+    },
+    "source_fact:7b1a406ea0436e2dbd8c2584": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02938886645610952",
+      "source": "이데일리",
+      "source_body_digest": "cb167c2d7e13a9213350eddc4aa886da125a70c20c57ef7fba0eec1d56db3a2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:351169d59871a4555625065b2923eed8c81fd4ecbcd04fd38d1176bd4fecc4e7",
+      "source_fact_keys": [
+        "source_fact:v1:6b4dfba91d64808b73705cdb1fee58a287ab8afdadab5f2c1240d4757fb79342",
+        "source_fact:v1:78b5105e4b949317516256f9341039bb59f07716f15faac795a482a5aba1df68",
+        "source_fact:v1:890d8d5a402417a49fb6655f24ee5cf7985a917ae1b17de499332fbd8e72341e",
+        "source_fact:v1:a4ecc53ddb03d28e6e5bcabd082a9a742c3e3ed6dc88382a26c0eb10ea931812",
+        "source_fact:v1:c9ff5e7bcb47129d61a031edd9fedf9aacad247fc6fa6004d160fe8bb7dc0e63",
+        "source_fact:v1:ebeaa2e3289f1dc3d35b2274653c6f8490b33e27fb17ce1fb7f67864a40575f8"
+      ],
+      "source_published_kst": "2026-10-08T10:10+09:00",
+      "source_title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]",
+      "telegram_core_fact": "9월 무역수지가 예상을 뛰어넘는 큰 폭의 흑자를 기록한 데다, 연말로 갈수록 수출이 집중되는 효과까지 더해지면서 올해 연간 경상수지 흑자 전망치인 4500억달러도 달성 가능할 것이란 전망이다. 한은은 지난 8월 올해 연간 경상수지 흑자 전망치를 기존 2500억달러에서 4500억달러로 대폭 상향한 바 있다.",
+      "title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]"
     },
     "source_fact:7b1b9b854c74f9def8817b09": {
       "first_seen_kst": "2026-10-06T15:44:02+09:00",
@@ -199948,6 +200726,30 @@
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
     },
+    "source_fact:8ffa66753b2f941cd068a1ec": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02938886645610952",
+      "source": "이데일리",
+      "source_body_digest": "cb167c2d7e13a9213350eddc4aa886da125a70c20c57ef7fba0eec1d56db3a2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:351169d59871a4555625065b2923eed8c81fd4ecbcd04fd38d1176bd4fecc4e7",
+      "source_fact_keys": [
+        "source_fact:v1:6b4dfba91d64808b73705cdb1fee58a287ab8afdadab5f2c1240d4757fb79342",
+        "source_fact:v1:78b5105e4b949317516256f9341039bb59f07716f15faac795a482a5aba1df68",
+        "source_fact:v1:890d8d5a402417a49fb6655f24ee5cf7985a917ae1b17de499332fbd8e72341e",
+        "source_fact:v1:a4ecc53ddb03d28e6e5bcabd082a9a742c3e3ed6dc88382a26c0eb10ea931812",
+        "source_fact:v1:c9ff5e7bcb47129d61a031edd9fedf9aacad247fc6fa6004d160fe8bb7dc0e63",
+        "source_fact:v1:ebeaa2e3289f1dc3d35b2274653c6f8490b33e27fb17ce1fb7f67864a40575f8"
+      ],
+      "source_published_kst": "2026-10-08T10:10+09:00",
+      "source_title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]",
+      "telegram_core_fact": "9월 무역수지가 예상을 뛰어넘는 큰 폭의 흑자를 기록한 데다, 연말로 갈수록 수출이 집중되는 효과까지 더해지면서 올해 연간 경상수지 흑자 전망치인 4500억달러도 달성 가능할 것이란 전망이다. 한은은 지난 8월 올해 연간 경상수지 흑자 전망치를 기존 2500억달러에서 4500억달러로 대폭 상향한 바 있다.",
+      "title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]"
+    },
     "source_fact:901574c8cdf2687dc22aed97": {
       "first_seen_kst": "2026-10-07T22:53:53+09:00",
       "lanes": {
@@ -207554,6 +208356,25 @@
       "source_published_kst": "2026-10-05T21:41+09:00",
       "title": "ESS 테크, NYSE 거래정지·상장폐지 개시..OTC서 GWHT 거래"
     },
+    "source_fact:a097386ce55b3fa5e7ade307": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/08/2026100810020416009",
+      "source": "머니투데이",
+      "source_body_digest": "a7bd17833ee64900dae297126c6718048c784c0e5bff45a8798ec04dfdad5253",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b33a9fad65c7b721207cbbfd7a3862eb928fa53bacacce5b07514a53e5ec46da",
+      "source_fact_keys": [
+        "source_fact:v1:d155a92b51bd067a905b2321e8e3d5f8705648a7cc73ff082960f303c2213f98"
+      ],
+      "source_published_kst": "2026-10-08T10:33+09:00",
+      "source_title": "\"미 검찰, 베네수 마두로 '미국인 고문 혐의' 추가 기소 예정\"",
+      "telegram_core_fact": "CNN에 따르면 당시 마두로 정권은 미국인 12명 이상을 억류했고, 미국 정부는 베네수엘라가 금융 제재 완화 등의 양보를 얻어내고자 미국인을 억류하고 고문했다고 비난해 왔다.",
+      "title": "\"미 검찰, 베네수 마두로 '미국인 고문 혐의' 추가 기소 예정\""
+    },
     "source_fact:a0a5545fcf63e9722133fe81": {
       "first_seen_kst": "2026-10-07T09:44:16+09:00",
       "lanes": {
@@ -207695,6 +208516,28 @@
       ],
       "source_published_kst": "2026-10-07T15:35+09:00",
       "title": "HD건설기계, 북미 AI 데이터센터에 전력 공급…3900억 계약 체결"
+    },
+    "source_fact:a0bb29c370eb7b2f3367d368": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818738",
+      "source": "뉴시스",
+      "source_body_digest": "8a5eae11b1270708c8c47a382d0a84742e696622c87255a487aed7e0c6c33144",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2639ff2d47e64d1a0677e0f47bc85a9f6203984bed9d91990a696881260c4e98",
+      "source_fact_keys": [
+        "source_fact:v1:0bc8f07ed7d510a8fab3b21d85993a5878e8e429cfc75192ba23d67eb9ce6582",
+        "source_fact:v1:2e4ac5dac206b7594f60f2baadc34b89f30e9c99c65518243c4afa991143f6d4",
+        "source_fact:v1:ab28c5a9d42d27e310a01471e07bd99f27d66abd36987c9cc3d5bd18ffa8f698",
+        "source_fact:v1:f546ed637a466615cdc429dea98caaf64ca3b5ced1e3d059b5d1ff7fda26e6d9"
+      ],
+      "source_published_kst": "2026-10-08T10:23+09:00",
+      "source_title": "케이엔에스, 안성 신공장 증설 결정",
+      "telegram_core_fact": "신공장이 완공되면 케이엔에스의 연간 생산능력(CAPA)은 기존 대비 약 100% 확대될 전망이다.",
+      "title": "케이엔에스, 안성 신공장 증설 결정"
     },
     "source_fact:a0cd22e0559078f04a53ec73": {
       "first_seen_kst": "2026-10-06T23:56:49+09:00",
@@ -211957,6 +212800,26 @@
       "source_published_kst": "2026-10-06T23:31+09:00",
       "title": "우크라, '한국의 러 석유공급' 기사 인용해 韓 비판(종합) | 연합뉴스"
     },
+    "source_fact:aace484c3d75079d32d0efc1": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.fnnews.com/news/202610080457580741",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5ee36832b7ba400bd18fb0a4ffb51507a954d02c84f3b927fcc102cf03075e18",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:24cb394d6e57416cceb1db9f107542f0986aff2271ebe621f9df3722faf2f655",
+      "source_fact_keys": [
+        "source_fact:v1:131f9b35f2bc9ef0285ef14e0555986dbe02df9f7754805a27d0a6048353cda6",
+        "source_fact:v1:9b0c46426731d3193d1de3c36abffb9acc0b3059ac098cda12504ebd4948ed29"
+      ],
+      "source_published_kst": "2026-10-08T05:58+09:00",
+      "source_title": "스페이스X 부도 위험 보험료 사상 최고...\"엔비디아 칩 매수 위해 400억달러 조달\"",
+      "telegram_core_fact": "엔비디아 칩을 구매하기 위해 400억달러(약 53조원)를 조달하기로 했다는 보도가 시장의 부도 대비 보험 비용을 끌어올렸다. 스페이스X가 400억달러 자금 조달을 계획하고 있다는 FT 보도가 CDS 스프레드 급등을 촉발했다.",
+      "title": "스페이스X 부도 위험 보험료 사상 최고...\"엔비디아 칩 매수 위해 400억달러 조달\""
+    },
     "source_fact:aacf6e06221d300938665d48": {
       "first_seen_kst": "2026-10-07T05:59:02+09:00",
       "lanes": {
@@ -215627,6 +216490,26 @@
       "source_title": "[고래사냥] '한미반도체·지앤비에스 에코·두산로보틱스! 내일장 고래 종목은?!",
       "telegram_core_fact": "SK하이닉스의 용인 1기 팹 가동이 임박함에 따라 케이씨텍과 지앤비에스 에코 등 관련 반도체 설비 기업들이 주목받았다. 한미반도체는 TC본더 장비 공급과 8공장 증설을 추진 중이며 곽동신 회장의 장내매수 소식이 전해졌다.",
       "title": "[고래사냥] '한미반도체·지앤비에스 에코·두산로보틱스! 내일장 고래 종목은?!"
+    },
+    "source_fact:b22bb56eda217d5dabd0390f": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.fnnews.com/news/202610080457580741",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5ee36832b7ba400bd18fb0a4ffb51507a954d02c84f3b927fcc102cf03075e18",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:24cb394d6e57416cceb1db9f107542f0986aff2271ebe621f9df3722faf2f655",
+      "source_fact_keys": [
+        "source_fact:v1:131f9b35f2bc9ef0285ef14e0555986dbe02df9f7754805a27d0a6048353cda6",
+        "source_fact:v1:9b0c46426731d3193d1de3c36abffb9acc0b3059ac098cda12504ebd4948ed29"
+      ],
+      "source_published_kst": "2026-10-08T05:58+09:00",
+      "source_title": "스페이스X 부도 위험 보험료 사상 최고...\"엔비디아 칩 매수 위해 400억달러 조달\"",
+      "telegram_core_fact": "엔비디아 칩을 구매하기 위해 400억달러(약 53조원)를 조달하기로 했다는 보도가 시장의 부도 대비 보험 비용을 끌어올렸다. 스페이스X가 400억달러 자금 조달을 계획하고 있다는 FT 보도가 CDS 스프레드 급등을 촉발했다.",
+      "title": "스페이스X 부도 위험 보험료 사상 최고...\"엔비디아 칩 매수 위해 400억달러 조달\""
     },
     "source_fact:b22e9584c4853866b17f73a0": {
       "first_seen_kst": "2026-10-07T10:49:23+09:00",
@@ -229862,6 +230745,25 @@
       "source_published_kst": "2026-10-07T07:15+09:00",
       "title": "'알렉사 주역' 보스턴다이나믹스 지휘한다 …현대차 피지컬 AI 속도"
     },
+    "source_fact:d12248ce0d5c82cc511ef5a7": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818735",
+      "source": "뉴시스",
+      "source_body_digest": "c62c0e33a9a4d5f385f141d28395b241be7eae3f57c398b32964e149a72b32a2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:588b7afcfeab07b7171d3c6d439d8fc376bdc8285032cf180ee7786a8a05c695",
+      "source_fact_keys": [
+        "source_fact:v1:6e390f73b412cdc9717a4955b06e64fbbfed127b2fd4a5717f8788f8b013d10b"
+      ],
+      "source_published_kst": "2026-10-08T10:23+09:00",
+      "source_title": "OK금융, 예별손보 새 주인으로…\"종합금융그룹 도약 발판\"",
+      "telegram_core_fact": "OK금융 관계자는 \"동시에 진행 중인 중앙일보 인수의 경우 예별손보 실적 악화에 따른 추가 예산 투입 등으로 당초 계획보다 재정적 부담이 늘어난 상황\"이라며 \"중앙일보 우선협상대상자 선정 시까지 실사에 충실히 참여한다는 방침\"이라고 설명했다.",
+      "title": "OK금융, 예별손보 새 주인으로…\"종합금융그룹 도약 발판\""
+    },
     "source_fact:d131327b817867492bbd1a23": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
@@ -235695,6 +236597,26 @@
       ],
       "source_published_kst": "2026-10-06T13:15+09:00",
       "title": "트럼프, 면세 경유 도로 차량에 사용 허용⋯농촌 표심 잡기 안간힘"
+    },
+    "source_fact:dce010bd759493ebb7f96988": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02404246645610952",
+      "source": "이데일리",
+      "source_body_digest": "b79b840887e7af5c0af654402477d5dd88ad39160d27cdfeff578b73d90051ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:39b8d0b8f860de1613b0c1e1955c85419798b64f5814416e56083aa390cd8a49",
+      "source_fact_keys": [
+        "source_fact:v1:42c6e083be8b8a3bae524f1c1725e74c02529f016339aa8bde9522e7af41aec6",
+        "source_fact:v1:88425e5f26d18f6906e91afd059301bfd0d2cb1da2a4e652a8caf352ba202048"
+      ],
+      "source_published_kst": "2026-10-08T07:47+09:00",
+      "source_title": "수십조 빌려 AI칩 쟁탈전…브로드컴·스페이스X·오라클 자금 조달 총력",
+      "telegram_core_fact": "AI 데이터센터 투자 경쟁이 가속화하면서 기존 회사채 시장을 넘어 사모대출과 구조화금융까지 조달 범위가 확대되고 있다.",
+      "title": "수십조 빌려 AI칩 쟁탈전…브로드컴·스페이스X·오라클 자금 조달 총력"
     },
     "source_fact:dce2900d1d0203df1377e2ef": {
       "first_seen_kst": "2026-10-07T13:13:19+09:00",
@@ -255778,6 +256700,26 @@
       "telegram_core_fact": "글로벌 친환경 규제에 대응해 고품질 재생 소재 공급 역량을 확대하고 엔지니어링 플라스틱 소재 사업 경쟁력을 강화할 계획이다.",
       "title": "BGF, 지배구조 3단계로 단순화…반도체 소재 사업 직접 키운다"
     },
+    "title:11c1341269d8329138873b12": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02404246645610952",
+      "source": "이데일리",
+      "source_body_digest": "b79b840887e7af5c0af654402477d5dd88ad39160d27cdfeff578b73d90051ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:39b8d0b8f860de1613b0c1e1955c85419798b64f5814416e56083aa390cd8a49",
+      "source_fact_keys": [
+        "source_fact:v1:42c6e083be8b8a3bae524f1c1725e74c02529f016339aa8bde9522e7af41aec6",
+        "source_fact:v1:88425e5f26d18f6906e91afd059301bfd0d2cb1da2a4e652a8caf352ba202048"
+      ],
+      "source_published_kst": "2026-10-08T07:47+09:00",
+      "source_title": "수십조 빌려 AI칩 쟁탈전…브로드컴·스페이스X·오라클 자금 조달 총력",
+      "telegram_core_fact": "AI 데이터센터 투자 경쟁이 가속화하면서 기존 회사채 시장을 넘어 사모대출과 구조화금융까지 조달 범위가 확대되고 있다.",
+      "title": "수십조 빌려 AI칩 쟁탈전…브로드컴·스페이스X·오라클 자금 조달 총력"
+    },
     "title:11c423bbc089cc71c4472e36": {
       "first_seen_kst": "2026-10-07T23:10:06+09:00",
       "lanes": {
@@ -256935,6 +257877,28 @@
       ],
       "source_published_kst": "2026-10-06T09:24+09:00",
       "title": "특징주, 아이티센씨티에스-네트워크통합 테마 상승세에 2.22% ↑"
+    },
+    "title:182c019b3810d02ebd82fc4e": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818738",
+      "source": "뉴시스",
+      "source_body_digest": "8a5eae11b1270708c8c47a382d0a84742e696622c87255a487aed7e0c6c33144",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2639ff2d47e64d1a0677e0f47bc85a9f6203984bed9d91990a696881260c4e98",
+      "source_fact_keys": [
+        "source_fact:v1:0bc8f07ed7d510a8fab3b21d85993a5878e8e429cfc75192ba23d67eb9ce6582",
+        "source_fact:v1:2e4ac5dac206b7594f60f2baadc34b89f30e9c99c65518243c4afa991143f6d4",
+        "source_fact:v1:ab28c5a9d42d27e310a01471e07bd99f27d66abd36987c9cc3d5bd18ffa8f698",
+        "source_fact:v1:f546ed637a466615cdc429dea98caaf64ca3b5ced1e3d059b5d1ff7fda26e6d9"
+      ],
+      "source_published_kst": "2026-10-08T10:23+09:00",
+      "source_title": "케이엔에스, 안성 신공장 증설 결정",
+      "telegram_core_fact": "신공장이 완공되면 케이엔에스의 연간 생산능력(CAPA)은 기존 대비 약 100% 확대될 전망이다.",
+      "title": "케이엔에스, 안성 신공장 증설 결정"
     },
     "title:182e0e44a99e39dc482d76ab": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
@@ -259758,6 +260722,25 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T06:43+09:00",
       "title": "치솟는 기름값에 지갑 닫힌 미국인…SUV 대신 세단 찾자 현대차·혼다 ‘반색’"
+    },
+    "title:29565222cb0d6cd5dbd28a1c": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/08/2026100810020416009",
+      "source": "머니투데이",
+      "source_body_digest": "a7bd17833ee64900dae297126c6718048c784c0e5bff45a8798ec04dfdad5253",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b33a9fad65c7b721207cbbfd7a3862eb928fa53bacacce5b07514a53e5ec46da",
+      "source_fact_keys": [
+        "source_fact:v1:d155a92b51bd067a905b2321e8e3d5f8705648a7cc73ff082960f303c2213f98"
+      ],
+      "source_published_kst": "2026-10-08T10:33+09:00",
+      "source_title": "\"미 검찰, 베네수 마두로 '미국인 고문 혐의' 추가 기소 예정\"",
+      "telegram_core_fact": "CNN에 따르면 당시 마두로 정권은 미국인 12명 이상을 억류했고, 미국 정부는 베네수엘라가 금융 제재 완화 등의 양보를 얻어내고자 미국인을 억류하고 고문했다고 비난해 왔다.",
+      "title": "\"미 검찰, 베네수 마두로 '미국인 고문 혐의' 추가 기소 예정\""
     },
     "title:2960d79bcbdcbe60f4e3a67d": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
@@ -269538,6 +270521,23 @@
       "source": "전자신문",
       "title": "美 금리 인상?…“금 팔지마라 …내년 말 금리 인하, 더 오른다” 믿는 구석 있는 골드만삭스"
     },
+    "title:5f1c74f616c7e7f072b524e7": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261007202800002",
+      "source": "연합뉴스",
+      "source_body_digest": "4bedc6ef3a152fd27f5d5becc755460f90761abb2297afa0337b3fa13a90b3bd",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T10:18+09:00",
+      "source_title": "이억원 \"금리인상기, 정책서민금융 금리 낮추고 공급 확대\" | 연합뉴스",
+      "telegram_core_fact": "이억원 금융위원장은 8일 서민·취약계층을 위해 \"정책서민금융의 금리수준을 낮추고 신상품 출시 등 공급을 지속적으로 확대하겠다\"고 밝혔다.",
+      "title": "이억원 \"금리인상기, 정책서민금융 금리 낮추고 공급 확대\" | 연합뉴스"
+    },
     "title:5f1da59bfd23f240b0e48983": {
       "first_seen_kst": "2026-10-01T16:57:16+09:00",
       "lanes": {
@@ -273140,6 +274140,25 @@
       "source_published_kst": "2026-10-07T08:27+09:00",
       "title": "LS일렉, 대만 최대 석화사와 합작법인 설립…현지 전력 설루션 시장 본격 공략"
     },
+    "title:745162e0bcf1a86bc93036a2": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818735",
+      "source": "뉴시스",
+      "source_body_digest": "c62c0e33a9a4d5f385f141d28395b241be7eae3f57c398b32964e149a72b32a2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:588b7afcfeab07b7171d3c6d439d8fc376bdc8285032cf180ee7786a8a05c695",
+      "source_fact_keys": [
+        "source_fact:v1:6e390f73b412cdc9717a4955b06e64fbbfed127b2fd4a5717f8788f8b013d10b"
+      ],
+      "source_published_kst": "2026-10-08T10:23+09:00",
+      "source_title": "OK금융, 예별손보 새 주인으로…\"종합금융그룹 도약 발판\"",
+      "telegram_core_fact": "OK금융 관계자는 \"동시에 진행 중인 중앙일보 인수의 경우 예별손보 실적 악화에 따른 추가 예산 투입 등으로 당초 계획보다 재정적 부담이 늘어난 상황\"이라며 \"중앙일보 우선협상대상자 선정 시까지 실사에 충실히 참여한다는 방침\"이라고 설명했다.",
+      "title": "OK금융, 예별손보 새 주인으로…\"종합금융그룹 도약 발판\""
+    },
     "title:7455adc81d006833839ccdd6": {
       "first_seen_kst": "2026-09-18T06:33:53+09:00",
       "lanes": {
@@ -274878,6 +275897,26 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003813117",
       "source": "뉴시스",
       "title": "CJ제일제당, 美 ADM과 사료용 아미노산 합작법인 설립 추진"
+    },
+    "title:7f38caf51bb5ea765c43826a": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.fnnews.com/news/202610080457580741",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5ee36832b7ba400bd18fb0a4ffb51507a954d02c84f3b927fcc102cf03075e18",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:24cb394d6e57416cceb1db9f107542f0986aff2271ebe621f9df3722faf2f655",
+      "source_fact_keys": [
+        "source_fact:v1:131f9b35f2bc9ef0285ef14e0555986dbe02df9f7754805a27d0a6048353cda6",
+        "source_fact:v1:9b0c46426731d3193d1de3c36abffb9acc0b3059ac098cda12504ebd4948ed29"
+      ],
+      "source_published_kst": "2026-10-08T05:58+09:00",
+      "source_title": "스페이스X 부도 위험 보험료 사상 최고...\"엔비디아 칩 매수 위해 400억달러 조달\"",
+      "telegram_core_fact": "엔비디아 칩을 구매하기 위해 400억달러(약 53조원)를 조달하기로 했다는 보도가 시장의 부도 대비 보험 비용을 끌어올렸다. 스페이스X가 400억달러 자금 조달을 계획하고 있다는 FT 보도가 CDS 스프레드 급등을 촉발했다.",
+      "title": "스페이스X 부도 위험 보험료 사상 최고...\"엔비디아 칩 매수 위해 400억달러 조달\""
     },
     "title:7f6bc31a6e9fa16168e4b438": {
       "first_seen_kst": "2026-09-29T10:32:56+09:00",
@@ -292385,6 +293424,30 @@
       "source_published_kst": "2026-10-07T11:04+09:00",
       "title": "LG전자, 3분기 영업이익 전년 比 13.5% ↑"
     },
+    "title:e6f9b2d2a9e5f305f17be00f": {
+      "first_seen_kst": "2026-10-08T12:46:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T12:46:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T12:46:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02938886645610952",
+      "source": "이데일리",
+      "source_body_digest": "cb167c2d7e13a9213350eddc4aa886da125a70c20c57ef7fba0eec1d56db3a2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:351169d59871a4555625065b2923eed8c81fd4ecbcd04fd38d1176bd4fecc4e7",
+      "source_fact_keys": [
+        "source_fact:v1:6b4dfba91d64808b73705cdb1fee58a287ab8afdadab5f2c1240d4757fb79342",
+        "source_fact:v1:78b5105e4b949317516256f9341039bb59f07716f15faac795a482a5aba1df68",
+        "source_fact:v1:890d8d5a402417a49fb6655f24ee5cf7985a917ae1b17de499332fbd8e72341e",
+        "source_fact:v1:a4ecc53ddb03d28e6e5bcabd082a9a742c3e3ed6dc88382a26c0eb10ea931812",
+        "source_fact:v1:c9ff5e7bcb47129d61a031edd9fedf9aacad247fc6fa6004d160fe8bb7dc0e63",
+        "source_fact:v1:ebeaa2e3289f1dc3d35b2274653c6f8490b33e27fb17ce1fb7f67864a40575f8"
+      ],
+      "source_published_kst": "2026-10-08T10:10+09:00",
+      "source_title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]",
+      "telegram_core_fact": "9월 무역수지가 예상을 뛰어넘는 큰 폭의 흑자를 기록한 데다, 연말로 갈수록 수출이 집중되는 효과까지 더해지면서 올해 연간 경상수지 흑자 전망치인 4500억달러도 달성 가능할 것이란 전망이다. 한은은 지난 8월 올해 연간 경상수지 흑자 전망치를 기존 2500억달러에서 4500억달러로 대폭 상향한 바 있다.",
+      "title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]"
+    },
     "title:e75e31335f9f8d1eede2529e": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
       "lanes": {
@@ -296464,5 +297527,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-08T12:13:24+09:00"
+  "updated_at_kst": "2026-10-08T12:46:54+09:00"
 }
