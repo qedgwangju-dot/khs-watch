@@ -102,6 +102,12 @@ class YenCarryTargetCurrencyTests(unittest.TestCase):
                     [jpy[-1]], [(float(timestamp), 4.9)], now
                 )
 
+    def test_two_valid_currencies_cannot_confirm_full_three_currency_contagion(self):
+        self.assertTrue(target.target_coverage_complete(3, True))
+        self.assertFalse(target.target_coverage_complete(2, True))
+        self.assertFalse(target.target_coverage_complete(3, False))
+        self.assertFalse(target.target_coverage_complete(0, True))
+
     def test_missing_third_currency_is_explicit_in_alert(self):
         context = {
             "moves": [{"code": "MXN", "change_15m_pct": 0.0,
