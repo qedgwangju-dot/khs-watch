@@ -654,3 +654,14 @@ assert _final_close_tail.rfind("self.episode = None") > _final_close_tail.rfind(
 _handoff_source = inspect.getsource(ks.Watch.save_handoff)
 assert "temp.replace(p)" in _handoff_source, _handoff_source
 print("post_delivery_clean_handoff_regression=true atomic_write=true")
+
+
+# 시세 API가 404/일시 장애인 경우 직전 가격으로 새 사건을 평가하면 거짓 양성이 될 수 있다.
+# 정상 수신된 새 현재가가 있을 때만 평가가 진행되는지 운영 루프를 확인한다.
+_fresh_poll_source = inspect.getsource(ks.Watch.run)
+assert "price_poll_ok = False" in _fresh_poll_source
+assert "price_poll_ok = True" in _fresh_poll_source
+assert "if price_poll_ok:\\n                await self.evaluate()" not in _fresh_poll_source  # 잘못 이스케이프된 패턴 방지
+assert "if price_poll_ok:\n                await self.evaluate()" in _fresh_poll_source, _fresh_poll_source
+assert "price_event_skipped_on_poll_failure" in _fresh_poll_source
+print("failed_price_poll_skip_regression=true")
