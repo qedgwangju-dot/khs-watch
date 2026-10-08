@@ -219,6 +219,11 @@ def validate_rubin_hybrid_notification(text: str) -> None:
             raise ValueError("hybrid alert contains stale wrapper or malformed Unicode")
         if "기술 가능성 확인" not in part or "독립 검증 2곳 아님" not in part:
             raise ValueError("hybrid alert lacks required official/report distinctions")
+        if re.search(r"<b>20\\d{2}</b>|&(?:amp;)?\\#(?:x[0-9a-f]{4,6}|[0-9]{4,7});", part, re.I):
+            raise ValueError("hybrid alert contains split year or literal Unicode escape")
+        if any(tag not in ("a", "b") for tag in
+               re.findall(r"</?([a-z][a-z0-9-]*)\\b", part, re.I)):
+            raise ValueError("hybrid alert has unsupported Telegram HTML markup")
         # Normalize the visible text, not attributes inside links.
         without_anchors = re.sub(r'<a\s+href="[^"]+">.*?</a>', "", part, flags=re.S)
         visible = html.unescape(re.sub(r"<[^>]+>", "", without_anchors))
