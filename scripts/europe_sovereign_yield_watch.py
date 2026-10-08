@@ -457,6 +457,17 @@ def comparable_market_spread(latest: dict[str, Obs], stale: list[str]) -> float 
     return (fr.value - de.value) * 100.0
 
 
+def coverage_by_country(latest: dict[str, Obs], stale: list[str]) -> dict[str, bool]:
+    def ok(key: str) -> bool:
+        return key in latest and key not in stale
+    return {
+        "프랑스": ok("fr10") or ok("fr_mkt"),
+        "독일": ok("de10") or ok("de_mkt"),
+        "이탈리아": ok("it10"),
+        "영국": ok("uk10") or ok("uk_mkt"),
+    }
+
+
 def active_prev(state: dict, key: str) -> bool:
     return bool((state.get("active") or {}).get(key, False))
 
@@ -725,11 +736,24 @@ def main() -> int:
                 clear_summary=f"프랑스-독일 10년 시장금리차 {level:.0f}bp 아래 ({spread_bp:.1f}bp)",
             )
 
+    coverage = coverage_by_country(latest, stale)
+    enough_coverage = sum(coverage.values()) >= 2
+    bad_streak = 0 if enough_coverage else int(state.get("source_fail_streak") or 0) + 1
+    health_alert = (
+        bad_streak >= 4
+        and not state.get("coverage_outage_alerted", False)
+        and not events
+    )
+
     next_state = {
         "last_checked_kst": now.isoformat(timespec="seconds"),
         "active": active,
         "history": history,
-        "source_fail_streak": 0 if latest else int(state.get("source_fail_streak") or 0) + 1,
+        "source_fail_streak": bad_streak,
+        "coverage_outage_alerted": bool(
+            health_alert or (not enough_coverage and state.get("coverage_outage_alerted", False))
+        ),
+        "country_coverage": coverage,
         "last_source_dates": {k: v.date for k, v in latest.items()},
         "last_values": {k: v.value for k, v in latest.items()},
         "last_change_basis": change_basis,
@@ -744,6 +768,9 @@ def main() -> int:
         f"- 정상 소스: {', '.join(sorted(latest)) if latest else '없음'}",
         f"- 후행 소스: {', '.join(stale) if stale else '없음'}",
         f"- 신규/해제 경보: {len(events)}건",
+        f"- 유효 국가별 자료: {sum(coverage.values())}/4개국",
+        f"- 데이터 부족 연속: {bad_streak}회",
+        f"- 수집 장애 경보: {'예' if health_alert else '아니오'}",
     ]
     for k, v in latest.items():
         status.append(f"- {v.label}: {v.value:.3f}% ({v.date})")
@@ -757,6 +784,28 @@ def main() -> int:
         title, body, detail = build_alert(latest, changes, spread_bp, events, stale, errors, now)
         TITLE.write_text(title + "\n", encoding="utf-8")
         ALERT.write_text(body.strip() + "\n", encoding="utf-8")
+        DETAIL.write_text(json.dumps(detail, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    elif health_alert:
+        # Distinguish a monitoring failure from a genuine market stress event.
+        title = "유럽 국채금리 감시 — 자료 수집 장애"
+        body = "\n".join([
+            "🟠 [유럽 국채금리 감시 장애] 자료 부족 — 금리 급등 경보가 아닙니다.",
+            "",
+            f"■ 조회: {now.strftime('%Y-%m-%d %H:%M')} 한국시간",
+            f"• 정상 확인 국가 {sum(coverage.values())}/4개국, 연속 부족 {bad_streak}회",
+            "• 확인되지 않은 수치로 금리차·급등을 계산하지 않았습니다.",
+            "• 시장 경보가 지연될 수 있으므로 공식 자료를 직접 확인해 주십시오.",
+            "",
+            "■ 자료",
+            "• Banque de France TEC10: https://www.banque-france.fr",
+            f"• Deutsche Bundesbank 10Y: {DE_PAGE}",
+            f"• Bank of England IUDMNPY: {UK_VIEW}",
+            f"• Italy 10Y Trading Economics 보조 시장자료: {MARKET_URLS['it10']}",
+        ])
+        detail = {"kind": "source_health", "country_coverage": coverage,
+                  "fail_streak": bad_streak, "checked_at_kst": now.isoformat(timespec="seconds")}
+        TITLE.write_text(title + "\n", encoding="utf-8")
+        ALERT.write_text(body + "\n", encoding="utf-8")
         DETAIL.write_text(json.dumps(detail, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return 0
 
