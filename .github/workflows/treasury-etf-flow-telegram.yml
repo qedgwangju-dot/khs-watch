@@ -82,6 +82,7 @@ jobs:
 
           test_state = {"last_delivery": {"treasury_date":"2026-10-07", "message_ids":[425], "bot_username":"khs8879887988798879_bot"}}
           assert watch._us_latest_weekday(datetime(2026,10,8,11,0,tzinfo=ZoneInfo("Asia/Seoul"))) == "2026-10-07"
+          assert watch._us_latest_weekday(datetime(2026,10,11,8,30,tzinfo=ZoneInfo("Asia/Seoul"))) == "2026-10-09"
           assert watch._delivery_complete_for_date(test_state,"2026-10-07")
           assert not watch._delivery_complete_for_date(test_state,"2026-10-08")
           valid = (
@@ -122,7 +123,25 @@ jobs:
           PY
 
       - name: Run compact Treasury plus credit ETF monitor and send Telegram
-        run: python scripts/treasury_credit_flow_watch_refinancing.py
+        run: |
+          set -o pipefail
+          mkdir -p out
+          python scripts/treasury_credit_flow_watch_refinancing.py | tee out/treasury_runtime_status.log
+          if grep -q 'report_withheld' out/treasury_runtime_status.log; then
+            echo "::warning::Treasury daily report withheld: official source dates or fields are not yet aligned."
+            echo "공식자료가 아직 일치하지 않아 투자 보고를 보류했습니다. 실제 Telegram 송출은 하지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+          elif grep -q 'treasury_report_validation_only=true' out/treasury_runtime_status.log; then
+            echo "실제 공개자료 조회 및 한국어 보고서 검증 완료. 검증 실행이므로 Telegram 미전송." >> "$GITHUB_STEP_SUMMARY"
+          elif grep -Eq 'duplicate_delivery_suppressed=true|same_market_day_delivery_suppressed=true' out/treasury_runtime_status.log; then
+            echo "같은 미국 영업일 보고가 이미 전송되어 중복을 차단했습니다." >> "$GITHUB_STEP_SUMMARY"
+          elif grep -q 'telegram_delivery_confirmed=true' out/treasury_runtime_status.log; then
+            echo "Telegram API 전송 응답 확인. 상세 message_id는 실행 로그와 상태 파일을 참조하십시오." >> "$GITHUB_STEP_SUMMARY"
+          elif grep -q 'treasury_fallback_noop=true' out/treasury_runtime_status.log; then
+            echo "해당 시간대에는 일일 보고 재조회가 필요하지 않아 종료했습니다." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "::error::Treasury watcher exited without an explicit delivery, duplicate, waiting, or validation result."
+            exit 1
+          fi
 
       - name: Publish summary
         if: always()
@@ -164,6 +183,7 @@ jobs:
           path: |
             out/treasury_etf_flow_status.md
             out/treasury_etf_flow_telegram.txt
+            out/treasury_runtime_status.log
             data/treasury_etf_flow_state.json
           if-no-files-found: ignore
           retention-days: 14
