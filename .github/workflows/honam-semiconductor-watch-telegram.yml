@@ -178,6 +178,51 @@ jobs:
           echo "Failed to persist Honam watcher state after retries"
           exit 1
 
+      - name: Correct confirmed prior event message in place
+        if: github.event_name == 'push' && contains(github.event.head_commit.message, '[honam-msg-correction]')
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.HONAM_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.HONAM_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import json, os, pathlib, urllib.error, urllib.parse, urllib.request
+          token = os.environ['TELEGRAM_BOT_TOKEN'].strip()
+          chat_id = os.environ['TELEGRAM_CHAT_ID'].strip()
+          expected = os.environ['EXPECTED_TELEGRAM_BOT_USERNAME'].strip().lstrip('@')
+          with urllib.request.urlopen(f'https://api.telegram.org/bot{token}/getMe',timeout=25) as r:
+              me=json.loads(r.read().decode('utf-8'))
+          actual=str((me.get('result') or {}).get('username') or '')
+          if not me.get('ok') or actual.lower()!=expected.lower():
+              raise RuntimeError('Telegram correction bot identity mismatch')
+          data=json.loads(pathlib.Path('data/honam_alert_corrections.json').read_text(encoding='utf-8'))
+          results=[]
+          for entry in data.get('corrections', []):
+              if str(entry.get('bot') or '').lower()!=actual.lower():
+                  raise RuntimeError('Correction target bot mismatch')
+              mid=int(entry['message_id'])
+              text=str(entry.get('text_html') or '')
+              if not text or len(text)>3500:
+                  raise RuntimeError('Correction text invalid')
+              body=urllib.parse.urlencode({'chat_id':chat_id,'message_id':mid,'text':text,'parse_mode':'HTML','disable_web_page_preview':'true'}).encode('utf-8')
+              req=urllib.request.Request(f'https://api.telegram.org/bot{token}/editMessageText',data=body,method='POST')
+              try:
+                  with urllib.request.urlopen(req,timeout=30) as r:
+                      response=json.loads(r.read().decode('utf-8'))
+              except urllib.error.HTTPError as exc:
+                  error=exc.read().decode('utf-8',errors='replace')
+                  if 'message is not modified' in error:
+                      response={'ok':True,'already_corrected':True}
+                  else:
+                      raise RuntimeError(f'Telegram edit failed HTTP {exc.code}: {error[:200]}') from exc
+              if not response.get('ok'):
+                  raise RuntimeError('Telegram rejected message correction')
+              updated=(response.get('result') or {}).get('message_id')
+              if updated is not None and int(updated)!=mid:
+                  raise RuntimeError('Unexpected edited message ID')
+              results.append({'id':mid,'already_corrected':bool(response.get('already_corrected'))})
+          pathlib.Path('out/honam_alert_correction_result.json').write_text(json.dumps({'status':'confirmed','bot':actual,'messages':results},ensure_ascii=False)+'\n',encoding='utf-8')
+          print('honam_message_corrected=true ids='+str([x['id'] for x in results]))
+          PY
       - name: Upload verification artifacts
         if: always()
         uses: actions/upload-artifact@v4
@@ -189,5 +234,6 @@ jobs:
             out/honam_semiconductor_telegram_chunks.json
             out/honam_semiconductor_pending_state.json
             out/honam_semiconductor_telegram_confirmed.json
+            out/honam_alert_correction_result.json
           if-no-files-found: ignore
           retention-days: 14
