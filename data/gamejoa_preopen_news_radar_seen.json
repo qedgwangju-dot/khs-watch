@@ -304,6 +304,27 @@
       "telegram_core_fact": "RTT 뉴스와 마켓워치, dpa 통신에 따르면 독일 연방통계청은 7일 2026년 8월 산업생산이 계절 조정치로 전월 대비 2.0% 증대했다고 발표했다. 유럽 최대 경제국 독일의 8월 산업생산은 건설과 기계·설비 생산 호조에 힘입어 17개월 만에 가장 큰 폭으로 증가했다.",
       "title": "8월 유로존 산업생산 2.0%↑…\"건설 호조에 17개월 만에 최대폭\""
     },
+    "core:092aa63b19085536fb914cf9": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171510",
+      "source": "매일경제",
+      "source_body_digest": "98e315a1e0bde6d4ba836cd3ed43d2b4be4f8f192c018697ed98c3377ea6c64c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:57a7de78d116bf21c6713fe3d8399ba9e14331b3d74aa8f6e753c6c58d575546",
+      "source_fact_keys": [
+        "source_fact:v1:1d529d048ed9114fb88e52d78169575ec13bae01b8ebcd9653ad655b9036c6f9",
+        "source_fact:v1:83a7fca9904baea5ad86dc3dda5595da99175d73b63d06c91e92deb2d11fd755",
+        "source_fact:v1:9aed25260c149ec98856c61c292541d961d0f0ec6a44dce77adbe077849c0c7b"
+      ],
+      "source_published_kst": "2026-10-08T08:56+09:00",
+      "source_title": "효성중공업, 국내 최초 2GW급 HVDC 성능 검증 설비 구축",
+      "telegram_core_fact": "효성중공업이 국내 최초로 독자기술 기반의 2기가와트(GW)급 초고압직류송전(HVDC) 성능검증 설비를 구축하며 대용량 전력망 기술 국산화에 박차를 가한다.",
+      "title": "효성중공업, 국내 최초 2GW급 HVDC 성능 검증 설비 구축"
+    },
     "core:0962885657c523ce55e29020": {
       "first_seen_kst": "2026-10-07T22:00:35+09:00",
       "lanes": {
@@ -844,6 +865,29 @@
       "source_title": "셀리드, 코로나19 백신 적용 항원 플랫폼 기술…중국·인도 특허 등록",
       "telegram_core_fact": "\"셀리드의 기술력을 바탕으로 국산 코로나19 백신 상용화를 달성하고 백신 주권 확보에 기여하겠다\"고 덧붙였다.",
       "title": "셀리드, 코로나19 백신 적용 항원 플랫폼 기술…중국·인도 특허 등록"
+    },
+    "core:139f44e5a9c1438c6eb1cd77": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02515766645610952&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a8ff846e35f1aef35e042e5c93660ed577ac2f80db1f5253c4e2e375fcdbe468",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b6c96b1b96884bc0e8f008ee659682f1f091d40099d0949de6a0c4fe141d5785",
+      "source_fact_keys": [
+        "source_fact:v1:080d2a2c9bca050cf1a692b5d83dc73af995194a819216c1d887132ddcfa9743",
+        "source_fact:v1:256f9c63dc84cf777db66c85e7ef9f52618396d34f75c801e876cda77ecc988a",
+        "source_fact:v1:9de54b5b6cf04eb2f4d0bf69caa0c1d92a72f3c603a877dceeaea51741b43c99",
+        "source_fact:v1:cb177970770c4f8d43bcff8124763ebd6cadb17263c03d35f616e21e203dff16",
+        "source_fact:v1:e2911aea8e56fd1d25d3c993869231b0cf2ecd72a10bd6c94da734bab2c112f5"
+      ],
+      "source_published_kst": "2026-10-08T08:21+09:00",
+      "source_title": "미국, '對중국 첨단기술 투자규제' 위반 첫 벌금 부과",
+      "telegram_core_fact": "미국 재무부가 대(對)중국 첨단기술 투자 규제 제도 도입 이후 처음으로 위반 사례를 적발해 벌금을 부과했다고 홍콩 사우스차이나모닝포스트(SCMP)가 7일(현지시간) 보도했다.",
+      "title": "미국, '對중국 첨단기술 투자규제' 위반 첫 벌금 부과"
     },
     "core:1516b6925096a8cfe8b66ba6": {
       "first_seen_kst": "2026-10-08T02:26:35+09:00",
@@ -2898,6 +2942,23 @@
       "telegram_core_fact": "금양이 허위 세금계산서 등을 이용해 매출을 부풀리고 몽골법인 관련 회계처리를 잘못한 혐의로 76억3300만원의 과징금을 부과받았다.",
       "title": "금양 회계위반 과징금 76억3300만원⋯대표 등 6명도 제재"
     },
+    "core:53865c9889cd9020859b6098": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633734",
+      "source": "이투데이",
+      "source_body_digest": "47a3400784f1e515bc44371a85f62a900252030d13b15128f450e70daa5fb690",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T09:27+09:00",
+      "source_title": "LG엔솔, 3Q 매출 9.6조 '역대 최대'…ESS·전기차 쌍끌이 [종합]",
+      "telegram_core_fact": "LG에너지솔루션이 올해 3분기 9조6000억원이 넘는 매출을 올리며 분기 기준 역대 최대 실적을 달성했다.",
+      "title": "LG엔솔, 3Q 매출 9.6조 '역대 최대'…ESS·전기차 쌍끌이 [종합]"
+    },
     "core:53a99dab6f30a55364851675": {
       "first_seen_kst": "2026-10-07T16:57:09+09:00",
       "lanes": {
@@ -2929,6 +2990,23 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-07T14:51+09:00",
       "title": "한투증권, 글로벌 퀀트 운용사 AQR과 파트너십"
+    },
+    "core:5499ce597067e76809ee7aee": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/08/2026100808403357222",
+      "source": "머니투데이",
+      "source_body_digest": "7cca8aa66e91d9be833577164746b7dbc2cbb45ce3473eba43e099bf0d82995c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T08:51+09:00",
+      "source_title": "美 10년물 국채 입찰 호조…강한 수요 확인, 국채수익률 상승폭 축소",
+      "telegram_core_fact": "30년물 국채수익률도 장 중 한 때 5.704%로 급등하며 2002년 5월 이후 최고 수준을 보였으나 10년물 국채 입찰 이후 상승폭을 축소해 전날 대비 0.028%포인트 오른 5.673%로 거래를 마쳤다.",
+      "title": "美 10년물 국채 입찰 호조…강한 수요 확인, 국채수익률 상승폭 축소"
     },
     "core:55308836d2a3338ca09796f6": {
       "first_seen_kst": "2026-10-08T06:10:43+09:00",
@@ -5545,6 +5623,23 @@
       "telegram_core_fact": "2분기 실적은 예상치를 웃돌았지만, 연간 비GAAP EPS 가이던스를 11.20~11.90달러로 제시해 시장 예상치 11.71달러를 밑돌며 실망감이 커졌습니다.",
       "title": "컨스텔레이션브랜드, 연간 EPS 가이던스 시장 기대 하회에 투자심리 위축"
     },
+    "core:a3b3179988599a7ab0075526": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896460",
+      "source": "헤럴드경제",
+      "source_body_digest": "226a0f050b9734deacf687ca04053e376a7a7bb8156e37ca0c5298a66e4bf285",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T09:15+09:00",
+      "source_title": "LG엔솔, 3분기 매출 9.6조 ‘분기 사상 최대’…영업익도 어닝 서프라이즈",
+      "telegram_core_fact": "LG에너지솔루션은 연결 기준 3분기 매출 9조6434억원, 영업이익 7560억원을 기록했다고 8일 잠정 공시했다.",
+      "title": "LG엔솔, 3분기 매출 9.6조 ‘분기 사상 최대’…영업익도 어닝 서프라이즈"
+    },
     "core:a42bd94b3c576fd3da1804f5": {
       "first_seen_kst": "2026-10-07T21:47:30+09:00",
       "lanes": {
@@ -5636,6 +5731,27 @@
       "source_title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\"",
       "telegram_core_fact": "스콧 베선트 미국 재무장관이 최근 물가와 장기 국채금리 급등의 주된 원인을 이란전쟁에 따른 에너지 충격으로 진단하며 전쟁이 끝나면 유가와 물가, 국채금리가 함께 내려갈 것이라고 전망했다.",
       "title": "베선트 美 재무 \"이란전쟁 끝나면 유가·물가·국채금리 내려갈 것\""
+    },
+    "core:a626e1a5e21f13e6084c430f": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818483",
+      "source": "뉴시스",
+      "source_body_digest": "b6aad167192e0a4722cc6e728bbd2798900e621a62eee7faeb42915a55fb8ab3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c54996d3b004b6b8999c500e4afd564376932a502adca4728a57f445061ef8e",
+      "source_fact_keys": [
+        "source_fact:v1:892bcd7c9c3bbe1dde37faca9dc085403fc8920333995544a33e1b4cbc45ec44",
+        "source_fact:v1:9ba89d36be5475974fbb2f14ac6827be4597b07d79ba8519a97e09c07a49d397",
+        "source_fact:v1:a3ad1a0dc43e6d1e38539c663d542956a4568da42da2e428a418afeb106619e5"
+      ],
+      "source_published_kst": "2026-10-08T09:30+09:00",
+      "source_title": "분기 영업익 첫 100조 돌파한 삼성전자…차세대 HBM·공급 확대에 속도",
+      "telegram_core_fact": "삼성전자가 올해 3분기 영업이익 100조원을 처음 넘어서며 역대 최대 분기 실적을 기록했다.",
+      "title": "분기 영업익 첫 100조 돌파한 삼성전자…차세대 HBM·공급 확대에 속도"
     },
     "core:a6ab8402372e26472f5a41f6": {
       "first_seen_kst": "2026-10-08T02:26:35+09:00",
@@ -13428,6 +13544,23 @@
       "telegram_core_fact": "일론 머스크가 이끄는 스페이스X가 엔비디아의 칩을 사기 위해 약 300억달러 회사채를 포함, 400억달러(약 54조원)의 자금 조달에 나설 계획이다. 마켓워치에 따르면, 400억달러는 스페이스X의 올해 예상 매출 445억달러에 거의 맞먹는 규모이다.",
       "title": "\"엔비디아칩 사려고 54조원 빚낸다\"…스페이스X, 400억달러 조달 추진"
     },
+    "event:8980672628ca904387dde2ee": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896460",
+      "source": "헤럴드경제",
+      "source_body_digest": "226a0f050b9734deacf687ca04053e376a7a7bb8156e37ca0c5298a66e4bf285",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T09:15+09:00",
+      "source_title": "LG엔솔, 3분기 매출 9.6조 ‘분기 사상 최대’…영업익도 어닝 서프라이즈",
+      "telegram_core_fact": "LG에너지솔루션은 연결 기준 3분기 매출 9조6434억원, 영업이익 7560억원을 기록했다고 8일 잠정 공시했다.",
+      "title": "LG엔솔, 3분기 매출 9.6조 ‘분기 사상 최대’…영업익도 어닝 서프라이즈"
+    },
     "event:89a487c8295ea75a26c50b66": {
       "first_seen_kst": "2026-10-02T11:29:29+09:00",
       "lanes": {
@@ -15219,25 +15352,23 @@
     "event:c158b090c5d842f8525a5d6f": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
       "lanes": {
-        "live": "2026-10-08T09:17:31+09:00"
+        "live": "2026-10-08T09:33:54+09:00"
       },
-      "last_seen_kst": "2026-10-08T09:17:31+09:00",
-      "link": "https://www.edaily.co.kr/news/read?newsid=02400966645610952&parentid=02597766645610952&gubun=E",
-      "source": "이데일리",
-      "source_body_digest": "8b5bb8a4f015093c4dca9050cd85e30e43b4430e43c3be6df9636aedc152c7a8",
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818483",
+      "source": "뉴시스",
+      "source_body_digest": "b6aad167192e0a4722cc6e728bbd2798900e621a62eee7faeb42915a55fb8ab3",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:eb83d75667f93a6c9a6569077831979e1b50290d7c2e7fa2554527eff91bfa28",
+      "source_fact_identity": "source_facts:v1:2c54996d3b004b6b8999c500e4afd564376932a502adca4728a57f445061ef8e",
       "source_fact_keys": [
-        "source_fact:v1:0afc35f64e1aacad22d3f5fe39c826b774491a00bde7bb0b84184eca42b4a42d",
-        "source_fact:v1:59261eb5137b0ad7172dc251df83593ef5f0d55a50cba2c58b661d5ce4bcd384",
-        "source_fact:v1:75c0c8e9fbb531bf980236309683b6209da872de60eae39ac7f5a24a12214c21",
-        "source_fact:v1:8475ff1fc70de3c71b00fd203dacef48ff3330750b91e29a9804a6e5e9fdf16f",
-        "source_fact:v1:a73fea8a0d323b4eddf3646d3c5e01d3fca43a1313d9064b54e577de8714a60e"
+        "source_fact:v1:892bcd7c9c3bbe1dde37faca9dc085403fc8920333995544a33e1b4cbc45ec44",
+        "source_fact:v1:9ba89d36be5475974fbb2f14ac6827be4597b07d79ba8519a97e09c07a49d397",
+        "source_fact:v1:a3ad1a0dc43e6d1e38539c663d542956a4568da42da2e428a418afeb106619e5"
       ],
-      "source_published_kst": "2026-10-08T07:46+09:00",
-      "source_title": "[속보]\"100조 벽 깼다\" 삼성전자, 영업익 107조 '역대 최대'",
-      "telegram_core_fact": "삼성전자는 올해 3분기 연결 기준 잠정 영업이익이 107조4000억원으로 집계됐다고 8일 공시했다.",
-      "title": "[속보]\"100조 벽 깼다\" 삼성전자, 영업익 107조 '역대 최대'"
+      "source_published_kst": "2026-10-08T09:30+09:00",
+      "source_title": "분기 영업익 첫 100조 돌파한 삼성전자…차세대 HBM·공급 확대에 속도",
+      "telegram_core_fact": "삼성전자가 올해 3분기 영업이익 100조원을 처음 넘어서며 역대 최대 분기 실적을 기록했다.",
+      "title": "분기 영업익 첫 100조 돌파한 삼성전자…차세대 HBM·공급 확대에 속도"
     },
     "event:c1e317ded2d88411e7e58d30": {
       "first_seen_kst": "2026-09-28T05:09:16+09:00",
@@ -19688,6 +19819,27 @@
       "telegram_core_fact": "현재 복수의 부동산 자문사를 대상으로 매각 주관사 선정 절차를 진행 중인 초기 단계로, 입찰제안요청서(RFP)는 아직 배포하지 않았다.",
       "title": "미래운용, '스테이트타워 남산' 매각 검토…KIC 등 입주"
     },
+    "fact:15872aaf172b42d1fc2dd4ad": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818483",
+      "source": "뉴시스",
+      "source_body_digest": "b6aad167192e0a4722cc6e728bbd2798900e621a62eee7faeb42915a55fb8ab3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c54996d3b004b6b8999c500e4afd564376932a502adca4728a57f445061ef8e",
+      "source_fact_keys": [
+        "source_fact:v1:892bcd7c9c3bbe1dde37faca9dc085403fc8920333995544a33e1b4cbc45ec44",
+        "source_fact:v1:9ba89d36be5475974fbb2f14ac6827be4597b07d79ba8519a97e09c07a49d397",
+        "source_fact:v1:a3ad1a0dc43e6d1e38539c663d542956a4568da42da2e428a418afeb106619e5"
+      ],
+      "source_published_kst": "2026-10-08T09:30+09:00",
+      "source_title": "분기 영업익 첫 100조 돌파한 삼성전자…차세대 HBM·공급 확대에 속도",
+      "telegram_core_fact": "삼성전자가 올해 3분기 영업이익 100조원을 처음 넘어서며 역대 최대 분기 실적을 기록했다.",
+      "title": "분기 영업익 첫 100조 돌파한 삼성전자…차세대 HBM·공급 확대에 속도"
+    },
     "fact:158ede7b75051cc41a22a95a": {
       "first_seen_kst": "2026-10-07T20:28:48+09:00",
       "lanes": {
@@ -21696,6 +21848,29 @@
       ],
       "source_published_kst": "2026-10-06T16:40+09:00",
       "title": "알테오젠, 국민성장펀드·스카이레이크서 2000억원 투자 유치"
+    },
+    "fact:295e23af56ab6208dc4febbc": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02515766645610952&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a8ff846e35f1aef35e042e5c93660ed577ac2f80db1f5253c4e2e375fcdbe468",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b6c96b1b96884bc0e8f008ee659682f1f091d40099d0949de6a0c4fe141d5785",
+      "source_fact_keys": [
+        "source_fact:v1:080d2a2c9bca050cf1a692b5d83dc73af995194a819216c1d887132ddcfa9743",
+        "source_fact:v1:256f9c63dc84cf777db66c85e7ef9f52618396d34f75c801e876cda77ecc988a",
+        "source_fact:v1:9de54b5b6cf04eb2f4d0bf69caa0c1d92a72f3c603a877dceeaea51741b43c99",
+        "source_fact:v1:cb177970770c4f8d43bcff8124763ebd6cadb17263c03d35f616e21e203dff16",
+        "source_fact:v1:e2911aea8e56fd1d25d3c993869231b0cf2ecd72a10bd6c94da734bab2c112f5"
+      ],
+      "source_published_kst": "2026-10-08T08:21+09:00",
+      "source_title": "미국, '對중국 첨단기술 투자규제' 위반 첫 벌금 부과",
+      "telegram_core_fact": "미국 재무부가 대(對)중국 첨단기술 투자 규제 제도 도입 이후 처음으로 위반 사례를 적발해 벌금을 부과했다고 홍콩 사우스차이나모닝포스트(SCMP)가 7일(현지시간) 보도했다.",
+      "title": "미국, '對중국 첨단기술 투자규제' 위반 첫 벌금 부과"
     },
     "fact:29cb5a93eac5cfe540eb6e34": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
@@ -26660,6 +26835,33 @@
       "source_published_kst": "2026-10-07T09:30+09:00",
       "title": "플로리젠로보틱스-IDQ, 국내 최초 '양자보안 순찰로봇 관제시스템' 공동 개발"
     },
+    "fact:596cae0988b9526b554156e0": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817944",
+      "source": "뉴시스",
+      "source_body_digest": "405147839b64c3df20bfd2e54fe5a5366f71320af07c91413a7211d07396397c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f02c5e051e4d798a3e63c77279a01af356c4f2e1a0501923b994413978b2c30a",
+      "source_fact_keys": [
+        "source_fact:v1:055cbd7a38fb30f1c2ba38261e9e367a4651bcafc3228f211853148824b3e60c",
+        "source_fact:v1:0a736374682230ea5b38ee5eb009821f078900a17a0e24c4b5afd556a95329d3",
+        "source_fact:v1:1ba00f25971ff54a30ccb5def44ca53448ca3f66c3ff605f101d8afa9680ed4d",
+        "source_fact:v1:32772f195472a81725338f6629b58132366311d50593613c397bbb5e4587528e",
+        "source_fact:v1:3a6d8257230d4b9ba4c8d9d1bac6c867286e410080ceaa1e86ccdcf92403f010",
+        "source_fact:v1:3a7cb468c9f170c36d611bb3bb299665e71c897c55c674d664025d658890ec7a",
+        "source_fact:v1:491e62220428351fae1a9fdef98a939a03ed1e57e1368b54696d2f6663756eb2",
+        "source_fact:v1:6cfaca134d6ef6658838b63adbd9a3e93466cbb9517666cea1fcb70d885cde8c",
+        "source_fact:v1:98ecdb3702a5a3656f9673df4a13aab74a317943c815ec39c57eafd470427fa3"
+      ],
+      "source_published_kst": "2026-10-08T06:42+09:00",
+      "source_title": "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑",
+      "telegram_core_fact": "한국콜마 2분기 영업이익은 1103억원으로 전년비 17.3% 증가했습니다.",
+      "title": "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑"
+    },
     "fact:5980670c6f654748ebab7ff1": {
       "first_seen_kst": "2026-10-06T00:11:03+09:00",
       "lanes": {
@@ -26862,6 +27064,27 @@
       ],
       "source_published_kst": "2026-10-06T17:53+09:00",
       "title": "[단독] 2년前 문제 된 공사방식 또 꺼낸 대우건설…업계 \"안전성 우려\""
+    },
+    "fact:5d1043f89339619ddf7083c1": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171510",
+      "source": "매일경제",
+      "source_body_digest": "98e315a1e0bde6d4ba836cd3ed43d2b4be4f8f192c018697ed98c3377ea6c64c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:57a7de78d116bf21c6713fe3d8399ba9e14331b3d74aa8f6e753c6c58d575546",
+      "source_fact_keys": [
+        "source_fact:v1:1d529d048ed9114fb88e52d78169575ec13bae01b8ebcd9653ad655b9036c6f9",
+        "source_fact:v1:83a7fca9904baea5ad86dc3dda5595da99175d73b63d06c91e92deb2d11fd755",
+        "source_fact:v1:9aed25260c149ec98856c61c292541d961d0f0ec6a44dce77adbe077849c0c7b"
+      ],
+      "source_published_kst": "2026-10-08T08:56+09:00",
+      "source_title": "효성중공업, 국내 최초 2GW급 HVDC 성능 검증 설비 구축",
+      "telegram_core_fact": "효성중공업이 국내 최초로 독자기술 기반의 2기가와트(GW)급 초고압직류송전(HVDC) 성능검증 설비를 구축하며 대용량 전력망 기술 국산화에 박차를 가한다.",
+      "title": "효성중공업, 국내 최초 2GW급 HVDC 성능 검증 설비 구축"
     },
     "fact:5d21fb9b070cfebb94a724b6": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
@@ -47763,6 +47986,27 @@
       "source": "연합뉴스",
       "title": "프락시스 CEO \"서울 모처에 디지털국가 대사관 짓겠다\" | 연합뉴스"
     },
+    "link:1d80ba5f1b59e25ae3080d43": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171510",
+      "source": "매일경제",
+      "source_body_digest": "98e315a1e0bde6d4ba836cd3ed43d2b4be4f8f192c018697ed98c3377ea6c64c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:57a7de78d116bf21c6713fe3d8399ba9e14331b3d74aa8f6e753c6c58d575546",
+      "source_fact_keys": [
+        "source_fact:v1:1d529d048ed9114fb88e52d78169575ec13bae01b8ebcd9653ad655b9036c6f9",
+        "source_fact:v1:83a7fca9904baea5ad86dc3dda5595da99175d73b63d06c91e92deb2d11fd755",
+        "source_fact:v1:9aed25260c149ec98856c61c292541d961d0f0ec6a44dce77adbe077849c0c7b"
+      ],
+      "source_published_kst": "2026-10-08T08:56+09:00",
+      "source_title": "효성중공업, 국내 최초 2GW급 HVDC 성능 검증 설비 구축",
+      "telegram_core_fact": "효성중공업이 국내 최초로 독자기술 기반의 2기가와트(GW)급 초고압직류송전(HVDC) 성능검증 설비를 구축하며 대용량 전력망 기술 국산화에 박차를 가한다.",
+      "title": "효성중공업, 국내 최초 2GW급 HVDC 성능 검증 설비 구축"
+    },
     "link:1d92c31641fc8bca4f24138d": {
       "first_seen_kst": "2026-10-06T01:41:59+09:00",
       "lanes": {
@@ -54942,6 +55186,33 @@
       "telegram_core_fact": "대전지역 업체들이 개발한 초소형 위성 '대전샛'이 한국형 발사체 누리호에 실려 우주로 향한 가운데 위성의 교신 성공 여부에 관심이 높아지고 있다.",
       "title": "누리호 5차 발사…대전 기업 개발 '대전샛' 교신 성공할까"
     },
+    "link:47377d4f7abd30031c278df4": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817944",
+      "source": "뉴시스",
+      "source_body_digest": "405147839b64c3df20bfd2e54fe5a5366f71320af07c91413a7211d07396397c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f02c5e051e4d798a3e63c77279a01af356c4f2e1a0501923b994413978b2c30a",
+      "source_fact_keys": [
+        "source_fact:v1:055cbd7a38fb30f1c2ba38261e9e367a4651bcafc3228f211853148824b3e60c",
+        "source_fact:v1:0a736374682230ea5b38ee5eb009821f078900a17a0e24c4b5afd556a95329d3",
+        "source_fact:v1:1ba00f25971ff54a30ccb5def44ca53448ca3f66c3ff605f101d8afa9680ed4d",
+        "source_fact:v1:32772f195472a81725338f6629b58132366311d50593613c397bbb5e4587528e",
+        "source_fact:v1:3a6d8257230d4b9ba4c8d9d1bac6c867286e410080ceaa1e86ccdcf92403f010",
+        "source_fact:v1:3a7cb468c9f170c36d611bb3bb299665e71c897c55c674d664025d658890ec7a",
+        "source_fact:v1:491e62220428351fae1a9fdef98a939a03ed1e57e1368b54696d2f6663756eb2",
+        "source_fact:v1:6cfaca134d6ef6658838b63adbd9a3e93466cbb9517666cea1fcb70d885cde8c",
+        "source_fact:v1:98ecdb3702a5a3656f9673df4a13aab74a317943c815ec39c57eafd470427fa3"
+      ],
+      "source_published_kst": "2026-10-08T06:42+09:00",
+      "source_title": "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑",
+      "telegram_core_fact": "한국콜마 2분기 영업이익은 1103억원으로 전년비 17.3% 증가했습니다.",
+      "title": "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑"
+    },
     "link:4745b98705b35f5608e88fbd": {
       "first_seen_kst": "2026-09-27T12:02:47+09:00",
       "lanes": {
@@ -55476,6 +55747,23 @@
       "source": "이데일리",
       "source_event_identity": "",
       "title": "경영권 내려놓은 차상훈 대표 'APB-R3'로 'SAFA' 가치 증명할까[화제의 바이오人]"
+    },
+    "link:4a8762786b178ed8fcd882e7": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896460",
+      "source": "헤럴드경제",
+      "source_body_digest": "226a0f050b9734deacf687ca04053e376a7a7bb8156e37ca0c5298a66e4bf285",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T09:15+09:00",
+      "source_title": "LG엔솔, 3분기 매출 9.6조 ‘분기 사상 최대’…영업익도 어닝 서프라이즈",
+      "telegram_core_fact": "LG에너지솔루션은 연결 기준 3분기 매출 9조6434억원, 영업이익 7560억원을 기록했다고 8일 잠정 공시했다.",
+      "title": "LG엔솔, 3분기 매출 9.6조 ‘분기 사상 최대’…영업익도 어닝 서프라이즈"
     },
     "link:4aa5b5a13e7b2a824788bbb9": {
       "first_seen_kst": "2026-10-07T18:58:51+09:00",
@@ -66118,6 +66406,23 @@
       "source": "머니투데이",
       "title": "씨비에이파트너스-마컴아시아, 'GoIPO 나스닥 세미나 2026' 성료"
     },
+    "link:8b548cb40f6516f9256eb2c4": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/08/2026100808403357222",
+      "source": "머니투데이",
+      "source_body_digest": "7cca8aa66e91d9be833577164746b7dbc2cbb45ce3473eba43e099bf0d82995c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T08:51+09:00",
+      "source_title": "美 10년물 국채 입찰 호조…강한 수요 확인, 국채수익률 상승폭 축소",
+      "telegram_core_fact": "30년물 국채수익률도 장 중 한 때 5.704%로 급등하며 2002년 5월 이후 최고 수준을 보였으나 10년물 국채 입찰 이후 상승폭을 축소해 전날 대비 0.028%포인트 오른 5.673%로 거래를 마쳤다.",
+      "title": "美 10년물 국채 입찰 호조…강한 수요 확인, 국채수익률 상승폭 축소"
+    },
     "link:8b760329076d69f1491e5fe2": {
       "first_seen_kst": "2026-09-30T18:09:05+09:00",
       "lanes": {
@@ -67934,6 +68239,23 @@
       "telegram_core_fact": "유현승 시지메드텍 대표는 “현지 파트너와 협력해 콜롬비아 의료진의 수요에 대응하고 중남미에서 장기적인 공급·교육 체계를 구축하겠다”고 말했다.",
       "title": "시지메드텍, 척추 고정 시스템 콜롬비아 허가…중남미 시장 확대"
     },
+    "link:952ef9ad923352da6e67f67d": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633734",
+      "source": "이투데이",
+      "source_body_digest": "47a3400784f1e515bc44371a85f62a900252030d13b15128f450e70daa5fb690",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T09:27+09:00",
+      "source_title": "LG엔솔, 3Q 매출 9.6조 '역대 최대'…ESS·전기차 쌍끌이 [종합]",
+      "telegram_core_fact": "LG에너지솔루션이 올해 3분기 9조6000억원이 넘는 매출을 올리며 분기 기준 역대 최대 실적을 달성했다.",
+      "title": "LG엔솔, 3Q 매출 9.6조 '역대 최대'…ESS·전기차 쌍끌이 [종합]"
+    },
     "link:956015f4f27a0b7fcc3280b4": {
       "first_seen_kst": "2026-10-02T04:57:50+09:00",
       "lanes": {
@@ -69649,6 +69971,27 @@
       "link": "https://www.etnews.com/20261001000478",
       "source": "전자신문",
       "title": "정부, 10월 국고채 발행 5조원 축소…금리 급등 영향"
+    },
+    "link:9fd2c213bb974881293423d2": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818483",
+      "source": "뉴시스",
+      "source_body_digest": "b6aad167192e0a4722cc6e728bbd2798900e621a62eee7faeb42915a55fb8ab3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c54996d3b004b6b8999c500e4afd564376932a502adca4728a57f445061ef8e",
+      "source_fact_keys": [
+        "source_fact:v1:892bcd7c9c3bbe1dde37faca9dc085403fc8920333995544a33e1b4cbc45ec44",
+        "source_fact:v1:9ba89d36be5475974fbb2f14ac6827be4597b07d79ba8519a97e09c07a49d397",
+        "source_fact:v1:a3ad1a0dc43e6d1e38539c663d542956a4568da42da2e428a418afeb106619e5"
+      ],
+      "source_published_kst": "2026-10-08T09:30+09:00",
+      "source_title": "분기 영업익 첫 100조 돌파한 삼성전자…차세대 HBM·공급 확대에 속도",
+      "telegram_core_fact": "삼성전자가 올해 3분기 영업이익 100조원을 처음 넘어서며 역대 최대 분기 실적을 기록했다.",
+      "title": "분기 영업익 첫 100조 돌파한 삼성전자…차세대 HBM·공급 확대에 속도"
     },
     "link:9ffcb40cf288676cedcc79e4": {
       "first_seen_kst": "2026-10-02T09:01:13+09:00",
@@ -71934,6 +72277,29 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003812584",
       "source": "뉴시스",
       "title": "해양산업 AI 전환 지원…해진공 AX 사이트 개통"
+    },
+    "link:ac84691f1124d39c6a53096a": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02515766645610952&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a8ff846e35f1aef35e042e5c93660ed577ac2f80db1f5253c4e2e375fcdbe468",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b6c96b1b96884bc0e8f008ee659682f1f091d40099d0949de6a0c4fe141d5785",
+      "source_fact_keys": [
+        "source_fact:v1:080d2a2c9bca050cf1a692b5d83dc73af995194a819216c1d887132ddcfa9743",
+        "source_fact:v1:256f9c63dc84cf777db66c85e7ef9f52618396d34f75c801e876cda77ecc988a",
+        "source_fact:v1:9de54b5b6cf04eb2f4d0bf69caa0c1d92a72f3c603a877dceeaea51741b43c99",
+        "source_fact:v1:cb177970770c4f8d43bcff8124763ebd6cadb17263c03d35f616e21e203dff16",
+        "source_fact:v1:e2911aea8e56fd1d25d3c993869231b0cf2ecd72a10bd6c94da734bab2c112f5"
+      ],
+      "source_published_kst": "2026-10-08T08:21+09:00",
+      "source_title": "미국, '對중국 첨단기술 투자규제' 위반 첫 벌금 부과",
+      "telegram_core_fact": "미국 재무부가 대(對)중국 첨단기술 투자 규제 제도 도입 이후 처음으로 위반 사례를 적발해 벌금을 부과했다고 홍콩 사우스차이나모닝포스트(SCMP)가 7일(현지시간) 보도했다.",
+      "title": "미국, '對중국 첨단기술 투자규제' 위반 첫 벌금 부과"
     },
     "link:ac94a856bfaefe3752643ab3": {
       "first_seen_kst": "2026-10-07T04:49:54+09:00",
@@ -83611,6 +83977,29 @@
       "source": "이데일리",
       "title": "\"AI 거품론 정면돌파\" 엔비디아, 204조 자사주 베팅한 이유"
     },
+    "link:f3de0b9cc82496ede848403d": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02515766645610952&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a8ff846e35f1aef35e042e5c93660ed577ac2f80db1f5253c4e2e375fcdbe468",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b6c96b1b96884bc0e8f008ee659682f1f091d40099d0949de6a0c4fe141d5785",
+      "source_fact_keys": [
+        "source_fact:v1:080d2a2c9bca050cf1a692b5d83dc73af995194a819216c1d887132ddcfa9743",
+        "source_fact:v1:256f9c63dc84cf777db66c85e7ef9f52618396d34f75c801e876cda77ecc988a",
+        "source_fact:v1:9de54b5b6cf04eb2f4d0bf69caa0c1d92a72f3c603a877dceeaea51741b43c99",
+        "source_fact:v1:cb177970770c4f8d43bcff8124763ebd6cadb17263c03d35f616e21e203dff16",
+        "source_fact:v1:e2911aea8e56fd1d25d3c993869231b0cf2ecd72a10bd6c94da734bab2c112f5"
+      ],
+      "source_published_kst": "2026-10-08T08:21+09:00",
+      "source_title": "미국, '對중국 첨단기술 투자규제' 위반 첫 벌금 부과",
+      "telegram_core_fact": "미국 재무부가 대(對)중국 첨단기술 투자 규제 제도 도입 이후 처음으로 위반 사례를 적발해 벌금을 부과했다고 홍콩 사우스차이나모닝포스트(SCMP)가 7일(현지시간) 보도했다.",
+      "title": "미국, '對중국 첨단기술 투자규제' 위반 첫 벌금 부과"
+    },
     "link:f3e4a7d801616bad227cbee4": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
       "lanes": {
@@ -87654,6 +88043,27 @@
       "link": "https://www.yna.co.kr/view/AKR20260922175400104",
       "source": "연합뉴스",
       "title": "\"국민연금, 인도 국채 투자 허가 절차 진행 중…협상 막바지\" | 연합뉴스"
+    },
+    "original:0cfed02d06e53f639c7de593": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818483",
+      "source": "뉴시스",
+      "source_body_digest": "b6aad167192e0a4722cc6e728bbd2798900e621a62eee7faeb42915a55fb8ab3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c54996d3b004b6b8999c500e4afd564376932a502adca4728a57f445061ef8e",
+      "source_fact_keys": [
+        "source_fact:v1:892bcd7c9c3bbe1dde37faca9dc085403fc8920333995544a33e1b4cbc45ec44",
+        "source_fact:v1:9ba89d36be5475974fbb2f14ac6827be4597b07d79ba8519a97e09c07a49d397",
+        "source_fact:v1:a3ad1a0dc43e6d1e38539c663d542956a4568da42da2e428a418afeb106619e5"
+      ],
+      "source_published_kst": "2026-10-08T09:30+09:00",
+      "source_title": "분기 영업익 첫 100조 돌파한 삼성전자…차세대 HBM·공급 확대에 속도",
+      "telegram_core_fact": "삼성전자가 올해 3분기 영업이익 100조원을 처음 넘어서며 역대 최대 분기 실적을 기록했다.",
+      "title": "분기 영업익 첫 100조 돌파한 삼성전자…차세대 HBM·공급 확대에 속도"
     },
     "original:0d06620e66576611c3334473": {
       "first_seen_kst": "2026-10-06T04:08:54+09:00",
@@ -99357,6 +99767,33 @@
       "source": "지디넷코리아",
       "title": "AI 넘어 퀀텀시대로…양자기술 현재와 미래를 '한 눈에'"
     },
+    "original:52000ff4b9c5fc42afe169a2": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817944",
+      "source": "뉴시스",
+      "source_body_digest": "405147839b64c3df20bfd2e54fe5a5366f71320af07c91413a7211d07396397c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f02c5e051e4d798a3e63c77279a01af356c4f2e1a0501923b994413978b2c30a",
+      "source_fact_keys": [
+        "source_fact:v1:055cbd7a38fb30f1c2ba38261e9e367a4651bcafc3228f211853148824b3e60c",
+        "source_fact:v1:0a736374682230ea5b38ee5eb009821f078900a17a0e24c4b5afd556a95329d3",
+        "source_fact:v1:1ba00f25971ff54a30ccb5def44ca53448ca3f66c3ff605f101d8afa9680ed4d",
+        "source_fact:v1:32772f195472a81725338f6629b58132366311d50593613c397bbb5e4587528e",
+        "source_fact:v1:3a6d8257230d4b9ba4c8d9d1bac6c867286e410080ceaa1e86ccdcf92403f010",
+        "source_fact:v1:3a7cb468c9f170c36d611bb3bb299665e71c897c55c674d664025d658890ec7a",
+        "source_fact:v1:491e62220428351fae1a9fdef98a939a03ed1e57e1368b54696d2f6663756eb2",
+        "source_fact:v1:6cfaca134d6ef6658838b63adbd9a3e93466cbb9517666cea1fcb70d885cde8c",
+        "source_fact:v1:98ecdb3702a5a3656f9673df4a13aab74a317943c815ec39c57eafd470427fa3"
+      ],
+      "source_published_kst": "2026-10-08T06:42+09:00",
+      "source_title": "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑",
+      "telegram_core_fact": "한국콜마 2분기 영업이익은 1103억원으로 전년비 17.3% 증가했습니다.",
+      "title": "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑"
+    },
     "original:520dfa747278e4f2daa48bc5": {
       "first_seen_kst": "2026-10-07T00:23:09+09:00",
       "lanes": {
@@ -99640,6 +100077,27 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-03T10:41+09:00",
       "title": "세계 식량가격 3개월째↑…3년 10개월 만에 최고 | 연합뉴스"
+    },
+    "original:544605ab69332b49063d16e7": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171510",
+      "source": "매일경제",
+      "source_body_digest": "98e315a1e0bde6d4ba836cd3ed43d2b4be4f8f192c018697ed98c3377ea6c64c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:57a7de78d116bf21c6713fe3d8399ba9e14331b3d74aa8f6e753c6c58d575546",
+      "source_fact_keys": [
+        "source_fact:v1:1d529d048ed9114fb88e52d78169575ec13bae01b8ebcd9653ad655b9036c6f9",
+        "source_fact:v1:83a7fca9904baea5ad86dc3dda5595da99175d73b63d06c91e92deb2d11fd755",
+        "source_fact:v1:9aed25260c149ec98856c61c292541d961d0f0ec6a44dce77adbe077849c0c7b"
+      ],
+      "source_published_kst": "2026-10-08T08:56+09:00",
+      "source_title": "효성중공업, 국내 최초 2GW급 HVDC 성능 검증 설비 구축",
+      "telegram_core_fact": "효성중공업이 국내 최초로 독자기술 기반의 2기가와트(GW)급 초고압직류송전(HVDC) 성능검증 설비를 구축하며 대용량 전력망 기술 국산화에 박차를 가한다.",
+      "title": "효성중공업, 국내 최초 2GW급 HVDC 성능 검증 설비 구축"
     },
     "original:54547907e7c0bf1a34e93acc": {
       "first_seen_kst": "2026-10-07T22:37:58+09:00",
@@ -106668,6 +107126,23 @@
       "source": "이데일리",
       "title": "[美특징주]레나, 버크셔 지분 11% 확대에 월가 '매도' 투자의견에도 주가 강세"
     },
+    "original:80a01148ad01b606d7226491": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896460",
+      "source": "헤럴드경제",
+      "source_body_digest": "226a0f050b9734deacf687ca04053e376a7a7bb8156e37ca0c5298a66e4bf285",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T09:15+09:00",
+      "source_title": "LG엔솔, 3분기 매출 9.6조 ‘분기 사상 최대’…영업익도 어닝 서프라이즈",
+      "telegram_core_fact": "LG에너지솔루션은 연결 기준 3분기 매출 9조6434억원, 영업이익 7560억원을 기록했다고 8일 잠정 공시했다.",
+      "title": "LG엔솔, 3분기 매출 9.6조 ‘분기 사상 최대’…영업익도 어닝 서프라이즈"
+    },
     "original:80ba8d6cfe407ad20f5d9bd8": {
       "first_seen_kst": "2026-10-08T04:45:20+09:00",
       "lanes": {
@@ -111822,6 +112297,23 @@
       "link": "https://www.mk.co.kr/news/business/12156185",
       "source": "매일경제",
       "title": "큐피에스브레인, 제조업 경영진을 위한 현장 중심 솔루션 북 ‘AX 피지컬 AI 도입 전략’ 출간"
+    },
+    "original:a1a6973b1f1f09c6f497a1bb": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633734",
+      "source": "이투데이",
+      "source_body_digest": "47a3400784f1e515bc44371a85f62a900252030d13b15128f450e70daa5fb690",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T09:27+09:00",
+      "source_title": "LG엔솔, 3Q 매출 9.6조 '역대 최대'…ESS·전기차 쌍끌이 [종합]",
+      "telegram_core_fact": "LG에너지솔루션이 올해 3분기 9조6000억원이 넘는 매출을 올리며 분기 기준 역대 최대 실적을 달성했다.",
+      "title": "LG엔솔, 3Q 매출 9.6조 '역대 최대'…ESS·전기차 쌍끌이 [종합]"
     },
     "original:a1b702a29bf272e7219c66a9": {
       "first_seen_kst": "2026-09-29T16:03:48+09:00",
@@ -118317,6 +118809,29 @@
       ],
       "source_published_kst": "2026-10-06T07:42+09:00",
       "title": "[오늘의 증시]美금리 상승에도 나스닥 최고치…코스피 상승 출발 전망"
+    },
+    "original:cb0890bc5eaa2d4ae89516fe": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02515766645610952&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a8ff846e35f1aef35e042e5c93660ed577ac2f80db1f5253c4e2e375fcdbe468",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b6c96b1b96884bc0e8f008ee659682f1f091d40099d0949de6a0c4fe141d5785",
+      "source_fact_keys": [
+        "source_fact:v1:080d2a2c9bca050cf1a692b5d83dc73af995194a819216c1d887132ddcfa9743",
+        "source_fact:v1:256f9c63dc84cf777db66c85e7ef9f52618396d34f75c801e876cda77ecc988a",
+        "source_fact:v1:9de54b5b6cf04eb2f4d0bf69caa0c1d92a72f3c603a877dceeaea51741b43c99",
+        "source_fact:v1:cb177970770c4f8d43bcff8124763ebd6cadb17263c03d35f616e21e203dff16",
+        "source_fact:v1:e2911aea8e56fd1d25d3c993869231b0cf2ecd72a10bd6c94da734bab2c112f5"
+      ],
+      "source_published_kst": "2026-10-08T08:21+09:00",
+      "source_title": "미국, '對중국 첨단기술 투자규제' 위반 첫 벌금 부과",
+      "telegram_core_fact": "미국 재무부가 대(對)중국 첨단기술 투자 규제 제도 도입 이후 처음으로 위반 사례를 적발해 벌금을 부과했다고 홍콩 사우스차이나모닝포스트(SCMP)가 7일(현지시간) 보도했다.",
+      "title": "미국, '對중국 첨단기술 투자규제' 위반 첫 벌금 부과"
     },
     "original:cb2c4c1c5701bc42869f84b9": {
       "first_seen_kst": "2026-10-02T10:30:30+09:00",
@@ -125975,6 +126490,23 @@
       "source_published_kst": "2026-10-06T09:16+09:00",
       "title": "'안랩' 52주 신고가 경신, 외국인, 기관 각각 12일, 9일 연속 순매수"
     },
+    "original:f983105d4b5186a05203c484": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/08/2026100808403357222",
+      "source": "머니투데이",
+      "source_body_digest": "7cca8aa66e91d9be833577164746b7dbc2cbb45ce3473eba43e099bf0d82995c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T08:51+09:00",
+      "source_title": "美 10년물 국채 입찰 호조…강한 수요 확인, 국채수익률 상승폭 축소",
+      "telegram_core_fact": "30년물 국채수익률도 장 중 한 때 5.704%로 급등하며 2002년 5월 이후 최고 수준을 보였으나 10년물 국채 입찰 이후 상승폭을 축소해 전날 대비 0.028%포인트 오른 5.673%로 거래를 마쳤다.",
+      "title": "美 10년물 국채 입찰 호조…강한 수요 확인, 국채수익률 상승폭 축소"
+    },
     "original:f9eb04d0b2491d1d449df685": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
       "lanes": {
@@ -133549,6 +134081,29 @@
       "telegram_core_fact": "우주항공업체 스페이스X(SPCX)가 엔비디아(NVDA)의 그래픽처리장치(GPU)를 400억달러 규모로 구매하기 위해 대규모 자금조달을 추진한다.",
       "title": "[美특징주]스페이스X, 엔비디아 GPU 400억달러 구매 추진…아폴로와 자금조달 협상"
     },
+    "source_fact:0f17362c7e14af2e49a69098": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02515766645610952&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a8ff846e35f1aef35e042e5c93660ed577ac2f80db1f5253c4e2e375fcdbe468",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b6c96b1b96884bc0e8f008ee659682f1f091d40099d0949de6a0c4fe141d5785",
+      "source_fact_keys": [
+        "source_fact:v1:080d2a2c9bca050cf1a692b5d83dc73af995194a819216c1d887132ddcfa9743",
+        "source_fact:v1:256f9c63dc84cf777db66c85e7ef9f52618396d34f75c801e876cda77ecc988a",
+        "source_fact:v1:9de54b5b6cf04eb2f4d0bf69caa0c1d92a72f3c603a877dceeaea51741b43c99",
+        "source_fact:v1:cb177970770c4f8d43bcff8124763ebd6cadb17263c03d35f616e21e203dff16",
+        "source_fact:v1:e2911aea8e56fd1d25d3c993869231b0cf2ecd72a10bd6c94da734bab2c112f5"
+      ],
+      "source_published_kst": "2026-10-08T08:21+09:00",
+      "source_title": "미국, '對중국 첨단기술 투자규제' 위반 첫 벌금 부과",
+      "telegram_core_fact": "미국 재무부가 대(對)중국 첨단기술 투자 규제 제도 도입 이후 처음으로 위반 사례를 적발해 벌금을 부과했다고 홍콩 사우스차이나모닝포스트(SCMP)가 7일(현지시간) 보도했다.",
+      "title": "미국, '對중국 첨단기술 투자규제' 위반 첫 벌금 부과"
+    },
     "source_fact:0f1e5a1cdd7d868e2538a4ee": {
       "first_seen_kst": "2026-10-07T01:33:00+09:00",
       "lanes": {
@@ -137780,6 +138335,33 @@
       ],
       "source_published_kst": "2026-10-05T17:11+09:00",
       "title": "유로화, 17개월 만에 최저…프랑스 등 재정 불안에 채권시장 흔들 | 연합뉴스"
+    },
+    "source_fact:18ed1b4c0d7f783358dd8532": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817944",
+      "source": "뉴시스",
+      "source_body_digest": "405147839b64c3df20bfd2e54fe5a5366f71320af07c91413a7211d07396397c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f02c5e051e4d798a3e63c77279a01af356c4f2e1a0501923b994413978b2c30a",
+      "source_fact_keys": [
+        "source_fact:v1:055cbd7a38fb30f1c2ba38261e9e367a4651bcafc3228f211853148824b3e60c",
+        "source_fact:v1:0a736374682230ea5b38ee5eb009821f078900a17a0e24c4b5afd556a95329d3",
+        "source_fact:v1:1ba00f25971ff54a30ccb5def44ca53448ca3f66c3ff605f101d8afa9680ed4d",
+        "source_fact:v1:32772f195472a81725338f6629b58132366311d50593613c397bbb5e4587528e",
+        "source_fact:v1:3a6d8257230d4b9ba4c8d9d1bac6c867286e410080ceaa1e86ccdcf92403f010",
+        "source_fact:v1:3a7cb468c9f170c36d611bb3bb299665e71c897c55c674d664025d658890ec7a",
+        "source_fact:v1:491e62220428351fae1a9fdef98a939a03ed1e57e1368b54696d2f6663756eb2",
+        "source_fact:v1:6cfaca134d6ef6658838b63adbd9a3e93466cbb9517666cea1fcb70d885cde8c",
+        "source_fact:v1:98ecdb3702a5a3656f9673df4a13aab74a317943c815ec39c57eafd470427fa3"
+      ],
+      "source_published_kst": "2026-10-08T06:42+09:00",
+      "source_title": "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑",
+      "telegram_core_fact": "한국콜마 2분기 영업이익은 1103억원으로 전년비 17.3% 증가했습니다.",
+      "title": "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑"
     },
     "source_fact:18f0fd567e3d125f03bcaa26": {
       "first_seen_kst": "2026-10-06T22:08:07+09:00",
@@ -147573,6 +148155,33 @@
       "source_published_kst": "2026-10-06T16:23+09:00",
       "title": "日증시, AI·반도체 강세에 상승 마감…닛케이 1.05%↑"
     },
+    "source_fact:2d7f5e85ffab79dd3b122806": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817944",
+      "source": "뉴시스",
+      "source_body_digest": "405147839b64c3df20bfd2e54fe5a5366f71320af07c91413a7211d07396397c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f02c5e051e4d798a3e63c77279a01af356c4f2e1a0501923b994413978b2c30a",
+      "source_fact_keys": [
+        "source_fact:v1:055cbd7a38fb30f1c2ba38261e9e367a4651bcafc3228f211853148824b3e60c",
+        "source_fact:v1:0a736374682230ea5b38ee5eb009821f078900a17a0e24c4b5afd556a95329d3",
+        "source_fact:v1:1ba00f25971ff54a30ccb5def44ca53448ca3f66c3ff605f101d8afa9680ed4d",
+        "source_fact:v1:32772f195472a81725338f6629b58132366311d50593613c397bbb5e4587528e",
+        "source_fact:v1:3a6d8257230d4b9ba4c8d9d1bac6c867286e410080ceaa1e86ccdcf92403f010",
+        "source_fact:v1:3a7cb468c9f170c36d611bb3bb299665e71c897c55c674d664025d658890ec7a",
+        "source_fact:v1:491e62220428351fae1a9fdef98a939a03ed1e57e1368b54696d2f6663756eb2",
+        "source_fact:v1:6cfaca134d6ef6658838b63adbd9a3e93466cbb9517666cea1fcb70d885cde8c",
+        "source_fact:v1:98ecdb3702a5a3656f9673df4a13aab74a317943c815ec39c57eafd470427fa3"
+      ],
+      "source_published_kst": "2026-10-08T06:42+09:00",
+      "source_title": "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑",
+      "telegram_core_fact": "한국콜마 2분기 영업이익은 1103억원으로 전년비 17.3% 증가했습니다.",
+      "title": "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑"
+    },
     "source_fact:2d8ba9168fe8a30b7eea1bcf": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
       "lanes": {
@@ -147726,6 +148335,29 @@
       ],
       "source_published_kst": "2026-10-07T10:30+09:00",
       "title": "홍지선 국토장관 \"주택 공급 속도 높인다\"⋯연내 신규택지 7.3만 가구+α 발표 [국감]"
+    },
+    "source_fact:2e1478b099b515279fba8ad8": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02515766645610952&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a8ff846e35f1aef35e042e5c93660ed577ac2f80db1f5253c4e2e375fcdbe468",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b6c96b1b96884bc0e8f008ee659682f1f091d40099d0949de6a0c4fe141d5785",
+      "source_fact_keys": [
+        "source_fact:v1:080d2a2c9bca050cf1a692b5d83dc73af995194a819216c1d887132ddcfa9743",
+        "source_fact:v1:256f9c63dc84cf777db66c85e7ef9f52618396d34f75c801e876cda77ecc988a",
+        "source_fact:v1:9de54b5b6cf04eb2f4d0bf69caa0c1d92a72f3c603a877dceeaea51741b43c99",
+        "source_fact:v1:cb177970770c4f8d43bcff8124763ebd6cadb17263c03d35f616e21e203dff16",
+        "source_fact:v1:e2911aea8e56fd1d25d3c993869231b0cf2ecd72a10bd6c94da734bab2c112f5"
+      ],
+      "source_published_kst": "2026-10-08T08:21+09:00",
+      "source_title": "미국, '對중국 첨단기술 투자규제' 위반 첫 벌금 부과",
+      "telegram_core_fact": "미국 재무부가 대(對)중국 첨단기술 투자 규제 제도 도입 이후 처음으로 위반 사례를 적발해 벌금을 부과했다고 홍콩 사우스차이나모닝포스트(SCMP)가 7일(현지시간) 보도했다.",
+      "title": "미국, '對중국 첨단기술 투자규제' 위반 첫 벌금 부과"
     },
     "source_fact:2e26e58e4d0defdbc428219f": {
       "first_seen_kst": "2026-10-07T08:36:47+09:00",
@@ -174438,6 +175070,33 @@
       "source_published_kst": "2026-10-07T08:56+09:00",
       "title": "엘텍, 해외 고객사 680만 달러 후속 수주..수주잔고 사상 최고"
     },
+    "source_fact:676acf570ce1599404d010e2": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817944",
+      "source": "뉴시스",
+      "source_body_digest": "405147839b64c3df20bfd2e54fe5a5366f71320af07c91413a7211d07396397c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f02c5e051e4d798a3e63c77279a01af356c4f2e1a0501923b994413978b2c30a",
+      "source_fact_keys": [
+        "source_fact:v1:055cbd7a38fb30f1c2ba38261e9e367a4651bcafc3228f211853148824b3e60c",
+        "source_fact:v1:0a736374682230ea5b38ee5eb009821f078900a17a0e24c4b5afd556a95329d3",
+        "source_fact:v1:1ba00f25971ff54a30ccb5def44ca53448ca3f66c3ff605f101d8afa9680ed4d",
+        "source_fact:v1:32772f195472a81725338f6629b58132366311d50593613c397bbb5e4587528e",
+        "source_fact:v1:3a6d8257230d4b9ba4c8d9d1bac6c867286e410080ceaa1e86ccdcf92403f010",
+        "source_fact:v1:3a7cb468c9f170c36d611bb3bb299665e71c897c55c674d664025d658890ec7a",
+        "source_fact:v1:491e62220428351fae1a9fdef98a939a03ed1e57e1368b54696d2f6663756eb2",
+        "source_fact:v1:6cfaca134d6ef6658838b63adbd9a3e93466cbb9517666cea1fcb70d885cde8c",
+        "source_fact:v1:98ecdb3702a5a3656f9673df4a13aab74a317943c815ec39c57eafd470427fa3"
+      ],
+      "source_published_kst": "2026-10-08T06:42+09:00",
+      "source_title": "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑",
+      "telegram_core_fact": "한국콜마 2분기 영업이익은 1103억원으로 전년비 17.3% 증가했습니다.",
+      "title": "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑"
+    },
     "source_fact:677028c965a04c442f316883": {
       "first_seen_kst": "2026-10-07T22:53:53+09:00",
       "lanes": {
@@ -176634,6 +177293,27 @@
       ],
       "source_published_kst": "2026-10-07T07:43+09:00",
       "title": "“56만전자·320만닉스 간다\"…삼전닉스, 3분기 실적 기대 이상"
+    },
+    "source_fact:6c1033cad28e4780d8552e39": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818483",
+      "source": "뉴시스",
+      "source_body_digest": "b6aad167192e0a4722cc6e728bbd2798900e621a62eee7faeb42915a55fb8ab3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c54996d3b004b6b8999c500e4afd564376932a502adca4728a57f445061ef8e",
+      "source_fact_keys": [
+        "source_fact:v1:892bcd7c9c3bbe1dde37faca9dc085403fc8920333995544a33e1b4cbc45ec44",
+        "source_fact:v1:9ba89d36be5475974fbb2f14ac6827be4597b07d79ba8519a97e09c07a49d397",
+        "source_fact:v1:a3ad1a0dc43e6d1e38539c663d542956a4568da42da2e428a418afeb106619e5"
+      ],
+      "source_published_kst": "2026-10-08T09:30+09:00",
+      "source_title": "분기 영업익 첫 100조 돌파한 삼성전자…차세대 HBM·공급 확대에 속도",
+      "telegram_core_fact": "삼성전자가 올해 3분기 영업이익 100조원을 처음 넘어서며 역대 최대 분기 실적을 기록했다.",
+      "title": "분기 영업익 첫 100조 돌파한 삼성전자…차세대 HBM·공급 확대에 속도"
     },
     "source_fact:6c1877c9b00113896edb9cfd": {
       "first_seen_kst": "2026-10-07T20:28:48+09:00",
@@ -187092,6 +187772,33 @@
       "source_published_kst": "2026-10-05T20:01+09:00",
       "title": "알렉토, 제넨텍에 AL050 기술이전..선급금 1억 달러"
     },
+    "source_fact:830eb41b5a4564d13f7d028c": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817944",
+      "source": "뉴시스",
+      "source_body_digest": "405147839b64c3df20bfd2e54fe5a5366f71320af07c91413a7211d07396397c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f02c5e051e4d798a3e63c77279a01af356c4f2e1a0501923b994413978b2c30a",
+      "source_fact_keys": [
+        "source_fact:v1:055cbd7a38fb30f1c2ba38261e9e367a4651bcafc3228f211853148824b3e60c",
+        "source_fact:v1:0a736374682230ea5b38ee5eb009821f078900a17a0e24c4b5afd556a95329d3",
+        "source_fact:v1:1ba00f25971ff54a30ccb5def44ca53448ca3f66c3ff605f101d8afa9680ed4d",
+        "source_fact:v1:32772f195472a81725338f6629b58132366311d50593613c397bbb5e4587528e",
+        "source_fact:v1:3a6d8257230d4b9ba4c8d9d1bac6c867286e410080ceaa1e86ccdcf92403f010",
+        "source_fact:v1:3a7cb468c9f170c36d611bb3bb299665e71c897c55c674d664025d658890ec7a",
+        "source_fact:v1:491e62220428351fae1a9fdef98a939a03ed1e57e1368b54696d2f6663756eb2",
+        "source_fact:v1:6cfaca134d6ef6658838b63adbd9a3e93466cbb9517666cea1fcb70d885cde8c",
+        "source_fact:v1:98ecdb3702a5a3656f9673df4a13aab74a317943c815ec39c57eafd470427fa3"
+      ],
+      "source_published_kst": "2026-10-08T06:42+09:00",
+      "source_title": "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑",
+      "telegram_core_fact": "한국콜마 2분기 영업이익은 1103억원으로 전년비 17.3% 증가했습니다.",
+      "title": "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑"
+    },
     "source_fact:83124697cdc2f46764e35706": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
       "lanes": {
@@ -191226,6 +191933,33 @@
       ],
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
+    },
+    "source_fact:8c7d71f9794b240fcdf77a1b": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817944",
+      "source": "뉴시스",
+      "source_body_digest": "405147839b64c3df20bfd2e54fe5a5366f71320af07c91413a7211d07396397c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f02c5e051e4d798a3e63c77279a01af356c4f2e1a0501923b994413978b2c30a",
+      "source_fact_keys": [
+        "source_fact:v1:055cbd7a38fb30f1c2ba38261e9e367a4651bcafc3228f211853148824b3e60c",
+        "source_fact:v1:0a736374682230ea5b38ee5eb009821f078900a17a0e24c4b5afd556a95329d3",
+        "source_fact:v1:1ba00f25971ff54a30ccb5def44ca53448ca3f66c3ff605f101d8afa9680ed4d",
+        "source_fact:v1:32772f195472a81725338f6629b58132366311d50593613c397bbb5e4587528e",
+        "source_fact:v1:3a6d8257230d4b9ba4c8d9d1bac6c867286e410080ceaa1e86ccdcf92403f010",
+        "source_fact:v1:3a7cb468c9f170c36d611bb3bb299665e71c897c55c674d664025d658890ec7a",
+        "source_fact:v1:491e62220428351fae1a9fdef98a939a03ed1e57e1368b54696d2f6663756eb2",
+        "source_fact:v1:6cfaca134d6ef6658838b63adbd9a3e93466cbb9517666cea1fcb70d885cde8c",
+        "source_fact:v1:98ecdb3702a5a3656f9673df4a13aab74a317943c815ec39c57eafd470427fa3"
+      ],
+      "source_published_kst": "2026-10-08T06:42+09:00",
+      "source_title": "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑",
+      "telegram_core_fact": "한국콜마 2분기 영업이익은 1103억원으로 전년비 17.3% 증가했습니다.",
+      "title": "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑"
     },
     "source_fact:8c9359b31e5f11ab9e872cf5": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
@@ -197855,6 +198589,27 @@
       "source_published_kst": "2026-10-07T05:30+09:00",
       "title": "“주가 일희일비할 것 없어, 반도체 공급난 지속은 명확한 사실”"
     },
+    "source_fact:9b592c2538ab331e4f5c04d9": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171510",
+      "source": "매일경제",
+      "source_body_digest": "98e315a1e0bde6d4ba836cd3ed43d2b4be4f8f192c018697ed98c3377ea6c64c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:57a7de78d116bf21c6713fe3d8399ba9e14331b3d74aa8f6e753c6c58d575546",
+      "source_fact_keys": [
+        "source_fact:v1:1d529d048ed9114fb88e52d78169575ec13bae01b8ebcd9653ad655b9036c6f9",
+        "source_fact:v1:83a7fca9904baea5ad86dc3dda5595da99175d73b63d06c91e92deb2d11fd755",
+        "source_fact:v1:9aed25260c149ec98856c61c292541d961d0f0ec6a44dce77adbe077849c0c7b"
+      ],
+      "source_published_kst": "2026-10-08T08:56+09:00",
+      "source_title": "효성중공업, 국내 최초 2GW급 HVDC 성능 검증 설비 구축",
+      "telegram_core_fact": "효성중공업이 국내 최초로 독자기술 기반의 2기가와트(GW)급 초고압직류송전(HVDC) 성능검증 설비를 구축하며 대용량 전력망 기술 국산화에 박차를 가한다.",
+      "title": "효성중공업, 국내 최초 2GW급 HVDC 성능 검증 설비 구축"
+    },
     "source_fact:9b5aa5c452037638200fd850": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
       "lanes": {
@@ -198032,6 +198787,27 @@
       ],
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "C.H.로빈슨, RXO 58억달러 인수 합의 후 재무 부담·주식 희석 우려 부각"
+    },
+    "source_fact:9bf78910008d7d30ba7df009": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171510",
+      "source": "매일경제",
+      "source_body_digest": "98e315a1e0bde6d4ba836cd3ed43d2b4be4f8f192c018697ed98c3377ea6c64c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:57a7de78d116bf21c6713fe3d8399ba9e14331b3d74aa8f6e753c6c58d575546",
+      "source_fact_keys": [
+        "source_fact:v1:1d529d048ed9114fb88e52d78169575ec13bae01b8ebcd9653ad655b9036c6f9",
+        "source_fact:v1:83a7fca9904baea5ad86dc3dda5595da99175d73b63d06c91e92deb2d11fd755",
+        "source_fact:v1:9aed25260c149ec98856c61c292541d961d0f0ec6a44dce77adbe077849c0c7b"
+      ],
+      "source_published_kst": "2026-10-08T08:56+09:00",
+      "source_title": "효성중공업, 국내 최초 2GW급 HVDC 성능 검증 설비 구축",
+      "telegram_core_fact": "효성중공업이 국내 최초로 독자기술 기반의 2기가와트(GW)급 초고압직류송전(HVDC) 성능검증 설비를 구축하며 대용량 전력망 기술 국산화에 박차를 가한다.",
+      "title": "효성중공업, 국내 최초 2GW급 HVDC 성능 검증 설비 구축"
     },
     "source_fact:9bf87124dbd1178fd924fcc1": {
       "first_seen_kst": "2026-10-07T18:30:29+09:00",
@@ -200120,6 +200896,27 @@
       "source_title": "포항시-아모지, 영일만산단 ‘무탄소 분산발전’ 가속화… 글로벌 투자사·대기업 총출동",
       "telegram_core_fact": "참석자들은 ▲영일만 무탄소 분산발전 프로젝트의 속도감 있는 추진 ▲원활한 사업 진행을 위한 부지 및 인허가 행정 지원 ▲안정적인 청정 암모니아 수입·저장·공급망 구축 ▲영일만산단 입주기업들의 무탄소 전력 공급 확대 방안 등을 논의했다.",
       "title": "포항시-아모지, 영일만산단 ‘무탄소 분산발전’ 가속화… 글로벌 투자사·대기업 총출동"
+    },
+    "source_fact:a04eb529a102ce5f4ab3c87c": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818483",
+      "source": "뉴시스",
+      "source_body_digest": "b6aad167192e0a4722cc6e728bbd2798900e621a62eee7faeb42915a55fb8ab3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c54996d3b004b6b8999c500e4afd564376932a502adca4728a57f445061ef8e",
+      "source_fact_keys": [
+        "source_fact:v1:892bcd7c9c3bbe1dde37faca9dc085403fc8920333995544a33e1b4cbc45ec44",
+        "source_fact:v1:9ba89d36be5475974fbb2f14ac6827be4597b07d79ba8519a97e09c07a49d397",
+        "source_fact:v1:a3ad1a0dc43e6d1e38539c663d542956a4568da42da2e428a418afeb106619e5"
+      ],
+      "source_published_kst": "2026-10-08T09:30+09:00",
+      "source_title": "분기 영업익 첫 100조 돌파한 삼성전자…차세대 HBM·공급 확대에 속도",
+      "telegram_core_fact": "삼성전자가 올해 3분기 영업이익 100조원을 처음 넘어서며 역대 최대 분기 실적을 기록했다.",
+      "title": "분기 영업익 첫 100조 돌파한 삼성전자…차세대 HBM·공급 확대에 속도"
     },
     "source_fact:a064dd20689b4e5140d42a28": {
       "first_seen_kst": "2026-10-07T18:00:43+09:00",
@@ -213493,6 +214290,33 @@
       "telegram_core_fact": "미국 인공지능(AI) 반도체주가 장기 국채금리 급등에 대체로 하락했지만 마이크론테크놀로지는 4% 넘게 뛰는 등 종목별로 엇갈렸다.",
       "title": "美 AI 반도체주 혼조…국채금리 급등에 엔비디아·AMD↓, 마이크론 4%↑"
     },
+    "source_fact:be5a6d4178226f0d603c70be": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817944",
+      "source": "뉴시스",
+      "source_body_digest": "405147839b64c3df20bfd2e54fe5a5366f71320af07c91413a7211d07396397c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f02c5e051e4d798a3e63c77279a01af356c4f2e1a0501923b994413978b2c30a",
+      "source_fact_keys": [
+        "source_fact:v1:055cbd7a38fb30f1c2ba38261e9e367a4651bcafc3228f211853148824b3e60c",
+        "source_fact:v1:0a736374682230ea5b38ee5eb009821f078900a17a0e24c4b5afd556a95329d3",
+        "source_fact:v1:1ba00f25971ff54a30ccb5def44ca53448ca3f66c3ff605f101d8afa9680ed4d",
+        "source_fact:v1:32772f195472a81725338f6629b58132366311d50593613c397bbb5e4587528e",
+        "source_fact:v1:3a6d8257230d4b9ba4c8d9d1bac6c867286e410080ceaa1e86ccdcf92403f010",
+        "source_fact:v1:3a7cb468c9f170c36d611bb3bb299665e71c897c55c674d664025d658890ec7a",
+        "source_fact:v1:491e62220428351fae1a9fdef98a939a03ed1e57e1368b54696d2f6663756eb2",
+        "source_fact:v1:6cfaca134d6ef6658838b63adbd9a3e93466cbb9517666cea1fcb70d885cde8c",
+        "source_fact:v1:98ecdb3702a5a3656f9673df4a13aab74a317943c815ec39c57eafd470427fa3"
+      ],
+      "source_published_kst": "2026-10-08T06:42+09:00",
+      "source_title": "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑",
+      "telegram_core_fact": "한국콜마 2분기 영업이익은 1103억원으로 전년비 17.3% 증가했습니다.",
+      "title": "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑"
+    },
     "source_fact:be5b20f40d4deb55163cc6d5": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
       "lanes": {
@@ -213949,6 +214773,29 @@
       "source_published_kst": "2026-10-07T08:42+09:00",
       "title": "셰브론, 헤스 미드스트림 지분 넘기고 바켄 비용 50% 절감"
     },
+    "source_fact:bfec9e6a4efcf73eaf393bb2": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02515766645610952&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a8ff846e35f1aef35e042e5c93660ed577ac2f80db1f5253c4e2e375fcdbe468",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b6c96b1b96884bc0e8f008ee659682f1f091d40099d0949de6a0c4fe141d5785",
+      "source_fact_keys": [
+        "source_fact:v1:080d2a2c9bca050cf1a692b5d83dc73af995194a819216c1d887132ddcfa9743",
+        "source_fact:v1:256f9c63dc84cf777db66c85e7ef9f52618396d34f75c801e876cda77ecc988a",
+        "source_fact:v1:9de54b5b6cf04eb2f4d0bf69caa0c1d92a72f3c603a877dceeaea51741b43c99",
+        "source_fact:v1:cb177970770c4f8d43bcff8124763ebd6cadb17263c03d35f616e21e203dff16",
+        "source_fact:v1:e2911aea8e56fd1d25d3c993869231b0cf2ecd72a10bd6c94da734bab2c112f5"
+      ],
+      "source_published_kst": "2026-10-08T08:21+09:00",
+      "source_title": "미국, '對중국 첨단기술 투자규제' 위반 첫 벌금 부과",
+      "telegram_core_fact": "미국 재무부가 대(對)중국 첨단기술 투자 규제 제도 도입 이후 처음으로 위반 사례를 적발해 벌금을 부과했다고 홍콩 사우스차이나모닝포스트(SCMP)가 7일(현지시간) 보도했다.",
+      "title": "미국, '對중국 첨단기술 투자규제' 위반 첫 벌금 부과"
+    },
     "source_fact:bfed98c3a189df2620e9d339": {
       "first_seen_kst": "2026-10-07T10:49:23+09:00",
       "lanes": {
@@ -214310,6 +215157,33 @@
       ],
       "source_published_kst": "2026-10-06T15:09+09:00",
       "title": "AI팩토리에 승부 건 엔비디아 \"생산성·수명·범용성이 수익 좌우\""
+    },
+    "source_fact:c0bd19adc6d03221d7c5e978": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817944",
+      "source": "뉴시스",
+      "source_body_digest": "405147839b64c3df20bfd2e54fe5a5366f71320af07c91413a7211d07396397c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f02c5e051e4d798a3e63c77279a01af356c4f2e1a0501923b994413978b2c30a",
+      "source_fact_keys": [
+        "source_fact:v1:055cbd7a38fb30f1c2ba38261e9e367a4651bcafc3228f211853148824b3e60c",
+        "source_fact:v1:0a736374682230ea5b38ee5eb009821f078900a17a0e24c4b5afd556a95329d3",
+        "source_fact:v1:1ba00f25971ff54a30ccb5def44ca53448ca3f66c3ff605f101d8afa9680ed4d",
+        "source_fact:v1:32772f195472a81725338f6629b58132366311d50593613c397bbb5e4587528e",
+        "source_fact:v1:3a6d8257230d4b9ba4c8d9d1bac6c867286e410080ceaa1e86ccdcf92403f010",
+        "source_fact:v1:3a7cb468c9f170c36d611bb3bb299665e71c897c55c674d664025d658890ec7a",
+        "source_fact:v1:491e62220428351fae1a9fdef98a939a03ed1e57e1368b54696d2f6663756eb2",
+        "source_fact:v1:6cfaca134d6ef6658838b63adbd9a3e93466cbb9517666cea1fcb70d885cde8c",
+        "source_fact:v1:98ecdb3702a5a3656f9673df4a13aab74a317943c815ec39c57eafd470427fa3"
+      ],
+      "source_published_kst": "2026-10-08T06:42+09:00",
+      "source_title": "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑",
+      "telegram_core_fact": "한국콜마 2분기 영업이익은 1103억원으로 전년비 17.3% 증가했습니다.",
+      "title": "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑"
     },
     "source_fact:c0c577820135da30924a2750": {
       "first_seen_kst": "2026-10-08T05:01:11+09:00",
@@ -216813,6 +217687,27 @@
       "telegram_core_fact": "삼성전자의 영업이익은 지난 분기 세계에서 최고치를 기록했는데 이번에도 전세계 기업중 1위를 기록할 것으로 예상된다.",
       "title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박"
     },
+    "source_fact:c5502ad5821b70e87b19c522": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818483",
+      "source": "뉴시스",
+      "source_body_digest": "b6aad167192e0a4722cc6e728bbd2798900e621a62eee7faeb42915a55fb8ab3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c54996d3b004b6b8999c500e4afd564376932a502adca4728a57f445061ef8e",
+      "source_fact_keys": [
+        "source_fact:v1:892bcd7c9c3bbe1dde37faca9dc085403fc8920333995544a33e1b4cbc45ec44",
+        "source_fact:v1:9ba89d36be5475974fbb2f14ac6827be4597b07d79ba8519a97e09c07a49d397",
+        "source_fact:v1:a3ad1a0dc43e6d1e38539c663d542956a4568da42da2e428a418afeb106619e5"
+      ],
+      "source_published_kst": "2026-10-08T09:30+09:00",
+      "source_title": "분기 영업익 첫 100조 돌파한 삼성전자…차세대 HBM·공급 확대에 속도",
+      "telegram_core_fact": "삼성전자가 올해 3분기 영업이익 100조원을 처음 넘어서며 역대 최대 분기 실적을 기록했다.",
+      "title": "분기 영업익 첫 100조 돌파한 삼성전자…차세대 HBM·공급 확대에 속도"
+    },
     "source_fact:c557e5419a7a5fd330415276": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
       "lanes": {
@@ -218275,6 +219170,33 @@
       "telegram_core_fact": "KT클라우드는 7일 청라 AI 데이터센터 사업에 설계·구축·운영(DBO) 파트너로 참여한다고 밝혔다. KT클라우드가 인천 청라에 들어설 인공지능(AI) 데이터센터의 설계부터 운영까지 맡는다.",
       "title": "KT클라우드, 청라 50MW AI 데이터센터 설계·구축·운영 파트너로 참여"
     },
+    "source_fact:c8424aa1f258315f310fa4f3": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817944",
+      "source": "뉴시스",
+      "source_body_digest": "405147839b64c3df20bfd2e54fe5a5366f71320af07c91413a7211d07396397c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f02c5e051e4d798a3e63c77279a01af356c4f2e1a0501923b994413978b2c30a",
+      "source_fact_keys": [
+        "source_fact:v1:055cbd7a38fb30f1c2ba38261e9e367a4651bcafc3228f211853148824b3e60c",
+        "source_fact:v1:0a736374682230ea5b38ee5eb009821f078900a17a0e24c4b5afd556a95329d3",
+        "source_fact:v1:1ba00f25971ff54a30ccb5def44ca53448ca3f66c3ff605f101d8afa9680ed4d",
+        "source_fact:v1:32772f195472a81725338f6629b58132366311d50593613c397bbb5e4587528e",
+        "source_fact:v1:3a6d8257230d4b9ba4c8d9d1bac6c867286e410080ceaa1e86ccdcf92403f010",
+        "source_fact:v1:3a7cb468c9f170c36d611bb3bb299665e71c897c55c674d664025d658890ec7a",
+        "source_fact:v1:491e62220428351fae1a9fdef98a939a03ed1e57e1368b54696d2f6663756eb2",
+        "source_fact:v1:6cfaca134d6ef6658838b63adbd9a3e93466cbb9517666cea1fcb70d885cde8c",
+        "source_fact:v1:98ecdb3702a5a3656f9673df4a13aab74a317943c815ec39c57eafd470427fa3"
+      ],
+      "source_published_kst": "2026-10-08T06:42+09:00",
+      "source_title": "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑",
+      "telegram_core_fact": "한국콜마 2분기 영업이익은 1103억원으로 전년비 17.3% 증가했습니다.",
+      "title": "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑"
+    },
     "source_fact:c84e333a9586f88ab9e685eb": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
       "lanes": {
@@ -219243,6 +220165,29 @@
       ],
       "source_published_kst": "2026-10-07T06:01+09:00",
       "title": "글로벌 공급기지 된 K-제약사들…잇단 수출계약"
+    },
+    "source_fact:cad8dd28267002d3be917468": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02515766645610952&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a8ff846e35f1aef35e042e5c93660ed577ac2f80db1f5253c4e2e375fcdbe468",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b6c96b1b96884bc0e8f008ee659682f1f091d40099d0949de6a0c4fe141d5785",
+      "source_fact_keys": [
+        "source_fact:v1:080d2a2c9bca050cf1a692b5d83dc73af995194a819216c1d887132ddcfa9743",
+        "source_fact:v1:256f9c63dc84cf777db66c85e7ef9f52618396d34f75c801e876cda77ecc988a",
+        "source_fact:v1:9de54b5b6cf04eb2f4d0bf69caa0c1d92a72f3c603a877dceeaea51741b43c99",
+        "source_fact:v1:cb177970770c4f8d43bcff8124763ebd6cadb17263c03d35f616e21e203dff16",
+        "source_fact:v1:e2911aea8e56fd1d25d3c993869231b0cf2ecd72a10bd6c94da734bab2c112f5"
+      ],
+      "source_published_kst": "2026-10-08T08:21+09:00",
+      "source_title": "미국, '對중국 첨단기술 투자규제' 위반 첫 벌금 부과",
+      "telegram_core_fact": "미국 재무부가 대(對)중국 첨단기술 투자 규제 제도 도입 이후 처음으로 위반 사례를 적발해 벌금을 부과했다고 홍콩 사우스차이나모닝포스트(SCMP)가 7일(현지시간) 보도했다.",
+      "title": "미국, '對중국 첨단기술 투자규제' 위반 첫 벌금 부과"
     },
     "source_fact:cae320580044fdd3cf1c1153": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
@@ -221549,6 +222494,27 @@
       ],
       "source_published_kst": "2026-10-06T09:41+09:00",
       "title": "HLB그룹주 연일 강세…리픽투 FDA 품목허가 효과"
+    },
+    "source_fact:d06117e28db82928290f8bb4": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171510",
+      "source": "매일경제",
+      "source_body_digest": "98e315a1e0bde6d4ba836cd3ed43d2b4be4f8f192c018697ed98c3377ea6c64c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:57a7de78d116bf21c6713fe3d8399ba9e14331b3d74aa8f6e753c6c58d575546",
+      "source_fact_keys": [
+        "source_fact:v1:1d529d048ed9114fb88e52d78169575ec13bae01b8ebcd9653ad655b9036c6f9",
+        "source_fact:v1:83a7fca9904baea5ad86dc3dda5595da99175d73b63d06c91e92deb2d11fd755",
+        "source_fact:v1:9aed25260c149ec98856c61c292541d961d0f0ec6a44dce77adbe077849c0c7b"
+      ],
+      "source_published_kst": "2026-10-08T08:56+09:00",
+      "source_title": "효성중공업, 국내 최초 2GW급 HVDC 성능 검증 설비 구축",
+      "telegram_core_fact": "효성중공업이 국내 최초로 독자기술 기반의 2기가와트(GW)급 초고압직류송전(HVDC) 성능검증 설비를 구축하며 대용량 전력망 기술 국산화에 박차를 가한다.",
+      "title": "효성중공업, 국내 최초 2GW급 HVDC 성능 검증 설비 구축"
     },
     "source_fact:d070382f771896247f54d49e": {
       "first_seen_kst": "2026-10-08T04:14:15+09:00",
@@ -226283,6 +227249,29 @@
       ],
       "source_published_kst": "2026-10-06T11:21+09:00",
       "title": "삼성전기, 2856억 규모 MLCC 공급계약"
+    },
+    "source_fact:da1f86b0a23e548f30cc611f": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02515766645610952&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a8ff846e35f1aef35e042e5c93660ed577ac2f80db1f5253c4e2e375fcdbe468",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b6c96b1b96884bc0e8f008ee659682f1f091d40099d0949de6a0c4fe141d5785",
+      "source_fact_keys": [
+        "source_fact:v1:080d2a2c9bca050cf1a692b5d83dc73af995194a819216c1d887132ddcfa9743",
+        "source_fact:v1:256f9c63dc84cf777db66c85e7ef9f52618396d34f75c801e876cda77ecc988a",
+        "source_fact:v1:9de54b5b6cf04eb2f4d0bf69caa0c1d92a72f3c603a877dceeaea51741b43c99",
+        "source_fact:v1:cb177970770c4f8d43bcff8124763ebd6cadb17263c03d35f616e21e203dff16",
+        "source_fact:v1:e2911aea8e56fd1d25d3c993869231b0cf2ecd72a10bd6c94da734bab2c112f5"
+      ],
+      "source_published_kst": "2026-10-08T08:21+09:00",
+      "source_title": "미국, '對중국 첨단기술 투자규제' 위반 첫 벌금 부과",
+      "telegram_core_fact": "미국 재무부가 대(對)중국 첨단기술 투자 규제 제도 도입 이후 처음으로 위반 사례를 적발해 벌금을 부과했다고 홍콩 사우스차이나모닝포스트(SCMP)가 7일(현지시간) 보도했다.",
+      "title": "미국, '對중국 첨단기술 투자규제' 위반 첫 벌금 부과"
     },
     "source_fact:da4a76751fdf08f360a00dd1": {
       "first_seen_kst": "2026-10-07T22:37:58+09:00",
@@ -231270,6 +232259,33 @@
       ],
       "source_published_kst": "2026-10-06T10:16+09:00",
       "title": "李부총리 \"민생경제 안정·양극화 완화 총력…주택공급 확대 최우선\"[국감]"
+    },
+    "source_fact:e33f558cc4a2ac93a3f8b52e": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817944",
+      "source": "뉴시스",
+      "source_body_digest": "405147839b64c3df20bfd2e54fe5a5366f71320af07c91413a7211d07396397c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f02c5e051e4d798a3e63c77279a01af356c4f2e1a0501923b994413978b2c30a",
+      "source_fact_keys": [
+        "source_fact:v1:055cbd7a38fb30f1c2ba38261e9e367a4651bcafc3228f211853148824b3e60c",
+        "source_fact:v1:0a736374682230ea5b38ee5eb009821f078900a17a0e24c4b5afd556a95329d3",
+        "source_fact:v1:1ba00f25971ff54a30ccb5def44ca53448ca3f66c3ff605f101d8afa9680ed4d",
+        "source_fact:v1:32772f195472a81725338f6629b58132366311d50593613c397bbb5e4587528e",
+        "source_fact:v1:3a6d8257230d4b9ba4c8d9d1bac6c867286e410080ceaa1e86ccdcf92403f010",
+        "source_fact:v1:3a7cb468c9f170c36d611bb3bb299665e71c897c55c674d664025d658890ec7a",
+        "source_fact:v1:491e62220428351fae1a9fdef98a939a03ed1e57e1368b54696d2f6663756eb2",
+        "source_fact:v1:6cfaca134d6ef6658838b63adbd9a3e93466cbb9517666cea1fcb70d885cde8c",
+        "source_fact:v1:98ecdb3702a5a3656f9673df4a13aab74a317943c815ec39c57eafd470427fa3"
+      ],
+      "source_published_kst": "2026-10-08T06:42+09:00",
+      "source_title": "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑",
+      "telegram_core_fact": "한국콜마 2분기 영업이익은 1103억원으로 전년비 17.3% 증가했습니다.",
+      "title": "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑"
     },
     "source_fact:e34cf2fe15183a081b616c77": {
       "first_seen_kst": "2026-10-07T19:32:28+09:00",
@@ -246389,6 +247405,27 @@
       "source": "연합뉴스",
       "title": "\"국민연금, 인도 국채 투자 허가 절차 진행 중…협상 막바지\" | 연합뉴스"
     },
+    "title:0cfed02d06e53f639c7de593": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818483",
+      "source": "뉴시스",
+      "source_body_digest": "b6aad167192e0a4722cc6e728bbd2798900e621a62eee7faeb42915a55fb8ab3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c54996d3b004b6b8999c500e4afd564376932a502adca4728a57f445061ef8e",
+      "source_fact_keys": [
+        "source_fact:v1:892bcd7c9c3bbe1dde37faca9dc085403fc8920333995544a33e1b4cbc45ec44",
+        "source_fact:v1:9ba89d36be5475974fbb2f14ac6827be4597b07d79ba8519a97e09c07a49d397",
+        "source_fact:v1:a3ad1a0dc43e6d1e38539c663d542956a4568da42da2e428a418afeb106619e5"
+      ],
+      "source_published_kst": "2026-10-08T09:30+09:00",
+      "source_title": "분기 영업익 첫 100조 돌파한 삼성전자…차세대 HBM·공급 확대에 속도",
+      "telegram_core_fact": "삼성전자가 올해 3분기 영업이익 100조원을 처음 넘어서며 역대 최대 분기 실적을 기록했다.",
+      "title": "분기 영업익 첫 100조 돌파한 삼성전자…차세대 HBM·공급 확대에 속도"
+    },
     "title:0d06620e66576611c3334473": {
       "first_seen_kst": "2026-10-06T04:08:54+09:00",
       "lanes": {
@@ -258277,6 +259314,33 @@
       "source": "지디넷코리아",
       "title": "AI 넘어 퀀텀시대로…양자기술 현재와 미래를 '한 눈에'"
     },
+    "title:52000ff4b9c5fc42afe169a2": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003817944",
+      "source": "뉴시스",
+      "source_body_digest": "405147839b64c3df20bfd2e54fe5a5366f71320af07c91413a7211d07396397c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f02c5e051e4d798a3e63c77279a01af356c4f2e1a0501923b994413978b2c30a",
+      "source_fact_keys": [
+        "source_fact:v1:055cbd7a38fb30f1c2ba38261e9e367a4651bcafc3228f211853148824b3e60c",
+        "source_fact:v1:0a736374682230ea5b38ee5eb009821f078900a17a0e24c4b5afd556a95329d3",
+        "source_fact:v1:1ba00f25971ff54a30ccb5def44ca53448ca3f66c3ff605f101d8afa9680ed4d",
+        "source_fact:v1:32772f195472a81725338f6629b58132366311d50593613c397bbb5e4587528e",
+        "source_fact:v1:3a6d8257230d4b9ba4c8d9d1bac6c867286e410080ceaa1e86ccdcf92403f010",
+        "source_fact:v1:3a7cb468c9f170c36d611bb3bb299665e71c897c55c674d664025d658890ec7a",
+        "source_fact:v1:491e62220428351fae1a9fdef98a939a03ed1e57e1368b54696d2f6663756eb2",
+        "source_fact:v1:6cfaca134d6ef6658838b63adbd9a3e93466cbb9517666cea1fcb70d885cde8c",
+        "source_fact:v1:98ecdb3702a5a3656f9673df4a13aab74a317943c815ec39c57eafd470427fa3"
+      ],
+      "source_published_kst": "2026-10-08T06:42+09:00",
+      "source_title": "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑",
+      "telegram_core_fact": "한국콜마 2분기 영업이익은 1103억원으로 전년비 17.3% 증가했습니다.",
+      "title": "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑"
+    },
     "title:520dfa747278e4f2daa48bc5": {
       "first_seen_kst": "2026-10-07T00:23:09+09:00",
       "lanes": {
@@ -258560,6 +259624,27 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-03T10:41+09:00",
       "title": "세계 식량가격 3개월째↑…3년 10개월 만에 최고 | 연합뉴스"
+    },
+    "title:544605ab69332b49063d16e7": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1171510",
+      "source": "매일경제",
+      "source_body_digest": "98e315a1e0bde6d4ba836cd3ed43d2b4be4f8f192c018697ed98c3377ea6c64c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:57a7de78d116bf21c6713fe3d8399ba9e14331b3d74aa8f6e753c6c58d575546",
+      "source_fact_keys": [
+        "source_fact:v1:1d529d048ed9114fb88e52d78169575ec13bae01b8ebcd9653ad655b9036c6f9",
+        "source_fact:v1:83a7fca9904baea5ad86dc3dda5595da99175d73b63d06c91e92deb2d11fd755",
+        "source_fact:v1:9aed25260c149ec98856c61c292541d961d0f0ec6a44dce77adbe077849c0c7b"
+      ],
+      "source_published_kst": "2026-10-08T08:56+09:00",
+      "source_title": "효성중공업, 국내 최초 2GW급 HVDC 성능 검증 설비 구축",
+      "telegram_core_fact": "효성중공업이 국내 최초로 독자기술 기반의 2기가와트(GW)급 초고압직류송전(HVDC) 성능검증 설비를 구축하며 대용량 전력망 기술 국산화에 박차를 가한다.",
+      "title": "효성중공업, 국내 최초 2GW급 HVDC 성능 검증 설비 구축"
     },
     "title:54547907e7c0bf1a34e93acc": {
       "first_seen_kst": "2026-10-07T22:37:58+09:00",
@@ -259247,6 +260332,23 @@
       "link": "https://www.mt.co.kr/world/2026/10/03/2026100306463872262",
       "source": "머니투데이",
       "title": "한미 알래스카 투자 온도차…봉합 나선 美국무부 \"상호 윈윈\""
+    },
+    "title:57dbd1522373b5d893767608": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633734",
+      "source": "이투데이",
+      "source_body_digest": "47a3400784f1e515bc44371a85f62a900252030d13b15128f450e70daa5fb690",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T09:27+09:00",
+      "source_title": "LG엔솔, 3Q 매출 9.6조 '역대 최대'…ESS·전기차 쌍끌이 [종합]",
+      "telegram_core_fact": "LG에너지솔루션이 올해 3분기 9조6000억원이 넘는 매출을 올리며 분기 기준 역대 최대 실적을 달성했다.",
+      "title": "LG엔솔, 3Q 매출 9.6조 '역대 최대'…ESS·전기차 쌍끌이 [종합]"
     },
     "title:580940ca369be1710382b060": {
       "first_seen_kst": "2026-10-07T00:54:50+09:00",
@@ -265718,6 +266820,23 @@
       "source": "이데일리",
       "title": "[美특징주]레나, 버크셔 지분 11% 확대에 월가 '매도' 투자의견에도 주가 강세"
     },
+    "title:80a01148ad01b606d7226491": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://biz.heraldcorp.com/article/10896460",
+      "source": "헤럴드경제",
+      "source_body_digest": "226a0f050b9734deacf687ca04053e376a7a7bb8156e37ca0c5298a66e4bf285",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T09:15+09:00",
+      "source_title": "LG엔솔, 3분기 매출 9.6조 ‘분기 사상 최대’…영업익도 어닝 서프라이즈",
+      "telegram_core_fact": "LG에너지솔루션은 연결 기준 3분기 매출 9조6434억원, 영업이익 7560억원을 기록했다고 8일 잠정 공시했다.",
+      "title": "LG엔솔, 3분기 매출 9.6조 ‘분기 사상 최대’…영업익도 어닝 서프라이즈"
+    },
     "title:80ba8d6cfe407ad20f5d9bd8": {
       "first_seen_kst": "2026-10-08T04:45:20+09:00",
       "lanes": {
@@ -271093,6 +272212,23 @@
       "link": "https://www.mk.co.kr/news/business/12156185",
       "source": "매일경제",
       "title": "큐피에스브레인, 제조업 경영진을 위한 현장 중심 솔루션 북 ‘AX 피지컬 AI 도입 전략’ 출간"
+    },
+    "title:a1a6973b1f1f09c6f497a1bb": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633734",
+      "source": "이투데이",
+      "source_body_digest": "47a3400784f1e515bc44371a85f62a900252030d13b15128f450e70daa5fb690",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T09:27+09:00",
+      "source_title": "LG엔솔, 3Q 매출 9.6조 '역대 최대'…ESS·전기차 쌍끌이 [종합]",
+      "telegram_core_fact": "LG에너지솔루션이 올해 3분기 9조6000억원이 넘는 매출을 올리며 분기 기준 역대 최대 실적을 달성했다.",
+      "title": "LG엔솔, 3Q 매출 9.6조 '역대 최대'…ESS·전기차 쌍끌이 [종합]"
     },
     "title:a1b702a29bf272e7219c66a9": {
       "first_seen_kst": "2026-09-29T16:03:48+09:00",
@@ -277830,6 +278966,29 @@
       ],
       "source_published_kst": "2026-10-06T07:42+09:00",
       "title": "[오늘의 증시]美금리 상승에도 나스닥 최고치…코스피 상승 출발 전망"
+    },
+    "title:cb0890bc5eaa2d4ae89516fe": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02515766645610952&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "a8ff846e35f1aef35e042e5c93660ed577ac2f80db1f5253c4e2e375fcdbe468",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b6c96b1b96884bc0e8f008ee659682f1f091d40099d0949de6a0c4fe141d5785",
+      "source_fact_keys": [
+        "source_fact:v1:080d2a2c9bca050cf1a692b5d83dc73af995194a819216c1d887132ddcfa9743",
+        "source_fact:v1:256f9c63dc84cf777db66c85e7ef9f52618396d34f75c801e876cda77ecc988a",
+        "source_fact:v1:9de54b5b6cf04eb2f4d0bf69caa0c1d92a72f3c603a877dceeaea51741b43c99",
+        "source_fact:v1:cb177970770c4f8d43bcff8124763ebd6cadb17263c03d35f616e21e203dff16",
+        "source_fact:v1:e2911aea8e56fd1d25d3c993869231b0cf2ecd72a10bd6c94da734bab2c112f5"
+      ],
+      "source_published_kst": "2026-10-08T08:21+09:00",
+      "source_title": "미국, '對중국 첨단기술 투자규제' 위반 첫 벌금 부과",
+      "telegram_core_fact": "미국 재무부가 대(對)중국 첨단기술 투자 규제 제도 도입 이후 처음으로 위반 사례를 적발해 벌금을 부과했다고 홍콩 사우스차이나모닝포스트(SCMP)가 7일(현지시간) 보도했다.",
+      "title": "미국, '對중국 첨단기술 투자규제' 위반 첫 벌금 부과"
     },
     "title:cb2c4c1c5701bc42869f84b9": {
       "first_seen_kst": "2026-10-02T10:30:30+09:00",
@@ -285668,6 +286827,23 @@
       "source_published_kst": "2026-10-06T09:16+09:00",
       "title": "'안랩' 52주 신고가 경신, 외국인, 기관 각각 12일, 9일 연속 순매수"
     },
+    "title:f983105d4b5186a05203c484": {
+      "first_seen_kst": "2026-10-08T09:33:54+09:00",
+      "lanes": {
+        "live": "2026-10-08T09:33:54+09:00"
+      },
+      "last_seen_kst": "2026-10-08T09:33:54+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/08/2026100808403357222",
+      "source": "머니투데이",
+      "source_body_digest": "7cca8aa66e91d9be833577164746b7dbc2cbb45ce3473eba43e099bf0d82995c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T08:51+09:00",
+      "source_title": "美 10년물 국채 입찰 호조…강한 수요 확인, 국채수익률 상승폭 축소",
+      "telegram_core_fact": "30년물 국채수익률도 장 중 한 때 5.704%로 급등하며 2002년 5월 이후 최고 수준을 보였으나 10년물 국채 입찰 이후 상승폭을 축소해 전날 대비 0.028%포인트 오른 5.673%로 거래를 마쳤다.",
+      "title": "美 10년물 국채 입찰 호조…강한 수요 확인, 국채수익률 상승폭 축소"
+    },
     "title:f9eb04d0b2491d1d449df685": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
       "lanes": {
@@ -286680,5 +287856,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-08T09:17:31+09:00"
+  "updated_at_kst": "2026-10-08T09:33:54+09:00"
 }
