@@ -24,6 +24,14 @@
       "source_group": "Bloomberg",
       "topic": "BOJ 9월 인상 기대·신호"
     },
+    "bfb73386fbc2": {
+      "headline": "미 연준 공식 확인: 7월 말 미·일 공동 엔화 개입은 미 재무부 자금으로 집행",
+      "material_score": 4,
+      "rank": 3,
+      "sent_epoch": 1791424759.087671,
+      "source_group": "미 연준 공식 회의록",
+      "topic": "7월 말 미·일 공동개입 재원 공개"
+    },
     "ff9a773600a8": {
       "headline": "Yen Pares BOJ-Fueled Declines as Nikkei Reports a Rate Check - Bloomberg.com",
       "material_score": 4,
@@ -40,7 +48,11 @@
     "26522c3990ea120267eb2c33",
     "570713b4575a56607b6a5441",
     "b1bbe192e25e4d0e94015e85",
-    "5b2fffa2f0fab7a05294b256"
+    "5b2fffa2f0fab7a05294b256",
+    "14bb66f3db2f8e7a3386892a"
   ],
-  "updated_at_kst": "2026-10-08T05:50:56+09:00"
+  "updated_at_kst": "2026-10-08T10:59:19+09:00",
+  "verified_event_keys": [
+    "US_JP_2026_07_TREASURY_FUNDS_FOMC_2026_10_07"
+  ]
 }
