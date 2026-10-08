@@ -437,6 +437,16 @@ def main():
             "fund_dates": fund_dates,
         }, ensure_ascii=False))
         return
+    # The prior U.S. market session must be represented. Do not send an
+    # old-but-consistent snapshot just because all providers have the same date.
+    if curve.get("date") != expected_market_date:
+        print(json.dumps({
+            "report_withheld": "latest_us_market_session_not_published",
+            "expected_us_weekday": expected_market_date,
+            "treasury_date": curve.get("date"),
+            "fund_dates": fund_dates,
+        }, ensure_ascii=False))
+        return
     if component_date_mismatch:
         print(json.dumps({
             "report_withheld": "fund_component_date_mismatch",
