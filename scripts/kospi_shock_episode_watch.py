@@ -103,6 +103,18 @@ def should_finalize_market_close(
     return test_seconds is None and actual_close is not None and now >= actual_close
 
 
+def price_event_window_open(
+    observed_ts: float,
+    actual_close_ts: float | None,
+    evaluation_ts: float | None = None,
+) -> bool:
+    """장마감 후 지연된 시세 조회를 신규 장중 급락으로 오인하지 않는다."""
+    if actual_close_ts is None:
+        return True
+    effective_ts = observed_ts if evaluation_ts is None else max(observed_ts, evaluation_ts)
+    return effective_ts < actual_close_ts
+
+
 def continuous_flow_guard_active(now: dt.datetime, session: dict[str, Any]) -> bool:
     """동시호가 구간에는 현물·선물 수급 원자료가 일시 정지할 수 있다.
     원자료는 오래됐다고 표시하되 장마감 감시 프로세스까지 재기동하지 않는다.
@@ -619,6 +631,7 @@ class Watch:
         self.last_flow_success_ts: float | None = None
         self.last_option_poll = 0.0
         self.session_open_ts: float | None = None
+        self.session_close_ts: float | None = None
         self.opening_gap_sent = False
         self.handoff_path: str | None = None
         self.last_handoff_save_ts = 0.0
@@ -1061,6 +1074,15 @@ class Watch:
             return
         now_t, cur = self.idx[-1]
 
+        if not price_event_window_open(
+            now_t, getattr(self, "session_close_ts", None), time.time()
+        ):
+            self.raw["post_close_alert_suppressed"] = {
+                "observed_at_kst": fmt_clock(now_t),
+                "reason": "XKRX 정규장 종료 후 신규 급락·확대·반등 판정 중단",
+            }
+            return
+
         if (
             not self.opening_gap_sent
             and self.session_open_ts is not None
@@ -1160,12 +1182,14 @@ class Watch:
             final_att = self.attribution(float(ep["start_ts"]), float(ep["low_ts"]))
             msg_id = await asyncio.to_thread(telegram_send, self.build_end(ep, now_t, cur))
             self.msg_ids.append(msg_id)
+            # 완료 전송이 확인되면 활성 사건을 먼저 비워 인계 상태에 원상태가 남지 않게 한다.
+            # 기존 코드는 종료 전송 직후 체크포인트에 활성 사건을 저장할 수 있었다.
+            self.episode = None
             self._record_delivery("end", msg_id, ep, now_t)
             ep_copy = json.loads(json.dumps(ep))
             task = asyncio.create_task(self._run_enrichment(ep_copy, final_att))
             self.enrichment_tasks.add(task)
             task.add_done_callback(self.enrichment_tasks.discard)
-            self.episode = None
 
     def _checkpoint_handoff(self, force: bool = False) -> None:
         if not self.handoff_path:
@@ -1208,7 +1232,10 @@ class Watch:
             "enrichment_msg_ids": self.enrichment_msg_ids[-20:],
         }
         p.parent.mkdir(parents=True, exist_ok=True)
-        p.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        # 인계 파일을 직접 덮어쓰다 중단되면 손상된 JSON이 다음 작업에 넘어갈 수 있다.
+        temp = p.with_name(p.name + ".tmp")
+        temp.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        temp.replace(p)
         self.raw["handoff_saved"] = {
             "path": str(p), "flow_count": len(payload["flows"]),
             "episode_active": bool(self.episode),
@@ -1318,6 +1345,7 @@ class Watch:
         open_dt = session["open"]
         close_dt = session["close"]
         self.session_open_ts = open_dt.timestamp() if open_dt is not None else None
+        self.session_close_ts = close_dt.timestamp() if close_dt is not None else None
         poll_start_dt = (
             open_dt - dt.timedelta(seconds=90)
             if open_dt is not None else initial_now
@@ -1386,12 +1414,12 @@ class Watch:
                 self.build_end(ep, end_ts, end_price, session_close=True),
             )
             self.msg_ids.append(msg_id)
+            self.episode = None
             self._record_delivery("close", msg_id, ep, end_ts)
             ep_copy = json.loads(json.dumps(ep))
             task = asyncio.create_task(self._run_enrichment(ep_copy, final_att))
             self.enrichment_tasks.add(task)
             task.add_done_callback(self.enrichment_tasks.discard)
-            self.episode = None
 
         if self.flow_task:
             try:
