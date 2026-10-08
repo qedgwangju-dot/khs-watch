@@ -230,6 +230,15 @@ class AgenticCpuStructureTests(unittest.TestCase):
         self.assertEqual(name, "digitimes")
         self.assertEqual(obs.get("cpu_xpu_ratio_2027"), 2.3)
         self.assertEqual(w.cpu_structure_changes(di, obs, "digitimes"), [])
+        # The authentic DIGITIMES Chinese headline has the 1:2.3 ratio but
+        # not the year. Do not silently miss it because English adds "2027".
+        name2, obs2 = w.cpu_structure_observation(
+            "Agentic AI、長推論驅動CPU需求　AI伺服器CPU : XPU將提升至1 : 2.3",
+            "",
+            di["cpu_xpu_ratio_source_url"],
+        )
+        self.assertEqual(name2, "digitimes")
+        self.assertEqual(obs2.get("cpu_xpu_ratio_2027"), 2.3)
         self.assertEqual(w.cpu_structure_changes(di, {"cpu_xpu_ratio_2027": 2.2}, "digitimes"), [])
         self.assertIn("1:2.3→1:2", w.cpu_structure_changes(
             di, {"cpu_xpu_ratio_2027": 2.0}, "digitimes"
