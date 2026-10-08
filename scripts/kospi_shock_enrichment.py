@@ -712,6 +712,16 @@ def _fmt_program(v: Any) -> str:
     return "확인 불가" if n is None else f"{n:+,.0f}"
 
 
+def confirmed_interval_sellers(stocks: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """장중 후보가 아니라 사건구간에 유효하게 검증된 프로그램 순매도 종목만 선택."""
+    matches = [
+        row for row in stocks
+        if (row.get("program") or {}).get("available")
+        and (fnum((row.get("program") or {}).get("program_delta")) or 0.0) < 0
+    ]
+    return sorted(matches, key=lambda row: float(row["program"]["program_delta"]))
+
+
 def _fmt_pct(v: Any) -> str:
     n = fnum(v)
     return "확인 불가" if n is None else f"{n:+.2f}%"
@@ -798,13 +808,10 @@ def build_enrichment(
         )
         stocks.append(row)
 
-    usable = [
-        x for x in stocks
-        if x.get("program", {}).get("available")
-        and fnum(x["program"].get("program_delta")) is not None
-    ]
-    usable.sort(key=lambda x: fnum(x["program"].get("program_delta")) or 0.0)
-    top_stocks = usable[:7] if usable else stocks[:7]
+    # 장중 누적 매도 상위 후보라도 사건구간에서 실제 순매도·표본 정렬이
+    # 확인되지 않으면 이번 사건의 '프로그램 매도 종목'으로 표시하지 않는다.
+    usable = confirmed_interval_sellers(stocks)
+    top_stocks = usable[:7]
 
     theme_sums: dict[str, dict[str, Any]] = {}
     for stock in top_stocks[:6]:
@@ -1033,7 +1040,7 @@ def build_enrichment(
         "",
         "<b>정확성</b>",
         "• '현물 주체가 직접 판 업종'은 사건구간에 현물 순매도인 외국인·기관·개인을 각각 통합 UBM으로 직접 판정합니다. 기준점이 30초를 넘으면 해당 주체·업종 판정을 보류합니다.",
-        "• 프로그램·가격 업종·종목 순위는 장중 프로그램 매도 상위 후보군을 사건구간으로 재검산한 결과이며 전체 상장종목의 완전 전수순위로 표현하지 않습니다. 구간값은 사건 기준점 이전 90초 이내 표본만 사용하고, 누락 시 판정 보류합니다.",
+        "• 프로그램·가격 업종·종목 순위는 장중 후보 중 사건구간 순매도와 시각 정렬이 확인된 종목만 사용합니다. 전체 상장종목의 완전 전수순위가 아니며 기준점 이전 90초 이내 표본이 없거나 구간 순매도가 아니면 해당 종목을 제외합니다.",
         "• 테마는 동일 종목이 여러 테마에 동시에 속하므로 중복 허용 연결정보입니다. 테마별 직접 순매도액이나 상호배타적 시장점유율로 해석하지 않습니다.",
         "• LS 프로그램 원값은 단위를 임의로 억원 환산하지 않습니다.",
         "• 특정 업종·테마의 외국인 직접 순매도액으로 바꿔 쓰지 않습니다.",
