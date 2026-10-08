@@ -136,6 +136,10 @@ def _dkt_stage(text: str, source: str = '') -> str:
 
 
 def _dkt_humanoid_recovery() -> list[dict]:
+    # One-time recovery of the past 2026-09 report; expire the backfill so
+    # a dedupe-state rollover cannot resend old news as a new event.
+    if base.NOW.astimezone(base.KST).date() > dt.date(2026, 10, 15):
+        return []
     return [{
         'title': '디케이티 휴머노이드 비상장치용 배터리 모듈, 8월 말 양산 공급 시작 보도',
         'link': 'https://t.me/s/hanasmallcap',
@@ -296,12 +300,20 @@ def score(item: dict) -> int:
 
 def category(text: str, group: str) -> str:
     if group == 'dkt_humanoid':
-        source = next((x for x in DKT_REPORT_SOURCES | DKT_COMPANY_DIRECT if text.endswith(' ' + x)), '')
-        return {
-            'reported_robot_module_sop': '디케이티 로보틱스 · 배터리 모듈 양산 공급 증권사 확인',
-            'official_robot_module_sop': '디케이티 로보틱스 · 배터리 모듈 양산 회사 공식 확인',
-            'official_robot_bms_contract': '디케이티 로보틱스 · 휴머노이드용 BMS 정식 계약',
-        }.get(_dkt_stage(text, source), '디케이티 로보틱스 · 협의·양산계획 기존 기준선')
+        # The legacy renderer deliberately calls category(title + description)
+        # WITHOUT item['source']. Re-evaluate evidence from the visible prose;
+        # never downgrade a broker-confirmed alert to an old-plan label.
+        if DKT_REPORTED_SOP.search(text):
+            if (re.search(r'(?:회사\s*공식\s*(?:발표|확인)|'
+                          r'디케이티.{0,130}직접\s*발표)', text, re.I)
+                    and not re.search(r'하나증권|증권사|파악|업계\s*보도', text, re.I)):
+                return '디케이티 로보틱스 · 배터리 모듈 양산 회사 공식 확인'
+            return '디케이티 로보틱스 · 배터리 모듈 양산 공급 증권사 확인'
+        if DKT_DIRECT_CONTRACT.search(text) and re.search(
+            r'디케이티.{0,150}(?:계약.{0,70}체결|체결.{0,70}발표)', text, re.I
+        ):
+            return '디케이티 로보틱스 · 휴머노이드용 BMS 정식 계약'
+        return '디케이티 로보틱스 · 협의·양산계획 기존 기준선'
     if group == 'dongkuk_nps':
         official_source = next(
             (name for name in DONGKUK_OFFICIAL_SOURCES if text.endswith(' ' + name)), ''
@@ -419,9 +431,14 @@ def verification(item: dict, group: str, text: str) -> str:
 def clean_title(title: str, source: str) -> str:
     text = f'{title} {source}'
     if _is_dkt_humanoid(text):
+        # clean_title receives only title + source (NOT description).
+        if source in DKT_BROKER_SOURCES and re.search(
+            r'8\s*월\s*말|late\s*Aug|양산\s*공급\s*시작', title, re.I
+        ):
+            return '정정: 디케이티, 9/9 하나증권 휴머노이드 배터리 모듈 양산 공급 시작 보도'
         stage = _dkt_stage(text, source)
         if stage == 'reported_robot_module_sop':
-            return '디케이티, 휴머노이드 비상장치용 배터리 모듈 양산 공급 시작 보도(9/9 하나증권)'
+            return '디케이티, 휴머노이드 배터리 모듈 양산 공급 보도'
         if stage == 'official_robot_module_sop':
             return '디케이티, 휴머노이드용 배터리 모듈 양산 회사 직접 확인'
         if stage == 'official_robot_bms_contract':
@@ -468,7 +485,7 @@ def key(item: dict) -> str:
     if topic_group(text) == 'dkt_humanoid':
         stage = _dkt_stage(text, item.get('source') or '')
         return hashlib.sha256(
-            f'dkt|humanoid|emergency-battery-module|{stage}|2026-08'.encode()
+            f'dkt|humanoid|emergency-battery-module|{stage}|2026-08|{("render-corrected-v2" if stage == "reported_robot_module_sop" else "stable")}'.encode()
         ).hexdigest()
     if topic_group(text) == 'dongkuk_nps':
         stage = _dongkuk_stage(text, item.get('source') or '')
