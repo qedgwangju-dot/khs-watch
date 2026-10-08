@@ -2515,10 +2515,13 @@ bg, bs, bc, bk = classify(dkt_real_bms_contract)
 assert bg == 'dkt_humanoid' and bs >= 11 and bk not in {rk, ok}, (bg, bs, bc)
 
 retrieved_dkt = watcher.query_news(watcher.DKT_HUMANOID_RECOVERY)
-assert len(retrieved_dkt) == 1 and retrieved_dkt[0]['source'] == '하나증권', retrieved_dkt
-assert retrieved_dkt[0].get('published') is None, 'never invent an intraday report timestamp'
-rgg, rss, rcc, rkk = classify(retrieved_dkt[0])
-assert rgg == 'dkt_humanoid' and rss >= 11 and rkk == rk, (rgg, rss, rcc, rkk)
+if base.NOW.astimezone(base.KST).date() <= dt.date(2026, 10, 15):
+    assert len(retrieved_dkt) == 1 and retrieved_dkt[0]['source'] == '하나증권', retrieved_dkt
+    assert retrieved_dkt[0].get('published') is None, 'never invent an intraday report timestamp'
+    rgg, rss, rcc, rkk = classify(retrieved_dkt[0])
+    assert rgg == 'dkt_humanoid' and rss >= 11 and rkk == rk, (rgg, rss, rcc, rkk)
+else:
+    assert retrieved_dkt == [], 'expired backfill must not replay or fail regression'
 assert watcher.qty._skip_quantity_enrichment(
     "디케이티 휴머노이드 배터리\n주당 1,500~2,000대 초기 공급 규모\n"
 ), 'do not render unverified priced robot shipments for DKT'
