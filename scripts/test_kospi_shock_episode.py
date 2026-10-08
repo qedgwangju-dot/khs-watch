@@ -502,3 +502,99 @@ assert "단일 주도자 확정 보류" in a_1126["verdict"], a_1126
 assert a_1126["program"]["전체"] == -79060.0, a_1126
 assert a_1126["program"]["검산차이"] == -2.0, a_1126
 print("20261008_1126_split_seller_valid=true")
+
+
+# 2026-10-08 운영 산출물: LS t2111이 HTTP 404에 /503.html을 담아
+# 임시 게이트웨이 장애를 반환했다. 진짜 404는 즉시 실패시키고
+# 게이트웨이 404 및 HTTP 200 비정상 JSON만 일시 재시도한다.
+class _GatewayResponse:
+    def __init__(self, code, payload=None, text=""):
+        self.status_code = code
+        self.ok = 200 <= code < 300
+        self._payload = payload
+        self.text = text
+    def json(self):
+        if self._payload is None:
+            raise ValueError("synthetic invalid JSON")
+        return self._payload
+
+orig_post_gateway = ks.requests.post
+orig_sleep_gateway = ks.time.sleep
+calls_gateway = {"n": 0}
+def _gateway_then_ok(*args, **kwargs):
+    calls_gateway["n"] += 1
+    if calls_gateway["n"] < 3:
+        return _GatewayResponse(404, text='{"status":404,"path":"/503.html"}')
+    return _GatewayResponse(200, {"rsp_cd":"00000","ok":True})
+try:
+    ks.requests.post = _gateway_then_ok
+    ks.time.sleep = lambda *_args,**_kwargs: None
+    assert ks.ls_post("token", "/futureoption/market-data", "t2111", {"x":1})["ok"] is True
+    assert calls_gateway["n"] == 3, calls_gateway
+finally:
+    ks.requests.post = orig_post_gateway
+    ks.time.sleep = orig_sleep_gateway
+print("ls_503_html_404_recovery_regression=true")
+
+calls_hard_404 = {"n":0}
+def _hard_404(*args, **kwargs):
+    calls_hard_404["n"] += 1
+    return _GatewayResponse(404,text='{"status":404,"path":"/bad-route"}')
+try:
+    ks.requests.post = _hard_404
+    ks.time.sleep = lambda *_args,**_kwargs: None
+    try:
+        ks.ls_post("token", "/bad-route", "TEST", {})
+    except RuntimeError as exc:
+        assert "HTTP 404" in str(exc), str(exc)
+    else:
+        raise AssertionError("A genuine 404 must not retry/succeed")
+    assert calls_hard_404["n"] == 1, calls_hard_404
+finally:
+    ks.requests.post = orig_post_gateway
+    ks.time.sleep = orig_sleep_gateway
+print("ls_genuine_404_no_retry_regression=true")
+
+calls_bad_json = {"n":0}
+def _bad_json_then_ok(*args, **kwargs):
+    calls_bad_json["n"] += 1
+    if calls_bad_json["n"] == 1:
+        return _GatewayResponse(200, None, "<html>temporary gateway page</html>")
+    return _GatewayResponse(200, {"rsp_cd":"00000","ok":True})
+try:
+    ks.requests.post = _bad_json_then_ok
+    ks.time.sleep = lambda *_args,**_kwargs: None
+    assert ks.ls_post("token","/futureoption/market-data","t2111",{})["ok"] is True
+    assert calls_bad_json["n"] == 2
+finally:
+    ks.requests.post = orig_post_gateway
+    ks.time.sleep = orig_sleep_gateway
+print("ls_gateway_invalid_json_retry_regression=true")
+
+# API HTTP 요청이 성공했어도 데이터가 2분 넘게 오래됐거나
+# 특정 투자자 수급이 누락되면 감시가 '정상 수급'으로 오인하지 않는다.
+from kospi_shock_episode_watch import flow_snapshot_health
+now_health = time.time()
+healthy_flow = {
+    "현물":{"sample_ts":now_health-41,"개인":10,"외국인":-9,"기관":-1},
+    "선물":{"sample_ts":now_health-39,"개인":-2,"외국인":-3,"기관":5},
+    "프로그램":{"sample_ts":now_health-4,"전체":-200,"차익":-20,"비차익":-180},
+}
+assert flow_snapshot_health(healthy_flow, now_health)[0] is True
+stale_flow = dict(healthy_flow)
+stale_flow["현물"] = dict(healthy_flow["현물"],sample_ts=now_health-130)
+good, details = flow_snapshot_health(stale_flow,now_health)
+assert not good and "시차" in details["현물"], details
+missing_flow = dict(healthy_flow)
+missing_flow["선물"] = dict(healthy_flow["선물"], 외국인=None)
+good, details = flow_snapshot_health(missing_flow,now_health)
+assert not good and "외국인" in details["선물"], details
+future_flow = dict(healthy_flow)
+future_flow["프로그램"] = dict(healthy_flow["프로그램"],sample_ts=now_health+12)
+assert flow_snapshot_health(future_flow,now_health)[0] is False
+print("flow_snapshot_freshness_regression=true")
+
+# 장전 갭다운 메시지 역시 실제 message_id 확인 즉시 handoff에 저장해야 재시작 중복을 방지한다.
+assert "self._checkpoint_handoff(force=True)" in inspect.getsource(ks.Watch.evaluate)
+assert 'self.raw.pop("last_price_poll_error", None)' in inspect.getsource(ks.Watch.run)
+print("gap_handoff_and_recovered_poll_status_regression=true")
