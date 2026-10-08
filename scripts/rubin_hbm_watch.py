@@ -3091,6 +3091,8 @@ def extract_price_notes(text: str, rate: float | None) -> list[str]:
 
 
 def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
+    if len(events) == 1 and events[0].get("category") == "hbm_hybrid_bonding":
+        return render_hbm_hybrid_bonding_notice(events[0], now)
     rate = fx.get("rate")
     lines = [
         "🚨 Rubin/HBM 구조 변화 감시",
@@ -3111,8 +3113,12 @@ def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
         group = grouped.get(category) or []
         if not group:
             continue
-        if category == "hbm_hybrid_bonding" and n > 1:
-            lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 차세대 HBM 하이브리드 본딩 개발 격차", ""]
+        if category == "hbm_hybrid_bonding":
+            lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", ""]
+            for item in group:
+                lines.append(render_hbm_hybrid_bonding_notice(item, now).strip())
+                n += 1
+            continue
         if category == "hbm4e_thermal_package" and n > 1:
             lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 삼성 HBM4E 발열·패키징 병목 감시", ""]
         if category == "rubin_hbm_option_set" and n > 1:
@@ -3714,6 +3720,39 @@ def main() -> None:
     if citi_changes and not first_run:
         verified_events.append(citi_hbm_change_event(citi_state, list(dict.fromkeys(citi_changes))))
 
+    # A dedicated technology-risk lane within the existing Rubin HBM
+    # collector. Its initial item is an attributed SINGLE-source report,
+    # not a claim that either vendor has confirmed hybrid-bonded HBM output.
+    hybrid_version_before = int(state.get("hbm_hybrid_bond_track_version") or 0)
+    hybrid_state = dict(state.get("hbm_hybrid_bonding") or {})
+    hybrid_version = HBM_HYBRID_BOND_TRACK_VERSION
+    if hybrid_version_before < HBM_HYBRID_BOND_TRACK_VERSION:
+        seeded = dict(HBM_HYBRID_BOND_BASELINE)
+        seeded.update({k: v for k, v in hybrid_state.items() if v is not None})
+        hybrid_state = seeded
+
+    initial_hybrid_notice = (
+        hybrid_version_before < HBM_HYBRID_BOND_TRACK_VERSION and not first_run
+    )
+    hybrid_old = dict(hybrid_state)
+    for raw in raw_events:
+        if raw.get("category") != "hbm_hybrid_bonding":
+            continue
+        enriched = enrich_event(raw)
+        if not enriched.get("link_verified"):
+            continue
+        observation = extract_hbm_hybrid_official_observation(enriched)
+        if observation:
+            hybrid_state = merge_hbm_hybrid_official_observation(hybrid_state, observation)
+    hybrid_changes = hbm_hybrid_official_changes(hybrid_old, hybrid_state)
+    if initial_hybrid_notice:
+        verified_events.append(hbm_hybrid_bond_event(
+            hybrid_state, ["익명 엔지니어 보도 신규 위험 감시 시작 · 회사 공식 고객 샘플 여부 미확인"],
+            initial=True
+        ))
+    if hybrid_changes and not first_run:
+        verified_events.append(hbm_hybrid_bond_event(hybrid_state, hybrid_changes, initial=False))
+
     fx = fetch_fx()
     if fx.get("error"):
         errors.append(fx["error"])
@@ -3744,6 +3783,8 @@ def main() -> None:
         "nvhbm_architecture": nvhbm_state,
         "samsung_hbm4e_thermal_track_version": thermal_track_version,
         "samsung_hbm4e_thermal_package": thermal_state,
+        "hbm_hybrid_bond_track_version": hybrid_version,
+        "hbm_hybrid_bonding": hybrid_state,
         "morgan_stanley_nvidia_hbm_margin_track_version": ms_margin_track_version,
         "morgan_stanley_nvidia_hbm_margin": ms_margin_state,
         "jpm_hbm_structural_track_version": jpm_track_version,
@@ -3782,6 +3823,8 @@ def main() -> None:
         f"- Samsung next-gen HBM typed changes: {len(nextgen_changes)}",
         f"- NVIDIA NVHBM/custom-HBM typed changes: {len(nvhbm_changes)}",
         f"- Samsung HBM4E thermal/package typed changes: {len(thermal_changes)}",
+        f"- HBM hybrid bond reported-risk initial: {str(initial_hybrid_notice).lower()}",
+        f"- HBM hybrid bond official milestones: {len(hybrid_changes)}",
         f"- Morgan Stanley NVIDIA HBM margin typed changes: {len(ms_margin_changes)}",
         f"- J.P. Morgan HBM structural typed changes: {len(jpm_changes)}",
         f"- Micron SCA/RPO typed changes: {len(micron_changes)}",
