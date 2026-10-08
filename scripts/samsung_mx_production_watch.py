@@ -289,6 +289,12 @@ def _quarter_volume_m(blob: str, date: dt.datetime) -> tuple[float, str] | None:
     if not q4:
         return None
     segment = low[q4.end():q4.end()+150]
+    other_oems = (
+        "apple", "iphone", "oppo", "vivo", "xiaomi", "google", "pixel",
+        "huawei", "애플", "아이폰", "샤오미", "화웨이",
+    )
+    if any(x in segment for x in other_oems) and not any(x in segment for x in MX_WORDS):
+        return None
     values: list[float] = []
     for match in re.finditer(
         r"(\d+(?:\.\d+)?)\s*(?:million|mn)\s*(?:units|handsets|phones|smartphones)?",
