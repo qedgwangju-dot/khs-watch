@@ -111,6 +111,7 @@ class AgenticCpuStructureTests(unittest.TestCase):
         self.assertIn("AMD 추정치", sources["bnpp_public"]["source_kind"])
         self.assertEqual(sources["bnpp_analyst"]["market_2030_usd_bn"], 245.0)
         self.assertFalse(sources["bnpp_analyst"]["market_2030_official_confirmed"])
+        self.assertTrue(sources["bnpp_analyst"]["market_2030_secondary_confirmed"])
         self.assertFalse(sources["bnpp_analyst"]["market_2025_official_confirmed"])
         self.assertEqual(sources["bnpp_analyst"]["amd_target_usd"], 960.0)
         self.assertFalse(sources["bnpp_analyst"]["arm_target_confirmed"])
@@ -229,11 +230,12 @@ class AgenticCpuStructureTests(unittest.TestCase):
     def test_245bn_remains_unconfirmed_without_analyst_original(self):
         ba = w.CPU_STRUCTURE_BASELINE["bnpp_analyst"]
         self.assertFalse(ba["market_2030_official_confirmed"])
-        self.assertIn("사용자 제공", ba["market_2030_source_kind"])
+        self.assertIn("2차 보도 교차확인", ba["market_2030_source_kind"])
         rendered = w.cpu_structure_block(w.CPU_STRUCTURE_BASELINE, 1345.37, [])
         self.assertIn("2,450억달러(", rendered)
-        self.assertIn("독립 리포트 원문 미확인", rendered)
-        self.assertNotIn("BNP 2차 보도 확인", rendered)
+        self.assertIn("보고서 원문 미열람", rendered)
+        self.assertIn("2025년 300억달러(", rendered)
+        self.assertIn("사용자 제공치로 미확인", rendered)
 
     def test_mixed_bnp_amd_nvidia_arm_targets_never_cross_attributed(self):
         url = w.CPU_STRUCTURE_BASELINE["bnpp_analyst"]["target_source_url"]
@@ -574,7 +576,7 @@ class AgenticCpuStructureTests(unittest.TestCase):
         self.assertIn("260억달러(약", a)
         self.assertIn("2,200억달러(약", a)
         self.assertIn("2,450억달러(약", a)
-        self.assertIn("BNP 애널리스트 시장 전망 사용자 제공", a)
+        self.assertIn("BNP 애널리스트 2차 기사 교차확인", a)
         self.assertIn("AMD 목표주가", a)
         self.assertIn("Arm 목표주가 $405(약", a)
         self.assertIn("300억달러(약", a)
