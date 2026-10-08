@@ -212,7 +212,7 @@ def canonical_edition_title(title: str) -> str:
 def normalized_telegram_core(alert: dict) -> str:
     if not alert.get("body_verified"):
         return ""
-    core = base.norm(alert.get("telegram_core_fact"))
+    core = base.norm(alert.get("telegram_core_fact") or alert.get("summary") or alert.get("core"))
     return core if len(core) >= 50 and not core.startswith("공개된 제목에 따르면") else ""
 
 
@@ -405,17 +405,23 @@ def recent_seen_event_entries(seen: dict, now, lane: str) -> list[dict]:
     for entry in seen.values():
         if not isinstance(entry, dict) or (lane != "live" and not seen_entry_has_lane(entry, lane)):
             continue
-        if not entry.get("source_body_digest"):
-            continue
         last_seen = parse_seen_time(entry.get("last_seen_kst"))
         if not last_seen or last_seen < cutoff or last_seen > now + dt.timedelta(minutes=5):
             continue
-        title = str(entry.get("source_title") or "").strip()
-        fact = str(entry.get("telegram_core_fact") or "").strip()
-        if not title or not fact:
+        title = str(entry.get("source_title") or entry.get("title") or entry.get("news") or "").strip()
+        fact = str(entry.get("telegram_core_fact") or entry.get("summary") or entry.get("core") or "").strip()
+        if not title:
+            continue
+        # Older successful-send receipts stored only the display title. Keep
+        # those as a conservative cross-publisher duplicate signal for 36h.
+        legacy_title_only = not fact and not entry.get("source_body_digest")
+        if legacy_title_only:
+            fact = title
+        if not fact:
             continue
         key = (base.norm(title), base.norm(fact), str(entry.get("source_published_kst") or ""))
-        unique.setdefault(key, entry)
+        unique.setdefault(key, {**entry, "source_title": title, "telegram_core_fact": fact,
+                                "_legacy_title_only": legacy_title_only})
     return sorted(unique.values(), key=lambda row: str(row.get("last_seen_kst") or ""), reverse=True)[:250]
 
 
@@ -506,12 +512,17 @@ def filter_previously_seen_alerts(
             )
             candidate_fact = str(canonical.get("telegram_core_fact") or "")
             for entry in recent_seen_event_entries(seen, now, lane):
-                if not market_materiality.same_headline_event(
-                    candidate_title,
-                    str(entry.get("source_title") or ""),
-                    candidate_fact,
-                    str(entry.get("telegram_core_fact") or ""),
-                ):
+                prior_title = str(entry.get("source_title") or "")
+                if entry.get("_legacy_title_only"):
+                    same_event = market_materiality.same_headline_event(candidate_title, prior_title)
+                else:
+                    same_event = market_materiality.same_headline_event(
+                        candidate_title,
+                        prior_title,
+                        candidate_fact,
+                        str(entry.get("telegram_core_fact") or ""),
+                    )
+                if not same_event:
                     continue
                 entry_event_identity = str(entry.get("source_event_identity") or "")
                 if identity and entry_event_identity and identity != entry_event_identity:
@@ -580,8 +591,10 @@ def record_seen_alerts(alerts: list[dict], now) -> None:
                 "last_seen_kst": seen_at,
                 "lanes": lanes,
                 "title": alert.get("news") or alert.get("original_news") or "",
-                "source_title": alert.get("source_title") or alert.get("original_news") or alert.get("news") or "",
-                "telegram_core_fact": alert.get("telegram_core_fact") or "",
+                "source_title": (alert.get("source_title") or alert.get("original_news")
+                                 or alert.get("news") or alert.get("title") or ""),
+                "telegram_core_fact": (alert.get("telegram_core_fact") or alert.get("summary")
+                                       or alert.get("core") or ""),
                 "source": alert.get("publisher") or alert.get("source") or "",
                 "link": alert.get("link") or "",
                 "source_event_identity": market_materiality.source_event_identity(alert),
