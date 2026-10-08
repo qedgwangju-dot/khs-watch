@@ -69,19 +69,27 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-10-08T08:47:27+09:00",
-  "last_scan_count": 2,
+  "updated_at_kst": "2026-10-08T14:55:11+09:00",
+  "last_scan_count": 4,
   "last_eligible_count": 0,
-  "last_held_count": 0,
+  "last_held_count": 1,
   "seen_fingerprints": [
     "2b04eb17a0ebb0a08a2d3235",
     "2ff967f0a83d4f9d09737f69",
     "55bbf1575d333d5e4db815d4",
+    "a5c6512b8705aa4e7464c59a",
     "ab4bbf5bf49f2f1ddd6aba5b",
     "c21f43569955742f3d6b1742",
     "e3172365bd8c10ce9681459f",
     "ef0347fedd892f8507e3e383"
   ],
   "delivered_event_keys": [],
-  "last_held": []
+  "last_held": [
+    {
+      "event_key": "taiwan|diversification|TSMC|arizona",
+      "source": "Taipei Times",
+      "reason": "출처 신뢰도 부족",
+      "published_kst": "2026-10-08T01:00:00+09:00"
+    }
+  ]
 }
