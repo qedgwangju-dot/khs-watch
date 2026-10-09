@@ -109,6 +109,38 @@ class IPhone18ProOrderTests(unittest.TestCase):
         self.assertEqual(m._fact_key(m._extract_cut(a["title"]+" "+a["description"]),a),
                          m._fact_key(m._extract_cut(b["title"]+" "+b["description"]),b))
 
+    def test_official_apple_confirmation_is_distinct_from_nikkei_repeat(self):
+        row = self.item(
+            "Apple confirms iPhone 18 Pro October component orders cut 15%-20%",
+            "Original supplier requested production orders for October were reduced.",
+            "Apple Newsroom"
+        )
+        self.assertFalse(m._official_publisher(row))
+        row["source_url"] = "https://www.apple.com/newsroom/"
+        self.assertTrue(m._official_publisher(row))
+        signal = m._relevant_news(row,self.state())
+        self.assertIsNotNone(signal)
+        self.assertEqual(signal["stage"],3)
+        self.assertNotEqual(signal["fact_key"],m.BASELINE_FACT)
+
+    def test_reuters_mentions_apple_does_not_make_official(self):
+        row=self.item(
+            "Apple confirms? iPhone 18 Pro October component orders cut 15%",
+            "Originally requested supplier production orders reduced 15%, Nikkei says.",
+            "Reuters"
+        )
+        self.assertFalse(m._official_publisher(row))
+        self.assertIsNone(m._relevant_news(row,self.state()))
+
+    def test_company_name_in_news_not_named_supplier_confirmation(self):
+        row=self.item(
+            "LG Innotek component orders for iPhone 18 Pro October cut 20%",
+            "Apple requested initial orders reduced 20%, Nikkei reported.",
+            "Reuters"
+        )
+        self.assertFalse(m._official_publisher(row))
+        self.assertIsNone(m._relevant_news(row,self.state()))
+
     def test_apple_price_is_official_not_order_cut(self):
         text="Apple iPhone 18 Pro starts at $1,199 and Pro Max at $1,299, up $100."
         self.assertIsNone(m._extract_cut(text))
