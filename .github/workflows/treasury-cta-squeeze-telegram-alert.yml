@@ -30,7 +30,8 @@ permissions:
   contents: write
 
 concurrency:
-  group: treasury-cta-squeeze-telegram-alert
+  # Code-push verification must not cancel a scheduled production alert.
+  group: treasury-cta-squeeze-telegram-alert-${{ github.event_name == 'push' && 'code-audit' || 'production' }}
   cancel-in-progress: true
 
 jobs:
