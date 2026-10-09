@@ -2155,6 +2155,43 @@ def _self_test_korean_optics_alerts() -> None:
     )
     assert has_actual_aaoi_identity("AOI doubles 800G transceiver shipments")
     assert has_actual_aaoi_identity("祥茂光電 expands 800G production")
+
+    # Direct 2026-10-09 Bloomberg CEO interview is a new structural event
+    # rather than another product-launch/stock-price headline.
+    booked2029 = "Nvidia-Backed Lumentum Sold Out of AI Server Parts Till 2029"
+    booked2030 = "Lumentum optical AI server parts fully booked through 2030"
+    old2028 = "Lumentum optical laser parts on track to be sold out through 2028"
+    shortfall70 = "Lumentum optical laser demand shortfall: unable to meet 70% through 2027"
+    shortfall30 = "Lumentum optical devices unable to meet 30 percent of demand through 2028"
+    japan350 = "Lumentum to invest $350 million in Japan optical laser factory capacity"
+    japan12 = "Lumentum Japan optical laser fab capacity 12-fold expansion"
+    sharing = "Lumentum optical laser hyperscalers agree to share capital expenditure risks"
+    ng = "Lumen Technologies sold out network server parts through 2029"
+    merger = "Lumentum optical laser CEO considers M&A next year"
+    assert lite_supply_event(booked2029)[2] == "lumentum|booking-horizon|2029"
+    assert lite_supply_event(booked2030)[2] == "lumentum|booking-horizon|2030"
+    assert lite_supply_event(old2028)[2] == "lumentum|booking-horizon|2028"
+    assert lite_supply_event(shortfall70)[2] == "lumentum|demand-gap|2027|70"
+    assert lite_supply_event(shortfall30)[2] == "lumentum|demand-gap|2028|30"
+    assert lite_supply_event(japan350)[2] == "lumentum|japan-capex|350m|planned"
+    assert lite_supply_event(japan12)[2] == "lumentum|japan-fab-capacity|12x"
+    assert lite_supply_event(sharing)[2] == "lumentum|customer-capex-sharing|agreement-or-talks"
+    assert lite_supply_event(ng) is None
+    assert lite_supply_event(merger) is None
+    assert canonical_story_key(LITE_CAPACITY_COMPANY, booked2029) != canonical_story_key(LITE_CAPACITY_COMPANY, booked2030)
+    assert canonical_story_key("Lumentum", booked2029) == canonical_story_key(LITE_CAPACITY_COMPANY, booked2029)
+    assert lite_high_quality_source({
+        "company": LITE_CAPACITY_COMPANY, "source": "Bloomberg",
+        "source_url": "https://www.bloomberg.com", "title": booked2029,
+    }, [])
+    assert not lite_high_quality_source({
+        "company": LITE_CAPACITY_COMPANY, "source": "Bloomberg",
+        "source_url": "https://example.com", "title": booked2029,
+    }, [])
+    assert signal_score(booked2029, "Bloomberg") < 7 or not any(
+        re.search(p, booked2029, re.I) for p in ACTION_PATTERNS
+    ), "This regression must exercise the previously-missed booked-capacity headline"
+
     assert power_milestone(award_application)[2] == POWER_INITIAL_KEY
     assert power_milestone(award_granted)[0] == "AAOI 현장발전 보조금"
     assert power_milestone("AAOI Taiwan Bloom Energy SOFC plant 5MW officially confirmed")[2] != power_milestone(
