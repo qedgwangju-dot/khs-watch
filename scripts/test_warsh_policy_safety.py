@@ -57,7 +57,7 @@ class WarshSafetyTests(unittest.TestCase):
         }
         task = {"url": "https://www.federalreserve.gov/monetarypolicy/balance-sheet-policy-task-force.htm"}
         msg = balance.summary_message_v2(cur, impl, task, "자산 구성 전환", None, "검증")
-        self.assertIn("현재는 총량축소형 QT 아님", msg)
+        self.assertIn("충분한 준비금 유지·QT 재개 공식 미확인", msg)
         self.assertIn("주택저당증권", msg)
 
 
@@ -215,7 +215,8 @@ class WarshSafetyTests(unittest.TestCase):
 
     def test_cme_outage_does_not_retry_many_contract_dates(self):
         with patch.object(futures, "ny_today", return_value=date(2026, 10, 8)), \
-             patch.object(futures, "get_json", side_effect=TimeoutError("blocked")) as api:
+             patch.object(futures, "get_json", side_effect=TimeoutError("blocked")) as api, \
+             patch.object(futures, "cme_monthly_rates_ftp", side_effect=RuntimeError("FTP 장애")):
             with self.assertRaisesRegex(RuntimeError, "접속 장애"):
                 futures.cme_monthly_rates()
         self.assertEqual(api.call_count, 1, "접속 장애에서 날짜마다 재시도해도 복구되지 않는다")
