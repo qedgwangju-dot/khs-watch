@@ -50,15 +50,15 @@
     "cboe_url": "https://www.cboe.com/insights/posts/week-of-9-21-2026-oil-rates-correlation-jumps-to-a-35-year-high"
   },
   "policy": {
-    "date": "2026-10-09T22:48:48.044331+00:00",
-    "meeting_date": "2026-10-28",
+    "date": "2026-10-09T22:54:43.371694+00:00",
+    "meeting_date": null,
     "hike25_prob": null,
     "extra_bp": null,
     "verdict": "시장원천 최신성 미확인 — 정책경로 판정 유보",
     "source": null,
-    "source_status": "최신성 검증 실패 — 직전 정상값 보존",
+    "source_status": "최신성 검증 실패 — 과거값 격리·신규 판정 중지",
     "fresh": false
   },
   "oil_rates_verdict": "유가·장기금리 연결 경계 — 단순 동행인지 정책 전이인지 확인",
-  "updated_at_utc": "2026-10-09T22:56:40.213122+00:00"
+  "updated_at_utc": "2026-10-09T22:59:09.620139+00:00"
 }
