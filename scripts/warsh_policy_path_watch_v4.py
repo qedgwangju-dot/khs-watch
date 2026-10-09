@@ -210,6 +210,10 @@ def official_snapshot():
         avg = monthly[ym]
         post = (avg*days - pre*d.day) / post_days
         change = (post-pre)*100.0
+        # 회의 직후의 월내 일수가 적을 때 결제값 오차가 크게 증폭될 수 있다.
+        # 100bp를 넘는 단일 회의 추론·비정상 금리 수준은 발송하지 않는다.
+        if not (math.isfinite(post) and math.isfinite(change) and 0.0 <= post <= 15.0 and abs(change) <= 100.0):
+            raise RuntimeError(f'CME 월물 정책경로 비정상값: {d.isoformat()} {change:.1f}bp')
         dist = adjacent_distribution(change)
         result.append({
             "date":d.isoformat(),
