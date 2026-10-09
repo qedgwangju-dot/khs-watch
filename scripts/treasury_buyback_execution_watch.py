@@ -13,6 +13,7 @@ import urllib.parse
 import urllib.request
 import time
 import xml.etree.ElementTree as ET
+from functools import lru_cache
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -251,6 +252,7 @@ def _treasury_yield_xml_url(year: str) -> str:
     )
 
 
+@lru_cache(maxsize=4)
 def official_curve_rows(year: str) -> list[dict]:
     raw = fetch_text(_treasury_yield_xml_url(year))
     root = ET.fromstring(raw)
