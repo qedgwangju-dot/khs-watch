@@ -377,6 +377,77 @@ class HonamEventFilterRegressionTest(unittest.TestCase):
         self.assertEqual(_executive_visit_signal(item), 1)
 
 
+    def _chair_oct9_briefing_reports(self):
+        return [
+            {
+                "title": '최태원 "호남 반도체 팹 규모, 용인 3분의 2 수준 검토"',
+                "description": "향후 추가 부지와 공장 규모를 검토한다고 밝혔다.",
+                "published": "Fri, 09 Oct 2026 06:26:00 GMT",
+                "source": "연합뉴스", "url": "https://example.com/yna-briefing",
+                "source_status": "보도 단계",
+                "stages": ["6_산단투자_기업일정"],
+            },
+            {
+                "title": '최태원 "용인만으론 부족…호남 반도체, 전력·용수 늦어도 먼저 착공"',
+                "description": "현장 브리핑 중 전력과 용수보다 착공이 앞설 수 있다고 언급했다.",
+                "published": "Fri, 09 Oct 2026 06:25:00 GMT",
+                "source": "뉴시스", "url": "https://example.com/newsis-briefing",
+                "source_status": "보도 단계",
+                "stages": ["5_기반시설_생활SOC", "6_산단투자_기업일정"],
+            },
+        ]
+
+    def test_oct9_briefing_headlines_are_one_completed_visit_not_infra_upgrade(self):
+        items = self._chair_oct9_briefing_reports()
+        self.assertEqual([_executive_visit_signal(x) for x in items], [3, 3])
+        self.assertEqual({_event_family(x) for x in items}, {"honam_sk_chair_site_visit_20261009"})
+        merged = _merge_group(items)
+        self.assertEqual(merged["stages"], ["6_산단투자_기업일정"])
+        self.assertEqual(merged["verification_level"], 2)
+        self.assertIn("방문 완료", merged["title"])
+        self.assertIn("규모", merged["title"])
+        self.assertIn("선착공", merged["title"])
+
+    def test_oct9_briefing_reprint_after_corrected_message_is_suppressed(self):
+        family = "honam_sk_chair_site_visit_20261009"
+        key = hashlib.sha256(("family|" + family).encode("utf-8")).hexdigest()[:28]
+        with tempfile.TemporaryDirectory() as td:
+            root = pathlib.Path(td)
+            alert, state, pending = (root / n for n in ("alert.json", "state.json", "pending.json"))
+            alert.write_text(json.dumps({
+                "new_items": self._chair_oct9_briefing_reports(), "official_changes": []
+            }, ensure_ascii=False), encoding="utf-8")
+            state.write_text(json.dumps({
+                "seen_event_keys": [key],
+                "event_status_levels": {key: 2},
+                "event_action_levels": {key: 3},
+            }), encoding="utf-8")
+            with patch("scripts.honam_event_filter.ALERT_PATH", alert), \
+                 patch("scripts.honam_event_filter.STATE_PATH", state), \
+                 patch("scripts.honam_event_filter.PENDING_PATH", pending):
+                event_filter_main()
+            self.assertFalse(alert.exists(), "Completed visit recap was resent")
+            data = json.loads(pending.read_text(encoding="utf-8"))
+            self.assertEqual(data["event_action_levels"][key], 3)
+
+    def test_verified_press_briefing_does_not_swallow_binding_contract(self):
+        contract = {
+            "title": "최태원, 호남 반도체 투자계약 체결 확정",
+            "description": "새로운 확정 계약의 체결을 별도로 보도",
+            "published": "Fri, 09 Oct 2026 07:30:00 GMT",
+        }
+        self.assertEqual(_executive_visit_signal(contract), 0)
+        self.assertEqual(_event_family(contract), "")
+
+    def test_previsit_quote_headline_cannot_be_reported_completed(self):
+        before = {
+            "title": '최태원 "호남 반도체, 전력·용수 늦어도 먼저 착공" 전망',
+            "description": "9일 현장 방문을 앞둔 전망성 보도",
+            "published": "Thu, 08 Oct 2026 12:00:00 GMT",
+        }
+        self.assertEqual(_executive_visit_signal(before), 1)
+
+
 
 if __name__ == "__main__":
     unittest.main()

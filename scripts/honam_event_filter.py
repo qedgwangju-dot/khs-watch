@@ -203,13 +203,34 @@ def _executive_visit_signal(item):
         return 0
     if not any(x in lead for x in ("반도체", "sk하이닉스", "삼성전자", "팹", "fab")):
         return 0
-    if not any(x in lead for x in ("방문", "찾", "부지", "현장", "실사")):
+    has_visit_context = any(x in lead for x in ("방문", "찾", "부지", "현장", "실사"))
+    # On-site press quotes on the verified visit day belong to the completed
+    # visit, not to separate infrastructure/plant incidents per headline.
+    # A separate signed contract or construction-start decision remains distinct.
+    same_day_onsite_statement = False
+    if actor[0] == "sk_chair" and "최태원" in heading and any(
+        x in heading for x in ("용인", "3분의 2", "3분의2", "전력", "용수", "착공", "가장 빠른", "최대한 빠른")
+    ) and not any(
+        x in heading for x in ("계약 체결", "협약 체결", "투자 확정", "착공 확정", "착공했다", "착공식", "허가 승인")
+    ):
+        try:
+            published = email.utils.parsedate_to_datetime(_norm(item.get("published")))
+            if published.tzinfo is None:
+                published = published.replace(tzinfo=dt.timezone.utc)
+            pub_local = published.astimezone(dt.timezone(dt.timedelta(hours=9)))
+            known_day = _registered_visit_day("sk_chair", pub_local.date())
+            same_day_onsite_statement = (
+                known_day == pub_local.strftime("%Y%m%d") and pub_local.hour >= 12
+            )
+        except (TypeError, ValueError, OverflowError):
+            pass
+    if not has_visit_context and not same_day_onsite_statement:
         return 0
 
     phase = str(item.get("event_phase") or "").lower()
     if phase == "scheduled":
         return 1
-    if phase == "completed":
+    if phase == "completed" or same_day_onsite_statement:
         return 3
 
     completed_verbs = (
@@ -400,6 +421,15 @@ def _summarize_event(items):
         name = actor[1] if actor else "반도체 기업 경영진"
         completed = any(_executive_visit_signal(i) >= 3 for i in items)
         if completed:
+            briefing = " ".join(_item_text(i) for i in items)
+            has_scale = bool(re.search(r"3\s*분의\s*2|3분의2", briefing))
+            has_early_start = all(x in briefing for x in ("착공", "전력", "용수"))
+            if has_scale and has_early_start:
+                return name + ", 광주 군공항 방문 완료·팹 규모 및 선착공 구상 발언"
+            if has_scale:
+                return name + ", 광주 군공항 방문 완료·팹 규모 구상 발언"
+            if has_early_start:
+                return name + ", 광주 군공항 방문 완료·착공 속도 관련 발언"
             return name + ", 광주 군공항 팹 예정지 현장 방문 완료 보도"
         if actor and actor[0] == "sk_chair" and _executive_visit_date(main) == "20261009":
             return "최태원 SK그룹 회장, 10월 9일 광주 군공항 팹 예정지 방문 예정"
@@ -469,10 +499,14 @@ def _merge_group(items):
         actor_info = next((_executive_visit_actor(i) for i in ordered if _executive_visit_signal(i)), None)
         actor_name = actor_info[1] if actor_info else "기업 경영진"
         first["impact"] = (
-            actor_name + " 현장 방문 완료 보도"
+            actor_name + " 현장 방문 완료·투자계약 및 기반시설 공급은 별도 확정 필요"
             if completed else actor_name + " 현장 방문 예정·투자계약은 별도 확인"
         )
         first["reason"] = (
+            "기존 임원진 부지 검토에서 회장 현장방문으로 진전. "
+            "팹 규모 및 전력·용수보다 공사를 앞당길 가능성 발언은 "
+            "확정 투자계약·착공일·전원 인가·용수 계약과 구분해야 함"
+            if completed else
             "기존 임원진의 부지 검토 이후 경영진 방문으로 사업 검토가 진행 중. "
             "군공항 부지·전력·용수·인허가 실제 협의 결과는 후속 확인"
         )
