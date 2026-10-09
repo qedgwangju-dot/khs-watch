@@ -372,7 +372,8 @@ class KoreanTransformerExportTests(unittest.TestCase):
         }
         self.assertFalse(w.kcs_retry_due(now, previous, True))
         self.assertTrue(w.kcs_retry_due(now, previous, True, force=True))
-        self.assertFalse(w.kcs_retry_due(now, previous, False, force=True))
+        # Missing credentials must still record the missing-key state once.
+        self.assertTrue(w.kcs_retry_due(now, previous, False, force=True))
         with mock.patch.dict(w.os.environ, {
             "GITHUB_RUN_ATTEMPT": "2",
             "KCS_DATA_GO_SERVICE_KEY": "dummy",
