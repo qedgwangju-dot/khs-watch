@@ -328,6 +328,9 @@ def main():
             seen[key] = meta(item, now, suppressed_duplicate="same_event")
             suppressed += 1
             continue
+        # Send at most five events per run; leave other events unregistered for later runs.
+        if len(new_items) >= 5:
+            continue
         # Previously unseen event. Register immediately, so another outlet in the same run is suppressed.
         seen[key] = meta(item, now, pending_alert=True)
         events[item["event_id"]] = {
