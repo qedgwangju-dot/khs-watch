@@ -50,6 +50,7 @@ jobs:
           STARLINK_D2D_SELF_TEST=1 python scripts/starlink_mobile_d2d_watch.py
           python scripts/starlink_mobile_d2d_korean_guard.py --self-test
           python scripts/space_launch_telegram_send.py --self-test
+          python scripts/space_launch_telegram_send.py --inline-self-test
           python scripts/merge_space_launch_state.py --self-test
 
       - name: Verify first-party documents, monitor and correlate sources
@@ -79,7 +80,14 @@ jobs:
           SPACE_LAUNCH_TELEGRAM_BOT_TOKEN: ${{ secrets.SPACE_LAUNCH_TELEGRAM_BOT_TOKEN }}
           SPACE_LAUNCH_TELEGRAM_CHAT_ID: ${{ secrets.SPACE_LAUNCH_TELEGRAM_CHAT_ID }}
         run: |
-          python scripts/space_launch_telegram_send.py out/starlink_mobile_d2d_watch_telegram.txt
+          python scripts/space_launch_telegram_send.py --inline out/starlink_mobile_d2d_watch_telegram.txt
+
+      - name: One-time live inline-link verification
+        env:
+          SPACE_LAUNCH_TELEGRAM_BOT_TOKEN: ${{ secrets.SPACE_LAUNCH_TELEGRAM_BOT_TOKEN }}
+          SPACE_LAUNCH_TELEGRAM_CHAT_ID: ${{ secrets.SPACE_LAUNCH_TELEGRAM_CHAT_ID }}
+        run: |
+          python scripts/space_launch_telegram_send.py --inline-live-test
 
       - name: Persist dedup state only after successful delivery, merge on push conflicts
         if: success() && hashFiles('out/starlink_mobile_d2d_watch_pending.json') != ''
