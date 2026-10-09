@@ -110,8 +110,8 @@ def market_dec():
     p=load(PATH_STATE,{})
     status=str(p.get('source_status') or '')
     cls=p.get('classification') or {}
-    if ('실패' in status or '오래' in status or cls.get('market_source_stale')
-            or p.get('source_error')):
+    from warsh_policy_source_guard import market_state_is_fresh
+    if not market_state_is_fresh(p) or cls.get('market_source_stale'):
         return None
     snap=load(STATE,{}).get('snapshot') or {}
     date=str(snap.get('date') or '')
