@@ -459,7 +459,7 @@ def parse_google_news(query: str, now: dt.datetime) -> list[dict]:
     return out
 
 
-def official_page_snapshots() -> dict[str, dict]:
+def official_page_snapshots(*, skipped: list[str] | None = None) -> dict[str, dict]:
     out = {}
     for name, url in KNOWN_OFFICIAL_PAGES.items():
         try:
@@ -468,6 +468,8 @@ def official_page_snapshots() -> dict[str, dict]:
             # One vendor page can block automated access (for example HTTP 403).
             # Do not let that disable all of the other official-page checks.
             print(f"ai_policy_official_page_skip={name}: {type(exc).__name__}: {exc}")
+            if skipped is not None:
+                skipped.append(f"{name}: {type(exc).__name__}: {exc}")
             continue
         text = strip_html(raw)
         material = " ".join(re.findall(
@@ -1130,10 +1132,11 @@ def main() -> int:
     # never alert on in-place HTML changes, and mutable pages require a stable
     # changed digest across multiple observations separated by time.
     official_pages = dict(state.get("official_pages") or {})
+    official_page_skips: list[str] = []
     prior_snapshot_schema = int(state.get("official_snapshot_schema_version") or 0)
     rebaseline_official_pages = prior_snapshot_schema != OFFICIAL_SNAPSHOT_SCHEMA_VERSION
     try:
-        snapshots = official_page_snapshots()
+        snapshots = official_page_snapshots(skipped=official_page_skips)
         for name, snap in snapshots.items():
             previous = official_pages.get(name)
             page_state, should_alert = advance_official_page_state(
@@ -1227,6 +1230,7 @@ def main() -> int:
             "material_items":len(current),
             "new_articles":len(new_items),
             "new_events":len(events),
+            "official_page_skips":official_page_skips,
             "errors":errors,
         },
     }
@@ -1246,14 +1250,18 @@ def main() -> int:
         f"- 중요 필터 통과: {len(current)}건",
         f"- OpenShell 텔레메트리 최신: {openshell_telemetry.get('name') or '확인 불가'}",
         f"- 신규 중요 사건: {len(events)}건",
+        f"- 공식문서 접근 누락: {len(official_page_skips)}건",
         f"- 오류: {len(errors)}건",
     ]
+    if official_page_skips:
+        status += ["", "## 원천 접근 제한"] + [f"- {x}" for x in official_page_skips[:10]]
     if errors:
         status += ["", "## 오류"] + [f"- {x}" for x in errors[:10]]
     STATUS_PATH.write_text("\n".join(status)+"\n",encoding="utf-8")
     print(
         f"ai_policy_baseline={str(baseline).lower()} material={len(current)} "
-        f"new_articles={len(new_items)} new_events={len(events)} errors={len(errors)}"
+        f"new_articles={len(new_items)} new_events={len(events)} "
+        f"official_page_skips={len(official_page_skips)} errors={len(errors)}"
     )
     return 0
 
