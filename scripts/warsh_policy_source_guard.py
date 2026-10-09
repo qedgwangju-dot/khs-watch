@@ -17,14 +17,23 @@ def market_state_is_fresh(state, now=None):
         return False
     if state.get("source_status") != SUCCESS_STATUS or state.get("source_error"):
         return False
-    trade_date = state.get("official_settlement_date")
     validated_at = state.get("last_validated_at_utc")
     source = str(state.get("source") or "")
     host = (urlparse(source).hostname or "").lower()
-    # A fresh market path must come from CME itself.  Historical mirrors and
-    # cached third-party pages are never allowed to regain "current" status.
-    if host not in {"cmegroup.com", "www.cmegroup.com"}:
-        return False
+    basis = str(state.get("market_data_basis") or "")
+    api_mode = basis == "CME FedWatch 공식 인증 API 종가 확률"
+    # 홈페이지 URL만으로 공식 API 인증을 증명할 수 없다.
+    # 실제 데이터 조회에 사용된 허용된 CME API endpoint도 확인한다.
+    if api_mode:
+        api_url = str(state.get("source_api_url") or "")
+        if (host not in {"www.cmegroup.com", "cmegroup.com"}
+                or api_url != "https://markets.api.cmegroup.com/fedwatch/v1/forecasts"):
+            return False
+        trade_date = state.get("forecast_reporting_date")
+    else:
+        if host not in {"cmegroup.com", "www.cmegroup.com"}:
+            return False
+        trade_date = state.get("official_settlement_date")
     if not trade_date or not validated_at:
         return False
     utc_now = now or datetime.now(timezone.utc)
@@ -47,12 +56,29 @@ def market_state_is_fresh(state, now=None):
         ]
         if not valid:
             return False
-        basis = str(state.get("market_data_basis") or "")
-        # CME monthly settlement prices encode an expected average rate, not
-        # the full FedWatch outcome distribution.  If a settlement-only state
-        # contains a numerical meeting probability, reject it rather than mix
-        # probability (%) with an implied rate/bp calculation.
-        if "결제값" in basis and any(row.get("hike25_prob") is not None for row in valid):
+        # 인증된 공식 FedWatch 확률은 모든 FOMC 회의에 누적 목표금리분포를 제공한다.
+        # 소수점/100배 단위, 부분합, 보고일 누락, 이전회의 재사용 모두 거절.
+        if api_mode:
+            if len(valid) != len(meetings):
+                return False
+            for row in valid:
+                if row.get("reporting_date") != trade_date:
+                    return False
+                odds = row.get("outcomes")
+                if not isinstance(odds, dict) or not odds:
+                    return False
+                values = [float(p) for p in odds.values()]
+                if not all(math.isfinite(p) and 0 <= p <= 100 for p in values):
+                    return False
+                if abs(sum(values) - 100.0) > .06:
+                    return False
+                for field in ("hike25_prob", "hike25_or_more_prob", "hold_prob", "cut_prob"):
+                    val = float(row[field])
+                    if not math.isfinite(val) or val < 0 or val > 100:
+                        return False
+                if float(row["hike25_prob"]) > float(row["hike25_or_more_prob"]) + .001:
+                    return False
+        elif "결제값" in basis and any(row.get("hike25_prob") is not None for row in valid):
             return False
         return True
     except (TypeError, ValueError, OverflowError, AttributeError):
