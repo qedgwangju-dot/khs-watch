@@ -482,14 +482,17 @@ def _historical_kuwait_base_footage(row):
 
 
 
-def _iran_three_day_strike_plan(row):
-    """보도된 3일 집중공격 '준비안'만 검출한다. 승인·실제 공습과 분리한다."""
+def _iran_three_day_strike_plan(row, *, trust_required=True):
+    """3일 공습 '계획 보도'만 검출한다. 출처 확인과 사건 식별을 별도로 관리한다."""
     title = html.unescape(str(row.get("title_original") or row.get("title") or "")).lower()
     title = re.sub(r"\s+", " ", title)
     source = " ".join(str(row.get(k) or "") for k in ("source", "link", "resolved_url")).lower()
     credible = any(x in source for x in (
         "연합뉴스", "yonhap", "경향신문", "reuters", "axios", "nytimes",
         "new york times", "뉴욕타임스", "associated press", "apnews", "아나돌루",
+        "sbs", "kbs", "mbc", "ytn", "jtbc", "obs경인tv",
+        "아주경제", "한국경제", "매일경제", "서울경제", "연합인포맥스",
+        "머니투데이", "이데일리", "뉴스1", "조선일보", "동아일보", "중앙일보",
     ))
     iran = any(x in title for x in ("iran", "iranian", "이란", "테헤란"))
     days = bool(re.search(r"(?:3\s*일(?:간)?|3[- ]day|three[- ]day|72[- ]hour)", title))
@@ -505,7 +508,7 @@ def _iran_three_day_strike_plan(row):
         "launched strikes", "strikes began", "attack began", "bombing started",
         "실제 공습 개시", "공격 개시", "공습 감행", "공격 감행",
     ))
-    return credible and iran and days and action and planned and not executed
+    return (credible or not trust_required) and iran and days and action and planned and not executed
 
 
 def _trump_iran_midterm_no_strike(row, *, trust_required=True):
@@ -1043,6 +1046,8 @@ def score_item(row, now):
     # 일반 전쟁 기사로 재분류하지 않는다. 신뢰 매체가 아니면 송출 보류.
     if _trump_iran_midterm_no_strike(row, trust_required=False) and not _trump_iran_midterm_no_strike(row):
         return 0, []
+    if _iran_three_day_strike_plan(row, trust_required=False) and not _iran_three_day_strike_plan(row):
+        return 0, []
     if (
         _trump_la_sd_hypothetical(row)
         or _recycled_iran_full_scale_war_rhetoric(row)
@@ -1206,7 +1211,9 @@ def _stable_source_url(row):
 
 
 def item_id(row):
-    if _iran_three_day_strike_plan(row):
+    # 같은 작전 보도는 출처와 무관하게 하나의 사건 ID로 식별한다.
+    # 신뢰도가 낮은 매체만 있는 경우 실제 알림에서는 별도 필터로 제외한다.
+    if _iran_three_day_strike_plan(row, trust_required=False):
         return hashlib.sha256(b"event|us-iran|pentagon-three-day-strike-plan|2026-10-08").hexdigest()[:20]
     if _trump_iran_midterm_no_strike(row):
         return hashlib.sha256(b"event|us-iran|trump-no-strikes-before-midterms|2026-10-08").hexdigest()[:20]
@@ -1622,6 +1629,15 @@ def verify_alert(test_mode=False):
     ]
     if len(repeated_midterm_pledges) > 1:
         issues.append("같은 10월 8일 트럼프 이란 공격유예 발언을 매체별 중복 정책 알림으로 송출")
+    repeated_three_day_plan = [
+        line for line in item_title_lines
+        if re.search(r"(?:3\s*일|3[- ]day|three[- ]day|72[- ]hour)", line, re.I)
+        and re.search(r"(?:이란|iran)", line, re.I)
+        and re.search(r"(?:집중|공격|공습|타격|strike|attack)", line, re.I)
+        and re.search(r"(?:계획|준비|검토|제동|plan|prepar|option)", line, re.I)
+    ]
+    if len(repeated_three_day_plan) > 1:
+        issues.append("미 국방부의 동일 3일 집중공격 계획 보도를 복수 기사로 중복 송출")
     if issues:
         raise RuntimeError("WAR_OCT04_QUALITY_GATE: " + " | ".join(issues))
 
