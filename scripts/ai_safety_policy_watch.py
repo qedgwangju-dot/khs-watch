@@ -949,28 +949,59 @@ def _translate_mymemory(text: str) -> str:
 
 
 def translate_alert_text(text: str) -> str:
+    """Translate ordinary words without letting a service rename companies."""
     value = " ".join(strip_html(text).split())
     if not _needs_korean_translation(value):
         return value
 
-    errors: list[str] = []
-    for translator in (_translate_google, _translate_mymemory):
-        for _attempt in range(2):
-            try:
-                translated = " ".join(strip_html(translator(value)).split())
-                if translated and HANGUL_RE.search(translated):
-                    return _preserve_identifiers(value, translated)
-                errors.append(f"{translator.__name__}: no Hangul in result")
-            except Exception as exc:
-                errors.append(f"{translator.__name__}: {type(exc).__name__}: {exc}")
-
-    raise RuntimeError("Korean translation failed: " + " | ".join(errors[-4:]))
-
+    protected = sorted(
+        (*ALERT_IDENTIFIER_TERMS,
+         "Anthropic Cyber Mission", "Critical Infrastructure Defense Program",
+         "OSS Scanner", "CIDP"),
+        key=len, reverse=True,
+    )
+    pattern = "(" + "|".join(re.escape(term) for term in protected) + ")"
+    parts = re.split(pattern, value, flags=re.I)
+    canonical = {x.lower(): x for x in protected}
+    assembled = []
+    errors = []
+    for part in parts:
+        if not part:
+            continue
+        if part.lower() in canonical:
+            assembled.append(canonical[part.lower()])
+            continue
+        if not LATIN_WORD_RE.search(part):
+            assembled.append(part)
+            continue
+        result = ""
+        for translator in (_translate_google, _translate_mymemory):
+            for _attempt in range(2):
+                try:
+                    candidate = " ".join(strip_html(translator(part)).split())
+                    if candidate and HANGUL_RE.search(candidate):
+                        result = candidate
+                        break
+                    errors.append(f"{translator.__name__}: no Hangul")
+                except Exception as exc:
+                    errors.append(f"{translator.__name__}: {type(exc).__name__}: {exc}")
+            if result:
+                break
+        if not result:
+            raise RuntimeError("Korean translation failed: " + " | ".join(errors[-4:]))
+        assembled.append(
+            (" " if part[0].isspace() else "") + result
+            + (" " if part[-1].isspace() else "")
+        )
+    rendered = " ".join("".join(assembled).split())
+    if "anthropic" in value.lower() and "인류학" in rendered:
+        raise RuntimeError("Anthropic company name was mistranslated")
+    return rendered
 
 def concise_fact(item: dict) -> str:
     title = re.sub(r"\s+-\s+[^-]{1,40}$", "", item.get("title","")).strip()
     title = re.sub(
-        r"^(?:Anthropic Research|OpenAI Alignment)\\s*:\\s*",
+        r"^(?:Anthropic News|Anthropic Research|OpenAI Alignment)[ \t]*:[ \t]*",
         "",
         title,
         flags=re.I,
