@@ -544,8 +544,8 @@ def main() -> int:
     STATUS.write_text(
         "# 미 재무부 장기채 바이백 정책 점검\n\n"
         f"- 조회시각: {checked}\n"
-        f"- 10Y~20Y 일정상 최대: {current.get('10Y to 20Y')}B\n"
-        f"- 20Y~30Y 일정상 최대: {current.get('20Y to 30Y')}B\n"
+        f"- 10Y~20Y 잠정 일정 표기액(최종 한도와 다를 수 있음): {current.get('10Y to 20Y')}B\n"
+        f"- 20Y~30Y 잠정 일정 표기액(최종 한도와 다를 수 있음): {current.get('20Y to 30Y')}B\n"
         f"- 신규 관련 재무부 보도자료: {'예' if press_releases else '아니오'}\n"
         f"- 신규 TreasuryDirect 특별공지: {'예' if specials else '아니오'}\n"
         f"- 일정 자체 변경: {'예' if schedule_changes else '아니오'}\n",
