@@ -438,7 +438,7 @@ def auction_lines(op_date: str) -> list[str]:
             if high_yield is not None
             else "• High Yield: 확인 불가"
         ),
-        f"• 응찰배율: {_fmt_cmp(btc, avg_btc, '배')}",
+        f"• 응찰배율: {_fmt_cmp(btc, avg_btc, '배', 2)}",
         f"• 간접낙찰: {_fmt_cmp(indirect, avg_indirect, '%')}",
         f"• Primary Dealer 인수: {_fmt_cmp(dealer, avg_dealer, '%')}",
         f"• 판정: <b>{verdict}</b>",
