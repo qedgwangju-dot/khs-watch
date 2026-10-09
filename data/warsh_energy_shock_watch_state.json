@@ -33,16 +33,16 @@
   },
   "verdict": "판정 유보 — 유가 충격은 크지만 물가 전이와 수요 파괴의 우열 불명확",
   "oil_rates": {
-    "date": "2026-10-07",
+    "date": "2026-10-08",
     "observations": 63,
-    "corr_3m": 0.6383593952618587,
+    "corr_3m": 0.6269660839342631,
     "corr_band": "강한 경보",
-    "beta_bp_per_1pct": 0.6736326896104589,
+    "beta_bp_per_1pct": 0.6373561018463028,
     "beta_hot": false,
-    "wti": 88.27999877929688,
-    "wti_move_pct": -2.366732396576643,
-    "dgs10": 5.28,
-    "dgs10_move_bp": -0.9999999999999787,
+    "wti": 91.48999786376953,
+    "wti_move_pct": -1.4859533132330904,
+    "dgs10": 5.22,
+    "dgs10_move_bp": -2.000000000000046,
     "move_days": 5,
     "measurement_basis": "WTI 선물 완료 일봉·FRED DGS10 공통 거래일 자체 계산",
     "wti_url": "https://finance.yahoo.com/quote/CL=F/",
@@ -50,7 +50,7 @@
     "cboe_url": "https://www.cboe.com/insights/posts/week-of-9-21-2026-oil-rates-correlation-jumps-to-a-35-year-high"
   },
   "policy": {
-    "date": "2026-10-09T09:20:00.750378+00:00",
+    "date": "2026-10-09T16:24:09.974260+00:00",
     "meeting_date": "2026-10-28",
     "hike25_prob": null,
     "extra_bp": null,
@@ -60,5 +60,5 @@
     "fresh": false
   },
   "oil_rates_verdict": "유가·장기금리 연결 경계 — 단순 동행인지 정책 전이인지 확인",
-  "updated_at_utc": "2026-10-09T16:23:28.282895+00:00"
+  "updated_at_utc": "2026-10-09T21:03:40.848005+00:00"
 }
