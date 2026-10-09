@@ -150,7 +150,9 @@ def balance_sheet_baseline():
 
 def classify(snap):
     ms=snap['meetings']; effr=snap['effr']
-    target_year=datetime.now(timezone.utc).year
+    # 연말 회의가 종료된 뒤에는 다음 연도의 첫 미래 회의를 기준으로 자동 전환한다.
+    # 지난 연도 계약이나 점도표를 새로운 연도 전망이라고 표시하지 않는다.
+    target_year=min(int(str(m['date'])[:4]) for m in ms)
     yearly=[m for m in ms if str(m.get('date','')).startswith(f'{target_year}-')]
     if not yearly:
         raise RuntimeError(f'{target_year}년 연말 정책금리 계약 부재 — 지난 연도의 확률을 새해 전망으로 재사용하지 않음')
