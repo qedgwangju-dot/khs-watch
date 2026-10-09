@@ -330,26 +330,24 @@ jobs:
                       ld=str(local.get('date') or '')
                       rt=str(remote.get('updated_at_utc') or '')
                       lt=str(local.get('updated_at_utc') or '')
-                      selected=local
-                      if rd>ld or (rd==ld and rt>lt):
-                          selected=remote
-                      else:
+                      selected=dict(remote if rd>ld or (rd==ld and rt>lt) else local)
+                      # A newer numeric snapshot must not overwrite a newer Telegram delivery.
+                      def message_id(s):
                           try:
-                              rm=int(remote.get('last_sent_message_id') or 0)
-                              lm=int(local.get('last_sent_message_id') or 0)
-                          except (ValueError,TypeError):
-                              rm=lm=0
-                          if rm>lm:
-                              selected=dict(local)
-                              for key in (
-                                  'last_sent_message_id','last_sent_date',
-                                  'last_sent_verdict','last_sent_signature'
-                              ):
-                                  if key in remote:
-                                      selected[key]=remote[key]
+                              return int(s.get('last_sent_message_id') or 0)
+                          except (TypeError, ValueError):
+                              return 0
+                      newest_delivery=max((remote,local),key=message_id)
+                      if message_id(newest_delivery)>message_id(selected):
+                          for key in (
+                              'last_sent_message_id','last_sent_date',
+                              'last_sent_verdict','last_sent_signature'
+                          ):
+                              if key in newest_delivery:
+                                  selected[key]=newest_delivery[key]
                       if selected!=local:
                           path.write_text(
-                              json.dumps(selected,ensure_ascii=False,indent=2)+'\\n',
+                              json.dumps(selected,ensure_ascii=False,indent=2),
                               encoding='utf-8'
                           )
                           print('ai_rotation_state_monotonic_guard=applied')
