@@ -118,7 +118,8 @@ def easy_extra_read(bp):
 def market_path():
     p = load(PATH_STATE, {})
     status = str(p.get('source_status') or '')
-    fresh = status.startswith('실시간 조회')
+    from warsh_policy_source_guard import market_state_is_fresh
+    fresh = market_state_is_fresh(p)
     # Never turn a cached/failing futures source into a fresh policy-path signal.
     # Keep IB research tracking alive, but suppress market-vs-IB divergence until
     # the dedicated policy-path watcher has passed its freshness validation.
