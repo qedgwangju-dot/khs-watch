@@ -68,17 +68,25 @@ def main() -> int:
     day = now.date().isoformat()
     source_outcome = (os.getenv("SOURCE_OUTCOME") or "").lower()
     send_outcome = (os.getenv("SEND_OUTCOME") or "").lower()
+    has_alert = (os.getenv("HAS_ALERT") or "no").lower() == "yes"
+    event_outcome = (os.getenv("EVENT_OUTCOME") or "").lower()
+    format_outcome = (os.getenv("FORMAT_OUTCOME") or "").lower()
+    enrichment_outcome = (os.getenv("ENRICH_OUTCOME") or "").lower()
+    route_outcome = (os.getenv("ROUTE_OUTCOME") or "").lower()
     source_good = source_outcome == "success"
-    delivery_good = send_outcome in ("success", "skipped")
+    if has_alert:
+        delivery_good = all(v == "success" for v in (
+            event_outcome, format_outcome, enrichment_outcome,
+            route_outcome, send_outcome,
+        ))
+    else:
+        delivery_good = send_outcome == "skipped"
     failing = not source_good or not delivery_good
     prior = state_read()
     new = dict(prior)
-    new["last_check_kst"] = now.isoformat(timespec="seconds")
-    new["last_source_outcome"] = source_outcome
-    new["last_telegram_outcome"] = send_outcome
-    new["failing"] = failing
 
     if failing:
+        new["failing"] = True
         if not prior.get("failing"):
             new["failure_since"] = now.isoformat(timespec="seconds")
         if prior.get("last_failure_alert_date") != day:
@@ -96,6 +104,7 @@ def main() -> int:
             new["last_failure_message_id"] = msgid
             print(f"gdpnow_health_failure_notification_confirmed={msgid}")
     elif prior.get("failing"):
+        new["failing"] = False
         message = (
             "[GDPNow 감시 복구]\n"
             f"기준: {now.strftime('%Y-%m-%d %H:%M KST')}\n"
@@ -107,10 +116,13 @@ def main() -> int:
         new["last_recovery_message_id"] = msgid
         new["failure_since"] = None
         print(f"gdpnow_health_recovery_notification_confirmed={msgid}")
-    else:
-        new["failure_since"] = None
-    PENDING.write_text(json.dumps(new, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"gdpnow_health_status={'failing' if failing else 'healthy'}")
+    if new != prior:
+        new["last_source_outcome"] = source_outcome
+        new["last_telegram_outcome"] = send_outcome
+        PENDING.write_text(json.dumps(new, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    elif PENDING.exists():
+        PENDING.unlink()
+    print(f"gdpnow_health_status={'failing' if failing else 'healthy'} state_changed={new != prior}")
     return 0
 
 if __name__ == "__main__":
