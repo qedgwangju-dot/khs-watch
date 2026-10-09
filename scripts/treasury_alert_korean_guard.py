@@ -48,7 +48,7 @@ SERIES = {
 }
 
 UPGRADE_MARKER = "<b>정책 목적·경계선</b>"
-UPGRADE_REVISION = 11
+UPGRADE_REVISION = 12
 UA = "Mozilla/5.0 khs-watch-treasury-bessent-verifier/4.0"
 
 EXACT_TITLES = {
@@ -687,84 +687,66 @@ def policy_block(snapshot: dict) -> str:
     return "\n".join([
         "",
         "<b>정책 목적·경계선</b>",
-        "• Bessent는 9월 8일 ‘시장을 균형 쪽으로 되돌리는 것이 내 일’이라면서도 <b>균형가격 자체를 바꿀 수 있다고 보지는 않는다</b>고 설명했고, 당시 장기채 시장에 ‘fever(과열)’가 쌓이고 있었다고 표현했습니다.",
-        "• 따라서 현재 공식 정책선은 <b>특정 수익률·채권가격 통제</b>가 아니라 <b>시장 기능·유동성·변동성의 과속 완화</b>입니다.",
-        "• Bessent는 이를 QE가 아니라고 선을 긋고 과거 Operation Twist와 유사한 부채관리 접근으로 설명했습니다. 재무부 바이백을 Fed의 준비금 창출형 자산매입과 동일시하지 않습니다.",
-        "• 정책 충격 뒤 CTA·모멘텀 숏커버가 자기증폭될 수는 있지만, 이는 <b>시장 결과</b>이지 Bessent가 공식적으로 선언한 CTA 스퀴즈 목표로 단정하지 않습니다.",
-        "• 시장 기능이 정상인데도 특정 금리 수준에 맞춰 바이백·발행구조를 반복 조정하면 ‘유동성 지원 → 사실상 금리관리’로 정책선 이탈 경보를 올립니다.",
+        "• 재무부 공식 목적: 장기 비지표물 유동성 지원. 특정 금리·균형가격 통제가 아닙니다.",
+        "• Bessent(9/8): 시장 'fever' 완화·균형 복귀 지원, 균형가격 자체는 변경 불가. QE가 아니며 Operation Twist에 비유했습니다.",
+        "• CTA 숏커버는 가능한 시장 반응이지 공식 매입 목표가 아닙니다. 시장 기능 정상인데 특정 금리 방어용 반복 조정이 확인되면 경계선 이탈 여부를 점검합니다.",
         "",
         causal_block(snapshot),
+        "",
         oil_scenario_block(snapshot),
+        "",
         stock_market_block(snapshot),
         "",
-        "<b>실행 확인</b>",
-        "• 정책 변경 효력은 9월 9일, Bessent가 밝힌 확대 운영 시작은 9월 10일입니다.",
-        "• 실제 매입액·총 제시액·상한 소진율 → +1일·+3일·+5일 10년·30년 명목·실질금리 → CTA 숏커버 순서로 확인합니다.",
-        "• 바이백에도 장기금리가 오르면 재정·인플레이션·기간프리미엄이 유동성 지원보다 강한 것으로 판정합니다.",
+        "• 사후 검증: 실제 매입·상한 사용률 → +1·+3·+5영업일 금리 → CTA 포지션과 선물가격. 바이백만으로 금리 변화를 단정하지 않습니다.",
     ])
 
-
 def source_links() -> str:
-    return " · ".join([
-        f'<a href="{BESSENT_REUTERS}">Bessent Reuters 인터뷰</a>',
-        f'<a href="{BESSENT_FEVER}">Bessent ‘market fever’ 발언</a>',
-        f'<a href="{BESSENT_OIL_SCENARIO}">Bessent 원유 40~50달러 조건부 전망</a>',
-        f'<a href="{TREASURY_RELEASE}">미 재무부 공식 발표</a>',
-        f'<a href="{BUYBACK_FAQ}">바이백 공식 설명</a>',
-        f'<a href="{EIA_BRENT_PAGE}">EIA Brent</a>',
-        f'<a href="{TREASURY_NOMINAL_XML.format(year=date.today().year)}">미 재무부 명목금리</a>',
-        f'<a href="{TREASURY_REAL_XML.format(year=date.today().year)}">미 재무부 실질금리</a>',
-        f'<a href="{NYFED_TERM_PREMIA}">뉴욕연은 기간프리미엄</a>',
+    return "\n".join([
+        "원문: "
+        f'<a href="{TREASURY_RELEASE}">재무부 발표</a> · '
+        f'<a href="{BUYBACK_FAQ}">바이백 규정</a> · '
+        f'<a href="{BESSENT_REUTERS}">Bessent 인터뷰</a> · '
+        f'<a href="{BESSENT_FEVER}">시장 과열 발언</a> · '
+        f'<a href="{BESSENT_OIL_SCENARIO}">유가 조건부 전망</a>',
+        "지표: "
+        f'<a href="{EIA_BRENT_PAGE}">EIA 현물</a> · '
+        f'<a href="{TREASURY_NOMINAL_XML.format(year=date.today().year)}">명목금리</a> · '
+        f'<a href="{TREASURY_REAL_XML.format(year=date.today().year)}">실질금리</a> · '
+        f'<a href="{NYFED_TERM_PREMIA}">기간프리미엄</a>',
     ])
 
 def one_time_alert(fx: float, fx_date: str, snapshot: dict) -> str:
     return "\n".join([
         "<b>핵심 판단</b>",
-        "🟢 Bessent가 장기물 바이백의 정책 목적을 명확히 했습니다. 공식선은 특정 수익률 통제가 아니라 유동성·변동성 완화이며, 이제 이 설명을 실제 시장 데이터로 자동 검증합니다.",
-        "",
-        "<b>확정 사실</b>",
-        f"• 장기 비지표물 바이백: 회당 최대 20억달러({fmt_krw(2.0, fx)}) → 최소 40억달러({fmt_krw(4.0, fx)}). 공식 효력일은 9월 9일입니다.",
-        "• 9월 초 당시 확대 운영은 9월 10일부터 시작됐으며, 현재 평가는 발표 당시 설명이 아니라 실제 집행·후속 금리 경로로 판정합니다.",
+        "• 기존 정책·발언을 간결하게 재정리한 형식 개선 알림이며 새로운 정책 발표가 아닙니다.",
+        "• 유동성 완충이 목적; 금리 방어·QE는 아님. 시장 금리·CTA 결과는 별도로 검증합니다.",
+        "<b>확정 정책(2026-08-19 발표)</b>",
+        f"• 10~20년·20~30년물: 회당 최대 20억달러({fmt_krw(2.0, fx)}) → "
+        f"최소 40억달러({fmt_krw(4.0, fx)}). 9/9 시행·11/4 재평가, 최초 확대 운영은 9/10.",
         policy_block(snapshot),
-        "",
-        "<b>한 줄 결론</b>",
-        "공식 정책선과 시장 결과를 분리합니다. 원유 40~50달러는 이란 분쟁 종료·공급과잉을 전제로 한 조건부 전망으로만 추적하고, Brent·기대인플레이션·실질금리·10년물을 5거래일 중심으로 연결해 바이백과 성장주 할인율 효과가 실제로 지속되는지 판정합니다.",
         "",
         fx_basis_line(fx, fx_date),
         source_links(),
     ])
 
-
 def oil_scenario_change_alert(snapshot: dict) -> str:
     return "\n".join([
-        "<b>핵심 판단</b>",
-        "Bessent의 원유 40~50달러 조건부 시나리오에서 Brent가 의미 있는 가격 구간을 두 관측일 연속 넘어섰습니다.",
-        "",
+        "<b>핵심 판단: 원유 시나리오 단계 변화</b>",
+        "• EIA Brent가 2개 관측일 연속 새로운 가격 구간에 진입했습니다. 유가 하락만으로 금리 하락은 확정되지 않습니다.",
         oil_scenario_block(snapshot),
         causal_block(snapshot),
-        stock_market_block(snapshot),
-        "",
-        "<b>정확한 의미</b>",
-        "• 유가 구간 변화만으로 장기금리 하락을 확정하지 않습니다. 기대인플레이션·실질금리·10년물까지 같은 방향인지 함께 확인합니다.",
-        "• 같은 구간을 하루만 넘나드는 잡음은 알리지 않고 EIA 일일 관측 2회 연속 같은 구간일 때만 단계 변화를 확정합니다.",
         "",
         source_links(),
     ])
 
 def verdict_change_alert(snapshot: dict) -> str:
     return "\n".join([
-        "<b>핵심 판단</b>",
-        "Bessent의 장기금리 상승 원인 설명에 대한 데이터 판정이 이전 감시 대비 바뀌었습니다.",
-        "",
+        "<b>핵심 판단: 금리 원인 판정 변화</b>",
+        "• 공통 5거래일 관측창에서 유가·기대인플레이션·실질금리·명목금리의 방향이 바뀌었습니다. 개별 기사 감시는 아닙니다.",
         causal_block(snapshot),
-        "",
-        "<b>정확한 의미</b>",
-        "• 이 알림은 10년물 단독 움직임이 아니라 Brent·기대인플레이션·실질금리·명목금리의 공통일 변화와 기간프리미엄 보조확인을 묶은 판정입니다.",
-        "• 일반 금리 알림과 중복되지 않도록 <b>원인 판정 레짐이 바뀔 때만</b> 보냅니다.",
         "",
         source_links(),
     ])
-
 
 def write_next_state(snapshot: dict) -> None:
     state = load_json(NEXT_STATE) or load_json(STATE)
@@ -803,7 +785,7 @@ def main() -> int:
         if revision < UPGRADE_REVISION:
             fx, fx_date = latest_fx()
             TITLE.write_text(
-                "🇺🇸 미 재무부 장기물 바이백 — 정책선·원유 40~50달러 시나리오·금리원인 통합검증\n",
+                "미 재무부 바이백 | 정책·원유·금리 검증 (형식개선)\n",
                 encoding="utf-8",
             )
             body = one_time_alert(fx, fx_date, snapshot)
