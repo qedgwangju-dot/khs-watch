@@ -5,6 +5,8 @@
 중지한다. 보조 웹 화면의 오래된 확률을 자동 알림에 사용하지 않는다.
 """
 import calendar
+import csv
+import io
 import json
 import math
 import re
@@ -25,6 +27,8 @@ CME_API = (
     "https://www.cmegroup.com/CmeWS/mvc/Settlements/Futures/Settlements/"
     + str(CME_PRODUCT_ID) + "/FUT?tradeDate={trade_date}"
 )
+CME_FTP_ROOT = "https://www.cmegroup.com/ftp/grs/ctr/rt/rates"
+ZQ_MONTH_CODES = {"F":1,"G":2,"H":3,"J":4,"K":5,"M":6,"N":7,"Q":8,"U":9,"V":10,"X":11,"Z":12}
 NYFED_EFFR = "https://markets.newyorkfed.org/api/rates/unsecured/effr/last/5.json"
 UA = "Mozilla/5.0 (compatible; khs-watch/4.1; +https://github.com/qedgwangju-dot/khs-watch)"
 MONTHS = {
@@ -74,9 +78,86 @@ def parse_month(value):
     return y, MONTHS[m.group(1)]
 
 
-def cme_monthly_rates():
+def _zq_symbol_month(symbol, ref_year):
+    s = str(symbol or "").upper().strip()
+    m = re.search(r"\\bZQ([FGHJKMNQUVXZ])(\\d{1,2})\\b", s)
+    if not m:
+        return None
+    month = ZQ_MONTH_CODES[m.group(1)]
+    ytxt = m.group(2)
+    if len(ytxt) == 2:
+        year = 2000 + int(ytxt)
+    else:
+        digit = int(ytxt)
+        candidates = [y for y in range(ref_year - 5, ref_year + 6) if y % 10 == digit]
+        if not candidates:
+            return None
+        year = min(candidates, key=lambda y: abs(y - ref_year))
+    return year, month
+
+
+def parse_cme_ftp_csv(raw_text, ref_date):
+    """Parse CME's official daily interest-rate CSV without guessing a price column.
+
+    The fallback is accepted only when a ZQ contract symbol and an explicitly
+    labelled settlement column are both present.  If CME changes the schema we
+    fail closed instead of picking an OHLC value that merely looks like 95.xx.
+    """
+    rows = list(csv.reader(io.StringIO(raw_text)))
+    header_i = None
+    symbol_i = None
+    settle_i = None
+    for i, row in enumerate(rows[:12]):
+        normalized = [re.sub(r"[^a-z0-9]+", "", str(x).lower()) for x in row]
+        sidx = next((j for j,x in enumerate(normalized) if x in {"symbol","globexsymbol","contract","contractsymbol","instrument"}), None)
+        pidx = next((j for j,x in enumerate(normalized) if "settle" in x), None)
+        if sidx is not None and pidx is not None:
+            header_i, symbol_i, settle_i = i, sidx, pidx
+            break
+    if header_i is None:
+        raise RuntimeError("CME FTP CSV에 symbol/settlement 헤더 없음")
+
+    months = {}
+    for row in rows[header_i + 1:]:
+        if max(symbol_i, settle_i) >= len(row):
+            continue
+        ym = _zq_symbol_month(row[symbol_i], ref_date.year)
+        px = parse_price(row[settle_i])
+        if ym and px is not None and 90.0 <= px <= 100.5:
+            months[ym] = 100.0 - px
+    if len(months) < 3:
+        raise RuntimeError(f"CME FTP CSV 유효 ZQ 결제행 부족: {len(months)}")
+    return months
+
+
+def cme_monthly_rates_ftp():
     errors = []
     today = ny_today()
+    for offset in range(8):
+        d = today - timedelta(days=offset)
+        if d.weekday() >= 5:
+            continue
+        folder = f"{d.month:02d}-{calendar.month_abbr[d.month]}"
+        url = f"{CME_FTP_ROOT}/{d.year}/{folder}/IR.{d.strftime('%Y%m%d')}.csv"
+        try:
+            req = urllib.request.Request(url, headers={
+                "User-Agent": UA,
+                "Accept": "text/csv,text/plain,*/*",
+                "Referer": CME_SETTLEMENTS_PAGE,
+            })
+            with urllib.request.urlopen(req, timeout=12) as r:
+                raw = r.read().decode("utf-8", "replace")
+            months = parse_cme_ftp_csv(raw, d)
+            return d.isoformat(), months
+        except Exception as exc:
+            errors.append(f"{d}: {type(exc).__name__}: {exc}")
+    raise RuntimeError("CME 공식 FTP 결제파일 실패: " + " | ".join(errors[-4:]))
+
+
+def cme_monthly_rates():
+    api_errors = []
+    today = ny_today()
+    transport_failure = False
     for offset in range(6):
         d = today - timedelta(days=offset)
         if d.weekday() >= 5:
@@ -86,18 +167,13 @@ def cme_monthly_rates():
         try:
             data = get_json(url, CME_SETTLEMENTS_PAGE, retries=1, timeout=8)
         except Exception as exc:
-            errors.append(f"{d}: {type(exc).__name__}: {exc}")
-            # 서버 접속 실패나 이용 제한은 다른 날짜를 대입해도 해결되지 않는다.
-            # 여러 날짜를 연속 호출하여 모든 실행이 시간 초과되는 것을 막는다.
+            api_errors.append(f"{d}: {type(exc).__name__}: {exc}")
             from urllib.error import HTTPError, URLError
             gated = isinstance(exc, HTTPError) and exc.code in (401, 403, 429, 500, 502, 503, 504)
             transport = isinstance(exc, (TimeoutError, ConnectionError)) or (isinstance(exc, URLError) and not isinstance(exc, HTTPError))
             if gated or transport:
-                raise RuntimeError(
-                    "CME 공식 공개 결제값 접속 장애(시간 초과 또는 접근 제한 가능): "
-                    + f"{d}: {type(exc).__name__}: {exc} — 최신 시장경로 판정 보류"
-                ) from exc
-            # 결제값이 아직 없는 당일(404 등)은 직전 거래일을 확인할 수 있다.
+                transport_failure = True
+                break
             continue
 
         rows = data.get("settlements") or data.get("payload") or []
@@ -114,8 +190,20 @@ def cme_monthly_rates():
                 months[ym] = 100.0 - px
         if len(months) >= 3:
             return d.isoformat(), months
-        errors.append(f"{d}: 유효 ZQ 결제행 부족")
-    raise RuntimeError("CME 공식 결제값 실패: " + " | ".join(errors[-4:]))
+        api_errors.append(f"{d}: 유효 ZQ 결제행 부족")
+
+    # Root-cause resilience: CME's JSON endpoint can be intermittently blocked
+    # or time out on GitHub runners.  Use CME's own daily CSV archive as a
+    # second official source before declaring the market path unavailable.
+    try:
+        return cme_monthly_rates_ftp()
+    except Exception as ftp_exc:
+        prefix = "CME 공식 JSON 접속 장애" if transport_failure else "CME 공식 JSON 결제값 실패"
+        raise RuntimeError(
+            prefix + ": " + " | ".join(api_errors[-3:])
+            + " ; " + str(ftp_exc)
+            + " — 최신 시장경로 판정 보류"
+        ) from ftp_exc
 
 
 def official_effr():
