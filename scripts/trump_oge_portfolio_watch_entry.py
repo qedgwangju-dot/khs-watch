@@ -392,6 +392,11 @@ def _period_from_text(text, published=""):
     return ""
 
 
+def _has_verified_oge_rows(txs, periods):
+    """A discovered PDF URL is not proof that its transaction table was parsed."""
+    return len(txs) >= 3 and bool(periods)
+
+
 def _periods_from_transactions(txs):
     out = set()
     for x in txs:
@@ -623,12 +628,12 @@ def main_with_fallback():
             except Exception as e:
                 print(f"WARN PDF parse failed {url}: {e}")
                 txs = []
-            if len(txs) < 3 or not periods:
+            if not _has_verified_oge_rows(txs, periods):
                 # Never mark an unparsed/scanned report as fully checked.
                 # Alert once with its verified URL, then retry extraction on
                 # later runs without spamming the recipient.
                 if key not in seen_unparsed:
-                    pending_msg = "\\n".join([
+                    pending_msg = "\n".join([
                         "📄 [트럼프 OGE 신규 거래보고서 원문 발견]",
                         "판정: 공식 PDF 경로 발견 · 거래표 자동 검증 미완료",
                         "• 스캔·접근 제한으로 거래행/총액을 신뢰성 있게 추출하지 못했습니다.",
