@@ -493,7 +493,7 @@ def detect_category(text: str) -> str:
     if scores:
         scores.sort(reverse=True)
         return scores[0][1]
-    return "취약점·패치"
+    return "미분류 AI 보안 변화"
 
 
 def severity(text: str) -> tuple[int, str]:
@@ -521,7 +521,31 @@ def severity(text: str) -> tuple[int, str]:
     return 1, "주의"
 
 
+def is_policy_program_announcement(item: dict) -> bool:
+    """Keep new defense programs out of the incident/patch alarm channel."""
+    url = (item.get("url") or "").lower().rstrip("/")
+    title = (item.get("title") or "").lower()
+    if url.endswith("/news/anthropic-cyber-mission"):
+        return True
+    if "anthropic cyber mission" in title and (
+        "introducing" in title or "launch" in title or "announcement" in title
+    ):
+        return True
+    return False
+
+
+def clean_official_headline_prefix(value: str) -> str:
+    return re.sub(
+        r"^(?:Anthropic News|Anthropic Research|OpenAI Alignment)[ \t]*:[ \t]*",
+        "",
+        clean_snippet(value, limit=500),
+        flags=re.I,
+    ).strip()
+
+
 def material(item: dict) -> bool:
+    if is_policy_program_announcement(item):
+        return False
     combined = f" {item.get('title','')} {item.get('description','')} "
     low = combined.lower()
 
@@ -711,28 +735,54 @@ def _translate_mymemory(text: str) -> str:
 
 
 def translate_alert_text(text: str) -> str:
-    """Translate user-visible English alert prose to Korean.
+    """Translate explanatory text while preserving identifying company names.
 
-    Product/company/model identifiers are preserved. If external translation
-    services are unavailable, callers should use a Korean-only category fallback
-    rather than sending the raw English headline.
+    The translator previously changed 'Anthropic' into '인류학' (anthropology).
+    Do not submit identity tokens to translation providers, and never translate
+    the official index source prefix as though it were the article headline.
     """
-    value = clean_snippet(text, limit=500)
+    value = clean_official_headline_prefix(text)
     if not _needs_korean_translation(value):
         return value
 
+    parts = re.split(
+        r"(?i)(\\b(?:Anthropic|OpenAI|NVIDIA|Microsoft|Google|Meta|GitHub|Claude|"
+        r"OpenShell|Sentry|BlueField-4)\\b)",
+        value,
+    )
+    canonical = {term.lower(): term for term in ALERT_IDENTIFIER_TERMS}
     errors: list[str] = []
-    for translator in (_translate_google, _translate_mymemory):
-        for _attempt in range(2):
-            try:
-                translated = clean_snippet(translator(value), limit=500)
-                if translated and HANGUL_RE.search(translated):
-                    return _preserve_identifiers(value, translated)
-                errors.append(f"{translator.__name__}: no Hangul in result")
-            except Exception as exc:
-                errors.append(f"{translator.__name__}: {type(exc).__name__}: {exc}")
+    assembled: list[str] = []
+    for part in parts:
+        if not part:
+            continue
+        if part.lower() in canonical:
+            assembled.append(canonical[part.lower()])
+            continue
+        if not LATIN_WORD_RE.search(part):
+            assembled.append(part)
+            continue
+        translated_piece = ""
+        for translator in (_translate_google, _translate_mymemory):
+            for _attempt in range(2):
+                try:
+                    candidate = clean_snippet(translator(part), limit=500)
+                    if candidate and HANGUL_RE.search(candidate):
+                        translated_piece = candidate
+                        break
+                    errors.append(f"{translator.__name__}: no Hangul")
+                except Exception as exc:
+                    errors.append(f"{translator.__name__}: {type(exc).__name__}: {exc}")
+            if translated_piece:
+                break
+        if not translated_piece:
+            raise RuntimeError("Korean translation failed: " + " | ".join(errors[-4:]))
+        assembled.append(translated_piece)
 
-    raise RuntimeError("Korean translation failed: " + " | ".join(errors[-4:]))
+    result = " ".join("".join(assembled).split())
+    if ("Anthropic" in value or "anthropic" in value.lower()) and "인류학" in result:
+        raise RuntimeError("Company identifier was mistranslated")
+    return result
 
 
 def event_token_set(text: str) -> set[str]:
@@ -942,13 +992,9 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str, str]:
             if fact and fact not in facts:
                 facts.append(fact)
         if not facts:
-            headline = clean_snippet(rep.get("title", ""), limit=220)
-            headline = re.sub(
-                r"^(?:Anthropic Research|OpenAI Alignment)\\s*:\\s*",
-                "",
-                headline,
-                flags=re.I,
-            ).strip()
+            headline = clean_official_headline_prefix(
+                clean_snippet(rep.get("title", ""), limit=220)
+            )
             if headline:
                 try:
                     translated_headline = translate_alert_text(headline)
