@@ -13,32 +13,40 @@ def _yield_value(text, tenor):
     return float(m.group(1)) if m else None
 
 
-def _market_stress(y10, y30):
+def _market_stress(y10, y30, move10_bp=None, move30_bp=None):
+    """Report stress *level* independently of the latest rate direction."""
     if y10 is None:
         head = "판정 대기"
-        reason = "10년물 공식값을 확인하지 못해 5% 옵션·헤지 구간 판정 보류"
+        reason = "미국 10년물 공식 금리가 없어 수준 경보를 판정하지 않음"
     elif y10 >= 5.20:
-        head = "적색 — 10년물 5.20% 이상"
-        reason = "9/10 Bloomberg 보도 대형 옵션 거래의 5.20% 수익 확대 구간까지 진입 → 옵션·컨벡시티 헤지가 국채 매도세를 증폭할 위험이 큼"
+        head = "적색 — 10년물 5.20% 이상(수준 경보)"
+        reason = (
+            "과거 9/10 Bloomberg에서 보도된 5.20% 관련 옵션 거래의 기술적 관찰 구간. "
+            "현재 잔존 계약·미결제약정·헤지 매도 규모는 미확인 → 새로운 옵션발 매도세로 단정하지 않음"
+        )
     elif y10 >= 5.10:
-        head = "강한 경계 — 10년물 5.10% 이상"
-        reason = "9/10 Bloomberg 보도 대형 옵션 거래의 손익분기점 부근/상회 → 추가 금리상승 헤지와 마켓메이커 컨벡시티 대응이 매도 압력을 키울 수 있음"
+        head = "강한 경계 — 10년물 5.10% 이상(수준 경보)"
+        reason = "장기금리 절대 수준이 높아 할인율 부담. 과거 옵션의 현재 헤지 영향은 별도 확인 필요"
     elif y10 >= 5.00:
-        head = "경계 — 10년물 5% 돌파"
-        reason = "심리적 5%선 돌파 → 금리상승 헤지 수요와 기술적 매도가 서로 증폭되는지 확인할 구간"
+        head = "경계 — 10년물 5.00% 이상(수준 경보)"
+        reason = "10년물 5% 이상인 상태. 신규 상향 돌파인지 여부는 직전 수익률과 비교해야 함"
     elif y10 >= 4.90:
-        gap = (5.00 - y10) * 100
-        head = f"접근 경계 — 10년물 5%까지 {gap:.0f}bp"
-        reason = "5% 심리선에 근접 → 옵션·컨벡시티 헤지가 본격화되기 전 선제 경계 구간"
+        head = f"접근 경계 — 10년물 5.00%까지 {(5.00 - y10) * 100:.0f}bp"
+        reason = "5%에 근접한 금리 수준. 방향은 별도 판정"
     else:
-        gap = (5.00 - y10) * 100
-        head = f"정상 — 10년물 5%까지 {gap:.0f}bp"
-        reason = "5% 기술적 스트레스 구간과 아직 거리가 있어 옵션 헤지발 증폭 위험은 상대적으로 낮음"
+        head = f"5% 미만 — 10년물 5.00%까지 {(5.00 - y10) * 100:.0f}bp"
+        reason = "기존 5% 기술 경계선 아래. 위험이 사라졌다는 뜻은 아님"
 
+    if move10_bp is not None:
+        direction = "하락" if move10_bp < 0 else "상승" if move10_bp > 0 else "보합"
+        reason += f" | 이번 거래일 10년물 {move10_bp:+.0f}bp {direction}"
     if y30 is not None and y30 >= 5.35:
-        reason += " | 30년물도 5.35% 이상이면 뒷단 재정·기간프리미엄 스트레스까지 동시 확인"
+        reason += f" | 30년물 {y30:.2f}%로 절대 수준 부담 지속"
     elif y30 is not None and y30 >= 5.30:
-        reason += f" | 30년물 {y30:.2f}%로 5.35% 스트레스선에 근접"
+        reason += f" | 30년물 {y30:.2f}%로 5.35% 수준에 근접"
+    if move30_bp is not None:
+        direction = "하락" if move30_bp < 0 else "상승" if move30_bp > 0 else "보합"
+        reason += f" · 당일 30년물 {move30_bp:+.0f}bp {direction}"
     return head, reason
 
 
