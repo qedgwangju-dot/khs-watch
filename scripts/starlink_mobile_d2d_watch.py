@@ -52,6 +52,15 @@ OFFICIAL_BASE=(
  ("[AST SpaceMobile 연결]","AST SpaceMobile(ASTS)은 AT&T와 2030년까지 이어지는 상업계약이 있고 Verizon과도 상업계약을 발표했습니다. 경쟁사 신사업 진입이 이 기존 계약의 즉시 해지를 의미하지 않습니다.","https://about.att.com/story/2024/ast-spacemobile-commercial-agreement.html"),
 )
 TRADE_PRICE_NOTE="SpaceX-Grain 거래금액: 당사자 공식 발표에서 미공개. 외신 추정액을 확정 계약금으로 사용하지 않습니다."
+# Existing October 2026 facts are a baseline, not novel future FCC approvals.
+# In particular, do NOT seed license:grain_spacex_800:fcc_approval or :close.
+KNOWN_BASELINE_KEYS=(
+ "license:grain_spacex_800:agreement",
+ "fcc:gen2_15000:permission",
+ "fcc:2ghz:permission",
+ "carriers:att_tmus_vz_joint_venture:venture",
+ "asts:att_verizon_contract:supply",
+)
 NOISE=re.compile(r"lawsuit|class action|option volume|price target|buy rating|stock split|earnings preview|crypto|celebrity|trump coin|meme stock",re.I)
 TRUSTED=(
  "Reuters","Financial Times","The Wall Street Journal","Bloomberg",
@@ -392,7 +401,10 @@ def test()->int:
  assert "2026년 7월 1일" in bootstrap()
  assert "2026년 10월 1일" in bootstrap()
  assert STATE!=PENDING!=ALERT
- print("starlink_mobile_d2d_self_test=ok approvals_separated=1 government_rss_excluded=1 media_duo=1 no_duplicates=1")
+ assert "license:grain_spacex_800:agreement" in KNOWN_BASELINE_KEYS
+ assert "license:grain_spacex_800:fcc_approval" not in KNOWN_BASELINE_KEYS
+ assert "license:grain_spacex_800:close" not in KNOWN_BASELINE_KEYS
+ print("starlink_mobile_d2d_self_test=ok approvals_separated=1 government_rss_excluded=1 media_duo=1 no_duplicates=1 known_baseline=1")
  return 0
 
 def main()->int:
@@ -408,9 +420,19 @@ def main()->int:
   raise RuntimeError(f"공식 원문 직접 접근 {len(official)}곳: 알림 차단. {failed}")
  force=os.getenv("FORCE_NOTIFY","").strip().lower() in ("true","1","yes")
  events,next_seen=choose_events(groups,state["seen"],initial,force)
+ # Idempotent migration fixes an original bug: the first broadcast delivered
+ # known October headlines while an empty dedup state could replay them later.
+ # Never pre-mark the still-pending FCC assignment approval or sale closing.
+ seeded=0
+ for k in KNOWN_BASELINE_KEYS:
+  if k not in next_seen:
+   next_seen[k]=NOW.isoformat()
+   seeded+=1
  state["seen"]=next_seen
- state["updated_at"]=NOW.isoformat()
- state["official_sources_verified"]=official
+ # Avoid 48 contentless commits/day and related repo push-trigger storms.
+ if initial or events or seeded:
+  state["updated_at"]=NOW.isoformat()
+  state["official_sources_verified"]=official
  if initial:
   report=bootstrap()
  elif events:
