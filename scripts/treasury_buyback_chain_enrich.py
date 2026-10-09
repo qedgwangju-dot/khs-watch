@@ -145,9 +145,15 @@ def cta_context() -> dict:
 def causal_context(detail: dict) -> dict:
     snapshot = detail.get("bessent_causal_snapshot") or detail.get("causal_snapshot") or {}
     values = snapshot.get("common_values") or {}
-    changes = snapshot.get("common_changes") or {}
+    # Keep the execution-chain horizon identical to the main Bessent causal verdict.
+    # A one-day reversal must never contradict a five-day regime verdict in the
+    # same Telegram message.
+    changes = snapshot.get("changes_5d") or snapshot.get("common_changes") or {}
+    basis = str(snapshot.get("verdict_basis") or ("5거래일 공통창" if snapshot.get("changes_5d") else "1거래일 공통창"))
     return {
         "date": str(snapshot.get("common_date") or "확인 불가"),
+        "start_date": str(changes.get("start_date") or snapshot.get("common_prev_date") or "확인 불가"),
+        "basis": basis,
         "nom10": num(values.get("nom10")),
         "nom10_bp": num(changes.get("nom_bp")),
         "real10_bp": num(changes.get("real_bp")),
@@ -210,7 +216,7 @@ def build_block(exe: dict, causal: dict, cta: dict) -> str:
             HEADING,
             f"• ① 운영 상한: {max_text}({exe.get('maximum_krw')}) · {exe.get('bucket')} · {exe.get('operation_date')}",
             f"• ② 실제 집행: {accepted_text}({exe.get('accepted_krw')}) · 상한 사용 {cap_use}",
-            f"• ③ 금리 반응: 10년 명목금리 {y10}{ychg} · {causal.get('verdict')}",
+            f"• ③ 금리 반응({causal.get('basis','기준 확인 불가')}): 10년 명목금리 {y10}{ychg} · {causal.get('verdict')}",
             f"• ④ CTA 반응: {cta.get('verdict')} · 상태 {cta.get('last_checked_kst')} · {futures_text}",
             f"• ⑤ 주식시장: {equity}",
             f"• 실패 조건: {failures}",
@@ -227,7 +233,7 @@ def compact_block(exe: dict, causal: dict, cta: dict) -> str:
             "",
             HEADING,
             f"• 상한 {fmt_usd_bn(exe.get('maximum'))} → 실제 {fmt_usd_bn(exe.get('accepted'))} · 상한 사용 {fmt_pct(exe.get('cap_use_pct'))}",
-            f"• 10년물 {ychg} · CTA: {cta.get('verdict')}",
+            f"• 10년물 {ychg} ({causal.get('basis','기준 확인 불가')}) · CTA: {cta.get('verdict')}",
             f"• 주식시장: {equity_impact(causal, cta)}",
             f"• 실패 조건: {' / '.join(failure_lines(exe, causal, cta))}",
         ]
