@@ -320,7 +320,7 @@ def yield_reaction_lines(op_date: str) -> tuple[list[str], dict | None]:
     if not reaction:
         return [
             "<b>집행 당일 금리 결과</b>",
-            "• 미 재무부 공식 일일 CMT가 아직 해당 운영일 종가를 게시하지 않았습니다.",
+            "• 해당 운영일 공식 CMT 미게시 또는 원천 조회 실패입니다. 게시 지연과 조회 오류를 구분해 재시도합니다.",
             "• 공식값이 게시되면 같은 기존 감시에서 2년·10년·20년·30년 종가와 전일 대비 bp를 1회 후속 전송합니다.",
             f'<a href="{TREASURY_YIELD_PAGE}">미 재무부 공식 금리</a>',
         ], None
