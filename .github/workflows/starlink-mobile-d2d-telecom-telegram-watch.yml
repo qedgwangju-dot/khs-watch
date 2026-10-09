@@ -82,13 +82,6 @@ jobs:
         run: |
           python scripts/space_launch_telegram_send.py --inline out/starlink_mobile_d2d_watch_telegram.txt
 
-      - name: One-time live inline-link verification
-        env:
-          SPACE_LAUNCH_TELEGRAM_BOT_TOKEN: ${{ secrets.SPACE_LAUNCH_TELEGRAM_BOT_TOKEN }}
-          SPACE_LAUNCH_TELEGRAM_CHAT_ID: ${{ secrets.SPACE_LAUNCH_TELEGRAM_CHAT_ID }}
-        run: |
-          python scripts/space_launch_telegram_send.py --inline-live-test
-
       - name: Persist dedup state only after successful delivery, merge on push conflicts
         if: success() && hashFiles('out/starlink_mobile_d2d_watch_pending.json') != ''
         run: |
