@@ -307,7 +307,61 @@ jobs:
           git add data/warsh_reaction_watch_state.json data/warsh_speech_watch_state.json data/warsh_inflation_market_watch_state.json data/warsh_market_watch_state.json data/warsh_ai_taskforce_watch_state.json data/warsh_new_axes_watch_state.json data/warsh_pce_trend_watch_state.json data/warsh_curve_ownership_watch_state.json data/warsh_credibility_pretightening_watch_state.json data/warsh_energy_shock_watch_state.json data/warsh_ai_rotation_watch_state.json data/warsh_policy_path_watch_state.json data/warsh_balance_sheet_watch_state.json data/warsh_sep_path_watch_state.json data/warsh_ib_consensus_watch_state.json data/warsh_post_fomc_ib_reaction_watch_state.json data/warsh_fomc_event_watch_state.json data/warsh_fomc_minutes_watch_state.json data/warsh_press_conference_watch_state.json data/market_internal_strength_watch_state.json
           git commit -m 'Update Warsh reaction watch state'
           for ATTEMPT in 1 2 3 4; do
+            git fetch origin main
             git pull --rebase -X theirs origin main || { git rebase --abort || true; }
+            # Preserve the most recent confirmed AI rotation delivery. A stale
+            # workflow must not roll message_id or confirmed market date back.
+            python - <<'PY'
+          import json
+          import pathlib
+          import subprocess
+
+          path=pathlib.Path('data/warsh_ai_rotation_watch_state.json')
+          if path.exists():
+              result=subprocess.run(
+                  ['git','show','origin/main:'+path.as_posix()],
+                  capture_output=True,text=True
+              )
+              if result.returncode==0:
+                  try:
+                      remote=json.loads(result.stdout)
+                      local=json.loads(path.read_text(encoding='utf-8'))
+                      rd=str(remote.get('date') or '')
+                      ld=str(local.get('date') or '')
+                      rt=str(remote.get('updated_at_utc') or '')
+                      lt=str(local.get('updated_at_utc') or '')
+                      selected=local
+                      if rd>ld or (rd==ld and rt>lt):
+                          selected=remote
+                      else:
+                          try:
+                              rm=int(remote.get('last_sent_message_id') or 0)
+                              lm=int(local.get('last_sent_message_id') or 0)
+                          except (ValueError,TypeError):
+                              rm=lm=0
+                          if rm>lm:
+                              selected=dict(local)
+                              for key in (
+                                  'last_sent_message_id','last_sent_date',
+                                  'last_sent_verdict','last_sent_signature'
+                              ):
+                                  if key in remote:
+                                      selected[key]=remote[key]
+                      if selected!=local:
+                          path.write_text(
+                              json.dumps(selected,ensure_ascii=False,indent=2)+'\\n',
+                              encoding='utf-8'
+                          )
+                          print('ai_rotation_state_monotonic_guard=applied')
+                      else:
+                          print('ai_rotation_state_monotonic_guard=unchanged')
+                  except (ValueError,TypeError) as exc:
+                      raise RuntimeError(f'AI state reconciliation invalid: {exc}')
+          PY
+            git add data/warsh_ai_rotation_watch_state.json
+            if ! git diff --cached --quiet; then
+              git commit --amend --no-edit
+            fi
             if git push; then
               exit 0
             fi
