@@ -67,188 +67,26 @@ def _dongkuk_report_recovery() -> list[dict]:
         'title': DONGKUK_REPORT_TITLE,
         'link': 'https://www.itinsight.kr/news/517649',
         'description': (
-            '2026-10-08 뉴스씬 정민재 보도: 동국산업 46시리즈용 니켈도금강판의 '
-            '북미 고객 품질 승인 완료는 2026-09-14 회사 발표·2026-09-22 이원휘 대표 인터뷰의 기존 사실이다. '
-            '새로운 증권가 탐방 전언에는 10월부터 초도 납품을 시작한 것으로 전해졌다고 기재됐다. '
-            '이는 동국산업 공식 실제 출하/매출 인식 확인은 아니다. '
-            '연간 판매량 2026년 약 2,000톤, 2027년 약 20,000톤(10배)은 애널리스트 예상치이며 '
-            '연간 설비능력 80,000톤과 증설 가능 130,000톤, 기존 설비투자 약 1,300억원과 구별한다. '
-            '북미 고객 실명과 배터리 캔 가공업체 실명 모두 비공개다. '
-            '테슬라 Optimus·보스턴다이내믹스 Atlas 원통형 배터리 언급은 생태계 가능성에 불과하며 '
-            '동국산업이 두 로봇에 니켈도금강판을 직접 납품한다는 계약·양산 근거가 없다.'
-        ),
-        'source': '뉴스씬',
-        'published': '2026-10-08T00:35:00+00:00',
-        'direct_recovery': True,
-        'dongkuk_reported_shipment': True,
-    }]
-
-
-
-# DKT humanoid battery module: retrospectively restore an important reported
-# production milestone, without turning the July ESS-BMS discussion into sales.
-# Company releases, broker research and anonymous customer identities stay separate.
-DKT_HUMANOID_RECOVERY = 'DIRECT_DKT_HUMANOID_BATTERY_MODULE_HANA_20260909'
-DKT_COMPANY = re.compile(r'디케이티|\bDKT\b|Dongkuk Tech', re.I)
-DKT_ROBOT = re.compile(r'휴머노이드|humanoid|로보틱스|robotics|로봇|robot', re.I)
-DKT_BATTERY = re.compile(
-    r'(?:배터리|battery).{0,45}(?:모듈|module|팩|pack)|'
-    r'(?:BMS|배터리관리시스템|배터리\s*관리\s*시스템|battery\s*management)|'
-    r'(?:이머전시|비상장치|emergency).{0,45}(?:배터리|battery)',
-    re.I,
-)
-DKT_REPORTED_SOP = re.compile(
-    r'(?:8\s*월\s*말|late\s+Aug(?:ust)?).{0,95}(?:승인|approval|approved?).{0,140}'
-    r'(?:양산\s*공급[이가은을\s]*(?:시작|개시)|양산\s*(?:공급\s*)?(?:시작|개시)|'
-    r'mass[-\s]*production\s*(?:supply\s*)?(?:started|began)|'
-    r'(?:started|began)\s+mass[-\s]*production)',
-    re.I,
-)
-DKT_COMPANY_DIRECT = {'디케이티', 'DKT', 'DKT Official', '디케이티 공식 발표'}
-DKT_BROKER_SOURCES = {'하나증권', 'Hana Securities', 'IBK투자증권', '교보증권'}
-DKT_REPORT_SOURCES = DKT_BROKER_SOURCES | {'프라임경제', '아시아경제', '뉴스프라임', '연합뉴스'}
-DKT_DIRECT_CONTRACT = re.compile(
-    r'(?:휴머노이드|humanoid).{0,100}(?:BMS|배터리|battery).{0,110}'
-    r'(?:정식\s*공급계약|구매\s*계약\s*체결|양산\s*수주\s*확정)|'
-    r'(?:BMS|배터리|battery).{0,110}(?:휴머노이드|humanoid).{0,100}'
-    r'(?:공급계약\s*체결|정식\s*수주)',
-    re.I,
-)
-
-
-def _is_dkt_humanoid(text: str) -> bool:
-    return bool(DKT_COMPANY.search(text) and DKT_ROBOT.search(text) and DKT_BATTERY.search(text))
-
-
-def _dkt_stage(text: str, source: str = '') -> str:
-    if not _is_dkt_humanoid(text):
-        return ''
-    if source in DKT_COMPANY_DIRECT and DKT_DIRECT_CONTRACT.search(text) and not re.search(
-        r'기사|증권사|리포트|업계\s*보도|추정', text, re.I
-    ):
-        return 'official_robot_bms_contract'
-    if DKT_REPORTED_SOP.search(text):
-        if source in DKT_COMPANY_DIRECT and not re.search(r'증권사|하나증권|파악|보도|추정', text, re.I):
-            return 'official_robot_module_sop'
-        if source in DKT_REPORT_SOURCES:
-            return 'reported_robot_module_sop'
-    return 'old_discussion_or_plan'
-
-
-def _dkt_humanoid_recovery() -> list[dict]:
-    # One-time recovery of the past 2026-09 report; expire the backfill so
-    # a dedupe-state rollover cannot resend old news as a new event.
-    if base.NOW.astimezone(base.KST).date() > dt.date(2026, 10, 15):
-        return []
-    return [{
-        'title': '디케이티 휴머노이드 비상장치용 배터리 모듈, 8월 말 양산 공급 시작 보도',
-        'link': 'https://t.me/s/hanasmallcap',
-        'description': (
-            '2026년 9월 9일 하나증권 권태우·김진우 리포트: 북미 전기차 고객사향 '
-            '휴머노이드 이머전시 디바이스 배터리 모듈은 주당 1,500~2,000대의 초기 공급으로 '
-            '검증을 마쳤고 8월 말 승인과 함께 양산 공급이 시작된 것으로 파악했다. '
-            '이 고객 실명과 실제 현재 주간 출하량, 계약금액 및 인식매출은 비공개다. '
-            '회사 8월 18일 공개자료에는 해당 휴머노이드 소형 배터리팩 모듈을 '
-            '9월부터 양산할 예정이라고 기재됐다. '
-            '2026년 7월 13일 전자신문의 휴머노이드용 BMS 협력 논의와는 제품·단계가 다르다. '
-            '8월 19일 북미 LFP ESS용 BMS 첫 출하는 또 다른 실제 양산 사업이며 '
-            '휴머노이드용 BMS 양산을 증명하지 않는다. '
-            '테슬라 또는 보스턴다이내믹스가 이번 북미 배터리 모듈의 '
-            '확정 구매 고객이라는 공식 양방향 발표는 확인되지 않았다.'
-        ),
-        'source': '하나증권',
-        # The original report date is stated in text. Do not fabricate an
-        # exact intraday timestamp; the item is an explicitly recovered
-        # earlier milestone, not a new 2026-10-08 announcement.
-        'published': None,
-        'direct_recovery': True,
-        'dkt_reported_robot_module_sop': True,
-    }]
-
-
-
-# Tesla 3D tactile-array patent PUBLICATION (A1), not a granted patent and
-# not proof of an installed Optimus component. This lane uses the patent
-# number, not the media headline, as the event identity. The first-page
-# publication supplied by the user is evidence for the title/date/applicant;
-# it is not a substitute for examining granted claims or physical shipments.
-TESLA_TOUCH_PATENT_RECOVERY = 'DIRECT_TESLA_TACTILE_PATENT_US20260310299A1_20261008'
-TESLA_TOUCH_PATENT_OFFICIAL = {'USPTO', 'United States Patent and Trademark Office'}
-TESLA_TOUCH_PATENT_TITLE = (
-    '테슬라, 3차원 유연 촉각센서·대량 제조공정 특허출원 공개 '
-    '(US 2026/0310299 A1)'
-)
-TESLA_TOUCH_PATENT_PUBLICATION_URL = (
-    'https://eletric-vehicles.com/tesla/'
-    'tesla-seeks-patent-for-touch-sensitive-skin-for-humanoid-robot-optimus/'
-)
-TESLA_TOUCH_SENSOR_TOPIC = re.compile(
-    r'촉각|센서|유연\s*피부|전자\s*피부|tactile|touch|sensor|compliant|robot\s*skin',
-    re.I,
-)
-TESLA_TOUCH_PATENT_PUBLICATION_MARKER = re.compile(
-    r'published|publication|공개|공표|'
-    r'(?:Oct(?:ober)?\s*8,?\s*2026|2026[-./]10[-./]08|2026년\s*10월\s*8일)',
-    re.I,
-)
-TESLA_TOUCH_PATENT_GRANT = re.compile(
-    r'\bpatent\s+(?:was\s+|has\s+been\s+)?granted\b|'
-    r'\bpatent\s+issued\b|특허\s*등록\s*완료|특허\s*등록\s*확정',
-    re.I,
-)
-TESLA_TOUCH_PATENT_GRANT_DENIAL = re.compile(
-    r'not\s+(?:yet\s+)?granted|not\s+issued|'
-    r'특허\s*(?:등록|승인)\s*(?:전|미확인|아님|아니다)',
-    re.I,
-)
-
-
-def _tesla_touch_patent_match(text: str) -> bool:
-    no_punctuation = re.sub(r'[\s/.,:_\-]', '', text).upper()
-    return bool(
-        '20260310299A1' in no_punctuation
-        and ('TESLA' in no_punctuation or '테슬라' in text)
-        and TESLA_TOUCH_SENSOR_TOPIC.search(text)
-    )
-
-
-def _tesla_touch_patent_stage(text: str, source: str = '') -> str:
-    if not _tesla_touch_patent_match(text):
-        return ''
-    if TESLA_TOUCH_PATENT_GRANT.search(text) and not TESLA_TOUCH_PATENT_GRANT_DENIAL.search(text):
-        if source in TESLA_TOUCH_PATENT_OFFICIAL:
-            return 'official_grant'
-        # Media speculation that A1 has been granted is not another alert.
-        return 'unverified_grant'
-    if TESLA_TOUCH_PATENT_PUBLICATION_MARKER.search(text):
-        return 'application_publication'
-    return 'background'
-
-
-def _tesla_touch_patent_recovery() -> list[dict]:
-    # One-time recovery only: the 2026-10-08 A1 publication is an event
-    # distinct from 2025 filing/provisional dates, patent grant, or SOP.
-    # A date-only source does not justify inventing an hourly timestamp.
-    if base.NOW.astimezone(base.KST).date() > dt.date(2026, 10, 12):
-        return []
-    return [{
-        'title': TESLA_TOUCH_PATENT_TITLE,
-        'link': TESLA_TOUCH_PATENT_PUBLICATION_URL,
-        'description': (
-            '사용자 제공 미국 특허공개문서 첫 페이지의 공개번호 US 2026/0310299 A1, '
-            '공개일 2026-10-08, 출원인 Tesla Inc., 정규 출원 2025-09-11, '
-            '가출원 2025-04-04. 발명의 원문 제목은 THREE-DIMENSIONAL SOFT COMPLIANT '
+            '사용자 제공 미국 특허공개문서 표지 기준: 공개번호 US 2026/0310299 A1, '
+            '공개일 2026-10-08, 출원인 Tesla Inc., 정규 출원일 2025-09-11, '
+            '가출원일 2025-04-04. 제목은 THREE-DIMENSIONAL SOFT COMPLIANT '
             'ARRAY TACTILE SENSOR WITH MULTI-MODAL SENSING AND SCALABLE '
-            'MANUFACTURING METHODS. 유연 기판 사이 도체 배열과 분리층으로 3차원 곡면의 '
-            '힘·접촉·압력을 측정하는 구조이며 평면 인쇄 후 열성형과 직접 곡면 인쇄 같은 '
-            '대량 제조 가능 공정을 다룬다. 미국 특허공개 A1은 특허등록 B2가 아니다. '
-            'Tesla 공식 Optimus 촉각센서·손 제조 채용공고는 열성형·정밀 도포·적층과 '
-            '손 생산라인 시운전·수율 개선을 직접 언급한다. 그러나 그 채용공고로도 '
-            '이 정확한 특허의 Optimus 양산 손 실제 탑재, 매출, 공급사, 수율은 '
-            '확정할 수 없다. USPTO 웹 원문 직접 열람은 실패했으며 기사도 직접 열람되지 '
-            '않아 사용자 제공 공개서류 표지와 Tesla 채용공고를 분리해 증거로 사용한다.'
+            'MANUFACTURING METHODS. 사용자 제공 동일 기사 전문에 따르면 출원 청구항은 '
+            '20개이며, 본문에 Optimus 제품명이 직접 나오지 않는다. 감지점 개수·간격, '
+            '측정 가능한 힘의 범위, 내구성 시험값은 기재되지 않았다. 다중 모드라는 '
+            '제목에도 불구하고 정전용량식 또는 저항식 촉각 감지가 설명될 뿐, '
+            '전단력·미끄러짐·온도를 별개로 감지한다고 입증하지 않는다. '
+            '제조 방식은 평판에 도체를 인쇄한 뒤 적층해 열성형하거나 '
+            '기판을 미리 성형한 다음 곡면에 직접 인쇄·정밀 도포하는 두 경로이다. '
+            'Tesla 공식 Optimus 채용공고는 손 제조공정에서 열성형·정밀 도포·적층, '
+            '시운전 및 수율 개선을 개발 과제로 기재한다. 이는 기술개발의 연관성이지만 '
+            '이 특허를 Optimus Gen 3에 실제 탑재했거나 양산을 완료했다는 증거는 아니다. '
+            '특허공개 A1은 등록특허 B2가 아니고, 확정 고객·출하 물량·금액도 없다. '
+            '기사 전문은 사용자가 제공했으며 기사 웹페이지와 USPTO 전체 공개문서의 '
+            '직접 열람은 완료하지 못했다. 청구항 개수와 성능수치 부재는 '
+            '기사의 설명을 근거로 제시한다.'
         ),
-        'source': '사용자제공 미국특허공개 표지',
+        'source': '사용자제공 특허표지·기사 전문',
         'published': None,
         'direct_recovery': True,
         'user_supplied_publication': True,
@@ -464,11 +302,14 @@ def meaning(cat: str) -> str:
     if cat == '테슬라 촉각센서 · 미국 특허출원 공개 A1':
         return (
             '2026-10-08 미국 특허출원 공개 US 2026/0310299 A1. '
-            '정규 출원 2025-09-11·가출원 2025-04-04로 오늘 첫 출원한 것이 아닙니다. '
-            '손가락·손바닥의 곡면에 밀착하는 유연 촉각 배열과 '
-            '인쇄·열성형·정밀 도포·적층 등 제조공정의 연결이 핵심입니다. '
-            'Tesla 공식 Optimus 채용공고에도 동일한 제조기능이 기재돼 있지만 '
-            '해당 특허의 최종 손 탑재·양산 수율·계약·매출은 공개되지 않았습니다.'
+            '정규 출원 2025-09-11·가출원 2025-04-04입니다. '
+            '유연 촉각센서가 손가락·손바닥 곡면에 밀착하도록 '
+            '평판 인쇄 후 열성형 또는 성형 곡면 직접 인쇄의 두 제조법을 제시합니다. '
+            '제공 기사에 따르면 청구항 20개이지만 감지점 수·간격·힘 범위·내구성 '
+            '실측치는 없습니다. 특허 문서에는 Optimus가 직접 등장하지 않고 '
+            '정전용량식·저항식 외에 별도 전단력·미끄러짐·온도 감지도 확인되지 않습니다. '
+            'Optimus 채용자료와 제조기술은 연관되지만 실제 손 탑재·양산 수율·'
+            '부품 공급계약·원화 매출은 공개되지 않았습니다.'
         )
     if cat.startswith('디케이티 로보틱스 · '):
         if '증권사 확인' in cat:
@@ -522,7 +363,7 @@ def risk(cat: str) -> str:
         )
     if cat == '테슬라 촉각센서 · 미국 특허출원 공개 A1':
         return (
-            'A1 공개는 B2 특허등록도, Optimus 손 양산 탑재도, 외부부품 공급계약도 아닙니다. '
+            'A1 공개는 B2 특허등록도, Optimus 손 양산 탑재도, 외부부품 공급계약도 아닙니다. 다중 모드 명칭으로 전단력·미끄러짐·온도 감지를 확정할 수 없습니다. '
             '열성형 후 전극 단선·인쇄 저항 편차·층간 박리·촉각센서 드리프트·'
             '반복 접촉 내구성·정밀 검사시간이 양산 병목 후보입니다. '
             '향후 6~12개월 동안 Tesla 공식 적용 공개, 반복 접촉시험, '
@@ -549,11 +390,17 @@ def risk(cat: str) -> str:
 def verification(item: dict, group: str, text: str) -> str:
     if group == 'tesla_touch_patent':
         if _tesla_touch_patent_stage(text, item.get('source') or '') == 'official_grant':
-            return 'USPTO 공식자료의 특허 등록 상태 · 별도 등록증/청구항/제품 채택 확인 필요'
+            return 'USPTO 공식자료의 등록 상태 · 등록번호·청구항·제품 채택 별도 확인 필요'
+        if item.get('user_supplied_publication'):
+            return (
+                '사용자 제공 A1 특허표지·영어 기사 전문 확인 · '
+                'Tesla 공식 채용자료로 제조기술 방향 교차확인 · '
+                '기사 웹페이지·USPTO 전체 공개문서 직접 열람 미완료 · '
+                'Optimus 제품명 직접 언급·특허 등록·제품 탑재·매출 미확인'
+            )
         return (
-            '사용자 제공 미국 A1 특허공개문서 표지 확인 · Tesla Optimus 채용공고로 '
-            '기술개발·제조방향 교차확인 · USPTO 웹 원문 및 기사 본문 직접 열람 실패 · '
-            '특허 등록·제품 탑재·매출 미확인'
+            '특허 공개번호와 기사 내용 확인 단계 · USPTO 공개문서 원문 및 '
+            'Tesla 제품 채택·양산 여부 추가 확인 필요'
         )
     if group == 'dkt_humanoid':
         stage = _dkt_stage(text, item.get('source') or '')
