@@ -4,7 +4,7 @@
   "meetings": [],
   "classification": {
     "market_source_stale": true,
-    "market_source_error": "CME 공식 JSON 접속 장애: 2026-10-09: TimeoutError: The read operation timed out ; CME 공식 FTP 결제파일 실패: 2026-10-07: TimeoutError: The read operation timed out | 2026-10-06: TimeoutError: The read operation timed out | 2026-10-05: TimeoutError: The read operation timed out | 2026-10-02: TimeoutError: The read operation timed out — 최신 시장경로 판정 보류"
+    "market_source_error": "CME 공식 JSON 접속 장애: 2026-10-09: TimeoutError: The read operation timed out ; CME 공식 공개 CSV 조회/검증 실패: 2026-10-09: TimeoutError: The read operation timed out — 최신 시장경로 판정 보류"
   },
   "source": null,
   "market_data_basis": null,
@@ -12,9 +12,9 @@
   "last_validated_at_utc": null,
   "last_good_snapshot": null,
   "source_status": "최신성 검증 실패 — 과거값 격리·신규 판정 중지",
-  "source_error": "CME 공식 JSON 접속 장애: 2026-10-09: TimeoutError: The read operation timed out ; CME 공식 FTP 결제파일 실패: 2026-10-07: TimeoutError: The read operation timed out | 2026-10-06: TimeoutError: The read operation timed out | 2026-10-05: TimeoutError: The read operation timed out | 2026-10-02: TimeoutError: The read operation timed out — 최신 시장경로 판정 보류",
+  "source_error": "CME 공식 JSON 접속 장애: 2026-10-09: TimeoutError: The read operation timed out ; CME 공식 공개 CSV 조회/검증 실패: 2026-10-09: TimeoutError: The read operation timed out — 최신 시장경로 판정 보류",
   "source_error_streak": 21,
   "source_health_alerted": true,
-  "last_health_alert_at_utc": "2026-10-09T22:54:42.377322+00:00",
-  "updated_at_utc": "2026-10-09T22:54:43.371694+00:00"
+  "last_health_alert_at_utc": "2026-10-09T22:57:01.656592+00:00",
+  "updated_at_utc": "2026-10-09T22:57:02.620071+00:00"
 }
