@@ -15,6 +15,11 @@ import urllib.parse
 import war_peace_reconstruction_watch_diplomacy_flash as prev
 
 watch = prev.watch
+# 기존 Google News 수집 경로에 '11월 3일 전 이란 공격' 방향 변화만 보강한다.
+# 일반 전쟁·종전 기사와 별도 전송 경로를 만들지 않는다.
+MIDTERM_IRAN_QUERY = '(Trump OR 트럼프) (Iran OR 이란) (midterm OR 중간선거 OR "November 3" OR "11월 3일") (attack OR strike OR 공격 OR 유예) when:3h'
+if MIDTERM_IRAN_QUERY not in watch.QUERIES:
+    watch.QUERIES.insert(0, MIDTERM_IRAN_QUERY)
 runner = prev.runner
 base = prev.base
 guard = prev.guard
