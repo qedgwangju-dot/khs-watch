@@ -2745,7 +2745,7 @@ def _build_china_fuel_export_policy_alert_body(
         "[주의]",
         ("Reuters 관계자 전언에 따른 재개 예정이며 승인 보도량은 실제 선적·도착량이 아닙니다."
          if stage in ("planned_resume","approval_reported","resumption_reported")
-         else "정부의 공개 명령문과 실제 선적·도착을 구분합니다."),
+         else "현재 공개 보도는 관계자 전언 기반입니다. 중국 정부의 공개 명령문이 확인되기 전에는 공식 전면 금지로 표현하지 않습니다. 실제 선적·도착도 별도로 확인합니다."),
     ])
     return "\n".join(lines).strip() + "\n"
 
