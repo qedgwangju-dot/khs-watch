@@ -475,6 +475,24 @@ class KoreanTransformerExportTests(unittest.TestCase):
         state["last_status"] = "kcs_key_missing"
         self.assertTrue(w.kcs_retry_due(now, state, True))
 
+    def test_unpublished_month_rechecked_on_next_two_hour_schedule(self):
+        previous = {
+            "last_status": "month_unpublished",
+            "last_error_kind": "kcs_no_official_rows",
+            "fetch_revision": w.KOREA_EXPORT_FETCH_REVISION,
+            "last_attempt_day": "2026-10-10",
+            "last_attempt_at_kst": "2026-10-10T00:32:00+09:00",
+        }
+        too_soon = datetime(2026, 10, 10, 1, 40, tzinfo=ZoneInfo("Asia/Seoul"))
+        next_poll = datetime(2026, 10, 10, 2, 37, tzinfo=ZoneInfo("Asia/Seoul"))
+        next_day = datetime(2026, 10, 11, 0, 37, tzinfo=ZoneInfo("Asia/Seoul"))
+        self.assertFalse(w.kcs_retry_due(too_soon, previous, True))
+        self.assertTrue(w.kcs_retry_due(next_poll, previous, True))
+        previous["last_status"] = "verified"
+        previous["last_error_kind"] = ""
+        self.assertFalse(w.kcs_retry_due(next_poll, previous, True))
+        self.assertTrue(w.kcs_retry_due(next_day, previous, True))
+
     def test_existing_access_denial_one_time_alert_even_when_retry_backed_off(self):
         now = datetime(2026, 10, 9, 21, 45, tzinfo=ZoneInfo("Asia/Seoul"))
         cached = {

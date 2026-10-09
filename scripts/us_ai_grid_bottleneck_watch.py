@@ -1204,10 +1204,17 @@ def kcs_retry_due(now: datetime, previous: dict, key_available: bool, force: boo
         return True
     if previous.get("last_attempt_day") != now.strftime("%Y-%m-%d"):
         return True
-    if previous.get("last_error_kind") not in (
-        "kcs_dns_unavailable", "kcs_network_timeout", "kcs_network_unavailable",
-        "kcs_http_retryable",
-    ):
+    # The watcher runs every two hours. Recheck an unpublished latest month on
+    # that cadence, while keeping daily backoff for an already verified month.
+    # Transient upstream failures also remain retryable after 90 minutes.
+    retryable = (
+        previous.get("last_status") == "month_unpublished"
+        or previous.get("last_error_kind") in (
+            "kcs_dns_unavailable", "kcs_network_timeout", "kcs_network_unavailable",
+            "kcs_http_retryable",
+        )
+    )
+    if not retryable:
         return False
     try:
         past = datetime.fromisoformat(str(previous["last_attempt_at_kst"]))
@@ -1252,7 +1259,7 @@ def update_korea_export_watch(now: datetime, previous: dict) -> tuple[dict, list
     today = now.strftime("%Y-%m-%d")
     key_available = bool(os.environ.get("KCS_DATA_GO_SERVICE_KEY", "").strip())
     # A deliberate GitHub Actions re-run must actually recheck credentials.
-    # Ordinary scheduled/push runs still respect the daily backoff.
+    # Ordinary runs use daily backoff only after a verified or nonretryable state.
     attempt = os.environ.get("GITHUB_RUN_ATTEMPT", "1").strip()
     forced_by_rerun = attempt.isdecimal() and int(attempt) > 1
     if not kcs_retry_due(now, latest, key_available, force=forced_by_rerun):
