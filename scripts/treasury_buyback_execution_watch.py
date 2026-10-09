@@ -165,11 +165,17 @@ def result_fingerprint(row: dict) -> str:
 
 
 def _is_30y_bond(row: dict) -> bool:
-    security_type = str(row.get("securityType") or row.get("type") or "").lower()
-    term = str(row.get("securityTerm") or row.get("term") or "").lower()
-    return "bond" in security_type and (
-        term.startswith("30-year") or term.startswith("29-year")
-    )
+    """Nominal 30-year bond only; exclude all inflation-indexed securities."""
+    st = str(row.get("securityType") or row.get("SecurityType") or row.get("type") or "").strip().lower()
+    if st != "bond":
+        return False
+    if any(str(row.get(key) or "").strip().lower() in {"yes", "true", "y", "t", "1"}
+           for key in ("inflationIndexSecurity", "inflation_index_security", "Tips", "tips")):
+        return False
+    raw = (row.get("securityTerm") or row.get("term") or "",
+           row.get("originalSecurityTerm") or "")
+    terms = {"".join(ch for ch in str(t).lower() if ch.isalnum()) for t in raw}
+    return bool(terms.intersection({"30year", "29year10month", "29year11month"}))
 
 
 def _share(row: dict, key: str) -> float | None:
