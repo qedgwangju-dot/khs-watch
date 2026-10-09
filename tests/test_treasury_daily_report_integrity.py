@@ -174,5 +174,11 @@ class TreasuryReportIntegrity(unittest.TestCase):
         self.assertIn("Bills에 +75bp 적용 시", rendered)
 
 
+    def test_jpm_30y_level_does_not_claim_a_new_breakout(self):
+        current = report._jpm_30y_signal(5.60)
+        self.assertIn("신규 돌파 여부는", current)
+        self.assertNotIn("신규 돌파 아님", current)
+
+
 if __name__ == "__main__":
     unittest.main()
