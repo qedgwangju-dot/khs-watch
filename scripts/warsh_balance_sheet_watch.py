@@ -171,6 +171,23 @@ def task_snapshot():
     core=' '.join(parts[:20])
     return {'url':final,'fingerprint':hashlib.sha256(core.encode()).hexdigest(),'excerpt':core[:1600]}
 
+def previous_observation(history, current_date):
+    """Return the latest observation strictly before current_date.
+
+    Re-running the watcher on the same H.4.1 release must not erase the
+    derived week-over-week reserve change.  The previous implementation used
+    history[-1] only when it was a different date, so an hourly rerun on the
+    same release reset reserves_weekly back to None.
+    """
+    candidates = [
+        h for h in history
+        if h.get('date') and current_date and h.get('date') < current_date
+    ]
+    if not candidates:
+        return None
+    return sorted(candidates, key=lambda h: h.get('date'))[-1]
+
+
 def classify_h41(cur,history):
     hist=[h for h in history if h.get('date') and h.get('date')!=cur.get('date')][-8:]+[cur]
     four=None
@@ -181,9 +198,16 @@ def classify_h41(cur,history):
             return '대차대조표 총량 축소 신호 강화',four
         if abs(four['total_assets'])<ASSET_4W and four['bills']>0 and four['mbs']<0:
             return '총량보다 자산 구성 전환 우세',four
-    wa=(cur.get('total_assets_weekly') or 0)/1000; ws=(cur.get('securities_weekly') or 0)/1000; wr=(cur.get('reserves_weekly') or 0)/1000
-    wb=(cur.get('bills_weekly') or 0)/1000; wm=(cur.get('mbs_weekly') or 0)/1000
-    if wa<=-50 and ws<=-25 and wr<=-75:return '주간 기준 대차대조표 총량 축소 신호',four
+    wa=(cur.get('total_assets_weekly') or 0)/1000
+    ws=(cur.get('securities_weekly') or 0)/1000
+    raw_wr=cur.get('reserves_weekly')
+    wr=None if raw_wr is None else float(raw_wr)/1000
+    wb=(cur.get('bills_weekly') or 0)/1000
+    wm=(cur.get('mbs_weekly') or 0)/1000
+    # Missing reserve data is not neutral evidence.  Fail closed instead of
+    # silently converting None to zero and potentially manufacturing a QT call.
+    if wa<=-50 and ws<=-25 and wr is not None and wr<=-75:
+        return '주간 기준 대차대조표 총량 축소 신호',four
     if abs(wa)<50 and wb>=0 and wm<=0:return '충분한 준비금 유지·자산 구성 전환에 가까움',four
     return '혼합 — 총량 축소 여부 추가 확인',four
 
@@ -292,7 +316,7 @@ def main():
     # Schema 4 switches every stock variable to the same Wednesday-level basis.
     # Discard pre-v4 history so weekly/4-week comparisons never mix averages and point-in-time balances.
     history=[] if old_schema<SCHEMA_VERSION else old.get('history',[])
-    prev=history[-1] if history and history[-1].get('date')!=cur.get('date') else None
+    prev=previous_observation(history, cur.get('date'))
     if prev:
         for key in ['total_assets','treasury','bills','mbs','reserves','securities']:
             if cur.get(key) is not None and prev.get(key) is not None:
