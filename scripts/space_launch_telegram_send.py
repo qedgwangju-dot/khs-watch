@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 import os
 import pathlib
+import re
 import socket
 import sys
 import time
@@ -240,6 +241,232 @@ def self_test() -> int:
     print("telegram_sender_self_test=ok mode=plain_text+inline_keyboard fallback=plain_url")
     return 0
 
+
+
+# Optional compact in-message source links. Default send path above is unchanged;
+# only the Starlink Mobile workflow explicitly invokes --inline.
+INLINE_SOURCE_RE = re.compile(r"^• 원문:\s*(https://\S+)\s*$")
+INLINE_MAX_UNITS = 3450
+INLINE_LABELS = "①②③④⑤⑥⑦⑧⑨⑩"
+
+
+def utf16_units(value: str) -> int:
+    return len(value.encode("utf-16-le")) // 2
+
+
+def inline_combine(a: tuple[str, list[dict]], b: tuple[str, list[dict]], glue: str):
+    prefix = utf16_units(a[0] + glue)
+    return (
+        a[0] + glue + b[0],
+        a[1] + [dict(ent, offset=ent["offset"] + prefix) for ent in b[1]],
+    )
+
+
+def inline_url(value: str) -> str:
+    from urllib.parse import urlsplit
+    u = urlsplit(value)
+    if u.scheme != "https" or not u.hostname or u.username or u.password:
+        raise ValueError("Expected a valid HTTPS source link without credentials")
+    if len(value) > 3000 or any(ord(ch) < 32 for ch in value):
+        raise ValueError("Source link contains invalid characters or is too long")
+    return value
+
+
+def inline_link_row(urls: list[str]) -> tuple[str, list[dict]]:
+    if not urls:
+        return "", []
+    if len(urls) > len(INLINE_LABELS):
+        raise ValueError("Too many source links in one section")
+    labels = [
+        "원문" if len(urls) == 1 else f"원문{INLINE_LABELS[i]}"
+        for i in range(len(urls))
+    ]
+    result = " · ".join(labels)
+    entities = []
+    pos = 0
+    for i, (label, url) in enumerate(zip(labels, urls)):
+        if i:
+            pos += utf16_units(" · ")
+        entities.append({
+            "type": "text_link", "offset": pos, "length": utf16_units(label),
+            "url": inline_url(url),
+        })
+        pos += utf16_units(label)
+    return result, entities
+
+
+def inline_paragraph(paragraph: str) -> tuple[str, list[dict]]:
+    current = ("", [])
+    pending_urls = []
+
+    def flush(current):
+        nonlocal pending_urls
+        if not pending_urls:
+            return current
+        segment = inline_link_row(pending_urls)
+        pending_urls = []
+        return inline_combine(current, segment, "\n" if current[0] else "")
+
+    for line in paragraph.splitlines():
+        m = INLINE_SOURCE_RE.fullmatch(line.strip())
+        if m:
+            pending_urls.append(inline_url(m.group(1)))
+            continue
+        if line.strip() == "• 원문: 아래 링크 버튼":
+            raise ValueError("Found old button placeholder instead of source")
+        current = flush(current)
+        current = inline_combine(current, (line, []), "\n" if current[0] else "")
+    return flush(current)
+
+
+def inline_cut_plain_line(value: str):
+    chunks = []
+    chunk = ""
+    for ch in value:
+        if utf16_units(chunk + ch) > INLINE_MAX_UNITS:
+            chunks.append((chunk, []))
+            chunk = ""
+        chunk += ch
+    if chunk:
+        chunks.append((chunk, []))
+    return chunks
+
+
+def inline_split_big_block(block: tuple[str, list[dict]]):
+    if utf16_units(block[0]) <= INLINE_MAX_UNITS:
+        return [block]
+    # Compute link offsets relative to each line before splitting. This preserves
+    # all links and text in messages that exceed one Telegram message.
+    result = []
+    unit_offset = 0
+    current = ("", [])
+    for line in block[0].split("\n"):
+        line_len = utf16_units(line)
+        line_entities = [
+            dict(ent, offset=ent["offset"] - unit_offset)
+            for ent in block[1]
+            if unit_offset <= ent["offset"] and
+            ent["offset"] + ent["length"] <= unit_offset + line_len
+        ]
+        if line_len > INLINE_MAX_UNITS:
+            if line_entities:
+                raise ValueError("Oversize source-link line cannot be split")
+            if current[0]:
+                result.append(current)
+                current = ("", [])
+            result.extend(inline_cut_plain_line(line))
+        else:
+            seg = (line, line_entities)
+            glue = "\n" if current[0] else ""
+            candidate = inline_combine(current, seg, glue)
+            if current[0] and utf16_units(candidate[0]) > INLINE_MAX_UNITS:
+                result.append(current)
+                current = seg
+            else:
+                current = candidate
+        unit_offset += line_len + 1
+    if current[0]:
+        result.append(current)
+    return result
+
+
+def inline_messages(original: str):
+    if not original.strip():
+        raise ValueError("Empty alert")
+    blocks = []
+    for paragraph in original.strip().split("\n\n"):
+        blocks.extend(inline_split_big_block(inline_paragraph(paragraph)))
+    result = []
+    current = ("", [])
+    for block in blocks:
+        glue = "\n\n" if current[0] else ""
+        candidate = inline_combine(current, block, glue)
+        if current[0] and utf16_units(candidate[0]) > INLINE_MAX_UNITS:
+            result.append(current)
+            current = block
+        else:
+            current = candidate
+    if current[0]:
+        result.append(current)
+
+    original_urls = []
+    for line in original.splitlines():
+        m = INLINE_SOURCE_RE.fullmatch(line.strip())
+        if m:
+            original_urls.append(m.group(1))
+    rendered_urls = [
+        ent["url"] for txt, ents in result for ent in ents
+    ]
+    if rendered_urls != original_urls:
+        raise AssertionError("Source link missing, duplicated or out of order")
+    for text, ents in result:
+        if utf16_units(text) > INLINE_MAX_UNITS:
+            raise AssertionError("Telegram text length exceeds safe limit")
+        encoded = text.encode("utf-16-le")
+        for ent in ents:
+            span = encoded[ent["offset"] * 2:
+                           (ent["offset"] + ent["length"]) * 2].decode("utf-16-le")
+            if not span.startswith("원문"):
+                raise AssertionError("Bad Telegram UTF-16 hyperlink position")
+        if "아래 링크 버튼" in text:
+            raise AssertionError("Legacy button prompt survived")
+    # The only removable lines are raw source URLs. The rest of the event must
+    # remain present in the rendered Telegram output.
+    all_text = "\n".join(item[0] for item in result)
+    for line in original.splitlines():
+        if line and not INLINE_SOURCE_RE.fullmatch(line.strip()):
+            if line not in all_text and utf16_units(line) <= INLINE_MAX_UNITS:
+                raise AssertionError("A source report line was dropped")
+    return result
+
+
+def inline_self_test() -> int:
+    sample = (
+        "📡 Starlink Mobile·미국 위성-휴대전화 직접통신 감시\n"
+        "기준: 2026-10-09 17:55 KST\n\n"
+        "[중요 정정] D2D 위성 1만5,000기\n"
+        "• 위성 1만5,000기, 궤도 326~335km. 📡 문자 유지.\n"
+        "• 원문: https://docs.fcc.gov/public/attachments/DA-26-1078A1.pdf\n"
+        "• 원문: https://docs.fcc.gov/public/attachments/DA-26-36A1.pdf\n"
+        "• 원문: https://graingp.com/announcements/spacex-800-mhz/"
+    )
+    texts = inline_messages(sample)
+    assert len(texts) == 1
+    assert "원문① · 원문② · 원문③" in texts[0][0]
+    assert len(texts[0][1]) == 3
+    assert all(e["type"] == "text_link" for e in texts[0][1])
+    assert not any("reply_markup" in item[0] for item in texts)
+    long_texts = inline_messages(
+        "📡 장문 전송 검증\n\n" + ("• 실제 내용 손실 방지. " * 500)
+        + "\n• 원문: https://example.com/confirmed"
+    )
+    assert len(long_texts) > 1
+    assert sum(len(ents) for _, ents in long_texts) == 1
+    assert inline_messages("이모지 📡\n• 원문: https://example.com/")[0][0].endswith("원문")
+    print("starlink_d2d_inline_self_test=ok inline_links=3 utf16=ok long_text=ok no_buttons=ok")
+    return 0
+
+
+def send_inline_alert(token: str, chat_id: str, message: str):
+    ids = []
+    for plain_text, entities in inline_messages(message):
+        response = telegram_call(token, "sendMessage", {
+            "chat_id": chat_id,
+            "text": plain_text,
+            "entities": entities,
+            "disable_web_page_preview": True,
+        })
+        delivered = response.get("result") or {}
+        returned_urls = [
+            e.get("url") for e in delivered.get("entities", [])
+            if e.get("type") == "text_link"
+        ]
+        if returned_urls != [e["url"] for e in entities]:
+            raise RuntimeError("Telegram did not confirm clickable text links")
+        if delivered.get("text") != plain_text:
+            raise RuntimeError("Telegram returned modified alert text")
+        ids.append(int(delivered["message_id"]))
+    return ids
 
 def main() -> int:
     if len(sys.argv) == 2 and sys.argv[1] == "--self-test":
