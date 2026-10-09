@@ -340,6 +340,25 @@ class KoreanTransformerExportTests(unittest.TestCase):
             self.assertEqual(other_events, [])
             self.assertTrue(next_state["baseline_notified"])
 
+    def test_same_day_key_recovery_retries_missing_key_state(self):
+        now = datetime(2026, 10, 9, 21, 0, tzinfo=ZoneInfo("Asia/Seoul"))
+        cached = {
+            **w.KOREA_EXPORT_BASELINE,
+            "baseline_notified": True,
+            "last_attempt_day": "2026-10-09",
+            "last_status": "kcs_key_missing",
+        }
+        def fake_fetch(hs, ym, country="US"):
+            return {"hs6": hs, "month": ym[:4] + "-" + ym[4:],
+                    "country": country, "export_usd": 1_000_000, "net_weight_kg": 50_000}
+        with mock.patch.dict(w.os.environ, {"KCS_DATA_GO_SERVICE_KEY": "new-key"}):
+            with mock.patch.object(w, "fetch_korea_kcs_hs6_month", side_effect=fake_fetch) as spy:
+                later, events = w.update_korea_export_watch(now, cached)
+        self.assertEqual(spy.call_count, 9)
+        self.assertEqual(later["last_status"], "verified")
+        self.assertIn("2026-09", later["official_us_by_month"])
+        self.assertEqual([x["kind"] for x in events], ["official_us_month"])
+
     def test_fetched_usa_customs_month_alert_once(self):
         now = datetime(2026, 10, 9, 19, 0, tzinfo=ZoneInfo("Asia/Seoul"))
         def fake_fetch(hs, ym, country="US"):
