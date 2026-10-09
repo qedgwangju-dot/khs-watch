@@ -5,9 +5,16 @@ on:
     paths:
       - ".github/workflows/rebellions-partner-watch-telegram.yml"
       - "scripts/rebellions_partner_watch.py"
+      - "tests/test_rebellions_partner_watch.py"
   schedule:
-    # GitHub cron is UTC. Hourly, offset from crowded slots.
-    - cron: "37 * * * *"
+    # Two off-peak UTC slots; GitHub cron is best-effort and can skip runs.
+    - cron: "17,47 * * * *"
+  workflow_run:
+    # Independent fallback when the regular cron has not fired recently.
+    workflows:
+      - "AI Security Web Watch"
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -15,10 +22,11 @@ permissions:
 
 concurrency:
   group: rebellions-partner-watch-telegram
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   monitor:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
@@ -29,16 +37,58 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: main
+
+      - name: Decide whether this is a due run
+        id: cadence
+        run: |
+          python3 - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          from zoneinfo import ZoneInfo
+
+          event = os.environ.get("GITHUB_EVENT_NAME") or "unknown"
+          should_run = True
+          lag_minutes = -1
+          state_path = pathlib.Path("data/rebellions_partner_watch_state.json")
+          if event in {"schedule", "workflow_run"} and state_path.exists():
+              try:
+                  state = json.loads(state_path.read_text(encoding="utf-8"))
+                  checked = dt.datetime.fromisoformat(state["last_checked_kst"])
+                  if checked.tzinfo is None:
+                      checked = checked.replace(tzinfo=ZoneInfo("Asia/Seoul"))
+                  lag_minutes = (dt.datetime.now(ZoneInfo("Asia/Seoul")) - checked).total_seconds() / 60
+                  threshold = 19 if event == "schedule" else 42
+                  should_run = lag_minutes >= threshold
+              except Exception as exc:
+                  print(f"warning=invalid_rebellions_watch_state {type(exc).__name__}")
+                  should_run = True
+
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
+              output.write(f"run={'true' if should_run else 'false'}\n")
+          print(f"rebellions_trigger={event} state_lag_minutes={lag_minutes:.1f} execute={should_run}")
+          PY
 
       - name: Set up Python
+        if: steps.cadence.outputs.run == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Install parser
-        run: python -m pip install --disable-pip-version-check beautifulsoup4
+      - name: Install parser and Google News canonical-url resolver
+        if: steps.cadence.outputs.run == 'true'
+        run: python -m pip install --disable-pip-version-check beautifulsoup4 googlenewsdecoder==1.0.0
+
+      - name: Run regression tests
+        if: steps.cadence.outputs.run == 'true'
+        run: |
+          python -m py_compile scripts/rebellions_partner_watch.py
+          python -m unittest discover -s tests -p 'test_rebellions_partner_watch.py' -v
 
       - name: Verify Telegram bot identity
+        if: steps.cadence.outputs.run == 'true'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
         run: |
@@ -57,6 +107,7 @@ jobs:
           PY
 
       - name: Validate same-event duplicate regression
+        if: steps.cadence.outputs.run == 'true'
         run: |
           python - <<'PY'
           import datetime as dt
@@ -99,17 +150,18 @@ jobs:
           PY
 
       - name: Check Rebellions partnerships, orders and deployments
+        if: steps.cadence.outputs.run == 'true'
         run: python scripts/rebellions_partner_watch.py
 
       - name: Publish summary
-        if: always()
+        if: always() && steps.cadence.outputs.run == 'true'
         run: |
           if [ -f out/rebellions_partner_watch_status.md ]; then
             cat out/rebellions_partner_watch_status.md >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Send new Rebellions change to Telegram
-        if: hashFiles('out/rebellions_partner_watch_alert.md') != ''
+        if: steps.cadence.outputs.run == 'true' && hashFiles('out/rebellions_partner_watch_alert.md') != ''
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
@@ -177,24 +229,51 @@ jobs:
           PY
 
       - name: Persist watch state
-        if: success() && hashFiles('out/rebellions_partner_watch_pending_state.json') != '' && (hashFiles('out/rebellions_partner_watch_alert.md') == '' || hashFiles('out/rebellions_partner_watch_telegram_confirmed.json') != '')
+        if: success() && steps.cadence.outputs.run == 'true' && hashFiles('out/rebellions_partner_watch_pending_state.json') != '' && (hashFiles('out/rebellions_partner_watch_alert.md') == '' || hashFiles('out/rebellions_partner_watch_telegram_confirmed.json') != '')
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Other alerts frequently update main; merge the pending event set with the
+          # newest remote state and retry non-fast-forward pushes without losing events.
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            python - <<'PY'
+          import datetime as dt
+          import json
+          import pathlib
 
-          # Bring the checkout to the latest main BEFORE writing the pending state.
-          # The state file itself no longer triggers this workflow, preventing self-trigger loops.
-          git fetch origin main
-          git rebase origin/main
-
-          cp out/rebellions_partner_watch_pending_state.json data/rebellions_partner_watch_state.json
-          git add data/rebellions_partner_watch_state.json
-          if git diff --cached --quiet; then
-            echo "Rebellions watch state unchanged"
-          else
+          target = pathlib.Path("data/rebellions_partner_watch_state.json")
+          pending = json.loads(pathlib.Path("out/rebellions_partner_watch_pending_state.json").read_text(encoding="utf-8"))
+          remote = json.loads(target.read_text(encoding="utf-8")) if target.exists() else {}
+          seen = dict(remote.get("seen") or {})
+          for key, item in (pending.get("seen") or {}).items():
+              old = seen.get(key)
+              if old and old.get("alerted") and not item.get("alerted"):
+                  continue
+              seen[key] = item
+          seen = dict(list(seen.items())[-800:])
+          result = {**remote, **pending, "seen": seen, "initialized": True}
+          remote_time = str(remote.get("last_checked_kst") or "")
+          pending_time = str(pending.get("last_checked_kst") or "")
+          result["last_checked_kst"] = max(remote_time, pending_time)
+          result["bootstrap_kst"] = remote.get("bootstrap_kst") or pending.get("bootstrap_kst")
+          target.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(f"rebellions_merged_state_keys={len(seen)}")
+          PY
+            git add data/rebellions_partner_watch_state.json
+            if git diff --cached --quiet; then
+              echo "Rebellions watch state unchanged"
+              exit 0
+            fi
             git commit -m "Update Rebellions partner watch state [skip ci]"
-            git push origin HEAD:main
-          fi
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "State push conflict; will refresh and retry attempt $attempt" >&2
+            sleep $((attempt * 2))
+          done
+          exit 1
 
       - name: Upload verification artifacts
         if: always()
