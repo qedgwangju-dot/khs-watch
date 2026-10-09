@@ -6,6 +6,8 @@ on:
       - "scripts/treasury_buyback_policy_watch.py"
       - "scripts/treasury_alert_korean_guard.py"
       - "scripts/treasury_buyback_chain_enrich.py"
+      - "scripts/treasury_buyback_policy_state_commit.py"
+      - "tests/test_treasury_buyback_policy_state_commit.py"
       - ".github/workflows/treasury-buyback-policy-telegram-alert.yml"
       - "tests/test_treasury_alert_root_guards.py"
   schedule:
