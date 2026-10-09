@@ -108,6 +108,8 @@ jobs:
               official_page_snapshots,
               semantic_official_snapshot,
               is_stale_news_backfill,
+              official_change_summary,
+              semantic_changes,
           )
 
           ultra_a = (
@@ -139,6 +141,18 @@ jobs:
               raise RuntimeError("Astra EU residency must remain unsupported")
           if "max_speed_x" in sem_b or "eu_regional_supported" in sem_b:
               raise RuntimeError("Ambiguous aggregate or missing-speed fields detected")
+          historical = dict(sem_a)
+          historical["max_speed_x"] = 8.0
+          historical["eu_regional_supported"] = False
+          summary = official_change_summary("OpenAI Ultrafast 모드", historical, sem_b)
+          print(f"ai_inference_corrected_release_sample={summary}")
+          if "확인 불가x" in summary or "최대 속도 배수" in summary:
+              raise RuntimeError("Missing 8x phrase incorrectly treated as slower performance")
+          if "GPT-6.1 Sol Ultrafast" not in summary or "EU 데이터 상주" not in summary:
+              raise RuntimeError("Important model-specific release conditions omitted")
+          if any(field in {"max_speed_x", "eu_regional_supported"} for field, _, _ in semantic_changes(historical, sem_b)):
+              raise RuntimeError("Removed legacy fields were misread as real changes")
+
           if _semantic_digest(sem_a) != _semantic_digest(sem_jitter):
               raise RuntimeError("Non-semantic render jitter changed Ultrafast semantic digest")
           if _semantic_digest(sem_a) == _semantic_digest(sem_b):
