@@ -151,7 +151,7 @@ def _china_fuel_period(row):
         if re.search(r"\b" + word + r"\b", title):
             month = number
             break
-    ko_month = re.search(r"(?:^|\s)(1[0-2]|[1-9])월", title)
+    ko_month = re.search(r"(1[0-2]|[1-9])월", title)
     if ko_month:
         month = int(ko_month.group(1))
     # 1월에 전년도 12월 실적을 확인하는 경우 월말 회계기간을 보존한다.
@@ -246,7 +246,7 @@ def _china_fuel_signals(row, stage):
         title = str(row.get("title_original", "")).lower()
         if _china_fuel_period(row) == "2026-10" and (
             "china-resume-october-fuel-exports-after-brief-halt" in source_url
-            or "china to resume october fuel exports after a brief halt" in title
+            or "china to resume october fuel exports" in title
         ):
             return ["중국 10월 정제연료 수출 약 370만 톤 승인 보도(Reuters 업계 관계자 인용) — 9월 예상 400만 톤 초과와 구분; 당국 공식 발표·선적·통관 실적은 아직 별개"]
         return ["업계 관계자 또는 언론의 중국 정제연료 수출 재개 보도 — 정부 공식 공표·선적·세관 실적을 순서대로 추가 확인"]
@@ -1609,6 +1609,14 @@ def verdict(items):
             "- <b>현재 단계:</b> 군사 위험과 실물 공급 회복이 동시에 존재 — 과거 공격과 현재 재가동을 같은 확전 신호로 합치지 않음\n"
             "- <b>시장:</b> 해운·보험 위험프리미엄은 남지만 원유 공급 차질 압력은 일부 완화\n"
             "- <b>다음:</b> 송유관 지속 가동 → 얀부 선적 → 추가 공격 여부 → 실제 수출 물량"
+        )
+    if red and china_stages:
+        return (
+            "<b>투자 판정</b>\n"
+            "- <b>핵심:</b> 실제 군사·해상안보 위험과 중국 정제연료 수출 재개 보도는 서로 다른 방향의 신호\n"
+            "- <b>현재 단계:</b> 전쟁위험은 지속되며 중국은 수출 승인·선적·세관 실적의 확인 수준을 별도로 추적\n"
+            "- <b>시장:</b> 경유·휘발유·항공유 공급완화 가능성에도 해상운송·보험 위험은 잔존\n"
+            "- <b>다음:</b> 공격·항행 실제 변화, 중국 정제연료 선적량, 세관 통계"
         )
     if red and peace:
         return (
