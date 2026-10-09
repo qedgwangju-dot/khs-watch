@@ -1,5 +1,5 @@
 {
-  "last_checked_kst": "2026-10-10T07:30:53+09:00",
+  "last_checked_kst": "2026-10-10T07:32:34+09:00",
   "schedule_sha256": "3461c9a9822dec08b3059d2dd367baadd0d0967193913ce8fe95702f000366d7",
   "long_end_max_bn": {
     "10Y to 20Y": 6.0,
@@ -9,7 +9,7 @@
   "upgrade_note": "one-time resend armed for upgraded Bessent policy-boundary interpretation",
   "bessent_policy_boundary_revision": 11,
   "bessent_causal_verdict_key": "mixed",
-  "bessent_causal_verdict": "⚪ 혼조 — 현재 다중거래일 흐름만으로 에너지·인플레이션 또는 재정·기간프리미엄 단일 원인을 확정하기 어려움",
+  "bessent_causal_verdict": "⚪ 공통 원자료 3거래일 시차 — 최신 원인 판정 보류",
   "bessent_causal_snapshot": {
     "common_prev_date": "2026-10-05",
     "common_date": "2026-10-06",
@@ -44,6 +44,15 @@
       "source": "https://www.newyorkfed.org/research/data_indicators/term-premia-tabs",
       "data_source": "NY Fed ACM primary XLS"
     },
+    "term_aligned": {
+      "available": true,
+      "change_bp": 10.238872074533667,
+      "start_date": "2026-09-29",
+      "end_date": "2026-10-06"
+    },
+    "latest_bond_common_date": "2026-10-09",
+    "lag_market_sessions": 3,
+    "is_lagged": true,
     "latest": {
       "brent": {
         "date": "2026-10-06",
@@ -63,7 +72,7 @@
       }
     },
     "verdict_key": "mixed",
-    "verdict": "⚪ 혼조 — 현재 다중거래일 흐름만으로 에너지·인플레이션 또는 재정·기간프리미엄 단일 원인을 확정하기 어려움",
+    "verdict": "⚪ 공통 원자료 3거래일 시차 — 최신 원인 판정 보류",
     "oil_scenario_key": "100_plus",
     "oil_scenario_stable": true,
     "sources": {
