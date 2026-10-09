@@ -627,6 +627,11 @@ def canonical_story_key(company: str, title: str) -> str | None:
         result = power_milestone(title)
         return result[2] if result else None
 
+    if company in {"Lumentum", LITE_CAPACITY_COMPANY}:
+        lite = lite_supply_event(title)
+        if lite:
+            return lite[2]
+
     if company == "Volantis":
         # Preserve the already-seen $88M Series A key, but do not collapse every
         # future financing round into that old event.
@@ -1644,6 +1649,10 @@ def stage_for(title: str) -> str:
 
 
 def category_for(title: str, company: str) -> str:
+    if company in {"Lumentum", LITE_CAPACITY_COMPANY}:
+        milestone = lite_supply_event(title)
+        if milestone:
+            return milestone[0]
     if company == POWER_COMPANY:
         milestone = power_milestone(title)
         return milestone[0] if milestone else "AAOI 현장발전 EPC 추진"
@@ -1825,6 +1834,15 @@ def category_for(title: str, company: str) -> str:
 
 def meaning_for(category: str) -> str:
     mapping = {
+        "루멘텀 AI 광부품 생산능력 예약": "CEO가 AI 광부품 생산능력의 예약 시계를 2029년 초로 확장한 직접 인터뷰입니다. 생산능력·예약 물량·고객 선급금·출하·매출을 구분하며 2029년 매출 확정으로 계산하지 않습니다.",
+        "루멘텀 과거 2028년 예약 전망": "과거 2028년 생산능력 예약 전망은 2029년 신규 발언과 별도 기존 기준선입니다.",
+        "루멘텀 제품별 수요 미충족률": "일부 제품군의 미충족 수요 비율입니다. 제품별 2027년 70%·2028년 30% 발언은 전체 광부품 부족률이나 회사 매출 감소율이 아닙니다.",
+        "루멘텀 일본 공장 생산능력": "일본 공장 생산능력 12배 증설 관련 보도는 가동률·장비 설치·웨이퍼 투입·수율·검사·양품 출하의 실적 연결을 별도 확인해야 합니다.",
+        "루멘텀 일본 증설 투자 규모": "일본 추가 설비투자 3억5,000만 달러는 실제 집행·계약·공정·연도별 현금지출을 검증할 때만 확정 설비투자로 계산합니다. 미국 신규 공장과 엔비디아 지분투자 20억 달러를 합쳐 매출로 계산하지 않습니다.",
+        "루멘텀 일본 실제 생산능력 증설": "일본 광레이저 공장의 실제 설비 가동과 출하가 확인되면 생산능력 예약이 현금창출로 이어지는지를 검증할 수 있습니다.",
+        "루멘텀 고객 증설비용 분담": "대형 고객의 증설투자 위험 분담은 선급금·실제 현금입금·매출채권·장기 생산능력 사용권과 별개입니다. 자금 부담 감소와 미래 레이저 공급 약정을 함께 봅니다.",
+        "루멘텀 신사업 인수·확장": "새 인수 검토가 아니라 구속력 있는 인수계약·인수 종결이 확정될 때 제품 포트폴리오 및 장기 매출 영향이 발생합니다.",
+
         "AAOI 현장발전 EPC 추진": "Leadray Energy가 설계·조달·시공을 맡고 Bloom Energy의 SOFC로 대만 광통신 공장 전력을 보강할 예정입니다. 2027년 1분기는 운전 목표이며 현재 전원 인가·발전용량·계약금액은 공개되지 않았습니다.",
         "AAOI 현장발전 용량·계약금액": "실제 발전용량(MW)과 공급계약 금액이 공개되면 설치비·단위 출력 및 증설 대응 정도를 검산할 수 있습니다. 미공개 수치를 다른 프로젝트에서 차용하지 않습니다.",
         "AAOI SOFC 계획 용량·금액": "새로 공개된 용량·금액 목표는 확정 납품·설비투자가 아닙니다. 공급계약·허가·실제 설치규모와 분리해 추적합니다.",
@@ -1922,6 +1940,15 @@ def meaning_for(category: str) -> str:
 
 def risk_for(category: str) -> str:
     mapping = {
+        "루멘텀 AI 광부품 생산능력 예약": "예약된 생산능력과 취소 불가 발주·가격확정·매출인식은 다릅니다. 고객 선주문·다중 공급망 전환·광 패키징 수율·인증기간이 실현 물량을 낮출 수 있습니다.",
+        "루멘텀 과거 2028년 예약 전망": "과거 전망을 최신 신규계약으로 다시 발송하면 장기 수주잔고를 중복 계산하게 됩니다.",
+        "루멘텀 제품별 수요 미충족률": "70%·30%가 서로 다른 제품군인데 전사 부족률로 확대하면 생산량·평균판매단가와 매출 예상치가 과장됩니다.",
+        "루멘텀 일본 공장 생산능력": "장비 12배 증설 주장과 12배 양품 출하·매출 증가는 다릅니다. InP 결정 성장·수율·포토다이오드 검사·열·신뢰성·고객 인증이 병목입니다.",
+        "루멘텀 일본 증설 투자 규모": "공장 인허가·설비 납기 3~5년·현금 소진·고정비·수요 변동으로 3억5,000만 달러 투자 회수가 지연될 수 있습니다.",
+        "루멘텀 일본 실제 생산능력 증설": "신규 라인 초기 수율과 고온 동작 검사·레이저 수명 검증 지연이 고객 납품과 매출 인식을 늦출 수 있습니다.",
+        "루멘텀 고객 증설비용 분담": "고객의 설비투자 분담 약정이 취소·감액되거나 현금 입금 전에 설비 투자부터 실행되면 자금조달 부담이 남습니다.",
+        "루멘텀 신사업 인수·확장": "인수대금·통합비용·특허·고객인증 중복으로 단기 영업현금흐름과 총자산이익률이 악화될 수 있습니다.",
+
         "AAOI 현장발전 EPC 추진": "전력망·가스 공급·허가·부지 설치·보험과 SOFC 초기 고장으로 2027년 1분기 가동 목표가 지연될 수 있습니다.",
         "AAOI 현장발전 용량·계약금액": "정격출력과 실제 연속 가동률이 다르며 보조금·설치비·천연가스 가격·정비비를 반영해야 실질 단위 원가를 판단할 수 있습니다.",
         "AAOI SOFC 계획 용량·금액": "계획 용량과 계약 물량·실제 설치 용량이 다를 수 있으며, 가스·인허가·설치비·후속 유지보수 비용이 달라집니다.",
@@ -2280,6 +2307,9 @@ def main() -> None:
             power_event = power_milestone(title) if company == POWER_COMPANY else None
             if company == POWER_COMPANY and power_event is None:
                 continue
+            lite_event = lite_supply_event(title) if company == LITE_CAPACITY_COMPANY else None
+            if company == LITE_CAPACITY_COMPANY and lite_event is None:
+                continue
 
             # Keep 800V-DC / SiC / GaN power architecture separate from optics.
             # Higher rack density can drive both power and optical changes, but one does
@@ -2320,6 +2350,10 @@ def main() -> None:
                     continue
 
             score = signal_score(title, source)
+            if lite_event:
+                # Supply booked until 2029 has no conventional product-speed or
+                # "order" token. Never exclude a first-hand CEO quote on that basis.
+                score = max(score, 18)
             if power_event:
                 # Factory fuel cell / grid news often lacks 800G or "optical"
                 # in the title, so the original optics score must not drop it.
@@ -2330,7 +2364,9 @@ def main() -> None:
             has_high = any(re.search(p, title, re.I) for p in HIGH_SIGNAL_PATTERNS)
             has_action = any(re.search(p, title, re.I) for p in ACTION_PATTERNS)
             very_strong = bool(re.search(r"\b3\.2\s*[Tt]\b", title, re.I))
-            if not power_event and (score < 7 or not has_high or (not has_action and not very_strong)):
+            if not power_event and not lite_event and (
+                score < 7 or not has_high or (not has_action and not very_strong)
+            ):
                 continue
             key = event_key(company, title, source)
             item.update({
@@ -2338,8 +2374,8 @@ def main() -> None:
                 "ticker": meta["ticker"],
                 "score": score,
                 "key": key,
-                "stage": power_event[1] if power_event else structural_stage(company, structural_category, title) if structural_category else stage_for(title),
-                "category": power_event[0] if power_event else category_for(title, company),
+                "stage": lite_event[1] if lite_event else power_event[1] if power_event else structural_stage(company, structural_category, title) if structural_category else stage_for(title),
+                "category": lite_event[0] if lite_event else power_event[0] if power_event else category_for(title, company),
             })
             all_relevant.append(item)
 
@@ -2400,6 +2436,7 @@ def main() -> None:
             source_is_corroborated(item)
             and credible_structural_source(item, quality_candidates)
             and verified_power_event(item, quality_candidates)
+            and lite_high_quality_source(item, quality_candidates)
         )
     ]
 
@@ -2443,6 +2480,7 @@ def main() -> None:
         | set(KNOWN_PHOTONIC_BASELINE_KEYS)
         | set(KNOWN_NEW_STRUCTURE_KEYS)
         | set(POWER_BASELINE_KEYS)
+        | set(LITE_PRIOR_KEYS)
     )
     seen_story_records = [
         record for record in (state.get("seen_story_records") or [])
@@ -2521,6 +2559,7 @@ def main() -> None:
         "optical_packaging_version": 2,
         "structural_optics_version": STRUCTURAL_OPTICS_VERSION,
         "aaoi_taiwan_power_watch_version": POWER_MONITOR_VERSION,
+        "lumentum_supply_watch_version": LITE_SUPPLY_VERSION,
         "aaoi_taiwan_power_source_ok": power_source_healthy,
         "aaoi_taiwan_power_last_healthy_kst": (
             dt.datetime.now(KST).isoformat(timespec="seconds")
@@ -2640,6 +2679,8 @@ def main() -> None:
             alert_header = "🚨 <b>AI 광컴퓨팅·광메모리 구조 변화 감지</b>"
         elif all(item.get("company") == POWER_COMPANY for item in alert_items):
             alert_header = "🚨 <b>AAOI 대만 전력확보·광모듈 증설 변화 감지</b>"
+        elif all(item.get("company") in {"Lumentum", LITE_CAPACITY_COMPANY} for item in alert_items) and any(item.get("company") == LITE_CAPACITY_COMPANY for item in alert_items):
+            alert_header = "🚨 <b>루멘텀 광부품 공급부족·증설 구조 변화</b>"
         else:
             alert_header = "🚨 <b>AI 네트워킹·광통신 구조 변화 감지</b>"
         lines = [
@@ -2661,6 +2702,8 @@ def main() -> None:
                 f"<b>{idx}) {html.escape(DISPLAY_NAMES_KO.get(item['company'], item['company']))} ({html.escape(item['ticker'])}) — {html.escape(category)}</b>",
                 f"• 단계: {html.escape(item['stage'])}",
                 f"• 확인 수준: {html.escape(evidence_label(item))}" if item['company'] in NEW_STRUCTURE_AXES else (
+                    "• 확인 수준: Bloomberg 직접 인터뷰 등 신뢰 보도·회사 공시와 구분"
+                ) if item['company'] == LITE_CAPACITY_COMPANY else (
                     "• 확인 수준: 공급사 공식발표" if official_power_source(item) else
                     "• 확인 수준: 독립 신뢰매체 교차확인·실제 계약조건 재검증 필요"
                 ) if item['company'] == POWER_COMPANY else "",
@@ -2682,8 +2725,8 @@ def main() -> None:
             ])
         lines.extend([
             "<b>감시 기준</b>",
-            "• 고객·수주·양산: 1.6T·3.2T·CPO·광컴퓨팅의 고객인증, PO, 출하, 생산능력, 매출 가이던스 변화",
-            "• 병목·정책: FAU·InP·ELS·OCS/NPO 검증, AAOI 대만 전력·SOFC 시운전·검수·출하·허가",
+            "• 고객·수주·양산: 1.6T·3.2T·광컴퓨팅, 루멘텀 2029 예약·제품별 부족률·실제 출하",
+            "• 병목·정책: FAU·InP·ELS·OCS/NPO, 일본 증설·고객 설비투자 분담·AAOI 전력·미국 규제 단계",
             "• 제외: 전시·데모·단순 주가반응·기존 기사 재탕은 알림하지 않음",
         ])
         ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
@@ -2722,6 +2765,7 @@ def main() -> None:
         f"- 중복 기사 통합 후 사건 기준선: {len(deduped)}건",
         f"- 중복 제거 방식: 동일 원문 URL·제목/출처 통합 + 동일 사건 의미 클러스터 + 사건키 v3",
         f"- FAU·OCS·OPEN NPO 감시 버전: {STRUCTURAL_OPTICS_VERSION} (2025 OCP·2026년 7월 OPEN NPO 기존사건 기준선)",
+        f"- 루멘텀 생산능력·자금분담 감시 버전: {LITE_SUPPLY_VERSION}",
         f"- AAOI 대만 전력 감시: {'정상' if power_source_healthy else '보류·해당 감시축 기준선 미갱신'}",
         f"- 이전 오탐 정정: {'전송 대기' if correction_due else '기존 송출 확인·중복 발송 금지'}",
         f"- AAOI 대만 전력 최근 정상조회: {pending.get('aaoi_taiwan_power_last_healthy_kst') or '확인되지 않음'}",
