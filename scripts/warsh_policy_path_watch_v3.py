@@ -7,7 +7,7 @@ from datetime import datetime, timezone
 import warsh_policy_path_watch_v2 as v2
 
 base = v2.base
-SCHEMA_VERSION = 6
+SCHEMA_VERSION = 7
 
 
 def _validated_probability(prob_cell, change_bp):
@@ -139,8 +139,8 @@ def main():
         snap = validated_snapshot()
     except Exception as exc:
         source_error = str(exc)
-        if not old.get('meetings'):
-            raise
+        # 최초 수집이 실패해도 다른 감시를 멈추거나 과거 확률을 만들지 않는다.
+        # 자료가 복구되기 전에는 금리경로 수치 자체를 새로 판정하지 않는다.
         streak = int(old.get('source_error_streak') or 0) + 1
         alerted = bool(old.get('source_health_alerted'))
         if streak >= 2 and not alerted and not first:
@@ -198,6 +198,8 @@ def main():
         'classification': cls,
         'source': snap['url'],
         'source_status': '시장원천 최신성·연준 공식범위 교차검증 통과',
+        'official_settlement_date': snap.get('official_settlement_date'),
+        'last_validated_at_utc': datetime.now(timezone.utc).isoformat(),
         'source_error': None,
         'source_error_streak': 0,
         'source_health_alerted': False,
