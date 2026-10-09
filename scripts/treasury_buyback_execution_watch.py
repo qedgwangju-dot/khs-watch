@@ -582,6 +582,7 @@ def build_alert(row: dict, fx: float, fx_date: str) -> tuple[str, str, dict]:
         f"• 총 제시액: {fmt_usd_krw(offered, fx)}",
         f"• 매입 승인 액면금액: <b>{fmt_usd_krw(accepted, fx)}</b>",
         f"• 매입상한(액면): {fmt_usd_krw(maximum, fx)}",
+        "• 위 원화 환산은 채권 액면금액 기준이며, 결제일 실제 현금 지출은 매입가격과 경과이자를 별도 확인해야 합니다.",
     ]
 
     if cap_use is not None:
