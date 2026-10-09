@@ -109,7 +109,7 @@ jobs:
           exit 1
 
       - name: Send interpreted Telegram alert
-        if: hashFiles('out/treasury_cta_squeeze_alert.html') != ''
+        if: github.event_name != 'push' && hashFiles('out/treasury_cta_squeeze_alert.html') != ''
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TREASURY_FOREIGN_DEMAND_TELEGRAM_BOT_TOKEN }}
           PRIMARY_CHAT_ID: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
@@ -163,7 +163,7 @@ jobs:
           fi
 
       - name: Finalize CTA state
-        if: success() && hashFiles('data/treasury_cta_squeeze_state_next.json') != ''
+        if: github.event_name != 'push' && success() && hashFiles('data/treasury_cta_squeeze_state_next.json') != ''
         run: |
           python - <<'PY'
           import pathlib
@@ -177,7 +177,7 @@ jobs:
           PY
 
       - name: Commit CTA state
-        if: success() && hashFiles('data/treasury_cta_squeeze_state.json') != ''
+        if: github.event_name != 'push' && success() && hashFiles('data/treasury_cta_squeeze_state.json') != ''
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
