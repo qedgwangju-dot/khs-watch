@@ -283,7 +283,7 @@ def _oas_asof(oas_text):
 
 def _fund_date(ticker, text):
     m = re.search(
-        rf"^{re.escape(ticker)} \\([^\\n]+\\) — (20\\d{{2}}-\\d{{2}}-\\d{{2}})",
+        rf"^{re.escape(ticker)} \([^\n]+\) — (20\d{{2}}-\d{{2}}-\d{{2}})",
         text or "",
         re.M,
     )
@@ -291,7 +291,7 @@ def _fund_date(ticker, text):
 
 
 def _rate_move_bp(rate_text):
-    m = re.search(r"([+-]\\d+(?:\\.\\d+)?)bp", rate_text or "")
+    m = re.search(r"([+-]\d+(?:\.\d+)?)bp", rate_text or "")
     return float(m.group(1)) if m else None
 
 
