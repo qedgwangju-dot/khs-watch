@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""Warsh 금리경로 v4: CME 공식 결제값 + 뉴욕연은 EFFR 우선.
+"""Warsh 금리경로 v4: CME FedWatch 공식 인증 API + 뉴욕연은 EFFR.
 
-공식 시장원천이 실패하면 직전 정상 상태를 보존하고 신규 금리경로 판정을
-중지한다. 보조 웹 화면의 오래된 확률을 자동 알림에 사용하지 않는다.
+구간별 인상확률은 CME가 직접 제공하는 인증 API 응답에서만 사용한다.
+인증·권한·최신성 검증이 실패하면 과거값을 현재값으로 재사용하지 않고
+신규 확률·금리경로 판정을 중지한다. 공개 결제파일 파서는 비확률
+회귀검증용으로만 남기며 FedWatch 확률로 승격하지 않는다.
 """
 import calendar
 import csv
@@ -297,9 +299,9 @@ def adjacent_distribution(change_bp):
 
 
 def official_snapshot():
-    # 인증된 공식 FedWatch API만 실거래 확률을 판정하는 활성 경로.
-    # 2024년 종료된 FTP 결제파일이나 차단이 잦은 비공식 웹 JSON을
-    # 계속 재시도해 현재 확률로 승격하지 않는다.
+    # 인증된 공식 FedWatch API만 구간별 확률을 판정하는 활성 경로.
+    # CME 공개 결제파일은 현재도 배포될 수 있지만 FedWatch 확률분포 자체가
+    # 아니므로 확률 수치로 역산·승격하지 않는다. 비공식 웹 JSON도 사용하지 않는다.
     api_id = (os.getenv("CME_FEDWATCH_API_ID") or "").strip()
     api_password = (os.getenv("CME_FEDWATCH_API_PASSWORD") or "").strip()
     if not api_id or not api_password:
@@ -330,7 +332,8 @@ def official_snapshot():
 
 
 def _legacy_public_settlement_snapshot():
-    # 비활성 참고 코드: 오래된 웹 JSON·FTP 탐색 경로는 운영에 사용하지 않는다.
+    # 비활성 참고 코드: 공개 CME 결제값은 기대금리 회귀검증에만 사용하며
+    # FedWatch 구간별 확률 운영 경로에는 사용하지 않는다.
     trade_date, monthly = cme_monthly_rates()
     effr, effr_date = official_effr()
     try:
