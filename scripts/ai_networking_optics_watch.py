@@ -2737,11 +2737,17 @@ def main() -> None:
                     pub = item["published"]
             category = item["category"]
             public_title = item["title"]
-            if item.get("company") == LITE_CAPACITY_COMPANY and item.get("story_key") == "lumentum|booking-horizon|2029":
-                if re.search(r"nvidia", public_title, re.I):
-                    public_title = "엔비디아가 투자한 루멘텀, AI 광부품 생산능력 2029년 초까지 사실상 판매예약"
-                else:
-                    public_title = "루멘텀, AI 광부품 생산능력 2029년 초까지 사실상 판매예약"
+            if item.get("company") == LITE_CAPACITY_COMPANY:
+                detail = lite_supply_event(public_title)
+                if detail and detail[2] == "lumentum|booking-horizon|2029":
+                    if re.search(r"nvidia", public_title, re.I):
+                        public_title = "엔비디아가 투자한 루멘텀, AI 광부품 생산능력 2029년 초까지 사실상 판매예약"
+                    else:
+                        public_title = "루멘텀, AI 광부품 생산능력 2029년 초까지 사실상 판매예약"
+                elif detail:
+                    # The milestone stage preserves exact percentages/years and
+                    # avoids half-translated technical headlines in future runs.
+                    public_title = detail[0] + " — " + detail[1]
             lines.extend([
                 f"<b>{idx}) {html.escape(DISPLAY_NAMES_KO.get(item['company'], item['company']))} ({html.escape(item['ticker'])}) — {html.escape(category)}</b>",
                 f"• 단계: {html.escape(item['stage'])}",
