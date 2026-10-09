@@ -46,6 +46,10 @@ YAHOO_BASES = (
     "https://query2.finance.yahoo.com/v8/finance/chart",
 )
 CHINA_REUTERS_20261009_URL = "https://live.euronext.com/en/financial-news/china-resume-october-fuel-exports-after-holiday-pause-sources-say"
+CHINA_REUTERS_20261009_MIRRORS = (
+    CHINA_REUTERS_20261009_URL,
+    "https://www.brecorder.com/news/40443419/china-to-resume-october-fuel-exports-after-a-brief-halt-four-trade-sources-say",
+)
 HORMUZ_7DAY_XINHUA_URL = "https://english.news.cn/20261009/b23dc5dd06f242e991ad5dfe3eed727c/c.html"
 MMA_OIL_ISAIAS_OCT7_URL = "https://www.bsee.gov/newsroom/latest-news/statements-and-releases/press-releases/mma-monitors-gulf-response-isaias"
 MMA_OIL_ISAIAS_OCT8_URL = "https://www.bsee.gov/newsroom/latest-news/statements-and-releases/press-releases/mma-monitors-gulf-response-isaias2"
@@ -1436,8 +1440,7 @@ def fetch_news(current: dt.datetime) -> tuple[list[NewsItem], list[str]]:
         errors.append(f"EIA refinery 3-2-1 official: {type(exc).__name__}: {exc}")
 
     direct_sources=(
-        ("중국 Reuters 거래 관계자 보도", lambda: parse_china_reuters_resumption(
-            fetch_bytes(CHINA_REUTERS_20261009_URL,timeout=16,attempts=2).decode("utf-8","replace"),current)),
+        ("중국 Reuters 거래 관계자 보도", lambda: fetch_china_reuters_resumption(current)),
         ("호르무즈 신화통신·타스님 인용 보도", lambda: parse_hormuz_xinhua_review(
             fetch_bytes(HORMUZ_7DAY_XINHUA_URL,timeout=16,attempts=2).decode("utf-8","replace"),current)),
         ("허리케인 공식 MMA 중단율", lambda: fetch_mma_isaias_snapshot(current)),
@@ -1502,7 +1505,15 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
     candidates: list[tuple[float, str, list[NewsItem]]] = []
     for (kind,stage), rows in by_kind.items():
         source_rows: dict[str, NewsItem] = {}
-        for row in sorted(rows, key=lambda item: item.published_epoch, reverse=True):
+        for row in sorted(
+            rows,
+            key=lambda item: (
+                kind == "china_fuel_export_policy" and stage == "planned_resume"
+                and _china_resumption_volume([item]) is not None,
+                item.published_epoch,
+            ),
+            reverse=True,
+        ):
             publisher=normalize_text(row.source)
             if kind in ("china_fuel_export_policy","hormuz_7day_diplomacy"):
                 if ("reuters" in publisher or "reuters" in normalize_text(row.title)
@@ -2565,7 +2576,9 @@ def fetch_mma_isaias_snapshot(current: dt.datetime) -> NewsItem:
                     observed.timestamp(),"us_gulf_isaias_shutin")
 
 
-def parse_china_reuters_resumption(raw_html: str, current: dt.datetime) -> NewsItem:
+def parse_china_reuters_resumption(
+    raw_html: str, current: dt.datetime, source_url: str = CHINA_REUTERS_20261009_URL
+) -> NewsItem:
     observed=dt.datetime(2026,10,9,3,27,tzinfo=UTC)
     if not(observed<=current and (current-observed).total_seconds()<=36*3600):
         raise RuntimeError("중국 Reuters 수출 재개 보도의 유효기간 경과")
@@ -2579,9 +2592,20 @@ def parse_china_reuters_resumption(raw_html: str, current: dt.datetime) -> NewsI
     if not m or not(0<float(m.group(1))<20):
         raise RuntimeError("중국 정제품 수출 허가 관련 보도 물량 직접 확인 실패")
     title=f"China to resume October fuel exports after holiday pause; four trade sources say; approved {float(m.group(1)):.1f} million metric tons"
-    return NewsItem(title,"Reuters",CHINA_REUTERS_20261009_URL,
+    return NewsItem(title,"Reuters",source_url,
                     observed.isoformat().replace("+00:00","Z"),observed.timestamp(),
                     "china_fuel_export_policy")
+
+
+def fetch_china_reuters_resumption(current: dt.datetime) -> NewsItem:
+    errors: list[str] = []
+    for url in CHINA_REUTERS_20261009_MIRRORS:
+        try:
+            raw = fetch_bytes(url, timeout=16, attempts=2).decode("utf-8","replace")
+            return parse_china_reuters_resumption(raw,current,source_url=url)
+        except Exception as exc:
+            errors.append(f"{urllib.parse.urlparse(url).hostname}: {type(exc).__name__}")
+    raise RuntimeError("원문 재게시 2곳 조회/해석 실패: " + ", ".join(errors))
 
 
 def parse_hormuz_xinhua_review(raw_html: str,current: dt.datetime) -> NewsItem:
@@ -3513,6 +3537,11 @@ def run_monitor(current: dt.datetime) -> int:
     state = load_state()
     news_items, news_errors = fetch_news(current)
     confirmed_candidates = confirm_events(news_items)
+    # Audit event selection and public-source failures without Telegram secrets or token logs.
+    print(f"monitor_news_count={len(news_items)} candidate_kinds={[kind for kind, _ in confirmed_candidates]}")
+    for issue in news_errors:
+        if any(v in issue for v in ("중국 Reuters", "호르무즈 신화통신", "허리케인 공식 MMA")):
+            print(f"public_source_diagnostic={issue[:300]}")
     if not confirmed_candidates:
         lines = [
             "# 이란·호르무즈 시장 전환 감시",
