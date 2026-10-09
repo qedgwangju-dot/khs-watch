@@ -628,7 +628,7 @@ def build_alert(row: dict, fx: float, fx_date: str) -> tuple[str, str, dict]:
             f"{next_op.get('maturity_bucket')}"
         )
     else:
-        next_text = "⑤ 다음 장기물 바이백 — 미 재무부 공식 예정 일정 재확인"
+        next_text = "⑤ 차기 예정 바이백 — 실제 결과 API가 아니라 미 재무부 공식 예정 일정에서 확인(아래 원문 링크)"
 
     lines += [
         "",
