@@ -1525,6 +1525,12 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
             if not all(marker in original_case for marker in required_case_facts):
                 print(f"trusted_policy_news=official_direct_rejected key={rule.key} reason=case_fact_mismatch")
                 continue
+            # OISP_SOURCE_BODY_FROM_VERIFIED_ORIGINAL: the generic article
+            # extractor can return only an abstract despite a valid full
+            # Treasury bulletin. Use the fully verified original case.
+            if verified:
+                title = expected_title
+                description = clean_text(raw)[:50000]
 
         haystack = f"{title} {source_label} {description}"
         if (
