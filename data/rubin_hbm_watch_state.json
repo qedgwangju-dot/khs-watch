@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-09T11:20:35+09:00",
+  "updated_at_kst": "2026-10-09T18:24:28+09:00",
   "seen_ids": [
     "00315ac822df3f19f0f17bfd",
     "01899de42b17bb25951592cf",
@@ -17,6 +17,7 @@
     "1a7355b983f5d9b5a7d4a97f",
     "1a740e6eaff99a7fffe1b7b7",
     "1a8be449fd3cd46cde801b14",
+    "1d73fe7c9d557e36b9b18ff5",
     "1dd83b5311279ef155add2d2",
     "1f7c1f701db354f9e408d486",
     "20a5c84026d1bbe9b4f60398",
@@ -180,7 +181,7 @@
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1343.46,
-    "date": "2026-10-08 일일 기준 · ECB/Frankfurter · 조회 2026-10-09 11:20 KST · 보조 API 2026-10-09 · 차이 0.08% · 일중 기준시각 차이 가능",
+    "date": "2026-10-08 일일 기준 · ECB/Frankfurter · 조회 2026-10-09 18:24 KST · 보조 API 2026-10-09 · 차이 0.08% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
@@ -308,13 +309,13 @@
       "https://www.trendforce.com/news/",
       "https://www.trendforce.com/research"
     ],
-    "last_checked_at_kst": "2026-10-09T11:20:49+09:00",
+    "last_checked_at_kst": "2026-10-09T18:24:44+09:00",
     "candidate_count": 3,
     "errors": []
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-09T11:21:23+09:00",
+    "checked_at_kst": "2026-10-09T18:24:58+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-08T19:41:56+09:00",
@@ -382,7 +383,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-10-09",
-    "last_checked_at_kst": "2026-10-09T11:21:14+09:00",
+    "last_checked_at_kst": "2026-10-09T18:24:47+09:00",
     "cpu_structure": {
       "bnpp_public": {
         "as_of": "2026-10-05",
@@ -477,7 +478,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-10-09",
-    "last_checked_at_kst": "2026-10-09T11:21:18+09:00",
+    "last_checked_at_kst": "2026-10-09T18:24:52+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -521,7 +522,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-09T11:21:20+09:00",
+    "last_checked_at_kst": "2026-10-09T18:24:54+09:00",
     "candidate_count": 0,
     "event_count": 0,
     "area_structure": {
