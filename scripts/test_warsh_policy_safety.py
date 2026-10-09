@@ -2,7 +2,7 @@
 """네트워크에 의존하지 않는 Warsh 금리·대차대조표 회귀검증."""
 import unittest
 from datetime import date, datetime, timedelta, timezone
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 
 import warsh_policy_path_watch_v4 as futures
 import warsh_policy_path_watch_v3 as view
@@ -221,6 +221,23 @@ class WarshSafetyTests(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError, "접속 장애"):
                 futures.cme_monthly_rates()
         self.assertEqual(api.call_count, 1, "접속 장애에서 날짜마다 재시도해도 복구되지 않는다")
+
+    def test_cme_csv_fallback_checks_prior_business_dates_within_bound(self):
+        raw = "Symbol,Settle\nZQV6,96.100\nZQX6,95.900\nZQZ6,95.800\n"
+        response = MagicMock()
+        response.__enter__.return_value.read.return_value = raw.encode("utf-8")
+        with patch.object(futures, "ny_today", return_value=date(2026, 10, 9)), \
+             patch.object(futures.urllib.request, "urlopen", side_effect=[
+                 TimeoutError("10/09 archive late"),
+                 TimeoutError("10/08 archive late"),
+                 response,
+             ]) as opener:
+            trade_date, rates = futures.cme_monthly_rates_ftp()
+        self.assertEqual(trade_date, "2026-10-07")
+        self.assertEqual(opener.call_count, 3)
+        self.assertAlmostEqual(rates[(2026, 10)], 3.90)
+        self.assertAlmostEqual(rates[(2026, 12)], 4.20)
+
 
     def test_cme_unpublished_today_tries_prior_settlement(self):
         from urllib.error import HTTPError
