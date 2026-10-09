@@ -359,6 +359,36 @@ class KoreanTransformerExportTests(unittest.TestCase):
         self.assertIn("2026-09", later["official_us_by_month"])
         self.assertEqual([x["kind"] for x in events], ["official_us_month"])
 
+    def test_actions_rerun_rechecks_credentials_despite_same_day_denial(self):
+        now = datetime(2026, 10, 9, 22, 0, tzinfo=ZoneInfo("Asia/Seoul"))
+        previous = {
+            **w.KOREA_EXPORT_BASELINE,
+            "baseline_notified": True,
+            "last_status": "kcs_access_denied",
+            "last_attempt_day": "2026-10-09",
+            "last_attempt_at_kst": "2026-10-09T21:35:36+09:00",
+            "fetch_revision": w.KOREA_EXPORT_FETCH_REVISION,
+            "source_blocker_notified": True,
+        }
+        self.assertFalse(w.kcs_retry_due(now, previous, True))
+        self.assertTrue(w.kcs_retry_due(now, previous, True, force=True))
+        self.assertFalse(w.kcs_retry_due(now, previous, False, force=True))
+        with mock.patch.dict(w.os.environ, {
+            "GITHUB_RUN_ATTEMPT": "2",
+            "KCS_DATA_GO_SERVICE_KEY": "dummy",
+        }):
+            def fake_fetch(hs, ym, country="US"):
+                return {
+                    "hs6": hs, "month": ym[:4] + "-" + ym[4:],
+                    "country": country, "export_usd": 100000,
+                    "net_weight_kg": 1000,
+                }
+            with mock.patch.object(w, "fetch_korea_kcs_hs6_month", side_effect=fake_fetch) as spy:
+                state, events = w.update_korea_export_watch(now, previous)
+            self.assertEqual(spy.call_count, 9)
+            self.assertEqual(state["last_status"], "verified")
+            self.assertEqual([e["kind"] for e in events], ["official_us_month"])
+
     def test_kcs_network_failure_classification_is_safe(self):
         import urllib.error
         import socket
