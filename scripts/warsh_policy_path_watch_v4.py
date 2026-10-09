@@ -27,7 +27,7 @@ CME_API = (
     "https://www.cmegroup.com/CmeWS/mvc/Settlements/Futures/Settlements/"
     + str(CME_PRODUCT_ID) + "/FUT?tradeDate={trade_date}"
 )
-CME_FTP_ROOT = "https://www.cmegroup.com/ftp/grs/ctr/rt/rates"
+CME_FTP_ROOT = "https://www.cmegroup.com/ftp/pub/pub/grs/ctr/rt/rates"
 ZQ_MONTH_CODES = {"F":1,"G":2,"H":3,"J":4,"K":5,"M":6,"N":7,"Q":8,"U":9,"V":10,"X":11,"Z":12}
 NYFED_EFFR = "https://markets.newyorkfed.org/api/rates/unsecured/effr/last/5.json"
 UA = "Mozilla/5.0 (compatible; khs-watch/4.1; +https://github.com/qedgwangju-dot/khs-watch)"
