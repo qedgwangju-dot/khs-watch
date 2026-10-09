@@ -58,6 +58,8 @@ def test_bessent_oil_scenario_is_conditional_and_causal_verdict_uses_multi_day_w
     # survive as a current statement in a future one-time upgrade.
     assert "아직 확대된 바이백은 집행되지 않았" not in text
     assert "현재 하루 움직임만으로" not in text
+    assert "EIA Brent는 Europe 현물 시계열" in text
+    assert "ICE Brent 선물과 섞어" in text
 
 
 
