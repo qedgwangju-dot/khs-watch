@@ -5,7 +5,7 @@
     "3d": "2026-10-06",
     "5d": "2026-10-02"
   },
-  "methodology_version": "2026-10-10-v3",
+  "methodology_version": "2026-10-10-v5",
   "price_basis": "StockAnalysis / S&P Global Market Intelligence 마감 종가·Yahoo 완료 일봉 교차확인",
   "source_gap_limit_bp": 12.0,
   "source_checks": {
@@ -304,8 +304,9 @@
   "confirm_count": 0,
   "active": false,
   "verdict": "소프트웨어 상대우위 — 하드웨어 로테이션 약화",
-  "updated_at_utc": "2026-10-09T23:44:51.138024+00:00",
-  "last_sent_message_id": 228,
+  "updated_at_utc": "2026-10-09T23:47:18.481251+00:00",
+  "last_sent_message_id": 226,
   "last_sent_date": "2026-10-09",
-  "last_sent_verdict": "소프트웨어 상대우위 — 하드웨어 로테이션 약화"
+  "last_sent_verdict": "소프트웨어 상대우위 — 하드웨어 로테이션 약화",
+  "last_sent_signature": "a7ede78701148a9524f1be9547df9445f0ba1bf4b3dce5c0c42a6ec6698408ec"
 }
