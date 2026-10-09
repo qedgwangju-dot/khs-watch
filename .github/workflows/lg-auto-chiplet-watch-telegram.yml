@@ -1,0 +1,155 @@
+name: LG Automotive Chiplet Bosch Adoption Watch
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/lg-auto-chiplet-watch-telegram.yml"
+      - "scripts/lg_auto_chiplet_watch.py"
+      - "scripts/lg_auto_chiplet_telegram.py"
+      - "scripts/lg_auto_chiplet_persist.py"
+      - "tests/test_lg_auto_chiplet_watch.py"
+      - ".github/lg-auto-chiplet-route-trigger"
+  schedule:
+    # GitHub cron UTC, two checks per hour; best-effort schedule.
+    - cron: "13,43 * * * *"
+  workflow_run:
+    workflows:
+      - "AI Security Web Watch"
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      send_test:
+        description: "차량용 칩렛 Telegram 연결 시험"
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lg-auto-chiplet-watch-telegram
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: khs88798879887988798879_bot
+      TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
+
+    steps:
+      - name: Checkout latest main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Check due interval
+        id: cadence
+        run: |
+          python3 - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          from zoneinfo import ZoneInfo
+          event = os.environ.get("GITHUB_EVENT_NAME") or ""
+          due, lag = True, -1
+          state_path = pathlib.Path("data/lg_auto_chiplet_watch_state.json")
+          if event in ("schedule", "workflow_run") and state_path.exists():
+              try:
+                  state = json.loads(state_path.read_text(encoding="utf-8"))
+                  checked = dt.datetime.fromisoformat(state["last_checked_kst"])
+                  if checked.tzinfo is None:
+                      checked = checked.replace(tzinfo=ZoneInfo("Asia/Seoul"))
+                  lag = (dt.datetime.now(ZoneInfo("Asia/Seoul")) - checked).total_seconds() / 60
+                  due = lag >= (22 if event == "schedule" else 39)
+              except Exception as exc:
+                  print(f"chiplet_state_age_error={type(exc).__name__}")
+                  due = True
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
+              out.write("due=" + ("true" if due else "false") + "\n")
+          print(f"lg_chiplet_trigger={event} last_scan_lag_minutes={lag:.1f} execute={due}")
+          PY
+
+      - name: Set up Python
+        if: steps.cadence.outputs.due == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install optional publisher resolver
+        if: steps.cadence.outputs.due == 'true'
+        run: python -m pip install --disable-pip-version-check googlenewsdecoder==1.0.0
+
+      - name: Compile and run regression tests
+        if: steps.cadence.outputs.due == 'true'
+        run: |
+          python -m py_compile scripts/lg_auto_chiplet_watch.py scripts/lg_auto_chiplet_telegram.py scripts/lg_auto_chiplet_persist.py
+          python -m unittest discover -s tests -p 'test_lg_auto_chiplet_watch.py' -v
+
+      - name: Verify exact Telegram bot and chat
+        if: steps.cadence.outputs.due == 'true'
+        run: python scripts/lg_auto_chiplet_telegram.py check
+
+      - name: Scan actual project stage changes
+        if: steps.cadence.outputs.due == 'true'
+        run: python scripts/lg_auto_chiplet_watch.py
+
+      - name: Publish state verification summary
+        if: always()
+        run: |
+          if [ -f out/lg_auto_chiplet_status.md ]; then
+            cat out/lg_auto_chiplet_status.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Deliver new changes only
+        if: ${{ steps.cadence.outputs.due == 'true' && hashFiles('out/lg_auto_chiplet_alert.html') != '' }}
+        run: python scripts/lg_auto_chiplet_telegram.py alert
+
+      - name: Send single explicit connection test
+        if: ${{ steps.cadence.outputs.due == 'true' && ((github.event_name == 'workflow_dispatch' && inputs.send_test == true) || (github.event_name == 'push' && contains(github.event.head_commit.message, '[chiplet-route-test]'))) }}
+        run: python scripts/lg_auto_chiplet_telegram.py test
+
+      - name: Persist state only after verified delivery
+        if: ${{ success() && steps.cadence.outputs.due == 'true' && hashFiles('out/lg_auto_chiplet_pending_state.json') != '' && (hashFiles('out/lg_auto_chiplet_alert.html') == '' || hashFiles('out/lg_auto_chiplet_delivery_confirmed.json') != '') }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            python scripts/lg_auto_chiplet_persist.py
+            git add data/lg_auto_chiplet_watch_state.json
+            if git diff --cached --quiet; then
+              echo "LG auto chiplet state unchanged"
+              exit 0
+            fi
+            git commit -m "Update LG auto chiplet watch state [skip ci]"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "State push conflict; retry attempt $attempt" >&2
+            sleep $((attempt * 2))
+          done
+          exit 1
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lg-auto-chiplet-watch-${{ github.run_id }}
+          path: |
+            out/lg_auto_chiplet_status.md
+            out/lg_auto_chiplet_alert.html
+            out/lg_auto_chiplet_pending_state.json
+            out/lg_auto_chiplet_delivery_confirmed.json
+            out/lg_auto_chiplet_route_test.json
+          if-no-files-found: ignore
+          retention-days: 14
