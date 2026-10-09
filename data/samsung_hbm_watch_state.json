@@ -310,7 +310,7 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-10",
-  "updated_at_kst": "2026-10-09T18:25:17+09:00",
+  "updated_at_kst": "2026-10-10T02:06:47+09:00",
   "last_event_count": 0,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
@@ -323,10 +323,10 @@
   "official_api_key_configured": true,
   "official_api_used": true,
   "last_successful_official_month": "202608",
-  "last_successful_official_at_kst": "2026-10-09T18:25:17+09:00",
+  "last_successful_official_at_kst": "2026-10-10T02:06:47+09:00",
   "malaysia_official_month": "202608",
-  "malaysia_hsk10_amount_usd": null,
-  "malaysia_public_available": false,
+  "malaysia_hsk10_amount_usd": 1624534854.0,
+  "malaysia_public_available": true,
   "malaysia_revision_due": false,
   "last_successful_delivery_kst": "2026-10-07T21:54:04+09:00",
   "telegram_message_id": 257,
@@ -1591,24 +1591,24 @@
         "key": "malaysia_hsk10_export|KR|MY|8542323000",
         "axis": "malaysia_hsk10_export",
         "value": {
-          "amount_usd": 1624540000,
-          "weight_kg": 3800,
-          "weight_kg_previous_yoy": 1400,
-          "yoy_pct": 466.6,
-          "taiwan_amount_usd": 3322110000,
-          "malaysia_vs_taiwan_pct": 48.9,
-          "jan_aug_amount_usd": 6314240000,
-          "weight_rounded_from_public_text": true
+          "amount_usd": 1624534854.0,
+          "weight_kg": 3833.0,
+          "weight_kg_previous_yoy": null,
+          "yoy_pct": null,
+          "taiwan_amount_usd": null,
+          "malaysia_vs_taiwan_pct": null,
+          "jan_aug_amount_usd": null,
+          "weight_rounded_from_public_text": false
         },
         "unit": "USD/kg",
         "period": "2026-08",
-        "as_of": "2026-09-22",
-        "evidence": "reported",
-        "source_url": "https://biz.chosun.com/it-science/ict/2026/09/22/NGJ2RJYZARGN3JSVXPUEIE6XRA/?outputType=amp",
-        "source_title": "AI 반도체 패키징 증설 몰리는 말레이시아… 韓 HBM 관련 수출 1년 새 4.7배 증가",
-        "source": "조선비즈·관세청 수출입무역통계 인용",
-        "scope": "HBM_included_multichip_IC_not_HBM_only",
-        "excerpt": "2026년 8월 말레이시아향 HSK 8542323000 수출 16억2454만달러, 전년동월 +466.6%, 중량 약 1.4t→3.8t, 대만향 33억2211만달러의 48.9%. 중량은 기사 반올림값."
+        "as_of": "2026-10-10",
+        "evidence": "official",
+        "source_url": "https://www.data.go.kr/data/15100475/openapi.do",
+        "source_title": "관세청 품목별 국가별 수출입실적 HSK 8542323000 말레이시아",
+        "source": "관세청 공공데이터포털",
+        "excerpt": "관세청 국가별 HSK10 직접값",
+        "scope": "HBM_included_multichip_IC_not_HBM_only"
       },
       "hbm_revenue_estimate|bernstein|samsung|2026Q3|regression_proxy": {
         "key": "hbm_revenue_estimate|bernstein|samsung|2026Q3|regression_proxy",
@@ -2306,11 +2306,11 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-10-09T18:25:17+09:00",
+      "last_checked_at_kst": "2026-10-10T02:06:47+09:00",
       "gaps": [
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
-      "observations": 2,
+      "observations": 3,
       "rdimm_paired_observations": 0,
       "wafer_share|trendforce|industry|2026-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
       "wafer_share|trendforce|industry|2027-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
@@ -2380,10 +2380,10 @@
     "payload_hash": "01ed6f362e09684184a695c5965c43de3d6218c6509bcef52ae1149d6d9c0402"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-09T18:26:28+09:00",
+    "checked_at_kst": "2026-10-10T02:08:06+09:00",
     "status": "no_message_due"
   },
-  "malaysia_hsk10_weight_kg": null,
+  "malaysia_hsk10_weight_kg": 3833.0,
   "state_corrections": [
     {
       "at_kst": "2026-09-25T15:48:00+09:00",
@@ -2471,12 +2471,12 @@
     "version": 3,
     "status": "waiting_publication",
     "target_month": "202609",
-    "last_checked_at_kst": "2026-10-09T18:25:17+09:00",
+    "last_checked_at_kst": "2026-10-10T02:06:47+09:00",
     "selected_official_month": "202608"
   },
   "official_source_health_version": 3,
   "official_poll_interval_hours": 3,
-  "last_official_poll_attempt_kst": "2026-10-09T18:25:17+09:00",
+  "last_official_poll_attempt_kst": "2026-10-10T02:06:47+09:00",
   "official_availability_notes": [
     "공공데이터포털 전국 API 202609 HSK 8542323000 데이터 없음; fallback=전국 202609 HSK 8542323000 미검출: count=0 items=0",
     "공공데이터포털 시도 API 44 202609 HSK 8542323000 데이터 없음",
@@ -2485,13 +2485,11 @@
     "충북 202609 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}"
   ],
   "optional_source_errors": [
-    "공공데이터포털 국가별 품목 API MY 응답형식 확인 필요: SERVICE_KEY_IS_NOT_REGISTERED_ERROR 등록되지 않은 서비스키 30",
+    "공공데이터포털 국가별 품목 API MY 202609 HSK 8542323000 데이터 없음",
+    "이천 202609 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
     "이천 202608 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
-    "공공데이터포털 국가별 품목 API MY 응답형식 확인 필요: SERVICE_KEY_IS_NOT_REGISTERED_ERROR 등록되지 않은 서비스키 30",
     "이천 202607 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
-    "공공데이터포털 국가별 품목 API MY 응답형식 확인 필요: SERVICE_KEY_IS_NOT_REGISTERED_ERROR 등록되지 않은 서비스키 30",
     "이천 202605 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
-    "공공데이터포털 국가별 품목 API MY 응답형식 확인 필요: SERVICE_KEY_IS_NOT_REGISTERED_ERROR 등록되지 않은 서비스키 30",
     "이천 202508 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}"
   ],
   "export_alert_format_version": 2
