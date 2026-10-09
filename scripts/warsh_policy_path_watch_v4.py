@@ -80,7 +80,7 @@ def parse_month(value):
 
 def _zq_symbol_month(symbol, ref_year):
     s = str(symbol or "").upper().strip()
-    m = re.search(r"\\bZQ([FGHJKMNQUVXZ])(\\d{1,2})\\b", s)
+    m = re.search(r"\bZQ([FGHJKMNQUVXZ])(\d{1,2})\b", s)
     if not m:
         return None
     month = ZQ_MONTH_CODES[m.group(1)]
