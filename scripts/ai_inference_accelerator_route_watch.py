@@ -462,10 +462,12 @@ def semantic_official_snapshot(name: str, text: str) -> dict:
                 r"ultrafast\s+mode\s+for\s+gpt-6\.1\s+sol.{0,90}"
                 r"supports\s+us\s+and\s+eu\s+data\s+residency", normalized, re.I,
             )),
-            "astra_ultrafast_eu_residency": not bool(re.search(
-                r"gpt-6\s+astra\s+ultrafast.{0,110}supports\s+us\s+data"
-                r"\s+residency\s+and\s+global\s+processing\s+only", normalized, re.I,
-            )),
+            "astra_ultrafast_eu_residency": (
+                False if re.search(
+                    r"gpt-6\s+astra\s+ultrafast.{0,110}supports\s+us\s+data"
+                    r"\s+residency\s+and\s+global\s+processing\s+only", normalized, re.I,
+                ) else None
+            ),
         }
 
     if name == "OpenAI GPT-6.1 Sol 모델":
@@ -581,8 +583,13 @@ def is_stale_news_backfill(
 
 
 def semantic_changes(old: dict, new: dict) -> list[tuple[str, object, object]]:
+    # Missing documentation is unknown, not proof of withdrawn performance.
     keys = sorted(set(old) | set(new))
-    return [(key, old.get(key), new.get(key)) for key in keys if old.get(key) != new.get(key)]
+    return [
+        (key, old.get(key), new.get(key))
+        for key in keys if key in new and new.get(key) is not None
+        and old.get(key) != new.get(key)
+    ]
 
 
 def official_change_category(name: str, old: dict, new: dict) -> str:
@@ -590,7 +597,7 @@ def official_change_category(name: str, old: dict, new: dict) -> str:
     if name == "OpenAI Ultrafast 모드":
         return "Ultrafast 출시·지원범위"
     if name == "OpenAI GPT-6.1 Sol 모델":
-        if "ultrafast_mentioned" in changes:
+        if "ultrafast_supported" in changes:
             return "Ultrafast 출시·지원범위"
         return "속도·배치·가격 변화"
     return "추론 라우팅 변화"
@@ -614,32 +621,34 @@ def official_change_summary(name: str, old: dict, new: dict) -> str:
     labels = {
         "gpt_6_astra_supported": "GPT-6 Astra Ultrafast",
         "gpt_5_6_sol_preview": "GPT-5.6 Sol 미리보기",
-        "gpt_6_1_sol_mentioned": "GPT-6.1 Sol Ultrafast 문서 언급",
+        "gpt_6_1_sol_ultrafast_supported": "GPT-6.1 Sol Ultrafast 정식 지원",
+        "sol_ultrafast_eu_residency": "GPT-6.1 Sol Ultrafast EU 데이터 상주",
+        "astra_ultrafast_eu_residency": "GPT-6 Astra Ultrafast EU 데이터 상주",
         "service_tier_ultrafast": "Ultrafast 서비스 계층",
         "max_speed_x": "최대 속도 배수",
         "tier_1_3_tpm": "1~3단계 분당 토큰",
         "tier_4_tpm": "4단계 분당 토큰",
         "tier_5_tpm": "5단계 분당 토큰",
-        "eu_regional_supported": "EU 지역 처리",
-        "ultrafast_mentioned": "GPT-6.1 Sol Ultrafast",
+        "ultrafast_supported": "GPT-6.1 Sol Ultrafast 정식 지원",
         "fast_mode_mentioned": "GPT-6.1 Sol Fast",
         "input_usd_per_mtok": "입력 100만 토큰 가격",
         "cached_input_usd_per_mtok": "캐시 입력 100만 토큰 가격",
         "cache_write_usd_per_mtok": "캐시 쓰기 100만 토큰 가격",
         "output_usd_per_mtok": "출력 100만 토큰 가격",
         "fast_multiplier_x": "Fast 가격 배수",
+        "ultrafast_multiplier_x": "GPT-6.1 Sol Ultrafast 가격 배수",
         "batch_flex_discount_pct": "Batch·Flex 할인율",
         "context_window": "컨텍스트 창",
         "max_output_tokens": "최대 출력 토큰",
     }
     parts = []
     for key, before, after in semantic_changes(old, new):
-        if key in {"kind", "us_data_residency", "eu_data_residency"}:
+        if key in {"kind", "us_data_residency", "eu_data_residency", "max_speed_x", "tier_1_3_tpm", "tier_4_tpm", "tier_5_tpm"}:
             continue
         label = labels.get(key, key)
         if key.endswith("_usd_per_mtok") and before is not None and after is not None:
             parts.append(label + " $" + _fmt_value(before) + "→$" + _fmt_value(after))
-        elif key in {"max_speed_x", "fast_multiplier_x"}:
+        elif key in {"ultrafast_multiplier_x", "fast_multiplier_x"}:
             parts.append(label + " " + _fmt_value(before) + "x→" + _fmt_value(after) + "x")
         elif key == "batch_flex_discount_pct":
             parts.append(label + " " + _fmt_value(before) + "%→" + _fmt_value(after) + "%")
