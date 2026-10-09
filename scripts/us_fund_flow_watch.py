@@ -1085,7 +1085,7 @@ except Exception as e:
 
 old_hartnett = (state.get("derived") or {})
 hartnett_init = bool(
-    hartnett_macro
+    hartnett_macro and ici_mmf and ici
     and old_hartnett.get("hartnett_tracking_version") != HARTNETT_TRACK_VERSION
 )
 bond_level_transition = bool(
@@ -1288,11 +1288,19 @@ else:
 
 
 
+source_corrections = []
+for x in updates:
+    old = (state.get("values") or {}).get(f"{x['source']}|{x['kind']}")
+    if isinstance(old, dict) and x["kind"] in ("combined", "mmf"):
+        if period_date(old) == period_date(x):
+            source_corrections.append(x["kind"])
+
 status_lines = [
     "# US Fund Flow Watch",
     "",
     f"- parsed sources: {len(results)}",
     f"- updates: {len(updates)}",
+    f"- corrected ICI categories: {','.join(source_corrections) or 'none'}",
 ]
 for x in results:
     status_lines.append(f"- {x['source']} {x['kind']} | {x['period']} | {x['fingerprint'][:12]}")
@@ -1329,7 +1337,7 @@ should_alert = bool(updates or force or drawdown_transition or hartnett_init
                     or target_rate_change or election_transition)
 if should_alert:
     body = [
-        f"🇺🇸 <b>[미국 증시 자금흐름 추적 | {'Hartnett 감시 추가' if hartnett_init and not updates else '신규 변화'}]</b>",
+        f"🇺🇸 <b>[미국 증시 자금흐름 추적 | {'수치 정정·Hartnett 감시 추가' if source_corrections and hartnett_init else '수치 정정' if source_corrections else 'Hartnett 감시 추가' if hartnett_init and not updates else '신규 변화'}]</b>",
         "",
         "<b>한눈에 보기</b>",
     ]
@@ -1369,6 +1377,11 @@ if should_alert:
             f"가계 기업주식·펀드 총자산 비중 {fm['equities_share_total_assets_pct']:.2f}%"
         )
 
+    if source_corrections:
+        body.append(
+            "• 이전 ICI 장기펀드 표의 행 매칭 오류 및 MMF 총자산 반올림을 공식 수치표로 재검산해 정정 "
+            "(실제 원자료가 새로 발행된 것은 아님)"
+        )
     # Hartnett/BofA is an analyst's publicly reported opinion, not an ICI official series.
     # Keep the Bloomberg-quoted $166.4B separate from ICI's U.S. fund-asset change.
     body += ["", "<b>Hartnett 현금·금리·중간선거 감시</b>"]
@@ -1376,6 +1389,10 @@ if should_alert:
         f"• BofA/Hartnett 발언 기준선({HARTNETT_REPORT_DATE} Bloomberg 인용): "
         f"10/7 주간 MMF 유입 {fmt_usd_bn_kr(HARTNETT_MMF_REPORTED_BN, fx)} "
         "— ICI 공식 미국 MMF 자산 변화와 모집단·산식 미확인으로 별도 표시"
+    )
+    body.append(
+        f"• 동일 보도에 나온 BofA 집계: 주식형 {fmt_usd_bn_kr(12.4, fx)}, "
+        f"채권형 {fmt_usd_bn_kr(33.8, fx)}. ICI 자산 증가와 다른 시리즈로만 표시"
     )
     if ici_mmf:
         body.append(
@@ -1407,7 +1424,8 @@ if should_alert:
         f'• 근거: <a href="{html.escape(HARTNETT_REPORT_URL, quote=True)}">Bloomberg 인용 보도</a> / '
         f'<a href="{html.escape(ICI_MMF, quote=True)}">ICI 미국 MMF 공식</a> / '
         f'<a href="{html.escape(FRED_YIELDS, quote=True)}">연준 10년물</a> / '
-        f'<a href="{html.escape(FRED_FED_POLICY, quote=True)}">연준 기준금리</a>'
+        f'<a href="{html.escape(FRED_FED_POLICY, quote=True)}">연준 기준금리</a> / '
+        f'<a href="https://www.fec.gov/documents/5910/2026pdates.pdf">미국 선거일 공식자료</a>'
     )
 
     body += [
