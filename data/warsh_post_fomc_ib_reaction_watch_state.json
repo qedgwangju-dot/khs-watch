@@ -49,8 +49,8 @@
     "extra_bp": null,
     "source": null,
     "fresh": false,
-    "source_status": "최신성 검증 실패 — 과거값 격리·신규 판정 중지",
-    "source_error": "CME 공식 JSON 접속 장애: 2026-10-09: TimeoutError: The read operation timed out ; CME 공식 공개 CSV 조회/검증 실패: 2026-10-09: TimeoutError: The read operation timed out | 2026-10-08: TimeoutError: The read operation timed out | 2026-10-07: TimeoutError: The read operation timed out — 최신 시장경로 판정 보류"
+    "source_status": "CME FedWatch 공식 API 미연결 — 금리확률판정 보류",
+    "source_error": "CME FedWatch 공식 API 인증정보 미설정 — 유료 데이터 구독 및 GitHub Secrets 등록 전까지 시장 확률 판정 중지"
   },
   "divergence": {
     "ib_center": 4.125,
@@ -58,5 +58,5 @@
     "gap_bp": null,
     "zone": "확인 불가"
   },
-  "updated_at_utc": "2026-10-09T23:08:05.179284+00:00"
+  "updated_at_utc": "2026-10-09T23:57:10.136299+00:00"
 }
