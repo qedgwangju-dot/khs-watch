@@ -493,6 +493,11 @@ def detect_category(text: str) -> str:
     if scores:
         scores.sort(reverse=True)
         return scores[0][1]
+    if any(term in low for term in (
+        "vulnerability", "cve-", "security flaw", "hotfix",
+        "patched", "patch released", "security update",
+    )):
+        return "취약점·패치"
     return "미분류 AI 보안 변화"
 
 
