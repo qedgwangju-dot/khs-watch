@@ -194,10 +194,12 @@ jobs:
           run_watch scripts/warsh_pce_trend_watch.py
           run_watch scripts/warsh_curve_ownership_watch_v2.py
           run_watch scripts/warsh_credibility_pretightening_watch_v2.py
-          run_watch scripts/warsh_energy_shock_watch.py
           run_watch scripts/warsh_balance_sheet_watch_v2.py
           run_watch scripts/warsh_sep_path_watch_v2.py
+          # 정책경로를 먼저 최신화한 뒤, 이를 소비하는 에너지/IB 후속 감시를 실행한다.
+          # 이전 순서는 energy_shock이 한 시간 전 policy_path 상태를 읽을 수 있었다.
           run_watch scripts/warsh_policy_path_watch_v4.py
+          run_watch scripts/warsh_energy_shock_watch.py
           run_watch scripts/warsh_ib_consensus_watch.py
           run_watch scripts/warsh_post_fomc_ib_reaction_watch.py
           run_watch scripts/warsh_fomc_event_watch_v4.py
