@@ -478,10 +478,10 @@ class WarshSafetyTests(unittest.TestCase):
             "access_token":"token-do-not-log"}) as requester:
             t=futures.official_api.oauth_token("identifier","secret")
         self.assertEqual(t,"token-do-not-log")
-        _,kwargs=requester.call_args
+        args, kwargs=requester.call_args
         self.assertEqual(kwargs["body"],b"grant_type=client_credentials")
-        self.assertTrue(kwargs["headers"]["Authorization"].startswith("Basic "))
-        self.assertNotIn("secret",str(kwargs))
+        self.assertTrue(args[1]["Authorization"].startswith("Basic "))
+        self.assertNotIn("secret",str((args,kwargs)))
 
 
 if __name__ == "__main__":
