@@ -502,6 +502,8 @@ def _trump_iran_midterm_no_strike(row):
     election = any(x in scope for x in (
         "midterm", "mid-term", "nov. 3", "nov 3", "november 3",
         "11월 3일", "11월3일", "중간선거",
+        "us elections in november", "u.s. elections in november",
+        "elections in november", "november elections",
     ))
     pledge = any(x in title for x in (
         "will not attack iran", "will not be attacking iran",
@@ -520,7 +522,15 @@ def _trump_iran_midterm_no_strike(row):
     quote = "we will not be attacking iran at any time prior to the midterm elections" in (
         title + " " + description
     )
-    denial = pledge or (official and quote)
+    # Reuters 등 일부 제목은 공격 대상국을 생략하므로 본문 이란 문맥과 함께 판정한다.
+    implicit_iran_pledge = (
+        any(x in title for x in (
+            "will not attack before", "won't attack before", "will not strike before",
+            "will not launch an attack before", "no attacks before",
+        ))
+        and "iran" in description
+    )
+    denial = pledge or implicit_iran_pledge or (official and quote)
     # 선거 전(pre-election)과 선거 후(post-election)를 서로 반대로 해석하지 않는다.
     temporal_text = scope if official else title
     before_election = any(x in temporal_text for x in (
@@ -529,6 +539,8 @@ def _trump_iran_midterm_no_strike(row):
         "until after midterm", "until after the midterm",
         "before nov", "before the nov", "prior to nov", "prior to the nov",
         "before november 3", "before the november 3",
+        "before us elections in november", "before u.s. elections in november",
+        "before elections in november",
         "11월 3일 전", "11월3일 전", "11월 3일 이전", "11월3일 이전",
         "중간선거 전", "중간선거 이전", "중간선거까지", "선거 전",
     ))
