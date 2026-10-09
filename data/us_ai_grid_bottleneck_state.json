@@ -74,7 +74,7 @@
     "https://www.jll.com/content/dam/jllcom/en/global/documents/reports/research-reports/26-research-global-data-center-outlook-new.pdf",
     "https://www.se.com/us/en/about-us/newsroom/news/press-releases/schneider-electric-and-digital-realty-announce-373m-supply-capacity-agreement-to-meet-rising-data-center-demand-691d192005c0c16f5902ca3c/"
   ],
-  "last_checked_at_kst": "2026-10-09T22:32:39+09:00",
+  "last_checked_at_kst": "2026-10-10T00:32:42+09:00",
   "metric_observation_count": 0,
   "event_count": 0,
   "latest_evidence_urls": [],
@@ -676,12 +676,12 @@
         }
       }
     },
-    "last_checked_at_kst": "2026-10-09T22:32:39+09:00",
+    "last_checked_at_kst": "2026-10-10T00:32:42+09:00",
     "last_error": "",
     "pending_month": "2026-09"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-09T22:33:32+09:00",
+    "checked_at_kst": "2026-10-10T00:32:59+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-09T22:02:34+09:00",
@@ -779,11 +779,11 @@
       }
     },
     "latest_official_us_month": "2026-08",
-    "last_attempt_day": "2026-10-09",
-    "last_checked_at_kst": "2026-10-09T22:32:39+09:00",
-    "last_status": "kcs_upstream_unavailable",
-    "last_error_kind": "kcs_network_timeout",
-    "last_attempt_at_kst": "2026-10-09T22:32:39+09:00",
+    "last_attempt_day": "2026-10-10",
+    "last_checked_at_kst": "2026-10-10T00:32:42+09:00",
+    "last_status": "month_unpublished",
+    "last_error_kind": "kcs_no_official_rows",
+    "last_attempt_at_kst": "2026-10-10T00:32:42+09:00",
     "fetch_revision": 3,
     "source_blocker_notified": false,
     "connection_restored_notified": true
