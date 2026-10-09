@@ -4371,6 +4371,23 @@
       "telegram_core_fact": "스탠더드앤드푸어스(S&P)500지수는 17.18포인트(0.22%) 내린 7801.75, 나스닥종합지수는 61.19포인트(0.22%) 떨어진 2만7538.69를 기록했다.",
       "title": "[뉴욕마감]국채금리 급등에 다우 0.66% 하락…S&P·나스닥 사상 최고서 후퇴"
     },
+    "core:49d7b1c1ae54b6bd77806af7": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171916",
+      "source": "매일경제",
+      "source_body_digest": "c0620c3c1674885db0184223385d459d4af327b5d5619a6d6dfb31b544f60c0b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T19:05+09:00",
+      "source_title": "디스트리뷰션 솔루션스 그, 주당 35달러 인수 자금 8억 달러 채권 확정..7억서 증액",
+      "telegram_core_fact": "주당 35달러 현금 인수의 자금 조달이 증액된 채권 발행으로 구체화돼 거래 성사 가능성이 한층 높아졌어요.",
+      "title": "디스트리뷰션 솔루션스 그, 주당 35달러 인수 자금 8억 달러 채권 확정..7억서 증액"
+    },
     "core:4a4fa8e0bc3102bddd04dd55": {
       "core_alias_evidence_message_id": 2373,
       "core_alias_evidence_run_id": 37539644444,
@@ -10790,6 +10807,27 @@
       "telegram_core_fact": "이익잉여금도 1억2300만 달러로 8.1% 증가했고, 12년 연속 배당 인상을 결정해 주주환원 의지를 보여줬습니다.",
       "title": "밸류라인, 12년 연속 배당 인상·순이익 증가에 투자자 관심 집중"
     },
+    "core:be1bab3404600ef18cef19cf": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610081774b",
+      "source": "한국경제",
+      "source_body_digest": "0f53c5751182d7d256e6b5575a27cf68a9c5bbf5769d2219808b6a90c851e137",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:96c512670087fc15151f1b99337c32b09295022bda5578fb5b54e268d536a4ce",
+      "source_fact_keys": [
+        "source_fact:v1:0fe60bf1270bfb776593a9ddcbce71f824ba219ec47855244a5de73640e0f402",
+        "source_fact:v1:1550a1f939043e929ad31b67fca923a7d9d2ce9fbc32a698115792965f76d6e4",
+        "source_fact:v1:ddf0585f0439e6a63e456ddec5a6b40959903756fb0e9014c0b20d97c647197c"
+      ],
+      "source_published_kst": "2026-10-08T17:27+09:00",
+      "source_title": "페퍼앤솔트, 상반기 매출 131억원 기록…K-캐릭터 해외 진출 본격화",
+      "telegram_core_fact": "콘텐츠 IP 커머셜라이징 기업 페퍼앤솔트가 올해 상반기 매출 131억원을 기록한 가운데, 하반기에는 K-SNS 캐릭터의 해외 유통망 구축과 글로벌 IP 사업 확대에 나선다.",
+      "title": "페퍼앤솔트, 상반기 매출 131억원 기록…K-캐릭터 해외 진출 본격화"
+    },
     "core:bf1dfe355232bf5e1746eb2d": {
       "first_seen_kst": "2026-10-07T16:44:58+09:00",
       "lanes": {
@@ -13420,6 +13458,33 @@
       "telegram_core_fact": "국제에너지기구(IEA)가 비축유 방출을 앞당기기로 했다는 소식에 7일(현지시간) 국제유가가 하락했다.",
       "title": "비축유 방출 앞당긴다는 소식에 국제유가 하락…WTI 1.3%↓"
     },
+    "core:ee77f1d47856c6fb3a930270": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/09/2026100817445057794",
+      "source": "머니투데이",
+      "source_body_digest": "c91fc5362c05119ad4a77e76644c1ce3dfd5068d1923f1abe9d8a0a4d84ba9c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a0445e78079ac1253c8b4a2b748ac01b461feeb495775ea357391769c1eab93",
+      "source_fact_keys": [
+        "source_fact:v1:034ee6ccd1f727fb493f364587c32040a2e2434cf449b0ab1803818bf42737e0",
+        "source_fact:v1:5efc20a0161bd8c3740ac2265d6531fc44ae6d296550641739e055ade02a3542",
+        "source_fact:v1:640bf9896228fec2c04e140e16740e201147d519daca8c3e52f44026b6197a0d",
+        "source_fact:v1:80d8dea79e274f545e42c1672b85bacce79cbf46665eebd403481d46ee98346e",
+        "source_fact:v1:88d17daa06cee01a7b3b54ab6f95bb8af176186e8f59cc52043a1254eb61e50e",
+        "source_fact:v1:a4dcb73fa84c5adbde8417048207fdad335538492c0b7c5771fbd981df3c827c",
+        "source_fact:v1:bfb22c25229f6c29f5fbfe0e1fb1d912ef4dc386ef40399cd41edc703d74cc58",
+        "source_fact:v1:ca42abe40a9d4fd1338e4e6701e5a1c32d81a91290904c6a06ad7bf9e7419ef8",
+        "source_fact:v1:e7d9dc451126815a4645b65e6860fa5e35218d7a37ac945c8df080e8a7580a91"
+      ],
+      "source_published_kst": "2026-10-09T08:30+09:00",
+      "source_title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다",
+      "telegram_core_fact": "당시 최 회장이 보유한 SK㈜ 지분가치는 2조원대여서 보유 지분의 67% 이상을 팔아야 했지만 이후 주가가 올라 11%대만 매각하면 되는 상황이 됐다.",
+      "title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다"
+    },
     "core:ee879e72102bd8443596b97a": {
       "first_seen_kst": "2026-10-08T11:49:03+09:00",
       "lanes": {
@@ -13672,6 +13737,27 @@
       ],
       "source_published_kst": "2026-10-07T10:00+09:00",
       "title": "홍지선 국토장관 “수도권 주택 충분히 공급…국민 주거 불안 해소”"
+    },
+    "core:f1dd0edad0ca6f8f1b8cad0d": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.fnnews.com/news/202610090901086976",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "bcf8ee9f90c5c7b3bcba6e60e9fc5fc5f890d6761af0cb2c37bf14d388b2a49b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:321d2f15a72565a72ba9972c9115d1f9e4dcbee7b16e982c62dbfcb275083508",
+      "source_fact_keys": [
+        "source_fact:v1:00302ee8f658c5434644b7d717f5faa5f628c3299330402086f24946d8d7094c",
+        "source_fact:v1:0099afcf598e49eee1c48b0cfd3b1a901c6744e3ec5133deabd31ed9fa2a4b60",
+        "source_fact:v1:30472df4b47e0aad0f3f8156fdac20414a985334d0610b26d6b5f1c44a147d7a"
+      ],
+      "source_published_kst": "2026-10-09T09:01+09:00",
+      "source_title": "美 10년물 급등에 빛바랜 금 ETF…3개월간 10% 안팎 하락",
+      "telegram_core_fact": "한수진 삼성증권 연구원은 \"글로벌 금 ETF는 지난 7월 중순 이후 일시적인 순유출로 전환되며 지속되던 자금 유입에 제동이 걸리기도 했다\"며 \"이는 구조적인 수요 부진이라기보다는 미국 국채금리 상승세에 따라 금의 상대적 매력도가 낮아져 단기 수급 변화를 유발한 것\"이라고 진단했다.",
+      "title": "美 10년물 급등에 빛바랜 금 ETF…3개월간 10% 안팎 하락"
     },
     "core:f2f281e15a63b17f054a45e9": {
       "first_seen_kst": "2026-10-08T04:26:05+09:00",
@@ -14284,6 +14370,25 @@
       ],
       "source_published_kst": "2026-10-07T14:46+09:00",
       "title": "HD현대중공업, 누리호 성공에 기여…발사대시스템 총괄 지원 | 연합뉴스"
+    },
+    "core:fd367693310e2976e5369cfe": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=02794566645611280&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "fc892888a8291088b918e264d5304f672ef85602e0db97cc0e8c4f7accf1490a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bcfa88dc2e11a34e8bcd70f7b332af22a1ee8702a9d5551e712d28e2637ccbda",
+      "source_fact_keys": [
+        "source_fact:v1:b2c7594d69bedc92d20277d2cb24fc6e3845ed4ca90a69d65a12ffc6a5209106"
+      ],
+      "source_published_kst": "2026-10-09T06:51+09:00",
+      "source_title": "최태원 “호남 반도체, 전력·용수 늦어도 공사 먼저…용인 3분의 2 규모로”(종합)",
+      "telegram_core_fact": "최태원 SK그룹 회장이 호남권 반도체 생산거점을 용인 반도체 클러스터의 3분의 2 규모로 계획하고 있다고 밝혔다. 빠르게 늘어나는 반도체 수요에 대응하기 위해 용인과 광주에서 공장을 병행 건설할 가능성도 열어뒀다.",
+      "title": "최태원 “호남 반도체, 전력·용수 늦어도 공사 먼저…용인 3분의 2 규모로”(종합)"
     },
     "core:fe4e3050fa428d0e562568df": {
       "first_seen_kst": "2026-10-08T06:42:50+09:00",
@@ -14956,6 +15061,33 @@
       "telegram_core_fact": "이는 전일 마벨이 진행한 애널리스트데이에서 나온 내용을 반영한 것으로, 이들은 2031 회계연도에 매출 700억~900억 달러, 비일반회계기준(Non-GAAP) 주당순이익(EPS) 30달러 이상을 달성하겠다는 장기 재무 모델을 제시했다.",
       "title": "[오늘장특징주]테슬라, 스페이스X, TSMC, 인텔, 엔비디아, 마벨"
     },
+    "event:122e5f76d1dd814e613da67a": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/09/2026100817445057794",
+      "source": "머니투데이",
+      "source_body_digest": "c91fc5362c05119ad4a77e76644c1ce3dfd5068d1923f1abe9d8a0a4d84ba9c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a0445e78079ac1253c8b4a2b748ac01b461feeb495775ea357391769c1eab93",
+      "source_fact_keys": [
+        "source_fact:v1:034ee6ccd1f727fb493f364587c32040a2e2434cf449b0ab1803818bf42737e0",
+        "source_fact:v1:5efc20a0161bd8c3740ac2265d6531fc44ae6d296550641739e055ade02a3542",
+        "source_fact:v1:640bf9896228fec2c04e140e16740e201147d519daca8c3e52f44026b6197a0d",
+        "source_fact:v1:80d8dea79e274f545e42c1672b85bacce79cbf46665eebd403481d46ee98346e",
+        "source_fact:v1:88d17daa06cee01a7b3b54ab6f95bb8af176186e8f59cc52043a1254eb61e50e",
+        "source_fact:v1:a4dcb73fa84c5adbde8417048207fdad335538492c0b7c5771fbd981df3c827c",
+        "source_fact:v1:bfb22c25229f6c29f5fbfe0e1fb1d912ef4dc386ef40399cd41edc703d74cc58",
+        "source_fact:v1:ca42abe40a9d4fd1338e4e6701e5a1c32d81a91290904c6a06ad7bf9e7419ef8",
+        "source_fact:v1:e7d9dc451126815a4645b65e6860fa5e35218d7a37ac945c8df080e8a7580a91"
+      ],
+      "source_published_kst": "2026-10-09T08:30+09:00",
+      "source_title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다",
+      "telegram_core_fact": "당시 최 회장이 보유한 SK㈜ 지분가치는 2조원대여서 보유 지분의 67% 이상을 팔아야 했지만 이후 주가가 올라 11%대만 매각하면 되는 상황이 됐다.",
+      "title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다"
+    },
     "event:1267db5b7f755d2c483683a9": {
       "event_alias_evidence_message_id": 2289,
       "event_alias_evidence_run_id": 37396976374,
@@ -15572,6 +15704,27 @@
       ],
       "source_published_kst": "2026-10-05T18:17+09:00",
       "title": "'전고체 배터리' 기대감…한주새 ETF 12% 뛰어"
+    },
+    "event:1f92dfa672f9915afceb926e": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.fnnews.com/news/202610090901086976",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "bcf8ee9f90c5c7b3bcba6e60e9fc5fc5f890d6761af0cb2c37bf14d388b2a49b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:321d2f15a72565a72ba9972c9115d1f9e4dcbee7b16e982c62dbfcb275083508",
+      "source_fact_keys": [
+        "source_fact:v1:00302ee8f658c5434644b7d717f5faa5f628c3299330402086f24946d8d7094c",
+        "source_fact:v1:0099afcf598e49eee1c48b0cfd3b1a901c6744e3ec5133deabd31ed9fa2a4b60",
+        "source_fact:v1:30472df4b47e0aad0f3f8156fdac20414a985334d0610b26d6b5f1c44a147d7a"
+      ],
+      "source_published_kst": "2026-10-09T09:01+09:00",
+      "source_title": "美 10년물 급등에 빛바랜 금 ETF…3개월간 10% 안팎 하락",
+      "telegram_core_fact": "한수진 삼성증권 연구원은 \"글로벌 금 ETF는 지난 7월 중순 이후 일시적인 순유출로 전환되며 지속되던 자금 유입에 제동이 걸리기도 했다\"며 \"이는 구조적인 수요 부진이라기보다는 미국 국채금리 상승세에 따라 금의 상대적 매력도가 낮아져 단기 수급 변화를 유발한 것\"이라고 진단했다.",
+      "title": "美 10년물 급등에 빛바랜 금 ETF…3개월간 10% 안팎 하락"
     },
     "event:2031f599de2458ceac1e4b44": {
       "first_seen_kst": "2026-10-03T09:48:18+09:00",
@@ -17002,24 +17155,21 @@
     "event:4ed8ec6f5803972ae3f4e030": {
       "first_seen_kst": "2026-10-09T16:07:27+09:00",
       "lanes": {
-        "live": "2026-10-09T16:29:31+09:00"
+        "live": "2026-10-09T17:13:50+09:00"
       },
-      "last_seen_kst": "2026-10-09T16:29:31+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02702726645611280",
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=02794566645611280&Kind=257",
       "source": "이데일리",
-      "source_body_digest": "a400a42f200764e2a545387c5add609069d8073f80584f77f9d42fbfc2bbb6cb",
+      "source_body_digest": "fc892888a8291088b918e264d5304f672ef85602e0db97cc0e8c4f7accf1490a",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:892e7f2feb925588e31215d1a270aa41232f0f4308395ffcf70836e2a075b1a1",
+      "source_fact_identity": "source_facts:v1:bcfa88dc2e11a34e8bcd70f7b332af22a1ee8702a9d5551e712d28e2637ccbda",
       "source_fact_keys": [
-        "source_fact:v1:7e4756898aa4ac78eb026ef5e2fecd78860fd9a49c33fa35b2a2f9f436243e2a",
-        "source_fact:v1:a18b274e6861ee754d6dbef3ac0f1b8efe256fe6b09c2e503f40bd646dd3e2db",
-        "source_fact:v1:c0b732981b859c8c2a2beed09b4d705f74e238cbaa0c880c69924f289af6c774",
-        "source_fact:v1:ef938c42b0a3651f9b2e28517c1aa623a44cbf7c7642449afc48eb45cfaa44dd"
+        "source_fact:v1:b2c7594d69bedc92d20277d2cb24fc6e3845ed4ca90a69d65a12ffc6a5209106"
       ],
-      "source_published_kst": "2026-10-09T15:54+09:00",
-      "source_title": "최태원 \"호남 반도체 공장, 용인 3분의 2 규모…최대한 빨리 건설\"",
-      "telegram_core_fact": "빠르게 늘어나는 반도체 수요에 대응하기 위해 여건이 갖춰지는 대로 최대한 신속하게 건설하겠다는 의지도 강조했다.",
-      "title": "최태원 \"호남 반도체 공장, 용인 3분의 2 규모…최대한 빨리 건설\""
+      "source_published_kst": "2026-10-09T06:51+09:00",
+      "source_title": "최태원 “호남 반도체, 전력·용수 늦어도 공사 먼저…용인 3분의 2 규모로”(종합)",
+      "telegram_core_fact": "최태원 SK그룹 회장이 호남권 반도체 생산거점을 용인 반도체 클러스터의 3분의 2 규모로 계획하고 있다고 밝혔다. 빠르게 늘어나는 반도체 수요에 대응하기 위해 용인과 광주에서 공장을 병행 건설할 가능성도 열어뒀다.",
+      "title": "최태원 “호남 반도체, 전력·용수 늦어도 공사 먼저…용인 3분의 2 규모로”(종합)"
     },
     "event:4f3b9f84d9b642db80737c9b": {
       "first_seen_kst": "2026-10-07T01:18:00+09:00",
@@ -41484,6 +41634,25 @@
       "source_published_kst": "2026-10-07T07:49+09:00",
       "title": "\"삼성전자 HBM 가격 2배 뛴다…D램 3사 중 가장 높은 가격 전망\""
     },
+    "fact:99259089cbe48511e422081c": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=02794566645611280&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "fc892888a8291088b918e264d5304f672ef85602e0db97cc0e8c4f7accf1490a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bcfa88dc2e11a34e8bcd70f7b332af22a1ee8702a9d5551e712d28e2637ccbda",
+      "source_fact_keys": [
+        "source_fact:v1:b2c7594d69bedc92d20277d2cb24fc6e3845ed4ca90a69d65a12ffc6a5209106"
+      ],
+      "source_published_kst": "2026-10-09T06:51+09:00",
+      "source_title": "최태원 “호남 반도체, 전력·용수 늦어도 공사 먼저…용인 3분의 2 규모로”(종합)",
+      "telegram_core_fact": "최태원 SK그룹 회장이 호남권 반도체 생산거점을 용인 반도체 클러스터의 3분의 2 규모로 계획하고 있다고 밝혔다. 빠르게 늘어나는 반도체 수요에 대응하기 위해 용인과 광주에서 공장을 병행 건설할 가능성도 열어뒀다.",
+      "title": "최태원 “호남 반도체, 전력·용수 늦어도 공사 먼저…용인 3분의 2 규모로”(종합)"
+    },
     "fact:99aa60be5e60d0e7e513dd16": {
       "first_seen_kst": "2026-10-08T01:09:29+09:00",
       "lanes": {
@@ -44118,6 +44287,27 @@
       "source_published_kst": "2026-10-06T10:04+09:00",
       "title": "옵티팜, cGMP 시설 인수로 이종이식 사업화 속도"
     },
+    "fact:b1924d594d128d64b38ffd0e": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.fnnews.com/news/202610090901086976",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "bcf8ee9f90c5c7b3bcba6e60e9fc5fc5f890d6761af0cb2c37bf14d388b2a49b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:321d2f15a72565a72ba9972c9115d1f9e4dcbee7b16e982c62dbfcb275083508",
+      "source_fact_keys": [
+        "source_fact:v1:00302ee8f658c5434644b7d717f5faa5f628c3299330402086f24946d8d7094c",
+        "source_fact:v1:0099afcf598e49eee1c48b0cfd3b1a901c6744e3ec5133deabd31ed9fa2a4b60",
+        "source_fact:v1:30472df4b47e0aad0f3f8156fdac20414a985334d0610b26d6b5f1c44a147d7a"
+      ],
+      "source_published_kst": "2026-10-09T09:01+09:00",
+      "source_title": "美 10년물 급등에 빛바랜 금 ETF…3개월간 10% 안팎 하락",
+      "telegram_core_fact": "한수진 삼성증권 연구원은 \"글로벌 금 ETF는 지난 7월 중순 이후 일시적인 순유출로 전환되며 지속되던 자금 유입에 제동이 걸리기도 했다\"며 \"이는 구조적인 수요 부진이라기보다는 미국 국채금리 상승세에 따라 금의 상대적 매력도가 낮아져 단기 수급 변화를 유발한 것\"이라고 진단했다.",
+      "title": "美 10년물 급등에 빛바랜 금 ETF…3개월간 10% 안팎 하락"
+    },
     "fact:b199fa3fb6eec0f6b192d77a": {
       "first_seen_kst": "2026-10-08T00:39:44+09:00",
       "lanes": {
@@ -44589,6 +44779,33 @@
       ],
       "source_published_kst": "2026-10-06T09:55+09:00",
       "title": "어기구 \"5년간 2천억원 썼는데 연간 조류 정전 2배로\" | 연합뉴스"
+    },
+    "fact:b5378a07748115665474f524": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/09/2026100817445057794",
+      "source": "머니투데이",
+      "source_body_digest": "c91fc5362c05119ad4a77e76644c1ce3dfd5068d1923f1abe9d8a0a4d84ba9c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a0445e78079ac1253c8b4a2b748ac01b461feeb495775ea357391769c1eab93",
+      "source_fact_keys": [
+        "source_fact:v1:034ee6ccd1f727fb493f364587c32040a2e2434cf449b0ab1803818bf42737e0",
+        "source_fact:v1:5efc20a0161bd8c3740ac2265d6531fc44ae6d296550641739e055ade02a3542",
+        "source_fact:v1:640bf9896228fec2c04e140e16740e201147d519daca8c3e52f44026b6197a0d",
+        "source_fact:v1:80d8dea79e274f545e42c1672b85bacce79cbf46665eebd403481d46ee98346e",
+        "source_fact:v1:88d17daa06cee01a7b3b54ab6f95bb8af176186e8f59cc52043a1254eb61e50e",
+        "source_fact:v1:a4dcb73fa84c5adbde8417048207fdad335538492c0b7c5771fbd981df3c827c",
+        "source_fact:v1:bfb22c25229f6c29f5fbfe0e1fb1d912ef4dc386ef40399cd41edc703d74cc58",
+        "source_fact:v1:ca42abe40a9d4fd1338e4e6701e5a1c32d81a91290904c6a06ad7bf9e7419ef8",
+        "source_fact:v1:e7d9dc451126815a4645b65e6860fa5e35218d7a37ac945c8df080e8a7580a91"
+      ],
+      "source_published_kst": "2026-10-09T08:30+09:00",
+      "source_title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다",
+      "telegram_core_fact": "당시 최 회장이 보유한 SK㈜ 지분가치는 2조원대여서 보유 지분의 67% 이상을 팔아야 했지만 이후 주가가 올라 11%대만 매각하면 되는 상황이 됐다.",
+      "title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다"
     },
     "fact:b57857aa815d46a8e25cd63c": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -51869,6 +52086,27 @@
       "telegram_core_fact": "BofA가 32개 자산군과 업종을 대상으로 산출하는 자체 ‘버블위험지표(BRI)’에서 미국 기술주는 현재 가장 높은 수준을 기록했다. 뱅크오브아메리카(BofA)가 미국 기술주와 한국 증시에서 ‘버블형’ 가격 움직임이 나타나고 있다고 경고했다.",
       "title": "뱅크오브아메리카 \"기술주·코스피 버블 형성 중\""
     },
+    "fact:f1111e3ce713c60e9b60545d": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610081774b",
+      "source": "한국경제",
+      "source_body_digest": "0f53c5751182d7d256e6b5575a27cf68a9c5bbf5769d2219808b6a90c851e137",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:96c512670087fc15151f1b99337c32b09295022bda5578fb5b54e268d536a4ce",
+      "source_fact_keys": [
+        "source_fact:v1:0fe60bf1270bfb776593a9ddcbce71f824ba219ec47855244a5de73640e0f402",
+        "source_fact:v1:1550a1f939043e929ad31b67fca923a7d9d2ce9fbc32a698115792965f76d6e4",
+        "source_fact:v1:ddf0585f0439e6a63e456ddec5a6b40959903756fb0e9014c0b20d97c647197c"
+      ],
+      "source_published_kst": "2026-10-08T17:27+09:00",
+      "source_title": "페퍼앤솔트, 상반기 매출 131억원 기록…K-캐릭터 해외 진출 본격화",
+      "telegram_core_fact": "콘텐츠 IP 커머셜라이징 기업 페퍼앤솔트가 올해 상반기 매출 131억원을 기록한 가운데, 하반기에는 K-SNS 캐릭터의 해외 유통망 구축과 글로벌 IP 사업 확대에 나선다.",
+      "title": "페퍼앤솔트, 상반기 매출 131억원 기록…K-캐릭터 해외 진출 본격화"
+    },
     "fact:f1150e65dddce81a5aac69f5": {
       "first_seen_kst": "2026-10-06T00:18:21+09:00",
       "lanes": {
@@ -57541,6 +57779,25 @@
       "source_published_kst": "2026-10-06T19:21+09:00",
       "title": "日경제상 \"반도체·전력 수요 무한대…美·日 투자 충분히 양립\""
     },
+    "link:15bba9d229f67a2cc78f0b00": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=02794566645611280&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "fc892888a8291088b918e264d5304f672ef85602e0db97cc0e8c4f7accf1490a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bcfa88dc2e11a34e8bcd70f7b332af22a1ee8702a9d5551e712d28e2637ccbda",
+      "source_fact_keys": [
+        "source_fact:v1:b2c7594d69bedc92d20277d2cb24fc6e3845ed4ca90a69d65a12ffc6a5209106"
+      ],
+      "source_published_kst": "2026-10-09T06:51+09:00",
+      "source_title": "최태원 “호남 반도체, 전력·용수 늦어도 공사 먼저…용인 3분의 2 규모로”(종합)",
+      "telegram_core_fact": "최태원 SK그룹 회장이 호남권 반도체 생산거점을 용인 반도체 클러스터의 3분의 2 규모로 계획하고 있다고 밝혔다. 빠르게 늘어나는 반도체 수요에 대응하기 위해 용인과 광주에서 공장을 병행 건설할 가능성도 열어뒀다.",
+      "title": "최태원 “호남 반도체, 전력·용수 늦어도 공사 먼저…용인 3분의 2 규모로”(종합)"
+    },
     "link:15c5cfa91e7caffa205c6f11": {
       "first_seen_kst": "2026-10-08T15:16:19+09:00",
       "lanes": {
@@ -58791,6 +59048,23 @@
       ],
       "source_published_kst": "2026-10-06T11:44+09:00",
       "title": "정부 \"11월 원유 90% 이상 확보…나프타도 90% 이상\" | 연합뉴스"
+    },
+    "link:1bd3858237d1b5786e38c5a8": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171916",
+      "source": "매일경제",
+      "source_body_digest": "c0620c3c1674885db0184223385d459d4af327b5d5619a6d6dfb31b544f60c0b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T19:05+09:00",
+      "source_title": "디스트리뷰션 솔루션스 그, 주당 35달러 인수 자금 8억 달러 채권 확정..7억서 증액",
+      "telegram_core_fact": "주당 35달러 현금 인수의 자금 조달이 증액된 채권 발행으로 구체화돼 거래 성사 가능성이 한층 높아졌어요.",
+      "title": "디스트리뷰션 솔루션스 그, 주당 35달러 인수 자금 8억 달러 채권 확정..7억서 증액"
     },
     "link:1bedbeee3bf40c7dd3126d55": {
       "first_seen_kst": "2026-09-18T09:03:50+09:00",
@@ -61180,6 +61454,27 @@
       "source_title": "대우건설, 데이터센터·도시정비 키운다…안전품질본부 신설",
       "telegram_core_fact": "AI 확산에 따른 데이터센터 시장에 대응하기 위해 ‘데이터센터사업팀’도 신설한다.",
       "title": "대우건설, 데이터센터·도시정비 키운다…안전품질본부 신설"
+    },
+    "link:29ad66c6a2292df4223afe51": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.fnnews.com/news/202610090901086976",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "bcf8ee9f90c5c7b3bcba6e60e9fc5fc5f890d6761af0cb2c37bf14d388b2a49b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:321d2f15a72565a72ba9972c9115d1f9e4dcbee7b16e982c62dbfcb275083508",
+      "source_fact_keys": [
+        "source_fact:v1:00302ee8f658c5434644b7d717f5faa5f628c3299330402086f24946d8d7094c",
+        "source_fact:v1:0099afcf598e49eee1c48b0cfd3b1a901c6744e3ec5133deabd31ed9fa2a4b60",
+        "source_fact:v1:30472df4b47e0aad0f3f8156fdac20414a985334d0610b26d6b5f1c44a147d7a"
+      ],
+      "source_published_kst": "2026-10-09T09:01+09:00",
+      "source_title": "美 10년물 급등에 빛바랜 금 ETF…3개월간 10% 안팎 하락",
+      "telegram_core_fact": "한수진 삼성증권 연구원은 \"글로벌 금 ETF는 지난 7월 중순 이후 일시적인 순유출로 전환되며 지속되던 자금 유입에 제동이 걸리기도 했다\"며 \"이는 구조적인 수요 부진이라기보다는 미국 국채금리 상승세에 따라 금의 상대적 매력도가 낮아져 단기 수급 변화를 유발한 것\"이라고 진단했다.",
+      "title": "美 10년물 급등에 빛바랜 금 ETF…3개월간 10% 안팎 하락"
     },
     "link:29bd17c81e6464e22a79f9e2": {
       "first_seen_kst": "2026-09-21T03:48:22+09:00",
@@ -75361,6 +75656,25 @@
       "telegram_core_fact": "코스닥 상장을 추진 중인 1조원 IPO 대어, 엘리스그룹 또한 기대주로 꼽힌다.",
       "title": "얼어붙은 3분기 IPO 시장…무신사·소노, 구원투수될까"
     },
+    "link:725c94d86f8afa0649f9025b": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=02794566645611280&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "fc892888a8291088b918e264d5304f672ef85602e0db97cc0e8c4f7accf1490a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bcfa88dc2e11a34e8bcd70f7b332af22a1ee8702a9d5551e712d28e2637ccbda",
+      "source_fact_keys": [
+        "source_fact:v1:b2c7594d69bedc92d20277d2cb24fc6e3845ed4ca90a69d65a12ffc6a5209106"
+      ],
+      "source_published_kst": "2026-10-09T06:51+09:00",
+      "source_title": "최태원 “호남 반도체, 전력·용수 늦어도 공사 먼저…용인 3분의 2 규모로”(종합)",
+      "telegram_core_fact": "최태원 SK그룹 회장이 호남권 반도체 생산거점을 용인 반도체 클러스터의 3분의 2 규모로 계획하고 있다고 밝혔다. 빠르게 늘어나는 반도체 수요에 대응하기 위해 용인과 광주에서 공장을 병행 건설할 가능성도 열어뒀다.",
+      "title": "최태원 “호남 반도체, 전력·용수 늦어도 공사 먼저…용인 3분의 2 규모로”(종합)"
+    },
     "link:728d42d0a476c61a406f5a44": {
       "first_seen_kst": "2026-10-08T07:12:10+09:00",
       "lanes": {
@@ -77257,6 +77571,27 @@
       "link": "https://www.mk.co.kr/news/stock/12158782",
       "source": "매일경제",
       "title": "터닝 포인트 브랜즈, 데이비드 글레이젝 신임 CEO 선임..10월 1일 취임"
+    },
+    "link:7be426390d26e7b563119e82": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610081774b",
+      "source": "한국경제",
+      "source_body_digest": "0f53c5751182d7d256e6b5575a27cf68a9c5bbf5769d2219808b6a90c851e137",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:96c512670087fc15151f1b99337c32b09295022bda5578fb5b54e268d536a4ce",
+      "source_fact_keys": [
+        "source_fact:v1:0fe60bf1270bfb776593a9ddcbce71f824ba219ec47855244a5de73640e0f402",
+        "source_fact:v1:1550a1f939043e929ad31b67fca923a7d9d2ce9fbc32a698115792965f76d6e4",
+        "source_fact:v1:ddf0585f0439e6a63e456ddec5a6b40959903756fb0e9014c0b20d97c647197c"
+      ],
+      "source_published_kst": "2026-10-08T17:27+09:00",
+      "source_title": "페퍼앤솔트, 상반기 매출 131억원 기록…K-캐릭터 해외 진출 본격화",
+      "telegram_core_fact": "콘텐츠 IP 커머셜라이징 기업 페퍼앤솔트가 올해 상반기 매출 131억원을 기록한 가운데, 하반기에는 K-SNS 캐릭터의 해외 유통망 구축과 글로벌 IP 사업 확대에 나선다.",
+      "title": "페퍼앤솔트, 상반기 매출 131억원 기록…K-캐릭터 해외 진출 본격화"
     },
     "link:7be46b1ddac1cc0a4cbcf679": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
@@ -87045,6 +87380,33 @@
       "source_published_kst": "2026-10-06T11:25+09:00",
       "title": "[속보]삼성전기, 2900억 규모 AI 서버용 MLCC 공급계약 체결"
     },
+    "link:b0ec94791ec482b3eb987fa0": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/09/2026100817445057794",
+      "source": "머니투데이",
+      "source_body_digest": "c91fc5362c05119ad4a77e76644c1ce3dfd5068d1923f1abe9d8a0a4d84ba9c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a0445e78079ac1253c8b4a2b748ac01b461feeb495775ea357391769c1eab93",
+      "source_fact_keys": [
+        "source_fact:v1:034ee6ccd1f727fb493f364587c32040a2e2434cf449b0ab1803818bf42737e0",
+        "source_fact:v1:5efc20a0161bd8c3740ac2265d6531fc44ae6d296550641739e055ade02a3542",
+        "source_fact:v1:640bf9896228fec2c04e140e16740e201147d519daca8c3e52f44026b6197a0d",
+        "source_fact:v1:80d8dea79e274f545e42c1672b85bacce79cbf46665eebd403481d46ee98346e",
+        "source_fact:v1:88d17daa06cee01a7b3b54ab6f95bb8af176186e8f59cc52043a1254eb61e50e",
+        "source_fact:v1:a4dcb73fa84c5adbde8417048207fdad335538492c0b7c5771fbd981df3c827c",
+        "source_fact:v1:bfb22c25229f6c29f5fbfe0e1fb1d912ef4dc386ef40399cd41edc703d74cc58",
+        "source_fact:v1:ca42abe40a9d4fd1338e4e6701e5a1c32d81a91290904c6a06ad7bf9e7419ef8",
+        "source_fact:v1:e7d9dc451126815a4645b65e6860fa5e35218d7a37ac945c8df080e8a7580a91"
+      ],
+      "source_published_kst": "2026-10-09T08:30+09:00",
+      "source_title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다",
+      "telegram_core_fact": "당시 최 회장이 보유한 SK㈜ 지분가치는 2조원대여서 보유 지분의 67% 이상을 팔아야 했지만 이후 주가가 올라 11%대만 매각하면 되는 상황이 됐다.",
+      "title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다"
+    },
     "link:b119cb77244698dda0e45dc3": {
       "first_seen_kst": "2026-10-05T15:12:23+09:00",
       "lanes": {
@@ -92574,6 +92936,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-03T05:28+09:00",
       "title": "\"알래스카 등 트럼프 프로젝트, 선거 판도 뒤집기엔 역부족\""
+    },
+    "link:cf2738c234702bdb371382da": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.yna.co.kr/view/MYH20261009001300038",
+      "source": "연합뉴스",
+      "source_body_digest": "b06b7d76bc5982f50ad915ee5164a177cf7497f58e1eb22aa889931e3e2205ee",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-09T09:11+09:00",
+      "source_title": "미국 역수출 포문 여는 K-원전…\"낙수효과 기대\" | 연합뉴스",
+      "telegram_core_fact": "미국에 대한 원전 수출을 제한한 협정이 개정되면서, 국내 업계의 낙수효과도 예상됩니다.",
+      "title": "미국 역수출 포문 여는 K-원전…\"낙수효과 기대\" | 연합뉴스"
     },
     "link:cf3220f2f3187083a1f4ebfc": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
@@ -98211,6 +98590,23 @@
       "source_published_kst": "2026-10-06T18:00+09:00",
       "title": "박스피 갇힌 코스피, 11월 연말 랠리 올까?"
     },
+    "link:ec01209df701311ca24dfaa0": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.hankyung.com/article/202610092409i",
+      "source": "한국경제",
+      "source_body_digest": "fd0e2f74517b81e542c8108c7d0649990f5956cdfb0e5d3e0edf5f926589c8c9",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-09T08:54+09:00",
+      "source_title": "日, 30년물 국채금리 4.25% 사상 최고",
+      "telegram_core_fact": "일본의 30년 만기 국채금리가 사상 최고 수준으로 치솟으며 연 4%대에 고착화하고 있다.",
+      "title": "日, 30년물 국채금리 4.25% 사상 최고"
+    },
     "link:ec0eaad9202cb5c25b5e563b": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
       "lanes": {
@@ -102269,6 +102665,27 @@
       ],
       "source_published_kst": "2026-10-06T21:33+09:00",
       "title": "그리스·이탈리아보다 비싸게 빚내는 프랑스…국채금리 5% 눈앞"
+    },
+    "original:01e2137dca7317ea4729d2ba": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.fnnews.com/news/202610090901086976",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "bcf8ee9f90c5c7b3bcba6e60e9fc5fc5f890d6761af0cb2c37bf14d388b2a49b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:321d2f15a72565a72ba9972c9115d1f9e4dcbee7b16e982c62dbfcb275083508",
+      "source_fact_keys": [
+        "source_fact:v1:00302ee8f658c5434644b7d717f5faa5f628c3299330402086f24946d8d7094c",
+        "source_fact:v1:0099afcf598e49eee1c48b0cfd3b1a901c6744e3ec5133deabd31ed9fa2a4b60",
+        "source_fact:v1:30472df4b47e0aad0f3f8156fdac20414a985334d0610b26d6b5f1c44a147d7a"
+      ],
+      "source_published_kst": "2026-10-09T09:01+09:00",
+      "source_title": "美 10년물 급등에 빛바랜 금 ETF…3개월간 10% 안팎 하락",
+      "telegram_core_fact": "한수진 삼성증권 연구원은 \"글로벌 금 ETF는 지난 7월 중순 이후 일시적인 순유출로 전환되며 지속되던 자금 유입에 제동이 걸리기도 했다\"며 \"이는 구조적인 수요 부진이라기보다는 미국 국채금리 상승세에 따라 금의 상대적 매력도가 낮아져 단기 수급 변화를 유발한 것\"이라고 진단했다.",
+      "title": "美 10년물 급등에 빛바랜 금 ETF…3개월간 10% 안팎 하락"
     },
     "original:01eaccd9c38b4bb9823e0596": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
@@ -115031,6 +115448,27 @@
       "telegram_core_fact": "이란은 미국의 강력한 제재 속에서도 헤즈볼라에 대한 재정 지원을 지속해온 것으로 알려졌다.",
       "title": "\"이란, 헤즈볼라에 2억달러 지원…피란민 5만가구에 지급\""
     },
+    "original:43d82ce8abea3664ad4f0e0c": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610081774b",
+      "source": "한국경제",
+      "source_body_digest": "0f53c5751182d7d256e6b5575a27cf68a9c5bbf5769d2219808b6a90c851e137",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:96c512670087fc15151f1b99337c32b09295022bda5578fb5b54e268d536a4ce",
+      "source_fact_keys": [
+        "source_fact:v1:0fe60bf1270bfb776593a9ddcbce71f824ba219ec47855244a5de73640e0f402",
+        "source_fact:v1:1550a1f939043e929ad31b67fca923a7d9d2ce9fbc32a698115792965f76d6e4",
+        "source_fact:v1:ddf0585f0439e6a63e456ddec5a6b40959903756fb0e9014c0b20d97c647197c"
+      ],
+      "source_published_kst": "2026-10-08T17:27+09:00",
+      "source_title": "페퍼앤솔트, 상반기 매출 131억원 기록…K-캐릭터 해외 진출 본격화",
+      "telegram_core_fact": "콘텐츠 IP 커머셜라이징 기업 페퍼앤솔트가 올해 상반기 매출 131억원을 기록한 가운데, 하반기에는 K-SNS 캐릭터의 해외 유통망 구축과 글로벌 IP 사업 확대에 나선다.",
+      "title": "페퍼앤솔트, 상반기 매출 131억원 기록…K-캐릭터 해외 진출 본격화"
+    },
     "original:43db024ebcbef4e916f09bb8": {
       "first_seen_kst": "2026-10-02T01:28:56+09:00",
       "lanes": {
@@ -125896,6 +126334,23 @@
       "source_published_kst": "2026-10-07T05:09+09:00",
       "title": "[속보]美국채금리 숨고르자 S&P·나스닥 '사상 최고'"
     },
+    "original:813a4cc72d762ed952fa8621": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.hankyung.com/article/202610092409i",
+      "source": "한국경제",
+      "source_body_digest": "fd0e2f74517b81e542c8108c7d0649990f5956cdfb0e5d3e0edf5f926589c8c9",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-09T08:54+09:00",
+      "source_title": "日, 30년물 국채금리 4.25% 사상 최고",
+      "telegram_core_fact": "일본의 30년 만기 국채금리가 사상 최고 수준으로 치솟으며 연 4%대에 고착화하고 있다.",
+      "title": "日, 30년물 국채금리 4.25% 사상 최고"
+    },
     "original:816d8f065f2dcc43423746c5": {
       "first_seen_kst": "2026-10-08T18:46:25+09:00",
       "lanes": {
@@ -127994,6 +128449,23 @@
       "source": "이데일리",
       "title": "[단독]'적색수배' KOK 자금총책 지갑 보니…국내외 거래소로 1050억대 현금화"
     },
+    "original:8c46c76ee9574313929c5497": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171916",
+      "source": "매일경제",
+      "source_body_digest": "c0620c3c1674885db0184223385d459d4af327b5d5619a6d6dfb31b544f60c0b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T19:05+09:00",
+      "source_title": "디스트리뷰션 솔루션스 그, 주당 35달러 인수 자금 8억 달러 채권 확정..7억서 증액",
+      "telegram_core_fact": "주당 35달러 현금 인수의 자금 조달이 증액된 채권 발행으로 구체화돼 거래 성사 가능성이 한층 높아졌어요.",
+      "title": "디스트리뷰션 솔루션스 그, 주당 35달러 인수 자금 8억 달러 채권 확정..7억서 증액"
+    },
     "original:8c68499b15c3aa138e48815b": {
       "first_seen_kst": "2026-10-07T11:43:24+09:00",
       "lanes": {
@@ -129630,6 +130102,25 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=02886406645608984",
       "source": "이데일리",
       "title": "\"中정유업체들, 석유제품 수출 중단…재고 확보 목적\""
+    },
+    "original:94cf702b78050caed1c01c84": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=02794566645611280&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "fc892888a8291088b918e264d5304f672ef85602e0db97cc0e8c4f7accf1490a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bcfa88dc2e11a34e8bcd70f7b332af22a1ee8702a9d5551e712d28e2637ccbda",
+      "source_fact_keys": [
+        "source_fact:v1:b2c7594d69bedc92d20277d2cb24fc6e3845ed4ca90a69d65a12ffc6a5209106"
+      ],
+      "source_published_kst": "2026-10-09T06:51+09:00",
+      "source_title": "최태원 “호남 반도체, 전력·용수 늦어도 공사 먼저…용인 3분의 2 규모로”(종합)",
+      "telegram_core_fact": "최태원 SK그룹 회장이 호남권 반도체 생산거점을 용인 반도체 클러스터의 3분의 2 규모로 계획하고 있다고 밝혔다. 빠르게 늘어나는 반도체 수요에 대응하기 위해 용인과 광주에서 공장을 병행 건설할 가능성도 열어뒀다.",
+      "title": "최태원 “호남 반도체, 전력·용수 늦어도 공사 먼저…용인 3분의 2 규모로”(종합)"
     },
     "original:94d50b13b809d6f3dccf6983": {
       "first_seen_kst": "2026-09-25T21:10:56+09:00",
@@ -134074,6 +134565,23 @@
       "link": "https://www.etnews.com/20260930000074",
       "source": "전자신문",
       "title": "HL그룹, 구글 웨이모 뚫었다…전자 브레이크 시스템 첫 공급"
+    },
+    "original:ad9e56c63848997f3f111295": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.yna.co.kr/view/MYH20261009001300038",
+      "source": "연합뉴스",
+      "source_body_digest": "b06b7d76bc5982f50ad915ee5164a177cf7497f58e1eb22aa889931e3e2205ee",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-09T09:11+09:00",
+      "source_title": "미국 역수출 포문 여는 K-원전…\"낙수효과 기대\" | 연합뉴스",
+      "telegram_core_fact": "미국에 대한 원전 수출을 제한한 협정이 개정되면서, 국내 업계의 낙수효과도 예상됩니다.",
+      "title": "미국 역수출 포문 여는 K-원전…\"낙수효과 기대\" | 연합뉴스"
     },
     "original:adcaf4c49faa244d824bab9a": {
       "first_seen_kst": "2026-10-08T03:26:42+09:00",
@@ -141694,6 +142202,33 @@
       ],
       "source_published_kst": "2026-10-06T13:52+09:00",
       "title": "거래소 “코스닥 체질 개선 노력⋯법원 제동 건 ‘시총 미달 상폐’ 후속 조치 예정”"
+    },
+    "original:d738e88021ba17bf0e4b638b": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/09/2026100817445057794",
+      "source": "머니투데이",
+      "source_body_digest": "c91fc5362c05119ad4a77e76644c1ce3dfd5068d1923f1abe9d8a0a4d84ba9c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a0445e78079ac1253c8b4a2b748ac01b461feeb495775ea357391769c1eab93",
+      "source_fact_keys": [
+        "source_fact:v1:034ee6ccd1f727fb493f364587c32040a2e2434cf449b0ab1803818bf42737e0",
+        "source_fact:v1:5efc20a0161bd8c3740ac2265d6531fc44ae6d296550641739e055ade02a3542",
+        "source_fact:v1:640bf9896228fec2c04e140e16740e201147d519daca8c3e52f44026b6197a0d",
+        "source_fact:v1:80d8dea79e274f545e42c1672b85bacce79cbf46665eebd403481d46ee98346e",
+        "source_fact:v1:88d17daa06cee01a7b3b54ab6f95bb8af176186e8f59cc52043a1254eb61e50e",
+        "source_fact:v1:a4dcb73fa84c5adbde8417048207fdad335538492c0b7c5771fbd981df3c827c",
+        "source_fact:v1:bfb22c25229f6c29f5fbfe0e1fb1d912ef4dc386ef40399cd41edc703d74cc58",
+        "source_fact:v1:ca42abe40a9d4fd1338e4e6701e5a1c32d81a91290904c6a06ad7bf9e7419ef8",
+        "source_fact:v1:e7d9dc451126815a4645b65e6860fa5e35218d7a37ac945c8df080e8a7580a91"
+      ],
+      "source_published_kst": "2026-10-09T08:30+09:00",
+      "source_title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다",
+      "telegram_core_fact": "당시 최 회장이 보유한 SK㈜ 지분가치는 2조원대여서 보유 지분의 67% 이상을 팔아야 했지만 이후 주가가 올라 11%대만 매각하면 되는 상황이 됐다.",
+      "title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다"
     },
     "original:d757ef5c13ff0c151e353814": {
       "first_seen_kst": "2026-10-05T16:27:40+09:00",
@@ -168966,6 +169501,33 @@
       "source_published_kst": "2026-10-06T13:52+09:00",
       "title": "'KIWOOM 미국AI테크하이베타 ETF', 마이크론·스페이스X 편입"
     },
+    "source_fact:2504e00bcc773ae7d54155fc": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/09/2026100817445057794",
+      "source": "머니투데이",
+      "source_body_digest": "c91fc5362c05119ad4a77e76644c1ce3dfd5068d1923f1abe9d8a0a4d84ba9c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a0445e78079ac1253c8b4a2b748ac01b461feeb495775ea357391769c1eab93",
+      "source_fact_keys": [
+        "source_fact:v1:034ee6ccd1f727fb493f364587c32040a2e2434cf449b0ab1803818bf42737e0",
+        "source_fact:v1:5efc20a0161bd8c3740ac2265d6531fc44ae6d296550641739e055ade02a3542",
+        "source_fact:v1:640bf9896228fec2c04e140e16740e201147d519daca8c3e52f44026b6197a0d",
+        "source_fact:v1:80d8dea79e274f545e42c1672b85bacce79cbf46665eebd403481d46ee98346e",
+        "source_fact:v1:88d17daa06cee01a7b3b54ab6f95bb8af176186e8f59cc52043a1254eb61e50e",
+        "source_fact:v1:a4dcb73fa84c5adbde8417048207fdad335538492c0b7c5771fbd981df3c827c",
+        "source_fact:v1:bfb22c25229f6c29f5fbfe0e1fb1d912ef4dc386ef40399cd41edc703d74cc58",
+        "source_fact:v1:ca42abe40a9d4fd1338e4e6701e5a1c32d81a91290904c6a06ad7bf9e7419ef8",
+        "source_fact:v1:e7d9dc451126815a4645b65e6860fa5e35218d7a37ac945c8df080e8a7580a91"
+      ],
+      "source_published_kst": "2026-10-09T08:30+09:00",
+      "source_title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다",
+      "telegram_core_fact": "당시 최 회장이 보유한 SK㈜ 지분가치는 2조원대여서 보유 지분의 67% 이상을 팔아야 했지만 이후 주가가 올라 11%대만 매각하면 되는 상황이 됐다.",
+      "title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다"
+    },
     "source_fact:250e7f43c4ffe45bc36db476": {
       "first_seen_kst": "2026-10-08T01:26:16+09:00",
       "lanes": {
@@ -170925,6 +171487,33 @@
       "source_title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나",
       "telegram_core_fact": "인공지능(AI) 투자 확대에 따른 메모리 호황이 실적을 밀어 올렸지만 주가까지 상승할지는 별개다.",
       "title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나"
+    },
+    "source_fact:2816343aacaef217687b1210": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/09/2026100817445057794",
+      "source": "머니투데이",
+      "source_body_digest": "c91fc5362c05119ad4a77e76644c1ce3dfd5068d1923f1abe9d8a0a4d84ba9c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a0445e78079ac1253c8b4a2b748ac01b461feeb495775ea357391769c1eab93",
+      "source_fact_keys": [
+        "source_fact:v1:034ee6ccd1f727fb493f364587c32040a2e2434cf449b0ab1803818bf42737e0",
+        "source_fact:v1:5efc20a0161bd8c3740ac2265d6531fc44ae6d296550641739e055ade02a3542",
+        "source_fact:v1:640bf9896228fec2c04e140e16740e201147d519daca8c3e52f44026b6197a0d",
+        "source_fact:v1:80d8dea79e274f545e42c1672b85bacce79cbf46665eebd403481d46ee98346e",
+        "source_fact:v1:88d17daa06cee01a7b3b54ab6f95bb8af176186e8f59cc52043a1254eb61e50e",
+        "source_fact:v1:a4dcb73fa84c5adbde8417048207fdad335538492c0b7c5771fbd981df3c827c",
+        "source_fact:v1:bfb22c25229f6c29f5fbfe0e1fb1d912ef4dc386ef40399cd41edc703d74cc58",
+        "source_fact:v1:ca42abe40a9d4fd1338e4e6701e5a1c32d81a91290904c6a06ad7bf9e7419ef8",
+        "source_fact:v1:e7d9dc451126815a4645b65e6860fa5e35218d7a37ac945c8df080e8a7580a91"
+      ],
+      "source_published_kst": "2026-10-09T08:30+09:00",
+      "source_title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다",
+      "telegram_core_fact": "당시 최 회장이 보유한 SK㈜ 지분가치는 2조원대여서 보유 지분의 67% 이상을 팔아야 했지만 이후 주가가 올라 11%대만 매각하면 되는 상황이 됐다.",
+      "title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다"
     },
     "source_fact:281e8b4d6284ad807af3a4bf": {
       "first_seen_kst": "2026-10-08T06:10:43+09:00",
@@ -173505,6 +174094,33 @@
       ],
       "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "수도권은 집 부족…지방은 수요 부족해 공공주택 착공 연기 | 연합뉴스"
+    },
+    "source_fact:2c60266ef7ded165b4fdee00": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/09/2026100817445057794",
+      "source": "머니투데이",
+      "source_body_digest": "c91fc5362c05119ad4a77e76644c1ce3dfd5068d1923f1abe9d8a0a4d84ba9c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a0445e78079ac1253c8b4a2b748ac01b461feeb495775ea357391769c1eab93",
+      "source_fact_keys": [
+        "source_fact:v1:034ee6ccd1f727fb493f364587c32040a2e2434cf449b0ab1803818bf42737e0",
+        "source_fact:v1:5efc20a0161bd8c3740ac2265d6531fc44ae6d296550641739e055ade02a3542",
+        "source_fact:v1:640bf9896228fec2c04e140e16740e201147d519daca8c3e52f44026b6197a0d",
+        "source_fact:v1:80d8dea79e274f545e42c1672b85bacce79cbf46665eebd403481d46ee98346e",
+        "source_fact:v1:88d17daa06cee01a7b3b54ab6f95bb8af176186e8f59cc52043a1254eb61e50e",
+        "source_fact:v1:a4dcb73fa84c5adbde8417048207fdad335538492c0b7c5771fbd981df3c827c",
+        "source_fact:v1:bfb22c25229f6c29f5fbfe0e1fb1d912ef4dc386ef40399cd41edc703d74cc58",
+        "source_fact:v1:ca42abe40a9d4fd1338e4e6701e5a1c32d81a91290904c6a06ad7bf9e7419ef8",
+        "source_fact:v1:e7d9dc451126815a4645b65e6860fa5e35218d7a37ac945c8df080e8a7580a91"
+      ],
+      "source_published_kst": "2026-10-09T08:30+09:00",
+      "source_title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다",
+      "telegram_core_fact": "당시 최 회장이 보유한 SK㈜ 지분가치는 2조원대여서 보유 지분의 67% 이상을 팔아야 했지만 이후 주가가 올라 11%대만 매각하면 되는 상황이 됐다.",
+      "title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다"
     },
     "source_fact:2c63a4fa14c3b8beb33cb1ba": {
       "first_seen_kst": "2026-10-07T05:13:11+09:00",
@@ -183059,6 +183675,27 @@
       "source_title": "밸류파인더 “MSDI, 구미시와 7000억 미사일 방산단지 추진…전주기 사업 첫발”",
       "telegram_core_fact": "유럽 미사일 전문기업과의 협력을 바탕으로 초기에는 MRO와 라이선스 생산에서 매출을 확보하고 장기적으로 독자 미사일 개발까지 사업을 확대한다는 구상이다.",
       "title": "밸류파인더 “MSDI, 구미시와 7000억 미사일 방산단지 추진…전주기 사업 첫발”"
+    },
+    "source_fact:3dcbf3affe5cccbdccc84385": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610081774b",
+      "source": "한국경제",
+      "source_body_digest": "0f53c5751182d7d256e6b5575a27cf68a9c5bbf5769d2219808b6a90c851e137",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:96c512670087fc15151f1b99337c32b09295022bda5578fb5b54e268d536a4ce",
+      "source_fact_keys": [
+        "source_fact:v1:0fe60bf1270bfb776593a9ddcbce71f824ba219ec47855244a5de73640e0f402",
+        "source_fact:v1:1550a1f939043e929ad31b67fca923a7d9d2ce9fbc32a698115792965f76d6e4",
+        "source_fact:v1:ddf0585f0439e6a63e456ddec5a6b40959903756fb0e9014c0b20d97c647197c"
+      ],
+      "source_published_kst": "2026-10-08T17:27+09:00",
+      "source_title": "페퍼앤솔트, 상반기 매출 131억원 기록…K-캐릭터 해외 진출 본격화",
+      "telegram_core_fact": "콘텐츠 IP 커머셜라이징 기업 페퍼앤솔트가 올해 상반기 매출 131억원을 기록한 가운데, 하반기에는 K-SNS 캐릭터의 해외 유통망 구축과 글로벌 IP 사업 확대에 나선다.",
+      "title": "페퍼앤솔트, 상반기 매출 131억원 기록…K-캐릭터 해외 진출 본격화"
     },
     "source_fact:3de24c0b41613838c8b3b8a4": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
@@ -204667,6 +205304,27 @@
       "telegram_core_fact": "금융위원회가 단일종목 레버리지 상장지수펀드(ETF) 도입 전 스트레스테스트를 시행하지 않았다는 지적에 이억원 금융위 위원장이 투자자 위험성, 시장 영향 등을 점검했다고 반박했다.",
       "title": "'스트레스테스트 미비' 지적에… 이억원 \"레버리지 ETF 위험성 점검했다\"[2026국감]"
     },
+    "source_fact:63ef0cf45a689a0e98726115": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.fnnews.com/news/202610090901086976",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "bcf8ee9f90c5c7b3bcba6e60e9fc5fc5f890d6761af0cb2c37bf14d388b2a49b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:321d2f15a72565a72ba9972c9115d1f9e4dcbee7b16e982c62dbfcb275083508",
+      "source_fact_keys": [
+        "source_fact:v1:00302ee8f658c5434644b7d717f5faa5f628c3299330402086f24946d8d7094c",
+        "source_fact:v1:0099afcf598e49eee1c48b0cfd3b1a901c6744e3ec5133deabd31ed9fa2a4b60",
+        "source_fact:v1:30472df4b47e0aad0f3f8156fdac20414a985334d0610b26d6b5f1c44a147d7a"
+      ],
+      "source_published_kst": "2026-10-09T09:01+09:00",
+      "source_title": "美 10년물 급등에 빛바랜 금 ETF…3개월간 10% 안팎 하락",
+      "telegram_core_fact": "한수진 삼성증권 연구원은 \"글로벌 금 ETF는 지난 7월 중순 이후 일시적인 순유출로 전환되며 지속되던 자금 유입에 제동이 걸리기도 했다\"며 \"이는 구조적인 수요 부진이라기보다는 미국 국채금리 상승세에 따라 금의 상대적 매력도가 낮아져 단기 수급 변화를 유발한 것\"이라고 진단했다.",
+      "title": "美 10년물 급등에 빛바랜 금 ETF…3개월간 10% 안팎 하락"
+    },
     "source_fact:63f1e8acab636a8fa5ab6341": {
       "first_seen_kst": "2026-10-08T21:47:01+09:00",
       "lanes": {
@@ -213170,6 +213828,33 @@
       "source_title": "삼성전자 3분기 영업익 107조…글로벌 빅테크 최초 100조 돌파(종합2보)",
       "telegram_core_fact": "삼성전자가 올해 3분기 영업이익 107조4천억원을 기록해 국내 기업 사상 최초로 분기 영업익 100조원 시대를 열었다.",
       "title": "삼성전자 3분기 영업익 107조…글로벌 빅테크 최초 100조 돌파(종합2보)"
+    },
+    "source_fact:7421eaafc6f9cbba26596d65": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/09/2026100817445057794",
+      "source": "머니투데이",
+      "source_body_digest": "c91fc5362c05119ad4a77e76644c1ce3dfd5068d1923f1abe9d8a0a4d84ba9c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a0445e78079ac1253c8b4a2b748ac01b461feeb495775ea357391769c1eab93",
+      "source_fact_keys": [
+        "source_fact:v1:034ee6ccd1f727fb493f364587c32040a2e2434cf449b0ab1803818bf42737e0",
+        "source_fact:v1:5efc20a0161bd8c3740ac2265d6531fc44ae6d296550641739e055ade02a3542",
+        "source_fact:v1:640bf9896228fec2c04e140e16740e201147d519daca8c3e52f44026b6197a0d",
+        "source_fact:v1:80d8dea79e274f545e42c1672b85bacce79cbf46665eebd403481d46ee98346e",
+        "source_fact:v1:88d17daa06cee01a7b3b54ab6f95bb8af176186e8f59cc52043a1254eb61e50e",
+        "source_fact:v1:a4dcb73fa84c5adbde8417048207fdad335538492c0b7c5771fbd981df3c827c",
+        "source_fact:v1:bfb22c25229f6c29f5fbfe0e1fb1d912ef4dc386ef40399cd41edc703d74cc58",
+        "source_fact:v1:ca42abe40a9d4fd1338e4e6701e5a1c32d81a91290904c6a06ad7bf9e7419ef8",
+        "source_fact:v1:e7d9dc451126815a4645b65e6860fa5e35218d7a37ac945c8df080e8a7580a91"
+      ],
+      "source_published_kst": "2026-10-09T08:30+09:00",
+      "source_title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다",
+      "telegram_core_fact": "당시 최 회장이 보유한 SK㈜ 지분가치는 2조원대여서 보유 지분의 67% 이상을 팔아야 했지만 이후 주가가 올라 11%대만 매각하면 되는 상황이 됐다.",
+      "title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다"
     },
     "source_fact:7425cc7451e64feb417b90f3": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -224190,6 +224875,27 @@
       "telegram_core_fact": "LG전자는 이번 계약에 따라 북미에서 구축되는 여러 AIDC에 총 5GW 고효율 칠러를 순차적으로 공급한다.",
       "title": "계약 한방에 수년치 먹거리 확보…삼성·LG, ‘AIDC 칠러’서 기회"
     },
+    "source_fact:885d6de70da672c5bec4747f": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.fnnews.com/news/202610090901086976",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "bcf8ee9f90c5c7b3bcba6e60e9fc5fc5f890d6761af0cb2c37bf14d388b2a49b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:321d2f15a72565a72ba9972c9115d1f9e4dcbee7b16e982c62dbfcb275083508",
+      "source_fact_keys": [
+        "source_fact:v1:00302ee8f658c5434644b7d717f5faa5f628c3299330402086f24946d8d7094c",
+        "source_fact:v1:0099afcf598e49eee1c48b0cfd3b1a901c6744e3ec5133deabd31ed9fa2a4b60",
+        "source_fact:v1:30472df4b47e0aad0f3f8156fdac20414a985334d0610b26d6b5f1c44a147d7a"
+      ],
+      "source_published_kst": "2026-10-09T09:01+09:00",
+      "source_title": "美 10년물 급등에 빛바랜 금 ETF…3개월간 10% 안팎 하락",
+      "telegram_core_fact": "한수진 삼성증권 연구원은 \"글로벌 금 ETF는 지난 7월 중순 이후 일시적인 순유출로 전환되며 지속되던 자금 유입에 제동이 걸리기도 했다\"며 \"이는 구조적인 수요 부진이라기보다는 미국 국채금리 상승세에 따라 금의 상대적 매력도가 낮아져 단기 수급 변화를 유발한 것\"이라고 진단했다.",
+      "title": "美 10년물 급등에 빛바랜 금 ETF…3개월간 10% 안팎 하락"
+    },
     "source_fact:8860abc1e8b10ed7cc0e12ae": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -230533,6 +231239,33 @@
       "source_published_kst": "2026-10-06T08:25+09:00",
       "title": "한미반도체, 삼성전기와 245억 규모 공급계약"
     },
+    "source_fact:94c26b07223433ddcb8fb52e": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/09/2026100817445057794",
+      "source": "머니투데이",
+      "source_body_digest": "c91fc5362c05119ad4a77e76644c1ce3dfd5068d1923f1abe9d8a0a4d84ba9c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a0445e78079ac1253c8b4a2b748ac01b461feeb495775ea357391769c1eab93",
+      "source_fact_keys": [
+        "source_fact:v1:034ee6ccd1f727fb493f364587c32040a2e2434cf449b0ab1803818bf42737e0",
+        "source_fact:v1:5efc20a0161bd8c3740ac2265d6531fc44ae6d296550641739e055ade02a3542",
+        "source_fact:v1:640bf9896228fec2c04e140e16740e201147d519daca8c3e52f44026b6197a0d",
+        "source_fact:v1:80d8dea79e274f545e42c1672b85bacce79cbf46665eebd403481d46ee98346e",
+        "source_fact:v1:88d17daa06cee01a7b3b54ab6f95bb8af176186e8f59cc52043a1254eb61e50e",
+        "source_fact:v1:a4dcb73fa84c5adbde8417048207fdad335538492c0b7c5771fbd981df3c827c",
+        "source_fact:v1:bfb22c25229f6c29f5fbfe0e1fb1d912ef4dc386ef40399cd41edc703d74cc58",
+        "source_fact:v1:ca42abe40a9d4fd1338e4e6701e5a1c32d81a91290904c6a06ad7bf9e7419ef8",
+        "source_fact:v1:e7d9dc451126815a4645b65e6860fa5e35218d7a37ac945c8df080e8a7580a91"
+      ],
+      "source_published_kst": "2026-10-09T08:30+09:00",
+      "source_title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다",
+      "telegram_core_fact": "당시 최 회장이 보유한 SK㈜ 지분가치는 2조원대여서 보유 지분의 67% 이상을 팔아야 했지만 이후 주가가 올라 11%대만 매각하면 되는 상황이 됐다.",
+      "title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다"
+    },
     "source_fact:94d743ebad1796f6c9f3c70f": {
       "first_seen_kst": "2026-10-07T07:24:41+09:00",
       "lanes": {
@@ -232535,6 +233268,27 @@
       "telegram_core_fact": "하지만 전쟁 이후 2년 만기 주택담보대출 평균 금리가 1%포인트 가까이 상승하면서 최근 6%에 근접했다.",
       "title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박"
     },
+    "source_fact:97ffa7c0c767f37cf0f46f2f": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.fnnews.com/news/202610090901086976",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "bcf8ee9f90c5c7b3bcba6e60e9fc5fc5f890d6761af0cb2c37bf14d388b2a49b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:321d2f15a72565a72ba9972c9115d1f9e4dcbee7b16e982c62dbfcb275083508",
+      "source_fact_keys": [
+        "source_fact:v1:00302ee8f658c5434644b7d717f5faa5f628c3299330402086f24946d8d7094c",
+        "source_fact:v1:0099afcf598e49eee1c48b0cfd3b1a901c6744e3ec5133deabd31ed9fa2a4b60",
+        "source_fact:v1:30472df4b47e0aad0f3f8156fdac20414a985334d0610b26d6b5f1c44a147d7a"
+      ],
+      "source_published_kst": "2026-10-09T09:01+09:00",
+      "source_title": "美 10년물 급등에 빛바랜 금 ETF…3개월간 10% 안팎 하락",
+      "telegram_core_fact": "한수진 삼성증권 연구원은 \"글로벌 금 ETF는 지난 7월 중순 이후 일시적인 순유출로 전환되며 지속되던 자금 유입에 제동이 걸리기도 했다\"며 \"이는 구조적인 수요 부진이라기보다는 미국 국채금리 상승세에 따라 금의 상대적 매력도가 낮아져 단기 수급 변화를 유발한 것\"이라고 진단했다.",
+      "title": "美 10년물 급등에 빛바랜 금 ETF…3개월간 10% 안팎 하락"
+    },
     "source_fact:97ffbaca5b5309d56c12a4a3": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -233089,6 +233843,25 @@
       ],
       "source_published_kst": "2026-10-06T10:11+09:00",
       "title": "세아베스틸, 로봇 감속기용 특수강 국산화…양산 본격화"
+    },
+    "source_fact:98e8a7051f8aeec429657d48": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=02794566645611280&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "fc892888a8291088b918e264d5304f672ef85602e0db97cc0e8c4f7accf1490a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bcfa88dc2e11a34e8bcd70f7b332af22a1ee8702a9d5551e712d28e2637ccbda",
+      "source_fact_keys": [
+        "source_fact:v1:b2c7594d69bedc92d20277d2cb24fc6e3845ed4ca90a69d65a12ffc6a5209106"
+      ],
+      "source_published_kst": "2026-10-09T06:51+09:00",
+      "source_title": "최태원 “호남 반도체, 전력·용수 늦어도 공사 먼저…용인 3분의 2 규모로”(종합)",
+      "telegram_core_fact": "최태원 SK그룹 회장이 호남권 반도체 생산거점을 용인 반도체 클러스터의 3분의 2 규모로 계획하고 있다고 밝혔다. 빠르게 늘어나는 반도체 수요에 대응하기 위해 용인과 광주에서 공장을 병행 건설할 가능성도 열어뒀다.",
+      "title": "최태원 “호남 반도체, 전력·용수 늦어도 공사 먼저…용인 3분의 2 규모로”(종합)"
     },
     "source_fact:98ec70bb7048910d2468cc0e": {
       "first_seen_kst": "2026-10-07T23:23:06+09:00",
@@ -255667,6 +256440,27 @@
       "source_published_kst": "2026-10-05T23:11+09:00",
       "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
     },
+    "source_fact:c3486741839d583e95ccfc81": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610081774b",
+      "source": "한국경제",
+      "source_body_digest": "0f53c5751182d7d256e6b5575a27cf68a9c5bbf5769d2219808b6a90c851e137",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:96c512670087fc15151f1b99337c32b09295022bda5578fb5b54e268d536a4ce",
+      "source_fact_keys": [
+        "source_fact:v1:0fe60bf1270bfb776593a9ddcbce71f824ba219ec47855244a5de73640e0f402",
+        "source_fact:v1:1550a1f939043e929ad31b67fca923a7d9d2ce9fbc32a698115792965f76d6e4",
+        "source_fact:v1:ddf0585f0439e6a63e456ddec5a6b40959903756fb0e9014c0b20d97c647197c"
+      ],
+      "source_published_kst": "2026-10-08T17:27+09:00",
+      "source_title": "페퍼앤솔트, 상반기 매출 131억원 기록…K-캐릭터 해외 진출 본격화",
+      "telegram_core_fact": "콘텐츠 IP 커머셜라이징 기업 페퍼앤솔트가 올해 상반기 매출 131억원을 기록한 가운데, 하반기에는 K-SNS 캐릭터의 해외 유통망 구축과 글로벌 IP 사업 확대에 나선다.",
+      "title": "페퍼앤솔트, 상반기 매출 131억원 기록…K-캐릭터 해외 진출 본격화"
+    },
     "source_fact:c34ac3fc58532d12bf90512a": {
       "first_seen_kst": "2026-10-07T16:57:09+09:00",
       "lanes": {
@@ -257317,6 +258111,33 @@
       ],
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "[ETF업&다운]3분기 엇갈린 반도체…삼전닉스 빠지고 소부장 버텼다"
+    },
+    "source_fact:c5e1075a2b913999c011da47": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/09/2026100817445057794",
+      "source": "머니투데이",
+      "source_body_digest": "c91fc5362c05119ad4a77e76644c1ce3dfd5068d1923f1abe9d8a0a4d84ba9c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a0445e78079ac1253c8b4a2b748ac01b461feeb495775ea357391769c1eab93",
+      "source_fact_keys": [
+        "source_fact:v1:034ee6ccd1f727fb493f364587c32040a2e2434cf449b0ab1803818bf42737e0",
+        "source_fact:v1:5efc20a0161bd8c3740ac2265d6531fc44ae6d296550641739e055ade02a3542",
+        "source_fact:v1:640bf9896228fec2c04e140e16740e201147d519daca8c3e52f44026b6197a0d",
+        "source_fact:v1:80d8dea79e274f545e42c1672b85bacce79cbf46665eebd403481d46ee98346e",
+        "source_fact:v1:88d17daa06cee01a7b3b54ab6f95bb8af176186e8f59cc52043a1254eb61e50e",
+        "source_fact:v1:a4dcb73fa84c5adbde8417048207fdad335538492c0b7c5771fbd981df3c827c",
+        "source_fact:v1:bfb22c25229f6c29f5fbfe0e1fb1d912ef4dc386ef40399cd41edc703d74cc58",
+        "source_fact:v1:ca42abe40a9d4fd1338e4e6701e5a1c32d81a91290904c6a06ad7bf9e7419ef8",
+        "source_fact:v1:e7d9dc451126815a4645b65e6860fa5e35218d7a37ac945c8df080e8a7580a91"
+      ],
+      "source_published_kst": "2026-10-09T08:30+09:00",
+      "source_title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다",
+      "telegram_core_fact": "당시 최 회장이 보유한 SK㈜ 지분가치는 2조원대여서 보유 지분의 67% 이상을 팔아야 했지만 이후 주가가 올라 11%대만 매각하면 되는 상황이 됐다.",
+      "title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다"
     },
     "source_fact:c5e87e3454360168469104c6": {
       "first_seen_kst": "2026-10-07T17:47:45+09:00",
@@ -263552,6 +264373,27 @@
       ],
       "source_published_kst": "2026-10-06T08:03+09:00",
       "title": "일진전기, 중전기 수주 북미 비중 80% 육박"
+    },
+    "source_fact:d1ee8006e22537b4f62e4368": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610081774b",
+      "source": "한국경제",
+      "source_body_digest": "0f53c5751182d7d256e6b5575a27cf68a9c5bbf5769d2219808b6a90c851e137",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:96c512670087fc15151f1b99337c32b09295022bda5578fb5b54e268d536a4ce",
+      "source_fact_keys": [
+        "source_fact:v1:0fe60bf1270bfb776593a9ddcbce71f824ba219ec47855244a5de73640e0f402",
+        "source_fact:v1:1550a1f939043e929ad31b67fca923a7d9d2ce9fbc32a698115792965f76d6e4",
+        "source_fact:v1:ddf0585f0439e6a63e456ddec5a6b40959903756fb0e9014c0b20d97c647197c"
+      ],
+      "source_published_kst": "2026-10-08T17:27+09:00",
+      "source_title": "페퍼앤솔트, 상반기 매출 131억원 기록…K-캐릭터 해외 진출 본격화",
+      "telegram_core_fact": "콘텐츠 IP 커머셜라이징 기업 페퍼앤솔트가 올해 상반기 매출 131억원을 기록한 가운데, 하반기에는 K-SNS 캐릭터의 해외 유통망 구축과 글로벌 IP 사업 확대에 나선다.",
+      "title": "페퍼앤솔트, 상반기 매출 131억원 기록…K-캐릭터 해외 진출 본격화"
     },
     "source_fact:d20459d4fc1a2042839cc2b3": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
@@ -275717,6 +276559,33 @@
       "source_published_kst": "2026-10-07T03:50+09:00",
       "title": "美국채 금리 급등하자…핌코 \"투자매력 매우 높아졌다\""
     },
+    "source_fact:e61422ba6c4ee582af34228f": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/09/2026100817445057794",
+      "source": "머니투데이",
+      "source_body_digest": "c91fc5362c05119ad4a77e76644c1ce3dfd5068d1923f1abe9d8a0a4d84ba9c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a0445e78079ac1253c8b4a2b748ac01b461feeb495775ea357391769c1eab93",
+      "source_fact_keys": [
+        "source_fact:v1:034ee6ccd1f727fb493f364587c32040a2e2434cf449b0ab1803818bf42737e0",
+        "source_fact:v1:5efc20a0161bd8c3740ac2265d6531fc44ae6d296550641739e055ade02a3542",
+        "source_fact:v1:640bf9896228fec2c04e140e16740e201147d519daca8c3e52f44026b6197a0d",
+        "source_fact:v1:80d8dea79e274f545e42c1672b85bacce79cbf46665eebd403481d46ee98346e",
+        "source_fact:v1:88d17daa06cee01a7b3b54ab6f95bb8af176186e8f59cc52043a1254eb61e50e",
+        "source_fact:v1:a4dcb73fa84c5adbde8417048207fdad335538492c0b7c5771fbd981df3c827c",
+        "source_fact:v1:bfb22c25229f6c29f5fbfe0e1fb1d912ef4dc386ef40399cd41edc703d74cc58",
+        "source_fact:v1:ca42abe40a9d4fd1338e4e6701e5a1c32d81a91290904c6a06ad7bf9e7419ef8",
+        "source_fact:v1:e7d9dc451126815a4645b65e6860fa5e35218d7a37ac945c8df080e8a7580a91"
+      ],
+      "source_published_kst": "2026-10-09T08:30+09:00",
+      "source_title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다",
+      "telegram_core_fact": "당시 최 회장이 보유한 SK㈜ 지분가치는 2조원대여서 보유 지분의 67% 이상을 팔아야 했지만 이후 주가가 올라 11%대만 매각하면 되는 상황이 됐다.",
+      "title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다"
+    },
     "source_fact:e61e724333aea3b17ef5aa14": {
       "first_seen_kst": "2026-10-06T01:41:59+09:00",
       "lanes": {
@@ -275879,6 +276748,33 @@
       ],
       "source_published_kst": "2026-10-06T08:56+09:00",
       "title": "서상덕 S2W 대표, 韓-英 공급망 보안 협력 제안"
+    },
+    "source_fact:e69655fb3ce971db6ed8b85a": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/09/2026100817445057794",
+      "source": "머니투데이",
+      "source_body_digest": "c91fc5362c05119ad4a77e76644c1ce3dfd5068d1923f1abe9d8a0a4d84ba9c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a0445e78079ac1253c8b4a2b748ac01b461feeb495775ea357391769c1eab93",
+      "source_fact_keys": [
+        "source_fact:v1:034ee6ccd1f727fb493f364587c32040a2e2434cf449b0ab1803818bf42737e0",
+        "source_fact:v1:5efc20a0161bd8c3740ac2265d6531fc44ae6d296550641739e055ade02a3542",
+        "source_fact:v1:640bf9896228fec2c04e140e16740e201147d519daca8c3e52f44026b6197a0d",
+        "source_fact:v1:80d8dea79e274f545e42c1672b85bacce79cbf46665eebd403481d46ee98346e",
+        "source_fact:v1:88d17daa06cee01a7b3b54ab6f95bb8af176186e8f59cc52043a1254eb61e50e",
+        "source_fact:v1:a4dcb73fa84c5adbde8417048207fdad335538492c0b7c5771fbd981df3c827c",
+        "source_fact:v1:bfb22c25229f6c29f5fbfe0e1fb1d912ef4dc386ef40399cd41edc703d74cc58",
+        "source_fact:v1:ca42abe40a9d4fd1338e4e6701e5a1c32d81a91290904c6a06ad7bf9e7419ef8",
+        "source_fact:v1:e7d9dc451126815a4645b65e6860fa5e35218d7a37ac945c8df080e8a7580a91"
+      ],
+      "source_published_kst": "2026-10-09T08:30+09:00",
+      "source_title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다",
+      "telegram_core_fact": "당시 최 회장이 보유한 SK㈜ 지분가치는 2조원대여서 보유 지분의 67% 이상을 팔아야 했지만 이후 주가가 올라 11%대만 매각하면 되는 상황이 됐다.",
+      "title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다"
     },
     "source_fact:e698b0cc572c99c9922821a3": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
@@ -284290,6 +285186,33 @@
       "source_published_kst": "2026-10-06T17:47+09:00",
       "title": "치킨업계 “산지 닭값 내려도 매입단가는 달라”…담합 조사에 비용 부담 강조"
     },
+    "source_fact:f63f0495d14f65d0f2c14cf2": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/09/2026100817445057794",
+      "source": "머니투데이",
+      "source_body_digest": "c91fc5362c05119ad4a77e76644c1ce3dfd5068d1923f1abe9d8a0a4d84ba9c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a0445e78079ac1253c8b4a2b748ac01b461feeb495775ea357391769c1eab93",
+      "source_fact_keys": [
+        "source_fact:v1:034ee6ccd1f727fb493f364587c32040a2e2434cf449b0ab1803818bf42737e0",
+        "source_fact:v1:5efc20a0161bd8c3740ac2265d6531fc44ae6d296550641739e055ade02a3542",
+        "source_fact:v1:640bf9896228fec2c04e140e16740e201147d519daca8c3e52f44026b6197a0d",
+        "source_fact:v1:80d8dea79e274f545e42c1672b85bacce79cbf46665eebd403481d46ee98346e",
+        "source_fact:v1:88d17daa06cee01a7b3b54ab6f95bb8af176186e8f59cc52043a1254eb61e50e",
+        "source_fact:v1:a4dcb73fa84c5adbde8417048207fdad335538492c0b7c5771fbd981df3c827c",
+        "source_fact:v1:bfb22c25229f6c29f5fbfe0e1fb1d912ef4dc386ef40399cd41edc703d74cc58",
+        "source_fact:v1:ca42abe40a9d4fd1338e4e6701e5a1c32d81a91290904c6a06ad7bf9e7419ef8",
+        "source_fact:v1:e7d9dc451126815a4645b65e6860fa5e35218d7a37ac945c8df080e8a7580a91"
+      ],
+      "source_published_kst": "2026-10-09T08:30+09:00",
+      "source_title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다",
+      "telegram_core_fact": "당시 최 회장이 보유한 SK㈜ 지분가치는 2조원대여서 보유 지분의 67% 이상을 팔아야 했지만 이후 주가가 올라 11%대만 매각하면 되는 상황이 됐다.",
+      "title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다"
+    },
     "source_fact:f66b0d1f25af4c66a1fcca49": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -289435,6 +290358,27 @@
       ],
       "source_published_kst": "2026-10-06T21:33+09:00",
       "title": "그리스·이탈리아보다 비싸게 빚내는 프랑스…국채금리 5% 눈앞"
+    },
+    "title:01e2137dca7317ea4729d2ba": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.fnnews.com/news/202610090901086976",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "bcf8ee9f90c5c7b3bcba6e60e9fc5fc5f890d6761af0cb2c37bf14d388b2a49b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:321d2f15a72565a72ba9972c9115d1f9e4dcbee7b16e982c62dbfcb275083508",
+      "source_fact_keys": [
+        "source_fact:v1:00302ee8f658c5434644b7d717f5faa5f628c3299330402086f24946d8d7094c",
+        "source_fact:v1:0099afcf598e49eee1c48b0cfd3b1a901c6744e3ec5133deabd31ed9fa2a4b60",
+        "source_fact:v1:30472df4b47e0aad0f3f8156fdac20414a985334d0610b26d6b5f1c44a147d7a"
+      ],
+      "source_published_kst": "2026-10-09T09:01+09:00",
+      "source_title": "美 10년물 급등에 빛바랜 금 ETF…3개월간 10% 안팎 하락",
+      "telegram_core_fact": "한수진 삼성증권 연구원은 \"글로벌 금 ETF는 지난 7월 중순 이후 일시적인 순유출로 전환되며 지속되던 자금 유입에 제동이 걸리기도 했다\"며 \"이는 구조적인 수요 부진이라기보다는 미국 국채금리 상승세에 따라 금의 상대적 매력도가 낮아져 단기 수급 변화를 유발한 것\"이라고 진단했다.",
+      "title": "美 10년물 급등에 빛바랜 금 ETF…3개월간 10% 안팎 하락"
     },
     "title:01eaccd9c38b4bb9823e0596": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
@@ -302488,6 +303432,27 @@
       "telegram_core_fact": "이란은 미국의 강력한 제재 속에서도 헤즈볼라에 대한 재정 지원을 지속해온 것으로 알려졌다.",
       "title": "\"이란, 헤즈볼라에 2억달러 지원…피란민 5만가구에 지급\""
     },
+    "title:43d82ce8abea3664ad4f0e0c": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610081774b",
+      "source": "한국경제",
+      "source_body_digest": "0f53c5751182d7d256e6b5575a27cf68a9c5bbf5769d2219808b6a90c851e137",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:96c512670087fc15151f1b99337c32b09295022bda5578fb5b54e268d536a4ce",
+      "source_fact_keys": [
+        "source_fact:v1:0fe60bf1270bfb776593a9ddcbce71f824ba219ec47855244a5de73640e0f402",
+        "source_fact:v1:1550a1f939043e929ad31b67fca923a7d9d2ce9fbc32a698115792965f76d6e4",
+        "source_fact:v1:ddf0585f0439e6a63e456ddec5a6b40959903756fb0e9014c0b20d97c647197c"
+      ],
+      "source_published_kst": "2026-10-08T17:27+09:00",
+      "source_title": "페퍼앤솔트, 상반기 매출 131억원 기록…K-캐릭터 해외 진출 본격화",
+      "telegram_core_fact": "콘텐츠 IP 커머셜라이징 기업 페퍼앤솔트가 올해 상반기 매출 131억원을 기록한 가운데, 하반기에는 K-SNS 캐릭터의 해외 유통망 구축과 글로벌 IP 사업 확대에 나선다.",
+      "title": "페퍼앤솔트, 상반기 매출 131억원 기록…K-캐릭터 해외 진출 본격화"
+    },
     "title:43db024ebcbef4e916f09bb8": {
       "first_seen_kst": "2026-10-02T01:28:56+09:00",
       "lanes": {
@@ -313510,6 +314475,23 @@
       "source_published_kst": "2026-10-07T05:09+09:00",
       "title": "[속보]美국채금리 숨고르자 S&P·나스닥 '사상 최고'"
     },
+    "title:813a4cc72d762ed952fa8621": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.hankyung.com/article/202610092409i",
+      "source": "한국경제",
+      "source_body_digest": "fd0e2f74517b81e542c8108c7d0649990f5956cdfb0e5d3e0edf5f926589c8c9",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-09T08:54+09:00",
+      "source_title": "日, 30년물 국채금리 4.25% 사상 최고",
+      "telegram_core_fact": "일본의 30년 만기 국채금리가 사상 최고 수준으로 치솟으며 연 4%대에 고착화하고 있다.",
+      "title": "日, 30년물 국채금리 4.25% 사상 최고"
+    },
     "title:816d8f065f2dcc43423746c5": {
       "first_seen_kst": "2026-10-08T18:46:25+09:00",
       "lanes": {
@@ -315685,6 +316667,23 @@
       "source": "이데일리",
       "title": "[단독]'적색수배' KOK 자금총책 지갑 보니…국내외 거래소로 1050억대 현금화"
     },
+    "title:8c46c76ee9574313929c5497": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171916",
+      "source": "매일경제",
+      "source_body_digest": "c0620c3c1674885db0184223385d459d4af327b5d5619a6d6dfb31b544f60c0b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T19:05+09:00",
+      "source_title": "디스트리뷰션 솔루션스 그, 주당 35달러 인수 자금 8억 달러 채권 확정..7억서 증액",
+      "telegram_core_fact": "주당 35달러 현금 인수의 자금 조달이 증액된 채권 발행으로 구체화돼 거래 성사 가능성이 한층 높아졌어요.",
+      "title": "디스트리뷰션 솔루션스 그, 주당 35달러 인수 자금 8억 달러 채권 확정..7억서 증액"
+    },
     "title:8c68499b15c3aa138e48815b": {
       "first_seen_kst": "2026-10-07T11:43:24+09:00",
       "lanes": {
@@ -317367,6 +318366,25 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=02886406645608984",
       "source": "이데일리",
       "title": "\"中정유업체들, 석유제품 수출 중단…재고 확보 목적\""
+    },
+    "title:94cf702b78050caed1c01c84": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=02794566645611280&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "fc892888a8291088b918e264d5304f672ef85602e0db97cc0e8c4f7accf1490a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bcfa88dc2e11a34e8bcd70f7b332af22a1ee8702a9d5551e712d28e2637ccbda",
+      "source_fact_keys": [
+        "source_fact:v1:b2c7594d69bedc92d20277d2cb24fc6e3845ed4ca90a69d65a12ffc6a5209106"
+      ],
+      "source_published_kst": "2026-10-09T06:51+09:00",
+      "source_title": "최태원 “호남 반도체, 전력·용수 늦어도 공사 먼저…용인 3분의 2 규모로”(종합)",
+      "telegram_core_fact": "최태원 SK그룹 회장이 호남권 반도체 생산거점을 용인 반도체 클러스터의 3분의 2 규모로 계획하고 있다고 밝혔다. 빠르게 늘어나는 반도체 수요에 대응하기 위해 용인과 광주에서 공장을 병행 건설할 가능성도 열어뒀다.",
+      "title": "최태원 “호남 반도체, 전력·용수 늦어도 공사 먼저…용인 3분의 2 규모로”(종합)"
     },
     "title:94d50b13b809d6f3dccf6983": {
       "first_seen_kst": "2026-09-25T21:10:56+09:00",
@@ -321992,6 +323010,23 @@
       "source": "전자신문",
       "title": "HL그룹, 구글 웨이모 뚫었다…전자 브레이크 시스템 첫 공급"
     },
+    "title:ad9e56c63848997f3f111295": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.yna.co.kr/view/MYH20261009001300038",
+      "source": "연합뉴스",
+      "source_body_digest": "b06b7d76bc5982f50ad915ee5164a177cf7497f58e1eb22aa889931e3e2205ee",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-09T09:11+09:00",
+      "source_title": "미국 역수출 포문 여는 K-원전…\"낙수효과 기대\" | 연합뉴스",
+      "telegram_core_fact": "미국에 대한 원전 수출을 제한한 협정이 개정되면서, 국내 업계의 낙수효과도 예상됩니다.",
+      "title": "미국 역수출 포문 여는 K-원전…\"낙수효과 기대\" | 연합뉴스"
+    },
     "title:adb0b35b34c98e3e28386424": {
       "first_seen_kst": "2026-10-03T22:18:07+09:00",
       "lanes": {
@@ -325793,6 +326828,25 @@
       "link": "https://www.etnews.com/20260921000395",
       "source": "전자신문",
       "title": "반도체 강세에 코스피도 훈풍…7000선 복귀"
+    },
+    "title:c331a875a1582f23bd7af7f2": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=02794566645611280&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "fc892888a8291088b918e264d5304f672ef85602e0db97cc0e8c4f7accf1490a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bcfa88dc2e11a34e8bcd70f7b332af22a1ee8702a9d5551e712d28e2637ccbda",
+      "source_fact_keys": [
+        "source_fact:v1:b2c7594d69bedc92d20277d2cb24fc6e3845ed4ca90a69d65a12ffc6a5209106"
+      ],
+      "source_published_kst": "2026-10-09T06:51+09:00",
+      "source_title": "최태원 “호남 반도체, 전력·용수 늦어도 공사 먼저…용인 3분의 2 규모로”(종합)",
+      "telegram_core_fact": "최태원 SK그룹 회장이 호남권 반도체 생산거점을 용인 반도체 클러스터의 3분의 2 규모로 계획하고 있다고 밝혔다. 빠르게 늘어나는 반도체 수요에 대응하기 위해 용인과 광주에서 공장을 병행 건설할 가능성도 열어뒀다.",
+      "title": "최태원 “호남 반도체, 전력·용수 늦어도 공사 먼저…용인 3분의 2 규모로”(종합)"
     },
     "title:c34d3a5a1f593f81593b0e95": {
       "first_seen_kst": "2026-10-07T22:00:35+09:00",
@@ -329760,6 +330814,33 @@
       ],
       "source_published_kst": "2026-10-06T13:52+09:00",
       "title": "거래소 “코스닥 체질 개선 노력⋯법원 제동 건 ‘시총 미달 상폐’ 후속 조치 예정”"
+    },
+    "title:d738e88021ba17bf0e4b638b": {
+      "first_seen_kst": "2026-10-09T17:13:50+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:13:50+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:13:50+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/09/2026100817445057794",
+      "source": "머니투데이",
+      "source_body_digest": "c91fc5362c05119ad4a77e76644c1ce3dfd5068d1923f1abe9d8a0a4d84ba9c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a0445e78079ac1253c8b4a2b748ac01b461feeb495775ea357391769c1eab93",
+      "source_fact_keys": [
+        "source_fact:v1:034ee6ccd1f727fb493f364587c32040a2e2434cf449b0ab1803818bf42737e0",
+        "source_fact:v1:5efc20a0161bd8c3740ac2265d6531fc44ae6d296550641739e055ade02a3542",
+        "source_fact:v1:640bf9896228fec2c04e140e16740e201147d519daca8c3e52f44026b6197a0d",
+        "source_fact:v1:80d8dea79e274f545e42c1672b85bacce79cbf46665eebd403481d46ee98346e",
+        "source_fact:v1:88d17daa06cee01a7b3b54ab6f95bb8af176186e8f59cc52043a1254eb61e50e",
+        "source_fact:v1:a4dcb73fa84c5adbde8417048207fdad335538492c0b7c5771fbd981df3c827c",
+        "source_fact:v1:bfb22c25229f6c29f5fbfe0e1fb1d912ef4dc386ef40399cd41edc703d74cc58",
+        "source_fact:v1:ca42abe40a9d4fd1338e4e6701e5a1c32d81a91290904c6a06ad7bf9e7419ef8",
+        "source_fact:v1:e7d9dc451126815a4645b65e6860fa5e35218d7a37ac945c8df080e8a7580a91"
+      ],
+      "source_published_kst": "2026-10-09T08:30+09:00",
+      "source_title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다",
+      "telegram_core_fact": "당시 최 회장이 보유한 SK㈜ 지분가치는 2조원대여서 보유 지분의 67% 이상을 팔아야 했지만 이후 주가가 올라 11%대만 매각하면 되는 상황이 됐다.",
+      "title": "\"이혼 재산분할 9440억 주식 매각\"...최태원, 주가 오르면 돈 번다"
     },
     "title:d757ef5c13ff0c151e353814": {
       "first_seen_kst": "2026-10-05T16:27:40+09:00",
@@ -337041,5 +338122,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-09T16:53:11+09:00"
+  "updated_at_kst": "2026-10-09T17:13:50+09:00"
 }
