@@ -148,14 +148,18 @@ def _direction_label(snapshot: dict, previous: dict, reasons: list[str]) -> tupl
     evidence = watcher.squeeze_evidence(snapshot, previous)
     repo_ok, _ = _repo_not_worse(snapshot, previous)
     data_fresh, _ = _data_freshness(snapshot)
-    short_bias = any("CFTC 숏 축소" in r or "CFTC 주간 숏 축소" in r for r in reasons)
-    prices_up = _price_up_count(snapshot)
+    same_tenor_short_reduced = any(
+        "CFTC 동일만기 숏 축소" in r or "최근 CFTC 동일만기 숏 축소" in r
+        for r in reasons
+    )
 
-    if evidence and (short_bias or z <= -1.0) and repo_ok and data_fresh:
-        return "🟢 실제 숏 스퀴즈 강화", "채권가격 상승·장기금리 하락 방향이 포지션과 함께 확인되는 단계"
-    if (short_bias or prices_up >= 2) and repo_ok and data_fresh and z > -1.0:
-        return "🟡 숏 압력 완화·준비 신호", "채권에는 약한 우호지만 장기금리 하락 추세 전환은 아직 미확인"
-    return "⚪ 숏 스퀴즈 미확인", "현재는 단순 반등·포지션 조정과 실제 스퀴즈를 구분해야 하는 단계"
+    # Do not turn delayed Yahoo prices or unrelated tenor changes into a
+    # bullish bond/CTA claim when the current 10Y yield is above its 20D mean.
+    if evidence and same_tenor_short_reduced and z <= -1.0 and repo_ok and data_fresh:
+        return "🟢 실제 숏 스퀴즈 강화", "공식 CME 같은 거래일 가격↑·OI↓와 동일만기 CFTC 숏 축소·금리 하락 추세 동시 확인"
+    if z < 0 and same_tenor_short_reduced and repo_ok and data_fresh:
+        return "🟡 일부 숏 압력 완화 후보", "CFTC 일부 만기의 포지션 감소는 있지만 공식 CME 청산과 -1σ 추세 전환은 아직 미확인"
+    return "⚪ 숏 스퀴즈 미확인", "현재는 지연 선물 반등·일부 만기 포지션 조정만으로 금리 하락 전환을 인정하지 않음"
 
 
 def format_alert(snapshot, previous, fx, fx_date, reasons):
@@ -252,7 +256,7 @@ def format_alert(snapshot, previous, fx, fx_date, reasons):
     gate_note = (
         "\n<b>🔕 중복 제거 규칙</b>\n"
         "• 신규 기사 한 건, CFTC 주간 갱신 한 건, 10년물 구간 변화 한 건만으로는 텔레그램을 보내지 않습니다.\n"
-        "• <b>동일 범위 OI 감소 + 선물가격 상승 + (CFTC 숏 축소 또는 -1σ 이하) + repo 비악화</b>가 겹칠 때만 실제 스퀴즈로 격상합니다."
+        "• <b>공식 같은 거래일 가격 상승·OI 감소 + 같은 만기 CFTC 숏 축소 + -1σ 이하 + repo 비악화</b>가 겹칠 때만 실제 스퀴즈로 격상합니다."
     )
     if "🔕 중복 제거 규칙" not in body:
         body += gate_note
@@ -344,7 +348,8 @@ def deduped_main() -> int:
 
     composite_confirmed = bool(
         evidence
-        and (matched_short_bias or z_active)
+        and matched_short_bias
+        and z_active
         and repo_ok
         and data_fresh
     )
@@ -367,7 +372,7 @@ def deduped_main() -> int:
 
     reasons: list[str] = []
     if force_correction:
-        reasons.append("정정: OI 범위 혼용 제거 및 방향성 판정 업그레이드")
+        reasons.append("정정: NQ 주간 기준일·CME 정산일 분리 및 CTA 중립 판정 보강")
     if should_alert and matched_short_bias:
         if short_reduction_lines:
             reasons.append("CFTC 동일만기 숏 축소: " + ", ".join(short_reduction_lines))
