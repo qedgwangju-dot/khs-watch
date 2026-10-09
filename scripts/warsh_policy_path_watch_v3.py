@@ -2,12 +2,12 @@
 import html
 import json
 import re
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
 import warsh_policy_path_watch_v2 as v2
 
 base = v2.base
-SCHEMA_VERSION = 7
+SCHEMA_VERSION = 8
 
 
 def _validated_probability(prob_cell, change_bp):
@@ -74,7 +74,7 @@ def message_v3(snap, cls):
     ]
     if sep:
         lines += [
-            f"• <b>연준 점도표</b>: 2026년 말 {sep['yearend']:.3f}% · 2027년 말 {sep['nextyear']:.3f}%",
+            f"• <b>연준 점도표</b>: {cls.get('reference_year', 2026)}년 말 {sep['yearend']:.3f}% · {cls.get('reference_year', 2026)+1}년 말 {sep['nextyear']:.3f}%",
             f"• <b>시장-점도표 차이</b>: {cls['market_sep_gap_bp']:+.1f}bp → {html.escape(cls['sep_read'])}",
         ]
     if bal:
@@ -91,7 +91,7 @@ def message_v3(snap, cls):
         '• 점도표는 연준 참가자 전망의 중앙값이지 FOMC의 약속이 아닙니다.',
         '',
         '<b>다음 확인</b>',
-        '• 10월·12월 경로가 같이 더 올라가는지',
+        '• 향후 두 회의와 연말 정책금리 기대가 함께 올라가는지',
         '• 2년물이 추가긴축 기대를 유지하는지',
         '• 연준 점도표와 시장의 괴리가 확대되는지',
         '• 충분한 준비금 유지가 실제 총량축소형 QT로 바뀌는지',
@@ -115,8 +115,8 @@ def _source_health_message(kind, err=None):
     if kind == 'error':
         return '\n'.join([
             '<b>[Warsh 금리경로 원천 점검]</b>',
-            '연방기금금리 선물 원천이 연속 조회에서 최신성 검증을 통과하지 못했습니다.',
-            '• 직전 정상값은 보존하지만 <b>새로운 금리경로 판정은 중지</b>합니다.',
+            '연방기금금리 선물의 공식 CME 자료를 연속 조회했지만 최신성 검증을 통과하지 못했습니다.',
+            '• 직전 수치는 기록용으로만 보존하며, <b>새로운 금리경로·확률 판정은 중지</b>합니다.',
             '• 연준 공식 FOMC·점도표·2년물·대차대조표 감시는 계속 작동합니다.',
             f"• 원인: {html.escape(str(err or '확인 필요'))}",
             '',
@@ -143,9 +143,18 @@ def main():
         # 자료가 복구되기 전에는 금리경로 수치 자체를 새로 판정하지 않는다.
         streak = int(old.get('source_error_streak') or 0) + 1
         alerted = bool(old.get('source_health_alerted'))
-        if streak >= 2 and not alerted and not first:
+        now = datetime.now(timezone.utc)
+        last_notice = old.get('last_health_alert_at_utc')
+        try:
+            notice_at = datetime.fromisoformat(str(last_notice).replace('Z', '+00:00'))
+            reminder_due = (now - notice_at.astimezone(timezone.utc)) >= timedelta(hours=72)
+        except (ValueError, TypeError, AttributeError):
+            reminder_due = True
+        # 첫 장애 경고 + 72시간 이상 지속될 때만 재경고. 시간당 중복 발송 차단.
+        if streak >= 2 and not first and (not alerted or reminder_due):
             base.send(_source_health_message('error', source_error))
             alerted = True
+            last_notice = now.isoformat()
         state = dict(old)
         state.update({
             'schema_version': SCHEMA_VERSION,
@@ -153,6 +162,7 @@ def main():
             'source_error': source_error,
             'source_error_streak': streak,
             'source_health_alerted': alerted,
+            'last_health_alert_at_utc': last_notice,
         })
         base.save_state(state)
         print(json.dumps({
@@ -203,6 +213,7 @@ def main():
         'source_error': None,
         'source_error_streak': 0,
         'source_health_alerted': False,
+        'last_health_alert_at_utc': None,
     })
     print(json.dumps({
         'schema_version': SCHEMA_VERSION,
