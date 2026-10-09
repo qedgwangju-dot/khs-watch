@@ -44,6 +44,7 @@ on:
       - 'scripts/warsh_policy_path_watch_v2.py'
       - 'scripts/warsh_policy_path_watch_v3.py'
       - 'scripts/warsh_policy_path_watch_v4.py'
+      - 'scripts/warsh_policy_source_guard.py'
       - 'scripts/test_warsh_policy_safety.py'
       - 'scripts/warsh_balance_sheet_watch.py'
       - 'scripts/warsh_balance_sheet_watch_v2.py'
@@ -143,6 +144,7 @@ jobs:
           print(f'warsh_macro_route_valid=true bot=@{username} chat_id_present=true')
           PY
           python -m py_compile \
+            scripts/warsh_policy_source_guard.py \
             scripts/warsh_policy_path_watch_v3.py \
             scripts/warsh_policy_path_watch_v4.py \
             scripts/warsh_fomc_event_watch_v4.py \
