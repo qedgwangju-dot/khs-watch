@@ -152,6 +152,8 @@ def causal_context(detail: dict) -> dict:
     basis = str(snapshot.get("verdict_basis") or ("5거래일 공통창" if snapshot.get("changes_5d") else "1거래일 공통창"))
     return {
         "date": str(snapshot.get("common_date") or "확인 불가"),
+        "is_lagged": bool(snapshot.get("is_lagged")),
+        "lag_market_sessions": int(snapshot.get("lag_market_sessions") or 0),
         "start_date": str(changes.get("start_date") or snapshot.get("common_prev_date") or "확인 불가"),
         "basis": basis,
         "nom10": num(values.get("nom10")),
@@ -201,50 +203,47 @@ def equity_impact(causal: dict, cta: dict) -> str:
 
 
 def build_block(exe: dict, causal: dict, cta: dict) -> str:
-    max_text = fmt_usd_bn(exe.get("maximum"))
-    accepted_text = fmt_usd_bn(exe.get("accepted"))
-    cap_use = fmt_pct(exe.get("cap_use_pct"))
-    nom10 = causal.get("nom10")
-    nom10_bp = causal.get("nom10_bp")
-    y10 = "확인 불가" if nom10 is None else f"{nom10:.2f}%"
-    ychg = "" if nom10_bp is None else f" ({nom10_bp:+.1f}bp)"
-
-    futures = cta.get("futures") or {}
-    futures_text = " · ".join(
-        f"{symbol} {pct:+.2f}%" for symbol, pct in futures.items()
-    ) or "가격 확인 불가"
-
-    failures = " / ".join(failure_lines(exe, causal, cta))
-    equity = equity_impact(causal, cta)
-    return "\n".join(
-        [
-            "",
-            HEADING,
-            f"• ① 운영 상한: {max_text}({exe.get('maximum_krw')}) · {exe.get('bucket')} · {exe.get('operation_date')}",
-            f"• ② 실제 집행: {accepted_text}({exe.get('accepted_krw')}) · 상한 사용 {cap_use}",
-            f"• ③ 금리 반응({causal.get('basis','기준 확인 불가')}): 10년 명목금리 {y10}{ychg} · {causal.get('verdict')}",
-            f"• ④ CTA 반응: {cta.get('verdict')} · 상태 {cta.get('last_checked_kst')} · {futures_text}",
-            f"• ⑤ 주식시장: {equity}",
-            f"• 실패 조건: {failures}",
-            "• 해석: 바이백은 발표 규모만 보지 않고 실제 매입액 → 장기 명목·실질금리 → CTA 숏커버 순서로 판정합니다. AI·반도체·소프트웨어에는 직접 매출 호재가 아니라 할인율·자금조달비용을 통한 간접 영향으로 분리합니다.",
-        ]
-    )
-
+    # Keep this one-screen chain as a cross-check, not a second macro report.
+    cap = fmt_usd_bn(exe.get("maximum"))
+    accepted = fmt_usd_bn(exe.get("accepted"))
+    used = fmt_pct(exe.get("cap_use_pct"))
+    bp10 = causal.get("nom10_bp")
+    movement = "확인 불가" if bp10 is None else f"{bp10:+.1f}bp"
+    window = f"{causal.get('start_date')}→{causal.get('date')}"
+    if causal.get("is_lagged"):
+        movement += f" (원인 자료 {causal['lag_market_sessions']}거래일 시차, 최신판정 보류)"
+    if cta.get("stale"):
+        cta_text = "자료 지연 — CTA 실시간 신호 미확정"
+    elif cta.get("composite_confirmed"):
+        cta_text = "숏커버 복합 확인"
+    else:
+        cta_text = "숏커버 복합 확인 전(부분 반등·포지션 단독으로 확정 금지)"
+    return "\n".join([
+        "",
+        HEADING,
+        (f"• 최근 집행 {exe.get('operation_date')} {exe.get('bucket')}: "
+         f"상한 {cap}({exe.get('maximum_krw')}) → "
+         f"매입 액면 {accepted}({exe.get('accepted_krw')}) · 소진 {used}"),
+        f"• 금리 반응({causal.get('basis','기준 확인 불가')} {window}): 명목10년 {movement}; 시계열 기준일 필수",
+        f"• CTA: {cta_text} (확인 {cta.get('last_checked_kst','미확인')})",
+        f"• 위험 확인: {' / '.join(failure_lines(exe, causal, cta))}",
+    ])
 
 def compact_block(exe: dict, causal: dict, cta: dict) -> str:
-    nom_bp = causal.get("nom10_bp")
-    ychg = "확인 불가" if nom_bp is None else f"{nom_bp:+.1f}bp"
-    return "\n".join(
-        [
-            "",
-            HEADING,
-            f"• 상한 {fmt_usd_bn(exe.get('maximum'))} → 실제 {fmt_usd_bn(exe.get('accepted'))} · 상한 사용 {fmt_pct(exe.get('cap_use_pct'))}",
-            f"• 10년물 {ychg} ({causal.get('basis','기준 확인 불가')}) · CTA: {cta.get('verdict')}",
-            f"• 주식시장: {equity_impact(causal, cta)}",
-            f"• 실패 조건: {' / '.join(failure_lines(exe, causal, cta))}",
-        ]
-    )
-
+    # The same verified facts, minus secondary CTA wording if near Telegram limit.
+    movement = causal.get("nom10_bp")
+    move = "미확인" if movement is None else f"{movement:+.1f}bp"
+    return "\n".join([
+        "",
+        HEADING,
+        (f"• {exe.get('operation_date')} 매입 {fmt_usd_bn(exe.get('accepted'))}"
+         f"({exe.get('accepted_krw')}) / 상한 {fmt_usd_bn(exe.get('maximum'))}"
+         f" · 소진 {fmt_pct(exe.get('cap_use_pct'))}"),
+        f"• 10년 금리 {causal.get('start_date')}→{causal.get('date')}: {move}"
+        + (" (자료 시차·최신판정 보류)" if causal.get("is_lagged") else ""),
+        "• CTA: " + ("자료 시차·확정 보류" if cta.get("stale") else
+                    "복합 확인" if cta.get("composite_confirmed") else "복합 확인 전"),
+    ])
 
 def main() -> int:
     if not ALERT.exists():
@@ -262,7 +261,7 @@ def main() -> int:
     cta = cta_context()
 
     block = build_block(exe, causal, cta)
-    if len(text) + len(block) > 3950:
+    if len(text) + len(block) > 3650:
         block = compact_block(exe, causal, cta)
     if len(text) + len(block) > 4000:
         raise RuntimeError(
