@@ -1,5 +1,5 @@
 {
-  "last_checked_kst": "2026-10-10T07:21:06+09:00",
+  "last_checked_kst": "2026-10-10T07:24:27+09:00",
   "schedule_sha256": "3461c9a9822dec08b3059d2dd367baadd0d0967193913ce8fe95702f000366d7",
   "long_end_max_bn": {
     "10Y to 20Y": 6.0,
@@ -7,7 +7,7 @@
   },
   "seen_source_ids": [],
   "upgrade_note": "one-time resend armed for upgraded Bessent policy-boundary interpretation",
-  "bessent_policy_boundary_revision": 10,
+  "bessent_policy_boundary_revision": 11,
   "bessent_causal_verdict_key": "mixed",
   "bessent_causal_verdict": "⚪ 혼조 — 현재 다중거래일 흐름만으로 에너지·인플레이션 또는 재정·기간프리미엄 단일 원인을 확정하기 어려움",
   "bessent_causal_snapshot": {
