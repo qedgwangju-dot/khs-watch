@@ -1465,6 +1465,28 @@
       "telegram_core_fact": "KT클라우드는 인천 청라 지역 AI DC 사업에 DBO(설계·구축·운영) 파트너로 함께 한다고 7일 밝혔다. KT클라우드가 청라 AI 데이터센터(DC) 구축 사업에 참여하며 수도권 공급 기반을 확대한다.",
       "title": "KT클라우드, 인천 청라 50㎿ AIDC 구축 사업 참여"
     },
+    "core:1695aa6d453b4933564f42d0": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261009_0003820008",
+      "source": "뉴시스",
+      "source_body_digest": "0e6b580bb3dca714e798f21fbbaf8c65acb8d9eac1a7ebb9d8f9ed55bd6e8c70",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:730a1447feedac9e6dbfe4bae932c7fa2fa5b31f31c8d4f66b2c39ee974c4643",
+      "source_fact_keys": [
+        "source_fact:v1:0999938c6456f5861af59caecc3fa74800980c51f791dc130d6025959c1d87cb",
+        "source_fact:v1:2bc7244c9c858a4a6fdde2d63b801323eec5744b87be1b5ad7e2ea2f1e143208",
+        "source_fact:v1:980e3140465e4a4c230e0e07e92bf1b4811044fd742f513213c98311ded1f6d7",
+        "source_fact:v1:d265350531acd8e7ba735fedb7d75619860515c1fac70fa8d7f2d586f5d9d948"
+      ],
+      "source_published_kst": "2026-10-09T04:29+09:00",
+      "source_title": "WTO, 올해 상품무역 증가율 3.9%로 상향…\"AI 호황, 이란전 충격 상쇄\"",
+      "telegram_core_fact": "WTO는 중동 분쟁이 에너지 가격 상승과 운송 경로 차질을 통해 무역에 계속해서 부담을 줄 것으로 예상하면서도 세계 국내총생산(GDP)이 올해 2.6%, 다음해 2.9% 각각 성장할 것으로 전망했다.",
+      "title": "WTO, 올해 상품무역 증가율 3.9%로 상향…\"AI 호황, 이란전 충격 상쇄\""
+    },
     "core:1827a8d9b2119806ccf98e0f": {
       "first_seen_kst": "2026-10-08T18:46:25+09:00",
       "lanes": {
@@ -2207,6 +2229,33 @@
       "source_title": "3% 내린 하이닉스 사고, 18% 뛴 주성 팔았다…초고수의 ‘역발상’",
       "telegram_core_fact": "반면 하루 만에 18% 넘게 뛴 주성엔지니어링을 비롯해 최근 강세가 뚜렷했던 반도체 장비·기판주는 대거 순매도했다. 투자 수익률 상위 1%의 초고수들이 지난 6일 국내 증시에서 주가가 내린 SK하이닉스와 삼성전자를 가장 많이 순매수한 것으로 나타났다.",
       "title": "3% 내린 하이닉스 사고, 18% 뛴 주성 팔았다…초고수의 ‘역발상’"
+    },
+    "core:23913129b48b49a3c8857cf1": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172237",
+      "source": "매일경제",
+      "source_body_digest": "02a44462ad519f9ab7b0ce0b24bd8e5a8af4d91741d71848d73ff8bbf2a1750c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8847f840fe11345c13d41bc527af19691542cfbdc08bb3e2cb38e2c5de40e380",
+      "source_fact_keys": [
+        "source_fact:v1:01ea15f3474a806680e4add3eccfad78566fca1a529d4faea4fd0411bbb9c1eb",
+        "source_fact:v1:1410b82a370761650e79de88305070da8831b60d68502042c3734bec4a334696",
+        "source_fact:v1:4443da027b642c84f7bf0fa18dec80ee3301d8595934d2d83e3b51c1cf3f4c7d",
+        "source_fact:v1:4c192000b3f5fd7ef671d7a53acaa8eece83ff57f5ece6a94d4fd1f1a045dde0",
+        "source_fact:v1:6699b5ea7007f1536dcd741a1d218d7895b554119d6e01e54a8e096f37ce1bb2",
+        "source_fact:v1:9d401e89ffbef911aeade983094f9e373906ba14cd1b4acf9b741ff960fc5ef7",
+        "source_fact:v1:dd1a7f49d782475353d684921e5c33b039c1a80e97b035e67b7aa330f7c56ac4",
+        "source_fact:v1:de729d764db23232dfc9f58783ab2f8c5c01c9c8fb455f7b76d425aaf73e44c3",
+        "source_fact:v1:f84b1a126a8f17d9c21d30800c66f9ca00bbe71b105521635d9ed2c21c3e17d5"
+      ],
+      "source_published_kst": "2026-10-09T19:06+09:00",
+      "source_title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러",
+      "telegram_core_fact": "기그캐피털8(GIW)이 위즈키(WISeKey)와 씰SQ(SEALSQ)가 설립한 양자기술 플랫폼 기업 퀀티시모(Quantisimo)와 확정적 합병계약을 체결했으며, 합병 후 퀀티시모의 지분가치는 주당 10달러 기준 약 6억6610만 달러로 평가됐다고 9일(현지시간) 발표했다.",
+      "title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러"
     },
     "core:2397c43c933442b3d296f54b": {
       "first_seen_kst": "2026-10-08T09:58:56+09:00",
@@ -6393,6 +6442,30 @@
       "telegram_core_fact": "대만은 마이크론의 주요 D램 및 고대역폭메모리(HBM) 생산거점인 만큼 실제 파업이 발생할 경우 생산 운영에 영향을 미칠 가능성이 있어 향후 협상 결과에 업계의 관심이 쏠린다.",
       "title": "삼전닉스 성과급이 불붙였나…마이크론 대만노조 파업 찬성 99%"
     },
+    "core:6b26b8bd5b19b60e829fba08": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172487",
+      "source": "매일경제",
+      "source_body_digest": "55abc8d5939c1654e2137bce183eb3fa6d78a2a25496d6ef92d66e24564a1914",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:91ed4201493f91b076860bcdfcfee369633e851be2e0dea1b60c5af74144e61c",
+      "source_fact_keys": [
+        "source_fact:v1:2286b9f0bbc03ea14a467217c805c65ec9cb62fbdb2bdfbbaec751cbaf1a7e72",
+        "source_fact:v1:2c0f47f655a1c8d5380e787d7d4a698f96f745f80a574f72ce4776d2f582cc01",
+        "source_fact:v1:86a169a4dd24c85299356121153b291b9b729e0160a61914b0c12d9fc5e07949",
+        "source_fact:v1:bdcc829fedcb27c45ba919516e4e496352f736568d3f011c618037211e21b4fa",
+        "source_fact:v1:d0aabc88675060c5372dbc38eec142625acc8533db83fcfa2b9eb7bd2f21b5af",
+        "source_fact:v1:e50d7d9eff04ce88adc45722d619b735184d02e6d2a44c92433e41270cf1b1e7"
+      ],
+      "source_published_kst": "2026-10-09T19:06+09:00",
+      "source_title": "칼레도니아 마이닝, 3분기 금 생산 11% 감소·연간 가이던스 하향",
+      "telegram_core_fact": "칼레도니아 마이닝(CMCL)이 짐바브웨 블랭킷 광산의 3분기(9월 30일 종료) 금 생산량이 1만7030온스로 전년 동기(1만9106온스) 대비 10.9% 감소했다고 밝히고, 2026년 연간 금 생산 가이던스를 기존 7만2000~7만6500온스에서 6만9000~7만2500온스로 하향 조정한다고 10월 9일 발표했다.",
+      "title": "칼레도니아 마이닝, 3분기 금 생산 11% 감소·연간 가이던스 하향"
+    },
     "core:6b74f4ad5da1b3888c4e0815": {
       "first_seen_kst": "2026-10-07T23:23:06+09:00",
       "lanes": {
@@ -6608,6 +6681,31 @@
       "source_title": "李 1000조 지원·최태원 220조 투자…녹색전환 ‘감사 족쇄’ 푼다",
       "telegram_core_fact": "정부가 약 1000조원의 재정·기후금융을 공급하고 산업계가 220조원 투자를 추진하는 한국형 녹색대전환(K-GX) 전략을 본격화했다. 이재명 대통령은 투자 규모를 키우는 데서 한발 더 나아가 공무원의 감사·처벌 부담과 에너지 정책의 불확실성도 해소해야 한다고 주문했다.",
       "title": "李 1000조 지원·최태원 220조 투자…녹색전환 ‘감사 족쇄’ 푼다"
+    },
+    "core:6eb9cf5b6132f5740ff0d850": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610092953b",
+      "source": "한국경제",
+      "source_body_digest": "c3a98736874cc3811caf222a22722aa279d40b46e901c25247a63577aa8ef036",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1f5ea026cace7c18ba41a08ebe3d4237bb2d294a0a862a49e719e81fb6508f5d",
+      "source_fact_keys": [
+        "source_fact:v1:0c940c05bb4e6b1aa95062741f59c9e91347d17a48af889d434601290b79e855",
+        "source_fact:v1:22c1edce3ae1cac38d42eb021c8ed8dba8f7b644b97f892a3d1bd9ec51d74c4a",
+        "source_fact:v1:3cfb7a045f8fa83040dd540972d77d1ee52b3a6e63c13f171f05a7f3ca8d9f76",
+        "source_fact:v1:50e772aa727592b7b302aa6f8e46e06de3e1ffb0864cf79768b7be9608ff65e3",
+        "source_fact:v1:5fa750694393cdd8ced3406fcefb316b2f0f31248d35085e6cd78953cbba45d4",
+        "source_fact:v1:607c38e6037f73eb4ca74486ff0fca2730c0808a1780d1cd940f079b44dd82da",
+        "source_fact:v1:cf4a1ff393f068b9cce84044c41e9224111ef66d897674213edf9e93b1087ac5"
+      ],
+      "source_published_kst": "2026-10-09T17:54+09:00",
+      "source_title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수",
+      "telegram_core_fact": "최태원 SK그룹 회장이 전남광주통합특별시 반도체 생산기지 구축에 속도를 내겠다는 의지를 밝혔다. SK하이닉스는 지난 6월 호남권에 400조원 신규 클러스터를 조성하겠다는 구상을 밝힌 뒤 경영진의 광주 방문과 지자체 협의를 이어왔다.",
+      "title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수"
     },
     "core:6f45417ab8e91ff6f061649c": {
       "first_seen_kst": "2026-10-08T14:21:54+09:00",
@@ -10783,6 +10881,25 @@
       "telegram_core_fact": "이번 공격은 사우디가 지원하는 예멘 정부군이 후티가 장악한 홍해 연안의 전략 요충지를 탈환하기 위한 군사작전에 나선 가운데 발생했다.",
       "title": "사우디·후티 '전면전' 되돌림 양상…리야드 공항 등 3명 사망"
     },
+    "core:b641bdbca87d3430366f35b6": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634046",
+      "source": "이투데이",
+      "source_body_digest": "e6fef16f74dafc35ed71449ddca62fdaae4ed606395c4216a58f4fe64012fd97",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bbe098790dbcdf770d45f3eabe6c336f79036526f2ac2ca4445e53ce36d04185",
+      "source_fact_keys": [
+        "source_fact:v1:6192cec26a3da40e368caee51e0bf95ff5f7b2fb6be51a55feefb665ec43df8d"
+      ],
+      "source_published_kst": "2026-10-09T09:00+09:00",
+      "source_title": "LH, 수도권 민간주택 1만8000가구 매입확약…조기 착공 유도",
+      "telegram_core_fact": "LH 관계자는 \"매입확약을 활용하면 사업 여건을 개선할 수 있을 뿐 아니라 내년 상반기 착공 시 추가 인센티브도 받을 수 있다\"며 \"민간 주택사업의 조기 착공을 촉진하고 주택공급을 신속히 확대할 수 있도록 노력하겠다\"고 말했다.",
+      "title": "LH, 수도권 민간주택 1만8000가구 매입확약…조기 착공 유도"
+    },
     "core:b641e22e85f08f8a941a735c": {
       "first_seen_kst": "2026-10-08T08:12:34+09:00",
       "lanes": {
@@ -13286,6 +13403,35 @@
       "source_title": "'순자산 30조' 커버드콜 ETF 변동장에 꾸준히 인기",
       "telegram_core_fact": "지난 6월 상장한 'ACE 고배당주Plus커버드콜액티브 ETF'도 순자산 1445억원 규모로 성장했다.",
       "title": "'순자산 30조' 커버드콜 ETF 변동장에 꾸준히 인기"
+    },
+    "core:db6a63ec0ff0bcdbbdf28354": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261009007251072",
+      "source": "연합뉴스",
+      "source_body_digest": "d2cb81b91bc8568449c7dd70b34055acee3aedd339bf522d73b80f521d399a2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8387167a40e4786d79a1ede2b130f79e177f83e9d603f61eb6c6f656c59c98fc",
+      "source_fact_keys": [
+        "source_fact:v1:055ca79f16e2cd3e02cab71c743315ecc0d90e41e7d122b804d7cf8700c825c7",
+        "source_fact:v1:05a416d5d396544ff8e057a7c1a644449333379a3715320b436ec20eaea3c8ea",
+        "source_fact:v1:1337accf55b342d7e1721868a3fa6081011fdeabccee717ed945b42d4cfdf7d1",
+        "source_fact:v1:1c0daf9892521f20e82071c2a50c59795ddbbb8e81a72a07fba36ea5d26b1e1c",
+        "source_fact:v1:61192d5272b2be1f95b01aeee4f50c22cbd23cdb00caa10823aeb9dbb6837c9f",
+        "source_fact:v1:6414200adc84dfa9c838ce9d3201e76ece73ed18089fe27ba3f4b32add3203a4",
+        "source_fact:v1:950202a72fc6bee05a35d5b6b632b4862e5b5455514d2d1c1f2b264a76cd8538",
+        "source_fact:v1:9b28ccd28b0c540abdb6604020fe5695cc9c9889b1c95db67cc19fa141e20cdb",
+        "source_fact:v1:a72abfbb23851c42b4a2acc0b636abe80b665492f7e924ae55fa0dfc5b7c800b",
+        "source_fact:v1:bc7e55ab74a8efc79d1273d0cd0fc864f8a7d92a2ae6ace904840d8fe906619e",
+        "source_fact:v1:c856d69f2fcb14e9bf79b5ab3a48ac8a94f829f641ff2ca8370dc752dbc4c42e"
+      ],
+      "source_published_kst": "2026-10-09T06:23+09:00",
+      "source_title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "S&P 500지수는 전장보다 36.41포인트(0.47%) 내린 7,765.36, 나스닥 종합지수는 345.35포인트(1.25%) 하락한 27,193.34로 마쳤다.",
+      "title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스"
     },
     "core:dbcc8303a276f93e99c0831b": {
       "first_seen_kst": "2026-10-07T17:10:43+09:00",
@@ -16016,26 +16162,31 @@
     "event:1668ccc742c9cc5a7c5e9f7d": {
       "first_seen_kst": "2026-10-09T16:29:31+09:00",
       "lanes": {
-        "live": "2026-10-09T16:29:31+09:00"
+        "live": "2026-10-09T19:24:17+09:00"
       },
-      "last_seen_kst": "2026-10-09T16:29:31+09:00",
-      "link": "https://www.mt.co.kr/world/2026/10/09/2026100907322715962",
-      "source": "머니투데이",
-      "source_body_digest": "d8526ffe80c92677ccf40ffa9b2db5edfadd3d33ada81831f0d60712a4d49322",
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261009007251072",
+      "source": "연합뉴스",
+      "source_body_digest": "d2cb81b91bc8568449c7dd70b34055acee3aedd339bf522d73b80f521d399a2e",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:15964dc1fabf91710bb819723f7c2006fc31f151a9938970e3aad6a06c6bff2c",
+      "source_fact_identity": "source_facts:v1:8387167a40e4786d79a1ede2b130f79e177f83e9d603f61eb6c6f656c59c98fc",
       "source_fact_keys": [
-        "source_fact:v1:0e1a6165a7a74b23fc327bc0676f8d5b89c69e0df0f3381977ddbc709112d10d",
-        "source_fact:v1:1d7b6d96e72a7bd158c9db3ed8380449e939f8ada878fcc6ccddf3da304eace2",
-        "source_fact:v1:33145c095bd47d7bf3ef898572d04768bd15cc1fa7389be7680a350f337a7398",
-        "source_fact:v1:4c97e400ff42fb7b08310413979cfdb691a65cf8ecdb6d24d4a2b97a3ba0239c",
-        "source_fact:v1:890e450b2ff961ce96d817d12faba719d82b4a945bef25a4ff16fe6c68c9ecf9",
-        "source_fact:v1:c38e645db68b2483a21a5ba392e62133cd03989f13ba9a42f9c78c0cb7a31a83"
+        "source_fact:v1:055ca79f16e2cd3e02cab71c743315ecc0d90e41e7d122b804d7cf8700c825c7",
+        "source_fact:v1:05a416d5d396544ff8e057a7c1a644449333379a3715320b436ec20eaea3c8ea",
+        "source_fact:v1:1337accf55b342d7e1721868a3fa6081011fdeabccee717ed945b42d4cfdf7d1",
+        "source_fact:v1:1c0daf9892521f20e82071c2a50c59795ddbbb8e81a72a07fba36ea5d26b1e1c",
+        "source_fact:v1:61192d5272b2be1f95b01aeee4f50c22cbd23cdb00caa10823aeb9dbb6837c9f",
+        "source_fact:v1:6414200adc84dfa9c838ce9d3201e76ece73ed18089fe27ba3f4b32add3203a4",
+        "source_fact:v1:950202a72fc6bee05a35d5b6b632b4862e5b5455514d2d1c1f2b264a76cd8538",
+        "source_fact:v1:9b28ccd28b0c540abdb6604020fe5695cc9c9889b1c95db67cc19fa141e20cdb",
+        "source_fact:v1:a72abfbb23851c42b4a2acc0b636abe80b665492f7e924ae55fa0dfc5b7c800b",
+        "source_fact:v1:bc7e55ab74a8efc79d1273d0cd0fc864f8a7d92a2ae6ace904840d8fe906619e",
+        "source_fact:v1:c856d69f2fcb14e9bf79b5ab3a48ac8a94f829f641ff2ca8370dc752dbc4c42e"
       ],
-      "source_published_kst": "2026-10-09T07:43+09:00",
-      "source_title": "중동발 공급 불안에 美 생산 중단까지…국제유가 또 급등",
-      "telegram_core_fact": "BOEM은 \"이사야스 때문에 멕시코만의 유인 석유 생산 플랫폼 371곳의 32.61%에 해당하는 121곳에서 인력들이 대피해 시설 가동이 중단됐다\"고 설명했다.",
-      "title": "중동발 공급 불안에 美 생산 중단까지…국제유가 또 급등"
+      "source_published_kst": "2026-10-09T06:23+09:00",
+      "source_title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "S&P 500지수는 전장보다 36.41포인트(0.47%) 내린 7,765.36, 나스닥 종합지수는 345.35포인트(1.25%) 하락한 27,193.34로 마쳤다.",
+      "title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스"
     },
     "event:16cedc29d0ecae3136e09f54": {
       "first_seen_kst": "2026-10-08T05:01:11+09:00",
@@ -18382,6 +18533,32 @@
       ],
       "source_published_kst": "2026-10-06T22:44+09:00",
       "title": "아모데이 앤트로픽 CEO 지난해 보수 246억원…대부분 주식·옵션"
+    },
+    "event:58bae8ca550cb1337a63c359": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172131",
+      "source": "매일경제",
+      "source_body_digest": "3920b16aeab068d6000e1553bd004fc511d62aca36063509412ae0fc00aed33b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1bd4d4a2a5d125cd1b0910dcc6aa72f1f16bd1dc7dce3b35132076ddc2fd7156",
+      "source_fact_keys": [
+        "source_fact:v1:1985557f458ef83b8995e3976027f2df1aa81b48757dede896ed8b4c00d57c09",
+        "source_fact:v1:1dc2a8a7ca50f93e5dc6adf0d9f8a6e977b7d3699cf0ef766e19725e871f28f6",
+        "source_fact:v1:4bae60f38a4c9f409674dada70b2f792433a7cb7bfb9d127f0929c35376da2d2",
+        "source_fact:v1:9900b20d5bb3f2fdcd499318e58707ad695c683d61145655f8a7d29d428fd83f",
+        "source_fact:v1:bd3268adcd9cceb6ca08361b6e58c72462daee402116ed130f9853712e4f689c",
+        "source_fact:v1:e23c8aa388248dbea8f01fe1638ed224dbde2a126cb052de4cf2872912e38070",
+        "source_fact:v1:e90dbf4d04ef6e383590c33b4c09f6e4f655bf119c739bbfba9b3685e533e9f0",
+        "source_fact:v1:f30b40628b2c0f6fd6f4157540b02ff047c28c4a80cd900e2c0b75a4965c27d0"
+      ],
+      "source_published_kst": "2026-10-09T06:12+09:00",
+      "source_title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주",
+      "telegram_core_fact": "회사 매출은 2억2000만 달러 전망입니다.",
+      "title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주"
     },
     "event:5945d59c3e6c028f9c16b943": {
       "first_seen_kst": "2026-09-29T10:32:56+09:00",
@@ -25275,6 +25452,32 @@
       "telegram_core_fact": "반면 국민의힘이 주장하는 54조원은 씨티글로벌마켓증권이 레버리지 ETF 시장의 규모 변화와 신규 자금 유입 등을 이용해 추정한 금액이다.",
       "title": "[팩트체크] 2.3조 vs 54조…레버리지 손실 추정액, 왜 23배 차이?"
     },
+    "fact:09886d5ec0b61a2f820f57a3": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172131",
+      "source": "매일경제",
+      "source_body_digest": "3920b16aeab068d6000e1553bd004fc511d62aca36063509412ae0fc00aed33b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1bd4d4a2a5d125cd1b0910dcc6aa72f1f16bd1dc7dce3b35132076ddc2fd7156",
+      "source_fact_keys": [
+        "source_fact:v1:1985557f458ef83b8995e3976027f2df1aa81b48757dede896ed8b4c00d57c09",
+        "source_fact:v1:1dc2a8a7ca50f93e5dc6adf0d9f8a6e977b7d3699cf0ef766e19725e871f28f6",
+        "source_fact:v1:4bae60f38a4c9f409674dada70b2f792433a7cb7bfb9d127f0929c35376da2d2",
+        "source_fact:v1:9900b20d5bb3f2fdcd499318e58707ad695c683d61145655f8a7d29d428fd83f",
+        "source_fact:v1:bd3268adcd9cceb6ca08361b6e58c72462daee402116ed130f9853712e4f689c",
+        "source_fact:v1:e23c8aa388248dbea8f01fe1638ed224dbde2a126cb052de4cf2872912e38070",
+        "source_fact:v1:e90dbf4d04ef6e383590c33b4c09f6e4f655bf119c739bbfba9b3685e533e9f0",
+        "source_fact:v1:f30b40628b2c0f6fd6f4157540b02ff047c28c4a80cd900e2c0b75a4965c27d0"
+      ],
+      "source_published_kst": "2026-10-09T06:12+09:00",
+      "source_title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주",
+      "telegram_core_fact": "회사 매출은 2억2000만 달러 전망입니다.",
+      "title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주"
+    },
     "fact:099f8e45086de8cd1c5f84d1": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -26474,6 +26677,25 @@
       ],
       "source_published_kst": "2026-10-07T12:59+09:00",
       "title": "[2026 국감]홍지선, 주택공급 '속도전'…“연말 집값 상승폭 줄어들 것”"
+    },
+    "fact:122fd21db45c70d86b78059a": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634046",
+      "source": "이투데이",
+      "source_body_digest": "e6fef16f74dafc35ed71449ddca62fdaae4ed606395c4216a58f4fe64012fd97",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bbe098790dbcdf770d45f3eabe6c336f79036526f2ac2ca4445e53ce36d04185",
+      "source_fact_keys": [
+        "source_fact:v1:6192cec26a3da40e368caee51e0bf95ff5f7b2fb6be51a55feefb665ec43df8d"
+      ],
+      "source_published_kst": "2026-10-09T09:00+09:00",
+      "source_title": "LH, 수도권 민간주택 1만8000가구 매입확약…조기 착공 유도",
+      "telegram_core_fact": "LH 관계자는 \"매입확약을 활용하면 사업 여건을 개선할 수 있을 뿐 아니라 내년 상반기 착공 시 추가 인센티브도 받을 수 있다\"며 \"민간 주택사업의 조기 착공을 촉진하고 주택공급을 신속히 확대할 수 있도록 노력하겠다\"고 말했다.",
+      "title": "LH, 수도권 민간주택 1만8000가구 매입확약…조기 착공 유도"
     },
     "fact:124879f1069d95839cb1b958": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
@@ -33037,6 +33259,33 @@
       "source_published_kst": "2026-10-07T14:22+09:00",
       "title": "AI 전력난에 엔진도 뜬다…HD건설기계, 북미서 3900억원 수주"
     },
+    "fact:46f9fe89b64cf4d7cec5b8bf": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172237",
+      "source": "매일경제",
+      "source_body_digest": "02a44462ad519f9ab7b0ce0b24bd8e5a8af4d91741d71848d73ff8bbf2a1750c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8847f840fe11345c13d41bc527af19691542cfbdc08bb3e2cb38e2c5de40e380",
+      "source_fact_keys": [
+        "source_fact:v1:01ea15f3474a806680e4add3eccfad78566fca1a529d4faea4fd0411bbb9c1eb",
+        "source_fact:v1:1410b82a370761650e79de88305070da8831b60d68502042c3734bec4a334696",
+        "source_fact:v1:4443da027b642c84f7bf0fa18dec80ee3301d8595934d2d83e3b51c1cf3f4c7d",
+        "source_fact:v1:4c192000b3f5fd7ef671d7a53acaa8eece83ff57f5ece6a94d4fd1f1a045dde0",
+        "source_fact:v1:6699b5ea7007f1536dcd741a1d218d7895b554119d6e01e54a8e096f37ce1bb2",
+        "source_fact:v1:9d401e89ffbef911aeade983094f9e373906ba14cd1b4acf9b741ff960fc5ef7",
+        "source_fact:v1:dd1a7f49d782475353d684921e5c33b039c1a80e97b035e67b7aa330f7c56ac4",
+        "source_fact:v1:de729d764db23232dfc9f58783ab2f8c5c01c9c8fb455f7b76d425aaf73e44c3",
+        "source_fact:v1:f84b1a126a8f17d9c21d30800c66f9ca00bbe71b105521635d9ed2c21c3e17d5"
+      ],
+      "source_published_kst": "2026-10-09T19:06+09:00",
+      "source_title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러",
+      "telegram_core_fact": "기그캐피털8(GIW)이 위즈키(WISeKey)와 씰SQ(SEALSQ)가 설립한 양자기술 플랫폼 기업 퀀티시모(Quantisimo)와 확정적 합병계약을 체결했으며, 합병 후 퀀티시모의 지분가치는 주당 10달러 기준 약 6억6610만 달러로 평가됐다고 9일(현지시간) 발표했다.",
+      "title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러"
+    },
     "fact:46fd83a197c2c46a4281454e": {
       "first_seen_kst": "2026-10-07T18:12:46+09:00",
       "lanes": {
@@ -37397,6 +37646,35 @@
       ],
       "source_published_kst": "2026-10-06T08:17+09:00",
       "title": "HK이노엔 도입 GLP-1 신약, 비만 청소년 임상 1b상 결과 발표"
+    },
+    "fact:6cfd76b05b8f4b068c337917": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261009007251072",
+      "source": "연합뉴스",
+      "source_body_digest": "d2cb81b91bc8568449c7dd70b34055acee3aedd339bf522d73b80f521d399a2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8387167a40e4786d79a1ede2b130f79e177f83e9d603f61eb6c6f656c59c98fc",
+      "source_fact_keys": [
+        "source_fact:v1:055ca79f16e2cd3e02cab71c743315ecc0d90e41e7d122b804d7cf8700c825c7",
+        "source_fact:v1:05a416d5d396544ff8e057a7c1a644449333379a3715320b436ec20eaea3c8ea",
+        "source_fact:v1:1337accf55b342d7e1721868a3fa6081011fdeabccee717ed945b42d4cfdf7d1",
+        "source_fact:v1:1c0daf9892521f20e82071c2a50c59795ddbbb8e81a72a07fba36ea5d26b1e1c",
+        "source_fact:v1:61192d5272b2be1f95b01aeee4f50c22cbd23cdb00caa10823aeb9dbb6837c9f",
+        "source_fact:v1:6414200adc84dfa9c838ce9d3201e76ece73ed18089fe27ba3f4b32add3203a4",
+        "source_fact:v1:950202a72fc6bee05a35d5b6b632b4862e5b5455514d2d1c1f2b264a76cd8538",
+        "source_fact:v1:9b28ccd28b0c540abdb6604020fe5695cc9c9889b1c95db67cc19fa141e20cdb",
+        "source_fact:v1:a72abfbb23851c42b4a2acc0b636abe80b665492f7e924ae55fa0dfc5b7c800b",
+        "source_fact:v1:bc7e55ab74a8efc79d1273d0cd0fc864f8a7d92a2ae6ace904840d8fe906619e",
+        "source_fact:v1:c856d69f2fcb14e9bf79b5ab3a48ac8a94f829f641ff2ca8370dc752dbc4c42e"
+      ],
+      "source_published_kst": "2026-10-09T06:23+09:00",
+      "source_title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "S&P 500지수는 전장보다 36.41포인트(0.47%) 내린 7,765.36, 나스닥 종합지수는 345.35포인트(1.25%) 하락한 27,193.34로 마쳤다.",
+      "title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스"
     },
     "fact:6d2ce15c0cee646a6ccfd5ca": {
       "first_seen_kst": "2026-10-07T04:04:43+09:00",
@@ -42560,6 +42838,28 @@
       ],
       "source_published_kst": "2026-10-06T08:15+09:00",
       "title": "[오늘의 투자전략] 코스피, 금리ㆍ삼성전자 실적 주목⋯“반도체 이익 상향 재개 여부 관건”"
+    },
+    "fact:968f212d001dbac5dad480a3": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261009_0003820008",
+      "source": "뉴시스",
+      "source_body_digest": "0e6b580bb3dca714e798f21fbbaf8c65acb8d9eac1a7ebb9d8f9ed55bd6e8c70",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:730a1447feedac9e6dbfe4bae932c7fa2fa5b31f31c8d4f66b2c39ee974c4643",
+      "source_fact_keys": [
+        "source_fact:v1:0999938c6456f5861af59caecc3fa74800980c51f791dc130d6025959c1d87cb",
+        "source_fact:v1:2bc7244c9c858a4a6fdde2d63b801323eec5744b87be1b5ad7e2ea2f1e143208",
+        "source_fact:v1:980e3140465e4a4c230e0e07e92bf1b4811044fd742f513213c98311ded1f6d7",
+        "source_fact:v1:d265350531acd8e7ba735fedb7d75619860515c1fac70fa8d7f2d586f5d9d948"
+      ],
+      "source_published_kst": "2026-10-09T04:29+09:00",
+      "source_title": "WTO, 올해 상품무역 증가율 3.9%로 상향…\"AI 호황, 이란전 충격 상쇄\"",
+      "telegram_core_fact": "WTO는 중동 분쟁이 에너지 가격 상승과 운송 경로 차질을 통해 무역에 계속해서 부담을 줄 것으로 예상하면서도 세계 국내총생산(GDP)이 올해 2.6%, 다음해 2.9% 각각 성장할 것으로 전망했다.",
+      "title": "WTO, 올해 상품무역 증가율 3.9%로 상향…\"AI 호황, 이란전 충격 상쇄\""
     },
     "fact:969dd5447f7608a52e1d31de": {
       "first_seen_kst": "2026-10-06T19:33:48+09:00",
@@ -49096,6 +49396,31 @@
       "source_published_kst": "2026-10-07T11:05+09:00",
       "title": "\"가전·전장 끌고 TV도 반등\"…LG전자, 3Q 영업익 7818억원…전년比 13.5% 증가"
     },
+    "fact:ce4fd474d2253b00124d115b": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610092953b",
+      "source": "한국경제",
+      "source_body_digest": "c3a98736874cc3811caf222a22722aa279d40b46e901c25247a63577aa8ef036",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1f5ea026cace7c18ba41a08ebe3d4237bb2d294a0a862a49e719e81fb6508f5d",
+      "source_fact_keys": [
+        "source_fact:v1:0c940c05bb4e6b1aa95062741f59c9e91347d17a48af889d434601290b79e855",
+        "source_fact:v1:22c1edce3ae1cac38d42eb021c8ed8dba8f7b644b97f892a3d1bd9ec51d74c4a",
+        "source_fact:v1:3cfb7a045f8fa83040dd540972d77d1ee52b3a6e63c13f171f05a7f3ca8d9f76",
+        "source_fact:v1:50e772aa727592b7b302aa6f8e46e06de3e1ffb0864cf79768b7be9608ff65e3",
+        "source_fact:v1:5fa750694393cdd8ced3406fcefb316b2f0f31248d35085e6cd78953cbba45d4",
+        "source_fact:v1:607c38e6037f73eb4ca74486ff0fca2730c0808a1780d1cd940f079b44dd82da",
+        "source_fact:v1:cf4a1ff393f068b9cce84044c41e9224111ef66d897674213edf9e93b1087ac5"
+      ],
+      "source_published_kst": "2026-10-09T17:54+09:00",
+      "source_title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수",
+      "telegram_core_fact": "최태원 SK그룹 회장이 전남광주통합특별시 반도체 생산기지 구축에 속도를 내겠다는 의지를 밝혔다. SK하이닉스는 지난 6월 호남권에 400조원 신규 클러스터를 조성하겠다는 구상을 밝힌 뒤 경영진의 광주 방문과 지자체 협의를 이어왔다.",
+      "title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수"
+    },
     "fact:ce96f63a496910f0350e6699": {
       "first_seen_kst": "2026-10-06T22:51:44+09:00",
       "lanes": {
@@ -52805,6 +53130,30 @@
       "source_title": "'107조 잭팟' 삼성전자, '63만전자' 시동거나",
       "telegram_core_fact": "금융투자업계에 따르면 삼성전자는 올해 3분기 잠정 실적으로 연결 기준 매출액 195조원, 영업이익 107조4000억 원(약 803억 달러)을 기록했다.",
       "title": "'107조 잭팟' 삼성전자, '63만전자' 시동거나"
+    },
+    "fact:eadefc16445cac9606069b97": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172487",
+      "source": "매일경제",
+      "source_body_digest": "55abc8d5939c1654e2137bce183eb3fa6d78a2a25496d6ef92d66e24564a1914",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:91ed4201493f91b076860bcdfcfee369633e851be2e0dea1b60c5af74144e61c",
+      "source_fact_keys": [
+        "source_fact:v1:2286b9f0bbc03ea14a467217c805c65ec9cb62fbdb2bdfbbaec751cbaf1a7e72",
+        "source_fact:v1:2c0f47f655a1c8d5380e787d7d4a698f96f745f80a574f72ce4776d2f582cc01",
+        "source_fact:v1:86a169a4dd24c85299356121153b291b9b729e0160a61914b0c12d9fc5e07949",
+        "source_fact:v1:bdcc829fedcb27c45ba919516e4e496352f736568d3f011c618037211e21b4fa",
+        "source_fact:v1:d0aabc88675060c5372dbc38eec142625acc8533db83fcfa2b9eb7bd2f21b5af",
+        "source_fact:v1:e50d7d9eff04ce88adc45722d619b735184d02e6d2a44c92433e41270cf1b1e7"
+      ],
+      "source_published_kst": "2026-10-09T19:06+09:00",
+      "source_title": "칼레도니아 마이닝, 3분기 금 생산 11% 감소·연간 가이던스 하향",
+      "telegram_core_fact": "칼레도니아 마이닝(CMCL)이 짐바브웨 블랭킷 광산의 3분기(9월 30일 종료) 금 생산량이 1만7030온스로 전년 동기(1만9106온스) 대비 10.9% 감소했다고 밝히고, 2026년 연간 금 생산 가이던스를 기존 7만2000~7만6500온스에서 6만9000~7만2500온스로 하향 조정한다고 10월 9일 발표했다.",
+      "title": "칼레도니아 마이닝, 3분기 금 생산 11% 감소·연간 가이던스 하향"
     },
     "fact:eb0cfb29208218ac1af0d82a": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
@@ -66423,6 +66772,31 @@
       "source": "파이낸셜뉴스",
       "title": "KAIST 신임 이사장에 권오현 전 삼성전자 회장"
     },
+    "link:397a933d70cd034d490cb80f": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610092953b",
+      "source": "한국경제",
+      "source_body_digest": "c3a98736874cc3811caf222a22722aa279d40b46e901c25247a63577aa8ef036",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1f5ea026cace7c18ba41a08ebe3d4237bb2d294a0a862a49e719e81fb6508f5d",
+      "source_fact_keys": [
+        "source_fact:v1:0c940c05bb4e6b1aa95062741f59c9e91347d17a48af889d434601290b79e855",
+        "source_fact:v1:22c1edce3ae1cac38d42eb021c8ed8dba8f7b644b97f892a3d1bd9ec51d74c4a",
+        "source_fact:v1:3cfb7a045f8fa83040dd540972d77d1ee52b3a6e63c13f171f05a7f3ca8d9f76",
+        "source_fact:v1:50e772aa727592b7b302aa6f8e46e06de3e1ffb0864cf79768b7be9608ff65e3",
+        "source_fact:v1:5fa750694393cdd8ced3406fcefb316b2f0f31248d35085e6cd78953cbba45d4",
+        "source_fact:v1:607c38e6037f73eb4ca74486ff0fca2730c0808a1780d1cd940f079b44dd82da",
+        "source_fact:v1:cf4a1ff393f068b9cce84044c41e9224111ef66d897674213edf9e93b1087ac5"
+      ],
+      "source_published_kst": "2026-10-09T17:54+09:00",
+      "source_title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수",
+      "telegram_core_fact": "최태원 SK그룹 회장이 전남광주통합특별시 반도체 생산기지 구축에 속도를 내겠다는 의지를 밝혔다. SK하이닉스는 지난 6월 호남권에 400조원 신규 클러스터를 조성하겠다는 구상을 밝힌 뒤 경영진의 광주 방문과 지자체 협의를 이어왔다.",
+      "title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수"
+    },
     "link:397ecb783372b03831d122d4": {
       "first_seen_kst": "2026-10-02T22:19:09+09:00",
       "lanes": {
@@ -67182,6 +67556,25 @@
       ],
       "source_published_kst": "2026-10-06T14:06+09:00",
       "title": "미 국방부, 앤트로픽 AI 사용 중단…블랙리스트 지정 8개월만 | 연합뉴스"
+    },
+    "link:3cccaf11ffdf9ec33a4f582b": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634046",
+      "source": "이투데이",
+      "source_body_digest": "e6fef16f74dafc35ed71449ddca62fdaae4ed606395c4216a58f4fe64012fd97",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bbe098790dbcdf770d45f3eabe6c336f79036526f2ac2ca4445e53ce36d04185",
+      "source_fact_keys": [
+        "source_fact:v1:6192cec26a3da40e368caee51e0bf95ff5f7b2fb6be51a55feefb665ec43df8d"
+      ],
+      "source_published_kst": "2026-10-09T09:00+09:00",
+      "source_title": "LH, 수도권 민간주택 1만8000가구 매입확약…조기 착공 유도",
+      "telegram_core_fact": "LH 관계자는 \"매입확약을 활용하면 사업 여건을 개선할 수 있을 뿐 아니라 내년 상반기 착공 시 추가 인센티브도 받을 수 있다\"며 \"민간 주택사업의 조기 착공을 촉진하고 주택공급을 신속히 확대할 수 있도록 노력하겠다\"고 말했다.",
+      "title": "LH, 수도권 민간주택 1만8000가구 매입확약…조기 착공 유도"
     },
     "link:3cdf20e4347249945c58355b": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
@@ -72745,6 +73138,33 @@
       "source_published_kst": "2026-10-07T14:58+09:00",
       "title": "송미령 \"산란계협회, 경고에도 가격 고시…농가 짓밟았다는 비판 과해\""
     },
+    "link:5b5f0d21133e80c4468be8ee": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172237",
+      "source": "매일경제",
+      "source_body_digest": "02a44462ad519f9ab7b0ce0b24bd8e5a8af4d91741d71848d73ff8bbf2a1750c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8847f840fe11345c13d41bc527af19691542cfbdc08bb3e2cb38e2c5de40e380",
+      "source_fact_keys": [
+        "source_fact:v1:01ea15f3474a806680e4add3eccfad78566fca1a529d4faea4fd0411bbb9c1eb",
+        "source_fact:v1:1410b82a370761650e79de88305070da8831b60d68502042c3734bec4a334696",
+        "source_fact:v1:4443da027b642c84f7bf0fa18dec80ee3301d8595934d2d83e3b51c1cf3f4c7d",
+        "source_fact:v1:4c192000b3f5fd7ef671d7a53acaa8eece83ff57f5ece6a94d4fd1f1a045dde0",
+        "source_fact:v1:6699b5ea7007f1536dcd741a1d218d7895b554119d6e01e54a8e096f37ce1bb2",
+        "source_fact:v1:9d401e89ffbef911aeade983094f9e373906ba14cd1b4acf9b741ff960fc5ef7",
+        "source_fact:v1:dd1a7f49d782475353d684921e5c33b039c1a80e97b035e67b7aa330f7c56ac4",
+        "source_fact:v1:de729d764db23232dfc9f58783ab2f8c5c01c9c8fb455f7b76d425aaf73e44c3",
+        "source_fact:v1:f84b1a126a8f17d9c21d30800c66f9ca00bbe71b105521635d9ed2c21c3e17d5"
+      ],
+      "source_published_kst": "2026-10-09T19:06+09:00",
+      "source_title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러",
+      "telegram_core_fact": "기그캐피털8(GIW)이 위즈키(WISeKey)와 씰SQ(SEALSQ)가 설립한 양자기술 플랫폼 기업 퀀티시모(Quantisimo)와 확정적 합병계약을 체결했으며, 합병 후 퀀티시모의 지분가치는 주당 10달러 기준 약 6억6610만 달러로 평가됐다고 9일(현지시간) 발표했다.",
+      "title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러"
+    },
     "link:5b76e76d423daa27f716447d": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -75965,6 +76385,28 @@
       "link": "https://www.yna.co.kr/view/MYH20260929005400038",
       "source": "연합뉴스",
       "title": "미, 이란 '7일 계획' 거부에도 대화 기대…국제유가 강보합 | 연합뉴스"
+    },
+    "link:6a78d8ec10d304a7ff82a714": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261009_0003820008",
+      "source": "뉴시스",
+      "source_body_digest": "0e6b580bb3dca714e798f21fbbaf8c65acb8d9eac1a7ebb9d8f9ed55bd6e8c70",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:730a1447feedac9e6dbfe4bae932c7fa2fa5b31f31c8d4f66b2c39ee974c4643",
+      "source_fact_keys": [
+        "source_fact:v1:0999938c6456f5861af59caecc3fa74800980c51f791dc130d6025959c1d87cb",
+        "source_fact:v1:2bc7244c9c858a4a6fdde2d63b801323eec5744b87be1b5ad7e2ea2f1e143208",
+        "source_fact:v1:980e3140465e4a4c230e0e07e92bf1b4811044fd742f513213c98311ded1f6d7",
+        "source_fact:v1:d265350531acd8e7ba735fedb7d75619860515c1fac70fa8d7f2d586f5d9d948"
+      ],
+      "source_published_kst": "2026-10-09T04:29+09:00",
+      "source_title": "WTO, 올해 상품무역 증가율 3.9%로 상향…\"AI 호황, 이란전 충격 상쇄\"",
+      "telegram_core_fact": "WTO는 중동 분쟁이 에너지 가격 상승과 운송 경로 차질을 통해 무역에 계속해서 부담을 줄 것으로 예상하면서도 세계 국내총생산(GDP)이 올해 2.6%, 다음해 2.9% 각각 성장할 것으로 전망했다.",
+      "title": "WTO, 올해 상품무역 증가율 3.9%로 상향…\"AI 호황, 이란전 충격 상쇄\""
     },
     "link:6abff28564c33a90007ca70e": {
       "first_seen_kst": "2026-10-05T12:29:58+09:00",
@@ -88360,6 +88802,32 @@
       "source_published_kst": "2026-10-05T09:47+09:00",
       "title": "운문댐 가뭄 장기화…대구시 \"다음 달 초 금호강 물 공급 예상\" | 연합뉴스"
     },
+    "link:a9de2785f67d005cfba11af6": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172131",
+      "source": "매일경제",
+      "source_body_digest": "3920b16aeab068d6000e1553bd004fc511d62aca36063509412ae0fc00aed33b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1bd4d4a2a5d125cd1b0910dcc6aa72f1f16bd1dc7dce3b35132076ddc2fd7156",
+      "source_fact_keys": [
+        "source_fact:v1:1985557f458ef83b8995e3976027f2df1aa81b48757dede896ed8b4c00d57c09",
+        "source_fact:v1:1dc2a8a7ca50f93e5dc6adf0d9f8a6e977b7d3699cf0ef766e19725e871f28f6",
+        "source_fact:v1:4bae60f38a4c9f409674dada70b2f792433a7cb7bfb9d127f0929c35376da2d2",
+        "source_fact:v1:9900b20d5bb3f2fdcd499318e58707ad695c683d61145655f8a7d29d428fd83f",
+        "source_fact:v1:bd3268adcd9cceb6ca08361b6e58c72462daee402116ed130f9853712e4f689c",
+        "source_fact:v1:e23c8aa388248dbea8f01fe1638ed224dbde2a126cb052de4cf2872912e38070",
+        "source_fact:v1:e90dbf4d04ef6e383590c33b4c09f6e4f655bf119c739bbfba9b3685e533e9f0",
+        "source_fact:v1:f30b40628b2c0f6fd6f4157540b02ff047c28c4a80cd900e2c0b75a4965c27d0"
+      ],
+      "source_published_kst": "2026-10-09T06:12+09:00",
+      "source_title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주",
+      "telegram_core_fact": "회사 매출은 2억2000만 달러 전망입니다.",
+      "title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주"
+    },
     "link:a9f04caff18a5c2ff818e749": {
       "first_seen_kst": "2026-09-29T10:32:56+09:00",
       "lanes": {
@@ -90918,6 +91386,35 @@
       ],
       "source_published_kst": "2026-10-07T10:15+09:00",
       "title": "윤성에프앤씨 수주공시 - 2차전지 믹싱시스템 482.3억원 (매출액대비 48.14 %)"
+    },
+    "link:b815efc0d9233b488fa5cd0d": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261009007251072",
+      "source": "연합뉴스",
+      "source_body_digest": "d2cb81b91bc8568449c7dd70b34055acee3aedd339bf522d73b80f521d399a2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8387167a40e4786d79a1ede2b130f79e177f83e9d603f61eb6c6f656c59c98fc",
+      "source_fact_keys": [
+        "source_fact:v1:055ca79f16e2cd3e02cab71c743315ecc0d90e41e7d122b804d7cf8700c825c7",
+        "source_fact:v1:05a416d5d396544ff8e057a7c1a644449333379a3715320b436ec20eaea3c8ea",
+        "source_fact:v1:1337accf55b342d7e1721868a3fa6081011fdeabccee717ed945b42d4cfdf7d1",
+        "source_fact:v1:1c0daf9892521f20e82071c2a50c59795ddbbb8e81a72a07fba36ea5d26b1e1c",
+        "source_fact:v1:61192d5272b2be1f95b01aeee4f50c22cbd23cdb00caa10823aeb9dbb6837c9f",
+        "source_fact:v1:6414200adc84dfa9c838ce9d3201e76ece73ed18089fe27ba3f4b32add3203a4",
+        "source_fact:v1:950202a72fc6bee05a35d5b6b632b4862e5b5455514d2d1c1f2b264a76cd8538",
+        "source_fact:v1:9b28ccd28b0c540abdb6604020fe5695cc9c9889b1c95db67cc19fa141e20cdb",
+        "source_fact:v1:a72abfbb23851c42b4a2acc0b636abe80b665492f7e924ae55fa0dfc5b7c800b",
+        "source_fact:v1:bc7e55ab74a8efc79d1273d0cd0fc864f8a7d92a2ae6ace904840d8fe906619e",
+        "source_fact:v1:c856d69f2fcb14e9bf79b5ab3a48ac8a94f829f641ff2ca8370dc752dbc4c42e"
+      ],
+      "source_published_kst": "2026-10-09T06:23+09:00",
+      "source_title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "S&P 500지수는 전장보다 36.41포인트(0.47%) 내린 7,765.36, 나스닥 종합지수는 345.35포인트(1.25%) 하락한 27,193.34로 마쳤다.",
+      "title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스"
     },
     "link:b8239ce271ebd01d6fa67360": {
       "first_seen_kst": "2026-09-19T11:08:27+09:00",
@@ -101589,6 +102086,30 @@
       "source": "전자신문",
       "title": "핀다, 첫 CPO에 안중현 전 넥써쓰 부사장 선임…대출비교 넘어 'AI 금융 인프라'로"
     },
+    "link:f03be8c02eb4fd52f0c2a5a8": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172487",
+      "source": "매일경제",
+      "source_body_digest": "55abc8d5939c1654e2137bce183eb3fa6d78a2a25496d6ef92d66e24564a1914",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:91ed4201493f91b076860bcdfcfee369633e851be2e0dea1b60c5af74144e61c",
+      "source_fact_keys": [
+        "source_fact:v1:2286b9f0bbc03ea14a467217c805c65ec9cb62fbdb2bdfbbaec751cbaf1a7e72",
+        "source_fact:v1:2c0f47f655a1c8d5380e787d7d4a698f96f745f80a574f72ce4776d2f582cc01",
+        "source_fact:v1:86a169a4dd24c85299356121153b291b9b729e0160a61914b0c12d9fc5e07949",
+        "source_fact:v1:bdcc829fedcb27c45ba919516e4e496352f736568d3f011c618037211e21b4fa",
+        "source_fact:v1:d0aabc88675060c5372dbc38eec142625acc8533db83fcfa2b9eb7bd2f21b5af",
+        "source_fact:v1:e50d7d9eff04ce88adc45722d619b735184d02e6d2a44c92433e41270cf1b1e7"
+      ],
+      "source_published_kst": "2026-10-09T19:06+09:00",
+      "source_title": "칼레도니아 마이닝, 3분기 금 생산 11% 감소·연간 가이던스 하향",
+      "telegram_core_fact": "칼레도니아 마이닝(CMCL)이 짐바브웨 블랭킷 광산의 3분기(9월 30일 종료) 금 생산량이 1만7030온스로 전년 동기(1만9106온스) 대비 10.9% 감소했다고 밝히고, 2026년 연간 금 생산 가이던스를 기존 7만2000~7만6500온스에서 6만9000~7만2500온스로 하향 조정한다고 10월 9일 발표했다.",
+      "title": "칼레도니아 마이닝, 3분기 금 생산 11% 감소·연간 가이던스 하향"
+    },
     "link:f048e041b1a4d655ae0138a2": {
       "first_seen_kst": "2026-10-08T22:06:55+09:00",
       "lanes": {
@@ -109580,6 +110101,33 @@
       "source": "연합뉴스",
       "title": "홈플러스익스프레스, 'NS홈쇼핑 인수 100일' 떡 증정 이벤트 | 연합뉴스"
     },
+    "original:1a61a7bc65c327a29afd37b7": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172237",
+      "source": "매일경제",
+      "source_body_digest": "02a44462ad519f9ab7b0ce0b24bd8e5a8af4d91741d71848d73ff8bbf2a1750c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8847f840fe11345c13d41bc527af19691542cfbdc08bb3e2cb38e2c5de40e380",
+      "source_fact_keys": [
+        "source_fact:v1:01ea15f3474a806680e4add3eccfad78566fca1a529d4faea4fd0411bbb9c1eb",
+        "source_fact:v1:1410b82a370761650e79de88305070da8831b60d68502042c3734bec4a334696",
+        "source_fact:v1:4443da027b642c84f7bf0fa18dec80ee3301d8595934d2d83e3b51c1cf3f4c7d",
+        "source_fact:v1:4c192000b3f5fd7ef671d7a53acaa8eece83ff57f5ece6a94d4fd1f1a045dde0",
+        "source_fact:v1:6699b5ea7007f1536dcd741a1d218d7895b554119d6e01e54a8e096f37ce1bb2",
+        "source_fact:v1:9d401e89ffbef911aeade983094f9e373906ba14cd1b4acf9b741ff960fc5ef7",
+        "source_fact:v1:dd1a7f49d782475353d684921e5c33b039c1a80e97b035e67b7aa330f7c56ac4",
+        "source_fact:v1:de729d764db23232dfc9f58783ab2f8c5c01c9c8fb455f7b76d425aaf73e44c3",
+        "source_fact:v1:f84b1a126a8f17d9c21d30800c66f9ca00bbe71b105521635d9ed2c21c3e17d5"
+      ],
+      "source_published_kst": "2026-10-09T19:06+09:00",
+      "source_title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러",
+      "telegram_core_fact": "기그캐피털8(GIW)이 위즈키(WISeKey)와 씰SQ(SEALSQ)가 설립한 양자기술 플랫폼 기업 퀀티시모(Quantisimo)와 확정적 합병계약을 체결했으며, 합병 후 퀀티시모의 지분가치는 주당 10달러 기준 약 6억6610만 달러로 평가됐다고 9일(현지시간) 발표했다.",
+      "title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러"
+    },
     "original:1a649bd88db91bd6c0cb2ae6": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
       "lanes": {
@@ -110210,6 +110758,25 @@
       ],
       "source_published_kst": "2026-10-07T08:51+09:00",
       "title": "SK온, 포드 'Q1 인증' 획득…\"헝가리 생산거점 품질 경쟁력 입증\""
+    },
+    "original:1eb71534e7944909ba4ca4ff": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634046",
+      "source": "이투데이",
+      "source_body_digest": "e6fef16f74dafc35ed71449ddca62fdaae4ed606395c4216a58f4fe64012fd97",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bbe098790dbcdf770d45f3eabe6c336f79036526f2ac2ca4445e53ce36d04185",
+      "source_fact_keys": [
+        "source_fact:v1:6192cec26a3da40e368caee51e0bf95ff5f7b2fb6be51a55feefb665ec43df8d"
+      ],
+      "source_published_kst": "2026-10-09T09:00+09:00",
+      "source_title": "LH, 수도권 민간주택 1만8000가구 매입확약…조기 착공 유도",
+      "telegram_core_fact": "LH 관계자는 \"매입확약을 활용하면 사업 여건을 개선할 수 있을 뿐 아니라 내년 상반기 착공 시 추가 인센티브도 받을 수 있다\"며 \"민간 주택사업의 조기 착공을 촉진하고 주택공급을 신속히 확대할 수 있도록 노력하겠다\"고 말했다.",
+      "title": "LH, 수도권 민간주택 1만8000가구 매입확약…조기 착공 유도"
     },
     "original:1ebe4649426d9994708363b0": {
       "first_seen_kst": "2026-10-07T03:17:01+09:00",
@@ -129208,6 +129775,35 @@
       "source": "뉴시스",
       "title": "오아시스, 90년대 미공개 녹음본 28억 경매에 법적 대응…출품 취소"
     },
+    "original:8231de850ecce945e0e5fd79": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261009007251072",
+      "source": "연합뉴스",
+      "source_body_digest": "d2cb81b91bc8568449c7dd70b34055acee3aedd339bf522d73b80f521d399a2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8387167a40e4786d79a1ede2b130f79e177f83e9d603f61eb6c6f656c59c98fc",
+      "source_fact_keys": [
+        "source_fact:v1:055ca79f16e2cd3e02cab71c743315ecc0d90e41e7d122b804d7cf8700c825c7",
+        "source_fact:v1:05a416d5d396544ff8e057a7c1a644449333379a3715320b436ec20eaea3c8ea",
+        "source_fact:v1:1337accf55b342d7e1721868a3fa6081011fdeabccee717ed945b42d4cfdf7d1",
+        "source_fact:v1:1c0daf9892521f20e82071c2a50c59795ddbbb8e81a72a07fba36ea5d26b1e1c",
+        "source_fact:v1:61192d5272b2be1f95b01aeee4f50c22cbd23cdb00caa10823aeb9dbb6837c9f",
+        "source_fact:v1:6414200adc84dfa9c838ce9d3201e76ece73ed18089fe27ba3f4b32add3203a4",
+        "source_fact:v1:950202a72fc6bee05a35d5b6b632b4862e5b5455514d2d1c1f2b264a76cd8538",
+        "source_fact:v1:9b28ccd28b0c540abdb6604020fe5695cc9c9889b1c95db67cc19fa141e20cdb",
+        "source_fact:v1:a72abfbb23851c42b4a2acc0b636abe80b665492f7e924ae55fa0dfc5b7c800b",
+        "source_fact:v1:bc7e55ab74a8efc79d1273d0cd0fc864f8a7d92a2ae6ace904840d8fe906619e",
+        "source_fact:v1:c856d69f2fcb14e9bf79b5ab3a48ac8a94f829f641ff2ca8370dc752dbc4c42e"
+      ],
+      "source_published_kst": "2026-10-09T06:23+09:00",
+      "source_title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "S&P 500지수는 전장보다 36.41포인트(0.47%) 내린 7,765.36, 나스닥 종합지수는 345.35포인트(1.25%) 하락한 27,193.34로 마쳤다.",
+      "title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스"
+    },
     "original:823eb22757ec9ed1baae0adb": {
       "first_seen_kst": "2026-09-27T06:32:53+09:00",
       "lanes": {
@@ -129559,6 +130155,28 @@
       "link": "https://www.newsis.com/view/NISX20260930_0003807902",
       "source": "뉴시스",
       "title": "뉴욕증시, 美국채금리 고공행진에 하락…30년물 24년래 최고"
+    },
+    "original:8404b578e9d7efca6667b4ee": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261009_0003820008",
+      "source": "뉴시스",
+      "source_body_digest": "0e6b580bb3dca714e798f21fbbaf8c65acb8d9eac1a7ebb9d8f9ed55bd6e8c70",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:730a1447feedac9e6dbfe4bae932c7fa2fa5b31f31c8d4f66b2c39ee974c4643",
+      "source_fact_keys": [
+        "source_fact:v1:0999938c6456f5861af59caecc3fa74800980c51f791dc130d6025959c1d87cb",
+        "source_fact:v1:2bc7244c9c858a4a6fdde2d63b801323eec5744b87be1b5ad7e2ea2f1e143208",
+        "source_fact:v1:980e3140465e4a4c230e0e07e92bf1b4811044fd742f513213c98311ded1f6d7",
+        "source_fact:v1:d265350531acd8e7ba735fedb7d75619860515c1fac70fa8d7f2d586f5d9d948"
+      ],
+      "source_published_kst": "2026-10-09T04:29+09:00",
+      "source_title": "WTO, 올해 상품무역 증가율 3.9%로 상향…\"AI 호황, 이란전 충격 상쇄\"",
+      "telegram_core_fact": "WTO는 중동 분쟁이 에너지 가격 상승과 운송 경로 차질을 통해 무역에 계속해서 부담을 줄 것으로 예상하면서도 세계 국내총생산(GDP)이 올해 2.6%, 다음해 2.9% 각각 성장할 것으로 전망했다.",
+      "title": "WTO, 올해 상품무역 증가율 3.9%로 상향…\"AI 호황, 이란전 충격 상쇄\""
     },
     "original:842600c947046c23b1651153": {
       "first_seen_kst": "2026-10-05T14:04:17+09:00",
@@ -138231,6 +138849,30 @@
       "source_published_kst": "2026-10-06T14:33+09:00",
       "title": "IPARK현대산업개발, 부산 연산13구역 수주…2812억원 규모"
     },
+    "original:b147fe76a5f40a2d7c60d3dc": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172487",
+      "source": "매일경제",
+      "source_body_digest": "55abc8d5939c1654e2137bce183eb3fa6d78a2a25496d6ef92d66e24564a1914",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:91ed4201493f91b076860bcdfcfee369633e851be2e0dea1b60c5af74144e61c",
+      "source_fact_keys": [
+        "source_fact:v1:2286b9f0bbc03ea14a467217c805c65ec9cb62fbdb2bdfbbaec751cbaf1a7e72",
+        "source_fact:v1:2c0f47f655a1c8d5380e787d7d4a698f96f745f80a574f72ce4776d2f582cc01",
+        "source_fact:v1:86a169a4dd24c85299356121153b291b9b729e0160a61914b0c12d9fc5e07949",
+        "source_fact:v1:bdcc829fedcb27c45ba919516e4e496352f736568d3f011c618037211e21b4fa",
+        "source_fact:v1:d0aabc88675060c5372dbc38eec142625acc8533db83fcfa2b9eb7bd2f21b5af",
+        "source_fact:v1:e50d7d9eff04ce88adc45722d619b735184d02e6d2a44c92433e41270cf1b1e7"
+      ],
+      "source_published_kst": "2026-10-09T19:06+09:00",
+      "source_title": "칼레도니아 마이닝, 3분기 금 생산 11% 감소·연간 가이던스 하향",
+      "telegram_core_fact": "칼레도니아 마이닝(CMCL)이 짐바브웨 블랭킷 광산의 3분기(9월 30일 종료) 금 생산량이 1만7030온스로 전년 동기(1만9106온스) 대비 10.9% 감소했다고 밝히고, 2026년 연간 금 생산 가이던스를 기존 7만2000~7만6500온스에서 6만9000~7만2500온스로 하향 조정한다고 10월 9일 발표했다.",
+      "title": "칼레도니아 마이닝, 3분기 금 생산 11% 감소·연간 가이던스 하향"
+    },
     "original:b14820b33198fbf81f31893b": {
       "first_seen_kst": "2026-10-03T21:43:46+09:00",
       "lanes": {
@@ -142191,6 +142833,32 @@
       ],
       "source_published_kst": "2026-10-06T11:40+09:00",
       "title": "심텍 `CPU, LPDDR 수요 확대의 중심` 증권사 발표에 강세…7.78%"
+    },
+    "original:c9390daeab63a665d5789b8b": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172131",
+      "source": "매일경제",
+      "source_body_digest": "3920b16aeab068d6000e1553bd004fc511d62aca36063509412ae0fc00aed33b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1bd4d4a2a5d125cd1b0910dcc6aa72f1f16bd1dc7dce3b35132076ddc2fd7156",
+      "source_fact_keys": [
+        "source_fact:v1:1985557f458ef83b8995e3976027f2df1aa81b48757dede896ed8b4c00d57c09",
+        "source_fact:v1:1dc2a8a7ca50f93e5dc6adf0d9f8a6e977b7d3699cf0ef766e19725e871f28f6",
+        "source_fact:v1:4bae60f38a4c9f409674dada70b2f792433a7cb7bfb9d127f0929c35376da2d2",
+        "source_fact:v1:9900b20d5bb3f2fdcd499318e58707ad695c683d61145655f8a7d29d428fd83f",
+        "source_fact:v1:bd3268adcd9cceb6ca08361b6e58c72462daee402116ed130f9853712e4f689c",
+        "source_fact:v1:e23c8aa388248dbea8f01fe1638ed224dbde2a126cb052de4cf2872912e38070",
+        "source_fact:v1:e90dbf4d04ef6e383590c33b4c09f6e4f655bf119c739bbfba9b3685e533e9f0",
+        "source_fact:v1:f30b40628b2c0f6fd6f4157540b02ff047c28c4a80cd900e2c0b75a4965c27d0"
+      ],
+      "source_published_kst": "2026-10-09T06:12+09:00",
+      "source_title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주",
+      "telegram_core_fact": "회사 매출은 2억2000만 달러 전망입니다.",
+      "title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주"
     },
     "original:c948d06008def095cba00d54": {
       "first_seen_kst": "2026-10-07T07:12:15+09:00",
@@ -147511,6 +148179,31 @@
       ],
       "source_published_kst": "2026-10-06T14:16+09:00",
       "title": "\"최태원 9440억 SK 지분 매각, 3%룰 회피 목적 아닌지 밝혀야\""
+    },
+    "original:e42b1d8144103b59861e4db0": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610092953b",
+      "source": "한국경제",
+      "source_body_digest": "c3a98736874cc3811caf222a22722aa279d40b46e901c25247a63577aa8ef036",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1f5ea026cace7c18ba41a08ebe3d4237bb2d294a0a862a49e719e81fb6508f5d",
+      "source_fact_keys": [
+        "source_fact:v1:0c940c05bb4e6b1aa95062741f59c9e91347d17a48af889d434601290b79e855",
+        "source_fact:v1:22c1edce3ae1cac38d42eb021c8ed8dba8f7b644b97f892a3d1bd9ec51d74c4a",
+        "source_fact:v1:3cfb7a045f8fa83040dd540972d77d1ee52b3a6e63c13f171f05a7f3ca8d9f76",
+        "source_fact:v1:50e772aa727592b7b302aa6f8e46e06de3e1ffb0864cf79768b7be9608ff65e3",
+        "source_fact:v1:5fa750694393cdd8ced3406fcefb316b2f0f31248d35085e6cd78953cbba45d4",
+        "source_fact:v1:607c38e6037f73eb4ca74486ff0fca2730c0808a1780d1cd940f079b44dd82da",
+        "source_fact:v1:cf4a1ff393f068b9cce84044c41e9224111ef66d897674213edf9e93b1087ac5"
+      ],
+      "source_published_kst": "2026-10-09T17:54+09:00",
+      "source_title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수",
+      "telegram_core_fact": "최태원 SK그룹 회장이 전남광주통합특별시 반도체 생산기지 구축에 속도를 내겠다는 의지를 밝혔다. SK하이닉스는 지난 6월 호남권에 400조원 신규 클러스터를 조성하겠다는 구상을 밝힌 뒤 경영진의 광주 방문과 지자체 협의를 이어왔다.",
+      "title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수"
     },
     "original:e45c2fb13540ed2ba8ebaee9": {
       "first_seen_kst": "2026-09-25T01:40:40+09:00",
@@ -153773,6 +154466,25 @@
       ],
       "source_published_kst": "2026-10-07T00:55+09:00",
       "title": "국제 유가·美 국채 수익률 동반 하락…뉴욕 증시 사상 최고"
+    },
+    "source_fact:02a191c658b05555f0b4246d": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634046",
+      "source": "이투데이",
+      "source_body_digest": "e6fef16f74dafc35ed71449ddca62fdaae4ed606395c4216a58f4fe64012fd97",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bbe098790dbcdf770d45f3eabe6c336f79036526f2ac2ca4445e53ce36d04185",
+      "source_fact_keys": [
+        "source_fact:v1:6192cec26a3da40e368caee51e0bf95ff5f7b2fb6be51a55feefb665ec43df8d"
+      ],
+      "source_published_kst": "2026-10-09T09:00+09:00",
+      "source_title": "LH, 수도권 민간주택 1만8000가구 매입확약…조기 착공 유도",
+      "telegram_core_fact": "LH 관계자는 \"매입확약을 활용하면 사업 여건을 개선할 수 있을 뿐 아니라 내년 상반기 착공 시 추가 인센티브도 받을 수 있다\"며 \"민간 주택사업의 조기 착공을 촉진하고 주택공급을 신속히 확대할 수 있도록 노력하겠다\"고 말했다.",
+      "title": "LH, 수도권 민간주택 1만8000가구 매입확약…조기 착공 유도"
     },
     "source_fact:02a19d10a964491b4a247046": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
@@ -163675,6 +164387,31 @@
       "source_published_kst": "2026-10-07T11:07+09:00",
       "title": "LG전자, 올 3Q 누적 영업익 '4조' 최초 달성…연간 최대 실적 '청신호'"
     },
+    "source_fact:143c0db51c43325214ad5ced": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610092953b",
+      "source": "한국경제",
+      "source_body_digest": "c3a98736874cc3811caf222a22722aa279d40b46e901c25247a63577aa8ef036",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1f5ea026cace7c18ba41a08ebe3d4237bb2d294a0a862a49e719e81fb6508f5d",
+      "source_fact_keys": [
+        "source_fact:v1:0c940c05bb4e6b1aa95062741f59c9e91347d17a48af889d434601290b79e855",
+        "source_fact:v1:22c1edce3ae1cac38d42eb021c8ed8dba8f7b644b97f892a3d1bd9ec51d74c4a",
+        "source_fact:v1:3cfb7a045f8fa83040dd540972d77d1ee52b3a6e63c13f171f05a7f3ca8d9f76",
+        "source_fact:v1:50e772aa727592b7b302aa6f8e46e06de3e1ffb0864cf79768b7be9608ff65e3",
+        "source_fact:v1:5fa750694393cdd8ced3406fcefb316b2f0f31248d35085e6cd78953cbba45d4",
+        "source_fact:v1:607c38e6037f73eb4ca74486ff0fca2730c0808a1780d1cd940f079b44dd82da",
+        "source_fact:v1:cf4a1ff393f068b9cce84044c41e9224111ef66d897674213edf9e93b1087ac5"
+      ],
+      "source_published_kst": "2026-10-09T17:54+09:00",
+      "source_title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수",
+      "telegram_core_fact": "최태원 SK그룹 회장이 전남광주통합특별시 반도체 생산기지 구축에 속도를 내겠다는 의지를 밝혔다. SK하이닉스는 지난 6월 호남권에 400조원 신규 클러스터를 조성하겠다는 구상을 밝힌 뒤 경영진의 광주 방문과 지자체 협의를 이어왔다.",
+      "title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수"
+    },
     "source_fact:143ed5373281ff6a4527cecf": {
       "first_seen_kst": "2026-10-08T11:49:03+09:00",
       "lanes": {
@@ -166011,6 +166748,31 @@
       ],
       "source_published_kst": "2026-10-07T14:20+09:00",
       "title": "기업 순자금운용 67조 ‘사상 최대’…반도체 호황에 여윳돈 쌓였다 [머니뭐니]"
+    },
+    "source_fact:18a600fdf4c6eda14126d11c": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610092953b",
+      "source": "한국경제",
+      "source_body_digest": "c3a98736874cc3811caf222a22722aa279d40b46e901c25247a63577aa8ef036",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1f5ea026cace7c18ba41a08ebe3d4237bb2d294a0a862a49e719e81fb6508f5d",
+      "source_fact_keys": [
+        "source_fact:v1:0c940c05bb4e6b1aa95062741f59c9e91347d17a48af889d434601290b79e855",
+        "source_fact:v1:22c1edce3ae1cac38d42eb021c8ed8dba8f7b644b97f892a3d1bd9ec51d74c4a",
+        "source_fact:v1:3cfb7a045f8fa83040dd540972d77d1ee52b3a6e63c13f171f05a7f3ca8d9f76",
+        "source_fact:v1:50e772aa727592b7b302aa6f8e46e06de3e1ffb0864cf79768b7be9608ff65e3",
+        "source_fact:v1:5fa750694393cdd8ced3406fcefb316b2f0f31248d35085e6cd78953cbba45d4",
+        "source_fact:v1:607c38e6037f73eb4ca74486ff0fca2730c0808a1780d1cd940f079b44dd82da",
+        "source_fact:v1:cf4a1ff393f068b9cce84044c41e9224111ef66d897674213edf9e93b1087ac5"
+      ],
+      "source_published_kst": "2026-10-09T17:54+09:00",
+      "source_title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수",
+      "telegram_core_fact": "최태원 SK그룹 회장이 전남광주통합특별시 반도체 생산기지 구축에 속도를 내겠다는 의지를 밝혔다. SK하이닉스는 지난 6월 호남권에 400조원 신규 클러스터를 조성하겠다는 구상을 밝힌 뒤 경영진의 광주 방문과 지자체 협의를 이어왔다.",
+      "title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수"
     },
     "source_fact:18bcce59cca8f6d178ebceee": {
       "first_seen_kst": "2026-10-07T07:24:41+09:00",
@@ -169646,6 +170408,32 @@
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
     },
+    "source_fact:1f730c8a20fdfecc64f9c97c": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172131",
+      "source": "매일경제",
+      "source_body_digest": "3920b16aeab068d6000e1553bd004fc511d62aca36063509412ae0fc00aed33b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1bd4d4a2a5d125cd1b0910dcc6aa72f1f16bd1dc7dce3b35132076ddc2fd7156",
+      "source_fact_keys": [
+        "source_fact:v1:1985557f458ef83b8995e3976027f2df1aa81b48757dede896ed8b4c00d57c09",
+        "source_fact:v1:1dc2a8a7ca50f93e5dc6adf0d9f8a6e977b7d3699cf0ef766e19725e871f28f6",
+        "source_fact:v1:4bae60f38a4c9f409674dada70b2f792433a7cb7bfb9d127f0929c35376da2d2",
+        "source_fact:v1:9900b20d5bb3f2fdcd499318e58707ad695c683d61145655f8a7d29d428fd83f",
+        "source_fact:v1:bd3268adcd9cceb6ca08361b6e58c72462daee402116ed130f9853712e4f689c",
+        "source_fact:v1:e23c8aa388248dbea8f01fe1638ed224dbde2a126cb052de4cf2872912e38070",
+        "source_fact:v1:e90dbf4d04ef6e383590c33b4c09f6e4f655bf119c739bbfba9b3685e533e9f0",
+        "source_fact:v1:f30b40628b2c0f6fd6f4157540b02ff047c28c4a80cd900e2c0b75a4965c27d0"
+      ],
+      "source_published_kst": "2026-10-09T06:12+09:00",
+      "source_title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주",
+      "telegram_core_fact": "회사 매출은 2억2000만 달러 전망입니다.",
+      "title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주"
+    },
     "source_fact:1f8094784204ba7d54db4caf": {
       "first_seen_kst": "2026-10-08T11:28:27+09:00",
       "lanes": {
@@ -171742,6 +172530,28 @@
       "source_title": "포스코, K-GX ‘철강 GX’ 참여…2028년 포항에 하이렉스 실증설비",
       "telegram_core_fact": "2028년까지 연산 30만t(톤) 하이렉스 실증설비를 구축하고 청정수소 공급망과 포항·울산 산업단지를 연계한다.",
       "title": "포스코, K-GX ‘철강 GX’ 참여…2028년 포항에 하이렉스 실증설비"
+    },
+    "source_fact:22a136417d882b649b4ec220": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261009_0003820008",
+      "source": "뉴시스",
+      "source_body_digest": "0e6b580bb3dca714e798f21fbbaf8c65acb8d9eac1a7ebb9d8f9ed55bd6e8c70",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:730a1447feedac9e6dbfe4bae932c7fa2fa5b31f31c8d4f66b2c39ee974c4643",
+      "source_fact_keys": [
+        "source_fact:v1:0999938c6456f5861af59caecc3fa74800980c51f791dc130d6025959c1d87cb",
+        "source_fact:v1:2bc7244c9c858a4a6fdde2d63b801323eec5744b87be1b5ad7e2ea2f1e143208",
+        "source_fact:v1:980e3140465e4a4c230e0e07e92bf1b4811044fd742f513213c98311ded1f6d7",
+        "source_fact:v1:d265350531acd8e7ba735fedb7d75619860515c1fac70fa8d7f2d586f5d9d948"
+      ],
+      "source_published_kst": "2026-10-09T04:29+09:00",
+      "source_title": "WTO, 올해 상품무역 증가율 3.9%로 상향…\"AI 호황, 이란전 충격 상쇄\"",
+      "telegram_core_fact": "WTO는 중동 분쟁이 에너지 가격 상승과 운송 경로 차질을 통해 무역에 계속해서 부담을 줄 것으로 예상하면서도 세계 국내총생산(GDP)이 올해 2.6%, 다음해 2.9% 각각 성장할 것으로 전망했다.",
+      "title": "WTO, 올해 상품무역 증가율 3.9%로 상향…\"AI 호황, 이란전 충격 상쇄\""
     },
     "source_fact:22b9ddfe483345998eba05be": {
       "first_seen_kst": "2026-10-07T03:30:59+09:00",
@@ -174371,6 +175181,35 @@
       "source_title": "\"벤처투자 늘어도 회수는 제자리…세컨더리 시장 활성화 시급\"",
       "telegram_core_fact": "\"세컨더리 시장은 자금만 공급한다고 거래가 이뤄지는 구조가 아니다\"라며 \"실제 매도 물량과 매수자의 가격 제시, 거래 성사 사례가 축적돼 시장에서 신뢰할 수 있는 가격 정보가 형성돼야 한다\"고 강조했다.",
       "title": "\"벤처투자 늘어도 회수는 제자리…세컨더리 시장 활성화 시급\""
+    },
+    "source_fact:270f83177d62cf994fc717fc": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261009007251072",
+      "source": "연합뉴스",
+      "source_body_digest": "d2cb81b91bc8568449c7dd70b34055acee3aedd339bf522d73b80f521d399a2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8387167a40e4786d79a1ede2b130f79e177f83e9d603f61eb6c6f656c59c98fc",
+      "source_fact_keys": [
+        "source_fact:v1:055ca79f16e2cd3e02cab71c743315ecc0d90e41e7d122b804d7cf8700c825c7",
+        "source_fact:v1:05a416d5d396544ff8e057a7c1a644449333379a3715320b436ec20eaea3c8ea",
+        "source_fact:v1:1337accf55b342d7e1721868a3fa6081011fdeabccee717ed945b42d4cfdf7d1",
+        "source_fact:v1:1c0daf9892521f20e82071c2a50c59795ddbbb8e81a72a07fba36ea5d26b1e1c",
+        "source_fact:v1:61192d5272b2be1f95b01aeee4f50c22cbd23cdb00caa10823aeb9dbb6837c9f",
+        "source_fact:v1:6414200adc84dfa9c838ce9d3201e76ece73ed18089fe27ba3f4b32add3203a4",
+        "source_fact:v1:950202a72fc6bee05a35d5b6b632b4862e5b5455514d2d1c1f2b264a76cd8538",
+        "source_fact:v1:9b28ccd28b0c540abdb6604020fe5695cc9c9889b1c95db67cc19fa141e20cdb",
+        "source_fact:v1:a72abfbb23851c42b4a2acc0b636abe80b665492f7e924ae55fa0dfc5b7c800b",
+        "source_fact:v1:bc7e55ab74a8efc79d1273d0cd0fc864f8a7d92a2ae6ace904840d8fe906619e",
+        "source_fact:v1:c856d69f2fcb14e9bf79b5ab3a48ac8a94f829f641ff2ca8370dc752dbc4c42e"
+      ],
+      "source_published_kst": "2026-10-09T06:23+09:00",
+      "source_title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "S&P 500지수는 전장보다 36.41포인트(0.47%) 내린 7,765.36, 나스닥 종합지수는 345.35포인트(1.25%) 하락한 27,193.34로 마쳤다.",
+      "title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스"
     },
     "source_fact:27147610beba594e496326c8": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
@@ -177752,6 +178591,35 @@
       "source_published_kst": "2026-10-06T10:59+09:00",
       "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 공급"
     },
+    "source_fact:2c218015cf760d2020de3b3a": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261009007251072",
+      "source": "연합뉴스",
+      "source_body_digest": "d2cb81b91bc8568449c7dd70b34055acee3aedd339bf522d73b80f521d399a2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8387167a40e4786d79a1ede2b130f79e177f83e9d603f61eb6c6f656c59c98fc",
+      "source_fact_keys": [
+        "source_fact:v1:055ca79f16e2cd3e02cab71c743315ecc0d90e41e7d122b804d7cf8700c825c7",
+        "source_fact:v1:05a416d5d396544ff8e057a7c1a644449333379a3715320b436ec20eaea3c8ea",
+        "source_fact:v1:1337accf55b342d7e1721868a3fa6081011fdeabccee717ed945b42d4cfdf7d1",
+        "source_fact:v1:1c0daf9892521f20e82071c2a50c59795ddbbb8e81a72a07fba36ea5d26b1e1c",
+        "source_fact:v1:61192d5272b2be1f95b01aeee4f50c22cbd23cdb00caa10823aeb9dbb6837c9f",
+        "source_fact:v1:6414200adc84dfa9c838ce9d3201e76ece73ed18089fe27ba3f4b32add3203a4",
+        "source_fact:v1:950202a72fc6bee05a35d5b6b632b4862e5b5455514d2d1c1f2b264a76cd8538",
+        "source_fact:v1:9b28ccd28b0c540abdb6604020fe5695cc9c9889b1c95db67cc19fa141e20cdb",
+        "source_fact:v1:a72abfbb23851c42b4a2acc0b636abe80b665492f7e924ae55fa0dfc5b7c800b",
+        "source_fact:v1:bc7e55ab74a8efc79d1273d0cd0fc864f8a7d92a2ae6ace904840d8fe906619e",
+        "source_fact:v1:c856d69f2fcb14e9bf79b5ab3a48ac8a94f829f641ff2ca8370dc752dbc4c42e"
+      ],
+      "source_published_kst": "2026-10-09T06:23+09:00",
+      "source_title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "S&P 500지수는 전장보다 36.41포인트(0.47%) 내린 7,765.36, 나스닥 종합지수는 345.35포인트(1.25%) 하락한 27,193.34로 마쳤다.",
+      "title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스"
+    },
     "source_fact:2c377307d6e5d14c327c28fe": {
       "first_seen_kst": "2026-10-08T01:43:44+09:00",
       "lanes": {
@@ -178832,6 +179700,32 @@
       "telegram_core_fact": "브리티시 아메리칸 타바코(BTI)가 메릴린치인터내셔널(Merrill Lynch International)과 자사주 매입 계약을 체결하고, 10월 13일부터 12월 23일 영업 종료 시점까지 보통주를 매입해 전량 소각하기로 했다고 10월 7일 발표했다.",
       "title": "브리티시 아메리칸 타바코, 12월 23일까지 메릴린치 통한 자사주 매입"
     },
+    "source_fact:2e981718e106b6dd7bdb7ff8": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172131",
+      "source": "매일경제",
+      "source_body_digest": "3920b16aeab068d6000e1553bd004fc511d62aca36063509412ae0fc00aed33b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1bd4d4a2a5d125cd1b0910dcc6aa72f1f16bd1dc7dce3b35132076ddc2fd7156",
+      "source_fact_keys": [
+        "source_fact:v1:1985557f458ef83b8995e3976027f2df1aa81b48757dede896ed8b4c00d57c09",
+        "source_fact:v1:1dc2a8a7ca50f93e5dc6adf0d9f8a6e977b7d3699cf0ef766e19725e871f28f6",
+        "source_fact:v1:4bae60f38a4c9f409674dada70b2f792433a7cb7bfb9d127f0929c35376da2d2",
+        "source_fact:v1:9900b20d5bb3f2fdcd499318e58707ad695c683d61145655f8a7d29d428fd83f",
+        "source_fact:v1:bd3268adcd9cceb6ca08361b6e58c72462daee402116ed130f9853712e4f689c",
+        "source_fact:v1:e23c8aa388248dbea8f01fe1638ed224dbde2a126cb052de4cf2872912e38070",
+        "source_fact:v1:e90dbf4d04ef6e383590c33b4c09f6e4f655bf119c739bbfba9b3685e533e9f0",
+        "source_fact:v1:f30b40628b2c0f6fd6f4157540b02ff047c28c4a80cd900e2c0b75a4965c27d0"
+      ],
+      "source_published_kst": "2026-10-09T06:12+09:00",
+      "source_title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주",
+      "telegram_core_fact": "회사 매출은 2억2000만 달러 전망입니다.",
+      "title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주"
+    },
     "source_fact:2e9c31119b1c1738d49e1f4e": {
       "first_seen_kst": "2026-10-07T06:41:04+09:00",
       "lanes": {
@@ -179333,6 +180227,30 @@
       "source_title": "사상 최고치 달리던 美증시 제동…AI 랠리 시험대[월스트리트in]",
       "telegram_core_fact": "사상 최고치 부근까지 오른 주가와 5%를 웃도는 장기금리가 공존하려면 기업들이 높아진 기대를 실적으로 증명해야 한다. 특히 AI에 쏟아부은 막대한 자금이 실제 매출과 이익으로 연결되고 있는지가 이번 실적시즌의 핵심 시험대가 될 전망이다.",
       "title": "사상 최고치 달리던 美증시 제동…AI 랠리 시험대[월스트리트in]"
+    },
+    "source_fact:2f346dc876d4c4c6c023327e": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172487",
+      "source": "매일경제",
+      "source_body_digest": "55abc8d5939c1654e2137bce183eb3fa6d78a2a25496d6ef92d66e24564a1914",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:91ed4201493f91b076860bcdfcfee369633e851be2e0dea1b60c5af74144e61c",
+      "source_fact_keys": [
+        "source_fact:v1:2286b9f0bbc03ea14a467217c805c65ec9cb62fbdb2bdfbbaec751cbaf1a7e72",
+        "source_fact:v1:2c0f47f655a1c8d5380e787d7d4a698f96f745f80a574f72ce4776d2f582cc01",
+        "source_fact:v1:86a169a4dd24c85299356121153b291b9b729e0160a61914b0c12d9fc5e07949",
+        "source_fact:v1:bdcc829fedcb27c45ba919516e4e496352f736568d3f011c618037211e21b4fa",
+        "source_fact:v1:d0aabc88675060c5372dbc38eec142625acc8533db83fcfa2b9eb7bd2f21b5af",
+        "source_fact:v1:e50d7d9eff04ce88adc45722d619b735184d02e6d2a44c92433e41270cf1b1e7"
+      ],
+      "source_published_kst": "2026-10-09T19:06+09:00",
+      "source_title": "칼레도니아 마이닝, 3분기 금 생산 11% 감소·연간 가이던스 하향",
+      "telegram_core_fact": "칼레도니아 마이닝(CMCL)이 짐바브웨 블랭킷 광산의 3분기(9월 30일 종료) 금 생산량이 1만7030온스로 전년 동기(1만9106온스) 대비 10.9% 감소했다고 밝히고, 2026년 연간 금 생산 가이던스를 기존 7만2000~7만6500온스에서 6만9000~7만2500온스로 하향 조정한다고 10월 9일 발표했다.",
+      "title": "칼레도니아 마이닝, 3분기 금 생산 11% 감소·연간 가이던스 하향"
     },
     "source_fact:2f3521c710ade4bc3cdda328": {
       "first_seen_kst": "2026-10-08T07:12:10+09:00",
@@ -182793,6 +183711,35 @@
       "source_published_kst": "2026-10-07T09:16+09:00",
       "title": "덕산넵코어스, 누리호 5차 발사 위성항법수신기·안테나 공급"
     },
+    "source_fact:3509daded474f2fea906c840": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261009007251072",
+      "source": "연합뉴스",
+      "source_body_digest": "d2cb81b91bc8568449c7dd70b34055acee3aedd339bf522d73b80f521d399a2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8387167a40e4786d79a1ede2b130f79e177f83e9d603f61eb6c6f656c59c98fc",
+      "source_fact_keys": [
+        "source_fact:v1:055ca79f16e2cd3e02cab71c743315ecc0d90e41e7d122b804d7cf8700c825c7",
+        "source_fact:v1:05a416d5d396544ff8e057a7c1a644449333379a3715320b436ec20eaea3c8ea",
+        "source_fact:v1:1337accf55b342d7e1721868a3fa6081011fdeabccee717ed945b42d4cfdf7d1",
+        "source_fact:v1:1c0daf9892521f20e82071c2a50c59795ddbbb8e81a72a07fba36ea5d26b1e1c",
+        "source_fact:v1:61192d5272b2be1f95b01aeee4f50c22cbd23cdb00caa10823aeb9dbb6837c9f",
+        "source_fact:v1:6414200adc84dfa9c838ce9d3201e76ece73ed18089fe27ba3f4b32add3203a4",
+        "source_fact:v1:950202a72fc6bee05a35d5b6b632b4862e5b5455514d2d1c1f2b264a76cd8538",
+        "source_fact:v1:9b28ccd28b0c540abdb6604020fe5695cc9c9889b1c95db67cc19fa141e20cdb",
+        "source_fact:v1:a72abfbb23851c42b4a2acc0b636abe80b665492f7e924ae55fa0dfc5b7c800b",
+        "source_fact:v1:bc7e55ab74a8efc79d1273d0cd0fc864f8a7d92a2ae6ace904840d8fe906619e",
+        "source_fact:v1:c856d69f2fcb14e9bf79b5ab3a48ac8a94f829f641ff2ca8370dc752dbc4c42e"
+      ],
+      "source_published_kst": "2026-10-09T06:23+09:00",
+      "source_title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "S&P 500지수는 전장보다 36.41포인트(0.47%) 내린 7,765.36, 나스닥 종합지수는 345.35포인트(1.25%) 하락한 27,193.34로 마쳤다.",
+      "title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스"
+    },
     "source_fact:3514a4ff3ef0d840b07b70a1": {
       "first_seen_kst": "2026-10-07T12:06:36+09:00",
       "lanes": {
@@ -185135,6 +186082,30 @@
       "source_title": "알래스카 LNG·301조에 다시 커지는 관세 불확실성",
       "telegram_core_fact": "알래스카 LNG 협상이 원만하게 진행되지 않을 경우 향후 미국이 과잉생산 관련 무역법 301조 조사를 활용해 우리나라에 추가 관세 부과 가능성도 배제할 수 없다는 진단이다.",
       "title": "알래스카 LNG·301조에 다시 커지는 관세 불확실성"
+    },
+    "source_fact:39902e224611695d9459bcae": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172487",
+      "source": "매일경제",
+      "source_body_digest": "55abc8d5939c1654e2137bce183eb3fa6d78a2a25496d6ef92d66e24564a1914",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:91ed4201493f91b076860bcdfcfee369633e851be2e0dea1b60c5af74144e61c",
+      "source_fact_keys": [
+        "source_fact:v1:2286b9f0bbc03ea14a467217c805c65ec9cb62fbdb2bdfbbaec751cbaf1a7e72",
+        "source_fact:v1:2c0f47f655a1c8d5380e787d7d4a698f96f745f80a574f72ce4776d2f582cc01",
+        "source_fact:v1:86a169a4dd24c85299356121153b291b9b729e0160a61914b0c12d9fc5e07949",
+        "source_fact:v1:bdcc829fedcb27c45ba919516e4e496352f736568d3f011c618037211e21b4fa",
+        "source_fact:v1:d0aabc88675060c5372dbc38eec142625acc8533db83fcfa2b9eb7bd2f21b5af",
+        "source_fact:v1:e50d7d9eff04ce88adc45722d619b735184d02e6d2a44c92433e41270cf1b1e7"
+      ],
+      "source_published_kst": "2026-10-09T19:06+09:00",
+      "source_title": "칼레도니아 마이닝, 3분기 금 생산 11% 감소·연간 가이던스 하향",
+      "telegram_core_fact": "칼레도니아 마이닝(CMCL)이 짐바브웨 블랭킷 광산의 3분기(9월 30일 종료) 금 생산량이 1만7030온스로 전년 동기(1만9106온스) 대비 10.9% 감소했다고 밝히고, 2026년 연간 금 생산 가이던스를 기존 7만2000~7만6500온스에서 6만9000~7만2500온스로 하향 조정한다고 10월 9일 발표했다.",
+      "title": "칼레도니아 마이닝, 3분기 금 생산 11% 감소·연간 가이던스 하향"
     },
     "source_fact:39a62655d20b2f6f0913430b": {
       "first_seen_kst": "2026-10-08T09:58:56+09:00",
@@ -191645,6 +192616,33 @@
       "source_published_kst": "2026-10-06T07:46+09:00",
       "title": "고금리에도 꺾이지 않는 AI 투자…연준 긴축 고민"
     },
+    "source_fact:454cd79a3228da1bfd77be2f": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172237",
+      "source": "매일경제",
+      "source_body_digest": "02a44462ad519f9ab7b0ce0b24bd8e5a8af4d91741d71848d73ff8bbf2a1750c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8847f840fe11345c13d41bc527af19691542cfbdc08bb3e2cb38e2c5de40e380",
+      "source_fact_keys": [
+        "source_fact:v1:01ea15f3474a806680e4add3eccfad78566fca1a529d4faea4fd0411bbb9c1eb",
+        "source_fact:v1:1410b82a370761650e79de88305070da8831b60d68502042c3734bec4a334696",
+        "source_fact:v1:4443da027b642c84f7bf0fa18dec80ee3301d8595934d2d83e3b51c1cf3f4c7d",
+        "source_fact:v1:4c192000b3f5fd7ef671d7a53acaa8eece83ff57f5ece6a94d4fd1f1a045dde0",
+        "source_fact:v1:6699b5ea7007f1536dcd741a1d218d7895b554119d6e01e54a8e096f37ce1bb2",
+        "source_fact:v1:9d401e89ffbef911aeade983094f9e373906ba14cd1b4acf9b741ff960fc5ef7",
+        "source_fact:v1:dd1a7f49d782475353d684921e5c33b039c1a80e97b035e67b7aa330f7c56ac4",
+        "source_fact:v1:de729d764db23232dfc9f58783ab2f8c5c01c9c8fb455f7b76d425aaf73e44c3",
+        "source_fact:v1:f84b1a126a8f17d9c21d30800c66f9ca00bbe71b105521635d9ed2c21c3e17d5"
+      ],
+      "source_published_kst": "2026-10-09T19:06+09:00",
+      "source_title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러",
+      "telegram_core_fact": "기그캐피털8(GIW)이 위즈키(WISeKey)와 씰SQ(SEALSQ)가 설립한 양자기술 플랫폼 기업 퀀티시모(Quantisimo)와 확정적 합병계약을 체결했으며, 합병 후 퀀티시모의 지분가치는 주당 10달러 기준 약 6억6610만 달러로 평가됐다고 9일(현지시간) 발표했다.",
+      "title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러"
+    },
     "source_fact:454d227bda320b4c96105825": {
       "first_seen_kst": "2026-10-08T13:07:52+09:00",
       "lanes": {
@@ -195799,6 +196797,33 @@
       ],
       "source_published_kst": "2026-10-06T11:15+09:00",
       "title": "[더벨]네오리진, 글로벌 AI 추론 기업 'NOVA'에 50만달러 투자"
+    },
+    "source_fact:4b677e8157c022d893503058": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172237",
+      "source": "매일경제",
+      "source_body_digest": "02a44462ad519f9ab7b0ce0b24bd8e5a8af4d91741d71848d73ff8bbf2a1750c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8847f840fe11345c13d41bc527af19691542cfbdc08bb3e2cb38e2c5de40e380",
+      "source_fact_keys": [
+        "source_fact:v1:01ea15f3474a806680e4add3eccfad78566fca1a529d4faea4fd0411bbb9c1eb",
+        "source_fact:v1:1410b82a370761650e79de88305070da8831b60d68502042c3734bec4a334696",
+        "source_fact:v1:4443da027b642c84f7bf0fa18dec80ee3301d8595934d2d83e3b51c1cf3f4c7d",
+        "source_fact:v1:4c192000b3f5fd7ef671d7a53acaa8eece83ff57f5ece6a94d4fd1f1a045dde0",
+        "source_fact:v1:6699b5ea7007f1536dcd741a1d218d7895b554119d6e01e54a8e096f37ce1bb2",
+        "source_fact:v1:9d401e89ffbef911aeade983094f9e373906ba14cd1b4acf9b741ff960fc5ef7",
+        "source_fact:v1:dd1a7f49d782475353d684921e5c33b039c1a80e97b035e67b7aa330f7c56ac4",
+        "source_fact:v1:de729d764db23232dfc9f58783ab2f8c5c01c9c8fb455f7b76d425aaf73e44c3",
+        "source_fact:v1:f84b1a126a8f17d9c21d30800c66f9ca00bbe71b105521635d9ed2c21c3e17d5"
+      ],
+      "source_published_kst": "2026-10-09T19:06+09:00",
+      "source_title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러",
+      "telegram_core_fact": "기그캐피털8(GIW)이 위즈키(WISeKey)와 씰SQ(SEALSQ)가 설립한 양자기술 플랫폼 기업 퀀티시모(Quantisimo)와 확정적 합병계약을 체결했으며, 합병 후 퀀티시모의 지분가치는 주당 10달러 기준 약 6억6610만 달러로 평가됐다고 9일(현지시간) 발표했다.",
+      "title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러"
     },
     "source_fact:4bb23f724bcaa0286f0a4a3f": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
@@ -200909,6 +201934,31 @@
       "telegram_core_fact": "우크라이나 전쟁을 계기로 미국과 유럽 등 주요국이 잇따라 경제 제재에 나서면서 금융망 일부에 대한 접근이 제한되고 브릭스(BRICS) 회원국인 중국∙인도 등과의 자금 거래가 복잡해지자 디지털 루블을 새로운 지급 수단으로 육성해 왔다.",
       "title": "러시아 디지털 루블 계좌 22만 개∙∙∙첫 달 예상치 3배↑"
     },
+    "source_fact:5502c2162729c81a4e94799f": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610092953b",
+      "source": "한국경제",
+      "source_body_digest": "c3a98736874cc3811caf222a22722aa279d40b46e901c25247a63577aa8ef036",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1f5ea026cace7c18ba41a08ebe3d4237bb2d294a0a862a49e719e81fb6508f5d",
+      "source_fact_keys": [
+        "source_fact:v1:0c940c05bb4e6b1aa95062741f59c9e91347d17a48af889d434601290b79e855",
+        "source_fact:v1:22c1edce3ae1cac38d42eb021c8ed8dba8f7b644b97f892a3d1bd9ec51d74c4a",
+        "source_fact:v1:3cfb7a045f8fa83040dd540972d77d1ee52b3a6e63c13f171f05a7f3ca8d9f76",
+        "source_fact:v1:50e772aa727592b7b302aa6f8e46e06de3e1ffb0864cf79768b7be9608ff65e3",
+        "source_fact:v1:5fa750694393cdd8ced3406fcefb316b2f0f31248d35085e6cd78953cbba45d4",
+        "source_fact:v1:607c38e6037f73eb4ca74486ff0fca2730c0808a1780d1cd940f079b44dd82da",
+        "source_fact:v1:cf4a1ff393f068b9cce84044c41e9224111ef66d897674213edf9e93b1087ac5"
+      ],
+      "source_published_kst": "2026-10-09T17:54+09:00",
+      "source_title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수",
+      "telegram_core_fact": "최태원 SK그룹 회장이 전남광주통합특별시 반도체 생산기지 구축에 속도를 내겠다는 의지를 밝혔다. SK하이닉스는 지난 6월 호남권에 400조원 신규 클러스터를 조성하겠다는 구상을 밝힌 뒤 경영진의 광주 방문과 지자체 협의를 이어왔다.",
+      "title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수"
+    },
     "source_fact:550ebbba21d316d75c1cc279": {
       "first_seen_kst": "2026-10-07T01:59:08+09:00",
       "lanes": {
@@ -201684,6 +202734,33 @@
       ],
       "source_published_kst": "2026-10-07T09:23+09:00",
       "title": "법무법인 태평양, 9년 연속 ‘글로벌 200대 로펌’ 선정 쾌거"
+    },
+    "source_fact:56a2e91e4a122c741c5fe0be": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172237",
+      "source": "매일경제",
+      "source_body_digest": "02a44462ad519f9ab7b0ce0b24bd8e5a8af4d91741d71848d73ff8bbf2a1750c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8847f840fe11345c13d41bc527af19691542cfbdc08bb3e2cb38e2c5de40e380",
+      "source_fact_keys": [
+        "source_fact:v1:01ea15f3474a806680e4add3eccfad78566fca1a529d4faea4fd0411bbb9c1eb",
+        "source_fact:v1:1410b82a370761650e79de88305070da8831b60d68502042c3734bec4a334696",
+        "source_fact:v1:4443da027b642c84f7bf0fa18dec80ee3301d8595934d2d83e3b51c1cf3f4c7d",
+        "source_fact:v1:4c192000b3f5fd7ef671d7a53acaa8eece83ff57f5ece6a94d4fd1f1a045dde0",
+        "source_fact:v1:6699b5ea7007f1536dcd741a1d218d7895b554119d6e01e54a8e096f37ce1bb2",
+        "source_fact:v1:9d401e89ffbef911aeade983094f9e373906ba14cd1b4acf9b741ff960fc5ef7",
+        "source_fact:v1:dd1a7f49d782475353d684921e5c33b039c1a80e97b035e67b7aa330f7c56ac4",
+        "source_fact:v1:de729d764db23232dfc9f58783ab2f8c5c01c9c8fb455f7b76d425aaf73e44c3",
+        "source_fact:v1:f84b1a126a8f17d9c21d30800c66f9ca00bbe71b105521635d9ed2c21c3e17d5"
+      ],
+      "source_published_kst": "2026-10-09T19:06+09:00",
+      "source_title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러",
+      "telegram_core_fact": "기그캐피털8(GIW)이 위즈키(WISeKey)와 씰SQ(SEALSQ)가 설립한 양자기술 플랫폼 기업 퀀티시모(Quantisimo)와 확정적 합병계약을 체결했으며, 합병 후 퀀티시모의 지분가치는 주당 10달러 기준 약 6억6610만 달러로 평가됐다고 9일(현지시간) 발표했다.",
+      "title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러"
     },
     "source_fact:56cd475aad5207bd5c2e3cef": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -203283,6 +204360,30 @@
       ],
       "source_published_kst": "2026-10-05T08:08+09:00",
       "title": "한반도 감시부터 우주의약품 실험까지…K-우주영토 넓힌다[누리호 5차 下]"
+    },
+    "source_fact:592b2b4313d9859bd11e938a": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172487",
+      "source": "매일경제",
+      "source_body_digest": "55abc8d5939c1654e2137bce183eb3fa6d78a2a25496d6ef92d66e24564a1914",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:91ed4201493f91b076860bcdfcfee369633e851be2e0dea1b60c5af74144e61c",
+      "source_fact_keys": [
+        "source_fact:v1:2286b9f0bbc03ea14a467217c805c65ec9cb62fbdb2bdfbbaec751cbaf1a7e72",
+        "source_fact:v1:2c0f47f655a1c8d5380e787d7d4a698f96f745f80a574f72ce4776d2f582cc01",
+        "source_fact:v1:86a169a4dd24c85299356121153b291b9b729e0160a61914b0c12d9fc5e07949",
+        "source_fact:v1:bdcc829fedcb27c45ba919516e4e496352f736568d3f011c618037211e21b4fa",
+        "source_fact:v1:d0aabc88675060c5372dbc38eec142625acc8533db83fcfa2b9eb7bd2f21b5af",
+        "source_fact:v1:e50d7d9eff04ce88adc45722d619b735184d02e6d2a44c92433e41270cf1b1e7"
+      ],
+      "source_published_kst": "2026-10-09T19:06+09:00",
+      "source_title": "칼레도니아 마이닝, 3분기 금 생산 11% 감소·연간 가이던스 하향",
+      "telegram_core_fact": "칼레도니아 마이닝(CMCL)이 짐바브웨 블랭킷 광산의 3분기(9월 30일 종료) 금 생산량이 1만7030온스로 전년 동기(1만9106온스) 대비 10.9% 감소했다고 밝히고, 2026년 연간 금 생산 가이던스를 기존 7만2000~7만6500온스에서 6만9000~7만2500온스로 하향 조정한다고 10월 9일 발표했다.",
+      "title": "칼레도니아 마이닝, 3분기 금 생산 11% 감소·연간 가이던스 하향"
     },
     "source_fact:592c49583c74a3883fdabf8f": {
       "first_seen_kst": "2026-10-07T17:34:38+09:00",
@@ -207726,6 +208827,35 @@
       "telegram_core_fact": "울산시는 동북아 에너지 물류거점(허브) 조성의 핵심 기반사업인 '남신항 에너지거점 2단계' 구축을 위한 3대 방향을 설정하고 사업 추진을 본격화한다고 7일 밝혔다. 남신항 에너지거점 2단계는 민선 9기 공약인 '동북아 에너지 물류거점 조성'과 연계해 울산 에너지 산업과 항만 경쟁력을 강화하기 위한 사업이다.",
       "title": "울산 남신항 에너지거점 2단계 본격화…동북아 물류허브 승부수 | 연합뉴스"
     },
+    "source_fact:607068b898b4c6fa8ec3f080": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261009007251072",
+      "source": "연합뉴스",
+      "source_body_digest": "d2cb81b91bc8568449c7dd70b34055acee3aedd339bf522d73b80f521d399a2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8387167a40e4786d79a1ede2b130f79e177f83e9d603f61eb6c6f656c59c98fc",
+      "source_fact_keys": [
+        "source_fact:v1:055ca79f16e2cd3e02cab71c743315ecc0d90e41e7d122b804d7cf8700c825c7",
+        "source_fact:v1:05a416d5d396544ff8e057a7c1a644449333379a3715320b436ec20eaea3c8ea",
+        "source_fact:v1:1337accf55b342d7e1721868a3fa6081011fdeabccee717ed945b42d4cfdf7d1",
+        "source_fact:v1:1c0daf9892521f20e82071c2a50c59795ddbbb8e81a72a07fba36ea5d26b1e1c",
+        "source_fact:v1:61192d5272b2be1f95b01aeee4f50c22cbd23cdb00caa10823aeb9dbb6837c9f",
+        "source_fact:v1:6414200adc84dfa9c838ce9d3201e76ece73ed18089fe27ba3f4b32add3203a4",
+        "source_fact:v1:950202a72fc6bee05a35d5b6b632b4862e5b5455514d2d1c1f2b264a76cd8538",
+        "source_fact:v1:9b28ccd28b0c540abdb6604020fe5695cc9c9889b1c95db67cc19fa141e20cdb",
+        "source_fact:v1:a72abfbb23851c42b4a2acc0b636abe80b665492f7e924ae55fa0dfc5b7c800b",
+        "source_fact:v1:bc7e55ab74a8efc79d1273d0cd0fc864f8a7d92a2ae6ace904840d8fe906619e",
+        "source_fact:v1:c856d69f2fcb14e9bf79b5ab3a48ac8a94f829f641ff2ca8370dc752dbc4c42e"
+      ],
+      "source_published_kst": "2026-10-09T06:23+09:00",
+      "source_title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "S&P 500지수는 전장보다 36.41포인트(0.47%) 내린 7,765.36, 나스닥 종합지수는 345.35포인트(1.25%) 하락한 27,193.34로 마쳤다.",
+      "title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스"
+    },
     "source_fact:607ff9ec0d1f339d964763a8": {
       "first_seen_kst": "2026-10-08T05:44:23+09:00",
       "lanes": {
@@ -208206,6 +209336,31 @@
       "telegram_core_fact": "증권가에서는 컨센서스 대비 실적이 하회한 배경에 대해 연결 자회사 LG이노텍의 수익성 부진을 꼽고 있다.",
       "title": "LG전자, 자회사 부진에 3Q 성적표 '예상치 하회'…가전·TV 등 주력사업은 '선방'"
     },
+    "source_fact:61a9f65e9ea930b616499835": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610092953b",
+      "source": "한국경제",
+      "source_body_digest": "c3a98736874cc3811caf222a22722aa279d40b46e901c25247a63577aa8ef036",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1f5ea026cace7c18ba41a08ebe3d4237bb2d294a0a862a49e719e81fb6508f5d",
+      "source_fact_keys": [
+        "source_fact:v1:0c940c05bb4e6b1aa95062741f59c9e91347d17a48af889d434601290b79e855",
+        "source_fact:v1:22c1edce3ae1cac38d42eb021c8ed8dba8f7b644b97f892a3d1bd9ec51d74c4a",
+        "source_fact:v1:3cfb7a045f8fa83040dd540972d77d1ee52b3a6e63c13f171f05a7f3ca8d9f76",
+        "source_fact:v1:50e772aa727592b7b302aa6f8e46e06de3e1ffb0864cf79768b7be9608ff65e3",
+        "source_fact:v1:5fa750694393cdd8ced3406fcefb316b2f0f31248d35085e6cd78953cbba45d4",
+        "source_fact:v1:607c38e6037f73eb4ca74486ff0fca2730c0808a1780d1cd940f079b44dd82da",
+        "source_fact:v1:cf4a1ff393f068b9cce84044c41e9224111ef66d897674213edf9e93b1087ac5"
+      ],
+      "source_published_kst": "2026-10-09T17:54+09:00",
+      "source_title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수",
+      "telegram_core_fact": "최태원 SK그룹 회장이 전남광주통합특별시 반도체 생산기지 구축에 속도를 내겠다는 의지를 밝혔다. SK하이닉스는 지난 6월 호남권에 400조원 신규 클러스터를 조성하겠다는 구상을 밝힌 뒤 경영진의 광주 방문과 지자체 협의를 이어왔다.",
+      "title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수"
+    },
     "source_fact:61ac83ec4b0b4abbd7554865": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
@@ -208655,6 +209810,28 @@
       ],
       "source_published_kst": "2026-10-05T20:58+09:00",
       "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
+    },
+    "source_fact:6289ec1e6783a6e8b1285e84": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261009_0003820008",
+      "source": "뉴시스",
+      "source_body_digest": "0e6b580bb3dca714e798f21fbbaf8c65acb8d9eac1a7ebb9d8f9ed55bd6e8c70",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:730a1447feedac9e6dbfe4bae932c7fa2fa5b31f31c8d4f66b2c39ee974c4643",
+      "source_fact_keys": [
+        "source_fact:v1:0999938c6456f5861af59caecc3fa74800980c51f791dc130d6025959c1d87cb",
+        "source_fact:v1:2bc7244c9c858a4a6fdde2d63b801323eec5744b87be1b5ad7e2ea2f1e143208",
+        "source_fact:v1:980e3140465e4a4c230e0e07e92bf1b4811044fd742f513213c98311ded1f6d7",
+        "source_fact:v1:d265350531acd8e7ba735fedb7d75619860515c1fac70fa8d7f2d586f5d9d948"
+      ],
+      "source_published_kst": "2026-10-09T04:29+09:00",
+      "source_title": "WTO, 올해 상품무역 증가율 3.9%로 상향…\"AI 호황, 이란전 충격 상쇄\"",
+      "telegram_core_fact": "WTO는 중동 분쟁이 에너지 가격 상승과 운송 경로 차질을 통해 무역에 계속해서 부담을 줄 것으로 예상하면서도 세계 국내총생산(GDP)이 올해 2.6%, 다음해 2.9% 각각 성장할 것으로 전망했다.",
+      "title": "WTO, 올해 상품무역 증가율 3.9%로 상향…\"AI 호황, 이란전 충격 상쇄\""
     },
     "source_fact:6291b620d5e6b58c0050eb4d": {
       "first_seen_kst": "2026-10-07T16:57:09+09:00",
@@ -209410,6 +210587,32 @@
       ],
       "source_published_kst": "2026-10-06T17:35+09:00",
       "title": "엔비디아, 이틀째 사상 최고…시총 6조달러 고지 '눈앞'"
+    },
+    "source_fact:639597dbf3e864f39b070804": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172131",
+      "source": "매일경제",
+      "source_body_digest": "3920b16aeab068d6000e1553bd004fc511d62aca36063509412ae0fc00aed33b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1bd4d4a2a5d125cd1b0910dcc6aa72f1f16bd1dc7dce3b35132076ddc2fd7156",
+      "source_fact_keys": [
+        "source_fact:v1:1985557f458ef83b8995e3976027f2df1aa81b48757dede896ed8b4c00d57c09",
+        "source_fact:v1:1dc2a8a7ca50f93e5dc6adf0d9f8a6e977b7d3699cf0ef766e19725e871f28f6",
+        "source_fact:v1:4bae60f38a4c9f409674dada70b2f792433a7cb7bfb9d127f0929c35376da2d2",
+        "source_fact:v1:9900b20d5bb3f2fdcd499318e58707ad695c683d61145655f8a7d29d428fd83f",
+        "source_fact:v1:bd3268adcd9cceb6ca08361b6e58c72462daee402116ed130f9853712e4f689c",
+        "source_fact:v1:e23c8aa388248dbea8f01fe1638ed224dbde2a126cb052de4cf2872912e38070",
+        "source_fact:v1:e90dbf4d04ef6e383590c33b4c09f6e4f655bf119c739bbfba9b3685e533e9f0",
+        "source_fact:v1:f30b40628b2c0f6fd6f4157540b02ff047c28c4a80cd900e2c0b75a4965c27d0"
+      ],
+      "source_published_kst": "2026-10-09T06:12+09:00",
+      "source_title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주",
+      "telegram_core_fact": "회사 매출은 2억2000만 달러 전망입니다.",
+      "title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주"
     },
     "source_fact:6396206163ed13d8642ee596": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
@@ -214527,6 +215730,33 @@
       "telegram_core_fact": "반도체 수출이 가격과 물량의 동반 상승에 힘입어 질주하면서 지난 8월 경상수지 흑자가 460억달러를 넘어섰다.",
       "title": "누적 경상흑자 2800억달러…반도체 질주에 연간 4500억달러 ‘순항’(종합)"
     },
+    "source_fact:6cf0a81f285a55cd6ccbb861": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172237",
+      "source": "매일경제",
+      "source_body_digest": "02a44462ad519f9ab7b0ce0b24bd8e5a8af4d91741d71848d73ff8bbf2a1750c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8847f840fe11345c13d41bc527af19691542cfbdc08bb3e2cb38e2c5de40e380",
+      "source_fact_keys": [
+        "source_fact:v1:01ea15f3474a806680e4add3eccfad78566fca1a529d4faea4fd0411bbb9c1eb",
+        "source_fact:v1:1410b82a370761650e79de88305070da8831b60d68502042c3734bec4a334696",
+        "source_fact:v1:4443da027b642c84f7bf0fa18dec80ee3301d8595934d2d83e3b51c1cf3f4c7d",
+        "source_fact:v1:4c192000b3f5fd7ef671d7a53acaa8eece83ff57f5ece6a94d4fd1f1a045dde0",
+        "source_fact:v1:6699b5ea7007f1536dcd741a1d218d7895b554119d6e01e54a8e096f37ce1bb2",
+        "source_fact:v1:9d401e89ffbef911aeade983094f9e373906ba14cd1b4acf9b741ff960fc5ef7",
+        "source_fact:v1:dd1a7f49d782475353d684921e5c33b039c1a80e97b035e67b7aa330f7c56ac4",
+        "source_fact:v1:de729d764db23232dfc9f58783ab2f8c5c01c9c8fb455f7b76d425aaf73e44c3",
+        "source_fact:v1:f84b1a126a8f17d9c21d30800c66f9ca00bbe71b105521635d9ed2c21c3e17d5"
+      ],
+      "source_published_kst": "2026-10-09T19:06+09:00",
+      "source_title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러",
+      "telegram_core_fact": "기그캐피털8(GIW)이 위즈키(WISeKey)와 씰SQ(SEALSQ)가 설립한 양자기술 플랫폼 기업 퀀티시모(Quantisimo)와 확정적 합병계약을 체결했으며, 합병 후 퀀티시모의 지분가치는 주당 10달러 기준 약 6억6610만 달러로 평가됐다고 9일(현지시간) 발표했다.",
+      "title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러"
+    },
     "source_fact:6d0c38058d5b5d61e65387ce": {
       "first_seen_kst": "2026-10-06T23:05:07+09:00",
       "lanes": {
@@ -216409,6 +217639,35 @@
       "telegram_core_fact": "대신증권은 효성중공업의 3분기 매출을 1조9090억원, 영업이익을 3032억원으로 예상했다.",
       "title": "대신증권 \"효성중공업, 3분기 일시적 부진…업황 호조는 지속\""
     },
+    "source_fact:7075ef889435170528a8c3bf": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261009007251072",
+      "source": "연합뉴스",
+      "source_body_digest": "d2cb81b91bc8568449c7dd70b34055acee3aedd339bf522d73b80f521d399a2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8387167a40e4786d79a1ede2b130f79e177f83e9d603f61eb6c6f656c59c98fc",
+      "source_fact_keys": [
+        "source_fact:v1:055ca79f16e2cd3e02cab71c743315ecc0d90e41e7d122b804d7cf8700c825c7",
+        "source_fact:v1:05a416d5d396544ff8e057a7c1a644449333379a3715320b436ec20eaea3c8ea",
+        "source_fact:v1:1337accf55b342d7e1721868a3fa6081011fdeabccee717ed945b42d4cfdf7d1",
+        "source_fact:v1:1c0daf9892521f20e82071c2a50c59795ddbbb8e81a72a07fba36ea5d26b1e1c",
+        "source_fact:v1:61192d5272b2be1f95b01aeee4f50c22cbd23cdb00caa10823aeb9dbb6837c9f",
+        "source_fact:v1:6414200adc84dfa9c838ce9d3201e76ece73ed18089fe27ba3f4b32add3203a4",
+        "source_fact:v1:950202a72fc6bee05a35d5b6b632b4862e5b5455514d2d1c1f2b264a76cd8538",
+        "source_fact:v1:9b28ccd28b0c540abdb6604020fe5695cc9c9889b1c95db67cc19fa141e20cdb",
+        "source_fact:v1:a72abfbb23851c42b4a2acc0b636abe80b665492f7e924ae55fa0dfc5b7c800b",
+        "source_fact:v1:bc7e55ab74a8efc79d1273d0cd0fc864f8a7d92a2ae6ace904840d8fe906619e",
+        "source_fact:v1:c856d69f2fcb14e9bf79b5ab3a48ac8a94f829f641ff2ca8370dc752dbc4c42e"
+      ],
+      "source_published_kst": "2026-10-09T06:23+09:00",
+      "source_title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "S&P 500지수는 전장보다 36.41포인트(0.47%) 내린 7,765.36, 나스닥 종합지수는 345.35포인트(1.25%) 하락한 27,193.34로 마쳤다.",
+      "title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스"
+    },
     "source_fact:707a15d7669e490e56d44a1f": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
@@ -217368,6 +218627,31 @@
       "source_title": "[누리호 성공] 李대통령, 발사 장면 생중계로 시청…\"정부 지원 성과\" | 연합뉴스",
       "telegram_core_fact": "이후 누리호가 이륙한 뒤 약 20분간 위성 사출이 완전히 끝날 때까지 숨죽여 지켜보던 이 대통령은 발사 성공이 확인되고 항공우주연구원 관계자들이 환호하는 모습이 화면에 나오자 함께 박수를 치며 기쁨을 표시했다고 한다.",
       "title": "[누리호 성공] 李대통령, 발사 장면 생중계로 시청…\"정부 지원 성과\" | 연합뉴스"
+    },
+    "source_fact:7253bc269639e25795aa805c": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610092953b",
+      "source": "한국경제",
+      "source_body_digest": "c3a98736874cc3811caf222a22722aa279d40b46e901c25247a63577aa8ef036",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1f5ea026cace7c18ba41a08ebe3d4237bb2d294a0a862a49e719e81fb6508f5d",
+      "source_fact_keys": [
+        "source_fact:v1:0c940c05bb4e6b1aa95062741f59c9e91347d17a48af889d434601290b79e855",
+        "source_fact:v1:22c1edce3ae1cac38d42eb021c8ed8dba8f7b644b97f892a3d1bd9ec51d74c4a",
+        "source_fact:v1:3cfb7a045f8fa83040dd540972d77d1ee52b3a6e63c13f171f05a7f3ca8d9f76",
+        "source_fact:v1:50e772aa727592b7b302aa6f8e46e06de3e1ffb0864cf79768b7be9608ff65e3",
+        "source_fact:v1:5fa750694393cdd8ced3406fcefb316b2f0f31248d35085e6cd78953cbba45d4",
+        "source_fact:v1:607c38e6037f73eb4ca74486ff0fca2730c0808a1780d1cd940f079b44dd82da",
+        "source_fact:v1:cf4a1ff393f068b9cce84044c41e9224111ef66d897674213edf9e93b1087ac5"
+      ],
+      "source_published_kst": "2026-10-09T17:54+09:00",
+      "source_title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수",
+      "telegram_core_fact": "최태원 SK그룹 회장이 전남광주통합특별시 반도체 생산기지 구축에 속도를 내겠다는 의지를 밝혔다. SK하이닉스는 지난 6월 호남권에 400조원 신규 클러스터를 조성하겠다는 구상을 밝힌 뒤 경영진의 광주 방문과 지자체 협의를 이어왔다.",
+      "title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수"
     },
     "source_fact:72648ae63cf231333c588559": {
       "first_seen_kst": "2026-10-07T00:09:35+09:00",
@@ -219539,6 +220823,35 @@
       ],
       "source_published_kst": "2026-10-07T07:00+09:00",
       "title": "경영권 인수 넘어 성장자본으로…PEF 순기능 살려야 [김앤장 금융·핀테크·가상자산 인사이트]"
+    },
+    "source_fact:763ec13750290704d29e0b2f": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261009007251072",
+      "source": "연합뉴스",
+      "source_body_digest": "d2cb81b91bc8568449c7dd70b34055acee3aedd339bf522d73b80f521d399a2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8387167a40e4786d79a1ede2b130f79e177f83e9d603f61eb6c6f656c59c98fc",
+      "source_fact_keys": [
+        "source_fact:v1:055ca79f16e2cd3e02cab71c743315ecc0d90e41e7d122b804d7cf8700c825c7",
+        "source_fact:v1:05a416d5d396544ff8e057a7c1a644449333379a3715320b436ec20eaea3c8ea",
+        "source_fact:v1:1337accf55b342d7e1721868a3fa6081011fdeabccee717ed945b42d4cfdf7d1",
+        "source_fact:v1:1c0daf9892521f20e82071c2a50c59795ddbbb8e81a72a07fba36ea5d26b1e1c",
+        "source_fact:v1:61192d5272b2be1f95b01aeee4f50c22cbd23cdb00caa10823aeb9dbb6837c9f",
+        "source_fact:v1:6414200adc84dfa9c838ce9d3201e76ece73ed18089fe27ba3f4b32add3203a4",
+        "source_fact:v1:950202a72fc6bee05a35d5b6b632b4862e5b5455514d2d1c1f2b264a76cd8538",
+        "source_fact:v1:9b28ccd28b0c540abdb6604020fe5695cc9c9889b1c95db67cc19fa141e20cdb",
+        "source_fact:v1:a72abfbb23851c42b4a2acc0b636abe80b665492f7e924ae55fa0dfc5b7c800b",
+        "source_fact:v1:bc7e55ab74a8efc79d1273d0cd0fc864f8a7d92a2ae6ace904840d8fe906619e",
+        "source_fact:v1:c856d69f2fcb14e9bf79b5ab3a48ac8a94f829f641ff2ca8370dc752dbc4c42e"
+      ],
+      "source_published_kst": "2026-10-09T06:23+09:00",
+      "source_title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "S&P 500지수는 전장보다 36.41포인트(0.47%) 내린 7,765.36, 나스닥 종합지수는 345.35포인트(1.25%) 하락한 27,193.34로 마쳤다.",
+      "title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스"
     },
     "source_fact:76468fc0fe0e63652c3dd13d": {
       "first_seen_kst": "2026-10-07T19:32:28+09:00",
@@ -224399,6 +225712,28 @@
       "source_published_kst": "2026-10-07T14:58+09:00",
       "title": "송미령 \"산란계협회, 경고에도 가격 고시…농가 짓밟았다는 비판 과해\""
     },
+    "source_fact:7ec0aa5548c8ba7a89b375a9": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261009_0003820008",
+      "source": "뉴시스",
+      "source_body_digest": "0e6b580bb3dca714e798f21fbbaf8c65acb8d9eac1a7ebb9d8f9ed55bd6e8c70",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:730a1447feedac9e6dbfe4bae932c7fa2fa5b31f31c8d4f66b2c39ee974c4643",
+      "source_fact_keys": [
+        "source_fact:v1:0999938c6456f5861af59caecc3fa74800980c51f791dc130d6025959c1d87cb",
+        "source_fact:v1:2bc7244c9c858a4a6fdde2d63b801323eec5744b87be1b5ad7e2ea2f1e143208",
+        "source_fact:v1:980e3140465e4a4c230e0e07e92bf1b4811044fd742f513213c98311ded1f6d7",
+        "source_fact:v1:d265350531acd8e7ba735fedb7d75619860515c1fac70fa8d7f2d586f5d9d948"
+      ],
+      "source_published_kst": "2026-10-09T04:29+09:00",
+      "source_title": "WTO, 올해 상품무역 증가율 3.9%로 상향…\"AI 호황, 이란전 충격 상쇄\"",
+      "telegram_core_fact": "WTO는 중동 분쟁이 에너지 가격 상승과 운송 경로 차질을 통해 무역에 계속해서 부담을 줄 것으로 예상하면서도 세계 국내총생산(GDP)이 올해 2.6%, 다음해 2.9% 각각 성장할 것으로 전망했다.",
+      "title": "WTO, 올해 상품무역 증가율 3.9%로 상향…\"AI 호황, 이란전 충격 상쇄\""
+    },
     "source_fact:7eca168de0771a546132b88e": {
       "first_seen_kst": "2026-10-06T01:05:54+09:00",
       "lanes": {
@@ -225482,6 +226817,30 @@
       ],
       "source_published_kst": "2026-10-05T20:37+09:00",
       "title": "마타도르 리소시즈, 팔로마 인수 완료..12억5500만 달러·시추 156곳"
+    },
+    "source_fact:80e652ac528e79bcfd2bae54": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172487",
+      "source": "매일경제",
+      "source_body_digest": "55abc8d5939c1654e2137bce183eb3fa6d78a2a25496d6ef92d66e24564a1914",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:91ed4201493f91b076860bcdfcfee369633e851be2e0dea1b60c5af74144e61c",
+      "source_fact_keys": [
+        "source_fact:v1:2286b9f0bbc03ea14a467217c805c65ec9cb62fbdb2bdfbbaec751cbaf1a7e72",
+        "source_fact:v1:2c0f47f655a1c8d5380e787d7d4a698f96f745f80a574f72ce4776d2f582cc01",
+        "source_fact:v1:86a169a4dd24c85299356121153b291b9b729e0160a61914b0c12d9fc5e07949",
+        "source_fact:v1:bdcc829fedcb27c45ba919516e4e496352f736568d3f011c618037211e21b4fa",
+        "source_fact:v1:d0aabc88675060c5372dbc38eec142625acc8533db83fcfa2b9eb7bd2f21b5af",
+        "source_fact:v1:e50d7d9eff04ce88adc45722d619b735184d02e6d2a44c92433e41270cf1b1e7"
+      ],
+      "source_published_kst": "2026-10-09T19:06+09:00",
+      "source_title": "칼레도니아 마이닝, 3분기 금 생산 11% 감소·연간 가이던스 하향",
+      "telegram_core_fact": "칼레도니아 마이닝(CMCL)이 짐바브웨 블랭킷 광산의 3분기(9월 30일 종료) 금 생산량이 1만7030온스로 전년 동기(1만9106온스) 대비 10.9% 감소했다고 밝히고, 2026년 연간 금 생산 가이던스를 기존 7만2000~7만6500온스에서 6만9000~7만2500온스로 하향 조정한다고 10월 9일 발표했다.",
+      "title": "칼레도니아 마이닝, 3분기 금 생산 11% 감소·연간 가이던스 하향"
     },
     "source_fact:80f1100af4bc8693f2d2a9e2": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -227185,6 +228544,33 @@
       "source_published_kst": "2026-10-06T03:34+09:00",
       "title": "[美특징주]백사이트, 폐렴구균 백신 3상 긍정적 결과에 주가 32%↑"
     },
+    "source_fact:83cacbd97697cbdae89e5164": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172237",
+      "source": "매일경제",
+      "source_body_digest": "02a44462ad519f9ab7b0ce0b24bd8e5a8af4d91741d71848d73ff8bbf2a1750c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8847f840fe11345c13d41bc527af19691542cfbdc08bb3e2cb38e2c5de40e380",
+      "source_fact_keys": [
+        "source_fact:v1:01ea15f3474a806680e4add3eccfad78566fca1a529d4faea4fd0411bbb9c1eb",
+        "source_fact:v1:1410b82a370761650e79de88305070da8831b60d68502042c3734bec4a334696",
+        "source_fact:v1:4443da027b642c84f7bf0fa18dec80ee3301d8595934d2d83e3b51c1cf3f4c7d",
+        "source_fact:v1:4c192000b3f5fd7ef671d7a53acaa8eece83ff57f5ece6a94d4fd1f1a045dde0",
+        "source_fact:v1:6699b5ea7007f1536dcd741a1d218d7895b554119d6e01e54a8e096f37ce1bb2",
+        "source_fact:v1:9d401e89ffbef911aeade983094f9e373906ba14cd1b4acf9b741ff960fc5ef7",
+        "source_fact:v1:dd1a7f49d782475353d684921e5c33b039c1a80e97b035e67b7aa330f7c56ac4",
+        "source_fact:v1:de729d764db23232dfc9f58783ab2f8c5c01c9c8fb455f7b76d425aaf73e44c3",
+        "source_fact:v1:f84b1a126a8f17d9c21d30800c66f9ca00bbe71b105521635d9ed2c21c3e17d5"
+      ],
+      "source_published_kst": "2026-10-09T19:06+09:00",
+      "source_title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러",
+      "telegram_core_fact": "기그캐피털8(GIW)이 위즈키(WISeKey)와 씰SQ(SEALSQ)가 설립한 양자기술 플랫폼 기업 퀀티시모(Quantisimo)와 확정적 합병계약을 체결했으며, 합병 후 퀀티시모의 지분가치는 주당 10달러 기준 약 6억6610만 달러로 평가됐다고 9일(현지시간) 발표했다.",
+      "title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러"
+    },
     "source_fact:83edbc771175f54855f25701": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
@@ -228203,6 +229589,35 @@
       "source_published_kst": "2026-10-06T05:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
     },
+    "source_fact:85d77d5d3218ca483393db96": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261009007251072",
+      "source": "연합뉴스",
+      "source_body_digest": "d2cb81b91bc8568449c7dd70b34055acee3aedd339bf522d73b80f521d399a2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8387167a40e4786d79a1ede2b130f79e177f83e9d603f61eb6c6f656c59c98fc",
+      "source_fact_keys": [
+        "source_fact:v1:055ca79f16e2cd3e02cab71c743315ecc0d90e41e7d122b804d7cf8700c825c7",
+        "source_fact:v1:05a416d5d396544ff8e057a7c1a644449333379a3715320b436ec20eaea3c8ea",
+        "source_fact:v1:1337accf55b342d7e1721868a3fa6081011fdeabccee717ed945b42d4cfdf7d1",
+        "source_fact:v1:1c0daf9892521f20e82071c2a50c59795ddbbb8e81a72a07fba36ea5d26b1e1c",
+        "source_fact:v1:61192d5272b2be1f95b01aeee4f50c22cbd23cdb00caa10823aeb9dbb6837c9f",
+        "source_fact:v1:6414200adc84dfa9c838ce9d3201e76ece73ed18089fe27ba3f4b32add3203a4",
+        "source_fact:v1:950202a72fc6bee05a35d5b6b632b4862e5b5455514d2d1c1f2b264a76cd8538",
+        "source_fact:v1:9b28ccd28b0c540abdb6604020fe5695cc9c9889b1c95db67cc19fa141e20cdb",
+        "source_fact:v1:a72abfbb23851c42b4a2acc0b636abe80b665492f7e924ae55fa0dfc5b7c800b",
+        "source_fact:v1:bc7e55ab74a8efc79d1273d0cd0fc864f8a7d92a2ae6ace904840d8fe906619e",
+        "source_fact:v1:c856d69f2fcb14e9bf79b5ab3a48ac8a94f829f641ff2ca8370dc752dbc4c42e"
+      ],
+      "source_published_kst": "2026-10-09T06:23+09:00",
+      "source_title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "S&P 500지수는 전장보다 36.41포인트(0.47%) 내린 7,765.36, 나스닥 종합지수는 345.35포인트(1.25%) 하락한 27,193.34로 마쳤다.",
+      "title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스"
+    },
     "source_fact:85e5ffd0404d126c710e9516": {
       "first_seen_kst": "2026-10-07T00:54:50+09:00",
       "lanes": {
@@ -229128,6 +230543,33 @@
       "source_title": "세수 부족해 올린 법인세…63조 초과세수에 고개드는 '인하' 요구",
       "telegram_core_fact": "경기 둔화로 기업 이익이 줄어든 데다 법인세율 인하도 세수 감소에 영향을 미쳤다는 설명이었다.",
       "title": "세수 부족해 올린 법인세…63조 초과세수에 고개드는 '인하' 요구"
+    },
+    "source_fact:87ae9efb3a84280afab731a1": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172237",
+      "source": "매일경제",
+      "source_body_digest": "02a44462ad519f9ab7b0ce0b24bd8e5a8af4d91741d71848d73ff8bbf2a1750c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8847f840fe11345c13d41bc527af19691542cfbdc08bb3e2cb38e2c5de40e380",
+      "source_fact_keys": [
+        "source_fact:v1:01ea15f3474a806680e4add3eccfad78566fca1a529d4faea4fd0411bbb9c1eb",
+        "source_fact:v1:1410b82a370761650e79de88305070da8831b60d68502042c3734bec4a334696",
+        "source_fact:v1:4443da027b642c84f7bf0fa18dec80ee3301d8595934d2d83e3b51c1cf3f4c7d",
+        "source_fact:v1:4c192000b3f5fd7ef671d7a53acaa8eece83ff57f5ece6a94d4fd1f1a045dde0",
+        "source_fact:v1:6699b5ea7007f1536dcd741a1d218d7895b554119d6e01e54a8e096f37ce1bb2",
+        "source_fact:v1:9d401e89ffbef911aeade983094f9e373906ba14cd1b4acf9b741ff960fc5ef7",
+        "source_fact:v1:dd1a7f49d782475353d684921e5c33b039c1a80e97b035e67b7aa330f7c56ac4",
+        "source_fact:v1:de729d764db23232dfc9f58783ab2f8c5c01c9c8fb455f7b76d425aaf73e44c3",
+        "source_fact:v1:f84b1a126a8f17d9c21d30800c66f9ca00bbe71b105521635d9ed2c21c3e17d5"
+      ],
+      "source_published_kst": "2026-10-09T19:06+09:00",
+      "source_title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러",
+      "telegram_core_fact": "기그캐피털8(GIW)이 위즈키(WISeKey)와 씰SQ(SEALSQ)가 설립한 양자기술 플랫폼 기업 퀀티시모(Quantisimo)와 확정적 합병계약을 체결했으며, 합병 후 퀀티시모의 지분가치는 주당 10달러 기준 약 6억6610만 달러로 평가됐다고 9일(현지시간) 발표했다.",
+      "title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러"
     },
     "source_fact:87c9104c4180bfcda256dc0a": {
       "first_seen_kst": "2026-10-07T13:13:19+09:00",
@@ -239958,6 +241400,33 @@
       "source_published_kst": "2026-10-07T14:04+09:00",
       "title": "[누리호 성공] 최다 위성 싣고 우주로…'군집위성 시대' 열었다 | 연합뉴스"
     },
+    "source_fact:9b49baeb656ca82cc3b2d263": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172237",
+      "source": "매일경제",
+      "source_body_digest": "02a44462ad519f9ab7b0ce0b24bd8e5a8af4d91741d71848d73ff8bbf2a1750c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8847f840fe11345c13d41bc527af19691542cfbdc08bb3e2cb38e2c5de40e380",
+      "source_fact_keys": [
+        "source_fact:v1:01ea15f3474a806680e4add3eccfad78566fca1a529d4faea4fd0411bbb9c1eb",
+        "source_fact:v1:1410b82a370761650e79de88305070da8831b60d68502042c3734bec4a334696",
+        "source_fact:v1:4443da027b642c84f7bf0fa18dec80ee3301d8595934d2d83e3b51c1cf3f4c7d",
+        "source_fact:v1:4c192000b3f5fd7ef671d7a53acaa8eece83ff57f5ece6a94d4fd1f1a045dde0",
+        "source_fact:v1:6699b5ea7007f1536dcd741a1d218d7895b554119d6e01e54a8e096f37ce1bb2",
+        "source_fact:v1:9d401e89ffbef911aeade983094f9e373906ba14cd1b4acf9b741ff960fc5ef7",
+        "source_fact:v1:dd1a7f49d782475353d684921e5c33b039c1a80e97b035e67b7aa330f7c56ac4",
+        "source_fact:v1:de729d764db23232dfc9f58783ab2f8c5c01c9c8fb455f7b76d425aaf73e44c3",
+        "source_fact:v1:f84b1a126a8f17d9c21d30800c66f9ca00bbe71b105521635d9ed2c21c3e17d5"
+      ],
+      "source_published_kst": "2026-10-09T19:06+09:00",
+      "source_title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러",
+      "telegram_core_fact": "기그캐피털8(GIW)이 위즈키(WISeKey)와 씰SQ(SEALSQ)가 설립한 양자기술 플랫폼 기업 퀀티시모(Quantisimo)와 확정적 합병계약을 체결했으며, 합병 후 퀀티시모의 지분가치는 주당 10달러 기준 약 6억6610만 달러로 평가됐다고 9일(현지시간) 발표했다.",
+      "title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러"
+    },
     "source_fact:9b5561469e60b87e8a739a1e": {
       "first_seen_kst": "2026-10-07T06:41:04+09:00",
       "lanes": {
@@ -241789,6 +243258,32 @@
       "source_published_kst": "2026-10-06T08:15+09:00",
       "title": "[오늘의 투자전략] 코스피, 금리ㆍ삼성전자 실적 주목⋯“반도체 이익 상향 재개 여부 관건”"
     },
+    "source_fact:9e7d0d5ed61d20a073ef5f78": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172131",
+      "source": "매일경제",
+      "source_body_digest": "3920b16aeab068d6000e1553bd004fc511d62aca36063509412ae0fc00aed33b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1bd4d4a2a5d125cd1b0910dcc6aa72f1f16bd1dc7dce3b35132076ddc2fd7156",
+      "source_fact_keys": [
+        "source_fact:v1:1985557f458ef83b8995e3976027f2df1aa81b48757dede896ed8b4c00d57c09",
+        "source_fact:v1:1dc2a8a7ca50f93e5dc6adf0d9f8a6e977b7d3699cf0ef766e19725e871f28f6",
+        "source_fact:v1:4bae60f38a4c9f409674dada70b2f792433a7cb7bfb9d127f0929c35376da2d2",
+        "source_fact:v1:9900b20d5bb3f2fdcd499318e58707ad695c683d61145655f8a7d29d428fd83f",
+        "source_fact:v1:bd3268adcd9cceb6ca08361b6e58c72462daee402116ed130f9853712e4f689c",
+        "source_fact:v1:e23c8aa388248dbea8f01fe1638ed224dbde2a126cb052de4cf2872912e38070",
+        "source_fact:v1:e90dbf4d04ef6e383590c33b4c09f6e4f655bf119c739bbfba9b3685e533e9f0",
+        "source_fact:v1:f30b40628b2c0f6fd6f4157540b02ff047c28c4a80cd900e2c0b75a4965c27d0"
+      ],
+      "source_published_kst": "2026-10-09T06:12+09:00",
+      "source_title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주",
+      "telegram_core_fact": "회사 매출은 2억2000만 달러 전망입니다.",
+      "title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주"
+    },
     "source_fact:9e7dc16ec42d519df7b06394": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -242804,6 +244299,35 @@
       ],
       "source_published_kst": "2026-10-07T15:40+09:00",
       "title": "유가·금리 반등에 실적 경계감…코스피, 6800선 마감"
+    },
+    "source_fact:a07a3bce87cbd060f6af0272": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261009007251072",
+      "source": "연합뉴스",
+      "source_body_digest": "d2cb81b91bc8568449c7dd70b34055acee3aedd339bf522d73b80f521d399a2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8387167a40e4786d79a1ede2b130f79e177f83e9d603f61eb6c6f656c59c98fc",
+      "source_fact_keys": [
+        "source_fact:v1:055ca79f16e2cd3e02cab71c743315ecc0d90e41e7d122b804d7cf8700c825c7",
+        "source_fact:v1:05a416d5d396544ff8e057a7c1a644449333379a3715320b436ec20eaea3c8ea",
+        "source_fact:v1:1337accf55b342d7e1721868a3fa6081011fdeabccee717ed945b42d4cfdf7d1",
+        "source_fact:v1:1c0daf9892521f20e82071c2a50c59795ddbbb8e81a72a07fba36ea5d26b1e1c",
+        "source_fact:v1:61192d5272b2be1f95b01aeee4f50c22cbd23cdb00caa10823aeb9dbb6837c9f",
+        "source_fact:v1:6414200adc84dfa9c838ce9d3201e76ece73ed18089fe27ba3f4b32add3203a4",
+        "source_fact:v1:950202a72fc6bee05a35d5b6b632b4862e5b5455514d2d1c1f2b264a76cd8538",
+        "source_fact:v1:9b28ccd28b0c540abdb6604020fe5695cc9c9889b1c95db67cc19fa141e20cdb",
+        "source_fact:v1:a72abfbb23851c42b4a2acc0b636abe80b665492f7e924ae55fa0dfc5b7c800b",
+        "source_fact:v1:bc7e55ab74a8efc79d1273d0cd0fc864f8a7d92a2ae6ace904840d8fe906619e",
+        "source_fact:v1:c856d69f2fcb14e9bf79b5ab3a48ac8a94f829f641ff2ca8370dc752dbc4c42e"
+      ],
+      "source_published_kst": "2026-10-09T06:23+09:00",
+      "source_title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "S&P 500지수는 전장보다 36.41포인트(0.47%) 내린 7,765.36, 나스닥 종합지수는 345.35포인트(1.25%) 하락한 27,193.34로 마쳤다.",
+      "title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스"
     },
     "source_fact:a086bc2f80beb1710084c710": {
       "first_seen_kst": "2026-10-07T10:49:23+09:00",
@@ -247442,6 +248966,31 @@
       "source_published_kst": "2026-10-07T07:44+09:00",
       "title": "“효성중공업, 매출 이연으로 단기 실적 변동성 확대”"
     },
+    "source_fact:a9a54f4c6440264717a483da": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610092953b",
+      "source": "한국경제",
+      "source_body_digest": "c3a98736874cc3811caf222a22722aa279d40b46e901c25247a63577aa8ef036",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1f5ea026cace7c18ba41a08ebe3d4237bb2d294a0a862a49e719e81fb6508f5d",
+      "source_fact_keys": [
+        "source_fact:v1:0c940c05bb4e6b1aa95062741f59c9e91347d17a48af889d434601290b79e855",
+        "source_fact:v1:22c1edce3ae1cac38d42eb021c8ed8dba8f7b644b97f892a3d1bd9ec51d74c4a",
+        "source_fact:v1:3cfb7a045f8fa83040dd540972d77d1ee52b3a6e63c13f171f05a7f3ca8d9f76",
+        "source_fact:v1:50e772aa727592b7b302aa6f8e46e06de3e1ffb0864cf79768b7be9608ff65e3",
+        "source_fact:v1:5fa750694393cdd8ced3406fcefb316b2f0f31248d35085e6cd78953cbba45d4",
+        "source_fact:v1:607c38e6037f73eb4ca74486ff0fca2730c0808a1780d1cd940f079b44dd82da",
+        "source_fact:v1:cf4a1ff393f068b9cce84044c41e9224111ef66d897674213edf9e93b1087ac5"
+      ],
+      "source_published_kst": "2026-10-09T17:54+09:00",
+      "source_title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수",
+      "telegram_core_fact": "최태원 SK그룹 회장이 전남광주통합특별시 반도체 생산기지 구축에 속도를 내겠다는 의지를 밝혔다. SK하이닉스는 지난 6월 호남권에 400조원 신규 클러스터를 조성하겠다는 구상을 밝힌 뒤 경영진의 광주 방문과 지자체 협의를 이어왔다.",
+      "title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수"
+    },
     "source_fact:a9b67fe3b026d150e848e0df": {
       "first_seen_kst": "2026-10-08T20:58:15+09:00",
       "lanes": {
@@ -249162,6 +250711,32 @@
       ],
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "산업부 국감 돌입…대미투자·호남 반도체·메가특구 '도마'"
+    },
+    "source_fact:ac82f1cb35fa1ae89ca8cd25": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172131",
+      "source": "매일경제",
+      "source_body_digest": "3920b16aeab068d6000e1553bd004fc511d62aca36063509412ae0fc00aed33b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1bd4d4a2a5d125cd1b0910dcc6aa72f1f16bd1dc7dce3b35132076ddc2fd7156",
+      "source_fact_keys": [
+        "source_fact:v1:1985557f458ef83b8995e3976027f2df1aa81b48757dede896ed8b4c00d57c09",
+        "source_fact:v1:1dc2a8a7ca50f93e5dc6adf0d9f8a6e977b7d3699cf0ef766e19725e871f28f6",
+        "source_fact:v1:4bae60f38a4c9f409674dada70b2f792433a7cb7bfb9d127f0929c35376da2d2",
+        "source_fact:v1:9900b20d5bb3f2fdcd499318e58707ad695c683d61145655f8a7d29d428fd83f",
+        "source_fact:v1:bd3268adcd9cceb6ca08361b6e58c72462daee402116ed130f9853712e4f689c",
+        "source_fact:v1:e23c8aa388248dbea8f01fe1638ed224dbde2a126cb052de4cf2872912e38070",
+        "source_fact:v1:e90dbf4d04ef6e383590c33b4c09f6e4f655bf119c739bbfba9b3685e533e9f0",
+        "source_fact:v1:f30b40628b2c0f6fd6f4157540b02ff047c28c4a80cd900e2c0b75a4965c27d0"
+      ],
+      "source_published_kst": "2026-10-09T06:12+09:00",
+      "source_title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주",
+      "telegram_core_fact": "회사 매출은 2억2000만 달러 전망입니다.",
+      "title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주"
     },
     "source_fact:ac993a4de382d57ef8e72502": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
@@ -251962,6 +253537,32 @@
       "source_title": "브리티시 아메리칸 타바코, 12월 23일까지 메릴린치 통한 자사주 매입",
       "telegram_core_fact": "브리티시 아메리칸 타바코(BTI)가 메릴린치인터내셔널(Merrill Lynch International)과 자사주 매입 계약을 체결하고, 10월 13일부터 12월 23일 영업 종료 시점까지 보통주를 매입해 전량 소각하기로 했다고 10월 7일 발표했다.",
       "title": "브리티시 아메리칸 타바코, 12월 23일까지 메릴린치 통한 자사주 매입"
+    },
+    "source_fact:b1ae09686f7a836c002f9723": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172131",
+      "source": "매일경제",
+      "source_body_digest": "3920b16aeab068d6000e1553bd004fc511d62aca36063509412ae0fc00aed33b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1bd4d4a2a5d125cd1b0910dcc6aa72f1f16bd1dc7dce3b35132076ddc2fd7156",
+      "source_fact_keys": [
+        "source_fact:v1:1985557f458ef83b8995e3976027f2df1aa81b48757dede896ed8b4c00d57c09",
+        "source_fact:v1:1dc2a8a7ca50f93e5dc6adf0d9f8a6e977b7d3699cf0ef766e19725e871f28f6",
+        "source_fact:v1:4bae60f38a4c9f409674dada70b2f792433a7cb7bfb9d127f0929c35376da2d2",
+        "source_fact:v1:9900b20d5bb3f2fdcd499318e58707ad695c683d61145655f8a7d29d428fd83f",
+        "source_fact:v1:bd3268adcd9cceb6ca08361b6e58c72462daee402116ed130f9853712e4f689c",
+        "source_fact:v1:e23c8aa388248dbea8f01fe1638ed224dbde2a126cb052de4cf2872912e38070",
+        "source_fact:v1:e90dbf4d04ef6e383590c33b4c09f6e4f655bf119c739bbfba9b3685e533e9f0",
+        "source_fact:v1:f30b40628b2c0f6fd6f4157540b02ff047c28c4a80cd900e2c0b75a4965c27d0"
+      ],
+      "source_published_kst": "2026-10-09T06:12+09:00",
+      "source_title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주",
+      "telegram_core_fact": "회사 매출은 2억2000만 달러 전망입니다.",
+      "title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주"
     },
     "source_fact:b1bdc7b5c02be424639602da": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
@@ -258061,6 +259662,30 @@
       "telegram_core_fact": "도널드 트럼프 미국 행정부는 2기 출범 후 연방정부 인력 감축, 친환경 에너지 세액공제 축소 등 지출 삭감, 고율 관세 부과 정책으로 재정적자 문제 해결에 나섰다.",
       "title": "관세 수입 줄고, 국채 이자 늘어…美 재정적자 2조달러 문턱"
     },
+    "source_fact:bcb5901250b21f012cea5deb": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172487",
+      "source": "매일경제",
+      "source_body_digest": "55abc8d5939c1654e2137bce183eb3fa6d78a2a25496d6ef92d66e24564a1914",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:91ed4201493f91b076860bcdfcfee369633e851be2e0dea1b60c5af74144e61c",
+      "source_fact_keys": [
+        "source_fact:v1:2286b9f0bbc03ea14a467217c805c65ec9cb62fbdb2bdfbbaec751cbaf1a7e72",
+        "source_fact:v1:2c0f47f655a1c8d5380e787d7d4a698f96f745f80a574f72ce4776d2f582cc01",
+        "source_fact:v1:86a169a4dd24c85299356121153b291b9b729e0160a61914b0c12d9fc5e07949",
+        "source_fact:v1:bdcc829fedcb27c45ba919516e4e496352f736568d3f011c618037211e21b4fa",
+        "source_fact:v1:d0aabc88675060c5372dbc38eec142625acc8533db83fcfa2b9eb7bd2f21b5af",
+        "source_fact:v1:e50d7d9eff04ce88adc45722d619b735184d02e6d2a44c92433e41270cf1b1e7"
+      ],
+      "source_published_kst": "2026-10-09T19:06+09:00",
+      "source_title": "칼레도니아 마이닝, 3분기 금 생산 11% 감소·연간 가이던스 하향",
+      "telegram_core_fact": "칼레도니아 마이닝(CMCL)이 짐바브웨 블랭킷 광산의 3분기(9월 30일 종료) 금 생산량이 1만7030온스로 전년 동기(1만9106온스) 대비 10.9% 감소했다고 밝히고, 2026년 연간 금 생산 가이던스를 기존 7만2000~7만6500온스에서 6만9000~7만2500온스로 하향 조정한다고 10월 9일 발표했다.",
+      "title": "칼레도니아 마이닝, 3분기 금 생산 11% 감소·연간 가이던스 하향"
+    },
     "source_fact:bccd3c26f808f6fb478de0ea": {
       "first_seen_kst": "2026-10-07T20:05:17+09:00",
       "lanes": {
@@ -259134,6 +260759,28 @@
       "telegram_core_fact": "영진약품은 프랑스 제약사 아테나와 라세카도트릴 산제의 국내 도입을 위한 라이선스 계약 및 제품 공급계약을 체결했다.",
       "title": "영진약품, 프랑스 아테나와 라세카도트릴 산제 국내 도입 계약 체결"
     },
+    "source_fact:beacdad3b2520fd3a2c775ea": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261009_0003820008",
+      "source": "뉴시스",
+      "source_body_digest": "0e6b580bb3dca714e798f21fbbaf8c65acb8d9eac1a7ebb9d8f9ed55bd6e8c70",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:730a1447feedac9e6dbfe4bae932c7fa2fa5b31f31c8d4f66b2c39ee974c4643",
+      "source_fact_keys": [
+        "source_fact:v1:0999938c6456f5861af59caecc3fa74800980c51f791dc130d6025959c1d87cb",
+        "source_fact:v1:2bc7244c9c858a4a6fdde2d63b801323eec5744b87be1b5ad7e2ea2f1e143208",
+        "source_fact:v1:980e3140465e4a4c230e0e07e92bf1b4811044fd742f513213c98311ded1f6d7",
+        "source_fact:v1:d265350531acd8e7ba735fedb7d75619860515c1fac70fa8d7f2d586f5d9d948"
+      ],
+      "source_published_kst": "2026-10-09T04:29+09:00",
+      "source_title": "WTO, 올해 상품무역 증가율 3.9%로 상향…\"AI 호황, 이란전 충격 상쇄\"",
+      "telegram_core_fact": "WTO는 중동 분쟁이 에너지 가격 상승과 운송 경로 차질을 통해 무역에 계속해서 부담을 줄 것으로 예상하면서도 세계 국내총생산(GDP)이 올해 2.6%, 다음해 2.9% 각각 성장할 것으로 전망했다.",
+      "title": "WTO, 올해 상품무역 증가율 3.9%로 상향…\"AI 호황, 이란전 충격 상쇄\""
+    },
     "source_fact:bead72b1b626f486f751800e": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
       "lanes": {
@@ -259891,6 +261538,32 @@
       "telegram_core_fact": "이소영 중소벤처기업부 장관이 납품대금 연동제의 실효성이 부족하다며 적용 요건과 제재 등을 전반적으로 재검토하겠다고 밝혔다.",
       "title": "이소영 \"납품대금연동제 전면 검토…기술탈취 과징금 피해구제 개선\"(종합)"
     },
+    "source_fact:c058591fa6e38fcd59aa5dfb": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172131",
+      "source": "매일경제",
+      "source_body_digest": "3920b16aeab068d6000e1553bd004fc511d62aca36063509412ae0fc00aed33b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1bd4d4a2a5d125cd1b0910dcc6aa72f1f16bd1dc7dce3b35132076ddc2fd7156",
+      "source_fact_keys": [
+        "source_fact:v1:1985557f458ef83b8995e3976027f2df1aa81b48757dede896ed8b4c00d57c09",
+        "source_fact:v1:1dc2a8a7ca50f93e5dc6adf0d9f8a6e977b7d3699cf0ef766e19725e871f28f6",
+        "source_fact:v1:4bae60f38a4c9f409674dada70b2f792433a7cb7bfb9d127f0929c35376da2d2",
+        "source_fact:v1:9900b20d5bb3f2fdcd499318e58707ad695c683d61145655f8a7d29d428fd83f",
+        "source_fact:v1:bd3268adcd9cceb6ca08361b6e58c72462daee402116ed130f9853712e4f689c",
+        "source_fact:v1:e23c8aa388248dbea8f01fe1638ed224dbde2a126cb052de4cf2872912e38070",
+        "source_fact:v1:e90dbf4d04ef6e383590c33b4c09f6e4f655bf119c739bbfba9b3685e533e9f0",
+        "source_fact:v1:f30b40628b2c0f6fd6f4157540b02ff047c28c4a80cd900e2c0b75a4965c27d0"
+      ],
+      "source_published_kst": "2026-10-09T06:12+09:00",
+      "source_title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주",
+      "telegram_core_fact": "회사 매출은 2억2000만 달러 전망입니다.",
+      "title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주"
+    },
     "source_fact:c0669fd50bb5dda895ff69b1": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
       "lanes": {
@@ -260372,6 +262045,33 @@
       ],
       "source_published_kst": "2026-10-05T17:23+09:00",
       "title": "AI 해킹 확산에 'AI 방패' 꺼낸 금융당국…'망분리 완화' 해법 될 수 있나"
+    },
+    "source_fact:c11b8119dd35114a93d8addf": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172237",
+      "source": "매일경제",
+      "source_body_digest": "02a44462ad519f9ab7b0ce0b24bd8e5a8af4d91741d71848d73ff8bbf2a1750c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8847f840fe11345c13d41bc527af19691542cfbdc08bb3e2cb38e2c5de40e380",
+      "source_fact_keys": [
+        "source_fact:v1:01ea15f3474a806680e4add3eccfad78566fca1a529d4faea4fd0411bbb9c1eb",
+        "source_fact:v1:1410b82a370761650e79de88305070da8831b60d68502042c3734bec4a334696",
+        "source_fact:v1:4443da027b642c84f7bf0fa18dec80ee3301d8595934d2d83e3b51c1cf3f4c7d",
+        "source_fact:v1:4c192000b3f5fd7ef671d7a53acaa8eece83ff57f5ece6a94d4fd1f1a045dde0",
+        "source_fact:v1:6699b5ea7007f1536dcd741a1d218d7895b554119d6e01e54a8e096f37ce1bb2",
+        "source_fact:v1:9d401e89ffbef911aeade983094f9e373906ba14cd1b4acf9b741ff960fc5ef7",
+        "source_fact:v1:dd1a7f49d782475353d684921e5c33b039c1a80e97b035e67b7aa330f7c56ac4",
+        "source_fact:v1:de729d764db23232dfc9f58783ab2f8c5c01c9c8fb455f7b76d425aaf73e44c3",
+        "source_fact:v1:f84b1a126a8f17d9c21d30800c66f9ca00bbe71b105521635d9ed2c21c3e17d5"
+      ],
+      "source_published_kst": "2026-10-09T19:06+09:00",
+      "source_title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러",
+      "telegram_core_fact": "기그캐피털8(GIW)이 위즈키(WISeKey)와 씰SQ(SEALSQ)가 설립한 양자기술 플랫폼 기업 퀀티시모(Quantisimo)와 확정적 합병계약을 체결했으며, 합병 후 퀀티시모의 지분가치는 주당 10달러 기준 약 6억6610만 달러로 평가됐다고 9일(현지시간) 발표했다.",
+      "title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러"
     },
     "source_fact:c12925cd2219967b171e7f08": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
@@ -266827,6 +268527,35 @@
       "source_published_kst": "2026-10-06T07:45+09:00",
       "title": "\"지금이 매수 기회\" 화장품株 급락했는데, 수출 29% 급증"
     },
+    "source_fact:cc0234c122d3791d9a6b09f0": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261009007251072",
+      "source": "연합뉴스",
+      "source_body_digest": "d2cb81b91bc8568449c7dd70b34055acee3aedd339bf522d73b80f521d399a2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8387167a40e4786d79a1ede2b130f79e177f83e9d603f61eb6c6f656c59c98fc",
+      "source_fact_keys": [
+        "source_fact:v1:055ca79f16e2cd3e02cab71c743315ecc0d90e41e7d122b804d7cf8700c825c7",
+        "source_fact:v1:05a416d5d396544ff8e057a7c1a644449333379a3715320b436ec20eaea3c8ea",
+        "source_fact:v1:1337accf55b342d7e1721868a3fa6081011fdeabccee717ed945b42d4cfdf7d1",
+        "source_fact:v1:1c0daf9892521f20e82071c2a50c59795ddbbb8e81a72a07fba36ea5d26b1e1c",
+        "source_fact:v1:61192d5272b2be1f95b01aeee4f50c22cbd23cdb00caa10823aeb9dbb6837c9f",
+        "source_fact:v1:6414200adc84dfa9c838ce9d3201e76ece73ed18089fe27ba3f4b32add3203a4",
+        "source_fact:v1:950202a72fc6bee05a35d5b6b632b4862e5b5455514d2d1c1f2b264a76cd8538",
+        "source_fact:v1:9b28ccd28b0c540abdb6604020fe5695cc9c9889b1c95db67cc19fa141e20cdb",
+        "source_fact:v1:a72abfbb23851c42b4a2acc0b636abe80b665492f7e924ae55fa0dfc5b7c800b",
+        "source_fact:v1:bc7e55ab74a8efc79d1273d0cd0fc864f8a7d92a2ae6ace904840d8fe906619e",
+        "source_fact:v1:c856d69f2fcb14e9bf79b5ab3a48ac8a94f829f641ff2ca8370dc752dbc4c42e"
+      ],
+      "source_published_kst": "2026-10-09T06:23+09:00",
+      "source_title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "S&P 500지수는 전장보다 36.41포인트(0.47%) 내린 7,765.36, 나스닥 종합지수는 345.35포인트(1.25%) 하락한 27,193.34로 마쳤다.",
+      "title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스"
+    },
     "source_fact:cc0b58dc6528cde33dd7dc3f": {
       "first_seen_kst": "2026-10-07T12:06:36+09:00",
       "lanes": {
@@ -267812,6 +269541,33 @@
       ],
       "source_published_kst": "2026-10-06T13:02+09:00",
       "title": "안성 바우덕이축제 60만명 찾았다…농특산물 장터 22억 매출"
+    },
+    "source_fact:cde0fa31fd79889bff3d5609": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172237",
+      "source": "매일경제",
+      "source_body_digest": "02a44462ad519f9ab7b0ce0b24bd8e5a8af4d91741d71848d73ff8bbf2a1750c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8847f840fe11345c13d41bc527af19691542cfbdc08bb3e2cb38e2c5de40e380",
+      "source_fact_keys": [
+        "source_fact:v1:01ea15f3474a806680e4add3eccfad78566fca1a529d4faea4fd0411bbb9c1eb",
+        "source_fact:v1:1410b82a370761650e79de88305070da8831b60d68502042c3734bec4a334696",
+        "source_fact:v1:4443da027b642c84f7bf0fa18dec80ee3301d8595934d2d83e3b51c1cf3f4c7d",
+        "source_fact:v1:4c192000b3f5fd7ef671d7a53acaa8eece83ff57f5ece6a94d4fd1f1a045dde0",
+        "source_fact:v1:6699b5ea7007f1536dcd741a1d218d7895b554119d6e01e54a8e096f37ce1bb2",
+        "source_fact:v1:9d401e89ffbef911aeade983094f9e373906ba14cd1b4acf9b741ff960fc5ef7",
+        "source_fact:v1:dd1a7f49d782475353d684921e5c33b039c1a80e97b035e67b7aa330f7c56ac4",
+        "source_fact:v1:de729d764db23232dfc9f58783ab2f8c5c01c9c8fb455f7b76d425aaf73e44c3",
+        "source_fact:v1:f84b1a126a8f17d9c21d30800c66f9ca00bbe71b105521635d9ed2c21c3e17d5"
+      ],
+      "source_published_kst": "2026-10-09T19:06+09:00",
+      "source_title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러",
+      "telegram_core_fact": "기그캐피털8(GIW)이 위즈키(WISeKey)와 씰SQ(SEALSQ)가 설립한 양자기술 플랫폼 기업 퀀티시모(Quantisimo)와 확정적 합병계약을 체결했으며, 합병 후 퀀티시모의 지분가치는 주당 10달러 기준 약 6억6610만 달러로 평가됐다고 9일(현지시간) 발표했다.",
+      "title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러"
     },
     "source_fact:cdecb21677ed88655ad7c0bd": {
       "first_seen_kst": "2026-10-08T07:12:10+09:00",
@@ -271384,6 +273140,32 @@
       "source_title": "국토부, '아시안게임 논란' 우수선수 주택 특공 제도 개선 검토 | 연합뉴스",
       "telegram_core_fact": "국토교통부가 최근 2026 아이치·나고야 아시안게임을 계기로 논란이 된 우수선수 주택 특별공급 제도의 개선 여부를 검토한다.",
       "title": "국토부, '아시안게임 논란' 우수선수 주택 특공 제도 개선 검토 | 연합뉴스"
+    },
+    "source_fact:d44571c7fac84936aa1bee3a": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172131",
+      "source": "매일경제",
+      "source_body_digest": "3920b16aeab068d6000e1553bd004fc511d62aca36063509412ae0fc00aed33b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1bd4d4a2a5d125cd1b0910dcc6aa72f1f16bd1dc7dce3b35132076ddc2fd7156",
+      "source_fact_keys": [
+        "source_fact:v1:1985557f458ef83b8995e3976027f2df1aa81b48757dede896ed8b4c00d57c09",
+        "source_fact:v1:1dc2a8a7ca50f93e5dc6adf0d9f8a6e977b7d3699cf0ef766e19725e871f28f6",
+        "source_fact:v1:4bae60f38a4c9f409674dada70b2f792433a7cb7bfb9d127f0929c35376da2d2",
+        "source_fact:v1:9900b20d5bb3f2fdcd499318e58707ad695c683d61145655f8a7d29d428fd83f",
+        "source_fact:v1:bd3268adcd9cceb6ca08361b6e58c72462daee402116ed130f9853712e4f689c",
+        "source_fact:v1:e23c8aa388248dbea8f01fe1638ed224dbde2a126cb052de4cf2872912e38070",
+        "source_fact:v1:e90dbf4d04ef6e383590c33b4c09f6e4f655bf119c739bbfba9b3685e533e9f0",
+        "source_fact:v1:f30b40628b2c0f6fd6f4157540b02ff047c28c4a80cd900e2c0b75a4965c27d0"
+      ],
+      "source_published_kst": "2026-10-09T06:12+09:00",
+      "source_title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주",
+      "telegram_core_fact": "회사 매출은 2억2000만 달러 전망입니다.",
+      "title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주"
     },
     "source_fact:d46d166901bb4a4ffa752f25": {
       "first_seen_kst": "2026-10-08T13:46:05+09:00",
@@ -276404,6 +278186,30 @@
       "source_title": "주춤한 은행주⋯증권가 “4분기 마진 개선·주주환원이 기폭제”",
       "telegram_core_fact": "은행 업종은 밸류업 프로그램 이후 총주주환원율이 과거 20%대에서 50%대로 높아졌고, 주가순자산비율(P/B) 역시 0.3~0.4배 수준에서 0.7~0.9배까지 상승했다.",
       "title": "주춤한 은행주⋯증권가 “4분기 마진 개선·주주환원이 기폭제”"
+    },
+    "source_fact:dcb2b558b79f9d450f5c43d3": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172487",
+      "source": "매일경제",
+      "source_body_digest": "55abc8d5939c1654e2137bce183eb3fa6d78a2a25496d6ef92d66e24564a1914",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:91ed4201493f91b076860bcdfcfee369633e851be2e0dea1b60c5af74144e61c",
+      "source_fact_keys": [
+        "source_fact:v1:2286b9f0bbc03ea14a467217c805c65ec9cb62fbdb2bdfbbaec751cbaf1a7e72",
+        "source_fact:v1:2c0f47f655a1c8d5380e787d7d4a698f96f745f80a574f72ce4776d2f582cc01",
+        "source_fact:v1:86a169a4dd24c85299356121153b291b9b729e0160a61914b0c12d9fc5e07949",
+        "source_fact:v1:bdcc829fedcb27c45ba919516e4e496352f736568d3f011c618037211e21b4fa",
+        "source_fact:v1:d0aabc88675060c5372dbc38eec142625acc8533db83fcfa2b9eb7bd2f21b5af",
+        "source_fact:v1:e50d7d9eff04ce88adc45722d619b735184d02e6d2a44c92433e41270cf1b1e7"
+      ],
+      "source_published_kst": "2026-10-09T19:06+09:00",
+      "source_title": "칼레도니아 마이닝, 3분기 금 생산 11% 감소·연간 가이던스 하향",
+      "telegram_core_fact": "칼레도니아 마이닝(CMCL)이 짐바브웨 블랭킷 광산의 3분기(9월 30일 종료) 금 생산량이 1만7030온스로 전년 동기(1만9106온스) 대비 10.9% 감소했다고 밝히고, 2026년 연간 금 생산 가이던스를 기존 7만2000~7만6500온스에서 6만9000~7만2500온스로 하향 조정한다고 10월 9일 발표했다.",
+      "title": "칼레도니아 마이닝, 3분기 금 생산 11% 감소·연간 가이던스 하향"
     },
     "source_fact:dcb550e657ffb24bab3091c7": {
       "first_seen_kst": "2026-10-08T07:50:51+09:00",
@@ -286858,6 +288664,35 @@
       "source_published_kst": "2026-10-06T09:55+09:00",
       "title": "어기구 \"5년간 2천억원 썼는데 연간 조류 정전 2배로\" | 연합뉴스"
     },
+    "source_fact:ed9ffa398335fb9bdc7a3c2b": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261009007251072",
+      "source": "연합뉴스",
+      "source_body_digest": "d2cb81b91bc8568449c7dd70b34055acee3aedd339bf522d73b80f521d399a2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8387167a40e4786d79a1ede2b130f79e177f83e9d603f61eb6c6f656c59c98fc",
+      "source_fact_keys": [
+        "source_fact:v1:055ca79f16e2cd3e02cab71c743315ecc0d90e41e7d122b804d7cf8700c825c7",
+        "source_fact:v1:05a416d5d396544ff8e057a7c1a644449333379a3715320b436ec20eaea3c8ea",
+        "source_fact:v1:1337accf55b342d7e1721868a3fa6081011fdeabccee717ed945b42d4cfdf7d1",
+        "source_fact:v1:1c0daf9892521f20e82071c2a50c59795ddbbb8e81a72a07fba36ea5d26b1e1c",
+        "source_fact:v1:61192d5272b2be1f95b01aeee4f50c22cbd23cdb00caa10823aeb9dbb6837c9f",
+        "source_fact:v1:6414200adc84dfa9c838ce9d3201e76ece73ed18089fe27ba3f4b32add3203a4",
+        "source_fact:v1:950202a72fc6bee05a35d5b6b632b4862e5b5455514d2d1c1f2b264a76cd8538",
+        "source_fact:v1:9b28ccd28b0c540abdb6604020fe5695cc9c9889b1c95db67cc19fa141e20cdb",
+        "source_fact:v1:a72abfbb23851c42b4a2acc0b636abe80b665492f7e924ae55fa0dfc5b7c800b",
+        "source_fact:v1:bc7e55ab74a8efc79d1273d0cd0fc864f8a7d92a2ae6ace904840d8fe906619e",
+        "source_fact:v1:c856d69f2fcb14e9bf79b5ab3a48ac8a94f829f641ff2ca8370dc752dbc4c42e"
+      ],
+      "source_published_kst": "2026-10-09T06:23+09:00",
+      "source_title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "S&P 500지수는 전장보다 36.41포인트(0.47%) 내린 7,765.36, 나스닥 종합지수는 345.35포인트(1.25%) 하락한 27,193.34로 마쳤다.",
+      "title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스"
+    },
     "source_fact:edaed6aafa7fd37c8d9e6fd6": {
       "first_seen_kst": "2026-10-07T16:15:21+09:00",
       "lanes": {
@@ -290905,6 +292740,35 @@
       "telegram_core_fact": "정부는 착공 실적 부진을 만회하기 위해 신규택지와 공공택지를 중심으로 공급 속도를 높인다는 방침이다.",
       "title": "홍지선 국토장관 “수도권 주택 착공 목표 달성 어려워…80~88% 전망” [국감] [종합]"
     },
+    "source_fact:f5c3cf2d9216cafc2e38aa4c": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261009007251072",
+      "source": "연합뉴스",
+      "source_body_digest": "d2cb81b91bc8568449c7dd70b34055acee3aedd339bf522d73b80f521d399a2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8387167a40e4786d79a1ede2b130f79e177f83e9d603f61eb6c6f656c59c98fc",
+      "source_fact_keys": [
+        "source_fact:v1:055ca79f16e2cd3e02cab71c743315ecc0d90e41e7d122b804d7cf8700c825c7",
+        "source_fact:v1:05a416d5d396544ff8e057a7c1a644449333379a3715320b436ec20eaea3c8ea",
+        "source_fact:v1:1337accf55b342d7e1721868a3fa6081011fdeabccee717ed945b42d4cfdf7d1",
+        "source_fact:v1:1c0daf9892521f20e82071c2a50c59795ddbbb8e81a72a07fba36ea5d26b1e1c",
+        "source_fact:v1:61192d5272b2be1f95b01aeee4f50c22cbd23cdb00caa10823aeb9dbb6837c9f",
+        "source_fact:v1:6414200adc84dfa9c838ce9d3201e76ece73ed18089fe27ba3f4b32add3203a4",
+        "source_fact:v1:950202a72fc6bee05a35d5b6b632b4862e5b5455514d2d1c1f2b264a76cd8538",
+        "source_fact:v1:9b28ccd28b0c540abdb6604020fe5695cc9c9889b1c95db67cc19fa141e20cdb",
+        "source_fact:v1:a72abfbb23851c42b4a2acc0b636abe80b665492f7e924ae55fa0dfc5b7c800b",
+        "source_fact:v1:bc7e55ab74a8efc79d1273d0cd0fc864f8a7d92a2ae6ace904840d8fe906619e",
+        "source_fact:v1:c856d69f2fcb14e9bf79b5ab3a48ac8a94f829f641ff2ca8370dc752dbc4c42e"
+      ],
+      "source_published_kst": "2026-10-09T06:23+09:00",
+      "source_title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "S&P 500지수는 전장보다 36.41포인트(0.47%) 내린 7,765.36, 나스닥 종합지수는 345.35포인트(1.25%) 하락한 27,193.34로 마쳤다.",
+      "title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스"
+    },
     "source_fact:f5d2a5bf9d025f57de78b1f5": {
       "first_seen_kst": "2026-10-08T14:21:54+09:00",
       "lanes": {
@@ -293856,6 +295720,31 @@
       ],
       "source_published_kst": "2026-10-06T16:07+09:00",
       "title": "불광5구역 21년 만에 철거 시작…2406가구 들어선다"
+    },
+    "source_fact:fc757cde342a1ae0e0ce70f1": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610092953b",
+      "source": "한국경제",
+      "source_body_digest": "c3a98736874cc3811caf222a22722aa279d40b46e901c25247a63577aa8ef036",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1f5ea026cace7c18ba41a08ebe3d4237bb2d294a0a862a49e719e81fb6508f5d",
+      "source_fact_keys": [
+        "source_fact:v1:0c940c05bb4e6b1aa95062741f59c9e91347d17a48af889d434601290b79e855",
+        "source_fact:v1:22c1edce3ae1cac38d42eb021c8ed8dba8f7b644b97f892a3d1bd9ec51d74c4a",
+        "source_fact:v1:3cfb7a045f8fa83040dd540972d77d1ee52b3a6e63c13f171f05a7f3ca8d9f76",
+        "source_fact:v1:50e772aa727592b7b302aa6f8e46e06de3e1ffb0864cf79768b7be9608ff65e3",
+        "source_fact:v1:5fa750694393cdd8ced3406fcefb316b2f0f31248d35085e6cd78953cbba45d4",
+        "source_fact:v1:607c38e6037f73eb4ca74486ff0fca2730c0808a1780d1cd940f079b44dd82da",
+        "source_fact:v1:cf4a1ff393f068b9cce84044c41e9224111ef66d897674213edf9e93b1087ac5"
+      ],
+      "source_published_kst": "2026-10-09T17:54+09:00",
+      "source_title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수",
+      "telegram_core_fact": "최태원 SK그룹 회장이 전남광주통합특별시 반도체 생산기지 구축에 속도를 내겠다는 의지를 밝혔다. SK하이닉스는 지난 6월 호남권에 400조원 신규 클러스터를 조성하겠다는 구상을 밝힌 뒤 경영진의 광주 방문과 지자체 협의를 이어왔다.",
+      "title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수"
     },
     "source_fact:fc830c4833c7ba576a3b8645": {
       "first_seen_kst": "2026-10-06T10:04:04+09:00",
@@ -301140,6 +303029,33 @@
       "source": "연합뉴스",
       "title": "홈플러스익스프레스, 'NS홈쇼핑 인수 100일' 떡 증정 이벤트 | 연합뉴스"
     },
+    "title:1a61a7bc65c327a29afd37b7": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172237",
+      "source": "매일경제",
+      "source_body_digest": "02a44462ad519f9ab7b0ce0b24bd8e5a8af4d91741d71848d73ff8bbf2a1750c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8847f840fe11345c13d41bc527af19691542cfbdc08bb3e2cb38e2c5de40e380",
+      "source_fact_keys": [
+        "source_fact:v1:01ea15f3474a806680e4add3eccfad78566fca1a529d4faea4fd0411bbb9c1eb",
+        "source_fact:v1:1410b82a370761650e79de88305070da8831b60d68502042c3734bec4a334696",
+        "source_fact:v1:4443da027b642c84f7bf0fa18dec80ee3301d8595934d2d83e3b51c1cf3f4c7d",
+        "source_fact:v1:4c192000b3f5fd7ef671d7a53acaa8eece83ff57f5ece6a94d4fd1f1a045dde0",
+        "source_fact:v1:6699b5ea7007f1536dcd741a1d218d7895b554119d6e01e54a8e096f37ce1bb2",
+        "source_fact:v1:9d401e89ffbef911aeade983094f9e373906ba14cd1b4acf9b741ff960fc5ef7",
+        "source_fact:v1:dd1a7f49d782475353d684921e5c33b039c1a80e97b035e67b7aa330f7c56ac4",
+        "source_fact:v1:de729d764db23232dfc9f58783ab2f8c5c01c9c8fb455f7b76d425aaf73e44c3",
+        "source_fact:v1:f84b1a126a8f17d9c21d30800c66f9ca00bbe71b105521635d9ed2c21c3e17d5"
+      ],
+      "source_published_kst": "2026-10-09T19:06+09:00",
+      "source_title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러",
+      "telegram_core_fact": "기그캐피털8(GIW)이 위즈키(WISeKey)와 씰SQ(SEALSQ)가 설립한 양자기술 플랫폼 기업 퀀티시모(Quantisimo)와 확정적 합병계약을 체결했으며, 합병 후 퀀티시모의 지분가치는 주당 10달러 기준 약 6억6610만 달러로 평가됐다고 9일(현지시간) 발표했다.",
+      "title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러"
+    },
     "title:1a649bd88db91bd6c0cb2ae6": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
       "lanes": {
@@ -301790,6 +303706,25 @@
       ],
       "source_published_kst": "2026-10-07T08:51+09:00",
       "title": "SK온, 포드 'Q1 인증' 획득…\"헝가리 생산거점 품질 경쟁력 입증\""
+    },
+    "title:1eb71534e7944909ba4ca4ff": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634046",
+      "source": "이투데이",
+      "source_body_digest": "e6fef16f74dafc35ed71449ddca62fdaae4ed606395c4216a58f4fe64012fd97",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bbe098790dbcdf770d45f3eabe6c336f79036526f2ac2ca4445e53ce36d04185",
+      "source_fact_keys": [
+        "source_fact:v1:6192cec26a3da40e368caee51e0bf95ff5f7b2fb6be51a55feefb665ec43df8d"
+      ],
+      "source_published_kst": "2026-10-09T09:00+09:00",
+      "source_title": "LH, 수도권 민간주택 1만8000가구 매입확약…조기 착공 유도",
+      "telegram_core_fact": "LH 관계자는 \"매입확약을 활용하면 사업 여건을 개선할 수 있을 뿐 아니라 내년 상반기 착공 시 추가 인센티브도 받을 수 있다\"며 \"민간 주택사업의 조기 착공을 촉진하고 주택공급을 신속히 확대할 수 있도록 노력하겠다\"고 말했다.",
+      "title": "LH, 수도권 민간주택 1만8000가구 매입확약…조기 착공 유도"
     },
     "title:1ebe4649426d9994708363b0": {
       "first_seen_kst": "2026-10-07T03:17:01+09:00",
@@ -321120,6 +323055,35 @@
       "source": "뉴시스",
       "title": "오아시스, 90년대 미공개 녹음본 28억 경매에 법적 대응…출품 취소"
     },
+    "title:8231de850ecce945e0e5fd79": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261009007251072",
+      "source": "연합뉴스",
+      "source_body_digest": "d2cb81b91bc8568449c7dd70b34055acee3aedd339bf522d73b80f521d399a2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8387167a40e4786d79a1ede2b130f79e177f83e9d603f61eb6c6f656c59c98fc",
+      "source_fact_keys": [
+        "source_fact:v1:055ca79f16e2cd3e02cab71c743315ecc0d90e41e7d122b804d7cf8700c825c7",
+        "source_fact:v1:05a416d5d396544ff8e057a7c1a644449333379a3715320b436ec20eaea3c8ea",
+        "source_fact:v1:1337accf55b342d7e1721868a3fa6081011fdeabccee717ed945b42d4cfdf7d1",
+        "source_fact:v1:1c0daf9892521f20e82071c2a50c59795ddbbb8e81a72a07fba36ea5d26b1e1c",
+        "source_fact:v1:61192d5272b2be1f95b01aeee4f50c22cbd23cdb00caa10823aeb9dbb6837c9f",
+        "source_fact:v1:6414200adc84dfa9c838ce9d3201e76ece73ed18089fe27ba3f4b32add3203a4",
+        "source_fact:v1:950202a72fc6bee05a35d5b6b632b4862e5b5455514d2d1c1f2b264a76cd8538",
+        "source_fact:v1:9b28ccd28b0c540abdb6604020fe5695cc9c9889b1c95db67cc19fa141e20cdb",
+        "source_fact:v1:a72abfbb23851c42b4a2acc0b636abe80b665492f7e924ae55fa0dfc5b7c800b",
+        "source_fact:v1:bc7e55ab74a8efc79d1273d0cd0fc864f8a7d92a2ae6ace904840d8fe906619e",
+        "source_fact:v1:c856d69f2fcb14e9bf79b5ab3a48ac8a94f829f641ff2ca8370dc752dbc4c42e"
+      ],
+      "source_published_kst": "2026-10-09T06:23+09:00",
+      "source_title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "S&P 500지수는 전장보다 36.41포인트(0.47%) 내린 7,765.36, 나스닥 종합지수는 345.35포인트(1.25%) 하락한 27,193.34로 마쳤다.",
+      "title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스"
+    },
     "title:823eb22757ec9ed1baae0adb": {
       "first_seen_kst": "2026-09-27T06:32:53+09:00",
       "lanes": {
@@ -321490,6 +323454,28 @@
       "link": "https://www.newsis.com/view/NISX20260930_0003807902",
       "source": "뉴시스",
       "title": "뉴욕증시, 美국채금리 고공행진에 하락…30년물 24년래 최고"
+    },
+    "title:8404b578e9d7efca6667b4ee": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261009_0003820008",
+      "source": "뉴시스",
+      "source_body_digest": "0e6b580bb3dca714e798f21fbbaf8c65acb8d9eac1a7ebb9d8f9ed55bd6e8c70",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:730a1447feedac9e6dbfe4bae932c7fa2fa5b31f31c8d4f66b2c39ee974c4643",
+      "source_fact_keys": [
+        "source_fact:v1:0999938c6456f5861af59caecc3fa74800980c51f791dc130d6025959c1d87cb",
+        "source_fact:v1:2bc7244c9c858a4a6fdde2d63b801323eec5744b87be1b5ad7e2ea2f1e143208",
+        "source_fact:v1:980e3140465e4a4c230e0e07e92bf1b4811044fd742f513213c98311ded1f6d7",
+        "source_fact:v1:d265350531acd8e7ba735fedb7d75619860515c1fac70fa8d7f2d586f5d9d948"
+      ],
+      "source_published_kst": "2026-10-09T04:29+09:00",
+      "source_title": "WTO, 올해 상품무역 증가율 3.9%로 상향…\"AI 호황, 이란전 충격 상쇄\"",
+      "telegram_core_fact": "WTO는 중동 분쟁이 에너지 가격 상승과 운송 경로 차질을 통해 무역에 계속해서 부담을 줄 것으로 예상하면서도 세계 국내총생산(GDP)이 올해 2.6%, 다음해 2.9% 각각 성장할 것으로 전망했다.",
+      "title": "WTO, 올해 상품무역 증가율 3.9%로 상향…\"AI 호황, 이란전 충격 상쇄\""
     },
     "title:842600c947046c23b1651153": {
       "first_seen_kst": "2026-10-05T14:04:17+09:00",
@@ -330497,6 +332483,30 @@
       "source_published_kst": "2026-10-06T14:33+09:00",
       "title": "IPARK현대산업개발, 부산 연산13구역 수주…2812억원 규모"
     },
+    "title:b147fe76a5f40a2d7c60d3dc": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172487",
+      "source": "매일경제",
+      "source_body_digest": "55abc8d5939c1654e2137bce183eb3fa6d78a2a25496d6ef92d66e24564a1914",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:91ed4201493f91b076860bcdfcfee369633e851be2e0dea1b60c5af74144e61c",
+      "source_fact_keys": [
+        "source_fact:v1:2286b9f0bbc03ea14a467217c805c65ec9cb62fbdb2bdfbbaec751cbaf1a7e72",
+        "source_fact:v1:2c0f47f655a1c8d5380e787d7d4a698f96f745f80a574f72ce4776d2f582cc01",
+        "source_fact:v1:86a169a4dd24c85299356121153b291b9b729e0160a61914b0c12d9fc5e07949",
+        "source_fact:v1:bdcc829fedcb27c45ba919516e4e496352f736568d3f011c618037211e21b4fa",
+        "source_fact:v1:d0aabc88675060c5372dbc38eec142625acc8533db83fcfa2b9eb7bd2f21b5af",
+        "source_fact:v1:e50d7d9eff04ce88adc45722d619b735184d02e6d2a44c92433e41270cf1b1e7"
+      ],
+      "source_published_kst": "2026-10-09T19:06+09:00",
+      "source_title": "칼레도니아 마이닝, 3분기 금 생산 11% 감소·연간 가이던스 하향",
+      "telegram_core_fact": "칼레도니아 마이닝(CMCL)이 짐바브웨 블랭킷 광산의 3분기(9월 30일 종료) 금 생산량이 1만7030온스로 전년 동기(1만9106온스) 대비 10.9% 감소했다고 밝히고, 2026년 연간 금 생산 가이던스를 기존 7만2000~7만6500온스에서 6만9000~7만2500온스로 하향 조정한다고 10월 9일 발표했다.",
+      "title": "칼레도니아 마이닝, 3분기 금 생산 11% 감소·연간 가이던스 하향"
+    },
     "title:b14820b33198fbf81f31893b": {
       "first_seen_kst": "2026-10-03T21:43:46+09:00",
       "lanes": {
@@ -334586,6 +336596,32 @@
       ],
       "source_published_kst": "2026-10-06T11:40+09:00",
       "title": "심텍 `CPU, LPDDR 수요 확대의 중심` 증권사 발표에 강세…7.78%"
+    },
+    "title:c9390daeab63a665d5789b8b": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172131",
+      "source": "매일경제",
+      "source_body_digest": "3920b16aeab068d6000e1553bd004fc511d62aca36063509412ae0fc00aed33b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1bd4d4a2a5d125cd1b0910dcc6aa72f1f16bd1dc7dce3b35132076ddc2fd7156",
+      "source_fact_keys": [
+        "source_fact:v1:1985557f458ef83b8995e3976027f2df1aa81b48757dede896ed8b4c00d57c09",
+        "source_fact:v1:1dc2a8a7ca50f93e5dc6adf0d9f8a6e977b7d3699cf0ef766e19725e871f28f6",
+        "source_fact:v1:4bae60f38a4c9f409674dada70b2f792433a7cb7bfb9d127f0929c35376da2d2",
+        "source_fact:v1:9900b20d5bb3f2fdcd499318e58707ad695c683d61145655f8a7d29d428fd83f",
+        "source_fact:v1:bd3268adcd9cceb6ca08361b6e58c72462daee402116ed130f9853712e4f689c",
+        "source_fact:v1:e23c8aa388248dbea8f01fe1638ed224dbde2a126cb052de4cf2872912e38070",
+        "source_fact:v1:e90dbf4d04ef6e383590c33b4c09f6e4f655bf119c739bbfba9b3685e533e9f0",
+        "source_fact:v1:f30b40628b2c0f6fd6f4157540b02ff047c28c4a80cd900e2c0b75a4965c27d0"
+      ],
+      "source_published_kst": "2026-10-09T06:12+09:00",
+      "source_title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주",
+      "telegram_core_fact": "회사 매출은 2억2000만 달러 전망입니다.",
+      "title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주"
     },
     "title:c948d06008def095cba00d54": {
       "first_seen_kst": "2026-10-07T07:12:15+09:00",
@@ -339954,6 +341990,31 @@
       "source_published_kst": "2026-10-06T14:16+09:00",
       "title": "\"최태원 9440억 SK 지분 매각, 3%룰 회피 목적 아닌지 밝혀야\""
     },
+    "title:e42b1d8144103b59861e4db0": {
+      "first_seen_kst": "2026-10-09T19:24:17+09:00",
+      "lanes": {
+        "live": "2026-10-09T19:24:17+09:00"
+      },
+      "last_seen_kst": "2026-10-09T19:24:17+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610092953b",
+      "source": "한국경제",
+      "source_body_digest": "c3a98736874cc3811caf222a22722aa279d40b46e901c25247a63577aa8ef036",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1f5ea026cace7c18ba41a08ebe3d4237bb2d294a0a862a49e719e81fb6508f5d",
+      "source_fact_keys": [
+        "source_fact:v1:0c940c05bb4e6b1aa95062741f59c9e91347d17a48af889d434601290b79e855",
+        "source_fact:v1:22c1edce3ae1cac38d42eb021c8ed8dba8f7b644b97f892a3d1bd9ec51d74c4a",
+        "source_fact:v1:3cfb7a045f8fa83040dd540972d77d1ee52b3a6e63c13f171f05a7f3ca8d9f76",
+        "source_fact:v1:50e772aa727592b7b302aa6f8e46e06de3e1ffb0864cf79768b7be9608ff65e3",
+        "source_fact:v1:5fa750694393cdd8ced3406fcefb316b2f0f31248d35085e6cd78953cbba45d4",
+        "source_fact:v1:607c38e6037f73eb4ca74486ff0fca2730c0808a1780d1cd940f079b44dd82da",
+        "source_fact:v1:cf4a1ff393f068b9cce84044c41e9224111ef66d897674213edf9e93b1087ac5"
+      ],
+      "source_published_kst": "2026-10-09T17:54+09:00",
+      "source_title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수",
+      "telegram_core_fact": "최태원 SK그룹 회장이 전남광주통합특별시 반도체 생산기지 구축에 속도를 내겠다는 의지를 밝혔다. SK하이닉스는 지난 6월 호남권에 400조원 신규 클러스터를 조성하겠다는 구상을 밝힌 뒤 경영진의 광주 방문과 지자체 협의를 이어왔다.",
+      "title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수"
+    },
     "title:e45c2fb13540ed2ba8ebaee9": {
       "first_seen_kst": "2026-09-25T01:40:40+09:00",
       "lanes": {
@@ -344986,5 +347047,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-09T18:57:38+09:00"
+  "updated_at_kst": "2026-10-09T19:24:17+09:00"
 }
