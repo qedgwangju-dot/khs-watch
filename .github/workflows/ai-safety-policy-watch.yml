@@ -120,6 +120,7 @@ jobs:
         run: |
           python - <<'PY'
           import datetime as dt
+          from unittest.mock import patch
           from scripts.ai_safety_policy_watch import (
               UTC,
               detect_category,
@@ -131,6 +132,7 @@ jobs:
               advance_official_page_state,
               is_anthropic_mission_launch_baseline,
               material,
+              concise_fact,
           )
 
           cases = [
@@ -208,6 +210,18 @@ jobs:
           }
           if is_anthropic_mission_launch_baseline(expansion) or not material(expansion):
               raise RuntimeError("New Anthropic CIDP program expansion was missed")
+          with patch(
+              "scripts.ai_safety_policy_watch._translate_google",
+              return_value="사이버 방어 사업 확대",
+          ):
+              sample = concise_fact({
+                  "title": "Anthropic News: Anthropic Cyber Mission expands to new partners",
+                  "entity": "Anthropic",
+                  "category": "Anthropic 핵심 기반시설·오픈소스 방어 사업",
+              })
+          print(f"ai_policy_proper_name_sample={sample}")
+          if "Anthropic Cyber Mission" not in sample or "인류학" in sample or "Anthropic News:" in sample:
+              raise RuntimeError("Policy translation changed the brand or index heading")
           print("ai_policy_cyber_mission_regression=PASS")
 
           forced_cases = {
