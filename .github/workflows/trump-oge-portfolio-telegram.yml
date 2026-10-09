@@ -9,6 +9,7 @@ on:
       - ".github/workflows/trump-oge-portfolio-telegram.yml"
       - "scripts/trump_oge_portfolio_watch.py"
       - "scripts/trump_oge_portfolio_watch_entry.py"
+      - "scripts/trump_oge_2026_08_event.py"
       - "scripts/test_trump_oge_dedupe.py"
 
 permissions:
@@ -46,6 +47,7 @@ jobs:
         run: |
           python -m py_compile scripts/trump_oge_portfolio_watch.py
           python -m py_compile scripts/trump_oge_portfolio_watch_entry.py
+          python -m py_compile scripts/trump_oge_2026_08_event.py
           python -m py_compile scripts/test_trump_oge_dedupe.py
           python scripts/test_trump_oge_dedupe.py
 
