@@ -909,4 +909,30 @@ try:
 except RuntimeError as err:
     check("oct09-quality-gate-duplicate-midterm-policy", "같은 10월 8일" in str(err) or "중복 정책" in str(err))
 
+
+# 28) CBS 10/7 새로운 영상은 전쟁 개전 초기(7개월 전) 쿠웨이트 기지 공습.
+# 10/9 Vietnam.vn 재인용을 '방금 새로운 군사공격'으로 오인하면 안 된다.
+kuwait_recapture = row(
+    "Iranian attacks forced US troops to abandon major base in Kuwait",
+    source="Vietnam.vn",
+    description="Newly obtained footage by CBS News shows attacks on Camp Buehring during the opening days of the Iran war seven months ago.",
+    minutes_ago=10,
+)
+check("oct09-kuwait-historical-cbs-detected", mod._historical_kuwait_base_footage(kuwait_recapture))
+score,tags = mod.score_item(kuwait_recapture,dt.datetime.now(mod.watch.KST))
+check("oct09-kuwait-historical-not-new-red", score == 0 and tags == [])
+kuwait_short_reprint = row(
+    "Iranian attacks forced US troops to abandon major base in Kuwait",
+    source="Vietnam.vn",
+    description="American soldiers said Iranian attacks forced evacuation.",
+    minutes_ago=10,
+)
+check("oct09-kuwait-20261009-short-reprint-detected", mod._historical_kuwait_base_footage(kuwait_short_reprint))
+kuwait_new_attack = row(
+    "New Iranian missile attack on Kuwait military base today",
+    source="Reuters",
+    description="Fresh new attack on a military base in Kuwait on October 9.",
+)
+check("oct09-kuwait-fresh-attack-not-suppressed", not mod._historical_kuwait_base_footage(kuwait_new_attack))
+
 print("WAR_PEACE_OCT04_REGRESSION_OK")
