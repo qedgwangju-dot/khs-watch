@@ -187,6 +187,15 @@ jobs:
           if is_policy_program_announcement(other_news) or not material(other_news):
               raise RuntimeError("Actual official security event was suppressed")
 
+          generic_news = {
+              **mission,
+              "title": "Anthropic News: new cyber defense partner program",
+              "description": "Announcing a free security initiative",
+              "url": "https://www.anthropic.com/news/defense-program",
+          }
+          if material(generic_news):
+              raise RuntimeError("Generic cyber partnership was classified as an incident")
+
           headline = clean_official_headline_prefix(
               "Anthropic News: Introducing the Anthropic Cyber Mission"
           )
