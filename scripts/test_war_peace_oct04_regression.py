@@ -1073,4 +1073,116 @@ try:
 except RuntimeError as err:
     check("oct09-quality-gate-duplicate-three-day-plan", any(x in str(err) for x in ("동일 3일 집중공격 계획", "동일 제목 중복")))
 
+
+# 중국 정제연료 수출은 군사적 확전·원유 수출과 분리하고 출처·단계를 검증한다.
+china_oct_reuters = row(
+    "China to resume October fuel exports after a brief halt, four trade sources say",
+    source="Reuters",
+    description=(
+        "China approved exports of diesel gasoline and jet fuel combined at around "
+        "3.7 million metric tons in October, according to two industry sources. "
+        "China had halted refined fuel exports during Golden Week amid the Iran war."
+    ),
+    link="https://www.reuters.com/business/energy/china-resume-october-fuel-exports-after-brief-halt-four-trade-sources-say-2026-10-09/",
+)
+china_oct_kr = row(
+    "중국, 10월 정제연료 수출 재개 예정",
+    source="연합뉴스",
+    description="장기연휴 후 휘발유 경유 항공유 합계 370만 톤 승인 보도",
+    link="https://news.google.com/rss/articles/sample-china-reexport",
+)
+china_now = dt.datetime.now(mod.watch.KST)
+check("china-fuel-reuters-report", mod._china_fuel_stage(china_oct_reuters) == "report")
+check("china-fuel-korean-report", mod._china_fuel_stage(china_oct_kr) == "report")
+check("china-fuel-repost-same-event-id", mod.item_id(china_oct_reuters) == mod.item_id(china_oct_kr))
+check("china-fuel-period-2026-10", mod._china_fuel_period(china_oct_reuters) == "2026-10")
+score, china_tags = mod.score_item(china_oct_reuters, china_now)
+check("china-fuel-high-score", score >= 98 and "수출승인업계보도" in mod.marks(china_oct_reuters))
+check("china-fuel-not-war-or-ceasefire", "확전" not in china_tags and "종전·협상" not in china_tags and "재건" not in china_tags)
+check("china-fuel-yellow-until-customs", mod.final_color(china_oct_reuters) == "yellow")
+check("china-fuel-topic", mod.topic_label(china_oct_reuters) == "중국 · 정제연료 수출·공급변화")
+check("china-fuel-approval-not-exports", "정부 발표·실제 선적 확인 전" in mod.watch.translate_ko(china_oct_reuters["title_original"]))
+check("china-fuel-reuters-numeric-basis", "370만 톤" in china_oct_reuters["signals_ko"][0] and "9월 예상 400만 톤" in china_oct_reuters["signals_ko"][0])
+check("china-fuel-military-verdict-not-inherited", "군사·안보 위험 지속" not in mod.verdict([china_oct_reuters]) and "원유 생산량" in mod.verdict([china_oct_reuters]))
+china_oct_reuters["score"] = score
+china_oct_reuters["tags"] = china_tags
+china_oct_reuters["age"] = mod.watch.age_minutes(china_oct_reuters, china_now)
+china_render = mod.watch.build_alert([china_oct_reuters], [], china_now)
+check("china-fuel-render-yellow-stage", "중국 · 정제연료 수출·공급변화" in china_render and "🟡" in china_render and "수출 재개 예정" in china_render)
+
+china_finjuice = row(
+    "China to resume October fuel exports after holiday pause",
+    source="FinancialJuice",
+    link="https://x.com/financialjuice/status/example-china",
+)
+low_score, low_tags = mod.score_item(china_finjuice, china_now)
+check("china-fuel-unverified-social-not-official", low_score == 0 and low_tags == [])
+
+china_crude = row(
+    "China to resume October crude oil exports",
+    source="Reuters",
+    description="China restarted crude oil export shipments."
+)
+check("china-fuel-no-crude-confusion", mod._china_fuel_stage(china_crude) is None)
+
+china_lng = row(
+    "China approved LNG exports for October",
+    source="Reuters",
+    description="China increased its natural gas export quota."
+)
+check("china-fuel-no-lng-confusion", mod._china_fuel_stage(china_lng) is None)
+
+china_approved = row(
+    "China approves October refined fuel export quotas",
+    source="商务部",
+    description="中国成品油出口批准，海关数据尚未公布",
+    link="https://www.mofcom.gov.cn/notice/sample",
+)
+check("china-fuel-official-approval-distinct", mod._china_fuel_stage(china_approved) == "approval")
+check("china-fuel-official-approval-no-physical-green", mod.final_color(china_approved) == "yellow")
+check("china-fuel-official-approval-new-event-id", mod.item_id(china_approved) != mod.item_id(china_oct_reuters))
+
+china_loaded = row(
+    "China refined fuel shipments have resumed in October",
+    source="Reuters",
+    description="Oil products shipments resumed, according to trade sources."
+)
+check("china-fuel-loadings-vs-customs", mod._china_fuel_stage(china_loaded) == "shipment" and mod.final_color(china_loaded) == "yellow")
+
+china_customs = row(
+    "中国海关数据显示10月成品油出口实绩",
+    source="海关总署",
+    description="海关官方已公布成品油出口数据",
+    link="https://www.customs.gov.cn/example",
+)
+check("china-fuel-customs-stage", mod._china_fuel_stage(china_customs) == "customs")
+check("china-fuel-customs-green", mod.final_color(china_customs) == "green")
+check("china-fuel-customs-event-id-separate", mod.item_id(china_customs) != mod.item_id(china_approved))
+
+china_halt = row(
+    "China suspends October refined fuel exports",
+    source="Reuters",
+    description="Beijing halted diesel gasoline jet fuel exports."
+)
+check("china-fuel-reversal-separate", mod._china_fuel_stage(china_halt) == "restriction" and mod.item_id(china_halt) != mod.item_id(china_oct_reuters))
+china_nov = row(
+    "China to resume November refined fuel exports",
+    source="Reuters",
+    description="November diesel exports approved."
+)
+check("china-fuel-next-month-new-event", mod.item_id(china_nov) != mod.item_id(china_oct_reuters))
+
+china_bad = (
+    "<b>전쟁·종전·재건 웹감시</b>\n"
+    "🔴 [신규] <b>1. 중국 · 정제연료 수출·공급변화</b>\n"
+    "중국, 10월 정제연료 수출 재개 예정 — 실제 선적 확인 전\n"
+)
+mod.watch.ALERT.write_text(china_bad, encoding="utf-8")
+try:
+    mod.verify_alert(False)
+    raise AssertionError("china-fuel-quality-guard-red")
+except RuntimeError as exc:
+    check("china-fuel-quality-guard-red", "중국 정제연료" in str(exc))
+
+
 print("WAR_PEACE_OCT04_REGRESSION_OK")
