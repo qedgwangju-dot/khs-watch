@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
-"""Insert exact event-time 10Y/30Y and oil values into the GDPNow Telegram alert."""
-from __future__ import annotations
+"""Add verified, time-stamped market observations to the GDPNow rate alert.
 
+The FRED page "Updated" clock is a *data-feed update* time, not necessarily the
+release of the underlying economic report. This formatter never calls it a Fed
+announcement or asserts causality. Quotes use their own actual timestamps and
+no later quote is substituted as if it were an earlier observation.
+"""
+from __future__ import annotations
 import html
 import json
 import pathlib
@@ -10,132 +15,106 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 ALERT = ROOT / "out" / "gdpnow_long_rates_alert.html"
 REACTION = ROOT / "out" / "gdpnow_intraday_rate_reaction.json"
 
-
-def fmt_yield_point(p: dict | None) -> str:
+def when(p: dict | None) -> str:
     if not p:
+        return "시각 미확인"
+    raw = str(p.get("timestamp_kst") or "")
+    return (raw[11:16] + " KST") if len(raw) >= 16 else "시각 미확인"
+
+def fmt_yield(p: dict | None) -> str:
+    if not p or p.get("yield_pct") is None:
         return "확인 불가"
-    return f"{float(p['yield_pct']):.4f}%"
+    return f"{float(p['yield_pct']):.4f}% ({when(p)})"
 
-
-def fmt_price_point(p: dict | None) -> str:
-    if not p:
+def fmt_oil(p: dict | None) -> str:
+    if not p or p.get("price_usd") is None:
         return "확인 불가"
-    return f"${float(p['price_usd']):.2f}"
+    return f"{float(p['price_usd']):.2f}달러/배럴 ({when(p)})"
 
+def fmt_bp(val) -> str:
+    return "확인 불가" if val is None else f"{float(val):+.2f}bp"
 
-def fmt_bp(v) -> str:
-    if v is None:
-        return "확인 불가"
-    return f"{float(v):+.2f}bp"
-
-
-def fmt_pct(v) -> str:
-    if v is None:
-        return "확인 불가"
-    return f"{float(v):+.2f}%"
-
+def fmt_pct(val) -> str:
+    return "확인 불가" if val is None else f"{float(val):+.2f}%"
 
 def main() -> int:
-    if not ALERT.exists() or not REACTION.exists():
+    if not ALERT.exists():
         return 0
     text = ALERT.read_text(encoding="utf-8").strip()
-    try:
-        data = json.loads(REACTION.read_text(encoding="utf-8"))
-    except Exception:
-        return 0
+    if not REACTION.exists():
+        data = {"error":"발표 당시 시장 원자료 파일 없음"}
+    else:
+        try:
+            data = json.loads(REACTION.read_text(encoding="utf-8"))
+        except Exception as e:
+            data = {"error":f"시장 자료 형식 오류 {type(e).__name__}"}
 
     kst = str(data.get("release_timestamp_kst") or "")
-    et = str(data.get("release_timestamp_et") or "")
-    kst_short = kst.replace("T", " ")[:16] + " KST" if kst else "확인 불가"
-    et_short = et.replace("T", " ")[:16] + " ET" if et else "확인 불가"
-
-    block: list[str] = ["", "⏱ <b>발표 당시 시장값 · 정확한 시각 기준</b>"]
-    if kst:
-        block.append(f"• GDPNow 확인시각: <b>{html.escape(kst_short)}</b> ({html.escape(et_short)})")
-
+    event_label = (kst.replace("T", " ")[:16] + " KST") if kst else "확인 불가"
     ten = data.get("ten_year") or {}
     thirty = data.get("thirty_year") or {}
-    have_rates = bool(ten) and bool(thirty)
-    if have_rates:
-        mat = str(data.get("market_confirmation_at") or "확인 불가")
-        m5 = str(data.get("market_confirmation_5m") or "확인 불가")
-        m30 = str(data.get("market_confirmation_30m") or "확인 불가")
 
-        predicted = ""
-        if "장기금리 상승" in text[:700]:
-            predicted = "상승"
-        elif "장기금리 하락" in text[:700]:
-            predicted = "하락"
-
-        confirm_source = m30 if m30 != "확인 불가" else (m5 if m5 != "확인 불가" else mat)
-        actual = ""
-        if "상승 확인" in confirm_source:
-            actual = "상승"
-        elif "하락 확인" in confirm_source:
-            actual = "하락"
-
-        if predicted and actual:
-            if predicted == actual:
-                consistency = f"✅ GDP 구성 판정({predicted})과 실제 동시간대 금리 반응({actual}) <b>일치</b>"
-            else:
-                consistency = f"❌ GDP 구성 판정({predicted})과 실제 동시간대 금리 반응({actual}) <b>불일치</b>"
-        else:
-            consistency = f"⚪ 실제 동시간대 시장 반응: <b>{html.escape(confirm_source)}</b>"
-
-        block += [
-            "• 10Y: "
-            f"직전 <b>{fmt_yield_point(ten.get('pre'))}</b> → 발표시각 <b>{fmt_yield_point(ten.get('at_release'))}</b> ({fmt_bp(ten.get('change_at_bp'))}) "
-            f"→ +5분 <b>{fmt_yield_point(ten.get('plus_5m'))}</b> ({fmt_bp(ten.get('change_5m_bp'))}) "
-            f"→ +30분 <b>{fmt_yield_point(ten.get('plus_30m'))}</b> ({fmt_bp(ten.get('change_30m_bp'))})",
-            "• 30Y: "
-            f"직전 <b>{fmt_yield_point(thirty.get('pre'))}</b> → 발표시각 <b>{fmt_yield_point(thirty.get('at_release'))}</b> ({fmt_bp(thirty.get('change_at_bp'))}) "
-            f"→ +5분 <b>{fmt_yield_point(thirty.get('plus_5m'))}</b> ({fmt_bp(thirty.get('change_5m_bp'))}) "
-            f"→ +30분 <b>{fmt_yield_point(thirty.get('plus_30m'))}</b> ({fmt_bp(thirty.get('change_30m_bp'))})",
-            f"• 발표시각 금리 확인: <b>{html.escape(mat)}</b> · +5분 <b>{html.escape(m5)}</b> · +30분 <b>{html.escape(m30)}</b>",
-            f"• {consistency}",
-        ]
-    else:
-        block += [
-            "• 10Y·30Y 정확한 당시값 확인 불가 — <b>현재값으로 대체하지 않음</b>",
-        ]
-
-    brent = data.get("brent") or {}
-    wti = data.get("wti") or {}
-    have_oil = bool(brent) and bool(wti)
-    block += ["", "🛢 <b>유가 · 금리 방향 보정</b>"]
-    if have_oil:
-        oil_signal = str(data.get("oil_rate_signal") or "유가 방향 확인 불가")
-        block += [
-            "• Brent: "
-            f"전일 종가 <b>{fmt_price_point(brent.get('previous_close'))}</b> → 발표시각 <b>{fmt_price_point(brent.get('at_release'))}</b> "
-            f"(<b>{fmt_pct(brent.get('day_change_at_pct'))}</b>) → +30분 <b>{fmt_price_point(brent.get('plus_30m'))}</b>",
-            "• WTI: "
-            f"전일 종가 <b>{fmt_price_point(wti.get('previous_close'))}</b> → 발표시각 <b>{fmt_price_point(wti.get('at_release'))}</b> "
-            f"(<b>{fmt_pct(wti.get('day_change_at_pct'))}</b>) → +30분 <b>{fmt_price_point(wti.get('plus_30m'))}</b>",
-            f"• 유가 판정: <b>{html.escape(oil_signal)}</b>",
-            "• 유가가 급등하면 GDPNow와 별개로 기대인플레이션·Fed 긴축 기대를 통해 장기금리 상승 압력을 더할 수 있음.",
-            "• 반대로 유가가 크게 하락하면 강한 GDP의 금리 상승 효과를 일부 상쇄할 수 있음.",
-        ]
-    else:
-        block += [
-            "• 발표 당시 Brent·WTI 정확한 값 확인 불가 — <b>현재 유가로 대체하지 않음</b>",
-        ]
-
-    if data.get("error"):
-        block += ["", f"• 부분 확인 오류: {html.escape(str(data.get('error')))}"]
-
-    block += [
+    block = [
         "",
-        "• 금리 당시값: Cboe TNX/TYX 1분 데이터 기반, 유가는 Brent/WTI 선물 1분 데이터 기반. 미 재무부 공식 일일 금리는 사후 종가 검산.",
-        "• 같은 시각 유가·Fed 발언·국채수급·지정학 뉴스가 함께 움직일 수 있으므로 GDP 효과와 외생 요인을 분리해서 판정.",
+        "⏱ <b>GDPNow 데이터 갱신 전후 금리</b>",
+        f"• FRED 데이터 갱신 기록: <b>{html.escape(event_label)}</b>",
+        "• 주의: FRED 갱신 시각은 최초 GDPNow 공개 또는 원천 경제지표 발표 시각과 다를 수 있습니다.",
     ]
 
+    if ten or thirty:
+        for title, v in (("미국 10년물",ten),("미국 30년물",thirty)):
+            block += [
+                f"• {title}",
+                f"  직전: {fmt_yield(v.get('pre'))}",
+                f"  기준 시각 인근: {fmt_yield(v.get('at_release'))} ({fmt_bp(v.get('change_at_bp'))})",
+                f"  +5분 관측: {fmt_yield(v.get('plus_5m'))} ({fmt_bp(v.get('change_5m_bp'))})",
+                f"  +30분 관측: {fmt_yield(v.get('plus_30m'))} ({fmt_bp(v.get('change_30m_bp'))})",
+            ]
+        confirmation = data.get("market_confirmation_30m") or data.get("market_confirmation_5m") or "확인 불가"
+        predicted = ""
+        if "장기금리 상승" in text[:850]:
+            predicted = "상승"
+        elif "장기금리 하락" in text[:850]:
+            predicted = "하락"
+        actual = "상승" if "상승 확인" in confirmation else ("하락" if "하락 확인" in confirmation else "")
+        if actual and predicted:
+            agreement = "일치" if actual == predicted else "불일치"
+            block += [f"• GDP 구성 압력 {predicted} / 동시간대 관측 {actual}: <b>{agreement}</b> (인과관계 미확인)"]
+        else:
+            block += [f"• 동시간대 금리 반응: <b>{html.escape(str(confirmation))}</b>"]
+    else:
+        block += ["• 당시 10년물·30년물 관측값 <b>확인 불가</b> — 현재 금리로 대체하지 않음"]
+
+    brent, wti = data.get("brent") or {}, data.get("wti") or {}
+    block += ["","🛢 <b>유가 변화가 금리 압력을 강화했나</b>"]
+    if brent or wti:
+        for label, oil in (("Brent 선물",brent),("WTI 선물",wti)):
+            block += [
+                f"• {label}",
+                f"  이전 거래일 종가: {fmt_oil(oil.get('previous_close'))}",
+                f"  GDPNow 데이터 갱신 인근: {fmt_oil(oil.get('at_release'))}",
+                f"  전일 종가 대비: {fmt_pct(oil.get('day_change_at_pct'))}",
+                f"  +30분: {fmt_oil(oil.get('plus_30m'))} (직전 대비 {fmt_pct(oil.get('change_30m_pct'))})",
+            ]
+        signal = data.get("oil_rate_signal") or "판정 보류"
+        block += [
+            f"• <b>전일 대비 유가 압력</b>: {html.escape(str(signal))}",
+            "• 전일 대비 유가 방향과 데이터 갱신 후 30분 변화는 별개입니다. 유가의 상승·하락이 다른 원인일 수도 있습니다.",
+        ]
+    else:
+        block += ["• Brent·WTI 당시값 확인 불가 — 현재 선물가격으로 대체하지 않음"]
+    if data.get("error"):
+        block += ["",f"• 일부 원자료 조회 실패: {html.escape(str(data['error']))}"]
+    block += [
+        "",
+        "• 인용 시장값: 1분 단위 Cboe 금리지수(^TNX/^TYX) 및 Brent/WTI 선물 근접 관측. 각 괄호에 실제 관측 시각 표기.",
+        "• 미 재무부 공식 금리 종가는 같은 날 일일 기준 별도 검산용이며, 당시 1분 금리를 대체하지 않습니다.",
+        "• GDP 구성의 이론상 금리 방향과 실제 금리 움직임을 구분합니다. 다른 경제지표·FOMC 발언·유가·국채수급이 동시에 움직일 수 있습니다.",
+    ]
     lines = text.splitlines()
-    insert_at = min(4, len(lines))
-    out = lines[:insert_at] + block + lines[insert_at:]
-    ALERT.write_text("\n".join(out).strip() + "\n", encoding="utf-8")
+    location = min(4,len(lines))
+    ALERT.write_text("\n".join(lines[:location]+block+lines[location:]).strip()+"\n",encoding="utf-8")
     return 0
 
-
-if __name__ == "__main__":
+if __name__=="__main__":
     raise SystemExit(main())
