@@ -399,14 +399,16 @@ def main() -> int:
     errors: list[str] = []
     rows: list[GdpRow] = []
     try:
-        rows = fetch_contrib_rows()
+        # FRED republishes all nine Atlanta-Fed GDPNow components; validate
+        # they reconcile and use the verified update date, not quarter start.
+        rows = fetch_contrib_rows_fred()
     except Exception as e:
-        errors.append(f"Atlanta Fed workbook: {type(e).__name__}: {e}")
+        errors.append(f"FRED/Atlanta Fed component route: {type(e).__name__}: {e}")
         try:
-            rows = fetch_contrib_rows_fred()
-            errors.append("공식 FRED 독립 경로로 복구, 엑셀 원자료는 접근 실패")
+            rows = fetch_contrib_rows()
+            errors.append("공식 Atlanta Fed Excel 경로로 복구 (FRED 조회 실패)")
         except Exception as fallback_error:
-            errors.append(f"FRED official fallback: {type(fallback_error).__name__}: {fallback_error}")
+            errors.append(f"Atlanta Fed Excel secondary route: {type(fallback_error).__name__}: {fallback_error}")
 
     meta: dict[str, str] = {}
     try:
@@ -463,9 +465,30 @@ def main() -> int:
 
     state = load_state()
     prior_key = str(state.get("observation_key") or "")
-    obs_key = f"{latest.date}|{latest.gdp:.4f}|{latest.cipi:.4f}|{latest.release}"
+    # Stable values-only key. The data source and release-label may change
+    # without any economic observation changing (e.g. Fed workbook -> FRED).
+    # Do not trigger duplicate alerts merely because the source recovered.
+    obs_key = f"{latest.date}|{latest.gdp:.4f}|{latest.cipi:.4f}"
+    old_key_parts = prior_key.split("|")
+    same_core = ("|".join(old_key_parts[:3]) == obs_key)
+    old_row = state.get("latest") or {}
+    if same_core and old_row:
+        # Compare economically relevant components, not workbook layout
+        # (which can split fixed investment differently than FRED).
+        def old_component_sum() -> float | None:
+            v = [fnum(old_row.get(k)) for k in ("pce", "equipment", "ipp", "nonres", "residential")]
+            return sum(v) if all(t is not None for t in v) else None
+        current_private = private_final
+        old_private = old_component_sum()
+        comparands = [(fnum(old_row.get("pce")), latest.pce),
+                      (fnum(old_row.get("net_exports")), latest.net_exports),
+                      (fnum(old_row.get("govt")), latest.govt),
+                      (old_private, current_private)]
+        # Missing old components mean backward-compatible core comparison.
+        if any(a is not None and b is not None and abs(a-b) > 0.0002 for a,b in comparands):
+            same_core = False
     is_baseline = not prior_key
-    is_new = bool(prior_key) and obs_key != prior_key
+    is_new = bool(prior_key) and not same_core
 
     if prior_key == obs_key:
         pending = state
