@@ -1108,6 +1108,7 @@ china_oct_reuters["score"] = score
 china_oct_reuters["tags"] = china_tags
 china_oct_reuters["age"] = mod.watch.age_minutes(china_oct_reuters, china_now)
 china_render = mod.watch.build_alert([china_oct_reuters], [], china_now)
+print("CHINA_RENDER_DEBUG", repr(china_render[:2000]))
 check("china-fuel-render-yellow-stage", "중국 · 정제연료 수출·공급변화" in china_render and "🟡" in china_render and "수출 재개 예정" in china_render)
 
 china_finjuice = row(
