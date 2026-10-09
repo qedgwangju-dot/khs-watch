@@ -1,0 +1,109 @@
+name: Treasury JPM 30Y Official Crossing Alert
+
+on:
+  push:
+    paths:
+      - ".github/workflows/treasury-30y-jpm-level-alert.yml"
+      - "scripts/treasury_30y_jpm_level_alert.py"
+      - "tests/test_treasury_30y_jpm_level_alert.py"
+  schedule:
+    - cron: "53 8 * * *"
+      timezone: "Asia/Seoul"
+    - cron: "5 10 * * *"
+      timezone: "Asia/Seoul"
+    - cron: "12 12 * * *"
+      timezone: "Asia/Seoul"
+  workflow_dispatch:
+    inputs:
+      validate_only:
+        description: "Verify official data without sending Telegram"
+        required: false
+        default: true
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: treasury-jpm-30y-alert
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
+      AUDIT_ONLY: ${{ github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.validate_only) }}
+    steps:
+      - name: Checkout live state
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Python setup
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check requests beautifulsoup4 pytest
+      - name: Validate script and regression tests
+        run: |
+          python -m py_compile scripts/treasury_30y_jpm_level_alert.py
+          PYTHONPATH=scripts pytest -q tests/test_treasury_30y_jpm_level_alert.py
+          PYTHONPATH=scripts python -m unittest discover -s tests -p 'test_treasury_daily_report_integrity.py' -v
+      - name: Validate exact bot and chat route
+        run: |
+          python - <<'PY'
+          import json,os,urllib.request,urllib.parse
+          token=(os.environ.get("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat=(os.environ.get("TELEGRAM_CHAT_ID") or "").strip()
+          expected="khs8879887988798879_bot"
+          if not token or not chat: raise RuntimeError("Existing Telegram secret missing")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe",timeout=25) as r:
+              p=json.loads(r.read().decode())
+          actual=str((p.get("result") or {}).get("username") or "")
+          if not p.get("ok") or actual.lower()!=expected.lower(): raise RuntimeError("Wrong Telegram bot")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getChat?"+urllib.parse.urlencode({"chat_id":chat}),timeout=25) as r:
+              p=json.loads(r.read().decode())
+          if not p.get("ok") or str((p.get("result") or {}).get("id"))!=chat: raise RuntimeError("Wrong Telegram chat")
+          print(f"telegram_route_verified=true bot=@{actual} chat_verified=true")
+          PY
+      - name: Evaluate official 30Y crossing; send only when newly crossed
+        run: |
+          set -o pipefail
+          python scripts/treasury_30y_jpm_level_alert.py | tee out_jpm_30y_runtime.log
+          if grep -Eq 'telegram_delivery_confirmed=true|jpm_30y_no_new_crossing=true|jpm_30y_baseline_initialized=true|treasury_30y_jpm_audit_only=true|official_treasury_not_yet_published=true' out_jpm_30y_runtime.log; then
+            cat out_jpm_30y_runtime.log >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "::error::Unknown JPM 30Y watch result"
+            exit 1
+          fi
+      - name: Persist observation and delivery state
+        if: success() && env.AUDIT_ONLY != 'true'
+        run: |
+          if [ ! -f data/treasury_30y_jpm_level_state.json ]; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/treasury_30y_jpm_level_state.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Update Treasury JPM 30Y official crossing state"
+          for attempt in 1 2 3 4; do
+            if git pull --rebase origin main && git push origin main; then exit 0; fi
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 3))
+          done
+          exit 1
+      - name: Upload audit artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: treasury-jpm-30y-validation
+          path: |
+            out/treasury_30y_jpm_audit.json
+            out_jpm_30y_runtime.log
+            data/treasury_30y_jpm_level_state.json
+          if-no-files-found: ignore
+          retention-days: 14
