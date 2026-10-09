@@ -631,13 +631,18 @@ def _ici_table_rows(page_html, required_labels):
 
 def _ici_period_from_prose(text):
     m = re.search(
-        r"week ended(?: Wednesday,?)?\s+([A-Za-z]+\s+\d{1,2},\s+20\d{2})",
+        r"week ended(?: Wednesday,?)?\s+([A-Za-z]+\s+\d{1,2})(?:,\s+(20\d{2}))?",
         text, re.I
     )
     if not m:
         raise RuntimeError("ICI report reference-week prose date missing")
-    return datetime.strptime(m.group(1), "%B %d, %Y").date()
-
+    pub = _ici_published_date(text)
+    year = int(m.group(2)) if m.group(2) else (
+        datetime.strptime(pub, "%B %d, %Y").year if pub else None
+    )
+    if year is None:
+        raise RuntimeError("ICI cannot determine reference-week year")
+    return datetime.strptime(f"{m.group(1)}, {year}", "%B %d, %Y").date()
 
 def _ici_published_date(text):
     m = re.search(
