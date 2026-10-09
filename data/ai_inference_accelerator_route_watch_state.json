@@ -3,12 +3,12 @@
   "last_collection": {
     "errors": [],
     "material_items": 0,
-    "new_articles": 2,
-    "new_events": 1,
-    "raw_items": 25,
+    "new_articles": 0,
+    "new_events": 0,
+    "raw_items": 24,
     "stale_backfill_suppressed": 0
   },
-  "news_watermark_utc": "2026-10-09T02:20:46.455487+00:00",
+  "news_watermark_utc": "2026-10-09T04:29:38.550144+00:00",
   "official_pages": {
     "OpenAI GPT-5.6 Sol Ultrafast 미리보기": {
       "candidate_count": 0,
@@ -21,7 +21,7 @@
         "name": "OpenAI GPT-5.6 Sol Ultrafast 미리보기",
         "url": "https://openai.com/index/previewing-ultrafast/"
       },
-      "updated_at": "2026-10-04T00:19:23.713969+00:00",
+      "updated_at": "2026-10-09T04:29:38.550144+00:00",
       "url": "https://openai.com/index/previewing-ultrafast/"
     },
     "OpenAI GPT-6.1 Sol 모델": {
@@ -29,23 +29,24 @@
       "candidate_digest": null,
       "candidate_first_seen_at": null,
       "candidate_semantic": null,
-      "digest": "c7964f3e1f57502c672d56f4a29e982d37cad953926087cdb2a75eec74290279",
+      "digest": "42a8024c578fcf82a77815564efa1630cf736ebfcde5bbe0b0195dd0747e0167",
       "semantic": {
         "batch_flex_discount_pct": 50.0,
         "cache_write_usd_per_mtok": 2.5,
         "cached_input_usd_per_mtok": 0.1,
         "context_window": 1050000,
-        "eu_data_residency": true,
         "fast_mode_mentioned": true,
         "fast_multiplier_x": 2.0,
         "input_usd_per_mtok": 2.0,
         "kind": "openai_gpt_6_1_sol",
         "max_output_tokens": 128000,
         "output_usd_per_mtok": 10.0,
-        "ultrafast_mentioned": true,
+        "sol_ultrafast_eu_residency": true,
+        "ultrafast_multiplier_x": 6.0,
+        "ultrafast_supported": true,
         "us_data_residency": true
       },
-      "updated_at": "2026-10-09T02:20:46.455487+00:00",
+      "updated_at": "2026-10-09T04:29:38.550144+00:00",
       "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol"
     },
     "OpenAI Ultrafast 모드": {
@@ -53,21 +54,17 @@
       "candidate_digest": null,
       "candidate_first_seen_at": null,
       "candidate_semantic": null,
-      "digest": "d51f62ba0af7b3e0a298fa29ee29ed9bb89b8e737fa3b55b5a65c4644bf67f08",
+      "digest": "fa1afe1da848c2b4acbe5a777165d0d4ffc776a7da408c936e9bab65e91e88d0",
       "semantic": {
-        "eu_regional_supported": true,
+        "astra_ultrafast_eu_residency": false,
         "gpt_5_6_sol_preview": true,
-        "gpt_6_1_sol_mentioned": true,
+        "gpt_6_1_sol_ultrafast_supported": true,
         "gpt_6_astra_supported": true,
         "kind": "openai_ultrafast",
-        "max_speed_x": null,
         "service_tier_ultrafast": true,
-        "tier_1_3_tpm": null,
-        "tier_4_tpm": null,
-        "tier_5_tpm": null,
-        "us_data_residency": true
+        "sol_ultrafast_eu_residency": true
       },
-      "updated_at": "2026-10-09T02:20:46.455487+00:00",
+      "updated_at": "2026-10-09T04:29:38.550144+00:00",
       "url": "https://developers.openai.com/api/docs/guides/ultrafast-mode"
     },
     "OpenAI·Cerebras 750MW 계약": {
@@ -81,7 +78,7 @@
         "name": "OpenAI·Cerebras 750MW 계약",
         "url": "https://openai.com/index/cerebras-partnership/"
       },
-      "updated_at": "2026-10-04T00:19:23.713969+00:00",
+      "updated_at": "2026-10-09T04:29:38.550144+00:00",
       "url": "https://openai.com/index/cerebras-partnership/"
     },
     "Synopsys 2026 Investor Day": {
@@ -95,7 +92,7 @@
         "name": "Synopsys 2026 Investor Day",
         "url": "https://investor.synopsys.com/news/news-details/2026/Synopsys-Details-Growth-Strategy-and-Long-term-Financial-Model-at-2026-Investor-Day/"
       },
-      "updated_at": "2026-10-04T00:19:23.713969+00:00",
+      "updated_at": "2026-10-09T04:29:38.550144+00:00",
       "url": "https://investor.synopsys.com/news/news-details/2026/Synopsys-Details-Growth-Strategy-and-Long-term-Financial-Model-at-2026-Investor-Day/"
     },
     "Synopsys Autopilot": {
@@ -109,7 +106,7 @@
         "name": "Synopsys Autopilot",
         "url": "https://investor.synopsys.com/news/news-details/2026/Synopsys-Powers-Autonomous-Engineering-with-a-Broad-Portfolio-of-Long-Horizon-Agents-and-Autopilot-Platform/default.aspx"
       },
-      "updated_at": "2026-10-04T00:19:23.713969+00:00",
+      "updated_at": "2026-10-09T04:29:38.550144+00:00",
       "url": "https://investor.synopsys.com/news/news-details/2026/Synopsys-Powers-Autonomous-Engineering-with-a-Broad-Portfolio-of-Long-Horizon-Agents-and-Autopilot-Platform/default.aspx"
     },
     "Synopsys GPT-Synopsys": {
@@ -123,11 +120,11 @@
         "name": "Synopsys GPT-Synopsys",
         "url": "https://investor.synopsys.com/news/news-details/2026/OpenAI-and-Synopsys-Announce-GPT-Synopsys-Frontier-Intelligence-to-Revolutionize-Chip-Design/default.aspx"
       },
-      "updated_at": "2026-10-04T00:19:23.713969+00:00",
+      "updated_at": "2026-10-09T04:29:38.550144+00:00",
       "url": "https://investor.synopsys.com/news/news-details/2026/OpenAI-and-Synopsys-Announce-GPT-Synopsys-Frontier-Intelligence-to-Revolutionize-Chip-Design/default.aspx"
     }
   },
-  "official_snapshot_schema_version": 2,
+  "official_snapshot_schema_version": 3,
   "seen": {
     "ba773eddac14bc291562dc59": {
       "category": "모델→가속기 배치 확정",
@@ -148,5 +145,5 @@
       "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9KcU1JWEFGdV96M2o5aF9HdU14SzRNTU5PVWh3RnRQUUJTa3RZT05YZkJNTHZ0RnpveXBhODdoSnNxcU1DSmg2dUFpWGV6c2FPR1FoV3B4QnB2MWJkXzhNbWdTdjVZaW5adDV2SlFYWXAwQQ?oc=5"
     }
   },
-  "updated_at_kst": "2026-10-09T11:20:46+09:00"
+  "updated_at_kst": "2026-10-09T13:29:38+09:00"
 }
