@@ -3,7 +3,7 @@ import html
 import warsh_balance_sheet_watch as base
 
 def summary_message_v2(cur,impl,task,regime,four,reason):
-    qt = 'QT' in (impl.get('mode') or '') or '총량 축소' in (impl.get('mode') or '')
+    qt = (impl.get('mode') == '대차대조표 총량 축소/QT 명시')
     lines=[
         '<b>[Warsh 연준 대차대조표 변화]</b>',
         f"기준: H.4.1 {cur.get('date') or '확인 필요'} · 시행지침 {impl.get('date') or '확인 필요'}",
