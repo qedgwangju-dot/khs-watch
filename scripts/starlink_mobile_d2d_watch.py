@@ -50,6 +50,7 @@ OFFICIAL_BASE=(
  ("[거래 계약·승인 대기]","SpaceX와 Grain Management가 전국 단위 800MHz 면허 묶음(시장별 최대 14MHz의 쌍방향 주파수)을 인수하는 계약을 2026년 10월 8일 발표했습니다. Grain→SpaceX 이전은 FCC 승인 대기이며 거래 완료가 아닙니다.","https://graingp.com/grain-management-announces-definitive-agreement-to-sell-nationwide-800-mhz-spectrum-portfolio-to-spacex/"),
  ("[기존 주파수 이전과 구분]","FCC가 2026년 7월 1일 승인한 거래는 T-Mobile→Grain 800MHz 이전 및 역방향 600MHz 교환입니다. 이번 Grain→SpaceX 거래에 그 승인을 적용하지 않습니다.",FCC_JULY),
  ("[위성망 승인과 구분]","FCC 2026년 1월 발표는 Gen2 위성 7,500기 추가 승인(총 15,000기)입니다. 위성망 승인과 800MHz 면허 이전 승인을 합쳐 해석하지 않습니다.",FCC_JAN),
+ ("[10월 신규 휴대전화 직접통신 위성망]","FCC는 2026년 10월 6일 DA-26-1078로 별도의 휴대전화 직접통신 위성망 최대 1만5,000기(고도 약 326~335km)를 조건부 승인했습니다. 이는 1월의 Gen2 광대역 승인과 별도이고, 800MHz Grain→SpaceX 면허 이전 승인이 아닙니다.","https://docs.fcc.gov/public/attachments/DA-26-1078A1.pdf"),
  ("[통신사 대응]","AT&T·T-Mobile·Verizon의 위성-휴대전화 직접통신 합작법인은 2026년 10월 1일 출범을 발표했습니다. 3사는 기존 위성통신 협력계약을 유지할 수 있습니다.","https://about.att.com/story/2026/jv-help-end-dead-zones.html"),
  ("[AST SpaceMobile 연결]","AST SpaceMobile(ASTS)은 AT&T와 2030년까지 이어지는 상업계약이 있고 Verizon과도 상업계약을 발표했습니다. 경쟁사 신사업 진입이 이 기존 계약의 즉시 해지를 의미하지 않습니다.","https://about.att.com/story/2024/ast-spacemobile-commercial-agreement.html"),
 )
@@ -419,6 +420,9 @@ def choose_events(group:dict,seen:dict,bootstrap_run:bool,force:bool=False)->tup
    # A single RSS headline is not a license, signed contract, or FCC approval.
    if not independent_publisher(item):continue
    eid=event_id(topic,status,item["title"])
+   # A headline saying merely "15,000 SpaceX satellites" without specifying
+   # DA-26-36 Gen2 broadband vs DA-26-1078 mobile D2D is unsafe.
+   if eid.startswith("fcc:ambiguous_15000:"):continue
    if eid in updated and not force:continue
    peers=[p for s,p in ordered if s==status and
           independent_publisher(p) and match_articles(item,p)]
@@ -476,6 +480,11 @@ def test()->int:
  assert "거래금액: 당사자 공식 발표에서 미공개" in bootstrap()
  assert "2026년 7월 1일" in bootstrap()
  assert "2026년 10월 1일" in bootstrap()
+ assert "DA-26-1078" in bootstrap()
+ ambiguous={"title":"FCC approves 15,000 SpaceX satellites", "publisher":"Reuters","pub":NOW,"url":"https://ambiguous.example/a"}
+ ambiguous2={"title":"FCC approves 15,000 SpaceX satellites", "publisher":"Financial Times","pub":NOW,"url":"https://ambiguous.example/b"}
+ ambiguous_result,_=choose_events({"fcc":{"x":("permission",ambiguous),"y":("permission",ambiguous2)}},{},False)
+ assert not ambiguous_result, "Ambiguous 15k title must not create regulatory approval alert"
  assert STATE!=PENDING!=ALERT
  assert distinct_primary_organizations(["Grain Management 매각 공식 발표", "Grain Management 배포 보도자료"])=={"grain"}
  assert distinct_primary_organizations(["Grain Management 배포 보도자료", "AT&T·AST SpaceMobile 상업계약 공식 발표"])=={"grain","att"}
