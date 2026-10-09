@@ -147,7 +147,9 @@ jobs:
       - name: Record Telegram delivery truth
         if: always()
         run: |
-          if [ -f out/treasury_cta_squeeze_telegram_confirmed.json ]; then
+          if [ "${CTA_TRIGGER_EVENT:-}" = "push" ]; then
+            echo "- 코드 변경 검증 전용 실행: 텔레그램 발송과 운영상태 확정 없음" >> out/treasury_cta_squeeze_status.md
+          elif [ -f out/treasury_cta_squeeze_telegram_confirmed.json ]; then
             python - <<'PY'
           import json, pathlib
           p=pathlib.Path("out/treasury_cta_squeeze_telegram_confirmed.json")
