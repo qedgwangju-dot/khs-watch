@@ -11,6 +11,7 @@ import warsh_policy_path_watch_v3 as path_v3
 import warsh_policy_source_guard as guard
 import warsh_sep_path_watch_v2 as sep
 import warsh_post_fomc_ib_reaction_watch as post_ib
+import warsh_energy_shock_watch as energy
 
 
 class WarshSafetyTests(unittest.TestCase):
@@ -90,6 +91,8 @@ class WarshSafetyTests(unittest.TestCase):
             self.assertIsNone(post_ib.market_path()["year_end"])
         with patch.object(sep, "load", return_value=state):
             self.assertIsNone(sep.market_dec())
+        with patch.object(energy, "load_json", return_value=state):
+            self.assertIsNone(energy.policy_snapshot()["extra_bp"])
 
     def test_valid_market_state_can_be_used_by_ib(self):
         state = self._fresh_market_state()
