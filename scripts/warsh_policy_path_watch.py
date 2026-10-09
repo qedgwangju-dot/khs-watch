@@ -184,12 +184,14 @@ def classify(snap):
         else: sep_read='시장과 연준 점도표가 대체로 비슷한 경로'
     mix='대차대조표 확인 필요'
     if bal:
-        if 'QT' in bal['mode'] or '총량 축소' in bal['mode'] or '총량 축소' in bal['regime']:
-            mix='정책금리 + 대차대조표 이중긴축 신호'
-        elif '충분한 준비금' in bal['mode'] or '구성 전환' in bal['regime']:
+        if bal['mode']=='대차대조표 총량 축소/QT 명시':
+            mix='공식 시행지침에 양적긴축 명시 — 실제 총량 감소 여부 별도 확인'
+        elif bal['mode']=='충분한 준비금 유지·재투자/구성 전환':
             mix='정책금리 중심 긴축 · 대차대조표는 충분한 준비금 유지/자산 구성 전환'
+        elif '총량 축소' in bal['regime']:
+            mix='보유자산 감소 신호 — 공식 QT 시행 여부 확인 전까지 판정 유보'
         else:
-            mix='정책금리 긴축 · 대차대조표 방향 추가 확인'
+            mix='대차대조표 정책문구 확인 필요 — QT 여부 판정 유보'
     return {'verdict':verdict,'extra_bp':extra,'basis':basis,'baseline_rate':base,'baseline_kind':base_kind,
             'baseline_date':base_date,'baseline_source':base_source,'official_policy':official,'sep':sep,'sep_extra_bp':sep_extra,
             'market_sep_gap_bp':market_sep_gap,'sep_read':sep_read,'balance':bal,'tightening_mix':mix,
