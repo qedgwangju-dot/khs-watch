@@ -2715,7 +2715,7 @@ def fetch_mma_isaias_snapshot(current: dt.datetime) -> NewsItem:
         raise RuntimeError("MMA 관측일 중복·순서 불일치")
     age_days = (current.astimezone(UTC).date()-latest_date).days
     if age_days < 0 or age_days > 3:
-        raise RuntimeError(f"MMA 최신 관측일 {age_days}일 경과·신규 발송 금지")
+        raise RuntimeError(f"MMA 신선도 실패: 최신 관측일 {age_days}일 경과·신규 발송 금지")
     # Reported 11:00 a.m. CDT (16:00 UTC); use observation date, not RSS publication time.
     observed=dt.datetime(latest_date.year,latest_date.month,latest_date.day,16,tzinfo=UTC)
     if observed>current:
