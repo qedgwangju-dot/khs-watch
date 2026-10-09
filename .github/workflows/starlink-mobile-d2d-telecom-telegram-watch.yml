@@ -1,0 +1,110 @@
+name: Starlink Mobile D2D and US Telecom Competition Telegram Watch
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/starlink-mobile-d2d-telecom-telegram-watch.yml"
+      - "scripts/starlink_mobile_d2d_watch.py"
+      - "scripts/starlink_mobile_d2d_korean_guard.py"
+  schedule:
+    - cron: "18,48 * * * *"
+  workflow_dispatch:
+    inputs:
+      force_notify:
+        description: "기존 검증 보도 알림을 강제로 재송신(테스트 전용)"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: starlink-mobile-d2d-telecom-telegram-watch
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs887988798879887988798879_bot"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Regression tests - FCC approval, numbers, URLs, duplicates
+        run: |
+          python -m py_compile scripts/starlink_mobile_d2d_watch.py
+          python -m py_compile scripts/starlink_mobile_d2d_korean_guard.py
+          python -m py_compile scripts/space_launch_translate_local.py
+          python -m py_compile scripts/space_launch_telegram_send.py
+          STARLINK_D2D_SELF_TEST=1 python scripts/starlink_mobile_d2d_watch.py
+          python scripts/starlink_mobile_d2d_korean_guard.py --self-test
+          python scripts/space_launch_telegram_send.py --self-test
+          python scripts/merge_space_launch_state.py --self-test
+
+      - name: Verify first-party documents, monitor and correlate sources
+        env:
+          FORCE_NOTIFY: ${{ inputs.force_notify }}
+        run: python scripts/starlink_mobile_d2d_watch.py
+
+      - name: Korean translation with lossless numbers and hyperlinks
+        if: hashFiles('out/starlink_mobile_d2d_watch_telegram.txt') != ''
+        run: |
+          cp out/starlink_mobile_d2d_watch_telegram.txt out/starlink_mobile_d2d_watch_untranslated.txt
+          python scripts/starlink_mobile_d2d_korean_guard.py \
+            out/starlink_mobile_d2d_watch_untranslated.txt \
+            out/starlink_mobile_d2d_watch_translated.txt
+          cp out/starlink_mobile_d2d_watch_translated.txt out/starlink_mobile_d2d_watch_telegram.txt
+
+      - name: Audit outcome
+        if: always()
+        run: |
+          if [ -f out/starlink_mobile_d2d_watch_status.md ]; then
+            cat out/starlink_mobile_d2d_watch_status.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Send alerts ONLY to existing dedicated Starlink Telegram bot
+        if: hashFiles('out/starlink_mobile_d2d_watch_telegram.txt') != ''
+        env:
+          SPACE_LAUNCH_TELEGRAM_BOT_TOKEN: ${{ secrets.SPACE_LAUNCH_TELEGRAM_BOT_TOKEN }}
+          SPACE_LAUNCH_TELEGRAM_CHAT_ID: ${{ secrets.SPACE_LAUNCH_TELEGRAM_CHAT_ID }}
+        run: |
+          python scripts/space_launch_telegram_send.py out/starlink_mobile_d2d_watch_telegram.txt
+
+      - name: Persist dedup state only after successful delivery, merge on push conflicts
+        if: success() && hashFiles('out/starlink_mobile_d2d_watch_pending.json') != ''
+        run: |
+          cp out/starlink_mobile_d2d_watch_pending.json /tmp/starlink_mobile_d2d_watch_pending.json
+          git config user.name "starlink-mobile-d2d-watch[bot]"
+          git config user.email "starlink-mobile-d2d-watch[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git reset --hard origin/main
+
+            python scripts/merge_space_launch_state.py \
+              data/starlink_mobile_d2d_watch_state.json \
+              /tmp/starlink_mobile_d2d_watch_pending.json \
+              data/starlink_mobile_d2d_watch_state.json
+
+            git add data/starlink_mobile_d2d_watch_state.json
+            if git diff --cached --quiet; then
+              echo "Starlink mobile D2D state already up to date"
+              exit 0
+            fi
+            git commit -m "chore: update Starlink mobile D2D watch state"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep $((attempt * 3))
+          done
+          exit 1
