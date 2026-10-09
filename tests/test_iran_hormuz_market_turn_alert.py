@@ -711,6 +711,23 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         state={"alerted_events":{legacy_id:now.astimezone(MODULE.KST).isoformat()}}
         self.assertTrue(MODULE.event_recently_alerted(state,a,now))
 
+    def test_china_future_month_is_new_event_without_reusing_october_baseline(self):
+        now=dt.datetime(2026,11,5,12,tzinfo=dt.timezone.utc)
+        oct_row=MODULE.NewsItem(
+            "China to resume October fuel exports, four trade sources say",
+            "Reuters","a",now.isoformat(),now.timestamp(),"china_fuel_export_policy")
+        nov_row=MODULE.NewsItem(
+            "China to resume November fuel exports, four trade sources say",
+            "Reuters","b",now.isoformat(),now.timestamp(),"china_fuel_export_policy")
+        self.assertEqual(MODULE._china_policy_period([oct_row]),"2026-10")
+        self.assertEqual(MODULE._china_policy_period([nov_row]),"2026-11")
+        self.assertNotEqual(
+            MODULE.event_id("china_fuel_export_policy",[oct_row]),
+            MODULE.event_id("china_fuel_export_policy",[nov_row])
+        )
+        body=MODULE.build_physical_flow_alert_body("china_fuel_export_policy",[nov_row],None,now)
+        self.assertNotIn("10월 7일 연휴 종료",body)
+
     def test_china_new_reopening_does_not_combine_old_suspension(self):
         now=dt.datetime(2026,10,9,13,tzinfo=dt.timezone.utc)
         rows=[

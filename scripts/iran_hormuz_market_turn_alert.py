@@ -1726,12 +1726,12 @@ def event_id(kind: str, rows: list[NewsItem]) -> str:
 
     if kind == "china_fuel_export_policy":
         stage = _china_fuel_export_stage(rows)
+        period = _china_policy_period(rows)
         if stage == "planned_resume":
-            # Reported permit-volume revisions must not create duplicate notices
-            # about the same proposed resumption without physical shipment evidence.
-            basis = f"{kind}|2026-10|{stage}"
+            # A news reprint or revised permit quantity does not change physical stage.
+            basis = f"{kind}|{period}|{stage}"
         else:
-            basis = f"{kind}|2026-10|{stage}|quantity_na"
+            basis = f"{kind}|{period}|{stage}|quantity_na"
         return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
 
     if kind == "hormuz_7day_diplomacy":
@@ -2475,6 +2475,27 @@ def _build_eu_diesel_reserve_alert_body(
     return "\n".join(lines).strip() + "\n"
 
 
+def _china_policy_period(rows: list[NewsItem]) -> str:
+    if not rows:
+        raise ValueError("중국 수출정책 사건에 원문 출처가 없습니다")
+    ref=max(rows,key=lambda row:row.published_epoch)
+    when=dt.datetime.fromtimestamp(ref.published_epoch,tz=UTC).astimezone(KST)
+    text=normalize_text(ref.title)
+    month_names={
+        "january":1,"february":2,"march":3,"april":4,"may":5,"june":6,
+        "july":7,"august":8,"september":9,"october":10,"november":11,"december":12
+    }
+    found=next((num for word,num in month_names.items() if re.search(rf"\b{word}\b",text)),None)
+    kr=re.search(r"\b(1[0-2]|[1-9])월",text)
+    month=found or (int(kr.group(1)) if kr else when.month)
+    year=when.year
+    if month < when.month-6:
+        year+=1
+    elif month > when.month+6:
+        year-=1
+    return f"{year:04d}-{month:02d}"
+
+
 def _china_fuel_export_stage(text_or_rows: str | list[NewsItem]) -> str:
     text = normalize_text(text_or_rows if isinstance(text_or_rows, str) else (
         text_or_rows[0].title if text_or_rows else ""
@@ -2736,9 +2757,11 @@ def _build_china_fuel_export_policy_alert_body(
         f"중국 정책     {labels.get(stage, stage)}",
     ]
     quota = _china_resumption_volume(news_rows)
+    period = _china_policy_period(news_rows)
     if stage == "planned_resume" and quota is not None:
-        lines.append(f"10월 승인 보도  휘발유·경유·항공유 합산 약 {quota*100:.0f}만 톤 · 관계자 전언")
-        lines.append("9월 비교       400만 톤 초과 예상 · 10월 승인 보도량이 더 적음")
+        lines.append(f"{period[5:]}월 승인 보도  휘발유·경유·항공유 합산 약 {quota*100:.0f}만 톤 · 관계자 전언")
+        if period == "2026-10":
+            lines.append("9월 비교       400만 톤 초과 예상 · 10월 승인 보도량이 더 적음")
     if oil is not None:
         direction = "↓" if oil.change < 0 else "↑" if oil.change > 0 else "→"
         lines.append(f"Brent         USD {oil.price:.2f} · {oil.change_pct:+.2f}% {direction}")
@@ -2773,7 +2796,11 @@ def _build_china_fuel_export_policy_alert_body(
         "물가·금리     정제품 가격 상승이 수입물가·운송비로 전이되는지 확인",
         "",
         "[다음 체크]",
-        "중국          10월 7일 연휴 종료 뒤 수출 허용 여부 · PetroChina 취소 물량 재계약 여부",
+        (
+            "중국          10월 7일 연휴 종료 뒤 수출 허용 여부 · PetroChina 취소 물량 재계약 여부"
+            if period == "2026-10" else
+            "중국          해당 월 정부 허가 및 PetroChina 실제 선적·통관 여부"
+        ),
         "제품          디젤·항공유·휘발유 수출량 · 중국 내 재고 · 정유 가동률",
         "아시아        싱가포르 경유 정제마진 · 10~11월 스프레드 · 한국 정유사 수출마진",
         "동시 변수     러시아 디젤 수출금지 · 미국 디젤 수출제한 검토 · 중동 정제품 회복률",
