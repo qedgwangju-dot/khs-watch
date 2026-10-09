@@ -54,7 +54,7 @@ def validate(original:str,result:str)->None:
  if len(left)!=len(right):
   raise RuntimeError("기사 제목 개수 변경")
  for before,after in zip(left,right):
-  if len(ENG.findall(after[len(TITLE):]))>=4 and not KR.search(after):
+  if len(ENG.findall(after[len(TITLE):]))>=4 and not KR.search(after[len(TITLE):]):
    raise RuntimeError("영문 제목 번역되지 않음")
   if Counter(NUM.findall(before))!=Counter(NUM.findall(after)):
    raise RuntimeError("기사 제목 숫자가 번역 과정에서 변경됨")
