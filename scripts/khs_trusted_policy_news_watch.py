@@ -1800,6 +1800,7 @@ def semantic_policy_event_key(item: dict) -> str:
         source_link = str(item.get("link") or "").lower()
         same_first_case = (
             "home.treasury.gov/news/press-releases/sb0652" in source_link
+            or "content.govdelivery.com/accounts/ustreas/bulletins/42e501d" in source_link
             or "amidi" in title_text
             or "noematrix" in title_text
             or (
