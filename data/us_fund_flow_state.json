@@ -2,7 +2,7 @@
   "seen": {
     "ICI|mmf": "0ac31fd8b3857bbf18c4a60ef48c634fabd80ca840a40c27635c409768ea168e",
     "FINRA|margin": "8655636a0708abc68f71ddd7a8febfc428dbeaf45d54c8d809c6c5280ea4c65e",
-    "ICI|combined": "f650e4b55fc2067e80a7fdee12877d8eb184c25972974bf385a084b9aa7bd600",
+    "ICI|combined": "2e58aadeb62905be8fbe8ef955938b932ee778ab304f4d4fbecd51bc432a6a09",
     "JPMorganChase Institute|household_withdrawals": "6c6c7de140d30ef3253091d748c839718c430cd42b2e1b65880108e2720f7e29",
     "Federal Reserve Z.1|household_balance_sheet": "7360f0d54948ccab33bac2e7f7154281e984872c447a15f209941748eb0d4c64"
   },
@@ -40,15 +40,22 @@
       "published": "October 7, 2026",
       "url": "https://www.ici.org/research/stats/combined_flows",
       "metrics": {
-        "equity": null,
-        "domestic": -7.33,
-        "world": 2.67,
-        "bond": 3.45,
-        "hybrid": 3.45,
-        "total": -1.97
+        "equity": -4.655,
+        "domestic": -7.326,
+        "world": 2.671,
+        "hybrid": -0.345,
+        "bond": 3.455,
+        "commodity": -0.424,
+        "total": -1.969
       },
       "domestic_4w": null,
-      "fingerprint": "f650e4b55fc2067e80a7fdee12877d8eb184c25972974bf385a084b9aa7bd600"
+      "quality_checks": [
+        "date_header_matches_prose",
+        "equity_identity",
+        "categories_total",
+        "prose_total"
+      ],
+      "fingerprint": "2e58aadeb62905be8fbe8ef955938b932ee778ab304f4d4fbecd51bc432a6a09"
     },
     "JPMorganChase Institute|household_withdrawals": {
       "source": "JPMorganChase Institute",
@@ -81,13 +88,13 @@
       "fingerprint": "7360f0d54948ccab33bac2e7f7154281e984872c447a15f209941748eb0d4c64"
     }
   },
-  "updated_at_kst": "2026-10-09T10:14:31.975545+09:00",
+  "updated_at_kst": "2026-10-09T23:08:38.909191+09:00",
   "derived": {
     "sp500_drawdown_band": "normal",
-    "sp500_last_date": "2026-10-08",
-    "sp500_last_value": 7765.35986328125,
+    "sp500_last_date": "2026-10-09",
+    "sp500_last_value": 7788.97998046875,
     "sp500_peak_date": "2026-10-06",
     "sp500_peak_value": 7818.93017578125,
-    "sp500_drawdown_pct": -0.69
+    "sp500_drawdown_pct": -0.38
   }
 }
