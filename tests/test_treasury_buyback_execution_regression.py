@@ -16,7 +16,9 @@ def test_flat_is_not_mixed():
          "since_operation_bp":{"2y":-3,"10y":-2,"20y":0,"30y":-1},
          "since_pre_operation_bp":{"2y":-13,"10y":-7,"20y":-4,"30y":-4}}
     _, message, _ = t.build_persistence_followup("2026-10-01", 5, r)
-    assert "하락·보합" in message
+    assert "⚪" in message
+    assert "바이백 전 대비 장기금리 하락 유지" in message
+    assert "🔴" not in message
 
 def test_state_race_merge():
     from treasury_buyback_state_commit import combine
