@@ -32,11 +32,12 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   # Code-push verification must not cancel a scheduled production alert.
   group: treasury-cta-squeeze-telegram-alert-${{ github.event_name == 'push' && 'code-audit' || 'production' }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.event_name == 'push' }}
 
 jobs:
   monitor:
@@ -112,6 +113,15 @@ jobs:
             sleep $((attempt * 4))
           done
           exit 1
+
+      - name: Trigger one-time verified correction
+        if: github.event_name == 'push' && contains(github.event.head_commit.message, 'Run exact CTA correction once')
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          gh api -X POST "repos/${REPOSITORY}/actions/workflows/treasury-cta-squeeze-telegram-alert.yml/dispatches" -f ref=main
+          echo "cta_corrected_production_dispatch_accepted=true"
 
       - name: Send interpreted Telegram alert
         if: github.event_name != 'push' && hashFiles('out/treasury_cta_squeeze_alert.html') != ''
