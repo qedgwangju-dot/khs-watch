@@ -41,6 +41,8 @@ SOURCES=(
  ("AT&T·T-Mobile·Verizon 합작법인 공식 발표","https://about.att.com/story/2026/jv-help-end-dead-zones.html",("October 01, 2026","AT&T","Verizon")),
  ("T-Mobile 주파수 매각 공식 발표","https://www.t-mobile.com/news/business/t-mobile-completes-sale-of-800-mhz-spectrum-portfolio-to-grain-management",("Grain","800","2026")),
  ("AT&T·AST SpaceMobile 상업계약 공식 발표","https://about.att.com/story/2024/ast-spacemobile-commercial-agreement.html",("AST SpaceMobile","2030")),
+ ("FCC 2026년 10월 D2D 별도 승인 DA-26-1078","https://docs.fcc.gov/public/attachments/DA-26-1078A1.txt",("15,000","SpaceX")),
+ ("FCC D2D 공식 결정문 안내","https://www.fcc.gov/document/spacex-approved-ngso-mss-system-direct-device-services",("SpaceX","direct-to-device")),
 )
 FCC_JULY="https://docs.fcc.gov/public/attachments/DA-26-653A1.pdf"
 FCC_JAN="https://docs.fcc.gov/public/attachments/DOC-417881A1.pdf"
@@ -56,8 +58,7 @@ TRADE_PRICE_NOTE="SpaceX-Grain 거래금액: 당사자 공식 발표에서 미�
 # In particular, do NOT seed license:grain_spacex_800:fcc_approval or :close.
 KNOWN_BASELINE_KEYS=(
  "license:grain_spacex_800:agreement",
- "fcc:gen2_15000:permission",
- "fcc:2ghz:permission",
+ "fcc:DA-26-36:gen2:permission",
  "carriers:att_tmus_vz_joint_venture:venture",
  "asts:att_verizon_contract:supply",
 )
@@ -95,6 +96,9 @@ TOPICS={
   "queries":(
     '"SpaceX" ("FCC" OR authorization) ("satellites" OR "2 GHz") when:4d',
     '"Starlink Mobile" (Gen2 OR 2GHz OR FCC OR capacity) when:4d',
+    '"SpaceX" ("DA-26-1078" OR "S00735" OR "25-340") when:14d',
+    '"Starlink Mobile" ("15,000" OR D2D) (approval OR authorization) when:7d',
+    'site:fcc.gov "SpaceX" "D2D" "25-340" when:14d',
   ),
   "meaning":"허가된 위성 기수와 실제 운용 기수·단말 호환성은 다릅니다. 상용 가입자와 단말당 트래픽을 확인합니다.",
   "risk":"발사·주파수 간섭·위성 용량·단말 호환성과 통신품질 인증 지연",
@@ -198,6 +202,7 @@ def distinct_primary_organizations(names:list[str])->set[str]:
   elif name.startswith("SpaceX"):groups.add("spacex")
   elif name.startswith("AT&T"):groups.add("att")
   elif name.startswith("T-Mobile"):groups.add("tmobile")
+  elif name.startswith("FCC "):groups.add("fcc")
  return groups
 
 def rss(query:str)->list[dict]:
@@ -286,8 +291,15 @@ def event_id(category:str,status:str,title:str)->str:
  t=stem_title(title)
  if category=="license":return f"license:grain_spacex_800:{status}"
  if category=="fcc":
-  if re.search(r"15,?000|7500|7,?500",t):return f"fcc:gen2_15000:{status}"
-  if re.search(r"2[\s-]*ghz",t):return f"fcc:2ghz:{status}"
+  if re.search(r"da[\s-]*26[\s-]*1078|s00735|25[\s-]*340|direct[- ]to[- ]device|d2d|mobile[- ]satellite|direct[- ]to[- ]cell|mobile[\s-]+network",t):
+   if re.search(r"15,?000|15k|fifteen thousand",t) or re.search(r"da[\s-]*26[\s-]*1078|s00735",t):
+    return f"fcc:DA-26-1078:D2D:{status}"
+  if re.search(r"da[\s-]*26[\s-]*36|gen2[\s-]+broadband|additional[\s-]+7,?500",t):
+   return f"fcc:DA-26-36:gen2:{status}"
+  if re.search(r"2[\s-]*ghz",t):return f"fcc:other_2ghz:{status}"
+  # A bare 15,000 is ambiguous: do not cross-deduplicate two separate
+  # satellite authorizations merely because both involve 15k spacecraft.
+  if re.search(r"15,?000|15k",t):return f"fcc:ambiguous_15000:{status}"
  if category=="carriers" and re.search(r"joint venture|venture",t):
   return f"carriers:att_tmus_vz_joint_venture:{status}"
  if category=="asts" and re.search(r"verizon|at&t",t):
@@ -393,6 +405,11 @@ def test()->int:
  assert stage("license","SpaceX completes Grain 800MHz spectrum deal")=="close"
  assert stage("license","SpaceX's Grain 800 MHz spectrum purchase is delayed")=="deny"
  assert stage("fcc","FCC approves SpaceX 15,000 Gen2 satellites in 2GHz")=="permission"
+ assert event_id("fcc","permission","FCC approves SpaceX 15,000 D2D direct-to-device satellites (DA-26-1078)")=="fcc:DA-26-1078:D2D:permission"
+ assert event_id("fcc","permission","FCC approves additional 7,500 Gen2 broadband satellites (DA-26-36)")=="fcc:DA-26-36:gen2:permission"
+ assert event_id("fcc","permission","FCC approves SpaceX 15,000 D2D direct-to-device satellites")!=event_id("fcc","permission","FCC approves additional 7,500 Gen2 broadband satellites")
+ assert event_id("fcc","permission","FCC approves 15,000 SpaceX satellites")=="fcc:ambiguous_15000:permission"
+ assert "fcc:DA-26-1078:D2D:permission" not in KNOWN_BASELINE_KEYS
  assert event_id("license","agreement","SpaceX to buy Grain 800MHz") == event_id("license","agreement","SpaceX acquires Grain 800 MHz spectrum")
  a={"title":"SpaceX and Grain sign nationwide 800 MHz spectrum deal", "publisher":"Reuters","pub":NOW,"url":"https://a.example"}
  b={"title":"Grain spectrum 800MHz agreement with SpaceX across the US", "publisher":"Financial Times","pub":NOW,"url":"https://b.example"}
