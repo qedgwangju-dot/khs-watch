@@ -170,6 +170,27 @@ class IPhone18ProOrderTests(unittest.TestCase):
         self.assertFalse(m._official_publisher(row))
         self.assertIsNone(m._relevant_news(row,self.state()))
 
+    def test_different_models_with_same_revision_have_distinct_fact_keys(self):
+        pro=self.item(
+            "Apple iPhone 18 Pro October component orders cut 30%",
+            "Original planned supplier production orders trimmed 30%.",
+            "Reuters"
+        )
+        promax=self.item(
+            "Apple iPhone 18 Pro Max October component orders cut 30%",
+            "Original planned supplier production orders trimmed 30%.",
+            "Reuters"
+        )
+        self.assertEqual(m._model_scope(pro["title"]),"pro")
+        self.assertEqual(m._model_scope(promax["title"]),"pro_max")
+        a=m._fact_key(m._extract_cut(pro["title"]+" "+pro["description"]),pro)
+        b=m._fact_key(m._extract_cut(promax["title"]+" "+promax["description"]),promax)
+        self.assertNotEqual(a,b)
+
+    def test_both_pro_and_pro_max_report_uses_family_scope(self):
+        text="Apple iPhone 18 Pro and Pro Max October component orders cut 30% from original requested plan."
+        self.assertEqual(m._model_scope(text),"pro_and_pro_max")
+
     def test_apple_price_is_official_not_order_cut(self):
         text="Apple iPhone 18 Pro starts at $1,199 and Pro Max at $1,299, up $100."
         self.assertIsNone(m._extract_cut(text))
