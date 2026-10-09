@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - "scripts/treasury_buyback_execution_watch.py"
+      - "scripts/treasury_buyback_state_commit.py"
+      - "tests/test_treasury_buyback_execution_regression.py"
       - "scripts/treasury_buyback_media_watch_v2.py"
       - ".github/workflows/treasury-buyback-media-telegram-alert.yml"
   schedule:
@@ -36,6 +38,7 @@ jobs:
         run: |
           python -m py_compile scripts/treasury_buyback_media_watch_v2.py
           python -m py_compile scripts/treasury_buyback_execution_watch.py
+          python -m py_compile scripts/treasury_buyback_state_commit.py
           python tests/test_treasury_buyback_execution_regression.py
 
       - name: Check official Treasury buyback execution results only
