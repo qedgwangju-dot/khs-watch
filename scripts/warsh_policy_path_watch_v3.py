@@ -131,6 +131,32 @@ def _source_health_message(kind, err=None):
     ])
 
 
+def _last_good_snapshot(state):
+    """Quarantine the last validated snapshot for audit only.
+
+    On an upstream outage active market fields are cleared. This prevents a
+    stale probability/rate path from being accidentally promoted back to
+    'current' by another watcher while still retaining the last good sample for
+    diagnostics.
+    """
+    if not isinstance(state, dict):
+        return None
+    cached = state.get('last_good_snapshot')
+    if isinstance(cached, dict) and cached.get('meetings'):
+        return cached
+    if state.get('source_status') == '시장원천 최신성·연준 공식범위 교차검증 통과' and state.get('meetings'):
+        return {
+            'effr': state.get('effr'),
+            'meetings': state.get('meetings'),
+            'classification': state.get('classification'),
+            'source': state.get('source'),
+            'market_data_basis': state.get('market_data_basis'),
+            'official_settlement_date': state.get('official_settlement_date'),
+            'last_validated_at_utc': state.get('last_validated_at_utc'),
+        }
+    return None
+
+
 def main():
     old = base.load_state()
     first = not bool(old)
@@ -155,15 +181,25 @@ def main():
             base.send(_source_health_message('error', source_error))
             alerted = True
             last_notice = now.isoformat()
-        state = dict(old)
-        state.update({
+        state = {
             'schema_version': SCHEMA_VERSION,
-            'source_status': '최신성 검증 실패 — 직전 정상값 보존',
+            'effr': None,
+            'meetings': [],
+            'classification': {
+                'market_source_stale': True,
+                'market_source_error': source_error,
+            },
+            'source': None,
+            'market_data_basis': None,
+            'official_settlement_date': None,
+            'last_validated_at_utc': None,
+            'last_good_snapshot': _last_good_snapshot(old),
+            'source_status': '최신성 검증 실패 — 과거값 격리·신규 판정 중지',
             'source_error': source_error,
             'source_error_streak': streak,
             'source_health_alerted': alerted,
             'last_health_alert_at_utc': last_notice,
-        })
+        }
         base.save_state(state)
         print(json.dumps({
             'schema_version': SCHEMA_VERSION,
@@ -201,15 +237,21 @@ def main():
     if base.FORCE or (not first and changed):
         base.send(message_v3(snap, cls))
 
-    base.save_state({
-        'schema_version': SCHEMA_VERSION,
+    validated_at = datetime.now(timezone.utc).isoformat()
+    good = {
         'effr': snap['effr'],
         'meetings': snap['meetings'],
         'classification': cls,
         'source': snap['url'],
-        'source_status': '시장원천 최신성·연준 공식범위 교차검증 통과',
+        'market_data_basis': snap.get('market_data_basis') or snap.get('source_kind'),
         'official_settlement_date': snap.get('official_settlement_date'),
-        'last_validated_at_utc': datetime.now(timezone.utc).isoformat(),
+        'last_validated_at_utc': validated_at,
+    }
+    base.save_state({
+        'schema_version': SCHEMA_VERSION,
+        **good,
+        'last_good_snapshot': good,
+        'source_status': '시장원천 최신성·연준 공식범위 교차검증 통과',
         'source_error': None,
         'source_error_streak': 0,
         'source_health_alerted': False,
