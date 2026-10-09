@@ -170,6 +170,17 @@ class IPhone18ProOrderTests(unittest.TestCase):
         self.assertFalse(m._official_publisher(row))
         self.assertIsNone(m._relevant_news(row,self.state()))
 
+    def test_followup_uses_korean_readable_product_scope_not_code_key(self):
+        item=self.item(
+            "Apple iPhone 18 Pro Max November component orders cut 25%",
+            "Suppliers say original planned production orders reduced 25%",
+            "Reuters"
+        )
+        signal=m._relevant_news(item,self.state())
+        result=m._change_alert([signal])
+        self.assertIn("iPhone 18 Pro Max",result)
+        self.assertNotIn("pro_max",result)
+
     def test_different_models_with_same_revision_have_distinct_fact_keys(self):
         pro=self.item(
             "Apple iPhone 18 Pro October component orders cut 30%",
