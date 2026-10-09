@@ -185,47 +185,79 @@ def _period_near(text: str) -> str | None:
     return months[0] if len(months) == 1 else None
 
 def _extract_cut(text: str) -> dict | None:
-    """Typed numerical cut: Pro component orders, explicit period AND basis."""
+    """Strict typed extractor. Match percent to an order CUT and to one month."""
     low = _clean(text).lower()
     if not PRO_RE.search(low):
         return None
-    if not any(w in low for w in COMPONENT_WORDS):
+    if not all((
+        any(w in low for w in COMPONENT_WORDS),
+        any(w in low for w in ORDER_WORDS),
+        any(w in low for w in CUT_WORDS),
+        any(w in low for w in BASIS_WORDS),
+    )):
         return None
-    if not any(w in low for w in ORDER_WORDS):
-        return None
-    if not any(w in low for w in CUT_WORDS):
-        return None
-    if not any(w in low for w in BASIS_WORDS):
-        return None
-    period = _period_near(low)
-    if period is None:
-        return None
-    range_pattern = re.compile(
-        r"(?<!\d)(\d{1,2}(?:\.\d+)?)\s*%\s*(?:-|~|–|—|to|and|에서|부터)\s*"
-        r"(\d{1,2}(?:\.\d+)?)\s*%", re.I,
+
+    # 15%-20%, 15~20%, 15 to 20 percent, 15-20%.
+    range_pat = re.compile(
+        r"(?<![\d.])(\d{1,2}(?:\.\d+)?)\s*%?\s*"
+        r"(?:-|~|–|—|to|and|에서|부터)\s*"
+        r"(\d{1,2}(?:\.\d+)?)\s*(?:%|percent|퍼센트)", re.I,
     )
-    candidates: list[tuple[int, float, float]] = []
-    for m in range_pattern.finditer(low):
-        left, right = float(m.group(1)), float(m.group(2))
+    ranges = []
+    candidates = []
+    for match in range_pat.finditer(low):
+        left, right = float(match.group(1)), float(match.group(2))
         if 5 <= left <= right <= 60:
-            candidates.append((m.start(), left, right))
-    for m in re.finditer(r"(?<!\d)(\d{1,2}(?:\.\d+)?)\s*%", low):
-        val = float(m.group(1))
-        if not 5 <= val <= 60 or any(a <= m.start() < a + 24 for a, _, _ in candidates):
+            candidates.append((match.start(), left, right))
+            ranges.append((match.start(), match.end()))
+    for match in re.finditer(
+        r"(?<![\d.])(\d{1,2}(?:\.\d+)?)\s*(?:%|percent|퍼센트)", low,
+    ):
+        if any(start <= match.start() < stop for start, stop in ranges):
             continue
-        candidates.append((m.start(), val, val))
+        amount = float(match.group(1))
+        if 5 <= amount <= 60:
+            candidates.append((match.start(), amount, amount))
+
     for pos, low_pct, high_pct in sorted(candidates):
-        snippet = low[max(0, pos - 125): min(len(low), pos + 85)]
-        # Reject an unrelated IDC shipping drop or global ASP increase.
-        if not any(w in snippet for w in CUT_WORDS):
+        # Link the selected number to the nearest CUT of component ORDERS;
+        # unrelated IDC -16.7% shipments / +27.6% market ASP do not qualify.
+        vicinity = low[max(0, pos - 155):min(len(low), pos + 75)]
+        if not any(w in vicinity for w in CUT_WORDS):
             continue
-        if not any(w in snippet for w in ORDER_WORDS):
+        if not any(w in vicinity for w in ORDER_WORDS):
             continue
-        if not any(w in snippet for w in COMPONENT_WORDS):
+        if not any(w in vicinity for w in COMPONENT_WORDS):
             continue
-        return {"period": period, "low": low_pct, "high": high_pct,
+        # Reject "+" ASP growth and standalone negative annual shipments.
+        before = low[max(0, pos - 1):pos]
+        if before == "+":
+            continue
+
+        # Resolve the period nearest this order percentage, not every month
+        # mentioned anywhere in the story (e.g. "October cut, November TBD").
+        month_markers = (
+            ("2026-10", ("october", "oct.", "10월", "十月", "10月份")),
+            ("2026-11", ("november", "nov.", "11월", "十一月", "11月份")),
+            ("2026-12", ("december", "dec.", "12월", "十二月", "12月份")),
+            ("2027-01", ("january", "jan.", "1월", "一月", "1月份")),
+        )
+        nearby = []
+        for month, words in month_markers:
+            for word in words:
+                for match in re.finditer(re.escape(word), low):
+                    distance = abs(pos - (match.start() + len(word) // 2))
+                    if distance <= 230:
+                        nearby.append((distance, month))
+        nearby.sort(key=lambda z:z[0])
+        if not nearby:
+            continue
+        if len(nearby) > 1 and nearby[1][1] != nearby[0][1] and abs(nearby[1][0] - nearby[0][0]) < 15:
+            continue
+        return {"period": nearby[0][1], "low": low_pct, "high": high_pct,
                 "basis": "original_supplier_request"}
     return None
+
 
 def _known_baseline_repeat(cut: dict, item: dict) -> bool:
     if _official_publisher(item):
