@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at_kst": "2026-10-09T18:01:10+09:00",
+  "updated_at_kst": "2026-10-09T18:03:55+09:00",
   "initial_alert_sent": true,
   "baseline_at_kst": "2026-10-09T15:05:00+09:00",
   "seen": [
@@ -62,7 +62,7 @@
       "ubs_delivery_lead_time_publicly_verified": false
     }
   },
-  "last_scan_items": 26,
+  "last_scan_items": 25,
   "feed_errors": [],
   "successful_sources": 8,
   "new_signal_count": 0,
