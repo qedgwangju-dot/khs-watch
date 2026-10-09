@@ -150,8 +150,11 @@ def balance_sheet_baseline():
 
 def classify(snap):
     ms=snap['meetings']; effr=snap['effr']
-    y26=[m for m in ms if m['date'].startswith('2026-')]
-    last26=y26[-1] if y26 else ms[-1]
+    target_year=datetime.now(timezone.utc).year
+    yearly=[m for m in ms if str(m.get('date','')).startswith(f'{target_year}-')]
+    if not yearly:
+        raise RuntimeError(f'{target_year}년 연말 정책금리 계약 부재 — 지난 연도의 확률을 새해 전망으로 재사용하지 않음')
+    last26=max(yearly,key=lambda m:m['date'])
     official=official_policy_baseline()
     if official and official['date'] <= datetime.now(timezone.utc).date().isoformat():
         base=float(official['mid'])
@@ -167,6 +170,9 @@ def classify(snap):
     elif extra < 31.25: verdict='추가 1회 인상 가능성 반영'
     else: verdict='추가 1회는 상당히 반영·두 번째 인상 가능성도 일부 반영'
     sep=official_sep_baseline(); bal=balance_sheet_baseline()
+    # 다음 해가 되면 전년도 경제전망 중앙값을 새해 전망으로 재사용하지 않는다.
+    if sep and str(sep.get('date') or '')[:4] != str(target_year):
+        sep=None
     sep_extra=None; market_sep_gap=None; sep_read='점도표 확인 불가'
     if sep:
         sep_extra=(sep['yearend']-base)*100
@@ -185,7 +191,7 @@ def classify(snap):
     return {'verdict':verdict,'extra_bp':extra,'basis':basis,'baseline_rate':base,'baseline_kind':base_kind,
             'baseline_date':base_date,'baseline_source':base_source,'official_policy':official,'sep':sep,'sep_extra_bp':sep_extra,
             'market_sep_gap_bp':market_sep_gap,'sep_read':sep_read,'balance':bal,'tightening_mix':mix,
-            'yearend_market_rate':last26['post_rate']}
+            'yearend_market_rate':last26['post_rate'],'reference_year':target_year}
 
 def load_state():
     try:return json.loads(STATE_PATH.read_text(encoding='utf-8')) if STATE_PATH.exists() else {}
