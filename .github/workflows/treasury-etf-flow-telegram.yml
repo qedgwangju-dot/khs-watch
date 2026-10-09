@@ -136,7 +136,7 @@ jobs:
               raise AssertionError("signed-zero invariant did not fail")
           except RuntimeError as exc:
               assert "signed zero" in str(exc), str(exc)
-          assert "신규 돌파 아님" in report._jpm_30y_signal(5.67)
+          assert "신규 돌파 여부는" in report._jpm_30y_signal(5.67)
 
           sample_results = {
               "SHY": {"flow_usd": 40_580_000},
