@@ -2649,7 +2649,7 @@ if base.NOW.astimezone(base.KST).date() <= dt.date(2026, 10, 12):
     assert len(patent_backfill) == 1, patent_backfill
     p = patent_backfill[0]
     assert p.get('published') is None, 'no invented intraday publication time'
-    assert p['source'] == '사용자제공 미국특허공개 표지', p
+    assert p['source'] == '사용자제공 특허표지·기사 전문', p
     bg, bs, bc, bk = classify(p)
     assert bg == 'tesla_touch_patent' and bs >= 11 and bk == pk, (bg, bs, bc, bk)
     # Renderer specifically loses the source in category(title + description);
@@ -2660,9 +2660,16 @@ if base.NOW.astimezone(base.KST).date() <= dt.date(2026, 10, 12):
     assert rendered_group == 'tesla_touch_patent', rendered_group
     assert rendered_category == pc, rendered_category
     assert '특허출원 공개' in base.clean_title(p['title'], p['source'])
-    assert '기사 본문 직접 열람 실패' in base.verification(
-        p, rendered_group, rendered_text
-    ), 'verification must not claim to have read unavailable source'
+    detail = base.verification(p, rendered_group, rendered_text)
+    assert '기사 전문 확인' in detail, detail
+    assert '기사 웹페이지·USPTO 문서 전체 직접 열람 미완료' in detail, detail
+    assert '기사 본문 직접 열람 실패' not in detail, detail
+    brief = base.meaning(rendered_category)
+    for needle in ['20개', 'Optimus가 직접 등장하지', '감지점', '정전용량식·저항식', '내구성']:
+        assert needle in brief, (needle, brief)
+    assert '특허 본문에 Optimus 제품명이 직접 기재되지' in p['description']
+    assert '청구항은 20개' in p['description']
+    assert '전단력·미끄러짐·온도를 별개로 감지한다고 입증하지 않는다' in p['description']
     assert watcher.qty._skip_quantity_enrichment(
         f'<b>1. 테슬라 촉각센서 특허</b>\n<b>분류</b>  {rendered_category}\n'
         '<b>핵심</b>  US 2026/0310299 A1·2개 유연층·3차원 센서'
