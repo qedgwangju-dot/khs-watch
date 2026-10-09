@@ -34,9 +34,28 @@ class VehicleChipletWatchTests(unittest.TestCase):
     def test_explicit_signed_bosch_contract_is_new_step(self):
         t = "LG전자, 보쉬와 보스반도체 칩렛 공급계약 체결"
         eid, stage, desc = candidate_event(self.item(t))
-        self.assertEqual(eid, "lg_bos_hana|purchase_contract")
+        self.assertEqual(eid, "lg_bos_hana|purchase_contract|bosch")
         self.assertEqual(stage, 6)
         self.assertIn("공급계약", desc)
+
+    def test_independent_customer_contracts_not_collapsed(self):
+        bosch = self.item("LG전자·보스반도체, 보쉬 차량용 칩렛 공급계약 체결")
+        bmw = self.item("LG전자·보스반도체, BMW 차량용 칩렛 공급계약 체결")
+        self.assertNotEqual(candidate_event(bosch)[0], candidate_event(bmw)[0])
+
+    def test_repeated_orders_separated_by_month(self):
+        a = self.item("LG전자, 보쉬 차량용 칩렛 추가 수주", "")
+        b = self.item("LG전자, 보쉬 차량용 칩렛 추가 수주", "")
+        a["published_kst"] = "2027-04-03T09:00+09:00"
+        b["published_kst"] = "2027-05-07T09:00+09:00"
+        self.assertNotEqual(candidate_event(a)[0], candidate_event(b)[0])
+
+    def test_imec_joint_membership_not_marked_bosch_deal(self):
+        t = "LG Electronics and Bosch join imec automotive chiplet program"
+        eid, stage, description = candidate_event(self.item(t))
+        self.assertEqual(eid, "imec_alliance|imec_membership")
+        self.assertEqual(stage, 1)
+        self.assertIn("구매계약 아님", description)
 
     def test_mass_production_distinct_from_mou(self):
         t = "LG전자·보스반도체, 차량용 칩렛 양산 개시"
