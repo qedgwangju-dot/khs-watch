@@ -47,6 +47,7 @@ jobs:
           python -m py_compile scripts/treasury_buyback_policy_watch.py
           python -m py_compile scripts/treasury_alert_korean_guard.py
           python -m py_compile scripts/treasury_buyback_chain_enrich.py
+          python -m py_compile scripts/treasury_buyback_policy_state_commit.py
           pytest -q tests/test_treasury_alert_root_guards.py tests/test_treasury_buyback_policy_state_commit.py
 
       - name: Check official Treasury buyback policy
