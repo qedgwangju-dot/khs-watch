@@ -224,6 +224,20 @@ def credit_class(results, prev_rows):
     if lqd is None or hyg is None:
         return "신용 Fund Flow 판정 대기", "LQD·HYG 첫 기준점 확보 중", ldoas, hdoas
 
+    # An iShares OAS observation can precede the fund-share observation by a full
+    # session. Never describe these two measurements as simultaneous risk-off.
+    fund_date = results["HYG"].get("date")
+    if hdoas is not None and hdoas >= 5 and fund_date and hcur_date and fund_date != hcur_date:
+        intensity = "급확대" if hdoas >= 10 else "확대"
+        fund_signal = "추정 순유출" if hyg < 0 else "추정 순유입" if hyg > 0 else "발행좌수 변화 없음"
+        return (
+            "기준일 시차 있는 신용위험 경계",
+            f"HYG OAS {hdoas:+.1f}bp {intensity} ({hcur_date})와 "
+            f"HYG {fund_signal} ({fund_date})는 다른 거래일 관측치 → "
+            "신용가격 선행 악화 신호이나 같은 날 동시 위험회피 확정 아님",
+            ldoas, hdoas,
+        )
+
     # 신용스프레드는 실제 위험가격이므로 대규모 OAS 확대를 ETF 자금유입만으로 상쇄하지 않는다.
     if hdoas is not None and hdoas >= 10:
         if hyg < 0 and (hp or 0) < 0:
@@ -276,24 +290,52 @@ def credit_class(results, prev_rows):
     return "신용시장 혼조", "LQD·HYG 방향이 엇갈림", ldoas, hdoas
 
 
-def overall_class(t_head, c_head, results, curve=None):
+def overall_class(t_head, c_head, results, curve=None, prev_curve=None):
+    """Keep absolute yield levels, daily yield moves and dated credit risk apart."""
+    curve = curve or {}
     shy = results["SHY"].get("flow_usd")
     lqd = results["LQD"].get("flow_usd")
     hyg = results["HYG"].get("flow_usd")
-    if None not in (shy, lqd, hyg) and shy > 0 and lqd < 0 and hyg < 0:
-        return "방어적·품질 선호 강화", "회사채에서 빠진 자금이 안전한 미 국채, 특히 짧은 만기로 이동하는 품질 이동"
-    if "신용위험 확대 확인" in c_head:
-        return "위험회피 강화", "신용위험이 자금흐름을 넘어 가격·스프레드까지 번지는 단계"
-    if ("신용위험 경계" in c_head or "신용가격 악화" in c_head) and (curve or {}).get("30Y", 0) >= 5.30:
+    curr_oas_date = results["HYG"].get("oas_date")
+    fund_date = results["HYG"].get("date")
+    dated_context = (
+        f"HYG OAS 기준 {curr_oas_date or '미공개'} / ETF 기준 {fund_date or '미공개'}"
+    )
+    dates_differ = bool(curr_oas_date and fund_date and curr_oas_date != fund_date)
+    d10 = bp(curve, prev_curve, "10Y") if prev_curve else None
+    d30 = bp(curve, prev_curve, "30Y") if prev_curve else None
+    credit_warning = any(
+        token in c_head
+        for token in ("신용위험 경계", "신용위험 확대", "신용가격 악화")
+    )
+    if credit_warning:
+        if d10 is not None and d30 is not None and d10 < 0 and d30 < 0:
+            return (
+                "국채금리 하락·선행 신용경계" if dates_differ else "국채금리 하락·신용경계",
+                f"10년 {d10:+.0f}bp·30년 {d30:+.0f}bp로 당일 국채금리는 하락. "
+                f"30년 {curve['30Y']:.2f}%는 높은 금리 수준을 유지하지만 새 금리 급등은 아님. "
+                f"신용가격 경계는 별도 확인({dated_context})"
+                + (" — 서로 다른 거래일이므로 같은 날 동시 악화로 단정 불가" if dates_differ else ""),
+            )
+        if d10 is not None and d30 is not None and d10 > 0 and d30 > 0:
+            return (
+                "장기금리 상승·선행 신용경계" if dates_differ else "금리·신용 위험경계 강화",
+                f"10년 {d10:+.0f}bp·30년 {d30:+.0f}bp 상승. "
+                f"신용가격은 {dated_context}"
+                + ("로 관측일이 달라 당일 동시 악화로 단정 불가" if dates_differ else " 기준으로 신용악화 여부 확인"),
+            )
         return (
-            "금리·신용 위험경계 강화",
-            "장기금리 스트레스와 신용스프레드 악화가 동시에 확인. 다만 ETF 자금이 전면 유출로 정렬된 것은 아니어서 전면 위험회피 확정 단계는 아님",
+            "금리 방향 혼조·선행 신용경계" if dates_differ else "금리 방향 혼조·신용경계",
+            f"30년 {curve.get('30Y', float('nan')):.2f}%의 금리 수준과 실제 변동 방향을 구분. "
+            f"신용가격은 {dated_context}"
+            + ("로 다른 거래일 관측치" if dates_differ else " 기준으로 별도 판정"),
         )
-    if "신용위험 경계" in c_head or "신용가격 악화" in c_head:
-        return "신용 위험경계 강화", "신용스프레드 악화가 확인됐지만 자금흐름은 전면 위험회피로 정렬되지 않음"
-    if "위험선호 회복 확인" in c_head and "장기채 로테이션" in t_head:
-        return "위험선호·금리하락 베팅 동시 회복", "중·장기 국채와 회사채로 자금이 함께 복귀"
-    return "혼조·추가 확인", "국채 만기 이동과 회사채 위험선호가 아직 완전히 같은 방향으로 정렬되지 않음"
+
+    if None not in (shy, lqd, hyg) and shy > 0 and lqd < 0 and hyg < 0:
+        return "방어적·품질 선호 강화", "회사채 동반 유출과 SHY 유입이 확인돼 상대적으로 짧은 국채로 이동"
+    if "위험선호 회복 확인" in c_head and "중·장기채 가격·자금 동반 회복" in t_head:
+        return "위험선호·장기채 매수 동시 강화", "회사채 신용가격 안정과 장기채 ETF의 가격·수급 회복을 별도 항목으로 확인"
+    return "혼조·추가 확인", "국채 ETF 만기 이동과 회사채 자금·신용가격이 같은 방향으로 완전히 정렬되지 않음"
 
 
 def fmt_html(chunk):
@@ -493,7 +535,7 @@ def main():
 
     t_head, t_reason = treasury_class(results, curve)
     c_head, c_reason, ldoas, hdoas = credit_class(results, prev_rows)
-    o_head, o_reason = overall_class(t_head, c_head, results, curve)
+    o_head, o_reason = overall_class(t_head, c_head, results, curve, prev_curve)
     regime, regime_easy, s210, s1030 = curve_regime(curve, prev_curve)
     d2, d10, d30 = bp(curve, prev_curve, "2Y"), bp(curve, prev_curve, "10Y"), bp(curve, prev_curve, "30Y")
     gap30 = (5.30 - curve["30Y"]) * 100
