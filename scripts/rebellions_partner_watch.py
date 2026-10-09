@@ -115,13 +115,14 @@ def canonical_url(value):
 def capital_event_kind(title):
     """Capital investment is a separate economic event from an earlier commercial MOU."""
     text = norm_text(title).lower()
-    if any(x in text for x in ["기업 인수", "인수 완료", "인수계약", "인수 계약", "지분 인수", "인수합병", "합병 완료"]):
+    if any(x in text for x in ["기업 인수", "인수 완료", "인수계약", "인수 계약", "인수합병", "합병 완료"]):
         return "acquisition"
     if any(x in text for x in ["후속 투자", "추가 투자", "2차 투자", "지분 추가", "후속 출자"]):
         return "followon_equity"
     if any(x in text for x in [
         "투자 유치", "투자를 유치", "투자유치", "전략적 투자", "지분 투자", "지분투자",
         "투자 참여", "투자한다", "투자했다", "투자받", "출자한다", "출자했다", "출자",
+        "지분 인수", "투자 완료", "투자 집행",
     ]):
         return "equity"
     return None
@@ -333,6 +334,12 @@ def relevant(title, summary=""):
 
 def domestic_candidate(title, summary=""):
     text = (norm_text(title) + " " + norm_text(summary)).lower()
+    # Do not promote preliminary investment reports to completed transactions.
+    if any(x in text for x in [
+        "투자 추진", "투자 검토", "투자 협의", "투자 고려", "투자설",
+        "인수 추진", "인수설", "투자할 계획", "인수를 검토", "출자 검토",
+    ]):
+        return False
     if any(x in text for x in SPECULATION_TERMS):
         return False
     if any(x in text for x in KNOWN_KOREAN_PARTNERS):
