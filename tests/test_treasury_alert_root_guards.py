@@ -41,9 +41,11 @@ def test_buyback_initial_reaction_is_not_presented_as_persistent_effect():
 
 def test_bessent_oil_scenario_is_conditional_and_causal_verdict_uses_multi_day_window():
     text = read("scripts/treasury_alert_korean_guard.py")
-    assert "UPGRADE_REVISION = 9" in text
+    assert "UPGRADE_REVISION = 10" in text
     assert "def oil_scenario_block" in text
     assert "def oil_scenario_key" in text
+    assert "def _url_bytes" in text
+    assert "from datetime import date, datetime, timedelta" in text
     assert "oil_scenario_stable" in text
     assert "bessent_oil_scenario_key" in text
     assert "이란 분쟁 종료 + 공급과잉" in text
