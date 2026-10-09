@@ -1216,6 +1216,31 @@ def kcs_retry_due(now: datetime, previous: dict, key_available: bool, force: boo
         return True
 
 
+def record_kcs_connection_recovery(now: datetime, latest: dict, events: list[dict]) -> None:
+    """A verified prior month proves API access, even if the latest month has no rows."""
+    if latest.get("last_status") not in ("verified", "month_unpublished"):
+        return
+    history = latest.get("official_us_by_month") or {}
+    if not history:
+        return
+    if not latest.get("source_blocker_notified"):
+        return
+    latest["source_blocker_notified"] = False
+    if latest.get("connection_restored_notified"):
+        return
+    try:
+        fetched_at = datetime.fromisoformat(str(latest.get("last_attempt_at_kst") or ""))
+        recent = 0 <= (now - fetched_at).total_seconds() <= 24 * 3600
+    except (ValueError, TypeError):
+        recent = False
+    if recent:
+        latest["connection_restored_notified"] = True
+        events.append({
+            "kind": "kcs_connection_restored",
+            "month": str(latest.get("latest_official_us_month") or sorted(history)[-1]),
+        })
+
+
 def update_korea_export_watch(now: datetime, previous: dict) -> tuple[dict, list[dict]]:
     latest = copy.deepcopy(previous) if int(previous.get("version") or 0) >= KOREA_EXPORT_VERSION else copy.deepcopy(KOREA_EXPORT_BASELINE)
     latest.setdefault("official_us_by_month", {})
@@ -1241,8 +1266,10 @@ def update_korea_export_watch(now: datetime, previous: dict) -> tuple[dict, list
                 and not latest.get("source_blocker_notified")):
             latest["last_status"] = "kcs_access_denied"
             latest["source_blocker_notified"] = True
+            latest["connection_restored_notified"] = False
             y, m = month_shift(now.year, now.month, -1)
             events.append({"kind": "kcs_access_blocker", "month": month_key(y, m)})
+        record_kcs_connection_recovery(now, latest, events)
         return latest, events
     latest["last_checked_at_kst"] = now.isoformat(timespec="seconds")
     if not key_available:
@@ -1311,11 +1338,25 @@ def update_korea_export_watch(now: datetime, previous: dict) -> tuple[dict, list
     latest["last_error_kind"] = errors[0] if errors else ""
     if latest["last_status"] == "kcs_access_denied" and not previous.get("source_blocker_notified"):
         latest["source_blocker_notified"] = True
+        latest["connection_restored_notified"] = False
         events.append({"kind": "kcs_access_blocker", "month": month_key(y, m)})
+    record_kcs_connection_recovery(now, latest, events)
     return latest, events
 
 
 def build_korea_export_alert(event: dict, data: dict, us_imports: dict) -> str:
+    if event.get("kind") == "kcs_connection_restored":
+        months = sorted((data.get("official_us_by_month") or {}).keys())
+        verified = ", ".join(months[-3:]) if months else "없음"
+        return (
+            "<b>관세청 미국향 변압기 수출통계 API 연결 확인</b>\n"
+            f"• 공식 조회 성공 기준월: {html.escape(verified)}. "
+            "HS 850422·850423·850434의 미국향 수출금액·순중량을 실제로 받았습니다.\n"
+            "• 2026년 9월 원자료는 아직 완전한 품목별 조회 결과가 없어 "
+            "보도 수치를 공식 확정값으로 처리하지 않습니다.\n"
+            "• 기존 2시간 간격 조회를 유지하며, 공식 월별 수치 확보 후 알립니다.\n"
+            f'• <a href="{KOREA_EXPORT_API_DOC}">관세청 공식 API</a>\n'
+        )
     if event.get("kind") == "kcs_access_blocker":
         return (
             "<b>한국 변압기 수출통계 검증 장애 — 접근 권한 확인 필요</b>\n"
