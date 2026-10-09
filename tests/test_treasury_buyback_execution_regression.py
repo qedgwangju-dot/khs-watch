@@ -33,8 +33,28 @@ def test_state_race_merge():
     assert merged["latest_long_end_fingerprint"] == "latest"
     assert merged["yield_persistence_watches"][0]["completed_offsets"] == [1,3]
 
+def test_nominal_auction_average():
+    import json
+    from unittest.mock import patch
+    days = ["2026-09-10","2026-08-13","2026-07-09",
+            "2026-06-11","2026-05-13","2026-04-09"]
+    ratios = [2.61,2.39,2.44,2.33,2.30,2.39]
+    def row(day, btc, tips=False):
+        return {"securityType":"Bond","securityTerm":"30-Year",
+                "auctionDate":day,"inflationIndexSecurity":"Yes" if tips else "No",
+                "bidToCoverRatio":btc,"competitiveAccepted":22000000000,
+                "highYield":5.618,"indirectBidderAccepted":16000000000,
+                "directBidderAccepted":4500000000,"primaryDealerAccepted":1500000000}
+    entries = [row("2026-10-08",2.54)] + [row(d,v) for d,v in zip(days,ratios)]
+    entries.append(row("2026-09-12",9.99,True))
+    with patch.object(t, "fetch_text", return_value=json.dumps(entries)):
+        result = t.latest_30y_auction_context("2026-10-08")
+    assert result["sample_n"] == 6
+    assert abs(result["avg_btc_6"] - 2.41) < 0.000001
+
 if __name__ == '__main__':
     test_nominal_filter()
     test_flat_is_not_mixed()
     test_state_race_merge()
+    test_nominal_auction_average()
     print('buyback nominal filter test passed')
