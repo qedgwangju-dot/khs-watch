@@ -1140,6 +1140,9 @@ china_approved = row(
 )
 check("china-fuel-official-approval-distinct", mod._china_fuel_stage(china_approved) == "approval")
 check("china-fuel-official-approval-no-physical-green", mod.final_color(china_approved) == "yellow")
+_, approval_tags = mod.score_item(china_approved, china_now)
+check("china-fuel-official-title-persistence", "공식 발표" in mod.watch.translate_ko(china_approved["title_original"]) and "업계 관계자" not in mod.watch.translate_ko(china_approved["title_original"]))
+
 check("china-fuel-official-approval-new-event-id", mod.item_id(china_approved) != mod.item_id(china_oct_reuters))
 
 china_loaded = row(
@@ -1157,6 +1160,9 @@ china_customs = row(
 )
 check("china-fuel-customs-stage", mod._china_fuel_stage(china_customs) == "customs")
 check("china-fuel-customs-green", mod.final_color(china_customs) == "green")
+_, customs_tags = mod.score_item(china_customs, china_now)
+check("china-fuel-customs-title-persistence", "공식자료" in mod.watch.translate_ko(china_customs["title_original"]) and "선적 재개 보도" not in mod.watch.translate_ko(china_customs["title_original"]))
+
 check("china-fuel-customs-event-id-separate", mod.item_id(china_customs) != mod.item_id(china_approved))
 
 china_halt = row(
@@ -1171,6 +1177,13 @@ china_nov = row(
     description="November diesel exports approved."
 )
 check("china-fuel-next-month-new-event", mod.item_id(china_nov) != mod.item_id(china_oct_reuters))
+china_conflict = row(
+    "Russian strikes on Kyiv bridges intensify",
+    source="Reuters",
+    description="Russia attacked Kyiv bridges with missiles.",
+)
+check("china-fuel-mixed-risk-vs-supply", "중국 정제연료" in mod.verdict([china_oct_reuters, china_conflict]) and "군사·해상안보" in mod.verdict([china_oct_reuters, china_conflict]))
+
 
 china_bad = (
     "<b>전쟁·종전·재건 웹감시</b>\n"
