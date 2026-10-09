@@ -37,3 +37,30 @@ def combine(remote, local):
     merged["format_revision"] = max(int(remote.get("format_revision") or 0),
                                     int(local.get("format_revision") or 0))
     return merged
+
+def main():
+    local = json.loads(STATE.read_text(encoding="utf-8"))
+    git("config", "user.name", "github-actions[bot]")
+    git("config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com")
+    for attempt in range(5):
+        git("fetch", "origin", "main")
+        remote = json.loads(git("show", "origin/main:" + STATE.as_posix()).stdout)
+        merged = combine(remote, local)
+        important = lambda data: {k: v for k, v in data.items() if k != "last_checked_kst"}
+        if important(merged) == important(remote):
+            print("No meaningful buyback state changes; skip timestamp-only commit")
+            return
+        git("reset", "--hard", "origin/main")
+        STATE.write_text(json.dumps(merged, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        git("add", STATE.as_posix())
+        git("commit", "-m", "Update Treasury buyback execution state")
+        pushed = git("push", "origin", "HEAD:main", check=False)
+        if pushed.returncode == 0:
+            print("Buyback state committed with verified merge")
+            return
+        print("State push conflict or network issue; retry", attempt + 1)
+        time.sleep(attempt + 1)
+    raise RuntimeError("Buyback state persistence failed after five safe retries")
+
+if __name__ == "__main__":
+    main()
