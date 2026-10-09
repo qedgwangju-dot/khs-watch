@@ -281,12 +281,38 @@ def _oas_asof(oas_text):
     return m.group(1) if m else None
 
 
-def _credit_alert_line(hyg_flow, hyg_oas):
+def _fund_date(ticker, text):
+    m = re.search(
+        rf"^{re.escape(ticker)} \\([^\\n]+\\) — (20\\d{{2}}-\\d{{2}}-\\d{{2}})",
+        text or "",
+        re.M,
+    )
+    return m.group(1) if m else None
+
+
+def _rate_move_bp(rate_text):
+    m = re.search(r"([+-]\\d+(?:\\.\\d+)?)bp", rate_text or "")
+    return float(m.group(1)) if m else None
+
+
+def _credit_alert_line(hyg_flow, hyg_oas, hyg_fund_date=None):
     hdoas = _oas_delta(hyg_oas)
     if hdoas is None or hdoas < 5:
         return None
     asof = _oas_asof(hyg_oas)
     asof_text = f" (OAS 기준 {asof})" if asof else ""
+    if asof and hyg_fund_date and asof != hyg_fund_date:
+        fund_signal = (
+            "추정 순유출" if _outflow(hyg_flow)
+            else "추정 순유입" if _inflow(hyg_flow)
+            else "흐름 미확정"
+        )
+        return (
+            f"현재 신용경보: HYG OAS {hdoas:+.1f}bp "
+            f"{'급확대' if hdoas >= 10 else '확대'} (기준 {asof}) · "
+            f"HYG ETF {fund_signal} (기준 {hyg_fund_date}) → "
+            "관측일이 달라 같은 거래일 동시 위험회피로 단정하지 않음"
+        )
     if hdoas >= 10:
         if _outflow(hyg_flow):
             return f"현재 신용경보: HYG OAS {hdoas:+.1f}bp 급확대{asof_text} + HYG 자금유출 → 신용위험 확대 경계"
@@ -374,6 +400,8 @@ def _validate_compact_report(text, overall_head, y10, hyg_oas):
             raise RuntimeError("HYG OAS widening >=5bp cannot be flattened to generic mixed credit")
         if "현재 신용경보:" not in text:
             raise RuntimeError("active HYG OAS alert is missing from final report")
+        if "자료시점 구분:" not in text and "[한눈에 보기]" in text:
+            raise RuntimeError("HYG spread and ETF observation dates must be explicit")
         if "HYG 자금유출 + OAS 일간 +5bp 이상" in text:
             raise RuntimeError("already-triggered HYG OAS threshold repeated as a future alert")
 
@@ -385,7 +413,8 @@ def _compact_report(raw_text):
     treasury_head, treasury_reason = readable._direction_pair("ETF 자금 방향", raw_text)
     credit_flow_head, credit_flow_reason = readable._direction_pair("신용자금 방향", raw_text)
     credit_head, credit_reason = credit_flow_head, credit_flow_reason
-    credit_alert_line = _credit_alert_line(flows["HYG"][0], hyg_oas)
+    hyg_fund_date = _fund_date("HYG", raw_text)
+    credit_alert_line = _credit_alert_line(flows["HYG"][0], hyg_oas, hyg_fund_date)
 
     r2, r10, r30 = _rate("2년", raw_text), _rate("10년", raw_text), _rate("30년", raw_text)
     s210 = _rate("2년-10년 금리차", raw_text)
@@ -396,7 +425,9 @@ def _compact_report(raw_text):
     treasury_date = _m(r"^기준: ([0-9]{4}-[0-9]{2}-[0-9]{2}) \| 직전:", raw_text)
 
     y10, y30 = _yield_value(raw_text, "10년"), _yield_value(raw_text, "30년")
-    tech_head, tech_reason = stress._market_stress(y10, y30)
+    d10_bp = _rate_move_bp(r10)
+    d30_bp = _rate_move_bp(r30)
+    tech_head, tech_reason = stress._market_stress(y10, y30, d10_bp, d30_bp)
     jpm_30y_line = _jpm_30y_signal(y30)
 
     try:
@@ -438,6 +469,17 @@ def _compact_report(raw_text):
 
     conclusion = f"{overall_head} — {overall_reason}"
     next_alert_line = _next_alert(y10, y30, flows["HYG"][0], hyg_oas)
+    latest_oas_date = _oas_asof(hyg_oas)
+    if treasury_date != "확인 대기" and latest_oas_date and latest_oas_date != treasury_date:
+        credit_date_note = (
+            f"자료시점 구분: 국채·ETF {treasury_date} / 회사채 OAS {latest_oas_date}. "
+            "발행좌수 기반 추정 자금흐름과 신용스프레드는 다른 거래일 자료이며 당일 동시 발생으로 판정하지 않음"
+        )
+    else:
+        credit_date_note = (
+            f"자료시점 구분: 국채·ETF {treasury_date} / "
+            f"회사채 OAS {latest_oas_date or '기준일 확인 대기'}"
+        )
 
     lines = [
         "[미 국채·회사채 방향성 일일 보고]",
@@ -453,6 +495,7 @@ def _compact_report(raw_text):
         f"신용 위험: {credit_head} | LQD OAS {lqd_oas} | HYG OAS {hyg_oas}",
         f"→ {credit_reason}",
         *([credit_alert_line] if credit_alert_line else []),
+        credit_date_note,
         "",
         f"금리: 2년 {r2} | 10년 {r10} | 30년 {r30}",
         f"커브: {regime} = {easy}",
