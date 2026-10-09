@@ -3,6 +3,7 @@ import os, re, json, hashlib, html
 from io import StringIO
 from pathlib import Path
 from datetime import datetime, timedelta, timezone
+from zoneinfo import ZoneInfo
 from urllib.parse import quote, urljoin
 
 import requests
@@ -46,6 +47,14 @@ FED_Z1 = "https://www.federalreserve.gov/releases/z1/default.htm"
 FED_Z1_EQUITY_TABLE = "https://www.federalreserve.gov/releases/z1/dataviz/z1/balance_sheet/table/"
 FRED_CSV = "https://fred.stlouisfed.org/graph/fredgraph.csv?id={series}"
 FRED_SP500 = "https://fred.stlouisfed.org/series/SP500"
+FRED_YIELDS = "https://fred.stlouisfed.org/series/DGS10"
+FRED_FED_POLICY = "https://fred.stlouisfed.org/series/DFEDTARU"
+HARTNETT_REPORT_DATE = "October 9, 2026"
+HARTNETT_REPORT_WEEK = "October 7, 2026"
+HARTNETT_REPORT_URL = "https://ca.finance.yahoo.com/news/investors-pour-cash-set-stay-084543679.html"
+HARTNETT_MMF_REPORTED_BN = 166.4  # Bloomberg citing Hartnett/BofA; not an ICI observation.
+HARTNETT_TRACK_VERSION = "2026-10-09-v1"
+US_MIDTERM_DATE = datetime(2026, 11, 3).date()
 YAHOO_SP500_API = "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?range=5y&interval=1d&includePrePost=false&events=div%2Csplits"
 YAHOO_SP500 = "https://finance.yahoo.com/quote/%5EGSPC/"
 FRED_SERIES = {
@@ -507,6 +516,78 @@ def fetch_sp500_context():
         "source": source,
         "url": source_url,
     }
+
+
+def fetch_hartnett_macro_context():
+    """Official Fed/Treasury observations; fail closed when dates or units are wrong."""
+    ten = latest_fred("DGS10")
+    two = latest_fred("DGS2")
+    fed = latest_fred("DFEDTARU")
+    dt = ten["date"]
+    if two["date"] != dt:
+        raise RuntimeError(f"Treasury DGS10/DGS2 reference date mismatch: {dt} vs {two['date']}")
+    today = datetime.now(ZoneInfo("America/New_York")).date()
+    if (today - dt).days < 0 or (today - dt).days > 7:
+        raise RuntimeError(f"Treasury yields stale or future-dated: {dt}, today={today}")
+    if (today - fed["date"]).days < 0 or (today - fed["date"]).days > 7:
+        raise RuntimeError(f"Federal funds upper target stale: {fed['date']}")
+    y10 = float(ten["value"])
+    y2 = float(two["value"])
+    upper = float(fed["value"])
+    if not (0.1 <= y10 <= 20 and 0.1 <= y2 <= 20 and 0 <= upper <= 20):
+        raise RuntimeError("Fed market rate percentage range sanity failed")
+    if len(ten["rows"]) < 6:
+        raise RuntimeError("DGS10 five-observation history missing")
+    five_bp = round((y10 - float(ten["rows"].iloc[-6]["value"])) * 100.0, 1)
+    return {
+        "treasury_date": dt.isoformat(),
+        "yield_10y_pct": round(y10, 3),
+        "yield_2y_pct": round(y2, 3),
+        "yield_10y_5d_bp": five_bp,
+        "curve_10y_minus_2y_bp": round((y10-y2)*100.0, 1),
+        "fed_target_upper_pct": round(upper, 3),
+        "fed_effective_date": fed["date"].isoformat(),
+        "bond_level": "elevated" if y10 >= 5.30 else "below_5_30",
+        "bond_momentum": "rise_20bp" if five_bp >= 20.0 else "fall_20bp" if five_bp <= -20.0 else "neutral",
+        "url_yields": FRED_YIELDS,
+        "url_fed": FRED_FED_POLICY,
+    }
+
+
+def election_window_label(reference_date):
+    """A calendar reminder is not a forecast of an election outcome."""
+    days = (US_MIDTERM_DATE - reference_date).days
+    if days > 7:
+        return "outside"
+    if 1 <= days <= 7:
+        return "within_7_days"
+    if days == 0:
+        return "election_day"
+    if -3 <= days < 0:
+        return "post_election_window"
+    return "past"
+
+
+def hartnett_regime_signal(mmf_weekly_bn, bond):
+    if bond is None:
+        return "금리 공식 수치 확인 대기 — 현금성 자금만으로 위험선호 방향 단정 금지"
+    if mmf_weekly_bn is None:
+        return "ICI 주간 MMF 갱신 대기 — 채권금리만으로 MMF 이동을 추정하지 않음"
+    if mmf_weekly_bn > 0 and bond["bond_level"] == "elevated":
+        return "MMF 증가·미 10년물 5.30% 이상: 현금 대기와 금리 부담 동반. 주식 강제매도로 단정하지 않음"
+    if mmf_weekly_bn < 0 and bond["yield_10y_5d_bp"] < -15:
+        return "MMF 감소·10년물 금리 하락: 현금 대기 완화 가능성. 실제 주식형 순유입 확인 전 재진입 단정 금지"
+    return "현금·채권금리 신호 혼재 — 명확한 시장 재진입 판단 보류"
+
+
+assert election_window_label(datetime(2026, 11, 3).date()) == "election_day"
+assert election_window_label(datetime(2026, 10, 27).date()) == "within_7_days"
+assert "강제매도" in hartnett_regime_signal(72.27, {
+    "bond_level":"elevated", "yield_10y_5d_bp":20.0
+})
+assert "재진입 단정 금지" in hartnett_regime_signal(-1.0, {
+    "bond_level":"below_5_30","yield_10y_5d_bp":-20.0
+})
 
 
 def _ici_table_rows(page_html, required_labels):
@@ -996,6 +1077,39 @@ lipper = next((x for x in results if x["kind"] == "lipper"), None)
 jpm_household = next((x for x in results if x["kind"] == "household_withdrawals"), None)
 fed_household = next((x for x in results if x["kind"] == "household_balance_sheet"), None)
 
+hartnett_macro = None
+try:
+    hartnett_macro = fetch_hartnett_macro_context()
+except Exception as e:
+    errors.append(f"Hartnett 금리 검증: {type(e).__name__}: {e}")
+
+old_hartnett = (state.get("derived") or {})
+hartnett_init = bool(
+    hartnett_macro
+    and old_hartnett.get("hartnett_tracking_version") != HARTNETT_TRACK_VERSION
+)
+bond_level_transition = bool(
+    hartnett_macro
+    and old_hartnett.get("hartnett_bond_level")
+    and old_hartnett.get("hartnett_bond_level") != hartnett_macro["bond_level"]
+)
+bond_momentum_transition = bool(
+    hartnett_macro
+    and hartnett_macro["bond_momentum"] != "neutral"
+    and old_hartnett.get("hartnett_bond_momentum") != hartnett_macro["bond_momentum"]
+)
+target_rate_change = bool(
+    hartnett_macro
+    and isinstance(old_hartnett.get("hartnett_fed_target_upper_pct"), (int,float))
+    and abs(old_hartnett["hartnett_fed_target_upper_pct"] - hartnett_macro["fed_target_upper_pct"]) >= 0.245
+)
+election_window = election_window_label(datetime.now(ZoneInfo("America/New_York")).date())
+election_transition = bool(
+    old_hartnett.get("hartnett_election_stage")
+    and old_hartnett.get("hartnett_election_stage") != election_window
+    and election_window in ("within_7_days","election_day","post_election_window")
+)
+
 sp500 = None
 try:
     sp500 = fetch_sp500_context()
@@ -1045,6 +1159,7 @@ if ici_mmf:
     ch = ici_mmf["metrics"].get("weekly_change_bn")
     if ch is not None:
         interpret.append(f"ICI 공식 MMF: {'증가' if ch > 0 else '감소'} {fmt_usd_bn_kr(ch, fx)}")
+        interpret.append("Hartnett 검증: " + hartnett_regime_signal(ch, hartnett_macro))
 if finra:
     md = finra["metrics"].get("margin_debt_mom_bn")
     if md is not None:
@@ -1194,15 +1309,27 @@ if jpm_updated:
     status_lines.append(
         f"- JPM household delta: withdrawers={jpm_withdrawal_delta}pp | spending-funded={jpm_spending_delta}pp"
     )
+if hartnett_macro:
+    status_lines.append(
+        f"- Hartnett 10Y={hartnett_macro['yield_10y_pct']}% "
+        f"2Y={hartnett_macro['yield_2y_pct']}% 5D={hartnett_macro['yield_10y_5d_bp']}bp "
+        f"FedUpper={hartnett_macro['fed_target_upper_pct']}% "
+        f"obs={hartnett_macro['treasury_date']} "
+        f"init={hartnett_init} level_transition={bond_level_transition} "
+        f"momentum_transition={bond_momentum_transition} target_change={target_rate_change}"
+    )
+status_lines.append(f"- Hartnett election stage: {election_window} transition={election_transition}")
 if fx:
     status_lines.append(f"- USD/KRW: {fx['usdkrw']} ({fx['date']})")
 STATUS.write_text("\n".join(status_lines) + "\n", encoding="utf-8")
 
 force = (os.getenv("FORCE_SEND") or "").lower() in ("1", "true", "yes")
-should_alert = bool(updates or force or drawdown_transition)
+should_alert = bool(updates or force or drawdown_transition or hartnett_init
+                    or bond_level_transition or bond_momentum_transition
+                    or target_rate_change or election_transition)
 if should_alert:
     body = [
-        "🇺🇸 <b>[미국 증시 자금흐름 추적 | 신규 변화]</b>",
+        f"🇺🇸 <b>[미국 증시 자금흐름 추적 | {'Hartnett 감시 추가' if hartnett_init and not updates else '신규 변화'}]</b>",
         "",
         "<b>한눈에 보기</b>",
     ]
@@ -1241,6 +1368,47 @@ if should_alert:
             f"투자자산 충당 소비 {jm['spending_funded_pct']:.1f}% / "
             f"가계 기업주식·펀드 총자산 비중 {fm['equities_share_total_assets_pct']:.2f}%"
         )
+
+    # Hartnett/BofA is an analyst's publicly reported opinion, not an ICI official series.
+    # Keep the Bloomberg-quoted $166.4B separate from ICI's U.S. fund-asset change.
+    body += ["", "<b>Hartnett 현금·금리·중간선거 감시</b>"]
+    body.append(
+        f"• BofA/Hartnett 발언 기준선({HARTNETT_REPORT_DATE} Bloomberg 인용): "
+        f"10/7 주간 MMF 유입 {fmt_usd_bn_kr(HARTNETT_MMF_REPORTED_BN, fx)} "
+        "— ICI 공식 미국 MMF 자산 변화와 모집단·산식 미확인으로 별도 표시"
+    )
+    if ici_mmf:
+        body.append(
+            f"• ICI 미국 MMF: {html.escape(str(ici_mmf['period']))} 기준 "
+            f"{fmt_usd_bn_kr(ici_mmf['metrics']['weekly_change_bn'], fx)} "
+            "→ BofA 수치와 비교·합산 금지"
+        )
+    if hartnett_macro:
+        body.append(
+            f"• 미 국채 10년물 {hartnett_macro['yield_10y_pct']:.3f}% "
+            f"/ 2년물 {hartnett_macro['yield_2y_pct']:.3f}% "
+            f"/ 10년물 5거래일 {hartnett_macro['yield_10y_5d_bp']:+.1f}bp "
+            f"(기준 {hartnett_macro['treasury_date']})"
+        )
+        body.append(
+            f"• 연준 목표금리 상단 {hartnett_macro['fed_target_upper_pct']:.2f}% "
+            f"(효력일 {hartnett_macro['fed_effective_date']})"
+        )
+        body.append(
+            f"• 검증 판정: {html.escape(hartnett_regime_signal(mmf_change, hartnett_macro))}"
+        )
+    else:
+        body.append("• 미국 국채·연준 공식 수치 수집 실패: 금리와 현금 이동의 결합 판정 보류")
+    body.append(
+        f"• 미국 중간선거 2026-11-03 / 감시 단계 {election_window} "
+        "— 선거 시나리오는 투자전략가 견해일 뿐 확정 시장예측이 아님"
+    )
+    body.append(
+        f'• 근거: <a href="{html.escape(HARTNETT_REPORT_URL, quote=True)}">Bloomberg 인용 보도</a> / '
+        f'<a href="{html.escape(ICI_MMF, quote=True)}">ICI 미국 MMF 공식</a> / '
+        f'<a href="{html.escape(FRED_YIELDS, quote=True)}">연준 10년물</a> / '
+        f'<a href="{html.escape(FRED_FED_POLICY, quote=True)}">연준 기준금리</a>'
+    )
 
     body += [
         f"→ <b>종합</b>: {html.escape(overall_easy)}",
@@ -1288,6 +1456,7 @@ if should_alert:
         "",
         "<b>해석 원칙</b>",
         "• 같은 출처 안에서만 미국주식↔MMF 방향을 조합해 자금 회전을 해석",
+        "• BofA/Hartnett Bloomberg 인용 주간 1,664억달러와 ICI 공식 MMF 자산 변화는 서로 다른 모집단 가능성이 있어 합산·직접 비교 금지",
         "• ICI·BofA/EPFR·LSEG Lipper는 모집단이 달라 합산·평균하지 않음",
         "• FINRA 마진부채는 월간 레버리지 확인용으로 주간 펀드 흐름과 기간을 섞지 않음",
         "• JPMorganChase Institute 가계 인출은 저빈도 구조지표로 사용하며 새 공식 수치가 있을 때만 변화로 처리",
@@ -1310,6 +1479,19 @@ if should_alert:
         key = f"{x['source']}|{x['kind']}"
         newstate["seen"][key] = x["fingerprint"]
         newstate["values"][key] = x
+    if hartnett_macro:
+        newstate.setdefault("derived", {})
+        newstate["derived"].update({
+            "hartnett_tracking_version": HARTNETT_TRACK_VERSION,
+            "hartnett_treasury_date": hartnett_macro["treasury_date"],
+            "hartnett_10y_pct": hartnett_macro["yield_10y_pct"],
+            "hartnett_10y_5d_bp": hartnett_macro["yield_10y_5d_bp"],
+            "hartnett_bond_level": hartnett_macro["bond_level"],
+            "hartnett_bond_momentum": hartnett_macro["bond_momentum"],
+            "hartnett_fed_target_upper_pct": hartnett_macro["fed_target_upper_pct"],
+            "hartnett_fed_effective_date": hartnett_macro["fed_effective_date"],
+            "hartnett_election_stage": election_window,
+        })
     if sp500:
         newstate.setdefault("derived", {})
         newstate["derived"].update({
@@ -1324,7 +1506,9 @@ if should_alert:
     PENDING.write_text(json.dumps(newstate, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(
         f"us_fund_flow_alert_ready=true updates={len(updates)} "
-        f"drawdown_transition={str(drawdown_transition).lower()}"
+        f"drawdown_transition={str(drawdown_transition).lower()} "
+        f"hartnett_init={str(hartnett_init).lower()} "
+        f"bond_level_transition={str(bond_level_transition).lower()}"
     )
 else:
     print("us_fund_flow_alert_ready=false unchanged=true")
