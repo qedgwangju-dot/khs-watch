@@ -1,6 +1,9 @@
 name: Treasury ETF Fund Flow Telegram
 
 on:
+  push:
+    paths:
+      - ".github/workflows/treasury-etf-flow-telegram.yml"
   schedule:
     - cron: "30,35,40 8 * * *"
       timezone: "Asia/Seoul"
@@ -49,7 +52,7 @@ jobs:
       TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
-      TREASURY_REPORT_VALIDATE_ONLY: ${{ github.event_name == 'workflow_dispatch' && inputs.validate_only && '1' || '0' }}
+      TREASURY_REPORT_VALIDATE_ONLY: ${{ github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.validate_only) && '1' || '0' }}
 
     steps:
       - name: Checkout latest delivery state
@@ -58,15 +61,46 @@ jobs:
           ref: main
           fetch-depth: 0
 
+      - name: Skip already delivered U.S. market day before running external requests
+        id: delivery_gate
+        run: |
+          python3 - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          from pathlib import Path
+          from zoneinfo import ZoneInfo
+
+          source_date = dt.datetime.now(ZoneInfo("America/New_York")).date()
+          while source_date.weekday() >= 5:
+              source_date -= dt.timedelta(days=1)
+          p = Path("data/treasury_etf_flow_state.json")
+          state = json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
+          last = state.get("last_delivery") or {}
+          validation_mode = os.getenv("TREASURY_REPORT_VALIDATE_ONLY") == "1"
+          already_sent = (
+              last.get("treasury_date") == source_date.isoformat()
+              and last.get("bot_username") == "khs8879887988798879_bot"
+              and bool(last.get("message_ids"))
+          )
+          skip = already_sent and not validation_mode
+          print(f"treasury_early_delivery_gate source_date={source_date} already_sent={already_sent} skip={skip}")
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as out:
+              out.write(f"should_run={'false' if skip else 'true'}\n")
+          PY
+
       - name: Set up Python
+        if: steps.delivery_gate.outputs.should_run == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
       - name: Install dependencies
+        if: steps.delivery_gate.outputs.should_run == 'true'
         run: python -m pip install --disable-pip-version-check requests beautifulsoup4
 
       - name: Validate watcher
+        if: steps.delivery_gate.outputs.should_run == 'true'
         run: |
           python -m py_compile scripts/treasury_etf_flow_watch.py
           python -m py_compile scripts/treasury_credit_flow_watch_ishares.py
@@ -127,6 +161,7 @@ jobs:
           PY
 
       - name: Validate exact Telegram bot route
+        if: steps.delivery_gate.outputs.should_run == 'true'
         run: |
           python - <<'PY'
           import json
@@ -149,6 +184,7 @@ jobs:
           PY
 
       - name: Run compact Treasury plus credit ETF monitor and send Telegram
+        if: steps.delivery_gate.outputs.should_run == 'true'
         run: |
           set -o pipefail
           mkdir -p out
@@ -171,7 +207,7 @@ jobs:
           fi
 
       - name: Publish summary
-        if: always()
+        if: ${{ always() && steps.delivery_gate.outputs.should_run == 'true' }}
         run: |
           if [ -f out/treasury_etf_flow_status.md ]; then
             cat out/treasury_etf_flow_status.md >> "$GITHUB_STEP_SUMMARY"
@@ -180,7 +216,7 @@ jobs:
           fi
 
       - name: Commit daily baseline/history
-        if: success()
+        if: ${{ success() && steps.delivery_gate.outputs.should_run == 'true' }}
         run: |
           if [ ! -f data/treasury_etf_flow_state.json ]; then
             exit 0
@@ -203,7 +239,7 @@ jobs:
           exit 1
 
       - name: Upload verification artifacts
-        if: always()
+        if: ${{ always() && steps.delivery_gate.outputs.should_run == 'true' }}
         uses: actions/upload-artifact@v4
         with:
           name: treasury-credit-etf-flow-${{ github.run_id }}
