@@ -43,6 +43,9 @@ def translate_ko(title):
     """출처 귀속이 의미의 일부인 제목은 번역 단계에서 귀속 문구를 보존한다."""
     raw = str(title or "")
     low = raw.lower()
+    china_stage = _china_fuel_stage({"title_original": raw, "description": ""})
+    if china_stage:
+        return _china_fuel_title({"title_original": raw}, china_stage)
     if (
         ("drones strike two ships" in low and "bulgaria" in low and "black sea" in low)
         or ("drone sinks ship off bulgaria" in low)
@@ -110,6 +113,160 @@ def _title(row):
 
 def _text(row):
     return prev._text(row)
+
+
+# 중국 정제연료 수출: 원유 생산·중동 공격·전망성 발언과 분리해 판정한다.
+# 업계 인용 수출승인 보도는 정부 공식 공표·실제 선적·통관 자료와 다르다.
+CHINA_FUEL_MARKS = {
+    "report": "중국정제연료수출재개업계보도",
+    "approval": "중국정제연료수출정부승인",
+    "shipment": "중국정제연료실제선적보도",
+    "customs": "중국정제연료수출세관확인",
+    "restriction": "중국정제연료수출제한변화",
+    "revision": "중국정제연료수출승인변경",
+}
+CHINA_FUEL_QUERIES = [
+    '(China OR Chinese OR 중국 OR 中国) ("refined fuel exports" OR "fuel exports" OR "refined product exports" OR "成品油出口" OR "정제연료 수출" OR "석유제품 수출") (resume OR restart OR approval OR quota OR suspend OR shipments OR 재개 OR 승인 OR 중단 OR 配额) when:3h',
+    'site:reuters.com/business/energy China ("fuel exports" OR "refined products") when:1d',
+]
+for _china_query in reversed(CHINA_FUEL_QUERIES):
+    if _china_query not in watch.QUERIES:
+        watch.QUERIES.insert(1, _china_query)
+
+
+def _china_fuel_period(row):
+    title = str(row.get("title_original") or row.get("title") or "").lower()
+    pub = watch.parse_pub(row.get("published", ""))
+    local = pub.astimezone(watch.KST) if pub else dt.datetime.now(watch.KST)
+    months = {
+        "january": 1, "february": 2, "march": 3, "april": 4, "may": 5,
+        "june": 6, "july": 7, "august": 8, "september": 9, "october": 10,
+        "november": 11, "december": 12,
+    }
+    month = local.month
+    for word, number in months.items():
+        if re.search(r"\b" + word + r"\b", title):
+            month = number
+            break
+    ko_month = re.search(r"(?:^|\s)(1[0-2]|[1-9])월", title)
+    if ko_month:
+        month = int(ko_month.group(1))
+    # 1월에 전년도 12월 실적을 확인하는 경우 월말 회계기간을 보존한다.
+    year = local.year - 1 if local.month == 1 and month == 12 else local.year
+    return f"{year:04d}-{month:02d}"
+
+
+def _china_fuel_official(row):
+    src = " ".join((str(row.get("source", "")), str(row.get("link", "")), str(row.get("resolved_url", "")))).lower()
+    return any(x in src for x in (
+        "customs.gov.cn", "mofcom.gov.cn", "ndrc.gov.cn", "gov.cn",
+        "海关总署", "商务部", "国家发展改革委", "중국 해관총서", "중국 상무부",
+    ))
+
+
+def _china_fuel_trusted(row):
+    src = " ".join((str(row.get("source", "")), str(row.get("link", "")), str(row.get("resolved_url", "")))).lower()
+    return _china_fuel_official(row) or any(x in src for x in (
+        "reuters", "apnews", "associated press", "financial times", "bloomberg",
+        "연합뉴스", "yna.co.kr", "新华社", "xinhua", "중국증권보",
+    ))
+
+
+def _china_fuel_stage(row):
+    """제목 중심 탐지로 본문 속 이란전쟁 언급이 공급 기사를 확전으로 오염시키지 않게 한다."""
+    title = str(row.get("title_original") or row.get("title") or "").lower()
+    summary = title + " " + str(row.get("description", "")).lower()
+    china = any(x in summary for x in ("china", "chinese", "beijing", "중국", "中国", "北京"))
+    products = any(x in summary for x in (
+        "refined fuel", "refined product", "fuel export", "fuel shipment",
+        "gasoline exports", "diesel exports", "jet fuel exports",
+        "成品油", "정제연료", "정유제품", "석유제품",
+    ))
+    exports = any(x in summary for x in ("export", "shipment", "exports", "出口", "수출", "선적"))
+    if not (china and products and exports):
+        return None
+    # 취소·중단·지연은 'brief halt 뒤 재개'와 구분한다.
+    if any(x in title for x in (
+        "to halt", "halts exports", "suspends export", "suspended exports",
+        "fuel export ban", "stops fuel exports", "delays resumption",
+        "export suspension extended", "暂停出口", "停止出口",
+        "수출 중단", "수출 금지", "재개 연기", "수출 재중단",
+    )):
+        return "restriction"
+    if any(x in title for x in (
+        "raises export", "cuts export", "revises export", "revised export",
+        "additional export quota", "export quota raised", "export quota reduced",
+        "上调", "下调", "增批", "削减", "수출 승인량 상향", "수출 승인량 하향", "수출 물량 수정",
+    )):
+        return "revision"
+    shipped = any(x in title for x in (
+        "shipments depart", "shipments have resumed", "first cargo depart",
+        "first fuel cargo", "loaded for export", "refined fuel exported",
+        "customs data show", "customs data shows", "actual exports",
+        "first shipment", "首批出口", "已出口", "海关数据显示",
+        "실제 선적", "선적 시작", "수출 실적", "통관 확인",
+    ))
+    if shipped:
+        if _china_fuel_official(row) and any(x in summary for x in (
+            "customs", "海关", "세관", "해관", "통관", "exported", "出口", "수출 실적",
+        )):
+            return "customs"
+        return "shipment"
+    if any(x in summary for x in (
+        "resume", "restart", "resumption", "set to", "approved", "approval",
+        "allowed to export", "export quota", "export permits", "resume exports",
+        "恢复出口", "批准", "配额", "重新出口", "재개", "승인", "할당", "수출 허용",
+    )):
+        return "approval" if _china_fuel_official(row) else "report"
+    return None
+
+
+def _china_fuel_title(row, stage):
+    period = _china_fuel_period(row)
+    mo = f"{int(period[-2:])}월"
+    if stage == "report":
+        return f"중국, {mo} 휘발유·경유·항공유 수출 재개 예정 — 업계 관계자 인용 보도, 정부 발표·실제 선적 확인 전"
+    if stage == "approval":
+        return f"중국, {mo} 정제연료 수출 승인 공식 발표 — 승인량과 실제 통관 수출은 별도 확인"
+    if stage == "shipment":
+        return f"중국, {mo} 정제연료 선적 재개 보도 — 실제 선적 물량·수출 통계 교차확인 필요"
+    if stage == "customs":
+        return f"중국, {mo} 정제연료 수출 실적 공식자료 확인 — 품목별 물량·통관 기간 구분"
+    if stage == "revision":
+        return f"중국, {mo} 정제연료 수출 승인 물량 변경 — 변경 전후 물량·근거 확인 필요"
+    return f"중국, {mo} 정제연료 수출 제한 변화 — 실제 선적·공급 감소 여부 확인 필요"
+
+
+def _china_fuel_signals(row, stage):
+    if stage == "report":
+        source_url = " ".join((str(row.get("link", "")), str(row.get("resolved_url", "")))).lower()
+        title = str(row.get("title_original", "")).lower()
+        if _china_fuel_period(row) == "2026-10" and (
+            "china-resume-october-fuel-exports-after-brief-halt" in source_url
+            or "china to resume october fuel exports after a brief halt" in title
+        ):
+            return ["중국 10월 정제연료 수출 약 370만 톤 승인 보도(Reuters 업계 관계자 인용) — 9월 예상 400만 톤 초과와 구분; 당국 공식 발표·선적·통관 실적은 아직 별개"]
+        return ["업계 관계자 또는 언론의 중국 정제연료 수출 재개 보도 — 정부 공식 공표·선적·세관 실적을 순서대로 추가 확인"]
+    if stage == "approval":
+        return ["중국 정부의 정제연료 수출 승인 발표 — 승인량이 모두 출항하거나 최종 수출 실적으로 인식된 것은 아님"]
+    if stage == "shipment":
+        return ["정제연료 선적·출항 보도 — 선적 물량·항만·선적일과 중국 해관총서 실제 수출 실적의 교차확인 필요"]
+    if stage == "customs":
+        return ["중국 세관 공식 통계상 정제연료 수출 — 휘발유·경유·항공유의 개별 실적과 이전 달 대비 변화는 구분"]
+    if stage == "revision":
+        return ["중국 정제연료 수출 승인 규모 수정 — 기존 승인 수량과 새 승인 수량의 차액을 검증하고 이전 보도와 중복합산 금지"]
+    return ["중국 정제연료 수출 제한·재중단 보도 — 기존 승인량과 실제 취소·선적 감소를 구분"]
+
+
+def _china_fuel_event_id(row, stage):
+    period = _china_fuel_period(row)
+    key = f"china|refined-fuel-exports|{period}|{stage}"
+    if stage == "revision":
+        # 조정량이 다르면 별도 개정으로 보존하되 매체별 재인용은 같은 ID 사용.
+        title = str(row.get("title_original", "")).lower()
+        amt = re.search(r"(\d+(?:\.\d+)?)\s*(?:million\s+(?:metric\s+)?tonnes?|million\s+(?:metric\s+)?tons?|万吨|만\s*톤)", title)
+        key += "|" + (amt.group(0) if amt else _published_day(row))
+    return hashlib.sha256(("event|" + key).encode()).hexdigest()[:20]
 
 
 def _published_day(row):
@@ -849,6 +1006,9 @@ prev._emergency_marks = emergency_marks
 
 
 def marks(row):
+    china_stage = _china_fuel_stage(row)
+    if china_stage:
+        return [CHINA_FUEL_MARKS[china_stage]]
     out = list(_orig_marks(row))
     if _aramco_houthi_claim(row):
         out.append("후티리야드아람코공격주장")
@@ -1035,6 +1195,19 @@ def score_item(row, now):
         return 0, []
     if age > fresh_limit:
         return 0, []
+    china_stage = _china_fuel_stage(row)
+    if china_stage:
+        if not _china_fuel_trusted(row):
+            return 0, []
+        row["title_ko"] = _china_fuel_title(row, china_stage)
+        row["signals_ko"] = _china_fuel_signals(row, china_stage)
+        row["china_fuel_stage"] = china_stage
+        stage_tag = {
+            "report": "수출승인업계보도", "approval": "수출승인공식발표",
+            "shipment": "선적재개보도", "customs": "세관실적확인",
+            "restriction": "수출제한", "revision": "수출물량변경",
+        }[china_stage]
+        return 100, sorted(["중국·정제연료", stage_tag, "공급변화", "원유와구분"])
     # 미국 11/3 선거일 종료 후에는 기존 10/8 발언을 새 정책 변화로 재송출하지 않는다.
     # 미국 동부시각 11/4 00:00 = 한국시각 11/4 14:00 (2026년 표준시).
     election_end_kst = dt.datetime(2026, 11, 4, 14, 0, tzinfo=watch.KST)
@@ -1211,6 +1384,9 @@ def _stable_source_url(row):
 
 
 def item_id(row):
+    china_stage = _china_fuel_stage(row)
+    if china_stage:
+        return _china_fuel_event_id(row, china_stage)
     # 같은 작전 보도는 출처와 무관하게 하나의 사건 ID로 식별한다.
     # 신뢰도가 낮은 매체만 있는 경우 실제 알림에서는 별도 필터로 제외한다.
     if _iran_three_day_strike_plan(row, trust_required=False):
@@ -1274,6 +1450,8 @@ watch.item_id = item_id
 
 
 def topic_label(row):
+    if _china_fuel_stage(row):
+        return "중국 · 정제연료 수출·공급변화"
     ms = set(marks(row))
     if "후티리야드아람코공격주장" in ms:
         return "사우디·후티 · Aramco 공격 주장"
@@ -1334,6 +1512,9 @@ except Exception:
 
 
 def final_color(row):
+    china_stage = _china_fuel_stage(row)
+    if china_stage:
+        return "green" if china_stage == "customs" else "yellow"
     ms = set(marks(row))
     if "사우디동서송유관회복" in ms:
         return "green"
@@ -1389,6 +1570,26 @@ _PEACE_MARKS = {
 
 
 def verdict(items):
+    china_stages = [_china_fuel_stage(x) for x in items]
+    china_stages = [s for s in china_stages if s]
+    others = [x for x in items if not _china_fuel_stage(x)]
+    if china_stages and not others:
+        verified = "customs" in china_stages
+        return (
+            "<b>투자 판정</b>\n"
+            "- <b>핵심:</b> 중국 정제연료 수출 관련 공급 변화 — 원유 생산량이나 군사적 휴전과는 다른 신호\n"
+            + ("- <b>현재 단계:</b> 세관 실적 확인 단계\n" if verified else "- <b>현재 단계:</b> 업계 보도·승인·선적·변경 단계 — 실수출 실적 확인 전\n")
+            + "- <b>시장:</b> 경유·휘발유·항공유의 공급압력과 정제마진에 영향 가능; 유가 하락 확정 아님\n"
+            + "- <b>다음:</b> 중국 당국 확인 → 실제 선적 → 세관 수출량 → 품목별 정제마진"
+        )
+    if china_stages and others and not any(final_color(x) == "red" for x in others):
+        return (
+            "<b>투자 판정</b>\n"
+            "- <b>핵심:</b> 중국 정제연료 공급회복 기대와 별도 외교·군사위험이 병존\n"
+            "- <b>현재 단계:</b> 수출 승인 보도와 실제 선적·통관 실적은 구분\n"
+            "- <b>시장:</b> 정제연료 공급완화는 상품별 정제마진에 작용하지만 해상보험·전쟁위험은 별개\n"
+            "- <b>다음:</b> 선적·세관 확인, 호르무즈 항행, 별도 군사행동"
+        )
     colors = [final_color(x) for x in items]
     red = "red" in colors
     yellow = "yellow" in colors
@@ -1462,7 +1663,10 @@ def semantic_fix(text):
         level, idx = m.group(1), m.group(2)
         marker = None
         topic = None
-        if any(x in block for x in ("11월 3일 미국 중간선거 전 이란 추가 공격 없다고 발표", "11월 3일 중간선거 이전 미국의 이란 추가공격")):
+        if "중국 · 정제연료 수출·공급변화" in block:
+            marker = "🟢" if "세관실적확인" in block else "🟡"
+            topic = "중국 · 정제연료 수출·공급변화"
+        elif any(x in block for x in ("11월 3일 미국 중간선거 전 이란 추가 공격 없다고 발표", "11월 3일 중간선거 이전 미국의 이란 추가공격")):
             marker, topic = "🟡", "미국·이란 · 11월 3일 전 추가공격 유예 발언"
         elif any(x in block for x in ("3일 집중공격 방안 보도", "3일간의 집중공격 방안을 준비")):
             marker, topic = "🟡", "미국·이란 · 3일 집중공격 계획 보도"
@@ -1517,12 +1721,15 @@ def semantic_fix(text):
         if any(m == "🔴" for m, _ in rendered) or has_red_line:
             badges.append("🔴 <b>공격·확전</b>")
         if has_green_line:
-            if any(x in all_headers for x in ("실물물동량", "원유공급회복", "원유 물동량 회복")):
+            if any(x in all_headers for x in ("실물물동량", "원유공급회복", "원유 물동량 회복", "세관실적확인", "정제연료 수출 실적")):
                 badges.append("🟢 <b>실물 공급회복</b>")
             else:
                 badges.append("🟢 <b>재건·휴전</b>")
         if any(m == "🟡" for m, _ in rendered) or has_yellow_line:
-            badges.append("🟡 <b>군사위협·협상 제약</b>")
+            if "중국 · 정제연료 수출·공급변화" in all_headers and not has_red_line:
+                badges.append("🟡 <b>정제연료 공급변화·승인 보도</b>")
+            else:
+                badges.append("🟡 <b>군사위협·협상 제약</b>")
         if badges and lines:
             lines.insert(1, "  |  ".join(dict.fromkeys(badges)))
     return "\n".join(lines)
@@ -1538,6 +1745,11 @@ def verify_alert(test_mode=False):
     text = watch.ALERT.read_text(encoding="utf-8")
     low = text.lower()
     issues = []
+    if re.search(r"(?m)^🔴\s+\[(?:속보|신규|후속)\].*중국 · 정제연료 수출·공급변화", text):
+        issues.append("중국 정제연료 수출 변화를 전쟁 공격·확전으로 오분류")
+    if "중국 · 정제연료 수출·공급변화" in text:
+        if "수출 재개 예정" in text and ("세관 실적 확인 단계" in text or "수출 완료" in text):
+            issues.append("중국 정제연료 수출예정 보도를 실제 완료 실적으로 승격")
     if "후티의 리야드 탄도미사일 공격·요격 신호" in text and "fire-smoke-seen-near-aramco" in low:
         issues.append("아람코 원인 미확정 화재를 후티 미사일 공격으로 귀속")
     if "🟢" in text and any(x in low for x in ("루코일 해외자산 매각", "석유업체 빅딜")):
