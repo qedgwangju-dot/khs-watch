@@ -480,7 +480,7 @@ def _historical_kuwait_base_footage(row):
     return iran and kuwait and us_forces and retreat and (old_evidence or known_oct_reprint) and not new_strike
 
 
-def _trump_iran_midterm_no_strike(row):
+def _trump_iran_midterm_no_strike(row, *, trust_required=True):
     """11월 3일 전 이란 추가 공격 유예 '발언'만 별도로 감지한다.
 
     원문 제목에 현재 발언이 있어야 하며, 본문에 인용된 과거 입장만으로 감지하지 않는다.
@@ -493,7 +493,7 @@ def _trump_iran_midterm_no_strike(row):
         "reuters", "associated press", "ap news", "axios", "cnbc",
         "bloomberg", "wall street journal", "wsj", "financial times",
         "truthsocial.com", "whitehouse.gov", "연합뉴스", "yonhap",
-        "경향신문", "아이뉴스24", "kbs", "sbs", "mbc", "ytn", "jtbc",
+        "경향신문", "아이뉴스24", "obs경인tv", "kbs", "sbs", "mbc", "ytn", "jtbc",
         "한국경제", "매일경제", "서울경제", "조선일보", "중앙일보", "동아일보",
     ))
     scope = title + " " + description
@@ -552,7 +552,7 @@ def _trump_iran_midterm_no_strike(row):
         "pledge reversed", "reverses pledge", "withdraws pledge",
         "방침 철회", "입장 번복",
     ))
-    return trusted and trump and iran and election and denial and before_election and not actual_title
+    return (trusted or not trust_required) and trump and iran and election and denial and before_election and not actual_title
 
 
 def _trump_iran_midterm_pledge_reversal(row):
@@ -996,6 +996,10 @@ def score_item(row, now):
     if now >= election_end_kst and _trump_iran_midterm_no_strike(row):
         return 0, []
     if _regional_recap_without_discrete_event(row) or _historical_kuwait_base_footage(row):
+        return 0, []
+    # 이미 확인된 10/8 정책 발언을 생소한 출처가 되풀이하더라도
+    # 일반 전쟁 기사로 재분류하지 않는다. 신뢰 매체가 아니면 송출 보류.
+    if _trump_iran_midterm_no_strike(row, trust_required=False) and not _trump_iran_midterm_no_strike(row):
         return 0, []
     if (
         _trump_la_sd_hypothetical(row)
