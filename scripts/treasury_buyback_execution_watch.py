@@ -880,6 +880,49 @@ def main() -> int:
             next_state["pending_items"] = [correction_id]
             alert_kind = "correction"
 
+    # One-time correction of the previously sent +1 trading-day red verdict.
+    # This is keyed to the already-sent event, not a new buyback operation.
+    previous_event_prefix = "buyback-yield-persistence:2026-10-08:+1:"
+    correction_key = "buyback-yield-interpretation-correction:2026-10-08:+1:v2"
+    if (
+        not should_alert
+        and alert_kind is None
+        and op_date == "2026-10-08"
+        and correction_key not in state.get("seen", [])
+        and any(x.startswith(previous_event_prefix) for x in state.get("seen", []))
+    ):
+        reaction = official_yield_persistence("2026-10-08", 1)
+        if (
+            reaction is not None
+            and reaction["target_date"] == "2026-10-09"
+            and classify_yield_persistence(
+                reaction["since_operation_bp"], reaction["since_pre_operation_bp"]
+            ).startswith("⚪")
+        ):
+            original_title, body, detail = build_persistence_followup(
+                "2026-10-08", 1, reaction
+            )
+            title = "정정 | " + original_title
+            context = (
+                "<b>기존 🔴 상승·보합 경보의 방향성 과장 정정</b>\n"
+                "• 10년물 +2bp·20년물 +1bp·30년물 0bp는 단기적으로 소폭 반등·보합입니다.\n"
+                "• 바이백 직전 10월 7일과 비교하면 10년 -4bp·20년 -6bp·30년 -7bp로 아직 하락 수준을 유지합니다.\n"
+                "• 기존 프로그램이 1bp만 움직여도 빨간색으로 판정하던 문제를 바로잡았습니다.\n\n"
+            )
+            content = context + body
+            if len(title) + len(content) + 2 > 4096:
+                raise RuntimeError("Buyback one-time correction exceeds Telegram size limit")
+            TITLE.write_text(title + "\n", encoding="utf-8")
+            ALERT.write_text(content + "\n", encoding="utf-8")
+            detail["mode"] = "yield_reclassification_correction"
+            detail["original_verdict"] = "🔴 집행 뒤 장기금리 상승·보합"
+            detail["correction_key"] = correction_key
+            DETAIL.write_text(
+                json.dumps(detail, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+            )
+            next_state["pending_items"] = [correction_key]
+            alert_kind = "yield_reclassification"
+
     NEXT_STATE.write_text(
         json.dumps(next_state, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
