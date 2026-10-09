@@ -1,5 +1,5 @@
 {
-  "last_checked_kst": "2026-10-10T02:52:56+09:00",
+  "last_checked_kst": "2026-10-10T07:05:14+09:00",
   "schedule_sha256": "3461c9a9822dec08b3059d2dd367baadd0d0967193913ce8fe95702f000366d7",
   "long_end_max_bn": {
     "10Y to 20Y": 6.0,
@@ -7,7 +7,7 @@
   },
   "seen_source_ids": [],
   "upgrade_note": "one-time resend armed for upgraded Bessent policy-boundary interpretation",
-  "bessent_policy_boundary_revision": 5,
+  "bessent_policy_boundary_revision": 6,
   "bessent_causal_verdict_key": "mixed",
   "bessent_causal_verdict": "⚪ 혼조 — 현재 하루 움직임만으로 에너지·인플레이션 또는 재정·기간프리미엄 단일 원인을 확정하기 어려움",
   "bessent_causal_snapshot": {
@@ -26,6 +26,14 @@
       "nom_bp": -4.0000000000000036,
       "term_bp": null
     },
+    "changes_5d": {
+      "start_date": "2026-09-29",
+      "brent_pct": 10.073710073710075,
+      "bei_bp": 0.9999999999999787,
+      "real_bp": 0.0,
+      "nom_bp": 0.9999999999999787
+    },
+    "verdict_basis": "5거래일 공통창",
     "term_latest": {
       "available": false,
       "prev_date": null,
@@ -42,12 +50,12 @@
         "value": 125.44
       },
       "nom10": {
-        "date": "2026-10-08",
-        "value": 5.22
+        "date": "2026-10-09",
+        "value": 5.24
       },
       "real10": {
-        "date": "2026-10-08",
-        "value": 2.87
+        "date": "2026-10-09",
+        "value": 2.91
       }
     },
     "verdict_key": "mixed",
