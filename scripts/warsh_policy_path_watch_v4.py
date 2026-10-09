@@ -182,6 +182,11 @@ def official_snapshot():
         raise RuntimeError('뉴욕연은 EFFR 기준일 검증 실패')
     if not 0 <= effr_age <= 7:
         raise RuntimeError(f'뉴욕연은 EFFR 오래됨: {effr_date}, {effr_age}일')
+    policy = v3.base.official_policy_baseline()
+    if not policy or policy.get('low') is None or policy.get('high') is None:
+        raise RuntimeError('연준 공식 목표금리 확인 불가 — CME 경로 판정 유보')
+    if not float(policy['low']) - 0.03 <= effr <= float(policy['high']) + 0.03:
+        raise RuntimeError('뉴욕연은 EFFR와 연준 공식 목표금리 불일치 — 경로 판정 유보')
     # 회의 날짜도 제3자 시장화면이 아니라 연준 공식 FOMC 달력에서 직접 읽는다.
     today = ny_today()
     future = official_fomc_dates()
@@ -235,6 +240,11 @@ def official_snapshot():
 
     if not result:
         raise RuntimeError("CME 월물과 향후 FOMC 회의 연결 실패")
+    current_year_meetings = [d for d in future if d.year == today.year]
+    if current_year_meetings:
+        terminal = max(current_year_meetings).isoformat()
+        if not any(m['date'] == terminal for m in result):
+            raise RuntimeError(f'CME 연말 FOMC 금리선물 누락: {terminal}')
     lag = (today - datetime.strptime(trade_date,"%Y-%m-%d").date()).days
     if lag > 4:
         raise RuntimeError(f"CME 결제값 오래됨: {trade_date}, {lag}일 전")
