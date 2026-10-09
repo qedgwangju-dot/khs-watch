@@ -48,7 +48,7 @@ SERIES = {
 }
 
 UPGRADE_MARKER = "<b>정책 목적·경계선</b>"
-UPGRADE_REVISION = 6
+UPGRADE_REVISION = 7
 UA = "Mozilla/5.0 khs-watch-treasury-bessent-verifier/4.0"
 
 EXACT_TITLES = {
@@ -501,7 +501,7 @@ def build_causal_snapshot() -> dict:
         verdict = "🔴 비인플레이션 요인 우세 — 실질금리·기간프리미엄 쪽 상승 압력이 더 강함"
     else:
         verdict_key = "mixed"
-        verdict = "⚪ 혼조 — 현재 하루 움직임만으로 에너지·인플레이션 또는 재정·기간프리미엄 단일 원인을 확정하기 어려움"
+        verdict = "⚪ 혼조 — 현재 다중거래일 흐름만으로 에너지·인플레이션 또는 재정·기간프리미엄 단일 원인을 확정하기 어려움"
 
     latest = {
         "brent": {"date": brent_rows[-1][0], "value": brent_rows[-1][1]},
@@ -574,7 +574,9 @@ def stock_market_block(snapshot: dict) -> str:
             "• 명목·실질금리 원자료가 같은 실행에서 완성되지 않아 성장주 할인율 방향을 추정하지 않습니다.",
             "• 정책·집행 사실은 유지하고 다음 정상 원자료 실행에서 Nasdaq·AI·반도체·소프트웨어 영향을 다시 판정합니다.",
         ])
-    c = snapshot["common_changes"]
+    # Equity interpretation must use the same primary horizon as the causal
+    # regime verdict; otherwise a one-day reversal can contradict a five-day cause test.
+    c = snapshot.get("changes_5d") or snapshot["common_changes"]
     v = snapshot["common_values"]
     nom = c["nom_bp"]
     real = c["real_bp"]
