@@ -746,8 +746,8 @@ def translate_alert_text(text: str) -> str:
         return value
 
     parts = re.split(
-        r"(?i)(\\b(?:Anthropic|OpenAI|NVIDIA|Microsoft|Google|Meta|GitHub|Claude|"
-        r"OpenShell|Sentry|BlueField-4)\\b)",
+        r"(?i)(\b(?:Anthropic|OpenAI|NVIDIA|Microsoft|Google|Meta|GitHub|Claude|"
+        r"OpenShell|Sentry|BlueField-4)\b)",
         value,
     )
     canonical = {term.lower(): term for term in ALERT_IDENTIFIER_TERMS}
