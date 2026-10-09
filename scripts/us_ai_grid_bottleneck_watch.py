@@ -72,6 +72,7 @@ KOREA_EXPORT_BASELINE = {
     "last_checked_at_kst": "",
     "last_status": "not_checked",
     "last_error_kind": "",
+    "source_blocker_notified": False,
 }
 
 TRANSFORMER_IMPORT_VERSION = 1
@@ -1177,6 +1178,15 @@ def kcs_error_category(exc: Exception) -> str:
     if isinstance(exc, PermissionError):
         return "kcs_key_missing"
     if isinstance(exc, ValueError):
+        error_code = str(exc)
+        if error_code in ("kcs_result_20", "kcs_result_21"):
+            return "kcs_service_access_denied"
+        if error_code == "kcs_result_30":
+            return "kcs_key_unregistered"
+        if error_code == "kcs_result_31":
+            return "kcs_key_expired"
+        if error_code in ("kcs_result_22", "kcs_result_23"):
+            return "kcs_http_retryable"
         return "kcs_invalid_response"
     if isinstance(exc, LookupError):
         return "kcs_no_official_rows"
@@ -1265,19 +1275,40 @@ def update_korea_export_watch(now: datetime, previous: dict) -> tuple[dict, list
     latest["official_us_by_month"] = {k: store[k] for k in sorted(store)[-18:]}
     if store:
         latest["latest_official_us_month"] = sorted(store)[-1]
+    access_denied = {
+        "kcs_http_access_denied", "kcs_service_access_denied",
+        "kcs_key_unregistered", "kcs_key_expired",
+    }
     if month_key(y, m) in valid:
         latest["last_status"] = "verified"
+        latest["source_blocker_notified"] = False
+    elif any(err in access_denied for err in errors):
+        latest["last_status"] = "kcs_access_denied"
     elif "kcs_no_official_rows" in errors and len(set(errors)) == 1:
         latest["last_status"] = "month_unpublished"
     elif errors:
-        latest["last_status"] = "api_inaccessible_or_unpublished"
+        latest["last_status"] = "kcs_upstream_unavailable"
     else:
         latest["last_status"] = "no_data"
     latest["last_error_kind"] = errors[0] if errors else ""
+    if latest["last_status"] == "kcs_access_denied" and not previous.get("source_blocker_notified"):
+        latest["source_blocker_notified"] = True
+        events.append({"kind": "kcs_access_blocker", "month": month_key(y, m)})
     return latest, events
 
 
 def build_korea_export_alert(event: dict, data: dict, us_imports: dict) -> str:
+    if event.get("kind") == "kcs_access_blocker":
+        return (
+            "<b>한국 변압기 수출통계 검증 장애 — 접근 권한 확인 필요</b>\n"
+            "• 관세청 품목별·국가별 수출입실적(GW) API에서 접근 거부 응답을 확인했습니다. "
+            "기존 공공데이터 인증키는 전달되지만 이 서비스 이용 권한 또는 접속 제한이 확인되지 않습니다.\n"
+            "• 필요한 조치: 공공데이터포털에서 '관세청_품목별 국가별 수출입실적(GW)' 활용신청·승인·키 등록·만료 및 서버 접근 제한을 확인하세요.\n"
+            "• 미검증: 2026년 9월 미국향 HS 850422·850423·850434 실제 수출액·중량. "
+            "기사의 2억7,800만 달러는 전 세계 수출 보도 수치로만 유지합니다.\n"
+            "• 원자료가 확인될 때만 최초 공식 수치 알림을 전송하며, 같은 장애의 중복 알림은 차단합니다.\n"
+            f'• <a href="{KOREA_EXPORT_API_DOC}">공공데이터포털 API 활용신청</a>\n'
+        )
     claim = data.get("reference") or KOREA_EXPORT_REFERENCE
     rate, rate_day = usdkrw_rate()
     lines = [
