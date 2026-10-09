@@ -817,6 +817,29 @@ iran_talks_only = row(
     description="No confirmed ceasefire or policy on attacks before Nov 3.",
 )
 check("oct08-talks-not-no-strike-pledge", not mod._trump_iran_midterm_no_strike(iran_talks_only))
+
+after_election_pledge = row(
+    "Trump says US will not attack Iran after midterm elections",
+    source="Reuters",
+    description="Analysts contrasted after-election language with the October 8 pledge.",
+)
+check("oct08-after-is-not-before", not mod._trump_iran_midterm_no_strike(after_election_pledge))
+confusing_after = row(
+    "Trump says US will not attack Iran after the midterm elections",
+    source="Reuters",
+    description="Background mentions the earlier pledge before Nov. 3.",
+)
+check("oct08-background-does-not-reverse-scope", not mod._trump_iran_midterm_no_strike(confusing_after))
+future_now = dt.datetime(2026, 11, 5, 12, 0, tzinfo=mod.watch.KST)
+post_election_reprint = row(
+    "Trump says US will not attack Iran before midterm elections",
+    source="Reuters",
+    description="Historical review of the October 8 statement.",
+)
+post_election_reprint["published"] = format_datetime(future_now - dt.timedelta(minutes=10))
+post_score, post_tags = mod.score_item(post_election_reprint, future_now)
+check("oct08-pre-midterm-pledge-expires-after-election", post_score == 0 and post_tags == [])
+
 reversal = row(
     "Trump reverses no-attack pledge on Iran ahead of midterms",
     source="Reuters",
