@@ -370,7 +370,7 @@ def next_long_end_operation(after_date: str) -> dict | None:
 def _fmt_cmp(value: float | None, average: float | None, suffix: str = "", places: int = 1) -> str:
     if value is None:
         return "확인 불가"
-    out = f"{value:.1f}{suffix}"
+    out = f"{value:.{places}f}{suffix}"
     if average is not None:
         out += f" (직전 6회 평균 {average:.1f}{suffix}, {value-average:+.1f}{suffix})"
     return out
