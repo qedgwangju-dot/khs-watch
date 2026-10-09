@@ -14,6 +14,7 @@ sys.path.insert(0, str(ROOT/"scripts"))
 import gdpnow_long_rates_watch as watch
 import gdpnow_long_rates_reformat as formatter
 import gdpnow_watch_health as health
+import gdpnow_intraday_rate_reaction as intraday
 
 SERIES=[
     "GDPNOW","PCECONTRIBNOW","EQUIPCONTRIBNOW","IPPCONTRIBNOW",
@@ -84,6 +85,43 @@ class WatchContractTests(unittest.TestCase):
                 state.write_text(json.dumps(first),encoding="utf-8")
                 self.assertEqual(health.main(),0)
                 self.assertEqual(send.call_count,1)
+
+
+    def test_yield_units_cboe_and_yahoo_normalized(self):
+        self.assertAlmostEqual(intraday.normalize_yahoo_yield(52.94), 5.294)
+        self.assertAlmostEqual(intraday.normalize_yahoo_yield(5.294), 5.294)
+        with self.assertRaises(ValueError):
+            intraday.normalize_yahoo_yield(0.0)
+        with self.assertRaises(ValueError):
+            intraday.normalize_yahoo_yield(-2.)
+
+    def test_event_quotes_cannot_use_two_minutes_later(self):
+        base=dt.datetime(2026,10,8,16,2,tzinfo=dt.timezone.utc)
+        points=[(base+dt.timedelta(minutes=3),5.34),
+                (base+dt.timedelta(minutes=1),5.31)]
+        self.assertIsNone(intraday.point_nearest(points,base,max_gap_min=0))
+        self.assertAlmostEqual(intraday.point_nearest(points,base,max_gap_min=1)[1],5.31)
+
+    def test_health_when_alert_exists_and_sender_skipped_is_failure(self):
+        with tempfile.TemporaryDirectory() as t:
+            state=pathlib.Path(t)/"prior.json"; p=pathlib.Path(t)/"pending.json"
+            env={"SOURCE_OUTCOME":"success","HAS_ALERT":"yes",
+                "EVENT_OUTCOME":"success","FORMAT_OUTCOME":"success",
+                "ENRICH_OUTCOME":"success","ROUTE_OUTCOME":"success",
+                "SEND_OUTCOME":"skipped"}
+            with patch.object(health,"STATE",state),patch.object(health,"PENDING",p),patch.dict("os.environ",env),patch.object(health,"send_message",return_value=999):
+                self.assertEqual(health.main(),0)
+                self.assertTrue(json.loads(p.read_text())["failing"])
+
+    def test_health_nominal_poll_does_not_commit_churn(self):
+        with tempfile.TemporaryDirectory() as t:
+            state=pathlib.Path(t)/"prior.json"; p=pathlib.Path(t)/"pending.json"
+            state.write_text('{"failing":false}')
+            env={"SOURCE_OUTCOME":"success","HAS_ALERT":"no","SEND_OUTCOME":"skipped"}
+            with patch.object(health,"STATE",state),patch.object(health,"PENDING",p),patch.dict("os.environ",env),patch.object(health,"send_message") as sender:
+                self.assertEqual(health.main(),0)
+                self.assertFalse(p.exists())
+                sender.assert_not_called()
 
 if __name__=="__main__":
     unittest.main()
