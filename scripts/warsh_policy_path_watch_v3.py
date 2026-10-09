@@ -175,7 +175,12 @@ def main():
             notice_at = datetime.fromisoformat(str(last_notice).replace('Z', '+00:00'))
             reminder_due = (now - notice_at.astimezone(timezone.utc)) >= timedelta(hours=72)
         except (ValueError, TypeError, AttributeError):
-            reminder_due = True
+            # Legacy states may remember that an outage alert was already sent
+            # without storing its timestamp.  Do not immediately duplicate that
+            # alert during schema migration; start the 72-hour clock now.
+            reminder_due = not alerted
+            if alerted and not last_notice:
+                last_notice = now.isoformat()
         # 첫 장애 경고 + 72시간 이상 지속될 때만 재경고. 시간당 중복 발송 차단.
         if streak >= 2 and not first and (not alerted or reminder_due):
             base.send(_source_health_message('error', source_error))
