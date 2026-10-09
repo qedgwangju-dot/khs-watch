@@ -987,6 +987,7 @@ LITE_SUPPLY_VERSION = 1
 # Bloomberg horizon (on track to sell out 2028 capacity) are historical.
 LITE_PRIOR_KEYS = {
     "lumentum|booking-horizon|2028",
+    "lumentum|booking-horizon|2027",
     "lumentum|nvidia|equity-2b-march-2026",
 }
 LITE_VERIFIED_ORIGIN_DOMAINS = {
@@ -1023,7 +1024,7 @@ def lite_supply_event(title: str) -> tuple[str, str, str] | None:
 
     # Booking horizon is a capacity / demand statement; it is not recognized
     # product sales or guaranteed contracted revenue.
-    horizon = re.search(r"(?<!\d)(202[8-9]|203\d)(?!\d)", text)
+    horizon = re.search(r"(?<!\d)(202[7-9]|203\d)(?!\d)", text)
     booked = bool(re.search(
         r"sold[- ]?out|fully (?:sold|booked|allocated)|capacity (?:sold|booked)|"
         r"orders? (?:booked|through)|booked (?:until|through|into)|"
