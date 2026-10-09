@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at_kst": "2026-10-09T17:48:14+09:00",
+  "updated_at_kst": "2026-10-09T17:57:43+09:00",
   "initial_alert_sent": true,
   "baseline_at_kst": "2026-10-09T15:05:00+09:00",
   "seen": [
@@ -12,6 +12,7 @@
     "67776aea2788a062ac06095e",
     "6e68ca90eabc022d44100c15",
     "789e83ac6db46491d696abd8",
+    "7a33049fc3a693c189a5b444",
     "808293f9672a00ac0175bc4f",
     "8089ff323cd2da43807bfa06",
     "863ba0578bdd9b3cf0eaad11",
@@ -60,9 +61,12 @@
       "ubs_delivery_lead_time_publicly_verified": false
     }
   },
-  "last_scan_items": 24,
+  "last_scan_items": 25,
   "feed_errors": [],
   "new_signal_count": 0,
+  "source_status": "ok",
+  "consecutive_source_failures": 0,
+  "source_degraded_notice_sent": false,
   "last_alert": {
     "at_kst": "2026-10-09T17:40:57+09:00",
     "kind": "baseline"

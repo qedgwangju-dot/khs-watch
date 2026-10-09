@@ -224,6 +224,59 @@ class IPhone18ProOrderTests(unittest.TestCase):
         self.assertIn("니케이",text)
         self.assertNotIn("iPhone Duo 부품 발주 감축",text)
 
+    def test_all_feeds_failure_preserves_baseline_and_no_alert_on_first_run(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as d:
+            p=pathlib.Path(d)
+            st=p/"state.json"
+            pending=p/"pending.json"
+            alert=p/"alert.html"
+            telegram=p/"telegram.html"
+            status=p/"status.md"
+            base=self.state()
+            base["seen"]=["old_item"]
+            base["initial_alert_sent"]=True
+            st.write_text(__import__("json").dumps(base),encoding="utf-8")
+            with patch.object(m,"STATE_PATH",st), patch.object(m,"PENDING_PATH",pending), \
+                 patch.object(m,"FRAGMENT_PATH",alert), patch.object(m,"MAIN_ALERT_PATH",telegram), \
+                 patch.object(m,"STATUS_PATH",status), \
+                 patch.object(m,"collect",return_value=([], ["timeout"] * len(m.QUERIES))):
+                m.main()
+            new=__import__("json").loads(pending.read_text(encoding="utf-8"))
+            self.assertTrue(new["initial_alert_sent"])
+            self.assertEqual(new["seen"],["old_item"])
+            self.assertEqual(new["consecutive_source_failures"],1)
+            self.assertFalse(alert.exists())
+            self.assertFalse(telegram.exists())
+
+    def test_four_consecutive_failures_send_one_diagnostic_only(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as d:
+            p=pathlib.Path(d)
+            st=p/"state.json"
+            pending=p/"pending.json"
+            alert=p/"alert.html"
+            telegram=p/"telegram.html"
+            status=p/"status.md"
+            base=self.state()
+            base.update({"initial_alert_sent":True,
+                         "consecutive_source_failures":3})
+            st.write_text(__import__("json").dumps(base),encoding="utf-8")
+            with patch.object(m,"STATE_PATH",st), patch.object(m,"PENDING_PATH",pending), \
+                 patch.object(m,"FRAGMENT_PATH",alert), patch.object(m,"MAIN_ALERT_PATH",telegram), \
+                 patch.object(m,"STATUS_PATH",status), \
+                 patch.object(m,"collect",return_value=([], ["timeout"] * len(m.QUERIES))):
+                m.main()
+                first=__import__("json").loads(pending.read_text(encoding="utf-8"))
+                self.assertTrue(alert.exists())
+                self.assertEqual(first["consecutive_source_failures"],4)
+                # Simulate confirmed delivery state and verify no duplicate.
+                st.write_text(__import__("json").dumps(first),encoding="utf-8")
+                telegram.unlink()
+                m.main()
+                self.assertFalse(alert.exists())
+                self.assertFalse(telegram.exists())
+
     def test_corrupt_existing_state_fails_closed(self):
         import tempfile
         with tempfile.TemporaryDirectory() as d:

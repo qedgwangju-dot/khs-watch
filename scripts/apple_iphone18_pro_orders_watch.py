@@ -491,7 +491,49 @@ def main() -> None:
     fact_keys.add(BASELINE_FACT)
     items, errors = collect()
     if not items and len(errors) == len(QUERIES):
-        raise RuntimeError("All iPhone 18 Pro news feeds unavailable: fail closed")
+        # Fail closed for facts, fail OPEN for the other five Apple modules.
+        # A temporary RSS outage must not stop their independently verified
+        # Telegram alerts or roll back previously confirmed Pro-order history.
+        failures = int(state.get("consecutive_source_failures") or 0) + 1
+        pending = dict(state)
+        pending.update({
+            "updated_at_kst": now.isoformat(timespec="seconds"),
+            "last_scan_attempt_kst": now.isoformat(timespec="seconds"),
+            "source_status": "all_feeds_unavailable",
+            "consecutive_source_failures": failures,
+            "feed_errors": errors[-20:],
+            "new_signal_count": 0,
+        })
+        status_alert = ""
+        if failures >= 4 and not state.get("source_degraded_notice_sent"):
+            status_alert = (
+                "⚠️ <b>[Apple iPhone 18 Pro 발주 감시 | 데이터 소스 장애]</b>\n"
+                "• Google 뉴스 검색 전체 실패가 4회 이상 연속 발생했습니다.\n"
+                "• 주문·판매 변화의 신규 확인은 보류하며, 기존 확인 사실은 그대로 유지합니다.\n"
+                "• 다른 Apple 생산·패널·수요·K부품 감시는 계속 실행됩니다.\n"
+            )
+            pending["source_degraded_notice_sent"] = True
+            pending["last_alert"] = {
+                "at_kst": now.isoformat(timespec="seconds"), "kind": "source_health"
+            }
+        PENDING_PATH.write_text(
+            json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+        )
+        if status_alert:
+            FRAGMENT_PATH.write_text(status_alert, encoding="utf-8")
+            _append_alert(status_alert)
+        else:
+            FRAGMENT_PATH.unlink(missing_ok=True)
+        STATUS_PATH.write_text(
+            "# iPhone 18 Pro 발주 감시\n"
+            f"- checked_at_kst: {now.isoformat(timespec='seconds')}\n"
+            "- source_status: all_feeds_unavailable\n"
+            f"- consecutive_failures: {failures}\n"
+            "- new_signals: 0\n"
+            f"- alert_generated: {str(bool(status_alert)).lower()}\n",
+            encoding="utf-8",
+        )
+        return
     is_initial = not state["initial_alert_sent"]
     updates: list[dict] = []
     if not is_initial:
@@ -537,6 +579,9 @@ def main() -> None:
         "last_scan_items": len(items),
         "feed_errors": errors[-20:],
         "new_signal_count": len(updates),
+        "source_status": "ok" if len(errors) == 0 else "partial_source_errors",
+        "consecutive_source_failures": 0,
+        "source_degraded_notice_sent": False,
         "last_alert": (
             {"at_kst": now.isoformat(timespec="seconds"),
              "kind": "baseline" if is_initial else "follow_up"}
@@ -555,6 +600,7 @@ def main() -> None:
         f"- checked_at_kst: {now.isoformat(timespec='seconds')}\n"
         f"- items: {len(items)}\n"
         f"- feed_errors: {len(errors)}\n"
+        f"- source_status: {'ok' if not errors else 'partial_source_errors'}\n"
         f"- first_alert_pending: {str(is_initial).lower()}\n"
         f"- new_signals: {len(updates)}\n"
         f"- fx_verification: {fx_status}\n"
