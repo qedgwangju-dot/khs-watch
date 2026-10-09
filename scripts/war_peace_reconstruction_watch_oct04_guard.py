@@ -471,6 +471,17 @@ def _trump_iran_midterm_no_strike(row):
         title + " " + description
     )
     denial = pledge or (official and quote)
+    # 선거 전(pre-election)과 선거 후(post-election)를 서로 반대로 해석하지 않는다.
+    temporal_text = scope if official else title
+    before_election = any(x in temporal_text for x in (
+        "before midterm", "before the midterm", "prior to midterm",
+        "prior to the midterm", "ahead of midterm", "ahead of the midterm",
+        "until after midterm", "until after the midterm",
+        "before nov", "before the nov", "prior to nov", "prior to the nov",
+        "before november 3", "before the november 3",
+        "11월 3일 전", "11월3일 전", "11월 3일 이전", "11월3일 이전",
+        "중간선거 전", "중간선거 이전", "중간선거까지", "선거 전",
+    ))
     actual_title = any(x in title for x in (
         "despite pledge", "despite trump", "strikes iran despite",
         "attacked iran", "bombed iran", "launches strikes", "launched strikes",
@@ -478,7 +489,7 @@ def _trump_iran_midterm_no_strike(row):
         "pledge reversed", "reverses pledge", "withdraws pledge",
         "방침 철회", "입장 번복",
     ))
-    return trusted and trump and iran and election and denial and not actual_title
+    return trusted and trump and iran and election and denial and before_election and not actual_title
 
 
 def _trump_iran_midterm_pledge_reversal(row):
@@ -915,6 +926,11 @@ def score_item(row, now):
     if age is None:
         return 0, []
     if age > fresh_limit:
+        return 0, []
+    # 미국 11/3 선거일 종료 후에는 기존 10/8 발언을 새 정책 변화로 재송출하지 않는다.
+    # 미국 동부시각 11/4 00:00 = 한국시각 11/4 14:00 (2026년 표준시).
+    election_end_kst = dt.datetime(2026, 11, 4, 14, 0, tzinfo=watch.KST)
+    if now >= election_end_kst and _trump_iran_midterm_no_strike(row):
         return 0, []
     if _regional_recap_without_discrete_event(row):
         return 0, []
