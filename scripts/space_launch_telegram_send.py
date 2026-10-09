@@ -11,7 +11,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-MAX_CHARS = 3400
+MAX_CHARS = 3400  # Keep text below Telegram's 4096-unit limit
 MAX_BUTTONS_PER_MESSAGE = 8
 SOURCE_PREFIX = "• 원문: "
 RETRYABLE_HTTP = {429, 500, 502, 503, 504}
