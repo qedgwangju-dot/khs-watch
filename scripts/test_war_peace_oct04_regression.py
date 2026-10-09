@@ -873,4 +873,40 @@ try:
 except RuntimeError as e:
     check("oct08-pledge-quality-gate", "공격유예" in str(e) or "봉쇄" in str(e))
 
+
+# 27) 10/9 15:45 KST 실송출에 나타난 서로 다른 한국어 제목 3건의 동일 사건 검사.
+# 이 세 원문을 독립 원발언이나 별도 군사행동으로 처리하면 안 된다.
+observed_reprint_titles = [
+    ("경향신문", "트럼프 “중간선거 전 이란 공격 없다”했지만···뒤에선 ‘3일 집중 공격’ 계획 준비 - 경향신문"),
+    ("아이뉴스24", '트럼프 "11월 중간선거 전에는 이란 공격 안 한다" - 아이뉴스24'),
+    ("KBS 뉴스", "트럼프 “중간선거 전 이란 공격 안 할 것” - KBS 뉴스"),
+]
+observed_reprints = [
+    row(t, source=src, description="트럼프가 선거 전에 이란을 공격하지 않겠다고 밝혔다.")
+    for src, t in observed_reprint_titles
+]
+for i, x in enumerate(observed_reprints,1):
+    check(f"oct09-korean-reprint-pledge-classified-{i}", mod._trump_iran_midterm_no_strike(x))
+    score, tags = mod.score_item(x, dt.datetime.now(mod.watch.KST))
+    check(f"oct09-korean-reprint-yellow-{i}", score == 100 and mod.final_color(x) == "yellow")
+    check(f"oct09-korean-reprint-no-red-{i}", "확전" not in tags and "휴전·평화" not in tags)
+check("oct09-observed-three-one-canonical-id", len({mod.item_id(x) for x in observed_reprints+[trump_cnbc,trump_reuters]}) == 1)
+check("oct09-observed-three-one-selected-row",len({mod.item_id(x): x for x in observed_reprints}) == 1)
+
+# 상위 경보 품질 게이트는 전송 전 동일 발언의 한국어 3중 재보도를 거부해야 한다.
+bad_observed_reprints = """<b>전쟁·종전·재건 웹감시</b>
+🔴 [신규] <b>1. 이란·호르무즈</b>
+트럼프 “중간선거 전 이란 공격 없다”했지만···뒤에선 ‘3일 집중 공격’ 계획 준비 - 경향신문
+[신규] <b>2. 이란·호르무즈</b>
+트럼프 "11월 중간선거 전에는 이란 공격 안 한다" - 아이뉴스24
+[신규] <b>3. 이란·호르무즈</b>
+트럼프 “중간선거 전 이란 공격 안 할 것” - KBS 뉴스
+"""
+mod.watch.ALERT.write_text(bad_observed_reprints, encoding="utf-8")
+try:
+    mod.verify_alert(False)
+    raise AssertionError("oct09-quality-gate-duplicate-midterm-policy")
+except RuntimeError as err:
+    check("oct09-quality-gate-duplicate-midterm-policy", "같은 10월 8일" in str(err) or "중복 정책" in str(err))
+
 print("WAR_PEACE_OCT04_REGRESSION_OK")
