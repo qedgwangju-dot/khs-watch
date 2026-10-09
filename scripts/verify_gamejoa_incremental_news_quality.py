@@ -271,6 +271,63 @@ class IncrementalNewsTests(unittest.TestCase):
         self.assertEqual(selected[0]['telegram_core_fact'], first_core)
         self.assertFalse(radar.source_core_fact_errors(selected[0]))
 
+    def test_legacy_honam_site_visit_receipt_suppresses_cross_run_reprint(self):
+        old_title = '최태원 "호남 반도체 공장, 용인 3분의 2 규모…최대한 빨리 건설"'
+        old_body = (
+            '최태원 SK그룹 회장이 호남권 반도체 생산거점을 용인 반도체 클러스터의 3분의 2 규모로 계획한다고 밝혔다. '
+            '빠르게 늘어나는 반도체 수요에 대응하기 위해 최대한 신속하게 건설하겠다고 강조했다. '
+            '땅과 수요가 더 있으면 규모를 키우고, 필요하면 용인과 광주에서 병행 건설할 수 있다고 말했다. '
+            '전력과 용수 공급이 늦어져도 공사를 먼저 시작할 수 있지만 구체적인 착공 시점은 제시하지 않았다.'
+        )
+        old_core = '빠르게 늘어나는 반도체 수요에 대응하기 위해 여건이 갖춰지는 대로 최대한 신속하게 건설하겠다는 의지도 강조했다.'
+        new_title = '최태원 "전력·용수 늦어도 먼저 착공"…호남 반도체 속도전'
+        new_body = (
+            '최 회장은 9일 호남 반도체 클러스터 조성 예정지를 방문했다. '
+            '현재까지는 용인의 한 3분의 2 정도 사이즈를 계획하고 있으며, 땅이 더 있고 수요가 더 있다면 '
+            '이쪽이 더 커질 수도 있다고 말했다. 전력·용수 등 기반시설 공급이 늦어지더라도 '
+            '타이밍을 맞출 수 있으면 공사를 먼저 시작할 수 있다고 밝혔다. '
+            '구체적인 착공 시점은 추가 검토가 필요하다고 설명했다.'
+        )
+        old = alert(old_title, old_body, 'https://www.edaily.co.kr/News/Read?newsId=02702726645611280')
+        old.update(published='2026-10-09T15:54:00+09:00', telegram_core_fact=old_core)
+        current = alert(new_title, new_body, 'https://www.hankyung.com/article/202610092757h')
+        current.update(
+            source_title=new_title,
+            published='2026-10-09T16:18:00+09:00',
+            telegram_core_fact=radar.source_headline_event_fact(new_title, new_body),
+        )
+        self.assertNotEqual(old['telegram_core_fact'], current['telegram_core_fact'])
+        old_identity = materiality.source_event_identity(old)
+        self.assertEqual(old_identity, materiality.source_event_identity(current))
+        completed = alert(
+            '최태원, 호남 반도체 팹 투자 이사회 승인…착공 확정',
+            'SK하이닉스 이사회가 호남 반도체 팹 투자를 승인하고 착공을 확정했다.',
+            'https://www.yna.co.kr/view/AKR20261010000000003',
+        )
+        completed.update(source_title=completed['news'], published='2026-10-10T09:00:00+09:00')
+        self.assertNotEqual(old_identity, materiality.source_event_identity(completed))
+        now = dt.datetime(2026, 10, 9, 17, 13, tzinfo=NOW.tzinfo)
+        sent_at = dt.datetime(2026, 10, 9, 16, 33, tzinfo=NOW.tzinfo)
+        with tempfile.TemporaryDirectory() as folder, \
+                patch.object(telegram, 'SEEN_PATH', Path(folder) / 'seen.json'), \
+                patch.object(radar.base, 'kst_now', return_value=now), \
+                patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}):
+            legacy_receipt = {
+                'title': old_title,
+                'source_title': old_title,
+                'link': old['link'],
+                'first_seen_kst': sent_at.isoformat(),
+                'last_seen_kst': sent_at.isoformat(),
+                'lanes': {'live': sent_at.isoformat()},
+                'telegram_core_fact': old_core,
+                'source_published_kst': old['published'],
+            }
+            legacy_key = 'link:' + telegram.digest_seen(old['link'])
+            telegram.SEEN_PATH.write_text(json.dumps({'seen': {legacy_key: legacy_receipt}}), encoding='utf-8')
+            fresh, skipped = telegram.filter_previously_seen_alerts([current], now, 'live')
+        self.assertEqual(fresh, [])
+        self.assertEqual(skipped, [current])
+
     def test_pyeongtaek_recycled_water_core_keeps_project_capacity_cost_and_schedule(self):
         title = '평택시, 반도체 배후산단에 하수처리수 공급…관로공사 착공 | 연합뉴스'
         body = (
