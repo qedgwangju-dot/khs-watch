@@ -10,7 +10,6 @@ on:
       - "scripts/gdpnow_add_market_reaction.py"
       - "scripts/gdpnow_watch_health.py"
       - "tests/test_gdpnow_alert_contract.py"
-      - "data/gdpnow_long_rates_state.json"
   schedule:
     # Atlanta Fed updates are event driven; 15-minute polling catches a new official update quickly.
     # Exact event-time yields are reconstructed from 1-minute intraday data, so the alert does not
@@ -23,7 +22,7 @@ permissions:
 
 concurrency:
   group: gdpnow-long-rates-telegram-watch
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   monitor:
@@ -244,25 +243,53 @@ jobs:
             cp out/gdpnow_watch_health_pending_state.json data/gdpnow_watch_health_state.json
           fi
 
-      - name: Commit watcher state
-        if: always() && github.ref == 'refs/heads/main'
+      - name: Commit confirmed watcher state without merge conflicts
+        if: ${{ always() && !cancelled() && github.ref == 'refs/heads/main' }}
+        shell: bash
         run: |
+          set -euo pipefail
+          tempdir="$(mktemp -d)"
+          trap 'rm -rf "$tempdir"' EXIT
+          # Only persist GDPNow state when source completed and, if there was
+          # a new alert, Telegram actually confirmed message IDs.
+          if [ -f out/gdpnow_long_rates_pending_state.json ]; then
+            if [ ! -f out/gdpnow_long_rates_alert.html ] || [ -f out/gdpnow_long_rates_telegram_confirmed.json ]; then
+              cp out/gdpnow_long_rates_pending_state.json "$tempdir/gdp.json"
+            fi
+          fi
+          # Health state changes only on an actual warning or recovery.
+          if [ -f out/gdpnow_watch_health_pending_state.json ]; then
+            cp out/gdpnow_watch_health_pending_state.json "$tempdir/health.json"
+          fi
+          if [ ! -f "$tempdir/gdp.json" ] && [ ! -f "$tempdir/health.json" ]; then
+            echo "No state transition to persist"
+            exit 0
+          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/gdpnow_long_rates_state.json data/gdpnow_watch_health_state.json 2>/dev/null || true
-          if git diff --cached --quiet; then
-            echo "GDPNow watcher state unchanged"
-          else
-            git commit -m "Update GDPNow long-rates watch state"
-            for attempt in 1 2 3; do
-              if git pull --rebase origin main && git push; then
-                exit 0
-              fi
-              git rebase --abort 2>/dev/null || true
-              sleep $((attempt * 3))
-            done
-            exit 1
-          fi
+          for attempt in 1 2 3 4 5; do
+            git fetch --quiet origin main
+            git reset --hard --quiet origin/main
+            if [ -f "$tempdir/gdp.json" ]; then
+              cp "$tempdir/gdp.json" data/gdpnow_long_rates_state.json
+            fi
+            if [ -f "$tempdir/health.json" ]; then
+              cp "$tempdir/health.json" data/gdpnow_watch_health_state.json
+            fi
+            git add data/gdpnow_long_rates_state.json data/gdpnow_watch_health_state.json 2>/dev/null || true
+            if git diff --cached --quiet; then
+              echo "Confirmed watcher state already committed"
+              exit 0
+            fi
+            git commit --quiet -m "Update confirmed GDPNow watcher state"
+            if git push --quiet origin HEAD:main; then
+              echo "Confirmed watcher state committed"
+              exit 0
+            fi
+            sleep "$((attempt * 2))"
+          done
+          echo "::error::Could not persist confirmed state; manual review required to prevent repeat sends"
+          exit 1
 
       - name: Upload verification artifacts
         if: always()
