@@ -147,7 +147,7 @@ def h41_snapshot():
 
 def interpret_implementation_text(text):
     """시행지침의 실제 매입·재투자 지시문만 사용해 QT 여부를 판정한다."""
-    sentences = re.split(r'(?<=[.!?])\\s+', text)
+    sentences = re.split(r'(?<=[.!?])\s+', text)
     keys = (
         'system open market account', 'roll over at auction all principal payments',
         'reinvest all principal payments', 'maintain an ample level of reserves',
@@ -179,7 +179,7 @@ def interpret_implementation_text(text):
 
 def latest_impl_note():
     raw,_=fetch(FOMC_CAL); found={}
-    for href,ds in re.findall(r'href=["\\']([^"\\']*/newsevents/pressreleases/monetary(\\d{8})a1\\.htm)["\\']',raw,re.I):
+    for href,ds in re.findall(r"""href=["']([^"']*/newsevents/pressreleases/monetary(\d{8})a1\.htm)["']""",raw,re.I):
         found[ds]=urllib.parse.urljoin(FOMC_CAL,href)
     if not found:
         raise RuntimeError('연준 FOMC 시행지침 공식 링크를 찾지 못함 — 판정 유보')
