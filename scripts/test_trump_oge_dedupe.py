@@ -55,6 +55,9 @@ def main():
     assert "100만~500만달러 (약 " in msg
     assert "7월 신고" not in msg or "기존 6·7월 재보도 아님" in msg
     assert "전체 보유자산" in msg
+    assert not oge._has_verified_oge_rows([], set())
+    assert not oge._has_verified_oge_rows([{"date":"8/21/2026"}], {"2026-08"})
+    assert oge._has_verified_oge_rows([{}, {}, {}], {"2026-08"})
 
     print("Trump OGE dedupe regression checks passed.")
 
