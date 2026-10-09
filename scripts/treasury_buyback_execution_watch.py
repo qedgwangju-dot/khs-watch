@@ -367,7 +367,7 @@ def next_long_end_operation(after_date: str) -> dict | None:
     return candidates[0]
 
 
-def _fmt_cmp(value: float | None, average: float | None, suffix: str = "") -> str:
+def _fmt_cmp(value: float | None, average: float | None, suffix: str = "", places: int = 1) -> str:
     if value is None:
         return "확인 불가"
     out = f"{value:.1f}{suffix}"
