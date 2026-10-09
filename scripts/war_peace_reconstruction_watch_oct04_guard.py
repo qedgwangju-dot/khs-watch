@@ -432,6 +432,54 @@ def _trump_ukraine_peace_rhetoric(row):
     return (exact or (trump and ukraine and rhetoric)) and not concrete
 
 
+def _historical_kuwait_base_footage(row):
+    """과거 개전 초기 Camp Buehring 공습의 10월 7일 영상 공개를 신규 공격과 분리."""
+    raw = _text(row).lower()
+    iran = any(x in raw for x in ("iran", "iranian", "이란"))
+    kuwait = any(x in raw for x in ("kuwait", "쿠웨이트"))
+    us_forces = any(x in raw for x in (
+        "us troops", "u.s. troops", "american troops", "us military",
+        "u.s. military", "american forces", "미군", "미국 군인",
+    ))
+    retreat = any(x in raw for x in (
+        "abandon", "withdraw", "evacuate", "retreat", "forced out",
+        "철수", "철수해야", "기지에서 나와", "기지를 떠나",
+    ))
+    old_evidence = any(x in raw for x in (
+        "camp buehring", "캠프 부에링", "캠프 뷰링",
+        "newly obtained footage", "new footage", "released footage",
+        "opening days", "seven months ago", "7 months ago",
+        "전쟁 초기", "개전 초기", "과거 영상", "새 영상", "7개월 전",
+    ))
+    title = str(row.get("title_original") or "").lower()
+    # 실전에서 확인된 CBS 10월 7일 기사 재인용 계열에만 날짜 예외 적용.
+    recap_title = any(x in title for x in (
+        "iranian attacks forced us troops to abandon",
+        "iran attacks forced u.s. troops to abandon",
+        "iranian attacks drove us troops from kuwait base",
+        "iranian attacks forced us to withdraw",
+        "iran attacks forced us to withdraw",
+        "이란의 공격으로 미군은 쿠웨이트 기지를 철수",
+    ))
+    try:
+        pub = watch.parse_pub(row.get("published", ""))
+        report_date = pub.astimezone(watch.KST).date() if pub else None
+    except Exception:
+        report_date = None
+    known_oct_reprint = (
+        report_date is not None
+        and dt.date(2026, 10, 7) <= report_date <= dt.date(2026, 10, 10)
+        and recap_title
+    )
+    # 사건 이후 새로 발생한 공격의 명시적 제목은 절대 과거 기사로 억제하지 않는다.
+    new_strike = any(x in title for x in (
+        "strikes again", "another strike", "attacked today", "attacks today",
+        "new attack on kuwait", "fresh attack on kuwait",
+        "쿠웨이트 기지 신규 공습", "쿠웨이트 기지 추가 공습",
+    ))
+    return iran and kuwait and us_forces and retreat and (old_evidence or known_oct_reprint) and not new_strike
+
+
 def _trump_iran_midterm_no_strike(row):
     """11월 3일 전 이란 추가 공격 유예 '발언'만 별도로 감지한다.
 
@@ -934,7 +982,7 @@ def score_item(row, now):
     election_end_kst = dt.datetime(2026, 11, 4, 14, 0, tzinfo=watch.KST)
     if now >= election_end_kst and _trump_iran_midterm_no_strike(row):
         return 0, []
-    if _regional_recap_without_discrete_event(row):
+    if _regional_recap_without_discrete_event(row) or _historical_kuwait_base_footage(row):
         return 0, []
     if (
         _trump_la_sd_hypothetical(row)
@@ -1481,6 +1529,17 @@ def verify_alert(test_mode=False):
     aden_blocks = re.findall(r"(?ms)^[🔴🟢🟡]?\s*\[(?:속보|신규|후속)\]\s+<b>\d+\.[^<]*</b>\n[^\n]*(?:아덴 국제공항|aden international airport)[^\n]*(?:미사일|공격|공습|missile|attack)", text, flags=re.I)
     if len(aden_blocks) > 1:
         issues.append("동일 아덴 국제공항 공격을 매체별 재보도로 중복 송출")
+    # 기사 출처가 달라도 10월 8일 동일 정책 발언이 여러 항목이면 전송을 중단한다.
+    # 서로 다른 원문 URL 검사만으로는 한국어 재보도 중복을 탐지하지 못한다.
+    repeated_midterm_pledges = [
+        line for line in text.splitlines()
+        if re.search(r"트럼프", line)
+        and re.search(r"(?:중간선거 전|중간선거 이전|11월 ?3일.{0,14}전)", line)
+        and re.search(r"이란.{0,8}공격", line)
+        and re.search(r"(?:없|안 |않|유예)", line)
+    ]
+    if len(repeated_midterm_pledges) > 1:
+        issues.append("같은 10월 8일 트럼프 이란 공격유예 발언을 매체별 중복 정책 알림으로 송출")
     if issues:
         raise RuntimeError("WAR_OCT04_QUALITY_GATE: " + " | ".join(issues))
 
