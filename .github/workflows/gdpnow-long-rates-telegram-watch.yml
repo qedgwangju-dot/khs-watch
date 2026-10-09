@@ -59,14 +59,17 @@ jobs:
         run: python scripts/gdpnow_long_rates_watch.py
 
       - name: Capture exact event-time 10Y and 30Y reaction
+        id: event_reaction
         if: hashFiles('out/gdpnow_long_rates_alert.html') != ''
         run: python scripts/gdpnow_intraday_rate_reaction.py
 
       - name: Reformat Telegram alert around rate direction
+        id: rate_format
         if: hashFiles('out/gdpnow_long_rates_alert.html') != ''
         run: python scripts/gdpnow_long_rates_reformat.py
 
       - name: Add exact event-time market values
+        id: market_enrichment
         if: hashFiles('out/gdpnow_long_rates_alert.html') != ''
         run: python scripts/gdpnow_add_market_reaction.py
 
@@ -90,6 +93,7 @@ jobs:
           fi
 
       - name: Validate Telegram route guard
+        id: route_check
         if: hashFiles('out/gdpnow_long_rates_alert.html') != ''
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
@@ -213,10 +217,15 @@ jobs:
 
       - name: Notify watcher outage or recovery once per day
         id: health_check
-        if: always()
+        if: ${{ always() && !cancelled() }}
         env:
           SOURCE_OUTCOME: ${{ steps.source_check.outcome }}
+          EVENT_OUTCOME: ${{ steps.event_reaction.outcome }}
+          FORMAT_OUTCOME: ${{ steps.rate_format.outcome }}
+          ENRICH_OUTCOME: ${{ steps.market_enrichment.outcome }}
+          ROUTE_OUTCOME: ${{ steps.route_check.outcome }}
           SEND_OUTCOME: ${{ steps.telegram_delivery.outcome }}
+          HAS_ALERT: ${{ hashFiles('out/gdpnow_long_rates_alert.html') != '' && 'yes' || 'no' }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
         run: python scripts/gdpnow_watch_health.py
