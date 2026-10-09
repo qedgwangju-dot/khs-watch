@@ -75,12 +75,12 @@ def self_test()->int:
    "• 제목: SpaceX, Grain의 800 MHz 주파수 면허 인수에 합의\n"
    "• 원문: https://news.google.com/rss/articles/abc123?a=1&b=2\n")
  validate(orig,trans)
- for bad in (orig,trans.replace("800 MHz","900 MHz"),
-             trans.replace("abc123","other"),
-             trans.replace("[주파수·인허가]","[다른주제]")):
+ for reason,bad in (("english",orig),("number",trans.replace("800 MHz","900 MHz")),
+             ("url",trans.replace("abc123","other")),
+             ("tag",trans.replace("[주파수·인허가]","[다른주제]"))):
   try:validate(orig,bad)
   except RuntimeError:pass
-  else:raise AssertionError("검증기가 제목 번역·숫자·URL·카테고리 오류를 감지하지 못함")
+  else:raise AssertionError("차단 실패: "+reason)
  print("starlink_mobile_d2d_korean_guard_self_test=ok")
  return 0
 
