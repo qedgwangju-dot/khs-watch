@@ -8,6 +8,7 @@ import html
 import json
 import os
 import queue
+import re
 import threading
 import time
 import urllib.parse
@@ -38,7 +39,7 @@ def fetch_text(
     direct_fallback_cap = _env_int("KHS_SOURCE_DIRECT_TIMEOUT_CAP_SECONDS", 8)
 
     if proxy_base and proxy_first:
-        return _fetch_proxy_direct_race(
+        body, error = _fetch_proxy_direct_race(
             proxy_base,
             url,
             user_agent,
@@ -47,6 +48,14 @@ def fetch_text(
             direct_timeout=min(timeout, direct_fallback_cap),
             response_validator=response_validator,
         )
+        if error is None:
+            return body, None
+        official_copy, backup_error = _try_treasury_oisp_official_bulletin(
+            url, user_agent, accept, timeout
+        )
+        if official_copy is not None:
+            return official_copy, None
+        return None, f"{error} | {backup_error}" if backup_error else error
 
     for attempt in range(1, attempts + 1):
         current_timeout = timeout if attempt == 1 else min(max(timeout * 2, timeout + 10), 45)
@@ -70,7 +79,46 @@ def fetch_text(
         if not proxy_base:
             errors.append("proxy not configured")
 
+    official_copy, backup_error = _try_treasury_oisp_official_bulletin(
+        url, user_agent, accept, timeout
+    )
+    if official_copy is not None:
+        return official_copy, None
+    if backup_error:
+        errors.append(backup_error)
     return None, " | ".join(errors)
+
+
+def _try_treasury_oisp_official_bulletin(
+    source_url: str, user_agent: str, accept: str, timeout: int
+) -> tuple[str | None, str | None]:
+    """Recover one verified Treasury bulletin when its original gov page blocks runners.
+
+    The backup is the Treasury-managed USTREAS GovDelivery account, not an
+    unsourced search snippet. Never substitute a generic third-party article.
+    """
+    if source_url.rstrip("/").lower() != "https://home.treasury.gov/news/press-releases/sb0652":
+        return None, None
+    backup = "https://content.govdelivery.com/accounts/USTREAS/bulletins/42e501d"
+    body, error = _fetch_direct(backup, user_agent, accept, min(max(timeout, 8), 15))
+    if error is not None:
+        return None, f"official Treasury bulletin unavailable: {error}"
+    plain = re.sub(r"<[^>]+>", " ", html.unescape(body or "")).lower()
+    plain = re.sub(r"\\s+", " ", plain)
+    required = (
+        "treasury announces enforcement penalty for violation of outbound program",
+        "u.s. department of the treasury",
+        "october 7, 2026",
+        "amidi",
+        "noematrix",
+        "92,478",
+        "200,000",
+        "outbound investment security program",
+    )
+    if not all(marker in plain for marker in required):
+        return None, "official Treasury bulletin mismatch: required case facts missing"
+    print("khs_treasury_oisp_official_bulletin_fallback=verified source=USTREAS")
+    return body, None
 
 
 def _validate_response(
