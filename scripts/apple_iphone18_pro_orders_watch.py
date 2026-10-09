@@ -294,6 +294,14 @@ def _model_scope(text: str) -> str:
     return "pro_max" if pro_max else "pro"
 
 
+def _model_label(text: str) -> str:
+    return {
+        "pro_and_pro_max": "iPhone 18 Pro·Pro Max",
+        "pro_max": "iPhone 18 Pro Max",
+        "pro": "iPhone 18 Pro",
+    }[_model_scope(text)]
+
+
 def _fact_key(cut: dict, item: dict) -> str:
     root = "verified_manufacturer_official" if _official_publisher(item) else _root(item)
     product_scope = _model_scope(
@@ -450,7 +458,7 @@ def _change_alert(changes: list[dict]) -> str:
     for signal in changes:
         item, cut = signal["item"], signal["cut"]
         lines.append(
-            f"• {cut['period']} {_model_scope(item['title'] + ' ' + item.get('description',''))} "
+            f"• {cut['period']} {_model_label(item['title'] + ' ' + item.get('description',''))} "
             f"부품 발주 조정 {cut['low']:g}~{cut['high']:g}% (당초 공급사 요청 대비)"
         )
         lines.append(
