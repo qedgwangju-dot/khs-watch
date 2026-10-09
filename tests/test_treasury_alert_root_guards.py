@@ -74,12 +74,15 @@ def test_buyback_chain_uses_same_multi_day_horizon_as_causal_verdict():
 
 
 def test_policy_state_commit_is_race_safe():
-    text = read(".github/workflows/treasury-buyback-policy-telegram-alert.yml")
-    assert "git pull --rebase origin main" not in text
-    assert "cp data/treasury_buyback_policy_state.json /tmp/treasury_buyback_policy_state.json" in text
-    assert "for attempt in 1 2 3 4" in text
-    assert "git reset --hard origin/main" in text
-    assert "git push origin HEAD:main" in text
+    workflow = read(".github/workflows/treasury-buyback-policy-telegram-alert.yml")
+    text = read("scripts/treasury_buyback_policy_state_commit.py")
+    assert "run: python scripts/treasury_buyback_policy_state_commit.py" in workflow
+    assert "git pull --rebase origin main" not in workflow
+    assert 'git("fetch", "origin", "main")' in text
+    assert "merge_state(remote, local)" in text
+    assert 'git("reset", "--hard", "origin/main")' in text
+    assert '"HEAD:main"' in text
+    assert 'range(1, 6)' in text
 
 def test_yen_verbal_intervention_is_checked_for_persistence_not_hard_peg():
     text = read("scripts/yen_carry_policy_equity_enrich.py")
