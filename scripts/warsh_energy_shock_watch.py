@@ -201,7 +201,8 @@ def policy_snapshot():
     first=meetings[0] if meetings else {}
     status=state.get('source_status') or ''
     # 공식 CME 결제값·EFFR 최신성 검증 실패 시 직전 숫자 재사용 금지.
-    fresh=status=='시장원천 최신성·연준 공식범위 교차검증 통과'
+    from warsh_policy_source_guard import market_state_is_fresh
+    fresh=market_state_is_fresh(state)
     return {
         'date':state.get('updated_at_utc'),
         'meeting_date':first.get('date'),
