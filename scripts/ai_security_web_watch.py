@@ -558,6 +558,12 @@ def material(item: dict) -> bool:
         source = (item.get("source") or "").lower()
         if "openai alignment" in source and "/misalignment-reports/" in (item.get("url") or ""):
             return True
+        if "anthropic news" in source:
+            return any(term in low for term in (
+                "vulnerability", "cve-", "patched", "patch",
+                "security flaw", "breach", "incident", "exploit",
+                "data leak", "unauthorized", "misalignment",
+            ))
         direct_security_terms = (
             "cyber", "security", "sandbox", "misalign", "unauthorized",
             "credential", "token", "prompt injection", "jailbreak",
