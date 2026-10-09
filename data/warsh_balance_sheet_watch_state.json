@@ -4,18 +4,18 @@
   "h41": {
     "date": "2026-10-07",
     "measurement_basis": "수요일 잔액",
-    "total_assets": 6747560,
-    "total_assets_weekly": 4529,
-    "treasury": 4566384,
-    "treasury_weekly": 2223,
-    "bills": 562157,
-    "bills_weekly": 1946,
-    "mbs": 1898089,
-    "mbs_weekly": 0,
-    "reserves": 3022066,
-    "reserves_weekly": 140380,
-    "securities": 6466820,
-    "securities_weekly": 2223,
+    "total_assets": 6747560.0,
+    "total_assets_weekly": 4529.0,
+    "treasury": 4566384.0,
+    "treasury_weekly": 2223.0,
+    "bills": 562157.0,
+    "bills_weekly": 1946.0,
+    "mbs": 1898089.0,
+    "mbs_weekly": 0.0,
+    "reserves": 3022066.0,
+    "reserves_weekly": 140380.0,
+    "securities": 6466820.0,
+    "securities_weekly": 2223.0,
     "url": "https://www.federalreserve.gov/releases/h41/Current/"
   },
   "history": [
@@ -73,18 +73,18 @@
     {
       "date": "2026-10-07",
       "measurement_basis": "수요일 잔액",
-      "total_assets": 6747560,
-      "total_assets_weekly": 4529,
-      "treasury": 4566384,
-      "treasury_weekly": 2223,
-      "bills": 562157,
-      "bills_weekly": 1946,
-      "mbs": 1898089,
-      "mbs_weekly": 0,
-      "reserves": 3022066,
-      "reserves_weekly": 140380,
-      "securities": 6466820,
-      "securities_weekly": 2223,
+      "total_assets": 6747560.0,
+      "total_assets_weekly": 4529.0,
+      "treasury": 4566384.0,
+      "treasury_weekly": 2223.0,
+      "bills": 562157.0,
+      "bills_weekly": 1946.0,
+      "mbs": 1898089.0,
+      "mbs_weekly": 0.0,
+      "reserves": 3022066.0,
+      "reserves_weekly": 140380.0,
+      "securities": 6466820.0,
+      "securities_weekly": 2223.0,
       "url": "https://www.federalreserve.gov/releases/h41/Current/"
     }
   ],
@@ -93,14 +93,14 @@
   "implementation": {
     "date": "2026-09-16",
     "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a1.htm",
-    "fingerprint": "18923f98fb2fa7acf5ea3319ad3b52b5c055801a5dd0082b17a3e700819554bd",
+    "fingerprint": "f0991264f7c828c779e3059febf18de1bbfd9d65b6d87951a88c495d13417b89",
     "mode": "충분한 준비금 유지·재투자/구성 전환",
-    "excerpt": "Corporations Dealer Financing Terms Senior Credit Officer Opinion Survey on Dealer Financing Terms Exchange Rates and International Data Foreign Exchange Rates - H.10/G.5 International Summary Statistics Securities Holdings and Transactions Statistics Reported by Banks and Other Financial Firms in the United States Structure and Share Data for U.S. Conduct standing overnight repurchase agreement operations at a rate of 4.0 percent. Conduct standing overnight reverse repurchase agreement operations at an offering rate of 3.75 percent and with a per-counterparty limit of $160 billion per day. When appropriate, increase the System Open Market Account holdings of securities through purchases of Treasury bills and, if needed, other Treasury securities with remaining maturities of 3 years or less to maintain an ample level of reserves. Roll over at auction all principal payments from the Federal Reserve's holdings of Treasury securities. Reinvest all principal payments from the Federal Reserve's holdings of agency securities into Treasury bills.\" In a related action, the Board of Governors of the Federal Reserve System voted unanimously to approve a 1/4 percentage point increase in the primary credit rate to 4.0 percent, effective September 17, 2026. More information regarding open market operations and reinvestments may be found on the Federal Reserve Bank of New York's website ."
+    "excerpt": "As part of its policy decision, the Federal Open Market Committee voted to direct the Open Market Desk at the Federal Reserve Bank of New York, until instructed otherwise, to execute transactions in the System Open Market Account in accordance with the following domestic policy directive: \"Effective September 17, 2026, the Federal Open Market Committee directs the Desk to: Undertake open market operations as necessary to maintain the federal funds rate in a target range of 3-3/4 to 4 percent. When appropriate, increase the System Open Market Account holdings of securities through purchases of Treasury bills and, if needed, other Treasury securities with remaining maturities of 3 years or less to maintain an ample level of reserves. Roll over at auction all principal payments from the Federal Reserve's holdings of Treasury securities. Reinvest all principal payments from the Federal Reserve's holdings of agency securities into Treasury bills.\" In a related action, the Board of Governors of the Federal Reserve System voted unanimously to approve a 1/4 percentage point increase in the primary credit rate to 4.0 percent, effective September 17, 2026."
   },
   "task_force": {
     "url": "https://www.federalreserve.gov/monetarypolicy/balance-sheet-policy-task-force.htm",
     "fingerprint": "b4a1c99a8613f55bf3d8769c3fb1fa83273a20c784dd0eb4d9b97b7e52f64c04",
     "excerpt": "﻿ Federal Reserve Board - Balance Sheet Policy Skip to main content An official website of the United States Government Here's how you know Official websites use .gov A .gov website belongs to an official government organization in the United States. Chapters --> Overview Communications Balance Sheet Policy Data Sources Productivity and Jobs Inflation Frameworks Balance Sheet Policy This task force will examine the costs, benefits, and institutional implications of the Federal Reserve's current balance sheet regime."
   },
-  "updated_at_utc": "2026-10-09T02:19:50.588086+00:00"
+  "updated_at_utc": "2026-10-09T22:53:21.593401+00:00"
 }
