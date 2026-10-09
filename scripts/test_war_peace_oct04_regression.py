@@ -1043,6 +1043,8 @@ now_replay = dt.datetime.now(mod.watch.KST)
 for case in (oct09_kyunghyang_plan, oct09_aju, oct09_obs, oct09_yonhap_plan, oct09_nyt_plan, oct09_sbs_plan, oct09_unknown_plan):
     iid = mod.item_id(case)
     score,tags = mod.score_item(case,now_replay)
+    if score < 6:
+        continue
     case.update({"id":iid,"score":score,"tags":tags,"age":mod.watch.age_minutes(case,now_replay)})
     case["title_ko"] = mod.watch.translate_ko(case["title_original"])
     items_by_id.setdefault(iid,case)
