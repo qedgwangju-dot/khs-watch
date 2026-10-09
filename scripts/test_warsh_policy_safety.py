@@ -80,6 +80,7 @@ class WarshSafetyTests(unittest.TestCase):
             }],
             "classification": {"extra_bp": 25.0},
             "source": "https://www.cmegroup.com/markets/interest-rates/stirs/30-day-federal-fund.settlements.html",
+            "market_data_basis": "CME 공식 지연 결제값 기반 금리 기대(확률 별도 확인 전 판정 유보)",
         }
 
     def test_stale_market_state_is_rejected_for_ib_and_sep(self):
@@ -134,8 +135,64 @@ class WarshSafetyTests(unittest.TestCase):
              patch.object(path_v3.base, "send", side_effect=AssertionError("발송해서는 안 됨")):
             path_v3.main()
         self.assertEqual(len(saved), 1)
-        self.assertNotIn("meetings", saved[0])
+        self.assertEqual(saved[0].get("meetings"), [])
+        self.assertIsNone(saved[0].get("source"))
         self.assertIn("검증 실패", saved[0]["source_status"])
+
+
+    def test_existing_stale_market_payload_is_quarantined(self):
+        saved = []
+        old = self._fresh_market_state()
+        old["classification"] = {"extra_bp": 22.5, "verdict": "과거 판정"}
+        with patch.object(path_v3, "validated_snapshot", side_effect=TimeoutError("CME 지연")), \
+             patch.object(path_v3.base, "load_state", return_value=old), \
+             patch.object(path_v3.base, "save_state", side_effect=lambda s: saved.append(s)), \
+             patch.object(path_v3.base, "send", return_value=None):
+            path_v3.main()
+        self.assertEqual(saved[0]["meetings"], [])
+        self.assertIsNone(saved[0]["source"])
+        self.assertTrue(saved[0]["classification"]["market_source_stale"])
+        self.assertEqual(saved[0]["last_good_snapshot"]["meetings"], old["meetings"])
+
+    def test_third_party_source_can_never_be_fresh_market_state(self):
+        state = self._fresh_market_state()
+        state["source"] = "https://www.frenzycap.com/fedwatch"
+        self.assertFalse(guard.market_state_is_fresh(state))
+
+    def test_settlement_only_state_rejects_embedded_probability(self):
+        state = self._fresh_market_state()
+        state["meetings"][0]["hike25_prob"] = 90.0
+        self.assertFalse(guard.market_state_is_fresh(state))
+
+    def test_official_cme_ftp_csv_parser_requires_settlement_header(self):
+        raw = "Symbol,Settle\nZQV6,96.100\nZQX6,95.900\nZQZ6,95.800\n"
+        months = futures.parse_cme_ftp_csv(raw, date(2026, 10, 8))
+        self.assertAlmostEqual(months[(2026,10)], 3.9)
+        self.assertAlmostEqual(months[(2026,11)], 4.1)
+        self.assertAlmostEqual(months[(2026,12)], 4.2)
+        with self.assertRaisesRegex(RuntimeError, "헤더"):
+            futures.parse_cme_ftp_csv("Symbol,Close\nZQV6,96.100\n", date(2026,10,8))
+
+    def test_balance_sheet_same_date_rerun_keeps_previous_week_reference(self):
+        history = [
+            {"date":"2026-09-30","reserves":2881686},
+            {"date":"2026-10-07","reserves":3022066},
+        ]
+        prev = balance.base.previous_observation(history, "2026-10-07")
+        self.assertEqual(prev["date"], "2026-09-30")
+
+    def test_missing_weekly_reserve_change_cannot_trigger_weekly_qt(self):
+        cur = {
+            "date":"2026-10-07",
+            "total_assets":6700000,"total_assets_weekly":-100000,
+            "securities":6400000,"securities_weekly":-60000,
+            "reserves":3000000,"reserves_weekly":None,
+            "bills":500000,"bills_weekly":0,
+            "mbs":1900000,"mbs_weekly":0,
+            "treasury":4500000,
+        }
+        regime, _ = balance.base.classify_h41(cur, [])
+        self.assertNotEqual(regime, "주간 기준 대차대조표 총량 축소 신호")
 
 
     def test_effr_outside_official_target_range_is_rejected(self):
