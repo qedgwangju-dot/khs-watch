@@ -393,8 +393,31 @@ def _display_source(source: str) -> str:
     return source
 
 
+# 기사 식별자별 고정 사실만 사용한다. 다른 원전 사업의 금융·입지
+# 설명을 모든 Canary Media 기사에 공통 적용하지 않는다.
+_GOOGLE_CONSTELLATION_UPRATE_SLUG = "constellation-google-nuclear-uprates"
+
+
+def _is_constellation_google_uprate(event) -> bool:
+    return (
+        event.get("kind") == "macro_nuclear"
+        and urlparse(event.get("url", "")).path.rstrip("/").split("/")[-1].lower()
+        == _GOOGLE_CONSTELLATION_UPRATE_SLUG
+    )
+
+
 def _macro_highlights(event):
     slug = urlparse(event.get("url", "")).path.rstrip("/").split("/")[-1].lower()
+    if _is_constellation_google_uprate(event):
+        return [
+            ("확정 당사자", "Constellation Energy·Google"),
+            ("대상", "PJM 지역 기존 원전 11곳 출력증강"),
+            ("추가 발전용량", "890MW"),
+            ("사업비", "43억달러 초과"),
+            ("계약기간", "20년 전력구매계약"),
+            ("일정", "첫 출력증강 2028년 · 전체 2030년대 초반"),
+            ("공정", "터빈·증기발생기·디지털 제어설비 등 개선"),
+        ]
     if slug == "new-york-big-new-bet-on-nuclear-energy":
         return [
             ("신규 원전 목표", "5GW"),
@@ -417,6 +440,15 @@ def _macro_highlights(event):
 
 def _bottleneck_lines(event):
     if event.get("kind") == "macro_nuclear":
+        if _is_constellation_google_uprate(event):
+            return [
+                "기존 원전 출력증강의 핵심은 설비 교체·정지기간·발전용량 검증이며 신규 부지·노형 선정 사업이 아님",
+                "터빈·증기발생기·디지털 제어설비의 납기와 계획정비 기간이 실제 증강 일정을 좌우",
+                "출력증강 인허가·성능시험·안전성 검증 지연 시 2028년 첫 준공 및 2030년대 초반 완료 일정 위험",
+                "20년 전력구매계약과 43억달러 초과 투자비의 비용회수 조건 확인 필요",
+            ]
+        if slug != "new-york-big-new-bet-on-nuclear-energy" and slug != "federal-funding-x-energy-small-nuclear-reactor":
+            return []
         slug = urlparse(event.get("url", "")).path.rstrip("/").split("/")[-1].lower()
         if slug == "federal-funding-x-energy-small-nuclear-reactor":
             return [
@@ -435,6 +467,13 @@ def _bottleneck_lines(event):
 
 def _next_check(event, category: str) -> str:
     if event.get("kind") == "macro_nuclear":
+        if _is_constellation_google_uprate(event):
+            return "기존 원전 11곳별 증강 물량 · 20년 전력구매계약 · 장비 발주 · 출력증강 인허가 · 계획정비·시운전 · 2028년 첫 사업 완료 · 2030년대 초반 전체 완료"
+        if urlparse(event.get("url", "")).path.rstrip("/").split("/")[-1].lower() not in {
+            "new-york-big-new-bet-on-nuclear-energy",
+            "federal-funding-x-energy-small-nuclear-reactor",
+        }:
+            return "기사 원문·당사자 공식 발표·실제 계약·금액·물량·일정 재확인(다른 사업 설명 자동 적용 금지)"
         slug = urlparse(event.get("url", "")).path.rstrip("/").split("/")[-1].lower()
         if slug == "federal-funding-x-energy-small-nuclear-reactor":
             return "NRC 건설허가 · Dow FID · DOE 실제 집행액 · TX-1 가동 · TRISO 연료 검증 · 장납기 발주 · Amazon/Centrica 개별 확정계약"
@@ -530,6 +569,25 @@ def _render_alert_korean(events, fact_changes):
     if _BAD_TITLE_RE.search(result):
         raise RuntimeError("최종 알림에 서버 오류 문구가 남아 송출 차단")
     return result
+
+
+def _self_test_constellation_google_uprate() -> None:
+    event = {
+        "kind": "macro_nuclear",
+        "source": "Canary Media 원전 정책·금융",
+        "title": "Constellation and Google go in on nuclear uprates to unlock clean power",
+        "url": "https://www.canarymedia.com/articles/nuclear/constellation-google-nuclear-uprates",
+    }
+    highlights = dict(_macro_highlights(event))
+    assert highlights["추가 발전용량"] == "890MW"
+    assert highlights["대상"] == "PJM 지역 기존 원전 11곳 출력증강"
+    assert highlights["계약기간"] == "20년 전력구매계약"
+    joined = " ".join(_bottleneck_lines(event) + [_next_check(event, "정책·금융·설비투자")])
+    assert "NYISO" not in joined and "NYPA" not in joined
+    assert "부지 선정" not in _next_check(event, "정책·금융·설비투자")
+    unknown = dict(event, url="https://www.canarymedia.com/articles/nuclear/new-unknown-event")
+    assert _bottleneck_lines(unknown) == []
+    assert "NYPA" not in _next_check(unknown, "정책·금융·설비투자")
 
 
 base.render_alert = _render_alert_korean
