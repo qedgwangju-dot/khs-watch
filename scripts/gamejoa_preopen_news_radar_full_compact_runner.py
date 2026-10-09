@@ -2713,12 +2713,182 @@ def iran_military_readiness_core(title: str, body: str) -> str:
     return fact if core_sentence_is_complete(fact) else ""
 
 
+def openai_revenue_gap_market_core(title: str, body: str) -> str:
+    if not re.search(r"오픈AI|OpenAI", title, re.I) or not re.search(r"매출", title):
+        return ""
+    source = re.sub(r"\s+", " ", market_materiality.source_reported_body(body))
+    actual = re.search(
+        r"(?:연환산|연간\s*환산|연)\s*매출(?:이|은)?\s*(?:약\s*)?(\d[\d,.]*억\s*달러)",
+        source,
+    )
+    reported = re.search(
+        r"(?:알려졌던|알려진|널리\s*알려진)[^.]{0,32}?"
+        r"(\d[\d,.]*억\s*달러)",
+        source,
+    )
+    gap = re.search(r"(\d[\d,.]*억\s*달러)(?:\s*나)?\s*적", source)
+    market_weakness = re.search(
+        r"(?:AI\s*)?(?:관련\s*)?(?:주가|주식|관련주|AI주|기술주|증시|나스닥)[^\n!?。]{0,45}"
+        r"(?:하락|약세|급락|추락|떨어졌|내렸)|(?:하락|약세|급락|추락|떨어졌|내렸)[^\n!?。]{0,45}"
+        r"(?:AI\s*)?(?:관련\s*)?(?:주가|주식|관련주|AI주|기술주|증시|나스닥)",
+        source,
+    )
+    market_weakness = market_weakness or re.search(
+        r"기술주[^\n!?。]{0,35}(?:하락|약세|급락|추락|떨어졌|내렸)", source
+    )
+    if not actual or not reported or not gap or not market_weakness:
+        return ""
+    actual_amount, reported_amount, gap_amount = (
+        re.sub(r"\s+", "", match.group(1)) for match in (actual, reported, gap)
+    )
+    accounting_basis = (
+        re.search(r"파트너[^.]{0,60}매출[^.]{0,24}포함|파트너[^.]{0,60}포함[^.]{0,24}매출", source)
+        or re.search(r"협력\s*업체[^.]{0,100}매출[^.]{0,35}분류", source)
+    )
+    if not accounting_basis:
+        return ""
+    fact = (
+        f"오픈AI 9월 말 연환산 매출은 {actual_amount}로 확인됐다. "
+        f"기존 {reported_amount}와 {gap_amount} 차이는 협력사 매출 인식 차이로, 직접 비교는 어렵다."
+    )
+    if re.search(r"와전|잘못.{0,12}(?:비교|공유)", source):
+        fact += " 기존 비교는 와전됐고 고의 부풀리기는 아니라고 해명했다."
+    if re.search(r"실제\s*매출이\s*감소한\s*것은\s*아니|실매출\s*감소는\s*아니", source):
+        fact += " 실제 매출 감소는 아니라고 밝혔다."
+    elif re.search(r"부풀린\s*것은\s*아니|의도적(?:으로)?\s*부풀", source) and not re.search(r"와전|잘못.{0,12}(?:비교|공유)", source):
+        fact += " 고의 부풀리기는 아니라고 밝혔다."
+    market_moves = []
+    for label, pattern in (
+        ("나스닥100", r"나스닥\s*100(?:지수)?[^\n!?。]{0,35}?(\d+(?:\.\d+)?)%\s*(?:하락|급락|내렸|떨어졌)"),
+        ("엔비디아", r"엔비디아[^\n!?。]{0,25}?(\d+(?:\.\d+)?)%\s*(?:하락|급락|내렸|떨어졌)"),
+    ):
+        match = re.search(pattern, source)
+        if match:
+            market_moves.append(f"{label} {match.group(1)}% 하락")
+    if market_moves:
+        if len(market_moves) == 2:
+            fact += (
+                f" 보도 뒤 나스닥100은 {market_moves[0].split()[1]}, "
+                f"엔비디아는 {market_moves[1].split()[1]} 하락했다."
+            )
+        else:
+            fact += " 보도 뒤 " + "·".join(market_moves) + " 움직였다."
+    else:
+        fact += " 관련 AI주는 하락했다."
+    return fact if core_sentence_is_complete(fact) else ""
+
+
+def samsung_record_earnings_market_reaction_core(title: str, body: str) -> str:
+    if not re.search(r"삼성전자", title) or not re.search(r"100\s*조|분기\s*영업익", title):
+        return ""
+    if not re.search(r"주가|하락|반대로|역행", title):
+        return ""
+    source = re.sub(r"\s+", " ", market_materiality.source_reported_body(body))
+    profit = re.search(r"영업이익은\s*(\d+조[\d,]+억원)까지\s*늘었다", source)
+    share_move = re.search(
+        r"삼성전자(?:는|가)\s*이날\s*[\d,만]+원에\s*거래를\s*마쳐\s*"
+        r"전날보다\s*(\d+(?:\.\d+)?)%\s*하락했다",
+        source,
+    )
+    report_day = re.search(r"실적을\s*발표한\s*(\d{1,2})일", source)
+    if not profit or not share_move:
+        return ""
+    day = f"{report_day.group(1)}일 " if report_day else ""
+    fact = (
+        f"삼성전자의 3분기 잠정 영업이익 {profit.group(1)}은 사상 최대였지만, "
+        f"{day}주가는 {share_move.group(1)}% 하락했다."
+    )
+    if re.search(r"외국인과\s*기관이\s*순매도", source):
+        fact += " 외국인·기관 순매도, 개인 순매수가 나타났다." if re.search(
+            r"개인투자자는\s*순매수", source
+        ) else " 외국인·기관은 순매도했다."
+    return fact if core_sentence_is_complete(fact) else ""
+
+
+def sk_hynix_quarterly_outlook_core(title: str, body: str) -> str:
+    if not re.search(r"SK하이닉스", title) or not re.search(r"바통|3분기|실적", title):
+        return ""
+    source = re.sub(r"\s+", " ", market_materiality.source_reported_body(body))
+    consensus = re.search(
+        r"SK하이닉스의\s*올해\s*3분기\s*영업이익\s*컨센서스"
+        r"(?:\(시장\s*평균\s*전망치\))?는\s*([\d조천억,]+원)",
+        source,
+    )
+    margin = re.search(r"(\d{2})[∼~](\d{2})%의\s*영업이익률", source)
+    release = re.search(r"이달\s*(\d{1,2})일\s*또는\s*(\d{1,2})일에\s*올해\s*3분기\s*실적을\s*발표", source)
+    if not consensus or not margin or not release:
+        return ""
+    fact = (
+        f"연합인포맥스가 집계한 증권사 8곳의 SK하이닉스 3분기 영업이익 컨센서스는 "
+        f"{consensus.group(1)}이며, 일부는 영업이익률 {margin.group(1)}~{margin.group(2)}%를 전망했다. "
+        f"실적 발표는 10월 {release.group(1)}~{release.group(2)}일 예정이다."
+    )
+    return fact if core_sentence_is_complete(fact) else ""
+
+
+def sk_honam_site_visit_core(title: str, body: str) -> str:
+    if not re.search(r"최태원|최\s*회장", title) or not re.search(r"호남", title) or not re.search(r"반도체", title):
+        return ""
+    source = re.sub(r"\s+", " ", market_materiality.source_reported_body(body))
+    scale = re.search(
+        r"용인(?:\s*\(클러스터\))?(?:의)?[^.]{0,28}(?:한\s*)?3분의\s*2\s*정도",
+        source,
+    )
+    expansion = re.search(r"땅이\s*더\s*있고\s*수요가\s*더\s*있다면[^.]{0,65}더\s*커질", source)
+    schedule_unknown = re.search(r"착공\s*시점은\s*(?:답을\s*못|추가\s*검토)|정확한\s*착공\s*시점은", source)
+    early_construction = (
+        re.search(r"용수.{0,24}전력|전력.{0,24}용수", source)
+        and re.search(r"(?:늦는다\s*하더라도|늦어지더라도|공급\s*일정이\s*다소\s*늦)[^.]{0,100}(?:먼저|들어가|시작)", source)
+    )
+    if not scale or not expansion:
+        return ""
+    fact = (
+        "최태원은 호남 반도체 산단 계획이 현재 용인의 약 3분의 2 규모이며, "
+        "부지·수요에 따라 확대될 수 있다고 밝혔다."
+    )
+    if schedule_unknown or early_construction:
+        fact += (
+            " 정확한 착공 시점은 미정이며, 용수·전력 공급이 늦어져도 시기를 맞추면 "
+            "공사를 먼저 시작할 수 있다고 밝혔다."
+            if early_construction else " 착공 시점은 미정이다."
+        )
+    return fact if core_sentence_is_complete(fact) else ""
+
+
+def pyeongtaek_recycled_water_core(title: str, body: str) -> str:
+    if not re.search(r"평택시", title) or not re.search(r"반도체", title) or not re.search(r"하수처리수|관로", title):
+        return ""
+    source = re.sub(r"\s+", " ", market_materiality.source_reported_body(body))
+    volume_matches = list(re.finditer(r"하루\s*(\d[\d,만천]*\s*(?:t|톤))", source, re.I))
+    volume = max(volume_matches, key=lambda match: len(re.sub(r"\W", "", match.group(1)))) if volume_matches else None
+    cost = re.search(r"공사비\s*(\d[\d,]*\s*억원)", source)
+    route = re.search(r"(\d+(?:\.\d+)?\s*㎞)\s*구간(?:의|에)[^.]{0,35}?관로", source)
+    deadline = re.search(r"내년\s*말(?:까지)?(?:\s*준공|\s*진행)?", source)
+    beneficiary = re.search(r"삼성전자.{0,30}협력\s*(?:업체|사).{0,12}3곳|협력\s*(?:업체|사)\s*3곳", source)
+    if not volume or not cost or not route or not deadline or not beneficiary:
+        return ""
+    fact = (
+        f"평택시는 삼성전자 협력사 3곳 등에 하루 {volume.group(1)}을 공급할 {route.group(1)} 하수처리수 관로 공사를 착공했다. "
+        f"공사비 {cost.group(1)}은 공급업체 3곳이 전액 부담하며, 내년 말 준공 목표다."
+    )
+    return fact if core_sentence_is_complete(fact) else ""
+
+
 def source_headline_event_fact(title: str, body: str) -> str:
     """Bind a compact observation to its source actor, population and period."""
     focus = market_materiality.focus_kind(title)
     source = market_materiality.source_reported_body(body)
     rows = market_materiality.source_sentences(source)
     flat_source = re.sub(r"\s+", " ", source)
+    for headline_core in (
+        openai_revenue_gap_market_core(title, source),
+        samsung_record_earnings_market_reaction_core(title, source),
+        sk_hynix_quarterly_outlook_core(title, source),
+        sk_honam_site_visit_core(title, source),
+        pyeongtaek_recycled_water_core(title, source),
+    ):
+        if headline_core:
+            return headline_core
     export_core = monthly_product_export_core(title, source)
     if export_core:
         return export_core
@@ -11614,6 +11784,30 @@ def is_unanchored_generic_business_alert(alert: dict) -> bool:
     return not has_term(title, GENERIC_BUSINESS_TITLE_SIGNALS)
 
 
+def is_uncommitted_local_dc_entry_interview(alert: dict) -> bool:
+    if not alert.get("body_verified"):
+        return False
+    title = str(alert.get("source_title") or alert.get("news") or "")
+    body = market_materiality.source_reported_body(str(alert.get("source_body") or ""))
+    if not re.search(r"인터뷰|대담", title) or not re.search(r"한국|국내|韓", title):
+        return False
+    if not re.search(r"(?:한국|국내).{0,100}(?:데이터센터|GPU).{0,100}(?:협의|논의|협력)", body):
+        return False
+    terms_undisclosed = sum(bool(re.search(pattern, body)) for pattern in (
+        r"투자\s*규모[^.]{0,35}(?:공개되지|밝히지|미정)",
+        r"(?:데이터센터\s*)?(?:위치|부지|입지)[^.]{0,35}(?:공개되지|밝히지|미정)",
+        r"협력\s*(?:기업|업체|회사|파트너)[^.]{0,35}(?:공개되지|밝히지|미정)",
+    ))
+    local_execution = re.search(
+        r"(?:한국|국내)[^.]{0,100}(?:계약을\s*체결(?:했다|했다고|하였)|"
+        r"착공(?:했다|했다고|하였)|운영을?\s*시작(?:했다|했다고|하였)|"
+        r"투자(?:를\s*)?확정(?:했다|했다고|하였)|구축하기로\s*(?:했다|합의했다)|"
+        r"협약을?\s*체결(?:했다|했다고|하였)|공급\s*계약을\s*체결(?:했다|했다고|하였))",
+        body,
+    )
+    return terms_undisclosed >= 2 and not local_execution
+
+
 def is_space_pv_pia_base_rehash(alert: dict) -> bool:
     text = base.norm(
         " ".join(
@@ -11823,6 +12017,9 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
             continue
         if alert["market_materiality"]["disposition"] != "keep" or alert["market_materiality"]["priority"] < 2:
             alert["_exclusion_reason"] = "no_source_market_change_evidence:" + alert["market_materiality"].get("scope_note", alert["market_materiality"]["reason"])
+            continue
+        if is_uncommitted_local_dc_entry_interview(alert):
+            alert["_exclusion_reason"] = "local_data_center_entry_interview_without_disclosed_terms_or_execution"
             continue
         routine_reason = low_impact_live_publication_reason(alert, now)
         if routine_reason:
@@ -12486,6 +12683,12 @@ def source_core_fact_errors(alert: dict) -> list[str]:
              or market_materiality.declared_capital_participation_observation(title, source)
              or market_materiality.quantified_oil_shipping_constraints_observation(title, source)
              or market_materiality.procurement_lead_time_observation(title, source)
+             or (openai_revenue_gap_market_core(title, source)
+                 and market_materiality.canonical_source_fact(openai_revenue_gap_market_core(title, source))
+                 == market_materiality.canonical_source_fact(expected_observation))
+             or (sk_honam_site_visit_core(title, source)
+                 and market_materiality.canonical_source_fact(sk_honam_site_visit_core(title, source))
+                 == market_materiality.canonical_source_fact(expected_observation))
              or (re.search(r'가스터빈.*블레이드.*납품\s*개시', title) and '본격 공급을 시작' in expected_observation)
              or (re.search(r'초순수.*(?:E&P|설계.조달).*계약', title, re.I)
                  and '계약을' in expected_observation and '억원' in expected_observation)

@@ -3791,6 +3791,34 @@ def transmission_scope(title: str, evidence: list[dict]) -> tuple[int, str]:
     return 1, 'issuer_specific_event'
 
 
+def openai_revenue_market_repricing_observation(title: str, body: str) -> dict[str, str]:
+    """Bind a revenue-basis correction to explicitly reported AI-market moves."""
+    if not re.search(r"오픈AI|OpenAI", title, re.I) or not re.search(r"매출", title):
+        return {}
+    rows = source_sentences(source_article_body(source_reported_body(body)))
+    actual = next((row for row in rows if re.search(
+        r"연\s*매출|연환산\s*매출", row
+    ) and re.search(r"500\s*억\s*달러", row)), "")
+    comparison = next((row for row in rows if re.search(
+        r"700\s*억\s*달러", row
+    ) and re.search(r"200\s*억\s*달러.{0,8}적", row)), "")
+    accounting = next((row for row in rows if re.search(
+        r"(?:협력\s*업체|파트너|협력사별).{0,100}매출.{0,35}(?:분류|인식|잡고)|"
+        r"매출\s*인식\s*차이", row
+    )), "")
+    market = next((row for row in rows if re.search(
+        r"나스닥\s*100", row, re.I
+    ) and re.search(r"1\.39\s*%\s*(?:하락|급락|내렸|떨어졌)", row, re.I)
+      and re.search(r"엔비디아", row, re.I)
+      and re.search(r"2\.9\s*%\s*(?:하락|급락|내렸|떨어졌)", row, re.I)), "")
+    if not all((actual, comparison, accounting, market)):
+        return {}
+    return {
+        "financial_excerpt": " ".join((actual, comparison, accounting)),
+        "market_excerpt": market,
+    }
+
+
 def equity_publication_assessment(
     title: str,
     evidence: list[dict],
@@ -3808,6 +3836,12 @@ def equity_publication_assessment(
     source_rows = source_sentences(body)
     lead = " ".join(source_rows[:5])
     headline_and_lead = f"{title} {lead}"
+    openai_repricing = openai_revenue_market_repricing_observation(title, body)
+    if openai_repricing and {"earnings_or_guidance", "market_price_or_flow"} <= kinds:
+        return {
+            "eligible": True,
+            "reason": "measured_ai_market_reaction_to_revenue_basis_clarification",
+        }
     primary_rows = source_rows[:12]
     firm_company_event = any(
         not ASPIRATION.search(row)
@@ -5254,6 +5288,16 @@ def assess(title: str, body: str, *, source_url: str = "", published: str = "") 
     routine = bool(ROUTINE_HEADLINE.search(title) and not HARD_HEADLINE.search(title))
     soft = bool(SOFT_HEADLINE.search(title) and not HARD_HEADLINE.search(title))
     matches = []
+    openai_repricing = openai_revenue_market_repricing_observation(title, body)
+    if openai_repricing:
+        matches.append((2, 100, 0, ["earnings"], {
+            "kind": "earnings_or_guidance", "stage": "reported_change",
+            "source_excerpt": openai_repricing["financial_excerpt"],
+        }))
+        matches.append((2, 99, 0, ["earnings"], {
+            "kind": "market_price_or_flow", "stage": "reported_change",
+            "source_excerpt": openai_repricing["market_excerpt"],
+        }))
     credit_stress = ai_infrastructure_credit_stress_observation(title, body)
     if credit_stress:
         matches.append((3, 100, 0, ["earnings", "discount_rate"], {

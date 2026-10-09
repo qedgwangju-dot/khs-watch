@@ -147,6 +147,175 @@ class IncrementalNewsTests(unittest.TestCase):
             self.assertIn(term, core)
         return core
 
+    def test_openai_revenue_gap_core_covers_amount_basis_and_ai_market_reaction(self):
+        title = '오픈AI 매출 680억달러 아닌 500억달러…엔비디아 등 AI주 동반 하락'
+        body = (
+            '오픈AI는 최근 투자자들에게 9월 말 기준 연환산 매출이 약 500억달러에 도달했다고 밝혔다. '
+            '이는 지난달 말 널리 알려진 680억달러보다 180억달러 적은 규모다. '
+            '기존 680억달러에는 오픈AI 파트너사의 총매출까지 포함돼 있었다. '
+            '실제 매출이 감소한 것은 아니며, 관련 보도 뒤 엔비디아와 오라클 등 AI 관련주가 동반 하락했다.'
+        )
+        core = self.assert_source_bound_core(
+            title, body, ('500억달러', '680억달러', '180억달러', '협력사 매출 인식 차이', '실제 매출 감소는 아니라고', '관련 AI주는 하락')
+        )
+        self.assertNotIn('77%', core)
+        old_core = '오픈AI의 3분기 전체 연환산 매출 증가율은 77%였다.'
+        self.assertIn(
+            'headline_actor_population_period_or_standard_mismatch',
+            radar.source_core_fact_errors({**alert(title, body), 'telegram_core_fact': old_core}),
+        )
+
+        live_title = '"매출 27조원 부풀렸나"…오픈AI 실적에 AI 수익성 의문 재점화'
+        live_body = (
+            '지난달 말 기준 회사의 연 매출이 500억달러(약 672조원)에 근접한 것으로 확인됐다. '
+            '이는 앞서 시장에 알려진 오픈AI의 매출 규모 700억달러 대비 29% 낮은 수치로, '
+            '회사 실제 매출이 시장에 알려진 것보다 200억달러나 적은 것이다. '
+            '소식통은 투자자들이 앤트로픽의 연환산 매출과 직접 비교할 수치를 산출하는 과정에서 '
+            '오픈AI 실적 정보가 와전돼 공유된 것 같다며, 오픈AI가 의도적으로 매출을 부풀린 것은 아니라고 설명했다. '
+            '앤트로픽은 클라우드 제공업체를 통한 판매액 전부를 매출로 잡고 수수료를 비용 처리하지만, '
+            '오픈AI는 협력 업체를 통한 판매액 중 자사에 유입되는 금액만 매출로 분류한다. '
+            '기술주 중심의 나스닥100지수는 이날 1.39% 하락 마감했고 엔비디아는 2.9% 하락했다.'
+        )
+        live_core = radar.source_headline_event_fact(live_title, live_body)
+        for term in ('500억달러', '700억달러', '200억달러', '와전', '고의 부풀리기는 아니라고', '나스닥100은 1.39%', '엔비디아는 2.9%'):
+            self.assertIn(term, live_core, live_core)
+        self.assertNotIn('672조원', live_core)
+        self.assertLessEqual(len(live_core), radar.GAMEJOA_CORE_MAX_CHARS, live_core)
+        self.assertFalse(radar.source_core_fact_errors({**alert(live_title, live_body), 'telegram_core_fact': live_core}))
+        live_old_core = '이런 차이점을 고려하지 않고 투자자들이 두 회사의 매출을 비교하는 과정에서 오픈AI의 연 매출이 400억달러로 산출됐다.'
+        self.assertIn(
+            'headline_actor_population_period_or_standard_mismatch',
+            radar.source_core_fact_errors({**alert(live_title, live_body), 'telegram_core_fact': live_old_core}),
+        )
+        live_item = {
+            **alert(live_title, live_body, 'https://www.mt.co.kr/world/2026/10/09/2026100910041270366'),
+            'published': '2026-10-09T10:04:00+09:00',
+            'telegram_core_fact': live_core,
+        }
+        with patch.object(radar.base, 'kst_now', return_value=NOW.replace(day=9, hour=17)), patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}):
+            selected = radar.quality_display_alerts([live_item], 10)
+        self.assertEqual(len(selected), 1)
+        self.assertEqual(selected[0]['telegram_core_fact'], live_core)
+        snapshot = {"rates": {"USD": {"value": 1400.0, "status": "일일 기준", "reference_time_kst": "2026-10-08 일일 기준", "query_time_kst": NOW.isoformat(), "source": "test", "url": "https://example.test/fx"}}}
+        conversion = radar.build_alert_fx_conversion(
+            {**alert(live_title, live_body), "telegram_core_fact": live_core}, snapshot, NOW
+        )
+        converted = radar.compact_converted_core(live_core, conversion, limit=radar.GAMEJOA_CORE_MAX_CHARS)
+        self.assertIn('500억달러(약 70조원)', converted)
+        self.assertNotIn('672조원', converted)
+
+    def test_samsung_record_result_core_keeps_actual_result_price_direction_and_flow(self):
+        title = "엔비디아 넘어선 '분기 영업익 100조' 삼성전자…내년 전망도 밝은데 주가만 반대로 간다"
+        body = (
+            '삼성전자가 분기 영업이익 100조원을 처음 넘어섰다. 영업이익은 107조4000억원까지 늘었다. '
+            '삼성전자는 이날 올해 3분기 연결 기준 매출 195조원, 영업이익 107조4000억원의 잠정 실적을 발표했다. '
+            '삼성전자는 사상 최대 실적을 발표한 8일 2% 넘게 하락했다. '
+            '삼성전자는 이날 26만2000원에 거래를 마쳐 전날보다 2.42% 하락했다. '
+            '외국인과 기관이 순매도에 나선 반면 개인투자자는 순매수했다.'
+        )
+        core = self.assert_source_bound_core(
+            title, body, ('107조4000억원', '사상 최대', '8일', '2.42% 하락', '외국인·기관 순매도', '개인 순매수')
+        )
+        old_core = '최근 분기 약 85조원의 영업이익을 기록한 엔비디아보다도 많은 규모다.'
+        self.assertIn(
+            'headline_actor_population_period_or_standard_mismatch',
+            radar.source_core_fact_errors({**alert(title, body), 'telegram_core_fact': old_core}),
+        )
+
+    def test_sk_hynix_preview_core_does_not_substitute_samsung_intro(self):
+        title = "'꿈의 영업익' 달성한 K-메모리…SK하이닉스로 바통이을까"
+        body = (
+            '삼성전자가 국내 기업 최초로 100조원이 넘는 분기 영업이익을 기록한 가운데 '
+            '이달 말 예정된 SK하이닉스 실적에도 관심이 쏠린다. '
+            'SK하이닉스는 이달 28일 또는 29일에 올해 3분기 실적을 발표한다. '
+            '증권사 8곳의 전망치 집계 결과 SK하이닉스의 올해 3분기 영업이익 컨센서스(시장 평균 전망치)는 '
+            '74조3천433억원이다. 일부 증권사들은 78∼80%의 영업이익률을 전망했다.'
+        )
+        core = self.assert_source_bound_core(
+            title, body, ('SK하이닉스', '증권사 8곳', '74조3천433억원', '78~80%', '10월 28~29일')
+        )
+        old_core = '삼성전자가 분기 영업이익 100조원을 넘긴 가운데 SK하이닉스 실적에도 관심이 쏠린다.'
+        self.assertIn(
+            'headline_actor_population_period_or_standard_mismatch',
+            radar.source_core_fact_errors({**alert(title, body), 'telegram_core_fact': old_core}),
+        )
+
+    def test_october_ninth_honam_site_visit_reprints_select_once_with_schedule_qualified_core(self):
+        newis_title = "'호남 반도체' 부지 둘러본 최태원 SK회장 \"빠르게 착공\"(종합)"
+        newis_body = (
+            '최태원 SK그룹 회장은 9일 호남권 반도체 국가산업단지 부지를 방문했다. '
+            '현재까지는 용인(클러스터)의 한 3분의 2 정도 사이즈 계획을 갖고 있다. '
+            '땅이 더 있고 수요가 더 있다면 이쪽이 더 커질 것도 충분히 예상하고 있다. '
+            '착공 시점은 답을 못하지만 용수와 전력이 늦는다 하더라도 타이밍을 빨리 맞출 수만 있으면 먼저 들어가겠다고 말했다.'
+        )
+        etoday_title = '최태원 회장 “호남 반도체 기지, 용인보다 클 수도”…SK ‘투트랙 증설’ 시사'
+        etoday_body = (
+            '최태원 SK그룹 회장은 9일 호남권 반도체 국가산업단지 후보지를 처음 찾았다. '
+            '현재까지 들어온 계획은 용인의 한 3분의 2 정도 사이즈이며, 땅이 더 있고 수요가 더 있다면 '
+            '이쪽이 더 커질 것도 충분히 예상한다고 밝혔다. 정확한 착공 시점은 추가 검토가 필요하지만 '
+            '전력과 용수 공급 일정이 다소 늦어지더라도 공사를 먼저 시작할 수 있다는 입장이다.'
+        )
+        first_core = radar.source_headline_event_fact(newis_title, newis_body)
+        second_core = radar.source_headline_event_fact(etoday_title, etoday_body)
+        self.assertTrue(first_core)
+        self.assertEqual(first_core, second_core)
+        for term in ('현재 용인의 약 3분의 2 규모', '부지·수요에 따라 확대', '정확한 착공 시점은 미정', '공사를 먼저 시작할 수 있다고 밝혔다'):
+            self.assertIn(term, first_core)
+        candidates = [
+            {**alert(newis_title, newis_body, 'https://www.newsis.com/view/NISX20261009_0003820200'), 'published': '2026-10-09T16:02:00+09:00'},
+            {**alert(etoday_title, etoday_body, 'https://www.etoday.co.kr/news/view/2634162'), 'published': '2026-10-09T15:30:00+09:00'},
+        ]
+        with patch.object(radar.base, 'kst_now', return_value=NOW.replace(day=9, hour=17)), patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}):
+            selected = radar.quality_display_alerts(candidates, 10)
+        self.assertEqual(len(selected), 1)
+        self.assertEqual(selected[0]['telegram_core_fact'], first_core)
+        self.assertFalse(radar.source_core_fact_errors(selected[0]))
+
+    def test_pyeongtaek_recycled_water_core_keeps_project_capacity_cost_and_schedule(self):
+        title = '평택시, 반도체 배후산단에 하수처리수 공급…관로공사 착공 | 연합뉴스'
+        body = (
+            '평택시는 고덕공공하수처리장에서 첨단복합 일반산업단지까지 3.23㎞ 구간의 관로 공사에 착수했다. '
+            '삼성전자 협력업체 3곳 등에 하루 2만4천400t을 공업용수로 공급할 계획이다. '
+            '공사비 225억원은 가스업체 3곳이 전액 부담한다. 관로 공사는 내년 말까지 진행한다.'
+        )
+        core = radar.source_headline_event_fact(title, body)
+        self.assertTrue(core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        self.assertLessEqual(len(core), radar.GAMEJOA_CORE_MAX_CHARS, core)
+        for term in ('삼성전자 협력사 3곳', '하루 2만4천400t', '3.23㎞', '225억원', '업체 3곳', '내년 말'):
+            self.assertIn(term, core)
+        self.assertNotIn('효율적인 수자원 활용', core)
+        item = {**alert(title, body), 'published': '2026-10-09T15:10:00+09:00'}
+        with patch.object(radar.base, 'kst_now', return_value=NOW.replace(day=9, hour=17)), patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}):
+            selected = radar.quality_display_alerts([item], 10)
+        self.assertFalse(selected)
+        self.assertEqual(
+            item.get('_exclusion_reason'),
+            'no_source_market_change_evidence:existing_market_gate_required',
+        )
+
+    def test_uncommitted_local_data_center_interview_does_not_fill_core_slot(self):
+        title = '[인터뷰] 韓 공략 시동 건 코어위브…데이터센터 협력·추론 사업 키운다'
+        body = (
+            '코어위브는 한국 시장 진출을 위해 국내 여러 데이터센터 사업자들과 협의를 진행하고 있다. '
+            '구체적인 투자 규모와 데이터센터 위치, 협력 기업 등은 공개되지 않았다. '
+            '국내 주요 기업들이 B300 GPU를 수천 장에서 수만 장 규모로 문의했지만 공급 계약으로 확정된 것은 아니다. '
+            '사용 기간은 6개월이나 7개월이라고 답하는 경우가 있어 장기 수요 확약이 필요한 상황이다.'
+        )
+        item = {**alert(title, body, 'https://zdnet.co.kr/view/?no=20261009152305'), 'published': '2026-10-09T15:23:00+09:00'}
+        with patch.object(radar.base, 'kst_now', return_value=NOW.replace(day=9, hour=17)), patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}):
+            selected = radar.quality_display_alerts([item], 10)
+        self.assertFalse(selected)
+        self.assertEqual(item.get('_exclusion_reason'), 'local_data_center_entry_interview_without_disclosed_terms_or_execution')
+        self.assertTrue(radar.is_uncommitted_local_dc_entry_interview(item))
+        executed = {**item,
+            'source_title': '[인터뷰] 코어위브, 한국 사업자와 240MW 데이터센터 구축계약 체결',
+            'news': '[인터뷰] 코어위브, 한국 사업자와 240MW 데이터센터 구축계약 체결',
+            'source_body': '코어위브는 구체적인 부지와 투자 규모는 추후 공개하되, 국내 사업자와 10년 공급 계약을 체결했다고 밝혔다.',
+            'body_verified': True,
+        }
+        self.assertFalse(radar.is_uncommitted_local_dc_entry_interview(executed))
+
     def test_live_core_keeps_ck_solution_contract_mix_and_revenue_scale(self):
         body = (
             '씨케이솔루션은 미국 인디애나에서 전기차 배터리 생산라인을 에너지저장장치(ESS)용으로 전환하는 사업을 약 571억원에 수주했다. '
