@@ -448,7 +448,7 @@ NOISE_PATTERNS = [
     r"investment story", r"investment case", r"why .* stock", r"simply wall st",
     r"futu niu niu", r"stockstory", r"seeking alpha quant",
     # Market-price/reaction stories are not structural AI-optics events.
-    r"\bshares?\b", r"\bstock\b.{0,40}\b(rise|rises|jump|jumps|gain|gains|surge|surges|rally|rallies)",
+    r"\bshares?\b.{0,60}\b(?:rise|rises|jump|jumps|gain|gains|surge|surges|rally|rallies|fall|falls|down|up)\b", r"\bstock\b.{0,40}\b(rise|rises|jump|jumps|gain|gains|surge|surges|rally|rallies)",
     r"\b(boost|boosts|lift|lifts|send|sends|drive|drives)\b.{0,60}\bshares?\b",
     r"kucoin", r"marsbit", r"huoxing", r"hyperliquid", r"altcoins?",
     r"관련주", r"테마주", r"주가.{0,30}(급등|상승|강세)", r"(급등|상한가).{0,30}주가",
