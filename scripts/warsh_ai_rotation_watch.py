@@ -22,7 +22,7 @@ FORCE_NOTIFY = os.getenv('FORCE_NOTIFY', '0') == '1'
 THRESH_5D = float(os.getenv('WARSH_ROTATION_5D_PP') or '5')
 THRESH_3D = float(os.getenv('WARSH_ROTATION_3D_PP') or '3')
 MAX_SOURCE_GAP_BP = float(os.getenv('WARSH_AI_ROTATION_MAX_SOURCE_GAP_BP') or '12')
-METHODOLOGY_VERSION = '2026-10-10-v3'
+METHODOLOGY_VERSION = '2026-10-10-v4'
 UA = 'Mozilla/5.0 (compatible; khs-watch/3.2; +https://github.com/qedgwangju-dot/khs-watch)'
 YAHOO = 'https://query1.finance.yahoo.com/v8/finance/chart/{}?range=1mo&interval=1d&includePrePost=false'
 SYMBOLS = {
@@ -330,9 +330,9 @@ def message(s, correction=False, old=None):
     ]
     if correction:
         lines += [
-            '<b>정정·검증 강화 사유</b>',
-            '• 이전 알림은 Yahoo 일봉 하나로 계산했고 모든 종목의 비교 시작일과 최종 종가를 독립 검증하지 않았습니다.',
-            '• 이번부터 모든 표본을 같은 거래일로 정렬하고 외부 마감 종가와 교차검증했습니다.',
+            '<b>정정 사유</b>',
+            '• 이전 송출과 비교해 기준일·표시 수익률·판정 중 실제 변경된 항목이 있어 재검산했습니다.',
+            '• 두 원천의 종가와 표시 수익률까지 일치하는 자료로 판정합니다.',
             ''
         ]
         if old.get('date') == s['date']:
@@ -386,8 +386,12 @@ def main():
     old_version = old.get('methodology_version')
     method_change = bool(old and old_version != METHODOLOGY_VERSION)
     changed = (old.get('active') not in (None, s['active']) or old.get('verdict') not in (None, s['verdict']))
-    correction = bool(method_change or (old.get('date') and old['date'] > s['date']))
     relevant_changed = visible_changed(old, s) if old else False
+    # A validation-only code revision is NOT a numerical correction.
+    # Re-sending unchanged metrics as "corrected" creates false alarms.
+    method_correction = bool(method_change and old.get('date') == s['date'] and relevant_changed)
+    date_correction = bool(old.get('date') and old['date'] > s['date'])
+    correction = method_correction or date_correction
     should_send = FORCE_NOTIFY or correction or (bool(old) and changed)
 
     if should_send:
@@ -406,7 +410,7 @@ def main():
         'relative_3d': s['relative_3d'], 'relative_5d': s['relative_5d'],
         'verdict': s['verdict'], 'method_change': method_change,
         'visible_changed': relevant_changed,
-        'correction': correction, 'sent': bool(should_send),
+        'correction': correction, 'validation_only_upgrade': bool(method_change and not correction), 'sent': bool(should_send),
         'message_id': s.get('last_sent_message_id') if should_send else None
     }, ensure_ascii=False))
 
