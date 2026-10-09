@@ -384,6 +384,19 @@ def classify(title, summary=""):
     return "기타 핵심 변화"
 
 
+def article_age_minutes(published_kst, checked_at):
+    """Lag measured from publisher/RSS publication time to the actual watcher check."""
+    if not published_kst:
+        return None
+    try:
+        published = dt.datetime.fromisoformat(str(published_kst))
+        if published.tzinfo is None:
+            published = published.replace(tzinfo=ZoneInfo("Asia/Seoul"))
+        return max(0, int((checked_at - published).total_seconds() // 60))
+    except Exception:
+        return None
+
+
 def parse_pubdate(value):
     if not value:
         return None
@@ -607,13 +620,16 @@ def main():
             direct_url = resolve_original_url(item['url'])
             link = tg_html(direct_url)
             url_label = "원문" if "news.google.com/" not in direct_url else "기사 보기(구글뉴스 경유)"
+            lag = article_age_minutes(item.get('published_kst'), now)
             lines.extend([
                 f"{idx}. [{category}] {title}",
                 f"- 출처: {source}" + (" · 공식" if item["official"] else ""),
                 f"- 공개시각: {published}",
                 f'- <a href="{link}">{url_label}</a>',
-                "",
             ])
+            if lag is not None and lag >= 90:
+                lines.append(f"- 감지 시차: 공개 후 약 {lag // 60}시간 {lag % 60}분 (예약 실행 또는 검색 색인 지연 점검)")
+            lines.append("")
             seen[k] = {
                 "title": item["title"],
                 "url": item["url"],
