@@ -10,12 +10,16 @@ on:
       - "scripts/treasury_cta_squeeze_market_watch.py"
       - "scripts/treasury_cta_squeeze_audited_watch.py"
       - "scripts/treasury_cta_squeeze_equity_watch.py"
+      - "scripts/treasury_buyback_policy_watch.py"
+      - "scripts/treasury_alert_korean_guard.py"
+      - "scripts/yen_carry_policy_equity_enrich.py"
       - "scripts/us_positioning_watch.py"
       - ".github/workflows/treasury-auction-final-demand-telegram-alert.yml"
       - ".github/workflows/treasury-net-liquidity-telegram-alert.yml"
       - ".github/workflows/treasury-alert-architecture-ci.yml"
       - "tests/test_treasury_alert_architecture.py"
       - "tests/test_treasury_cta_nasdaq_squeeze.py"
+      - "tests/test_treasury_alert_root_guards.py"
       - "docs/treasury-alert-architecture.md"
   workflow_dispatch:
 
@@ -42,8 +46,12 @@ jobs:
           python -m py_compile scripts/treasury_cta_squeeze_market_watch.py
           python -m py_compile scripts/treasury_cta_squeeze_audited_watch.py
           python -m py_compile scripts/treasury_cta_squeeze_equity_watch.py
+          python -m py_compile scripts/treasury_buyback_policy_watch.py
+          python -m py_compile scripts/treasury_alert_korean_guard.py
+          python -m py_compile scripts/yen_carry_policy_equity_enrich.py
           python -m py_compile scripts/us_positioning_watch.py
       - name: Run architecture and squeeze fail-closed tests
         run: |
           pytest -q tests/test_treasury_alert_architecture.py
           pytest -q tests/test_treasury_cta_nasdaq_squeeze.py
+          pytest -q tests/test_treasury_alert_root_guards.py
