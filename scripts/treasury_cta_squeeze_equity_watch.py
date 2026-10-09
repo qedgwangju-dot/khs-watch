@@ -373,6 +373,168 @@ def _nq_price() -> dict:
     }
 
 
+def _years_back(day: date, years: int) -> date:
+    try:
+        return day.replace(year=day.year - years)
+    except ValueError:
+        return day.replace(year=day.year - years, day=28)
+
+
+def _nq_history_statistics(rows: list[dict], current: dict) -> dict:
+    """Independently verify the live CFTC NQ week and compute same-week percentiles."""
+    latest = datetime.strptime(str(current["report_date"]), "%B %d, %Y").date()
+    parsed: dict[date, dict] = {}
+    for row in rows:
+        try:
+            d = date.fromisoformat(str(row["report_date_as_yyyy_mm_dd"])[:10])
+            if d > latest:
+                continue
+            oi = int(float(row["open_interest_all"]))
+            lng = int(float(row["lev_money_positions_long"]))
+            shrt = int(float(row["lev_money_positions_short"]))
+            if oi <= 0 or min(lng, shrt) < 0:
+                continue
+            parsed[d] = {"date": d, "oi": oi, "long": lng, "short": shrt,
+                         "net": lng - shrt, "severity": max(shrt - lng, 0)}
+        except (KeyError, ValueError, TypeError, OverflowError):
+            continue
+    ordered = [parsed[d] for d in sorted(parsed)]
+    if not ordered or ordered[-1]["date"] != latest:
+        raise RuntimeError(f"CFTC NQ historical latest date disagrees with live report: live={latest}, historical={ordered[-1]['date'] if ordered else 'missing'}")
+    last = ordered[-1]
+    for source, target in (("oi", "open_interest"), ("long", "leveraged_long"), ("short", "leveraged_short"), ("net", "leveraged_net")):
+        if last[source] != int(current[target]):
+            raise RuntimeError(f"CFTC NQ historical/live mismatch: {target} history={last[source]} live={current[target]}")
+
+    try:
+        expected_prev = datetime.strptime(str(current["previous_period"]), "%B %d, %Y").date()
+    except (ValueError, TypeError, KeyError) as exc:
+        raise RuntimeError("CFTC NQ previous report date unavailable") from exc
+    prior = parsed.get(expected_prev)
+    if prior is None:
+        raise RuntimeError(f"CFTC NQ history previous week missing: {expected_prev}")
+    for now_value, old_value, current_field in (
+        ("net", "net", "leveraged_net_wow"),
+        ("short", "short", "leveraged_short_wow"),
+    ):
+        if (last[now_value] - prior[old_value]) != int(current[current_field]):
+            raise RuntimeError(f"CFTC NQ weekly delta mismatch: {current_field}")
+
+    def window_stats(years: int) -> dict:
+        start = _years_back(latest, years)
+        frame = [r for r in ordered if r["date"] >= start]
+        if not frame:
+            raise RuntimeError(f"CFTC NQ {years}Y window empty")
+        gross = [r["short"] for r in frame]
+        net_severity = [r["severity"] for r in frame]
+        short_share = [r["short"] / r["oi"] * 100.0 for r in frame]
+        diffs = [frame[i]["short"] - frame[i - 1]["short"] for i in range(1, len(frame))]
+        net_diffs = [frame[i - 1]["net"] - frame[i]["net"] for i in range(1, len(frame))]
+        p = lambda seq, v: 100.0 * sum(x <= v for x in seq) / len(seq) if seq else None
+        peak_net = max(net_severity)
+        peak_gross = max(gross)
+        gross_build = diffs[-1] if diffs else None
+        net_build = net_diffs[-1] if net_diffs else None
+        return {
+            "sample_n": len(frame),
+            "start_date": frame[0]["date"].isoformat(),
+            "end_date": frame[-1]["date"].isoformat(),
+            "net_short_percentile": p(net_severity, net_severity[-1]),
+            "gross_short_percentile": p(gross, gross[-1]),
+            "short_share_oi_percentile": p(short_share, short_share[-1]),
+            "peak_net_short_contracts": peak_net,
+            "peak_net_short_date": frame[net_severity.index(peak_net)]["date"].isoformat(),
+            "peak_gross_short_contracts": peak_gross,
+            "peak_gross_short_date": frame[gross.index(peak_gross)]["date"].isoformat(),
+            "net_short_unwind_from_peak_pct": (peak_net - net_severity[-1]) * 100.0 / peak_net if peak_net else None,
+            "gross_short_unwind_from_peak_pct": (peak_gross - gross[-1]) * 100.0 / peak_gross if peak_gross else None,
+            "gross_short_weekly_change": gross_build,
+            "net_short_weekly_build": net_build,
+            "gross_short_weekly_build_percentile": p(diffs, gross_build) if gross_build is not None else None,
+            "net_short_weekly_build_percentile": p(net_diffs, net_build) if net_build is not None else None,
+            "max_gross_short_weekly_build": max(diffs) if diffs else None,
+            "max_net_short_weekly_build": max(net_diffs) if net_diffs else None,
+            "gross_short_weekly_record": bool(diffs and gross_build > 0 and gross_build >= max(diffs)),
+            "net_short_weekly_record": bool(net_diffs and net_build > 0 and net_build >= max(net_diffs)),
+        }
+
+    s3 = window_stats(3)
+    if s3["sample_n"] < 150:
+        raise RuntimeError(f"CFTC NQ 3Y history incomplete: {s3['sample_n']} samples")
+    result = {
+        "basis": "CFTC TFF NASDAQ MINI futures-only",
+        "history_source": "CFTC Public Reporting gpe5-46if verified against live report",
+        "history_url": CFTC_HISTORY_INDEX,
+        "verified_current": True,
+        "sample_n": s3["sample_n"],
+        "start_date": s3["start_date"],
+        "end_date": s3["end_date"],
+        "net_short_percentile_3y": s3["net_short_percentile"],
+        "gross_short_percentile_3y": s3["gross_short_percentile"],
+        "short_extreme_percentile_3y": s3["net_short_percentile"],
+        "short_share_oi_percentile_3y": s3["short_share_oi_percentile"],
+        "peak_net_short_contracts_3y": s3["peak_net_short_contracts"],
+        "peak_net_short_date_3y": s3["peak_net_short_date"],
+        "peak_gross_short_contracts_3y": s3["peak_gross_short_contracts"],
+        "peak_gross_short_date_3y": s3["peak_gross_short_date"],
+        "net_short_unwind_from_peak_pct": s3["net_short_unwind_from_peak_pct"],
+        "gross_short_unwind_from_peak_pct": s3["gross_short_unwind_from_peak_pct"],
+        "unwind_from_peak_pct": s3["net_short_unwind_from_peak_pct"],
+        "leveraged_short_1w_change": last["short"] - prior["short"],
+        "leveraged_net_1w_change": last["net"] - prior["net"],
+    }
+    s10 = window_stats(10)
+    # A full ten-year comparison needs at least 500 weekly points and data
+    # covering the entire ten-year period; otherwise suppress ten-year claims.
+    complete10 = len([r for r in ordered if r["date"] <= _years_back(latest, 10)]) > 0 and s10["sample_n"] >= 500
+    result["ten_year_complete"] = complete10
+    if complete10:
+        result.update({
+            "sample_n_10y": s10["sample_n"],
+            "start_date_10y": s10["start_date"],
+            "end_date_10y": s10["end_date"],
+            "net_short_percentile_10y": s10["net_short_percentile"],
+            "gross_short_percentile_10y": s10["gross_short_percentile"],
+            "gross_short_weekly_change_10y": s10["gross_short_weekly_change"],
+            "net_short_weekly_build_10y": s10["net_short_weekly_build"],
+            "gross_short_weekly_build_percentile_10y": s10["gross_short_weekly_build_percentile"],
+            "net_short_weekly_build_percentile_10y": s10["net_short_weekly_build_percentile"],
+            "max_gross_short_weekly_build_10y": s10["max_gross_short_weekly_build"],
+            "max_net_short_weekly_build_10y": s10["max_net_short_weekly_build"],
+            "gross_short_weekly_record_10y": s10["gross_short_weekly_record"],
+            "net_short_weekly_record_10y": s10["net_short_weekly_record"],
+        })
+    return result
+
+
+def _fresh_nq_history(current: dict) -> dict:
+    query = urllib.parse.urlencode({
+        "$where": "cftc_contract_market_code='209742'",
+        "$order": "report_date_as_yyyy_mm_dd DESC",
+        "$limit": "600",
+        "$select": "report_date_as_yyyy_mm_dd,open_interest_all,lev_money_positions_long,lev_money_positions_short",
+    })
+    rows = watcher.fetch_json("https://publicreporting.cftc.gov/resource/gpe5-46if.json?" + query)
+    if not isinstance(rows, list) or not rows:
+        raise RuntimeError("CFTC NQ 10Y public history unavailable")
+    return _nq_history_statistics(rows, current)
+
+
+def _nq_cached_history(current: dict) -> dict | None:
+    try:
+        state = watcher.load_state()
+        prior = ((state.get("snapshot") or {}).get("nasdaq_cross_asset") or {})
+        nq = prior.get("nq_cftc") or {}
+        hist = prior.get("history_3y") or {}
+        if not hist.get("verified_current") or hist.get("end_date") != datetime.strptime(current["report_date"], "%B %d, %Y").date().isoformat():
+            return None
+        if any(nq.get(k) != current.get(k) for k in ("open_interest", "leveraged_long", "leveraged_short", "leveraged_net")):
+            return None
+        return hist
+    except (TypeError, ValueError, KeyError):
+        return None
+
+
 def _positioning_state_cftc() -> dict:
     try:
         state = json.loads(US_POSITIONING_STATE.read_text(encoding="utf-8"))
@@ -393,13 +555,39 @@ def _cross_raw() -> dict:
     out = {
         "nq_cftc": None,
         "nq_price": None,
-        "history_3y": stored_cftc.get("history_3y") or {},
+        "history_3y": {},
         "stored_nq_cftc": stored_cftc.get("nq_mini") or {},
         "stored_cftc_period": stored_cftc.get("period"),
+        "history_status": "미확인",
         "errors": [],
     }
     try:
         out["nq_cftc"] = _nq_cftc_weekly()
+        nq = out["nq_cftc"]
+        live_iso = datetime.strptime(nq["report_date"], "%B %d, %Y").date().isoformat()
+        stored = stored_cftc.get("nq_mini") or {}
+        stored_hist = stored_cftc.get("history_3y") or {}
+        same_stored = (
+            str(stored_cftc.get("period") or "") == str(nq["report_date"])
+            and stored_hist.get("end_date") == live_iso
+            and all(stored.get(k) == nq.get(k) for k in ("open_interest", "leveraged_long", "leveraged_short", "leveraged_net"))
+        )
+        if same_stored:
+            out["history_3y"] = {**stored_hist, "verified_current": True}
+            out["history_status"] = "최신 저장 공식 원천 비교 일치"
+        else:
+            cached = _nq_cached_history(nq)
+            if cached:
+                out["history_3y"] = cached
+                out["history_status"] = "이전 운영 실행의 공식 CFTC 현재주 검증 재사용"
+            else:
+                try:
+                    out["history_3y"] = _fresh_nq_history(nq)
+                    out["history_status"] = "CFTC 최신 주간 보고서와 10년 공식자료 교차검증"
+                except Exception as exc:
+                    out["errors"].append(f"NQ 최신 통계 검증 불가: {type(exc).__name__}: {exc}")
+                    # Never display the stale persisted percentiles/weekly-change as current.
+                    out["history_status"] = f"{live_iso} 실시간 포지션 확인, 백분위·10년 통계 갱신 대기"
     except Exception as exc:
         out["errors"].append(f"CFTC NQ: {type(exc).__name__}: {exc}")
     try:
@@ -487,22 +675,12 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
     stored_nq = raw.get("stored_nq_cftc") or {}
     stored_period = str(raw.get("stored_cftc_period") or "")
     live_period = str(nq.get("report_date") or "")
-    nq_crosscheck_match = True
-    nq_crosscheck_reason = None
-    if stored_nq and stored_period == live_period:
-        for key in ("open_interest", "leveraged_long", "leveraged_short", "leveraged_net"):
-            if stored_nq.get(key) != nq.get(key):
-                nq_crosscheck_match = False
-                nq_crosscheck_reason = (
-                    f"CFTC NQ same-date cross-check mismatch: {key} "
-                    f"live={nq.get(key)} stored={stored_nq.get(key)}"
-                )
-                break
-    elif stored_nq:
-        nq_crosscheck_match = False
-        nq_crosscheck_reason = (
-            f"CFTC NQ report-date cross-check mismatch: live={live_period} stored={stored_period}"
-        )
+    nq_crosscheck_match = bool(hist.get("verified_current") and nq_history_fresh)
+    nq_crosscheck_reason = None if nq_crosscheck_match else (
+        "NQ 최신 주간 이력 대조 보류: "
+        + str(raw.get("history_status") or "확인 불가")
+        + (f" · 기존 저장 CFTC={stored_period}, 실시간 CFTC={live_period}" if stored_period != live_period else "")
+    )
 
     nq_price_up = (price.get("pct_change") is not None and float(price["pct_change"]) > 0.20)
     nq_price_official = bool(price.get("official"))
@@ -512,10 +690,8 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
     # Daily Bulletin fallback must match the latest completed U.S. session exactly.
     nq_price_fresh = bool(
         nq_price_official
-        and (
-            not price_trade_date
-            or price_trade_date == expected_session
-        )
+        and price_trade_date
+        and price_trade_date == expected_session
     )
     nq_weekly_oi_down = (
         nq.get("open_interest_wow") is not None and int(nq["open_interest_wow"]) < 0
@@ -578,6 +754,7 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
         and nq_history_fresh
         and nq_crosscheck_match
         and nq_price_fresh
+        and nq_price_official
     )
 
     if treasury_confirmed and nq_confirmed and treasury_fuel and nq_fuel:
@@ -610,6 +787,7 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
         "nq_history_fresh": nq_history_fresh,
         "nq_crosscheck_match": nq_crosscheck_match,
         "nq_crosscheck_reason": nq_crosscheck_reason,
+        "history_status": raw.get("history_status"),
         "nq_price_up": nq_price_up,
         "nq_price_official": nq_price_official,
         "nq_price_fresh": nq_price_fresh,
