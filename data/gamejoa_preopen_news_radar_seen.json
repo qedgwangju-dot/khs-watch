@@ -3105,6 +3105,30 @@
       "source_published_kst": "2026-10-07T11:17+09:00",
       "title": "삼성SDS 합류한 LIG 컨소, KJCCS 우협 선정…내년 KCCS 수주전 채비"
     },
+    "core:34838852a2ef462d990ac2c6": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01899126645611280",
+      "source": "이데일리",
+      "source_body_digest": "090775f1eb1526e76e9007a99e83f18e53e4ac9086f5e33dc15cc8d8e4c1ebfe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:46af53b6df1071778e923e74ca799ec4bb9f4d392c4db8db5c6c3d66680bcfbc",
+      "source_fact_keys": [
+        "source_fact:v1:0bb7d6319ff9cda74f075446a05b08a2274cf510431e7c3dc28d3a7727a1280f",
+        "source_fact:v1:278ce25bd58b1af6ecd3c12ff94922c8f82759b35d9513f50c491bbcb3e4f907",
+        "source_fact:v1:3d096a04ce4ce9f5765ec34eb615a16c29248593e82c635c8b75afa41acaf83c",
+        "source_fact:v1:49de89a6d258ba7ce68651b88fe8a7365d004539e5aca96350b9fe3a08a27ac7",
+        "source_fact:v1:e49dd5d9192f9ab5f035456d99c90366435c8b345487f4217733422d8f1d2a52",
+        "source_fact:v1:f3173c35bb8d372cdc947f134253add97d72c54a27d04b8ca4d578b8d7bf85af"
+      ],
+      "source_published_kst": "2026-10-09T11:11+09:00",
+      "source_title": "[VC's Pick]K방산 훈풍 타고 IPO 정조준…'디지트론' 프리 IPO 투자 유치",
+      "telegram_core_fact": "특히 방산 부품·모듈을 제조하는 '디지트론'이 내년 하반기 코스닥 상장 추진을 앞두고 100억원 규모 프리IPO 투자에 성공해 주목받았다.",
+      "title": "[VC's Pick]K방산 훈풍 타고 IPO 정조준…'디지트론' 프리 IPO 투자 유치"
+    },
     "core:34cc8e4d1607348a01322455": {
       "first_seen_kst": "2026-10-07T17:23:27+09:00",
       "lanes": {
@@ -4334,6 +4358,27 @@
       "source_title": "삼성전자·SK하이닉스·마이크론에 75%…글로벌 DRAM ETF 상장",
       "telegram_core_fact": "[파이낸셜뉴스] 삼성전자와 SK하이닉스, 마이크론 등 글로벌 D램 3사에 자산의 약 75%를 집중 투자하는 상장지수펀드(ETF)가 국내 증시에 상장했다.",
       "title": "삼성전자·SK하이닉스·마이크론에 75%…글로벌 DRAM ETF 상장"
+    },
+    "core:4940360b40fef914817b8cc8": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/09/2026100913501991121",
+      "source": "머니투데이",
+      "source_body_digest": "5fafad81bd3e534fa2f6efeca32b76dc610a32c8373fa8b93523b7744b6cec95",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb1cbbd0460877a87f2d4f6e4ffc72178e5513eb1a6d7f3781ccada660bde44a",
+      "source_fact_keys": [
+        "source_fact:v1:8b7e02b0fc110325bf3d01e1dce1dddb227805692c39b22bb5564e300ff2d4b6",
+        "source_fact:v1:99af1369544466de9a2bb061c76f0fc967acfb266f4075c3f47a88c7df220a1c",
+        "source_fact:v1:d55e6295d3b8ebfedab172c895567bc3200b552579f7568c5f462c2c9f241feb"
+      ],
+      "source_published_kst": "2026-10-09T14:07+09:00",
+      "source_title": "관세 수입 줄고, 국채 이자 늘어…美 재정적자 2조달러 문턱",
+      "telegram_core_fact": "도널드 트럼프 미국 행정부는 2기 출범 후 연방정부 인력 감축, 친환경 에너지 세액공제 축소 등 지출 삭감, 고율 관세 부과 정책으로 재정적자 문제 해결에 나섰다.",
+      "title": "관세 수입 줄고, 국채 이자 늘어…美 재정적자 2조달러 문턱"
     },
     "core:49cddfaa9639c90644c9f510": {
       "first_seen_kst": "2026-10-09T16:53:11+09:00",
@@ -9136,6 +9181,28 @@
       "telegram_core_fact": "반면에 순자산총액 하위 50개 ETF의 합산 순자산은 1700억원으로 지난해 말보다 오히려 줄었다. 신규 상장된 우주 ETF 가운데 순자산 규모가 가장 컸던 'TIGER 미국우주테크'의 6월 하루 평균 거래대금은 2000억원에 육박할 정도였다.",
       "title": "테마 떴다하면 찍어내는 ETF … 하위 50개 순자산 고작 1700억"
     },
+    "core:a484cb2c0a32307eeafb233e": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261009114316",
+      "source": "지디넷코리아",
+      "source_body_digest": "16f90a175a11b9caad7f3209ca3c22e776c1c14916dd2f45f7f40998bc78af7a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ccab98d8332c2382e5f8f02a57ab3a9251710c5067fc82c724819e875c9d80fb",
+      "source_fact_keys": [
+        "source_fact:v1:04d6a3023dd657604a48a70a190fac30676a6575714b6b3a2fe1c9dfc7d7cd25",
+        "source_fact:v1:25b7f76224a36f35e87c878b7843d770c19e5e42f53fdbbca5f8419d0082e0a4",
+        "source_fact:v1:27aa4c0bcb9e68bb6f42952d55904d46c1465bc15e56463ec756af8c94af6c00",
+        "source_fact:v1:ee7e1810e6914717721269efd4da018fcf6d8a17730a68e92800c5fb192f2e32"
+      ],
+      "source_published_kst": "2026-10-09T12:07+09:00",
+      "source_title": "삼성전자, 올해 스마트폰 출하 목표 2.4억대→2.3억대 하향",
+      "telegram_core_fact": "한 업계 관계자 A는 \"삼성전자가 최근 협력사에 연간 스마트폰 출하량 2억 3000만대 초반에 해당하는 4분기 부품 발주량을 통보했다\"며 \"당초 부품업계에서 기대했던 (스마트폰 출하량 전망치) 2억 4000만대보다 적다\"고 밝혔다.",
+      "title": "삼성전자, 올해 스마트폰 출하 목표 2.4억대→2.3억대 하향"
+    },
     "core:a53abe06b95c62ffe77117ab": {
       "first_seen_kst": "2026-10-07T16:57:09+09:00",
       "lanes": {
@@ -11350,6 +11417,31 @@
       "telegram_core_fact": "이번 사례는 지난해 1월 발효된 것으로 중국의 AI, 반도체 및 양자 컴퓨팅 사업에 대한 미국의 해외 투자 규제 조치가 처음 집행된 것이라고 SCMP는 전했다.",
       "title": "美 재무부, 상하이 로봇 AI 업체 투자 美 기업에 약 2억 6000만원 벌금"
     },
+    "core:c840fa27f7c98db6e77b6682": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.fnnews.com/news/202610081534588217",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "2002951ba5d479c94fec4620a4700afe85e2d8ca6cc82a1323ae095b4bf93907",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:92ef04dbfe5af0c4797b1091a9d529a8e7881988c78c85adfd408fbede8a0d51",
+      "source_fact_keys": [
+        "source_fact:v1:1ebe1ae8bbed6b3f0b2598598ae3a1be3e5e8effcb33240af8ba9746acf7704d",
+        "source_fact:v1:35ba2f8ebcdcae63396e4955ec46cca6818935b6ac77d8d49e40f2fbb7d105be",
+        "source_fact:v1:3c5fd6ff913a3cced8ff563663bdd4f10a4d6d4c3f1b3ff3b82e28d22d79d9d6",
+        "source_fact:v1:4624ab40a02c79999417a2727a8549659616f35a04eeec47ec6999618bbbb5e9",
+        "source_fact:v1:71393f0ad48feed3ac1159276bd7d96efae1cb81136de469327b6474308f2035",
+        "source_fact:v1:7ecd0a1cb849bdcfa988d1add1946040fd274f680393f997f07391d497103fdb",
+        "source_fact:v1:edc5472f20ba0a3abefc13901befd20ad80ac1bdc4a55e3b1fe3660cf52822df"
+      ],
+      "source_published_kst": "2026-10-08T17:32+09:00",
+      "source_title": "SK하이닉스 솔리다임, 美 상장 채비…100억달러 조달 관측",
+      "telegram_core_fact": "솔리다임은 이번 IPO를 통해 약 100억 달러(약 13조4000억원)를 조달할 것으로 예상된다. 두 은행은 솔리다임의 상장 전 자금 조달을 위한 투자 유치 작업에도 참여할 것으로 관측된다.",
+      "title": "SK하이닉스 솔리다임, 美 상장 채비…100억달러 조달 관측"
+    },
     "core:c8abfa3f639ecfe6847d6e90": {
       "first_seen_kst": "2026-10-09T16:29:31+09:00",
       "lanes": {
@@ -11590,6 +11682,30 @@
       "source_title": "홍지선 \"공공 장기임대 재원에 초과세수 활용 검토\"…SNS 첫 게시물",
       "telegram_core_fact": "공급 계획의 차질없는 이행을 위해 ▲3기 신도시 등 공공택지 조성 ▲인허가를 받고도 착공하지 못한 사업장의 지원 강화 ▲인허가 지연 해결 ▲공공 장기임대주택 공급 등 4가지 과제를 언급했다.",
       "title": "홍지선 \"공공 장기임대 재원에 초과세수 활용 검토\"…SNS 첫 게시물"
+    },
+    "core:cae54fa5da7607715f815bef": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171949",
+      "source": "매일경제",
+      "source_body_digest": "2cd7a2f4cad4617344142afb64a1dd8b18be6d44f7b345b4258018fd6f80a30d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f186a4e319088003aa3cfa80670009308052d5a21f415c1cd179a699cfd60ab6",
+      "source_fact_keys": [
+        "source_fact:v1:24e1479739c9c02115c33c4c0e5d34412fc25f5fdc5193e93d44e1c19efcad5f",
+        "source_fact:v1:25ddeb6310e13bb7610e212b432805016a761b956ac8ab17493de78a1565671e",
+        "source_fact:v1:8aadea6d80798e9f97cd2bd4191059df3ac67d2550ac9b7aa075e359d1b023ce",
+        "source_fact:v1:c488d3c5cdd476d412de2d9f9ca1a24c796e71a79efa98cdf0bfa6fbddbc3d3b",
+        "source_fact:v1:c4df9c1abd49430feeae1545a4b3cdb7daeafecea05e4f60bb5cc186c03ab308",
+        "source_fact:v1:e8ed4a69f9db682de8d9bac32de36e223df419c6bdea80308df883aecb2b7b04"
+      ],
+      "source_published_kst": "2026-10-08T20:06+09:00",
+      "source_title": "비머 이미징, 올해 매출 50% 성장 재확인..15일 투자 콘퍼런스 참가",
+      "telegram_core_fact": "비디오 최적화 기술 기업 비머 이미징(BMR)이 2026회계연도 매출이 전년 대비 약 50% 증가할 것이라는 기존 전망을 재확인하고, 오는 15일(현지시간) 뉴욕에서 열리는 씽크에쿼티 콘퍼런스에서 기업 설명회를 연다고 8일 발표했다.",
+      "title": "비머 이미징, 올해 매출 50% 성장 재확인..15일 투자 콘퍼런스 참가"
     },
     "core:caf4b08645dab1f26d93a814": {
       "first_seen_kst": "2026-10-09T16:53:11+09:00",
@@ -12339,6 +12455,27 @@
       "source_title": "LG전자, 3분기 누적 영업이익 4조 첫 돌파…매출 9% 늘 때 이익 56% 뛰었다",
       "telegram_core_fact": "LG전자는 2026년 3분기 연결기준 매출 23조8270억원, 영업이익 7818억원을 잠정 기록했다고 7일 발표했다.",
       "title": "LG전자, 3분기 누적 영업이익 4조 첫 돌파…매출 9% 늘 때 이익 56% 뛰었다"
+    },
+    "core:d6c475e634e40f73e86b16e0": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610080504b",
+      "source": "한국경제",
+      "source_body_digest": "a1fceadceb852ef6f612aa29acc7bb9cab834f7a9265f125da66679a4d246ff0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b84e90287c9a4dc7018f03eb3abe0d52df1ca24b2bb032acbffe6af985a375a9",
+      "source_fact_keys": [
+        "source_fact:v1:380168b39063f7dd682519292822ad2814ba8c55964b285c9868d4c4e29f6faa",
+        "source_fact:v1:5da9e7bdb32f1dca76b84adb0ca942aad563aeb4e08822c108857c53e9a3d789",
+        "source_fact:v1:932a77158f5349fafbcf1a92006dd0f276ac728bd1acc5c1ba705bda30507763"
+      ],
+      "source_published_kst": "2026-10-09T10:04+09:00",
+      "source_title": "중국 반도체 장비, 3분기 수입 증가가 말해주는 것 [돈 되는 해외 주식]",
+      "telegram_core_fact": "2023~2025년 분기별 중국산 장비 기업 매출과 외국산 장비 수입이 높은 동행성을 보였다는 점을 감안하면 3분기 중국 장비 기업 실적에 대한 눈높이를 상향할 필요가 있다고 판단한다.",
+      "title": "중국 반도체 장비, 3분기 수입 증가가 말해주는 것 [돈 되는 해외 주식]"
     },
     "core:d72b4536026a61983b72900b": {
       "first_seen_kst": "2026-10-08T07:12:10+09:00",
@@ -14177,6 +14314,23 @@
       "telegram_core_fact": "BOEM은 \"이사야스 때문에 멕시코만의 유인 석유 생산 플랫폼 371곳의 32.61%에 해당하는 121곳에서 인력들이 대피해 시설 가동이 중단됐다\"고 설명했다.",
       "title": "중동발 공급 불안에 美 생산 중단까지…국제유가 또 급등"
     },
+    "core:f93a997f28cec184ba0231d6": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172019",
+      "source": "매일경제",
+      "source_body_digest": "07e64f9b93ac8402549e026ed7fd4c846f4a5a180054ec9bbbecb52bb3ef584a",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T22:27+09:00",
+      "source_title": "파시라 파마슈티컬스, 비아트리스 피인수 16억5000만 달러..주당 36.5달러",
+      "telegram_core_fact": "파시라 파마슈티컬스(PCRX)는 제약사 비아트리스(VTRS)가 주당 36.50달러 현금, 총 지분가치 16억5000만 달러에 회사 보통주 전량을 인수하는 확정 계약을 체결했다고 8일 발표했다.",
+      "title": "파시라 파마슈티컬스, 비아트리스 피인수 16억5000만 달러..주당 36.5달러"
+    },
     "core:fa06d80663b89a07aea6a945": {
       "first_seen_kst": "2026-10-07T14:56:20+09:00",
       "lanes": {
@@ -14739,6 +14893,27 @@
       "link": "https://www.etnews.com/20260925000007",
       "source": "전자신문",
       "title": "TSMC 파운드리 3~6% 인상 전망…삼성·인텔·후공정도 영향권"
+    },
+    "event:04f483cf89643f44876af80f": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/09/2026100913501991121",
+      "source": "머니투데이",
+      "source_body_digest": "5fafad81bd3e534fa2f6efeca32b76dc610a32c8373fa8b93523b7744b6cec95",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb1cbbd0460877a87f2d4f6e4ffc72178e5513eb1a6d7f3781ccada660bde44a",
+      "source_fact_keys": [
+        "source_fact:v1:8b7e02b0fc110325bf3d01e1dce1dddb227805692c39b22bb5564e300ff2d4b6",
+        "source_fact:v1:99af1369544466de9a2bb061c76f0fc967acfb266f4075c3f47a88c7df220a1c",
+        "source_fact:v1:d55e6295d3b8ebfedab172c895567bc3200b552579f7568c5f462c2c9f241feb"
+      ],
+      "source_published_kst": "2026-10-09T14:07+09:00",
+      "source_title": "관세 수입 줄고, 국채 이자 늘어…美 재정적자 2조달러 문턱",
+      "telegram_core_fact": "도널드 트럼프 미국 행정부는 2기 출범 후 연방정부 인력 감축, 친환경 에너지 세액공제 축소 등 지출 삭감, 고율 관세 부과 정책으로 재정적자 문제 해결에 나섰다.",
+      "title": "관세 수입 줄고, 국채 이자 늘어…美 재정적자 2조달러 문턱"
     },
     "event:05c4072e94331cbcfb67bfb7": {
       "first_seen_kst": "2026-10-03T06:13:51+09:00",
@@ -16750,6 +16925,23 @@
       "source_published_kst": "2026-10-07T15:31+09:00",
       "title": "스페이스X, 엔비디아 칩 사려고 400억달러 조달 추진"
     },
+    "event:427d1757ac7b3f926e19c6a3": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172019",
+      "source": "매일경제",
+      "source_body_digest": "07e64f9b93ac8402549e026ed7fd4c846f4a5a180054ec9bbbecb52bb3ef584a",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T22:27+09:00",
+      "source_title": "파시라 파마슈티컬스, 비아트리스 피인수 16억5000만 달러..주당 36.5달러",
+      "telegram_core_fact": "파시라 파마슈티컬스(PCRX)는 제약사 비아트리스(VTRS)가 주당 36.50달러 현금, 총 지분가치 16억5000만 달러에 회사 보통주 전량을 인수하는 확정 계약을 체결했다고 8일 발표했다.",
+      "title": "파시라 파마슈티컬스, 비아트리스 피인수 16억5000만 달러..주당 36.5달러"
+    },
     "event:42b458c272e9fb8a6271656a": {
       "first_seen_kst": "2026-09-24T16:13:57+09:00",
       "lanes": {
@@ -16870,6 +17062,28 @@
       ],
       "source_published_kst": "2026-10-07T14:18+09:00",
       "title": "日 반도체 소부장, 자국 내 생산 강화…경제안보·엔저 영향"
+    },
+    "event:45ddc32ce9ea2e154f6752e9": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261009114316",
+      "source": "지디넷코리아",
+      "source_body_digest": "16f90a175a11b9caad7f3209ca3c22e776c1c14916dd2f45f7f40998bc78af7a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ccab98d8332c2382e5f8f02a57ab3a9251710c5067fc82c724819e875c9d80fb",
+      "source_fact_keys": [
+        "source_fact:v1:04d6a3023dd657604a48a70a190fac30676a6575714b6b3a2fe1c9dfc7d7cd25",
+        "source_fact:v1:25b7f76224a36f35e87c878b7843d770c19e5e42f53fdbbca5f8419d0082e0a4",
+        "source_fact:v1:27aa4c0bcb9e68bb6f42952d55904d46c1465bc15e56463ec756af8c94af6c00",
+        "source_fact:v1:ee7e1810e6914717721269efd4da018fcf6d8a17730a68e92800c5fb192f2e32"
+      ],
+      "source_published_kst": "2026-10-09T12:07+09:00",
+      "source_title": "삼성전자, 올해 스마트폰 출하 목표 2.4억대→2.3억대 하향",
+      "telegram_core_fact": "한 업계 관계자 A는 \"삼성전자가 최근 협력사에 연간 스마트폰 출하량 2억 3000만대 초반에 해당하는 4분기 부품 발주량을 통보했다\"며 \"당초 부품업계에서 기대했던 (스마트폰 출하량 전망치) 2억 4000만대보다 적다\"고 밝혔다.",
+      "title": "삼성전자, 올해 스마트폰 출하 목표 2.4억대→2.3억대 하향"
     },
     "event:46ab606853d611e62fa2cdc3": {
       "first_seen_kst": "2026-09-25T15:40:29+09:00",
@@ -21497,6 +21711,27 @@
       "link": "https://magazine.hankyung.com/business/article/202610016560b",
       "source": "한국경제",
       "title": "“통신주 반등하나” 금리인상에도 기대감 고조"
+    },
+    "event:ce7e109095d35d8d8bbd679f": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610080504b",
+      "source": "한국경제",
+      "source_body_digest": "a1fceadceb852ef6f612aa29acc7bb9cab834f7a9265f125da66679a4d246ff0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b84e90287c9a4dc7018f03eb3abe0d52df1ca24b2bb032acbffe6af985a375a9",
+      "source_fact_keys": [
+        "source_fact:v1:380168b39063f7dd682519292822ad2814ba8c55964b285c9868d4c4e29f6faa",
+        "source_fact:v1:5da9e7bdb32f1dca76b84adb0ca942aad563aeb4e08822c108857c53e9a3d789",
+        "source_fact:v1:932a77158f5349fafbcf1a92006dd0f276ac728bd1acc5c1ba705bda30507763"
+      ],
+      "source_published_kst": "2026-10-09T10:04+09:00",
+      "source_title": "중국 반도체 장비, 3분기 수입 증가가 말해주는 것 [돈 되는 해외 주식]",
+      "telegram_core_fact": "2023~2025년 분기별 중국산 장비 기업 매출과 외국산 장비 수입이 높은 동행성을 보였다는 점을 감안하면 3분기 중국 장비 기업 실적에 대한 눈높이를 상향할 필요가 있다고 판단한다.",
+      "title": "중국 반도체 장비, 3분기 수입 증가가 말해주는 것 [돈 되는 해외 주식]"
     },
     "event:ce90b9c6c794e021e7e54bda": {
       "first_seen_kst": "2026-10-07T06:41:04+09:00",
@@ -31817,6 +32052,30 @@
       "source_published_kst": "2026-10-06T17:29+09:00",
       "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 양극재 공급계약 | 연합뉴스"
     },
+    "fact:4500c115cbd7633e5177f12e": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171949",
+      "source": "매일경제",
+      "source_body_digest": "2cd7a2f4cad4617344142afb64a1dd8b18be6d44f7b345b4258018fd6f80a30d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f186a4e319088003aa3cfa80670009308052d5a21f415c1cd179a699cfd60ab6",
+      "source_fact_keys": [
+        "source_fact:v1:24e1479739c9c02115c33c4c0e5d34412fc25f5fdc5193e93d44e1c19efcad5f",
+        "source_fact:v1:25ddeb6310e13bb7610e212b432805016a761b956ac8ab17493de78a1565671e",
+        "source_fact:v1:8aadea6d80798e9f97cd2bd4191059df3ac67d2550ac9b7aa075e359d1b023ce",
+        "source_fact:v1:c488d3c5cdd476d412de2d9f9ca1a24c796e71a79efa98cdf0bfa6fbddbc3d3b",
+        "source_fact:v1:c4df9c1abd49430feeae1545a4b3cdb7daeafecea05e4f60bb5cc186c03ab308",
+        "source_fact:v1:e8ed4a69f9db682de8d9bac32de36e223df419c6bdea80308df883aecb2b7b04"
+      ],
+      "source_published_kst": "2026-10-08T20:06+09:00",
+      "source_title": "비머 이미징, 올해 매출 50% 성장 재확인..15일 투자 콘퍼런스 참가",
+      "telegram_core_fact": "비디오 최적화 기술 기업 비머 이미징(BMR)이 2026회계연도 매출이 전년 대비 약 50% 증가할 것이라는 기존 전망을 재확인하고, 오는 15일(현지시간) 뉴욕에서 열리는 씽크에쿼티 콘퍼런스에서 기업 설명회를 연다고 8일 발표했다.",
+      "title": "비머 이미징, 올해 매출 50% 성장 재확인..15일 투자 콘퍼런스 참가"
+    },
     "fact:4554db48f2963776647e6179": {
       "first_seen_kst": "2026-10-08T17:42:30+09:00",
       "lanes": {
@@ -32153,6 +32412,30 @@
       ],
       "source_published_kst": "2026-10-06T17:02+09:00",
       "title": "김정관 \"서남권 반도체 최종 결정은 기업…알래스카 LNG 투자 확정 아냐\"(종합)"
+    },
+    "fact:47face7d1d3fb6a1426b0977": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01899126645611280",
+      "source": "이데일리",
+      "source_body_digest": "090775f1eb1526e76e9007a99e83f18e53e4ac9086f5e33dc15cc8d8e4c1ebfe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:46af53b6df1071778e923e74ca799ec4bb9f4d392c4db8db5c6c3d66680bcfbc",
+      "source_fact_keys": [
+        "source_fact:v1:0bb7d6319ff9cda74f075446a05b08a2274cf510431e7c3dc28d3a7727a1280f",
+        "source_fact:v1:278ce25bd58b1af6ecd3c12ff94922c8f82759b35d9513f50c491bbcb3e4f907",
+        "source_fact:v1:3d096a04ce4ce9f5765ec34eb615a16c29248593e82c635c8b75afa41acaf83c",
+        "source_fact:v1:49de89a6d258ba7ce68651b88fe8a7365d004539e5aca96350b9fe3a08a27ac7",
+        "source_fact:v1:e49dd5d9192f9ab5f035456d99c90366435c8b345487f4217733422d8f1d2a52",
+        "source_fact:v1:f3173c35bb8d372cdc947f134253add97d72c54a27d04b8ca4d578b8d7bf85af"
+      ],
+      "source_published_kst": "2026-10-09T11:11+09:00",
+      "source_title": "[VC's Pick]K방산 훈풍 타고 IPO 정조준…'디지트론' 프리 IPO 투자 유치",
+      "telegram_core_fact": "특히 방산 부품·모듈을 제조하는 '디지트론'이 내년 하반기 코스닥 상장 추진을 앞두고 100억원 규모 프리IPO 투자에 성공해 주목받았다.",
+      "title": "[VC's Pick]K방산 훈풍 타고 IPO 정조준…'디지트론' 프리 IPO 투자 유치"
     },
     "fact:48191ca5f4824185a715074e": {
       "first_seen_kst": "2026-10-06T23:05:07+09:00",
@@ -34011,6 +34294,27 @@
       "source_title": "부모급여 아동수당 없어진다…'아이맞이 지원금'으로 통합",
       "telegram_core_fact": "이어진 업무보고에서 복지부는 첫만남이용권, 부모급여, 아동수당 등으로 갈라져 있던 현금성 지원 체계를 ‘아이맞이 지원금’과 ‘아동기본수당’ 두 축으로 단순하게 개편한다고 발표했다.",
       "title": "부모급여 아동수당 없어진다…'아이맞이 지원금'으로 통합"
+    },
+    "fact:5861a7bd00e97a76dbde1dd3": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/09/2026100913501991121",
+      "source": "머니투데이",
+      "source_body_digest": "5fafad81bd3e534fa2f6efeca32b76dc610a32c8373fa8b93523b7744b6cec95",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb1cbbd0460877a87f2d4f6e4ffc72178e5513eb1a6d7f3781ccada660bde44a",
+      "source_fact_keys": [
+        "source_fact:v1:8b7e02b0fc110325bf3d01e1dce1dddb227805692c39b22bb5564e300ff2d4b6",
+        "source_fact:v1:99af1369544466de9a2bb061c76f0fc967acfb266f4075c3f47a88c7df220a1c",
+        "source_fact:v1:d55e6295d3b8ebfedab172c895567bc3200b552579f7568c5f462c2c9f241feb"
+      ],
+      "source_published_kst": "2026-10-09T14:07+09:00",
+      "source_title": "관세 수입 줄고, 국채 이자 늘어…美 재정적자 2조달러 문턱",
+      "telegram_core_fact": "도널드 트럼프 미국 행정부는 2기 출범 후 연방정부 인력 감축, 친환경 에너지 세액공제 축소 등 지출 삭감, 고율 관세 부과 정책으로 재정적자 문제 해결에 나섰다.",
+      "title": "관세 수입 줄고, 국채 이자 늘어…美 재정적자 2조달러 문턱"
     },
     "fact:58738a6d70181b241619210d": {
       "first_seen_kst": "2026-10-06T12:10:48+09:00",
@@ -36690,6 +36994,27 @@
       "source_title": "태평양, 9년 연속 ‘글로벌 200대 로펌’ 선정…세계 193위",
       "telegram_core_fact": "태평양은 지난해 대형·고난도 사건과 크로스보더 거래를 수행하며 전년 대비 약 12% 증가한 4702억원의 매출을 기록했다. 법무법인 태평양은 미국 법률전문매체 아메리칸 로이어가 발표한 ‘2026 글로벌 200대 로펌(The Global 200)’에서 세계 193위에 올랐다고 7일 밝혔다.",
       "title": "태평양, 9년 연속 ‘글로벌 200대 로펌’ 선정…세계 193위"
+    },
+    "fact:70348bc89a09230d172a8a5f": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610080504b",
+      "source": "한국경제",
+      "source_body_digest": "a1fceadceb852ef6f612aa29acc7bb9cab834f7a9265f125da66679a4d246ff0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b84e90287c9a4dc7018f03eb3abe0d52df1ca24b2bb032acbffe6af985a375a9",
+      "source_fact_keys": [
+        "source_fact:v1:380168b39063f7dd682519292822ad2814ba8c55964b285c9868d4c4e29f6faa",
+        "source_fact:v1:5da9e7bdb32f1dca76b84adb0ca942aad563aeb4e08822c108857c53e9a3d789",
+        "source_fact:v1:932a77158f5349fafbcf1a92006dd0f276ac728bd1acc5c1ba705bda30507763"
+      ],
+      "source_published_kst": "2026-10-09T10:04+09:00",
+      "source_title": "중국 반도체 장비, 3분기 수입 증가가 말해주는 것 [돈 되는 해외 주식]",
+      "telegram_core_fact": "2023~2025년 분기별 중국산 장비 기업 매출과 외국산 장비 수입이 높은 동행성을 보였다는 점을 감안하면 3분기 중국 장비 기업 실적에 대한 눈높이를 상향할 필요가 있다고 판단한다.",
+      "title": "중국 반도체 장비, 3분기 수입 증가가 말해주는 것 [돈 되는 해외 주식]"
     },
     "fact:7043eb798518f9cbc944b12c": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
@@ -40805,6 +41130,28 @@
       ],
       "source_published_kst": "2026-10-06T10:22+09:00",
       "title": "튀르키예·파키스탄 \"사우디에 군사력 신속 배치\"…'메카협정' 발동"
+    },
+    "fact:93c53b107f0d5feba71941ab": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261009114316",
+      "source": "지디넷코리아",
+      "source_body_digest": "16f90a175a11b9caad7f3209ca3c22e776c1c14916dd2f45f7f40998bc78af7a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ccab98d8332c2382e5f8f02a57ab3a9251710c5067fc82c724819e875c9d80fb",
+      "source_fact_keys": [
+        "source_fact:v1:04d6a3023dd657604a48a70a190fac30676a6575714b6b3a2fe1c9dfc7d7cd25",
+        "source_fact:v1:25b7f76224a36f35e87c878b7843d770c19e5e42f53fdbbca5f8419d0082e0a4",
+        "source_fact:v1:27aa4c0bcb9e68bb6f42952d55904d46c1465bc15e56463ec756af8c94af6c00",
+        "source_fact:v1:ee7e1810e6914717721269efd4da018fcf6d8a17730a68e92800c5fb192f2e32"
+      ],
+      "source_published_kst": "2026-10-09T12:07+09:00",
+      "source_title": "삼성전자, 올해 스마트폰 출하 목표 2.4억대→2.3억대 하향",
+      "telegram_core_fact": "한 업계 관계자 A는 \"삼성전자가 최근 협력사에 연간 스마트폰 출하량 2억 3000만대 초반에 해당하는 4분기 부품 발주량을 통보했다\"며 \"당초 부품업계에서 기대했던 (스마트폰 출하량 전망치) 2억 4000만대보다 적다\"고 밝혔다.",
+      "title": "삼성전자, 올해 스마트폰 출하 목표 2.4억대→2.3억대 하향"
     },
     "fact:93c7e9d32246e02ba86ecc28": {
       "first_seen_kst": "2026-10-06T06:36:31+09:00",
@@ -48462,6 +48809,31 @@
       "source_title": "글로벌 채권 공포…美 10년·30년물 장기금리 장중 24년 만 최고",
       "telegram_core_fact": "글로벌 채권 시장의 벤치마크인 10년물 금리는 장중 5.36%까지 올랐다.",
       "title": "글로벌 채권 공포…美 10년·30년물 장기금리 장중 24년 만 최고"
+    },
+    "fact:d3f20f09bcab6b10501a8095": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.fnnews.com/news/202610081534588217",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "2002951ba5d479c94fec4620a4700afe85e2d8ca6cc82a1323ae095b4bf93907",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:92ef04dbfe5af0c4797b1091a9d529a8e7881988c78c85adfd408fbede8a0d51",
+      "source_fact_keys": [
+        "source_fact:v1:1ebe1ae8bbed6b3f0b2598598ae3a1be3e5e8effcb33240af8ba9746acf7704d",
+        "source_fact:v1:35ba2f8ebcdcae63396e4955ec46cca6818935b6ac77d8d49e40f2fbb7d105be",
+        "source_fact:v1:3c5fd6ff913a3cced8ff563663bdd4f10a4d6d4c3f1b3ff3b82e28d22d79d9d6",
+        "source_fact:v1:4624ab40a02c79999417a2727a8549659616f35a04eeec47ec6999618bbbb5e9",
+        "source_fact:v1:71393f0ad48feed3ac1159276bd7d96efae1cb81136de469327b6474308f2035",
+        "source_fact:v1:7ecd0a1cb849bdcfa988d1add1946040fd274f680393f997f07391d497103fdb",
+        "source_fact:v1:edc5472f20ba0a3abefc13901befd20ad80ac1bdc4a55e3b1fe3660cf52822df"
+      ],
+      "source_published_kst": "2026-10-08T17:32+09:00",
+      "source_title": "SK하이닉스 솔리다임, 美 상장 채비…100억달러 조달 관측",
+      "telegram_core_fact": "솔리다임은 이번 IPO를 통해 약 100억 달러(약 13조4000억원)를 조달할 것으로 예상된다. 두 은행은 솔리다임의 상장 전 자금 조달을 위한 투자 유치 작업에도 참여할 것으로 관측된다.",
+      "title": "SK하이닉스 솔리다임, 美 상장 채비…100억달러 조달 관측"
     },
     "fact:d43e2162d101520a89a8092b": {
       "first_seen_kst": "2026-10-07T18:58:51+09:00",
@@ -56738,6 +57110,28 @@
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "AI株 숨고르기 반사익…美바이오 ETF 순풍"
     },
+    "link:105144271ef1f1266b4e0e34": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261009114316",
+      "source": "지디넷코리아",
+      "source_body_digest": "16f90a175a11b9caad7f3209ca3c22e776c1c14916dd2f45f7f40998bc78af7a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ccab98d8332c2382e5f8f02a57ab3a9251710c5067fc82c724819e875c9d80fb",
+      "source_fact_keys": [
+        "source_fact:v1:04d6a3023dd657604a48a70a190fac30676a6575714b6b3a2fe1c9dfc7d7cd25",
+        "source_fact:v1:25b7f76224a36f35e87c878b7843d770c19e5e42f53fdbbca5f8419d0082e0a4",
+        "source_fact:v1:27aa4c0bcb9e68bb6f42952d55904d46c1465bc15e56463ec756af8c94af6c00",
+        "source_fact:v1:ee7e1810e6914717721269efd4da018fcf6d8a17730a68e92800c5fb192f2e32"
+      ],
+      "source_published_kst": "2026-10-09T12:07+09:00",
+      "source_title": "삼성전자, 올해 스마트폰 출하 목표 2.4억대→2.3억대 하향",
+      "telegram_core_fact": "한 업계 관계자 A는 \"삼성전자가 최근 협력사에 연간 스마트폰 출하량 2억 3000만대 초반에 해당하는 4분기 부품 발주량을 통보했다\"며 \"당초 부품업계에서 기대했던 (스마트폰 출하량 전망치) 2억 4000만대보다 적다\"고 밝혔다.",
+      "title": "삼성전자, 올해 스마트폰 출하 목표 2.4억대→2.3억대 하향"
+    },
     "link:1055142a98fc4ab71facf5e2": {
       "first_seen_kst": "2026-09-30T06:53:15+09:00",
       "lanes": {
@@ -60494,6 +60888,30 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003811694",
       "source": "뉴시스",
       "title": "aT 수입 미국산 콩서 GMO 성분 400건 검출…중·러시아 산은 0건"
+    },
+    "link:25231969b7ad75ee9f365d95": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01899126645611280",
+      "source": "이데일리",
+      "source_body_digest": "090775f1eb1526e76e9007a99e83f18e53e4ac9086f5e33dc15cc8d8e4c1ebfe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:46af53b6df1071778e923e74ca799ec4bb9f4d392c4db8db5c6c3d66680bcfbc",
+      "source_fact_keys": [
+        "source_fact:v1:0bb7d6319ff9cda74f075446a05b08a2274cf510431e7c3dc28d3a7727a1280f",
+        "source_fact:v1:278ce25bd58b1af6ecd3c12ff94922c8f82759b35d9513f50c491bbcb3e4f907",
+        "source_fact:v1:3d096a04ce4ce9f5765ec34eb615a16c29248593e82c635c8b75afa41acaf83c",
+        "source_fact:v1:49de89a6d258ba7ce68651b88fe8a7365d004539e5aca96350b9fe3a08a27ac7",
+        "source_fact:v1:e49dd5d9192f9ab5f035456d99c90366435c8b345487f4217733422d8f1d2a52",
+        "source_fact:v1:f3173c35bb8d372cdc947f134253add97d72c54a27d04b8ca4d578b8d7bf85af"
+      ],
+      "source_published_kst": "2026-10-09T11:11+09:00",
+      "source_title": "[VC's Pick]K방산 훈풍 타고 IPO 정조준…'디지트론' 프리 IPO 투자 유치",
+      "telegram_core_fact": "특히 방산 부품·모듈을 제조하는 '디지트론'이 내년 하반기 코스닥 상장 추진을 앞두고 100억원 규모 프리IPO 투자에 성공해 주목받았다.",
+      "title": "[VC's Pick]K방산 훈풍 타고 IPO 정조준…'디지트론' 프리 IPO 투자 유치"
     },
     "link:2538aae17128ffe01a9ba7d1": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
@@ -72391,6 +72809,30 @@
       "source": "뉴시스",
       "title": "오아시스, 90년대 미공개 녹음본 28억 경매에 법적 대응…출품 취소"
     },
+    "link:6267a91732ace062a1f3e118": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171949",
+      "source": "매일경제",
+      "source_body_digest": "2cd7a2f4cad4617344142afb64a1dd8b18be6d44f7b345b4258018fd6f80a30d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f186a4e319088003aa3cfa80670009308052d5a21f415c1cd179a699cfd60ab6",
+      "source_fact_keys": [
+        "source_fact:v1:24e1479739c9c02115c33c4c0e5d34412fc25f5fdc5193e93d44e1c19efcad5f",
+        "source_fact:v1:25ddeb6310e13bb7610e212b432805016a761b956ac8ab17493de78a1565671e",
+        "source_fact:v1:8aadea6d80798e9f97cd2bd4191059df3ac67d2550ac9b7aa075e359d1b023ce",
+        "source_fact:v1:c488d3c5cdd476d412de2d9f9ca1a24c796e71a79efa98cdf0bfa6fbddbc3d3b",
+        "source_fact:v1:c4df9c1abd49430feeae1545a4b3cdb7daeafecea05e4f60bb5cc186c03ab308",
+        "source_fact:v1:e8ed4a69f9db682de8d9bac32de36e223df419c6bdea80308df883aecb2b7b04"
+      ],
+      "source_published_kst": "2026-10-08T20:06+09:00",
+      "source_title": "비머 이미징, 올해 매출 50% 성장 재확인..15일 투자 콘퍼런스 참가",
+      "telegram_core_fact": "비디오 최적화 기술 기업 비머 이미징(BMR)이 2026회계연도 매출이 전년 대비 약 50% 증가할 것이라는 기존 전망을 재확인하고, 오는 15일(현지시간) 뉴욕에서 열리는 씽크에쿼티 콘퍼런스에서 기업 설명회를 연다고 8일 발표했다.",
+      "title": "비머 이미징, 올해 매출 50% 성장 재확인..15일 투자 콘퍼런스 참가"
+    },
     "link:628c6caa6a0ce46b6a924ee3": {
       "first_seen_kst": "2026-10-07T00:38:27+09:00",
       "lanes": {
@@ -75764,6 +76206,23 @@
       "source_title": "LG엔솔, 전기차 70만대분 캐나다 리튬 확보",
       "telegram_core_fact": "LG에너지솔루션은 8일 북미 리튬 생산기업 엘레브라 리튬과 리튬 정광 장기 공급계약을 체결했다고 밝혔다.",
       "title": "LG엔솔, 전기차 70만대분 캐나다 리튬 확보"
+    },
+    "link:73353613ee57d24fefa18970": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172019",
+      "source": "매일경제",
+      "source_body_digest": "07e64f9b93ac8402549e026ed7fd4c846f4a5a180054ec9bbbecb52bb3ef584a",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T22:27+09:00",
+      "source_title": "파시라 파마슈티컬스, 비아트리스 피인수 16억5000만 달러..주당 36.5달러",
+      "telegram_core_fact": "파시라 파마슈티컬스(PCRX)는 제약사 비아트리스(VTRS)가 주당 36.50달러 현금, 총 지분가치 16억5000만 달러에 회사 보통주 전량을 인수하는 확정 계약을 체결했다고 8일 발표했다.",
+      "title": "파시라 파마슈티컬스, 비아트리스 피인수 16억5000만 달러..주당 36.5달러"
     },
     "link:7374a9523b186e4062ddabb5": {
       "first_seen_kst": "2026-10-08T14:55:40+09:00",
@@ -81507,6 +81966,27 @@
       "source": "연합뉴스",
       "title": "유가 변동에 국고채 금리 혼조세…3년물 연 4.040%(종합) | 연합뉴스"
     },
+    "link:91b3ffdae4d76013bbd26130": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/09/2026100913501991121",
+      "source": "머니투데이",
+      "source_body_digest": "5fafad81bd3e534fa2f6efeca32b76dc610a32c8373fa8b93523b7744b6cec95",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb1cbbd0460877a87f2d4f6e4ffc72178e5513eb1a6d7f3781ccada660bde44a",
+      "source_fact_keys": [
+        "source_fact:v1:8b7e02b0fc110325bf3d01e1dce1dddb227805692c39b22bb5564e300ff2d4b6",
+        "source_fact:v1:99af1369544466de9a2bb061c76f0fc967acfb266f4075c3f47a88c7df220a1c",
+        "source_fact:v1:d55e6295d3b8ebfedab172c895567bc3200b552579f7568c5f462c2c9f241feb"
+      ],
+      "source_published_kst": "2026-10-09T14:07+09:00",
+      "source_title": "관세 수입 줄고, 국채 이자 늘어…美 재정적자 2조달러 문턱",
+      "telegram_core_fact": "도널드 트럼프 미국 행정부는 2기 출범 후 연방정부 인력 감축, 친환경 에너지 세액공제 축소 등 지출 삭감, 고율 관세 부과 정책으로 재정적자 문제 해결에 나섰다.",
+      "title": "관세 수입 줄고, 국채 이자 늘어…美 재정적자 2조달러 문턱"
+    },
     "link:91d71d86a4dd7fcec6724d46": {
       "first_seen_kst": "2026-09-20T18:25:16+09:00",
       "lanes": {
@@ -85041,6 +85521,27 @@
       "source": "이데일리",
       "title": "삼성전기, FC-BGA 증설·MLCC 장기계약…중장기 성장 가시성↑-키움"
     },
+    "link:a41e67aaa876401df905834e": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610080504b",
+      "source": "한국경제",
+      "source_body_digest": "a1fceadceb852ef6f612aa29acc7bb9cab834f7a9265f125da66679a4d246ff0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b84e90287c9a4dc7018f03eb3abe0d52df1ca24b2bb032acbffe6af985a375a9",
+      "source_fact_keys": [
+        "source_fact:v1:380168b39063f7dd682519292822ad2814ba8c55964b285c9868d4c4e29f6faa",
+        "source_fact:v1:5da9e7bdb32f1dca76b84adb0ca942aad563aeb4e08822c108857c53e9a3d789",
+        "source_fact:v1:932a77158f5349fafbcf1a92006dd0f276ac728bd1acc5c1ba705bda30507763"
+      ],
+      "source_published_kst": "2026-10-09T10:04+09:00",
+      "source_title": "중국 반도체 장비, 3분기 수입 증가가 말해주는 것 [돈 되는 해외 주식]",
+      "telegram_core_fact": "2023~2025년 분기별 중국산 장비 기업 매출과 외국산 장비 수입이 높은 동행성을 보였다는 점을 감안하면 3분기 중국 장비 기업 실적에 대한 눈높이를 상향할 필요가 있다고 판단한다.",
+      "title": "중국 반도체 장비, 3분기 수입 증가가 말해주는 것 [돈 되는 해외 주식]"
+    },
     "link:a42fda09aead29a13a2f7225": {
       "first_seen_kst": "2026-10-07T23:36:14+09:00",
       "lanes": {
@@ -87202,6 +87703,31 @@
       ],
       "source_published_kst": "2026-10-06T23:43+09:00",
       "title": "에이로봇, 방산혁신기업 선정…휴머노이드 군 시범운용 추진"
+    },
+    "link:aeef6d70fa87779322f54ed6": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.fnnews.com/news/202610081534588217",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "2002951ba5d479c94fec4620a4700afe85e2d8ca6cc82a1323ae095b4bf93907",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:92ef04dbfe5af0c4797b1091a9d529a8e7881988c78c85adfd408fbede8a0d51",
+      "source_fact_keys": [
+        "source_fact:v1:1ebe1ae8bbed6b3f0b2598598ae3a1be3e5e8effcb33240af8ba9746acf7704d",
+        "source_fact:v1:35ba2f8ebcdcae63396e4955ec46cca6818935b6ac77d8d49e40f2fbb7d105be",
+        "source_fact:v1:3c5fd6ff913a3cced8ff563663bdd4f10a4d6d4c3f1b3ff3b82e28d22d79d9d6",
+        "source_fact:v1:4624ab40a02c79999417a2727a8549659616f35a04eeec47ec6999618bbbb5e9",
+        "source_fact:v1:71393f0ad48feed3ac1159276bd7d96efae1cb81136de469327b6474308f2035",
+        "source_fact:v1:7ecd0a1cb849bdcfa988d1add1946040fd274f680393f997f07391d497103fdb",
+        "source_fact:v1:edc5472f20ba0a3abefc13901befd20ad80ac1bdc4a55e3b1fe3660cf52822df"
+      ],
+      "source_published_kst": "2026-10-08T17:32+09:00",
+      "source_title": "SK하이닉스 솔리다임, 美 상장 채비…100억달러 조달 관측",
+      "telegram_core_fact": "솔리다임은 이번 IPO를 통해 약 100억 달러(약 13조4000억원)를 조달할 것으로 예상된다. 두 은행은 솔리다임의 상장 전 자금 조달을 위한 투자 유치 작업에도 참여할 것으로 관측된다.",
+      "title": "SK하이닉스 솔리다임, 美 상장 채비…100억달러 조달 관측"
     },
     "link:af4671a23e1f0f201babe338": {
       "first_seen_kst": "2026-10-07T10:49:23+09:00",
@@ -105936,6 +106462,30 @@
       "source_published_kst": "2026-10-06T09:32+09:00",
       "title": "LG전자, 美 AI 데이터센터 냉각 솔루션 공급 계약에 '급등'"
     },
+    "original:143b080a2ce7e5d325c8a687": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01899126645611280",
+      "source": "이데일리",
+      "source_body_digest": "090775f1eb1526e76e9007a99e83f18e53e4ac9086f5e33dc15cc8d8e4c1ebfe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:46af53b6df1071778e923e74ca799ec4bb9f4d392c4db8db5c6c3d66680bcfbc",
+      "source_fact_keys": [
+        "source_fact:v1:0bb7d6319ff9cda74f075446a05b08a2274cf510431e7c3dc28d3a7727a1280f",
+        "source_fact:v1:278ce25bd58b1af6ecd3c12ff94922c8f82759b35d9513f50c491bbcb3e4f907",
+        "source_fact:v1:3d096a04ce4ce9f5765ec34eb615a16c29248593e82c635c8b75afa41acaf83c",
+        "source_fact:v1:49de89a6d258ba7ce68651b88fe8a7365d004539e5aca96350b9fe3a08a27ac7",
+        "source_fact:v1:e49dd5d9192f9ab5f035456d99c90366435c8b345487f4217733422d8f1d2a52",
+        "source_fact:v1:f3173c35bb8d372cdc947f134253add97d72c54a27d04b8ca4d578b8d7bf85af"
+      ],
+      "source_published_kst": "2026-10-09T11:11+09:00",
+      "source_title": "[VC's Pick]K방산 훈풍 타고 IPO 정조준…'디지트론' 프리 IPO 투자 유치",
+      "telegram_core_fact": "특히 방산 부품·모듈을 제조하는 '디지트론'이 내년 하반기 코스닥 상장 추진을 앞두고 100억원 규모 프리IPO 투자에 성공해 주목받았다.",
+      "title": "[VC's Pick]K방산 훈풍 타고 IPO 정조준…'디지트론' 프리 IPO 투자 유치"
+    },
     "original:145255910c167871bb77d46d": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
       "lanes": {
@@ -110074,6 +110624,31 @@
       "link": "https://zdnet.co.kr/view/?no=20261001155205",
       "source": "지디넷코리아",
       "title": "에코프로, 최상운·김장우 공동 대표 체제로"
+    },
+    "original:2a8a5e4eb0ffdba51514427a": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.fnnews.com/news/202610081534588217",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "2002951ba5d479c94fec4620a4700afe85e2d8ca6cc82a1323ae095b4bf93907",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:92ef04dbfe5af0c4797b1091a9d529a8e7881988c78c85adfd408fbede8a0d51",
+      "source_fact_keys": [
+        "source_fact:v1:1ebe1ae8bbed6b3f0b2598598ae3a1be3e5e8effcb33240af8ba9746acf7704d",
+        "source_fact:v1:35ba2f8ebcdcae63396e4955ec46cca6818935b6ac77d8d49e40f2fbb7d105be",
+        "source_fact:v1:3c5fd6ff913a3cced8ff563663bdd4f10a4d6d4c3f1b3ff3b82e28d22d79d9d6",
+        "source_fact:v1:4624ab40a02c79999417a2727a8549659616f35a04eeec47ec6999618bbbb5e9",
+        "source_fact:v1:71393f0ad48feed3ac1159276bd7d96efae1cb81136de469327b6474308f2035",
+        "source_fact:v1:7ecd0a1cb849bdcfa988d1add1946040fd274f680393f997f07391d497103fdb",
+        "source_fact:v1:edc5472f20ba0a3abefc13901befd20ad80ac1bdc4a55e3b1fe3660cf52822df"
+      ],
+      "source_published_kst": "2026-10-08T17:32+09:00",
+      "source_title": "SK하이닉스 솔리다임, 美 상장 채비…100억달러 조달 관측",
+      "telegram_core_fact": "솔리다임은 이번 IPO를 통해 약 100억 달러(약 13조4000억원)를 조달할 것으로 예상된다. 두 은행은 솔리다임의 상장 전 자금 조달을 위한 투자 유치 작업에도 참여할 것으로 관측된다.",
+      "title": "SK하이닉스 솔리다임, 美 상장 채비…100억달러 조달 관측"
     },
     "original:2add2e0d760286fb3255d4fa": {
       "first_seen_kst": "2026-10-08T11:28:27+09:00",
@@ -116518,6 +117093,30 @@
       "source": "매일경제",
       "title": "워싱턴서 루비오 만난 조현 \"호르무즈 자유통항 기여할것\""
     },
+    "original:497c8691673f1c156c5a95a1": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171949",
+      "source": "매일경제",
+      "source_body_digest": "2cd7a2f4cad4617344142afb64a1dd8b18be6d44f7b345b4258018fd6f80a30d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f186a4e319088003aa3cfa80670009308052d5a21f415c1cd179a699cfd60ab6",
+      "source_fact_keys": [
+        "source_fact:v1:24e1479739c9c02115c33c4c0e5d34412fc25f5fdc5193e93d44e1c19efcad5f",
+        "source_fact:v1:25ddeb6310e13bb7610e212b432805016a761b956ac8ab17493de78a1565671e",
+        "source_fact:v1:8aadea6d80798e9f97cd2bd4191059df3ac67d2550ac9b7aa075e359d1b023ce",
+        "source_fact:v1:c488d3c5cdd476d412de2d9f9ca1a24c796e71a79efa98cdf0bfa6fbddbc3d3b",
+        "source_fact:v1:c4df9c1abd49430feeae1545a4b3cdb7daeafecea05e4f60bb5cc186c03ab308",
+        "source_fact:v1:e8ed4a69f9db682de8d9bac32de36e223df419c6bdea80308df883aecb2b7b04"
+      ],
+      "source_published_kst": "2026-10-08T20:06+09:00",
+      "source_title": "비머 이미징, 올해 매출 50% 성장 재확인..15일 투자 콘퍼런스 참가",
+      "telegram_core_fact": "비디오 최적화 기술 기업 비머 이미징(BMR)이 2026회계연도 매출이 전년 대비 약 50% 증가할 것이라는 기존 전망을 재확인하고, 오는 15일(현지시간) 뉴욕에서 열리는 씽크에쿼티 콘퍼런스에서 기업 설명회를 연다고 8일 발표했다.",
+      "title": "비머 이미징, 올해 매출 50% 성장 재확인..15일 투자 콘퍼런스 참가"
+    },
     "original:49907af8b471c537c02b54ed": {
       "first_seen_kst": "2026-09-19T11:08:27+09:00",
       "lanes": {
@@ -118793,6 +119392,27 @@
       "source_title": "삼성자산운용, 하루 만에 '주성엔지니어링' 2000억 쓸어담았다… 왜?",
       "telegram_core_fact": "실제로 주성엔지니어링의 수주 잔고는 올해 1분기 말 약 746억원에서 2분기 말 2336억원으로 한 분기 만에 3배 넘게 급증했다.",
       "title": "삼성자산운용, 하루 만에 '주성엔지니어링' 2000억 쓸어담았다… 왜?"
+    },
+    "original:5628d6bb9de402a4e79102d8": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610080504b",
+      "source": "한국경제",
+      "source_body_digest": "a1fceadceb852ef6f612aa29acc7bb9cab834f7a9265f125da66679a4d246ff0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b84e90287c9a4dc7018f03eb3abe0d52df1ca24b2bb032acbffe6af985a375a9",
+      "source_fact_keys": [
+        "source_fact:v1:380168b39063f7dd682519292822ad2814ba8c55964b285c9868d4c4e29f6faa",
+        "source_fact:v1:5da9e7bdb32f1dca76b84adb0ca942aad563aeb4e08822c108857c53e9a3d789",
+        "source_fact:v1:932a77158f5349fafbcf1a92006dd0f276ac728bd1acc5c1ba705bda30507763"
+      ],
+      "source_published_kst": "2026-10-09T10:04+09:00",
+      "source_title": "중국 반도체 장비, 3분기 수입 증가가 말해주는 것 [돈 되는 해외 주식]",
+      "telegram_core_fact": "2023~2025년 분기별 중국산 장비 기업 매출과 외국산 장비 수입이 높은 동행성을 보였다는 점을 감안하면 3분기 중국 장비 기업 실적에 대한 눈높이를 상향할 필요가 있다고 판단한다.",
+      "title": "중국 반도체 장비, 3분기 수입 증가가 말해주는 것 [돈 되는 해외 주식]"
     },
     "original:5630b74101bb21823c755906": {
       "first_seen_kst": "2026-10-03T07:04:42+09:00",
@@ -123567,6 +124187,23 @@
       ],
       "source_published_kst": "2026-10-07T09:38+09:00",
       "title": "BMW 코리아, 전동화차 판매 1만대 돌파…프리미엄 수입차 첫 기록"
+    },
+    "original:722e45b0aef6d78d50dbd57b": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172019",
+      "source": "매일경제",
+      "source_body_digest": "07e64f9b93ac8402549e026ed7fd4c846f4a5a180054ec9bbbecb52bb3ef584a",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T22:27+09:00",
+      "source_title": "파시라 파마슈티컬스, 비아트리스 피인수 16억5000만 달러..주당 36.5달러",
+      "telegram_core_fact": "파시라 파마슈티컬스(PCRX)는 제약사 비아트리스(VTRS)가 주당 36.50달러 현금, 총 지분가치 16억5000만 달러에 회사 보통주 전량을 인수하는 확정 계약을 체결했다고 8일 발표했다.",
+      "title": "파시라 파마슈티컬스, 비아트리스 피인수 16억5000만 달러..주당 36.5달러"
     },
     "original:723de27b3d1213587f0ebc79": {
       "first_seen_kst": "2026-10-06T14:52:12+09:00",
@@ -130697,6 +131334,27 @@
       "link": "https://www.newsis.com/view/NISX20260928_0003804696",
       "source": "뉴시스",
       "title": "[주간 뉴욕증시] 마이크론 실적·美고용 주목…AI 수요·금리 향방 가늠"
+    },
+    "original:9838bfc9a4a29fd237daef98": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/09/2026100913501991121",
+      "source": "머니투데이",
+      "source_body_digest": "5fafad81bd3e534fa2f6efeca32b76dc610a32c8373fa8b93523b7744b6cec95",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb1cbbd0460877a87f2d4f6e4ffc72178e5513eb1a6d7f3781ccada660bde44a",
+      "source_fact_keys": [
+        "source_fact:v1:8b7e02b0fc110325bf3d01e1dce1dddb227805692c39b22bb5564e300ff2d4b6",
+        "source_fact:v1:99af1369544466de9a2bb061c76f0fc967acfb266f4075c3f47a88c7df220a1c",
+        "source_fact:v1:d55e6295d3b8ebfedab172c895567bc3200b552579f7568c5f462c2c9f241feb"
+      ],
+      "source_published_kst": "2026-10-09T14:07+09:00",
+      "source_title": "관세 수입 줄고, 국채 이자 늘어…美 재정적자 2조달러 문턱",
+      "telegram_core_fact": "도널드 트럼프 미국 행정부는 2기 출범 후 연방정부 인력 감축, 친환경 에너지 세액공제 축소 등 지출 삭감, 고율 관세 부과 정책으로 재정적자 문제 해결에 나섰다.",
+      "title": "관세 수입 줄고, 국채 이자 늘어…美 재정적자 2조달러 문턱"
     },
     "original:984b38590d256365308afe4f": {
       "first_seen_kst": "2026-10-02T22:19:09+09:00",
@@ -141923,6 +142581,28 @@
       "source": "파이낸셜뉴스",
       "title": "배민·구글코리아 대표, 국회 재경위 증인 채택"
     },
+    "original:d605f76390f2ef139abb0c89": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261009114316",
+      "source": "지디넷코리아",
+      "source_body_digest": "16f90a175a11b9caad7f3209ca3c22e776c1c14916dd2f45f7f40998bc78af7a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ccab98d8332c2382e5f8f02a57ab3a9251710c5067fc82c724819e875c9d80fb",
+      "source_fact_keys": [
+        "source_fact:v1:04d6a3023dd657604a48a70a190fac30676a6575714b6b3a2fe1c9dfc7d7cd25",
+        "source_fact:v1:25b7f76224a36f35e87c878b7843d770c19e5e42f53fdbbca5f8419d0082e0a4",
+        "source_fact:v1:27aa4c0bcb9e68bb6f42952d55904d46c1465bc15e56463ec756af8c94af6c00",
+        "source_fact:v1:ee7e1810e6914717721269efd4da018fcf6d8a17730a68e92800c5fb192f2e32"
+      ],
+      "source_published_kst": "2026-10-09T12:07+09:00",
+      "source_title": "삼성전자, 올해 스마트폰 출하 목표 2.4억대→2.3억대 하향",
+      "telegram_core_fact": "한 업계 관계자 A는 \"삼성전자가 최근 협력사에 연간 스마트폰 출하량 2억 3000만대 초반에 해당하는 4분기 부품 발주량을 통보했다\"며 \"당초 부품업계에서 기대했던 (스마트폰 출하량 전망치) 2억 4000만대보다 적다\"고 밝혔다.",
+      "title": "삼성전자, 올해 스마트폰 출하 목표 2.4억대→2.3억대 하향"
+    },
     "original:d63b5ba2b8a67f9ffdc4d59c": {
       "first_seen_kst": "2026-10-02T01:18:53+09:00",
       "lanes": {
@@ -151986,6 +152666,30 @@
       "source_published_kst": "2026-10-06T11:22+09:00",
       "title": "\"2028년 전력 대란 온다\" 경고…잘나가던 삼전닉스 '빨간불'"
     },
+    "source_fact:058cc2132ffe00fefdb1e415": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171949",
+      "source": "매일경제",
+      "source_body_digest": "2cd7a2f4cad4617344142afb64a1dd8b18be6d44f7b345b4258018fd6f80a30d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f186a4e319088003aa3cfa80670009308052d5a21f415c1cd179a699cfd60ab6",
+      "source_fact_keys": [
+        "source_fact:v1:24e1479739c9c02115c33c4c0e5d34412fc25f5fdc5193e93d44e1c19efcad5f",
+        "source_fact:v1:25ddeb6310e13bb7610e212b432805016a761b956ac8ab17493de78a1565671e",
+        "source_fact:v1:8aadea6d80798e9f97cd2bd4191059df3ac67d2550ac9b7aa075e359d1b023ce",
+        "source_fact:v1:c488d3c5cdd476d412de2d9f9ca1a24c796e71a79efa98cdf0bfa6fbddbc3d3b",
+        "source_fact:v1:c4df9c1abd49430feeae1545a4b3cdb7daeafecea05e4f60bb5cc186c03ab308",
+        "source_fact:v1:e8ed4a69f9db682de8d9bac32de36e223df419c6bdea80308df883aecb2b7b04"
+      ],
+      "source_published_kst": "2026-10-08T20:06+09:00",
+      "source_title": "비머 이미징, 올해 매출 50% 성장 재확인..15일 투자 콘퍼런스 참가",
+      "telegram_core_fact": "비디오 최적화 기술 기업 비머 이미징(BMR)이 2026회계연도 매출이 전년 대비 약 50% 증가할 것이라는 기존 전망을 재확인하고, 오는 15일(현지시간) 뉴욕에서 열리는 씽크에쿼티 콘퍼런스에서 기업 설명회를 연다고 8일 발표했다.",
+      "title": "비머 이미징, 올해 매출 50% 성장 재확인..15일 투자 콘퍼런스 참가"
+    },
     "source_fact:05950d6a3b4142304b3e085f": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
       "lanes": {
@@ -154458,6 +155162,28 @@
       ],
       "source_published_kst": "2026-10-07T11:58+09:00",
       "title": "LG전자, 3분기 누적 매출·영업익 '사상 최대'…가전·전장 호조"
+    },
+    "source_fact:0a003ba2bc91240734ff561b": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261009114316",
+      "source": "지디넷코리아",
+      "source_body_digest": "16f90a175a11b9caad7f3209ca3c22e776c1c14916dd2f45f7f40998bc78af7a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ccab98d8332c2382e5f8f02a57ab3a9251710c5067fc82c724819e875c9d80fb",
+      "source_fact_keys": [
+        "source_fact:v1:04d6a3023dd657604a48a70a190fac30676a6575714b6b3a2fe1c9dfc7d7cd25",
+        "source_fact:v1:25b7f76224a36f35e87c878b7843d770c19e5e42f53fdbbca5f8419d0082e0a4",
+        "source_fact:v1:27aa4c0bcb9e68bb6f42952d55904d46c1465bc15e56463ec756af8c94af6c00",
+        "source_fact:v1:ee7e1810e6914717721269efd4da018fcf6d8a17730a68e92800c5fb192f2e32"
+      ],
+      "source_published_kst": "2026-10-09T12:07+09:00",
+      "source_title": "삼성전자, 올해 스마트폰 출하 목표 2.4억대→2.3억대 하향",
+      "telegram_core_fact": "한 업계 관계자 A는 \"삼성전자가 최근 협력사에 연간 스마트폰 출하량 2억 3000만대 초반에 해당하는 4분기 부품 발주량을 통보했다\"며 \"당초 부품업계에서 기대했던 (스마트폰 출하량 전망치) 2억 4000만대보다 적다\"고 밝혔다.",
+      "title": "삼성전자, 올해 스마트폰 출하 목표 2.4억대→2.3억대 하향"
     },
     "source_fact:0a10abdc71ffc5e941321a9c": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
@@ -159536,6 +160262,31 @@
       "source_published_kst": "2026-10-06T17:29+09:00",
       "title": "\"AI 병목 구간은 메모리\"… 삼전닉스 담는 새 글로벌ETF"
     },
+    "source_fact:132442d3f3002e1e4c391571": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.fnnews.com/news/202610081534588217",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "2002951ba5d479c94fec4620a4700afe85e2d8ca6cc82a1323ae095b4bf93907",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:92ef04dbfe5af0c4797b1091a9d529a8e7881988c78c85adfd408fbede8a0d51",
+      "source_fact_keys": [
+        "source_fact:v1:1ebe1ae8bbed6b3f0b2598598ae3a1be3e5e8effcb33240af8ba9746acf7704d",
+        "source_fact:v1:35ba2f8ebcdcae63396e4955ec46cca6818935b6ac77d8d49e40f2fbb7d105be",
+        "source_fact:v1:3c5fd6ff913a3cced8ff563663bdd4f10a4d6d4c3f1b3ff3b82e28d22d79d9d6",
+        "source_fact:v1:4624ab40a02c79999417a2727a8549659616f35a04eeec47ec6999618bbbb5e9",
+        "source_fact:v1:71393f0ad48feed3ac1159276bd7d96efae1cb81136de469327b6474308f2035",
+        "source_fact:v1:7ecd0a1cb849bdcfa988d1add1946040fd274f680393f997f07391d497103fdb",
+        "source_fact:v1:edc5472f20ba0a3abefc13901befd20ad80ac1bdc4a55e3b1fe3660cf52822df"
+      ],
+      "source_published_kst": "2026-10-08T17:32+09:00",
+      "source_title": "SK하이닉스 솔리다임, 美 상장 채비…100억달러 조달 관측",
+      "telegram_core_fact": "솔리다임은 이번 IPO를 통해 약 100억 달러(약 13조4000억원)를 조달할 것으로 예상된다. 두 은행은 솔리다임의 상장 전 자금 조달을 위한 투자 유치 작업에도 참여할 것으로 관측된다.",
+      "title": "SK하이닉스 솔리다임, 美 상장 채비…100억달러 조달 관측"
+    },
     "source_fact:1327ee7960a4782f20731a38": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
       "lanes": {
@@ -160979,6 +161730,30 @@
       "source_title": "SK이터닉스, 연료전지로 AI 데이터센터 전력 댄다…마스턴과 사업 추진",
       "telegram_core_fact": "SK이터닉스가 연료전지를 활용해 AI 데이터센터에 필요한 전력을 현장에서 직접 공급하는 사업에 나선다. 김해중 SK이터닉스 대표는 “양사가 가진 역량을 바탕으로 시장에 새로운 데이터센터 전력공급 사업모델을 제시할 수 있도록 협력하겠다”고 말했다.",
       "title": "SK이터닉스, 연료전지로 AI 데이터센터 전력 댄다…마스턴과 사업 추진"
+    },
+    "source_fact:15f33b953383fb3d72c51a60": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171949",
+      "source": "매일경제",
+      "source_body_digest": "2cd7a2f4cad4617344142afb64a1dd8b18be6d44f7b345b4258018fd6f80a30d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f186a4e319088003aa3cfa80670009308052d5a21f415c1cd179a699cfd60ab6",
+      "source_fact_keys": [
+        "source_fact:v1:24e1479739c9c02115c33c4c0e5d34412fc25f5fdc5193e93d44e1c19efcad5f",
+        "source_fact:v1:25ddeb6310e13bb7610e212b432805016a761b956ac8ab17493de78a1565671e",
+        "source_fact:v1:8aadea6d80798e9f97cd2bd4191059df3ac67d2550ac9b7aa075e359d1b023ce",
+        "source_fact:v1:c488d3c5cdd476d412de2d9f9ca1a24c796e71a79efa98cdf0bfa6fbddbc3d3b",
+        "source_fact:v1:c4df9c1abd49430feeae1545a4b3cdb7daeafecea05e4f60bb5cc186c03ab308",
+        "source_fact:v1:e8ed4a69f9db682de8d9bac32de36e223df419c6bdea80308df883aecb2b7b04"
+      ],
+      "source_published_kst": "2026-10-08T20:06+09:00",
+      "source_title": "비머 이미징, 올해 매출 50% 성장 재확인..15일 투자 콘퍼런스 참가",
+      "telegram_core_fact": "비디오 최적화 기술 기업 비머 이미징(BMR)이 2026회계연도 매출이 전년 대비 약 50% 증가할 것이라는 기존 전망을 재확인하고, 오는 15일(현지시간) 뉴욕에서 열리는 씽크에쿼티 콘퍼런스에서 기업 설명회를 연다고 8일 발표했다.",
+      "title": "비머 이미징, 올해 매출 50% 성장 재확인..15일 투자 콘퍼런스 참가"
     },
     "source_fact:1614848f6201c5229809ba1d": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
@@ -167080,6 +167855,27 @@
       "source_published_kst": "2026-10-06T14:48+09:00",
       "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
     },
+    "source_fact:20d1a5466e47a58a9d1d7f3d": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610080504b",
+      "source": "한국경제",
+      "source_body_digest": "a1fceadceb852ef6f612aa29acc7bb9cab834f7a9265f125da66679a4d246ff0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b84e90287c9a4dc7018f03eb3abe0d52df1ca24b2bb032acbffe6af985a375a9",
+      "source_fact_keys": [
+        "source_fact:v1:380168b39063f7dd682519292822ad2814ba8c55964b285c9868d4c4e29f6faa",
+        "source_fact:v1:5da9e7bdb32f1dca76b84adb0ca942aad563aeb4e08822c108857c53e9a3d789",
+        "source_fact:v1:932a77158f5349fafbcf1a92006dd0f276ac728bd1acc5c1ba705bda30507763"
+      ],
+      "source_published_kst": "2026-10-09T10:04+09:00",
+      "source_title": "중국 반도체 장비, 3분기 수입 증가가 말해주는 것 [돈 되는 해외 주식]",
+      "telegram_core_fact": "2023~2025년 분기별 중국산 장비 기업 매출과 외국산 장비 수입이 높은 동행성을 보였다는 점을 감안하면 3분기 중국 장비 기업 실적에 대한 눈높이를 상향할 필요가 있다고 판단한다.",
+      "title": "중국 반도체 장비, 3분기 수입 증가가 말해주는 것 [돈 되는 해외 주식]"
+    },
     "source_fact:20d8696939d97085ef3f3778": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
       "lanes": {
@@ -167274,6 +168070,31 @@
       "source_title": "국토부, '아시안게임 논란' 우수선수 주택 특공 제도 개선 검토 | 연합뉴스",
       "telegram_core_fact": "국토교통부가 최근 2026 아이치·나고야 아시안게임을 계기로 논란이 된 우수선수 주택 특별공급 제도의 개선 여부를 검토한다.",
       "title": "국토부, '아시안게임 논란' 우수선수 주택 특공 제도 개선 검토 | 연합뉴스"
+    },
+    "source_fact:213fa83910d4733d94a9f47e": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.fnnews.com/news/202610081534588217",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "2002951ba5d479c94fec4620a4700afe85e2d8ca6cc82a1323ae095b4bf93907",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:92ef04dbfe5af0c4797b1091a9d529a8e7881988c78c85adfd408fbede8a0d51",
+      "source_fact_keys": [
+        "source_fact:v1:1ebe1ae8bbed6b3f0b2598598ae3a1be3e5e8effcb33240af8ba9746acf7704d",
+        "source_fact:v1:35ba2f8ebcdcae63396e4955ec46cca6818935b6ac77d8d49e40f2fbb7d105be",
+        "source_fact:v1:3c5fd6ff913a3cced8ff563663bdd4f10a4d6d4c3f1b3ff3b82e28d22d79d9d6",
+        "source_fact:v1:4624ab40a02c79999417a2727a8549659616f35a04eeec47ec6999618bbbb5e9",
+        "source_fact:v1:71393f0ad48feed3ac1159276bd7d96efae1cb81136de469327b6474308f2035",
+        "source_fact:v1:7ecd0a1cb849bdcfa988d1add1946040fd274f680393f997f07391d497103fdb",
+        "source_fact:v1:edc5472f20ba0a3abefc13901befd20ad80ac1bdc4a55e3b1fe3660cf52822df"
+      ],
+      "source_published_kst": "2026-10-08T17:32+09:00",
+      "source_title": "SK하이닉스 솔리다임, 美 상장 채비…100억달러 조달 관측",
+      "telegram_core_fact": "솔리다임은 이번 IPO를 통해 약 100억 달러(약 13조4000억원)를 조달할 것으로 예상된다. 두 은행은 솔리다임의 상장 전 자금 조달을 위한 투자 유치 작업에도 참여할 것으로 관측된다.",
+      "title": "SK하이닉스 솔리다임, 美 상장 채비…100억달러 조달 관측"
     },
     "source_fact:213fd46eb913dfb3b9ab1d5b": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
@@ -177934,6 +178755,31 @@
       "source_published_kst": "2026-10-06T07:35+09:00",
       "title": "다올투자證 \"아모레퍼시픽, 마케팅비 선집행에 3분기 주춤…미주·국내 성장 지속\""
     },
+    "source_fact:3333d56945e3ea21c052dc1e": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.fnnews.com/news/202610081534588217",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "2002951ba5d479c94fec4620a4700afe85e2d8ca6cc82a1323ae095b4bf93907",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:92ef04dbfe5af0c4797b1091a9d529a8e7881988c78c85adfd408fbede8a0d51",
+      "source_fact_keys": [
+        "source_fact:v1:1ebe1ae8bbed6b3f0b2598598ae3a1be3e5e8effcb33240af8ba9746acf7704d",
+        "source_fact:v1:35ba2f8ebcdcae63396e4955ec46cca6818935b6ac77d8d49e40f2fbb7d105be",
+        "source_fact:v1:3c5fd6ff913a3cced8ff563663bdd4f10a4d6d4c3f1b3ff3b82e28d22d79d9d6",
+        "source_fact:v1:4624ab40a02c79999417a2727a8549659616f35a04eeec47ec6999618bbbb5e9",
+        "source_fact:v1:71393f0ad48feed3ac1159276bd7d96efae1cb81136de469327b6474308f2035",
+        "source_fact:v1:7ecd0a1cb849bdcfa988d1add1946040fd274f680393f997f07391d497103fdb",
+        "source_fact:v1:edc5472f20ba0a3abefc13901befd20ad80ac1bdc4a55e3b1fe3660cf52822df"
+      ],
+      "source_published_kst": "2026-10-08T17:32+09:00",
+      "source_title": "SK하이닉스 솔리다임, 美 상장 채비…100억달러 조달 관측",
+      "telegram_core_fact": "솔리다임은 이번 IPO를 통해 약 100억 달러(약 13조4000억원)를 조달할 것으로 예상된다. 두 은행은 솔리다임의 상장 전 자금 조달을 위한 투자 유치 작업에도 참여할 것으로 관측된다.",
+      "title": "SK하이닉스 솔리다임, 美 상장 채비…100억달러 조달 관측"
+    },
     "source_fact:3349d56f291b43d44c28987d": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -180559,6 +181405,28 @@
       ],
       "source_published_kst": "2026-10-07T06:40+09:00",
       "title": "[시선강탈] 엘앤에프 vs 이수페타시스 vs 파미셀, 공략법은?"
+    },
+    "source_fact:37dc508bff8e2562af0d124a": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261009114316",
+      "source": "지디넷코리아",
+      "source_body_digest": "16f90a175a11b9caad7f3209ca3c22e776c1c14916dd2f45f7f40998bc78af7a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ccab98d8332c2382e5f8f02a57ab3a9251710c5067fc82c724819e875c9d80fb",
+      "source_fact_keys": [
+        "source_fact:v1:04d6a3023dd657604a48a70a190fac30676a6575714b6b3a2fe1c9dfc7d7cd25",
+        "source_fact:v1:25b7f76224a36f35e87c878b7843d770c19e5e42f53fdbbca5f8419d0082e0a4",
+        "source_fact:v1:27aa4c0bcb9e68bb6f42952d55904d46c1465bc15e56463ec756af8c94af6c00",
+        "source_fact:v1:ee7e1810e6914717721269efd4da018fcf6d8a17730a68e92800c5fb192f2e32"
+      ],
+      "source_published_kst": "2026-10-09T12:07+09:00",
+      "source_title": "삼성전자, 올해 스마트폰 출하 목표 2.4억대→2.3억대 하향",
+      "telegram_core_fact": "한 업계 관계자 A는 \"삼성전자가 최근 협력사에 연간 스마트폰 출하량 2억 3000만대 초반에 해당하는 4분기 부품 발주량을 통보했다\"며 \"당초 부품업계에서 기대했던 (스마트폰 출하량 전망치) 2억 4000만대보다 적다\"고 밝혔다.",
+      "title": "삼성전자, 올해 스마트폰 출하 목표 2.4억대→2.3억대 하향"
     },
     "source_fact:37e4d8c7d12a67fd399780a6": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
@@ -189849,6 +190717,31 @@
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
     },
+    "source_fact:487f5c24ba303596190dcdb1": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.fnnews.com/news/202610081534588217",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "2002951ba5d479c94fec4620a4700afe85e2d8ca6cc82a1323ae095b4bf93907",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:92ef04dbfe5af0c4797b1091a9d529a8e7881988c78c85adfd408fbede8a0d51",
+      "source_fact_keys": [
+        "source_fact:v1:1ebe1ae8bbed6b3f0b2598598ae3a1be3e5e8effcb33240af8ba9746acf7704d",
+        "source_fact:v1:35ba2f8ebcdcae63396e4955ec46cca6818935b6ac77d8d49e40f2fbb7d105be",
+        "source_fact:v1:3c5fd6ff913a3cced8ff563663bdd4f10a4d6d4c3f1b3ff3b82e28d22d79d9d6",
+        "source_fact:v1:4624ab40a02c79999417a2727a8549659616f35a04eeec47ec6999618bbbb5e9",
+        "source_fact:v1:71393f0ad48feed3ac1159276bd7d96efae1cb81136de469327b6474308f2035",
+        "source_fact:v1:7ecd0a1cb849bdcfa988d1add1946040fd274f680393f997f07391d497103fdb",
+        "source_fact:v1:edc5472f20ba0a3abefc13901befd20ad80ac1bdc4a55e3b1fe3660cf52822df"
+      ],
+      "source_published_kst": "2026-10-08T17:32+09:00",
+      "source_title": "SK하이닉스 솔리다임, 美 상장 채비…100억달러 조달 관측",
+      "telegram_core_fact": "솔리다임은 이번 IPO를 통해 약 100억 달러(약 13조4000억원)를 조달할 것으로 예상된다. 두 은행은 솔리다임의 상장 전 자금 조달을 위한 투자 유치 작업에도 참여할 것으로 관측된다.",
+      "title": "SK하이닉스 솔리다임, 美 상장 채비…100억달러 조달 관측"
+    },
     "source_fact:4881c8bcac70f8062c6a05e9": {
       "first_seen_kst": "2026-10-08T19:27:03+09:00",
       "lanes": {
@@ -189985,6 +190878,27 @@
       "source_title": "“AI 도입보다 중요한 건 신뢰”…서울형 AI 윤리 해법 찾는다",
       "telegram_core_fact": "AI가 행정·복지·교통·교육 등 시민 일상으로 깊숙이 들어오면서 공정성·투명성과 같은 원칙을 선언하는 데 그치지 않고 AI 도입 전 위험을 살피고 운영 과정에서 문제를 감시하며, 이를 다시 제도 개선으로 연결하는 거버넌스가 필요하다는 목소리가 나왔다.",
       "title": "“AI 도입보다 중요한 건 신뢰”…서울형 AI 윤리 해법 찾는다"
+    },
+    "source_fact:48c30b21abfb315bc223ed6a": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610080504b",
+      "source": "한국경제",
+      "source_body_digest": "a1fceadceb852ef6f612aa29acc7bb9cab834f7a9265f125da66679a4d246ff0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b84e90287c9a4dc7018f03eb3abe0d52df1ca24b2bb032acbffe6af985a375a9",
+      "source_fact_keys": [
+        "source_fact:v1:380168b39063f7dd682519292822ad2814ba8c55964b285c9868d4c4e29f6faa",
+        "source_fact:v1:5da9e7bdb32f1dca76b84adb0ca942aad563aeb4e08822c108857c53e9a3d789",
+        "source_fact:v1:932a77158f5349fafbcf1a92006dd0f276ac728bd1acc5c1ba705bda30507763"
+      ],
+      "source_published_kst": "2026-10-09T10:04+09:00",
+      "source_title": "중국 반도체 장비, 3분기 수입 증가가 말해주는 것 [돈 되는 해외 주식]",
+      "telegram_core_fact": "2023~2025년 분기별 중국산 장비 기업 매출과 외국산 장비 수입이 높은 동행성을 보였다는 점을 감안하면 3분기 중국 장비 기업 실적에 대한 눈높이를 상향할 필요가 있다고 판단한다.",
+      "title": "중국 반도체 장비, 3분기 수입 증가가 말해주는 것 [돈 되는 해외 주식]"
     },
     "source_fact:48cbae6389e6bbd9b48a70d6": {
       "first_seen_kst": "2026-10-09T15:48:54+09:00",
@@ -209628,6 +210542,30 @@
       "telegram_core_fact": "경기 둔화로 기업 이익이 줄어든 데다 법인세율 인하도 세수 감소에 영향을 미쳤다는 설명이었다.",
       "title": "세수 부족해 올린 법인세…63조 초과세수에 고개드는 '인하' 요구"
     },
+    "source_fact:6c1c6b134fe7e5b028de7370": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01899126645611280",
+      "source": "이데일리",
+      "source_body_digest": "090775f1eb1526e76e9007a99e83f18e53e4ac9086f5e33dc15cc8d8e4c1ebfe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:46af53b6df1071778e923e74ca799ec4bb9f4d392c4db8db5c6c3d66680bcfbc",
+      "source_fact_keys": [
+        "source_fact:v1:0bb7d6319ff9cda74f075446a05b08a2274cf510431e7c3dc28d3a7727a1280f",
+        "source_fact:v1:278ce25bd58b1af6ecd3c12ff94922c8f82759b35d9513f50c491bbcb3e4f907",
+        "source_fact:v1:3d096a04ce4ce9f5765ec34eb615a16c29248593e82c635c8b75afa41acaf83c",
+        "source_fact:v1:49de89a6d258ba7ce68651b88fe8a7365d004539e5aca96350b9fe3a08a27ac7",
+        "source_fact:v1:e49dd5d9192f9ab5f035456d99c90366435c8b345487f4217733422d8f1d2a52",
+        "source_fact:v1:f3173c35bb8d372cdc947f134253add97d72c54a27d04b8ca4d578b8d7bf85af"
+      ],
+      "source_published_kst": "2026-10-09T11:11+09:00",
+      "source_title": "[VC's Pick]K방산 훈풍 타고 IPO 정조준…'디지트론' 프리 IPO 투자 유치",
+      "telegram_core_fact": "특히 방산 부품·모듈을 제조하는 '디지트론'이 내년 하반기 코스닥 상장 추진을 앞두고 100억원 규모 프리IPO 투자에 성공해 주목받았다.",
+      "title": "[VC's Pick]K방산 훈풍 타고 IPO 정조준…'디지트론' 프리 IPO 투자 유치"
+    },
     "source_fact:6c1d95aee134f150d4bb9843": {
       "first_seen_kst": "2026-10-07T20:59:13+09:00",
       "lanes": {
@@ -212609,6 +213547,30 @@
       ],
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
+    },
+    "source_fact:71c1afc76131c9bb0b9860ac": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01899126645611280",
+      "source": "이데일리",
+      "source_body_digest": "090775f1eb1526e76e9007a99e83f18e53e4ac9086f5e33dc15cc8d8e4c1ebfe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:46af53b6df1071778e923e74ca799ec4bb9f4d392c4db8db5c6c3d66680bcfbc",
+      "source_fact_keys": [
+        "source_fact:v1:0bb7d6319ff9cda74f075446a05b08a2274cf510431e7c3dc28d3a7727a1280f",
+        "source_fact:v1:278ce25bd58b1af6ecd3c12ff94922c8f82759b35d9513f50c491bbcb3e4f907",
+        "source_fact:v1:3d096a04ce4ce9f5765ec34eb615a16c29248593e82c635c8b75afa41acaf83c",
+        "source_fact:v1:49de89a6d258ba7ce68651b88fe8a7365d004539e5aca96350b9fe3a08a27ac7",
+        "source_fact:v1:e49dd5d9192f9ab5f035456d99c90366435c8b345487f4217733422d8f1d2a52",
+        "source_fact:v1:f3173c35bb8d372cdc947f134253add97d72c54a27d04b8ca4d578b8d7bf85af"
+      ],
+      "source_published_kst": "2026-10-09T11:11+09:00",
+      "source_title": "[VC's Pick]K방산 훈풍 타고 IPO 정조준…'디지트론' 프리 IPO 투자 유치",
+      "telegram_core_fact": "특히 방산 부품·모듈을 제조하는 '디지트론'이 내년 하반기 코스닥 상장 추진을 앞두고 100억원 규모 프리IPO 투자에 성공해 주목받았다.",
+      "title": "[VC's Pick]K방산 훈풍 타고 IPO 정조준…'디지트론' 프리 IPO 투자 유치"
     },
     "source_fact:71d46a8cd3ceb12b0fb3bbef": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -216425,6 +217387,27 @@
       "source_title": "전고체 배터리 경쟁 본격화…LG엔솔·삼성SDI 전략 차이는?",
       "telegram_core_fact": "삼성SDI가 내년 양산을 목표로 소재 공급망 구축까지 속도를 내는 반면 LG에너지솔루션(LG엔솔)은 상용화 시점보다는 기술 차별화와 원가 경쟁력 확보에 무게를 두고 있다. 이와 비교해 삼성SDI는 이보다 빠른 내년께 황화물계 전고체 배터리 상용화를 목표로 공급망 구축에 나서고 있다.",
       "title": "전고체 배터리 경쟁 본격화…LG엔솔·삼성SDI 전략 차이는?"
+    },
+    "source_fact:78a5966a1625faa4e7f63aaf": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/09/2026100913501991121",
+      "source": "머니투데이",
+      "source_body_digest": "5fafad81bd3e534fa2f6efeca32b76dc610a32c8373fa8b93523b7744b6cec95",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb1cbbd0460877a87f2d4f6e4ffc72178e5513eb1a6d7f3781ccada660bde44a",
+      "source_fact_keys": [
+        "source_fact:v1:8b7e02b0fc110325bf3d01e1dce1dddb227805692c39b22bb5564e300ff2d4b6",
+        "source_fact:v1:99af1369544466de9a2bb061c76f0fc967acfb266f4075c3f47a88c7df220a1c",
+        "source_fact:v1:d55e6295d3b8ebfedab172c895567bc3200b552579f7568c5f462c2c9f241feb"
+      ],
+      "source_published_kst": "2026-10-09T14:07+09:00",
+      "source_title": "관세 수입 줄고, 국채 이자 늘어…美 재정적자 2조달러 문턱",
+      "telegram_core_fact": "도널드 트럼프 미국 행정부는 2기 출범 후 연방정부 인력 감축, 친환경 에너지 세액공제 축소 등 지출 삭감, 고율 관세 부과 정책으로 재정적자 문제 해결에 나섰다.",
+      "title": "관세 수입 줄고, 국채 이자 늘어…美 재정적자 2조달러 문턱"
     },
     "source_fact:78bc2e139d0fc13365462e5e": {
       "first_seen_kst": "2026-10-08T10:20:20+09:00",
@@ -223219,6 +224202,28 @@
       ],
       "source_published_kst": "2026-10-06T10:24+09:00",
       "title": "슈나이더, 미 소프트웨어 업체 20조원에 인수 | 연합뉴스"
+    },
+    "source_fact:855606184366644b65c8b748": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261009114316",
+      "source": "지디넷코리아",
+      "source_body_digest": "16f90a175a11b9caad7f3209ca3c22e776c1c14916dd2f45f7f40998bc78af7a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ccab98d8332c2382e5f8f02a57ab3a9251710c5067fc82c724819e875c9d80fb",
+      "source_fact_keys": [
+        "source_fact:v1:04d6a3023dd657604a48a70a190fac30676a6575714b6b3a2fe1c9dfc7d7cd25",
+        "source_fact:v1:25b7f76224a36f35e87c878b7843d770c19e5e42f53fdbbca5f8419d0082e0a4",
+        "source_fact:v1:27aa4c0bcb9e68bb6f42952d55904d46c1465bc15e56463ec756af8c94af6c00",
+        "source_fact:v1:ee7e1810e6914717721269efd4da018fcf6d8a17730a68e92800c5fb192f2e32"
+      ],
+      "source_published_kst": "2026-10-09T12:07+09:00",
+      "source_title": "삼성전자, 올해 스마트폰 출하 목표 2.4억대→2.3억대 하향",
+      "telegram_core_fact": "한 업계 관계자 A는 \"삼성전자가 최근 협력사에 연간 스마트폰 출하량 2억 3000만대 초반에 해당하는 4분기 부품 발주량을 통보했다\"며 \"당초 부품업계에서 기대했던 (스마트폰 출하량 전망치) 2억 4000만대보다 적다\"고 밝혔다.",
+      "title": "삼성전자, 올해 스마트폰 출하 목표 2.4억대→2.3억대 하향"
     },
     "source_fact:8562514eb0217f559d2495cc": {
       "first_seen_kst": "2026-10-07T01:18:00+09:00",
@@ -230292,6 +231297,27 @@
       "telegram_core_fact": "국내 금융지주회사의 올해 상반기 순이익이 17조6000억원으로 전년비 13.7% 증가했다.",
       "title": "금융지주 상반기 순익 17.6조…증권 73% 뛰고 은행은 8% 감소"
     },
+    "source_fact:9266864908f39b693eb7d02c": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/09/2026100913501991121",
+      "source": "머니투데이",
+      "source_body_digest": "5fafad81bd3e534fa2f6efeca32b76dc610a32c8373fa8b93523b7744b6cec95",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb1cbbd0460877a87f2d4f6e4ffc72178e5513eb1a6d7f3781ccada660bde44a",
+      "source_fact_keys": [
+        "source_fact:v1:8b7e02b0fc110325bf3d01e1dce1dddb227805692c39b22bb5564e300ff2d4b6",
+        "source_fact:v1:99af1369544466de9a2bb061c76f0fc967acfb266f4075c3f47a88c7df220a1c",
+        "source_fact:v1:d55e6295d3b8ebfedab172c895567bc3200b552579f7568c5f462c2c9f241feb"
+      ],
+      "source_published_kst": "2026-10-09T14:07+09:00",
+      "source_title": "관세 수입 줄고, 국채 이자 늘어…美 재정적자 2조달러 문턱",
+      "telegram_core_fact": "도널드 트럼프 미국 행정부는 2기 출범 후 연방정부 인력 감축, 친환경 에너지 세액공제 축소 등 지출 삭감, 고율 관세 부과 정책으로 재정적자 문제 해결에 나섰다.",
+      "title": "관세 수입 줄고, 국채 이자 늘어…美 재정적자 2조달러 문턱"
+    },
     "source_fact:9295138b90b6d7a28536c87f": {
       "first_seen_kst": "2026-10-06T18:16:47+09:00",
       "lanes": {
@@ -236222,6 +237248,31 @@
       "source_published_kst": "2026-10-06T21:16+09:00",
       "title": "[개장전특징주]AMD, TSMC, 마벨, 씨게이트"
     },
+    "source_fact:9d75de3c91a2a2c8a72dfc09": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.fnnews.com/news/202610081534588217",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "2002951ba5d479c94fec4620a4700afe85e2d8ca6cc82a1323ae095b4bf93907",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:92ef04dbfe5af0c4797b1091a9d529a8e7881988c78c85adfd408fbede8a0d51",
+      "source_fact_keys": [
+        "source_fact:v1:1ebe1ae8bbed6b3f0b2598598ae3a1be3e5e8effcb33240af8ba9746acf7704d",
+        "source_fact:v1:35ba2f8ebcdcae63396e4955ec46cca6818935b6ac77d8d49e40f2fbb7d105be",
+        "source_fact:v1:3c5fd6ff913a3cced8ff563663bdd4f10a4d6d4c3f1b3ff3b82e28d22d79d9d6",
+        "source_fact:v1:4624ab40a02c79999417a2727a8549659616f35a04eeec47ec6999618bbbb5e9",
+        "source_fact:v1:71393f0ad48feed3ac1159276bd7d96efae1cb81136de469327b6474308f2035",
+        "source_fact:v1:7ecd0a1cb849bdcfa988d1add1946040fd274f680393f997f07391d497103fdb",
+        "source_fact:v1:edc5472f20ba0a3abefc13901befd20ad80ac1bdc4a55e3b1fe3660cf52822df"
+      ],
+      "source_published_kst": "2026-10-08T17:32+09:00",
+      "source_title": "SK하이닉스 솔리다임, 美 상장 채비…100억달러 조달 관측",
+      "telegram_core_fact": "솔리다임은 이번 IPO를 통해 약 100억 달러(약 13조4000억원)를 조달할 것으로 예상된다. 두 은행은 솔리다임의 상장 전 자금 조달을 위한 투자 유치 작업에도 참여할 것으로 관측된다.",
+      "title": "SK하이닉스 솔리다임, 美 상장 채비…100억달러 조달 관측"
+    },
     "source_fact:9d76731479f3a8d9772a1bc2": {
       "first_seen_kst": "2026-10-07T18:30:29+09:00",
       "lanes": {
@@ -240250,6 +241301,28 @@
       "telegram_core_fact": "증권가에서는 컨센서스 대비 실적이 하회한 배경에 대해 연결 자회사 LG이노텍의 수익성 부진을 꼽고 있다.",
       "title": "LG전자, 자회사 부진에 3Q 성적표 '예상치 하회'…가전·TV 등 주력사업은 '선방'"
     },
+    "source_fact:a4b2d84a6a78ead6c710bd03": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261009114316",
+      "source": "지디넷코리아",
+      "source_body_digest": "16f90a175a11b9caad7f3209ca3c22e776c1c14916dd2f45f7f40998bc78af7a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ccab98d8332c2382e5f8f02a57ab3a9251710c5067fc82c724819e875c9d80fb",
+      "source_fact_keys": [
+        "source_fact:v1:04d6a3023dd657604a48a70a190fac30676a6575714b6b3a2fe1c9dfc7d7cd25",
+        "source_fact:v1:25b7f76224a36f35e87c878b7843d770c19e5e42f53fdbbca5f8419d0082e0a4",
+        "source_fact:v1:27aa4c0bcb9e68bb6f42952d55904d46c1465bc15e56463ec756af8c94af6c00",
+        "source_fact:v1:ee7e1810e6914717721269efd4da018fcf6d8a17730a68e92800c5fb192f2e32"
+      ],
+      "source_published_kst": "2026-10-09T12:07+09:00",
+      "source_title": "삼성전자, 올해 스마트폰 출하 목표 2.4억대→2.3억대 하향",
+      "telegram_core_fact": "한 업계 관계자 A는 \"삼성전자가 최근 협력사에 연간 스마트폰 출하량 2억 3000만대 초반에 해당하는 4분기 부품 발주량을 통보했다\"며 \"당초 부품업계에서 기대했던 (스마트폰 출하량 전망치) 2억 4000만대보다 적다\"고 밝혔다.",
+      "title": "삼성전자, 올해 스마트폰 출하 목표 2.4억대→2.3억대 하향"
+    },
     "source_fact:a51314e80703bc8e7e62a4f9": {
       "first_seen_kst": "2026-10-06T22:21:21+09:00",
       "lanes": {
@@ -240568,6 +241641,30 @@
       "source_title": "[데스크시각] 앤트로픽 지분 너머 SKT의 AI 성적표",
       "telegram_core_fact": "블룸버그(Bloomberg)에 따르면 앤트로픽은 이르면 11월 중순 기업공개(IPO)를 추진한다.",
       "title": "[데스크시각] 앤트로픽 지분 너머 SKT의 AI 성적표"
+    },
+    "source_fact:a58926459e1b0d785e977972": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01899126645611280",
+      "source": "이데일리",
+      "source_body_digest": "090775f1eb1526e76e9007a99e83f18e53e4ac9086f5e33dc15cc8d8e4c1ebfe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:46af53b6df1071778e923e74ca799ec4bb9f4d392c4db8db5c6c3d66680bcfbc",
+      "source_fact_keys": [
+        "source_fact:v1:0bb7d6319ff9cda74f075446a05b08a2274cf510431e7c3dc28d3a7727a1280f",
+        "source_fact:v1:278ce25bd58b1af6ecd3c12ff94922c8f82759b35d9513f50c491bbcb3e4f907",
+        "source_fact:v1:3d096a04ce4ce9f5765ec34eb615a16c29248593e82c635c8b75afa41acaf83c",
+        "source_fact:v1:49de89a6d258ba7ce68651b88fe8a7365d004539e5aca96350b9fe3a08a27ac7",
+        "source_fact:v1:e49dd5d9192f9ab5f035456d99c90366435c8b345487f4217733422d8f1d2a52",
+        "source_fact:v1:f3173c35bb8d372cdc947f134253add97d72c54a27d04b8ca4d578b8d7bf85af"
+      ],
+      "source_published_kst": "2026-10-09T11:11+09:00",
+      "source_title": "[VC's Pick]K방산 훈풍 타고 IPO 정조준…'디지트론' 프리 IPO 투자 유치",
+      "telegram_core_fact": "특히 방산 부품·모듈을 제조하는 '디지트론'이 내년 하반기 코스닥 상장 추진을 앞두고 100억원 규모 프리IPO 투자에 성공해 주목받았다.",
+      "title": "[VC's Pick]K방산 훈풍 타고 IPO 정조준…'디지트론' 프리 IPO 투자 유치"
     },
     "source_fact:a58eb012665cfd1765ae30e1": {
       "first_seen_kst": "2026-10-07T20:59:13+09:00",
@@ -242838,6 +243935,30 @@
       ],
       "source_published_kst": "2026-10-07T11:00+09:00",
       "title": "3분기 外人투자 도착 148.7억弗 전년比 30.6%↑…역대 1위 달성"
+    },
+    "source_fact:aa6bbd3c9827f3b976d3b1bd": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171949",
+      "source": "매일경제",
+      "source_body_digest": "2cd7a2f4cad4617344142afb64a1dd8b18be6d44f7b345b4258018fd6f80a30d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f186a4e319088003aa3cfa80670009308052d5a21f415c1cd179a699cfd60ab6",
+      "source_fact_keys": [
+        "source_fact:v1:24e1479739c9c02115c33c4c0e5d34412fc25f5fdc5193e93d44e1c19efcad5f",
+        "source_fact:v1:25ddeb6310e13bb7610e212b432805016a761b956ac8ab17493de78a1565671e",
+        "source_fact:v1:8aadea6d80798e9f97cd2bd4191059df3ac67d2550ac9b7aa075e359d1b023ce",
+        "source_fact:v1:c488d3c5cdd476d412de2d9f9ca1a24c796e71a79efa98cdf0bfa6fbddbc3d3b",
+        "source_fact:v1:c4df9c1abd49430feeae1545a4b3cdb7daeafecea05e4f60bb5cc186c03ab308",
+        "source_fact:v1:e8ed4a69f9db682de8d9bac32de36e223df419c6bdea80308df883aecb2b7b04"
+      ],
+      "source_published_kst": "2026-10-08T20:06+09:00",
+      "source_title": "비머 이미징, 올해 매출 50% 성장 재확인..15일 투자 콘퍼런스 참가",
+      "telegram_core_fact": "비디오 최적화 기술 기업 비머 이미징(BMR)이 2026회계연도 매출이 전년 대비 약 50% 증가할 것이라는 기존 전망을 재확인하고, 오는 15일(현지시간) 뉴욕에서 열리는 씽크에쿼티 콘퍼런스에서 기업 설명회를 연다고 8일 발표했다.",
+      "title": "비머 이미징, 올해 매출 50% 성장 재확인..15일 투자 콘퍼런스 참가"
     },
     "source_fact:aa6d76a9ca12530f4b2257f0": {
       "first_seen_kst": "2026-10-08T16:54:07+09:00",
@@ -245417,6 +246538,31 @@
       ],
       "source_published_kst": "2026-10-07T08:53+09:00",
       "title": "LS에코에너지, AI 데이터센터용 버스덕트 설비 투자…생산능력 2배 늘린다"
+    },
+    "source_fact:aefbe3a6f0d35c744ce112dd": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.fnnews.com/news/202610081534588217",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "2002951ba5d479c94fec4620a4700afe85e2d8ca6cc82a1323ae095b4bf93907",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:92ef04dbfe5af0c4797b1091a9d529a8e7881988c78c85adfd408fbede8a0d51",
+      "source_fact_keys": [
+        "source_fact:v1:1ebe1ae8bbed6b3f0b2598598ae3a1be3e5e8effcb33240af8ba9746acf7704d",
+        "source_fact:v1:35ba2f8ebcdcae63396e4955ec46cca6818935b6ac77d8d49e40f2fbb7d105be",
+        "source_fact:v1:3c5fd6ff913a3cced8ff563663bdd4f10a4d6d4c3f1b3ff3b82e28d22d79d9d6",
+        "source_fact:v1:4624ab40a02c79999417a2727a8549659616f35a04eeec47ec6999618bbbb5e9",
+        "source_fact:v1:71393f0ad48feed3ac1159276bd7d96efae1cb81136de469327b6474308f2035",
+        "source_fact:v1:7ecd0a1cb849bdcfa988d1add1946040fd274f680393f997f07391d497103fdb",
+        "source_fact:v1:edc5472f20ba0a3abefc13901befd20ad80ac1bdc4a55e3b1fe3660cf52822df"
+      ],
+      "source_published_kst": "2026-10-08T17:32+09:00",
+      "source_title": "SK하이닉스 솔리다임, 美 상장 채비…100억달러 조달 관측",
+      "telegram_core_fact": "솔리다임은 이번 IPO를 통해 약 100억 달러(약 13조4000억원)를 조달할 것으로 예상된다. 두 은행은 솔리다임의 상장 전 자금 조달을 위한 투자 유치 작업에도 참여할 것으로 관측된다.",
+      "title": "SK하이닉스 솔리다임, 美 상장 채비…100억달러 조달 관측"
     },
     "source_fact:af011b01947bf664074d02eb": {
       "first_seen_kst": "2026-10-07T17:10:43+09:00",
@@ -252760,6 +253906,27 @@
       "source_published_kst": "2026-10-06T21:33+09:00",
       "title": "그리스·이탈리아보다 비싸게 빚내는 프랑스…국채금리 5% 눈앞"
     },
+    "source_fact:bcb2e4a8c50adeff606ad98d": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/09/2026100913501991121",
+      "source": "머니투데이",
+      "source_body_digest": "5fafad81bd3e534fa2f6efeca32b76dc610a32c8373fa8b93523b7744b6cec95",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb1cbbd0460877a87f2d4f6e4ffc72178e5513eb1a6d7f3781ccada660bde44a",
+      "source_fact_keys": [
+        "source_fact:v1:8b7e02b0fc110325bf3d01e1dce1dddb227805692c39b22bb5564e300ff2d4b6",
+        "source_fact:v1:99af1369544466de9a2bb061c76f0fc967acfb266f4075c3f47a88c7df220a1c",
+        "source_fact:v1:d55e6295d3b8ebfedab172c895567bc3200b552579f7568c5f462c2c9f241feb"
+      ],
+      "source_published_kst": "2026-10-09T14:07+09:00",
+      "source_title": "관세 수입 줄고, 국채 이자 늘어…美 재정적자 2조달러 문턱",
+      "telegram_core_fact": "도널드 트럼프 미국 행정부는 2기 출범 후 연방정부 인력 감축, 친환경 에너지 세액공제 축소 등 지출 삭감, 고율 관세 부과 정책으로 재정적자 문제 해결에 나섰다.",
+      "title": "관세 수입 줄고, 국채 이자 늘어…美 재정적자 2조달러 문턱"
+    },
     "source_fact:bccd3c26f808f6fb478de0ea": {
       "first_seen_kst": "2026-10-07T20:05:17+09:00",
       "lanes": {
@@ -253540,6 +254707,30 @@
       "source_title": "美 AI 반도체주 혼조…국채금리 급등에 엔비디아·AMD↓, 마이크론 4%↑",
       "telegram_core_fact": "미국 인공지능(AI) 반도체주가 장기 국채금리 급등에 대체로 하락했지만 마이크론테크놀로지는 4% 넘게 뛰는 등 종목별로 엇갈렸다.",
       "title": "美 AI 반도체주 혼조…국채금리 급등에 엔비디아·AMD↓, 마이크론 4%↑"
+    },
+    "source_fact:be51a1cc226b38b87b79f979": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01899126645611280",
+      "source": "이데일리",
+      "source_body_digest": "090775f1eb1526e76e9007a99e83f18e53e4ac9086f5e33dc15cc8d8e4c1ebfe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:46af53b6df1071778e923e74ca799ec4bb9f4d392c4db8db5c6c3d66680bcfbc",
+      "source_fact_keys": [
+        "source_fact:v1:0bb7d6319ff9cda74f075446a05b08a2274cf510431e7c3dc28d3a7727a1280f",
+        "source_fact:v1:278ce25bd58b1af6ecd3c12ff94922c8f82759b35d9513f50c491bbcb3e4f907",
+        "source_fact:v1:3d096a04ce4ce9f5765ec34eb615a16c29248593e82c635c8b75afa41acaf83c",
+        "source_fact:v1:49de89a6d258ba7ce68651b88fe8a7365d004539e5aca96350b9fe3a08a27ac7",
+        "source_fact:v1:e49dd5d9192f9ab5f035456d99c90366435c8b345487f4217733422d8f1d2a52",
+        "source_fact:v1:f3173c35bb8d372cdc947f134253add97d72c54a27d04b8ca4d578b8d7bf85af"
+      ],
+      "source_published_kst": "2026-10-09T11:11+09:00",
+      "source_title": "[VC's Pick]K방산 훈풍 타고 IPO 정조준…'디지트론' 프리 IPO 투자 유치",
+      "telegram_core_fact": "특히 방산 부품·모듈을 제조하는 '디지트론'이 내년 하반기 코스닥 상장 추진을 앞두고 100억원 규모 프리IPO 투자에 성공해 주목받았다.",
+      "title": "[VC's Pick]K방산 훈풍 타고 IPO 정조준…'디지트론' 프리 IPO 투자 유치"
     },
     "source_fact:be5a6d4178226f0d603c70be": {
       "first_seen_kst": "2026-10-08T09:33:54+09:00",
@@ -254379,6 +255570,31 @@
       "source_title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다",
       "telegram_core_fact": "글로벌 투자은행 UBS는 올해 HBM 시장의 비트 출하량 기준 점유율을 SK하이닉스 48%, 삼성전자 31%로 예상했다.",
       "title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다"
+    },
+    "source_fact:c015efdd11cd0eaf78e95a6b": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.fnnews.com/news/202610081534588217",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "2002951ba5d479c94fec4620a4700afe85e2d8ca6cc82a1323ae095b4bf93907",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:92ef04dbfe5af0c4797b1091a9d529a8e7881988c78c85adfd408fbede8a0d51",
+      "source_fact_keys": [
+        "source_fact:v1:1ebe1ae8bbed6b3f0b2598598ae3a1be3e5e8effcb33240af8ba9746acf7704d",
+        "source_fact:v1:35ba2f8ebcdcae63396e4955ec46cca6818935b6ac77d8d49e40f2fbb7d105be",
+        "source_fact:v1:3c5fd6ff913a3cced8ff563663bdd4f10a4d6d4c3f1b3ff3b82e28d22d79d9d6",
+        "source_fact:v1:4624ab40a02c79999417a2727a8549659616f35a04eeec47ec6999618bbbb5e9",
+        "source_fact:v1:71393f0ad48feed3ac1159276bd7d96efae1cb81136de469327b6474308f2035",
+        "source_fact:v1:7ecd0a1cb849bdcfa988d1add1946040fd274f680393f997f07391d497103fdb",
+        "source_fact:v1:edc5472f20ba0a3abefc13901befd20ad80ac1bdc4a55e3b1fe3660cf52822df"
+      ],
+      "source_published_kst": "2026-10-08T17:32+09:00",
+      "source_title": "SK하이닉스 솔리다임, 美 상장 채비…100억달러 조달 관측",
+      "telegram_core_fact": "솔리다임은 이번 IPO를 통해 약 100억 달러(약 13조4000억원)를 조달할 것으로 예상된다. 두 은행은 솔리다임의 상장 전 자금 조달을 위한 투자 유치 작업에도 참여할 것으로 관측된다.",
+      "title": "SK하이닉스 솔리다임, 美 상장 채비…100억달러 조달 관측"
     },
     "source_fact:c01de5fa34672858edb0957c": {
       "first_seen_kst": "2026-10-06T01:41:59+09:00",
@@ -261467,6 +262683,30 @@
       "source_published_kst": "2026-10-06T14:52+09:00",
       "title": "IPARK현대산업개발, 2천812억원 규모 부산 연산13구역 수주 | 연합뉴스"
     },
+    "source_fact:cc9016dbf4ed5a43f7bdd000": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171949",
+      "source": "매일경제",
+      "source_body_digest": "2cd7a2f4cad4617344142afb64a1dd8b18be6d44f7b345b4258018fd6f80a30d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f186a4e319088003aa3cfa80670009308052d5a21f415c1cd179a699cfd60ab6",
+      "source_fact_keys": [
+        "source_fact:v1:24e1479739c9c02115c33c4c0e5d34412fc25f5fdc5193e93d44e1c19efcad5f",
+        "source_fact:v1:25ddeb6310e13bb7610e212b432805016a761b956ac8ab17493de78a1565671e",
+        "source_fact:v1:8aadea6d80798e9f97cd2bd4191059df3ac67d2550ac9b7aa075e359d1b023ce",
+        "source_fact:v1:c488d3c5cdd476d412de2d9f9ca1a24c796e71a79efa98cdf0bfa6fbddbc3d3b",
+        "source_fact:v1:c4df9c1abd49430feeae1545a4b3cdb7daeafecea05e4f60bb5cc186c03ab308",
+        "source_fact:v1:e8ed4a69f9db682de8d9bac32de36e223df419c6bdea80308df883aecb2b7b04"
+      ],
+      "source_published_kst": "2026-10-08T20:06+09:00",
+      "source_title": "비머 이미징, 올해 매출 50% 성장 재확인..15일 투자 콘퍼런스 참가",
+      "telegram_core_fact": "비디오 최적화 기술 기업 비머 이미징(BMR)이 2026회계연도 매출이 전년 대비 약 50% 증가할 것이라는 기존 전망을 재확인하고, 오는 15일(현지시간) 뉴욕에서 열리는 씽크에쿼티 콘퍼런스에서 기업 설명회를 연다고 8일 발표했다.",
+      "title": "비머 이미징, 올해 매출 50% 성장 재확인..15일 투자 콘퍼런스 참가"
+    },
     "source_fact:cc9a295c645509b21a596233": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -264374,6 +265614,30 @@
       "source_published_kst": "2026-10-06T08:03+09:00",
       "title": "일진전기, 중전기 수주 북미 비중 80% 육박"
     },
+    "source_fact:d1e9b216e27f4c4106c172e8": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171949",
+      "source": "매일경제",
+      "source_body_digest": "2cd7a2f4cad4617344142afb64a1dd8b18be6d44f7b345b4258018fd6f80a30d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f186a4e319088003aa3cfa80670009308052d5a21f415c1cd179a699cfd60ab6",
+      "source_fact_keys": [
+        "source_fact:v1:24e1479739c9c02115c33c4c0e5d34412fc25f5fdc5193e93d44e1c19efcad5f",
+        "source_fact:v1:25ddeb6310e13bb7610e212b432805016a761b956ac8ab17493de78a1565671e",
+        "source_fact:v1:8aadea6d80798e9f97cd2bd4191059df3ac67d2550ac9b7aa075e359d1b023ce",
+        "source_fact:v1:c488d3c5cdd476d412de2d9f9ca1a24c796e71a79efa98cdf0bfa6fbddbc3d3b",
+        "source_fact:v1:c4df9c1abd49430feeae1545a4b3cdb7daeafecea05e4f60bb5cc186c03ab308",
+        "source_fact:v1:e8ed4a69f9db682de8d9bac32de36e223df419c6bdea80308df883aecb2b7b04"
+      ],
+      "source_published_kst": "2026-10-08T20:06+09:00",
+      "source_title": "비머 이미징, 올해 매출 50% 성장 재확인..15일 투자 콘퍼런스 참가",
+      "telegram_core_fact": "비디오 최적화 기술 기업 비머 이미징(BMR)이 2026회계연도 매출이 전년 대비 약 50% 증가할 것이라는 기존 전망을 재확인하고, 오는 15일(현지시간) 뉴욕에서 열리는 씽크에쿼티 콘퍼런스에서 기업 설명회를 연다고 8일 발표했다.",
+      "title": "비머 이미징, 올해 매출 50% 성장 재확인..15일 투자 콘퍼런스 참가"
+    },
     "source_fact:d1ee8006e22537b4f62e4368": {
       "first_seen_kst": "2026-10-09T17:13:50+09:00",
       "lanes": {
@@ -266583,6 +267847,30 @@
       "source_published_kst": "2026-10-07T06:59+09:00",
       "title": "트럼프 “관세 낮추려는 한국에 대가 지급해야 한다 말해”"
     },
+    "source_fact:d5d49587b91d61e6569d8788": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01899126645611280",
+      "source": "이데일리",
+      "source_body_digest": "090775f1eb1526e76e9007a99e83f18e53e4ac9086f5e33dc15cc8d8e4c1ebfe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:46af53b6df1071778e923e74ca799ec4bb9f4d392c4db8db5c6c3d66680bcfbc",
+      "source_fact_keys": [
+        "source_fact:v1:0bb7d6319ff9cda74f075446a05b08a2274cf510431e7c3dc28d3a7727a1280f",
+        "source_fact:v1:278ce25bd58b1af6ecd3c12ff94922c8f82759b35d9513f50c491bbcb3e4f907",
+        "source_fact:v1:3d096a04ce4ce9f5765ec34eb615a16c29248593e82c635c8b75afa41acaf83c",
+        "source_fact:v1:49de89a6d258ba7ce68651b88fe8a7365d004539e5aca96350b9fe3a08a27ac7",
+        "source_fact:v1:e49dd5d9192f9ab5f035456d99c90366435c8b345487f4217733422d8f1d2a52",
+        "source_fact:v1:f3173c35bb8d372cdc947f134253add97d72c54a27d04b8ca4d578b8d7bf85af"
+      ],
+      "source_published_kst": "2026-10-09T11:11+09:00",
+      "source_title": "[VC's Pick]K방산 훈풍 타고 IPO 정조준…'디지트론' 프리 IPO 투자 유치",
+      "telegram_core_fact": "특히 방산 부품·모듈을 제조하는 '디지트론'이 내년 하반기 코스닥 상장 추진을 앞두고 100억원 규모 프리IPO 투자에 성공해 주목받았다.",
+      "title": "[VC's Pick]K방산 훈풍 타고 IPO 정조준…'디지트론' 프리 IPO 투자 유치"
+    },
     "source_fact:d5d655aa318624bfc50cd0d6": {
       "first_seen_kst": "2026-10-07T07:39:19+09:00",
       "lanes": {
@@ -266879,6 +268167,30 @@
       "source_title": "3분기 누적 韓도착 외국인직접투자 149억불 '역대 최대'⋯중동 악재 속 30.6%↑",
       "telegram_core_fact": "같은 기간 투자 도착액은 전년 대비 30.6% 증가한 148억7000만달러로 3분기 누적 기준 역대 1위 실적을 달성했다. 특히 실제 자금이 유입된 투자 도착액은 30% 넘게 증가하며 3분기 누적 기준 역대 최대치를 경신했다.",
       "title": "3분기 누적 韓도착 외국인직접투자 149억불 '역대 최대'⋯중동 악재 속 30.6%↑"
+    },
+    "source_fact:d64587c431ea5b44f0917264": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01899126645611280",
+      "source": "이데일리",
+      "source_body_digest": "090775f1eb1526e76e9007a99e83f18e53e4ac9086f5e33dc15cc8d8e4c1ebfe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:46af53b6df1071778e923e74ca799ec4bb9f4d392c4db8db5c6c3d66680bcfbc",
+      "source_fact_keys": [
+        "source_fact:v1:0bb7d6319ff9cda74f075446a05b08a2274cf510431e7c3dc28d3a7727a1280f",
+        "source_fact:v1:278ce25bd58b1af6ecd3c12ff94922c8f82759b35d9513f50c491bbcb3e4f907",
+        "source_fact:v1:3d096a04ce4ce9f5765ec34eb615a16c29248593e82c635c8b75afa41acaf83c",
+        "source_fact:v1:49de89a6d258ba7ce68651b88fe8a7365d004539e5aca96350b9fe3a08a27ac7",
+        "source_fact:v1:e49dd5d9192f9ab5f035456d99c90366435c8b345487f4217733422d8f1d2a52",
+        "source_fact:v1:f3173c35bb8d372cdc947f134253add97d72c54a27d04b8ca4d578b8d7bf85af"
+      ],
+      "source_published_kst": "2026-10-09T11:11+09:00",
+      "source_title": "[VC's Pick]K방산 훈풍 타고 IPO 정조준…'디지트론' 프리 IPO 투자 유치",
+      "telegram_core_fact": "특히 방산 부품·모듈을 제조하는 '디지트론'이 내년 하반기 코스닥 상장 추진을 앞두고 100억원 규모 프리IPO 투자에 성공해 주목받았다.",
+      "title": "[VC's Pick]K방산 훈풍 타고 IPO 정조준…'디지트론' 프리 IPO 투자 유치"
     },
     "source_fact:d649a168fe2761956738f838": {
       "first_seen_kst": "2026-10-08T17:42:30+09:00",
@@ -282700,6 +284012,27 @@
       "telegram_core_fact": "시선AI 자회사 유온로보틱스는 경북 성주월항농협 산지유통센터(APC)와 인공지능(AI) 기반 물류 자동화 로봇 시스템 상용 공급계약을 체결했다고 8일 밝혔다.",
       "title": "시선AI 子, 성주월항농협APC와 로봇 시스템 상용 공급계약"
     },
+    "source_fact:f18be006f5f06e4b65613237": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610080504b",
+      "source": "한국경제",
+      "source_body_digest": "a1fceadceb852ef6f612aa29acc7bb9cab834f7a9265f125da66679a4d246ff0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b84e90287c9a4dc7018f03eb3abe0d52df1ca24b2bb032acbffe6af985a375a9",
+      "source_fact_keys": [
+        "source_fact:v1:380168b39063f7dd682519292822ad2814ba8c55964b285c9868d4c4e29f6faa",
+        "source_fact:v1:5da9e7bdb32f1dca76b84adb0ca942aad563aeb4e08822c108857c53e9a3d789",
+        "source_fact:v1:932a77158f5349fafbcf1a92006dd0f276ac728bd1acc5c1ba705bda30507763"
+      ],
+      "source_published_kst": "2026-10-09T10:04+09:00",
+      "source_title": "중국 반도체 장비, 3분기 수입 증가가 말해주는 것 [돈 되는 해외 주식]",
+      "telegram_core_fact": "2023~2025년 분기별 중국산 장비 기업 매출과 외국산 장비 수입이 높은 동행성을 보였다는 점을 감안하면 3분기 중국 장비 기업 실적에 대한 눈높이를 상향할 필요가 있다고 판단한다.",
+      "title": "중국 반도체 장비, 3분기 수입 증가가 말해주는 것 [돈 되는 해외 주식]"
+    },
     "source_fact:f190935d849101ac7bdc3963": {
       "first_seen_kst": "2026-10-07T18:30:29+09:00",
       "lanes": {
@@ -284696,6 +286029,30 @@
       "source_title": "가온칩스 수주공시 - 주문형 반도체 설계 개발 76.7억원 (매출액대비 11.20 %)",
       "telegram_core_fact": "가온칩스(399720)는 주문형 반도체 설계 개발에 관한 단일판매ㆍ공급계약체결 을 08일에 공시했다. 계약금액은 76.7억원이다.",
       "title": "가온칩스 수주공시 - 주문형 반도체 설계 개발 76.7억원 (매출액대비 11.20 %)"
+    },
+    "source_fact:f522ac9bdf00619f50d6beca": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171949",
+      "source": "매일경제",
+      "source_body_digest": "2cd7a2f4cad4617344142afb64a1dd8b18be6d44f7b345b4258018fd6f80a30d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f186a4e319088003aa3cfa80670009308052d5a21f415c1cd179a699cfd60ab6",
+      "source_fact_keys": [
+        "source_fact:v1:24e1479739c9c02115c33c4c0e5d34412fc25f5fdc5193e93d44e1c19efcad5f",
+        "source_fact:v1:25ddeb6310e13bb7610e212b432805016a761b956ac8ab17493de78a1565671e",
+        "source_fact:v1:8aadea6d80798e9f97cd2bd4191059df3ac67d2550ac9b7aa075e359d1b023ce",
+        "source_fact:v1:c488d3c5cdd476d412de2d9f9ca1a24c796e71a79efa98cdf0bfa6fbddbc3d3b",
+        "source_fact:v1:c4df9c1abd49430feeae1545a4b3cdb7daeafecea05e4f60bb5cc186c03ab308",
+        "source_fact:v1:e8ed4a69f9db682de8d9bac32de36e223df419c6bdea80308df883aecb2b7b04"
+      ],
+      "source_published_kst": "2026-10-08T20:06+09:00",
+      "source_title": "비머 이미징, 올해 매출 50% 성장 재확인..15일 투자 콘퍼런스 참가",
+      "telegram_core_fact": "비디오 최적화 기술 기업 비머 이미징(BMR)이 2026회계연도 매출이 전년 대비 약 50% 증가할 것이라는 기존 전망을 재확인하고, 오는 15일(현지시간) 뉴욕에서 열리는 씽크에쿼티 콘퍼런스에서 기업 설명회를 연다고 8일 발표했다.",
+      "title": "비머 이미징, 올해 매출 50% 성장 재확인..15일 투자 콘퍼런스 참가"
     },
     "source_fact:f523adb73340759ad9828876": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
@@ -293675,6 +295032,30 @@
       "source_published_kst": "2026-10-06T09:32+09:00",
       "title": "LG전자, 美 AI 데이터센터 냉각 솔루션 공급 계약에 '급등'"
     },
+    "title:143b080a2ce7e5d325c8a687": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01899126645611280",
+      "source": "이데일리",
+      "source_body_digest": "090775f1eb1526e76e9007a99e83f18e53e4ac9086f5e33dc15cc8d8e4c1ebfe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:46af53b6df1071778e923e74ca799ec4bb9f4d392c4db8db5c6c3d66680bcfbc",
+      "source_fact_keys": [
+        "source_fact:v1:0bb7d6319ff9cda74f075446a05b08a2274cf510431e7c3dc28d3a7727a1280f",
+        "source_fact:v1:278ce25bd58b1af6ecd3c12ff94922c8f82759b35d9513f50c491bbcb3e4f907",
+        "source_fact:v1:3d096a04ce4ce9f5765ec34eb615a16c29248593e82c635c8b75afa41acaf83c",
+        "source_fact:v1:49de89a6d258ba7ce68651b88fe8a7365d004539e5aca96350b9fe3a08a27ac7",
+        "source_fact:v1:e49dd5d9192f9ab5f035456d99c90366435c8b345487f4217733422d8f1d2a52",
+        "source_fact:v1:f3173c35bb8d372cdc947f134253add97d72c54a27d04b8ca4d578b8d7bf85af"
+      ],
+      "source_published_kst": "2026-10-09T11:11+09:00",
+      "source_title": "[VC's Pick]K방산 훈풍 타고 IPO 정조준…'디지트론' 프리 IPO 투자 유치",
+      "telegram_core_fact": "특히 방산 부품·모듈을 제조하는 '디지트론'이 내년 하반기 코스닥 상장 추진을 앞두고 100억원 규모 프리IPO 투자에 성공해 주목받았다.",
+      "title": "[VC's Pick]K방산 훈풍 타고 IPO 정조준…'디지트론' 프리 IPO 투자 유치"
+    },
     "title:145255910c167871bb77d46d": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
       "lanes": {
@@ -297936,6 +299317,31 @@
       "link": "https://zdnet.co.kr/view/?no=20261001155205",
       "source": "지디넷코리아",
       "title": "에코프로, 최상운·김장우 공동 대표 체제로"
+    },
+    "title:2a8a5e4eb0ffdba51514427a": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.fnnews.com/news/202610081534588217",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "2002951ba5d479c94fec4620a4700afe85e2d8ca6cc82a1323ae095b4bf93907",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:92ef04dbfe5af0c4797b1091a9d529a8e7881988c78c85adfd408fbede8a0d51",
+      "source_fact_keys": [
+        "source_fact:v1:1ebe1ae8bbed6b3f0b2598598ae3a1be3e5e8effcb33240af8ba9746acf7704d",
+        "source_fact:v1:35ba2f8ebcdcae63396e4955ec46cca6818935b6ac77d8d49e40f2fbb7d105be",
+        "source_fact:v1:3c5fd6ff913a3cced8ff563663bdd4f10a4d6d4c3f1b3ff3b82e28d22d79d9d6",
+        "source_fact:v1:4624ab40a02c79999417a2727a8549659616f35a04eeec47ec6999618bbbb5e9",
+        "source_fact:v1:71393f0ad48feed3ac1159276bd7d96efae1cb81136de469327b6474308f2035",
+        "source_fact:v1:7ecd0a1cb849bdcfa988d1add1946040fd274f680393f997f07391d497103fdb",
+        "source_fact:v1:edc5472f20ba0a3abefc13901befd20ad80ac1bdc4a55e3b1fe3660cf52822df"
+      ],
+      "source_published_kst": "2026-10-08T17:32+09:00",
+      "source_title": "SK하이닉스 솔리다임, 美 상장 채비…100억달러 조달 관측",
+      "telegram_core_fact": "솔리다임은 이번 IPO를 통해 약 100억 달러(약 13조4000억원)를 조달할 것으로 예상된다. 두 은행은 솔리다임의 상장 전 자금 조달을 위한 투자 유치 작업에도 참여할 것으로 관측된다.",
+      "title": "SK하이닉스 솔리다임, 美 상장 채비…100억달러 조달 관측"
     },
     "title:2add2e0d760286fb3255d4fa": {
       "first_seen_kst": "2026-10-08T11:28:27+09:00",
@@ -304502,6 +305908,30 @@
       "source": "매일경제",
       "title": "워싱턴서 루비오 만난 조현 \"호르무즈 자유통항 기여할것\""
     },
+    "title:497c8691673f1c156c5a95a1": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12171949",
+      "source": "매일경제",
+      "source_body_digest": "2cd7a2f4cad4617344142afb64a1dd8b18be6d44f7b345b4258018fd6f80a30d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f186a4e319088003aa3cfa80670009308052d5a21f415c1cd179a699cfd60ab6",
+      "source_fact_keys": [
+        "source_fact:v1:24e1479739c9c02115c33c4c0e5d34412fc25f5fdc5193e93d44e1c19efcad5f",
+        "source_fact:v1:25ddeb6310e13bb7610e212b432805016a761b956ac8ab17493de78a1565671e",
+        "source_fact:v1:8aadea6d80798e9f97cd2bd4191059df3ac67d2550ac9b7aa075e359d1b023ce",
+        "source_fact:v1:c488d3c5cdd476d412de2d9f9ca1a24c796e71a79efa98cdf0bfa6fbddbc3d3b",
+        "source_fact:v1:c4df9c1abd49430feeae1545a4b3cdb7daeafecea05e4f60bb5cc186c03ab308",
+        "source_fact:v1:e8ed4a69f9db682de8d9bac32de36e223df419c6bdea80308df883aecb2b7b04"
+      ],
+      "source_published_kst": "2026-10-08T20:06+09:00",
+      "source_title": "비머 이미징, 올해 매출 50% 성장 재확인..15일 투자 콘퍼런스 참가",
+      "telegram_core_fact": "비디오 최적화 기술 기업 비머 이미징(BMR)이 2026회계연도 매출이 전년 대비 약 50% 증가할 것이라는 기존 전망을 재확인하고, 오는 15일(현지시간) 뉴욕에서 열리는 씽크에쿼티 콘퍼런스에서 기업 설명회를 연다고 8일 발표했다.",
+      "title": "비머 이미징, 올해 매출 50% 성장 재확인..15일 투자 콘퍼런스 참가"
+    },
     "title:49907af8b471c537c02b54ed": {
       "first_seen_kst": "2026-09-19T11:08:27+09:00",
       "lanes": {
@@ -306798,6 +308228,27 @@
       "source_title": "삼성자산운용, 하루 만에 '주성엔지니어링' 2000억 쓸어담았다… 왜?",
       "telegram_core_fact": "실제로 주성엔지니어링의 수주 잔고는 올해 1분기 말 약 746억원에서 2분기 말 2336억원으로 한 분기 만에 3배 넘게 급증했다.",
       "title": "삼성자산운용, 하루 만에 '주성엔지니어링' 2000억 쓸어담았다… 왜?"
+    },
+    "title:5628d6bb9de402a4e79102d8": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610080504b",
+      "source": "한국경제",
+      "source_body_digest": "a1fceadceb852ef6f612aa29acc7bb9cab834f7a9265f125da66679a4d246ff0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b84e90287c9a4dc7018f03eb3abe0d52df1ca24b2bb032acbffe6af985a375a9",
+      "source_fact_keys": [
+        "source_fact:v1:380168b39063f7dd682519292822ad2814ba8c55964b285c9868d4c4e29f6faa",
+        "source_fact:v1:5da9e7bdb32f1dca76b84adb0ca942aad563aeb4e08822c108857c53e9a3d789",
+        "source_fact:v1:932a77158f5349fafbcf1a92006dd0f276ac728bd1acc5c1ba705bda30507763"
+      ],
+      "source_published_kst": "2026-10-09T10:04+09:00",
+      "source_title": "중국 반도체 장비, 3분기 수입 증가가 말해주는 것 [돈 되는 해외 주식]",
+      "telegram_core_fact": "2023~2025년 분기별 중국산 장비 기업 매출과 외국산 장비 수입이 높은 동행성을 보였다는 점을 감안하면 3분기 중국 장비 기업 실적에 대한 눈높이를 상향할 필요가 있다고 판단한다.",
+      "title": "중국 반도체 장비, 3분기 수입 증가가 말해주는 것 [돈 되는 해외 주식]"
     },
     "title:5630b74101bb21823c755906": {
       "first_seen_kst": "2026-10-03T07:04:42+09:00",
@@ -311644,6 +313095,23 @@
       ],
       "source_published_kst": "2026-10-07T09:38+09:00",
       "title": "BMW 코리아, 전동화차 판매 1만대 돌파…프리미엄 수입차 첫 기록"
+    },
+    "title:722e45b0aef6d78d50dbd57b": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172019",
+      "source": "매일경제",
+      "source_body_digest": "07e64f9b93ac8402549e026ed7fd4c846f4a5a180054ec9bbbecb52bb3ef584a",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T22:27+09:00",
+      "source_title": "파시라 파마슈티컬스, 비아트리스 피인수 16억5000만 달러..주당 36.5달러",
+      "telegram_core_fact": "파시라 파마슈티컬스(PCRX)는 제약사 비아트리스(VTRS)가 주당 36.50달러 현금, 총 지분가치 16억5000만 달러에 회사 보통주 전량을 인수하는 확정 계약을 체결했다고 8일 발표했다.",
+      "title": "파시라 파마슈티컬스, 비아트리스 피인수 16억5000만 달러..주당 36.5달러"
     },
     "title:723de27b3d1213587f0ebc79": {
       "first_seen_kst": "2026-10-06T14:52:12+09:00",
@@ -318961,6 +320429,27 @@
       "link": "https://www.newsis.com/view/NISX20260928_0003804696",
       "source": "뉴시스",
       "title": "[주간 뉴욕증시] 마이크론 실적·美고용 주목…AI 수요·금리 향방 가늠"
+    },
+    "title:9838bfc9a4a29fd237daef98": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/09/2026100913501991121",
+      "source": "머니투데이",
+      "source_body_digest": "5fafad81bd3e534fa2f6efeca32b76dc610a32c8373fa8b93523b7744b6cec95",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb1cbbd0460877a87f2d4f6e4ffc72178e5513eb1a6d7f3781ccada660bde44a",
+      "source_fact_keys": [
+        "source_fact:v1:8b7e02b0fc110325bf3d01e1dce1dddb227805692c39b22bb5564e300ff2d4b6",
+        "source_fact:v1:99af1369544466de9a2bb061c76f0fc967acfb266f4075c3f47a88c7df220a1c",
+        "source_fact:v1:d55e6295d3b8ebfedab172c895567bc3200b552579f7568c5f462c2c9f241feb"
+      ],
+      "source_published_kst": "2026-10-09T14:07+09:00",
+      "source_title": "관세 수입 줄고, 국채 이자 늘어…美 재정적자 2조달러 문턱",
+      "telegram_core_fact": "도널드 트럼프 미국 행정부는 2기 출범 후 연방정부 인력 감축, 친환경 에너지 세액공제 축소 등 지출 삭감, 고율 관세 부과 정책으로 재정적자 문제 해결에 나섰다.",
+      "title": "관세 수입 줄고, 국채 이자 늘어…美 재정적자 2조달러 문턱"
     },
     "title:984b38590d256365308afe4f": {
       "first_seen_kst": "2026-10-02T22:19:09+09:00",
@@ -330535,6 +332024,28 @@
       "source": "파이낸셜뉴스",
       "title": "배민·구글코리아 대표, 국회 재경위 증인 채택"
     },
+    "title:d605f76390f2ef139abb0c89": {
+      "first_seen_kst": "2026-10-09T17:32:22+09:00",
+      "lanes": {
+        "live": "2026-10-09T17:32:22+09:00"
+      },
+      "last_seen_kst": "2026-10-09T17:32:22+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261009114316",
+      "source": "지디넷코리아",
+      "source_body_digest": "16f90a175a11b9caad7f3209ca3c22e776c1c14916dd2f45f7f40998bc78af7a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ccab98d8332c2382e5f8f02a57ab3a9251710c5067fc82c724819e875c9d80fb",
+      "source_fact_keys": [
+        "source_fact:v1:04d6a3023dd657604a48a70a190fac30676a6575714b6b3a2fe1c9dfc7d7cd25",
+        "source_fact:v1:25b7f76224a36f35e87c878b7843d770c19e5e42f53fdbbca5f8419d0082e0a4",
+        "source_fact:v1:27aa4c0bcb9e68bb6f42952d55904d46c1465bc15e56463ec756af8c94af6c00",
+        "source_fact:v1:ee7e1810e6914717721269efd4da018fcf6d8a17730a68e92800c5fb192f2e32"
+      ],
+      "source_published_kst": "2026-10-09T12:07+09:00",
+      "source_title": "삼성전자, 올해 스마트폰 출하 목표 2.4억대→2.3억대 하향",
+      "telegram_core_fact": "한 업계 관계자 A는 \"삼성전자가 최근 협력사에 연간 스마트폰 출하량 2억 3000만대 초반에 해당하는 4분기 부품 발주량을 통보했다\"며 \"당초 부품업계에서 기대했던 (스마트폰 출하량 전망치) 2억 4000만대보다 적다\"고 밝혔다.",
+      "title": "삼성전자, 올해 스마트폰 출하 목표 2.4억대→2.3억대 하향"
+    },
     "title:d63b5ba2b8a67f9ffdc4d59c": {
       "first_seen_kst": "2026-10-02T01:18:53+09:00",
       "lanes": {
@@ -338122,5 +339633,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-09T17:13:50+09:00"
+  "updated_at_kst": "2026-10-09T17:32:22+09:00"
 }
