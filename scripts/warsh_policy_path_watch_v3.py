@@ -7,7 +7,7 @@ from datetime import datetime, timezone, timedelta
 import warsh_policy_path_watch_v2 as v2
 
 base = v2.base
-SCHEMA_VERSION = 8
+SCHEMA_VERSION = 9
 
 
 def _validated_probability(prob_cell, change_bp):
@@ -50,7 +50,10 @@ def validated_snapshot():
 
 def _meeting_line(m):
     p = m.get('hike25_prob')
-    prob = f"+0.25%p 인상 확률 {float(p):.0f}%" if p is not None else '세부 +0.25%p 확률은 원천 구조상 판정 유보'
+    prob = (f"현 목표범위 대비 누적 +25bp 경로 {float(p):.1f}%"
+            if p is not None else "정확한 목표금리 구간별 확률 판정 유보")
+    if p is not None and m.get("hike25_or_more_prob") is not None:
+        prob += f" · 누적 +25bp 이상 {float(m['hike25_or_more_prob']):.1f}%"
     ch = float(m.get('change_bp') or 0.0)
     return (
         f"• {base.ko_date(m['date'])} | {prob} | "
@@ -112,6 +115,18 @@ def message_v3(snap, cls):
 
 
 def _source_health_message(kind, err=None):
+    if kind == 'error' and '인증정보 미설정' in str(err or ''):
+        return '\n'.join([
+            '<b>[Warsh 금리경로 공식 API 연결 필요]</b>',
+            'CME FedWatch 확률은 공식 인증 API 구독과 OAuth 권한이 필요합니다.',
+            '• 기존 무료 웹 JSON·지원종료 FTP를 반복 조회하지 않습니다.',
+            '• <b>시장 확률·기대금리 최신판정은 일시 중지</b>합니다.',
+            '• 연준 공식 금리결정·점도표·2년물·대차대조표 감시는 계속됩니다.',
+            '• 정식 API 권한이 연결되면 원천 날짜·구간별 확률 합계를 검증한 뒤 자동 재개합니다.',
+            '',
+            '<b>원천</b>',
+            base.link('CME 공식 FedWatch API', 'https://www.cmegroup.com/market-data/market-data-api/fedwatch-api.html'),
+        ])
     if kind == 'error':
         return '\n'.join([
             '<b>[Warsh 금리경로 원천 점검]</b>',
@@ -152,6 +167,8 @@ def _last_good_snapshot(state):
             'source': state.get('source'),
             'market_data_basis': state.get('market_data_basis'),
             'official_settlement_date': state.get('official_settlement_date'),
+            'forecast_reporting_date': state.get('forecast_reporting_date'),
+            'source_api_url': state.get('source_api_url'),
             'last_validated_at_utc': state.get('last_validated_at_utc'),
         }
     return None
@@ -181,8 +198,10 @@ def main():
             reminder_due = not alerted
             if alerted and not last_notice:
                 last_notice = now.isoformat()
-        # 첫 장애 경고 + 72시간 이상 지속될 때만 재경고. 시간당 중복 발송 차단.
-        if streak >= 2 and not first and (not alerted or reminder_due):
+        permission_pending = '인증정보 미설정' in source_error
+        # 구독 미설정은 인터넷 재시도로 해결되지 않는 고정 상태.
+        # 1회 안내 후 매 72시간 중복 통지는 보내지 않는다.
+        if streak >= 2 and not first and (not alerted or (reminder_due and not permission_pending)):
             base.send(_source_health_message('error', source_error))
             alerted = True
             last_notice = now.isoformat()
@@ -199,7 +218,9 @@ def main():
             'official_settlement_date': None,
             'last_validated_at_utc': None,
             'last_good_snapshot': _last_good_snapshot(old),
-            'source_status': '최신성 검증 실패 — 과거값 격리·신규 판정 중지',
+            'source_status': ('CME FedWatch 공식 API 미연결 — 금리확률판정 보류'
+                              if permission_pending else
+                              '최신성 검증 실패 — 과거값 격리·신규 판정 중지'),
             'source_error': source_error,
             'source_error_streak': streak,
             'source_health_alerted': alerted,
@@ -250,6 +271,8 @@ def main():
         'source': snap['url'],
         'market_data_basis': snap.get('market_data_basis') or snap.get('source_kind'),
         'official_settlement_date': snap.get('official_settlement_date'),
+        'forecast_reporting_date': snap.get('forecast_reporting_date'),
+        'source_api_url': snap.get('source_api_url'),
         'last_validated_at_utc': validated_at,
     }
     base.save_state({
