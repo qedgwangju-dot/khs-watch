@@ -7,7 +7,9 @@ import json
 import os
 import pathlib
 import re
+import socket
 import zipfile
+import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -33,6 +35,7 @@ UA = "Mozilla/5.0 (compatible; khs-watch/1.1; +https://github.com/qedgwangju-dot
 # Separate Korean FOB exports from U.S. Census importer-country data.  Reported
 # article basket is not the same as the U.S. all-liquid 850421/22/23 basket.
 KOREA_EXPORT_VERSION = 1
+KOREA_EXPORT_FETCH_REVISION = 2
 KOREA_EXPORT_HS6 = ("850422", "850423", "850434")
 KOREA_EXPORT_REFERENCE = {
     "month": "2026-09",
@@ -64,6 +67,8 @@ KOREA_EXPORT_BASELINE = {
     "official_us_by_month": {},
     "latest_official_us_month": "",
     "last_attempt_day": "",
+    "last_attempt_at_kst": "",
+    "fetch_revision": 0,
     "last_checked_at_kst": "",
     "last_status": "not_checked",
     "last_error_kind": "",
@@ -1154,6 +1159,51 @@ def korea_claim_implied_weight_growth(value_change: float, unit_change: float) -
     return ((1 + value_change / 100) / (1 + unit_change / 100) - 1) * 100
 
 
+def kcs_error_category(exc: Exception) -> str:
+    """Only stable, credential-free error categories are written to state."""
+    if isinstance(exc, urllib.error.HTTPError):
+        if exc.code in (401, 403):
+            return "kcs_http_access_denied"
+        if exc.code in (429, 500, 502, 503, 504):
+            return "kcs_http_retryable"
+        return "kcs_http_error"
+    if isinstance(exc, urllib.error.URLError):
+        reason = getattr(exc, "reason", None)
+        if isinstance(reason, socket.gaierror):
+            return "kcs_dns_unavailable"
+        if isinstance(reason, (socket.timeout, TimeoutError)):
+            return "kcs_network_timeout"
+        return "kcs_network_unavailable"
+    if isinstance(exc, PermissionError):
+        return "kcs_key_missing"
+    if isinstance(exc, ValueError):
+        return "kcs_invalid_response"
+    if isinstance(exc, LookupError):
+        return "kcs_no_official_rows"
+    return "kcs_unexpected_error"
+
+
+def kcs_retry_due(now: datetime, previous: dict, key_available: bool) -> bool:
+    if not key_available:
+        return previous.get("last_status") != "kcs_key_missing"
+    if previous.get("fetch_revision") != KOREA_EXPORT_FETCH_REVISION:
+        return True
+    if previous.get("last_status") == "kcs_key_missing":
+        return True
+    if previous.get("last_attempt_day") != now.strftime("%Y-%m-%d"):
+        return True
+    if previous.get("last_error_kind") not in (
+        "kcs_dns_unavailable", "kcs_network_timeout", "kcs_network_unavailable",
+        "kcs_http_retryable",
+    ):
+        return False
+    try:
+        past = datetime.fromisoformat(str(previous["last_attempt_at_kst"]))
+        return (now - past).total_seconds() >= 90 * 60
+    except (ValueError, KeyError, TypeError):
+        return True
+
+
 def update_korea_export_watch(now: datetime, previous: dict) -> tuple[dict, list[dict]]:
     latest = copy.deepcopy(previous) if int(previous.get("version") or 0) >= KOREA_EXPORT_VERSION else copy.deepcopy(KOREA_EXPORT_BASELINE)
     latest.setdefault("official_us_by_month", {})
@@ -1164,18 +1214,16 @@ def update_korea_export_watch(now: datetime, previous: dict) -> tuple[dict, list
 
     today = now.strftime("%Y-%m-%d")
     key_available = bool(os.environ.get("KCS_DATA_GO_SERVICE_KEY", "").strip())
-    # Credentials can become available after a workflow deployment on the same
-    # day.  A prior missing-key attempt must not suppress that recovery.
-    if latest.get("last_attempt_day") == today and not (
-        latest.get("last_status") == "kcs_key_missing" and key_available
-    ):
+    if not kcs_retry_due(now, latest, key_available):
         return latest, events
     latest["last_checked_at_kst"] = now.isoformat(timespec="seconds")
     if not key_available:
         latest["last_status"] = "kcs_key_missing"
-        latest["last_error_kind"] = "permission_required"
+        latest["last_error_kind"] = "kcs_key_missing"
         return latest, events
     latest["last_attempt_day"] = today
+    latest["last_attempt_at_kst"] = now.isoformat(timespec="seconds")
+    latest["fetch_revision"] = KOREA_EXPORT_FETCH_REVISION
 
     y, m = month_shift(now.year, now.month, -1)
     months = [
@@ -1193,7 +1241,7 @@ def update_korea_export_watch(now: datetime, previous: dict) -> tuple[dict, list
                 observations.append(fetch_korea_kcs_hs6_month(code, ym))
             except Exception as exc:
                 # Do not surface credential-bearing URL or potentially sensitive raw payloads.
-                errors.append(type(exc).__name__ if not isinstance(exc, ValueError) else "api_invalid_response")
+                errors.append(kcs_error_category(exc))
                 break
         if len(observations) != len(KOREA_EXPORT_HS6):
             continue
@@ -1217,7 +1265,14 @@ def update_korea_export_watch(now: datetime, previous: dict) -> tuple[dict, list
     latest["official_us_by_month"] = {k: store[k] for k in sorted(store)[-18:]}
     if store:
         latest["latest_official_us_month"] = sorted(store)[-1]
-    latest["last_status"] = "verified" if month_key(y, m) in valid else ("api_inaccessible_or_unpublished" if errors else "no_data")
+    if month_key(y, m) in valid:
+        latest["last_status"] = "verified"
+    elif "kcs_no_official_rows" in errors and len(set(errors)) == 1:
+        latest["last_status"] = "month_unpublished"
+    elif errors:
+        latest["last_status"] = "api_inaccessible_or_unpublished"
+    else:
+        latest["last_status"] = "no_data"
     latest["last_error_kind"] = errors[0] if errors else ""
     return latest, events
 
