@@ -41,16 +41,18 @@ def test_buyback_initial_reaction_is_not_presented_as_persistent_effect():
 
 def test_bessent_oil_scenario_is_conditional_and_causal_verdict_uses_multi_day_window():
     text = read("scripts/treasury_alert_korean_guard.py")
-    assert "UPGRADE_REVISION = 6" in text
+    assert "UPGRADE_REVISION = 7" in text
     assert "def oil_scenario_block" in text
     assert "이란 분쟁 종료 + 공급과잉" in text
     assert "재무부의 공식 가격목표가 아닙니다" in text
     assert "changes_5d" in text
     assert 'regime_changes = changes_5d or changes' in text
+    assert 'c = snapshot.get("changes_5d") or snapshot["common_changes"]' in text
     assert "5거래일 공통창" in text
     # This was true only before the first expanded operation; it must never
     # survive as a current statement in a future one-time upgrade.
     assert "아직 확대된 바이백은 집행되지 않았" not in text
+    assert "현재 하루 움직임만으로" not in text
 
 
 def test_yen_verbal_intervention_is_checked_for_persistence_not_hard_peg():
