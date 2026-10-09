@@ -83,6 +83,7 @@ jobs:
               and previous.get("seen_periods", []) == current.get("seen_periods", [])
               and previous.get("seen_news_events", []) == current.get("seen_news_events", [])
               and previous.get("seen_news_event_keys", []) == current.get("seen_news_event_keys", [])
+              and previous.get("seen_unparsed_oge_pdf", []) == current.get("seen_unparsed_oge_pdf", [])
           ):
               subprocess.run(
                   ["git", "checkout", "HEAD", "--", "data/trump_oge_portfolio_watch_state.json"],
