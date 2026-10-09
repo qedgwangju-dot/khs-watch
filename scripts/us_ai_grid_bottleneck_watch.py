@@ -1225,6 +1225,18 @@ def update_korea_export_watch(now: datetime, previous: dict) -> tuple[dict, list
     today = now.strftime("%Y-%m-%d")
     key_available = bool(os.environ.get("KCS_DATA_GO_SERVICE_KEY", "").strip())
     if not kcs_retry_due(now, latest, key_available):
+        # Migration guard: a prior access-denied state is still a material
+        # operator blocker even if this attempt is throttled for the same day.
+        denied = {
+            "kcs_http_access_denied", "kcs_service_access_denied",
+            "kcs_key_unregistered", "kcs_key_expired",
+        }
+        if (key_available and latest.get("last_error_kind") in denied
+                and not latest.get("source_blocker_notified")):
+            latest["last_status"] = "kcs_access_denied"
+            latest["source_blocker_notified"] = True
+            y, m = month_shift(now.year, now.month, -1)
+            events.append({"kind": "kcs_access_blocker", "month": month_key(y, m)})
         return latest, events
     latest["last_checked_at_kst"] = now.isoformat(timespec="seconds")
     if not key_available:
