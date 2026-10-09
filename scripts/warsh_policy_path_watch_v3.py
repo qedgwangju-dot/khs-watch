@@ -127,6 +127,16 @@ def _source_health_message(kind, err=None):
             '<b>원천</b>',
             base.link('CME 공식 FedWatch API', 'https://www.cmegroup.com/market-data/market-data-api/fedwatch-api.html'),
         ])
+    if kind == 'error' and ('HTTP Error 401' in str(err or '') or 'HTTP Error 403' in str(err or '')):
+        return '\n'.join([
+            '<b>[Warsh CME FedWatch 계정 권한 점검]</b>',
+            '공식 API 인증·계약 권한을 확인하지 못했습니다.',
+            '• API ID/암호·상품 이용권한을 CME 계정에서 점검해야 합니다.',
+            '• 검증 완료 전에는 시장 인상확률과 연말 선물 경로를 발송하지 않습니다.',
+            '<b>원천</b>',
+            base.link('CME 공식 FedWatch API 안내',
+                      'https://www.cmegroup.com/market-data/market-data-api/fedwatch-api.html'),
+        ])
     if kind == 'error':
         return '\n'.join([
             '<b>[Warsh 금리경로 원천 점검]</b>',
@@ -184,7 +194,9 @@ def main():
         source_error = str(exc)
         # 최초 수집이 실패해도 다른 감시를 멈추거나 과거 확률을 만들지 않는다.
         # 자료가 복구되기 전에는 금리경로 수치 자체를 새로 판정하지 않는다.
-        streak = int(old.get('source_error_streak') or 0) + 1
+        # 2회 연속 오류 여부만 저장. 장기간 같은 장애로 상태 파일을
+        # 매시간 수정/커밋하는 일을 방지한다.
+        streak = min(2, int(old.get('source_error_streak') or 0) + 1)
         alerted = bool(old.get('source_health_alerted'))
         now = datetime.now(timezone.utc)
         last_notice = old.get('last_health_alert_at_utc')
@@ -199,10 +211,16 @@ def main():
             if alerted and not last_notice:
                 last_notice = now.isoformat()
         permission_pending = '인증정보 미설정' in source_error
-        # 구독 미설정은 인터넷 재시도로 해결되지 않는 고정 상태.
-        # 1회 안내 후 매 72시간 중복 통지는 보내지 않는다.
-        if streak >= 2 and not first and (not alerted or (reminder_due and not permission_pending)):
-            base.send(_source_health_message('error', source_error))
+        permission_denied = ('HTTP Error 401' in source_error or 'HTTP Error 403' in source_error)
+        reason_kind = ('auth_missing' if permission_pending else
+                       'auth_rejected' if permission_denied else 'transport')
+        # 인증 미설정으로 원인이 달라졌을 때는 단 한 번 안내한다.
+        # 구독 미설정은 매시간 네트워크를 재시도할 사안이 아니므로 72시간 재알림을 중단한다.
+        newly_classified = (permission_pending or permission_denied) and old.get('source_error_kind') != reason_kind
+        health_message_id = None
+        if streak >= 2 and not first and (
+                not alerted or newly_classified or (reminder_due and not permission_pending)):
+            health_message_id = base.send(_source_health_message('error', source_error))
             alerted = True
             last_notice = now.isoformat()
         state = {
@@ -223,8 +241,10 @@ def main():
                               '최신성 검증 실패 — 과거값 격리·신규 판정 중지'),
             'source_error': source_error,
             'source_error_streak': streak,
+            'source_error_kind': reason_kind,
             'source_health_alerted': alerted,
             'last_health_alert_at_utc': last_notice,
+            'last_health_message_id': health_message_id or old.get('last_health_message_id'),
         }
         base.save_state(state)
         print(json.dumps({
@@ -282,8 +302,10 @@ def main():
         'source_status': '시장원천 최신성·연준 공식범위 교차검증 통과',
         'source_error': None,
         'source_error_streak': 0,
+        'source_error_kind': None,
         'source_health_alerted': False,
         'last_health_alert_at_utc': None,
+        'last_health_message_id': old.get('last_health_message_id'),
     })
     print(json.dumps({
         'schema_version': SCHEMA_VERSION,
