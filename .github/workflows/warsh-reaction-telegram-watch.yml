@@ -234,15 +234,21 @@ jobs:
               raise RuntimeError(f'Wrong Telegram bot: expected @{expected}, got @{username or "unknown"}')
           print(f'equity_route_valid=true bot=@{username} chat_id_present=true')
           PY
-          python -m py_compile scripts/market_internal_strength_watch.py
+          python -m py_compile scripts/market_internal_strength_watch.py scripts/warsh_ai_rotation_watch.py
+          python scripts/warsh_ai_rotation_watch.py --self-test
           AI_ROTATION_RC=0
           python scripts/warsh_ai_rotation_watch.py || AI_ROTATION_RC=$?
           MARKET_INTERNAL_RC=0
           python scripts/market_internal_strength_watch.py || MARKET_INTERNAL_RC=$?
           if [ "$AI_ROTATION_RC" -ne 0 ]; then
-            echo "::warning::AI rotation watcher failed independently with exit code $AI_ROTATION_RC; market internal watcher still executed."
+            echo "::error::AI rotation watcher failed (exit $AI_ROTATION_RC); independent internal-strength monitor still executed."
           fi
-          exit "$MARKET_INTERNAL_RC"
+          if [ "$MARKET_INTERNAL_RC" -ne 0 ]; then
+            echo "::error::Market internal strength watcher failed (exit $MARKET_INTERNAL_RC)."
+          fi
+          if [ "$AI_ROTATION_RC" -ne 0 ] || [ "$MARKET_INTERNAL_RC" -ne 0 ]; then
+            exit 1
+          fi
 
       - name: Ignore timestamp-only state changes
         if: ${{ always() && !cancelled() }}
