@@ -4,10 +4,61 @@
   "initialized": true,
   "last_collection": {
     "direct_official_items": 26,
-    "errors": [],
+    "errors": [
+      "Google News RSS 실패: \"AI agent\" security vulnerability exploit \"data leak\" \"… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: \"Meta Muse\" security vulnerability exploit privacy patc… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (OpenAI OR ChatGPT OR Codex) security vulnerability exp… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (Anthropic OR Claude) security vulnerability exploit \"p… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (Gemini OR \"Google AI\") security vulnerability exploit … / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (Copilot OR \"Microsoft AI\") security vulnerability expl… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (\"Model Context Protocol\" OR MCP) security vulnerabilit… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (Grok OR xAI OR Bedrock) AI security vulnerability expl… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (\"AI agent\" OR agentic) \"sandbox escape\" OR \"unauthoriz… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: LLM \"supply chain\" vulnerability exploit security… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (\"AI agent\" OR agentic OR LLM) misalignment \"third part… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (\"AI agent\" OR agentic) \"bypassed security controls\" OR… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) agent misalignm… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: \"rogue agent\" AI OpenAI Anthropic Google Meta security… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: \"rogue agents\" ChatGPT user images third party… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: \"AI agent\" \"third-party\" impact security controls… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: \"AI agent\" \"undesirable behavior\" OR \"unintended behavi… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: OpenAI \"Hugging Face\" agent incident misalignment… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) \"Critical cyber… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) \"Preparedness F… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (\"AI model\" OR \"frontier model\") cybersecurity capabili… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) system card cyb… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (OpenAI OR Anthropic) \"tens of thousands\" security inci… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (OpenAI OR Anthropic) model behavior guardrail sandbox … / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) \"training pause… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) \"tool use\" paus… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (\"Joint Commitment on Frontier Responsibilities\" OR \"Wh… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta OR xAI OR NVIDIA… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta OR xAI OR NVIDIA… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: frontier AI independent auditor found sandbox unauthori… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (OpenAI OR Anthropic) \"time to detection\" OR \"run was k… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (OpenAI OR Anthropic) unauthorized access incidents tra… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (NVIDIA OpenShell OR OpenShell OR NemoClaw) security vu… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (NVIDIA OpenShell OR OpenShell) data exfiltration netwo… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (\"agent safety runtime\" OR \"secure agent runtime\") vuln… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (NVIDIA OpenShell OR OpenShell) \"security release\" OR \"… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (OpenShell OR Sentry OR BlueField-4) policy bypass sand… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) model release c… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) deployment bloc… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) limited release… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (OpenAI OR Anthropic) \"blocking alignment evaluation\" f… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) \"Safety Case\" f… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) \"eval awareness… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) monitorability … / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) regression test… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (OpenAI OR Anthropic OR Google OR Meta) tool-use traini… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (Anthropic OR Claude) (Mythos OR \"Cyber Verification Pr… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: \"Jamie Dimon\" (Mythos OR Anthropic) cyber risk bank fin… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: (JPMorgan OR Citi OR Goldman OR bank OR \"critical infra… / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News RSS 실패: Anthropic Mythos vulnerabilities critical high severity… / HTTPError: HTTP Error 503: Service Unavailable"
+    ],
     "material_items": 1,
     "new_material_items": 0,
-    "raw_items": 119
+    "raw_items": 26
   },
   "seen": {
     "027ea08934406a07812d619d": {
@@ -271,5 +322,5 @@
       "vendor": "Anthropic"
     }
   },
-  "updated_at_kst": "2026-10-10T03:08:23+09:00"
+  "updated_at_kst": "2026-10-10T03:34:10+09:00"
 }
