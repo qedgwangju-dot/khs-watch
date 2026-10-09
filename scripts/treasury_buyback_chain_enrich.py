@@ -169,8 +169,9 @@ def failure_lines(exe: dict, causal: dict, cta: dict) -> list[str]:
 
     if cap_use is not None and cap_use < 80:
         failures.append(f"실제 집행이 운영 상한의 {cap_use:.1f}%에 그침")
-    if nom_bp is not None and nom_bp > 0:
-        failures.append(f"10년 명목금리가 공통 비교일 기준 {nom_bp:+.1f}bp 상승")
+    # Match the causal/stock blocks: sub-2bp wiggles are noise, not a red failure.
+    if nom_bp is not None and nom_bp >= 2.0:
+        failures.append(f"10년 명목금리가 {causal.get('basis','공통 비교일')} 기준 {nom_bp:+.1f}bp 상승")
     if cta.get("stale"):
         failures.append("CTA 상태가 6시간 신선도 기준을 넘겨 현재 반응 확인 불가")
     elif not cta.get("composite_confirmed"):
@@ -181,17 +182,22 @@ def failure_lines(exe: dict, causal: dict, cta: dict) -> list[str]:
 
 
 def equity_impact(causal: dict, cta: dict) -> str:
+    # Keep thresholds identical to treasury_alert_korean_guard.stock_market_block.
+    # Small 1bp-type moves must not become a red/green equity verdict in a
+    # different block of the same Telegram message.
     nom_bp = causal.get("nom10_bp")
     real_bp = causal.get("real10_bp")
-    if nom_bp is None:
-        return "⚪ 중립 — 장기금리 반응 확인 전"
-    if nom_bp < 0 and real_bp is not None and real_bp < 0 and cta.get("composite_confirmed"):
-        return "🟢 성장주 우호 강화 — 명목·실질금리 하락과 CTA 숏커버가 함께 확인"
-    if nom_bp < 0:
-        return "🟡 중립~약한 우호 — 금리는 내려갔지만 CTA 자기증폭 또는 실질금리 하락까지는 추가 확인"
-    if nom_bp > 0:
-        return "🔴 성장주 부담 — 바이백에도 장기금리가 올라 할인율 부담이 더 강함"
-    return "⚪ 중립 — 금리 방향성 변화가 뚜렷하지 않음"
+    bei_bp = causal.get("bei10_bp")
+    if nom_bp is None or real_bp is None:
+        return "⚪ 중립 — 명목·실질금리 반응 확인 전"
+    if nom_bp <= -2.0 and real_bp <= -2.0:
+        suffix = " · CTA 숏커버도 확인" if cta.get("composite_confirmed") else ""
+        return "🟢 성장주 할인율 우호 강화 — 명목·실질금리가 함께 하락" + suffix
+    if nom_bp >= 2.0 and real_bp >= 2.0:
+        return "🔴 성장주 할인율 부담 확대 — 명목·실질금리가 함께 상승"
+    if nom_bp < 0 and real_bp >= 0 and bei_bp is not None and bei_bp < 0:
+        return "🟡 물가 완화는 우호적이나 실질금리 부담 잔존"
+    return "⚪ 주식시장 영향 혼조 — 2bp 이상 명목·실질금리 방향이 정렬되지 않음"
 
 
 def build_block(exe: dict, causal: dict, cta: dict) -> str:
