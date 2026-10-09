@@ -64,6 +64,15 @@ def build_august_report(rate, basis, money_range, official_pdf_url=None):
     """Narrative is source-bounded; currency immediately follows every dollar amount."""
     def amount(low,high):
         return f"{money_range(low,high,rate)}"
+
+    def one(usd):
+        won=usd*rate
+        if won>=1_000_000_000_000:
+            return f"약 {won/1_000_000_000_000:,.2f}조원"
+        if won>=100_000_000:
+            return f"약 {won/100_000_000:,.1f}억원"
+        return f"약 {won/10_000:,.0f}만원"
+
     lines = [
         "📊 [트럼프 OGE 8월 신규 거래신고 — 517건]",
         "공시 주체: 도널드 트럼프 대통령 명의 신고 투자계좌",
@@ -74,14 +83,14 @@ def build_august_report(rate, basis, money_range, official_pdf_url=None):
         "▶ 한눈에 보기",
         "• 8월 증권 매수·매도: 517건 (18쪽 신고서에 대한 CNBC 집계)",
         f"• 거래총액 신고범위: 7,430만~2억7,330만달러 ({amount(74_300_000,273_300_000)})",
-        f"• 매수금액 하한: 4,420만달러 이상 ({amount(44_200_000,44_200_000)} 기준 이상)",
-        f"• 매도금액 하한: 3,010만달러 이상 ({amount(30_100_000,30_100_000)} 기준 이상)",
+        f"• 매수금액 하한: 4,420만달러 ({one(44_200_000)}) 이상",
+        f"• 매도금액 하한: 3,010만달러 ({one(30_100_000)}) 이상",
         "• 거래총액은 8월 거래 범위의 합계이며, 전체 보유자산·정확한 매매대금이 아닙니다.",
         "",
         "▶ 최대 단일 주식 매수",
         f"• 8월 21일 메타(META) 주식: 500만~2,500만달러 ({amount(5_000_000,25_000_000)}) 매수",
-        "• 같은 날 AT&T(T)·코노코필립스(COP)·애벗(ABT)·넷플릭스(NFLX)·셰브런(CVX)도 각각 100만~500만달러 매수.",
-        "• AMD·처치앤드드와이트(CHD)는 같은 날 각각 100만~500만달러 매도.",
+        f"• 같은 날 AT&T(T)·코노코필립스(COP)·애벗(ABT)·넷플릭스(NFLX)·셰브런(CVX) 각각 100만~500만달러 ({amount(1_000_000,5_000_000)}) 매수.",
+        f"• AMD·처치앤드드와이트(CHD)는 같은 날 각각 100만~500만달러 ({amount(1_000_000,5_000_000)}) 매도.",
         "",
         "▶ SpaceX: 주식이 아니라 회사채",
         f"• 8월 18일 SpaceX 선순위 무담보 회사채: 100만~500만달러 ({amount(1_000_000,5_000_000)}) 매수",
