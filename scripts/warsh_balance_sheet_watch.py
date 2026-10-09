@@ -145,22 +145,52 @@ def h41_snapshot():
         'url':final
     }
 
+def interpret_implementation_text(text):
+    """시행지침의 실제 매입·재투자 지시문만 사용해 QT 여부를 판정한다."""
+    sentences = re.split(r'(?<=[.!?])\\s+', text)
+    keys = (
+        'system open market account', 'roll over at auction all principal payments',
+        'reinvest all principal payments', 'maintain an ample level of reserves',
+        'reduce holdings of securities', 'reduce its holdings of securities',
+        'stop reinvesting', 'cease reinvestment', 'allow principal payments',
+        'redemption cap', 'monthly cap', 'reinvestment cap',
+    )
+    directives = [x.strip() for x in sentences if any(k in x.lower() for k in keys) and 20 <= len(x) <= 1200]
+    core = ' '.join(dict.fromkeys(directives))
+    if not core:
+        return '정책문구 확인 필요', ''
+    low = core.lower()
+    qt = any(x in low for x in (
+        'reduce holdings of securities', 'reduce its holdings of securities',
+        'stop reinvesting', 'cease reinvestment', 'monthly redemption cap',
+        'reinvestment cap', 'allow principal payments to run off',
+    ))
+    ample = ('roll over at auction all principal payments' in low
+             and ('reinvest all principal payments' in low
+                  or 'maintain an ample level of reserves' in low))
+    if qt and ample:
+        return '정책문구 혼재 — QT 여부 판정 유보', core
+    if qt:
+        return '대차대조표 총량 축소/QT 명시', core
+    if ample:
+        return '충분한 준비금 유지·재투자/구성 전환', core
+    return '정책문구 확인 필요', core
+
+
 def latest_impl_note():
     raw,_=fetch(FOMC_CAL); found={}
-    for href,ds in re.findall(r'href=["\']([^"\']*/newsevents/pressreleases/monetary(\d{8})a1\.htm)["\']',raw,re.I):
+    for href,ds in re.findall(r'href=["\\']([^"\\']*/newsevents/pressreleases/monetary(\\d{8})a1\\.htm)["\\']',raw,re.I):
         found[ds]=urllib.parse.urljoin(FOMC_CAL,href)
-    if not found:return {'date':None,'url':FOMC_CAL,'fingerprint':None,'mode':'확인 필요','excerpt':''}
-    ds,u=sorted(found.items())[-1]; page,final=fetch(u); t=clean(page)
-    sentences=[]
-    for s in re.split(r'(?<=[.!?])\s+',t):
-        low=s.lower()
-        if any(k in low for k in ['treasury securit','mortgage-backed','reserve balances','ample reserves','securities holdings','reinvest','principal payments','roll over','purchase']):
-            if 20<=len(s)<=700:sentences.append(s)
-    core=' '.join(sentences[:15]); low=core.lower()
-    qt=any(re.search(p,low) for p in [r'reduc\w*.*securities holdings',r'declin\w*.*securities holdings',r'run[- ]?off',r'redemption cap',r'allow.*principal.*run off'])
-    ample=any(x in low for x in ['ample reserves','purchase shorter-term treasury','roll over at auction','reinvest'])
-    mode='대차대조표 총량 축소/QT 명시' if qt else ('충분한 준비금 유지·재투자/구성 전환' if ample else '정책문구 확인 필요')
-    return {'date':f'{ds[:4]}-{ds[4:6]}-{ds[6:]}','url':final,'fingerprint':hashlib.sha256(core.encode()).hexdigest(),'mode':mode,'excerpt':core[:1600]}
+    if not found:
+        raise RuntimeError('연준 FOMC 시행지침 공식 링크를 찾지 못함 — 판정 유보')
+    ds,u=sorted(found.items())[-1]
+    page,final=fetch(u)
+    mode,core=interpret_implementation_text(clean(page))
+    if not core:
+        raise RuntimeError('공식 시행지침 핵심 지시문을 추출하지 못함 — 판정 유보')
+    return {'date':f'{ds[:4]}-{ds[4:6]}-{ds[6:]}','url':final,
+            'fingerprint':hashlib.sha256(core.encode()).hexdigest(),
+            'mode':mode,'excerpt':core[:1600]}
 
 def task_snapshot():
     raw,final=fetch(TASK_URL); t=clean(raw); parts=[]
