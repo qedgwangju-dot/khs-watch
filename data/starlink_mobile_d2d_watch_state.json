@@ -1,19 +1,22 @@
 {
   "version": 1,
   "created_at": "2026-10-09T08:29:53.980437+00:00",
-  "updated_at": "2026-10-09T08:32:09.498848+00:00",
+  "updated_at": "2026-10-09T08:53:28.460534+00:00",
   "official_sources_verified": [
     "Grain Management 매각 공식 발표",
     "Grain Management 배포 보도자료",
     "AT&T·T-Mobile·Verizon 합작법인 공식 발표",
     "T-Mobile 주파수 매각 공식 발표",
-    "AT&T·AST SpaceMobile 상업계약 공식 발표"
+    "AT&T·AST SpaceMobile 상업계약 공식 발표",
+    "FCC 2026년 10월 D2D 별도 승인 DA-26-1078",
+    "FCC D2D 공식 결정문 안내"
   ],
   "seen": {
     "license:grain_spacex_800:agreement": "2026-10-09T08:32:09.498848+00:00",
     "fcc:gen2_15000:permission": "2026-10-09T08:32:09.498848+00:00",
     "fcc:2ghz:permission": "2026-10-09T08:32:09.498848+00:00",
     "carriers:att_tmus_vz_joint_venture:venture": "2026-10-09T08:32:09.498848+00:00",
-    "asts:att_verizon_contract:supply": "2026-10-09T08:32:09.498848+00:00"
+    "asts:att_verizon_contract:supply": "2026-10-09T08:32:09.498848+00:00",
+    "fcc:DA-26-36:gen2:permission": "2026-10-09T08:53:28.460534+00:00"
   }
 }
