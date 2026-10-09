@@ -317,7 +317,7 @@
     "09ac67de7e80e6d133990b6b": {
       "title": "Micron forecasts tighter memory supply through 2028, lifting Korea chip outlook - CHOSUNBIZ - Chosunbiz",
       "source": "Chosunbiz",
-      "published_kst": "2026-10-01T11:19:00+09:00",
+      "published_kst": "2026-10-01T16:00:00+09:00",
       "first_seen_kst": "2026-10-01T22:42:10+09:00"
     },
     "df203548de0f5c447084b404": {
@@ -353,7 +353,7 @@
     "fe40474fff0c5f079d25f902": {
       "title": "‘메모리 풍향계’ 마이크론 “내년이 정점? 2028년 메모리 공급 부족 더 심화”… 삼전닉스 실적 기대감 커져 - 조선비즈 - Chosunbiz",
       "source": "Chosunbiz",
-      "published_kst": "2026-10-01T11:45:00+09:00",
+      "published_kst": "2026-10-01T16:00:00+09:00",
       "first_seen_kst": "2026-10-02T08:52:43+09:00"
     },
     "944bec5d6180da11bd595de8": {
@@ -461,7 +461,7 @@
     "5b51fc2e21ff886d1a5d411d": {
       "title": "NVIDIA has launched a 64GB version of the DGX Spark, with memory halved and a starting price of $4,999, while the price for the 128GB version has increased to $6,950. - 富途牛牛",
       "source": "富途牛牛",
-      "published_kst": "2026-10-02T00:34:00+09:00",
+      "published_kst": "2026-10-02T11:26:00+09:00",
       "first_seen_kst": "2026-10-03T19:07:41+09:00"
     },
     "c3245ae87e95af2db91f6701": {
@@ -605,7 +605,7 @@
     "de70375a5a03fc752359e36b": {
       "title": "Micron Memory Shortage 2028: Supply Crunch Outlook - https://tech-insider.org/",
       "source": "https://tech-insider.org/",
-      "published_kst": "2026-10-02T05:53:47+09:00",
+      "published_kst": "2026-10-01T16:00:00+09:00",
       "first_seen_kst": "2026-10-07T01:17:15+09:00"
     },
     "56e0b6baf261364832173e44": {
@@ -655,11 +655,23 @@
       "source": "supple.kr",
       "published_kst": "2026-09-29T17:51:06+09:00",
       "first_seen_kst": "2026-10-08T04:59:21+09:00"
+    },
+    "67f8628e1ee651ca71511cdd": {
+      "title": "트렌드포스, 2분기 NAND 가격 70~75% 상승 전망…공급 완화는 수년 뒤 - FinanceFeeds",
+      "source": "FinanceFeeds",
+      "published_kst": "2026-10-01T21:20:47+09:00",
+      "first_seen_kst": "2026-10-10T03:50:23+09:00"
+    },
+    "ae6e6d528838c9adf3f1f725": {
+      "title": "HBM blended ASP forecast to jump 121% in 2027 - mkbn.mk.co.kr",
+      "source": "mkbn.mk.co.kr",
+      "published_kst": "2026-09-30T10:52:14+09:00",
+      "first_seen_kst": "2026-10-10T03:50:23+09:00"
     }
   },
-  "updated_at_kst": "2026-10-09T22:15:18+09:00",
-  "last_scan_count": 34,
-  "last_new_count": 0,
+  "updated_at_kst": "2026-10-10T03:50:23+09:00",
+  "last_scan_count": 32,
+  "last_new_count": 1,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
@@ -719,20 +731,20 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-10-08T15:02:53+09:00",
+  "last_successful_delivery_kst": "2026-10-10T03:50:33+09:00",
   "telegram_message_ids": [
-    262
+    275
   ],
-  "telegram_message_id": 262,
+  "telegram_message_id": 275,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      262
+      275
     ],
-    "confirmed_at_kst": "2026-10-08T15:02:53+09:00",
-    "alert_signature": "73f0f85fa9c7bc4b4610255b8b5371cf55315e0fd794a3a20c278a6ebca8c8ea"
+    "confirmed_at_kst": "2026-10-10T03:50:33+09:00",
+    "alert_signature": "bf27a83b981bf71d015c07f17cfd0cb0593d2785c9802cf7d5d2b59e3127300c"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
