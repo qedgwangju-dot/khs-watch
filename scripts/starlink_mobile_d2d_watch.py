@@ -324,6 +324,26 @@ def bootstrap()->str:
  ]
  return "\n".join(sections).strip()+"\n"
 
+FCC_D2D_ORDER_KEY="fcc:DA-26-1078:D2D:permission"
+FCC_D2D_OFFICIAL_URL="https://docs.fcc.gov/public/attachments/DA-26-1078A1.pdf"
+FCC_JAN_GEN2_URL="https://docs.fcc.gov/public/attachments/DA-26-36A1.pdf"
+
+def regulatory_correction_notice()->str:
+ return "\n".join([
+  "[신규 규제 승인·중요 정정] Starlink Mobile 위성 1만5,000기",
+  "• FCC는 2026년 10월 6일 DA-26-1078, 사건번호 25-340, 호출부호 S00735로 새로운 휴대전화 직접통신 위성망 최대 1만5,000기를 조건부 승인했습니다.",
+  "• 승인 궤도: 고도 약 326~335km, 9개 궤도군. 전체가 현재 가동 중이라는 의미는 아닙니다.",
+  "• 배치 마감: 2032년 10월 7일까지 절반(7,500기), 2035년 10월 7일까지 전체 1만5,000기. 단순 승인 기수를 가입자 수·매출로 환산하지 않습니다.",
+  "• 매우 중요한 구분: 2026년 1월 9일 DA-26-36은 별도의 Gen2 광대역 위성 7,500기 추가 승인(총 1만5,000기)입니다. 10월의 D2D 결정과 같은 사건이 아닙니다.",
+  "• 주파수 단계도 별도: 2026년 7월 T-Mobile→Grain 800MHz 이전 승인과 10월 Grain→SpaceX 800MHz 계약은 다릅니다. 후자는 아직 FCC 이전 승인 대기입니다.",
+  "• 매출 연결: D2D 위성 발사·망 검증→실제 휴대전화 연결 품질·가입자 유치→위성통신 반복 요금매출. 지상망 기지국 투자는 별도입니다.",
+  "• 숨은 역풍: 초저궤도 위성 유지·교체 주기, 2GHz 간섭 조정·인증, 실내 통화 품질, 주파수 거래 종결과 지상망 설비투자 부담.",
+  "• 먼저 볼 지표: 2026년 11월 초 이행보증 일정, 실제 위성 발사·가동 수, EchoStar 주파수 이전 2단계, Grain→SpaceX FCC 승인.",
+  "• 원문: "+FCC_D2D_OFFICIAL_URL,
+  "• 원문: "+FCC_JAN_GEN2_URL,
+  "• 원문: https://graingp.com/grain-management-announces-definitive-agreement-to-sell-nationwide-800-mhz-spectrum-portfolio-to-spacex/",
+ ])
+
 def render(topic:str,status:str,item:dict,pair:dict)->str:
  meta=TOPICS[topic]
  timestamp=item["pub"].astimezone(KST).strftime("%Y-%m-%d %H:%M KST")
@@ -410,6 +430,10 @@ def test()->int:
  assert event_id("fcc","permission","FCC approves SpaceX 15,000 D2D direct-to-device satellites")!=event_id("fcc","permission","FCC approves additional 7,500 Gen2 broadband satellites")
  assert event_id("fcc","permission","FCC approves 15,000 SpaceX satellites")=="fcc:ambiguous_15000:permission"
  assert "fcc:DA-26-1078:D2D:permission" not in KNOWN_BASELINE_KEYS
+ assert FCC_D2D_ORDER_KEY=="fcc:DA-26-1078:D2D:permission"
+ assert "FCC는 2026년 10월 6일" in regulatory_correction_notice()
+ assert "2026년 1월 9일" in regulatory_correction_notice()
+ assert "Grain→SpaceX 800MHz 계약" in regulatory_correction_notice()
  assert event_id("license","agreement","SpaceX to buy Grain 800MHz") == event_id("license","agreement","SpaceX acquires Grain 800 MHz spectrum")
  a={"title":"SpaceX and Grain sign nationwide 800 MHz spectrum deal", "publisher":"Reuters","pub":NOW,"url":"https://a.example"}
  b={"title":"Grain spectrum 800MHz agreement with SpaceX across the US", "publisher":"Financial Times","pub":NOW,"url":"https://b.example"}
@@ -451,6 +475,26 @@ def main()->int:
   raise RuntimeError(f"독립된 공식 발행기관 {len(organizations)}곳: 알림 차단. {failed}")
  force=os.getenv("FORCE_NOTIFY","").strip().lower() in ("true","1","yes")
  events,next_seen=choose_events(groups,state["seen"],initial,force)
+ # Correct the pre-existing program error: two DISTINCT FCC grants each
+ # concern 15,000 spacecraft (Jan Gen2 broadband, Oct D2D S00735).
+ # Deliver one explicit clarification only after directly reading an FCC
+ # primary publication, with independent FCC order and original Grain sources.
+ correction=False
+ oct_fcc_primary=any(
+  s.startswith("FCC 2026년 10월 D2D 별도 승인")
+  or s.startswith("FCC D2D 공식 결정문 안내")
+  for s in official
+ )
+ if (not initial and FCC_D2D_ORDER_KEY not in state["seen"]
+      and oct_fcc_primary and "Grain Management 매각 공식 발표" in official):
+  correction=True
+  # Prefer the regulator's actual Order over recycled commentary of it.
+  events=[s for s in events if not (
+   s.startswith(TOPICS["fcc"]["title"])
+   and ("15,000" in s or "15k" in s or "D2D" in s)
+  )]
+  events.insert(0,regulatory_correction_notice())
+  next_seen[FCC_D2D_ORDER_KEY]=NOW.isoformat()
  # Idempotent migration fixes an original bug: the first broadcast delivered
  # known October headlines while an empty dedup state could replay them later.
  # Never pre-mark the still-pending FCC assignment approval or sale closing.
@@ -480,6 +524,8 @@ def main()->int:
   f"- 뉴스 피드 정상: {good}/{sum(len(x['queries']) for x in TOPICS.values())}",
   f"- 뉴스 피드 장애: {len(errors)}",
   f"- 최초 기준선: {initial}, 이번 알림 사건: {len(events)}",
+  f"- 10월 6일 별도 FCC 직접통신 허가 정정 알림: {correction}",
+  f"- FCC DA-26-1078 공식 원문 검증: {oct_fcc_primary}",
   "- FCC 2026-07 T-Mobile→Grain 승인과 2026-10 Grain→SpaceX 승인 대기를 혼동하지 않음",
   "- 언론 교차 보도는 정부 승인·거래 종결로 확정하지 않음",
   "- 중복 기록은 Telegram 전송 성공 뒤에만 반영",
