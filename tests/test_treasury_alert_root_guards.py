@@ -41,7 +41,7 @@ def test_buyback_initial_reaction_is_not_presented_as_persistent_effect():
 
 def test_bessent_oil_scenario_is_conditional_and_causal_verdict_uses_multi_day_window():
     text = read("scripts/treasury_alert_korean_guard.py")
-    assert "UPGRADE_REVISION = 10" in text
+    assert "UPGRADE_REVISION = 11" in text
     assert "def oil_scenario_block" in text
     assert "def oil_scenario_key" in text
     assert "def _url_bytes" in text
@@ -66,6 +66,9 @@ def test_buyback_chain_uses_same_multi_day_horizon_as_causal_verdict():
     assert 'changes = snapshot.get("changes_5d") or snapshot.get("common_changes") or {}' in text
     assert '"basis": basis' in text
     assert "금리 반응({causal.get('basis','기준 확인 불가')})" in text
+    assert "nom_bp >= 2.0" in text
+    assert "nom_bp >= 2.0 and real_bp >= 2.0" in text
+    assert "nom_bp > 0" not in text
 
 def test_yen_verbal_intervention_is_checked_for_persistence_not_hard_peg():
     text = read("scripts/yen_carry_policy_equity_enrich.py")
