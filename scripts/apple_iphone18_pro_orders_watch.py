@@ -280,10 +280,27 @@ def _known_baseline_repeat(cut: dict, item: dict) -> bool:
         return True
     return False
 
+def _model_scope(text: str) -> str:
+    low = _clean(text).lower()
+    # "iPhone 18 Pro" must not match the Pro prefix of "Pro Max".
+    pro_max = bool(re.search(
+        r"iphone\s*18\s*pro\s*max|iphone18\s*pro\s*max|"
+        r"아이폰\s*18\s*프로\s*맥스|pro max|프로 맥스", low))
+    pro_only = bool(re.search(
+        r"iphone\s*18\s*pro\b(?!\s*max)|iphone18\s*pro\b(?!\s*max)|"
+        r"아이폰\s*18\s*프로\b(?!\s*맥스)", low))
+    if pro_max and pro_only:
+        return "pro_and_pro_max"
+    return "pro_max" if pro_max else "pro"
+
+
 def _fact_key(cut: dict, item: dict) -> str:
     root = "verified_manufacturer_official" if _official_publisher(item) else _root(item)
+    product_scope = _model_scope(
+        f"{item.get('title','')} {item.get('description','')}"
+    )
     return (
-        f"iphone18_pro_family|{cut['period']}|component_orders|"
+        f"iphone18_{product_scope}|{cut['period']}|component_orders|"
         f"{cut['basis']}|cut_{cut['low']:g}_{cut['high']:g}|{root}"
     )
 
@@ -433,8 +450,8 @@ def _change_alert(changes: list[dict]) -> str:
     for signal in changes:
         item, cut = signal["item"], signal["cut"]
         lines.append(
-            f"• {cut['period']} Pro 계열 부품 발주 조정 "
-            f"{cut['low']:g}~{cut['high']:g}% (당초 공급사 요청 대비)"
+            f"• {cut['period']} {_model_scope(item['title'] + ' ' + item.get('description',''))} "
+            f"부품 발주 조정 {cut['low']:g}~{cut['high']:g}% (당초 공급사 요청 대비)"
         )
         lines.append(
             f"  └ {html.escape(item['source'])} · {html.escape(item['published_at_kst'])}"
@@ -517,7 +534,7 @@ def main() -> None:
              "kind": "baseline" if is_initial else "follow_up"}
             if alert else state.get("last_alert")
         ),
-        "fx_verification": fx_status,
+        "fx_verification": fx_status if is_initial else state.get("fx_verification", fx_status),
     }
     PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     if alert:
