@@ -54,6 +54,22 @@ Every defect or requested change must follow this sequence:
   into a risk/company section because of incidental words. Oversized bundles
   split at article/field boundaries with all source content retained.
 - Headline, summary, source URL, and source body must describe the same event.
+- The compact core must retain the headline's primary actor, action or result,
+  period, and material amount or price direction when the source reports them.
+  A background growth rate, peer-company comparison, intro lead, or generic
+  context sentence cannot substitute for that event. For result-versus-price
+  divergence, report both the result and the observed price/flow reaction;
+  a separate issuer's forecast remains its own distinct event. The final
+  source-core gate must reject an otherwise fluent summary when any of these
+  headline facts are missing or mismatched.
+- Same-day reports of one executive's visit to one project site must resolve
+  to one event when the linked bodies describe the same visit and plan; retain
+  a changed execution stage, signed commitment, or genuinely new quantified
+  capacity as a separate update.
+- A market-entry interview with domestic investment, site, counterpart, and
+  contract terms undisclosed is not enough to fill a market-moving core slot.
+  A later signed contract, funded build, operating capacity, or other priced
+  execution must remain eligible.
 - Verified Korean article titles and bodies are owned by the source-body layer.
   Legacy topic overlays must not replace them from background references. An
   incompatible thematic summary is re-extracted from the article and checked
