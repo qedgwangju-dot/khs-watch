@@ -189,6 +189,17 @@ def verified_primary_sources()->tuple[list[str],list[str]]:
    failed.append(f"{name}: {type(e).__name__}")
  return verified,failed
 
+def distinct_primary_organizations(names:list[str])->set[str]:
+ # An issuer's release and its press-distribution mirror are not independent
+ # corporate confirmations, even if both URLs are live and parse correctly.
+ groups=set()
+ for name in names:
+  if name.startswith("Grain Management"):groups.add("grain")
+  elif name.startswith("SpaceX"):groups.add("spacex")
+  elif name.startswith("AT&T"):groups.add("att")
+  elif name.startswith("T-Mobile"):groups.add("tmobile")
+ return groups
+
 def rss(query:str)->list[dict]:
  params=urlencode({"q":query,"hl":"en","gl":"US","ceid":"US:en"})
  root=ET.fromstring(http_read("https://news.google.com/rss/search?"+params))
@@ -401,6 +412,8 @@ def test()->int:
  assert "2026년 7월 1일" in bootstrap()
  assert "2026년 10월 1일" in bootstrap()
  assert STATE!=PENDING!=ALERT
+ assert distinct_primary_organizations(["Grain Management 매각 공식 발표", "Grain Management 배포 보도자료"])=={"grain"}
+ assert distinct_primary_organizations(["Grain Management 배포 보도자료", "AT&T·AST SpaceMobile 상업계약 공식 발표"])=={"grain","att"}
  assert "license:grain_spacex_800:agreement" in KNOWN_BASELINE_KEYS
  assert "license:grain_spacex_800:fcc_approval" not in KNOWN_BASELINE_KEYS
  assert "license:grain_spacex_800:close" not in KNOWN_BASELINE_KEYS
@@ -416,8 +429,9 @@ def main()->int:
   raise RuntimeError(f"뉴스조회 불충분: {good} 성공·{len(errors)} 실패; 상태 유지")
  # Government/legal/official primary sources are checked independently of RSS.
  # On startup insist on two real corporate originals; do not send cached claims.
- if len(official)<2:
-  raise RuntimeError(f"공식 원문 직접 접근 {len(official)}곳: 알림 차단. {failed}")
+ organizations=distinct_primary_organizations(official)
+ if len(organizations)<2:
+  raise RuntimeError(f"독립된 공식 발행기관 {len(organizations)}곳: 알림 차단. {failed}")
  force=os.getenv("FORCE_NOTIFY","").strip().lower() in ("true","1","yes")
  events,next_seen=choose_events(groups,state["seen"],initial,force)
  # Idempotent migration fixes an original bug: the first broadcast delivered
@@ -445,7 +459,7 @@ def main()->int:
  SUMMARY.write_text("\n".join([
   "# Starlink Mobile·미국 이동통신 경쟁 감시",
   f"- 점검 시각: {NOW.astimezone(KST).isoformat()}",
-  f"- 공식 발표 원문 검증: {len(official)}/{len(SOURCES)} ({', '.join(official)})",
+  f"- 공식 발표 원문 검증: {len(official)}/{len(SOURCES)} (독립 발행기관 {len(organizations)}곳: {', '.join(official)})",
   f"- 뉴스 피드 정상: {good}/{sum(len(x['queries']) for x in TOPICS.values())}",
   f"- 뉴스 피드 장애: {len(errors)}",
   f"- 최초 기준선: {initial}, 이번 알림 사건: {len(events)}",
