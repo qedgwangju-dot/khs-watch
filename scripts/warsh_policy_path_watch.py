@@ -217,6 +217,9 @@ def send(msg):
     with urllib.request.urlopen(req,timeout=20) as r:
         out=json.loads(r.read().decode())
         if not out.get('ok'):raise RuntimeError('Telegram 전송 실패')
+        message_id=(out.get('result') or {}).get('message_id')
+        if not isinstance(message_id,int):raise RuntimeError('Telegram 응답 message_id 확인 실패')
+        return message_id
 
 def ko_date(date_text):
     try:
