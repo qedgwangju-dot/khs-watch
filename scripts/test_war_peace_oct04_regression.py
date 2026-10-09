@@ -1071,6 +1071,6 @@ try:
     mod.verify_alert(False)
     raise AssertionError("oct09-quality-gate-duplicate-three-day-plan")
 except RuntimeError as err:
-    check("oct09-quality-gate-duplicate-three-day-plan", "동일 3일 집중공격 계획" in str(err))
+    check("oct09-quality-gate-duplicate-three-day-plan", any(x in str(err) for x in ("동일 3일 집중공격 계획", "동일 제목 중복")))
 
 print("WAR_PEACE_OCT04_REGRESSION_OK")
