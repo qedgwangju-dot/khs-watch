@@ -251,7 +251,7 @@ def stage(topic:str,title:str)->str|None:
  return None
 
 def keywords(title:str)->set[str]:
- s=stem_title(title)
+ s=re.sub(r"(\d+)\s*(mhz|ghz)",r"\1\2",stem_title(title))
  return {w for w in TOKEN.findall(s) if len(w)>=3 and w not in STOP}
 
 def match_articles(a:dict,b:dict)->bool:
