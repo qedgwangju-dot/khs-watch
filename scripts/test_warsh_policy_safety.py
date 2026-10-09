@@ -484,5 +484,35 @@ class WarshSafetyTests(unittest.TestCase):
         self.assertNotIn("secret",str((args,kwargs)))
 
 
+    def test_api_entitlement_notice_only_once_and_state_streak_is_bounded(self):
+        old = {
+            "source_error_streak":24,
+            "source_error_kind":"transport",
+            "source_health_alerted":True,
+            "last_health_alert_at_utc":datetime.now(timezone.utc).isoformat(),
+        }
+        records=[]
+        reason=RuntimeError("CME FedWatch 공식 API 인증정보 미설정")
+        with patch.object(path_v3,"validated_snapshot",side_effect=reason), \
+             patch.object(path_v3.base,"load_state",side_effect=lambda:dict(old)), \
+             patch.object(path_v3.base,"save_state",side_effect=lambda x:records.append(dict(x))), \
+             patch.object(path_v3.base,"send",return_value=101) as send, \
+             patch.object(path_v3.base,"FORCE",False):
+            path_v3.main()
+        send.assert_called_once()
+        self.assertEqual(records[0]["source_error_streak"],2)
+        self.assertEqual(records[0]["source_error_kind"],"auth_missing")
+        self.assertEqual(records[0]["last_health_message_id"],101)
+
+        with patch.object(path_v3,"validated_snapshot",side_effect=reason), \
+             patch.object(path_v3.base,"load_state",return_value=records[0]), \
+             patch.object(path_v3.base,"save_state") as save, \
+             patch.object(path_v3.base,"send") as send, \
+             patch.object(path_v3.base,"FORCE",False):
+            path_v3.main()
+        send.assert_not_called()
+        self.assertEqual(save.call_args.args[0]["source_error_streak"],2)
+
+
 if __name__ == "__main__":
     unittest.main()
