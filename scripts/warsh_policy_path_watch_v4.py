@@ -9,6 +9,7 @@ import csv
 import io
 import json
 import math
+import os
 import re
 import time
 import urllib.parse
@@ -17,6 +18,7 @@ from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 
 import warsh_policy_path_watch_v3 as v3
+import warsh_cme_fedwatch_api as official_api
 
 CME_PRODUCT_ID = 305
 CME_SETTLEMENTS_PAGE = (
@@ -295,6 +297,40 @@ def adjacent_distribution(change_bp):
 
 
 def official_snapshot():
+    # 인증된 공식 FedWatch API만 실거래 확률을 판정하는 활성 경로.
+    # 2024년 종료된 FTP 결제파일이나 차단이 잦은 비공식 웹 JSON을
+    # 계속 재시도해 현재 확률로 승격하지 않는다.
+    api_id = (os.getenv("CME_FEDWATCH_API_ID") or "").strip()
+    api_password = (os.getenv("CME_FEDWATCH_API_PASSWORD") or "").strip()
+    if not api_id or not api_password:
+        raise RuntimeError(
+            "CME FedWatch 공식 API 인증정보 미설정 — 유료 데이터 구독 및 "
+            "GitHub Secrets 등록 전까지 시장 확률 판정 중지"
+        )
+    policy = v3.base.official_policy_baseline()
+    if not policy or policy.get("low") is None or policy.get("high") is None:
+        raise RuntimeError("연준 공식 목표금리 범위 확인 불가")
+    effr, effr_date = official_effr()
+    try:
+        effr_age = (ny_today() - datetime.strptime(effr_date[:10], "%Y-%m-%d").date()).days
+    except (ValueError, TypeError):
+        raise RuntimeError("뉴욕연은 EFFR 기준일 확인 실패")
+    if not 0 <= effr_age <= 7:
+        raise RuntimeError("뉴욕연은 EFFR 오래됨")
+    if not float(policy["low"]) - .03 <= effr <= float(policy["high"]) + .03:
+        raise RuntimeError("뉴욕연은 EFFR와 공식 목표범위 불일치")
+    upcoming = official_fomc_dates()[:6]
+    dates = [d.isoformat() for d in upcoming]
+    token = official_api.oauth_token(api_id, api_password)
+    records = official_api.forecasts(token, dates)
+    out = official_api.build_snapshot(records, dates, policy, ny_today())
+    out["effr"] = effr
+    out["effr_date"] = effr_date
+    return out
+
+
+def _legacy_public_settlement_snapshot():
+    # 비활성 참고 코드: 오래된 웹 JSON·FTP 탐색 경로는 운영에 사용하지 않는다.
     trade_date, monthly = cme_monthly_rates()
     effr, effr_date = official_effr()
     try:
