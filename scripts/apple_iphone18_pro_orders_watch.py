@@ -117,7 +117,7 @@ SCOPE_WORDS = {
 }
 UA = "Mozilla/5.0 (compatible; khs-iphone18pro-orders-watch/1.0)"
 
-def _fetch(url: str, timeout: int = 22) -> bytes:
+def _fetch(url: str, timeout: int = 12) -> bytes:
     req = urllib.request.Request(url, headers={"User-Agent": UA,
         "Accept": "application/rss+xml,application/xml,text/xml,*/*"})
     with urllib.request.urlopen(req, timeout=timeout) as r:
@@ -341,17 +341,15 @@ def _rss(lang: str, query: str) -> str:
             "ceid": "KR:ko" if lang == "ko" else "US:en"}
     return "https://news.google.com/rss/search?" + urllib.parse.urlencode(args)
 
-def collect() -> tuple[list[dict], list[str]]:
+def collect() -> tuple[list[dict], list[str], int]:
+    """Return qualifying articles, source errors, and successful source count."""
     now = dt.datetime.now(KST)
     earliest = now - dt.timedelta(days=21)
     rows: dict[str, dict] = {}
     errors: list[str] = []
-    for lang, query in QUERIES:
-        try:
-            root = ET.fromstring(_fetch(_rss(lang, query)))
-        except Exception as exc:
-            errors.append(f"{lang}:{type(exc).__name__}")
-            continue
+    successful_sources = 0
+
+    def absorb(root: ET.Element) -> None:
         for node in root.findall(".//item"):
             title = _clean(node.findtext("title"))
             desc = _clean(node.findtext("description"))
@@ -369,7 +367,31 @@ def collect() -> tuple[list[dict], list[str]]:
                     "source_url": source_url,
                     "published_at_kst": date.isoformat(timespec="seconds")}
             rows[_fingerprint(item)] = item
-    return sorted(rows.values(), key=lambda r: r["published_at_kst"]), errors
+
+    for lang, query in QUERIES:
+        try:
+            absorb(ET.fromstring(_fetch(_rss(lang, query))))
+            successful_sources += 1
+        except Exception as exc:
+            errors.append(f"google_{lang}:{type(exc).__name__}")
+
+    # A second provider limits dependence on Google News RSS. An empty,
+    # successfully parsed feed is different from an unavailable provider.
+    if successful_sources == 0:
+        fallback_queries = [
+            '"iPhone 18 Pro" component orders Nikkei October',
+            '"iPhone 18 Pro Max" November supplier order cuts',
+        ]
+        for query in fallback_queries:
+            url = "https://www.bing.com/search?format=rss&q=" + urllib.parse.quote(query)
+            try:
+                absorb(ET.fromstring(_fetch(url, timeout=10)))
+                successful_sources += 1
+            except Exception as exc:
+                errors.append(f"bing:{type(exc).__name__}")
+
+    return sorted(rows.values(), key=lambda r:r["published_at_kst"]), errors, successful_sources
+
 
 def _load_state() -> dict:
     if STATE_PATH.exists():
@@ -489,8 +511,8 @@ def main() -> None:
     seen = set(state.get("seen") or [])
     fact_keys = set(state.get("seen_fact_keys") or [])
     fact_keys.add(BASELINE_FACT)
-    items, errors = collect()
-    if not items and len(errors) == len(QUERIES):
+    items, errors, successful_sources = collect()
+    if successful_sources == 0:
         # Fail closed for facts, fail OPEN for the other five Apple modules.
         # A temporary RSS outage must not stop their independently verified
         # Telegram alerts or roll back previously confirmed Pro-order history.
@@ -578,6 +600,7 @@ def main() -> None:
         "metrics": state.get("metrics") or {"reported_baseline": BASELINE},
         "last_scan_items": len(items),
         "feed_errors": errors[-20:],
+        "successful_sources": successful_sources,
         "new_signal_count": len(updates),
         "source_status": "ok" if len(errors) == 0 else "partial_source_errors",
         "consecutive_source_failures": 0,
