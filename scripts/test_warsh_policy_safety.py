@@ -213,5 +213,107 @@ class WarshSafetyTests(unittest.TestCase):
                 futures.official_snapshot()
 
 
+    def test_cme_outage_does_not_retry_many_contract_dates(self):
+        with patch.object(futures, "ny_today", return_value=date(2026, 10, 8)), \
+             patch.object(futures, "get_json", side_effect=TimeoutError("blocked")) as api:
+            with self.assertRaisesRegex(RuntimeError, "접속 장애"):
+                futures.cme_monthly_rates()
+        self.assertEqual(api.call_count, 1, "접속 장애에서 날짜마다 재시도해도 복구되지 않는다")
+
+    def test_cme_unpublished_today_tries_prior_settlement(self):
+        from urllib.error import HTTPError
+        prior = {"settlements": [
+            {"month": "OCT 26", "settle": "96.10"},
+            {"month": "NOV 26", "settle": "96.00"},
+            {"month": "DEC 26", "settle": "95.90"},
+        ]}
+        with patch.object(futures, "ny_today", return_value=date(2026, 10, 8)), \
+             patch.object(futures, "get_json", side_effect=[
+                 HTTPError("https://www.cmegroup.com/", 404, "not published", {}, None),
+                 prior,
+             ]) as api:
+            trade_date, rates = futures.cme_monthly_rates()
+        self.assertEqual(trade_date, "2026-10-07")
+        self.assertEqual(len(rates), 3)
+        self.assertEqual(api.call_count, 2)
+
+    def test_operational_instructions_not_navigation_control_qt(self):
+        sample = (
+            "Menu: old QT runoff caps and policy archive. "
+            "Roll over at auction all principal payments from Treasury securities. "
+            "Reinvest all principal payments from holdings of agency securities into Treasury bills. "
+            "When appropriate, increase the System Open Market Account holdings "
+            "to maintain an ample level of reserves."
+        )
+        mode, core = balance.base.interpret_implementation_text(sample)
+        self.assertEqual(mode, "충분한 준비금 유지·재투자/구성 전환")
+        self.assertIn("Roll over", core)
+        self.assertNotIn("Menu:", core)
+
+    def test_ambiguous_qt_wording_never_means_qt_is_confirmed(self):
+        impl = {
+            "date": "2026-10-28",
+            "mode": "정책문구 혼재 — QT 여부 판정 유보",
+            "url": "https://www.federalreserve.gov/",
+        }
+        cur = {
+            "date": "2026-10-07", "total_assets": 6747560,
+            "total_assets_weekly": 4529, "treasury": 4566384,
+            "bills": 562157, "mbs": 1898089,
+            "reserves": 3022066, "reserves_weekly": None,
+            "url": "https://www.federalreserve.gov/releases/h41/Current/",
+        }
+        task = {"url": "https://www.federalreserve.gov/"}
+        message = balance.summary_message_v2(cur, impl, task, "혼합", None, "정책문구 검토")
+        self.assertIn("공식 정책문구 해석 유보", message)
+        self.assertNotIn("QT 판정</b>: 총량축소형 QT 공식 명시", message)
+
+    def test_previous_year_sep_never_matches_next_year_futures(self):
+        from warsh_policy_path_watch import classify
+        import warsh_policy_path_watch as core
+        snap = {"effr": 3.88, "meetings": [
+            {"date": "2027-01-27", "post_rate": 3.90},
+            {"date": "2027-12-08", "post_rate": 4.10},
+        ]}
+        with patch.object(core, "official_policy_baseline", return_value={
+            "mid": 3.875, "date": "2026-09-16", "kind": "연준 공식 중간값",
+            "source": "https://www.federalreserve.gov/monetarypolicy",
+        }), patch.object(core, "official_sep_baseline", return_value={
+            "date": "2026-09-16", "yearend": 4.10, "nextyear": 4.10
+        }), patch.object(core, "balance_sheet_baseline", return_value={
+            "mode": "정책문구 혼재 — QT 여부 판정 유보",
+            "regime": "혼합",
+        }):
+            out = classify(snap)
+        self.assertEqual(out["reference_year"], 2027)
+        self.assertIsNone(out["sep"])
+        self.assertNotIn("이중긴축", out["tightening_mix"])
+
+    def test_source_failure_warning_is_throttled_72_hours(self):
+        now = datetime.now(timezone.utc)
+        initial = {
+            "source_error_streak": 19,
+            "source_health_alerted": True,
+            "last_health_alert_at_utc": (now - timedelta(hours=1)).isoformat(),
+        }
+        with patch.object(path_v3, "validated_snapshot", side_effect=TimeoutError("CME")), \
+             patch.object(path_v3.base, "load_state", return_value=initial), \
+             patch.object(path_v3.base, "save_state"), \
+             patch.object(path_v3.base, "send") as send, \
+             patch.object(path_v3.base, "FORCE", False):
+            path_v3.main()
+        send.assert_not_called()
+        previous = dict(initial)
+        previous["last_health_alert_at_utc"] = (now - timedelta(hours=73)).isoformat()
+        with patch.object(path_v3, "validated_snapshot", side_effect=TimeoutError("CME")), \
+             patch.object(path_v3.base, "load_state", return_value=previous), \
+             patch.object(path_v3.base, "save_state"), \
+             patch.object(path_v3.base, "send") as send, \
+             patch.object(path_v3.base, "FORCE", False):
+            path_v3.main()
+        self.assertEqual(send.call_count, 1)
+
+
+
 if __name__ == "__main__":
     unittest.main()
