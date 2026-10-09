@@ -427,6 +427,79 @@ def _trump_ukraine_peace_rhetoric(row):
     return (exact or (trump and ukraine and rhetoric)) and not concrete
 
 
+def _trump_iran_midterm_no_strike(row):
+    """11월 3일 전 이란 추가 공격 유예 '발언'만 별도로 감지한다.
+
+    원문 제목에 현재 발언이 있어야 하며, 본문에 인용된 과거 입장만으로 감지하지 않는다.
+    실제 공격, 준비태세, 합의 체결과 혼동하지 않는다.
+    """
+    title = str(row.get("title_original") or "").lower()
+    description = str(row.get("description") or "").lower()
+    source = " ".join(str(row.get(k) or "") for k in ("source", "link", "resolved_url")).lower()
+    trusted = any(x in source for x in (
+        "reuters", "associated press", "ap news", "axios", "cnbc",
+        "bloomberg", "wall street journal", "wsj", "financial times",
+        "truthsocial.com", "whitehouse.gov", "연합뉴스", "yonhap",
+    ))
+    scope = title + " " + description
+    trump = any(x in scope for x in ("trump", "트럼프"))
+    iran = any(x in scope for x in ("iran", "iranian", "이란", "테헤란"))
+    election = any(x in scope for x in (
+        "midterm", "mid-term", "nov. 3", "nov 3", "november 3",
+        "11월 3일", "11월3일", "중간선거",
+    ))
+    pledge = any(x in title for x in (
+        "will not attack iran", "will not be attacking iran",
+        "won't attack iran", "won’t attack iran", "will not strike iran",
+        "won't strike iran", "won’t strike iran",
+        "no iran attacks", "no attack on iran", "no new strikes on iran",
+        "no strikes on iran", "will not resume military strikes on iran",
+        "rules out iran attack", "rules out new iran attack",
+        "not attacking iran", "no iran strikes", "no new attack on iran",
+        "이란 공격하지 않", "이란을 공격하지 않", "이란 공습하지 않",
+        "이란에 대한 공격 유예", "이란 공격 유예", "이란 공격 안 하",
+        "이란 공격 없", "이란 타격하지 않",
+    ))
+    # 원문 직접 게시물은 공식 고정 ID로 판정하되, 일반 기사의 본문 속 과거 인용에는 적용하지 않는다.
+    official = "117406186276133332" in source
+    quote = "we will not be attacking iran at any time prior to the midterm elections" in (
+        title + " " + description
+    )
+    denial = pledge or (official and quote)
+    actual_title = any(x in title for x in (
+        "despite pledge", "despite trump", "strikes iran despite",
+        "attacked iran", "bombed iran", "launches strikes", "launched strikes",
+        "공격 감행", "실제 공습", "공격 개시", "공습 개시",
+        "pledge reversed", "reverses pledge", "withdraws pledge",
+        "방침 철회", "입장 번복",
+    ))
+    return trusted and trump and iran and election and denial and not actual_title
+
+
+def _trump_iran_midterm_pledge_reversal(row):
+    """유예 철회·번복은 실제 공습이 아니라 경고성 입장 변화로 분리한다."""
+    title = str(row.get("title_original") or "").lower()
+    source = " ".join(str(row.get(k) or "") for k in ("source", "link", "resolved_url")).lower()
+    trusted = any(x in source for x in (
+        "reuters", "associated press", "ap news", "axios", "cnbc",
+        "bloomberg", "wall street journal", "wsj", "whitehouse.gov",
+        "truthsocial.com", "연합뉴스", "yonhap",
+    ))
+    return (
+        trusted
+        and any(x in title for x in ("trump", "트럼프", "white house", "백악관"))
+        and any(x in title for x in ("iran", "이란"))
+        and any(x in title for x in ("midterm", "november 3", "nov. 3", "중간선거", "11월 3일"))
+        and any(x in title for x in (
+            "reverses no-attack pledge", "reverses pledge not to attack",
+            "withdraws no-strike pledge", "no longer rules out strike",
+            "may attack iran before", "could strike iran before",
+            "공격 유예 철회", "이란 공격 유예 번복", "선거 전 이란 공격 재검토",
+        ))
+        and not any(x in title for x in ("launched", "bombed", "attacked", "공격 개시", "공습 개시"))
+    )
+
+
 def _iran_direct_talks_denial_only(row):
     """직접 대면협상 부인을 전체 외교채널 결렬·군사확전으로 오인하지 않는다."""
     t = _text(row).lower()
@@ -682,6 +755,10 @@ def marks(row):
         out.append("이스라엘10월7일해외공격위험경고")
     if _vance_iran_enrichment_condition(row):
         out.append("미국부통령이란농축종전조건")
+    if _trump_iran_midterm_no_strike(row):
+        out.append("트럼프이란중간선거전공격유예")
+    if _trump_iran_midterm_pledge_reversal(row):
+        out.append("트럼프이란공격유예철회가능성")
     if _iran_direct_talks_denial_only(row):
         out.append("이란직접협상부인")
     if _non_concrete_endgame_rhetoric(row):
@@ -732,6 +809,10 @@ def korean_title(ms):
         return "이스라엘 국가안보회의, 10월 7일 3주년 전후 해외의 이스라엘인·유대인 대상 공격 위험 증가 경고 — 실제 공격 발생 아님"
     if "미국부통령이란농축종전조건" in ms:
         return "미국 부통령 JD Vance, 이란이 전쟁 종식을 원하면 우라늄 농축 능력을 의미 있게 감축해야 한다고 제시 — 미국 측 협상 조건, 합의 진전 아님"
+    if "트럼프이란중간선거전공격유예" in ms:
+        return "트럼프, 11월 3일 미국 중간선거 전 이란 추가 공격 없다고 발표 — 대통령 발언 확인, 봉쇄 유지·휴전 합의 미확정"
+    if "트럼프이란공격유예철회가능성" in ms:
+        return "트럼프, 이란 선거 전 공격 유예 입장 재검토·번복 신호 — 실제 공격 명령·피격 여부 별도 확인"
     if "이란직접협상부인" in ms:
         return "이란 측, 미국과 직접협상은 부인 — 중재국 메시지 교환·간접 접촉 가능성과 전체 협상 결렬을 구분"
     if "종전전망성발언" in ms:
@@ -778,6 +859,10 @@ def signals(ms):
         out.append("🟡 이스라엘 국가안보회의가 10월 7일 3주년 전후 해외 공격 위험 증가를 경고 — 실제 공격 발생과는 구분")
     if "미국부통령이란농축종전조건" in ms:
         out.append("🟡 미국 부통령 JD Vance가 이란의 우라늄 농축 능력 감축을 전쟁 종식 조건으로 제시 — 미국 측 협상 조건이며 합의 진전 자체는 아님")
+    if "트럼프이란중간선거전공격유예" in ms:
+        out.append("🟡 트럼프 10월 8일 공개 발언: 11월 3일 중간선거 이전 미국의 이란 추가공격을 하지 않겠다는 입장 — 봉쇄는 유지, 합의·휴전은 확정되지 않음; 11월 4일 공격 결정도 아님")
+    if "트럼프이란공격유예철회가능성" in ms:
+        out.append("🟡 선거 전 이란 공격 유예 방침 변경 가능성 — 대통령의 입장 변화와 실제 군사작전 개시는 별도로 확인")
     if "이란직접협상부인" in ms:
         out.append("🟡 이란 측의 직접협상 부인은 대면협상 부재 확인 — 중재국을 통한 메시지 교환·간접 접촉까지 결렬됐다는 뜻은 아님")
     if "종전전망성발언" in ms:
@@ -802,6 +887,7 @@ def signals(ms):
         "러정유시설보복공격확대예고", "러시아종전조건입장표명",
         "루코일종전협상연계상업거래", "호르무즈유조선피격클러스터",
         "이스라엘10월7일해외공격위험경고", "호르무즈온피스유조선피격",
+        "트럼프이란중간선거전공격유예", "트럼프이란공격유예철회가능성",
         "미국부통령이란농축종전조건", "사우디리야드후티미사일요격확인",
         "이란남부폭발원인미확정", "사우디동서송유관회복",
         "목하탈환공세", "러시아국방부타격주장", "TASS러시아최대드론공격집계",
@@ -848,6 +934,18 @@ def score_item(row, now):
         tags = [t for t in tags if t not in ("확전", "휴전·평화", "재건", "종전·협상")]
         tags += ["협상·위협제약"]
         score = max(score, 98)
+    if "트럼프이란중간선거전공격유예" in ms:
+        row["title_ko"] = korean_title(ms)
+        row["signals_ko"] = []
+        tags = [t for t in tags if t not in ("확전", "확전위험", "휴전·평화", "재건", "종전·협상")]
+        tags += ["미국·이란", "대통령공개발언", "선거전공격유예", "11월3일", "봉쇄유지", "휴전미확정"]
+        score = max(score, 100)
+    if "트럼프이란공격유예철회가능성" in ms:
+        row["title_ko"] = korean_title(ms)
+        row["signals_ko"] = []
+        tags = [t for t in tags if t not in ("확전", "휴전·평화", "재건", "종전·협상")]
+        tags += ["미국·이란", "공격유예재검토", "실제공격미확인", "11월3일"]
+        score = max(score, 100)
     if "러정유시설보복공격확대예고" in ms:
         tags += ["우크라이나·러시아", "확전위험", "공격확대예고"]
     if "후티리야드아람코공격주장" in ms:
@@ -972,6 +1070,10 @@ def _stable_source_url(row):
 
 
 def item_id(row):
+    if _trump_iran_midterm_no_strike(row):
+        return hashlib.sha256(b"event|us-iran|trump-no-strikes-before-midterms|2026-10-08").hexdigest()[:20]
+    if _trump_iran_midterm_pledge_reversal(row):
+        return hashlib.sha256(("event|us-iran|trump-strike-pledge-reversal|" + _published_day(row)).encode()).hexdigest()[:20]
     if _iran_direct_talks_denial_only(row):
         return hashlib.sha256(("event|iran-us|direct-talks-denial|" + _published_day(row)).encode()).hexdigest()[:20]
     if _conditional_military_threat(row):
@@ -1048,6 +1150,10 @@ def topic_label(row):
         return "이스라엘 · 10월 7일 해외 공격 위험 경고"
     if "미국부통령이란농축종전조건" in ms:
         return "미국·이란 · 종전 협상 조건"
+    if "트럼프이란중간선거전공격유예" in ms:
+        return "미국·이란 · 11월 3일 전 추가공격 유예 발언"
+    if "트럼프이란공격유예철회가능성" in ms:
+        return "미국·이란 · 선거 전 공격유예 입장 변경"
     if "이란직접협상부인" in ms:
         return "이란·미국 · 직접협상 부인·간접접촉 구분"
     if "종전전망성발언" in ms:
@@ -1091,6 +1197,8 @@ def final_color(row):
     if "예멘아덴공항후티공격클러스터" in ms:
         return "red"
     if "미국부통령이란농축종전조건" in ms:
+        return "yellow"
+    if "트럼프이란중간선거전공격유예" in ms or "트럼프이란공격유예철회가능성" in ms:
         return "yellow"
     if "이란직접협상부인" in ms:
         return "yellow"
@@ -1164,6 +1272,14 @@ def verdict(items):
             "- <b>시장:</b> 유가·해운·보험 위험프리미엄 상승 압력\n"
             "- <b>다음:</b> 추가 공격 → 시설·선박 피해 → 운항 제한 → 실제 교전 강도"
         )
+    if yellow and "트럼프이란중간선거전공격유예" in all_marks:
+        return (
+            "<b>투자 판정</b>\n"
+            "- <b>핵심:</b> 트럼프의 11월 3일 전 이란 추가공격 유예 발언 확인\n"
+            "- <b>현재 단계:</b> 대통령 발표·군사행동 유예 — 봉쇄 유지, 이란과 휴전·종전 합의 미확정\n"
+            "- <b>시장:</b> 추가 미국 공습 우려 완화 가능성과 호르무즈 실제 운항·보험 위험은 별개\n"
+            "- <b>다음:</b> 유예 입장 변경 → 실제 군사 명령·타격 → 중재 협상 결과 → 11월 3일 이후 별도 판단"
+        )
     if yellow:
         return (
             "<b>투자 판정</b>\n"
@@ -1197,7 +1313,11 @@ def semantic_fix(text):
         level, idx = m.group(1), m.group(2)
         marker = None
         topic = None
-        if any(x in block for x in ("동서 송유관 재가동", "하루 580만배럴 수송 회복", "실물 공급 복구 신호")):
+        if any(x in block for x in ("11월 3일 미국 중간선거 전 이란 추가 공격 없다고 발표", "11월 3일 중간선거 이전 미국의 이란 추가공격")):
+            marker, topic = "🟡", "미국·이란 · 11월 3일 전 추가공격 유예 발언"
+        elif any(x in block for x in ("이란 선거 전 공격 유예 입장 재검토", "선거 전 이란 공격 유예 방침 변경")):
+            marker, topic = "🟡", "미국·이란 · 선거 전 공격유예 입장 변경"
+        elif any(x in block for x in ("동서 송유관 재가동", "하루 580만배럴 수송 회복", "실물 공급 복구 신호")):
             marker, topic = "🟢", "사우디 · 동서 송유관 공급회복"
         elif any(x in block for x in ("리야드 aramco 시설 미사일·드론 공격 주장", "리야드 aramco 시설을 탄도미사일·드론으로 공격했다고 주장")):
             marker, topic = "🔴", "사우디·후티 · Aramco 공격 주장"
@@ -1295,6 +1415,12 @@ def verify_alert(test_mode=False):
         issues.append("이란의 직접협상 부인을 실제 군사 확전으로 표시")
     if ("사우디-후티" in text or "사우디·후티" in text) and ("미-이란 대화 지속" in text or "미·이란 대화 지속" in text):
         issues.append("구체적 신규 사건 없는 중동 종합 재가공 기사를 별도 속보로 표시")
+    if "트럼프, 11월 3일 미국 중간선거 전 이란 추가 공격 없다고 발표" in text:
+        item_line = next((ln for ln in text.splitlines() if "미국·이란 · 11월 3일 전 추가공격 유예 발언" in ln), "")
+        if not item_line.startswith("🟡"):
+            issues.append("선거 전 공격유예 대통령 발언을 실제 군사 확전이나 휴전 확정으로 분류")
+        if "봉쇄 유지" not in text or "휴전 합의 미확정" not in text:
+            issues.append("이란 공격유예 알림에서 봉쇄 유지·휴전 미확정 조건 누락")
     if "후티의 리야드 탄도미사일 공격·요격 신호" in text:
         issues.append("리야드 미사일 요격 확인과 후티의 공항 타격 주장을 혼합 표시")
     if "승무원이 선박에 불을 붙였" in text:
