@@ -136,6 +136,19 @@ def _parse_date(raw: str) -> dt.datetime | None:
     except Exception:
         return None
 
+def _official_publisher(item: dict) -> bool:
+    url = item.get("source_url") or ""
+    host = (urlparse(url).hostname or "").lower().removeprefix("www.")
+    publisher = _clean(item.get("source") or "").lower()
+    if host in ("apple.com", "newsroom.apple.com") and "apple" in publisher:
+        return True
+    if host in ("news.samsung.com", "samsung.com") and ("samsung" in publisher or "삼성" in publisher):
+        return True
+    if host == "lginnotek.com" and ("lg" in publisher or "이노텍" in publisher):
+        return True
+    return False
+
+
 def _rank(source: str) -> int:
     low = _clean(source).lower()
     if any(x in low for x in LOW_SOURCES):
@@ -215,6 +228,8 @@ def _extract_cut(text: str) -> dict | None:
     return None
 
 def _known_baseline_repeat(cut: dict, item: dict) -> bool:
+    if _official_publisher(item):
+        return False
     if cut["period"] != "2026-10":
         return False
     # The same October 15-20% source can be republished as "at least 15%"
@@ -225,13 +240,15 @@ def _known_baseline_repeat(cut: dict, item: dict) -> bool:
     return False
 
 def _fact_key(cut: dict, item: dict) -> str:
+    root = "verified_manufacturer_official" if _official_publisher(item) else _root(item)
     return (
         f"iphone18_pro_family|{cut['period']}|component_orders|"
-        f"{cut['basis']}|cut_{cut['low']:g}_{cut['high']:g}|{_root(item)}"
+        f"{cut['basis']}|cut_{cut['low']:g}_{cut['high']:g}|{root}"
     )
 
 def _relevant_news(item: dict, state: dict) -> dict | None:
-    rank = _rank(item.get("source") or "")
+    official = _official_publisher(item)
+    rank = max(_rank(item.get("source") or ""), 3 if official else 0)
     if rank < 2:
         return None
     blob = f"{item.get('title','')} {item.get('description','')}"
@@ -240,8 +257,7 @@ def _relevant_news(item: dict, state: dict) -> dict | None:
         return None
     if _known_baseline_repeat(cut, item):
         return None
-    previously = (state.get("metrics") or {}).get("reported_baseline") or BASELINE
-    if cut["period"] == "2026-10":
+    if cut["period"] == "2026-10" and not official:
         delta = max(abs(cut["low"] - 15), abs(cut["high"] - 20))
         if delta < 5:
             return None
@@ -250,7 +266,8 @@ def _relevant_news(item: dict, state: dict) -> dict | None:
         return None
     # A publisher only repeating the original Nikkei story is no second source.
     return {"item": item, "cut": cut, "rank": rank, "fact_key": fact,
-            "source_root": _root(item), "stage": 2 if rank == 3 else 1}
+            "source_root": "verified_manufacturer_official" if official else _root(item),
+            "stage": 3 if official else (2 if rank == 3 else 1)}
 
 def _rss(lang: str, query: str) -> str:
     args = {"q": query, "hl": "ko" if lang == "ko" else "en-US",
@@ -275,6 +292,7 @@ def collect() -> tuple[list[dict], list[str]]:
             link = _clean(node.findtext("link"))
             source_node = node.find("source")
             source = _clean(source_node.text if source_node is not None else "")
+            source_url = _clean(source_node.attrib.get("url")) if source_node is not None else ""
             date = _parse_date(_clean(node.findtext("pubDate")))
             if not title or not link or not date or date < earliest or date > now + dt.timedelta(minutes=15):
                 continue
@@ -282,6 +300,7 @@ def collect() -> tuple[list[dict], list[str]]:
                 continue
             item = {"title": title, "description": desc, "link": link,
                     "source": source or "출처 미표시",
+                    "source_url": source_url,
                     "published_at_kst": date.isoformat(timespec="seconds")}
             rows[_fingerprint(item)] = item
     return sorted(rows.values(), key=lambda r: r["published_at_kst"]), errors
@@ -363,10 +382,12 @@ def _baseline_alert(fx_text: str) -> str:
     return "\n".join(lines) + "\n"
 
 def _change_alert(changes: list[dict]) -> str:
+    official = any(s["stage"] >= 3 for s in changes)
     lines = [
         "📱 <b>[Apple iPhone 18 Pro 부품 발주 | 후속 변동]</b>",
         "━━━━━━━━━━━━━━━━",
-        "🟠 <b>추가 공급망 발주 조정 보도·계약 확정 여부 미확인</b>",
+        ("🔴 <b>제조사 원문으로 확인된 추가 부품 발주 조정</b>" if official
+         else "🟠 <b>추가 공급망 발주 조정 보도·계약 확정 여부 미확인</b>"),
     ]
     for signal in changes:
         item, cut = signal["item"], signal["cut"]
@@ -408,15 +429,26 @@ def main() -> None:
     is_initial = not state["initial_alert_sent"]
     updates: list[dict] = []
     if not is_initial:
+        candidates: dict[str, dict] = {}
         for item in items:
             fid = _fingerprint(item)
             if fid in seen:
                 continue
-            seen.add(fid)
             signal = _relevant_news(item, {**state, "seen_fact_keys": list(fact_keys)})
             if signal and signal["fact_key"] not in fact_keys:
-                updates.append(signal)
-                fact_keys.add(signal["fact_key"])
+                key = signal["fact_key"]
+                old = candidates.get(key)
+                if old is None or (signal["stage"], signal["rank"]) > (old["stage"], old["rank"]):
+                    candidates[key] = signal
+            else:
+                seen.add(fid)
+        chosen = sorted(candidates.values(),
+                        key=lambda x: (x["stage"], x["rank"], x["item"]["published_at_kst"]),
+                        reverse=True)[:3]
+        for signal in chosen:
+            updates.append(signal)
+            fact_keys.add(signal["fact_key"])
+            seen.add(_fingerprint(signal["item"]))
     else:
         seen.update(_fingerprint(item) for item in items)
 
