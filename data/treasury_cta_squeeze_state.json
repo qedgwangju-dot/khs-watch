@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-10-10T07:27:10+09:00",
+  "last_checked_kst": "2026-10-10T07:47:14+09:00",
   "media_id": null,
   "cftc_date": "October 6, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-10-10T07:27:10+09:00",
+    "checked_kst": "2026-10-10T07:47:14+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "October 6, 2026",
@@ -15,7 +15,10 @@
           "leveraged_short": 1950785,
           "leveraged_spreading": 144190,
           "leveraged_net": -1257484,
-          "short_share_oi_pct": 43.48789995833529
+          "short_share_oi_pct": 43.48789995833529,
+          "leveraged_net_wow": -91504,
+          "leveraged_short_wow": 58948,
+          "previous_period": "September 29, 2026"
         },
         "5Y": {
           "open_interest": 6758624,
@@ -23,7 +26,10 @@
           "leveraged_short": 2668638,
           "leveraged_spreading": 260224,
           "leveraged_net": -2127567,
-          "short_share_oi_pct": 39.484930660442124
+          "short_share_oi_pct": 39.484930660442124,
+          "leveraged_net_wow": -141780,
+          "leveraged_short_wow": 20683,
+          "previous_period": "September 29, 2026"
         },
         "10Y": {
           "open_interest": 5742990,
@@ -31,7 +37,10 @@
           "leveraged_short": 2650396,
           "leveraged_spreading": 131836,
           "leveraged_net": -2139785,
-          "short_share_oi_pct": 46.150106477636214
+          "short_share_oi_pct": 46.150106477636214,
+          "leveraged_net_wow": -103353,
+          "leveraged_short_wow": 103385,
+          "previous_period": "September 29, 2026"
         },
         "ULTRA10Y": {
           "open_interest": 2593056,
@@ -39,7 +48,10 @@
           "leveraged_short": 456244,
           "leveraged_spreading": 34286,
           "leveraged_net": -319061,
-          "short_share_oi_pct": 17.594837905544654
+          "short_share_oi_pct": 17.594837905544654,
+          "leveraged_net_wow": 9410,
+          "leveraged_short_wow": -46612,
+          "previous_period": "September 29, 2026"
         },
         "BOND": {
           "open_interest": 1898067,
@@ -47,7 +59,10 @@
           "leveraged_short": 361924,
           "leveraged_spreading": 31596,
           "leveraged_net": -189678,
-          "short_share_oi_pct": 19.068030791326123
+          "short_share_oi_pct": 19.068030791326123,
+          "leveraged_net_wow": 61717,
+          "leveraged_short_wow": -48945,
+          "previous_period": "September 29, 2026"
         },
         "ULTRABOND": {
           "open_interest": 2404377,
@@ -55,7 +70,10 @@
           "leveraged_short": 784602,
           "leveraged_spreading": 47714,
           "leveraged_net": -726257,
-          "short_share_oi_pct": 32.63223695784813
+          "short_share_oi_pct": 32.63223695784813,
+          "leveraged_net_wow": 82613,
+          "leveraged_short_wow": -109656,
+          "previous_period": "September 29, 2026"
         }
       },
       "source_mode": "CFTC TFF live HTML",
@@ -147,7 +165,7 @@
         "volume_bn": 1189
       }
     },
-    "format_revision": 13,
+    "format_revision": 14,
     "nasdaq_cross_asset": {
       "nq_cftc": {
         "report_date": "October 6, 2026",
@@ -179,61 +197,37 @@
       },
       "history_3y": {
         "basis": "CFTC TFF NASDAQ MINI futures-only",
+        "history_source": "CFTC Public Reporting gpe5-46if verified against live report",
+        "history_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/HistoricalCompressed/index.htm",
+        "verified_current": true,
         "sample_n": 157,
-        "start_date": "2023-10-03",
-        "end_date": "2026-09-29",
-        "net_short_percentile_3y": 31.84713375796178,
-        "gross_short_percentile_3y": 24.840764331210192,
-        "short_extreme_percentile_3y": 31.84713375796178,
-        "short_share_oi_percentile_3y": 22.929936305732486,
+        "start_date": "2023-10-10",
+        "end_date": "2026-10-06",
+        "net_short_percentile_3y": 26.751592356687897,
+        "gross_short_percentile_3y": 19.745222929936304,
+        "short_extreme_percentile_3y": 26.751592356687897,
+        "short_share_oi_percentile_3y": 16.56050955414013,
         "peak_net_short_contracts_3y": 89125,
         "peak_net_short_date_3y": "2026-08-11",
         "peak_gross_short_contracts_3y": 135430,
         "peak_gross_short_date_3y": "2026-08-04",
-        "net_short_unwind_from_peak_pct": 72.26030855539972,
-        "gross_short_unwind_from_peak_pct": 46.19139038617736,
-        "unwind_from_peak_pct": 72.26030855539972,
-        "leveraged_short_1w_change": -11843,
-        "leveraged_short_4w_change": 3420,
-        "leveraged_net_1w_change": 5960,
-        "leveraged_net_4w_change": -10631,
-        "history_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/HistoricalCompressed/index.htm",
-        "history_source": "CFTC annual compressed TFF",
-        "download_errors": [],
-        "loaded_years": [
-          2016,
-          2017,
-          2018,
-          2019,
-          2020,
-          2021,
-          2022,
-          2023,
-          2024,
-          2025,
-          2026
-        ],
+        "net_short_unwind_from_peak_pct": 78.4437587657784,
+        "gross_short_unwind_from_peak_pct": 47.89854537399395,
+        "unwind_from_peak_pct": 78.4437587657784,
+        "leveraged_short_1w_change": -2312,
+        "leveraged_net_1w_change": 5511,
         "ten_year_complete": true,
         "sample_n_10y": 522,
-        "start_date_10y": "2016-10-04",
-        "end_date_10y": "2026-09-29",
-        "net_short_percentile_10y": 52.87356321839081,
-        "gross_short_percentile_10y": 43.29501915708812,
-        "short_share_oi_percentile_10y": 32.37547892720307,
-        "peak_net_short_contracts_10y": 89125,
-        "peak_net_short_date_10y": "2026-08-11",
-        "peak_gross_short_contracts_10y": 135430,
-        "peak_gross_short_date_10y": "2026-08-04",
-        "net_short_unwind_from_peak_pct_10y": 72.26030855539972,
-        "gross_short_unwind_from_peak_pct_10y": 46.19139038617736,
-        "gross_short_weekly_change_10y": -11843,
-        "net_short_weekly_build_10y": -5960,
-        "gross_short_weekly_build_percentile_10y": 10.17274472168906,
-        "net_short_weekly_build_percentile_10y": 27.63915547024952,
+        "start_date_10y": "2016-10-11",
+        "end_date_10y": "2026-10-06",
+        "net_short_percentile_10y": 45.019157088122604,
+        "gross_short_percentile_10y": 37.547892720306514,
+        "gross_short_weekly_change_10y": -2312,
+        "net_short_weekly_build_10y": -5511,
+        "gross_short_weekly_build_percentile_10y": 34.5489443378119,
+        "net_short_weekly_build_percentile_10y": 28.023032629558543,
         "max_gross_short_weekly_build_10y": 25649,
-        "max_gross_short_weekly_build_date_10y": "2026-09-22",
         "max_net_short_weekly_build_10y": 80408,
-        "max_net_short_weekly_build_date_10y": "2016-11-15",
         "gross_short_weekly_record_10y": false,
         "net_short_weekly_record_10y": false
       },
@@ -253,6 +247,7 @@
         "scope": "CFTC TFF NASDAQ MINI 전체시장 주간"
       },
       "stored_cftc_period": "September 29, 2026",
+      "history_status": "CFTC 최신 주간 보고서와 10년 공식자료 교차검증",
       "errors": [],
       "stage": 0,
       "label": "⚪ 채권→Nasdaq 이중 숏 스퀴즈 미확인",
@@ -264,14 +259,14 @@
       "nq_net_extreme": false,
       "nq_gross_extreme": false,
       "nq_build_shock": false,
-      "nq_build_pctile_10y": 10.17274472168906,
+      "nq_build_pctile_10y": 34.5489443378119,
       "nq_build_record_10y": false,
-      "nq_build_change_10y": -11843,
+      "nq_build_change_10y": -2312,
       "nq_fuel": false,
       "nq_history_ready": true,
-      "nq_history_fresh": false,
-      "nq_crosscheck_match": false,
-      "nq_crosscheck_reason": "CFTC NQ report-date cross-check mismatch: live=October 6, 2026 stored=September 29, 2026",
+      "nq_history_fresh": true,
+      "nq_crosscheck_match": true,
+      "nq_crosscheck_reason": null,
       "nq_price_up": false,
       "nq_price_official": true,
       "nq_price_fresh": false,
@@ -288,7 +283,7 @@
       "stale_reasons": []
     }
   },
-  "format_revision": 13,
+  "format_revision": 14,
   "short_bias_active": true,
   "episode_active": false,
   "episode_stage": 0,
