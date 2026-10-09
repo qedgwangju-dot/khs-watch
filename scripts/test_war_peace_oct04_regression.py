@@ -877,9 +877,10 @@ except RuntimeError as e:
 # 27) 10/9 15:45 KST 실송출에 나타난 서로 다른 한국어 제목 3건의 동일 사건 검사.
 # 이 세 원문을 독립 원발언이나 별도 군사행동으로 처리하면 안 된다.
 observed_reprint_titles = [
-    ("경향신문", "트럼프 “중간선거 전 이란 공격 없다”했지만···뒤에선 ‘3일 집중 공격’ 계획 준비 - 경향신문"),
+    ("아주경제", "트럼프 중간선거 전 이란 공격 안 해…해상 봉쇄는 유지 - 아주경제"),
     ("아이뉴스24", '트럼프 "11월 중간선거 전에는 이란 공격 안 한다" - 아이뉴스24'),
     ("KBS 뉴스", "트럼프 “중간선거 전 이란 공격 안 할 것” - KBS 뉴스"),
+    ("OBS경인TV", '트럼프 "중간선거 전까지 이란 공격 안 할 것" - OBS경인TV'),
 ]
 observed_reprints = [
     row(t, source=src, description="트럼프가 선거 전에 이란을 공격하지 않겠다고 밝혔다.")
@@ -890,8 +891,8 @@ for i, x in enumerate(observed_reprints,1):
     score, tags = mod.score_item(x, dt.datetime.now(mod.watch.KST))
     check(f"oct09-korean-reprint-yellow-{i}", score == 100 and mod.final_color(x) == "yellow")
     check(f"oct09-korean-reprint-no-red-{i}", "확전" not in tags and "휴전·평화" not in tags)
-check("oct09-observed-three-one-canonical-id", len({mod.item_id(x) for x in observed_reprints+[trump_cnbc,trump_reuters]}) == 1)
-check("oct09-observed-three-one-selected-row",len({mod.item_id(x): x for x in observed_reprints}) == 1)
+check("oct09-observed-four-one-canonical-id", len({mod.item_id(x) for x in observed_reprints+[trump_cnbc,trump_reuters]}) == 1)
+check("oct09-observed-four-one-selected-row",len({mod.item_id(x): x for x in observed_reprints}) == 1)
 
 # 상위 경보 품질 게이트는 전송 전 동일 발언의 한국어 3중 재보도를 거부해야 한다.
 bad_observed_reprints = """<b>전쟁·종전·재건 웹감시</b>
@@ -974,5 +975,61 @@ check("oct09-untrusted-lexical-reprint-recognized",mod._trump_iran_midterm_no_st
 check("oct09-untrusted-not-confirmed-policy",not mod._trump_iran_midterm_no_strike(anonymous_pledge_reprint))
 score,tags=mod.score_item(anonymous_pledge_reprint,dt.datetime.now(mod.watch.KST))
 check("oct09-untrusted-not-reemitted-as-war",score==0 and tags==[])
+
+
+# 30) 실제 10/9 실패: 대통령 유예발언과 국방부 '3일 집중공격 계획'은 별개.
+# 같은 정책 재보도(OBS·아주경제 등)는 출처·제목이 달라도 하나의 식별자.
+oct09_aju = row(
+    "트럼프 중간선거 전 이란 공격 안 해…해상 봉쇄는 유지 - 아주경제",
+    source="아주경제",
+    description="트럼프가 11월 3일 중간선거 전에는 공격을 하지 않겠다고 말했다.",
+)
+oct09_obs = row(
+    '트럼프 "중간선거 전까지 이란 공격 안 할 것" - OBS경인TV',
+    source="OBS경인TV",
+    description="Trump says no Iran strike before the midterm vote",
+)
+oct09_kyunghyang_plan = row(
+    "트럼프 “중간선거 전 이란 공격 없다”했지만···뒤에선 ‘3일 집중 공격’ 계획 준비 - 경향신문",
+    source="경향신문",
+    description="미 국방부가 검토한 3일 집중공격 계획과 트럼프의 선거 전 공격 보류 발언은 서로 다른 단계.",
+)
+oct09_yonhap_plan = row(
+    '"美국방부, 이란 \'3일 집중공격\' 계획 수립…트럼프 일단 제동" - 연합뉴스',
+    source="연합뉴스",
+    description="작전 방안을 마련했으나 대통령의 최종 승인과 실제 공격 명령은 확인되지 않았다.",
+)
+oct09_nyt_plan = row(
+    "Pentagon prepares three-day intensive Iran strike option as Trump says no attack before midterms",
+    source="New York Times",
+    description="The Pentagon examined strike options but the president has not approved an attack.",
+)
+for label, x in (("aju",oct09_aju),("obs",oct09_obs)):
+    check("oct09-confirmed-pledge-"+label, mod._trump_iran_midterm_no_strike(x))
+    check("oct09-confirmed-pledge-canonical-"+label, mod.item_id(x)==mod.item_id(trump_cnbc))
+for label, x in (("kyunghyang",oct09_kyunghyang_plan),("yonhap",oct09_yonhap_plan),("nyt",oct09_nyt_plan)):
+    check("oct09-three-day-plan-"+label, mod._iran_three_day_strike_plan(x))
+    check("oct09-three-day-not-pledge-"+label, not mod._trump_iran_midterm_no_strike(x))
+    check("oct09-three-day-unique-canonical-"+label, mod.item_id(x)==mod.item_id(oct09_kyunghyang_plan))
+    score,tags = mod.score_item(x, dt.datetime.now(mod.watch.KST))
+    check("oct09-three-day-yellow-"+label, mod.final_color(x)=="yellow" and "승인미확정" in tags and "확전" not in tags)
+check("oct09-plan-distinct-from-pledge",mod.item_id(oct09_kyunghyang_plan)!=mod.item_id(oct09_aju))
+
+# 실제 수집 경로처럼 점수 계산 전에 ID를 만들고, 중복 항목을 묶은 후 번역한다.
+items_by_id = {}
+now_replay = dt.datetime.now(mod.watch.KST)
+for case in (oct09_kyunghyang_plan, oct09_aju, oct09_obs, oct09_yonhap_plan, oct09_nyt_plan):
+    iid = mod.item_id(case)
+    score,tags = mod.score_item(case,now_replay)
+    case.update({"id":iid,"score":score,"tags":tags,"age":mod.watch.age_minutes(case,now_replay)})
+    case["title_ko"] = mod.watch.translate_ko(case["title_original"])
+    items_by_id.setdefault(iid,case)
+check("oct09-replay-two-distinct-events",len(items_by_id)==2)
+replay_render = mod.watch.build_alert(list(items_by_id.values()),[],now_replay)
+check("oct09-replay-pledge-once",replay_render.count("11월 3일 전 추가공격 유예 발언")==1)
+check("oct09-replay-plan-once",replay_render.count("3일 집중공격 계획 보도")==1)
+mod.watch.ALERT.write_text(replay_render,encoding="utf-8")
+mod.verify_alert(False)
+check("oct09-replay-quality-gate-accepts-distinct-events",True)
 
 print("WAR_PEACE_OCT04_REGRESSION_OK")
