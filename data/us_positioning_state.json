@@ -1,63 +1,63 @@
 {
   "seen": {
-    "Nasdaq SOX|sox": "ebd29dc37292e6665cda16c2fa98ee53c4359e723c2244944de24cd8d354a252",
-    "Cboe|options": "f2076ad534bf311090477af62daa28ca94292c12b737be386eb018d11d913eec",
+    "Nasdaq SOX|sox": "88b985fd67f94080a9de6dab939cd8caea7aba2a4f9b55842f3d611a1a318c51",
+    "Cboe|options": "91f41b6bfb60d68e27242c8e0503c5f24109dad1636877b1e3f874512b0e818b",
     "CFTC|cot": "c6cd12bb2f7ff0dae21beafc02d13fa2a2370b448ca51c53f9192bd15fa89dc3"
   },
   "values": {
     "Nasdaq SOX|sox": {
       "source": "Nasdaq SOX",
       "kind": "sox",
-      "period": "10/07/2026",
+      "period": "10/08/2026",
       "metrics": {
-        "value": 13066.15,
-        "previous_close": 13217.8203125,
+        "value": 12623.71,
+        "previous_close": 13066.150390625,
         "previous_close_source": "Yahoo daily close cross-check",
-        "net_change": -151.67031250000036,
+        "net_change": -442.4403906250009,
         "net_change_source": "Nasdaq official completed close minus Yahoo prior daily close",
-        "pct": -1.1474684094212373,
-        "d1_pct": -1.1474684094212373,
+        "pct": -3.38615718783134,
+        "d1_pct": -3.38615718783134,
         "official_overview_url": "https://indexes.nasdaq.com/Index/History/SOX",
         "crosscheck_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ESOX?range=10d&interval=1d",
         "crosscheck_same_date": true,
-        "crosscheck_close_diff": 0.0005859374996362021,
+        "crosscheck_close_diff": -0.004843750000873115,
         "final_close_confirmed": true,
-        "expected_completed_session": "2026-10-07",
-        "d3_pct": -0.5368217990700197,
-        "d5_pct": 3.464585147188992
+        "expected_completed_session": "2026-10-08",
+        "d3_pct": -4.167890513716255,
+        "d5_pct": -1.6001649095798598
       },
       "url": "https://indexes.nasdaq.com/Index/History/SOX",
-      "fingerprint": "ebd29dc37292e6665cda16c2fa98ee53c4359e723c2244944de24cd8d354a252"
+      "fingerprint": "88b985fd67f94080a9de6dab939cd8caea7aba2a4f9b55842f3d611a1a318c51"
     },
     "Cboe|options": {
       "source": "Cboe",
       "kind": "options",
-      "period": "Wednesday, October 7, 2026",
+      "period": "Thursday, October 8, 2026",
       "metrics": {
-        "total_pc_ratio": 0.87,
-        "total_calls": 7309174,
-        "total_puts": 6323143,
+        "total_pc_ratio": 0.89,
+        "total_calls": 8394179,
+        "total_puts": 7506470,
         "total_time_ct": "일별 마감",
-        "equity_pc_ratio": 0.63,
-        "equity_calls": 2407137,
-        "equity_puts": 1510620,
+        "equity_pc_ratio": 0.62,
+        "equity_calls": 3135783,
+        "equity_puts": 1956246,
         "equity_time_ct": "일별 마감",
-        "index_pc_ratio": 0.93,
-        "index_calls": 3399886,
-        "index_puts": 3174569,
+        "index_pc_ratio": 1.03,
+        "index_calls": 3421456,
+        "index_puts": 3527761,
         "index_time_ct": "일별 마감",
         "snapshot_type": "cboe_daily_eod",
         "final_snapshot": true,
         "daily_ratio_crosscheck": {
-          "date": "2026-10-07",
-          "total": 0.87,
-          "index": 0.93,
-          "equity": 0.63,
-          "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-10-07"
+          "date": "2026-10-08",
+          "total": 0.89,
+          "index": 1.03,
+          "equity": 0.62,
+          "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-10-08"
         }
       },
-      "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-10-07",
-      "fingerprint": "f2076ad534bf311090477af62daa28ca94292c12b737be386eb018d11d913eec"
+      "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-10-08",
+      "fingerprint": "91f41b6bfb60d68e27242c8e0503c5f24109dad1636877b1e3f874512b0e818b"
     },
     "CFTC|cot": {
       "source": "CFTC",
@@ -79,7 +79,7 @@
         "lev_net_wow": 1888,
         "previous_period": "September 22, 2026"
       },
-      "url": "https://publicreporting.cftc.gov/resource/gpe5-46if.json",
+      "url": "https://www.cftc.gov/dea/futures/financial_lf.htm",
       "fingerprint": "c6cd12bb2f7ff0dae21beafc02d13fa2a2370b448ca51c53f9192bd15fa89dc3",
       "nq_mini": {
         "contract": "NASDAQ MINI",
@@ -117,31 +117,9 @@
         "leveraged_net_1w_change": 5960,
         "leveraged_net_4w_change": -10631,
         "history_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/HistoricalCompressed/index.htm",
-        "history_source": "CFTC Public Reporting Socrata gpe5-46if",
-        "download_errors": [
-          "2016:RuntimeError",
-          "2017:RuntimeError",
-          "2018:RuntimeError",
-          "2019:RuntimeError",
-          "2020:RuntimeError",
-          "2021:RuntimeError",
-          "2022:RuntimeError",
-          "2023:RuntimeError",
-          "2024:RuntimeError",
-          "2025:RuntimeError",
-          "2026:RuntimeError"
-        ],
+        "history_source": "CFTC annual compressed TFF",
+        "download_errors": [],
         "loaded_years": [
-          2006,
-          2007,
-          2008,
-          2009,
-          2010,
-          2011,
-          2012,
-          2013,
-          2014,
-          2015,
           2016,
           2017,
           2018,
@@ -178,9 +156,8 @@
         "gross_short_weekly_record_10y": false,
         "net_short_weekly_record_10y": false
       },
-      "source_mode": "CFTC Public Reporting Socrata gpe5-46if",
-      "live_source_error": "RuntimeError: HTTP 조회 3회 실패: https://www.cftc.gov/dea/futures/financial_lf.htm / HTTPError: 403 Client Error: Forbidden for url: https://www.cftc.gov/dea/futures/financial_lf.htm | HTTPError: 403 Client Error: Forbidden for url: https://www.cftc.gov/dea/futures/financial_lf.htm | HTTPError: 403 Client Error: Forbidden for url: https://www.cftc.gov/dea/futures/financial_lf.htm"
+      "source_mode": "CFTC TFF live HTML"
     }
   },
-  "updated_at_kst": "2026-10-08T11:43:16.107567+09:00"
+  "updated_at_kst": "2026-10-09T11:55:58.527623+09:00"
 }
