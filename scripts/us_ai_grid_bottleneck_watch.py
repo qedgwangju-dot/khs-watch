@@ -1037,7 +1037,10 @@ def build_transformer_import_alert(event: dict, trade_state: dict) -> str:
 
 def parse_korea_kcs_hs6_response(xml_bytes: bytes, hs6: str, ym: str, country: str = "US") -> dict:
     """Fail closed on bad API response, missing period, mixed six/ten-digit levels."""
-    root = ET.fromstring(xml_bytes)
+    try:
+        root = ET.fromstring(xml_bytes)
+    except ET.ParseError as exc:
+        raise ValueError("kcs_invalid_xml") from exc
     code = (root.findtext(".//resultCode") or "").strip()
     if code != "00":
         raise ValueError("kcs_result_" + (code or "missing"))
@@ -1160,14 +1163,19 @@ def update_korea_export_watch(now: datetime, previous: dict) -> tuple[dict, list
         latest["baseline_notified"] = True
 
     today = now.strftime("%Y-%m-%d")
-    if latest.get("last_attempt_day") == today:
+    key_available = bool(os.environ.get("KCS_DATA_GO_SERVICE_KEY", "").strip())
+    # Credentials can become available after a workflow deployment on the same
+    # day.  A prior missing-key attempt must not suppress that recovery.
+    if latest.get("last_attempt_day") == today and not (
+        latest.get("last_status") == "kcs_key_missing" and key_available
+    ):
         return latest, events
-    latest["last_attempt_day"] = today
     latest["last_checked_at_kst"] = now.isoformat(timespec="seconds")
-    if not os.environ.get("KCS_DATA_GO_SERVICE_KEY", "").strip():
+    if not key_available:
         latest["last_status"] = "kcs_key_missing"
         latest["last_error_kind"] = "permission_required"
         return latest, events
+    latest["last_attempt_day"] = today
 
     y, m = month_shift(now.year, now.month, -1)
     months = [
