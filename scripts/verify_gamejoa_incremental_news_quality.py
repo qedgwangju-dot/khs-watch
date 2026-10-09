@@ -259,7 +259,7 @@ class IncrementalNewsTests(unittest.TestCase):
         second_core = radar.source_headline_event_fact(etoday_title, etoday_body)
         self.assertTrue(first_core)
         self.assertEqual(first_core, second_core)
-        for term in ('현재 용인의 약 3분의 2 규모', '부지·수요에 따라 확대', '정확한 착공 시점은 미정', '공사를 먼저 시작할 수 있다고 밝혔다'):
+        for term in ('현재 용인의 약 3분의 2 규모', '부지·수요에 따라 확대', '구체적인 착공 시점은 미정', '전력·용수 구축이 늦어져도 먼저 착공하겠다고 밝혔다'):
             self.assertIn(term, first_core)
         candidates = [
             {**alert(newis_title, newis_body, 'https://www.newsis.com/view/NISX20261009_0003820200'), 'published': '2026-10-09T16:02:00+09:00'},
@@ -6348,6 +6348,137 @@ class ConcreteLiveSelectionRegressions(unittest.TestCase):
                 audit = radar.source_market_materiality(candidate)
                 self.assertTrue(audit["equity_publication"]["eligible"], audit)
                 self.assertGreaterEqual(audit["priority"], 2, audit)
+
+    def test_oct9_honam_site_visit_core_preserves_scale_timing_and_conditionality(self):
+        title = '최태원 "전력·용수 늦어도 먼저 짓겠다"…호남 반도체 팹 속도전'
+        body = (
+            '최태원 SK그룹 회장이 호남 반도체 국가산업단지 후보지를 찾아 '
+            '"전력과 용수 구축이 늦어져 타이밍이 늦어진다면 먼저 착공하겠다"고 밝혔다. '
+            '호남 반도체 팹의 구체적인 착공 시점은 아직 정해지지 않았다. '
+            '최 회장은 현재 호남 반도체 클러스터를 용인의 3분의 2 정도 규모로 계획하고 있으며, '
+            '토지 수요가 더 있다면 이쪽이 더 커질 것이라고 말했다.'
+        )
+        candidate = alert(title, body, 'https://www.mt.co.kr/index.php/industry/2026/10/09/2026100915175278474')
+        direct_core = radar.sk_honam_site_visit_core(title, body)
+        self.assertTrue(direct_core, f"source-specific core was not extracted: {body}")
+        self.assertIn('용인의 약 3분의 2 규모', direct_core)
+        self.assertIn('전력·용수 구축이 늦어져도 먼저 착공', direct_core)
+        self.assertIn('구체적인 착공 시점은 미정', direct_core)
+        with patch.object(radar.base, 'kst_now', return_value=NOW):
+            selected = radar.quality_display_alerts([candidate], 7)
+        self.assertEqual(selected, [], "conditional site-visit remarks without an approved investment or start date must not fill a high-impact slot")
+
+    def test_oct9_taiwan_exports_core_keeps_record_growth_and_value(self):
+        title = '[올댓차이나] 9월 대만 수출 60% 급증…AI 열풍에 사상 최대'
+        body = (
+            '대만 9월 수출액이 872억2000만 달러로 전년 동월보다 60.9% 급증했다. '
+            '월간 수출액으로는 사상 최대다. 정보통신·시청각 제품과 전자부품 수출이 늘었고 '
+            'AI 서버와 고성능 컴퓨팅 수요 확대가 출하를 이끌었다.'
+        )
+        candidate = alert(title, body, 'https://www.newsis.com/view/NISX20261009_0003820288')
+        direct_core = radar.taiwan_monthly_export_core(title, body)
+        self.assertTrue(direct_core, f"source-specific core was not extracted: {body}")
+        materiality_audit = radar.source_market_materiality(candidate)
+        export_observation = materiality.national_export_observation(body.split('. ')[0])
+        self.assertTrue(
+            materiality_audit['disposition'] == 'keep',
+            {"audit": materiality_audit, "focus": materiality.focus_kind(title), "export_observation": export_observation},
+        )
+        self.assertFalse(radar.source_core_fact_errors({**candidate, 'telegram_core_fact': direct_core}), direct_core)
+        core = radar.verified_alert_core(candidate, title)
+        self.assertIn('872억2000만 달러', core)
+        self.assertIn('60.9%', core)
+        self.assertIn('사상 최대', core)
+        self.assertFalse(radar.source_core_fact_errors({**candidate, 'telegram_core_fact': core}), core)
+        with patch.object(radar.base, 'kst_now', return_value=NOW):
+            selected = radar.quality_display_alerts([candidate], 7)
+        self.assertEqual(len(selected), 1)
+
+    def test_oct9_pepsico_core_keeps_revenue_and_eps_guidance_directions_distinct(self):
+        title = '펩시코, 3분기 매출 253억달러 5.6%↑…연간 EPS 전망 하향'
+        body = (
+            '펩시코는 3분기 순매출이 252억7400만 달러로 전년 동기 대비 5.6% 증가했고 '
+            '핵심 EPS는 2.34달러로 2% 늘었다고 발표했다. '
+            '회사는 연간 핵심 EPS 증가율 가이던스를 2.5~3.5%로 하향하고, '
+            '순매출 증가율 전망은 약 6%로 상향했다. 북미 음료 자체 물량은 3% 감소했다.'
+        )
+        candidate = alert(title, body, 'https://www.mk.co.kr/news/stock/12171910')
+        core = radar.verified_alert_core(candidate, title)
+        self.assertIn('252억7400만 달러', core)
+        self.assertIn('5.6%', core)
+        self.assertIn('연간 핵심 EPS', core)
+        self.assertIn('2.5~3.5%', core)
+        self.assertIn('낮췄다', core)
+        self.assertFalse(radar.source_core_fact_errors({**candidate, 'telegram_core_fact': core}), core)
+
+    def test_administrative_terminology_article_does_not_fill_market_news_slot(self):
+        title = "국토부 우리말 순화 고시 '유명무실'…여전히 일본식·전문용어 남발"
+        body = (
+            '올해로 한글날 제정 100돌을 맞은 가운데 국토교통부가 잘못 쓰이는 도로·철도 용어를 '
+            '우리말로 순화해 사용하자며 고시 개정까지 해놓고도 관행적으로 쓰는 것으로 나타났다. '
+            '국토부는 2021년 도로 분야 58개 용어를 표준화했고 2024년 철도 분야 124개 용어도 바꿨다.'
+        )
+        candidate = alert(title, body, 'https://www.newsis.com/view/NISX20261008_0003819295')
+        audit = radar.source_market_materiality(candidate)
+        self.assertLess(audit['priority'], 2, audit)
+        with patch.object(radar.base, 'kst_now', return_value=NOW):
+            selected = radar.quality_display_alerts([candidate], 7)
+        self.assertEqual(selected, [])
+
+    def test_nobel_book_sales_spike_without_issuer_financial_impact_is_excluded(self):
+        title = '노벨문학상 앤 카슨 효과…국내 출간작 판매 184배 급증'
+        body = (
+            '예스24에 따르면 앤 카슨의 국내 출간 도서 판매량은 노벨문학상 발표 이후 '
+            '전날 집계에서 10월 7일 대비 18345.5% 증가했다.'
+        )
+        candidate = alert(title, body, 'https://www.etoday.co.kr/news/view/2634154')
+        audit = radar.source_market_materiality(candidate)
+        self.assertFalse(audit['equity_publication']['eligible'], audit)
+        self.assertEqual(audit['equity_publication']['reason'], 'literary_award_book_sales_without_issuer_financial_impact', audit)
+        with patch.object(radar.base, 'kst_now', return_value=NOW):
+            selected = radar.quality_display_alerts([candidate], 7)
+        self.assertEqual(selected, [])
+
+    def test_unmonetized_financial_information_tool_launch_is_excluded_but_paid_adoption_is_not(self):
+        title = "에픽AI '수주 레이더' 나왔다…기업들 신규계약 체결 한눈에"
+        body = (
+            '대체데이터 플랫폼 한경에이셀은 인공지능(AI) 투자정보 서비스인 에픽AI를 통해 '
+            '수주 레이더를 출시했다. 전자공시시스템(DART) 내 실시간 계약 규모와 발주처, '
+            '체결 후 감액·해지 정보를 보여주는 서비스다.'
+        )
+        candidate = alert(title, body, 'https://www.hankyung.com/article/2026100928951')
+        audit = radar.source_market_materiality(candidate)
+        self.assertEqual(audit['equity_publication']['reason'], 'information_tool_launch_without_paid_adoption_or_revenue', audit)
+        with patch.object(radar.base, 'kst_now', return_value=NOW):
+            self.assertEqual(radar.quality_display_alerts([candidate], 7), [])
+
+        paid_body = body + ' 한경에이셀은 유료 고객사 20곳과 연간 12억원 규모의 서비스 계약을 체결했다.'
+        paid = alert(title, paid_body, 'https://www.hankyung.com/article/2026100928951')
+        paid_audit = radar.source_market_materiality(paid)
+        self.assertNotEqual(
+            paid_audit['equity_publication']['reason'],
+            'information_tool_launch_without_paid_adoption_or_revenue',
+            paid_audit,
+        )
+
+    def test_quantified_sampo_cement_silo_expansion_remains_market_eligible(self):
+        title = '인천 남항 시멘트부두 사일로 증설 추진…인천해수청, 사업 허가'
+        body = (
+            '9일 인천지방해양수산청에 따르면 인천해수청은 최근 인천 남항 삼표시멘트 부두 시설을 증설하기 위해 '
+            '삼표시멘트 측이 낸 비관리청 항만개발사업 시행을 허가했다. '
+            '삼표시멘트는 지난해 38만t 규모였던 시멘트 물동량이 2030년 100만t가량으로 늘어날 것으로 예측했다. '
+            '이에 향후 226억6천여만원을 들여 일반시멘트 사일로 1기, 특수시멘트 사일로 2기, '
+            '이송 설비 3기를 추가 설치할 계획이다. 사일로 증설이 마무리되면 전체 저장 규모는 현재의 2배 수준이다.'
+        )
+        candidate = alert(title, body, 'https://stock.mk.co.kr/news/view/1172154')
+        audit = radar.source_market_materiality(candidate)
+        self.assertTrue(audit['equity_publication']['eligible'], audit)
+        self.assertGreaterEqual(audit['priority'], 2, audit)
+        with patch.object(radar.base, 'kst_now', return_value=NOW):
+            selected = radar.quality_display_alerts([candidate], 7)
+        self.assertEqual(len(selected), 1)
+        self.assertIn('약 226억6천여만원', selected[0]['telegram_core_fact'])
+        self.assertIn('지난해 38만t이던 물동량이 2030년 100만t으로 늘어날 전망', selected[0]['telegram_core_fact'])
 
 
 if __name__ == "__main__":

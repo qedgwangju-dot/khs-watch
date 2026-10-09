@@ -2834,11 +2834,21 @@ def sk_honam_site_visit_core(title: str, body: str) -> str:
         r"용인(?:\s*\(클러스터\))?(?:의)?[^.]{0,28}(?:한\s*)?3분의\s*2\s*정도",
         source,
     )
-    expansion = re.search(r"땅이\s*더\s*있고\s*수요가\s*더\s*있다면[^.]{0,65}더\s*커질", source)
-    schedule_unknown = re.search(r"착공\s*시점은\s*(?:답을\s*못|추가\s*검토)|정확한\s*착공\s*시점은", source)
+    expansion = re.search(
+        r"(?:땅이\s*더\s*있고\s*수요가\s*더\s*있다면|토지\s*수요가\s*더\s*있다면)[^.]{0,65}더\s*커질",
+        source,
+    )
+    schedule_unknown = re.search(
+        r"(?:구체적인\s*)?착공\s*시점은\s*(?:아직\s*)?(?:정해지지|답을\s*못|추가\s*검토)|정확한\s*착공\s*시점은",
+        source,
+    )
     early_construction = (
-        re.search(r"용수.{0,24}전력|전력.{0,24}용수", source)
-        and re.search(r"(?:늦는다\s*하더라도|늦어지더라도|공급\s*일정이\s*다소\s*늦)[^.]{0,100}(?:먼저|들어가|시작)", source)
+        re.search(r"(?:용수.{0,24}전력|전력.{0,24}용수)", source)
+        and re.search(
+            r"(?:늦는다\s*하더라도|늦어지더라도|늦어져\s*타이밍이\s*늦어진다면|"
+            r"공급\s*일정이\s*다소\s*늦)[^.]{0,100}(?:먼저\s*착공|먼저\s*들어가|시작)",
+            source,
+        )
     )
     if not scale or not expansion:
         return ""
@@ -2847,11 +2857,88 @@ def sk_honam_site_visit_core(title: str, body: str) -> str:
         "부지·수요에 따라 확대될 수 있다고 밝혔다."
     )
     if schedule_unknown or early_construction:
-        fact += (
-            " 정확한 착공 시점은 미정이며, 용수·전력 공급이 늦어져도 시기를 맞추면 "
-            "공사를 먼저 시작할 수 있다고 밝혔다."
-            if early_construction else " 착공 시점은 미정이다."
-        )
+        if early_construction:
+            fact += " 구체적인 착공 시점은 미정이며, 전력·용수 구축이 늦어져도 먼저 착공하겠다고 밝혔다."
+        else:
+            fact += " 구체적인 착공 시점은 미정이다."
+    return fact if core_sentence_is_complete(fact) else ""
+
+
+def taiwan_monthly_export_core(title: str, body: str) -> str:
+    if not re.search(r"대만", title) or not re.search(r"수출", title):
+        return ""
+    source = re.sub(r"\s+", " ", market_materiality.source_reported_body(body))
+    month = re.search(r"(?<!\d)(\d{1,2})월(?:\s*대만)?\s*수출", title)
+    amount = re.search(r"수출액이\s*(\d[\d,.]*억\s*\d[\d,.]*만\s*달러)", source)
+    change = re.search(r"전년\s*동월보다\s*(\d+(?:\.\d+)?)%\s*(?:급증|증가)", source)
+    record = re.search(r"월간\s*수출액으로는\s*사상\s*최대", source)
+    if not month or not amount or not change or not record:
+        return ""
+    fact = (
+        f"대만 {month.group(1)}월 수출액은 {amount.group(1)}로 전년 동월보다 "
+        f"{change.group(1)}% 늘어 월간 사상 최대를 기록했다."
+    )
+    if re.search(r"AI\s*서버와\s*고성능\s*컴퓨팅\s*수요가\s*확대", source):
+        fact += " AI 서버·고성능 컴퓨팅 수요 확대가 수출을 이끌었다."
+    return fact if core_sentence_is_complete(fact) else ""
+
+
+def pepsico_quarterly_guidance_core(title: str, body: str) -> str:
+    if not re.search(r"펩시코", title) or not re.search(r"3분기", title):
+        return ""
+    source = re.sub(r"\s+", " ", market_materiality.source_reported_body(body))
+    sales = re.search(
+        r"3분기\s*순매출(?:은|이)?\s*(\d[\d,]*(?:억\s*\d[\d,]*만)?\s*달러)로\s*"
+        r"전년\s*동기\s*대비\s*(\d+(?:\.\d+)?)%\s*(?:증가|늘었)",
+        source,
+    )
+    eps = re.search(
+        r"핵심\s*EPS는\s*(\d+(?:\.\d+)?)\s*달러로\s*(\d+(?:\.\d+)?)%\s*(?:증가|늘었)",
+        source,
+    )
+    eps_guidance = re.search(
+        r"연간\s*핵심\s*EPS\s*증가율\s*(?:가이던스|전망)(?:를|은|이)?\s*"
+        r"(\d+(?:\.\d+)?\s*[~∼-]\s*\d+(?:\.\d+)?%)\s*(?:로|으로)?\s*(?:하향|낮췄|낮추)",
+        source,
+    )
+    sales_guidance = re.search(
+        r"(?:연간\s*)?(?:순매출|매출)\s*증가율\s*(?:전망|가이던스)(?:은|을|이)?\s*"
+        r"(?:약\s*)?(\d+(?:\.\d+)?%)\s*(?:로|으로)?\s*(?:상향|올렸|높였)",
+        source,
+    )
+    if not sales or not eps or not eps_guidance:
+        return ""
+    company_fact = (
+        f"펩시코의 3분기 순매출은 {sales.group(1)}로 {sales.group(2)}% 늘고, "
+        f"핵심 EPS는 {eps.group(1)}달러로 {eps.group(2)}% 증가했다."
+    )
+    guidance_fact = (
+        f"연간 핵심 EPS 증가율 전망은 {eps_guidance.group(1)}로 낮췄다."
+        if not sales_guidance else
+        f"연간 매출 증가율 전망은 {sales_guidance.group(1)}로 올렸지만, "
+        f"연간 핵심 EPS 증가율 전망은 {eps_guidance.group(1)}로 낮췄다."
+    )
+    fact = f"{company_fact} {guidance_fact}"
+    return fact if core_sentence_is_complete(fact) else ""
+
+
+def sampyo_cement_silo_expansion_core(title: str, body: str) -> str:
+    if not re.search(r"삼표시멘트", title + " " + body) or not re.search(r"시멘트부두|사일로", title):
+        return ""
+    source = re.sub(r"\s+", " ", market_materiality.source_reported_body(body))
+    investment = re.search(r"(\d+)억\s*(\d+)천여만원", source)
+    current_volume = re.search(r"(?:지난해|작년)\s*(\d+)만\s*t", source, re.I)
+    target_volume = re.search(r"2030년\s*(\d+)만t", source, re.I)
+    storage_growth = re.search(r"저장\s*규모는\s*현재의\s*2배", source)
+    permitted = re.search(r"사업\s*시행을\s*허가", source)
+    if not all((investment, current_volume, target_volume, storage_growth, permitted)):
+        return ""
+    investment_amount = f"{investment.group(1)}억{investment.group(2)}천여만원"
+    fact = (
+        "인천해수청은 삼표시멘트의 인천 남항 사일로·이송설비 증설을 허가했다. "
+        f"삼표시멘트는 약 {investment_amount}을 투입해 설비를 증설할 계획이다. "
+        f"지난해 {current_volume.group(1)}만t이던 물동량이 2030년 {target_volume.group(1)}만t으로 늘어날 전망에 대비해 저장 규모를 2배로 키운다."
+    )
     return fact if core_sentence_is_complete(fact) else ""
 
 
@@ -2885,6 +2972,9 @@ def source_headline_event_fact(title: str, body: str) -> str:
         samsung_record_earnings_market_reaction_core(title, source),
         sk_hynix_quarterly_outlook_core(title, source),
         sk_honam_site_visit_core(title, source),
+        taiwan_monthly_export_core(title, source),
+        pepsico_quarterly_guidance_core(title, source),
+        sampyo_cement_silo_expansion_core(title, source),
         pyeongtaek_recycled_water_core(title, source),
     ):
         if headline_core:
@@ -12579,6 +12669,14 @@ def source_core_fact_errors(alert: dict) -> list[str]:
         event_specific_core = iraq_syria_oil_route_core(title, source)
     if not event_specific_core:
         event_specific_core = fomc_minutes_guidance_core(title, source)
+    if not event_specific_core:
+        event_specific_core = sk_honam_site_visit_core(title, source)
+    if not event_specific_core:
+        event_specific_core = taiwan_monthly_export_core(title, source)
+    if not event_specific_core:
+        event_specific_core = pepsico_quarterly_guidance_core(title, source)
+    if not event_specific_core:
+        event_specific_core = sampyo_cement_silo_expansion_core(title, source)
     if event_specific_core and re.sub(r"\s+", "", event_specific_core) != re.sub(r"\s+", "", core):
         errors.append("event_specific_market_fact_missing_or_mismatched")
     event_specific_market_alignment = bool(
@@ -12689,6 +12787,15 @@ def source_core_fact_errors(alert: dict) -> list[str]:
              or (sk_honam_site_visit_core(title, source)
                  and market_materiality.canonical_source_fact(sk_honam_site_visit_core(title, source))
                  == market_materiality.canonical_source_fact(expected_observation))
+              or (taiwan_monthly_export_core(title, source)
+                  and market_materiality.canonical_source_fact(taiwan_monthly_export_core(title, source))
+                  == market_materiality.canonical_source_fact(expected_observation))
+              or (pepsico_quarterly_guidance_core(title, source)
+                  and market_materiality.canonical_source_fact(pepsico_quarterly_guidance_core(title, source))
+                  == market_materiality.canonical_source_fact(expected_observation))
+              or (sampyo_cement_silo_expansion_core(title, source)
+                  and market_materiality.canonical_source_fact(sampyo_cement_silo_expansion_core(title, source))
+                  == market_materiality.canonical_source_fact(expected_observation))
              or (re.search(r'가스터빈.*블레이드.*납품\s*개시', title) and '본격 공급을 시작' in expected_observation)
              or (re.search(r'초순수.*(?:E&P|설계.조달).*계약', title, re.I)
                  and '계약을' in expected_observation and '억원' in expected_observation)
