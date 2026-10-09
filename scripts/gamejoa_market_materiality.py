@@ -2961,6 +2961,34 @@ def quarterly_earnings_release_observation(alert: dict) -> dict[str, str]:
             'stage': 'preliminary_filing'}
 
 
+def sk_honam_project_statement_identity(alert: dict) -> str:
+    """Cluster same-day reprints of Choi Tae-won's Honam fab-site statement.
+
+    Old send receipts retain the headline and timestamp but not a reusable
+    source body. A real construction start, approval, contract, or production
+    milestone must remain a separate event.
+    """
+    title = str(alert.get("source_title") or alert.get("original_news") or alert.get("news") or "")
+    published = str(alert.get("published") or "")
+    day = re.match(r"(20\d{2}-\d{2}-\d{2})", published)
+    if not day or not re.search(r"최태원|최\s*회장", title) or not re.search(r"호남.{0,12}반도체|반도체.{0,12}호남", title):
+        return ""
+    if re.search(
+        r"착공식|첫\s*삽|(?:공사|착공).{0,8}(?:돌입|시작|개시|확정)|"
+        r"(?:투자|사업).{0,12}(?:이사회.{0,8})?(?:확정|승인|결의)|"
+        r"계약.{0,10}(?:체결|서명)|(?:공장|팹).{0,8}(?:가동|양산|준공|완공)",
+        title,
+    ):
+        return ""
+    if not re.search(
+        r"3분의\s*2|(?:전력|용수).{0,12}(?:늦|먼저)|(?:늦|먼저).{0,12}(?:전력|용수|착공|공사)|"
+        r"규모|속도전|건설|부지|클러스터",
+        title,
+    ):
+        return ""
+    return f"source_event:v2:sk_honam_project_statement:{day.group(1)}"
+
+
 def source_event_identity(alert: dict) -> str:
     """Identify a sourced action and its terms, not a company-wide theme.
 
@@ -2969,6 +2997,9 @@ def source_event_identity(alert: dict) -> str:
     """
     title = str(alert.get('source_title') or alert.get('original_news') or alert.get('news') or '')
     body = str(alert.get('source_body') or '') if alert.get('body_verified') else ''
+    honam_statement = sk_honam_project_statement_identity(alert)
+    if honam_statement:
+        return honam_statement
     for event, observation in (
         ('ai_infrastructure_credit_stress', ai_infrastructure_credit_stress_observation(title, body)),
         ('sovereign_credit_spread_stress', sovereign_credit_spread_observation(title, body)),

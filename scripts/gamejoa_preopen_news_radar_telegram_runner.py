@@ -266,7 +266,10 @@ def migrate_seen_title_aliases(state: dict) -> None:
         link = str(entry.get("link") or "")
         if link and "news.google.com/rss/articles" not in link:
             seen.setdefault(f"link:{digest_seen(canonical_article_url(link))}", dict(entry))
-        source_identity = str(entry.get("source_event_identity") or "") or market_materiality.source_event_identity({"source_title": title})
+        source_identity = str(entry.get("source_event_identity") or "") or market_materiality.source_event_identity({
+            "source_title": title,
+            "published": entry.get("source_published_kst") or entry.get("first_seen_kst") or "",
+        })
         if source_identity:
             seen.setdefault(f"event:{digest_seen(source_identity)}", dict(entry))
         fact_identity = str(entry.get("source_fact_identity") or "")
