@@ -18,7 +18,7 @@ import json
 import re
 import urllib.parse
 import urllib.request
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 from pathlib import Path
 from html.parser import HTMLParser
 
@@ -48,7 +48,7 @@ SERIES = {
 }
 
 UPGRADE_MARKER = "<b>정책 목적·경계선</b>"
-UPGRADE_REVISION = 9
+UPGRADE_REVISION = 10
 UA = "Mozilla/5.0 khs-watch-treasury-bessent-verifier/4.0"
 
 EXACT_TITLES = {
@@ -72,6 +72,18 @@ def _url_text(url: str, timeout: int = 12) -> str:
             req = urllib.request.Request(url, headers={"User-Agent": UA, "Cache-Control": "no-cache"})
             with urllib.request.urlopen(req, timeout=timeout) as response:
                 return response.read().decode("utf-8-sig", errors="replace")
+        except Exception as exc:
+            last_error = exc
+    raise RuntimeError(f"자료 다운로드 실패: {url} / {type(last_error).__name__}: {last_error}")
+
+
+def _url_bytes(url: str, timeout: int = 12) -> bytes:
+    last_error = None
+    for _attempt in range(2):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": UA, "Cache-Control": "no-cache"})
+            with urllib.request.urlopen(req, timeout=timeout) as response:
+                return response.read()
         except Exception as exc:
             last_error = exc
     raise RuntimeError(f"자료 다운로드 실패: {url} / {type(last_error).__name__}: {last_error}")
