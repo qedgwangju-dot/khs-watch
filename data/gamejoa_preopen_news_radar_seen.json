@@ -1625,6 +1625,29 @@
       "telegram_core_fact": "김선우 연구원은 \"당사의 최근 전망치 대비 메모리에서 2조2000억원 기대 이상의 성과를 기록한 것으로 추정된다\"며 \"급격한 원화 강세로 비우호적인 사업 환경이 조성됐음에도 업계 평균을 웃도는 견조한 판매가격 정책이 실적 개선을 이끈 것으로 판단한다\"고 설명했다.",
       "title": "메리츠證 \"삼성전자 3분기 메모리 실적 예상 웃돌아…D램·낸드 가격 경쟁력 지속\""
     },
+    "core:1b91ea6e866e232cc73672d4": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/09/2026100816324876257",
+      "source": "머니투데이",
+      "source_body_digest": "7c95a0b5e55b43d54f47894bc9020dcd5a64e85bc6e8edab2aadf7944b5cba7a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b1d9ac243fbe6d9d3dc945210fbbd745db3d47a601ff670ed8c805644350449d",
+      "source_fact_keys": [
+        "source_fact:v1:0f1e267601a0daef9d790020b9cd60f1eb99359fdf6c5a9b3c646f88aee04eaa",
+        "source_fact:v1:29180aa552ec737d1444247f2900fd9c72ea5556df42996856c4d86cf2dbe9d3",
+        "source_fact:v1:a6bd95677760a01f65a2b1ca2c2b5d425683052821e9532b20e22c27840cd146",
+        "source_fact:v1:d5e4852c00ad1bce61cb50c5ea217074aace234ac0bac3556dce4a7d284d84e9",
+        "source_fact:v1:e8df4840c026bb61629f8995b596b876ef97d6ad1826426c4b104f502226a0f9"
+      ],
+      "source_published_kst": "2026-10-09T09:00+09:00",
+      "source_title": "[단독]거래대금 18분의1로 줄었는데…'삼전닉스 2배' 운용보수 월 10억",
+      "telegram_core_fact": "금융당국의 규제 강화로 삼성전자·SK하이닉스 단일종목 레버리지 상품의 거래대금은 18분의 1로 쪼그라들었지만 자산운용사의 운용보수는 여전히 월 10억원을 웃돈 것으로 나타났다.",
+      "title": "[단독]거래대금 18분의1로 줄었는데…'삼전닉스 2배' 운용보수 월 10억"
+    },
     "core:1b9cbf02bae38ebe724cfc5c": {
       "first_seen_kst": "2026-10-08T14:55:40+09:00",
       "lanes": {
@@ -2678,6 +2701,26 @@
       "source_title": "미래운용, '스테이트타워 남산' 매각 검토…KIC 등 입주",
       "telegram_core_fact": "현재 복수의 부동산 자문사를 대상으로 매각 주관사 선정 절차를 진행 중인 초기 단계로, 입찰제안요청서(RFP)는 아직 배포하지 않았다.",
       "title": "미래운용, '스테이트타워 남산' 매각 검토…KIC 등 입주"
+    },
+    "core:2aac7c00f0aad986c3a8a502": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261009_0003820074",
+      "source": "뉴시스",
+      "source_body_digest": "29d4324018b5352944eb305069d4aff3308ddb7fd5ada2d62b0338520ac81874",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f16e1ee6e309297f925df4827754eb38a2b005284aec640462ddeddf194520ec",
+      "source_fact_keys": [
+        "source_fact:v1:5b70a68cae0a629daf534aac7e492c145a91a8e9494740de4af1ec66177987cc",
+        "source_fact:v1:b81f81a7e0bf32cd50a1ef1af8f77901324830a1392793e0fca7cdbea6f446ee"
+      ],
+      "source_published_kst": "2026-10-09T09:22+09:00",
+      "source_title": "쿠팡·쿠팡이츠·쿠팡플레이 등 한밤 중 접속 장애…주문·배송 차질",
+      "telegram_core_fact": "고객 주문과 로그인뿐 아니라 물류 현장의 상품 분류 작업과 배송에도 차질이 빚어진 것으로 파악됐다.",
+      "title": "쿠팡·쿠팡이츠·쿠팡플레이 등 한밤 중 접속 장애…주문·배송 차질"
     },
     "core:2b9916f10e6b242f8a436f8d": {
       "first_seen_kst": "2026-10-08T18:46:25+09:00",
@@ -4014,6 +4057,23 @@
       "telegram_core_fact": "S&P500지수는 44.98포인트(0.58%) 상승한 7818.93에, 나스닥 종합지수는 122.48포인트(0.45%) 오른 2만7599.79에 마감했다.",
       "title": "실적 기대·국채금리 진정에…S&P500·나스닥 사상 최고 [뉴욕증시]- 매경ECONOMY"
     },
+    "core:4060cf714b4a3b6a3af8dad3": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172000",
+      "source": "매일경제",
+      "source_body_digest": "abd012a4bc553288cbc59fe356c4faa7fa44f74f6c323e629dc78977320ab229",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T21:40+09:00",
+      "source_title": "비아트리스, 파시라 16억5000만 달러 인수…주당 36.50달러",
+      "telegram_core_fact": "비아트리스(VTRS)가 비마취성 진통 치료제 기업 파시라 바이오사이언스(PCRX)의 발행주식 전량을 주당 36.50달러 현금, 총 지분가치 16억5000만 달러에 인수하는 최종 계약을 체결했다고 10월 8일 발표했다.",
+      "title": "비아트리스, 파시라 16억5000만 달러 인수…주당 36.50달러"
+    },
     "core:40ca62bc91e15813a585f0d3": {
       "first_seen_kst": "2026-10-08T07:12:10+09:00",
       "lanes": {
@@ -4416,6 +4476,25 @@
       "telegram_core_fact": "도널드 트럼프 미국 행정부는 2기 출범 후 연방정부 인력 감축, 친환경 에너지 세액공제 축소 등 지출 삭감, 고율 관세 부과 정책으로 재정적자 문제 해결에 나섰다.",
       "title": "관세 수입 줄고, 국채 이자 늘어…美 재정적자 2조달러 문턱"
     },
+    "core:49549867b8e09956f809e6c7": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634154",
+      "source": "이투데이",
+      "source_body_digest": "72117aff7d8bc58b9663a1485370b1a01854a338a57773fecc33aefb3612a89f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3651d0717b6a09421546ce4ca3f34e12bcbd67c071b4046a872df8ee8602fe39",
+      "source_fact_keys": [
+        "source_fact:v1:3dcabd2df1fa16714cabca0c9377c9e4d20404a593d8e921ea8ea740b21e9e00"
+      ],
+      "source_published_kst": "2026-10-09T12:27+09:00",
+      "source_title": "노벨문학상 앤 카슨 효과…국내 출간작 판매 184배 급증",
+      "telegram_core_fact": "예스24에 따르면 앤 카슨의 국내 출간 도서 판매량은 전날 발표 이후 집계에서 10월 7일 대비 18345.5% 증가했다.",
+      "title": "노벨문학상 앤 카슨 효과…국내 출간작 판매 184배 급증"
+    },
     "core:49cddfaa9639c90644c9f510": {
       "first_seen_kst": "2026-10-09T16:53:11+09:00",
       "lanes": {
@@ -4468,6 +4547,28 @@
       "source_title": "디스트리뷰션 솔루션스 그, 주당 35달러 인수 자금 8억 달러 채권 확정..7억서 증액",
       "telegram_core_fact": "주당 35달러 현금 인수의 자금 조달이 증액된 채권 발행으로 구체화돼 거래 성사 가능성이 한층 높아졌어요.",
       "title": "디스트리뷰션 솔루션스 그, 주당 35달러 인수 자금 8억 달러 채권 확정..7억서 증액"
+    },
+    "core:4a46c2fb7074d3e5832eb97d": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000021239",
+      "source": "국민일보",
+      "source_body_digest": "13253ac7e8702cc63a7e95c6bbbed14ab35732227175b05bfa7c900609585974",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5d1e09de5e6aa6c0c05806d81873e04d9f057b59a77129e2c95c2e0d80cb78ef",
+      "source_fact_keys": [
+        "source_fact:v1:1181bcca0b1eecaec7daf86cf14505104c783bdf4baa042e5389454887f708c0",
+        "source_fact:v1:238105f8be32887b38d55360fd183dbdf17407d554a42c7cbd854bb2730cce5a",
+        "source_fact:v1:5a3ec8297d33d0fd482a3cb4dc85f22471c2c71a7bf6172780d50c8bec5387ca",
+        "source_fact:v1:ce1085851f8066b656fcd152fb76f7fc8b2ccab7b00c9611be287142afb09d33"
+      ],
+      "source_published_kst": "2026-10-09T09:23+09:00",
+      "source_title": "[팩트체크] 2.3조 vs 54조…레버리지 손실 추정액, 왜 23배 차이?",
+      "telegram_core_fact": "반면 국민의힘이 주장하는 54조원은 씨티글로벌마켓증권이 레버리지 ETF 시장의 규모 변화와 신규 자금 유입 등을 이용해 추정한 금액이다.",
+      "title": "[팩트체크] 2.3조 vs 54조…레버리지 손실 추정액, 왜 23배 차이?"
     },
     "core:4a4fa8e0bc3102bddd04dd55": {
       "core_alias_evidence_message_id": 2373,
@@ -9449,6 +9550,23 @@
       "telegram_core_fact": "NH농협생명이 연간 신계약 보험계약마진(CSM) 1조원 달성을 목표로 수익성 중심의 성장 전략을 강화한다. NH농협생명은 7일 '신계약 CSM 1조 추진 선포식'을 열고 연간 신계약 CSM 1조원 달성을 위한 전사적 목표를 공유했다고 밝혔다.",
       "title": "NH농협생명, 신계약 CSM 1조원 목표…\"수익성 중심 성장\""
     },
+    "core:a70d8bb6cbe2dfa0772562e0": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.hankyung.com/article/2026100928951",
+      "source": "한국경제",
+      "source_body_digest": "7dcfd0a0c908b22bd9753b12702be03673e9e796b015965b1597355e29af9eca",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-09T18:07+09:00",
+      "source_title": "에픽AI '수주 레이더' 나왔다…기업들 신규계약 체결 한눈에",
+      "telegram_core_fact": "기업이 새로 따낸 계약부터 체결 이후 변경된 내용까지 수주 공시 정보를 한눈에 볼 수 있는 서비스가 나왔다.",
+      "title": "에픽AI '수주 레이더' 나왔다…기업들 신규계약 체결 한눈에"
+    },
     "core:a733f376dbdea49e0934959f": {
       "first_seen_kst": "2026-10-07T17:34:38+09:00",
       "lanes": {
@@ -10864,6 +10982,28 @@
       ],
       "source_published_kst": "2026-10-07T14:18+09:00",
       "title": "日 반도체 소부장, 자국 내 생산 강화…경제안보·엔저 영향"
+    },
+    "core:bcb164b319af4df10bf3db6f": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.fnnews.com/news/202610090908505477",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "afb942e02ee2710259a625a7cff44405664c61db1bda1c25d22c8d6fc8de02ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd453f95d11a30027880d3a88bc4f036476ac08090f57af222a868a8235b5c70",
+      "source_fact_keys": [
+        "source_fact:v1:3ed6c791d9293d3fca27c24b914d7395ffebe287110bc0e3205d27e8cf649bc8",
+        "source_fact:v1:5260852bbb5afa620f476536a39b4ceac122437d88e31cba7b8e5a05a1868ca5",
+        "source_fact:v1:d1dac421d4ecdc268f407e14df5f3577e52c628117e622969cdf048d4e17967f",
+        "source_fact:v1:f27c7364324bf0b4c7910e9048b9f95450fe5ade1e8263c8f85844c09cb82d4d"
+      ],
+      "source_published_kst": "2026-10-09T09:09+09:00",
+      "source_title": "평택시, 반도체 배후산단에 하수처리수 공급…관로공사 착공",
+      "telegram_core_fact": "평택시는 삼성전자 협력사 3곳 등에 하루 1만8천400t을 공급할 3.23㎞ 하수처리수 관로 공사를 착공했다. 공사비 225억원은 공급업체 3곳이 전액 부담하며, 내년 말 준공 목표다.",
+      "title": "평택시, 반도체 배후산단에 하수처리수 공급…관로공사 착공"
     },
     "core:bd6369976cb7c763de85d567": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
@@ -16922,6 +17062,29 @@
       "source": "머니투데이",
       "title": "반도체가 半했다… 한국수출 사상 첫 1조달러 시대 눈앞"
     },
+    "event:3ec5118eb1fa587187e5c382": {
+      "first_seen_kst": "2026-10-09T16:53:11+09:00",
+      "lanes": {
+        "live": "2026-10-09T16:53:11+09:00"
+      },
+      "last_seen_kst": "2026-10-09T16:53:11+09:00",
+      "link": "https://www.hankyung.com/article/202610092757h",
+      "source": "한국경제",
+      "source_body_digest": "2ff6e2abdb03a956658e7529b424c59618a9283fb1da02fdc293bdef1e4fb345",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e177a31b3c6c74833f3863cb69da454c85ef341502243c2ea9d8626702e5fbab",
+      "source_fact_keys": [
+        "source_fact:v1:4015f5f618c0173d61ae7baf24c8dd897e934a331e7dc2cbd404552e6b74810b",
+        "source_fact:v1:94df41d07c9363dca21e9093504ce150be1bbb0e40553814e0b0b3bd44dd201a",
+        "source_fact:v1:b863dd796c02092408272378d1fec915b2299cc3cbc555eb5b6485205605ad34",
+        "source_fact:v1:c03414eb4c8314d3ffbfff0eca87fa95fd955dc8b237b79079429e0678234e65",
+        "source_fact:v1:ff87a5b73b9f27b27de7136bfd186fdec80d84d5026a654769e008c0d6732e41"
+      ],
+      "source_published_kst": "2026-10-09T16:18+09:00",
+      "source_title": "최태원 \"전력·용수 늦어도 먼저 착공\"…호남 반도체 속도전",
+      "telegram_core_fact": "최 회장은 9일 호남 반도체 클러스터 예정지인 광주 군공항을 방문해 이 같이 밝힌 뒤 \"전력·용수 등 기반시설 공급이 늦어지더라도 반도체 생산공장(팹) 건설을 먼저 시작할 수 있다\"고 강조했다.",
+      "title": "최태원 \"전력·용수 늦어도 먼저 착공\"…호남 반도체 속도전"
+    },
     "event:3ed445ba8eccb50f0f8ddb56": {
       "first_seen_kst": "2026-10-02T19:18:49+09:00",
       "lanes": {
@@ -17767,6 +17930,29 @@
       "source_title": "한국 HBM 수출 200배 뛴 말레이시아…이유는?",
       "telegram_core_fact": "말레이시아가 한국산 고대역폭메모리(HBM)의 핵심 수출처로 떠올랐다.",
       "title": "한국 HBM 수출 200배 뛴 말레이시아…이유는?"
+    },
+    "event:558e65b5d2bb0c880542d410": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/09/2026100816324876257",
+      "source": "머니투데이",
+      "source_body_digest": "7c95a0b5e55b43d54f47894bc9020dcd5a64e85bc6e8edab2aadf7944b5cba7a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b1d9ac243fbe6d9d3dc945210fbbd745db3d47a601ff670ed8c805644350449d",
+      "source_fact_keys": [
+        "source_fact:v1:0f1e267601a0daef9d790020b9cd60f1eb99359fdf6c5a9b3c646f88aee04eaa",
+        "source_fact:v1:29180aa552ec737d1444247f2900fd9c72ea5556df42996856c4d86cf2dbe9d3",
+        "source_fact:v1:a6bd95677760a01f65a2b1ca2c2b5d425683052821e9532b20e22c27840cd146",
+        "source_fact:v1:d5e4852c00ad1bce61cb50c5ea217074aace234ac0bac3556dce4a7d284d84e9",
+        "source_fact:v1:e8df4840c026bb61629f8995b596b876ef97d6ad1826426c4b104f502226a0f9"
+      ],
+      "source_published_kst": "2026-10-09T09:00+09:00",
+      "source_title": "[단독]거래대금 18분의1로 줄었는데…'삼전닉스 2배' 운용보수 월 10억",
+      "telegram_core_fact": "금융당국의 규제 강화로 삼성전자·SK하이닉스 단일종목 레버리지 상품의 거래대금은 18분의 1로 쪼그라들었지만 자산운용사의 운용보수는 여전히 월 10억원을 웃돈 것으로 나타났다.",
+      "title": "[단독]거래대금 18분의1로 줄었는데…'삼전닉스 2배' 운용보수 월 10억"
     },
     "event:574265b71d9cf7c76d6e6f2c": {
       "first_seen_kst": "2026-10-08T21:47:01+09:00",
@@ -20539,28 +20725,24 @@
     "event:aa4d917b69b7f464faf852e8": {
       "first_seen_kst": "2026-10-09T16:29:31+09:00",
       "lanes": {
-        "live": "2026-10-09T16:53:11+09:00"
+        "live": "2026-10-09T18:14:26+09:00"
       },
-      "last_seen_kst": "2026-10-09T16:53:11+09:00",
-      "link": "https://mobile.newsis.com/view/NISX20261008_0003819087",
-      "source": "뉴시스",
-      "source_body_digest": "88d41e22c3eaf605a94b303e9f3f0d68bb7154522a38a6decbd46bbb86ac21fb",
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000021239",
+      "source": "국민일보",
+      "source_body_digest": "13253ac7e8702cc63a7e95c6bbbed14ab35732227175b05bfa7c900609585974",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:f6730262b9706c7b4d5e45769deef8f12f8d086adc0690ea181c24addba0e5e1",
+      "source_fact_identity": "source_facts:v1:5d1e09de5e6aa6c0c05806d81873e04d9f057b59a77129e2c95c2e0d80cb78ef",
       "source_fact_keys": [
-        "source_fact:v1:26720e5f1c3db729b9bc5418fe45de4d903dabe670983351b153659de789798f",
-        "source_fact:v1:389a2fea752fe925c0b494670ca384074f19825b3a55efd0c162de686940c434",
-        "source_fact:v1:45e9867c7cb28c54d03ce18d54d7ef22d1d24ad80700bf38be04e07c1ef96faf",
-        "source_fact:v1:8f26225c39cb036dfc8cc9421d700dc776e410922991df176ca86a3a603db653",
-        "source_fact:v1:963198a8d844cc99d0709d416e98bc4b1194f33b94dd8afbea38068cdd8e8a2e",
-        "source_fact:v1:b2b3629f456817e974a18492ef552d6452dd517510589608059b2367e881100a",
-        "source_fact:v1:b88b7b6da743f606af33082f192956e525330221400a554f827c1b81c55a7c19",
-        "source_fact:v1:c4ec44a58fdd0a4bf24a7d982f07214c2c7b3c4eefdd44540db8162f04f447c4"
+        "source_fact:v1:1181bcca0b1eecaec7daf86cf14505104c783bdf4baa042e5389454887f708c0",
+        "source_fact:v1:238105f8be32887b38d55360fd183dbdf17407d554a42c7cbd854bb2730cce5a",
+        "source_fact:v1:5a3ec8297d33d0fd482a3cb4dc85f22471c2c71a7bf6172780d50c8bec5387ca",
+        "source_fact:v1:ce1085851f8066b656fcd152fb76f7fc8b2ccab7b00c9611be287142afb09d33"
       ],
-      "source_published_kst": "2026-10-09T08:38+09:00",
-      "source_title": "'107조 잭팟' 삼성전자, '63만전자' 시동거나",
-      "telegram_core_fact": "금융투자업계에 따르면 삼성전자는 올해 3분기 잠정 실적으로 연결 기준 매출액 195조원, 영업이익 107조4000억 원(약 803억 달러)을 기록했다.",
-      "title": "'107조 잭팟' 삼성전자, '63만전자' 시동거나"
+      "source_published_kst": "2026-10-09T09:23+09:00",
+      "source_title": "[팩트체크] 2.3조 vs 54조…레버리지 손실 추정액, 왜 23배 차이?",
+      "telegram_core_fact": "반면 국민의힘이 주장하는 54조원은 씨티글로벌마켓증권이 레버리지 ETF 시장의 규모 변화와 신규 자금 유입 등을 이용해 추정한 금액이다.",
+      "title": "[팩트체크] 2.3조 vs 54조…레버리지 손실 추정액, 왜 23배 차이?"
     },
     "event:aa8580a6780de8ef05c9703e": {
       "first_seen_kst": "2026-10-01T05:56:02+09:00",
@@ -24721,6 +24903,28 @@
       ],
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
+    },
+    "fact:097a421fcd010fa0e5dacc16": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000021239",
+      "source": "국민일보",
+      "source_body_digest": "13253ac7e8702cc63a7e95c6bbbed14ab35732227175b05bfa7c900609585974",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5d1e09de5e6aa6c0c05806d81873e04d9f057b59a77129e2c95c2e0d80cb78ef",
+      "source_fact_keys": [
+        "source_fact:v1:1181bcca0b1eecaec7daf86cf14505104c783bdf4baa042e5389454887f708c0",
+        "source_fact:v1:238105f8be32887b38d55360fd183dbdf17407d554a42c7cbd854bb2730cce5a",
+        "source_fact:v1:5a3ec8297d33d0fd482a3cb4dc85f22471c2c71a7bf6172780d50c8bec5387ca",
+        "source_fact:v1:ce1085851f8066b656fcd152fb76f7fc8b2ccab7b00c9611be287142afb09d33"
+      ],
+      "source_published_kst": "2026-10-09T09:23+09:00",
+      "source_title": "[팩트체크] 2.3조 vs 54조…레버리지 손실 추정액, 왜 23배 차이?",
+      "telegram_core_fact": "반면 국민의힘이 주장하는 54조원은 씨티글로벌마켓증권이 레버리지 ETF 시장의 규모 변화와 신규 자금 유입 등을 이용해 추정한 금액이다.",
+      "title": "[팩트체크] 2.3조 vs 54조…레버리지 손실 추정액, 왜 23배 차이?"
     },
     "fact:099f8e45086de8cd1c5f84d1": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -30108,6 +30312,29 @@
       ],
       "source_published_kst": "2026-10-06T08:37+09:00",
       "title": "한미반도체, 삼성전기서 245억 규모 장비 수주…\"삼성그룹 환영\" | 연합뉴스"
+    },
+    "fact:335e011d871eaecf19aac4f5": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/09/2026100816324876257",
+      "source": "머니투데이",
+      "source_body_digest": "7c95a0b5e55b43d54f47894bc9020dcd5a64e85bc6e8edab2aadf7944b5cba7a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b1d9ac243fbe6d9d3dc945210fbbd745db3d47a601ff670ed8c805644350449d",
+      "source_fact_keys": [
+        "source_fact:v1:0f1e267601a0daef9d790020b9cd60f1eb99359fdf6c5a9b3c646f88aee04eaa",
+        "source_fact:v1:29180aa552ec737d1444247f2900fd9c72ea5556df42996856c4d86cf2dbe9d3",
+        "source_fact:v1:a6bd95677760a01f65a2b1ca2c2b5d425683052821e9532b20e22c27840cd146",
+        "source_fact:v1:d5e4852c00ad1bce61cb50c5ea217074aace234ac0bac3556dce4a7d284d84e9",
+        "source_fact:v1:e8df4840c026bb61629f8995b596b876ef97d6ad1826426c4b104f502226a0f9"
+      ],
+      "source_published_kst": "2026-10-09T09:00+09:00",
+      "source_title": "[단독]거래대금 18분의1로 줄었는데…'삼전닉스 2배' 운용보수 월 10억",
+      "telegram_core_fact": "금융당국의 규제 강화로 삼성전자·SK하이닉스 단일종목 레버리지 상품의 거래대금은 18분의 1로 쪼그라들었지만 자산운용사의 운용보수는 여전히 월 10억원을 웃돈 것으로 나타났다.",
+      "title": "[단독]거래대금 18분의1로 줄었는데…'삼전닉스 2배' 운용보수 월 10억"
     },
     "fact:33a2ac12f938791caa68c6fd": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
@@ -38321,6 +38548,26 @@
       "telegram_core_fact": "금융위원회가 단일종목 레버리지 상장지수펀드(ETF) 도입 전 스트레스테스트를 시행하지 않았다는 지적에 이억원 금융위 위원장이 투자자 위험성, 시장 영향 등을 점검했다고 반박했다.",
       "title": "'스트레스테스트 미비' 지적에… 이억원 \"레버리지 ETF 위험성 점검했다\"[2026국감]"
     },
+    "fact:7bb7c5bf391575a359504f0d": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261009_0003820074",
+      "source": "뉴시스",
+      "source_body_digest": "29d4324018b5352944eb305069d4aff3308ddb7fd5ada2d62b0338520ac81874",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f16e1ee6e309297f925df4827754eb38a2b005284aec640462ddeddf194520ec",
+      "source_fact_keys": [
+        "source_fact:v1:5b70a68cae0a629daf534aac7e492c145a91a8e9494740de4af1ec66177987cc",
+        "source_fact:v1:b81f81a7e0bf32cd50a1ef1af8f77901324830a1392793e0fca7cdbea6f446ee"
+      ],
+      "source_published_kst": "2026-10-09T09:22+09:00",
+      "source_title": "쿠팡·쿠팡이츠·쿠팡플레이 등 한밤 중 접속 장애…주문·배송 차질",
+      "telegram_core_fact": "고객 주문과 로그인뿐 아니라 물류 현장의 상품 분류 작업과 배송에도 차질이 빚어진 것으로 파악됐다.",
+      "title": "쿠팡·쿠팡이츠·쿠팡플레이 등 한밤 중 접속 장애…주문·배송 차질"
+    },
     "fact:7bf044c7498763a4f237fedb": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
       "lanes": {
@@ -40401,6 +40648,25 @@
       ],
       "source_published_kst": "2026-10-07T07:44+09:00",
       "title": "“효성중공업, 매출 이연으로 단기 실적 변동성 확대”"
+    },
+    "fact:8d9fd595e4bfdda23455811e": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634154",
+      "source": "이투데이",
+      "source_body_digest": "72117aff7d8bc58b9663a1485370b1a01854a338a57773fecc33aefb3612a89f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3651d0717b6a09421546ce4ca3f34e12bcbd67c071b4046a872df8ee8602fe39",
+      "source_fact_keys": [
+        "source_fact:v1:3dcabd2df1fa16714cabca0c9377c9e4d20404a593d8e921ea8ea740b21e9e00"
+      ],
+      "source_published_kst": "2026-10-09T12:27+09:00",
+      "source_title": "노벨문학상 앤 카슨 효과…국내 출간작 판매 184배 급증",
+      "telegram_core_fact": "예스24에 따르면 앤 카슨의 국내 출간 도서 판매량은 전날 발표 이후 집계에서 10월 7일 대비 18345.5% 증가했다.",
+      "title": "노벨문학상 앤 카슨 효과…국내 출간작 판매 184배 급증"
     },
     "fact:8da9946d004e3aa1dec0b54b": {
       "first_seen_kst": "2026-10-08T22:29:06+09:00",
@@ -46525,6 +46791,28 @@
       ],
       "source_published_kst": "2026-10-07T08:51+09:00",
       "title": "트럼프 “한국에 관세 인하 ‘대가’ 요구했다”…대미 투자 거듭 압박"
+    },
+    "fact:c06121b3a59207b1160218b8": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.fnnews.com/news/202610090908505477",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "afb942e02ee2710259a625a7cff44405664c61db1bda1c25d22c8d6fc8de02ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd453f95d11a30027880d3a88bc4f036476ac08090f57af222a868a8235b5c70",
+      "source_fact_keys": [
+        "source_fact:v1:3ed6c791d9293d3fca27c24b914d7395ffebe287110bc0e3205d27e8cf649bc8",
+        "source_fact:v1:5260852bbb5afa620f476536a39b4ceac122437d88e31cba7b8e5a05a1868ca5",
+        "source_fact:v1:d1dac421d4ecdc268f407e14df5f3577e52c628117e622969cdf048d4e17967f",
+        "source_fact:v1:f27c7364324bf0b4c7910e9048b9f95450fe5ade1e8263c8f85844c09cb82d4d"
+      ],
+      "source_published_kst": "2026-10-09T09:09+09:00",
+      "source_title": "평택시, 반도체 배후산단에 하수처리수 공급…관로공사 착공",
+      "telegram_core_fact": "평택시는 삼성전자 협력사 3곳 등에 하루 1만8천400t을 공급할 3.23㎞ 하수처리수 관로 공사를 착공했다. 공사비 225억원은 공급업체 3곳이 전액 부담하며, 내년 말 준공 목표다.",
+      "title": "평택시, 반도체 배후산단에 하수처리수 공급…관로공사 착공"
     },
     "fact:c07330ec803249d417ad3f78": {
       "first_seen_kst": "2026-10-07T18:30:29+09:00",
@@ -73322,6 +73610,23 @@
       "source_published_kst": "2026-10-04T09:00+09:00",
       "title": "신한은행"
     },
+    "link:632b5b627cc165a1c2af8982": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.hankyung.com/article/2026100928951",
+      "source": "한국경제",
+      "source_body_digest": "7dcfd0a0c908b22bd9753b12702be03673e9e796b015965b1597355e29af9eca",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-09T18:07+09:00",
+      "source_title": "에픽AI '수주 레이더' 나왔다…기업들 신규계약 체결 한눈에",
+      "telegram_core_fact": "기업이 새로 따낸 계약부터 체결 이후 변경된 내용까지 수주 공시 정보를 한눈에 볼 수 있는 서비스가 나왔다.",
+      "title": "에픽AI '수주 레이더' 나왔다…기업들 신규계약 체결 한눈에"
+    },
     "link:6335b79fd85e9916f45a0e74": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
       "lanes": {
@@ -76110,6 +76415,28 @@
       ],
       "source_published_kst": "2026-10-06T18:00+09:00",
       "title": "\"美 투자 ETF 사고 미국 가자\"…한투운용, 美대표지수 ETF 매수 이벤트"
+    },
+    "link:706f1459c639734cfd2882ed": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000021239",
+      "source": "국민일보",
+      "source_body_digest": "13253ac7e8702cc63a7e95c6bbbed14ab35732227175b05bfa7c900609585974",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5d1e09de5e6aa6c0c05806d81873e04d9f057b59a77129e2c95c2e0d80cb78ef",
+      "source_fact_keys": [
+        "source_fact:v1:1181bcca0b1eecaec7daf86cf14505104c783bdf4baa042e5389454887f708c0",
+        "source_fact:v1:238105f8be32887b38d55360fd183dbdf17407d554a42c7cbd854bb2730cce5a",
+        "source_fact:v1:5a3ec8297d33d0fd482a3cb4dc85f22471c2c71a7bf6172780d50c8bec5387ca",
+        "source_fact:v1:ce1085851f8066b656fcd152fb76f7fc8b2ccab7b00c9611be287142afb09d33"
+      ],
+      "source_published_kst": "2026-10-09T09:23+09:00",
+      "source_title": "[팩트체크] 2.3조 vs 54조…레버리지 손실 추정액, 왜 23배 차이?",
+      "telegram_core_fact": "반면 국민의힘이 주장하는 54조원은 씨티글로벌마켓증권이 레버리지 ETF 시장의 규모 변화와 신규 자금 유입 등을 이용해 추정한 금액이다.",
+      "title": "[팩트체크] 2.3조 vs 54조…레버리지 손실 추정액, 왜 23배 차이?"
     },
     "link:7077d8dd87122b9a6d4b5de3": {
       "first_seen_kst": "2026-10-05T17:30:42+09:00",
@@ -83115,6 +83442,28 @@
       "source": "이투데이",
       "title": "트럼프 “한국과 합의 더욱 좋아져⋯석유 프로젝트에 84억달러 투자”"
     },
+    "link:95abb16c0304b73ee0f5a3e6": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.fnnews.com/news/202610090908505477",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "afb942e02ee2710259a625a7cff44405664c61db1bda1c25d22c8d6fc8de02ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd453f95d11a30027880d3a88bc4f036476ac08090f57af222a868a8235b5c70",
+      "source_fact_keys": [
+        "source_fact:v1:3ed6c791d9293d3fca27c24b914d7395ffebe287110bc0e3205d27e8cf649bc8",
+        "source_fact:v1:5260852bbb5afa620f476536a39b4ceac122437d88e31cba7b8e5a05a1868ca5",
+        "source_fact:v1:d1dac421d4ecdc268f407e14df5f3577e52c628117e622969cdf048d4e17967f",
+        "source_fact:v1:f27c7364324bf0b4c7910e9048b9f95450fe5ade1e8263c8f85844c09cb82d4d"
+      ],
+      "source_published_kst": "2026-10-09T09:09+09:00",
+      "source_title": "평택시, 반도체 배후산단에 하수처리수 공급…관로공사 착공",
+      "telegram_core_fact": "평택시는 삼성전자 협력사 3곳 등에 하루 1만8천400t을 공급할 3.23㎞ 하수처리수 관로 공사를 착공했다. 공사비 225억원은 공급업체 3곳이 전액 부담하며, 내년 말 준공 목표다.",
+      "title": "평택시, 반도체 배후산단에 하수처리수 공급…관로공사 착공"
+    },
     "link:95af7b92ce3a4fcb8ca96bee": {
       "first_seen_kst": "2026-10-08T21:21:36+09:00",
       "lanes": {
@@ -83712,6 +84061,29 @@
       "source": "매일경제",
       "source_event_identity": "",
       "title": "프리포트 맥모란, 구리 생산 가이던스 부합에 그랜드버그 복구 순항으로 투자심리 개선"
+    },
+    "link:9929707763c6fa41136429bb": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/09/2026100816324876257",
+      "source": "머니투데이",
+      "source_body_digest": "7c95a0b5e55b43d54f47894bc9020dcd5a64e85bc6e8edab2aadf7944b5cba7a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b1d9ac243fbe6d9d3dc945210fbbd745db3d47a601ff670ed8c805644350449d",
+      "source_fact_keys": [
+        "source_fact:v1:0f1e267601a0daef9d790020b9cd60f1eb99359fdf6c5a9b3c646f88aee04eaa",
+        "source_fact:v1:29180aa552ec737d1444247f2900fd9c72ea5556df42996856c4d86cf2dbe9d3",
+        "source_fact:v1:a6bd95677760a01f65a2b1ca2c2b5d425683052821e9532b20e22c27840cd146",
+        "source_fact:v1:d5e4852c00ad1bce61cb50c5ea217074aace234ac0bac3556dce4a7d284d84e9",
+        "source_fact:v1:e8df4840c026bb61629f8995b596b876ef97d6ad1826426c4b104f502226a0f9"
+      ],
+      "source_published_kst": "2026-10-09T09:00+09:00",
+      "source_title": "[단독]거래대금 18분의1로 줄었는데…'삼전닉스 2배' 운용보수 월 10억",
+      "telegram_core_fact": "금융당국의 규제 강화로 삼성전자·SK하이닉스 단일종목 레버리지 상품의 거래대금은 18분의 1로 쪼그라들었지만 자산운용사의 운용보수는 여전히 월 10억원을 웃돈 것으로 나타났다.",
+      "title": "[단독]거래대금 18분의1로 줄었는데…'삼전닉스 2배' 운용보수 월 10억"
     },
     "link:992e92ca82c446f6e6f3d33a": {
       "first_seen_kst": "2026-10-01T19:22:15+09:00",
@@ -86218,6 +86590,23 @@
       "telegram_core_fact": "크리스탈리나 게오르기에바(사진) 국제통화기금(IMF) 총재가 고유가 장기화, 치솟는 국가 부채, 인공지능(AI) 투자 열풍에 따른 위험성을 지적하며 세계 경제가 심각한 위협에 직면해 있다고 경고했다.",
       "title": "IMF 총재 \"고유가·부채·AI 거품, 세계경제 거센 위협\" 경고"
     },
+    "link:a59100257304ab32281616df": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172000",
+      "source": "매일경제",
+      "source_body_digest": "abd012a4bc553288cbc59fe356c4faa7fa44f74f6c323e629dc78977320ab229",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T21:40+09:00",
+      "source_title": "비아트리스, 파시라 16억5000만 달러 인수…주당 36.50달러",
+      "telegram_core_fact": "비아트리스(VTRS)가 비마취성 진통 치료제 기업 파시라 바이오사이언스(PCRX)의 발행주식 전량을 주당 36.50달러 현금, 총 지분가치 16억5000만 달러에 인수하는 최종 계약을 체결했다고 10월 8일 발표했다.",
+      "title": "비아트리스, 파시라 16억5000만 달러 인수…주당 36.50달러"
+    },
     "link:a5a4a8fc9c9e1460bcb62ee6": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
       "lanes": {
@@ -88014,6 +88403,25 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T05:01+09:00",
       "title": "\"최태원 회장 지분 매각부터 솔리다임까지\"…SK, '주주가치' 앞세운다"
+    },
+    "link:aea5c54a3794056730fc2b1c": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634154",
+      "source": "이투데이",
+      "source_body_digest": "72117aff7d8bc58b9663a1485370b1a01854a338a57773fecc33aefb3612a89f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3651d0717b6a09421546ce4ca3f34e12bcbd67c071b4046a872df8ee8602fe39",
+      "source_fact_keys": [
+        "source_fact:v1:3dcabd2df1fa16714cabca0c9377c9e4d20404a593d8e921ea8ea740b21e9e00"
+      ],
+      "source_published_kst": "2026-10-09T12:27+09:00",
+      "source_title": "노벨문학상 앤 카슨 효과…국내 출간작 판매 184배 급증",
+      "telegram_core_fact": "예스24에 따르면 앤 카슨의 국내 출간 도서 판매량은 전날 발표 이후 집계에서 10월 7일 대비 18345.5% 증가했다.",
+      "title": "노벨문학상 앤 카슨 효과…국내 출간작 판매 184배 급증"
     },
     "link:aec41eac9bf1be5c814a17aa": {
       "first_seen_kst": "2026-10-07T04:04:43+09:00",
@@ -92707,6 +93115,26 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T10:58+09:00",
       "title": "고든앤맥페일, 도수 높인 '벤로막 12년'으로 韓 공략 속도…“셰리 캐스크·훈연 가장 좋은 균형”"
+    },
+    "link:c86b21ca096b1a75ddec2149": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261009_0003820074",
+      "source": "뉴시스",
+      "source_body_digest": "29d4324018b5352944eb305069d4aff3308ddb7fd5ada2d62b0338520ac81874",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f16e1ee6e309297f925df4827754eb38a2b005284aec640462ddeddf194520ec",
+      "source_fact_keys": [
+        "source_fact:v1:5b70a68cae0a629daf534aac7e492c145a91a8e9494740de4af1ec66177987cc",
+        "source_fact:v1:b81f81a7e0bf32cd50a1ef1af8f77901324830a1392793e0fca7cdbea6f446ee"
+      ],
+      "source_published_kst": "2026-10-09T09:22+09:00",
+      "source_title": "쿠팡·쿠팡이츠·쿠팡플레이 등 한밤 중 접속 장애…주문·배송 차질",
+      "telegram_core_fact": "고객 주문과 로그인뿐 아니라 물류 현장의 상품 분류 작업과 배송에도 차질이 빚어진 것으로 파악됐다.",
+      "title": "쿠팡·쿠팡이츠·쿠팡플레이 등 한밤 중 접속 장애…주문·배송 차질"
     },
     "link:c88264b9036ecc3984b9158f": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -104193,6 +104621,28 @@
       "source_published_kst": "2026-10-06T10:01+09:00",
       "title": "두산로보틱스, '한국형 피지컬 AI' 구현 나선다…국책과제 2건 수주"
     },
+    "original:04ff0093bfcf2789ada6f883": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.fnnews.com/news/202610090908505477",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "afb942e02ee2710259a625a7cff44405664c61db1bda1c25d22c8d6fc8de02ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd453f95d11a30027880d3a88bc4f036476ac08090f57af222a868a8235b5c70",
+      "source_fact_keys": [
+        "source_fact:v1:3ed6c791d9293d3fca27c24b914d7395ffebe287110bc0e3205d27e8cf649bc8",
+        "source_fact:v1:5260852bbb5afa620f476536a39b4ceac122437d88e31cba7b8e5a05a1868ca5",
+        "source_fact:v1:d1dac421d4ecdc268f407e14df5f3577e52c628117e622969cdf048d4e17967f",
+        "source_fact:v1:f27c7364324bf0b4c7910e9048b9f95450fe5ade1e8263c8f85844c09cb82d4d"
+      ],
+      "source_published_kst": "2026-10-09T09:09+09:00",
+      "source_title": "평택시, 반도체 배후산단에 하수처리수 공급…관로공사 착공",
+      "telegram_core_fact": "평택시는 삼성전자 협력사 3곳 등에 하루 1만8천400t을 공급할 3.23㎞ 하수처리수 관로 공사를 착공했다. 공사비 225억원은 공급업체 3곳이 전액 부담하며, 내년 말 준공 목표다.",
+      "title": "평택시, 반도체 배후산단에 하수처리수 공급…관로공사 착공"
+    },
     "original:05155b469a16eeeb0d0a4280": {
       "first_seen_kst": "2026-10-06T14:52:12+09:00",
       "lanes": {
@@ -110736,6 +111186,28 @@
       ],
       "source_published_kst": "2026-10-07T12:00+09:00",
       "title": "SK에너지·현대오일뱅크 44조 정유 담합 심의 착수…과징금 최대 4.6조"
+    },
+    "original:29155e999d8677ba66c476eb": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000021239",
+      "source": "국민일보",
+      "source_body_digest": "13253ac7e8702cc63a7e95c6bbbed14ab35732227175b05bfa7c900609585974",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5d1e09de5e6aa6c0c05806d81873e04d9f057b59a77129e2c95c2e0d80cb78ef",
+      "source_fact_keys": [
+        "source_fact:v1:1181bcca0b1eecaec7daf86cf14505104c783bdf4baa042e5389454887f708c0",
+        "source_fact:v1:238105f8be32887b38d55360fd183dbdf17407d554a42c7cbd854bb2730cce5a",
+        "source_fact:v1:5a3ec8297d33d0fd482a3cb4dc85f22471c2c71a7bf6172780d50c8bec5387ca",
+        "source_fact:v1:ce1085851f8066b656fcd152fb76f7fc8b2ccab7b00c9611be287142afb09d33"
+      ],
+      "source_published_kst": "2026-10-09T09:23+09:00",
+      "source_title": "[팩트체크] 2.3조 vs 54조…레버리지 손실 추정액, 왜 23배 차이?",
+      "telegram_core_fact": "반면 국민의힘이 주장하는 54조원은 씨티글로벌마켓증권이 레버리지 ETF 시장의 규모 변화와 신규 자금 유입 등을 이용해 추정한 금액이다.",
+      "title": "[팩트체크] 2.3조 vs 54조…레버리지 손실 추정액, 왜 23배 차이?"
     },
     "original:293bbbadc98312a415286f1d": {
       "first_seen_kst": "2026-09-29T20:35:29+09:00",
@@ -133155,6 +133627,29 @@
       "telegram_core_fact": "SK하이닉스의 미국 낸드플래시 전문 자회사 솔리다임이 2027년 미국 증시 상장을 추진하기 위해 골드만삭스와 모건스탠리를 대표 주관사로 선정한 것으로 알려졌다.",
       "title": "몸값 134조원…SK하이닉스 솔리다임, 美 IPO 주관사 선정"
     },
+    "original:a04dba781d83290b091395d1": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/09/2026100816324876257",
+      "source": "머니투데이",
+      "source_body_digest": "7c95a0b5e55b43d54f47894bc9020dcd5a64e85bc6e8edab2aadf7944b5cba7a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b1d9ac243fbe6d9d3dc945210fbbd745db3d47a601ff670ed8c805644350449d",
+      "source_fact_keys": [
+        "source_fact:v1:0f1e267601a0daef9d790020b9cd60f1eb99359fdf6c5a9b3c646f88aee04eaa",
+        "source_fact:v1:29180aa552ec737d1444247f2900fd9c72ea5556df42996856c4d86cf2dbe9d3",
+        "source_fact:v1:a6bd95677760a01f65a2b1ca2c2b5d425683052821e9532b20e22c27840cd146",
+        "source_fact:v1:d5e4852c00ad1bce61cb50c5ea217074aace234ac0bac3556dce4a7d284d84e9",
+        "source_fact:v1:e8df4840c026bb61629f8995b596b876ef97d6ad1826426c4b104f502226a0f9"
+      ],
+      "source_published_kst": "2026-10-09T09:00+09:00",
+      "source_title": "[단독]거래대금 18분의1로 줄었는데…'삼전닉스 2배' 운용보수 월 10억",
+      "telegram_core_fact": "금융당국의 규제 강화로 삼성전자·SK하이닉스 단일종목 레버리지 상품의 거래대금은 18분의 1로 쪼그라들었지만 자산운용사의 운용보수는 여전히 월 10억원을 웃돈 것으로 나타났다.",
+      "title": "[단독]거래대금 18분의1로 줄었는데…'삼전닉스 2배' 운용보수 월 10억"
+    },
     "original:a0a770aa5d7b6bd3e8096fa8": {
       "first_seen_kst": "2026-10-02T23:58:50+09:00",
       "lanes": {
@@ -141590,6 +142085,23 @@
       "source": "머니투데이",
       "title": "금리 급등기 회사채 발행 나선 AA 기업군…전망 한글자에 금리 엇갈려"
     },
+    "original:cf55507718c63bb22bfb3783": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.hankyung.com/article/2026100928951",
+      "source": "한국경제",
+      "source_body_digest": "7dcfd0a0c908b22bd9753b12702be03673e9e796b015965b1597355e29af9eca",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-09T18:07+09:00",
+      "source_title": "에픽AI '수주 레이더' 나왔다…기업들 신규계약 체결 한눈에",
+      "telegram_core_fact": "기업이 새로 따낸 계약부터 체결 이후 변경된 내용까지 수주 공시 정보를 한눈에 볼 수 있는 서비스가 나왔다.",
+      "title": "에픽AI '수주 레이더' 나왔다…기업들 신규계약 체결 한눈에"
+    },
     "original:cf766b9689624fb6c5b169d7": {
       "first_seen_kst": "2026-09-18T16:58:33+09:00",
       "lanes": {
@@ -145181,6 +145693,25 @@
       ],
       "source_published_kst": "2026-10-07T03:11+09:00",
       "title": "\"지금 폰 바꿀까?\" AI 서버가 D램 싹쓸이…스마트폰값 더 비싸진다"
+    },
+    "original:e0a6dbfb330e9e15fd048479": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634154",
+      "source": "이투데이",
+      "source_body_digest": "72117aff7d8bc58b9663a1485370b1a01854a338a57773fecc33aefb3612a89f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3651d0717b6a09421546ce4ca3f34e12bcbd67c071b4046a872df8ee8602fe39",
+      "source_fact_keys": [
+        "source_fact:v1:3dcabd2df1fa16714cabca0c9377c9e4d20404a593d8e921ea8ea740b21e9e00"
+      ],
+      "source_published_kst": "2026-10-09T12:27+09:00",
+      "source_title": "노벨문학상 앤 카슨 효과…국내 출간작 판매 184배 급증",
+      "telegram_core_fact": "예스24에 따르면 앤 카슨의 국내 출간 도서 판매량은 전날 발표 이후 집계에서 10월 7일 대비 18345.5% 증가했다.",
+      "title": "노벨문학상 앤 카슨 효과…국내 출간작 판매 184배 급증"
     },
     "original:e0f269f1322bc59b255061a3": {
       "first_seen_kst": "2026-10-07T10:23:42+09:00",
@@ -149216,6 +149747,23 @@
       "source_published_kst": "2026-10-07T05:26+09:00",
       "title": "[美공시]블랙 힐스, 와이오밍주 샤이엔에 건설 예정인 구글 데이터센터에 전력을 공급하기 위한 18억 달러 규모의 계약을 체결"
     },
+    "original:f81073f531394d93fb4c6113": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172000",
+      "source": "매일경제",
+      "source_body_digest": "abd012a4bc553288cbc59fe356c4faa7fa44f74f6c323e629dc78977320ab229",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T21:40+09:00",
+      "source_title": "비아트리스, 파시라 16억5000만 달러 인수…주당 36.50달러",
+      "telegram_core_fact": "비아트리스(VTRS)가 비마취성 진통 치료제 기업 파시라 바이오사이언스(PCRX)의 발행주식 전량을 주당 36.50달러 현금, 총 지분가치 16억5000만 달러에 인수하는 최종 계약을 체결했다고 10월 8일 발표했다.",
+      "title": "비아트리스, 파시라 16억5000만 달러 인수…주당 36.50달러"
+    },
     "original:f81e19c764fd8a27bd4a2ebc": {
       "first_seen_kst": "2026-10-09T16:53:11+09:00",
       "lanes": {
@@ -150235,6 +150783,26 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T16:06+09:00",
       "title": "신한은행, 산업현장 찾아 기업 맞춤형 금융 솔루션 제공"
+    },
+    "original:fe3fef731cd9c8d3458d7d9c": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261009_0003820074",
+      "source": "뉴시스",
+      "source_body_digest": "29d4324018b5352944eb305069d4aff3308ddb7fd5ada2d62b0338520ac81874",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f16e1ee6e309297f925df4827754eb38a2b005284aec640462ddeddf194520ec",
+      "source_fact_keys": [
+        "source_fact:v1:5b70a68cae0a629daf534aac7e492c145a91a8e9494740de4af1ec66177987cc",
+        "source_fact:v1:b81f81a7e0bf32cd50a1ef1af8f77901324830a1392793e0fca7cdbea6f446ee"
+      ],
+      "source_published_kst": "2026-10-09T09:22+09:00",
+      "source_title": "쿠팡·쿠팡이츠·쿠팡플레이 등 한밤 중 접속 장애…주문·배송 차질",
+      "telegram_core_fact": "고객 주문과 로그인뿐 아니라 물류 현장의 상품 분류 작업과 배송에도 차질이 빚어진 것으로 파악됐다.",
+      "title": "쿠팡·쿠팡이츠·쿠팡플레이 등 한밤 중 접속 장애…주문·배송 차질"
     },
     "original:fe4171d0d2ebc2d56c190bed": {
       "first_seen_kst": "2026-10-07T08:36:47+09:00",
@@ -156782,6 +157350,28 @@
       "source_published_kst": "2026-10-06T10:00+09:00",
       "title": "LG전자, 유럽 첫 상용 SDV에 통합 콕핏 솔루션 공급"
     },
+    "source_fact:0c0502e9a98d73879c4bdd85": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.fnnews.com/news/202610090908505477",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "afb942e02ee2710259a625a7cff44405664c61db1bda1c25d22c8d6fc8de02ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd453f95d11a30027880d3a88bc4f036476ac08090f57af222a868a8235b5c70",
+      "source_fact_keys": [
+        "source_fact:v1:3ed6c791d9293d3fca27c24b914d7395ffebe287110bc0e3205d27e8cf649bc8",
+        "source_fact:v1:5260852bbb5afa620f476536a39b4ceac122437d88e31cba7b8e5a05a1868ca5",
+        "source_fact:v1:d1dac421d4ecdc268f407e14df5f3577e52c628117e622969cdf048d4e17967f",
+        "source_fact:v1:f27c7364324bf0b4c7910e9048b9f95450fe5ade1e8263c8f85844c09cb82d4d"
+      ],
+      "source_published_kst": "2026-10-09T09:09+09:00",
+      "source_title": "평택시, 반도체 배후산단에 하수처리수 공급…관로공사 착공",
+      "telegram_core_fact": "평택시는 삼성전자 협력사 3곳 등에 하루 1만8천400t을 공급할 3.23㎞ 하수처리수 관로 공사를 착공했다. 공사비 225억원은 공급업체 3곳이 전액 부담하며, 내년 말 준공 목표다.",
+      "title": "평택시, 반도체 배후산단에 하수처리수 공급…관로공사 착공"
+    },
     "source_fact:0c1a3e1a99f9776d64be4bbf": {
       "first_seen_kst": "2026-10-08T18:46:25+09:00",
       "lanes": {
@@ -162724,6 +163314,26 @@
       "telegram_core_fact": "해성디에스는 약 1900억원을 투자해 패널 공법 기반 패키지 기판 생산능력을 구축하고 있으며, 2029년에는 연간 2000~3000억원 신규 생산능력(CAPA) 확보가 예상된다고 부연했다.",
       "title": "\"반도체 기판 가격 또 오른다…대덕전자·심텍 등 수천억 투자\"-하나"
     },
+    "source_fact:1698f2a15a3ed3ea7371bf7f": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261009_0003820074",
+      "source": "뉴시스",
+      "source_body_digest": "29d4324018b5352944eb305069d4aff3308ddb7fd5ada2d62b0338520ac81874",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f16e1ee6e309297f925df4827754eb38a2b005284aec640462ddeddf194520ec",
+      "source_fact_keys": [
+        "source_fact:v1:5b70a68cae0a629daf534aac7e492c145a91a8e9494740de4af1ec66177987cc",
+        "source_fact:v1:b81f81a7e0bf32cd50a1ef1af8f77901324830a1392793e0fca7cdbea6f446ee"
+      ],
+      "source_published_kst": "2026-10-09T09:22+09:00",
+      "source_title": "쿠팡·쿠팡이츠·쿠팡플레이 등 한밤 중 접속 장애…주문·배송 차질",
+      "telegram_core_fact": "고객 주문과 로그인뿐 아니라 물류 현장의 상품 분류 작업과 배송에도 차질이 빚어진 것으로 파악됐다.",
+      "title": "쿠팡·쿠팡이츠·쿠팡플레이 등 한밤 중 접속 장애…주문·배송 차질"
+    },
     "source_fact:16c0ed5f56587633587b27c6": {
       "first_seen_kst": "2026-10-08T16:34:42+09:00",
       "lanes": {
@@ -168037,6 +168647,29 @@
       ],
       "source_published_kst": "2026-10-06T07:40+09:00",
       "title": "엔비디아 이틀째 신고가…美국채금리 급등에도 나스닥 사상 최고[투자360]"
+    },
+    "source_fact:204598b8a3182a3a26142eb1": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/09/2026100816324876257",
+      "source": "머니투데이",
+      "source_body_digest": "7c95a0b5e55b43d54f47894bc9020dcd5a64e85bc6e8edab2aadf7944b5cba7a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b1d9ac243fbe6d9d3dc945210fbbd745db3d47a601ff670ed8c805644350449d",
+      "source_fact_keys": [
+        "source_fact:v1:0f1e267601a0daef9d790020b9cd60f1eb99359fdf6c5a9b3c646f88aee04eaa",
+        "source_fact:v1:29180aa552ec737d1444247f2900fd9c72ea5556df42996856c4d86cf2dbe9d3",
+        "source_fact:v1:a6bd95677760a01f65a2b1ca2c2b5d425683052821e9532b20e22c27840cd146",
+        "source_fact:v1:d5e4852c00ad1bce61cb50c5ea217074aace234ac0bac3556dce4a7d284d84e9",
+        "source_fact:v1:e8df4840c026bb61629f8995b596b876ef97d6ad1826426c4b104f502226a0f9"
+      ],
+      "source_published_kst": "2026-10-09T09:00+09:00",
+      "source_title": "[단독]거래대금 18분의1로 줄었는데…'삼전닉스 2배' 운용보수 월 10억",
+      "telegram_core_fact": "금융당국의 규제 강화로 삼성전자·SK하이닉스 단일종목 레버리지 상품의 거래대금은 18분의 1로 쪼그라들었지만 자산운용사의 운용보수는 여전히 월 10억원을 웃돈 것으로 나타났다.",
+      "title": "[단독]거래대금 18분의1로 줄었는데…'삼전닉스 2배' 운용보수 월 10억"
     },
     "source_fact:205706d0a312d8182dae3a0b": {
       "first_seen_kst": "2026-10-06T01:51:09+09:00",
@@ -184409,6 +185042,28 @@
       "source_published_kst": "2026-10-06T11:39+09:00",
       "title": "'엔비디아發 훈풍' AI·반도체 강세…닛케이, 0.19%↑[Asia오전]"
     },
+    "source_fact:3c56d9dda6ca7241ccc8ee10": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000021239",
+      "source": "국민일보",
+      "source_body_digest": "13253ac7e8702cc63a7e95c6bbbed14ab35732227175b05bfa7c900609585974",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5d1e09de5e6aa6c0c05806d81873e04d9f057b59a77129e2c95c2e0d80cb78ef",
+      "source_fact_keys": [
+        "source_fact:v1:1181bcca0b1eecaec7daf86cf14505104c783bdf4baa042e5389454887f708c0",
+        "source_fact:v1:238105f8be32887b38d55360fd183dbdf17407d554a42c7cbd854bb2730cce5a",
+        "source_fact:v1:5a3ec8297d33d0fd482a3cb4dc85f22471c2c71a7bf6172780d50c8bec5387ca",
+        "source_fact:v1:ce1085851f8066b656fcd152fb76f7fc8b2ccab7b00c9611be287142afb09d33"
+      ],
+      "source_published_kst": "2026-10-09T09:23+09:00",
+      "source_title": "[팩트체크] 2.3조 vs 54조…레버리지 손실 추정액, 왜 23배 차이?",
+      "telegram_core_fact": "반면 국민의힘이 주장하는 54조원은 씨티글로벌마켓증권이 레버리지 ETF 시장의 규모 변화와 신규 자금 유입 등을 이용해 추정한 금액이다.",
+      "title": "[팩트체크] 2.3조 vs 54조…레버리지 손실 추정액, 왜 23배 차이?"
+    },
     "source_fact:3c6ed8a82ea8ee99f036eed4": {
       "first_seen_kst": "2026-10-07T21:47:30+09:00",
       "lanes": {
@@ -195829,6 +196484,28 @@
       "telegram_core_fact": "미 국채 금리 급등은 즉각 유럽으로 전파돼 영국 30년물 금리가 다시 6%선을 돌파했고, 프랑스 30년물도 하루 만에 최대 14bp(1bp=0.01%p) 올랐다.",
       "title": "美 30년물 국채금리 24년만에 최고치 재경신"
     },
+    "source_fact:50e035c4c5916f2c16933f40": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.fnnews.com/news/202610090908505477",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "afb942e02ee2710259a625a7cff44405664c61db1bda1c25d22c8d6fc8de02ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd453f95d11a30027880d3a88bc4f036476ac08090f57af222a868a8235b5c70",
+      "source_fact_keys": [
+        "source_fact:v1:3ed6c791d9293d3fca27c24b914d7395ffebe287110bc0e3205d27e8cf649bc8",
+        "source_fact:v1:5260852bbb5afa620f476536a39b4ceac122437d88e31cba7b8e5a05a1868ca5",
+        "source_fact:v1:d1dac421d4ecdc268f407e14df5f3577e52c628117e622969cdf048d4e17967f",
+        "source_fact:v1:f27c7364324bf0b4c7910e9048b9f95450fe5ade1e8263c8f85844c09cb82d4d"
+      ],
+      "source_published_kst": "2026-10-09T09:09+09:00",
+      "source_title": "평택시, 반도체 배후산단에 하수처리수 공급…관로공사 착공",
+      "telegram_core_fact": "평택시는 삼성전자 협력사 3곳 등에 하루 1만8천400t을 공급할 3.23㎞ 하수처리수 관로 공사를 착공했다. 공사비 225억원은 공급업체 3곳이 전액 부담하며, 내년 말 준공 목표다.",
+      "title": "평택시, 반도체 배후산단에 하수처리수 공급…관로공사 착공"
+    },
     "source_fact:50eef35c13b24122f33d2413": {
       "first_seen_kst": "2026-10-07T16:44:58+09:00",
       "lanes": {
@@ -201121,6 +201798,28 @@
       "source_title": "트럼프 압박 통했나…IEA, '경유 중심' 전략비축유 방출 가속 합의",
       "telegram_core_fact": "G7은 향후 4개월 동안 비축유 1억배럴을 방출하기로 합의했다.",
       "title": "트럼프 압박 통했나…IEA, '경유 중심' 전략비축유 방출 가속 합의"
+    },
+    "source_fact:5a41b7ecfd06bcf656ee1b92": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.fnnews.com/news/202610090908505477",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "afb942e02ee2710259a625a7cff44405664c61db1bda1c25d22c8d6fc8de02ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd453f95d11a30027880d3a88bc4f036476ac08090f57af222a868a8235b5c70",
+      "source_fact_keys": [
+        "source_fact:v1:3ed6c791d9293d3fca27c24b914d7395ffebe287110bc0e3205d27e8cf649bc8",
+        "source_fact:v1:5260852bbb5afa620f476536a39b4ceac122437d88e31cba7b8e5a05a1868ca5",
+        "source_fact:v1:d1dac421d4ecdc268f407e14df5f3577e52c628117e622969cdf048d4e17967f",
+        "source_fact:v1:f27c7364324bf0b4c7910e9048b9f95450fe5ade1e8263c8f85844c09cb82d4d"
+      ],
+      "source_published_kst": "2026-10-09T09:09+09:00",
+      "source_title": "평택시, 반도체 배후산단에 하수처리수 공급…관로공사 착공",
+      "telegram_core_fact": "평택시는 삼성전자 협력사 3곳 등에 하루 1만8천400t을 공급할 3.23㎞ 하수처리수 관로 공사를 착공했다. 공사비 225억원은 공급업체 3곳이 전액 부담하며, 내년 말 준공 목표다.",
+      "title": "평택시, 반도체 배후산단에 하수처리수 공급…관로공사 착공"
     },
     "source_fact:5a4a4f8a871cb1823b7e7a22": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
@@ -211737,6 +212436,28 @@
       ],
       "source_published_kst": "2026-10-05T23:10+09:00",
       "title": "유나이티드마이크로일렉, 18억 달러 해외CB 발행 확정에 지분 희석·매물 부담 부각"
+    },
+    "source_fact:6d151b67e35fcf06f77fac0d": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000021239",
+      "source": "국민일보",
+      "source_body_digest": "13253ac7e8702cc63a7e95c6bbbed14ab35732227175b05bfa7c900609585974",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5d1e09de5e6aa6c0c05806d81873e04d9f057b59a77129e2c95c2e0d80cb78ef",
+      "source_fact_keys": [
+        "source_fact:v1:1181bcca0b1eecaec7daf86cf14505104c783bdf4baa042e5389454887f708c0",
+        "source_fact:v1:238105f8be32887b38d55360fd183dbdf17407d554a42c7cbd854bb2730cce5a",
+        "source_fact:v1:5a3ec8297d33d0fd482a3cb4dc85f22471c2c71a7bf6172780d50c8bec5387ca",
+        "source_fact:v1:ce1085851f8066b656fcd152fb76f7fc8b2ccab7b00c9611be287142afb09d33"
+      ],
+      "source_published_kst": "2026-10-09T09:23+09:00",
+      "source_title": "[팩트체크] 2.3조 vs 54조…레버리지 손실 추정액, 왜 23배 차이?",
+      "telegram_core_fact": "반면 국민의힘이 주장하는 54조원은 씨티글로벌마켓증권이 레버리지 ETF 시장의 규모 변화와 신규 자금 유입 등을 이용해 추정한 금액이다.",
+      "title": "[팩트체크] 2.3조 vs 54조…레버리지 손실 추정액, 왜 23배 차이?"
     },
     "source_fact:6d1ae659f8b7de8ecd3cb42a": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
@@ -232811,6 +233532,29 @@
       "telegram_core_fact": "김세빈 유안타증권 연구원은 “지수 전체의 이익추정치 개선보다 반도체 소부장과 기판, 통신장비 등 일부 IT 업종과 테마 중심의 상승”이라며 “지수 추격보다 실적과 매출 추정치가 실제로 올라오는 업종으로 압축할 필요가 있다”고 조언했다.",
       "title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]"
     },
+    "source_fact:94aa1ae1fc9cf1209a3ed3be": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/09/2026100816324876257",
+      "source": "머니투데이",
+      "source_body_digest": "7c95a0b5e55b43d54f47894bc9020dcd5a64e85bc6e8edab2aadf7944b5cba7a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b1d9ac243fbe6d9d3dc945210fbbd745db3d47a601ff670ed8c805644350449d",
+      "source_fact_keys": [
+        "source_fact:v1:0f1e267601a0daef9d790020b9cd60f1eb99359fdf6c5a9b3c646f88aee04eaa",
+        "source_fact:v1:29180aa552ec737d1444247f2900fd9c72ea5556df42996856c4d86cf2dbe9d3",
+        "source_fact:v1:a6bd95677760a01f65a2b1ca2c2b5d425683052821e9532b20e22c27840cd146",
+        "source_fact:v1:d5e4852c00ad1bce61cb50c5ea217074aace234ac0bac3556dce4a7d284d84e9",
+        "source_fact:v1:e8df4840c026bb61629f8995b596b876ef97d6ad1826426c4b104f502226a0f9"
+      ],
+      "source_published_kst": "2026-10-09T09:00+09:00",
+      "source_title": "[단독]거래대금 18분의1로 줄었는데…'삼전닉스 2배' 운용보수 월 10억",
+      "telegram_core_fact": "금융당국의 규제 강화로 삼성전자·SK하이닉스 단일종목 레버리지 상품의 거래대금은 18분의 1로 쪼그라들었지만 자산운용사의 운용보수는 여전히 월 10억원을 웃돈 것으로 나타났다.",
+      "title": "[단독]거래대금 18분의1로 줄었는데…'삼전닉스 2배' 운용보수 월 10억"
+    },
     "source_fact:94afd19b15c436125639a242": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
       "lanes": {
@@ -233119,6 +233863,28 @@
       ],
       "source_published_kst": "2026-10-07T08:08+09:00",
       "title": "선장에 월 10만달러·보너스까지…호르무즈 '위험수당' 급등"
+    },
+    "source_fact:953fe94cee67736c55ce6ea4": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.fnnews.com/news/202610090908505477",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "afb942e02ee2710259a625a7cff44405664c61db1bda1c25d22c8d6fc8de02ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd453f95d11a30027880d3a88bc4f036476ac08090f57af222a868a8235b5c70",
+      "source_fact_keys": [
+        "source_fact:v1:3ed6c791d9293d3fca27c24b914d7395ffebe287110bc0e3205d27e8cf649bc8",
+        "source_fact:v1:5260852bbb5afa620f476536a39b4ceac122437d88e31cba7b8e5a05a1868ca5",
+        "source_fact:v1:d1dac421d4ecdc268f407e14df5f3577e52c628117e622969cdf048d4e17967f",
+        "source_fact:v1:f27c7364324bf0b4c7910e9048b9f95450fe5ade1e8263c8f85844c09cb82d4d"
+      ],
+      "source_published_kst": "2026-10-09T09:09+09:00",
+      "source_title": "평택시, 반도체 배후산단에 하수처리수 공급…관로공사 착공",
+      "telegram_core_fact": "평택시는 삼성전자 협력사 3곳 등에 하루 1만8천400t을 공급할 3.23㎞ 하수처리수 관로 공사를 착공했다. 공사비 225억원은 공급업체 3곳이 전액 부담하며, 내년 말 준공 목표다.",
+      "title": "평택시, 반도체 배후산단에 하수처리수 공급…관로공사 착공"
     },
     "source_fact:9542b5ce249dd7bb0528c379": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
@@ -249771,6 +250537,28 @@
       "source_published_kst": "2026-10-06T08:58+09:00",
       "title": "오텍, AI 서버부터 신선배송까지…'열관리'로 성장축 확장"
     },
+    "source_fact:b382e08248a3a0370a07251c": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000021239",
+      "source": "국민일보",
+      "source_body_digest": "13253ac7e8702cc63a7e95c6bbbed14ab35732227175b05bfa7c900609585974",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5d1e09de5e6aa6c0c05806d81873e04d9f057b59a77129e2c95c2e0d80cb78ef",
+      "source_fact_keys": [
+        "source_fact:v1:1181bcca0b1eecaec7daf86cf14505104c783bdf4baa042e5389454887f708c0",
+        "source_fact:v1:238105f8be32887b38d55360fd183dbdf17407d554a42c7cbd854bb2730cce5a",
+        "source_fact:v1:5a3ec8297d33d0fd482a3cb4dc85f22471c2c71a7bf6172780d50c8bec5387ca",
+        "source_fact:v1:ce1085851f8066b656fcd152fb76f7fc8b2ccab7b00c9611be287142afb09d33"
+      ],
+      "source_published_kst": "2026-10-09T09:23+09:00",
+      "source_title": "[팩트체크] 2.3조 vs 54조…레버리지 손실 추정액, 왜 23배 차이?",
+      "telegram_core_fact": "반면 국민의힘이 주장하는 54조원은 씨티글로벌마켓증권이 레버리지 ETF 시장의 규모 변화와 신규 자금 유입 등을 이용해 추정한 금액이다.",
+      "title": "[팩트체크] 2.3조 vs 54조…레버리지 손실 추정액, 왜 23배 차이?"
+    },
     "source_fact:b385e85d9f1fd416e7e2e590": {
       "first_seen_kst": "2026-10-07T17:47:45+09:00",
       "lanes": {
@@ -250446,6 +251234,29 @@
       "source_title": "1년간 810% 오른 지캐시…윙클보스 형제, 현물 ETF 신청",
       "telegram_core_fact": "그레이스케일은 지난 8월 지캐시 트러스트를 현물 ETF로 전환했고, 21셰어스는 유럽 최초의 지캐시 상장지수상품(ETP)을 출시했다.",
       "title": "1년간 810% 오른 지캐시…윙클보스 형제, 현물 ETF 신청"
+    },
+    "source_fact:b4dfedbeb47f4a1cab6c0cb0": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/09/2026100816324876257",
+      "source": "머니투데이",
+      "source_body_digest": "7c95a0b5e55b43d54f47894bc9020dcd5a64e85bc6e8edab2aadf7944b5cba7a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b1d9ac243fbe6d9d3dc945210fbbd745db3d47a601ff670ed8c805644350449d",
+      "source_fact_keys": [
+        "source_fact:v1:0f1e267601a0daef9d790020b9cd60f1eb99359fdf6c5a9b3c646f88aee04eaa",
+        "source_fact:v1:29180aa552ec737d1444247f2900fd9c72ea5556df42996856c4d86cf2dbe9d3",
+        "source_fact:v1:a6bd95677760a01f65a2b1ca2c2b5d425683052821e9532b20e22c27840cd146",
+        "source_fact:v1:d5e4852c00ad1bce61cb50c5ea217074aace234ac0bac3556dce4a7d284d84e9",
+        "source_fact:v1:e8df4840c026bb61629f8995b596b876ef97d6ad1826426c4b104f502226a0f9"
+      ],
+      "source_published_kst": "2026-10-09T09:00+09:00",
+      "source_title": "[단독]거래대금 18분의1로 줄었는데…'삼전닉스 2배' 운용보수 월 10억",
+      "telegram_core_fact": "금융당국의 규제 강화로 삼성전자·SK하이닉스 단일종목 레버리지 상품의 거래대금은 18분의 1로 쪼그라들었지만 자산운용사의 운용보수는 여전히 월 10억원을 웃돈 것으로 나타났다.",
+      "title": "[단독]거래대금 18분의1로 줄었는데…'삼전닉스 2배' 운용보수 월 10억"
     },
     "source_fact:b4e97a4122d5ca6c238af274": {
       "first_seen_kst": "2026-10-08T08:56:19+09:00",
@@ -255817,6 +256628,29 @@
       "telegram_core_fact": "사상 최고치 부근까지 오른 주가와 5%를 웃도는 장기금리가 공존하려면 기업들이 높아진 기대를 실적으로 증명해야 한다. 특히 AI에 쏟아부은 막대한 자금이 실제 매출과 이익으로 연결되고 있는지가 이번 실적시즌의 핵심 시험대가 될 전망이다.",
       "title": "사상 최고치 달리던 美증시 제동…AI 랠리 시험대[월스트리트in]"
     },
+    "source_fact:bf1becaef9a2d0fc14f9800b": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/09/2026100816324876257",
+      "source": "머니투데이",
+      "source_body_digest": "7c95a0b5e55b43d54f47894bc9020dcd5a64e85bc6e8edab2aadf7944b5cba7a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b1d9ac243fbe6d9d3dc945210fbbd745db3d47a601ff670ed8c805644350449d",
+      "source_fact_keys": [
+        "source_fact:v1:0f1e267601a0daef9d790020b9cd60f1eb99359fdf6c5a9b3c646f88aee04eaa",
+        "source_fact:v1:29180aa552ec737d1444247f2900fd9c72ea5556df42996856c4d86cf2dbe9d3",
+        "source_fact:v1:a6bd95677760a01f65a2b1ca2c2b5d425683052821e9532b20e22c27840cd146",
+        "source_fact:v1:d5e4852c00ad1bce61cb50c5ea217074aace234ac0bac3556dce4a7d284d84e9",
+        "source_fact:v1:e8df4840c026bb61629f8995b596b876ef97d6ad1826426c4b104f502226a0f9"
+      ],
+      "source_published_kst": "2026-10-09T09:00+09:00",
+      "source_title": "[단독]거래대금 18분의1로 줄었는데…'삼전닉스 2배' 운용보수 월 10억",
+      "telegram_core_fact": "금융당국의 규제 강화로 삼성전자·SK하이닉스 단일종목 레버리지 상품의 거래대금은 18분의 1로 쪼그라들었지만 자산운용사의 운용보수는 여전히 월 10억원을 웃돈 것으로 나타났다.",
+      "title": "[단독]거래대금 18분의1로 줄었는데…'삼전닉스 2배' 운용보수 월 10억"
+    },
     "source_fact:bf2fa9fbe6bbf79d8a19aa11": {
       "first_seen_kst": "2026-10-07T21:31:57+09:00",
       "lanes": {
@@ -258014,6 +258848,28 @@
       "source_title": "보스턴다이나믹스 신임 CEO에 로히트 프라사드..아틀라스 '상용화' 주력",
       "telegram_core_fact": "프라사드 CEO는 오는 2028년으로 예정된 휴머노이드(인간형) 로봇 아틀라스의 양산과 자동차 공장 실전 배치, 외부 판매 등 로봇의 '상용화 작업'에 주력할 전망이다.",
       "title": "보스턴다이나믹스 신임 CEO에 로히트 프라사드..아틀라스 '상용화' 주력"
+    },
+    "source_fact:c2e03408ab3b2e2b1c03d815": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000021239",
+      "source": "국민일보",
+      "source_body_digest": "13253ac7e8702cc63a7e95c6bbbed14ab35732227175b05bfa7c900609585974",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5d1e09de5e6aa6c0c05806d81873e04d9f057b59a77129e2c95c2e0d80cb78ef",
+      "source_fact_keys": [
+        "source_fact:v1:1181bcca0b1eecaec7daf86cf14505104c783bdf4baa042e5389454887f708c0",
+        "source_fact:v1:238105f8be32887b38d55360fd183dbdf17407d554a42c7cbd854bb2730cce5a",
+        "source_fact:v1:5a3ec8297d33d0fd482a3cb4dc85f22471c2c71a7bf6172780d50c8bec5387ca",
+        "source_fact:v1:ce1085851f8066b656fcd152fb76f7fc8b2ccab7b00c9611be287142afb09d33"
+      ],
+      "source_published_kst": "2026-10-09T09:23+09:00",
+      "source_title": "[팩트체크] 2.3조 vs 54조…레버리지 손실 추정액, 왜 23배 차이?",
+      "telegram_core_fact": "반면 국민의힘이 주장하는 54조원은 씨티글로벌마켓증권이 레버리지 ETF 시장의 규모 변화와 신규 자금 유입 등을 이용해 추정한 금액이다.",
+      "title": "[팩트체크] 2.3조 vs 54조…레버리지 손실 추정액, 왜 23배 차이?"
     },
     "source_fact:c2e7fad3f36d116a44c8d9fc": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
@@ -267272,6 +268128,25 @@
       "source_published_kst": "2026-10-06T10:11+09:00",
       "title": "세아베스틸, 로봇 감속기용 특수강 국산화…양산 본격화"
     },
+    "source_fact:d3a4350319c2885277f3473f": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634154",
+      "source": "이투데이",
+      "source_body_digest": "72117aff7d8bc58b9663a1485370b1a01854a338a57773fecc33aefb3612a89f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3651d0717b6a09421546ce4ca3f34e12bcbd67c071b4046a872df8ee8602fe39",
+      "source_fact_keys": [
+        "source_fact:v1:3dcabd2df1fa16714cabca0c9377c9e4d20404a593d8e921ea8ea740b21e9e00"
+      ],
+      "source_published_kst": "2026-10-09T12:27+09:00",
+      "source_title": "노벨문학상 앤 카슨 효과…국내 출간작 판매 184배 급증",
+      "telegram_core_fact": "예스24에 따르면 앤 카슨의 국내 출간 도서 판매량은 전날 발표 이후 집계에서 10월 7일 대비 18345.5% 증가했다.",
+      "title": "노벨문학상 앤 카슨 효과…국내 출간작 판매 184배 급증"
+    },
     "source_fact:d3a521fe7b06d5e443ddab7a": {
       "first_seen_kst": "2026-10-07T02:13:12+09:00",
       "lanes": {
@@ -271841,6 +272716,26 @@
       "source_title": "이소영 “온누리 품목 제한 검토”…납품대금연동제 손질[종합]",
       "telegram_core_fact": "이 장관은 “발동 요건에 대한 제도 보완과 제재, 계약에서의 자동 적용 제도까지 포함해 납품대금연동제를 전체적으로 다시 검토하겠다”라고 밝혔다.",
       "title": "이소영 “온누리 품목 제한 검토”…납품대금연동제 손질[종합]"
+    },
+    "source_fact:db4a37b9efd6c1eaec03cf26": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261009_0003820074",
+      "source": "뉴시스",
+      "source_body_digest": "29d4324018b5352944eb305069d4aff3308ddb7fd5ada2d62b0338520ac81874",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f16e1ee6e309297f925df4827754eb38a2b005284aec640462ddeddf194520ec",
+      "source_fact_keys": [
+        "source_fact:v1:5b70a68cae0a629daf534aac7e492c145a91a8e9494740de4af1ec66177987cc",
+        "source_fact:v1:b81f81a7e0bf32cd50a1ef1af8f77901324830a1392793e0fca7cdbea6f446ee"
+      ],
+      "source_published_kst": "2026-10-09T09:22+09:00",
+      "source_title": "쿠팡·쿠팡이츠·쿠팡플레이 등 한밤 중 접속 장애…주문·배송 차질",
+      "telegram_core_fact": "고객 주문과 로그인뿐 아니라 물류 현장의 상품 분류 작업과 배송에도 차질이 빚어진 것으로 파악됐다.",
+      "title": "쿠팡·쿠팡이츠·쿠팡플레이 등 한밤 중 접속 장애…주문·배송 차질"
     },
     "source_fact:db4ff3972d645521959378f7": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
@@ -284841,6 +285736,29 @@
       "source_published_kst": "2026-10-07T11:08+09:00",
       "title": "LG전자, 3분기 누적 영업이익 4조 첫 돌파…가전·전장 '캐시카우'가 끌었다"
     },
+    "source_fact:f1cd67a0d506f215cd047204": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/09/2026100816324876257",
+      "source": "머니투데이",
+      "source_body_digest": "7c95a0b5e55b43d54f47894bc9020dcd5a64e85bc6e8edab2aadf7944b5cba7a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b1d9ac243fbe6d9d3dc945210fbbd745db3d47a601ff670ed8c805644350449d",
+      "source_fact_keys": [
+        "source_fact:v1:0f1e267601a0daef9d790020b9cd60f1eb99359fdf6c5a9b3c646f88aee04eaa",
+        "source_fact:v1:29180aa552ec737d1444247f2900fd9c72ea5556df42996856c4d86cf2dbe9d3",
+        "source_fact:v1:a6bd95677760a01f65a2b1ca2c2b5d425683052821e9532b20e22c27840cd146",
+        "source_fact:v1:d5e4852c00ad1bce61cb50c5ea217074aace234ac0bac3556dce4a7d284d84e9",
+        "source_fact:v1:e8df4840c026bb61629f8995b596b876ef97d6ad1826426c4b104f502226a0f9"
+      ],
+      "source_published_kst": "2026-10-09T09:00+09:00",
+      "source_title": "[단독]거래대금 18분의1로 줄었는데…'삼전닉스 2배' 운용보수 월 10억",
+      "telegram_core_fact": "금융당국의 규제 강화로 삼성전자·SK하이닉스 단일종목 레버리지 상품의 거래대금은 18분의 1로 쪼그라들었지만 자산운용사의 운용보수는 여전히 월 10억원을 웃돈 것으로 나타났다.",
+      "title": "[단독]거래대금 18분의1로 줄었는데…'삼전닉스 2배' 운용보수 월 10억"
+    },
     "source_fact:f1de3e97a81d615354fe651c": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
       "lanes": {
@@ -293084,6 +294002,28 @@
       "source_published_kst": "2026-10-06T10:01+09:00",
       "title": "두산로보틱스, '한국형 피지컬 AI' 구현 나선다…국책과제 2건 수주"
     },
+    "title:04ff0093bfcf2789ada6f883": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.fnnews.com/news/202610090908505477",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "afb942e02ee2710259a625a7cff44405664c61db1bda1c25d22c8d6fc8de02ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd453f95d11a30027880d3a88bc4f036476ac08090f57af222a868a8235b5c70",
+      "source_fact_keys": [
+        "source_fact:v1:3ed6c791d9293d3fca27c24b914d7395ffebe287110bc0e3205d27e8cf649bc8",
+        "source_fact:v1:5260852bbb5afa620f476536a39b4ceac122437d88e31cba7b8e5a05a1868ca5",
+        "source_fact:v1:d1dac421d4ecdc268f407e14df5f3577e52c628117e622969cdf048d4e17967f",
+        "source_fact:v1:f27c7364324bf0b4c7910e9048b9f95450fe5ade1e8263c8f85844c09cb82d4d"
+      ],
+      "source_published_kst": "2026-10-09T09:09+09:00",
+      "source_title": "평택시, 반도체 배후산단에 하수처리수 공급…관로공사 착공",
+      "telegram_core_fact": "평택시는 삼성전자 협력사 3곳 등에 하루 1만8천400t을 공급할 3.23㎞ 하수처리수 관로 공사를 착공했다. 공사비 225억원은 공급업체 3곳이 전액 부담하며, 내년 말 준공 목표다.",
+      "title": "평택시, 반도체 배후산단에 하수처리수 공급…관로공사 착공"
+    },
     "title:05155b469a16eeeb0d0a4280": {
       "first_seen_kst": "2026-10-06T14:52:12+09:00",
       "lanes": {
@@ -299796,6 +300736,28 @@
       ],
       "source_published_kst": "2026-10-07T12:00+09:00",
       "title": "SK에너지·현대오일뱅크 44조 정유 담합 심의 착수…과징금 최대 4.6조"
+    },
+    "title:29155e999d8677ba66c476eb": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000021239",
+      "source": "국민일보",
+      "source_body_digest": "13253ac7e8702cc63a7e95c6bbbed14ab35732227175b05bfa7c900609585974",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5d1e09de5e6aa6c0c05806d81873e04d9f057b59a77129e2c95c2e0d80cb78ef",
+      "source_fact_keys": [
+        "source_fact:v1:1181bcca0b1eecaec7daf86cf14505104c783bdf4baa042e5389454887f708c0",
+        "source_fact:v1:238105f8be32887b38d55360fd183dbdf17407d554a42c7cbd854bb2730cce5a",
+        "source_fact:v1:5a3ec8297d33d0fd482a3cb4dc85f22471c2c71a7bf6172780d50c8bec5387ca",
+        "source_fact:v1:ce1085851f8066b656fcd152fb76f7fc8b2ccab7b00c9611be287142afb09d33"
+      ],
+      "source_published_kst": "2026-10-09T09:23+09:00",
+      "source_title": "[팩트체크] 2.3조 vs 54조…레버리지 손실 추정액, 왜 23배 차이?",
+      "telegram_core_fact": "반면 국민의힘이 주장하는 54조원은 씨티글로벌마켓증권이 레버리지 ETF 시장의 규모 변화와 신규 자금 유입 등을 이용해 추정한 금액이다.",
+      "title": "[팩트체크] 2.3조 vs 54조…레버리지 손실 추정액, 왜 23배 차이?"
     },
     "title:293bbbadc98312a415286f1d": {
       "first_seen_kst": "2026-09-29T20:35:29+09:00",
@@ -322705,6 +323667,29 @@
       "telegram_core_fact": "이소영 중소벤처기업부 장관이 납품대금 연동제의 실효성이 부족하다며 적용 요건과 제재 등을 전반적으로 재검토하겠다고 밝혔다.",
       "title": "이소영 \"납품대금연동제 전면 검토…기술탈취 과징금 피해구제 개선\"(종합)"
     },
+    "title:a04dba781d83290b091395d1": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/09/2026100816324876257",
+      "source": "머니투데이",
+      "source_body_digest": "7c95a0b5e55b43d54f47894bc9020dcd5a64e85bc6e8edab2aadf7944b5cba7a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b1d9ac243fbe6d9d3dc945210fbbd745db3d47a601ff670ed8c805644350449d",
+      "source_fact_keys": [
+        "source_fact:v1:0f1e267601a0daef9d790020b9cd60f1eb99359fdf6c5a9b3c646f88aee04eaa",
+        "source_fact:v1:29180aa552ec737d1444247f2900fd9c72ea5556df42996856c4d86cf2dbe9d3",
+        "source_fact:v1:a6bd95677760a01f65a2b1ca2c2b5d425683052821e9532b20e22c27840cd146",
+        "source_fact:v1:d5e4852c00ad1bce61cb50c5ea217074aace234ac0bac3556dce4a7d284d84e9",
+        "source_fact:v1:e8df4840c026bb61629f8995b596b876ef97d6ad1826426c4b104f502226a0f9"
+      ],
+      "source_published_kst": "2026-10-09T09:00+09:00",
+      "source_title": "[단독]거래대금 18분의1로 줄었는데…'삼전닉스 2배' 운용보수 월 10억",
+      "telegram_core_fact": "금융당국의 규제 강화로 삼성전자·SK하이닉스 단일종목 레버리지 상품의 거래대금은 18분의 1로 쪼그라들었지만 자산운용사의 운용보수는 여전히 월 10억원을 웃돈 것으로 나타났다.",
+      "title": "[단독]거래대금 18분의1로 줄었는데…'삼전닉스 2배' 운용보수 월 10억"
+    },
     "title:a0a770aa5d7b6bd3e8096fa8": {
       "first_seen_kst": "2026-10-02T23:58:50+09:00",
       "lanes": {
@@ -331400,6 +332385,23 @@
       "source": "머니투데이",
       "title": "금리 급등기 회사채 발행 나선 AA 기업군…전망 한글자에 금리 엇갈려"
     },
+    "title:cf55507718c63bb22bfb3783": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.hankyung.com/article/2026100928951",
+      "source": "한국경제",
+      "source_body_digest": "7dcfd0a0c908b22bd9753b12702be03673e9e796b015965b1597355e29af9eca",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-09T18:07+09:00",
+      "source_title": "에픽AI '수주 레이더' 나왔다…기업들 신규계약 체결 한눈에",
+      "telegram_core_fact": "기업이 새로 따낸 계약부터 체결 이후 변경된 내용까지 수주 공시 정보를 한눈에 볼 수 있는 서비스가 나왔다.",
+      "title": "에픽AI '수주 레이더' 나왔다…기업들 신규계약 체결 한눈에"
+    },
     "title:cf766b9689624fb6c5b169d7": {
       "first_seen_kst": "2026-09-18T16:58:33+09:00",
       "lanes": {
@@ -335027,6 +336029,25 @@
       ],
       "source_published_kst": "2026-10-07T03:11+09:00",
       "title": "\"지금 폰 바꿀까?\" AI 서버가 D램 싹쓸이…스마트폰값 더 비싸진다"
+    },
+    "title:e0a6dbfb330e9e15fd048479": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634154",
+      "source": "이투데이",
+      "source_body_digest": "72117aff7d8bc58b9663a1485370b1a01854a338a57773fecc33aefb3612a89f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3651d0717b6a09421546ce4ca3f34e12bcbd67c071b4046a872df8ee8602fe39",
+      "source_fact_keys": [
+        "source_fact:v1:3dcabd2df1fa16714cabca0c9377c9e4d20404a593d8e921ea8ea740b21e9e00"
+      ],
+      "source_published_kst": "2026-10-09T12:27+09:00",
+      "source_title": "노벨문학상 앤 카슨 효과…국내 출간작 판매 184배 급증",
+      "telegram_core_fact": "예스24에 따르면 앤 카슨의 국내 출간 도서 판매량은 전날 발표 이후 집계에서 10월 7일 대비 18345.5% 증가했다.",
+      "title": "노벨문학상 앤 카슨 효과…국내 출간작 판매 184배 급증"
     },
     "title:e0f269f1322bc59b255061a3": {
       "first_seen_kst": "2026-10-07T10:23:42+09:00",
@@ -339207,6 +340228,23 @@
       "source_published_kst": "2026-10-07T05:26+09:00",
       "title": "[美공시]블랙 힐스, 와이오밍주 샤이엔에 건설 예정인 구글 데이터센터에 전력을 공급하기 위한 18억 달러 규모의 계약을 체결"
     },
+    "title:f81073f531394d93fb4c6113": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12172000",
+      "source": "매일경제",
+      "source_body_digest": "abd012a4bc553288cbc59fe356c4faa7fa44f74f6c323e629dc78977320ab229",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-08T21:40+09:00",
+      "source_title": "비아트리스, 파시라 16억5000만 달러 인수…주당 36.50달러",
+      "telegram_core_fact": "비아트리스(VTRS)가 비마취성 진통 치료제 기업 파시라 바이오사이언스(PCRX)의 발행주식 전량을 주당 36.50달러 현금, 총 지분가치 16억5000만 달러에 인수하는 최종 계약을 체결했다고 10월 8일 발표했다.",
+      "title": "비아트리스, 파시라 16억5000만 달러 인수…주당 36.50달러"
+    },
     "title:f81e19c764fd8a27bd4a2ebc": {
       "first_seen_kst": "2026-10-09T16:53:11+09:00",
       "lanes": {
@@ -340238,6 +341276,26 @@
       "source_published_kst": "2026-10-06T16:06+09:00",
       "title": "신한은행, 산업현장 찾아 기업 맞춤형 금융 솔루션 제공"
     },
+    "title:fe3fef731cd9c8d3458d7d9c": {
+      "first_seen_kst": "2026-10-09T18:14:26+09:00",
+      "lanes": {
+        "live": "2026-10-09T18:14:26+09:00"
+      },
+      "last_seen_kst": "2026-10-09T18:14:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261009_0003820074",
+      "source": "뉴시스",
+      "source_body_digest": "29d4324018b5352944eb305069d4aff3308ddb7fd5ada2d62b0338520ac81874",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f16e1ee6e309297f925df4827754eb38a2b005284aec640462ddeddf194520ec",
+      "source_fact_keys": [
+        "source_fact:v1:5b70a68cae0a629daf534aac7e492c145a91a8e9494740de4af1ec66177987cc",
+        "source_fact:v1:b81f81a7e0bf32cd50a1ef1af8f77901324830a1392793e0fca7cdbea6f446ee"
+      ],
+      "source_published_kst": "2026-10-09T09:22+09:00",
+      "source_title": "쿠팡·쿠팡이츠·쿠팡플레이 등 한밤 중 접속 장애…주문·배송 차질",
+      "telegram_core_fact": "고객 주문과 로그인뿐 아니라 물류 현장의 상품 분류 작업과 배송에도 차질이 빚어진 것으로 파악됐다.",
+      "title": "쿠팡·쿠팡이츠·쿠팡플레이 등 한밤 중 접속 장애…주문·배송 차질"
+    },
     "title:fe4171d0d2ebc2d56c190bed": {
       "first_seen_kst": "2026-10-07T08:36:47+09:00",
       "lanes": {
@@ -340527,5 +341585,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-09T17:54:07+09:00"
+  "updated_at_kst": "2026-10-09T18:14:26+09:00"
 }
