@@ -4,6 +4,7 @@ import unittest
 from zoneinfo import ZoneInfo
 
 from scripts.rebellions_partner_watch import (
+    article_age_minutes,
     capital_event_kind,
     classify,
     domestic_candidate,
@@ -72,6 +73,11 @@ class RebellionsWatcherRegressionTests(unittest.TestCase):
         title = "리벨리온, CCK솔루션 전략적 투자 추진"
         self.assertFalse(domestic_candidate(title))
         self.assertIsNone(capital_event_kind(title))
+
+    def test_publisher_to_detection_delay_is_measured(self):
+        checked = dt.datetime.fromisoformat("2026-10-09T01:55:00+09:00")
+        self.assertEqual(article_age_minutes("2026-10-08T19:00+09:00", checked), 415)
+        self.assertIsNone(article_age_minutes(None, checked))
 
     def test_named_acquisition_has_material_stage(self):
         title = "리벨리온, AI 최적화 기업 스퀴즈비츠 인수"
