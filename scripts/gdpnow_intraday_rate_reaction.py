@@ -204,12 +204,21 @@ def prior_daily_close(symbol: str, release_utc: dt.datetime) -> tuple[dt.datetim
     return eligible[-1] if eligible else None
 
 
+
+def normalize_yahoo_yield(raw: float) -> float:
+    """Correct either Yahoo percent quotes (5.23) or raw Cboe x10 quotes (52.3)."""
+    value = raw / 10.0 if raw >= 20.0 else raw
+    if not 0.1 < value < 20.0:
+        raise ValueError(f"invalid Treasury yield after normalization: raw={raw}")
+    return value
+
+
 def analyze_yield(symbol: str, release_utc: dt.datetime) -> dict[str, Any]:
-    points = fetch_chart(symbol, release_utc - dt.timedelta(hours=2), release_utc + dt.timedelta(hours=3))
+    points = [(ts, normalize_yahoo_yield(v)) for ts, v in fetch_chart(symbol, release_utc - dt.timedelta(hours=2), release_utc + dt.timedelta(hours=3))]
     pre = point_before(points, release_utc - dt.timedelta(seconds=1), max_age_min=15)
-    at = point_nearest(points, release_utc, max_gap_min=3)
-    p5 = point_nearest(points, release_utc + dt.timedelta(minutes=5), max_gap_min=8)
-    p30 = point_nearest(points, release_utc + dt.timedelta(minutes=30), max_gap_min=8)
+    at = point_nearest(points, release_utc, max_gap_min=1)
+    p5 = point_nearest(points, release_utc + dt.timedelta(minutes=5), max_gap_min=1)
+    p30 = point_nearest(points, release_utc + dt.timedelta(minutes=30), max_gap_min=1)
     return {
         "symbol": symbol,
         "pre": pack_yield_point(pre),
@@ -268,7 +277,8 @@ def main() -> int:
     release_ct, error = fetch_fred_updated_at(event_date)
     out: dict[str, Any] = {
         "event_date": event_date,
-        "source_release_timestamp": "FRED GDPNow Updated timestamp",
+        "event_timestamp_meaning": "FRED time data were posted, not Atlanta Fed first public release",
+        "source_release_timestamp": "FRED GDPNow ingestion timestamp (not original economic release)",
         "rate_intraday_source": "Cboe TNX/TYX via Yahoo Finance 1-minute chart data",
         "oil_intraday_source": "Brent BZ=F / WTI CL=F via Yahoo Finance 1-minute chart data",
         "official_daily_validation": "U.S. Treasury daily par yield curve in main watcher",
