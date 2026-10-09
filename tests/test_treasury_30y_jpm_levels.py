@@ -172,3 +172,52 @@ def test_send_failure_does_not_consume_event_and_retry_sends_once(tmp_path, monk
     st = json.loads(state_path.read_text())
     assert st["last_processed_date"] == "2026-10-08"
     assert st["last_message_id"] == 988
+
+
+def test_architecture_one_jpm30_sender_and_no_global_rate_duplicate():
+    """One event owner prevents both same-level duplicate Telegram alerts
+    and conflicting state-schema writes in the shared GitHub repository."""
+    import ast
+    from pathlib import Path
+
+    root = Path(__file__).resolve().parents[1]
+    workflows = root / ".github" / "workflows"
+    dedicated = []
+    for path in workflows.glob("*.yml"):
+        content = path.read_text(encoding="utf-8")
+        if (
+            "treasury_30y_jpm_threshold_watch.py" in content
+            and "\n  schedule:" in content
+        ):
+            dedicated.append(path.name)
+    assert dedicated == ["treasury-30y-jpm-crossing.yml"], dedicated
+    assert not (root / "scripts" / "treasury_30y_jpm_level_alert.py").exists()
+
+    # The global rate dashboard can still display JPM technical levels,
+    # but only the standalone Treasury crossing watcher can emit new JPM events.
+    source = (root / "scripts" / "global_rates_watch.py").read_text(encoding="utf-8")
+    tree = ast.parse(source)
+    calls = [
+        node.func.id
+        for node in ast.walk(tree)
+        if isinstance(node, ast.Call)
+        and isinstance(node.func, ast.Name)
+        and node.func.id in {"eval_jpm30_up", "eval_jpm30_down"}
+    ]
+    assert calls == [], calls
+
+
+def test_state_schema_guard_matches_saved_confirmed_baseline():
+    """Reject stale second-watcher incompatible state formats."""
+    import json
+    from pathlib import Path
+
+    root = Path(__file__).resolve().parents[1]
+    state_path = root / "data" / "treasury_30y_jpm_level_state.json"
+    state = json.loads(state_path.read_text(encoding="utf-8"))
+    assert state["version"] == 1
+    assert isinstance(state["last_processed_bp"], int)
+    assert "last_processed_date" in state
+    assert sorted(state["armed_up"]) == ["559", "578", "600"]
+    assert sorted(state["armed_down"]) == ["515", "525"]
+    assert "last_date" not in state and "last_rate" not in state
