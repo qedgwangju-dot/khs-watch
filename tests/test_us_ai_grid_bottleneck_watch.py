@@ -394,6 +394,28 @@ class KoreanTransformerExportTests(unittest.TestCase):
         state["last_status"] = "kcs_key_missing"
         self.assertTrue(w.kcs_retry_due(now, state, True))
 
+    def test_existing_access_denial_one_time_alert_even_when_retry_backed_off(self):
+        now = datetime(2026, 10, 9, 21, 45, tzinfo=ZoneInfo("Asia/Seoul"))
+        cached = {
+            **w.KOREA_EXPORT_BASELINE,
+            "baseline_notified": True,
+            "last_status": "api_inaccessible_or_unpublished",
+            "last_error_kind": "kcs_http_access_denied",
+            "last_attempt_day": "2026-10-09",
+            "last_attempt_at_kst": "2026-10-09T21:35:00+09:00",
+            "fetch_revision": w.KOREA_EXPORT_FETCH_REVISION,
+        }
+        with mock.patch.dict(w.os.environ, {"KCS_DATA_GO_SERVICE_KEY": "secret"}):
+            with mock.patch.object(w, "fetch_korea_kcs_hs6_month") as fetch:
+                latest, events = w.update_korea_export_watch(now, cached)
+                self.assertEqual([x["kind"] for x in events], ["kcs_access_blocker"])
+                self.assertEqual(latest["last_status"], "kcs_access_denied")
+                self.assertTrue(latest["source_blocker_notified"])
+                fetch.assert_not_called()
+                next_state, events2 = w.update_korea_export_watch(now, latest)
+                self.assertEqual(events2, [])
+                fetch.assert_not_called()
+
     def test_permission_denial_emits_exactly_one_operator_notice(self):
         import urllib.error
         now = datetime(2026, 10, 9, 21, 0, tzinfo=ZoneInfo("Asia/Seoul"))
