@@ -484,6 +484,13 @@ class WarshSafetyTests(unittest.TestCase):
         self.assertNotIn("secret",str((args,kwargs)))
 
 
+    def test_cme_source_health_message_never_mislabels_public_archive_as_discontinued(self):
+        msg = path_v3._source_health_message(
+            "error", "CME FedWatch 공식 API 인증정보 미설정"
+        )
+        self.assertNotIn("지원종료 FTP", msg)
+        self.assertIn("구간별 확률 원천이 아니므로", msg)
+
     def test_api_entitlement_notice_only_once_and_state_streak_is_bounded(self):
         old = {
             "source_error_streak":24,
