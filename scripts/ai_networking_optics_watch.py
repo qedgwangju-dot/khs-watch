@@ -1026,7 +1026,7 @@ def lite_supply_event(title: str) -> tuple[str, str, str] | None:
     # product sales or guaranteed contracted revenue.
     horizon = re.search(r"(?<!\d)(202[7-9]|203\d)(?!\d)", text)
     booked = bool(re.search(
-        r"sold[- ]?out|fully (?:sold|booked|allocated)|capacity (?:sold|booked)|"
+        r"sold[- ]?out|sell[- ]?out|fully (?:sold|booked|allocated)|capacity (?:sold|booked)|"
         r"orders? (?:booked|through)|booked (?:until|through|into)|"
         r"售罄|全部卖光|售完|ほぼ完売|完売|完판|완판", text, re.I
     ))
