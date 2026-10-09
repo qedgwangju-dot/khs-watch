@@ -588,111 +588,99 @@ def build_causal_snapshot() -> dict:
 def causal_block(snapshot: dict) -> str:
     if not snapshot.get("available", True):
         return "\n".join([
-            "<b>Bessent 금리상승 원인설 자동 검증</b>",
-            "• 최신 원자료 일부가 지연·실패해 이번 실행의 원인분해 숫자는 <b>확인 보류</b>합니다.",
-            f"• 실패 사유: {snapshot.get('error') or '자료 조회 실패'}",
-            "• 정책 사실·바이백 실제 집행 감시는 계속하며, 원인분해 실패만으로 정책 알림을 막지 않습니다.",
+            "<b>금리·유가 원인 검증</b>",
+            "• 공식 원천 일부 조회 실패 — 원인 판정 보류(정책·실제 집행은 별도 감시)",
+            f"• 원인: {snapshot.get('error','확인 불가')}",
         ])
     v = snapshot["common_values"]
-    c = snapshot["common_changes"]
+    c = snapshot.get("changes_5d") or snapshot["common_changes"]
+    start = c.get("start_date") or snapshot["common_prev_date"]
+    end = snapshot["common_date"]
+    latest = snapshot.get("latest") or {}
+    nom = latest.get("nom10") or {}
+    real = latest.get("real10") or {}
+    brent = latest.get("brent") or {}
+    lines = [
+        "<b>금리·유가 원인 검증</b>",
+        (f"• 공통 {start}→{end} ({snapshot.get('verdict_basis','기간 미확인')}): "
+         f"Brent ${v['brent']:.2f}({c['brent_pct']:+.1f}%) · "
+         f"기대인플레 {v['bei10']:.2f}%({c['bei_bp']:+.1f}bp) · "
+         f"실질10년 {v['real10']:.2f}%({c['real_bp']:+.1f}bp) · "
+         f"명목10년 {v['nom10']:.2f}%({c['nom_bp']:+.1f}bp)"),
+    ]
+    if nom.get("value") is not None and real.get("value") is not None:
+        if nom.get("date") == real.get("date"):
+            latest_bei = float(nom["value"]) - float(real["value"])
+            lines.append(
+                f"• 최신 국채 금리 {nom.get('date')}: 명목 {nom['value']:.2f}% · "
+                f"실질 {real['value']:.2f}% · 기대인플레 프록시 {latest_bei:.2f}%"
+            )
+    if snapshot.get("is_lagged"):
+        lines.append(
+            f"• 자료 시차: Brent(EIA) {brent.get('date','?')} vs "
+            f"국채 {snapshot.get('latest_bond_common_date','?')} "
+            f"({snapshot.get('lag_market_sessions',0)}거래일) — 최신 인과판정 보류"
+        )
     t = snapshot.get("term_latest") or {}
     if t.get("available") and t.get("value") is not None:
-        term_line = f"• 10년 기간프리미엄(보조): {t['value']:.4f}% ({t['change_bp']:+.1f}bp, {t['date']} 기준 · {t.get('data_source','NY Fed ACM')})"
+        lines.append(
+            f"• 기간프리미엄(별도 보조) {t.get('date')}: {t['value']:.4f}% "
+            f"({t.get('prev_date')} 대비 {t['change_bp']:+.1f}bp; "
+            f"{t.get('data_source','모형 추정')})"
+        )
     else:
-        term_line = "• 10년 기간프리미엄(보조): 이번 실행 확인 보류 — 핵심 판정은 EIA·미 재무부 원자료로 계속"
-    return "\n".join([
-        "<b>Bessent 금리상승 원인설 자동 검증</b>",
-        f"• 공통 비교일: {snapshot['common_prev_date']} → {snapshot['common_date']}",
-        f"• Brent(EIA Europe 현물): ${v['brent']:.2f}/배럴 ({c['brent_pct']:+.2f}%)",
-        f"• 10년 기대인플레이션 프록시(미 재무부 명목-실질): {v['bei10']:.2f}% ({c['bei_bp']:+.1f}bp)",
-        f"• 10년 실질금리(미 재무부): {v['real10']:.2f}% ({c['real_bp']:+.1f}bp)",
-        f"• 10년 명목금리(미 재무부): {v['nom10']:.2f}% ({c['nom_bp']:+.1f}bp)",
-        (
-            f"• 5거래일 검증: Brent {snapshot['changes_5d']['brent_pct']:+.1f}% · "
-            f"기대인플레 {snapshot['changes_5d']['bei_bp']:+.1f}bp · "
-            f"실질금리 {snapshot['changes_5d']['real_bp']:+.1f}bp · "
-            f"명목10Y {snapshot['changes_5d']['nom_bp']:+.1f}bp"
-            if snapshot.get("changes_5d") else
-            "• 5거래일 검증: 공통 관측치 부족 — 1일 판정만 사용"
-        ),
-        term_line,
-        f"• 판정 기준: {snapshot.get('verdict_basis','확인 불가')}",
-        f"• 판정: <b>{snapshot['verdict']}</b>",
-        "• 기대인플레이션 프록시는 같은 날짜의 미 재무부 명목 10년물-실질 10년물 차이입니다. 기간프리미엄은 모형 추정치라 보조 확인에만 사용합니다.",
-        "• EIA Brent는 Europe 현물 시계열입니다. ICE Brent 선물과 섞어 증감률·경보구간을 계산하지 않으며, 전쟁·운송 차질 때 현물-선물 괴리가 커질 수 있습니다.",
-    ])
+        lines.append("• 기간프리미엄: 확인 보류(모형 추정치, 판정 필수값 아님)")
+    lines += [
+        f"• 원인 판정: <b>{snapshot['verdict']}</b>",
+        "• 기대인플레는 같은 날 명목-실질 10년 금리 차이(프록시)이며, 기간프리미엄은 모형 추정치입니다.",
+        "• EIA Brent는 Europe 현물 시계열; ICE Brent 선물과 섞어 가격·등락률을 계산하지 않습니다.",
+    ]
+    return "\n".join(lines)
 
 def stock_market_block(snapshot: dict) -> str:
     if not snapshot.get("available", True):
-        return "\n".join([
-            "",
-            "<b>주식시장 영향</b>",
-            "• 현재 판정: <b>⚪ 자동판정 보류</b>",
-            "• 명목·실질금리 원자료가 같은 실행에서 완성되지 않아 성장주 할인율 방향을 추정하지 않습니다.",
-            "• 정책·집행 사실은 유지하고 다음 정상 원자료 실행에서 Nasdaq·AI·반도체·소프트웨어 영향을 다시 판정합니다.",
-        ])
-    # Equity interpretation must use the same primary horizon as the causal
-    # regime verdict; otherwise a one-day reversal can contradict a five-day cause test.
+        return "<b>성장주 할인율</b>\n• ⚪ 공식 금리 자료 확인 전 — 방향 판정 보류"
     c = snapshot.get("changes_5d") or snapshot["common_changes"]
-    v = snapshot["common_values"]
-    nom = c["nom_bp"]
-    real = c["real_bp"]
-    bei = c["bei_bp"]
-
-    if nom <= -2.0 and real <= -2.0:
-        verdict = "🟢 성장주 할인율 우호 강화"
-        reason = "10년 명목·실질금리가 함께 하락해 Nasdaq·AI·반도체·소프트웨어의 할인율 부담이 실제로 완화되는 방향입니다."
+    nom, real, bei = c["nom_bp"], c["real_bp"], c["bei_bp"]
+    if snapshot.get("is_lagged"):
+        verdict = "⚪ 공통 관측창 지연 — 현재 할인율 영향 확정 보류"
+    elif nom <= -2.0 and real <= -2.0:
+        verdict = "🟢 명목·실질금리 동반 하락 — 성장주 할인율 부담 완화 방향"
     elif nom >= 2.0 and real >= 2.0:
-        verdict = "🔴 성장주 할인율 부담 확대"
-        reason = "10년 명목·실질금리가 함께 올라 바이백의 수급 완충보다 높은 실질 할인율 부담이 더 강한 상태입니다."
+        verdict = "🔴 명목·실질금리 동반 상승 — 성장주 할인율 부담 확대 방향"
     elif nom < 0 and real >= 0 and bei < 0:
-        verdict = "🟡 물가 완화는 우호적이나 실질금리 부담 잔존"
-        reason = "기대인플레이션은 내려가도 실질금리가 버티면 성장주 밸류에이션 개선은 제한적입니다."
+        verdict = "🟡 인플레 프록시 하락, 실질금리 부담 지속"
     else:
-        verdict = "⚪ 주식시장 영향 혼조"
-        reason = "채권 수급 개선이 주식 할인율 개선으로 이어졌다고 보기엔 명목·실질금리 방향이 충분히 정렬되지 않았습니다."
-
+        verdict = "⚪ 명목·실질금리 방향 미정렬"
     return "\n".join([
-        "",
-        "<b>주식시장 영향</b>",
-        f"• 현재 판정: <b>{verdict}</b>",
-        f"• {reason}",
-        f"• 10년 명목 {v['nom10']:.2f}% ({nom:+.1f}bp) / 실질 {v['real10']:.2f}% ({real:+.1f}bp) / 기대인플레이션 {v['bei10']:.2f}% ({bei:+.1f}bp)",
-        "• 금리 하락이 경기침체·실적악화 때문이면 성장주 호재로 자동 판정하지 않습니다. 여기서는 바이백·수급과 실질 할인율 경로를 분리해 봅니다.",
+        "<b>성장주 할인율</b>",
+        f"• <b>{verdict}</b> (공통창 명목 {nom:+.1f}bp · 실질 {real:+.1f}bp)",
+        "• 주가·이익 개선이 확정됐다는 뜻은 아니며, 경기침체에 따른 금리 하락은 별도 점검합니다.",
     ])
-
 
 def oil_scenario_block(snapshot: dict) -> str:
     if not snapshot.get("available", True):
-        return "\n".join([
-            "<b>Bessent 원유 40~50달러 조건부 시나리오</b>",
-            "• EIA Brent 최신값 확인 실패로 가격 경로 판정을 보류합니다.",
-            "• 40~50달러는 공식 유가 목표가 아니라 <b>이란 분쟁 종료 후 공급과잉이 생긴다는 조건부 전망</b>입니다.",
-        ])
+        return "<b>원유 40~50달러 조건부 시나리오</b>\n• EIA Brent 조회 실패 — 판정 보류"
     latest = snapshot.get("latest") or {}
-    brent = ((latest.get("brent") or {}).get("value"))
-    brent_date = str((latest.get("brent") or {}).get("date") or "확인 불가")
+    brent_info = latest.get("brent") or {}
+    brent = brent_info.get("value")
     if brent is None:
-        return "<b>Bessent 원유 40~50달러 조건부 시나리오</b>\n• Brent 최신값 확인 불가"
+        return "<b>원유 40~50달러 조건부 시나리오</b>\n• 확인 불가"
     brent = float(brent)
     to50 = (50.0 / brent - 1.0) * 100.0
     to40 = (40.0 / brent - 1.0) * 100.0
     if brent >= 100:
-        label = "🔴 현재는 시나리오와 역방향 — 에너지·인플레이션 압력 고조"
-    elif brent >= 80:
-        label = "🟠 아직 매우 멂 — 전쟁·공급차질 해소가 먼저 필요"
-    elif brent >= 60:
-        label = "🟡 하락 경로 진입 가능성은 커졌지만 40~50달러는 미도달"
+        status = "🔴 아직 고유가 구간"
     elif brent > 50:
-        label = "🟡 50달러 시나리오 접근"
+        status = "🟡 전망 구간 미도달"
     else:
-        label = "🟢 50달러 이하 진입 — 40달러 꼬리 시나리오 검증 구간"
+        status = "🟢 50달러 이하 진입(전망 조건 별도 검증)"
     return "\n".join([
-        "<b>Bessent 원유 40~50달러 조건부 시나리오</b>",
-        f"• Brent(EIA Europe 현물) 최신: <b>${brent:.2f}/배럴</b> ({brent_date}) · 50달러까지 {to50:+.1f}% · 40달러까지 {to40:+.1f}%",
-        f"• 현재 판정: <b>{label}</b>",
-        "• 조건 분리: 40~50달러는 <b>이란 분쟁 종료 + 공급과잉</b>을 전제로 한 Bessent의 조건부 전망이며 재무부의 공식 가격목표가 아닙니다.",
-        "• 검증 경로: Brent↓ → 기대인플레↓ → 실질금리↓/기간프리미엄 안정 → 10년물↓. 유가만 내려가고 10년물이 버티면 재정·실질금리 요인이 더 강한 것으로 판정합니다.",
+        "<b>원유 40~50달러 조건부 시나리오</b>",
+        f"• EIA Brent {brent_info.get('date','?')}: ${brent:.2f}/배럴 · "
+        f"$50까지 {to50:+.1f}% / $40까지 {to40:+.1f}% — {status}",
+        "• 이란 분쟁 종료 + 공급과잉을 전제한 Bessent 개인의 조건부 전망이며 재무부의 공식 가격목표가 아닙니다.",
+        "• 확인 순서: 유가 하락 → 기대인플레·실질금리·기간프리미엄 분해 → 10년물 방향. 필연적 인과로 단정하지 않습니다.",
     ])
 
 def policy_block(snapshot: dict) -> str:
