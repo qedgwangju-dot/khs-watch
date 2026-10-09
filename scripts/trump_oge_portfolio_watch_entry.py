@@ -573,6 +573,7 @@ def main_with_fallback():
     seen_periods = set(state.get("seen_periods", []))
     seen_news = set(state.get("seen_news_events", []))
     seen_news_event_keys = set(state.get("seen_news_event_keys", []))
+    seen_unparsed = set(state.get("seen_unparsed_oge_pdf", []))
 
     if watch.filing_key(watch.SEED_CURRENT_URL) in seen_urls:
         seen_periods.add("2026-06")
@@ -587,13 +588,25 @@ def main_with_fallback():
         # reconcile it with the already-reported October 8 August-filing event.
         # Do not fire a second "new filing" alert for the same 517 trades.
         if aug.is_august_official_filing(url):
+            # The 18-page OGE report can be scanned: an accessible URL is not
+            # equivalent to a fully parsed and verified transaction table.
+            try:
+                official_rows = watch.extract_transactions(watch.pdf_text(url))
+            except Exception as exc:
+                print(f"WARN August OGE PDF unavailable/unparsed: {exc}")
+                official_rows = []
+            if len(official_rows) >= 500:
+                seen_urls.add(key)
+                seen_unparsed.discard(key)
+            else:
+                seen_unparsed.add(key)
+                print(f"WARN August OGE PDF direct 517-row verification pending: {len(official_rows)} rows")
             if aug.EVENT_KEY not in seen_news_event_keys:
                 watch.send_message(
                     token, chat_id,
                     aug.build_august_report(rate, basis, watch.krw_range, official_pdf_url=url),
                 )
                 seen_news_event_keys.add(aug.EVENT_KEY)
-            seen_urls.add(key)
             seen_periods.add(aug.PERIOD)
             continue
 
@@ -610,6 +623,23 @@ def main_with_fallback():
             except Exception as e:
                 print(f"WARN PDF parse failed {url}: {e}")
                 txs = []
+            if len(txs) < 3 or not periods:
+                # Never mark an unparsed/scanned report as fully checked.
+                # Alert once with its verified URL, then retry extraction on
+                # later runs without spamming the recipient.
+                if key not in seen_unparsed:
+                    pending_msg = "\\n".join([
+                        "📄 [트럼프 OGE 신규 거래보고서 원문 발견]",
+                        "판정: 공식 PDF 경로 발견 · 거래표 자동 검증 미완료",
+                        "• 스캔·접근 제한으로 거래행/총액을 신뢰성 있게 추출하지 못했습니다.",
+                        "• 종목·거래액을 임의로 채우지 않고 원문을 후속 재검증합니다.",
+                        f"OGE 원문: {url}",
+                    ])
+                    watch.send_message(token, chat_id, pending_msg)
+                    seen_unparsed.add(key)
+                print(f"WARN OGE PDF kept pending, not confirmed: {url}")
+                continue
+            seen_unparsed.discard(key)
             msg = watch.generic_message(url, txs, rate, basis)
 
         watch.send_message(token, chat_id, msg)
@@ -825,6 +855,7 @@ def main_with_fallback():
     state["seen_periods"] = sorted(seen_periods)
     state["seen_news_events"] = sorted(seen_news)
     state["seen_news_event_keys"] = sorted(seen_news_event_keys)
+    state["seen_unparsed_oge_pdf"] = sorted(seen_unparsed)
     watch.save_state(state)
 
 
