@@ -1349,7 +1349,11 @@ def _scheduled_due(current_state: dict, next_state: dict) -> tuple[bool, bool, s
             trigger_schedule in weekly_crons
             # Final safety net: if every dedicated morning cron is dropped,
             # the first ordinary Monday scheduled poll still sends the report.
-            or trigger_schedule == "*/15 12-23 * * 1-5"
+            or trigger_schedule in {
+                "*/15 12-23 * * 1-5",
+                "7,22,37,52 12-22 * * 1-5",
+                "7,22,37 23 * * 1-5",
+            }
         )
     )
     fomc_due = (
