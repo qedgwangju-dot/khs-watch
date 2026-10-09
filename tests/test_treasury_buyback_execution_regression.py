@@ -18,7 +18,23 @@ def test_flat_is_not_mixed():
     _, message, _ = t.build_persistence_followup("2026-10-01", 5, r)
     assert "하락·보합" in message
 
+def test_state_race_merge():
+    from treasury_buyback_state_commit import combine
+    old = {"seen":["old"],"latest_long_end_operation_date":"2026-10-08",
+           "latest_long_end_fingerprint":"latest",
+           "yield_persistence_watches":[{"operation_date":"2026-10-08",
+               "fingerprint":"a","completed_offsets":[1]}]}
+    stale = {"seen":["new"],"latest_long_end_operation_date":"2026-10-01",
+             "latest_long_end_fingerprint":"stale",
+             "yield_persistence_watches":[{"operation_date":"2026-10-08",
+                 "fingerprint":"a","completed_offsets":[3]}]}
+    merged = combine(old, stale)
+    assert set(merged["seen"]) == {"old","new"}
+    assert merged["latest_long_end_fingerprint"] == "latest"
+    assert merged["yield_persistence_watches"][0]["completed_offsets"] == [1,3]
+
 if __name__ == '__main__':
     test_nominal_filter()
     test_flat_is_not_mixed()
+    test_state_race_merge()
     print('buyback nominal filter test passed')
