@@ -1,7 +1,7 @@
 {
-  "last_alert_at_kst": "2026-10-09T22:40:20+09:00",
-  "last_event_kind": "hormuz_7day_diplomacy",
-  "last_event_id": "hormuz_7day_diplomacy:1a8f0b5fbdd4bd31",
+  "last_alert_at_kst": "2026-10-09T22:43:09+09:00",
+  "last_event_kind": "china_fuel_export_policy",
+  "last_event_id": "china_fuel_export_policy:a3f2375406b73670",
   "alerted_events": {
     "regional_export_recovery:66183575fab99015": "2026-09-29T19:49:06+09:00",
     "sts_reroute_expansion:a5a5b34c0694d3fd": "2026-09-29T20:06:00+09:00",
@@ -18,30 +18,31 @@
     "ex_iran_crude_prewar_recovery:5c8b49622ecd4994": "2026-10-04T00:16:07+09:00",
     "saudi_asia_osp_change:90442802d70f95fb": "2026-10-05T20:23:46+09:00",
     "eia_refining_crack_watch:652084024b8926e6": "2026-10-08T16:03:46+09:00",
-    "hormuz_7day_diplomacy:1a8f0b5fbdd4bd31": "2026-10-09T22:40:20+09:00"
+    "hormuz_7day_diplomacy:1a8f0b5fbdd4bd31": "2026-10-09T22:40:20+09:00",
+    "china_fuel_export_policy:a3f2375406b73670": "2026-10-09T22:43:09+09:00"
   },
   "last_market": {
     "oil": {
       "symbol": "BZ=F",
       "label": "Brent",
       "unit": "달러/배럴",
-      "price": 103.28,
+      "price": 103.37,
       "previous_close": 104.28,
-      "change": -1.0,
-      "change_pct": -0.9589566551591868,
-      "timestamp_utc": "2026-10-09T13:30:38Z",
-      "timestamp_epoch": 1791552638.0
+      "change": -0.9099999999999966,
+      "change_pct": -0.8726505561948567,
+      "timestamp_utc": "2026-10-09T13:33:29Z",
+      "timestamp_epoch": 1791552809.0
     },
     "usdkrw": {
       "symbol": "KRW=X",
       "label": "원·달러",
       "unit": "원/달러",
-      "price": 1341.15,
+      "price": 1341.32,
       "previous_close": 1342.56,
-      "change": -1.4099999999998545,
-      "change_pct": -0.10502323918483007,
-      "timestamp_utc": "2026-10-09T13:40:48Z",
-      "timestamp_epoch": 1791553248.0
+      "change": -1.240000000000009,
+      "change_pct": -0.09236086282922247,
+      "timestamp_utc": "2026-10-09T13:43:37Z",
+      "timestamp_epoch": 1791553417.0
     }
   }
 }
