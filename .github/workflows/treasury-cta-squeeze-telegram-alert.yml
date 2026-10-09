@@ -13,6 +13,10 @@ on:
   schedule:
     # Regular market-hours monitoring: 21:00~08:45 KST, every 15 minutes.
     - cron: "*/15 12-23 * * 1-5"
+    # Offset fallback runs protect against dropped quarter-hour GitHub schedules.
+    # Last fallback stays within the original 08:45 KST monitoring window.
+    - cron: "7,22,37,52 12-22 * * 1-5"
+    - cron: "7,22,37 23 * * 1-5"
     # Important-event precheck: 20:40 KST, with a 20:47 backup. State dedupe allows one send.
     - cron: "40 11 * * 1-5"
     - cron: "47 11 * * 1-5"
