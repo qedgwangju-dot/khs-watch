@@ -376,6 +376,10 @@ def _event_category(event, resolved_title: str) -> str:
 def _event_meaning(event, category: str) -> str:
     if event.get("kind") == "macro_nuclear":
         slug = urlparse(event.get("url", "")).path.rstrip("/").split("/")[-1].lower()
+        if slug == "constellation-google-nuclear-uprates":
+            return "Google의 20년 전력구매계약을 바탕으로 Constellation이 PJM 기존 원전 11곳의 터빈·증기발생기·제어설비를 개선해 890MW를 추가합니다. 신규 원전 착공이나 NYPA 금융사업과 구분해야 합니다."
+        if slug not in {"new-york-big-new-bet-on-nuclear-energy", "federal-funding-x-energy-small-nuclear-reactor"}:
+            return "기사 원문과 해당 계약 당사자의 공식자료에서 확인된 사실을 우선하고 다른 원전 사업의 정책·금융 설명을 적용하지 않습니다."
         if slug == "federal-funding-x-energy-small-nuclear-reactor":
             return "이번 변화의 핵심은 단순 정책 기대가 아니라 DOE 자금지원, NRC 허가, Dow 최종투자결정, TX-1 연료공장이 하나의 상용화 시간표로 연결됐다는 점입니다. 다만 최대 144기 파이프라인은 확정 착공·매출과 구분해야 합니다."
         return "원전 용량 목표·공공금융·입지·표준화·지역 공급망 변화는 실제 발주와 장납기 기자재 수요의 시점을 바꾸는 핵심 재평가 요인입니다."
@@ -440,6 +444,7 @@ def _macro_highlights(event):
 
 def _bottleneck_lines(event):
     if event.get("kind") == "macro_nuclear":
+        slug = urlparse(event.get("url", "")).path.rstrip("/").split("/")[-1].lower()
         if _is_constellation_google_uprate(event):
             return [
                 "기존 원전 출력증강의 핵심은 설비 교체·정지기간·발전용량 검증이며 신규 부지·노형 선정 사업이 아님",
