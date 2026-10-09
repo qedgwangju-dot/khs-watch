@@ -25,7 +25,7 @@ import treasury_cta_squeeze_audited_watch as audited
 watcher = audited.watcher
 # Revision 10 adds the official NQ/CFTC cross-asset squeeze lane.
 # The audited gate still prevents a formatting-only push from becoming an event alert.
-watcher.FORMAT_REVISION = max(int(getattr(watcher, "FORMAT_REVISION", 0)), 12)
+watcher.FORMAT_REVISION = max(int(getattr(watcher, "FORMAT_REVISION", 0)), 13)
 _base_format = audited.format_alert
 _base_main = watcher.main
 
@@ -917,7 +917,7 @@ def _compact_scheduled_report(snapshot: dict, previous: dict, reasons: list[str]
         lines += [
             "",
             "<b>📅 이번 주 확인</b>",
-            "• 10Y 4.50→4.40→4.35→4.30%와 -1σ/-2σ 진입",
+            f"• 현재 금리 레짐 기준 하향 확인선: {milestone_line} · -1σ/-2σ 진입",
             "• ZN·NQ 각각 공식 같은 거래일 가격↑+OI↓ 여부",
             "• 다음 CFTC에서 10Y·NQ 순숏이 실제로 줄었는지",
         ]
@@ -1005,11 +1005,31 @@ def _fmt_net_with_krw(value, tenor: str, fx) -> str:
     return f"{contracts:+,}계약 ({direction} 액면기준 {_fmt_krw_amount(won)})"
 
 
+def _yield_regime_line(yld: float) -> str:
+    if yld >= 5.25:
+        return "5.25% 이상 초고금리 구간 — 5.00% 하향이 첫 완화 확인선"
+    if yld >= 5.00:
+        return "5.00~5.25% 고금리 구간 — 5.00% 하향 돌파가 첫 완화 확인선"
+    if yld >= 4.75:
+        return "4.75~5.00% 구간 — 4.75% 하향 후 4.50%가 다음 확인선"
+    if yld >= 4.50:
+        return "4.50~4.75% 구간 — 4.50% 하향이 성장주 할인율 완화 강화선"
+    return "4.50% 미만 — 과거 4.30% 시장 시나리오를 보조 하단으로만 추적"
+
+def _yield_milestones(yld: float) -> str:
+    levels = [5.25, 5.00, 4.75, 4.50, 4.30]
+    below = [level for level in levels if level < yld - 1e-9]
+    if not below:
+        return "현재 주요 하향 경보선 아래"
+    return " → ".join(f"{level:.2f}%" for level in below)
+
 def _scheduled_report(snapshot: dict, previous: dict, reasons: list[str], fx=None, fx_date=None) -> tuple[str, str]:
     y = snapshot.get("yield10") or {}
     yld = float(y.get("yield") or 0.0)
     z = float(y.get("z20") or 0.0)
     distance = max(0.0, (yld - 4.30) * 100)
+    regime_line = _yield_regime_line(yld)
+    milestone_line = _yield_milestones(yld)
     direction, _ = audited._direction_label(snapshot, previous, reasons)
     impact, path = _equity_impact(snapshot, previous, reasons)
     evidence = watcher.squeeze_evidence(snapshot, previous)
@@ -1029,7 +1049,8 @@ def _scheduled_report(snapshot: dict, previous: dict, reasons: list[str], fx=Non
     lines = [
         "<b>👀 지금 쉽게 보면</b>",
         f"• 판정: <b>{direction}</b>",
-        f"• 10년물: <b>{yld:.3f}%</b> · 20일 z={z:+.2f}σ · 4.30%까지 {distance:.1f}bp",
+        f"• 10년물: <b>{yld:.3f}%</b> · 20일 z={z:+.2f}σ · {regime_line}",
+        f"• 하향 확인선: {milestone_line} · 4.30%는 과거 시장 시나리오의 보조 하단({distance:.1f}bp 거리)",
         f"• 선물: ZN {_fmt_pct((cme.get('ZN') or {}).get('pct_change'))} · ZB {_fmt_pct((cme.get('ZB') or {}).get('pct_change'))} · UB {_fmt_pct((cme.get('UB') or {}).get('pct_change'))}",
         f"• 가격↑+동일범위 OI↓: {'확인' if evidence else '미확인'} · repo: {'안정' if repo_ok else '주의 ' + ', '.join(repo_worse)}",
         "",
@@ -1061,7 +1082,7 @@ def _scheduled_report(snapshot: dict, previous: dict, reasons: list[str], fx=Non
         lines.extend([
             "",
             "<b>📅 이번 주에 볼 것</b>",
-            "• 4.50→4.40→4.35→4.30% 하향과 -1σ/-2σ 진입을 단계별 확인합니다.",
+            f"• 현재 금리 레짐 기준 하향 확인선: {milestone_line}. -1σ/-2σ 진입을 함께 봅니다.",
             "• 월요일에는 신호가 없어도 1회 보고하고, 주중에는 복합 조건이 강화될 때만 추가 발송합니다.",
         ])
 
