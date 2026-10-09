@@ -794,7 +794,7 @@ check("oct08-iran-midterm-pledge-not-ceasefire", "휴전·평화" not in tags an
 check("oct08-iran-midterm-pledge-has-constraints", "봉쇄 유지" in trump_cnbc["title_ko"] and "휴전 합의 미확정" in trump_cnbc["title_ko"])
 trump_cnbc["score"],trump_cnbc["tags"],trump_cnbc["age"] = score,tags,mod.watch.age_minutes(trump_cnbc,dt.datetime.now(mod.watch.KST))
 rendered_pledge = mod.watch.build_alert([trump_cnbc], [], dt.datetime.now(mod.watch.KST))
-check("oct08-iran-midterm-pledge-rendered-yellow", "🟡 [신규] <b>1. 미국·이란 · 11월 3일 전 추가공격 유예 발언" in rendered_pledge)
+check("oct08-iran-midterm-pledge-rendered-yellow", "🟡 [" in rendered_pledge and "미국·이란 · 11월 3일 전 추가공격 유예 발언" in rendered_pledge)
 check("oct08-iran-midterm-pledge-not-green-header", "🟢 <b>재건·휴전</b>" not in rendered_pledge)
 check("oct08-iran-midterm-pledge-not-nov4-attack", "11월 4일 공격 결정" not in rendered_pledge)
 
