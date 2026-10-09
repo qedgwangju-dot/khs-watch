@@ -63,7 +63,7 @@ def main() -> int:
         "<html>U.S. Department of the Treasury "
         "Treasury Announces Enforcement Penalty for Violation of Outbound Program "
         "October 7, 2026. The Outbound Investment Security Program (OISP) "
-        "penalized Amidi LLC $200,000 for an investment of $92,478 in Noematrix."
+        "penalized Amidi LLC $200,000 for an investment of $92,478 in Noematrix, China robotics AI."
         "</html>"
     )
     original_url = "https://home.treasury.gov/news/press-releases/sb0652"
