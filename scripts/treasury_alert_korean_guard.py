@@ -48,7 +48,7 @@ SERIES = {
 }
 
 UPGRADE_MARKER = "<b>정책 목적·경계선</b>"
-UPGRADE_REVISION = 10
+UPGRADE_REVISION = 11
 UA = "Mozilla/5.0 khs-watch-treasury-bessent-verifier/4.0"
 
 EXACT_TITLES = {
