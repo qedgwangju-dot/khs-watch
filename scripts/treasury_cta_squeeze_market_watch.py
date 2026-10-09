@@ -110,8 +110,12 @@ def yahoo_snapshot() -> dict:
         previous = row.get("regularMarketPreviousClose")
         change = row.get("regularMarketChange")
         pct = row.get("regularMarketChangePercent")
-        oi = row.get("openInterest")
-        oi_source = "Yahoo Finance 지연 계약 OI"
+        # Yahoo contract-level OI is NOT comparable with the CFTC whole-market
+        # weekly OI stored in our prior state. Never ingest it into the squeeze gate.
+        # When the CME official bulletin is unavailable, use the matching CFTC
+        # whole-market weekly OI only, and label its frequency/scope explicitly.
+        oi = None
+        oi_source = ""
         volume = row.get("regularMarketVolume")
         market_time = row.get("regularMarketTime")
         if chart:
@@ -141,16 +145,10 @@ def yahoo_snapshot() -> dict:
             pct = float(pct) if pct is not None else None
         except Exception:
             pct = None
-        try:
-            oi = int(oi) if oi is not None else None
-        except Exception:
-            oi = None
-        if oi is None:
-            oi = _page_open_interest(ticker)
-        if oi is None:
-            cftc_row = (cftc.get("markets") or {}).get(CFTC_OI_MAP[symbol]) or {}
-            oi = cftc_row.get("open_interest")
-            oi_source = f"CFTC TFF 주간 전체 시장 OI ({cftc.get('report_date','확인 불가')})"
+        cftc_row = (cftc.get("markets") or {}).get(CFTC_OI_MAP[symbol]) or {}
+        oi = cftc_row.get("open_interest")
+        oi_source = f"CFTC TFF 주간 전체 시장 OI ({cftc.get('report_date','확인 불가')})"
+        oi_comparable = oi is not None
         try:
             volume = int(volume) if volume is not None else 0
         except Exception:
@@ -165,7 +163,9 @@ def yahoo_snapshot() -> dict:
             "change": change,
             "pct_change": pct,
             "open_interest": oi or 0,
-            "oi_source": oi_source,
+            "oi_source": oi_source or "OI 비교 제외 — CFTC 주간 전체시장 OI 확인 불가",
+            "oi_comparable": bool(oi_comparable),
+            "oi_scope": "CFTC_TFF_WHOLE_MARKET_WEEKLY" if oi_comparable else "UNAVAILABLE",
             "volume": volume,
             "market_time": market_time,
             "source": f"https://finance.yahoo.com/quote/{urllib.parse.quote(ticker, safe='')}/",
