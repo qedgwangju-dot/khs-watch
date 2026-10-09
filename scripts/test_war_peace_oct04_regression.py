@@ -951,4 +951,28 @@ unrelated_reuters_short = row(
 )
 check("oct08-no-iran-subject-no-trigger",not mod._trump_iran_midterm_no_strike(unrelated_reuters_short))
 
+
+# 30) Run #424 실전 출력: OBS경인TV가 같은 발언을 신규 별도 기사로 송출했음.
+obs_oct09_reprint = row(
+    '트럼프 "중간선거 전까지 이란 공격 안 할 것" - OBS경인TV',
+    source="OBS경인TV",
+    description="트럼프 대통령이 11월 3일 전까지 이란을 공격하지 않겠다고 밝혔다.",
+    minutes_ago=8,
+)
+check("oct09-obs-pledge-classified", mod._trump_iran_midterm_no_strike(obs_oct09_reprint))
+check("oct09-obs-single-policy-id",mod.item_id(obs_oct09_reprint)==mod.item_id(trump_cnbc))
+score,tags=mod.score_item(obs_oct09_reprint,dt.datetime.now(mod.watch.KST))
+check("oct09-obs-yellow-no-military-escalation",score==100 and mod.final_color(obs_oct09_reprint)=="yellow" and "확전" not in tags)
+
+anonymous_pledge_reprint = row(
+    '트럼프 "중간선거 전까지 이란 공격 안 할 것"',
+    source="불명확한 개인 블로그",
+    description="트럼프의 10월 8일 이란 관련 발언을 재인용",
+    minutes_ago=8,
+)
+check("oct09-untrusted-lexical-reprint-recognized",mod._trump_iran_midterm_no_strike(anonymous_pledge_reprint,trust_required=False))
+check("oct09-untrusted-not-confirmed-policy",not mod._trump_iran_midterm_no_strike(anonymous_pledge_reprint))
+score,tags=mod.score_item(anonymous_pledge_reprint,dt.datetime.now(mod.watch.KST))
+check("oct09-untrusted-not-reemitted-as-war",score==0 and tags==[])
+
 print("WAR_PEACE_OCT04_REGRESSION_OK")
