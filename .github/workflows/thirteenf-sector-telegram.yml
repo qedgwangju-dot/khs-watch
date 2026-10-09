@@ -3,6 +3,13 @@ name: 13F sector rotation Telegram watch
 on:
   schedule:
     - cron: "11,41 * * * *"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/thirteenf-sector-telegram.yml"
+      - "scripts/thirteenf_sector_watch_entry.py"
+      - "scripts/thirteenf_context_watch.py"
+      - "scripts/test_thirteenf_context_watch.py"
   workflow_dispatch:
     inputs:
       force_test:
@@ -47,6 +54,9 @@ jobs:
         run: |
           python -m py_compile scripts/thirteenf_sector_watch.py
           python -m py_compile scripts/thirteenf_sector_watch_entry.py
+          python -m py_compile scripts/thirteenf_context_watch.py
+          python -m py_compile scripts/test_thirteenf_context_watch.py
+          PYTHONPATH=scripts python scripts/test_thirteenf_context_watch.py
 
       - name: Validate exact Telegram bot route without sending
         env:
