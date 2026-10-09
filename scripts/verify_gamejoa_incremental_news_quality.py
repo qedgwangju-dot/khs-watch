@@ -88,6 +88,8 @@ PRIMARY_SUMMARY_CASES = {case['id']: case for case in PRIMARY_SUMMARY_FIXTURE['c
 CONTRACT_BYLINE_CASE = json.loads((ROOT / 'data/gamejoa_contract_byline_fixture_20261006.json').read_text(encoding='utf-8'))
 PACKET_QUALITY_CASES = {case['id']: case for case in json.loads(
     (ROOT / 'data/gamejoa_packet_quality_fixtures_20261006.json').read_text(encoding='utf-8'))['cases']}
+ATTACHMENT_QUALITY_20261010 = json.loads(
+    (ROOT / 'data/gamejoa_attachment_quality_fixtures_20261010.json').read_text(encoding='utf-8'))
 HEADLINE_ANCHOR_FIXTURE = json.loads((ROOT / 'data/gamejoa_headline_anchor_fixtures_20261006.json').read_text(encoding='utf-8'))
 HEADLINE_ANCHOR_CASES = {case['id']: case for case in HEADLINE_ANCHOR_FIXTURE['cases']}
 LIVE_NOW = NOW.replace(hour=19)
@@ -6278,6 +6280,91 @@ class IncrementalNewsTests(unittest.TestCase):
 
 
 class ConcreteLiveSelectionRegressions(unittest.TestCase):
+    def test_oct10_iran_market_updates_keep_distinct_events_and_drop_same_event_reprint(self):
+        now = dt.datetime(2026, 10, 8, 22, 30, tzinfo=dt.timezone(dt.timedelta(hours=9)))
+        operation_title = "美, 이란 대규모 군사작전 검토…브렌트유 105달러 돌파"
+        operation_reprint_title = "미국, 이란 대규모 군사작전 검토…유가 105달러 돌파"
+        diplomacy_title = "트럼프, 이란에 외교적 어조…미 국채 수익률 안정"
+        operation_body = (
+            "미국 정부가 이란을 상대로 대규모 군사작전을 수주 내 재개하는 방안을 검토 중이다. "
+            "보도는 작전이 승인되거나 실행됐다고 밝히지 않았다. 브렌트유는 배럴당 105.12달러로 올랐고 "
+            "나스닥 선물은 0.73% 하락했다."
+        )
+        diplomacy_body = (
+            "트럼프 대통령은 중간선거를 앞두고 이란 문제에 외교적 어조를 취했다. "
+            "미국 국채 수익률은 안정세를 보였다는 후속 보도다."
+        )
+
+        def candidate(title, body, url, publisher):
+            item = alert(title, body, url)
+            item.update(
+                source_title=title,
+                original_news=title,
+                published=now.isoformat(),
+                publisher=publisher,
+                iran_hormuz_escalation=True,
+            )
+            return item
+
+        operation = candidate(
+            operation_title, operation_body, "https://www.reuters.com/world/iran-operation-review", "Reuters",
+        )
+        reprint = candidate(
+            operation_reprint_title, operation_body, "https://www.cnbc.com/iran-operation-review", "CNBC",
+        )
+        diplomacy = candidate(
+            diplomacy_title, diplomacy_body, "https://www.reuters.com/world/iran-diplomacy-yields", "Reuters",
+        )
+        self.assertTrue(materiality.same_headline_event(
+            operation_title, operation_reprint_title, operation_body, operation_body,
+        ))
+        self.assertFalse(materiality.same_headline_event(
+            operation_title, diplomacy_title, operation_body, diplomacy_body,
+        ))
+
+        materiality_result = {
+            "disposition": "keep",
+            "priority": 3,
+            "news_value_rank": 100,
+            "transmission_scope_rank": 2,
+            "focus": 1,
+            "axes": ["earnings", "discount_rate"],
+            "transmission_scope_reason": "verified_market_event",
+        }
+        with (
+            patch.object(radar.telegram, "display_alerts", side_effect=lambda items, _limit: items),
+            patch.object(radar.base, "kst_now", return_value=now),
+            patch.object(radar, "source_market_materiality", return_value=materiality_result),
+            patch.object(radar, "verified_alert_core", side_effect=lambda item, _title: item["telegram_core_fact"]),
+            patch.object(radar, "source_output_aligned", return_value=True),
+            patch.object(radar, "stock_market_channels", return_value=["energy", "rates"]),
+            patch.object(radar, "has_stock_market_link", return_value=True),
+            patch.object(radar, "has_decision_impact", return_value=True),
+            patch.object(radar, "low_impact_live_publication_reason", return_value=""),
+        ):
+            selected = radar.quality_display_alerts([operation, reprint, diplomacy], 7)
+
+        self.assertEqual(len(selected), 2)
+        self.assertEqual(
+            {item["source_title"] for item in selected},
+            {operation_title, diplomacy_title},
+        )
+
+    def test_oct10_packet_corpus_is_exhaustive_and_send_is_not_implied_by_user_summary(self):
+        fixture = ATTACHMENT_QUALITY_20261010
+        stories = fixture["stories"]
+        self.assertEqual(len(stories), fixture["input_count"])
+        self.assertEqual(len({story["url"] for story in stories}), fixture["input_count"])
+        self.assertEqual(
+            {decision: sum(story["decision"] == decision for story in stories)
+             for decision in fixture["decision_counts"]},
+            fixture["decision_counts"],
+        )
+        self.assertIn("not independent verification", fixture["source_boundary"])
+        self.assertEqual(fixture["decision_counts"]["send_candidate"], 5)
+        self.assertEqual(fixture["decision_counts"]["watch_confirmation"], 3)
+        self.assertEqual(fixture["decision_counts"]["exclude_current_evidence"], 2)
+
     def test_weak_live_candidates_do_not_fill_core_slots(self):
         cases = [
             (
