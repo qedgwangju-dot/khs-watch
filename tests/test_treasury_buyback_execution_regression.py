@@ -57,4 +57,4 @@ if __name__ == '__main__':
     test_flat_is_not_mixed()
     test_state_race_merge()
     test_nominal_auction_average()
-    print('buyback nominal filter test passed')
+    print('Treasury buyback regression: 4 checks passed')
