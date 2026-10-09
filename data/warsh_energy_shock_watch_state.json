@@ -27,9 +27,9 @@
     "sloos": "신용 완화",
     "real_pce_3m_ann": 4.130494340236046,
     "real_pce_date": "2026-08-01",
-    "bei5y": 2.37,
-    "bei5y_10d_bp": 4.0000000000000036,
-    "bei_date": "2026-10-08"
+    "bei5y": 2.34,
+    "bei5y_10d_bp": 0.0,
+    "bei_date": "2026-10-09"
   },
   "verdict": "판정 유보 — 유가 충격은 크지만 물가 전이와 수요 파괴의 우열 불명확",
   "oil_rates": {
@@ -50,7 +50,7 @@
     "cboe_url": "https://www.cboe.com/insights/posts/week-of-9-21-2026-oil-rates-correlation-jumps-to-a-35-year-high"
   },
   "policy": {
-    "date": "2026-10-09T16:24:09.974260+00:00",
+    "date": "2026-10-09T21:04:22.247354+00:00",
     "meeting_date": "2026-10-28",
     "hike25_prob": null,
     "extra_bp": null,
@@ -60,5 +60,5 @@
     "fresh": false
   },
   "oil_rates_verdict": "유가·장기금리 연결 경계 — 단순 동행인지 정책 전이인지 확인",
-  "updated_at_utc": "2026-10-09T21:03:40.848005+00:00"
+  "updated_at_utc": "2026-10-09T22:48:06.436881+00:00"
 }
