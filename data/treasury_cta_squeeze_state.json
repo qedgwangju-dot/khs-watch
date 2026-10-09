@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-10-09T12:02:29+09:00",
+  "last_checked_kst": "2026-10-10T02:33:13+09:00",
   "media_id": null,
   "cftc_date": "September 29, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-10-09T12:02:29+09:00",
+    "checked_kst": "2026-10-10T02:33:13+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "September 29, 2026",
@@ -67,14 +67,14 @@
         "display_symbol": "TY/ZN",
         "ticker": "ZN=F",
         "month": "",
-        "last": 104.703125,
-        "settlement": 104.703125,
-        "change": -0.015625,
-        "pct_change": -0.014920919128613708,
+        "last": 104.5625,
+        "settlement": 104.5625,
+        "change": -0.15625,
+        "pct_change": -0.1492091912861815,
         "open_interest": 5676556,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 29, 2026)",
         "volume": 0,
-        "market_time": 1791514341,
+        "market_time": 1791518400,
         "source": "https://finance.yahoo.com/quote/ZN%3DF/",
         "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)",
         "oi_comparable": true,
@@ -85,14 +85,14 @@
         "display_symbol": "US/ZB",
         "ticker": "ZB=F",
         "month": "",
-        "last": 102.96875,
-        "settlement": 102.96875,
-        "change": -0.09375,
-        "pct_change": -0.090964220739842,
+        "last": 103.03125,
+        "settlement": 103.03125,
+        "change": -0.03125,
+        "pct_change": -0.03032140691328067,
         "open_interest": 1879173,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 29, 2026)",
         "volume": 0,
-        "market_time": 1791514333,
+        "market_time": 1791518400,
         "source": "https://finance.yahoo.com/quote/ZB%3DF/",
         "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)",
         "oi_comparable": true,
@@ -103,14 +103,14 @@
         "display_symbol": "WN/UB",
         "ticker": "UB=F",
         "month": "",
-        "last": 104.0,
-        "settlement": 104.0,
-        "change": -0.09375,
-        "pct_change": -0.09006304413089472,
+        "last": 104.15625,
+        "settlement": 104.15625,
+        "change": 0.0625,
+        "pct_change": 0.06004202942060388,
         "open_interest": 2507580,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 29, 2026)",
         "volume": 0,
-        "market_time": 1791514318,
+        "market_time": 1791518400,
         "source": "https://finance.yahoo.com/quote/UB%3DF/",
         "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)",
         "oi_comparable": true,
@@ -132,19 +132,19 @@
     },
     "repo": {
       "SOFR": {
-        "date": "2026-10-07",
-        "rate": 3.88,
-        "volume_bn": 2968
+        "date": "2026-10-08",
+        "rate": 3.87,
+        "volume_bn": 2963
       },
       "BGCR": {
-        "date": "2026-10-07",
-        "rate": 3.86,
-        "volume_bn": 1229
+        "date": "2026-10-08",
+        "rate": 3.85,
+        "volume_bn": 1228
       },
       "TGCR": {
-        "date": "2026-10-07",
-        "rate": 3.86,
-        "volume_bn": 1181
+        "date": "2026-10-08",
+        "rate": 3.85,
+        "volume_bn": 1189
       }
     },
     "format_revision": 12,
@@ -163,19 +163,19 @@
         "scope": "CFTC TFF NASDAQ MINI 전체시장 주간"
       },
       "nq_price": {
-        "price": 31402.25,
-        "previous_close": 31483.25,
-        "pct_change": -0.2572796645835484,
-        "change_points": -81.0,
-        "open_interest": 281137,
-        "oi_change": -2449,
+        "price": 30969.5,
+        "previous_close": 31402.25,
+        "pct_change": -1.3780859651776545,
+        "change_points": -432.75,
+        "open_interest": 279532,
+        "oi_change": -1605,
         "oi_scope": "CME EMINI NASD FUT total product daily",
         "source": "CME Daily Bulletin PG11 official settlement/OI",
         "official": true,
         "basis": "previous trade date settlement + total product daily OI",
-        "trade_date": "2026-10-07",
+        "trade_date": "2026-10-08",
         "month": "DEC26",
-        "url": "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026100823"
+        "url": "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026100913"
       },
       "history_3y": {
         "basis": "CFTC TFF NASDAQ MINI futures-only",
@@ -274,18 +274,20 @@
       "nq_crosscheck_reason": null,
       "nq_price_up": false,
       "nq_price_official": true,
-      "nq_price_fresh": false,
+      "nq_price_fresh": true,
       "nq_price_expected_session": "2026-10-08",
       "nq_weekly_oi_down": true,
-      "nq_daily_oi_change": -2449,
-      "nq_daily_oi_down": false,
-      "nq_oi_down": false,
+      "nq_daily_oi_change": -1605,
+      "nq_daily_oi_down": true,
+      "nq_oi_down": true,
       "nq_short_cover": true,
       "nq_confirmed": false,
       "repo_ok": true,
       "repo_worse": [],
-      "data_fresh": true,
-      "stale_reasons": []
+      "data_fresh": false,
+      "stale_reasons": [
+        "CFTC September 29, 2026 · 11일 경과"
+      ]
     }
   },
   "format_revision": 12,
@@ -302,14 +304,15 @@
     "matched_short_bias": false,
     "z_below_minus_1": false,
     "repo_not_worse": true,
-    "data_fresh": true,
-    "stale_reasons": [],
+    "data_fresh": false,
+    "stale_reasons": [
+      "CFTC September 29, 2026 · 11일 경과"
+    ],
     "composite_confirmed": false,
     "stage": 0,
     "oi_scope_fixes": [
       "ZN OI 2→5,676,556로 동일 범위 교체",
-      "ZB OI 2→1,879,173로 동일 범위 교체",
-      "UB OI 2→2,507,580로 동일 범위 교체"
+      "ZB OI 2→1,879,173로 동일 범위 교체"
     ]
   },
   "last_fomc_eve_report": "2026-09-16",
