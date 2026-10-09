@@ -834,6 +834,18 @@ def main() -> int:
             if sent_persistence:
                 break
 
+    correction_id = "treasury-buyback-correction:2026-10-09:nominal-30y-v1"
+    if not should_alert and not alert_kind and op_date == "2026-10-08" and correction_id not in state.get("seen", []):
+        auction = latest_30y_auction_context(op_date)
+        period = official_yield_persistence("2026-10-01", 5)
+        if auction and period and auction.get("sample_n") == 6 and abs(auction["avg_btc_6"] - 2.41) < 0.02:
+            title, body, detail = build_oct9_correction(auction, period)
+            TITLE.write_text(title + "\n", encoding="utf-8")
+            ALERT.write_text(body.rstrip() + "\n", encoding="utf-8")
+            DETAIL.write_text(json.dumps(detail, ensure_ascii=False) + "\n", encoding="utf-8")
+            next_state["pending_items"] = [correction_id]
+            alert_kind = "correction"
+
     NEXT_STATE.write_text(
         json.dumps(next_state, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
