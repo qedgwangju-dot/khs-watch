@@ -421,7 +421,7 @@ def auction_lines(op_date: str) -> list[str]:
         and dealer is not None
         and avg_dealer is not None
     ):
-        if btc >= avg_btc and indirect >= avg_indirect and dealer <= avg_dealer:
+        if btc >= avg_btc and indirect >= avg_indirect - 1.0 and dealer <= avg_dealer:
             verdict = "🟢 최종수요 강함"
         elif btc < avg_btc and indirect < avg_indirect and dealer > avg_dealer:
             verdict = "🔴 최종수요 약함"
