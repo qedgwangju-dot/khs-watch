@@ -151,7 +151,16 @@ def cme_monthly_rates_ftp():
             return d.isoformat(), months
         except Exception as exc:
             errors.append(f"{d}: {type(exc).__name__}: {exc}")
-    raise RuntimeError("CME 공식 FTP 결제파일 실패: " + " | ".join(errors[-4:]))
+            # 접속 차단·시간 초과는 날짜 문제가 아니다. 과도한 반복 네트워크 조회 방지.
+            from urllib.error import HTTPError, URLError
+            blocked = isinstance(exc, HTTPError) and exc.code in (401,403,429,500,502,503,504)
+            transport = isinstance(exc,(TimeoutError,ConnectionError)) or (isinstance(exc,URLError) and not isinstance(exc,HTTPError))
+            if blocked or transport:
+                break
+            # 서버가 응답했지만 헤더·계약번호가 맞지 않으면 자료가 다른 시장일 수 있다.
+            if isinstance(exc,RuntimeError) and ('헤더' in str(exc) or '유효 ZQ' in str(exc)):
+                break
+    raise RuntimeError("CME 공식 공개 CSV 조회/검증 실패: " + " | ".join(errors[-4:]))
 
 
 def cme_monthly_rates():
