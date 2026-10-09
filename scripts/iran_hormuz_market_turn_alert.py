@@ -1726,9 +1726,12 @@ def event_id(kind: str, rows: list[NewsItem]) -> str:
 
     if kind == "china_fuel_export_policy":
         stage = _china_fuel_export_stage(rows)
-        q = _china_resumption_volume(rows)
-        volume = f"{q:.1f}" if stage == "planned_resume" and q is not None else "na"
-        basis = f"{kind}|2026-10|{stage}|quantity_{volume}"
+        if stage == "planned_resume":
+            # Reported permit-volume revisions must not create duplicate notices
+            # about the same proposed resumption without physical shipment evidence.
+            basis = f"{kind}|2026-10|{stage}"
+        else:
+            basis = f"{kind}|2026-10|{stage}|quantity_na"
         return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
 
     if kind == "hormuz_7day_diplomacy":
@@ -1927,6 +1930,23 @@ def event_recently_alerted(
         previous = _parse_kst_timestamp(alerted.get(current_event_id))
         if previous is not None:
             return (current.astimezone(KST) - previous).total_seconds() < hours * 3600
+
+        # One-time continuity of the already-delivered 2026-10 Reuters plan alert.
+        # Earlier builds accidentally keyed the same plan to whether the RSS
+        # headline included 3.7m tonnes. Neither must cause re-delivery.
+        china_plan = "china_fuel_export_policy|2026-10|planned_resume"
+        stable_plan_id = "china_fuel_export_policy:" + hashlib.sha256(
+            china_plan.encode("utf-8")
+        ).hexdigest()[:16]
+        if current_event_id == stable_plan_id:
+            for original_volume in ("3.7", "na"):
+                old_basis = f"{china_plan}|quantity_{original_volume}"
+                old_event_id = "china_fuel_export_policy:" + hashlib.sha256(
+                    old_basis.encode("utf-8")
+                ).hexdigest()[:16]
+                previously_sent = _parse_kst_timestamp(alerted.get(old_event_id))
+                if previously_sent and (current.astimezone(KST) - previously_sent).total_seconds() < hours * 3600:
+                    return True
 
     if state.get("last_event_id") == current_event_id:
         previous = _parse_kst_timestamp(state.get("last_alert_at_kst"))

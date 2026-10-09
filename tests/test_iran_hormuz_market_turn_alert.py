@@ -694,6 +694,23 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         self.assertEqual(MODULE._china_fuel_export_stage("China resumed exports of refined fuel"),"resumption_reported")
         self.assertEqual(MODULE._china_fuel_export_stage("China suspended fuel exports"),"suspended")
 
+    def test_china_planned_resume_key_stable_after_source_volume_omitted(self):
+        now=dt.datetime(2026,10,9,13,tzinfo=dt.timezone.utc)
+        row_with=MODULE.NewsItem(
+          "China to resume October fuel exports, four trade sources say; approved 3.7 million metric tons",
+          "Reuters",MODULE.CHINA_REUTERS_20261009_URL,now.isoformat(),now.timestamp(),"china_fuel_export_policy")
+        row_without=MODULE.NewsItem(
+          "China to resume October fuel exports, four trade sources say",
+          "Reuters",MODULE.CHINA_REUTERS_20261009_URL,now.isoformat(),now.timestamp(),"china_fuel_export_policy")
+        a=MODULE.event_id("china_fuel_export_policy",[row_with])
+        b=MODULE.event_id("china_fuel_export_policy",[row_without])
+        self.assertEqual(a,b)
+        old_basis="china_fuel_export_policy|2026-10|planned_resume|quantity_3.7"
+        import hashlib
+        legacy_id="china_fuel_export_policy:"+hashlib.sha256(old_basis.encode("utf-8")).hexdigest()[:16]
+        state={"alerted_events":{legacy_id:now.astimezone(MODULE.KST).isoformat()}}
+        self.assertTrue(MODULE.event_recently_alerted(state,a,now))
+
     def test_china_new_reopening_does_not_combine_old_suspension(self):
         now=dt.datetime(2026,10,9,13,tzinfo=dt.timezone.utc)
         rows=[
