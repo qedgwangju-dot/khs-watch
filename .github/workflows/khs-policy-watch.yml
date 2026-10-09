@@ -13,6 +13,8 @@ on:
       - "scripts/khs_policy_alert_router.py"
       - "scripts/khs_telegram_delivery_guard.py"
       - "scripts/khs_trusted_policy_news_watch.py"
+      - "scripts/khs_source_fetch.py"
+      - "scripts/verify_khs_source_fetch_contract.py"
       - "scripts/khs_policy_seen_finalize.py"
       - "scripts/khs_policy_telegram_formatter.py"
       - "scripts/khs_policy_readability_patch.py"
@@ -76,6 +78,8 @@ jobs:
           python -m py_compile scripts/khs_policy_alert_guardrails.py
           python -m py_compile scripts/khs_trusted_policy_news_watch.py
           python -m py_compile scripts/khs_policy_seen_finalize.py
+          python -m py_compile scripts/khs_source_fetch.py
+          python scripts/verify_khs_source_fetch_contract.py
           PYTHONPATH=. python - <<'PY'
           import scripts.khs_policy_watch as watch
           from scripts.khs_policy_telegram_formatter import presidential_action_timeline_lines
@@ -179,6 +183,14 @@ jobs:
           PY
 
       # Maintenance pushes validate only; they do not enable, resume, or dispatch the live watch.
+
+      - name: Dispatch one Treasury OISP live verification
+        if: contains(github.event.head_commit.message, 'Verify Treasury official bulletin recovery')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow run khs-policy-watch.yml --ref main -f telegram_test=false -f telegram_dry_run=false
+          echo "treasury_oisp_live_dispatch=requested"
 
   watch:
     if: github.event_name != 'push'
