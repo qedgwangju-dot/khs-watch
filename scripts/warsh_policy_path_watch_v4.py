@@ -86,7 +86,18 @@ def cme_monthly_rates():
         try:
             data = get_json(url, CME_SETTLEMENTS_PAGE, retries=1, timeout=8)
         except Exception as exc:
-            errors.append(f"{d}: {exc}")
+            errors.append(f"{d}: {type(exc).__name__}: {exc}")
+            # 서버 접속 실패나 이용 제한은 다른 날짜를 대입해도 해결되지 않는다.
+            # 여러 날짜를 연속 호출하여 모든 실행이 시간 초과되는 것을 막는다.
+            from urllib.error import HTTPError, URLError
+            gated = isinstance(exc, HTTPError) and exc.code in (401, 403, 429, 500, 502, 503, 504)
+            transport = isinstance(exc, (TimeoutError, ConnectionError)) or (isinstance(exc, URLError) and not isinstance(exc, HTTPError))
+            if gated or transport:
+                raise RuntimeError(
+                    "CME 공식 공개 결제값 접속 장애(시간 초과 또는 접근 제한 가능): "
+                    + f"{d}: {type(exc).__name__}: {exc} — 최신 시장경로 판정 보류"
+                ) from exc
+            # 결제값이 아직 없는 당일(404 등)은 직전 거래일을 확인할 수 있다.
             continue
 
         rows = data.get("settlements") or data.get("payload") or []
