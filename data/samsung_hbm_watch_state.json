@@ -310,7 +310,7 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-10",
-  "updated_at_kst": "2026-10-09T11:21:43+09:00",
+  "updated_at_kst": "2026-10-09T18:25:17+09:00",
   "last_event_count": 0,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
@@ -323,7 +323,7 @@
   "official_api_key_configured": true,
   "official_api_used": true,
   "last_successful_official_month": "202608",
-  "last_successful_official_at_kst": "2026-10-09T11:21:43+09:00",
+  "last_successful_official_at_kst": "2026-10-09T18:25:17+09:00",
   "malaysia_official_month": "202608",
   "malaysia_hsk10_amount_usd": null,
   "malaysia_public_available": false,
@@ -1558,10 +1558,10 @@
       "ddr5_chip_quote|dramexchange|16|4800/5600": {
         "key": "ddr5_chip_quote|dramexchange|16|4800/5600",
         "axis": "ddr5_chip_quote",
-        "value": 58.667,
+        "value": 58.9,
         "unit": "USD/chip",
         "period": "2026-10",
-        "as_of": "2026-10-08",
+        "as_of": "2026-10-09",
         "evidence": "research",
         "source_url": "https://www.dramexchange.com/",
         "source_title": "DDR5 16Gb (2Gx8) 4800/5600 공개 현물가격",
@@ -2306,7 +2306,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-10-09T11:21:43+09:00",
+      "last_checked_at_kst": "2026-10-09T18:25:17+09:00",
       "gaps": [
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
@@ -2380,7 +2380,7 @@
     "payload_hash": "01ed6f362e09684184a695c5965c43de3d6218c6509bcef52ae1149d6d9c0402"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-09T11:22:43+09:00",
+    "checked_at_kst": "2026-10-09T18:26:28+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
@@ -2471,12 +2471,12 @@
     "version": 3,
     "status": "waiting_publication",
     "target_month": "202609",
-    "last_checked_at_kst": "2026-10-09T11:21:43+09:00",
+    "last_checked_at_kst": "2026-10-09T18:25:17+09:00",
     "selected_official_month": "202608"
   },
   "official_source_health_version": 3,
   "official_poll_interval_hours": 3,
-  "last_official_poll_attempt_kst": "2026-10-09T11:21:43+09:00",
+  "last_official_poll_attempt_kst": "2026-10-09T18:25:17+09:00",
   "official_availability_notes": [
     "공공데이터포털 전국 API 202609 HSK 8542323000 데이터 없음; fallback=전국 202609 HSK 8542323000 미검출: count=0 items=0",
     "공공데이터포털 시도 API 44 202609 HSK 8542323000 데이터 없음",
