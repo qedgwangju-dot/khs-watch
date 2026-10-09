@@ -19,6 +19,25 @@ import tempfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+# Catch accidental deletion of existing watcher lanes before importing them.
+# This protects all active categories during targeted article-source edits.
+_watcher_source_path = Path(__file__).with_name("physical_ai_watch_airan_guard.py")
+_watcher_source = _watcher_source_path.read_text(encoding="utf-8")
+for _required in (
+    "DONGKUK_NPS_RECOVERY =",
+    "DKT_HUMANOID_RECOVERY =",
+    "TESLA_TOUCH_PATENT_RECOVERY =",
+    "def _dongkuk_report_recovery(",
+    "def _dkt_humanoid_recovery(",
+    "def _tesla_touch_patent_recovery(",
+    "def query_news(",
+    "base.query_news = query_news",
+    "base.topic_group = topic_group",
+):
+    assert _required in _watcher_source, f"Existing Physical-AI lane missing: {_required}"
+compile(_watcher_source, str(_watcher_source_path), "exec")
+
 import physical_ai_watch_airan_guard as watcher
 import physical_ai_watch_figure_entry as figure_lane
 
