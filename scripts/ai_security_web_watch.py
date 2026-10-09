@@ -754,7 +754,8 @@ def translate_alert_text(text: str) -> str:
 
     parts = re.split(
         r"(?i)(\b(?:Anthropic|OpenAI|NVIDIA|Microsoft|Google|Meta|GitHub|Claude|"
-        r"OpenShell|Sentry|BlueField-4)\b)",
+        r"OpenShell|Sentry|BlueField-4|CVE-\d{4}-\d+|"
+        r"GLM[- ]\d+(?:\.\d+)*|GPT-\d+(?:\.\d+)*[ ]+[A-Za-z0-9.]+)\b)",
         value,
     )
     canonical = {term.lower(): term for term in ALERT_IDENTIFIER_TERMS}
@@ -765,6 +766,9 @@ def translate_alert_text(text: str) -> str:
             continue
         if part.lower() in canonical:
             assembled.append(canonical[part.lower()])
+            continue
+        if re.fullmatch(r"(?:CVE-|GLM[- ]|GPT-)[A-Za-z0-9. -]+", part, re.I):
+            assembled.append(part)
             continue
         if not LATIN_WORD_RE.search(part):
             assembled.append(part)
