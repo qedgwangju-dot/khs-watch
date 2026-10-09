@@ -77,8 +77,15 @@ jobs:
         run: |
           rm -f out/us_positioning_options_sox_alert.html out/us_positioning_options_sox_status.md out/us_positioning_options_sox_pending_state.json
           python -m py_compile scripts/us_positioning_options_sox_watch.py
-          python scripts/us_positioning_options_sox_watch.py
-          cat out/us_positioning_options_sox_status.md >> "$GITHUB_STEP_SUMMARY"
+          if timeout 180s python scripts/us_positioning_options_sox_watch.py; then
+            if [ -f out/us_positioning_options_sox_status.md ]; then
+              cat out/us_positioning_options_sox_status.md >> "$GITHUB_STEP_SUMMARY"
+            fi
+          else
+            echo "::warning::Options/SOX lane unavailable or timed out. US fund-flow alert remains independent."
+            echo "Options/SOX delayed; only fully checked fund-flow data may be sent." >> "$GITHUB_STEP_SUMMARY"
+            rm -f out/us_positioning_options_sox_alert.html out/us_positioning_options_sox_pending_state.json
+          fi
 
       - name: Send Telegram updates
         if: hashFiles('out/us_fund_flow_alert.html') != '' || hashFiles('out/us_positioning_options_sox_alert.html') != ''
