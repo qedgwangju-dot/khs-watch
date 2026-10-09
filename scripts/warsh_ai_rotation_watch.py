@@ -70,7 +70,18 @@ def parse_independent_history(raw):
 def independent_series(symbol):
     group = 'etf' if symbol in {'SOXX', 'IGV'} else 'stocks'
     url = f'https://stockanalysis.com/{group}/{symbol.lower()}/history/'
-    series = parse_independent_history(fetch(url))
+    raw = fetch(url)
+    # A vendor may expose today's intraday bar in its "history" table.
+    # Do not call it an independently confirmed settlement when its own header
+    # says the market is still open.
+    headline = html.unescape(re.sub(r'<[^>]+>', ' ', raw))
+    headline = re.sub(r'\s+', ' ', headline)
+    before_table = headline.split('Historical Data', 1)[0]
+    series = parse_independent_history(raw)
+    latest_date = max(series)
+    ny_now = datetime.now(NY)
+    if latest_date == ny_now.date().isoformat() and 'Market open' in before_table:
+        raise RuntimeError(f'{symbol} 외부 제공처는 종가 미확정 상태(Market open)')
     return series, url
 
 def yahoo_series(symbol, now=None):
@@ -119,6 +130,7 @@ def compare_two_sources(name, symbol, official, yahoo, sample_dates):
         'yahoo_close': float(yahoo[sample_dates[-1]]),
         'max_gap_bp': max(differences.values()),
         'gap_by_date_bp': differences,
+        'checked_close_prices': {d: round(float(official[d]), 4) for d in sample_dates},
     }
 
 def build_snapshot(independent, yahoo, now=None):
