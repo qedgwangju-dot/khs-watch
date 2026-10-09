@@ -243,7 +243,7 @@ def _cftc_snapshot_live() -> dict:
         lev_long = int(fields[6])
         lev_short = int(fields[7])
         lev_spread = int(fields[8])
-        result["markets"][key] = {
+        entry = {
             "open_interest": oi,
             "leveraged_long": lev_long,
             "leveraged_short": lev_short,
@@ -251,6 +251,25 @@ def _cftc_snapshot_live() -> dict:
             "leveraged_net": lev_long - lev_short,
             "short_share_oi_pct": lev_short / oi * 100 if oi else None,
         }
+        # Read the CFTC weekly change from the same fixed-column market block.
+        # Do not infer a week-on-week change from 15-minute polling snapshots.
+        section = text[m.end():m.end() + 1800]
+        delta = re.search(
+            r"Changes from:\\s*([A-Za-z]+\\s+\\d{1,2},\\s+20\\d{2})"
+            r"\\s+Total Change is:[^\\n]*\\n\\s*([^\\n]+)",
+            section,
+            re.I,
+        )
+        if delta:
+            try:
+                changed = _tff_fields(delta.group(2))
+                if changed[6] is not None and changed[7] is not None:
+                    entry["leveraged_net_wow"] = int(changed[6]) - int(changed[7])
+                    entry["leveraged_short_wow"] = int(changed[7])
+                    entry["previous_period"] = delta.group(1)
+            except (RuntimeError, ValueError, TypeError):
+                pass
+        result["markets"][key] = entry
     if "10Y" not in result["markets"]:
         raise RuntimeError("CFTC TFF 10Y Leveraged Funds 파싱 실패")
     return result
