@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "initial_alert_sent": false,
+  "baseline_at_kst": "2026-10-09T15:05:00+09:00",
+  "seen": [],
+  "seen_fact_keys": [
+    "iphone18_pro_pro_max|2026-10|component_orders|original_requested_plan|cut_15_to_20|nikkei_2026_10_09"
+  ],
+  "metrics": {
+    "reported_baseline": {
+      "reported_at": "2026-10-09",
+      "products": [
+        "iPhone 18 Pro",
+        "iPhone 18 Pro Max"
+      ],
+      "period": "2026-10",
+      "measure": "component_purchase_orders",
+      "comparison": "originally requested October supplier volumes",
+      "reported_cut_low_pct": 15,
+      "reported_cut_high_pct": 20,
+      "reuters_confirmed_floor": 15,
+      "reuters_independent_confirmation": false,
+      "source_root": "nikkei_2026_10_09_supplier_interviews",
+      "certainty": "니케이 공급망 취재 보도·Reuters 독립 확인 실패·Apple 공식 미확인",
+      "named_supplier_orders_confirmed": [],
+      "actual_finished_device_sales_cut_confirmed": false,
+      "idc_2026_worldwide_shipments_yoy_forecast_pct": -16.7,
+      "idc_2026_worldwide_asp_yoy_forecast_pct": 27.6,
+      "idc_publication_date": "2026-08-26",
+      "apple_us_pro_price_usd": 1199,
+      "apple_us_pro_max_price_usd": 1299,
+      "china_week38_sales_yoy_pct_user_provided": 12,
+      "china_week38_direct_tracker_publicly_verified": false,
+      "ubs_delivery_lead_time_publicly_verified": false
+    }
+  },
+  "last_scan_items": 0,
+  "new_signal_count": 0,
+  "last_alert": null
+}
