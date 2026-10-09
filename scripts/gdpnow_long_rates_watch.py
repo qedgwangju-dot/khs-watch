@@ -127,7 +127,7 @@ def fetch_contrib_rows() -> list[GdpRow]:
     for url in (GDP_XLSX, GDP_XLSX_MIRROR):
         try:
             candidate = http_get(url, timeout=22)
-            if not candidate.startswith(b"PK\\x03\\x04"):
+            if not candidate.startswith(bytes.fromhex("504b0304")):
                 raise ValueError("non-XLSX response (HTML/redirect): " + repr(candidate[:30]))
             raw = candidate
             break
