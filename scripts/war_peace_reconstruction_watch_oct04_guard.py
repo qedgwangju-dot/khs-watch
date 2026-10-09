@@ -131,6 +131,7 @@ CHINA_FUEL_MARKS = {
 CHINA_FUEL_QUERIES = [
     '(China OR Chinese OR 중국 OR 中国) ("refined fuel exports" OR "fuel exports" OR "refined product exports" OR "成品油出口" OR "정제연료 수출" OR "석유제품 수출") (resume OR restart OR approval OR quota OR suspend OR shipments OR 재개 OR 승인 OR 중단 OR 配额) when:3h',
     'site:reuters.com/business/energy China ("fuel exports" OR "refined products") when:1d',
+    'site:customs.gov.cn (成品油出口 OR 汽油出口 OR 柴油出口 OR 航煤出口) (数据 OR 统计 OR 月度) when:2d',
 ]
 for _china_query in reversed(CHINA_FUEL_QUERIES):
     if _china_query not in watch.QUERIES:
@@ -179,7 +180,7 @@ def _china_fuel_stage(row):
     """제목 중심 탐지로 본문 속 이란전쟁 언급이 공급 기사를 확전으로 오염시키지 않게 한다."""
     title = str(row.get("title_original") or row.get("title") or "").lower()
     summary = title + " " + str(row.get("description", "")).lower()
-    china = any(x in summary for x in ("china", "chinese", "beijing", "중국", "中国", "北京"))
+    china = _china_fuel_official(row) or any(x in summary for x in ("china", "chinese", "beijing", "중국", "中国", "北京"))
     products = any(x in summary for x in (
         "refined fuel", "refined product", "fuel export", "fuel shipment",
         "gasoline exports", "diesel exports", "jet fuel exports",
@@ -210,6 +211,7 @@ def _china_fuel_stage(row):
         "customs data show", "customs data shows", "actual exports",
         "first shipment", "首批出口", "已出口", "海关数据显示",
         "실제 선적", "선적 시작", "수출 실적", "통관 확인",
+        "出口数据", "海关统计", "海关发布", "수출 통계", "customs figures", "export data show",
     ))
     if shipped:
         if _china_fuel_official(row) and any(x in summary for x in (
