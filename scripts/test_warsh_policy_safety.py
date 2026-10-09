@@ -290,6 +290,23 @@ class WarshSafetyTests(unittest.TestCase):
         self.assertIsNone(out["sep"])
         self.assertNotIn("이중긴축", out["tightening_mix"])
 
+    def test_legacy_alerted_outage_without_timestamp_does_not_duplicate_immediately(self):
+        legacy = {
+            "source_error_streak": 20,
+            "source_health_alerted": True,
+        }
+        saved = []
+        with patch.object(path_v3, "validated_snapshot", side_effect=TimeoutError("CME")), \
+             patch.object(path_v3.base, "load_state", return_value=legacy), \
+             patch.object(path_v3.base, "save_state", side_effect=lambda s: saved.append(s)), \
+             patch.object(path_v3.base, "send") as send, \
+             patch.object(path_v3.base, "FORCE", False):
+            path_v3.main()
+        send.assert_not_called()
+        self.assertTrue(saved[0].get("last_health_alert_at_utc"))
+        self.assertEqual(saved[0].get("meetings"), [])
+
+
     def test_source_failure_warning_is_throttled_72_hours(self):
         now = datetime.now(timezone.utc)
         initial = {
