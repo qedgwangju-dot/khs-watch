@@ -1117,6 +1117,14 @@ china_finjuice = row(
 )
 low_score, low_tags = mod.score_item(china_finjuice, china_now)
 check("china-fuel-unverified-social-not-official", low_score == 0 and low_tags == [])
+china_walter = row(
+    "China to resume October refined fuel exports after holiday halt",
+    source="Walter Bloomberg",
+    link="https://t.me/WalterBloomberg/12345",
+)
+walter_score, walter_tags = mod.score_item(china_walter, china_now)
+check("china-fuel-walter-not-bloomberg-publisher", walter_score == 0 and walter_tags == [])
+
 
 china_crude = row(
     "China to resume October crude oil exports",
