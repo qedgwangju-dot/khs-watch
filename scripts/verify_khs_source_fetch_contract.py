@@ -91,6 +91,9 @@ def main() -> int:
             original_url, "test-agent", timeout=1, attempts=1
         )
         assert challenge_recovery == official_html and challenge_error is None
+        source_fetch._fetch_proxy_direct_race = lambda *_args, **_kwargs: (
+            None, "simulated 403 and timeout"
+        )
         unrelated, other_error = source_fetch.fetch_text(
             "https://home.treasury.gov/news/press-releases/sb9999",
             "test-agent", timeout=1, attempts=1
