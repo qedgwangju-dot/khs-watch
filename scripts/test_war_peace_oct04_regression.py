@@ -424,7 +424,11 @@ s, tags = mod.score_item(iran_unknown, dt.datetime.now(mod.watch.KST))
 check("oct07-iran-south-unattributed-detected", mod._iran_south_unattributed_explosions(iran_unknown))
 check("oct07-iran-south-unattributed-yellow", mod.final_color(iran_unknown) == "yellow" and "확전" not in tags and "원인미확정" in tags)
 check("oct07-iran-south-unattributed-topic", mod.topic_label(iran_unknown) == "이란 남부 · 폭발 원인 미확정")
-check("oct07-iran-south-unattributed-id", mod.item_id(iran_unknown) == "a8ced052d8f58315ce10")
+# 사건 ID는 게시일을 포함하므로 현재 시각 기반 모의 기사에서 10월 7일 해시를 고정하지 않는다.
+import hashlib
+iran_day = mod._published_day(iran_unknown)
+iran_expected_id = hashlib.sha256(("event|iran-south|unattributed-explosions|" + iran_day).encode()).hexdigest()[:20]
+check("oct07-iran-south-unattributed-id", mod.item_id(iran_unknown) == iran_expected_id)
 
 iran_projectile = row(
     "Hostile projectiles hit Sirik after explosions in southern Iran",
