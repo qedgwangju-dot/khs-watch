@@ -1,6 +1,6 @@
 {
   "counts": {
-    "계획확정": 792,
+    "계획확정": 796,
     "공사착수": 256,
     "사업승인": 375,
     "사업완료": 9
@@ -8,7 +8,7 @@
   "coverage": {
     "계획확정": {
       "complete": true,
-      "expected": 792,
+      "expected": 796,
       "parsed": 435,
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/plantoapprove/boardList.do"
     },
@@ -33,7 +33,7 @@
   },
   "full_projects_initialized": true,
   "initialized": true,
-  "last_full_crawl_at": "2026-10-09T09:38:49.305089+00:00",
+  "last_full_crawl_at": "2026-10-09T16:35:00.789144+00:00",
   "projects": {
     "150kvhvdc완도-동제주#3hvdc변환설비건설사업": {
       "equipment": "변환",
@@ -9243,5 +9243,5 @@
       "url": "https://www.kepco.co.kr/home/disclosure/transdisclosure/transstatus/starttocomplete/boardList.do?page=4"
     }
   },
-  "updated_at": "2026-10-09T09:38:49.305806+00:00"
+  "updated_at": "2026-10-09T16:35:00.790272+00:00"
 }
