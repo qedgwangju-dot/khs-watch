@@ -133,10 +133,18 @@ def parse_cme_ftp_csv(raw_text, ref_date):
 def cme_monthly_rates_ftp():
     errors = []
     today = ny_today()
+    tried = 0
+    # CME's current-day archive can appear later than the daily settlement.
+    # Try at most the latest three business dates with short timeouts so an
+    # unpublished/temporarily slow file does not hide a still-fresh prior
+    # official settlement or stall the whole hourly workflow.
     for offset in range(8):
         d = today - timedelta(days=offset)
         if d.weekday() >= 5:
             continue
+        tried += 1
+        if tried > 3:
+            break
         folder = f"{d.month:02d}-{calendar.month_abbr[d.month]}"
         url = f"{CME_FTP_ROOT}/{d.year}/{folder}/IR.{d.strftime('%Y%m%d')}.csv"
         try:
@@ -145,22 +153,27 @@ def cme_monthly_rates_ftp():
                 "Accept": "text/csv,text/plain,*/*",
                 "Referer": CME_SETTLEMENTS_PAGE,
             })
-            with urllib.request.urlopen(req, timeout=12) as r:
+            with urllib.request.urlopen(req, timeout=6) as r:
                 raw = r.read().decode("utf-8", "replace")
             months = parse_cme_ftp_csv(raw, d)
             return d.isoformat(), months
         except Exception as exc:
             errors.append(f"{d}: {type(exc).__name__}: {exc}")
-            # 접속 차단·시간 초과는 날짜 문제가 아니다. 과도한 반복 네트워크 조회 방지.
             from urllib.error import HTTPError, URLError
-            blocked = isinstance(exc, HTTPError) and exc.code in (401,403,429,500,502,503,504)
-            transport = isinstance(exc,(TimeoutError,ConnectionError)) or (isinstance(exc,URLError) and not isinstance(exc,HTTPError))
-            if blocked or transport:
+            # A missing or temporarily unreachable newest file may coexist with
+            # a valid prior official settlement.  Continue, but only within the
+            # bounded three-business-day window above.
+            if isinstance(exc, RuntimeError) and ('헤더' in str(exc) or '유효 ZQ' in str(exc)):
+                # A file was returned but its schema/product is not the expected
+                # ZQ settlement dataset.  Fail closed rather than silently use
+                # an older schema that may no longer represent the same data.
                 break
-            # 서버가 응답했지만 헤더·계약번호가 맞지 않으면 자료가 다른 시장일 수 있다.
-            if isinstance(exc,RuntimeError) and ('헤더' in str(exc) or '유효 ZQ' in str(exc)):
+            if isinstance(exc, HTTPError) and exc.code not in (404, 408, 429, 500, 502, 503, 504):
                 break
-    raise RuntimeError("CME 공식 공개 CSV 조회/검증 실패: " + " | ".join(errors[-4:]))
+            if not isinstance(exc, (HTTPError, URLError, TimeoutError, ConnectionError)):
+                break
+            continue
+    raise RuntimeError("CME 공식 공개 CSV 조회/검증 실패: " + " | ".join(errors[-6:]))
 
 
 def cme_monthly_rates():
