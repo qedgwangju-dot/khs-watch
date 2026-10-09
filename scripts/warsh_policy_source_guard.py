@@ -7,6 +7,7 @@
 import math
 from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
+from urllib.parse import urlparse
 
 SUCCESS_STATUS = "시장원천 최신성·연준 공식범위 교차검증 통과"
 
@@ -18,6 +19,12 @@ def market_state_is_fresh(state, now=None):
         return False
     trade_date = state.get("official_settlement_date")
     validated_at = state.get("last_validated_at_utc")
+    source = str(state.get("source") or "")
+    host = (urlparse(source).hostname or "").lower()
+    # A fresh market path must come from CME itself.  Historical mirrors and
+    # cached third-party pages are never allowed to regain "current" status.
+    if host not in {"cmegroup.com", "www.cmegroup.com"}:
+        return False
     if not trade_date or not validated_at:
         return False
     utc_now = now or datetime.now(timezone.utc)
@@ -38,7 +45,16 @@ def market_state_is_fresh(state, now=None):
             and math.isfinite(float(row.get("post_rate")))
             and 0 <= float(row.get("post_rate")) <= 20
         ]
-        return bool(valid)
+        if not valid:
+            return False
+        basis = str(state.get("market_data_basis") or "")
+        # CME monthly settlement prices encode an expected average rate, not
+        # the full FedWatch outcome distribution.  If a settlement-only state
+        # contains a numerical meeting probability, reject it rather than mix
+        # probability (%) with an implied rate/bp calculation.
+        if "결제값" in basis and any(row.get("hike25_prob") is not None for row in valid):
+            return False
+        return True
     except (TypeError, ValueError, OverflowError, AttributeError):
         return False
 
