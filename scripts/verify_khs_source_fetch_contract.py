@@ -119,6 +119,8 @@ def main() -> int:
     # Render-to-Telegram contract: the recovered OISP case must survive the
     # shared formatter and one-link validator, not merely pass source parsing.
     import datetime as dt
+    import khs_policy_runtime_patch as runtime_patch
+    runtime_patch.main()  # Same official parser patch run by the watch job.
     import khs_trusted_policy_news_watch as trusted
     from khs_policy_telegram_formatter import (
         format_policy_message, validate_final_policy_message,
