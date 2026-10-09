@@ -445,6 +445,8 @@ def _trump_iran_midterm_no_strike(row):
         "reuters", "associated press", "ap news", "axios", "cnbc",
         "bloomberg", "wall street journal", "wsj", "financial times",
         "truthsocial.com", "whitehouse.gov", "연합뉴스", "yonhap",
+        "경향신문", "아이뉴스24", "kbs", "sbs", "mbc", "ytn", "jtbc",
+        "한국경제", "매일경제", "서울경제", "조선일보", "중앙일보", "동아일보",
     ))
     scope = title + " " + description
     trump = any(x in scope for x in ("trump", "트럼프"))
