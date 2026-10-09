@@ -558,6 +558,8 @@ def material(item: dict) -> bool:
             "credential", "token", "prompt injection", "jailbreak",
             "guardrail", "external", "internet", "dns", "exploit",
             "containment", "threat intelligence",
+            "vulnerability", "patch", "incident", "breach", "mitigation",
+            "security flaw", "data leak", "authentication",
         )
         return any(term in low for term in direct_security_terms)
 
