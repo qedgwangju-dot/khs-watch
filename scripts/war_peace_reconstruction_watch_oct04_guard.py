@@ -169,11 +169,22 @@ def _china_fuel_official(row):
 
 
 def _china_fuel_trusted(row):
-    src = " ".join((str(row.get("source", "")), str(row.get("link", "")), str(row.get("resolved_url", "")))).lower()
-    return _china_fuel_official(row) or any(x in src for x in (
-        "reuters", "apnews", "associated press", "financial times", "bloomberg",
-        "연합뉴스", "yna.co.kr", "新华社", "xinhua", "중국증권보",
-    ))
+    # Walter Bloomberg 등의 소셜 속보 재게시를 Bloomberg 통신 자체로 오인하지 않는다.
+    source = str(row.get("source", "")).strip().lower()
+    raw_url = str(row.get("resolved_url") or row.get("link") or "")
+    try:
+        host = (urllib.parse.urlparse(raw_url).hostname or "").lower()
+    except Exception:
+        host = ""
+    if any(x in source for x in ("walter bloomberg", "walterbloomberg", "financialjuice", "financial juice")):
+        return False
+    if _china_fuel_official(row):
+        return True
+    publishers = {"reuters", "ap", "ap news", "associated press", "bloomberg", "bloomberg news",
+                  "financial times", "연합뉴스", "新华社", "신화통신", "xinhua", "중국증권보"}
+    domains = ("reuters.com", "apnews.com", "bloomberg.com", "ft.com",
+               "yna.co.kr", "xinhuanet.com", "news.cn")
+    return source in publishers or any(host == d or host.endswith("." + d) for d in domains)
 
 
 def _china_fuel_stage(row):
