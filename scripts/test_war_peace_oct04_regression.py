@@ -935,4 +935,20 @@ kuwait_new_attack = row(
 )
 check("oct09-kuwait-fresh-attack-not-suppressed", not mod._historical_kuwait_base_footage(kuwait_new_attack))
 
+
+# 29) Reuters 표준 제목은 제목에 'Iran'을 쓰지 않아도 본문이 이란을 명시한다.
+reuters_short_headline = row(
+    "Trump says he will not attack before US elections in November",
+    source="Reuters",
+    description="The United States is holding productive discussions with Iran while maintaining a blockade of Iranian ports.",
+)
+check("oct08-reuters-implicit-iran-detected",mod._trump_iran_midterm_no_strike(reuters_short_headline))
+check("oct08-reuters-implicit-iran-same-id",mod.item_id(reuters_short_headline)==mod.item_id(trump_cnbc))
+unrelated_reuters_short = row(
+    "Trump says he will not attack before US elections in November",
+    source="Reuters",
+    description="General political remarks without a named country.",
+)
+check("oct08-no-iran-subject-no-trigger",not mod._trump_iran_midterm_no_strike(unrelated_reuters_short))
+
 print("WAR_PEACE_OCT04_REGRESSION_OK")
