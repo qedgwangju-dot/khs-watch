@@ -523,7 +523,9 @@ def fetch_sp500_context():
 
 def _treasury_official_history():
     """Daily par yields; compare 2-year and 10-year on one official date."""
-    r = get(TREASURY_OFFICIAL_CURVE, timeout=20)
+    treasury_year = datetime.now(ZoneInfo("America/New_York")).year
+    yearly_url = TREASURY_OFFICIAL_CURVE.replace("field_tdr_date_value=2026", f"field_tdr_date_value={treasury_year}")
+    r = get(yearly_url, timeout=20)
     tables = pd.read_html(StringIO(r.text))
     candidates = []
     for tab in tables:
@@ -550,6 +552,7 @@ def _treasury_official_history():
     return {
         "date": latest[0], "y2": latest[1], "y10": latest[2],
         "five_day_bp": round((latest[2] - prior_5[2]) * 100.0, 1),
+        "source_url": yearly_url,
     }
 
 
@@ -621,7 +624,7 @@ def fetch_hartnett_macro_context():
         "fed_effective_date":fed["date"].isoformat(),
         "bond_level":"elevated" if y10>=5.30 else "below_5_30",
         "bond_momentum":"rise_20bp" if five_bp>=20 else "fall_20bp" if five_bp<=-20 else "neutral",
-        "url_yields":TREASURY_OFFICIAL_CURVE,
+        "url_yields":curve["source_url"],
         "url_fed":fed["url"],
     }
 
