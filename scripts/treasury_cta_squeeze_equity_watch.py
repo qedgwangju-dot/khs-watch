@@ -1038,6 +1038,7 @@ def _compact_event_body(snapshot: dict, previous: dict, fx, fx_date, reasons: li
         "<b>📍 핵심 포지션</b>",
         f"• CFTC {(snapshot.get('cftc') or {}).get('report_date','기준일 미확인')} · 10Y Leveraged Funds 순 {int(t10.get('leveraged_net') or 0):+,}계약"
         f" · 숏/OI {float(t10.get('short_share_oi_pct') or 0):.1f}%{t10_delta_text}",
+        "• Leveraged Funds 전체가 CTA 방향성 매매인 것은 아니며 베이시스 거래도 포함",
         _cross_asset_block(snapshot, previous, fx=fx, fx_date=fx_date, compact=True).rstrip(),
         "",
         "<b>📉 국채 선물 확인</b>",
@@ -1048,7 +1049,7 @@ def _compact_event_body(snapshot: dict, previous: dict, fx, fx_date, reasons: li
         "",
         "<b>💵 자금조달</b>",
         f"• NY Fed {(repo.get('SOFR') or {}).get('date','기준일 미확인')} · {' · '.join(repo_bits) if repo_bits else 'NY Fed repo 확인 불가'}"
-        f" · 판정 {'안정' if repo_ok else '주의: ' + ', '.join(repo_worse)}",
+        f" · 금리상 단기 펀딩 스트레스 {'급증 미감지' if repo_ok else '주의: ' + ', '.join(repo_worse)}",
         "",
         "<b>🧭 주식시장 해석</b>",
         f"• <b>{impact}</b> — {path}.",
