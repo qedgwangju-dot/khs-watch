@@ -580,7 +580,7 @@ def build_alert(row: dict, fx: float, fx_date: str) -> tuple[str, str, dict]:
         "<b>실제 집행 숫자</b>",
         f"• 대상: {bucket} · {op_date}",
         f"• 총 제시액: {fmt_usd_krw(offered, fx)}",
-        f"• 실제 매입액: <b>{fmt_usd_krw(accepted, fx)}</b>",
+        f"• 매입 승인 액면금액: <b>{fmt_usd_krw(accepted, fx)}</b>",
         f"• 매입상한: {fmt_usd_krw(maximum, fx)}",
     ]
 
