@@ -76,6 +76,44 @@ class AppleDuoSupplyRegressionTests(unittest.TestCase):
         self.assertEqual(verdict, "생산 램프 병목 변화")
         self.assertIn("고신뢰", reason)
 
+    def test_pro_component_cut_not_duo_supply_signal(self):
+        item = {
+            "title": "Apple cuts iPhone 18 Pro and Pro Max October component orders 15%-20%",
+            "description": "Memory costs and soft demand reduce original supplier orders.",
+            "source": "Reuters",
+        }
+        self.assertFalse(m._is_apple_duo(item["title"] + " " + item["description"]))
+        self.assertFalse(m._meaningful(item, self.state())[0])
+        before = dict(self.state()["metrics"])
+        state = self.state()
+        m._update_metrics(state, item)
+        self.assertEqual(state["metrics"], before)
+
+    def test_mixed_pro_and_duo_news_is_not_duo_quantity_change(self):
+        item = {
+            "title": "Apple's iPhone 18 Pro component orders cut by 20%",
+            "description": "The foldable iPhone Duo launches later in October.",
+            "source": "Reuters",
+        }
+        self.assertTrue(m._is_apple_duo(item["description"]))
+        self.assertTrue(m._is_cross_product_article(item))
+        self.assertFalse(m._meaningful(item, self.state())[0])
+
+    def test_explicit_duo_production_story_still_qualifies(self):
+        item = {
+            "title": "iPhone Duo Foxconn assembly yield improves to 72%",
+            "description": "Production ramp increases as final assembly yield reaches 72%.",
+            "source": "Reuters",
+        }
+        self.assertTrue(m._is_apple_duo(item["title"]))
+        self.assertFalse(m._is_cross_product_article(item))
+        self.assertTrue(m._meaningful(item, self.state())[0])
+
+    def test_generic_apple_story_not_assumed_duo(self):
+        self.assertFalse(m._is_apple_duo("Apple reduces component orders at suppliers"))
+        self.assertFalse(m._is_apple_duo("Apple iPhone 18 Pro Max camera order lowered"))
+        self.assertTrue(m._is_apple_duo("Apple's foldable iPhone production increased"))
+
     def test_fact_key_dedupes_same_assembly_yield(self):
         keys = m._fact_keys("Foxconn assembly yield for iPhone Duo is 60%")
         self.assertIn("assembly_yield_60", keys)
