@@ -5,6 +5,7 @@ on:
     paths:
       - "scripts/treasury_30y_jpm_threshold_watch.py"
       - "tests/test_treasury_30y_jpm_levels.py"
+      - "tests/test_treasury_daily_report_integrity.py"
       - ".github/workflows/treasury-30y-jpm-crossing.yml"
   schedule:
     # Treasury official EOD yields, not intraday executable market prices.
@@ -56,6 +57,7 @@ jobs:
           python -m py_compile scripts/treasury_positioning_watch.py
           PYTHONPATH=scripts pytest -q tests/test_treasury_30y_jpm_levels.py
           PYTHONPATH=scripts pytest -q tests/test_treasury_positioning_watch.py
+          PYTHONPATH=scripts pytest -q tests/test_treasury_daily_report_integrity.py
 
       - name: Dry-run on code changes or validation dispatch
         if: ${{ github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.validate_only) }}
