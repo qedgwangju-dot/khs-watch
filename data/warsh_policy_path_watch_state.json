@@ -1,71 +1,20 @@
 {
-  "schema_version": 7,
-  "effr": 3.88,
-  "meetings": [
-    {
-      "date": "2026-10-28",
-      "label": "Oct 28, 2026",
-      "prob_cell": "28%72%",
-      "implied_avg": 3.893,
-      "pre_rate": 3.88,
-      "post_rate": 4.06,
-      "change_bp": 18.0,
-      "hike25_prob": 72.0,
-      "contract": "/ZQV26"
-    },
-    {
-      "date": "2026-12-09",
-      "label": "Dec 9, 2026",
-      "prob_cell": "10%90%",
-      "implied_avg": 4.21,
-      "pre_rate": 4.06,
-      "post_rate": 4.285,
-      "change_bp": 22.0,
-      "hike25_prob": 90.0,
-      "contract": "/ZQZ26"
-    }
-  ],
+  "schema_version": 8,
+  "effr": null,
+  "meetings": [],
   "classification": {
-    "verdict": "추가 1회는 상당히 반영·두 번째 인상 가능성도 일부 반영",
-    "extra_bp": 41.000000000000014,
-    "basis": "2026-09-16 FOMC 인상 후 공식 목표범위 중간값에서 연말까지의 누적 기대",
-    "baseline_rate": 3.875,
-    "baseline_kind": "연준 공식 목표범위 중간값",
-    "baseline_date": "2026-09-16",
-    "baseline_source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
-    "official_policy": {
-      "mid": 3.875,
-      "low": 3.75,
-      "high": 4.0,
-      "date": "2026-09-16",
-      "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
-      "kind": "연준 공식 목표범위 중간값"
-    },
-    "sep": {
-      "date": "2026-09-16",
-      "yearend": 4.1,
-      "nextyear": 4.1,
-      "url": "https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20260916.htm"
-    },
-    "sep_extra_bp": 22.499999999999964,
-    "market_sep_gap_bp": 18.50000000000005,
-    "sep_read": "시장이 연준 점도표보다 더 매파적",
-    "balance": {
-      "mode": "충분한 준비금 유지·재투자/구성 전환",
-      "regime": "충분한 준비금 유지·자산 구성 전환에 가까움",
-      "date": "2026-09-16",
-      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a1.htm",
-      "h41_url": "https://www.federalreserve.gov/releases/h41/Current/"
-    },
-    "tightening_mix": "정책금리 중심 긴축 · 대차대조표는 충분한 준비금 유지/자산 구성 전환",
-    "yearend_market_rate": 4.285,
-    "market_source_stale": false,
-    "market_source_error": null
+    "market_source_stale": true,
+    "market_source_error": "CME 공식 결제값 실패: 2026-10-08: The read operation timed out | 2026-10-07: The read operation timed out | 2026-10-06: The read operation timed out | 2026-10-05: The read operation timed out"
   },
-  "source": "https://www.frenzycap.com/fedwatch",
-  "source_status": "최신성 검증 실패 — 직전 정상값 보존",
+  "source": null,
+  "market_data_basis": null,
+  "official_settlement_date": null,
+  "last_validated_at_utc": null,
+  "last_good_snapshot": null,
+  "source_status": "최신성 검증 실패 — 과거값 격리·신규 판정 중지",
   "source_error": "CME 공식 결제값 실패: 2026-10-08: The read operation timed out | 2026-10-07: The read operation timed out | 2026-10-06: The read operation timed out | 2026-10-05: The read operation timed out",
-  "updated_at_utc": "2026-10-09T22:48:48.044331+00:00",
   "source_error_streak": 20,
-  "source_health_alerted": true
+  "source_health_alerted": true,
+  "last_health_alert_at_utc": null,
+  "updated_at_utc": "2026-10-09T22:48:48.044331+00:00"
 }
