@@ -2122,6 +2122,23 @@ def _self_test_korean_optics_alerts() -> None:
     assert meaningful_fau_milestone(fau_new) is True
     assert canonical_story_key("Huawei OPEN NPO", npo_old) == "huawei|open-npo|msa-initial-2026-07"
     assert "OCS" not in category_for(cpo_not_ocs, "NVIDIA")
+    # Bloomberg Tokyo interview: reserve horizon, product-level unmet demand,
+    # Japan capex, and customer cost sharing must stay separate facts.
+    lite_2029 = "Lumentum CEO Michael Hurlston says AI optical components sold out through early 2029"
+    lite_70 = "Lumentum Hurlston says unable to meet 70% of optical products demand through 2027"
+    lite_30 = "Lumentum Hurlston says unable to meet 30% of optical products demand through 2028"
+    lite_japan = "Lumentum Japan factory expanding $350 million to increase laser capacity"
+    lite_sharing = "Lumentum hyperscaler customers agree to share capital expenditure for optical expansion"
+    lite_old = "Lumentum on track to sell out 2028 optical capacity"
+    assert lite_supply_event(lite_2029)[2] == "lumentum|booking-horizon|2029"
+    assert lite_supply_event(lite_70)[2] == "lumentum|demand-gap|2027|70"
+    assert lite_supply_event(lite_30)[2] == "lumentum|demand-gap|2028|30"
+    assert lite_supply_event(lite_japan)[2] == "lumentum|japan-capex|350m|planned"
+    assert lite_supply_event(lite_sharing)[2] == "lumentum|customer-capex-sharing|agreement-or-talks"
+    assert lite_supply_event(lite_old)[2] == "lumentum|booking-horizon|2028"
+    assert lite_supply_event("Lumen Technologies LUMN fiber capacity 2029") is None
+    assert lite_supply_event("Lumentum shares rise after 2029 optics forecast") is None
+
     assert source_priority("Open Compute Project") == 100
     assert evidence_label({"company": "Huawei OPEN NPO", "source": "TrendForce"}).startswith("독립된")
     assert classify_structural_axis("Huawei OPEN NPO", "Huawei plans to begin OPEN NPO mass production in 2027") is None
