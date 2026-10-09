@@ -1,5 +1,5 @@
 {
-  "last_checked_kst": "2026-10-10T07:32:34+09:00",
+  "last_checked_kst": "2026-10-10T07:35:46+09:00",
   "schedule_sha256": "3461c9a9822dec08b3059d2dd367baadd0d0967193913ce8fe95702f000366d7",
   "long_end_max_bn": {
     "10Y to 20Y": 6.0,
@@ -7,7 +7,7 @@
   },
   "seen_source_ids": [],
   "upgrade_note": "one-time resend armed for upgraded Bessent policy-boundary interpretation",
-  "bessent_policy_boundary_revision": 11,
+  "bessent_policy_boundary_revision": 12,
   "bessent_causal_verdict_key": "mixed",
   "bessent_causal_verdict": "⚪ 공통 원자료 3거래일 시차 — 최신 원인 판정 보류",
   "bessent_causal_snapshot": {
