@@ -22,7 +22,7 @@ FORCE_NOTIFY = os.getenv('FORCE_NOTIFY', '0') == '1'
 THRESH_5D = float(os.getenv('WARSH_ROTATION_5D_PP') or '5')
 THRESH_3D = float(os.getenv('WARSH_ROTATION_3D_PP') or '3')
 MAX_SOURCE_GAP_BP = float(os.getenv('WARSH_AI_ROTATION_MAX_SOURCE_GAP_BP') or '12')
-METHODOLOGY_VERSION = '2026-10-10-v4'
+METHODOLOGY_VERSION = '2026-10-10-v5'
 UA = 'Mozilla/5.0 (compatible; khs-watch/3.2; +https://github.com/qedgwangju-dot/khs-watch)'
 YAHOO = 'https://query1.finance.yahoo.com/v8/finance/chart/{}?range=1mo&interval=1d&includePrePost=false'
 SYMBOLS = {
@@ -298,6 +298,26 @@ def send(msg):
     print(f'ai_rotation_telegram_delivery_confirmed=true bot=@{username} id={mid}')
     return mid
 
+def displayed_signature(s):
+    """Hash only what a reader actually sees, not raw float noise or timestamps."""
+    def fmt(x): return f'{float(x):+.1f}'
+    shown = {
+        'date': s['date'],
+        'window': s['window'],
+        'verdict': s['verdict'],
+        'main': {
+            name: {w: fmt(s['returns'][name][w]) for w in ('3d', '5d')}
+            for name in ('반도체', '소프트웨어')
+        },
+        'relative_3d': fmt(s['relative_3d']),
+        'relative_5d': fmt(s['relative_5d']),
+        'baskets': {
+            name: {k: fmt(s['baskets'][name][k]) for k in ('5d', 'vs_software_5d')}
+            for name in BASKETS
+        }
+    }
+    return hashlib.sha256(json.dumps(shown, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
+
 def visible_changed(old, s):
     def fmt(x): return f'{float(x):+.1f}'
     try:
@@ -391,7 +411,16 @@ def main():
     # Re-sending unchanged metrics as "corrected" creates false alarms.
     method_correction = bool(method_change and old.get('date') == s['date'] and relevant_changed)
     date_correction = bool(old.get('date') and old['date'] > s['date'])
-    correction = method_correction or date_correction
+    signature = displayed_signature(s)
+    previously_sent_same_date = bool(old.get('last_sent_date') == s['date'] and old.get('last_sent_message_id'))
+    old_signature = old.get('last_sent_signature')
+    if old_signature is None and previously_sent_same_date:
+        try:
+            old_signature = displayed_signature(old)
+        except (KeyError, TypeError, ValueError):
+            old_signature = None
+    content_correction = bool(previously_sent_same_date and old_signature and old_signature != signature)
+    correction = method_correction or date_correction or content_correction
     should_send = FORCE_NOTIFY or correction or (bool(old) and changed)
 
     if should_send:
@@ -399,10 +428,12 @@ def main():
         s['last_sent_message_id'] = mid
         s['last_sent_date'] = s['date']
         s['last_sent_verdict'] = s['verdict']
+        s['last_sent_signature'] = signature
     else:
         s['last_sent_message_id'] = old.get('last_sent_message_id')
         s['last_sent_date'] = old.get('last_sent_date')
         s['last_sent_verdict'] = old.get('last_sent_verdict')
+        s['last_sent_signature'] = old_signature
     save_state(s)
     print(json.dumps({
         'data_valid': True, 'date': s['date'], 'methodology': METHODOLOGY_VERSION,
@@ -410,7 +441,8 @@ def main():
         'relative_3d': s['relative_3d'], 'relative_5d': s['relative_5d'],
         'verdict': s['verdict'], 'method_change': method_change,
         'visible_changed': relevant_changed,
-        'correction': correction, 'validation_only_upgrade': bool(method_change and not correction), 'sent': bool(should_send),
+        'correction': correction, 'content_revision_correction': content_correction,
+        'validation_only_upgrade': bool(method_change and not correction), 'sent': bool(should_send),
         'message_id': s.get('last_sent_message_id') if should_send else None
     }, ensure_ascii=False))
 
@@ -460,7 +492,13 @@ def self_test():
         f'Oct {i}, 2026 1.00 1.10 0.95 1.02 1.02 +2.0% 123,456'
         for i in range(1, 8)))
     assert 'market open' in bad_html.lower()
-    print('ai_rotation_regression_tests=true checks=price_gap,display_rounding,spread,baskets,close_alignment,intraday_guard')
+    original = displayed_signature(out)
+    updated = dict(out)
+    updated['relative_5d'] = out['relative_5d'] + 0.2
+    assert displayed_signature(updated) != original, 'visible price revision must change signature'
+    updated['relative_5d'] = out['relative_5d'] + 0.000001
+    assert displayed_signature(updated) == original, 'sub-decimal price noise must not trigger correction'
+    print('ai_rotation_regression_tests=true checks=price_gap,display_rounding,spread,baskets,close_alignment,intraday_guard,revision_signature')
 
 if __name__ == '__main__':
     if '--self-test' in sys.argv:
