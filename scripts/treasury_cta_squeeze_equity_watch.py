@@ -1014,6 +1014,11 @@ def _compact_event_body(snapshot: dict, previous: dict, fx, fx_date, reasons: li
         return f"• {label}: 공식 CME {pct_txt} ({price_date or '거래일 미확인'}) · 일일 OI {oi_txt} [{src}]"
 
     t10 = cftc.get("10Y") or {}
+    delta10 = t10.get("leveraged_net_wow")
+    t10_delta_text = (
+        f" · 전주 순포지션 {int(delta10):+,}계약"
+        if delta10 is not None else " · 전주 변동 확인 불가"
+    )
     repo_bits = []
     for k in ("SOFR", "BGCR", "TGCR"):
         rr = repo.get(k) or {}
@@ -1032,7 +1037,7 @@ def _compact_event_body(snapshot: dict, previous: dict, fx, fx_date, reasons: li
         "",
         "<b>📍 핵심 포지션</b>",
         f"• CFTC {(snapshot.get('cftc') or {}).get('report_date','기준일 미확인')} · 10Y Leveraged Funds 순 {int(t10.get('leveraged_net') or 0):+,}계약"
-        f" · 숏/OI {float(t10.get('short_share_oi_pct') or 0):.1f}%",
+        f" · 숏/OI {float(t10.get('short_share_oi_pct') or 0):.1f}%{t10_delta_text}",
         _cross_asset_block(snapshot, previous, fx=fx, fx_date=fx_date, compact=True).rstrip(),
         "",
         "<b>📉 국채 선물 확인</b>",
@@ -1370,6 +1375,7 @@ def _cross_alert_gate(current_state: dict, cross: dict) -> tuple[bool, int, int,
         cross.get("data_fresh")
         and cross.get("nq_history_ready")
         and cross.get("nq_history_fresh")
+        and cross.get("nq_crosscheck_match")
         and not fuel_present
     )
     gate_base = 0 if episode_reset else prev_alerted
