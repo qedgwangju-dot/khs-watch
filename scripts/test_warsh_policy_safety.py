@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """네트워크에 의존하지 않는 Warsh 금리·대차대조표 회귀검증."""
 import unittest
+import os
 from datetime import date, datetime, timedelta, timezone
 from unittest.mock import MagicMock, patch
 
@@ -31,7 +32,7 @@ class WarshSafetyTests(unittest.TestCase):
              patch.object(futures, "official_effr", return_value=(3.88, "2026-10-07")), \
              patch.object(futures, "official_fomc_dates", return_value=dates), \
              patch.object(futures.v3.base, "official_policy_baseline", return_value={"low":3.75,"high":4.0}):
-            snap = futures.official_snapshot()
+            snap = futures._legacy_public_settlement_snapshot()
         self.assertEqual(len(snap["meetings"]), 2)
         self.assertTrue(all(m["hike25_prob"] is None for m in snap["meetings"]))
         self.assertTrue(all(m["outcomes"] == {} for m in snap["meetings"]))
@@ -43,7 +44,7 @@ class WarshSafetyTests(unittest.TestCase):
              patch.object(futures, "cme_monthly_rates", return_value=("2026-10-07", {(2026, 10): 3.9})), \
              patch.object(futures, "official_effr", return_value=(3.88, "2026-09-01")):
             with self.assertRaisesRegex(RuntimeError, "오래됨"):
-                futures.official_snapshot()
+                futures._legacy_public_settlement_snapshot()
 
     def test_balance_sheet_composition_is_not_automatic_qt(self):
         cur = {
@@ -126,7 +127,7 @@ class WarshSafetyTests(unittest.TestCase):
              patch.object(futures, "official_fomc_dates", return_value=[date(2026,10,28)]), \
              patch.object(futures.v3.base, "official_policy_baseline", return_value={"low":3.75,"high":4.0}):
             with self.assertRaisesRegex(RuntimeError, "비정상값"):
-                futures.official_snapshot()
+                futures._legacy_public_settlement_snapshot()
 
     def test_initial_market_outage_preserves_safe_state(self):
         saved = []
@@ -202,7 +203,7 @@ class WarshSafetyTests(unittest.TestCase):
              patch.object(futures, "official_effr", return_value=(5.00,"2026-10-07")), \
              patch.object(futures.v3.base, "official_policy_baseline", return_value={"low":3.75,"high":4.00}):
             with self.assertRaisesRegex(RuntimeError, "불일치"):
-                futures.official_snapshot()
+                futures._legacy_public_settlement_snapshot()
 
     def test_missing_year_end_contract_never_becomes_year_end_forecast(self):
         with patch.object(futures, "ny_today", return_value=date(2026,10,8)), \
@@ -211,7 +212,7 @@ class WarshSafetyTests(unittest.TestCase):
              patch.object(futures, "official_fomc_dates", return_value=[date(2026,10,28),date(2026,12,9)]), \
              patch.object(futures.v3.base, "official_policy_baseline", return_value={"low":3.75,"high":4.00}):
             with self.assertRaisesRegex(RuntimeError, "연말 FOMC"):
-                futures.official_snapshot()
+                futures._legacy_public_settlement_snapshot()
 
 
     def test_cme_outage_does_not_retry_many_contract_dates(self):
@@ -364,6 +365,123 @@ class WarshSafetyTests(unittest.TestCase):
         )), patch.object(gartner.base, "load_state", return_value=state):
             result = gartner.structural_gartner_items()
         self.assertEqual(result, [item])
+
+
+    def test_paid_fedwatch_without_entitlement_never_scrapes_or_guesses(self):
+        with patch.dict(os.environ, {
+            "CME_FEDWATCH_API_ID": "", "CME_FEDWATCH_API_PASSWORD": "",
+        }), patch.object(futures, "cme_monthly_rates") as legacy, \
+             patch.object(futures.official_api, "oauth_token") as auth:
+            with self.assertRaisesRegex(RuntimeError, "인증정보 미설정"):
+                futures.official_snapshot()
+        legacy.assert_not_called()
+        auth.assert_not_called()
+
+    def test_official_api_probability_is_from_target_ranges_not_avg_price(self):
+        today = date(2026,10,9)
+        fixture = {
+            "meetingDt":"2026-10-28","reportingDt":"2026-10-08",
+            "rateRange":[
+                {"lowerRt":350,"upperRt":375,"probability":0.0},
+                {"lowerRt":375,"upperRt":400,"probability":0.4},
+                {"lowerRt":400,"upperRt":425,"probability":0.6},
+                {"lowerRt":425,"upperRt":450,"probability":0.0},
+            ],
+        }
+        parsed = futures.official_api.parse_forecast(fixture, 3.75, 4.0, today)
+        self.assertAlmostEqual(parsed["hike25_prob"], 60)
+        self.assertAlmostEqual(parsed["hike25_or_more_prob"], 60)
+        self.assertAlmostEqual(parsed["hold_prob"], 40)
+        self.assertAlmostEqual(parsed["post_rate"], 4.025)
+        self.assertAlmostEqual(parsed["change_bp"], 15)
+        # 확률 분포가 없는 평균만으로 60%를 복원해서는 안 됨.
+        bad = dict(fixture, rateRange=[dict(fixture["rateRange"][2], probability=0.35)])
+        with self.assertRaisesRegex(ValueError, "합계"):
+            futures.official_api.parse_forecast(bad, 3.75,4.0,today)
+
+    def test_official_api_rejects_stale_future_and_duplicate_odds(self):
+        today = date(2026,10,9)
+        base = {
+            "meetingDt":"2026-10-28", "reportingDt":"2026-10-08",
+            "rateRange":[{"lowerRt":375,"upperRt":400,"probability":1.0}]
+        }
+        for item, msg in [
+            (dict(base, reportingDt="2026-10-01"),"오래됨"),
+            (dict(base, reportingDt="2026-10-12"),"미래"),
+            (dict(base, rateRange=[
+                {"lowerRt":375,"upperRt":400,"probability":0.5},
+                {"lowerRt":375,"upperRt":400,"probability":0.5}]),"중복"),
+            (dict(base, rateRange=[
+                {"lowerRt":375,"upperRt":400,"probability":90.0}]),"확률"),
+        ]:
+            with self.subTest(msg=msg), self.assertRaisesRegex(ValueError,msg):
+                futures.official_api.parse_forecast(item,3.75,4.0,today)
+
+    def test_official_api_scope_is_explicitly_validated_before_market_recovery(self):
+        now = datetime(2026,10,9,20,0,tzinfo=timezone.utc)
+        today = date(2026,10,9)
+        vals = [
+            {"meetingDt":d,"reportingDt":"2026-10-08",
+             "rateRange":[
+                 {"lowerRt":375,"upperRt":400,"probability":.3},
+                 {"lowerRt":400,"upperRt":425,"probability":.7},
+             ]}
+            for d in ("2026-10-28","2026-12-09")
+        ]
+        x = futures.official_api.build_snapshot(
+            vals,["2026-10-28","2026-12-09"],
+            {"low":3.75,"high":4.0},today,
+        )
+        state = dict(x,
+            source=x["url"],source_api_url=x["source_api_url"],
+            official_settlement_date=None,
+            last_validated_at_utc="2026-10-09T19:58:00+00:00",
+            source_status=guard.SUCCESS_STATUS,source_error=None,
+        )
+        self.assertTrue(guard.market_state_is_fresh(state,now=now))
+        bad = dict(state,source_api_url="https://badsite.example/api")
+        self.assertFalse(guard.market_state_is_fresh(bad,now=now))
+        bad = dict(state,forecast_reporting_date="2026-09-19")
+        self.assertFalse(guard.market_state_is_fresh(bad,now=now))
+        bad = dict(state,meetings=[dict(state["meetings"][0],hike25_prob=150)])
+        self.assertFalse(guard.market_state_is_fresh(bad,now=now))
+
+    def test_official_api_path_uses_auth_and_official_forecast_payload(self):
+        x = [
+            {"meetingDt":d,"reportingDt":"2026-10-08",
+             "rateRange":[
+                {"lowerRt":375,"upperRt":400,"probability":.2},
+                {"lowerRt":400,"upperRt":425,"probability":.8},
+             ]}
+            for d in ("2026-10-28","2026-12-09")
+        ]
+        with patch.dict(os.environ, {
+            "CME_FEDWATCH_API_ID": "test_api_id",
+            "CME_FEDWATCH_API_PASSWORD": "test_api_password",
+        }), patch.object(futures, "ny_today",return_value=date(2026,10,9)), \
+            patch.object(futures,"official_effr",return_value=(3.88,"2026-10-08")), \
+            patch.object(futures,"official_fomc_dates",return_value=[
+                date(2026,10,28),date(2026,12,9)]), \
+            patch.object(futures.v3.base,"official_policy_baseline",return_value={
+                "low":3.75,"high":4.0}), \
+            patch.object(futures.official_api,"oauth_token",return_value="redacted") as auth, \
+            patch.object(futures.official_api,"forecasts",return_value=x) as forecasts:
+            snap=futures.official_snapshot()
+        auth.assert_called_once_with("test_api_id","test_api_password")
+        forecasts.assert_called_once_with("redacted",["2026-10-28","2026-12-09"])
+        self.assertEqual(snap["forecast_reporting_date"],"2026-10-08")
+        self.assertEqual(snap["official_settlement_date"],None)
+        self.assertEqual(snap["meetings"][0]["hike25_prob"],80.0)
+
+    def test_oauth_request_requires_client_credentials_without_printing_password(self):
+        with patch.object(futures.official_api,"_request_json",return_value={
+            "access_token":"token-do-not-log"}) as requester:
+            t=futures.official_api.oauth_token("identifier","secret")
+        self.assertEqual(t,"token-do-not-log")
+        _,kwargs=requester.call_args
+        self.assertEqual(kwargs["body"],b"grant_type=client_credentials")
+        self.assertTrue(kwargs["headers"]["Authorization"].startswith("Basic "))
+        self.assertNotIn("secret",str(kwargs))
 
 
 if __name__ == "__main__":
