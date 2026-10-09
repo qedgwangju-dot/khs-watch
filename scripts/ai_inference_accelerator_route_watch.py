@@ -48,7 +48,7 @@ USER_AGENT = "Mozilla/5.0 khs-ai-inference-accelerator-route-watch/1.0"
 MAX_AGE_HOURS = 120
 SEEN_RETENTION_DAYS = 45
 MAX_ALERT_EVENTS = 5
-OFFICIAL_SNAPSHOT_SCHEMA_VERSION = 2
+OFFICIAL_SNAPSHOT_SCHEMA_VERSION = 3
 OFFICIAL_CHANGE_CONFIRM_RUNS = 2
 OFFICIAL_CHANGE_CONFIRM_SECONDS = 600
 NEWS_BACKFILL_GRACE_HOURS = 6
@@ -452,17 +452,20 @@ def semantic_official_snapshot(name: str, text: str) -> dict:
             "gpt_5_6_sol_preview": bool(
                 re.search(r"(?:preview\s+access|preview).{0,100}gpt-5\.6\s+sol|gpt-5\.6\s+sol.{0,100}preview", normalized, re.I)
             ),
-            "gpt_6_1_sol_mentioned": "gpt-6.1 sol" in low,
+            "gpt_6_1_sol_ultrafast_supported": bool(re.search(
+                r"broadly\s+available\s+for\s+gpt-6\s+astra\s+and\s+gpt-6\.1\s+sol|"
+                r"ultrafast\s+mode\s+for\s+gpt-6\s+astra\s+and\s+gpt-6\.1\s+sol.{0,90}\bavailable\b",
+                normalized, re.I,
+            )),
             "service_tier_ultrafast": bool(re.search(r"service[_\s-]*tier.{0,40}ultrafast|ultrafast.{0,40}service[_\s-]*tier", normalized, re.I)),
-            "max_speed_x": _first_float((
-                r"up\s+to\s+([0-9.]+)\s*[x×]\s+faster",
-                r"([0-9.]+)\s*[x×]\s+faster",
-            ), normalized),
-            "tier_1_3_tpm": _first_int((r"Tiers?\s*1\s*[–-]\s*3\s+([0-9,]+)",), normalized),
-            "tier_4_tpm": _first_int((r"Tier\s*4\s+([0-9,]+)",), normalized),
-            "tier_5_tpm": _first_int((r"Tier\s*5\s+([0-9,]+)",), normalized),
-            "us_data_residency": "us data residency" in low,
-            "eu_regional_supported": not bool(re.search(r"does\s+not\s+support\s+eu|not\s+support\s+eu", normalized, re.I)),
+            "sol_ultrafast_eu_residency": bool(re.search(
+                r"ultrafast\s+mode\s+for\s+gpt-6\.1\s+sol.{0,90}"
+                r"supports\s+us\s+and\s+eu\s+data\s+residency", normalized, re.I,
+            )),
+            "astra_ultrafast_eu_residency": not bool(re.search(
+                r"gpt-6\s+astra\s+ultrafast.{0,110}supports\s+us\s+data"
+                r"\s+residency\s+and\s+global\s+processing\s+only", normalized, re.I,
+            )),
         }
 
     if name == "OpenAI GPT-6.1 Sol 모델":
@@ -483,7 +486,10 @@ def semantic_official_snapshot(name: str, text: str) -> dict:
 
         return {
             "kind": "openai_gpt_6_1_sol",
-            "ultrafast_mentioned": "ultrafast" in low,
+            "ultrafast_supported": bool(re.search(
+                r"for\s+the\s+fastest\s+response\s+speeds.{0,120}"
+                r"use\s+ultrafast\s+mode\s+with\s+model.{0,35}gpt-6\.1-sol", normalized, re.I,
+            )),
             "fast_mode_mentioned": "fast mode" in low,
             "input_usd_per_mtok": float(price_match.group(1)),
             "cached_input_usd_per_mtok": float(price_match.group(2)),
@@ -500,7 +506,13 @@ def semantic_official_snapshot(name: str, text: str) -> dict:
             "context_window": _first_int((r"([0-9,]+)\s+context\s+window",), normalized),
             "max_output_tokens": _first_int((r"([0-9,]+)\s+max\s+output\s+tokens",), normalized),
             "us_data_residency": "us" in low and "data residency" in low,
-            "eu_data_residency": "eu data residency" in low,
+            "sol_ultrafast_eu_residency": bool(re.search(
+                r"gpt-6\.1\s+sol\s+supports\s+us\s+and\s+eu\s+data\s+residency"
+                r".{0,100}including\s+with\s+fast\s+and\s+ultrafast", normalized, re.I,
+            )),
+            "ultrafast_multiplier_x": _first_float((
+                r"Ultrafast\s+mode\s+prices?\s+are\s+([0-9.]+)x\s+Standard",
+            ), normalized),
         }
 
     raise RuntimeError(f"No semantic parser for mutable official page: {name}")
