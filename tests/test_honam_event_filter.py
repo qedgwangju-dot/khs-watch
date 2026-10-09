@@ -18,6 +18,7 @@ from scripts.honam_event_filter import (
     _is_known_baseline_only,
     _is_proposal_only,
     _merge_group,
+    main as event_filter_main,
 )
 from scripts.honam_semiconductor_watch import canonical_headline_key, canonical_url_key, verified_intake_events
 
@@ -254,6 +255,127 @@ class HonamEventFilterRegressionTest(unittest.TestCase):
                     "family|honam_sk_chair_site_visit_20261009".encode("utf-8")
                 ).hexdigest()[:28]
                 self.assertEqual(verified_intake_events({"seen_event_keys": [key]}), [])
+
+    def _chair_oct8_reports(self):
+        # Three publishers, same 9 October planned visit, different headline
+        # wording, 8 October publication dates, and infrastructure keywords.
+        return [
+            {
+                "title": "최태원, 광주 반도체팹 예정지 찾는다 … 용지·전력 등 점검",
+                "description": "최 회장은 9일 오후 광주 군공항 내 팹 부지를 방문할 예정이다.",
+                "published": "Thu, 08 Oct 2026 14:09:00 GMT",
+                "source": "매일경제", "url": "https://example.com/mk",
+                "source_status": "보도 단계",
+                "stages": ["5_기반시설_생활SOC", "6_산단투자_기업일정"],
+                "stage_labels": ["⑤ 전력·용수·교통·생활 인프라", "⑥ 산단·기업투자·팹 일정"],
+            },
+            {
+                "title": "최태원 SK그룹 회장, 호남 반도체 부지 현장 방문 예정",
+                "description": "SK하이닉스 경영진도 동행. 지난해 다른 임원 방문 이력이 있다.",
+                "published": "Thu, 08 Oct 2026 13:04:00 GMT",
+                "source": "세계일보", "url": "https://example.com/segye",
+                "source_status": "보도 단계",
+                "stages": ["6_산단투자_기업일정"],
+                "stage_labels": ["⑥ 산단·기업투자·팹 일정"],
+            },
+            {
+                "title": "최태원 SK 회장, 광주 첫 현장 방문…반도체 투자 우려 덜까",
+                "description": "SK하이닉스 경영진 동행…민형배 시장과 팹 건설 추진 방안 논의.",
+                "published": "Thu, 08 Oct 2026 10:44:00 GMT",
+                "source": "노컷뉴스", "url": "https://example.com/nocut",
+                "source_status": "보도 단계",
+                "stages": ["5_기반시설_생활SOC", "6_산단투자_기업일정"],
+                "stage_labels": ["⑤ 전력·용수·교통·생활 인프라", "⑥ 산단·기업투자·팹 일정"],
+            },
+        ]
+
+    def test_three_oct8_chair_visit_reports_share_original_oct9_family(self):
+        items = self._chair_oct8_reports()
+        self.assertEqual([_executive_visit_signal(x) for x in items], [1, 1, 1])
+        self.assertEqual([_action_level(x) for x in items], [1, 1, 1])
+        self.assertEqual(
+            {_event_family(x) for x in items},
+            {"honam_sk_chair_site_visit_20261009"},
+        )
+        merged = _merge_group(items)
+        self.assertEqual(merged["stages"], ["6_산단투자_기업일정"])
+        self.assertEqual(merged["verification_level"], 2)
+        self.assertEqual(merged["evidence_count"], 3)
+
+    def test_previous_oct8_visit_alert_cannot_resend_as_three_oct9_events(self):
+        family = "honam_sk_chair_site_visit_20261009"
+        key = hashlib.sha256(("family|" + family).encode("utf-8")).hexdigest()[:28]
+        items = self._chair_oct8_reports()
+        with tempfile.TemporaryDirectory() as td:
+            root = pathlib.Path(td)
+            alert, state, pending = (root / n for n in ("alert.json", "state.json", "pending.json"))
+            alert.write_text(
+                json.dumps({"new_items": items, "official_changes": []}, ensure_ascii=False),
+                encoding="utf-8",
+            )
+            # Promotion from one newspaper to three is corroboration, not
+            # a new action or a second notification.
+            state.write_text(json.dumps({
+                "seen_event_keys": [key],
+                "event_status_levels": {key: 1},
+                "event_action_levels": {key: 1},
+            }), encoding="utf-8")
+            with patch("scripts.honam_event_filter.ALERT_PATH", alert), \
+                 patch("scripts.honam_event_filter.STATE_PATH", state), \
+                 patch("scripts.honam_event_filter.PENDING_PATH", pending):
+                event_filter_main()
+            self.assertFalse(alert.exists(), "Already-notified scheduled visit was resent")
+            data = json.loads(pending.read_text(encoding="utf-8"))
+            self.assertEqual(data["event_action_levels"][key], 1)
+            self.assertEqual(data["event_status_levels"][key], 2)
+
+    def test_actual_oct9_chair_visit_advances_original_event_once(self):
+        family = "honam_sk_chair_site_visit_20261009"
+        key = hashlib.sha256(("family|" + family).encode("utf-8")).hexdigest()[:28]
+        completed = {
+            "title": "최태원 회장, 광주 군공항 반도체 부지 현장 방문을 마쳤다",
+            "description": "최 회장이 9일 오후 반도체 팹 예정지를 방문한 뒤 향후 계획을 설명했다.",
+            "published": "Fri, 09 Oct 2026 06:26:00 GMT",
+            "source": "연합뉴스", "url": "https://example.com/yna",
+            "source_status": "보도 단계",
+            "stages": ["5_기반시설_생활SOC", "6_산단투자_기업일정"],
+        }
+        self.assertEqual(_event_family(completed), family)
+        self.assertEqual(_action_level(completed), 3)
+        with tempfile.TemporaryDirectory() as td:
+            root = pathlib.Path(td)
+            alert, state, pending = (root / n for n in ("alert.json", "state.json", "pending.json"))
+            alert.write_text(
+                json.dumps({"new_items": [completed], "official_changes": []}, ensure_ascii=False),
+                encoding="utf-8",
+            )
+            state.write_text(json.dumps({
+                "seen_event_keys": [key],
+                "event_status_levels": {key: 2},
+                "event_action_levels": {key: 1},
+            }), encoding="utf-8")
+            with patch("scripts.honam_event_filter.ALERT_PATH", alert), \
+                 patch("scripts.honam_event_filter.STATE_PATH", state), \
+                 patch("scripts.honam_event_filter.PENDING_PATH", pending):
+                event_filter_main()
+            notification = json.loads(alert.read_text(encoding="utf-8"))
+            self.assertEqual(notification["new_count"], 1)
+            self.assertEqual(notification["new_items"][0]["event_key"], key)
+            self.assertEqual(notification["new_items"][0]["stages"], ["6_산단투자_기업일정"])
+            self.assertIn("완료", notification["new_items"][0]["title"])
+            self.assertEqual(
+                json.loads(pending.read_text(encoding="utf-8"))["event_action_levels"][key], 3,
+            )
+
+    def test_old_executive_visit_date_not_used_as_chair_visit_date(self):
+        item = {
+            "title": "최태원 SK 회장, 광주 첫 현장 방문…반도체 투자 점검",
+            "description": "지난 7월 29일 SK하이닉스 경영진이 현장을 방문했다. 최 회장 방문을 앞두고 있다.",
+            "published": "Thu, 08 Oct 2026 10:44:00 GMT",
+        }
+        self.assertEqual(_event_family(item), "honam_sk_chair_site_visit_20261009")
+        self.assertEqual(_executive_visit_signal(item), 1)
+
 
 
 if __name__ == "__main__":

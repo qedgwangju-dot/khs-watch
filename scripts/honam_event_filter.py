@@ -94,6 +94,39 @@ def _executive_visit_actor(item):
     return None
 
 
+def _registered_visit_day(actor_code, publication_day):
+    """Find a previously verified visit date when a late article omits the date.
+
+    Newspaper publication date is not the scheduled visit date.  This bounded
+    lookup uses the existing verified incident register, not a new alert route.
+    """
+    if not actor_code or publication_day is None:
+        return ""
+    try:
+        registry = json.loads(
+            (ROOT / "data" / "honam_verified_event_intake.json").read_text(encoding="utf-8")
+        )
+    except (OSError, ValueError, TypeError):
+        return ""
+    prefix = "honam_" + actor_code + "_site_visit_"
+    matches = set()
+    for event in registry.get("events", []):
+        family = str(event.get("event_family") or "")
+        if not family.startswith(prefix):
+            continue
+        day_text = family[len(prefix):]
+        if not re.fullmatch(r"20\d{6}", day_text):
+            continue
+        try:
+            event_day = dt.datetime.strptime(day_text, "%Y%m%d").date()
+        except ValueError:
+            continue
+        if event_day - dt.timedelta(days=3) <= publication_day <= event_day + dt.timedelta(days=2):
+            matches.add(day_text)
+    # Two different visits within the window: ambiguous; never pick arbitrarily.
+    return next(iter(matches)) if len(matches) == 1 else ""
+
+
 def _executive_visit_date(item):
     explicit = _norm(item.get("event_date_kst"))
     if re.fullmatch(r"20\d{2}-\d{2}-\d{2}", explicit):
@@ -113,38 +146,46 @@ def _executive_visit_date(item):
             parsed = parsed.replace(tzinfo=dt.timezone.utc)
         parsed = parsed.astimezone(dt.timezone(dt.timedelta(hours=9)))
 
+    actor = _executive_visit_actor(item)
+    aliases = {
+        "sk_chair": ("최태원", "최 회장", "sk그룹 회장", "sk 회장"),
+        "samsung_chair": ("이재용", "이 회장", "삼성전자 회장"),
+        "sk_ceo": ("곽노정", "곽 대표"),
+        "samsung_exec": ("전영현", "전 부회장"),
+    }.get(actor[0], ()) if actor else ()
     title = _norm(item.get("title"))
     description = _norm(item.get("description"))
-    # 제목의 방문일을 우선한다. 기사 내용의 예전 임원진 방문일과 혼동하지 않는다.
-    for candidate in (title, description):
-        month_day = re.search(r"(?<!\d)(\d{1,2})월\s*(\d{1,2})일", candidate)
-        if month_day and parsed is not None:
-            month, day = map(int, month_day.groups())
-            try:
-                return dt.date(parsed.year, month, day).strftime("%Y%m%d")
-            except ValueError:
-                pass
-        if candidate == title and parsed is not None:
-            only_day = re.search(r"(?<!\d)(\d{1,2})일\s*(?:오전|오후)?[^.]{0,50}(?:방문|찾|실사)", candidate)
-            if only_day:
+
+    # Only dates in a visit sentence about this actor can override the
+    # verified date. A background paragraph about a July executive visit
+    # must not turn the chairman's October visit into a July event.
+    for candidate, is_title in ((title, True), (description, False)):
+        sentences = [candidate] if is_title else re.split(r"(?<=[.!?])\s+|(?<=다\.)\s+", candidate)
+        for sentence in sentences:
+            if not is_title and not any(alias.lower() in sentence.lower() for alias in aliases):
+                continue
+            if not any(word in sentence for word in ("방문", "찾", "실사")):
+                continue
+            month_day = re.search(r"(?<!\d)(\d{1,2})월\s*(\d{1,2})일", sentence)
+            if month_day and parsed is not None:
+                month, day = map(int, month_day.groups())
                 try:
-                    return dt.date(parsed.year, parsed.month, int(only_day.group(1))).strftime("%Y%m%d")
+                    return dt.date(parsed.year, month, day).strftime("%Y%m%d")
+                except ValueError:
+                    pass
+            day_visit = re.search(r"(?<!\d)(\d{1,2})일(?=.{0,90}(?:방문|찾|실사))", sentence)
+            if day_visit and parsed is not None:
+                try:
+                    return dt.date(parsed.year, parsed.month, int(day_visit.group(1))).strftime("%Y%m%d")
                 except ValueError:
                     pass
 
-    if parsed is not None and "방문 예정" in (title + description):
-        # '9일 방문 예정'처럼 기사 날짜와 방문 날짜가 다를 때는 방문일을 사용한다.
-        m = re.search(r"(?<!\d)(\d{1,2})일\s*(?:오전|오후)?[^.]{0,60}(?:방문|찾|실사)", description)
-        if m:
-            try:
-                return dt.date(parsed.year, parsed.month, int(m.group(1))).strftime("%Y%m%d")
-            except ValueError:
-                pass
-
     if parsed is not None:
+        verified_day = _registered_visit_day(actor[0] if actor else "", parsed.date())
+        if verified_day:
+            return verified_day
         return parsed.strftime("%Y%m%d")
     return "unknown"
-
 
 def _executive_visit_signal(item):
     """Classify the SK chairman's site visit from the lead, not old background."""
@@ -158,7 +199,7 @@ def _executive_visit_signal(item):
     actor = _executive_visit_actor(item)
     if actor is None:
         return 0
-    if not any(x in lead for x in ("광주 군공항", "광주공항", "군공항", "호남")):
+    if not any(x in lead for x in ("광주 군공항", "광주공항", "군공항", "호남", "광주")):
         return 0
     if not any(x in lead for x in ("반도체", "sk하이닉스", "삼성전자", "팹", "fab")):
         return 0
@@ -174,7 +215,8 @@ def _executive_visit_signal(item):
     completed_verbs = (
         "방문했다", "방문을 마쳤", "방문 완료", "현장을 찾았다",
         "직접 찾았다", "현장을 둘러봤", "현장 점검했다",
-        "실사를 마쳤", "현장 방문 마쳤",
+        "실사를 마쳤", "현장 방문 마쳤", "현장 방문을 마친", "방문을 마친", "방문 마쳤",
+        "현장을 방문한", "현장 찾았다", "현장 찾은", "부지 찾았다", "부지 찾은",
     )
     if any(x in heading for x in completed_verbs):
         return 3
@@ -498,7 +540,8 @@ def main():
         verification_upgrade = (
             previous_action > baseline_action
             and action_level >= previous_action
-            and level > previous_level
+            and previous_level < 3
+            and level == 3  # only a new primary official confirmation is an upgrade
         )
         genuinely_new = is_new_key and action_level > baseline_action
 

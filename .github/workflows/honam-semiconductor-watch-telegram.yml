@@ -11,6 +11,8 @@ on:
       - "tests/test_honam_event_filter.py"
       - "data/honam_verified_event_intake.json"
   schedule:
+    # Second staggered scan helps when GitHub drops/delays an hourly scheduled job.
+    - cron: "17 * * * *"
     - cron: "41 * * * *"
   workflow_dispatch:
 
