@@ -45,6 +45,10 @@ YAHOO_BASES = (
     "https://query1.finance.yahoo.com/v8/finance/chart",
     "https://query2.finance.yahoo.com/v8/finance/chart",
 )
+CHINA_REUTERS_20261009_URL = "https://live.euronext.com/en/financial-news/china-resume-october-fuel-exports-after-holiday-pause-sources-say"
+HORMUZ_7DAY_XINHUA_URL = "https://english.news.cn/20261009/b23dc5dd06f242e991ad5dfe3eed727c/c.html"
+MMA_OIL_ISAIAS_OCT7_URL = "https://www.bsee.gov/newsroom/latest-news/statements-and-releases/press-releases/mma-monitors-gulf-response-isaias"
+MMA_OIL_ISAIAS_OCT8_URL = "https://www.bsee.gov/newsroom/latest-news/statements-and-releases/press-releases/mma-monitors-gulf-response-isaias2"
 EIA_REFINING_WEEKLY_URL = "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_w.htm"
 EIA_REFINING_SOURCE = "미국 에너지정보청(EIA)"
 # Only distinct weekly observations and material changes can trigger a message.
@@ -131,6 +135,12 @@ NEWS_QUERIES = (
     'G7 디젤 원유 1억배럴 방출 트럼프 즉시 방출 when:1d',
     '"Chinese refiners suspend" fuel exports PetroChina when:3d',
     '"China" fuel exports resume PetroChina October 7 when:7d',
+    '"China to resume October fuel exports" "four trade sources" when:3d',
+    '"China" "3.7 million metric tons" fuel exports when:3d',
+    '"China" "fuel shipments loaded" October 2026 when:3d',
+    '"Araghchi" "seven-day plan" US views Hormuz when:3d',
+    '아라그치 호르무즈 7일 이내 재개방 미국 의견 검토 when:3d',
+    'Isaias oil production shut in MMA Gulf of Mexico when:3d',
     '"China" refined product exports suspended Beijing green light when:7d',
     '"China" gasoline jet fuel cargoes cancelled PetroChina when:7d',
     '중국 정유사 정제품 수출 중단 페트로차이나 when:7d',
@@ -185,6 +195,10 @@ TRUSTED_SOURCE_ALIASES = (
     "newsis",
     "뉴시스",
     "euronews",
+    "xinhua",
+    "anadolu agency",
+    "tasnim",
+    "irna",
     "boe report",
     "argaam",
     "marketscreener",
@@ -253,6 +267,8 @@ EVENT_LABELS = {
     "eu_diesel_reserve_policy": "EU 경유 전략비축유 방출 단계 변화",
     "g7_reserve_release_agreement": "G7 경유·원유 전략비축유 방출 합의",
     "china_fuel_export_policy": "중국 정제품 수출정책 단계 변화",
+    "hormuz_7day_diplomacy": "호르무즈 7일 이내 재개방 제안·미국 의견 검토",
+    "us_gulf_isaias_shutin": "미국 허리케인 해상 원유 생산중단 변화",
     "india_gulf_import_recovery": "인도 걸프산 원유 유입 회복",
 }
 DATA_PROVIDER_ALIASES = ("kpler", "vortexa", "jodi")
@@ -315,6 +331,9 @@ def _source_name_ko(source: str) -> str:
         ("bnn bloomberg", "BNN 블룸버그"),
         ("bloomberg", "블룸버그"),
         ("reuters", "로이터"),
+        ("xinhua", "신화통신"),
+        ("anadolu agency", "아나돌루통신"),
+        ("mma", "미 해양광물관리청"),
         ("financial times", "파이낸셜타임스"),
         ("associated press", "AP"),
         ("ap news", "AP"),
@@ -347,6 +366,14 @@ def _news_title_ko(row: NewsItem) -> str:
 
     if kind == "china_fuel_export_policy":
         stage = _china_fuel_export_stage(title)
+        if stage == "planned_resume":
+            return "중국, 10월 정제품 수출 재개 예정…Reuters 관계자 보도·실제 선적 미확인"
+        if stage == "approval_reported":
+            return "중국 10월 수출 승인 물량 보도…실제 선적 미확인"
+        if stage == "physical_resumed":
+            return "중국 정제품 실제 출항·선적 재개 확인"
+        if stage == "resumption_reported":
+            return "중국 정제품 수출 재개 보도…실제 출항 확인 필요"
         if stage == "cargo_cancelled":
             return "중국 정유사, 10월 정제품 수출 중단…PetroChina 일부 휘발유·항공유 화물 취소"
         if stage == "resumed":
@@ -357,6 +384,10 @@ def _news_title_ko(row: NewsItem) -> str:
             return "중국, 정제품 수출 제한"
         return "중국 정유사, 10월 정제품 수출 중단"
 
+    if kind == "hormuz_7day_diplomacy":
+        return "이란 외무장관, 호르무즈 7일 이내 개방 제안의 미국 답변 검토"
+    if kind == "us_gulf_isaias_shutin":
+        return "미국 해양광물관리청, 허리케인 Isaias 해상 원유생산 중단 집계"
     if kind == "g7_reserve_release_agreement":
         stage = _g7_reserve_stage(title)
         labels = {
@@ -529,6 +560,7 @@ def classify_event(title: str) -> str | None:
         "정제품 수출", "석유제품 수출", "경유 수출", "휘발유 수출", "항공유 수출",
     ))
     china_policy_change = any(term in low for term in (
+        "set to resume", "to resume", "will resume", "expected to resume", "resumption", "재개 예정",
         "suspend", "suspended", "suspension", "halt", "halts", "halted",
         "cancel", "cancels", "cancelled", "canceled", "no green light",
         "restrict", "restriction", "curb", "curbs",
@@ -537,6 +569,14 @@ def classify_event(title: str) -> str | None:
     ))
     if china_context and china_product_export_context and china_policy_change:
         return "china_fuel_export_policy"
+
+    if (
+        any(v in low for v in ("araghchi","아라그치"))
+        and any(v in low for v in ("7-day","seven-day","7일"))
+        and any(v in low for v in ("hormuz","호르무즈"))
+        and any(v in low for v in ("review","proposal","response","views","검토","제안","답변"))
+    ):
+        return "hormuz_7day_diplomacy"
 
     jpmorgan_recovery_context = (
         ("jpmorgan" in low or "jp모건" in low or "jp 모건" in low)
@@ -1395,6 +1435,19 @@ def fetch_news(current: dt.datetime) -> tuple[list[NewsItem], list[str]]:
     except Exception as exc:
         errors.append(f"EIA refinery 3-2-1 official: {type(exc).__name__}: {exc}")
 
+    direct_sources=(
+        ("중국 Reuters 거래 관계자 보도", lambda: parse_china_reuters_resumption(
+            fetch_bytes(CHINA_REUTERS_20261009_URL,timeout=16,attempts=2).decode("utf-8","replace"),current)),
+        ("호르무즈 신화통신·타스님 인용 보도", lambda: parse_hormuz_xinhua_review(
+            fetch_bytes(HORMUZ_7DAY_XINHUA_URL,timeout=16,attempts=2).decode("utf-8","replace"),current)),
+        ("허리케인 공식 MMA 중단율", lambda: fetch_mma_isaias_snapshot(current)),
+    )
+    for desc, loader in direct_sources:
+        try:
+            items.append(loader())
+        except Exception as exc:
+            errors.append(f"{desc}: {type(exc).__name__}: {exc}")
+
     try:
         items.extend(fetch_saudi_osp_snapshots(current))
     except Exception as exc:
@@ -1436,15 +1489,30 @@ def fetch_news(current: dt.datetime) -> tuple[list[NewsItem], list[str]]:
 
 
 def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tuple[str, list[NewsItem]]]:
-    by_kind: dict[str, list[NewsItem]] = {}
+    by_kind: dict[tuple[str,str], list[NewsItem]] = {}
     for item in items:
-        by_kind.setdefault(item.event_kind, []).append(item)
+        if item.event_kind == "china_fuel_export_policy":
+            stage=_china_fuel_export_stage(item.title)
+        elif item.event_kind == "hormuz_7day_diplomacy":
+            stage=_hormuz_7day_stage(item.title)
+        else:
+            stage="all"
+        by_kind.setdefault((item.event_kind,stage),[]).append(item)
 
     candidates: list[tuple[float, str, list[NewsItem]]] = []
-    for kind, rows in by_kind.items():
+    for (kind,stage), rows in by_kind.items():
         source_rows: dict[str, NewsItem] = {}
         for row in sorted(rows, key=lambda item: item.published_epoch, reverse=True):
-            source_rows.setdefault(normalize_text(row.source), row)
+            publisher=normalize_text(row.source)
+            if kind in ("china_fuel_export_policy","hormuz_7day_diplomacy"):
+                if ("reuters" in publisher or "reuters" in normalize_text(row.title)
+                    or "marketscreener" in publisher or "euronext" in publisher):
+                    publisher="reuters"
+                elif "anadolu" in publisher or "aa.com.tr" in row.link:
+                    publisher="anadolu"
+                elif "xinhua" in publisher:
+                    publisher="xinhua"
+            source_rows.setdefault(publisher, row)
         selected = list(source_rows.values())
 
         has_primary_data = kind in ("oil_flow_recovery", "sts_reroute_expansion") and any(
@@ -1469,6 +1537,15 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
         )
         pipeline_cross_checked = kind == "east_west_pipeline_recovery" and len(selected) >= minimum_sources
         osp_cross_checked = kind == "saudi_asia_osp_change" and len(selected) >= minimum_sources
+        china_report=kind=="china_fuel_export_policy" and stage=="planned_resume" and any(
+            ("reuters" in normalize_text(row.source) or row.link==CHINA_REUTERS_20261009_URL)
+            and "four trade" in normalize_text(row.title) for row in selected
+        )
+        hormuz_primary=kind=="hormuz_7day_diplomacy" and stage=="reviewing_us_views" and any(
+            row.source=="Xinhua" and row.link==HORMUZ_7DAY_XINHUA_URL
+            for row in selected
+        )
+        mma_primary=kind=="us_gulf_isaias_shutin" and _extract_mma_isaias_data(selected) is not None
         eia_primary = kind == "eia_refining_crack_watch" and any(
             row.source == EIA_REFINING_SOURCE
             and row.link == EIA_REFINING_WEEKLY_URL
@@ -1481,7 +1558,7 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
             for row in selected
         )
 
-        if len(selected) >= minimum_sources or has_primary_data or regional_primary or broker_snapshot or eu_primary_interview or pipeline_cross_checked or pipeline_bloomberg_material or osp_cross_checked or eia_primary:
+        if len(selected) >= minimum_sources or has_primary_data or regional_primary or broker_snapshot or eu_primary_interview or pipeline_cross_checked or pipeline_bloomberg_material or osp_cross_checked or eia_primary or china_report or hormuz_primary or mma_primary:
             candidates.append((max(row.published_epoch for row in selected), kind, selected))
 
     candidates.sort(key=lambda value: value[0], reverse=True)
@@ -1637,8 +1714,23 @@ def event_id(kind: str, rows: list[NewsItem]) -> str:
         return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
 
     if kind == "china_fuel_export_policy":
-        stage = _china_fuel_export_stage(combined)
-        basis = f"{kind}|{stage}"
+        stage = _china_fuel_export_stage(rows)
+        q = _china_resumption_volume(rows)
+        volume = f"{q:.1f}" if stage == "planned_resume" and q is not None else "na"
+        basis = f"{kind}|2026-10|{stage}|quantity_{volume}"
+        return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
+
+    if kind == "hormuz_7day_diplomacy":
+        stage = _hormuz_7day_stage(rows)
+        basis = f"{kind}|2026-10|{stage}"
+        return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
+
+    if kind == "us_gulf_isaias_shutin":
+        m = _extract_mma_isaias_data(rows)
+        if m is None:
+            raise ValueError("MMA 검증 숫자 없이 사건 식별 불가")
+        band = int(float(m["oil_pct"]) // 5) * 5
+        basis = f"{kind}|{m['date']}|pct_{band}"
         return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
 
     if kind == "saudi_asia_osp_change":
@@ -2353,18 +2445,228 @@ def _build_eu_diesel_reserve_alert_body(
 
 
 def _china_fuel_export_stage(text_or_rows: str | list[NewsItem]) -> str:
-    text = normalize_text(text_or_rows) if isinstance(text_or_rows, str) else " ".join(normalize_text(row.title) for row in text_or_rows)
-    if any(term in text for term in ("resume", "resumes", "resumed", "reopen", "restart", "allow exports", "permits exports", "green light", "재개", "허용", "승인")):
-        return "resumed"
-    if any(term in text for term in ("extend", "extended", "until further notice", "연장", "무기한")):
+    text = normalize_text(text_or_rows if isinstance(text_or_rows, str) else (
+        text_or_rows[0].title if text_or_rows else ""
+    ))
+    planned = bool(re.search(
+        r"\b(?:set to|expected to|plans? to|will|due to|to)\s+(?:re-?)?(?:resume|restart)\b",
+        text, re.I
+    )) or any(v in text for v in (
+        "resumption expected", "재개 예정", "재개할 예정", "재개 전망", "재개 계획"
+    ))
+    if planned:
+        return "planned_resume"
+    if any(v in text for v in (
+        "cargoes departed", "tankers departed", "vessel departed",
+        "shipments loaded", "customs clearance confirms", "verified exports resumed",
+        "선박 출항 확인", "실제 선적 재개", "선적 완료", "통관 완료"
+    )):
+        return "physical_resumed"
+    if any(v in text for v in (
+        "approved export quota", "exports approved", "approved october exports",
+        "authorized exports", "수출 물량 승인", "수출 허가 보도"
+    )):
+        return "approval_reported"
+    if any(v in text for v in (
+        "resumed exports", "exports resume", "exports resumed", "resume fuel exports",
+        "resumes refined fuel", "refined fuel exports resume", "수출 재개", "재개 발표"
+    )):
+        return "resumption_reported"
+    if any(v in text for v in ("extend", "extended", "until further notice", "연장", "무기한")):
         return "extended"
-    if any(term in text for term in ("cancel", "cancels", "cancelled", "canceled", "취소")):
+    if any(v in text for v in ("cancel", "cancels", "cancelled", "canceled", "취소")):
         return "cargo_cancelled"
-    if any(term in text for term in ("suspend", "suspended", "suspension", "halt", "halted", "no green light", "중단", "보류")):
+    if any(v in text for v in ("suspend", "suspended", "suspension", "halt", "halted", "no green light", "중단", "보류")):
         return "suspended"
-    if any(term in text for term in ("restrict", "restriction", "curb", "curbs", "제한")):
+    if any(v in text for v in ("restrict", "restriction", "curb", "curbs", "제한")):
         return "restricted"
     return "policy_change"
+
+
+def _china_resumption_volume(rows: list[NewsItem]) -> float | None:
+    for row in rows:
+        match = re.search(r"approved\s+([0-9]+(?:\.[0-9]+)?)\s+million\s+metric\s+tons", normalize_text(row.title))
+        if match and 0 < float(match.group(1)) <= 20:
+            return float(match.group(1))
+    return None
+
+
+def _hormuz_7day_stage(text_or_rows: str | list[NewsItem]) -> str:
+    text = normalize_text(text_or_rows if isinstance(text_or_rows, str) else (text_or_rows[0].title if text_or_rows else ""))
+    if any(v in text for v in ("signed agreement", "proposal accepted", "합의 서명", "제안 수용 공식")):
+        return "agreement_reported"
+    if any(v in text for v in ("response delivered", "iran replies", "iran responded", "공식 답변 전달", "회신 전달")):
+        return "iran_response_reported"
+    if any(v in text for v in ("reviewing", "review", "evaluating", "검토", "검토 중")):
+        return "reviewing_us_views"
+    return "proposal_reported"
+
+
+def _extract_mma_isaias_data(rows: list[NewsItem]) -> dict[str, float | int | str] | None:
+    pattern = (
+        r"MMA Isaias date=(\d{4}-\d{2}-\d{2}); oil_bpd=(\d+); "
+        r"oil_pct=(\d+\.\d{2}); gas_pct=(\d+\.\d{2}); "
+        r"platforms=(\d+); previous_bpd=(\d+); previous_pct=(\d+\.\d{2})"
+    )
+    for row in rows:
+        if row.event_kind!="us_gulf_isaias_shutin" or row.source!="MMA" or row.link!=MMA_OIL_ISAIAS_OCT8_URL:
+            continue
+        m=re.fullmatch(pattern,row.title)
+        if not m:
+            continue
+        vals={
+            "date":m.group(1),"oil_bpd":int(m.group(2)),
+            "oil_pct":float(m.group(3)),"gas_pct":float(m.group(4)),
+            "platforms":int(m.group(5)),"previous_bpd":int(m.group(6)),
+            "previous_pct":float(m.group(7))
+        }
+        if not(0<=vals["oil_pct"]<=100 and 0<=vals["previous_pct"]<=100
+           and 0<vals["oil_bpd"]<5_000_000 and 0<vals["previous_bpd"]<5_000_000):
+            return None
+        return vals
+    return None
+
+
+def _parse_mma_isaias_report(raw_html: str, date: str) -> dict[str, float | int]:
+    text=_visible_text(raw_html)
+    report_day=dt.date.fromisoformat(date)
+    date_label=f"{report_day:%B} {report_day.day}, {report_day.year}"
+    if "Isaias" not in text or date_label not in text or "Marine Minerals Administration" not in text:
+        raise RuntimeError("MMA 공식 보고서 명칭·날짜 불일치")
+    p=re.search(r"approximately\s+(\d+\.\d+)%\s+of\s+the\s+current\s+(?:daily\s+)?oil\s+production",text,re.I)
+    g=re.search(r"(\d+\.\d+)%\s+of\s+the\s+current\s+(?:daily\s+)?natural\s+gas\s+production",text,re.I)
+    q=re.search(r"Oil,\s*BOPD\*{0,3}\s*Shut-in\s+([\d,]+)",text,re.I)
+    f=re.search(r"evacuated\s+from\s+a\s+total\s+of\s+([\d,]+)\s+production\s+platforms",text,re.I)
+    if not all((p,g,q,f)):
+        raise RuntimeError("MMA 중단율·물량·대피시설 값 부족")
+    vals={"oil_pct":float(p.group(1)),"gas_pct":float(g.group(1)),
+          "oil_bpd":int(q.group(1).replace(",","")),
+          "platforms":int(f.group(1).replace(",",""))}
+    if not (0<=vals["oil_pct"]<=100 and 0<=vals["gas_pct"]<=100
+         and 0<vals["oil_bpd"]<5_000_000 and 0<=vals["platforms"]<=371):
+        raise RuntimeError("MMA 숫자 범위 오류")
+    return vals
+
+
+def fetch_mma_isaias_snapshot(current: dt.datetime) -> NewsItem:
+    observed=dt.datetime(2026,10,8,16,tzinfo=UTC)
+    if not (observed <= current and (current-observed).total_seconds()<=48*3600):
+        raise RuntimeError("MMA 허리케인 중단율 공식 자료 신선도 종료")
+    old=_parse_mma_isaias_report(fetch_bytes(MMA_OIL_ISAIAS_OCT7_URL,timeout=18,attempts=2).decode("utf-8","replace"),"2026-10-07")
+    latest=_parse_mma_isaias_report(fetch_bytes(MMA_OIL_ISAIAS_OCT8_URL,timeout=18,attempts=2).decode("utf-8","replace"),"2026-10-08")
+    title=(
+        f"MMA Isaias date=2026-10-08; oil_bpd={latest['oil_bpd']}; "
+        f"oil_pct={latest['oil_pct']:.2f}; gas_pct={latest['gas_pct']:.2f}; "
+        f"platforms={latest['platforms']}; previous_bpd={old['oil_bpd']}; "
+        f"previous_pct={old['oil_pct']:.2f}"
+    )
+    return NewsItem(title,"MMA",MMA_OIL_ISAIAS_OCT8_URL,
+                    observed.isoformat().replace("+00:00","Z"),
+                    observed.timestamp(),"us_gulf_isaias_shutin")
+
+
+def parse_china_reuters_resumption(raw_html: str, current: dt.datetime) -> NewsItem:
+    observed=dt.datetime(2026,10,9,3,27,tzinfo=UTC)
+    if not(observed<=current and (current-observed).total_seconds()<=36*3600):
+        raise RuntimeError("중국 Reuters 수출 재개 보도의 유효기간 경과")
+    text=normalize_text(_visible_text(raw_html))
+    if not all(v in text for v in ("china","october","fuel exports")) or not (
+        ("set to resume" in text or "to resume" in text)
+        and ("four traders" in text or "four trade sources" in text)
+    ):
+        raise RuntimeError("중국 Reuters 기사 식별·재개 예정 상태 검증 실패")
+    m=re.search(r"([0-9]+(?:\.[0-9]+)?)\s+million\s+(?:metric\s+)?tons",text)
+    if not m or not(0<float(m.group(1))<20):
+        raise RuntimeError("중국 정제품 수출 허가 관련 보도 물량 직접 확인 실패")
+    title=f"China to resume October fuel exports after holiday pause; four trade sources say; approved {float(m.group(1)):.1f} million metric tons"
+    return NewsItem(title,"Reuters",CHINA_REUTERS_20261009_URL,
+                    observed.isoformat().replace("+00:00","Z"),observed.timestamp(),
+                    "china_fuel_export_policy")
+
+
+def parse_hormuz_xinhua_review(raw_html: str,current: dt.datetime) -> NewsItem:
+    observed=dt.datetime(2026,10,9,1,11,tzinfo=UTC)
+    if not(observed<=current and (current-observed).total_seconds()<=36*3600):
+        raise RuntimeError("7일 이내 호르무즈 협상 보도 신선도 종료")
+    text=normalize_text(_visible_text(raw_html))
+    if not all(v in text for v in ("araghchi","seven-day plan","reviewing","hormuz")):
+        raise RuntimeError("신화통신 원문 아라그치 발언 미검증")
+    return NewsItem(
+        "Iran Araghchi reviewing US views on seven-day plan to reopen Strait of Hormuz within seven days",
+        "Xinhua",HORMUZ_7DAY_XINHUA_URL,
+        observed.isoformat().replace("+00:00","Z"),observed.timestamp(),
+        "hormuz_7day_diplomacy"
+    )
+
+def _build_hormuz_7day_alert_body(
+    news_rows: list[NewsItem], oil: Quote | None, current: dt.datetime, fx: Quote | None
+) -> str:
+    stage=_hormuz_7day_stage(news_rows)
+    state={
+        "reviewing_us_views":"이란, 미국 측 답변 검토 중",
+        "proposal_reported":"조건부 7일 이내 재개방안 전달",
+        "iran_response_reported":"이란 측 회신 전달 보도",
+        "agreement_reported":"합의 보도·실제 통항 미확인",
+    }
+    lines=[
+        current.astimezone(KST).strftime("%Y년 %m월 %d일 %H:%M KST"),
+        "", "[한눈에]",f"협상 상태     {state.get(stage,stage)}",
+        "의미          조건 수용 시 7일 이내 호르무즈 재개방 제안",
+        "실물          해협 실제 통항 정상화·안전은 아직 별도 확인",
+    ]
+    if oil is not None:
+        arrow="↑" if oil.change>0 else "↓" if oil.change<0 else "→"
+        lines.append(f"Brent         USD {oil.price:.2f} · {oil.change_pct:+.2f}% {arrow}")
+    lines.extend([
+        "", "[핵심]",
+        "아라그치 이란 외무장관은 미국 의견을 검토하고 수일 내 회신할 예정이라고 밝혔습니다.",
+        "→ '7일 이내 조건부 재개방'이지 '7일 동안 개방 확정'이 아닙니다.",
+        "", "[다음 확인]",
+        "외교          미국·이란 최종 답변 · 서명·발효 일자",
+        "물류          호르무즈 실제 통과 원유·선박 수·보험·안전",
+        "시장          원유가격 · 정제품 · VLCC 운임",
+        "", "[근거]",
+    ])
+    for row in news_rows[:2]:
+        d=dt.datetime.fromtimestamp(row.published_epoch,tz=UTC).astimezone(KST)
+        lines.append(f"{_source_name_ko(row.source)} · {d:%m-%d %H:%M KST} · {_news_title_ko(row)}")
+        if row.link: lines.append(f"원문: {row.link}")
+    return "\n".join(lines).strip()+"\n"
+
+
+def _build_us_gulf_isaias_alert_body(
+    news_rows: list[NewsItem], oil: Quote | None, current: dt.datetime, fx: Quote | None
+) -> str:
+    m=_extract_mma_isaias_data(news_rows)
+    if m is None: raise RuntimeError("MMA 공식 중단자료 불일치 · 발송 차단")
+    current_bpd=int(m["oil_bpd"])
+    previous_bpd=int(m["previous_bpd"])
+    lines=[
+        current.astimezone(KST).strftime("%Y년 %m월 %d일 %H:%M KST"),
+        "", "[현재 숫자]",
+        f"원유 중단     {current_bpd:,}배럴/일 · 해상 생산의 {float(m['oil_pct']):.2f}%",
+        f"전날          {previous_bpd:,}배럴/일 · {float(m['previous_pct']):.2f}%",
+        f"증가분        {current_bpd-previous_bpd:+,}배럴/일 · {float(m['oil_pct'])-float(m['previous_pct']):+.2f}%p",
+        f"추가          가스 {float(m['gas_pct']):.2f}% 중단 · 생산시설 {int(m['platforms'])}개 대피",
+    ]
+    if oil is not None and fx is not None:
+        exposure=current_bpd*oil.price*fx.price
+        lines.append(f"가격환산      하루 중단 물량×유가 약 {exposure/1e8:,.0f}억원 · 실제 매출 손실 아님")
+    lines.extend([
+        "", "[핵심]",
+        "안전을 위한 임시 가동 중단으로, 실제 설비 파손이나 영구 공급 감소와는 다릅니다.",
+        "→ 중동 호르무즈 물류 위험과 미국 멕시코만 생산 위험은 별도 공급 병목입니다.",
+        "", "[다음 확인]",
+        "미국          MMA 후속 중단율 · 피해 시설 · 재가동 시점",
+        "중동          실제 호르무즈 통항량 · 재개방 협상",
+        "제품          정유시설 가동·항만 수출·경유 가격",
+        "", "[근거]",
+        "미국 해양광물관리청(MMA) · 10월 8일 오전 11시(미국 중부시간) 기준",
+        f"원문: {MMA_OIL_ISAIAS_OCT8_URL}",
+        "", "[주의]",
+        "사업자 신고 기반 일별 중단 추정치이며 후속 복구 숫자를 확인해야 합니다.",
+    ])
+    return "\n".join(lines).strip()+"\n"
 
 
 def _build_china_fuel_export_policy_alert_body(
@@ -2372,6 +2674,10 @@ def _build_china_fuel_export_policy_alert_body(
 ) -> str:
     stage = _china_fuel_export_stage(news_rows)
     labels = {
+        "planned_resume": "재개 예정 · 실제 출항 미확인",
+        "approval_reported": "승인 물량 보도 · 실제 출항 미확인",
+        "physical_resumed": "선적·출항 재개 확인",
+        "resumption_reported": "재개 보도 · 실제 선적 확인 필요",
         "resumed": "수출 재개·허용",
         "extended": "수출 중단·제한 연장",
         "cargo_cancelled": "기존 10월 선적 취소",
@@ -2385,6 +2691,10 @@ def _build_china_fuel_export_policy_alert_body(
         "[한눈에]",
         f"중국 정책     {labels.get(stage, stage)}",
     ]
+    quota = _china_resumption_volume(news_rows)
+    if stage == "planned_resume" and quota is not None:
+        lines.append(f"10월 승인 보도  휘발유·경유·항공유 합산 약 {quota*100:.0f}만 톤 · 관계자 전언")
+        lines.append("9월 비교       400만 톤 초과 예상 · 10월 승인 보도량이 더 적음")
     if oil is not None:
         direction = "↓" if oil.change < 0 else "↑" if oil.change > 0 else "→"
         lines.append(f"Brent         USD {oil.price:.2f} · {oil.change_pct:+.2f}% {direction}")
@@ -2392,7 +2702,22 @@ def _build_china_fuel_export_policy_alert_body(
         won = "약세" if fx.change > 0 else "강세" if fx.change < 0 else "보합"
         lines.append(f"원·달러       {fx.price:,.2f}원 · {fx.change_pct:+.2f}% · 원화 {won}")
 
-    lines.extend([
+    if stage in ("planned_resume","approval_reported","physical_resumed","resumption_reported"):
+        lines.extend([
+            "", "[핵심 의미]",
+            "수출 재개 움직임은 아시아 제품 공급 압박을 낮출 수 있지만 실제 출항·도착 물량이 확인돼야 합니다.",
+            "→ 허가·재개 예정·화물 출항은 별도 단계입니다.",
+            "", "[한국 전이]",
+            "정유          디젤·항공유 정제마진 조정 가능성",
+            "항공·운송     실제 연료비 완화 여부 확인",
+            "물가          정제품 가격·환율 전이 시차 확인",
+            "", "[다음 확인]",
+            "중국          월별 승인 공고 · 실제 통관·선적·도착량",
+            "시장          싱가포르 경유 정제마진 · VLCC 운임",
+            "역풍          호르무즈 물류 차질·미국 허리케인 해상 생산 중단",
+        ])
+    else:
+        lines.extend([
         "",
         "[핵심 의미]",
         "원유가 회복돼도 중국이 경유·휘발유·항공유 수출을 막으면 글로벌 정제품 공급은 다시 타이트해질 수 있습니다.",
@@ -2408,9 +2733,8 @@ def _build_china_fuel_export_policy_alert_body(
         "제품          디젤·항공유·휘발유 수출량 · 중국 내 재고 · 정유 가동률",
         "아시아        싱가포르 경유 정제마진 · 10~11월 스프레드 · 한국 정유사 수출마진",
         "동시 변수     러시아 디젤 수출금지 · 미국 디젤 수출제한 검토 · 중동 정제품 회복률",
-        "",
-        "[근거]",
-    ])
+        ])
+    lines.extend(["", "[근거]"])
     for row in news_rows[:3]:
         published = dt.datetime.fromtimestamp(row.published_epoch, tz=UTC).astimezone(KST)
         lines.append(f"{_source_name_ko(row.source)} · {published:%m-%d %H:%M KST} · {_news_title_ko(row)}")
@@ -2419,7 +2743,9 @@ def _build_china_fuel_export_policy_alert_body(
     lines.extend([
         "",
         "[주의]",
-        "현재 공개 보도는 관계자 전언 기반입니다. 중국 정부의 공개 명령문이 확인되기 전에는 공식 전면 금지로 표현하지 않습니다.",
+        ("Reuters 관계자 전언에 따른 재개 예정이며 승인 보도량은 실제 선적·도착량이 아닙니다."
+         if stage in ("planned_resume","approval_reported","resumption_reported")
+         else "정부의 공개 명령문과 실제 선적·도착을 구분합니다."),
     ])
     return "\n".join(lines).strip() + "\n"
 
@@ -2880,6 +3206,10 @@ def build_physical_flow_alert_body(
         return _build_us_diesel_policy_alert_body(news_rows, oil, current, fx)
     if kind == "china_fuel_export_policy":
         return _build_china_fuel_export_policy_alert_body(news_rows, oil, current, fx)
+    if kind == "hormuz_7day_diplomacy":
+        return _build_hormuz_7day_alert_body(news_rows, oil, current, fx)
+    if kind == "us_gulf_isaias_shutin":
+        return _build_us_gulf_isaias_alert_body(news_rows, oil, current, fx)
     if kind == "saudi_asia_osp_change":
         return _build_saudi_osp_alert_body(news_rows, oil, current, fx)
     if kind == "ex_iran_crude_prewar_recovery":
@@ -3235,6 +3565,8 @@ def run_monitor(current: dt.datetime) -> int:
         "eu_diesel_reserve_policy",
         "us_diesel_export_policy",
         "china_fuel_export_policy",
+        "hormuz_7day_diplomacy",
+        "us_gulf_isaias_shutin",
         "india_gulf_import_recovery",
     }
     if kind in physical_kinds:
@@ -3260,6 +3592,10 @@ def run_monitor(current: dt.datetime) -> int:
             title = "미국 디젤 수출정책 변화"
         elif kind == "china_fuel_export_policy":
             title = "중국 정제품 수출정책 변화"
+        elif kind == "hormuz_7day_diplomacy":
+            title = "호르무즈 7일 이내 재개방 제안·미국 의견 검토"
+        elif kind == "us_gulf_isaias_shutin":
+            title = "미국 허리케인 원유생산 임시 중단 변화"
         elif kind == "oil_flow_recovery":
             title = "중동 원유 흐름 변화"
         elif kind == "ex_iran_crude_prewar_recovery":

@@ -686,6 +686,95 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         self.assertIn("최소 5.6 Mbd", body)
         self.assertIn("80% → 90% → 95%", body)
 
+    def test_china_resume_planned_vs_actual_shipment(self):
+        title="China to resume October fuel exports after brief halt, four trade sources say"
+        self.assertEqual(MODULE.classify_event(title),"china_fuel_export_policy")
+        self.assertEqual(MODULE._china_fuel_export_stage(title),"planned_resume")
+        self.assertEqual(MODULE._china_fuel_export_stage("China fuel cargoes departed from port"),"physical_resumed")
+        self.assertEqual(MODULE._china_fuel_export_stage("China resumed exports of refined fuel"),"resumption_reported")
+        self.assertEqual(MODULE._china_fuel_export_stage("China suspended fuel exports"),"suspended")
+
+    def test_china_new_reopening_does_not_combine_old_suspension(self):
+        now=dt.datetime(2026,10,9,13,tzinfo=dt.timezone.utc)
+        rows=[
+          MODULE.NewsItem("Chinese refiners suspend October fuel exports","Reuters","a",now.isoformat(),now.timestamp()-3600,"china_fuel_export_policy"),
+          MODULE.NewsItem("China to resume October fuel exports, four trade sources say","Reuters",
+            MODULE.CHINA_REUTERS_20261009_URL,now.isoformat(),now.timestamp(),"china_fuel_export_policy")
+        ]
+        events=MODULE.confirm_events(rows)
+        self.assertTrue(events)
+        self.assertEqual(MODULE._china_fuel_export_stage(events[0][1]),"planned_resume")
+        self.assertTrue(all(MODULE._china_fuel_export_stage(r.title)=="planned_resume" for r in events[0][1]))
+
+    def test_china_reuters_snapshot_370m_tons_is_not_actual_exports(self):
+        now=dt.datetime(2026,10,9,13,tzinfo=dt.timezone.utc)
+        html="""<html>China is set to resume October refined fuel exports after a brief halt
+        during Golden Week, four traders said Friday. China approved October exports
+        of gasoline diesel and jet fuel combined at around 3.7 million metric tons.</html>"""
+        row=MODULE.parse_china_reuters_resumption(html,now)
+        self.assertEqual(MODULE._china_resumption_volume([row]),3.7)
+        body=MODULE.build_physical_flow_alert_body("china_fuel_export_policy",[row],None,now)
+        self.assertIn("재개 예정",body)
+        self.assertIn("370만 톤",body)
+        self.assertIn("실제 출항",body)
+        self.assertLessEqual(len(body.splitlines()),34)
+
+    def test_china_syndicated_reuters_not_two_independent_sources(self):
+        now=dt.datetime(2026,10,9,13,tzinfo=dt.timezone.utc)
+        rows=[
+          MODULE.NewsItem("China to resume October fuel exports","Reuters","a",now.isoformat(),now.timestamp(),"china_fuel_export_policy"),
+          MODULE.NewsItem("China to resume October fuel exports","MarketScreener","b",now.isoformat(),now.timestamp(),"china_fuel_export_policy"),
+        ]
+        self.assertIsNone(MODULE.confirm_event(rows))
+
+    def test_hormuz_seven_day_is_conditional_not_seven_days_open(self):
+        now=dt.datetime(2026,10,9,13,tzinfo=dt.timezone.utc)
+        title="Iran Araghchi reviewing US views on seven-day plan to reopen Strait of Hormuz within seven days"
+        self.assertEqual(MODULE.classify_event(title),"hormuz_7day_diplomacy")
+        row=MODULE.NewsItem(title,"Xinhua",MODULE.HORMUZ_7DAY_XINHUA_URL,now.isoformat(),now.timestamp(),"hormuz_7day_diplomacy")
+        body=MODULE.build_physical_flow_alert_body("hormuz_7day_diplomacy",[row],None,now)
+        self.assertIn("7일 이내",body)
+        self.assertIn("7일 동안 개방 확정",body)
+        self.assertIn("실제 통항",body)
+
+    def test_mma_official_shutin_source_and_change(self):
+        def page(day,oil_pct,gas_pct,bpd,platforms):
+            return f"""<html>Marine Minerals Administration Isaias Thursday, October {day}, 2026
+            The Marine Minerals Administration estimates that approximately {oil_pct}% of the
+            current daily oil production and {gas_pct}% of the current daily natural gas production.
+            Personnel have been evacuated from a total of {platforms} production platforms.
+            Total Shut-in Percentage of GOA Production Oil, BOPD** Shut-in {bpd} (BOPD).</html>"""
+        old=MODULE._parse_mma_isaias_report(page(7,25.08,16.37,"511,619",8),"2026-10-07")
+        new=MODULE._parse_mma_isaias_report(page(8,62.89,57.35,"1,282,879",121),"2026-10-08")
+        self.assertEqual(new["oil_bpd"]-old["oil_bpd"],771260)
+        self.assertEqual(new["oil_pct"],62.89)
+
+    def test_mma_cannot_use_news_claim_without_official_url(self):
+        now=dt.datetime(2026,10,9,13,tzinfo=dt.timezone.utc)
+        row=MODULE.NewsItem(
+            "MMA Isaias date=2026-10-08; oil_bpd=1282879; oil_pct=62.89; gas_pct=57.35; platforms=121; previous_bpd=511619; previous_pct=25.08",
+            "Blog","https://fake.com",now.isoformat(),now.timestamp(),"us_gulf_isaias_shutin"
+        )
+        self.assertIsNone(MODULE._extract_mma_isaias_data([row]))
+        self.assertIsNone(MODULE.confirm_event([row]))
+
+    def test_direct_historical_sources_expire(self):
+        now=dt.datetime(2026,10,16,13,tzinfo=dt.timezone.utc)
+        with self.assertRaisesRegex(RuntimeError,"유효기간"):
+            MODULE.parse_china_reuters_resumption("",now)
+        with self.assertRaisesRegex(RuntimeError,"신선도"):
+            MODULE.parse_hormuz_xinhua_review("",now)
+        with self.assertRaisesRegex(RuntimeError,"신선도"):
+            MODULE.fetch_mma_isaias_snapshot(now)
+
+    def test_hormuz_direct_source_requires_original_text(self):
+        now=dt.datetime(2026,10,9,13,tzinfo=dt.timezone.utc)
+        with self.assertRaisesRegex(RuntimeError,"미검증"):
+            MODULE.parse_hormuz_xinhua_review("Hormuz opened for 7 days",now)
+        row=MODULE.parse_hormuz_xinhua_review(
+          "Araghchi seven-day plan Hormuz currently reviewing the US reply",now)
+        self.assertEqual(row.event_kind,"hormuz_7day_diplomacy")
+
     def test_china_fuel_export_suspension_classified(self):
         title = "Chinese refiners suspend October fuel exports, PetroChina cancels cargoes - Reuters"
         self.assertEqual(MODULE.classify_event(title), "china_fuel_export_policy")
