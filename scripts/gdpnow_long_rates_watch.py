@@ -38,7 +38,9 @@ OUT = ROOT / "out"
 OUT.mkdir(parents=True, exist_ok=True)
 STATE_PATH = ROOT / "data" / "gdpnow_long_rates_state.json"
 
-GDP_XLSX = "https://www.atlantafed.org/-/media/Project/Atlanta/FRBA/Documents/cqer/researchcq/gdpnow/GDPTrackingModelDataAndForecasts.xlsx"
+GDP_XLSX = "https://www.atlantafed.org/-/media/Documents/cqer/researchcq/gdpnow/GDPTrackingModelDataAndForecasts.xlsx"
+GDP_XLSX_MIRROR = "https://www.frbatlanta.org/-/media/Documents/cqer/researchcq/gdpnow/GDPTrackingModelDataAndForecasts.xlsx?hash=DE4A6EB66372475C6C2F19BDAF791C0D&la=en"
+FRED_GDPNOW_URL = "https://fred.stlouisfed.org/series/GDPNOW"
 GDP_COMMENTARY = "https://www.atlantafed.org/research-and-data/data/gdpnow/current-and-past-gdpnow-commentaries"
 TREASURY_XML_BASE = "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml"
 FRED_CSV = "https://fred.stlouisfed.org/graph/fredgraph.csv"
@@ -120,7 +122,19 @@ def fetch_contrib_rows() -> list[GdpRow]:
     pce+equipment+ipp+nonres+residential, so this exactly equals
     PCE + nonresidential fixed investment + residential investment.
     """
-    raw = http_get(GDP_XLSX, timeout=50)
+    raw = None
+    fetch_errors = []
+    for url in (GDP_XLSX, GDP_XLSX_MIRROR):
+        try:
+            candidate = http_get(url, timeout=22)
+            if not candidate.startswith(b"PK\\x03\\x04"):
+                raise ValueError("non-XLSX response (HTML/redirect): " + repr(candidate[:30]))
+            raw = candidate
+            break
+        except Exception as exc:
+            fetch_errors.append(f"{url.split('?')[0]}: {type(exc).__name__}: {exc}")
+    if raw is None:
+        raise RuntimeError(" | ".join(fetch_errors))
     wb = load_workbook(io.BytesIO(raw), read_only=False, data_only=True)
     if "Contributions" not in wb.sheetnames:
         raise RuntimeError(f"Contributions sheet not found; sheets={wb.sheetnames}")
@@ -193,6 +207,101 @@ def fetch_contrib_rows() -> list[GdpRow]:
         raise RuntimeError("No usable Contributions observations")
     rows.sort(key=lambda x: x.date)
     return rows
+
+
+
+def fetch_contrib_rows_fred() -> list[GdpRow]:
+    """Independent official Atlanta-Fed-via-FRED recovery route.
+
+    IMPORTANT: FRED series observations are revised IN PLACE within the current
+    quarter. Their quarterly observation date is NOT a release date.
+    This implementation obtains the release date from the FRED Updated metadata,
+    validates the component sum, and never invents a historical intraday quote.
+    """
+    series = [
+        "GDPNOW", "PCECONTRIBNOW", "EQUIPCONTRIBNOW",
+        "IPPCONTRIBNOW", "STRUCTCONTRIBNOW", "RESCONTRIBNOW",
+        "GOVCONTRIBNOW", "CHNGNETEXPORTSCONTRIBNOW",
+        "CHNGNETINVENTCONTRIBNOW",
+    ]
+    url = FRED_CSV + "?" + urllib.parse.urlencode({"id": ",".join(series)})
+    parsed: dict[str, float] = {}
+    period = ""
+    errors = []
+    try:
+        raw = http_get(url, timeout=24).decode("utf-8-sig", errors="replace")
+        for item in csv.DictReader(io.StringIO(raw)):
+            vals = {k: fnum(item.get(k)) for k in series}
+            if all(v is not None for v in vals.values()):
+                period = str(item.get("observation_date") or item.get("DATE") or "")
+                parsed = {k: float(v) for k, v in vals.items() if v is not None}
+    except Exception as exc:
+        errors.append("batch: " + str(exc))
+    if not parsed:
+        try:
+            individually = {k: fetch_fred_latest(k) for k in series}
+            period = individually["GDPNOW"][0]
+            if any(d != period for d, _ in individually.values()):
+                raise RuntimeError("inconsistent FRED observation quarters")
+            parsed = {k: v for k, (d, v) in individually.items()}
+        except Exception as exc:
+            errors.append("individual: " + str(exc))
+            raise RuntimeError("FRED official fallback failed: " + " | ".join(errors)) from exc
+    if not re.fullmatch(r"\d{4}-\d{2}-01", period):
+        raise RuntimeError(f"invalid FRED current-quarter observation period: {period}")
+    if period[5:7] not in ("01", "04", "07", "10"):
+        raise RuntimeError(f"invalid FRED quarter: {period}")
+    parts = [parsed[k] for k in series[1:]]
+    mismatch = abs(parsed["GDPNOW"] - sum(parts))
+    if mismatch > 0.14:
+        raise RuntimeError(f"FRED component reconciliation failed: discrepancy {mismatch:.4f}%p; refusing mixed vintages")
+    release_date = None
+    try:
+        raw = http_get(FRED_GDPNOW_URL, timeout=16).decode("utf-8", errors="replace")
+        parser = TextExtractor()
+        parser.feed(raw)
+        message = " ".join(parser.parts)
+        match = re.search(r"Updated:\s*([A-Za-z]+ \d{1,2}, \d{4})", message, flags=re.I)
+        if match:
+            release_date = dt.datetime.strptime(match.group(1), "%b %d, %Y").date().isoformat() if len(match.group(1).split()[0]) <= 3 else dt.datetime.strptime(match.group(1), "%B %d, %Y").date().isoformat()
+    except Exception as exc:
+        errors.append("FRED timestamp: " + str(exc))
+    if not release_date:
+        try:
+            meta = fetch_commentary_meta()
+            if meta.get("commentary_date") and meta.get("year") and abs(float(meta.get("headline", "999"))-parsed["GDPNOW"]) < 0.12:
+                release_date = dt.datetime.strptime(meta["commentary_date"]+" "+meta["year"], "%B %d %Y").date().isoformat()
+        except Exception as exc:
+            errors.append("Atlanta Fed commentary timestamp: " + str(exc))
+    if not release_date:
+        raise RuntimeError("GDPNow updated-date unverified; refuse to invent an event date: " + " | ".join(errors))
+    if (dt.datetime.now(KST).date()-dt.date.fromisoformat(release_date)).days > 14:
+        raise RuntimeError(f"FRED GDPNow data is stale: {release_date}")
+    current = GdpRow(
+        date=release_date,
+        release="FRED/Atlanta Fed 공식 GDPNow",
+        gdp=parsed["GDPNOW"], pce=parsed["PCECONTRIBNOW"],
+        equipment=parsed["EQUIPCONTRIBNOW"], ipp=parsed["IPPCONTRIBNOW"],
+        nonres=parsed["STRUCTCONTRIBNOW"], residential=parsed["RESCONTRIBNOW"],
+        govt=parsed["GOVCONTRIBNOW"],
+        net_exports=parsed["CHNGNETEXPORTSCONTRIBNOW"],
+        cipi=parsed["CHNGNETINVENTCONTRIBNOW"],
+    )
+    older = (load_state().get("latest") or {})
+    result = []
+    if older.get("date") and older.get("date") != current.date and older.get("gdp") is not None and older.get("cipi") is not None:
+        def oldnum(k: str) -> float | None:
+            return fnum(older.get(k))
+        result.append(GdpRow(
+            date=str(older["date"]), release=str(older.get("release") or "이전 저장 관측"),
+            gdp=float(older["gdp"]), pce=oldnum("pce"),
+            equipment=oldnum("equipment"), ipp=oldnum("ipp"),
+            nonres=oldnum("nonres"), residential=oldnum("residential"),
+            govt=oldnum("govt"), net_exports=oldnum("net_exports"),
+            cipi=float(older["cipi"]),
+        ))
+    result.append(current)
+    return result
 
 
 def fetch_commentary_meta() -> dict[str, str]:
@@ -292,7 +401,12 @@ def main() -> int:
     try:
         rows = fetch_contrib_rows()
     except Exception as e:
-        errors.append(f"Atlanta Fed Excel: {type(e).__name__}: {e}")
+        errors.append(f"Atlanta Fed workbook: {type(e).__name__}: {e}")
+        try:
+            rows = fetch_contrib_rows_fred()
+            errors.append("공식 FRED 독립 경로로 복구, 엑셀 원자료는 접근 실패")
+        except Exception as fallback_error:
+            errors.append(f"FRED official fallback: {type(fallback_error).__name__}: {fallback_error}")
 
     meta: dict[str, str] = {}
     try:
@@ -332,6 +446,12 @@ def main() -> int:
 
     latest = rows[-1]
     prev = rows[-2] if len(rows) >= 2 else None
+    if latest.gdp != latest.gdp or latest.cipi != latest.cipi:
+        raise RuntimeError("GDPNow contains NaN")
+    if dt.date.fromisoformat(latest.date) > now.date():
+        raise RuntimeError("GDPNow date is in the future; refusing erroneous source response")
+    if (now.date() - dt.date.fromisoformat(latest.date)).days > 14:
+        raise RuntimeError("GDPNow source older than 14 days; refusing stale alerts")
     final_sales = latest.gdp - latest.cipi
     cipi_share = (latest.cipi / latest.gdp * 100.0) if abs(latest.gdp) > 0.05 else None
     fixed_components = [latest.equipment, latest.ipp, latest.nonres, latest.residential]
@@ -358,9 +478,16 @@ def main() -> int:
                 "gdp": latest.gdp,
                 "cipi": latest.cipi,
                 "final_sales": final_sales,
+                "pce": latest.pce, "equipment": latest.equipment,
+                "ipp": latest.ipp, "nonres": latest.nonres,
+                "residential": latest.residential, "govt": latest.govt,
+                "net_exports": latest.net_exports,
             },
             "checked_at_kst": now.isoformat(timespec="seconds"),
         }
+    (OUT / "gdpnow_long_rates_rows.json").write_text(
+        json.dumps({"latest": latest.__dict__, "previous": prev.__dict__ if prev else None}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
     (OUT / "gdpnow_long_rates_pending_state.json").write_text(
         json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
