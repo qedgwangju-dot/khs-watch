@@ -485,10 +485,10 @@ def build_persistence_followup(op_date: str, offset_days: int, reaction: dict) -
     since_op = reaction["since_operation_bp"]
     since_pre = reaction["since_pre_operation_bp"]
     long_moves = [since_op[k] for k in ("10y", "20y", "30y")]
-    if all(x < 0 for x in long_moves):
-        verdict = "🟢 집행 뒤 장기금리 하락이 유지·확대"
-    elif all(x > 0 for x in long_moves):
-        verdict = "🔴 집행 뒤 장기금리가 다시 상승"
+    if all(x <= 0.1 for x in long_moves) and any(x < -0.1 for x in long_moves):
+        verdict = "🟢 집행 뒤 장기금리 하락·보합"
+    elif all(x >= -0.1 for x in long_moves) and any(x > 0.1 for x in long_moves):
+        verdict = "🔴 집행 뒤 장기금리 상승·보합"
     else:
         verdict = "🟡 집행 뒤 장기금리 방향 혼조"
 
