@@ -486,7 +486,7 @@ class KoreanTransformerExportTests(unittest.TestCase):
             "last_attempt_at_kst": "2026-10-09T21:35:00+09:00",
             "fetch_revision": w.KOREA_EXPORT_FETCH_REVISION,
         }
-        with mock.patch.dict(w.os.environ, {"KCS_DATA_GO_SERVICE_KEY": "secret"}):
+        with mock.patch.dict(w.os.environ, {"KCS_DATA_GO_SERVICE_KEY": "secret", "GITHUB_RUN_ATTEMPT": "1"}):
             with mock.patch.object(w, "fetch_korea_kcs_hs6_month") as fetch:
                 latest, events = w.update_korea_export_watch(now, cached)
                 self.assertEqual([x["kind"] for x in events], ["kcs_access_blocker"])
