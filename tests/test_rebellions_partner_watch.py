@@ -73,6 +73,13 @@ class RebellionsWatcherRegressionTests(unittest.TestCase):
         self.assertFalse(domestic_candidate(title))
         self.assertIsNone(capital_event_kind(title))
 
+    def test_named_acquisition_has_material_stage(self):
+        title = "리벨리온, AI 최적화 기업 스퀴즈비츠 인수"
+        self.assertEqual(capital_event_kind(title), "acquisition")
+        self.assertEqual(classify(title), "인수·합병")
+        self.assertEqual(material_stage(title), 5)
+        self.assertEqual(event_signature(title), "squeezebits|capital|acquisition")
+
     def test_second_equity_round_is_distinct(self):
         first = "리벨리온, CCK솔루션에 전략적 투자 참여"
         follow_on = "리벨리온, CCK솔루션에 후속 투자 단행"
