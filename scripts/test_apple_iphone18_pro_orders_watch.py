@@ -49,6 +49,35 @@ class IPhone18ProOrderTests(unittest.TestCase):
                 "investing.com")
             self.assertIsNone(m._relevant_news(row,self.state()))
 
+    def test_korean_tilde_range_not_flattened_to_high_end(self):
+        txt=("애플 아이폰 18 프로의 10월 부품 주문 물량이 당초 요청 대비 "
+             "15~20% 감축됐다.")
+        self.assertEqual(m._extract_cut(txt)["low"],15.0)
+        self.assertEqual(m._extract_cut(txt)["high"],20.0)
+
+    def test_percent_range_without_first_percent_symbol(self):
+        txt=("Apple iPhone 18 Pro October component orders reduced "
+             "15 to 20 percent versus original planned production requests.")
+        result=m._extract_cut(txt)
+        self.assertEqual((result["low"],result["high"]),(15.0,20.0))
+
+    def test_october_cut_with_november_future_sentence(self):
+        txt=("Apple iPhone 18 Pro October supplier component orders cut 15%-20% "
+             "from initial requests. November orders are still uncertain.")
+        self.assertEqual(m._extract_cut(txt)["period"],"2026-10")
+
+    def test_mixed_idc_pct_does_not_override_component_cut(self):
+        txt=("Apple iPhone 18 Pro October component orders cut 15-20% "
+             "relative to initial requested volumes. IDC annual smartphone "
+             "shipments forecast -16.7% and global ASP +27.6%.")
+        result=m._extract_cut(txt)
+        self.assertEqual((result["low"],result["high"]),(15.0,20.0))
+
+    def test_undated_mixed_market_percentage_is_not_supply_order_reduction(self):
+        txt=("Apple iPhone 18 Pro smartphone ASP rises 27.6% in 2026, "
+             "but no new component purchase order changes were confirmed.")
+        self.assertIsNone(m._extract_cut(txt))
+
     def test_china_early_sell_through_12pct_not_component_cut(self):
         headline = "iPhone 18 Pro China week 38 sales up 12% YoY, Apple share 33%"
         self.assertIsNone(m._extract_cut(headline))
