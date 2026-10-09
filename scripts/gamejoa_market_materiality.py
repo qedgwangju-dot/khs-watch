@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 126
+VERSION = 127
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -3416,7 +3416,7 @@ RULES = (
      r"생산|공장|운송|항만|비용|인상|교섭|협상|부결|타결|주식|지급|중단|감축|production|factory|plant|port|cost|talks|shares|halt|cut"),
     ("customer_discussions", ("earnings", "timeline"),
      CUSTOMER_DISCUSSION_SUBJECT,
-     r"협상|논의|검토|회동|협력(?!사)|합의|협약|negotiat|discuss|consider|meeting|collaborat|agreement"),
+     r"협상|협의|논의|검토|회동|협력(?!사)|합의|협약|negotiat|discuss|consider|meeting|collaborat|agreement"),
 )
 COMPILED_RULES = tuple(
     (kind, axes, re.compile(subject, re.I), re.compile(action, re.I))
