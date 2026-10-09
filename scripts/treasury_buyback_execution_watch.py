@@ -482,17 +482,48 @@ def official_yield_persistence(op_date: str, offset_days: int) -> dict | None:
     }
 
 
+# Presentation threshold, NOT a statistical proof of causality.
+# Daily Treasury CMT is published in 0.01 percentage point (1bp) increments.
+PERSISTENCE_MATERIAL_BP = 3.0
+
+
+def classify_yield_persistence(
+    since_operation_bp: dict,
+    since_pre_operation_bp: dict,
+    threshold_bp: float = PERSISTENCE_MATERIAL_BP,
+) -> str:
+    keys = ("10y", "20y", "30y")
+    current = [round(float(since_operation_bp[k]), 1) for k in keys]
+    baseline = [round(float(since_pre_operation_bp[k]), 1) for k in keys]
+    up = sum(x >= threshold_bp for x in current)
+    down = sum(x <= -threshold_bp for x in current)
+    below_pre = sum(x <= -threshold_bp for x in baseline)
+    above_pre = sum(x >= threshold_bp for x in baseline)
+
+    if up >= 2:
+        if below_pre >= 2:
+            return "🟡 장기금리 되돌림 확대·바이백 이전보다 낮은 수준 유지"
+        return "🔴 집행 이후 장기금리 의미 있는 상승"
+    if down >= 2:
+        return "🟢 집행 이후 장기금리 추가 하락"
+    if up >= 1 and down >= 1:
+        return "🟡 장기금리 만기별 방향 엇갈림"
+    if all(abs(x) < threshold_bp for x in current):
+        if below_pre >= 2:
+            return "⚪ 일간 미세반등·보합, 바이백 전 대비 장기금리 하락 유지"
+        if above_pre >= 2:
+            return "⚪ 일간 변동 미미, 바이백 이전보다 높은 금리"
+        return "⚪ 일간 장기금리 변화 미미·보합"
+    if below_pre >= 2:
+        return "🟡 일부 만기 변동·바이백 전 대비 하락 유지"
+    return "🟡 일부 만기만 유의한 변화·추가 확인"
+
+
 def build_persistence_followup(op_date: str, offset_days: int, reaction: dict) -> tuple[str, str, dict]:
     target = reaction["target"]
     since_op = reaction["since_operation_bp"]
     since_pre = reaction["since_pre_operation_bp"]
-    long_moves = [since_op[k] for k in ("10y", "20y", "30y")]
-    if all(x <= 0.1 for x in long_moves) and any(x < -0.1 for x in long_moves):
-        verdict = "🟢 집행 뒤 장기금리 하락·보합"
-    elif all(x >= -0.1 for x in long_moves) and any(x > 0.1 for x in long_moves):
-        verdict = "🔴 집행 뒤 장기금리 상승·보합"
-    else:
-        verdict = "🟡 집행 뒤 장기금리 방향 혼조"
+    verdict = classify_yield_persistence(since_op, since_pre)
 
     title = (
         f"📊 미 재무부 장기물 바이백 +{offset_days}영업일 금리 추적 — "
@@ -515,6 +546,9 @@ def build_persistence_followup(op_date: str, offset_days: int, reaction: dict) -
             f"30년 {since_pre['30y']:+.1f}bp"
         ),
         f"• 판정: <b>{verdict}</b>",
+        f"• 2년-10년 금리차 변화 {(since_op['10y']-since_op['2y']):+.1f}bp | 2년-30년 금리차 변화 {(since_op['30y']-since_op['2y']):+.1f}bp",
+        f"• 판정 기준: 장기 3개 만기 중 2개 이상이 ±{PERSISTENCE_MATERIAL_BP:g}bp 이상 움직여야 방향성 경보. ±1~2bp는 방향 강도를 과장하지 않는 보조구간입니다.",
+        "• 비교 기준: 운영일 대비 변화와 운영 직전 영업일 대비 누적 변화를 반드시 따로 보며, 금리 하락 유지와 일시적 되돌림을 구분합니다.",
         "• CMT는 거래소 종가가 아니라 뉴욕연은이 각 거래일 약 오후 3:30 ET에 수집한 지표성 매수호가를 바탕으로 재무부가 산출한 금리입니다.",
         "• 이 추적은 바이백 뒤 시장 방향의 지속성을 보는 것이며, 금리 변화를 바이백 하나의 인과효과로 단정하지 않습니다.",
         f'<a href="{TREASURY_YIELD_PAGE}">미 재무부 공식 금리</a>',
