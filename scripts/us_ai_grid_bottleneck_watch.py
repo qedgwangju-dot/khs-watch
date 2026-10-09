@@ -35,7 +35,7 @@ UA = "Mozilla/5.0 (compatible; khs-watch/1.1; +https://github.com/qedgwangju-dot
 # Separate Korean FOB exports from U.S. Census importer-country data.  Reported
 # article basket is not the same as the U.S. all-liquid 850421/22/23 basket.
 KOREA_EXPORT_VERSION = 1
-KOREA_EXPORT_FETCH_REVISION = 2
+KOREA_EXPORT_FETCH_REVISION = 3
 KOREA_EXPORT_HS6 = ("850422", "850423", "850434")
 KOREA_EXPORT_REFERENCE = {
     "month": "2026-09",
@@ -1193,9 +1193,11 @@ def kcs_error_category(exc: Exception) -> str:
     return "kcs_unexpected_error"
 
 
-def kcs_retry_due(now: datetime, previous: dict, key_available: bool) -> bool:
+def kcs_retry_due(now: datetime, previous: dict, key_available: bool, force: bool = False) -> bool:
     if not key_available:
         return previous.get("last_status") != "kcs_key_missing"
+    if force:
+        return True
     if previous.get("fetch_revision") != KOREA_EXPORT_FETCH_REVISION:
         return True
     if previous.get("last_status") == "kcs_key_missing":
@@ -1224,7 +1226,11 @@ def update_korea_export_watch(now: datetime, previous: dict) -> tuple[dict, list
 
     today = now.strftime("%Y-%m-%d")
     key_available = bool(os.environ.get("KCS_DATA_GO_SERVICE_KEY", "").strip())
-    if not kcs_retry_due(now, latest, key_available):
+    # A deliberate GitHub Actions re-run must actually recheck credentials.
+    # Ordinary scheduled/push runs still respect the daily backoff.
+    attempt = os.environ.get("GITHUB_RUN_ATTEMPT", "1").strip()
+    forced_by_rerun = attempt.isdecimal() and int(attempt) > 1
+    if not kcs_retry_due(now, latest, key_available, force=forced_by_rerun):
         # Migration guard: a prior access-denied state is still a material
         # operator blocker even if this attempt is throttled for the same day.
         denied = {
