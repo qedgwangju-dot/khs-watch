@@ -193,4 +193,8 @@ def send_purr_test_if_requested() -> bool:
 
 if __name__ == "__main__":
     if not send_purr_test_if_requested():
+        # Preserve the original SEC → 13F Telegram route first.
         watch.main()
+        # Separate quarter-end ownership from newer editorial analysis.
+        import thirteenf_context_watch
+        thirteenf_context_watch.main()
