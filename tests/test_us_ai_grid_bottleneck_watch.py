@@ -3,6 +3,9 @@ import pathlib
 import sys
 import unittest
 import zipfile
+from datetime import datetime
+from unittest import mock
+from zoneinfo import ZoneInfo
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "scripts"))
 import us_ai_grid_bottleneck_watch as w
@@ -240,6 +243,123 @@ class TransformerImportWatchTests(unittest.TestCase):
         self.assertIn("10,000kVA 초과 HS 850423에서는 같은 대체 패턴이 확인되지 않아", alert)
         self.assertIn("확대해석하지 않습니다", alert)
 
+
+
+class KoreanTransformerExportTests(unittest.TestCase):
+    def _response(self, hs, period="2026.09", us_dlr=100, kg=5, children=False, response_code="00"):
+        if children:
+            item = (f"<item><hsCd>{hs}0000</hsCd><year>{period}</year><statCd>US</statCd>"
+                    f"<expDlr>{us_dlr}</expDlr><expWgt>{kg}</expWgt></item>")
+        else:
+            item = (f"<item><hsCd>{hs}</hsCd><year>{period}</year><statCd>US</statCd>"
+                    f"<expDlr>{us_dlr}</expDlr><expWgt>{kg}</expWgt></item>")
+        return (f"<response><header><resultCode>{response_code}</resultCode></header>"
+                f"<body><items>{item}</items></body></response>").encode()
+
+    def test_official_hs6_only_exact_period_country_and_unit(self):
+        result = w.parse_korea_kcs_hs6_response(
+            self._response("850423", us_dlr=123450, kg=1025), "850423", "202609")
+        self.assertEqual(result["export_usd"], 123450)
+        self.assertEqual(result["net_weight_kg"], 1025)
+        self.assertEqual(result["month"], "2026-09")
+        with self.assertRaises(LookupError):
+            w.parse_korea_kcs_hs6_response(self._response("850423", period="2026.08"), "850423", "202609")
+
+    def test_kcs_rejects_auth_error_instead_of_treating_zero(self):
+        with self.assertRaises(ValueError):
+            w.parse_korea_kcs_hs6_response(self._response("850423", response_code="20"), "850423", "202609")
+        with self.assertRaises(ValueError):
+            w.parse_korea_kcs_hs6_response(b"invalid xml", "850423", "202609")
+
+    def test_kcs_parent_and_children_never_double_count(self):
+        xml = self._response("850423", us_dlr=100, kg=20)
+        xml = xml.replace(b"</items>", (
+            b"<item><hsCd>8504230000</hsCd><year>2026.09</year>"
+            b"<statCd>US</statCd><expDlr>100</expDlr><expWgt>20</expWgt></item></items>"
+        ))
+        result = w.parse_korea_kcs_hs6_response(xml, "850423", "202609")
+        self.assertEqual(result["export_usd"], 100)
+        self.assertEqual(result["level"], "HS6")
+
+    def test_kcs_child_only_and_duplicate_guards(self):
+        result = w.parse_korea_kcs_hs6_response(
+            self._response("850434", children=True), "850434", "202609")
+        self.assertEqual(result["level"], "HSK10_SUM")
+        xml = self._response("850434", children=True)
+        duplicate = xml.replace(b"</items>", (
+            b"<item><hsCd>8504340000</hsCd><year>2026.09</year>"
+            b"<statCd>US</statCd><expDlr>100</expDlr><expWgt>10</expWgt></item></items>"
+        ))
+        with self.assertRaises(ValueError):
+            w.parse_korea_kcs_hs6_response(duplicate, "850434", "202609")
+
+    def test_assembler_requires_all_codes_and_same_destination(self):
+        rows = [
+            w.parse_korea_kcs_hs6_response(self._response(c), c, "202609")
+            for c in w.KOREA_EXPORT_HS6
+        ]
+        result = w.assemble_korea_export_month(rows, "2026-09")
+        self.assertEqual(result["export_usd"], 300)
+        self.assertEqual(result["net_weight_kg"], 15)
+        self.assertEqual(result["average_usd_per_kg"], 20)
+        with self.assertRaises(ValueError):
+            w.assemble_korea_export_month(rows[:2], "2026-09")
+        rows[-1]["country"] = "CN"
+        with self.assertRaises(ValueError):
+            w.assemble_korea_export_month(rows, "2026-09")
+
+    def test_reported_value_price_decomposition(self):
+        r = w.KOREA_EXPORT_REFERENCE
+        self.assertAlmostEqual(
+            w.korea_claim_implied_weight_growth(r["yoy_pct"], r["unit_price_yoy_pct"]), 53.57142857, places=4)
+        self.assertAlmostEqual(
+            w.korea_claim_implied_weight_growth(r["mom_pct"], r["unit_price_mom_pct"]), 33.84798099, places=4)
+        with self.assertRaises(ValueError):
+            w.korea_claim_implied_weight_growth(10, -100)
+
+    def test_korea_us_customs_comparison_uses_exact_matching_hs_and_country(self):
+        prev = {"hs_codes": list(w.KOREA_EXPORT_HS6), "destination": "US",
+                "export_usd": 1000, "net_weight_kg": 100, "average_usd_per_kg": 10}
+        cur = {"hs_codes": list(w.KOREA_EXPORT_HS6), "destination": "US",
+               "export_usd": 1500, "net_weight_kg": 125, "average_usd_per_kg": 12}
+        g = w.korea_export_growth(cur, prev)
+        self.assertAlmostEqual(g["value_pct"], 50)
+        self.assertAlmostEqual(g["weight_pct"], 25)
+        self.assertAlmostEqual(g["unit_value_pct"], 20)
+        self.assertIsNone(w.korea_export_growth({**cur, "destination": "KR"}, prev))
+        self.assertIsNone(w.korea_export_growth({**cur, "hs_codes": ["850423"]}, prev))
+
+    def test_bootstrap_missing_key_never_promotes_official_or_resends(self):
+        now = datetime(2026, 10, 9, 19, 0, tzinfo=ZoneInfo("Asia/Seoul"))
+        with mock.patch.dict(w.os.environ, {"KCS_DATA_GO_SERVICE_KEY": ""}):
+            state, events = w.update_korea_export_watch(now, {})
+            self.assertEqual([x["kind"] for x in events], ["article_reference"])
+            self.assertEqual(state["last_status"], "kcs_key_missing")
+            self.assertEqual(state["official_us_by_month"], {})
+            next_state, other_events = w.update_korea_export_watch(now, state)
+            self.assertEqual(other_events, [])
+            self.assertTrue(next_state["baseline_notified"])
+
+    def test_fetched_usa_customs_month_alert_once(self):
+        now = datetime(2026, 10, 9, 19, 0, tzinfo=ZoneInfo("Asia/Seoul"))
+        def fake_fetch(hs, ym, country="US"):
+            return {"hs6": hs, "month": ym[:4] + "-" + ym[4:],
+                    "country": country, "export_usd": 100_000_000, "net_weight_kg": 5_000_000}
+        with mock.patch.dict(w.os.environ, {"KCS_DATA_GO_SERVICE_KEY": "dummy-token"}):
+            with mock.patch.object(w, "fetch_korea_kcs_hs6_month", side_effect=fake_fetch):
+                state, events = w.update_korea_export_watch(now, {})
+                self.assertEqual([x["kind"] for x in events], ["article_reference", "official_us_month"])
+                self.assertIn("2026-09", state["official_us_by_month"])
+                self.assertEqual(state["official_us_by_month"]["2026-09"]["export_usd"], 300_000_000)
+                state2, again = w.update_korea_export_watch(now, state)
+                self.assertEqual(again, [])
+                self.assertEqual(state2["latest_official_us_month"], "2026-09")
+        with mock.patch.object(w, "usdkrw_rate", return_value=(1400.0, "2026-10-08")):
+            text = w.build_korea_export_alert(events[0], state, {"latest_month": "2026-08"})
+            self.assertIn("기사 잠정치, 공식 HS 원자료 미대조", text)
+            self.assertIn("10,000kVA 초과", text)
+            self.assertIn("관세청 통계 API 명세", text)
+            self.assertNotIn("미국향 단독 실적이 아님", w.build_korea_export_alert(events[1], state, {}))
 
 class GridAlertTests(unittest.TestCase):
     def test_alert_is_compact_and_keeps_equipment_bottlenecks(self):
