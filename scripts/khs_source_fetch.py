@@ -33,6 +33,14 @@ def fetch_text(
     response_validator: Callable[[str], str | None] | None = None,
 ) -> tuple[str | None, str | None]:
     errors: list[str] = []
+    if (
+        response_validator is None
+        and url.rstrip("/").lower()
+            == "https://home.treasury.gov/news/press-releases/sb0652"
+    ):
+        # Treasury's original host sometimes returns HTTP 200 challenge pages.
+        # Such responses are not verified primary-source press releases.
+        response_validator = _treasury_oisp_body_error
     proxy_base = os.getenv("KHS_SOURCE_PROXY_URL", "").strip()
     proxy_first = os.getenv("KHS_SOURCE_PROXY_FIRST", "").strip().lower() in TRUE_VALUES
     proxy_timeout = _env_int("KHS_SOURCE_PROXY_TIMEOUT_SECONDS", 12)
@@ -48,6 +56,7 @@ def fetch_text(
             direct_timeout=min(timeout, direct_fallback_cap),
             response_validator=response_validator,
         )
+        body, error = _validate_response(body, error, response_validator)
         if error is None:
             return body, None
         official_copy, backup_error = _try_treasury_oisp_official_bulletin(
@@ -89,6 +98,25 @@ def fetch_text(
     return None, " | ".join(errors)
 
 
+def _treasury_oisp_body_error(body: str) -> str | None:
+    """Return a rejection reason unless the complete first OISP case is present."""
+    plain = re.sub(r"<[^>]+>", " ", html.unescape(body or "")).lower()
+    plain = re.sub(r"\s+", " ", plain)
+    required = (
+        "treasury announces enforcement penalty for violation of outbound program",
+        "u.s. department of the treasury",
+        "october 7, 2026",
+        "amidi",
+        "noematrix",
+        "92,478",
+        "200,000",
+        "outbound investment security program",
+    )
+    if not all(marker in plain for marker in required):
+        return "Treasury OISP original body does not match the enforcement case"
+    return None
+
+
 def _try_treasury_oisp_official_bulletin(
     source_url: str, user_agent: str, accept: str, timeout: int
 ) -> tuple[str | None, str | None]:
@@ -103,19 +131,7 @@ def _try_treasury_oisp_official_bulletin(
     body, error = _fetch_direct(backup, user_agent, accept, min(max(timeout, 8), 15))
     if error is not None:
         return None, f"official Treasury bulletin unavailable: {error}"
-    plain = re.sub(r"<[^>]+>", " ", html.unescape(body or "")).lower()
-    plain = re.sub(r"\s+", " ", plain)
-    required = (
-        "treasury announces enforcement penalty for violation of outbound program",
-        "u.s. department of the treasury",
-        "october 7, 2026",
-        "amidi",
-        "noematrix",
-        "92,478",
-        "200,000",
-        "outbound investment security program",
-    )
-    if not all(marker in plain for marker in required):
+    if _treasury_oisp_body_error(body):
         return None, "official Treasury bulletin mismatch: required case facts missing"
     print("khs_treasury_oisp_official_bulletin_fallback=verified source=USTREAS")
     return body, None
