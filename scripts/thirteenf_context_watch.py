@@ -17,7 +17,17 @@ def should_send(state):
 
 def amount(v,r):
     k=v*r/100_000_000
-    return f"{v/1_000_000:,.3f}백만달러(약 {k:,.1f}억원)"
+    n=int(v)
+    eok, rem=divmod(n,100_000_000)
+    man, rest=divmod(rem,10_000)
+    parts=[]
+    if eok:
+        parts.append(f"{eok:,}억")
+    if man:
+        parts.append(f"{man:,}만")
+    if rest:
+        parts.append(f"{rest:,}")
+    return f"{''.join(parts)}달러(약 {k:,.1f}억원)"
 
 def link(label,url):
     return f'<a href="{html.escape(url,quote=True)}">{html.escape(label)}</a>'
