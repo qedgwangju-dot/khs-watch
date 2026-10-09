@@ -1543,8 +1543,14 @@ def verify_alert(test_mode=False):
         issues.append("동일 아덴 국제공항 공격을 매체별 재보도로 중복 송출")
     # 기사 출처가 달라도 10월 8일 동일 정책 발언이 여러 항목이면 전송을 중단한다.
     # 서로 다른 원문 URL 검사만으로는 한국어 재보도 중복을 탐지하지 못한다.
+    all_lines = text.splitlines()
+    item_title_lines = [
+        all_lines[i + 1] for i, line in enumerate(all_lines[:-1])
+        if re.match(r"^[🔴🟢🟡]?\\s*\\[(?:속보|신규|후속)\\]\\s*<b>\\d+\\.", line)
+    ]
+    # 같은 1건 안의 본문·신호가 모두 원발언을 인용해도 중복으로 세지 않는다.
     repeated_midterm_pledges = [
-        line for line in text.splitlines()
+        line for line in item_title_lines
         if re.search(r"트럼프", line)
         and re.search(r"(?:중간선거 전|중간선거 이전|11월 ?3일.{0,14}전)", line)
         and re.search(r"이란.{0,8}공격", line)
