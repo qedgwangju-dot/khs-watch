@@ -56,6 +56,7 @@ IMMUTABLE_OFFICIAL_REFERENCE_PAGES = {
     "미 하원의장실 White House Accord 공식 발표",
     "백악관 Super Intelligence 행정명령",
     "백악관 Super Intelligence 팩트시트",
+    "Anthropic Cyber Mission 공식 출범",
 }
 
 NEWS_QUERIES = [
@@ -109,6 +110,7 @@ NEWS_QUERIES = [
     'site:whitehouse.gov "Super Intelligence" safety regulation accord',
     'site:federalregister.gov "Super Intelligence" executive order regulation',
     'site:congress.gov "Super Intelligence" AI safety bill',
+    '(Anthropic "Cyber Mission" OR "Critical Infrastructure Defense Program" OR "OSS Scanner") (partners OR deployments OR customers OR scanner OR funding)',
     '"Thomas Lind" OpenAI ONCD cyber strategic risk',
     '"Dean Ball" OpenAI OSTP Strategic Futures AI Action Plan',
     '(OpenAI OR Anthropic OR Google DeepMind OR xAI OR Meta) (ONCD OR OSTP OR NSA OR NSC OR Pentagon) (hire OR hired OR joins OR joined OR appoint OR appointed) "national security"',
@@ -116,7 +118,7 @@ NEWS_QUERIES = [
 ]
 
 OFFICIAL_SOURCE_HINTS = (
-    "openai", "nipa", "과학기술정보통신부", "msit", "kisa", "한국인터넷진흥원",
+    "openai", "anthropic", "nipa", "과학기술정보통신부", "msit", "kisa", "한국인터넷진흥원",
     "nists", "nist", "cisa", "gov.uk", "aisi", "european commission",
     "europa.eu", "oecd", "white house", "whitehouse.gov", "commerce department", "ntia",
     "house.gov", "u.s. house", "house of representatives",
@@ -144,6 +146,8 @@ AI_TOPIC_TERMS = (
     "frontier responsibilities", "super intelligence", "superintelligence",
     "인공지능", "ai", "사이버보안", "보안 ai", "파운데이션 모델", "안전연구소",
     "프런티어 책임", "공동 서약", "공동 합의", "감독위원회",
+    "anthropic cyber mission", "critical infrastructure defense program",
+    "oss scanner", "사이버 방어 사업", "핵심 기반시설 방어",
 )
 
 ACTION_TERMS = (
@@ -174,6 +178,8 @@ ACTION_TERMS = (
     "joint commitment", "accord", "signatory", "signatories", "oversight board",
     "board committee", "independent board", "self-police", "self-regulation",
     "codify", "codified", "best practices", "common standards",
+    "critical infrastructure defense program", "oss scanner", "cyber mission",
+    "defense program", "security scanning",
     "hire", "hired", "joins", "joined", "appoint", "appointed",
     "national security policy", "strategic risk", "head of policy",
     "oncd", "office of the national cyber director", "ostp",
@@ -212,6 +218,7 @@ CONCRETE_ACTION_TERMS = (
     "joint commitment", "accord", "signed", "signatory", "oversight board",
     "board committee", "independent board", "common standards", "best practices",
     "codified", "codify", "법제화", "성문화", "감독위원회", "이사회 위원회",
+    "사이버 방어 사업", "오픈소스 보안", "취약점 검사", "핵심 기반시설",
     "hired", "joined", "appointed", "national security policy", "strategic risk",
     "영입", "합류", "임명", "국가안보 정책", "전략적 리스크",
     "표준 제정", "공고", "선정", "계약", "수주", "조달", "입찰",
@@ -219,6 +226,10 @@ CONCRETE_ACTION_TERMS = (
 )
 
 CATEGORY_PATTERNS = [
+    ("Anthropic 핵심 기반시설·오픈소스 방어 사업", (
+        "anthropic cyber mission", "critical infrastructure defense program",
+        "cidp", "oss scanner", "핵심 기반시설 방어", "오픈소스 취약점 검사",
+    )),
     ("프런티어 AI 국가안보·정책 핵심인사 이동", (
         "thomas lind", "dean ball",
         "office of the national cyber director", " oncd",
@@ -360,7 +371,8 @@ WATCH_ENTITIES = (
     "openai", "anthropic", "google", "meta", "microsoft", "nvidia", "xai",
     "white house", "trump", "joint commitment on frontier responsibilities",
     "white house accord on super intelligence",
-    "oncd", "office of the national cyber director", "ostp",
+    "anthropic cyber mission", "critical infrastructure defense program",
+    "oss scanner", "oncd", "office of the national cyber director", "ostp",
     "office of science and technology policy", "nsa", "national security agency",
     "thomas lind", "dean ball",
     "palo alto", "unit 42", "crowdstrike", "ibm", "openshell",
@@ -372,6 +384,7 @@ WATCH_ENTITIES = (
 
 KNOWN_OFFICIAL_PAGES = {
     "미 하원의장실 White House Accord 공식 발표": "https://mikejohnson.house.gov/news/documentsingle.aspx?DocumentID=2939",
+    "Anthropic Cyber Mission 공식 출범": "https://www.anthropic.com/news/anthropic-cyber-mission",
     "백악관 Super Intelligence 행정명령": "https://www.whitehouse.gov/presidential-actions/2026/09/inaugurating-the-era-of-super-intelligence/",
     "백악관 Super Intelligence 팩트시트": "https://www.whitehouse.gov/fact-sheets/2026/09/fact-sheet-president-donald-j-trump-inaugurates-the-era-of-super-intelligence/",
     "OpenAI 프런티어 학습 Safety Case": "https://openai.com/index/towards-safety-cases-for-frontier-ai-training/",
@@ -573,6 +586,7 @@ def detect_entity(text: str) -> str:
         )),
         ("네이버클라우드", ("네이버클라우드", "naver cloud")),
         ("OpenAI", ("openai",)),
+        ("Anthropic", ("anthropic cyber mission", "anthropic", "oss scanner", "critical infrastructure defense program")),
         ("NIPA", ("nipa", "정보통신산업진흥원")),
         ("과학기술정보통신부", ("과학기술정보통신부", "과기정통부", "msit")),
         ("S2W", ("s2w",)),
@@ -603,7 +617,18 @@ def detect_entity(text: str) -> str:
     return "AI 안전·보안 생태계"
 
 
+def is_anthropic_mission_launch_baseline(item: dict) -> bool:
+    url = (item.get("url") or "").lower()
+    title = (item.get("title") or "").lower()
+    return (
+        "anthropic.com/news/anthropic-cyber-mission" in url
+        or "introducing the anthropic cyber mission" in title
+    )
+
+
 def material(item: dict) -> bool:
+    if is_anthropic_mission_launch_baseline(item):
+        return False
     combined = f" {item.get('title','')} {item.get('description','')} "
     low = combined.lower()
     if not any(x in low for x in AI_TOPIC_TERMS):
@@ -725,7 +750,7 @@ def source_label(source: str) -> str:
         ("white house","백악관"), ("house of representatives","미 하원"),
         ("u.s. house","미 하원"), ("associated press","AP"), ("ap news","AP"),
         ("reuters","Reuters"), ("연합뉴스","연합뉴스"), ("yonhap","연합뉴스"),
-        ("openai","OpenAI"), ("nvidia","NVIDIA"), ("nipa","NIPA"), ("과학기술정보통신부","과기정통부"),
+        ("openai","OpenAI"), ("anthropic","Anthropic"), ("nvidia","NVIDIA"), ("nipa","NIPA"), ("과학기술정보통신부","과기정통부"),
         ("naver","NAVER"), ("s2w","S2W"), ("lg cns","LG CNS"),
         ("zdnet","ZDNet"), ("전자신문","전자신문"), ("etnews","전자신문"),
         ("파이낸셜뉴스","파이낸셜뉴스"), ("한국경제","한국경제"),
@@ -738,6 +763,8 @@ def source_label(source: str) -> str:
 
 
 def official_page_source(name: str) -> str:
+    if name.startswith("Anthropic"):
+        return "Anthropic"
     if name.startswith("NVIDIA"):
         return "NVIDIA"
     if name.startswith("NIPA"):
@@ -753,6 +780,7 @@ def official_page_source(name: str) -> str:
 
 def forced_official_page_category(name: str) -> str:
     mapping = {
+        "Anthropic Cyber Mission 공식 출범": "Anthropic 핵심 기반시설·오픈소스 방어 사업",
         "미 하원의장실 White House Accord 공식 발표": "프런티어 AI 공동 서약·서명기업 변화",
         "백악관 Super Intelligence 행정명령": "백악관 Super Intelligence 정책·법제화",
         "백악관 Super Intelligence 팩트시트": "백악관 Super Intelligence 정책·법제화",
@@ -767,6 +795,7 @@ def forced_official_page_category(name: str) -> str:
 
 def forced_official_page_entity(name: str) -> str:
     mapping = {
+        "Anthropic Cyber Mission 공식 출범": "Anthropic",
         "미 하원의장실 White House Accord 공식 발표": "백악관·프런티어 AI 공동서약",
         "백악관 Super Intelligence 행정명령": "백악관 Super Intelligence 정책",
         "백악관 Super Intelligence 팩트시트": "백악관 Super Intelligence 정책",
@@ -966,7 +995,9 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
             f"<b>{idx}. {html.escape(rep['entity'])} · {html.escape(rep['category'])}</b>",
             f"• {html.escape(concise_fact(rep))}",
         ]
-        if rep["category"] == "프런티어 AI 국가안보·정책 핵심인사 이동":
+        if rep["category"] == "Anthropic 핵심 기반시설·오픈소스 방어 사업":
+            lines.append("• <b>의미</b>: 핵심 기반시설 방어 프로그램(CIDP)의 실제 참여기관·현장 적용과 OSS Scanner의 무료 보안검사 채택량을 추적. 무료 서비스·연구지원과 확인된 유료 계약·반복매출을 구분")
+        elif rep["category"] == "프런티어 AI 국가안보·정책 핵심인사 이동":
             lines.append("• <b>의미</b>: 정부의 AI·사이버·정보기관 정책 설계자가 프런티어 AI 기업의 국가안보 조직으로 이동해 규제 대응·정부 사전검토·사이버 전략과 기업 의사결정의 연결이 강화되는지 확인")
         elif rep["category"] == "백악관 Super Intelligence 정책·법제화":
             lines.append("• <b>의미</b>: Super Intelligence 공식 정의·연방 후속조치·입법 문구가 바뀌어 자율 안전협약이 실제 법·규제 체계로 이동하는지 확인")
