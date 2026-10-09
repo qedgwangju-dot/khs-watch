@@ -49,6 +49,9 @@ FRED_CSV = "https://fred.stlouisfed.org/graph/fredgraph.csv?id={series}"
 FRED_SP500 = "https://fred.stlouisfed.org/series/SP500"
 FRED_YIELDS = "https://fred.stlouisfed.org/series/DGS10"
 FRED_FED_POLICY = "https://fred.stlouisfed.org/series/DFEDTARU"
+TREASURY_OFFICIAL_CURVE = "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
+FED_MONETARY_RSS = "https://www.federalreserve.gov/feeds/press_monetary.xml"
+FED_CURRENT_VERIFIED_FALLBACK = "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm"
 HARTNETT_REPORT_DATE = "October 9, 2026"
 HARTNETT_REPORT_WEEK = "October 7, 2026"
 HARTNETT_REPORT_URL = "https://ca.finance.yahoo.com/news/investors-pour-cash-set-stay-084543679.html"
@@ -518,41 +521,109 @@ def fetch_sp500_context():
     }
 
 
-def fetch_hartnett_macro_context():
-    """Official Fed/Treasury observations; fail closed when dates or units are wrong."""
-    ten = latest_fred("DGS10")
-    two = latest_fred("DGS2")
-    fed = latest_fred("DFEDTARU")
-    dt = ten["date"]
-    if two["date"] != dt:
-        raise RuntimeError(f"Treasury DGS10/DGS2 reference date mismatch: {dt} vs {two['date']}")
-    today = datetime.now(ZoneInfo("America/New_York")).date()
-    if (today - dt).days < 0 or (today - dt).days > 7:
-        raise RuntimeError(f"Treasury yields stale or future-dated: {dt}, today={today}")
-    if (today - fed["date"]).days < 0 or (today - fed["date"]).days > 7:
-        raise RuntimeError(f"Federal funds upper target stale: {fed['date']}")
-    y10 = float(ten["value"])
-    y2 = float(two["value"])
-    upper = float(fed["value"])
-    if not (0.1 <= y10 <= 20 and 0.1 <= y2 <= 20 and 0 <= upper <= 20):
-        raise RuntimeError("Fed market rate percentage range sanity failed")
-    if len(ten["rows"]) < 6:
-        raise RuntimeError("DGS10 five-observation history missing")
-    five_bp = round((y10 - float(ten["rows"].iloc[-6]["value"])) * 100.0, 1)
+def _treasury_official_history():
+    """Daily par yields; compare 2-year and 10-year on one official date."""
+    r = get(TREASURY_OFFICIAL_CURVE, timeout=20)
+    tables = pd.read_html(StringIO(r.text))
+    candidates = []
+    for tab in tables:
+        t = normalize_columns(tab)
+        date_col = next((x for x in t.columns if re.fullmatch(r"Date", str(x), re.I)), None)
+        two_col = next((x for x in t.columns if re.fullmatch(r"2\s*YR", str(x), re.I)), None)
+        ten_col = next((x for x in t.columns if re.fullmatch(r"10\s*YR", str(x), re.I)), None)
+        if not (date_col and two_col and ten_col):
+            continue
+        for _, row in t.iterrows():
+            try:
+                d = datetime.strptime(str(row[date_col]).strip(), "%m/%d/%Y").date()
+            except Exception:
+                continue
+            y2, y10 = parse_num(row[two_col]), parse_num(row[ten_col])
+            if y2 is not None and y10 is not None and 0.1 < y2 < 20 and 0.1 < y10 < 20:
+                candidates.append((d, y2, y10))
+    by_date = {x[0]: x for x in candidates}
+    dates = sorted(by_date)
+    if len(dates) < 6:
+        raise RuntimeError(f"US Treasury official 2Y/10Y rows insufficient: {len(dates)}")
+    latest = by_date[dates[-1]]
+    prior_5 = by_date[dates[-6]]
     return {
-        "treasury_date": dt.isoformat(),
-        "yield_10y_pct": round(y10, 3),
-        "yield_2y_pct": round(y2, 3),
-        "yield_10y_5d_bp": five_bp,
-        "curve_10y_minus_2y_bp": round((y10-y2)*100.0, 1),
-        "fed_target_upper_pct": round(upper, 3),
-        "fed_effective_date": fed["date"].isoformat(),
-        "bond_level": "elevated" if y10 >= 5.30 else "below_5_30",
-        "bond_momentum": "rise_20bp" if five_bp >= 20.0 else "fall_20bp" if five_bp <= -20.0 else "neutral",
-        "url_yields": FRED_YIELDS,
-        "url_fed": FRED_FED_POLICY,
+        "date": latest[0], "y2": latest[1], "y10": latest[2],
+        "five_day_bp": round((latest[2] - prior_5[2]) * 100.0, 1),
     }
 
+
+def _fractional_rate(x):
+    s = str(x).strip()
+    if "-" in s:
+        whole, frac = s.split("-", 1)
+        num, den = frac.split("/", 1)
+        return float(whole) + float(num)/float(den)
+    return float(s)
+
+
+def _fed_target_from_official():
+    """Require dated Fed FOMC statement; never infer policy from Treasury yields."""
+    today = datetime.now(ZoneInfo("America/New_York")).date()
+    candidates = []
+    try:
+        for item in rss_items(FED_MONETARY_RSS):
+            url = str(item.get("link") or "")
+            m = re.search(r"monetary(20\d{6})a\.htm", url)
+            if m:
+                d = datetime.strptime(m.group(1), "%Y%m%d").date()
+                if d <= today:
+                    candidates.append((d,url))
+    except Exception:
+        pass
+    candidates.append((datetime(2026,9,16).date(), FED_CURRENT_VERIFIED_FALLBACK))
+    candidates = sorted(set(candidates), reverse=True)
+    last_error = "none"
+    for d,url in candidates:
+        if (today-d).days > 40:
+            continue
+        try:
+            page = clean_text(get(url, timeout=16).text)
+            if not re.search(r"federal funds rate", page, re.I):
+                continue
+            m = re.search(
+                r"target range for the federal funds rate.{0,100}?\b(\d+(?:-\d+/\d+)?(?:\.\d+)?)\s+to\s+(\d+(?:-\d+/\d+)?(?:\.\d+)?)\s+percent",
+                page, re.I
+            )
+            if not m:
+                last_error = f"FOMC target range not found in {url}"
+                continue
+            low,upper = _fractional_rate(m.group(1)), _fractional_rate(m.group(2))
+            if not (0 <= low <= upper <= 20 and 0.1 <= upper-low <= 1.0):
+                raise RuntimeError(f"FOMC target range outside sanity checks: {low}–{upper}")
+            return {"rate_upper":upper,"date":d,"url":url}
+        except Exception as e:
+            last_error = f"{type(e).__name__}: {e}"
+    raise RuntimeError("No verified current FOMC statement: "+last_error)
+
+
+def fetch_hartnett_macro_context():
+    """Official Treasury and FOMC only; withhold joint interpretation on failure."""
+    curve = _treasury_official_history()
+    fed = _fed_target_from_official()
+    dt = curve["date"]
+    today = datetime.now(ZoneInfo("America/New_York")).date()
+    if not (0 <= (today-dt).days <= 7):
+        raise RuntimeError(f"US Treasury yields stale or future-dated: {dt}")
+    y10,y2,upper = float(curve["y10"]),float(curve["y2"]),float(fed["rate_upper"])
+    five_bp = curve["five_day_bp"]
+    return {
+        "treasury_date":dt.isoformat(),
+        "yield_10y_pct":round(y10,3), "yield_2y_pct":round(y2,3),
+        "yield_10y_5d_bp":five_bp,
+        "curve_10y_minus_2y_bp":round((y10-y2)*100.0,1),
+        "fed_target_upper_pct":round(upper,3),
+        "fed_effective_date":fed["date"].isoformat(),
+        "bond_level":"elevated" if y10>=5.30 else "below_5_30",
+        "bond_momentum":"rise_20bp" if five_bp>=20 else "fall_20bp" if five_bp<=-20 else "neutral",
+        "url_yields":TREASURY_OFFICIAL_CURVE,
+        "url_fed":fed["url"],
+    }
 
 def election_window_label(reference_date):
     """A calendar reminder is not a forecast of an election outcome."""
@@ -1428,8 +1499,8 @@ if should_alert:
     body.append(
         f'• 근거: <a href="{html.escape(HARTNETT_REPORT_URL, quote=True)}">Bloomberg 인용 보도</a> / '
         f'<a href="{html.escape(ICI_MMF, quote=True)}">ICI 미국 MMF 공식</a> / '
-        f'<a href="{html.escape(FRED_YIELDS, quote=True)}">연준 10년물</a> / '
-        f'<a href="{html.escape(FRED_FED_POLICY, quote=True)}">연준 기준금리</a> / '
+        f'<a href="{html.escape(hartnett_macro["url_yields"] if hartnett_macro else TREASURY_OFFICIAL_CURVE, quote=True)}">미 재무부 국채금리</a> / '
+        f'<a href="{html.escape(hartnett_macro["url_fed"] if hartnett_macro else FED_CURRENT_VERIFIED_FALLBACK, quote=True)}">연준 FOMC 기준금리</a> / '
         f'<a href="https://www.fec.gov/documents/5910/2026pdates.pdf">미국 선거일 공식자료</a>'
     )
 
