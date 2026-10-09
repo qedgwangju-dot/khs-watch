@@ -1108,7 +1108,6 @@ china_oct_reuters["score"] = score
 china_oct_reuters["tags"] = china_tags
 china_oct_reuters["age"] = mod.watch.age_minutes(china_oct_reuters, china_now)
 china_render = mod.watch.build_alert([china_oct_reuters], [], china_now)
-print("CHINA_RENDER_DEBUG", repr(china_render[:2000]))
 check("china-fuel-render-yellow-stage", "중국 · 정제연료 수출·공급변화" in china_render and "🟡" in china_render and "수출 재개 예정" in china_render)
 
 china_finjuice = row(
@@ -1165,6 +1164,14 @@ _, customs_tags = mod.score_item(china_customs, china_now)
 check("china-fuel-customs-title-persistence", "공식자료" in mod.watch.translate_ko(china_customs["title_original"]) and "선적 재개 보도" not in mod.watch.translate_ko(china_customs["title_original"]))
 
 check("china-fuel-customs-event-id-separate", mod.item_id(china_customs) != mod.item_id(china_approved))
+china_customs_own_source = row(
+    "2026年10月成品油出口数据公布",
+    source="海关总署",
+    description="中国海关总署发布成品油出口月度统计",
+    link="https://www.customs.gov.cn/official/monthly-refined-fuel",
+)
+check("china-fuel-customs-without-china-in-headline", mod._china_fuel_stage(china_customs_own_source) == "customs" and mod.final_color(china_customs_own_source) == "green")
+
 
 china_halt = row(
     "China suspends October refined fuel exports",
