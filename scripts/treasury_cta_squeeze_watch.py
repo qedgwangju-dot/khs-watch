@@ -255,8 +255,8 @@ def _cftc_snapshot_live() -> dict:
         # Do not infer a week-on-week change from 15-minute polling snapshots.
         section = text[m.end():m.end() + 1800]
         delta = re.search(
-            r"Changes from:\\s*([A-Za-z]+\\s+\\d{1,2},\\s+20\\d{2})"
-            r"\\s+Total Change is:[^\\n]*\\n\\s*([^\\n]+)",
+            r"Changes from:\s*([A-Za-z]+\s+\d{1,2},\s+20\d{2})"
+            r"\s+Total Change is:[^\n]*\n\s*([^\n]+)",
             section,
             re.I,
         )
