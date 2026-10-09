@@ -193,7 +193,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("fund_performance", r"ETF.{0,15}(?:순풍|강세|상승|하락|수익률)", r"ETF|수익률"),
     ("sanctions_request", r"제재.{0,30}(?:요청|요구|해야)|sanctions?.{0,30}(?:request|call)", r"제재[^.!?]{0,35}(?:요청|요구|해달라|해야)|sanctions?.{0,35}(?:request|call)"),
     ("economic_response", r"경제\s*전쟁|제재.{0,25}대응", r"경제\s*전쟁|제재|환율|필수\s*물자"),
-    ("national_exports", r"수출국|연간\s*수출", r"누적\s*수출|수출액|월간\s*수출"),
+    ("national_exports", r"수출국|연간\s*수출|\d{1,2}\s*월\s*(?:대만\s*)?수출|(?:대만|중국|일본|한국).{0,12}(?:\d{1,2}\s*월|월간).{0,12}수출", r"누적\s*수출|수출액|월간\s*수출"),
     ("authorized_capital", r"수권\s*(?:자본|주식)|authorized (?:capital|shares)", r"수권\s*(?:자본|주식)|authorized (?:capital|shares)"),
     ("asset_financing", r"(?:칩|GPU|데이터센터|설비).{0,25}(?:파는|매각|담보|재임차)|sale.leaseback", r"특수목적기구|\bSPV\b|매각|담보|재임차|sale.leaseback"),
     ("factory_tariff", r"공장.{0,20}(?:안|않|미건설).{0,25}관세", r"공장.{0,160}관세"),
@@ -965,10 +965,11 @@ def national_export_observation(sentence: str) -> dict | None:
     if re.search(r"당시|과거|추정치|전망치|예상치|수출하면|수출할\s*경우", sentence):
         return None
     match = re.search(
-        r"(?P<year>올해|금년)\s*(?P<period>(?:\d{1,2}\s*[~∼-]\s*)?\d{1,2}월|연간)?\s*"
+        r"(?P<year>올해|금년)?\s*(?P<period>(?:\d{1,2}\s*[~∼-]\s*)?\d{1,2}월|연간)?\s*"
         r"(?P<metric>누적\s*수출액|월간\s*수출액|수출액)(?:은|이|가)\s*"
-        r"(?P<amount>\d[\d,.]*\s*(?:조|억|만)?\s*달러)\s*"
-        r"(?:에\s*달(?:했|하|해)|(?:로|으로)\s*(?:집계됐|집계되었|늘었|증가했|감소했|기록됐)|입니다|이다|였다|이었다)",
+        r"(?P<amount>\d[\d,.]*\s*(?:(?:조|억)\s*\d[\d,.]*\s*만|조|억|만)?\s*달러)\s*"
+        r"(?:에\s*달(?:했|하|해)|(?:로|으로)\s*(?:집계됐|집계되었|늘었|증가했|감소했|기록됐)|"
+        r"(?:로|으로)\s*(?:전년\s*동월보다\s*)?\d+(?:\.\d+)?%\s*(?:급증|급감|늘어|늘었|증가|감소)|입니다|이다|였다|이었다)",
         sentence,
     )
     if not match:
@@ -3306,7 +3307,7 @@ RULES = (
      r"매출|영업이익|순이익|영업손실|순손실|마진|실적|가이던스|주당\s*(?:NAV|순자산가치)|(?<!제)출하|인도량|판매(?:량|실적|는|가)|시장점유율|revenue|earnings|profit|guidance|shipments",
      r"증가|감소|상승|하락|상회|하회|상향|하향|달성|돌파|기록|집계|발표|공시|전망|예상|컨센서스|추정치|적자\s*전환|적자로\s*전환|rise|fall|grow|cut|rais|report|forecast|consensus|beat|miss"),
     ("national_export_release", ("earnings", "discount_rate"),
-     r"누적\s*수출|월간\s*수출|수출액", r"달(?:했|하|해)|늘었|증가|감소|기록|집계|넘어섰|달성|달러\s*(?:입니다|이다|였다|이었다)"),
+      r"누적\s*수출|월간\s*수출|수출액", r"달(?:했|하|해)|늘(?:어|었)|증가|감소|급증|급감|기록|집계|넘어섰|달성|달러\s*(?:입니다|이다|였다|이었다)"),
     ("product_sales_mix", ("earnings",),
      r"판매(?:량|대수|비중)?", r"\d+(?:\.\d+)?%\s*(?:를|을)?\s*차지|비중.{0,20}(?:높아|올라|낮아|줄어)"),
     ("industry_market_share", ("earnings",),
@@ -3873,6 +3874,23 @@ def equity_publication_assessment(
             "eligible": True,
             "reason": "measured_ai_market_reaction_to_revenue_basis_clarification",
         }
+    literary_award_book_sales = bool(
+        re.search(r"노벨문학상|문학상", title)
+        and re.search(r"(?:도서|책).{0,25}(?:판매|판매량)|(?:판매|판매량).{0,25}(?:도서|책)", headline_and_lead)
+        and not re.search(r"상장\s*(?:출판사|기업)|코스피|코스닥|나스닥|분기\s*매출|연간\s*매출|영업이익|공시", title + " " + lead, re.I)
+    )
+    if literary_award_book_sales:
+        return {"eligible": False, "reason": "literary_award_book_sales_without_issuer_financial_impact"}
+
+    information_tool_launch = bool(
+        re.search(r"수주\s*레이더", title)
+        and re.search(r"(?:서비스|플랫폼).{0,20}(?:출시|나왔다|선보)|(?:출시|나왔다|선보).{0,20}(?:서비스|플랫폼)", title + " " + lead)
+        and re.search(r"DART|전자공시시스템|공시\s*정보", headline_and_lead, re.I)
+        and not re.search(r"유료\s*(?:이용자|가입자|고객)|구독료|사용료|유료\s*전환|고객사.{0,20}(?:도입|계약)|서비스.{0,15}(?:매출|매출액)", headline_and_lead)
+    )
+    if information_tool_launch:
+        return {"eligible": False, "reason": "information_tool_launch_without_paid_adoption_or_revenue"}
+
     primary_rows = source_rows[:12]
     firm_company_event = any(
         not ASPIRATION.search(row)
@@ -4691,6 +4709,19 @@ def equity_publication_assessment(
     )
     if reaction_headline and not headline_market_action:
         return {'eligible': False, 'reason': 'industry_reaction_without_headlined_market_action'}
+    administrative_terminology_change = bool(
+        re.search(r"우리말|행정용어|전문용어|일본식\s*용어", headline_and_lead)
+        and re.search(r"순화|표준화|고시", headline_and_lead)
+        and kinds <= {"policy_scope_or_stage"}
+        and not re.search(
+            r"상장사|상장기업|코스피|코스닥|나스닥|계약|수주|발주|투자액|예산\s*확정|"
+            r"매출|영업이익|생산량|사업비|관세|수출통제|금리|보조금",
+            headline_and_lead,
+            re.I,
+        )
+    )
+    if administrative_terminology_change:
+        return {'eligible': False, 'reason': 'administrative_terminology_notice_without_market_channel'}
     scenario_headline = re.search(r"가능성|우려|전망|예상|potential|could|may", title, re.I)
     # Publisher chrome and short subheads can occupy the first parsed rows.
     # Use the first complete prose sentences so later, unrelated statements do
