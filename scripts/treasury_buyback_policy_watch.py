@@ -386,8 +386,9 @@ def market_reaction_lines(source_url: str) -> list[str]:
         return []
     return [
         "",
-        "<b>시장 실제 반응</b>",
+        "<b>발표 직후 초기 시장 반응</b>",
         f"• {reaction['text']}",
+        "• 이 문장은 발표 직후의 역사적 반응만 기록합니다. 이후 금리가 되돌리거나 더 상승할 수 있으므로 지속효과 판정은 아래 실제 집행·금리·CTA 체인에서 별도로 확인합니다.",
         f'<a href="{reaction["url"]}">시장 반응 원문</a>',
     ]
 
