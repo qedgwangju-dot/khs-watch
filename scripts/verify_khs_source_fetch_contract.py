@@ -83,6 +83,14 @@ def main() -> int:
         source_fetch._fetch_direct = bulletin_direct
         recovered, error = source_fetch.fetch_text(original_url, "test-agent", timeout=1, attempts=1)
         assert recovered == official_html and error is None, (recovered, error)
+        # Even HTTP 200 is not an authentic release if it is a challenge page.
+        source_fetch._fetch_proxy_direct_race = lambda *_args, **_kwargs: (
+            "<html>Access Denied</html>", None
+        )
+        challenge_recovery, challenge_error = source_fetch.fetch_text(
+            original_url, "test-agent", timeout=1, attempts=1
+        )
+        assert challenge_recovery == official_html and challenge_error is None
         unrelated, other_error = source_fetch.fetch_text(
             "https://home.treasury.gov/news/press-releases/sb9999",
             "test-agent", timeout=1, attempts=1
