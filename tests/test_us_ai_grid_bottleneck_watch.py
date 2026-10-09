@@ -390,6 +390,56 @@ class KoreanTransformerExportTests(unittest.TestCase):
             self.assertEqual(state["last_status"], "verified")
             self.assertEqual([e["kind"] for e in events], ["official_us_month"])
 
+    def test_kcs_restored_old_months_clear_access_blocker_once(self):
+        now = datetime(2026, 10, 9, 22, 10, tzinfo=ZoneInfo("Asia/Seoul"))
+        snapshot = {
+            "month": "2026-08", "destination": "US",
+            "hs_codes": list(w.KOREA_EXPORT_HS6), "export_usd": 152378128,
+            "net_weight_kg": 9561809, "average_usd_per_kg": 15.936,
+        }
+        previous = {
+            **w.KOREA_EXPORT_BASELINE, "baseline_notified": True,
+            "source_blocker_notified": True,
+            "last_status": "month_unpublished",
+            "last_error_kind": "kcs_no_official_rows",
+            "last_attempt_day": "2026-10-09",
+            "last_attempt_at_kst": "2026-10-09T21:59:09+09:00",
+            "fetch_revision": w.KOREA_EXPORT_FETCH_REVISION,
+            "latest_official_us_month": "2026-08",
+            "official_us_by_month": {"2026-08": snapshot},
+        }
+        with mock.patch.dict(w.os.environ, {
+            "GITHUB_RUN_ATTEMPT": "1",
+            "KCS_DATA_GO_SERVICE_KEY": "not-a-real-key",
+        }):
+            with mock.patch.object(w, "fetch_korea_kcs_hs6_month") as fetch:
+                restored, first_events = w.update_korea_export_watch(now, previous)
+                self.assertEqual([x["kind"] for x in first_events], ["kcs_connection_restored"])
+                self.assertFalse(restored["source_blocker_notified"])
+                self.assertTrue(restored["connection_restored_notified"])
+                self.assertEqual(restored["last_status"], "month_unpublished")
+                quiet, second_events = w.update_korea_export_watch(now, restored)
+                self.assertEqual(second_events, [])
+                fetch.assert_not_called()
+        rendered = w.build_korea_export_alert(first_events[0], restored, {"latest_month": "2026-08"})
+        self.assertIn("API 연결 확인", rendered)
+        self.assertIn("2026-08", rendered)
+        self.assertIn("아직 완전한 품목별 조회 결과가 없어", rendered)
+
+    def test_kcs_stale_connection_does_not_claim_fresh_recovery(self):
+        now = datetime(2026, 10, 9, 22, 10, tzinfo=ZoneInfo("Asia/Seoul"))
+        state = {
+            "last_status": "month_unpublished",
+            "last_attempt_at_kst": "2026-10-01T08:00:00+09:00",
+            "source_blocker_notified": True,
+            "official_us_by_month": {"2026-08": {"export_usd": 100}},
+            "latest_official_us_month": "2026-08",
+        }
+        events = []
+        w.record_kcs_connection_recovery(now, state, events)
+        self.assertFalse(state["source_blocker_notified"])
+        self.assertEqual(events, [])
+
     def test_kcs_network_failure_classification_is_safe(self):
         import urllib.error
         import socket
