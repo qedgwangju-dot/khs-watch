@@ -359,6 +359,41 @@ class KoreanTransformerExportTests(unittest.TestCase):
         self.assertIn("2026-09", later["official_us_by_month"])
         self.assertEqual([x["kind"] for x in events], ["official_us_month"])
 
+    def test_kcs_network_failure_classification_is_safe(self):
+        import urllib.error
+        import socket
+        self.assertEqual(
+            w.kcs_error_category(urllib.error.URLError(socket.gaierror(-2, "name resolution"))),
+            "kcs_dns_unavailable",
+        )
+        self.assertEqual(
+            w.kcs_error_category(urllib.error.HTTPError("https://example.org", 403, "denied", {}, None)),
+            "kcs_http_access_denied",
+        )
+        self.assertEqual(
+            w.kcs_error_category(urllib.error.URLError(TimeoutError("timed out"))),
+            "kcs_network_timeout",
+        )
+
+    def test_kcs_transient_errors_retry_after_90_minutes_only(self):
+        now = datetime(2026, 10, 9, 22, 0, tzinfo=ZoneInfo("Asia/Seoul"))
+        state = {
+            "last_attempt_day": "2026-10-09",
+            "last_attempt_at_kst": "2026-10-09T21:00:00+09:00",
+            "last_status": "api_inaccessible_or_unpublished",
+            "last_error_kind": "kcs_dns_unavailable",
+            "fetch_revision": w.KOREA_EXPORT_FETCH_REVISION,
+        }
+        self.assertFalse(w.kcs_retry_due(now, state, True))
+        later = datetime(2026, 10, 9, 22, 35, tzinfo=ZoneInfo("Asia/Seoul"))
+        self.assertTrue(w.kcs_retry_due(later, state, True))
+        state["last_error_kind"] = "kcs_http_access_denied"
+        self.assertFalse(w.kcs_retry_due(later, state, True))
+        state["fetch_revision"] = -1
+        self.assertTrue(w.kcs_retry_due(now, state, True))
+        state["last_status"] = "kcs_key_missing"
+        self.assertTrue(w.kcs_retry_due(now, state, True))
+
     def test_fetched_usa_customs_month_alert_once(self):
         now = datetime(2026, 10, 9, 19, 0, tzinfo=ZoneInfo("Asia/Seoul"))
         def fake_fetch(hs, ym, country="US"):
