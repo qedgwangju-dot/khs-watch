@@ -9,6 +9,7 @@ on:
       - "scripts/treasury_cta_squeeze_audited_watch.py"
       - "scripts/treasury_cta_squeeze_equity_watch.py"
       - ".github/workflows/treasury-cta-squeeze-telegram-alert.yml"
+      - "tests/test_treasury_alert_root_guards.py"
   schedule:
     # Regular market-hours monitoring: 21:00~08:45 KST, every 15 minutes.
     - cron: "*/15 12-23 * * 1-5"
@@ -92,6 +93,7 @@ jobs:
           python -m py_compile scripts/treasury_cta_squeeze_audited_watch.py
           python -m py_compile scripts/treasury_cta_squeeze_equity_watch.py
           pytest -q tests/test_treasury_cta_nasdaq_squeeze.py
+          pytest -q tests/test_treasury_alert_root_guards.py
 
       - name: Check CTA squeeze chain
         run: |
