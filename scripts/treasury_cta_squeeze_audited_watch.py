@@ -160,6 +160,9 @@ def _direction_label(snapshot: dict, previous: dict, reasons: list[str]) -> tupl
 
 def format_alert(snapshot, previous, fx, fx_date, reasons):
     title, body = _base_format(snapshot, previous, fx, fx_date, reasons)
+    # 4.30% was a market scenario, not a Treasury target. Keep it as a downstream
+    # reference level only; the live headline should describe the actual regime test.
+    title = "🇺🇸 미 국채 CTA 숏 스퀴즈 감시 — 장기금리 하락 전환이 실제로 시작됐는지 판정"
 
     marker = "<b>1️⃣ Goldman CTA DV01 — 스퀴즈의 연료</b>\n"
     baseline = (
