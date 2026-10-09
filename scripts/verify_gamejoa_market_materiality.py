@@ -2687,6 +2687,18 @@ class MaterialityChecks(unittest.TestCase):
         self.assertEqual(audit["disposition"], "keep")
         self.assertEqual(audit["evidence"][0]["stage"], "early_signal")
 
+    def test_active_customer_supply_discussions_accept_korean_consultation_wording(self):
+        title = "삼성전기, 빅테크·반도체 고객 10여곳과 MLCC LTA 진행"
+        body = "삼성전기가 빅테크와 주요 반도체 고객 10여곳을 상대로 고부가 MLCC 장기공급 협의를 진행 중입니다."
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["disposition"], "keep", audit)
+        self.assertEqual(audit["evidence"][0]["kind"], "customer_discussions", audit)
+        self.assertEqual(audit["evidence"][0]["stage"], "early_signal", audit)
+        self.assertIn("earnings", audit["axes"], audit)
+        alert_item = alert(title, body)
+        self.assertEqual(radar.source_core_fact_errors(alert_item), [])
+        self.assertTrue(radar.verified_alert_core(alert_item, title))
+
     def test_tactical_weapon_news_needs_economic_transmission_not_range_or_stock(self):
         title = "우크라, 자체 개발 탄도미사일 첫 실전 투입…러시아 목표물 타격"
         body = "우크라이나가 자체 개발한 탄도미사일을 처음으로 실전에 투입했다. 생산 능력 부족으로 미사일 공급이 지연되고 있다. 러시아 진지를 공격했다."
