@@ -36,6 +36,9 @@ def combine(remote, local):
         merged[field] = max(str(remote.get(field) or ""), str(local.get(field) or ""))
     merged["format_revision"] = max(int(remote.get("format_revision") or 0),
                                     int(local.get("format_revision") or 0))
+    pending = merged.get("pending_yield_followup") or {}
+    if pending and str(pending.get("operation_date") or "") <= merged.get("latest_yield_followup_operation_date", ""):
+        merged.pop("pending_yield_followup", None)
     return merged
 
 def main():
