@@ -21,7 +21,8 @@ ALERT = OUT / "rebellions_partner_watch_alert.md"
 PENDING = OUT / "rebellions_partner_watch_pending_state.json"
 STATUS = OUT / "rebellions_partner_watch_status.md"
 
-UA = "Mozilla/5.0 (compatible; RebellionsPartnerWatch/1.0; +https://github.com/qedgwangju-dot/khs-watch)"
+UA = "Mozilla/5.0 (compatible; RebellionsPartnerWatch/1.1; +https://github.com/qedgwangju-dot/khs-watch)"
+FETCH_STATS = {"official_ok": 0, "google_ok": 0, "official_errors": [], "google_errors": []}
 
 ACTION_TERMS = [
     "협력", "업무협약", "mou", "파트너", "공동개발", "공동 개발", "공동사업", "공동 사업",
@@ -56,7 +57,9 @@ GOOGLE_QUERIES = [
     '리벨리온 (협력 OR 업무협약 OR MOU OR 파트너 OR 공동개발)',
     '리벨리온 (공급 OR 수주 OR 계약 OR 도입 OR 채택 OR 상용화 OR 양산)',
     '리벨리온 (NPU OR Rebel OR ATOM) (고객 OR 서버 OR 클라우드 OR 데이터센터)',
-    'Rebellions (partnership OR MOU OR supply OR contract OR deployment OR production)'
+    'Rebellions (partnership OR MOU OR supply OR contract OR deployment OR production)',
+    '리벨리온 (투자 OR 투자유치 OR 지분 OR 출자 OR 인수 OR 합병)',
+    '"리벨리온" ("전략적 투자" OR "투자 유치" OR "지분 투자" OR "투자 참여")'
 ]
 
 
@@ -109,8 +112,23 @@ def canonical_url(value):
         return value
 
 
+def capital_event_kind(title):
+    """Capital investment is a separate economic event from an earlier commercial MOU."""
+    text = norm_text(title).lower()
+    if any(x in text for x in ["기업 인수", "인수 완료", "인수계약", "인수 계약", "지분 인수", "인수합병", "합병 완료"]):
+        return "acquisition"
+    if any(x in text for x in ["후속 투자", "추가 투자", "2차 투자", "지분 추가", "후속 출자"]):
+        return "followon_equity"
+    if any(x in text for x in [
+        "투자 유치", "투자를 유치", "투자유치", "전략적 투자", "지분 투자", "지분투자",
+        "투자 참여", "투자한다", "투자했다", "투자받", "출자한다", "출자했다", "출자",
+    ]):
+        return "equity"
+    return None
+
+
 def event_signature(title, summary=""):
-    """Underlying business-event key. Action wording is intentionally excluded to cluster same-event coverage."""
+    """Underlying event key: separate capital transactions from commercial-stage coverage."""
     text = (norm_text(title) + " " + norm_text(summary)).lower()
 
     # Primary counterparty. Put end-customers / adopters before validators and ecosystem bodies.
@@ -155,6 +173,10 @@ def event_signature(title, summary=""):
     if not partner:
         return None
 
+    capital = capital_event_kind(title)
+    if capital:
+        return f"{partner}|capital|{capital}"
+
     if any(x in text for x in ["리벨100", "rebel100", "rebel 100"]):
         product = "rebel100"
     elif any(x in text for x in ["아톰맥스", "atom-max", "atom max"]):
@@ -196,7 +218,9 @@ def event_signature(title, summary=""):
 
 
 def material_stage(title, summary=""):
-    """Material stage used only to avoid suppressing a true commercial step-up."""
+    """Commercial stage; confirmed capital transactions receive their own high-priority stage."""
+    if capital_event_kind(title):
+        return 5
     text = (norm_text(title) + " " + norm_text(summary)).lower()
     if any(x in text for x in [
         "수주", "공급계약", "공급 계약", "구매계약", "구매 계약", "발주",
@@ -240,7 +264,7 @@ def seen_time(entry):
         return None
 
 
-def find_duplicate_event(item, seen, now, semantic_hours=72):
+def find_duplicate_event(item, seen, now, semantic_hours=336):
     """Return duplicate reason when this is another article about the same already-seen event."""
     item_url = canonical_url(item.get("url"))
     item_title = norm_title(item.get("title"))
@@ -264,7 +288,8 @@ def find_duplicate_event(item, seen, now, semantic_hours=72):
         when = seen_time(prior)
         if not when or when < cutoff:
             continue
-        prior_sig = prior.get("event_signature") or event_signature(prior.get("title"), prior.get("summary", ""))
+        # Recompute for old state records after rules change; stored signatures can be stale.
+        prior_sig = event_signature(prior.get("title", ""), prior.get("summary", "")) or prior.get("event_signature")
         if prior_sig != item_sig:
             continue
 
@@ -278,10 +303,18 @@ def find_duplicate_event(item, seen, now, semantic_hours=72):
 
 
 def resolve_original_url(value):
-    """Best effort: follow a Google News link to the publisher; safe fallback is the Google News URL."""
+    """Try canonical publisher URL; do not present Google News as a verified publisher URL."""
     value = norm_text(value)
     if "news.google.com/" not in value:
         return value
+    try:
+        from googlenewsdecoder import gnewsdecoder
+        decoded = gnewsdecoder(value, interval=0)
+        final = decoded.get("decoded_url") if isinstance(decoded, dict) and decoded.get("status") else None
+        if final and final.startswith(("https://", "http://")) and "news.google.com/" not in final:
+            return final
+    except Exception:
+        pass
     try:
         req = urllib.request.Request(value, headers={"User-Agent": UA, "Accept-Language": "ko,en;q=0.8"})
         with urllib.request.urlopen(req, timeout=12) as r:
@@ -312,6 +345,10 @@ def domestic_candidate(title, summary=""):
 
 
 def classify(title, summary=""):
+    if capital_event_kind(title) == "acquisition":
+        return "인수·합병"
+    if capital_event_kind(title):
+        return "투자·지분"
     text = (norm_text(title) + " " + norm_text(summary)).lower()
     has_mou = any(x in text for x in ["mou", "업무협약", "협력", "파트너", "공동개발", "공동 개발", "제휴"])
     has_validation = any(x in text for x in ["실증", "검증", "poc", "시범운영", "시범 운영", "현장 투입"])
@@ -351,8 +388,10 @@ def collect_official():
         url = "https://kr.rebellions.ai/company/newsroom/" + (f"page/{page}/" if page > 1 else "")
         try:
             body = fetch_text(url)
-        except Exception:
+        except Exception as exc:
+            FETCH_STATS["official_errors"].append(f"{url}: {type(exc).__name__}")
             continue
+        FETCH_STATS["official_ok"] += 1
         soup = BeautifulSoup(body, "html.parser")
         for a in soup.find_all("a", href=True):
             href = urllib.parse.urljoin(url, a["href"])
@@ -388,8 +427,10 @@ def collect_google_news():
         try:
             xml = fetch_text(url)
             root = ET.fromstring(xml)
-        except Exception:
+        except Exception as exc:
+            FETCH_STATS["google_errors"].append(f"{query}: {type(exc).__name__}")
             continue
+        FETCH_STATS["google_ok"] += 1
         for node in root.findall(".//item"):
             title = norm_text(node.findtext("title") or "")
             link = norm_text(node.findtext("link") or "")
@@ -431,6 +472,11 @@ def main():
     seen = dict(state.get("seen") or {})
 
     candidates = collect_official() + collect_google_news()
+    print(f"rebellions_source_health official_pages={FETCH_STATS['official_ok']}/10 google_feeds={FETCH_STATS['google_ok']}/{len(GOOGLE_QUERIES)}")
+    if FETCH_STATS["google_ok"] < 2:
+        raise RuntimeError("Rebellions news feeds mostly unavailable; fail rather than silently treating missing results as no changes")
+    if FETCH_STATS["official_ok"] == 0:
+        print("warning=rebellions_official_newsroom_unreachable; Google News is partial fallback")
 
     deduped = {}
     for item in candidates:
@@ -467,7 +513,7 @@ def main():
         }
         PENDING.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         STATUS.write_text(
-            f"# 리벨리온 협력 웹감시\n\n- 상태: 초기 기준선 생성\n- 기준선 항목: {len(seen)}개\n- 신규 알림: 0개\n- 조회시각: {now:%Y-%m-%d %H:%M} KST\n",
+            f"# 리벨리온 협력 웹감시\n\n- 상태: 초기 기준선 생성\n- 기준선 항목: {len(seen)}개\n- 신규 알림: 0개\n- 원천 조회: 공식 {FETCH_STATS['official_ok']}/10 · 뉴스 {FETCH_STATS['google_ok']}/{len(GOOGLE_QUERIES)}\n- 조회시각: {now:%Y-%m-%d %H:%M} KST\n",
             encoding="utf-8",
         )
         return
@@ -545,11 +591,12 @@ def main():
             published = tg_html(item.get('published_kst') or '페이지 직접 확인')
             direct_url = resolve_original_url(item['url'])
             link = tg_html(direct_url)
+            url_label = "원문" if "news.google.com/" not in direct_url else "기사 보기(구글뉴스 경유)"
             lines.extend([
                 f"{idx}. [{category}] {title}",
                 f"- 출처: {source}" + (" · 공식" if item["official"] else ""),
                 f"- 공개시각: {published}",
-                f'- <a href="{link}">원문</a>',
+                f'- <a href="{link}">{url_label}</a>',
                 "",
             ])
             seen[k] = {
@@ -578,7 +625,7 @@ def main():
     }
     PENDING.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     STATUS.write_text(
-        f"# 리벨리온 협력 웹감시\n\n- 상태: 정상 조회\n- 후보 항목: {len(ordered)}개\n- 신규 알림: {len(fresh)}개\n- 이번 실행 중복 억제: {duplicate_suppressed}개\n- 누적 중복키: {len(seen)}개\n- 조회시각: {now:%Y-%m-%d %H:%M} KST\n",
+        f"# 리벨리온 협력 웹감시\n\n- 상태: 정상 조회\n- 후보 항목: {len(ordered)}개\n- 신규 알림: {len(fresh)}개\n- 이번 실행 중복 억제: {duplicate_suppressed}개\n- 누적 중복키: {len(seen)}개\n- 원천 조회: 공식 {FETCH_STATS['official_ok']}/10 · 뉴스 {FETCH_STATS['google_ok']}/{len(GOOGLE_QUERIES)}\n- 조회시각: {now:%Y-%m-%d %H:%M} KST\n",
         encoding="utf-8",
     )
 
