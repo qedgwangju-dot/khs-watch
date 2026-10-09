@@ -27,7 +27,8 @@ class WarshSafetyTests(unittest.TestCase):
         with patch.object(futures, "ny_today", return_value=date(2026, 10, 8)), \
              patch.object(futures, "cme_monthly_rates", return_value=("2026-10-07", rates)), \
              patch.object(futures, "official_effr", return_value=(3.88, "2026-10-07")), \
-             patch.object(futures, "official_fomc_dates", return_value=dates):
+             patch.object(futures, "official_fomc_dates", return_value=dates), \
+             patch.object(futures.v3.base, "official_policy_baseline", return_value={"low":3.75,"high":4.0}):
             snap = futures.official_snapshot()
         self.assertEqual(len(snap["meetings"]), 2)
         self.assertTrue(all(m["hike25_prob"] is None for m in snap["meetings"]))
@@ -117,7 +118,8 @@ class WarshSafetyTests(unittest.TestCase):
         with patch.object(futures, "ny_today", return_value=date(2026, 10, 8)), \
              patch.object(futures, "cme_monthly_rates", return_value=("2026-10-07", {(2026,10):3.70})), \
              patch.object(futures, "official_effr", return_value=(3.88,"2026-10-07")), \
-             patch.object(futures, "official_fomc_dates", return_value=[date(2026,10,28)]):
+             patch.object(futures, "official_fomc_dates", return_value=[date(2026,10,28)]), \
+             patch.object(futures.v3.base, "official_policy_baseline", return_value={"low":3.75,"high":4.0}):
             with self.assertRaisesRegex(RuntimeError, "비정상값"):
                 futures.official_snapshot()
 
@@ -131,6 +133,24 @@ class WarshSafetyTests(unittest.TestCase):
         self.assertEqual(len(saved), 1)
         self.assertNotIn("meetings", saved[0])
         self.assertIn("검증 실패", saved[0]["source_status"])
+
+
+    def test_effr_outside_official_target_range_is_rejected(self):
+        with patch.object(futures, "ny_today", return_value=date(2026,10,8)), \
+             patch.object(futures, "cme_monthly_rates", return_value=("2026-10-07",{(2026,10):3.90})), \
+             patch.object(futures, "official_effr", return_value=(5.00,"2026-10-07")), \
+             patch.object(futures.v3.base, "official_policy_baseline", return_value={"low":3.75,"high":4.00}):
+            with self.assertRaisesRegex(RuntimeError, "불일치"):
+                futures.official_snapshot()
+
+    def test_missing_year_end_contract_never_becomes_year_end_forecast(self):
+        with patch.object(futures, "ny_today", return_value=date(2026,10,8)), \
+             patch.object(futures, "cme_monthly_rates", return_value=("2026-10-07",{(2026,10):3.90})), \
+             patch.object(futures, "official_effr", return_value=(3.88,"2026-10-07")), \
+             patch.object(futures, "official_fomc_dates", return_value=[date(2026,10,28),date(2026,12,9)]), \
+             patch.object(futures.v3.base, "official_policy_baseline", return_value={"low":3.75,"high":4.00}):
+            with self.assertRaisesRegex(RuntimeError, "연말 FOMC"):
+                futures.official_snapshot()
 
 
 if __name__ == "__main__":
