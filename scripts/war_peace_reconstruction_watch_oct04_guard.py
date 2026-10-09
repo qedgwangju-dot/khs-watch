@@ -250,8 +250,8 @@ def _china_fuel_signals(row, stage):
             "china-resume-october-fuel-exports-after-brief-halt" in source_url
             or "china to resume october fuel exports" in title
         ):
-            return ["중국 10월 정제연료 수출 약 370만 톤 승인 보도(Reuters 업계 관계자 인용) — 9월 예상 400만 톤 초과와 구분; 당국 공식 발표·선적·통관 실적은 아직 별개"]
-        return ["업계 관계자 또는 언론의 중국 정제연료 수출 재개 보도 — 정부 공식 공표·선적·세관 실적을 순서대로 추가 확인"]
+            return ["중국 10월 정제연료 수출 재개 예정 — 약 370만 톤 승인 보도(Reuters 업계 관계자 인용) — 9월 예상 400만 톤 초과와 구분; 당국 공식 발표·선적·통관 실적은 아직 별개"]
+        return ["중국 정제연료 수출 재개 예정이라는 업계 보도 — 정부 공식 공표·선적·세관 실적을 순서대로 추가 확인"]
     if stage == "approval":
         return ["중국 정부의 정제연료 수출 승인 발표 — 승인량이 모두 출항하거나 최종 수출 실적으로 인식된 것은 아님"]
     if stage == "shipment":
