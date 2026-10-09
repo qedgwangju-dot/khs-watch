@@ -158,6 +158,57 @@ jobs:
               raise RuntimeError("Accord oversight impact text missing")
           PY
 
+      - name: Verify incident versus program separation
+        shell: bash
+        run: |
+          python - <<'PY'
+          from unittest.mock import patch
+          from scripts.ai_security_web_watch import (
+              clean_official_headline_prefix, detect_category, material,
+              is_policy_program_announcement, translate_alert_text,
+          )
+
+          mission = {
+              "kind": "official_direct",
+              "title": "Anthropic News: anthropic cyber mission",
+              "description": "Anthropic News: anthropic cyber mission",
+              "source": "Anthropic News",
+              "url": "https://www.anthropic.com/news/anthropic-cyber-mission",
+          }
+          if not is_policy_program_announcement(mission) or material(mission):
+              raise RuntimeError("Anthropic Cyber Mission launch routed as an incident")
+
+          other_news = {
+              **mission,
+              "title": "Anthropic News: new critical vulnerability and patch",
+              "description": "Anthropic News: a critical vulnerability was patched",
+              "url": "https://www.anthropic.com/news/critical-vulnerability-patched",
+          }
+          if is_policy_program_announcement(other_news) or not material(other_news):
+              raise RuntimeError("Actual official security event was suppressed")
+
+          headline = clean_official_headline_prefix(
+              "Anthropic News: Introducing the Anthropic Cyber Mission"
+          )
+          if headline != "Introducing the Anthropic Cyber Mission":
+              raise RuntimeError("Official news headline prefix was not removed")
+
+          with patch(
+              "scripts.ai_security_web_watch._translate_google",
+              return_value="사이버 보안 전략 발표",
+          ):
+              result = translate_alert_text(
+                  "Anthropic News: Anthropic reveals its cyber mission"
+              )
+          print(f"ai_security_proper_name_sample={result}")
+          if "Anthropic" not in result or "인류학" in result or "Anthropic News:" in result:
+              raise RuntimeError("Anthropic proper name translation regression")
+
+          if detect_category("generic Anthropic Cyber Mission") == "취약점·패치":
+              raise RuntimeError("Generic cyber announcement mislabeled as vulnerability")
+          print("ai_security_incident_program_regression=PASS")
+          PY
+
       - name: Run live web security watch
         run: |
           rm -f out/ai_security_web_watch_alert_title.txt out/ai_security_web_watch_alert.md out/ai_security_web_watch_telegram_confirmed.json
