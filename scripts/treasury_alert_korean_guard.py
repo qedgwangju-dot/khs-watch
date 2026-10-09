@@ -48,7 +48,7 @@ SERIES = {
 }
 
 UPGRADE_MARKER = "<b>정책 목적·경계선</b>"
-UPGRADE_REVISION = 7
+UPGRADE_REVISION = 8
 UA = "Mozilla/5.0 khs-watch-treasury-bessent-verifier/4.0"
 
 EXACT_TITLES = {
@@ -373,6 +373,20 @@ def direction(value: float, threshold: float) -> int:
     return 0
 
 
+def oil_scenario_key(value: float) -> str:
+    if value >= 100.0:
+        return "100_plus"
+    if value >= 80.0:
+        return "80_100"
+    if value >= 60.0:
+        return "60_80"
+    if value > 50.0:
+        return "50_60"
+    if value > 40.0:
+        return "40_50"
+    return "40_or_below"
+
+
 def translate_title(title: str) -> str:
     title = re.sub(r"\s+", " ", title).strip()
     if title in EXACT_TITLES:
@@ -505,9 +519,13 @@ def build_causal_snapshot() -> dict:
 
     latest = {
         "brent": {"date": brent_rows[-1][0], "value": brent_rows[-1][1]},
+        "brent_prev": {"date": brent_rows[-2][0], "value": brent_rows[-2][1]},
         "nom10": {"date": nom_rows[-1][0], "value": nom_rows[-1][1]},
         "real10": {"date": real_rows[-1][0], "value": real_rows[-1][1]},
     }
+    oil_key = oil_scenario_key(float(brent_rows[-1][1]))
+    oil_prev_key = oil_scenario_key(float(brent_rows[-2][1]))
+    oil_stable = oil_key == oil_prev_key
 
     return {
         "common_prev_date": prev_date,
@@ -520,6 +538,8 @@ def build_causal_snapshot() -> dict:
         "latest": latest,
         "verdict_key": verdict_key,
         "verdict": verdict,
+        "oil_scenario_key": oil_key,
+        "oil_scenario_stable": oil_stable,
         "sources": {
             "brent": "EIA Brent Europe spot price",
             "nominal10": "U.S. Treasury Daily Par Yield Curve",
@@ -690,6 +710,22 @@ def one_time_alert(fx: float, fx_date: str, snapshot: dict) -> str:
     ])
 
 
+def oil_scenario_change_alert(snapshot: dict) -> str:
+    return "\n".join([
+        "<b>핵심 판단</b>",
+        "Bessent의 원유 40~50달러 조건부 시나리오에서 Brent가 의미 있는 가격 구간을 두 관측일 연속 넘어섰습니다.",
+        "",
+        oil_scenario_block(snapshot),
+        causal_block(snapshot),
+        stock_market_block(snapshot),
+        "",
+        "<b>정확한 의미</b>",
+        "• 유가 구간 변화만으로 장기금리 하락을 확정하지 않습니다. 기대인플레이션·실질금리·10년물까지 같은 방향인지 함께 확인합니다.",
+        "• 같은 구간을 하루만 넘나드는 잡음은 알리지 않고 EIA 일일 관측 2회 연속 같은 구간일 때만 단계 변화를 확정합니다.",
+        "",
+        source_links(),
+    ])
+
 def verdict_change_alert(snapshot: dict) -> str:
     return "\n".join([
         "<b>핵심 판단</b>",
@@ -710,6 +746,8 @@ def write_next_state(snapshot: dict) -> None:
     state["bessent_policy_boundary_revision"] = UPGRADE_REVISION
     if snapshot.get("available", True):
         state["bessent_causal_verdict_key"] = snapshot["verdict_key"]
+        if snapshot.get("oil_scenario_stable") and snapshot.get("oil_scenario_key"):
+            state["bessent_oil_scenario_key"] = snapshot["oil_scenario_key"]
         state["bessent_causal_verdict"] = snapshot["verdict"]
         state["bessent_causal_snapshot"] = snapshot
         state.pop("bessent_causal_last_error", None)
@@ -722,6 +760,7 @@ def main() -> int:
     state = load_json(STATE)
     revision = int(state.get("bessent_policy_boundary_revision", 0) or 0)
     old_verdict_key = str(state.get("bessent_causal_verdict_key") or "")
+    old_oil_key = str(state.get("bessent_oil_scenario_key") or "")
     try:
         snapshot = build_causal_snapshot()
         snapshot["available"] = True
@@ -767,6 +806,26 @@ def main() -> int:
                 "type": "bessent_causal_verdict_change",
                 "source": {"url": BESSENT_REUTERS, "title": "Bessent Reuters 인터뷰", "date": "2026-08-31"},
                 "previous_verdict_key": old_verdict_key,
+                "causal_snapshot": snapshot,
+            }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        elif (
+            snapshot.get("available", True)
+            and snapshot.get("oil_scenario_stable")
+            and old_oil_key
+            and snapshot.get("oil_scenario_key") != old_oil_key
+        ):
+            TITLE.write_text(
+                "🛢️ Bessent 원유 40~50달러 시나리오 — Brent 단계 변화\n",
+                encoding="utf-8",
+            )
+            body = oil_scenario_change_alert(snapshot)
+            if len(body) > 3900:
+                raise RuntimeError(f"Bessent 유가 단계 변화 알림이 너무 깁니다: {len(body)}")
+            ALERT.write_text(body + "\n", encoding="utf-8")
+            DETAIL.write_text(json.dumps({
+                "type": "bessent_oil_scenario_bucket_change",
+                "source": {"url": BESSENT_OIL_SCENARIO, "title": "Bessent 원유 40~50달러 조건부 전망", "date": "2026-09-04"},
+                "previous_oil_scenario_key": old_oil_key,
                 "causal_snapshot": snapshot,
             }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         write_next_state(snapshot)
