@@ -139,6 +139,22 @@ def main() -> int:
         "priority": 0,
     }
     assert trusted.alert_confirmation_status(oisp_rule, [official_item])[0] == "공식 확인"
+    # Exercise the *real* official-direct parser and its date/stage fallback
+    # before testing the message formatter; mocked RSS feeds stay empty.
+    from unittest.mock import patch
+    def policy_feed(url, *args, **kwargs):
+        if url == original_url:
+            return official_html
+        return "<rss><channel></channel></rss>"
+    with patch.object(trusted, "fetch_text", policy_feed):
+        collected = trusted.collect_rule_items(
+            oisp_rule, dt.datetime(2026, 10, 10, 7, 25, tzinfo=trusted.KST)
+        )
+    assert len(collected) == 1, f"verified Treasury source not collected: {collected}"
+    assert collected[0].get("official_direct_verified") is True
+    assert trusted.semantic_policy_event_key(collected[0]) == (
+        "us-treasury-oisp-amidi-noematrix-notification-penalty-2026-10-07"
+    )
     report = trusted.render_alert_bundle(
         [{"rule": oisp_rule, "items": [official_item]}],
         dt.datetime(2026, 10, 10, 7, 25, tzinfo=trusted.KST),
