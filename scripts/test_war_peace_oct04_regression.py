@@ -1003,6 +1003,18 @@ oct09_yonhap_plan = row(
     description="작전 방안을 마련했으나 대통령의 최종 승인과 실제 공격 명령은 확인되지 않았다.",
     link="https://example.com/fixtures/yonhap-plan",
 )
+oct09_sbs_plan = row(
+    '"미 국방부, 이란 \'3일 집중 공격\' 계획 수립…트럼프 일단 제동" - SBS 뉴스',
+    source="SBS 뉴스",
+    description="미 국방부의 3일 집중 공격 방안 보도. 대통령 승인이나 실행은 확인되지 않았다.",
+    link="https://example.com/fixtures/sbs-plan",
+)
+oct09_unknown_plan = row(
+    "Pentagon prepares three-day Iran strike option",
+    source="Unknown news aggregator",
+    description="Alleged planning, no verified official statement",
+    link="https://example.com/fixtures/unknown-plan",
+)
 oct09_nyt_plan = row(
     "Pentagon prepares three-day intensive Iran strike option as Trump says no attack before midterms",
     source="New York Times",
@@ -1012,18 +1024,23 @@ oct09_nyt_plan = row(
 for label, x in (("aju",oct09_aju),("obs",oct09_obs)):
     check("oct09-confirmed-pledge-"+label, mod._trump_iran_midterm_no_strike(x))
     check("oct09-confirmed-pledge-canonical-"+label, mod.item_id(x)==mod.item_id(trump_cnbc))
-for label, x in (("kyunghyang",oct09_kyunghyang_plan),("yonhap",oct09_yonhap_plan),("nyt",oct09_nyt_plan)):
+for label, x in (("kyunghyang",oct09_kyunghyang_plan),("yonhap",oct09_yonhap_plan),("nyt",oct09_nyt_plan),("sbs",oct09_sbs_plan)):
     check("oct09-three-day-plan-"+label, mod._iran_three_day_strike_plan(x))
     check("oct09-three-day-not-pledge-"+label, not mod._trump_iran_midterm_no_strike(x))
     check("oct09-three-day-unique-canonical-"+label, mod.item_id(x)==mod.item_id(oct09_kyunghyang_plan))
     score,tags = mod.score_item(x, dt.datetime.now(mod.watch.KST))
     check("oct09-three-day-yellow-"+label, mod.final_color(x)=="yellow" and "승인미확정" in tags and "확전" not in tags)
 check("oct09-plan-distinct-from-pledge",mod.item_id(oct09_kyunghyang_plan)!=mod.item_id(oct09_aju))
+check("oct09-unknown-plan-lexical-detection",mod._iran_three_day_strike_plan(oct09_unknown_plan,trust_required=False))
+check("oct09-unknown-plan-not-trusted",not mod._iran_three_day_strike_plan(oct09_unknown_plan))
+unknown_score,unknown_tags = mod.score_item(oct09_unknown_plan,dt.datetime.now(mod.watch.KST))
+check("oct09-unknown-plan-not-alerted",unknown_score==0 and unknown_tags==[])
+check("oct09-unknown-plan-same-id",mod.item_id(oct09_unknown_plan)==mod.item_id(oct09_sbs_plan))
 
 # 실제 수집 경로처럼 점수 계산 전에 ID를 만들고, 중복 항목을 묶은 후 번역한다.
 items_by_id = {}
 now_replay = dt.datetime.now(mod.watch.KST)
-for case in (oct09_kyunghyang_plan, oct09_aju, oct09_obs, oct09_yonhap_plan, oct09_nyt_plan):
+for case in (oct09_kyunghyang_plan, oct09_aju, oct09_obs, oct09_yonhap_plan, oct09_nyt_plan, oct09_sbs_plan, oct09_unknown_plan):
     iid = mod.item_id(case)
     score,tags = mod.score_item(case,now_replay)
     case.update({"id":iid,"score":score,"tags":tags,"age":mod.watch.age_minutes(case,now_replay)})
@@ -1040,5 +1057,18 @@ check("oct09-replay-plan-once",len(replay_plan_headers)==1)
 mod.watch.ALERT.write_text(replay_render,encoding="utf-8")
 mod.verify_alert(False)
 check("oct09-replay-quality-gate-accepts-distinct-events",True)
+
+bad_three_day_repeat = """<b>전쟁·종전·재건 웹감시</b>
+🟡 [신규] <b>1. 미국·이란 · 3일 집중공격 계획 보도</b>
+미 국방부, 이란 3일 집중 공격 계획 준비 - 경향신문
+🟡 [신규] <b>2. 이란·호르무즈</b>
+미 국방부, 이란 3일 집중 공격 계획 준비 - SBS 뉴스
+"""
+mod.watch.ALERT.write_text(bad_three_day_repeat, encoding="utf-8")
+try:
+    mod.verify_alert(False)
+    raise AssertionError("oct09-quality-gate-duplicate-three-day-plan")
+except RuntimeError as err:
+    check("oct09-quality-gate-duplicate-three-day-plan", "동일 3일 집중공격 계획" in str(err))
 
 print("WAR_PEACE_OCT04_REGRESSION_OK")
