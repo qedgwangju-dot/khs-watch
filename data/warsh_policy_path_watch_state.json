@@ -13,8 +13,10 @@
   "last_good_snapshot": null,
   "source_status": "CME FedWatch 공식 API 미연결 — 금리확률판정 보류",
   "source_error": "CME FedWatch 공식 API 인증정보 미설정 — 유료 데이터 구독 및 GitHub Secrets 등록 전까지 시장 확률 판정 중지",
-  "source_error_streak": 26,
+  "source_error_streak": 2,
+  "source_error_kind": "auth_missing",
   "source_health_alerted": true,
-  "last_health_alert_at_utc": "2026-10-09T22:57:01.656592+00:00",
-  "updated_at_utc": "2026-10-09T23:57:06.189288+00:00"
+  "last_health_alert_at_utc": "2026-10-09T23:59:04.325196+00:00",
+  "last_health_message_id": 72,
+  "updated_at_utc": "2026-10-09T23:59:05.141527+00:00"
 }
