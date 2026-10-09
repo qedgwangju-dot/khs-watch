@@ -1,0 +1,35 @@
+{
+  "initialized": true,
+  "bootstrap_kst": "2026-10-09T18:58:06+09:00",
+  "last_checked_kst": "2026-10-09T18:58:06+09:00",
+  "seen": {
+    "43cceaed20a8c7450e6ef644": {
+      "title": "[단독] LG전자 “우리도 반도체 개발합니다”…보쉬와 손잡고 ‘차량 칩렛’ 도전 - 매일경제",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5nRUpWZHlXb3VNblBkSU5FdFFGdXV3X0EwRFVDelVscnFkRGpsOEhtLVd0RzMxdndNblVpanZCZExRTldYU3JoT0NSeXE1Q3pFZW5MajNB?oc=5",
+      "source": "매일경제",
+      "event_id": "lg_bos_hana|bosch_discussion",
+      "stage": 2,
+      "published_kst": "2026-10-09T17:47+09:00",
+      "first_seen_kst": "2026-10-09T18:58:06+09:00",
+      "baseline": true
+    }
+  },
+  "events": {
+    "lg_bos_hana|development_mou": {
+      "title": "2026-09-30 산업통상부 LG전자·보스반도체·하나마이크론 칩렛 기반 SoC 공동개발 업무협약",
+      "stage": 2,
+      "source_url": "https://www.motir.go.kr/kor/article/ATCL3f49a5a8c/172250/view",
+      "status": "확정: 개발협력, 미확정: 보쉬 구매계약·양산·매출",
+      "registered_kst": "2026-10-09T18:58:06+09:00",
+      "baseline": true
+    },
+    "lg_bos_hana|bosch_discussion": {
+      "title": "2026-10-09 매일경제 보쉬 사용 논의 기사",
+      "stage": 2,
+      "source_url": "https://www.mk.co.kr/article/12172466",
+      "status": "언론보도: 보쉬 적용 논의, 공급계약 아님",
+      "registered_kst": "2026-10-09T18:58:06+09:00",
+      "baseline": true
+    }
+  }
+}
