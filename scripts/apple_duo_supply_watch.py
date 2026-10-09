@@ -198,9 +198,27 @@ def _source_rank(source: str) -> int:
     return 1
 
 
+DUO_MARKERS = APPLE_MARKERS - {"apple"}
+OTHER_IPHONE_RE = re.compile(
+    r"(?:iphone\s*18\s*pro(?:\s*max)?|iphone18\s*pro(?:\s*max)?"
+    r"|아이폰\s*18\s*프로(?:\s*맥스)?)",
+    re.I,
+)
+
+
 def _is_apple_duo(blob: str) -> bool:
+    # "Apple" is a company, not a device. Require the named foldable model.
     low = blob.lower()
-    return any(x in low for x in APPLE_MARKERS)
+    return any(name in low for name in DUO_MARKERS)
+
+
+def _is_cross_product_article(item: dict) -> bool:
+    # Conservative in mixed stories: if the same story cites iPhone 18 Pro
+    # component numbers and Duo, do not copy Pro numbers into Duo metrics.
+    title = item.get("title") or ""
+    description = item.get("description") or ""
+    return bool(OTHER_IPHONE_RE.search(title + " " + description))
+
 
 
 def _classify(blob: str) -> set[str]:
@@ -331,7 +349,7 @@ def _translate_to_ko(text: str) -> str:
 
 def _meaningful(item: dict, state: dict) -> tuple[bool, str, str]:
     blob = f"{item['title']} {item.get('description', '')} {item.get('source', '')}".lower()
-    if not _is_apple_duo(blob):
+    if not _is_apple_duo(blob) or _is_cross_product_article(item):
         return False, "", ""
     if not any(x in blob for x in PRODUCTION_MARKERS | COMPONENT_MARKERS):
         return False, "", ""
@@ -494,6 +512,8 @@ def _baseline_dt(state: dict) -> dt.datetime:
 
 def _update_metrics(state: dict, item: dict) -> None:
     blob = f"{item['title']} {item.get('description', '')}".lower()
+    if not _is_apple_duo(blob) or _is_cross_product_article(item):
+        return
     topics = _classify(blob)
     metrics = state.setdefault("metrics", {})
     units_m = _extract_million_units(blob)
@@ -606,6 +626,10 @@ def main() -> None:
             new_seen.append(fp)
             continue
 
+        if not _is_apple_duo(f"{item['title']} {item.get('description', '')}") or _is_cross_product_article(item):
+            new_seen.append(fp)
+            continue
+
         fact_keys = _fact_keys(f"{item['title']} {item.get('description', '')}")
         if fact_keys and fact_keys.issubset(seen_fact_keys):
             new_seen.append(fp)
@@ -627,7 +651,7 @@ def main() -> None:
     if force and not candidates:
         for item in sorted(items, key=lambda x: x.get("published") or "", reverse=True):
             blob = f"{item['title']} {item.get('description', '')} {item.get('source', '')}".lower()
-            if _is_apple_duo(blob) and _source_rank(item.get("source", "")) >= 2 and _classify(blob):
+            if _is_apple_duo(blob) and not _is_cross_product_article(item) and _source_rank(item.get("source", "")) >= 2 and _classify(blob):
                 row = dict(item)
                 row.update({
                     "verdict": "수동 점검용 최신 공급망 항목",
