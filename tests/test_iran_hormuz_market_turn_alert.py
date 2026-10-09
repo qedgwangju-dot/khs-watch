@@ -771,6 +771,77 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         self.assertIn("7일 동안 개방 확정",body)
         self.assertIn("실제 통항",body)
 
+    def test_mma_official_url_and_dynamic_report_date_guards(self):
+        a=MODULE.MMA_OIL_ISAIAS_OCT9_URL
+        self.assertTrue(MODULE._is_official_mma_isaias_url(a))
+        self.assertFalse(MODULE._is_official_mma_isaias_url("https://www.bsee.gov.evil.example/newsroom/latest-news/statements-and-releases/press-releases/mma-monitors-gulf-response-isaias4"))
+        self.assertFalse(MODULE._is_official_mma_isaias_url("http://www.bsee.gov/newsroom/latest-news/statements-and-releases/press-releases/mma-monitors-gulf-response-isaias4"))
+        self.assertEqual(MODULE._mma_report_date("<h1>MMA Isaias</h1><p>Friday, October 9, 2026</p>"),dt.date(2026,10,9))
+        self.assertEqual(MODULE._discover_mma_isaias_urls('<a href="/newsroom/latest-news/statements-and-releases/press-releases/mma-monitors-gulf-response-isaias3">Oct9</a>'),[a])
+
+    def test_mma_fetch_advances_to_latest_official_date(self):
+        # Fixtures use genuine Oct7/Oct8 style with controlled Oct9 numbers; numbers are not live market assertions.
+        import unittest.mock
+        m=MODULE
+        base="Marine Minerals Administration Isaias. {date}. evacuated from a total of {platforms} production platforms. " + (
+            "approximately {pct:.2f}% of the current oil production and {gas:.2f}% of the current natural gas production. "
+            "Oil, BOPD** Shut-in {bpd:,}"
+        )
+        pages={
+            m.MMA_OIL_ISAIAS_OCT7_URL:base.format(date="October 7, 2026",platforms=8,pct=25.08,gas=16.37,bpd=511619),
+            m.MMA_OIL_ISAIAS_OCT8_URL:base.format(date="October 8, 2026",platforms=121,pct=62.90,gas=44.00,bpd=1280000),
+            m.MMA_OIL_ISAIAS_OCT9_URL:base.format(date="October 9, 2026",platforms=129,pct=71.50,gas=58.90,bpd=1450000),
+            m.MMA_ISAIAS_NEWS_INDEX_URL:'<a href="/newsroom/latest-news/statements-and-releases/press-releases/mma-monitors-gulf-response-isaias3">Oct9</a>'
+        }
+        def fetch(url,timeout=16,attempts=1):
+            return pages[url].encode()
+        with unittest.mock.patch.object(m,"fetch_bytes",side_effect=fetch):
+            row=m.fetch_mma_isaias_snapshot(dt.datetime(2026,10,10,0,0,tzinfo=dt.timezone.utc))
+        self.assertEqual(row.event_kind,"us_gulf_isaias_shutin")
+        self.assertIn("date=2026-10-09",row.title)
+        self.assertIn("previous_bpd=1280000",row.title)
+        self.assertEqual(row.link,m.MMA_OIL_ISAIAS_OCT9_URL)
+        parsed=m._extract_mma_isaias_data([row])
+        self.assertIsNotNone(parsed)
+        body=m._build_us_gulf_isaias_alert_body([row],None,dt.datetime(2026,10,10,tzinfo=dt.timezone.utc),None)
+        self.assertIn("2026-10-09",body)
+        self.assertIn("isaias3",body)
+
+    def test_mma_fetch_fails_closed_on_stale_official_report(self):
+        import unittest.mock
+        m=MODULE
+        pages={}
+        for url,d,p in (
+            (m.MMA_OIL_ISAIAS_OCT7_URL,"October 7, 2026",25.08),
+            (m.MMA_OIL_ISAIAS_OCT8_URL,"October 8, 2026",62.9),
+            (m.MMA_OIL_ISAIAS_OCT9_URL,"October 9, 2026",71.5),
+        ):
+            pages[url]=f"Marine Minerals Administration Isaias {d} evacuated from a total of 129 production platforms. approximately {p:.2f}% of the current oil production and 58.90% of the current natural gas production. Oil, BOPD** Shut-in 1,450,000"
+        def fetch(url,timeout=16,attempts=1):
+            if url==m.MMA_ISAIAS_NEWS_INDEX_URL: return b"<html></html>"
+            return pages[url].encode()
+        with unittest.mock.patch.object(m,"fetch_bytes",side_effect=fetch):
+            with self.assertRaisesRegex(RuntimeError,"경과"):
+                m.fetch_mma_isaias_snapshot(dt.datetime(2026,10,16,tzinfo=dt.timezone.utc))
+
+    def test_china_resumption_delay_overrides_future_plan(self):
+        self.assertEqual(MODULE._china_fuel_export_stage("China's fuel exports set to resume but resumption postponed after port delays"),"resumption_delayed")
+        self.assertEqual(MODULE.classify_event("China fuel exports resumption delayed for October after postponement"),"china_fuel_export_policy")
+
+    def test_china_physical_shipments_need_independent_tracking(self):
+        now=dt.datetime(2026,10,10,tzinfo=dt.timezone.utc)
+        def make(name,url):
+            return MODULE.NewsItem("China fuel cargoes departed port after October restart",name,url,now.isoformat(),now.timestamp(),"china_fuel_export_policy")
+        row=make("Reuters","https://www.reuters.com/example")
+        self.assertEqual(MODULE._china_fuel_export_stage(row.title),"physical_resumed")
+        self.assertFalse(MODULE._china_physical_shipment_evidence([row]))
+        self.assertIsNone(MODULE.confirm_event([row]))
+        duplicate=make("Reuters via MarketScreener","https://www.marketscreener.com/example")
+        self.assertIsNone(MODULE.confirm_event([row,duplicate]))
+        tracker=make("Kpler","https://www.kpler.com/blog/actual-cargo-shipments")
+        self.assertTrue(MODULE._china_physical_shipment_evidence([row,tracker]))
+        self.assertIsNotNone(MODULE.confirm_event([row,tracker]))
+
     def test_mma_official_shutin_source_and_change(self):
         def page(day,oil_pct,gas_pct,bpd,platforms):
             return f"""<html>Marine Minerals Administration Isaias Thursday, October {day}, 2026

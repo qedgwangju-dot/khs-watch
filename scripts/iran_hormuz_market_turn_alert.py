@@ -53,6 +53,13 @@ CHINA_REUTERS_20261009_MIRRORS = (
 HORMUZ_7DAY_XINHUA_URL = "https://english.news.cn/20261009/b23dc5dd06f242e991ad5dfe3eed727c/c.html"
 MMA_OIL_ISAIAS_OCT7_URL = "https://www.bsee.gov/newsroom/latest-news/statements-and-releases/press-releases/mma-monitors-gulf-response-isaias"
 MMA_OIL_ISAIAS_OCT8_URL = "https://www.bsee.gov/newsroom/latest-news/statements-and-releases/press-releases/mma-monitors-gulf-response-isaias2"
+MMA_OIL_ISAIAS_OCT9_URL = "https://www.bsee.gov/newsroom/latest-news/statements-and-releases/press-releases/mma-monitors-gulf-response-isaias3"
+MMA_ISAIAS_NEWS_INDEX_URL = "https://www.bsee.gov/newsroom/news-items"
+MMA_ISAIAS_VERIFIED_START_URLS = (
+    MMA_OIL_ISAIAS_OCT7_URL,
+    MMA_OIL_ISAIAS_OCT8_URL,
+    MMA_OIL_ISAIAS_OCT9_URL,
+)
 EIA_REFINING_WEEKLY_URL = "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_w.htm"
 EIA_REFINING_SOURCE = "미국 에너지정보청(EIA)"
 # Only distinct weekly observations and material changes can trigger a message.
@@ -565,6 +572,7 @@ def classify_event(title: str) -> str | None:
     ))
     china_policy_change = any(term in low for term in (
         "set to resume", "to resume", "will resume", "expected to resume", "resumption", "재개 예정",
+        "resumption delayed", "resumption postponed", "재개 연기",
         "suspend", "suspended", "suspension", "halt", "halts", "halted",
         "cancel", "cancels", "cancelled", "canceled", "no green light",
         "restrict", "restriction", "curb", "curbs",
@@ -1504,6 +1512,8 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
 
     candidates: list[tuple[float, str, list[NewsItem]]] = []
     for (kind,stage), rows in by_kind.items():
+        if kind=="china_fuel_export_policy" and stage=="physical_resumed" and not _china_physical_shipment_evidence(rows):
+            continue
         source_rows: dict[str, NewsItem] = {}
         for row in sorted(
             rows,
@@ -2500,6 +2510,12 @@ def _china_fuel_export_stage(text_or_rows: str | list[NewsItem]) -> str:
     text = normalize_text(text_or_rows if isinstance(text_or_rows, str) else (
         text_or_rows[0].title if text_or_rows else ""
     ))
+    if any(v in text for v in (
+        "resumption delayed", "resume exports delayed", "resumption postponed",
+        "resume plan cancelled", "cannot resume", "will not resume",
+        "재개 연기", "재개 무산", "수출 재개 취소"
+    )):
+        return "resumption_delayed"
     planned = bool(re.search(
         r"\b(?:set to|expected to|plans? to|will|due to|to)\s+(?:re-?)?(?:resume|restart)\b",
         text, re.I
@@ -2543,6 +2559,32 @@ def _china_resumption_volume(rows: list[NewsItem]) -> float | None:
     return None
 
 
+def _china_physical_shipment_evidence(rows: list[NewsItem]) -> bool:
+    # Unverified headlines and repeated Reuters wire copies are not proof of shipment.
+    recognized: set[str] = set()
+    for row in rows:
+        if _china_fuel_export_stage(row.title) != "physical_resumed":
+            continue
+        parsed = urllib.parse.urlparse(row.link)
+        hostname = (parsed.hostname or "").lower()
+        source = normalize_text(row.source)
+        cargo = normalize_text(row.title)
+        if not all(term in cargo for term in ("china", "fuel")) and not any(
+            term in cargo for term in ("중국", "휘발유", "경유", "항공유")
+        ):
+            continue
+        if "kpler.com" == hostname or hostname.endswith(".kpler.com"):
+            recognized.add("kpler")
+        elif hostname == "customs.gov.cn" or hostname.endswith(".customs.gov.cn"):
+            recognized.add("customs")
+        elif hostname == "reuters.com" or hostname.endswith(".reuters.com"):
+            recognized.add("reuters")
+        elif hostname == "bloomberg.com" or hostname.endswith(".bloomberg.com"):
+            recognized.add("bloomberg")
+    # Vessel tracking or official customs evidence plus independent wire reporting.
+    return ("kpler" in recognized or "customs" in recognized) and len(recognized) >= 2
+
+
 def _hormuz_7day_stage(text_or_rows: str | list[NewsItem]) -> str:
     text = normalize_text(text_or_rows if isinstance(text_or_rows, str) else (text_or_rows[0].title if text_or_rows else ""))
     if any(v in text for v in ("signed agreement", "proposal accepted", "합의 서명", "제안 수용 공식")):
@@ -2554,6 +2596,43 @@ def _hormuz_7day_stage(text_or_rows: str | list[NewsItem]) -> str:
     return "proposal_reported"
 
 
+def _is_official_mma_isaias_url(url: str) -> bool:
+    parsed = urllib.parse.urlparse(url.strip())
+    return (
+        parsed.scheme == "https"
+        and parsed.hostname in ("www.bsee.gov", "bsee.gov")
+        and not parsed.username
+        and not parsed.password
+        and parsed.port in (None, 443)
+        and re.fullmatch(
+            r"/newsroom/latest-news/statements-and-releases/press-releases/"
+            r"mma-monitors-gulf-response-isaias[0-9]*",
+            parsed.path,
+        ) is not None
+        and not parsed.query
+    )
+
+
+def _discover_mma_isaias_urls(index_html: str) -> list[str]:
+    results = []
+    for raw in re.findall(r"(?i)href\s*=\s*[\"']([^\"']+)[\"']", index_html):
+        value = html.unescape(raw.strip())
+        url = urllib.parse.urljoin("https://www.bsee.gov", value)
+        if _is_official_mma_isaias_url(url) and url not in results:
+            results.append(url)
+    return results
+
+
+def _mma_report_date(html_body: str) -> dt.date:
+    # Publication date in the official release, not the date of a web query.
+    visible = _visible_text(html_body)
+    header = visible[:4000]
+    m = re.search(r"\bOctober\s+(\d{1,2}),\s*2026\b", header, flags=re.I)
+    if not m:
+        raise RuntimeError("MMA 공식 발표일·연도 확인 불가")
+    return dt.date(2026, 10, int(m.group(1)))
+
+
 def _extract_mma_isaias_data(rows: list[NewsItem]) -> dict[str, float | int | str] | None:
     pattern = (
         r"MMA Isaias date=(\d{4}-\d{2}-\d{2}); oil_bpd=(\d+); "
@@ -2561,7 +2640,7 @@ def _extract_mma_isaias_data(rows: list[NewsItem]) -> dict[str, float | int | st
         r"platforms=(\d+); previous_bpd=(\d+); previous_pct=(\d+\.\d{2})"
     )
     for row in rows:
-        if row.event_kind!="us_gulf_isaias_shutin" or row.source!="MMA" or row.link!=MMA_OIL_ISAIAS_OCT8_URL:
+        if row.event_kind!="us_gulf_isaias_shutin" or row.source!="MMA" or not _is_official_mma_isaias_url(row.link):
             continue
         m=re.fullmatch(pattern,row.title)
         if not m:
@@ -2601,20 +2680,58 @@ def _parse_mma_isaias_report(raw_html: str, date: str) -> dict[str, float | int]
 
 
 def fetch_mma_isaias_snapshot(current: dt.datetime) -> NewsItem:
-    observed=dt.datetime(2026,10,8,16,tzinfo=UTC)
-    if not (observed <= current and (current-observed).total_seconds()<=48*3600):
-        raise RuntimeError("MMA 허리케인 중단율 공식 자료 신선도 종료")
-    old=_parse_mma_isaias_report(fetch_bytes(MMA_OIL_ISAIAS_OCT7_URL,timeout=18,attempts=2).decode("utf-8","replace"),"2026-10-07")
-    latest=_parse_mma_isaias_report(fetch_bytes(MMA_OIL_ISAIAS_OCT8_URL,timeout=18,attempts=2).decode("utf-8","replace"),"2026-10-08")
+    known = list(MMA_ISAIAS_VERIFIED_START_URLS)
+    try:
+        index_html = fetch_bytes(MMA_ISAIAS_NEWS_INDEX_URL, timeout=13, attempts=1).decode("utf-8","replace")
+        known.extend(_discover_mma_isaias_urls(index_html))
+    except Exception:
+        # Index outage does not replace or override already known official releases.
+        pass
+
+    candidate_urls = list(dict.fromkeys(known))
+    if len(candidate_urls) > 12:
+        candidate_urls = candidate_urls[-12:]
+    reports: list[tuple[dt.date, dict, str]] = []
+    failures = []
+    for url in candidate_urls:
+        if not _is_official_mma_isaias_url(url):
+            continue
+        try:
+            page = fetch_bytes(url, timeout=16, attempts=1).decode("utf-8","replace")
+            report_date = _mma_report_date(page)
+            if report_date > current.astimezone(UTC).date():
+                raise RuntimeError("MMA 공식 발표일이 미래")
+            metrics = _parse_mma_isaias_report(page,report_date.isoformat())
+            reports.append((report_date,metrics,url))
+        except Exception as exc:
+            failures.append(f"{url.rsplit('/',1)[-1]}:{type(exc).__name__}")
+    if len(reports) < 2:
+        raise RuntimeError("MMA 공식 보고서 두 날짜 비교 실패: "+", ".join(failures))
+
+    reports.sort(key=lambda item:item[0])
+    latest_date, latest, latest_url = reports[-1]
+    previous_date, previous, _ = reports[-2]
+    if latest_date <= previous_date:
+        raise RuntimeError("MMA 관측일 중복·순서 불일치")
+    age_days = (current.astimezone(UTC).date()-latest_date).days
+    if age_days < 0 or age_days > 3:
+        raise RuntimeError(f"MMA 최신 관측일 {age_days}일 경과·신규 발송 금지")
+    # Reported 11:00 a.m. CDT (16:00 UTC); use observation date, not RSS publication time.
+    observed=dt.datetime(latest_date.year,latest_date.month,latest_date.day,16,tzinfo=UTC)
+    if observed>current:
+        raise RuntimeError("MMA 관측 시각이 미래")
+
     title=(
-        f"MMA Isaias date=2026-10-08; oil_bpd={latest['oil_bpd']}; "
+        f"MMA Isaias date={latest_date.isoformat()}; oil_bpd={latest['oil_bpd']}; "
         f"oil_pct={latest['oil_pct']:.2f}; gas_pct={latest['gas_pct']:.2f}; "
-        f"platforms={latest['platforms']}; previous_bpd={old['oil_bpd']}; "
-        f"previous_pct={old['oil_pct']:.2f}"
+        f"platforms={latest['platforms']}; previous_bpd={previous['oil_bpd']}; "
+        f"previous_pct={previous['oil_pct']:.2f}"
     )
-    return NewsItem(title,"MMA",MMA_OIL_ISAIAS_OCT8_URL,
-                    observed.isoformat().replace("+00:00","Z"),
-                    observed.timestamp(),"us_gulf_isaias_shutin")
+    return NewsItem(
+        title,"MMA",latest_url,
+        observed.isoformat().replace("+00:00","Z"),
+        observed.timestamp(),"us_gulf_isaias_shutin"
+    )
 
 
 def parse_china_reuters_resumption(
@@ -2726,8 +2843,8 @@ def _build_us_gulf_isaias_alert_body(
         "중동          실제 호르무즈 통항량 · 재개방 협상",
         "제품          정유시설 가동·항만 수출·경유 가격",
         "", "[근거]",
-        "미국 해양광물관리청(MMA) · 10월 8일 오전 11시(미국 중부시간) 기준",
-        f"원문: {MMA_OIL_ISAIAS_OCT8_URL}",
+        f"미국 해양광물관리청(MMA) · 관측일 {m['date']} · 오전 11시(미국 중부시간) 기준",
+        f"원문: {news_rows[0].link}",
         "", "[주의]",
         "사업자 신고 기반 일별 중단 추정치이며 후속 복구 숫자를 확인해야 합니다.",
     ])
@@ -2739,6 +2856,7 @@ def _build_china_fuel_export_policy_alert_body(
 ) -> str:
     stage = _china_fuel_export_stage(news_rows)
     labels = {
+        "resumption_delayed": "수출 재개 일정 연기·무산 보도",
         "planned_resume": "재개 예정 · 실제 출항 미확인",
         "approval_reported": "승인 물량 보도 · 실제 출항 미확인",
         "physical_resumed": "선적·출항 재개 확인",
@@ -2769,7 +2887,7 @@ def _build_china_fuel_export_policy_alert_body(
         won = "약세" if fx.change > 0 else "강세" if fx.change < 0 else "보합"
         lines.append(f"원·달러       {fx.price:,.2f}원 · {fx.change_pct:+.2f}% · 원화 {won}")
 
-    if stage in ("planned_resume","approval_reported","physical_resumed","resumption_reported"):
+    if stage in ("planned_resume","approval_reported","physical_resumed","resumption_reported","resumption_delayed"):
         lines.extend([
             "", "[핵심 의미]",
             "수출 재개 움직임은 아시아 제품 공급 압박을 낮출 수 있지만 실제 출항·도착 물량이 확인돼야 합니다.",
