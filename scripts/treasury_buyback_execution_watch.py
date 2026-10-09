@@ -372,7 +372,7 @@ def _fmt_cmp(value: float | None, average: float | None, suffix: str = "", place
         return "확인 불가"
     out = f"{value:.{places}f}{suffix}"
     if average is not None:
-        out += f" (직전 6회 평균 {average:.1f}{suffix}, {value-average:+.1f}{suffix})"
+        out += f" (명목채 직전 6회 평균 {average:.{places}f}{suffix}, {value-average:+.{places}f}{suffix})"
     return out
 
 
