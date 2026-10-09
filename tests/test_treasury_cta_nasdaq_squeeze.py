@@ -244,6 +244,7 @@ def test_cross_alert_latch_resets_only_after_fresh_fuel_disappears():
         "data_fresh": True,
         "nq_history_ready": True,
         "nq_history_fresh": True,
+        "nq_crosscheck_match": True,
     }
     due, base, next_alerted, reset = equity._cross_alert_gate(current_state, ended)
     assert due is False
@@ -472,3 +473,26 @@ def test_yahoo_price_count_does_not_claim_bond_squeeze(monkeypatch):
     assert verdict == "⚪ 숏 스퀴즈 미확인"
     impact, _ = equity._equity_impact(snap, {}, ["정정"])
     assert impact.startswith("⚪ 중립")
+
+def test_latch_preserved_on_same_date_cftc_crosscheck_mismatch():
+    current_state = {
+        "nasdaq_cross_asset_stage": 1,
+        "nasdaq_cross_asset_alerted_stage": 1,
+        "nasdaq_cross_asset_format_revision": equity.CROSS_FORMAT_REVISION,
+    }
+    invalid_gap = {
+        "stage": 0,
+        "treasury_fuel": True,
+        "nq_fuel": False,
+        "data_fresh": True,
+        "nq_history_ready": True,
+        "nq_history_fresh": True,
+        "nq_crosscheck_match": False,
+    }
+    due, base, alerted, reset = equity._cross_alert_gate(current_state, invalid_gap)
+    assert due is False
+    assert reset is False
+    assert base == 1
+    assert alerted == 1
+
+
