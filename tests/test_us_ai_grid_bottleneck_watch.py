@@ -394,6 +394,36 @@ class KoreanTransformerExportTests(unittest.TestCase):
         state["last_status"] = "kcs_key_missing"
         self.assertTrue(w.kcs_retry_due(now, state, True))
 
+    def test_permission_denial_emits_exactly_one_operator_notice(self):
+        import urllib.error
+        now = datetime(2026, 10, 9, 21, 0, tzinfo=ZoneInfo("Asia/Seoul"))
+        previous = {**w.KOREA_EXPORT_BASELINE, "baseline_notified": True}
+        err = urllib.error.HTTPError("https://redacted.example", 403, "Forbidden", {}, None)
+        with mock.patch.dict(w.os.environ, {"KCS_DATA_GO_SERVICE_KEY": "secret-never-display"}):
+            with mock.patch.object(w, "fetch_korea_kcs_hs6_month", side_effect=err):
+                state, events = w.update_korea_export_watch(now, previous)
+                self.assertEqual(state["last_status"], "kcs_access_denied")
+                self.assertEqual(state["last_error_kind"], "kcs_http_access_denied")
+                self.assertTrue(state["source_blocker_notified"])
+                self.assertEqual([x["kind"] for x in events], ["kcs_access_blocker"])
+                quiet, events2 = w.update_korea_export_watch(now, state)
+                self.assertEqual(events2, [])
+                tomorrow = datetime(2026, 10, 10, 21, 0, tzinfo=ZoneInfo("Asia/Seoul"))
+                again, events3 = w.update_korea_export_watch(tomorrow, quiet)
+                self.assertEqual(events3, [])
+                self.assertEqual(again["last_status"], "kcs_access_denied")
+        message = w.build_korea_export_alert(events[0], state, {"latest_month": "2026-08"})
+        self.assertIn("접근 권한 확인 필요", message)
+        self.assertIn("활용신청", message)
+        self.assertNotIn("secret-never-display", message)
+        self.assertNotIn("미국향 3개 HS 합계", message)
+
+    def test_kcs_auth_xml_error_codes_are_not_unpublished(self):
+        self.assertEqual(w.kcs_error_category(ValueError("kcs_result_20")), "kcs_service_access_denied")
+        self.assertEqual(w.kcs_error_category(ValueError("kcs_result_30")), "kcs_key_unregistered")
+        self.assertEqual(w.kcs_error_category(ValueError("kcs_result_31")), "kcs_key_expired")
+        self.assertEqual(w.kcs_error_category(ValueError("kcs_result_22")), "kcs_http_retryable")
+
     def test_fetched_usa_customs_month_alert_once(self):
         now = datetime(2026, 10, 9, 19, 0, tzinfo=ZoneInfo("Asia/Seoul"))
         def fake_fetch(hs, ym, country="US"):
