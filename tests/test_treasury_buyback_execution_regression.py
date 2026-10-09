@@ -9,3 +9,7 @@ def test_nominal_filter():
     assert not t._is_30y_bond({**row, "Tips": "Yes"})
     assert not t._is_30y_bond({**row, "securityType": "TIPS"})
     assert not t._is_30y_bond({**row, "securityTerm": "20-Year"})
+
+if __name__ == '__main__':
+    test_nominal_filter()
+    print('buyback nominal filter test passed')
