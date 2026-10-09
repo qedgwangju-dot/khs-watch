@@ -74,7 +74,7 @@
     "https://www.jll.com/content/dam/jllcom/en/global/documents/reports/research-reports/26-research-global-data-center-outlook-new.pdf",
     "https://www.se.com/us/en/about-us/newsroom/news/press-releases/schneider-electric-and-digital-realty-announce-373m-supply-capacity-agreement-to-meet-rising-data-center-demand-691d192005c0c16f5902ca3c/"
   ],
-  "last_checked_at_kst": "2026-10-09T15:41:17+09:00",
+  "last_checked_at_kst": "2026-10-09T21:28:30+09:00",
   "metric_observation_count": 0,
   "event_count": 0,
   "latest_evidence_urls": [],
@@ -676,24 +676,55 @@
         }
       }
     },
-    "last_checked_at_kst": "2026-10-09T15:41:17+09:00",
+    "last_checked_at_kst": "2026-10-09T21:28:30+09:00",
     "last_error": "",
     "pending_month": "2026-09"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-09T15:41:28+09:00",
-    "status": "no_message_due"
+    "checked_at_kst": "2026-10-09T21:28:42+09:00",
+    "status": "confirmed"
   },
-  "last_successful_delivery_kst": "2026-10-07T12:31:11+09:00",
+  "last_successful_delivery_kst": "2026-10-09T21:28:42+09:00",
   "telegram_message_ids": [
-    155
+    161
   ],
-  "telegram_message_id": 155,
+  "telegram_message_id": 161,
   "delivery_receipt": {
     "status": "confirmed",
     "message_ids": [
-      155
+      161
     ],
-    "confirmed_at_kst": "2026-10-07T12:31:11+09:00"
+    "confirmed_at_kst": "2026-10-09T21:28:42+09:00"
+  },
+  "korea_transformer_exports": {
+    "version": 1,
+    "reference": {
+      "month": "2026-09",
+      "status": "reported_provisional_not_officially_reconciled",
+      "source_kind": "아이뉴스24 2026-10-06 보도; 머니레시피 보조 확인",
+      "source_url": "https://v.daum.net/v/BM1bxtjJvW",
+      "secondary_url": "https://moneyrecipe.blog/export-statistics/transformer-large/",
+      "reported_scope_codes": [
+        "850422",
+        "850423",
+        "850434"
+      ],
+      "scope_confirmed_with_customs": false,
+      "monthly_usd": 278000000,
+      "yoy_pct": 54.8,
+      "mom_pct": 12.7,
+      "unit_price_yoy_pct": 0.8,
+      "unit_price_mom_pct": -15.8,
+      "rolling_12m_usd": 2355000000,
+      "rolling_12m_yoy_pct": 16.4,
+      "caution": "850422는 650kVA 초과 10,000kVA 이하, 850423만 10,000kVA 초과 액체절연 변압기, 850434는 기타 500kVA 초과. 보도 묶음은 전부 10,000kVA 초과가 아니며 국내 기업별 매출·미국 수입통계와 동치가 아님."
+    },
+    "baseline_notified": true,
+    "official_us_by_month": {},
+    "latest_official_us_month": "",
+    "last_attempt_day": "2026-10-09",
+    "last_checked_at_kst": "2026-10-09T21:28:30+09:00",
+    "last_status": "kcs_key_missing",
+    "last_error_kind": "permission_required"
   }
 }
