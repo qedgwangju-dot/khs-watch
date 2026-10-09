@@ -115,6 +115,11 @@ def canonical_url(value):
 def capital_event_kind(title):
     """Capital investment is a separate economic event from an earlier commercial MOU."""
     text = norm_text(title).lower()
+    if any(x in text for x in [
+        "투자 추진", "투자 검토", "투자 협의", "투자 고려", "인수 추진", "인수설",
+        "투자할 계획", "출자 검토", "투자 예정", "투자설",
+    ]):
+        return None
     if any(x in text for x in ["기업 인수", "인수 완료", "인수계약", "인수 계약", "인수합병", "합병 완료"]):
         return "acquisition"
     if any(x in text for x in ["후속 투자", "추가 투자", "2차 투자", "지분 추가", "후속 출자"]):
