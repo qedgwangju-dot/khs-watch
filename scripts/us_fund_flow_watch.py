@@ -509,114 +509,140 @@ def fetch_sp500_context():
     }
 
 
+def _ici_table_rows(page_html, required_labels):
+    """Read the latest official ICI table column, never free-form prose amounts.
+
+    ICI text repeats last week, last month, and prose in each report. Searching
+    arbitrary phrases can silently attach the wrong row or week to a metric.
+    """
+    soup = BeautifulSoup(page_html, "html.parser")
+    for table in soup.find_all("table"):
+        rows = []
+        for tr in table.find_all("tr"):
+            cells = [clean_text(cell.get_text(" ", strip=True))
+                     for cell in tr.find_all(["th", "td"], recursive=False)]
+            if cells:
+                rows.append(cells)
+        header_date = None
+        for cells in rows:
+            for cell in cells:
+                m = re.fullmatch(r"(\d{1,2}/\d{1,2}/20\d{2})", cell.strip())
+                if m:
+                    header_date = datetime.strptime(m.group(1), "%m/%d/%Y").date()
+                    break
+            if header_date:
+                break
+        if not header_date:
+            continue
+        mapped = {}
+        for cells in rows:
+            if len(cells) < 2:
+                continue
+            label = cells[0].strip().lower().replace("*", "")
+            if label in required_labels:
+                n = parse_num(cells[1])
+                if n is not None:
+                    mapped[label] = {"value": n, "cells": cells}
+        if set(required_labels).issubset(mapped):
+            return header_date, mapped
+    raise RuntimeError("ICI latest-week official numeric table incomplete; alert withheld")
+
+
+def _ici_period_from_prose(text):
+    m = re.search(
+        r"week ended(?: Wednesday,?)?\s+([A-Za-z]+\s+\d{1,2},\s+20\d{2})",
+        text, re.I
+    )
+    if not m:
+        raise RuntimeError("ICI report reference-week prose date missing")
+    return datetime.strptime(m.group(1), "%B %d, %Y").date()
+
+
+def _ici_published_date(text):
+    m = re.search(
+        r"((?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},\s+20\d{2})\s*\|\s*Print",
+        text, re.I
+    )
+    return m.group(1) if m else first_date(text)
+
+
 def parse_ici_combined():
     page_html = browser_html(ICI_COMBINED)
     text = clean_text(page_html)
+    labels = ("equity", "domestic", "world", "hybrid", "bond", "commodity", "total")
+    ref_date, table = _ici_table_rows(page_html, labels)
+    prose_date = _ici_period_from_prose(text)
+    if ref_date != prose_date:
+        raise RuntimeError(f"ICI combined header/prose date mismatch {ref_date} vs {prose_date}")
 
-    def signed_amount(pattern):
-        m = re.search(pattern, text, re.I)
-        if not m:
-            return None
-        direction = m.group(1).lower()
-        value = float(m.group(2).replace(",", ""))
-        return -value if "outflow" in direction else value
+    values = {k: round(table[k]["value"] / 1000.0, 3) for k in labels}
+    if abs(values["equity"] - values["domestic"] - values["world"]) > 0.015:
+        raise RuntimeError("ICI combined domestic+world does not equal equity")
+    if abs(values["total"] - sum(values[k] for k in ("equity","hybrid","bond","commodity"))) > 0.025:
+        raise RuntimeError("ICI combined category total identity failed")
 
-    total = signed_amount(
-        r"Total estimated (inflows|outflows).*?(?:were|was) \$([\d,.]+) billion"
-    )
-    domestic = signed_amount(
-        r"Domestic equity funds had estimated (inflows|outflows) of \$([\d,.]+) billion"
-    )
-    world = signed_amount(
-        r"world equity funds had estimated (inflows|outflows) of \$([\d,.]+) billion"
-    )
-    bond = signed_amount(
-        r"Bond funds.*?had estimated (inflows|outflows) of \$([\d,.]+) billion"
-    )
-    hybrid = signed_amount(
-        r"Hybrid funds.*?had estimated (inflows|outflows) of \$([\d,.]+) billion"
-    )
-
-    pm = re.search(
-        r"week ended(?: Wednesday,?)?\s+([A-Za-z]+\s+\d{1,2},\s+20\d{2})",
-        text,
-        re.I,
-    )
-    period = pm.group(1) if pm else "latest"
-
-    if domestic is None and total is None:
-        raise RuntimeError("ICI combined release prose values not found")
-
-    current = {
-        "equity": None,
-        "domestic": domestic,
-        "world": world,
-        "bond": bond,
-        "hybrid": hybrid,
-        "total": total,
-    }
-
-    pub_m = re.search(
-        r"((?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},\s+20\d{2})\s*\|\s*Print",
-        text,
-        re.I,
-    )
-    published = pub_m.group(1) if pub_m else first_date(text)
+    m = re.search(r"Total estimated (inflows|outflows).*?(?:were|was) \$([\d,.]+) billion", text, re.I)
+    if not m:
+        raise RuntimeError("ICI combined official text direction/total missing")
+    prose_total = float(m.group(2).replace(",", "")) * (-1 if "outflow" in m.group(1).lower() else 1)
+    if abs(values["total"] - prose_total) > 0.025:
+        raise RuntimeError(f"ICI combined table/prose amount mismatch {values['total']} vs {prose_total}")
 
     payload = {
-        "source": "ICI",
-        "kind": "combined",
-        "period": period,
-        "published": published,
-        "url": ICI_COMBINED,
-        "metrics": current,
-        "domestic_4w": None,
+        "source": "ICI", "kind": "combined",
+        "period": ref_date.strftime("%B %d, %Y"),
+        "published": _ici_published_date(text),
+        "url": ICI_COMBINED, "metrics": values, "domestic_4w": None,
+        "quality_checks": ["date_header_matches_prose", "equity_identity", "categories_total", "prose_total"],
     }
-    payload["fingerprint"] = hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()
+    payload["fingerprint"] = semantic_fingerprint(payload)
     return payload
 
 
 def parse_ici_mmf():
     page_html = browser_html(ICI_MMF)
     text = clean_text(page_html)
+    ref_date, table = _ici_table_rows(page_html, ("total",))
+    prose_date = _ici_period_from_prose(text)
+    if ref_date != prose_date:
+        raise RuntimeError(f"ICI MMF header/prose date mismatch {ref_date} vs {prose_date}")
 
-    # Prefer the release prose because it states both level and weekly change.
-    patterns = [
-        re.compile(
-            r"Total money market fund assets.*?(increased|decreased) by \$([\d,.]+) billion to \$([\d,.]+) trillion.*?week ended(?: Wednesday,?)?\s+([A-Za-z]+\s+\d{1,2})",
-            re.I,
-        ),
-        re.compile(
-            r"money market fund assets.*?(increased|decreased).*?\$([\d,.]+) billion.*?\$([\d,.]+) trillion.*?([A-Za-z]+\s+\d{1,2})",
-            re.I,
-        ),
-    ]
-    m = next((p.search(text) for p in patterns if p.search(text)), None)
-    if not m:
-        raise RuntimeError("ICI MMF release values not found")
-
-    direction = 1 if m.group(1).lower() == "increased" else -1
-    change_bn = direction * float(m.group(2).replace(",", ""))
-    assets_trillion = float(m.group(3).replace(",", ""))
-    period = m.group(4)
-    pub_m = re.search(
-        r"((?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},\s+20\d{2})\s*\|\s*Print",
-        text,
-        re.I,
+    m = re.search(
+        r"Total money market fund assets.*?(increased|decreased) by \$([\d,.]+) billion to \$([\d,.]+) trillion",
+        text, re.I
     )
-    published = pub_m.group(1) if pub_m else first_date(text)
+    if not m:
+        raise RuntimeError("ICI MMF official text total/direction missing")
+    reported_delta = float(m.group(2).replace(",", "")) * (1 if m.group(1).lower() == "increased" else -1)
+    reported_assets_tr = float(m.group(3).replace(",", ""))
+    row = table["total"]["cells"]
+    if len(row) < 4:
+        raise RuntimeError("ICI MMF official Total row missing 2 weeks and change columns")
+    total_bn = parse_num(row[1])
+    previous_bn = parse_num(row[2])
+    tab_delta_bn = parse_num(row[3])
+    if None in (total_bn, previous_bn, tab_delta_bn):
+        raise RuntimeError("ICI MMF numeric totals incomplete")
+    if abs(total_bn - previous_bn - reported_delta) > 0.06:
+        raise RuntimeError("ICI MMF weekly arithmetic mismatch")
+    if abs(tab_delta_bn - reported_delta) > 0.06:
+        raise RuntimeError("ICI MMF reported change differs from official table")
+    if abs(total_bn / 1000.0 - reported_assets_tr) > 0.006:
+        raise RuntimeError("ICI MMF headline/trillion level mismatch")
 
     payload = {
-        "source": "ICI",
-        "kind": "mmf",
-        "period": period,
-        "published": published,
+        "source": "ICI", "kind": "mmf",
+        "period": ref_date.strftime("%B %d, %Y"),
+        "published": _ici_published_date(text),
         "url": ICI_MMF,
-        "metrics": {"assets_trillion": assets_trillion, "weekly_change_bn": change_bn},
+        "metrics": {
+            "assets_trillion": round(total_bn / 1000.0, 5),
+            "weekly_change_bn": round(reported_delta, 2),
+        },
+        "quality_checks": ["same_week", "weekly_arithmetic", "table_change", "prose_level"],
     }
-    payload["fingerprint"] = hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()
+    payload["fingerprint"] = semantic_fingerprint(payload)
     return payload
-
 
 def parse_finra():
     r = get(FINRA_MARGIN)
