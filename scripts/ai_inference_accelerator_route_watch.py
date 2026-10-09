@@ -557,6 +557,18 @@ def official_page_snapshots() -> dict[str, dict]:
             "material": json.dumps(semantic, ensure_ascii=False, sort_keys=True),
             "snapshot_type": "semantic",
         }
+    missing = MUTABLE_SEMANTIC_OFFICIAL_PAGES.difference(out)
+    if missing:
+        raise RuntimeError("공식 문서 원천 불완전: " + ", ".join(sorted(missing)))
+    guide = out["OpenAI Ultrafast 모드"]["semantic"]
+    model = out["OpenAI GPT-6.1 Sol 모델"]["semantic"]
+    if guide.get("gpt_6_1_sol_ultrafast_supported") != model.get("ultrafast_supported"):
+        raise RuntimeError("OpenAI 공식 문서 간 Sol Ultrafast 지원 상태 불일치")
+    if guide.get("gpt_6_1_sol_ultrafast_supported") and (
+        not guide.get("sol_ultrafast_eu_residency")
+        or not model.get("sol_ultrafast_eu_residency")
+    ):
+        raise RuntimeError("Sol Ultrafast EU 데이터 상주 조건 교차확인 실패")
     return out
 
 
@@ -908,6 +920,16 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
             "",
             f"<b>{idx}. {html.escape(rep['entity'])} · {html.escape(rep['category'])}</b>",
             f"• {html.escape(concise_fact(rep))}",
+        ]
+        # One official release often changes multiple documentation pages.
+        # Preserve every distinct fact rather than silently showing one page.
+        facts_seen = {rep.get("title", "")}
+        for other in cluster[1:3]:
+            fact = other.get("title", "")
+            if fact and fact not in facts_seen:
+                lines.append(f"• {html.escape(concise_fact(other))}")
+                facts_seen.add(fact)
+        lines += [
             f"• <b>의미</b>: {html.escape(impact(rep['category']))}",
         ]
         sources = []
@@ -1010,6 +1032,9 @@ def main() -> int:
             official_pages[name] = page_state
 
             if should_alert and old_semantic is not None and new_semantic is not None:
+                if not semantic_changes(old_semantic, new_semantic):
+                    print(f"ai_inference_route_incomplete_numeric_change_ignored={name}")
+                    continue
                 category = official_change_category(name, old_semantic, new_semantic)
                 summary = official_change_summary(name, old_semantic, new_semantic)
                 page_item = normalize({
@@ -1033,6 +1058,14 @@ def main() -> int:
             )
     except Exception as exc:
         errors.append(f"공식 페이지 감시 실패: {type(exc).__name__}: {exc}")
+        STATUS_PATH.write_text(
+            "# AI 추론 가속기·모델 라우팅 Watch\n"
+            "- 상태: 공식 지원·지역·가격 검증 실패, Telegram 전송 및 상태 갱신 중단\n"
+            + "\n".join(f"- 오류: {error}" for error in errors[:10]) + "\n",
+            encoding="utf-8",
+        )
+        print(f"ai_inference_route_official_health=failed errors={len(errors)}")
+        return 2
 
     baseline = not bool(state.get("initialized"))
     if baseline:
