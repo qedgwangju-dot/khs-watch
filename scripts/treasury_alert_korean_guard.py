@@ -579,7 +579,7 @@ def causal_block(snapshot: dict) -> str:
     return "\n".join([
         "<b>Bessent 금리상승 원인설 자동 검증</b>",
         f"• 공통 비교일: {snapshot['common_prev_date']} → {snapshot['common_date']}",
-        f"• Brent(EIA): ${v['brent']:.2f}/배럴 ({c['brent_pct']:+.2f}%)",
+        f"• Brent(EIA Europe 현물): ${v['brent']:.2f}/배럴 ({c['brent_pct']:+.2f}%)",
         f"• 10년 기대인플레이션 프록시(미 재무부 명목-실질): {v['bei10']:.2f}% ({c['bei_bp']:+.1f}bp)",
         f"• 10년 실질금리(미 재무부): {v['real10']:.2f}% ({c['real_bp']:+.1f}bp)",
         f"• 10년 명목금리(미 재무부): {v['nom10']:.2f}% ({c['nom_bp']:+.1f}bp)",
@@ -595,6 +595,7 @@ def causal_block(snapshot: dict) -> str:
         f"• 판정 기준: {snapshot.get('verdict_basis','확인 불가')}",
         f"• 판정: <b>{snapshot['verdict']}</b>",
         "• 기대인플레이션 프록시는 같은 날짜의 미 재무부 명목 10년물-실질 10년물 차이입니다. 기간프리미엄은 모형 추정치라 보조 확인에만 사용합니다.",
+        "• EIA Brent는 Europe 현물 시계열입니다. ICE Brent 선물과 섞어 증감률·경보구간을 계산하지 않으며, 전쟁·운송 차질 때 현물-선물 괴리가 커질 수 있습니다.",
     ])
 
 def stock_market_block(snapshot: dict) -> str:
@@ -664,7 +665,7 @@ def oil_scenario_block(snapshot: dict) -> str:
         label = "🟢 50달러 이하 진입 — 40달러 꼬리 시나리오 검증 구간"
     return "\n".join([
         "<b>Bessent 원유 40~50달러 조건부 시나리오</b>",
-        f"• Brent(EIA) 최신: <b>${brent:.2f}/배럴</b> ({brent_date}) · 50달러까지 {to50:+.1f}% · 40달러까지 {to40:+.1f}%",
+        f"• Brent(EIA Europe 현물) 최신: <b>${brent:.2f}/배럴</b> ({brent_date}) · 50달러까지 {to50:+.1f}% · 40달러까지 {to40:+.1f}%",
         f"• 현재 판정: <b>{label}</b>",
         "• 조건 분리: 40~50달러는 <b>이란 분쟁 종료 + 공급과잉</b>을 전제로 한 Bessent의 조건부 전망이며 재무부의 공식 가격목표가 아닙니다.",
         "• 검증 경로: Brent↓ → 기대인플레↓ → 실질금리↓/기간프리미엄 안정 → 10년물↓. 유가만 내려가고 10년물이 버티면 재정·실질금리 요인이 더 강한 것으로 판정합니다.",
