@@ -1546,7 +1546,7 @@ def verify_alert(test_mode=False):
     all_lines = text.splitlines()
     item_title_lines = [
         all_lines[i + 1] for i, line in enumerate(all_lines[:-1])
-        if re.match(r"^[🔴🟢🟡]?\\s*\\[(?:속보|신규|후속)\\]\\s*<b>\\d+\\.", line)
+        if re.match(r"^[🔴🟢🟡]?\s*\[(?:속보|신규|후속)\]\s*<b>\d+\.", line)
     ]
     # 같은 1건 안의 본문·신호가 모두 원발언을 인용해도 중복으로 세지 않는다.
     repeated_midterm_pledges = [
