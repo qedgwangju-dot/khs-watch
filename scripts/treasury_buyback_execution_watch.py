@@ -683,6 +683,25 @@ def build_alert(row: dict, fx: float, fx_date: str) -> tuple[str, str, dict]:
     return title, body, detail
 
 
+def build_oct9_correction(auction: dict, period: dict) -> tuple[str, str, dict]:
+    a = auction
+    r = period["since_operation_bp"]
+    title = "정정 | 미 재무부 바이백 연계 30년물 입찰·금리 판정"
+    body = "\n".join([
+        "<b>기존 10월 8일 입찰·10월 1일 +5영업일 판정 정정</b>",
+        f"• 30년물 응찰배율 {a['btc']:.2f}배 / 명목 30년물 직전 6회 평균 {a['avg_btc_6']:.2f}배",
+        f"• 간접낙찰 {a['indirect_pct']:.1f}% / 직전 6회 {a['avg_indirect_pct_6']:.1f}%",
+        f"• 딜러 인수 {a['dealer_pct']:.1f}% / 직전 6회 {a['avg_dealer_pct_6']:.1f}%",
+        "• 수정 판정: 신규 30년물 수요 강함. 종전 비교표본에는 물가연동채 혼입 위험이 있었습니다.",
+        f"• 10월 1일 바이백 후 +5영업일: 10년 {r['10y']:+.1f}bp, 20년 {r['20y']:+.1f}bp, 30년 {r['30y']:+.1f}bp",
+        "• 수정 판정: 장기금리 소폭 하락·보합이며, 상승과 하락이 엇갈린 혼조는 아닙니다.",
+        "• 10월 8일 바이백 당일 금리 하락에는 당일 강한 30년물 신규입찰도 함께 작용했습니다.",
+        "• 국채 바이백은 액면금액과 실제 결제 현금을 분리합니다.",
+        f'<a href="{TREASURY_YIELD_PAGE}">재무부 공식 금리</a> · <a href="{TREASURY_AUCTION_QUERY}">30년물 입찰</a>',
+    ])
+    return title, body, {"mode": "correction", "auction": a, "persistence": period}
+
+
 def main() -> int:
     DATA.mkdir(parents=True, exist_ok=True)
     OUT.mkdir(parents=True, exist_ok=True)
