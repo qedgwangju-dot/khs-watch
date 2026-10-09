@@ -754,4 +754,96 @@ try:
 except RuntimeError as e:
     check("oct07-quality-gate-duplicate-url", "동일 원문 URL" in str(e))
 
+
+# 25) 트럼프 10/8 이란 공격 유예 발언: 매체별 문구 차이에도 단일 사건.
+trump_cnbc = row(
+    "Trump says U.S. will not attack Iran before midterm election",
+    source="CNBC",
+    description="The president ruled out an Iran strike before Nov. 3 midterms, while talks continue.",
+    link="https://www.cnbc.com/2026/10/08/iran-war-trump-midterm-election.html",
+)
+trump_reuters = row(
+    "Trump says US will not attack Iran before midterm elections in November",
+    source="Reuters",
+    description="The blockade of Iran remains in full effect and talks are ongoing.",
+    link="https://www.reuters.com/world/trump-us-having-productive-talks-with-iran-will-not-attack-before-us-elections-2026-10-08/",
+)
+trump_ap = row(
+    "Trump says US will not resume military strikes on Iran before the Nov. 3 midterm elections",
+    source="Associated Press",
+    description="The president's no-strike pledge is not a ceasefire agreement.",
+    link="https://apnews.com/article/trump-iran-midterm",
+)
+trump_official = row(
+    "Donald J. Trump statement on Iran",
+    source="Truth Social",
+    description="We will not be attacking Iran at any time prior to the Midterm Elections to be held in the United States on November 3rd.",
+    link="https://truthsocial.com/@realDonaldTrump/117406186276133332",
+)
+for name, case in (("cnbc",trump_cnbc),("reuters",trump_reuters),("ap",trump_ap),("official",trump_official)):
+    check("oct08-iran-midterm-pledge-detected-"+name, mod._trump_iran_midterm_no_strike(case))
+check("oct08-iran-midterm-pledge-single-id", len({mod.item_id(x) for x in (trump_cnbc,trump_reuters,trump_ap,trump_official)}) == 1)
+check("oct08-iran-midterm-pledge-topic", mod.topic_label(trump_cnbc) == "미국·이란 · 11월 3일 전 추가공격 유예 발언")
+score, tags = mod.score_item(trump_cnbc, dt.datetime.now(mod.watch.KST))
+check("oct08-iran-midterm-pledge-yellow", score == 100 and mod.final_color(trump_cnbc) == "yellow")
+check("oct08-iran-midterm-pledge-not-ceasefire", "휴전·평화" not in tags and "확전" not in tags and "봉쇄유지" in tags and "휴전미확정" in tags)
+check("oct08-iran-midterm-pledge-has-constraints", "봉쇄 유지" in trump_cnbc["title_ko"] and "휴전 합의 미확정" in trump_cnbc["title_ko"])
+trump_cnbc["score"],trump_cnbc["tags"],trump_cnbc["age"] = score,tags,mod.watch.age_minutes(trump_cnbc,dt.datetime.now(mod.watch.KST))
+rendered_pledge = mod.watch.build_alert([trump_cnbc], [], dt.datetime.now(mod.watch.KST))
+check("oct08-iran-midterm-pledge-rendered-yellow", "🟡 [신규] <b>1. 미국·이란 · 11월 3일 전 추가공격 유예 발언" in rendered_pledge)
+check("oct08-iran-midterm-pledge-not-green-header", "🟢 <b>재건·휴전</b>" not in rendered_pledge)
+check("oct08-iran-midterm-pledge-not-nov4-attack", "11월 4일 공격 결정" not in rendered_pledge)
+
+# 26) 기존 유예 발언을 배경으로 인용한 새 공격기사는 유예 신규발언으로 오탐하면 안 된다.
+iran_actual_strike = row(
+    "US launches strikes on Iran despite Trump pledge",
+    source="Reuters",
+    description="Trump said he would not attack Iran before the midterm elections on Nov. 3, but US forces attacked today.",
+)
+check("oct08-historical-pledge-not-current", not mod._trump_iran_midterm_no_strike(iran_actual_strike))
+iran_gossip = row(
+    "Trump may not attack Iran before elections",
+    source="Random blog",
+    description="Anonymous analysts guess there may be no action until Nov. 3.",
+)
+check("oct08-unsupported-rumor-not-pledge", not mod._trump_iran_midterm_no_strike(iran_gossip))
+iran_talks_only = row(
+    "Trump says US and Iran holding productive talks ahead of elections",
+    source="Axios",
+    description="No confirmed ceasefire or policy on attacks before Nov 3.",
+)
+check("oct08-talks-not-no-strike-pledge", not mod._trump_iran_midterm_no_strike(iran_talks_only))
+reversal = row(
+    "Trump reverses no-attack pledge on Iran ahead of midterms",
+    source="Reuters",
+    description="No actual military strike has occurred.",
+)
+# 제목에 중간선거가 있어도, 공격 유예의 철회는 공격 발생과 구분.
+reversal["title_original"] = "Trump reverses no-attack pledge on Iran before midterm elections"
+check("oct08-reversal-detected", mod._trump_iran_midterm_pledge_reversal(reversal))
+check("oct08-reversal-not-pledge", not mod._trump_iran_midterm_no_strike(reversal))
+score,tags = mod.score_item(reversal,dt.datetime.now(mod.watch.KST))
+check("oct08-reversal-yellow-not-red", mod.final_color(reversal)=="yellow" and "실제공격미확인" in tags and "확전" not in tags)
+check("oct08-reversal-separate-id", mod.item_id(reversal)!=mod.item_id(trump_cnbc))
+
+old_pledge = row(
+    "Trump says US will not attack Iran before midterm elections",
+    source="Reuters",
+    description="Before November 3rd",
+    minutes_ago=190,
+)
+old_score,old_tags = mod.score_item(old_pledge, dt.datetime.now(mod.watch.KST))
+check("oct08-pledge-stale-not-reborn", old_score == 0 and old_tags == [])
+
+bad_pledge = """<b>전쟁·종전·재건 웹감시</b>
+🔴 [신규] <b>1. 미국·이란 · 11월 3일 전 추가공격 유예 발언</b>
+트럼프, 11월 3일 미국 중간선거 전 이란 추가 공격 없다고 발표 — 휴전 확정
+"""
+mod.watch.ALERT.write_text(bad_pledge,encoding="utf-8")
+try:
+    mod.verify_alert(False)
+    raise AssertionError("oct08-pledge-quality-gate")
+except RuntimeError as e:
+    check("oct08-pledge-quality-gate", "공격유예" in str(e) or "봉쇄" in str(e))
+
 print("WAR_PEACE_OCT04_REGRESSION_OK")
