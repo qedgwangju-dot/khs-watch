@@ -224,6 +224,36 @@ class IPhone18ProOrderTests(unittest.TestCase):
         self.assertIn("니케이",text)
         self.assertNotIn("iPhone Duo 부품 발주 감축",text)
 
+    def test_bing_fallback_when_google_news_rss_times_out(self):
+        from email.utils import format_datetime
+        from datetime import datetime
+        from zoneinfo import ZoneInfo
+        pub = format_datetime(datetime.now(ZoneInfo("Asia/Seoul")))
+        feed = (
+            "<rss><channel><item><title>"
+            "Apple iPhone 18 Pro October component orders cut 30% from original plan"
+            "</title><link>https://example.org/a</link>"
+            "<description>Original supplier requests reduced 30%.</description>"
+            f"<pubDate>{pub}</pubDate>"
+            "<source url='https://example.org'>Reuters</source>"
+            "</item></channel></rss>"
+        ).encode("utf-8")
+        def mock_fetch(url, timeout=12):
+            if "news.google.com" in url:
+                raise OSError("Google RSS throttled")
+            if "bing.com" in url:
+                return feed
+            raise RuntimeError("unexpected provider")
+        with patch.object(m, "_fetch", side_effect=mock_fetch):
+            rows, errors, successful = m.collect()
+        self.assertGreater(successful, 0)
+        self.assertTrue(errors)
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(
+            m._extract_cut(rows[0]["title"] + " " + rows[0]["description"])["high"],
+            30.0
+        )
+
     def test_all_feeds_failure_preserves_baseline_and_no_alert_on_first_run(self):
         import tempfile
         with tempfile.TemporaryDirectory() as d:
@@ -240,7 +270,7 @@ class IPhone18ProOrderTests(unittest.TestCase):
             with patch.object(m,"STATE_PATH",st), patch.object(m,"PENDING_PATH",pending), \
                  patch.object(m,"FRAGMENT_PATH",alert), patch.object(m,"MAIN_ALERT_PATH",telegram), \
                  patch.object(m,"STATUS_PATH",status), \
-                 patch.object(m,"collect",return_value=([], ["timeout"] * len(m.QUERIES))):
+                 patch.object(m,"collect",return_value=([], ["timeout"] * len(m.QUERIES), 0)):
                 m.main()
             new=__import__("json").loads(pending.read_text(encoding="utf-8"))
             self.assertTrue(new["initial_alert_sent"])
@@ -265,7 +295,7 @@ class IPhone18ProOrderTests(unittest.TestCase):
             with patch.object(m,"STATE_PATH",st), patch.object(m,"PENDING_PATH",pending), \
                  patch.object(m,"FRAGMENT_PATH",alert), patch.object(m,"MAIN_ALERT_PATH",telegram), \
                  patch.object(m,"STATUS_PATH",status), \
-                 patch.object(m,"collect",return_value=([], ["timeout"] * len(m.QUERIES))):
+                 patch.object(m,"collect",return_value=([], ["timeout"] * len(m.QUERIES), 0)):
                 m.main()
                 first=__import__("json").loads(pending.read_text(encoding="utf-8"))
                 self.assertTrue(alert.exists())
