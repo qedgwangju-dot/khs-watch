@@ -983,26 +983,31 @@ oct09_aju = row(
     "트럼프 중간선거 전 이란 공격 안 해…해상 봉쇄는 유지 - 아주경제",
     source="아주경제",
     description="트럼프가 11월 3일 중간선거 전에는 공격을 하지 않겠다고 말했다.",
+    link="https://example.com/fixtures/aju-policy",
 )
 oct09_obs = row(
     '트럼프 "중간선거 전까지 이란 공격 안 할 것" - OBS경인TV',
     source="OBS경인TV",
     description="Trump says no Iran strike before the midterm vote",
+    link="https://example.com/fixtures/obs-policy",
 )
 oct09_kyunghyang_plan = row(
     "트럼프 “중간선거 전 이란 공격 없다”했지만···뒤에선 ‘3일 집중 공격’ 계획 준비 - 경향신문",
     source="경향신문",
     description="미 국방부가 검토한 3일 집중공격 계획과 트럼프의 선거 전 공격 보류 발언은 서로 다른 단계.",
+    link="https://example.com/fixtures/kyunghyang-plan",
 )
 oct09_yonhap_plan = row(
     '"美국방부, 이란 \'3일 집중공격\' 계획 수립…트럼프 일단 제동" - 연합뉴스',
     source="연합뉴스",
     description="작전 방안을 마련했으나 대통령의 최종 승인과 실제 공격 명령은 확인되지 않았다.",
+    link="https://example.com/fixtures/yonhap-plan",
 )
 oct09_nyt_plan = row(
     "Pentagon prepares three-day intensive Iran strike option as Trump says no attack before midterms",
     source="New York Times",
     description="The Pentagon examined strike options but the president has not approved an attack.",
+    link="https://example.com/fixtures/nyt-plan",
 )
 for label, x in (("aju",oct09_aju),("obs",oct09_obs)):
     check("oct09-confirmed-pledge-"+label, mod._trump_iran_midterm_no_strike(x))
