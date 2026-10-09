@@ -14,6 +14,7 @@ import xml.etree.ElementTree as ET
 from email.utils import parsedate_to_datetime
 
 import trump_oge_portfolio_watch as watch
+import trump_oge_2026_08_event as aug
 
 
 _original_fx_rate = watch.fx_rate
@@ -99,6 +100,9 @@ def _telegram_html(text: str) -> str:
             (r"Reuters 보도:\s*(https?://\S+)", "Reuters 원문"),
             (r"조선일보:\s*(https?://\S+)", "조선일보 원문"),
             (r"BBC 원문:\s*(https?://\S+)", "BBC 원문"),
+            (r"CNBC 원문:\s*(https?://\S+)", "CNBC 원문"),
+            (r"Bloomberg 원문:\s*(https?://\S+)", "Bloomberg 원문"),
+            (r"백악관 정책 원문:\s*(https?://\S+)", "백악관 정책 원문"),
             (r"OGE 공개목록:\s*(https?://\S+)", "OGE 공개목록"),
         ]
         rendered = False
@@ -128,7 +132,7 @@ def send_message_html(token, chat_id, text):
         chunks.append(current.rstrip())
 
     for chunk in chunks:
-        watch.telegram_api(
+        receipt = watch.telegram_api(
             token,
             "sendMessage",
             {
@@ -138,6 +142,10 @@ def send_message_html(token, chat_id, text):
                 "disable_web_page_preview": "true",
             },
         )
+        message_id = (receipt or {}).get("message_id")
+        if message_id is None:
+            raise RuntimeError("Telegram reported success without a message_id")
+        print(f"Telegram delivery confirmed: message_id={message_id}")
 
 
 watch.send_message = send_message_html
@@ -435,6 +443,7 @@ def _discover_fallback_news():
                     "id": eid,
                     "period": period,
                     "title": title or "트럼프 OGE 신규 거래 보도",
+                    "desc": desc,
                     "source": _source_name(item, link),
                     "url": link,
                     "published": pub,
@@ -472,6 +481,9 @@ def _detail_kind(event):
 
 
 def _fallback_event_key(event):
+    # Distinguish the new August filing from stories that repeat July transactions.
+    if aug.is_august_news(event):
+        return aug.EVENT_KEY
     title = (event.get("title") or "").lower()
     period = event.get("period") or "unknown"
     assets = sorted({k.replace(" ", "-") for k in FALLBACK_ASSET_KEYS if k in title})
@@ -570,6 +582,21 @@ def main_with_fallback():
     urls = watch.discover_trump_278t_urls()
     for url in [u for u in urls if watch.filing_key(u) not in seen_urls]:
         key = watch.filing_key(url)
+
+        # If the signed September 17 filing becomes directly discoverable in OGE,
+        # reconcile it with the already-reported October 8 August-filing event.
+        # Do not fire a second "new filing" alert for the same 517 trades.
+        if aug.is_august_official_filing(url):
+            if aug.EVENT_KEY not in seen_news_event_keys:
+                watch.send_message(
+                    token, chat_id,
+                    aug.build_august_report(rate, basis, watch.krw_range, official_pdf_url=url),
+                )
+                seen_news_event_keys.add(aug.EVENT_KEY)
+            seen_urls.add(key)
+            seen_periods.add(aug.PERIOD)
+            continue
+
         txs = []
         periods = set()
         if urllib.parse.unquote(url).lower() == urllib.parse.unquote(watch.SEED_CURRENT_URL).lower():
@@ -588,6 +615,18 @@ def main_with_fallback():
         watch.send_message(token, chat_id, msg)
         seen_urls.add(key)
         seen_periods.update(periods)
+
+    # Source-verified October 8 report is a NEW August filing, not another
+    # July transaction article. Deliver once even when the OGE HTML listing
+    # has not yet exposed the direct PDF URL.
+    if aug.EVENT_KEY not in seen_news_event_keys:
+        watch.send_message(
+            token, chat_id,
+            aug.build_august_report(rate, basis, watch.krw_range),
+        )
+        seen_news_event_keys.add(aug.EVENT_KEY)
+        seen_periods.add(aug.PERIOD)
+        print("OGE August 2026 report delivered from CNBC/Bloomberg corroboration")
 
     fallback_events = _discover_fallback_news()
 
