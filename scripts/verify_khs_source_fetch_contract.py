@@ -105,7 +105,43 @@ def main() -> int:
             else:
                 os.environ[name] = value
 
-    print("khs_source_fetch_contract=passed treasury_official_backup=passed")
+    # Render-to-Telegram contract: the recovered OISP case must survive the
+    # shared formatter and one-link validator, not merely pass source parsing.
+    import datetime as dt
+    import khs_trusted_policy_news_watch as trusted
+    from khs_policy_telegram_formatter import (
+        format_policy_message, validate_final_policy_message,
+        prepare_telegram_messages,
+    )
+    oisp_rule = next(
+        rule for rule in trusted.STORY_RULES
+        if rule.key == "us_treasury_outbound_ai_robotics_enforcement"
+    )
+    official_item = {
+        "title": "Treasury Announces Enforcement Penalty for Violation of Outbound Program",
+        "description": (
+            "U.S. Treasury issued its first penalty under the Outbound Investment Security Program "
+            "after Amidi LLC failed to notify Treasury of its $92,478 investment in "
+            "Chinese robotics AI firm Noematrix and was fined $200,000."
+        ),
+        "link": original_url,
+        "source": "U.S. Department of the Treasury",
+        "published_kst": "2026-10-07T12:00:00+09:00",
+        "official_direct_verified": True,
+        "priority": 0,
+    }
+    assert trusted.alert_confirmation_status(oisp_rule, [official_item])[0] == "공식 확인"
+    report = trusted.render_alert_bundle(
+        [{"rule": oisp_rule, "items": [official_item]}],
+        dt.datetime(2026, 10, 10, 7, 25, tzinfo=trusted.KST),
+    )
+    title = "신뢰외신 정책 워치: [상·공식 확인] 미 재무부, 중국 로봇·체화형 AI 투자 미신고 첫 과징금"
+    title, report = format_policy_message(title, report)
+    errors = validate_final_policy_message(title, report)
+    assert not errors, f"rendered Treasury policy alert blocked by quality guard: {errors}"
+    assert prepare_telegram_messages(title, report), "no Telegram message parts created"
+
+    print("khs_source_fetch_contract=passed treasury_official_backup=passed treasury_message_format=passed")
     return 0
 
 
