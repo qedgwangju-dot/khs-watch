@@ -1,6 +1,13 @@
 """Unit regression tests for the separate LG/BOS/Hana automotive chiplet alert."""
 import datetime as dt
 import unittest
+import contextlib
+import json
+import pathlib
+import tempfile
+from unittest import mock
+
+import scripts.lg_auto_chiplet_watch as watcher
 from zoneinfo import ZoneInfo
 
 from scripts.lg_auto_chiplet_watch import (
@@ -11,6 +18,97 @@ from scripts.lg_auto_chiplet_watch import (
 class VehicleChipletWatchTests(unittest.TestCase):
     def item(self, title, summary=""):
         return {"title": title, "summary": summary}
+
+    def test_end_to_end_baseline_one_alert_and_duplicate_suppression(self):
+        with tempfile.TemporaryDirectory() as root:
+            root = pathlib.Path(root)
+            scan_times = [
+                dt.datetime(2026, 10, 9, 19, 0, tzinfo=ZoneInfo("Asia/Seoul")),
+                dt.datetime(2026, 10, 10, 10, 0, tzinfo=ZoneInfo("Asia/Seoul")),
+                dt.datetime(2026, 10, 10, 10, 10, tzinfo=ZoneInfo("Asia/Seoul")),
+            ]
+            def article(title, url, publisher):
+                item = {
+                    "title": title,
+                    "url": url,
+                    "source": publisher,
+                    "source_url": "https://www.mk.co.kr",
+                    "quality": "신뢰 언론 보도",
+                    "summary": "",
+                    "published_kst": "2026-10-10T09:15+09:00",
+                    "lane": "차량용 칩렛",
+                }
+                item["event_id"], item["stage"], item["stage_desc"] = watcher.candidate_event(item)
+                return item
+            events = [
+                article(
+                    "LG전자·보스반도체, 보쉬 차량용 칩렛 공급계약 체결 - 매일경제",
+                    "https://news.google.com/rss/articles/a", "매일경제",
+                ),
+                article(
+                    "LG전자 보쉬 칩렛 공급 계약 체결, 하나마이크론 패키징 - 연합뉴스",
+                    "https://news.google.com/rss/articles/b", "연합뉴스",
+                ),
+            ]
+            with contextlib.ExitStack() as patches:
+                patches.enter_context(mock.patch.object(watcher, "STATE", root / "state.json"))
+                patches.enter_context(mock.patch.object(watcher, "PENDING", root / "pending.json"))
+                patches.enter_context(mock.patch.object(watcher, "ALERT", root / "alert.html"))
+                patches.enter_context(mock.patch.object(watcher, "STATUS", root / "status.md"))
+                patches.enter_context(mock.patch.object(watcher, "resolve_publisher", lambda url: (url, "기사 보기")))
+                clock = patches.enter_context(mock.patch.object(watcher, "now_kst", side_effect=scan_times))
+                scan = patches.enter_context(mock.patch.object(watcher, "collect", side_effect=[
+                    ([], 13, []), (events, 13, []), (events, 13, []),
+                ]))
+                watcher.main()
+                self.assertFalse(watcher.ALERT.exists())
+                self.assertTrue(watcher.PENDING.exists())
+                watcher.STATE.write_bytes(watcher.PENDING.read_bytes())
+                watcher.main()
+                body = watcher.ALERT.read_text(encoding="utf-8")
+                self.assertIn("실제 신규 단계: 1건", body)
+                self.assertIn("보쉬", body)
+                state = json.loads(watcher.PENDING.read_text(encoding="utf-8"))
+                self.assertEqual(len([x for x in state["seen"].values() if x.get("alerted")]), 1)
+                self.assertEqual(len([x for x in state["seen"].values() if x.get("suppressed_duplicate")]), 1)
+                self.assertIn("lg_bos_hana|purchase_contract|bosch|2026-10", state["events"])
+                watcher.STATE.write_bytes(watcher.PENDING.read_bytes())
+                watcher.main()
+                self.assertFalse(watcher.ALERT.exists())
+
+    def test_same_current_bosch_discussion_not_resent_as_new(self):
+        with tempfile.TemporaryDirectory() as root:
+            root = pathlib.Path(root)
+            now = dt.datetime(2026, 10, 10, 12, 0, tzinfo=ZoneInfo("Asia/Seoul"))
+            state = {
+                "initialized": True,
+                "bootstrap_kst": "2026-10-09T19:00:00+09:00",
+                "last_checked_kst": "2026-10-09T19:00:00+09:00",
+                "seen": {},
+                "events": dict(watcher.BASELINE),
+            }
+            (root / "state.json").write_text(json.dumps(state, ensure_ascii=False), encoding="utf-8")
+            item = {
+                "title": "LG전자 보쉬 손잡고 차량용 칩렛 적용 논의 - 매일경제",
+                "url": "https://news.google.com/rss/articles/news-again",
+                "source": "매일경제",
+                "summary": "", "quality": "신뢰 언론 보도",
+                "source_url": "https://www.mk.co.kr",
+                "published_kst": "2026-10-10T11:00+09:00",
+            }
+            item["event_id"], item["stage"], item["stage_desc"] = watcher.candidate_event(item)
+            self.assertEqual(item["event_id"], "lg_bos_hana|bosch_discussion")
+            with contextlib.ExitStack() as patches:
+                patches.enter_context(mock.patch.object(watcher, "STATE", root / "state.json"))
+                patches.enter_context(mock.patch.object(watcher, "PENDING", root / "pending.json"))
+                patches.enter_context(mock.patch.object(watcher, "ALERT", root / "alert.html"))
+                patches.enter_context(mock.patch.object(watcher, "STATUS", root / "status.md"))
+                patches.enter_context(mock.patch.object(watcher, "now_kst", return_value=now))
+                patches.enter_context(mock.patch.object(watcher, "collect", return_value=([item], 13, [])))
+                watcher.main()
+                self.assertFalse(watcher.ALERT.exists())
+                stored = json.loads(watcher.PENDING.read_text(encoding="utf-8"))
+                self.assertEqual(list(stored["seen"].values())[0]["suppressed_duplicate"], "same_event")
 
     def test_ministry_20260930_mou_is_development_only(self):
         t = "LG전자·보스반도체·하나마이크론, 차량용 칩렛 SoC 공동개발 협약 체결"
