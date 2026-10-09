@@ -4,12 +4,14 @@ import warsh_balance_sheet_watch as base
 
 def summary_message_v2(cur,impl,task,regime,four,reason):
     qt = (impl.get('mode') == '대차대조표 총량 축소/QT 명시')
+    ample = (impl.get('mode') == '충분한 준비금 유지·재투자/구성 전환')
+    qt_read = '총량축소형 QT 공식 명시' if qt else ('충분한 준비금 유지·QT 재개 공식 미확인' if ample else '공식 정책문구 해석 유보')
     lines=[
         '<b>[Warsh 연준 대차대조표 변화]</b>',
         f"기준: H.4.1 {cur.get('date') or '확인 필요'} · 시행지침 {impl.get('date') or '확인 필요'}",
         '',
         '<b>한눈에 보기</b>',
-        f"• <b>QT 판정</b>: {'총량축소형 QT 명시' if qt else '현재는 총량축소형 QT 아님'}",
+        f"• <b>QT 판정</b>: {qt_read}",
         f"• <b>공식 정책</b>: {html.escape(impl['mode'])}",
         f"• <b>실제 자산 흐름</b>: {html.escape(regime)}",
         f"• <b>이번 변화</b>: {html.escape(reason)}",
@@ -24,15 +26,19 @@ def summary_message_v2(cur,impl,task,regime,four,reason):
         lines.append(f"• 최근 4주: 총자산 {base.bn_change(four['total_assets'])} · 준비금 {base.bn_change(four['reserves'])} · 보유증권 {base.bn_change(four['securities'])}")
 
     lines += ['', '<b>쉽게 말하면</b>']
-    if not qt and '충분한 준비금' in (impl.get('mode') or ''):
+    if ample:
         lines += [
             '• 연준은 미 국채 원금을 계속 재투자하고, 기관채·주택저당증권 원금도 단기국채로 재투자합니다.',
             '• 필요하면 단기국채·잔존 3년 이하 국채를 더 사서 <b>준비금을 충분하게 유지</b>합니다.',
             '• 따라서 주택저당증권이 줄어든다는 이유만으로 “QT 재개”라고 부르지 않습니다. 현재는 <b>자산 구성 전환</b>에 가깝습니다.',
         ]
+    elif qt:
+        lines += [
+            '• 공식 시행지침에 자산축소 조치가 명시됐습니다. 실제 보유자산·은행 준비금 감소는 별도로 확인합니다.',
+        ]
     else:
         lines += [
-            '• 총량축소형 QT는 재투자 중단·상환한도·보유자산 축소 같은 공식 문구와 실제 총자산·보유증권·준비금 감소가 함께 확인돼야 합니다.',
+            '• 공식 시행지침의 의미가 불명확해 QT 재개 여부는 판정 유보입니다. 재투자·상환한도·보유자산 및 준비금 추세를 재확인합니다.',
         ]
 
     lines += [
