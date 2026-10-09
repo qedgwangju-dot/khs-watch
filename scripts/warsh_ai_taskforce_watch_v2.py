@@ -2,6 +2,7 @@
 """High-signal Gartner filter for the Warsh AI productivity/jobs watcher."""
 import email.utils
 import html
+import json
 import re
 import urllib.parse
 import xml.etree.ElementTree as ET
@@ -17,7 +18,20 @@ HIGH_SIGNAL=[
 
 def structural_gartner_items():
     q=urllib.parse.urlencode({'q':base.GARTNER_QUERY,'hl':'en-US','gl':'US','ceid':'US:en'})
-    root=ET.fromstring(base.fetch('https://news.google.com/rss/search?'+q))
+    try:
+        root=ET.fromstring(base.fetch('https://news.google.com/rss/search?'+q))
+    except Exception as exc:
+        # 외부 RSS 503·시간초과는 Gartner가 새 보고서를 발행하지 않았다는 뜻이 아니다.
+        # 확인된 마지막 기사와 키를 보존하고 연준 공식 감시는 계속한다.
+        cached=(base.load_state() or {}).get('gartner_latest')
+        print(json.dumps({
+            'gartner_rss_status':'조회 실패·기준선 보존',
+            'error_type':type(exc).__name__,
+            'cached_baseline':bool(cached),
+        },ensure_ascii=False))
+        if isinstance(cached,dict) and all(cached.get(k) for k in ('title','published','url')):
+            return [cached]
+        return []
     items=[]
     for item in root.findall('./channel/item')[:40]:
         title=html.unescape((item.findtext('title') or '').strip())
