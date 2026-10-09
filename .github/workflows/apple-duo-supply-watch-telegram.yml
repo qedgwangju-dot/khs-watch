@@ -288,25 +288,89 @@ jobs:
         if: success() && hashFiles('out/apple_duo_supply_watch_telegram.txt') != '' && hashFiles('out/apple_duo_supply_watch_telegram_confirmed.json') != '' && hashFiles('out/apple_iphone18_pro_orders_pending_state.json') != ''
         run: cp out/apple_iphone18_pro_orders_pending_state.json data/apple_iphone18_pro_orders_state.json
 
-      - name: Commit watcher state
+      - name: Commit watcher state with concurrent-safe merge
         if: success()
         run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/apple_duo_supply_watch_state.json data/apple_duo_panel_leading_state.json data/apple_duo_demand_competition_state.json data/apple_kparts_margin_watch_state.json data/apple_premium_demand_duo_forecast_state.json data/apple_iphone18_pro_orders_state.json
-          if git diff --cached --quiet; then
-            echo "Apple Duo watch state unchanged"
-          else
-            git commit -m "Update Apple Duo supply watch state"
-            for attempt in 1 2 3; do
-              if git pull --rebase origin main && git push; then
-                exit 0
-              fi
-              git rebase --abort 2>/dev/null || true
-              sleep $((attempt * 3))
-            done
-            exit 1
-          fi
+          python - <<'PY'
+          import json
+          import pathlib
+          root=pathlib.Path("data")
+          names=[
+              "apple_duo_supply_watch_state.json",
+              "apple_duo_panel_leading_state.json",
+              "apple_duo_demand_competition_state.json",
+              "apple_kparts_margin_watch_state.json",
+              "apple_premium_demand_duo_forecast_state.json",
+              "apple_iphone18_pro_orders_state.json",
+          ]
+          local={}
+          for name in names:
+              path=root/name
+              if path.exists():
+                  local[name]=json.loads(path.read_text(encoding="utf-8"))
+          pathlib.Path("/tmp/duo_state_checkpoint.json").write_text(
+              json.dumps(local,ensure_ascii=False),encoding="utf-8"
+          )
+          PY
+          for attempt in 1 2 3 4 5; do
+            git fetch --quiet origin main
+            git reset --hard origin/main
+            python - <<'PY'
+          import json
+          import pathlib
+          root=pathlib.Path("data")
+          local=json.loads(pathlib.Path("/tmp/duo_state_checkpoint.json").read_text(encoding="utf-8"))
+          for name, draft in local.items():
+              path=root/name
+              remote=json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+              # Only a newer scan may overwrite metrics; immutable and dedupe
+              # histories survive both sides of simultaneous state commits.
+              local_time=str(draft.get("updated_at_kst") or draft.get("last_scan_kst") or "")
+              remote_time=str(remote.get("updated_at_kst") or remote.get("last_scan_kst") or "")
+              newer=draft if local_time >= remote_time else remote
+              older=remote if newer is draft else draft
+              merged=dict(older)
+              merged.update(newer)
+              for flag in ("initial_alert_sent","baseline_alert_sent","alert_sent"):
+                  if isinstance(remote.get(flag),bool) or isinstance(draft.get(flag),bool):
+                      merged[flag]=bool(remote.get(flag) or draft.get(flag))
+              for key in ("seen","seen_fact_keys","seen_ids"):
+                  r,l=remote.get(key),draft.get(key)
+                  if isinstance(r,list) or isinstance(l,list):
+                      merged[key]=sorted(set(r or []) | set(l or []))[-3000:]
+                  elif isinstance(r,dict) or isinstance(l,dict):
+                      combined=dict(r or {})
+                      combined.update(l or {})
+                      merged[key]=combined
+              # Confirmed deliveries cannot be rolled back by an older run.
+              if isinstance(remote.get("last_alert"),dict) or isinstance(draft.get("last_alert"),dict):
+                  candidates=[x for x in (remote.get("last_alert"),draft.get("last_alert")) if isinstance(x,dict)]
+                  merged["last_alert"]=max(candidates,key=lambda x:str(x.get("at_kst") or ""))
+              # Do not regress verified status to rumor.
+              for field in ("s27_status",):
+                  candidates=[(x.get("metrics") or {}) for x in (remote,draft)]
+                  official=next((c[field] for c in candidates if "공식" in str(c.get(field,"")) and "미확정" not in str(c.get(field,""))),None)
+                  if official:
+                      merged.setdefault("metrics",{})[field]=official
+              path.write_text(json.dumps(merged,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          PY
+            git add data/apple_duo_supply_watch_state.json data/apple_duo_panel_leading_state.json data/apple_duo_demand_competition_state.json data/apple_kparts_margin_watch_state.json data/apple_premium_demand_duo_forecast_state.json data/apple_iphone18_pro_orders_state.json
+            if git diff --cached --quiet; then
+              echo "apple_duo_state_checkpoint=unchanged_or_already_merged"
+              exit 0
+            fi
+            git commit -m "Update Apple Duo supply watch state (merged)" >/dev/null
+            if git push origin HEAD:main; then
+              echo "apple_duo_state_checkpoint=confirmed"
+              exit 0
+            fi
+            sleep $((attempt * 2))
+          done
+          echo "apple_duo_state_checkpoint=failed"
+          exit 1
 
       - name: Upload verification artifacts
         if: always()
