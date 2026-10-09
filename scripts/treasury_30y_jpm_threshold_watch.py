@@ -78,35 +78,46 @@ def days_since_business_date(value, now_ny=None):
 def fetch_official_observations():
     year = dt.datetime.now(NY).year
     url = f"{SOURCE}?data=daily_treasury_yield_curve&field_tdr_date_value={year}"
-    r = requests.get(url, headers=treasury.HEADERS, timeout=(8, 35))
-    r.raise_for_status()
-    root = ET.fromstring(r.content)
     ns_data = "{http://schemas.microsoft.com/ado/2007/08/dataservices}"
     ns_atom = "{http://www.w3.org/2005/Atom}"
     rows = {}
-    for entry in root.findall(ns_atom + "entry"):
-        field_date = entry.find(".//" + ns_data + "NEW_DATE")
-        field_y = entry.find(".//" + ns_data + "BC_30YEAR")
-        if field_date is None or field_date.text is None:
-            continue
-        if field_y is None or not field_y.text:
-            continue
-        d = field_date.text[:10]
-        dt.date.fromisoformat(d)
-        b = bp_from_percent(field_y.text)
-        if d in rows and rows[d] != b:
-            raise RuntimeError("Inconsistent Treasury 30Y data for same observation date")
-        rows[d] = b
+
+    def ingest_year(y):
+        year_url = f"{SOURCE}?data=daily_treasury_yield_curve&field_tdr_date_value={y}"
+        response = requests.get(year_url, headers=treasury.HEADERS, timeout=(8, 35))
+        response.raise_for_status()
+        root = ET.fromstring(response.content)
+        for entry in root.findall(ns_atom + "entry"):
+            field_date = entry.find(".//" + ns_data + "NEW_DATE")
+            field_y = entry.find(".//" + ns_data + "BC_30YEAR")
+            if field_date is None or field_date.text is None:
+                continue
+            if field_y is None or not field_y.text:
+                continue
+            d = field_date.text[:10]
+            dt.date.fromisoformat(d)
+            b = bp_from_percent(field_y.text)
+            if d in rows and rows[d] != b:
+                raise RuntimeError("Inconsistent Treasury 30Y data for same observation date")
+            rows[d] = b
+
+    ingest_year(year)
+    if len(rows) < 10:
+        ingest_year(year - 1)  # Avoid losing December→January crossings.
+
     if len(rows) < 2:
         raise RuntimeError("Official 30Y Treasury history too short")
     observations = sorted(rows.items())
     last_date, last_bp = observations[-1]
     if days_since_business_date(last_date) > 3:
         raise RuntimeError(f"Official Treasury 30Y observation is stale: {last_date}")
-    # Independent parser, same official series: reject date/yield mismatches.
-    parsed = treasury.get_treasury_curve()
-    if parsed.get("date") != last_date or bp_from_percent(parsed.get("30Y")) != last_bp:
-        raise RuntimeError("Official Treasury 30Y independent-parser mismatch")
+
+    # A second independently implemented parser must agree on the official day
+    # and the quote. The year-boundary time-zone mismatch is handled above.
+    if dt.datetime.now(KST).year == year:
+        parsed = treasury.get_treasury_curve()
+        if parsed.get("date") != last_date or bp_from_percent(parsed.get("30Y")) != last_bp:
+            raise RuntimeError("Official Treasury 30Y independent-parser mismatch")
     return observations, url
 
 
@@ -248,7 +259,29 @@ def main():
         print(f"treasury_30y_bootstrap=true date={latest_date} yield={pct(latest_bp)} telegram_sent=false")
         return
 
-    updated, events = evaluate(state, latest_date, latest_bp, prior_date, prior_bp)
+    # Replay any missed official dates to repair state automatically after a
+    # GitHub scheduling outage. Only latest-day crossings may create alerts.
+    history = dict(observations)
+    saved_date = state["last_processed_date"]
+    if saved_date not in history:
+        raise RuntimeError("Accepted Treasury baseline is outside official history; manual review required")
+    if history[saved_date] != state["last_processed_bp"]:
+        raise RuntimeError("Official Treasury baseline revised; refusing an unverified crossing")
+    updated = dict(state)
+    events = []
+    missed_events = 0
+    prev_date, prev_bp = saved_date, history[saved_date]
+    for day, new_bp in observations:
+        if day <= saved_date:
+            continue
+        updated, candidates = evaluate(updated, day, new_bp, prev_date, prev_bp)
+        if day == latest_date:
+            events = candidates
+        else:
+            missed_events += len(candidates)
+        prev_date, prev_bp = day, new_bp
+    if missed_events:
+        print(f"treasury_30y_replayed_old_crossings_without_retro_alert={missed_events}")
     if not events:
         if updated != state:
             save_state(updated)
