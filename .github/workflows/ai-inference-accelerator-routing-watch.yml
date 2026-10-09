@@ -119,11 +119,26 @@ jobs:
           ultra_jitter = (
               "Unrelated navigation changed. " + ultra_a + " Footer order changed."
           )
-          ultra_b = ultra_a + " GPT-6.1 Sol is now mentioned for Ultrafast."
+          ultra_mention_only = ultra_a + " GPT-6.1 Sol is coming later and is not yet available in Ultrafast."
+          ultra_b = (
+              ultra_a
+              + " Ultrafast mode for GPT-6 Astra and GPT-6.1 Sol is available to all API users."
+              + " Ultrafast mode for GPT-6.1 Sol supports US and EU data residency and global processing."
+              + " GPT-6 Astra Ultrafast supports US data residency and global processing only."
+          )
 
           sem_a = semantic_official_snapshot("OpenAI Ultrafast 모드", ultra_a)
           sem_jitter = semantic_official_snapshot("OpenAI Ultrafast 모드", ultra_jitter)
           sem_b = semantic_official_snapshot("OpenAI Ultrafast 모드", ultra_b)
+          sem_mention = semantic_official_snapshot("OpenAI Ultrafast 모드", ultra_mention_only)
+          if _semantic_digest(sem_a) != _semantic_digest(sem_mention):
+              raise RuntimeError("Incidental Sol mention was misread as Ultrafast availability")
+          if not sem_b.get("gpt_6_1_sol_ultrafast_supported") or sem_b.get("sol_ultrafast_eu_residency") is not True:
+              raise RuntimeError("Sol model-specific Ultrafast release or EU residency missing")
+          if sem_b.get("astra_ultrafast_eu_residency") is not False:
+              raise RuntimeError("Astra EU residency must remain unsupported")
+          if "max_speed_x" in sem_b or "eu_regional_supported" in sem_b:
+              raise RuntimeError("Ambiguous aggregate or missing-speed fields detected")
           if _semantic_digest(sem_a) != _semantic_digest(sem_jitter):
               raise RuntimeError("Non-semantic render jitter changed Ultrafast semantic digest")
           if _semantic_digest(sem_a) == _semantic_digest(sem_b):
