@@ -476,6 +476,12 @@ def build_causal_snapshot() -> dict:
             "nom_bp": bp(cur["nom10"], base5["nom10"]),
         }
 
+    rates_dates = sorted(set(maps["nom10"]) & set(maps["real10"]))
+    latest_rate_date = rates_dates[-1]
+    lag_market_sessions = sum(day > cur_date for day in rates_dates)
+    is_lagged = lag_market_sessions >= 2
+    term_aligned = {"available": False, "change_bp": None, "start_date": None, "end_date": None}
+
     term_latest = {
         "available": False,
         "prev_date": None,
@@ -493,6 +499,16 @@ def build_causal_snapshot() -> dict:
             term_rows = fetch_series(SERIES["term10"])
             term_source = f"FRED Kim-Wright fallback; NY Fed ACM failed: {type(primary_exc).__name__}"
         term_prev, term_cur = latest_two(term_rows)
+        # Do not treat a newer model day as evidence for an earlier oil window.
+        term_map = dict(term_rows)
+        term_start = changes_5d["start_date"] if changes_5d else prev_date
+        if term_start in term_map and cur_date in term_map:
+            term_aligned = {
+                "available": True,
+                "change_bp": bp(term_map[cur_date], term_map[term_start]),
+                "start_date": term_start,
+                "end_date": cur_date,
+            }
         changes["term_bp"] = bp(term_cur[1], term_prev[1])
         term_latest.update({
             "available": True,
@@ -511,7 +527,7 @@ def build_causal_snapshot() -> dict:
     bei_d = direction(regime_changes["bei_bp"], 1.0)
     real_d = direction(regime_changes["real_bp"], 2.0)
     nom_d = direction(regime_changes["nom_bp"], 2.0)
-    term_d = direction(changes["term_bp"], 2.0) if changes["term_bp"] is not None else 0
+    term_d = direction(term_aligned["change_bp"], 2.0) if term_aligned["available"] else 0
 
     if oil_d < 0 and bei_d < 0 and nom_d < 0:
         verdict_key = "energy_disinflation_support"
@@ -528,6 +544,10 @@ def build_causal_snapshot() -> dict:
     else:
         verdict_key = "mixed"
         verdict = "⚪ 혼조 — 현재 다중거래일 흐름만으로 에너지·인플레이션 또는 재정·기간프리미엄 단일 원인을 확정하기 어려움"
+
+    if is_lagged:
+        # Publication lag alone should not trigger a new economic-regime alert.
+        verdict = f"⚪ 공통 원자료 {lag_market_sessions}거래일 시차 — 최신 원인 판정 보류"
 
     latest = {
         "brent": {"date": brent_rows[-1][0], "value": brent_rows[-1][1]},
@@ -547,6 +567,10 @@ def build_causal_snapshot() -> dict:
         "changes_5d": changes_5d,
         "verdict_basis": "5거래일 공통창" if changes_5d else "1거래일 공통창",
         "term_latest": term_latest,
+        "term_aligned": term_aligned,
+        "latest_bond_common_date": latest_rate_date,
+        "lag_market_sessions": lag_market_sessions,
+        "is_lagged": is_lagged,
         "latest": latest,
         "verdict_key": verdict_key,
         "verdict": verdict,
