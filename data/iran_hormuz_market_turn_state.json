@@ -1,7 +1,7 @@
 {
-  "last_alert_at_kst": "2026-10-09T22:47:29+09:00",
+  "last_alert_at_kst": "2026-10-10T07:01:57+09:00",
   "last_event_kind": "us_gulf_isaias_shutin",
-  "last_event_id": "us_gulf_isaias_shutin:8bcde941e49e00a9",
+  "last_event_id": "us_gulf_isaias_shutin:f61d09cab4e5b7f4",
   "alerted_events": {
     "regional_export_recovery:66183575fab99015": "2026-09-29T19:49:06+09:00",
     "sts_reroute_expansion:a5a5b34c0694d3fd": "2026-09-29T20:06:00+09:00",
@@ -20,30 +20,31 @@
     "eia_refining_crack_watch:652084024b8926e6": "2026-10-08T16:03:46+09:00",
     "hormuz_7day_diplomacy:1a8f0b5fbdd4bd31": "2026-10-09T22:40:20+09:00",
     "china_fuel_export_policy:a3f2375406b73670": "2026-10-09T22:43:09+09:00",
-    "us_gulf_isaias_shutin:8bcde941e49e00a9": "2026-10-09T22:47:29+09:00"
+    "us_gulf_isaias_shutin:8bcde941e49e00a9": "2026-10-09T22:47:29+09:00",
+    "us_gulf_isaias_shutin:f61d09cab4e5b7f4": "2026-10-10T07:01:57+09:00"
   },
   "last_market": {
     "oil": {
       "symbol": "BZ=F",
       "label": "Brent",
       "unit": "달러/배럴",
-      "price": 103.55,
+      "price": 104.43,
       "previous_close": 104.28,
-      "change": -0.730000000000004,
-      "change_pct": -0.7000383582662102,
-      "timestamp_utc": "2026-10-09T13:37:59Z",
-      "timestamp_epoch": 1791553079.0
+      "change": 0.15000000000000568,
+      "change_pct": 0.14384349827388346,
+      "timestamp_utc": "2026-10-09T20:59:58Z",
+      "timestamp_epoch": 1791579598.0
     },
     "usdkrw": {
       "symbol": "KRW=X",
       "label": "원·달러",
       "unit": "원/달러",
-      "price": 1340.68,
+      "price": 1340.02,
       "previous_close": 1342.56,
-      "change": -1.8799999999998818,
-      "change_pct": -0.14003098557977905,
-      "timestamp_utc": "2026-10-09T13:48:00Z",
-      "timestamp_epoch": 1791553680.0
+      "change": -2.5399999999999636,
+      "change_pct": -0.18919079966630642,
+      "timestamp_utc": "2026-10-09T20:59:59Z",
+      "timestamp_epoch": 1791579599.0
     }
   }
 }
