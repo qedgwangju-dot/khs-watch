@@ -1,61 +1,61 @@
 {
-  "last_checked_kst": "2026-10-10T02:50:04+09:00",
+  "last_checked_kst": "2026-10-10T07:03:17+09:00",
   "media_id": null,
-  "cftc_date": "September 29, 2026",
+  "cftc_date": "October 6, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-10-10T02:50:04+09:00",
+    "checked_kst": "2026-10-10T07:03:17+09:00",
     "cta_media": null,
     "cftc": {
-      "report_date": "September 29, 2026",
+      "report_date": "October 6, 2026",
       "markets": {
         "2Y": {
-          "open_interest": 4530145,
-          "leveraged_long": 725857,
-          "leveraged_short": 1891837,
-          "leveraged_spreading": 216621,
-          "leveraged_net": -1165980,
-          "short_share_oi_pct": 41.761069458041625
+          "open_interest": 4485811,
+          "leveraged_long": 693301,
+          "leveraged_short": 1950785,
+          "leveraged_spreading": 144190,
+          "leveraged_net": -1257484,
+          "short_share_oi_pct": 43.48789995833529
         },
         "5Y": {
-          "open_interest": 6789241,
-          "leveraged_long": 662168,
-          "leveraged_short": 2647955,
-          "leveraged_spreading": 277436,
-          "leveraged_net": -1985787,
-          "short_share_oi_pct": 39.0022242545227
+          "open_interest": 6758624,
+          "leveraged_long": 541071,
+          "leveraged_short": 2668638,
+          "leveraged_spreading": 260224,
+          "leveraged_net": -2127567,
+          "short_share_oi_pct": 39.484930660442124
         },
         "10Y": {
-          "open_interest": 5676556,
-          "leveraged_long": 510579,
-          "leveraged_short": 2547011,
-          "leveraged_spreading": 119447,
-          "leveraged_net": -2036432,
-          "short_share_oi_pct": 44.86894870763188
+          "open_interest": 5742990,
+          "leveraged_long": 510611,
+          "leveraged_short": 2650396,
+          "leveraged_spreading": 131836,
+          "leveraged_net": -2139785,
+          "short_share_oi_pct": 46.150106477636214
         },
         "ULTRA10Y": {
-          "open_interest": 2580149,
-          "leveraged_long": 174385,
-          "leveraged_short": 502856,
-          "leveraged_spreading": 30089,
-          "leveraged_net": -328471,
-          "short_share_oi_pct": 19.48941708405212
+          "open_interest": 2593056,
+          "leveraged_long": 137183,
+          "leveraged_short": 456244,
+          "leveraged_spreading": 34286,
+          "leveraged_net": -319061,
+          "short_share_oi_pct": 17.594837905544654
         },
         "BOND": {
-          "open_interest": 1879173,
-          "leveraged_long": 159474,
-          "leveraged_short": 410869,
-          "leveraged_spreading": 23703,
-          "leveraged_net": -251395,
-          "short_share_oi_pct": 21.864352031452132
+          "open_interest": 1898067,
+          "leveraged_long": 172246,
+          "leveraged_short": 361924,
+          "leveraged_spreading": 31596,
+          "leveraged_net": -189678,
+          "short_share_oi_pct": 19.068030791326123
         },
         "ULTRABOND": {
-          "open_interest": 2507580,
-          "leveraged_long": 85388,
-          "leveraged_short": 894258,
-          "leveraged_spreading": 39831,
-          "leveraged_net": -808870,
-          "short_share_oi_pct": 35.66219223314909
+          "open_interest": 2404377,
+          "leveraged_long": 58345,
+          "leveraged_short": 784602,
+          "leveraged_spreading": 47714,
+          "leveraged_net": -726257,
+          "short_share_oi_pct": 32.63223695784813
         }
       },
       "source_mode": "CFTC TFF live HTML",
@@ -67,63 +67,63 @@
         "display_symbol": "TY/ZN",
         "ticker": "ZN=F",
         "month": "",
-        "last": 104.546875,
-        "settlement": 104.546875,
-        "change": -0.171875,
-        "pct_change": -0.1641301104148063,
-        "open_interest": 5676556,
-        "oi_source": "CFTC TFF 주간 전체 시장 OI (September 29, 2026)",
+        "last": 104.609375,
+        "settlement": 104.609375,
+        "change": -0.109375,
+        "pct_change": -0.10444643390032926,
+        "open_interest": 5742990,
+        "oi_source": "CFTC TFF 주간 전체 시장 OI (October 6, 2026)",
+        "oi_comparable": true,
+        "oi_scope": "CFTC_TFF_WHOLE_MARKET_WEEKLY",
         "volume": 0,
         "market_time": 1791518400,
         "source": "https://finance.yahoo.com/quote/ZN%3DF/",
-        "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)",
-        "oi_comparable": true,
-        "oi_scope": "CFTC_TFF_WHOLE_MARKET_WEEKLY"
+        "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)"
       },
       "ZB": {
         "symbol": "ZB",
         "display_symbol": "US/ZB",
         "ticker": "ZB=F",
         "month": "",
-        "last": 103.0,
-        "settlement": 103.0,
-        "change": -0.0625,
-        "pct_change": -0.06064281382656134,
-        "open_interest": 1879173,
-        "oi_source": "CFTC TFF 주간 전체 시장 OI (September 29, 2026)",
+        "last": 103.1875,
+        "settlement": 103.1875,
+        "change": 0.125,
+        "pct_change": 0.12128562765312267,
+        "open_interest": 1898067,
+        "oi_source": "CFTC TFF 주간 전체 시장 OI (October 6, 2026)",
+        "oi_comparable": true,
+        "oi_scope": "CFTC_TFF_WHOLE_MARKET_WEEKLY",
         "volume": 0,
         "market_time": 1791518400,
         "source": "https://finance.yahoo.com/quote/ZB%3DF/",
-        "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)",
-        "oi_comparable": true,
-        "oi_scope": "CFTC_TFF_WHOLE_MARKET_WEEKLY"
+        "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)"
       },
       "UB": {
         "symbol": "UB",
         "display_symbol": "WN/UB",
         "ticker": "UB=F",
         "month": "",
-        "last": 104.125,
-        "settlement": 104.125,
-        "change": 0.03125,
-        "pct_change": 0.03002101471030194,
-        "open_interest": 2507580,
-        "oi_source": "CFTC TFF 주간 전체 시장 OI (September 29, 2026)",
+        "last": 104.3125,
+        "settlement": 104.3125,
+        "change": 0.21875,
+        "pct_change": 0.21014710297209138,
+        "open_interest": 2404377,
+        "oi_source": "CFTC TFF 주간 전체 시장 OI (October 6, 2026)",
+        "oi_comparable": true,
+        "oi_scope": "CFTC_TFF_WHOLE_MARKET_WEEKLY",
         "volume": 0,
         "market_time": 1791518400,
         "source": "https://finance.yahoo.com/quote/UB%3DF/",
-        "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)",
-        "oi_comparable": true,
-        "oi_scope": "CFTC_TFF_WHOLE_MARKET_WEEKLY"
+        "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)"
       }
     },
     "yield10": {
-      "date": "2026-10-08",
-      "yield": 5.22,
-      "mean20": 5.133,
-      "sd20": 0.13605513588247964,
-      "z20": 0.6394466437132351,
-      "distance_to_4_3_bp": 92.0,
+      "date": "2026-10-09",
+      "yield": 5.24,
+      "mean20": 5.147,
+      "sd20": 0.13187494075828052,
+      "z20": 0.7052135869426766,
+      "distance_to_4_3_bp": 94.00000000000004,
       "window_n": 20,
       "source_years": [
         2025,
@@ -150,16 +150,16 @@
     "format_revision": 12,
     "nasdaq_cross_asset": {
       "nq_cftc": {
-        "report_date": "September 29, 2026",
-        "previous_period": "September 22, 2026",
-        "open_interest": 270554,
-        "open_interest_wow": -15767,
-        "leveraged_long": 48150,
-        "leveraged_short": 72873,
-        "leveraged_net": -24723,
-        "leveraged_net_wow": 5960,
-        "leveraged_short_wow": -11843,
-        "short_share_oi_pct": 26.93473391633463,
+        "report_date": "October 6, 2026",
+        "previous_period": "September 29, 2026",
+        "open_interest": 283586,
+        "open_interest_wow": 13032,
+        "leveraged_long": 51349,
+        "leveraged_short": 70561,
+        "leveraged_net": -19212,
+        "leveraged_net_wow": 5511,
+        "leveraged_short_wow": -2312,
+        "short_share_oi_pct": 24.881693736644266,
         "scope": "CFTC TFF NASDAQ MINI 전체시장 주간"
       },
       "nq_price": {
@@ -175,7 +175,7 @@
         "basis": "previous trade date settlement + total product daily OI",
         "trade_date": "2026-10-08",
         "month": "DEC26",
-        "url": "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026100913"
+        "url": "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026100918"
       },
       "history_3y": {
         "basis": "CFTC TFF NASDAQ MINI futures-only",
@@ -269,25 +269,23 @@
       "nq_build_change_10y": -11843,
       "nq_fuel": false,
       "nq_history_ready": true,
-      "nq_history_fresh": true,
-      "nq_crosscheck_match": true,
-      "nq_crosscheck_reason": null,
+      "nq_history_fresh": false,
+      "nq_crosscheck_match": false,
+      "nq_crosscheck_reason": "CFTC NQ report-date cross-check mismatch: live=October 6, 2026 stored=September 29, 2026",
       "nq_price_up": false,
       "nq_price_official": true,
-      "nq_price_fresh": true,
-      "nq_price_expected_session": "2026-10-08",
-      "nq_weekly_oi_down": true,
+      "nq_price_fresh": false,
+      "nq_price_expected_session": "2026-10-09",
+      "nq_weekly_oi_down": false,
       "nq_daily_oi_change": -1605,
-      "nq_daily_oi_down": true,
-      "nq_oi_down": true,
+      "nq_daily_oi_down": false,
+      "nq_oi_down": false,
       "nq_short_cover": true,
       "nq_confirmed": false,
       "repo_ok": true,
       "repo_worse": [],
-      "data_fresh": false,
-      "stale_reasons": [
-        "CFTC September 29, 2026 · 11일 경과"
-      ]
+      "data_fresh": true,
+      "stale_reasons": []
     }
   },
   "format_revision": 12,
@@ -298,28 +296,24 @@
     "futures_price_same_scope_oi": false,
     "cftc_short_bias": true,
     "cftc_short_bias_markets": [
+      "BOND",
       "ULTRABOND"
     ],
     "evidence_markets": [],
     "matched_short_bias": false,
     "z_below_minus_1": false,
     "repo_not_worse": true,
-    "data_fresh": false,
-    "stale_reasons": [
-      "CFTC September 29, 2026 · 11일 경과"
-    ],
+    "data_fresh": true,
+    "stale_reasons": [],
     "composite_confirmed": false,
     "stage": 0,
-    "oi_scope_fixes": [
-      "ZN OI 2→5,676,556로 동일 범위 교체",
-      "ZB OI 2→1,879,173로 동일 범위 교체",
-      "UB OI 2→2,507,580로 동일 범위 교체"
-    ]
+    "oi_scope_fixes": []
   },
   "last_fomc_eve_report": "2026-09-16",
   "last_weekly_report_key": "2026-W40",
   "nasdaq_cross_asset_stage": 0,
   "short_bias_markets": [
+    "BOND",
     "ULTRABOND"
   ],
   "nasdaq_cross_asset_alerted_stage": 0,
