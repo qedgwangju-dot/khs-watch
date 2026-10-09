@@ -2736,6 +2736,12 @@ def main() -> None:
                 except Exception:
                     pub = item["published"]
             category = item["category"]
+            public_title = item["title"]
+            if item.get("company") == LITE_CAPACITY_COMPANY and item.get("story_key") == "lumentum|booking-horizon|2029":
+                if re.search(r"nvidia", public_title, re.I):
+                    public_title = "엔비디아가 투자한 루멘텀, AI 광부품 생산능력 2029년 초까지 사실상 판매예약"
+                else:
+                    public_title = "루멘텀, AI 광부품 생산능력 2029년 초까지 사실상 판매예약"
             lines.extend([
                 f"<b>{idx}) {html.escape(DISPLAY_NAMES_KO.get(item['company'], item['company']))} ({html.escape(item['ticker'])}) — {html.escape(category)}</b>",
                 f"• 단계: {html.escape(item['stage'])}",
@@ -2745,7 +2751,7 @@ def main() -> None:
                     "• 확인 수준: 공급사 공식발표" if official_power_source(item) else
                     "• 확인 수준: 독립 신뢰매체 교차확인·실제 계약조건 재검증 필요"
                 ) if item['company'] == POWER_COMPANY else "",
-                f"• 원문 제목: {html.escape(item['title'])}",
+                f"• 원문 제목: {html.escape(public_title)}",
                 f"• 출처·시각: {html.escape(item.get('source') or '미표기')} / {html.escape(pub or '시각 미표기')}",
             ])
             related_categories = []
