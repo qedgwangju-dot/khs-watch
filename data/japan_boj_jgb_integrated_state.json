@@ -1,6 +1,6 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-10-09T08:58:56+09:00",
+  "updated_at_kst": "2026-10-09T14:53:09+09:00",
   "policy_rate": 1.0,
   "statement_url": "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/k260731a.pdf",
   "opinion_url": "https://www.boj.or.jp/en/mopo/mpmsche_minu/opinion_2026/opi260918.pdf",
@@ -8,26 +8,26 @@
   "hawkish_hits": [
     "nimble"
   ],
-  "jgb_source_date": "2026/10/7",
+  "jgb_source_date": "2026/10/8",
   "jgb10_above3_active": true,
-  "jgb10_above3_streak": 9,
+  "jgb10_above3_streak": 10,
   "yen_carry_combo_active": false,
   "critical_abnormal_active": false,
   "jgb": {
-    "date": "2026/10/7",
-    "jgb2": 1.951,
-    "jgb10": 3.111,
-    "jgb20": 3.943,
-    "jgb30": 4.148,
-    "jgb40": 4.17
+    "date": "2026/10/8",
+    "jgb2": 1.936,
+    "jgb10": 3.089,
+    "jgb20": 3.916,
+    "jgb30": 4.136,
+    "jgb40": 4.134
   },
   "usdjpy": {
-    "date": "2026-10-08T23:58:56Z",
-    "value": 158.04600524902344,
-    "change_pct": 0.05951770277317137,
+    "date": "2026-10-09T05:53:09Z",
+    "value": 158.18600463867188,
+    "change_pct": -0.018324242258827415,
     "source": "Yahoo query1/query2 5분 데이터 교차확인",
     "signal_eligible": true,
-    "age_seconds": 1.489689
+    "age_seconds": 1.925557
   },
   "auctions": {
     "20": {
