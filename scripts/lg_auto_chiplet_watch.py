@@ -160,11 +160,17 @@ def event_kind(title, summary=""):
         return ("customer_validation", 4, "고객 기술검증·시제품 적용")
     if any(x in t for x in ("테이프아웃", "tape-out", "tapeout", "설계 완료", "시제품 개발", "시제품 제작", "칩렛 시제품")) and not tentative:
         return ("engineering_sample", 3, "설계 완료·시제품")
-    if bosch and any(x in full for x in ("논의", "검토", "협의", "추진", "계획", "가능", "보쉬와 손잡", "bosch")):
-        if any(x in t for x in ("공급", "양산")) and not tentative:
-            # A single headline is not proof of Bosch purchase; require explicit signed-contract language.
-            return ("bosch_discussion", 2, "보쉬 적용 관련 보도·구매계약 미확인")
+    if bosch and any(x in full for x in ("아이멕", "imec")) and any(
+        x in full for x in ("연합", "컨소시엄", "가입", "회원", "forum", "program")
+    ) and not any(x in full for x in ("보스반도체", "하나마이크론", "bos semiconductors")):
+        return ("imec_membership", 1, "아이멕 연구 연합 참여·보쉬 구매계약 아님")
+    if bosch and any(x in full for x in (
+        "논의", "검토", "협의", "추진", "계획", "가능", "적용", "사용",
+        "손잡고", "협력", "도전",
+    )):
         return ("bosch_discussion", 2, "보쉬 적용 논의·구매계약 미확인")
+    if bosch:
+        return ("bosch_coverage", 1, "보쉬 관련 보도·직접 공급계약 미확인")
     if any(x in full for x in ("정부", "사업 공고", "사업공고", "국책", "과제 선정", "지원사업")) and any(x in t for x in ("예산", "공고", "선정", "협약")):
         return ("government_award", 2, "정부 과제·사업 단계")
     if any(x in t for x in ("업무협약", "mou", "공동개발", "공동 개발", "개발 협력", "협력 체결", "칩렛 개발")):
@@ -177,10 +183,41 @@ def project_kind(title, summary):
         return "imec_alliance"
     return "lg_bos_hana"
 
+def customer_identity(text):
+    t = clean(text).lower()
+    names = [
+        ("bosch", ("보쉬", "bosch")),
+        ("hyundai", ("현대자동차", "현대차", "hyundai motor")),
+        ("kia", ("기아자동차", "기아", "kia motor")),
+        ("bmw", ("bmw",)),
+        ("volkswagen", ("폭스바겐", "volkswagen")),
+        ("mercedes", ("메르세데스", "벤츠", "mercedes")),
+        ("toyota", ("도요타", "토요타", "toyota")),
+        ("renault", ("르노", "renault")),
+        ("stellantis", ("스텔란티스", "stellantis")),
+    ]
+    for name, aliases in names:
+        if any(x in t for x in aliases):
+            return name
+    return "unnamed_customer"
+
+
 def candidate_event(item):
     kind, stage, description = event_kind(item["title"], item.get("summary", ""))
     project = project_kind(item["title"], item.get("summary", ""))
-    return f"{project}|{kind}", stage, description
+    event_id = f"{project}|{kind}"
+    # Independent customers and future follow-on orders must not share one perpetual key.
+    if kind in ("purchase_contract", "repeat_order", "customer_validation"):
+        customer = customer_identity(item["title"] + " " + item.get("summary", ""))
+        event_id += f"|{customer}"
+        if kind in ("purchase_contract", "repeat_order"):
+            period = (item.get("published_kst") or "")[:7]
+            if period:
+                event_id += f"|{period}"
+            amount = re.search(r"\d+(?:[,.]\d+)*\s*(?:억원|억\s*달러|달러)", clean(item["title"]))
+            if amount:
+                event_id += "|" + re.sub(r"\s+", "", amount.group(0))
+    return event_id, stage, description
 
 def parse_feed(xml_text, lane):
     root = ET.fromstring(xml_text)
