@@ -31,6 +31,7 @@ NEXT_STATE = ROOT / "data" / "treasury_buyback_policy_state_next.json"
 
 BESSENT_REUTERS = "https://www.reuters.com/business/bessent-pushes-back-fears-over-us-debt-market-strains-2026-08-31/"
 BESSENT_FEVER = "https://news.bgov.com/bloomberg-government-news/bessent-says-buyback-move-aimed-at-quelling-market-fever-1"
+BESSENT_OIL_SCENARIO = "https://www.worldoil.com/news/2026/9/4/bessent-sees-oil-falling-as-low-as-40-after-iran-war/"
 TREASURY_RELEASE = "https://home.treasury.gov/news/press-releases/sb0607"
 BUYBACK_FAQ = "https://www.treasurydirect.gov/help-center/faqs/buyback-faqs/"
 FRED_SERIES_PAGE = "https://fred.stlouisfed.org/series/{series}"
@@ -47,7 +48,7 @@ SERIES = {
 }
 
 UPGRADE_MARKER = "<b>정책 목적·경계선</b>"
-UPGRADE_REVISION = 5
+UPGRADE_REVISION = 6
 UA = "Mozilla/5.0 khs-watch-treasury-bessent-verifier/4.0"
 
 EXACT_TITLES = {
@@ -429,6 +430,26 @@ def build_causal_snapshot() -> dict:
         "term_bp": None,
     }
 
+    # One-day moves are noisy. Use a five-common-trading-day window as the
+    # primary causal regime when available, while retaining 1-day changes for
+    # transparency. This prevents flip-flopping alerts on a single session.
+    changes_5d = None
+    if len(common_dates) >= 6:
+        base5_date = common_dates[-6]
+        base5 = {
+            "brent": maps["brent"][base5_date],
+            "nom10": maps["nom10"][base5_date],
+            "real10": maps["real10"][base5_date],
+        }
+        base5["bei10"] = base5["nom10"] - base5["real10"]
+        changes_5d = {
+            "start_date": base5_date,
+            "brent_pct": pct(cur["brent"], base5["brent"]),
+            "bei_bp": bp(cur["bei10"], base5["bei10"]),
+            "real_bp": bp(cur["real10"], base5["real10"]),
+            "nom_bp": bp(cur["nom10"], base5["nom10"]),
+        }
+
     term_latest = {
         "available": False,
         "prev_date": None,
@@ -459,10 +480,11 @@ def build_causal_snapshot() -> dict:
     except Exception as exc:
         term_latest["error"] = f"{type(exc).__name__}: {exc}"
 
-    oil_d = direction(changes["brent_pct"], 0.5)
-    bei_d = direction(changes["bei_bp"], 1.0)
-    real_d = direction(changes["real_bp"], 2.0)
-    nom_d = direction(changes["nom_bp"], 2.0)
+    regime_changes = changes_5d or changes
+    oil_d = direction(regime_changes["brent_pct"], 0.5)
+    bei_d = direction(regime_changes["bei_bp"], 1.0)
+    real_d = direction(regime_changes["real_bp"], 2.0)
+    nom_d = direction(regime_changes["nom_bp"], 2.0)
     term_d = direction(changes["term_bp"], 2.0) if changes["term_bp"] is not None else 0
 
     if oil_d < 0 and bei_d < 0 and nom_d < 0:
@@ -492,6 +514,8 @@ def build_causal_snapshot() -> dict:
         "common_date": cur_date,
         "common_values": cur,
         "common_changes": changes,
+        "changes_5d": changes_5d,
+        "verdict_basis": "5거래일 공통창" if changes_5d else "1거래일 공통창",
         "term_latest": term_latest,
         "latest": latest,
         "verdict_key": verdict_key,
@@ -527,7 +551,16 @@ def causal_block(snapshot: dict) -> str:
         f"• 10년 기대인플레이션 프록시(미 재무부 명목-실질): {v['bei10']:.2f}% ({c['bei_bp']:+.1f}bp)",
         f"• 10년 실질금리(미 재무부): {v['real10']:.2f}% ({c['real_bp']:+.1f}bp)",
         f"• 10년 명목금리(미 재무부): {v['nom10']:.2f}% ({c['nom_bp']:+.1f}bp)",
+        (
+            f"• 5거래일 검증: Brent {snapshot['changes_5d']['brent_pct']:+.1f}% · "
+            f"기대인플레 {snapshot['changes_5d']['bei_bp']:+.1f}bp · "
+            f"실질금리 {snapshot['changes_5d']['real_bp']:+.1f}bp · "
+            f"명목10Y {snapshot['changes_5d']['nom_bp']:+.1f}bp"
+            if snapshot.get("changes_5d") else
+            "• 5거래일 검증: 공통 관측치 부족 — 1일 판정만 사용"
+        ),
         term_line,
+        f"• 판정 기준: {snapshot.get('verdict_basis','확인 불가')}",
         f"• 판정: <b>{snapshot['verdict']}</b>",
         "• 기대인플레이션 프록시는 같은 날짜의 미 재무부 명목 10년물-실질 10년물 차이입니다. 기간프리미엄은 모형 추정치라 보조 확인에만 사용합니다.",
     ])
@@ -570,6 +603,39 @@ def stock_market_block(snapshot: dict) -> str:
     ])
 
 
+def oil_scenario_block(snapshot: dict) -> str:
+    if not snapshot.get("available", True):
+        return "\n".join([
+            "<b>Bessent 원유 40~50달러 조건부 시나리오</b>",
+            "• EIA Brent 최신값 확인 실패로 가격 경로 판정을 보류합니다.",
+            "• 40~50달러는 공식 유가 목표가 아니라 <b>이란 분쟁 종료 후 공급과잉이 생긴다는 조건부 전망</b>입니다.",
+        ])
+    latest = snapshot.get("latest") or {}
+    brent = ((latest.get("brent") or {}).get("value"))
+    brent_date = str((latest.get("brent") or {}).get("date") or "확인 불가")
+    if brent is None:
+        return "<b>Bessent 원유 40~50달러 조건부 시나리오</b>\n• Brent 최신값 확인 불가"
+    brent = float(brent)
+    to50 = (50.0 / brent - 1.0) * 100.0
+    to40 = (40.0 / brent - 1.0) * 100.0
+    if brent >= 100:
+        label = "🔴 현재는 시나리오와 역방향 — 에너지·인플레이션 압력 고조"
+    elif brent >= 80:
+        label = "🟠 아직 매우 멂 — 전쟁·공급차질 해소가 먼저 필요"
+    elif brent >= 60:
+        label = "🟡 하락 경로 진입 가능성은 커졌지만 40~50달러는 미도달"
+    elif brent > 50:
+        label = "🟡 50달러 시나리오 접근"
+    else:
+        label = "🟢 50달러 이하 진입 — 40달러 꼬리 시나리오 검증 구간"
+    return "\n".join([
+        "<b>Bessent 원유 40~50달러 조건부 시나리오</b>",
+        f"• Brent(EIA) 최신: <b>${brent:.2f}/배럴</b> ({brent_date}) · 50달러까지 {to50:+.1f}% · 40달러까지 {to40:+.1f}%",
+        f"• 현재 판정: <b>{label}</b>",
+        "• 조건 분리: 40~50달러는 <b>이란 분쟁 종료 + 공급과잉</b>을 전제로 한 Bessent의 조건부 전망이며 재무부의 공식 가격목표가 아닙니다.",
+        "• 검증 경로: Brent↓ → 기대인플레↓ → 실질금리↓/기간프리미엄 안정 → 10년물↓. 유가만 내려가고 10년물이 버티면 재정·실질금리 요인이 더 강한 것으로 판정합니다.",
+    ])
+
 def policy_block(snapshot: dict) -> str:
     return "\n".join([
         "",
@@ -581,6 +647,7 @@ def policy_block(snapshot: dict) -> str:
         "• 시장 기능이 정상인데도 특정 금리 수준에 맞춰 바이백·발행구조를 반복 조정하면 ‘유동성 지원 → 사실상 금리관리’로 정책선 이탈 경보를 올립니다.",
         "",
         causal_block(snapshot),
+        oil_scenario_block(snapshot),
         stock_market_block(snapshot),
         "",
         "<b>실행 확인</b>",
@@ -594,6 +661,7 @@ def source_links() -> str:
     return " · ".join([
         f'<a href="{BESSENT_REUTERS}">Bessent Reuters 인터뷰</a>',
         f'<a href="{BESSENT_FEVER}">Bessent ‘market fever’ 발언</a>',
+        f'<a href="{BESSENT_OIL_SCENARIO}">Bessent 원유 40~50달러 조건부 전망</a>',
         f'<a href="{TREASURY_RELEASE}">미 재무부 공식 발표</a>',
         f'<a href="{BUYBACK_FAQ}">바이백 공식 설명</a>',
         f'<a href="{EIA_BRENT_PAGE}">EIA Brent</a>',
@@ -609,11 +677,11 @@ def one_time_alert(fx: float, fx_date: str, snapshot: dict) -> str:
         "",
         "<b>확정 사실</b>",
         f"• 장기 비지표물 바이백: 회당 최대 20억달러({fmt_krw(2.0, fx)}) → 최소 40억달러({fmt_krw(4.0, fx)}). 공식 효력일은 9월 9일입니다.",
-        "• Bessent는 Reuters에 확대 운영이 9월 10일부터 시작되며 아직 확대된 바이백은 집행되지 않았다고 설명했습니다.",
+        "• 9월 초 당시 확대 운영은 9월 10일부터 시작됐으며, 현재 평가는 발표 당시 설명이 아니라 실제 집행·후속 금리 경로로 판정합니다.",
         policy_block(snapshot),
         "",
         "<b>한 줄 결론</b>",
-        "공식 정책선과 시장 결과를 분리합니다. 앞으로는 ‘유가·기대인플레이션이 내려가면 장기금리도 내려가는가’와 ‘실질금리·기간프리미엄이 이를 상쇄하는가’를 실제 숫자로 판정하고, 바이백의 시장 기능 목적과 성장주 할인율 영향도 함께 표시합니다.",
+        "공식 정책선과 시장 결과를 분리합니다. 원유 40~50달러는 이란 분쟁 종료·공급과잉을 전제로 한 조건부 전망으로만 추적하고, Brent·기대인플레이션·실질금리·10년물을 5거래일 중심으로 연결해 바이백과 성장주 할인율 효과가 실제로 지속되는지 판정합니다.",
         "",
         fx_basis_line(fx, fx_date),
         source_links(),
@@ -669,7 +737,7 @@ def main() -> int:
         if revision < UPGRADE_REVISION:
             fx, fx_date = latest_fx()
             TITLE.write_text(
-                "🇺🇸 미 재무부 장기물 바이백 — 베센트 정책선 + 금리상승 원인 자동검증 업그레이드\n",
+                "🇺🇸 미 재무부 장기물 바이백 — 정책선·원유 40~50달러 시나리오·금리원인 통합검증\n",
                 encoding="utf-8",
             )
             body = one_time_alert(fx, fx_date, snapshot)
