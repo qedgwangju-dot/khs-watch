@@ -22,7 +22,7 @@ FORCE_NOTIFY = os.getenv('FORCE_NOTIFY', '0') == '1'
 THRESH_5D = float(os.getenv('WARSH_ROTATION_5D_PP') or '5')
 THRESH_3D = float(os.getenv('WARSH_ROTATION_3D_PP') or '3')
 MAX_SOURCE_GAP_BP = float(os.getenv('WARSH_AI_ROTATION_MAX_SOURCE_GAP_BP') or '12')
-METHODOLOGY_VERSION = '2026-10-10-v2'
+METHODOLOGY_VERSION = '2026-10-10-v3'
 UA = 'Mozilla/5.0 (compatible; khs-watch/3.2; +https://github.com/qedgwangju-dot/khs-watch)'
 YAHOO = 'https://query1.finance.yahoo.com/v8/finance/chart/{}?range=1mo&interval=1d&includePrePost=false'
 SYMBOLS = {
@@ -80,8 +80,10 @@ def independent_series(symbol):
     series = parse_independent_history(raw)
     latest_date = max(series)
     ny_now = datetime.now(NY)
-    if latest_date == ny_now.date().isoformat() and 'Market open' in before_table:
-        raise RuntimeError(f'{symbol} 외부 제공처는 종가 미확정 상태(Market open)')
+    # A cached page may still say "Market open" even when fetched the next day.
+    # Its intraday bar must never be accepted as a finalized close.
+    if 'market open' in before_table.lower():
+        raise RuntimeError(f'{symbol} 외부 제공처의 마지막 행이 장중 값(Market open) — 확정종가 판정 금지')
     return series, url
 
 def yahoo_series(symbol, now=None):
@@ -150,6 +152,9 @@ def build_snapshot(independent, yahoo, now=None):
     ny_today = ny_now.date().isoformat()
     if latest > ny_today:
         raise RuntimeError('미국 현지 미래 날짜 일봉')
+    if (latest == ny_today and ny_now.weekday() < 5
+            and (ny_now.hour < 16 or (ny_now.hour == 16 and ny_now.minute < 45))):
+        raise RuntimeError(f'미국 현지 {ny_today} 정규장 종료 후 45분 이전 — 장중값 마감 종가 사용 금지')
     if ny_now.weekday() < 5 and (ny_now.hour > 16 or (ny_now.hour == 16 and ny_now.minute >= 45)):
         if latest != ny_today:
             raise RuntimeError(f'당일 마감 일봉 미게시: 미국 현지 {ny_today}, 제공처 최신 {latest}')
@@ -165,6 +170,7 @@ def build_snapshot(independent, yahoo, now=None):
     check_dates = dates[-7:]
     source_checks = {}
     returns = {}
+    secondary_returns = {}
     for name, symbol in SYMBOLS.items():
         a, b = independent[symbol], yahoo[symbol]
         source_checks[name] = compare_two_sources(name, symbol, a, b, check_dates)
@@ -172,6 +178,11 @@ def build_snapshot(independent, yahoo, now=None):
             '1d': (a[latest] / a[d1] - 1) * 100,
             '3d': (a[latest] / a[d3] - 1) * 100,
             '5d': (a[latest] / a[d5] - 1) * 100,
+        }
+        secondary_returns[name] = {
+            '1d': (b[latest] / b[d1] - 1) * 100,
+            '3d': (b[latest] / b[d3] - 1) * 100,
+            '5d': (b[latest] / b[d5] - 1) * 100,
         }
     sw, semi = returns['소프트웨어'], returns['반도체']
     rel3 = semi['3d'] - sw['3d']
@@ -185,6 +196,38 @@ def build_snapshot(independent, yahoo, now=None):
         if diff5 >= THRESH_5D:
             count += 1
     active = rel5 >= THRESH_5D and rel3 >= THRESH_3D and count >= 2
+
+    # A <12bp discrepancy in close prices can still change a displayed
+    # one-decimal return or even cross a regime boundary. Validate final
+    # user-visible numbers, not just the individual closing prices.
+    def shown(value):
+        return f'{float(value):+.1f}'
+    for name in SYMBOLS:
+        for window in ('3d', '5d'):
+            if shown(returns[name][window]) != shown(secondary_returns[name][window]):
+                raise RuntimeError(
+                    f'{name} {window} 표시 수익률 제공처 불일치: '
+                    f"{shown(returns[name][window])}% vs {shown(secondary_returns[name][window])}%"
+                )
+    alt_rel3 = secondary_returns['반도체']['3d'] - secondary_returns['소프트웨어']['3d']
+    alt_rel5 = secondary_returns['반도체']['5d'] - secondary_returns['소프트웨어']['5d']
+    for label, x, y in [('3거래일 초과수익', rel3, alt_rel3), ('5거래일 초과수익', rel5, alt_rel5)]:
+        if shown(x) != shown(y):
+            raise RuntimeError(f'{label} 제공처 불일치: {shown(x)}%p vs {shown(y)}%p')
+    alt_count = 0
+    for group, names in BASKETS.items():
+        alt_avg = sum(secondary_returns[name]['5d'] for name in names) / len(names)
+        alt_diff = alt_avg - secondary_returns['소프트웨어']['5d']
+        if shown(baskets[group]['5d']) != shown(alt_avg) or shown(baskets[group]['vs_software_5d']) != shown(alt_diff):
+            raise RuntimeError(f'{group} 묶음의 표시 수익률 제공처 불일치')
+        if alt_diff >= THRESH_5D:
+            alt_count += 1
+    alt_active = alt_rel5 >= THRESH_5D and alt_rel3 >= THRESH_3D and alt_count >= 2
+    if (alt_active != active
+            or (alt_rel5 <= -THRESH_5D) != (rel5 <= -THRESH_5D)
+            or (alt_rel5 >= THRESH_5D) != (rel5 >= THRESH_5D)):
+        raise RuntimeError('두 제공처의 상대강도 임계값 판정 불일치 — 송출 차단')
+
     if active and count == 3:
         verdict = 'AI 하드웨어 확산 확인 — 반도체에서 메모리·광연결·장비까지 동반 우위'
     elif active:
@@ -319,7 +362,8 @@ def message(s, correction=False, old=None):
         '• 첫째, 3거래일·5거래일 신호가 이어지는지 보고, 둘째, 실제 실적·주문·ETF 자금흐름을 별도로 확인합니다.',
         '', '<b>가격 검증</b>',
         f"• 기준: 9개 종목 공통 마감일·시작일 일치 · 두 제공처 최대 차이 {maxgap:.2f}bp (허용 {MAX_SOURCE_GAP_BP:.0f}bp)",
-        '• 두 제공처가 허용범위 밖이거나 최종 거래일이 일치하지 않으면 판정과 알림을 보내지 않습니다.',
+        '• 가격뿐 아니라 표시되는 3·5거래일 수익률·초과수익·업종 묶음·임계값 판정까지 두 제공처가 일치해야 보냅니다.',
+        '• 어떤 값이라도 기준을 통과하지 못하면 신규 알림과 상태 갱신을 차단합니다.',
         '', '<b>원천</b>',
         f"{source_link('SOXX 마감가격', 'https://stockanalysis.com/etf/soxx/history/')} · "
         f"{source_link('IGV 마감가격', 'https://stockanalysis.com/etf/igv/history/')} · "
@@ -381,21 +425,38 @@ def self_test():
              '2026-10-07','2026-10-08','2026-10-09']
     independent = {symbol: {d: 100 + i for i, d in enumerate(dates)} for symbol in SYMBOLS.values()}
     yahoo = {symbol: dict(rows) for symbol, rows in independent.items()}
-    yahoo['SOXX']['2026-10-09'] = 106.07
+    yahoo['SOXX']['2026-10-09'] = 106.03
     check = compare_two_sources('반도체', 'SOXX', independent['SOXX'], yahoo['SOXX'], dates)
-    assert check['max_gap_bp'] > 6 and check['max_gap_bp'] < MAX_SOURCE_GAP_BP
+    assert check['max_gap_bp'] > 2 and check['max_gap_bp'] < MAX_SOURCE_GAP_BP
     now = datetime(2026,10,9,18,30,tzinfo=NY)
     out = build_snapshot(independent, yahoo, now)
     assert out['window']['3d'] == '2026-10-06'
     assert out['window']['5d'] == '2026-10-02'
     assert out['date'] == '2026-10-09'
+    # A sub-12bp price discrepancy can flip the displayed 3-day return.
+    yahoo['SOXX']['2026-10-09'] = 106.07
+    try:
+        build_snapshot(independent,yahoo,now)
+        raise AssertionError('one-decimal return mismatch must block')
+    except RuntimeError as e:
+        assert '표시 수익률' in str(e) or '초과수익' in str(e)
     yahoo['SOXX']['2026-10-09'] = 108
     try:
         build_snapshot(independent,yahoo,now)
-        raise AssertionError('disagreement must block')
+        raise AssertionError('source disagreement must block')
     except RuntimeError as e:
         assert '불일치' in str(e)
-    print('ai_rotation_regression_tests=true checks=source_disagreement,6shared_dates,close_alignment')
+    yahoo['SOXX']['2026-10-09'] = 106
+    try:
+        build_snapshot(independent,yahoo,datetime(2026,10,9,11,30,tzinfo=NY))
+        raise AssertionError('intraday close must block')
+    except RuntimeError as e:
+        assert '장중값' in str(e)
+    bad_html = ('Market open Historical Data ' + ' '.join(
+        f'Oct {i}, 2026 1.00 1.10 0.95 1.02 1.02 +2.0% 123,456'
+        for i in range(1, 8)))
+    assert 'market open' in bad_html.lower()
+    print('ai_rotation_regression_tests=true checks=price_gap,display_rounding,spread,baskets,close_alignment,intraday_guard')
 
 if __name__ == '__main__':
     if '--self-test' in sys.argv:
