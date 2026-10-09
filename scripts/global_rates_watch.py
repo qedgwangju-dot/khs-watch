@@ -521,21 +521,19 @@ def main() -> int:
         if value >= 5.78:
             return "5.78% 이상 → JPM Equal Swings 약세 목표 구간"
         if value >= 5.59:
-            return "5.59% 상향 돌파 → 채권 약세 추세 재확인"
+            return "5.59% 이상 유지 → 채권 약세 부담(신규 돌파 판단 아님)"
         if value > 5.25:
             return "5.59% 아래·5.25% 위 → 반전 미확인"
         if value > 5.15:
-            return "5.25% 하향 돌파 → 숏커버·CTA 매수전환 후보"
+            return "5.25% 이하 유지 → 숏커버·CTA 매수전환 후보"
         return "5.15% 이하 → 채권 반전 신호 강화"
 
     eval_above("jgb10", [3.00], "일본 10년 JGB")
     eval_above("ust10", [4.50, 4.70, 4.75], "미국 10년 국채")
     eval_above("ust30", [5.00, 5.30], "미국 30년 국채")
-    eval_jpm30_up(5.59, "미국 30년 JPM 1차 약세선", "5.59% 상향 돌파 → 채권 약세 추세 재확인")
-    eval_jpm30_up(5.78, "미국 30년 JPM 2차 약세선", "5.78% 상향 돌파 → Equal Swings 약세 목표 구간")
-    eval_jpm30_up(6.00, "미국 30년 JPM 장기 스트레스선", "6.00% 진입 → 장기금리 극단 스트레스")
-    eval_jpm30_down(5.25, "미국 30년 JPM 반전 1차선", "5.25% 하향 돌파 → 숏커버·CTA 매수전환 후보")
-    eval_jpm30_down(5.15, "미국 30년 JPM 반전 2차선", "5.15% 하향 돌파 → 채권 반전 신호 강화")
+    # JPM 30Y threshold events have one independent source-of-truth sender:
+    # scripts/treasury_30y_jpm_level_alert.py.  Keep this global-rates
+    # report contextual only to avoid two Telegram alerts for one crossing.
     eval_below("usdjpy", 155.0, "USD/JPY")
 
     usd_day_change = None
