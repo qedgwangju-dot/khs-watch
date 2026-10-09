@@ -129,9 +129,16 @@ jobs:
               forced_official_page_category,
               forced_official_page_entity,
               advance_official_page_state,
+              is_anthropic_mission_launch_baseline,
+              material,
           )
 
           cases = [
+              (
+                  "Anthropic Cyber Mission expands Critical Infrastructure Defense Program and OSS Scanner",
+                  "Anthropic 핵심 기반시설·오픈소스 방어 사업",
+                  "Anthropic",
+              ),
               (
                   "Thomas Lind joined OpenAI national security policy team to lead cyber and strategic risk after serving at ONCD and NSA",
                   "프런티어 AI 국가안보·정책 핵심인사 이동",
@@ -185,7 +192,29 @@ jobs:
               if actual != expected:
                   raise RuntimeError(f"Official page source mismatch: {name} -> {actual}, expected {expected}")
 
+          launch = {
+              "source": "Anthropic",
+              "title": "Introducing the Anthropic Cyber Mission",
+              "description": "Launch of the free OSS Scanner",
+              "url": "https://www.anthropic.com/news/anthropic-cyber-mission",
+          }
+          if not is_anthropic_mission_launch_baseline(launch) or material(launch):
+              raise RuntimeError("Already-published Anthropic launch was replayed as new policy")
+          expansion = {
+              "source": "Anthropic",
+              "title": "Anthropic Cyber Mission expands Critical Infrastructure Defense Program",
+              "description": "New operational technology partners joined the CIDP",
+              "url": "https://www.anthropic.com/news/cidp-partners-expansion",
+          }
+          if is_anthropic_mission_launch_baseline(expansion) or not material(expansion):
+              raise RuntimeError("New Anthropic CIDP program expansion was missed")
+          print("ai_policy_cyber_mission_regression=PASS")
+
           forced_cases = {
+              "Anthropic Cyber Mission 공식 출범": (
+                  "Anthropic 핵심 기반시설·오픈소스 방어 사업",
+                  "Anthropic",
+              ),
               "미 하원의장실 White House Accord 공식 발표": (
                   "프런티어 AI 공동 서약·서명기업 변화",
                   "백악관·프런티어 AI 공동서약",
