@@ -242,19 +242,28 @@ def _extract_cut(text: str) -> dict | None:
             ("2026-12", ("december", "dec.", "12월", "十二月", "12月份")),
             ("2027-01", ("january", "jan.", "1월", "一月", "1月份")),
         )
-        nearby = []
+        months_before = []
+        months_after = []
         for month, words in month_markers:
             for word in words:
                 for match in re.finditer(re.escape(word), low):
-                    distance = abs(pos - (match.start() + len(word) // 2))
-                    if distance <= 230:
-                        nearby.append((distance, month))
-        nearby.sort(key=lambda z:z[0])
-        if not nearby:
+                    center = match.start() + len(word) // 2
+                    if center <= pos and pos - center <= 230:
+                        months_before.append((pos - center, month))
+                    elif center > pos and center - pos <= 100:
+                        months_after.append((center - pos, month))
+        # Procurement reporting normally uses "October orders cut 20%;
+        # November uncertain" where the next month's name must never
+        # replace the previous month's actually quantified order cut.
+        candidates_period = months_before if months_before else months_after
+        candidates_period.sort(key=lambda z:z[0])
+        if not candidates_period:
             continue
-        if len(nearby) > 1 and nearby[1][1] != nearby[0][1] and abs(nearby[1][0] - nearby[0][0]) < 15:
+        if (len(candidates_period) > 1
+                and candidates_period[1][1] != candidates_period[0][1]
+                and abs(candidates_period[1][0] - candidates_period[0][0]) < 15):
             continue
-        return {"period": nearby[0][1], "low": low_pct, "high": high_pct,
+        return {"period": candidates_period[0][1], "low": low_pct, "high": high_pct,
                 "basis": "original_supplier_request"}
     return None
 
