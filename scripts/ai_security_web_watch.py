@@ -779,7 +779,13 @@ def translate_alert_text(text: str) -> str:
                 break
         if not translated_piece:
             raise RuntimeError("Korean translation failed: " + " | ".join(errors[-4:]))
-        assembled.append(translated_piece)
+        # Provider responses strip boundary spaces; preserve original spacing
+        # around company/model identifiers to prevent 'Anthropic사이버'.
+        assembled.append(
+            (" " if part[0].isspace() else "")
+            + translated_piece
+            + (" " if part[-1].isspace() else "")
+        )
 
     result = " ".join("".join(assembled).split())
     if ("Anthropic" in value or "anthropic" in value.lower()) and "인류학" in result:
