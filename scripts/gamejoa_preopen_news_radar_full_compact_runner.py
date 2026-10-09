@@ -10563,8 +10563,6 @@ def alert_dedup_key(alert: dict) -> tuple[str, str]:
     source_identity = market_materiality.source_event_identity(alert)
     if source_identity:
         return (source_identity, "event")
-    if alert.get("iran_hormuz_escalation"):
-        return ("iran_hormuz_military_escalation", str(alert.get("published") or "")[:10])
     macro_theme = telegram.macro_release_theme(alert)
     if macro_theme:
         return (macro_theme, "event")
@@ -12065,24 +12063,6 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
     initial = telegram.display_alerts(alerts, min(max(limit * 3, 12), 30))
     candidates = list({id(alert): alert for alert in initial + alerts}.values())
     now = base.kst_now()
-    iran_candidates = [alert for alert in candidates if alert.get("iran_hormuz_escalation")]
-    if iran_candidates:
-        def iran_source_rank(alert: dict) -> int:
-            source = alert_text(alert)
-            if has_term(source, ["ap news", "associated press"]):
-                return 0
-            if has_term(source, ["reuters"]):
-                return 1
-            if has_term(source, ["cnbc"]):
-                return 2
-            return 3
-
-        best_rank = min(iran_source_rank(alert) for alert in iran_candidates)
-        preferred_iran = max(
-            (alert for alert in iran_candidates if iran_source_rank(alert) == best_rank),
-            key=lambda alert: str(alert.get("published") or ""),
-        )
-        candidates = [preferred_iran] + [alert for alert in candidates if not alert.get("iran_hormuz_escalation")]
     for alert in candidates:
         alert["market_materiality"] = source_market_materiality(alert)
     candidates = sorted(

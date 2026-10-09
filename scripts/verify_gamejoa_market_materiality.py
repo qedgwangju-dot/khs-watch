@@ -25,6 +25,10 @@ ATTACHMENT_FIXTURE_20261008 = json.loads(
     (Path(__file__).resolve().parent.parent / "data/gamejoa_attachment_quality_fixtures_20261008.json")
     .read_text(encoding="utf-8")
 )
+ATTACHMENT_FIXTURE_20261010 = json.loads(
+    (Path(__file__).resolve().parent.parent / "data/gamejoa_attachment_quality_fixtures_20261010.json")
+    .read_text(encoding="utf-8")
+)
 KEEP = (
     ("식품기업, 미국 김밥 매출 59% 증가", "식품기업은 미국 김밥의 1∼7월 매출이 전년비 59% 증가했다고 밝혔다."),
     ("전자기업, 신제품 공개…분기 가이던스 상향", "전자기업은 분기 매출 가이던스를 12% 상향했다고 발표했다."),
@@ -3180,6 +3184,40 @@ class ForegroundAndEventIdentityTests(unittest.TestCase):
         for group in fixture["duplicate_event_groups"]:
             with self.subTest(duplicate_group=group):
                 self.assertEqual(len({by_id[story_id]["event_key"] for story_id in group}), 1)
+        for left_id, right_id in fixture["must_remain_distinct"]:
+            with self.subTest(distinct_pair=(left_id, right_id)):
+                left, right = by_id[left_id], by_id[right_id]
+                self.assertNotEqual(left["event_key"], right["event_key"])
+                self.assertFalse(materiality.same_headline_event(
+                    left["title"], right["title"], left["market_path"], right["market_path"],
+                ))
+
+    def test_october_tenth_batch_is_exhaustively_triaged_without_claiming_body_verification(self):
+        fixture = ATTACHMENT_FIXTURE_20261010
+        stories = fixture["stories"]
+        self.assertEqual(len(stories), fixture["input_count"])
+        self.assertEqual(len(stories), 10)
+        self.assertEqual(len({story["id"] for story in stories}), 10)
+        self.assertEqual(len({story["url"] for story in stories}), 10)
+        self.assertEqual(len({story["event_key"] for story in stories}), 10)
+        counts = {
+            decision: sum(story["decision"] == decision for story in stories)
+            for decision in {story["decision"] for story in stories}
+        }
+        self.assertEqual(counts, fixture["decision_counts"])
+        self.assertEqual(counts, {
+            "send_candidate": 5,
+            "watch_confirmation": 3,
+            "exclude_current_evidence": 2,
+        })
+        self.assertIn("not independent verification", fixture["source_boundary"])
+        by_id = {story["id"]: story for story in stories}
+        for story in stories:
+            with self.subTest(story=story["id"]):
+                self.assertTrue(story["url"].startswith(("https://", "http://")))
+                self.assertTrue(story["title"])
+                self.assertTrue(story["summary"])
+                self.assertTrue(story["market_path"])
         for left_id, right_id in fixture["must_remain_distinct"]:
             with self.subTest(distinct_pair=(left_id, right_id)):
                 left, right = by_id[left_id], by_id[right_id]

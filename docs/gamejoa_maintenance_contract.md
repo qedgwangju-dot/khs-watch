@@ -218,6 +218,12 @@ Every defect or requested change must follow this sequence:
   semantics, and record aliases only after acknowledged delivery. Do not use
   collector timestamps, industry keywords or broad fuzzy title similarity as
   proof of a new or duplicate event.
+- A broad geopolitical topic flag (including Iran/Hormuz) is never a key that
+  forces one story per day or a reason to discard every candidate except the
+  highest-ranked publisher. Keep one copy of the same sourced military,
+  diplomatic, energy-price or market-response event. Keep a new action stage or
+  independently measured market reaction distinct. Do not infer that a reviewed
+  operation was authorized or executed.
 - A possible future CEO visit/meeting cannot qualify through either discussion
   or incidental supply/technology rules. Preserve actual named ongoing supply
   negotiations and confirmed contracts. Columns, consumer accessory launches,
@@ -231,6 +237,12 @@ Every defect or requested change must follow this sequence:
   unique linked articles, unique events, per-article disposition/reason and core
   checks. The October 5 ten-article replay runs in production CI before sending;
   it is a test corpus, never a live alert injection or a seen-state reset.
+- The October 8-10 packet audit records all 10 user-supplied links, 5 send
+  candidates, 3 confirmation watches and 2 current-evidence exclusions. These
+  are triage decisions from pasted summaries, not proof that each link's full
+  body was fetched. Production delivery still requires exact-link body
+  verification; forecasts, underwriter selection, early energy-trade talks and
+  long-term supply claims retain their reported stage and conditions.
 - A flow core preserves the investor population, named securities, observation
   period and separate amounts. It cannot substitute whole-market foreign-plus-
   institutional turnover for a foreign investor's net sales of two issuers.

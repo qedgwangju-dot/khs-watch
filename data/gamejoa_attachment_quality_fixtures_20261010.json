@@ -1,0 +1,130 @@
+{
+  "fixture_id": "gamejoa_attachment_quality_20261010",
+  "input_label": "user-supplied October 8-10 market-news packet",
+  "input_count": 10,
+  "source_boundary": "This fixture exhaustively triages the 10 user-supplied items using their pasted headlines, summaries, publisher labels, and links. It is not independent verification of the linked full article bodies. A send_candidate may be delivered only after fresh exact-link body verification and source-bound fact checks.",
+  "stories": [
+    {
+      "id": "solidigm_us_listing_underwriter_selection",
+      "date": "2026-10-08 14:46 KST",
+      "publisher": "한국경제TV",
+      "title": "'중복상장' 논란에도 갈 길 간다…SK하닉 속내는 마켓딥다이브",
+      "url": "https://www.wowtv.co.kr/NewsCenter/News/Read?articleId=A202610080074&t=NNv",
+      "summary": "SK하이닉스의 낸드플래시 자회사 솔리다임이 내년 미국 상장을 목표로 주관사단을 선정했다. 상장 추진 및 자금조달 구조는 확정 전이다.",
+      "decision": "send_candidate",
+      "market_path": "주관사 선정과 미국 상장 추진은 SK하이닉스 자회사 가치·자금조달·지분 구조에 연결된다. 신주/구주 및 상장 시점은 확정 전으로 표기한다.",
+      "event_key": "solidigm_us_listing_underwriter_selection"
+    },
+    {
+      "id": "samsung_semiconductor_110t_hbm4_forecast",
+      "date": "2026-10-08 15:46 KST",
+      "publisher": "이데일리",
+      "title": "삼성전자 반도체서만 영업익 110조… HBM 4로 내년도 질주",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=04152486645610952&mediaCodeNo=257&utm_source=naver&utm_medium=referral&utm_campaign=news_syndication&utm_content=original_article",
+      "summary": "반도체 부문 영업이익 110조원은 전망치이며, 기사는 HBM4 공급 확대를 내년 성장 동력으로 제시한다.",
+      "decision": "send_candidate",
+      "market_path": "대형 상장사의 사업부 이익 전망과 차세대 HBM 공급 확대는 이익 추정에 연결된다. 전망을 확정 실적으로 바꾸거나 공급계약이 이미 체결됐다고 단정하지 않는다.",
+      "event_key": "samsung_semiconductor_110t_hbm4_forecast"
+    },
+    {
+      "id": "digitalx_prediction_market_accuracy_report",
+      "date": "2026-10-08 15:46 KST",
+      "publisher": "파이낸셜뉴스",
+      "title": "디지털엑스, 예측시장 정확도 분석 보고서 발간…금리 22회 적중",
+      "url": "https://www.fnnews.com/news/202610081512177383",
+      "summary": "예측시장 정확도 분석 보고서와 국내 종목 무기한 선물의 규제 범위 지적이 함께 언급됐다.",
+      "decision": "watch_confirmation",
+      "market_path": "민간 분석보고서만으로 규제 변경이나 시장 충격을 확정하지 않는다. 금융당국의 해석·조치와 실제 거래 규모가 확인될 때 재평가한다.",
+      "event_key": "digitalx_prediction_market_accuracy_report"
+    },
+    {
+      "id": "us_russia_europe_gas_sales_exploration",
+      "date": "2026-10-08 16:16 KST",
+      "publisher": "Reuters (Google News RSS 경유)",
+      "title": "소식통: 우크라이나 전쟁 속 미국·러시아, 유럽 가스 판매 모색",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNUEhaa1JlbmtzZjZfVFhHcXR0S3ZZUnRnTjBJNnl6UUQ3cjJPZ2JfQ1d5bDVpTEdvXzhwT2JrQTA5VGg4dVNweG9odGJwalF3cTd0clZUb1FJRE45NHVfS2R1bXRIQXliZkZPdFM4NGFkNkNlaTQxSU9Kd2R4WTEtX3FGMkx3YkR5X3lMaW9FOXRpemVncHlTRkZiWEdwakUzVnJ1NHVTdGhEWlRkNWIyeDJha2c?oc=5",
+      "summary": "소식통 보도 단계에서 미국과 러시아가 유럽에 가스를 판매하는 방안을 모색한다.",
+      "decision": "send_candidate",
+      "market_path": "전쟁·제재 국면의 유럽 가스 공급 경로 변화 가능성은 에너지 가격·공급에 영향을 줄 수 있다. 물량·구매자·제재 예외·계약·시행은 미확정으로 표시한다.",
+      "event_key": "us_russia_europe_gas_sales_exploration"
+    },
+    {
+      "id": "japan_pm_ai_si_naming_comment",
+      "date": "2026-10-08 22:15 KST",
+      "publisher": "조선일보",
+      "title": "다카이치 日 총리, 현 단계에선 SI 아닌 AI",
+      "url": "https://news.tvchosun.com/site/data/html_dir/2026/10/08/2026100890249.html",
+      "summary": "일본 총리가 AI를 초지능으로 부르자는 제안에 현 단계에서 난색을 표했다.",
+      "decision": "exclude_current_evidence",
+      "market_path": "용어 선택에 대한 정치 발언으로 정책·예산·기업 실적·시장 가격 변화가 확인되지 않는다.",
+      "event_key": "japan_ai_si_naming_comment"
+    },
+    {
+      "id": "iran_operation_review_oil_105_market_shock",
+      "date": "2026-10-08 22:15 KST",
+      "publisher": "이데일리 (WSJ 보도 인용)",
+      "title": "美, 이란 대규모 군사작전 검토…유가 105달러 돌파·월가 긴장",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=07229126645610952&mediaCodeNo=257&utm_source=naver&utm_medium=referral&utm_campaign=news_syndication&utm_content=original_article",
+      "summary": "미국의 이란 군사작전 검토 보도와 브렌트유 배럴당 105.12달러, 미 주가지수 선물 및 기술주 약세가 함께 제시됐다. 군사작전은 검토 단계다.",
+      "decision": "send_candidate",
+      "market_path": "유가 급등과 주가지수·기술주 약세가 동반된 지정학 충격이다. 군사작전은 검토 보도이지 승인·실행으로 바꾸지 않는다.",
+      "event_key": "iran_operation_review_oil_105_market_shock"
+    },
+    {
+      "id": "samsung_2027_memory_long_term_contracts",
+      "date": "2026-10-09 18:15 KST",
+      "publisher": "한국경제",
+      "title": "단독 삼성전자 물량 80% 장기계약분…빅테크 줄 섰다",
+      "url": "https://www.hankyung.com/article/2026100929291",
+      "summary": "삼성전자가 내년 생산할 HBM·메모리 물량의 약 80%를 장기공급계약으로 확보했다는 보도다. 빅테크의 5년 물량 선점 움직임도 언급됐다.",
+      "decision": "send_candidate",
+      "market_path": "생산 물량의 장기 계약 확보 보도는 메모리 수요 가시성과 가격·가동률 전망에 직결된다. 약 80%의 기준(제품·기간·계약 체결 여부)과 5년 조건은 원문에서 별도 검증한다.",
+      "event_key": "samsung_2027_memory_long_term_contracts"
+    },
+    {
+      "id": "trump_iran_diplomatic_tone_treasury_yields",
+      "date": "2026-10-09 18:15 KST",
+      "publisher": "Google News RSS (원매체 미확인)",
+      "title": "트럼프의 외교적 대이란 어조에 국채 수익률 안정",
+      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE0xQjVTa1BBRlpvckhQbmZLVnN0M09rVTdwUVZiZlg4TnlfRUJPZ3pObmZWNlIwMXdhRFpHcHhacy1tTGtsOXprd1ZKVWtfSk1pQVMwVGpwcFpja2xhRndZTWR6U2swYU9qU21EeEo4UFAyOGRkSFFUelBn0gF_QVVfeXFMUENSeTg4TV9sQUNFWGpydVVoQkpfajNHTkN6RndmcjNWaTktS0habmRjWnpIeWF0Vi1IV1BkQ2lveWVYN3duV2RrSmQ3Vk0zcUFjMU50Q19qbWVNUk5qM05HcHduNkgxbEIxOHdoVUZHYzRnLTlsWHNUdHp4cWZwSQ?oc=5",
+      "summary": "중간선거를 앞둔 트럼프 대통령의 대이란 외교 발언과 국채 수익률 안정이 보도됐다.",
+      "decision": "watch_confirmation",
+      "market_path": "군사작전 검토와 다른 외교 단계의 후속 사건이다. 원매체·직접 발언·미 국채 수익률의 만기·변화 폭을 확인한 뒤 별도 업데이트 여부를 판단한다.",
+      "event_key": "trump_iran_diplomatic_tone_treasury_yields"
+    },
+    {
+      "id": "us_market_close_tech_rebound_russian_diesel",
+      "date": "2026-10-10 07:15 KST",
+      "publisher": "데일리안",
+      "title": "뉴욕 증시, 기술주 반등·러시아 경유 공급 합의 기대에 상승",
+      "url": "https://www.dailian.co.kr/news/view/1699848/?sc=Naver",
+      "summary": "뉴욕 증시는 기술주 반등과 러시아산 경유 공급 확대 기대감에 상승 마감했다.",
+      "decision": "watch_confirmation",
+      "market_path": "새 거래일의 시장 종가 동향은 이전 이란 군사검토 기사와 다른 관측이다. 지수·종목 수익률, 경유 공급 합의의 당사자·물량·확정 여부 확인 전에는 재전송하지 않는다.",
+      "event_key": "us_market_close_tech_rebound_russian_diesel"
+    },
+    {
+      "id": "sk_hynix_anniversary_ai_memory_profile",
+      "date": "2026-10-10 07:15 KST",
+      "publisher": "뉴시스",
+      "title": "창립 43주년 맞은 SK하이닉스…HBM 넘어 차세대 AI 메모리 시장 넘본다",
+      "url": "https://www.newsis.com/view/NISX20261007_0003817543",
+      "summary": "창립 기념과 과거 HBM 개발 이력을 바탕으로 차세대 AI 메모리 시장 선도 포부를 전했다.",
+      "decision": "exclude_current_evidence",
+      "market_path": "기념·역사·포부 중심이며 새 계약·제품 출시·매출·투자 집행·시장 점유율 수치가 없다.",
+      "event_key": "sk_hynix_anniversary_ai_memory_profile"
+    }
+  ],
+  "decision_counts": {
+    "send_candidate": 5,
+    "watch_confirmation": 3,
+    "exclude_current_evidence": 2
+  },
+  "must_remain_distinct": [
+    ["samsung_semiconductor_110t_hbm4_forecast", "samsung_2027_memory_long_term_contracts"],
+    ["iran_operation_review_oil_105_market_shock", "trump_iran_diplomatic_tone_treasury_yields"],
+    ["iran_operation_review_oil_105_market_shock", "us_market_close_tech_rebound_russian_diesel"],
+    ["solidigm_us_listing_underwriter_selection", "samsung_semiconductor_110t_hbm4_forecast"]
+  ],
+  "duplicate_event_groups": []
+}
