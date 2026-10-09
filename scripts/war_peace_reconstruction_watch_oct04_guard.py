@@ -37,12 +37,15 @@ _orig_verdict = guard._verdict
 _orig_semantic_fix = prev._semantic_output_fix
 _orig_verify_alert = runner.verify_alert
 _orig_translate_ko = watch.translate_ko
+_CHINA_TITLE_OVERRIDES = {}  # 현재 실행 동안에만 유지; 신규 상태파일 생성 없음
 
 
 def translate_ko(title):
     """출처 귀속이 의미의 일부인 제목은 번역 단계에서 귀속 문구를 보존한다."""
     raw = str(title or "")
     low = raw.lower()
+    if raw in _CHINA_TITLE_OVERRIDES:
+        return _CHINA_TITLE_OVERRIDES[raw]
     china_stage = _china_fuel_stage({"title_original": raw, "description": ""})
     if china_stage:
         return _china_fuel_title({"title_original": raw}, china_stage)
@@ -1200,6 +1203,7 @@ def score_item(row, now):
         if not _china_fuel_trusted(row):
             return 0, []
         row["title_ko"] = _china_fuel_title(row, china_stage)
+        _CHINA_TITLE_OVERRIDES[str(row.get("title_original", ""))] = row["title_ko"]
         row["signals_ko"] = _china_fuel_signals(row, china_stage)
         row["china_fuel_stage"] = china_stage
         stage_tag = {
