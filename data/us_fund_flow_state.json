@@ -1,6 +1,6 @@
 {
   "seen": {
-    "ICI|mmf": "0ac31fd8b3857bbf18c4a60ef48c634fabd80ca840a40c27635c409768ea168e",
+    "ICI|mmf": "42db2318a82a5adba91032d1a71047cf42a0e3ffd45aeeed3c7854bdb9bf4ba3",
     "FINRA|margin": "8655636a0708abc68f71ddd7a8febfc428dbeaf45d54c8d809c6c5280ea4c65e",
     "ICI|combined": "2e58aadeb62905be8fbe8ef955938b932ee778ab304f4d4fbecd51bc432a6a09",
     "JPMorganChase Institute|household_withdrawals": "6c6c7de140d30ef3253091d748c839718c430cd42b2e1b65880108e2720f7e29",
@@ -10,14 +10,20 @@
     "ICI|mmf": {
       "source": "ICI",
       "kind": "mmf",
-      "period": "October 7",
+      "period": "October 07, 2026",
       "published": "October 8, 2026",
       "url": "https://www.ici.org/research/stats/mmf",
       "metrics": {
-        "assets_trillion": 7.96,
+        "assets_trillion": 7.96355,
         "weekly_change_bn": 72.27
       },
-      "fingerprint": "0ac31fd8b3857bbf18c4a60ef48c634fabd80ca840a40c27635c409768ea168e"
+      "quality_checks": [
+        "same_week",
+        "weekly_arithmetic",
+        "table_change",
+        "prose_level"
+      ],
+      "fingerprint": "42db2318a82a5adba91032d1a71047cf42a0e3ffd45aeeed3c7854bdb9bf4ba3"
     },
     "FINRA|margin": {
       "source": "FINRA",
@@ -88,13 +94,22 @@
       "fingerprint": "7360f0d54948ccab33bac2e7f7154281e984872c447a15f209941748eb0d4c64"
     }
   },
-  "updated_at_kst": "2026-10-09T23:08:38.909191+09:00",
+  "updated_at_kst": "2026-10-09T23:17:10.152550+09:00",
   "derived": {
     "sp500_drawdown_band": "normal",
     "sp500_last_date": "2026-10-09",
-    "sp500_last_value": 7788.97998046875,
+    "sp500_last_value": 7790.25,
     "sp500_peak_date": "2026-10-06",
     "sp500_peak_value": 7818.93017578125,
-    "sp500_drawdown_pct": -0.38
+    "sp500_drawdown_pct": -0.37,
+    "hartnett_tracking_version": "2026-10-09-v1",
+    "hartnett_treasury_date": "2026-10-08",
+    "hartnett_10y_pct": 5.22,
+    "hartnett_10y_5d_bp": -2.0,
+    "hartnett_bond_level": "below_5_30",
+    "hartnett_bond_momentum": "neutral",
+    "hartnett_fed_target_upper_pct": 4.0,
+    "hartnett_fed_effective_date": "2026-09-16",
+    "hartnett_election_stage": "outside"
   }
 }
