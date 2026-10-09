@@ -1,0 +1,60 @@
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def read(rel: str) -> str:
+    return (ROOT / rel).read_text(encoding="utf-8")
+
+
+def test_yahoo_contract_oi_never_enters_cta_gate():
+    text = read("scripts/treasury_cta_squeeze_market_watch.py")
+    # Root-cause guard: Yahoo may distribute a contract/rolled-contract OI that is
+    # not comparable with CFTC whole-market weekly OI. The fallback lane must
+    # source OI only from CFTC when CME official OI is unavailable.
+    assert 'oi = row.get("openInterest")' not in text
+    assert 'oi_scope": "CFTC_TFF_WHOLE_MARKET_WEEKLY"' in text
+    assert "CFTC TFF 주간 전체 시장 OI" in text
+
+
+def test_cta_headline_does_not_present_4_3_as_live_policy_target():
+    audited = read("scripts/treasury_cta_squeeze_audited_watch.py")
+    assert "4.3% 시나리오가 실제로 작동하는지 판정" not in audited
+    assert "장기금리 하락 전환이 실제로 시작됐는지 판정" in audited
+
+
+def test_cta_scheduled_thresholds_adapt_to_live_yield_regime():
+    text = read("scripts/treasury_cta_squeeze_equity_watch.py")
+    assert "def _yield_regime_line" in text
+    assert "5.25% 이상 초고금리 구간" in text
+    assert "5.00~5.25% 고금리 구간" in text
+    assert "4.30%는 과거 시장 시나리오의 보조 하단" in text
+    assert "10Y 4.50→4.40→4.35→4.30%와 -1σ/-2σ 진입" not in text
+
+
+def test_buyback_initial_reaction_is_not_presented_as_persistent_effect():
+    text = read("scripts/treasury_buyback_policy_watch.py")
+    assert "<b>발표 직후 초기 시장 반응</b>" in text
+    assert "지속효과 판정은 아래 실제 집행·금리·CTA 체인에서 별도로 확인" in text
+
+
+def test_bessent_oil_scenario_is_conditional_and_causal_verdict_uses_multi_day_window():
+    text = read("scripts/treasury_alert_korean_guard.py")
+    assert "UPGRADE_REVISION = 6" in text
+    assert "def oil_scenario_block" in text
+    assert "이란 분쟁 종료 + 공급과잉" in text
+    assert "재무부의 공식 가격목표가 아닙니다" in text
+    assert "changes_5d" in text
+    assert 'regime_changes = changes_5d or changes' in text
+    assert "5거래일 공통창" in text
+    # This was true only before the first expanded operation; it must never
+    # survive as a current statement in a future one-time upgrade.
+    assert "아직 확대된 바이백은 집행되지 않았" not in text
+
+
+def test_yen_verbal_intervention_is_checked_for_persistence_not_hard_peg():
+    text = read("scripts/yen_carry_policy_equity_enrich.py")
+    assert "특정 USD/JPY 숫자를 공식 방어선으로 선언한 것으로 보지 않습니다" in text
+    assert "5영업일·20영업일 지속효과" in text
+    assert "발언 이전 약세권으로 복귀하면 구두개입 효과 약화" in text
