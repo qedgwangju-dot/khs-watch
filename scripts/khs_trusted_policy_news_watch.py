@@ -50,6 +50,14 @@ AI_FORCE_TITLE_PATH = OUT_DIR / "khs_ai_force_policy_title.txt"
 OFFICIAL_DIRECT_STORIES = {
     # Primary evidence: 2026-10-07 Treasury release, not a robot-maker SDN designation.
     "us_treasury_outbound_ai_robotics_enforcement": (
+        # Treasury-managed GovDelivery bulletin carries the identical 2026-10-07
+        # press release. Read it independently because home.treasury.gov can
+        # return 403/timeouts to GitHub runners.
+        (
+            "https://content.govdelivery.com/accounts/USTREAS/bulletins/42e501d",
+            "Treasury Announces Enforcement Penalty for Violation of Outbound Program",
+            "U.S. Department of the Treasury (USTREAS official bulletin)",
+        ),
         (
             "https://home.treasury.gov/news/press-releases/sb0652",
             "Treasury Announces Enforcement Penalty for Violation of Outbound Program",
@@ -1504,6 +1512,19 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
                 and all(marker in primary_text.lower() for marker in ("amidi", "noematrix"))
             ):
                 published = dt.datetime(2026, 10, 7, tzinfo=KST)
+
+        # Never accept a redirect, challenge page, unrelated press release, or
+        # search snippet as the verified first OISP enforcement case.
+        if rule.key == "us_treasury_outbound_ai_robotics_enforcement":
+            original_case = clean_text(raw).lower()
+            required_case_facts = (
+                "treasury announces enforcement penalty for violation of outbound program",
+                "october 7, 2026", "amidi", "noematrix", "92,478",
+                "200,000", "outbound investment security program",
+            )
+            if not all(marker in original_case for marker in required_case_facts):
+                print(f"trusted_policy_news=official_direct_rejected key={rule.key} reason=case_fact_mismatch")
+                continue
 
         haystack = f"{title} {source_label} {description}"
         if (
@@ -3647,8 +3668,10 @@ def alert_confirmation_status(rule: StoryRule, items: list[dict]) -> tuple[str, 
         rule.key == "us_treasury_outbound_ai_robotics_enforcement"
         and any(
             item.get("official_direct_verified") is True
-            and str(item.get("link") or "").lower().rstrip("/")
-               == "https://home.treasury.gov/news/press-releases/sb0652"
+            and str(item.get("link") or "").lower().rstrip("/") in {
+                "https://home.treasury.gov/news/press-releases/sb0652",
+                "https://content.govdelivery.com/accounts/ustreas/bulletins/42e501d",
+            }
             for item in items
         )
     ):
@@ -3800,6 +3823,15 @@ def _self_test_us_treasury_outbound_event_model() -> None:
     }
     assert semantic_policy_event_key(subsequent) != key, "historical Amidi reference concealed a new penalty"
     assert alert_confirmation_status(rule, [first])[0] == "공식 확인"
+    official_bulletin = {
+        **first,
+        "link": "https://content.govdelivery.com/accounts/USTREAS/bulletins/42e501d",
+        "source": "U.S. Department of the Treasury (USTREAS official bulletin)",
+    }
+    assert semantic_policy_event_key(official_bulletin) == key
+    assert story_event_fingerprint(rule, [official_bulletin]) == story_event_fingerprint(rule, [first])
+    assert alert_confirmation_status(rule, [official_bulletin])[0] == "공식 확인"
+    assert alert_confirmation_status(rule, [{**official_bulletin, "official_direct_verified": False}])[0] == "공식 확인 전"
     assert alert_confirmation_status(rule, [replay])[0] == "공식 확인 전"
     spoofed = {**replay, "source": "U.S. Department of the Treasury"}
     assert alert_confirmation_status(rule, [spoofed])[0] == "공식 확인 전", "source labels alone are not official verification"
