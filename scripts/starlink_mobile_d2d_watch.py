@@ -99,6 +99,8 @@ TOPICS={
     '"SpaceX" ("DA-26-1078" OR "S00735" OR "25-340") when:14d',
     '"Starlink Mobile" ("15,000" OR D2D) (approval OR authorization) when:7d',
     'site:fcc.gov "SpaceX" "D2D" "25-340" when:14d',
+    '"SpaceX" "FCC" ("October 29" OR "Oct 29") ("D2D" OR spectrum) when:30d',
+    '"Starlink" "FCC" ("25 MHz" OR "482 MHz") ("vote" OR "rules") when:30d',
   ),
   "meaning":"허가된 위성 기수와 실제 운용 기수·단말 호환성은 다릅니다. 상용 가입자와 단말당 트래픽을 확인합니다.",
   "risk":"발사·주파수 간섭·위성 용량·단말 호환성과 통신품질 인증 지연",
@@ -141,6 +143,8 @@ LABELS={
  "close":"해당 800MHz 거래 종결 보도(공시·당사자 원문 직접 확인 전 미확정)",
  "deny":"해당 800MHz 승인 거부·지연 보도(결정문 직접 확인 전 미확정)",
  "permission":"별도의 위성망·2GHz FCC 승인·조정 보도(800MHz 매각 승인과 다름)",
+ "proposal":"FCC 규제·주파수 정책 제안 또는 심의 예정 보도(최종 승인 아님)",
+ "deny":"FCC 거부·지연·연기 보도(공식 원문 확인 전 잠정)",
  "new_service":"상용서비스·위성망 추가 구축 보도(실제 개통·고객 수 별도 확인)",
  "venture":"합작법인 확대·협력 발표(신규 매출과 다름)",
  "supply":"위성 공급·계약·발사 보도(검수 매출과 다름)",
@@ -256,10 +260,25 @@ def stage(topic:str,title:str)->str|None:
   return None
  if topic=="fcc":
   if not re.search(r"spacex|starlink",t):return None
-  if not re.search(r"fcc|regulator|license|approved|2 ?ghz|gen2",t):return None
-  if re.search(r"approve|approved|authorization|permit|fcc|application|modification",t):
+  if not re.search(r"fcc|regulator|license|authoriz|2[ -]?ghz|gen2|d2d|direct[- ]to[- ]device|spectrum",t):return None
+  # Never report a vote, petition or proposed application as granted.
+  if re.search(r"\b(to vote|votes? on|will vote|to consider|considering|"
+               r"propos(?:e|es|ed|al)|seeks?|appl(?:ies|ication)|"
+               r"file[ds]?|request[sd]?|pending|under review)\b",t) and not re.search(
+               r"\b(approv(?:e|ed|es)|authori[sz](?:e|ed|es)|grant(?:s|ed)?|"
+               r"clears?|cleared|green light)\b",t):
+   return "proposal"
+  if re.search(r"\b(reject(?:s|ed)?|den(?:ies|ied|y)|blocks?|"
+               r"delay(?:s|ed)?|defer(?:s|red)?)\b",t):
+   return "deny"
+  if re.search(r"\b(approv(?:e|ed|es)|authori[sz](?:e|ed|es)|"
+               r"grant(?:s|ed)?|clears?|cleared)\b",t):
+   # "FCC to approve" is not an actual approval.
+   if re.search(r"\b(to approve|will approve|plans? to approve|may approve)\b",t):
+    return "proposal"
    return "permission"
-  if re.search(r"launch|deploy|commercial|test",t):return "new_service"
+  if re.search(r"launch(?:ed|es)?|deploy(?:ed|s)?|commercial|test(?:ing)?",t):
+   return "new_service"
   return None
  if topic=="carriers":
   if not re.search(r"at&t|verizon|t-mobile",t):return None
@@ -425,6 +444,11 @@ def test()->int:
  assert stage("license","SpaceX completes Grain 800MHz spectrum deal")=="close"
  assert stage("license","SpaceX's Grain 800 MHz spectrum purchase is delayed")=="deny"
  assert stage("fcc","FCC approves SpaceX 15,000 Gen2 satellites in 2GHz")=="permission"
+ assert stage("fcc","FCC to vote on SpaceX Starlink D2D spectrum proposal October 29")=="proposal"
+ assert stage("fcc","SpaceX files FCC application for new 15,000 D2D satellites")=="proposal"
+ assert stage("fcc","FCC grants SpaceX approval to operate 15,000 D2D satellites")=="permission"
+ assert stage("fcc","SpaceX approval pending at FCC on 2 GHz D2D")=="proposal"
+ assert stage("fcc","FCC to approve SpaceX D2D launch request")=="proposal"
  assert event_id("fcc","permission","FCC approves SpaceX 15,000 D2D direct-to-device satellites (DA-26-1078)")=="fcc:DA-26-1078:D2D:permission"
  assert event_id("fcc","permission","FCC approves additional 7,500 Gen2 broadband satellites (DA-26-36)")=="fcc:DA-26-36:gen2:permission"
  assert event_id("fcc","permission","FCC approves SpaceX 15,000 D2D direct-to-device satellites")!=event_id("fcc","permission","FCC approves additional 7,500 Gen2 broadband satellites")
