@@ -497,13 +497,13 @@ def main() -> int:
         raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
 
     if inline_live:
-        text = (
-            "📡 Starlink Mobile 링크 표시 시험\\n"
-            "• 기존 버튼 없이 원문 링크 3개를 한 줄로 표시합니다.\\n"
-            "• 원문: https://docs.fcc.gov/public/attachments/DA-26-1078A1.pdf\\n"
-            "• 원문: https://docs.fcc.gov/public/attachments/DA-26-36A1.pdf\\n"
-            "• 원문: https://graingp.com/grain-management-announces-definitive-agreement-to-sell-nationwide-800-mhz-spectrum-portfolio-to-spacex/"
-        ).replace("\\\\n", "\\n")
+        text = "\n".join((
+            "📡 Starlink Mobile 원문 링크 표시 시험",
+            "• 버튼 없이 원문 3개를 본문 한 줄의 클릭 가능한 글자로 표시합니다.",
+            "• 원문: https://docs.fcc.gov/public/attachments/DA-26-1078A1.pdf",
+            "• 원문: https://docs.fcc.gov/public/attachments/DA-26-36A1.pdf",
+            "• 원문: https://graingp.com/grain-management-announces-definitive-agreement-to-sell-nationwide-800-mhz-spectrum-portfolio-to-spacex/",
+        ))
     else:
         path = pathlib.Path(sys.argv[2] if inline_mode else sys.argv[1])
         text = path.read_text(encoding="utf-8").strip()
