@@ -14,6 +14,8 @@ on:
       - "scripts/test_apple_kparts_margin_watch.py"
       - "scripts/apple_premium_demand_duo_forecast_watch.py"
       - "scripts/test_apple_premium_demand_duo_forecast_watch.py"
+      - "scripts/apple_iphone18_pro_orders_watch.py"
+      - "scripts/test_apple_iphone18_pro_orders_watch.py"
   schedule:
     - cron: "*/15 * * * *"
   workflow_dispatch:
@@ -29,7 +31,8 @@ permissions:
 
 concurrency:
   group: apple-duo-supply-watch-telegram
-  cancel-in-progress: true
+  # Do not terminate an in-flight Telegram send before state confirmation.
+  cancel-in-progress: false
 
 jobs:
   monitor:
@@ -63,6 +66,9 @@ jobs:
           python -m py_compile scripts/apple_premium_demand_duo_forecast_watch.py
           python -m py_compile scripts/test_apple_premium_demand_duo_forecast_watch.py
           python scripts/test_apple_premium_demand_duo_forecast_watch.py
+          python -m py_compile scripts/apple_iphone18_pro_orders_watch.py
+          python -m py_compile scripts/test_apple_iphone18_pro_orders_watch.py
+          python scripts/test_apple_iphone18_pro_orders_watch.py
 
       - name: Validate Telegram route without sending
         env:
@@ -119,6 +125,9 @@ jobs:
       - name: Scan Apple premium demand and Duo forecast
         run: python scripts/apple_premium_demand_duo_forecast_watch.py
 
+      - name: Scan iPhone 18 Pro component order revisions
+        run: python scripts/apple_iphone18_pro_orders_watch.py
+
       - name: Publish watcher summary
         if: always()
         run: |
@@ -142,6 +151,10 @@ jobs:
           if [ -f out/apple_premium_demand_duo_forecast_status.md ]; then
             printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
             cat out/apple_premium_demand_duo_forecast_status.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/apple_iphone18_pro_orders_status.md ]; then
+            printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/apple_iphone18_pro_orders_status.md >> "$GITHUB_STEP_SUMMARY"
           fi
           if [ -f out/apple_duo_supply_watch_telegram.txt ]; then
             printf '\n---\n\nTelegram 알림 미리보기:\n\n' >> "$GITHUB_STEP_SUMMARY"
@@ -247,6 +260,10 @@ jobs:
         if: success() && hashFiles('out/apple_duo_supply_watch_telegram.txt') == '' && hashFiles('out/apple_premium_demand_duo_forecast_pending_state.json') != ''
         run: cp out/apple_premium_demand_duo_forecast_pending_state.json data/apple_premium_demand_duo_forecast_state.json
 
+      - name: Persist no-alert Pro component order state
+        if: success() && hashFiles('out/apple_duo_supply_watch_telegram.txt') == '' && hashFiles('out/apple_iphone18_pro_orders_pending_state.json') != ''
+        run: cp out/apple_iphone18_pro_orders_pending_state.json data/apple_iphone18_pro_orders_state.json
+
       - name: Persist state only after confirmed Telegram delivery
         if: success() && hashFiles('out/apple_duo_supply_watch_telegram.txt') != '' && hashFiles('out/apple_duo_supply_watch_telegram_confirmed.json') != '' && hashFiles('out/apple_duo_supply_watch_pending_state.json') != ''
         run: cp out/apple_duo_supply_watch_pending_state.json data/apple_duo_supply_watch_state.json
@@ -267,12 +284,16 @@ jobs:
         if: success() && hashFiles('out/apple_duo_supply_watch_telegram.txt') != '' && hashFiles('out/apple_duo_supply_watch_telegram_confirmed.json') != '' && hashFiles('out/apple_premium_demand_duo_forecast_pending_state.json') != ''
         run: cp out/apple_premium_demand_duo_forecast_pending_state.json data/apple_premium_demand_duo_forecast_state.json
 
+      - name: Persist Pro order state after confirmed Telegram delivery
+        if: success() && hashFiles('out/apple_duo_supply_watch_telegram.txt') != '' && hashFiles('out/apple_duo_supply_watch_telegram_confirmed.json') != '' && hashFiles('out/apple_iphone18_pro_orders_pending_state.json') != ''
+        run: cp out/apple_iphone18_pro_orders_pending_state.json data/apple_iphone18_pro_orders_state.json
+
       - name: Commit watcher state
         if: success()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/apple_duo_supply_watch_state.json data/apple_duo_panel_leading_state.json data/apple_duo_demand_competition_state.json data/apple_kparts_margin_watch_state.json data/apple_premium_demand_duo_forecast_state.json
+          git add data/apple_duo_supply_watch_state.json data/apple_duo_panel_leading_state.json data/apple_duo_demand_competition_state.json data/apple_kparts_margin_watch_state.json data/apple_premium_demand_duo_forecast_state.json data/apple_iphone18_pro_orders_state.json
           if git diff --cached --quiet; then
             echo "Apple Duo watch state unchanged"
           else
@@ -303,6 +324,9 @@ jobs:
             out/apple_premium_demand_duo_forecast_status.md
             out/apple_premium_demand_duo_forecast_alert.html
             out/apple_premium_demand_duo_forecast_pending_state.json
+            out/apple_iphone18_pro_orders_status.md
+            out/apple_iphone18_pro_orders_alert.html
+            out/apple_iphone18_pro_orders_pending_state.json
             out/apple_duo_supply_watch_telegram.txt
             out/apple_duo_supply_watch_pending_state.json
             out/apple_duo_panel_leading_pending_state.json
