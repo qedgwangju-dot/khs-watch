@@ -189,7 +189,7 @@ def _china_fuel_stage(row):
     if not (china and products and exports):
         return None
     # 취소·중단·지연은 'brief halt 뒤 재개'와 구분한다.
-    if re.search(r"(?:suspends|halts|bans|stops)\\s+(?:(?:\\w+|\\d+)\\s+){0,4}(?:refined fuel|fuel|diesel|gasoline)\\s+exports", title):
+    if any(v in title for v in ("suspends october", "suspends refined fuel", "halts october", "halts refined fuel", "bans refined fuel", "stops refined fuel")):
         return "restriction"
     if any(x in title for x in (
         "to halt", "halts exports", "suspends export", "suspended exports",
