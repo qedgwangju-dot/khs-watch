@@ -41,7 +41,7 @@ def test_buyback_initial_reaction_is_not_presented_as_persistent_effect():
 
 def test_bessent_oil_scenario_is_conditional_and_causal_verdict_uses_multi_day_window():
     text = read("scripts/treasury_alert_korean_guard.py")
-    assert "UPGRADE_REVISION = 11" in text
+    assert "UPGRADE_REVISION = 12" in text
     assert "def oil_scenario_block" in text
     assert "def oil_scenario_key" in text
     assert "def _url_bytes" in text
@@ -67,7 +67,7 @@ def test_buyback_chain_uses_same_multi_day_horizon_as_causal_verdict():
     text = read("scripts/treasury_buyback_chain_enrich.py")
     assert 'changes = snapshot.get("changes_5d") or snapshot.get("common_changes") or {}' in text
     assert '"basis": basis' in text
-    assert "금리 반응({causal.get('basis','기준 확인 불가')})" in text
+    assert "금리 반응({causal.get('basis','기준 확인 불가')} {window})" in text
     assert "nom_bp >= 2.0" in text
     assert "nom_bp >= 2.0 and real_bp >= 2.0" in text
     assert "nom_bp > 0" not in text
@@ -86,3 +86,32 @@ def test_yen_verbal_intervention_is_checked_for_persistence_not_hard_peg():
     assert "특정 USD/JPY 숫자를 공식 방어선으로 선언한 것으로 보지 않습니다" in text
     assert "5영업일·20영업일 지속효과" in text
     assert "발언 이전 약세권으로 복귀하면 구두개입 효과 약화" in text
+
+
+def test_treasury_compact_alert_uses_data_dates_not_false_latest_causality():
+    import sys
+    import json
+    import importlib
+    sys.path.insert(0, str(ROOT / "scripts"))
+    guard = importlib.import_module("treasury_alert_korean_guard")
+    s = json.loads(read("data/treasury_buyback_policy_state.json"))
+    snapshot = dict(s["bessent_causal_snapshot"])
+    snapshot["is_lagged"] = True
+    snapshot["lag_market_sessions"] = 3
+    snapshot["latest_bond_common_date"] = "2026-10-09"
+    message = guard.one_time_alert(1341.49, "2026-10-09 ECB 기준", snapshot)
+    assert "공통 2026-09-29→2026-10-06" in message
+    assert "Brent(EIA) 2026-10-06 vs 국채 2026-10-09" in message
+    assert "최신 인과판정 보류" in message
+    assert "이란 분쟁 종료 + 공급과잉" in message
+    assert "모형 추정치" in message
+    assert "새로운 정책 발표가 아닙니다" in message
+    assert len(message) < 3300, len(message)
+
+
+def test_treasury_causal_term_premium_not_mixed_off_date():
+    text = read("scripts/treasury_alert_korean_guard.py")
+    assert 'term_start in term_map and cur_date in term_map' in text
+    assert 'term_d = direction(term_aligned["change_bp"], 2.0)' in text
+    assert "lag_market_sessions >= 2" in text
+    assert 'verdict_key = "mixed"' in text
