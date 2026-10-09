@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-08-24T21:32:19+09:00",
-  "last_checked_kst": "2026-10-09T11:32:42+09:00",
+  "last_checked_kst": "2026-10-09T17:51:50+09:00",
   "seen": {
     "74fd33cf93fb250c6b18ecd7": {
       "title": "리벨리온, 공공 CCTV 관제에 서버형 NPU 대규모 인프라 공급… 국산 AI 인프라 상용화로 기술 자립 가속",
@@ -3017,6 +3017,135 @@
       "material_stage": 0,
       "first_seen_kst": "2026-10-09T11:32:42+09:00",
       "suppressed_duplicate": "same_event:cck|general|general"
+    },
+    "b65ff271e7fac699e66fdb74": {
+      "title": "CCK솔루션, 리벨리온 투자 유치…'국산 AI 풀스택'으로 금융·공공 공략 - 뉴스핌",
+      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE83WktiMFRuT1oyVDVUWkRhbmc4SHVMSkwwMGlNU29zUXd4R1hkblJFNWpUbzAtczBrOFMyWHRFdXZINFp1WUFEeGdzV003Ylh0TUVYdFNyMG9Mcmpo?oc=5",
+      "summary": "CCK솔루션, 리벨리온 투자 유치…'국산 AI 풀스택'으로 금융·공공 공략 뉴스핌",
+      "event_signature": "cck|capital|equity",
+      "material_stage": 5,
+      "first_seen_kst": "2026-10-09T17:51:50+09:00",
+      "suppressed_duplicate": "same_event:cck|capital|equity"
+    },
+    "a3dbce59d7b7e8e826595842": {
+      "title": "비투엔, 리벨리온에 투자 넘어 AI 사업 시너지 본격화 - 머니투데이 - 머니투데이",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFB1akN4VlVudUZRWVdKNlc1WW8wZEk2c1ViMjZkUUJnTWRRMm5KeEQ0NHlXai1ETnlsOTljUUVnbkpyWFBIaGN5dUh2SF9VQjl0Q05INWxWT21NOW9PdGhraUF4ajY5cUFv0gFuQVVfeXFMUHVUVXlpeG1SN1czV0VCeFc0bm5pLVpxVWs4SWJXS0o2YjJUNjA4LXlJdFFsdy0xRWNQZHBUT3dDaktlaWhfcHk4ZUZEcGtmeU1XQnVuSjFaV0pXMWxBa19wRENwOFlha2wzSnRpMVE?oc=5",
+      "first_seen_kst": "2026-10-09T17:51:50+09:00",
+      "suppressed_stale": true
+    },
+    "920226496e4ddbe1f7dfe64e": {
+      "title": "[안희철의 M&A 나침반] 리벨리온의 스퀴즈비츠 인수와 포괄적 주식교환 - 블로터",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9oeV9rR2pUc2c4VmxBRzZsakpHZ1hZTkNBeFN6QU5tZzJ2YzJsVnhVTDZUdmV2VGtCYV9EYzBsd3NzZ09ZTXljUGRmUWMxbU9LU1VJXy1ocWFZVXZpY2l2UkRyc05FTW5Y0gFsQVVfeXFMTnhRQVpCak03NXg0Y283enNNaDVJeFlNVUF3S21sYzQzSjNNZkpadkF5YmxCdERWQ2tab0hWdm5tZndxT3BVTmk3d3hUOUZxNVFVb25zN0pSa1l6LUdHNUpqeDY3Q215NjFoeTBB?oc=5",
+      "first_seen_kst": "2026-10-09T17:51:50+09:00",
+      "suppressed_stale": true
+    },
+    "f0238f4e7694a25bf0042a1e": {
+      "title": "리벨리온, 스퀴즈비츠 인수…\"AI 최적화 기능 내재화\" - 머니투데이 - 머니투데이",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE45eTdkT2NCRGM4LVlteGFmWTRtdW5MMWdOYUlteGNZalllejhEcEdFemZMNnNIbnY3MHE2Y212UjBGbkY0U3gtTHRxOUkya0ZzSkF0eUs5dkYzZDZJREFwMzdsNkE0SExxZHfSAW9BVV95cUxPcEs3cmx2M0JmMlBHeU9Fdl9ETXY2ZFdlc1QtSnpsZ29TeUFvM2NzV0Jjc2dNZWxBRHRxUGJXZ2NWRkQ3T3NaNFhNQU1seWUxOGRJTVV6NGtaY3dwbnFPV2JsejVWa2tMUmZkTVE5OG8?oc=5",
+      "first_seen_kst": "2026-10-09T17:51:50+09:00",
+      "suppressed_stale": true
+    },
+    "bd84a6b91b888ec0492675ba": {
+      "title": "리벨리온, AI 추론 최적화 기업 스퀴즈비츠 인수 - 전자신문",
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBPV2twTHczV1VaVUM1WTMyU1A4LXR3anhmVUVJZWdhUktMUzNNVTNHaE5uU1JmNE4zWGk4cnJkdVVvaEZKNTFiak53RVZuZw?oc=5",
+      "first_seen_kst": "2026-10-09T17:51:50+09:00",
+      "suppressed_stale": true
+    },
+    "9cb0c62283f1b0afbe8c2f68": {
+      "title": "AI 투자로 끌어올린 SKT 기업가치, 엔트로픽에 리벨리온 가세 - 지디넷코리아",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5ZTURMR3VnZU1Fd1hxZjlSN1lGY3pZckkxTENLUzJWcUt5XzdxVS1ZYWxkREF3bzlXOE5nSmJacm5hWVpTaTlWS1RDZ1NOV0djYy1FbUtB?oc=5",
+      "summary": "AI 투자로 끌어올린 SKT 기업가치, 엔트로픽에 리벨리온 가세 지디넷코리아",
+      "event_signature": "skt|general|general",
+      "material_stage": 0,
+      "first_seen_kst": "2026-10-09T17:51:50+09:00",
+      "suppressed_duplicate": "same_url"
+    },
+    "39de57e24d5701e614183203": {
+      "title": "CCK솔루션, 리벨리온 투자 유치…국산 NPU에 회계·문서 AI 결합해 공공·금융 공략 - 벤처스퀘어",
+      "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1NZk1pTnlSOHdwN1VFUjc1ekRjd2d3RjhNS2dwb01lMmxTWExlemE1RHhjRTR1cEhKMk1WcVlCWHo4bEJLbi1ZbXdEMDZ5R0E?oc=5",
+      "summary": "CCK솔루션, 리벨리온 투자 유치…국산 NPU에 회계·문서 AI 결합해 공공·금융 공략 벤처스퀘어",
+      "event_signature": "cck|capital|equity",
+      "material_stage": 5,
+      "first_seen_kst": "2026-10-09T17:51:50+09:00",
+      "suppressed_duplicate": "same_event:cck|capital|equity"
+    },
+    "a2087321181a4c8e611f6224": {
+      "title": "CCK솔루션, 리벨리온서 투자 유치…국산 AI 풀스택 고도화 - 매일일보",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5NSmExd0tuNG1vU0FPcThxNDFfQTJRNUxBREJ0QVlqYVZFdlNVdzBCV3FZQmUxUzFEWWNyanhwR2xiYkF6cURJcEo4Znk2ay1BOGdxTUMtbUtpS204eEV6Nmp3ZjE?oc=5",
+      "summary": "CCK솔루션, 리벨리온서 투자 유치…국산 AI 풀스택 고도화 매일일보",
+      "event_signature": "cck|capital|equity",
+      "material_stage": 5,
+      "first_seen_kst": "2026-10-09T17:51:50+09:00",
+      "suppressed_duplicate": "same_event:cck|capital|equity"
+    },
+    "bf64e8e5490b5ae6f93719bb": {
+      "title": "[AI서머리] CCK솔루션, 리벨리온 투자 유치‧웨이비나, 서울대기술지주 2억원 투자 유치 - 스타트업레시피",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1Gd0dSLXlrVFZQYy1RWFhBZGk0Wmd4WVQ4MWtzUU1WXzZyUENLVXpXdkdLaGVIa1dSWTJRNGF4by1XVGhsd3hsdWFEeE5OdWtOc3ZQMGZaZw?oc=5",
+      "summary": "[AI서머리] CCK솔루션, 리벨리온 투자 유치‧웨이비나, 서울대기술지주 2억원 투자 유치 스타트업레시피",
+      "event_signature": "cck|capital|equity",
+      "material_stage": 5,
+      "first_seen_kst": "2026-10-09T17:51:50+09:00",
+      "suppressed_duplicate": "same_event:cck|capital|equity"
+    },
+    "2c890c42fd5f30b4ac6e33c3": {
+      "title": "CCK솔루션, 리벨리온으로부터 투자 유치…국산 AI 풀스택 고도화 - 와우테일",
+      "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBtZ0FjcjVGOFV4YlFqWko1VjBQb01rQVR2Q3NIemlmaHI0WkpvNzhoWTdoVkFXR1lOY2RuNzNGWDI3OXFyN2QzVHM2UllGaEU?oc=5",
+      "summary": "CCK솔루션, 리벨리온으로부터 투자 유치…국산 AI 풀스택 고도화 와우테일",
+      "event_signature": "cck|capital|equity",
+      "material_stage": 5,
+      "first_seen_kst": "2026-10-09T17:51:50+09:00",
+      "suppressed_duplicate": "same_event:cck|capital|equity"
+    },
+    "a3b45745cac5f2528363e201": {
+      "title": "비투엔 “리벨리온 투자 넘어 AI 사업 시너지 본격화” - 하이테크정보",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5fcUJ3SFlrdWdSVGZZZkZLdmgxM2dDRWNWUzVkamJhOFp3MVYzOTNDc2tOODMtb1ZSbHNkUzFJb3YwOEdiOFRld0NFZG1HeklYZnN6NXI3VTNKSnZoMFFpa2diMkFlTnRv0gFsQVVfeXFMTk95QWwzaGFsNDdMYkh6TlY3OTZmNnN6a1V5RDVkN1JaYnlCME1QUzYtVkNNeDhTbS1KTThWcTBnVGNCdGxwVHFSMEdkaS01cXNRZGxNY0lsdlJ1b3RHVzJ5VWs1MnJqY0VPNzdo?oc=5",
+      "first_seen_kst": "2026-10-09T17:51:50+09:00",
+      "suppressed_stale": true
+    },
+    "cd93817c1120b56f5ed8d9a2": {
+      "title": "리벨리온, 'AI 최적화' 스퀴즈비츠 인수...\"풀스택 AI 인프라 완성\" - AI타임스",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5LeDRZTVBlOUN6UklOeEVaU25SQXZKMjFSVGRuMnJTeUcxX1pHekNiRGRWWG9mS1Q2NF85WXpBNktnMExPVnFIMHQyU3huenpJTTQ2QXFBWEdfaU8xbExFazZkZVpWYmZGeWc?oc=5",
+      "first_seen_kst": "2026-10-09T17:51:50+09:00",
+      "suppressed_stale": true
+    },
+    "e45a0ec216452597b331bcf5": {
+      "title": "리벨리온, AI 최적화 기업 스퀴즈비츠 인수… “추론 서빙까지 아우른다” - 테크월드",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9CLVFTS2FfWVl0Tkp4Q0UtQThYMU1odDZQZ1VJXzhRbk9QMHF4LW5PV2tJWUNGNGdnNHhNOHpzXzQyMzBlR0RxWndqVFg0Q3Y2QTUwaXVES1Q0LTMwUS0yeWxBQjBDRjdN?oc=5",
+      "first_seen_kst": "2026-10-09T17:51:50+09:00",
+      "suppressed_stale": true
+    },
+    "51fd6bcfe948f0f26c30ff6f": {
+      "title": "리벨리온, AI 양자화 기업 ‘스퀴즈비츠’ 인수··· 전폭적인 AI 생태계 지원 기대 - 동아일보",
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9xRzk1ZGE1VUVSUnhFZDBNS2tjT3lGa0NRMjFFVWs4LWdJR01OTGdFMXBGOTVuOHpRNmRsajBvMm9Dc2w1ZzNyQjlyNUtTaFlnamNNRlFFdnpzQURHWXNpSDU4dVNXLW01OGFsUW1Bd9IBZkFVX3lxTE94a2x1TWlpRmpCRkMwZ2NiYXAyalBPd285VTVmY09ERHJYMkdhbFR2aTZYVnBZMjdVMXpwQTQxN2xScllPZlN6V0pHaVpGZllSOE1zSmNldWdPZ1BjRVVHaTJiTHpkdw?oc=5",
+      "first_seen_kst": "2026-10-09T17:51:50+09:00",
+      "suppressed_stale": true
+    },
+    "95758d1d47e1db20862aad13": {
+      "title": "스퀴즈비츠 인수한 리벨리온, 추론 최적화 품고 ‘풀스택 AI’로 승부 - 더에이아이",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE90SnN1WHNSNERkZ1Z1ZzV1RmdwaTNKa0lNSWdYMGQ5Q0VXcldET3k1U0h1VnlSbzlKU0ZEcnhGTjZ5WnQ4V0V1V3hWdGNWTVJtRFI2c1BGeVdRQ2M2TUtqbmk2MTZCclF3dVE?oc=5",
+      "summary": "스퀴즈비츠 인수한 리벨리온, 추론 최적화 품고 ‘풀스택 AI’로 승부 더에이아이",
+      "event_signature": "squeezebits|general|general",
+      "material_stage": 0,
+      "first_seen_kst": "2026-10-09T17:51:50+09:00",
+      "suppressed_duplicate": "same_url"
+    },
+    "72b326ff803e275991ac05db": {
+      "title": "SKT, 해킹 악재 털고 ‘10만 텔레콤’ 등극…“앤트로픽·리벨리온, ‘AI 투자’ 통했다” - CEO스코어데일리",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE4tbHUtS2ZfNlZQekt6S0VRU1JuMXM5WXlFTVlHT0ZMQUhRa0NGOTBtN0VzeUtsakFGX3RuVERsZUNhTlNfbXlxUlhZZHNNVEFjLTNOT0pNbDJMcV95Wk5aQmJkSjluMEZo?oc=5",
+      "first_seen_kst": "2026-10-09T17:51:50+09:00",
+      "suppressed_stale": true
+    },
+    "0a609c035e61830bd2c07c98": {
+      "title": "국내 ‘AI칩 유니콘’ 리벨리온, 6400억 투자유치 - 동아일보",
+      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBBaTRzWWg0MlFGb1IwTVFYenJ2YXRod1Rzbk85eXNRNm51ZkFxSThHQXAzSE11WU02SnRjQW5LcHRZX3YtVzlSeHZVbHRWNFdSUExtT1RTNno3eWFRRzNnVHVCQXRyTUJNdjV2TXBZcFktZFJ5N0HSAWZBVV95cUxQNHQzZWVoOWlIeGV3NEZ6MnJKa1dpTG1JTDlHLVNuRjVyXzFHWjBwSG9FdzkzYWVSWEx2RjFhZDhDenZsWmNxYWZ6b1JpN3ZDSlpCSFZaWGY1MnlSeUdwZnFvUjRVZ1E?oc=5",
+      "first_seen_kst": "2026-10-09T17:51:50+09:00",
+      "suppressed_stale": true
+    },
+    "19f1fbfa43903deb331845b9": {
+      "title": "'K-AI 반도체의 질주' 리벨리온, 6000억 규모 투자 유치..IPO 속도 - 파이낸스스코프",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1KUVlISmhPcmJ1LTRrdVdEU05UQkdrb2R4LUNOVzdwalFUSTBFcElnOXhjdUxWR1ZaSHhiU1BnNjN5aWFzbmN5ZFJGZUdyeGhQaFVQY2FRVUJ6ZGw2cDVjaFlzRjVHS3hUNnc?oc=5",
+      "first_seen_kst": "2026-10-09T17:51:50+09:00",
+      "suppressed_stale": true
     }
   }
 }
