@@ -1097,7 +1097,7 @@ check("china-fuel-korean-report", mod._china_fuel_stage(china_oct_kr) == "report
 check("china-fuel-repost-same-event-id", mod.item_id(china_oct_reuters) == mod.item_id(china_oct_kr))
 check("china-fuel-period-2026-10", mod._china_fuel_period(china_oct_reuters) == "2026-10")
 score, china_tags = mod.score_item(china_oct_reuters, china_now)
-check("china-fuel-high-score", score >= 98 and "수출승인업계보도" in mod.marks(china_oct_reuters))
+check("china-fuel-high-score", score >= 98 and "중국정제연료수출재개업계보도" in mod.marks(china_oct_reuters))
 check("china-fuel-not-war-or-ceasefire", "확전" not in china_tags and "종전·협상" not in china_tags and "재건" not in china_tags)
 check("china-fuel-yellow-until-customs", mod.final_color(china_oct_reuters) == "yellow")
 check("china-fuel-topic", mod.topic_label(china_oct_reuters) == "중국 · 정제연료 수출·공급변화")
