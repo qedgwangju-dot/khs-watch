@@ -52,9 +52,65 @@ def test_nominal_auction_average():
     assert result["sample_n"] == 6
     assert abs(result["avg_btc_6"] - 2.41) < 0.000001
 
+def test_oct9_small_rebound_not_red():
+    op = {"2y": 5.0, "10y": 2.0, "20y": 1.0, "30y": 0.0}
+    pre = {"2y": 3.0, "10y": -4.0, "20y": -6.0, "30y": -7.0}
+    verdict = t.classify_yield_persistence(op, pre)
+    assert verdict.startswith("⚪"), verdict
+    assert "바이백 전 대비 장기금리 하락 유지" in verdict
+    reaction = {
+        "target":{"2y":4.80,"10y":5.24,"20y":5.65,"30y":5.60},
+        "target_date":"2026-10-09",
+        "since_operation_bp":op,
+        "since_pre_operation_bp":pre,
+    }
+    _, body, _ = t.build_persistence_followup("2026-10-08", 1, reaction)
+    assert "⚪" in body
+    assert "2년-10년 금리차 변화 -3.0bp" in body
+    assert "2년-30년 금리차 변화 -5.0bp" in body
+
+
+def test_material_yield_moves():
+    below={"10y":-8.0,"20y":-6.0,"30y":-7.0}
+    neutral={"10y":0.0,"20y":0.0,"30y":0.0}
+    cases=[
+        ({"10y":2.0,"20y":1.0,"30y":0.0}, below, "⚪"),
+        ({"10y":3.0,"20y":3.0,"30y":0.0}, below, "🟡"),
+        ({"10y":3.0,"20y":3.0,"30y":0.0}, neutral, "🔴"),
+        ({"10y":-3.0,"20y":-4.0,"30y":0.0}, neutral, "🟢"),
+        ({"10y":4.0,"20y":-4.0,"30y":0.0}, neutral, "🟡"),
+        ({"10y":0.0,"20y":0.0,"30y":0.0}, below, "⚪"),
+    ]
+    for today, before, expected in cases:
+        actual=t.classify_yield_persistence(today,before)
+        assert actual.startswith(expected), (today,before,actual,expected)
+
+
+def test_official_yield_observation_and_trading_day_index():
+    from unittest.mock import patch
+    days=[
+        {"date":"2026-10-07","2y":4.77,"10y":5.28,"20y":5.71,"30y":5.67},
+        {"date":"2026-10-08","2y":4.75,"10y":5.22,"20y":5.64,"30y":5.60},
+        {"date":"2026-10-09","2y":4.80,"10y":5.24,"20y":5.65,"30y":5.60},
+        {"date":"2026-10-13","2y":4.82,"10y":5.24,"20y":5.68,"30y":5.61},
+    ]
+    with patch.object(t, "official_curve_rows", return_value=days):
+        one=t.official_yield_persistence("2026-10-08",1)
+        two=t.official_yield_persistence("2026-10-08",2)
+    assert one["target_date"]=="2026-10-09"
+    assert two["target_date"]=="2026-10-13"
+    for tenor,expected in [("2y",5),("10y",2),("20y",1),("30y",0)]:
+        assert abs(one["since_operation_bp"][tenor]-expected)<0.000001
+    for tenor,expected in [("2y",3),("10y",-4),("20y",-6),("30y",-7)]:
+        assert abs(one["since_pre_operation_bp"][tenor]-expected)<0.000001
+
+
 if __name__ == '__main__':
     test_nominal_filter()
     test_flat_is_not_mixed()
     test_state_race_merge()
     test_nominal_auction_average()
-    print('Treasury buyback regression: 4 checks passed')
+    test_oct9_small_rebound_not_red()
+    test_material_yield_moves()
+    test_official_yield_observation_and_trading_day_index()
+    print('Treasury buyback regression: 7 checks passed')
