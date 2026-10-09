@@ -12,6 +12,7 @@ import warsh_policy_source_guard as guard
 import warsh_sep_path_watch_v2 as sep
 import warsh_post_fomc_ib_reaction_watch as post_ib
 import warsh_energy_shock_watch as energy
+import warsh_ai_taskforce_watch_v2 as gartner
 
 
 class WarshSafetyTests(unittest.TestCase):
@@ -331,6 +332,21 @@ class WarshSafetyTests(unittest.TestCase):
             path_v3.main()
         self.assertEqual(send.call_count, 1)
 
+
+
+    def test_gartner_rss_503_keeps_previous_good_headline(self):
+        from urllib.error import HTTPError
+        item = {
+            "title": "Gartner Finds AI Workforces Changing - Gartner",
+            "published": "2026-10-07T10:20:03+00:00",
+            "url": "https://www.gartner.com/en/newsroom/",
+        }
+        state = {"gartner_latest": item}
+        with patch.object(gartner.base, "fetch", side_effect=HTTPError(
+            "https://news.google.com/rss",503,"temporary",{},None
+        )), patch.object(gartner.base, "load_state", return_value=state):
+            result = gartner.structural_gartner_items()
+        self.assertEqual(result, [item])
 
 
 if __name__ == "__main__":
