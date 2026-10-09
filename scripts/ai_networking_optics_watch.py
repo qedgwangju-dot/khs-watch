@@ -58,6 +58,16 @@ COMPANIES = {
         "aliases": ["Lumentum"],
         "query": 'Lumentum (AI datacenter OR data center OR optical OR laser OR CPO OR 800G OR 1.6T OR 3.2T OR transceiver OR ELS OR ELSFP OR "external laser source" OR "external light source" OR "CW laser" OR UHP OR 350mW OR 400mW)',
     },
+    "Lumentum Supply & Capacity": {
+        "ticker": "LITE",
+        "aliases": ["Lumentum", "Michael Hurlston", "ルメンタム"],
+        "queries": [
+            '"Lumentum" ("sold out" OR "sold-out" OR "fully booked" OR "capacity sold" OR "fully allocated") (2029 OR 2028 OR AI)',
+            '("Lumentum" OR "Michael Hurlston") ("70%" OR "30%" OR "unmet demand" OR "demand shortfall" OR "supply shortage") (laser OR photonic OR optics OR AI)',
+            '"Lumentum" (Japan OR Tokyo OR Sagamihara OR Takao) ("12-fold" OR "12 times" OR "$350 million" OR "350 million" OR "factory" OR capacity expansion)',
+            '"Lumentum" (hyperscaler OR customers) ("share capex" OR "share capital expenditures" OR "fund capacity" OR "co-invest" OR "prepayment" OR "long-term agreement")',
+        ],
+    },
     "Coherent": {
         "ticker": "COHR",
         "aliases": ["Coherent"],
@@ -292,6 +302,7 @@ DISPLAY_NAMES_KO = {
     "Arista Networks": "아리스타 네트웍스",
     "Marvell": "마벨",
     "Lumentum": "루멘텀",
+    "Lumentum Supply & Capacity": "루멘텀 AI 광부품 공급·증설",
     "Coherent": "코히런트",
     "US Optical Policy": "미국 광트랜시버 정책",
     "AXT": "AXT",
@@ -340,6 +351,7 @@ TRUSTED_SOURCES = {
     "HUBER+SUHNER", "POLATIS", "Huawei", "华为", "Huawei Cloud", "华为云",
     "Open AI Infra", "Open AI Infra Community",
     "Leadray Energy", "賀喜能源", "Bloom Energy", "TechNews", "科技新報",
+    "The Japan Times", "財聯社", "财联社", "格隆汇",
     "時報資訊", "時報", "工商時報", "Reccessary", "富聯網",
 }
 
@@ -469,6 +481,7 @@ SOURCE_PRIORITY = {
     "Leadray Energy": 100, "賀喜能源": 100, "TechNews": 82,
     "科技新報": 82, "時報資訊": 80, "時報": 80,
     "工商時報": 80, "富聯網": 78, "Reccessary": 74,
+    "The Japan Times": 84, "財聯社": 82, "财联社": 82, "格隆汇": 76,
     "Chieftek Precision": 100, "Economic Daily News": 82, "UDN": 82,
     "經濟日報": 82, "MoneyDJ": 78,
     "HPCwire": 70, "Compound Semiconductor": 70, "Investing.com": 65,
@@ -960,6 +973,181 @@ def source_priority(source: str) -> int:
         return 5
     return 50
 
+
+
+
+LITE_CAPACITY_COMPANY = "Lumentum Supply & Capacity"
+LITE_SUPPLY_VERSION = 1
+# Context, not new triggers: NVIDIA's March-2026 investment and April
+# Bloomberg horizon (on track to sell out 2028 capacity) are historical.
+LITE_PRIOR_KEYS = {
+    "lumentum|booking-horizon|2028",
+    "lumentum|nvidia|equity-2b-march-2026",
+}
+LITE_VERIFIED_ORIGIN_DOMAINS = {
+    "bloomberg.com", "bloomberglaw.com", "lumentum.com",
+    "sec.gov", "reuters.com", "japantimes.co.jp",
+}
+LITE_REPRINT_ORIGINS = {"japantimes.co.jp", "finance.yahoo.com"}
+
+
+def is_lumentum_subject(title: str) -> bool:
+    text = html.unescape(title or "")
+    # Lumen Technologies/LUMN is NOT Lumentum Holdings/LITE.
+    return bool(re.search(
+        r"\blumentum\b|\bHurlston\b|ルメンタム|鲁门特姆|卢门特姆|"
+        r"光迅科技.{0,20}LITE", text, re.I
+    ))
+
+
+def lite_supply_event(title: str) -> tuple[str, str, str] | None:
+    text = html.unescape(title or "")
+    low = text.lower()
+    if not is_lumentum_subject(text):
+        return None
+    if is_noise(text):
+        return None
+    optical = bool(re.search(
+        r"optics?|optoelectronics?|photonics?|laser|ai server|"
+        r"datacenter|data center|indium phosphide|InP|"
+        r"光器件|光电|光通信|光學|光学|光部品|"
+        r"\bCPO\b|\bEML\b|Hurlston", text, re.I
+    ))
+    if not optical:
+        return None
+
+    # Booking horizon is a capacity / demand statement; it is not recognized
+    # product sales or guaranteed contracted revenue.
+    horizon = re.search(r"(?<!\d)(202[8-9]|203\d)(?!\d)", text)
+    booked = bool(re.search(
+        r"sold[- ]?out|fully (?:sold|booked|allocated)|capacity (?:sold|booked)|"
+        r"orders? (?:booked|through)|booked (?:until|through|into)|"
+        r"售罄|全部卖光|售完|ほぼ完売|完売|完판|완판", text, re.I
+    ))
+    commentary_only = bool(re.search(
+        r"on track|may |might |could |expects? to|plans? to|"
+        r"project(?:s|ed)?|will be|forecast|预计|予想|예상|전망", text, re.I
+    ))
+    if booked and horizon:
+        year = horizon.group(1)
+        if year == "2028" and commentary_only:
+            return ("루멘텀 과거 2028년 예약 전망", "기존 2028년 전망·미확정", "lumentum|booking-horizon|2028")
+        return (
+            "루멘텀 AI 광부품 생산능력 예약",
+            "CEO 인터뷰·생산능력 판매예약 주장(매출 인식 전)",
+            f"lumentum|booking-horizon|{year}",
+        )
+
+    unmet = bool(re.search(
+        r"cannot meet|unable to meet|can't meet|won't (?:be able|meet)|"
+        r"demand (?:gap|shortfall|unmet)|unmet demand|supply shortfall|"
+        r"无法满足|不能满足|未能满足|수요 미충족|공급 부족", text, re.I
+    ))
+    pct = re.search(r"(?<!\d)(\d{1,3})(?:\.\d+)?\s*(?:%|percent|％)(?!\d)", text, re.I)
+    if unmet and pct:
+        yr = horizon.group(1) if horizon else "year-not-specified"
+        # Percentages apply to distinct products, never company-wide output.
+        return (
+            "루멘텀 제품별 수요 미충족률",
+            f"일부 제품군 수요 부족 {pct.group(1)}% · 기준 {yr} · 회사 전체 비율 아님",
+            f"lumentum|demand-gap|{yr}|{pct.group(1)}",
+        )
+
+    japan = bool(re.search(
+        r"Japan|Tokyo|Sagamihara|Takao|日本|東京|相模原|高尾|일본|도쿄", text, re.I
+    ))
+    expansion = bool(re.search(
+        r"expan|capacity|factory|fab|plant|manufactur|invest|capex|"
+        r"생산능력|설비투자|공장|増産|工場|扩产|擴產", text, re.I
+    ))
+    if japan and expansion:
+        size = re.search(r"\b(?:12[- ]fold|12\s*times|twelvefold|12倍|12배)\b", text, re.I)
+        amount = re.search(
+            r"(?:US\$|\$|USD\s*)\s*350\s*(?:million|mn|m)\b|"
+            r"\b350\s*million\b|3\.5\s*億ドル|3억\s*5[,\s]*000만\s*달러",
+            text, re.I
+        )
+        paid = bool(re.search(
+            r"spent|completed investment|capital expenditures (?:made|paid)|"
+            r"already invested|投資完了|집행 완료", text, re.I
+        ))
+        if amount:
+            return (
+                "루멘텀 일본 증설 투자 규모",
+                "집행 완료" if paid else "일본 증설투자 계획·금액 보도(집행 미확인)",
+                "lumentum|japan-capex|350m|" + ("spent" if paid else "planned"),
+            )
+        if size:
+            return (
+                "루멘텀 일본 공장 생산능력",
+                "공장 생산능력 12배 관련 발언·설비별 확인 필요",
+                "lumentum|japan-fab-capacity|12x",
+            )
+        if re.search(r"commissioned|opened|ramped|production began|output starts|正式投產|正式量產",text,re.I):
+            return (
+                "루멘텀 일본 실제 생산능력 증설",
+                "공장 양산 개시·실제 생산량 확인",
+                "lumentum|japan-fab|operational|" + (horizon.group(1) if horizon else "undated"),
+            )
+
+    costsharing = bool(re.search(
+        r"hyperscalers?.{0,100}(?:shar(?:e|ing)|co[- ]?financ|fund|"
+        r"prepay|offset|underwrit).{0,100}(?:capex|capital expenditure|"
+        r"investment|factory|expansion)|"
+        r"(?:capex|capital expenditure).{0,100}(?:cost[- ]?sharing|customer[- ]fund|"
+        r"hyperscaler|prepay)|"
+        r"客户.{0,25}(?:分担|出资).{0,25}(?:资本支出|扩产)|"
+        r"고객.{0,30}(?:설비투자|투자비).{0,20}(?:분담|선급)", text,re.I
+    ))
+    if costsharing:
+        achieved = bool(re.search(
+            r"received (?:customer )?(?:funds|prepayments?)|"
+            r"customer (?:paid|deposited)|payment received|"
+            r"capital contributed|입금|지급 완료", text,re.I
+        ))
+        return (
+            "루멘텀 고객 증설비용 분담",
+            "고객 선급금 현금 수취 확인" if achieved else "고객 자금 분담 약정/논의·입금 미확인",
+            "lumentum|customer-capex-sharing|" + ("cash-received" if achieved else "agreement-or-talks"),
+        )
+
+    # M&A intentions / old NVIDIA $2B investment do not become alerts until
+    # a new signed binding agreement, acquisition close, or fresh money arrives.
+    if re.search(r"acquisition|acquires?|merger|\bM&A\b",text,re.I):
+        if re.search(r"agreement signed|definitive agreement|completed acquisition|acquisition closes",text,re.I):
+            return ("루멘텀 신사업 인수·확장", "신규 확정 인수계약·종결", "lumentum|new-acquisition|" + key_for(low)[:18])
+    return None
+
+
+def lite_high_quality_source(item: dict, candidates: list[dict]) -> bool:
+    if item.get("company") != LITE_CAPACITY_COMPANY:
+        return True
+    source = normalize_text(item.get("source") or "").lower()
+    host = (urllib.parse.urlparse(item.get("source_url") or "").hostname or "").lower()
+    firsthand = (
+        any(host == d or host.endswith("." + d) for d in LITE_VERIFIED_ORIGIN_DOMAINS)
+        and (
+            "bloomberg" in source or "lumentum" in source or
+            source in {"reuters", "the japan times"}
+        )
+    )
+    if firsthand:
+        return True
+    # Reprints of one Bloomberg interview are not separate independent sources.
+    independent = set()
+    milestone = lite_supply_event(item.get("title") or "")
+    if not milestone:
+        return False
+    for other in candidates:
+        if other is item or other.get("company") != LITE_CAPACITY_COMPANY:
+            continue
+        o = lite_supply_event(other.get("title") or "")
+        if not o or o[2] != milestone[2]:
+            continue
+        h = (urllib.parse.urlparse(other.get("source_url") or "").hostname or "").lower().removeprefix("www.")
+        if any(h == domain or h.endswith("." + domain) for domain in LITE_VERIFIED_ORIGIN_DOMAINS):
+            independent.add(h)
+    return len(independent) >= 2
 
 
 POWER_COMPANY = "AAOI Taiwan Power-to-Production"
