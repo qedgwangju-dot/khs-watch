@@ -104,7 +104,7 @@ def _try_treasury_oisp_official_bulletin(
     if error is not None:
         return None, f"official Treasury bulletin unavailable: {error}"
     plain = re.sub(r"<[^>]+>", " ", html.unescape(body or "")).lower()
-    plain = re.sub(r"\\s+", " ", plain)
+    plain = re.sub(r"\s+", " ", plain)
     required = (
         "treasury announces enforcement penalty for violation of outbound program",
         "u.s. department of the treasury",
