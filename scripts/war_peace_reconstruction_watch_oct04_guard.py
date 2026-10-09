@@ -8,6 +8,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import hashlib
+import html
 import json
 import re
 import urllib.parse
@@ -480,20 +481,47 @@ def _historical_kuwait_base_footage(row):
     return iran and kuwait and us_forces and retreat and (old_evidence or known_oct_reprint) and not new_strike
 
 
+
+def _iran_three_day_strike_plan(row):
+    """보도된 3일 집중공격 '준비안'만 검출한다. 승인·실제 공습과 분리한다."""
+    title = html.unescape(str(row.get("title_original") or row.get("title") or "")).lower()
+    title = re.sub(r"\s+", " ", title)
+    source = " ".join(str(row.get(k) or "") for k in ("source", "link", "resolved_url")).lower()
+    credible = any(x in source for x in (
+        "연합뉴스", "yonhap", "경향신문", "reuters", "axios", "nytimes",
+        "new york times", "뉴욕타임스", "associated press", "apnews", "아나돌루",
+    ))
+    iran = any(x in title for x in ("iran", "iranian", "이란", "테헤란"))
+    days = bool(re.search(r"(?:3\s*일(?:간)?|3[- ]day|three[- ]day|72[- ]hour)", title))
+    action = any(x in title for x in (
+        "strike", "attack", "bombing", "assault", "offensive",
+        "집중공격", "공격", "공습", "폭격", "타격",
+    ))
+    planned = any(x in title for x in (
+        "plan", "option", "prepare", "consider", "develop", "proposal",
+        "계획", "준비", "검토", "구상", "제동",
+    ))
+    executed = any(x in title for x in (
+        "launched strikes", "strikes began", "attack began", "bombing started",
+        "실제 공습 개시", "공격 개시", "공습 감행", "공격 감행",
+    ))
+    return credible and iran and days and action and planned and not executed
+
+
 def _trump_iran_midterm_no_strike(row, *, trust_required=True):
     """11월 3일 전 이란 추가 공격 유예 '발언'만 별도로 감지한다.
 
     원문 제목에 현재 발언이 있어야 하며, 본문에 인용된 과거 입장만으로 감지하지 않는다.
     실제 공격, 준비태세, 합의 체결과 혼동하지 않는다.
     """
-    title = str(row.get("title_original") or "").lower()
-    description = str(row.get("description") or "").lower()
+    title = html.unescape(str(row.get("title_original") or row.get("title") or "")).lower()
+    description = html.unescape(str(row.get("description") or "")).lower()
     source = " ".join(str(row.get(k) or "") for k in ("source", "link", "resolved_url")).lower()
     trusted = any(x in source for x in (
         "reuters", "associated press", "ap news", "axios", "cnbc",
         "bloomberg", "wall street journal", "wsj", "financial times",
         "truthsocial.com", "whitehouse.gov", "연합뉴스", "yonhap",
-        "경향신문", "아이뉴스24", "obs경인tv", "kbs", "sbs", "mbc", "ytn", "jtbc",
+        "경향신문", "아이뉴스24", "obs경인tv", "아주경제", "뉴스1", "kbs", "sbs", "mbc", "ytn", "jtbc",
         "한국경제", "매일경제", "서울경제", "조선일보", "중앙일보", "동아일보",
     ))
     scope = title + " " + description
@@ -516,7 +544,9 @@ def _trump_iran_midterm_no_strike(row, *, trust_required=True):
         "이란 공격하지 않", "이란을 공격하지 않", "이란 공습하지 않",
         "이란에 대한 공격 유예", "이란 공격 유예", "이란 공격 안 하",
         "이란 공격 없", "이란 공격 안 한다", "이란 공격 안 한다고",
-        "이란 공격 안 한다는", "이란 공격 안 할", "이란 타격하지 않",
+        "이란 공격 안 한다는", "이란 공격 안 할", "이란 공격 안 해",
+        "이란 공격 안해", "이란 공격 안한다", "이란 공격 안 한다",
+        "이란에 공격 안", "이란 타격하지 않",
     ))
     # 원문 직접 게시물은 공식 고정 ID로 판정하되, 일반 기사의 본문 속 과거 인용에는 적용하지 않는다.
     official = "117406186276133332" in source
@@ -552,7 +582,12 @@ def _trump_iran_midterm_no_strike(row, *, trust_required=True):
         "pledge reversed", "reverses pledge", "withdraws pledge",
         "방침 철회", "입장 번복",
     ))
-    return (trusted or not trust_required) and trump and iran and election and denial and before_election and not actual_title
+    return (
+        (trusted or not trust_required)
+        and trump and iran and election and denial and before_election
+        and not actual_title
+        and not _iran_three_day_strike_plan(row)
+    )
 
 
 def _trump_iran_midterm_pledge_reversal(row):
@@ -836,6 +871,8 @@ def marks(row):
         out.append("미국부통령이란농축종전조건")
     if _trump_iran_midterm_no_strike(row):
         out.append("트럼프이란중간선거전공격유예")
+    if _iran_three_day_strike_plan(row):
+        out.append("미국이란3일집중공격계획보도")
     if _trump_iran_midterm_pledge_reversal(row):
         out.append("트럼프이란공격유예철회가능성")
     if _iran_direct_talks_denial_only(row):
@@ -890,6 +927,8 @@ def korean_title(ms):
         return "미국 부통령 JD Vance, 이란이 전쟁 종식을 원하면 우라늄 농축 능력을 의미 있게 감축해야 한다고 제시 — 미국 측 협상 조건, 합의 진전 아님"
     if "트럼프이란중간선거전공격유예" in ms:
         return "트럼프, 11월 3일 미국 중간선거 전 이란 추가 공격 없다고 발표 — 대통령 발언 확인, 봉쇄 유지·휴전 합의 미확정"
+    if "미국이란3일집중공격계획보도" in ms:
+        return "미 국방부의 이란 3일 집중공격 방안 보도 — 계획·검토 단계, 대통령 승인·실제 공습 확인되지 않음"
     if "트럼프이란공격유예철회가능성" in ms:
         return "트럼프, 이란 선거 전 공격 유예 입장 재검토·번복 신호 — 실제 공격 명령·피격 여부 별도 확인"
     if "이란직접협상부인" in ms:
@@ -940,6 +979,8 @@ def signals(ms):
         out.append("🟡 미국 부통령 JD Vance가 이란의 우라늄 농축 능력 감축을 전쟁 종식 조건으로 제시 — 미국 측 협상 조건이며 합의 진전 자체는 아님")
     if "트럼프이란중간선거전공격유예" in ms:
         out.append("🟡 트럼프 10월 8일 공개 발언: 11월 3일 중간선거 이전 미국의 이란 추가공격을 하지 않겠다는 입장 — 봉쇄는 유지, 합의·휴전은 확정되지 않음; 11월 4일 공격 결정도 아님")
+    if "미국이란3일집중공격계획보도" in ms:
+        out.append("🟡 미국 언론 보도에 따르면 미 국방부가 약 3일간의 집중공격 방안을 준비 — 실행 명령·공격 개시가 아니며 11월 3일 이후 공격 확정도 아님")
     if "트럼프이란공격유예철회가능성" in ms:
         out.append("🟡 선거 전 이란 공격 유예 방침 변경 가능성 — 대통령의 입장 변화와 실제 군사작전 개시는 별도로 확인")
     if "이란직접협상부인" in ms:
@@ -967,6 +1008,7 @@ def signals(ms):
         "루코일종전협상연계상업거래", "호르무즈유조선피격클러스터",
         "이스라엘10월7일해외공격위험경고", "호르무즈온피스유조선피격",
         "트럼프이란중간선거전공격유예", "트럼프이란공격유예철회가능성",
+        "미국이란3일집중공격계획보도",
         "미국부통령이란농축종전조건", "사우디리야드후티미사일요격확인",
         "이란남부폭발원인미확정", "사우디동서송유관회복",
         "목하탈환공세", "러시아국방부타격주장", "TASS러시아최대드론공격집계",
@@ -1022,6 +1064,12 @@ def score_item(row, now):
         tags = [t for t in tags if t not in ("확전", "휴전·평화", "재건", "종전·협상")]
         tags += ["협상·위협제약"]
         score = max(score, 98)
+    if "미국이란3일집중공격계획보도" in ms:
+        row["title_ko"] = korean_title(ms)
+        row["signals_ko"] = []
+        tags = [t for t in tags if t not in ("확전", "확전위험", "휴전·평화", "재건", "종전·협상")]
+        tags += ["미국·이란", "공격계획보도", "승인미확정", "실제공격아님", "3일작전방안"]
+        score = max(score, 99)
     if "트럼프이란중간선거전공격유예" in ms:
         row["title_ko"] = korean_title(ms)
         row["signals_ko"] = []
@@ -1158,6 +1206,8 @@ def _stable_source_url(row):
 
 
 def item_id(row):
+    if _iran_three_day_strike_plan(row):
+        return hashlib.sha256(b"event|us-iran|pentagon-three-day-strike-plan|2026-10-08").hexdigest()[:20]
     if _trump_iran_midterm_no_strike(row):
         return hashlib.sha256(b"event|us-iran|trump-no-strikes-before-midterms|2026-10-08").hexdigest()[:20]
     if _trump_iran_midterm_pledge_reversal(row):
@@ -1240,6 +1290,8 @@ def topic_label(row):
         return "미국·이란 · 종전 협상 조건"
     if "트럼프이란중간선거전공격유예" in ms:
         return "미국·이란 · 11월 3일 전 추가공격 유예 발언"
+    if "미국이란3일집중공격계획보도" in ms:
+        return "미국·이란 · 3일 집중공격 계획 보도"
     if "트럼프이란공격유예철회가능성" in ms:
         return "미국·이란 · 선거 전 공격유예 입장 변경"
     if "이란직접협상부인" in ms:
@@ -1287,6 +1339,8 @@ def final_color(row):
     if "미국부통령이란농축종전조건" in ms:
         return "yellow"
     if "트럼프이란중간선거전공격유예" in ms or "트럼프이란공격유예철회가능성" in ms:
+        return "yellow"
+    if "미국이란3일집중공격계획보도" in ms:
         return "yellow"
     if "이란직접협상부인" in ms:
         return "yellow"
@@ -1403,6 +1457,8 @@ def semantic_fix(text):
         topic = None
         if any(x in block for x in ("11월 3일 미국 중간선거 전 이란 추가 공격 없다고 발표", "11월 3일 중간선거 이전 미국의 이란 추가공격")):
             marker, topic = "🟡", "미국·이란 · 11월 3일 전 추가공격 유예 발언"
+        elif any(x in block for x in ("3일 집중공격 방안 보도", "3일간의 집중공격 방안을 준비")):
+            marker, topic = "🟡", "미국·이란 · 3일 집중공격 계획 보도"
         elif any(x in block for x in ("이란 선거 전 공격 유예 입장 재검토", "선거 전 이란 공격 유예 방침 변경")):
             marker, topic = "🟡", "미국·이란 · 선거 전 공격유예 입장 변경"
         elif any(x in block for x in ("동서 송유관 재가동", "하루 580만배럴 수송 회복", "실물 공급 복구 신호")):
@@ -1503,6 +1559,8 @@ def verify_alert(test_mode=False):
         issues.append("이란의 직접협상 부인을 실제 군사 확전으로 표시")
     if ("사우디-후티" in text or "사우디·후티" in text) and ("미-이란 대화 지속" in text or "미·이란 대화 지속" in text):
         issues.append("구체적 신규 사건 없는 중동 종합 재가공 기사를 별도 속보로 표시")
+    if re.search(r"(?ms)^🔴\s+\[(?:속보|신규|후속)\].{0,300}(?:3일 집중공격 계획|3일 집중공격 방안 보도)", text):
+        issues.append("미 국방부의 검토용 3일 공격 방안을 실제 확전·공습 개시로 표시")
     if "트럼프, 11월 3일 미국 중간선거 전 이란 추가 공격 없다고 발표" in text:
         item_line = next((ln for ln in text.splitlines() if "미국·이란 · 11월 3일 전 추가공격 유예 발언" in ln), "")
         if not item_line.startswith("🟡"):
@@ -1560,6 +1618,7 @@ def verify_alert(test_mode=False):
         and re.search(r"(?:중간선거 전|중간선거 이전|11월 ?3일.{0,14}전)", line)
         and re.search(r"이란.{0,8}공격", line)
         and re.search(r"(?:없|안 |않|유예)", line)
+        and not re.search(r"(?:3\s*일.{0,15}(?:집중|공격|공습)|3[- ]day|three[- ]day|72[- ]hour)", line, re.I)
     ]
     if len(repeated_midterm_pledges) > 1:
         issues.append("같은 10월 8일 트럼프 이란 공격유예 발언을 매체별 중복 정책 알림으로 송출")
