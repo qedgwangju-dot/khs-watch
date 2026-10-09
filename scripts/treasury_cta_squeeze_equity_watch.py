@@ -15,6 +15,7 @@ import json
 import os
 import re
 import urllib.request
+import urllib.parse
 from datetime import date, datetime, time, timedelta
 from zoneinfo import ZoneInfo
 
@@ -25,7 +26,7 @@ import treasury_cta_squeeze_audited_watch as audited
 watcher = audited.watcher
 # Revision 10 adds the official NQ/CFTC cross-asset squeeze lane.
 # The audited gate still prevents a formatting-only push from becoming an event alert.
-watcher.FORMAT_REVISION = max(int(getattr(watcher, "FORMAT_REVISION", 0)), 13)
+watcher.FORMAT_REVISION = max(int(getattr(watcher, "FORMAT_REVISION", 0)), 14)
 _base_format = audited.format_alert
 _base_main = watcher.main
 
@@ -464,7 +465,7 @@ def _nq_history_statistics(rows: list[dict], current: dict) -> dict:
     result = {
         "basis": "CFTC TFF NASDAQ MINI futures-only",
         "history_source": "CFTC Public Reporting gpe5-46if verified against live report",
-        "history_url": CFTC_HISTORY_INDEX,
+        "history_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/HistoricalCompressed/index.htm",
         "verified_current": True,
         "sample_n": s3["sample_n"],
         "start_date": s3["start_date"],
@@ -823,70 +824,76 @@ def _cross_asset_block(snapshot: dict, previous: dict, fx=None, fx_date=None, co
     hist = cross.get("history_3y") or {}
     treasury10 = ((snapshot.get("cftc") or {}).get("markets") or {}).get("10Y") or {}
 
-    nq_pct = price.get("pct_change")
-    nq_pct_text = f"{float(nq_pct):+.2f}%" if nq_pct is not None else "가격 확인 불가"
-    net_pctile = hist.get("net_short_percentile_3y")
-    if not isinstance(net_pctile, (int, float)):
-        net_pctile = hist.get("short_extreme_percentile_3y")
-    gross_pctile = hist.get("gross_short_percentile_3y")
-    net_pctile_text = f"{float(net_pctile):.0f}백분위" if isinstance(net_pctile, (int, float)) else "재조회 대기"
-    gross_pctile_text = f"{float(gross_pctile):.0f}백분위" if isinstance(gross_pctile, (int, float)) else "재조회 대기"
-    net_unwind = hist.get("net_short_unwind_from_peak_pct")
-    if not isinstance(net_unwind, (int, float)):
-        net_unwind = hist.get("unwind_from_peak_pct")
-    gross_unwind = hist.get("gross_short_unwind_from_peak_pct")
-    build_pct10 = hist.get("gross_short_weekly_build_percentile_10y")
-    build_change10 = hist.get("gross_short_weekly_change_10y")
-    build_record10 = bool(hist.get("gross_short_weekly_record_10y"))
-    net_unwind_text = f"{float(net_unwind):.1f}%" if isinstance(net_unwind, (int, float)) else "확인 불가"
-    gross_unwind_text = f"{float(gross_unwind):.1f}%" if isinstance(gross_unwind, (int, float)) else "확인 불가"
+    cftc_date = str(nq.get("report_date") or "확인 불가")
+    raw_price_date = str(price.get("trade_date") or "")
+    expected = str(cross.get("nq_price_expected_session") or "확인 불가")
+    if cross.get("nq_price_fresh"):
+        nq_pct = price.get("pct_change")
+        pct_text = f"{float(nq_pct):+.2f}%" if nq_pct is not None else "확인 불가"
+        oi = price.get("oi_change")
+        oi_text = f"{int(oi):+,}" if oi is not None else "확인 불가"
+        price_line = f"• NQ CME {raw_price_date} 정산: {pct_text} · 같은 날 일일 OI {oi_text}계약"
+    elif raw_price_date:
+        price_line = (
+            f"• NQ CME 최신 거래일 자료 미확보: 마지막 {raw_price_date} · "
+            f"예상 {expected} · 가격·일일 OI 판정 제외"
+        )
+    else:
+        price_line = "• NQ CME 공식 정산·일일 OI 미확보: 확정 판정 제외"
 
-    if compact:
-        return (
-            "<b>📈 채권→Nasdaq 전이</b>\n"
-            f"• {cross['label']}\n"
-            f"• 10Y LF 순 {int(treasury10.get('leveraged_net') or 0):+,}계약 · "
-            f"NQ LF 순 {int(nq.get('leveraged_net') or 0):+,}계약 (순숏 {net_pctile_text} / 총숏 {gross_pctile_text})\n"
-            f"• NQ {nq_pct_text} · CME 일일 OI {int(price.get('oi_change') or 0):+,} · "
-            f"CFTC 순포지션 주간 {int(nq.get('leveraged_net_wow') or 0):+,}\n"
-            + (
-                f"• NQ 총숏 주간 {int(build_change10):+,}계약 · 10년 {float(build_pct10):.0f}백분위"
-                f"{' · 10년 주간 최고' if build_record10 else ''}\n"
-                if isinstance(build_change10, (int, float)) and isinstance(build_pct10, (int, float))
-                else ""
+    net_wow = nq.get("leveraged_net_wow")
+    short_wow = nq.get("leveraged_short_wow")
+    net_wow_text = f"{int(net_wow):+,}" if net_wow is not None else "확인 불가"
+    short_wow_text = f"{int(short_wow):+,}" if short_wow is not None else "확인 불가"
+    hist_ok = bool(cross.get("nq_history_fresh") and cross.get("nq_crosscheck_match") and hist.get("verified_current"))
+    if hist_ok:
+        net_pct = hist.get("net_short_percentile_3y")
+        gross_pct = hist.get("gross_short_percentile_3y")
+        hist_line = (
+            f"• NQ 3년 백분위 ({hist.get('end_date')} 기준): "
+            f"순숏 {float(net_pct):.0f} · 총숏 {float(gross_pct):.0f}"
+            if isinstance(net_pct, (int, float)) and isinstance(gross_pct, (int, float))
+            else "• NQ 3년 백분위 계산값 확인 불가"
+        )
+    else:
+        hist_line = (
+            "• NQ 3년·10년 백분위 표시 보류: "
+            + str(raw_status if (raw_status := cross.get("history_status")) else "현재주 원천 교차검증 미완료")
+        )
+
+    rows = [
+        "<b>📈 채권→Nasdaq 전이</b>",
+        f"• {cross.get('label')}",
+        f"• CFTC {cftc_date}: 10Y LF 순 {int(treasury10.get('leveraged_net') or 0):+,}계약 · NQ LF 순 {int(nq.get('leveraged_net') or 0):+,}계약",
+        f"• NQ CFTC 주간: 순포지션 {net_wow_text}계약 · 총숏 {short_wow_text}계약",
+        hist_line,
+    ]
+    if hist_ok and hist.get("ten_year_complete"):
+        week_change = hist.get("gross_short_weekly_change_10y")
+        pctile = hist.get("gross_short_weekly_build_percentile_10y")
+        if isinstance(week_change, (int, float)) and isinstance(pctile, (int, float)):
+            rows.append(
+                f"• NQ 총숏 이번 주 {int(week_change):+,}계약 · 10년 주간 증감 {float(pctile):.0f}백분위"
+                + (" · 10년 주간 최대 증가" if hist.get("gross_short_weekly_record_10y") and week_change > 0 else "")
             )
-        )
+    rows.append(price_line)
+    if not cross.get("nq_crosscheck_match"):
+        rows.append("• NQ 확인 제한: 공식 최신 이력 검증 대기 · 스퀴즈 단계 자동 차단")
 
-    return (
-        "<b>📈 채권→Nasdaq 전이</b>\n"
-        f"• 판정: <b>{cross['label']}</b>\n"
-        f"• 10Y Leveraged Funds 순포지션 {_fmt_net_with_krw(treasury10.get('leveraged_net'), '10Y', fx)}\n"
-        f"• NQ E-mini Leveraged Funds 순포지션 {int(nq.get('leveraged_net') or 0):+,}계약"
-        f" · 3년 순숏 {net_pctile_text} · 총숏 {gross_pctile_text}\n"
-        f"• 3년 극단 대비 청산률: 순숏 {net_unwind_text} · 총숏 {gross_unwind_text}\n"
-        + (
-            f"• 이번 주 NQ 총숏 증가 {int(build_change10):+,}계약 = 10년 {float(build_pct10):.0f}백분위"
-            f"{' · <b>10년 주간 최고</b>' if build_record10 else ''}\n"
-            if isinstance(build_change10, (int, float)) and isinstance(build_pct10, (int, float))
-            else ""
-        )
-        + "• 중요: '10년 기록'은 현재 총숏 잔고가 10년 최고라는 뜻이 아니라, <b>이번 주 총숏 증가 속도</b>가 기록적이라는 뜻입니다.\n"
-        + "• 이 10년 기록은 CFTC NASDAQ MINI futures-only 공식 모집단의 별도 검산값이며, Goldman/BofA Prime Brokerage의 $14.9bn 독자 집계와 같은 모집단이라고 보지 않습니다.\n"
-        f"• NQ {nq_pct_text} ({price.get('source') or '가격 소스 확인 불가'})"
-        f" · CME 일일 총 OI 변화 {int(price.get('oi_change') or 0):+,}계약"
-        f" · CFTC 주간 총 OI 변화 {int(nq.get('open_interest_wow') or 0):+,}계약"
-        f" · CFTC 순포지션 주간 {int(nq.get('leveraged_net_wow') or 0):+,}계약\n"
-        f"• NQ 명목금액: 순숏 {_nq_notional_krw(nq, price, fx, 'leveraged_net')} · "
-        f"총숏 {_nq_notional_krw(nq, price, fx, 'leveraged_short')}"
-        " (NQ 지수×$20×계약수×환율, 실제 증거금·손익 아님)\n"
-        "• 확정은 ZN 공식 같은 거래일 가격↑·OI↓ + NQ 공식 같은 거래일 가격↑·OI↓ + CFTC NQ 순숏 축소가 함께 붙을 때만 합니다.\n"
-        + (
-            f"• 환율 기준: {fx_date}, 1달러={float(fx):,.2f}원\n"
-            if fx is not None else
-            "• 환율 기준: 확인 불가 — 원화 명목금액은 확정 표시하지 않음\n"
-        )
-        + "※ CFTC 포지션은 주간 후행자료입니다. CME 일일 가격·OI는 같은 거래일 자료로만 묶고, 최신 완료 미국 거래일 또는 CFTC·재무부·NY Fed 신선도 기준을 통과하지 못하면 자동으로 확정 판정을 막습니다.\n"
-    )
+    if not compact:
+        if cross.get("nq_price_fresh") and fx is not None:
+            rows.append(
+                "• NQ 현재주 명목 참고: 순숏 "
+                + _nq_notional_krw(nq, price, fx, "leveraged_net")
+                + " · 총숏 "
+                + _nq_notional_krw(nq, price, fx, "leveraged_short")
+                + " (NQ 지수×20달러×계약수×환율, 실제 증거금·손익 아님)"
+            )
+        rows.extend([
+            "• 공식 스퀴즈 확인에는 ZN·NQ 각각 동일 거래일 가격↑·일일 OI↓ 및 CFTC 순숏 축소가 필요합니다.",
+            "• CFTC 포지션은 주간 후행이며, 가격과 OI의 서로 다른 날짜·모집단을 합산하지 않습니다.",
+        ])
+    return "\n".join(rows) + "\n"
 
 
 def _equity_impact(snapshot: dict, previous: dict, reasons: list[str]) -> tuple[str, str]:
@@ -896,13 +903,14 @@ def _equity_impact(snapshot: dict, previous: dict, reasons: list[str]) -> tuple[
     evidence = watcher.squeeze_evidence(snapshot, previous)
     repo_ok, _ = audited._repo_not_worse(snapshot, previous)
     data_fresh, _ = audited._data_freshness(snapshot)
-    prices_up = audited._price_up_count(snapshot)
-    short_bias = any("CFTC 숏 축소" in r or "CFTC 주간 숏 축소" in r for r in reasons)
-    if evidence and z <= -1.0 and repo_ok and data_fresh:
-        return "🟢 성장주 우호 강화", "금리 하락이 포지션 청산과 함께 확인"
-    if (short_bias or prices_up >= 2) and repo_ok and data_fresh:
-        return "🟡 중립~약한 우호", f"숏 압력 완화 가능성은 있지만 10Y {yld:.3f}%·z={z:+.2f}σ로 추세전환 미확인"
-    return "⚪ 중립", f"10Y {yld:.3f}%에서 할인율 완화 신호 미확인"
+    same_tenor_short_reduced = bool(
+        any("CFTC 동일만기 숏 축소" in r or "최근 CFTC 동일만기 숏 축소" in r for r in reasons)
+    )
+    if evidence and same_tenor_short_reduced and z <= -1.0 and repo_ok and data_fresh:
+        return "🟢 성장주 할인율 우호 강화", "10년물 하락 추세와 같은 만기 숏 축소·공식 CME 청산 신호가 동반 확인"
+    if z < 0 and (same_tenor_short_reduced or evidence) and repo_ok and data_fresh:
+        return "🟡 제한적 우호 가능성", f"10Y {yld:.3f}%·z={z:+.2f}σ지만 이익으로 이어질 스퀴즈 복합 확인 전"
+    return "⚪ 중립·금리 위험 점검", f"10Y {yld:.3f}%·z={z:+.2f}σ · 숏 스퀴즈와 지속적인 할인율 완화 모두 미확인"
 
 
 def _compact_duplicates(body: str) -> str:
@@ -991,7 +999,19 @@ def _compact_event_body(snapshot: dict, previous: dict, fx, fx_date, reasons: li
         oi = row.get("open_interest")
         oi_txt = f"{int(oi):,}" if oi is not None else "확인 불가"
         src = row.get("oi_source") or row.get("source_type") or "출처 확인 불가"
-        return f"• {label}: {pct_txt} · OI {oi_txt} [{src}]"
+        price_date = row.get("trade_date_iso") or row.get("trade_date")
+        if not price_date and row.get("market_time"):
+            try:
+                price_date = datetime.fromtimestamp(float(row["market_time"]), NY).strftime("%Y-%m-%d %H:%M ET")
+            except (ValueError, TypeError, OverflowError):
+                price_date = None
+        if "Yahoo" in str(row.get("source_type") or ""):
+            return (
+                f"• {label}: Yahoo 지연가격 {pct_txt} ({price_date or '가격시각 미확인'}) · "
+                f"별도 CFTC 주간 전체시장 OI {oi_txt} [{(snapshot.get('cftc') or {}).get('report_date', '날짜 미확인')}] "
+                "— 일일 OI 동시 신호 아님"
+            )
+        return f"• {label}: 공식 CME {pct_txt} ({price_date or '거래일 미확인'}) · 일일 OI {oi_txt} [{src}]"
 
     t10 = cftc.get("10Y") or {}
     repo_bits = []
@@ -1005,11 +1025,13 @@ def _compact_event_body(snapshot: dict, previous: dict, fx, fx_date, reasons: li
         f"• 10년물 <b>{float(y.get('yield') or 0):.3f}%</b> · z={float(y.get('z20') or 0):+.2f}σ",
         f"• CTA/국채 스퀴즈: <b>{audited._direction_label(snapshot, previous, reasons)[0]}</b>",
         f"• 채권→Nasdaq: <b>{cross.get('label')}</b>",
-        f"• 자료 신선도: {'통과' if data_fresh else '차단'}"
+        f"• 기본 원천(CFTC·미 재무부·Repo) 신선도: {'통과' if data_fresh else '차단'}"
         + (f" ({', '.join(stale)})" if stale else ""),
+        f"• NQ 별도 신선도: CFTC 3·10년 이력 {'일치' if cross.get('nq_crosscheck_match') else '검증 대기'}"
+        f" · CME 최신완료일 {'일치' if cross.get('nq_price_fresh') else '미확보'}",
         "",
         "<b>📍 핵심 포지션</b>",
-        f"• 10Y Leveraged Funds 순 {int(t10.get('leveraged_net') or 0):+,}계약"
+        f"• CFTC {(snapshot.get('cftc') or {}).get('report_date','기준일 미확인')} · 10Y Leveraged Funds 순 {int(t10.get('leveraged_net') or 0):+,}계약"
         f" · 숏/OI {float(t10.get('short_share_oi_pct') or 0):.1f}%",
         _cross_asset_block(snapshot, previous, fx=fx, fx_date=fx_date, compact=True).rstrip(),
         "",
@@ -1020,7 +1042,7 @@ def _compact_event_body(snapshot: dict, previous: dict, fx, fx_date, reasons: li
         "• 공식 CME 같은 거래일 가격↑+OI↓를 못 받으면 스퀴즈 '확정'은 자동 차단합니다.",
         "",
         "<b>💵 자금조달</b>",
-        f"• {' · '.join(repo_bits) if repo_bits else 'NY Fed repo 확인 불가'}"
+        f"• NY Fed {(repo.get('SOFR') or {}).get('date','기준일 미확인')} · {' · '.join(repo_bits) if repo_bits else 'NY Fed repo 확인 불가'}"
         f" · 판정 {'안정' if repo_ok else '주의: ' + ', '.join(repo_worse)}",
         "",
         "<b>🧭 주식시장 해석</b>",
@@ -1230,6 +1252,7 @@ def _scheduled_report(snapshot: dict, previous: dict, reasons: list[str], fx=Non
         f"• 10년물: <b>{yld:.3f}%</b> · 20일 z={z:+.2f}σ · {regime_line}",
         f"• 하향 확인선: {milestone_line} · 4.30%는 과거 시장 시나리오의 보조 하단({distance:.1f}bp 거리)",
         f"• 선물: ZN {_fmt_pct((cme.get('ZN') or {}).get('pct_change'))} · ZB {_fmt_pct((cme.get('ZB') or {}).get('pct_change'))} · UB {_fmt_pct((cme.get('UB') or {}).get('pct_change'))}",
+        "• 선물 가격·OI 근거: 공식 CME 일일 OI가 없으면 Yahoo 지연가격과 CFTC 주간 OI를 별개로 보며 확정판정에 사용하지 않음",
         f"• 가격↑+동일범위 OI↓: {'확인' if evidence else '미확인'} · repo: {'안정' if repo_ok else '주의 ' + ', '.join(repo_worse)}",
         "",
         "<b>📍 포지션은 얼마나 쌓였나</b>",
