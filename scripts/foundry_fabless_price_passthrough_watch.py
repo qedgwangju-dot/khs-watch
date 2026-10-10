@@ -476,11 +476,15 @@ def _semicap_observation(item: dict) -> dict | None:
     grade = _semicap_source_grade(item, vendor)
     if not grade:
         return None
-    if not any(p in low for p in (
+    has_price_change = any(p in low for p in (
         "price increase", "price hike", "raise prices", "raised prices",
         "higher prices", "price adjustment", "가격 인상", "값 인상",
-        "가격 조정", "인상 확정", "値上げ", "涨价", "漲價",
-    )):
+        "가격 조정", "가격을 인상", "인상 확정", "値上げ", "涨价", "漲價",
+    )) or bool(re.search(
+        r"\b(?:raise|raises|raised|increase|increases|increased)\b.{0,90}\bprices?\b",
+        low,
+    ))
+    if not has_price_change:
         return None
     if any(p in low for p in ("share price", "stock price", "주가 상승", "목표주가")):
         return None

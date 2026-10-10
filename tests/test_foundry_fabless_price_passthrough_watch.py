@@ -179,6 +179,17 @@ class FoundryFablessPricePassThroughTests(unittest.TestCase):
         x["description"] = "New system shipment prices"
         self.assertEqual(w._semicap_observation(x)["scope"], "systems")
 
+    def test_semicap_official_verb_separated_from_price_noun(self):
+        x = self.semicap_item(
+            "ASML raises EUV lithography equipment prices effective January 2027",
+            "ASML confirms new scanner pricing",
+            link="https://www.asml.com/en/news/press-releases/example",
+        )
+        ev = w._semicap_observation(x)
+        self.assertIsNotNone(ev)
+        self.assertEqual(ev["grade"], "official")
+        self.assertEqual(ev["scope"], "systems")
+
     def test_semicap_peer_price_requires_first_party_not_repost(self):
         x = self.semicap_item("Tokyo Electron equipment price increase 8% January 2027",
                               "Price adjustment to semiconductor equipment",
