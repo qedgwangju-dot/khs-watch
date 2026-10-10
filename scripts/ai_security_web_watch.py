@@ -90,6 +90,7 @@ NEWS_QUERIES = [
     '(OpenAI OR Anthropic OR Google OR Meta) deployment blocked safety gate failed alignment evaluation',
     '(OpenAI OR Anthropic OR Google OR Meta) limited release restricted deployment safeguards model',
     '(OpenAI OR Anthropic) "blocking alignment evaluation" failed passed deployment',
+    '(OpenAI OR Anthropic OR Google OR Meta) ("affected parties notified" OR "reported to authorities" OR "incident remediated" OR "remediation completed") model agent incident',
     '(OpenAI OR Anthropic OR Google OR Meta) "Safety Case" frontier training reinforcement learning',
     '(OpenAI OR Anthropic OR Google OR Meta) "eval awareness" OR metagaming monitoring safety',
     '(OpenAI OR Anthropic OR Google OR Meta) monitorability threshold automatic stop fail-closed training',
@@ -159,6 +160,8 @@ SECURITY_TERMS = (
     "defense tier", "financial sector", "critical infrastructure",
     "10-fold", "tenfold", "ten-fold", "cyber risk",
     "verified software vulnerabilities", "critical or high severity",
+    "affected parties notified", "reported to authorities",
+    "incident remediated", "remediation completed", "corrective actions",
 )
 
 HARD_SECURITY_TERMS = (
@@ -226,6 +229,11 @@ VENDOR_PATTERNS = [
 ]
 
 CATEGORY_PATTERNS = [
+    ("AI 모델사고 신고·시정 후속조치", (
+        "affected parties notified", "reported to authorities",
+        "incident remediated", "remediation completed",
+        "corrective actions", "formal incident notification",
+    )),
     ("모델 비의도적 외부접근·사고 공개", (
         "investigating unintended model actions", "unintended model actions",
         "unintended use of government systems", "submitted forms it should not",
@@ -924,6 +932,10 @@ def incident_fact(item: dict) -> str | None:
         return "Anthropic 자체 스캔으로 추가 취약점 5,500건 발견"
     if (item.get("url") or "").rstrip("/").endswith("/research/investigating-unintended-model-actions"):
         return "Anthropic 공식 사고보고: 평가·내부 사용 중 서버 명령 실행·실제 웹 양식 제출·접근 제한 우회 등 비의도적 행동 확인"
+    if "remediation completed" in text or "incident remediated" in text:
+        return "모델사고 시정 완료 발표(독립 검수·재발 여부 추가 확인)"
+    if "affected parties notified" in text or "reported to authorities" in text:
+        return "모델사고 관계기관·피해자 통지 발표(시정 완료 여부 별도)"
     if "481 million" in text or "481m" in text:
         return "Anthropic 조사 범위 약 4억8,100만 기록"
     if ("four incidents" in text or "4 incidents" in text) and ("unauthorized" in text or "third-party" in text):
@@ -972,6 +984,8 @@ def event_heading(cluster: list[dict]) -> str:
 
 def event_impact(cluster: list[dict]) -> str:
     cats = " ".join(item.get("category", "") for item in cluster)
+    if "AI 모델사고 신고·시정 후속조치" in cats:
+        return "공식 사고 신고, 피해자 통지, 접근 차단, 피해 복구, 독립 검수 및 회귀검사를 서로 구분합니다. 조치 착수·시정 완료·재발 방지는 원문에 명시된 단계에서만 확인으로 표시합니다."
     if "금융·핵심인프라 AI 사이버 위험 경보" in cats:
         return "대형 은행·핵심인프라 운영자가 프런티어 모델의 공격·취약점 탐색 능력을 실제 시스템 위험으로 평가하기 시작했는지, 보안예산·모델 접근통제·사고대응 체계가 강화되는지가 핵심입니다."
     if "프런티어 모델 사이버 역량·접근 확대" in cats:
