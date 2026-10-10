@@ -3,6 +3,7 @@ import unittest
 from scripts.qra_recurring_alert import (
     ReleaseParser,
     extract_refunding_amounts,
+    extract_financing_estimates,
     extract_shortfall,
     guidance_word,
     maintain_guidance,
@@ -22,7 +23,8 @@ class QRARecurringAlertTests(unittest.TestCase):
         """
         parser = ReleaseParser("https://home.treasury.gov/base")
         parser.feed(source)
-        self.assertEqual(len(parser.sections), 2)
+        self.assertEqual(len(parser.sections), 3)
+        self.assertIn("3:00 PM", parser.sections[1].heading)
         self.assertIn("August 5, 2026", parser.sections[0].heading)
         self.assertEqual(parser.sections[0].links[0].url, "https://home.treasury.gov/policy")
 
@@ -42,6 +44,18 @@ class QRARecurringAlertTests(unittest.TestCase):
             "a 10-year note in the amount of $42 billion, and a 30-year bond in the amount of $25 billion."
         )
         self.assertEqual(extract_refunding_amounts(text), {"3년물": 58.0, "10년물": 42.0, "30년물": 25.0})
+
+    def test_3pm_quarterly_net_borrowing(self):
+        text = (
+            "During the July–September 2026 quarter, Treasury expects "
+            "to borrow $739 billion in privately-held net marketable debt, "
+            "assuming an end-of-September cash balance of $950 billion. "
+            "During the October–December 2026 quarter, Treasury expects "
+            "to borrow $628 billion in privately-held net marketable debt."
+        )
+        found = extract_financing_estimates(text)
+        self.assertEqual(found["July–September 2026"], 739.0)
+        self.assertEqual(found["October–December 2026"], 628.0)
 
     def test_shortfall(self):
         text = "Dealers estimated a financing shortfall of approximately $1.45 trillion across FY2027-FY2028."
