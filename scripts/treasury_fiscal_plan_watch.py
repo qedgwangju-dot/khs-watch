@@ -344,12 +344,16 @@ def check() -> int:
     status.append(f"공식 문서 후보 수: {len(candidates)}")
     dated = 0
     verified_docs = 0
+    examined = []
     for title, url in candidates:
         try:
             page = fetch_text(url, timeout=12)
             verified_docs += 1
-            if parsed_date(page, url):
+            published = parsed_date(page, url)
+            if published:
                 dated += 1
+            if len(examined) < 24:
+                examined.append(f"{published or '날짜 미인식'} | {title[:62]} | {url}")
             found = classify_plan(title, page, url)
         except Exception as exc:
             status.append("후보 원문 검증 실패: " + url[:80] + " " + type(exc).__name__)
@@ -358,6 +362,7 @@ def check() -> int:
             plan = found
             break
     status.append(f"공식 후보 직접검증 {verified_docs}개, 게시일 식별 {dated}개")
+    status.extend(examined)
     if candidates and dated == 0:
         status.append("주의: 공식 문서 게시일 파싱 결과 0건 — 계획 발표 감시 정확도 점검 필요")
 
