@@ -573,8 +573,10 @@ def main() -> None:
 
     etf = carry_partial_history(old, etf, now_kst)
 
+    correction_pending = bool(old.get("correction_pending"))
     new_state = {
         "updated_at_kst": now_kst,
+        "correction_pending": False,
         "buyback": buyback,
         "rates": rates,
         "btc_etf": etf,
@@ -604,6 +606,12 @@ def main() -> None:
         return
 
     triggers: list[str] = []
+    if correction_pending:
+        triggers.append(
+            "BTC 현물 ETF 종합해석 정정: 10월 9일 기준 최근 5거래일은 "
+            "순유입 둔화가 아니라 순유입→순유출 전환. "
+            "미 국채는 10Y 상승·30Y 보합으로 구분"
+        )
 
     old_buyback = old.get("buyback") or {}
     if buyback and old_buyback and buyback.get("sha256") != old_buyback.get("sha256"):

@@ -12,13 +12,13 @@
     "prev_date": "2026-10-08",
     "prev_10y": 5.22,
     "prev_30y": 5.6,
-    "daily_10y_bp": 2.0,
-    "daily_30y_bp": 0.0,
+    "daily_10y_bp": 2,
+    "daily_30y_bp": 0,
     "prev5_date": "2026-10-02",
     "prev5_10y": 5.28,
     "prev5_30y": 5.63,
-    "five_day_10y_bp": -4.0,
-    "five_day_30y_bp": -3.0
+    "five_day_10y_bp": -4,
+    "five_day_30y_bp": -3
   },
   "btc_etf": {
     "date": "2026-10-09",
@@ -35,7 +35,7 @@
     "source_latest_status": "complete",
     "pending_date": null,
     "latest_recomputed_total_usd_m": 21.1,
-    "latest_total_gap_usd_m": 0.0,
+    "latest_total_gap_usd_m": 0,
     "latest_total_validated": true,
     "last5_usd_m": -678.9,
     "last5_dates": [
@@ -61,14 +61,14 @@
       "2026-10-02"
     ],
     "prev5_values_usd_m": [
-      31.0,
+      31,
       66.2,
       -148.7,
       102.7,
       189.9
     ],
     "five_day_compare_valid": true,
-    "five_day_change_usd_m": -920.0,
+    "five_day_change_usd_m": -920,
     "five_day_change_pct": null,
     "five_day_direction": "순유입→순유출 전환",
     "windows": {
@@ -85,7 +85,7 @@
         "prev_trading_days": 22,
         "prev_partial_days": 0,
         "prev_partial_dates": [],
-        "prev_value_usd_m": 3277.0,
+        "prev_value_usd_m": 3277,
         "change_usd_m": -1618.8,
         "direction": "순유입 둔화",
         "status": "확정"
@@ -132,5 +132,6 @@
     "farside_btc_etf": "https://farside.co.uk/btc/",
     "farside_btc_etf_all": "https://farside.co.uk/bitcoin-etf-flow-all-data/"
   },
-  "errors": []
+  "errors": [],
+  "correction_pending": true
 }

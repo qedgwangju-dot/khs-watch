@@ -108,6 +108,9 @@ def format_trigger(line: str, is_partial: bool = False) -> list[str]:
     if text.startswith("BTC 현물 ETF 1M 과거 누적 재계산:") or text.startswith("BTC 현물 ETF 3M 과거 누적 재계산:"):
         return ["• <b>월간 원자료 수정</b> · " + text.split(":", 1)[1].strip()]
 
+    if text.startswith("BTC 현물 ETF 종합해석 정정:"):
+        return ["• <b>앞선 해석 정정</b> · " + text.split(":", 1)[1].strip()]
+
     if text.startswith("BTC 현물 ETF 과거 원자료 수정:"):
         return ["• <b>과거 원자료 수정</b>", f"  {text.split(':', 1)[1].strip()}"]
 
