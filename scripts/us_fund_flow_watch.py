@@ -643,6 +643,18 @@ def election_window_label(reference_date):
     return "past"
 
 
+def new_bond_momentum_episode(previous, current):
+    """Neutral resets must re-arm the next genuinely new +/-20bp episode."""
+    return current in ("rise_20bp","fall_20bp") and previous != current
+
+
+# Regression guards: repeat alerts require a silent neutral reset between episodes.
+assert new_bond_momentum_episode("neutral","rise_20bp")
+assert new_bond_momentum_episode("neutral","fall_20bp")
+assert not new_bond_momentum_episode("rise_20bp","rise_20bp")
+assert not new_bond_momentum_episode("rise_20bp","neutral")
+
+
 def hartnett_regime_signal(mmf_weekly_bn, bond):
     if bond is None:
         return "금리 공식 수치 확인 대기 — 현금성 자금만으로 위험선호 방향 단정 금지"
@@ -1230,9 +1242,10 @@ bond_level_transition = bool(
     and old_hartnett.get("hartnett_bond_level") != hartnett_macro["bond_level"]
 )
 bond_momentum_transition = bool(
-    hartnett_macro
-    and hartnett_macro["bond_momentum"] != "neutral"
-    and old_hartnett.get("hartnett_bond_momentum") != hartnett_macro["bond_momentum"]
+    hartnett_macro and new_bond_momentum_episode(
+        old_hartnett.get("hartnett_bond_momentum"),
+        hartnett_macro["bond_momentum"],
+    )
 )
 target_rate_change = bool(
     hartnett_macro
